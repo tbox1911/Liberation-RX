@@ -1,0 +1,311 @@
+
+private [ "_idact_build","_idact_arsenal", "_idact_redeploy", "_idact_tutorial",
+		  "_distfob", "_distarsenal","_distspawn","_distredeploy", "_idact_commander",
+		  "_idact_cheat", "_idact_halo", "_idact_heal", "_idact_lead","_idact_drop",
+		  "_idact_send", "_idact_speak", "_idact_packfob", "_idact_unpackfob",
+		  "_idact_intel", "_idact_priso"];
+
+_idact_build = -1; _idact_arsenal = -1; _idact_redeploy = -1; _idact_tutorial = -1; _idact_squad = -1;
+_idact_commander = -1; _idact_cheat = -1; _idact_repackage = -1; _idact_halo = -1; _idact_heal = -1;
+_idact_lead = -1; _idact_drop = -1; _idact_send = -1; _idact_speak = -1; _idact_secondary = -1;
+_idact_packfob = -1; _idact_unpackfob = -1; _idact_flip = -1; _idact_wreck = -1; _idact_packtent = 1;
+_idact_unpacktent = -1; _idact_intel = -1; _idact_priso = -1; _idact_buyfuel = -1;
+
+_distfob = 100;
+_distarsenal = 10;
+_distspawn = 10;
+_distredeploy = 20;
+_distveh = 15;
+_distvehclose = 5;
+
+waitUntil {sleep 1; !isNil "build_confirmed" };
+waitUntil {sleep 1; !isNil "one_synchro_done" };
+waitUntil {sleep 1; one_synchro_done };
+waitUntil {sleep 1; !isNil "GRLIB_player_spawned" };
+waituntil {sleep 1; GRLIB_player_spawned; (player getVariable ["GRLIB_score_set", 0] == 1)};
+
+while { true } do {
+	private _R3F_move = isNull R3F_LOG_joueur_deplace_objet;
+	private _alive = alive player;
+	private _onfoot = vehicle player == player;
+	private _near_priso = [];
+	private _near_intel = [];
+
+	_nearfob = [] call F_getNearestFob;
+	_fobdistance = 9999;
+	if ( count _nearfob == 3 ) then {
+		_fobdistance = round (player distance2D _nearfob);
+	};
+
+	_neararsenal = (player nearEntities [Arsenal_typename, _distarsenal]) + (player nearObjects [FOB_typename, _distredeploy]);
+	_neartent = nearestObjects [player, ["Land_TentDome_F"], _distvehclose];
+	_near_spawn = (player nearEntities [[Respawn_truck_typename, huron_typename], _distspawn]) + _neartent;
+	_nearfobbox = player nearEntities [[FOB_box_typename, FOB_truck_typename], _distspawn];
+	_near_intel = player nearEntities [[GRLIB_intel_laptop, GRLIB_intel_file], _distvehclose];
+
+	_nearspeak = [nearestObjects [player, ["Man"], _distvehclose], {
+ 			(alive _x) && vehicle _x == _x &&
+			(_x getVariable ['GRLIB_can_speak', false])
+	}] call BIS_fnc_conditionalSelect;
+
+	_near_priso = [nearestObjects [player, ["Man"], _distveh], {
+		(alive _x) && vehicle _x == _x &&
+		(_x getVariable ['GRLIB_is_prisonner', false])
+		}] call BIS_fnc_conditionalSelect;
+
+	// Tuto
+	if ( _R3F_move && _onfoot && (player distance lhd) <= 200 && _alive ) then {
+		if ( _idact_tutorial == -1 ) then {
+			_idact_tutorial = player addAction ["<t color='#80FF80'>" + localize "STR_TUTO_ACTION" + "</t>","howtoplay = 1","",-740,false,true,"",""];
+		};
+	} else {
+		if ( _idact_tutorial != -1 ) then {
+			player removeAction _idact_tutorial;
+			_idact_tutorial = -1;
+		};
+	};
+
+	// Halo Jump
+	if ( _R3F_move && _alive && _onfoot && (_fobdistance < _distredeploy || count _near_spawn != 0 || (player distance lhd) <= 200) && GRLIB_halo_param > 0) then {
+		if ( _idact_halo == -1 ) then {
+			_idact_halo = player addAction ["<t color='#80FF80'>" + localize "STR_HALO_ACTION" + "</t> <img size='1' image='res\ui_redeploy.paa'/>","scripts\client\spawn\do_halo.sqf","",-749,false,true,"","build_confirmed == 0"];
+		};
+	} else {
+		if ( _idact_halo != -1 ) then {
+			player removeAction _idact_halo;
+			_idact_halo = -1;
+		};
+	};
+
+	// Send Ammo
+	if  ( _R3F_move && _alive && _onfoot && score player > 20 && (_fobdistance < _distarsenal || (player distance lhd) <= 200) || (str cursorObject) find "atm_" > 0 && (player distance2D cursorObject) <= _distvehclose ) then {
+		if ( _idact_send == -1 ) then {
+			_idact_send = player addAction ["<t color='#80FF00'>-- SEND AMMO</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\misc\send_ammo.sqf","",-981,true,true,"","build_confirmed == 0"];
+		};
+	} else {
+		if ( _idact_send != -1 ) then {
+			player removeAction _idact_send;
+			_idact_send = -1;
+		};
+	};
+
+	// Fuel
+	if ( _R3F_move && _alive && _onfoot && (player distance lhd) >= 1000 && (str cursorObject) find "fs_roof_" > 0 && (player distance2D cursorObject) <= _distvehclose ) then {
+		if ( _idact_buyfuel == -1 ) then {
+			_idact_buyfuel = player addAction ["<t color='#00F080'>-- BUY FUEL</t> <img size='1' image='R3F_LOG\icons\r3f_fuel.paa'/>", "scripts\client\actions\do_buyfuel.sqf","",-900,true,true,"",""];
+		};
+	} else {
+		if ( _idact_buyfuel != -1 ) then {
+			player removeAction _idact_buyfuel;
+			_idact_buyfuel = -1;
+		};
+	};
+
+	// Heal Self
+	if ( _R3F_move && _alive && _onfoot && (_fobdistance < _distarsenal || (player distance lhd) <= 200) && (damage player) >= 0.023) then {
+		if ( _idact_heal == -1 ) then {
+			_idact_heal = player addAction ["<img size='1' image='\a3\ui_f\data\IGUI\Cfg\Actions\heal_ca'/>", { (_this select 1) playMove "AinvPknlMstpSlayWnonDnon_medic"; (_this select 1) setDamage 0;},"",999,true,true,"", ""];
+		};
+	} else {
+		if ( _idact_heal != -1 ) then {
+			player removeAction _idact_heal;
+			_idact_heal = -1;
+		};
+	};
+
+	// Speak
+	if ( _R3F_move && _alive && _onfoot && count _nearspeak > 0 ) then {
+		if ( _idact_speak == -1 ) then {
+			_idact_speak = player addAction ["<t color='#00AA00'>-- SPEAK</t> <img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/>", "scripts\client\misc\speak_manager.sqf", (_nearspeak select 0), 999, true, true, "", ""];
+		};
+	} else {
+		if ( _idact_speak != -1 ) then {
+			player removeAction _idact_speak;
+			_idact_speak = -1;
+		};
+	};
+
+	// Take Leadrship
+	if ( _R3F_move && _alive && _onfoot && !(isPlayer (leader (group player))) && (local (group player)) ) then {
+		if ( _idact_lead == -1 ) then {
+			_idact_lead = player addAction ["<t color='#80FF80'>-- TAKE LEADRSHIP</t> <img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/>", {(group player) selectLeader player}, [],0,true,true,"", "build_confirmed == 0"];
+		};
+	} else {
+		if ( _idact_lead != -1 ) then {
+			player removeAction _idact_lead;
+			_idact_lead = -1;
+		};
+	};
+
+	// Air Drop
+	if ( _R3F_move && _alive && _onfoot && (player distance ([] call F_getNearestFob)) >= (2 * GRLIB_fob_range) && (player distance lhd >= 1000) ) then {
+		if ( _idact_drop == -1 ) then {
+			_idact_drop = player addAction ["<t color='#00F0F0'>-- AIR DROP --</t> <img size='1' image='R3F_LOG\icons\r3f_drop.paa'/>","scripts\client\misc\drop_support.sqf","",-999,false,true];
+		};
+	} else {
+		if ( _idact_drop != -1 ) then {
+			player removeAction _idact_drop;
+			_idact_drop = -1;
+		};
+	};
+
+	// Redeploy
+	if ( _R3F_move && _alive && _onfoot && (_fobdistance < _distredeploy || count _near_spawn != 0 || (player distance lhd) <= 200) ) then {
+		if ( _idact_redeploy == -1 ) then {
+			_idact_redeploy = player addAction ["<t color='#80FF80'>" + localize "STR_DEPLOY_ACTION" + "</t> <img size='1' image='res\ui_redeploy.paa'/>","scripts\client\actions\do_redeploy.sqf","",-750,false,true,"","build_confirmed == 0"];
+		};
+	} else {
+		if ( _idact_redeploy != -1 ) then {
+			player removeAction _idact_redeploy;
+			_idact_redeploy = -1;
+		};
+	};
+
+	// Arsenal
+	if ( _R3F_move && _alive && _onfoot && ( count _neararsenal != 0 || (player distance lhd) <= 200) ) then {
+		if (_idact_arsenal == -1) then {
+			_idact_arsenal = player addAction ["<t color='#FFFF00'>" + localize "STR_ARSENAL_ACTION" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\open_arsenal.sqf","",-980,true,true,"","build_confirmed == 0"];
+		};
+	} else {
+		if ( _idact_arsenal != -1 ) then {
+			player removeAction _idact_arsenal;
+			_idact_arsenal = -1;
+		};
+	};
+
+	// Build Menu
+	if ( _R3F_move && _alive && _onfoot && _fobdistance < _distfob && (player distance lhd) >= 1000 && ( ([player, 3] call fetch_permission) || (player == ([] call F_getCommander) || [] call F_isAdmin)) ) then {
+		if ( _idact_build == -1 ) then {
+			_idact_build = player addAction ["<t color='#FFFF00'>" + localize "STR_BUILD_ACTION" + "</t> <img size='1' image='res\ui_build.paa'/>","scripts\client\build\open_build_menu.sqf","",-985,false,true,"","build_confirmed == 0"];
+		};
+	} else {
+		if ( _idact_build != -1 ) then {
+			player removeAction _idact_build;
+			_idact_build = -1;
+		};
+	};
+
+	// Squad Management
+	if ( _R3F_move && _alive && _onfoot && (leader group player == player) && (count units group player > 1) ) then {
+		if ( _idact_squad == -1 ) then {
+			_idact_squad = player addAction ["<t color='#80FF80'>" + localize "STR_SQUAD_MANAGEMENT_ACTION" + "</t> <img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/>","scripts\client\ui\squad_management.sqf","",-760,false,true,"","build_confirmed == 0"];
+		};
+	} else {
+		if ( _idact_squad != -1 ) then {
+			player removeAction _idact_squad;
+			_idact_squad = -1;
+		};
+	};
+
+	// Commander Menu
+	if ( _R3F_move && _alive && _onfoot && ( player == ( [] call F_getCommander ) || [] call F_isAdmin ) && GRLIB_permissions_param ) then {
+		if ( _idact_commander == -1 ) then {
+			_idact_commander = player addAction ["<t color='#FF8000'>" + localize "STR_COMMANDER_ACTION" + "</t> <img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/>","scripts\client\commander\open_permissions.sqf","",-995,false,true,"","build_confirmed == 0"];
+		};
+	} else {
+		if ( _idact_commander != -1 ) then {
+			player removeAction _idact_commander;
+			_idact_commander = -1;
+		};
+	};
+
+	// Secondary Objectives
+	if ( _R3F_move && _alive && _onfoot && count GRLIB_all_fobs > 0 && ( GRLIB_endgame == 0 ) && (_fobdistance < _distredeploy || (player distance lhd) <= 200) && (score player >= GRLIB_perm_air ||  player == ( [] call F_getCommander ) || [] call F_isAdmin) ) then {
+		if ( _idact_secondary == -1 ) then {
+			_idact_secondary = player addAction ["<t color='#FFFF00'>" + localize "STR_SECONDARY_OBJECTIVES" + "</t>","scripts\client\ui\secondary_ui.sqf","",-993,false,true,"","build_confirmed == 0"];
+		};
+	} else {
+		if ( _idact_secondary != -1 ) then {
+			player removeAction _idact_secondary;
+			_idact_secondary = -1;
+		};
+	};
+
+	// Pack FOB
+	if ( _R3F_move && _alive && _onfoot && (_fobdistance < _distarsenal && (player distance lhd) >= 1000) && ( (score player >= GRLIB_perm_max) || (player == ( [] call F_getCommander ) || [] call F_isAdmin) )) then {
+		if ( _idact_packfob == -1 ) then {
+			_idact_packfob = player addAction ["<t color='#FF6F00'>" + localize "STR_FOB_REPACKAGE" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_repackage_fob.sqf",([] call F_getNearestFob),-991,false,true,"","build_confirmed == 0 && !(cursorObject getVariable ['fob_in_use', false])"];
+		};
+	} else {
+		if ( _idact_packfob != -1 ) then {
+			player removeAction _idact_packfob;
+			_idact_packfob = -1;
+		};
+	};
+
+	// Build FOB
+	if ( _R3F_move && _alive && _onfoot && (_fobdistance > GRLIB_sector_size && (player distance lhd) >= 1000) && cursorObject in _nearfobbox ) then {
+		if ( _idact_unpackfob == -1 ) then {
+			_idact_unpackfob = player addAction ["<t color='#FF6F00'>" + localize "STR_FOB_ACTION" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_build_fob.sqf",cursorObject,-991,false,true,"","build_confirmed == 0 && !(cursorObject getVariable ['box_in_use', false])"];
+		};
+	} else {
+		if ( _idact_unpackfob != -1 ) then {
+			player removeAction _idact_unpackfob;
+			_idact_unpackfob = -1;
+		};
+	};
+
+	// Pack Beacon
+	if ( _R3F_move && _alive && _onfoot && (player distance lhd) >= 1000 && cursorObject in _neartent ) then {
+		if ( _idact_packtent == -1 ) then {
+			_idact_packtent = player addAction ["<t color='#FFFF00'>-- PACK BEACON</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_beacon_pack.sqf",cursorObject,-950,true,true,"","!(cursorObject getVariable ['tent_in_use', false])"];
+		};
+	} else {
+		if ( _idact_packtent != -1 ) then {
+			player removeAction _idact_packtent;
+			_idact_packtent = -1;
+		};
+	};
+
+	// UnPack Beacon
+	if ( _R3F_move && _alive && _onfoot && (player distance lhd) >= 1000 && backpack player == 'B_Kitbag_Base' ) then {
+		if ( _idact_unpacktent == -1 ) then {
+			_idact_unpacktent = player addAction ["<t color='#FFFF00'>-- UNPACK BEACON</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_beacon_unpack.sqf","",-950,true,true,"",""];
+		};
+	} else {
+		if ( _idact_unpacktent != -1 ) then {
+			player removeAction _idact_unpacktent;
+			_idact_unpacktent = -1;
+		};
+	};
+
+	// Intel
+	if ( _R3F_move && _alive && _onfoot && (player distance lhd) >= 1000 && cursorObject in _near_intel ) then {
+		if ( _idact_intel == -1 ) then {
+			_idact_intel = player addAction ["<t color='#FFFF00'>" + localize "STR_INTEL" + "</t>","scripts\client\actions\do_take_intel.sqf",cursorObject,-849,true,true,"",""];
+		};
+	} else {
+		if ( _idact_intel != -1 ) then {
+			player removeAction _idact_intel;
+			_idact_intel = -1;
+		};
+	};
+
+	// Priso
+	if ( _R3F_move && _alive && _onfoot && (player distance lhd) >= 1000 && cursorObject in _near_priso ) then {
+		if ( _idact_priso == -1 ) then {
+			_idact_priso = player addAction ["<t color='#FFFF00'>" + localize "STR_SECONDARY_CAPTURE" + "</t>","scripts\client\actions\do_capture.sqf",cursorObject,-850,true,true,"",""];
+		};
+	} else {
+		if ( _idact_priso != -1 ) then {
+			player removeAction _idact_priso;
+			_idact_priso = -1;
+		};
+	};
+
+	// Cheat Menu
+	if ( ([] call F_isAdmin) && _alive && GRLIB_cheat_menu ) then {
+		if ( _idact_cheat == -1 ) then {
+			_idact_cheat = player addAction ["<t color='#FF8000'>-- CHEAT MENU :)</t>","scripts\client\commander\cheat_menu.sqf","",-999,false,true,"",""];
+			player onMapSingleClick "if (_alt) then {player setPosATL _pos}";
+		};
+	} else {
+		if ( _idact_cheat != -1 ) then {
+			player removeAction _idact_cheat;
+			player onMapSingleClick "";
+			_idact_cheat = -1;
+		};
+	};
+
+	sleep 1;
+};

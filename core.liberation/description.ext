@@ -1,0 +1,54 @@
+author = "[GREUH] Zbug, [GREUH] McKeewa, [AKH] pSiKO";
+onLoadName = $STR_MISSION_TITLE;
+onLoadMission = $STR_MISSION_DESCRIPTION;
+overviewText = $STR_MISSION_DESCRIPTION;
+overviewPicture = "res\liberation.jpg";
+loadScreen = "res\liberation.jpg";
+
+respawn = 3;
+respawndelay = 5;
+respawnButton = 0;
+respawnOnStart = 0;
+disabledAI = true;
+enableDebugConsole = 1;
+allowFunctionsLog = 0;
+forceRotorLibSimulation = 2;
+
+briefing = 0;
+joinUnassigned = 0;
+LARs_calculateSideGear = 1;
+
+class CfgFunctions {
+	#include "addons\LARs\blacklistArsenal.cpp"
+};
+
+class Header {
+	gameType = CTI;
+	minPlayers = 1;
+	maxPlayers = 34;
+};
+
+class CfgDebriefing {
+	class End1
+	{
+		title =	$STR_SORRY;
+		subtitle = "";
+		description = $STR_COMMANDER_NOT_AUTHORIZED;
+		pictureBackground = "";
+	};
+};
+
+class Repaint {
+	file = "addons\RPT";
+	class repaintMenu {};
+	class repaintColor {};
+	class repaintVehicle {};
+};
+
+#include "GREUH\UI\GREUH_interface.hpp"
+#include "ui\liberation_interface.hpp"
+#include "ui\liberation_notifications.hpp"
+#include "ui\mission_params.hpp"
+#include "addons\MGR\MagRepack_Config.hpp"
+#include "R3F_LOG\desc_include.h"
+#include "addons\RPT\veh_repaint.hpp"

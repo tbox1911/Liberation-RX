@@ -1,0 +1,35 @@
+params ["_vehicle"];
+
+private _extra_bounty = [
+	"O_T_VTOL_02_infantry_F",
+	"O_T_VTOL_02_vehicle_F",
+	"O_MBT_04_cannon_F",
+	"O_MBT_04_command_F",
+	"O_Plane_CAS_02_F",
+	"O_Plane_Fighter_02_F"
+	];
+
+_bounty = 10;
+_bonus = 2;
+
+if ( _vehicle isKindOf "Wheeled_APC_F" ) then {
+	_bounty = 20;
+	_bonus = 3;
+};
+
+if ( _vehicle isKindOf "Tank" ) then {
+	_bounty = 30;
+	_bonus = 4;
+};
+
+if ( _vehicle isKindOf "Air" ) then {
+	_bounty = 35;
+	_bonus = 4;
+};
+
+if (typeOf _vehicle in _extra_bounty) then {
+	_bounty = 50;
+	_bonus = 5;
+};
+
+[_bounty, _bonus];

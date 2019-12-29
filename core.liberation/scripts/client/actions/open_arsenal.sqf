@@ -1,0 +1,137 @@
+private [ "_loadouts_data", "_saved_loadouts", "_counter", "_loadplayers", "_playerselected", "_namestr", "_nextplayer"];
+
+load_loadout = 0;
+edit_loadout = 0;
+respawn_loadout = 0;
+load_from_player = -1;
+exit_on_load = 0;
+
+createDialog "liberation_arsenal";
+
+_saved_loadouts = profileNamespace getVariable "bis_fnc_saveInventory_data";
+GRLIB_backup_loadout = [player] call F_getLoadout;
+player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
+_loadouts_data = [];
+_counter = 0;
+if ( !isNil "_saved_loadouts" ) then {
+	{
+		if ( _counter % 2 == 0 ) then {
+			_loadouts_data pushback _x;
+		};
+		_counter = _counter + 1;
+	} foreach _saved_loadouts;
+};
+
+waitUntil { dialog };
+
+if ( count _loadouts_data > 0 ) then {
+	_grp = createGroup [GRLIB_side_friendly, true];
+	_unit = _grp createUnit ["B_Soldier_F", [0,0,0], [], 0, "NONE"];
+	lbClear 201;
+	{
+		[_unit, [profileNamespace, _x]] call bis_fnc_loadInventory;
+		_price = [_unit] call F_loadoutPrice;
+		((findDisplay 5251) displayCtrl (201)) lnbAddRow [format [ "%1" ,_x], format [ "%1" ,_price]];
+	} foreach _loadouts_data ;
+	deleteVehicle _unit;
+
+	if ( lbSize 201 > 0 ) then {
+		ctrlEnable [ 202, true ];
+		lbSetCurSel [ 201, 0 ];
+	} else {
+		ctrlEnable [ 202, false ];
+	};
+
+} else {
+	ctrlEnable [ 202, false ];
+};
+
+_loadplayers = [];
+{
+	if ( !(name _x in [ "HC1", "HC2", "HC3" ]) )  then {
+		_loadplayers pushback [ name _x, _x ];
+	};
+} foreach ( allPlayers - [ player ] );
+
+if ( count _loadplayers > 0 ) then {
+
+	{
+		_nextplayer = _x select 1;
+		_namestr = "";
+		if(count (squadParams _nextplayer) != 0) then {
+			_namestr = "[" + ((squadParams _nextplayer select 0) select 0) + "] ";
+		};
+		_namestr = _namestr + name _nextplayer;
+
+		lbAdd [ 203, _namestr ];
+		lbSetCurSel [ 203, 0 ];
+	} foreach _loadplayers;
+
+} else {
+	ctrlEnable [ 203, false ];
+	ctrlEnable [ 204, false ];
+};
+
+((findDisplay 5251) displayCtrl 201) ctrlAddEventHandler [ "mouseButtonDblClick" , { exit_on_load = 1; load_loadout = 1; } ];
+
+while { dialog && (alive player) && edit_loadout == 0 } do {
+
+	if ( load_loadout > 0 ) then {
+		private _loaded_loadout = _loadouts_data select (lbCurSel 201);
+		[player, [profileNamespace, _loaded_loadout]] call bis_fnc_loadInventory;
+		hint format [ localize "STR_HINT_LOADOUT_LOADED", _loaded_loadout];
+		if ( exit_on_load == 1 ) then {
+			closeDialog 0;
+		};
+		load_loadout = 0;
+	};
+
+	if ( respawn_loadout > 0 ) then {
+		GRLIB_respawn_loadout = [ player, ["repetitive"] ] call F_getLoadout;
+		hint localize "STR_MAKE_RESPAWN_LOADOUT_HINT";
+		respawn_loadout = 0;
+	};
+
+	if ( load_from_player >= 0 ) then {
+		_playerselected = ( _loadplayers select load_from_player ) select 1;
+		if ( alive _playerselected ) then {
+      [ player,  [ _playerselected, ["repetitive"] ] call F_getLoadout ] call F_setLoadout;
+			hint format [ localize "STR_LOAD_PLAYER_LOADOUT_HINT", name _playerselected ];
+		};
+		load_from_player = -1;
+	};
+	sleep 0.1;
+};
+
+//filter and pay loadout
+[player] call F_filterLoadout;
+if (!([player] call F_payLoadout)) then {
+	[player, GRLIB_backup_loadout] call F_setLoadout;
+};
+
+if ( edit_loadout > 0 ) then {
+	closeDialog 0;
+	waitUntil {!dialog};
+	if (GRLIB_limited_arsenal) then {
+		_box = missionNamespace getVariable ["myLARsBox", objNull];
+		_savedD = BIS_fnc_arsenal_data;
+		_data = _box getVariable 'LARs_arsenal_Liberation_data';
+		BIS_fnc_arsenal_data = _data;
+
+		_savedC = _box getVariable [ 'bis_addVirtualWeaponCargo_cargo', [] ];
+		_cargo = _box getVariable 'LARs_arsenal_Liberation_cargo';
+		_box setvariable [ 'bis_addVirtualWeaponCargo_cargo', _cargo ];
+
+		['Open',[nil,_box]] call BIS_fnc_arsenal;
+
+		_nul = [ _box, _savedD, _savedC ] spawn {
+			_box = _this select 0;
+			waituntil{ !isNull ( uiNamespace getvariable ['RscDisplayArsenal', displayNull] ) };
+			waitUntil { isNull ( uinamespace getvariable ['BIS_fnc_arsenal_cam',objnull] ) };
+			BIS_fnc_arsenal_data = _this select 1;
+			_box setVariable [ 'bis_addvirtualWeaponCargo_cargo', _this select 2 ];
+		};
+	} else {
+		["Open", [true]] call BIS_fnc_arsenal;
+	};
+};
