@@ -70,10 +70,8 @@ if (isMultiplayer) then {
 [] execVM "scripts\client\ui\ui_manager.sqf";
 
 // Group Managment
-//my_group = createGroup [GRLIB_side_friendly, true];
-//my_group setGroupId [format ["<%1>", name player]];
-//[player] joinSilent (my_group);
-my_group = group player;
+my_group = createGroup [GRLIB_side_friendly, true];
+[player] joinSilent (my_group);
 [my_group, "add"] remoteExec ["addel_group", 2];
 
 // Init Tips Tables from XML

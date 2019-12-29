@@ -111,13 +111,13 @@ air_vehicles = [
 	["B_T_UAV_03_F",5,1500,10],
 	["B_Heli_Transport_03_F",10,1000,15],
 	["B_Heli_Transport_01_camo_F",10,2000,15],
-	["B_T_VTOL_01_infantry_F",10,2500,15],
-	["B_T_VTOL_01_vehicle_F",10,2500,15],
+	["B_T_VTOL_01_infantry_F",10,1000,15],
+	["B_T_VTOL_01_vehicle_F",10,1000,15],
 	["I_Heli_light_03_F",10,2500,20],
 	["B_Heli_Attack_01_F",10,3000,20],
-	["I_Plane_Fighter_04_F", 10,3000,20],
-	["B_Plane_CAS_01_F",20,4500,40],
-	["B_Plane_Fighter_01_F",20,5000,40]
+	["I_Plane_Fighter_04_F", 10,2500,20],
+	["B_Plane_CAS_01_F",20,4000,40],
+	["B_Plane_Fighter_01_F",20,4500,40]
 ];
 
 blufor_air = [
