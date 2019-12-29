@@ -1,3 +1,64 @@
+# Liberation RX (en)
+
+## ARMA-3 Liberation RX - Extendend Version
+
+![alt text](https://raw.githubusercontent.com/tbox1911/Liberation-RX/master/core.liberation/res/liberation.jpg "Liberation RX")
+
+Feature:
+
++ SP / MP with Automatic Save Game
++ Private Economy
++ Private Vehicles
++ TK Protection
++ Player FAR Revive (revive/drag)
++ MGI AI Revive (AI revive player)
++ R3F Logistic (tow or load objects into vehicles)
++ LARs Arsenal
++ Auto Hearplug
++ MagRepack Ammo
++ Robust Unblock system (Player / AI)
++ Medic / Respawn / Arsenal Box (can be loaded into vehicle)
++ AI follow player when Halo Jump / Redeploy
++ And much, much more....
+
+RP oriented
+
+> With ranking system based on player score and actions
+> automatic permission granting (build/tank/air)
+> unlocking arsenal/units according to the rank.
+
++ Local SELL / FUEL / ATM points on the Map
++ Dynamic Events
++ Special Missions
++ FPS fix and perf
++ Admin Menu (teleport/skiptime/God/spawn)
++ Lots of Customization (shorter night, anti mine, recycling ammobox....)
++ No need of admin/commander (including fresh start)
+
+
+Engine and map available for:
+
++ Altis
++ Malden
++ Stratis (Air Carrier)
++ Tanoa
++ Livonie (Enoch)
++ Takistan (CUP + CBA)
+
+## Installation
+
++ Direct:
+      Copy the pbo file to your "Steam\SteamApps\common\Arma3\MPMissions\" directory
+
++ Source:
+      Launch "build.bat" in the build directory to build PBOs
+      Or merge the core.liberation fifolderle with the island mission folder
+      and build the pbo by yourself.
+
+   I want to thank :
+   Zbug, who did a very good job, AgentRev and Larrow and all contributors of  [Bohemia Interactive Forums](https://forums.bohemia.net/). for the countless messages I read from them and gave me a real code lesson!
+
+--------------------------------------------------------------------------------------------------------------------------
 # Liberation RX (fr)
 
 ## ARMA-3  Liberation RX - Version Etendu
@@ -8,15 +69,20 @@ Sur la base de la version 0.924 par [GREUH] Zbug
 
 Addon:
 
-+ R3F Logistic
++ SP / MP avec sauvegarde du jeu automatique
++ Economie Privé
++ Vehicules Privé
++ TK Protection
++ R3F Logistic (tracter ou charger des objets dans les vehicules)
 + LARs Arsenal
-+ FAR Revive + TK Punition
-+ Hearplug
-+ MagRepack
-+ Admin Cheat Menu
-+ MGI AI Medic
-+ Evénements dynamiques
-+ Et beaucoup plus ...
++ Player FAR Revive (revive/drag)
++ MGI AI Revive (les AI revive le joueur)
++ Automatique Hearplug
++ MagRepack Ammo
++ Robust Unblock systeme (Player / IA)
++ Caisses de Medic / Respawn / Arsenal (peuvent etre charger dans les vehicules)
++ Les IA suivent le joueur lors des  Saut Halo / Redeploy
++ Et beaucoup, beaucoup plus ...
 
 Ranking:
       Un systeme de Grade permet de debloquer les Permissions des joueurs automatiquement.
@@ -27,7 +93,9 @@ Moteur et carte disponible pour:
 + Altis
 + Malden
 + Stratis (Porte Avion)
-+ Tanoa (en cours)
++ Tanoa
++ Livonie (Enoch)
++ Takistan (CUP + CBA)
 
 ## Installation
 
@@ -43,55 +111,3 @@ Moteur et carte disponible pour:
   Zbug, qui a fait une trés bonne mission, AgentRev et Larrow et tous les contributeurs de [Bohemia Interactive Forums](https://forums.bohemia.net/). pour les innombrables messages que j'ai lu d'eux et qui mon donné une veritable leçon de code !
 
 --------------------------------------------------------------------------------------------------------------------------
-
-# Liberation RX (en)
-
-## ARMA-3 Liberation RX - Extendend Version
-
-![alt text](https://raw.githubusercontent.com/tbox1911/Liberation-RX/master/core.liberation/res/liberation.jpg "Liberation RX")
-
-Addon:
-
-+ R3F Logistic (can tow vehicles and load item)
-+ LARs (Larrow) Arsenal  (no ngs, viper, etc..)
-+ FAR Revive (drag/stabilize)
-+ TK Punishment (autoban)
-+ Player & Base Protection
-+ Group Lock/Unlock
-+ Hearplug
-+ MagRepack
-+ Unstuck AI
-+ AI Medic can revive player pretty well
-
-+ RP oriented
-> With ranking system based on player action
-> automatic permission granting (build/tank/air/recycl)
-> unlocking arsenal/units according to rank
-
-+ Dynamic events (based on A3Wasteland)
-+ Special Town invasion when opfor is low
-+ FPS fix and perf
-+ Admin Menu (teleport/skiptime/God/spawn)
-+ Lots of Customization (shorter night, anti mine, recycling ammobox....)
-+ No need of admin/commander (including fresh start)
-+ and many more !! 
-
-Engine and map available for:
-
-+ Altis
-+ Malden
-+ Stratis (Air Carrier)
-+ Tanoa (beta)
-
-## Installation
-
-+ Direct:
-      Copy the pbo file to your "Steam\SteamApps\common\Arma3\MPMissions\" directory
-
-+ Source:
-      Launch "build.bat" in the build directory to build PBOs 
-      Or merge the core.liberation fifolderle with the island mission folder
-      and build the pbo by yourself.
-
-   I want to thank :
-   Zbug, who did a very good job, AgentRev and Larrow and all contributors of  [Bohemia Interactive Forums](https://forums.bohemia.net/). for the countless messages I read from them and gave me a real code lesson!
