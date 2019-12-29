@@ -78,7 +78,7 @@ Engine and map available for:
             };
 
 
-            * All mission's parameters can be found in the file "mission_param.cfg"
+      * All mission's parameters can be found in the file "mission_param.cfg"
 
       Start the server
             arma3server_x64.exe -high -name=server -nosound -port=2302 -config=server.cfg
