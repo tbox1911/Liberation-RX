@@ -47,12 +47,13 @@ Engine and map available for:
 
 ## Installation
 
-+ Direct:
++ Direct Play:
       Copy the pbo file to your "Steam\SteamApps\common\Arma3\MPMissions\" directory
+      Launch Arma 3, Host MP Game, Select Island and Liberation RX mission, Start
 
-+ Source:
++ Build from Source:
       Launch "build.bat" in the build directory to build PBOs
-      Or merge the core.liberation fifolderle with the island mission folder
+      Or merge the core.liberation folder with the island mission folder
       and build the pbo by yourself.
 
 + Dedicated Server
