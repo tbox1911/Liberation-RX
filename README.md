@@ -55,6 +55,37 @@ Engine and map available for:
       Or merge the core.liberation fifolderle with the island mission folder
       and build the pbo by yourself.
 
++ Dedicated Server
+      Copy the pbo file to your "Steam\SteamApps\common\Arma3 Server\MPMissions\" directory
+      Edit / Create the server configuration file (https://community.bistudio.com/wiki/server.cfg),
+      and add this:
+
+            // MISSIONS CYCLE
+            class Missions
+            {
+                  class Mission1
+                  {
+                        template="liberation_RX.Altis";
+                        difficulty="Regular";
+                        class Params
+                        {
+                              Difficulty = 1.25;
+                              Aggressivity = 2;
+                              MaximumFobs = 5;
+                              Whitelist = 1;
+                        };
+                  };
+            };
+
+
+            * All mission's parameters can be found in the file "mission_param.cfg"
+
+      Start the server
+            arma3server_x64.exe -high -name=server -nosound -port=2302 -config=server.cfg
+            arma3server -high -name=server -nosound -port=2302 -config=server.cfg
+
+## Thanks
+
    I want to thank :
    Zbug, who did a very good job, AgentRev and Larrow and all contributors of  [Bohemia Interactive Forums](https://forums.bohemia.net/). for the countless messages I read from them and gave me a real code lesson!
 
@@ -106,6 +137,8 @@ Moteur et carte disponible pour:
     Lancez "build.bat" dans le repertoire build pour fabriquer les PBO
     Ou fusionnez le dossier core.liberation avec le dossier de mission de l'ile
     et construisez le pbo par vous meme.
+
+## Thanks
 
   Je veux remercier :
   Zbug, qui a fait une trés bonne mission, AgentRev et Larrow et tous les contributeurs de [Bohemia Interactive Forums](https://forums.bohemia.net/). pour les innombrables messages que j'ai lu d'eux et qui mon donné une veritable leçon de code !
