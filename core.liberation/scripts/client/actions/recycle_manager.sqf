@@ -14,8 +14,7 @@ waitUntil {sleep 1; !isNil "GRLIB_player_spawned" };
 waituntil {sleep 1; GRLIB_player_spawned; (player getVariable ["GRLIB_score_set", 0] == 1)};
 
 while { true } do {
-//	_nearrecycl = [nearestObjects [player, _recycleable_classnames, _distveh], {
-	_nearrecycl = [player nearEntities [_recycleable_classnames, _distveh], {
+	_nearrecycl = [nearestObjects [player, _recycleable_classnames, _distveh], {
 		(_x distance lhd) >= 1000 &&
 		!(typeOf _x in _recycleable_blacklist)
 	}] call BIS_fnc_conditionalSelect;
