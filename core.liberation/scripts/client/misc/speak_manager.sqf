@@ -1,4 +1,4 @@
-_unit = _this select 3;
+params ["_unit"];
 if (isNil "_unit") exitWith {};
 if (!isNil "GRLIB_speaking") exitWith {};
 

@@ -1,4 +1,4 @@
-_prisonner = _this select 3;
+params ["_prisonner"];
 if (isNil "_prisonner") exitWith {};
 
 [ _prisonner ] join group player;

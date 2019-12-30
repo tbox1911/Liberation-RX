@@ -46,6 +46,8 @@ if (isMultiplayer) then {
 [] execVM "scripts\client\actions\action_manager.sqf";
 [] execVM "scripts\client\actions\action_manager_veh.sqf";
 [] execVM "scripts\client\actions\recycle_manager.sqf";
+[] execVM "scripts\client\actions\intel_manager.sqf";
+[] execVM "scripts\client\actions\man_manager.sqf";
 [] execVM "scripts\client\ammoboxes\ammobox_action_manager.sqf";
 [] execVM "scripts\client\build\build_overlay.sqf";
 [] execVM "scripts\client\build\do_build.sqf";
