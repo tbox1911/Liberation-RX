@@ -2,14 +2,12 @@
 private [ "_idact_build","_idact_arsenal", "_idact_redeploy", "_idact_tutorial",
 		  "_distfob", "_distarsenal","_distspawn","_distredeploy", "_idact_commander",
 		  "_idact_cheat", "_idact_halo", "_idact_heal", "_idact_lead","_idact_drop",
-		  "_idact_send", "_idact_speak", "_idact_packfob", "_idact_unpackfob",
-		  "_idact_intel", "_idact_priso"];
+		  "_idact_send", "_idact_packfob", "_idact_unpackfob"];
 
 _idact_build = -1; _idact_arsenal = -1; _idact_redeploy = -1; _idact_tutorial = -1; _idact_squad = -1;
 _idact_commander = -1; _idact_cheat = -1; _idact_repackage = -1; _idact_halo = -1; _idact_heal = -1;
-_idact_lead = -1; _idact_drop = -1; _idact_send = -1; _idact_speak = -1; _idact_secondary = -1;
-_idact_packfob = -1; _idact_unpackfob = -1; _idact_flip = -1; _idact_wreck = -1; _idact_packtent = 1;
-_idact_unpacktent = -1; _idact_intel = -1; _idact_priso = -1; _idact_buyfuel = -1;
+_idact_lead = -1; _idact_drop = -1; _idact_send = -1; _idact_secondary = -1; _idact_packfob = -1;
+_idact_unpackfob = -1; _idact_packtent = 1; _idact_unpacktent = -1; _idact_buyfuel = -1;
 
 _distfob = 100;
 _distarsenal = 10;
@@ -28,8 +26,6 @@ while { true } do {
 	private _R3F_move = isNull R3F_LOG_joueur_deplace_objet;
 	private _alive = alive player;
 	private _onfoot = vehicle player == player;
-	private _near_priso = [];
-	private _near_intel = [];
 
 	_nearfob = [] call F_getNearestFob;
 	_fobdistance = round (player distance2D _nearfob);
@@ -38,17 +34,6 @@ while { true } do {
 	_neartent = nearestObjects [player, ["Land_TentDome_F"], _distvehclose];
 	_near_spawn = (player nearEntities [[Respawn_truck_typename, huron_typename], _distspawn]) + _neartent;
 	_nearfobbox = player nearEntities [[FOB_box_typename, FOB_truck_typename], _distspawn];
-	_near_intel = player nearEntities [[GRLIB_intel_laptop, GRLIB_intel_file], _distvehclose];
-
-	_nearspeak = [nearestObjects [player, ["Man"], _distvehclose], {
- 			(alive _x) && vehicle _x == _x &&
-			(_x getVariable ['GRLIB_can_speak', false])
-	}] call BIS_fnc_conditionalSelect;
-
-	_near_priso = [nearestObjects [player, ["Man"], _distveh], {
-		(alive _x) && vehicle _x == _x &&
-		(_x getVariable ['GRLIB_is_prisonner', false])
-		}] call BIS_fnc_conditionalSelect;
 
 	// Tuto
 	if ( _R3F_move && _onfoot && (player distance lhd) <= 200 && _alive ) then {
@@ -107,18 +92,6 @@ while { true } do {
 		if ( _idact_heal != -1 ) then {
 			player removeAction _idact_heal;
 			_idact_heal = -1;
-		};
-	};
-
-	// Speak
-	if ( _R3F_move && _alive && _onfoot && count _nearspeak > 0 ) then {
-		if ( _idact_speak == -1 ) then {
-			_idact_speak = player addAction ["<t color='#00AA00'>-- SPEAK</t> <img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/>", "scripts\client\misc\speak_manager.sqf", (_nearspeak select 0), 999, true, true, "", ""];
-		};
-	} else {
-		if ( _idact_speak != -1 ) then {
-			player removeAction _idact_speak;
-			_idact_speak = -1;
 		};
 	};
 
@@ -263,30 +236,6 @@ while { true } do {
 		if ( _idact_unpacktent != -1 ) then {
 			player removeAction _idact_unpacktent;
 			_idact_unpacktent = -1;
-		};
-	};
-
-	// Intel
-	if ( _R3F_move && _alive && _onfoot && (player distance lhd) >= 1000 && cursorObject in _near_intel ) then {
-		if ( _idact_intel == -1 ) then {
-			_idact_intel = player addAction ["<t color='#FFFF00'>" + localize "STR_INTEL" + "</t>","scripts\client\actions\do_take_intel.sqf",cursorObject,-849,true,true,"",""];
-		};
-	} else {
-		if ( _idact_intel != -1 ) then {
-			player removeAction _idact_intel;
-			_idact_intel = -1;
-		};
-	};
-
-	// Priso
-	if ( _R3F_move && _alive && _onfoot && (player distance lhd) >= 1000 && cursorObject in _near_priso ) then {
-		if ( _idact_priso == -1 ) then {
-			_idact_priso = player addAction ["<t color='#FFFF00'>" + localize "STR_SECONDARY_CAPTURE" + "</t>","scripts\client\actions\do_capture.sqf",cursorObject,-850,true,true,"",""];
-		};
-	} else {
-		if ( _idact_priso != -1 ) then {
-			player removeAction _idact_priso;
-			_idact_priso = -1;
 		};
 	};
 
