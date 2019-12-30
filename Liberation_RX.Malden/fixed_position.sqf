@@ -9,7 +9,7 @@
 
 executed in console, result in RPT file.
 */
-_atmObjects =[
+GRLIB_Marker_ATM =[
   //ATM
   [8167.75,3108.84,2.84427],
   [7132.96,6054.35,2.66542],
@@ -22,7 +22,7 @@ _atmObjects =[
 
 ];
 
-_serviceObject = [
+GRLIB_Marker_SRV = [
   // Phone
   [5900.77,3540.45,2.18723],
   [5390.74,2791.26,2.18055],

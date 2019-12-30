@@ -32,10 +32,7 @@ while { true } do {
 	private _near_intel = [];
 
 	_nearfob = [] call F_getNearestFob;
-	_fobdistance = 9999;
-	if ( count _nearfob == 3 ) then {
-		_fobdistance = round (player distance2D _nearfob);
-	};
+	_fobdistance = round (player distance2D _nearfob);
 
 	_neararsenal = (player nearEntities [Arsenal_typename, _distarsenal]) + (player nearObjects [FOB_typename, _distredeploy]);
 	_neartent = nearestObjects [player, ["Land_TentDome_F"], _distvehclose];

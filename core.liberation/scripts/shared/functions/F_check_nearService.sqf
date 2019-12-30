@@ -2,10 +2,12 @@ params ["_vehicle"];
 private _ret = false;
 private _distveh = 15;
 
-private _nearservice = allMapMarkers select {_x select [0,10] == "marked_car" && (getPosATL _vehicle) distance2D (getMarkerPos _x) <= _distveh};
-if (count _nearservice > 0) exitWith { true };
+private _vehpos = getPosATL _vehicle;
+private _nearservice = GRLIB_Marker_SRV select {( _vehpos distance2D _x) <= _distveh};
+if (count _nearservice > 0) then {_ret = true};
 
-private _nearfob = allMapMarkers select {_x select [0,9] == "fobmarker" && (getPosATL _vehicle) distance2D (getMarkerPos _x) <= GRLIB_fob_range};
-if (count _nearfob > 0) exitWith { true };
+_nearfob = [] call F_getNearestFob;
+_fobdistance = round (_vehpos distance2D _nearfob);
+if (_fobdistance <= GRLIB_fob_range ) then {_ret = true};
 
 _ret;

@@ -7,3 +7,7 @@ _marker setMarkerSizeLocal [ GRLIB_capture_size, GRLIB_capture_size ];
 _marker = createMarkerLocal ["spawn_marker", markers_reset];
 _marker setMarkerColorLocal "ColorGreen";
 _marker setMarkerTypeLocal "Select";
+
+GRLIB_Marker_SRV = [];
+GRLIB_Marker_ATM = [];
+GRLIB_Marker_FUEL = [];

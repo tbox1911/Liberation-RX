@@ -9,5 +9,5 @@
 
 executed in console, result in RPT file.
 */
-_atmObjects =[
+GRLIB_Marker_ATM =[
 ];

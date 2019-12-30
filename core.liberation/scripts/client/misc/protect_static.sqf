@@ -25,7 +25,7 @@ while { true } do {
 	[player] spawn clear_wpt;
 
 	// Show Hint
-	private _neartower = ((allMapMarkers select {_x select [0,6] == "tower_" && player distance2D (getMarkerPos _x) <= 20 && !(_x in blufor_sectors)})) select 0;
+	private _neartower = ((sectors_allSectors select {_x select [0,6] == "tower_" && !(_x in blufor_sectors) && player distance2D (getMarkerPos _x) <= 20})) select 0;
 	if (!isNil "_neartower") then {
 		_msg = format ["Use <t color='#0000FF'>Explosives</t> to destroy<br/>the <t color='#FF0000'>Radio Tower</t>."];
 		[_msg, 0, 0, 5, 0, 0, 90] spawn BIS_fnc_dynamicText;

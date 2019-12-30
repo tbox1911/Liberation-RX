@@ -1,16 +1,16 @@
-private _atmObjects = [];
-private _serviceObject = [];
-private _fuelObject = [];
+GRLIB_Marker_ATM = [];
+GRLIB_Marker_SRV = [];
+GRLIB_Marker_FUEL = [];
 [] call compileFinal preprocessFileLineNUmbers "fixed_position.sqf";
 
 private _pos = getArray(configFile >> "CfgWorlds" >> worldName >> "centerPosition");
 {
   if (_x distance2D lhd > 1000) then {
     _str = str _x;
-    //if (_str find "atm_" > 0) then { _atmObjects pushback _x };
-    if (_str find "carservice_" > 0) then { _serviceObject pushback (getpos _x) };
-    if (_str find "cargo_hq_" > 0) then { _serviceObject pushback (getpos _x) };
-    if (_str find "fs_roof_" > 0) then { _fuelObject pushback (getpos _x) };
+    //if (_str find "atm_" > 0) then { GRLIB_Marker_ATM pushback _x };
+    if (_str find "carservice_" > 0) then { GRLIB_Marker_SRV pushback (getpos _x) };
+    if (_str find "cargo_hq_" > 0) then { GRLIB_Marker_SRV pushback (getpos _x) };
+    if (_str find "fs_roof_" > 0) then { GRLIB_Marker_FUEL pushback (getpos _x) };
   };
 } forEach (_pos nearObjects ["House", worldSize / 2]);
 
@@ -21,7 +21,7 @@ private _pos = getArray(configFile >> "CfgWorlds" >> worldName >> "centerPositio
   _marker setMarkerType "mil_dot";
   _marker setMarkerText "";
   _marker setMarkerSize [ 1, 1 ];
-} forEach _atmObjects;
+} forEach GRLIB_Marker_ATM;
 
 {
   _marker = createMarker [format ["marked_car%1" ,_x], markers_reset];
@@ -30,7 +30,7 @@ private _pos = getArray(configFile >> "CfgWorlds" >> worldName >> "centerPositio
   _marker setMarkerType "mil_dot";
   _marker setMarkerText "";
   _marker setMarkerSize [ 1, 1 ];
-} forEach _serviceObject;
+} forEach GRLIB_Marker_SRV;
 
 {
   _marker = createMarker [format ["marked_fuel%1" ,_x], markers_reset];
@@ -39,7 +39,11 @@ private _pos = getArray(configFile >> "CfgWorlds" >> worldName >> "centerPositio
   _marker setMarkerType "mil_dot";
   _marker setMarkerText "";
   _marker setMarkerSize [ 1, 1 ];
-} forEach _fuelObject;
+} forEach GRLIB_Marker_FUEL;
+
+//publicVariable "GRLIB_Marker_ATM";
+//publicVariable "GRLIB_Marker_FUEL";
+publicVariable "GRLIB_Marker_SRV";
 
 //-------------------------------------------------------------
 //_posh =  ((_pos select 1) * 3) - 1300;
