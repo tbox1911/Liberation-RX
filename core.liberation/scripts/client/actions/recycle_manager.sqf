@@ -33,5 +33,5 @@ while { true } do {
 		};
 	} forEach _nearrecycl;
 
-	sleep 1;
+	sleep 2;
 };

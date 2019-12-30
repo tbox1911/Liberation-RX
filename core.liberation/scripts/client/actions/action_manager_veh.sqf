@@ -54,5 +54,5 @@ while { true } do {
 			_vehicle setVariable ["GRLIB_salvage_action", true];
 		};
 	} forEach _nearwreck+_nearruins;
-	sleep 1;
+	sleep 2;
 };

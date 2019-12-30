@@ -71,6 +71,7 @@ if (isMultiplayer) then {
 
 // Group Managment
 my_group = createGroup [GRLIB_side_friendly, true];
+my_group setGroupId [format ["<%1>", name player]];
 [player] joinSilent (my_group);
 [my_group, "add"] remoteExec ["addel_group", 2];
 

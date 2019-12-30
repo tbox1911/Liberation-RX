@@ -5,6 +5,7 @@ while { true } do {
     //systemchat format ["Player %1 wrong side : (%2), try to fix group...", name player, side player];
     if (isNull my_group) then {
       my_group = createGroup [GRLIB_side_friendly, true];
+      my_group setGroupId [format ["<%1>", name player]];
       [my_group, "add"] remoteExec ["addel_group", 2];
     };
     player setcaptive true;
