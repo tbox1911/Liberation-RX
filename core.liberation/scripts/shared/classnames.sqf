@@ -539,6 +539,9 @@ ind_recyclable = [
 ];
 
 opfor_recyclable = [
+	["O_G_Offroad_01_armed_F",0,round (20 / GRLIB_recycling_percentage),0],
+	["O_G_Offroad_01_AT_F",0,round (20 / GRLIB_recycling_percentage),0],
+	["I_C_Offroad_02_LMG_F",0,round (20 / GRLIB_recycling_percentage),0],
 	["O_Truck_03_covered_F",0,round (20 / GRLIB_recycling_percentage),0],
 	["O_Truck_03_transport_F",0,round (20 / GRLIB_recycling_percentage),0],
 	["O_MRAP_02_hmg_F",0,round (50 / GRLIB_recycling_percentage),0],
@@ -659,24 +662,11 @@ GRLIB_vehicle_whitelist = [
 
 // Blacklist Vehicle (lock and paint)
 GRLIB_vehicle_blacklist = [
-	Arsenal_typename,
-	Respawn_truck_typename,
-	FOB_truck_typename,
 	huron_typename,
 	opfor_ammobox_transport,
 	"ReammoBox_F",
-	"Box_B_UAV_06_medical_F",
-	"Slingload_01_Base_F",
 	"Box_UAV_06_base_F",
-	"Land_TentDome_F",
-	"Land_CanisterFuel_Red_F",
-	"C_Offroad_01_repair_F",
-	"C_Van_01_fuel_F",
 	"B_Heli_Transport_01_F",
-	"B_Truck_01_ammo_F",
-	"B_Truck_01_Repair_F",
-	"B_Truck_01_fuel_F",
-	"B_APC_Tracked_01_CRV_F",
 	"O_Heli_Light_02_unarmed_F",
 	"O_Truck_03_transport_F",
 	"O_Truck_03_covered_F",
@@ -684,7 +674,7 @@ GRLIB_vehicle_blacklist = [
 	"O_Truck_03_fuel_F",
 	"O_Truck_03_medical_F"
 ];
-
+{GRLIB_vehicle_blacklist pushBack ( _x select 0 )} foreach (support_vehicles);
 
 infantry_units = [ infantry_units ] call F_filterMods;
 light_vehicles = [ light_vehicles ] call F_filterMods;
