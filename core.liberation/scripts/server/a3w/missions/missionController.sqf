@@ -31,7 +31,7 @@ while {true} do
 			_opfor_sectors = (count sectors_allSectors) - (count blufor_sectors);
 			_opfor_factor = round ((_opfor_sectors / (count sectors_allSectors)) * 100);
 
-			if (_opfor_factor <= 40) then {
+			if (_opfor_factor <= 40 && count allPlayers > 1) then {
 				_missionsList = ["mission_TownInvasion", false, _missionsList, 1] call updateMissionsList;
 			} else {
 				_missionsList = ["mission_TownInvasion", true, _missionsList] call updateMissionsList;
