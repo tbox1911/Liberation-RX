@@ -27,18 +27,18 @@ while { true } do {
 		_vehicle = _x;
 		if (! (_vehicle getVariable ["GRLIB_vehicle_action", false]) ) then {
 
-			_vehicle addAction ["<t color='#00DD00'>-- SELL CARGO --</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_sell.sqf","",-900,true,true,"","alive _target && vehicle _this == _this && [_target] call F_check_nearService && (locked _target == 0 || locked _target == 1) && [_this, _target] call is_owner", _distvehclose];
-			_vehicle addAction ["<t color='#00F000'>-- REFUEL --</t> <img size='1' image='R3F_LOG\icons\r3f_fuel.paa'/>", "scripts\client\actions\do_refuel.sqf","",-900,false,true,"","alive _target && vehicle _this == _this  && (locked _target == 0 || locked _target == 1) && [_target] call F_check_nearFuel", _distvehclose];
-			_vehicle addAction ["<t color='#FFFF00'>-- SALVAGE --</t> <img size='1' image='res\ui_recycle.paa'/>","scripts\client\actions\do_wreck.sqf","",-900,true,true,"","!(alive _target) && !(_target getVariable ['wreck_in_use', false]) && vehicle _this == _this", _distveh];
-			_vehicle addAction ["<t color='#FFFF00'>-- UNFLIP --</t> <img size='1' image='res\ui_flipveh.paa'/>","scripts\client\actions\do_unflip.sqf","",-900,true,true,"","alive _target && vehicle _this == _this && (vectorUp _target) select 2 < 0.70 ", _distveh];
+			_vehicle addAction ["<t color='#00DD00'>-- SELL CARGO --</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_sell.sqf","",-900,true,true,"","[_target] call is_menuok && [_target] call F_check_nearService && (locked _target == 0 || locked _target == 1) && [_this, _target] call is_owner", _distvehclose];
+			_vehicle addAction ["<t color='#00F000'>-- REFUEL --</t> <img size='1' image='R3F_LOG\icons\r3f_fuel.paa'/>", "scripts\client\actions\do_refuel.sqf","",-900,false,true,"","[_target] call is_menuok && (locked _target == 0 || locked _target == 1) && [_target] call F_check_nearFuel", _distvehclose];
+			_vehicle addAction ["<t color='#FFFF00'>-- SALVAGE --</t> <img size='1' image='res\ui_recycle.paa'/>","scripts\client\actions\do_wreck.sqf","",-900,true,true,"","isNull R3F_LOG_joueur_deplace_objet && alive player && vehicle player == player && !(alive _target) && !(_target getVariable ['wreck_in_use', false])", _distveh];
+			_vehicle addAction ["<t color='#FFFF00'>-- UNFLIP --</t> <img size='1' image='res\ui_flipveh.paa'/>","scripts\client\actions\do_unflip.sqf","",-900,true,true,"","[_target] call is_menuok && (vectorUp _target) select 2 < 0.70 ", _distveh];
 
 			if (! (typeOf _vehicle in GRLIB_vehicle_blacklist)) then {
-				_vehicle addAction ["<t color='#00FF00'>-- LOCK --</t> <img size='1' image='R3F_LOG\icons\r3f_lock.paa'/>","scripts\client\actions\do_lock.sqf","",-901,true,true,"","alive _target && (count (crew _target) == 0 || typeOf _target in uavs) && (locked _target == 0 || locked _target == 1)", _distvehclose];
-				_vehicle addAction ["<t color='#FF0000'>-- UNLOCK --</t> <img size='1' image='R3F_LOG\icons\r3f_unlock.paa'/>","scripts\client\actions\do_unlock.sqf","",-902,true,true,"","alive _target && locked _target == 2 && [_this, _target] call is_owner", _distvehclose];
-				_vehicle addAction ["<t color='#222222'>-- ABANDON --</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_abandon.sqf","",-903,true,true,"","alive _target && locked _target == 2 && [_this, _target] call is_owner", _distvehclose];
-				_vehicle addAction ["<t color='#444444'>-- CLEAR CARGO --</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_clear.sqf","",-904,true,true,"","alive _target && locked _target == 2 && [_this, _target] call is_owner", _distvehclose];
-				_vehicle addAction ["<t color='#00F0F0'>-- PAINT --</t> <img size='1' image='res\ui_veh.paa'/>", "addons\RPT\fn_repaintMenu.sqf","",-905,true,true,"","alive _target && locked _target == 2 && [_this, _target] call is_owner", _distvehclose];
-				_vehicle addAction ["<t color='#0080F0'>-- EJECT CREW --</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_eject.sqf","",-906,false,true,"","alive _target && !(typeOf _target in uavs) && count (crew _target) > 0 && [_this, _target] call is_owner && vehicle _this == _this", _distvehclose];
+				_vehicle addAction ["<t color='#00FF00'>-- LOCK --</t> <img size='1' image='R3F_LOG\icons\r3f_lock.paa'/>","scripts\client\actions\do_lock.sqf","",-901,true,true,"","[_target] call is_menuok && (count (crew _target) == 0 || typeOf _target in uavs) && (locked _target == 0 || locked _target == 1)", _distvehclose];
+				_vehicle addAction ["<t color='#FF0000'>-- UNLOCK --</t> <img size='1' image='R3F_LOG\icons\r3f_unlock.paa'/>","scripts\client\actions\do_unlock.sqf","",-902,true,true,"","[_target] call is_menuok && locked _target == 2 && [_this, _target] call is_owner", _distvehclose];
+				_vehicle addAction ["<t color='#222222'>-- ABANDON --</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_abandon.sqf","",-903,true,true,"","[_target] call is_menuok && locked _target == 2 && [_this, _target] call is_owner", _distvehclose];
+				_vehicle addAction ["<t color='#444444'>-- CLEAR CARGO --</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_clear.sqf","",-904,true,true,"","[_target] call is_menuok && locked _target == 2 && [_this, _target] call is_owner", _distvehclose];
+				_vehicle addAction ["<t color='#00F0F0'>-- PAINT --</t> <img size='1' image='res\ui_veh.paa'/>", "addons\RPT\fn_repaintMenu.sqf","",-905,true,true,"","[_target] call is_menuok && locked _target == 2 && [_this, _target] call is_owner", _distvehclose];
+				_vehicle addAction ["<t color='#0080F0'>-- EJECT CREW --</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_eject.sqf","",-906,false,true,"","[_target] call is_menuok && !(typeOf _target in uavs) && count (crew _target) > 0 && [_this, _target] call is_owner && vehicle _this == _this", _distvehclose];
 			};
 			_vehicle setVariable ["GRLIB_vehicle_action", true];
 		};
@@ -50,7 +50,7 @@ while { true } do {
 	{
 		_vehicle = _x;
 		if (! (_vehicle getVariable ["GRLIB_salvage_action", false]) ) then {
-			_vehicle addAction ["<t color='#FFFF00'>-- SALVAGE --</t> <img size='1' image='res\ui_recycle.paa'/>","scripts\client\actions\do_wreck.sqf","",-900,true,true,"","!(_target getVariable ['wreck_in_use', false]) && vehicle _this == _this", _distveh];
+			_vehicle addAction ["<t color='#FFFF00'>-- SALVAGE --</t> <img size='1' image='res\ui_recycle.paa'/>","scripts\client\actions\do_wreck.sqf","",-900,true,true,"","[_target] call is_menuok && !(_target getVariable ['wreck_in_use', false])", _distveh];
 			_vehicle setVariable ["GRLIB_salvage_action", true];
 		};
 	} forEach _nearwreck+_nearruins;

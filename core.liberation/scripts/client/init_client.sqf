@@ -27,6 +27,7 @@ vehicle_permissions = compileFinal preprocessFileLineNumbers "scripts\client\mis
 fetch_permission = compileFinal preprocessFileLineNumbers "scripts\client\misc\fetch_permission.sqf";
 clear_wpt = compileFinal preprocessFileLineNumbers "scripts\client\misc\clear_waypoints.sqf";
 is_owner = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_owner.sqf";
+is_menuok = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_menuok.sqf";
 player_EVH = compileFinal preprocessFileLineNumbers "addons\FAR_revive\FAR_EventHandler.sqf";
 
 R3F_LOG_joueur_deplace_objet = objNull;
@@ -101,7 +102,7 @@ if (!GRLIB_ACE_enabled) then {
 
 // Sign Add
 ["<t size='2'>READ ME</t>", (getPos chimera_sign), 15, 0] spawn BIS_fnc_3Dcredits;
-chimera_sign addAction ["<t color='#FFFFFF'>-= READ  ME =-</t>",{createDialog "liberation_notice"},"",999,true,true,"","",5];
-chimera_sign addAction ["<t color='#FFFFFF'>-=   TIPS   =-</t>",{createDialog "liberation_tips"},"",998,true,true,"","",5];
+chimera_sign addAction ["<t color='#FFFFFF'>-= READ  ME =-</t>",{createDialog "liberation_notice"},"",999,true,true,"","[] call is_menuok",5];
+chimera_sign addAction ["<t color='#FFFFFF'>-=   TIPS   =-</t>",{createDialog "liberation_tips"},"",998,true,true,"","[] call is_menuok",5];
 
 diag_log "--- Client Init stop ---";

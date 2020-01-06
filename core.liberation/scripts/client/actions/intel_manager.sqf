@@ -12,7 +12,7 @@ while { true } do {
 	{
 		_vehicle = _x;
 		if (! (_vehicle getVariable ["GRLIB_intel_action", false]) ) then {
-			_vehicle addAction ["<t color='#FFFF00'>" + localize "STR_INTEL" + "</t>","scripts\client\actions\do_take_intel.sqf","",-849,true,true,"","vehicle _this == _this",_distvehclose];
+			_vehicle addAction ["<t color='#FFFF00'>" + localize "STR_INTEL" + "</t>","scripts\client\actions\do_take_intel.sqf","",-849,true,true,"","[] call is_menuok",_distvehclose];
 			_vehicle setVariable ["GRLIB_intel_action", true];
 		};
 	} forEach _near_intel;
