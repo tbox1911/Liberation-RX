@@ -8,10 +8,10 @@ _labelpos = [];
 _tick = 0;
 replace_ai = 0;
 _respawn_delay = 80;
+((findDisplay 5566) displayCtrl 677) ctrlEnable false; 	//disable restart button
+((findDisplay 5566) displayCtrl 679) ctrlEnable false; 	//disable recall button
 
 while { dialog && alive player } do {
-	((findDisplay 5566) displayCtrl 677) ctrlEnable false; 	//disable restart button
-	((findDisplay 5566) displayCtrl 679) ctrlEnable false; 	//disable recall button
 
 	if ( !isNil "public_bleedout_message" && !isNil "public_bleedout_timer") then {
 		if (_labelwidth == -1) then { _labelwidth = (ctrlPosition ((findDisplay 5566) displayCtrl 6699)) select 2 };
@@ -36,11 +36,11 @@ while { dialog && alive player } do {
 	if ( _tick % 4 == 0 && _tick < _respawn_delay) then {
 		ctrlSetText [677, format ["Wait %1 sec", (_respawn_delay - round(_tick))/4 ]];
 	};
-	if (_tick >= _respawn_delay) then {
+	if (_tick == _respawn_delay) then {
 		ctrlSetText [677, "Respawn"];
 		((findDisplay 5566) displayCtrl 677) ctrlEnable true;
 	};
-	if (_tick >= _respawn_delay * 2) then {
+	if (_tick == _respawn_delay * 2) then {
 		((findDisplay 5566) displayCtrl 679) ctrlEnable true;
 	};
 	if ( _tick % 10 == 0 ) then {
