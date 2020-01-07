@@ -823,7 +823,7 @@ class GREUH_respawn {
 	idd = 5566;
 	movingEnable = false;
 	controlsBackground[] = {"GREUH_BleedoutBar_BG"};
-	controls[] = {"GREUH_BleedoutBar","GREUH_BleedoutBar_F","GREUH_Useless","GREUH_Respawn","GREUH_ReviveLabel","GREUH_WoundedLabel","GREUH_Tips"};
+	controls[] = {"GREUH_BleedoutBar","GREUH_BleedoutBar_F","GREUH_Respawn","GREUH_RecallMedic" ,"GREUH_ReviveLabel","GREUH_WoundedLabel","GREUH_Tips"};
 	objects[] = {};
 	class GREUH_Respawn : GreuhButton {
 		idc = 677;
@@ -836,15 +836,17 @@ class GREUH_respawn {
 		colorDisabled[] = { 1, 1, 1, 1 };
 	};
 
-	class GREUH_Useless : GREUH_Respawn {
-		idc = -1;
-		x = -5;
-		y = -5;
-		w = 0.1;
-		h = 0.1;
-		text = "";
-		action = "";
+	class GREUH_RecallMedic : GreuhButton {
+		idc = 679;
+		x = 0.45 * safezoneW + safezoneX;
+		y = 0.80 * safezoneH + safezoneY;
+		w = 0.1 * safezoneW;
+		h = 0.04 * safezoneH;
+		text = "Recall Medic";
+		action = "[] spawn MGI_fn_medicRecall";
+		colorDisabled[] = { 1, 1, 1, 1 };
 	};
+
 	class GREUH_RscStructuredText{
 		access = 0;
 		type = 13;

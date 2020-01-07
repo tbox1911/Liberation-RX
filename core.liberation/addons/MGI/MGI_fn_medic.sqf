@@ -1,6 +1,6 @@
 _wnded = _this;
 private '_medic';
-_wnded setVariable ['MGI_myMedic',objNull];
+_wnded setVariable ['MGI_myMedic', nil];
 
 private _medics = MGI_bros select {
   round (_x distance2D _wnded) < 250 &&

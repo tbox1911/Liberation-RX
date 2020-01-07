@@ -26,7 +26,7 @@ _check_sortie = {
 
 while {lifeState _wnded == 'incapacitated' || diag_tickTime < _timer + MGI_BleedOut || isNil {_wnded getVariable ['MGI_myMedic', nil]} } do {
 
-  if (lifeState _medic == 'incapacitated' || _fail > 6) exitWith {
+  if (lifeState _medic == 'incapacitated' || _fail > 6 || isNil {_wnded getVariable ['MGI_myMedic', nil]}) exitWith {
       _medic call MGI_fn_medicRelease;
       _wnded setVariable ['MGI_myMedic', nil];
   };

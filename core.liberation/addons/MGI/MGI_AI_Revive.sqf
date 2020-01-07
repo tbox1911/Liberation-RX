@@ -3,6 +3,7 @@
 
 MGI_fn_medic = compileFinal preprocessFileLineNumbers "addons\MGI\MGI_fn_medic.sqf";
 MGI_fn_medicRelease = compileFinal preprocessFileLineNumbers "addons\MGI\MGI_fn_medicRelease.sqf";
+MGI_fn_medicRecall = compileFinal preprocessFileLineNumbers "addons\MGI\MGI_fn_medicRecall.sqf";
 MGI_fn_checkMedic = compileFinal preprocessFileLineNumbers "addons\MGI\MGI_fn_checkMedic.sqf";
 MGI_fn_911 = compileFinal preprocessFileLineNumbers "addons\MGI\MGI_fn_911.sqf";
 MGI_fn_sortie = compileFinal preprocessFileLineNumbers "addons\MGI\MGI_fn_sortie.sqf";
