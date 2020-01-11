@@ -1,6 +1,8 @@
 _tent = _this select 3;
 if (isNull _tent) exitWith {};
 
+[_tent] call is_local;
+
 //only one at time
 if ((_tent getVariable ["tent_in_use", false])) exitWith {};
 _tent setVariable ["tent_in_use", true, true];
