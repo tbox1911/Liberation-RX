@@ -92,5 +92,4 @@ publicVariable "global_locked_group";
 
 addMissionEventHandler ['HandleDisconnect',{deleteVehicle (_this select 0);}];
 
-[] execVM "scripts\server\game\init_markers.sqf";
 diag_log "--- Server Init stop ---";
