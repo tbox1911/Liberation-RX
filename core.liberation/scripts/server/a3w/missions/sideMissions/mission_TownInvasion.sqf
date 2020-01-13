@@ -17,8 +17,7 @@ _setupVars =
 
 	// settings for this mission
 	_locArray = selectRandom (blufor_sectors select {_x select [0,8] == "capture_"} apply {[_x, markerText _x]});
-	_locationsArray = [[_locArray select 0, false]];
-	_townName = _locationsArray select 1;
+	_townName = _locArray select 1;
 
 	// 25% change on AI not going on rooftops
 	if (random 1 < 0.75) then { _putOnRoof = true } else { _putOnRoof = false };

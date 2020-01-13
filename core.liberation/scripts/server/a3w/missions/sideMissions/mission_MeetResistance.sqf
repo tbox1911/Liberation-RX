@@ -18,9 +18,9 @@ _setupVars =
 	_missionType = "The Resistance";
 	// settings for this mission
 	_locArray = selectRandom (blufor_sectors select {_x select [0,8] == "capture_"} apply {[_x, markerText _x]});
-	_locationsArray = [[_locArray select 0, false]];
 	_townName = _locArray select 1;
 	_ignoreAiDeaths = true;
+
 	//randomize amount of Resistance units
 	_nbUnits = 6;
 	_nbUnits = _nbUnits + round(random (_nbUnits*0.5));

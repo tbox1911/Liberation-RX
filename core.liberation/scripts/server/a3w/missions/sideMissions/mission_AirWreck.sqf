@@ -16,6 +16,7 @@ _setupVars =
 	_missionType = "Aircraft Wreck";
 	_locationsArray = SpawnMissionMarkers;
 	_nbUnits = if (missionDifficultyHard) then { AI_GROUP_LARGE } else { AI_GROUP_MEDIUM };
+
 	//randomize amount of units
 	_nbUnits = _nbUnits + round(random (_nbUnits*0.5));
 };
