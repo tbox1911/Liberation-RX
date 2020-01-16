@@ -122,7 +122,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 	saved_intel_res = greuh_liberation_savegame select 14;
 	GRLIB_player_scores = greuh_liberation_savegame select 15;
 
-	setDate [ 2045, 6, 6, time_of_day, 0];
+	setDate [ GRLIB_date_year, GRLIB_date_month, GRLIB_date_day, time_of_day, 0];
 
 	_correct_fobs = [];
 	{
