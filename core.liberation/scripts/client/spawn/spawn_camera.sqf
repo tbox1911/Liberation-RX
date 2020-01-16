@@ -37,7 +37,8 @@ if ( GRLIB_deployment_cinematic ) then {
 
 };
 
-[ format [ "<t size='0.7' align='left'>%1<br/>%2<br/>%3<br/>%4</t>", name player, _spawn_str, _datestring, _nearest_sector ],1,0.8,8,1 ] spawn BIS_fnc_dynamictext;
+//[ format [ "<t size='0.7' align='left'>%1<br/>%2<br/>%3<br/>%4</t>", name player, _spawn_str, _datestring, _nearest_sector ],1.4,1,8,1 ] spawn BIS_fnc_dynamictext;
+[name player, _spawn_str, _datestring, _nearest_sector ] spawn BIS_fnc_infoText;
 
 if ( GRLIB_deployment_cinematic ) then {
 
