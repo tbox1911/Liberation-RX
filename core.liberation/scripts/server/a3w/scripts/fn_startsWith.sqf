@@ -13,7 +13,7 @@
 	Returns: Boolean - test result
 */
 
-private ["_needles", "_haystack", "_caseSensitive", "_found", "_testArray", "_testStr"];
+private ["_needles", "_haystack", "_caseSensitive", "_found"];
 
 _needles = param [0, [], ["",[]]];
 _haystack = param [1, "", [""]];

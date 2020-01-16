@@ -7,7 +7,7 @@ if (!isServer) exitwith {};
 if (!isNil "GRLIB_A3W_Mission_MR") exitWith {};
 #include "sideMissionDefines.sqf"
 
-private ["_nbUnits", "_townName", "_missionPos",
+private ["_nbUnits", "_townName",
 		 "_aiGroupRes", "_putOnRoof", "_fillEvenly",
 		 "_tent1", "_chair1", "_chair2", "_fire1",
 		 "_box1", "_box2",
@@ -17,8 +17,8 @@ _setupVars =
 {
 	_missionType = "The Resistance";
 	// settings for this mission
-	_locArray = selectRandom (blufor_sectors select {_x select [0,8] == "capture_"} apply {[_x, markerText _x]});
-	_townName = _locArray select 1;
+	_missionLocation = selectRandom ((blufor_sectors select {["capture_", _x] call fn_startsWith;}) apply {[_x, false]}) select 0 ;
+	_townName = markerText _missionLocation;
 	_ignoreAiDeaths = true;
 
 	//randomize amount of Resistance units
@@ -32,7 +32,6 @@ _setupVars =
 
 _setupObjects =
 {
-	//_missionPos = markerPos _missionLocation;
 	_missionPos = (markerPos _missionLocation vectorAdd [([[-150,0,150], 20] call F_getRND), ([[-150,0,150], 20] call F_getRND), 0]);
 
 	// spawn some crates in the middle of town (Town marker position)

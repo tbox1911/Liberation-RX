@@ -6,7 +6,7 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_nbUnits", "_box1", "_box2", "_townName", "_missionPos", "_putOnRoof", "_fillEvenly", "_tent1", "_chair1", "_chair2", "_fire1"];
+private ["_nbUnits", "_box1", "_box2", "_townName", "_putOnRoof", "_fillEvenly", "_tent1", "_chair1", "_chair2", "_fire1"];
 
 _setupVars =
 {
@@ -16,8 +16,8 @@ _setupVars =
 	_nbUnits = _nbUnits + round(random (_nbUnits*0.5));
 
 	// settings for this mission
-	_locArray = selectRandom (blufor_sectors select {_x select [0,8] == "capture_"} apply {[_x, markerText _x]});
-	_townName = _locArray select 1;
+	_missionLocation = selectRandom ((blufor_sectors select {["capture_", _x] call fn_startsWith;}) apply {[_x, false]}) select 0;
+	_townName = markerText _missionLocation;
 
 	// 25% change on AI not going on rooftops
 	if (random 1 < 0.75) then { _putOnRoof = true } else { _putOnRoof = false };
@@ -27,7 +27,6 @@ _setupVars =
 
 _setupObjects =
 {
-	//_missionPos = markerPos _missionLocation;
 	_missionPos = (markerPos _missionLocation vectorAdd [([[-100,0,100], 20] call F_getRND), ([[-100,0,100], 20] call F_getRND), 0]);
 
 	// spawn some crates in the middle of town (Town marker position)
