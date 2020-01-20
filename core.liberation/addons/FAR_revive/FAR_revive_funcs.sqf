@@ -312,7 +312,11 @@ FAR_public_EH = {
 		_killer = _target select 1;
 		if (isPlayer _killed) then
 		{
-			gamelogic globalChat (format ["%1 was injured by %2", name _killed, name _killer] );
+			if (isNull _killer) then {
+				gamelogic globalChat (format ["%1 was injured for an unknown reason", name _killed] );
+			} else {
+				gamelogic globalChat (format ["%1 was injured by %2", name _killed, name _killer] );
+			}
 		};
 	};
 
