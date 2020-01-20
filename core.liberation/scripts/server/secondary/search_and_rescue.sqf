@@ -12,8 +12,6 @@ private _helowreckDir = (random 360);
 _helowreck setDir _helowreckDir;
 
 private _helofire = GRLIB_sar_fire createVehicle (getpos _helowreck);
-_helofire setpos (getpos _helowreck);
-_helofire setpos (getpos _helowreck);
 
 private _pilotsGrp = createGroup [GRLIB_side_enemy, true];
 private _pilotsPos = [ getpos _helowreck, 25, random 360 ] call BIS_fnc_relPos;
@@ -107,3 +105,4 @@ sleep 1;
 trigger_server_save = true;
 sleep 3;
 deleteVehicle _helowreck;
+deleteVehicle _helofire;
