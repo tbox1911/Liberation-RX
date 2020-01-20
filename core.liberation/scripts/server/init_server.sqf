@@ -79,7 +79,7 @@ wait_to_spawn_sector = compileFinal preprocessFileLineNumbers "scripts\server\se
 [] execVM "scripts\server\sector\manage_sectors.sqf";
 //[] execVM "scripts\server\offloading\show_fps.sqf";
 [] execVM "scripts\server\a3w\init_missions.sqf";
-
+[] execVM "scripts\server\secondary\autostart.sqf";
 {
 	if ( (_x != player) && (_x distance (getmarkerpos GRLIB_respawn_marker) < 200 ) ) then {deleteVehicle _x};
 } foreach allUnits;

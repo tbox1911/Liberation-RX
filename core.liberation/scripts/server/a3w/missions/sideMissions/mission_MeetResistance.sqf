@@ -109,8 +109,12 @@ _successExec = {
 	publicVariable "GRLIB_A3W_Mission_MR";
 	GRLIB_A3W_Mission_MRR = nil;
 	publicVariable "GRLIB_A3W_Mission_MRR";
-	[ammobox_i_typename, _missionPos, false] call boxSetup;
-	[ammobox_i_typename, _missionPos, false] call boxSetup;
+
+	private _nb = round(random [1,1.5,2]);
+	while { _nb >= 0} do {
+		[ammobox_i_typename, _missionPos, false] call boxSetup;
+		_nb =_nb - 1;
+	};
 };
 
 _this call sideMissionProcessor;
