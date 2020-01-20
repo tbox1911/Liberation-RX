@@ -21,7 +21,7 @@ if (count (_wounded_list) > 0) then {
 	_medic setVariable ['MGI_heal', true];
 	_wounded setVariable ['MGI_healed', true];
 
-	if (!isplayer _wounded || _medic != _wounded) then {
+	if (!isplayer _wounded && _medic != _wounded) then {
 		doStop _wounded;
 	};
 
@@ -61,7 +61,7 @@ if (count (_wounded_list) > 0) then {
 
 	sleep 2;
 	_medic setVariable ['MGI_heal', nil];
+	_medic doFollow leader player;
 	_wounded setVariable ['MGI_healed', nil];
 	_wounded doFollow leader player;
-	_medic doFollow leader player;
 };
