@@ -481,7 +481,6 @@ if ( isNil "opfor_battlegroup_vehicles_overwrite" ) then { opfor_battlegroup_veh
 if ( opfor_battlegroup_vehicles_overwrite ) then { opfor_battlegroup_vehicles = opfor_battlegroup_vehicles_extension; } else { opfor_battlegroup_vehicles = opfor_battlegroup_vehicles + opfor_battlegroup_vehicles_extension; };
 
 opfor_battlegroup_vehicles_low_intensity = [
-	"O_T_UAV_04_CAS_F",
 	"O_APC_Tracked_02_cannon_F",
 	"O_APC_Wheeled_02_rcws_F",
 	"O_MRAP_02_hmg_F",
