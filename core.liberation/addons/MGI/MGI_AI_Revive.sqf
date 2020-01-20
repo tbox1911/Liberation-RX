@@ -14,7 +14,7 @@ MGI_fn_checkWounded = compileFinal preprocessFileLineNumbers "addons\MGI\MGI_fn_
 
 if (isDedicated) exitWith {};
 
-//waituntil {sleep 1; !isNull player && GRLIB_player_spawned};
+waituntil {!isNull player && GRLIB_player_spawned};
 waituntil {!isNil {player getVariable ["GRLIB_Rank", nil]}};
 
 MGI_fn_EHDamage = {
@@ -58,22 +58,21 @@ MGI_fn_Revive = {
 
           _isMedic = getNumber (configfile >> "CfgVehicles" >> typeOf _x >> "attendant");
           if ( _isMedic == 1 &&
-               (behaviour _x) != "COMBAT" &&
-               round (getPosATL _x select 2) < 1 &&
-               !(_x getVariable ["MGI_isUnconscious",false]) &&
-               lifeState _x != 'incapacitated' &&
                vehicle _x == _x &&
+               (behaviour _x) != "COMBAT" &&
+               lifeState _x != 'incapacitated' &&
                isNil {_x getVariable 'MGI_busy'} &&
                isNil {_x getVariable 'MGI_heal'}
-              ) then { [_x] spawn MGI_fn_checkWounded };
+          ) then { [_x] spawn MGI_fn_checkWounded };
 
           if (group player != group _x &&
               isNil {_x getVariable 'MGI_busy'} &&
               (count (units group player) < GRLIB_max_squad_size+GRLIB_squad_size_bonus)
           ) then { [ _x ] joinSilent group player };
         };
+        sleep 0.5;
       } forEach MGI_bros;
-      sleep 5;
+      sleep 10;
     };
 };
 
