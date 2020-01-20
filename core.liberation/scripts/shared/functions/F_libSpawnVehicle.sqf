@@ -15,7 +15,8 @@ if ( _precise_position ) then {
 	_spawnpos = [] + _sectorpos;
 } else {
 	while { _spawnpos distance zeropos < 1000 } do {
-		_spawnpos = ( [ _sectorpos, random 150, random 360 ] call bis_fnc_relpos ) findEmptyPosition [10, 100, 'B_Heli_Transport_01_F'];
+		//_spawnpos = ( [ _sectorpos, random 150, random 360 ] call bis_fnc_relpos ) findEmptyPosition [10, 100, 'B_Heli_Transport_01_F'];
+		_spawnpos = (selectBestPlaces [_sectorpos, 200, "(1 + meadow) * (1 + sea) * (1 - forest) * (1 - trees)", 50, 1] select 0) select 0;
 		if ( count _spawnpos == 0 ) then { _spawnpos = zeropos; };
 	};
 };
@@ -25,6 +26,9 @@ if ( _classname in opfor_choppers ) then {
 	_newvehicle = createVehicle [_classname, _spawnpos, [], 0, 'FLY'];
 	_newvehicle flyInHeight (100 + (random 200));
 } else {
+	if (surfaceIsWater _spawnpos) then {
+		_classname = opfor_boat call BIS_fnc_selectRandom;
+	};
 	_newvehicle = _classname createVehicle _spawnpos;
 	_newvehicle setpos _spawnpos;
 };

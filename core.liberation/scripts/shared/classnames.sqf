@@ -431,6 +431,13 @@ if ( isNil "militia_vehicles_extension" ) then { militia_vehicles_extension = []
 if ( isNil "militia_vehicles_overwrite" ) then { militia_vehicles_overwrite = false };
 if ( militia_vehicles_overwrite ) then { militia_vehicles = militia_vehicles_extension; } else { militia_vehicles = militia_vehicles + militia_vehicles_extension; };
 
+opfor_boat = [
+	"O_Boat_Armed_01_hmg_F",
+	"O_T_Boat_Armed_01_hmg_F",
+	"O_Boat_Armed_01_hmg_F",
+	"O_T_Boat_Armed_01_hmg_F"
+];
+
 opfor_vehicles = [
 	"O_APC_Tracked_02_cannon_F",
 	"O_APC_Wheeled_02_rcws_F",
