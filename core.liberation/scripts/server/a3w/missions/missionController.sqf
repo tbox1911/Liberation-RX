@@ -87,5 +87,6 @@ while {true} do
 	[MISSION_CTRL_PVAR_LIST, _nextMission, false] call setMissionState;
 
 	if (_tempController) exitWith {};
+	if (count allPlayers == 0 ) exitWith {};
 	uiSleep 5;
 };
