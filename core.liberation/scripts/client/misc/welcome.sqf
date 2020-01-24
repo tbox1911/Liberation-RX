@@ -3,7 +3,7 @@
 */
 waitUntil {sleep 1;GRLIB_player_spawned};
 
-while {isNil {player getVariable ["GRLIB_score_set", nil]}} do {
+while {	(player getVariable "GRLIB_score_set" == 0) } do {
 	_msg= "... Loading Player Data ...";
     [_msg, 0, 0, 5, 0, 0, 90] spawn BIS_fnc_dynamicText;
 	uIsleep 2;

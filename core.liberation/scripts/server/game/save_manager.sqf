@@ -367,7 +367,7 @@ while { true } do {
 		{
 			_nextplayer = _x;
 
-			if ( (score _nextplayer >= 20) && (!isNil {_nextplayer getVariable ["GRLIB_score_set", nil]}) ) then {
+			if ( (score _nextplayer >= 20) && (_nextplayer getVariable "GRLIB_score_set" == 1) ) then {
 				_ammo = _nextplayer getVariable ["GREUH_ammo_count",0];
 				_playerindex = _knownplayers find (getPlayerUID _nextplayer);
 				if ( _playerindex >= 0 ) then {

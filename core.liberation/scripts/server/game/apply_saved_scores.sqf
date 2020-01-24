@@ -5,7 +5,7 @@ waitUntil { !isNil "save_is_loaded" };
 while { true } do {
 	{
 		_nextplayer = _x;
-		if (isNil {_nextplayer getVariable ["GRLIB_score_set", nil]}) then {
+		if (_nextplayer getVariable "GRLIB_score_set" == 0) then {
 			{
 				if ( (getPlayerUID _nextplayer) == (_x select 0) ) then {
 					_nextplayer addScore ((_x select 1) - (score _nextplayer));
