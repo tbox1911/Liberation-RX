@@ -39,9 +39,9 @@ GRLIB_perm_tank = 600;
 GRLIB_perm_air = 800;
 GRLIB_perm_max = 1000;
 GRLIB_date_year = 2045;
-GRLIB_date_month = 12;
+GRLIB_date_month = 10;
 GRLIB_date_day = 12;
-GRLIB_nights_start = 20;
+GRLIB_nights_start = 16;
 GRLIB_nights_stop = 8.5;
 GREUH_start_ammo = 500;
 
