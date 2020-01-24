@@ -2,6 +2,7 @@ params ["_group", "_action"];
 
 if (!isServer) exitWith {};
 if (isNull _group) exitWith {};
+diag_log format ["DBG: grp: %1 global: %2", _group, global_locked_group ];
 
 private _tmp_global_locked_group = [];
 {
