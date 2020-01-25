@@ -12,6 +12,9 @@ _fob_templates = [
 _spawn_marker = [2000,999999,false] call F_findOpforSpawnPoint;
 if ( _spawn_marker == "" ) exitWith { [gamelogic, "Could not find position for fob hunting mission"] remoteExec ["globalChat", 0] };
 
+params [ ["_mission_cost", 0] ];
+resources_intel = resources_intel - _mission_cost;
+
 used_positions = used_positions + [ _spawn_marker ];
 _base_position = markerpos _spawn_marker;
 _base_objects = [];

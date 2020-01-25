@@ -5,7 +5,10 @@ while { count _convoy_destinations_markers < 3 } do { _convoy_destinations_marke
 
 private _couldnt_spawn = false;
 { if ( _x == "" ) exitWith { _couldnt_spawn = true; }; } foreach _convoy_destinations_markers;
-if ( _couldnt_spawn ) exitWith { diag_log "Could not find enough map positions for convoy hijack mission"; };
+if ( _couldnt_spawn ) exitWith { [gamelogic, "ould not find enough map positions for convoy hijack mission"] remoteExec ["globalChat", 0] };
+
+params [ ["_mission_cost", 0] ];
+resources_intel = resources_intel - _mission_cost;
 
 private _convoy_destinations = [];
 { _convoy_destinations pushback (getMarkerPos _x); } foreach _convoy_destinations_markers;

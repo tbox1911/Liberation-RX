@@ -3,6 +3,9 @@ private _spawn_marker = [ 3000, 999999, false ] call F_findOpforSpawnPoint;
 if ( _spawn_marker == "" ) exitWith { [gamelogic,"Could not find position for search and rescue mission"] remoteExec ["globalChat", 0] };
 used_positions pushbackUnique _spawn_marker;
 
+params [ ["_mission_cost", 0] ];
+resources_intel = resources_intel - _mission_cost;
+
 private _helopos = [ getmarkerpos _spawn_marker, random 200, random 360 ] call BIS_fnc_relPos;
 private _helowreck = GRLIB_sar_wreck createVehicle _helopos;
 _helowreck allowDamage false;
