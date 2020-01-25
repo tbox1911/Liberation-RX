@@ -8,9 +8,8 @@ while { true } do {
     if (isNull my_group) then {
       [] call get_group;
     };
-    player setcaptive true;
+    player addrating 2000;
     [player] joinSilent my_group;
     my_group selectLeader player;
-    player setcaptive false;
   };
 };
