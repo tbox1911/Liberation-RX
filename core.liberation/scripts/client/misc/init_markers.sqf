@@ -30,7 +30,7 @@ private _pos = getArray(configFile >> "CfgWorlds" >> worldName >> "centerPositio
   _marker setMarkerPosLocal _x;
   _marker setMarkerColorLocal "ColorGreen";
   _marker setMarkerTypeLocal "mil_dot";
-  _marker setMarkerTextLocal "";
+  _marker setMarkerTextLocal "ATM";
   _marker setMarkerSizeLocal [ 1, 1 ];
 } forEach GRLIB_Marker_ATM;
 
@@ -39,7 +39,7 @@ private _pos = getArray(configFile >> "CfgWorlds" >> worldName >> "centerPositio
   _marker setMarkerPosLocal _x;
   _marker setMarkerColorLocal "ColorBlue";
   _marker setMarkerTypeLocal "mil_dot";
-  _marker setMarkerTextLocal "";
+  _marker setMarkerTextLocal "SELL";
   _marker setMarkerSizeLocal [ 1, 1 ];
 } forEach GRLIB_Marker_SRV;
 
@@ -48,12 +48,13 @@ private _pos = getArray(configFile >> "CfgWorlds" >> worldName >> "centerPositio
   _marker setMarkerPosLocal _x;
   _marker setMarkerColorLocal "ColorYellow";
   _marker setMarkerTypeLocal "mil_dot";
-  _marker setMarkerTextLocal "";
+  _marker setMarkerTextLocal "FUEL";
   _marker setMarkerSizeLocal [ 1, 1 ];
 } forEach GRLIB_Marker_FUEL;
 
 
 //-------------------------------------------------------------
+/*
 //_posh =  ((_pos select 1) * 3) - 1300;
 _posh = 2000;
 _marker = createMarkerLocal ["ATM", markers_reset];
@@ -76,3 +77,4 @@ _marker setMarkerColorLocal "ColorYellow";
 _marker setMarkerTypeLocal "loc_Fuelstation";
 _marker setMarkerTextLocal "FUEL";
 _marker setMarkerSizeLocal [ 1, 1 ];
+*/
