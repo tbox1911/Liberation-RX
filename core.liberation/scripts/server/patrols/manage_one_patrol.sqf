@@ -45,37 +45,39 @@ while { GRLIB_endgame == 0 } do {
 		_grp = group ((crew _vehicle_object) select 0);
 	};
 
-	[_grp] spawn patrol_ai;
+	sleep 1;
+	if (!isNil "_grp") then {
+		[_grp] spawn patrol_ai;
 
-	_started_time = time;
-	_patrol_continue = true;
+		_started_time = time;
+		_patrol_continue = true;
 
-	if ( local _grp ) then {
-		_headless_client = [] call F_lessLoadedHC;
-		if ( !isNull _headless_client ) then {
-			_grp setGroupOwner ( owner _headless_client );
+		if ( local _grp ) then {
+			_headless_client = [] call F_lessLoadedHC;
+			if ( !isNull _headless_client ) then {
+				_grp setGroupOwner ( owner _headless_client );
+			};
 		};
-	};
 
-	while { _patrol_continue } do {
-		sleep 60;
-		if ( count (units _grp) == 0  ) then {
-			_patrol_continue = false;
-		} else {
-			if ( time - _started_time > 900 ) then {
-				if ( [ getpos (leader _grp) , 4000 , GRLIB_side_friendly ] call F_getUnitsCount == 0 ) then {
-					_patrol_continue = false;
-					{
-						if ( vehicle _x != _x ) then {
-							[ (vehicle _x) ] call F_cleanOpforVehicle;
-						};
-						deleteVehicle _x;
-					} foreach (units _grp);
+		while { _patrol_continue } do {
+			sleep 60;
+			if ( count (units _grp) == 0  ) then {
+				_patrol_continue = false;
+			} else {
+				if ( time - _started_time > 900 ) then {
+					if ( [ getpos (leader _grp) , 4000 , GRLIB_side_friendly ] call F_getUnitsCount == 0 ) then {
+						_patrol_continue = false;
+						{
+							if ( vehicle _x != _x ) then {
+								[ (vehicle _x) ] call F_cleanOpforVehicle;
+							};
+							deleteVehicle _x;
+						} foreach (units _grp);
+					};
 				};
 			};
 		};
 	};
-
 	if ( !([] call F_isBigtownActive) ) then {
 		sleep (600.0 / GRLIB_difficulty_modifier);
 	};
