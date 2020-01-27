@@ -33,18 +33,18 @@ while { true } do {
 			// Find !
 			if (!alive _man || { _man getVariable ["GRLIB_is_prisonner", false]} ) then {
 				_my_dog setVariable ["do_find", nil];
-			};
-
-			private _dist = round (_dog_pos distance2D _man);
-			if (_dist <= 3) then {
-				_my_dog setDir (getDir _man);
-				playSound3D ["a3\sounds_f\ambient\animals\dog1.wss", _my_dog, false, _dog_pos , 6, 0.8, 0];
-				_my_dog playMoveNow "Dog_Idle_Bark";
-				sleep 3;
-				_my_dog playMove "Dog_Stop";
 			} else {
-				_my_dog moveTo (getPos _man);
-				_my_dog playMoveNow "Dog_Walk"
+				private _dist = round (_dog_pos distance2D _man);
+				if (_dist <= 3) then {
+					_my_dog setDir (getDir _man);
+					playSound3D ["a3\sounds_f\ambient\animals\dog1.wss", _my_dog, false, _dog_pos, 6, 0.8, 0];
+					_my_dog playMoveNow "Dog_Idle_Bark";
+					sleep 3;
+					_my_dog playMove "Dog_Stop";
+				} else {
+					_my_dog moveTo (getPos _man);
+					_my_dog playMoveNow "Dog_Walk"
+				};
 			};
 		} else {
 			// Relax
