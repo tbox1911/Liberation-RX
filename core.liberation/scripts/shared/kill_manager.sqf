@@ -68,8 +68,12 @@ if ( isServer ) then {
 			if ( isPlayer _killer ) then {
 				stats_civilians_killed_by_players = stats_civilians_killed_by_players + 1;
 				if ( GRLIB_civ_penalties ) then {
-					_killer addScore -20;
-					[[name _unit, GRLIB_civ_killing_penalty, _killer] , "remote_call_civ_penalty"] call BIS_fnc_MP;
+					_penalty = GRLIB_civ_killing_penalty;
+					_score = score player;
+					if ( _score < GRLIB_perm_inf ) then { _penalty = 5 };
+					if ( _score > GRLIB_perm_inf && _score < GRLIB_perm_log ) then { _penalty = 10 };
+					_killer addScore -_penalty;
+					[[name _unit, _penalty, _killer] , "remote_call_civ_penalty"] call BIS_fnc_MP;
 				};
 			};
 		};
