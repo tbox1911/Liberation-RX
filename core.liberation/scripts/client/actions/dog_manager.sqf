@@ -28,8 +28,6 @@ while { true } do {
 			sleep 1;
 		};
 
-
-//if not on mission
 		_man = _my_dog getVariable ["do_find", nil];
 		if (!isNil "_man") then {
 			// Find !
