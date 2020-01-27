@@ -25,7 +25,12 @@ while { GRLIB_endgame == 0 } do {
 		sleep _base_tick_period;
 
 		if ( count _blufor_mil_sectors > 0 ) then {
+			if ( GRLIB_passive_income ) then {
 
+				_ammo_increase = round ( 50 + (random 25));
+				resources_ammo = resources_ammo + _ammo_increase;
+
+			} else {
 				if ( ( { typeof _x == ammobox_b_typename } count vehicles ) <= ( ceil ( ( count _blufor_mil_sectors ) * 1.3 ) ) ) then {
 
 					_spawnsector = ( _blufor_mil_sectors call BIS_fnc_selectRandom );
@@ -43,6 +48,6 @@ while { GRLIB_endgame == 0 } do {
 				};
 			};
 		};
-
+	};
 	sleep 300;
 };

@@ -12,6 +12,7 @@ if ( isMultiplayer ) then {
 	GRLIB_cheat_menu = ["CheatMenu",1] call bis_fnc_getParamValue;
 	GRLIB_param_wipe_savegame_1 = ["WipeSave1",0] call bis_fnc_getParamValue;
 	GRLIB_param_wipe_savegame_2 = ["WipeSave2",0] call bis_fnc_getParamValue;
+	GRLIB_passive_income = ["PassiveIncome",0] call bis_fnc_getParamValue;
 	GRLIB_permissions_param = ["Permissions",1] call bis_fnc_getParamValue;
 	GRLIB_halo_param = ["HaloJump",1] call bis_fnc_getParamValue;
 	GRLIB_use_whitelist = ["Whitelist",0] call bis_fnc_getParamValue;
@@ -73,6 +74,7 @@ if ( GRLIB_deployment_cinematic == 1 ) then { GRLIB_deployment_cinematic = true 
 if ( GRLIB_cheat_menu == 1 ) then { GRLIB_cheat_menu = true } else { GRLIB_cheat_menu = false };
 if ( GRLIB_limited_arsenal == 1 ) then { GRLIB_limited_arsenal = true } else { GRLIB_limited_arsenal = false };
 if ( GRLIB_adaptive_opfor == 1 ) then { GRLIB_adaptive_opfor = true } else { GRLIB_adaptive_opfor = false };
+if ( GRLIB_passive_income == 1 ) then { GRLIB_passive_income = true } else { GRLIB_passive_income = false };
 if ( GRLIB_permissions_param == 1 ) then { GRLIB_permissions_param = true } else { GRLIB_permissions_param = false };
 if ( GRLIB_use_whitelist == 1 ) then { GRLIB_use_whitelist = true } else { GRLIB_use_whitelist = false };
 if ( GRLIB_shorter_nights == 1 ) then { GRLIB_shorter_nights = true } else { GRLIB_shorter_nights = false };
