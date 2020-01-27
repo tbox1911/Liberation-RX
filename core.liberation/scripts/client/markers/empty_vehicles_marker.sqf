@@ -51,7 +51,8 @@ while { true } do {
 	// Tents Markers Update
 	_markedbeac = [ allMissionObjects "Land_TentDome_F", {
 		 			alive _x &&
-					_x distance lhd > 500 &&
+					_x distance2D lhd > 1000 &&
+				    _x distance2D ([_x] call F_getNearestFob) > GRLIB_sector_size &&
 					!surfaceIsWater (getpos _x) &&
 					isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull])
 					}] call BIS_fnc_conditionalSelect;
