@@ -46,29 +46,29 @@ while { true } do {
 		};
 	};
 
-	// Dog - Delete
-	if ( [] call is_menuok && _has_dog ) then {
-		if ( _idact_dog_del == -1 ) then {
-			_icon = (getText (configFile >> "CfgVehicleIcons" >> "iconAnimal"));
-			_idact_dog_del = player addAction ["<t color='#80FF80'>" + "-- DOG DISMISS." + "</t> <img size='1' image='" + _icon + "'/>","scripts\client\actions\do_dog.sqf","del",-640,false,true,"",""];
-		};
-	} else {
-		if ( _idact_dog_del != -1 ) then {
-			player removeAction _idact_dog_del;
-			_idact_dog_del = -1;
-		};
-	};
-
 	// Dog - Find
 	if ( [] call is_menuok && _has_dog ) then {
 		if ( _idact_dog_find == -1 ) then {
 			_icon = (getText (configFile >> "CfgVehicleIcons" >> "iconAnimal"));
-			_idact_dog_find = player addAction ["<t color='#80FF80'>" + "-- DOG FIND."+ "</t> <img size='1' image='" + _icon + "'/>","scripts\client\actions\do_dog.sqf","find",-641,false,true,"",""];
+			_idact_dog_find = player addAction ["<t color='#80FF80'>" + "-- DOG FIND."+ "</t> <img size='1' image='" + _icon + "'/>","scripts\client\actions\do_dog.sqf","find",-640,false,true,"",""];
 		};
 	} else {
 		if ( _idact_dog_find != -1 ) then {
 			player removeAction _idact_dog_find;
 			_idact_dog_find = -1;
+		};
+	};
+
+	// Dog - Delete
+	if ( [] call is_menuok && _has_dog ) then {
+		if ( _idact_dog_del == -1 ) then {
+			_icon = (getText (configFile >> "CfgVehicleIcons" >> "iconAnimal"));
+			_idact_dog_del = player addAction ["<t color='#80FF80'>" + "-- DOG DISMISS." + "</t> <img size='1' image='" + _icon + "'/>","scripts\client\actions\do_dog.sqf","del",-641,false,true,"",""];
+		};
+	} else {
+		if ( _idact_dog_del != -1 ) then {
+			player removeAction _idact_dog_del;
+			_idact_dog_del = -1;
 		};
 	};
 

@@ -31,32 +31,32 @@ while { true } do {
 
 //if not on mission
 		_man = _my_dog getVariable ["do_find", nil];
-		if (! isNil "_man") then {
+		if (!isNil "_man") then {
 			// Find !
 			if (!alive _man || { _man getVariable ["GRLIB_is_prisonner", false]} ) then {
 				_my_dog setVariable ["do_find", nil];
 			};
 
 			private _dist = round (_dog_pos distance2D _man);
-			if (  _dist <= 3  ) then {
+			if (_dist <= 3) then {
 				_my_dog setDir (getDir _man);
 				playSound3D ["a3\sounds_f\ambient\animals\dog1.wss", _my_dog, false, _dog_pos , 6, 0.8, 0];
 				_my_dog playMoveNow "Dog_Idle_Bark";
+				sleep 3;
 				_my_dog playMove "Dog_Stop";
 			} else {
 				_my_dog moveTo (getPos _man);
 				_my_dog playMoveNow "Dog_Walk"
 			};
-
 		} else {
 			// Relax
 			private _dist = round (_dog_pos distance2D player);
-			if ( _onfoot && _dist <= 10 && _dog_close ) then {
+			if (_onfoot && _dist <= 10 && _dog_close) then {
 				_my_dog playMove "Dog_Stop";
 				_dog_close = false;
 			};
 
-			if ( _onfoot && _dist > 10 ) then {
+			if (_onfoot && _dist > 10) then {
 				_my_dog moveTo (getPos player);
 				switch (true) do {
 					case (_dist <= 20): {_my_dog playMoveNow "Dog_Walk"};

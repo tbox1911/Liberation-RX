@@ -10,8 +10,7 @@ if ( !isNil "_my_dog" ) then {
 	};
 
 	if (_cmd == "find" ) then {
-		systemchat "dog find!";
-		_enemy_lst = (getPos player) nearEntities ["Man", 200];
+		_enemy_lst = (getPos player) nearEntities ["Man", 300];
 		_enemy_lst = _enemy_lst select {alive _x && (side _x == GRLIB_side_enemy || { _x getVariable ["GRLIB_is_prisonner", false]})};
 
 		_msg = "The dog found nothing.";
