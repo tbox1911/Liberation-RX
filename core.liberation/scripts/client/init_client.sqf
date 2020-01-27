@@ -1,7 +1,19 @@
 diag_log "--- Client Init start ---";
 
+R3F_LOG_joueur_deplace_objet = objNull;
+GRLIB_player_spawned = false;
+disableMapIndicators [false,true,false,false];
+player setVariable ["GRLIB_score_set", 0, true];
+player setVariable ["GREUH_ammo_count", GREUH_start_ammo, true];
+
+[player, configfile >> "CfgVehicles" >> typeOf player] call BIS_fnc_loadInventory;
+if (isMultiplayer) then {
+	MGI_Grp_ID = getPlayerUID player;
+} else {
+	MGI_Grp_ID = str round(random 4096);
+};
+
 [] execVM "scripts\client\commander\enforce_whitelist.sqf";
-[] execVM "scripts\client\ui\intro.sqf";
 [] execVM "scripts\client\misc\init_markers.sqf";
 
 if ( typeOf player == "VirtualSpectator_F" ) exitWith {
@@ -32,25 +44,12 @@ is_local = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_local.
 player_EVH = compileFinal preprocessFileLineNumbers "addons\FAR_revive\FAR_EventHandler.sqf";
 get_group = compileFinal preprocessFileLineNumbers "scripts\client\misc\get_group.sqf";
 
-R3F_LOG_joueur_deplace_objet = objNull;
-GRLIB_player_spawned = false;
-disableMapIndicators [false,true,false,false];
-[player, configfile >> "CfgVehicles" >> typeOf player] call BIS_fnc_loadInventory;
-player setVariable ["GRLIB_score_set", 0, true];
-player setVariable ["GREUH_ammo_count", GREUH_start_ammo, true];
-if (isMultiplayer) then {
-	MGI_Grp_ID = getPlayerUID player;
-} else {
-	MGI_Grp_ID = str round(random 4096);
-};
-[] call get_group;
-
-[] execVM "scripts\client\ui\tutorial_manager.sqf";
 [] execVM "scripts\client\spawn\redeploy_manager.sqf";
 [] execVM "scripts\client\actions\action_manager.sqf";
 [] execVM "scripts\client\actions\action_manager_veh.sqf";
 [] execVM "scripts\client\actions\recycle_manager.sqf";
 [] execVM "scripts\client\actions\intel_manager.sqf";
+[] execVM "scripts\client\actions\dog_manager.sqf";
 [] execVM "scripts\client\actions\man_manager.sqf";
 [] execVM "scripts\client\ammoboxes\ammobox_action_manager.sqf";
 [] execVM "scripts\client\build\build_overlay.sqf";
@@ -74,6 +73,8 @@ if (isMultiplayer) then {
 [] execVM "scripts\client\misc\protect_static.sqf";
 [] execVM "scripts\client\misc\manage_weather.sqf";
 [] execVM "scripts\client\ui\ui_manager.sqf";
+[] execVM "scripts\client\ui\tutorial_manager.sqf";
+[] execVM "scripts\client\ui\intro.sqf";
 
 // Init Tips Tables from XML
 GREUH_TipsText = [];
@@ -102,4 +103,5 @@ if (!GRLIB_ACE_enabled) then {
 chimera_sign addAction ["<t color='#FFFFFF'>-= READ  ME =-</t>",{createDialog "liberation_notice"},"",999,true,true,"","[] call is_menuok",5];
 chimera_sign addAction ["<t color='#FFFFFF'>-=   TIPS   =-</t>",{createDialog "liberation_tips"},"",998,true,true,"","[] call is_menuok",5];
 
+[] call get_group;
 diag_log "--- Client Init stop ---";

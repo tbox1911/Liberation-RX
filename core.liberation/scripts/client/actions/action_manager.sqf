@@ -2,12 +2,13 @@
 private [ "_idact_build","_idact_arsenal", "_idact_redeploy", "_idact_tutorial",
 		  "_distfob", "_distarsenal","_distspawn","_distredeploy", "_idact_commander",
 		  "_idact_cheat", "_idact_halo", "_idact_heal", "_idact_lead","_idact_drop",
-		  "_idact_send", "_idact_packfob", "_idact_unpackfob"];
+		  "_idact_send", "_idact_packfob", "_idact_unpackfob", "_idact_dog_del", "_idact_dog_find"];
 
 _idact_build = -1; _idact_arsenal = -1; _idact_redeploy = -1; _idact_tutorial = -1; _idact_squad = -1;
 _idact_commander = -1; _idact_cheat = -1; _idact_repackage = -1; _idact_halo = -1; _idact_heal = -1;
 _idact_lead = -1; _idact_drop = -1; _idact_send = -1; _idact_secondary = -1; _idact_packfob = -1;
 _idact_unpackfob = -1; _idact_packtent = 1; _idact_unpacktent = -1; _idact_buyfuel = -1;
+_idact_dog_del = -1; _idact_dog_find = -1;
 
 _distfob = 100;
 _distarsenal = 10;
@@ -15,6 +16,7 @@ _distspawn = 10;
 _distredeploy = 20;
 _distveh = 15;
 _distvehclose = 5;
+_has_dog = false;
 
 waitUntil {sleep 1; !isNil "build_confirmed" };
 waitUntil {sleep 1; !isNil "one_synchro_done" };
@@ -30,6 +32,7 @@ while { true } do {
 	_neartent = nearestObjects [player, ["Land_TentDome_F"], _distvehclose];
 	_near_spawn = (player nearEntities [[Respawn_truck_typename, huron_typename], _distspawn]) + _neartent;
 	_nearfobbox = player nearEntities [[FOB_box_typename, FOB_truck_typename], _distspawn];
+	if (!isNil {player getVariable ["my_dog", nil]}) then { _has_dog = true } else {_has_dog = false};
 
 	// Tuto
 	if ( [] call is_menuok && (player distance lhd) <= 200 ) then {
@@ -40,6 +43,32 @@ while { true } do {
 		if ( _idact_tutorial != -1 ) then {
 			player removeAction _idact_tutorial;
 			_idact_tutorial = -1;
+		};
+	};
+
+	// Dog - Delete
+	if ( [] call is_menuok && _has_dog ) then {
+		if ( _idact_dog_del == -1 ) then {
+			_icon = (getText (configFile >> "CfgVehicleIcons" >> "iconAnimal"));
+			_idact_dog_del = player addAction ["<t color='#80FF80'>" + "-- DOG DISMISS." + "</t> <img size='1' image='" + _icon + "'/>","scripts\client\actions\do_dog.sqf","del",-640,false,true,"",""];
+		};
+	} else {
+		if ( _idact_dog_del != -1 ) then {
+			player removeAction _idact_dog_del;
+			_idact_dog_del = -1;
+		};
+	};
+
+	// Dog - Find
+	if ( [] call is_menuok && _has_dog ) then {
+		if ( _idact_dog_find == -1 ) then {
+			_icon = (getText (configFile >> "CfgVehicleIcons" >> "iconAnimal"));
+			_idact_dog_find = player addAction ["<t color='#80FF80'>" + "-- DOG FIND."+ "</t> <img size='1' image='" + _icon + "'/>","scripts\client\actions\do_dog.sqf","find",-641,false,true,"",""];
+		};
+	} else {
+		if ( _idact_dog_find != -1 ) then {
+			player removeAction _idact_dog_find;
+			_idact_dog_find = -1;
 		};
 	};
 
@@ -249,5 +278,5 @@ while { true } do {
 		};
 	};
 
-	sleep 2;
+	sleep 1;
 };

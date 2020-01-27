@@ -34,7 +34,9 @@ infantry_units = [
 	["B_sniper_F",1,0,0],
 	["B_soldier_PG_F",1,0,0],
 	["B_crew_F",1,0,0],
-	["B_helipilot_F",1,0,0]
+	["B_helipilot_F",1,0,0],
+	["Alsatian_Random_F",1,0,0],
+	["Fin_random_F",1,0,0]
 ];
 
 // calc units price

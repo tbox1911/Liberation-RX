@@ -40,17 +40,32 @@ while { true } do {
 
 	if(buildtype == 1) then {
 		_pos = [(getpos player select 0) + 1,(getpos player select 1) + 1, 0];
-		_grp = group player;
-		if ( manned ) then {
-			_grp = createGroup [GRLIB_side_friendly, true];
+
+		if (_classname isKindOf "Dog_Base_F") then {
+			if (isNil {player getVariable ["my_dog", nil]} ) then {
+				_unit = createAgent [_classname, _pos, [], 5, "CAN_COLLIDE"];
+				_unit setVariable ["BIS_fnc_animalBehaviour_disable", true];
+				_unit allowDamage false;
+				player setVariable ["my_dog", _unit];
+				playSound3D ["a3\sounds_f\ambient\animals\dog1.wss", _unit, false, _pos , 6, 0.8, 0];
+				_unit playMoveNow "Dog_Idle_Bark";
+			} else {
+				hint "Only One Dog !!";
+				sleep 3;
+			};
+		} else {
+			_grp = group player;
+			if ( manned ) then {
+				_grp = createGroup [GRLIB_side_friendly, true];
+			};
+			_unit = _grp createUnit [_classname, _pos, [], 5, "NONE"];
+			_unit setMass 10;
+			_unit setSkill 0.5;
+			_unit setRank "PRIVATE";
+			_unit setVariable [format["Bros_%1",MGI_Grp_ID], true, true];
+			_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+			[_unit] call player_EVH;
 		};
-		_unit = _grp createUnit [_classname, _pos, [], 0, "NONE"];
-		_unit setMass 10;
-		_unit setSkill 0.5;
-		_unit setRank "PRIVATE";
-		_unit setVariable [format["Bros_%1",MGI_Grp_ID], true, true];
-		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-		[_unit] call player_EVH;
 		build_confirmed = 0;
 	} else {
 		if ( buildtype == 8 ) then {
