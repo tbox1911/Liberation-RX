@@ -205,10 +205,10 @@ FAR_HandleRevive = {
 	if (alive _target) then	{
 		player playMove "AinvPknlMstpSlayWrflDnon_medic";
 		sleep 6;
-		if (!("Medikit" in (items player)) ) then {
-			player removeItem "FirstAidKit";
-		};
-		if (_isMedic == 1) then {
+//		if (!("Medikit" in (items player)) ) then {
+//			player removeItem "FirstAidKit";
+//		};
+		if (_isMedic == 1 && "Medikit" in backpackItems _medic) then {
 			_target setDamage 0;
 		} else {
 			_target setDamage 0.25;

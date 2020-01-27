@@ -58,19 +58,19 @@ MGI_fn_Revive = {
 
           _isMedic = getNumber (configfile >> "CfgVehicles" >> typeOf _x >> "attendant");
           if ( _isMedic == 1 &&
-               vehicle _x == _x &&
-               (behaviour _x) != "COMBAT" &&
-               lifeState _x != 'incapacitated' &&
-               isNil {_x getVariable 'MGI_busy'} &&
-               isNil {_x getVariable 'MGI_heal'}
+              "Medikit" in backpackItems _x &&
+              vehicle _x == _x &&
+              (behaviour _x) != "COMBAT" &&
+              lifeState _x != 'incapacitated' &&
+              isNil {_x getVariable 'MGI_busy'} &&
+              isNil {_x getVariable 'MGI_heal'}
           ) then { [_x] spawn MGI_fn_checkWounded };
 
-          if (group player != group _x &&
+          if (group _x != group player &&
               isNil {_x getVariable 'MGI_busy'} &&
               (count (units group player) < GRLIB_max_squad_size+GRLIB_squad_size_bonus)
           ) then { [ _x ] joinSilent group player };
         };
-        sleep 0.5;
       } forEach MGI_bros;
       sleep 10;
     };

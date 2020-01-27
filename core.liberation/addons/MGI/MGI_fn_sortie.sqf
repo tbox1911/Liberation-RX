@@ -20,7 +20,7 @@ if (!isPlayer _medic) then {
     _wnded allowFleeing 0;
     _wnded doFollow player;
     _isMedic = getNumber (configfile >> "CfgVehicles" >> typeOf _medic >> "attendant");
-    if (_isMedic == 1) then {
+    if (_isMedic == 1 && "Medikit" in backpackItems _medic) then {
 			_wnded setDamage 0;
 		} else {
 			_wnded setDamage 0.25;
