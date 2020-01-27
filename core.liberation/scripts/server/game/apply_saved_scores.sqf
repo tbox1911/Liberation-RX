@@ -14,7 +14,7 @@ while { true } do {
 				};
 			} foreach GRLIB_player_scores;
 			_nextplayer setVariable ["GRLIB_score_set", 1, true];
-			};
+		};
 	} foreach allPlayers;
 	sleep 10;
 };
