@@ -122,6 +122,10 @@ FAR_Player_Unconscious = {
 	// Mute Radio
 	5 fadeRadio 0;
 
+	// Dog barf
+	_my_dog = player getVariable ["my_dog", nil];
+	if (!isNil "_my_dog") then { _my_dog setVariable ["do_find", player] };
+	/*
 	//Try to fix AI
 	[] spawn {
 		waitUntil {sleep 1; leader player != player || !alive player};
@@ -139,6 +143,7 @@ FAR_Player_Unconscious = {
 		sleep 15;
 		};
 	};
+	*/
 
 	_unit switchMove "";
 	[_unit] spawn MGI_fn_unconscious;
@@ -183,6 +188,9 @@ FAR_Player_Unconscious = {
 		if (isPlayer _unit) then {
 			_unit setVariable ["ace_sys_wounds_uncon", false];
 		};
+
+		// Dog stop 
+		if (!isNil "_my_dog") then { _my_dog setVariable ["do_find", nil] };
 
 		_unit setUnconscious false;
 		_unit playMove "amovppnemstpsraswrfldnon";

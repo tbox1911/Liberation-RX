@@ -26,10 +26,10 @@ while { GRLIB_endgame == 0 } do {
 
 		if ( count _blufor_mil_sectors > 0 ) then {
 			if ( GRLIB_passive_income ) then {
-
-				_ammo_increase = round ( 50 + (random 25));
-				resources_ammo = resources_ammo + _ammo_increase;
-
+				{
+					private _ammo_collected = _x getVariable ["GREUH_ammo_count",0];
+					_x setVariable ["GREUH_ammo_count", (_ammo_collected + (round ( 50 + (random 25)))), true];
+				} forEach allPlayers;
 			} else {
 				if ( ( { typeof _x == ammobox_b_typename } count vehicles ) <= ( ceil ( ( count _blufor_mil_sectors ) * 1.3 ) ) ) then {
 

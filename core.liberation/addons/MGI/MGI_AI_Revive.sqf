@@ -50,12 +50,16 @@ MGI_fn_Revive = {
     while {true} do {
       MGI_bros = allUnits select {(_x getVariable [format["Bros_%1",MGI_Grp_ID],nil])};
       {
+        // Only for AI
         if (!isplayer _x) then {
+          
+          // Set EH
           if (isnil {_x getVariable "passEH"}) then {
             _x setVariable ["passEH", true];
             _x call MGI_fn_EHDamage;
           };
 
+          // Medic can heal
           _isMedic = getNumber (configfile >> "CfgVehicles" >> typeOf _x >> "attendant");
           if ( _isMedic == 1 &&
               "Medikit" in backpackItems _x &&
@@ -66,10 +70,27 @@ MGI_fn_Revive = {
               isNil {_x getVariable 'MGI_heal'}
           ) then { [_x] spawn MGI_fn_checkWounded };
 
+          // AI rejoin player's group
           if (group _x != group player &&
               isNil {_x getVariable 'MGI_busy'} &&
               (count (units group player) < GRLIB_max_squad_size+GRLIB_squad_size_bonus)
-          ) then { [ _x ] joinSilent group player };
+          ) then { [_x] joinSilent my_group };
+
+          // AI stop doing shit !
+          if ( leader player != player &&
+               lifeState player == 'incapacitated' && 
+               isNil {_x getVariable 'MGI_busy'} &&
+               isNil {_x getVariable 'MGI_heal'} 
+          ) then {
+                doStop _x;
+                _role = assignedVehicleRole _x;
+                if (round (_x distance2D player) < 200 && (_role select 0) != "Turret") then {
+                  unassignVehicle _x;
+                  [_x] orderGetIn false;
+                  _x doMove position player;
+                  _x doFollow player;
+                };
+          };
         };
       } forEach MGI_bros;
       sleep 10;

@@ -26,7 +26,10 @@ if (isServer) then {
 	};
 
 	if ( GRLIB_passive_income ) then {
-		resources_ammo = resources_ammo + (floor (75 + (random 50)));
+		{
+			private _ammo_collected = _x getVariable ["GREUH_ammo_count",0];
+			_x setVariable ["GREUH_ammo_count", (_ammo_collected + (floor (75 + (random 50)))), true];
+		} forEach allPlayers;
 	};
 
 	combat_readiness = combat_readiness + _combat_readiness_increase;
