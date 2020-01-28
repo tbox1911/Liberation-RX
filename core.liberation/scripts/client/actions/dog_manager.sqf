@@ -16,8 +16,10 @@ while { true } do {
 	if (!isNil "_my_dog") then {
 		private _onfoot = vehicle player == player;
 		if (_onfoot) then {
+			_my_dog hideObject false;
 			_my_dog hideObjectGlobal false;
 		} else {
+			_my_dog hideObject true;
 			_my_dog hideObjectGlobal true;
 		};
 

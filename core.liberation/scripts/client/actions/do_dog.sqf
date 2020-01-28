@@ -3,10 +3,14 @@ _my_dog = player getVariable ["my_dog", nil];
 
 if (!isNil "_my_dog") then {
 	if (_cmd == "del") then {
-		playSound3D ["a3\sounds_f\ambient\animals\dog2.wss", _my_dog, false, (getPos _my_dog) , 6, 0.8, 0];
-		sleep 3;
-		deleteVehicle _my_dog;
-		player setVariable ["my_dog", nil];
+		_msg = format ["<t align='center'>Dismiss the Dog<br/>Are you sure ?</t>"];
+		_result = [_msg, "Warning !", true, true] call BIS_fnc_guiMessage;
+		if (_result) then {
+			playSound3D ["a3\sounds_f\ambient\animals\dog2.wss", _my_dog, false, (getPos _my_dog) , 6, 0.8, 0];
+			sleep 3;
+			deleteVehicle _my_dog;
+			player setVariable ["my_dog", nil];
+		};
 	};
 
 	if (_cmd == "find") then {

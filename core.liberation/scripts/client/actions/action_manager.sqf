@@ -59,11 +59,13 @@ while { true } do {
 		};
 	};
 
+	// Dog - Recall
+
 	// Dog - Delete
 	if ( [] call is_menuok && _has_dog ) then {
 		if ( _idact_dog_del == -1 ) then {
 			_icon = (getText (configFile >> "CfgVehicleIcons" >> "iconAnimal"));
-			_idact_dog_del = player addAction ["<t color='#80FF80'>" + "-- DOG DISMISS." + "</t> <img size='1' image='" + _icon + "'/>","scripts\client\actions\do_dog.sqf","del",-641,false,true,"",""];
+			_idact_dog_del = player addAction ["<t color='#FF8080'>" + "-- DOG DISMISS." + "</t> <img size='1' image='" + _icon + "'/>","scripts\client\actions\do_dog.sqf","del",-641,false,true,"",""];
 		};
 	} else {
 		if ( _idact_dog_del != -1 ) then {
