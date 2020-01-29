@@ -29,5 +29,4 @@ if (!isNil "_my_dog") then {
 		};
 		gamelogic globalChat _msg;
 	};
-
 };

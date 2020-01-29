@@ -33,7 +33,7 @@ while { true } do {
 		_man = _my_dog getVariable ["do_find", nil];
 		if (!isNil "_man") then {
 			// Find !
-			if (!alive _man || { _man getVariable ["GRLIB_is_prisonner", false]} ) then {
+			if (!alive _man || side _man == GRLIB_side_friendly) then {
 				_my_dog setVariable ["do_find", nil];
 			} else {
 				private _dist = round (_dog_pos distance2D _man);
