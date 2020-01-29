@@ -23,10 +23,8 @@ _distvehclose = 5;
 is_DogOnDuty = {
 	private _ret = false;
 	private _my_dog = player getVariable ["my_dog", nil];
-	
-	if (!isNil {_my_dog getVariable ["do_find", nil]}) then { 
-		 _ret = true 
-	};
+
+	if (!isNil {_my_dog getVariable ["do_find", nil]}) then { _ret = true };
 	_ret;
 };
 
@@ -44,7 +42,7 @@ while { true } do {
 	_neartent = nearestObjects [player, ["Land_TentDome_F"], _distvehclose];
 	_near_spawn = (player nearEntities [[Respawn_truck_typename, huron_typename], _distspawn]) + _neartent;
 	_nearfobbox = player nearEntities [[FOB_box_typename, FOB_truck_typename], _distspawn];
-	_my_dog =  player getVariable ["my_dog", nil];
+	_my_dog = player getVariable ["my_dog", objNull];
 
 	// Tuto
 	if ( [] call is_menuok && (player distance lhd) <= 200 ) then {
@@ -59,10 +57,10 @@ while { true } do {
 	};
 
 	// Dog - Find
-	if ( [] call is_menuok && !isNil _my_dog ) then {
+	if ( [] call is_menuok && !isNull _my_dog ) then {
 		if ( _idact_dog_find == -1 ) then {
 			_icon = (getText (configFile >> "CfgVehicleIcons" >> "iconAnimal"));
-			_idact_dog_find = player addAction ["<t color='#80FF80'>" + "-- DOG FIND."+ "</t> <img size='1' image='" + _icon + "'/>","scripts\client\actions\do_dog.sqf","find",-640,false,true,"","call is_DogOnDuty"];
+			_idact_dog_find = player addAction ["<t color='#80FF80'>" + "-- DOG FIND."+ "</t> <img size='1' image='" + _icon + "'/>","scripts\client\actions\do_dog.sqf","find",-640,false,true,"","!call is_DogOnDuty"];
 		};
 	} else {
 		if ( _idact_dog_find != -1 ) then {
@@ -72,10 +70,10 @@ while { true } do {
 	};
 
 	// Dog - Recall
-	if ( [] call is_menuok && !isNil _my_dog ) then {
+	if ( [] call is_menuok && !isNull _my_dog ) then {
 		if ( _idact_dog_recall == -1 ) then {
 			_icon = (getText (configFile >> "CfgVehicleIcons" >> "iconAnimal"));
-			_idact_dog_recall = player addAction ["<t color='#80FF80'>" + "-- DOG RECALL."+ "</t> <img size='1' image='" + _icon + "'/>","scripts\client\actions\do_dog.sqf","find",-640,false,true,"","call is_DogOnDuty"];
+			_idact_dog_recall = player addAction ["<t color='#80FF80'>" + "-- DOG RECALL."+ "</t> <img size='1' image='" + _icon + "'/>","scripts\client\actions\do_dog.sqf","recall",-640,false,true,"","call is_DogOnDuty"];
 		};
 	} else {
 		if ( _idact_dog_recall != -1 ) then {
@@ -85,7 +83,7 @@ while { true } do {
 	};
 
 	// Dog - Delete
-	if ( [] call is_menuok && !isNil _my_dog ) then {
+	if ( [] call is_menuok && !isNull _my_dog ) then {
 		if ( _idact_dog_del == -1 ) then {
 			_icon = (getText (configFile >> "CfgVehicleIcons" >> "iconAnimal"));
 			_idact_dog_del = player addAction ["<t color='#FF8080'>" + "-- DOG DISMISS." + "</t> <img size='1' image='" + _icon + "'/>","scripts\client\actions\do_dog.sqf","del",-641,false,true,"",""];
