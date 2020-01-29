@@ -125,25 +125,6 @@ FAR_Player_Unconscious = {
 	// Dog barf
 	_my_dog = player getVariable ["my_dog", nil];
 	if (!isNil "_my_dog") then { _my_dog setVariable ["do_find", player] };
-	/*
-	//Try to fix AI
-	[] spawn {
-		waitUntil {sleep 1; leader player != player || !alive player};
-
-		while {leader player != player || !alive player} do {
-			{
-				doStop _x;
-				private _role = assignedVehicleRole _x;
-				if (round (_x distance2D player) < 200 && (_role select 0) != "Turret") then {
-					unassignVehicle _x;
-					[_x] orderGetIn false;
-					_x doMove position player;
-				};
-			} forEach units player;
-		sleep 15;
-		};
-	};
-	*/
 
 	_unit switchMove "";
 	[_unit] spawn MGI_fn_unconscious;
@@ -189,7 +170,7 @@ FAR_Player_Unconscious = {
 			_unit setVariable ["ace_sys_wounds_uncon", false];
 		};
 
-		// Dog stop 
+		// Dog stop
 		if (!isNil "_my_dog") then { _my_dog setVariable ["do_find", nil] };
 
 		_unit setUnconscious false;

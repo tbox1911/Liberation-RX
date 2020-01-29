@@ -52,7 +52,7 @@ MGI_fn_Revive = {
       {
         // Only for AI
         if (!isplayer _x) then {
-          
+
           // Set EH
           if (isnil {_x getVariable "passEH"}) then {
             _x setVariable ["passEH", true];
@@ -68,29 +68,45 @@ MGI_fn_Revive = {
               lifeState _x != 'incapacitated' &&
               isNil {_x getVariable 'MGI_busy'} &&
               isNil {_x getVariable 'MGI_heal'}
-          ) then { [_x] spawn MGI_fn_checkWounded };
+             ) then { [_x] spawn MGI_fn_checkWounded };
 
           // AI rejoin player's group
           if (group _x != group player &&
               isNil {_x getVariable 'MGI_busy'} &&
               (count (units group player) < GRLIB_max_squad_size+GRLIB_squad_size_bonus)
-          ) then { [_x] joinSilent my_group };
+            ) then { [_x] joinSilent my_group };
+
+// _a = leader group player != player;
+// _b = lifeState player;
+// _c = isNil {_x getVariable 'MGI_busy'};
+// _d = isNil {_x getVariable 'MGI_heal'};
+// _msg = format ["%1 -plead:%2    plife:%3    nbusy:%4    nheal:%5",name _x, _a, _b, _c, _d];
+// //systemchat _msg;
+// diag_log _msg;
 
           // AI stop doing shit !
-          if ( leader player != player &&
-               lifeState player == 'incapacitated' && 
+          if ( leader group player != player &&
+               lifeState player == 'incapacitated' &&
                isNil {_x getVariable 'MGI_busy'} &&
-               isNil {_x getVariable 'MGI_heal'} 
-          ) then {
-                doStop _x;
-                _role = assignedVehicleRole _x;
-                if (round (_x distance2D player) < 200 && (_role select 0) != "Turret") then {
+               isNil {_x getVariable 'MGI_heal'}
+              ) then {
+                //_role = (assignedVehicleRole _x select 0);
+                //systemchat format ["role: %1  dist: %2", (assignedVehicleRole _x select 0), round (_x distance2D player) ];
+                //if ( round (_x distance2D player) < 300 && (assignedVehicleRole _x select 0) != "Turret" ) then {
+                  doStop _x;
                   unassignVehicle _x;
                   [_x] orderGetIn false;
-                  _x doMove position player;
-                  _x doFollow player;
-                };
+                  if (!isnull objectParent _x) then {
+                    doGetOut _x;
+                    sleep 3;
+                  };
+                  _x doMove (getPos player);
+                  _x doFollow leader (group player);
+                  //_x setVariable ["lost_leader", true];
+                  systemchat format ["%1 lost leader", name _x];
+                //};
           };
+
         };
       } forEach MGI_bros;
       sleep 10;
