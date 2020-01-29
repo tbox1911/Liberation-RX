@@ -15,6 +15,9 @@ if ( isNil "commander_classname" ) then { commander_classname = "B_officer_F"; }
 if ( isNil "crewman_classname" ) then { crewman_classname = "B_crew_F" };
 if ( isNil "pilot_classname" ) then { pilot_classname = "B_Helipilot_F" };
 
+//add new featur ["B_medic_F",1,0,0, greuh_inf],
+// check in build menu if player score > _unit select 4
+
 infantry_units = [
 	["B_Soldier_lite_F",1,0,0],
 	["B_soldier_F",1,0,0],
