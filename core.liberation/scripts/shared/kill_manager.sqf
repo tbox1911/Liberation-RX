@@ -72,7 +72,7 @@ if ( isServer ) then {
 					_score = score player;
 					if ( _score < GRLIB_perm_inf ) then { _penalty = 5 };
 					if ( _score > GRLIB_perm_inf && _score < GRLIB_perm_log ) then { _penalty = 10 };
-					_killer addScore -_penalty;
+					_killer addScore - _penalty;
 					[[name _unit, _penalty, _killer] , "remote_call_civ_penalty"] call BIS_fnc_MP;
 				};
 			};
