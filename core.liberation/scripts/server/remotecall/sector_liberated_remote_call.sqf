@@ -30,7 +30,7 @@ if (isServer) then {
 		private _ammo_collected = _x getVariable ["GREUH_ammo_count",0];
 		_x setVariable ["GREUH_ammo_count", _ammo_collected + _income, true];
 	} forEach allPlayers;
-	_text = format ["%1 + %2 Ammo.",localize"STR_PARAM_INCOME_PAY", _income];
+	_text = format ["Reward Received: + %1 Ammo.", _income];
 	[gamelogic, _text] remoteExec ["globalChat", 0];
 
 	combat_readiness = combat_readiness + _combat_readiness_increase;

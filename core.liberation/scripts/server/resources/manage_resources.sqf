@@ -32,7 +32,7 @@ while { GRLIB_endgame == 0 } do {
 					private _ammo_collected = _x getVariable ["GREUH_ammo_count",0];
 					_x setVariable ["GREUH_ammo_count", _ammo_collected + _income, true];
 				} forEach allPlayers;
-				_text = format ["%1 + %2 Ammo.",localize"STR_PARAM_INCOME_PAY", _income];
+				_text = format ["Reward Received: + %1 Ammo.", _income];
 				[gamelogic, _text] remoteExec ["globalChat", 0];
 			} else {
 				if ( ( { typeof _x == ammobox_b_typename } count vehicles ) <= ( ceil ( ( count _blufor_mil_sectors ) * 1.3 ) ) ) then {
