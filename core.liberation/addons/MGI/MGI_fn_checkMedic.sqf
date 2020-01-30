@@ -8,9 +8,12 @@ _check_sortie = {
   private _ret = false;
   //systemchat format ["dbg: wnded 2D dist : %1 sqr dist %2   speed %3", _wnded distance2D _medic, _wnded distanceSqr _medic, round (speed (vehicle _medic)) ];
 
-  if (!alive _medic || !alive _wnded || isNil {_wnded getVariable ['MGI_myMedic', nil]}) then {
-    _fail = 99;
-    _ret = true;
+  if ( !alive _medic || !alive _wnded ||
+       isNil {_wnded getVariable ['MGI_myMedic', nil]} ||
+       vehicle _medic != _medic || vehicle _wnded != _wnded
+    ) then {
+      _fail = 99;
+      _ret = true;
   };
 
   if (_wnded distance2D _medic <= 6 && _fail != 99) then {
