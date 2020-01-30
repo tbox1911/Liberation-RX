@@ -1207,6 +1207,12 @@
 						<Spanish>Reemplazar cajas de munición por ingresos pasivos</Spanish>
 						<Russian>Заменяет ящики с боеприпасами пассивным доходом</Russian>
 				</Key>
+				<Key ID="STR_PARAM_INCOME_PAY">
+						<Original>Reward Received</Original>
+						<French>Récompense Reçu</French>
+						<German>Belohnung Erhalten</German>
+						<Spanish>Recompensa Recibida</Spanish>
+				</Key>
 				<Key ID="STR_BUILD1">
 						<Original>Infantry units</Original>
 						<French>Unités d'infanterie</French>

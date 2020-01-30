@@ -45,6 +45,7 @@ if ( isMultiplayer ) then {
 	GRLIB_cheat_menu = 1;
 	GRLIB_param_wipe_savegame_1 = 0;
 	GRLIB_param_wipe_savegame_2 = 0;
+	GRLIB_passive_income = 0;
 	GRLIB_permissions_param = 1;
 	GRLIB_halo_param = 1;
 	GRLIB_use_whitelist = 0;
