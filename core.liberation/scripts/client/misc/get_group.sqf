@@ -12,5 +12,4 @@ while { my_group in global_locked_group } do {
 [player] joinSilent my_group;
 [my_group, "add"] remoteExec ["addel_group", 2];
 
-diag_log format ["DBG: clt grp: %1 global: %2", my_group, global_locked_group ];
 my_group;

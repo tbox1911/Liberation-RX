@@ -18,5 +18,4 @@ switch (_action) do {
 	default {global_locked_group = _tmp_global_locked_group};
 };
 
-diag_log format ["DBG: srv grp: %1 global: %2", _group, global_locked_group ];
 publicVariable "global_locked_group";
