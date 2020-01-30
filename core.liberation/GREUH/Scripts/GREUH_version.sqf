@@ -54,6 +54,7 @@ player createDiaryRecord ["Table", ["Table", format ["<font color='#00ff40'>+5  
 player createDiaryRecord ["Table", ["Table", format ["-- Killing Table --"]]];
 
 player createDiarySubject ["Shortcut","Shortcut"];
+player createDiaryRecord ["Shortcut", ["Shortcut", format ["Key  <font color='#ff8000'>%1</font>  :  (UserAction n°9) Take Screenshot.", ["User9"] call _getkeyName]]];
 player createDiaryRecord ["Shortcut", ["Shortcut", format ["Key  <font color='#ff8000'>%1</font>  :  (UserAction n°3) Toggle earplugs on/off.", ["User3"] call _getkeyName]]];
 player createDiaryRecord ["Shortcut", ["Shortcut", format ["Key  <font color='#ff8000'>%1</font>  :  (UserAction n°2) Always run.", ["User2"] call _getkeyName]]];
 player createDiaryRecord ["Shortcut", ["Shortcut", format ["Key  <font color='#ff8000'>%1</font>  :  (UserAction n°1) Weapon to the back.", ["User1"] call _getkeyName]]];

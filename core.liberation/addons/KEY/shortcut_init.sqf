@@ -23,3 +23,11 @@ waitUntil {!(isNull (findDisplay 46))};
 (findDisplay 46) displayAddEventHandler ["KeyDown", {
 	if (_this select 1 == (actionKeys 'User3') select 0) then { [] spawn NRE_earplugs };
 }];
+
+//Screenshot
+(findDisplay 46) displayAddEventHandler ["KeyDown", {
+	if (_this select 1 == (actionKeys 'User9') select 0) then {
+		_name = format ["%1_%2_3.png", name player, worldname, round(random 4096) ];
+		screenshot _name;
+	};
+}];
