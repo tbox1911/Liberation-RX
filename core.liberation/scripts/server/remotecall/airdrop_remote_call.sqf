@@ -1,5 +1,4 @@
 if (!isServer) exitWith {};
-
 params [ "_unit", "_class" ];
 {
 	_dist = round (_unit distance2D _x);
