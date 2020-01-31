@@ -82,6 +82,23 @@ if (isNil {BTC_logic getVariable _uid}) then {
 	if (BTC_teamkiller > BTC_tk_last_warning) then {[] spawn BTC_Teamkill;}
 };
 
+// Cleanup
+onPlayerDisconnected {
+	private _my_dog = player getVariable ["my_dog", nil];
+	if (!isNil "_my_dog") then { deleteVehicle _my_dog };
+
+	// unlock car Far
+	_cleanveh = [vehicles, {
+		_x getVariable ["GRLIB_vehicle_owner", ""] == (getPlayerUID player) &&
+		((getPos _x) distance2D ([_x] call F_getNearestFob)) >= 500
+	}] call BIS_fnc_conditionalSelect;
+
+	{
+		_x setVariable ["GRLIB_vehicle_owner", "", true];
+		_x setVariable ["R3F_LOG_disabled", false, true];
+	} forEach _cleanveh;
+};
+
 // Drag & Carry animation fix
 [] spawn {
 	while {true} do
