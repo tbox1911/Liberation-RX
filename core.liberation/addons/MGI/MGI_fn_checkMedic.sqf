@@ -13,7 +13,7 @@ _check_sortie = {
        vehicle _medic != _medic || vehicle _wnded != _wnded
     ) then {
       _fail = 99;
-      _ret = true;
+      //_ret = true;
   };
 
   if (_wnded distance2D _medic <= 6 && _fail != 99) then {
@@ -27,14 +27,20 @@ _check_sortie = {
   _ret;
 };
 
+_release_medic = {
+  params ['_wnded','_medic'];
+  _medic call MGI_fn_medicRelease;
+  _wnded setVariable ['MGI_myMedic', nil];
+};
+
 while {lifeState _wnded == 'incapacitated' || diag_tickTime < _timer + MGI_BleedOut || isNil {_wnded getVariable ['MGI_myMedic', nil]} } do {
 
   if (lifeState _medic == 'incapacitated' || _fail > 6 || isNil {_wnded getVariable ['MGI_myMedic', nil]}) exitWith {
-      _medic call MGI_fn_medicRelease;
-      _wnded setVariable ['MGI_myMedic', nil];
+      [_wnded,_medic] call _release_medic;
   };
 
   if ([_wnded,_medic] call _check_sortie) exitWith {[_wnded,_medic,_timer] call MGI_fn_sortie};
+  if (_fail == 99) exitWith {[_wnded,_medic] call _release_medic};
 
   _msg = "";
   _dist = round (_wnded distance2D _medic);
@@ -50,6 +56,7 @@ while {lifeState _wnded == 'incapacitated' || diag_tickTime < _timer + MGI_Bleed
     };
 
     if ([_wnded,_medic] call _check_sortie) exitWith {[_wnded,_medic,_timer] call MGI_fn_sortie};
+    if (_fail == 99) exitWith {[_wnded,_medic] call _release_medic};
 
     if (_fail < 3) then {
       if (_wnded distance2D _medic < 25) then {
@@ -67,6 +74,8 @@ while {lifeState _wnded == 'incapacitated' || diag_tickTime < _timer + MGI_Bleed
       sleep 1;
       _medic allowDamage true;
       if ([_wnded,_medic] call _check_sortie) exitWith {[_wnded,_medic,_timer] call MGI_fn_sortie};
+      if (_fail == 99) exitWith {[_wnded,_medic] call _release_medic};
+
       _dist = round (_wnded distance2D _medic);
     };
 

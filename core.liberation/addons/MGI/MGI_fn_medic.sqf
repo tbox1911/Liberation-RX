@@ -7,7 +7,7 @@ private _medics = MGI_bros select {
  (!(objectParent _x iskindof "Steerable_Parachute_F")) &&
   !isPlayer _x &&
   _x != _wnded &&
-  alive _x &&
+  alive _x &&  speed (vehicle _x) <= 20 &&
   lifeState _x != 'incapacitated' &&
   isNil {_x getVariable 'MGI_busy'} &&
   _x getVariable [format["Bros_%1",MGI_Grp_ID], nil]
