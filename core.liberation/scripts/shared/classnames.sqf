@@ -19,8 +19,8 @@ if ( isNil "pilot_classname" ) then { pilot_classname = "B_Helipilot_F" };
 // check in build menu if _unit select 4 > player score
 
 infantry_units = [
-	["Alsatian_Random_F",1,0,0,GRLIB_perm_max],
-	["Fin_random_F",1,0,0,0],
+	["Alsatian_Random_F",0,0,0,GRLIB_perm_max],
+	["Fin_random_F",0,0,0,0],
 	["B_soldier_F",1,0,0,0],
 	["B_medic_F",1,0,0,0],
 	["B_engineer_F",1,0,0,0],

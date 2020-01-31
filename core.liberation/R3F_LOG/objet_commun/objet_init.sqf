@@ -88,7 +88,7 @@ else
 
 if (_fonctionnalites select __can_be_moved_by_player) then
 {
-	_objet addAction [("<t color=""#00eeff"">" + format [STR_R3F_LOG_action_deplacer_objet, _nom] + "</t>  <img size='1' image='R3F_LOG\icons\r3f_lift.paa'/>"), {_this call R3F_LOG_FNCT_objet_deplacer}, false, 5, false, true, "", "!R3F_LOG_mutex_local_verrou && R3F_LOG_objet_addAction == _target && R3F_LOG_action_deplacer_objet_valide && (getPosATL player select 2) <= 5"];
+	_objet addAction [("<t color=""#00eeff"">" + format [STR_R3F_LOG_action_deplacer_objet, _nom] + "</t>  <img size='1' image='R3F_LOG\icons\r3f_lift.paa'/>"), {_this call R3F_LOG_FNCT_objet_deplacer}, false, 5, false, true, "", "!R3F_LOG_mutex_local_verrou && R3F_LOG_objet_addAction == _target && R3F_LOG_action_deplacer_objet_valide"];
 };
 
 if (_fonctionnalites select __can_be_towed) then
