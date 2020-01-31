@@ -4,7 +4,7 @@ build_confirmed = 0;
 _maxdist = GRLIB_fob_range;
 _truepos = [];
 _debug_colisions = false;
-
+_price = 0;
 GRLIB_preview_spheres = [];
 while { count GRLIB_preview_spheres < 36 } do {
 	GRLIB_preview_spheres pushback ( "Sign_Sphere100cm_F" createVehicleLocal [ 0, 0, 0 ] );
@@ -28,9 +28,16 @@ while { true } do {
 	if ( buildtype == 99 ) then {
 		_classname = FOB_typename;
 	} else {
-		_classname = ((build_lists select buildtype) select buildindex) select 0;
-		_price = ((build_lists select buildtype) select buildindex) select 2;
-		if (_price != 0) then {
+		_score = score player;
+ 		_build_list = [];
+		{
+			if ( _score >= (_x select 4) ) then {_build_list pushback _x};
+		} forEach (build_lists select buildtype);
+
+		_classname = (_build_list select buildindex) select 0;
+		_price = (_build_list select buildindex) select 2;
+
+		if (buildtype == 1 && _price != 0) then {
 			private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
 			player setVariable ["GREUH_ammo_count", (_ammo_collected - _price), true];
 			playSound "rearm";
@@ -246,8 +253,9 @@ while { true } do {
 
 			if ( !alive player || build_confirmed == 3 ) then {
 				deleteVehicle _vehicle;
+				/*
 				if (buildtype != 99) then {
-					_price = ((build_lists select buildtype) select buildindex) select 2;
+					//_price = ((build_lists select buildtype) select buildindex) select 2;
 					if (_price != 0) then {
 						private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
 						player setVariable ["GREUH_ammo_count", (_ammo_collected + _price), true];
@@ -255,6 +263,7 @@ while { true } do {
 						gamelogic globalChat format ["Cancel Refund: %1, Thank you !", _price];
 					};
 				};
+				*/
 				buildtype = 1;
 			};
 
@@ -312,6 +321,14 @@ while { true } do {
 						_vehicle setVariable ["GRLIB_vehicle_owner", getPlayerUID player, true];
 					};
 				};
+
+				if (_price != 0) then {
+					private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
+					player setVariable ["GREUH_ammo_count", (_ammo_collected - _price), true];
+					playSound "rearm";
+					gamelogic globalChat format ["Build Price: %1, Thank you !", _price];
+				};
+
 			};
 
 			if ( _idactcancel != -1 ) then {

@@ -15,31 +15,30 @@ if ( isNil "commander_classname" ) then { commander_classname = "B_officer_F"; }
 if ( isNil "crewman_classname" ) then { crewman_classname = "B_crew_F" };
 if ( isNil "pilot_classname" ) then { pilot_classname = "B_Helipilot_F" };
 
-//add new featur ["B_medic_F",1,0,0, greuh_inf],
-// check in build menu if player score > _unit select 4
+//add new feature ["B_medic_F",1,0,0, greuh_inf],
+// check in build menu if _unit select 4 > player score
 
 infantry_units = [
-	["B_Soldier_lite_F",1,0,0],
-	["B_soldier_F",1,0,0],
-	["B_medic_F",1,0,0],
-	["B_engineer_F",1,0,0],
-	["B_soldier_GL_F",1,0,0],
-	["B_soldier_M_F",1,0,0],
-	["B_soldier_LAT_F",1,0,0],
-	["B_Sharpshooter_F",1,0,0],
-	["B_HeavyGunner_F",1,0,0],
-	["B_recon_F",1,0,0],
-	["B_recon_medic_F",1,0,0],
-	["B_recon_M_F",1,0,0],
-	["B_Recon_Sharpshooter_F",1,0,0],
-	["B_soldier_AA_F",1,0,0],
-	["B_soldier_AT_F",1,0,0],
-	["B_sniper_F",1,0,0],
-	["B_soldier_PG_F",1,0,0],
-	["B_crew_F",1,0,0],
-	["B_helipilot_F",1,0,0],
-	["Alsatian_Random_F",1,0,0],
-	["Fin_random_F",1,0,0]
+	["Alsatian_Random_F",1,0,0,GRLIB_perm_max],
+	["Fin_random_F",1,0,0,0],
+	["B_soldier_F",1,0,0,0],
+	["B_medic_F",1,0,0,0],
+	["B_engineer_F",1,0,0,0],
+	["B_soldier_GL_F",1,0,0,GRLIB_perm_inf],
+	["B_soldier_M_F",1,0,0,GRLIB_perm_inf],
+	["B_soldier_LAT_F",1,0,0,0],
+	["B_Sharpshooter_F",1,0,0,GRLIB_perm_inf],
+	["B_HeavyGunner_F",1,0,0,GRLIB_perm_inf],
+	["B_recon_F",1,0,0,GRLIB_perm_log],
+	["B_recon_medic_F",1,0,0,GRLIB_perm_log],
+	["B_recon_M_F",1,0,0,GRLIB_perm_log],
+	["B_Recon_Sharpshooter_F",1,0,0,GRLIB_perm_log],
+	["B_soldier_AA_F",1,0,0,GRLIB_perm_log],
+	["B_soldier_AT_F",1,0,0,GRLIB_perm_log],
+	["B_sniper_F",1,0,0,GRLIB_perm_log],
+	["B_soldier_PG_F",1,0,0,GRLIB_perm_log],
+	["B_crew_F",1,0,0,GRLIB_perm_log],
+	["B_helipilot_F",1,0,0,GRLIB_perm_log]
 ];
 
 // calc units price
@@ -47,9 +46,10 @@ _grp = createGroup [GRLIB_side_friendly, true];
 {
 	_unit_class = _x select 0;
 	_unit_mp = _x select 1;
+	_unit_rank = _x select 4;
 	_unit = _grp createUnit [_unit_class, [0,0,0], [], 0, "NONE"];
 	_price = [_unit] call F_loadoutPrice;
-	infantry_units set [_forEachIndex, [_unit_class, _unit_mp, _price, 0] ];
+	infantry_units set [_forEachIndex, [_unit_class, _unit_mp, _price, 0,_unit_rank] ];
 	deleteVehicle _unit;
 } foreach infantry_units ;
 
@@ -58,71 +58,71 @@ if ( isNil "infantry_units_overwrite" ) then { infantry_units_overwrite = false 
 if ( infantry_units_overwrite ) then { infantry_units = infantry_units_extension; } else { infantry_units = infantry_units + infantry_units_extension; };
 
 light_vehicles = [
-	["B_Quadbike_01_F",1,5,1],
-	["C_Scooter_Transport_01_F",1,5,1],
-	["C_Hatchback_01_F",1,10,1],
-	["C_Hatchback_01_sport_F",1,10,1],
-	["C_Offroad_01_F",1,10,1],
-	["C_Offroad_02_unarmed_black_F",1,10,1],
-	["C_SUV_01_F",1,10,1],
-	["C_Van_01_transport_F",1,15,1],
-	["C_Van_01_box_F",1,15,1],
-	["B_MRAP_01_F",2,25,2],
-	["I_MRAP_03_F",2,25,2],
-	["B_Truck_01_transport_F",5,30,5],
-	["B_Truck_01_covered_F",5,30,5],
-	["B_Boat_Transport_01_F",1,25,1],
-	["C_Boat_Transport_02_F",2,25,2],
-	["B_MRAP_01_hmg_F",5,100,2],
-	["B_MRAP_01_gmg_F",5,125,2],
-	["I_MRAP_03_hmg_F",5,100,2],
-	["I_MRAP_03_gmg_F",5,125,2],
-	["I_LT_01_cannon_F",2,200,2],
-	["B_LSV_01_armed_F",5,100,2],
-	["B_UGV_01_F",5,10,5],
-	["B_UGV_01_rcws_F",5,250,5],
-	["B_Boat_Armed_01_minigun_F",5,30,5],
-	["B_SDV_01_F",5,30,5]
+	["B_Quadbike_01_F",1,5,1,0],
+	["B_Boat_Transport_01_F",1,25,1,GRLIB_perm_inf],
+	["C_Boat_Transport_02_F",2,25,2,GRLIB_perm_log],
+	["B_Boat_Armed_01_minigun_F",5,30,5,GRLIB_perm_log],
+	["B_SDV_01_F",5,30,5,GRLIB_perm_log],
+	["C_Scooter_Transport_01_F",1,5,1,0],
+	["C_Hatchback_01_F",1,10,1,0],
+	["C_Hatchback_01_sport_F",1,10,1,GRLIB_perm_inf],
+	["C_Offroad_01_F",1,10,1,0],
+	["C_Offroad_02_unarmed_black_F",1,10,1,GRLIB_perm_inf],
+	["C_SUV_01_F",1,10,1,GRLIB_perm_inf],
+	["C_Van_01_transport_F",1,15,1,0],
+	["C_Van_01_box_F",1,15,1,0],
+	["B_MRAP_01_F",2,25,2,GRLIB_perm_inf],
+	["B_MRAP_01_hmg_F",5,100,2,GRLIB_perm_log],
+	["B_MRAP_01_gmg_F",5,125,2,GRLIB_perm_log],
+	["I_MRAP_03_F",2,25,2,GRLIB_perm_inf],
+	["I_MRAP_03_hmg_F",5,100,2,GRLIB_perm_log],
+	["I_MRAP_03_gmg_F",5,125,2,GRLIB_perm_log],
+	["B_Truck_01_transport_F",5,30,5,GRLIB_perm_log],
+	["B_Truck_01_covered_F",5,30,5,GRLIB_perm_log],
+	["I_LT_01_cannon_F",2,200,2,GRLIB_perm_log],
+	["B_LSV_01_armed_F",5,100,2,GRLIB_perm_log],
+	["B_UGV_01_F",5,10,5,GRLIB_perm_inf],
+	["B_UGV_01_rcws_F",5,250,5,GRLIB_perm_log]
 ];
 if ( isNil "light_vehicles_extension" ) then { light_vehicles_extension = [] };
 if ( isNil "light_vehicles_overwrite" ) then { light_vehicles_overwrite = false };
 if ( light_vehicles_overwrite ) then { light_vehicles = light_vehicles_extension; } else { light_vehicles = light_vehicles + light_vehicles_extension; };
 
 heavy_vehicles = [
-	["B_APC_Tracked_01_rcws_F",10,500,10],
-	["I_APC_Wheeled_03_cannon_F",10,500,10],
-	["B_APC_Tracked_01_AA_F",10,500,10],
-	["B_APC_Wheeled_01_cannon_F",10,500,10],
-	["I_APC_tracked_03_cannon_F",10,500,10],
-	["B_MBT_01_cannon_F",15,1000,15],
-	["B_MBT_01_TUSK_F",15,1500,15],
-	["B_T_APC_Tracked_01_rcws_F",15,1500,15],
-	["B_MBT_01_arty_F",15,3000,15],
-	["B_AFV_Wheeled_01_cannon_F",15,3000,15],
-	["I_MBT_03_cannon_F",15,4500,15]
+	["B_APC_Tracked_01_rcws_F",10,500,10,GRLIB_perm_log],
+	["I_APC_Wheeled_03_cannon_F",10,500,10,GRLIB_perm_log],
+	["B_APC_Tracked_01_AA_F",10,500,10,GRLIB_perm_tank],
+	["B_APC_Wheeled_01_cannon_F",10,500,10,GRLIB_perm_tank],
+	["I_APC_tracked_03_cannon_F",10,500,10,GRLIB_perm_tank],
+	["B_MBT_01_cannon_F",15,1000,15,GRLIB_perm_air],
+	["I_MBT_03_cannon_F",15,4500,15,GRLIB_perm_max],
+	["B_AFV_Wheeled_01_cannon_F",15,3000,15,GRLIB_perm_max],
+	["B_MBT_01_TUSK_F",15,1500,15,GRLIB_perm_air],
+	["B_MBT_01_arty_F",15,3000,15,GRLIB_perm_max],
+	["B_T_APC_Tracked_01_rcws_F",15,1500,15,GRLIB_perm_max]
 ];
 if ( isNil "heavy_vehicles_extension" ) then { heavy_vehicles_extension = [] };
 if ( isNil "heavy_vehicles_overwrite" ) then { heavy_vehicles_overwrite = false };
 if ( heavy_vehicles_overwrite ) then { heavy_vehicles = heavy_vehicles_extension; } else { heavy_vehicles = heavy_vehicles + heavy_vehicles_extension; };
 
 air_vehicles = [
-	["B_UAV_01_F",1,10,5],
-	["B_UAV_06_F",1,30,5],
-	["C_Plane_Civil_01_F",1,50,5],
-	["B_Heli_Light_01_F",1,50,5],
-	["I_Heli_light_03_unarmed_F",1,50,5],
-	["B_Heli_Light_01_armed_F",5,200,10],
-	["B_UAV_02_F",5,1000,5],
-	["B_T_UAV_03_F",5,1500,10],
-	["B_Heli_Transport_03_F",10,1000,15],
-	["B_Heli_Transport_01_camo_F",10,2000,15],
-	["B_T_VTOL_01_infantry_F",10,1000,15],
-	["B_T_VTOL_01_vehicle_F",10,1000,15],
-	["I_Heli_light_03_F",10,2500,20],
-	["B_Heli_Attack_01_F",10,3000,20],
-	["I_Plane_Fighter_04_F", 10,2500,20],
-	["B_Plane_CAS_01_F",20,4000,40],
-	["B_Plane_Fighter_01_F",20,4500,40]
+	["B_UAV_01_F",1,10,5,GRLIB_perm_log],
+	["B_UAV_06_F",1,30,5,GRLIB_perm_tank],
+	["B_UAV_02_F",5,1000,5,GRLIB_perm_air],
+	["B_T_UAV_03_F",5,1500,10,GRLIB_perm_max],
+	["C_Plane_Civil_01_F",1,50,5,GRLIB_perm_air],
+	["B_Heli_Light_01_F",1,50,5,GRLIB_perm_tank],
+	["I_Heli_light_03_unarmed_F",1,50,5,GRLIB_perm_tank],
+	["I_Heli_light_03_F",10,2500,20,GRLIB_perm_air],
+	["B_Heli_Light_01_armed_F",5,200,10,GRLIB_perm_air],
+	["B_Heli_Transport_03_F",10,1000,15,GRLIB_perm_air],
+	["B_Heli_Transport_01_camo_F",10,2000,15,GRLIB_perm_air],
+	["B_T_VTOL_01_infantry_F",10,1000,15,GRLIB_perm_air],
+	["B_T_VTOL_01_vehicle_F",10,1000,15,GRLIB_perm_air],
+	["B_Heli_Attack_01_F",10,3000,20,GRLIB_perm_air],
+	["I_Plane_Fighter_04_F", 10,2500,20,GRLIB_perm_air],
+	["B_Plane_CAS_01_F",20,4000,40,GRLIB_perm_max],
+	["B_Plane_Fighter_01_F",20,4500,40,GRLIB_perm_max]
 ];
 
 blufor_air = [
@@ -153,98 +153,98 @@ if ( isNil "air_vehicles_overwrite" ) then { air_vehicles_overwrite = false };
 if ( air_vehicles_overwrite ) then { air_vehicles = air_vehicles_extension; } else { air_vehicles = air_vehicles + air_vehicles_extension; };
 
 static_vehicles = [
-	["B_UGV_02_Demining_F",0,5,0],
-	["B_Static_Designator_01_F",0,5,0],
-	["B_HMG_01_F",0,10,0],
-	["B_HMG_01_high_F",0,10,0],
-	["B_GMG_01_F",0,20,0],
-	["B_GMG_01_high_F",0,20,0],
-	["B_static_AA_F",0,50,0],
-	["B_static_AT_F",0,50,0],
-	["B_Mortar_01_F",0,500,0],
-	["B_AAA_System_01_F",10,500,0],
-	["B_Ship_Gun_01_F",10,1500,0]
+	["B_UGV_02_Demining_F",0,5,0,GRLIB_perm_inf],
+	["B_Static_Designator_01_F",0,5,0,GRLIB_perm_inf],
+	["B_HMG_01_F",0,10,0,GRLIB_perm_log],
+	["B_HMG_01_high_F",0,10,0,GRLIB_perm_tank],
+	["B_GMG_01_F",0,20,0,GRLIB_perm_log],
+	["B_GMG_01_high_F",0,20,0,GRLIB_perm_tank],
+	["B_static_AA_F",0,50,0,GRLIB_perm_air],
+	["B_static_AT_F",0,50,0,GRLIB_perm_air],
+	["B_Mortar_01_F",0,500,0,GRLIB_perm_max],
+	["B_AAA_System_01_F",10,500,0,GRLIB_perm_max],
+	["B_Ship_Gun_01_F",10,1500,0,GRLIB_perm_max]
 ];
 if ( isNil "static_vehicles_extension" ) then { static_vehicles_extension = [] };
 if ( isNil "static_vehicles_overwrite" ) then { static_vehicles_overwrite = false };
 if ( static_vehicles_overwrite ) then { static_vehicles = static_vehicles_extension; } else { static_vehicles = static_vehicles + static_vehicles_extension; };
 
 buildings = [
-	["Land_PierLadder_F",0,0,0],
-	["Land_CncBarrierMedium4_F",0,0,0],
-	["Land_CncWall4_F",0,0,0],
-	["Land_BagBunker_Small_F",0,0,0],
-	["Land_HBarrier_5_F",0,0,0],
-	["Land_CncWall1_F",0,0,0],
-	["Land_BagFence_Round_F",0,0,0],
-	["Land_BagFence_Long_F",0,0,0],
-	["Land_BagFence_Short_F",0,0,0],
-	["Land_BagFence_Corner_F",0,0,0],
-	["Land_HBarrierWall4_F",0,0,0],
-	["Land_HBarrierWall6_F",0,0,0],
-	["Land_HBarrierWall_corner_F",0,0,0],
-	["Land_HBarrierTower_F",0,0,0],
-	["Land_CncShelter_F",0,0,0],
-	["Land_Cargo_Tower_V1_F",0,0,0],
-	["Land_Cargo_House_V1_F",0,0,0],
-	["Land_Cargo_Patrol_V1_F",0,0,0],
-	["Land_BagBunker_Large_F",0,0,0],
-	["Land_BagBunker_Tower_F",0,0,0],
-	["Land_HBarrierBig_F",0,0,0],
-	["Flag_NATO_F",0,0,0],
-	["Land_PortableLight_single_F",0,0,0],
-	["Land_HelipadSquare_F",0,0,0],
-	["Land_Razorwire_F",0,0,0],
-	["Land_ToolTrolley_02_F",0,0,0],
-	["Land_WeldingTrolley_01_F",0,0,0],
-	["Land_GasTank_02_F",0,0,0],
-	["Land_Workbench_01_F",0,0,0],
-	["Land_WaterTank_F",0,0,0],
-	["Land_WaterBarrel_F",0,0,0],
-	["Land_BarGate_F",0,0,0],
-	["Land_MetalCase_01_large_F",0,0,0],
-	["CargoNet_01_box_F",0,0,0],
-	["CamoNet_BLUFOR_open_F",0,0,0],
-	["CamoNet_BLUFOR_big_F",0,0,0],
-	["Land_CampingChair_V1_F",0,0,0],
-	["Land_CampingChair_V2_F",0,0,0],
-	["Land_CampingTable_F",0,0,0],
-	["MapBoard_altis_F",0,0,0],
-	["Land_Metal_rack_Tall_F",0,0,0],
-	["PortableHelipadLight_01_blue_F",0,0,0],
-	["Land_DieselGroundPowerUnit_01_F",0,0,0],
-	["Land_Pallet_MilBoxes_F",0,0,0],
-	["Land_PaperBox_open_full_F",0,0,0],
-	["Land_ClutterCutter_large_F",0,0,0]
+	["Land_PierLadder_F",0,0,0,GRLIB_perm_inf],
+	["Land_CncBarrierMedium4_F",0,0,0,0],
+	["Land_CncWall4_F",0,0,0,0],
+	["Land_BagBunker_Small_F",0,0,0,0],
+	["Land_HBarrier_5_F",0,0,0,GRLIB_perm_inf],
+	["Land_CncWall1_F",0,0,0,GRLIB_perm_inf],
+	["Land_BagFence_Round_F",0,0,0,GRLIB_perm_log],
+	["Land_BagFence_Long_F",0,0,0,GRLIB_perm_log],
+	["Land_BagFence_Short_F",0,0,0,GRLIB_perm_log],
+	["Land_BagFence_Corner_F",0,0,0,GRLIB_perm_log],
+	["Land_HBarrierWall4_F",0,0,0,GRLIB_perm_tank],
+	["Land_HBarrierWall6_F",0,0,0,GRLIB_perm_tank],
+	["Land_HBarrierWall_corner_F",0,0,0,GRLIB_perm_tank],
+	["Land_HBarrierTower_F",0,0,0,GRLIB_perm_tank],
+	["Land_CncShelter_F",0,0,0,GRLIB_perm_log],
+	["Land_Cargo_Tower_V1_F",0,0,0,GRLIB_perm_tank],
+	["Land_Cargo_House_V1_F",0,0,0,GRLIB_perm_inf],
+	["Land_Cargo_Patrol_V1_F",0,0,0,GRLIB_perm_log],
+	["Land_BagBunker_Large_F",0,0,0,GRLIB_perm_tank],
+	["Land_BagBunker_Tower_F",0,0,0,GRLIB_perm_tank],
+	["Land_HBarrierBig_F",0,0,0,GRLIB_perm_tank],
+	["Flag_NATO_F",0,0,0,GRLIB_perm_tank],
+	["Land_PortableLight_single_F",0,0,0,GRLIB_perm_tank],
+	["Land_HelipadSquare_F",0,0,0,GRLIB_perm_tank],
+	["Land_Razorwire_F",0,0,0,GRLIB_perm_tank],
+	["Land_ToolTrolley_02_F",0,0,0,GRLIB_perm_tank],
+	["Land_WeldingTrolley_01_F",0,0,0,GRLIB_perm_tank],
+	["Land_GasTank_02_F",0,0,0,GRLIB_perm_tank],
+	["Land_Workbench_01_F",0,0,0,GRLIB_perm_tank],
+	["Land_WaterTank_F",0,0,0,GRLIB_perm_tank],
+	["Land_WaterBarrel_F",0,0,0,GRLIB_perm_tank],
+	["Land_BarGate_F",0,0,0,GRLIB_perm_tank],
+	["Land_MetalCase_01_large_F",0,0,0,GRLIB_perm_tank],
+	["CargoNet_01_box_F",0,0,0,GRLIB_perm_tank],
+	["CamoNet_BLUFOR_open_F",0,0,GRLIB_perm_tank],
+	["CamoNet_BLUFOR_big_F",0,0,0,GRLIB_perm_tank],
+	["Land_CampingChair_V1_F",0,0,0,GRLIB_perm_tank],
+	["Land_CampingChair_V2_F",0,0,0,GRLIB_perm_tank],
+	["Land_CampingTable_F",0,0,0,GRLIB_perm_tank],
+	["MapBoard_altis_F",0,0,0,GRLIB_perm_tank],
+	["Land_Metal_rack_Tall_F",0,0,0,GRLIB_perm_tank],
+	["PortableHelipadLight_01_blue_F",0,0,0,GRLIB_perm_tank],
+	["Land_DieselGroundPowerUnit_01_F",0,0,0,GRLIB_perm_tank],
+	["Land_Pallet_MilBoxes_F",0,0,0,GRLIB_perm_tank],
+	["Land_PaperBox_open_full_F",0,0,0,GRLIB_perm_tank],
+	["Land_ClutterCutter_large_F",0,0,0,GRLIB_perm_tank]
 ];
 if ( isNil "buildings_extension" ) then { buildings_extension = [] };
 if ( isNil "buildings_overwrite" ) then { buildings_overwrite = false };
 if ( buildings_overwrite ) then { buildings = buildings_extension; } else { buildings = buildings + buildings_extension; };
 
 support_vehicles = [
-	[Arsenal_typename,0,10,0],
-	["Box_B_UAV_06_medical_F",5,5,0],
-	["Land_TentDome_F",10,5,0],
-	["Land_CanisterFuel_Red_F",0,5,1],
-	["C_Offroad_01_repair_F",5,15,5],
-	["C_Van_01_fuel_F",5,5,20],
-	[Respawn_truck_typename,15,20,5],
-	["B_Slingload_01_Repair_F",10,20,0],
-	["B_Slingload_01_Fuel_F",0,20,30],
-	["B_Slingload_01_Ammo_F",0,40,0],
-	["B_Slingload_01_Medevac_F",10,30,0],
-	["B_Truck_01_ammo_F",5,50,10],
-	["B_Truck_01_Repair_F",10,30,10],
-	["B_Truck_01_fuel_F",5,20,40],
-  	["Box_NATO_Ammo_F",0,20,0],
-  	["Box_NATO_WpsLaunch_F",0,50,0],
-	[FOB_box_typename,50,500,50],
-	[FOB_truck_typename,50,500,50],
-	["B_APC_Tracked_01_CRV_F",10,2000,20],
-	[ammobox_b_typename,0,round(300 / GRLIB_recycling_percentage),0],
-	[ammobox_o_typename,0,round(300 / GRLIB_recycling_percentage),0],
-	[ammobox_i_typename,0,round(300 / GRLIB_recycling_percentage),0],
-	["Box_East_Wps_F",0,round(150 / GRLIB_recycling_percentage),0]
+	[Arsenal_typename,0,10,0,0],
+	["Box_B_UAV_06_medical_F",5,5,0,0],
+	["Land_TentDome_F",10,5,0,0],
+	["Land_CanisterFuel_Red_F",0,5,1,0],
+	["C_Offroad_01_repair_F",5,15,5,GRLIB_perm_inf],
+	["C_Van_01_fuel_F",5,15,20,GRLIB_perm_inf],
+	[Respawn_truck_typename,15,50,5,GRLIB_perm_log],
+	["B_Slingload_01_Repair_F",10,100,0,GRLIB_perm_log],
+	["B_Slingload_01_Fuel_F",0,100,30,GRLIB_perm_log],
+	["B_Slingload_01_Ammo_F",0,150,0,GRLIB_perm_log],
+	["B_Slingload_01_Medevac_F",10,100,0,GRLIB_perm_log],
+	["B_Truck_01_ammo_F",5,150,10,GRLIB_perm_tank],
+	["B_Truck_01_Repair_F",10,130,10,GRLIB_perm_tank],
+	["B_Truck_01_fuel_F",5,120,40,GRLIB_perm_tank],
+  	["Box_NATO_Ammo_F",0,80,0,GRLIB_perm_log],
+  	["Box_NATO_WpsLaunch_F",0,80,0,GRLIB_perm_tank],
+	[FOB_box_typename,50,1500,50,GRLIB_perm_max],
+	[FOB_truck_typename,50,1500,50,GRLIB_perm_max],
+	["B_APC_Tracked_01_CRV_F",10,2000,20,GRLIB_perm_max],
+	[ammobox_b_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
+	[ammobox_o_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
+	[ammobox_i_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
+	["Box_East_Wps_F",0,round(150 / GRLIB_recycling_percentage),0,99999]
 ];
 if ( isNil "support_vehicles_extension" ) then { support_vehicles_extension = [] };
 if ( isNil "support_vehicles_overwrite" ) then { support_vehicles_overwrite = false };
