@@ -23,10 +23,8 @@ waitUntil {
 	sleep 5;
 
 	_nearestfob = [ getpos _unit ] call F_getNearestFob;
-	if ( count _nearestfob == 3) then {
-		if ( ( _unit distance _nearestfob ) < 30 ) then {
-			_is_near_fob = true;
-		};
+	if ( ( _unit distance _nearestfob ) < 30 ) then {
+		_is_near_fob = true;
 	};
 
 	_is_near_blufor = false;
