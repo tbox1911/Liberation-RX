@@ -30,7 +30,7 @@ if ( count _loadouts_data > 0 ) then {
 	lbClear 201;
 	{
 		[_unit, [profileNamespace, _x]] call bis_fnc_loadInventory;
-		_price = [_unit] call F_loadoutPrice;
+		_price = [_unit, true] call F_loadoutPrice;
 		((findDisplay 5251) displayCtrl (201)) lnbAddRow [format [ "%1" ,_x], format [ "%1" ,_price]];
 	} foreach _loadouts_data ;
 	deleteVehicle _unit;

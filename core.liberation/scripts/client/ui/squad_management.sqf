@@ -204,8 +204,7 @@ while { dialog && alive player } do {
 
 		if (GRLIB_squadaction == 2) then {
 			private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
-			private _price = [_selectedmember] call F_loadoutPrice;
-			private _refund = round (_price - round ((_price*20)/100));
+			private _refund = [_selectedmember] call F_loadoutPrice;
 			player setVariable ["GREUH_ammo_count", (_ammo_collected + _refund), true];
 			playSound "rearm";
 			gamelogic globalChat format ["Soldier Refund: %1, Thank you !", _refund];
