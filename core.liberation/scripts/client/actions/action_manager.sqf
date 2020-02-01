@@ -158,7 +158,7 @@ while { true } do {
 	// Air Drop
 	if ( [] call is_menuok && (player distance ([] call F_getNearestFob)) >= (2 * GRLIB_fob_range) && (player distance lhd >= 1000) ) then {
 		if ( _idact_drop == -1 ) then {
-			_idact_drop = player addAction ["<t color='#00F0F0'>-- AIR DROP --</t> <img size='1' image='R3F_LOG\icons\r3f_drop.paa'/>","scripts\client\misc\drop_support.sqf","",-999,false,true];
+			_idact_drop = player addAction ["<t color='#00F0F0'>-- AIR SUPPORT --</t> <img size='1' image='R3F_LOG\icons\r3f_drop.paa'/>","scripts\client\misc\drop_support.sqf","",-999,false,true];
 		};
 	} else {
 		if ( _idact_drop != -1 ) then {
