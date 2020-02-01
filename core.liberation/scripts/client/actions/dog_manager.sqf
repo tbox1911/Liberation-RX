@@ -10,11 +10,10 @@ private _dog_close = true;
 
 while { true } do {
 
-	// Dog
+	// If Dog
 	private _my_dog = player getVariable ["my_dog", nil];
-
-	// Hide Dog
 	if (!isNil "_my_dog") then {
+		// Hide Dog
 		private _onfoot = vehicle player == player;
 		if (_onfoot) then {
 			[player, "show"] call dog_action;

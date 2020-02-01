@@ -190,6 +190,8 @@ buildings = [
 	["Land_Cargo_Patrol_V1_F",0,0,0,GRLIB_perm_log],
 	["Land_BagBunker_Large_F",0,0,0,GRLIB_perm_tank],
 	["Land_BagBunker_Tower_F",0,0,0,GRLIB_perm_tank],
+	["Land_SM_01_shed_F",0,0,0,GRLIB_perm_tank],
+	["Land_Hangar_F",0,0,0,GRLIB_perm_tank],
 	["Land_HBarrierBig_F",0,0,0,GRLIB_perm_tank],
 	["Flag_NATO_F",0,0,0,GRLIB_perm_tank],
 	["Land_PortableLight_single_F",0,0,0,GRLIB_perm_tank],
