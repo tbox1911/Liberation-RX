@@ -37,7 +37,7 @@ infantry_units = [
 	["B_soldier_AT_F",1,0,0,GRLIB_perm_log],
 	["B_sniper_F",1,0,0,GRLIB_perm_log],
 	["B_soldier_PG_F",1,0,0,GRLIB_perm_log],
-	["B_crew_F",1,0,0,GRLIB_perm_log],
+	["B_crew_F",1,0,0,GRLIB_perm_inf],
 	["B_helipilot_F",1,0,0,GRLIB_perm_log]
 ];
 
@@ -296,8 +296,6 @@ if ( isNil "ai_resupply_sources_extension" ) then { ai_resupply_sources_extensio
 // Everything the AI troups should be able to resupply from
 ai_resupply_sources = [] + ai_resupply_sources_extension + [
 	Arsenal_typename,
-//	"Box_NATO_Ammo_F",
-//	"Box_NATO_WpsLaunch_F",
 	"B_Truck_01_ammo_F",
 	"B_Slingload_01_Ammo_F",
 	"B_APC_Tracked_01_CRV_F"
