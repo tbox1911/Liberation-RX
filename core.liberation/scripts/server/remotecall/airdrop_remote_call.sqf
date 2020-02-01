@@ -8,7 +8,7 @@ params [ "_unit", "_class" ];
 _pos = (getPosATL _unit) vectorAdd [0, 0, 400];
 _veh = createVehicle [_class, _pos, [], 0, "NONE"];
 _veh setdir (random 360);
-_text = format ["Air Support Drop : %1 !", getText (configFile >> "CfgVehicles" >> typeOf _veh >> "displayName")];
+_text = format ["Player %1 call Air Support.  Dropping: %2 !", name _unit, getText (configFile >> "CfgVehicles" >> typeOf _veh >> "displayName")];
 [gamelogic, _text] remoteExec ["globalChat", 0];
 [_unit] remoteExec ["remote_call_airdrop", owner _unit];
 

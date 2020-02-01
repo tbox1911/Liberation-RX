@@ -219,7 +219,7 @@ class liberation_airdrop {
   };
   class Header: StdHeader
   {
-    text = "-- Air Drop Menu --";
+    text = "-- Air Support Menu --";
     x = 0.1985 * safezoneW + safezoneX;
     y = 0.1444 * safezoneH + safezoneY;
     w = 0.2375 * safezoneW;
