@@ -14,7 +14,6 @@ colorList =[
 	//["Red", _color + "(0.45,0.005,0,1)"], // #(argb,8,8,3)color(1,0.1,0,0.3)
 	//["Pink", _color + "(0.5,0.03,0.3,1)"], // #(argb,8,8,3)color(1,0.06,0.6,0.5)
 	//["Purple", _color + "(0.1,0,0.3,1)"], // #(argb,8,8,3)color(0.8,0,1,0.1)
-	["NATO", _texDir + "nato.paa"], // #(argb,8,8,3)color(0.584,0.565,0.515,0.3)
 	["Abstract Back", _texDir + "abstraitblack.paa"],
 	["Abstract Mod", _texDir + "abstraitmoderne.paa"],
 	["Abstract Red", _texDir + "abstraitrouge.paa"],
@@ -27,12 +26,10 @@ colorList =[
 	["Digital Woodland", _texDir + "digi_wood.paa"],
 	["Forest 1", _texDir + "foret1.paa"],
 	["Forest 2", _texDir + "foret2.paa"],
-	["hellokitty hellokitty.paa"],
 	["Hex", _texDir + "hex.paa"],
 	["Jungle", _texDir + "jungle.paa"],
 	["Loup", _texDir + "loup.paa"],
 	["Modern Z", _texDir + "modernzig.paa"],
-	["nato", _texDir + "nato.paa"],
 	["Panzer Grey", _texDir + "panzergris.paa"],
 	["Urban", _texDir + "urban.paa"],
 	["Woodland", _texDir + "woodland.paa"],
