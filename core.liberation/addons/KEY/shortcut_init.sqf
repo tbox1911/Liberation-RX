@@ -27,7 +27,7 @@ waitUntil {!(isNull (findDisplay 46))};
 //Screenshot
 (findDisplay 46) displayAddEventHandler ["KeyDown", {
 	if (_this select 1 == (actionKeys 'User9') select 0) then {
-		_name = format ["%1_%2_3.png", name player, worldname, round(random 4096) ];
+		_name = format ["%1_%2_%3-%4_%5.png", name player, worldname, date select 3, date select 4, round(random [100,500,1000])];
 		screenshot _name;
 	};
 }];
