@@ -13,16 +13,16 @@ while { true } do {
 	// Dog
 	private _my_dog = player getVariable ["my_dog", nil];
 
+	// Hide Dog
 	if (!isNil "_my_dog") then {
 		private _onfoot = vehicle player == player;
 		if (_onfoot) then {
-			_my_dog hideObject false;
-			_my_dog hideObjectGlobal false;
+			[player, "show"] call dog_action;
 		} else {
-			_my_dog hideObject true;
-			_my_dog hideObjectGlobal true;
+			[player, "hide"] call dog_action;
 		};
 
+		// Reset Dog
 		private _dog_pos = getPos _my_dog;
 		if ( _onfoot && _dog_pos distance2D player > 300 ) then {
 			_my_dog setPos (getPos player);
@@ -30,6 +30,7 @@ while { true } do {
 			sleep 1;
 		};
 
+		// Mission for Dog
 		_man = _my_dog getVariable ["do_find", nil];
 		if (!isNil "_man") then {
 			// Find !
@@ -39,7 +40,7 @@ while { true } do {
 				private _dist = round (_dog_pos distance2D _man);
 				if (_dist <= 3) then {
 					_my_dog setDir (_my_dog getDir _man);
-					playSound3D ["a3\sounds_f\ambient\animals\dog1.wss", _my_dog, false, _dog_pos, 6, 0.8, 0];
+					[player, "bark"] call dog_action;
 					_my_dog playMoveNow "Dog_Idle_Bark";
 					sleep selectRandom [3,4,5];
 					_my_dog playMoveNow "Dog_Stop";
