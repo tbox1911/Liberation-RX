@@ -28,14 +28,12 @@ colorList =[
 	["Forest 2", _texDir + "foret2.paa"],
 	["Hex", _texDir + "hex.paa"],
 	["Jungle", _texDir + "jungle.paa"],
-	["Loup", _texDir + "loup.paa"],
 	["Modern Z", _texDir + "modernzig.paa"],
 	["Panzer Grey", _texDir + "panzergris.paa"],
 	["Urban", _texDir + "urban.paa"],
 	["Woodland", _texDir + "woodland.paa"],
 	["Woodland Tiger", _texDir + "woodtiger.paa"]
 ];
-
 
 // Barbare
 if (getPlayerUID player in ["76561198085724439", "76561198098904932"]) then {
