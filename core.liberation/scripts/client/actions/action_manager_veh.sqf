@@ -7,6 +7,12 @@ private _recycleable_classnames_exp = [
 	"Land_Cargo_House_V1_ruins_F",
 	"Land_Cargo_Patrol_V1_ruins_F"
 ];
+
+private _big_unit = [
+	"B_T_VTOL_01_infantry_F",
+	"B_T_VTOL_01_vehicle_F"
+];
+
 private _recycleable_blacklist = [];
 {_recycleable_blacklist pushBack ( _x select 0 )} foreach (static_vehicles);
 
@@ -26,7 +32,10 @@ while { true } do {
 	{
 		_vehicle = _x;
 		if (! (_vehicle getVariable ["GRLIB_vehicle_action", false]) ) then {
-
+			_distvehclose = 5;
+			if (typeOf _vehicle in _big_unit) then {
+				_distvehclose = _distvehclose * 4;
+			};
 			_vehicle addAction ["<t color='#00DD00'>-- SELL CARGO --</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_sell.sqf","",-900,true,true,"","[_target] call is_menuok && [_target] call F_check_nearService && (locked _target == 0 || locked _target == 1) && [_this, _target] call is_owner", _distvehclose];
 			_vehicle addAction ["<t color='#00F000'>-- REFUEL --</t> <img size='1' image='R3F_LOG\icons\r3f_fuel.paa'/>", "scripts\client\actions\do_refuel.sqf","",-900,false,true,"","[_target] call is_menuok && (locked _target == 0 || locked _target == 1) && [_target] call F_check_nearFuel", _distvehclose];
 			_vehicle addAction ["<t color='#FFFF00'>-- SALVAGE --</t> <img size='1' image='res\ui_recycle.paa'/>","scripts\client\actions\do_wreck.sqf","",-900,true,true,"","isNull R3F_LOG_joueur_deplace_objet && alive player && vehicle player == player && !(alive _target) && !(_target getVariable ['wreck_in_use', false])", _distveh];
