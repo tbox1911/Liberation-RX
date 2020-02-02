@@ -84,7 +84,7 @@ if (isNil {BTC_logic getVariable _uid}) then {
 
 // Cleanup
 onPlayerDisconnected {
-	[player] remoteExec ["playerDisconected", 2];
+	[player] remoteExec ["playerDisconected_remote_call", 2];
 };
 
 // Drag & Carry animation fix

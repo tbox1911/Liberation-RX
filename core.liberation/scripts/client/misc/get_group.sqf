@@ -10,6 +10,6 @@ while { my_group in global_locked_group } do {
 };
 
 [player] joinSilent my_group;
-[my_group, "add"] remoteExec ["addel_group", 2];
+[my_group, "add"] remoteExec ["addel_group_remote_call", 2];
 
 my_group;

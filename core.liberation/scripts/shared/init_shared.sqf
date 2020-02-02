@@ -11,10 +11,10 @@ start_secondary_remote_call = compileFinal preprocessFileLineNumbers "scripts\se
 airdrop_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\airdrop_remote_call.sqf";
 send_para_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\send_para_remote_call.sqf";
 send_aircraft_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\send_aircraft_remote_call.sqf";
-playerDisconected = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\playerDisconected.sqf";
-addel_group = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\addel_group.sqf";
+playerDisconected_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\playerDisconected_remote_call.sqf";
+addel_group_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\addel_group.sqf";
 sendammo_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\sendammo_remote_call.sqf";
-dog_action = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\dog_action.sqf";
+dog_action_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\dog_action_remote_call.sqf";
 
 // Client Side
 remote_call_sector = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_sector.sqf";

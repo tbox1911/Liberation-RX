@@ -25,7 +25,7 @@ while { true } do {
 				if (!(isNull _grp) && (_grp != group player)) then {
 					if (count units group player == 1) then {
 						if (!(_grp in (global_locked_group))) then {
-							[group player, "del"] remoteExec ["addel_group", 2];
+							[group player, "del"] remoteExec ["addel_group_remote_call", 2];
 							[player] join _grp;
 							my_group = _grp;
 							hint "Squad joined";
@@ -45,11 +45,11 @@ while { true } do {
 
 					if (!(_grp in (global_locked_group))) then {
 						hint "Squad locked !";
-						[_grp, "add"] remoteExec ["addel_group", 2];
+						[_grp, "add"] remoteExec ["addel_group_remote_call", 2];
 						ctrlSetText [516, "UnLock"];
 					} else {
 						hint "Squad unLocked !";
-						[_grp, "del"] remoteExec ["addel_group", 2];
+						[_grp, "del"] remoteExec ["addel_group_remote_call", 2];
 						ctrlSetText [516, "Lock"];
 					};
 				};
