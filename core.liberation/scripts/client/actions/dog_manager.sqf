@@ -36,7 +36,7 @@ while { true } do {
 				private _dist = round (_dog_pos distance2D _man);
 				if (_dist <= 3) then {
 					_my_dog setDir (_my_dog getDir _man);
-					[player, "bark"] remoteExec ["dog_action_remote_call", 2];
+					[_my_dog, "bark"] remoteExec ["dog_action_remote_call", 2];
 					_my_dog playMoveNow "Dog_Idle_Bark";
 					sleep selectRandom [3,4,5];
 					_my_dog playMoveNow "Dog_Stop";
