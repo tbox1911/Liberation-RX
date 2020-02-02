@@ -13,13 +13,10 @@ while { true } do {
 	// If Dog
 	private _my_dog = player getVariable ["my_dog", nil];
 	if (!isNil "_my_dog") then {
+
 		// Hide Dog
+		// go to ..\addons\FAR_revive\FAR_EventHandler.sqf
 		private _onfoot = vehicle player == player;
-		if (_onfoot) then {
-			[player, "show"] call dog_action;
-		} else {
-			[player, "hide"] call dog_action;
-		};
 
 		// Reset Dog
 		private _dog_pos = getPos _my_dog;
@@ -39,7 +36,7 @@ while { true } do {
 				private _dist = round (_dog_pos distance2D _man);
 				if (_dist <= 3) then {
 					_my_dog setDir (_my_dog getDir _man);
-					[player, "bark"] call dog_action;
+					[player, "bark"] remoteExec ["dog_action_remote_call", 2];
 					_my_dog playMoveNow "Dog_Idle_Bark";
 					sleep selectRandom [3,4,5];
 					_my_dog playMoveNow "Dog_Stop";
