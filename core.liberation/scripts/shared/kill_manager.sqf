@@ -69,7 +69,7 @@ if ( isServer ) then {
 				stats_civilians_killed_by_players = stats_civilians_killed_by_players + 1;
 				if ( GRLIB_civ_penalties ) then {
 					_penalty = GRLIB_civ_killing_penalty;
-					_score = score player;
+					_score = score _killer;
 					if ( _score < GRLIB_perm_inf ) then { _penalty = 5 };
 					if ( _score > GRLIB_perm_inf && _score < GRLIB_perm_log ) then { _penalty = 10 };
 					_killer addScore - _penalty;
