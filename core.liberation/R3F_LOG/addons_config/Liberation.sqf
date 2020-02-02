@@ -315,7 +315,9 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	"Land_DieselGroundPowerUnit_01_F",
 	"Land_Pallet_MilBoxes_F",
 	"Land_PaperBox_open_full_F",
-	"Land_ClutterCutter_large_F"
+	"Land_ClutterCutter_large_F",
+	"Land_SM_01_shed_F",
+	"Land_Hangar_F"
 ];
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
