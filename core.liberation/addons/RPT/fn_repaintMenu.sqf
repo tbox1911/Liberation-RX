@@ -46,8 +46,6 @@ if(!isNull (findDisplay 2300)) then {
 		_name = lbText [231, _color];
 		_texture = lbData[231, _color];
 
-		//if (count(crew _veh) != 0) exitWith { hintSilent "Vehicle must be Empty !" };
-		//if (locked _veh == 2) exitWith { hintSilent "Vehicle is locked !" };
 		if (!([player, _vehicle] call is_owner)) exitWith { hintSilent "Wrong Vehicle Owner.\nAccess is Denied !" };
 		if ((damage _vehicle) != 0) exitWith { hintSilent "Damaged Vehicles cannot be Painted !" };
 		if (_veh_class in GRLIB_vehicle_blacklist) exitWith { hintSilent "This Vehicle cannot be Painted !" };
