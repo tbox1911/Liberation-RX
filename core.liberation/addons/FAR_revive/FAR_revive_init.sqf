@@ -82,11 +82,6 @@ if (isNil {BTC_logic getVariable _uid}) then {
 	if (BTC_teamkiller > BTC_tk_last_warning) then {[] spawn BTC_Teamkill;}
 };
 
-// Cleanup
-onPlayerDisconnected {
-	[player] remoteExec ["playerDisconected_remote_call", 2];
-};
-
 // Drag & Carry animation fix
 [] spawn {
 	while {true} do

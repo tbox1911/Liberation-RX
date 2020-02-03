@@ -34,7 +34,7 @@ if (!isDedicated && hasInterface) then {
 	setViewDistance 1600;
 };
 
-Resistance setFriend [East, 0];
-East setFriend [Resistance, 0];
+// Cleanup Player
+onPlayerDisconnected { [_uid] call compile preprocessfilelinenumbers "playerDisconnected.sqf" };
 
 diag_log "--- Init stop ---";
