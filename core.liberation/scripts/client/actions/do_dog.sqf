@@ -12,7 +12,7 @@ if (!isNil "_my_dog") then {
 			_my_dog playMoveNow "Dog_Idle_Bark";
 			sleep 3;
 			deleteVehicle _my_dog;
-			player setVariable ["my_dog", nil];
+			player setVariable ["my_dog", nil, true];
 		};
 	};
 
