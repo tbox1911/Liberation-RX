@@ -54,7 +54,7 @@ while { true } do {
 				_unit setVariable ["BIS_fnc_animalBehaviour_disable", true];
 				_unit allowDamage false;
 				player setVariable ["my_dog", _unit, true];
-				playSound3D ["a3\sounds_f\ambient\animals\dog1.wss", _unit, false, _pos, 6, 0.8, 0];
+				playSound3D ["a3\sounds_f\ambient\animals\dog1.wss", _unit, false, _pos, 2, 0.8, 0];
 				_unit playMoveNow "Dog_Idle_Bark";
 			} else {
 				hint "Only One Dog Allowed !!";
