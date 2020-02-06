@@ -14,7 +14,7 @@ if !(isNull _player) then {
 	private _my_dog = _player getVariable ["my_dog", nil];
 	if (!isNil "_my_dog") then { deleteVehicle _my_dog };
 
-	// unlock car Far
+	// Unlock Car too Far
 	_cleanveh = [vehicles, {
 		_x getVariable ["GRLIB_vehicle_owner", ""] == (getplayerUID _player) &&
 		((getPos _x) distance2D ([_x] call F_getNearestFob)) >= 500
@@ -25,8 +25,13 @@ if !(isNull _player) then {
 		_x setVariable ["R3F_LOG_disabled", false, true];
 	} forEach _cleanveh;
 
+	// Remove Injured AI 
+	{
+		if (lifeState _x == "incapacitated") then { deleteVehicle _x };
+	} forEach units _player;
+
 	_text = format ["Bye bye %1, see you soon...", name _player];
-	[gamelogic, _text] remoteExec ["globalChat", 0];
+	[gamelogic, _text] remoteExec ["globalChat", -2];
 };
 
 

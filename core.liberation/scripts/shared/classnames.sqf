@@ -15,9 +15,6 @@ if ( isNil "commander_classname" ) then { commander_classname = "B_officer_F"; }
 if ( isNil "crewman_classname" ) then { crewman_classname = "B_crew_F" };
 if ( isNil "pilot_classname" ) then { pilot_classname = "B_Helipilot_F" };
 
-//add new feature ["B_medic_F",1,0,0, greuh_inf],
-// check in build menu if _unit select 4 > player score
-
 infantry_units = [
 	["Alsatian_Random_F",0,0,0,GRLIB_perm_max],
 	["Fin_random_F",0,0,0,0],
