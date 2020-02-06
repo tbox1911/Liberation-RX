@@ -1,8 +1,6 @@
 if (!isServer) exitWith {};
 params [ "_uid" ];
 
-diag_log format ["DBG: disconect %1", _uid];
-
 _player = objNull;
 {
 	if (getPlayerUID _x == _uid) exitWith { _player = _x; };
@@ -16,7 +14,7 @@ if !(isNull _player) then {
 
 	// Unlock Car too Far
 	_cleanveh = [vehicles, {
-		_x getVariable ["GRLIB_vehicle_owner", ""] == (getplayerUID _player) &&
+		_x getVariable ["GRLIB_vehicle_owner", ""] == _uid &&
 		((getPos _x) distance2D ([_x] call F_getNearestFob)) >= 500
 	}] call BIS_fnc_conditionalSelect;
 
@@ -25,7 +23,7 @@ if !(isNull _player) then {
 		_x setVariable ["R3F_LOG_disabled", false, true];
 	} forEach _cleanveh;
 
-	// Remove Injured AI 
+	// Remove Injured AI
 	{
 		if (lifeState _x == "incapacitated") then { deleteVehicle _x };
 	} forEach units _player;

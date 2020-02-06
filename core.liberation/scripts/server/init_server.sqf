@@ -91,5 +91,6 @@ if (isNil "global_locked_group") then { global_locked_group = [] };
 publicVariable "global_locked_group";
 
 addMissionEventHandler ['HandleDisconnect',{deleteVehicle (_this select 0);}];
+onPlayerDisconnected { [_uid] call compile preprocessfilelinenumbers "server\game\cleanup_player.sqf" };
 
 diag_log "--- Server Init stop ---";

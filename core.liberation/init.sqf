@@ -34,7 +34,4 @@ if (!isDedicated && hasInterface) then {
 	setViewDistance 1600;
 };
 
-// Cleanup Player
-onPlayerDisconnected { [_uid] call compile preprocessfilelinenumbers "playerDisconnected.sqf" };
-
 diag_log "--- Init stop ---";
