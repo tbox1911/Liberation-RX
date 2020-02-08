@@ -25,9 +25,9 @@ getBallMagazine = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scr
 missionHint = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_missionHint.sqf";
 checkSpawn = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_checkSpawn.sqf";
 updateMissionsList = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_updateMissionsList.sqf";
-createlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_createLanMines.sqf";
-showlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_showLanMines.sqf";
-clearlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_clearLanMines.sqf";
+createlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_createLandMines.sqf";
+showlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_showLandMines.sqf";
+clearlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_clearLandMines.sqf";
 
 waitUntil {sleep 1; !isNil "blufor_sectors" };
 waitUntil {sleep 1; !isNil "sectors_allSectors" };

@@ -91,6 +91,15 @@ unitCreateCustom = {
 			_unit addMagazine "Titan_AA";
 			_unit addMagazine "Titan_AA";
 		};
+		// Titan-AC every 7
+		case (_i % 7 == 0):	{
+			_unit addBackpack "B_Kitbag_mcamo";
+			_unit addWeapon "arifle_Katiba_ARCO_pointer_F";
+			_unit addMagazine "Titan_AT";
+			_unit addWeapon "launch_O_Titan_short_F";
+			_unit addMagazine "Titan_AT";
+			_unit addMagazine "Titan_AP";
+		};
 		// Rifleman
 		default {
 			if (_unit == leader _group) then {
