@@ -30,6 +30,7 @@ _setupObjects =
 
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	[_aiGroup, _missionPos, _nbUnits, "infantry"] call createCustomGroup;
+	[_missionPos, 25] call createlandmines;
 
 	_missionPicture = "\A3\Static_f_gamma\data\ui\gear_StaticTurret_GMG_CA.paa";
 	_missionHintText = "A weapon cache has been spotted near the marker.";
@@ -42,12 +43,14 @@ _waitUntilCondition = nil;
 _failedExec = {
 	// Mission failed
 	{ deleteVehicle _x } forEach [_box1, _box2, _box3];
+	[_missionPos] call clearlandmines;
 };
 
 _successExec = {
 	// Mission completed
 	{ _x setVariable ["R3F_LOG_disabled", false, true] } forEach [_box1, _box2, _box3];
 	_successHintMessage = "The supplies have been collected, well done.";
+	[_missionPos] call showlandmines;
 };
 
 _this call sideMissionProcessor;

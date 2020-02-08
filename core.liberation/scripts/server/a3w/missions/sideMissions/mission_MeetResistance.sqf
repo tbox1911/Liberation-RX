@@ -110,8 +110,8 @@ _successExec = {
 	GRLIB_A3W_Mission_MRR = nil;
 	publicVariable "GRLIB_A3W_Mission_MRR";
 
-	private _nb = round(random [1,1.5,2]);
-	while { _nb >= 0} do {
+	private _nb = round(random [0,1,2]);
+	while { _nb >= 1} do {
 		[ammobox_i_typename, _missionPos, false] call boxSetup;
 		_nb =_nb - 1;
 	};

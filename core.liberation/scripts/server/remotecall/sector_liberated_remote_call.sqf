@@ -32,6 +32,7 @@ if (isServer) then {
 	} forEach allPlayers;
 	_text = format ["Reward Received: + %1 Ammo.", _income];
 	[gamelogic, _text] remoteExec ["globalChat", 0];
+	[markerPos _liberated_sector] call showlandmines;
 
 	combat_readiness = combat_readiness + _combat_readiness_increase;
 	if ( combat_readiness > 100.0 && GRLIB_difficulty_modifier <= 2.0 ) then { combat_readiness = 100.0 };
