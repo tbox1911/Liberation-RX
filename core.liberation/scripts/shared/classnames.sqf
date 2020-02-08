@@ -597,6 +597,7 @@ if ( isNil "civilians_overwrite" ) then { civilians_overwrite = false };
 if ( civilians_overwrite ) then { civilians = civilians_extension; } else { civilians = civilians + civilians_extension; };
 
 civilian_vehicles = [
+	"C_Heli_Light_01_civil_F",
 	"C_Hatchback_01_F",
 	"C_Hatchback_01_sport_F",
 	"C_Offroad_01_F",
@@ -614,7 +615,8 @@ civilian_vehicles = [
 	"C_Van_02_medevac_F",
 	"C_Van_02_service_F",
 	"B_GEN_Van_02_transport_F",
-	"C_Truck_02_transport_F"
+	"C_Truck_02_transport_F",
+	"C_Tractor_01_F"
 ];
 if ( isNil "civilian_vehicles_extension" ) then { civilian_vehicles_extension = [] };
 if ( isNil "civilian_vehicles_overwrite" ) then { civilian_vehicles_overwrite = false };
