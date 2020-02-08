@@ -101,6 +101,8 @@ FAR_Player_Unconscious = {
 	_veh = objectParent _unit;
 	if (!(isNull _veh)) then {[_veh, _unit] spawn MGI_fn_eject};
 
+	[] call R3F_LOG_FNCT_objet_relacher;
+
 	_random_medic_message = floor (random 3);
 	_medic_message = localize "STR_FAR_Need_Medic1";
 	switch (_random_medic_message) do {
