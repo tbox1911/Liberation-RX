@@ -597,7 +597,6 @@ if ( isNil "civilians_overwrite" ) then { civilians_overwrite = false };
 if ( civilians_overwrite ) then { civilians = civilians_extension; } else { civilians = civilians + civilians_extension; };
 
 civilian_vehicles = [
-	"C_Heli_Light_01_civil_F",
 	"C_Hatchback_01_F",
 	"C_Hatchback_01_sport_F",
 	"C_Offroad_01_F",
