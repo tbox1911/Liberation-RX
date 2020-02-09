@@ -1,12 +1,12 @@
 params [ "_vehicle" ];
 
 _expensive_items = [
-	"launch_O_Vorona",
 	"srifle_DMR",
 	"srifle_GM6",
 	"srifle_LRR",
-	"LMG_Mk200",
-	"MMG_0",
+	"MMG_",
+	"LMG_",
+	"launch_O_Vorona",
 	"launch_B_Titan",
 	"launch_O_Titan",
 	"launch_I_Titan"
