@@ -38,6 +38,10 @@ clearMagazineCargoGlobal _newvehicle;
 clearItemCargoGlobal _newvehicle;
 clearBackpackCargoGlobal _newvehicle;
 
+if ( _classname in ["I_E_Truck_02_MRL_F"] ) then {
+	[_newvehicle, ["Opfor",1], true ] call BIS_fnc_initVehicle;
+};
+
 if ( _classname in militia_vehicles ) then {
 	[ _newvehicle ] call F_libSpawnMilitiaCrew;
 } else {
