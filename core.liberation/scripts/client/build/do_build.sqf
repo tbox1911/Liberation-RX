@@ -46,7 +46,7 @@ while { true } do {
 	};
 
 	if(buildtype == 1) then {
-		_pos = [(getpos player select 0) + 1,(getpos player select 1) + 1, 0];
+		_pos = [(getposASL player select 0) + 1,(getpos player select 1) + 1, 0];
 
 		if (_classname isKindOf "Dog_Base_F") then {
 			if (isNil {player getVariable ["my_dog", nil]} ) then {

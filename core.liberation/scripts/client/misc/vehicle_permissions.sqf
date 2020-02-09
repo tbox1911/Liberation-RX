@@ -44,7 +44,7 @@ if (!((_role == "cargo") || (_vehicle isKindOf "Steerable_Parachute_F"))) then {
 		if (isPlayer _unit) then {
 			{
 				if ((_x distance2D _vehicle) <= 500) then {
-					[["A3\Sounds_F\sfx\alarmcar.wss", _vehicle, false,  getPos _vehicle, 1, 1, 500]] remoteExec ["playSound3D", owner _x];
+					[["A3\Sounds_F\sfx\alarmcar.wss", _vehicle, false, getPosASL _vehicle, 1, 1, 500]] remoteExec ["playSound3D", owner _x];
 				};
 			} forEach allPlayers;
 		};

@@ -24,7 +24,7 @@ while { true } do {
 	_randomsound1 = selectRandom [3,4,5,6,7,8,9];
 	_randomsound2 = selectRandom [1,2,3];
 	_deathsound = format ["A3\sounds_f\characters\human-sfx\P0%1\hit_max_%2.wss",_randomsound1,_randomsound2];
-	playSound3D [_deathsound, player, false, getPos player, 1, 1, 0];
+	playSound3D [_deathsound, player, false, getPosASL player, 1, 1, 0];
 	sleep 3.5;
 
 	titleText  [ "" ,"BLACK IN",3];
