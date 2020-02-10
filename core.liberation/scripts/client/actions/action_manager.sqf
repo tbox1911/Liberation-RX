@@ -38,10 +38,12 @@ while { true } do {
 	_nearfob = [] call F_getNearestFob;
 	_fobdistance = round (player distance2D _nearfob);
 
-	_neararsenal = (player nearEntities [Arsenal_typename, _distarsenal]) + (player nearObjects [FOB_typename, _distredeploy]);
-	_neartent = nearestObjects [player, ["Land_TentDome_F"], _distvehclose];
-	_near_spawn = (player nearEntities [[Respawn_truck_typename, huron_typename], _distspawn]) + _neartent;
-	_nearfobbox = player nearEntities [[FOB_box_typename, FOB_truck_typename], _distspawn];
+	_near_arsenal = (player nearEntities [Arsenal_typename, _distarsenal]) + (player nearObjects [FOB_typename, _distredeploy]);
+	_near_tent = nearestObjects [player, ["Land_TentDome_F"], _distvehclose];
+	_near_spawn = (player nearEntities [[Respawn_truck_typename, huron_typename], _distspawn]) + _near_tent;
+	_near_fobbox = player nearEntities [[FOB_box_typename, FOB_truck_typename], _distspawn];
+	_near_fuel = [player, "FUEL", _distvehclose, false] call F_check_near;
+	_near_atm = [player, "ATM", _distvehclose, true] call F_check_near;
 	_my_dog = player getVariable ["my_dog", objNull];
 
 	// Tuto
@@ -108,7 +110,7 @@ while { true } do {
 	};
 
 	// Send Ammo
-	if  ([] call is_menuok && score player > 20 && (_fobdistance < _distarsenal || (player distance lhd) <= 200) || (str cursorObject) find "atm_" > 0 && (player distance2D cursorObject) <= _distvehclose ) then {
+	if  ([] call is_menuok && score player > 20 && ( (player distance lhd) <= 200 || _near_atm ) ) then {
 		if ( _idact_send == -1 ) then {
 			_idact_send = player addAction ["<t color='#80FF00'>-- SEND AMMO</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\misc\send_ammo.sqf","",-981,true,true,"","build_confirmed == 0"];
 		};
@@ -120,7 +122,7 @@ while { true } do {
 	};
 
 	// Fuel
-	if ( [] call is_menuok && (player distance lhd) >= 1000 && (str cursorObject) find "fs_roof_" > 0 && (player distance2D cursorObject) <= _distvehclose ) then {
+	if ( [] call is_menuok && (player distance lhd) >= 1000 && _near_fuel ) then {
 		if ( _idact_buyfuel == -1 ) then {
 			_idact_buyfuel = player addAction ["<t color='#00F080'>-- BUY FUEL</t> <img size='1' image='R3F_LOG\icons\r3f_fuel.paa'/>", "scripts\client\actions\do_buyfuel.sqf","",-900,true,true,"",""];
 		};
@@ -180,7 +182,7 @@ while { true } do {
 	};
 
 	// Arsenal
-	if ( [] call is_menuok && ( count _neararsenal != 0 || (player distance lhd) <= 200) ) then {
+	if ( [] call is_menuok && ( count _near_arsenal != 0 || (player distance lhd) <= 200) ) then {
 		if (_idact_arsenal == -1) then {
 			_idact_arsenal = player addAction ["<t color='#FFFF00'>" + localize "STR_ARSENAL_ACTION" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\open_arsenal.sqf","",-980,true,true,"","build_confirmed == 0"];
 		};
@@ -252,7 +254,7 @@ while { true } do {
 	};
 
 	// Build FOB
-	if ( [] call is_menuok && (_fobdistance > GRLIB_sector_size && (player distance lhd) >= 1000) && cursorObject in _nearfobbox ) then {
+	if ( [] call is_menuok && (_fobdistance > GRLIB_sector_size && (player distance lhd) >= 1000) && cursorObject in _near_fobbox ) then {
 		if ( _idact_unpackfob == -1 ) then {
 			_idact_unpackfob = player addAction ["<t color='#FF6F00'>" + localize "STR_FOB_ACTION" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_build_fob.sqf",cursorObject,-991,false,true,"","build_confirmed == 0 && !(cursorObject getVariable ['box_in_use', false])"];
 		};
@@ -264,7 +266,7 @@ while { true } do {
 	};
 
 	// Pack Beacon
-	if ( [] call is_menuok && (player distance lhd) >= 1000 && cursorObject in _neartent ) then {
+	if ( [] call is_menuok && (player distance lhd) >= 1000 && cursorObject in _near_tent ) then {
 		if ( _idact_packtent == -1 ) then {
 			_idact_packtent = player addAction ["<t color='#FFFF00'>-- PACK BEACON</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_beacon_pack.sqf",cursorObject,-950,true,true,"","!(cursorObject getVariable ['tent_in_use', false])"];
 		};
