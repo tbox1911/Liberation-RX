@@ -14,18 +14,20 @@ GRLIB_Marker_FUEL = [];
 
 [] call compileFinal preprocessFileLineNUmbers "fixed_position.sqf";
 
-private _pos = getArray(configFile >> "CfgWorlds" >> worldName >> "centerPosition");
+_size = (getnumber (configfile >> "cfgworlds" >> worldname >> "mapSize")) / 2;
+_center = [_size,_size,0];
+
 {
   if (_x distance2D lhd > 1000) then {
     _str = str _x;
     //if (_str find "atm_" > 0) then { GRLIB_Marker_ATM pushback _x };
     if (_str find "carservice_" > 0) then { GRLIB_Marker_SRV pushback (getpos _x) };
     if (_str find "cargo_hq_" > 0) then { GRLIB_Marker_SRV pushback (getpos _x) };
-    if (_str find "Land_House_C_12_EP1" > 0) then { GRLIB_Marker_SRV pushback (getpos _x) };
+    if (_str find "house_c_12_ep1" > 0) then { GRLIB_Marker_SRV pushback (getpos _x) };
     if (_str find "fs_roof_" > 0) then { GRLIB_Marker_FUEL pushback (getpos _x) };
-    if (_str find "FuelStation" > 0) then { GRLIB_Marker_FUEL pushback (getpos _x) };
+    if (_str find "fuelstation" > 0) then { GRLIB_Marker_FUEL pushback (getpos _x) };
   };
-} forEach (_pos nearObjects ["House", worldSize / 2]);
+} forEach (_center nearObjects ["House", _size]);
 
 {
   _marker = createMarkerLocal [format ["marked_atm%1" ,_x], markers_reset];
@@ -57,7 +59,6 @@ private _pos = getArray(configFile >> "CfgWorlds" >> worldName >> "centerPositio
 
 //-------------------------------------------------------------
 /*
-//_posh =  ((_pos select 1) * 3) - 1300;
 _posh = 2000;
 _marker = createMarkerLocal ["ATM", markers_reset];
 _marker setMarkerPosLocal [150, _posh,0];
