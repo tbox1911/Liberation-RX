@@ -26,6 +26,7 @@ _center = [_size,_size,0];
     if (_str find "house_c_12_ep1" > 0) then { GRLIB_Marker_SRV pushback (getpos _x) };
     if (_str find "fs_roof_" > 0) then { GRLIB_Marker_FUEL pushback (getpos _x) };
     if (_str find "fuelstation" > 0) then { GRLIB_Marker_FUEL pushback (getpos _x) };
+    if (_str find "benzina_schnell" > 0) then { GRLIB_Marker_FUEL pushback (getpos _x) };
   };
 } forEach (_center nearObjects ["House", _size]);
 
