@@ -21,7 +21,7 @@ if (count _near > 0) then {_ret = true};
 if (_includeFOB) then {
 	_nearfob = [] call F_getNearestFob;
 	_fobdistance = round (_vehpos distance2D _nearfob);
-	if (_fobdistance <= _dist) then {_ret = true};
+	if (_fobdistance <= (_dist * 2) ) then {_ret = true};
 };
 
 _ret;
