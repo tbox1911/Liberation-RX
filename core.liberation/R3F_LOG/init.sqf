@@ -185,7 +185,6 @@
 	R3F_LOG_CST_zero_log = [false, false, false, false, false, false, false, 0, false, 0];
 
 	R3F_LOG_FNCT_determiner_fonctionnalites_logistique = compile preprocessFile "R3F_LOG\fonctions_generales\determiner_fonctionnalites_logistique.sqf";
-
 	R3F_LOG_FNCT_calculer_chargement_vehicule = compile preprocessFile "R3F_LOG\transporteur\calculer_chargement_vehicule.sqf";
 	R3F_LOG_FNCT_transporteur_charger_auto = compile preprocessFile "R3F_LOG\transporteur\charger_auto.sqf";
 
