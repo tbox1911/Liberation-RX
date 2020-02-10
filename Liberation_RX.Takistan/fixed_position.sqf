@@ -11,3 +11,6 @@ executed in console, result in RPT file.
 */
 GRLIB_Marker_ATM =[
 ];
+
+GRLIB_Marker_SRV = [
+];
