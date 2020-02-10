@@ -21,7 +21,9 @@ private _pos = getArray(configFile >> "CfgWorlds" >> worldName >> "centerPositio
     //if (_str find "atm_" > 0) then { GRLIB_Marker_ATM pushback _x };
     if (_str find "carservice_" > 0) then { GRLIB_Marker_SRV pushback (getpos _x) };
     if (_str find "cargo_hq_" > 0) then { GRLIB_Marker_SRV pushback (getpos _x) };
+    if (_str find "Land_House_C_12_EP1" > 0) then { GRLIB_Marker_SRV pushback (getpos _x) };
     if (_str find "fs_roof_" > 0) then { GRLIB_Marker_FUEL pushback (getpos _x) };
+    if (_str find "FuelStation" > 0) then { GRLIB_Marker_FUEL pushback (getpos _x) };
   };
 } forEach (_pos nearObjects ["House", worldSize / 2]);
 
