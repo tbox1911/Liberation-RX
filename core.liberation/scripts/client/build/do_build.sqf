@@ -46,7 +46,7 @@ while { true } do {
 	};
 
 	if(buildtype == 1) then {
-		_pos = [(getposASL player select 0) + 1,(getpos player select 1) + 1, 0];
+		_pos = [(getpos player select 0) + 1,(getpos player select 1) + 1, 0];
 
 		if (_classname isKindOf "Dog_Base_F") then {
 			if (isNil {player getVariable ["my_dog", nil]} ) then {
@@ -54,7 +54,7 @@ while { true } do {
 				_unit setVariable ["BIS_fnc_animalBehaviour_disable", true];
 				_unit allowDamage false;
 				player setVariable ["my_dog", _unit, true];
-				playSound3D ["a3\sounds_f\ambient\animals\dog1.wss", _unit, false, _pos, 2, 0.8, 0];
+				playSound3D ["a3\sounds_f\ambient\animals\dog1.wss", _unit, false, getPosASL _unit, 2, 0.8, 0];
 				_unit playMoveNow "Dog_Idle_Bark";
 			} else {
 				hint "Only One Dog Allowed !!";
