@@ -459,8 +459,7 @@ opfor_vehicles = [
 	"O_MRAP_02_hmg_F",
 	"O_MRAP_02_hmg_F",
 	"O_MBT_04_cannon_F",
-	"O_MBT_04_command_F",
-	"I_E_Truck_02_MRL_F"
+	"O_MBT_04_command_F"
 ];
 if ( isNil "opfor_vehicles_extension" ) then { opfor_vehicles_extension = [] };
 if ( isNil "opfor_vehicles_overwrite" ) then { opfor_vehicles_overwrite = false };
@@ -491,8 +490,7 @@ opfor_battlegroup_vehicles = [
 	"O_Heli_Transport_04_bench_F",
 	"O_Truck_03_transport_F",
 	"O_MBT_04_cannon_F",
-	"O_MBT_04_command_F",
-	"I_E_Truck_02_MRL_F"
+	"O_MBT_04_command_F"
 ];
 if ( isNil "opfor_battlegroup_vehicles_extension" ) then { opfor_battlegroup_vehicles_extension = [] };
 if ( isNil "opfor_battlegroup_vehicles_overwrite" ) then { opfor_battlegroup_vehicles_overwrite = false };
@@ -574,7 +572,6 @@ opfor_recyclable = [
 	["O_Heli_Light_02_F",0,round (600 / GRLIB_recycling_percentage),0],
 	["O_Heli_Light_02_v2_F",0,round (600 / GRLIB_recycling_percentage),0],
 	["O_Heli_Transport_04_bench_F",0,round (500 / GRLIB_recycling_percentage),0],
-	["I_E_Truck_02_MRL_F",0,round (800 / GRLIB_recycling_percentage),0],
 	["O_Plane_CAS_02_F",0,round (1000 / GRLIB_recycling_percentage),0],
 	["O_Plane_Fighter_02_F",0,round (1000 / GRLIB_recycling_percentage),0],
 	["O_T_VTOL_02_vehicle_F",0,round (1000 / GRLIB_recycling_percentage),0]
