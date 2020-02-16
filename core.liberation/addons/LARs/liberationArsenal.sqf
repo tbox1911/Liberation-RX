@@ -2,7 +2,10 @@
 // Directly call by init box "myLARsBox"
 
 if (isDedicated) exitWith {};
-waitUntil {sleep 0.5; !(isNil "GRLIB_blacklisted_from_arsenal") };
+waitUntil {sleep 1; !isNil "GRLIB_limited_arsenal"};
+
+//Blacklist
+[] call compileFinal preprocessFileLineNUmbers "addons\LARs\liberationBlacklist.sqf";
 
 //[ myBox, [ whitelist, blacklist ], targets, name, condition ] call LARs_fnc_blacklistArsenal;
 [_this, [west, GRLIB_blacklisted_from_arsenal], false, "Liberation", { true }] call LARs_fnc_blacklistArsenal;
