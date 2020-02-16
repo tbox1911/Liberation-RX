@@ -12,6 +12,11 @@ private _extra_bounty = [
 _bounty = 10;
 _bonus = 2;
 
+if ( _vehicle isKindOf "Ship" ) then {
+	_bounty = 15;
+	_bonus = 2;
+};
+
 if ( _vehicle isKindOf "Wheeled_APC_F" ) then {
 	_bounty = 20;
 	_bonus = 3;
