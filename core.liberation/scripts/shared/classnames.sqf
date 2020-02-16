@@ -638,6 +638,8 @@ if ( civilian_vehicles_overwrite ) then { civilian_vehicles = civilian_vehicles_
 
 box_transport_config = [
 	[ "C_Offroad_01_F", -5, [0, -1.55, 0.2] ],
+	[ "B_G_Offroad_01_F", -5, [0, -1.55, 0.2] ],
+	[ "I_G_Offroad_01_F", -5, [0, -1.55, 0.2] ],
 	[ "B_Truck_01_transport_F", -6.5, [0, -0.4, 0.4], [0, -2.1, 0.4], [0, -3.8, 0.4] ],
 	[ "B_Truck_01_covered_F", -6.5, [0, -0.4, 0.4], [0, -2.1, 0.4], [0, -3.8, 0.4] ],
 	[ "I_Truck_02_transport_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
@@ -727,7 +729,7 @@ opfor_squad_8_infkillers = [opfor_squad_leader,opfor_machinegunner,opfor_machine
 opfor_squad_8_tankkillers = [opfor_squad_leader,opfor_medic,opfor_machinegunner,opfor_rpg,opfor_rpg,opfor_at,opfor_at,opfor_at];
 opfor_squad_8_airkillers = [opfor_squad_leader,opfor_medic,opfor_machinegunner,opfor_rpg,opfor_rpg,opfor_aa,opfor_aa,opfor_aa];
 all_resistance_troops = [] + militia_squad;
-all_hostile_classnames = (land_vehicles_classnames + opfor_air + opfor_choppers + opfor_troup_transports + opfor_vehicles_low_intensity);
+all_hostile_classnames = (land_vehicles_classnames + opfor_air + opfor_choppers + opfor_troup_transports + opfor_vehicles_low_intensity + opfor_boat);
 { land_vehicles_classnames pushback (_x select 0); } foreach (heavy_vehicles + light_vehicles);
 air_vehicles_classnames = [] + opfor_choppers;
 { air_vehicles_classnames pushback (_x select 0); } foreach air_vehicles;
