@@ -30,12 +30,12 @@ if (do_action == 1) then {
 	if ( _timer >= 1 ) exitWith {hint format ["Air Support not ready !\nNew call in %1 min\n\nPlease wait...", _timer]};
 	_cost = 0;
 	switch (air_type) do {
-		case 1 : {_class=["I_Quadbike_01_F","I_G_Offroad_01_F","I_G_Quadbike_01_F","C_Offroad_01_F","B_G_Offroad_01_F"] call BIS_fnc_selectRandom;_cost=50};
-		case 2 : {_class=["I_G_Offroad_01_armed_F","B_G_Offroad_01_armed_F","O_G_Offroad_01_armed_F","I_C_Offroad_02_LMG_F"] call BIS_fnc_selectRandom;_cost=100};
-		case 3 : {_class=["I_MRAP_03_hmg_F","I_MRAP_03_hmg_F","B_T_MRAP_01_hmg_F","B_T_MRAP_01_gmg_F"] call BIS_fnc_selectRandom;_cost=200};
-		case 4 : {_class=["B_Truck_01_transport_F","B_Truck_01_covered_F","I_Truck_02_covered_F","I_Truck_02_transport_F"] call BIS_fnc_selectRandom;_cost=300};
-		case 5 : {_class=["I_APC_tracked_03_cannon_F","I_APC_Wheeled_03_cannon_F","B_APC_Wheeled_01_cannon_F"] call BIS_fnc_selectRandom;_cost=750};
-		case 6 : {_class=["C_Boat_Civil_01_F","C_Boat_Transport_02_F","B_Boat_Transport_01_F","I_C_Boat_Transport_02_F"] call BIS_fnc_selectRandom;_cost=250};
+		case 1 : {_class=GRLIB_AirDrop_1 call BIS_fnc_selectRandom;_cost=50};
+		case 2 : {_class=GRLIB_AirDrop_2 call BIS_fnc_selectRandom;_cost=100};
+		case 3 : {_class=GRLIB_AirDrop_3 call BIS_fnc_selectRandom;_cost=200};
+		case 4 : {_class=GRLIB_AirDrop_4 call BIS_fnc_selectRandom;_cost=300};
+		case 5 : {_class=GRLIB_AirDrop_5 call BIS_fnc_selectRandom;_cost=750};
+		case 6 : {_class=GRLIB_AirDrop_6 call BIS_fnc_selectRandom;_cost=250};
 		case 7 : {_cost=2000};
 	};
 
