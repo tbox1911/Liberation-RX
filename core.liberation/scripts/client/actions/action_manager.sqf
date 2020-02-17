@@ -293,7 +293,6 @@ while { true } do {
 	if ( ([] call F_isAdmin) && GRLIB_cheat_menu ) then {
 		if ( _idact_cheat == -1 ) then {
 			_idact_cheat = player addAction ["<t color='#FF8000'>-- CHEAT MENU :)</t>","scripts\client\commander\cheat_menu.sqf","",-999,false,true,"",""];
-			player onMapSingleClick "if (_alt) then {player setPosATL _pos}";
 		};
 	} else {
 		if ( _idact_cheat != -1 ) then {
