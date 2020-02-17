@@ -69,6 +69,7 @@ if ( dojump > 0 ) then {
 	halojumping = true;
 	cutRsc ["fasttravel", "PLAIN", 1];
 	playSound "parasound";
+	[player, "hide"] remoteExec ["dog_action_remote_call", 2];
 	sleep 2;
 	halo_position = [ halo_position, random 250, random 360 ] call BIS_fnc_relPos;
 	halo_position = [ halo_position select 0, halo_position select 1, GRLIB_halo_altitude + (random 200) ];
