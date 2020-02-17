@@ -12,6 +12,7 @@ if (!isDamageAllowed player) then {
 } else {
 	_ctrl ctrlSetChecked false;
 };
+player onMapSingleClick "if (_alt) then {player setPosATL _pos}";
 
 waitUntil { !dialog || !(alive player) };
 hintSilent "";
