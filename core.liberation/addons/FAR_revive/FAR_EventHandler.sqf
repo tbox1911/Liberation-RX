@@ -85,7 +85,12 @@ if (_unit == player && alive player && player isKindOf "Man") then {
 	_unit addEventHandler ["GetOutMan", {
 		1 fadeSound 1;
 		NRE_EarplugsActive = 0;
-		player selectWeapon primaryWeapon player;
-		[player, "show"] remoteExec ["dog_action_remote_call", 2];
+		_pos = getPosATL player;
+		if ( _pos select 2 > 100 ) then {
+			[player, _pos] spawn paraDrop;
+		} else {
+			player selectWeapon primaryWeapon player;
+			[player, "show"] remoteExec ["dog_action_remote_call", 2];
+		};
 	}];
 };

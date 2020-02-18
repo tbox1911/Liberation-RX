@@ -43,6 +43,7 @@ is_menuok = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_menuo
 is_local = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_local.sqf";
 player_EVH = compileFinal preprocessFileLineNumbers "addons\FAR_revive\FAR_EventHandler.sqf";
 get_group = compileFinal preprocessFileLineNumbers "scripts\client\misc\get_group.sqf";
+paraDrop = compileFinal preprocessFileLineNumbers "scripts\client\spawn\paraDrop.sqf";
 
 [] execVM "scripts\client\spawn\redeploy_manager.sqf";
 [] execVM "scripts\client\actions\action_manager.sqf";
