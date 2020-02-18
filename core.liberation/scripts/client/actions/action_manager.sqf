@@ -1,15 +1,15 @@
 
 private [ "_idact_build","_idact_arsenal", "_idact_redeploy", "_idact_tutorial",
 		  "_distfob", "_distarsenal","_distspawn","_distredeploy", "_idact_commander",
-		  "_idact_cheat", "_idact_halo", "_idact_heal", "_idact_lead","_idact_drop",
-		  "_idact_send", "_idact_packfob", "_idact_unpackfob", "_idact_dog_del",
-		  "_idact_dog_find", "_idact_dog_recall"];
+		  "_idact_halo", "_idact_heal", "_idact_lead","_idact_drop", "_idact_squad",
+		  "_idact_send", "_idact_packfob", "_idact_unpackfob", "_idact_packtent", "_idact_unpacktent",
+		  "_idact_dog_del", "_idact_dog_find", "_idact_dog_recall"];
 
 _idact_build = -1; _idact_arsenal = -1; _idact_redeploy = -1; _idact_tutorial = -1; _idact_squad = -1;
-_idact_commander = -1; _idact_cheat = -1; _idact_repackage = -1; _idact_halo = -1; _idact_heal = -1;
-_idact_lead = -1; _idact_drop = -1; _idact_send = -1; _idact_secondary = -1; _idact_packfob = -1;
-_idact_unpackfob = -1; _idact_packtent = 1; _idact_unpacktent = -1; _idact_buyfuel = -1;
-_idact_dog_del = -1; _idact_dog_find = -1;  _idact_dog_recall = -1;
+_idact_commander = -1; _idact_repackage = -1; _idact_halo = -1; _idact_heal = -1; _idact_lead = -1;
+_idact_drop = -1; _idact_send = -1; _idact_secondary = -1; _idact_packfob = -1; _idact_unpackfob = -1;
+_idact_packtent = -1; _idact_unpacktent = -1; _idact_buyfuel = -1; _idact_dog_del = -1; _idact_dog_find = -1;
+_idact_dog_recall = -1;
 
 _distfob = 100;
 _distarsenal = 10;
@@ -17,8 +17,6 @@ _distspawn = 10;
 _distredeploy = 20;
 _distveh = 15;
 _distvehclose = 5;
-//_my_dog = nil;
-//_man = nil;
 
 is_DogOnDuty = {
 	private _ret = false;
@@ -45,6 +43,7 @@ while { true } do {
 	_near_fuel = [player, "FUEL", _distvehclose, false] call F_check_near;
 	_near_atm = [player, "ATM", _distvehclose, true] call F_check_near;
 	_my_dog = player getVariable ["my_dog", objNull];
+
 
 	// Tuto
 	if ( [] call is_menuok && (player distance lhd) <= 200 ) then {
@@ -160,7 +159,7 @@ while { true } do {
 	// Air Drop
 	if ( [] call is_menuok && (player distance ([] call F_getNearestFob)) >= (2 * GRLIB_fob_range) && (player distance lhd >= 1000) ) then {
 		if ( _idact_drop == -1 ) then {
-			_idact_drop = player addAction ["<t color='#00F0F0'>-- AIR SUPPORT --</t> <img size='1' image='R3F_LOG\icons\r3f_drop.paa'/>","scripts\client\misc\drop_support.sqf","",-999,false,true];
+			_idact_drop = player addAction ["<t color='#00F0F0'>-- AIR SUPPORT --</t> <img size='1' image='R3F_LOG\icons\r3f_drop.paa'/>","scripts\client\misc\drop_support.sqf","",-980,false,true];
 		};
 	} else {
 		if ( _idact_drop != -1 ) then {
@@ -220,7 +219,7 @@ while { true } do {
 	// Commander Menu
 	if ( [] call is_menuok && ( player == ( [] call F_getCommander ) || [] call F_isAdmin ) && GRLIB_permissions_param ) then {
 		if ( _idact_commander == -1 ) then {
-			_idact_commander = player addAction ["<t color='#FF8000'>" + localize "STR_COMMANDER_ACTION" + "</t> <img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/>","scripts\client\commander\open_permissions.sqf","",-995,false,true,"","build_confirmed == 0"];
+			_idact_commander = player addAction ["<t color='#FF8000'>" + localize "STR_COMMANDER_ACTION" + "</t> <img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/>","scripts\client\commander\open_permissions.sqf","",-996,false,true,"","build_confirmed == 0"];
 		};
 	} else {
 		if ( _idact_commander != -1 ) then {
@@ -232,7 +231,7 @@ while { true } do {
 	// Secondary Objectives
 	if ( [] call is_menuok && count GRLIB_all_fobs > 0 && ( GRLIB_endgame == 0 ) && (_fobdistance < _distredeploy || (player distance lhd) <= 200) && (score player >= GRLIB_perm_air ||  player == ( [] call F_getCommander ) || [] call F_isAdmin) ) then {
 		if ( _idact_secondary == -1 ) then {
-			_idact_secondary = player addAction ["<t color='#FFFF00'>" + localize "STR_SECONDARY_OBJECTIVES" + "</t>","scripts\client\ui\secondary_ui.sqf","",-993,false,true,"","build_confirmed == 0"];
+			_idact_secondary = player addAction ["<t color='#FFFF00'>" + localize "STR_SECONDARY_OBJECTIVES" + "</t>","scripts\client\ui\secondary_ui.sqf","",-995,false,true,"","build_confirmed == 0"];
 		};
 	} else {
 		if ( _idact_secondary != -1 ) then {
@@ -244,7 +243,7 @@ while { true } do {
 	// Pack FOB
 	if ( [] call is_menuok && (_fobdistance < _distarsenal && (player distance lhd) >= 1000) && ( (score player >= GRLIB_perm_max) || (player == ( [] call F_getCommander ) || [] call F_isAdmin) )) then {
 		if ( _idact_packfob == -1 ) then {
-			_idact_packfob = player addAction ["<t color='#FF6F00'>" + localize "STR_FOB_REPACKAGE" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_repackage_fob.sqf",([] call F_getNearestFob),-991,false,true,"","build_confirmed == 0 && !(cursorObject getVariable ['fob_in_use', false])"];
+			_idact_packfob = player addAction ["<t color='#FF6F00'>" + localize "STR_FOB_REPACKAGE" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_repackage_fob.sqf",([] call F_getNearestFob),-981,false,true,"","build_confirmed == 0 && !(cursorObject getVariable ['fob_in_use', false])"];
 		};
 	} else {
 		if ( _idact_packfob != -1 ) then {
@@ -256,7 +255,7 @@ while { true } do {
 	// Build FOB
 	if ( [] call is_menuok && (_fobdistance > GRLIB_sector_size && (player distance lhd) >= 1000) && cursorObject in _near_fobbox ) then {
 		if ( _idact_unpackfob == -1 ) then {
-			_idact_unpackfob = player addAction ["<t color='#FF6F00'>" + localize "STR_FOB_ACTION" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_build_fob.sqf",cursorObject,-991,false,true,"","build_confirmed == 0 && !(cursorObject getVariable ['box_in_use', false])"];
+			_idact_unpackfob = player addAction ["<t color='#FF6F00'>" + localize "STR_FOB_ACTION" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_build_fob.sqf",cursorObject,-981,false,true,"","build_confirmed == 0 && !(cursorObject getVariable ['box_in_use', false])"];
 		};
 	} else {
 		if ( _idact_unpackfob != -1 ) then {
@@ -286,19 +285,6 @@ while { true } do {
 		if ( _idact_unpacktent != -1 ) then {
 			player removeAction _idact_unpacktent;
 			_idact_unpacktent = -1;
-		};
-	};
-
-	// Cheat Menu
-	if ( ([] call F_isAdmin) && GRLIB_cheat_menu ) then {
-		if ( _idact_cheat == -1 ) then {
-			_idact_cheat = player addAction ["<t color='#FF8000'>-- CHEAT MENU :)</t>","scripts\client\commander\cheat_menu.sqf","",-999,false,true,"",""];
-		};
-	} else {
-		if ( _idact_cheat != -1 ) then {
-			player removeAction _idact_cheat;
-			player onMapSingleClick "";
-			_idact_cheat = -1;
 		};
 	};
 
