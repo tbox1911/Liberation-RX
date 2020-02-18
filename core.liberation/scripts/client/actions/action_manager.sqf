@@ -33,8 +33,7 @@ waitUntil {sleep 1; !isNil "GRLIB_player_spawned" };
 waituntil {sleep 1; GRLIB_player_spawned; (player getVariable ["GRLIB_score_set", 0] == 1)};
 
 while { true } do {
-	_nearfob = [] call F_getNearestFob;
-	_fobdistance = round (player distance2D _nearfob);
+	_fobdistance = round (player distance2D ([] call F_getNearestFob));
 
 	_near_arsenal = (player nearEntities [Arsenal_typename, _distarsenal]) + (player nearObjects [FOB_typename, _distredeploy]);
 	_near_tent = nearestObjects [player, ["Land_TentDome_F"], _distvehclose];
