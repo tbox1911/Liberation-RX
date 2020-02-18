@@ -26,7 +26,7 @@ if (isDedicated) exitWith {};
 
 FAR_Player_MPKilled = {
 	params ["_unit"];
-	_pos = getPosATL player;
+	_pos = getPosATL _unit;
 	removeAllWeapons _unit;
 	hidebody _unit;
 	if ( _pos distance2D lhd >= 1000 && _pos distance2D ([] call F_getNearestFob) >= GRLIB_sector_size ) then {
