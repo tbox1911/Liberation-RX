@@ -32,37 +32,6 @@ if ( dialog ) then {
 
 [ "halo_map_event", "onMapSingleClick" ] call BIS_fnc_removeStackedEventHandler;
 
-ParaDrop = {
-	params ["_unit", "_pos"];
-	private [ "_backpack", "_backpackcontents" ];
-
-	_backpack = backpack _unit;
-	if ( _backpack != "" && _backpack != "B_Parachute" ) then {
-		_backpackcontents = backpackItems _unit;
-		removeBackpack _unit;
-		sleep 0.1;
-	};
-	_unit addBackpack "B_Parachute";
-	_unit setpos _pos vectorAdd [random [10,15,20], 0, 0];
-
-	sleep 4;
-	halojumping = false;
-	//waitUntil { !alive _unit || isTouchingGround _unit };
-	while {alive _unit && !isTouchingGround _unit} do {
-		if ((getPosATL _unit) select 2 <= 50 && !(isPlayer _unit)) then {_unit allowDamage false};
-		sleep 0.5;
-	};
-	removeBackpack _unit;
-	sleep 0.1;
-	if ( _backpack != "" && _backpack != "B_Parachute" ) then {
-		_unit addBackpack _backpack;
-		clearAllItemsFromBackpack _unit;
-		{_unit addItemToBackpack _x} foreach _backpackcontents;
-	};
-	_unit allowDamage true;
-	_unit doFollow leader player;
-};
-
 if ( dojump > 0 ) then {
 	GRLIB_last_halo_jump = time;
 
@@ -76,7 +45,7 @@ if ( dojump > 0 ) then {
 	_player_pos = getPos player;
 	{
 		if ( round (_x distance2D _player_pos) <= 30 && lifestate _x != 'incapacitated' && vehicle _x == _x ) then {
-			[_x,  halo_position] spawn ParaDrop;
+			[_x,  halo_position] spawn paraDrop;
 			sleep random [1,1.5,2];
 		};
 	} forEach units player;
