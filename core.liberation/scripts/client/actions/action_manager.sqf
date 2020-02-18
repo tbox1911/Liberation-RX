@@ -42,7 +42,6 @@ while { true } do {
 	_near_atm = [player, "ATM", _distvehclose, true] call F_check_near;
 	_my_dog = player getVariable ["my_dog", objNull];
 
-
 	// Tuto
 	if ( [] call is_menuok && (player distance lhd) <= 200 ) then {
 		if ( _idact_tutorial == -1 ) then {
