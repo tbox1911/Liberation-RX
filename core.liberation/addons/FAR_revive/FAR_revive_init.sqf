@@ -24,12 +24,23 @@ call compile preprocessFile "addons\TKP\tk_init.sqf";
 call compile preprocessFile "addons\FAR_revive\FAR_revive_funcs.sqf";
 if (isDedicated) exitWith {};
 
+FAR_Player_MPKilled = {
+	params ["_unit"];
+	_pos = getPosATL player;
+	removeAllWeapons _unit;
+	hidebody _unit;
+	if ( _pos distance2D lhd >= 1000 && _pos distance2D ([] call F_getNearestFob) >= GRLIB_sector_size ) then {
+		_grave = ["Land_Grave_rocks_F", "Land_Grave_forest_F", "Land_Grave_dirt_F"] call BIS_fnc_selectRandom;
+		createVehicle [_grave, _pos, [], 0, "CAN_COLLIDE"];
+	};
+};
+
 FAR_Player_Init = {
 	// Clear event handler before adding it
 	player removeAllEventHandlers "HandleDamage";
 	player addEventHandler ["HandleDamage", FAR_HandleDamage_EH];
 	player removeAllMPEventHandlers "MPKilled";
-	player addMPEventHandler ["MPKilled", {params ["_unit"];removeAllWeapons _unit;hidebody _unit}];
+	player addMPEventHandler ["MPKilled", FAR_Player_MPKilled];
 	player setVariable ["GREUH_isUnconscious", 0, true];
 	player setVariable ["FAR_isUnconscious", 0, true];
 	player setVariable ["FAR_isStabilized", 0, true];
