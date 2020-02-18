@@ -8,6 +8,8 @@ class liberation_airdrop {
 	  "InnerBG1",
 	  "InnerBG_F1",
 	  "Header",
+    "ButtonTaxi",
+    "LabelTaxi",
 	  "ButtonLight",
     "LabelLight",
 	  "ButtonLight2",
@@ -59,13 +61,32 @@ class liberation_airdrop {
     size = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
     shadow = 2;
   };
+  class ButtonTaxi: StdButton
+  {
+    idc = 1607;
+    action = "air_type=8;do_action=1";
+    text = "Taxi"; //--- ToDo: Localize;
+    x = 0.206094 * safezoneW + safezoneX;
+    y = 0.2186 * safezoneH + safezoneY;
+    w = 0.061875 * safezoneW;
+    h = 0.033 * safezoneH;
+  };
+  class LabelTaxi: GREUH_RscStructuredText
+  {
+    text = "<t size='0.8'>Call Heli Taxi.<br/>Cost: 100 Ammo</t>"; //--- ToDo: Localize;
+    x = 0.283437 * safezoneW + safezoneX;
+    y = 0.2186 * safezoneH + safezoneY;
+    w = 0.149531 * safezoneW;
+    h = 0.044 * safezoneH;
+    sizeEx = 0.018 * safezoneH * GUI_GRID_H * GUI_GRID_H;
+  };
   class ButtonLight: StdButton
   {
     idc = 1600;
     action = "air_type=1;do_action=1";
     text = "Light"; //--- ToDo: Localize;
     x = 0.206094 * safezoneW + safezoneX;
-    y = 0.2294 * safezoneH + safezoneY;
+    y = 0.2786 * safezoneH + safezoneY;
     w = 0.061875 * safezoneW;
     h = 0.033 * safezoneH;
   };
@@ -73,7 +94,7 @@ class liberation_airdrop {
   {
     text = "<t size='0.8'>Quad, Unarmed Offroad.<br/>Cost:  50 Ammo</t>"; //--- ToDo: Localize;
     x = 0.283437 * safezoneW + safezoneX;
-    y = 0.2294 * safezoneH + safezoneY;
+    y = 0.2786 * safezoneH + safezoneY;
     w = 0.149531 * safezoneW;
     h = 0.044 * safezoneH;
     sizeEx = 0.018 * safezoneH * GUI_GRID_H * GUI_GRID_H;
@@ -84,7 +105,7 @@ class liberation_airdrop {
     action = "air_type=2;do_action=1";
     text = "Light+"; //--- ToDo: Localize;
     x = 0.206094 * safezoneW + safezoneX;
-    y = 0.2976 * safezoneH + safezoneY;
+    y = 0.3386 * safezoneH + safezoneY;
     w = 0.061875 * safezoneW;
     h = 0.033 * safezoneH;
   };
@@ -92,7 +113,7 @@ class liberation_airdrop {
   {
     text = "<t size='0.8'>Armed Offroad.<br/>Cost: 100 Ammo</t>";
     x = 0.283437 * safezoneW + safezoneX;
-    y = 0.2976 * safezoneH + safezoneY;
+    y = 0.3386 * safezoneH + safezoneY;
     w = 0.149531 * safezoneW;
     h = 0.044 * safezoneH;
     sizeEx = 0.018 * safezoneH * GUI_GRID_H * GUI_GRID_H;
@@ -103,7 +124,7 @@ class liberation_airdrop {
     action = "air_type=3;do_action=1";
     text = "Armed"; //--- ToDo: Localize;
     x = 0.206094 * safezoneW + safezoneX;
-    y = 0.3658 * safezoneH + safezoneY;
+    y = 0.3986 * safezoneH + safezoneY;
     w = 0.061875 * safezoneW;
     h = 0.033 * safezoneH;
   };
@@ -111,7 +132,7 @@ class liberation_airdrop {
   {
     text = "<t size='0.8'>Armed MRAPs.<br/>Cost: 200 Ammo</t>";
     x = 0.283437 * safezoneW + safezoneX;
-    y = 0.3658 * safezoneH + safezoneY;
+    y = 0.3986 * safezoneH + safezoneY;
     w = 0.149531 * safezoneW;
     h = 0.044 * safezoneH;
     sizeEx = 0.018 * safezoneH * GUI_GRID_H * GUI_GRID_H;
@@ -122,7 +143,7 @@ class liberation_airdrop {
     action = "air_type=4;do_action=1";
     text = "Truck"; //--- ToDo: Localize;
     x = 0.206094 * safezoneW + safezoneX;
-    y = 0.4340 * safezoneH + safezoneY;
+    y = 0.4586 * safezoneH + safezoneY;
     w = 0.061875 * safezoneW;
     h = 0.033 * safezoneH;
   };
@@ -130,7 +151,7 @@ class liberation_airdrop {
   {
     text = "<t size='0.8'>Large Trucks.<br/>Cost: 300 Ammo</t>";
     x = 0.283437 * safezoneW + safezoneX;
-    y = 0.4340 * safezoneH + safezoneY;
+    y = 0.4586 * safezoneH + safezoneY;
     w = 0.149531 * safezoneW;
     h = 0.044 * safezoneH;
     sizeEx = 0.018 * safezoneH * GUI_GRID_H * GUI_GRID_H;
@@ -141,7 +162,7 @@ class liberation_airdrop {
     action = "air_type=5;do_action=1";
     text = "Heavy"; //--- ToDo: Localize;
     x = 0.206094 * safezoneW + safezoneX;
-    y = 0.5022 * safezoneH + safezoneY;
+    y = 0.5186 * safezoneH + safezoneY;
     w = 0.061875 * safezoneW;
     h = 0.033 * safezoneH;
   };
@@ -149,7 +170,7 @@ class liberation_airdrop {
   {
     text = "<t size='0.8'>Armored APCs.<br/>Cost: 750 Ammo</t>";
     x = 0.283437 * safezoneW + safezoneX;
-    y = 0.5022 * safezoneH + safezoneY;
+    y = 0.5186 * safezoneH + safezoneY;
     w = 0.149531 * safezoneW;
     h = 0.044 * safezoneH;
     sizeEx = 0.018 * safezoneH * GUI_GRID_H * GUI_GRID_H;
@@ -161,7 +182,7 @@ class liberation_airdrop {
     action = "air_type=6;do_action=1";
     text = "Boat"; //--- ToDo: Localize;
     x = 0.206094 * safezoneW + safezoneX;
-    y = 0.5704 * safezoneH + safezoneY;
+    y = 0.5786 * safezoneH + safezoneY;
     w = 0.061875 * safezoneW;
     h = 0.033 * safezoneH;
   };
@@ -169,7 +190,7 @@ class liberation_airdrop {
   {
     text = "<t size='0.8'>Transport Boats.<br/>Cost: 250 Ammo</t>";
     x = 0.283437 * safezoneW + safezoneX;
-    y = 0.5704 * safezoneH + safezoneY;
+    y = 0.5786 * safezoneH + safezoneY;
     w = 0.149531 * safezoneW;
     h = 0.044 * safezoneH;
     sizeEx = 0.018 * safezoneH * GUI_GRID_H * GUI_GRID_H;
