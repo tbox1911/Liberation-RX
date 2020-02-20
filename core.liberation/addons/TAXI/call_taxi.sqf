@@ -32,6 +32,10 @@ _taxi_type = ["C_Heli_light_01_luxe_F", "B_Heli_Light_01_F", "I_Heli_light_03_F"
 // Create Taxi
 _air_grp = createGroup [GRLIB_side_civilian, true];
 _air_spawnpos = [] call F_getNearestFob;
+if (isNil "GRLIB_all_fobs" || count GRLIB_all_fobs == 0) then {
+	_air_spawnpos = markerPos "base_chimera";
+};
+
 _air_spawnpos = [(((_air_spawnpos select 0) + 500) - random 1000),(((_air_spawnpos select 1) + 500) - random 1000),0];
 _vehicle = createVehicle [_taxi_type, _air_spawnpos, [], 0, "FLY"];
 _vehicle setVariable ["GRLIB_vehicle_owner", "server"];
@@ -106,7 +110,7 @@ if (alive _vehicle && alive player) then {
 				hintSilent "Taxi Landing...";
 
 				waitUntil {sleep 1; isTouchingGround _vehicle};
-				hintSilent "Taxi Landed.\nGoodbye.";
+				hintSilent "Taxi Landed.";
 
 				_outboarded = {
 					params ["_vehicle"];
@@ -124,6 +128,7 @@ if (alive _vehicle && alive player) then {
 				waitUntil {sleep 1; [_vehicle] call _outboarded};
 				_vehicle lock 2;
 
+				hintSilent "Return to Airbase.\nBye, bye...";
 				// Go back
 				_waypoint = _air_grp addWaypoint [zeropos, 1];
 				_waypoint setWaypointType "MOVE";
