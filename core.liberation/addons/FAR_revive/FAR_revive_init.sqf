@@ -27,11 +27,16 @@ if (isDedicated) exitWith {};
 FAR_Player_MPKilled = {
 	params ["_unit"];
 	_pos = getPosATL _unit;
+	_isplayer = player == _unit;
 	removeAllWeapons _unit;
-	hidebody _unit;
-	if ( _pos distance2D lhd >= 1000 && _pos distance2D ([] call F_getNearestFob) >= GRLIB_sector_size ) then {
-		_grave = ["Land_Grave_rocks_F", "Land_Grave_forest_F", "Land_Grave_dirt_F"] call BIS_fnc_selectRandom;
-		createVehicle [_grave, _pos, [], 0, "CAN_COLLIDE"];
+	deleteVehicle _unit;
+
+	if (_isplayer) then {
+		_unit setPos zeropos;
+		if ( _pos distance2D lhd >= 1000 && _pos distance2D ([] call F_getNearestFob) >= GRLIB_sector_size ) then {
+			_grave = ["Land_Grave_rocks_F", "Land_Grave_forest_F", "Land_Grave_dirt_F"] call BIS_fnc_selectRandom;
+			createVehicle [_grave, _pos, [], 0, "CAN_COLLIDE"];
+		};
 	};
 };
 
