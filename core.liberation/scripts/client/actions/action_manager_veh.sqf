@@ -59,7 +59,7 @@ while { true } do {
 	{
 		_vehicle = _x;
 		if (! (_vehicle getVariable ["GRLIB_salvage_action", false]) ) then {
-			_vehicle addAction ["<t color='#FFFF00'>-- SALVAGE --</t> <img size='1' image='res\ui_recycle.paa'/>","scripts\client\actions\do_wreck.sqf","",-900,true,true,"","[_target] call is_menuok && !(_target getVariable ['wreck_in_use', false])", _distveh];
+			_vehicle addAction ["<t color='#FFFF00'>-- SALVAGE --</t> <img size='1' image='res\ui_recycle.paa'/>","scripts\client\actions\do_wreck.sqf","",-900,true,true,"","[] call is_menuok && !(_target getVariable ['wreck_in_use', false])", _distveh];
 			_vehicle setVariable ["GRLIB_salvage_action", true];
 		};
 	} forEach _nearwreck+_nearruins;
