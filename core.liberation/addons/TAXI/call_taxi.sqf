@@ -67,7 +67,7 @@ if (alive _vehicle && alive player) then {
 	hintSilent "Taxi Landing...";
 
 	waitUntil {sleep 1; isTouchingGround _vehicle};
-	hintSilent "Taxi Landed.\nWaiting for Destination.";
+	hintSilent "Taxi Landed.\nWaiting for passangers.\nYou have 5 minutes!";
 
 	// Pickup Marker
 	_marker = createMarkerLocal ["taxi_lz", getPos _vehicle];
