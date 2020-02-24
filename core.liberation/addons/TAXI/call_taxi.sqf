@@ -1,29 +1,26 @@
 // Heli Taxi Script
 
 //check dest place
-_dest = (getPos player) findEmptyPosition [1,50, huron_typename];
+_dest = (getPosATL player) findEmptyPosition [1,50, huron_typename];
 if (player getVariable ["GRLIB_taxi_called", false]) exitWith {hintSilent "Sorry, Only one Taxi at time."};
 if (count _dest == 0 || surfaceIsWater _dest) exitWith {hintSilent "Sorry, Taxi cannot Land on this place."};
 
-// Action SetDest
-action_dest = {
-	openMap true;
-	hintSilent "Select the Destination.";
-	onMapSingleClick {
-		_marker = createMarkerLocal ["taxi_dz", _pos];
-		_marker setMarkerShapeLocal "ICON";
-		_marker setMarkerTypeLocal "mil_flag";
-		_marker setMarkerTextlocal "Taxi DZ";
-		onMapSingleClick "";
-		openMap false;
-		true;
-	};
-	waitUntil {sleep 1;	(markerPos "taxi_dz") distance2D zeropos > 100};
+// Taxi functions
+taxi_land = {
+	params ["_vehicle"];
+	_vehicle land "LAND";
+	hintSilent "Taxi Landing...";
+	waitUntil {sleep 1; isTouchingGround _vehicle};
+	hintSilent "Taxi Landed.";
+};
 
-	if (surfaceIsWater (markerPos "taxi_dz")) then {
-		hintSilent "Sorry, Taxi cannot Land on this place.";
-		deleteMarkerLocal "taxi_dz";
-	};
+taxi_dest = {
+	params ["_air_grp", "_dest"];
+	_waypoint = _air_grp addWaypoint [ _dest, 1];
+	_waypoint setWaypointType "MOVE";
+	_waypoint setWaypointSpeed "FULL";
+	_waypoint setWaypointBehaviour "AWARE";
+	_waypoint setWaypointCombatMode "GREEN" ;
 };
 
 // Heli Taxi
@@ -40,7 +37,7 @@ _air_spawnpos = [(((_air_spawnpos select 0) + 500) - random 1000),(((_air_spawnp
 _vehicle = createVehicle [_taxi_type, _air_spawnpos, [], 0, "FLY"];
 _vehicle setVariable ["GRLIB_vehicle_owner", "server"];
 _vehicle setVariable ["R3F_LOG_disabled", true];
-_vehicle flyInHeight (100 + (random 80));
+_vehicle flyInHeight (100 + (random 60));
 
 createVehicleCrew _vehicle;
 _pilots = crew _vehicle;
@@ -49,13 +46,8 @@ _pilots joinSilent _air_grp;
 player setVariable ["GRLIB_taxi_called", true];
 hintSilent "Air Taxi Called !";
 
-// Set Pickup Point
-_waypoint = _air_grp addWaypoint [ _dest, 1];
-_waypoint setWaypointType "MOVE";
-_waypoint setWaypointSpeed "FULL";
-_waypoint setWaypointBehaviour "AWARE";
-_waypoint setWaypointCombatMode "GREEN" ;
-
+// Goto Pickup Point
+[_air_grp, _dest] call taxi_dest;
 waitUntil {
   sleep 5;
   isNil{hintSilent format ["Taxi on the way!\nDistance: %1m", round (_vehicle distance2D _dest)]};
@@ -63,11 +55,8 @@ waitUntil {
 };
 
 if (alive _vehicle && alive player) then {
-	_vehicle land "LAND";
-	hintSilent "Taxi Landing...";
-
-	waitUntil {sleep 1; isTouchingGround _vehicle};
-	hintSilent "Taxi Landed.\nWaiting for passangers.\nYou have 5 minutes!";
+	[_vehicle] call taxi_land;
+	hintSilent "Taxi Landed.\nWaiting for passengers.\nYou have 5 minutes!";
 
 	// Pickup Marker
 	_marker = createMarkerLocal ["taxi_lz", getPos _vehicle];
@@ -81,23 +70,20 @@ if (alive _vehicle && alive player) then {
 		(!alive _vehicle || vehicle player == _vehicle || diag_tickTime > _stop)
 	};
 
-	deleteMarkerLocal "taxi_lz";
 	if (diag_tickTime < _stop && alive _vehicle) then {
-		_idact_dest = _vehicle addAction ["<t color='#8000FF'>-- TAXI Destination --</t>","[] call action_dest","",999,true,true,"","vehicle _this == _target"];
+
+		_idact_dest = _vehicle addAction ["<t color='#8000FF'>-- TAXI Destination --</t>","addons\TAXI\taxi_dest.sqf","",999,true,true,"","vehicle _this == _target"];
 		waitUntil {
 			sleep 1;
 			(!alive _vehicle || !alive player || (markerPos "taxi_dz") distance2D zeropos > 100)
 		};
 		_vehicle removeAction _idact_dest;
+		deleteMarkerLocal "taxi_lz";
 
 		if (alive _vehicle && alive player && vehicle player == _vehicle) then {
 			hintSilent "Ok, let's go...";
 			_dest = markerPos "taxi_dz";
-			_waypoint = _air_grp addWaypoint [ _dest, 1];
-			_waypoint setWaypointType "MOVE";
-			_waypoint setWaypointSpeed "FULL";
-			_waypoint setWaypointBehaviour "AWARE";
-			_waypoint setWaypointCombatMode "GREEN" ;
+			[_air_grp, _dest] call taxi_dest;
 
 			waitUntil {
 				sleep 5;
@@ -106,12 +92,7 @@ if (alive _vehicle && alive player) then {
 			};
 
 			if (alive _vehicle && vehicle player == _vehicle) then {
-				_vehicle land "LAND";
-				hintSilent "Taxi Landing...";
-
-				waitUntil {sleep 1; isTouchingGround _vehicle};
-				hintSilent "Taxi Landed.";
-
+				[_vehicle] call taxi_land;
 				_outboarded = {
 					params ["_vehicle"];
 					_ret = true;
@@ -130,11 +111,7 @@ if (alive _vehicle && alive player) then {
 
 				hintSilent "Return to Airbase.\nBye, bye...";
 				// Go back
-				_waypoint = _air_grp addWaypoint [zeropos, 1];
-				_waypoint setWaypointType "MOVE";
-				_waypoint setWaypointSpeed "FULL";
-				_waypoint setWaypointBehaviour "AWARE";
-				_waypoint setWaypointCombatMode "GREEN" ;
+				[_air_grp, zeropos] call taxi_dest;
 			};
 		};
 	};
@@ -142,6 +119,7 @@ if (alive _vehicle && alive player) then {
 
 // Cleanup
 hintSilent "";
+deleteMarkerLocal "taxi_lz";
 deleteMarkerLocal "taxi_dz";
 sleep 60;
 {deletevehicle _x} forEach _pilots;
