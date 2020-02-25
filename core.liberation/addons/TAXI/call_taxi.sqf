@@ -24,7 +24,13 @@ taxi_dest = {
 };
 
 // Heli Taxi
-_taxi_type = ["C_Heli_light_01_luxe_F", "B_Heli_Light_01_F", "I_Heli_light_03_F", "I_Heli_Transport_02_F"] call BIS_fnc_selectRandom;
+_taxi_type = [
+	"O_Heli_Light_02_unarmed_F",
+	"C_Heli_light_01_luxe_F",
+	"B_Heli_Light_01_F",
+	"I_Heli_light_03_F",
+	"I_Heli_Transport_02_F"
+] call BIS_fnc_selectRandom;
 
 // Create Taxi
 _air_grp = createGroup [GRLIB_side_civilian, true];
