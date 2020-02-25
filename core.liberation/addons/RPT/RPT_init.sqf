@@ -14,16 +14,18 @@ colorList =[
 	//["Red", _color + "(0.45,0.005,0,1)"], // #(argb,8,8,3)color(1,0.1,0,0.3)
 	//["Pink", _color + "(0.5,0.03,0.3,1)"], // #(argb,8,8,3)color(1,0.06,0.6,0.5)
 	//["Purple", _color + "(0.1,0,0.3,1)"], // #(argb,8,8,3)color(0.8,0,1,0.1)
+	["ARPA Navy", _texDir + "arpa_navy.paa"],
+	["ARPA Woodland", _texDir + "arpa_woodland.paa"],
 	["Abstract Back", _texDir + "abstraitblack.paa"],
 	["Abstract Mod", _texDir + "abstraitmoderne.paa"],
 	["Abstract Red", _texDir + "abstraitrouge.paa"],
 	["Abstract Green", _texDir + "abstraitvert.paa"],
-	["Animal Forest", _texDir + "animauxforet.paa"],
 	["Camo Green 1", _texDir + "camovert1.paa"],
 	["Camo Green 2", _texDir + "camovert2.paa"],
 	["Digital", _texDir + "digi.paa"],
 	["Digital Black", _texDir + "digi_black.paa"],
 	["Digital Desert", _texDir + "digi_desert.paa"],
+	["Digital Desert 2", _texDir + "digi_desert2.paa"],
 	["Digital Woodland", _texDir + "digi_wood.paa"],
 	["Forest 1", _texDir + "foret1.paa"],
 	["Hex", _texDir + "hex.paa"],
@@ -42,6 +44,10 @@ if (getPlayerUID player in ["76561198085724439", "76561198098904932"]) then {
 // Raven
 if (getPlayerUID player in ["76561198085724439", "76561198017505587"]) then {
 	colorList = colorList +	[["Raven", _texDir + "raven.paa"]];
+};
+// Christophe
+if (getPlayerUID player in ["76561198085724439", "76561198299706821"]) then {
+	colorList = colorList +	[["Camo Christophe", _texDir + "camo_chris.paa"]];
 };
 
 //moved to ./shared/ for server use
