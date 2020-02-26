@@ -21,7 +21,6 @@ _basenamestr = "BASE CHIMERA";
 
 while { true } do {
 	waitUntil {
-		sleep 0.1;
 		( GRLIB_force_redeploy || (player distance (getmarkerpos GRLIB_respawn_marker) < 50) ) && vehicle player == player && alive player && !dialog && howtoplay == 0
 	};
 
