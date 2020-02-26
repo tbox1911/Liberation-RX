@@ -7,7 +7,7 @@ params [ "_sector", "_status" ];
 if ( _status == 0 ) then {
 	private _lst_player = "Thanks to: - ";
 	{
-		if (_x distance2D (markerpos _sector) < 500 ) then {
+		if (_x distance2D (markerpos _sector) < GRLIB_sector_size ) then {
 			_lst_player = _lst_player + name _x + " - ";
 		};
 	} forEach allPlayers;
