@@ -36,13 +36,6 @@ while { true } do {
 
 		_classname = (_build_list select buildindex) select 0;
 		_price = (_build_list select buildindex) select 2;
-
-		if (buildtype == 1 && _price != 0) then {
-			private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
-			player setVariable ["GREUH_ammo_count", (_ammo_collected - _price), true];
-			playSound "rearm";
-			gamelogic globalChat format ["Build Price: %1, Thank you !", _price];
-		};
 	};
 
 	if(buildtype == 1) then {
@@ -253,17 +246,6 @@ while { true } do {
 
 			if ( !alive player || build_confirmed == 3 ) then {
 				deleteVehicle _vehicle;
-				/*
-				if (buildtype != 99) then {
-					//_price = ((build_lists select buildtype) select buildindex) select 2;
-					if (_price != 0) then {
-						private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
-						player setVariable ["GREUH_ammo_count", (_ammo_collected + _price), true];
-						playSound "rearm";
-						gamelogic globalChat format ["Cancel Refund: %1, Thank you !", _price];
-					};
-				};
-				*/
 				buildtype = 1;
 			};
 
@@ -327,7 +309,7 @@ while { true } do {
 					};
 				};
 
-				if (_price != 0) then {
+				if (_price != 0 && buildtype != 99 ) then {
 					private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
 					player setVariable ["GREUH_ammo_count", (_ammo_collected - _price), true];
 					playSound "rearm";
