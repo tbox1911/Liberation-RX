@@ -12,6 +12,7 @@ taxi_land = {
 	hintSilent "Taxi Landing...";
 	waitUntil {sleep 1; isTouchingGround _vehicle};
 	hintSilent "Taxi Landed.";
+	_vehicle setDamage 0;
 };
 
 taxi_dest = {
