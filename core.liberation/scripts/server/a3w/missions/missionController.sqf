@@ -51,10 +51,17 @@ while {true} do
 			} else {
 				_missionsList = ["mission_MeetResistance", true, _missionsList] call updateMissionsList;
 			};
+
+			// Delivery
+			if (count blufor_sectors >= 7) then {
+				_missionsList = ["mission_Delivery", false, _missionsList, 1] call updateMissionsList;
+			} else {
+				_missionsList = ["mission_Delivery", true, _missionsList] call updateMissionsList;
+			};
 			_nextMission = _missionsList call fn_selectRandomWeighted;
 		};
 	};
-	_missionDelay = (floor random [10,15,20] * 60);
+	_missionDelay = 60; //(floor random [10,15,20] * 60);
 	[MISSION_CTRL_PVAR_LIST, _nextMission, true] call setMissionState;
 	diag_log format ["%1 Mission%2 waiting to run: %3", MISSION_CTRL_TYPE_NAME, _controllerSuffix, _nextMission];
 	if (GRLIB_fancy_info == 2) then {

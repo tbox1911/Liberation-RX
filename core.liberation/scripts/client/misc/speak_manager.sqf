@@ -33,7 +33,7 @@ speak_leader_AI = {
 	if (isNil "_sector") exitWith {};
 
 	{_x setVariable ['GRLIB_can_speak', false, true]} foreach units _grp;
-	gamelogic globalChat "Hello, I Need to speak with you, listen to me,";
+	gamelogic globalChat "Hello, I Need to speak with you, listen to me.";
 	uIsleep 3;
 	gamelogic globalChat "We have informations, Opfor will attack this place soon.";
 	uIsleep 3;
@@ -43,9 +43,46 @@ speak_leader_AI = {
 	[_sector] remoteExec ["send_para_remote_call", 2];
 };
 
+// C_Nikos
+speak_mission_delivery_1 = {
+	params ["_unit"];
+	_next_point = "";
+	//hide marker
+	gamelogic globalChat "Hello, I Need to speak with you, listen to me.";
+	uIsleep 3;
+	gamelogic globalChat "You have to deliver this case to my father.";
+	uIsleep 3;
+	gamelogic globalChat "Go to see my friends to have more inforamtion.";
+	uIsleep 3;
+	//create marker
+};
+// Orestes
+speak_mission_delivery_2 = {
+	params ["_unit"];
+	_next_point = "";
+	gamelogic globalChat "Go to see my friends to have more inforamtion.";
+
+};
+// C_Nikos Old
+speak_mission_delivery_3 = {
+	params ["_unit"];
+	//hide marker
+	//delete case
+	gamelogic globalChat "Thank you, take your reward.";
+
+};
+
+
 GRLIB_speaking = true;
 switch (side _unit) do {
-	case (GRLIB_side_civilian) : {[_unit] call speak_civil_AI};
+	case (GRLIB_side_civilian) : {
+		switch (typeOf _unit) do {
+			case "C_Nikos" : {[_unit] call speak_mission_delivery_1};
+			case "C_Orestes" : {[_unit] call speak_mission_delivery_2};
+			case "C_Nikos_aged" : {[_unit] call speak_mission_delivery_3};
+			default [_unit] call speak_civil_AI;
+		};
+	};
 
 	case (GRLIB_side_friendly) : {
 		if (_unit == leader (group _unit)) then {

@@ -551,9 +551,7 @@ civilians = [
 	"C_man_shorts_2_F",
 	"C_man_w_worker_F",
 	"C_Paramedic_01_base_F",
-	"C_Man_UtilityWorker_01_F",
-	"C_Orestes",
-	"C_Nikos"
+	"C_Man_UtilityWorker_01_F"
 ];
 
 civilian_vehicles = [
