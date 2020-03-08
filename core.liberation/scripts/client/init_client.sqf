@@ -90,13 +90,13 @@ GREUH_TipsText = [];
 } foreach allCurators;
 
 if (!GRLIB_ACE_enabled) then {
-	[] execVM "scripts\client\misc\support_manager.sqf";
 	[] execVM "addons\MGI\MGI_AI_Revive.sqf";
 	[] execVM "addons\MGR\MagRepack_init.sqf";
 	[] execVM "addons\NRE\NRE_init.sqf";
 	[] execVM "addons\RPT\RPT_init.sqf";
 	[] execVM "addons\fpsFix\vehicleManager.sqf";
 	[] execVM "addons\KEY\shortcut_init.sqf";
+	[] execVM "scripts\client\misc\support_manager.sqf";
 };
 
 // Sign Add

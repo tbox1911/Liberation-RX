@@ -35,6 +35,8 @@ AddAmmo = {
 };
 
 waituntil {sleep 1;!isNull player};
+waitUntil {sleep 1;GRLIB_player_spawned};
+
 while { true } do {
 	waitUntil {sleep 1;GRLIB_player_spawned && (count(units group player) > 0)};
 	_needammo1 = false;
