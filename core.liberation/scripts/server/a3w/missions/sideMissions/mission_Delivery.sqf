@@ -120,10 +120,12 @@ _successExec = {
 		deleteVehicle _house;
 	};
 	_successHintMessage = format ["Special Delivery<br/><t color='%1'>SUCCESS</t> !!<br/><br/>The information have been collected, Well done.", sideMissionColor];
-	_pos = _missionPosEnd vectorAdd [([[-50,0,50], 20] call F_getRND), ([[-50,0,50], 20] call F_getRND), 0];
-	[ammobox_i_typename, _pos, false] call boxSetup;
-	_pos = _missionPosEnd vectorAdd [([[-50,0,50], 20] call F_getRND), ([[-50,0,50], 20] call F_getRND), 0];
-	[ammobox_i_typename, _pos, false] call boxSetup;
+
+	private _nb = round(random [1,1.5,3]);
+	for "_i" from 1 to _nb do {
+		_pos = _missionPosEnd vectorAdd [([[-50,0,50], 20] call F_getRND), ([[-50,0,50], 20] call F_getRND), 0];
+		[ammobox_i_typename, _pos, false] call boxSetup;
+	};
 };
 
 _this call sideMissionProcessor;

@@ -107,10 +107,10 @@ _successExec = {
 	GRLIB_A3W_Mission_MRR = nil;
 	publicVariable "GRLIB_A3W_Mission_MRR";
 
-	private _nb = round(random [0,1,2]);
-	while { _nb >= 1} do {
-		[ammobox_i_typename, _missionPos, false] call boxSetup;
-		_nb =_nb - 1;
+	private _nb = round(random [1,1.5,3]);
+	for "_i" from 1 to _nb do {
+		_pos = _missionPos vectorAdd [([[-50,0,50], 20] call F_getRND), ([[-50,0,50], 20] call F_getRND), 0];
+		[ammobox_i_typename, _pos, false] call boxSetup;
 	};
 };
 
