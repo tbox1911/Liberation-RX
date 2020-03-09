@@ -292,6 +292,7 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 
 R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 [
+	"Land_Suitcase_F",
 	"Wall_F",
 	//"Items_base_F",
 	"HBarrier_base_F",
@@ -325,6 +326,7 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 [
+	["Land_Suitcase_F", 1],
 	["Wall_F", 5],
 	//["Items_base_F", 5],
 	["Land_HBarrierBig_F", 5],

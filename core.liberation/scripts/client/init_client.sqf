@@ -57,6 +57,7 @@ paraDrop = compileFinal preprocessFileLineNumbers "scripts\client\spawn\paraDrop
 [] execVM "scripts\client\build\do_build.sqf";
 [] execVM "scripts\client\markers\empty_vehicles_marker.sqf";
 [] execVM "scripts\client\markers\fob_markers.sqf";
+[] execVM "scripts\client\markers\a3w_mission_marker.sqf";
 [] execVM "scripts\client\markers\group_icons.sqf";
 [] execVM "scripts\client\markers\hostile_groups.sqf";
 [] execVM "scripts\client\markers\huron_marker.sqf";

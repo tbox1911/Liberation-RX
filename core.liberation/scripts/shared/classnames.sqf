@@ -528,6 +528,9 @@ opfor_recyclable = [
 // Other stuff
 
 civilians = [
+	"C_Orestes",
+	"C_Nikos",
+	"C_Nikos_aged",
 	"C_man_1",
 	"C_man_polo_6_F",
 	"C_man_polo_3_F",
@@ -542,6 +545,8 @@ civilians = [
 	"C_Man_Fisherman_01_F",
 	"C_man_sport_1_F",
 	"C_man_sport_3_F",
+	"C_Man_Messenger_01_F",
+	"C_Story_Mechanic_01_F",
 	"C_Man_casual_2_F",
 	"C_Man_casual_4_F",
 	"C_Man_casual_1_F",
@@ -551,6 +556,7 @@ civilians = [
 	"C_man_shorts_2_F",
 	"C_man_w_worker_F",
 	"C_Paramedic_01_base_F",
+	"C_Man_UAV_06_F",
 	"C_Man_UtilityWorker_01_F"
 ];
 

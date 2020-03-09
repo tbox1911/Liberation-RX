@@ -8,11 +8,10 @@ if (!isServer) exitWith {};
 
 SideMissions = [
 	// Mission filename, weight
-	["mission_Delivery", 1]
-/*
+	["mission_Delivery", 1],
 	["mission_TownInvasion", 1],
 	["mission_HostileHelicopter", 1],
-	["mission_MeetResistance", 1]*/
+	["mission_MeetResistance", 1]
 ];
 
 SpawnMissionMarkers = (allMapMarkers select {["Mission_", _x] call fn_startsWith;}) apply {[_x, false]};
@@ -27,8 +26,8 @@ SunkenMissionMarkers = [SunkenMissionMarkers] call checkSpawn;
 if !(ForestMissionMarkers isEqualTo []) then {
 	SideMissions append
 	[
-//		["mission_AirWreck", 1],
-//		["mission_WepCache", 1]
+		["mission_AirWreck", 1],
+		["mission_WepCache", 1]
 	];
 };
 

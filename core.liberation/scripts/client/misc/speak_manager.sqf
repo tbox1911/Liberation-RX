@@ -32,7 +32,7 @@ speak_leader_AI = {
 	_sector = (sectors_allSectors select {_x select [0,8] == "capture_" && (getMarkerPos _x) distance2D _pos < (GRLIB_sector_size/2)}) select 0;
 	if (isNil "_sector") exitWith {};
 
-	{_x setVariable ['GRLIB_can_speak', false, true]} foreach units _grp;
+	{_x setVariable ["GRLIB_can_speak", false, true]} foreach units _grp;
 	gamelogic globalChat "Hello, I Need to speak with you, listen to me.";
 	uIsleep 3;
 	gamelogic globalChat "We have informations, Opfor will attack this place soon.";
@@ -43,38 +43,76 @@ speak_leader_AI = {
 	[_sector] remoteExec ["send_para_remote_call", 2];
 };
 
-// C_Nikos
+// Nikos
 speak_mission_delivery_1 = {
 	params ["_unit"];
-	_next_point = "";
-	//hide marker
+	if (!(_unit getVariable ["GRLIB_A3W_Mission_SD", false])) exitWith {gamelogic globalChat "Maybe another time..."};
+	_next_indx = (GRLIB_A3W_Mission_SD find _unit) + 1;
+	_next_unit = GRLIB_A3W_Mission_SD select _next_indx;
+
 	gamelogic globalChat "Hello, I Need to speak with you, listen to me.";
 	uIsleep 3;
-	gamelogic globalChat "You have to deliver this case to my father.";
+	gamelogic globalChat "You have to deliver this precious information to my father.";
 	uIsleep 3;
-	gamelogic globalChat "Go to see my friends to have more inforamtion.";
+	gamelogic globalChat format ["Go to see my friend %1 for more infos.", name _next_unit];
 	uIsleep 3;
-	//create marker
+	gamelogic globalChat "Look at the marker on your Map.";
+
+	if ( isNull (player getVariable ["GRLIB_A3W_Mission_Marker", objNull])) then {
+		_pos = player modelToWorld [0,1,1];
+		_can = createVehicle ["Land_Suitcase_F", _pos, [], 0, "CAN_COLLIDE"];
+		[_can] spawn R3F_LOG_FNCT_objet_deplacer;
+	};
+	player setVariable ["GRLIB_A3W_Mission_Marker", _next_unit];
+	uIsleep 3;
 };
 // Orestes
 speak_mission_delivery_2 = {
 	params ["_unit"];
-	_next_point = "";
-	gamelogic globalChat "Go to see my friends to have more inforamtion.";
+	_target = player getVariable ["GRLIB_A3W_Mission_Marker", objNull];
+	if (!(_unit getVariable ["GRLIB_A3W_Mission_SD", false]) || _unit != _target) exitWith {gamelogic globalChat "Maybe another time..."};
+	_next_indx = (GRLIB_A3W_Mission_SD find _unit) + 1;
+	_next_unit = GRLIB_A3W_Mission_SD select _next_indx;
+	_last_man = GRLIB_A3W_Mission_SD select (count GRLIB_A3W_Mission_SD) - 1;
 
+	if (_next_unit == _last_man) then {
+		gamelogic globalChat "Yes, I know him !";
+		uIsleep 3;
+		gamelogic globalChat "he's hidding in a small house, enemy forces try to catch him!";
+		uIsleep 3;
+		gamelogic globalChat "Look at the marker on your Map, Hurry hup!";
+	} else {
+		gamelogic globalChat "Oh, I dont knows,";
+		uIsleep 3;
+		gamelogic globalChat format ["Go to see my friend %1 for more infos.", name _next_unit];
+		uIsleep 3;
+		gamelogic globalChat "Look at the marker on your Map.";
+	};
+	player setVariable ["GRLIB_A3W_Mission_Marker", _next_unit];
+	uIsleep 3;
 };
-// C_Nikos Old
+// Nikos Old
 speak_mission_delivery_3 = {
 	params ["_unit"];
-	//hide marker
-	//delete case
-	gamelogic globalChat "Thank you, take your reward.";
+	_target = player getVariable ["GRLIB_A3W_Mission_Marker", objNull];
+	if (!(_unit getVariable ["GRLIB_A3W_Mission_SD", false]) || _unit != _target) exitWith {gamelogic globalChat "Maybe another time..."};
 
+	_near_case = nearestObjects [_unit, ["Land_Suitcase_F"], 10];
+	if (count _near_case > 0) then {
+		deleteVehicle (_near_case select 0);
+		{_x setVariable ['GRLIB_can_speak', false, true]} foreach GRLIB_A3W_Mission_SD;
+		_unit setVariable ["GRLIB_A3W_Mission_SD_END", true, true];
+		player setVariable ["GRLIB_A3W_Mission_Marker", nil];
+		gamelogic globalChat "Thank you very much, Please take your reward.";
+	} else {
+		gamelogic globalChat "Sorry, I wait for something special...";
+	};
+	uIsleep 3;
 };
-
 
 GRLIB_speaking = true;
 switch (side _unit) do {
+	_unit setDir (_unit getDir player);
 	case (GRLIB_side_civilian) : {
 		switch (typeOf _unit) do {
 			case "C_Nikos" : {[_unit] call speak_mission_delivery_1};
