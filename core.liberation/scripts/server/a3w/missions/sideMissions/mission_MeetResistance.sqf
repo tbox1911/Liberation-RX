@@ -24,10 +24,7 @@ _setupVars =
 	//randomize amount of Resistance units
 	_nbUnits = 6;
 	_nbUnits = _nbUnits + round(random (_nbUnits*0.5));
-	GRLIB_A3W_Mission_MR = nil;
-	publicVariable "GRLIB_A3W_Mission_MR";
-	GRLIB_A3W_Mission_MRR = nil;
-	publicVariable "GRLIB_A3W_Mission_MRR";
+	_locationsArray = nil;
 };
 
 _setupObjects =
