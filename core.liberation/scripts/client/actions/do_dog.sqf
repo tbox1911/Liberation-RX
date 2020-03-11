@@ -28,11 +28,19 @@ if (!isNil "_my_dog") then {
 			_man = (_enemy_lst select 0) select 1;
 			_msg = format ["The dog find something at %1m!", round (_dist)];
 			_my_dog setVariable ["do_find", _man];
+			_my_dog stop false;
 		};
 		gamelogic globalChat _msg;
 	};
 
 	if (_cmd == "recall") then {
 		_my_dog setVariable ["do_find", nil];
+		_my_dog stop false;
+	};
+
+	if (_cmd == "stop") then {
+		_my_dog setVariable ["do_find", nil];
+		_my_dog stop true;
+		_my_dog playMove "Dog_Stop";
 	};
 };

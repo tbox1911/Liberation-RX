@@ -55,6 +55,7 @@ while { true } do {
 			};
 
 			if (_onfoot && _dist > 10) then {
+				_my_dog stop false;
 				_my_dog moveTo (getPos player);
 				switch (true) do {
 					case (_dist <= 20): {_my_dog playMoveNow "Dog_Walk"};
