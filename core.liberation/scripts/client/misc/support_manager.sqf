@@ -1,7 +1,6 @@
 private ["_neararsenal", "_nearmedic", "_needammo1", "_needammo2", "_needmedic", "_magType", "_list_static", "_min"];
 
 _distarsenal = 20;
-_maxpri = 10;
 _maxsec = 3;
 _list_static = [];
 {_list_static pushBack ( _x select 0 )} foreach (static_vehicles);
@@ -39,6 +38,7 @@ waitUntil {sleep 1;GRLIB_player_spawned};
 
 while { true } do {
 	waitUntil {sleep 1;GRLIB_player_spawned && (count(units group player) > 0)};
+	_maxpri = 10;
 	_needammo1 = false;
 	_needammo2 = false;
 	_needmedic = false;
@@ -58,7 +58,7 @@ while { true } do {
 				_arsenal_text = getText (configFile >> "CfgVehicles" >> typeOf (_neararsenal select 0) >> "displayName");
 				_min = 3;
 				// check primary Weapon
-				if ( (primaryWeapon _x) find "LMG" >= 0 || (primaryWeapon _x) find "MMG" >= 0 ) then { _min = 1 };
+				if ( (primaryWeapon _x) find "LMG" >= 0 || (primaryWeapon _x) find "MMG" >= 0 || (primaryWeapon _x) find "RPK12" >= 0 ) then { _min = 1; _maxpri = 3 };
 				_needammo1 = [_x, primaryWeapon _x, _min] call NeedAmmo;
 				if (_needammo1) then {
 					_x groupchat format ["Rearming Primary Weapon at %1.", _arsenal_text];
