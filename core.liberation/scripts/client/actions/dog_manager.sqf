@@ -54,15 +54,15 @@ while { true } do {
 				_dog_close = false;
 			};
 
-			if (_onfoot && _dist > 10) then {
+			if (_onfoot && _dist > 15) then {
 				_my_dog stop false;
 				_my_dog moveTo (getPos player);
+				_dog_move = "Dog_Walk";
 				switch (true) do {
-					case (_dist <= 20): {_my_dog playMoveNow "Dog_Walk"};
-					case (_dist > 20 && _dist <= 40): {_my_dog playMoveNow "Dog_Run"};
-					case (_dist > 40): {_my_dog playMoveNow "Dog_Sprint"};
-					default {};
+					case (_dist > 20 && _dist <= 30): {_dog_move = "Dog_Run"};
+					case (_dist > 30): {_dog_move = "Dog_Sprint"};
 				};
+				_my_dog playMoveNow _dog_move;
 				_dog_close = true;
 				sleep 5;
 			};
