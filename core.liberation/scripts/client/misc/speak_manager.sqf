@@ -118,7 +118,7 @@ switch (side _unit) do {
 			case "C_Nikos" : {[_unit] call speak_mission_delivery_1};
 			case "C_Orestes" : {[_unit] call speak_mission_delivery_2};
 			case "C_Nikos_aged" : {[_unit] call speak_mission_delivery_3};
-			default [_unit] call speak_civil_AI;
+			default {[_unit] call speak_civil_AI};
 		};
 	};
 
