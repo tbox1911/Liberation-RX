@@ -12,7 +12,6 @@ taxi_land = {
 	hintSilent "Taxi Landing...";
 	waitUntil {sleep 1; isTouchingGround _vehicle};
 	hintSilent "Taxi Landed.";
-	_vehicle setDamage 0;
 };
 
 taxi_dest = {
@@ -44,6 +43,7 @@ _air_spawnpos = [(((_air_spawnpos select 0) + 500) - random 1000),(((_air_spawnp
 _vehicle = createVehicle [_taxi_type, _air_spawnpos, [], 0, "FLY"];
 _vehicle setVariable ["GRLIB_vehicle_owner", "server"];
 _vehicle setVariable ["R3F_LOG_disabled", true];
+_vehicle allowDamage false;
 _vehicle flyInHeight (100 + (random 60));
 
 createVehicleCrew _vehicle;
