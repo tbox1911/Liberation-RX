@@ -43,4 +43,6 @@ if (!isNil "_my_dog") then {
 		_my_dog stop true;
 		_my_dog playMove "Dog_Stop";
 	};
+
+	dog_menu = 1;
 };
