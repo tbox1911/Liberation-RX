@@ -48,6 +48,7 @@ GRLIB_permissions = [];
 ai_groups = [];
 saved_intel_res = 0;
 GRLIB_player_scores = [];
+GRLIB_garage = [];
 
 no_kill_handler_classnames = [FOB_typename, huron_typename];
 _classnames_to_save = [FOB_typename, huron_typename];
@@ -68,6 +69,7 @@ _classnames_to_save = _classnames_to_save + _classnames_to_save_blu + all_hostil
 trigger_server_save = false;
 greuh_liberation_savegame = profileNamespace getVariable GRLIB_save_key;
 
+// Manager Load Save
 if ( !isNil "greuh_liberation_savegame" ) then {
 
 	blufor_sectors = greuh_liberation_savegame select 0;
@@ -75,6 +77,9 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 	buildings_to_save = greuh_liberation_savegame select 2;
 	time_of_day = greuh_liberation_savegame select 3;
 	combat_readiness = greuh_liberation_savegame select 4;
+	GRLIB_garage = greuh_liberation_savegame select 5;
+	if (typeName GRLIB_garage != "ARRAY") then {GRLIB_garage = []};
+	publicVariable "GRLIB_garage";
 
 	if ( "capture_13_1_2_26_25" in blufor_sectors ) then { // Patching Molos Airfield which was a town instead of a factory
 		blufor_sectors = blufor_sectors - [ "capture_13_1_2_26_25" ];
@@ -261,6 +266,7 @@ publicVariable "GRLIB_vehicle_to_military_base_links";
 publicVariable "GRLIB_permissions";
 save_is_loaded = true; publicVariable "save_is_loaded";
 
+// Manager Save Loop
 while { true } do {
 	waitUntil {trigger_server_save || GRLIB_endgame == 1};
 
@@ -415,7 +421,8 @@ while { true } do {
 			buildings_to_save,
 			time_of_day,
 			round combat_readiness,
-			0,0,0,0,		//free for extened use
+			GRLIB_garage,
+			0,0,0,		//free for extened use
 			_stats,
 			[ round infantry_weight, round armor_weight, round air_weight ],
 			GRLIB_vehicle_to_military_base_links,

@@ -14,6 +14,7 @@ send_aircraft_remote_call = compileFinal preprocessFileLineNumbers "scripts\serv
 addel_group_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\addel_group.sqf";
 sendammo_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\sendammo_remote_call.sqf";
 dog_action_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\dog_action_remote_call.sqf";
+vehicle_garage_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\vehicle_garage_remote_call.sqf";
 
 // Client Side
 remote_call_sector = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_sector.sqf";
