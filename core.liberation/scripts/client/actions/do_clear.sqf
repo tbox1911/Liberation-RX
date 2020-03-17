@@ -2,7 +2,7 @@ params ["_vehicle"];
 if (isNil "_vehicle") exitWith {};
 
 //warn user cargo is deleted !!
-_result = ["<t align='center'>Vehicle's content will be LOST !!<br/>Are you sure ?</t>", "Warning !", true, true] call BIS_fnc_guiMessage;
+private _result = ["<t align='center'>Vehicle's content will be LOST !!<br/>Are you sure ?</t>", "Warning !", true, true] call BIS_fnc_guiMessage;
 if (_result) then {
 	//R3F
 	{[[_x], "deleteVehicle"] call BIS_fnc_MP} forEach (_vehicle getVariable ["R3F_LOG_objets_charges", []]);

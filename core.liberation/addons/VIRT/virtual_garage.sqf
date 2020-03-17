@@ -83,10 +83,13 @@ while { dialog && alive player} do {
 			if (count ([GRLIB_garage, {(getPlayerUID player == _x select 2)}] call BIS_fnc_conditionalSelect) >= _max_vehicle) then {
 				hintSilent (format ["Garage is Full !!\nMax %1 vehicles.", _max_vehicle]);
 			} else {
-				_vehicle = _myveh_lst select _selected_item;
-				ctrlEnable [ 120, false ];
-				[player, _vehicle, load_veh] remoteExec ["vehicle_garage_remote_call", 2];
-				hintSilent (format ["Vehicle %1\nLoaded in Garage.", _vehicle_name]);
+				private _result = ["<t align='center'>Vehicle's content will be LOST !!<br/>Are you sure ?</t>", "Warning !", true, true] call BIS_fnc_guiMessage;
+				if (_result) then {
+					_vehicle = _myveh_lst select _selected_item;
+					ctrlEnable [ 120, false ];
+					[player, _vehicle, load_veh] remoteExec ["vehicle_garage_remote_call", 2];
+					hintSilent (format ["Vehicle %1\nLoaded in Garage.", _vehicle_name]);
+				};
 			};
 		};
 
