@@ -8,7 +8,8 @@ if (resources_infantry + _tent_cost >= infantry_cap) then {
 	sleep 2;
 	removeBackpack player;
 	sleep 6;
-	createVehicle ["Land_TentDome_F", player modelToWorld [0,4,0], [], 0, "CAN_COLLIDE"];
+	_tent = createVehicle ["Land_TentDome_F", player modelToWorld [0,4,0], [], 0, "CAN_COLLIDE"];
+	_tent addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	disableUserInput false;
 	disableUserInput true;
 	disableUserInput false;
