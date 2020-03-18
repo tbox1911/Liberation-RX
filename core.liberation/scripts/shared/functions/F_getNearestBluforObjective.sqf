@@ -10,7 +10,7 @@ if ( count GRLIB_all_fobs != 0 || count blufor_sectors != 0 ) then {
 	{ _tpositions pushback _x; } foreach GRLIB_all_fobs;
 
 	{
-		if ( _startpos distance _x < _refdistance ) then {
+		if ( _startpos distance2D _x < _refdistance ) then {
 			_refdistance = (_startpos distance2D _x);
 			_currentnearest = [_x,_refdistance];
 		};
@@ -22,7 +22,7 @@ if ( count GRLIB_all_fobs != 0 || count blufor_sectors != 0 ) then {
 		} foreach blufor_sectors;
 
 		{
-			if ( _startpos distance _x < _refdistance ) then {
+			if ( _startpos distance2D _x < _refdistance ) then {
 				_refdistance = (_startpos distance2D _x);
 				_currentnearest = [_x,_refdistance];
 			};
