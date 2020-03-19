@@ -13,7 +13,7 @@ load_veh = 0;
 createDialog "VIRT_vehicle_garage";
 waitUntil { dialog };
 
-while { dialog && alive player} do {
+while { dialog && alive player } do {
 	_display = findDisplay 2301;
 
 	if ( _refresh ) then {
@@ -98,6 +98,7 @@ while { dialog && alive player} do {
 			ctrlEnable [ 121, false ];
 			[player, _vehicle, load_veh] remoteExec ["vehicle_garage_remote_call", 2];
 			hintSilent (format ["Vehicle %1\nUnloaded from Garage.", _vehicle_name]);
+			closeDialog 0;
 		};
 
 		sleep 1;

@@ -10,25 +10,14 @@ if (_cmd == 1) then {
 
 	GRLIB_garage append [[typeOf _veh, _color, _owner]];
 	deleteVehicle _veh;
-	sleep 1;
 };
 
 if (_cmd == 2) then {
 	_veh_info = GRLIB_garage select _veh;
-	_veh_class = _veh_info select 0;
-	_color = _veh_info select 1;
-	_owner = _veh_info select 2;
+	[_veh_info] remoteExec ["remote_call_garage", owner _unit];
 	GRLIB_garage deleteAt _veh;
-
-	_new_veh = _veh_class createVehicle (getPos _unit);
-	_new_veh allowDamage false;
-	_new_veh setVehicleLock "LOCKED";
-	_new_veh setVariable ["GRLIB_vehicle_owner", _owner, true];
-	_new_veh setVariable ["R3F_LOG_disabled", true, true];
-	[_new_veh, _color, "N/A", []] call RPT_fnc_TextureVehicle;
-	sleep 1;
-	_new_veh allowDamage true;
 };
 
+sleep 1;
 publicVariable "GRLIB_garage";
 garage_in_use = nil;

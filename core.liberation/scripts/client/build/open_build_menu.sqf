@@ -3,6 +3,7 @@ private [ "_oldbuildtype", "_cfg", "_initindex", "_dialog", "_iscommandant", "_s
 if ( ( [ getpos player , 500 , GRLIB_side_enemy ] call F_getUnitsCount ) > 4 ) exitWith { hint localize "STR_BUILD_ENEMIES_NEARBY"; };
 
 if ( isNil "buildtype" ) then { buildtype = 1 };
+if ( buildtype > 8 ) then { buildtype = 1 };
 if ( isNil "buildindex" ) then { buildindex = -1 };
 dobuild = 0;
 _oldbuildtype = -1;

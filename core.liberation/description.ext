@@ -52,4 +52,4 @@ class Repaint {
 #include "addons\MGR\MagRepack_Config.hpp"
 #include "R3F_LOG\desc_include.h"
 #include "addons\RPT\veh_repaint.hpp"
-#include "addons\VIRT\virt_garage.hpp"
+#include "addons\VIRT\virtual_garage.hpp"

@@ -5,12 +5,23 @@ _maxdist = GRLIB_fob_range;
 _truepos = [];
 _debug_colisions = false;
 _price = 0;
+_color = [];
+build_unit = [];
 GRLIB_preview_spheres = [];
 while { count GRLIB_preview_spheres < 36 } do {
 	GRLIB_preview_spheres pushback ( "Sign_Sphere100cm_F" createVehicleLocal [ 0, 0, 0 ] );
 };
 
-{ _x setObjectTexture [0, "#(rgb,8,8,3)color(0,1,0,1)"]; } foreach GRLIB_preview_spheres;
+{ _x setObjectTexture [0, "#(rgb,8,8,3)color(0,1,0,1)"] } foreach GRLIB_preview_spheres;
+
+do_pay_build = {
+	params ["_price"];
+	if (_price <= 0) exitWith {};
+	private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
+	player setVariable ["GREUH_ammo_count", (_ammo_collected - _price), true];
+	playSound "rearm";
+	gamelogic globalChat format ["Build Price: %1, Thank you !", _price];
+};
 
 if (isNil "manned") then { manned = false };
 if (isNil "gridmode" ) then { gridmode = 0 };
@@ -27,6 +38,7 @@ while { true } do {
 	_classname = "";
 	if ( buildtype == 99 ) then {
 		_classname = FOB_typename;
+		_price = 0;
 	} else {
 		_score = score player;
  		_build_list = [];
@@ -34,8 +46,16 @@ while { true } do {
 			if ( _score >= (_x select 4) ) then {_build_list pushback _x};
 		} forEach (build_lists select buildtype);
 
-		_classname = (_build_list select buildindex) select 0;
-		_price = (_build_list select buildindex) select 2;
+		if (buildtype == 9) then {
+			_classname = build_unit select 0;
+			_price = build_unit select 2;
+			_color = build_unit select 5;
+			//buildtype = 2;
+		} else {
+			_classname = (_build_list select buildindex) select 0;
+			_price = (_build_list select buildindex) select 2;
+			_color = [];
+		};
 	};
 
 	if(buildtype == 1) then {
@@ -66,6 +86,7 @@ while { true } do {
 			_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 			[_unit] call player_EVH;
 		};
+		[_price] call do_pay_build;
 		build_confirmed = 0;
 	} else {
 		if ( buildtype == 8 ) then {
@@ -101,8 +122,9 @@ while { true } do {
 			};
 			_idactplace = player addAction ["<t color='#B0FF00'>" + localize "STR_PLACEMENT" + "</t> <img size='1' image='res\ui_confirm.paa'/>","scripts\client\build\build_place.sqf","",-750,false,true,"","build_invalid == 0 && build_confirmed == 1"];
 			_idactrotate = player addAction ["<t color='#B0FF00'>" + localize "STR_ROTATION" + "</t> <img size='1' image='res\ui_rotation.paa'/>","scripts\client\build\build_rotate.sqf","",-756,false,false,"","build_confirmed == 1"];
-			_idactcancel = player addAction ["<t color='#B0FF00'>" + localize "STR_CANCEL" + "</t> <img size='1' image='res\ui_cancel.paa'/>","scripts\client\build\build_cancel.sqf","",-760,false,true,"","build_confirmed == 1"];
-
+			if (buildtype != 9) then {
+				_idactcancel = player addAction ["<t color='#B0FF00'>" + localize "STR_CANCEL" + "</t> <img size='1' image='res\ui_cancel.paa'/>","scripts\client\build\build_cancel.sqf","",-760,false,true,"","build_confirmed == 1"];
+			};
 			_ghost_spot = (getmarkerpos "ghost_spot") findEmptyPosition [0,100];
 
 			_vehicle = _classname createVehicleLocal _ghost_spot;
@@ -273,14 +295,19 @@ while { true } do {
 					[ _vehicle ] call F_forceBluforCrew;
 				};
 
-				//set mass heavy Static
+				// set mass heavy Static
 				if ( _classname in ["B_AAA_System_01_F","B_Ship_Gun_01_F"] ) then {
 					_vehicle setMass 5000;
 				};
 
-				//Default Paint
+				// Default Paint
 				if ( _classname in ["I_E_Truck_02_MRL_F"] ) then {
 					[_vehicle, ["EAF",1], true ] call BIS_fnc_initVehicle;
+				};
+
+				// Color
+				if (count _color > 0) then {
+					[_vehicle, _color, "N/A", []] call RPT_fnc_TextureVehicle;
 				};
 
 				// Give real truck horn to APC
@@ -303,18 +330,13 @@ while { true } do {
 					{ _x addMPEventHandler ["MPKilled", {_this spawn kill_manager}]; } foreach (crew _vehicle);
 				};
 
-				if(buildtype in [2,3,4,7]) then {
+				if(buildtype in [2,3,4,7,9]) then {
 					if (!(typeOf _vehicle in GRLIB_vehicle_blacklist + uavs) ) then {
 						_vehicle setVariable ["GRLIB_vehicle_owner", getPlayerUID player, true];
 					};
 				};
 
-				if (_price != 0 && buildtype != 99 ) then {
-					private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
-					player setVariable ["GREUH_ammo_count", (_ammo_collected - _price), true];
-					playSound "rearm";
-					gamelogic globalChat format ["Build Price: %1, Thank you !", _price];
-				};
+				[_price] call do_pay_build;
 
 			};
 
