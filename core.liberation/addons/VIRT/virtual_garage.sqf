@@ -102,6 +102,7 @@ while { dialog && alive player } do {
 		};
 
 		sleep 1;
+		_selected_item = 1;
 		_refresh = true;
 		load_veh = 0;
 	};
