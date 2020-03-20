@@ -80,7 +80,6 @@ if (_unit == player && alive player && player isKindOf "Man") then {
 		[player, "hide"] remoteExec ["dog_action_remote_call", 2];
 	}];
 
-
 	_unit removeAllEventHandlers "GetOutMan";
 	_unit addEventHandler ["GetOutMan", {
 		1 fadeSound 1;
