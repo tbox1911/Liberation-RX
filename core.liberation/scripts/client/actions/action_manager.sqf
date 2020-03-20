@@ -2,7 +2,8 @@
 private["_idact_build","_idact_arsenal","_idact_redeploy","_idact_tutorial","_idact_commander",
 		"_idact_halo","_idact_heal","_idact_lead","_idact_drop","_idact_squad","_idact_send",
 		"_idact_packfob","_idact_unpackfob","_idact_packtent","_idact_unpacktent","_idact_buyfuel",
-		"_idact_secondary","_idact_dog_action","_idact_cheat","_idact_options", "_idact_garage"
+		"_idact_secondary","_idact_cheat","_idact_options", "_idact_garage","_idact_dog_action1",
+		"_idact_dog_action2","_idact_dog_action3","_idact_dog_action4"
 ];
 
 private _distfob = 100;
@@ -11,7 +12,13 @@ private _distspawn = 10;
 private _distredeploy = 20;
 private _distveh = 15;
 private _distvehclose = 5;
-dog_menu = nil;
+
+_idact_build=-1;_idact_arsenal=-1;_idact_redeploy=-1;_idact_tutorial=-1;_idact_squad=-1;
+_idact_commander=-1;_idact_repackage=-1;_idact_halo=-1;_idact_heal=-1;_idact_lead=-1;
+_idact_drop=-1;_idact_send=-1;_idact_secondary=-1;_idact_packfob=-1;_idact_unpackfob=-1;
+_idact_packtent=-1;_idact_unpacktent=-1;_idact_buyfuel=-1;_idact_cheat=-1;_idact_options=-1;
+_idact_garage=-1;_idact_dog_action1=-1;_idact_dog_action2=-1;_idact_dog_action3=-1;
+_idact_dog_action4=-1;
 
 is_DogOnDuty = {
 	private _ret = false;
@@ -21,28 +28,6 @@ is_DogOnDuty = {
 	_ret;
 };
 
-dog_submenu = {
-	dog_menu = 0;
-	removeAllActions player;
-	_icon = (getText (configFile >> "CfgVehicleIcons" >> "iconAnimal"));
-	player addAction ["<t color='#80FF80'>" + "-- DOG FIND."+ "</t> <img size='1' image='" + _icon + "'/>","scripts\client\actions\do_dog.sqf","find",-640,false,true,"","!call is_DogOnDuty"];
-	player addAction ["<t color='#80FF80'>" + "-- DOG RECALL."+ "</t> <img size='1' image='" + _icon + "'/>","scripts\client\actions\do_dog.sqf","recall",-640,false,true,"","call is_DogOnDuty"];
-	player addAction ["<t color='#80FF80'>" + "-- DOG STOP." + "</t> <img size='1' image='" + _icon + "'/>","scripts\client\actions\do_dog.sqf","stop",-641,false,true,"",""];
-	player addAction ["<t color='#FF8080'>" + "-- DOG DISMISS." + "</t> <img size='1' image='" + _icon + "'/>","scripts\client\actions\do_dog.sqf","del",-641,false,true,"",""];
-	player addAction ["<t color='#FFFFFF'>" + "-- RETURN." + "</t> <img size='1' image='" + _icon + "'/>","dog_menu=1","",-650,false,true,"",""];
-
-	//waitUntil {sleep 0.5; dog_menu == 1};
-};
-
-raz_menu = {
-	_idact_build=-1;_idact_arsenal=-1;_idact_redeploy=-1;_idact_tutorial=-1;_idact_squad=-1;
-	_idact_commander=-1;_idact_repackage=-1;_idact_halo=-1;_idact_heal=-1;_idact_lead=-1;
-	_idact_drop=-1;_idact_send=-1;_idact_secondary=-1;_idact_packfob=-1;_idact_unpackfob=-1;
-	_idact_packtent=-1;_idact_unpacktent=-1;_idact_buyfuel=-1;_idact_dog_action=-1;
-	_idact_cheat=-1;_idact_options=-1;_idact_garage=-1;
-};
-
-[] call raz_menu;
 waitUntil {sleep 1; !isNil "build_confirmed" };
 waitUntil {sleep 1; !isNil "one_synchro_done" };
 waitUntil {sleep 1; one_synchro_done };
@@ -50,15 +35,6 @@ waitUntil {sleep 1; !isNil "GRLIB_player_spawned" };
 waituntil {sleep 1; GRLIB_player_spawned; (player getVariable ["GRLIB_score_set", 0] == 1)};
 
 while { true } do {
-
-	while {!isNil "dog_menu" } do {
-		if (dog_menu == 1) then {
-			removeAllActions player;
-			[] call raz_menu;
-			dog_menu = nil;
-		};
-		sleep 0.5;
-	};
 
 	_fobdistance = round (player distance2D ([] call F_getNearestFob));
 	_near_arsenal = (player nearEntities [Arsenal_typename, _distarsenal]) + (player nearObjects [FOB_typename, _distredeploy]);
@@ -83,14 +59,20 @@ while { true } do {
 
 	// Dog - Actions
 	if ( [] call is_menuok && !isNull _my_dog ) then {
-		if ( _idact_dog_action == -1 ) then {
+		if ( _idact_dog_action1 == -1 ) then {
 			_icon = (getText (configFile >> "CfgVehicleIcons" >> "iconAnimal"));
-			_idact_dog_action = player addAction ["<t color='#80FF80'>" + "-- DOG ACTION"+ "</t> <img size='1' image='" + _icon + "'/>","[] call dog_submenu","",-640,false,false,"",""];
+			_idact_dog_action1 = player addAction ["<t color='#80FF80'>" + "-- DOG FIND."+ "</t> <img size='1' image='" + _icon + "'/>","scripts\client\actions\do_dog.sqf","find",-640,false,true,"","!call is_DogOnDuty"];
+			_idact_dog_action2 = player addAction ["<t color='#80FF80'>" + "-- DOG RECALL."+ "</t> <img size='1' image='" + _icon + "'/>","scripts\client\actions\do_dog.sqf","recall",-640,false,true,"","call is_DogOnDuty"];
+			_idact_dog_action3 = player addAction ["<t color='#80FF80'>" + "-- DOG STOP." + "</t> <img size='1' image='" + _icon + "'/>","scripts\client\actions\do_dog.sqf","stop",-641,false,true,"",""];
+			_idact_dog_action4 = player addAction ["<t color='#FF8080'>" + "-- DOG DISMISS." + "</t> <img size='1' image='" + _icon + "'/>","scripts\client\actions\do_dog.sqf","del",-641,false,true,"",""];
 		};
 	} else {
-		if ( _idact_dog_action != -1 ) then {
-			player removeAction _idact_dog_action;
-			_idact_dog_action = -1;
+		if ( _idact_dog_action1 != -1 ) then {
+			player removeAction _idact_dog_action1;
+			player removeAction _idact_dog_action2;
+			player removeAction _idact_dog_action3;
+			player removeAction _idact_dog_action4;
+			_idact_dog_action1 = -1; _idact_dog_action2 = -1;_idact_dog_action3 = -1;_idact_dog_action4 = -1;
 		};
 	};
 
