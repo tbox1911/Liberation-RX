@@ -18,6 +18,6 @@ if (_cmd == 2) then {
 	GRLIB_garage deleteAt _veh;
 };
 
-sleep 1;
 publicVariable "GRLIB_garage";
+sleep 1;
 garage_in_use = nil;
