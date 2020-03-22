@@ -26,9 +26,9 @@ _squad_camera camcommit 0;
 
 while { dialog && alive player } do {
 
-	if (  { alive _x } count (units group player) != _membercount ) then {
+	if (  { alive _x } count (MGI_bros) != _membercount ) then {
 
-		_membercount = { alive _x } count (units group player);
+		_membercount = { alive _x } count (MGI_bros);
 
 		lbClear 101;
 		{
@@ -51,7 +51,7 @@ while { dialog && alive player } do {
 	};
 
 	_selectedmember = objNull;
-	if ( lbCurSel 101 != -1 && (count (units group player ) > lbCurSel 101 ) ) then {
+	if ( lbCurSel 101 != -1 && (count (MGI_bros) > lbCurSel 101 ) ) then {
 		_selectedmember = (units group player) select (lbCurSel 101);
 	};
 

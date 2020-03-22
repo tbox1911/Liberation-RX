@@ -73,8 +73,8 @@ MGI_fn_Revive = {
           // AI rejoin player's group
           if (group _x != group player &&
               isNil {_x getVariable 'MGI_busy'} &&
-              (count (units group player) < GRLIB_max_squad_size+GRLIB_squad_size_bonus)
-            ) then { [_x] joinSilent my_group };
+              (count (MGI_bros) < GRLIB_max_squad_size+GRLIB_squad_size_bonus)
+          ) then { [_x] joinSilent my_group };
 
 
           // AI stop doing shit !
