@@ -97,7 +97,7 @@ MGI_fn_Revive = {
 
         };
       } forEach MGI_bros;
-      sleep 10;
+      sleep 5;
     };
 };
 

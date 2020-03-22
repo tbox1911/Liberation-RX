@@ -80,11 +80,12 @@ while { true } do {
 			};
 			_unit = _grp createUnit [_classname, _pos, [], 5, "NONE"];
 			_unit setMass 10;
-			_unit setSkill 0.5;
+			_unit setSkill 0.6;
 			_unit setRank "PRIVATE";
 			_unit setVariable [format["Bros_%1",MGI_Grp_ID], true, true];
 			_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 			[_unit] call player_EVH;
+			MGI_bros = allUnits select {(_x getVariable [format["Bros_%1",MGI_Grp_ID],nil])};
 		};
 		[_price] call do_pay_build;
 		build_confirmed = 0;
