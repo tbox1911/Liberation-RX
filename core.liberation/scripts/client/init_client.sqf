@@ -12,7 +12,6 @@ if (isMultiplayer) then {
 } else {
 	MGI_Grp_ID = str round(random 4096);
 };
-MGI_bros = [];
 
 [] execVM "scripts\client\commander\enforce_whitelist.sqf";
 [] execVM "scripts\client\misc\init_markers.sqf";

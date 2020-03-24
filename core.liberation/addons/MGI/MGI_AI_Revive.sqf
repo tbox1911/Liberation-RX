@@ -38,7 +38,6 @@ MGI_fn_EHDamage = {
   _unit setVariable ["MGI_busy", nil];
   _unit setVariable ["MGI_heal", nil];
   _unit setVariable ["MGI_healed", nil];
-  _unit setVariable [format["Bros_%1",MGI_Grp_ID], true];
 };
 
 MGI_fn_Revive = {
@@ -96,6 +95,7 @@ MGI_fn_Revive = {
           };
 
         };
+        sleep 0.1;
       } forEach MGI_bros;
       sleep 5;
     };

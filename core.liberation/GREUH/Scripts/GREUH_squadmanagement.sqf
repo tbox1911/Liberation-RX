@@ -92,8 +92,8 @@ while { true } do {
 						lbAdd [567, name _x ];
 					} foreach _player_group_filtered;
 
-					_count_units_grp_player = count (MGI_bros);
-					waitUntil { ((squadaction == "") || (choose_squadleader >= 0) || !(dialog) || !(alive player) || (_count_units_grp_player != count (MGI_bros))) };
+					_count_units_grp_player = count (units group player);
+					waitUntil { ((squadaction == "") || (choose_squadleader >= 0) || !(dialog) || !(alive player) || (_count_units_grp_player != count (units group player))) };
 					if ( alive player && dialog && ( choose_squadleader >= 0 )) then {
 						global_new_leader = [group player, _player_group_filtered select choose_squadleader];
 						publicVariable "global_new_leader";

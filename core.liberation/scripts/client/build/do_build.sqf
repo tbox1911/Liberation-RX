@@ -85,7 +85,6 @@ while { true } do {
 			_unit setVariable [format["Bros_%1",MGI_Grp_ID], true, true];
 			_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 			[_unit] call player_EVH;
-			MGI_bros = allUnits select {(_x getVariable [format["Bros_%1",MGI_Grp_ID],nil])};
 		};
 		[_price] call do_pay_build;
 		build_confirmed = 0;
