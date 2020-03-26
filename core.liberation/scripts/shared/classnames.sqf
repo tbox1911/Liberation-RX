@@ -403,9 +403,13 @@ militia_vehicles = [
 	"O_G_Offroad_01_armed_F",
 	"O_G_Offroad_01_AT_F",
 	"I_C_Offroad_02_LMG_F",
+	"O_LSV_02_armed_F",
+	"O_LSV_02_AT_F",
 	"O_G_Offroad_01_armed_F",
 	"O_G_Offroad_01_AT_F",
-	"I_C_Offroad_02_LMG_F"
+	"I_C_Offroad_02_LMG_F",
+	"O_LSV_02_armed_F",
+	"O_LSV_02_AT_F"
 ];
 
 opfor_boat = [
@@ -435,7 +439,9 @@ opfor_vehicles_low_intensity = [
 	"O_APC_Wheeled_02_rcws_F",
 	"O_MRAP_02_hmg_F",
 	"O_MRAP_02_hmg_F",
-	"O_MRAP_02_gmg_F"
+	"O_MRAP_02_gmg_F",
+	"O_LSV_02_armed_F",
+	"O_LSV_02_AT_F"
 ];
 
 opfor_battlegroup_vehicles = [
@@ -463,7 +469,9 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"O_MRAP_02_gmg_F",
 	"O_Truck_03_covered_F",
 	"O_Heli_Transport_04_bench_F",
-	"O_Truck_03_transport_F"
+	"O_Truck_03_transport_F",
+	"O_LSV_02_armed_F",
+	"O_LSV_02_AT_F"
 ];
 
 opfor_troup_transports = [
@@ -501,6 +509,8 @@ ind_recyclable = [
 ];
 
 opfor_recyclable = [
+	["O_LSV_02_armed_F",0,round (20 / GRLIB_recycling_percentage),0],
+	["O_LSV_02_AT_F",0,round (20 / GRLIB_recycling_percentage),0],
 	["O_G_Offroad_01_armed_F",0,round (20 / GRLIB_recycling_percentage),0],
 	["O_G_Offroad_01_AT_F",0,round (20 / GRLIB_recycling_percentage),0],
 	["I_C_Offroad_02_LMG_F",0,round (20 / GRLIB_recycling_percentage),0],
