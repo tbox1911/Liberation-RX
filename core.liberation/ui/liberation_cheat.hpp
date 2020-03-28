@@ -3,13 +3,13 @@ class liberation_cheat {
 	movingEnable = false;
 	controlsBackground[] = {};
 	controls[] = {
-	  "OuterBG1", 
-	  "OuterBG_F1", 
-	  "InnerBG1", 
-	  "InnerBG_F1", 
+	  "OuterBG1",
+	  "OuterBG_F1",
+	  "InnerBG1",
+	  "InnerBG_F1",
 	  "Header",
+	  "ArsenalButton",
 	  "AmmoButton",
-	  "FuelButton",
 	  "SkipTimeButton",
     "UnlockButton",
     "DeleteButton",
@@ -18,26 +18,26 @@ class liberation_cheat {
 	  "CancelButton",
     "CheatInfo01",
     "Cheat_cb_1607",
-    "Cheat_cb_text"
+    "Cheat_cb_text",
+    "PlayerList"
 	};
 	objects[] = {};
-  class AmmoButton: StdButton
+  class ArsenalButton: StdButton
   {
     idc = 1600;
-        action = "[player, 200] remoteExec ['addScore', 2];hint 'Score changed !'";
-
-    text = "Add 200 Points"; 
+    action = "'B_supplyCrate_F' createVehicle (player getRelPos[3, 0]);hint 'Arsenal spawned !'";
+    text = "Spawn Arsenal";
     x = 0.2275 * safezoneW + safezoneX;
     y = 0.26 * safezoneH + safezoneY;
     w = 0.0875 * safezoneW;
     h = 0.04 * safezoneH;
   };
-  class FuelButton: StdButton
+  class AmmoButton: StdButton
   {
     idc = 1601;
     action = "['Box_NATO_AmmoVeh_F', player getRelPos[3, 0], false] remoteExec ['boxSetup', 2]; hint 'AmmoBox spawned !'";
 
-    text = "Spawn AmmoBox"; 
+    text = "Spawn AmmoBox";
     x = 0.2275 * safezoneW + safezoneX;
     y = 0.312 * safezoneH + safezoneY;
     w = 0.0875 * safezoneW;
@@ -84,19 +84,27 @@ class liberation_cheat {
   class Item01Button: StdButton
   {
     idc = 1602;
-    action = "'B_Heli_Attack_01_F' createVehicle (player getRelPos[15, 0]);hint 'Heli spawned !'";
+    action = "do_unban=1";
 
-    text = "Spawn BlackFooot Heli";
+    text = "UnBAN player";
     x = 0.2275 * safezoneW + safezoneX;
     y = 0.364 * safezoneH + safezoneY;
     w = 0.0875 * safezoneW;
     h = 0.04 * safezoneH;
   };
+  class PlayerList: StdCombo {
+			idc = 1611;
+			x = 0.3275 * safezoneW + safezoneX;
+			y = 0.367 * safezoneH + safezoneY;
+			w = 0.09 * safezoneW;
+			h = 0.033 * safezoneH;
+			//sizeEx = 0.018 * safezoneH * GUI_GRID_H * GUI_GRID_H;
+		};
   class Item02Button: StdButton
   {
     idc = 1603;
-    action = "'B_supplyCrate_F' createVehicle (player getRelPos[3, 0]);hint 'Arsenal spawned !'";
-    text = "Spawn Arsenal";
+     action = "[player, 200] remoteExec ['addScore', 2];hint 'Score changed !'";
+    text = "Add 200 Points";
     x = 0.2275 * safezoneW + safezoneX;
     y = 0.416 * safezoneH + safezoneY;
     w = 0.0875 * safezoneW;
@@ -171,7 +179,7 @@ class liberation_cheat {
     idc = 1605;
     action = "closeDialog 0";
 
-    text = "OK"; 
+    text = "OK";
     x = 0.269271 * safezoneW + safezoneX;
     y = 0.71 * safezoneH + safezoneY;
     w = 0.09 * safezoneW;
@@ -203,7 +211,7 @@ class liberation_cheat {
   };
   class Header: StdHeader
   {
-    text = "-- CHEAT MENU --"; 
+    text = "-- CHEAT MENU --";
     x = 0.1985 * safezoneW + safezoneX;
     y = 0.1444 * safezoneH + safezoneY;
     w = 0.2375 * safezoneW;
