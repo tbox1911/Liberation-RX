@@ -39,10 +39,10 @@ GRLIB_perm_tank = 600;
 GRLIB_perm_air = 800;
 GRLIB_perm_max = 1000;
 GRLIB_date_year = 2020;
-GRLIB_date_month = 03;
-GRLIB_date_day = 23;
-GRLIB_nights_start = 16;
-GRLIB_nights_stop = 8.5;
+GRLIB_date_month = 07;
+GRLIB_date_day = 18;
+GRLIB_nights_start = 22;
+GRLIB_nights_stop = 4;
 GREUH_start_ammo = 500;
 
 if ( GRLIB_blufor_cap > 100 ) then { GRLIB_blufor_cap = 100 }; // Don't forget that the human commander manages those, not the server
