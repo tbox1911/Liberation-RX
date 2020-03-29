@@ -95,7 +95,6 @@ if (!GRLIB_ACE_enabled) then {
 	[] execVM "addons\MGR\MagRepack_init.sqf";
 	[] execVM "addons\NRE\NRE_init.sqf";
 	[] execVM "addons\RPT\RPT_init.sqf";
-	[] execVM "addons\fpsFix\vehicleManager.sqf";
 	[] execVM "addons\KEY\shortcut_init.sqf";
 	[] execVM "addons\VIRT\virtual_garage_init.sqf";
 	[] execVM "scripts\client\misc\support_manager.sqf";
