@@ -30,7 +30,6 @@ colorList =[
 	["Forest 1", _texDir + "foret1.paa"],
 	["Hex", _texDir + "hex.paa"],
 	["Jungle", _texDir + "jungle.paa"],
-	["Modern Z", _texDir + "modernzig.paa"],
 	["Panzer Grey", _texDir + "panzergris.paa"],
 	["Urban", _texDir + "urban.paa"],
 	["Woodland", _texDir + "woodland.paa"],
@@ -39,7 +38,7 @@ colorList =[
 
 // Barbare
 if (getPlayerUID player in ["76561198085724439", "76561198098904932"]) then {
-	colorList = colorList +	[["Hello Kitty", _texDir + "hellokitty.paa"]];
+	colorList = colorList +	[["Barbare", _texDir + "hellokitty.paa"]];
 };
 // Raven
 if (getPlayerUID player in ["76561198085724439", "76561198017505587"]) then {
@@ -47,7 +46,11 @@ if (getPlayerUID player in ["76561198085724439", "76561198017505587"]) then {
 };
 // Christophe
 if (getPlayerUID player in ["76561198085724439", "76561198299706821"]) then {
-	colorList = colorList +	[["Camo Christophe", _texDir + "camo_chris.paa"]];
+	colorList = colorList +	[["Christophe", _texDir + "camo_chris.paa"]];
+};
+// Zeus
+if (getPlayerUID player in ["76561198085724439", "76561198040060442"]) then {
+	colorList = colorList +	[["Zeus39", _texDir + "modernzig.paa"]];
 };
 
 //moved to ./shared/ for server use
