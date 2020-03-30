@@ -21,7 +21,7 @@ FAR_tkMessage = [];
 FAR_Debugging = true;
 
 call compile preprocessFile "addons\TKP\tk_init.sqf";
-call compile preprocessFile "addons\FAR_revive\FAR_revive_funcs.sqf";
+call compile preprocessFile "addons\FAR\FAR_revive_funcs.sqf";
 if (isDedicated) exitWith {};
 
 FAR_Player_MPKilled = {
