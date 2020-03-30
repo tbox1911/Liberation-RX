@@ -1,7 +1,7 @@
 class LARs_blacklistArsenal {
 	tag = "LARs";
 	class Inventory {
-		file = "addons\LAR\blacklistArsenal";
+		file = "addons\LARs\blacklistArsenal";
 		class allGear {
 			preInit = 1;
 		};
