@@ -76,10 +76,9 @@ _setupObjects =
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	[_aiGroup, _missionPosEnd, _nbUnits, "infantry"] call createCustomGroup;
 
-	_markername = "side_mission_A3W_Mission_SD";
-	_marker = createMarkerLocal [_markername, _missionPosEnd];
-	_marker setMarkerShapeLocal "ICON";
-	_marker setMarkerTypeLocal "Empty";
+	_marker = createMarker ["side_mission_A3W_Mission_SD", _missionPosEnd];
+	_marker setMarkerShape "ICON";
+	_marker setMarkerType "Empty";
 
 };
 
