@@ -19,7 +19,7 @@ joinUnassigned = 0;
 LARs_calculateSideGear = 1;
 
 class CfgFunctions {
-	#include "addons\LARs\blacklistArsenal.cpp"
+	#include "addons\LAR\blacklistArsenal.cpp"
 };
 
 class Header {

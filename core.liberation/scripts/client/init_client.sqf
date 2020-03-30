@@ -41,7 +41,7 @@ clear_wpt = compileFinal preprocessFileLineNumbers "scripts\client\misc\clear_wa
 is_owner = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_owner.sqf";
 is_menuok = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_menuok.sqf";
 is_local = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_local.sqf";
-player_EVH = compileFinal preprocessFileLineNumbers "addons\FAR_revive\FAR_EventHandler.sqf";
+player_EVH = compileFinal preprocessFileLineNumbers "addons\FAR\FAR_EventHandler.sqf";
 get_group = compileFinal preprocessFileLineNumbers "scripts\client\misc\get_group.sqf";
 paraDrop = compileFinal preprocessFileLineNumbers "scripts\client\spawn\paraDrop.sqf";
 
