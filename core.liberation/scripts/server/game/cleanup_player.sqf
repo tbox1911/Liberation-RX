@@ -26,8 +26,8 @@ if !(isNull _player) then {
 
 	// Remove Injured AI
 	{
-		if (lifeState _x == "incapacitated") then { deleteVehicle _x };
-	} forEach units _player;
+		if (!(lifeState _x in ["HEALTHY", "INJURED"])) then { deleteVehicle _x };
+	} forEach units group _player;
 
 	_text = format ["Bye bye %1, see you soon...", name _player];
 	[gamelogic, _text] remoteExec ["globalChat", -2];
