@@ -26,6 +26,7 @@ if !(isNull _player) then {
 
 	// Remove Injured AI
 	{
+		_x setVariable ["MGI_busy", nil];
 		if (!(lifeState _x in ["HEALTHY", "INJURED"])) then { deleteVehicle _x };
 	} forEach units group _player;
 

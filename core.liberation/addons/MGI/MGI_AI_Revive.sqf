@@ -75,7 +75,6 @@ MGI_fn_Revive = {
               (count (MGI_bros) < GRLIB_max_squad_size+GRLIB_squad_size_bonus)
           ) then { [_x] joinSilent my_group };
 
-
           // AI stop doing shit !
           if ( leader group player != player &&
                lifeState player == 'incapacitated' &&
@@ -93,7 +92,6 @@ MGI_fn_Revive = {
                 _x doFollow leader (group player);
 
           };
-
         };
         sleep 0.1;
       } forEach MGI_bros;
