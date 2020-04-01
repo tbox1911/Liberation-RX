@@ -31,9 +31,6 @@ if ( isMultiplayer ) then {
 	GRLIB_limited_arsenal = ["LimitedArsenal",1] call bis_fnc_getParamValue;
 	GRLIB_fancy_info = ["FancyInfo",2] call bis_fnc_getParamValue;
 	GRLIB_hide_opfor = ["HideOpfor",0] call bis_fnc_getParamValue;
-	GRLIB_debug_cli = ["DebugCLI", 6] call bis_fnc_getParamValue;
-	GRLIB_debug_srv = ["DebugSRV", 6] call bis_fnc_getParamValue;
-
 } else {
 	GRLIB_difficulty_modifier = 1;
 	GRLIB_time_factor = 1;
@@ -67,8 +64,6 @@ if ( isMultiplayer ) then {
 	GRLIB_limited_arsenal = 1;
 	GRLIB_fancy_info = 2;
 	GRLIB_hide_opfor = 0;
-	GRLIB_debug_cli = 6;
-	GRLIB_debug_srv = 6;
 };
 //ACE ACRE
 GRLIB_ACE_enabled = isClass(configFile >> "cfgPatches" >> "ace_main"); // Returns true if ACE is enabled

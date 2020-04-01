@@ -1,5 +1,5 @@
 uiSleep 3;
-
+if (isNil "blufor_sectors") exitWith {};
 {
 	_nextower = "Land_Communication_F" createVehicle (markerPos _x);
 	_nextower setpos (markerpos _x);

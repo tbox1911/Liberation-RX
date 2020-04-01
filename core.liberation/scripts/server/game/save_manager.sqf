@@ -47,6 +47,7 @@ GRLIB_vehicle_to_military_base_links = [];
 GRLIB_permissions = [];
 ai_groups = [];
 saved_intel_res = 0;
+resources_intel = 0;
 GRLIB_player_scores = [];
 GRLIB_garage = [];
 

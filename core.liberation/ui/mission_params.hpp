@@ -204,18 +204,6 @@ class Params
 		texts[] = { $STR_YES, $STR_NO };
 		default = 1;
 	};
-	class DebugCLI {
-		title = "Debug Client Level";
-		values[] = { 0,1,2,3,4,5,6 };
-		texts[] = { 0,1,2,3,4,5,6 };
-		default = 6;
-	};
-	class DebugSRV {
-		title = "Debug Server Level";
-		values[] = { 0,1,2,3,4,5,6 };
-		texts[] = { 0,1,2,3,4,5,6 };
-		default = 6;
-	};
 	class Space3 {
 		title = "";
 		values[] = { "" };
