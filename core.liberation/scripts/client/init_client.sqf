@@ -45,59 +45,47 @@ player_EVH = compileFinal preprocessFileLineNumbers "addons\FAR\FAR_EventHandler
 get_group = compileFinal preprocessFileLineNumbers "scripts\client\misc\get_group.sqf";
 paraDrop = compileFinal preprocessFileLineNumbers "scripts\client\spawn\paraDrop.sqf";
 
-systemchat format ["DBG: Debug level: %1", GRLIB_debug_cli];
-if (GRLIB_debug_cli >= 1) then {
-	[] execVM "scripts\client\ui\intro.sqf";
-	[] execVM "scripts\client\spawn\redeploy_manager.sqf";
-	if (GRLIB_debug_cli >= 2) then {
-		[] execVM "scripts\client\actions\action_manager.sqf";
-		[] execVM "scripts\client\actions\action_manager_veh.sqf";
-		[] execVM "scripts\client\actions\recycle_manager.sqf";
-		[] execVM "scripts\client\actions\intel_manager.sqf";
-		[] execVM "scripts\client\actions\dog_manager.sqf";
-		[] execVM "scripts\client\actions\man_manager.sqf";
-		if (GRLIB_debug_cli >= 3) then {
-			[] execVM "scripts\client\build\build_overlay.sqf";
-			[] execVM "scripts\client\build\do_build.sqf";
-			[] execVM "scripts\client\markers\empty_vehicles_marker.sqf";
-			[] execVM "scripts\client\markers\fob_markers.sqf";
-			[] execVM "scripts\client\markers\a3w_mission_marker.sqf";
-			[] execVM "scripts\client\markers\group_icons.sqf";
-			[] execVM "scripts\client\markers\hostile_groups.sqf";
-			[] execVM "scripts\client\markers\huron_marker.sqf";
-			[] execVM "scripts\client\markers\spot_timer.sqf";
-			[] execVM "scripts\client\misc\broadcast_squad_colors.sqf";
-			[] execVM "scripts\client\misc\disable_remote_sensors.sqf";
-			if (GRLIB_debug_cli >= 4) then {
-				//[] execVM "scripts\client\misc\offload_diag.sqf";
-				[] execVM "scripts\client\misc\permissions_warning.sqf";
-				[] execVM "scripts\client\misc\secondary_jip.sqf";
-				[] execVM "scripts\client\misc\stop_renegade.sqf";
-				[] execVM "scripts\client\misc\synchronise_vars.sqf";
-				[] execVM "scripts\client\misc\protect_static.sqf";
-				[] execVM "scripts\client\misc\manage_weather.sqf";
-				if (GRLIB_debug_cli >= 5) then {
-					[] execVM "scripts\client\ammoboxes\ammobox_action_manager.sqf";
-					[] execVM "scripts\client\markers\sector_manager.sqf";
-					[] execVM "scripts\client\misc\sides_stats_manager.sqf";
-					[] execVM "scripts\client\ui\ui_manager.sqf";
-					[] execVM "scripts\client\ui\tutorial_manager.sqf";
-					[] execVM "scripts\client\misc\resupply_manager.sqf";
-					if (GRLIB_debug_cli >= 6) then {
-						if (!GRLIB_ACE_enabled) then {
-							[] execVM "addons\MGI\MGI_AI_Revive.sqf";
-							[] execVM "addons\MGR\MagRepack_init.sqf";
-							[] execVM "addons\NRE\NRE_init.sqf";
-							[] execVM "addons\RPT\RPT_init.sqf";
-							[] execVM "addons\KEY\shortcut_init.sqf";
-							[] execVM "addons\VIRT\virtual_garage_init.sqf";
-							[] execVM "scripts\client\misc\support_manager.sqf";
-						};
-					};
-				};
-			};
-		};
-	};
+[] execVM "scripts\client\ui\intro.sqf";
+[] execVM "scripts\client\spawn\redeploy_manager.sqf";
+[] execVM "scripts\client\ammoboxes\ammobox_action_manager.sqf";
+[] execVM "scripts\client\markers\sector_manager.sqf";
+[] execVM "scripts\client\misc\sides_stats_manager.sqf";
+[] execVM "scripts\client\ui\ui_manager.sqf";
+[] execVM "scripts\client\ui\tutorial_manager.sqf";
+[] execVM "scripts\client\misc\resupply_manager.sqf";
+[] execVM "scripts\client\build\build_overlay.sqf";
+[] execVM "scripts\client\build\do_build.sqf";
+[] execVM "scripts\client\markers\empty_vehicles_marker.sqf";
+[] execVM "scripts\client\markers\fob_markers.sqf";
+[] execVM "scripts\client\markers\a3w_mission_marker.sqf";
+[] execVM "scripts\client\markers\group_icons.sqf";
+[] execVM "scripts\client\markers\hostile_groups.sqf";
+[] execVM "scripts\client\markers\huron_marker.sqf";
+[] execVM "scripts\client\markers\spot_timer.sqf";
+[] execVM "scripts\client\misc\broadcast_squad_colors.sqf";
+[] execVM "scripts\client\misc\disable_remote_sensors.sqf";
+//[] execVM "scripts\client\misc\offload_diag.sqf";
+[] execVM "scripts\client\misc\permissions_warning.sqf";
+[] execVM "scripts\client\misc\secondary_jip.sqf";
+[] execVM "scripts\client\misc\stop_renegade.sqf";
+[] execVM "scripts\client\misc\synchronise_vars.sqf";
+[] execVM "scripts\client\misc\protect_static.sqf";
+[] execVM "scripts\client\misc\manage_weather.sqf";
+[] execVM "scripts\client\actions\action_manager.sqf";
+[] execVM "scripts\client\actions\action_manager_veh.sqf";
+[] execVM "scripts\client\actions\recycle_manager.sqf";
+[] execVM "scripts\client\actions\intel_manager.sqf";
+[] execVM "scripts\client\actions\dog_manager.sqf";
+[] execVM "scripts\client\actions\man_manager.sqf";
+
+if (!GRLIB_ACE_enabled) then {
+	[] execVM "addons\MGI\MGI_AI_Revive.sqf";
+	[] execVM "addons\MGR\MagRepack_init.sqf";
+	[] execVM "addons\NRE\NRE_init.sqf";
+	[] execVM "addons\RPT\RPT_init.sqf";
+	[] execVM "addons\KEY\shortcut_init.sqf";
+	[] execVM "addons\VIRT\virtual_garage_init.sqf";
+	[] execVM "scripts\client\misc\support_manager.sqf";
 };
 
 // Init Tips Tables from XML

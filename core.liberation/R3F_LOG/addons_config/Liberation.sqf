@@ -211,16 +211,16 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 [
-	["Land_PierLadder_F", 2],
-	["Box_NATO_Ammo_F",3],
-    ["Box_NATO_WpsLaunch_F",3],
+	[mobile_respawn, 2],
 	[Arsenal_typename, 5],
 	[FOB_box_typename, 50],
 	[ammobox_b_typename, 15],
 	[ammobox_o_typename, 15],
 	[ammobox_i_typename, 15],
+	["Land_PierLadder_F", 2],
+	["Box_NATO_Ammo_F",3],
+    ["Box_NATO_WpsLaunch_F",3],
 	["Land_CanisterFuel_Red_F", 1],
-	["Land_TentDome_F", 2],
 	["Box_B_UAV_06_medical_F", 2],
 	["Box_East_Wps_F", 7],
 	["B_Slingload_01_Repair_F", 20],
@@ -232,6 +232,7 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 
 R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 [
+	mobile_respawn,
 	Arsenal_typename,
 	FOB_box_typename,
 	ammobox_b_typename,
@@ -239,7 +240,6 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	ammobox_i_typename,
 	"Land_PierLadder_F",
 	"Land_CanisterFuel_Red_F",
-	"Land_TentDome_F",
 	"Box_B_UAV_06_medical_F",
 	"Box_East_Wps_F",
 	"Box_NATO_Ammo_F",

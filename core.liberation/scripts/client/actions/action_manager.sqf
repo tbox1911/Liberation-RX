@@ -28,18 +28,18 @@ is_DogOnDuty = {
 	_ret;
 };
 
-waitUntil {sleep 1; !isNil "build_confirmed" };
-waitUntil {sleep 1; !isNil "one_synchro_done" };
-waitUntil {sleep 1; one_synchro_done };
-waitUntil {sleep 1; !isNil "GRLIB_player_spawned" };
-waituntil {sleep 1; GRLIB_player_spawned; (player getVariable ["GRLIB_score_set", 0] == 1)};
+waitUntil { !isNil "build_confirmed" };
+waitUntil { !isNil "one_synchro_done" };
+waitUntil { one_synchro_done };
+waitUntil { !isNil "GRLIB_player_spawned" };
+waituntil { GRLIB_player_spawned; (player getVariable ["GRLIB_score_set", 0] == 1)};
 
 while { true } do {
 
 	_fobdistance = round (player distance2D ([] call F_getNearestFob));
 	_near_arsenal = (player nearEntities [Arsenal_typename, _distarsenal]) + (player nearObjects [FOB_typename, _distredeploy]);
-	_near_tent = nearestObjects [player, ["Land_TentDome_F"], _distvehclose];
-	_near_spawn = (player nearEntities [[Respawn_truck_typename, huron_typename], _distspawn]) + _near_tent;
+	_near_radio = nearestObjects [player, [mobile_respawn], _distvehclose];
+	_near_spawn = (player nearEntities [[Respawn_truck_typename, huron_typename], _distspawn]) + _near_radio;
 	_near_fobbox = player nearEntities [[FOB_box_typename, FOB_truck_typename], _distspawn];
 	_near_fuel = [player, "FUEL", _distvehclose, false] call F_check_near;
 	_near_atm = [player, "ATM", _distvehclose, true] call F_check_near;
@@ -257,9 +257,9 @@ while { true } do {
 	};
 
 	// Pack Beacon
-	if ( [] call is_menuok && (player distance lhd) >= 1000 && cursorObject in _near_tent ) then {
+	if ( [] call is_menuok && (player distance lhd) >= 1000 && cursorObject in _near_radio ) then {
 		if ( _idact_packtent == -1 ) then {
-			_idact_packtent = player addAction ["<t color='#FFFF00'>-- PACK BEACON</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_beacon_pack.sqf",cursorObject,-950,true,true,"","!(cursorObject getVariable ['tent_in_use', false])"];
+			_idact_packtent = player addAction ["<t color='#FFFF00'>-- PACK RADIO</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_beacon_pack.sqf",cursorObject,-950,true,true,"","!(cursorObject getVariable ['tent_in_use', false])"];
 		};
 	} else {
 		if ( _idact_packtent != -1 ) then {
@@ -271,7 +271,7 @@ while { true } do {
 	// UnPack Beacon
 	if ( [] call is_menuok && (player distance lhd) >= 1000 && backpack player == 'B_Kitbag_Base' ) then {
 		if ( _idact_unpacktent == -1 ) then {
-			_idact_unpacktent = player addAction ["<t color='#FFFF00'>-- UNPACK BEACON</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_beacon_unpack.sqf","",-950,true,true,"",""];
+			_idact_unpacktent = player addAction ["<t color='#FFFF00'>-- UNPACK RADIO</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_beacon_unpack.sqf","",-950,true,true,"",""];
 		};
 	} else {
 		if ( _idact_unpacktent != -1 ) then {
