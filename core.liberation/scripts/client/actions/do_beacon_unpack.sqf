@@ -8,7 +8,7 @@ if (resources_infantry + _tent_cost >= infantry_cap) then {
 	sleep 2;
 	removeBackpack player;
 	sleep 6;
-	createVehicle [mobile_respawn, player modelToWorld [0,4,0], [], 0, "CAN_COLLIDE"];
+	createVehicle [mobile_respawn, player modelToWorld [0,4,1], [], 0, "CAN_COLLIDE"];
 	disableUserInput false;
 	disableUserInput true;
 	disableUserInput false;
