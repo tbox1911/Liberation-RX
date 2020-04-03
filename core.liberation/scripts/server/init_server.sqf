@@ -48,8 +48,6 @@ wait_to_spawn_sector = compileFinal preprocessFileLineNumbers "scripts\server\se
 [] execVM "scripts\server\battlegroup\counter_battlegroup.sqf";
 [] execVM "scripts\server\battlegroup\random_battlegroups.sqf";
 [] execVM "scripts\server\battlegroup\readiness_increase.sqf";
-[] execVM "scripts\server\offloading\offload_calculation.sqf";
-[] execVM "scripts\server\offloading\offload_manager.sqf";
 [] execVM "scripts\server\patrols\civilian_patrols.sqf";
 [] execVM "scripts\server\patrols\manage_patrols.sqf";
 [] execVM "scripts\server\patrols\reinforcements_resetter.sqf";
@@ -73,13 +71,15 @@ wait_to_spawn_sector = compileFinal preprocessFileLineNumbers "scripts\server\se
 [] execVM "scripts\server\game\zeus_synchro.sqf";
 [] execVM "scripts\server\game\manage_score.sqf";
 [] execVM "scripts\server\game\hall_of_fame.sqf";
+[] execVM "scripts\server\game\periodic_save.sqf";
+[] execVM "scripts\server\game\save_manager.sqf";
 [] execVM "scripts\server\base\fobbox_manager.sqf";
 [] execVM "scripts\server\base\huron_manager.sqf";
-[] execVM "scripts\server\game\periodic_save.sqf";
 [] execVM "scripts\server\secondary\autostart.sqf";
-[] execVM "scripts\server\game\save_manager.sqf";
 [] execVM "scripts\server\a3w\init_missions.sqf";
-//[] execVM "scripts\server\offloading\show_fps.sqf";
+[] execVM "scripts\server\offloading\offload_calculation.sqf";
+[] execVM "scripts\server\offloading\offload_manager.sqf";
+[] execVM "scripts\server\offloading\show_fps.sqf";
 
 {
 	if ( (_x != player) && (_x distance (getmarkerpos GRLIB_respawn_marker) < 200 ) ) then {deleteVehicle _x};
