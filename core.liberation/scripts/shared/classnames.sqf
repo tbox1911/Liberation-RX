@@ -5,7 +5,7 @@ if ( isNil "FOB_box_typename" ) then { FOB_box_typename = "B_Slingload_01_Cargo_
 if ( isNil "FOB_truck_typename" ) then { FOB_truck_typename = "B_Truck_01_box_F"; };
 if ( isNil "Arsenal_typename" ) then { Arsenal_typename = "B_supplyCrate_F"; };
 if ( isNil "Respawn_truck_typename" ) then { Respawn_truck_typename = "B_Truck_01_medical_F"; };
-if ( isNil "mobile_respawn" ) then { mobile_respawn = "Land_SatellitePhone_F"; };
+if ( isNil "mobile_respawn" ) then { mobile_respawn = "Land_SatelliteAntenna_01_F"; };   //Land_SatellitePhone_F
 if ( isNil "huron_typename" ) then { huron_typename = "B_Heli_Transport_03_unarmed_F"; };
 if ( isNil "ammobox_b_typename" ) then { ammobox_b_typename = "Box_NATO_AmmoVeh_F"; };
 if ( isNil "ammobox_o_typename" ) then { ammobox_o_typename = "Box_East_AmmoVeh_F"; };
@@ -286,7 +286,6 @@ ai_resupply_sources = [
 ai_healing_sources = [
 	Respawn_truck_typename,
 	"Box_B_UAV_06_medical_F",
-	"Land_MedicalTent_01_MTP_closed_F",
 	"B_APC_Tracked_01_CRV_F"
 ];
 

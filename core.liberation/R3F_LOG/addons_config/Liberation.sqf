@@ -226,8 +226,7 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 	["B_Slingload_01_Repair_F", 20],
 	["B_Slingload_01_Fuel_F", 20],
 	["B_Slingload_01_Ammo_F",20],
-	["B_Slingload_01_Medevac_F",20],
-	["Land_MedicalTent_01_MTP_closed_F", 15]
+	["B_Slingload_01_Medevac_F",20]
 ];
 
 R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
@@ -254,7 +253,6 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	"Land_BagBunker_Large_F",
 	"Land_BagBunker_Small_F",
 	"Land_BagBunker_Tower_F",
-	"Land_MedicalTent_01_MTP_closed_F",
 	"CamoNet_BLUFOR_open_F",
 	"CamoNet_BLUFOR_big_F",
 	"Land_CncShelter_F"
