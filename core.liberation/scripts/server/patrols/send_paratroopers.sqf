@@ -7,7 +7,13 @@ _sendPara = {
 	private _spawnsector = ( [ sectors_airspawn , [ _targetpos ] , { (markerpos _x) distance _input0 }, "ASCEND"] call BIS_fnc_sortBy ) select 0;
 
 	private _chopper_type = opfor_choppers call BIS_fnc_selectRandom;
-	private _newvehicle = createVehicle [ _chopper_type, markerpos _spawnsector, [], 0, "FLY"];
+	_air_spawnpos = markerPos _spawnsector;
+	//private _newvehicle = createVehicle [ _chopper_type, markerpos _spawnsector, [], 0, "FLY"];
+
+	_air_spawnpos = [(((_air_spawnpos select 0) + 500) - random 1000),(((_air_spawnpos select 1) + 500) - random 1000), 120];
+	private _newvehicle = createVehicle [ _chopper_type, _air_spawnpos, [], 0, "FLY"];
+
+	_newvehicle flyInHeight (100 + (random 60));
 	createVehicleCrew _newvehicle;
 	sleep 0.1;
 
@@ -17,8 +23,8 @@ _sendPara = {
 
 	while { count units _para_group < 8 } do {
 		opfor_paratrooper createUnit [ getmarkerpos _spawnsector, _para_group, 'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]'];
+    	sleep 0.1;
 	};
-    sleep 0.2;
 
 	{
 		_x moveInCargo _newvehicle;
@@ -29,11 +35,10 @@ _sendPara = {
 	while {(count (waypoints _pilot_group)) != 0} do {deleteWaypoint ((waypoints _pilot_group) select 0);};
 	while {(count (waypoints _para_group)) != 0} do {deleteWaypoint ((waypoints _para_group) select 0);};
 	sleep 0.2;
+
 	{_x doFollow leader _pilot_group} foreach units _pilot_group;
 	{_x doFollow leader _para_group} foreach units _para_group;
 	sleep 0.2;
-
-	_newvehicle flyInHeight 100;
 
 	_waypoint = _pilot_group addWaypoint [ _targetpos, 25];
 	_waypoint setWaypointType "MOVE";
