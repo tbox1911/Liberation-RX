@@ -212,6 +212,7 @@ support_vehicles = [
 	["C_Offroad_01_repair_F",5,15,5,GRLIB_perm_inf],
 	["C_Van_01_fuel_F",5,15,20,GRLIB_perm_inf],
 	[Respawn_truck_typename,15,50,5,GRLIB_perm_log],
+	["Land_Cargo20_military_green_F",0,50,0,GRLIB_perm_log],
 	["B_Slingload_01_Repair_F",10,100,0,GRLIB_perm_log],
 	["B_Slingload_01_Fuel_F",0,100,30,GRLIB_perm_log],
 	["B_Slingload_01_Ammo_F",0,150,0,GRLIB_perm_log],

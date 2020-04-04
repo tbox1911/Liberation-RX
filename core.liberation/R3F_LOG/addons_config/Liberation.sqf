@@ -50,12 +50,7 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 	["B_UAV_01_F", 3],
 	["B_UAV_06_F", 3],
 	["B_UGV_02_Demining_F", 5],
-	["B_UAV_02_F", 30],
-	["B_Slingload_01_Cargo_F", 50],
-	["B_Slingload_01_Repair_F", 25],
-	["B_Slingload_01_Fuel_F", 25],
-	["B_Slingload_01_Ammo_F", 25],
-	["B_Slingload_01_Medevac_F", 25]
+	["B_UAV_02_F", 30]
 ];
 
 R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
@@ -206,7 +201,8 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 [
 	[FOB_box_typename, 0],
-  	[FOB_truck_typename, 0]
+  	[FOB_truck_typename, 0],
+	["Land_Cargo20_military_green_F", 100]
 ];
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
@@ -223,10 +219,11 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 	["Land_CanisterFuel_Red_F", 1],
 	["Box_B_UAV_06_medical_F", 2],
 	["Box_East_Wps_F", 7],
-	["B_Slingload_01_Repair_F", 20],
-	["B_Slingload_01_Fuel_F", 20],
-	["B_Slingload_01_Ammo_F",20],
-	["B_Slingload_01_Medevac_F",20]
+	["B_Slingload_01_Cargo_F", 50],
+	["B_Slingload_01_Repair_F", 25],
+	["B_Slingload_01_Fuel_F", 25],
+	["B_Slingload_01_Ammo_F", 25],
+	["B_Slingload_01_Medevac_F", 25]
 ];
 
 R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
@@ -243,6 +240,8 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	"Box_East_Wps_F",
 	"Box_NATO_Ammo_F",
     "Box_NATO_WpsLaunch_F",
+	"Land_Cargo20_military_green_F",
+	"B_Slingload_01_Cargo_F",
 	"B_Slingload_01_Repair_F",
 	"B_Slingload_01_Fuel_F",
 	"B_Slingload_01_Ammo_F",
@@ -258,6 +257,10 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	"Land_CncShelter_F"
 ];
 
+R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
+[
+	"Land_Cargo20_military_green_F"
+];
 //--------------- Static ---------------
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
