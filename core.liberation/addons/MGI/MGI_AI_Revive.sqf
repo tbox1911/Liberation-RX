@@ -96,9 +96,10 @@ MGI_fn_Revive = {
 // AI rejoin player's group
 MGI_bros = allUnits select {(_x getVariable [format["Bros_%1",MGI_Grp_ID],nil])};
 {
-  if ( count (MGI_bros) < (GRLIB_max_squad_size + GRLIB_squad_size_bonus) ) then { [_x] joinSilent my_group; sleep 0.1};
+  if ( count (units group player) < (GRLIB_max_squad_size + GRLIB_squad_size_bonus) ) then { [_x] joinSilent my_group };
 } foreach MGI_bros;
-my_group selectLeader player;
+sleep 1;
+(group player) selectLeader player;
 
 [20,300,true] spawn MGI_fn_Revive;
 
