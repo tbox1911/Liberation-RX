@@ -27,7 +27,7 @@ taxi_dest = {
 _taxi_type = [
 	"O_Heli_Light_02_unarmed_F",
 	"B_Heli_Transport_03_unarmed_green_F",
-	"B_Heli_Transport_03_unarmed_F",
+	"B_Heli_Transport_03_black_F",
 	"B_Heli_Light_01_F",
 	"I_Heli_light_03_F",
 	"I_Heli_Transport_02_F"
