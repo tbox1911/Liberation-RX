@@ -83,12 +83,14 @@ _center = [_size,_size,0];
     _marker setMarkerSizeLocal [ 1, 1 ];
 
     //add repair pickup
-    //_vehicle = createVehicleLocal ["C_Offroad_01_repair_F", _x, [], 50, "NONE"];
-    _vehicle = "C_Offroad_01_repair_F" createVehicleLocal _x;
-    _vehicle allowDamage false;
-    _vehicle lock 2;
-    _vehicle setVariable ["GRLIB_vehicle_owner", "server"];
-    _vehicle setVariable ["R3F_LOG_disabled", true];
+    private _pos = _x findEmptyPosition [2,50, "C_Offroad_01_repair_F"];
+    if ( count _pos > 0) then {
+      _vehicle = "C_Offroad_01_repair_F" createVehicleLocal _pos;
+      _vehicle allowDamage false;
+      _vehicle lock 2;
+      _vehicle setVariable ["GRLIB_vehicle_owner", "server"];
+      _vehicle setVariable ["R3F_LOG_disabled", true];
+    };
   };
 } forEach GRLIB_Marker_FUEL;
 
