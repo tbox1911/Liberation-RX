@@ -202,6 +202,9 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 [
 	[FOB_box_typename, 0],
   	[FOB_truck_typename, 0],
+	["B_Truck_01_ammo_F", 0],
+	["B_Truck_01_Repair_F", 0],
+	["B_Truck_01_fuel_F", 0],
 	["Land_Cargo20_military_green_F", 100]
 ];
 
