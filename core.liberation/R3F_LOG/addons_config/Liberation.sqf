@@ -204,8 +204,7 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
   	[FOB_truck_typename, 0],
 	["B_Truck_01_ammo_F", 0],
 	["B_Truck_01_Repair_F", 0],
-	["B_Truck_01_fuel_F", 0],
-	["Land_Cargo20_military_green_F", 100]
+	["B_Truck_01_fuel_F", 0]
 ];
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
@@ -243,7 +242,6 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	"Box_East_Wps_F",
 	"Box_NATO_Ammo_F",
     "Box_NATO_WpsLaunch_F",
-	"Land_Cargo20_military_green_F",
 	"B_Slingload_01_Cargo_F",
 	"B_Slingload_01_Repair_F",
 	"B_Slingload_01_Fuel_F",
@@ -262,7 +260,6 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 
 R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 [
-	"Land_Cargo20_military_green_F"
 ];
 //--------------- Static ---------------
 
