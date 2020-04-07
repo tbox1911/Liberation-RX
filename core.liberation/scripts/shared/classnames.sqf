@@ -212,11 +212,11 @@ support_vehicles = [
 	["C_Offroad_01_repair_F",5,15,5,GRLIB_perm_inf],
 	["C_Van_01_fuel_F",5,15,20,GRLIB_perm_inf],
 	[Respawn_truck_typename,15,50,5,GRLIB_perm_log],
-	["Land_Cargo20_military_green_F",0,50,0,GRLIB_perm_log],
 	["B_Slingload_01_Repair_F",10,100,0,GRLIB_perm_log],
 	["B_Slingload_01_Fuel_F",0,100,30,GRLIB_perm_log],
 	["B_Slingload_01_Ammo_F",0,150,0,GRLIB_perm_log],
 	["B_Slingload_01_Medevac_F",10,100,0,GRLIB_perm_log],
+	["B_Truck_01_cargo_F",5,50,10,GRLIB_perm_log],
 	["B_Truck_01_ammo_F",5,150,10,GRLIB_perm_tank],
 	["B_Truck_01_Repair_F",10,130,10,GRLIB_perm_tank],
 	["B_Truck_01_fuel_F",5,120,40,GRLIB_perm_tank],
@@ -652,7 +652,12 @@ GRLIB_vehicle_whitelist = [
 GRLIB_vehicle_blacklist = [
 	huron_typename,
 	opfor_ammobox_transport,
+	Respawn_truck_typename,
+	FOB_box_typename,
+	FOB_truck_typename,
 	"ReammoBox_F",
+	"C_Offroad_01_repair_F",
+	"C_Van_01_fuel_F",
 	"Box_UAV_06_base_F",
 	"B_Heli_Transport_01_F",
 	"O_Heli_Light_02_unarmed_F",
@@ -662,7 +667,7 @@ GRLIB_vehicle_blacklist = [
 	"O_Truck_03_fuel_F",
 	"O_Truck_03_medical_F"
 ];
-{GRLIB_vehicle_blacklist pushBack ( _x select 0 )} foreach (support_vehicles);
+//{GRLIB_vehicle_blacklist pushBack ( _x select 0 )} foreach (support_vehicles);
 
 infantry_units = [ infantry_units ] call F_filterMods;
 light_vehicles = [ light_vehicles ] call F_filterMods;
