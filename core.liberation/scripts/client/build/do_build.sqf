@@ -90,7 +90,7 @@ while { true } do {
 		build_confirmed = 0;
 	} else {
 		if ( buildtype == 8 ) then {
-			_pos = [(getpos player select 0) + 1,(getpos player select 1) + 1, 0];
+			_pos = [(getposATL player select 0) + 1,(getposATL player select 1) + 1, 0];
 			_grp = createGroup [GRLIB_side_friendly, true];
 			_grp setGroupId [format ["%1 %2",squads_names select buildindex, groupId _grp]];
 			_idx = 0;
@@ -105,7 +105,7 @@ while { true } do {
 			_grp setBehaviour "AWARE";
 			build_confirmed = 0;
 		} else {
-			_posfob = getpos player;
+			_posfob = getposATL player;
 			if (buildtype != 99) then {
 				_posfob = [] call F_getNearestFob;
 			};
@@ -125,7 +125,7 @@ while { true } do {
 			if (buildtype != 9) then {
 				_idactcancel = player addAction ["<t color='#B0FF00'>" + localize "STR_CANCEL" + "</t> <img size='1' image='res\ui_cancel.paa'/>","scripts\client\build\build_cancel.sqf","",-760,false,true,"","build_confirmed == 1"];
 			};
-			_ghost_spot = (getmarkerpos "ghost_spot") findEmptyPosition [0,100];
+			_ghost_spot = (getmarkerpos "ghost_spot") findEmptyPosition [1,100,_classname];
 
 			_vehicle = _classname createVehicleLocal _ghost_spot;
 			_vehicle allowdamage false;
@@ -145,7 +145,7 @@ while { true } do {
 
 			while { build_confirmed == 1 && alive player } do {
 				_truedir = 90 - (getdir player);
-				_truepos = [((getpos player) select 0) + (_dist * (cos _truedir)), ((getpos player) select 1) + (_dist * (sin _truedir)),0];
+				_truepos = [((getposATL player) select 0) + (_dist * (cos _truedir)), ((getposATL player) select 1) + (_dist * (sin _truedir)),0];
 				_actualdir = ((getdir player) + build_rotation);
 				if ( _classname == "Land_Cargo_Patrol_V1_F" || _classname == "Land_PortableLight_single_F" ) then { _actualdir = _actualdir + 180 };
 				if ( _classname == FOB_typename ) then { _actualdir = _actualdir + 270 };
@@ -220,15 +220,17 @@ while { true } do {
 				if (count _near_objects == 0 && ((_truepos distance _posfob) < _maxdist) && (  ((!surfaceIsWater _truepos) && (!surfaceIsWater getpos player)) || (_classname in boats_names) ) ) then {
 
 					if ( ((buildtype == 6) || (buildtype == 99)) && ((gridmode % 2) == 1) ) then {
-						_vehicle setpos [round (_truepos select 0),round (_truepos select 1), _truepos select 2];
+						_vehicle setposATL [round (_truepos select 0),round (_truepos select 1), _truepos select 2];
 					} else {
-						_vehicle setpos _truepos;
+						_vehicle setposATL _truepos;
 					};
-					if ( buildtype == 6 || buildtype == 99 ) then {
-						_vehicle setVectorUp [0,0,1];
-					} else {
-						_vehicle setVectorUp surfaceNormal position _vehicle;
-					};
+
+					// if ( buildtype == 6 || buildtype == 99 ) then {
+					// 	_vehicle setVectorUp [0,0,1];
+					// } else {
+					// 	//_vehicle setVectorUp surfaceNormal (getPosATL _vehicle);
+					// };
+
 					if(build_invalid == 1) then {
 						GRLIB_ui_notif = "";
 						{ _x setObjectTexture [0, "#(rgb,8,8,3)color(0,1,0,1)"]; } foreach GRLIB_preview_spheres;
@@ -239,7 +241,7 @@ while { true } do {
 					if ( build_invalid == 0 ) then {
 						{ _x setObjectTexture [0, "#(rgb,8,8,3)color(1,0,0,1)"]; } foreach GRLIB_preview_spheres;
 					};
-					_vehicle setpos _ghost_spot;
+					_vehicle setposATL _ghost_spot;
 					build_invalid = 1;
 					if(count _near_objects > 0) then {
 						GRLIB_ui_notif = format [localize "STR_PLACEMENT_IMPOSSIBLE",count _near_objects, round _dist];
@@ -272,7 +274,7 @@ while { true } do {
 			};
 
 			if ( build_confirmed == 2 ) then {
-				_vehpos = getpos _vehicle;
+				_vehpos = getposATL _vehicle;
 				_vehdir = getdir _vehicle;
 				deleteVehicle _vehicle;
 				sleep 0.1;
@@ -289,7 +291,7 @@ while { true } do {
 				if ( buildtype == 6 || buildtype == 99 ) then {
 					_vehicle setVectorUp [0,0,1];
 				} else {
-					_vehicle setVectorUp surfaceNormal position _vehicle;
+					_vehicle setVectorUp surfaceNormal (getPosATL _vehicle);
 				};
 				if ( (_classname in uavs) || manned ) then {
 					[ _vehicle ] call F_forceBluforCrew;
@@ -354,7 +356,7 @@ while { true } do {
 
 			if(buildtype == 99 && build_confirmed != 3) then {
 				[_vehicle, false] remoteExec ["allowDamage", 0];
-				[(getpos _vehicle), false] remoteExec ["build_fob_remote_call", 0];
+				[(getposATL _vehicle), false] remoteExec ["build_fob_remote_call", 0];
 				buildtype = 1;
 			};
 
