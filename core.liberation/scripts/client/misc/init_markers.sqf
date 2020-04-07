@@ -41,7 +41,7 @@ _center = [_size,_size,0];
     if (_str find "GarageRow" > 0) then { GRLIB_Marker_SRV pushback (getpos _x) };
     if (_str find "workshop_05" > 0) then { GRLIB_Marker_SRV pushback (getpos _x) };
     if (_str find "workshop01_04" > 0) then { GRLIB_Marker_SRV pushback (getpos _x) };
-    if (worldname != "chernarus" && worldname != "Enoch" &&  worldname != "vt7") then {if (_str find "workshop" > 0) then { GRLIB_Marker_SRV pushback (getpos _x) }};
+    if (worldname != "chernarus" && worldname != "Enoch" &&  worldname != "vt7" &&  worldname != "isladuala3") then {if (_str find "workshop" > 0) then { GRLIB_Marker_SRV pushback (getpos _x) }};
     if (_str find "fs_roof_" > 0) then { GRLIB_Marker_FUEL pushback (getpos _x) };
     if (_str find "fuelstation" > 0 && _str find "workshop" < 0 ) then { GRLIB_Marker_FUEL pushback (getpos _x) };
     if (_str find "benzina_schnell" > 0) then { GRLIB_Marker_FUEL pushback (getpos _x) };
