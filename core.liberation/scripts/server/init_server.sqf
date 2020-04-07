@@ -54,7 +54,7 @@ wait_to_spawn_sector = compileFinal preprocessFileLineNumbers "scripts\server\se
 [] execVM "scripts\server\game\apply_saved_scores.sqf";
 [] execVM "scripts\server\game\capture_vehicles.sqf";
 //[] execVM "scripts\server\game\clean.sqf";
-//[] execVM "scripts\server\game\cleanup_vehicles.sqf";
+[] execVM "scripts\server\game\cleanup_vehicles.sqf";
 [] execVM "scripts\server\game\fucking_set_fog.sqf";
 [] execVM "scripts\server\game\manage_time.sqf";
 [] execVM "scripts\server\game\manage_weather.sqf";
