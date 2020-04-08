@@ -1,5 +1,6 @@
 //original at : https://forums.bohemia.net/forums/topic/207522-ai-revive-heal-script-spmp/
 //heavily modified by pSiKO
+if (isDedicated) exitWith {};
 
 MGI_fn_medic = compileFinal preprocessFileLineNumbers "addons\MGI\MGI_fn_medic.sqf";
 MGI_fn_medicRelease = compileFinal preprocessFileLineNumbers "addons\MGI\MGI_fn_medicRelease.sqf";
@@ -11,8 +12,6 @@ MGI_fn_death = compileFinal preprocessFileLineNumbers "addons\MGI\MGI_fn_death.s
 MGI_fn_unconscious = compileFinal preprocessFileLineNumbers "addons\MGI\MGI_fn_unconscious.sqf";
 MGI_fn_eject = compileFinal preprocessFileLineNumbers "addons\MGI\MGI_fn_eject.sqf";
 MGI_fn_checkWounded = compileFinal preprocessFileLineNumbers "addons\MGI\MGI_fn_checkWounded.sqf";
-
-if (isDedicated) exitWith {};
 
 MGI_fn_EHDamage = {
   params ["_unit"];
