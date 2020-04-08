@@ -45,6 +45,7 @@ manage_ammoboxes = compileFinal preprocessFileLineNumbers "scripts\server\sector
 manage_one_sector = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_one_sector.sqf";
 wait_to_spawn_sector = compileFinal preprocessFileLineNumbers "scripts\server\sector\wait_to_spawn_sector.sqf";
 
+[] execVM "scripts\server\a3w\init_missions.sqf";
 [] execVM "scripts\server\base\fobbox_manager.sqf";
 [] execVM "scripts\server\base\huron_manager.sqf";
 [] execVM "scripts\server\battlegroup\counter_battlegroup.sqf";
@@ -77,7 +78,6 @@ wait_to_spawn_sector = compileFinal preprocessFileLineNumbers "scripts\server\se
 [] execVM "scripts\server\resources\unit_cap.sqf";
 [] execVM "scripts\server\sector\lose_sectors.sqf";
 [] execVM "scripts\server\sector\manage_sectors.sqf";
-[] execVM "scripts\server\a3w\init_missions.sqf";
 [] execVM "scripts\server\offloading\show_fps.sqf";
 [] execVM "scripts\server\secondary\autostart.sqf";
 

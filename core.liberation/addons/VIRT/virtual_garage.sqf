@@ -74,27 +74,24 @@ while { dialog && alive player } do {
 	ctrlEnable [ 121, _unload ];
 
 	if (load_veh != 0) then {
-
-		private _vehicle = objNull;
 		private _color = "";
 		private	_vehicle_name = (_display displayCtrl (110)) lnbText [_selected_item,0];
 
 		if (load_veh == 1) then {
-			if (count ([GRLIB_garage, {(getPlayerUID player == _x select 2)}] call BIS_fnc_conditionalSelect) >= _max_vehicle) then {
-				hintSilent (format ["Garage is Full !!\nMax %1 vehicles.", _max_vehicle]);
-			} else {
-				private _result = ["<t align='center'>Vehicle's content will be LOST !!<br/>Are you sure ?</t>", "Warning !", true, true] call BIS_fnc_guiMessage;
-				if (_result) then {
-					_vehicle = _myveh_lst select _selected_item;
-					ctrlEnable [ 120, false ];
-					[player, _vehicle, load_veh] remoteExec ["vehicle_garage_remote_call", 2];
-					hintSilent (format ["Vehicle %1\nLoaded in Garage.", _vehicle_name]);
-				};
+			private _vehicle = _myveh_lst select _selected_item;
+			if (count ([GRLIB_garage, {(getPlayerUID player == _x select 2)}] call BIS_fnc_conditionalSelect) >= _max_vehicle) exitWith { hintSilent (format ["Garage is Full !!\nMax %1 vehicles.", _max_vehicle]) };
+			if (damage _vehicle != 0) exitWith { hintSilent "Damaged Vehicles cannot be Parked !" };
+
+			private _result = ["<t align='center'>Vehicle's content will be LOST !!<br/>Are you sure ?</t>", "Warning !", true, true] call BIS_fnc_guiMessage;
+			if (_result) then {
+				ctrlEnable [ 120, false ];
+				[player, _vehicle, load_veh] remoteExec ["vehicle_garage_remote_call", 2];
+				hintSilent (format ["Vehicle %1\nLoaded in Garage.", _vehicle_name]);
 			};
 		};
 
 		if (load_veh == 2) then {
-			_vehicle = (_myveh select _selected_item) select 2;
+			private _vehicle = (_myveh select _selected_item) select 2;
 			ctrlEnable [ 121, false ];
 			[player, _vehicle, load_veh] remoteExec ["vehicle_garage_remote_call", 2];
 			hintSilent (format ["Vehicle %1\nUnloaded from Garage.", _vehicle_name]);
