@@ -83,7 +83,7 @@ _center = [_size,_size,0];
     _marker setMarkerSizeLocal [ 1, 1 ];
 
     //add repair pickup
-    private _pos = _x findEmptyPosition [2,50, "C_Offroad_01_repair_F"];
+    private _pos = _x findEmptyPosition [10,100, "C_Offroad_01_repair_F"];
     if ( count _pos > 0) then {
       _vehicle = "C_Offroad_01_repair_F" createVehicleLocal _pos;
       _vehicle allowDamage false;
