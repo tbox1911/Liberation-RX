@@ -14,9 +14,6 @@ MGI_fn_checkWounded = compileFinal preprocessFileLineNumbers "addons\MGI\MGI_fn_
 
 if (isDedicated) exitWith {};
 
-waituntil {!isNull player && GRLIB_player_spawned};
-waituntil {!isNil {player getVariable ["GRLIB_Rank", nil]}};
-
 MGI_fn_EHDamage = {
   params ["_unit"];
   _unit addEventHandler ["handleDamage", {
@@ -92,6 +89,9 @@ MGI_fn_Revive = {
       sleep 5;
     };
 };
+
+waituntil {!isNull player && GRLIB_player_spawned};
+waituntil {!isNil {player getVariable ["GRLIB_Rank", nil]}};
 
 // AI rejoin player's group
 MGI_bros = allUnits select {(_x getVariable [format["Bros_%1",MGI_Grp_ID],nil])};
