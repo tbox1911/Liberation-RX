@@ -650,6 +650,8 @@ GRLIB_vehicle_whitelist = [
 
 // Blacklist Vehicle (lock and paint)
 GRLIB_vehicle_blacklist = [
+	Arsenal_typename,
+	mobile_respawn,
 	huron_typename,
 	opfor_ammobox_transport,
 	Respawn_truck_typename,
