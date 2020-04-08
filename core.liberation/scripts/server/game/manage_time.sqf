@@ -12,12 +12,6 @@ while { true } do {
 	};
 
 	setTimeMultiplier _accelerated_time;
-	{
-	  	if ( (!isDamageAllowed _x && lifeState _x == 'HEALTHY' && GRLIB_endgame == 0) || _x getVariable ["godmode", 0] == 1) then {
-		  	_x forceAddUniform "U_B_Protagonist_VR";
-			_x allowDamage false;
-			_x setDamage 0;
-		};
-	} forEach AllPlayers;
+
 	sleep 10;
 };
