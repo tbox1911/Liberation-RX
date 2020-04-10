@@ -662,7 +662,7 @@ GRLIB_vehicle_blacklist = [
 	"C_Offroad_01_repair_F",
 	"Land_CanisterFuel_Red_F",
 	"C_Van_01_fuel_F",
-	"Box_UAV_06_base_F",
+	"Box_B_UAV_06_medical_F",
 	"B_Slingload_01_Repair_F",
 	"B_Slingload_01_Fuel_F",
 	"B_Slingload_01_Ammo_F",

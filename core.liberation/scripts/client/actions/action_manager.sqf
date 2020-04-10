@@ -33,6 +33,7 @@ waitUntil { !isNil "one_synchro_done" };
 waitUntil { one_synchro_done };
 waitUntil { !isNil "GRLIB_player_spawned" };
 waituntil { GRLIB_player_spawned; (player getVariable ["GRLIB_score_set", 0] == 1)};
+waituntil { !isNil "GRLIB_Marker_FUEL"};
 
 while { true } do {
 

@@ -23,7 +23,7 @@ while { true } do {
 	{
 		_loaded = _x getVariable ["R3F_LOG_est_transporte_par", objNull];
 		_disabled = _x getVariable ['R3F_LOG_disabled', true];
-		if ((alive _x) && ((typeof _x) in _vehtomark) && (count (crew _x) == 0) && (_x distance lhd > 500) && (isNull _loaded) && !(_disabled)) then {
+		if ((alive _x) && ((typeof _x) in _vehtomark) && (count (crew _x) == 0) && (_x distance lhd > 500) && (isNull _loaded) && !(_disabled) && (locked _x != 2) ) then {
 				_markedveh pushback _x;
 		};
 	} foreach vehicles;
