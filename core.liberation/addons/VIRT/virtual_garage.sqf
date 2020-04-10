@@ -30,9 +30,9 @@ while { dialog && alive player } do {
 
 		_i = 0;
 		{
-			if (getPlayerUID player == _x select 2) then {_myveh pushBack [(_x select 0), 1, _i]}; // veh list inside + index
+			if (getPlayerUID player == _x select 3) then {_myveh pushBack [(_x select 0), 1, _i]}; // veh list inside + index
 			_i = _i + 1;
-		} forEach GRLIB_garage; 	// [_veh_class, _veh_color, player_id]
+		} forEach GRLIB_garage; 	// [_veh_class, _veh_color, _veh_ammo,  player_id]
 
 		lbClear 110;
 		{
@@ -79,7 +79,7 @@ while { dialog && alive player } do {
 
 		if (load_veh == 1) then {
 			private _vehicle = _myveh_lst select _selected_item;
-			if (count ([GRLIB_garage, {(getPlayerUID player == _x select 2)}] call BIS_fnc_conditionalSelect) >= _max_vehicle) exitWith { hintSilent (format ["Garage is Full !!\nMax %1 vehicles.", _max_vehicle]) };
+			if (count ([GRLIB_garage, {(getPlayerUID player == _x select 3)}] call BIS_fnc_conditionalSelect) >= _max_vehicle) exitWith { hintSilent (format ["Garage is Full !!\nMax %1 vehicles.", _max_vehicle]) };
 			if (damage _vehicle != 0) exitWith { hintSilent "Damaged Vehicles cannot be Parked !" };
 
 			private _result = ["<t align='center'>Vehicle's content will be LOST !!<br/>Are you sure ?</t>", "Warning !", true, true] call BIS_fnc_guiMessage;
