@@ -21,6 +21,7 @@ _unit addEventHandler ["InventoryClosed", {
 		hintSilent format ["Your Loadout Price: %1.", ([_unit] call F_loadoutPrice)];
 	};
 }];
+
 _unit addEventHandler ["InventoryOpened", {
 	params ["_unit", "_container"];
 	_ret = false;
@@ -33,11 +34,25 @@ _unit addEventHandler ["InventoryOpened", {
 	_ret;
 }];
 
-// No mines in the base zone
+// No mines in the base zone + pay artillery fire
 _unit addEventHandler ["FiredMan",	{
-	params ["_body"];
-	if (isNil "GRLIB_all_fobs" || count GRLIB_all_fobs == 0) exitWith {};
-	if (((_body distance2D ([] call F_getNearestFob) < GRLIB_fob_range) || (_body distance2D lhd < 500)) && (_this select 1) == "Put") then {deleteVehicle (_this select 6)};
+	params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_vehicle"];
+
+	if (count GRLIB_all_fobs >= 0) then {
+		if (((_unit distance2D ([] call F_getNearestFob) < GRLIB_fob_range) || (_unit distance2D lhd < 500)) && _weapon == "Put") then {deleteVehicle _projectile};
+	};
+
+	if (typeOf _vehicle in vehicle_artillery) then {
+		private _cost = 5;
+		private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
+		if (_ammo_collected >= 5) then {
+    		player setVariable ["GREUH_ammo_count", (_ammo_collected - _cost), true];
+			gamelogic globalChat (format ["Artillery fire cost %1 Ammo.", _cost]);
+		} else {
+			gamelogic globalChat "Not enough Ammo, Artillery fire canceled.";
+			deleteVehicle _projectile;
+		};
+	};
 }];
 
 if (_unit == player && alive player && player isKindOf "Man") then {

@@ -20,6 +20,18 @@ LARs_calculateSideGear = 1;
 
 class CfgFunctions {
 	#include "addons\LARs\blacklistArsenal.cpp"
+	#include "addons\GRAD\cfgFunctions.hpp"
+};
+
+class cfgSounds
+{
+ 	class parasound
+ 	{
+ 		name = "parasound";
+ 		sound[] = {"res\c130.ogg", 1.0, 1};
+ 		titles[] = {};
+ 	};
+	#include "addons\GRAD\cfgSounds.hpp"
 };
 
 class Header {

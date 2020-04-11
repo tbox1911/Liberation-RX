@@ -308,6 +308,13 @@ vehicle_refuel_sources = [
 	"B_Slingload_01_Fuel_F"
 ];
 
+vehicle_artillery = [
+	"B_Mortar_01_F",
+	"B_Ship_Gun_01_F",
+	"I_E_Truck_02_MRL_F",
+	"B_MBT_01_arty_F"
+];
+
 squads = [
 	[blufor_squad_inf_light,20,0,0],
 	[blufor_squad_inf,30,0,0],
