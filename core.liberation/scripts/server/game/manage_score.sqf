@@ -34,34 +34,45 @@ while { true } do {
 				if ((_cur >= GRLIB_perm_max) && (_rank != "Colonel")) then {_rank = "Colonel"; _newrank = true};
 
 				if (_newrank) then {
+					_fw = 0;
 					_uid = getPlayerUID _x;
 					_msg = format ["Congratulation <t color='#00ff00'>%1</t> !!<br />You have been promoted to : <t color='#ff0000'>%2</t>.<br /><br />",name _x, _rank];
 
 					//change perms
 					switch (_rank) do {
 						case "None" : {
-								_msg2 = localize "STR_RANK_LVL0";
-								[_uid, [false,false,false,false,false,false]] call CHG_Perm;
-								_msg = format ["Warning <t color='#00ff00'>%1</t> !!<br />You Play Wrong !! <t color='#ff0000'>Read the Manual</t>.<br /><br />",name _x];
+							_msg2 = localize "STR_RANK_LVL0";
+							[_uid, [false,false,false,false,false,false]] call CHG_Perm;
+							_msg = format ["Warning <t color='#00ff00'>%1</t> !!<br />You Play Wrong !! <t color='#ff0000'>Read the Manual</t>.<br /><br />",name _x];
 						};
 						case "Private" : {
-								_msg2 = localize "STR_RANK_LVL1";
-								[_uid, [true,false,false,true,false,true]] call CHG_Perm;
+							_msg2 = localize "STR_RANK_LVL1";
+							[_uid, [true,false,false,true,false,true]] call CHG_Perm;
+							_fw = 1;
 						};
 						case "Corporal" : {
-								_msg2 = localize "STR_RANK_LVL2";
-								[_uid, [true,true,false,true,false,true]] call CHG_Perm;
+							_msg2 = localize "STR_RANK_LVL2";
+							[_uid, [true,true,false,true,false,true]] call CHG_Perm;
+							_fw = 2;
 						};
 						case "Sergeant" : {
-								_msg2 = localize "STR_RANK_LVL3";
-								[_uid, [true,true,true,true,false,true]] call CHG_Perm;
+							_msg2 = localize "STR_RANK_LVL3";
+							[_uid, [true,true,true,true,false,true]] call CHG_Perm;
+							_fw = 3;
 						};
 						case "Captain" : {
-								_msg2 = localize "STR_RANK_LVL4";
-								[_uid, [true,true,true,true,true,true]] call CHG_Perm;
+							_msg2 = localize "STR_RANK_LVL4";
+							[_uid, [true,true,true,true,true,true]] call CHG_Perm;
+							_fw = 4;
 						};
-						case "Major" : {_msg2 = localize "STR_RANK_LVL5"};
-						case "Colonel" : {_msg2 = localize "STR_RANK_LVL6"};
+						case "Major" : {
+							_msg2 = localize "STR_RANK_LVL5";
+							_fw = 5;
+						};
+						case "Colonel" : {
+							_msg2 = localize "STR_RANK_LVL6";
+							_fw = 6;
+						};
 					};
 
 					_msg = format ["%1%2", _msg, _msg2];
@@ -71,6 +82,7 @@ while { true } do {
 					if (_rank != "None") then {
 						[_x] remoteExec ["set_rank",  owner _x];
 					};
+
 					// if rank colonel global greet
 					if (_rank == "Colonel") then {
 						["FD_Finish_F"] remoteExec ["playSound", 0];
@@ -82,6 +94,12 @@ while { true } do {
 						[gamelogic, _text] remoteExec ["globalChat", 0];
 						_text = "Over.";
 						[gamelogic, _text] remoteExec ["globalChat", 0];
+					};
+
+					// Fireworks
+					for "_i" from 0 to _fw do {
+						[getPosATL _x, 'random','random'] spawn GRAD_fireworks_fnc_prepareFireworks;
+						sleep 1;
 					};
 				};
 			};

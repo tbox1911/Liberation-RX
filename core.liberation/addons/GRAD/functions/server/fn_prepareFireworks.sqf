@@ -37,18 +37,12 @@ params ["_firing_position", "_type", "_color"];
 private ["_explosion_power", "_glitter_count", "_initial_velocity", "_colorArray", "_explosion_fragments_array", "_explosion_subfragments_array", "_randomLaunch", "_randomSleep", "_randomSleepLong", "_randomSleepShort"];
 
 _explosion_power = 50; // 30-70 seems reasonable
-_glitter_count = 35; // 30 is poor, 50 is ok, 100 might be overkill
+_glitter_count = 45; // 30 is poor, 50 is ok, 100 might be overkill
 _initial_velocity = [(random 10) -5,(random 10)-5, 300]; // firing not perfect but in a slight angle
-
 _colorArray = [[0.42,0.81,0.1],[0.8,0.1,0.35],[0.2,0.73,0.85],[1,1,1]];
-
-
 _explosion_fragments_array = [];
 _explosion_subfragments_array = [];
-
-
 _randomLaunch = (random 4.5) - 2.3;
-
 _randomSleep = (random 0.5) - 0.25;
 _randomSleepLong = (random 8) - 4;
 _randomSleepShort = (random 0.1) - 0.05;
@@ -61,7 +55,7 @@ switch (_color) do {
 	case "blue": 	{_color = [0.2,0.73,0.85]};
 	case "white": 	{_color = [1,1,1]};
 	default 		{_color = [1,1,1]};
-}; 
+};
 
 //launch sounds
 _launchSound = selectRandom [
@@ -130,27 +124,27 @@ default 		{_type = selectRandom [
 						"normal",
 						"rain"
 					];};
-}; 
+};
 
 if (_type == "normal") then {
 	_glitter_count = _glitter_count*2;
 	_explosion_power = _explosion_power/2;
-	
+
 };
 
 // prepare random explosion values for fragments
-for [{_i=0},{_i < _glitter_count},{_i=_i+1}] do { 
+for [{_i=0},{_i < _glitter_count},{_i=_i+1}] do {
 	_rand_expl_power1 = ((random _explosion_power)*2) - _explosion_power;
 	_rand_expl_power2 = ((random _explosion_power)*2) - _explosion_power;
 	_rand_expl_power3 = ((random _explosion_power)*2) - _explosion_power;
-	_explosion_fragments_array = _explosion_fragments_array + 
+	_explosion_fragments_array = _explosion_fragments_array +
 	[[(_rand_expl_power1) -_rand_expl_power1/2,(_rand_expl_power2) -_rand_expl_power2/2, (_rand_expl_power3) -_rand_expl_power3/2]];
 
 	if (_i < _glitter_count/3) then {
 	_rand_subexpl_power1 = ((random _explosion_power)/2) - _explosion_power/2;
 	_rand_subexpl_power2 = ((random _explosion_power)/2) - _explosion_power/2;
 	_rand_subexpl_power3 = ((random _explosion_power)/2) - _explosion_power/2;
-	_explosion_subfragments_array = _explosion_subfragments_array + 
+	_explosion_subfragments_array = _explosion_subfragments_array +
 	[[(_rand_subexpl_power1/4) -_rand_subexpl_power1/8,(_rand_subexpl_power2/4) -_rand_subexpl_power2/8, (_rand_subexpl_power3/4) -_rand_subexpl_power3/8]];
 	};
 };
@@ -159,18 +153,18 @@ for [{_i=0},{_i < _glitter_count},{_i=_i+1}] do {
 if (_type == "rain") then {
 	_color = [1,0.9,0.6];
 
-		for [{_i=0},{_i < _glitter_count},{_i=_i+1}] do { 
+		for [{_i=0},{_i < _glitter_count},{_i=_i+1}] do {
 		_rand_expl_power1 = ((random _explosion_power)*2) - _explosion_power;
 		_rand_expl_power2 = ((random _explosion_power)*2) - _explosion_power;
 		_rand_expl_power3 = ((random _explosion_power)*2);
-		_explosion_fragments_array = _explosion_fragments_array + 
+		_explosion_fragments_array = _explosion_fragments_array +
 		[[(_rand_expl_power1) -_rand_expl_power1/2,(_rand_expl_power2) -_rand_expl_power2/2, (_rand_expl_power3) -_rand_expl_power3/2]];
 
 		if (_i < _glitter_count/3) then {
 			_rand_subexpl_power1 = ((random _explosion_power)/2) - _explosion_power/2;
 			_rand_subexpl_power2 = ((random _explosion_power)/2) - _explosion_power/2;
 			_rand_subexpl_power3 = ((random _explosion_power)/2);
-			_explosion_subfragments_array = _explosion_subfragments_array + 
+			_explosion_subfragments_array = _explosion_subfragments_array +
 			[[(_rand_subexpl_power1/4) -_rand_subexpl_power1/8,(_rand_subexpl_power2/4) -_rand_subexpl_power2/8, (_rand_subexpl_power3/4) -_rand_subexpl_power3/8]];
 			};
 		};
