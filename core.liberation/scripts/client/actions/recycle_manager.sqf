@@ -42,6 +42,11 @@ while { true } do {
 				_vehicle addAction ["<t color='#60FF00'>-- ADD 50 XP --</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\do_recycle_xp.sqf","",-951,false,true,"","[_target] call is_menuok && [_target] call F_is_recyclable && score player <= GRLIB_perm_log",_distvehclose];
 			};
 
+			// Fireworks
+			if (typeOf _vehicle == "Land_CargoBox_V1_F") then {
+				_vehicle addAction ["<t color='#60FF00'>-- FIREWORKS !--</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\do_fireworks.sqf","",-951,false,true,"","[_target] call is_menuok && score player >= GRLIB_perm_max",_distvehclose];
+			};
+
 			_vehicle setVariable ["GRLIB_recycle_action", true];
 		};
 	} forEach _nearrecycl;
