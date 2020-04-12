@@ -59,7 +59,7 @@ hintSilent "Air Taxi Called !";
 waitUntil {
   sleep 5;
   isNil{hintSilent format ["Taxi on the way!\nDistance: %1m", round (_vehicle distance2D _dest)]};
-  (!alive _vehicle || _vehicle distance2D _dest < 100)
+  (!alive _vehicle || _vehicle distance2D _dest < 120)
 };
 
 if (alive _vehicle && alive player) then {

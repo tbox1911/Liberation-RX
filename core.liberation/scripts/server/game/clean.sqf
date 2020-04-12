@@ -77,8 +77,8 @@ _staticsDist = 3000;							// Distance (meters) from players that static weapons
 _ruinsLimit = 20;								// Ruins. Set -1 to disable.
 _ruinsDistCheck = TRUE;							// TRUE to delete any ruins that are far from players.
 _ruinsDist = 3000;								// Distance (meters) from players that ruins are not deleted if below max.
-_orphanedTriggers = FALSE;						// Clean orphaned triggers in MP.
-_emptyGroups = FALSE;							// Set FALSE to not delete empty groups.
+_orphanedTriggers = TRUE;						// Clean orphaned triggers in MP.
+_emptyGroups = TRUE;							// Set FALSE to not delete empty groups.
 
 //================================================================ LOOP
 
