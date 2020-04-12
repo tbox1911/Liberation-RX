@@ -1,8 +1,9 @@
 // Heli Taxi Script
 
 //check dest place
-_dest = (getPosATL player) findEmptyPosition [1,50, huron_typename];
-if (player getVariable ["GRLIB_taxi_called", false]) exitWith {hintSilent "Sorry, Only one Taxi at time."};
+private _dest = (getPosATL player) findEmptyPosition [1,50, huron_typename];
+private _taxi = player getVariable ["GRLIB_taxi_called", nil];
+if (!isNil "_taxi") exitWith {hintSilent "Sorry, Only one Taxi at time."};
 if (count _dest == 0 || surfaceIsWater _dest) exitWith {hintSilent "Sorry, Taxi cannot Land on this place."};
 
 // Taxi functions
@@ -51,7 +52,7 @@ createVehicleCrew _vehicle;
 _pilots = crew _vehicle;
 { _x addMPEventHandler ["MPKilled", {_this spawn kill_manager}] } foreach _pilots;
 _pilots joinSilent _air_grp;
-player setVariable ["GRLIB_taxi_called", true];
+player setVariable ["GRLIB_taxi_called", _vehicle];
 hintSilent "Air Taxi Called !";
 
 // Goto Pickup Point
@@ -132,4 +133,4 @@ deleteMarkerLocal "taxi_dz";
 sleep 60;
 {deletevehicle _x} forEach _pilots;
 deleteVehicle _vehicle;
-player setVariable ["GRLIB_taxi_called", false];
+player setVariable ["GRLIB_taxi_called", nil];
