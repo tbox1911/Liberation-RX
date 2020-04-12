@@ -5,18 +5,6 @@ http://www.gruppe-adler.de
 
 Call Script on Server only!
 
-Example with Marker:
-if (isServer) then {
-	[getMarkerPos "markername", "normal", "white"] remoteExec ["callFireworks", allPlayers];
-};
-
-Example with Object:
-if (isServer) then {
-	[getPos objectname, "random", "red"] remoteExec ["callFireworks", allPlayers];
-};
-
-
-
 Input Array constists of:
 
 POSITION (x,y,(z) - always zero above ground)
