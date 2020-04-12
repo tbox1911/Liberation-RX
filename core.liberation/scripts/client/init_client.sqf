@@ -102,7 +102,12 @@ GREUH_TipsText = [];
 } foreach allCurators;
 
 // Sign Add
-["<t size='2'>READ ME</t>", (getPos chimera_sign)] spawn BIS_fnc_3Dcredits;
+addMissionEventHandler["draw3D",{
+	private _pos = ASLToAGL getPosASL chimera_sign;
+	if (player distance2D _pos <= 30) then {
+		drawIcon3D ["", [1,1,1,1],_pos vectorAdd [0, 0, 3], 0, 0, 0, "- READ ME -", 2, 0.05, "TahomaB"];
+	};
+}];
 chimera_sign addAction ["<t color='#FFFFFF'>-= READ  ME =-</t>",{createDialog "liberation_notice"},"",999,true,true,"","[] call is_menuok",5];
 chimera_sign addAction ["<t color='#FFFFFF'>-=   TIPS   =-</t>",{createDialog "liberation_tips"},"",998,true,true,"","[] call is_menuok",5];
 
