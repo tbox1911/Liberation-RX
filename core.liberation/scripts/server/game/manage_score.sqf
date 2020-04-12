@@ -97,7 +97,7 @@ while { true } do {
 					};
 
 					// Fireworks
-					if ( (daytime > GRLIB_nights_start || daytime < GRLIB_nights_stop )) then {
+					if ( (daytime > GRLIB_nights_start || daytime < GRLIB_nights_stop ) && _fw >= 1 ) then {
 						for "_i" from 1 to _fw do {
 							[getPosATL _x, 'random','random'] spawn GRAD_fireworks_fnc_prepareFireworks;
 							sleep 1;
