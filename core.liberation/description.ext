@@ -19,14 +19,12 @@ joinUnassigned = 0;
 LARs_calculateSideGear = 1;
 
 class CfgFunctions {
-	#include "addons\LARs\blacklistArsenal.cpp"
+	#include "addons\LARs\blacklistArsenal.hpp"
 	#include "addons\GRAD\cfgFunctions.hpp"
 };
 
-class cfgSounds
-{
- 	class parasound
- 	{
+class cfgSounds {
+ 	class parasound {
  		name = "parasound";
  		sound[] = {"res\c130.ogg", 1.0, 1};
  		titles[] = {};
@@ -61,7 +59,7 @@ class Repaint {
 #include "ui\liberation_interface.hpp"
 #include "ui\liberation_notifications.hpp"
 #include "ui\mission_params.hpp"
-#include "addons\MGR\MagRepack_Config.hpp"
 #include "R3F_LOG\desc_include.h"
+#include "addons\MGR\MagRepack_Config.hpp"
 #include "addons\RPT\veh_repaint.hpp"
 #include "addons\VIRT\virtual_garage.hpp"
