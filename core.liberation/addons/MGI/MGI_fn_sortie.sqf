@@ -46,6 +46,8 @@ if (!isPlayer _medic) then {
         _unit setVariable ["MGI_isUnconscious",false];
         _unit allowDamage true;
     };
+    if (round (getPosASL _wnded select 2) <= -1) then {_wnded switchmove ""};
+    if (round (getPosASL _medic select 2) <= -1) then {_medic switchmove ""};
   };
 };
 sleep 2;
