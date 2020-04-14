@@ -562,6 +562,7 @@ civilians = [
 	"C_Man_Fisherman_01_F",
 	"C_man_sport_1_F",
 	"C_man_sport_3_F",
+	"C_man_sport_2_F",
 	"C_Man_Messenger_01_F",
 	"C_Story_Mechanic_01_F",
 	"C_Man_casual_2_F",

@@ -54,15 +54,7 @@ if ( isServer ) then {
 	if ( isPlayer _unit ) then { stats_player_deaths = stats_player_deaths + 1 };
 
 	if ((_unit iskindof "LandVehicle") || (_unit iskindof "Air") || (_unit iskindof "Ship") ) then {
-		// Delete Cargo
-		{[[_x], "deleteVehicle"] call BIS_fnc_MP} forEach (_unit getVariable ["R3F_LOG_objets_charges", []]);
-
-		// Delete GR Cargo
-		//{[[_x], "deleteVehicle"] call BIS_fnc_MP} foreach (attachedObjects _unit);
-
-		// Delete Crew
-		{if (! alive _x) then {[[_x], "deleteVehicle"] call BIS_fnc_MP}} forEach crew _unit;
-		_unit removeAllEventHandlers "HandleDamage";
+		[_unit] call clean_vehicle;
 	};
 
 	if ( _unit isKindOf "Man" && _unit != _killer ) then {

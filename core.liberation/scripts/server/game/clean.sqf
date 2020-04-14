@@ -115,8 +115,7 @@ while {deleteManagerPublic} do {
 			if (_deadVehicleDistCheck) then {
 				{
 					if ([_x,_deadVehicleDist,(playableUnits + switchableUnits)] call _isHidden) then {
-						// Delete Cargo
-						{deleteVehicle _x} forEach (_x getVariable ["R3F_LOG_objets_charges", []]);
+						[_x] call clean_vehicle;
 						deleteVehicle _x;
 					};
 				} count (allDead - allDeadMen);

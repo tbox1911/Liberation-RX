@@ -1,4 +1,5 @@
 kill_manager = compileFinal preprocessFileLineNumbers "scripts\shared\kill_manager.sqf";
+clean_vehicle = compileFinal preprocessFileLineNumbers "scripts\shared\clean_vehicle.sqf";
 
 // Remote Call
 // Server Side

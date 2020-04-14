@@ -31,9 +31,7 @@ while { GRLIB_cleanup_vehicles > 0 } do {
 
 		if (  _nextvehicle getVariable [ "GRLIB_empty_vehicle_ticker", 0 ] >= ( 6 * GRLIB_cleanup_vehicles ) ) then {
 			if ( _nextvehicle isKindOf "AllVehicles") then {
-				// Delete Cargo
-				{deleteVehicle _x} forEach (_nextvehicle getVariable ["R3F_LOG_objets_charges", []]);
-				{deleteVehicle _x} forEach crew _nextvehicle;
+				[_nextvehicle] call clean_vehicle;
 			};
 			deleteVehicle _nextvehicle;
 		};
