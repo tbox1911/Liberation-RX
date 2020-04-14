@@ -13,19 +13,41 @@ sleep 6;
 
 for "_i" from 1 to 3 do {
 	[_pos, 'fizzer','random'] remoteExec ["GRAD_fireworks_fnc_prepareFireworks", 2];
-	sleep 1;
+	sleep 2;
 };
 sleep 6;
 
 for "_i" from 1 to 3 do {
 	[_pos, 'rain','random'] remoteExec ["GRAD_fireworks_fnc_prepareFireworks", 2];
-	sleep 1;
+	sleep 2;
 };
 sleep 6;
 
 for "_i" from 1 to 8 do {
 	[_pos, 'random','random'] remoteExec ["GRAD_fireworks_fnc_prepareFireworks", 2];
-	sleep 0.5;
+	sleep 2;
+};
+sleep 8;
+
+for "_i" from 1 to 4 do {
+	[_pos, 'fizzer','random'] remoteExec ["GRAD_fireworks_fnc_prepareFireworks", 2];
+	sleep 2;
+	[_pos, 'normal','random'] remoteExec ["GRAD_fireworks_fnc_prepareFireworks", 2];
+	sleep 2;
+};
+sleep 8;
+
+for "_i" from 1 to 4 do {
+	[_pos, 'fizzer','random'] remoteExec ["GRAD_fireworks_fnc_prepareFireworks", 2];
+	sleep 2;
+	[_pos, 'rain','random'] remoteExec ["GRAD_fireworks_fnc_prepareFireworks", 2];
+	sleep 2;
+};
+sleep 10;
+
+for "_i" from 1 to 20 do {
+	[_pos, 'random','random'] remoteExec ["GRAD_fireworks_fnc_prepareFireworks", 2];
+	sleep 1 + random 2;
 };
 
 [_vehicle] remoteExec ["deleteVehicle", 2];
