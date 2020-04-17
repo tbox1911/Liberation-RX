@@ -27,7 +27,7 @@ while { true } do {
 	playSound3D [_deathsound, player, false, getPosASL player, 1, 1, 0];
 	sleep 3.5;
 
-	titleText  [ "" ,"BLACK IN",3];
+	titleText ["" ,"BLACK IN",3];
 
 	"filmGrain" ppEffectAdjust [0.3, 2, 4, 0.5, 0.5, true];
 	"filmGrain" ppEffectCommit 0;
