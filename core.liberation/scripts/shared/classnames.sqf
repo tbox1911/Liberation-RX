@@ -222,7 +222,7 @@ support_vehicles = [
 	["B_Truck_01_Repair_F",10,130,10,GRLIB_perm_tank],
 	["B_Truck_01_fuel_F",5,120,40,GRLIB_perm_tank],
   	["Box_NATO_Ammo_F",0,80,0,GRLIB_perm_log],
-  	["Box_NATO_WpsLaunch_F",0,80,0,GRLIB_perm_tank],
+  	["Box_NATO_WpsLaunch_F",0,150,0,GRLIB_perm_tank],
 	["Land_CargoBox_V1_F",0,500,0,GRLIB_perm_max],
 	[FOB_box_typename,50,1500,50,GRLIB_perm_max],
 	[FOB_truck_typename,50,1500,50,GRLIB_perm_max],
