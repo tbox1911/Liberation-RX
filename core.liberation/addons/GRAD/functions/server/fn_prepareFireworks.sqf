@@ -26,7 +26,7 @@ private ["_explosion_power", "_glitter_count", "_initial_velocity", "_colorArray
 
 _explosion_power = 50; // 30-70 seems reasonable
 _glitter_count = 45; // 30 is poor, 50 is ok, 100 might be overkill
-_initial_velocity = [(random 10) -5,(random 10)-5, 600]; // firing not perfect but in a slight angle
+_initial_velocity = [(random 20) -10,(random 20) -10, 500]; // firing not perfect but in a slight angle
 _colorArray = [[0.42,0.81,0.1],[0.8,0.1,0.35],[0.2,0.73,0.85],[1,1,1]];
 _explosion_fragments_array = [];
 _explosion_subfragments_array = [];
