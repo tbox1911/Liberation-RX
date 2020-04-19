@@ -54,7 +54,7 @@ while { true } do {
 	_saved_loadouts = profileNamespace getVariable "bis_fnc_saveInventory_data";
 	_loadouts_data = [];
 	_counter = 0;
-	if ( !isNil "_saved_loadouts" ) then {
+	if ( GRLIB_enable_arsenal && !isNil "_saved_loadouts" ) then {
 		{
 			if ( _counter % 2 == 0 ) then {
 				_loadouts_data pushback _x;

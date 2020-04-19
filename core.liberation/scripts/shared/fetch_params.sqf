@@ -27,7 +27,9 @@ if ( isMultiplayer ) then {
 	GRLIB_autodanger = [ "Autodanger",0] call bis_fnc_getParamValue;
 	GRLIB_maximum_fobs = [ "MaximumFobs",5] call bis_fnc_getParamValue;
 	GRLIB_fob_type = [ "FobType",0] call bis_fnc_getParamValue;
-	GRLIB_max_squad_size = ["MaxSquadSize",3] call bis_fnc_getParamValue;
+	GRLIB_squad_size = ["SquadSize",3] call bis_fnc_getParamValue;
+	GRLIB_max_squad_size = ["MaxSquadSize",7] call bis_fnc_getParamValue;
+	GRLIB_enable_arsenal = ["EnableArsenal",1] call bis_fnc_getParamValue;
 	GRLIB_limited_arsenal = ["LimitedArsenal",1] call bis_fnc_getParamValue;
 	GRLIB_fancy_info = ["FancyInfo",2] call bis_fnc_getParamValue;
 	GRLIB_hide_opfor = ["HideOpfor",0] call bis_fnc_getParamValue;
@@ -60,7 +62,9 @@ if ( isMultiplayer ) then {
 	GRLIB_autodanger = 0;
 	GRLIB_maximum_fobs = 5;
 	GRLIB_fob_type = 0;
-	GRLIB_max_squad_size = 3;
+	GRLIB_squad_size = 3;
+	GRLIB_max_squad_size = 7;
+	GRLIB_enable_arsenal = 1;
 	GRLIB_limited_arsenal = 1;
 	GRLIB_fancy_info = 2;
 	GRLIB_hide_opfor = 0;
@@ -75,6 +79,7 @@ if ( GRLIB_introduction == 1 ) then { GRLIB_introduction = true } else { GRLIB_i
 if ( GRLIB_deployment_cinematic == 1 ) then { GRLIB_deployment_cinematic = true } else { GRLIB_deployment_cinematic = false };
 if ( GRLIB_cheat_menu == 1 ) then { GRLIB_cheat_menu = true } else { GRLIB_cheat_menu = false };
 if ( GRLIB_hide_opfor == 1 ) then { GRLIB_hide_opfor = true } else { GRLIB_hide_opfor = false };
+if ( GRLIB_enable_arsenal == 1 ) then { GRLIB_enable_arsenal = true } else { GRLIB_enable_arsenal = false };
 if ( GRLIB_limited_arsenal == 1 ) then { GRLIB_limited_arsenal = true } else { GRLIB_limited_arsenal = false };
 if ( GRLIB_adaptive_opfor == 1 ) then { GRLIB_adaptive_opfor = true } else { GRLIB_adaptive_opfor = false };
 if ( GRLIB_passive_income == 1 ) then { GRLIB_passive_income = true } else { GRLIB_passive_income = false };

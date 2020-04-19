@@ -3,6 +3,7 @@
 
 if (isDedicated) exitWith {};
 waitUntil {sleep 1; !isNil "GRLIB_limited_arsenal"};
+if (!GRLIB_enable_arsenal) exitWith { removeAllActions myLARsBox };
 
 //Blacklist
 [] call compileFinal preprocessFileLineNUmbers "addons\LARs\liberationBlacklist.sqf";

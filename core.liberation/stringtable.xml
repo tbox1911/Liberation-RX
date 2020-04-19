@@ -2719,9 +2719,13 @@
 						<French>Penalty de %1 pour avoir tué le civil %2 par %3</French>
 						<German>Strafe von %1 für die Ermordung des Zivilisten %2 durch %3</German>
 				</Key>
+				<Key ID="STR_PARAM_SQUAD_SIZE_START">
+						<Original>AI per squad at startup.</Original>
+						<French>IA par escouade au debut.</French>
+				</Key>
 				<Key ID="STR_PARAM_SQUAD_SIZE">
-						<Original>AI recruitment limit per squad</Original>
-						<French>Limite de recrutement d'IA par escouade</French>
+						<Original>AI recruitment limit per squad.</Original>
+						<French>Limite de recrutement d'IA par escouade.</French>
 				</Key>
 				<Key ID="STR_NOTIFICATION_SAR_STARTED">
 						<Original>Crashed helicopter near %1.</Original>
