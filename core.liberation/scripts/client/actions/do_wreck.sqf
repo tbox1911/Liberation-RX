@@ -34,9 +34,9 @@ disableUserInput false;
 if (round (getPosASL player select 2) <= -1) then {player switchmove ""};
 
 if (lifeState player == 'incapacitated' || vehicle player != player) exitWith {_vehicle setVariable ["wreck_in_use", false, true]};
-{[[_x], "deleteVehicle"] call BIS_fnc_MP} forEach (_vehicle getVariable ["R3F_LOG_objets_charges", []]);
-{[[_x], "deleteVehicle"] call BIS_fnc_MP} forEach crew _vehicle;
-[[_vehicle], "deleteVehicle"] call BIS_fnc_MP;
+{[_x] remoteExec ["deleteVehicle", 0]} forEach (_vehicle getVariable ["R3F_LOG_objets_charges", []]);
+{[_x] remoteExec ["deleteVehicle", 0]} forEach crew _vehicle;
+[_vehicle] remoteExec ["deleteVehicle", 0];
 
 private _msg = "";
 if (typeOf _vehicle in _free_vehicles) then {
