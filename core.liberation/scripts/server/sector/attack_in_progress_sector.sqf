@@ -11,8 +11,8 @@ if ( _sector in sectors_military ) then {
 	_squad_type = blufor_squad_inf;
 };
 
+_grp = createGroup [GRLIB_side_friendly, true];
 if ( GRLIB_blufor_defenders ) then {
-	_grp = createGroup [GRLIB_side_friendly, true];
 	{ _x createUnit [ markerpos _sector, _grp,'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]']; } foreach _squad_type;
 };
 

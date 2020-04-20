@@ -6,8 +6,9 @@ sleep 5;
 _ownership = [ _thispos ] call F_sectorOwnership;
 if ( _ownership != GRLIB_side_enemy ) exitWith {};
 
+_grp = createGroup [GRLIB_side_friendly, true];
+
 if ( GRLIB_blufor_defenders ) then {
-	_grp = createGroup [GRLIB_side_friendly, true];
 	{ _x createUnit [ _thispos, _grp,'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]']; } foreach blufor_squad_inf;
 };
 
