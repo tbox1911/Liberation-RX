@@ -30,7 +30,7 @@ if (_score >= 2 * GRLIB_perm_max) then {
 };
 
 if ( (GRLIB_squad_size + GRLIB_squad_size_bonus) > GRLIB_max_squad_size) then {
-		GRLIB_squad_size_bonus = GRLIB_squad_size - GRLIB_max_squad_size;
+	GRLIB_squad_size_bonus = (GRLIB_max_squad_size - GRLIB_squad_size);
 };
 
 _unit setVariable ["GRLIB_Rank", _rank, true];
