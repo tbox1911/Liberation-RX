@@ -33,6 +33,7 @@ if ( isMultiplayer ) then {
 	GRLIB_limited_arsenal = ["LimitedArsenal",1] call bis_fnc_getParamValue;
 	GRLIB_fancy_info = ["FancyInfo",2] call bis_fnc_getParamValue;
 	GRLIB_hide_opfor = ["HideOpfor",0] call bis_fnc_getParamValue;
+	GRLIB_no_thermic = ["Thermic",0] call bis_fnc_getParamValue;
 } else {
 	GRLIB_difficulty_modifier = 1;
 	GRLIB_time_factor = 1;
@@ -68,6 +69,7 @@ if ( isMultiplayer ) then {
 	GRLIB_limited_arsenal = 1;
 	GRLIB_fancy_info = 2;
 	GRLIB_hide_opfor = 0;
+	GRLIB_no_thermic = 0;
 };
 //ACE ACRE
 GRLIB_ACE_enabled = isClass(configFile >> "cfgPatches" >> "ace_main"); // Returns true if ACE is enabled
@@ -90,3 +92,4 @@ if ( GRLIB_ammo_bounties == 1 ) then { GRLIB_ammo_bounties = true } else { GRLIB
 if ( GRLIB_civ_penalties == 1 ) then { GRLIB_civ_penalties = true } else { GRLIB_civ_penalties = false };
 if ( GRLIB_blufor_defenders == 1 ) then { GRLIB_blufor_defenders = true } else { GRLIB_blufor_defenders = false };
 if ( GRLIB_autodanger == 1 ) then { GRLIB_autodanger = true } else { GRLIB_autodanger = false };
+if ( GRLIB_no_thermic == 1 ) then { GRLIB_no_thermic = true } else { GRLIB_no_thermic = false };
