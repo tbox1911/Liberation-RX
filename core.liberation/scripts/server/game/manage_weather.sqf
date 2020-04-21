@@ -23,6 +23,8 @@ while { GRLIB_endgame == 0 } do {
 	publicVariable "chosen_weather";
 	0 setOvercast chosen_weather;
 	0 setRain 0;
+	0 setGusts 0;
+	setWind [5, 5, true];
 	sleep _weathertime;
 	chosen_weather = _weathers call BIS_fnc_selectRandom;
 };
