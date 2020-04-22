@@ -13,34 +13,34 @@ class Params
 		default = 1;
 	};
 	class FancyInfo {
-		title = "Fancy Information";
+		title = $STR_FANCY;
 		values[] = { 2, 1, 0 };
 		texts[] = { $STR_PARAMS_ENABLED, "Info", $STR_PARAMS_DISABLED };
 		default = 2;
 	};
 	class HideOpfor {
-		title = "Hide Opfor Markers";
+		title = $STR_OPFORMARK;
 		values[] = { 1, 0 };
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 0;
 	};
 	class EnableArsenal {
-		title = "Enable Arsenal";
+		title = $STR_ARSENAL;
 		values[] = { 1, 0 };
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 1;
 	};
 	class LimitedArsenal {
-		title = "Limited Arsenal";
+		title = $STR_LIMIT_ARSENAL;
 		values[] = { 1, 0 };
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 1;
 	};
 	class Thermic {
-		title = "Disable Thermic";
+		title = $STR_THERMAL;
 		values[] = { 1, 0 };
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 0;
+		default = 1;
 	};
 	class Difficulty {
 		title = $STR_PARAMS_DIFFICULTY;

@@ -2740,7 +2740,6 @@
 						<French>Mission SAR réussie.</French>
 				</Key>
 
-
 			<!--  Added in 0.927 -->
 				<Key ID="STR_NOTICE_TEXT1">
 						<Original>&lt;br/&gt;
@@ -2867,6 +2866,28 @@
 				<Key ID="STR_RANK_LVL7">
 					<Original>You have an extra AI.</Original>
 					<French>Vous avez une unitée en plus.</French>
+				</Key>
+
+				<!-- Added in v0.927 -->
+				<Key ID="STR_FANCY">
+					<Original>Fancy Information</Original>
+					<French>Informations Fantaisie</French>
+				</Key>
+				<Key ID="STR_OPFORMARK">
+					<Original>Hide Opfor sector markers</Original>
+					<French>Masquer les marqueurs de secteur OPFOR</French>
+				</Key>
+				<Key ID="STR_ARSENAL">
+					<Original>Enable Virtual Arsenal</Original>
+					<French>Activer l'Arsenal Virtuel</French>
+				</Key>
+				<Key ID="STR_LIMIT_ARSENAL">
+					<Original>Enable limited Virtual Arsenal</Original>
+					<French>Activer l'Arsenal Virtuel limité</French>
+				</Key>
+				<Key ID="STR_THERMAL">
+					<Original>Enable thermal equipments</Original>
+					<French>Activer les équipements thermiques</French>
 				</Key>
 
 		</Package>
