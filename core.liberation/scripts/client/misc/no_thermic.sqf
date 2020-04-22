@@ -1,5 +1,5 @@
 //disable Thermic
-if (!GRLIB_no_thermic) exitWith {};
+if (GRLIB_thermic) exitWith {};
 
 _layer = 85125;
 

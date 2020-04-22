@@ -2886,8 +2886,8 @@
 					<French>Activer l'Arsenal Virtuel limité</French>
 				</Key>
 				<Key ID="STR_THERMAL">
-					<Original>Enable thermal equipments</Original>
-					<French>Activer les équipements thermiques</French>
+					<Original>Enable Thermal equipments</Original>
+					<French>Activer les équipements Thermiques</French>
 				</Key>
 
 		</Package>
