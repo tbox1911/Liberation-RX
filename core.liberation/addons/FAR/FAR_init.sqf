@@ -115,7 +115,6 @@ if (isNil {BTC_logic getVariable _uid}) then {
 };
 
 FAR_Mute_ACRE = {
-	waitUntil { time > 0 };
 	waitUntil {
 		if (alive player) then {
 			if ((player getVariable["ace_sys_wounds_uncon", false])) then {

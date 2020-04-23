@@ -6,7 +6,7 @@ _layer = 85125;
 while {true} do {
 
   if (currentVisionMode player == 2) then {
-    _layer cutText ["Thermal OFFLINE...","BLACK",-1];
+    _layer cutText ["Thermal OFFLINE...","BLACK"];
     playSound "FD_CP_Not_Clear_F";
     waituntil {currentVisionMode player != 2};
     _layer cutText ["", "PLAIN"];
