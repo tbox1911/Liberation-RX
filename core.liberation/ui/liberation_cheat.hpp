@@ -226,8 +226,7 @@ class liberation_cheat {
   {
     idc = 1605;
     action = "closeDialog 0";
-
-    text = "OK";
+    text = "EXIT";
     x = 0.269271 * safezoneW + safezoneX;
     y = 0.71 * safezoneH + safezoneY;
     w = 0.09 * safezoneW;
