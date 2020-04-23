@@ -17,7 +17,8 @@ waitUntil {sleep 0.5;(getposATL _veh select 2) < 150};
 _para = createVehicle ["B_Parachute_02_F",(getposATL _veh), [], 0, "NONE"];
 _veh attachTo [_para, [0,0,0]];
 
-waitUntil {sleep 0.2;(getposATL _veh select 2) < 7};
+_stop = diag_tickTime + (2 * 60); // wait 2min max
+waitUntil {sleep 0.2;(getposATL _veh select 2) < 7 || diag_tickTime > _stop};
 detach _veh;
 _veh allowDamage false;
 
