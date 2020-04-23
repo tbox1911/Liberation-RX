@@ -10,17 +10,21 @@ class liberation_cheat {
 	  "Header",
 	  "ArsenalButton",
 	  "AmmoButton",
+    "BuildButton",
+    "BuildList",
 	  "SkipTimeButton",
     "UnlockButton",
     "DeleteButton",
 	  "Item01Button",
 	  "Item02Button",
+    "Item03Button",
 	  "CancelButton",
     "CheatInfo01",
     "Cheat_cb_1607",
     "Cheat_cb_text",
     "PlayerList",
-    "PlayerList2"
+    "PlayerList2",
+    "PlayerList3"
 	};
 
 	objects[] = {};
@@ -30,7 +34,7 @@ class liberation_cheat {
     action = "'B_supplyCrate_F' createVehicle (player getRelPos[3, 0]);hint 'Arsenal spawned !'";
     text = "Spawn Arsenal";
     x = 0.2275 * safezoneW + safezoneX;
-    y = 0.26 * safezoneH + safezoneY;
+    y = 0.208 * safezoneH + safezoneY;
     w = 0.0875 * safezoneW;
     h = 0.04 * safezoneH;
   };
@@ -41,10 +45,29 @@ class liberation_cheat {
 
     text = "Spawn AmmoBox";
     x = 0.2275 * safezoneW + safezoneX;
+    y = 0.26 * safezoneH + safezoneY;
+    w = 0.0875 * safezoneW;
+    h = 0.04 * safezoneH;
+  };
+  class BuildButton: StdButton
+  {
+    idc = 1601;
+    action = "do_spawn=1";
+
+    text = "Build Vehicle";
+    x = 0.2275 * safezoneW + safezoneX;
     y = 0.312 * safezoneH + safezoneY;
     w = 0.0875 * safezoneW;
     h = 0.04 * safezoneH;
   };
+  class BuildList: StdCombo {
+    idc = 1614;
+    x = 0.3275 * safezoneW + safezoneX;
+    y = 0.316 * safezoneH + safezoneY;
+    w = 0.09 * safezoneW;
+    h = 0.033 * safezoneH;
+  };
+
   class GREUH_RscStructuredText{
     access = 0;
     type = 13;
@@ -118,13 +141,30 @@ class liberation_cheat {
     w = 0.09 * safezoneW;
     h = 0.033 * safezoneH;
   };
+  class Item03Button: StdButton
+  {
+    idc = 1615;
+    action = "do_ammo=1";
+    text = "Add 200 Ammo";
+    x = 0.2275 * safezoneW + safezoneX;
+    y = 0.468 * safezoneH + safezoneY;
+    w = 0.0875 * safezoneW;
+    h = 0.04 * safezoneH;
+  };
+  class PlayerList3: StdCombo {
+    idc = 1616;
+    x = 0.3275 * safezoneW + safezoneX;
+    y = 0.472 * safezoneH + safezoneY;
+    w = 0.09 * safezoneW;
+    h = 0.033 * safezoneH;
+  };
   class SkipTimeButton: StdButton
   {
     idc = 1604;
     action = "10 remoteExec ['SkipTime', 2];hint 'Time Forward...'";
     text = "Skip Time +10H";
     x = 0.2275 * safezoneW + safezoneX;
-    y = 0.468 * safezoneH + safezoneY;
+    y = 0.520 * safezoneH + safezoneY;
     w = 0.0875 * safezoneW;
     h = 0.04 * safezoneH;
   };
@@ -134,7 +174,7 @@ class liberation_cheat {
     action = "_x = cursorobject;_x setvariable ['R3F_LOG_disabled', false, true];_x setvariable ['GRLIB_vehicle_owner', '', true];hint format ['%1 Unlocked.',typeOf _x]";
     text = "Unlock Vehicle";
     x = 0.2275 * safezoneW + safezoneX;
-    y = 0.520 * safezoneH + safezoneY;
+    y = 0.572 * safezoneH + safezoneY;
     w = 0.0875 * safezoneW;
     h = 0.04 * safezoneH;
   };
@@ -144,7 +184,7 @@ class liberation_cheat {
     action = "deleteVehicle (cursorObject)";
     text = "Delete Object";
     x = 0.2275 * safezoneW + safezoneX;
-    y = 0.572 * safezoneH + safezoneY;
+    y = 0.624 * safezoneH + safezoneY;
     w = 0.0875 * safezoneW;
     h = 0.04 * safezoneH;
   };
