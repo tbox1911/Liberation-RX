@@ -12,7 +12,12 @@ _expensive_items = [
 	"launch_O_Vorona",
 	"launch_B_Titan",
 	"launch_O_Titan",
-	"launch_I_Titan"
+	"launch_I_Titan",
+	"Titan_AA",
+	"Titan_AT",
+	"Titan_AP",
+	"Vorona_HE",
+	"Vorona_HEAT"
 ];
 
 _free_items = [
