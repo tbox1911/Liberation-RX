@@ -111,8 +111,8 @@ if ( isServer ) then {
 	};
 
 	if ( ((typeof _unit) in [ammobox_o_typename, ammobox_b_typename]) && ((getPosATL _unit) select 2 < 10) ) exitWith {
+		sleep random 2;
 		( "R_80mm_HE" createVehicle (getPosATL _unit) ) setVelocity [0, 0, -200];
-		sleep 2;
 		deleteVehicle _unit;
 	};
 
