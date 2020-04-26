@@ -11,7 +11,12 @@ if (!isNull _towed) then {
 
 // Delete GR Cargo
 if ( _vehicle getVariable ["GRLIB_ammo_truck_load", 0] >= 1 ) then {
-	{[_x] remoteExec ["deleteVehicle", 0]} foreach (attachedObjects _vehicle);
+	{
+		if (typeOf _x in [ammobox_b_typename, ammobox_o_typename, ammobox_i_typename]) then {
+			[_x] remoteExec ["detach", 0];
+			[_x, 1] remoteExec ["setDamage", 0];
+		};
+	} foreach (attachedObjects _vehicle);
 };
 
 // Delete Crew
