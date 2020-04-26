@@ -17,7 +17,7 @@ _unit addVest "V_BandollierB_rgr";
 for "_i" from 1 to 8 do {_unit addItemToVest "30Rnd_762x39_Mag_F";};
 _unit addHeadgear "H_Bandanna_camo";
 _unit addGoggles "G_Bandanna_beast";
-_unit addWeapon "arifle_AKM_FL_F";
+_unit addWeapon "arifle_AKM_F";
 _unit addWeapon "hgun_P07_F";
 _unit linkItem "ItemMap";
 _unit linkItem "ItemCompass";

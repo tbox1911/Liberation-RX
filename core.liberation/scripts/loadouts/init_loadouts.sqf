@@ -14,6 +14,7 @@ loadout_aa = compile preprocessFileLineNumbers (format ["%1%2.sqf", _loadouts_fo
 militia_standard_squad = [
 	loadout_sl,
 	loadout_autorifleman,
+	loadout_autorifleman2,
 	loadout_rifleman,
 	loadout_rifleman,
 	loadout_rifleman_light,
