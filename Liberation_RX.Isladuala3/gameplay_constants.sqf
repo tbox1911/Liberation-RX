@@ -43,7 +43,7 @@ GRLIB_date_month = 7;
 GRLIB_date_day = 17;
 GRLIB_nights_start = 19;
 GRLIB_nights_stop = 5;
-GREUH_start_ammo = 500;
+GREUH_start_ammo = 300;
 
 if ( GRLIB_blufor_cap > 100 ) then { GRLIB_blufor_cap = 100 }; // Don't forget that the human commander manages those, not the server
 GRLIB_offload_diag = false;
