@@ -86,6 +86,8 @@ while { true } do {
 			_unit setRank "PRIVATE";
 			_unit setVariable [format["Bros_%1",MGI_Grp_ID], true, true];
 			_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+			_unit enableIRLasers true;
+			_unit enableGunLights "Auto";
 			[_unit] call player_EVH;
 		};
 		[_price] call do_pay_build;
