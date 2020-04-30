@@ -42,8 +42,8 @@ while { GRLIB_endgame == 0 } do {
 			_civveh = ( civilian_vehicles call BIS_fnc_selectRandom ) createVehicle _spawnpos;
 			_civveh setpos _spawnpos;
 			_civveh addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
-//			_civveh addEventHandler ["HandleDamage", { private [ "_damage" ]; if (( side (_this select 3) != GRLIB_side_friendly ) && ( side (_this select 3) != GRLIB_side_enemy )) then { _damage = 0 } else { _damage = _this select 2 }; _damage } ];
 			_civveh addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) == GRLIB_side_friendly ) then { _damage = _this select 2 } else { _damage = 0 }; _damage }];
+			_civveh addEventHandler ["Fuel", { if (!(_this select 1)) then {(_this select 0) setFuel 1}}];
 			((units _grp) select 0) moveInDriver _civveh;
 			((units _grp) select 0) disableAI "FSM";
 			((units _grp) select 0) disableAI "AUTOCOMBAT";
