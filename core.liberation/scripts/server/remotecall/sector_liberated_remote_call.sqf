@@ -25,7 +25,7 @@ if (isServer) then {
 		_combat_readiness_increase = (floor (random 4));
 	};
 
-	private _income =  (round (75 + (random 150)));
+	private _income =  (round (75 + (random 100)));
 	private _text = format ["Reward Received: + %1 Ammo.", _income];
 	{
 		if (_x distance2D (markerpos _liberated_sector) < GRLIB_sector_size ) then {
