@@ -28,7 +28,7 @@ if ( dialog ) then { closeDialog 0 };
 
 if ( dorecycle == 1 && !(isnull _vehicle) && alive _vehicle) then {
 	[_vehicle] remoteExec ["deleteVehicle", 2];
-	if (typeOf _vehicle in _ammobox) then {
+	if (typeOf _vehicle in _ammobox && score player <= GRLIB_perm_log) then {
 		[player, 10] remoteExec ["addScore", 2];
 		hint format ["%1\nBonus Score + 10 Pts!", name player];
 		playSound "taskSucceeded";
