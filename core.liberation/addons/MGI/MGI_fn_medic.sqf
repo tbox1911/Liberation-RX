@@ -21,6 +21,9 @@ if (count _medics == 0) exitWith {
     _lst = MGI_bros select {!isPlayer _x && alive _x && lifeState _x != 'incapacitated' && _x getVariable [format["Bros_%1",MGI_Grp_ID], nil]};
     gamelogic globalChat format ["Sorry %1, but there is no medic nearby...", name _wnded];
     gamelogic globalChat format ["Units alive in your squad : %1", count (_lst)];
+    if (_wnded == player && count (_lst) > 1) then {
+      {_x doMove (getPos player)} forEach _lst;
+    };
     _medic;
   };
   _medic;
