@@ -68,7 +68,7 @@ while { true } do {
 				_unit = createAgent [_classname, _pos, [], 5, "CAN_COLLIDE"];
 				_unit setVariable ["BIS_fnc_animalBehaviour_disable", true];
 				_unit allowDamage false;
-				_unit addMPEventHandler ["MPKilled", FAR_Player_MPKilled];
+				_unit addMPEventHandler ["MPKilled", {[_this select 0] spawn {sleep 10; deleteVehicle (_this select 0)}}];
 				player setVariable ["my_dog", _unit, true];
 				playSound3D ["a3\sounds_f\ambient\animals\dog1.wss", _unit, false, getPosASL _unit, 2, 0.8, 0];
 				_unit playMoveNow "Dog_Idle_Bark";
