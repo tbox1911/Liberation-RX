@@ -37,8 +37,6 @@ FAR_Player_MPKilled = {
 			createVehicle [_grave, _pos, [], 0, "CAN_COLLIDE"];
 		};
 	};
-	sleep 5;
-	deleteVehicle _unit;
 };
 
 FAR_Player_Init = {
