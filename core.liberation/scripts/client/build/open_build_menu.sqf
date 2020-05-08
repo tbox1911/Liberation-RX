@@ -13,20 +13,20 @@ _initindex = buildindex;
 _dialog = createDialog "liberation_build";
 waitUntil { dialog };
 
-_iscommandant = false;
-if ( player == [] call F_getCommander ) then {
-	_iscommandant = true;
-};
-
 _title = localize "STR_BUILD_TITLE";
 private _msg = "";
 private _score = score player;
 private _rank = player getVariable ["GRLIB_Rank", "Private"];
 
+private _iscommandant = false;
+if ( _rank == "Colonel" ) then {
+	_iscommandant = true;
+};
+
 ctrlSetText [1011, format ["%1 - %2", _title, _rank]];
 ctrlShow [ 108, _iscommandant ];
 ctrlShow [ 1085, _iscommandant ];
-ctrlShow [ 121, _iscommandant ];
+ctrlShow [ 121, false ];
 
 _squadname = "";
 _buildpages = [
@@ -43,7 +43,11 @@ localize "STR_BUILD8"
 while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
  	_build_list = [];
 	{
-		if ( _score >= (_x select 4) ) then {_build_list pushback _x};
+		if (buildtype == 8 ) then {
+			_build_list pushback _x;
+		} else {
+			if ( _score >= (_x select 4) ) then {_build_list pushback _x};
+		};
 	} forEach (build_lists select buildtype);
 
 	hintSilent "";
@@ -126,7 +130,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 	_affordable = false;
 	_squad_full = false;
 	_ammo_collected = player getVariable ["GREUH_ammo_count",0];
-	_bros = allUnits select {(_x getVariable [format["Bros_%1",MGI_Grp_ID],nil])};
+	_bros = allUnits select {(_x getVariable format["Bros_%1",MGI_Grp_ID])};
 	if ((buildtype == 1) && (count (_bros) >= GRLIB_squad_size + GRLIB_squad_size_bonus)) then {
 		_squad_full = true;
 	};
