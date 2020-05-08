@@ -17,7 +17,16 @@ R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
 	"B_Heli_Transport_01_F",
 	"B_Heli_Transport_01_camo_F",
 	"I_Heli_light_03_F",
-	"B_Heli_Attack_01_F"
+	"B_Heli_Attack_01_F",
+	"OPTRE_UNSC_hornet_ins",
+	"OPTRE_Pelican_armed_ins",
+	"OPTRE_UNSC_hornet_CAP",
+	"OPTRE_UNSC_hornet_CAS",
+	"OPTRE_UNSC_falcon",
+	"OPTRE_AV22_Sparrowhawk",
+	"OPTRE_AV22A_Sparrowhawk",
+	"OPTRE_AV22B_Sparrowhawk",
+	"OPTRE_AV22C_Sparrowhawk"
 ];
 
 R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
@@ -42,7 +51,17 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["B_UAV_02_F", 0],
 	["B_UAV_06_F", 3],
 	["B_UGV_02_Demining_F", 0],
-	["B_T_UAV_03_F", 15]
+	["B_T_UAV_03_F", 15],
+	["OPTRE_UNSC_hornet_ins", 50],
+	["OPTRE_Pelican_armed_ins", 200],
+	["OPTRE_Pelican_unarmed", 200],
+	["OPTRE_UNSC_hornet_CAP", 50],
+	["OPTRE_UNSC_hornet_CAS", 50],
+	["OPTRE_UNSC_falcon", 50],
+	["OPTRE_AV22_Sparrowhawk", 50],
+	["OPTRE_AV22A_Sparrowhawk", 50],
+	["OPTRE_AV22B_Sparrowhawk", 50],
+	["OPTRE_AV22C_Sparrowhawk", 50]
 ];
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
@@ -76,7 +95,20 @@ R3F_LOG_CFG_can_tow = R3F_LOG_CFG_can_tow +
 	"LSV_01_base_F",
 	"LSV_02_base_F",
 	"Wheeled_APC_F",
-	"Van_01_base_F"
+	"Van_01_base_F",
+	"OPTRE_M12_FAV",
+	"OPTRE_M12_FAV_ins",
+	"OPTRE_M12_FAV_APC",
+	"OPTRE_M12_LRV_ins",
+	"OPTRE_M12A1_LRV_ins",
+	"OPTRE_M12R_AA_ins",
+	"OPTRE_M274_ATV_Ins",
+	"OPTRE_M914_RV_ins",
+	"OPTRE_M813_TT",
+	"OPTRE_M914_RV",
+	"OPTRE_M12_LRV",
+	"OPTRE_M12G1_LRV",
+	"OPTRE_M12R_AA"
 ];
 
 R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
@@ -109,7 +141,20 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 	"LSV_02_base_F",
 	"Wheeled_APC_F",
 	"UGV_01_base_F",
-	"Van_01_base_F"
+	"Van_01_base_F",
+	"OPTRE_M12_FAV",
+	"OPTRE_M12_FAV_ins",
+	"OPTRE_M12_FAV_APC",
+	"OPTRE_M12_LRV_ins",
+	"OPTRE_M12A1_LRV_ins",
+	"OPTRE_M12R_AA_ins",
+	"OPTRE_M274_ATV_Ins",
+	"OPTRE_M914_RV_ins",
+	"OPTRE_M813_TT",
+	"OPTRE_M914_RV",
+	"OPTRE_M12_LRV",
+	"OPTRE_M12G1_LRV",
+	"OPTRE_M12R_AA"
 ];
 
 R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
@@ -131,7 +176,20 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 	"LSV_02_base_F",
 	"Wheeled_APC_F",
 	"UGV_01_base_F",
-	"Van_01_base_F"
+	"Van_01_base_F",
+	"OPTRE_M12_FAV",
+	"OPTRE_M12_FAV_ins",
+	"OPTRE_M12_FAV_APC",
+	"OPTRE_M12_LRV_ins",
+	"OPTRE_M12A1_LRV_ins",
+	"OPTRE_M12R_AA_ins",
+	"OPTRE_M274_ATV_Ins",
+	"OPTRE_M914_RV_ins",
+	"OPTRE_M813_TT",
+	"OPTRE_M914_RV",
+	"OPTRE_M12_LRV",
+	"OPTRE_M12G1_LRV",
+	"OPTRE_M12R_AA"
 ];
 
 R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
@@ -151,7 +209,20 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["LSV_02_base_F", 7],
 	["Wheeled_APC_F", 30],
 	["Van_01_base_F", 25],
-	["Van_01_box_base_F", 50]
+	["Van_01_box_base_F", 50],
+	["OPTRE_M12_FAV", 50],
+	["OPTRE_M12_FAV_ins", 50],
+	["OPTRE_M12_FAV_APC", 50],
+	["OPTRE_M12_LRV_ins", 50],
+	["OPTRE_M12A1_LRV_ins", 50],
+	["OPTRE_M12R_AA_ins", 50],
+	["OPTRE_M274_ATV_Ins", 50],
+	["OPTRE_M914_RV_ins", 50],
+	["OPTRE_M813_TT", 50],
+	["OPTRE_M914_RV", 50],
+	["OPTRE_M12_LRV", 50],
+	["OPTRE_M12G1_LRV", 50],
+	["OPTRE_M12R_AA", 50]
 ];
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
