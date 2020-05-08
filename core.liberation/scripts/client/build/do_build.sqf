@@ -309,7 +309,7 @@ while { true } do {
 
 				// Automatic ReAmmo
 				if (_classname in vehicle_rearm_sources) then {
-					_veh setAmmoCargo 0;
+					_vehicle setAmmoCargo 0;
 				};
 
 				// Give real truck horn to APC
