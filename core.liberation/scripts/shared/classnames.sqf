@@ -16,6 +16,7 @@ if ( isNil "crewman_classname" ) then { crewman_classname = "B_crew_F" };
 if ( isNil "pilot_classname" ) then { pilot_classname = "B_Helipilot_F" };
 if ( isNil "FAR_Medikit" ) then { FAR_Medikit = "Medikit" };
 if ( isNil "FAR_AidKit" ) then { FAR_AidKit = "FirstAidKit" };
+if ( isNil "A3W_BoxWps" ) then { A3W_BoxWps = "Box_East_Wps_F" };
 
 // *** FRIENDLIES ***
 infantry_units = [
@@ -232,7 +233,7 @@ support_vehicles = [
 	[ammobox_b_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
 	[ammobox_o_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
 	[ammobox_i_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
-	["Box_East_Wps_F",0,round(150 / GRLIB_recycling_percentage),0,99999]
+	[A3W_BoxWps,0,round(150 / GRLIB_recycling_percentage),0,99999]
 ];
 
 if ( isNil "blufor_squad_inf_light" ) then { blufor_squad_inf_light = [] };
@@ -689,7 +690,7 @@ GRLIB_vehicle_whitelist = [
 	ammobox_o_typename,
 	ammobox_i_typename,
 	mobile_respawn,
-	"Box_East_Wps_F",
+	A3W_BoxWps,
 	"Land_CanisterFuel_Red_F",
 	"Land_PierLadder_F",
 	"Box_B_UAV_06_medical_F",
@@ -817,10 +818,10 @@ GRLIB_sar_wreck = "Land_Wreck_Heli_Attack_01_F";
 GRLIB_sar_fire = "test_EmptyObjectForFireBig";
 GRLIB_Ammobox = [
 	Arsenal_typename,
+	A3W_BoxWps,
 	"Box_B_UAV_06_medical_F",
 	"Box_NATO_Ammo_F",
 	"Box_NATO_WpsLaunch_F",
-	"Box_East_Wps_F",
 	"mission_USLaunchers",
 	"Land_CargoBox_V1_F"
 ];
