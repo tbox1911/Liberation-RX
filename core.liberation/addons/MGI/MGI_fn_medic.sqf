@@ -1,4 +1,4 @@
-_wnded = _this;
+params ['_wnded'];
 private '_medic';
 _wnded setVariable ['MGI_myMedic', nil];
 
