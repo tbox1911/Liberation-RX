@@ -88,7 +88,7 @@ else
 
 if (_fonctionnalites select __can_be_moved_by_player) then
 {
-	_objet addAction [("<t color=""#00eeff"">" + format [STR_R3F_LOG_action_deplacer_objet, _nom] + "</t>  <img size='1' image='R3F_LOG\icons\r3f_lift.paa'/>"), {_this call R3F_LOG_FNCT_objet_deplacer}, false, 5, false, true, "", "!R3F_LOG_mutex_local_verrou && R3F_LOG_objet_addAction == _target && R3F_LOG_action_deplacer_objet_valide"];
+	_objet addAction [("<t color=""#00eeff"">" + format [STR_R3F_LOG_action_deplacer_objet, _nom] + "</t>  <img size='1' image='R3F_LOG\icons\r3f_lift.paa'/>"), {_this call R3F_LOG_FNCT_objet_deplacer}, false, 5, false, true, "", "!R3F_LOG_mutex_local_verrou && R3F_LOG_objet_addAction == _target && R3F_LOG_action_deplacer_objet_valide && getObjectType _target == 8"];
 };
 
 if (_fonctionnalites select __can_be_towed) then
@@ -107,10 +107,10 @@ if (_fonctionnalites select __can_be_transported_cargo) then
 {
 	if (_fonctionnalites select __can_be_moved_by_player) then
 	{
-		_objet addAction [("<t color=""#dddd00"">" + STR_R3F_LOG_action_charger_deplace + "</t>   <img size='1' image='R3F_LOG\icons\r3f_loadin.paa'/>"), {_this call R3F_LOG_FNCT_transporteur_charger_deplace}, nil, 8, true, true, "", "!R3F_LOG_mutex_local_verrou && R3F_LOG_objet_addAction == _target && R3F_LOG_joueur_deplace_objet == _target && R3F_LOG_action_charger_deplace_valide"];
+		_objet addAction [("<t color=""#dddd00"">" + STR_R3F_LOG_action_charger_deplace + "</t>   <img size='1' image='R3F_LOG\icons\r3f_loadin.paa'/>"), {_this call R3F_LOG_FNCT_transporteur_charger_deplace}, nil, 8, true, true, "", "!R3F_LOG_mutex_local_verrou && R3F_LOG_objet_addAction == _target && R3F_LOG_joueur_deplace_objet == _target && R3F_LOG_action_charger_deplace_valide && getObjectType _target == 8"];
 	};
 
-	_objet addAction [("<t color=""#dddd00"">" + format [STR_R3F_LOG_action_selectionner_objet_charge, _nom] + "</t>   <img size='1' image='R3F_LOG\icons\r3f_loadin.paa'/>"), {_this call R3F_LOG_FNCT_transporteur_selectionner_objet}, nil, 5, false, true, "", "!R3F_LOG_mutex_local_verrou && R3F_LOG_objet_addAction == _target && R3F_LOG_action_selectionner_objet_charge_valide"];
+	_objet addAction [("<t color=""#dddd00"">" + format [STR_R3F_LOG_action_selectionner_objet_charge, _nom] + "</t>   <img size='1' image='R3F_LOG\icons\r3f_loadin.paa'/>"), {_this call R3F_LOG_FNCT_transporteur_selectionner_objet}, nil, 5, false, true, "", "!R3F_LOG_mutex_local_verrou && R3F_LOG_objet_addAction == _target && R3F_LOG_action_selectionner_objet_charge_valide && getObjectType _target == 8"];
 };
 
 if (_fonctionnalites select __can_be_moved_by_player) then
