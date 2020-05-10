@@ -267,7 +267,7 @@ if ( count blufor_squad_at == 0 ) then { blufor_squad_at = [
 	"B_Soldier_SL_F",
 	"B_soldier_AT_F",
 	"B_soldier_AT_F",
-	"B_soldier_F"
+	"B_soldier_F",
 	"B_medic_F",
 	"B_soldier_F"
 	];
@@ -277,7 +277,7 @@ if ( count blufor_squad_aa == 0 ) then { blufor_squad_aa = [
 	"B_Soldier_SL_F",
 	"B_soldier_AA_F",
 	"B_soldier_AA_F",
-	"B_soldier_F"
+	"B_soldier_F",
 	"B_medic_F",
 	"B_soldier_F"
 	];
@@ -296,28 +296,13 @@ if ( count blufor_squad_recon == 0 ) then { blufor_squad_recon = [
 	"B_recon_F"
 	];
 };
-if ( isNil "blufor_squad_para" ) then { blufor_squad_para = [] };
-if ( count blufor_squad_para == 0 ) then { blufor_squad_para = [
-	"B_Soldier_SL_F",
-	"B_soldier_PG_F",
-	"B_soldier_PG_F",
-	"B_soldier_PG_F",
-	"B_soldier_PG_F",
-	"B_soldier_PG_F",
-	"B_soldier_PG_F",
-	"B_soldier_PG_F",
-	"B_soldier_PG_F",
-	"B_soldier_PG_F"
-	];
-};
 
 squads = [
-	[blufor_squad_inf_light,10,600,0,GRLIB_perm_max],
-	[blufor_squad_inf,20,1000,0,GRLIB_perm_max],
-	[blufor_squad_at,25,700,0,GRLIB_perm_max],
-	[blufor_squad_aa,25,700,0,GRLIB_perm_max],
-	[blufor_squad_recon,25,1200,0,GRLIB_perm_max],
-	[blufor_squad_para,20,1000,0,GRLIB_perm_max]
+	[blufor_squad_inf_light,10,300,0,GRLIB_perm_max],
+	[blufor_squad_inf,20,700,0,GRLIB_perm_max],
+	[blufor_squad_at,25,600,0,GRLIB_perm_max],
+	[blufor_squad_aa,25,600,0,GRLIB_perm_max],
+	[blufor_squad_recon,25,500,0,GRLIB_perm_max]
 ];
 
 // All the UAVs must be declared here

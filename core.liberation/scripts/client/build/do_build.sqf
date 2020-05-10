@@ -108,19 +108,8 @@ while { true } do {
 			} foreach _classname;
 			_grp setCombatMode "GREEN";
 			_grp setBehaviour "AWARE";
-			[_grp] spawn {
-				params ["_grp"];
-				while {count (units _grp) >= 1} do {
-					_leader = leader _grp;
-					_leader setUnitPos "UP";
-					_leader setSpeedMode 'FULL';
-					_leader doMove (getPos player);
-					{
-						if (_x != _leader) then {_x doFollow _leader};
-					} forEach units _grp;
-					sleep 5;
-				};
-			};
+			_grp spawn squad_manager;
+			[_price] call do_pay_build;
 			build_confirmed = 0;
 		} else {
 			_posfob = getpos player;

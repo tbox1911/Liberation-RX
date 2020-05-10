@@ -17,6 +17,7 @@ is_local = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_local.
 player_EVH = compileFinal preprocessFileLineNumbers "addons\FAR\FAR_EventHandler.sqf";
 get_group = compileFinal preprocessFileLineNumbers "scripts\client\misc\get_group.sqf";
 paraDrop = compileFinal preprocessFileLineNumbers "scripts\client\spawn\paraDrop.sqf";
+squad_manager = compileFinal preprocessFileLineNumbers "scripts\client\misc\squad_manager.sqf";
 
 R3F_LOG_joueur_deplace_objet = objNull;
 GRLIB_player_spawned = false;
