@@ -13,7 +13,7 @@ while {count (units _grp) >= 1} do {
 		} forEach units _grp;
 	};
 
-	//eject + parachute
+	//para drop
 	if (_veh_player iskindof "Steerable_Parachute_F") then {
 		{
 			if ( vehicle _x != _x && !(vehicle _x iskindof "Steerable_Parachute_F") ) then {
