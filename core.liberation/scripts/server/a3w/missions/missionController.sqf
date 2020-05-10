@@ -61,7 +61,7 @@ while {true} do
 			_nextMission = _missionsList call fn_selectRandomWeighted;
 		};
 	};
-	_missionDelay = (floor random [10,15,20] * 60);
+	_missionDelay = MISSION_CTRL_DELAY + (floor random [10,15,20] * 60);
 	[MISSION_CTRL_PVAR_LIST, _nextMission, true] call setMissionState;
 	diag_log format ["%1 Mission%2 waiting to run: %3", MISSION_CTRL_TYPE_NAME, _controllerSuffix, _nextMission];
 	if (GRLIB_fancy_info == 2) then {
