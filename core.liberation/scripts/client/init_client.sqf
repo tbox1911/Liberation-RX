@@ -21,6 +21,7 @@ squad_manager = compileFinal preprocessFileLineNumbers "scripts\client\misc\squa
 
 R3F_LOG_joueur_deplace_objet = objNull;
 GRLIB_player_spawned = false;
+GRLIB_squad_follow = true;
 disableMapIndicators [false,true,false,false];
 setTerrainGrid 12.5;  //Very High = 6.25, Ultra = 3.125
 player setVariable ["GRLIB_score_set", 0, true];

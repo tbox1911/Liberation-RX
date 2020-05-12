@@ -3,7 +3,8 @@ private["_idact_build","_idact_arsenal","_idact_redeploy","_idact_tutorial","_id
 		"_idact_halo","_idact_heal","_idact_lead","_idact_drop","_idact_squad","_idact_send",
 		"_idact_packfob","_idact_unpackfob","_idact_packtent","_idact_unpacktent","_idact_buyfuel",
 		"_idact_secondary","_idact_cheat","_idact_options", "_idact_garage","_idact_dog_action1",
-		"_idact_dog_action2","_idact_dog_action3","_idact_dog_action4"
+		"_idact_dog_action2","_idact_dog_action3","_idact_dog_action4", "_idact_squad_action1",
+		"_idact_squad_action2"
 ];
 
 private _distfob = 100;
@@ -12,13 +13,15 @@ private _distspawn = 10;
 private _distredeploy = 20;
 private _distveh = 15;
 private _distvehclose = 5;
+private _icon_dog = (getText (configFile >> "CfgVehicleIcons" >> "iconAnimal"));
+private _icon_grp = "\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa";
 
 _idact_build=-1;_idact_arsenal=-1;_idact_redeploy=-1;_idact_tutorial=-1;_idact_squad=-1;
 _idact_commander=-1;_idact_repackage=-1;_idact_halo=-1;_idact_heal=-1;_idact_lead=-1;
 _idact_drop=-1;_idact_send=-1;_idact_secondary=-1;_idact_packfob=-1;_idact_unpackfob=-1;
 _idact_packtent=-1;_idact_unpacktent=-1;_idact_buyfuel=-1;_idact_cheat=-1;_idact_options=-1;
 _idact_garage=-1;_idact_dog_action1=-1;_idact_dog_action2=-1;_idact_dog_action3=-1;
-_idact_dog_action4=-1;
+_idact_dog_action4=-1;_idact_squad_action1=-1;_idact_squad_action2=-1;
 
 is_DogOnDuty = {
 	private _ret = false;
@@ -45,6 +48,7 @@ while { true } do {
 	_near_fuel = [player, "FUEL", _distvehclose, false] call F_check_near;
 	_near_atm = [player, "ATM", _distvehclose, true] call F_check_near;
 	_my_dog = player getVariable ["my_dog", objNull];
+	_my_squad = player getVariable ["my_squad", objNull];
 
 	// Tuto
 	if ( [] call is_menuok && (player distance lhd) <= 200 ) then {
@@ -61,11 +65,10 @@ while { true } do {
 	// Dog - Actions
 	if ( [] call is_menuok && !isNull _my_dog ) then {
 		if ( _idact_dog_action1 == -1 ) then {
-			_icon = (getText (configFile >> "CfgVehicleIcons" >> "iconAnimal"));
-			_idact_dog_action1 = player addAction ["<t color='#80FF80'>" + "-- DOG FIND."+ "</t> <img size='1' image='" + _icon + "'/>","scripts\client\actions\do_dog.sqf","find",-640,false,true,"","!call is_DogOnDuty"];
-			_idact_dog_action2 = player addAction ["<t color='#80FF80'>" + "-- DOG RECALL."+ "</t> <img size='1' image='" + _icon + "'/>","scripts\client\actions\do_dog.sqf","recall",-640,false,true,"","call is_DogOnDuty"];
-			_idact_dog_action3 = player addAction ["<t color='#80FF80'>" + "-- DOG STOP." + "</t> <img size='1' image='" + _icon + "'/>","scripts\client\actions\do_dog.sqf","stop",-641,false,true,"",""];
-			_idact_dog_action4 = player addAction ["<t color='#FF8080'>" + "-- DOG DISMISS." + "</t> <img size='1' image='" + _icon + "'/>","scripts\client\actions\do_dog.sqf","del",-641,false,true,"",""];
+			_idact_dog_action1 = player addAction ["<t color='#80FF80'>" + "-- DOG FIND"+ "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","find",-640,false,true,"","!call is_DogOnDuty"];
+			_idact_dog_action2 = player addAction ["<t color='#80FF80'>" + "-- DOG RECALL"+ "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","recall",-640,false,true,"","call is_DogOnDuty"];
+			_idact_dog_action3 = player addAction ["<t color='#80FF80'>" + "-- DOG STOP" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","stop",-641,false,true,"",""];
+			_idact_dog_action4 = player addAction ["<t color='#FF8080'>" + "-- DOG DISMISS" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","del",-641,false,true,"",""];
 		};
 	} else {
 		if ( _idact_dog_action1 != -1 ) then {
@@ -74,6 +77,20 @@ while { true } do {
 			player removeAction _idact_dog_action3;
 			player removeAction _idact_dog_action4;
 			_idact_dog_action1 = -1; _idact_dog_action2 = -1;_idact_dog_action3 = -1;_idact_dog_action4 = -1;
+		};
+	};
+
+	// Squad - Actions
+	if ( [] call is_menuok && !isNull _my_squad ) then {
+		if ( _idact_squad_action1 == -1 ) then {
+			_idact_squad_action1 = player addAction ["<t color='#80FF80'>" + "-- SQUAD FOLLOW"+ "</t> <img size='1' image='" + _icon_grp + "'/>","GRLIB_squad_follow=true","",-635,false,true,"","!GRLIB_squad_follow"];
+			_idact_squad_action2 = player addAction ["<t color='#80FF80'>" + "-- SQUAD STOP"+ "</t> <img size='1' image='" + _icon_grp + "'/>","GRLIB_squad_follow=false","",-635,false,true,"","GRLIB_squad_follow"];
+		};
+	} else {
+		if ( _idact_squad_action1 != -1 ) then {
+			player removeAction _idact_squad_action1;
+			player removeAction _idact_squad_action2;
+			_idact_squad_action1 = -1; _idact_squad_action2 = -1;
 		};
 	};
 
@@ -128,7 +145,7 @@ while { true } do {
 	// Take Leadrship
 	if ( [] call is_menuok && !(isPlayer (leader (group player))) && (local (group player)) ) then {
 		if ( _idact_lead == -1 ) then {
-			_idact_lead = player addAction ["<t color='#80FF80'>-- TAKE LEADRSHIP</t> <img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/>", {(group player) selectLeader player}, [],0,true,true,"", "build_confirmed == 0"];
+			_idact_lead = player addAction ["<t color='#80FF80'>-- TAKE LEADRSHIP</t> <img size='1' image='" + _icon_grp + "'/>", {(group player) selectLeader player}, [],0,true,true,"", "build_confirmed == 0"];
 		};
 	} else {
 		if ( _idact_lead != -1 ) then {
@@ -200,7 +217,7 @@ while { true } do {
 	// Squad Management
 	if ( [] call is_menuok && (leader group player == player) && (count units group player > 1) ) then {
 		if ( _idact_squad == -1 ) then {
-			_idact_squad = player addAction ["<t color='#80FF80'>" + localize "STR_SQUAD_MANAGEMENT_ACTION" + "</t> <img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/>","scripts\client\ui\squad_management.sqf","",-760,false,true,"","build_confirmed == 0"];
+			_idact_squad = player addAction ["<t color='#80FF80'>" + localize "STR_SQUAD_MANAGEMENT_ACTION" + "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\ui\squad_management.sqf","",-760,false,true,"","build_confirmed == 0"];
 		};
 	} else {
 		if ( _idact_squad != -1 ) then {
@@ -212,7 +229,7 @@ while { true } do {
 	// Commander Menu
 	if ( [] call is_menuok && ( player == ( [] call F_getCommander ) || [] call F_isAdmin ) && GRLIB_permissions_param ) then {
 		if ( _idact_commander == -1 ) then {
-			_idact_commander = player addAction ["<t color='#FF8000'>" + localize "STR_COMMANDER_ACTION" + "</t> <img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/>","scripts\client\commander\open_permissions.sqf","",-996,false,true,"","build_confirmed == 0"];
+			_idact_commander = player addAction ["<t color='#FF8000'>" + localize "STR_COMMANDER_ACTION" + "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\commander\open_permissions.sqf","",-996,false,true,"","build_confirmed == 0"];
 		};
 	} else {
 		if ( _idact_commander != -1 ) then {

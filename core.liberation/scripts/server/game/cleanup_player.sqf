@@ -34,6 +34,10 @@ if !(isNull _player) then {
 	private _taxi = _player getVariable ["GRLIB_taxi_called", nil];
 	if (!isNil "_taxi") then { deleteVehicle _taxi };
 
+	// Remove Squad
+	private _my_squad = _player getVariable ["my_squad", nil];
+	if (!isNil "_my_squad") then { {deleteVehicle _x} forEach units _my_squad };
+
 	private _text = format ["Bye bye %1, see you soon...", name _player];
 	[gamelogic, _text] remoteExec ["globalChat", -2];
 };
