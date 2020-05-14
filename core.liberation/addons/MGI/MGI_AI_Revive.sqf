@@ -46,7 +46,7 @@ MGI_fn_Revive = {
   MGI_AiRevive = _AiRevive;
 
     while {true} do {
-      MGI_bros = allUnits select {(_x getVariable format["Bros_%1",MGI_Grp_ID])};
+     private _bros = allUnits select {(_x getVariable ["MGI_Grp_ID","0"]) == (player getVariable ["MGI_Grp_ID","1"])};
       {
         // Only for AI
         if (!isplayer _x) then {
@@ -71,6 +71,7 @@ MGI_fn_Revive = {
           // AI stop doing shit !
           if ( leader group player != player &&
                lifeState player == 'incapacitated' &&
+               _x distance2D player <= 500 &&
                isNil {_x getVariable 'MGI_busy'} &&
                isNil {_x getVariable 'MGI_heal'}
               ) then {
@@ -82,24 +83,28 @@ MGI_fn_Revive = {
                   sleep 3;
                 };
                 _x doMove (getPos player);
-                _x doFollow leader (group player);
-
           };
         };
         sleep 0.1;
-      } forEach MGI_bros;
+      } forEach _bros;
       sleep 5;
     };
 };
 
+MGI_fn_globalchat = {
+  params ["_speaker", "_msg"];
+  if ((_speaker getVariable ["MGI_Grp_ID","0"]) == (player getVariable ["MGI_Grp_ID","1"])) then {
+    gamelogic globalChat _msg;
+  };
+};
 waituntil {!isNull player && GRLIB_player_spawned};
 waituntil {!isNil {player getVariable ["GRLIB_Rank", nil]}};
 
 // AI rejoin player's group
-MGI_bros = allUnits select {(_x getVariable format["Bros_%1",MGI_Grp_ID])};
+private _bros = allUnits select {(_x getVariable ["MGI_Grp_ID","0"]) == (player getVariable ["MGI_Grp_ID","1"])};
 {
   if ( count (units group player) < (GRLIB_squad_size + GRLIB_squad_size_bonus) ) then { [_x] joinSilent my_group };
-} foreach MGI_bros;
+} foreach _bros;
 sleep 1;
 if (!(isPlayer (leader (my_group)))) then {
   (my_group) selectLeader player;

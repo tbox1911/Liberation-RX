@@ -2,7 +2,8 @@ params ["_medic"];
 
 Search_radius = 30;
 
-private _wounded_list = MGI_bros select {
+private _bros = allUnits select {(_x getVariable ["MGI_Grp_ID","0"]) == (_medic getVariable ["MGI_Grp_ID","1"])};
+private _wounded_list = _bros select {
   round (_x distance2D _medic) < Search_radius &&
   vehicle _x == _x &&
   alive _x &&

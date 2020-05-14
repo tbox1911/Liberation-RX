@@ -85,7 +85,7 @@ while { true } do {
 			_unit setMass 10;
 			_unit setSkill 0.6;
 			_unit setRank "PRIVATE";
-			_unit setVariable [format["Bros_%1",MGI_Grp_ID], true, true];
+			_unit setVariable ["MGI_Grp_ID", format["Bros_%1",MGI_Grp_ID], true];
 			_unit addMPEventHandler ["MPKilled", FAR_Player_MPKilled];
 			_unit enableIRLasers true;
 			_unit enableGunLights "Auto";
@@ -110,6 +110,10 @@ while { true } do {
 				} foreach _classname;
 				_grp setCombatMode "GREEN";
 				_grp setBehaviour "AWARE";
+				{
+					_x setVariable ["MGI_Grp_ID", format["AI_%1",MGI_Grp_ID], true];
+					[_x] call MGI_fn_EHDamage;
+				} forEach units _grp;
 				[_grp] spawn squad_manager;
 				[_price] call do_pay_build;
 			} else {

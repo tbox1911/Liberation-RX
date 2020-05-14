@@ -95,7 +95,7 @@ while {lifeState _wnded == 'incapacitated' || diag_tickTime < _timer + MGI_Bleed
     if (_fail == 0) then {
       _msg = format ["Please wait %1, %2 (dist: %3m/%4), is on the way...", name _wnded, name _medic, _dist, round (speed _medic)];
     };
-    gamelogic globalChat _msg;
+    [_wnded, _msg] call MGI_fn_globalchat;
     _cnt = 3;
   } else {
     _cnt = _cnt - 1;

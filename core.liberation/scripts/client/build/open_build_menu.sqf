@@ -130,7 +130,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 	_affordable = false;
 	_squad_full = false;
 	_ammo_collected = player getVariable ["GREUH_ammo_count",0];
-	_bros = allUnits select {(_x getVariable format["Bros_%1",MGI_Grp_ID])};
+	_bros = allUnits select {(_x getVariable ["MGI_Grp_ID","0"]) == (player getVariable ["MGI_Grp_ID","1"])};
 	if ((buildtype == 1) && (count (_bros) >= GRLIB_squad_size + GRLIB_squad_size_bonus)) then {
 		_squad_full = true;
 	};

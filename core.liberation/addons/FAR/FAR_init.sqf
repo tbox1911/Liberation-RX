@@ -50,7 +50,7 @@ FAR_Player_Init = {
 	player setVariable ["FAR_isStabilized", 0, true];
 	player setVariable ["FAR_isDragged", 0, true];
 	player setVariable ["ace_sys_wounds_uncon", false];
-	player setVariable [format["Bros_%1", MGI_Grp_ID], true];
+	player setVariable ["MGI_Grp_ID",format["Bros_%1", MGI_Grp_ID], true];
 	player setVariable ["MGI_soliders",true,true];
 	player setVariable ["MGI_isUnconscious", false];
 	player setVariable ["MGI_myMedic", nil];
