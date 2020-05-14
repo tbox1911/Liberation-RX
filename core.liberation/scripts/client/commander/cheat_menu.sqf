@@ -71,8 +71,8 @@ while { dialog && (alive player) } do {
 		} forEach allPlayers;
 
 		if (!isNull _player) then {
-			[_player, 200] remoteExec ['addScore', 2];
-			systemchat format ["Add 200 XP to player: %1.", _dst_name];
+			[_player, 300] remoteExec ['addScore', 2];
+			systemchat format ["Add 300 XP to player: %1.", _dst_name];
 			sleep 1;
 		};
 		do_score = 0;
