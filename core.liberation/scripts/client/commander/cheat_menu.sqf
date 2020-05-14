@@ -71,8 +71,8 @@ while { dialog && (alive player) } do {
 		} forEach allPlayers;
 
 		if (!isNull _player) then {
-			[_player, 300] remoteExec ['addScore', 2];
-			systemchat format ["Add 300 XP to player: %1.", _dst_name];
+			[_player, 200] remoteExec ['addScore', 2];
+			systemchat format ["Add 200 XP to player: %1.", _dst_name];
 			sleep 1;
 		};
 		do_score = 0;
@@ -99,8 +99,8 @@ while { dialog && (alive player) } do {
 
 		if (!isNull _player) then {
 			_tmp = _player getVariable ['GREUH_ammo_count', 0];
-			[_player, ['GREUH_ammo_count', _tmp + 200, true]] remoteExec ['setVariable', 2];
-			systemchat format ["Add 200 Ammo to player: %1.", _dst_name];
+			[_player, ['GREUH_ammo_count', _tmp + 300, true]] remoteExec ['setVariable', 2];
+			systemchat format ["Add 300 Ammo to player: %1.", _dst_name];
 			sleep 1;
 		};
 		do_ammo = 0;
