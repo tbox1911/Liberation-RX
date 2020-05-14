@@ -43,7 +43,10 @@ while { true } do {
 	_needammo2 = false;
 	_needmedic = false;
 	_UnitList = units group player;
-
+	_my_squad = player getVariable ["my_squad", nil];
+	if (!isNil "_my_squad") then {
+		{ _UnitList pushBack _x } forEach units _my_squad;
+	};
 	{
 		// Out vehicle
 		if (_x != player && lifeState _x != 'incapacitated' && vehicle _x == _x) then {
