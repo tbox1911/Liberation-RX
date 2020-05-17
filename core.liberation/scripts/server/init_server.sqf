@@ -2,6 +2,9 @@ diag_log "--- Server Init start ---";
 //[] call compileFinal preprocessFileLineNumbers "scripts\loadouts\init_loadouts.sqf";
 [] execVM "scripts\loadouts\init_loadouts.sqf";
 
+// Cleanup
+cleanup_player = compileFinal preprocessFileLineNumbers "scripts\server\game\cleanup_player.sqf";
+
 // AI
 GRLIB_AI_toggle = true;
 add_civ_waypoints = compileFinal preprocessFileLineNumbers "scripts\server\ai\add_civ_waypoints.sqf";
@@ -97,7 +100,6 @@ publicVariable "BTC_tk_PVEH";
 if (isNil "global_locked_group") then { global_locked_group = [] };
 publicVariable "global_locked_group";
 
-addMissionEventHandler ['HandleDisconnect',{deleteVehicle (_this select 0);}];
-onPlayerDisconnected { [_uid] call compile preprocessfilelinenumbers "scripts\server\game\cleanup_player.sqf" };
+addMissionEventHandler ['HandleDisconnect', cleanup_player];
 
 diag_log "--- Server Init stop ---";
