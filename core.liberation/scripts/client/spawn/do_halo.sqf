@@ -43,10 +43,15 @@ if ( dojump > 0 ) then {
 	halo_position = [ halo_position, random 250, random 360 ] call BIS_fnc_relPos;
 	halo_position = [ halo_position select 0, halo_position select 1, GRLIB_halo_altitude + (random 200) ];
 	_player_pos = getPos player;
+	_UnitList = units group player;
+	_my_squad = player getVariable ["my_squad", nil];
+	if (!isNil "_my_squad") then {
+		{ _UnitList pushBack _x } forEach units _my_squad;
+	};
 	{
 		if ( round (_x distance2D _player_pos) <= 30 && lifestate _x != 'incapacitated' && vehicle _x == _x ) then {
 			[_x,  halo_position] spawn paraDrop;
 			sleep random [1,1.5,2];
 		};
-	} forEach units player;
+	} forEach _UnitList;
 };

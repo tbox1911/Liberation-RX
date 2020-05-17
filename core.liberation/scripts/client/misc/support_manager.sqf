@@ -1,6 +1,6 @@
 private ["_neararsenal", "_nearmedic", "_needammo1", "_needammo2", "_needmedic", "_magType", "_list_static", "_min"];
 
-_distarsenal = 20;
+_distarsenal = 30;
 _maxsec = 3;
 _list_static = [];
 {_list_static pushBack ( _x select 0 )} foreach (static_vehicles);

@@ -94,6 +94,8 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 					_squadname = "";
 				};
 				((findDisplay 5501) displayCtrl (110)) lnbAddRow  [_squadname, format [ "%1" ,_x select 1], format [ "%1" ,_x select 2], format [ "%1" ,_x select 3]];
+				_icon = "\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa";
+				lnbSetPicture  [110, [((lnbSize 110) select 0) - 1, 0],_icon];
 			};
 
 			_affordable = true;

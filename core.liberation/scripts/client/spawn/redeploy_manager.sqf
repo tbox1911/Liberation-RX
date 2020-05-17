@@ -157,8 +157,13 @@ while { true } do {
 				player setpos [((_destpos select 0) + 5) - (random 10),((_destpos select 1) + 5) - (random 10),0];
 			};
 
+			_UnitList = units group player;
+			_my_squad = player getVariable ["my_squad", nil];
+			if (!isNil "_my_squad") then {
+				{ _UnitList pushBack _x } forEach units _my_squad;
+			};
 			{
-				if ( _x != player && (_x distance2D _player_pos) < 25 && lifestate _x != 'incapacitated' && vehicle _x == _x ) then {
+				if ( _x != player && (_x distance2D _player_pos) < 30 && lifestate _x != 'incapacitated' && vehicle _x == _x ) then {
 					[_x] spawn {
 						params ["_unit"];
 						sleep random 2;
@@ -166,7 +171,7 @@ while { true } do {
 						_unit doFollow leader player;
 					};
 				};
-			} forEach units player;
+			} forEach _UnitList;
 			GRLIB_player_spawned = true;
 		};
 
