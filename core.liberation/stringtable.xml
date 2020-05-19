@@ -2860,12 +2860,8 @@
 					<French>Vous pouvez construire des Avions.&lt;br/&gt;Vous pouvez démarrer des Missions Spécial à la FOB.&lt;br/&gt;Vous avez une unitée en plus.</French>
 				</Key>
 				<Key ID="STR_RANK_LVL6">
-					<Original>You can build and Repack FOB.&lt;br/&gt;You have acces to Special Heavy Vehicles.&lt;br/&gt;You have an extra AI.</Original>
-					<French>Vous pouvez replier les FOB.&lt;br/&gt;Vous avez acces aux Vehicules Speciaux.&lt;br/&gt;Vous avez une unitée en plus.</French>
-				</Key>
-				<Key ID="STR_RANK_LVL7">
-					<Original>You have an extra AI.</Original>
-					<French>Vous avez une unitée en plus.</French>
+					<Original>You can build and Repack FOB.&lt;br/&gt;You have acces to Special Heavy Vehicles.&lt;br/&gt;You can build a Support Team.</Original>
+					<French>Vous pouvez replier les FOB.&lt;br/&gt;Vous avez acces aux Vehicules Speciaux.&lt;br/&gt;Vous pouvez construire une Equipe de soutien.</French>
 				</Key>
 
 				<!-- Added in v0.927 -->
