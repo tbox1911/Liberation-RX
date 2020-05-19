@@ -1,9 +1,10 @@
 author = "[GREUH] Zbug, [GREUH] McKeewa, [AKH] pSiKO";
 onLoadName = $STR_MISSION_TITLE;
+briefingName = $STR_MISSION_TITLE;
 onLoadMission = $STR_MISSION_DESCRIPTION;
 overviewText = $STR_MISSION_DESCRIPTION;
-overviewPicture = "res\liberation.jpg";
-loadScreen = "res\liberation.jpg";
+overviewPicture = "res\liberation.paa";
+loadScreen = "res\liberation.paa";
 
 respawn = 3;
 respawndelay = 5;
