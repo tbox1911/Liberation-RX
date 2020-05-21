@@ -110,7 +110,14 @@ GREUH_TipsText = [];
 addMissionEventHandler["draw3D",{
 	private _pos = ASLToAGL getPosASL chimera_sign;
 	if (player distance2D _pos <= 30) then {
-		drawIcon3D ["", [1,1,1,1],_pos vectorAdd [0, 0, 3], 0, 0, 0, "- READ ME -", 2, 0.05, "TahomaB"];
+		drawIcon3D ["", [1,1,1,1], _pos vectorAdd [0, 0, 3], 0, 0, 0, "- READ ME -", 2, 0.05, "TahomaB"];
+	};
+
+	private _near_grave = nearestObjects [player, GRLIB_player_grave , 2];
+	if (count (_near_grave) != 0) then {
+		private _grave = _near_grave select 0;
+		private _grave_pos = ASLToAGL getPosASL _grave;
+		drawIcon3D [getMissionPath "res\skull.paa", [1,1,1,1], _grave_pos vectorAdd [0, 0, 1], 2, 2, 0, (_grave getVariable ["GRLIB_grave_message", ""]), 2, 0.05, "RobotoCondensed", "center"];
 	};
 }];
 chimera_sign addAction ["<t color='#FFFFFF'>-= READ  ME =-</t>",{createDialog "liberation_notice"},"",999,true,true,"","[] call is_menuok",5];

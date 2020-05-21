@@ -33,8 +33,8 @@ FAR_Player_MPKilled = {
 		_pos = getPosATL _unit;
 		if ( _pos distance2D lhd >= 1000 && _pos distance2D ([] call F_getNearestFob) >= GRLIB_sector_size ) then {
 			_unit setPos zeropos;
-			_grave = ["Land_Grave_rocks_F", "Land_Grave_forest_F", "Land_Grave_dirt_F"] call BIS_fnc_selectRandom;
-			createVehicle [_grave, _pos, [], 0, "CAN_COLLIDE"];
+			_grave = createVehicle [(GRLIB_player_grave call BIS_fnc_selectRandom), _pos, [], 0, "CAN_COLLIDE"];
+			_grave setvariable ["GRLIB_grave_message", format ["%1 - R.I.P -", name player], true];
 		};
 	};
 };
