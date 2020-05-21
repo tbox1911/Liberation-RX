@@ -50,6 +50,10 @@ MGI_fn_Revive = {
       {
         // Only for AI
         if (!isplayer _x) then {
+          // AI rejoin
+          if ( !(_x in units group player) && isNil {_x getVariable 'MGI_busy'} && lifeState _x != 'incapacitated' ) then {
+            if ( count (units group player) < (GRLIB_squad_size + GRLIB_squad_size_bonus) ) then { [_x] joinSilent my_group };
+          };
 
           // Set EH
           if (isnil {_x getVariable "passEH"}) then {
@@ -99,16 +103,6 @@ MGI_fn_globalchat = {
 };
 waituntil {!isNull player && GRLIB_player_spawned};
 waituntil {!isNil {player getVariable ["GRLIB_Rank", nil]}};
-
-// AI rejoin player's group
-private _bros = allUnits select {(_x getVariable ["MGI_Grp_ID","0"]) == (player getVariable ["MGI_Grp_ID","1"])};
-{
-  if ( count (units group player) < (GRLIB_squad_size + GRLIB_squad_size_bonus) ) then { [_x] joinSilent my_group };
-} foreach _bros;
-sleep 1;
-if (!(isPlayer (leader (my_group)))) then {
-  (my_group) selectLeader player;
-};
 
 [20,300,true] spawn MGI_fn_Revive;
 
