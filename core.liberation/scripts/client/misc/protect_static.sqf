@@ -2,11 +2,7 @@ waituntil {sleep 1; !isNull player};
 waitUntil {sleep 1; GRLIB_player_spawned};
 
 _list_static = [];
-{
-	if (! ((_x select 0) in ["B_AAA_System_01_F","B_Ship_Gun_01_F"])) then {
-		_list_static pushBack ( _x select 0 );
-	};
-} foreach (static_vehicles);
+{_list_static pushBack ( _x select 0 )} foreach (static_vehicles);
 
 while { true } do {
 	{

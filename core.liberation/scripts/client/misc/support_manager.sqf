@@ -114,7 +114,7 @@ while { true } do {
 
 			if (_vehicle_class in _list_static) then {
 				// Arsenal
-				_neararsenal =  ((getpos _x) nearEntities [["Box_NATO_Ammo_F", "Box_NATO_WpsLaunch_F"], _distarsenal]) +
+				_neararsenal =  ((getpos _x) nearEntities [vehicle_rearm_sources, _distarsenal]) +
 								((getpos _x) nearobjects [FOB_typename, _distarsenal * 2]);
 
 				if (count(_neararsenal) > 0)  then {
@@ -123,7 +123,8 @@ while { true } do {
 						_magType = getArray(configFile >> "CfgVehicles" >> _vehicle_class >> "Turrets" >> "MainTurret" >> "magazines") select 0;
 						_vehicle addMagazines [_magType, 4];
 						_arsenal_text = getText (configFile >> "CfgVehicles" >> typeOf (_neararsenal select 0) >> "displayName");
-						_x groupchat format ["Rearming Static Weapon at %1.", _arsenal_text];
+						_vehicle_class_text =  getText (configFile >> "CfgVehicles" >> _vehicle_class >> "displayName");
+						_x groupchat format ["Rearming %1 at %2.", _vehicle_class_text, _arsenal_text];
 					};
 				};
 			};
