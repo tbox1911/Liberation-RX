@@ -28,7 +28,7 @@ if ( isMultiplayer ) then {
 	GRLIB_maximum_fobs = [ "MaximumFobs",5] call bis_fnc_getParamValue;
 	GRLIB_fob_type = [ "FobType",0] call bis_fnc_getParamValue;
 	GRLIB_squad_size = ["SquadSize",3] call bis_fnc_getParamValue;
-	GRLIB_max_squad_size = ["MaxSquadSize",10] call bis_fnc_getParamValue;
+	GRLIB_max_squad_size = ["MaxSquadSize",8] call bis_fnc_getParamValue;
 	GRLIB_enable_arsenal = ["EnableArsenal",1] call bis_fnc_getParamValue;
 	GRLIB_limited_arsenal = ["LimitedArsenal",1] call bis_fnc_getParamValue;
 	GRLIB_fancy_info = ["FancyInfo",2] call bis_fnc_getParamValue;
