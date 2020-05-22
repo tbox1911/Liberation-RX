@@ -94,7 +94,7 @@ Engine and map available for:
 
 ## ARMA-3  Liberation RX - Version Etendu
 
-![alt text](https://raw.githubusercontent.com/tbox1911/Liberation-RX/master/liberation.png"Liberation RX")
+![alt text](https://raw.githubusercontent.com/tbox1911/Liberation-RX/master/liberation.png "Liberation RX")
 
 Sur la base de la version 0.924 par [GREUH] Zbug
 
