@@ -11,6 +11,7 @@ if (isNil "_locked") then { _locked = false};
 
 if (_locked) then {
 	_box setVariable ["R3F_LOG_disabled", true, true];
+	_box setVariable ["GRLIB_vehicle_owner", "server", true];
 	//_box allowDamage false;
 } else {
 	_box setVariable ["R3F_LOG_disabled", false, true];
