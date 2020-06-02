@@ -43,7 +43,12 @@ while { true } do {
 					_my_dog playMoveNow "Dog_Stop";
 				} else {
 					_my_dog moveTo (getPos _man);
-					_my_dog playMoveNow "Dog_Walk"
+					_dog_move = "Dog_Walk";
+					switch (true) do {
+						case (_dist > 20 && _dist <= 40): {_dog_move = "Dog_Run"};
+						case (_dist > 40): {_dog_move = "Dog_Sprint"};
+					};
+					_my_dog playMoveNow _dog_move;
 				};
 			};
 		} else {
@@ -59,8 +64,8 @@ while { true } do {
 				_my_dog moveTo (getPos player);
 				_dog_move = "Dog_Walk";
 				switch (true) do {
-					case (_dist > 20 && _dist <= 30): {_dog_move = "Dog_Run"};
-					case (_dist > 30): {_dog_move = "Dog_Sprint"};
+					case (_dist > 20 && _dist <= 40): {_dog_move = "Dog_Run"};
+					case (_dist > 40): {_dog_move = "Dog_Sprint"};
 				};
 				_my_dog playMoveNow _dog_move;
 				_dog_close = true;
