@@ -866,11 +866,11 @@
 						<Russian>Кроликов убито:</Russian>
 				</Key>
 				<Key ID="STR_STATS_26">
-						<Original>Many thanks for playing LIBERATION!</Original>
-						<French>Merci beaucoup d'avoir joué à LIBERATION!</French>
-						<German>Vielen Dank fuers spielen von LIBERATION!</German>
-						<Spanish>¡Muchas gracias por jugar LIBERATION!</Spanish>
-						<Russian>Большое спасибо за то что играли в LIBERATION!</Russian>
+						<Original>Many thanks for playing LIBERATION-RX!</Original>
+						<French>Merci beaucoup d'avoir joué à LIBERATION-RX!</French>
+						<German>Vielen Dank fuers spielen von LIBERATION-RX!</German>
+						<Spanish>¡Muchas gracias por jugar LIBERATION-RX!</Spanish>
+						<Russian>Большое спасибо за то что играли в LIBERATION-RX!</Russian>
 				</Key>
 				<Key ID="STR_STATS_27">
 						<Original>BLUFOR soldiers recruited:</Original>
