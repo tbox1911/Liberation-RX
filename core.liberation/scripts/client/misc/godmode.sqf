@@ -5,12 +5,12 @@ _ctrl  = _array select 0;
 
 if (ctrlChecked _ctrl) then {
 	hint "GodMode ON !";
-	player forceAddUniform "B_Protagonist_VR_F";
+	player forceAddUniform "U_B_Protagonist_VR";
 	player allowDamage false;
 	player setDamage 0;
 } else {
 	hint "GodMode OFF !";
-	player forceAddUniform "B_Soldier_F";
+	player forceAddUniform "U_B_CombatUniform_mcam";
 	player allowDamage true;
 };
 sleep 5;
