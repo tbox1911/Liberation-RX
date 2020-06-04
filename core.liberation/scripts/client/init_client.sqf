@@ -15,7 +15,6 @@ is_owner = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_owner.
 is_menuok = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_menuok.sqf";
 is_local = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_local.sqf";
 player_EVH = compileFinal preprocessFileLineNumbers "addons\FAR\FAR_EventHandler.sqf";
-get_group = compileFinal preprocessFileLineNumbers "scripts\client\misc\get_group.sqf";
 paraDrop = compileFinal preprocessFileLineNumbers "scripts\client\spawn\paraDrop.sqf";
 squad_manager = compileFinal preprocessFileLineNumbers "scripts\client\misc\squad_manager.sqf";
 
@@ -33,7 +32,8 @@ if (isMultiplayer) then {
 } else {
 	MGI_Grp_ID = str round(random 4096);
 };
-[] call get_group;
+my_group = group player;
+[my_group, "add"] remoteExec ["addel_group_remote_call", 2];
 
 [] execVM "scripts\client\commander\enforce_whitelist.sqf";
 [] execVM "scripts\client\misc\init_markers.sqf";

@@ -35,7 +35,9 @@ while { true } do {
 			};
 			case "leave" : {
 				if (leader group player != player) then {
-					[] call get_group;
+					my_group = createGroup [GRLIB_side_friendly, true];
+					[my_group, "add"] remoteExec ["addel_group_remote_call", 2];
+					[player] joinSilent my_group;
 					hint "New Squad created";
 				};
 			};
