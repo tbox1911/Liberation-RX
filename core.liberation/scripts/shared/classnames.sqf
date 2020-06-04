@@ -22,11 +22,8 @@ if ( isNil "A3W_BoxWps" ) then { A3W_BoxWps = "Box_East_Wps_F" };
 infantry_units = [
 	["Alsatian_Random_F",0,0,0,GRLIB_perm_max],
 	["Fin_random_F",0,0,0,0],
-	["B_Soldier_universal_F",0,0,0,GRLIB_perm_max],
 	["B_medic_F",1,0,0,0],
-	["B_recon_medic_F",1,0,0,GRLIB_perm_log],
-	["B_soldier_repair_F",1,0,0,0],
-	["B_engineer_F",1,0,0,GRLIB_perm_inf],
+	["B_engineer_F",1,0,0,0],
 	["B_soldier_F",1,0,0,0],
 	["B_soldier_GL_F",1,0,0,GRLIB_perm_inf],
 	["B_soldier_M_F",1,0,0,GRLIB_perm_inf],
