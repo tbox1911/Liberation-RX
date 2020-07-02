@@ -1,8 +1,13 @@
 params ["_vehicle"];
 if (isNil "_vehicle") exitWith {};
 
-//only one at time
+//only one wreck at time
+if ((player getVariable ["salvage_wreck", false])) exitWith {};
+
+//only one player at time
 if ((_vehicle getVariable ["wreck_in_use", false])) exitWith {};
+
+player setVariable ["salvage_wreck", true, true];
 _vehicle setVariable ["wreck_in_use", true, true];
 
 // Stop running
@@ -33,10 +38,14 @@ disableUserInput true;
 disableUserInput false;
 if (round (getPosASL player select 2) <= -1) then {player switchmove ""};
 
-if (lifeState player == 'incapacitated' || vehicle player != player) exitWith {_vehicle setVariable ["wreck_in_use", false, true]};
-{[_x] remoteExec ["deleteVehicle", 0]} forEach (_vehicle getVariable ["R3F_LOG_objets_charges", []]);
-{[_x] remoteExec ["deleteVehicle", 0]} forEach crew _vehicle;
-[_vehicle] remoteExec ["deleteVehicle", 0];
+if (lifeState player == 'incapacitated' || vehicle player != player) exitWith {
+	_vehicle setVariable ["wreck_in_use", false, true];
+	player setVariable ["salvage_wreck", false, true];
+};
+//{[_x] remoteExec ["deleteVehicle", 0]} forEach (_vehicle getVariable ["R3F_LOG_objets_charges", []]);
+//{[_x] remoteExec ["deleteVehicle", 0]} forEach crew _vehicle;
+[_vehicle] remoteExec ["clean_vehicle", 2];
+[_vehicle] remoteExec ["deleteVehicle", 2];
 
 private _msg = "";
 if (typeOf _vehicle in _free_vehicles) then {
@@ -47,7 +56,8 @@ if (typeOf _vehicle in _free_vehicles) then {
 	_bonus = _res select 1;
 	private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
 	player setVariable ["GREUH_ammo_count", (_ammo_collected + _bounty), true];
-	hintSilent format ["%1\nBonus Score + %2 Pts\nAmmo Bonus + %3 !!", name player, _bonus, _bounty];
+	hintSilent format ["%1\nBonus Score + %2 Pts\nBonus Ammo + %3 !!", name player, _bonus, _bounty];
 	[player, _bonus] remoteExec ["addScore", 2];
 	player addRating 100;
 };
+player setVariable ["salvage_wreck", false, true];
