@@ -120,7 +120,7 @@ if (alive _vehicle && alive player) then {
 
 	if (diag_tickTime < _stop && alive _vehicle) then {
 
-		_idact_dest = _vehicle addAction ["<t color='#8000FF'>-- TAXI Destination --</t>","addons\TAXI\taxi_dest.sqf","",999,true,true,"","vehicle _this == _target"];
+		_idact_dest = _vehicle addAction ["<t color='#8000FF'>-- TAXI Destination</t>","addons\TAXI\taxi_dest.sqf","",999,true,true,"","vehicle _this == _target"];
 		waitUntil {
 			sleep 1;
 			(!alive _vehicle || !alive player || (markerPos "taxi_dz") distance2D zeropos > 100)

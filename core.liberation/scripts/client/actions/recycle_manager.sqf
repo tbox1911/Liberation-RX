@@ -35,16 +35,16 @@ while { true } do {
 			if (typeOf _vehicle in _big_unit) then {
 				_distvehclose = _distvehclose * 4;
 			};
-			_vehicle addAction ["<t color='#FFFF00'>-- RECYCLE --</t> <img size='1' image='res\ui_recycle.paa'/>","scripts\client\actions\do_recycle.sqf","",-950,false,true,"","[_target] call is_menuok && [_target] call F_is_recyclable",_distvehclose];
+			_vehicle addAction ["<t color='#FFFF00'>-- RECYCLE</t> <img size='1' image='res\ui_recycle.paa'/>","scripts\client\actions\do_recycle.sqf","",-950,false,true,"","[_target] call is_menuok && [_target] call F_is_recyclable",_distvehclose];
 
 			// XP AmmoBox
 			if (typeOf _vehicle == ammobox_i_typename) then {
-				_vehicle addAction ["<t color='#60FF00'>-- ADD 50 XP --</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\do_recycle_xp.sqf","",-951,false,true,"","[_target] call is_menuok && [_target] call F_is_recyclable && score player <= GRLIB_perm_log",_distvehclose];
+				_vehicle addAction ["<t color='#60FF00'>-- ADD 50 XP</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\do_recycle_xp.sqf","",-951,false,true,"","[_target] call is_menuok && [_target] call F_is_recyclable && score player <= GRLIB_perm_log",_distvehclose];
 			};
 
 			// Fireworks
 			if (typeOf _vehicle == "Land_CargoBox_V1_F") then {
-				_vehicle addAction ["<t color='#60FF00'>-- FIREWORKS !--</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\do_fireworks.sqf","",-951,false,true,"","[_target] call is_menuok && score player >= GRLIB_perm_max",_distvehclose];
+				_vehicle addAction ["<t color='#60FF00'>-- FIREWORKS !</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\do_fireworks.sqf","",-951,false,true,"","[_target] call is_menuok && score player >= GRLIB_perm_max",_distvehclose];
 			};
 
 			_vehicle setVariable ["GRLIB_recycle_action", true];
