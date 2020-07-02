@@ -2,7 +2,19 @@ params ["_vehicle"];
 if (isNil "_vehicle") exitWith {};
 
 private [ "_objectinfo", "_cfg", "_dialog" ];
-private _ammobox = [ammobox_b_typename, ammobox_o_typename];
+// XP AmmoBox
+if (typeOf _vehicle == ammobox_i_typename && score player <= GRLIB_perm_log) then {
+	_msg = format ["<t align='center'>Select Reward:<br/>XP or AMMO</t>"];
+	_result = [_msg, "Special Box !", "XP", "AMMO"] call BIS_fnc_guiMessage;
+	if (_result) then {
+		[_vehicle] remoteExec ["deleteVehicle", 2];
+		[player, 50] remoteExec ["addScore", 2];
+		playSound "taskSucceeded";
+		hint format ["%1\nScore + 50 Pts!", name player];
+		_vehicle = nil
+	};
+};
+if (isNil "_vehicle") exitWith {};
 
 _objectinfo = ( [ (light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles + buildings + opfor_recyclable + ind_recyclable), { typeof _vehicle == _x select 0 } ] call BIS_fnc_conditionalSelect ) select 0;
 if (isNil "_objectinfo") then {
@@ -28,7 +40,7 @@ if ( dialog ) then { closeDialog 0 };
 
 if ( dorecycle == 1 && !(isnull _vehicle) && alive _vehicle) then {
 	[_vehicle] remoteExec ["deleteVehicle", 2];
-	if (typeOf _vehicle in _ammobox && score player <= GRLIB_perm_log) then {
+	if (typeOf _vehicle in [ammobox_b_typename, ammobox_o_typename, ammobox_i_typename] && score player <= GRLIB_perm_log) then {
 		[player, 10] remoteExec ["addScore", 2];
 		hint format ["%1\nBonus Score + 10 Pts!", name player];
 		playSound "taskSucceeded";
