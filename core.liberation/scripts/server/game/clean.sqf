@@ -54,13 +54,13 @@ deleteManagerPublic = TRUE;						// To terminate script via debug console
 _checkPlayerCount = TRUE;						// dynamic sleep. Set TRUE to have sleep automatically adjust based on # of players.
 _checkFrequencyDefault = 180;					// sleep default
 _checkFrequencyAccelerated = 60;				// sleep accelerated
-_playerThreshold = 20;							// How many players before accelerated cycle kicks in?
+_playerThreshold = 5;							// How many players before accelerated cycle kicks in?
 
 _deadMenLimit = 50;								// Bodies. Set -1 to disable.
 _deadMenDistCheck = TRUE;						// TRUE to delete any bodies that are far from players.
 _deadMenDist = 2000;							// Distance (meters) from players that bodies are not deleted if below max.
 
-_deadVehiclesLimit = 20;						// Wrecks. Set -1 to disable.
+_deadVehiclesLimit = -1;						// Wrecks. Set -1 to disable.
 _deadVehicleDistCheck = TRUE;					// TRUE to delete any destroyed vehicles that are far from players.
 _deadVehicleDist = 2000;						// Distance (meters) from players that destroyed vehicles are not deleted if below max.
 
