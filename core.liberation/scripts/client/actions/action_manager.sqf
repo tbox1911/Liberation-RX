@@ -27,7 +27,7 @@ is_DogOnDuty = {
 	private _ret = false;
 	private _my_dog = player getVariable ["my_dog", nil];
 
-	if (!isNil {_my_dog getVariable ["do_find", nil]}) then { _ret = true };
+	if (!isNil {_my_dog getVariable ["do_find", nil]} || stopped _my_dog) then { _ret = true };
 	_ret;
 };
 
@@ -67,7 +67,7 @@ while { true } do {
 		if ( _idact_dog_action1 == -1 ) then {
 			_idact_dog_action1 = player addAction ["<t color='#80FF80'>" + "-- DOG FIND"+ "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","find",-640,false,true,"","!call is_DogOnDuty"];
 			_idact_dog_action2 = player addAction ["<t color='#80FF80'>" + "-- DOG RECALL"+ "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","recall",-640,false,true,"","call is_DogOnDuty"];
-			_idact_dog_action3 = player addAction ["<t color='#80FF80'>" + "-- DOG STOP" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","stop",-641,false,true,"",""];
+			_idact_dog_action3 = player addAction ["<t color='#80FF80'>" + "-- DOG STOP" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","stop",-641,false,true,"","!call is_DogOnDuty"];
 			_idact_dog_action4 = player addAction ["<t color='#FF8080'>" + "-- DOG DISMISS" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","del",-641,false,true,"",""];
 		};
 	} else {

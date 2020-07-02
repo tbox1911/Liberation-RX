@@ -5,9 +5,6 @@ waitUntil {sleep 1; !isNil "one_synchro_done" };
 waitUntil {sleep 1; one_synchro_done };
 waitUntil {sleep 1; !isNil "GRLIB_player_spawned" };
 
-private _dog_bark = true;
-private _dog_close = true;
-
 while { true } do {
 
 	// If Dog
@@ -52,14 +49,21 @@ while { true } do {
 				};
 			};
 		} else {
-			// Relax
 			private _dist = round (_dog_pos distance2D player);
-			if (_onfoot && _dist <= 10 && _dog_close) then {
-				_my_dog playMove "Dog_Stop";
-				_dog_close = false;
+
+			// Stop
+			if (stopped _my_dog) then {
+				_my_dog setDir (_my_dog getDir player);
+				_my_dog playMove "Dog_Sit";
 			};
 
-			if (_onfoot && _dist > 15) then {
+			// Relax
+			if (_onfoot && _dist <= 10 && !(stopped _my_dog)) then {
+				_my_dog playMove "Dog_Idle_Stop";
+			};
+
+			// Return
+			if (_onfoot && _dist > 15 && !(stopped _my_dog)) then {
 				_my_dog stop false;
 				_my_dog moveTo (getPos player);
 				_dog_move = "Dog_Walk";
@@ -68,8 +72,6 @@ while { true } do {
 					case (_dist > 40): {_dog_move = "Dog_Sprint"};
 				};
 				_my_dog playMoveNow _dog_move;
-				_dog_close = true;
-				sleep 5;
 			};
 		};
 	};
