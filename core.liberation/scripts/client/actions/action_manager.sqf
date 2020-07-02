@@ -310,7 +310,7 @@ while { true } do {
 		};
 	};
 
-	// admin Menu
+	// Admin Menu
 	if ( [] call is_menuok && ([] call F_isAdmin) && GRLIB_admin_menu ) then {
 		if ( _idact_admin == -1 ) then {
 			_idact_admin = player addAction ["<t color='#0000F8'>-- ADMIN MENU</t>","scripts\client\commander\admin_menu.sqf","",999,false,true,"",""];
