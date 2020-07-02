@@ -216,8 +216,8 @@ class Params
 		texts[] = { $STR_YES, $STR_NO };
 		default = 0;
 	};*/
-	class CheatMenu {
-		title = "Enable Admin Cheat Menu";
+	class AdminMenu {
+		title = "Enable the Admin Menu";
 		values[] = { 1, 0 };
 		texts[] = { $STR_YES, $STR_NO };
 		default = 1;

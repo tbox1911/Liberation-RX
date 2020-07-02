@@ -2,7 +2,7 @@
 private["_idact_build","_idact_arsenal","_idact_redeploy","_idact_tutorial","_idact_commander",
 		"_idact_halo","_idact_heal","_idact_lead","_idact_drop","_idact_squad","_idact_send",
 		"_idact_packfob","_idact_unpackfob","_idact_packtent","_idact_unpacktent","_idact_buyfuel",
-		"_idact_secondary","_idact_cheat","_idact_options", "_idact_garage","_idact_dog_action1",
+		"_idact_secondary","_idact_admin","_idact_options", "_idact_garage","_idact_dog_action1",
 		"_idact_dog_action2","_idact_dog_action3","_idact_dog_action4", "_idact_squad_action1",
 		"_idact_squad_action2"
 ];
@@ -19,7 +19,7 @@ private _icon_grp = "\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups
 _idact_build=-1;_idact_arsenal=-1;_idact_redeploy=-1;_idact_tutorial=-1;_idact_squad=-1;
 _idact_commander=-1;_idact_repackage=-1;_idact_halo=-1;_idact_heal=-1;_idact_lead=-1;
 _idact_drop=-1;_idact_send=-1;_idact_secondary=-1;_idact_packfob=-1;_idact_unpackfob=-1;
-_idact_packtent=-1;_idact_unpacktent=-1;_idact_buyfuel=-1;_idact_cheat=-1;_idact_options=-1;
+_idact_packtent=-1;_idact_unpacktent=-1;_idact_buyfuel=-1;_idact_admin=-1;_idact_options=-1;
 _idact_garage=-1;_idact_dog_action1=-1;_idact_dog_action2=-1;_idact_dog_action3=-1;
 _idact_dog_action4=-1;_idact_squad_action1=-1;_idact_squad_action2=-1;
 
@@ -310,15 +310,15 @@ while { true } do {
 		};
 	};
 
-	// Cheat Menu
-	if ( [] call is_menuok && ([] call F_isAdmin) && GRLIB_cheat_menu ) then {
-		if ( _idact_cheat == -1 ) then {
-			_idact_cheat = player addAction ["<t color='#FF8000'>-- CHEAT MENU</t>","scripts\client\commander\cheat_menu.sqf","",-998,false,true,"",""];
+	// admin Menu
+	if ( [] call is_menuok && ([] call F_isAdmin) && GRLIB_admin_menu ) then {
+		if ( _idact_admin == -1 ) then {
+			_idact_admin = player addAction ["<t color='#FF8000'>-- ADMIN MENU</t>","scripts\client\commander\admin_menu.sqf","",999,false,true,"",""];
 		};
 	} else {
-		if ( _idact_cheat != -1 ) then {
-			player removeAction _idact_cheat;
-			_idact_cheat = -1;
+		if ( _idact_admin != -1 ) then {
+			player removeAction _idact_admin;
+			_idact_admin = -1;
 		};
 	};
 

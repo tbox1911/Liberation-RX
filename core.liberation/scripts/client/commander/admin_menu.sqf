@@ -2,7 +2,7 @@
 private [ "_dialog", "_players_array" ];
 
 _players_array = [];
-_dialog = createDialog "liberation_cheat";
+_dialog = createDialog "liberation_admin";
 waitUntil { dialog };
 disableSerialization;
 _ctrl = (findDisplay 5204) displayCtrl 1607;

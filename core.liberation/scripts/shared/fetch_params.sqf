@@ -9,7 +9,7 @@ if ( isMultiplayer ) then {
 	GRLIB_unitcap = ["Unitcap",1] call bis_fnc_getParamValue;
 	GRLIB_adaptive_opfor = ["AdaptToPlayercount",1] call bis_fnc_getParamValue;
 	GRLIB_civilian_activity = ["civilians",1] call bis_fnc_getParamValue;
-	GRLIB_cheat_menu = ["CheatMenu",1] call bis_fnc_getParamValue;
+	GRLIB_admin_menu = ["AdminMenu",1] call bis_fnc_getParamValue;
 	GRLIB_param_wipe_savegame_1 = ["WipeSave1",0] call bis_fnc_getParamValue;
 	GRLIB_param_wipe_savegame_2 = ["WipeSave2",0] call bis_fnc_getParamValue;
 	GRLIB_passive_income = ["PassiveIncome",0] call bis_fnc_getParamValue;
@@ -45,7 +45,7 @@ if ( isMultiplayer ) then {
 	GRLIB_adaptive_opfor = 1;
 	GRLIB_unitcap = 1;
 	GRLIB_civilian_activity = 1;
-	GRLIB_cheat_menu = 1;
+	GRLIB_admin_menu = 1;
 	GRLIB_param_wipe_savegame_1 = 0;
 	GRLIB_param_wipe_savegame_2 = 0;
 	GRLIB_passive_income = 0;
@@ -80,7 +80,7 @@ if ( GRLIB_ACE_enabled ) then {	GRLIB_revive = 0; GRLIB_fatigue = 1; GRLIB_fancy
 if ( GRLIB_fatigue == 1 ) then { GRLIB_fatigue = true } else { GRLIB_fatigue = false };
 if ( GRLIB_introduction == 1 ) then { GRLIB_introduction = true } else { GRLIB_introduction = false };
 if ( GRLIB_deployment_cinematic == 1 ) then { GRLIB_deployment_cinematic = true } else { GRLIB_deployment_cinematic = false };
-if ( GRLIB_cheat_menu == 1 ) then { GRLIB_cheat_menu = true } else { GRLIB_cheat_menu = false };
+if ( GRLIB_admin_menu == 1 ) then { GRLIB_admin_menu = true } else { GRLIB_admin_menu = false };
 if ( GRLIB_hide_opfor == 1 ) then { GRLIB_hide_opfor = true } else { GRLIB_hide_opfor = false };
 if ( GRLIB_enable_arsenal == 1 ) then { GRLIB_enable_arsenal = true } else { GRLIB_enable_arsenal = false };
 if ( GRLIB_limited_arsenal == 1 ) then { GRLIB_limited_arsenal = true } else { GRLIB_limited_arsenal = false };

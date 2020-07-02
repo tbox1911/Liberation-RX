@@ -1,4 +1,4 @@
-class liberation_cheat {
+class liberation_admin {
   idd = 5204;
 	movingEnable = false;
 	controlsBackground[] = {};
@@ -19,9 +19,9 @@ class liberation_cheat {
 	  "Item02Button",
     "Item03Button",
 	  "CancelButton",
-    "CheatInfo01",
-    "Cheat_cb_1607",
-    "Cheat_cb_text",
+    "adminInfo01",
+    "admin_cb_1607",
+    "admin_cb_text",
     "PlayerList",
     "PlayerList2",
     "PlayerList3"
@@ -189,7 +189,7 @@ class liberation_cheat {
     h = 0.04 * safezoneH;
   };
 
-  class CheatInfo01: GREUH_RscStructuredText
+  class adminInfo01: GREUH_RscStructuredText
   {
     idc = 1606;
     text = "<t size='0.7'>[ ALT + LMB ] on Map = Teleport</t>";
@@ -199,7 +199,7 @@ class liberation_cheat {
     h = 0.02 * safezoneH;
     sizeEx = -2 * GUI_GRID_H;
   };
-  class Cheat_cb_1607: RscCheckbox
+  class admin_cb_1607: RscCheckbox
   {
     idc = 1607;
     text = "GodMode"; //--- ToDo: Localize;
@@ -213,7 +213,7 @@ class liberation_cheat {
     checked_strings[] = {"X"};
     onCheckBoxesSelChanged = "[_this] execVM 'scripts\client\misc\godmode.sqf';";
   };
-  class Cheat_cb_text: GREUH_RscStructuredText
+  class admin_cb_text: GREUH_RscStructuredText
   {
     idc = 1608;
     text = "<t size='0.7'>GodMode :</t>"; //--- ToDo: Localize;
@@ -258,7 +258,7 @@ class liberation_cheat {
   };
   class Header: StdHeader
   {
-    text = "-- CHEAT MENU --";
+    text = "-- ADMIN MENU --";
     x = 0.1985 * safezoneW + safezoneX;
     y = 0.1444 * safezoneH + safezoneY;
     w = 0.2375 * safezoneW;
