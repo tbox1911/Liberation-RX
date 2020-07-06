@@ -4,7 +4,7 @@ private["_idact_build","_idact_arsenal","_idact_redeploy","_idact_tutorial","_id
 		"_idact_packfob","_idact_unpackfob","_idact_packtent","_idact_unpacktent","_idact_buyfuel",
 		"_idact_secondary","_idact_admin","_idact_options", "_idact_garage","_idact_dog_action1",
 		"_idact_dog_action2","_idact_dog_action3","_idact_dog_action4", "_idact_squad_action1",
-		"_idact_squad_action2"
+		"_idact_squad_action2", "_idact_squad_action1"
 ];
 
 private _distfob = 100;
@@ -21,7 +21,7 @@ _idact_commander=-1;_idact_repackage=-1;_idact_halo=-1;_idact_heal=-1;_idact_lea
 _idact_drop=-1;_idact_send=-1;_idact_secondary=-1;_idact_packfob=-1;_idact_unpackfob=-1;
 _idact_packtent=-1;_idact_unpacktent=-1;_idact_buyfuel=-1;_idact_admin=-1;_idact_options=-1;
 _idact_garage=-1;_idact_dog_action1=-1;_idact_dog_action2=-1;_idact_dog_action3=-1;
-_idact_dog_action4=-1;_idact_squad_action1=-1;_idact_squad_action2=-1;
+_idact_dog_action4=-1;_idact_squad_action1=-1;_idact_squad_action2=-1;_idact_squad_action3=-1;
 
 is_DogOnDuty = {
 	private _ret = false;
@@ -83,14 +83,16 @@ while { true } do {
 	// Squad - Actions
 	if ( [] call is_menuok && !isNull _my_squad ) then {
 		if ( _idact_squad_action1 == -1 ) then {
-			_idact_squad_action1 = player addAction ["<t color='#80FF80'>" + "-- SQUAD FOLLOW"+ "</t> <img size='1' image='" + _icon_grp + "'/>","GRLIB_squad_follow=true","",-635,false,true,"","!GRLIB_squad_follow"];
-			_idact_squad_action2 = player addAction ["<t color='#80FF80'>" + "-- SQUAD STOP"+ "</t> <img size='1' image='" + _icon_grp + "'/>","GRLIB_squad_follow=false","",-635,false,true,"","GRLIB_squad_follow"];
+			_idact_squad_action1 = player addAction ["<t color='#80FF80'>" + "-- SQUAD MOVE"+ "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\actions\do_squad.sqf","move",-635,false,true,"",""];
+			_idact_squad_action2 = player addAction ["<t color='#80FF80'>" + "-- SQUAD FOLLOW"+ "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\actions\do_squad.sqf","follow",-635,false,true,"",""];
+			_idact_squad_action3 = player addAction ["<t color='#80FF80'>" + "-- SQUAD STOP"+ "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\actions\do_squad.sqf","stop",-635,false,true,"",""];
 		};
 	} else {
 		if ( _idact_squad_action1 != -1 ) then {
 			player removeAction _idact_squad_action1;
 			player removeAction _idact_squad_action2;
-			_idact_squad_action1 = -1; _idact_squad_action2 = -1;
+			player removeAction _idact_squad_action3;
+			_idact_squad_action1 = -1; _idact_squad_action2 = -1; _idact_squad_action3 = -1;
 		};
 	};
 

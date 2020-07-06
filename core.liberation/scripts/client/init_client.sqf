@@ -16,11 +16,9 @@ is_menuok = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_menuo
 is_local = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_local.sqf";
 player_EVH = compileFinal preprocessFileLineNumbers "addons\FAR\FAR_EventHandler.sqf";
 paraDrop = compileFinal preprocessFileLineNumbers "scripts\client\spawn\paraDrop.sqf";
-squad_manager = compileFinal preprocessFileLineNumbers "scripts\client\misc\squad_manager.sqf";
 
 R3F_LOG_joueur_deplace_objet = objNull;
 GRLIB_player_spawned = false;
-GRLIB_squad_follow = true;
 disableMapIndicators [false,true,false,false];
 setTerrainGrid 12.5;  //Very High = 6.25, Ultra = 3.125
 player setVariable ["GRLIB_score_set", 0, true];
@@ -83,6 +81,7 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 [] execVM "scripts\client\actions\intel_manager.sqf";
 [] execVM "scripts\client\actions\dog_manager.sqf";
 [] execVM "scripts\client\actions\man_manager.sqf";
+[] execVM "scripts\client\actions\squad_manager.sqf";
 
 if (!GRLIB_ACE_enabled) then {
 	[] execVM "addons\MGI\MGI_AI_Revive.sqf";
