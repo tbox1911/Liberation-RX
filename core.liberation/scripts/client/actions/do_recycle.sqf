@@ -4,7 +4,7 @@ if (isNil "_vehicle") exitWith {};
 private [ "_objectinfo", "_cfg", "_dialog" ];
 // XP AmmoBox
 if (typeOf _vehicle == ammobox_i_typename && score player <= GRLIB_perm_log) then {
-	_msg = format ["<t align='center'>Select Reward:<br/>XP or AMMO</t>"];
+	_msg = format ["<t align='center'>Select Reward:<br/>50 XP or 300 AMMO</t>"];
 	_result = [_msg, "Special Box !", "XP", "AMMO"] call BIS_fnc_guiMessage;
 	if (_result) then {
 		[_vehicle] remoteExec ["deleteVehicle", 2];

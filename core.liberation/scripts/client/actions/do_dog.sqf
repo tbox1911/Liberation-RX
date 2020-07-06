@@ -1,5 +1,5 @@
-_cmd = (_this select 3);
-_my_dog = player getVariable ["my_dog", nil];
+private _cmd = (_this select 3);
+private _my_dog = player getVariable ["my_dog", nil];
 
 if (!isNil "_my_dog") then {
 
@@ -44,5 +44,4 @@ if (!isNil "_my_dog") then {
 		_my_dog playMove "Dog_Stop";
 	};
 
-	dog_menu = 1;
 };
