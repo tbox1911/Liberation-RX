@@ -24,7 +24,11 @@ setTerrainGrid 12.5;  //Very High = 6.25, Ultra = 3.125
 player setVariable ["GRLIB_score_set", 0, true];
 player setVariable ["GREUH_ammo_count", GREUH_start_ammo, true];
 
-[player, configfile >> "CfgVehicles" >> typeOf player] call BIS_fnc_loadInventory;
+if (GRLIB_forced_loadout > 0) then {
+	[player] call compile preprocessFileLineNumbers (format ["scripts\loadouts\vanilla\player_set%1.sqf", GRLIB_forced_loadout]);
+} else {
+ 	[player, configfile >> "CfgVehicles" >> typeOf player] call BIS_fnc_loadInventory;
+};
 if (isMultiplayer) then {
 	MGI_Grp_ID = getPlayerUID player;
 } else {

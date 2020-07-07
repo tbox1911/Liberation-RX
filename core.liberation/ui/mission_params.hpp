@@ -36,11 +36,23 @@ class Params
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 1;
 	};
+	class ForcedLoadout {
+		title = $STR_FORCE_LOADOUT;
+		values[] = { 0,1,2 };
+		texts[] = { $STR_PARAMS_DISABLED, "Preset 1", "Preset 2" };
+		default = 0;
+	};
 	class Thermic {
 		title = $STR_THERMAL;
 		values[] = { 1, 0 };
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 1;
+	};
+	class Space1 {
+		title = "";
+		values[] = { "" };
+		texts[] = { "" };
+		default = "";
 	};
 	class Difficulty {
 		title = $STR_PARAMS_DIFFICULTY;
@@ -84,7 +96,7 @@ class Params
 		texts[] = { "x0.25", "x0.5", "x0.75", "x1", "x1.25","x1.5","x2","x3","x5","x10","x20","x50" };
 		default = 1;
 	};
-	class Space1 {
+	class Space2 {
 		title = "";
 		values[] = { "" };
 		texts[] = { "" };
@@ -174,7 +186,7 @@ class Params
 		texts[] = {0,1,2,3,4,5,6,7,8,9,10};
 		default = 8;
 	};
-	class Space2 {
+	class Space3 {
 		title = "";
 		values[] = { "" };
 		texts[] = { "" };
@@ -222,7 +234,7 @@ class Params
 		texts[] = { $STR_YES, $STR_NO };
 		default = 1;
 	};
-	class Space3 {
+	class Space4 {
 		title = "";
 		values[] = { "" };
 		texts[] = { "" };
