@@ -1,8 +1,8 @@
 if (!isServer) exitWith {};
 
-private ["_group", "_pos", "_nbUnits", "_type", "_unitTypes", "_uPos", "_unit"];
+private ["_grp", "_pos", "_nbUnits", "_type", "_unitTypes", "_uPos", "_unit"];
 
-_group = _this select 0;
+_grp = _this select 0;
 _pos = _this select 1;
 _nbUnits = param [2, 7, [0]];
 _type =  param [3, "infantry"];
@@ -34,11 +34,11 @@ for "_i" from 1 to _nbUnits do {
 	} else {
 		_uPos = _pos vectorAdd ([[random _radius, 0, 0], random 360] call BIS_fnc_rotateVector2D);
 	};
-	_unit = _group createUnit [_unitTypes call BIS_fnc_selectRandom, _uPos, [], 0, "NONE"];
+	_unit = _grp createUnit [_unitTypes call BIS_fnc_selectRandom, _uPos, [], 0, "NONE"];
 	[_unit] call unitSetSkill;
 };
 
-[_group, _pos] call defendArea;
+[ _grp, _pos, 75] spawn add_defense_waypoints;
 
 //Unit Skill;
 //  Novice < 0.25

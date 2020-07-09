@@ -1,7 +1,8 @@
 _grp = _this select 0;
-if (isNil "_grp") exitWith {sleep 5}; 
+if (isNil "_grp") exitWith {sleep 5};
 
 _flagpos = _this select 1;
+_radius = param [2, 150];
 _basepos = getpos (leader _grp);
 _is_infantry = false;
 if ( vehicle (leader _grp) == (leader _grp) ) then { _is_infantry = true };
@@ -13,21 +14,21 @@ sleep 1;
 sleep 1;
 
 if ( _is_infantry ) then {
-	_waypoint = _grp addWaypoint [_flagpos, 150];
+	_waypoint = _grp addWaypoint [_flagpos, _radius];
 	_waypoint setWaypointType "MOVE";
 	_waypoint setWaypointBehaviour "AWARE";
 	_waypoint setWaypointCombatMode "GREEN";
 	_waypoint setWaypointSpeed "LIMITED";
 	_waypoint setWaypointCompletionRadius 10;
 
-	_waypoint = _grp addWaypoint [_flagpos,150];
+	_waypoint = _grp addWaypoint [_flagpos,_radius];
 	_waypoint setWaypointType "MOVE";
-	_waypoint = _grp addWaypoint [_flagpos, 150];
+	_waypoint = _grp addWaypoint [_flagpos, _radius];
 	_waypoint setWaypointType "MOVE";
-	_waypoint = _grp addWaypoint [_flagpos, 150];
+	_waypoint = _grp addWaypoint [_flagpos, _radius];
 	_waypoint setWaypointType "MOVE";
 
-	_waypoint = _grp addWaypoint [_flagpos, 150];
+	_waypoint = _grp addWaypoint [_flagpos, _radius];
 	_waypoint setWaypointType "CYCLE";
 } else {
 	_waypoint = _grp addWaypoint [_basepos, 1];
@@ -37,7 +38,6 @@ if ( _is_infantry ) then {
 	_waypoint setWaypointSpeed "LIMITED";
 	_waypoint setWaypointCompletionRadius 30;
 };
-
 _grp setCurrentWaypoint [_grp, 0];
 
 waitUntil {
@@ -50,18 +50,18 @@ if ( { alive _x } count (units _grp) > 0 ) then {
 	sleep 1;
 	{_x doFollow leader _grp} foreach units _grp;
 	sleep 1;
-	_waypoint = _grp addWaypoint [_basepos, 150];
+	_waypoint = _grp addWaypoint [_basepos, _radius];
 	_waypoint setWaypointType "SAD";
 	_waypoint setWaypointBehaviour "COMBAT";
 	_waypoint setWaypointCombatMode "GREEN";
 	_waypoint setWaypointSpeed "LIMITED";
-	_waypoint = _grp addWaypoint [_basepos, 150];
+	_waypoint = _grp addWaypoint [_basepos, _radius];
 	_waypoint setWaypointType "SAD";
-	_waypoint = _grp addWaypoint [_basepos, 150];
+	_waypoint = _grp addWaypoint [_basepos, _radius];
 	_waypoint setWaypointType "SAD";
-	_waypoint = _grp addWaypoint [_basepos, 150];
+	_waypoint = _grp addWaypoint [_basepos, _radius];
 	_waypoint setWaypointType "SAD";
-	_waypoint = _grp addWaypoint [_basepos, 150];
+	_waypoint = _grp addWaypoint [_basepos, _radius];
 	_waypoint setWaypointType "CYCLE";
 	_grp setCurrentWaypoint [_grp, 0];
 };
