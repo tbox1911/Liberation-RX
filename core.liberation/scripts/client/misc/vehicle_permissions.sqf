@@ -28,7 +28,7 @@ if (!((_role == "cargo") || (_vehicle isKindOf "Steerable_Parachute_F"))) then {
 
 	_support_vehicles = [];
 	{_support_vehicles pushBack ( _x select 0 )} foreach (support_vehicles);
-	if ((typeOf _vehicle) in _support_vehicles && _score < GRLIB_perm_inf) then {
+	if ((typeOf _vehicle) in _support_vehicles && score player < GRLIB_perm_inf) then {
 		_doeject = true;
 		_msg = "You are NOT allowed to use Support Vehicles.";
 	};
