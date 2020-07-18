@@ -1,6 +1,6 @@
 if ( isMultiplayer ) then {
 	GRLIB_difficulty_modifier = ["Difficulty",1] call bis_fnc_getParamValue;
-	GRLIB_time_factor = ["DayDuration",12] call bis_fnc_getParamValue;
+	GRLIB_time_factor = ["DayDuration",1] call bis_fnc_getParamValue;
 	GRLIB_resources_multiplier = ["ResourcesMultiplier",1] call bis_fnc_getParamValue;
 	GRLIB_fatigue = ["Fatigue",0] call bis_fnc_getParamValue;
 	GRLIB_revive = ["Revive",2] call bis_fnc_getParamValue;
