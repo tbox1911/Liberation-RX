@@ -26,12 +26,6 @@ if (!((_role == "cargo") || (_vehicle isKindOf "Steerable_Parachute_F"))) then {
 		};
 	};
 
-	_score = score player;
-	if ((typeOf _vehicle) in vip_vehicles && _score < GRLIB_perm_max) then {
-		_doeject = true;
-		_msg = "You are NOT allowed to use Special Vehicles.";
-	};
-
 	_support_vehicles = [];
 	{_support_vehicles pushBack ( _x select 0 )} foreach (support_vehicles);
 	if ((typeOf _vehicle) in _support_vehicles && _score < GRLIB_perm_inf) then {

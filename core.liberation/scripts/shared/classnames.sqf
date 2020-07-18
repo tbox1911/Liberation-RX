@@ -37,8 +37,8 @@ infantry_units = [
 	["B_soldier_AT_F",1,0,0,GRLIB_perm_log],
 	["B_sniper_F",1,0,0,GRLIB_perm_log],
 	["B_soldier_PG_F",1,0,0,GRLIB_perm_log],
-	["B_crew_F",1,0,0,GRLIB_perm_inf],
-	["B_helipilot_F",1,0,0,GRLIB_perm_log]
+	[crewman_classname,1,0,0,GRLIB_perm_inf],
+	[pilot_classname,1,0,0,GRLIB_perm_log]
 ];
 
 // calc units price
@@ -124,19 +124,6 @@ blufor_air = [
 	"B_Plane_Fighter_01_Stealth_F",
 	"B_Plane_CAS_01_Cluster_F",
 	"B_Plane_Fighter_01_Cluster_F",
-	"B_Plane_Fighter_01_F",
-	"I_Plane_Fighter_04_F"
-];
-
-vip_vehicles = [
-	"I_Heli_light_03_F",
-	"B_Heli_Attack_01_F",
-	"B_Plane_CAS_01_F",
-	"B_MBT_01_arty_F",
-	"I_E_Truck_02_MRL_F",
-	"I_MBT_03_cannon_F",
-	"B_AFV_Wheeled_01_cannon_F",
-	"B_AFV_Wheeled_01_up_cannon_F",
 	"B_Plane_Fighter_01_F",
 	"I_Plane_Fighter_04_F"
 ];
@@ -326,12 +313,15 @@ elite_vehicles = [
 	"B_MBT_01_arty_F",
 	"I_MBT_03_cannon_F",
 	"B_Heli_Attack_01_F",
+	"I_Heli_light_03_F",
 	"B_UAV_02_F",
 	"B_T_UAV_03_F",
 	"B_Plane_CAS_01_F",
+	"B_AFV_Wheeled_01_cannon_F",
 	"B_AFV_Wheeled_01_up_cannon_F",
 	"I_E_Truck_02_MRL_F",
-	"B_Plane_Fighter_01_F"
+	"B_Plane_Fighter_01_F",
+	"I_Plane_Fighter_04_F"
 ];
 
 // Everything the AI troups should be able to resupply from

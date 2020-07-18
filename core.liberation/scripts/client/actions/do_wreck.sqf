@@ -13,7 +13,7 @@ _vehicle setVariable ["wreck_in_use", true, true];
 // Stop running
 AR_active = false;
 
-_free_vehicles = [] + vip_vehicles;
+_free_vehicles = [];
 {
 	_free_vehicles pushBack ( _x select 0 );
 } foreach (light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles + buildings);
