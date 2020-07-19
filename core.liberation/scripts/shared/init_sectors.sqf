@@ -50,3 +50,11 @@ sectors_airspawn = [];
 		sectors_allSectors pushback _x;
 	};
 } foreach allMapMarkers;
+
+{
+  _marker = _X;
+  {
+    _loc = nearestLocations [markerPos _marker, [_x], GRLIB_sector_size];
+    if (count _loc > 0) exitWith { _marker setMarkerText text (_loc select 0) };
+  } forEach ["NameVillage", "NameCity", "NameCityCapital"];
+} forEach sectors_capture + sectors_bigtown + sectors_factory;
