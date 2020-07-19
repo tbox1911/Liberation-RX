@@ -52,9 +52,12 @@ sectors_airspawn = [];
 } foreach allMapMarkers;
 
 {
-  _marker = _X;
-  {
-    _loc = nearestLocations [markerPos _marker, [_x], GRLIB_sector_size];
-    if (count _loc > 0) exitWith { _marker setMarkerText text (_loc select 0) };
-  } forEach ["NameVillage", "NameCity", "NameCityCapital"];
+	_marker = _X;
+	if (markerText _marker == "") then {
+		{
+			_loc = nearestLocations [markerPos _marker, [_x], GRLIB_sector_size];
+			if (count _loc > 0) exitWith {_marker setMarkerText text (_loc select 0) };
+		} forEach ["NameCityCapital", "NameCity", "NameVillage", "NameLocal", "Hill"];
+		if (markerText _marker == "") then { diag_log format ["DBG: autoname failed for marker: %1", _marker] };
+  };
 } forEach sectors_capture + sectors_bigtown + sectors_factory;
