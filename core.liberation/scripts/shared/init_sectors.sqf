@@ -58,6 +58,6 @@ sectors_airspawn = [];
 			_loc = nearestLocations [markerPos _marker, [_x], GRLIB_sector_size];
 			if (count _loc > 0) exitWith {_marker setMarkerText text (_loc select 0) };
 		} forEach ["NameCityCapital", "NameCity", "NameVillage", "NameLocal", "Hill"];
-		if (markerText _marker == "") then { diag_log format ["DBG: autoname failed for marker: %1", _marker] };
+		if (markerText _marker == "") then { diag_log format ["DBG: Auto-name failed for marker: %1", _marker] };
   };
-} forEach sectors_capture + sectors_bigtown + sectors_factory;
+} forEach sectors_capture + sectors_bigtown + sectors_factory + sectors_military;
