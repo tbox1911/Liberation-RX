@@ -26,14 +26,8 @@ if (!isNil "GRLIB_MOD_signature") then {
     if (str [backpack _unit] find GRLIB_MOD_signature < 0) then {removeBackpack _unit};
     if (str [binocular _unit] find GRLIB_MOD_signature < 0) then {_unit removeWeapon (binocular _unit)};
     if (str [hmd _unit] find GRLIB_MOD_signature < 0) then {_unit unassignItem (hmd _unit); _unit removeItem (hmd _unit)};
-
-    {
-        if (str _x find GRLIB_MOD_signature < 0) then {_unit removePrimaryWeaponItem _x};
-    } forEach primaryWeaponItems _unit;
-
-   {
-       if ((str _x find GRLIB_MOD_signature < 0)) then {_unit removeItems _x};
-   } forEach ((vestItems _unit)+(uniformItems _unit)+(backpackItems _unit)+(items _unit));
+    { if (str _x find GRLIB_MOD_signature < 0) then {_unit removePrimaryWeaponItem _x} } forEach primaryWeaponItems _unit;
+    { if (str _x find GRLIB_MOD_signature < 0) then {_unit removeItems _x} } forEach ((vestItems _unit)+(uniformItems _unit)+(backpackItems _unit)+(items _unit));
 };
 [_unit] call F_correctLaserBatteries;
 [_unit] call F_correctHEGL;
