@@ -52,12 +52,27 @@ sectors_airspawn = [];
 } foreach allMapMarkers;
 
 {
-	_marker = _X;
+	private _marker = _x;
+	private _marker_dist = 999;
+	private _marker_text = "";
 	if (markerText _marker == "") then {
 		{
-			_loc = nearestLocations [markerPos _marker, [_x], GRLIB_sector_size];
-			if (count _loc > 0) exitWith {_marker setMarkerText text (_loc select 0) };
+			_loc = nearestLocations [markerPos _marker, [_x], GRLIB_sector_size] select 0;
+			if (!isNil "_loc") then {
+				_dist = round (markerPos _marker distance _loc);
+				if (_dist < _marker_dist ) then {
+					_marker_text = text _loc;
+					_marker_dist = _dist;
+				};
+			};
 		} forEach ["NameCityCapital", "NameCity", "NameVillage", "NameLocal", "Hill"];
-		if (markerText _marker == "") then { diag_log format ["DBG: Auto-name failed for marker: %1", _marker] };
+
+		if (_marker_text == "") then {
+			if (_marker in sectors_capture) then {_marker_text = "Town"};
+			if (_marker in sectors_military) then {_marker_text = "Military Base"};
+			if (_marker in sectors_factory) then {_marker_text = "Fuel Depot"};
+			diag_log format ["DBG: World: %1 - Auto-Name failed for marker: %2", worldname, _marker]
+		};
+		_marker setMarkerText _marker_text;
   };
 } forEach sectors_capture + sectors_bigtown + sectors_factory + sectors_military;
