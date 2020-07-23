@@ -20,13 +20,13 @@ if (!isNil "_my_dog") then {
 		_enemy_lst = (getPos player) nearEntities ["Man", 300];
 		_enemy_lst = _enemy_lst select {alive _x && (side _x == GRLIB_side_enemy || {_x getVariable ["GRLIB_is_prisonner", false]})};
 
-		_msg = "The dog found nothing.";
+		_msg = "The dog found nothing...";
 		if (count _enemy_lst > 0) then {
 			_enemy_lst = _enemy_lst apply {[_x distance2D player, _x]};
 			_enemy_lst sort true;
 			_dist = (_enemy_lst select 0) select 0;
 			_man = (_enemy_lst select 0) select 1;
-			_msg = format ["The dog find something at %1m!", round (_dist)];
+			_msg = format ["The dog found something %1m away !!", round (_dist)];
 			_my_dog setVariable ["do_find", _man];
 			_my_dog stop false;
 		};
