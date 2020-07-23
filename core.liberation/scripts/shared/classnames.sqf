@@ -341,7 +341,6 @@ ai_healing_sources = [
 	"B_APC_Tracked_01_CRV_F"
 ];
 
-
 // Everything that can resupply other vehicles
 vehicle_repair_sources = [
 	"B_APC_Tracked_01_CRV_F",

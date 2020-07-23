@@ -5,7 +5,8 @@ if ( isNil "FOB_box_typename" ) then { FOB_box_typename = "B_Slingload_01_Cargo_
 if ( isNil "FOB_truck_typename" ) then { FOB_truck_typename = "B_Truck_01_box_F"; };
 if ( isNil "Arsenal_typename" ) then { Arsenal_typename = "OPTRE_Ammo_Rack_Weapons"; };
 if ( isNil "Respawn_truck_typename" ) then { Respawn_truck_typename = "OPTRE_M313_UNSC"; };
-if ( isNil "mobile_respawn" ) then { mobile_respawn = "Land_SatelliteAntenna_01_F"; };   //Land_SatellitePhone_F
+if ( isNil "mobile_respawn" ) then { mobile_respawn = "Land_SatelliteAntenna_01_F"; };
+if ( isNil "mobile_respawn_bag" ) then { mobile_respawn_bag = "B_Kitbag_Base"; };
 if ( isNil "huron_typename" ) then { huron_typename = "OPTRE_Pelican_unarmed"; };
 if ( isNil "ammobox_b_typename" ) then { ammobox_b_typename = "Box_NATO_AmmoVeh_F"; };
 if ( isNil "ammobox_o_typename" ) then { ammobox_o_typename = "Box_East_AmmoVeh_F"; };
@@ -17,6 +18,7 @@ if ( isNil "pilot_classname" ) then { pilot_classname = "OPTRE_UNSC_Army_Soldier
 if ( isNil "FAR_Medikit" ) then { FAR_Medikit = "OPTRE_MedKit" };
 if ( isNil "FAR_AidKit" ) then { FAR_AidKit = "OPTRE_Biofoam" };
 if ( isNil "A3W_BoxWps" ) then { A3W_BoxWps = "OPTRE_Ammo_Rack_Ammo" };
+if ( isNil "canisterFuel" ) then { canisterFuel = "Land_CanisterFuel_Red_F" };
 
 // *** FRIENDLIES ***
 infantry_units = [
@@ -669,11 +671,12 @@ GRLIB_vehicle_whitelist = [
 	ammobox_i_typename,
 	mobile_respawn,
 	A3W_BoxWps,
-	"Land_CanisterFuel_Red_F",
+	canisterFuel,
 	"Land_PierLadder_F",
 	"Box_B_UAV_06_medical_F",
 	"Land_CncBarrierMedium4_F",
 	"Land_CncWall4_F",
+	"Land_HBarrier_5_F",
 	"Land_BagBunker_Small_F",
 	"Land_CncWall1_F",
 	"Land_BagFence_Long_F",
@@ -702,9 +705,9 @@ GRLIB_vehicle_blacklist = [
 	Respawn_truck_typename,
 	FOB_box_typename,
 	FOB_truck_typename,
+	canisterFuel,
 	"Box_NATO_Ammo_F",
   	"Box_NATO_WpsLaunch_F",
-	"Land_CanisterFuel_Red_F",
 	"Box_B_UAV_06_medical_F",
 	"B_Slingload_01_Repair_F",
 	"B_Slingload_01_Fuel_F",
@@ -768,11 +771,11 @@ GRLIB_intel_laptop = "Land_Laptop_device_F";
 GRLIB_ignore_colisions_when_building = [
 	Arsenal_typename,
 	mobile_respawn,
+	canisterFuel,
 	"Box_B_UAV_06_medical_F",
 	"Box_NATO_Ammo_F",
   	"Box_NATO_WpsLaunch_F",
 	"Land_CargoBox_V1_F",
-	"Land_CanisterFuel_Red_F",
 	"B_HMG_01_F",
 	"B_HMG_01_high_F",
 	"B_GMG_01_F",
@@ -790,7 +793,13 @@ GRLIB_ignore_colisions_when_building = [
 	"Land_HelipadSquare_F",
 	"Sign_Sphere100cm_F",
 	"TMR_Autorest_Georef",
-	"Land_ClutterCutter_large_F"
+	"Land_ClutterCutter_large_F",
+	"Land_HighVoltageColumn_F",
+	"Land_HighVoltageColumnWire_F",
+	"Land_PowerLine_01_pole_small_F",
+	"Land_PowerLine_01_pole_tall_F",
+	"Land_PowerLine_01_wire_50m_F",
+	"Land_PowerLine_01_wire_50m_main_F"
 ];
 GRLIB_sar_wreck = "Land_Wreck_Heli_Attack_01_F";
 GRLIB_sar_fire = "test_EmptyObjectForFireBig";
@@ -838,4 +847,10 @@ GRLIB_AirDrop_6 = [
 	"C_Boat_Transport_02_F",
 	"B_Boat_Transport_01_F",
 	"I_C_Boat_Transport_02_F"
+];
+
+GRLIB_player_grave = [
+	"Land_Grave_rocks_F",
+	"Land_Grave_forest_F",
+	"Land_Grave_dirt_F"
 ];
