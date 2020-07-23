@@ -10,7 +10,7 @@ private [ "_objectinfo", "_cfg", "_dialog" ];
 if (typeOf _vehicle == ammobox_i_typename && score player <= GRLIB_perm_log) then {
 	_msg = format ["<t align='center'>Select Reward:<br/>50 XP or 300 AMMO</t>"];
 	_result = [_msg, "Special Box !", "XP", "AMMO"] call BIS_fnc_guiMessage;
-	if (_result  && !(isNull _vehicle) && alive _vehicle) then {
+	if (_result && !(isNull _vehicle) && alive _vehicle) then {
 		[_vehicle] remoteExec ["deleteVehicle", 2];
 		[player, 50] remoteExec ["addScore", 2];
 		playSound "taskSucceeded";

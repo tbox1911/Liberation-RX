@@ -14,10 +14,10 @@ sleep 7;
 [_tent] remoteExec ["deleteVehicle", 2];
 sleep 1;
 if (backpack player == "") then {
-	player addBackpack "B_Kitbag_Base";
+	player addBackpack mobile_respawn_bag;
 } else {
 	sleep 1;
-	createVehicle ["B_Kitbag_Base", _pos, [], 0, "CAN_COLLIDE"];
+	createVehicle [mobile_respawn_bag, _pos, [], 0, "CAN_COLLIDE"];
 };
 disableUserInput false;
 disableUserInput true;

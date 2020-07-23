@@ -289,7 +289,7 @@ while { true } do {
 	};
 
 	// UnPack Beacon
-	if ( [] call is_menuok && (player distance lhd) >= 1000 && backpack player == 'B_Kitbag_Base' ) then {
+	if ( [] call is_menuok && (player distance lhd) >= 1000 && backpack player == mobile_respawn_bag ) then {
 		if ( _idact_unpacktent == -1 ) then {
 			_idact_unpacktent = player addAction ["<t color='#FFFF00'>-- UNPACK RADIO</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_beacon_unpack.sqf","",-950,true,true,"",""];
 		};
