@@ -24,7 +24,12 @@ while { GRLIB_endgame == 0 } do {
 		};
 	};
 
-	_sector_spawn_pos = [(((markerpos _spawn_marker) select 0) - 500) + (random 1000),(((markerpos _spawn_marker) select 1) - 500) + (random 1000),0];
+	_sectorpos = [ getMarkerPos _spawn_marker, random 100, random 360 ] call BIS_fnc_relPos;
+	_sector_spawn_pos = zeropos;
+	while { _sector_spawn_pos distance zeropos < 100 } do {
+		_sector_spawn_pos = ( [ _sectorpos, random 50, random 360 ] call BIS_fnc_relPos ) findEmptyPosition [1, 200, "B_Heli_Light_01_F"];
+		if ( count _sector_spawn_pos == 0 || surfaceIsWater _sector_spawn_pos ) then { _sector_spawn_pos = zeropos; };
+	};
 
 	if (_is_infantry) then {
 		_grp = createGroup [GRLIB_side_enemy, true];
