@@ -48,7 +48,7 @@ ERROR( isNil { _box getVariable [ format[ "LARs_arsenal_%1_data", _arsenalName ]
 	diag_log format[ "WARNING - Overwriting LARs Arsenal %1 on %2", _arsenalName, str _box ];
 };
 
-[ _box ] call BIS_fnc_objectVar;
+//[ _box ] call BIS_fnc_objectVar;
 
 if !( _target isEqualType false )  exitWith {
 	_this set [ 2, false ];
@@ -180,5 +180,3 @@ _thread = _this spawn {
 	};
 
 };
-
-""
