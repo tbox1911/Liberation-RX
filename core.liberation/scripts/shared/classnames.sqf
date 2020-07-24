@@ -736,11 +736,55 @@ civilians = [ civilians , { [ _x ] call F_checkClass } ]  call BIS_fnc_condition
 civilian_vehicles = [ civilian_vehicles , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
 military_alphabet = ["Alpha","Bravo","Charlie","Delta","Echo","Foxtrot","Golf","Hotel","India","Juliet","Kilo","Lima","Mike","November","Oscar","Papa","Quebec","Romeo","Sierra","Tango","Uniform","Victor","Whiskey","X-Ray","Yankee","Zulu"];
 land_vehicles_classnames = (opfor_vehicles + militia_vehicles);
-opfor_squad_low_intensity = [opfor_team_leader,opfor_machinegunner,opfor_medic,opfor_rpg,opfor_rpg,opfor_sentry,opfor_sentry,opfor_sentry,opfor_sentry];
-opfor_squad_8_standard = [opfor_squad_leader,opfor_team_leader,opfor_machinegunner,opfor_rpg,opfor_heavygunner,opfor_medic,opfor_marksman,opfor_grenadier,opfor_rpg];
-opfor_squad_8_infkillers = [opfor_squad_leader,opfor_machinegunner,opfor_machinegunner,opfor_heavygunner,opfor_medic,opfor_marksman,opfor_sharpshooter,opfor_sniper,opfor_rpg];
-opfor_squad_8_tankkillers = [opfor_squad_leader,opfor_medic,opfor_machinegunner,opfor_rpg,opfor_rpg,opfor_at,opfor_at,opfor_at];
-opfor_squad_8_airkillers = [opfor_squad_leader,opfor_medic,opfor_machinegunner,opfor_rpg,opfor_rpg,opfor_aa,opfor_aa,opfor_aa];
+opfor_squad_low_intensity = [
+	opfor_squad_leader,
+	opfor_medic,
+	opfor_rpg,
+	opfor_sentry,
+	opfor_sentry,
+	opfor_sentry,
+	opfor_sentry
+];
+opfor_squad_8_standard = [
+	opfor_squad_leader,
+	opfor_medic,
+	opfor_machinegunner,
+	opfor_rpg,
+	opfor_heavygunner,
+	opfor_marksman,
+	opfor_marksman,
+	opfor_grenadier
+];
+opfor_squad_8_infkillers = [
+	opfor_squad_leader,
+	opfor_medic,
+	opfor_machinegunner,
+	opfor_heavygunner,
+	opfor_marksman,
+	opfor_sharpshooter,
+	opfor_sniper,
+	opfor_rpg
+];
+opfor_squad_8_tankkillers = [
+	opfor_squad_leader,
+	opfor_medic,
+	opfor_machinegunner,
+	opfor_rpg,
+	opfor_rpg,
+	opfor_at,
+	opfor_at,
+	opfor_at
+];
+opfor_squad_8_airkillers = [
+	opfor_squad_leader,
+	opfor_medic,
+	opfor_machinegunner,
+	opfor_rpg,
+	opfor_rpg,
+	opfor_aa,
+	opfor_aa,
+	opfor_aa
+];
 all_resistance_troops = [] + militia_squad;
 all_hostile_classnames = (land_vehicles_classnames + opfor_air + opfor_choppers + opfor_troup_transports + opfor_vehicles_low_intensity + opfor_boat);
 { land_vehicles_classnames pushback (_x select 0); } foreach (heavy_vehicles + light_vehicles);
