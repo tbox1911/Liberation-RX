@@ -330,6 +330,11 @@ while { true } do {
 					_vehicle addWeaponTurret ["TruckHorn3", [-1]];
 				};
 
+				// Mobile respawn
+				if (_classname == mobile_respawn) then {
+					[_vehicle, "add"] remoteExec ["addel_beacon_remote_call", 2];
+				};
+
 				sleep 0.3;
 				_vehicle allowDamage true;
 				_vehicle setDamage 0;

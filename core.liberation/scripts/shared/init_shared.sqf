@@ -14,6 +14,7 @@ airdrop_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\rem
 send_para_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\send_para_remote_call.sqf";
 send_aircraft_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\send_aircraft_remote_call.sqf";
 addel_group_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\addel_group.sqf";
+addel_beacon_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\addel_beacon.sqf";
 sendammo_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\sendammo_remote_call.sqf";
 dog_action_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\dog_action_remote_call.sqf";
 vehicle_garage_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\vehicle_garage_remote_call.sqf";

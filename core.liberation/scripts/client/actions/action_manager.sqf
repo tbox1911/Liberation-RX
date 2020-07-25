@@ -37,12 +37,13 @@ waitUntil { one_synchro_done };
 waitUntil { !isNil "GRLIB_player_spawned" };
 waituntil { GRLIB_player_spawned; (player getVariable ["GRLIB_score_set", 0] == 1)};
 waituntil { !isNil "GRLIB_Marker_FUEL"};
+waitUntil { !isNil "GRLIB_mobile_respawn" };
 
 while { true } do {
 
 	_fobdistance = round (player distance2D ([] call F_getNearestFob));
 	_near_arsenal = (player nearEntities [Arsenal_typename, _distarsenal]) + (player nearObjects [FOB_typename, _distredeploy]);
-	_near_radio = nearestObjects [player, [mobile_respawn], _distvehclose];
+	_near_radio = [GRLIB_mobile_respawn, {alive _x && _x distance2D lhd > 1000 && (player distance2D (getPos _x) < _distvehclose) && isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull])}] call BIS_fnc_conditionalSelect;
 	_near_spawn = (player nearEntities [[Respawn_truck_typename, huron_typename], _distspawn]) + _near_radio;
 	_near_fobbox = player nearEntities [[FOB_box_typename, FOB_truck_typename], _distspawn];
 	_near_fuel = [player, "FUEL", _distvehclose, false] call F_check_near;
@@ -277,9 +278,9 @@ while { true } do {
 	};
 
 	// Pack Beacon
-	if ( [] call is_menuok && (player distance lhd) >= 1000 && cursorObject in _near_radio ) then {
+	if ( [] call is_menuok && (player distance lhd) >= 1000 && typeOf cursorObject == mobile_respawn ) then {
 		if ( _idact_packtent == -1 ) then {
-			_idact_packtent = player addAction ["<t color='#FFFF00'>-- PACK RADIO</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_beacon_pack.sqf",cursorObject,-950,true,true,"","!(cursorObject getVariable ['tent_in_use', false])"];
+			_idact_packtent = player addAction ["<t color='#FFFF00'>-- PACK BEACON</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_beacon_pack.sqf",cursorObject,-950,true,true,"","!(cursorObject getVariable ['tent_in_use', false])"];
 		};
 	} else {
 		if ( _idact_packtent != -1 ) then {
@@ -291,7 +292,7 @@ while { true } do {
 	// UnPack Beacon
 	if ( [] call is_menuok && (player distance lhd) >= 1000 && backpack player == mobile_respawn_bag ) then {
 		if ( _idact_unpacktent == -1 ) then {
-			_idact_unpacktent = player addAction ["<t color='#FFFF00'>-- UNPACK RADIO</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_beacon_unpack.sqf","",-950,true,true,"",""];
+			_idact_unpacktent = player addAction ["<t color='#FFFF00'>-- UNPACK BEACON</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_beacon_unpack.sqf","",-950,true,true,"",""];
 		};
 	} else {
 		if ( _idact_unpacktent != -1 ) then {

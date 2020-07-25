@@ -10,6 +10,7 @@ date_month = date select 1;
 date_day = date select 2;
 blufor_sectors = [];
 GRLIB_all_fobs = [];
+GRLIB_mobile_respawn = [];
 buildings_to_save= [];
 combat_readiness = 0;
 stats_opfor_soldiers_killed = 0;
@@ -223,6 +224,12 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 				_nextbuilding allowDamage false;
 				_nextbuilding addEventHandler ["HandleDamage", { 0 }];
 			};
+
+			if ( _nextclass == mobile_respawn ) then {
+				GRLIB_mobile_respawn pushback _nextbuilding;
+				_nextbuilding addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+			};
+
 		};
 	} foreach buildings_to_save;
 
@@ -247,6 +254,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 publicVariable "GRLIB_garage";
 publicVariable "blufor_sectors";
 publicVariable "GRLIB_all_fobs";
+publicVariable "GRLIB_mobile_respawn";
 
 if ( count GRLIB_vehicle_to_military_base_links == 0 ) then {
 	private [ "_assigned_bases", "_assigned_vehicles", "_nextbase", "_nextvehicle" ];
