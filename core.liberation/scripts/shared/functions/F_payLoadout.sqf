@@ -16,7 +16,7 @@ if (_price > _oldprice) then {
 		_unit setVariable ["GREUH_ammo_count", (_ammo_collected - _cost), true];
 		_unit setVariable ["GREUH_stuff_price", _price];
 		playSound "rearm";
-		hintSilent format ["Loadout Price: %1\nThank you !", _cost];
-		gamelogic globalChat format ["Loadout Price: %1, Thank you !", _cost];
+		hintSilent format ["You pay: %1\nThank you !", _cost];
+		gamelogic globalChat format ["You pay: %1, Thank you !", _cost];
 	};
 };
