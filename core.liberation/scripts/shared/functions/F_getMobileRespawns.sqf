@@ -1,5 +1,5 @@
 private [ "_respawn_trucks_unsorted", "_respawn_trucks_sorted", "_respawn_radio_unsorted", "_size", "_center" ];
-
+waitUntil { !isNil "GRLIB_mobile_respawn" };
 
 _respawn_trucks_unsorted = [ vehicles, { ( typeof _x == Respawn_truck_typename || typeof _x == huron_typename ) && _x distance lhd > 250 &&
 										!surfaceIsWater (getpos _x) && ((getpos _x) select 2) < 5 && alive _x && speed _x < 5 }
