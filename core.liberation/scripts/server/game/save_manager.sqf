@@ -46,7 +46,6 @@ armor_weight = 33;
 air_weight = 33;
 GRLIB_vehicle_to_military_base_links = [];
 GRLIB_permissions = [];
-ai_groups = [];
 saved_intel_res = 0;
 resources_intel = 0;
 GRLIB_player_scores = [];
@@ -124,7 +123,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 
 	GRLIB_vehicle_to_military_base_links = greuh_liberation_savegame select 11;
 	GRLIB_permissions = greuh_liberation_savegame select 12;
-	ai_groups = greuh_liberation_savegame select 13;
+	//ai_groups = greuh_liberation_savegame select 13;
 	saved_intel_res = greuh_liberation_savegame select 14;
 	GRLIB_player_scores = greuh_liberation_savegame select 15;
 
@@ -232,23 +231,6 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 
 		};
 	} foreach buildings_to_save;
-
-	{
-		private [ "_nextgroup", "_grp" ];
-		_nextgroup = _x;
-		_grp = createGroup [GRLIB_side_friendly, true];
-
-		{
-			private [ "_nextunit", "_nextpos", "_nextdir", "_nextobj"];
-			_nextunit = _x;
-			_nextpos = [(_nextunit select 1) select 0, (_nextunit select 1) select 1, ((_nextunit select 1) select 2) + 0.2];
-			_nextdir = _nextunit select 2;
-			(_nextunit select 0) createUnit [ _nextpos, _grp, 'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}] '];
-			_nextobj = ((units _grp) select ((count (units _grp)) - 1));
-			_nextobj setPosATL _nextpos;
-			_nextobj setDir _nextdir;
-		} foreach _nextgroup;
-	} foreach ai_groups;
 };
 
 publicVariable "GRLIB_garage";
@@ -292,7 +274,6 @@ while { true } do {
 
 		trigger_server_save = false;
 		buildings_to_save = [];
-		ai_groups = [];
 
 		_all_buildings = [];
 		{
@@ -308,27 +289,6 @@ while { true } do {
  				} ] call BIS_fnc_conditionalSelect;
 
 			_all_buildings = _all_buildings + _nextbuildings;
-
-			{
-				_nextgroup = _x;
-				if (  side _nextgroup == GRLIB_side_friendly ) then {
-					if ( { isPlayer _x } count ( units _nextgroup ) == 0 ) then {
-						if ( { alive _x } count ( units _nextgroup ) > 0  ) then {
-							if ( _fobpos distance (leader _nextgroup) < GRLIB_fob_range * 2 ) then {
-								private [ "_grouparray" ];
-								_grouparray = [];
-								{
-									if ( alive _x && (vehicle _x == _x ) ) then {
-										_grouparray pushback [ typeof _x, getPosATL _x, getDir _x ];
-									};
-								} foreach (units _nextgroup);
-
-								ai_groups pushback _grouparray;
-							};
-						};
-					};
-				};
-			} foreach allGroups;
 		} foreach GRLIB_all_fobs;
 
 		{
@@ -441,7 +401,7 @@ while { true } do {
 			[ round infantry_weight, round armor_weight, round air_weight ],
 			GRLIB_vehicle_to_military_base_links,
 			GRLIB_permissions,
-			ai_groups,
+			0,  //ai_groups
 			resources_intel,
 			GRLIB_player_scores
 		];
