@@ -36,6 +36,13 @@ if (!isNil "_my_squad") then {
 			player sideChat "Squad Stop!";
 		};
 
+		if (_my_squad_order == "del") then {
+			_msg = format ["<t align='center'>Dismiss the Squad<br/>Are you sure ?</t>"];
+			_result = [_msg, "Warning !", true, true] call BIS_fnc_guiMessage;
+			if (_result) then {
+				{deleteVehicle _x} forEach units _my_squad;
+			};
+		};
 	};
 
 };
