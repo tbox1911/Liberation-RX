@@ -68,7 +68,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 	if ( _sector in sectors_capture ) then {
 		_vehtospawn = [];
 		_infsquad = "militia";
-		while { count _squad1 < ( 10 * _popfactor) } do { _squad1 pushback ( militia_squad call BIS_fnc_selectRandom ) };
+		while { count _squad1 < ( 20 * _popfactor) } do { _squad1 pushback ( militia_squad call BIS_fnc_selectRandom ) };
 		if((random 100) > (66 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback (militia_vehicles call BIS_fnc_selectRandom); };
 		if((random 100) > (33 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback (militia_vehicles call BIS_fnc_selectRandom); };
 		_spawncivs = true;
@@ -117,7 +117,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 		};
 		_building_ai_max = 0;
 		if((random 100) > 85) then { _vehtospawn pushback ( [] call F_getAdaptiveVehicle ); };
-		[markerPos _sector, 25] call createlandmines;
+		[markerPos _sector, 50] call createlandmines;
 	};
 
 	//diag_log format [ "Sector %2 checkpoint E at %1", time, _sector ];
