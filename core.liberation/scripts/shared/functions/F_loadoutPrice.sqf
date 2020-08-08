@@ -2,40 +2,40 @@ params [ "_unit" ];
 if (isNull _unit) exitWith {0};
 
 _expensive_items = [
-	"Medikit",
-	"ToolKit",
-	"srifle_DMR_02",
-	"srifle_DMR_04",
-    "srifle_DMR_05",
-	"srifle_GM6",
-	"srifle_LRR",
-	"MMG_",
-	"LMG_",
-	"launch_O_Vorona",
-	"launch_B_Titan",
-	"launch_O_Titan",
-	"launch_I_Titan",
-	"Titan_AA",
-	"Titan_AT",
-	"Titan_AP",
-	"Vorona_HE",
-	"Vorona_HEAT"
+	"medikit",
+	"toolkit",
+	"srifle_dmr_02",
+	"srifle_dmr_04",
+    "srifle_dmr_05",
+	"srifle_gm6",
+	"srifle_lrr",
+	"mmg_",
+	"lmg_",
+	"launch_o_vorona",
+	"launch_b_titan",
+	"launch_o_titan",
+	"launch_i_titan",
+	"titan_aa",
+	"titan_at",
+	"titan_ap",
+	"vorona_he",
+	"vorona_heat"
 ];
 
 _free_items = [
-	"Rnd_",
-	"FirstAidKit",
-	"SmokeShell",
-	"Grenade",
-	"Charge_Remote_Mag",
-	"Chemlight"
+	"rnd_",
+	"firstaidkit",
+	"smokeshell",
+	"grenade",
+	"charge_remote_mag",
+	"chemlight"
 ];
 
 _fn_isfree = {
 	params ["_item"];
 	_ret = false;
 	{
-		if (_item find _x >= 0) exitWith {_ret = true};
+		if (tolower (_item) find _x >= 0) exitWith {_ret = true};
 	} forEach _free_items;
 	_ret;
 };
@@ -44,7 +44,7 @@ _fn_isexpensive = {
 	params ["_item"];
 	_ret = false;
 	{
-		if (_item find _x >= 0) exitWith {_ret = true};
+		if (tolower (_item) find _x >= 0) exitWith {_ret = true};
 	} forEach _expensive_items;
 	_ret;
 };
@@ -64,7 +64,6 @@ if (_unit isKindOf "Man") then {
 	if (count(secondaryWeapon _unit) > 0 ) then {
 		if ([secondaryWeapon _unit] call _fn_isexpensive) then {_val = _val + 55} else {_val = _val + 32};
 	};
-	if (count(backpack _unit) > 0 ) then {_val = _val + 5};
 
 	{
 		_item = _x;
@@ -78,7 +77,7 @@ if (_unit isKindOf "Man") then {
 
 	{
 		if (_x != "") then {_val = _val + 5};
-	} forEach [headgear _unit, hmd _unit, binocular _unit, vest _unit, uniform _unit];
+	} forEach [headgear _unit, hmd _unit, binocular _unit, vest _unit, uniform _unit, backpack _unit];
 
 	// Player items (map,compass,..)
 	_val = _val + (2 * count(assignedItems _unit));
