@@ -10,8 +10,6 @@ waitUntil { !isNil "GRLIB_all_fobs" };
 waitUntil { !isNil "blufor_sectors" };
 waitUntil { !isNil "save_is_loaded" };
 
-_spawn_str = "";
-
 waitUntil { !isNil "introDone" };
 waitUntil { introDone };
 waitUntil { !isNil "cinematic_camera_stop" };
@@ -144,6 +142,7 @@ while { true } do {
 	if (dialog && deploy == 1) then {
 		_idxchoice = lbCurSel 201;
 		_spawn_str = (choiceslist select _idxchoice) select 0;
+		if (isNil "_spawn_str") then {_spawn_str = "Somewhere."};
 
 		if (((choiceslist select _idxchoice) select 0) == _basenamestr) then {
 			call respawn_lhd;
