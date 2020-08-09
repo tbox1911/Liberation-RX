@@ -1,10 +1,10 @@
 params ["_medic"];
 
-Search_radius = 30;
+_search_radius = 30;
 
 private _bros = allUnits select {(_x getVariable ["MGI_Grp_ID","0"]) == (_medic getVariable ["MGI_Grp_ID","1"])};
 private _wounded_list = _bros select {
-  round (_x distance2D _medic) < Search_radius &&
+  round (_x distance2D _medic) < _search_radius &&
   vehicle _x == _x &&
   alive _x &&
   damage _x >= 0.1 &&
@@ -38,7 +38,7 @@ if (count (_wounded_list) > 0) then {
 		vehicle _wounded == _wounded &&
 		(behaviour _medic) != "COMBAT" &&
 		(behaviour _wounded) != "COMBAT" &&
-		(round (_medic distance2D _wounded) > 3 && round (_medic distance2D _wounded) < Search_radius)
+		(round (_medic distance2D _wounded) > 3 && round (_medic distance2D _wounded) < _search_radius)
 	} do {
 		_medic doMove (getPosATL _wounded);
 		sleep 4;
@@ -50,9 +50,9 @@ if (count (_wounded_list) > 0) then {
 		_medic setDir _azimuth;
 
 		if (stance _medic == 'PRONE') then {
-			_medic playMove 'ainvppnemstpslaywrfldnon_medicother';
+			_medic playMoveNow 'ainvppnemstpslaywrfldnon_medicother';
 		} else {
-			_medic playMove 'ainvpknlmstpslaywrfldnon_medicother';
+			_medic playMoveNow 'ainvpknlmstpslaywrfldnon_medicother';
 		};
 		sleep 7;
 		if (lifeState _medic != 'incapacitated' && lifeState _wounded != 'incapacitated' && round (_medic distance2D _wounded) <= 3) then {

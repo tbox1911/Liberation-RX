@@ -1,6 +1,6 @@
-params ['_wnded','_medic','_timer'];
+params ["_wnded","_medic"];
 
-_medic setHitPointDamage ['hitLegs',0];
+_medic setHitPointDamage ["hitLegs",0];
 _medic allowDamage false;
 _medic setCaptive true;
 
@@ -15,21 +15,21 @@ if (!isnull objectParent _medic) then {
 };
 doStop _medic;
 sleep 1;
-{_medic disableAI _x} count ['TARGET','AUTOTARGET','AUTOCOMBAT','SUPPRESSION'];
+{_medic disableAI _x} count ["TARGET","AUTOTARGET","AUTOCOMBAT","SUPPRESSION"];
 _medic setUnitPos "UP";
-_medic setSpeedMode 'FULL';
+_medic setSpeedMode "FULL";
 _medic allowFleeing 0;
 _medic allowDamage true;
 
 _dist = round (_wnded distance2D _medic);
 if ( _dist <= 6 ) then {
-  [_wnded,_medic,_timer] spawn MGI_fn_checkMedic;
+  [_wnded, _medic] spawn MGI_fn_checkMedic;
 } else {
   if (_dist < 25) then {
     _medic doMove (getPosATL _wnded);
   } else {
     _medic doMove (getPos _wnded);
   };
-  [_wnded,_medic,_timer] spawn MGI_fn_checkMedic;
+  [_wnded,_medic] spawn MGI_fn_checkMedic;
 };
 

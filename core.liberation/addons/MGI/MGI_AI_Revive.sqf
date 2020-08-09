@@ -40,10 +40,7 @@ MGI_fn_EHDamage = {
 };
 
 MGI_fn_Revive = {
-  params ["_react", "_bleedOut","_AiRevive"];
-  MGI_react = _react;
-  MGI_BleedOut = _bleedOut;
-  MGI_AiRevive = _AiRevive;
+  MGI_BleedOut = 300;
 
     while {true} do {
      private _bros = allUnits select {(_x getVariable ["MGI_Grp_ID","0"]) == (player getVariable ["MGI_Grp_ID","1"])};
@@ -104,7 +101,7 @@ MGI_fn_globalchat = {
 waituntil {!isNull player && GRLIB_player_spawned};
 waituntil {!isNil {player getVariable ["GRLIB_Rank", nil]}};
 
-[20,300,true] spawn MGI_fn_Revive;
+[] spawn MGI_fn_Revive;
 
 waitUntil {!(isNull (findDisplay 46))};
 systemChat "-------- AI Revive Initialized --------";
