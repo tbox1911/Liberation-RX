@@ -22,6 +22,7 @@ FAR_unblock_AI = {
 				[_unit] joinSilent (group player);
 				_unit enableAI "ALL";
 				_unit doFollow leader player;
+				_unit switchMove "amovpknlmstpsraswrfldnon";
 			} else {
 				hintSilent "Unit is too far or is unconscious. (max 50m)";
 				sleep 2;
@@ -250,8 +251,6 @@ FAR_Drag = {
 
 	// Add release action and save its id so it can be removed
 	_id = player addAction ["<t color='#C90000'>" + "Release" + "</t>", "addons\FAR\FAR_handleAction.sqf", ["action_release"], 10, true, true, "", "true"];
-
-	hint "Press 'C' if you can't move.";
 
 	// Wait until release action is used
 	waitUntil
