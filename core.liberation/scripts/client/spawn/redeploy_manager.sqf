@@ -3,6 +3,7 @@ fullmap = 0;
 _old_fullmap = 0;
 _standard_map_pos = [];
 _frame_pos = [];
+_spawn_str = "";
 
 GRLIB_force_redeploy = false;
 
@@ -142,7 +143,6 @@ while { true } do {
 	if (dialog && deploy == 1) then {
 		_idxchoice = lbCurSel 201;
 		_spawn_str = (choiceslist select _idxchoice) select 0;
-		if (isNil "_spawn_str") then {_spawn_str = "Somewhere."};
 
 		if (((choiceslist select _idxchoice) select 0) == _basenamestr) then {
 			call respawn_lhd;
@@ -197,6 +197,7 @@ while { true } do {
 	};
 
 	if (alive player && deploy == 1) then {
+		if (isNil "_spawn_str") then {_spawn_str = "Somewhere."};
 		[_spawn_str] spawn spawn_camera;
 	};
 };
