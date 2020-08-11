@@ -21,7 +21,7 @@ GRLIB_player_spawned = false;
 disableMapIndicators [false,true,false,false];
 setTerrainGrid 12.5;  //Very High = 6.25, Ultra = 3.125
 player setVariable ["GRLIB_score_set", 0, true];
-player setVariable ["GREUH_ammo_count", GREUH_start_ammo, true];
+player setVariable ["GREUH_ammo_count", 0, true];
 
 if (GRLIB_forced_loadout > 0) then {
 	[player] call compile preprocessFileLineNumbers (format ["scripts\loadouts\vanilla\player_set%1.sqf", GRLIB_forced_loadout]);
