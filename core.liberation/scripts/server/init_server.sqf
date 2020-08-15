@@ -101,5 +101,5 @@ if (isNil "global_locked_group") then { global_locked_group = [] };
 publicVariable "global_locked_group";
 
 addMissionEventHandler ['HandleDisconnect', cleanup_player];
-addMissionEventHandler ["MPEnded", {diag_log "Mission Ended.";trigger_server_save = true; sleep 5}];
+addMissionEventHandler ["MPEnded", {diag_log "MP Mission Ended.";trigger_server_save = true;}];
 diag_log "--- Server Init stop ---";
