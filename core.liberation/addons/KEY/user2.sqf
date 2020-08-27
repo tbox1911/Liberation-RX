@@ -1,3 +1,5 @@
+// Alway Run
+
 if (player getVariable ["GRLIB_action_inuse", false])  exitWith {};
 if (isNil "AR_active") then {AR_active = false};
 if (AR_active) exitWith {AR_active = false};
