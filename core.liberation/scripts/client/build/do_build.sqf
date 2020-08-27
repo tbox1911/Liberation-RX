@@ -85,8 +85,11 @@ while { true } do {
 			_unit setMass 10;
 			_unit setSkill 0.6;
 			_unit setRank "PRIVATE";
-			_unit setVariable ["MGI_Grp_ID", format["Bros_%1",MGI_Grp_ID], true];
-			_unit addMPEventHandler ["MPKilled", FAR_Player_MPKilled];
+			_grp = group player;
+			if ( ! manned ) then {
+				_unit setVariable ["MGI_Grp_ID", format["Bros_%1",MGI_Grp_ID], true];
+				_unit addMPEventHandler ["MPKilled", FAR_Player_MPKilled];
+			};
 			_unit enableIRLasers true;
 			_unit enableGunLights "Auto";
 			[_unit] call player_EVH;

@@ -22,11 +22,13 @@ private _iscommandant = false;
 if ( _rank == "Colonel" ) then {
 	_iscommandant = true;
 };
-
+private _iscommander = false;
+if ( player == [] call F_getCommander ) then {
+	_iscommander = true;
+};
 ctrlSetText [1011, format ["%1 - %2", _title, _rank]];
 ctrlShow [ 108, _iscommandant ];
 ctrlShow [ 1085, _iscommandant ];
-ctrlShow [ 121, false ];
 
 _squadname = "";
 _buildpages = [
@@ -167,7 +169,8 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 	};
 
 	ctrlEnable [ 120, _affordable && _linked_unlocked && !(_squad_full) ];
-	ctrlEnable [ 121, _affordable_crew && _linked_unlocked ];
+	ctrlShow [ 121, _iscommander && buildtype in [2,3,4,5]];
+	ctrlEnable [ 121, _affordable_crew && _linked_unlocked];
 
 	ctrlSetText [131, format [ "%1 : %2/%3" , localize "STR_MANPOWER" , (floor resources_infantry), infantry_cap]] ;
 	ctrlSetText [132, format [ "%1 : %2" , localize "STR_AMMO" , (floor  (player getVariable ["GREUH_ammo_count",0]))] ];
