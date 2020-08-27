@@ -21,8 +21,9 @@ if (lifeState _medic == "incapacitated") exitWith { [_medic, _wnded] call MGI_fn
 // Revived
 _wnded setUnconscious false;
 _wnded doFollow player;
-_isMedic = getNumber (configfile >> "CfgVehicles" >> typeOf _medic >> "attendant");
-if (_isMedic == 1 && "Medikit" in backpackItems _medic) then {
+_isMedic = [_medic] call FAR_is_medic;
+_hasMedikit = [_medic] call FAR_has_medikit;
+if (_isMedic && _hasMedikit) then {
   _wnded setDamage 0;
 } else {
   _wnded setDamage 0.25;

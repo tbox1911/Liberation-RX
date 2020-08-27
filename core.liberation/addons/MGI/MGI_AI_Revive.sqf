@@ -43,7 +43,8 @@ MGI_fn_Revive = {
   MGI_BleedOut = 300;
 
     while {true} do {
-     private _bros = allUnits select {(_x getVariable ["MGI_Grp_ID","0"]) == (player getVariable ["MGI_Grp_ID","1"])};
+    private _bros = allUnits select {(_x getVariable ["MGI_Grp_ID","0"]) == (player getVariable ["MGI_Grp_ID","1"])};
+    if (count _bros > 1 ) then {
       {
         // Only for AI
         if (!isplayer _x) then {
@@ -59,9 +60,9 @@ MGI_fn_Revive = {
           };
 
           // Medic can heal
-          _isMedic = getNumber (configfile >> "CfgVehicles" >> typeOf _x >> "attendant");
-          if ( _isMedic == 1 &&
-              "Medikit" in backpackItems _x &&
+          _isMedic = [_x] call FAR_is_medic;
+          _hasMedikit = [_x] call FAR_has_medikit;
+          if ( _isMedic && _hasMedikit &&
               vehicle _x == _x &&
               (behaviour _x) != "COMBAT" &&
               lifeState _x != 'incapacitated' &&
@@ -88,8 +89,10 @@ MGI_fn_Revive = {
         };
         sleep 0.1;
       } forEach _bros;
-      sleep 5;
     };
+    sleep 5;
+  };
+
 };
 
 MGI_fn_globalchat = {
