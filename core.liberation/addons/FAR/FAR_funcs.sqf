@@ -336,10 +336,10 @@ FAR_Check_Revive = {
 	// Unit that will excute the action
 	_isPlayerUnconscious = player getVariable "FAR_isUnconscious";
 	_isMedic = [player] call FAR_is_medic;
-	_target = cursorTarget;
+	_target = cursorObject;
 
 	// Make sure player is alive and target is an injured unit
-	if( !alive player || _isPlayerUnconscious == 1 || FAR_isDragging || !isNull R3F_LOG_joueur_deplace_objet || isNil "_target" || !alive _target || (!isPlayer _target && !FAR_Debugging) || round(_target distance2D player) > 3 ) exitWith
+	if( !alive player || _isPlayerUnconscious == 1 || FAR_isDragging || !isNull R3F_LOG_joueur_deplace_objet || isNull _target || !alive _target || (!isPlayer _target && !FAR_Debugging) || round(_target distance2D player) > 3 ) exitWith
 	{
 		_return
 	};
@@ -372,11 +372,11 @@ FAR_Check_Stabilize = {
 
 	// Unit that will excute the action
 	_isPlayerUnconscious = player getVariable "FAR_isUnconscious";
-	_target = cursorTarget;
+	_target = cursorObject;
 
 
 	// Make sure player is alive and target is an injured unit
-	if( !alive player || _isPlayerUnconscious == 1 || FAR_isDragging || !isNull R3F_LOG_joueur_deplace_objet || isNil "_target" || !alive _target || (!isPlayer _target && !FAR_Debugging) || (_target distance player) > 2 ) exitWith
+	if( !alive player || _isPlayerUnconscious == 1 || FAR_isDragging || !isNull R3F_LOG_joueur_deplace_objet || isNull _target || !alive _target || (!isPlayer _target && !FAR_Debugging) || (_target distance player) > 2 ) exitWith
 	{
 		_return
 	};
@@ -416,10 +416,10 @@ FAR_Check_Dragging = {
 	private ["_target", "_isPlayerUnconscious", "_isDragged"];
 
 	_return = false;
-	_target = cursorTarget;
+	_target = cursorObject;
 	_isPlayerUnconscious = player getVariable "FAR_isUnconscious";
 
-	if( !alive player || _isPlayerUnconscious == 1 || FAR_isDragging || !isNull R3F_LOG_joueur_deplace_objet || isNil "_target" || !alive _target || (_target distance player) > 3 ) exitWith
+	if( !alive player || _isPlayerUnconscious == 1 || FAR_isDragging || !isNull R3F_LOG_joueur_deplace_objet || isNull _target || !alive _target || (_target distance player) > 3 ) exitWith
 	{
 		_return;
 	};
@@ -437,12 +437,12 @@ FAR_Check_Dragging = {
 ////////////////////////////////////////////////
 FAR_is_medic = {
 	params ["_unit"];
-	_return = false;
+	private _ret = false;
 
 	if ( getNumber (configfile >> "CfgVehicles" >> typeOf _unit >> "attendant") == 1 ) then {
-		_return = true;
+		_ret = true;
 	};
-	_return
+	_ret
 };
 
 ////////////////////////////////////////////////
@@ -450,10 +450,10 @@ FAR_is_medic = {
 ////////////////////////////////////////////////
 FAR_has_medikit = {
 	params ["_unit"];
-	_return = false;
+	private _ret = false;
 
 	if ( (FAR_Medikit in (vest _unit)) || (FAR_Medikit in (items _unit)) || (FAR_Medikit in (backpackItems _unit)) ) then {
-		_return = true;
+		_ret = true;
 	};
-	_return
+	_ret
 };
