@@ -61,7 +61,7 @@ _deadMenLimit = 50;								// Bodies. Set -1 to disable.
 _deadMenDistCheck = TRUE;						// TRUE to delete any bodies that are far from players.
 _deadMenDist = 2000;							// Distance (meters) from players that bodies are not deleted if below max.
 
-_deadVehiclesLimit = -1;						// Wrecks. Set -1 to disable.
+_deadVehiclesLimit = 30;						// Wrecks. Set -1 to disable.
 _deadVehicleDistCheck = TRUE;					// TRUE to delete any destroyed vehicles that are far from players.
 _deadVehicleDist = 2000;						// Distance (meters) from players that destroyed vehicles are not deleted if below max.
 
@@ -69,7 +69,7 @@ _craterLimit = 20;								// Craters. Set -1 to disable.
 _craterDistCheck = TRUE;						// TRUE to delete any craters that are far from players.
 _craterDist = 2000;								// Distance (meters) from players that craters are not deleted if below max.
 
-_weaponHolderLimit = -1;						// Weapon Holders. Set -1 to disable.
+_weaponHolderLimit = 50;						// Weapon Holders. Set -1 to disable.
 _weaponHolderDistCheck = TRUE;					// TRUE to delete any weapon holders that are far from players.
 _weaponHolderDist = 500;						// Distance (meters) from players that ground garbage is not deleted if below max.
 
@@ -78,7 +78,7 @@ _minesDistCheck = TRUE;							// TRUE to delete any mines that are far from ANY 
 _minesDist = 2000;								// Distance (meters) from players that land mines are not deleted if below max.
 
 _staticsLimit = -1;								// Static weapons. Set -1 to disable.
-_staticsDistCheck = TRUE;						// TRUE to delete any static weapon that is far from ANY UNIT (not just players.
+_staticsDistCheck = TRUE;						// TRUE to delete any static weapon that is far from ANY UNIT (not just players).
 _staticsDist = 2000;							// Distance (meters) from players that static weapons are not deleted if below max.
 
 _ruinsLimit = 20;								// Ruins. Set -1 to disable.
