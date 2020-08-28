@@ -51,6 +51,7 @@ _isHidden = compileFinal "
 //================================================================ CONFIG
 
 deleteManagerPublic = TRUE;						// To terminate script via debug console
+
 _checkPlayerCount = TRUE;						// dynamic sleep. Set TRUE to have sleep automatically adjust based on # of players.
 _checkFrequencyDefault = 180;					// sleep default
 _checkFrequencyAccelerated = 60;				// sleep accelerated

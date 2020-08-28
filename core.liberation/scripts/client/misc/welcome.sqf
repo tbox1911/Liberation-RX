@@ -31,8 +31,8 @@ Your Score : <t color='#008000'>%3</t><br/>
 Your Credit : <t color='#800000'>%4</t>", name player, _rank, _score, _ammo_collected];
 [_msg, 0, 0, 10, 0, 0, 90] spawn BIS_fnc_dynamicText;
 
+// HCI Command IA
 hcRemoveAllGroups player;
-// Commander IA veh
 if ( player == [] call F_getCommander ) then {
 
 	_myveh = [vehicles, {
