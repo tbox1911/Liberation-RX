@@ -17,7 +17,7 @@ if ( isServer ) then {
 		deleteVehicle _unit;
 	};
 
-	if ( typeof _unit == mobile_respawn ) exitWith { sleep 10; [_unit, "del"] remoteExec ["addel_beacon_remote_call", 2] };
+	if ( typeof _unit == mobile_respawn ) exitWith { [_unit, "del"] remoteExec ["addel_beacon_remote_call", 2] };
 
 	please_recalculate = true;
 
@@ -120,6 +120,6 @@ if ( isServer ) then {
 
 	_unit setVariable ["R3F_LOG_disabled", true, true];
 	_unit enableSimulationGlobal true;
-	sleep GRLIB_cleanup_delay;
-	deleteVehicle _unit;
+	//sleep GRLIB_cleanup_delay;
+	//deleteVehicle _unit;
 };
