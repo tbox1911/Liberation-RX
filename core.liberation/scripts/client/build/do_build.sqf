@@ -78,18 +78,13 @@ while { true } do {
 			};
 		} else {
 			_grp = group player;
-			if ( manned ) then {
-				_grp = createGroup [GRLIB_side_friendly, true];
-			};
 			_unit = _grp createUnit [_classname, _pos, [], 5, "NONE"];
 			_unit setMass 10;
 			_unit setSkill 0.6;
 			_unit setRank "PRIVATE";
 			_grp = group player;
-			if ( ! manned ) then {
-				_unit setVariable ["MGI_Grp_ID", format["Bros_%1",MGI_Grp_ID], true];
-				_unit addMPEventHandler ["MPKilled", FAR_Player_MPKilled];
-			};
+			_unit setVariable ["MGI_Grp_ID", format["Bros_%1",MGI_Grp_ID], true];
+			_unit addMPEventHandler ["MPKilled", FAR_Player_MPKilled];
 			_unit enableIRLasers true;
 			_unit enableGunLights "Auto";
 			[_unit] call player_EVH;
@@ -118,6 +113,7 @@ while { true } do {
 					[_x] call MGI_fn_EHDamage;
 				} forEach units _grp;
 				[_price] call do_pay_build;
+				player hcSetGroup [_grp];
 			} else {
 				hint "Only One Squad Allowed !!";
 				sleep 3;
@@ -297,8 +293,11 @@ while { true } do {
 					clearBackpackCargoGlobal _vehicle;
 				};
 
+				// Crewed vehicle
 				if ( (_classname in uavs) || manned ) then {
 					[ _vehicle ] call F_forceBluforCrew;
+					_vehicle setVariable ["GRLIB_vehicle_manned", true, true];
+					player hcSetGroup [group _vehicle];
 				};
 
 				// set mass heavy Static

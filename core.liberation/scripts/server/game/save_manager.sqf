@@ -151,26 +151,10 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 
 			_nextpos = _x select 1;
 			_nextdir = _x select 2;
-			_hascrew = false;
-			_owner = "";
-			_color = "";
-			_color_name = "";
-
-			if ( count _x > 3 ) then {
-				_hascrew = _x select 3;
-			};
-
-			if ( count _x > 4 ) then {
-				_owner = _x select 4;
-			};
-
-			if ( count _x > 5 ) then {
-				_color = _x select 5;
-			};
-
-			if ( count _x > 6 ) then {
-				_color_name = _x select 6;
-			};
+			_hascrew = _x select 3;
+			_owner = _x select 4;
+			_color = _x select 5;
+			_color_name = _x select 6;
 
 			_nextbuilding = _nextclass createVehicle _nextpos;
 			_nextbuilding allowDamage false;
@@ -197,6 +181,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 
 			if ( _hascrew ) then {
 				[ _nextbuilding ] call F_forceBluforCrew;
+				_nextbuilding setVariable ["GRLIB_vehicle_manned", true, true];
 			};
 
 			if ( _owner != "" ) then {
@@ -313,9 +298,7 @@ while { true } do {
 			private _skip = false;
 
 			if ( _nextclass in _classnames_to_save_blu ) then {
-				if ( ( { !isPlayer _x } count (crew _x) ) > 0 ) then {
-					_hascrew = true;
-				};
+				_hascrew = _x getVariable ["GRLIB_vehicle_manned", false];
 				_owner = _x getVariable ["GRLIB_vehicle_owner", ""];
 				_color = _x getVariable ["GRLIB_vehicle_color", ""];
 				_color_name = _x getVariable ["GRLIB_vehicle_color_name", ""];
