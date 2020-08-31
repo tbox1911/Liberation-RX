@@ -4,7 +4,7 @@ if (isNil "_vehicle") exitWith {};
 // unTow
 _towed = _vehicle getVariable ["R3F_LOG_remorque", objNull];
 if (!isNull _towed) then {
-	[_towed] call R3F_LOG_FNCT_remorqueur_detacher;
+	[_towed] remoteExec ["detach", 0];
 };
 
 // Delete R3F Cargo
