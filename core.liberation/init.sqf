@@ -3,7 +3,9 @@ diag_log "--- Liberation RX by pSiKO ---";
 diag_log format ["Build date: %1", GRLIB_build_date];
 diag_log "--- Init start ---";
 
-enableSaving [ false, false ];
+enableSaving [false, false];
+disableMapIndicators [false,true,false,false];
+setGroupIconsVisible [false,false];
 
 [] call compileFinal preprocessFileLineNumbers "scripts\shared\atlas_manager.sqf";
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\liberation_functions.sqf";
