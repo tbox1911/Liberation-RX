@@ -249,14 +249,13 @@ save_is_loaded = true; publicVariable "save_is_loaded";
 
 // Manager Save Loop
 while { true } do {
-	waitUntil {trigger_server_save || GRLIB_endgame == 1};
+	waitUntil {sleep 1;trigger_server_save || GRLIB_endgame == 1};
 
 	if ( GRLIB_endgame == 1 ) then {
 		profileNamespace setVariable [ GRLIB_save_key, nil ];
 		saveProfileNamespace;
 		while { true } do { sleep 300; };
 	} else {
-
 		trigger_server_save = false;
 		buildings_to_save = [];
 
