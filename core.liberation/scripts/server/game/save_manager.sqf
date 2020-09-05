@@ -374,5 +374,6 @@ while { true } do {
 
 		profileNamespace setVariable [ GRLIB_save_key, greuh_liberation_savegame ];
 		saveProfileNamespace;
+		diag_server_save = true;
 	};
 };

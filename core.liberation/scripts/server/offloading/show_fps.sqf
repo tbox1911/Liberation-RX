@@ -32,6 +32,7 @@ if ( isServer ) then {
 	};
 };
 
+diag_server_save = false;
 _myfpsmarker = createMarker [ format ["fpsmarker%1", _sourcestr ], [ 200, 200 + (200 * _position) ] ];
 _myfpsmarker setMarkerType "mil_start";
 _myfpsmarker setMarkerSize [ 0.7, 0.7 ];
@@ -47,7 +48,13 @@ while { true } do {
 	if ( _myfps < 20 ) then { _myfpsmarker setMarkerColor "ColorORANGE"; };
 	if ( _myfps < 10 ) then { _myfpsmarker setMarkerColor GRLIB_color_enemy_bright; };
 
-	_myfpsmarker setMarkerText format [ "%1: %2 fps, %3 units, %4 vehicles", _sourcestr, ( round ( _myfps * 100.0 ) ) / 100.0 , _localunits, _localvehicles ];
+	_saved = "";
+	if ( diag_server_save ) then {
+		diag_server_save = false;
+		_saved = "- Game Saved."
+	};
+
+	_myfpsmarker setMarkerText format [ "%1: %2 fps, %3 units, %4 vehicles %5", _sourcestr, ( round ( _myfps * 100.0 ) ) / 100.0 , _localunits, _localvehicles, _saved ];
 
 	sleep 15;
 };
