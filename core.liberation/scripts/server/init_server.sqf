@@ -23,7 +23,6 @@ spawn_battlegroup = compileFinal preprocessFileLineNumbers "scripts\server\battl
 
 // Game
 check_victory_conditions = compileFinal preprocessFileLineNumbers "scripts\server\game\check_victory_conditions.sqf";
-save_game = compileFinal preprocessFileLineNumbers "scripts\server\game\save_game.sqf";
 
 // Patrol
 manage_one_civilian_patrol = compileFinal preprocessFileLineNumbers "scripts\server\patrols\manage_one_civilian_patrol.sqf";
@@ -102,5 +101,5 @@ if (isNil "global_locked_group") then { global_locked_group = [] };
 publicVariable "global_locked_group";
 
 addMissionEventHandler ['HandleDisconnect', cleanup_player];
-addMissionEventHandler ["MPEnded", save_game];
+addMissionEventHandler ["MPEnded", {diag_log "LRX - MP End."}];
 diag_log "--- Server Init stop ---";
