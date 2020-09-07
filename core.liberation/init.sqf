@@ -14,7 +14,7 @@ setGroupIconsVisible [false,false];
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\classnames.sqf";
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\init_sectors.sqf";
 
-if (!GRLIB_ACE_enabled) then {[] execVM "R3F_LOG\init.sqf"};
+if (!GRLIB_ACE_enabled) then {[] call compileFinal preprocessFileLineNumbers "R3F_LOG\init.sqf"};
 if (GRLIB_revive != 0) then {[] execVM "addons\FAR\FAR_init.sqf"};
 [] execVM "GREUH\scripts\GREUH_activate.sqf";
 

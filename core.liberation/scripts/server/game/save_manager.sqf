@@ -189,6 +189,17 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 				_nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
 				_nextbuilding setVariable ["R3F_LOG_disabled", true, true];
 				[_nextbuilding, _color, _color_name, []] call RPT_fnc_TextureVehicle;
+
+				if (count _x > 7) then {
+					_lst_a3 = _x select 7;
+					{_nextbuilding addWeaponWithAttachmentsCargoGlobal [ _x, 1] } forEach _lst_a3;
+
+					_lst_r3f = _x select 8;
+					[_nextbuilding, _lst_r3f] call R3F_LOG_FNCT_transporteur_charger_auto;
+				} else {
+					_lst_a3 = [];
+					_lst_r3f = [];
+				};
 			};
 
 			if (typeOf _nextbuilding in _list_static) then {
@@ -295,6 +306,8 @@ while { true } do {
 			private _color = "";
 			private _color_name = "";
 			private _skip = false;
+			private _lst_a3 = [];
+			private	_lst_r3f = [];
 
 			if ( _nextclass in _classnames_to_save_blu ) then {
 				_hascrew = _x getVariable ["GRLIB_vehicle_manned", false];
@@ -312,17 +325,19 @@ while { true } do {
 				};
 			};
 
+			if ( _owner != "" ) then {
+				_lst_a3 = weaponsItemsCargo _x;
+    			{ _lst_r3f pushback (typeOf _x)} forEach (_x getVariable ["R3F_LOG_objets_charges", []]);
+			};
+
 			if (!_skip) then {
-				buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner, _color, _color_name ];
+				buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner, _color, _color_name, _lst_a3, _lst_r3f ];
 			};
 		} foreach _all_buildings;
 
 		time_of_day = date select 3;
 
 		stats_saves_performed = stats_saves_performed + 1;
-
-		_saved_score = [];
-		{ if ((_x select 1) >= 20) then {_saved_score pushback _x} } forEach GRLIB_player_scores;
 
 		_stats = [];
 		_stats pushback stats_opfor_soldiers_killed;
@@ -368,7 +383,7 @@ while { true } do {
 			GRLIB_permissions,
 			0,  //ai_groups
 			resources_intel,
-			_saved_score
+			GRLIB_player_scores
 		];
 
 		profileNamespace setVariable [ GRLIB_save_key, greuh_liberation_savegame ];
