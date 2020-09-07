@@ -7,7 +7,10 @@ _debug_colisions = false;
 _price = 0;
 _color = [];
 _ammo = 0;
+_lst_a3 = [];
+_lst_r3f = [];
 build_unit = [];
+
 GRLIB_preview_spheres = [];
 while { count GRLIB_preview_spheres < 36 } do {
 	GRLIB_preview_spheres pushback ( "Sign_Sphere100cm_F" createVehicleLocal [ 0, 0, 0 ] );
@@ -48,10 +51,12 @@ while { true } do {
 		} forEach (build_lists select buildtype);
 
 		if (buildtype == 9) then {
+			_price = 0;
 			_classname = build_unit select 0;
-			_price = build_unit select 2;
-			_color = build_unit select 5;
-			_ammo = build_unit select 6;
+			_color = build_unit select 1;
+			_ammo = build_unit select 2;
+			_lst_a3 = build_unit select 3;
+			_lst_r3f = build_unit select 4;
 		} else {
 			_classname = (_build_list select buildindex) select 0;
 			_price = (_build_list select buildindex) select 2;
@@ -335,6 +340,12 @@ while { true } do {
 				// Mobile respawn
 				if (_classname == mobile_respawn) then {
 					[_vehicle, "add"] remoteExec ["addel_beacon_remote_call", 2];
+				};
+
+				// A3 / R3F Inventory
+				if (buildtype == 9) then {
+					{_vehicle addWeaponWithAttachmentsCargoGlobal [ _x, 1] } forEach _lst_a3;
+					[_vehicle, _lst_r3f] call R3F_LOG_FNCT_transporteur_charger_auto;
 				};
 
 				sleep 0.3;
