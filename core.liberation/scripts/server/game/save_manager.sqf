@@ -191,14 +191,8 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 				[_nextbuilding, _color, _color_name, []] call RPT_fnc_TextureVehicle;
 
 				if (count _x > 7) then {
-					_lst_a3 = _x select 7;
-					{_nextbuilding addWeaponWithAttachmentsCargoGlobal [ _x, 1] } forEach _lst_a3;
-
-					_lst_r3f = _x select 8;
-					[_nextbuilding, _lst_r3f] call R3F_LOG_FNCT_transporteur_charger_auto;
-				} else {
-					_lst_a3 = [];
-					_lst_r3f = [];
+					{_nextbuilding addWeaponWithAttachmentsCargoGlobal [ _x, 1] } forEach (_x select 7);
+					[_nextbuilding, (_x select 8)] call R3F_LOG_FNCT_transporteur_charger_auto;
 				};
 			};
 
