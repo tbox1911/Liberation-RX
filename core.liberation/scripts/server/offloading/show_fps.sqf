@@ -55,6 +55,8 @@ while { true } do {
 	};
 
 	_myfpsmarker setMarkerText format [ "%1: %2 fps, %3 units, %4 vehicles %5", _sourcestr, ( round ( _myfps * 100.0 ) ) / 100.0 , _localunits, _localvehicles, _saved ];
+	sleep 3;
+	_myfpsmarker setMarkerText format [ "%1: %2 fps, %3 units, %4 vehicles", _sourcestr, ( round ( _myfps * 100.0 ) ) / 100.0 , _localunits, _localvehicles ];
 
 	sleep 15;
 };
