@@ -94,7 +94,7 @@ class RPT_vehicle_repaint {
 		class CancelButton : StdButton {
 			idc = -1;
 			action = "closeDialog 0";
-			text = "Cancel";
+			text = "Exit";
 			x = 0.2100 * safezoneW + safezoneX;
 			y = 0.71 * safezoneH + safezoneY;
 			w = 0.09 * safezoneW;
