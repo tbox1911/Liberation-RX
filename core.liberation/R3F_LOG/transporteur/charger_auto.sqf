@@ -117,6 +117,13 @@ _objets_charges = _transporteur getVariable ["R3F_LOG_objets_charges", []];
 				{
 					_objet = _classe createVehicle _pos_degagee;
 				};
+
+				// Mobile respawn
+				if (_classe == mobile_respawn) then {
+					[_objet, "add"] remoteExec ["addel_beacon_remote_call", 2];
+				};
+
+				// MPKilled
 				_objet addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 			}
 			else
