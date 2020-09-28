@@ -275,24 +275,22 @@ if ( count blufor_squad_mix == 0 ) then { blufor_squad_mix = [
 };
 if ( isNil "blufor_squad_recon" ) then { blufor_squad_recon = [] };
 if ( count blufor_squad_recon == 0 ) then { blufor_squad_recon = [
-	"B_Soldier_SL_F",
+	"B_recon_TL_F",
 	"B_recon_medic_F",
 	"B_Recon_Sharpshooter_F",
 	"B_recon_LAT_F",
-	"B_recon_LAT_F",
 	"B_recon_M_F",
-	"B_recon_F",
 	"B_recon_F"
 	];
 };
 
 squads = [
-	[blufor_squad_inf_light,10,500,0,GRLIB_perm_max],
+	[blufor_squad_inf_light,10,300,0,GRLIB_perm_max],
+	[blufor_squad_inf,20,400,0,GRLIB_perm_max],
+	[blufor_squad_recon,25,500,0,GRLIB_perm_max],
 	[blufor_squad_at,25,600,0,GRLIB_perm_max],
 	[blufor_squad_aa,25,600,0,GRLIB_perm_max],
-	[blufor_squad_mix,25,600,0,GRLIB_perm_max],
-	[blufor_squad_inf,20,800,0,GRLIB_perm_max],
-	[blufor_squad_recon,25,800,0,GRLIB_perm_max]
+	[blufor_squad_mix,25,600,0,GRLIB_perm_max]
 ];
 
 // All the UAVs must be declared here
