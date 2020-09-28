@@ -23,8 +23,10 @@ if (! isNil "GRLIB_respawn_loadout" && isNil "GRLIB_loadout_overide") then {
 private _score = score player;
 private _rank = [player] call set_rank;
 private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
+
 // notice
 if (_score == 0) then {	_dialog = createDialog "liberation_notice" };
+
 private _msg = format ["Welcome <t color='#00008f'>%1</t> !<br/><br/>
 Your Rank : <t color='#000080'>%2</t><br/>
 Your Score : <t color='#008000'>%3</t><br/>
@@ -44,3 +46,5 @@ if ( player == [] call F_getCommander ) then {
 
 	{ player hcSetGroup [group _x] } foreach _myveh;
 };
+private _grp = player getVariable ["my_squad", nil];
+if (!isNil "_grp") then { player hcSetGroup [_grp] };
