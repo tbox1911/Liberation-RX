@@ -113,8 +113,10 @@ while { true } do {
 				} foreach _classname;
 				_grp setCombatMode "GREEN";
 				_grp setBehaviour "AWARE";
+				_uniform = uniform player;
 				{
 					_x setVariable ["MGI_Grp_ID", format["AI_%1",MGI_Grp_ID], true];
+					_x addUniform _uniform;
 					[_x] call MGI_fn_EHDamage;
 				} forEach units _grp;
 				[_price] call do_pay_build;
