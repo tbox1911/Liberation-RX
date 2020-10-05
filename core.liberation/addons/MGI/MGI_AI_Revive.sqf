@@ -41,17 +41,12 @@ MGI_fn_EHDamage = {
 
 MGI_fn_Revive = {
   MGI_BleedOut = 300;
-
-    while {true} do {
-    private _bros = allUnits select {(_x getVariable ["MGI_Grp_ID","0"]) == (player getVariable ["MGI_Grp_ID","1"])};
+  while {true} do {
+    private _bros = units player;
     if (count _bros > 1 ) then {
       {
         // Only for AI
         if (!isplayer _x) then {
-          // AI rejoin
-          if ( !(_x in units group player) && isNil {_x getVariable 'MGI_busy'} && lifeState _x != 'incapacitated' ) then {
-            if ( count (units group player) < (GRLIB_squad_size + GRLIB_squad_size_bonus) ) then { [_x] joinSilent my_group };
-          };
 
           // Set EH
           if (isnil {_x getVariable "passEH"}) then {
@@ -92,7 +87,6 @@ MGI_fn_Revive = {
     };
     sleep 5;
   };
-
 };
 
 MGI_fn_globalchat = {
