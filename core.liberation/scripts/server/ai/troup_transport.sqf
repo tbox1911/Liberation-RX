@@ -6,7 +6,7 @@ _unload_distance = 1000;
 sleep 1;
 _initial_crewcount = count crew _troup_transport;
 
-waitUntil { sleep 0.2; !(alive _troup_transport) || !(alive (driver _troup_transport)) || (((_troup_transport distance _dat_objective) < _unload_distance) && (!(surfaceIsWater (getpos _troup_transport)))) };
+waitUntil { sleep 0.2; !(alive _troup_transport) || !(alive (driver _troup_transport)) || (((_troup_transport distance2D _dat_objective) < _unload_distance) && (!(surfaceIsWater (getpos _troup_transport)))) };
 
 if ((alive _troup_transport) && (alive (driver _troup_transport))) then {
 	_troupgrp = createGroup [GRLIB_side_enemy, true];
