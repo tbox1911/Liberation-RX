@@ -17,6 +17,8 @@ colorList =[
 	["ARPA Navy", _texDir + "arpa_navy.paa"],
 	["ARPA Woodland", _texDir + "arpa_woodland.paa"],
 	["Abstract Green", _texDir + "abstraitvert.paa"],
+	["Abstract Red", _texDir + "abstraitrouge.paa"],
+	["Abstract Mod", _texDir + "abstraitmoderne.paa"],
 	["Camo Green 1", _texDir + "camovert1.paa"],
 	["Camo Green 2", _texDir + "camovert2.paa"],
 	["Digital", _texDir + "digi.paa"],
