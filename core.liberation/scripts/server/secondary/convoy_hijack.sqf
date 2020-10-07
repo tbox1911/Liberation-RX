@@ -1,11 +1,18 @@
-private _convoy_destinations_markers = [];
 private _load_box_fnc = compileFinal preprocessFileLineNumbers "scripts\client\ammoboxes\do_load_box.sqf";
+if ( count (sectors_allSectors - blufor_sectors - sectors_tower) < 4) exitWith { [gamelogic, "Could not find enough free sectors for convoy hijack mission"] remoteExec ["globalChat", 0] };
 
-while { count _convoy_destinations_markers < 3 } do { _convoy_destinations_markers pushback ([2000,999999,false] call F_findOpforSpawnPoint); };
+private _convoy_destinations_markers = [];
+private _max_try = 10;
+private _max_waypoints = 4;
+_sector_list = (sectors_allSectors - blufor_sectors - sectors_tower);
 
-private _couldnt_spawn = false;
-{ if ( _x == "" ) exitWith { _couldnt_spawn = true; }; } foreach _convoy_destinations_markers;
-if ( _couldnt_spawn ) exitWith { [gamelogic, "Could not find enough map positions for convoy hijack mission"] remoteExec ["globalChat", 0] };
+while { count _convoy_destinations_markers != _max_waypoints && _max_try > 0} do {
+	_start_pos = _sector_list call BIS_fnc_selectRandom;
+	_convoy_destinations_markers = [_start_pos, 2000, _sector_list, _max_waypoints] call F_getSectorPath;
+    _max_try = _max_try - 1;
+};
+
+if ( count _convoy_destinations_markers < 3) exitWith { [gamelogic, "Could not find enough free sectors for convoy hijack mission"] remoteExec ["globalChat", 0] };
 
 params [ ["_mission_cost", 0] ];
 resources_intel = resources_intel - _mission_cost;
@@ -16,9 +23,9 @@ private _convoy_destinations = [];
 private _spawnpos = _convoy_destinations select 0;
 [ [ 4, _spawnpos ] , "remote_call_intel" ] call BIS_fnc_MP;
 
-private _scout_vehicle = [ [ _spawnpos, 30, 0 ] call BIS_fnc_relPos, opfor_mrap, true, false, false ] call F_libSpawnVehicle;
-private _escort_vehicle = [ [ _spawnpos, 10, 0 ] call BIS_fnc_relPos, opfor_vehicles_low_intensity call BIS_fnc_selectRandom, true, false, false ] call F_libSpawnVehicle;
-private _transport_vehicle = [ [ _spawnpos, 10, 180 ] call BIS_fnc_relPos, opfor_ammobox_transport, true, true, false ] call F_libSpawnVehicle;
+private _scout_vehicle = [ [ _spawnpos, 30, 0 ] call BIS_fnc_relPos, opfor_mrap, false, false, false ] call F_libSpawnVehicle;
+private _escort_vehicle = [ [ _spawnpos, 10, 0 ] call BIS_fnc_relPos, opfor_vehicles_low_intensity call BIS_fnc_selectRandom, false, false, false ] call F_libSpawnVehicle;
+private _transport_vehicle = [ [ _spawnpos, 10, 180 ] call BIS_fnc_relPos, opfor_ammobox_transport, false, true, false ] call F_libSpawnVehicle;
 
 private _boxes_amount = 0;
 {
@@ -42,7 +49,7 @@ while { _boxes_loaded < _boxes_amount } do {
 
 sleep 0.5;
 
-private _troop_vehicle = [ [ _spawnpos, 30, 180 ] call BIS_fnc_relPos, opfor_transport_truck, true, true, false ] call F_libSpawnVehicle;
+private _troop_vehicle = [ [ _spawnpos, 30, 180 ] call BIS_fnc_relPos, opfor_transport_truck, false, true, false ] call F_libSpawnVehicle;
 
 sleep 0.5;
 
@@ -63,14 +70,13 @@ _convoy_group setSpeedMode "LIMITED";
 while {(count (waypoints _convoy_group)) != 0} do {deleteWaypoint ((waypoints _convoy_group) select 0);};
 {_x doFollow leader _convoy_group} foreach units _convoy_group;
 
-_waypoint = _convoy_group addWaypoint [_convoy_destinations select 1, 0];
-_waypoint setWaypointType "MOVE";
-_waypoint setWaypointCompletionRadius 50;
+for "_i" from 1 to ((count _convoy_destinations) -1) do {
+	_waypoint = _convoy_group addWaypoint [_convoy_destinations select _i, 0];
+	_waypoint setWaypointType "MOVE";
+	_waypoint setWaypointCompletionRadius 50;
+};
 
-_waypoint = _convoy_group addWaypoint [_convoy_destinations select 2, 0];
-_waypoint setWaypointType "MOVE";
-_waypoint setWaypointCompletionRadius 50;
-
+// Back and cycle
 _waypoint = _convoy_group addWaypoint [_convoy_destinations select 0, 0];
 _waypoint setWaypointType "MOVE";
 _waypoint setWaypointCompletionRadius 50;
@@ -88,16 +94,15 @@ _convoy_marker setMarkerText (localize "STR_SECONDARY_CSAT_CONVOY");
 _convoy_marker setMarkerType "o_armor";
 _convoy_marker setMarkerColor GRLIB_color_enemy_bright;
 
-private _convoy_marker_wp1 = createMarkerLocal [ format [ "convoymarkerwp1%1", round time], _convoy_destinations select 0];
-private _convoy_marker_wp2 = createMarkerLocal [ format [ "convoymarkerwp2%1", round time], _convoy_destinations select 1];
-private _convoy_marker_wp3 = createMarkerLocal [ format [ "convoymarkerwp3%1", round time], _convoy_destinations select 2];
-
-{
-	_x setMarkerText (localize "STR_SECONDARY_CSAT_CONVOY_WP");
-	_x setMarkerType "o_armor";
-	_x setMarkerColor GRLIB_color_enemy_bright;
-	_x setMarkerSize [0.6, 0.6];
-} foreach [_convoy_marker_wp1, _convoy_marker_wp2, _convoy_marker_wp3];
+private _convoy_marker_list = [];
+for "_i" from 0 to ((count _convoy_destinations) -1) do {
+	_convoy_marker_wp = createMarkerLocal [ format [ "convoymarkerwp%1", _i], _convoy_destinations select _i];
+	_convoy_marker_wp setMarkerText (localize "STR_SECONDARY_CSAT_CONVOY_WP");
+	_convoy_marker_wp setMarkerType "o_armor";
+	_convoy_marker_wp setMarkerColor GRLIB_color_enemy_bright;
+	_convoy_marker_wp setMarkerSize [0.6, 0.6];
+	_convoy_marker_list pushback _convoy_marker_wp;
+};
 
 private _mission_in_progress = true;
 private _convoy_attacked = false;
@@ -156,7 +161,7 @@ while { _mission_in_progress } do {
 sleep 20;
 
 deleteMarker _convoy_marker;
-{ deleteMarker _x } foreach [_convoy_marker_wp1, _convoy_marker_wp2, _convoy_marker_wp3 ];
+{ deleteMarker _x } foreach _convoy_marker_list;
 { moveOut _x; deleteVehicle _x } forEach units _troops_group;
 
 combat_readiness = round (combat_readiness * 0.85);

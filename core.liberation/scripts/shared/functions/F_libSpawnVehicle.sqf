@@ -15,8 +15,8 @@ if ( _precise_position ) then {
 	_spawnpos = [] + _sectorpos;
 } else {
 	while { _spawnpos distance zeropos < 1000 } do {
-		//_spawnpos = ( [ _sectorpos, random 150, random 360 ] call bis_fnc_relpos ) findEmptyPosition [10, 100, 'B_Heli_Transport_01_F'];
-		_spawnpos = (selectBestPlaces [_sectorpos, 200, "(1 + meadow) * (1 + sea) * (1 - forest) * (1 - trees)", 50, 1] select 0) select 0;
+		_spawnpos = ( [ _sectorpos, random 150, random 360 ] call bis_fnc_relpos ) findEmptyPosition [10, 200, 'B_Heli_Transport_01_F'];
+		//_spawnpos = (selectBestPlaces [_sectorpos, 200, "(1 + meadow) * (1 + sea) * (1 - forest) * (1 - trees)", 50, 1] select 0) select 0;
 		if ( count _spawnpos == 0 ) then { _spawnpos = zeropos; };
 	};
 };
