@@ -19,10 +19,6 @@ _setupVars =
 	_missionLocation = selectRandom ((blufor_sectors select {["capture_", _x] call fn_startsWith;}) apply {[_x, false]}) select 0;
 	_townName = markerText _missionLocation;
 
-	// 25% change on AI not going on rooftops
-	if (random 1 < 0.75) then { _putOnRoof = true } else { _putOnRoof = false };
-	// 25% chance on AI trying to fit into a single building instead of spreading out
-	if (random 1 < 0.75) then { _fillEvenly = true } else { _fillEvenly = false };
 	_locationsArray = nil;
 };
 
@@ -46,7 +42,13 @@ _setupObjects =
 	{ _x setVariable ["R3F_LOG_disabled", true, true] } forEach [_tent1, _chair1, _chair2, _fire1];
 
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
-	[_aiGroup, _missionPos, _nbUnits] call createCustomGroup;
+	[_aiGroup, _missionPos, _nbUnits, "infantry", false] call createCustomGroup;
+
+	// 25% change on AI not going on rooftops
+	if (random 1 < 0.75) then { _putOnRoof = true } else { _putOnRoof = false };
+	// 25% chance on AI trying to fit into a single building instead of spreading out
+	if (random 1 < 0.75) then { _fillEvenly = true } else { _fillEvenly = false };
+
 	[_aiGroup, _missionPos, 200, _fillEvenly, _putOnRoof] call moveIntoBuildings;
 	[_missionPos, 25] call createlandmines;
 
