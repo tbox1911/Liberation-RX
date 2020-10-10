@@ -42,47 +42,46 @@ MGI_fn_EHDamage = {
 MGI_fn_Revive = {
   MGI_BleedOut = 300;
   while {true} do {
-    private _bros = units player;
-    if (count _bros > 1 ) then {
+    private _bros = (units player) select {!isplayer _x && (_x getVariable ["MGI_Grp_ID","0"]) == (player getVariable ["MGI_Grp_ID","1"])};
+    if (count _bros > 0 ) then {
       {
-        // Only for AI
-        if (!isplayer _x) then {
+        // Set EH
+        if (isNil {_x getVariable "passEH"}) then {
+          _x setVariable ["passEH", true];
+          _x call MGI_fn_EHDamage;
+        };
 
-          // Set EH
-          if (isnil {_x getVariable "passEH"}) then {
-            _x setVariable ["passEH", true];
-            _x call MGI_fn_EHDamage;
-          };
+        // Medic can heal
+        _isMedic = [_x] call FAR_is_medic;
+        _hasMedikit = [_x] call FAR_has_medikit;
+        if ( _isMedic && _hasMedikit &&
+            vehicle _x == _x &&
+            (behaviour _x) != "COMBAT" &&
+            lifeState _x != 'incapacitated' &&
+            isNil {_x getVariable 'MGI_busy'} &&
+            isNil {_x getVariable 'MGI_heal'}
+            ) then {
+               [_x] spawn MGI_fn_checkWounded;
+        };
 
-          // Medic can heal
-          _isMedic = [_x] call FAR_is_medic;
-          _hasMedikit = [_x] call FAR_has_medikit;
-          if ( _isMedic && _hasMedikit &&
-              vehicle _x == _x &&
-              (behaviour _x) != "COMBAT" &&
-              lifeState _x != 'incapacitated' &&
+        // AI stop doing shit !
+        if ( leader group player != player &&
+              lifeState player == 'incapacitated' &&
+              _x distance2D player <= 500 &&
               isNil {_x getVariable 'MGI_busy'} &&
               isNil {_x getVariable 'MGI_heal'}
-             ) then { [_x] spawn MGI_fn_checkWounded };
-
-          // AI stop doing shit !
-          if ( leader group player != player &&
-               lifeState player == 'incapacitated' &&
-               _x distance2D player <= 500 &&
-               isNil {_x getVariable 'MGI_busy'} &&
-               isNil {_x getVariable 'MGI_heal'}
-              ) then {
-                doStop _x;
-                unassignVehicle _x;
-                [_x] orderGetIn false;
-                if (!isnull objectParent _x) then {
-                  doGetOut _x;
-                  sleep 3;
-                };
-                _x doMove (getPos player);
-          };
+            ) then {
+              doStop _x;
+              unassignVehicle _x;
+              [_x] orderGetIn false;
+              if (!isnull objectParent _x) then {
+                doGetOut _x;
+                sleep 3;
+              };
+              _x doMove (getPos player);
         };
-        sleep 0.1;
+
+        sleep 0.3;
       } forEach _bros;
     };
     sleep 5;
