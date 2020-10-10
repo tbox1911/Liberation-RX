@@ -1,11 +1,11 @@
 params ["_wnded", "_medic"];
 //diag_log format ["DBG_fn_sortie WNDED:%1 MEDIC:%2", name _wnded, name _medic];
 
-if (lifeState _wnded != "incapacitated") exitWith { [_medic, _wnded] call MGI_fn_medicRelease };
+if (lifeState _wnded != "incapacitated") exitWith { [_medic, _wnded] call PAR_fn_medicRelease };
 
 if (!isPlayer _medic) then {
   _msg = format ["%1 is healing %2 now...", name _medic, name _wnded];
-  [_wnded, _msg] call MGI_fn_globalchat;
+  [_wnded, _msg] call PAR_fn_globalchat;
   _medic setDir (_medic getDir _wnded);
   //_medic removeitem "FirstAidKit";
   if (stance _medic == "PRONE") then {
@@ -16,7 +16,7 @@ if (!isPlayer _medic) then {
   sleep 6;
 };
 
-if (lifeState _medic == "incapacitated") exitWith { [_medic, _wnded] call MGI_fn_medicRelease };
+if (lifeState _medic == "incapacitated") exitWith { [_medic, _wnded] call PAR_fn_medicRelease };
 
 // Revived
 _wnded setUnconscious false;
@@ -47,7 +47,7 @@ if (isPlayer _wnded) then {
   _wnded switchMove "amovpknlmstpsraswrfldnon"; //go up
   _wnded setSpeedMode (speedMode group player);
 };
-[_medic, _wnded] call MGI_fn_medicRelease;
+[_medic, _wnded] call PAR_fn_medicRelease;
 
 if (round (getPosASL _wnded select 2) <= -1) then {_wnded switchmove ""};
 if (round (getPosASL _medic select 2) <= -1) then {_medic switchmove ""};
@@ -56,6 +56,6 @@ if (round (getPosASL _medic select 2) <= -1) then {_medic switchmove ""};
     params ["_unit"];
     uIsleep 10;   //time to recover
     _unit setCaptive false;
-    _unit setVariable ["MGI_isUnconscious", false];
+    _unit setVariable ["PAR_isUnconscious", false];
     _unit allowDamage true;
 };

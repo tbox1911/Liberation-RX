@@ -1,16 +1,16 @@
 params ['_unit'];
 
-if (rating _unit < -2000) exitWith {_unit call MGI_fn_death};
+if (rating _unit < -2000) exitWith {_unit call PAR_fn_death};
 waituntil {sleep 0.5; lifeState _unit == 'incapacitated' && (isTouchingGround _unit || (round (getPos _unit select 2) <= 1))};
 
-if (!isNil {_unit getVariable 'MGI_busy'} || !isNil {_unit getVariable 'MGI_heal'}) then {
-  _unit setVariable ['MGI_busy', nil];
-  _unit setVariable ['MGI_heal', nil];
+if (!isNil {_unit getVariable 'PAR_busy'} || !isNil {_unit getVariable 'PAR_heal'}) then {
+  _unit setVariable ['PAR_busy', nil];
+  _unit setVariable ['PAR_heal', nil];
   _unit switchMove "";
 };
 
-_unit setVariable ['MGI_healed', nil];
-[(_unit getVariable ['MGI_myMedic', objNull]), _unit] call MGI_fn_medicRelease;
+_unit setVariable ['PAR_healed', nil];
+[(_unit getVariable ['PAR_myMedic', objNull]), _unit] call PAR_fn_medicRelease;
 _unit setCaptive true;
 _unit switchMove "AinjPpneMstpSnonWrflDnon";  // lay down
 
@@ -38,15 +38,15 @@ _unit switchMove "AinjPpneMstpSnonWrflDnon";  // lay down
     };
   },
   {
-    if ((diag_tickTime > (_this select 3 select 0) + MGI_BleedOut) && ! isPlayer _target && lifeState _target == 'incapacitated') then {
-      _target call MGI_fn_death;
+    if ((diag_tickTime > (_this select 3 select 0) + PAR_BleedOut) && ! isPlayer _target && lifeState _target == 'incapacitated') then {
+      _target call PAR_fn_death;
     }
   },
   {
     if (local _target) then {
-      [_target, _caller] spawn MGI_fn_sortie;
+      [_target, _caller] spawn PAR_fn_sortie;
     } else {
-      [[_target, _caller], {[(_this select 0),(_this select 1)] spawn MGI_fn_sortie}] remoteExec ["bis_fnc_call", owner _target];
+      [[_target, _caller], {[(_this select 0),(_this select 1)] spawn PAR_fn_sortie}] remoteExec ["bis_fnc_call", owner _target];
     };
   },
   {
@@ -57,23 +57,23 @@ _unit switchMove "AinjPpneMstpSnonWrflDnon";  // lay down
 sleep 5;
 
 _timer = diag_tickTime;
-while {lifeState _unit == 'incapacitated' && diag_tickTime <= _timer + MGI_BleedOut} do {
+while {lifeState _unit == 'incapacitated' && diag_tickTime <= _timer + PAR_BleedOut} do {
   if ( count units player > 1 ) then {
-    _medic = _unit getVariable ['MGI_myMedic', nil];
+    _medic = _unit getVariable ['PAR_myMedic', nil];
     if (isNil "_medic") then {
       _unit groupchat "I need a Medic !!";
-      _medic = _unit call MGI_fn_medic;
+      _medic = _unit call PAR_fn_medic;
       if (!isNil "_medic") then {
-        [_unit, _medic] call MGI_fn_911;
+        [_unit, _medic] call PAR_fn_911;
       };
     };
   };
   sleep 10;
 };
 
-[(_unit getVariable ['MGI_myMedic', objNull]), _unit] call MGI_fn_medicRelease;
+[(_unit getVariable ['PAR_myMedic', objNull]), _unit] call PAR_fn_medicRelease;
 _unit setCaptive false;
 
-if (lifeState _unit == 'incapacitated' && diag_tickTime > _timer + MGI_BleedOut) then {
-  _unit call MGI_fn_death;
+if (lifeState _unit == 'incapacitated' && diag_tickTime > _timer + PAR_BleedOut) then {
+  _unit call PAR_fn_death;
 };

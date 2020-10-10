@@ -1,6 +1,6 @@
 params ['_veh', '_unit'];
 
-MGI_unit_eject = {
+PAR_unit_eject = {
 	params ['_veh', '_unit'];
 	unAssignVehicle _unit;
 	_unit allowDamage false;
@@ -23,7 +23,7 @@ waitUntil {sleep 1; (round (speed _veh) == 0 && (round(getPosATL _veh select 2) 
 
 if (round(damage _veh) > 0.8 || (!alive _veh) || (!canMove _veh && !canFire _veh )) then {
 	_veh setVariable ["evacVeh", true];
-	{[_veh, _x] spawn MGI_unit_eject} forEach crew _veh;
+	{[_veh, _x] spawn PAR_unit_eject} forEach crew _veh;
 	//lock
 	sleep 5;
 	_veh setVariable ['evacVeh', nil];

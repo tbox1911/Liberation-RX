@@ -9,7 +9,7 @@ _check_sortie = {
   //systemchat format ["dbg: wnded 2D dist : %1 sqr dist %2   speed %3", _wnded distance2D _medic, _wnded distanceSqr _medic, round (speed (vehicle _medic)) ];
 
   if ( !alive _medic || !alive _wnded ||
-       isNil {_wnded getVariable ["MGI_myMedic", nil]} ||
+       isNil {_wnded getVariable ["PAR_myMedic", nil]} ||
        vehicle _medic != _medic || vehicle _wnded != _wnded
     ) then {
       _fail = 99;
@@ -29,16 +29,16 @@ _check_sortie = {
 
 _release_medic = {
   params ["_wnded","_medic"];
-  [_medic,_wnded] call MGI_fn_medicRelease;
+  [_medic,_wnded] call PAR_fn_medicRelease;
 };
 
-while {lifeState _wnded == "incapacitated" || lifeState _medic != "incapacitated" || isNil {_wnded getVariable ["MGI_myMedic", nil]} } do {
+while {lifeState _wnded == "incapacitated" || lifeState _medic != "incapacitated" || isNil {_wnded getVariable ["PAR_myMedic", nil]} } do {
 
-  if (lifeState _medic == "incapacitated" || _fail > 6 || isNil {_wnded getVariable ["MGI_myMedic", nil]}) exitWith {
+  if (lifeState _medic == "incapacitated" || _fail > 6 || isNil {_wnded getVariable ["PAR_myMedic", nil]}) exitWith {
       [_wnded,_medic] call _release_medic;
   };
 
-  if ([_wnded, _medic] call _check_sortie) exitWith {[_wnded,_medic] call MGI_fn_sortie};
+  if ([_wnded, _medic] call _check_sortie) exitWith {[_wnded,_medic] call PAR_fn_sortie};
   if (_fail == 99) exitWith {[_wnded,_medic] call _release_medic};
 
   _msg = "";
@@ -54,7 +54,7 @@ while {lifeState _wnded == "incapacitated" || lifeState _medic != "incapacitated
       sleep 3;
     };
 
-    if ([_wnded,_medic] call _check_sortie) exitWith {[_wnded,_medic] call MGI_fn_sortie};
+    if ([_wnded,_medic] call _check_sortie) exitWith {[_wnded,_medic] call PAR_fn_sortie};
     if (_fail == 99) exitWith {[_wnded,_medic] call _release_medic};
 
     if (_fail < 3) then {
@@ -72,7 +72,7 @@ while {lifeState _wnded == "incapacitated" || lifeState _medic != "incapacitated
       _medic setPos _newpos;
       sleep 1;
       _medic allowDamage true;
-      if ([_wnded,_medic] call _check_sortie) exitWith {[_wnded,_medic] call MGI_fn_sortie};
+      if ([_wnded,_medic] call _check_sortie) exitWith {[_wnded,_medic] call PAR_fn_sortie};
       if (_fail == 99) exitWith {[_wnded,_medic] call _release_medic};
 
       _dist = round (_wnded distance2D _medic);
@@ -94,7 +94,7 @@ while {lifeState _wnded == "incapacitated" || lifeState _medic != "incapacitated
     if (_fail == 0) then {
       _msg = format ["Please wait %1, %2 (dist: %3m/%4), is on the way...", name _wnded, name _medic, _dist, round (speed _medic)];
     };
-    [_wnded, _msg] call MGI_fn_globalchat;
+    [_wnded, _msg] call PAR_fn_globalchat;
     _cnt = 3;
   } else {
     _cnt = _cnt - 1;
@@ -102,4 +102,4 @@ while {lifeState _wnded == "incapacitated" || lifeState _medic != "incapacitated
   sleep 3;
 };
 
- [_medic, _wnded] call MGI_fn_medicRelease;
+ [_medic, _wnded] call PAR_fn_medicRelease;

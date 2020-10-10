@@ -23,13 +23,13 @@ _medic allowDamage true;
 
 _dist = round (_wnded distance2D _medic);
 if ( _dist <= 6 ) then {
-  [_wnded, _medic] spawn MGI_fn_checkMedic;
+  [_wnded, _medic] spawn PAR_fn_checkMedic;
 } else {
   if (_dist < 25) then {
     _medic doMove (getPosATL _wnded);
   } else {
     _medic doMove (getPos _wnded);
   };
-  [_wnded,_medic] spawn MGI_fn_checkMedic;
+  [_wnded,_medic] spawn PAR_fn_checkMedic;
 };
 

@@ -2,7 +2,7 @@ params ["_medic"];
 
 _search_radius = 30;
 
-private _bros = (units player) select {(_x getVariable ["MGI_Grp_ID","0"]) == (_medic getVariable ["MGI_Grp_ID","1"])};
+private _bros = (units player) select {(_x getVariable ["PAR_Grp_ID","0"]) == (_medic getVariable ["PAR_Grp_ID","1"])};
 private _wounded_list = _bros select {
   round (_x distance2D _medic) < _search_radius &&
   vehicle _x == _x &&
@@ -10,8 +10,8 @@ private _wounded_list = _bros select {
   damage _x >= 0.1 &&
   behaviour _x != "COMBAT" &&
   lifeState _x != 'incapacitated' &&
-  isNil {_x getVariable 'MGI_busy'} &&
-  isNil {_x getVariable 'MGI_healed'}
+  isNil {_x getVariable 'PAR_busy'} &&
+  isNil {_x getVariable 'PAR_healed'}
 };
 
 if (count (_wounded_list) > 0) then {
@@ -19,8 +19,8 @@ if (count (_wounded_list) > 0) then {
 	if (_medic != _wounded) then {
 		_medic groupchat format ["I'm going to heal %1 !", name _wounded];
 	};
-	_medic setVariable ['MGI_heal', true];
-	_wounded setVariable ['MGI_healed', true];
+	_medic setVariable ['PAR_heal', true];
+	_wounded setVariable ['PAR_healed', true];
 
 	if (!isplayer _wounded && _medic != _wounded) then {
 		doStop _wounded;
@@ -29,8 +29,8 @@ if (count (_wounded_list) > 0) then {
 	while {
 		alive _wounded &&
 		alive _medic &&
-		isNil {_wounded getVariable 'MGI_busy'} &&
-		isNil {_medic getVariable 'MGI_busy'} &&
+		isNil {_wounded getVariable 'PAR_busy'} &&
+		isNil {_medic getVariable 'PAR_busy'} &&
 		lifeState _wounded != 'incapacitated' &&
 		lifeState _medic != 'incapacitated' &&
 		damage _wounded  >= 0.1 &&
@@ -61,8 +61,8 @@ if (count (_wounded_list) > 0) then {
 	};
 
 	sleep 2;
-	_medic setVariable ['MGI_heal', nil];
+	_medic setVariable ['PAR_heal', nil];
 	_medic doFollow leader player;
-	_wounded setVariable ['MGI_healed', nil];
+	_wounded setVariable ['PAR_healed', nil];
 	_wounded doFollow leader player;
 };
