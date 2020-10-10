@@ -101,12 +101,6 @@ while {deleteManagerPublic} do {
 	//================================= DEAD MEN
 	if (!(_deadMenLimit isEqualTo -1)) then {
 		if ((count allDeadMen) > _deadMenLimit) then {
-			while {(((count allDeadMen) - _deadMenLimit) > 0)} do {
-				detach (allDeadMen select 0);
-				deleteVehicle (allDeadMen select 0);
-				sleep 0.5;
-			};
-		} else {
 			if (_deadMenDistCheck) then {
 				{
 					if ([_x,_deadMenDist,(playableUnits + switchableUnits)] call _isHidden) then {
@@ -115,17 +109,19 @@ while {deleteManagerPublic} do {
 					};
 				} count allDeadMen;
 			};
+
+			while {(((count allDeadMen) - _deadMenLimit) > 0)} do {
+				_unit = selectRandom allDeadMen;
+				detach _unit;
+				deleteVehicle _unit;
+				sleep 0.5;
+			};
 		};
 	};
 	sleep 1;
 	//================================= VEHICLES
 	if (!(_deadVehiclesLimit isEqualTo -1)) then {
 		if ((count (allDead - allDeadMen)) > _deadVehiclesLimit) then {
-			while {(((count (allDead - allDeadMen)) - _deadVehiclesLimit) > 0)} do {
-				deleteVehicle ((allDead - allDeadMen) select 0);
-				sleep 0.5;
-			};
-		} else {
 			if (_deadVehicleDistCheck) then {
 				{
 					if ([_x,_deadVehicleDist,(playableUnits + switchableUnits)] call _isHidden) then {
@@ -134,17 +130,17 @@ while {deleteManagerPublic} do {
 					};
 				} count (allDead - allDeadMen);
 			};
+
+			while {(((count (allDead - allDeadMen)) - _deadVehiclesLimit) > 0)} do {
+				deleteVehicle (selectRandom (allDead - allDeadMen));
+				sleep 0.5;
+			};
 		};
 	};
 	sleep 1;
 	//================================= CRATERS
 	if (!(_craterLimit isEqualTo -1)) then {
 		if ((count (allMissionObjects "CraterLong")) > _craterLimit) then {
-			while {(((count (allMissionObjects "CraterLong")) - _craterLimit) > 0)} do {
-				deleteVehicle ((allMissionObjects "CraterLong") select 0);
-				sleep 0.5;
-			};
-		} else {
 			if (_craterDistCheck) then {
 				{
 					if ([_x,_craterDist,(playableUnits + switchableUnits)] call _isHidden) then {
@@ -152,17 +148,17 @@ while {deleteManagerPublic} do {
 					};
 				} count (allMissionObjects "CraterLong");
 			};
+
+			while {(((count (allMissionObjects "CraterLong")) - _craterLimit) > 0)} do {
+				deleteVehicle (selectRandom (allMissionObjects "CraterLong"));
+				sleep 0.5;
+			};
 		};
 	};
 	sleep 1;
 	//================================= WEAPON HOLDERS
 	if (!(_weaponHolderLimit isEqualTo -1)) then {
 		if ((count (allMissionObjects "WeaponHolder")) > _weaponHolderLimit) then {
-			while {(((count (allMissionObjects "WeaponHolder")) - _weaponHolderLimit) > 0)} do {
-				deleteVehicle ((allMissionObjects "WeaponHolder") select 0);
-				sleep 0.5;
-			};
-		} else {
 			if (_weaponHolderDistCheck) then {
 				{
 					if (round (getMass _x) <= 0)  then { _x setMass 1 };
@@ -171,17 +167,17 @@ while {deleteManagerPublic} do {
 					};
 				} count (allMissionObjects "WeaponHolder");
 			};
+
+			while {(((count (allMissionObjects "WeaponHolder")) - _weaponHolderLimit) > 0)} do {
+				deleteVehicle (selectRandom (allMissionObjects "WeaponHolder"));
+				sleep 0.5;
+			};
 		};
 	};
 	sleep 1;
 	//================================= MINES
 	if (!(_minesLimit isEqualTo -1)) then {
 		if ((count allMines) > _minesLimit) then {
-			while {(((count allMines) - _minesLimit) > 0)} do {
-				deleteVehicle (allMines select 0);
-				sleep 0.5;
-			};
-		} else {
 			if (_minesDistCheck) then {
 				{
 					if ([_x,_minesDist,allUnits] call _isHidden) then {
@@ -189,23 +185,28 @@ while {deleteManagerPublic} do {
 					};
 				} count allMines;
 			};
+
+			while {(((count allMines) - _minesLimit) > 0)} do {
+				deleteVehicle (selectRandom allMines);
+				sleep 0.5;
+			};
 		};
 	};
 	sleep 1;
 	//================================= STATIC WEAPONS
 	if (!(_staticsLimit isEqualTo -1)) then {
 		if ((count (allMissionObjects "StaticWeapon")) > _staticsLimit) then {
-			while {(((count (allMissionObjects "StaticWeapon")) - _staticsLimit) > 0)} do {
-				deleteVehicle ((allMissionObjects "StaticWeapon") select 0);
-				sleep 0.5;
-			};
-		} else {
 			if (_staticsDistCheck) then {
 				{
 					if ([_x,_staticsDist,allUnits] call _isHidden) then {
 						deleteVehicle _x;
 					};
 				} count (allMissionObjects "StaticWeapon");
+			};
+
+			while {(((count (allMissionObjects "StaticWeapon")) - _staticsLimit) > 0)} do {
+				deleteVehicle (selectRandom (allMissionObjects "StaticWeapon"));
+				sleep 0.5;
 			};
 		};
 	};
@@ -219,19 +220,20 @@ while {deleteManagerPublic} do {
 				sleep 0.1;
 			};
 		} count (allMissionObjects "Ruins");
+
 		if ((count _ruins) > _ruinsLimit) then {
-			while {(((count _ruins) - _ruinsLimit) > 0)} do {
-				_ruins resize (count _ruins - 1);
-				deleteVehicle (_ruins select 0);
-				sleep 0.5;
-			};
-		} else {
 			if (_ruinsDistCheck) then {
 				{
 					if ([_x,_ruinsDist,(playableUnits + switchableUnits)] call _isHidden) then {
 						deleteVehicle _x;
 					};
 				} count (allMissionObjects "Ruins");
+			};
+
+			while {(((count _ruins) - _ruinsLimit) > 0)} do {
+				_ruins resize (count _ruins - 1);
+				deleteVehicle (selectRandom _ruins);
+				sleep 0.5;
 			};
 		};
 	};
