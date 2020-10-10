@@ -90,7 +90,7 @@ MGI_fn_Revive = {
 
 MGI_fn_globalchat = {
   params ["_speaker", "_msg"];
-  if ((_speaker getVariable ["MGI_Grp_ID","0"]) == format["Bros_%1",MGI_Grp_ID]) then {
+  if ((_speaker getVariable ["MGI_Grp_ID","0"]) == format["Bros_%1",MGI_Grp_ID] || isPlayer _speaker) then {
     gamelogic globalChat _msg;
   };
 };
