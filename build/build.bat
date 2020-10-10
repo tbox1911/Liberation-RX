@@ -8,11 +8,11 @@ echo //Liberation_RX was build on : > %GRLIB_file%
 echo GRLIB_build_date = "%DATE%"; >> %GRLIB_file%
 echo GRLIB_build_time = "%TIME:~0,8%"; >> %GRLIB_file%
 
-for /f %%i in ('dir /B /A:D ..\liberation_RX.*') do (
+for /f %%i in ('dir /B /A:D ..\maps\liberation_RX.*') do (
 	echo.
 	echo Building PBO for map %%i 
 	xcopy /Q /E /Y ..\core.liberation .\%%i\
-	xcopy /Q /E /Y ..\%%i .\%%i\
+	xcopy /Q /E /Y ..\maps\%%i .\%%i\
 	if exist .\custom\ xcopy /Q /E /Y .\custom .\%%i\
 	bin\PBOConsole.exe -pack %%i .\%%i.pbo  > nul 2>&1
 	rmdir /S /Q %%i
