@@ -42,7 +42,7 @@ MGI_fn_EHDamage = {
 MGI_fn_Revive = {
   MGI_BleedOut = 300;
   while {true} do {
-    private _bros = (units player) select {!isplayer _x && (_x getVariable ["MGI_Grp_ID","0"]) == (player getVariable ["MGI_Grp_ID","1"])};
+    private _bros = (units player) select {!isplayer _x && (_x getVariable ["MGI_Grp_ID","0"]) == format["Bros_%1",MGI_Grp_ID]};
     if (count _bros > 0 ) then {
       {
         // Set EH
@@ -90,7 +90,7 @@ MGI_fn_Revive = {
 
 MGI_fn_globalchat = {
   params ["_speaker", "_msg"];
-  if ((_speaker getVariable ["MGI_Grp_ID","0"]) == (player getVariable ["MGI_Grp_ID","1"])) then {
+  if ((_speaker getVariable ["MGI_Grp_ID","0"]) == format["Bros_%1",MGI_Grp_ID]) then {
     gamelogic globalChat _msg;
   };
 };
