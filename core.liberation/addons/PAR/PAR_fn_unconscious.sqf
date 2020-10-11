@@ -30,6 +30,7 @@ _unit switchMove "AinjPpneMstpSnonWrflDnon";  // lay down
     if (_caller != player) then {
       _msg = format ["%1 is healing %2 now...", name _caller, name _target];
       [gamelogic, _msg] remoteExec ["globalChat", owner _target];
+      //extend PAR_BleedOut
     };
     if (stance _caller == 'PRONE') then {
       _caller playMoveNow 'ainvppnemstpslaywrfldnon_medicother';
