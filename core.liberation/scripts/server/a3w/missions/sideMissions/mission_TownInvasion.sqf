@@ -57,7 +57,8 @@ _setupObjects =
 
 _waitUntilMarkerPos = nil;
 _waitUntilExec = nil;
-_waitUntilCondition = nil;
+
+_waitUntilCondition = { _missionLocation in blufor_sectors};
 
 _failedExec = {
 	// Mission failed
