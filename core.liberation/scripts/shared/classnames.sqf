@@ -170,7 +170,7 @@ buildings = [
 	["Flag_NATO_F",0,0,0,0],
 	["Land_PortableLight_double_F",0,0,0,GRLIB_perm_log],
 	["Land_LampHalogen_F",0,0,0,GRLIB_perm_tank],
-	["Land_HelipadSquare_F",0,0,0,GRLIB_perm_tank],
+	["Land_HelipadSquare_F",0,0,0,GRLIB_perm_log],
 	["Land_Razorwire_F",0,0,0,GRLIB_perm_tank],
 	["Land_ToolTrolley_02_F",0,0,0,GRLIB_perm_tank],
 	["Land_WeldingTrolley_01_F",0,0,0,GRLIB_perm_tank],
