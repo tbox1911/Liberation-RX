@@ -14,3 +14,4 @@ _medic setVariable ["PAR_busy", nil];
 _medic setCaptive false;
 
 _wnded setVariable ['PAR_myMedic', nil];
+_wnded setVariable ['PAR_extratime', nil, true];
