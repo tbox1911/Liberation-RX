@@ -54,7 +54,7 @@ while { true } do {
 			case GRLIB_side_friendly: {_localunits_blu = _localunits_blu +1};
 			case GRLIB_side_enemy: {_localunits_opfor = _localunits_opfor +1};
 		};
-	} forEach ([allUnits, {(local _x) && (alive _x)}] call BIS_fnc_conditionalSelect);
+	} forEach ([allUnits, {(local _x) && (alive _x) && (_x distance2D lhd) >= 500 }] call BIS_fnc_conditionalSelect);
 
 	{
 		switch (side _x) do {
@@ -62,7 +62,7 @@ while { true } do {
 			case GRLIB_side_friendly: {_localvehicles_blu = _localvehicles_blu +1};
 			case GRLIB_side_enemy: {_localvehicles_opfor = _localvehicles_opfor +1};
 		};
-	} forEach ([vehicles, {(local _x) && (alive _x) && (!isNull (currentPilot _x))}] call BIS_fnc_conditionalSelect);
+	} forEach ([vehicles, {(local _x) && (alive _x) && (_x distance2D lhd) >= 500 && (!isNull (currentPilot _x))}] call BIS_fnc_conditionalSelect);
 
 	_myfpsmarker setMarkerColor "ColorGREEN";
 	if ( _myfps < 30 ) then { _myfpsmarker setMarkerColor "ColorYELLOW"; };
