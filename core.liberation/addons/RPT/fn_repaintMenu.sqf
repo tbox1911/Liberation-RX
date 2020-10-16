@@ -1,8 +1,11 @@
 params ["_vehicle"];
 private["_display","_vehicles","_detected_vehicles","_color","_pic","_text"];
 if (isNil "_vehicle") exitWith {};
-paint_veh = 0;
+if (!([player, _vehicle] call is_owner)) exitWith { hintSilent "Wrong Vehicle Owner.\nAccess is Denied !" };
+if ((damage _vehicle) != 0) exitWith { hintSilent "Damaged Vehicles cannot be Painted !" };
+if (typeOf _vehicle in GRLIB_vehicle_blacklist) exitWith { hintSilent "This Vehicle cannot be Painted !" };
 
+paint_veh = 0;
 createDialog "RPT_vehicle_repaint";
 waitUntil { dialog };
 
@@ -16,8 +19,7 @@ if(!isNull (findDisplay 2300)) then {
 	ctrlSetText [234, _pic];
 	ctrlSetText [235, _pic];
 
-	_veh_class = typeOf _vehicle;
-	_veh_texture_list = (configfile >> "CfgVehicles" >> _veh_class >> "TextureSources") call Bis_fnc_getCfgSubClasses;
+	_veh_texture_list = (configfile >> "CfgVehicles" >> typeOf _vehicle >> "TextureSources") call Bis_fnc_getCfgSubClasses;
 
 	_i = 0;
 	{
@@ -42,9 +44,6 @@ if(!isNull (findDisplay 2300)) then {
 			_name = lbText [231, _color];
 			_texture = lbData[231, _color];
 
-			if (!([player, _vehicle] call is_owner)) exitWith { hintSilent "Wrong Vehicle Owner.\nAccess is Denied !" };
-			if ((damage _vehicle) != 0) exitWith { hintSilent "Damaged Vehicles cannot be Painted !" };
-			if (_veh_class in GRLIB_vehicle_blacklist) exitWith { hintSilent "This Vehicle cannot be Painted !" };
 			if (_texture == "" ) then {_texture = [_name]};
 			[_vehicle, _texture, _name, []] call RPT_fnc_TextureVehicle;
 			paint_veh = 0;
