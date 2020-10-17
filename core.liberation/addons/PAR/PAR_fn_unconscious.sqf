@@ -56,7 +56,7 @@ _unit switchMove "AinjPpneMstpSnonWrflDnon";  // lay down
   },
   [time],6,12] call BIS_fnc_holdActionAdd;
 }] remoteExec ["bis_fnc_call", [0,-2] select isDedicated,true];
-sleep 5;
+sleep 6;
 
 _bleedOut = time + PAR_BleedOut;
 _extra_time = 0;
