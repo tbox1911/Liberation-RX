@@ -25,6 +25,7 @@ do_pay_build = {
 	player setVariable ["GREUH_ammo_count", (_ammo_collected - _price), true];
 	playSound "rearm";
 	gamelogic globalChat format ["Build Price: %1, Thank you !", _price];
+	stats_ammo_spent = stats_ammo_spent + _price; publicVariable "stats_ammo_spent";
 };
 
 if (isNil "manned") then { manned = false };
@@ -94,6 +95,7 @@ while { true } do {
 			_unit enableIRLasers true;
 			_unit enableGunLights "Auto";
 			[_unit] call player_EVH;
+			stats_blufor_soldiers_recruited = stats_blufor_soldiers_recruited + 1; publicVariable "stats_blufor_soldiers_recruited";
 		};
 		[_price] call do_pay_build;
 		build_confirmed = 0;
@@ -120,6 +122,7 @@ while { true } do {
 					[_x] call PAR_fn_EHDamage;
 				} forEach units _grp;
 				[_price] call do_pay_build;
+				stats_blufor_soldiers_recruited = stats_blufor_soldiers_recruited + count (units _grp); publicVariable "stats_blufor_soldiers_recruited";
 				player hcSetGroup [_grp];
 			} else {
 				hint "Only One Squad Allowed !!";
@@ -371,7 +374,7 @@ while { true } do {
 				};
 
 				[_price] call do_pay_build;
-
+				stats_blufor_vehicles_built = stats_blufor_vehicles_built + 1; publicVariable "stats_blufor_vehicles_built";
 			};
 
 			if ( _idactcancel != -1 ) then {

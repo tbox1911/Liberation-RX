@@ -18,5 +18,6 @@ if (_price > _oldprice) then {
 		playSound "rearm";
 		hintSilent format ["You pay: %1\nThank you !", _cost];
 		gamelogic globalChat format ["You pay: %1, Thank you !", _cost];
+		stats_ammo_spent = stats_ammo_spent + _cost; publicVariable "stats_ammo_spent";
 	};
 };
