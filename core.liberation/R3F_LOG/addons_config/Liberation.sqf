@@ -41,6 +41,7 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["B_UAV_01_F", 1],
 	["B_UAV_02_F", 1],
 	["B_UAV_06_F", 5],
+	["C_UAV_06_F", 5],
 	["B_UGV_02_Demining_F", 0],
 	["B_T_UAV_03_F", 15]
 ];
@@ -49,6 +50,7 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 [
 	["B_UAV_01_F", 3],
 	["B_UAV_06_F", 3],
+	["C_UAV_06_F", 3],
 	["B_UGV_02_Demining_F", 5],
 	["B_UAV_02_F", 30]
 ];
@@ -58,6 +60,7 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	"B_UAV_01_F",
 	"B_UAV_02_F",
 	"B_UAV_06_F",
+	"C_UAV_06_F",
 	"B_UGV_02_Demining_F"
 ];
 
