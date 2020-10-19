@@ -11,6 +11,7 @@ for [ {_idx=0},{_idx < _planes_number},{_idx=_idx+1}] do {
 	_newvehicle = createVehicle [_plane_type, _air_spawnpos, [], 0, "FLY"];
 	_newvehicle flyInHeight (120 + (random 180));
 	createVehicleCrew _newvehicle;
+	sleep 1;
 	_newvehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	{ _x addMPEventHandler ["MPKilled", {_this spawn kill_manager}]; } foreach (crew _newvehicle);
 
