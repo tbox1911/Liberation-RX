@@ -16,10 +16,11 @@ AR_active = false;
 _free_vehicles = [];
 {
 	_free_vehicles pushBack ( _x select 0 );
-} foreach (light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles + buildings);
+} foreach (light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles + buildings + civilian_vehicles);
 
 _free_vehicles = _free_vehicles + [
 	huron_typename,
+	"C_UAV_06_F",
 	"B_Heli_Transport_01_F",
 	"Land_Cargo_HQ_V1_ruins_F",
 	"Land_Cargo_Tower_V1_ruins_F",
