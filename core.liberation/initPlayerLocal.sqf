@@ -1,1 +1,1 @@
-titleText ["Loading...","BLACK FADED"];
+titleText ["Loading...","BLACK FADED", 1000];
