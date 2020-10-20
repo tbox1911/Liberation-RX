@@ -36,6 +36,7 @@ while { true } do {
 	waitUntil { !dialog };
 	sleep 0.1;
 
+	disableUserInput false;
 	_dialog = createDialog "liberation_tutorial";
 	if ( !cinematic_camera_started ) then {
 		[] spawn cinematic_camera;
