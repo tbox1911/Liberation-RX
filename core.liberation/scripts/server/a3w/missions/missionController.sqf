@@ -84,7 +84,10 @@ while {true} do
 		];
 	};
 	[_info] remoteExec ["remote_call_showinfo", 0];
-	uiSleep _missionDelay;
+
+	_timer = time;
+	waitUntil {sleep 5; ( time > (_timer + _missionDelay) || count allPlayers == 0) };
+	if (count allPlayers == 0 ) exitWith {};
 
 	// these should be defined in the mission script
 	private ["_setupVars", "_setupObjects", "_waitUntilMarkerPos", "_waitUntilExec", "_waitUntilCondition", "_waitUntilSuccessCondition", "_ignoreAiDeaths", "_failedExec", "_successExec"];
