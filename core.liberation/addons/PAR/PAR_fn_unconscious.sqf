@@ -61,6 +61,7 @@ sleep 6;
 _bleedOut = time + PAR_BleedOut;
 _extra_time = 0;
 while {lifeState _unit == 'incapacitated' && time <= _bleedOut + _extra_time} do {
+  _unit setOxygenRemaining 1;
   if ( count units player > 1 ) then {
     _medic = _unit getVariable ['PAR_myMedic', nil];
     if (isNil "_medic") then {
