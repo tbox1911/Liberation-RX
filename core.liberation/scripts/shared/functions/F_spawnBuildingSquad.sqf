@@ -4,12 +4,13 @@ params [ "_infsquad", "_building_ai_max", "_buildingpositions", "_sectorpos", [ 
 private [ "_squadtospawnnn", "_infsquad_classnames", "_usedposits", "_nextposit", "_remainingposits", "_grp", "_everythingspawned", "_nextunit", "_position_indexes", "_position_count", "_idxposit", "_groupunitscount" ];
 
 _everythingspawned = [];
+_default_side = GRLIB_side_enemy;
 
-_infsquad_classnames = [];
-if ( _infsquad == "militia" ) then {
-	_infsquad_classnames = militia_squad;
-} else {
-	_infsquad_classnames = ([] call F_getAdaptiveSquadComp);
+switch (_infsquad) do {
+	case ("infantry"): { _infsquad_classnames = opfor_infantry };
+	case ("militia"): { _infsquad_classnames = militia_squad };
+	case ("resistance"): { _infsquad_classnames = resistance_squad; _default_side = GRLIB_side_resistance};
+	default {_infsquad_classnames = ([] call F_getAdaptiveSquadComp)};
 };
 
 diag_log format [ "Spawning building squad Checkpoint A at %1", time ];
@@ -31,7 +32,7 @@ while { count _position_indexes < count _squadtospawnnn } do {
 
 diag_log format [ "Spawning building squad Checkpoint C at %1", time ];
 
-_grp = createGroup [GRLIB_side_enemy, true];
+_grp = createGroup [_default_side, true];
 _idxposit = 0;
 {
 	_x createUnit [ _sectorpos, _grp ];
@@ -53,7 +54,7 @@ _idxposit = 0;
 
 	if ( count units _grp > 10 ) then {
 		_everythingspawned = _everythingspawned + (units _grp);
-		_grp = createGroup [GRLIB_side_enemy, true];
+		_grp = createGroup [_default_side, true];
 	};
 } foreach _squadtospawnnn;
 
