@@ -36,4 +36,3 @@ if (GRLIB_fancy_info == 2) then {
 	];
 };
 [_info] remoteExec ["remote_call_showinfo", 0];
-uiSleep 10;
