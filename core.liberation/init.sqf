@@ -7,6 +7,9 @@ enableSaving [false, false];
 disableMapIndicators [false,true,false,false];
 setGroupIconsVisible [false,false];
 
+resistance setFriend [east, 0];
+east setFriend [resistance, 0];
+
 [] call compileFinal preprocessfilelinenumbers "scripts\shared\init_shared.sqf";
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\fetch_params.sqf";
 [] call compileFinal preprocessFileLineNUmbers "gameplay_constants.sqf";

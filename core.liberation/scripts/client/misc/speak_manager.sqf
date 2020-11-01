@@ -125,7 +125,7 @@ switch (side _unit) do {
 		};
 	};
 
-	case (GRLIB_side_friendly) : {
+	case (GRLIB_side_resistance) : {
 		if (_unit == leader (group _unit)) then {
 			[_unit] call speak_leader_AI;
 		} else {
@@ -133,7 +133,7 @@ switch (side _unit) do {
 		};
 	};
 
-	case (GRLIB_side_resistance) : {};
+	case (GRLIB_side_friendly) : {};
 
 	default {};
 };

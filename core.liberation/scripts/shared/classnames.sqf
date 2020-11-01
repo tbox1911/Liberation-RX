@@ -418,21 +418,18 @@ divers_squad = [
 ];
 
 resistance_squad = [
-	"B_G_Soldier_SL_F",
-	"B_G_Soldier_A_F",
-	"B_G_Soldier_AR_F",
-	"B_G_medic_F",
-	"B_G_engineer_F",
-	"B_G_Soldier_exp_F",
-	"B_G_Soldier_GL_F",
-	"B_G_Soldier_M_F",
-	"B_G_Soldier_F",
-	"B_G_Soldier_LAT_F",
-	"B_G_Soldier_lite_F",
-	"B_G_Sharpshooter_F",
-	"B_G_Soldier_TL_F",
-	"B_G_Soldier_AA_F",
-	"B_G_Soldier_AT_F"
+	"I_G_Soldier_SL_F",
+	"I_G_Soldier_A_F",
+	"I_G_Soldier_AR_F",
+	"I_G_medic_F",
+	"I_G_Soldier_exp_F",
+	"I_G_Soldier_GL_F",
+	"I_G_Soldier_M_F",
+	"I_G_Soldier_F",
+	"I_G_Soldier_LAT_F",
+	"I_G_Soldier_lite_F",
+	"I_G_Sharpshooter_F",
+	"I_G_Soldier_TL_F"
 ];
 
 militia_vehicles = [
