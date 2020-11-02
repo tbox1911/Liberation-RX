@@ -13,7 +13,6 @@ east setFriend [resistance, 0];
 [] call compileFinal preprocessfilelinenumbers "scripts\shared\init_shared.sqf";
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\fetch_params.sqf";
 [] call compileFinal preprocessFileLineNUmbers "gameplay_constants.sqf";
-[] call compileFinal preprocessFileLineNumbers "scripts\shared\atlas_manager.sqf";
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\liberation_functions.sqf";
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\init_sectors.sqf";
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\classnames.sqf";
