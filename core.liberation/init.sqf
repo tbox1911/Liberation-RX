@@ -22,6 +22,9 @@ if (!GRLIB_ACE_enabled) then {[] execVM "R3F_LOG\init.sqf"};
 if (GRLIB_revive != 0) then {[] execVM "addons\FAR\FAR_init.sqf"};
 
 if (isServer) then {
+	lhd setpos getmarkerpos "base_chimera";
+	lhd hideObject true;
+	//{ deleteVehicle _x } foreach ( ( getmarkerpos "lhd" ) nearObjects 500 );
 	[] execVM "scripts\server\init_server.sqf";
 };
 
