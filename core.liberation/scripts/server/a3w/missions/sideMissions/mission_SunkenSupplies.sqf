@@ -7,12 +7,13 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_box1", "_box2", "_vehicle", "_boxPos", "_aiGroup", "_unit"];
+private ["_nbUnits", "_box1", "_box2", "_vehicle", "_boxPos", "_aiGroup", "_unit"];
 
 _setupVars =
 {
 	_missionType = "Sunken Supplies";
 	_locationsArray = SunkenMissionMarkers;
+	_nbUnits = [] call getNbUnits;
 };
 
 _setupObjects =
@@ -37,7 +38,6 @@ _setupObjects =
 		_x setDir random 360;
 	} forEach [_box1, _box2];
 
-	_nbUnits = 6;
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	[_aiGroup, _missionPos, _nbUnits, "divers"] call createCustomGroup;
 	_vehicle = ["O_Boat_Armed_01_hmg_F", _missionPos, 0, _aiGroup] call _createVehicle;

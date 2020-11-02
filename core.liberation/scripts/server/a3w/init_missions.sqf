@@ -23,6 +23,7 @@ getBallMagazine = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scr
 missionHint = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_missionHint.sqf";
 checkSpawn = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_checkSpawn.sqf";
 updateMissionsList = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_updateMissionsList.sqf";
+getNbUnits = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_getNbUnits.sqf";
 
 waitUntil {sleep 1; !isNil "blufor_sectors" };
 waitUntil {sleep 1; !isNil "sectors_allSectors" };

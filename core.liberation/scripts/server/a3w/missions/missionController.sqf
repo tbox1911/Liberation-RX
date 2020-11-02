@@ -15,12 +15,10 @@ _controllerSuffix = format [" %1", _controllerNum];
 _missionsFolder = MISSION_CTRL_FOLDER;
 [MISSION_CTRL_PVAR_LIST, MISSION_CTRL_FOLDER] call attemptCompileMissions;
 
-while {true} do
-{
+while {true} do {
 	_nextMission = nil;
 
-	while {isNil "_nextMission"} do
-	{
+	while {isNil "_nextMission"} do	{
 		_availableMissions = [MISSION_CTRL_PVAR_LIST, { !(_x select 2) }] call BIS_fnc_conditionalSelect;
 		// _availableMissions = MISSION_CTRL_PVAR_LIST; // If you want to allow multiple missions of the same type running along, uncomment this line and comment the one above
 
@@ -59,6 +57,8 @@ while {true} do
 				_missionsList = ["mission_Delivery", true, _missionsList] call updateMissionsList;
 			};
 			_nextMission = _missionsList call fn_selectRandomWeighted;
+		} else {
+			sleep 10;
 		};
 	};
 	_missionDelay = MISSION_CTRL_DELAY;
@@ -98,5 +98,5 @@ while {true} do
 
 	if (_tempController) exitWith {};
 	if (count allPlayers == 0 ) exitWith {};
-	uiSleep 5;
+	sleep 10;
 };
