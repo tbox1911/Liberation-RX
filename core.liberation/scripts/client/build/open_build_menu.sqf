@@ -62,26 +62,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 		{
 			ctrlSetText [ 151, _buildpages select ( buildtype - 1) ];
 			if ( buildtype != 8 ) then {
-				_classnamevar = (_x select 0);
-				_entrytext = getText (_cfg >> _classnamevar >> "displayName");
-				if ( _classnamevar == FOB_box_typename ) then {
-					_entrytext = localize "STR_FOBBOX";
-				};
-				if ( _classnamevar == Arsenal_typename ) then {
-					_entrytext = localize "STR_ARSENAL_BOX";
-				};
-				if ( _classnamevar == Respawn_truck_typename ) then {
-					_entrytext = localize "STR_RESPAWN_TRUCK";
-				};
-				if ( _classnamevar == FOB_truck_typename ) then {
-					_entrytext = localize "STR_FOBTRUCK";
-				};
-				if ( _classnamevar == mobile_respawn ) then {
-					_entrytext = "Mobile Respawn";
-				};
-				if ( _classnamevar == "Land_CargoBox_V1_F" ) then {
-					_entrytext = "Fireworks Box";
-				};
+				_entrytext = [(_x select 0)] call get_lrx_name;
 				((findDisplay 5501) displayCtrl (110)) lnbAddRow [ _entrytext, format [ "%1" ,_x select 1], format [ "%1" ,_x select 2], format [ "%1" ,_x select 3]];
 
 				_icon = getText ( _cfg >> (_x select 0) >> "icon");
