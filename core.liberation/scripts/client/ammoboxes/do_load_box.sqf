@@ -20,7 +20,11 @@ _truck_to_load = objNull;
 		_truck_load = _next_truck getVariable ["GRLIB_ammo_truck_load", 0];
 		if (  _truck_load < _maxload ) then {
 			_truck_to_load = _next_truck;
-			_ammobox attachTo [ _truck_to_load, _offsets select _truck_load ];
+			_truck_offset = _offsets select _truck_load;
+			if (typeOf _ammobox in [waterbarrel_typename,fuelbarrel_typename,medicbarrel_typename]) then {
+				_truck_offset = _truck_offset vectorAdd [0, 0, -0.4];
+			};
+			_ammobox attachTo [ _truck_to_load, _truck_offset ];
 			_ammobox setVariable ["R3F_LOG_disabled", true, true];
 			_ammobox allowDamage false;
 			_truck_to_load setVariable ["GRLIB_ammo_truck_load", _truck_load + 1, true];

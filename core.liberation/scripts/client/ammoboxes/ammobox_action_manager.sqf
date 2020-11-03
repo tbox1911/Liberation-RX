@@ -2,16 +2,24 @@ waitUntil { !isNil "build_confirmed" };
 waitUntil { !isNil "one_synchro_done" };
 waitUntil { one_synchro_done };
 
-private [ "_managed_trucks", "_managed_boxes", "_next_truck", "_next_box", "_truck_load", "_checked_trucks", "_checked_boxes", "_action_id" ];
+private [ "_managed_trucks", "_managed_boxes", "_classname_box", "_next_truck", "_next_box", "_truck_load", "_checked_trucks", "_checked_boxes", "_action_id" ];
 
 _managed_trucks = [];
 _managed_boxes = [];
+_classname_box = [
+	ammobox_b_typename,
+	ammobox_o_typename,
+	ammobox_i_typename,
+	waterbarrel_typename,
+	fuelbarrel_typename,
+	medicbarrel_typename
+];
 
 while { true } do {
 
 	if ( [ player, 5 ] call fetch_permission ) then {
 
-		_nearammoboxes = ((getpos player) nearEntities [ [ ammobox_b_typename, ammobox_o_typename, ammobox_i_typename ] ,10]);
+		_nearammoboxes = ((getpos player) nearEntities [ _classname_box, 10]);
 		_neartransporttrucks = ((getpos player) nearEntities [ ammobox_transports_typenames ,10]);
 
 		_checked_trucks = [];
