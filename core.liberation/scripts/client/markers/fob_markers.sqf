@@ -36,8 +36,7 @@ while { true } do {
 
 	if ( count _respawn_trucks == count _markers_mobilespawns ) then {
 		for [ {_idx=0},{_idx < (count _markers_mobilespawns)},{_idx=_idx+1} ] do {
-			//(_markers_mobilespawns select _idx) setMarkerPosLocal getpos (_respawn_trucks select _idx);
-			(_markers_mobilespawns select _idx) setMarkerPosLocal (getpos (_respawn_trucks select _idx) vectorAdd [0, 4, 0]);
+			(_markers_mobilespawns select _idx) setMarkerPosLocal getpos (_respawn_trucks select _idx);
 			(_markers_mobilespawns select _idx) setMarkerTextLocal format ["%1 %2",localize "STR_RESPAWN_TRUCK",mapGridPosition (_respawn_trucks select _idx)];
 		};
 	};

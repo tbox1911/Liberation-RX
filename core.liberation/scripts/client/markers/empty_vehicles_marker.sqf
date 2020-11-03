@@ -1,13 +1,10 @@
-private [ "_vehmarkers", "_markedveh", "_cfg", "_vehtomark", "_supporttomark", "_marker", "_loaded" ];
+private [ "_vehmarkers", "_markedveh", "_vehtomark", "_supporttomark", "_marker", "_loaded" ];
 
 _vehmarkers = [];
 _beacmarkers = [];
 _markedveh = [];
 _markedbeac = [];
-
-_cfg = configFile >> "cfgVehicles";
 _vehtomark = [];
-
 _support_to_skip = [
 ];
 
@@ -45,31 +42,13 @@ while { true } do {
 	{
 		_marker = _vehmarkers select (_markedveh find _x);
 		_marker setMarkerPosLocal getpos _x;
-		_marker setMarkerTextLocal  (getText (_cfg >> typeOf _x >> "displayName"));
-
+		_text = [(typeOf _x)] call get_lrx_name;
+		_marker setMarkerTextLocal _text;
+		_marker setMarkerColorLocal "ColorKhaki";
+		if (typeOf _x in [waterbarrel_typename,fuelbarrel_typename,medicbarrel_typename]) then {
+			_marker setMarkerColorLocal "ColorGrey";
+		};
 	} foreach _markedveh;
-
-	// Mobile Markers Update
-	_markedbeac = [ GRLIB_mobile_respawn, { alive _x && _x distance2D lhd > 1000 && _x distance2D ([_x] call F_getNearestFob) > GRLIB_sector_size && !surfaceIsWater (getpos _x) && isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull])}] call BIS_fnc_conditionalSelect;
-
-	if ( count _markedbeac != count _beacmarkers ) then {
-		{ deleteMarkerLocal _x; } foreach _beacmarkers;
-		_beacmarkers = [];
-
-		{
-			_marker = createMarkerLocal [format ["markedbeac%1" ,_x], markers_reset];
-			_marker setMarkerColorLocal "ColorBlue";
-			_marker setMarkerTypeLocal "mil_dot";
-			_marker setMarkerSizeLocal [ 0.75, 0.75 ];
-			_beacmarkers pushback _marker;
-		} forEach _markedbeac;
-	};
-
-	{
-		_marker = _beacmarkers select (_markedbeac find _x);
-		_marker setMarkerPosLocal getpos _x;
-		_marker setMarkerTextLocal (getText (_cfg >> typeOf _x >> "displayName"));
-	} foreach _markedbeac;
 
 	sleep 5;
 };
