@@ -22,7 +22,7 @@ _setupObjects =
 {
 	_missionPos = (markerPos _missionLocation vectorAdd [([[-50,0,50], 20] call F_getRND), ([[-50,0,50], 20] call F_getRND), 0]);
 	_mission_grp = createGroup [GRLIB_side_civilian, true];
-	_man1 = _mission_grp createUnit ["C_Story_Mechanic_01_F", _missionPos, [], 0, "NONE"];
+	_man1 = _mission_grp createUnit ["C_Marshal_F", _missionPos, [], 0, "NONE"];
 	_man1 setVariable ['GRLIB_can_speak', true, true];
 	_man1 setVariable ['GRLIB_A3W_Mission_DF', true, true];
 	_man1 allowDamage false;

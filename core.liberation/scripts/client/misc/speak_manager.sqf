@@ -44,32 +44,6 @@ speak_leader_AI = {
 	["The Resistance"] remoteExec ["A3W_extend_timer_remote_call", 2];
 };
 
-speak_mission_water_delivery = {
-	params ["_unit"];
-	private _leader = leader group _unit;
-	if (!(_unit getVariable ["GRLIB_A3W_Mission_DW", false])) exitWith {gamelogic globalChat "Maybe another time..."};
-	player globalChat "Hello, What do you need ?";
-	uIsleep 2;
-	gamelogic globalChat "Hi, We running out of Water!";
-	uIsleep 2;
-	gamelogic globalChat "Please bring us back 3 barrels of Water";
-	uIsleep 2;
-	gamelogic globalChat "I will wait here for you to come back with the barrels, Please hurry up!";
-};
-
-speak_mission_fuel_delivery = {
-	params ["_unit"];
-	private _leader = leader group _unit;
-	if (!(_unit getVariable ["GRLIB_A3W_Mission_DF", false])) exitWith {gamelogic globalChat "Maybe another time..."};
-	player globalChat "Hello, What do you need ?";
-	uIsleep 2;
-	gamelogic globalChat "Hi, We running out of Fuel!";
-	uIsleep 2;
-	gamelogic globalChat "Please bring us back 3 barrels of Fuel";
-	uIsleep 2;
-	gamelogic globalChat "I will wait here for you to come back with the barrels, Please hurry up!";
-};
-
 // Nikos
 speak_mission_delivery_1 = {
 	params ["_unit"];
@@ -138,6 +112,23 @@ speak_mission_delivery_3 = {
 	};
 	uIsleep 3;
 };
+// Marshal
+speak_mission_delivery_4 = {
+	params ["_unit"];
+	private _leader = leader group _unit;
+	if (!(_unit getVariable ["GRLIB_A3W_Mission_DW", false]) && !(_unit getVariable ["GRLIB_A3W_Mission_DF", false])) exitWith {gamelogic globalChat "Maybe another time..."};
+
+	private _text = "Water";
+	if (_unit getVariable ["GRLIB_A3W_Mission_DF", false]) then { _text = "Fuel" };
+
+	player globalChat "Hello, What do you need ?";
+	uIsleep 2;
+	gamelogic globalChat format ["Hi, We running out of %1 !", _text];
+	uIsleep 2;
+	gamelogic globalChat format ["Please bring us back 3 barrels of %1", _text];
+	uIsleep 2;
+	gamelogic globalChat "I will wait here for you to come back with the barrels, Please hurry up!";
+};
 
 GRLIB_speaking = true;
 switch (side _unit) do {
@@ -147,8 +138,7 @@ switch (side _unit) do {
 			case "C_Nikos" : {[_unit] call speak_mission_delivery_1};
 			case "C_Orestes" : {[_unit] call speak_mission_delivery_2};
 			case "C_Nikos_aged" : {[_unit] call speak_mission_delivery_3};
-			case "C_Marshal_F" : {[_unit] call speak_mission_water_delivery};
-			case "C_Story_Mechanic_01_F" : {[_unit] call speak_mission_fuel_delivery};
+			case "C_Marshal_F" : {[_unit] call speak_mission_delivery_4};
 			default {[_unit] call speak_civil_AI};
 		};
 	};
