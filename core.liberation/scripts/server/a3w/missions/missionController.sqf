@@ -50,12 +50,27 @@ while {true} do {
 				_missionsList = ["mission_MeetResistance", true, _missionsList] call updateMissionsList;
 			};
 
-			// Delivery
+			// Special Delivery
 			if (count blufor_sectors >= 10) then {
-				_missionsList = ["mission_Delivery", false, _missionsList, 1] call updateMissionsList;
+				_missionsList = ["mission_SpecialDelivery", false, _missionsList, 1] call updateMissionsList;
 			} else {
-				_missionsList = ["mission_Delivery", true, _missionsList] call updateMissionsList;
+				_missionsList = ["mission_SpecialDelivery", true, _missionsList] call updateMissionsList;
 			};
+
+			// Water Delivery
+			if (count blufor_sectors >= 5 && count sectors_tower >= 3) then {
+				_missionsList = ["mission_WaterDelivery", false, _missionsList, 1] call updateMissionsList;
+			} else {
+				_missionsList = ["mission_WaterDelivery", true, _missionsList] call updateMissionsList;
+			};
+
+			// Fuel Delivery
+			if (count blufor_sectors >= 5 && count sectors_factory >= 3) then {
+				_missionsList = ["mission_FuelDelivery", false, _missionsList, 1] call updateMissionsList;
+			} else {
+				_missionsList = ["mission_FuelDelivery", true, _missionsList] call updateMissionsList;
+			};
+
 			_nextMission = _missionsList call fn_selectRandomWeighted;
 		} else {
 			sleep 10;

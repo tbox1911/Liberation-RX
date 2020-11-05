@@ -1,7 +1,7 @@
 // ******************************************************************************************
 // * This project is licensed under the GNU Affero GPL v3. Copyright © 2014 A3Wasteland.com *
 // ******************************************************************************************
-//	@file Name: mission_Delivery.sqf
+//	@file Name: mission_SpecialDelivery.sqf
 
 if (!isServer) exitwith {};
 if (!isNil "GRLIB_A3W_Mission_SD") exitWith {};
