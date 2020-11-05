@@ -1,11 +1,9 @@
 private [ "_dialog" ];
 
 if ( isNil "cinematic_camera_started" ) then { cinematic_camera_started = false };
-[] spawn cinematic_camera;
 waituntil {(time > 2) && (getClientStateNumber >= 10) && (getClientState == "BRIEFING READ")};
 
-titleText ["","BLACK IN"];
-sleep 1;
+[] spawn cinematic_camera;
 if (serverName == "DevSrv") then {
 	GRLIB_introduction = false;
 };
