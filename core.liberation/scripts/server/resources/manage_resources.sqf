@@ -2,23 +2,19 @@ waitUntil { !isNil "save_is_loaded" };
 waitUntil { !isNil "blufor_sectors" };
 waitUntil { !isNil "saved_intel_res" };
 
+_base_tick_period = 600;
 resources_intel = saved_intel_res;
 
 while { GRLIB_endgame == 0 } do {
-
-	_base_tick_period = 4800;
+	sleep _base_tick_period;
 
 	if ( count allPlayers > 0 ) then {
-		_base_tick_period = _base_tick_period / GRLIB_resources_multiplier;
-		if ( _base_tick_period < 300 ) then { _base_tick_period = 300 };
-		sleep _base_tick_period;
 
 		// AmmoBox
 		_blufor_mil_sectors = [];
 		{
 			if ( _x in sectors_military ) then {
 				_blufor_mil_sectors pushback _x;
-				_base_tick_period = _base_tick_period * 0.82;
 			};
 		} foreach blufor_sectors;
 
@@ -57,7 +53,6 @@ while { GRLIB_endgame == 0 } do {
 		{
 			if ( _x in sectors_factory ) then {
 				_blufor_fuel_sectors pushback _x;
-				_base_tick_period = _base_tick_period * 0.82;
 			};
 		} foreach blufor_sectors;
 
@@ -81,7 +76,6 @@ while { GRLIB_endgame == 0 } do {
 		{
 			if ( _x in sectors_tower ) then {
 				_blufor_water_sectors pushback _x;
-				_base_tick_period = _base_tick_period * 0.82;
 			};
 		} foreach blufor_sectors;
 
