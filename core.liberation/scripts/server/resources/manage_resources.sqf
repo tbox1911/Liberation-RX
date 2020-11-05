@@ -32,7 +32,6 @@ while { GRLIB_endgame == 0 } do {
 				if ( ( { typeof _x == ammobox_b_typename } count vehicles ) <= ( ceil ( ( count _blufor_mil_sectors ) * 1.3 ) ) ) then {
 
 					_spawnsector = ( _blufor_mil_sectors call BIS_fnc_selectRandom );
-					diag_log format ["ammo: %1", _spawnsector];
 					_spawnpos = zeropos;
 					while { _spawnpos distance zeropos < 1000 } do {
 						_spawnpos =  ( [ ( markerpos _spawnsector), random 50, random 360 ] call BIS_fnc_relPos ) findEmptyPosition [ 10, 100, 'B_Heli_Transport_01_F' ];
@@ -60,7 +59,6 @@ while { GRLIB_endgame == 0 } do {
 			if ( ( { typeof _x == fuelbarrel_typename } count vehicles ) <= ( ceil ( ( count _blufor_fuel_sectors ) * 1.3 ) ) ) then {
 
 				_spawnsector = ( _blufor_fuel_sectors call BIS_fnc_selectRandom );
-				diag_log format ["fuel: %1", _spawnsector];
 				_spawnpos = zeropos;
 				while { _spawnpos distance zeropos < 1000 } do {
 					_spawnpos =  ( [ ( markerpos _spawnsector), random 50, random 360 ] call BIS_fnc_relPos ) findEmptyPosition [ 10, 100, 'B_Heli_Transport_01_F' ];
@@ -83,7 +81,6 @@ while { GRLIB_endgame == 0 } do {
 			if ( ( { typeof _x == waterbarrel_typename } count vehicles ) <= ( ceil ( ( count _blufor_water_sectors ) * 1.3 ) ) ) then {
 
 				_spawnsector = ( _blufor_water_sectors call BIS_fnc_selectRandom );
-				diag_log format ["water: %1", _spawnsector];
 				_spawnpos = zeropos;
 				while { _spawnpos distance zeropos < 1000 } do {
 					_spawnpos =  ( [ ( markerpos _spawnsector), random 50, random 360 ] call BIS_fnc_relPos ) findEmptyPosition [ 10, 100, 'B_Heli_Transport_01_F' ];
