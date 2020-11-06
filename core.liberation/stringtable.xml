@@ -183,18 +183,18 @@
 						<Russian>-- АРСЕНАЛ</Russian>
 				</Key>
 				<Key ID="STR_ACTION_LOAD_BOX">
-						<Original>-- LOAD AMMO BOX</Original>
-						<French>-- CHARGER MUNITIONS</French>
-						<German>-- MUNITIONSKISTE AUFLADEN</German>
-						<Spanish>-- CARGAR CAJA DE MUNICIÓN</Spanish>
-						<Russian>-- ЗАГРУЗИТЬ ЯЩИК С БОЕПРИПАСАМИ</Russian>
+						<Original>-- LOAD</Original>
+						<French>-- CHARGER</French>
+						<German>-- AUFLADEN</German>
+						<Spanish>-- CARGAR</Spanish>
+						<Russian>-- ЗАГРУЗИТЬ</Russian>
 				</Key>
 				<Key ID="STR_ACTION_UNLOAD_BOX">
-						<Original>-- UNLOAD AMMO BOXES</Original>
-						<French>-- DECHARGER MUNITIONS</French>
-						<German>-- MUNITIONSKISTE ABLADEN</German>
-						<Spanish>-- DESCARGAR CAJA DE MUNICIÓN</Spanish>
-						<Russian>-- ВЫГРУЗИТЬ ЯЩИК С БОЕПРИПАСАМИ</Russian>
+						<Original>-- UNLOAD</Original>
+						<French>-- DECHARGER</French>
+						<German>--  ABLADEN</German>
+						<Spanish>-- DESCARGAR</Spanish>
+						<Russian>-- ВЫГРУЗИТЬ</Russian>
 				</Key>
 				<Key ID="STR_BOX_LOADED">
 						<Original>Ammo box successfully loaded on the transport vehicle.</Original>
