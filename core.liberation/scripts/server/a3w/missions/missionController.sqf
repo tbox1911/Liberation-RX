@@ -64,6 +64,13 @@ while {true} do {
 				_missionsList = ["mission_WaterDelivery", true, _missionsList] call updateMissionsList;
 			};
 
+			// Food Delivery
+			if (count blufor_sectors >= 5 && {_x in sectors_bigtown} count blufor_sectors >= 1) then {
+				_missionsList = ["mission_FoodDelivery", false, _missionsList, 1] call updateMissionsList;
+			} else {
+				_missionsList = ["mission_FoodDelivery", true, _missionsList] call updateMissionsList;
+			};
+
 			// Fuel Delivery
 			if (count blufor_sectors >= 5 && {_x in sectors_factory} count blufor_sectors >= 3) then {
 				_missionsList = ["mission_FuelDelivery", false, _missionsList, 1] call updateMissionsList;
