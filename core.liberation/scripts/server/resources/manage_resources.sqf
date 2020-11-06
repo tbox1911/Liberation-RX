@@ -52,7 +52,7 @@ while { GRLIB_endgame == 0 } do {
 		} foreach blufor_sectors;
 
 		if ( count _blufor_fuel_sectors > 0 ) then {
-			if ( ( { typeof _x == fuelbarrel_typename } count vehicles ) <= ( ceil ( ( count _blufor_fuel_sectors ) * 1.3 ) ) ) then {
+			if ( ( { typeof _x == fuelbarrel_typename } count vehicles ) <= ( ceil ( ( count _blufor_fuel_sectors ) * 1 ) ) ) then {
 
 				_spawnsector = ( _blufor_fuel_sectors call BIS_fnc_selectRandom );
 				_spawnpos = zeropos;
@@ -74,7 +74,7 @@ while { GRLIB_endgame == 0 } do {
 		} foreach blufor_sectors;
 
 		if ( count _blufor_water_sectors > 0 ) then {
-			if ( ( { typeof _x == waterbarrel_typename } count vehicles ) <= ( ceil ( ( count _blufor_water_sectors ) * 1.3 ) ) ) then {
+			if ( ( { typeof _x == waterbarrel_typename } count vehicles ) <= ( ceil ( ( count _blufor_water_sectors ) * 1 ) ) ) then {
 
 				_spawnsector = ( _blufor_water_sectors call BIS_fnc_selectRandom );
 				_spawnpos = zeropos;
@@ -84,6 +84,28 @@ while { GRLIB_endgame == 0 } do {
 				};
 
 				_newbox = [waterbarrel_typename, _spawnpos, false] call boxSetup;
+			};
+		};
+
+		// Food Barrel
+		_blufor_food_sectors = [];
+		{
+			if ( _x in sectors_bigtown ) then {
+				_blufor_food_sectors pushback _x;
+			};
+		} foreach blufor_sectors;
+
+		if ( count _blufor_food_sectors > 0 ) then {
+			if ( ( { typeof _x == foodbarrel_typename } count vehicles ) <= ( ceil ( ( count _blufor_food_sectors ) * 4 ) ) ) then {
+
+				_spawnsector = ( _blufor_food_sectors call BIS_fnc_selectRandom );
+				_spawnpos = zeropos;
+				while { _spawnpos distance zeropos < 1000 } do {
+					_spawnpos =  ( [ ( markerpos _spawnsector), random 50, random 360 ] call BIS_fnc_relPos ) findEmptyPosition [ 10, 100, 'B_Heli_Transport_01_F' ];
+					if ( count _spawnpos == 0 ) then { _spawnpos = zeropos; };
+				};
+
+				_newbox = [foodbarrel_typename, _spawnpos, false] call boxSetup;
 			};
 		};
 

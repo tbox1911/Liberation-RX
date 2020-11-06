@@ -12,7 +12,7 @@ _classname_box = [
 	ammobox_i_typename,
 	waterbarrel_typename,
 	fuelbarrel_typename,
-	medicbarrel_typename
+	foodbarrel_typename
 ];
 
 while { true } do {

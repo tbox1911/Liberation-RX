@@ -13,7 +13,7 @@ if ( isNil "ammobox_o_typename" ) then { ammobox_o_typename = "Box_East_AmmoVeh_
 if ( isNil "ammobox_i_typename" ) then { ammobox_i_typename = "Box_IND_AmmoVeh_F" };
 if ( isNil "waterbarrel_typename" ) then { waterbarrel_typename = "Land_BarrelWater_F" };
 if ( isNil "fuelbarrel_typename" ) then { fuelbarrel_typename = "Land_MetalBarrel_F" };
-if ( isNil "medicbarrel_typename" ) then { medicbarrel_typename = "Land_FoodContainer_01_F" };
+if ( isNil "foodbarrel_typename" ) then { foodbarrel_typename = "Land_FoodSacks_01_large_brown_idap_F" };
 if ( isNil "opfor_ammobox_transport" ) then { opfor_ammobox_transport = "O_Truck_03_transport_F" };
 if ( isNil "commander_classname" ) then { commander_classname = "B_officer_F" };
 if ( isNil "crewman_classname" ) then { crewman_classname = "B_crew_F" };
@@ -226,7 +226,7 @@ support_vehicles = [
 	[A3W_BoxWps,0,round(150 / GRLIB_recycling_percentage),0,99999],
 	[waterbarrel_typename,0,round(100 / GRLIB_recycling_percentage),0,GRLIB_perm_inf],
 	[fuelbarrel_typename,0,round(100 / GRLIB_recycling_percentage),0,GRLIB_perm_inf],
-	[medicbarrel_typename,0,round(100 / GRLIB_recycling_percentage),0,GRLIB_perm_inf]
+	[foodbarrel_typename,0,round(100 / GRLIB_recycling_percentage),0,GRLIB_perm_inf]
 ];
 
 if ( isNil "blufor_squad_inf_light" ) then { blufor_squad_inf_light = [] };
@@ -672,7 +672,7 @@ GRLIB_vehicle_whitelist = [
 	canisterFuel,
 	waterbarrel_typename,
 	fuelbarrel_typename,
-	medicbarrel_typename,
+	foodbarrel_typename,
 	"Land_PierLadder_F",
 	"Box_B_UAV_06_medical_F",
 	"Land_CncBarrierMedium4_F",
@@ -695,7 +695,7 @@ GRLIB_vehicle_blacklist = [
 	canisterFuel,
 	waterbarrel_typename,
 	fuelbarrel_typename,
-	medicbarrel_typename,
+	foodbarrel_typename,
 	"Box_NATO_Ammo_F",
   	"Box_NATO_WpsLaunch_F",
 	"Box_B_UAV_06_medical_F",
