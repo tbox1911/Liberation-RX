@@ -52,7 +52,7 @@ _waitUntilCondition = nil;
 
 _waitUntilSuccessCondition = {
 	_ret = false;
-	private _barrels = [_man1 nearEntities [fuelbarrel_typename, 20], {isNull R3F_LOG_joueur_deplace_objet && isNil {_x getVariable "R3F_LOG_objets_charges"} && !(_x getVariable ['R3F_LOG_disabled', false])}] call BIS_fnc_conditionalSelect;
+	private _barrels = [_man1 nearEntities [fuelbarrel_typename, 20], {isNil {_x getVariable "R3F_LOG_objets_charges"} && !(_x getVariable ['R3F_LOG_disabled', false])}] call BIS_fnc_conditionalSelect;
 	if (count _barrels == 3) then {
 		{ deleteVehicle _x } forEach _barrels;
 		_ret = true;
