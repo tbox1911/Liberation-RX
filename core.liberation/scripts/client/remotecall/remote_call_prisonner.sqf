@@ -41,7 +41,7 @@ if (alive _unit) then {
 
 	if ( _is_near_fob ) then {
 		sleep 1;
-		if (!isnull objectParent _unit) then {
+		if (vehicle _unit != _unit) then {
 			unassignVehicle _unit;
 		 	doGetOut _unit;
 		};
