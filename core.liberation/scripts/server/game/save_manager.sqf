@@ -46,7 +46,6 @@ armor_weight = 33;
 air_weight = 33;
 GRLIB_vehicle_to_military_base_links = [];
 GRLIB_permissions = [];
-saved_intel_res = 0;
 resources_intel = 0;
 GRLIB_player_scores = [];
 GRLIB_garage = [];
@@ -123,8 +122,8 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 
 	GRLIB_vehicle_to_military_base_links = greuh_liberation_savegame select 11;
 	GRLIB_permissions = greuh_liberation_savegame select 12;
-	//ai_groups = greuh_liberation_savegame select 13;
-	saved_intel_res = greuh_liberation_savegame select 14;
+	ai_groups = greuh_liberation_savegame select 13;
+	resources_intel = greuh_liberation_savegame select 14;
 	GRLIB_player_scores = greuh_liberation_savegame select 15;
 
 	setDate [ GRLIB_date_year, GRLIB_date_month, GRLIB_date_day, time_of_day, 0];
