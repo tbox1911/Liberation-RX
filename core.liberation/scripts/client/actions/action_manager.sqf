@@ -187,7 +187,7 @@ while { true } do {
 	// Arsenal
 	if ( [] call is_menuok && GRLIB_enable_arsenal && ( count _near_arsenal != 0 || (player distance lhd) <= 200) ) then {
 		if (_idact_arsenal == -1) then {
-			_idact_arsenal = player addAction ["<t color='#FFFF00'>" + localize "STR_ARSENAL_ACTION" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\open_arsenal.sqf","",-980,true,true,"","build_confirmed == 0"];
+			_idact_arsenal = player addAction ["<t color='#FFFF00'>" + localize "STR_ARSENAL_ACTION" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\open_arsenal.sqf","",-500,true,true,"","build_confirmed == 0"];
 		};
 	} else {
 		if ( _idact_arsenal != -1 ) then {
