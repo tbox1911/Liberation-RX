@@ -144,8 +144,7 @@ static_vehicles = [
 	["B_static_AT_F",0,50,0,GRLIB_perm_air],
 	["B_Mortar_01_F",0,500,0,GRLIB_perm_max],
 	["B_AAA_System_01_F",10,500,0,GRLIB_perm_max],
-	["B_Ship_Gun_01_F",10,1500,0,GRLIB_perm_max],
-	["Land_CzechHedgehog_01_new_F",0,2,0,GRLIB_perm_inf]
+	["B_Ship_Gun_01_F",10,1500,0,GRLIB_perm_max]
 ];
 
 buildings = [
@@ -196,7 +195,8 @@ buildings = [
 	["Land_DieselGroundPowerUnit_01_F",0,0,0,GRLIB_perm_tank],
 	["Land_Pallet_MilBoxes_F",0,0,0,GRLIB_perm_tank],
 	["Land_PaperBox_open_full_F",0,0,0,GRLIB_perm_tank],
-	["Land_ClutterCutter_large_F",0,0,0,GRLIB_perm_tank]
+	["Land_ClutterCutter_large_F",0,0,0,GRLIB_perm_tank],
+	["Land_CzechHedgehog_01_new_F",0,0,0,GRLIB_perm_inf]
 ];
 
 support_vehicles = [
@@ -661,6 +661,8 @@ box_transport_config = [
 	[ "B_Heli_Transport_03_unarmed_F", -7.5, [0, 2.2, -1], [0, 0.8, -1], [0, -1.0, -1] ],
 	[ "I_Heli_Transport_02_F", -6.5, [0, 4.2, -1.45], [0, 2.5, -1.45], [0, 0.8, -1.45], [0, -0.9, -1.45] ]
 ];
+transport_vehicles = [];
+{transport_vehicles pushBack ( _x select 0 )} foreach (box_transport_config);
 
 // Whitelist Vehicle (recycle)
 GRLIB_vehicle_whitelist = [

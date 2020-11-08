@@ -58,7 +58,7 @@ while { true } do {
 		{
 			_next_box = _x;
 			if ( !(_next_box in _managed_boxes) && ( isNull attachedTo _next_box ) && !(_next_box getVariable ['R3F_LOG_disabled', true]) ) then {
-				_action_id = _next_box addAction ["<t color='#FFFF00'>" + localize "STR_ACTION_LOAD_BOX" + "</t>","scripts\client\ammoboxes\do_load_box_action.sqf","",-501,true,true,"","[_target] call is_menuok && build_confirmed == 0 && (_this distance _target < 5)"];
+				_action_id = _next_box addAction ["<t color='#FFFF00'>" + localize "STR_ACTION_LOAD_BOX" + "</t>","scripts\client\ammoboxes\do_load_box_action.sqf","",-501,true,true,"","[_target] call is_menuok  && [] call is_neartransport && build_confirmed == 0 && (_this distance _target < 5)"];
 				_next_box setVariable [ "GRLIB_ammo_box_action", _action_id, false ];
 				_managed_boxes pushback _next_box;
 			};
