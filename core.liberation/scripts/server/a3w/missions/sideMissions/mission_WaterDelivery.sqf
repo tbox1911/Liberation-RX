@@ -33,8 +33,8 @@ _setupObjects =
 	params[ "_unit", "_anim" ];
 		if ( _anim == "LHD_krajPaluby" ) then { _unit switchMove "LHD_krajPaluby" };
 	}];
-	sleep 0.5,
-	_man1 switchMove "LHD_krajPaluby";
+ 	sleep 1;
+ 	[_man1,"LHD_krajPaluby"] remoteExec ["switchMove"];
 
 	_marker_zone = createMarker ["A3W_Mission_DW", _missionPos];
 	_marker_zone setMarkerColor "ColorCivilian";
