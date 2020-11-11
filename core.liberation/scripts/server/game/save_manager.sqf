@@ -329,8 +329,25 @@ while { true } do {
 			};
 		} foreach _all_buildings;
 
-		time_of_day = date select 3;
+		// Filter low score Player
+		private _player_scores = [];
+		private _keep_score_id = ["Default"];
+		{
+			_id = _x select 0;
+			_score = _x select 1;
+			if (_score >= 20 ) then {
+				_keep_score_id pushback _id;
+				_player_scores pushback _x;
+			};
+		} forEach GRLIB_player_scores;
 
+		private _permissions = [];
+		{
+			_id = _x select 0;
+			if (_id in _keep_score_id) then {_permissions pushback _x};
+		} forEach GRLIB_permissions;
+
+		time_of_day = date select 3;
 		stats_saves_performed = stats_saves_performed + 1;
 
 		_stats = [];
@@ -374,10 +391,10 @@ while { true } do {
 			_stats,
 			[ round infantry_weight, round armor_weight, round air_weight ],
 			GRLIB_vehicle_to_military_base_links,
-			GRLIB_permissions,
+			_permissions,
 			0,  //ai_groups
 			resources_intel,
-			GRLIB_player_scores
+			_player_scores
 		];
 
 		profileNamespace setVariable [ GRLIB_save_key, greuh_liberation_savegame ];
