@@ -1,5 +1,5 @@
 _grp = _this select 0;
-if (isNil "_grp") exitWith {sleep 5};
+if (isNil "_grp") exitWith {};
 
 _flagpos = _this select 1;
 _radius = param [2, 150];

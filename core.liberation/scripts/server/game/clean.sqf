@@ -63,7 +63,7 @@ _checkFrequencyDefault = 180;					// sleep default
 _checkFrequencyAccelerated = 60;				// sleep accelerated
 _playerThreshold = 5;							// How many players before accelerated cycle kicks in?
 
-_deadMenLimit = 100;							// Bodies. Set -1 to disable.
+_deadMenLimit = 50;								// Bodies. Set -1 to disable.
 _deadMenDistCheck = TRUE;						// TRUE to delete any bodies that are far from players.
 _deadMenDist = 2000;							// Distance (meters) from players that bodies are not deleted if below max.
 
@@ -75,7 +75,7 @@ _craterLimit = 20;								// Craters. Set -1 to disable.
 _craterDistCheck = TRUE;						// TRUE to delete any craters that are far from players.
 _craterDist = 2000;								// Distance (meters) from players that craters are not deleted if below max.
 
-_weaponHolderLimit = 100;						// Weapon Holders. Set -1 to disable.
+_weaponHolderLimit = 50;						// Weapon Holders. Set -1 to disable.
 _weaponHolderDistCheck = TRUE;					// TRUE to delete any weapon holders that are far from players.
 _weaponHolderDist = 1000;						// Distance (meters) from players that ground garbage is not deleted if below max.
 
