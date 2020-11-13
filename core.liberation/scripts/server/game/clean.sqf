@@ -61,7 +61,7 @@ deleteManagerPublic = TRUE;						// To terminate script via debug console
 _checkPlayerCount = TRUE;						// dynamic sleep. Set TRUE to have sleep automatically adjust based on # of players.
 _checkFrequencyDefault = 180;					// sleep default
 _checkFrequencyAccelerated = 60;				// sleep accelerated
-_playerThreshold = 5;							// How many players before accelerated cycle kicks in?
+_playerThreshold = 4;							// How many players before accelerated cycle kicks in?
 
 _deadMenLimit = 50;								// Bodies. Set -1 to disable.
 _deadMenDistCheck = TRUE;						// TRUE to delete any bodies that are far from players.
@@ -71,11 +71,11 @@ _deadVehiclesLimit = 30;						// Wrecks. Set -1 to disable.
 _deadVehicleDistCheck = TRUE;					// TRUE to delete any destroyed vehicles that are far from players.
 _deadVehicleDist = 2000;						// Distance (meters) from players that destroyed vehicles are not deleted if below max.
 
-_craterLimit = 20;								// Craters. Set -1 to disable.
+_craterLimit = -1;								// Craters. Set -1 to disable.
 _craterDistCheck = TRUE;						// TRUE to delete any craters that are far from players.
 _craterDist = 2000;								// Distance (meters) from players that craters are not deleted if below max.
 
-_weaponHolderLimit = 50;						// Weapon Holders. Set -1 to disable.
+_weaponHolderLimit = 20;						// Weapon Holders. Set -1 to disable.
 _weaponHolderDistCheck = TRUE;					// TRUE to delete any weapon holders that are far from players.
 _weaponHolderDist = 1000;						// Distance (meters) from players that ground garbage is not deleted if below max.
 
@@ -161,7 +161,6 @@ while {deleteManagerPublic} do {
 		if ((count (allMissionObjects "WeaponHolder")) > _weaponHolderLimit) then {
 			if (_weaponHolderDistCheck) then {
 				{
-					if (round (getMass _x) <= 0)  then { _x setMass 1 };
 					if ([_x,_weaponHolderDist,(playableUnits + switchableUnits)] call _isHidden) then {
 						deleteVehicle _x;
 					};
@@ -174,6 +173,8 @@ while {deleteManagerPublic} do {
 			};
 		};
 	};
+	// Object WeaponHolderSimulated can't have zero or negative mass!
+	{ if (round (getMass _x) <= 0) then { _x setMass 1 } } forEach (entities "WeaponHolderSimulated");
 	sleep 1;
 	//================================= MINES
 	if (!(_minesLimit isEqualTo -1)) then {
@@ -255,7 +256,7 @@ while {deleteManagerPublic} do {
 			};
 		} count allGroups;
 	};
-        sleep 1;
+    sleep 1;
 	//================================= SLEEP
 	if (_checkPlayerCount) then {
 		if ((count (playableUnits + switchableUnits)) >= _playerThreshold) then {

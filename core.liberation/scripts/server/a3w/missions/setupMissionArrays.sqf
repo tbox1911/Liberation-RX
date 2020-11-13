@@ -12,7 +12,7 @@ SideMissions = [
 	["mission_WaterDelivery", 1],
 	["mission_FoodDelivery", 1],
 	["mission_FuelDelivery", 1],
-	["mission_TownInvasion", 2],
+	["mission_TownInvasion", 1],
 	["mission_HostileHelicopter", 1],
 	["mission_MeetResistance", 1]
 ];

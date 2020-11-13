@@ -119,5 +119,6 @@ if ( isServer ) then {
 	};
 
 	_unit setVariable ["R3F_LOG_disabled", true, true];
-	//_unit enableSimulationGlobal true;
+	//sleep 3;
+	//_unit enableSimulationGlobal false;
 };
