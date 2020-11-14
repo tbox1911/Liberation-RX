@@ -36,7 +36,7 @@ while { dialog && alive player } do {
 	if ( _tick % 4 == 0 && _tick < _respawn_delay) then {
 		ctrlSetText [677, format ["Wait %1 sec", (_respawn_delay - round(_tick))/4 ]];
 	};
-	if (_tick == _respawn_delay) then {
+	if (_tick == _respawn_delay && GRLIB_endgame == 0) then {
 		ctrlSetText [677, "Respawn"];
 		((findDisplay 5566) displayCtrl 677) ctrlEnable true;
 	};
