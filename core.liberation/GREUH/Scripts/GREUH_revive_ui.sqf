@@ -15,7 +15,7 @@ while { dialog && alive player } do {
 
 	if ( !isNil "public_bleedout_message" && !isNil "public_bleedout_timer") then {
 		if (_labelwidth == -1) then { _labelwidth = (ctrlPosition ((findDisplay 5566) displayCtrl 6699)) select 2 };
-		_labelpos = [ctrlPosition ((findDisplay 5566) displayCtrl 6699) select 0, ctrlPosition ((findDisplay 5566) displayCtrl 6699) select 1,_labelwidth * (public_bleedout_timer / FAR_BleedOut), ctrlPosition ((findDisplay 5566) displayCtrl 6699) select 3];
+		_labelpos = [ctrlPosition ((findDisplay 5566) displayCtrl 6699) select 0, ctrlPosition ((findDisplay 5566) displayCtrl 6699) select 1,_labelwidth * (public_bleedout_timer / PAR_BleedOut), ctrlPosition ((findDisplay 5566) displayCtrl 6699) select 3];
 		((findDisplay 5566) displayCtrl 6699) ctrlSetPosition _labelpos;
 		ctrlSetText [5567,public_bleedout_message];
 
