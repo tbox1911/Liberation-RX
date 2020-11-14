@@ -21,6 +21,7 @@ while { true } do {
 	_cam camSetTarget getpos player;	//static view
 
 	_dialog = createDialog "deathscreen";
+	_noesckey = (findDisplay 5651) displayAddEventHandler ["KeyDown", "if ((_this select 1) == 1) then { true }"];
 	_randomsound1 = selectRandom [3,4,5,6,7,8,9];
 	_randomsound2 = selectRandom [1,2,3];
 	_deathsound = format ["A3\sounds_f\characters\human-sfx\P0%1\hit_max_%2.wss",_randomsound1,_randomsound2];
@@ -58,4 +59,5 @@ while { true } do {
 	_cam cameraEffect ["Terminate", "BACK"];
 	camDestroy _cam;
 	camUseNVG false;
+	(findDisplay 5651) displayRemoveEventHandler ["KeyDown", _noesckey];
 };
