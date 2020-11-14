@@ -11,6 +11,9 @@ if ( isNil "huron_typename" ) then { huron_typename = "OPTRE_Pelican_unarmed"; }
 if ( isNil "ammobox_b_typename" ) then { ammobox_b_typename = "Box_NATO_AmmoVeh_F"; };
 if ( isNil "ammobox_o_typename" ) then { ammobox_o_typename = "Box_East_AmmoVeh_F"; };
 if ( isNil "ammobox_i_typename" ) then { ammobox_i_typename = "Box_IND_AmmoVeh_F"; };
+if ( isNil "waterbarrel_typename" ) then { waterbarrel_typename = "Land_BarrelWater_F" };
+if ( isNil "fuelbarrel_typename" ) then { fuelbarrel_typename = "Land_MetalBarrel_F" };
+if ( isNil "foodbarrel_typename" ) then { foodbarrel_typename = "Land_FoodSacks_01_large_brown_idap_F" };
 if ( isNil "opfor_ammobox_transport" ) then { opfor_ammobox_transport = "O_Truck_03_transport_F"; };
 if ( isNil "commander_classname" ) then { commander_classname = "OPTRE_UNSC_ODST_Soldier_TeamLeader"; };
 if ( isNil "crewman_classname" ) then { crewman_classname = "OPTRE_UNSC_Airforce_Soldier_Airman" };
@@ -137,7 +140,6 @@ buildings = [
 	["Land_PierLadder_F",0,0,0,GRLIB_perm_inf],
 	["Land_CncBarrierMedium4_F",0,0,0,0],
 	["Land_CncWall4_F",0,0,0,0],
-	["Land_CncWall1_F",0,0,0,0],
 	["Land_BagFence_Round_F",0,0,0,GRLIB_perm_log],
 	["Land_BagFence_Long_F",0,0,0,0],
 	["Land_BagFence_Short_F",0,0,0,GRLIB_perm_inf],
@@ -160,7 +162,7 @@ buildings = [
 	["Flag_NATO_F",0,0,0,0],
 	["Land_PortableLight_double_F",0,0,0,GRLIB_perm_log],
 	["Land_LampHalogen_F",0,0,0,GRLIB_perm_tank],
-	["Land_HelipadSquare_F",0,0,0,GRLIB_perm_tank],
+	["Land_HelipadSquare_F",0,0,0,GRLIB_perm_log],
 	["Land_Razorwire_F",0,0,0,GRLIB_perm_tank],
 	["Land_ToolTrolley_02_F",0,0,0,GRLIB_perm_tank],
 	["Land_WeldingTrolley_01_F",0,0,0,GRLIB_perm_tank],
@@ -182,14 +184,15 @@ buildings = [
 	["Land_DieselGroundPowerUnit_01_F",0,0,0,GRLIB_perm_tank],
 	["Land_Pallet_MilBoxes_F",0,0,0,GRLIB_perm_tank],
 	["Land_PaperBox_open_full_F",0,0,0,GRLIB_perm_tank],
-	["Land_ClutterCutter_large_F",0,0,0,GRLIB_perm_tank]
+	["Land_ClutterCutter_large_F",0,0,0,GRLIB_perm_tank],
+	["Land_CzechHedgehog_01_new_F",0,0,0,GRLIB_perm_inf]
 ];
 
 support_vehicles = [
 	[Arsenal_typename,0,10,0,0],
 	["Box_B_UAV_06_medical_F",5,5,0,0],
 	[mobile_respawn,10,5,0,0],
-	["Land_CanisterFuel_Red_F",0,5,1,0],
+	[canisterFuel,0,5,1,0],
 	["OPTRE_cart",5,15,5,GRLIB_perm_inf],
 	["OPTRE_forklift",5,15,5,GRLIB_perm_inf],
 	["B_Slingload_01_Repair_F",10,100,0,GRLIB_perm_log],
@@ -200,14 +203,18 @@ support_vehicles = [
 	["B_Truck_01_ammo_F",5,150,10,GRLIB_perm_tank],
 	["B_Truck_01_Repair_F",10,130,10,GRLIB_perm_tank],
 	["B_Truck_01_fuel_F",5,120,40,GRLIB_perm_tank],
-	["Box_NATO_Ammo_F",0,80,0,GRLIB_perm_log],
+  	["Box_NATO_Ammo_F",0,80,0,GRLIB_perm_log],
+  	["Box_NATO_WpsLaunch_F",0,150,0,GRLIB_perm_tank],
 	["Land_CargoBox_V1_F",0,500,0,GRLIB_perm_max],
 	[FOB_box_typename,50,1500,50,GRLIB_perm_max],
 	[FOB_truck_typename,50,1500,50,GRLIB_perm_max],
 	[ammobox_b_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
 	[ammobox_o_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
 	[ammobox_i_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
-	[A3W_BoxWps,0,round(150 / GRLIB_recycling_percentage),0,99999]
+	[A3W_BoxWps,0,round(150 / GRLIB_recycling_percentage),0,99999],
+	[waterbarrel_typename,0,round(100 / GRLIB_recycling_percentage),0,GRLIB_perm_inf],
+	[fuelbarrel_typename,0,round(100 / GRLIB_recycling_percentage),0,GRLIB_perm_inf],
+	[foodbarrel_typename,0,round(100 / GRLIB_recycling_percentage),0,GRLIB_perm_inf]
 ];
 
 if ( isNil "blufor_squad_inf_light" ) then { blufor_squad_inf_light = [] };
@@ -305,6 +312,7 @@ uavs = [
 	"B_UAV_02_F",
 	"B_T_UAV_03_F",
 	"B_UAV_06_F",
+	"C_UAV_06_F",
 	"B_UGV_01_F",
 	"B_UGV_01_rcws_F",
 	"B_UGV_02_Demining_F"
@@ -340,16 +348,19 @@ vehicle_repair_sources = [
 	"B_Truck_01_Repair_F",
 	"B_Slingload_01_Repair_F"
 ];
+
 vehicle_rearm_sources = [
 	"OPTRE_M313_UNSC",
 	"B_Truck_01_ammo_F",
 	"B_Slingload_01_Ammo_F"
 ];
+
 vehicle_refuel_sources = [
 	"OPTRE_M313_UNSC",
 	"B_Truck_01_fuel_F",
 	"B_Slingload_01_Fuel_F"
 ];
+
 vehicle_artillery = [
 	"B_Mortar_01_F",
 	"B_Ship_Gun_01_F",
@@ -540,7 +551,10 @@ opfor_choppers = [
 opfor_air = [
 	"O_Plane_CAS_02_F",
 	"O_Plane_Fighter_02_F",
-	"O_T_VTOL_02_vehicle_F"
+	"O_Plane_CAS_02_F",
+	"O_Plane_Fighter_02_Stealth_F",
+	"O_T_VTOL_02_infantry_F",
+	"O_Plane_CAS_02_Cluster_F"
 ];
 
 ind_recyclable = [
@@ -662,6 +676,8 @@ box_transport_config = [
 	[ "B_Heli_Transport_03_unarmed_F", -7.5, [0, 2.2, -1], [0, 0.8, -1], [0, -1.0, -1] ],
 	[ "I_Heli_Transport_02_F", -6.5, [0, 4.2, -1.45], [0, 2.5, -1.45], [0, 0.8, -1.45], [0, -0.9, -1.45] ]
 ];
+transport_vehicles = [];
+{transport_vehicles pushBack ( _x select 0 )} foreach (box_transport_config);
 
 // Whitelist Vehicle (recycle)
 GRLIB_vehicle_whitelist = [
@@ -672,6 +688,9 @@ GRLIB_vehicle_whitelist = [
 	mobile_respawn,
 	A3W_BoxWps,
 	canisterFuel,
+	waterbarrel_typename,
+	fuelbarrel_typename,
+	foodbarrel_typename,
 	"Land_PierLadder_F",
 	"Box_B_UAV_06_medical_F",
 	"Land_CncBarrierMedium4_F",
@@ -706,6 +725,9 @@ GRLIB_vehicle_blacklist = [
 	FOB_box_typename,
 	FOB_truck_typename,
 	canisterFuel,
+	waterbarrel_typename,
+	fuelbarrel_typename,
+	foodbarrel_typename,
 	"Box_NATO_Ammo_F",
   	"Box_NATO_WpsLaunch_F",
 	"Box_B_UAV_06_medical_F",
