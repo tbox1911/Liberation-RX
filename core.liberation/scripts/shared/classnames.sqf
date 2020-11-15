@@ -642,6 +642,7 @@ civilian_vehicles = [
 	"C_Van_02_medevac_F",
 	"C_Van_02_service_F",
 	"B_GEN_Van_02_transport_F",
+	"C_Truck_02_covered_F",
 	"C_Truck_02_transport_F",
 	"C_Tractor_01_F"
 ];
@@ -656,6 +657,8 @@ box_transport_config = [
 	[ "I_G_Offroad_01_F", -5, [0, -1.55, 0.2] ],
 	[ "B_Truck_01_transport_F", -6.5, [0, -0.4, 0.4], [0, -2.1, 0.4], [0, -3.8, 0.4] ],
 	[ "B_Truck_01_covered_F", -6.5, [0, -0.4, 0.4], [0, -2.1, 0.4], [0, -3.8, 0.4] ],
+	[ "C_Truck_02_transport_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
+	[ "C_Truck_02_covered_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
 	[ "I_Truck_02_transport_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
 	[ "I_Truck_02_covered_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
 	[ "O_Truck_03_transport_F", -6.5, [0, -0.8, 0.4], [0, -2.4, 0.4], [0, -4.0, 0.4] ],
