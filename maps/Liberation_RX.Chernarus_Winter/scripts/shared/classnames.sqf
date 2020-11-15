@@ -362,23 +362,23 @@ vehicle_artillery = [
 
 // *** BADDIES ***
 
-if ( isNil "opfor_sentry") then { opfor_sentry = "O_Soldier_lite_F" };
-if ( isNil "opfor_rifleman") then { opfor_rifleman = "O_Soldier_F" };
-if ( isNil "opfor_grenadier") then { opfor_grenadier = "O_Soldier_GL_F" };
-if ( isNil "opfor_squad_leader") then { opfor_squad_leader = "O_Soldier_SL_F" };
-if ( isNil "opfor_team_leader") then { opfor_team_leader = "O_Soldier_TL_F" };
-if ( isNil "opfor_marksman") then { opfor_marksman = "O_soldier_M_F" };
-if ( isNil "opfor_machinegunner") then { opfor_machinegunner = "O_Soldier_AR_F" };
-if ( isNil "opfor_heavygunner") then { opfor_heavygunner = "O_HeavyGunner_F" };
-if ( isNil "opfor_medic") then { opfor_medic = "O_medic_F" };
-if ( isNil "opfor_rpg") then { opfor_rpg = "O_Soldier_LAT_F" };
-if ( isNil "opfor_at") then { opfor_at = "O_Soldier_AT_F" };
-if ( isNil "opfor_aa") then { opfor_aa = "O_Soldier_AA_F" };
-if ( isNil "opfor_officer") then { opfor_officer = "O_officer_F" };
-if ( isNil "opfor_sharpshooter") then { opfor_sharpshooter = "O_Sharpshooter_F" };
-if ( isNil "opfor_sniper") then { opfor_sniper = "O_sniper_F" };
-if ( isNil "opfor_engineer") then { opfor_engineer = "O_engineer_F" };
-if ( isNil "opfor_paratrooper") then { opfor_paratrooper = "O_soldier_PG_F" };
+if ( isNil "opfor_sentry") then { opfor_sentry = "O_SoldierU_F" };
+if ( isNil "opfor_rifleman") then { opfor_rifleman = "O_SoldierU_F" };
+if ( isNil "opfor_grenadier") then { opfor_grenadier = "O_SoldierU_GL_F" };
+if ( isNil "opfor_squad_leader") then { opfor_squad_leader = "O_SoldierU_SL_F" };
+if ( isNil "opfor_team_leader") then { opfor_team_leader = "O_SoldierU_TL_F" };
+if ( isNil "opfor_marksman") then { opfor_marksman = "O_SoldierU_M_F" };
+if ( isNil "opfor_machinegunner") then { opfor_machinegunner = "O_SoldierU_AR_F" };
+if ( isNil "opfor_heavygunner") then { opfor_heavygunner = "O_Urban_HeavyGunner_F" };
+if ( isNil "opfor_medic") then { opfor_medic = "O_soldierU_medic_F" };
+if ( isNil "opfor_rpg") then { opfor_rpg = "O_SoldierU_LAT_F" };
+if ( isNil "opfor_at") then { opfor_at = "O_SoldierU_AT_F" };
+if ( isNil "opfor_aa") then { opfor_aa = "O_SoldierU_AA_F" };
+if ( isNil "opfor_officer") then { opfor_officer = "O_SoldierU_SL_F" };
+if ( isNil "opfor_sharpshooter") then { opfor_sharpshooter = "O_Urban_Sharpshooter_F" };
+if ( isNil "opfor_sniper") then { opfor_sniper = "O_ghillie_ard_F" };
+if ( isNil "opfor_engineer") then { opfor_engineer = "O_engineer_U_F" };
+if ( isNil "opfor_paratrooper") then { opfor_paratrooper = "O_SoldierU_PG_F" };
 if ( isNil "opfor_mrap") then { opfor_mrap = "O_MRAP_02_F" };
 if ( isNil "opfor_mrap_armed") then { opfor_mrap_armed = "O_MRAP_02_gmg_F" };
 if ( isNil "opfor_transport_helo") then { opfor_transport_helo = "O_Heli_Transport_04_bench_F" };
@@ -403,8 +403,8 @@ militia_squad = [
 	"O_G_Soldier_lite_F",
 	"O_G_Sharpshooter_F",
 	"O_G_Soldier_TL_F",
-	"O_Soldier_AA_F",
-	"O_Soldier_AT_F"
+	"O_SoldierU_AA_F",
+	"O_SoldierU_AT_F"
 ];
 
 divers_squad = [
@@ -552,8 +552,8 @@ ind_recyclable = [
 ];
 
 opfor_texture_overide = [
-	//"Urban",
-	//"Digital"
+	"Urban",
+	"Digital"
 ];
 
 opfor_recyclable = [
@@ -804,7 +804,7 @@ ammobox_transports_typenames = [];
 { ammobox_transports_typenames pushback (_x select 0) } foreach box_transport_config;
 ammobox_transports_typenames = [ ammobox_transports_typenames , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
 elite_vehicles = [ elite_vehicles , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
-original_resistance = [ "O_G_Soldier_SL_F","O_G_Soldier_A_F","O_G_Soldier_AR_F","O_G_medic_F","O_G_engineer_F","O_G_Soldier_exp_F","O_G_Soldier_GL_F","O_G_Soldier_M_F","O_G_Soldier_F","O_G_Soldier_LAT_F","O_G_Soldier_lite_F","O_G_Sharpshooter_F","O_G_Soldier_TL_F","O_Soldier_AA_F","O_Soldier_AT_F"];
+original_resistance = [ "O_G_Soldier_SL_F","O_G_Soldier_A_F","O_G_Soldier_AR_F","O_G_medic_F","O_G_engineer_F","O_G_Soldier_exp_F","O_G_Soldier_GL_F","O_G_Soldier_M_F","O_G_Soldier_F","O_G_Soldier_LAT_F","O_G_Soldier_lite_F","O_G_Sharpshooter_F","O_G_Soldier_TL_F","O_SoldierU_AA_F","O_SoldierU_AT_F"];
 opfor_infantry = [opfor_sentry,opfor_rifleman,opfor_grenadier,opfor_squad_leader,opfor_team_leader,opfor_marksman,opfor_machinegunner,opfor_heavygunner,opfor_medic,opfor_rpg,opfor_at,opfor_aa,opfor_officer,opfor_sharpshooter,opfor_sniper,opfor_engineer];
 GRLIB_intel_table = "Land_CampingTable_small_F";
 GRLIB_intel_chair = "Land_CampingChair_V2_F";
