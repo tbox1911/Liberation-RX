@@ -18,7 +18,7 @@ while { GRLIB_endgame == 0 } do {
 
 	_spawn_marker = "";
 	while { _spawn_marker == "" } do {
-		_spawn_marker = [2000,5000,true] call F_findOpforSpawnPoint;
+		_spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max, true] call F_findOpforSpawnPoint;
 		if ( _spawn_marker == "" ) then {
 			sleep (150 + (random 150));
 		};
@@ -31,6 +31,7 @@ while { GRLIB_endgame == 0 } do {
 		if ( count _sector_spawn_pos == 0 || surfaceIsWater _sector_spawn_pos ) then { _sector_spawn_pos = zeropos; };
 	};
 
+	_need_patrol = true;
 	if (_is_infantry) then {
 		_grp = createGroup [GRLIB_side_enemy, true];
 		_squad = [] call F_getAdaptiveSquadComp;
@@ -38,10 +39,14 @@ while { GRLIB_endgame == 0 } do {
 			_x createUnit [_sector_spawn_pos, _grp,"this addMPEventHandler [""MPKilled"", {_this spawn kill_manager}]", 0.5, "private"];
 		} foreach _squad;
 	} else {
-
 		private [ "_vehicle_object" ];
-		if ( (combat_readiness > 75) && ((random 100) > 85) ) then {
-			_vehicle_object = [ _sector_spawn_pos, opfor_choppers call BIS_fnc_selectRandom ] call F_libSpawnVehicle;
+		if (combat_readiness > 75) then {
+			if ((random 100) > 85) then {
+				_vehicle_object = [ _sector_spawn_pos, opfor_choppers call BIS_fnc_selectRandom ] call F_libSpawnVehicle;
+			} else {
+				_vehicle_object = [ _sector_spawn_pos, opfor_statics call BIS_fnc_selectRandom ] call F_libSpawnVehicle;
+				_need_patrol = false;
+			};
 		} else {
 			_vehicle_object = [ _sector_spawn_pos, [] call F_getAdaptiveVehicle ] call F_libSpawnVehicle;
 		};
@@ -52,7 +57,9 @@ while { GRLIB_endgame == 0 } do {
 
 	sleep 1;
 	if (!isNil "_grp") then {
-		[_grp, _is_infantry] spawn patrol_ai;
+		if (_need_patrol) then {
+			[_grp, _is_infantry] spawn patrol_ai;
+		};
 
 		_started_time = time;
 		_patrol_continue = true;
