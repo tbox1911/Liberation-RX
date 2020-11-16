@@ -40,12 +40,12 @@ while { GRLIB_endgame == 0 } do {
 		} foreach _squad;
 	} else {
 		private [ "_vehicle_object" ];
-		if (combat_readiness > 75) then {
-			if ((random 100) > 85) then {
-				_vehicle_object = [ _sector_spawn_pos, opfor_choppers call BIS_fnc_selectRandom ] call F_libSpawnVehicle;
-			} else {
+		if (combat_readiness > 75 && (random 100) > 80) then {
+			if ((random 100) > 70) then {
 				_vehicle_object = [ _sector_spawn_pos, opfor_statics call BIS_fnc_selectRandom ] call F_libSpawnVehicle;
 				_need_patrol = false;
+			} else {
+				_vehicle_object = [ _sector_spawn_pos, opfor_choppers call BIS_fnc_selectRandom ] call F_libSpawnVehicle;
 			};
 		} else {
 			_vehicle_object = [ _sector_spawn_pos, [] call F_getAdaptiveVehicle ] call F_libSpawnVehicle;
