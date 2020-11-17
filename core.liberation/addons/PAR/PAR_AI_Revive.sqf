@@ -37,6 +37,25 @@ PAR_fn_unconscious = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_u
 PAR_fn_eject = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_eject.sqf";
 PAR_fn_checkWounded = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_checkWounded.sqf";
 
+PAR_BloodSplat = [
+  "BloodPool_01_Large_New_F",
+  "BloodPool_01_Medium_New_F",
+  "BloodSplatter_01_Large_New_F",
+  "BloodSplatter_01_Medium_New_F",
+  "BloodSplatter_01_Small_New_F"
+];
+
+PAR_MedGarbage = [
+  "MedicalGarbage_01_Bandage_F",
+  "MedicalGarbage_01_Injector_F",
+  "MedicalGarbage_01_Packaging_F",
+  "MedicalGarbage_01_Gloves_F",
+  "MedicalGarbage_01_FirstAidKit_F",
+  "MedicalGarbage_01_1x1_v1_F",
+  "MedicalGarbage_01_1x1_v2_F",
+  "MedicalGarbage_01_1x1_v3_F"
+];
+
 PAR_fn_EHDamage = {
   params ["_unit"];
   _unit addEventHandler ["handleDamage", {
@@ -105,6 +124,11 @@ PAR_fn_Revive = {
               _x doMove (getPos player);
         };
 
+        // Blood trail
+        if (damage _x > 0.6) then {
+          _spray = createVehicle ["BloodSpray_01_New_F", getPos _x, [], 0, "CAN_COLLIDE"];
+          [_spray] spawn {sleep (7 + random 5); deleteVehicle (_this select 0)};
+        };
         sleep 0.3;
       } forEach _bros;
     };

@@ -16,7 +16,17 @@ if (!isPlayer _medic) then {
   } else {
     _medic playMoveNow "ainvpknlmstpslaywrfldnon_medicother";
   };
-  sleep 6;
+  _grbg = createVehicle [(PAR_MedGarbage call BIS_fnc_selectRandom), (getPos _wnded vectorAdd [([[-5,0,5]] call F_getRND), ([[-5,0,5]] call F_getRND), 0]), [], 0, "CAN_COLLIDE"];
+  [_grbg] spawn {sleep (60 + random 10); deleteVehicle (_this select 0)};
+  sleep 2;
+  _grbg = createVehicle [(PAR_MedGarbage call BIS_fnc_selectRandom), (getPos _wnded vectorAdd [([[-5,0,5]] call F_getRND), ([[-5,0,5]] call F_getRND), 0]), [], 0, "CAN_COLLIDE"];
+  [_grbg] spawn {sleep (60 + random 10); deleteVehicle (_this select 0)};
+  sleep 2;
+  _grbg = createVehicle [(PAR_MedGarbage call BIS_fnc_selectRandom), (getPos _wnded vectorAdd [([[-5,0,5]] call F_getRND), ([[-5,0,5]] call F_getRND), 0]), [], 0, "CAN_COLLIDE"];
+  [_grbg] spawn {sleep (60 + random 10); deleteVehicle (_this select 0)};
+  sleep 2;
+  _grbg = createVehicle [(PAR_MedGarbage call BIS_fnc_selectRandom), (getPos _wnded vectorAdd [([[-5,0,5]] call F_getRND), ([[-5,0,5]] call F_getRND), 0]), [], 0, "CAN_COLLIDE"];
+  [_grbg] spawn {sleep (60 + random 10); deleteVehicle (_this select 0)};
 };
 
 if (lifeState _medic == "incapacitated" || (!alive _wnded)) exitWith { [_medic, _wnded] call PAR_fn_medicRelease };
