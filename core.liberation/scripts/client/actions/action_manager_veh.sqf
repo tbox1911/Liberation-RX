@@ -14,7 +14,7 @@ private _big_unit = [
 	"B_T_VTOL_01_vehicle_F"
 ];
 
-private _recycleable_blacklist = [];
+private _recycleable_blacklist = [] + opfor_statics;
 {_recycleable_blacklist pushBack ( _x select 0 )} foreach (static_vehicles);
 
 waitUntil { !isNil "build_confirmed" };
@@ -61,5 +61,5 @@ while { true } do {
 		_vehicle addAction ["<t color='#FFFF00'>-- SALVAGE</t> <img size='1' image='res\ui_recycle.paa'/>","scripts\client\actions\do_wreck.sqf","",-900,true,true,"","[] call is_menuok && !(_target getVariable ['wreck_in_use', false]) && !(player getVariable ['salvage_wreck', false])", _distveh];
 		_vehicle setVariable ["GRLIB_salvage_action", true];
 	} forEach _nearwreck+_nearruins;
-	sleep 10;
+	sleep 2;
 };
