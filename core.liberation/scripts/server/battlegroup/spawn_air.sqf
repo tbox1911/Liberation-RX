@@ -1,5 +1,6 @@
+params ["_first_objective"];
+
 _planes_number = 1;
-_first_objective = _this select 0;
 if ( combat_readiness >= 75 ) then { _planes_number = (floor (random 3)) };
 
 _plane_type = opfor_air call BIS_fnc_selectRandom;
