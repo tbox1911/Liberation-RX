@@ -5,12 +5,13 @@ _crew = crew _vehicle;
 _grp = group (_crew select 0);
 _crew allowGetIn false;
 {
-	if (alive _x ) then {
+	if (alive _x && lifeState _x != "unconscious") then {
 		unassignVehicle _x;
 		commandGetOut _x;
 		doGetOut _x;
 	} else {
-		moveOut _x;
+		_x action ["Eject", _vehicle];
+		//moveOut _x;
 	};
 } forEach _crew;
 
