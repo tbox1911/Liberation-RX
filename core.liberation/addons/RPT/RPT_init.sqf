@@ -1,7 +1,7 @@
 _color = "#(rgb,1,1,1)color";
 _texDir = "addons\RPT\textures\";
 
-colorList =[
+RPT_colorList =[
 	["Black", _color + "(0.01,0.01,0.01,1)"], // #(argb,8,8,3)color(0.1,0.1,0.1,0.1)
 	["Gray", _color + "(0.15,0.151,0.152,1)"], // #(argb,8,8,3)color(0.5,0.51,0.512,0.3)
 	["White", _color + "(0.75,0.75,0.75,1)"], // #(argb,8,8,3)color(1,1,1,0.5)
@@ -36,21 +36,20 @@ colorList =[
 
 //pSikO
 if (getPlayerUID player in ["76561198085724439"]) then {
-	colorList = colorList +	[["pSiKO", _texDir + "hex.paa"]];
+	RPT_colorList = RPT_colorList +	[["pSiKO", _texDir + "hex.paa"]];
 };
 // Barbare
 if (getPlayerUID player in ["76561198085724439", "76561198098904932"]) then {
-	colorList = colorList +	[["Barbare", _texDir + "hellokitty.paa"]];
+	RPT_colorList = RPT_colorList +	[["Barbare", _texDir + "hellokitty.paa"]];
 };
 // Raven
 if (getPlayerUID player in ["76561198085724439", "76561198017505587"]) then {
-	colorList = colorList +	[["Raven", _texDir + "raven.paa"]];
+	RPT_colorList = RPT_colorList +	[["Raven", _texDir + "raven.paa"]];
 };
 // Christophe
 if (getPlayerUID player in ["76561198085724439", "76561198299706821"]) then {
-	colorList = colorList +	[["Christophe", _texDir + "camo_chris.paa"]];
+	RPT_colorList = RPT_colorList +	[["Christophe", _texDir + "camo_chris.paa"]];
 };
-
 
 //moved to ./shared/ for server use
 //RPT_fnc_TextureVehicle = compileFinal preprocessFileLineNumbers "addons\RPT\fn_textureVehicle.sqf";

@@ -83,7 +83,7 @@ class RPT_vehicle_repaint {
 			colorText[] = {0, 0, 1};
 			size = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
  		};
-		class ColorList : StdCombo {
+		class RPT_colorList : StdCombo {
 			idc = 231;
 			x = 0.263437 * safezoneW + safezoneX;
 			y = 0.2976 * safezoneH + safezoneY;

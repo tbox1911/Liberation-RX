@@ -93,7 +93,6 @@ if (!GRLIB_ACE_enabled) then {
 	[] execVM "addons\KEY\shortcut_init.sqf";
 	[] execVM "scripts\client\misc\support_manager.sqf";
 };
-[] execVM "addons\RPT\RPT_init.sqf";
 [] execVM "addons\VIRT\virtual_garage_init.sqf";
 
 // Init Tips Tables from XML

@@ -153,7 +153,7 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["LSV_01_base_F", 7],
 	["LSV_02_base_F", 7],
 	["Wheeled_APC_F", 30],
-	["Van_01_base_F", 25],
+	["Van_01_base_F", 30],
 	["Van_01_box_base_F", 50]
 ];
 
