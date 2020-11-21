@@ -543,6 +543,7 @@ opfor_air = [
 	"O_Plane_CAS_02_F",
 	"O_Plane_Fighter_02_Stealth_F",
 	"O_T_VTOL_02_infantry_F",
+	"O_T_VTOL_02_vehicle_F",
 	"O_Plane_CAS_02_Cluster_F"
 ];
 
