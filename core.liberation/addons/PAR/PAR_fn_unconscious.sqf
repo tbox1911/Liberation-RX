@@ -33,6 +33,8 @@ _unit switchMove "AinjPpneMstpSnonWrflDnon";  // lay down
       _bleedOut = _target getVariable ["PAR_BleedOutTimer", 0];
       _target setVariable ["PAR_BleedOutTimer", _bleedOut + PAR_BleedOutExtra, true];
     };
+    _grbg = createVehicle [(PAR_MedGarbage call BIS_fnc_selectRandom), getPos _target, [], 0, "CAN_COLLIDE"];
+    [_grbg] spawn {sleep (60 + random 10); deleteVehicle (_this select 0)};
     if (stance _caller == 'PRONE') then {
       _caller playMoveNow 'ainvppnemstpslaywrfldnon_medicother';
     } else {
@@ -67,6 +69,12 @@ while {lifeState _unit == "incapacitated" && time <= _unit getVariable ["PAR_Ble
       if (!isNil "_medic") then { [_unit, _medic] call PAR_fn_911 };
       sleep 10;
     };
+  } else {
+      if (isPlayer _unit) then {
+        _msg = format ["Sorry %1, you no longer have units to revive you...", name _unit];
+        [_unit, _msg] call PAR_fn_globalchat;
+        sleep 10;
+      };
   };
   //systemchat str ((_unit getVariable ["PAR_BleedOutTimer", 0]) - time);
   sleep 1;
