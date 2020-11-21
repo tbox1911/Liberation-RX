@@ -65,6 +65,7 @@ _grp = createGroup [GRLIB_side_friendly, true];
 light_vehicles = [
 	["OPTRE_M274_ATV",1,5,1,0],
 	["B_Boat_Transport_01_F",1,25,1,GRLIB_perm_inf],
+	["C_Boat_Transport_02_F",2,25,2,GRLIB_perm_log],
 	["B_Boat_Armed_01_minigun_F",5,30,5,GRLIB_perm_log],
 	["OPTRE_M12_FAV",2,25,2,0],
 	["OPTRE_M813_TT",1,10,1,0],
@@ -114,12 +115,6 @@ blufor_air = [
 	"OPTRE_AV22A_Sparrowhawk",
 	"OPTRE_AV22B_Sparrowhawk",
 	"OPTRE_AV22C_Sparrowhawk"
-];
-
-vip_vehicles = [
-	"OPTRE_M313_UNSC",
-	"OPTRE_Pelican_armed",
-	"OPTRE_M12G1_LRV"
 ];
 
 static_vehicles = [
@@ -298,12 +293,12 @@ if ( count blufor_squad_para == 0 ) then { blufor_squad_para = [
 };
 
 squads = [
-	[blufor_squad_inf_light,20,100,0,GRLIB_perm_max],
-	[blufor_squad_inf,30,200,0,GRLIB_perm_max],
-	[blufor_squad_at,20,300,0,GRLIB_perm_max],
-	[blufor_squad_aa,20,300,0,GRLIB_perm_max],
-	[blufor_squad_recon,25,250,0,GRLIB_perm_max],
-	[blufor_squad_para,20,250,0,GRLIB_perm_max]
+	[blufor_squad_inf_light,10,300,0,GRLIB_perm_max],
+	[blufor_squad_inf,20,400,0,GRLIB_perm_max],
+	[blufor_squad_recon,25,500,0,GRLIB_perm_max],
+	[blufor_squad_at,25,600,0,GRLIB_perm_max],
+	[blufor_squad_aa,25,600,0,GRLIB_perm_max],
+	[blufor_squad_mix,25,600,0,GRLIB_perm_max]
 ];
 
 // All the UAVs must be declared here
@@ -502,6 +497,7 @@ opfor_battlegroup_vehicles = [
 	"OPTRE_M12_FAV_APC",
 	"O_APC_Tracked_02_cannon_F",
 	"O_APC_Wheeled_02_rcws_F",
+	"O_Truck_03_covered_F",
 	"O_MBT_02_cannon_F",
 	"O_MBT_02_cannon_F",
 	"O_APC_Tracked_02_AA_F",
@@ -557,9 +553,22 @@ opfor_air = [
 	"O_Plane_CAS_02_Cluster_F"
 ];
 
+opfor_statics = [
+	"O_HMG_01_high_F",
+	"O_GMG_01_high_F",
+	"O_static_AA_F",
+	"O_static_AT_F",
+	"O_Mortar_01_F"
+];
+
 ind_recyclable = [
 	["I_Truck_02_covered_F",0,round (20 / GRLIB_recycling_percentage),0],
 	["I_Truck_02_transport_F",0,round (20 / GRLIB_recycling_percentage),0]
+];
+
+opfor_texture_overide = [
+	//"Urban",
+	//"Digital"
 ];
 
 opfor_recyclable = [
@@ -666,6 +675,8 @@ box_transport_config = [
 	[ "I_G_Offroad_01_F", -5, [0, -1.55, 0.2] ],
 	[ "B_Truck_01_transport_F", -6.5, [0, -0.4, 0.4], [0, -2.1, 0.4], [0, -3.8, 0.4] ],
 	[ "B_Truck_01_covered_F", -6.5, [0, -0.4, 0.4], [0, -2.1, 0.4], [0, -3.8, 0.4] ],
+	[ "C_Truck_02_transport_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
+	[ "C_Truck_02_covered_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
 	[ "I_Truck_02_transport_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
 	[ "I_Truck_02_covered_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
 	[ "O_Truck_03_transport_F", -6.5, [0, -0.8, 0.4], [0, -2.4, 0.4], [0, -4.0, 0.4] ],
@@ -713,7 +724,7 @@ GRLIB_vehicle_whitelist = [
 	"O_Heli_Attack_02_F",
 	"O_Heli_Attack_02_black_F"
 ];
-{GRLIB_vehicle_whitelist pushBack ( _x select 0 )} foreach (static_vehicles);
+{GRLIB_vehicle_whitelist pushBack ( _x select 0 )} foreach (static_vehicles + opfor_recyclable);
 
 // Blacklist Vehicle (lock and paint)
 GRLIB_vehicle_blacklist = [
@@ -778,7 +789,7 @@ air_vehicles_classnames = [] + opfor_choppers;
 { air_vehicles_classnames pushback (_x select 0); } foreach air_vehicles;
 markers_reset = [99999,99999,0];
 zeropos = [0,0,0];
-squads_names = [ localize "STR_LIGHT_RIFLE_SQUAD", localize "STR_RIFLE_SQUAD", localize "STR_AT_SQUAD", localize "STR_AA_SQUAD",  localize "STR_RECON_SQUAD", localize "STR_PARA_SQUAD" ];
+squads_names = [ localize "STR_LIGHT_RIFLE_SQUAD", localize "STR_RIFLE_SQUAD", localize "STR_AT_SQUAD", localize "STR_AA_SQUAD", localize "STR_MIXED_SQUAD", localize "STR_RECON_SQUAD" ];
 boats_names = [ "B_Boat_Transport_01_F", "B_Boat_Armed_01_minigun_F" ];
 ammobox_transports_typenames = [];
 { ammobox_transports_typenames pushback (_x select 0) } foreach box_transport_config;
