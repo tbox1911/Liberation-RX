@@ -22,7 +22,7 @@ if !(isNull _unit) then {
 	// Remove Injured AI
 	private _bros = allUnits select {(_x getVariable ["PAR_Grp_ID","0"]) == (_unit getVariable ["PAR_Grp_ID","1"])};
 	{
-		if (!(lifeState _x in ["HEALTHY", "INJURED"])) then { deleteVehicle _x };
+		if (lifeState _x == "incapacitated") then { deleteVehicle _x };
 	} forEach _bros;
 
 	// Remove Taxi
