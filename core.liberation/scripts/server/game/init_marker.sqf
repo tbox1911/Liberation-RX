@@ -35,9 +35,9 @@ _center = [_size,_size,0];
     if (_str find "workshop01_04" > 0) then { GRLIB_Marker_SRV pushback (getpos _x) };
     if (_str find "misc_garage_03" > 0) then { GRLIB_Marker_SRV pushback (getpos _x) };
     if (worldname != "chernarus" && worldname != "Enoch" &&  worldname != "vt7" &&  worldname != "isladuala3") then {if (_str find "workshop" > 0) then { GRLIB_Marker_SRV pushback (getpos _x) }};
-    if (_str find "fs_roof_" > 0) then { GRLIB_Marker_FUEL pushback (getpos _x) };
-    if (_str find "fuelstation" > 0 && _str find "workshop" < 0 ) then { GRLIB_Marker_FUEL pushback (getpos _x) };
-    if (_str find "benzina_schnell" > 0) then { GRLIB_Marker_FUEL pushback (getpos _x) };
+    //if (_str find "fs_roof_" > 0) then { GRLIB_Marker_FUEL pushback (getpos _x) };
+    //if (_str find "fuelstation" > 0 && _str find "workshop" < 0 ) then { GRLIB_Marker_FUEL pushback (getpos _x) };
+    //if (_str find "benzina_schnell" > 0) then { GRLIB_Marker_FUEL pushback (getpos _x) };
   };
 } forEach (_center nearObjects ["House", (_size + 2000)]);
 
@@ -65,16 +65,10 @@ _center = [_size,_size,0];
   };
 } forEach GRLIB_Marker_SRV;
 
+{ GRLIB_Marker_FUEL pushback (markerpos _x) } forEach sectors_factory;
 {
   _dist = ["FUEL", _x] call marker_dist;
   if (_dist > 50) then {
-    _marker = createMarker [format ["marked_fuel%1" ,_x], markers_reset];
-    _marker setMarkerPos _x;
-    _marker setMarkerColor "ColorYellow";
-    _marker setMarkerType "mil_dot";
-    _marker setMarkerText "FUEL";
-    _marker setMarkerSize [ 1, 1 ];
-
     //add repair pickup
     private _pos = [];
     private _max_try = 5;
@@ -97,6 +91,13 @@ _center = [_size,_size,0];
       clearMagazineCargoGlobal _vehicle;
       clearItemCargoGlobal _vehicle;
       clearBackpackCargoGlobal _vehicle;
+
+      _marker = createMarker [format ["marked_fuel%1" ,_pos], markers_reset];
+      _marker setMarkerPos _pos;
+      _marker setMarkerColor "ColorOrange";
+      _marker setMarkerType "mil_dot";
+      _marker setMarkerText "Repair";
+      _marker setMarkerSize [ 1, 1 ];
     };
   };
 } forEach GRLIB_Marker_FUEL;
