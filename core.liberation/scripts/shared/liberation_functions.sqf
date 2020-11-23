@@ -26,6 +26,7 @@ F_payLoadout = compileFinal preprocessFileLineNumbers "scripts\shared\functions\
 F_swapInventory = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_swapInventory.sqf";
 F_spawnRegularSquad = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_spawnRegularSquad.sqf";
 F_spawnCivilians = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_spawnCivilians.sqf";
+F_spawnWildLife = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_spawnWildLife.sqf";
 F_getNearbyPlayers = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getNearbyPlayers.sqf";
 F_lessLoadedHC = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_lessLoadedHC.sqf";
 F_adaptiveOpforFactor = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_adaptiveOpforFactor.sqf";

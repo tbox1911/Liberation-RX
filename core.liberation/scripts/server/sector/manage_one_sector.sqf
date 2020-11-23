@@ -3,8 +3,6 @@ private [ "_sectorpos", "_stopit", "_spawncivs", "_building_ai_max", "_infsquad"
 
 waitUntil {sleep 1; !isNil "combat_readiness" };
 
-//diag_log format [ "Sector %2 checkpoint A at %1", time, _sector ];
-
 _sectorpos = getmarkerpos _sector;
 _stopit = false;
 _spawncivs = false;
@@ -29,16 +27,11 @@ if ( isNil "active_sectors" ) then { active_sectors = [] };
 if ( _sector in active_sectors ) exitWith {};
 active_sectors pushback _sector; publicVariable "active_sectors";
 
-//diag_log format [ "Sector %2 checkpoint B at %1", time, _sector ];
 
 _opforcount = [] call F_opforCap;
 [ _sector, _opforcount ] call wait_to_spawn_sector;
 
-//diag_log format [ "Sector %2 checkpoint C at %1", time, _sector ];
-
 if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcount ] call F_getCorrectedSectorRange , GRLIB_side_friendly ] call F_getUnitsCount ) > 0 ) ) then {
-
-	//diag_log format [ "Sector %2 checkpoint D at %1", time, _sector ];
 
 	if ( _sector in sectors_bigtown ) then {
 		_vehtospawn =
@@ -120,13 +113,9 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 		[markerPos _sector, 50] call createlandmines;
 	};
 
-	//diag_log format [ "Sector %2 checkpoint E at %1", time, _sector ];
-
 	if ( _building_ai_max > 0 && GRLIB_adaptive_opfor ) then {
 		_building_ai_max = round ( _building_ai_max * ([] call F_adaptiveOpforFactor));
 	};
-
-	//diag_log format [ "Sector %2 checkpoint F at %1", time, _sector ];
 
 	{
 		_vehicle = [_sectorpos, _x] call F_libSpawnVehicle;
@@ -135,8 +124,6 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 		{ _managed_units pushback _x; } foreach (crew _vehicle);
 		sleep 0.25;
 	} foreach _vehtospawn;
-
-	//diag_log format [ "Sector %2 checkpoint G at %1", time, _sector ];
 
 	if ( _building_ai_max > 0 ) then {
 		_allbuildings = [ nearestObjects [_sectorpos, ["House"], _building_range ], { alive _x } ] call BIS_fnc_conditionalSelect;
@@ -149,11 +136,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 		};
 	};
 
-	//diag_log format [ "Sector %2 checkpoint H at %1", time, _sector ];
-
 	_managed_units = _managed_units + ( [ _sectorpos ] call F_spawnMilitaryPostSquad );
-
-	//diag_log format [ "Sector %2 checkpoint I at %1", time, _sector ];
 
 	if ( count _squad1 > 0 ) then {
 		_grp = [ _sector, _squad1 ] call F_spawnRegularSquad;
@@ -179,17 +162,18 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 		_managed_units = _managed_units + (units _grp);
 	};
 
-	//diag_log format [ "Sector %2 checkpoint J at %1", time, _sector ];
-
 	if ( _spawncivs && GRLIB_civilian_activity > 0) then {
 		_managed_units = _managed_units + ( [ _sector ] call F_spawnCivilians );
 	};
 
-	//diag_log format [ "Sector %2 checkpoint K at %1", time, _sector ];
+	if  (!(_sector in sectors_bigtown ) && diag_fps > 15.0 ) then {
+		_managed_units = _managed_units + ( [ _sector ] call F_spawnWildLife );
+		_managed_units = _managed_units + ( [ _sector ] call F_spawnWildLife );
+		_managed_units = _managed_units + ( [ _sector ] call F_spawnWildLife );
+		_managed_units = _managed_units + ( [ _sector ] call F_spawnWildLife );
+	};
 
 	[ _sector, _building_range, _iedcount ] spawn ied_manager;
-
-	//diag_log format [ "Sector %2 checkpoint L at %1", time, _sector ];
 
 	sleep 10;
 
@@ -197,13 +181,9 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 		[ [ _sector ] , "reinforcements_remote_call" ] call BIS_fnc_MP;
 	};
 
-	//diag_log format [ "Sector %2 checkpoint M at %1", time, _sector ];
-
 	while { !_stopit } do {
 
 		if ( ( [_sectorpos, _local_capture_size] call F_sectorOwnership == GRLIB_side_friendly ) && ( GRLIB_endgame == 0 ) ) then {
-
-			//diag_log format [ "Sector %2 checkpoint N at %1", time, _sector ];
 
 			if (isServer) then {
 				[ _sector ] spawn sector_liberated_remote_call;
@@ -219,11 +199,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 
 			active_sectors = active_sectors - [ _sector ]; publicVariable "active_sectors";
 
-			//diag_log format [ "Sector %2 checkpoint O at %1", time, _sector ];
-
 			sleep 600;
-
-			//diag_log format [ "Sector %2 checkpoint P at %1", time, _sector ];
 
 			{
 				if (_x isKindOf "Man") then {
@@ -236,8 +212,6 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 			} foreach _managed_units;
 
 		} else {
-
-			//diag_log format [ "Sector %2 checkpoint Q at %1", time, _sector ];
 
 			if ( ( [_sectorpos, ( ( [ _opforcount ] call F_getCorrectedSectorRange ) + 300 ), GRLIB_side_friendly ] call F_getUnitsCount ) == 0 ) then {
 				_sector_despawn_tickets = _sector_despawn_tickets - 1;
@@ -257,8 +231,6 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 
 				_stopit = true;
 				active_sectors = active_sectors - [ _sector ]; publicVariable "active_sectors";
-
-				//diag_log format [ "Sector %2 checkpoint R at %1", time, _sector ];
 			};
 		};
 		sleep 5;
@@ -266,7 +238,4 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 } else {
 	sleep 40;
 	active_sectors = active_sectors - [ _sector ]; publicVariable "active_sectors";
-	//diag_log format [ "Sector %2 checkpoint S at %1", time, _sector ];
 };
-
-//diag_log format [ "Sector %2 checkpoint T at %1", time, _sector ];
