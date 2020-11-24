@@ -29,5 +29,6 @@ waitUntil {!(isNull (findDisplay 46))};
 	if (_this select 1 == (actionKeys 'User4') select 0) then {
 		_name = format ["%1_%2_%3-%4_%5.png", name player, worldname, date select 3, date select 4, round(random [100,500,1000])];
 		screenshot _name;
+		gamelogic globalChat (format ["Take screenshot: %1", _name]);
 	};
 }];

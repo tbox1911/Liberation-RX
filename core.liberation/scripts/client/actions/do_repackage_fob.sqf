@@ -44,6 +44,7 @@ if ( dorepackage > 0 ) then {
 		clearItemCargoGlobal _fobbox;
 		clearBackpackCargoGlobal _fobbox;
 		_fobbox setVariable ["fob_in_use", false, true];
+		_fobbox addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
 	};
 	hint localize "STR_FOB_REPACKAGE_HINT";
 };
