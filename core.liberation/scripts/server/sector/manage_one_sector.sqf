@@ -166,13 +166,6 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 		_managed_units = _managed_units + ( [ _sector ] call F_spawnCivilians );
 	};
 
-	if  (!(_sector in sectors_bigtown ) && diag_fps > 15.0 ) then {
-		_managed_units = _managed_units + ( [ _sector ] call F_spawnWildLife );
-		_managed_units = _managed_units + ( [ _sector ] call F_spawnWildLife );
-		_managed_units = _managed_units + ( [ _sector ] call F_spawnWildLife );
-		_managed_units = _managed_units + ( [ _sector ] call F_spawnWildLife );
-	};
-
 	[ _sector, _building_range, _iedcount ] spawn ied_manager;
 
 	sleep 10;
