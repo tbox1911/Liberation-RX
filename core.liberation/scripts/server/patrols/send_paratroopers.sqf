@@ -13,7 +13,7 @@ _sendPara = {
 	_air_spawnpos = [(((_air_spawnpos select 0) + 500) - random 1000),(((_air_spawnpos select 1) + 500) - random 1000), 120];
 	private _newvehicle = createVehicle [ _chopper_type, _air_spawnpos, [], 0, "FLY"];
 
-	_newvehicle flyInHeight (100 + (random 60));
+	_newvehicle flyInHeight (300 + (random 100));
 	createVehicleCrew _newvehicle;
 	sleep 1;
 
@@ -74,13 +74,13 @@ _sendPara = {
 	_waypoint setWaypointCompletionRadius 50;
 	_pilot_group setCurrentWaypoint [ _para_group, 1];
 
-	_newvehicle flyInHeight 100;
+	_newvehicle flyInHeight 300;
 
 	waitUntil { sleep 1;
 		!(alive _newvehicle) || (damage _newvehicle > 0.2 ) || (_newvehicle distance2D _targetpos < 200 )
 	};
 
-	_newvehicle flyInHeight 100;
+	_newvehicle flyInHeight 200;
 
 	{
 		unassignVehicle _x;
@@ -88,7 +88,7 @@ _sendPara = {
 		sleep 0.5;
 	} foreach (units _para_group);
 
-	_newvehicle flyInHeight 100;
+	_newvehicle flyInHeight 300;
 
 	sleep 0.2;
 	while {(count (waypoints _pilot_group)) != 0} do {deleteWaypoint ((waypoints _pilot_group) select 0);};
@@ -98,7 +98,7 @@ _sendPara = {
 	{_x doFollow leader _para_group} foreach units _para_group;
 	sleep 0.2;
 
-	_newvehicle flyInHeight 100;
+	//_newvehicle flyInHeight 300;
 
 	_waypoint = _pilot_group addWaypoint [ _targetpos, 200];
 	_waypoint setWaypointBehaviour "COMBAT";
