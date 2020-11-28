@@ -12,6 +12,7 @@ switch ( _list ) do {
 	case "SRV" : { _classlist = GRLIB_Marker_SRV};
 	case "ATM" : { _classlist = GRLIB_Marker_ATM};
 	case "FUEL" : { _classlist = GRLIB_Marker_FUEL};
+	case "REPAIR" : { _classlist = GRLIB_Marker_REPAIR};
 };
 
 private _vehpos = getPosATL _vehicle;
