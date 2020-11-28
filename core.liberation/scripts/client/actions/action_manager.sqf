@@ -37,7 +37,6 @@ waitUntil { !isNil "one_synchro_done" };
 waitUntil { one_synchro_done };
 waitUntil { !isNil "GRLIB_player_spawned" };
 waituntil { GRLIB_player_spawned; (player getVariable ["GRLIB_score_set", 0] == 1)};
-waituntil { !isNil "GRLIB_Marker_FUEL"};
 waitUntil { !isNil "GRLIB_mobile_respawn" };
 
 while { true } do {
@@ -48,6 +47,7 @@ while { true } do {
 	_near_spawn = (player nearEntities [[Respawn_truck_typename, huron_typename], _distspawn]) + _near_radio;
 	_near_fobbox = player nearEntities [[FOB_box_typename, FOB_truck_typename], _distspawn];
 	_near_fuel = [player, "FUEL", _distvehclose, false] call F_check_near;
+	_near_repair = [player, "REPAIR", _distvehclose, false] call F_check_near;
 	_near_atm = [player, "ATM", _distvehclose, true] call F_check_near;
 	_my_dog = player getVariable ["my_dog", objNull];
 	_my_squad = player getVariable ["my_squad", objNull];
@@ -125,7 +125,7 @@ while { true } do {
 	};
 
 	// Fuel
-	if ( [] call is_menuok && (player distance lhd) >= 1000 && _near_fuel ) then {
+	if ( [] call is_menuok && (player distance lhd) >= 1000 && (_near_fuel || _near_repair) ) then {
 		if ( _idact_buyfuel == -1 ) then {
 			_idact_buyfuel = player addAction ["<t color='#00F080'>-- BUY FUEL</t> <img size='1' image='R3F_LOG\icons\r3f_fuel.paa'/>", "scripts\client\actions\do_buyfuel.sqf","",-900,true,true,"",""];
 		};
