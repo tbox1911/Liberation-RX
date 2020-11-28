@@ -378,7 +378,7 @@ if ( isNil "opfor_officer") then { opfor_officer = "O_SoldierU_SL_F" };
 if ( isNil "opfor_sharpshooter") then { opfor_sharpshooter = "O_Urban_Sharpshooter_F" };
 if ( isNil "opfor_sniper") then { opfor_sniper = "O_ghillie_ard_F" };
 if ( isNil "opfor_engineer") then { opfor_engineer = "O_engineer_U_F" };
-if ( isNil "opfor_paratrooper") then { opfor_paratrooper = "O_Urban_HeavyGunner_F" };
+if ( isNil "opfor_paratrooper") then { opfor_paratrooper = "O_soldier_PG_F" };
 if ( isNil "opfor_mrap") then { opfor_mrap = "O_MRAP_02_F" };
 if ( isNil "opfor_mrap_armed") then { opfor_mrap_armed = "O_MRAP_02_gmg_F" };
 if ( isNil "opfor_transport_helo") then { opfor_transport_helo = "O_Heli_Transport_04_bench_F" };
@@ -543,6 +543,7 @@ opfor_air = [
 	"O_Plane_CAS_02_F",
 	"O_Plane_Fighter_02_Stealth_F",
 	"O_T_VTOL_02_infantry_F",
+	"O_T_VTOL_02_vehicle_F",
 	"O_Plane_CAS_02_Cluster_F"
 ];
 
