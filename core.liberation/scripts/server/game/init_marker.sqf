@@ -3,6 +3,7 @@ if (!isServer) exitWith {};
 GRLIB_Marker_SRV = [];
 GRLIB_Marker_ATM = [];
 GRLIB_Marker_FUEL = [];
+GRLIB_Marker_REPAIR = [];
 
 marker_dist = {
   params ["_type", "_pos"];
@@ -17,58 +18,63 @@ marker_dist = {
   _ret;
 };
 
+// Objects too long to search (atm, phone, etc ..)
 [] call compileFinal preprocessFileLineNUmbers "fixed_position.sqf";
 
-_size = (getnumber (configfile >> "cfgworlds" >> worldname >> "mapSize")) / 2;
-_center = [_size,_size,0];
+// Search Objects by classname
+[] call compileFinal preprocessFileLineNUmbers "compute_position.sqf";
 
-{
-  if (_x distance2D lhd > 1000) then {
-    _str = str _x;
-    //if (_str find "atm_" > 0) then { GRLIB_Marker_ATM pushback (getpos _x) };
-    if (_str find "mil_guardhouse" > 0) then { GRLIB_Marker_ATM pushback (getpos _x) };
-    if (_str find "carservice_" > 0) then { GRLIB_Marker_SRV pushback (getpos _x) };
-    if (_str find "cargo_hq_" > 0) then { GRLIB_Marker_SRV pushback (getpos _x) };
-    if (_str find "house_c_12_ep1" > 0) then { GRLIB_Marker_SRV pushback (getpos _x) };
-    if (_str find "GarageRow" > 0) then { GRLIB_Marker_SRV pushback (getpos _x) };
-    if (_str find "workshop_05" > 0) then { GRLIB_Marker_SRV pushback (getpos _x) };
-    if (_str find "workshop01_04" > 0) then { GRLIB_Marker_SRV pushback (getpos _x) };
-    if (_str find "misc_garage_03" > 0) then { GRLIB_Marker_SRV pushback (getpos _x) };
-    if (worldname != "chernarus" && worldname != "Enoch" &&  worldname != "vt7" &&  worldname != "isladuala3") then {if (_str find "workshop" > 0) then { GRLIB_Marker_SRV pushback (getpos _x) }};
-    //if (_str find "fs_roof_" > 0) then { GRLIB_Marker_FUEL pushback (getpos _x) };
-    //if (_str find "fuelstation" > 0 && _str find "workshop" < 0 ) then { GRLIB_Marker_FUEL pushback (getpos _x) };
-    //if (_str find "benzina_schnell" > 0) then { GRLIB_Marker_FUEL pushback (getpos _x) };
-  };
-} forEach (_center nearObjects ["House", (_size + 2000)]);
-
+// Draw/Filter Markers
+private _tmp_marker = GRLIB_Marker_ATM;
+GRLIB_Marker_ATM = [];
 {
   _dist = ["ATM", _x] call marker_dist;
-  if (_dist > 50) then {
+  if (_dist > 100) then {
     _marker = createMarker [format ["marked_atm%1" ,_x], markers_reset];
     _marker setMarkerPos _x;
     _marker setMarkerColor "ColorGreen";
     _marker setMarkerType "mil_dot";
     _marker setMarkerText "ATM";
     _marker setMarkerSize [ 1, 1 ];
+    GRLIB_Marker_ATM pushback _x;
   };
-} forEach GRLIB_Marker_ATM;
+} forEach _tmp_marker;
 
+private _tmp_marker = GRLIB_Marker_SRV;
+GRLIB_Marker_SRV = [];
 {
   _dist = ["SELL", _x] call marker_dist;
-  if (_dist > 50) then {
+  if (_dist > 100) then {
     _marker = createMarker [format ["marked_car%1" ,_x], markers_reset];
     _marker setMarkerPos _x;
     _marker setMarkerColor "ColorBlue";
     _marker setMarkerType "mil_dot";
     _marker setMarkerText "SELL";
     _marker setMarkerSize [ 1, 1 ];
+    GRLIB_Marker_SRV pushback _x;
   };
-} forEach GRLIB_Marker_SRV;
+} forEach _tmp_marker;
 
-{ GRLIB_Marker_FUEL pushback (markerpos _x) } forEach sectors_factory;
+private _tmp_marker = GRLIB_Marker_FUEL;
+GRLIB_Marker_FUEL = [];
 {
   _dist = ["FUEL", _x] call marker_dist;
-  if (_dist > 50) then {
+  if (_dist > 100) then {
+    _marker = createMarker [format ["marked_fuel%1" ,_x], markers_reset];
+    _marker setMarkerPos _x;
+    _marker setMarkerColor "ColorYellow";
+    _marker setMarkerType "mil_dot";
+    _marker setMarkerText "FUEL";
+    _marker setMarkerSize [ 1, 1 ];
+    GRLIB_Marker_FUEL pushback _x;
+  };
+} forEach _tmp_marker;
+
+private _tmp_marker = [];
+{ _tmp_marker pushback (markerpos _x) } forEach sectors_factory;
+{
+  _dist = ["Repair", _x] call marker_dist;
+  if (_dist > 300) then {
     //add repair pickup
     private _pos = [];
     private _max_try = 5;
@@ -92,16 +98,31 @@ _center = [_size,_size,0];
       clearItemCargoGlobal _vehicle;
       clearBackpackCargoGlobal _vehicle;
 
-      _marker = createMarker [format ["marked_fuel%1" ,_pos], markers_reset];
+      _marker = createMarker [format ["marked_repair%1" ,_pos], markers_reset];
       _marker setMarkerPos _pos;
       _marker setMarkerColor "ColorOrange";
       _marker setMarkerType "mil_dot";
       _marker setMarkerText "Repair";
       _marker setMarkerSize [ 1, 1 ];
+      GRLIB_Marker_REPAIR pushback _pos;
     };
   };
-} forEach GRLIB_Marker_FUEL;
+} forEach _tmp_marker;
 
 publicVariable "GRLIB_Marker_SRV";
 publicVariable "GRLIB_Marker_ATM";
 publicVariable "GRLIB_Marker_FUEL";
+publicVariable "GRLIB_Marker_REPAIR";
+
+
+// Search object
+//  _object = "mailboxsouth";
+//  _res = [];
+//  private _pos = getArray(configFile >> "CfgWorlds" >> worldName >> "centerPosition");
+//  {
+//   if (_x distance2D lhd > 1000) then {
+//     if (str _x find _object > 0) then { _res pushback (getPos _x) };
+//   };
+// } foreach nearestobjects [_pos, [], worldSize / 2];
+// systemchat str (count _res);
+// copyToClipboard str _res;
