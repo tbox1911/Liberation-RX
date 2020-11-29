@@ -4,7 +4,7 @@ _distarsenal = 30;
 _maxsec = 3;
 _list_static = [] + uavs;
 {_list_static pushBack ( _x select 0 )} foreach (static_vehicles);
-_ignore_ammotype = ["Laserbatteries"];
+_ignore_ammotype = ["Laserbatteries", "8Rnd_82mm_Mo_Flare_white", "8Rnd_82mm_Mo_Smoke_white"];
 
 NeedAmmo = {
 	params ["_unit", "_item", "_min"];
@@ -114,29 +114,35 @@ while { true } do {
 			_vehicle_class = typeOf _vehicle;
 
 			if (_vehicle_class in _list_static) then {
-				_max_ammo = 6;
-				if (_vehicle_class in uavs) then { _max_ammo = 3 };
+				_timer = _vehicle getVariable ["GREUH_rearm_timer", 0];
+				if (_timer == 0 ) then {
+					_max_ammo = 6;
+					if (_vehicle_class in uavs) then { _max_ammo = 3 };
+					if (_vehicle_class == "B_Mortar_01_F") then { _max_ammo = 3 };
 
-				// Arsenal
-				_neararsenal =  ((getpos _unit) nearEntities [vehicle_rearm_sources, _distarsenal]) +
-								((getpos _unit) nearobjects [FOB_typename, _distarsenal * 2]);
+					// Arsenal
+					_neararsenal =  ((getpos _unit) nearEntities [vehicle_rearm_sources, _distarsenal]) +
+									((getpos _unit) nearobjects [FOB_typename, _distarsenal * 2]);
 
-				if (count(_neararsenal) > 0)  then {
-					_magType = (getArray(configFile >> "CfgVehicles" >> _vehicle_class >> "Turrets" >> "MainTurret" >> "magazines") - _ignore_ammotype);
-					{
-						_ammo_type = _x;
-						_cnt = { _x == _ammo_type } count magazines _vehicle;
-						if (_cnt < _max_ammo) then {
-							_vehicle addMagazines [_ammo_type, (_max_ammo - _cnt)];
-							_arsenal_text = getText (configFile >> "CfgVehicles" >> typeOf (_neararsenal select 0) >> "displayName");
-							_vehicle_class_text =  getText (configFile >> "CfgVehicles" >> _vehicle_class >> "displayName");
-							_unit groupchat format ["Rearming %1 at %2.", _vehicle_class_text, _arsenal_text];
-						};
-					} forEach _magType;
+					if (count(_neararsenal) > 0)  then {
+						_magType = (getArray(configFile >> "CfgVehicles" >> _vehicle_class >> "Turrets" >> "MainTurret" >> "magazines") - _ignore_ammotype);
+						{
+							_ammo_type = _x;
+							_cnt = { _x == _ammo_type } count magazines _vehicle;
+							if (_cnt < _max_ammo) then {
+								_vehicle addMagazines [_ammo_type, (_max_ammo - _cnt)];
+								_arsenal_text = getText (configFile >> "CfgVehicles" >> typeOf (_neararsenal select 0) >> "displayName");
+								_vehicle_class_text =  getText (configFile >> "CfgVehicles" >> _vehicle_class >> "displayName");
+								_unit groupchat format ["Rearming %1 at %2.", _vehicle_class_text, _arsenal_text];
+							};
+						} forEach _magType;
+						_vehicle setVariable ["GREUH_rearm_timer", 4];
+					};
+				} else {
+					_vehicle setVariable ["GREUH_rearm_timer", (_timer - 1)];
 				};
 			};
 		};
-		sleep 0.5;
 	} forEach _UnitList;
-	sleep 15;
+	sleep 20;
 };
