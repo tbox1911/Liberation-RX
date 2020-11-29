@@ -2,8 +2,9 @@ private ["_neararsenal", "_nearmedic", "_needammo1", "_needammo2", "_needmedic",
 
 _distarsenal = 30;
 _maxsec = 3;
-_list_static = [];
+_list_static = [] + uavs;
 {_list_static pushBack ( _x select 0 )} foreach (static_vehicles);
+_ignore_ammotype = ["Laserbatteries"];
 
 NeedAmmo = {
 	params ["_unit", "_item", "_min"];
@@ -44,9 +45,8 @@ while { true } do {
 	_needmedic = false;
 	_UnitList = units group player;
 	_my_squad = player getVariable ["my_squad", nil];
-	if (!isNil "_my_squad") then {
-		{ _UnitList pushBack _x } forEach units _my_squad;
-	};
+	if (!isNil "_my_squad") then { { _UnitList pushBack _x } forEach units _my_squad };
+	{_UnitList append units _x} foreach hcAllGroups player;
 	{
 		// Out vehicle
 		if (_x != player && lifeState _x != 'incapacitated' && vehicle _x == _x) then {
@@ -109,26 +109,34 @@ while { true } do {
 
 		// In vehicle
 		if (lifeState _x != 'incapacitated' && vehicle _x != _x) then {
-			_vehicle = vehicle _x;
+			_unit = _x;
+			_vehicle = vehicle _unit;
 			_vehicle_class = typeOf _vehicle;
 
 			if (_vehicle_class in _list_static) then {
+				_max_ammo = 6;
+				if (_vehicle_class in uavs) then { _max_ammo = 3 };
+
 				// Arsenal
-				_neararsenal =  ((getpos _x) nearEntities [vehicle_rearm_sources, _distarsenal]) +
-								((getpos _x) nearobjects [FOB_typename, _distarsenal * 2]);
+				_neararsenal =  ((getpos _unit) nearEntities [vehicle_rearm_sources, _distarsenal]) +
+								((getpos _unit) nearobjects [FOB_typename, _distarsenal * 2]);
 
 				if (count(_neararsenal) > 0)  then {
-					// check primary Weapon
-					if (count magazines _vehicle < 3) then {
-						_magType = getArray(configFile >> "CfgVehicles" >> _vehicle_class >> "Turrets" >> "MainTurret" >> "magazines") select 0;
-						_vehicle addMagazines [_magType, 4];
-						_arsenal_text = getText (configFile >> "CfgVehicles" >> typeOf (_neararsenal select 0) >> "displayName");
-						_vehicle_class_text =  getText (configFile >> "CfgVehicles" >> _vehicle_class >> "displayName");
-						_x groupchat format ["Rearming %1 at %2.", _vehicle_class_text, _arsenal_text];
-					};
+					_magType = (getArray(configFile >> "CfgVehicles" >> _vehicle_class >> "Turrets" >> "MainTurret" >> "magazines") - _ignore_ammotype);
+					{
+						_ammo_type = _x;
+						_cnt = { _x == _ammo_type } count magazines _vehicle;
+						if (_cnt < _max_ammo) then {
+							_vehicle addMagazines [_ammo_type, (_max_ammo - _cnt)];
+							_arsenal_text = getText (configFile >> "CfgVehicles" >> typeOf (_neararsenal select 0) >> "displayName");
+							_vehicle_class_text =  getText (configFile >> "CfgVehicles" >> _vehicle_class >> "displayName");
+							_unit groupchat format ["Rearming %1 at %2.", _vehicle_class_text, _arsenal_text];
+						};
+					} forEach _magType;
 				};
 			};
 		};
+		sleep 0.5;
 	} forEach _UnitList;
 	sleep 15;
 };
