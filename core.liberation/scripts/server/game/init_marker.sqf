@@ -70,6 +70,7 @@ GRLIB_Marker_FUEL = [];
   };
 } forEach _tmp_marker;
 
+waituntil {sleep 0.5; !isNil "sectors_factory"};
 private _tmp_marker = [];
 { _tmp_marker pushback (markerpos _x) } forEach sectors_factory;
 {
