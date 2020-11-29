@@ -51,7 +51,8 @@ while { GRLIB_endgame == 0 } do {
 		_grp = group ((crew _vehicle_object) select 0);
 	};
 
-	if (_patrol_type == 2) then {
+	if (_patrol_type == 3) then {
+		private [ "_vehicle_object" ];
 		_opfor_tower = [sectors_tower, {!( _x in blufor_sectors)}] call BIS_fnc_conditionalSelect;
 		_tower_spawn_pos = [ getMarkerPos (selectRandom _opfor_tower), random 100, random 360 ] call BIS_fnc_relPos;
 		_vehicle_object = [ _tower_spawn_pos, opfor_statics call BIS_fnc_selectRandom ] call F_libSpawnVehicle;
@@ -60,7 +61,6 @@ while { GRLIB_endgame == 0 } do {
 		"O_spotter_F" createUnit [ getpos _vehicle_object, _grp,'this addMPEventHandler [''MPKilled'', {_this spawn kill_manager}]', 0.5, 'private'];
 		_need_patrol = false;
 	};
-
 
 	sleep 1;
 	if (!isNil "_grp") then {
