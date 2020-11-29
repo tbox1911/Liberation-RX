@@ -1,4 +1,4 @@
-params ["_grp", "_is_infantry"];
+params ["_grp", "_patrol_type"];
 
 if ( isNil "reinforcements_sector_under_attack" ) then { reinforcements_sector_under_attack = "" };
 
@@ -35,7 +35,7 @@ while { count (units _grp) > 0 } do {
 		_sector_list = (sectors_allSectors - blufor_sectors - sectors_tower);
 		_max_waypoints = 4;  // + back to startpos and cycle
 
-		if (_is_infantry) then {
+		if (_patrol_type == 1) then {
 			_sector_radius = 600;
 			_a3w_missions = [];
 			{_a3w_missions pushBack ( _x select 0 )} foreach (SpawnMissionMarkers + ForestMissionMarkers);
