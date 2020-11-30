@@ -1,4 +1,4 @@
-params [ "_minimum_readiness", "_patrol_type" ];
+params [ "_minimum_readiness", "_patrol_type", "_index" ];
 private [ "_headless_client" ];
 
 waitUntil { !isNil "blufor_sectors" };
@@ -10,13 +10,16 @@ while { GRLIB_endgame == 0 } do {
 
 	sleep ((random 5) * 60);
 
-	while {  [] call F_opforCap > GRLIB_patrol_cap } do {
-			sleep (random 30);
+	while { [] call F_opforCap > GRLIB_patrol_cap } do {
+		sleep (random 30);
 	};
 
-	_grp = grpNull;
+diag_log format ["DBG: %1 %2", _patrol_type, (_index + 1)];
+	while { (count sectors_allSectors - count blufor_sectors) < ((_index + 1) * 2) } do {
+		sleep (150 + (random 150));
+	};
 
-	_spawn_marker = "";
+	private _spawn_marker = "";
 	while { _spawn_marker == "" } do {
 		_spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max, true] call F_findOpforSpawnPoint;
 		if ( _spawn_marker == "" ) then {
@@ -24,14 +27,15 @@ while { GRLIB_endgame == 0 } do {
 		};
 	};
 
-	_sectorpos = [ getMarkerPos _spawn_marker, random 100, random 360 ] call BIS_fnc_relPos;
-	_sector_spawn_pos = zeropos;
+	private _grp = grpNull;
+	private _sectorpos = [ getMarkerPos _spawn_marker, random 100, random 360 ] call BIS_fnc_relPos;
+	private _sector_spawn_pos = zeropos;
 	while { _sector_spawn_pos distance zeropos < 100 } do {
 		_sector_spawn_pos = ( [ _sectorpos, random 50, random 360 ] call BIS_fnc_relPos ) findEmptyPosition [1, 200, "B_Heli_Light_01_F"];
 		if ( count _sector_spawn_pos == 0 || surfaceIsWater _sector_spawn_pos ) then { _sector_spawn_pos = zeropos; };
 	};
 
-	_need_patrol = true;
+	private _need_patrol = true;
 	if (_patrol_type == 1) then {
 		_grp = createGroup [GRLIB_side_enemy, true];
 		_squad = [] call F_getAdaptiveSquadComp;
@@ -54,11 +58,13 @@ while { GRLIB_endgame == 0 } do {
 	if (_patrol_type == 3) then {
 		private [ "_vehicle_object" ];
 		_opfor_tower = [sectors_tower, {!( _x in blufor_sectors)}] call BIS_fnc_conditionalSelect;
-		_tower_spawn_pos = [ getMarkerPos (selectRandom _opfor_tower), random 100, random 360 ] call BIS_fnc_relPos;
-		_vehicle_object = [ _tower_spawn_pos, opfor_statics call BIS_fnc_selectRandom ] call F_libSpawnVehicle;
-		sleep 0.5;
-		_grp = group ((crew _vehicle_object) select 0);
-		"O_spotter_F" createUnit [ getpos _vehicle_object, _grp,'this addMPEventHandler [''MPKilled'', {_this spawn kill_manager}]', 0.5, 'private'];
+		if ( count _opfor_tower > 0) then {
+			_tower_spawn_pos = [ getMarkerPos (selectRandom _opfor_tower), random 50, random 360 ] call BIS_fnc_relPos;
+			_vehicle_object = [ _tower_spawn_pos, opfor_statics call BIS_fnc_selectRandom ] call F_libSpawnVehicle;
+			sleep 0.5;
+			_grp = group ((crew _vehicle_object) select 0);
+			"O_spotter_F" createUnit [ getpos _vehicle_object, _grp,'this addMPEventHandler [''MPKilled'', {_this spawn kill_manager}]', 0.5, 'private'];
+		};
 		_need_patrol = false;
 	};
 
