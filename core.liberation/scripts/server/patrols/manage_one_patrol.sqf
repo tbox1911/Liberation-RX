@@ -14,7 +14,6 @@ while { GRLIB_endgame == 0 } do {
 		sleep (random 30);
 	};
 
-diag_log format ["DBG: %1 %2", _patrol_type, (_index + 1)];
 	while { (count sectors_allSectors - count blufor_sectors) < ((_index + 1) * 2) } do {
 		sleep (150 + (random 150));
 	};
