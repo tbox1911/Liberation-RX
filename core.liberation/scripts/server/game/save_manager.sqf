@@ -192,11 +192,6 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 				_nextbuilding setVariable [ "GRLIB_saved_pos", _nextpos, false];
 			};
 
-			if ( _hascrew ) then {
-				[ _nextbuilding ] call F_forceBluforCrew;
-				_nextbuilding setVariable ["GRLIB_vehicle_manned", true, true];
-			};
-
 			if ( _owner != "" ) then {
 				_nextbuilding setVehicleLock "LOCKED";
 				_nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
@@ -204,6 +199,12 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 				[_nextbuilding, _color, _color_name, []] call RPT_fnc_TextureVehicle;
 				{_nextbuilding addWeaponWithAttachmentsCargoGlobal [ _x, 1]} forEach _lst_a3;
 				[_nextbuilding, _lst_r3f] call R3F_LOG_FNCT_transporteur_charger_auto;
+			};
+
+			if ( _hascrew ) then {
+				[ _nextbuilding ] call F_forceBluforCrew;
+				_nextbuilding setVariable ["GRLIB_vehicle_manned", true, true];
+
 			};
 
 			if (typeOf _nextbuilding in _list_static) then {
