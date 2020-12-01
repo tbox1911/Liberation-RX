@@ -109,7 +109,7 @@ while { true } do {
 		};
 
 		// In vehicle
-		if (lifeState _x != 'incapacitated' && ( ((gunner vehicle _x) == _x) || ((driver  vehicle _x) == _x) || ((commander vehicle _x) == _x) )) then {
+		if (lifeState _x != 'incapacitated' && ( ((gunner vehicle _x) == _x) || ((driver vehicle _x) == _x) || ((commander vehicle _x) == _x) )) then {
 			_unit = _x;
 			_vehicle = vehicle _unit;
 			_vehicle_class = typeOf _vehicle;
