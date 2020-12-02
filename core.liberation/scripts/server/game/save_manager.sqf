@@ -157,15 +157,17 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 			private _color_name = "";
 			private _lst_a3 = [];
 			private	_lst_r3f = [];
+			private	_lst_grl = [];
 
 			if (count _x > 3) then {
 				_hascrew = _x select 3;
 				_owner = _x select 4;
 				_color = _x select 5;
 				_color_name = _x select 6;
-				if (count _x > 7) then {	// migration fix
-					_lst_a3 = _x select 7;
-					_lst_r3f = _x select 8;
+				_lst_a3 = _x select 7;
+				_lst_r3f = _x select 8;
+				if (count _x > 9) then {	// migration fix
+					_lst_grl = _x select 9;
 				};
 			};
 
@@ -199,6 +201,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 				[_nextbuilding, _color, _color_name, []] call RPT_fnc_TextureVehicle;
 				{_nextbuilding addWeaponWithAttachmentsCargoGlobal [ _x, 1]} forEach _lst_a3;
 				[_nextbuilding, _lst_r3f] call R3F_LOG_FNCT_transporteur_charger_auto;
+				{[_nextbuilding, _x] call attach_object_direct} forEach _lst_grl;
 			};
 
 			if ( _hascrew ) then {
@@ -312,6 +315,7 @@ while { true } do {
 			private _color_name = "";
 			private _lst_a3 = [];
 			private	_lst_r3f = [];
+			private	_lst_grl = [];
 
 			if ( _nextclass in _classnames_to_save_blu + all_hostile_classnames ) then {
 				if (side _x != GRLIB_side_enemy) then {
@@ -321,9 +325,10 @@ while { true } do {
 					_color_name = _x getVariable ["GRLIB_vehicle_color_name", ""];
 					if ( _owner != "" ) then {
 						_lst_a3 = weaponsItemsCargo _x;
-						{ _lst_r3f pushback (typeOf _x)} forEach (_x getVariable ["R3F_LOG_objets_charges", []]);
+						{_lst_r3f pushback (typeOf _x)} forEach (_x getVariable ["R3F_LOG_objets_charges", []]);
+						{_lst_grl pushback (typeOf _x)} forEach (attachedObjects _x);
 					};
-					buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner, _color, _color_name, _lst_a3, _lst_r3f ];
+					buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner, _color, _color_name, _lst_a3, _lst_r3f, _lst_grl];
 				};
 			} else {
 				buildings_to_save pushback [ _nextclass, _savedpos, _nextdir ];
