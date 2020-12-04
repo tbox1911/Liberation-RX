@@ -97,7 +97,6 @@
 
 class outlw_MR_RscText
 {
-	access = 0;
 	type = 0;
 	idc = -1;
 	colorBackground[] = {0,0,0,0};
@@ -117,7 +116,6 @@ class outlw_MR_RscText
 };
 class outlw_MR_RscStructuredText
 {
-	access = 0;
 	type = 13;
 	idc = -1;
 	style = 0;
@@ -139,7 +137,6 @@ class outlw_MR_RscStructuredText
 };
 class outlw_MR_RscPicture
 {
-	access = 0;
 	type = 0;
 	idc = -1;
 	style = 48;
@@ -158,7 +155,6 @@ class outlw_MR_RscPicture
 };
 class outlw_MR_RscListBox
 {
-	access = 0;
 	type = 5;
 	w = 0.4;
 	h = 0.4;
@@ -204,7 +200,6 @@ class outlw_MR_RscListBox
 };
 class outlw_MR_RscActiveText
 {
-	access = 0;
 	type = 11;
 	color[] = {1,1,1,0.7};
 	colorActive[] = {1,1,1,1};
@@ -362,7 +357,6 @@ class outlw_MR_RscControlsGroup
 };
 class outlw_MR_RscCombo
 {
-	access = 0;
 	type = 4;
 	colorSelect[] = {0,0,0,1};
 	colorText[] = {1,1,1,1};

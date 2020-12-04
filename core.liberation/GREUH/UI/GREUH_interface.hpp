@@ -81,6 +81,67 @@
 
 #define FontM             "puristaMedium"
 
+#ifdef COLOR_BROWN
+#undef COLOR_BROWN
+#endif
+#ifdef COLOR_GREEN
+#undef COLOR_GREEN
+#endif
+#ifdef COLOR_GREEN_ALPHA
+#undef COLOR_GREEN_ALPHA
+#endif
+#ifdef COLOR_GREEN_NOALPHA
+#undef COLOR_GREEN_NOALPHA
+#endif
+#ifdef COLOR_LIGHTGREEN
+#undef COLOR_LIGHTGREEN
+#endif
+#ifdef COLOR_LIGHTGRAY
+#undef COLOR_LIGHTGRAY
+#endif
+#ifdef COLOR_LIGHTGRAY_ALPHA
+#undef COLOR_LIGHTGRAY_ALPHA
+#endif
+#ifdef COLOR_WHITE
+#undef COLOR_WHITE
+#endif
+#ifdef COLOR_NOALPHA
+#undef COLOR_NOALPHA
+#endif
+#ifdef COLOR_BLUFOR
+#undef COLOR_BLUFOR
+#endif
+#ifdef COLOR_OPFOR
+#undef COLOR_OPFOR
+#endif
+#ifdef COLOR_GUER
+#undef COLOR_GUER
+#endif
+#ifdef COLOR_WHITE_TRANSP
+#undef COLOR_WHITE_TRANSP
+#endif
+#ifdef COLOR_BLACK
+#undef COLOR_BLACK
+#endif
+#ifdef COLOR_BLACK_ALPHA
+#undef COLOR_BLACK_ALPHA
+#endif
+#ifdef COLOR_BLUFOR_NOALPHA
+#undef COLOR_BLUFOR_NOALPHA
+#endif
+#ifdef COLOR_OPFOR_NOALPHA
+#undef COLOR_OPFOR_NOALPHA
+#endif
+#ifdef COLOR_RED_DISABLED
+#undef COLOR_RED_DISABLED
+#endif
+#ifdef COLOR_BLEEDOUT
+#undef COLOR_BLEEDOUT
+#endif
+#ifdef COLOR_BRIGHTGREEN
+#undef COLOR_BRIGHTGREEN
+#endif
+
 #define COLOR_BROWN { 0.18, 0.14, 0.11, 0.75 }
 #define COLOR_GREEN { 0.2, 0.23, 0.18, 0.75 }
 #define COLOR_LIGHTGREEN { 0.4, 0.55, 0.36, 0.4 }
@@ -251,7 +312,6 @@ class GREUH_Menu {
 		shadow = 2;
 	};
 	class GREUH_RscStructuredText{
-		access = 0;
 		type = 13;
 		idc = -1;
 		style = 0;
@@ -654,7 +714,6 @@ class GREUH_Menu {
 	};
 	class GREUH_FPSEdit {
 		idc = 960;
-		access = 0;
 		type = CT_EDIT;
 		style = ST_LEFT + ST_FRAME;
 		x = 0.317 * safezoneW + safezoneX;
@@ -848,7 +907,6 @@ class GREUH_respawn {
 	};
 
 	class GREUH_RscStructuredText{
-		access = 0;
 		type = 13;
 		idc = -1;
 		style = 0;
