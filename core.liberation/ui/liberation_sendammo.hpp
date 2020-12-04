@@ -35,7 +35,6 @@ class liberation_sendammo_menu {
 			h = 0.04 * safezoneH;
 		};
 		class GREUH_RscStructuredText {
-			access = 0;
 			type = 13;
 			idc = -1;
 			style = 0;

@@ -69,7 +69,6 @@ class liberation_admin {
   };
 
   class GREUH_RscStructuredText{
-    access = 0;
     type = 13;
     idc = -1;
     style = 0;

@@ -251,7 +251,6 @@ class GREUH_Menu {
 		shadow = 2;
 	};
 	class GREUH_RscStructuredText{
-		access = 0;
 		type = 13;
 		idc = -1;
 		style = 0;
@@ -654,7 +653,6 @@ class GREUH_Menu {
 	};
 	class GREUH_FPSEdit {
 		idc = 960;
-		access = 0;
 		type = CT_EDIT;
 		style = ST_LEFT + ST_FRAME;
 		x = 0.317 * safezoneW + safezoneX;
@@ -848,7 +846,6 @@ class GREUH_respawn {
 	};
 
 	class GREUH_RscStructuredText{
-		access = 0;
 		type = 13;
 		idc = -1;
 		style = 0;
