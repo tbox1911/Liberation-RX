@@ -5,6 +5,9 @@ private _extra_bounty = opfor_air + [
 	"O_MBT_04_command_F"
 ];
 
+private _heavy_blu = [];
+{_heavy_blu pushBack ( _x select 0 )} foreach heavy_vehicles;
+
 _bounty = 10;
 _bonus = 2;
 
@@ -33,7 +36,7 @@ if (typeOf _vehicle in _extra_bounty) then {
 	_bonus = _bonus + 1;
 };
 
-if (typeOf _vehicle in heavy_vehicles) then {
+if (typeOf _vehicle in _heavy_blu) then {
 	_bonus = 0;
 };
 
