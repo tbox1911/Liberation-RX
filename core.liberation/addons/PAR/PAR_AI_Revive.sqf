@@ -119,7 +119,7 @@ PAR_fn_Revive = {
         };
 
         // Blood trail
-        if (damage _x > 0.6) then {
+        if (damage _x > 0.6 && vehicle _x == _x) then {
           _spray = createVehicle ["BloodSpray_01_New_F", getPos _x, [], 0, "CAN_COLLIDE"];
           [_spray] spawn {sleep (7 + random 5); deleteVehicle (_this select 0)};
         };
