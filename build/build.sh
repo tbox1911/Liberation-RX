@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # by Vitalii B.
-# Dependencies: Mikero DePbo Tools.
+# Dependencies: Mikero DePbo Tools v.0.7.70 or later
 # Download page: https://mikero.bytex.digital/Downloads
-# Direct link: https://mikero.bytex.digital/api/download?filename=depbo-tools-0.7.25-linux-64bit.tgz
+# Direct link: https://mikero.bytex.digital/api/download?filename=depbo-tools-0.7.70-linux-64bit.tgz
 echo -e "- Liberation_RX PBO build script -\n"
 
 which makepbo &>/dev/null
@@ -18,14 +18,14 @@ GRLIB_build_date = \"$(date +'%d/%m/%Y')\";
 GRLIB_build_time = \"$(date +'%H:%M:%S')\";
 " > ../core.liberation/build_info.sqf
 
-for dir in $(ls -1 .. | grep -E "^Liberation_RX"); do
+for dir in $(ls -1 ../maps | grep -E "^Liberation_RX\.*"); do
     echo "Building PBO for map ${dir}"
-    cp -r ../${dir} .
+    cp -r ../maps/${dir} .
     cp -r ../core.liberation/* ./${dir}/
     if [[ -d custom ]]; then
 	cp -r ./custom/* ./${dir}/
     fi
-    makepbo -N ./${dir} ${dir}.pbo >/dev/null 2>&1
+    makepbo -X=none ./${dir} ${dir}.pbo >/dev/null
     rm -rf ./${dir}
     echo "Done."
 done
