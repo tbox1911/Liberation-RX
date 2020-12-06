@@ -11,13 +11,13 @@ if ( isServer ) then {
 		};
 	};
 
-	if ( ((typeof _unit) in [ammobox_o_typename, ammobox_b_typename]) && ((getPosATL _unit) select 2 < 10) ) exitWith {
+	if ( ((typeof _unit) in [ammobox_o_typename, ammobox_b_typename, fuelbarrel_typename]) && ((getPosATL _unit) select 2 < 10) ) exitWith {
 		sleep random 2;
 		( "R_80mm_HE" createVehicle (getPosATL _unit) ) setVelocity [0, 0, -200];
 		deleteVehicle _unit;
 	};
 
-	if ( (typeof _unit) in [FOB_box_typename, FOB_truck_typename] ) exitWith {
+	if ( (typeof _unit) in [FOB_box_typename, FOB_truck_typename, foodbarrel_typename, waterbarrel_typename] ) exitWith {
 		sleep 30;
 		deleteVehicle _unit;
 	};
