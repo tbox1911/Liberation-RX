@@ -16,6 +16,7 @@ if (_type in ["Alsatian_Random_F","Fin_random_F"]) then {_nbcivs = 2};
 if (_type in ["Cock_random_F","Hen_random_F"]) then {_nbcivs = _nbcivs + 2};
 
 _spawnpos = [_pos, 50, 250] call BIS_fnc_findSafePos;
+if (surfaceIsWater _spawnpos) exitWith {[]};
 
 while { _idx < _nbcivs } do {
 	_nextciv = createAgent [_type, _spawnpos, [], 5, "NONE"];
