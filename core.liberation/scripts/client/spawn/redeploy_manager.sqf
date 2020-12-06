@@ -163,7 +163,7 @@ while { true } do {
 				{ _UnitList pushBack _x } forEach units _my_squad;
 			};
 			{
-				if ( _x != player && (_x distance2D _player_pos) < 30 && lifestate _x != 'incapacitated' && vehicle _x == _x ) then {
+				if ( _x != player && (_x distance2D _player_pos) < 30 && lifestate _x != 'INCAPACITATED' && vehicle _x == _x ) then {
 					[_x] spawn {
 						params ["_unit"];
 						sleep random 2;

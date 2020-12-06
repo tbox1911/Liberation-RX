@@ -5,7 +5,7 @@ _crew = crew _vehicle;
 _grp = group (_crew select 0);
 _crew allowGetIn false;
 {
-	if (alive _x && lifeState _x != "unconscious") then {
+	if (alive _x && lifeState _x != "INCAPACITATED") then {
 		unassignVehicle _x;
 		commandGetOut _x;
 		doGetOut _x;

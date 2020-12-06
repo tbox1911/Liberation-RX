@@ -1,7 +1,7 @@
 params ["_unit"];
 
 if (rating _unit < -2000) exitWith {_unit call PAR_fn_death};
-waituntil {sleep (0.5 + random 2); lifeState _unit == "incapacitated" && (isTouchingGround _unit || (round (getPos _unit select 2) <= 1))};
+waituntil {sleep (0.5 + random 2); lifeState _unit == "INCAPACITATED" && (isTouchingGround _unit || (round (getPos _unit select 2) <= 1))};
 
 if (!isNil {_unit getVariable "PAR_busy"} || !isNil {_unit getVariable "PAR_heal"}) then {
   _unit setVariable ["PAR_busy", nil];
@@ -22,7 +22,7 @@ _unit switchMove "AinjPpneMstpSnonWrflDnon";  // lay down
   "<t color='#00C900'>Revive</t>",
   "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_reviveMedic_ca.paa","\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_reviveMedic_ca.paa",
    "round(_this distance2D _target) < 3 &&
-    lifeState _target == 'incapacitated' &&
+    lifeState _target == 'INCAPACITATED' &&
     _target getVariable ['FAR_isDragged',0] == 0 &&
     ((FAR_AidKit in (items _this)) || ([_this] call FAR_is_medic && [_this] call FAR_has_medikit))",
   "round(_caller distance2D _target) < 3",
@@ -63,9 +63,9 @@ _unit switchMove "AinjPpneMstpSnonWrflDnon";  // lay down
 sleep 6;
 
 _bld = createVehicle [(PAR_BloodSplat call BIS_fnc_selectRandom), getPos _unit, [], 0, "CAN_COLLIDE"];
-while {lifeState _unit == "incapacitated" && time <= _unit getVariable ["PAR_BleedOutTimer", 0]} do {
+while {lifeState _unit == "INCAPACITATED" && time <= _unit getVariable ["PAR_BleedOutTimer", 0]} do {
   _unit setOxygenRemaining 1;
-  _bros = allunits select {(_x getVariable ["PAR_Grp_ID","0"]) == (_unit getVariable ["PAR_Grp_ID","1"]) && alive _x && lifeState _x != "incapacitated"};
+  _bros = allunits select {(_x getVariable ["PAR_Grp_ID","0"]) == (_unit getVariable ["PAR_Grp_ID","1"]) && alive _x && lifeState _x != "INCAPACITATED"};
   if ( count _bros > 0 ) then {
     _medic = _unit getVariable ["PAR_myMedic", nil];
     if (isNil "_medic") then {
@@ -89,6 +89,6 @@ while {lifeState _unit == "incapacitated" && time <= _unit getVariable ["PAR_Ble
 [(_unit getVariable ["PAR_myMedic", objNull]), _unit] call PAR_fn_medicRelease;
 _unit setCaptive false;
 
-if (lifeState _unit == "incapacitated" && time > _unit getVariable ["PAR_BleedOutTimer", 0]) then {
+if (lifeState _unit == "INCAPACITATED" && time > _unit getVariable ["PAR_BleedOutTimer", 0]) then {
   _unit call PAR_fn_death;
 };

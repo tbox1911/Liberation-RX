@@ -4,7 +4,7 @@ if (player getVariable ["GRLIB_action_inuse", false])  exitWith {};
 if (isNil "AR_active") then {AR_active = false};
 if (AR_active) exitWith {AR_active = false};
 if ((!isNull objectParent player) || (surfaceIsWater (getPos player)) ||
-	(lifeState player == 'incapacitated') || (!isNull R3F_LOG_joueur_deplace_objet) ) exitWith {};
+	(lifeState player == 'INCAPACITATED') || (!isNull R3F_LOG_joueur_deplace_objet) ) exitWith {};
 
 AR_active = true;
 AR_weapon = currentWeapon player;
@@ -20,7 +20,7 @@ player addEventHandler ["AnimDone", {
 	if ((!AR_active) || dialog || {!((currentWeapon player) isEqualTo AR_weapon)} ||
 		{!isNull objectParent player} || {surfaceIsWater (getPos player)} ||
 		(_this select 1 == AR_animation && speed (vehicle player) <= 0) ||
-		(lifeState player == 'incapacitated')) exitWith {
+		(lifeState player == 'INCAPACITATED')) exitWith {
 			player removeEventHandler ["AnimDone", _thisEventHandler];
 			AR_active = false;
 			AR_weapon = nil;
