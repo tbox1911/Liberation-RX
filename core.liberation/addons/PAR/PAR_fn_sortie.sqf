@@ -1,11 +1,10 @@
 params ["_wnded", "_medic"];
-//diag_log format ["DBG_fn_sortie WNDED:%1 MEDIC:%2", name _wnded, name _medic];
-if (!(local _wnded)) exitWith {};
 
+if (!(local _wnded)) exitWith {};
 if (lifeState _wnded != "INCAPACITATED") exitWith { [_medic, _wnded] call PAR_fn_medicRelease };
 
 if (!isPlayer _medic) then {
-  _msg = format ["%1 is healing %2 now...", name _medic, name _wnded];
+  _msg = format [localize "STR_PAR_ST_01", name _medic, name _wnded];
   [_wnded, _msg] call PAR_fn_globalchat;
   _bleedOut = _wnded getVariable ["PAR_BleedOutTimer", 0];
   _wnded setVariable ["PAR_BleedOutTimer", _bleedOut + PAR_BleedOutExtra, true];

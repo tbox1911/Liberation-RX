@@ -17,7 +17,7 @@ private _wounded_list = _bros select {
 if (count (_wounded_list) > 0) then {
 	_wounded = _wounded_list select 0;
 	if (_medic != _wounded) then {
-		_medic groupchat format ["I'm going to heal %1 !", name _wounded];
+		_medic groupchat format [localize "STR_PAR_CW_01", name _wounded];
 	};
 	_medic setVariable ['PAR_heal', true];
 	_wounded setVariable ['PAR_healed', true];
@@ -42,7 +42,6 @@ if (count (_wounded_list) > 0) then {
 	} do {
 		_medic doMove (getPosATL _wounded);
 		sleep 4;
-		//waitUntil {sleep 0.5; round (speed (vehicle _medic)) == 0};
 	};
 
 	if (lifeState _medic != 'INCAPACITATED' && lifeState _wounded != 'INCAPACITATED' && round (_medic distance2D _wounded) <= 3) then {
