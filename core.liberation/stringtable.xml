@@ -2912,7 +2912,7 @@
 				</Key>
 				<Key ID="STR_PAR_MD_03">
 					<Original>Hold on %1 !, %2 (dist: %3m), is coming to save you !</Original>
-					<French>Tenez bon %1!, %2 (dist:% 3m), vient vous sauver !</French>
+					<French>Tenez bon %1!, %2 (dist: %3m), vient vous sauver !</French>
 				</Key>
 				<Key ID="STR_PAR_ST_01">
 					<Original>%1 is healing %2 now...</Original>
