@@ -12,6 +12,7 @@ Description:
 
 	Maintain healthy quantity of some mission objects created during scenarios, including some created by the engine.
 
+    - Abandoned Vehicles (no crew, no owner)
 	- Dead bodies
 	- Dead vehicles
 	- Craters
