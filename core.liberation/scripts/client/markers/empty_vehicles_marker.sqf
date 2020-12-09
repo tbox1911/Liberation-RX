@@ -4,15 +4,7 @@ _vehmarkers = [];
 _beacmarkers = [];
 _markedveh = [];
 _markedbeac = [];
-_vehtomark = [];
-_support_to_skip = [
-];
 
-{
-	_vehtomark pushback (_x select 0);
-} foreach light_vehicles + heavy_vehicles + air_vehicles + support_vehicles;
-
-_vehtomark = _vehtomark - _support_to_skip;
 waitUntil { !isNil "GRLIB_mobile_respawn" };
 
 while { true } do {
@@ -21,7 +13,7 @@ while { true } do {
 	{
 		_loaded = _x getVariable ["R3F_LOG_est_transporte_par", objNull];
 		_disabled = _x getVariable ['R3F_LOG_disabled', true];
-		if ((alive _x) && ((typeof _x) in _vehtomark) && (count (crew _x) == 0) && (_x distance lhd > 500) && (isNull _loaded) && !(_disabled) && (locked _x != 2) ) then {
+		if ((alive _x) && (count (crew _x) == 0) && (_x distance lhd > 1000) && (isNull _loaded) && !(_disabled) && (locked _x != 2) ) then {
 				_markedveh pushback _x;
 		};
 	} foreach vehicles;
