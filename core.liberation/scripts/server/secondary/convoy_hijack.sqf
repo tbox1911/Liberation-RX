@@ -1,4 +1,3 @@
-private _load_box_fnc = compileFinal preprocessFileLineNumbers "scripts\client\ammoboxes\do_load_box.sqf";
 if ( count (sectors_allSectors - blufor_sectors - sectors_tower) < 4) exitWith { [gamelogic, "Could not find enough free sectors for convoy hijack mission"] remoteExec ["globalChat", 0] };
 
 private _convoy_destinations_markers = [];
@@ -36,18 +35,10 @@ if ( _boxes_amount == 0 ) exitWith { diag_log "Opfor ammobox truck classname doe
 
 GRLIB_secondary_in_progress = 1; publicVariable "GRLIB_secondary_in_progress";
 
-private _boxes_loaded = 0;
-
-while { _boxes_loaded < _boxes_amount } do {
-	_boxes_loaded = _boxes_loaded + 1;
+for "_n" from 1 to _boxes_amount do {
+	[_transport_vehicle, ammobox_o_typename] call attach_object_direct;
 	sleep 0.5;
-	private _next_box = ammobox_o_typename createVehicle ([ _spawnpos, 15, 135 ] call BIS_fnc_relPos);
-	sleep 0.5;
-	[ _next_box, 50 ] call _load_box_fnc;
-	_next_box addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
 };
-
-sleep 0.5;
 
 private _troop_vehicle = [ [ _spawnpos, 30, 180 ] call BIS_fnc_relPos, opfor_transport_truck, false, true, false ] call F_libSpawnVehicle;
 
