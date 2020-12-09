@@ -56,11 +56,11 @@ _isHidden = {
 
 //================================================================ CONFIG
 
-deleteManagerPublic = TRUE;						// To terminate script via debug console
+deleteManagerPublic = TRUE;								// To terminate script via debug console
 
 private _checkPlayerCount = TRUE;						// dynamic sleep. Set TRUE to have sleep automatically adjust based on # of players.
-private _checkFrequencyDefault = 300;					// sleep default
-private _checkFrequencyAccelerated = 150;				// sleep accelerated
+private _checkFrequencyDefault = 600;					// sleep default (GRLIB_cleanup_vehicles*60)*60
+private _checkFrequencyAccelerated = 300;				// sleep accelerated
 private _playerThreshold = 4;							// How many players before accelerated cycle kicks in?
 
 private _vehiclesLimit = 30;							// Vehicles Set -1 to disable.
@@ -125,7 +125,16 @@ while {deleteManagerPublic} do {
 	sleep 1;
 	//================================= VEHICLES
 	if (!(_vehiclesLimit isEqualTo -1)) then {
-		_nbVehicles = [vehicles, { alive _x && _x getVariable ["GRLIB_vehicle_owner", ""] == "" && isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) && !(_x getVariable ['R3F_LOG_disabled', true]) && count (crew _x) == 0 && (_x distance lhd) >= 1000 && !(typeOf _x in _no_cleanup_classnames) }] call BIS_fnc_conditionalSelect;
+		_nbVehicles = [vehicles,
+			{ alive _x &&
+			 _x getVariable ["GRLIB_vehicle_owner", ""] == "" &&
+			 isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) &&
+			 !(_x getVariable ['R3F_LOG_disabled', true]) &&
+			 count (crew _x) == 0 &&
+			 (_x distance lhd) >= 1000 &&
+			 !(typeOf _x in _no_cleanup_classnames)
+			}] call BIS_fnc_conditionalSelect;
+
 		if ((count (_nbVehicles)) > _vehiclesLimit) then {
 			if (_vehicleDistCheck) then {
 				{
