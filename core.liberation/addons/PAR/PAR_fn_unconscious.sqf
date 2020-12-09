@@ -62,30 +62,36 @@ _unit switchMove "AinjPpneMstpSnonWrflDnon";  // lay down
 }] remoteExec ["bis_fnc_call", [0,-2] select isDedicated,true];
 sleep 6;
 
-_bld = createVehicle [(PAR_BloodSplat call BIS_fnc_selectRandom), getPos _unit, [], 0, "CAN_COLLIDE"];
+if (vehicle _unit == _unit) then {
+  _bld = createVehicle [(PAR_BloodSplat call BIS_fnc_selectRandom), getPos _unit, [], 0, "CAN_COLLIDE"];
+};
+private _cnt = 0;
 while {lifeState _unit == "INCAPACITATED" && time <= _unit getVariable ["PAR_BleedOutTimer", 0]} do {
   _unit setOxygenRemaining 1;
   _bros = allunits select {(_x getVariable ["PAR_Grp_ID","0"]) == (_unit getVariable ["PAR_Grp_ID","1"]) && alive _x && lifeState _x != "INCAPACITATED"};
   if ( count _bros > 0 ) then {
     _medic = _unit getVariable ["PAR_myMedic", nil];
-    if (isNil "_medic") then {
+    if (isNil "_medic" && _cnt == 0) then {
       _unit groupchat localize "STR_PAR_UC_01";
       _medic = _unit call PAR_fn_medic;
       if (!isNil "_medic") then { [_unit, _medic] call PAR_fn_911 };
-      sleep 10;
+      _cnt = 10;
     };
   } else {
-      if (isPlayer _unit) then {
+      if (isPlayer _unit && _cnt == 0) then {
         _msg = format [localize "STR_PAR_UC_02", name _unit];
         [_unit, _msg] call PAR_fn_globalchat;
-        sleep 10;
+        _cnt = 10;
       };
   };
   //systemchat str ((_unit getVariable ["PAR_BleedOutTimer", 0]) - time);
+  _cnt = _cnt - 1;
   sleep 1;
 };
 
-[_bld] spawn {sleep (50 + random 10); deleteVehicle (_this select 0)};
+if (!isNil "_bld") then {
+  [_bld] spawn {sleep (50 + random 10); deleteVehicle (_this select 0)};
+};
 [(_unit getVariable ["PAR_myMedic", objNull]), _unit] call PAR_fn_medicRelease;
 _unit setCaptive false;
 
