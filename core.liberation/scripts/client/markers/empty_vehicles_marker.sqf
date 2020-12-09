@@ -6,7 +6,7 @@ _markedveh = [];
 _markedbeac = [];
 
 private _no_marker_classnames = [];
-{ _no_marker_classnames pushback (_x select 0) } foreach (opfor_recyclable);
+{ _no_marker_classnames pushback (_x select 0) } foreach (buildings + opfor_recyclable);
 
 waitUntil { !isNil "GRLIB_mobile_respawn" };
 
