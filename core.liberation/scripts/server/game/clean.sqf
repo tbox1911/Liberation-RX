@@ -35,18 +35,17 @@ _________________________________________________________________________*/
 
 sleep 15;
 
-private ["_isHidden","_checkPlayerCount","_checkFrequencyDefault","_checkFrequencyAccelerated","_playerThreshold","_deadMenLimit","_deadMenDistCheck","_deadMenDist","_deadVehiclesLimit","_deadVehicleDistCheck","_deadVehicleDist","_craterLimit","_craterDistCheck","_craterDist","_ruins","_ruinsLimit","_ruinsDistCheck","_ruinsDist","_weaponHolderLimit","_weaponHolderDistCheck","_weaponHolderDist","_minesLimit","_minesDistCheck","_minesDist","_staticsLimit","_staticsDistCheck","_staticsDist","_orphanedTriggers","_emptyGroups"];
+if (GRLIB_cleanup_vehicles == 0) exitWith {};
+
+//==================== IGNORE VEHICLES
+
+private _no_cleanup_classnames = GRLIB_vehicle_blacklist;
+{
+	_no_cleanup_classnames pushback (_x select 0);
+} foreach (support_vehicles + static_vehicles + opfor_recyclable);
 
 //==================== HIDDEN-FROM-PLAYERS FUNCTION
 
-// _isHidden = compileFinal "
-// 	private [""_c""];
-// 	_c = FALSE;
-// 	if (({(((_this select 0) distance _x) < (_this select 1))} count (_this select 2)) isEqualTo 0) then {
-// 		_c = TRUE;
-// 	};
-// 	_c;
-// ";
 _isHidden = {
 	params ["_unit", "_dist", "_list"];
 	private _c = false;
@@ -58,41 +57,45 @@ _isHidden = {
 
 deleteManagerPublic = TRUE;						// To terminate script via debug console
 
-_checkPlayerCount = TRUE;						// dynamic sleep. Set TRUE to have sleep automatically adjust based on # of players.
-_checkFrequencyDefault = 180;					// sleep default
-_checkFrequencyAccelerated = 60;				// sleep accelerated
-_playerThreshold = 4;							// How many players before accelerated cycle kicks in?
+private _checkPlayerCount = TRUE;						// dynamic sleep. Set TRUE to have sleep automatically adjust based on # of players.
+private _checkFrequencyDefault = 300;					// sleep default
+private _checkFrequencyAccelerated = 150;				// sleep accelerated
+private _playerThreshold = 4;							// How many players before accelerated cycle kicks in?
 
-_deadMenLimit = 50;								// Bodies. Set -1 to disable.
-_deadMenDistCheck = TRUE;						// TRUE to delete any bodies that are far from players.
-_deadMenDist = 2000;							// Distance (meters) from players that bodies are not deleted if below max.
+private _vehiclesLimit = 30;							// Vehicles Set -1 to disable.
+private _vehicleDistCheck = TRUE;						// TRUE to delete any vehicles that are far from players.
+private _vehicleDist = 2000;							// Distance (meters) from players that vehicles are not deleted if below max.
 
-_deadVehiclesLimit = 30;						// Wrecks. Set -1 to disable.
-_deadVehicleDistCheck = TRUE;					// TRUE to delete any destroyed vehicles that are far from players.
-_deadVehicleDist = 2000;						// Distance (meters) from players that destroyed vehicles are not deleted if below max.
+private _deadMenLimit = 50;								// Bodies. Set -1 to disable.
+private _deadMenDistCheck = TRUE;						// TRUE to delete any bodies that are far from players.
+private _deadMenDist = 2000;							// Distance (meters) from players that bodies are not deleted if below max.
 
-_craterLimit = -1;								// Craters. Set -1 to disable.
-_craterDistCheck = TRUE;						// TRUE to delete any craters that are far from players.
-_craterDist = 2000;								// Distance (meters) from players that craters are not deleted if below max.
+private _deadVehiclesLimit = 30;						// Wrecks. Set -1 to disable.
+private _deadVehicleDistCheck = TRUE;					// TRUE to delete any destroyed vehicles that are far from players.
+private _deadVehicleDist = 2000;						// Distance (meters) from players that destroyed vehicles are not deleted if below max.
 
-_weaponHolderLimit = 20;						// Weapon Holders. Set -1 to disable.
-_weaponHolderDistCheck = TRUE;					// TRUE to delete any weapon holders that are far from players.
-_weaponHolderDist = 1000;						// Distance (meters) from players that ground garbage is not deleted if below max.
+private _craterLimit = -1;								// Craters. Set -1 to disable.
+private _craterDistCheck = TRUE;						// TRUE to delete any craters that are far from players.
+private _craterDist = 2000;								// Distance (meters) from players that craters are not deleted if below max.
 
-_minesLimit = 40;								// Land mines. Set -1 to disable.
-_minesDistCheck = TRUE;							// TRUE to delete any mines that are far from ANY UNIT (not just players).
-_minesDist = 2000;								// Distance (meters) from players that land mines are not deleted if below max.
+private _weaponHolderLimit = 20;						// Weapon Holders. Set -1 to disable.
+private _weaponHolderDistCheck = TRUE;					// TRUE to delete any weapon holders that are far from players.
+private _weaponHolderDist = 1000;						// Distance (meters) from players that ground garbage is not deleted if below max.
 
-_staticsLimit = -1;								// Static weapons. Set -1 to disable.
-_staticsDistCheck = TRUE;						// TRUE to delete any static weapon that is far from ANY UNIT (not just players).
-_staticsDist = 2000;							// Distance (meters) from players that static weapons are not deleted if below max.
+private _minesLimit = 40;								// Land mines. Set -1 to disable.
+private _minesDistCheck = TRUE;							// TRUE to delete any mines that are far from ANY UNIT (not just players).
+private _minesDist = 2000;								// Distance (meters) from players that land mines are not deleted if below max.
 
-_ruinsLimit = 20;								// Ruins. Set -1 to disable.
-_ruinsDistCheck = TRUE;							// TRUE to delete any ruins that are far from players.
-_ruinsDist = 2000;								// Distance (meters) from players that ruins are not deleted if below max.
+private _staticsLimit = -1;								// Static weapons. Set -1 to disable.
+private _staticsDistCheck = TRUE;						// TRUE to delete any static weapon that is far from ANY UNIT (not just players).
+private _staticsDist = 2000;							// Distance (meters) from players that static weapons are not deleted if below max.
 
-_orphanedTriggers = TRUE;						// Clean orphaned triggers in MP.
-_emptyGroups = TRUE;							// Set FALSE to not delete empty groups.
+private _ruinsLimit = 20;								// Ruins. Set -1 to disable.
+private _ruinsDistCheck = TRUE;							// TRUE to delete any ruins that are far from players.
+private _ruinsDist = 2000;								// Distance (meters) from players that ruins are not deleted if below max.
+
+private _orphanedTriggers = TRUE;						// Clean orphaned triggers in MP.
+private _emptyGroups = TRUE;							// Set FALSE to not delete empty groups.
 
 //================================================================ LOOP
 
@@ -120,6 +123,28 @@ while {deleteManagerPublic} do {
 	};
 	sleep 1;
 	//================================= VEHICLES
+	if (!(_vehiclesLimit isEqualTo -1)) then {
+		_nbVehicles = [vehicles, { alive _x && _x getVariable ["GRLIB_vehicle_owner", ""] == "" && isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) && !(_x getVariable ['R3F_LOG_disabled', true]) && count (crew _x) == 0 && (_x distance lhd) >= 1000 && !(typeOf _x in _no_cleanup_classnames) }] call BIS_fnc_conditionalSelect;
+		if ((count (_nbVehicles)) > _vehiclesLimit) then {
+			if (_vehicleDistCheck) then {
+				{
+					if ([_x,_vehicleDist,(playableUnits + switchableUnits)] call _isHidden) then {
+						[_x] call clean_vehicle;
+						deleteVehicle _x;
+					};
+				} count (_nbVehicles);
+			};
+
+			while {(( (count (_nbVehicles)) - _vehiclesLimit) > 0)} do {
+				_veh = selectRandom (_nbVehicles);
+				[_veh] call clean_vehicle;
+				deleteVehicle _veh;
+				sleep 0.5;
+			};
+		};
+	};
+	sleep 1;
+	//================================= WRECKS
 	if (!(_deadVehiclesLimit isEqualTo -1)) then {
 		if ((count (allDead - allDeadMen)) > _deadVehiclesLimit) then {
 			if (_deadVehicleDistCheck) then {
@@ -132,7 +157,9 @@ while {deleteManagerPublic} do {
 			};
 
 			while {(((count (allDead - allDeadMen)) - _deadVehiclesLimit) > 0)} do {
-				deleteVehicle (selectRandom (allDead - allDeadMen));
+				_veh = selectRandom (allDead - allDeadMen);
+				[_veh] call clean_vehicle;
+				deleteVehicle _veh;
 				sleep 0.5;
 			};
 		};
