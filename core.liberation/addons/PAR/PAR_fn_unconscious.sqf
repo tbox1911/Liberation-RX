@@ -62,9 +62,7 @@ _unit switchMove "AinjPpneMstpSnonWrflDnon";  // lay down
 }] remoteExec ["bis_fnc_call", [0,-2] select isDedicated,true];
 sleep 6;
 
-if (vehicle _unit == _unit) then {
-  _bld = createVehicle [(PAR_BloodSplat call BIS_fnc_selectRandom), getPos _unit, [], 0, "CAN_COLLIDE"];
-};
+private _bld = createVehicle [(PAR_BloodSplat call BIS_fnc_selectRandom), getPos _unit, [], 0, "CAN_COLLIDE"];
 private _cnt = 0;
 while {lifeState _unit == "INCAPACITATED" && time <= _unit getVariable ["PAR_BleedOutTimer", 0]} do {
   if (_cnt == 0) then {
@@ -89,10 +87,8 @@ while {lifeState _unit == "INCAPACITATED" && time <= _unit getVariable ["PAR_Ble
   _cnt = _cnt - 1;
   sleep 1;
 };
+[_bld] spawn {sleep (50 + random 10); deleteVehicle (_this select 0)};
 
-if (!isNil "_bld") then {
-  [_bld] spawn {sleep (50 + random 10); deleteVehicle (_this select 0)};
-};
 [(_unit getVariable ["PAR_myMedic", objNull]), _unit] call PAR_fn_medicRelease;
 _unit setCaptive false;
 
