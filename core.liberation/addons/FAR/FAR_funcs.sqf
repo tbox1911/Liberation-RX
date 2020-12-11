@@ -97,7 +97,7 @@ FAR_Player_Unconscious = {
 	};
 
 	// Eject unit if inside vehicle
-	if (_veh_unit != _unit) then {[_veh, _unit] spawn PAR_fn_eject};
+	if (_veh_unit != _unit) then {[_veh_unit, _unit] spawn PAR_fn_eject};
 
 	[] call R3F_LOG_FNCT_objet_relacher;
 
