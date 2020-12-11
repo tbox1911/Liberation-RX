@@ -113,7 +113,7 @@ while { true } do {
 	};
 
 	// Send Ammo
-	if  ([] call is_menuok && score player > 20 && ( (player distance lhd) <= 200 || _near_atm ) ) then {
+	if  ([] call is_menuok && score player > 20 && ( (player distance lhd) <= 200 || _near_atm ) && count AllPlayers > 1 ) then {
 		if ( _idact_send == -1 ) then {
 			_idact_send = player addAction ["<t color='#80FF00'>-- SEND AMMO</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\misc\send_ammo.sqf","",-981,true,true,"","build_confirmed == 0"];
 		};
