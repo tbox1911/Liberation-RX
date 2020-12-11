@@ -262,7 +262,7 @@ FAR_Check_Dragging = {
 	_target = cursorObject;
 	_isPlayerUnconscious = player getVariable "FAR_isUnconscious";
 
-	if( !alive player || _isPlayerUnconscious == 1 || FAR_isDragging || !isNull R3F_LOG_joueur_deplace_objet || isNull _target || !alive _target || (_target distance player) > 3 ) exitWith
+	if( !alive player || _isPlayerUnconscious == 1 || FAR_isDragging || !isNull R3F_LOG_joueur_deplace_objet || isNull _target || !alive _target || (_target distance player) > 4 ) exitWith
 	{
 		_return;
 	};
