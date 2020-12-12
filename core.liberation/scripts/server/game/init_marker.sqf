@@ -41,6 +41,7 @@ GRLIB_Marker_ATM = [];
     GRLIB_Marker_ATM pushback _x;
   };
 } forEach _tmp_marker;
+publicVariable "GRLIB_Marker_ATM";
 
 private _tmp_marker = GRLIB_Marker_SRV;
 GRLIB_Marker_SRV = [];
@@ -56,6 +57,7 @@ GRLIB_Marker_SRV = [];
     GRLIB_Marker_SRV pushback _x;
   };
 } forEach _tmp_marker;
+publicVariable "GRLIB_Marker_SRV";
 
 private _tmp_marker = GRLIB_Marker_FUEL;
 GRLIB_Marker_FUEL = [];
@@ -71,6 +73,7 @@ GRLIB_Marker_FUEL = [];
     GRLIB_Marker_FUEL pushback _x;
   };
 } forEach _tmp_marker;
+publicVariable "GRLIB_Marker_FUEL";
 
 private _tmp_marker = [];
 { _tmp_marker pushback (markerpos _x) } forEach sectors_factory;
@@ -84,11 +87,11 @@ private _tmp_marker = [];
     private _cur_pos = _x;
     while {!_find_pos && _max_try > 0} do {
       _pos = _cur_pos findEmptyPosition [5,50, "C_Offroad_01_repair_F"];
-      if (count _pos > 3) then {
+      if (count _pos == 3) then {
         if (!isOnRoad _pos) then {_find_pos = true};
         _cur_pos = _x vectorAdd [([[-50,0,50], 5] call F_getRND), ([[-50,0,50], 5] call F_getRND), 0];
-        _max_try = _max_try - 1;
       };
+      _max_try = _max_try - 1;
     };
 
     if (_find_pos) then {
@@ -112,12 +115,10 @@ private _tmp_marker = [];
     };
   };
 } forEach _tmp_marker;
-
-publicVariable "GRLIB_Marker_SRV";
-publicVariable "GRLIB_Marker_ATM";
-publicVariable "GRLIB_Marker_FUEL";
 publicVariable "GRLIB_Marker_REPAIR";
 
+GRLIB_marker_init = true;
+publicVariable "GRLIB_marker_init";
 
 // Search object
 //  _object = "mailboxsouth";
