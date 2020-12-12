@@ -50,6 +50,7 @@ if ( GRLIB_endgame == 0 ) then {
 		publicVariable "GRLIB_all_fobs";
 		reset_battlegroups_ai = true;
 		[_thispos] call destroy_fob;
+		{ if (score _x > GRLIB_perm_air) then { _x addScore -250 } } forEach allPlayers;
 		trigger_server_save = true;
 		[] call recalculate_caps;
 		stats_fobs_lost = stats_fobs_lost + 1;
