@@ -57,7 +57,7 @@ if ( GRLIB_endgame == 0 ) then {
 		stats_sectors_lost = stats_sectors_lost + 1;
 	} else {
 		[ [ _sector, 3 ] , "remote_call_sector" ] call BIS_fnc_MP;
-		{ [_x] spawn prisonner_ai; } foreach ( [ (markerpos _sector) nearEntities [ "Man", GRLIB_capture_size * 0.8 ], { side group _x == GRLIB_side_enemy && isNil {_x getVariable "GRLIB_A3W_Mission_TI"} } ] call BIS_fnc_conditionalSelect );
+		{ [_x] spawn prisonner_ai; } foreach ( [ (markerpos _sector) nearEntities [ "Man", GRLIB_capture_size * 0.8 ], { side group _x == GRLIB_side_enemy && (!(_x getVariable ['mission_AI', false])) } ] call BIS_fnc_conditionalSelect );
 	};
 };
 
