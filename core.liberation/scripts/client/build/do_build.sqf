@@ -45,12 +45,6 @@ while { true } do {
 		_classname = FOB_typename;
 		_price = 0;
 	} else {
-		_score = score player;
- 		_build_list = [];
-		{
-			if ( _score >= (_x select 4) ) then {_build_list pushback _x};
-		} forEach (build_lists select buildtype);
-
 		if (buildtype == 9) then {
 			_price = 0;
 			_classname = build_unit select 0;
@@ -59,6 +53,12 @@ while { true } do {
 			_lst_a3 = build_unit select 3;
 			_lst_r3f = build_unit select 4;
 		} else {
+			_score = score player;
+			_build_list = [];
+			{
+				if ( _score >= (_x select 4) ) then {_build_list pushback _x};
+			} forEach (build_lists select buildtype);
+
 			_classname = (_build_list select buildindex) select 0;
 			_price = (_build_list select buildindex) select 2;
 			_color = [];
@@ -147,9 +147,7 @@ while { true } do {
 			};
 			_idactplace = player addAction ["<t color='#B0FF00'>" + localize "STR_PLACEMENT" + "</t> <img size='1' image='res\ui_confirm.paa'/>","scripts\client\build\build_place.sqf","",-750,false,true,"","build_invalid == 0 && build_confirmed == 1"];
 			_idactrotate = player addAction ["<t color='#B0FF00'>" + localize "STR_ROTATION" + "</t> <img size='1' image='res\ui_rotation.paa'/>","scripts\client\build\build_rotate.sqf","",-756,false,false,"","build_confirmed == 1"];
-			if (buildtype != 9) then {
-				_idactcancel = player addAction ["<t color='#B0FF00'>" + localize "STR_CANCEL" + "</t> <img size='1' image='res\ui_cancel.paa'/>","scripts\client\build\build_cancel.sqf","",-760,false,true,"","build_confirmed == 1"];
-			};
+			_idactcancel = player addAction ["<t color='#B0FF00'>" + localize "STR_CANCEL" + "</t> <img size='1' image='res\ui_cancel.paa'/>","scripts\client\build\build_cancel.sqf","",-760,false,true,"","build_confirmed == 1 && buildtype != 9"];
 			_ghost_spot = (getmarkerpos "ghost_spot") findEmptyPosition [1,100,_classname];
 
 			_vehicle = _classname createVehicleLocal _ghost_spot;
