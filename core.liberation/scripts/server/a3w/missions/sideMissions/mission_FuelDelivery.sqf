@@ -53,7 +53,8 @@ _waitUntilSuccessCondition = {
 	_ret = false;
 	private _barrels = [_man1 nearEntities [fuelbarrel_typename, 20], {isNil {_x getVariable "R3F_LOG_objets_charges"} && !(_x getVariable ['R3F_LOG_disabled', false])}] call BIS_fnc_conditionalSelect;
 	if (count _barrels == 3) then {
-		{ deleteVehicle _x } forEach _barrels;
+		sleep 3;
+		{ deleteVehicle _x; sleep 1 } forEach _barrels;
 		_ret = true;
 	};
 	_ret;
@@ -67,6 +68,7 @@ _failedExec = {
 };
 
 _successExec = {
+	sleep 3;
 	// Mission completed
 	_successHintMessage = format ["Fuel Delivery<br/><t color='%1'>SUCCESS</t> !!<br/><br/>The Barrels of Fuel have been delivered, Well done.", sideMissionColor];
 	[ammobox_i_typename, _missionPos, false] call boxSetup;
