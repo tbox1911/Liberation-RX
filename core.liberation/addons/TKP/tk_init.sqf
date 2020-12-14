@@ -1,6 +1,9 @@
 //original by : =BTC= Giallustio
 //heavily modified by pSiKO
 
+// TK VIP Protect
+BTC_vip = [];
+
 //Def
 BTC_tk_deathscreen_punishment = 2;
 BTC_tk_last_warning = 3;
