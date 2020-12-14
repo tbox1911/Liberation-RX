@@ -28,3 +28,9 @@ if ( _status == 3 ) then {
 	"opfor_capture_marker" setMarkerPosLocal markers_reset;
 	sector_timer = 0;
 };
+
+if ( _status == 4 ) then {
+	if (player distance2D _fob > GRLIB_sector_size) then {
+		[ "lib_fob_attacked", [ _fobname ] ] call BIS_fnc_showNotification;
+	};
+};

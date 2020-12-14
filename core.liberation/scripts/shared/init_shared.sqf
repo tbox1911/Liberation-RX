@@ -21,6 +21,7 @@ vehicle_garage_remote_call = compileFinal preprocessFileLineNumbers "scripts\ser
 A3W_extend_timer_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\A3W_extend_timer_remote_call.sqf";
 
 // Client Side
+remote_call_penalty = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_penalty.sqf";
 remote_call_sector = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_sector.sqf";
 remote_call_fob = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_fob.sqf";
 remote_call_battlegroup = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_battlegroup.sqf";
