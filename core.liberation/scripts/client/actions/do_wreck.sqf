@@ -18,10 +18,9 @@ private _valuable_veh = opfor_air + ["O_Heli_Attack_02_dynamicLoadout_F", "O_Hel
 
 disableUserInput true;
 player playMove 'ainvpknlmstpslaywrfldnon_medic';
-for "_i" from 1 to 3 do {
-	playSound "repair";
-	sleep 2;
-};
+playSound3D ["a3\sounds_f\sfx\ui\vehicles\vehicle_repair.wss", _vehicle];
+sleep 5;
+
 disableUserInput false;
 disableUserInput true;
 disableUserInput false;
