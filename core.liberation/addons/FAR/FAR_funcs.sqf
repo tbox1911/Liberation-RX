@@ -8,7 +8,7 @@ FAR_unblock_AI = {
 	} else {
 		{
 			_unit = _x;
-			if (round (player distance2D _unit) < 50 && (lifeState _unit != 'INCAPACITATED') ) then {
+			if (round (player distance2D _unit) < 50 && (lifeState _unit != 'INCAPACITATED') && vehicle _unit == _unit) then {
 				doStop _unit;
 				sleep 1;
 				_unit doWatch objNull;
