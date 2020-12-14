@@ -18,10 +18,11 @@ private _nearfob = _fobdistance <= GRLIB_fob_range;
 if ( _alive && _onfoot && _R3F_move && _far_lhd && _nearfob && _noflight) then {
 	_nearrecycl = [ [_vehicle], {
 		( (count crew _x) == 0 || typeOf _x in uavs ) &&
-		(!(_x getVariable ['R3F_LOG_disabled', false]) || typeOf _x in GRLIB_vehicle_whitelist ) &&
+		(!(_x getVariable ['R3F_LOG_disabled', false])) &&
 		(_x getVariable ["GRLIB_ammo_truck_load", 0] == 0) &&
 		(count (_x getVariable ["R3F_LOG_objets_charges", []]) == 0) &&
-		([player, _x] call is_owner || _x getVariable ["GRLIB_vehicle_owner", ""] == getPlayerUID player)
+		(isNull attachedTo _vehicle) &&
+		([player, _x] call is_owner)
 	}] call BIS_fnc_conditionalSelect;
 };
 
