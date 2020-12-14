@@ -21,7 +21,7 @@ _unitSetSkill = {
 	_unit setSkill 0.65;
 	_unit setSkill ["courage", 1];
 	_unit allowFleeing 0;
-	_unit setVariable ['mission_AI', true];
+	_unit setVariable ["mission_AI", true];
 	_unit addRating 9999999;
 	//_accuracy = 1; // Relative multiplier; absolute default accuracy for ARMA3 is 0.25
 	//_unit setSkill ["aimingAccuracy", (_unit skill "aimingAccuracy") * _accuracy];
