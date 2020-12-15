@@ -51,6 +51,7 @@ FAR_HandleDamage_EH = {
 
 	private _veh_unit = vehicle _unit;
 	private _veh_killer = vehicle _killer;
+	private _max_damage = 0.86;
 
 	// TK Protect
 	private _isProtected = _unit getVariable ["FAR_isProtected", 0];
@@ -61,12 +62,16 @@ FAR_HandleDamage_EH = {
 		["FAR_tkMessage", [_unit, _killer]] call FAR_public_EH;
 		BTC_tk_PVEH = [name _killer];
 		publicVariable "BTC_tk_PVEH";
-		_amountOfDamage = 0;
 		[_unit] spawn { sleep 3;(_this select 0) setVariable ["FAR_isProtected", 0, true] };
+		_isProtected = 1;
+	};
+
+	if (_isProtected == 1) then {
+		_max_damage = 0;
 	};
 
 	private _isUnconscious = _unit getVariable ["FAR_isUnconscious", 0];
-    if (_isUnconscious == 0 && (_amountOfDamage >= 0.86)) then {
+	if (_isProtected == 0 && _isUnconscious == 0 && (_amountOfDamage >= 0.86)) then {
 		closedialog 0;
 		_unit setVariable ["FAR_isUnconscious", 1, true];
 		_unit setCaptive true;
@@ -74,7 +79,8 @@ FAR_HandleDamage_EH = {
 		_unit setVariable ["PAR_BleedOutTimer", round(time + PAR_BleedOut), true];
 		[_unit, _killer] spawn FAR_Player_Unconscious;
 	};
-	_amountOfDamage min 0.86;
+
+	_amountOfDamage min _max_damage;
 };
 
 ////////////////////////////////////////////////
