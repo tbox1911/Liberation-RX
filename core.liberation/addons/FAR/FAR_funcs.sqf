@@ -53,7 +53,7 @@ FAR_HandleDamage_EH = {
 	private _veh_killer = vehicle _killer;
 
 	// TK Protect
-	private _isProtected = _unit getVariable "FAR_isProtected";
+	private _isProtected = _unit getVariable ["FAR_isProtected", 0];
 	if (_isProtected == 0 && isPlayer _killer && _killer != _unit && _veh_unit != _veh_killer && BTC_vip find (name _killer) == -1) then {
 		_unit setVariable ["FAR_isProtected", 1, true];
 		FAR_tkMessage = [_unit, _killer];
@@ -65,7 +65,7 @@ FAR_HandleDamage_EH = {
 		[_unit] spawn { sleep 3;(_this select 0) setVariable ["FAR_isProtected", 0, true] };
 	};
 
-	private _isUnconscious = _unit getVariable "FAR_isUnconscious";
+	private _isUnconscious = _unit getVariable ["FAR_isUnconscious", 0];
     if (_isUnconscious == 0 && (_amountOfDamage >= 0.86)) then {
 		closedialog 0;
 		_unit setVariable ["FAR_isUnconscious", 1, true];
