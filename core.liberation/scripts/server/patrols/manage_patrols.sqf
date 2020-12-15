@@ -1,3 +1,5 @@
+waitUntil {sleep 0.5; !isNil "GRLIB_A3W_Init"};
+
 // Infantry Patrol
 _combat_triggers_infantry = [15,35,55,75];
 if ( GRLIB_unitcap < 0.9 ) then { _combat_triggers_infantry = [15,35,75] };
