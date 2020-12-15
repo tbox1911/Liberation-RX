@@ -61,5 +61,14 @@ while { true } do {
 		_vehicle addAction ["<t color='#FFFF00'>-- SALVAGE</t> <img size='1' image='res\ui_recycle.paa'/>","scripts\client\actions\do_wreck.sqf","",-900,true,true,"","[] call is_menuok && !(_target getVariable ['wreck_in_use', false]) && !(player getVariable ['salvage_wreck', false])", (_distveh + 5)];
 		_vehicle setVariable ["GRLIB_salvage_action", true];
 	} forEach _nearwreck+_nearruins;
+
+	// Dead Men
+	_neardead = [allDeadMen, {(_x distance lhd) >= 1000 && (_x distance2D player < _searchradius) && isNil {_x getVariable "GRLIB_dead_action"}}] call BIS_fnc_conditionalSelect;
+	{
+		_unit = _x;
+		_unit addAction ["<t color='#0080F0'>-- REMOVE BODY</t>",{hidebody (_this select 0)},"",1.5,false,true,"","_this distance2D _target < 3" ];
+		_unit setVariable ["GRLIB_dead_action", true];
+	} forEach _neardead;
+
 	sleep 2;
 };
