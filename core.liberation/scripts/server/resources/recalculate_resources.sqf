@@ -27,8 +27,8 @@ while { true } do {
 
 		{
 			if (
-				(side _x == GRLIB_side_friendly || ({side _x == GRLIB_side_civilian} count (crew vehicle _x) == 0)) &&
-				(_x distance lhd > 250) &&
+				(side _x == GRLIB_side_friendly || ! (_x getVariable ["GRLIB_vehicle_owner", ""] in ["", "server"]) ) &&
+				(_x distance lhd > 500) &&
 				!(_x getVariable ['R3F_LOG_disabled', false]) &&
 				isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) &&
 				(alive _x)
@@ -39,7 +39,7 @@ while { true } do {
 						_new_manpower_used = _new_manpower_used + (_x select 1);
 						_new_fuel_used = _new_fuel_used + (_x select 3);
 					};
-				} foreach ( light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles );
+				} foreach ( light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles + opfor_recyclable );
 			};
 		} foreach vehicles + GRLIB_mobile_respawn;
 
