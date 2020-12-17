@@ -140,7 +140,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 	GRLIB_all_fobs = _correct_fobs;
 	stats_saves_loaded = stats_saves_loaded + 1;
 
-	_list_static = [];
+	_list_static = [] + opfor_statics;
 	{_list_static pushBack ( _x select 0 )} foreach (static_vehicles);
 
 	{
@@ -210,8 +210,9 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 
 			};
 
-			if (typeOf _nextbuilding in _list_static) then {
+			if (_nextclass in _list_static) then {
 				_nextbuilding allowDamage false;
+				[_nextbuilding] spawn protect_static;
 			};
 
 			if ( !(_nextclass in no_kill_handler_classnames ) ) then {
