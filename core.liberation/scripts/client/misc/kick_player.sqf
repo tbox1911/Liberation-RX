@@ -1,6 +1,5 @@
 _uid = getPlayerUID player;
-if (BTC_logic getVariable [_uid, 0] < 50) then {
-	["", 0, 0, 0, 0, 0, 90] spawn BIS_fnc_dynamicText;
-	BTC_teamkiller = 99;
-	[] spawn BTC_Teamkill;
-}
+BTC_teamkiller = 99;
+BTC_logic setVariable [_uid, BTC_teamkiller, true];
+[] spawn BTC_Teamkill;
+diag_log format ["TKP: BAN for player %1 - %2", name player, _uid];
