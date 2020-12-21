@@ -59,11 +59,6 @@ if ( _classname in militia_vehicles ) then {
 };
 _newvehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
 
-// Static inf Ammo
-if (_classname in opfor_statics) then {
-	_newvehicle addEventHandler ["Fired",{(_this select 0) setVehicleAmmo 1}];
-};
-
 if ( _random_rotate ) then {
 	_newvehicle setdir (random 360);
 };

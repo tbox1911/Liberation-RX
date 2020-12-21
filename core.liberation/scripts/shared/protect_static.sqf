@@ -1,7 +1,14 @@
 params ["_static"];
 
-while { true } do {
-	if (!alive _static) exitWith {};
+// No damage
+_static allowDamage false;
+
+// OPFor infinite Ammo
+if (typeOf _static in opfor_statics) then {
+	_static addEventHandler ["Fired",{(_this select 0) setVehicleAmmo 1}];
+};
+
+while { alive _static } do {
 
 	// Correct static position
 	if ((vectorUp _static) select 2 < 0.70) then {

@@ -362,7 +362,6 @@ while { true } do {
 
 				// Static Weapon
 				if (_classname in _list_static) then {
-					_vehicle allowDamage false;
 					[_vehicle] spawn protect_static;
 				};
 

@@ -211,7 +211,6 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 			};
 
 			if (_nextclass in _list_static) then {
-				_nextbuilding allowDamage false;
 				[_nextbuilding] spawn protect_static;
 			};
 
