@@ -12,6 +12,6 @@ while { true } do {
 	};
 
 	setTimeMultiplier _accelerated_time;
-
+	{ if (round (getMass _x) <= 0) then { _x setMass 1 } } forEach (entities "WeaponHolderSimulated");
 	sleep 10;
 };
