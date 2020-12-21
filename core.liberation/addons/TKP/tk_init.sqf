@@ -12,11 +12,11 @@ BTC_fnc_tk_PVEH = {
 	_array = _this select 1;
 	_name  = _array select 0;
 	if (name player == _name) then {
-		[player, -10] remoteExec ["addScore", 2];
-		_uid = getPlayerUID player;
 		BTC_teamkiller = BTC_teamkiller + 1;
-		BTC_logic setVariable [_uid, BTC_teamkiller, true];
+		BTC_logic setVariable [getPlayerUID player, BTC_teamkiller, true];
 		[] spawn BTC_Teamkill;
+		sleep 5;
+		[player, -10] remoteExec ["addScore", 2];
 	};
 };
 
