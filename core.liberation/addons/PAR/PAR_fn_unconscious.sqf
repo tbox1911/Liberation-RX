@@ -13,12 +13,14 @@ _unit setVariable ["PAR_healed", nil];
 [(_unit getVariable ["PAR_myMedic", objNull]), _unit] call PAR_fn_medicRelease;
 _unit setCaptive true;
 _unit switchMove "AinjPpneMstpSnonWrflDnon";  // lay down
+sleep 8;
 
 [
   [_unit],
 {
+  params ["_wnded"];
   [
-  (_this select 0),
+  _wnded,
   "<t color='#00C900'>Revive</t>",
   "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_reviveMedic_ca.paa","\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_reviveMedic_ca.paa",
    "round(_this distance2D _target) < 3 &&
@@ -59,8 +61,9 @@ _unit switchMove "AinjPpneMstpSnonWrflDnon";  // lay down
     _caller switchMove "";
   },
   [time],6,12] call BIS_fnc_holdActionAdd;
+  _wnded addAction ["<t color='#C90000'>" + "Drag" + "</t>", "addons\FAR\FAR_handleAction.sqf", ["action_drag"], 9, false, true, "", "!FAR_isDragging", 3];
+  _wnded addAction ["<t color='#C90000'>" + "Release" + "</t>", "addons\FAR\FAR_handleAction.sqf", ["action_release"], 10, true, true, "", "FAR_isDragging"];
 }] remoteExec ["bis_fnc_call", [0,-2] select isDedicated,true];
-sleep 6;
 
 private _bld = createVehicle [(PAR_BloodSplat call BIS_fnc_selectRandom), getPos _unit, [], 0, "CAN_COLLIDE"];
 private _cnt = 0;

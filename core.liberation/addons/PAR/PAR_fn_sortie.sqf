@@ -41,6 +41,12 @@ if (_isMedic && _hasMedikit) then {
     if (["Revive",(_wnded actionParams _x) select 0] call bis_fnc_inString) then {
       [_wnded, _x] call BIS_fnc_holdActionRemove;
     };
+    if (["Drag",(_wnded actionParams _x) select 0] call bis_fnc_inString) then {
+      _wnded removeAction _x;
+    };
+    if (["Release",(_wnded actionParams _x) select 0] call bis_fnc_inString) then {
+      _wnded removeAction _x;
+    };
   } count (actionIDs _wnded);
 }] remoteExec ["bis_fnc_call", [0,-2] select isDedicated,true];
 
