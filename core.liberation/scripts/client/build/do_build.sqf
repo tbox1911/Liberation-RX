@@ -113,16 +113,15 @@ while { true } do {
 					_unitrank = "Private";
 					if(_idx == 0) then { _unitrank = "Sergeant"; };
 					if(_idx == 1) then { _unitrank = "Corporal"; };
-					_x createUnit [_pos, _grp,"this addMPEventHandler [""MPKilled"", {_this spawn kill_manager}]", 0.5, _unitrank];
+					_x createUnit [_pos, _grp, "this addMPEventHandler [""MPKilled"", FAR_Player_MPKilled]", 0.5, _unitrank];
+					_x setVariable ["PAR_Grp_ID", format["AI_%1",PAR_Grp_ID], true];
+					_x addUniform uniform player;
+					[_x] call PAR_fn_EHDamage;
 					_idx = _idx + 1;
 				} foreach _classname;
 				_grp setCombatMode "GREEN";
 				_grp setBehaviour "AWARE";
-				{
-					_x setVariable ["PAR_Grp_ID", format["AI_%1",PAR_Grp_ID], true];
-					_x addUniform uniform player;
-					[_x] call PAR_fn_EHDamage;
-				} forEach units _grp;
+
 				[_price] call do_pay_build;
 				stats_blufor_soldiers_recruited = stats_blufor_soldiers_recruited + count (units _grp); publicVariable "stats_blufor_soldiers_recruited";
 				player hcSetGroup [_grp];
