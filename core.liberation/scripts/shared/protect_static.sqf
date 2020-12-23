@@ -3,12 +3,12 @@ params ["_static"];
 // No damage
 _static allowDamage false;
 
-// OPFor infinite Ammo
-if (typeOf _static in opfor_statics) then {
-	_static addEventHandler ["Fired",{(_this select 0) setVehicleAmmo 1}];
-};
-
 while { alive _static } do {
+	// OPFor infinite Ammo
+	if (side _static == GRLIB_side_enemy) then {
+		//_ammo = [_veh] call F_getVehicleAmmoDef;
+		_static setVehicleAmmo 1;
+	};
 
 	// Correct static position
 	if ((vectorUp _static) select 2 < 0.70) then {
