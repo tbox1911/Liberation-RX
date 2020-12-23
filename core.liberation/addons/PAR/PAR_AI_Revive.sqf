@@ -52,6 +52,7 @@ PAR_MedGarbage = [
 
 PAR_fn_EHDamage = {
   params ["_unit"];
+  _unit addEventHandler ["HandleDamage", damage_manager_EH ];
   _unit addEventHandler ["handleDamage", {
       params ["_unit","","_dam"];
       _veh = objectParent _unit;
