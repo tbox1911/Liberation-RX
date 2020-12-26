@@ -15,7 +15,6 @@ BTC_fnc_tk_PVEH = {
 		BTC_teamkiller = BTC_teamkiller + 1;
 		BTC_logic setVariable [getPlayerUID player, BTC_teamkiller, true];
 		[] spawn BTC_Teamkill;
-		sleep 5;
 		[player, -10] remoteExec ["addScore", 2];
 	};
 };
