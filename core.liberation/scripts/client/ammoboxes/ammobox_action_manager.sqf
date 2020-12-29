@@ -1,6 +1,6 @@
-waitUntil { !isNil "build_confirmed" };
-waitUntil { !isNil "one_synchro_done" };
-waitUntil { one_synchro_done };
+waitUntil { sleep 1; !isNil "build_confirmed" };
+waitUntil { sleep 1; !isNil "one_synchro_done" };
+waitUntil { sleep 1; one_synchro_done };
 
 private [ "_managed_trucks", "_managed_boxes", "_classname_box", "_next_truck", "_next_box", "_truck_load", "_checked_trucks", "_checked_boxes", "_action_id" ];
 

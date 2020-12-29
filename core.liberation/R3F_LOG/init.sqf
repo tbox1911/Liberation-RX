@@ -192,7 +192,7 @@
 	if !(isDedicated) then
 	{
 		// Le client attend que le serveur ai cr�� et publi� la r�f�rence de l'objet servant de point d'attache
-		waitUntil {!isNil "R3F_LOG_PUBVAR_point_attache"};
+		waitUntil {sleep 0.5;!isNil "R3F_LOG_PUBVAR_point_attache"};
 
 		/** Indique quel objet le joueur est en train de d�placer, objNull si aucun */
 		R3F_LOG_joueur_deplace_objet = objNull;

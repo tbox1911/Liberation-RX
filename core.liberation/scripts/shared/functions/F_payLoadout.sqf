@@ -1,7 +1,7 @@
 params ["_unit"];
 private ["_price", "_oldprice", "_cost", "_ammo_collected"];
 
-waitUntil {!isNil {_unit getVariable ["GREUH_ammo_count", nil]}};
+waitUntil {sleep 0.5; !isNil {_unit getVariable ["GREUH_ammo_count", nil]}};
 
 _price = [_unit] call F_loadoutPrice;
 _oldprice = _unit getVariable ["GREUH_stuff_price", _price];

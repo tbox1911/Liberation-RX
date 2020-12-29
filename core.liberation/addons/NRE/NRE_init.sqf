@@ -2,7 +2,7 @@
 	NRE Earplug Init
 */
 
-waitUntil {!(isNull (findDisplay 46))};
+waitUntil {sleep 0.5;!(isNull (findDisplay 46))};
 NRE_EarplugsActive = 0;
 NRE_vehvolume = 20;
 NRE_earplugs = compileFinal preprocessFileLineNumbers "addons\NRE\NRE_earplugs.sqf";

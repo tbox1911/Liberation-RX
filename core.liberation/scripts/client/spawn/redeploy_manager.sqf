@@ -20,6 +20,7 @@ _basenamestr = "BASE CHIMERA";
 
 while { true } do {
 	waitUntil {
+		sleep 1;
 		(GRLIB_endgame == 1 || GRLIB_force_redeploy || (player distance (getmarkerpos GRLIB_respawn_marker) < 50) ) && vehicle player == player && alive player && !dialog && howtoplay == 0
 	};
 	if (GRLIB_endgame == 1 ) exitWith {};
