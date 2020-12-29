@@ -29,7 +29,6 @@ PAR_fn_AI_Damage_EH = {
   }];
   _unit removeAllMPEventHandlers "MPKilled";
   _unit addMPEventHandler ["MPKilled", PAR_Player_MPKilled];
-  _unit setVariable ["PAR_soliders",true,true];
   _unit setVariable ["PAR_wounded",false];
   _unit setVariable ["PAR_myMedic", nil];
   _unit setVariable ["PAR_busy", nil];
@@ -125,7 +124,6 @@ PAR_Player_Init = {
 	player setVariable ["PAR_isDragged", 0, true];
 	player setVariable ["ace_sys_wounds_uncon", false];
 	player setVariable ["PAR_Grp_ID",format["Bros_%1", PAR_Grp_ID], true];
-	player setVariable ["PAR_soliders", true, true];
 	player setVariable ["PAR_myMedic", nil];
 	player setVariable ["PAR_busy", nil];
 	player setVariable ["AirCoolDown", 0, true];
