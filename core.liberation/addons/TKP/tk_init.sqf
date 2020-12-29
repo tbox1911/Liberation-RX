@@ -66,3 +66,11 @@ BTC_Teamkill = {
 		};
 	};
 };
+
+"BTC_tk_PVEH" addPublicVariableEventHandler BTC_fnc_tk_PVEH;
+
+BTC_teamkiller = BTC_logic getVariable [getPlayerUID player, 0];
+if (BTC_teamkiller > BTC_tk_last_warning) exitWith {[] spawn BTC_Teamkill};
+
+waitUntil {!(isNull (findDisplay 46))};
+systemChat "-------- TK Protect Initialized --------";

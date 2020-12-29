@@ -69,6 +69,7 @@ _unit addEventHandler ["FiredMan",	{
 	// };
 }];
 
+// Player
 if (_unit == player && alive player && player isKindOf "Man") then {
 	// ACE specific
 	if (GRLIB_ACE_enabled) then {
@@ -89,11 +90,42 @@ if (_unit == player && alive player && player isKindOf "Man") then {
 		// Filter and Pay Loadout
 		[missionNamespace, "arsenalClosed", {[player] call F_filterLoadout;[player] call F_payLoadout}] call BIS_fnc_addScriptedEventHandler;
 
+		// Unblock unit(s) 0-8-1
+		PAR_unblock_AI = {
+			params ["_unit_array"];
+			if ( count _unit_array == 0 ) then {
+				player setPos (getPos player vectorAdd [([] call F_getRND), ([] call F_getRND), 1]);
+			} else {
+				{
+					_unit = _x;
+					if (round (player distance2D _unit) < 50 && (lifeState _unit != 'INCAPACITATED') && vehicle _unit == _unit) then {
+						doStop _unit;
+						sleep 1;
+						_unit doWatch objNull;
+						_unit switchmove "";
+						_unit disableAI "ALL";
+						_grp = createGroup [GRLIB_side_friendly, true];
+						[_unit] joinSilent _grp;
+						doStop _unit;
+						sleep 1;
+						_unit setPos (getPos player vectorAdd [([] call F_getRND), ([] call F_getRND), 1]);
+						[_unit] joinSilent (group player);
+						_unit enableAI "ALL";
+						_unit doFollow leader player;
+						_unit switchMove "amovpknlmstpsraswrfldnon";
+					} else {
+						hintSilent "Unit is too far or is unconscious. (max 50m)";
+						sleep 2;
+						hintSilent "";
+					};
+				} forEach _unit_array;
+			};
+		};
 		// Unblock units
 		missionNamespace setVariable [
 		"BIS_fnc_addCommMenuItem_menu", [
 			["Do it !", true],
-			["Unblock unit.", [2], "", -5, [["expression", "[groupSelectedUnits player] spawn FAR_unblock_AI"]], "1", "1"]
+			["Unblock unit.", [2], "", -5, [["expression", "[groupSelectedUnits player] spawn PAR_unblock_AI"]], "1", "1"]
 		]];
 	};
 
@@ -117,4 +149,9 @@ if (_unit == player && alive player && player isKindOf "Man") then {
 			[player, "show"] remoteExec ["dog_action_remote_call", 2];
 		};
 	}];
+
+	// UI Event Handler
+	inGameUISetEventHandler ["Action", "if (_this select 3 == 'DisAssemble') then { hintSilent 'You are not allowed to do this';true}"];
+
 };
+

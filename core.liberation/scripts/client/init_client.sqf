@@ -14,7 +14,7 @@ clear_wpt = compileFinal preprocessFileLineNumbers "scripts\client\misc\clear_wa
 is_owner = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_owner.sqf";
 is_menuok = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_menuok.sqf";
 is_neartransport = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_neartransport.sqf";
-player_EVH = compileFinal preprocessFileLineNumbers "addons\FAR\FAR_EventHandler.sqf";
+player_EVH = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_EventHandler.sqf";
 paraDrop = compileFinal preprocessFileLineNumbers "scripts\client\spawn\paraDrop.sqf";
 get_lrx_name = compileFinal preprocessFileLineNumbers "scripts\client\misc\get_lrx_name.sqf";
 

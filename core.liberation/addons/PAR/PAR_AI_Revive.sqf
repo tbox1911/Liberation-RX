@@ -19,24 +19,23 @@ Based on: AI REVIVE HEAL SCRIPT SP/MP by Pierre MGI
   at : https://forums.bohemia.net/forums/topic/207522-ai-revive-heal-script-spmp/
 
 _________________________________________________________________________*/
-
 if (isDedicated) exitWith {};
+
+PAR_isDragging = false;
+PAR_deathMessage = [];
+PAR_tkMessage = [];
+
+call compile preprocessFile "addons\TKP\tk_init.sqf";
+call compile preprocessFile "addons\PAR\PAR_global_functions.sqf";
+
 // Seconds until unconscious unit bleeds out and dies.
-if (isNil "PAR_BleedOut") then {PAR_BleedOut = 300};
-// Extra time when Revive
-if (isNil "PAR_BleedOutExtra") then {PAR_BleedOutExtra = 60};
+PAR_BleedOut = 300;
+PAR_BleedOutExtra = 60;
 
-PAR_fn_medic = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_medic.sqf";
-PAR_fn_medicRelease = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_medicRelease.sqf";
-PAR_fn_medicRecall = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_medicRecall.sqf";
-PAR_fn_checkMedic = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_checkMedic.sqf";
-PAR_fn_911 = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_911.sqf";
-PAR_fn_sortie = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_sortie.sqf";
-PAR_fn_death = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_death.sqf";
-PAR_fn_unconscious = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_unconscious.sqf";
-PAR_fn_eject = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_eject.sqf";
-PAR_fn_checkWounded = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_checkWounded.sqf";
-
+// Enable teamkill notifications
+PAR_EnableDeathMessages = true;
+PAR_ReviveMode = ( GRLIB_revive - 1 );
+//------------------------------------------//
 PAR_BloodSplat = [
   "BloodPool_01_Large_New_F",
   "BloodPool_01_Medium_New_F",
@@ -50,99 +49,18 @@ PAR_MedGarbage = [
   "MedicalGarbage_01_3x3_v2_F"
 ];
 
-PAR_fn_EHDamage = {
-  params ["_unit"];
-  _unit addEventHandler ["HandleDamage", damage_manager_EH ];
-  _unit addEventHandler ["handleDamage", {
-      params ["_unit","","_dam"];
-      _veh = objectParent _unit;
-      if (!(isNull _veh) && round(damage _veh) > 0.8) then {[_veh, _unit, true] spawn PAR_fn_eject};
+waituntil {sleep 0.5;!isNull player && GRLIB_player_spawned};
+waituntil {sleep 0.5;!isNil {player getVariable ["GRLIB_Rank", nil]}};
 
-      if (!(_unit getVariable ["PAR_isUnconscious",false]) && (_dam >= 0.86)) then {
-        if (!(isNull _veh)) then {[_veh, _unit] spawn PAR_fn_eject};
-        _unit allowDamage false;
-        _unit setVariable ["PAR_isUnconscious", true];
-        _unit setUnconscious true;
-        _unit setVariable ["PAR_BleedOutTimer", round(time + PAR_BleedOut), true];
-        [_unit] spawn PAR_fn_unconscious;
-      };
-      _dam min 0.86;
-  }];
-  _unit removeAllMPEventHandlers "MPKilled";
-  _unit addMPEventHandler ["MPKilled", FAR_Player_MPKilled];
-  _unit setVariable ["PAR_soliders",true,true];
-  _unit setVariable ["PAR_isUnconscious",false];
-  _unit setVariable ["PAR_myMedic", nil];
-  _unit setVariable ["PAR_busy", nil];
-  _unit setVariable ["PAR_heal", nil];
-  _unit setVariable ["PAR_healed", nil];
-};
+[] spawn PAR_AI_Manager;
+[] spawn PAR_Player_Init;
 
-PAR_fn_Revive = {
-  while {true} do {
-    private _bros = (units player) select {!isplayer _x && (_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1",PAR_Grp_ID]};
-    if (count _bros > 0 ) then {
-      {
-        // Set EH
-        if (isNil {_x getVariable "passEH"}) then {
-          _x setVariable ["passEH", true];
-          _x call PAR_fn_EHDamage;
-        };
+// Public event handlers
+"PAR_deathMessage" addPublicVariableEventHandler PAR_public_EH;
+"PAR_tkMessage" addPublicVariableEventHandler PAR_public_EH;
 
-        // Medic can heal
-        _isMedic = [_x] call FAR_is_medic;
-        _hasMedikit = [_x] call FAR_has_medikit;
-        if ( _isMedic && _hasMedikit &&
-            vehicle _x == _x &&
-            (behaviour _x) != "COMBAT" &&
-            lifeState _x != 'INCAPACITATED' &&
-            isNil {_x getVariable 'PAR_busy'} &&
-            isNil {_x getVariable 'PAR_heal'}
-            ) then {
-               [_x] spawn PAR_fn_checkWounded;
-        };
-
-        // AI stop doing shit !
-        if ( leader group player != player &&
-              lifeState player == 'INCAPACITATED' &&
-              _x distance2D player <= 500 &&
-              isNil {_x getVariable 'PAR_busy'} &&
-              isNil {_x getVariable 'PAR_heal'}
-            ) then {
-              doStop _x;
-              unassignVehicle _x;
-              [_x] orderGetIn false;
-              if (!isnull objectParent _x) then {
-                doGetOut _x;
-                sleep 3;
-              };
-              _x doMove (getPos player);
-        };
-
-        // Blood trail
-        if (damage _x > 0.6 && vehicle _x == _x) then {
-          private _spray = createVehicle ["BloodSpray_01_New_F", getPos _x, [], 0, "CAN_COLLIDE"];
-          [_spray] spawn {sleep (7 + random 5); deleteVehicle (_this select 0)};
-        };
-        sleep 0.3;
-      } forEach _bros;
-    };
-    sleep 5;
-  };
-};
-
-PAR_fn_globalchat = {
-  params ["_speaker", "_msg"];
-  if (!(local _speaker)) exitWith {};
-  if ((_speaker getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1",PAR_Grp_ID] || isPlayer _speaker) then {
-    gamelogic globalChat _msg;
-  };
-};
-
-waituntil {!isNull player && GRLIB_player_spawned};
-waituntil {!isNil {player getVariable ["GRLIB_Rank", nil]}};
-
-[] spawn PAR_fn_Revive;
+// Event Handlers
+player addEventHandler ["Respawn", {[] spawn PAR_Player_Init}];
 
 waitUntil {!(isNull (findDisplay 46))};
-systemChat "-------- PAR Revive Initialized --------";
+systemChat "-------- pSiKo AI Revive Initialized --------";

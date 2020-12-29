@@ -25,8 +25,8 @@ if (lifeState _medic == "INCAPACITATED" || (!alive _wnded)) exitWith { [_medic, 
 // Revived
 _wnded setUnconscious false;
 _wnded doFollow player;
-_isMedic = [_medic] call FAR_is_medic;
-_hasMedikit = [_medic] call FAR_has_medikit;
+_isMedic = [_medic] call PAR_is_medic;
+_hasMedikit = [_medic] call PAR_has_medikit;
 if (_isMedic && _hasMedikit) then {
   _wnded setDamage 0;
 } else {
@@ -54,8 +54,8 @@ _wnded selectWeapon primaryWeapon _wnded;
 sleep 0.5;
 
 if (isPlayer _wnded) then {
-  player setVariable ["FAR_isUnconscious", 0, true];
-  player setVariable ["FAR_isDragged", 0, true];
+  player setVariable ["PAR_isUnconscious", 0, true];
+  player setVariable ["PAR_isDragged", 0, true];
   group _wnded selectLeader player;
   if (isPlayer _medic && score _medic <= GRLIB_perm_log) then { [_medic, 5] remoteExec ["addScore", 2] };
 } else {
@@ -71,6 +71,6 @@ if (round (getPosASL _medic select 2) <= -1) then {_medic switchmove ""};
     params ["_unit"];
     uIsleep 10;   //time to recover
     _unit setCaptive false;
-    _unit setVariable ["PAR_isUnconscious", false];
+    _unit setVariable ["PAR_wounded", false];
     _unit allowDamage true;
 };

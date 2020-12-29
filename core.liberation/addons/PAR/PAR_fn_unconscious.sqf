@@ -25,8 +25,8 @@ sleep 8;
   "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_reviveMedic_ca.paa","\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_reviveMedic_ca.paa",
    "round(_this distance2D _target) < 3 &&
     lifeState _target == 'INCAPACITATED' &&
-    _target getVariable ['FAR_isDragged',0] == 0 &&
-    ((FAR_AidKit in (items _this)) || ([_this] call FAR_is_medic && [_this] call FAR_has_medikit))",
+    _target getVariable ['PAR_isDragged',0] == 0 &&
+    ((PAR_AidKit in (items _this)) || ([_this] call PAR_is_medic && [_this] call PAR_has_medikit))",
   "round(_caller distance2D _target) < 3",
   {
     if (_caller == player) then {
@@ -61,8 +61,8 @@ sleep 8;
     _caller switchMove "";
   },
   [time],6,12] call BIS_fnc_holdActionAdd;
-  _wnded addAction ["<t color='#C90000'>" + "Drag" + "</t>", "addons\FAR\FAR_handleAction.sqf", ["action_drag"], 9, false, true, "", "!FAR_isDragging", 3];
-  _wnded addAction ["<t color='#C90000'>" + "Release" + "</t>", "addons\FAR\FAR_handleAction.sqf", ["action_release"], 10, true, true, "", "FAR_isDragging"];
+  _wnded addAction ["<t color='#C90000'>" + "Drag" + "</t>", "addons\PAR\PAR_fn_drag.sqf", ["action_drag"], 9, false, true, "", "!PAR_isDragging", 3];
+  _wnded addAction ["<t color='#C90000'>" + "Release" + "</t>", { PAR_isDragging = false }, ["action_release"], 10, true, true, "", "PAR_isDragging"];
 }] remoteExec ["bis_fnc_call", [0,-2] select isDedicated,true];
 
 private _bld = createVehicle [(PAR_BloodSplat call BIS_fnc_selectRandom), getPos _unit, [], 0, "CAN_COLLIDE"];
