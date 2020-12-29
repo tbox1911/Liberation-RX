@@ -32,7 +32,7 @@ call compile preprocessFile "addons\PAR\PAR_global_functions.sqf";
 PAR_BleedOut = 300;
 PAR_BleedOutExtra = 60;
 
-// Enable teamkill notifications
+// Enable info killer message
 PAR_EnableDeathMessages = true;
 PAR_ReviveMode = ( GRLIB_revive - 1 );
 //------------------------------------------//
