@@ -211,13 +211,13 @@ PAR_Player_Unconscious = {
 	[] call R3F_LOG_FNCT_objet_relacher;
 
 	_random_medic_message = floor (random 3);
-	_medic_message = localize "STR_PAR_Need_Medic1";
+	_medic_message = "";
 	switch (_random_medic_message) do {
 		case 0 : { _medic_message = localize "STR_PAR_Need_Medic1"; };
 		case 1 : { _medic_message = localize "STR_PAR_Need_Medic2"; };
 		case 2 : { _medic_message = localize "STR_PAR_Need_Medic3"; };
 	};
-	public_medic_message = [_unit,_medic_message]; publicVariable "public_medic_message";
+	[_medic_message] remoteExec ["sidechat", -2];
 
 	disableUserInput false;
 	disableUserInput true;
