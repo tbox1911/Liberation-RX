@@ -37,14 +37,15 @@ if (do_action == 1) then {
 		case 5 : {_class=GRLIB_AirDrop_5 call BIS_fnc_selectRandom;_cost=750};
 		case 6 : {_class=GRLIB_AirDrop_6 call BIS_fnc_selectRandom;_cost=250};
 		case 7 : {_cost=2000};
-		case 8 : {_cost=100};
+		case 8 : {_cost=0};
 	};
 
-	if (_cost == 0) exitWith {};
-	_ammo_collected = _unit getVariable ["GREUH_ammo_count",0];
-	if (_ammo_collected < _cost) exitWith {hint "You dont have enough Ammo !"};
-	_unit setVariable ["GREUH_ammo_count", (_ammo_collected - _cost), true];
-	playSound "rearm";
+	if (_cost != 0) then {
+		_ammo_collected = _unit getVariable ["GREUH_ammo_count",0];
+		if (_ammo_collected < _cost) exitWith {hint "You dont have enough Ammo !"};
+		_unit setVariable ["GREUH_ammo_count", (_ammo_collected - _cost), true];
+		playSound "rearm";
+	};
 
 	//_unit setVariable ["AirCoolDown", 15, true];
 	if (air_type == 7) exitWith {[player] remoteExec ["send_aircraft_remote_call", 2]};

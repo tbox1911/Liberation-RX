@@ -13,6 +13,13 @@ private _degree = aCos ([0,0,1] vectorCos (surfaceNormal getPos _helipad));
 private _dest = getPosATL _helipad;
 if (surfaceIsWater _dest || _degree > 8) exitWith {deleteVehicle _helipad; hintSilent "Sorry, Taxi cannot Land on this place."};
 
+// Pay
+_cost = 100;
+_ammo_collected = _unit getVariable ["GREUH_ammo_count",0];
+if (_ammo_collected < _cost) exitWith {hint "You dont have enough Ammo !"};
+_unit setVariable ["GREUH_ammo_count", (_ammo_collected - _cost), true];
+playSound "rearm";
+
 // Taxi functions
 taxi_land = {
 	params ["_vehicle"];
