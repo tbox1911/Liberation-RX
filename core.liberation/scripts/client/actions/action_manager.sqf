@@ -328,7 +328,7 @@ while { true } do {
 		_idact_packtent = _id_actions select 24;
 		if ((player distance lhd) >= 1000 && typeOf cursorObject == mobile_respawn ) then {
 			if ( _idact_packtent == -1 ) then {
-				_idac = player addAction ["<t color='#FFFF00'>-- PACK BEACON</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_beacon_pack.sqf",cursorObject,-950,true,true,"","!(cursorObject getVariable ['tent_in_use', false])"];
+				_idact = player addAction ["<t color='#FFFF00'>-- PACK BEACON</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_beacon_pack.sqf",cursorObject,-950,true,true,"","!(cursorObject getVariable ['tent_in_use', false])"];
 				_id_actions set [24, _idact];
 			};
 		} else {
