@@ -703,7 +703,6 @@ GRLIB_vehicle_whitelist = [
 	"Land_BagBunker_Small_F",
 	"Land_BagFence_Long_F"
 ];
-{GRLIB_vehicle_whitelist pushBack ( _x select 0 )} foreach (static_vehicles + opfor_recyclable);
 
 // Blacklist Vehicle (lock and paint)
 GRLIB_vehicle_blacklist = [
