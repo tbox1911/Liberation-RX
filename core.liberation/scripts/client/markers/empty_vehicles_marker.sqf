@@ -6,7 +6,7 @@ _markedveh = [];
 _markedbeac = [];
 
 private _no_marker_classnames = [];
-{ _no_marker_classnames pushback (_x select 0) } foreach (buildings + opfor_recyclable);
+{ _no_marker_classnames pushback (_x select 0) } foreach buildings;
 
 waitUntil { !isNil "GRLIB_mobile_respawn" };
 
@@ -16,7 +16,9 @@ while { true } do {
 	{
 		_loaded = _x getVariable ["R3F_LOG_est_transporte_par", objNull];
 		_disabled = _x getVariable ['R3F_LOG_disabled', true];
-		if ((alive _x) && (count (crew _x) == 0) && (_x distance lhd > 1000) && (isNull _loaded) && !(_disabled) && (locked _x != 2) && !(typeOf _x in _no_marker_classnames) ) then {
+		_owner_id = _x getVariable ["GRLIB_vehicle_owner", ""];
+		_side = side group _x;
+		if (alive _x && (_side == GRLIB_side_friendly || !(_owner_id in ["server",""])) && _x distance lhd > 1000 && isNull _loaded && !(_disabled) && locked _x != 2 && !(typeOf _x in _no_marker_classnames) ) then {
 				_markedveh pushback _x;
 		};
 	} foreach vehicles;
