@@ -20,16 +20,6 @@ while { count GRLIB_preview_spheres < 36 } do {
 
 { _x setObjectTexture [0, "#(rgb,8,8,3)color(0,1,0,1)"] } foreach GRLIB_preview_spheres;
 
-do_pay_build = {
-	params ["_price"];
-	if (_price <= 0) exitWith {};
-	private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
-	player setVariable ["GREUH_ammo_count", (_ammo_collected - _price), true];
-	playSound "rearm";
-	gamelogic globalChat format ["Build Price: %1, Thank you !", _price];
-	stats_ammo_spent = stats_ammo_spent + _price; publicVariable "stats_ammo_spent";
-};
-
 if (isNil "manned") then { manned = false };
 if (isNil "gridmode" ) then { gridmode = 0 };
 if (isNil "repeatbuild" ) then { repeatbuild = false };
@@ -98,7 +88,8 @@ while { true } do {
 			[_unit] call player_EVH;
 			stats_blufor_soldiers_recruited = stats_blufor_soldiers_recruited + 1; publicVariable "stats_blufor_soldiers_recruited";
 		};
-		[_price] call do_pay_build;
+		if (!([_price] call F_pay)) exitWith {};
+		//[_price] call do_pay_build;
 		build_confirmed = 0;
 	} else {
 		if ( buildtype == 8 ) then {
@@ -124,7 +115,8 @@ while { true } do {
 				_grp setCombatMode "GREEN";
 				_grp setBehaviour "AWARE";
 
-				[_price] call do_pay_build;
+				//[_price] call do_pay_build;
+				if (!([_price] call F_pay)) exitWith {};
 				stats_blufor_soldiers_recruited = stats_blufor_soldiers_recruited + count (units _grp); publicVariable "stats_blufor_soldiers_recruited";
 				player hcSetGroup [_grp];
 			} else {
@@ -382,7 +374,8 @@ while { true } do {
 					{ _x addMPEventHandler ["MPKilled", { _this spawn kill_manager }] } foreach (crew _vehicle);
 				};
 
-				[_price] call do_pay_build;
+				//[_price] call do_pay_build;
+				if (!([_price] call F_pay)) exitWith {};
 				stats_blufor_vehicles_built = stats_blufor_vehicles_built + 1; publicVariable "stats_blufor_vehicles_built";
 			};
 
