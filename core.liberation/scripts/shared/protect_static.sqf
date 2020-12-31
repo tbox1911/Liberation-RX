@@ -16,5 +16,5 @@ while { alive _static } do {
 		_static setVectorUp surfaceNormal position _static;
 	};
 
-	sleep 10;
+	sleep 5;
 };
