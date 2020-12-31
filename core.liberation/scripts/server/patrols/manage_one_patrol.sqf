@@ -56,9 +56,9 @@ while { GRLIB_endgame == 0 } do {
 
 	if (_patrol_type == 3) then {
 		private [ "_vehicle_object" ];
-		_opfor_tower = [sectors_tower, {!( _x in blufor_sectors)}] call BIS_fnc_conditionalSelect;
-		if ( count _opfor_tower > 0) then {
-			_tower_spawn_pos = [ getMarkerPos (selectRandom _opfor_tower), random 50, random 360 ] call BIS_fnc_relPos;
+		_opfor_spawn = [sectors_tower + sectors_military, {!( _x in blufor_sectors)}] call BIS_fnc_conditionalSelect;
+		if ( count _opfor_spawn > 0) then {
+			_tower_spawn_pos = [ getMarkerPos (selectRandom _opfor_spawn), random 50, random 360 ] call BIS_fnc_relPos;
 			_vehicle_object = [ _tower_spawn_pos, opfor_statics call BIS_fnc_selectRandom ] call F_libSpawnVehicle;
 			[_vehicle_object] spawn protect_static;
 			_grp = group ((crew _vehicle_object) select 0);
