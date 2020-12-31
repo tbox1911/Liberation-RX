@@ -7,16 +7,16 @@ private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
 private _msg = "";
 
 if (_ammo_collected < _price) then {
-	_msg = "No Enought Ammo !!";
+	_msg = localize "STR_GRLIB_NOAMMO";
 } else {
 	player setVariable ["GREUH_ammo_count", (_ammo_collected - _price), true];
 	playSound "rearm";
-	_msg = format ["You pay: %1 Ammo", _price];
+	_msg = format [localize "STR_GRLIB_PAY", _price];
 	stats_ammo_spent = stats_ammo_spent + _price; publicVariable "stats_ammo_spent";
 	_ret = true;
 };
 
-hintSilent format ["%1%2", _msg, "\nThank you !"];
+hintSilent _msg;
 gamelogic globalChat _msg;
 
 _ret;
