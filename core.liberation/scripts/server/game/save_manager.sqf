@@ -65,6 +65,7 @@ _building_classnames = [FOB_typename];
 } foreach (static_vehicles + air_vehicles + heavy_vehicles + light_vehicles + support_vehicles + ind_recyclable);
 
 _classnames_to_save = _classnames_to_save + _classnames_to_save_blu + all_hostile_classnames;
+_buildings_created = [];
 
 trigger_server_save = false;
 greuh_liberation_savegame = profileNamespace getVariable GRLIB_save_key;
@@ -177,7 +178,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 			_nextbuilding setPosATL _nextpos;
 			_nextbuilding setdir _nextdir;
 			_nextbuilding setdamage 0;
-			_nextbuilding allowDamage true;
+			_buildings_created pushback _nextbuilding;
 
 			if (!(_nextclass in GRLIB_Ammobox)) then {
 				clearWeaponCargoGlobal _nextbuilding;
@@ -224,7 +225,6 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 			};
 
 			if ( _nextclass == FOB_typename ) then {
-				_nextbuilding allowDamage false;
 				_nextbuilding addEventHandler ["HandleDamage", { 0 }];
 			};
 
@@ -235,6 +235,11 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 
 		};
 	} foreach buildings_to_save;
+
+	sleep 5;
+	{
+		if (! (typeOf _x in [FOB_typename])) then { _x allowDamage true };
+	} foreach _buildings_created;
 };
 
 publicVariable "GRLIB_garage";
