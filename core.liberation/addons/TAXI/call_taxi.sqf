@@ -47,7 +47,7 @@ sleep 1;
 _pilots = crew _vehicle;
 {
 	_x allowDamage false;
-	_x  allowFleeing 0;
+	_x allowFleeing 0;
  } foreach _pilots;
 _pilots joinSilent _air_grp;
 
