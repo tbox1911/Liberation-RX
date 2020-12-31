@@ -6,7 +6,7 @@ private _box_refill = ["mission_Ammo","mission_USLaunchers","mission_USSpecial",
 
 private _spawnpos = zeropos;
 while { _spawnpos distance zeropos < 1000 } do {
-	_spawnpos =  ( [ _pos, random 50, random 360 ] call BIS_fnc_relPos ) findEmptyPosition [ 10, 100, 'B_Heli_Transport_01_F' ];
+	_spawnpos =  ( [ _pos, random 50, random 360 ] call BIS_fnc_relPos ) findEmptyPosition [ 5, 50, 'B_Heli_Transport_01_F' ];
 	if ( count _spawnpos == 0 ) then { _spawnpos = zeropos; };
 };
 

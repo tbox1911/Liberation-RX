@@ -26,7 +26,7 @@ if ( dorepackage > 0 ) then {
 
 	_spawnpos = zeropos;
 	while { _spawnpos distance zeropos < 1000 } do {
-		_spawnpos = ( getpos player ) findEmptyPosition [10, 250, 'B_Heli_Transport_01_F'];
+		_spawnpos = ( getpos player ) findEmptyPosition [5, 100, 'B_Heli_Transport_01_F'];
 		if ( count _spawnpos == 0 ) then { _spawnpos = zeropos; };
 	};
 
