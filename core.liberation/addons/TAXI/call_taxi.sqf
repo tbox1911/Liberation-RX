@@ -56,7 +56,7 @@ _pilots joinSilent _air_grp;
 waitUntil {
   sleep 5;
   isNil{hintSilent format [localize "STR_TAXI_MOVE", round (_vehicle distance2D _dest)]};
-  (!alive _vehicle || _vehicle distance2D _dest < 200)
+  (!alive _vehicle || _vehicle distance2D _dest < 150)
 };
 
 if (alive _vehicle && alive player) then {
