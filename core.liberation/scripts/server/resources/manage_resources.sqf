@@ -28,13 +28,8 @@ while { GRLIB_endgame == 0 } do {
 				if ( ( { typeof _x == ammobox_b_typename } count vehicles ) <= ( ceil ( ( count _blufor_mil_sectors ) * 1.3 ) ) ) then {
 
 					_spawnsector = ( _blufor_mil_sectors call BIS_fnc_selectRandom );
-					_spawnpos = zeropos;
-					while { _spawnpos distance zeropos < 1000 } do {
-						_spawnpos =  ( [ ( markerpos _spawnsector), random 50, random 360 ] call BIS_fnc_relPos ) findEmptyPosition [ 10, 100, 'B_Heli_Transport_01_F' ];
-						if ( count _spawnpos == 0 ) then { _spawnpos = zeropos; };
-					};
+					_newbox = [ammobox_b_typename,  markerpos _spawnsector, false] call boxSetup;
 
-					_newbox = [ammobox_b_typename, _spawnpos, false] call boxSetup;
 					clearWeaponCargoGlobal _newbox;
 					clearMagazineCargoGlobal _newbox;
 					clearItemCargoGlobal _newbox;
@@ -55,13 +50,7 @@ while { GRLIB_endgame == 0 } do {
 			if ( ( { typeof _x == fuelbarrel_typename } count vehicles ) <= ( ceil ( ( count _blufor_fuel_sectors ) * 0.85 ) ) ) then {
 
 				_spawnsector = ( _blufor_fuel_sectors call BIS_fnc_selectRandom );
-				_spawnpos = zeropos;
-				while { _spawnpos distance zeropos < 1000 } do {
-					_spawnpos =  ( [ ( markerpos _spawnsector), random 50, random 360 ] call BIS_fnc_relPos ) findEmptyPosition [ 10, 100, 'B_Heli_Transport_01_F' ];
-					if ( count _spawnpos == 0 ) then { _spawnpos = zeropos; };
-				};
-
-				_newbox = [fuelbarrel_typename, _spawnpos, false] call boxSetup;
+				_newbox = [fuelbarrel_typename, markerpos _spawnsector, false] call boxSetup;
 			};
 		};
 
@@ -77,13 +66,7 @@ while { GRLIB_endgame == 0 } do {
 			if ( ( { typeof _x == waterbarrel_typename } count vehicles ) <= ( ceil ( ( count _blufor_water_sectors ) * 0.85 ) ) ) then {
 
 				_spawnsector = ( _blufor_water_sectors call BIS_fnc_selectRandom );
-				_spawnpos = zeropos;
-				while { _spawnpos distance zeropos < 1000 } do {
-					_spawnpos =  ( [ ( markerpos _spawnsector), random 50, random 360 ] call BIS_fnc_relPos ) findEmptyPosition [ 10, 100, 'B_Heli_Transport_01_F' ];
-					if ( count _spawnpos == 0 ) then { _spawnpos = zeropos; };
-				};
-
-				_newbox = [waterbarrel_typename, _spawnpos, false] call boxSetup;
+				_newbox = [waterbarrel_typename, markerpos _spawnsector, false] call boxSetup;
 			};
 		};
 
@@ -99,13 +82,7 @@ while { GRLIB_endgame == 0 } do {
 			if ( ( { typeof _x == foodbarrel_typename } count vehicles ) <= ( ceil ( ( count _blufor_food_sectors ) * 3 ) ) ) then {
 
 				_spawnsector = ( _blufor_food_sectors call BIS_fnc_selectRandom );
-				_spawnpos = zeropos;
-				while { _spawnpos distance zeropos < 1000 } do {
-					_spawnpos =  ( [ ( markerpos _spawnsector), random 50, random 360 ] call BIS_fnc_relPos ) findEmptyPosition [ 10, 100, 'B_Heli_Transport_01_F' ];
-					if ( count _spawnpos == 0 ) then { _spawnpos = zeropos; };
-				};
-
-				_newbox = [foodbarrel_typename, _spawnpos, false] call boxSetup;
+				_newbox = [foodbarrel_typename, markerpos _spawnsector, false] call boxSetup;
 			};
 		};
 
