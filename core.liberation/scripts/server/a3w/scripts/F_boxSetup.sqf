@@ -2,7 +2,6 @@
 
 if (!isServer) exitWith {};
 params ["_type", "_pos", "_locked"];
-private _box_refill = ["mission_Ammo","mission_USLaunchers","mission_USSpecial","mission_Main_A3snipers","mission_Ammo"];
 
 private _max_try = 10;
 private _radius = 100;
@@ -30,6 +29,7 @@ if (_locked) then {
 };
 
 if (!GRLIB_OPTRE_enabled && !GRLIB_GM_enabled && _type == A3W_BoxWps) then {
+	private _box_refill = ["mission_Ammo","mission_USLaunchers","mission_USSpecial","mission_Main_A3snipers","mission_Ammo"];
 	[_box, selectRandom _box_refill] call fn_refillbox;
 };
 _box;
