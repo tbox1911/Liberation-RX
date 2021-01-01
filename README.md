@@ -13,14 +13,13 @@
 + LARs (Larrow) Arsenal (Customisable Arsenal)
 + pSiKO AI Revive Addon (AI revive SP/MP)
 + TK Protect + AutoBAN
-+ Dynamic Sides Missions
 + Extra Action keys: Hearplug, Always Run, etc..
 + Magazine Repack
 + Robust Unstuck AI/Player
 + Robust Air Taxi Service
 + AI follow you when Redeploy/HALO jump
 + Extended Air Support (Taxi, Air drop, etc...)
-+ A virtual Garage + Repaint Menu
++ A Virtual Garage + Repaint Menu
 + Vehicles Cargo & Inventory saved on server
 + Keep/recover your AI in game, even if your client restart (crash/ reboot) in MP
 + Wildlife Manager
