@@ -8,20 +8,39 @@ _markedbeac = [];
 private _no_marker_classnames = [];
 { _no_marker_classnames pushback (_x select 0) } foreach buildings;
 
+private _force_marker_classnames = [
+	Arsenal_typename,
+	ammobox_b_typename,
+	ammobox_o_typename,
+	ammobox_i_typename,
+	A3W_BoxWps,
+	canisterFuel,
+	waterbarrel_typename,
+	fuelbarrel_typename,
+	foodbarrel_typename
+];
+
 waitUntil { !isNil "GRLIB_mobile_respawn" };
 
 while { true } do {
 
-	_markedveh = [];
-	{
-		_loaded = _x getVariable ["R3F_LOG_est_transporte_par", objNull];
-		_disabled = _x getVariable ['R3F_LOG_disabled', true];
-		_owner_id = _x getVariable ["GRLIB_vehicle_owner", ""];
-		_side = side group _x;
-		if (alive _x && (_side == GRLIB_side_friendly || !(_owner_id in ["server",""])) && _x distance lhd > 1000 && isNull _loaded && !(_disabled) && locked _x != 2 && !(typeOf _x in _no_marker_classnames) ) then {
-				_markedveh pushback _x;
-		};
-	} foreach vehicles;
+	private _veh_list = [ vehicles, {
+		alive _x &&
+		_x distance lhd > 500 &&
+		locked _x != 2 &&
+		!(typeOf _x in _no_marker_classnames) &&
+		!(_x getVariable ['R3F_LOG_disabled', true]) &&
+		isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) &&
+		(
+		 side _x == GRLIB_side_friendly ||
+		 (side _x == GRLIB_side_civilian && count (crew _x) == 0 && faction _x != "OPF_F") ||
+		 !((_x getVariable ["GRLIB_vehicle_owner", ""]) in ["server",""]) ||
+		 typeOf _x in _force_marker_classnames
+		)
+	} ] call BIS_fnc_conditionalSelect;
+
+	private _markedveh = [];
+	{ _markedveh pushback _x } foreach _veh_list;
 
 	if ( count _markedveh != count _vehmarkers ) then {
 		{ deleteMarkerLocal _x; } foreach _vehmarkers;
@@ -45,6 +64,13 @@ while { true } do {
 		if (typeOf _x in [waterbarrel_typename,fuelbarrel_typename,foodbarrel_typename]) then {
 			_marker setMarkerColorLocal "ColorGrey";
 		};
+		if (typeOf _x in [ammobox_b_typename,ammobox_o_typename,ammobox_i_typename]) then {
+			_marker setMarkerColorLocal "ColorGUER";
+		};
+		if (!((_x getVariable ["GRLIB_vehicle_owner", ""]) in ["server",""])) then {
+			_marker setMarkerColorLocal "ColorWEST";
+		}
+		_marker setMarkerSizeLocal [ 0.75, 0.75 ];
 	} foreach _markedveh;
 
 	sleep 5;
