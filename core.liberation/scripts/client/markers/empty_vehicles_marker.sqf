@@ -69,7 +69,7 @@ while { true } do {
 		};
 		if (!((_x getVariable ["GRLIB_vehicle_owner", ""]) in ["server",""])) then {
 			_marker setMarkerColorLocal "ColorWEST";
-		}
+		};
 		_marker setMarkerSizeLocal [ 0.75, 0.75 ];
 	} foreach _markedveh;
 
