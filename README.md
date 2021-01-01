@@ -4,46 +4,82 @@
 
 ![alt text](https://raw.githubusercontent.com/tbox1911/Liberation-RX/master/liberation.png "Liberation RX")
 
-Feature:
+## Features
 
-+ SP / MP with Automatic Save Game
-+ Private Economy
-+ Private Vehicles
-+ TK Protection
-+ Player FAR Revive (revive/drag)
-+ MGI AI Revive (AI revive player)
-+ R3F Logistic (tow or load objects into vehicles)
-+ LARs Arsenal
-+ Auto Hearplug
-+ MagRepack Ammo
-+ Robust Unblock system (Player / AI)
-+ Medic / Respawn / Arsenal Box (can be loaded into vehicle)
-+ AI follow player when Halo Jump / Redeploy
-+ And much, much more....
++ Personal Progression
++ Personal Economy
++ Personal Vehicles (can be abandoned)
++ R3F Logistic (can tow vehicles and load item)
++ LARs (Larrow) Arsenal (Customisable Arsenal)
++ pSiKO AI Revive Addon (AI revive SP/MP)
++ TK Protect + AutoBAN
++ Dynamic Sides Missions
++ Extra Action keys: Hearplug, Always Run, etc..
++ Magazine Repack
++ Robust Unstuck AI/Player
++ Robust Air Taxi Service
++ AI follow you when Redeploy/HALO jump
++ Extended Air Support (Taxi, Air drop, etc...)
++ A virtual Garage + Repaint Menu
++ Vehicles Cargo & Inventory saved on server
++ Keep/recover your AI in game, even if your client restart (crash/ reboot) in MP
++ Wildlife Manager
++ A dog to help you 😉
++ Support Squad
++ And much, much more !!
 
-RP oriented
++ RP oriented
+  with ranking system based on player action
+  automatic permission granting (build/tank/air)
+  unlocking arsenal/units according to rank
+  send or receive Ammo from players
 
-> With ranking system based on player score and actions
-> automatic permission granting (build/tank/air)
-> unlocking arsenal/units according to the rank.
-
-+ Local SELL / FUEL / ATM points on the Map
-+ Dynamic Events
++ Dynamic Sides Missions
 + Special Missions
-+ FPS fix and perf
-+ Admin Menu (teleport/skiptime/God/spawn)
-+ Lots of Customization (shorter night, anti mine, recycling ammobox....)
-+ No need of admin/commander (including fresh start)
++ lots of performance fix / update
++ Admin Menu (unban/ammo/score/teleport/skiptime/God/spawn obj)
 
++ MULTI 6 - English, French, German, Spanish, Russian, Chinesesimp
 
-Engine and map available for:
+This mission is designed to avoid the need for a commander, even at first boot, proper rights management, and player permissions are automatically granted.
+
+Most of the important options can be configured via the "Settings" menu (in lobby)
+They can change the mission experioence radically.
+
+Zeus mode can be used when your are both admin of the server and logged as Commander.
+
+Have Fun !
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+## Mission available for
 
 + Altis
 + Malden
 + Stratis (Air Carrier)
 + Tanoa
-+ Livonie (Enoch)
-+ Takistan (CUP + CBA)
++ Enoch
+
+with CUP Terrain:
+
++ Chernarus (+ Winter)
++ Takistan
++ Sarahni
++ Sarahni South
++ Utes
+
++ Virolahti 7 (vt7)
++ Isla Duala
+
+with GlobalMobilization
+
++ Wefer Lingen
+
+with Operation Trebuchet
+
++ Iberius
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## Installation
 
@@ -58,7 +94,7 @@ Engine and map available for:
 
 + Dedicated Server
       Copy the pbo file to your "Steam\SteamApps\common\Arma3 Server\MPMissions\" directory
-      Edit / Create the server configuration file (https://community.bistudio.com/wiki/server.cfg),
+      Edit / Create the server configuration file (look at: <https://community.bistudio.com/wiki/server.cfg>)
       and add this:
 
             // MISSIONS CYCLE
@@ -88,59 +124,3 @@ Engine and map available for:
 
    I want to thank :
    Zbug, who did a very good job, AgentRev and Larrow and all contributors of  [Bohemia Interactive Forums](https://forums.bohemia.net/). for the countless messages I read from them and gave me a real code lesson!
-
---------------------------------------------------------------------------------------------------------------------------
-# Liberation RX (fr)
-
-## ARMA-3  Liberation RX - Version Etendu
-
-![alt text](https://raw.githubusercontent.com/tbox1911/Liberation-RX/master/liberation.png "Liberation RX")
-
-Sur la base de la version 0.924 par [GREUH] Zbug
-
-Addon:
-
-+ SP / MP avec sauvegarde du jeu automatique
-+ Economie Privé
-+ Vehicules Privé
-+ TK Protection
-+ R3F Logistic (tracter ou charger des objets dans les vehicules)
-+ LARs Arsenal
-+ Player FAR Revive (revive/drag)
-+ MGI AI Revive (les AI revive le joueur)
-+ Automatique Hearplug
-+ MagRepack Ammo
-+ Robust Unblock systeme (Player / IA)
-+ Caisses de Medic / Respawn / Arsenal (peuvent etre charger dans les vehicules)
-+ Les IA suivent le joueur lors des  Saut Halo / Redeploy
-+ Et beaucoup, beaucoup plus ...
-
-Ranking:
-      Un systeme de Grade permet de debloquer les Permissions des joueurs automatiquement.
-      Cette Mission est concu afin de ne pas avoir besoin d'un Commandeur.
-
-Moteur et carte disponible pour:
-
-+ Altis
-+ Malden
-+ Stratis (Porte Avion)
-+ Tanoa
-+ Livonie (Enoch)
-+ Takistan (CUP + CBA)
-
-## Installation
-
-+ Direct:
-     Copiez le fichier pbo dans votre répertoire "Steam\SteamApps\common\Arma3\MPMissions\"
-
-+ Source:
-    Lancez "build.bat" dans le repertoire build pour fabriquer les PBO
-    Ou fusionnez le dossier core.liberation avec le dossier de mission de l'ile
-    et construisez le pbo par vous meme.
-
-## Thanks
-
-  Je veux remercier :
-  Zbug, qui a fait une trés bonne mission, AgentRev et Larrow et tous les contributeurs de [Bohemia Interactive Forums](https://forums.bohemia.net/). pour les innombrables messages que j'ai lu d'eux et qui mon donné une veritable leçon de code !
-
---------------------------------------------------------------------------------------------------------------------------
