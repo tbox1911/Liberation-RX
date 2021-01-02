@@ -4,80 +4,113 @@ if ( isNil "reinforcements_sector_under_attack" ) then { reinforcements_sector_u
 
 while { count (units _grp) > 0 } do {
 
-	if ( reinforcements_sector_under_attack != "" ) then {
+	if (_patrol_type == 3) then {
+		private _gunner = units _grp select 0;
+		private _vehicle = _gunner getVariable ["OPFor_vehicle", objNull];
+		if (!isNull _vehicle) then {
+			// Keep gunner
+			if (_gunner != gunner _vehicle) then {
+				_gunner assignAsGunner _vehicle;
+				[_gunner] orderGetIn true ;
+			};
 
-		while {(count (waypoints _grp)) != 0} do {deleteWaypoint ((waypoints _grp) select 0);};
-		{_x doFollow leader _grp} foreach units _grp;
+			// Default for HMG, GMG
+			private _radius = 1000;
+			private _kind = ["Man"];
 
-		_waypoint = _grp addWaypoint [markerpos reinforcements_sector_under_attack, 50];
-		_waypoint setWaypointType "MOVE";
-		_waypoint setWaypointSpeed "FULL";
-		_waypoint setWaypointBehaviour "AWARE";
-		_waypoint setWaypointCombatMode "GREEN";
-		_waypoint setWaypointCompletionRadius 30;
-		_waypoint = _grp addWaypoint [markerpos reinforcements_sector_under_attack, 50];
-		_waypoint setWaypointSpeed "LIMITED";
-		_waypoint setWaypointType "SAD";
-		_waypoint = _grp addWaypoint [markerpos reinforcements_sector_under_attack, 50];
-		_waypoint setWaypointSpeed "LIMITED";
-		_waypoint setWaypointType "SAD";
-		_waypoint = _grp addWaypoint [markerpos reinforcements_sector_under_attack, 50];
-		_waypoint setWaypointSpeed "LIMITED";
-		_waypoint setWaypointType "CYCLE";
+			private _veh_class = typeOf _vehicle;
+			if (_veh_class == "O_static_AT_F") then {_radius = 2000; _kind = ["Car", "Tank"]};
+			if (_veh_class == "O_static_AA_F") then {_radius = 2500; _kind = ["Air"]};
+			if (_veh_class == "O_Mortar_01_F") then {_radius = 3000; _kind = ["Man"]};
 
-		sleep 300;
-	};
+			_scan_target =  [ ((getPos _vehicle) nearEntities [ _kind, _radius]), {
+				alive _x &&
+				side _x == GRLIB_side_friendly &&
+				!(_x getVariable ['R3F_LOG_disabled', false]) &&
+				_x distance2D lhd > 500 &&
+				_x distance2D ([getPos _x] call F_getNearestFob) >= GRLIB_sector_size
+			} ] call BIS_fnc_conditionalSelect;
 
-	if ( reinforcements_sector_under_attack == "" ) then {
-		_sectors_patrol = [];
-		_patrol_startpos = getpos (leader _grp);
-		_sector_radius = 2000;
-		_sector_radius_ext = 300;
-		_sector_list = (sectors_allSectors - blufor_sectors - sectors_tower);
-		_max_waypoints = 4;  // + back to startpos and cycle
+			if (count (_scan_target) > 0 ) then {
+				// closest first
+				_target_list = _scan_target apply {[_x distance2D _vehicle, _x]};
+				_target_list sort true;
+				_next_target = _target_list select 0 select 1;
 
-		if (_patrol_type == 1) then {
-			_sector_radius = 600;
-			_sector_radius_ext = 100;
-			_a3w_missions = [];
-			{_a3w_missions pushBack ( _x select 0 )} foreach (SpawnMissionMarkers + ForestMissionMarkers);
-			_sector_list = (sectors_allSectors + _a3w_missions - blufor_sectors );
-			_max_waypoints = 5;
+				_grp setBehaviour "COMBAT";
+				_grp reveal _next_target;
+				_gunner doTarget _next_target;
+				//_vehicle fireAtTarget [_next_target];
+				diag_log format ["DBG: %1 detect enemy %2", _gunner, _next_target];
+			} else {
+				_grp setBehaviour "CARELESS";
+				_gunner doTarget objNull;
+			};
 		};
+		sleep 30;
+	} else {
+		if ( reinforcements_sector_under_attack != "" ) then {
 
-		if (_patrol_type == 3) then {
-			_sector_radius = 60;
-			_sector_radius_ext = 5;
-			_sector_list = [[GRLIB_sector_size, (getPos (units _grp select 0))] call F_getNearestSector];
-			_max_waypoints = 2;
-		};
+			while {(count (waypoints _grp)) != 0} do {deleteWaypoint ((waypoints _grp) select 0);};
+			{_x doFollow leader _grp} foreach units _grp;
 
-		private _max_try = 5;
-		while { count _sectors_patrol != _max_waypoints && _max_try > 0} do {
-			_start_pos =  [_sector_list, _patrol_startpos] call BIS_fnc_nearestPosition;
-			_sectors_patrol = [_start_pos, _sector_radius, _sector_list, _max_waypoints] call F_getSectorPath;
-			_sector_radius = _sector_radius + _sector_radius_ext;
-			_max_try = _max_try - 1;
-		};
-
-		while {(count (waypoints _grp)) != 0} do {deleteWaypoint ((waypoints _grp) select 0);};
-		{_x doFollow leader _grp} foreach units _grp;
-
-		{
-			_waypoint = _grp addWaypoint [markerpos _x, 300];
+			_waypoint = _grp addWaypoint [markerpos reinforcements_sector_under_attack, 50];
 			_waypoint setWaypointType "MOVE";
-			_waypoint setWaypointSpeed "NORMAL";
+			_waypoint setWaypointSpeed "FULL";
 			_waypoint setWaypointBehaviour "AWARE";
 			_waypoint setWaypointCombatMode "GREEN";
 			_waypoint setWaypointCompletionRadius 30;
-		} foreach _sectors_patrol;
+			_waypoint = _grp addWaypoint [markerpos reinforcements_sector_under_attack, 50];
+			_waypoint setWaypointSpeed "LIMITED";
+			_waypoint setWaypointType "SAD";
+			_waypoint = _grp addWaypoint [markerpos reinforcements_sector_under_attack, 50];
+			_waypoint setWaypointSpeed "LIMITED";
+			_waypoint setWaypointType "SAD";
+			_waypoint = _grp addWaypoint [markerpos reinforcements_sector_under_attack, 50];
+			_waypoint setWaypointSpeed "LIMITED";
+			_waypoint setWaypointType "CYCLE";
 
-		_waypoint = _grp addWaypoint [_patrol_startpos, 300];
-		_waypoint setWaypointType "MOVE";
-		_waypoint setWaypointCompletionRadius 100;
-		_waypoint = _grp addWaypoint [_patrol_startpos , 300];
-		_waypoint setWaypointType "CYCLE";
+			sleep 300;
+		};
+
+		if ( reinforcements_sector_under_attack == "" ) then {
+			_patrol_startpos = getpos (leader _grp);
+			_sector_radius = 2000;
+			_sector_list = (sectors_allSectors - blufor_sectors - sectors_tower);
+			_max_waypoints = 4;  // + back to startpos and cycle
+
+			if (_patrol_type == 1) then {
+				_sector_radius = 600;
+				_a3w_missions = [];
+				{_a3w_missions pushBack ( _x select 0 )} foreach (SpawnMissionMarkers + ForestMissionMarkers);
+				_sector_list = (sectors_allSectors + _a3w_missions - blufor_sectors );
+				_max_waypoints = 5;
+			};
+
+			// Found new waypoints
+			private _sectors_patrol = [];
+			_start_pos =  [_sector_list, _patrol_startpos] call BIS_fnc_nearestPosition;
+			_sectors_patrol = [_start_pos, _sector_radius, _sector_list, _max_waypoints] call F_getSectorPath;
+
+			// Clean old waypoints
+			while {(count (waypoints _grp)) != 0} do {deleteWaypoint ((waypoints _grp) select 0);};
+			{_x doFollow leader _grp} foreach units _grp;
+
+			{
+				_waypoint = _grp addWaypoint [markerpos _x, 300];
+				_waypoint setWaypointType "MOVE";
+				_waypoint setWaypointSpeed "NORMAL";
+				_waypoint setWaypointBehaviour "AWARE";
+				_waypoint setWaypointCombatMode "GREEN";
+				_waypoint setWaypointCompletionRadius 30;
+			} foreach _sectors_patrol;
+
+			_waypoint = _grp addWaypoint [_patrol_startpos, 300];
+			_waypoint setWaypointType "MOVE";
+			_waypoint setWaypointCompletionRadius 100;
+			_waypoint = _grp addWaypoint [_patrol_startpos , 300];
+			_waypoint setWaypointType "CYCLE";
+		};
+		waitUntil { sleep 5;(count (units _grp) == 0) || (reinforcements_sector_under_attack != "") };
 	};
-
-	waitUntil { sleep 5;(count (units _grp) == 0) || (reinforcements_sector_under_attack != "") };
 };
