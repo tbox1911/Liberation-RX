@@ -138,7 +138,7 @@ while { true } do {
 							};
 						} forEach _magType;
 						_vehicle setVariable ["GREUH_rearm_timer", 20];
-						_screenmsg = format [ "%1 : %2", localize "STR_REARMING", "100%" ];
+						_screenmsg = format [ "%1 - %2", localize "STR_REARMING", "100%" ];
 						titleText [ _screenmsg, "PLAIN DOWN" ];
 					};
 				} else {

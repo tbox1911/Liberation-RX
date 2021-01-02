@@ -2219,12 +2219,12 @@
 						<Chinesesimp>维修</Chinesesimp>
 				</Key>
 				<Key ID="STR_REARMING">
-						<Original>Rearming in %1s</Original>
-						<French>Réarmement dans %1s</French>
-						<German>Aufmunitioniert in %1s</German>
-						<Spanish>Rearmando en %1s</Spanish>
-						<Russian>Перезарядка за %1с</Russian>
-						<Chinesesimp>在 %1 秒内补给弹药</Chinesesimp>
+						<Original>Rearming</Original>
+						<French>Réarmement</French>
+						<German>Aufmunitionier</German>
+						<Spanish>Rearmando</Spanish>
+						<Russian>Перезарядка</Russian>
+						<Chinesesimp>秒内补给弹药</Chinesesimp>
 				</Key>
 				<Key ID="STR_REFUELING">
 						<Original>Refueling</Original>
