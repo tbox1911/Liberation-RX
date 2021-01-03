@@ -20,11 +20,11 @@ private _convoy_destinations = [];
 { _convoy_destinations pushback (getMarkerPos _x); } foreach _convoy_destinations_markers;
 
 private _spawnpos = _convoy_destinations select 0;
-[ [ 4, _spawnpos ] , "remote_call_intel" ] call BIS_fnc_MP;
+[[ 4, _spawnpos ]] remoteExec ["remote_call_intel", 0];
 
-private _scout_vehicle = [ [ _spawnpos, 30, 0 ] call BIS_fnc_relPos, opfor_mrap, false, false, false ] call F_libSpawnVehicle;
-private _escort_vehicle = [ [ _spawnpos, 10, 0 ] call BIS_fnc_relPos, opfor_vehicles_low_intensity call BIS_fnc_selectRandom, false, false, false ] call F_libSpawnVehicle;
-private _transport_vehicle = [ [ _spawnpos, 10, 180 ] call BIS_fnc_relPos, opfor_ammobox_transport, false, true, false ] call F_libSpawnVehicle;
+private _scout_vehicle = [ [ _spawnpos, 30, 0 ] call BIS_fnc_relPos, opfor_mrap, false, false ] call F_libSpawnVehicle;
+private _escort_vehicle = [ [ _spawnpos, 10, 0 ] call BIS_fnc_relPos, opfor_vehicles_low_intensity call BIS_fnc_selectRandom, false, false ] call F_libSpawnVehicle;
+private _transport_vehicle = [ [ _spawnpos, 10, 180 ] call BIS_fnc_relPos, opfor_ammobox_transport, false, true] call F_libSpawnVehicle;
 
 private _boxes_amount = 0;
 {
@@ -40,7 +40,7 @@ for "_n" from 1 to _boxes_amount do {
 	sleep 0.5;
 };
 
-private _troop_vehicle = [ [ _spawnpos, 30, 180 ] call BIS_fnc_relPos, opfor_transport_truck, false, true, false ] call F_libSpawnVehicle;
+private _troop_vehicle = [ [ _spawnpos, 30, 180 ] call BIS_fnc_relPos, opfor_transport_truck, false, true ] call F_libSpawnVehicle;
 
 sleep 0.5;
 
@@ -77,7 +77,7 @@ _waypoint setWaypointType "CYCLE";
 _waypoint setWaypointCompletionRadius 50;
 
 private _troops_group = createGroup [GRLIB_side_enemy, true];
-{ _x createUnit [_spawnpos, _troops_group,"this addMPEventHandler [""MPKilled"", {_this spawn kill_manager}]", 0.5, "private"]; } foreach ([] call F_getAdaptiveSquadComp);
+{ _x createUnit [_spawnpos, _troops_group,"this addMPEventHandler [""MPKilled"", {_this spawn kill_manager}]", 0.5, "PRIVATE"]; } foreach ([] call F_getAdaptiveSquadComp);
 { _x moveInCargo _troop_vehicle } foreach (units _troops_group);
 
 private _convoy_marker = createMarkerLocal [ format [ "convoymarker%1", round time], getpos _transport_vehicle ];
@@ -157,7 +157,7 @@ deleteMarker _convoy_marker;
 
 combat_readiness = round (combat_readiness * 0.85);
 stats_secondary_objectives = stats_secondary_objectives + 1;
-[ [ 5 ] , "remote_call_intel" ] call BIS_fnc_MP;
+[[ 5 ]] remoteExec ["remote_call_intel", 0];
 GRLIB_secondary_in_progress = -1; publicVariable "GRLIB_secondary_in_progress";
 sleep 1;
 trigger_server_save = true;
