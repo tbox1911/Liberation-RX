@@ -10,6 +10,7 @@ waitUntil { sleep 0.2; !(alive _troup_transport) || !(alive (driver _troup_trans
 
 if ((alive _troup_transport) && (alive (driver _troup_transport))) then {
 	_troupgrp = createGroup [GRLIB_side_enemy, true];
+	sleep 0.5;
 
 	while {(count (waypoints _troupgrp)) != 0} do {deleteWaypoint ((waypoints _troupgrp) select 0);};
 
