@@ -109,7 +109,7 @@ while { true } do {
 					_unit enableGunLights "Auto";
 					_unit setVariable ["PAR_Grp_ID", format["AI_%1",PAR_Grp_ID], true];
 					_unit addUniform uniform player;
-					[_unit] call PAR_fn_EHDamage;
+					[_unit] call PAR_fn_AI_Damage_EH;
 					_idx = _idx + 1;
 				} foreach _classname;
 				_grp setCombatMode "GREEN";
