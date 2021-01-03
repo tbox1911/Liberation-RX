@@ -28,7 +28,7 @@ PAR_fn_AI_Damage_EH = {
       _dam min 0.86;
   }];
   _unit removeAllMPEventHandlers "MPKilled";
-  _unit addMPEventHandler ["MPKilled", PAR_Player_MPKilled];
+  _unit addMPEventHandler ["MPKilled", {_this spawn PAR_Player_MPKilled}];
   _unit setVariable ["PAR_wounded",false];
   _unit setVariable ["PAR_myMedic", nil];
   _unit setVariable ["PAR_busy", nil];
@@ -97,28 +97,12 @@ PAR_fn_globalchat = {
   };
 };
 
-PAR_Player_MPKilled = {
-	params ["_unit"];
-	_unit connectTerminalToUAV objNull;
-	removeAllWeapons _unit;
-	hidebody _unit;
-
-	if (_unit == player) then {
-		_pos = getPosATL _unit;
-		if ( vehicle player == player && _pos distance2D lhd >= 1000 && _pos distance2D ([] call F_getNearestFob) >= GRLIB_sector_size ) then {
-			_unit setPos zeropos;
-			_grave = createVehicle [(GRLIB_player_grave call BIS_fnc_selectRandom), _pos, [], 0, "CAN_COLLIDE"];
-			_grave setvariable ["GRLIB_grave_message", format ["%1 - R.I.P -", name player], true];
-		};
-	};
-};
-
 PAR_Player_Init = {
 	// Clear event handler before adding it
 	player removeAllEventHandlers "HandleDamage";
 	player addEventHandler ["HandleDamage", PAR_HandleDamage_EH];
 	player removeAllMPEventHandlers "MPKilled";
-	player addMPEventHandler ["MPKilled", PAR_Player_MPKilled];
+	player addMPEventHandler ["MPKilled", {_this spawn PAR_Player_MPKilled}];
 	player setVariable ["GREUH_isUnconscious", 0, true];
 	player setVariable ["PAR_isUnconscious", 0, true];
 	player setVariable ["PAR_isDragged", 0, true];
