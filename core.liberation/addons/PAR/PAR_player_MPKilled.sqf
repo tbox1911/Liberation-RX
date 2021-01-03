@@ -1,0 +1,13 @@
+params ["_unit"];
+_unit connectTerminalToUAV objNull;
+removeAllWeapons _unit;
+hidebody _unit;
+
+if (_unit == player) then {
+	_pos = getPosATL _unit;
+	if ( vehicle player == player && _pos distance2D lhd >= 1000 && _pos distance2D ([] call F_getNearestFob) >= GRLIB_sector_size ) then {
+		_unit setPos zeropos;
+		_grave = createVehicle [(GRLIB_player_grave call BIS_fnc_selectRandom), _pos, [], 0, "CAN_COLLIDE"];
+		_grave setvariable ["GRLIB_grave_message", format ["%1 - R.I.P -", name player], true];
+	};
+};

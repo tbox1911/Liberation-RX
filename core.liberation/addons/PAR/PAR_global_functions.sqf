@@ -29,6 +29,7 @@ PAR_fn_AI_Damage_EH = {
   }];
   _unit removeAllMPEventHandlers "MPKilled";
   _unit addMPEventHandler ["MPKilled", PAR_Player_MPKilled];
+  //[_unit, ["MPKilled", PAR_Player_MPKilled]] remoteExec [addMPEventHandler, 2];
   _unit setVariable ["PAR_wounded",false];
   _unit setVariable ["PAR_myMedic", nil];
   _unit setVariable ["PAR_busy", nil];
@@ -95,22 +96,6 @@ PAR_fn_globalchat = {
   if ((_speaker getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1",PAR_Grp_ID] || isPlayer _speaker) then {
     gamelogic globalChat _msg;
   };
-};
-
-PAR_Player_MPKilled = {
-	params ["_unit"];
-	_unit connectTerminalToUAV objNull;
-	removeAllWeapons _unit;
-	hidebody _unit;
-
-	if (_unit == player) then {
-		_pos = getPosATL _unit;
-		if ( vehicle player == player && _pos distance2D lhd >= 1000 && _pos distance2D ([] call F_getNearestFob) >= GRLIB_sector_size ) then {
-			_unit setPos zeropos;
-			_grave = createVehicle [(GRLIB_player_grave call BIS_fnc_selectRandom), _pos, [], 0, "CAN_COLLIDE"];
-			_grave setvariable ["GRLIB_grave_message", format ["%1 - R.I.P -", name player], true];
-		};
-	};
 };
 
 PAR_Player_Init = {
