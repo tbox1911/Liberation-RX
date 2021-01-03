@@ -2,7 +2,7 @@ if ( !isServer ) exitWith {};
 
 params [ "_intel_object" ];
 
-if ( isNull _intel_object ) exitWith {};
+if ( isNil "_intel_object" ) exitWith {};
 
 _intel_yield = 8;
 deleteVehicle _intel_object;
