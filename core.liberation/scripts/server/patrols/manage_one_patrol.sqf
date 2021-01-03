@@ -34,10 +34,10 @@ while { GRLIB_endgame == 0 } do {
 		if ( count _sector_spawn_pos == 0 || surfaceIsWater _sector_spawn_pos ) then { _sector_spawn_pos = zeropos; };
 	};
 
-	private _need_patrol = true;
 	if (_patrol_type == 1) then {
 		_grp = createGroup [GRLIB_side_enemy, true];
 		_squad = [] call F_getAdaptiveSquadComp;
+		sleep 0.5;
 		{
 			_x createUnit [_sector_spawn_pos, _grp, "this addMPEventHandler [""MPKilled"", {_this spawn kill_manager}]", 0.5, "PRIVATE"];
 		} foreach _squad;
@@ -67,14 +67,11 @@ while { GRLIB_endgame == 0 } do {
 			"O_spotter_F" createUnit [ getpos _vehicle_object, _grp, "this addMPEventHandler [""MPKilled"", {_this spawn kill_manager}]", 0.5, "PRIVATE"];
 			{ _x setVariable ["OPFor_vehicle", _vehicle_object] } forEach units _grp;
 		};
-		//_need_patrol = false;
 	};
 
 	sleep 1;
 	if (!isNil "_grp") then {
-		if (_need_patrol) then {
-			[_grp, _patrol_type] spawn patrol_ai;
-		};
+		[_grp, _patrol_type] spawn patrol_ai;
 
 		_started_time = time;
 		_patrol_continue = true;
