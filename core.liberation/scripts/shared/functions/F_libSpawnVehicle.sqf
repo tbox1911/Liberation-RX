@@ -2,7 +2,6 @@ params [
 	"_sectorpos",
 	"_classname",
 	[ "_precise_position", false ],
-	[ "_disable_abandon", false ],
 	[ "_random_rotate", true ]
 ];
 
@@ -67,10 +66,6 @@ _newvehicle setVectorUp surfaceNormal position _newvehicle;
 sleep 0.1;
 _newvehicle allowdamage true;
 _newvehicle setdamage 0;
-
-if ( !_disable_abandon ) then {
-	[ _newvehicle ] spawn csat_abandon_vehicle;
-};
 
 diag_log format [ "Done Spawning vehicle %1 at %2", _classname , time ];
 
