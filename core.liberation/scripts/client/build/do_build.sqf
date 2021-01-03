@@ -89,7 +89,6 @@ while { true } do {
 			stats_blufor_soldiers_recruited = stats_blufor_soldiers_recruited + 1; publicVariable "stats_blufor_soldiers_recruited";
 		};
 		if (!([_price] call F_pay)) exitWith {};
-		//[_price] call do_pay_build;
 		build_confirmed = 0;
 	} else {
 		if ( buildtype == 8 ) then {
@@ -115,7 +114,6 @@ while { true } do {
 				_grp setCombatMode "GREEN";
 				_grp setBehaviour "AWARE";
 
-				//[_price] call do_pay_build;
 				if (!([_price] call F_pay)) exitWith {};
 				stats_blufor_soldiers_recruited = stats_blufor_soldiers_recruited + count (units _grp); publicVariable "stats_blufor_soldiers_recruited";
 				player hcSetGroup [_grp];
@@ -374,7 +372,6 @@ while { true } do {
 					{ _x addMPEventHandler ["MPKilled", { _this spawn kill_manager }] } foreach (crew _vehicle);
 				};
 
-				//[_price] call do_pay_build;
 				if (!([_price] call F_pay)) exitWith {};
 				stats_blufor_vehicles_built = stats_blufor_vehicles_built + 1; publicVariable "stats_blufor_vehicles_built";
 			};
