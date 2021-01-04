@@ -157,7 +157,7 @@ deleteMarker _convoy_marker;
 
 combat_readiness = round (combat_readiness * 0.85);
 stats_secondary_objectives = stats_secondary_objectives + 1;
-[[ 5 ]] remoteExec ["remote_call_intel", 0];
+[ 5 ] remoteExec ["remote_call_intel", 0];
 GRLIB_secondary_in_progress = -1; publicVariable "GRLIB_secondary_in_progress";
 sleep 1;
 trigger_server_save = true;

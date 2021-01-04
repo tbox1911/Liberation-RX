@@ -79,7 +79,7 @@ secondary_objective_position_marker = [ secondary_objective_position, 800, rando
 publicVariable "secondary_objective_position_marker";
 sleep 1;
 GRLIB_secondary_in_progress = 2; publicVariable "GRLIB_secondary_in_progress";
-[[ 6 ]] remoteExec ["remote_call_intel", 0];
+[ 6 ] remoteExec ["remote_call_intel", 0];
 
 waitUntil {
 	sleep 5;
@@ -90,9 +90,9 @@ sleep 5;
 
 private _alive_crew_count = { alive _x } count _pilotUnits;
 if ( _alive_crew_count == 0 ) then {
-	[[ 7 ]] remoteExec ["remote_call_intel", 0];
+	[ 7 ] remoteExec ["remote_call_intel", 0];
 } else {
-	[[ 8 ]] remoteExec ["remote_call_intel", 0];
+	[ 8 ] remoteExec ["remote_call_intel", 0];
 	private _grp = createGroup [GRLIB_side_friendly, true];
 	{ [_x ] joinSilent _grp; } foreach _pilotUnits;
 	while {(count (waypoints _grp)) != 0} do {deleteWaypoint ((waypoints _grp) select 0);};

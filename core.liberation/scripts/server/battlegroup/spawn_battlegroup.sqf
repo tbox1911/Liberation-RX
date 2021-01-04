@@ -31,7 +31,7 @@ if ( _spawn_marker != "" ) then {
 	};
 
 	//[ [ _spawn_marker ] , "remote_call_battlegroup" ] call BIS_fnc_MP;
-	[[ _spawn_marker ]] remoteExec ["remote_call_incoming", 0];
+	[ _spawn_marker ] remoteExec ["remote_call_incoming", 0];
 
 	{
 		_nextgrp = createGroup [GRLIB_side_enemy, true];
