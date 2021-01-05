@@ -56,9 +56,8 @@ class liberation_tips {
 		y = -0.060;
 		w = (0.45 * safezoneW);
 		h = 0.6 * safezoneH;
-		text= "$STR_TIPS_TEXT1";
-		size = 0.025 * safezoneH;
-		sizeEx = 0.025 * safezoneH;
+		text = "$STR_TUTO_TEXT11";
+		size =  0.020 * safezoneH;
 		shadow = 2;
 		font = FontM;
 		color = "#e0e0e0";
