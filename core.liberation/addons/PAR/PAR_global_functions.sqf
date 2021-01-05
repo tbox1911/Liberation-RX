@@ -149,7 +149,9 @@ PAR_HandleDamage_EH = {
 
 	// TK Protect
 	private _isProtected = _unit getVariable ["PAR_isProtected", 0];
-	if (_isProtected == 0 && isPlayer _killer && _killer != _unit && _veh_unit != _veh_killer && BTC_vip find (name _killer) == -1) then {
+	private _isUnconscious = _unit getVariable ["PAR_isUnconscious", 0];
+
+	if (_isProtected == 0 && _isUnconscious == 0 && isPlayer _killer && _killer != _unit && _veh_unit != _veh_killer && BTC_vip find (name _killer) == -1) then {
 		_unit setVariable ["PAR_isProtected", 1, true];
 		PAR_tkMessage = [_unit, _killer];
 		publicVariable "PAR_tkMessage";
