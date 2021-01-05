@@ -13,7 +13,10 @@ if (!(isNull _instigator)) then {
 
 private _ret = _damage;
 private _isAlerted = _unit getVariable ["GRLIB_isAlerted", 0];
-if (isPlayer _source && side group _unit == GRLIB_side_friendly && _unit != _source && _isAlerted == 0 ) then {
+private _veh_unit = vehicle _unit;
+private _veh_killer = vehicle _killer;
+
+if (isPlayer _source && side group _unit == GRLIB_side_friendly && _unit != _source  && _veh_unit != _veh_killer && _isAlerted == 0 ) then {
 	_unit setVariable ["GRLIB_isAlerted", 1, true];
 	gamelogic globalChat (format ["%1 - %2 Watch your fire !! ", localize "STR_FRIENDLY_FIRE", name _source]);
 	[_source, -5] remoteExec ["addScore", 2];
@@ -22,7 +25,7 @@ if (isPlayer _source && side group _unit == GRLIB_side_friendly && _unit != _sou
 };
 
 if (_isAlerted == 1) then {
-	_ret = damage _unit;
+	_ret = (damage _unit) min 0.86;
 };
 
 _ret;

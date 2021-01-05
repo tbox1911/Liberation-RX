@@ -118,6 +118,7 @@ PAR_Player_Init = {
 	player setMass 10;
 	PAR_isDragging = false;
 	[player] spawn player_EVH;
+	hintSilent "";
 };
 
 PAR_is_medic = {
@@ -141,8 +142,15 @@ PAR_has_medikit = {
 };
 
 PAR_HandleDamage_EH = {
-	params [ "_unit", "_selectionName", "_amountOfDamage", "_killer", "_projectile", "_hitPartIndex" ];
+	params ["_unit", "_selectionName", "_amountOfDamage", "_killer", "_projectile", "_hitPartIndex", "_instigator"];
 
+	if (!(isNull _instigator)) then {
+		_killer = _instigator;
+	} else {
+		if (!(_killer isKindOf "CAManBase")) then {
+			_killer = effectiveCommander _killer;
+		};
+	};
 	private _veh_unit = vehicle _unit;
 	private _veh_killer = vehicle _killer;
 	private _max_damage = 0.86;
