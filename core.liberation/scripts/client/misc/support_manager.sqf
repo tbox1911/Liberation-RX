@@ -136,22 +136,20 @@ while { true } do {
 								_vehicle addMagazines [_ammo_type, (_max_ammo - _cnt)];
 								_arsenal_text = getText (configFile >> "CfgVehicles" >> typeOf (_neararsenal select 0) >> "displayName");
 								_unit groupchat format ["Rearming %1 at %2.", _vehicle_class_text, _arsenal_text];
+								_cooldown = 20;
+								if ( _unit == player) then {
+									_screenmsg = format [ "%1\n%2 - %3", _vehicle_class_text, localize "STR_REARMING", "100%" ];
+									titleText [ _screenmsg, "PLAIN DOWN" ];
+								};
 							};
 						} forEach _magType;
-
-						if (count (magazines _vehicle) > 0) then {
-							_cooldown = 20;
-							if ( _unit == player) then {
-								_screenmsg = format [ "%1\n%2 - %3", _vehicle_class_text, localize "STR_REARMING", "100%" ];
-								titleText [ _screenmsg, "PLAIN DOWN" ];
-							};
-						};
 					};
 					_vehicle setVariable ["GREUH_rearm_timer", _cooldown];
 				} else {
 					_vehicle setVariable ["GREUH_rearm_timer", (_timer - 1)];
 					if ( _unit == player) then {
-						_screenmsg = format [ "%1\n%2 - %3", _vehicle_class_text, "Rearming cooldown, Please Wait..." ];
+						private _r1 = _vehicle getVariable ["GREUH_rearm_timer", 0];
+						_screenmsg = format [ "%1\nRearming Cooldown (%2 sec), Please Wait...", _vehicle_class_text, (_r1 * 15) ];
 						titleText [ _screenmsg, "PLAIN DOWN" ];
 					};
 				};
