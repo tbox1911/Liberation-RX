@@ -39,8 +39,7 @@ if (isServer) then {
 	combat_readiness = combat_readiness + _combat_readiness_increase;
 	if ( combat_readiness > 100.0 && GRLIB_difficulty_modifier <= 2.0 ) then { combat_readiness = 100.0 };
 	stats_readiness_earned = stats_readiness_earned + _combat_readiness_increase;
-	[ [ _liberated_sector, 0 ] , "remote_call_sector" ] call BIS_fnc_MP;
-
+	[ _liberated_sector, 0 ] remoteExec ["remote_call_sector", 0];
 	reset_battlegroups_ai = true; publicVariable "reset_battlegroups_ai";
 
 	blufor_sectors pushback _liberated_sector; publicVariable "blufor_sectors";

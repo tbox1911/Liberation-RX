@@ -6,4 +6,4 @@ _prisonner addEventHandler ["GetInMan", {_this spawn vehicle_permissions}];
 _prisonner addEventHandler ["SeatSwitchedMan", {_this spawn vehicle_permissions}];
 _prisonner addEventHandler ["Take", {removeAllWeapons (_this select 0)}];
 _prisonner setVariable ["GRLIB_is_prisonner", false, true];
-[ [ _prisonner ], "remote_call_prisonner", _prisonner ] call bis_fnc_mp;
+[ _prisonner ] remoteExec ["remote_call_prisonner", 0];
