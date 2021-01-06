@@ -79,10 +79,13 @@ while { dialog && alive player } do {
 
 		if (load_veh == 1) then {
 			private _vehicle = _myveh_lst select _selected_item;
+			private _timer = _vehicle getVariable ["GREUH_rearm_timer", 0];
+			private _msg = format [ "Rearming Cooldown (%1 sec)\nPlease Wait...",  round (_timer - time) ];
+
 			if (count ([GRLIB_garage, {(getPlayerUID player == _x select 3)}] call BIS_fnc_conditionalSelect) >= _max_vehicle) exitWith { hintSilent (format ["Garage is Full !!\nMax %1 vehicles.", _max_vehicle]) };
 			if (damage _vehicle != 0) exitWith { hintSilent "Damaged Vehicles cannot be Parked !" };
 			if ( _vehicle getVariable ["GRLIB_ammo_truck_load", 0] > 0) exitWith { hintSilent "Loaded Vehicles cannot be Parked !" };
-			if ( _vehicle getVariable ["GREUH_rearm_timer", 0] > 0) exitWith { hintSilent "Vehicle is rearming..." };
+			if ( _timer >= time) exitWith { hintSilent _msg };
 
 			private _result = ["<t align='center'>Only Weapons and Cargo is Saved !!<br/>Are you sure ?</t>", "Warning !", true, true] call BIS_fnc_guiMessage;
 			if (_result) then {
