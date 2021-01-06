@@ -83,6 +83,8 @@ with Operation Trebuchet
 ## Installation
 
 + Direct Play:
+      Download archive with PBO files from "Actions" tab -> `Commit_name` -> "Artifacts" section -> "PBO_files"
+      Extract PBO files from archive with any extractor
       Copy the pbo file to your "Steam\SteamApps\common\Arma3\MPMissions\" directory
       Launch Arma 3, Host MP Game, Select Island and Liberation RX mission, Start
 
