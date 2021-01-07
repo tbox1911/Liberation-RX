@@ -6,6 +6,7 @@ private _distveh = 15;
 private _distvehclose = 5;
 private _icon_dog = (getText (configFile >> "CfgVehicleIcons" >> "iconAnimal"));
 private _icon_grp = "\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa";
+private _icon_tuto = "\a3\ui_f\data\map\markers\handdrawn\unknown_ca.paa";
 
 private _id_actions = [
 	-1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
@@ -45,7 +46,7 @@ while { true } do {
 		_idact_tutorial = _id_actions select 0;
 		if ((player distance lhd) <= 200 ) then {
 			if ( _idact_tutorial == -1 ) then {
-				_idact = player addAction ["<t color='#80FF80'>" + localize "STR_TUTO_ACTION" + "</t>","howtoplay = 1","",-740,false,true,"",""];
+				_idact = player addAction ["<t color='#80FF80'>" + localize "STR_TUTO_ACTION" + "</t> <img size='1' image='" + _icon_tuto + "'/>","howtoplay = 1","",-740,false,true,"",""];
 				_id_actions set [0, _idact];
 			};
 		} else {
