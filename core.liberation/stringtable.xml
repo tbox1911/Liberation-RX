@@ -2649,14 +2649,40 @@
 						- &lt;t color='#ffff00'&gt;燃油:&lt;/t&gt; 每辆车都要消耗燃油，有些车比其他车消耗更多燃油。燃油水平取决于有多少工厂被北约部队控制。&lt;br/&gt; &lt;br/&gt;</Chinesesimp>
 				</Key>
 				<Key ID="STR_TUTO_TITLE6">
-						<Original>6. Alert level</Original>
-						<French>6. Niveau d'alerte</French>
-						<German>6. Alarmstatus</German>
-						<Spanish>6. Nivel de alerta</Spanish>
-						<Russian>6. Уровень тревоги</Russian>
-						<Chinesesimp>6. 警戒级别</Chinesesimp>
+						<Original>6. Game Icons </Original>
+						<French>6. Icônes du Jeu</French>
 				</Key>
 				<Key ID="STR_TUTO_TEXT6">
+						<Original>&lt;br/&gt;
+						During the game, these icons inform you of the situation : &lt;br/&gt; &lt;br/&gt;
+						- &lt;t size='1'&gt;&lt;img image='res\ui_arsenal.paa'/&gt;&lt;/t&gt; SCORE: (Personal) Your Score, depends on your actions. Allows you to rise in rank. (see Ranking) &lt;br/&gt; &lt;br/&gt;
+						- &lt;t size='1'&gt;&lt;img image='res\ui_ammo.paa'/&gt;&lt;/t&gt; AMMO: (Personal) Your Ammunition. Ammo is used as currency in the game. It is used to purchase weapons or vehicles. &lt;br/&gt; &lt;br/&gt;
+						- &lt;t size='1'&gt;&lt;img image='res\ui_manpo.paa'/&gt;&lt;/t&gt; MAN POWER: (Global) Your Man power resources. Depends on the number of cities under your control. This includes vehicle crews such as infantry. Locked vehicles do not consume personnel. &lt;br/&gt; &lt;br/&gt;
+						- &lt;t size='1'&gt;&lt;img image='res\ui_fuel.paa'/&gt;&lt;/t&gt; FUEL: (Global) Your Fuel resources. Depends on the number of factories under your control. Locked vehicles do not consume fuel. &lt;br/&gt; &lt;br/&gt;
+						- &lt;t size='1'&gt;&lt;img image='\a3\ui_f_curator\data\displays\rscdisplaycurator\modegroups_ca.paa'/&gt;&lt;/t&gt; UNITS: (Global) Your resources in Infantry. Depends on the number of cities under your control. This only concerns players and their units. &lt;br/&gt; &lt;br/&gt;
+						- &lt;t size='1' color='#f80000'&gt;&lt;img image='\a3\ui_f\data\map\markers\handdrawn\warning_ca.paa'/&gt;&lt;/t&gt; DANGER: (Global) The enemy's global Alert level. The higher the alert level, the more violent the reactions of the enemy will be. Can be reduced by Special Operations. &lt;br/&gt; &lt;br/&gt;
+						- &lt;t size='1' color='#0000f8'&gt;&lt;img image='\a3\ui_f\data\gui\cfg\ranks\general_gs.paa'/&gt;&lt;/t&gt; INTEL: (Global) Your Information resources. Depends on the number of prisoners captured or information found at bases. Used to launch Special Operations. &lt;br/&gt; &lt;br/&gt;
+						</Original>
+						<French>&lt;br/&gt;
+						Pendant le jeu, ces icônes vous informent de la situation : &lt;br/&gt; &lt;br/&gt;
+						- &lt;t size='1'&gt;&lt;img image='res\ui_arsenal.paa'/&gt;&lt;/t&gt; SCORE: (Personnel) Votre Score, Dépend de vos actions. Vous permet de monter en grade. (voir Ranking) &lt;br/&gt; &lt;br/&gt;
+						- &lt;t size='1'&gt;&lt;img image='res\ui_ammo.paa'/&gt;&lt;/t&gt; AMMO: (Personnel) Vos Munitions. Les munitions sont utilisées comme monnaie dans le jeu. Elle serve pour acheter des armes ou des vehicules. &lt;br/&gt; &lt;br/&gt;
+						- &lt;t size='1'&gt;&lt;img image='res\ui_manpo.paa'/&gt;&lt;/t&gt; MAN POWER: (Global) Vos ressource en Personnel. Dépend du nombre de villes sous votre contrôle. Cela inclus les equipages des vehicules comme l'infanterie.  Les vehicules verrouillés ne consome pas de personnel. &lt;br/&gt; &lt;br/&gt;
+						- &lt;t size='1'&gt;&lt;img image='res\ui_fuel.paa'/&gt;&lt;/t&gt; FUEL: (Global) Vos ressource en Carburant. Dépend du nombre d'usines sous votre contrôle. Les vehicules verrouillés ne consome pas de carburant. &lt;br/&gt; &lt;br/&gt;
+						- &lt;t size='1'&gt;&lt;img image='\a3\ui_f_curator\data\displays\rscdisplaycurator\modegroups_ca.paa'/&gt;&lt;/t&gt; UNITS: (Global) Vos ressource en Infanterie. Dépend du nombre de villes sous votre contrôle. Cela concerne uniquement les joueur et leurs unitées. &lt;br/&gt; &lt;br/&gt;
+						- &lt;t size='1' color='#f80000'&gt;&lt;img image='\a3\ui_f\data\map\markers\handdrawn\warning_ca.paa'/&gt;&lt;/t&gt; DANGER: (Global) Le niveau d'Alerte global de l'ennemie. Plus le niveau d'alerte est haut plus les réactions de l'ennemie seront violentes. Peut etre diminué par les Operations Speciales. &lt;br/&gt; &lt;br/&gt;
+						- &lt;t size='1' color='#0000f8'&gt;&lt;img image='\a3\ui_f\data\gui\cfg\ranks\general_gs.paa'/&gt;&lt;/t&gt; INTEL: (Global) Vos ressource en Informations. Dépend du nombre de prisonniers capturés ou des infromations trouvées dans les bases. Permet de lancer les Operations Speciales. &lt;br/&gt; &lt;br/&gt;
+						</French>
+				</Key>
+				<Key ID="STR_TUTO_TITLE7">
+						<Original>7. Alert level</Original>
+						<French>7. Niveau d'alerte</French>
+						<German>7. Alarmstatus</German>
+						<Spanish>7. Nivel de alerta</Spanish>
+						<Russian>7. Уровень тревоги</Russian>
+						<Chinesesimp>7. 警戒级别</Chinesesimp>
+				</Key>
+				<Key ID="STR_TUTO_TEXT7">
 						<Original>&lt;br/&gt;
 						The OPFOR won't let you liberate all of its brand new territory without reacting. When you begin the campaign, hostile forces will only be composed of the garrisons inside military bases. However as you become more threatening by liberating more and more sectors, the OPFOR will start calling in more reinforcements, men and equipment to counter you.&lt;br/&gt; &lt;br/&gt;
 						To limit the OPFOR's operational capabilities, you will have to fulfill secondary objectives that will consist of destroying their logistics bases. This is not required to win the campaign, but if you ignore the alert level for too long, you're in for quite a lot of trouble.&lt;br/&gt; &lt;br/&gt;
@@ -2680,15 +2706,15 @@
 						OPFOR 不会让你解放它所有的全新领域而不作出反应。当你开始战役时，敌军将只由军事基地内的驻军组成。然而，当你解放了越来越多的地区，变得越来越具有威胁性时，OPFOR 将开始召集更多的增援部队、人员和装备来对抗你。&lt;br/&gt; &lt;br/&gt;
 						为了限制OPFOR 部队的作战能力，你必须完成次要目标，包括摧毁他们的后勤基地。这不是赢得胜利必须做的事，但如果你忽视警戒级别太长时间的话，你将会有相当多的麻烦 &lt;br/&gt; &lt;br/&gt;</Chinesesimp>
 				</Key>
-				<Key ID="STR_TUTO_TITLE7">
-						<Original>7. Construction</Original>
-						<French>7. Construction</French>
-						<German>7. Konstruktion</German>
-						<Spanish>7. Construcción</Spanish>
-						<Russian>7. Строительство</Russian>
-						<Chinesesimp>7. 建筑</Chinesesimp>
+				<Key ID="STR_TUTO_TITLE8">
+						<Original>8. Construction</Original>
+						<French>8. Construction</French>
+						<German>8. Konstruktion</German>
+						<Spanish>8. Construcción</Spanish>
+						<Russian>8. Строительство</Russian>
+						<Chinesesimp>8. 建筑</Chinesesimp>
 				</Key>
-				<Key ID="STR_TUTO_TEXT7">
+				<Key ID="STR_TUTO_TEXT8">
 						<Original>&lt;br/&gt;
 						To help you succeed in your endeavors, you have a construction capability that allow you to deploy units, vehicles, defenses, fortifications and so on. Depending on your resources of course.&lt;br/&gt; &lt;br/&gt;
 						The construction system will be available when you are within 100 meters of a FOB headquarters. A contextual option will appear then.&lt;br/&gt; &lt;br/&gt;
@@ -2713,15 +2739,15 @@
 						当你在FOB总部100米以内时，建筑系统就可以使用了。然后会出现一个鼠标滑轮动作选项。&lt;br/&gt; &lt;br/&gt;
 						</Chinesesimp>
 				</Key>
-				<Key ID="STR_TUTO_TITLE8">
-						<Original>8. Deploying another FOB</Original>
-						<French>8. Déployer une autre FOB</French>
-						<German>8. Errichtung einer weiteren FOB</German>
-						<Spanish>8. Desplegar otra FOB</Spanish>
-						<Russian>8. Развёртывание новой FOB</Russian>
-						<Chinesesimp>8. 部署其他FOB</Chinesesimp>
+				<Key ID="STR_TUTO_TITLE9">
+						<Original>9. Deploying another FOB</Original>
+						<French>9. Déployer une autre FOB</French>
+						<German>9. Errichtung einer weiteren FOB</German>
+						<Spanish>9. Desplegar otra FOB</Spanish>
+						<Russian>9. Развёртывание новой FOB</Russian>
+						<Chinesesimp>9. 部署其他FOB</Chinesesimp>
 				</Key>
-				<Key ID="STR_TUTO_TEXT8">
+				<Key ID="STR_TUTO_TEXT9">
 						<Original>&lt;br/&gt;
 						To build a brand new FOB, go to the construction menu, in the logistics tab, and build a FOB container or a FOB truck (the same thing, only with wheels).&lt;br/&gt; &lt;br/&gt;
 						Then you can move the FOB container where you want to deploy your shiny new FOB. However be aware that you can't build a FOB inside a control sector, or within 2km of any other FOB.&lt;br/&gt; &lt;br/&gt;
@@ -2746,15 +2772,15 @@
 						然后，你可以将 FOB 集装箱移动到你想要部署新 FOB 的位置。但是要注意，你不能在控制区内建立FOB，或者在离任何其他FOB 2公里之内的范围。&lt;br/&gt; &lt;br/&gt;
 						</Chinesesimp>
 				</Key>
-				<Key ID="STR_TUTO_TITLE9">
-						<Original>9. Secondary objectives</Original>
-						<French>9. Missions secondaires</French>
-						<German>9. Sekundäre Ziele</German>
-						<Spanish>9. Objetivos secundarios</Spanish>
-						<Russian>9. Дополнительные задания</Russian>
-						<Chinesesimp>9. 次要目标</Chinesesimp>
+				<Key ID="STR_TUTO_TITLE10">
+						<Original>10. Secondary objectives</Original>
+						<French>10. Missions secondaires</French>
+						<German>10. Sekundäre Ziele</German>
+						<Spanish>10. Objetivos secundarios</Spanish>
+						<Russian>10. Дополнительные задания</Russian>
+						<Chinesesimp>10. 次要目标</Chinesesimp>
 				</Key>
-				<Key ID="STR_TUTO_TEXT9">
+				<Key ID="STR_TUTO_TEXT10">
 						<Original>&lt;br/&gt;
 						When you capture sectors, sometimes the few hostiles forces left will surrender. You can then capture prisoners that have to be taken to a nearby FOB to be interrogated.&lt;br/&gt; &lt;br/&gt;
 						That interrogatory, executed in the utmost respect of the Geneva conventions, will allow you to obtain more or less precise information about the position of an OPFOR logistics base.&lt;br/&gt; &lt;br/&gt;
@@ -2785,15 +2811,15 @@
 						在那附近，你将需要寻找目标的确切位置，然后使用任何可用手段摧毁目标内的所有供应资产(卡车，集装箱)，扰乱OPFOR部队的供应线。成功完成这项任务将降低敌军警戒级别，从而降低所有敌军效率。&lt;br/&gt; &lt;br/&gt;
 						</Chinesesimp>
 				</Key>
-				<Key ID="STR_TUTO_TITLE10">
-						<Original>10. Commanding</Original>
-						<French>10. Commandement</French>
-						<German>10. Oberkommando</German>
-						<Spanish>10. Comandancia</Spanish>
-						<Russian>10. Командование</Russian>
-						<Chinesesimp>10. 指挥</Chinesesimp>
+				<Key ID="STR_TUTO_TITLE11">
+						<Original>11. Commanding</Original>
+						<French>11. Commandement</French>
+						<German>11. Oberkommando</German>
+						<Spanish>11. Comandancia</Spanish>
+						<Russian>11. Командование</Russian>
+						<Chinesesimp>11. 指挥</Chinesesimp>
 				</Key>
-				<Key ID="STR_TUTO_TEXT10">
+				<Key ID="STR_TUTO_TEXT11">
 						<Original>&lt;br/&gt;
 						When a player uses the commander slot (the last slot of the list), they get access to a Zeus interface by pressing the corresponding key (U by default).&lt;br/&gt; &lt;br/&gt;
 						This interface allows to command NATO forces in 3d view or map view.&lt;br/&gt; &lt;br/&gt;
@@ -2830,12 +2856,12 @@
 						此角色不是强制性的，但强烈建议小众玩家使用。&lt;br/&gt; &lt;br/&gt;
 						</Chinesesimp>
 				</Key>
-				<Key ID="STR_TUTO_TITLE11">
-						<Original>11. Tips and Tricks</Original>
-						<Russian>11. Підказки</Russian>
-						<Chinesesimp>11. 技巧和窍门</Chinesesimp>
+				<Key ID="STR_TUTO_TITLE12">
+						<Original>12. Tips and Tricks</Original>
+						<Russian>12. Підказки</Russian>
+						<Chinesesimp>12. 技巧和窍门</Chinesesimp>
 				</Key>
-				<Key ID="STR_TUTO_TEXT11">
+				<Key ID="STR_TUTO_TEXT12">
 					<Original>&lt;br/&gt;
 					- On the main map, read the Ranking tab.&lt;br/&gt;
 					- On the main map, read the Shortcut tab.&lt;br/&gt;
