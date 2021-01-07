@@ -310,7 +310,7 @@
 						<German>Mobiler Respawn</German>
 						<Spanish>Respawn móvil</Spanish>
 						<Russian>Мобильная КШМ</Russian>
-						<Chinesesimp>移动重生</Chinesesimp>
+						<Chinesesimp>移动重生点</Chinesesimp>
 				</Key>
 				<Key ID="STR_ARSENAL_BOX">
 						<Original>Arsenal box</Original>
@@ -463,7 +463,7 @@
 						<German>-- GEFANGENNEHMEN</German>
 						<Spanish>-- CAPTURAR</Spanish>
 						<Russian>-- ЗАХВАТИТЬ</Russian>
-						<Chinesesimp>-- 占领</Chinesesimp>
+						<Chinesesimp>-- 俘虏</Chinesesimp>
 				</Key>
 				<Key ID="STR_SQUAD_MEMBER">
 						<Original>Squad member</Original>
@@ -2824,7 +2824,7 @@
 						Кроме того, командир получает дополнительные опции строительства, что позволит ему мобилизовывать транспортные средства с экипажем или целые готовые отряды.&lt;br/&gt; &lt;br/&gt;
 						Эта роль не является обязательной, но настоятельно рекомендуется если вы играете небольшой группой игроков.&lt;br/&gt; &lt;br/&gt;</Russian>
 						<Chinesesimp>&lt;br/&gt;
-						当玩家选择指挥官插槽(角色列表的最后一个插槽)时，他们通过按下相应的键(默认情况下是U)来访问宙斯。&lt;br/&gt; &lt;br/&gt;
+						当玩家选择指挥官插槽(角色列表的最后一个插槽)时，他们通过按下相应的键(默认情况下是Y)来访问宙斯。&lt;br/&gt; &lt;br/&gt;
 						这个界面允许在3D视图或地图视图指挥北约部队。&lt;br/&gt; &lt;br/&gt;
 						此外，指挥官还可以获得额外的建造选项，使他们可以获得载人车辆或整个预设的小队。&lt;br/&gt; &lt;br/&gt;
 						此角色不是强制性的，但强烈建议小众玩家使用。&lt;br/&gt; &lt;br/&gt;
@@ -2833,6 +2833,7 @@
 				<Key ID="STR_TUTO_TITLE11">
 						<Original>11. Tips and Tricks</Original>
 						<Russian>11. Підказки</Russian>
+						<Chinesesimp>11. 技巧和窍门</Chinesesimp>
 				</Key>
 				<Key ID="STR_TUTO_TEXT11">
 					<Original>&lt;br/&gt;
@@ -2919,13 +2920,13 @@
 					- ви можете копіювати ваше спорядження  на своїх ботів за одпомогою дії "Як у мене" у меню Керування Загоном&lt;br/&gt;
 					</Russian>
 					<Chinesesimp>&lt;br/&gt;
-					- 在主地图左上，阅读军衔选项。&lt;br/&gt;
-					- 在主地图左上，阅读快捷键选项。&lt;br/&gt;
-					- 在主地图左上，阅读表格选项。&lt;br/&gt;
+					- 在主地图左上角，阅读军衔信息。&lt;br/&gt;
+					- 在主地图左上角，阅读快捷键信息。&lt;br/&gt;
+					- 在主地图左上角，阅读军功表信息。&lt;br/&gt;
 					- 在车辆上放置一个军火库，以在任何地方重新武装自己。&lt;br/&gt;
 					- 在车辆上放置一个帐篷，以在任何地方重新部署。&lt;br/&gt;
 					- 回收车辆残骸是获得弹药资源的好方法。&lt;br/&gt;
-					- 回收弹药箱可以获得弹药和经验。&lt;br/&gt;
+					- 回收弹药箱可以获得弹药和军功点。&lt;br/&gt;
 					- AI或受伤的囚犯不能被删除或重新补给弹药。&lt;br/&gt;
 					- 囚犯不能使用车辆(司机、指挥官、炮手)或携带武器。&lt;br/&gt;
 					- 购买车辆时，默认情况下它属于玩家。&lt;br/&gt;
@@ -2943,7 +2944,7 @@
 					- 你可以在车库附近出售车辆库存。&lt;br/&gt;
 					- 你可以在任何一个加油站购买汽油桶。&lt;br/&gt;
 					- 你可以在自动取款机或FOB附近给其他玩家发送弹药。&lt;br/&gt;
-					- 你可以在班组管理中用(喜欢我)按钮，复制你的装备配置给一个AI。&lt;/t&gt;
+					- 你可以在班组管理中用(Like Me)按钮，复制你的装备配置给一个AI。&lt;/t&gt;
 					</Chinesesimp>
 				</Key>
 				<Key ID="STR_SECONDARY_MISSION0">
@@ -3255,7 +3256,7 @@
 						<Original>Penalty of %1 for killing of civilian named %2 by %3</Original>
 						<French>Penalty de %1 pour avoir tué le civil %2 par %3</French>
 						<German>Strafe von %1 für die Ermordung des Zivilisten %2 durch %3</German>
-						<Chinesesimp> %3 因杀死 %2 付出- %1 的惩罚</Chinesesimp>
+						<Chinesesimp> %3 因杀死 %2 付出- %1 军功点的惩罚</Chinesesimp>
 				</Key>
 				<Key ID="STR_PARAM_SQUAD_SIZE_START">
 						<Original>AI per squad at startup.</Original>
@@ -3335,7 +3336,7 @@
 				<Key ID="STR_RANK_LVLBAN">
 					<Original>You will be Kicked off the server !&lt;br/&gt;Your SID is logged and you could be bannish permanantly.</Original>
 					<French>Vous serez ejecté du serveur !&lt;br/&gt;Votre ID est enregistré et vous pouvez etre bannis definitivement.</French>
-					<Chinesesimp>你将被踢出服务器！&lt;br/&gt;你的ID已被记录，并且可能会被永久ban！！！</Chinesesimp>
+					<Chinesesimp>你将被踢出服务器！&lt;br/&gt;你的UID已被记录，并且可能会被永久ban！！！</Chinesesimp>
 				</Key>
 				<Key ID="STR_RANK_LVL0">
 					<Original>You have NO permissions !&lt;br/&gt;You have NOT access to any Support !</Original>
@@ -3409,7 +3410,7 @@
 				<Key ID="STR_PAR_CM_01">
 					<Original>Bad news %1, your medic (%2) is blocked somewhere... (dist: %3m / try: %4)</Original>
 					<French>Mauvaise nouvelle %1, votre médecin (%2) est bloqué quelque part... (dist: %3m / try: %4)</French>
-					<Chinesesimp>坏消息 %1, 你的医生(%2被堵在了某个地方... (距离: %3米 / 方位角: %4)</Chinesesimp>
+					<Chinesesimp>坏消息 %1, 你的医生(%2)被堵在了某个地方... (距离: %3米 / 方位角: %4)</Chinesesimp>
 				</Key>
 				<Key ID="STR_PAR_CM_02">
 					<Original>Please wait %1, %2 (dist: %3m/%4), is on the way...</Original>
@@ -3478,52 +3479,64 @@
 				<Key ID="STR_TAXI_ONLY_ONE">
 					<Original>Sorry, only one Taxi at time.</Original>
 					<French>Désolé, un seul Taxi à la fois.</French>
+					<Chinesesimp>对不起，一次只有一辆出租鸟</Chinesesimp>
 				</Key>
 				<Key ID="STR_TAXI_WRONG_PLACE">
 					<Original>Sorry, the Taxi cannot land on this place.</Original>
 					<French>Désolé, le Taxi ne peut pas atterrir à cet endroit.</French>
+					<Chinesesimp>对不起，出租鸟不能在这个地方降落</Chinesesimp>
 				</Key>
 				<Key ID="STR_TAXI_SELECT">
 					<Original>Select your destination.</Original>
 					<French>Choisissez votre destination.</French>
+					<Chinesesimp>选择目的地.</Chinesesimp>
 				</Key>
 				<Key ID="STR_TAXI_LANDING">
 					<Original>The Taxi lands...</Original>
 					<French>Le Taxi atterrit...</French>
+					<Chinesesimp>小鸟降落中...</Chinesesimp>
 				</Key>
 				<Key ID="STR_TAXI_LANDED">
 					<Original>The Taxi landed.</Original>
 					<French>Le Taxi a atterri.</French>
+					<Chinesesimp>小鸟已降落.</Chinesesimp>
 				</Key>
 				<Key ID="STR_TAXI_CALLED">
 					<Original>Air Taxi called.\nType: %1</Original>
 					<French>Taxi aérien appelé.\nType: %1</French>
+					<Chinesesimp>空中出租车已呼叫!\n机型: %1</Chinesesimp>
 				</Key>
 				<Key ID="STR_TAXI_MOVE">
 					<Original>Taxi on the way...\nDistance: %1m</Original>
 					<French>Taxi en route...\nDistance: %1m</French>
+					<Chinesesimp>在路上了!\n距离: %1 米</Chinesesimp>
 				</Key>
 				<Key ID="STR_TAXI_ARRIVED">
 					<Original>The Taxi has arrived.\nWaiting for passengers.\nYou have %1 seconds to board !</Original>
 					<French>Le Taxi est arrivé.\nEn attente de passagers.\nVous avez %1 secondes pour embarquer !</French>
+					<Chinesesimp>小鸟已降落.\n等候乘客.\n你有 %1 秒时间登机!</Chinesesimp>
 				</Key>
 				<Key ID="STR_TAXI_PROGRESS">
 					<Original>Transport in progress...\nDestination: %1m</Original>
 					<French>Transport en cours...\nDestination: %1m</French>
+					<Chinesesimp>小鸟运输中...\n目的地: %1 米</Chinesesimp>
 				</Key>
 				<Key ID="STR_TAXI_RETURN">
 					<Original>Back to the base.\nGoodbye...</Original>
 					<French>Retour à la base.\nAu revoir...</French>
+					<Chinesesimp>返回空军基地。\n下次见...</Chinesesimp>
 				</Key>
 
 				<!-- Pay -->
 				<Key ID="STR_GRLIB_NOAMMO">
 					<Original>"You don't have enough Ammo !!</Original>
 					<French>Vous n'avez pas assez d'Ammo !!</French>
+					<Chinesesimp>你的弹药不够支付! ！</Chinesesimp>
 				</Key>
 				<Key ID="STR_GRLIB_PAY">
 					<Original>You paid: %1 Ammo</Original>
 					<French>Vous avez payé: %1 Ammo</French>
+					<Chinesesimp>你为一身装备支付: %1 弹药</Chinesesimp>
 				</Key>
 
 		</Package>
