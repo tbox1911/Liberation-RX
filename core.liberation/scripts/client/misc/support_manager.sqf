@@ -115,37 +115,34 @@ while { true } do {
 			_vehicle_class = typeOf _vehicle;
 			_vehicle_class_text =  getText (configFile >> "CfgVehicles" >> _vehicle_class >> "displayName");
 
-			if (_vehicle_class in _list_vehicles ) then {
+			// Arsenal
+			_neararsenal = ((getpos _unit) nearEntities [vehicle_rearm_sources, _distarsenal]) + ((getpos _unit) nearobjects [FOB_typename, _distarsenal * 2]);
+			_is_enabled = !(_vehicle getVariable ["R3F_LOG_disabled", false]);
+			if (_vehicle_class in _list_vehicles && count (_neararsenal) > 0 && _is_enabled) then {
 				_timer = _vehicle getVariable ["GREUH_rearm_timer", 0];
 				if (_timer <= time) then {
 					_max_ammo = 3;
 					if (_vehicle_class in _list_static) then { _max_ammo = 6 };
+					//_vehicle setVehicleAmmoDef 1;
+					_magType = (getArray(configFile >> "CfgVehicles" >> _vehicle_class >> "Turrets" >> "MainTurret" >> "magazines") - _ignore_ammotype);
+					{
+						_ammo_type = _x;
+						_cnt = { _x == _ammo_type } count magazines _vehicle;
+						if (_cnt < _max_ammo) then {
+							_vehicle addMagazines [_ammo_type, (_max_ammo - _cnt)];
+							_arsenal_text = getText (configFile >> "CfgVehicles" >> typeOf (_neararsenal select 0) >> "displayName");
+							_unit groupchat format ["Rearming %1 at %2.", _vehicle_class_text, _arsenal_text];
 
-					// Arsenal
-					_neararsenal =  ((getpos _unit) nearEntities [vehicle_rearm_sources, _distarsenal]) +
-									((getpos _unit) nearobjects [FOB_typename, _distarsenal * 2]);
-
-					if (count(_neararsenal) > 0)  then {
-						//_vehicle setVehicleAmmoDef 1;
-						_magType = (getArray(configFile >> "CfgVehicles" >> _vehicle_class >> "Turrets" >> "MainTurret" >> "magazines") - _ignore_ammotype);
-						{
-							_ammo_type = _x;
-							_cnt = { _x == _ammo_type } count magazines _vehicle;
-							if (_cnt < _max_ammo) then {
-								_vehicle addMagazines [_ammo_type, (_max_ammo - _cnt)];
-								_arsenal_text = getText (configFile >> "CfgVehicles" >> typeOf (_neararsenal select 0) >> "displayName");
-								_unit groupchat format ["Rearming %1 at %2.", _vehicle_class_text, _arsenal_text];
-
-								if ( _unit == player) then {
-									_screenmsg = format [ "%1\n%2 - %3", _vehicle_class_text, localize "STR_REARMING", "100%" ];
-									titleText [ _screenmsg, "PLAIN DOWN" ];
-								};
-								_vehicle setVariable ["GREUH_rearm_timer", round (time + (5*60))];  // min cooldown
+							if ( _unit == player || _vehicle_class in uavs) then {
+								_screenmsg = format [ "%1\n%2 - %3", _vehicle_class_text, localize "STR_REARMING", "100%" ];
+								titleText [ _screenmsg, "PLAIN DOWN" ];
+								hintSilent _screenmsg;
 							};
-						} forEach _magType;
-					};
+							_vehicle setVariable ["GREUH_rearm_timer", round (time + (5*60))];  // min cooldown
+						};
+					} forEach _magType;
 				} else {
-					if ( _unit == player) then {
+					if ( _unit == player ||  ((uavControl _vehicle select 0) == player) ) then {
 						_screenmsg = format [ "%1\nRearming Cooldown (%2 sec), Please Wait...", _vehicle_class_text, round (_timer - time) ];
 						titleText [ _screenmsg, "PLAIN DOWN" ];
 					};
@@ -165,4 +162,5 @@ while { true } do {
 	};
 
 	sleep 15;
+	hintSilent "";
 };
