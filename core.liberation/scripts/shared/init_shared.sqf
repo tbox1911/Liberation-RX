@@ -36,6 +36,7 @@ remote_call_incoming = compileFinal preprocessFileLineNumbers "scripts\client\re
 remote_call_airdrop = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_airdrop.sqf";
 remote_call_showinfo = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_showinfo.sqf";
 remote_call_garage = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_garage.sqf";
+remote_call_a3w_info = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_a3w_info.sqf";
 
 // Vehicle Color
 [] execVM "addons\RPT\RPT_init.sqf";
