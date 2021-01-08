@@ -71,7 +71,9 @@ while { true } do {
 
 	if ( diag_server_save ) then {
 		diag_server_save = false;
-		_myfpsmarker setMarkerText "Game State Saved.";
+		_formatedTime = [time/3600,"HH:MM:SS"] call BIS_fnc_timeToString;
+		_msg = format ["Game Saved - Server Uptime: %1", _formatedTime];
+		_myfpsmarker setMarkerText _msg;
 		sleep 3;
 	};
 
