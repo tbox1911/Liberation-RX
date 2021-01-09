@@ -5,8 +5,7 @@
 BTC_vip = [];
 
 //Def
-BTC_tk_deathscreen_punishment = 2;
-BTC_tk_last_warning = 3;
+BTC_tk_max = 4;
 
 BTC_fnc_tk_PVEH = {
 	_array = _this select 1;
@@ -21,24 +20,21 @@ BTC_fnc_tk_PVEH = {
 
 BTC_Teamkill = {
 	switch (true) do {
-		case (BTC_teamkiller <= BTC_tk_deathscreen_punishment) :
-		{
+		case (BTC_teamkiller < BTC_tk_max) : {
 		  private ["_msg"];
 		  waitUntil {!(isNull (findDisplay 46))};
 		  _msg= "STOP TEAMKILLING !!";
       	  [_msg, 0, 0, 5, 0, 0, 90] spawn BIS_fnc_dynamicText;
 		};
 
-		case (BTC_teamkiller > BTC_tk_deathscreen_punishment && BTC_teamkiller <= BTC_tk_last_warning) :
-		{
+		case (BTC_teamkiller == BTC_tk_max) : {
 			private ["_msg"];
 			waitUntil {!(isNull (findDisplay 46))};
       		_msg = format ["STOP TEAMKILLING, <t color='#ff0000'>LAST WARNING...</t>"];
 			[_msg, 0, 0, 5, 0, 0, 90] spawn BIS_fnc_dynamicText;
 		};
 
-		case (BTC_teamkiller > BTC_tk_last_warning) :
-		{
+		case (BTC_teamkiller > BTC_tk_max) : {
 			closeDialog 0;
 			closeDialog 0;
 			closeDialog 0;
@@ -70,7 +66,7 @@ BTC_Teamkill = {
 "BTC_tk_PVEH" addPublicVariableEventHandler BTC_fnc_tk_PVEH;
 
 BTC_teamkiller = BTC_logic getVariable [getPlayerUID player, 0];
-if (BTC_teamkiller > BTC_tk_last_warning) exitWith {[] spawn BTC_Teamkill};
+if (BTC_teamkiller > BTC_tk_max) exitWith {[] spawn BTC_Teamkill};
 
 waitUntil {!(isNull (findDisplay 46))};
 systemChat "-------- TK Protect Initialized --------";
