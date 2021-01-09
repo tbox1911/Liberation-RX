@@ -6,15 +6,18 @@ BTC_vip = [];
 
 //Def
 BTC_tk_max = 4;
+BTC_tk_fine = 500;
 
 BTC_fnc_tk_PVEH = {
 	_array = _this select 1;
 	_name  = _array select 0;
 	if (name player == _name) then {
-		BTC_teamkiller = BTC_teamkiller + 1;
-		BTC_logic setVariable [getPlayerUID player, BTC_teamkiller, true];
+		if (!([BTC_tk_fine] call F_pay)) then {
+			BTC_teamkiller = BTC_teamkiller + 1;
+			BTC_logic setVariable [getPlayerUID player, BTC_teamkiller, true];
+			[player, -10] remoteExec ["addScore", 2];
+		};
 		[] spawn BTC_Teamkill;
-		[player, -10] remoteExec ["addScore", 2];
 	};
 };
 
