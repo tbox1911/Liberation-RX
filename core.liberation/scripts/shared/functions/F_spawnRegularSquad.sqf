@@ -17,7 +17,6 @@ _grp = createGroup [GRLIB_side_enemy, true];
 			_max_try = _max_try - 1;
 		};
 		if (!(_spawnpos isEqualTo zeropos)) then {
-			diag_log format ["DBG: pos:%1 water:%2", _spawnpos, surfaceIsWater _spawnpos ];
 			_x createUnit [([_spawnpos, random 300, random 360] call BIS_fnc_relPos), _grp,'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]'];
 		};
 	};

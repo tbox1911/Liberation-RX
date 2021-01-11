@@ -71,7 +71,7 @@ sectors_airspawn = [];
 			if (_marker in sectors_capture) then {_marker_text = "Town"};
 			if (_marker in sectors_military) then {_marker_text = "Military Base"};
 			if (_marker in sectors_factory) then {_marker_text = "Fuel Depot"};
-			diag_log format ["DBG: World: %1 - Auto-Name failed for marker: %2", worldname, _marker]
+			diag_log format ["--- LRX World: %1 - Auto-Name failed for marker: %2", worldname, _marker]
 		};
 		_marker setMarkerText _marker_text;
   };
