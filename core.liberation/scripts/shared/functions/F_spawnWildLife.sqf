@@ -15,7 +15,7 @@ _nbcivs = _nbcivs * ( sqrt ( GRLIB_unitcap ) );
 if (_type in ["Alsatian_Random_F","Fin_random_F"]) then {_nbcivs = 2};
 if (_type in ["Cock_random_F","Hen_random_F"]) then {_nbcivs = _nbcivs + 2};
 
-_spawnpos = [_pos, 50, 250] call BIS_fnc_findSafePos;
+_spawnpos = [_pos, 80, 300] call BIS_fnc_findSafePos;
 if (surfaceIsWater _spawnpos) exitWith {[]};
 
 while { _idx < _nbcivs } do {
