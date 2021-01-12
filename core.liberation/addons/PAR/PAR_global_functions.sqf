@@ -92,6 +92,7 @@ PAR_AI_Manager = {
 
 PAR_fn_globalchat = {
   params ["_speaker", "_msg"];
+  if (isDedicated) exitWith {};
   if (!(local _speaker)) exitWith {};
   if ((_speaker getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1",PAR_Grp_ID] || isPlayer _speaker) then {
     gamelogic globalChat _msg;

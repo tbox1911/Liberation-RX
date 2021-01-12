@@ -18,6 +18,7 @@ sleep 8;
 [
   [_unit],
 {
+  if (isDedicated) exitWith {};
   params ["_wnded"];
   [
   _wnded,
@@ -31,7 +32,7 @@ sleep 8;
   {
     if (_caller == player) then {
       _msg = format [localize "STR_PAR_ST_01", name _caller, name _target];
-      [_target, _msg] remoteExec ["PAR_fn_globalchat", [0,-2] select isDedicated,true];
+      [_target, _msg] remoteExec ["PAR_fn_globalchat", 0];
       _bleedOut = _target getVariable ["PAR_BleedOutTimer", 0];
       _target setVariable ["PAR_BleedOutTimer", _bleedOut + PAR_BleedOutExtra, true];
     };
@@ -49,12 +50,13 @@ sleep 8;
       [_target, _caller] call PAR_fn_sortie;
     } else {
       [[_target, _caller], {
+        if (isDedicated) exitWith {};
         if (!isNil "GRLIB_player_spawned") then {
            if (GRLIB_player_spawned) then {
             [(_this select 0),(_this select 1)] call PAR_fn_sortie;
            };
          };
-        }] remoteExec ["bis_fnc_call", [0,-2] select isDedicated,true];
+        }] remoteExec ["bis_fnc_call", 0];
     };
   },
   {
@@ -63,7 +65,7 @@ sleep 8;
   [time],6,12] call BIS_fnc_holdActionAdd;
   _wnded addAction ["<t color='#C90000'>" + "Drag" + "</t>", "addons\PAR\PAR_fn_drag.sqf", ["action_drag"], 9, false, true, "", "!PAR_isDragging", 3];
   _wnded addAction ["<t color='#C90000'>" + "Release" + "</t>", { PAR_isDragging = false }, ["action_release"], 10, true, true, "", "PAR_isDragging"];
-}] remoteExec ["bis_fnc_call", [0,-2] select isDedicated,true];
+}] remoteExec ["bis_fnc_call", 0];
 
 private _bld = createVehicle [(PAR_BloodSplat call BIS_fnc_selectRandom), getPos _unit, [], 0, "CAN_COLLIDE"];
 private _cnt = 0;
