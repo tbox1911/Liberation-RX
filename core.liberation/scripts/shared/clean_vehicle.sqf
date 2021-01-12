@@ -14,7 +14,7 @@ _vehicle setVariable ["R3F_LOG_objets_charges", [], true];
 // Delete GRLIB Cargo
 if ( _vehicle getVariable ["GRLIB_ammo_truck_load", 0] >= 1 ) then {
 	{
-		if (typeOf _x in [ammobox_b_typename, ammobox_o_typename, ammobox_i_typename]) then {
+		if (typeOf _x in [ammobox_b_typename, ammobox_o_typename, ammobox_i_typename, fuelbarrel_typename]) then {
 			[_x] remoteExec ["detach", 0];
 			[_x, 1] remoteExec ["setDamage", 0];
 		} else {
