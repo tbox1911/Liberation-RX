@@ -81,7 +81,7 @@ PAR_AI_Manager = {
         // Blood trail
         if (damage _x > 0.6 && vehicle _x == _x) then {
           private _spray = createVehicle ["BloodSpray_01_New_F", getPos _x, [], 0, "CAN_COLLIDE"];
-          [_spray] spawn {sleep (7 + random 5); deleteVehicle (_this select 0)};
+          _spray spawn {sleep (7 + random 5); deleteVehicle _this};
         };
         sleep 0.3;
       } forEach _bros;
