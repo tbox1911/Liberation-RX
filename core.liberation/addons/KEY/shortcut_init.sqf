@@ -24,11 +24,25 @@ waitUntil {sleep 0.5;!(isNull (findDisplay 46))};
 	if (_this select 1 == (actionKeys 'User12') select 0) then { [] spawn NRE_earplugs };
 }];
 
-//Screenshot
+// Toggle HUD
 (findDisplay 46) displayAddEventHandler ["KeyDown", {
 	if (_this select 1 == (actionKeys 'User13') select 0) then {
+		private _state = "ON";
+		if (shownHUD select 0) then {
+			showHUD [false,false,false,false,false,false,false,false,false];
+			_state = "OFF";
+		} else {
+			showHUD [true,true,true,true,true,true,true,true,true,true];
+		};
+		gamelogic globalChat (format ["HUD Toggle %1.", _state]);
+	};
+}];
+
+//Screenshot
+(findDisplay 46) displayAddEventHandler ["KeyDown", {
+	if (_this select 1 == (actionKeys 'User14') select 0) then {
 		_name = format ["%1_%2_%3-%4_%5.png", name player, worldname, date select 3, date select 4, round(random [100,500,1000])];
 		screenshot _name;
-		gamelogic globalChat (format ["Take screenshot: %1", _name]);
+		gamelogic globalChat (format ["Take screenshot: %1.", _name]);
 	};
 }];

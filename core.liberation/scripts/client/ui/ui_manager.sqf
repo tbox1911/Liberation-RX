@@ -17,23 +17,24 @@ if ( isNil "cinematic_camera_started" ) then { cinematic_camera_started = false 
 if ( isNil "halojumping" ) then { halojumping = false };
 
 while { true } do {
-
+	_hide_HUD = !(shownHUD select 0);
 	if ( isNull ((uiNamespace getVariable 'GUI_OVERLAY') displayCtrl (101)) && _overlayshown ) then {
 		_overlayshown = false;
 		_first_iteration = true;
 
 	};
-	if ( alive player && !dialog && !_overlayshown && !cinematic_camera_started && !halojumping ) then {
+	if ( alive player && !dialog && !_overlayshown && !cinematic_camera_started && !halojumping && !_hide_HUD) then {
 		cutRsc["statusoverlay", "PLAIN", 1];
 		_overlayshown = true;
 		_first_iteration = true;
 		_uiticks = 0;
 	};
-	if ( ( !alive player || dialog || cinematic_camera_started ) && _overlayshown) then {
+	if ( ( !alive player || dialog || cinematic_camera_started || _hide_HUD) && _overlayshown) then {
 		cutRsc["blank", "PLAIN", 0];
 		_overlayshown = false;
 		_first_iteration = true;
 	};
+
 	if ( _overlayshown ) then {
 
 		((uiNamespace getVariable 'GUI_OVERLAY') displayCtrl (266)) ctrlSetText format [ "%1", GRLIB_ui_notif ];
