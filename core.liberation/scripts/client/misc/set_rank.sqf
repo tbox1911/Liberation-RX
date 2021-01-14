@@ -33,6 +33,7 @@ if ( (GRLIB_squad_size + GRLIB_squad_size_bonus) > GRLIB_max_squad_size) then {
 	GRLIB_squad_size_bonus = (GRLIB_max_squad_size - GRLIB_squad_size);
 };
 
+_unit setUnitRank _rank;
 _unit setVariable ["GRLIB_Rank", _rank, true];
 _unit addRating 1000;
 _rank;
