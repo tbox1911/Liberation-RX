@@ -10,31 +10,32 @@ PAR_fn_eject = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_eject.s
 PAR_fn_checkWounded = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_checkWounded.sqf";
 
 PAR_fn_AI_Damage_EH = {
-  params ["_unit"];
-  _unit removeAllEventHandlers "HandleDamage";
-  _unit addEventHandler ["HandleDamage", damage_manager_EH ];
-  _unit addEventHandler ["HandleDamage", {
-      params ["_unit","","_dam"];
-      _veh = objectParent _unit;
-      if (!(isNull _veh) && round(damage _veh) > 0.8) then {[_veh, _unit, true] spawn PAR_fn_eject};
+	params ["_unit"];
+	_unit removeAllEventHandlers "HandleDamage";
+	_unit addEventHandler ["HandleDamage", damage_manager_EH ];
+	_unit addEventHandler ["HandleDamage", {
+		params ["_unit","","_dam"];
+		_veh = objectParent _unit;
+		if (!(isNull _veh) && round(damage _veh) > 0.8) then {[_veh, _unit, true] spawn PAR_fn_eject};
 
-      if (!(_unit getVariable ["PAR_wounded",false]) && (_dam >= 0.86)) then {
-        if (!(isNull _veh)) then {[_veh, _unit] spawn PAR_fn_eject};
-        _unit allowDamage false;
-        _unit setVariable ["PAR_wounded", true];
-        _unit setUnconscious true;
-        _unit setVariable ["PAR_BleedOutTimer", round(time + PAR_BleedOut), true];
-        [_unit] spawn PAR_fn_unconscious;
-      };
-      _dam min 0.86;
-  }];
-  _unit removeAllMPEventHandlers "MPKilled";
-  _unit addMPEventHandler ["MPKilled", {_this spawn PAR_Player_MPKilled}];
-  _unit setVariable ["PAR_wounded",false];
-  _unit setVariable ["PAR_myMedic", nil];
-  _unit setVariable ["PAR_busy", nil];
-  _unit setVariable ["PAR_heal", nil];
-  _unit setVariable ["PAR_healed", nil];
+		if (!(_unit getVariable ["PAR_wounded",false]) && (_dam >= 0.86)) then {
+			if (!(isNull _veh)) then {[_veh, _unit] spawn PAR_fn_eject};
+			_unit allowDamage false;
+			_unit setVariable ["PAR_wounded", true];
+			_unit setUnconscious true;
+			_unit setVariable ["PAR_BleedOutTimer", round(time + PAR_BleedOut), true];
+			[_unit] spawn PAR_fn_unconscious;
+		};
+		_dam min 0.86;
+	}];
+	_unit removeAllMPEventHandlers "MPKilled";
+	_unit addMPEventHandler ["MPKilled", {_this spawn PAR_Player_MPKilled}];
+	_unit setVariable ["PAR_wounded", false];
+	_unit setVariable ["PAR_myMedic", nil];
+	_unit setVariable ["PAR_busy", nil];
+	_unit setVariable ["PAR_heal", nil];
+	_unit setVariable ["PAR_healed", nil];
+	_unit setVariable ["PAR_AI_score", 0, true];
 };
 
 PAR_AI_Manager = {
@@ -81,8 +82,24 @@ PAR_AI_Manager = {
         // Blood trail
         if (damage _x > 0.6 && vehicle _x == _x) then {
           private _spray = createVehicle ["BloodSpray_01_New_F", getPos _x, [], 0, "CAN_COLLIDE"];
-          _spray spawn {sleep (7 + random 5); deleteVehicle _this};
+          _spray spawn {sleep (10 + random 5); deleteVehicle _this};
         };
+
+		// AI level UP
+		_ai_score = _x getVariable ["PAR_AI_score", 0];
+		if (_ai_score >= 20 ) then {
+			_ai_skill = skill _x;
+ 			if (_ai_skill < 0.80) then {
+				private _rank_lvl = ["PRIVATE", "CORPORAL", "SERGEANT", "LIEUTENANT", "CAPTAIN", "MAJOR", "COLONEL"];
+				private _ai_rank = _rank_lvl select (_rank_lvl find (rank _x)) + 1;
+				_x setSkill (_ai_skill + 0.05);
+				_x setUnitRank _ai_rank;
+				_msg = format ["%1 was promoted to the rank of %2 !", name _x, _ai_rank];
+				[_x, _msg] call PAR_fn_globalchat;
+			};
+			_x setVariable ["PAR_AI_score", 0, true];
+		};
+
         sleep 0.3;
       } forEach _bros;
     };

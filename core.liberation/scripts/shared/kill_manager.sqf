@@ -10,7 +10,7 @@ if ( isServer ) then {
 		};
 	};
 
-	//diag_log format ["DBG: %1 %2 %3", name _killer, side (group _killer), _r1];
+	//diag_log format ["DBG: %1 %2", name _killer, side (group _killer)];
 	//diag_log format ["DBG: %1 %2", name _unit, side (group _unit)];
 
 	// ACE
@@ -122,6 +122,11 @@ if ( isServer ) then {
 				stats_opfor_soldiers_killed = stats_opfor_soldiers_killed + 1;
 				if ( isplayer _killer ) then {
 					stats_opfor_killed_by_players = stats_opfor_killed_by_players + 1;
+				};
+
+				private _ai_score = _killer getVariable ["PAR_AI_score", nil];
+				if (!isNil "_ai_score") then {
+					_killer setVariable ["PAR_AI_score", (_ai_score + 1), true];
 				};
 			};
 			if ( side (group _unit) == GRLIB_side_friendly ) then {

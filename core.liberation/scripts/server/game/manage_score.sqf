@@ -108,6 +108,6 @@ while { true } do {
 			};
 			_x setVariable ["score_last",_cur];
 		};
-	} forEach playableUnits;
+	} forEach allPlayers;
 	sleep 5;
 };

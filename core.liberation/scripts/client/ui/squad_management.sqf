@@ -89,7 +89,7 @@ while { dialog && alive player } do {
 			_unitname = _unitname + ( name _selectedmember );
 			ctrlSetText [ 201, _unitname];
 
-			ctrlSetText [ 202, getText (_cfgVehicles >> (typeof _selectedmember) >> "displayName") ];
+			ctrlSetText [ 202, format ["%1 (%2)", getText (_cfgVehicles >> (typeof _selectedmember) >> "displayName"), rank _selectedmember] ];
 			ctrlSetText [ 203, format ["%1 %2%3", localize 'STR_HEALTH', round (100 - ((damage _selectedmember) * 100)), '%' ] ];
 
 			((findDisplay 5155) displayCtrl 203) ctrlSetTextColor [1,1,1,1];
