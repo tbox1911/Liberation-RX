@@ -35,7 +35,7 @@ PAR_fn_AI_Damage_EH = {
 	_unit setVariable ["PAR_busy", nil];
 	_unit setVariable ["PAR_heal", nil];
 	_unit setVariable ["PAR_healed", nil];
-	_unit setVariable ["PAR_AI_score", 0, true];
+	_unit setVariable ["PAR_AI_score", 5, true];
 };
 
 PAR_AI_Manager = {
@@ -86,20 +86,21 @@ PAR_AI_Manager = {
         };
 
 		// AI level UP
-		_ai_score = _x getVariable ["PAR_AI_score", 0];
-		if (_ai_score >= 20 ) then {
-			_ai_skill = skill _x;
- 			if (_ai_skill < 0.80) then {
-				private _rank_lvl = ["PRIVATE", "CORPORAL", "SERGEANT", "LIEUTENANT", "CAPTAIN", "MAJOR", "COLONEL"];
-				private _ai_rank = _rank_lvl select (_rank_lvl find (rank _x)) + 1;
-				_x setSkill (_ai_skill + 0.05);
-				_x setUnitRank _ai_rank;
-				_msg = format ["%1 was promoted to the rank of %2 !", name _x, _ai_rank];
-				[_x, _msg] call PAR_fn_globalchat;
+		_ai_score = _x getVariable ["PAR_AI_score", nil];
+		if (!isNil "_ai_score") then {
+			if (_ai_score <= 0 ) then {
+				_rank_lvl = ["PRIVATE", "CORPORAL", "SERGEANT", "LIEUTENANT", "CAPTAIN", "MAJOR", "COLONEL"];
+				_ai_skill = skill _x;
+				if (_ai_skill < 0.80) then {
+					_ai_rank = _rank_lvl select (_rank_lvl find (rank _x)) + 1;
+					_x setSkill (_ai_skill + 0.05);
+					_x setUnitRank _ai_rank;
+					_msg = format ["%1 was promoted to the rank of %2 !", name _x, _ai_rank];
+					[_x, _msg] call PAR_fn_globalchat;
+				};
+				_x setVariable ["PAR_AI_score", ((_rank_lvl find (rank _x)) + 1) * 5, true];
 			};
-			_x setVariable ["PAR_AI_score", 0, true];
 		};
-
         sleep 0.3;
       } forEach _bros;
     };
