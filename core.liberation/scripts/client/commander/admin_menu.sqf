@@ -14,6 +14,17 @@ if (!isDamageAllowed player) then {
 };
 player onMapSingleClick "if (_alt) then {player setPosATL _pos}";
 
+_getBannedUID = {
+	params ["_ban_combo"];
+	lbClear _ban_combo;
+	{
+		private _r1 = BTC_logic getVariable [_x, 0];
+		if (typeName _r1 == "SCALAR") then {
+			if (_r1 > 0) then { _ban_combo lbAdd format["%1", _x] };
+		};
+	} foreach allVariables BTC_logic;
+};
+
 do_unban = 0;
 do_score = 0;
 do_spawn = 0;
@@ -30,11 +41,7 @@ lbClear _ammo_combo;
 _build_combo = _display displayCtrl 1614;
 lbClear _build_combo;
 
-{
-	if ((BTC_logic getVariable [_x, 0]) > 0) then {
-		_ban_combo lbAdd format["%1", _x];
-	};
-} foreach allVariables BTC_logic;
+[_ban_combo] call _getBannedUID;
 
 _i = 0;
 {
@@ -63,12 +70,7 @@ while { dialog && (alive player) } do {
 		if (_dst_id != "") then {
 			BTC_logic setVariable [_dst_id, 0, true];
 			systemchat format ["Unban player UID: %1", _dst_id];
-
-			_ban_combo = _display displayCtrl 1611;
-			lbClear _ban_combo;
-			{
-				if ((BTC_logic getVariable [_x, 0]) > 0) then {	_ban_combo lbAdd format["%1", _x] };
-			} foreach allVariables BTC_logic;
+			[_ban_combo] call _getBannedUID;
 			sleep 1;
 		};
 		do_unban = 0;
