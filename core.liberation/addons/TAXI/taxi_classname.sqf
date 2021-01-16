@@ -3,7 +3,6 @@ taxi_helipad_type = "Land_HelipadCivil_F";
 taxi_type_2 = [
 	"C_Heli_light_01_blue_F",
 	"C_Heli_light_01_red_F",
-	"C_Heli_light_01_blueLine_F",
 	"C_Heli_light_01_digital_F",
 	"C_Heli_light_01_elliptical_F",
 	"C_Heli_light_01_furious_F",
