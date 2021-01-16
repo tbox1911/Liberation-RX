@@ -8,7 +8,68 @@ PAR_fn_death = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_death.s
 PAR_fn_unconscious = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_unconscious.sqf";
 PAR_fn_eject = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_eject.sqf";
 PAR_fn_checkWounded = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_checkWounded.sqf";
+PAR_fn_globalchat = {
+  params ["_speaker", "_msg"];
+  if (isDedicated) exitWith {};
+  if (!(local _speaker)) exitWith {};
+  if ((_speaker getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1",PAR_Grp_ID] || isPlayer _speaker) then {
+    gamelogic globalChat _msg;
+  };
+};
+PAR_is_medic = {
+	params ["_unit"];
+	private _ret = false;
 
+	if ( getNumber (configfile >> "CfgVehicles" >> typeOf _unit >> "attendant") == 1 ) then {
+		_ret = true;
+	};
+	_ret
+};
+PAR_has_medikit = {
+	params ["_unit"];
+	private _ret = false;
+
+	if ( (PAR_Medikit in (vest _unit)) || (PAR_Medikit in (items _unit)) || (PAR_Medikit in (backpackItems _unit)) ) then {
+		_ret = true;
+	};
+	_ret
+};
+PAR_public_EH = {
+	private ["_timeout", "_action", "_msg"];
+	if(count _this < 2) exitWith {};
+
+	_EH  = _this select 0;
+	_target = _this select 1;
+
+	// PAR_deathMessage
+	if (_EH == "PAR_deathMessage") then
+	{
+		_killed = _target select 0;
+		_killer = _target select 1;
+		if (isPlayer _killed) then
+		{
+			if (isNull _killer) then {
+				gamelogic globalChat (format ["%1 was injured for an unknown reason", name _killed] );
+			} else {
+				gamelogic globalChat (format ["%1 was injured by %2", name _killed, name _killer] );
+			}
+		};
+	};
+
+	// PAR_tkMessage
+	if (_EH == "PAR_tkMessage") then
+	{
+		_killed = _target select 0;
+		_killer = _target select 1;
+
+		if (isPlayer _killer && isPlayer _killed ) then
+		{
+			gamelogic globalChat (format ["%1 has committed TK on %2",name _killer, name _killed]);
+		};
+	};
+};
+
+// AI Section
 PAR_fn_AI_Damage_EH = {
 	params ["_unit"];
 	_unit removeAllEventHandlers "HandleDamage";
@@ -108,15 +169,7 @@ PAR_AI_Manager = {
   };
 };
 
-PAR_fn_globalchat = {
-  params ["_speaker", "_msg"];
-  if (isDedicated) exitWith {};
-  if (!(local _speaker)) exitWith {};
-  if ((_speaker getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1",PAR_Grp_ID] || isPlayer _speaker) then {
-    gamelogic globalChat _msg;
-  };
-};
-
+// Player Section
 PAR_Player_Init = {
 	// Clear event handler before adding it
 	player removeAllEventHandlers "HandleDamage";
@@ -139,26 +192,6 @@ PAR_Player_Init = {
 	PAR_isDragging = false;
 	[player] spawn player_EVH;
 	hintSilent "";
-};
-
-PAR_is_medic = {
-	params ["_unit"];
-	private _ret = false;
-
-	if ( getNumber (configfile >> "CfgVehicles" >> typeOf _unit >> "attendant") == 1 ) then {
-		_ret = true;
-	};
-	_ret
-};
-
-PAR_has_medikit = {
-	params ["_unit"];
-	private _ret = false;
-
-	if ( (PAR_Medikit in (vest _unit)) || (PAR_Medikit in (items _unit)) || (PAR_Medikit in (backpackItems _unit)) ) then {
-		_ret = true;
-	};
-	_ret
 };
 
 PAR_HandleDamage_EH = {
@@ -184,7 +217,7 @@ PAR_HandleDamage_EH = {
 		PAR_tkMessage = [_unit, _killer];
 		publicVariable "PAR_tkMessage";
 		["PAR_tkMessage", [_unit, _killer]] call PAR_public_EH;
-		BTC_tk_PVEH = [name _killer];
+		BTC_tk_PVEH = [_unit, _killer];
 		publicVariable "BTC_tk_PVEH";
 		[_unit] spawn { sleep 3;(_this select 0) setVariable ["PAR_isProtected", 0, true] };
 		_isProtected = 1;
@@ -278,40 +311,5 @@ PAR_Player_Unconscious = {
 
 		// Dog stop
 		if (!isNil "_my_dog") then { _my_dog setVariable ["do_find", nil] };
-	};
-};
-
-PAR_public_EH = {
-  private ["_timeout", "_action", "_msg"];
-	if(count _this < 2) exitWith {};
-
-	_EH  = _this select 0;
-	_target = _this select 1;
-
-	// PAR_deathMessage
-	if (_EH == "PAR_deathMessage") then
-	{
-		_killed = _target select 0;
-		_killer = _target select 1;
-		if (isPlayer _killed) then
-		{
-			if (isNull _killer) then {
-				gamelogic globalChat (format ["%1 was injured for an unknown reason", name _killed] );
-			} else {
-				gamelogic globalChat (format ["%1 was injured by %2", name _killed, name _killer] );
-			}
-		};
-	};
-
-	// PAR_tkMessage
-	if (_EH == "PAR_tkMessage") then
-	{
-		_killed = _target select 0;
-		_killer = _target select 1;
-
-		if (isPlayer _killer && isPlayer _killed ) then
-		{
-			gamelogic globalChat (format ["%1 has committed TK on %2",name _killer, name _killed]);
-		};
 	};
 };

@@ -4,40 +4,50 @@
 // TK VIP Protect
 BTC_vip = [];
 
-//Def
-BTC_tk_max = 4;
-BTC_tk_fine = 200;
-
 BTC_fnc_tk_PVEH = {
-	_array = _this select 1;
-	_name  = _array select 0;
-	if (name player == _name) then {
-		if (!([BTC_tk_fine] call F_pay)) then {
-			BTC_teamkiller = BTC_teamkiller + 1;
-			BTC_logic setVariable [getPlayerUID player, BTC_teamkiller, true];
+	params ["_unit", "_killer"];
+
+	if (player == _killer) then {
+		if (GRLIB_tk_mode == 0) then {
+			_kill = BTC_logic getVariable [getPlayerUID _killer, 0];
+			BTC_logic setVariable [getPlayerUID player, (_kill + 1), true];
 			[player, -10] remoteExec ["addScore", 2];
 		};
+
+		if (GRLIB_tk_mode == 1) then {
+
+		};		
+		
 		[] spawn BTC_Teamkill;
 	};
+
+	if (player == _unit) then {
+		if (GRLIB_tk_mode == 1) then {
+			player addAction [format ["<t color='#FF0080'>%1</t>: %2", localize "STR_TK_ACTION1",name _killer],"addons\TKP\tk_punish.sqf",_killer,999,false,true,"",""];
+		};
+	};	
+
 };
 
 BTC_Teamkill = {
+	private _kill = BTC_logic getVariable [getPlayerUID player, 0];
+
 	switch (true) do {
-		case (BTC_teamkiller < BTC_tk_max) : {
+		case (_kill < GRLIB_tk_count) : {
 		  private ["_msg"];
 		  waitUntil {!(isNull (findDisplay 46))};
 		  _msg= "STOP TEAMKILLING !!";
       	  [_msg, 0, 0, 5, 0, 0, 90] spawn BIS_fnc_dynamicText;
 		};
 
-		case (BTC_teamkiller == BTC_tk_max) : {
+		case (_kill == GRLIB_tk_count) : {
 			private ["_msg"];
 			waitUntil {!(isNull (findDisplay 46))};
       		_msg = format ["STOP TEAMKILLING, <t color='#ff0000'>LAST WARNING...</t>"];
 			[_msg, 0, 0, 5, 0, 0, 90] spawn BIS_fnc_dynamicText;
 		};
 
-		case (BTC_teamkiller > BTC_tk_max) : {
+		case (_kill > GRLIB_tk_count) : {
 			closeDialog 0;
 			closeDialog 0;
 			closeDialog 0;
@@ -68,8 +78,7 @@ BTC_Teamkill = {
 
 "BTC_tk_PVEH" addPublicVariableEventHandler BTC_fnc_tk_PVEH;
 
-BTC_teamkiller = BTC_logic getVariable [getPlayerUID player, 0];
-if (BTC_teamkiller > BTC_tk_max) exitWith {[] spawn BTC_Teamkill};
+if ((BTC_logic getVariable [getPlayerUID player, 0]) > GRLIB_tk_count) exitWith {[] spawn BTC_Teamkill};
 
 waitUntil {!(isNull (findDisplay 46))};
 systemChat "-------- TK Protect Initialized --------";

@@ -3643,14 +3643,17 @@
 			<Original>Warning Max.</Original>
 			<French>Avertissement Max.</French>
 		</Key>
-		
 		<Key ID="STR_TK_ACTION1">
-			<Original>-- Punish</Original>
-			<French>-- Punir</French>
+			<Original>-- Punish or Forgive</Original>
+			<French>-- Punir ou Pardonner</French>
 		</Key>
-		<Key ID="STR_TK_ACTION2">
-			<Original>-- Forgive</Original>
-			<French>-- Pardonner</French>
+		<Key ID="STR_TK_MSG1">
+			<Original>TK: %1 punish %2.</Original>
+			<French>TK: %1 punit %2.</French>
+		</Key>
+		<Key ID="STR_TK_MSG2">
+			<Original>TK: %1 forgive %2.</Original>
+			<French>TK: %1 pardonne %2.</French>
 		</Key>
 	</Package>
 </Project>
