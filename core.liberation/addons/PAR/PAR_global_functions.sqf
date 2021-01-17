@@ -207,27 +207,26 @@ PAR_HandleDamage_EH = {
 	private _veh_unit = vehicle _unit;
 	private _veh_killer = vehicle _killer;
 	private _max_damage = 0.86;
-
-	// TK Protect
 	private _isProtected = _unit getVariable ["PAR_isProtected", 0];
 	private _isUnconscious = _unit getVariable ["PAR_isUnconscious", 0];
 
-	if (_isProtected == 0 && _isUnconscious == 0 && isPlayer _killer && _killer != _unit && _veh_unit != _veh_killer && BTC_vip find (name _killer) == -1) then {
-		_unit setVariable ["PAR_isProtected", 1, true];
-		PAR_tkMessage = [_unit, _killer];
-		publicVariable "PAR_tkMessage";
-		["PAR_tkMessage", [_unit, _killer]] call PAR_public_EH;
-		BTC_tk_PVEH = [_unit, _killer];
-		publicVariable "BTC_tk_PVEH";
-		[_unit] spawn { sleep 3;(_this select 0) setVariable ["PAR_isProtected", 0, true] };
-		_isProtected = 1;
+	if (GRLIB_tk_mode != 2) then {
+		// TK Protect
+		if (_isProtected == 0 && _isUnconscious == 0 && isPlayer _killer && _killer != _unit && _veh_unit != _veh_killer && LRX_tk_vip find (name _killer) == -1) then {
+			_unit setVariable ["PAR_isProtected", 1, true];
+			PAR_tkMessage = [_unit, _killer];
+			publicVariable "PAR_tkMessage";
+			["PAR_tkMessage", [_unit, _killer]] call PAR_public_EH;
+			[_unit, _killer] remoteExec ["LRX_tk_check", 0];
+			[_unit] spawn { sleep 3;(_this select 0) setVariable ["PAR_isProtected", 0, true] };
+			_isProtected = 1;
+		};
+
+		if (_isProtected == 1) then {
+			_max_damage = 0.15;
+		};
 	};
 
-	if (_isProtected == 1) then {
-		_max_damage = 0;
-	};
-
-	private _isUnconscious = _unit getVariable ["PAR_isUnconscious", 0];
 	if (_isProtected == 0 && _isUnconscious == 0 && (_amountOfDamage >= 0.86)) then {
 		closedialog 0;
 		_unit setVariable ["PAR_isUnconscious", 1, true];

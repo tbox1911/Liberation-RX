@@ -94,9 +94,6 @@ clearlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scri
 	if ( (_x != player) && (_x distance (getmarkerpos GRLIB_respawn_marker) < 200 ) ) then {deleteVehicle _x};
 } foreach allUnits;
 
-if (isNil "BTC_tk_PVEH") then { BTC_tk_PVEH = [] };
-publicVariable "BTC_tk_PVEH";
-
 if (isNil "global_locked_group") then { global_locked_group = [] };
 publicVariable "global_locked_group";
 

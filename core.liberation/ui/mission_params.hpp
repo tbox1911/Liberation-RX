@@ -117,8 +117,8 @@ class Params
 
 	class TK_mode {
 		title = $STR_TK_MODE;
-		values[] = { 0, 1 };
-		texts[] = { $STR_TK_MODE_STRICT, $STR_TK_MODE_RELAX };
+		values[] = { 0, 1, 2 };
+		texts[] = { $STR_TK_MODE_STRICT, $STR_TK_MODE_RELAX, $STR_PARAMS_DISABLED };
 		default = 0;
 	};
 

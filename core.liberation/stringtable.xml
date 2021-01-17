@@ -3559,7 +3559,7 @@
 			<Chinesesimp>抱歉 %1，附近没有单位能来救你...</Chinesesimp>
 		</Key>
 	</Package>
-</Project>		
+</Project>
 
 <Project name="LRX_TAXI">
 	<Package name="LRX_TAXI">
@@ -3571,7 +3571,7 @@
 		<Key ID="STR_TAXI_ACTION2">
 			<Original>-- TAXI Cancel</Original>
 			<French>-- TAXI Annulation</French>
-		</Key>		
+		</Key>
 		<Key ID="STR_TAXI_ONLY_ONE">
 			<Original>Sorry, only one Taxi at time.</Original>
 			<French>Désolé, un seul Taxi à la fois.</French>
@@ -3628,8 +3628,8 @@
 <Project name="LRX_TK">
 	<Package name="LRX_TK">
 		<Key ID="STR_TK_MODE">
-			<Original>TeamKill mode</Original>
-			<French>TeamKill mode</French>
+			<Original>TeamKill Mode</Original>
+			<French>TeamKill Mode</French>
 		</Key>
 		<Key ID="STR_TK_MODE_STRICT">
 			<Original>Strict - Warning + Autoban</Original>
@@ -3640,8 +3640,28 @@
 			<French>Relax - Le Joueur choisit</French>
 		</Key>
 		<Key ID="STR_TK_COUNT">
-			<Original>Warning Max.</Original>
-			<French>Avertissement Max.</French>
+			<Original>TeamKill Warning</Original>
+			<French>TeamKill Avertissement</French>
+		</Key>
+		<Key ID="STR_TK_INFO1">
+			<Original>You have been TK by %1\nUse the action menu to react !</Original>
+			<French>Vous avez été TK par %1\nUtilisez le menu d'action pour réagir !</French>
+		</Key>
+		<Key ID="STR_TK_INFO2">
+			<Original>You have been &lt;t color='#e00000'&gt;Punish&lt;/t&gt; by &lt;t color='#0000e0'&gt;%1&lt;/t&gt;.</Original>
+			<French>Vous avez été &lt;t color='#e00000'&gt;Punis&lt;/t&gt; par &lt;t color='#0000e0'&gt;%1&lt;/t&gt;.</French>
+		</Key>
+		<Key ID="STR_TK_ASK1">
+			<Original>Do you want to &lt;t color='#e00000'&gt;Punish&lt;/t&gt; or &lt;t color='#00e000'&gt;Forgive&lt;/t&gt; %1 ?</Original>
+			<French>Voulez-vous &lt;t color='#e00000'&gt;Punir&lt;/t&gt; or &lt;t color='#00e000'&gt;Pardonner&lt;/t&gt; %1 ?</French>
+		</Key>
+		<Key ID="STR_TK_PUNISH">
+			<Original>Punish</Original>
+			<French>Punir</French>
+		</Key>
+		<Key ID="STR_TK_FORGIVE">
+			<Original>Forgive</Original>
+			<French>Pardonner</French>
 		</Key>
 		<Key ID="STR_TK_ACTION1">
 			<Original>-- Punish or Forgive</Original>
