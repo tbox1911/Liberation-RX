@@ -217,7 +217,8 @@ PAR_HandleDamage_EH = {
 			PAR_tkMessage = [_unit, _killer];
 			publicVariable "PAR_tkMessage";
 			["PAR_tkMessage", [_unit, _killer]] call PAR_public_EH;
-			[_unit, _killer] remoteExec ["LRX_tk_check", 0];
+			[_unit, _killer] call LRX_tk_check;
+			[_unit, _killer] remoteExec ["LRX_tk_check", owner _killer];
 			[_unit] spawn { sleep 3;(_this select 0) setVariable ["PAR_isProtected", 0, true] };
 			_isProtected = 1;
 		};
