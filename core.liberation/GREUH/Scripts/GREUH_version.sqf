@@ -25,7 +25,7 @@ player createDiaryRecord ["Info", ["pSiKO Tweaks", format ["A3W Missions v1.30<b
 player createDiaryRecord ["Info", ["pSiKO Tweaks", format ["R3F Logistics v3.10<br/>by <font color='%1'>-Team-R3F.org-</font>", call _getRandomColor]]];
 player createDiaryRecord ["Info", ["pSiKO Tweaks", format ["Robust Air Taxi v1.05<br/>by <font color='%1'>-pSiKO-</font>", call _getRandomColor]]];
 player createDiaryRecord ["Info", ["pSiKO Tweaks", format ["pSiKO AI Revive v2.04<br/>by <font color='%1'>-pSiKO-</font>", call _getRandomColor]]];
-player createDiaryRecord ["Info", ["pSiKO Tweaks", format ["LARs Arsenal v1.00<br/>by <font color='%1'>-Sir Larrow-</font>", call _getRandomColor]]];
+player createDiaryRecord ["Info", ["pSiKO Tweaks", format ["LARs Arsenal v1.00<br/>by <font color='%1'>-Larrow Zurb-</font>", call _getRandomColor]]];
 
 player createDiarySubject ["Info", "Server"];
 player createDiaryRecord ["Info", ["Server", format ["Join us on the Official Server !<br/><br/>- ARMA III - Liberation RX<br/><img image='res\liberation.paa' height='128' width='256'/><br/><font color='#0080ff'>arma.liberation-rx.fr</font><br/><br/>Team Speak 3<br/><font color='#0080ff'>ts3.liberation-rx.fr</font>"]]];
