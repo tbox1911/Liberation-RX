@@ -106,6 +106,16 @@ private _emptyGroups = TRUE;							// Set FALSE to not delete empty groups.
 
 while {deleteManagerPublic} do {
 	private _stats = 0;
+	//================================= SLEEP
+	if (_checkPlayerCount) then {
+		if ((count (playableUnits + switchableUnits)) >= _playerThreshold) then {
+			sleep _checkFrequencyAccelerated;
+		} else {
+			sleep _checkFrequencyDefault;
+		};
+	} else {
+		sleep _checkFrequencyDefault;
+	};
 
 	//================================= LRX TTL UNITS
 	private _units_ttl = [] call _getTTLunits;
@@ -333,15 +343,4 @@ while {deleteManagerPublic} do {
     sleep 1;
 
 	diag_log format ["--- LRX Garbage Collector --- run at %1 delete %2 objects", round(time), _stats];
-
-	//================================= SLEEP
-	if (_checkPlayerCount) then {
-		if ((count (playableUnits + switchableUnits)) >= _playerThreshold) then {
-			sleep _checkFrequencyAccelerated;
-		} else {
-			sleep _checkFrequencyDefault;
-		};
-	} else {
-		sleep _checkFrequencyDefault;
-	};
 };
