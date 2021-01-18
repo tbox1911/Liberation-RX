@@ -1,0 +1,11 @@
+
+class Loadouts {
+	file = "addons\LARs\blacklistArsenal\functions\override";
+	class initOverride { postInit = 1; };
+	class loadInventory_whiteList {};
+	class overrideVAButtonDown {};
+	class overrideVATemplateOK {};
+	class applyLBColors {};
+	class showRestrictedItems {};
+	class addVAKeyEvents {};
+};

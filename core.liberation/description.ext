@@ -21,7 +21,7 @@ joinUnassigned = 0;
 LARs_calculateSideGear = 1;
 
 class CfgFunctions {
-	#include "addons\LARs\blacklistArsenal.hpp"
+	#include "addons\LARs\blacklistArsenal\functions\blacklistArsenal.fncs"
 	#include "addons\GRAD\cfgFunctions.hpp"
 };
 

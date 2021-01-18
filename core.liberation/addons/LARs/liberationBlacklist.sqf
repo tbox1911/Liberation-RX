@@ -177,6 +177,11 @@ GRLIB_whitelisted_from_arsenal = [
 	"B_Bergen_hex_F"
 ];
 
+// Add CUP Weapons
+if ( GRLIB_CUPW_enabled ) then {
+	("getText (_x >> 'DLC') == 'CUP_Weapons' && getNumber (_x >> 'scope') >1" configClasses (configfile >> "CfgWeapons" ) ) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
+};
+
 //Check option
 if (GRLIB_limited_arsenal) then {
 	GRLIB_blacklisted_from_arsenal = blacklisted_bag + blacklisted_weapon;
