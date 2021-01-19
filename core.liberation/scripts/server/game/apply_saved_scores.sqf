@@ -1,6 +1,7 @@
 private [ "_nextplayer" ];
 waitUntil { !isNil "GRLIB_player_scores"};
 waitUntil { !isNil "save_is_loaded" };
+if (!([] call F_getValid)) exitWith {};
 
 while { true } do {
 	private [ "_newscores", "_knownplayers", "_playerindex" ];

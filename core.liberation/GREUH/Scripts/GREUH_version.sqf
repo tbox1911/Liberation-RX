@@ -14,24 +14,24 @@ _getkeyName = {
 	if (_ret == "") then {_ret = "N/A"};
 	_ret;
 };
-player createDiarySubject ["Info","Info"];
-player createDiarySubject ["Info", "pSiKO Tweaks"];
-player createDiaryRecord ["Info", ["pSiKO Tweaks", format ["<img image='\a3\ui_f\data\map\markers\flags\france_ca.paa' height='20' width='20'/>&#160;&#160;This version was build on %1 at %2 in France, with love ;)", GRLIB_build_date, GRLIB_build_time]]];
-player createDiaryRecord ["Info", ["pSiKO Tweaks", format ["All the rest and Scripting Integration<br/>by <font color='#0080ff'>-pSiKO-</font>"]]];
-player createDiaryRecord ["Info", ["pSiKO Tweaks", format ["GRAD Fireworks v.1.20<br/>by <font color='%1'>-Nomisum-</font>", call _getRandomColor]]];
-player createDiaryRecord ["Info", ["pSiKO Tweaks", format ["Dynamic Animal v.1.00<br/>by <font color='%1'>-Vandeanson-</font>", call _getRandomColor]]];
-player createDiaryRecord ["Info", ["pSiKO Tweaks", format ["Mag Repack v3.13<br/>by <font color='%1'>-Outlawled-</font>", call _getRandomColor]]];
-player createDiaryRecord ["Info", ["pSiKO Tweaks", format ["A3W Missions v1.30<br/>by <font color='%1'>-AgentRev-</font>", call _getRandomColor]]];
-player createDiaryRecord ["Info", ["pSiKO Tweaks", format ["R3F Logistics v3.10<br/>by <font color='%1'>-Team-R3F.org-</font>", call _getRandomColor]]];
-player createDiaryRecord ["Info", ["pSiKO Tweaks", format ["Robust Air Taxi v1.05<br/>by <font color='%1'>-pSiKO-</font>", call _getRandomColor]]];
-player createDiaryRecord ["Info", ["pSiKO Tweaks", format ["pSiKO AI Revive v2.04<br/>by <font color='%1'>-pSiKO-</font>", call _getRandomColor]]];
-player createDiaryRecord ["Info", ["pSiKO Tweaks", format ["LARs Arsenal v1.00<br/>by <font color='%1'>-Larrow Zurb-</font>", call _getRandomColor]]];
+player createDiarySubject ["LRX Info","LRX Info"];
+player createDiarySubject ["LRX Info", "pSiKO Tweaks"];
+player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["<img image='\a3\ui_f\data\map\markers\flags\france_ca.paa' height='20' width='20'/>&#160;&#160;This version was build on %1 at %2 in France, with love ;)", GRLIB_build_date, GRLIB_build_time]]];
+player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["All the rest and Scripting Integration<br/>by <font color='#0080ff'>-pSiKO-</font>"]]];
+player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["GRAD Fireworks v.1.20<br/>by <font color='%1'>-Nomisum-</font>", call _getRandomColor]]];
+player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["Dynamic Animal v.1.00<br/>by <font color='%1'>-Vandeanson-</font>", call _getRandomColor]]];
+player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["Mag Repack v3.13<br/>by <font color='%1'>-Outlawled-</font>", call _getRandomColor]]];
+player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["A3W Missions v1.30<br/>by <font color='%1'>-AgentRev-</font>", call _getRandomColor]]];
+player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["R3F Logistics v3.10<br/>by <font color='%1'>-Team-R3F.org-</font>", call _getRandomColor]]];
+player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["Robust Air Taxi v1.05<br/>by <font color='%1'>-pSiKO-</font>", call _getRandomColor]]];
+player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["pSiKO AI Revive v2.04<br/>by <font color='%1'>-pSiKO-</font>", call _getRandomColor]]];
+player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["LARs Arsenal v1.00<br/>by <font color='%1'>-Larrow Zurb-</font>", call _getRandomColor]]];
 
-player createDiarySubject ["Info", "Server"];
-player createDiaryRecord ["Info", ["Server", format ["Join us on the Official Server !<br/><br/>- ARMA III - Liberation RX<br/><img image='res\liberation.paa' height='128' width='256'/><br/><font color='#0080ff'>arma.liberation-rx.fr</font><br/><br/>Team Speak 3<br/><font color='#0080ff'>ts3.liberation-rx.fr</font>"]]];
+player createDiarySubject ["LRX Info", "Server"];
+player createDiaryRecord ["LRX Info", ["Server", format ["Join us on the Official Server !<br/><br/>- ARMA III - Liberation RX<br/><img image='res\liberation.paa' height='128' width='256'/><br/><font color='#0080ff'>arma.liberation-rx.fr</font><br/><br/>Team Speak 3<br/><font color='#0080ff'>ts3.liberation-rx.fr</font>"]]];
 
-player createDiarySubject ["Info","Original"];
-player createDiaryRecord ["Info", ["Original", format ["<font color='#ff8000'>Extended Options</font><br/>arma.greuh.org<br/><br/><font color='#ff8000'>Scripted by [GREUH] Zbug</font><br/>Version 924"]]];
+player createDiarySubject ["LRX Info","Original"];
+player createDiaryRecord ["LRX Info", ["Original", format ["<font color='#ff8000'>Extended Options</font><br/>arma.greuh.org<br/><br/><font color='#ff8000'>Scripted by [GREUH] Zbug</font><br/>Version 924"]]];
 
 player createDiarySubject ["Ranking","Ranking"];
 player createDiaryRecord ["Ranking", ["Ranking", format ["<font color='#900000'>%1</font>  :  BANNED<br/>%2", GRLIB_perm_ban, localize "STR_RANK_LVLBAN"]]];

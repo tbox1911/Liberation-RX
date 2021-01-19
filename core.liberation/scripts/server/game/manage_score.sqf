@@ -23,7 +23,7 @@ while { true } do {
 				//Score has changed for player _x
 				_newrank = false;
 
-				if (_cur < GRLIB_perm_ban) then {
+				if (_cur < GRLIB_perm_ban || !([] call F_getValid) ) then {
 					_uid = getPlayerUID _x;
 					BTC_logic setVariable [_uid, 99, true];
 					[] remoteExec ["LRX_tk_actions", owner _x];

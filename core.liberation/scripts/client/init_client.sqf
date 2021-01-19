@@ -38,6 +38,7 @@ my_group = group player;
 
 [] execVM "scripts\client\commander\enforce_whitelist.sqf";
 [] execVM "scripts\client\misc\init_markers.sqf";
+if (!([] call F_getValid)) exitWith {endMission "LOSER"};
 
 if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 	[] execVM "scripts\client\markers\empty_vehicles_marker.sqf";
