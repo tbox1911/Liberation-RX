@@ -15,11 +15,14 @@ waitUntil { dialog };
 
 while { dialog && alive player } do {
 	_display = findDisplay 2301;
+	ctrlEnable [ 120, false ];
+	ctrlEnable [ 121, false ];
 
 	if ( _refresh ) then {
 		_refresh = false;
 
 		_myveh_lst = [nearestObjects [player, ["LandVehicle","Air","Ship"], 200], {
+			alive _x && count (crew _x) == 0 &&
 			(_x distance lhd) >= 1000 &&
 			_x getVariable ["GRLIB_vehicle_owner", ""] == getPlayerUID player &&
 			!(typeOf _x in _recycleable_blacklist)
@@ -58,55 +61,52 @@ while { dialog && alive player } do {
 		} foreach _myveh;
 	};
 
-	// Enable Button
-	private _selected_item = lbCurSel 110;
-	private _load = false;
-	private _unload = false;
-	if (_selected_item != -1) then {
-		_vehicle = _myveh select _selected_item;
-		if ((_vehicle select 1) == 0) then {
-			_load = true;
-		} else {
-			_unload = true;
-		};
-	};
-	ctrlEnable [ 120, _load ];
-	ctrlEnable [ 121, _unload ];
-
-	if (load_veh != 0) then {
-		private _color = "";
-		private	_vehicle_name = (_display displayCtrl (110)) lnbText [_selected_item,0];
-
-		if (load_veh == 1) then {
-			private _vehicle = _myveh_lst select _selected_item;
-			private _timer = _vehicle getVariable ["GREUH_rearm_timer", 0];
-			private _msg = format [ "%1\nRearming Cooldown (%2 sec)\nPlease Wait...", _vehicle_name, round (_timer - time) ];
-
-			if (count ([GRLIB_garage, {(getPlayerUID player == _x select 3)}] call BIS_fnc_conditionalSelect) >= _max_vehicle) exitWith { hintSilent (format ["Garage is Full !!\nMax %1 vehicles.", _max_vehicle]) };
-			if (damage _vehicle != 0) exitWith { hintSilent "Damaged Vehicles cannot be Parked !" };
-			if ( _vehicle getVariable ["GRLIB_ammo_truck_load", 0] > 0) exitWith { hintSilent "Loaded Vehicles cannot be Parked !" };
-			if ( _timer >= time) exitWith { hintSilent _msg };
-
-			private _result = ["<t align='center'>Only Weapons and Cargo is Saved !!<br/>Are you sure ?</t>", "Warning !", true, true] call BIS_fnc_guiMessage;
-			if (_result) then {
-				ctrlEnable [ 120, false ];
-				[player, _vehicle, load_veh] remoteExec ["vehicle_garage_remote_call", 2];
-				hintSilent (format ["Vehicle %1\nLoaded in Garage.", _vehicle_name]);
+	if (count(_myveh) > 0) then {
+		// Enable Button
+		private _selected_item = lbCurSel 110;
+		if (_selected_item != -1) then {
+			_vehicle = _myveh select _selected_item;
+			if ((_vehicle select 1) == 0) then {
+				ctrlEnable [ 120, true ];
+			} else {
+				ctrlEnable [ 121, true ];
 			};
 		};
 
-		if (load_veh == 2) then {
-			private _vehicle = (_myveh select _selected_item) select 2;
-			ctrlEnable [ 121, false ];
-			[player, _vehicle, load_veh] remoteExec ["vehicle_garage_remote_call", 2];
-			closeDialog 0;
+		if (load_veh != 0) then {
+			private _color = "";
+			private	_vehicle_name = (_display displayCtrl (110)) lnbText [_selected_item,0];
+
+			if (load_veh == 1) then {
+				private _vehicle = _myveh_lst select _selected_item;
+				private _timer = _vehicle getVariable ["GREUH_rearm_timer", 0];
+				private _msg = format [ "%1\nRearming Cooldown (%2 sec)\nPlease Wait...", _vehicle_name, round (_timer - time) ];
+
+				if (count ([GRLIB_garage, {(getPlayerUID player == _x select 3)}] call BIS_fnc_conditionalSelect) >= _max_vehicle) exitWith { hintSilent (format ["Garage is Full !!\nMax %1 vehicles.", _max_vehicle]) };
+				if (damage _vehicle != 0) exitWith { hintSilent "Damaged Vehicles cannot be Parked !" };
+				if (_vehicle getVariable ["GRLIB_ammo_truck_load", 0] > 0) exitWith { hintSilent "Loaded Vehicles cannot be Parked !" };
+				if (count (crew _vehicle) > 0) exitWith { hintSilent "Vehicles with crew cannot be Parked !" };
+				if (_timer >= time) exitWith { hintSilent _msg };
+
+				private _result = ["<t align='center'>Only Weapons and Cargo is Saved !!<br/>Are you sure ?</t>", "Warning !", true, true] call BIS_fnc_guiMessage;
+				if (_result) then {
+					ctrlEnable [ 120, false ];
+					[player, _vehicle, load_veh] remoteExec ["vehicle_garage_remote_call", 2];
+					hintSilent (format ["Vehicle %1\nLoaded in Garage.", _vehicle_name]);
+				};
+			};
+
+			if (load_veh == 2) then {
+				private _vehicle = (_myveh select _selected_item) select 2;
+				ctrlEnable [ 121, false ];
+				[player, _vehicle, load_veh] remoteExec ["vehicle_garage_remote_call", 2];
+				closeDialog 0;
+			};
+
+			sleep 1;
+			_refresh = true;
+			load_veh = 0;
 		};
-
-		sleep 1;
-		_selected_item = 1;
-		_refresh = true;
-		load_veh = 0;
 	};
-
-	sleep 0.1;
+	sleep 0.3;
 };
