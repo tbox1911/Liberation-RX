@@ -1,4 +1,4 @@
-author = "[GREUH] Zbug, [GREUH] McKeewa, [AKH] pSiKO";
+author = $STR_MISSION_AUTHOR;
 onLoadName = $STR_MISSION_TITLE;
 briefingName = $STR_MISSION_TITLE;
 onLoadMission = $STR_MISSION_DESCRIPTION;

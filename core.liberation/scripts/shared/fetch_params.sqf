@@ -80,6 +80,10 @@ if ( isMultiplayer ) then {
 	GRLIB_thermic = 1;
 };
 
+GRLIB_r1 = "&#108;&#105;&#98;&#101;&#114;&#97;&#116;&#105;&#111;&#110;";
+GRLIB_r2 = "&#114;&#120;";
+GRLIB_r3 = "&#76;&#82;&#88;&#32;&#73;&#110;&#102;&#111;";
+
 //Detect Addons ACE ACRE OPTRE GM
 GRLIB_ACE_enabled = isClass(configFile >> "cfgPatches" >> "ace_main"); // Returns true if ACE is enabled
 GRLIB_ACRE_enabled = isClass(configFile >> "cfgPatches" >> "acre_main"); // Returns true if ACRE is enabled

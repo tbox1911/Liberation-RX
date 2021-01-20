@@ -171,7 +171,7 @@ while { true } do {
 					_x doFollow leader player;
 				} forEach _list;
 			};
-			GRLIB_player_spawned = true;
+			GRLIB_player_spawned = ([] call F_getValid);
 		};
 
 		GRLIB_loadout_overide = nil;

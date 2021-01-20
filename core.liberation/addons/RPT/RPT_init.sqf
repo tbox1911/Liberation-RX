@@ -34,5 +34,7 @@ RPT_colorList =[
 	["Woodland Tiger", RPT_texDir + "woodtiger.paa"]
 ];
 
-waitUntil {!(isNull (findDisplay 46))};
-systemChat "-------- Paint Shop Initialized --------";
+if ( hasInterface ) then {
+	waitUntil {!(isNull (findDisplay 46))};
+	systemChat "-------- Paint Shop Initialized --------";
+};
