@@ -9,4 +9,4 @@ on Sector: <t color='#008000'>%2</t><br/>
 <t size='0.7'>Lucky Bastards !!</t>", name _unit, markerText _targetsector];
 [_msg, 0, 0, 10, 0, 0, 90] remoteExec ["BIS_fnc_dynamicText", 0];
 sleep 7;
-[["lib_reinforcementsblu"], "bis_fnc_shownotification"] call BIS_fnc_MP;
+["lib_reinforcementsblu"] remoteExec ["bis_fnc_shownotification", 0];

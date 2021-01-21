@@ -19,7 +19,7 @@ _aiGroup = grpNull;
 
 if (!isNil "_setupVars") then { call _setupVars };
 
-[ "lib_secondary_a3w_mission", [ _missionType ]] call BIS_fnc_showNotification;
+["lib_secondary_a3w_mission", [_missionType]] remoteExec ["bis_fnc_shownotification", 0];
 diag_log format ["%1 Mission%2 started: %3", MISSION_PROC_TYPE_NAME, _controllerSuffix, _missionType];
 
 _missionTimeout = MISSION_PROC_TIMEOUT;
@@ -134,7 +134,7 @@ if (_failed) then {
 		failMissionColor
 	] call missionHint;
 
-	[ "lib_secondary_a3w_mission_fail", [ _missionType ]] call BIS_fnc_showNotification;
+	["lib_secondary_a3w_mission_fail", [_missionType]] remoteExec ["bis_fnc_shownotification", 0];
 	diag_log format ["%1 Mission%2 failed: %3", MISSION_PROC_TYPE_NAME, _controllerSuffix, _missionType];
 }
 else {
@@ -175,7 +175,7 @@ else {
 		successMissionColor
 	] call missionHint;
 
-	[ "lib_secondary_a3w_mission_success", [ _missionType ]] call BIS_fnc_showNotification;
+	["lib_secondary_a3w_mission_success", [_missionType]] remoteExec ["bis_fnc_shownotification", 0];
 	diag_log format ["%1 Mission%2 complete: %3", MISSION_PROC_TYPE_NAME, _controllerSuffix, _missionType];
 };
 
