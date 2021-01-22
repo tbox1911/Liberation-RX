@@ -3,7 +3,12 @@ private ["_neararsenal", "_nearmedic", "_needammo1", "_needammo2", "_needmedic",
 _distarsenal = 30;
 _maxsec = 3;
 _list_vehicles = [];
-{_list_vehicles pushBack ( _x select 0 )} foreach ( light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + opfor_recyclable );
+{
+	_veh = (_x select 0);
+	if (!(_veh isKindOf "Plane")) then {
+		_list_vehicles pushBack _veh;
+	};
+} foreach ( light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + opfor_recyclable );
 _ignore_ammotype = ["Laserbatteries", "8Rnd_82mm_Mo_Flare_white", "8Rnd_82mm_Mo_Smoke_white"];
 _list_static = ["B_static_AT_F", "B_static_AA_F", "O_static_AT_F", "O_static_AA_F"];
 

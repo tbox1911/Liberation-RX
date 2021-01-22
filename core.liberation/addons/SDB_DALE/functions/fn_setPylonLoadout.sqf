@@ -24,3 +24,6 @@ private _loadout = [];
 
 // Save variables to vehicle
 _veh setVariable ["DALE_var_loadoutTurrets",_pylonPaths,true];
+
+// Rearm
+[_veh, true] call DALE_fnc_pylonRearm;
