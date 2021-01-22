@@ -46,18 +46,10 @@ _center = (missionNamespace getVariable ["BIS_fnc_arsenal_center",player]);
 _return = false;
 _ctrlTemplate = _display displayCtrl IDC_RSCDISPLAYARSENAL_TEMPLATE_TEMPLATE;
 _inTemplate = ctrlFade _ctrlTemplate == 0;
-_fullVersion = missionnamespace getvariable ["BIS_fnc_arsenal_fullArsenal",false];
 
 switch true do {
 	case (_key == DIK_ESCAPE): {
-		
-		if (_inTemplate) then {
-			
-			[ _display, "", false ] call LARs_fnc_showRestrictedItems;
-			
-		} else {
-			if (_fullVersion) then {["buttonClose",[_display]] spawn BIS_fnc_arsenal;} else {_display closeDisplay 2;};
-		};
+		["buttonClose",[_display]] spawn BIS_fnc_arsenal;
 		_return = true;
 	};
 
