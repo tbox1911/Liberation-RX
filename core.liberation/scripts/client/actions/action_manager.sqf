@@ -34,7 +34,7 @@ if (!(player diarySubjectExists str(parseText GRLIB_r3))) exitWith {};
 while { true } do {
 	if ([] call is_menuok) then {
 		_fobdistance = round (player distance2D ([] call F_getNearestFob));
-		_near_arsenal = (player nearEntities [Arsenal_typename, _distarsenal]) + (player nearObjects [FOB_typename, _distredeploy]);
+		_near_arsenal = [player, "ARSENAL", _distarsenal, true] call F_check_near;
 		_near_spawn = [(call F_getMobileRespawns), {(player distance2D (getPos _x) < _distvehclose)}] call BIS_fnc_conditionalSelect;
 		_near_fobbox = player nearEntities [[FOB_box_typename, FOB_truck_typename], _distspawn];
 		_near_fuel = [player, "FUEL", _distvehclose, false] call F_check_near;
@@ -215,7 +215,7 @@ while { true } do {
 
 		// Arsenal
 		_idact_arsenal = _id_actions select 16;
-		if (GRLIB_enable_arsenal && ( count _near_arsenal != 0 || (player distance lhd) <= 200) ) then {
+		if (GRLIB_enable_arsenal && (_near_arsenal || (player distance lhd) <= 200) ) then {
 			if (_idact_arsenal == -1) then {
 				_idact = player addAction ["<t color='#FFFF00'>" + localize "STR_ARSENAL_ACTION" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\open_arsenal.sqf","",-500,true,true,"","build_confirmed == 0"];
 				_id_actions set [16, _idact];

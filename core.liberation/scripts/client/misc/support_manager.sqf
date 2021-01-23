@@ -1,4 +1,4 @@
-private ["_neararsenal", "_nearmedic", "_needammo1", "_needammo2", "_needmedic", "_magType", "_list_vehicles", "_min"];
+private ["_near_arsenal", "_near_medic", "_needammo1", "_needammo2", "_needmedic", "_magType", "_list_vehicles", "_min"];
 
 _distarsenal = 30;
 _maxsec = 3;
@@ -12,7 +12,7 @@ _list_vehicles = [];
 _ignore_ammotype = ["Laserbatteries", "8Rnd_82mm_Mo_Flare_white", "8Rnd_82mm_Mo_Smoke_white"];
 _list_static = ["B_static_AT_F", "B_static_AA_F", "O_static_AT_F", "O_static_AA_F"];
 
-NeedAmmo = {
+_NeedAmmo = {
 	params ["_unit", "_item", "_min"];
 	private _ret = false;
 	if ( isClass( configFile >> "CfgWeapons" >> _item ) &&
@@ -25,7 +25,7 @@ NeedAmmo = {
 	_ret;
 };
 
-AddAmmo = {
+_AddAmmo = {
 	params ["_unit", "_item", "_max"];
 	private _stop = true;
 	_magType = getArray( configFile >> "CfgWeapons" >> _item >> "magazines" ) select 0;
@@ -59,40 +59,35 @@ while { true } do {
 			_needammo1 = false;
 			_needammo2 = false;
 			_needmedic = false;
-			// Arsenal
-			_neararsenal =  ((getpos _x) nearEntities [ai_resupply_sources, _distarsenal]) +
-							((getpos _x) nearobjects [FOB_typename, _distarsenal * 2]);
+			_near_arsenal = [_x, "REAMMO_AI", _distarsenal, true] call F_check_near;
 
-			if (count(_neararsenal) > 0)  then {
-				_arsenal_text = getText (configFile >> "CfgVehicles" >> typeOf (_neararsenal select 0) >> "displayName");
+			if (_near_arsenal)  then {
 				_min = 3;
 				// check primary Weapon
 				if ( (primaryWeapon _x) find "LMG" >= 0 || (primaryWeapon _x) find "MMG" >= 0 || (primaryWeapon _x) find "RPK12" >= 0 ) then { _min = 1; _maxpri = 3 };
-				_needammo1 = [_x, primaryWeapon _x, _min] call NeedAmmo;
+				_needammo1 = [_x, primaryWeapon _x, _min] call _NeedAmmo;
 				if (_needammo1) then {
-					_x groupchat format ["Rearming Primary Weapon at %1.", _arsenal_text];
-					_needammo1 = [_x, primaryWeapon _x, _maxpri] call AddAmmo;
+					_x groupchat "Rearming Primary Weapon.";
+					_needammo1 = [_x, primaryWeapon _x, _maxpri] call _AddAmmo;
 				};
 
 				// check secondary Weapon if backpack present
 				if (!isNull (unitBackpack _x)) then {
-					_needammo2 = [_x, secondaryWeapon _x, 1] call NeedAmmo;
+					_needammo2 = [_x, secondaryWeapon _x, 1] call _NeedAmmo;
 					if (_needammo2) then {
 						//clearAllItemsFromBackpack _x;
-						_x groupchat format ["Rearming Secondary Weapon at %1 !", _arsenal_text];
-						_needammo2 = [_x, secondaryWeapon _x, _maxsec] call AddAmmo;
+						_x groupchat "Rearming Secondary Weapon.";
+						_needammo2 = [_x, secondaryWeapon _x, _maxsec] call _AddAmmo;
 					};
 				};
 			};
 
 			// Medic
-			_nearmedic = ((getpos _x) nearEntities [ai_healing_sources, _distarsenal]);
-			_nearmedic = _nearmedic + ((getpos _x) nearobjects [FOB_typename, _distarsenal * 2]);
-			if (count(_nearmedic) > 0) then {
+			_near_medic = [_x, "MEDIC", _distarsenal, true] call F_check_near;
+
+			if (_near_medic) then {
 				if (damage _x > 0.1 && (behaviour _x) != "COMBAT") then {
 					_needmedic = true;
-					_medic_text = getText (configFile >> "CfgVehicles" >> typeOf (_nearmedic select 0) >> "displayName");
-					_x groupchat format ["Healing myself at %1 !", _medic_text];
 				};
 			};
 
@@ -119,11 +114,10 @@ while { true } do {
 			_vehicle = vehicle _unit;
 			_vehicle_class = typeOf _vehicle;
 			_vehicle_class_text =  getText (configFile >> "CfgVehicles" >> _vehicle_class >> "displayName");
-
-			// Arsenal
-			_neararsenal = ((getpos _unit) nearEntities [vehicle_rearm_sources, _distarsenal]) + ((getpos _unit) nearobjects [FOB_typename, _distarsenal * 2]);
+			_near_arsenal = [_vehicle, "REAMMO", _distarsenal, true] call F_check_near;
 			_is_enabled = !(_vehicle getVariable ["R3F_LOG_disabled", false]);
-			if (_vehicle_class in _list_vehicles && count (_neararsenal) > 0 && _is_enabled) then {
+
+			if (_vehicle_class in _list_vehicles && _near_arsenal && _is_enabled) then {
 				_timer = _vehicle getVariable ["GREUH_rearm_timer", 0];
 				if (_timer <= time) then {
 					_max_ammo = 3;
@@ -135,8 +129,7 @@ while { true } do {
 						_cnt = { _x == _ammo_type } count magazines _vehicle;
 						if (_cnt < _max_ammo) then {
 							_vehicle addMagazines [_ammo_type, (_max_ammo - _cnt)];
-							_arsenal_text = getText (configFile >> "CfgVehicles" >> typeOf (_neararsenal select 0) >> "displayName");
-							_unit groupchat format ["Rearming %1 at %2.", _vehicle_class_text, _arsenal_text];
+							_unit groupchat format ["Rearming %1.", _vehicle_class_text];
 
 							if ( _unit == player || _vehicle_class in uavs) then {
 								_screenmsg = format [ "%1\n%2 - %3", _vehicle_class_text, localize "STR_REARMING", "100%" ];
