@@ -109,7 +109,6 @@ class DALE_RscLoadout {
 			h = __EVAL(safezoneH * DALE_var_dlgHeightSection);
 			text = "";
 			
-			access = 0;
 			colorbackground[] = {0.77,0.51,0.08,0.8};
 			colorText[] = {1,1,1,1};
 			deletable = 0;
@@ -150,7 +149,6 @@ class DALE_RscLoadout {
 			h = __EVAL(safezoneH * DALE_var_dlgHeightImg);
 			text = "";
 			
-			access = 0;
 			colorBackground[] = {0,0,0,0};
 			colorText[] = {1,1,1,1};
 			deletable = 0;
