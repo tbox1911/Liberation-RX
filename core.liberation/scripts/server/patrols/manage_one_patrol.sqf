@@ -65,7 +65,7 @@ while { GRLIB_endgame == 0 } do {
 			[_vehicle_object] spawn protect_static;
 			"O_spotter_F" createUnit [ getpos _vehicle_object, _grp, "this addMPEventHandler [""MPKilled"", {_this spawn kill_manager}]", 0.5, "PRIVATE"];
 			"O_spotter_F" createUnit [ getpos _vehicle_object, _grp, "this addMPEventHandler [""MPKilled"", {_this spawn kill_manager}]", 0.5, "PRIVATE"];
- 			{ _x joinSilent _grp } forEach units _grp_veh;
+ 			(units _grp_veh) joinSilent _grp;
 			{ _x setVariable ["OPFor_vehicle", _vehicle_object] } forEach units _grp;
 		};
 	};

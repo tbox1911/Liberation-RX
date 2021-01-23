@@ -4,11 +4,14 @@ if ( isMultiplayer ) then {
 	GRLIB_resources_multiplier = ["ResourcesMultiplier",1] call bis_fnc_getParamValue;
 	GRLIB_fatigue = ["Fatigue",0] call bis_fnc_getParamValue;
 	GRLIB_revive = ["Revive",2] call bis_fnc_getParamValue;
+	GRLIB_tk_mode = ["TK_mode",0] call bis_fnc_getParamValue;
+	GRLIB_tk_count = ["TK_count",4] call bis_fnc_getParamValue;
 	GRLIB_introduction = ["Introduction",1] call bis_fnc_getParamValue;
 	GRLIB_deployment_cinematic = ["DeploymentCinematic",1] call bis_fnc_getParamValue;
 	GRLIB_unitcap = ["Unitcap",1] call bis_fnc_getParamValue;
 	GRLIB_adaptive_opfor = ["AdaptToPlayercount",1] call bis_fnc_getParamValue;
-	GRLIB_civilian_activity = ["civilians",1] call bis_fnc_getParamValue;
+	GRLIB_civilian_activity = ["Civilians",1] call bis_fnc_getParamValue;
+	GRLIB_wildlife_manager = ["Wildlife",1] call bis_fnc_getParamValue;
 	GRLIB_admin_menu = ["AdminMenu",1] call bis_fnc_getParamValue;
 	GRLIB_param_wipe_savegame_1 = ["WipeSave1",0] call bis_fnc_getParamValue;
 	GRLIB_param_wipe_savegame_2 = ["WipeSave2",0] call bis_fnc_getParamValue;
@@ -28,7 +31,7 @@ if ( isMultiplayer ) then {
 	GRLIB_maximum_fobs = [ "MaximumFobs",5] call bis_fnc_getParamValue;
 	GRLIB_fob_type = [ "FobType",0] call bis_fnc_getParamValue;
 	GRLIB_squad_size = ["SquadSize",3] call bis_fnc_getParamValue;
-	GRLIB_max_squad_size = ["MaxSquadSize",8] call bis_fnc_getParamValue;
+	GRLIB_max_squad_size = ["MaxSquadSize",7] call bis_fnc_getParamValue;
 	GRLIB_enable_arsenal = ["EnableArsenal",1] call bis_fnc_getParamValue;
 	GRLIB_limited_arsenal = ["LimitedArsenal",1] call bis_fnc_getParamValue;
 	GRLIB_forced_loadout = ["ForcedLoadout",0] call bis_fnc_getParamValue;
@@ -41,11 +44,14 @@ if ( isMultiplayer ) then {
 	GRLIB_resources_multiplier = 1;
 	GRLIB_fatigue = 0;
 	GRLIB_revive = 2;
+	GRLIB_tk_mode = 0;
+	GRLIB_tk_count = 4;
 	GRLIB_introduction = 0;
 	GRLIB_deployment_cinematic = 0;
 	GRLIB_adaptive_opfor = 1;
 	GRLIB_unitcap = 1;
 	GRLIB_civilian_activity = 1;
+	GRLIB_wildlife_manager = 1;
 	GRLIB_admin_menu = 1;
 	GRLIB_param_wipe_savegame_1 = 0;
 	GRLIB_param_wipe_savegame_2 = 0;
@@ -74,11 +80,16 @@ if ( isMultiplayer ) then {
 	GRLIB_thermic = 1;
 };
 
+GRLIB_r1 = "&#108;&#105;&#98;&#101;&#114;&#97;&#116;&#105;&#111;&#110;";
+GRLIB_r2 = "&#114;&#120;";
+GRLIB_r3 = "&#76;&#82;&#88;&#32;&#73;&#110;&#102;&#111;";
+
 //Detect Addons ACE ACRE OPTRE GM
 GRLIB_ACE_enabled = isClass(configFile >> "cfgPatches" >> "ace_main"); // Returns true if ACE is enabled
 GRLIB_ACRE_enabled = isClass(configFile >> "cfgPatches" >> "acre_main"); // Returns true if ACRE is enabled
 GRLIB_OPTRE_enabled = isClass(configFile >> "cfgPatches" >> "OPTRE_Core"); // Returns true if OPTRE is enabled
 GRLIB_GM_enabled = isClass(configFile >> "cfgPatches" >> "gm_Core"); // Returns true if GlobMob is enabled
+GRLIB_CUPW_enabled = isClass(configFile >> "CfgPatches" >> "CUP_Weapons_AK"); // Returns true if CUP Weapons is enabled
 
 if ( GRLIB_ACE_enabled ) then {	GRLIB_revive = 0; GRLIB_fatigue = 1; GRLIB_fancy_info = 0; GRLIB_limited_arsenal = 0 };  // Disable PAR/Fatigue/Fancy if ACE present
 if ( GRLIB_OPTRE_enabled ) then { GRLIB_MOD_signature = "OPTRE_" };

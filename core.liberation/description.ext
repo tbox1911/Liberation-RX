@@ -1,4 +1,4 @@
-author = "[GREUH] Zbug, [GREUH] McKeewa, [AKH] pSiKO";
+author = $STR_MISSION_AUTHOR;
 onLoadName = $STR_MISSION_TITLE;
 briefingName = $STR_MISSION_TITLE;
 onLoadMission = $STR_MISSION_DESCRIPTION;
@@ -21,8 +21,9 @@ joinUnassigned = 0;
 LARs_calculateSideGear = 1;
 
 class CfgFunctions {
-	#include "addons\LARs\blacklistArsenal.hpp"
+	#include "addons\LARs\blacklistArsenal\functions\blacklistArsenal.fncs"
 	#include "addons\GRAD\cfgFunctions.hpp"
+	#include "addons\SDB_DALE\CfgFunctions.hpp"
 };
 
 class cfgSounds {
@@ -65,3 +66,4 @@ class Repaint {
 #include "addons\MGR\MagRepack_Config.hpp"
 #include "addons\RPT\veh_repaint.hpp"
 #include "addons\VIRT\virtual_garage.hpp"
+#include "addons\SDB_DALE\RscLoadout.hpp"

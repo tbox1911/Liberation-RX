@@ -79,8 +79,8 @@ while { true } do {
 			_unit = _grp createUnit [_classname, _pos, [], 5, "NONE"];
 			_unit addUniform uniform player;
 			_unit setMass 10;
+			_unit setUnitRank "PRIVATE";
 			_unit setSkill 0.6;
-			_unit setRank "PRIVATE";
 			_grp = group player;
 			_unit setVariable ["PAR_Grp_ID", format["Bros_%1",PAR_Grp_ID], true];
 			_unit enableIRLasers true;
@@ -99,11 +99,12 @@ while { true } do {
 				_grp setGroupId [format ["%1 %2",squads_names select buildindex, groupId _grp]];
 				_idx = 0;
 				{
-					_unitrank = "Private";
-					if(_idx == 0) then { _unitrank = "Sergeant"; };
-					if(_idx == 1) then { _unitrank = "Corporal"; };
+					_unitrank = "PRIVATE";
+					if(_idx == 0) then { _unitrank = "SERGEANT"; };
+					if(_idx == 1) then { _unitrank = "CORPORAL"; };
 					_unit = _grp createUnit [_x, _pos, [], 5, "NONE"];
 					_unit setUnitRank _unitrank;
+					_unit setSkill 0.6;
 					_unit enableIRLasers true;
 					_unit enableGunLights "Auto";
 					_unit setVariable ["PAR_Grp_ID", format["AI_%1",PAR_Grp_ID], true];

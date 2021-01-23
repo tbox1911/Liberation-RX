@@ -8,33 +8,95 @@ PAR_fn_death = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_death.s
 PAR_fn_unconscious = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_unconscious.sqf";
 PAR_fn_eject = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_eject.sqf";
 PAR_fn_checkWounded = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_checkWounded.sqf";
+PAR_fn_globalchat = {
+  params ["_speaker", "_msg"];
+  if (isDedicated) exitWith {};
+  if (!(local _speaker)) exitWith {};
+  if ((_speaker getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1",PAR_Grp_ID] || isPlayer _speaker) then {
+    gamelogic globalChat _msg;
+  };
+};
+PAR_is_medic = {
+	params ["_unit"];
+	private _ret = false;
 
+	if ( getNumber (configfile >> "CfgVehicles" >> typeOf _unit >> "attendant") == 1 ) then {
+		_ret = true;
+	};
+	_ret
+};
+PAR_has_medikit = {
+	params ["_unit"];
+	private _ret = false;
+
+	if ( (PAR_Medikit in (vest _unit)) || (PAR_Medikit in (items _unit)) || (PAR_Medikit in (backpackItems _unit)) ) then {
+		_ret = true;
+	};
+	_ret
+};
+PAR_public_EH = {
+	private ["_timeout", "_action", "_msg"];
+	if(count _this < 2) exitWith {};
+
+	_EH  = _this select 0;
+	_target = _this select 1;
+
+	// PAR_deathMessage
+	if (_EH == "PAR_deathMessage") then
+	{
+		_killed = _target select 0;
+		_killer = _target select 1;
+		if (isPlayer _killed) then
+		{
+			if (isNull _killer) then {
+				gamelogic globalChat (format ["%1 was injured for an unknown reason", name _killed] );
+			} else {
+				gamelogic globalChat (format ["%1 was injured by %2", name _killed, name _killer] );
+			}
+		};
+	};
+
+	// PAR_tkMessage
+	if (_EH == "PAR_tkMessage") then
+	{
+		_killed = _target select 0;
+		_killer = _target select 1;
+
+		if (isPlayer _killer && isPlayer _killed ) then
+		{
+			gamelogic globalChat (format ["%1 has committed TK on %2",name _killer, name _killed]);
+		};
+	};
+};
+
+// AI Section
 PAR_fn_AI_Damage_EH = {
-  params ["_unit"];
-  _unit removeAllEventHandlers "HandleDamage";
-  _unit addEventHandler ["HandleDamage", damage_manager_EH ];
-  _unit addEventHandler ["HandleDamage", {
-      params ["_unit","","_dam"];
-      _veh = objectParent _unit;
-      if (!(isNull _veh) && round(damage _veh) > 0.8) then {[_veh, _unit, true] spawn PAR_fn_eject};
+	params ["_unit"];
+	_unit removeAllEventHandlers "HandleDamage";
+	_unit addEventHandler ["HandleDamage", damage_manager_EH ];
+	_unit addEventHandler ["HandleDamage", {
+		params ["_unit","","_dam"];
+		_veh = objectParent _unit;
+		if (!(isNull _veh) && round(damage _veh) > 0.8) then {[_veh, _unit, true] spawn PAR_fn_eject};
 
-      if (!(_unit getVariable ["PAR_wounded",false]) && (_dam >= 0.86)) then {
-        if (!(isNull _veh)) then {[_veh, _unit] spawn PAR_fn_eject};
-        _unit allowDamage false;
-        _unit setVariable ["PAR_wounded", true];
-        _unit setUnconscious true;
-        _unit setVariable ["PAR_BleedOutTimer", round(time + PAR_BleedOut), true];
-        [_unit] spawn PAR_fn_unconscious;
-      };
-      _dam min 0.86;
-  }];
-  _unit removeAllMPEventHandlers "MPKilled";
-  _unit addMPEventHandler ["MPKilled", {_this spawn PAR_Player_MPKilled}];
-  _unit setVariable ["PAR_wounded",false];
-  _unit setVariable ["PAR_myMedic", nil];
-  _unit setVariable ["PAR_busy", nil];
-  _unit setVariable ["PAR_heal", nil];
-  _unit setVariable ["PAR_healed", nil];
+		if (!(_unit getVariable ["PAR_wounded",false]) && (_dam >= 0.86)) then {
+			if (!(isNull _veh)) then {[_veh, _unit] spawn PAR_fn_eject};
+			_unit allowDamage false;
+			_unit setVariable ["PAR_wounded", true];
+			_unit setUnconscious true;
+			_unit setVariable ["PAR_BleedOutTimer", round(time + PAR_BleedOut), true];
+			[_unit] spawn PAR_fn_unconscious;
+		};
+		_dam min 0.86;
+	}];
+	_unit removeAllMPEventHandlers "MPKilled";
+	_unit addMPEventHandler ["MPKilled", {_this spawn PAR_Player_MPKilled}];
+	_unit setVariable ["PAR_wounded", false];
+	_unit setVariable ["PAR_myMedic", nil];
+	_unit setVariable ["PAR_busy", nil];
+	_unit setVariable ["PAR_heal", nil];
+	_unit setVariable ["PAR_healed", nil];
+	_unit setVariable ["PAR_AI_score", 5, true];
 };
 
 PAR_AI_Manager = {
@@ -81,8 +143,25 @@ PAR_AI_Manager = {
         // Blood trail
         if (damage _x > 0.6 && vehicle _x == _x) then {
           private _spray = createVehicle ["BloodSpray_01_New_F", getPos _x, [], 0, "CAN_COLLIDE"];
-          [_spray] spawn {sleep (7 + random 5); deleteVehicle (_this select 0)};
+          _spray spawn {sleep (10 + random 5); deleteVehicle _this};
         };
+
+		// AI level UP
+		_ai_score = _x getVariable ["PAR_AI_score", nil];
+		if (!isNil "_ai_score") then {
+			if (_ai_score <= 0 ) then {
+				_rank_lvl = ["PRIVATE", "CORPORAL", "SERGEANT", "LIEUTENANT", "CAPTAIN", "MAJOR", "COLONEL"];
+				_ai_skill = skill _x;
+				if (_ai_skill < 0.80) then {
+					_ai_rank = _rank_lvl select (_rank_lvl find (rank _x)) + 1;
+					_x setSkill (_ai_skill + 0.05);
+					_x setUnitRank _ai_rank;
+					_msg = format ["%1 was promoted to the rank of %2 !", name _x, _ai_rank];
+					[_x, _msg] call PAR_fn_globalchat;
+				};
+				_x setVariable ["PAR_AI_score", ((_rank_lvl find (rank _x)) + 1) * 5, true];
+			};
+		};
         sleep 0.3;
       } forEach _bros;
     };
@@ -90,14 +169,7 @@ PAR_AI_Manager = {
   };
 };
 
-PAR_fn_globalchat = {
-  params ["_speaker", "_msg"];
-  if (!(local _speaker)) exitWith {};
-  if ((_speaker getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1",PAR_Grp_ID] || isPlayer _speaker) then {
-    gamelogic globalChat _msg;
-  };
-};
-
+// Player Section
 PAR_Player_Init = {
 	// Clear event handler before adding it
 	player removeAllEventHandlers "HandleDamage";
@@ -122,26 +194,6 @@ PAR_Player_Init = {
 	hintSilent "";
 };
 
-PAR_is_medic = {
-	params ["_unit"];
-	private _ret = false;
-
-	if ( getNumber (configfile >> "CfgVehicles" >> typeOf _unit >> "attendant") == 1 ) then {
-		_ret = true;
-	};
-	_ret
-};
-
-PAR_has_medikit = {
-	params ["_unit"];
-	private _ret = false;
-
-	if ( (PAR_Medikit in (vest _unit)) || (PAR_Medikit in (items _unit)) || (PAR_Medikit in (backpackItems _unit)) ) then {
-		_ret = true;
-	};
-	_ret
-};
-
 PAR_HandleDamage_EH = {
 	params ["_unit", "_selectionName", "_amountOfDamage", "_killer", "_projectile", "_hitPartIndex", "_instigator"];
 
@@ -155,27 +207,27 @@ PAR_HandleDamage_EH = {
 	private _veh_unit = vehicle _unit;
 	private _veh_killer = vehicle _killer;
 	private _max_damage = 0.86;
-
-	// TK Protect
 	private _isProtected = _unit getVariable ["PAR_isProtected", 0];
 	private _isUnconscious = _unit getVariable ["PAR_isUnconscious", 0];
 
-	if (_isProtected == 0 && _isUnconscious == 0 && isPlayer _killer && _killer != _unit && _veh_unit != _veh_killer && BTC_vip find (name _killer) == -1) then {
-		_unit setVariable ["PAR_isProtected", 1, true];
-		PAR_tkMessage = [_unit, _killer];
-		publicVariable "PAR_tkMessage";
-		["PAR_tkMessage", [_unit, _killer]] call PAR_public_EH;
-		BTC_tk_PVEH = [name _killer];
-		publicVariable "BTC_tk_PVEH";
-		[_unit] spawn { sleep 3;(_this select 0) setVariable ["PAR_isProtected", 0, true] };
-		_isProtected = 1;
+	if (GRLIB_tk_mode != 2) then {
+		// TK Protect
+		if (_isProtected == 0 && _isUnconscious == 0 && isPlayer _killer && _killer != _unit && _veh_unit != _veh_killer && LRX_tk_vip find (name _killer) == -1) then {
+			_unit setVariable ["PAR_isProtected", 1, true];
+			PAR_tkMessage = [_unit, _killer];
+			publicVariable "PAR_tkMessage";
+			["PAR_tkMessage", [_unit, _killer]] call PAR_public_EH;
+			[_unit, _killer] call LRX_tk_check;
+			[_unit, _killer] remoteExec ["LRX_tk_check", owner _killer];
+			[_unit] spawn { sleep 3;(_this select 0) setVariable ["PAR_isProtected", 0, true] };
+			_isProtected = 1;
+		};
+
+		if (_isProtected == 1) then {
+			_max_damage = 0.15;
+		};
 	};
 
-	if (_isProtected == 1) then {
-		_max_damage = 0;
-	};
-
-	private _isUnconscious = _unit getVariable ["PAR_isUnconscious", 0];
 	if (_isProtected == 0 && _isUnconscious == 0 && (_amountOfDamage >= 0.86)) then {
 		closedialog 0;
 		_unit setVariable ["PAR_isUnconscious", 1, true];
@@ -259,40 +311,5 @@ PAR_Player_Unconscious = {
 
 		// Dog stop
 		if (!isNil "_my_dog") then { _my_dog setVariable ["do_find", nil] };
-	};
-};
-
-PAR_public_EH = {
-  private ["_timeout", "_action", "_msg"];
-	if(count _this < 2) exitWith {};
-
-	_EH  = _this select 0;
-	_target = _this select 1;
-
-	// PAR_deathMessage
-	if (_EH == "PAR_deathMessage") then
-	{
-		_killed = _target select 0;
-		_killer = _target select 1;
-		if (isPlayer _killed) then
-		{
-			if (isNull _killer) then {
-				gamelogic globalChat (format ["%1 was injured for an unknown reason", name _killed] );
-			} else {
-				gamelogic globalChat (format ["%1 was injured by %2", name _killed, name _killer] );
-			}
-		};
-	};
-
-	// PAR_tkMessage
-	if (_EH == "PAR_tkMessage") then
-	{
-		_killed = _target select 0;
-		_killer = _target select 1;
-
-		if (isPlayer _killer && isPlayer _killed ) then
-		{
-			gamelogic globalChat (format ["%1 has committed TK on %2",name _killer, name _killed]);
-		};
 	};
 };

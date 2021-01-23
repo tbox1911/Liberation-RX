@@ -324,8 +324,10 @@
 	};
 
 	R3F_LOG_active = true;
-	waitUntil {!(isNull (findDisplay 46))};
-    systemChat "-------- R3F Logistics Initialized --------";
+	if ( hasInterface ) then {
+		waitUntil {!(isNull (findDisplay 46))};
+    	systemChat "-------- R3F Logistics Initialized --------";
+	};
 
 #else
 	// Pour les actions du PC d'arti

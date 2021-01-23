@@ -35,9 +35,6 @@ if ( count _blackList > 0 ) then {
 	_whiteList = [ _whiteList, _blackList ] call LARs_fnc_removeBlack;
 };
 
-//Fix for weapon name compares ( sigh )
-_whiteList = [ _whiteList ] call LARs_fnc_fixWeaponNames;
-
 _cargo = [ "cargo", _whitelist ] call LARs_fnc_createList;
 
 _box setVariable [ format[ "LARs_arsenal_%1_data", _arsenalName], _whiteList ];

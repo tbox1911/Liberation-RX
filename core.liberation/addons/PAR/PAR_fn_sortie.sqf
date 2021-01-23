@@ -1,5 +1,6 @@
 params ["_wnded", "_medic"];
 
+if (isDedicated) exitWith {};
 if (!(local _wnded)) exitWith {};
 if (lifeState _wnded != "INCAPACITATED") exitWith { [_medic, _wnded] call PAR_fn_medicRelease };
 
@@ -16,7 +17,7 @@ if (!isPlayer _medic) then {
     _medic playMoveNow "ainvpknlmstpslaywrfldnon_medicother";
   };
   private _grbg = createVehicle [(PAR_MedGarbage call BIS_fnc_selectRandom), getPos _wnded, [], 0, "CAN_COLLIDE"];
-  [_grbg] spawn {sleep (60 + random 10); deleteVehicle (_this select 0)};
+  _grbg spawn {sleep (60 + random 10); deleteVehicle _this};
   sleep 6;
 };
 
@@ -36,6 +37,7 @@ if (_isMedic && _hasMedikit) then {
 [
   [_wnded],
 {
+  if (isDedicated) exitWith {};
   params ["_wnded"];
   {
     if (["Revive",(_wnded actionParams _x) select 0] call bis_fnc_inString) then {
@@ -48,7 +50,7 @@ if (_isMedic && _hasMedikit) then {
       _wnded removeAction _x;
     };
   } count (actionIDs _wnded);
-}] remoteExec ["bis_fnc_call", [0,-2] select isDedicated,true];
+}] remoteExec ["bis_fnc_call", 0];
 
 _wnded selectWeapon primaryWeapon _wnded;
 sleep 0.5;

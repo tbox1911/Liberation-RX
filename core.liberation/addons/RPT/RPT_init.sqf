@@ -16,8 +16,9 @@ RPT_colorList =[
 	//["Purple", RPT_color + "(0.1,0,0.3,1)"], // #(argb,8,8,3)color(0.8,0,1,0.1)
 	["ARPA Navy", RPT_texDir + "arpa_navy.paa"],
 	["ARPA Woodland", RPT_texDir + "arpa_woodland.paa"],
+	["Abstract Red", RPT_texDir + "abstraitrouge.paa"],
 	["Abstract Green", RPT_texDir + "abstraitvert.paa"],
-	["Abstract Mod", RPT_texDir + "abstraitmoderne.paa"],
+	["Abstract Modern", RPT_texDir + "abstraitmoderne.paa"],
 	["Camo Green 1", RPT_texDir + "camovert1.paa"],
 	["Camo Green 2", RPT_texDir + "camovert2.paa"],
 	["Digital", RPT_texDir + "digi.paa"],
@@ -33,5 +34,7 @@ RPT_colorList =[
 	["Woodland Tiger", RPT_texDir + "woodtiger.paa"]
 ];
 
-waitUntil {!(isNull (findDisplay 46))};
-systemChat "-------- Paint Shop Initialized --------";
+if ( hasInterface ) then {
+	waitUntil {!(isNull (findDisplay 46))};
+	systemChat "-------- Paint Shop Initialized --------";
+};

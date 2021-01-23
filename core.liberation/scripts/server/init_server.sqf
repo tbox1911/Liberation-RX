@@ -53,6 +53,7 @@ wait_to_spawn_sector = compileFinal preprocessFileLineNumbers "scripts\server\se
 createlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_createLandMines.sqf";
 showlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_showLandMines.sqf";
 clearlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_clearLandMines.sqf";
+if (!([] call F_getValid)) exitWith {};
 
 [] execVM "scripts\server\base\fobbox_manager.sqf";
 [] execVM "scripts\server\base\huron_manager.sqf";
@@ -61,7 +62,6 @@ clearlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scri
 [] execVM "scripts\server\battlegroup\readiness_increase.sqf";
 [] execVM "scripts\server\game\apply_default_permissions.sqf";
 [] execVM "scripts\server\game\apply_saved_scores.sqf";
-[] execVM "scripts\server\game\capture_vehicles.sqf";
 [] execVM "scripts\server\game\clean.sqf";
 [] execVM "scripts\server\game\manage_time.sqf";
 [] execVM "scripts\server\game\manage_weather.sqf";
@@ -93,9 +93,6 @@ clearlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scri
 {
 	if ( (_x != player) && (_x distance (getmarkerpos GRLIB_respawn_marker) < 200 ) ) then {deleteVehicle _x};
 } foreach allUnits;
-
-if (isNil "BTC_tk_PVEH") then { BTC_tk_PVEH = [] };
-publicVariable "BTC_tk_PVEH";
 
 if (isNil "global_locked_group") then { global_locked_group = [] };
 publicVariable "global_locked_group";

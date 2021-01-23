@@ -10,7 +10,7 @@ if ( isServer ) then {
 		};
 	};
 
-	//diag_log format ["DBG: %1 %2 %3", name _killer, side (group _killer), _r1];
+	//diag_log format ["DBG: %1 %2", name _killer, side (group _killer)];
 	//diag_log format ["DBG: %1 %2", name _unit, side (group _unit)];
 
 	// ACE
@@ -20,12 +20,6 @@ if ( isServer ) then {
 		};
 	};
 
-	if ( ((typeof _unit) in [ammobox_o_typename, ammobox_b_typename, fuelbarrel_typename]) && ((getPosATL _unit) select 2 < 10) ) exitWith {
-		sleep random 2;
-		( "R_80mm_HE" createVehicle (getPosATL _unit) ) setVelocity [0, 0, -200];
-		deleteVehicle _unit;
-	};
-
 	if ( (typeof _unit) in [FOB_box_typename, FOB_truck_typename, foodbarrel_typename, waterbarrel_typename] ) exitWith {
 		sleep 30;
 		deleteVehicle _unit;
@@ -33,11 +27,28 @@ if ( isServer ) then {
 
 	if ( typeof _unit == mobile_respawn ) exitWith { [_unit, "del"] remoteExec ["addel_beacon_remote_call", 2] };
 
-	please_recalculate = true;
+	if ( ((typeof _unit) in [ammobox_o_typename, ammobox_b_typename, ammobox_i_typename, fuelbarrel_typename]) && ((getPosATL _unit) select 2 < 10) ) exitWith {
+		waitUntil { sleep 0.5; (isNull attachedTo _unit) };
+		sleep random 2;
+		( "R_80mm_HE" createVehicle (getPosATL _unit) ) setVelocity [0, 0, -200];
+		deleteVehicle _unit;
+	};
+
+	if ((_unit iskindof "LandVehicle") || (_unit iskindof "Air") || (_unit iskindof "Ship") ) then {
+		[_unit] call clean_vehicle;
+	};
+
+	if ( _unit isKindOf "Man" && vehicle _unit != _unit ) then {
+		sleep 3;
+		_unit action ["Eject", vehicle _unit];
+		//moveOut _unit;
+	};
 
 	if (isNil "infantry_weight") then { infantry_weight = 33 };
 	if (isNil "armor_weight") then { armor_weight = 33 };
 	if (isNil "air_weight") then { air_weight = 33 };
+
+	if ( isPlayer _unit ) then { stats_player_deaths = stats_player_deaths + 1 };
 
 	if ( side _killer == GRLIB_side_friendly ) then {
 
@@ -73,18 +84,6 @@ if ( isServer ) then {
 		if ( air_weight < 0 ) then { air_weight = 0 };
 	};
 
-	if ( isPlayer _unit ) then { stats_player_deaths = stats_player_deaths + 1 };
-
-	if ((_unit iskindof "LandVehicle") || (_unit iskindof "Air") || (_unit iskindof "Ship") ) then {
-		[_unit] call clean_vehicle;
-	};
-
-	if ( _unit isKindOf "Man" && vehicle _unit != _unit ) then {
-		sleep 3;
-		_unit action ["Eject", vehicle _unit];
-		//moveOut _unit;
-	};
-
 	if ( _unit isKindOf "Man" && _unit != _killer ) then {
 		_isPrisonner = _unit getVariable ["GRLIB_is_prisonner", false];
 		if ( side (group _unit) == GRLIB_side_civilian || _isPrisonner ) then {
@@ -109,7 +108,7 @@ if ( isServer ) then {
 				};
 
 				if (_owner_id != "0") then {
-					_owner_player = (allPlayers select {getPlayerUID _x == _owner_id}) select 0;
+					_owner_player = _owner_id call BIS_fnc_getUnitByUID;
 					_owner_player addScore - GRLIB_civ_killing_penalty;
 					_msg = format ["%1, Your AI kill Civilian !!", name _owner_player] ;
 					[gamelogic, _msg] remoteExec ["globalChat", 0];
@@ -123,6 +122,11 @@ if ( isServer ) then {
 				stats_opfor_soldiers_killed = stats_opfor_soldiers_killed + 1;
 				if ( isplayer _killer ) then {
 					stats_opfor_killed_by_players = stats_opfor_killed_by_players + 1;
+				};
+
+				private _ai_score = _killer getVariable ["PAR_AI_score", nil];
+				if (!isNil "_ai_score") then {
+					_killer setVariable ["PAR_AI_score", (_ai_score - 1), true];
 				};
 			};
 			if ( side (group _unit) == GRLIB_side_friendly ) then {
@@ -153,6 +157,7 @@ if ( isServer ) then {
 	};
 
 	_unit setVariable ["R3F_LOG_disabled", true, true];
+	please_recalculate = true;
 	//sleep 3;
 	//_unit enableSimulationGlobal false;
 };

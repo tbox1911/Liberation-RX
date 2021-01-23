@@ -20,7 +20,7 @@ private _convoy_destinations = [];
 { _convoy_destinations pushback (getMarkerPos _x); } foreach _convoy_destinations_markers;
 
 private _spawnpos = _convoy_destinations select 0;
-[[ 4, _spawnpos ]] remoteExec ["remote_call_intel", 0];
+[ 4, _spawnpos ] remoteExec ["remote_call_intel", 0];
 
 private _scout_vehicle = [ [ _spawnpos, 30, 0 ] call BIS_fnc_relPos, opfor_mrap, false, false ] call F_libSpawnVehicle;
 private _escort_vehicle = [ [ _spawnpos, 10, 0 ] call BIS_fnc_relPos, opfor_vehicles_low_intensity call BIS_fnc_selectRandom, false, false ] call F_libSpawnVehicle;

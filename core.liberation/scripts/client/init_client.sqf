@@ -7,7 +7,6 @@ cinematic_camera = compileFinal preprocessFileLineNumbers "scripts\client\ui\cin
 write_credit_line = compileFinal preprocessFileLineNumbers "scripts\client\ui\write_credit_line.sqf";
 do_load_box = compileFinal preprocessFileLineNumbers "scripts\client\ammoboxes\do_load_box.sqf";
 set_rank = compileFinal preprocessFileLineNumbers "scripts\client\misc\set_rank.sqf";
-kick_player = compileFinal preprocessFileLineNumbers "scripts\client\misc\kick_player.sqf";
 vehicle_permissions = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_permissions.sqf";
 fetch_permission = compileFinal preprocessFileLineNumbers "scripts\client\misc\fetch_permission.sqf";
 clear_wpt = compileFinal preprocessFileLineNumbers "scripts\client\misc\clear_waypoints.sqf";
@@ -39,6 +38,7 @@ my_group = group player;
 
 [] execVM "scripts\client\commander\enforce_whitelist.sqf";
 [] execVM "scripts\client\misc\init_markers.sqf";
+if (!([] call F_getValid)) exitWith {endMission "LOSER"};
 
 if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 	[] execVM "scripts\client\markers\empty_vehicles_marker.sqf";
@@ -99,7 +99,7 @@ GREUH_TipsText = [];
 	if (_x select [0, 1] != "t" && _x != "br") then {
     	GREUH_TipsText pushback (_x select [8]);
 	};
-} forEach ((localize "STR_TUTO_TEXT11") splitString "></");
+} forEach ((localize "STR_TUTO_TEXT12") splitString "></");
 
 {
 	[_x] call BIS_fnc_drawCuratorLocations;

@@ -1,0 +1,16 @@
+﻿class LARs_blacklistArsenal
+{
+	tag = "LARs";
+	class Arsenal
+	{
+		file = "addons\LARs\blacklistArsenal\functions";
+		class allGear { preInit = 1; };
+		class blacklistArsenal {};
+		class createList {};
+		class removeBlack {};
+		class sideGear {};
+		class updateArsenal {};
+	};
+
+	#include "override\override_templates.fncs"
+};

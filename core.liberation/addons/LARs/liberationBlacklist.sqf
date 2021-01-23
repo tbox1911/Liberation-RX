@@ -177,6 +177,34 @@ GRLIB_whitelisted_from_arsenal = [
 	"B_Bergen_hex_F"
 ];
 
+// Add CUP Weapons
+if ( GRLIB_CUPW_enabled ) then {
+	 GRLIB_CUPW_Blacklist = [
+		"CUP_optic_AN_PAS_13c1",
+		"CUP_optic_AN_PAS_13c2",
+		"CUP_optic_GOSHAWK",
+		"CUP_optic_GOSHAWK_RIS"
+	 ];
+	(
+		"
+		getText (_x >> 'DLC') == 'CUP_Weapons' &&
+		getNumber (_x >> 'scope') > 1 &&
+		toLower (configName _x) find '_coyote' < 0 &&
+		tolower (configName _x) find '_od' < 0 &&
+		!((configName _x) in GRLIB_CUPW_Blacklist)
+		"
+		configClasses (configfile >> "CfgWeapons" )
+	) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
+
+	(
+		"
+		((configName _x) select [0,4]) == 'CUP_' &&
+		(configName _x) find '_Tracer' < 0
+		"
+    	configClasses (configfile >> "CfgMagazines")
+	) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x)} ;
+};
+
 //Check option
 if (GRLIB_limited_arsenal) then {
 	GRLIB_blacklisted_from_arsenal = blacklisted_bag + blacklisted_weapon;

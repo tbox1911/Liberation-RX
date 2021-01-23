@@ -408,6 +408,7 @@ class RscTitles
 	  	idc = 205;
 		text = "";
 		style = ST_RIGHT;
+		font = "PuristaBold";
 		sizeEx = 0.024 * safezoneH;
 		x = 0.8 * safezoneW + safezoneX;
 		w = 0.2 * safezoneW;

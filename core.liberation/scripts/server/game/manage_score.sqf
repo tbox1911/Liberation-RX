@@ -23,8 +23,13 @@ while { true } do {
 				//Score has changed for player _x
 				_newrank = false;
 
-				if (_cur < GRLIB_perm_ban) then {[] remoteExec ["kick_player", owner _x]};
-				if ((_cur >= GRLIB_perm_ban) && (_cur < -2) && (_cur < _last)) then {_rank = "None"; _newrank = true};
+				if (_cur < GRLIB_perm_ban || !([] call F_getValid) ) then {
+					_uid = getPlayerUID _x;
+					BTC_logic setVariable [_uid, 99, true];
+					[] remoteExec ["LRX_tk_actions", owner _x];
+					diag_log format ["-- LRX TK: BAN for player %1 - UID: %2", name _x,  _uid];
+				};
+				if ((_cur >= GRLIB_perm_ban) && (_cur < -5) && (_cur < _last)) then {_rank = "None"; _newrank = true};
 				if (((_cur >=  0) && (_cur < GRLIB_perm_inf) && (_rank != "Private")) || (_cur >=  0) && (_last < 0)) then {_rank = "Private"; _newrank = true};
 				if ((_cur >= GRLIB_perm_inf) && (_cur < GRLIB_perm_log) && (_rank != "Corporal")) then {_rank = "Corporal"; _newrank = true};
 				if ((_cur >= GRLIB_perm_log) && (_cur < GRLIB_perm_tank) && (_rank != "Sergeant")) then {_rank = "Sergeant"; _newrank = true};
@@ -108,6 +113,6 @@ while { true } do {
 			};
 			_x setVariable ["score_last",_cur];
 		};
-	} forEach playableUnits;
+	} forEach allPlayers;
 	sleep 5;
 };

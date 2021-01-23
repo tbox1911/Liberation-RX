@@ -6,8 +6,7 @@
 //whitelist/blacklist
 //ARRAY of equipment
 //OR
-//STRING name of a global variable holding the array of equipment to be blacklisted or CfgPatches class
-//- saves passing large blacklist arrays across the network
+//STRING name of a global variable holding the array of equipment to be blacklisted or CfgPatches class - saves passing large blacklist arrays across the network
 //SIDE - experimental list from config of side equipment
 //**********************************
 //targets ( OPTIONAL ) - as per remoteExec ( https://community.bistudio.com/wiki/remoteExec )
@@ -48,9 +47,9 @@ ERROR( isNil { _box getVariable [ format[ "LARs_arsenal_%1_data", _arsenalName ]
 	diag_log format[ "WARNING - Overwriting LARs Arsenal %1 on %2", _arsenalName, str _box ];
 };
 
-//[ _box ] call BIS_fnc_objectVar;
+[ _box ] call BIS_fnc_objectVar;
 
-if !( _target isEqualType false )  exitWith {
+if !( _target isEqualType false ) exitWith {
 	_this set [ 2, false ];
 	_this remoteExec [ "LARs_fnc_blacklistArsenal", _target, format[ "%1_%2", _box, _arsenalName ] ]
 };
@@ -71,22 +70,13 @@ _thread = _this spawn {
 		[ "_condition", {true} , [ {} ] ]
 	];
 
-	waitUntil {sleep 1; !isNil "LARs_allGearInit" };
+	waitUntil { !isNil "LARs_allGearInit" };
 
-  //Get whiteList or default to BIS whitelist
-  _whiteList = _lists param[ 0, LARs_allGear, [ [], "", sideUnknown, true ] ];
-  if !( _whiteList isEqualType [] ) then {
-    _whiteList = if ( _whiteList isEqualType true ) then {
-      if ( _whiteList ) then {
-        LARs_allGear;
-      }else{
-        [];
-      };
-    }else{
-      [ _whiteList ];
-    };
-  };
-
+	//Get whiteList or default to BIS whitelist
+	_whiteList = _lists param[ 0, LARs_allGear, [ [], "", sideUnknown ] ];
+	if !( _whiteList isEqualType [] ) then {
+		_whiteList = [ _whiteList ];
+	};
 	//Get blackList or default to []
 	_blackList = _lists param[ 1, [], [ [], "", sideUnknown ] ];
 	if !( _blackList isEqualType [] ) then {
@@ -103,6 +93,7 @@ _thread = _this spawn {
 			};
 		}count _x > 0
 	}count[ _whiteList, _blackList ] > 0 && { isNil "LARs_sideGear" } ) exitWith {
+		[ "LARs_blacklist" ] call BIS_fnc_endLoadingScreen;
 		"SIDE used in white/blacklist - currently no side data, switch on LARs_calculateSideGear in description" call BIS_fnc_error;
 	};
 
@@ -113,12 +104,8 @@ _thread = _this spawn {
 	//Remove blacklist items from the whitelist
 	_whiteList = [ _whiteList, _blackList ] call LARs_fnc_removeBlack;
 
-	//Fix for weapon name compares ( sigh )
-	_whiteList = [ _whiteList ] call LARs_fnc_fixWeaponNames;
-
 	//Create a cargo list
 	_cargo = [ "cargo", _whitelist ] call LARs_fnc_createList;
-
 
 	//Add aresnal data and condition to the box
 	_box setVariable [ format[ "LARs_arsenal_%1_data", _arsenalName], _whiteList];
@@ -129,42 +116,46 @@ _thread = _this spawn {
 	//["AmmoboxInit",[_box,false,_condition]] call BIS_fnc_arsenal;
 	_box setVariable [format [ "LARs_arsenal_%1_action", _arsenalName], _box addAction [
 		format [ "%1 - %2", localize "STR_A3_Arsenal", _arsenalName ],
-		compile format[ "
-			_box = _this select 0;
-			_unit = _this select 1;
+		{
+			params[ "_box", "_unit", "_id", "_arsenalName" ];
 
-			_savedD = BIS_fnc_arsenal_data;
-			_data = _box getVariable 'LARs_arsenal_%1_data';
-			BIS_fnc_arsenal_data = _data;
-
-			_savedC = _box getVariable [ 'bis_addVirtualWeaponCargo_cargo', [] ];
-			_cargo = _box getVariable 'LARs_arsenal_%1_cargo';
-			_box setvariable [ 'bis_addVirtualWeaponCargo_cargo', _cargo ];
+			_savedCargo = _box getVariable [ "bis_addVirtualWeaponCargo_cargo", [] ];
+			_savedMissionCargo = missionNamespace getVariable [ "bis_addVirtualWeaponCargo_cargo", [] ];
+			_cargo = _box getVariable format[ "LARs_arsenal_%1_cargo", _arsenalName ];
+			_box setVariable [ "bis_addVirtualWeaponCargo_cargo", _cargo ];
+			missionNamespace setVariable [ "bis_addVirtualWeaponCargo_cargo", _cargo ];
 
 			['Open',[nil,_box]] call BIS_fnc_arsenal;
 
-			_nul = [ _box, _savedD, _savedC ] spawn {
-				_box = _this select 0;
+			_box setVariable [ "LARs_arsenalClosedID", [ missionNamespace, "arsenalClosed", compile format[ "
+				%1 setVariable [ 'bis_addvirtualWeaponCargo_cargo', %2 ];
+				missionNamespace setVariable [ 'bis_addvirtualWeaponCargo_cargo', %3 ];
+				[ missionNamespace, 'arsenalClosed', %1 getVariable 'LARs_arsenalClosedID' ] call BIS_fnc_removeScriptedEventHandler;
+				%1 setVariable [ 'LARs_arsenalClosedID', nil ];
+			", _box, _savedCargo, _savedMissionCargo ] ]call BIS_fnc_addScriptedEventHandler ];
 
-				comment'wait until the arsenal is open';
-				waituntil{ sleep 0.5; !isNull ( uiNamespace getvariable [ 'RscDisplayArsenal', displayNull ] ) };
-
-				comment'wait until the arsenal has been closed';
-				waitUntil { sleep 0.5; isNull ( uinamespace getvariable ['BIS_fnc_arsenal_cam',objnull] ) };
-
-				comment'reapply default arsenal whitelist';
-				BIS_fnc_arsenal_data = _this select 1;
-				_box setVariable [ 'bis_addvirtualWeaponCargo_cargo', _this select 2 ];
-			};
-		", _arsenalName ],
-		[],
+//			_nul = [ _box, _savedCargo, _savedMissionCargo ] spawn {
+//				params[ "_box", "_savedCargo", "_savedMissionCargo" ];
+//
+//				//wait until the arsenal is open
+//				waitUntil{ !isNull ( uiNamespace getVariable [ "RscDisplayArsenal", displayNull ] ) };
+//
+//				//wait until the arsenal has been closed
+//				waitUntil { sleep 0.5; isNull ( uiNamespace getVariable ["BIS_fnc_arsenal_cam",objNull] ) };
+//
+//				//reapply default arsenal whitelist
+//				_box setVariable [ "bis_addvirtualWeaponCargo_cargo", _savedCargo ];
+//				missionNamespace setVariable [ "bis_addvirtualWeaponCargo_cargo", _savedMissionCargo ];
+//			};
+		},
+		_arsenalName,
 		6,
 		true,
 		false,
 		"",
 		format[ "
-			_cargo = _target getvariable ['LARs_arsenal_%1_data', [] ];
-			if (count _cargo == 0) then {
+			_cargo = _target getvariable ['LARs_arsenal_%1_cargo', [] ];
+			if ( { count _x > 0 }count _cargo == 0) then {
 				_target removeaction (_target getvariable ['LARs_arsenal_%1_action', -1 ]);
 				_target setvariable ['LARs_arsenal_%1_action',nil];
 			};
@@ -180,3 +171,5 @@ _thread = _this spawn {
 	};
 
 };
+
+""

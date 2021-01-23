@@ -114,6 +114,21 @@ class Params
 		texts[] = { $STR_PARAMS_REVIVE3, $STR_PARAMS_REVIVE2, $STR_PARAMS_REVIVE1, $STR_PARAMS_DISABLED };
 		default = 2;
 	};
+
+	class TK_mode {
+		title = $STR_TK_MODE;
+		values[] = { 0, 1, 2 };
+		texts[] = { $STR_TK_MODE_STRICT, $STR_TK_MODE_RELAX, $STR_PARAMS_DISABLED };
+		default = 0;
+	};
+
+	class TK_count {
+		title = $STR_TK_COUNT;
+		values[] = { 3, 4, 5, 6, 7, 8, 9, 10 };
+		texts[] = { 3, 4, 5, 6, 7, 8, 9, 10 };
+		default = 4;
+	};
+
 	class PassiveIncome{
 		title = $STR_PARAM_PASSIVE_INCOME;
 		values[] = {1,0};
@@ -124,6 +139,12 @@ class Params
 		title = $STR_PARAMS_CIVILIANS;
 		values[] = {0,0.5,1,2};
 		texts[] = {$STR_PARAMS_CIVILIANS1,$STR_PARAMS_CIVILIANS2,$STR_PARAMS_CIVILIANS3,$STR_PARAMS_CIVILIANS4};
+		default = 1;
+	};
+	class WildLife{
+		title = $STR_PARAM_WILDLIFE;
+		values[] = {1,0};
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 1;
 	};
 	class TeamkillPenalty{
