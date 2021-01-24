@@ -24,6 +24,8 @@ switch (true) do {
 		closeDialog 0;
 		closeDialog 0;
 		closeDialog 0;
+		GRLIB_introduction = false;
+		cinematic_camera_started = false;
 		sleep 1;
 		player enableSimulationGlobal false;
 		player setpos [0,0,0];
@@ -45,5 +47,6 @@ switch (true) do {
 		disableUserInput true;
 		disableUserInput false;
 		endMission "LOSER";
+		sleep 300;
 	};
 };
