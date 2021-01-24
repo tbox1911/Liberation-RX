@@ -22,7 +22,7 @@ while { dialog && alive player } do {
 		_refresh = false;
 
 		_myveh_lst = [nearestObjects [player, ["LandVehicle","Air","Ship"], 200], {
-			alive _x && count (crew _x) == 0 &&
+			alive _x && (count (crew _x) == 0 || typeOf _x in uavs) &&
 			(_x distance lhd) >= 1000 &&
 			_x getVariable ["GRLIB_vehicle_owner", ""] == getPlayerUID player &&
 			!(typeOf _x in _recycleable_blacklist)
@@ -85,7 +85,7 @@ while { dialog && alive player } do {
 				if (count ([GRLIB_garage, {(getPlayerUID player == _x select 3)}] call BIS_fnc_conditionalSelect) >= _max_vehicle) exitWith { hintSilent (format ["Garage is Full !!\nMax %1 vehicles.", _max_vehicle]) };
 				if (damage _vehicle != 0) exitWith { hintSilent "Damaged Vehicles cannot be Parked !" };
 				if (_vehicle getVariable ["GRLIB_ammo_truck_load", 0] > 0) exitWith { hintSilent "Loaded Vehicles cannot be Parked !" };
-				if (count (crew _vehicle) > 0) exitWith { hintSilent "Vehicles with crew cannot be Parked !" };
+				if (count (crew _vehicle) > 0 && !(typeOf _vehicle in uavs)) exitWith { hintSilent "Vehicles with crew cannot be Parked !" };
 				if (_timer >= time) exitWith { hintSilent _msg };
 
 				private _result = ["<t align='center'>Only Weapons and Cargo is Saved !!<br/>Are you sure ?</t>", "Warning !", true, true] call BIS_fnc_guiMessage;
