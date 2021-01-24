@@ -2,7 +2,7 @@ private ["_near_arsenal", "_near_medic", "_needammo1", "_needammo2", "_needmedic
 
 _distarsenal = 30;
 _maxsec = 3;
-_list_vehicles = [];
+_list_vehicles = [] + uavs;
 {
 	_veh = (_x select 0);
 	if (!(_veh isKindOf "Plane")) then {
@@ -140,7 +140,7 @@ while { true } do {
 						};
 					} forEach _magType;
 				} else {
-					if ( _unit == player ||  ((uavControl _vehicle select 0) == player) ) then {
+					if ( _unit == player || ((uavControl _vehicle select 0) == player) ) then {
 						_screenmsg = format [ "%1\nRearming Cooldown (%2 sec), Please Wait...", _vehicle_class_text, round (_timer - time) ];
 						titleText [ _screenmsg, "PLAIN DOWN" ];
 					};
