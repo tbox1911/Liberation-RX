@@ -103,7 +103,7 @@ heavy_vehicles = [
 air_vehicles = [
 	["B_UAV_01_F",1,10,5,GRLIB_perm_log],
 	["B_UAV_06_F",1,30,5,GRLIB_perm_tank],
-	["B_UAV_02_F",5,1000,5,GRLIB_perm_air],
+	["B_UAV_02_dynamicLoadout_F",5,1000,5,GRLIB_perm_air],
 	["B_T_UAV_03_F",5,1500,10,GRLIB_perm_max],
 	["B_UAV_05_F",5,2000,15,GRLIB_perm_max],
 	["C_Plane_Civil_01_F",1,50,5,GRLIB_perm_air],
@@ -129,6 +129,8 @@ blufor_air = [
 	"B_Plane_CAS_01_F",
 	"B_Plane_Fighter_01_F",
 	"B_Plane_Fighter_01_Stealth_F",
+	"I_Heli_light_03_F",
+	"B_Heli_Attack_01_F",
 	"B_Plane_CAS_01_Cluster_F",
 	"B_Plane_Fighter_01_Cluster_F",
 	"B_Plane_Fighter_01_F",
@@ -304,7 +306,7 @@ squads = [
 // All the UAVs must be declared here
 uavs = [
 	"B_UAV_01_F",
-	"B_UAV_02_F",
+	"B_UAV_02_dynamicLoadout_F",
 	"B_T_UAV_03_F",
 	"B_UAV_05_F",
 	"B_UAV_06_F",
