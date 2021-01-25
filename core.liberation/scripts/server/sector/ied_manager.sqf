@@ -6,12 +6,12 @@ if ( _number <= 0 ) exitWith {};
 _number = round _number;
 
 _activation_radius_infantry = 6.66;
-_activation_radius_vehicles = 10;
+_activation_radius_vehicles = 12;
 
 _spread = 7;
 _infantry_trigger = 2 + (floor (random 3));
 _ultra_strong = false;
-if ( random 100 < 12 ) then {
+if ( random 100 < 30 ) then {
 	_ultra_strong = true;
 };
 _vehicle_trigger = 1;
