@@ -7,6 +7,7 @@ if ( isNil "Arsenal_typename" ) then { Arsenal_typename = "B_supplyCrate_F" };
 if ( isNil "Respawn_truck_typename" ) then { Respawn_truck_typename = "B_Truck_01_medical_F" };
 if ( isNil "mobile_respawn" ) then { mobile_respawn = "Land_TentDome_F" };		// "Land_SatelliteAntenna_01_F"
 if ( isNil "mobile_respawn_bag" ) then { mobile_respawn_bag = "B_Kitbag_Base" };
+if ( isNil "medicalbox_typename" ) then { medicalbox_typename = "Box_B_UAV_06_medical_F" };
 if ( isNil "huron_typename" ) then { huron_typename = "B_Heli_Transport_03_unarmed_F" };
 if ( isNil "ammobox_b_typename" ) then { ammobox_b_typename = "Box_NATO_AmmoVeh_F" };
 if ( isNil "ammobox_o_typename" ) then { ammobox_o_typename = "Box_East_AmmoVeh_F" };
@@ -206,7 +207,7 @@ buildings = [
 
 support_vehicles = [
 	[Arsenal_typename,0,10,0,0],
-	["Box_B_UAV_06_medical_F",5,5,0,0],
+	[medicalbox_typename,5,5,0,0],
 	[mobile_respawn,10,5,0,0],
 	[canisterFuel,0,5,1,0],
 	["C_Offroad_01_repair_F",5,15,5,GRLIB_perm_inf],
@@ -219,8 +220,8 @@ support_vehicles = [
 	["B_Truck_01_ammo_F",5,150,10,GRLIB_perm_tank],
 	["B_Truck_01_Repair_F",10,130,10,GRLIB_perm_tank],
 	["B_Truck_01_fuel_F",5,120,40,GRLIB_perm_tank],
-  	["Box_NATO_Ammo_F",0,80,0,GRLIB_perm_log],
-  	["Box_NATO_WpsLaunch_F",0,150,0,GRLIB_perm_tank],
+	["Box_NATO_Ammo_F",0,80,0,GRLIB_perm_log],
+	["Box_NATO_WpsLaunch_F",0,150,0,GRLIB_perm_tank],
 	["Land_CargoBox_V1_F",0,500,0,GRLIB_perm_max],
 	[FOB_box_typename,50,1500,50,GRLIB_perm_max],
 	[FOB_truck_typename,50,1500,50,GRLIB_perm_max],
@@ -332,7 +333,7 @@ ai_resupply_sources = [
 // Everything the AI troups should be able to healing from
 ai_healing_sources = [
 	Respawn_truck_typename,
-	"Box_B_UAV_06_medical_F",
+	medicalbox_typename,
 	"B_APC_Tracked_01_CRV_F"
 ];
 
@@ -702,8 +703,8 @@ GRLIB_vehicle_whitelist = [
 	waterbarrel_typename,
 	fuelbarrel_typename,
 	foodbarrel_typename,
+	medicalbox_typename,
 	"Land_PierLadder_F",
-	"Box_B_UAV_06_medical_F",
 	"Land_CncBarrierMedium4_F",
 	"Land_CncWall4_F",
 	"Land_HBarrier_5_F",
@@ -724,9 +725,9 @@ GRLIB_vehicle_blacklist = [
 	waterbarrel_typename,
 	fuelbarrel_typename,
 	foodbarrel_typename,
+	medicalbox_typename,
 	"Box_NATO_Ammo_F",
   	"Box_NATO_WpsLaunch_F",
-	"Box_B_UAV_06_medical_F",
 	"B_Slingload_01_Repair_F",
 	"B_Slingload_01_Fuel_F",
 	"B_Slingload_01_Ammo_F",
@@ -819,7 +820,7 @@ air_vehicles_classnames = [] + opfor_choppers;
 markers_reset = [99999,99999,0];
 zeropos = [0,0,0];
 squads_names = [ localize "STR_LIGHT_RIFLE_SQUAD", localize "STR_RIFLE_SQUAD", localize "STR_AT_SQUAD", localize "STR_AA_SQUAD", localize "STR_MIXED_SQUAD", localize "STR_RECON_SQUAD" ];
-boats_names = [ "B_Boat_Transport_01_F", "B_Boat_Armed_01_minigun_F" ];
+boats_names = [ "B_Boat_Transport_01_F", "C_Boat_Transport_02_F", "B_Boat_Armed_01_minigun_F" ];
 ammobox_transports_typenames = [];
 { ammobox_transports_typenames pushback (_x select 0) } foreach box_transport_config;
 ammobox_transports_typenames = [ ammobox_transports_typenames , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
@@ -834,7 +835,7 @@ GRLIB_ignore_colisions_when_building = [
 	Arsenal_typename,
 	mobile_respawn,
 	canisterFuel,
-	"Box_B_UAV_06_medical_F",
+	medicalbox_typename,
 	"Box_NATO_Ammo_F",
   	"Box_NATO_WpsLaunch_F",
 	"Land_CargoBox_V1_F",
@@ -868,7 +869,7 @@ GRLIB_sar_fire = "test_EmptyObjectForFireBig";
 GRLIB_Ammobox = [
 	Arsenal_typename,
 	A3W_BoxWps,
-	"Box_B_UAV_06_medical_F",
+	medicalbox_typename,
 	"Box_NATO_Ammo_F",
 	"Box_NATO_WpsLaunch_F",
 	"mission_USLaunchers",
