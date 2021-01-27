@@ -205,9 +205,9 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 [
 	[FOB_box_typename, 0],
   	[FOB_truck_typename, 0],
-	["B_Truck_01_ammo_F", 0],
-	["B_Truck_01_Repair_F", 0],
-	["B_Truck_01_fuel_F", 0]
+	[ammo_truck_typename, 0],
+	[fuel_truck_typename, 0],
+	[repair_truck_typename, 0]
 ];
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
@@ -222,17 +222,16 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 	[fuelbarrel_typename, 10],
 	[foodbarrel_typename, 10],
 	[medicalbox_typename, 2],
+	[repair_sling_typename, 25],
+	[fuel_sling_typename, 25],
+	[ammo_sling_typename, 25],
+	[medic_sling_typename, 25],
 	[A3W_BoxWps, 7],
 	[canisterFuel, 1],
 	["Land_PierLadder_F", 2],
 	["Box_NATO_Ammo_F",3],
     ["Box_NATO_WpsLaunch_F",3],
-	["Land_CargoBox_V1_F", 20],
-	["B_Slingload_01_Cargo_F", 50],
-	["B_Slingload_01_Repair_F", 25],
-	["B_Slingload_01_Fuel_F", 25],
-	["B_Slingload_01_Ammo_F", 25],
-	["B_Slingload_01_Medevac_F", 25]
+	["Land_CargoBox_V1_F", 20]
 ];
 
 R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
@@ -247,19 +246,20 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	fuelbarrel_typename,
 	foodbarrel_typename,
 	medicalbox_typename,
+	repair_sling_typename,
+	fuel_sling_typename,
+	ammo_sling_typename,
+	medic_sling_typename,
 	A3W_BoxWps,
 	canisterFuel,
 	"Land_PierLadder_F",
 	"Box_NATO_Ammo_F",
     "Box_NATO_WpsLaunch_F",
 	"Land_CargoBox_V1_F",
-	"B_Slingload_01_Cargo_F",
-	"B_Slingload_01_Repair_F",
-	"B_Slingload_01_Fuel_F",
-	"B_Slingload_01_Ammo_F",
-	"B_Slingload_01_Medevac_F",
 	"Land_Cargo_House_V1_F",
 	"Land_Cargo_Patrol_V1_F",
+	"Land_Cargo_House_V3_F",
+	"Land_Cargo_Patrol_V3_F",
 	"Land_BagBunker_Large_F",
 	"Land_BagBunker_Small_F",
 	"Land_BagBunker_Tower_F",
@@ -325,6 +325,8 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	"Land_CncShelter_F",
 	"Land_Cargo_House_V1_F",
 	"Land_Cargo_Patrol_V1_F",
+	"Land_Cargo_House_V3_F",
+	"Land_Cargo_Patrol_V3_F",
 	"Land_PortableLight_double_F",
 	"Flag_NATO_F",
 	"Land_HelipadSquare_F",
@@ -362,6 +364,8 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 	["Land_CncShelter_F", 5],
 	["Land_Cargo_House_V1_F", 5],
 	["Land_Cargo_Patrol_V1_F", 5],
+	["Land_Cargo_House_V3_F", 5],
+	["Land_Cargo_Patrol_V3_F", 5],
 	["Land_PortableLight_double_F", 5],
 	["Flag_NATO_F", 5],
 	["Land_HelipadSquare_F", 5],

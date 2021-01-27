@@ -5,6 +5,13 @@ if ( isNil "FOB_box_typename" ) then { FOB_box_typename = "B_Slingload_01_Cargo_
 if ( isNil "FOB_truck_typename" ) then { FOB_truck_typename = "B_Truck_01_box_F" };
 if ( isNil "Arsenal_typename" ) then { Arsenal_typename = "B_supplyCrate_F" };
 if ( isNil "Respawn_truck_typename" ) then { Respawn_truck_typename = "B_Truck_01_medical_F" };
+if ( isNil "ammo_truck_typename" ) then { ammo_truck_typename = "B_Truck_01_ammo_F" };
+if ( isNil "fuel_truck_typename" ) then { fuel_truck_typename = "B_Truck_01_fuel_F" };
+if ( isNil "repair_truck_typename" ) then { repair_truck_typename = "B_Truck_01_Repair_F" };
+if ( isNil "repair_sling_typename" ) then { repair_sling_typename = "B _Slingload_01_Repair_F" };
+if ( isNil "fuel_sling_typename" ) then { fuel_sling_typename = "B _Slingload_01_Fuel_F" };
+if ( isNil "ammo_sling_typename" ) then { ammo_sling_typename = "B _Slingload_01_Ammo_F" };
+if ( isNil "medic_sling_typename" ) then { medic_sling_typename = "B _Slingload_01_Medevac_F" };
 if ( isNil "mobile_respawn" ) then { mobile_respawn = "Land_TentDome_F" };		// "Land_SatelliteAntenna_01_F"
 if ( isNil "mobile_respawn_bag" ) then { mobile_respawn_bag = "B_Kitbag_Base" };
 if ( isNil "medicalbox_typename" ) then { medicalbox_typename = "Box_B_UAV_06_medical_F" };
@@ -213,13 +220,13 @@ support_vehicles = [
 	["C_Offroad_01_repair_F",5,15,5,GRLIB_perm_inf],
 	["C_Van_01_fuel_F",5,15,20,GRLIB_perm_inf],
 	[Respawn_truck_typename,15,50,5,GRLIB_perm_log],
-	["B_Slingload_01_Repair_F",10,100,0,GRLIB_perm_log],
-	["B_Slingload_01_Fuel_F",0,100,30,GRLIB_perm_log],
-	["B_Slingload_01_Ammo_F",0,150,0,GRLIB_perm_log],
-	["B_Slingload_01_Medevac_F",10,100,0,GRLIB_perm_log],
-	["B_Truck_01_ammo_F",5,150,10,GRLIB_perm_tank],
-	["B_Truck_01_Repair_F",10,130,10,GRLIB_perm_tank],
-	["B_Truck_01_fuel_F",5,120,40,GRLIB_perm_tank],
+	[repair_sling_typename,10,100,0,GRLIB_perm_log],
+	[fuel_sling_typename,0,100,30,GRLIB_perm_log],
+	[ammo_sling_typename,0,150,0,GRLIB_perm_log],
+	[medic_sling_typename,10,100,0,GRLIB_perm_log],
+	[ammo_truck_typename,5,150,10,GRLIB_perm_tank],
+	[repair_truck_typename,10,130,10,GRLIB_perm_tank],
+	[fuel_truck_typename,5,120,40,GRLIB_perm_tank],
 	["Box_NATO_Ammo_F",0,80,0,GRLIB_perm_log],
 	["Box_NATO_WpsLaunch_F",0,150,0,GRLIB_perm_tank],
 	["Land_CargoBox_V1_F",0,500,0,GRLIB_perm_max],
@@ -325,8 +332,8 @@ elite_vehicles = ["B_APC_Tracked_01_CRV_F", "B_MBT_01_TUSK_F" ];
 // Everything the AI troups should be able to resupply from
 ai_resupply_sources = [
 	Arsenal_typename,
-	"B_Truck_01_ammo_F",
-	"B_Slingload_01_Ammo_F",
+	ammo_truck_typename,
+	ammo_sling_typename,
 	"B_APC_Tracked_01_CRV_F"
 ];
 
@@ -334,28 +341,29 @@ ai_resupply_sources = [
 ai_healing_sources = [
 	Respawn_truck_typename,
 	medicalbox_typename,
+	medic_sling_typename,
 	"B_APC_Tracked_01_CRV_F"
 ];
 
 // Everything that can resupply other vehicles
 vehicle_repair_sources = [
+	repair_truck_typename,
+	repair_sling_typename,
 	"B_APC_Tracked_01_CRV_F",
-	"C_Offroad_01_repair_F",
-	"B_Truck_01_Repair_F",
-	"B_Slingload_01_Repair_F"
+	"C_Offroad_01_repair_F"
 ];
 
 vehicle_rearm_sources = [
+	ammo_truck_typename,
+	ammo_sling_typename,
 	"B_APC_Tracked_01_CRV_F",
-	"B_Truck_01_ammo_F",
-	"B_Slingload_01_Ammo_F",
 	"Box_NATO_Ammo_F"
 ];
 
 vehicle_refuel_sources = [
-	"B_APC_Tracked_01_CRV_F",
-	"B_Truck_01_fuel_F",
-	"B_Slingload_01_Fuel_F"
+	fuel_truck_typename,
+	fuel_sling_typename,
+	"B_APC_Tracked_01_CRV_F"
 ];
 
 vehicle_artillery = [
@@ -385,7 +393,8 @@ if ( isNil "opfor_sniper") then { opfor_sniper = "O_sniper_F" };
 if ( isNil "opfor_engineer") then { opfor_engineer = "O_engineer_F" };
 if ( isNil "opfor_paratrooper") then { opfor_paratrooper = "O_soldier_PG_F" };
 if ( isNil "opfor_mrap") then { opfor_mrap = "O_MRAP_02_F" };
-if ( isNil "opfor_mrap_armed") then { opfor_mrap_armed = "O_MRAP_02_gmg_F" };
+if ( isNil "opfor_mrap_hmg") then { opfor_mrap_hmg = "O_MRAP_02_hmg_F" };
+if ( isNil "opfor_mrap_gmg") then { opfor_mrap_gmg = "O_MRAP_02_gmg_F" };
 if ( isNil "opfor_transport_helo") then { opfor_transport_helo = "O_Heli_Transport_04_bench_F" };
 if ( isNil "opfor_transport_truck") then { opfor_transport_truck = "O_Truck_03_covered_F" };
 if ( isNil "opfor_fuel_truck") then { opfor_fuel_truck = "O_Truck_03_fuel_F" };
@@ -472,9 +481,9 @@ opfor_vehicles = [
 	"O_MBT_02_cannon_F",
 	"O_MBT_02_cannon_F",
 	"O_APC_Tracked_02_AA_F",
-	"O_MRAP_02_gmg_F",
-	"O_MRAP_02_hmg_F",
-	"O_MRAP_02_hmg_F",
+	opfor_mrap_gmg,
+	opfor_mrap_hmg,
+	opfor_mrap_hmg,
 	"O_MBT_04_cannon_F",
 	"O_MBT_04_command_F"
 ];
@@ -482,16 +491,16 @@ opfor_vehicles = [
 opfor_vehicles_low_intensity = [
 	"O_APC_Tracked_02_cannon_F",
 	"O_APC_Wheeled_02_rcws_F",
-	"O_MRAP_02_hmg_F",
-	"O_MRAP_02_hmg_F",
-	"O_MRAP_02_gmg_F",
+	opfor_mrap_hmg,
+	opfor_mrap_hmg,
+	opfor_mrap_gmg,
 	"O_LSV_02_armed_F",
 	"O_LSV_02_AT_F"
 ];
 
 opfor_battlegroup_vehicles = [
-	"O_MRAP_02_hmg_F",
-	"O_MRAP_02_gmg_F",
+	opfor_mrap_hmg,
+	opfor_mrap_gmg,
 	"O_APC_Tracked_02_cannon_F",
 	"O_APC_Wheeled_02_rcws_F",
 	"O_Truck_03_covered_F",
@@ -509,9 +518,9 @@ opfor_battlegroup_vehicles = [
 opfor_battlegroup_vehicles_low_intensity = [
 	"O_APC_Tracked_02_cannon_F",
 	"O_APC_Wheeled_02_rcws_F",
-	"O_MRAP_02_hmg_F",
-	"O_MRAP_02_hmg_F",
-	"O_MRAP_02_gmg_F",
+	opfor_mrap_hmg,
+	opfor_mrap_hmg,
+	opfor_mrap_gmg,
 	"O_Truck_03_covered_F",
 	"O_Heli_Transport_04_bench_F",
 	"O_Truck_03_transport_F",
@@ -583,8 +592,8 @@ opfor_recyclable = [
 	["I_C_Offroad_02_LMG_F",1,round (30 / GRLIB_recycling_percentage),2],
 	["O_Truck_03_covered_F",5,round (20 / GRLIB_recycling_percentage),5],
 	["O_Truck_03_transport_F",5,round (20 / GRLIB_recycling_percentage),5],
-	["O_MRAP_02_hmg_F",5,round (50 / GRLIB_recycling_percentage),3],
-	["O_MRAP_02_gmg_F",5,round (50 / GRLIB_recycling_percentage),3],
+	[opfor_mrap_hmg,5,round (50 / GRLIB_recycling_percentage),3],
+	[opfor_mrap_gmg,5,round (50 / GRLIB_recycling_percentage),3],
 	["O_Boat_Armed_01_hmg_F",2,round (100 / GRLIB_recycling_percentage),2],
 	["O_T_Boat_Armed_01_hmg_F",2,round (100 / GRLIB_recycling_percentage),2],
 	["O_APC_Wheeled_02_rcws_F",10,round (150 / GRLIB_recycling_percentage),10],
@@ -726,12 +735,12 @@ GRLIB_vehicle_blacklist = [
 	fuelbarrel_typename,
 	foodbarrel_typename,
 	medicalbox_typename,
+	repair_sling_typename,
+	fuel_sling_typename,
+	ammo_sling_typename,
+	medic_sling_typename,
 	"Box_NATO_Ammo_F",
   	"Box_NATO_WpsLaunch_F",
-	"B_Slingload_01_Repair_F",
-	"B_Slingload_01_Fuel_F",
-	"B_Slingload_01_Ammo_F",
-	"B_Slingload_01_Medevac_F",
 	"B_Heli_Transport_01_F",
 	"O_Heli_Light_02_unarmed_F",
 	"O_Truck_03_transport_F",
