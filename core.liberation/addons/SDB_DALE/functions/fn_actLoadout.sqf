@@ -11,7 +11,7 @@ if (!isClass _cfgComponent) exitWith {};
 if (!(_veh isKindOf "Plane")) exitWith {};
 
 private _actionCond = "(isTouchingGround _target) && (driver _target isEqualTo _this) && (speed _target < 1) && ([player, 'REAMMO', 30, true] call F_check_near)";
-private _actionText = "STR_DALE_Actions_Loadout" call BIS_fnc_localize;
+private _actionText = localize "STR_DALE_Actions_Loadout";
 
 private _actionID = _veh addAction ["",DALE_fnc_dlgLoadoutOpen,nil,20,true,true,"",_actionCond];
 _veh setUserActionText [_actionID,_actionText,"<t size='2.5'><img image='a3\ui_f\data\IGUI\Cfg\Actions\reammo_ca.paa'/></t>"];
