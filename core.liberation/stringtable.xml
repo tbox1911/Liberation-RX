@@ -3472,11 +3472,7 @@
 				<French>Vous avez payé: %1 Ammo</French>
 				<Chinesesimp>你为一身装备支付: %1 弹药</Chinesesimp>
 			</Key>
-
 		</Package>
-</Project>
-
-<Project name="NRE Earplugs">
 	<Package name="NREEarplugs">
 		<Key ID="STR_NREEP_IN_HINT">
 			<Original>You have insert the earplugs!</Original>
@@ -3511,9 +3507,7 @@
 			<Chinesesimp>摘下耳塞</Chinesesimp>
 		</Key>
 	</Package>
-</Project>
-
-<Project name="LRX_PAR">
+	
 	<Package name="LRX_PAR">
 		<!-- pSiKO AI Revive -->
 		<Key ID="STR_PAR_CM_01">
@@ -3562,9 +3556,7 @@
 			<Chinesesimp>抱歉 %1，附近没有单位能来救你...</Chinesesimp>
 		</Key>
 	</Package>
-</Project>
-
-<Project name="LRX_TAXI">
+	
 	<Package name="LRX_TAXI">
 		<!-- Taxi -->
 		<Key ID="STR_TAXI_ACTION1">
@@ -3626,9 +3618,7 @@
 			<Chinesesimp>返回空军基地。\n下次见...</Chinesesimp>
 		</Key>
 	</Package>
-</Project>
 
-<Project name="LRX_TK">
 	<Package name="LRX_TK">
 		<Key ID="STR_TK_MODE">
 			<Original>TeamKill Mode</Original>
@@ -3691,59 +3681,59 @@
 			<Chinesesimp>TK: %1 原谅了 %2.</Chinesesimp>
 		</Key>
 	</Package>
-</Project>
 
-<Project name="SDB_DALE">
-	<Package name="Actions">
-		<Key ID="STR_DALE_Actions_Loadout">
-			<Original>Loadout Editor</Original>
-			<English>Loadout Editor</English>
-			<Dutch>Bewapening Aanpassen</Dutch>
-			<German>Ausrüstung Anpassen</German>
-		</Key>
-	</Package>
-	<Package name="Dialogs">
-		<Key ID="STR_DALE_Dialogs_Apply">
-			<Original>APPLY</Original>
-			<English>APPLY</English>
-			<Dutch>TOEPASSEN</Dutch>
-			<German>ANWENDEN</German>
-		</Key>
-		<Key ID="STR_DALE_Dialogs_Cancel">
-			<Original>CANCEL</Original>
-			<English>CANCEL</English>
-			<Dutch>ANNULEREN</Dutch>
-			<German>ABBRECHEN</German>
-		</Key>
-		<Key ID="STR_DALE_Dialogs_Custom">
-			<Original>Custom</Original>
-			<English>Custom</English>
-			<Dutch>Aangepast</Dutch>
-			<German>Eigene</German>
-		</Key>
-		<Key ID="STR_DALE_Dialogs_Empty">
-			<Original>empty</Original>
-			<English>empty</English>
-			<Dutch>leeg</Dutch>
-			<German>leer</German>
-		</Key>
-		<Key ID="STR_DALE_Dialogs_Single">
-			<Original>Single</Original>
-			<English>Single</English>
-			<Dutch>Enkel</Dutch>
-			<German>Einzel</German>
-		</Key>
-		<Key ID="STR_DALE_Dialogs_Double">
-			<Original>Double</Original>
-			<English>Double</English>
-			<Dutch>Dubbel</Dutch>
-			<German>Doppelt</German>
-		</Key>
-		<Key ID="STR_DALE_Dialogs_Burst">
-			<Original>Burst</Original>
-			<English>Burst</English>
-			<Dutch>Salvo</Dutch>
-			<German>Salve</German>
-		</Key>
+	<Package name="SDB_DALE">
+		<Container name="Actions">
+			<Key ID="STR_DALE_Actions_Loadout">
+				<Original>Loadout Editor</Original>
+				<English>Loadout Editor</English>
+				<Dutch>Bewapening Aanpassen</Dutch>
+				<German>Ausrüstung Anpassen</German>
+			</Key>
+		</Container>
+		<Container name="Dialogs">
+			<Key ID="STR_DALE_Dialogs_Apply">
+				<Original>APPLY</Original>
+				<English>APPLY</English>
+				<Dutch>TOEPASSEN</Dutch>
+				<German>ANWENDEN</German>
+			</Key>
+			<Key ID="STR_DALE_Dialogs_Cancel">
+				<Original>CANCEL</Original>
+				<English>CANCEL</English>
+				<Dutch>ANNULEREN</Dutch>
+				<German>ABBRECHEN</German>
+			</Key>
+			<Key ID="STR_DALE_Dialogs_Custom">
+				<Original>Custom</Original>
+				<English>Custom</English>
+				<Dutch>Aangepast</Dutch>
+				<German>Eigene</German>
+			</Key>
+			<Key ID="STR_DALE_Dialogs_Empty">
+				<Original>empty</Original>
+				<English>empty</English>
+				<Dutch>leeg</Dutch>
+				<German>leer</German>
+			</Key>
+			<Key ID="STR_DALE_Dialogs_Single">
+				<Original>Single</Original>
+				<English>Single</English>
+				<Dutch>Enkel</Dutch>
+				<German>Einzel</German>
+			</Key>
+			<Key ID="STR_DALE_Dialogs_Double">
+				<Original>Double</Original>
+				<English>Double</English>
+				<Dutch>Dubbel</Dutch>
+				<German>Doppelt</German>
+			</Key>
+			<Key ID="STR_DALE_Dialogs_Burst">
+				<Original>Burst</Original>
+				<English>Burst</English>
+				<Dutch>Salvo</Dutch>
+				<German>Salve</German>
+			</Key>
+		</Container>
 	</Package>
 </Project>
