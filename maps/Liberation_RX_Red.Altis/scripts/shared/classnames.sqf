@@ -461,22 +461,20 @@ opfor_boat = [
 ];
 
 opfor_vehicles = [
-	"O_APC_Tracked_02_cannon_F",
-	"O_APC_Wheeled_02_rcws_F",
-	"O_MBT_02_cannon_F",
-	"O_MBT_02_cannon_F",
-	"O_APC_Tracked_02_AA_F",
+	"B_APC_Wheeled_03_cannon_F",
+	"B_APC_Wheeled_01_cannon_F",
+	"B_MBT_01_cannon_F",
+	"B_MBT_01_cannon_F",
+	"B_T_APC_Tracked_01_AA_F ",
 	opfor_mrap_gmg,
 	opfor_mrap_hmg,
-	opfor_mrap_hmg,
-	"O_MBT_04_cannon_F",
-	"O_MBT_04_command_F"
+	"B_MBT_01_TUSK_F",
+	"B_AFV_Wheeled_01_cannon_F"
 ];
 
 opfor_vehicles_low_intensity = [
-	"O_APC_Tracked_02_cannon_F",
-	"O_APC_Wheeled_02_rcws_F",
-	opfor_mrap_hmg,
+	"B_APC_Wheeled_03_cannon_F",
+	"B_APC_Wheeled_01_cannon_F",
 	opfor_mrap_hmg,
 	opfor_mrap_gmg,
 	"B_T_LSV_01_armed_F",
@@ -486,49 +484,47 @@ opfor_vehicles_low_intensity = [
 opfor_battlegroup_vehicles = [
 	opfor_mrap_hmg,
 	opfor_mrap_gmg,
-	"O_APC_Tracked_02_cannon_F",
-	"O_APC_Wheeled_02_rcws_F",
-	"O_Truck_03_covered_F",
-	"O_MBT_02_cannon_F",
-	"O_MBT_02_cannon_F",
-	"O_APC_Tracked_02_AA_F",
-	"O_Heli_Attack_02_F",
-	"O_Heli_Light_02_F",
-	"O_Heli_Transport_04_bench_F",
-	"O_Truck_03_transport_F",
-	"O_MBT_04_cannon_F",
-	"O_MBT_04_command_F"
+	"B_APC_Wheeled_03_cannon_F",
+	"B_APC_Wheeled_01_cannon_F",
+	"B_Truck_01_covered_F ",
+	"B_MBT_01_cannon_F",
+	"B_MBT_01_cannon_F",
+	"B_T_APC_Tracked_01_AA_F ",
+	"B_Heli_Attack_01_F",
+	"B_Heli_Transport_01_F",
+	"B_Truck_01_transport_F",
+	"B_MBT_01_TUSK_F",
+	"B_MBT_01_TUSK_F",
+	"B_AFV_Wheeled_01_cannon_F"
 ];
 
 opfor_battlegroup_vehicles_low_intensity = [
-	"O_APC_Tracked_02_cannon_F",
-	"O_APC_Wheeled_02_rcws_F",
-	opfor_mrap_hmg,
+	"B_APC_Wheeled_03_cannon_F",
+	"B_APC_Wheeled_01_cannon_F",
 	opfor_mrap_hmg,
 	opfor_mrap_gmg,
-	"O_Truck_03_covered_F",
-	"O_Heli_Transport_04_bench_F",
-	"O_Truck_03_transport_F",
+	"B_Truck_01_covered_F ",
+	"B_Heli_Transport_01_F",
+	"B_Truck_01_transport_F",
 	"B_T_LSV_01_armed_F",
 	"B_T_LSV_01_AT_F"
 ];
 
 opfor_troup_transports = [
-	"O_APC_Wheeled_02_rcws_F",
-	"O_Truck_03_covered_F",
-	"O_Heli_Transport_04_bench_F",
-	"O_Truck_03_transport_F",
-	"O_Heli_Light_02_F",
-	"O_T_VTOL_02_infantry_F"
+	"B_APC_Wheeled_01_cannon_F",
+	"B_Truck_01_covered_F ",
+	"B_Heli_Transport_01_F",
+	"B_Truck_01_transport_F",
+	"B_Heli_Transport_03_F",
+	"B_T_VTOL_01_infantry_F"
 ];
 
 opfor_choppers = [
-	"O_Heli_Attack_02_F",
-	"O_Heli_Attack_02_black_F",
-	"O_Heli_Light_02_F",
-	"O_Heli_Light_02_v2_F",
-	"O_Heli_Transport_04_bench_F",
-	"O_T_VTOL_02_infantry_F"
+	"B_Heli_Light_01_armed_F",
+	"B_Heli_Attack_01_F",
+	"B_Heli_Transport_01_F",
+	"B_CTRG_Heli_Transport_01_sand_F",
+	"B_T_VTOL_01_infantry_F"
 ];
 
 opfor_air = [
@@ -572,7 +568,7 @@ opfor_recyclable = [
 	["B_Truck_01_covered_F",5,round (20 / GRLIB_recycling_percentage),5],
 	[opfor_mrap_hmg,5,round (50 / GRLIB_recycling_percentage),3],
 	[opfor_mrap_gmg,5,round (50 / GRLIB_recycling_percentage),3],
-	["B_T_Boat_Armed_01_minigun_F",2,round (100 / GRLIB_recycling_percentage),2]
+	["B_T_Boat_Armed_01_minigun_F",2,round (100 / GRLIB_recycling_percentage),2],
 	["B_APC_Tracked_01_rcws_F",10,round (150 / GRLIB_recycling_percentage),10],
 	["B_APC_Wheeled_01_cannon_F",10,round (200 / GRLIB_recycling_percentage),10],
 	["B_APC_Tracked_01_AA_F",10,round (300 / GRLIB_recycling_percentage),10],
