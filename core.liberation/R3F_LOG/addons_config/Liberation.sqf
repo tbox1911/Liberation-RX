@@ -12,6 +12,7 @@ R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
 [
 	"I_Heli_light_03_unarmed_F",
 	"O_Heli_Light_02_unarmed_F",
+	"O_Heli_Transport_04_F",
 	"B_Heli_Transport_03_F",
 	"B_Heli_Transport_03_unarmed_F",
 	"B_Heli_Transport_01_F",
@@ -34,6 +35,7 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["B_Heli_Transport_01_F", 100],
 	["B_Heli_Transport_01_camo_F", 100],
 	["B_Heli_Transport_03_F", 150],
+	["O_Heli_Transport_04_F", 150],
 	["B_Heli_Transport_03_unarmed_F", 200],
 	["I_Heli_light_03_F",100],
 	["B_T_VTOL_01_infantry_F", 100],
