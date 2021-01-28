@@ -97,7 +97,7 @@ if (!GRLIB_ACE_enabled) then {
 GREUH_TipsText = [];
 {
 	if (_x select [0, 1] != "t" && _x != "br") then {
-    	GREUH_TipsText pushback (_x select [8]);
+    	GREUH_TipsText pushback (_x select [7]);
 	};
 } forEach ((localize "STR_TUTO_TEXT12") splitString "></");
 
