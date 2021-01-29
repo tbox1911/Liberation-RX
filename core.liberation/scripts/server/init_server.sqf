@@ -97,8 +97,10 @@ if (!([] call F_getValid)) exitWith {};
 if (isNil "global_locked_group") then { global_locked_group = [] };
 publicVariable "global_locked_group";
 
-resistance setFriend [GRLIB_side_friendly, 0];
-GRLIB_side_friendly setFriend [resistance, 0];
+resistance setFriend [GRLIB_side_friendly, 1];
+GRLIB_side_friendly setFriend [resistance, 1];
+resistance setFriend [GRLIB_side_enemy, 0];
+GRLIB_side_enemy setFriend [resistance, 0];
 
 addMissionEventHandler ['HandleDisconnect', cleanup_player];
 addMissionEventHandler ["MPEnded", {diag_log "LRX - MP End."}];
