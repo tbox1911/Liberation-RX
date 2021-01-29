@@ -21,7 +21,7 @@ _setupVars =
 _setupObjects =
 {
 	_missionPos = markerPos ((_citylist call BIS_fnc_selectRandom) select 0);
-	_vehicleClass = selectRandom ["O_T_VTOL_02_vehicle_F", "O_Heli_Attack_02_black_F", "O_Heli_Attack_02_dynamicLoadout_F", "O_Heli_Light_02_F", "O_Heli_Light_02_dynamicLoadout_F", "I_Heli_light_03_dynamicLoadout_F"];
+	_vehicleClass = selectRandom opfor_choppers;
 
 	_createVehicle =
 	{
