@@ -30,7 +30,7 @@ if ( _classname in opfor_choppers ) then {
 	_newvehicle flyInHeight (100 + (random 200));
 } else {
 	if (surfaceIsWater _spawnpos) then {
-		_classname = opfor_boat call BIS_fnc_selectRandom;
+		_classname = selectRandom opfor_boat;
 	};
 	_newvehicle = _classname createVehicle _spawnpos;
 	_newvehicle setpos _spawnpos;
@@ -48,7 +48,7 @@ if ( _classname in ["I_E_Truck_02_MRL_F"] ) then {
 
 // LRX textures
 if (count opfor_texture_overide > 0) then {
-	_texture_name = opfor_texture_overide call BIS_fnc_selectRandom;
+	_texture_name = selectRandom opfor_texture_overide;
 	_texture = [ RPT_colorList, { _x select 0 == _texture_name } ] call BIS_fnc_conditionalSelect select 0 select 1;
 	[_newvehicle, _texture, _texture_name,[]] call RPT_fnc_TextureVehicle;
 };

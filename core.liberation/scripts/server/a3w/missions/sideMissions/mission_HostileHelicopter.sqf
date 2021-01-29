@@ -20,7 +20,7 @@ _setupVars =
 
 _setupObjects =
 {
-	_missionPos = markerPos ((_citylist call BIS_fnc_selectRandom) select 0);
+	_missionPos = markerPos ((selectRandom _citylist) select 0);
 	_vehicleClass = selectRandom opfor_choppers;
 
 	_createVehicle =

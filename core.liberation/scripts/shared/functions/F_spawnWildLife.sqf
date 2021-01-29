@@ -2,12 +2,8 @@ params [ "_pos" ];
 private [ "_idx", "_nbcivs", "_spawnpos", "_grp", "_createdcivs", "_nextciv" ];
 _createdcivs = [];
 
-_type = ["Hen_random_F","Goat_random_F","Cock_random_F","Fin_random_F","Sheep_random_F"] call BIS_fnc_selectRandom;
-_type = [
-	"Cock_random_F","Hen_random_F",
-	"Alsatian_Random_F","Fin_random_F",
-	"Goat_random_F","Sheep_random_F"
-	] call BIS_fnc_selectRandom;
+_type = selectRandom ["Hen_random_F","Goat_random_F","Cock_random_F","Fin_random_F","Sheep_random_F"];
+_type = selectRandom ["Cock_random_F","Hen_random_F","Alsatian_Random_F","Fin_random_F","Goat_random_F","Sheep_random_F"];
 
 _idx = 0;
 _nbcivs = round ((3 + (floor (random 5))) * GRLIB_civilian_activity);
