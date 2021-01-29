@@ -895,13 +895,13 @@ GRLIB_AirDrop_1 = [
 ];
 GRLIB_AirDrop_2 = [
 	"I_G_Offroad_01_armed_F",
-	"B_G_Offroad_01_armed_F"
-	,"O_G_Offroad_01_armed_F",
+	"B_G_Offroad_01_armed_F",
+	"O_G_Offroad_01_armed_F",
 	"I_C_Offroad_02_LMG_F"
 ];
 GRLIB_AirDrop_3 = [
 	"I_MRAP_03_hmg_F",
-	"I_MRAP_03_hmg_F",
+	"I_MRAP_03_gmg_F",
 	"B_T_MRAP_01_hmg_F",
 	"B_T_MRAP_01_gmg_F"
 ];
@@ -913,7 +913,7 @@ GRLIB_AirDrop_4 = [
 ];
 GRLIB_AirDrop_5 = [
 	"I_APC_tracked_03_cannon_F",
-	"I_APC_Wheeled_03_cannon_F",
+	"B_APC_Wheeled_03_cannon_F",
 	"B_APC_Wheeled_01_cannon_F"
 ];
 GRLIB_AirDrop_6 = [

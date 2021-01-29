@@ -870,35 +870,36 @@ GRLIB_AirDrop_1 = [
 	"I_G_Offroad_01_F",
 	"I_G_Quadbike_01_F",
 	"C_Offroad_01_F",
-	"B_G_Offroad_01_F"
+	"O_G_Offroad_01_F"
 ];
 GRLIB_AirDrop_2 = [
 	"I_G_Offroad_01_armed_F",
-	"B_G_Offroad_01_armed_F"
-	,"O_G_Offroad_01_armed_F",
+	"B_G_Offroad_01_armed_F",
+	"O_G_Offroad_01_armed_F",
 	"I_C_Offroad_02_LMG_F"
 ];
 GRLIB_AirDrop_3 = [
 	"I_MRAP_03_hmg_F",
-	"I_MRAP_03_hmg_F",
-	"B_T_MRAP_01_hmg_F",
-	"B_T_MRAP_01_gmg_F"
+	"I_MRAP_03_gmg_F",
+	"O_T_MRAP_02_hmg_ghex_F",
+	"O_T_MRAP_02_gmg_ghex_F"
 ];
 GRLIB_AirDrop_4 = [
-	"B_Truck_01_transport_F",
-	"B_Truck_01_covered_F",
+	"O_T_Truck_03_transport_ghex_F",
+	"O_T_Truck_03_covered_ghex_F",
 	"I_Truck_02_covered_F",
 	"I_Truck_02_transport_F"
 ];
 GRLIB_AirDrop_5 = [
-	"I_APC_tracked_03_cannon_F",
+	"O_APC_Tracked_02_cannon_F",
 	"I_APC_Wheeled_03_cannon_F",
-	"B_APC_Wheeled_01_cannon_F"
+	"O_T_APC_Tracked_02_cannon_ghex_F",
+	"O_T_APC_Wheeled_02_rcws_ghex_F"
 ];
 GRLIB_AirDrop_6 = [
 	"C_Boat_Civil_01_F",
 	"C_Boat_Transport_02_F",
-	"B_Boat_Transport_01_F",
+	"O_T_Boat_Armed_01_hmg_F",
 	"I_C_Boat_Transport_02_F"
 ];
 
