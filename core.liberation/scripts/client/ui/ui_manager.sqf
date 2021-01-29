@@ -113,15 +113,15 @@ while { true } do {
 				if ( [ markerpos _nearest_active_sector, _zone_size ] call F_sectorOwnership == GRLIB_side_resistance ) then { _colorzone = GRLIB_color_enemy }; //"ColorCivilian"
 				"zone_capture" setmarkercolorlocal _colorzone;
 
-				private _color = [];
+				private _color_F = getArray (configFile >> "CfgMarkerColors" >> GRLIB_color_friendly >> "color") call BIS_fnc_colorConfigToRGBA;
+				private _color_E = getArray (configFile >> "CfgMarkerColors" >> GRLIB_color_enemy >> "color") call BIS_fnc_colorConfigToRGBA;
+				((uiNamespace getVariable 'GUI_OVERLAY') displayCtrl (244)) ctrlSetBackgroundColor _color_F;
+				((uiNamespace getVariable 'GUI_OVERLAY') displayCtrl (203)) ctrlSetBackgroundColor _color_E;
 				if ( _nearest_active_sector in blufor_sectors ) then {
-					_color = getArray (configFile >> "CfgMarkerColors" >> GRLIB_color_friendly >> "color") call BIS_fnc_colorConfigToRGBA;
-					((uiNamespace getVariable 'GUI_OVERLAY') displayCtrl (244)) ctrlSetBackgroundColor _color;
+					((uiNamespace getVariable 'GUI_OVERLAY') displayCtrl (205)) ctrlSetTextColor _color_F;
 				} else {
-					_color = getArray (configFile >> "CfgMarkerColors" >> GRLIB_color_enemy >> "color") call BIS_fnc_colorConfigToRGBA;
-					((uiNamespace getVariable 'GUI_OVERLAY') displayCtrl (203)) ctrlSetBackgroundColor _color;
+					((uiNamespace getVariable 'GUI_OVERLAY') displayCtrl (205)) ctrlSetTextColor _color_E;
 				};
-				((uiNamespace getVariable 'GUI_OVERLAY') displayCtrl (205)) ctrlSetTextColor _color;
 
 				_ratio = [_nearest_active_sector] call F_getForceRatio;
 				_barwidth = 0.084 * safezoneW * _ratio;
