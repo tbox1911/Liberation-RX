@@ -19,6 +19,7 @@ if ( isServer ) then {
 			_killer = _unit getVariable ["ace_medical_lastDamageSource", objNull];
 		};
 	};
+	waitUntil { sleep 0.3; (isNull attachedTo _unit) };
 
 	if ( (typeof _unit) in [FOB_box_typename, FOB_truck_typename, foodbarrel_typename, waterbarrel_typename] ) exitWith {
 		sleep 30;
@@ -28,14 +29,13 @@ if ( isServer ) then {
 	if ( typeof _unit == mobile_respawn ) exitWith { [_unit, "del"] remoteExec ["addel_beacon_remote_call", 2] };
 
 	if ( ((typeof _unit) in [ammobox_o_typename, ammobox_b_typename, ammobox_i_typename, fuelbarrel_typename]) && ((getPosATL _unit) select 2 < 10) ) exitWith {
-		waitUntil { sleep 0.5; (isNull attachedTo _unit) };
 		sleep random 2;
 		( "R_80mm_HE" createVehicle (getPosATL _unit) ) setVelocity [0, 0, -200];
 		deleteVehicle _unit;
 	};
 
 	if ((_unit iskindof "LandVehicle") || (_unit iskindof "Air") || (_unit iskindof "Ship") ) then {
-		[_unit] call clean_vehicle;
+		[_unit] spawn clean_vehicle;
 	};
 
 	if ( _unit isKindOf "Man" && vehicle _unit != _unit ) then {
