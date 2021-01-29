@@ -538,26 +538,21 @@ opfor_troup_transports = [
 ];
 
 opfor_choppers = [
-	"O_Heli_Attack_02_F",
-	"O_Heli_Attack_02_black_F",
 	"O_Heli_Light_02_F",
 	"O_Heli_Light_02_v2_F",
+	"O_Heli_Attack_02_F",
+	"O_Heli_Attack_02_black_F",
 	"O_Heli_Transport_04_bench_F",
-	"O_T_VTOL_02_infantry_F",
-	"O_Heli_Attack_02_F",
-	"O_Heli_Attack_02_black_F",
-	"O_Heli_Light_02_F",
-	"O_Heli_Light_02_v2_F",
-	"O_Heli_Transport_04_bench_F"
+	"O_T_VTOL_02_infantry_F"
 ];
 
 opfor_air = [
+	"O_Heli_Attack_02_F",
+	"O_Heli_Attack_02_black_F",
+	"O_T_VTOL_02_infantry_F",
 	"O_Plane_CAS_02_F",
 	"O_Plane_Fighter_02_F",
-	"O_Plane_CAS_02_F",
 	"O_Plane_Fighter_02_Stealth_F",
-	"O_T_VTOL_02_infantry_F",
-	"O_T_VTOL_02_vehicle_F",
 	"O_Plane_CAS_02_Cluster_F"
 ];
 
@@ -608,8 +603,11 @@ opfor_recyclable = [
 	["O_Heli_Light_02_v2_F",10,round (600 / GRLIB_recycling_percentage),10],
 	["O_Heli_Transport_04_bench_F",10,round (500 / GRLIB_recycling_percentage),10],
 	["O_Plane_CAS_02_F",20,round (1000 / GRLIB_recycling_percentage),30],
+	["O_Plane_CAS_02_Cluster_F",20,round (1000 / GRLIB_recycling_percentage),30],
 	["O_Plane_Fighter_02_F",20,round (1000 / GRLIB_recycling_percentage),30],
-	["O_T_VTOL_02_vehicle_F",20,round (1000 / GRLIB_recycling_percentage),20]
+	["O_Plane_Fighter_02_Stealth_F",20,round (1000 / GRLIB_recycling_percentage),30],
+	["O_T_VTOL_02_vehicle_F",20,round (1000 / GRLIB_recycling_percentage),20],
+	["O_T_VTOL_02_infantry_F",20,round (1000 / GRLIB_recycling_percentage),20]
 ];
 
 // Other stuff
