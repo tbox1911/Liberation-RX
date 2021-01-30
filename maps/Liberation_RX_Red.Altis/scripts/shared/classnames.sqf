@@ -383,7 +383,7 @@ if ( isNil "opfor_sniper") then { opfor_sniper = "B_sniper_F" };
 if ( isNil "opfor_engineer") then { opfor_engineer = "B_engineer_F" };
 if ( isNil "opfor_paratrooper") then { opfor_paratrooper = "B_soldier_PG_F" };
 if ( isNil "opfor_mrap") then { opfor_mrap = "B_MRAP_02_F" };
-if ( isNil "opfor_mrap_hmg") then { opfor_mrap_hmg = "B_MRAP_02_mg_F" };
+if ( isNil "opfor_mrap_hmg") then { opfor_mrap_hmg = "B_MRAP_02_hmg_F" };
 if ( isNil "opfor_mrap_gmg") then { opfor_mrap_gmg = "B_MRAP_02_gmg_F" };
 if ( isNil "opfor_transport_helo") then { opfor_transport_helo = "B_Heli_Transport_03_F" };
 if ( isNil "opfor_transport_truck") then { opfor_transport_truck = "B_Truck_01_covered_F" };
@@ -465,9 +465,10 @@ opfor_vehicles = [
 	"B_APC_Wheeled_01_cannon_F",
 	"B_MBT_01_cannon_F",
 	"B_MBT_01_cannon_F",
+	"B_Truck_01_transport_F",
 	"B_T_APC_Tracked_01_AA_F ",
-	opfor_mrap_gmg,
-	opfor_mrap_hmg,
+	"B_MRAP_02_gmg_F",
+	"B_MRAP_02_hmg_F",
 	"B_MBT_01_TUSK_F",
 	"B_AFV_Wheeled_01_cannon_F"
 ];
@@ -475,18 +476,18 @@ opfor_vehicles = [
 opfor_vehicles_low_intensity = [
 	"B_APC_Wheeled_03_cannon_F",
 	"B_APC_Wheeled_01_cannon_F",
-	opfor_mrap_hmg,
-	opfor_mrap_gmg,
+	"B_Truck_01_transport_F",
+	"B_MRAP_02_hmg_F",
+	"B_MRAP_02_gmg_F",
 	"B_T_LSV_01_armed_F",
 	"B_T_LSV_01_AT_F"
 ];
 
 opfor_battlegroup_vehicles = [
-	opfor_mrap_hmg,
-	opfor_mrap_gmg,
+	"B_MRAP_02_hmg_F",
+	"B_MRAP_02_gmg_F",
 	"B_APC_Wheeled_03_cannon_F",
 	"B_APC_Wheeled_01_cannon_F",
-	"B_Truck_01_covered_F ",
 	"B_MBT_01_cannon_F",
 	"B_MBT_01_cannon_F",
 	"B_T_APC_Tracked_01_AA_F ",
@@ -501,8 +502,8 @@ opfor_battlegroup_vehicles = [
 opfor_battlegroup_vehicles_low_intensity = [
 	"B_APC_Wheeled_03_cannon_F",
 	"B_APC_Wheeled_01_cannon_F",
-	opfor_mrap_hmg,
-	opfor_mrap_gmg,
+	"B_MRAP_02_hmg_F",
+	"B_MRAP_02_gmg_F",
 	"B_Truck_01_covered_F ",
 	"B_Heli_Transport_01_F",
 	"B_Truck_01_transport_F",
@@ -512,9 +513,9 @@ opfor_battlegroup_vehicles_low_intensity = [
 
 opfor_troup_transports = [
 	"B_APC_Wheeled_01_cannon_F",
-	"B_Truck_01_covered_F ",
-	"B_Heli_Transport_01_F",
+	"B_Truck_01_covered_F",
 	"B_Truck_01_transport_F",
+	"B_Heli_Transport_01_F",
 	"B_Heli_Transport_03_F",
 	"B_T_VTOL_01_infantry_F"
 ];
@@ -547,7 +548,11 @@ opfor_statics = [
 
 ind_recyclable = [
 	["I_Truck_02_covered_F",0,round (20 / GRLIB_recycling_percentage),0],
-	["I_Truck_02_transport_F",0,round (20 / GRLIB_recycling_percentage),0]
+	["I_Truck_02_transport_F",0,round (20 / GRLIB_recycling_percentage),0],
+	["I_Heli_light_03_unarmed_F",10,round (50 / GRLIB_recycling_percentage),10],
+	["I_Heli_light_03_F",10,round (600 / GRLIB_recycling_percentage),10],
+	["I_Heli_light_03_dynamicLoadout_F",0,round (800 / GRLIB_recycling_percentage),0],
+	["I_Plane_Fighter_04_F",20,round (3000 / GRLIB_recycling_percentage),20]
 ];
 
 opfor_texture_overide = [
@@ -568,8 +573,8 @@ opfor_recyclable = [
 	["I_C_Offroad_02_LMG_F",1,round (30 / GRLIB_recycling_percentage),2],
 	["B_Truck_01_transport_F",5,round (20 / GRLIB_recycling_percentage),5],
 	["B_Truck_01_covered_F",5,round (20 / GRLIB_recycling_percentage),5],
-	[opfor_mrap_hmg,5,round (50 / GRLIB_recycling_percentage),3],
-	[opfor_mrap_gmg,5,round (50 / GRLIB_recycling_percentage),3],
+	["B_MRAP_02_hmg_F",5,round (50 / GRLIB_recycling_percentage),3],
+	["B_MRAP_02_gmg_F",5,round (50 / GRLIB_recycling_percentage),3],
 	["B_T_Boat_Armed_01_minigun_F",2,round (100 / GRLIB_recycling_percentage),2],
 	["B_APC_Tracked_01_rcws_F",10,round (150 / GRLIB_recycling_percentage),10],
 	["B_APC_Wheeled_01_cannon_F",10,round (200 / GRLIB_recycling_percentage),10],
@@ -582,8 +587,6 @@ opfor_recyclable = [
 	["I_MBT_03_cannon_F",15,round (3000 / GRLIB_recycling_percentage),15],
 	["B_Heli_Light_01_F",10,round (50 / GRLIB_recycling_percentage),10],
 	["B_Heli_Light_01_armed_F",10,round (150 / GRLIB_recycling_percentage),10],
-	["I_Heli_light_03_unarmed_F",10,round (50 / GRLIB_recycling_percentage),10],
-	["I_Heli_light_03_F",10,round (600 / GRLIB_recycling_percentage),10],
 	["B_Heli_Transport_01_F",10,round (100 / GRLIB_recycling_percentage),10],
 	["B_Heli_Transport_03_F",10,round (200 / GRLIB_recycling_percentage),10],
 	["B_CTRG_Heli_Transport_01_sand_F",10,round (200 / GRLIB_recycling_percentage),10],
@@ -595,8 +598,7 @@ opfor_recyclable = [
 	["B_Plane_CAS_01_dynamicLoadout_F",20,round (1000 / GRLIB_recycling_percentage),30],
 	["B_Plane_CAS_01_F",20,round (1500 / GRLIB_recycling_percentage),30],
 	["B_Plane_Fighter_01_F",20,round (2000 / GRLIB_recycling_percentage),30],
-	["B_Plane_Fighter_01_Stealth_F",20,round (2000 / GRLIB_recycling_percentage),30],
-	["I_Plane_Fighter_04_F",20,round (3000 / GRLIB_recycling_percentage),20]
+	["B_Plane_Fighter_01_Stealth_F",20,round (2000 / GRLIB_recycling_percentage),30]
 ];
 
 // Other stuff
