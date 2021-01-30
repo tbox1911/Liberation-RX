@@ -446,12 +446,10 @@ resistance_squad = [
 militia_vehicles = [
 	"B_G_Offroad_01_armed_F",
 	"B_G_Offroad_01_AT_F",
-	"I_C_Offroad_02_LMG_F",
 	"B_T_LSV_01_armed_F",
 	"B_T_LSV_01_AT_F",
 	"B_G_Offroad_01_armed_F",
 	"B_G_Offroad_01_AT_F",
-	"I_C_Offroad_02_LMG_F",
 	"B_T_LSV_01_armed_F",
 	"B_T_LSV_01_AT_F"
 ];
@@ -467,11 +465,9 @@ opfor_vehicles = [
 	"B_MBT_01_cannon_F",
 	"B_Truck_01_transport_F",
 	"B_T_APC_Tracked_01_AA_F ",
-	"I_APC_tracked_03_cannon_F",
 	"B_MRAP_02_gmg_F",
 	"B_MRAP_02_hmg_F",
-	"B_MBT_01_TUSK_F",
-	"I_MBT_03_cannon_F"
+	"B_MBT_01_TUSK_F"
 ];
 
 opfor_vehicles_low_intensity = [
@@ -492,14 +488,12 @@ opfor_battlegroup_vehicles = [
 	"B_MBT_01_cannon_F",
 	"B_MBT_01_cannon_F",
 	"B_T_APC_Tracked_01_AA_F ",
-	"I_APC_Wheeled_03_cannon_F",
 	"B_Heli_Attack_01_F",
 	"B_Heli_Transport_01_F",
 	"B_Truck_01_transport_F",
 	"B_MBT_01_TUSK_F",
 	"B_MBT_01_TUSK_F",
-	"B_AFV_Wheeled_01_cannon_F",
-	"I_MBT_03_cannon_F"
+	"B_AFV_Wheeled_01_cannon_F"
 ];
 
 opfor_battlegroup_vehicles_low_intensity = [
@@ -537,7 +531,6 @@ opfor_air = [
 	"B_Plane_Fighter_01_F",
 	"B_T_VTOL_01_armed_F",
 	"B_Plane_Fighter_01_Stealth_F",
-	"I_Plane_Fighter_04_F",
 	"B_Heli_Attack_02_dynamicLoadout_F"
 ];
 
@@ -555,6 +548,8 @@ ind_recyclable = [
 	["I_Heli_light_03_unarmed_F",10,round (50 / GRLIB_recycling_percentage),10],
 	["I_Heli_light_03_F",10,round (600 / GRLIB_recycling_percentage),10],
 	["I_Heli_light_03_dynamicLoadout_F",0,round (800 / GRLIB_recycling_percentage),0],
+	["I_C_Offroad_02_LMG_F",1,round (30 / GRLIB_recycling_percentage),2],
+	["I_MBT_03_cannon_F",15,round (3000 / GRLIB_recycling_percentage),15],
 	["I_Plane_Fighter_04_F",20,round (3000 / GRLIB_recycling_percentage),20]
 ];
 
@@ -573,7 +568,6 @@ opfor_recyclable = [
 	["B_T_LSV_01_AT_F",1,round (40 / GRLIB_recycling_percentage),2],
 	["B_G_Offroad_01_armed_F",1,round (30 / GRLIB_recycling_percentage),2],
 	["B_G_Offroad_01_AT_F",1,round (40 / GRLIB_recycling_percentage),2],
-	["I_C_Offroad_02_LMG_F",1,round (30 / GRLIB_recycling_percentage),2],
 	["B_Truck_01_transport_F",5,round (20 / GRLIB_recycling_percentage),5],
 	["B_Truck_01_covered_F",5,round (20 / GRLIB_recycling_percentage),5],
 	["B_MRAP_02_hmg_F",5,round (50 / GRLIB_recycling_percentage),3],
@@ -587,7 +581,6 @@ opfor_recyclable = [
 	["B_AFV_Wheeled_01_cannon_F",15,round (1500 / GRLIB_recycling_percentage),15],
 	["B_AFV_Wheeled_01_up_cannon_F",15,round (1500 / GRLIB_recycling_percentage),15],
 	["B_MBT_01_arty_F",15,round (2500 / GRLIB_recycling_percentage),15],
-	["I_MBT_03_cannon_F",15,round (3000 / GRLIB_recycling_percentage),15],
 	["B_Heli_Light_01_F",10,round (50 / GRLIB_recycling_percentage),10],
 	["B_Heli_Light_01_armed_F",10,round (150 / GRLIB_recycling_percentage),10],
 	["B_Heli_Transport_01_F",10,round (100 / GRLIB_recycling_percentage),10],
@@ -702,6 +695,7 @@ GRLIB_vehicle_whitelist = [
 	ammobox_o_typename,
 	ammobox_i_typename,
 	mobile_respawn,
+	opfor_ammobox_transport,
 	A3W_BoxWps,
 	canisterFuel,
 	waterbarrel_typename,
