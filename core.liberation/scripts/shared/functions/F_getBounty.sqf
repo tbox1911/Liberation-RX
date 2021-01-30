@@ -2,7 +2,9 @@ params ["_vehicle"];
 
 private _extra_bounty = opfor_air + [
 	"O_MBT_04_cannon_F",
-	"O_MBT_04_command_F"
+	"O_MBT_04_command_F",
+	"B_MBT_01_TUSK_F",
+	"B_AFV_Wheeled_01_cannon_F"
 ];
 
 private _heavy_blu = [];
