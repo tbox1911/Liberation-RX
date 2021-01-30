@@ -28,4 +28,4 @@ militia_standard_squad = [
 	loadout_at,
     loadout_at2,
 	loadout_aa
-	];
+];

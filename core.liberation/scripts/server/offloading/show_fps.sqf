@@ -67,7 +67,7 @@ while { true } do {
 	_myfpsmarker setMarkerColor "ColorGREEN";
 	if ( _myfps < 30 ) then { _myfpsmarker setMarkerColor "ColorYELLOW"; };
 	if ( _myfps < 20 ) then { _myfpsmarker setMarkerColor "ColorORANGE"; };
-	if ( _myfps < 10 ) then { _myfpsmarker setMarkerColor GRLIB_color_enemy_bright; };
+	if ( _myfps < 10 ) then { _myfpsmarker setMarkerColor "ColorRED"; };
 
 	if ( diag_server_save ) then {
 		diag_server_save = false;
