@@ -29,3 +29,14 @@ militia_standard_squad = [
     loadout_at2,
 	loadout_aa
 ];
+
+// Custom loadout
+_west_loadout_overide = [
+	"B_medic_F"
+];
+
+_east_loadout_overide = [
+	"O_medic_F"
+];
+
+units_loadout_overide = _west_loadout_overide + _east_loadout_overide;

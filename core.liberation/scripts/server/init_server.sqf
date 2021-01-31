@@ -1,6 +1,4 @@
 diag_log "--- Server Init start ---";
-//[] call compileFinal preprocessFileLineNumbers "scripts\loadouts\init_loadouts.sqf";
-[] execVM "scripts\loadouts\init_loadouts.sqf";
 
 // Cleanup
 cleanup_player = compileFinal preprocessFileLineNumbers "scripts\server\game\cleanup_player.sqf";
