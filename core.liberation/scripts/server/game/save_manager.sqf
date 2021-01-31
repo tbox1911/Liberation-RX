@@ -153,8 +153,11 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 			_nextdir = _x select 2;
 
 			[_x select 3] params [["_hascrew", false]];
-			_owner = "";
-			if (count _x > 3) then { [_x select 4] params [["_owner", ""]] };
+
+			private _owner = "";
+			if (count _x > 3) then {
+				_owner = _x select 4;
+			};
 
 			_nextbuilding = _nextclass createVehicle _nextpos;
 			_nextbuilding allowDamage false;
