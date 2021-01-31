@@ -142,12 +142,8 @@ blufor_air = [
 	"B_Heli_Attack_01_F",
 	"B_Plane_CAS_01_F",
 	"B_Plane_Fighter_01_F",
-	"B_Plane_Fighter_01_Stealth_F",
 	"I_Heli_light_03_F",
 	"B_Heli_Attack_01_F",
-	"B_Plane_CAS_01_Cluster_F",
-	"B_Plane_Fighter_01_Cluster_F",
-	"B_Plane_Fighter_01_F",
 	"I_Plane_Fighter_04_F"
 ];
 
@@ -460,10 +456,6 @@ resistance_squad = [
 
 militia_vehicles = [
 	"O_G_Offroad_01_armed_F",
-	"O_G_Offroad_01_AT_F",
-	"I_C_Offroad_02_LMG_F",
-	"O_LSV_02_armed_F",
-	"O_LSV_02_AT_F",
 	"O_G_Offroad_01_armed_F",
 	"O_G_Offroad_01_AT_F",
 	"I_C_Offroad_02_LMG_F",
@@ -486,7 +478,6 @@ opfor_vehicles = [
 	"O_MBT_02_cannon_F",
 	"O_MBT_02_cannon_F",
 	"O_APC_Tracked_02_AA_F",
-	"O_Truck_03_transport_F",
 	"O_MRAP_02_gmg_F",
 	"O_MRAP_02_hmg_F",
 	"O_MRAP_02_hmg_F",
@@ -500,7 +491,6 @@ opfor_vehicles_low_intensity = [
 	"O_MRAP_02_hmg_F",
 	"O_MRAP_02_hmg_F",
 	"O_MRAP_02_gmg_F",
-	"O_Truck_02_transport_F",
 	"O_LSV_02_armed_F",
 	"O_LSV_02_AT_F"
 ];
@@ -517,7 +507,6 @@ opfor_battlegroup_vehicles = [
 	"O_Heli_Attack_02_F",
 	"O_Heli_Light_02_F",
 	"O_Heli_Transport_04_bench_F",
-	"O_Truck_03_transport_F",
 	"O_MBT_04_cannon_F",
 	"O_MBT_04_command_F"
 ];
@@ -535,7 +524,6 @@ opfor_battlegroup_vehicles_low_intensity = [
 ];
 
 opfor_troup_transports = [
-	"O_APC_Wheeled_02_rcws_F",
 	"O_Truck_03_transport_F",
 	"O_Truck_03_covered_F",
 	"O_Truck_02_covered_F",
@@ -559,9 +547,7 @@ opfor_air = [
 	"O_Heli_Attack_02_black_F",
 	"O_T_VTOL_02_infantry_F",
 	"O_Plane_CAS_02_F",
-	"O_Plane_Fighter_02_F",
-	"O_Plane_Fighter_02_Stealth_F",
-	"O_Plane_CAS_02_Cluster_F"
+	"O_Plane_Fighter_02_F"
 ];
 
 opfor_statics = [
@@ -616,7 +602,6 @@ opfor_recyclable = [
 	["O_Heli_Light_02_v2_F",10,round (600 / GRLIB_recycling_percentage),10],
 	["O_Heli_Transport_04_bench_F",10,round (500 / GRLIB_recycling_percentage),10],
 	["O_Plane_CAS_02_F",20,round (1000 / GRLIB_recycling_percentage),30],
-	["O_Plane_CAS_02_Cluster_F",20,round (1000 / GRLIB_recycling_percentage),30],
 	["O_Plane_Fighter_02_F",20,round (1000 / GRLIB_recycling_percentage),30],
 	["O_Plane_Fighter_02_Stealth_F",20,round (1000 / GRLIB_recycling_percentage),30],
 	["O_T_VTOL_02_vehicle_F",20,round (1000 / GRLIB_recycling_percentage),20],
