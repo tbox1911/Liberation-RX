@@ -218,8 +218,8 @@ support_vehicles = [
 	[medicalbox_typename,5,5,0,0],
 	[mobile_respawn,10,5,0,0],
 	[canisterFuel,0,5,1,0],
-	["C_Offroad_01_repair_F",5,15,5,GRLIB_perm_inf],
-	["C_Van_01_fuel_F",5,15,20,GRLIB_perm_inf],
+	["B_G_Offroad_01_repair_F",5,15,5,GRLIB_perm_inf],
+	["B_G_Van_01_fuel_F",5,15,20,GRLIB_perm_inf],
 	[Respawn_truck_typename,15,50,5,GRLIB_perm_log],
 	[repair_sling_typename,10,100,0,GRLIB_perm_log],
 	[fuel_sling_typename,0,100,30,GRLIB_perm_log],
@@ -346,25 +346,11 @@ ai_healing_sources = [
 	"B_APC_Tracked_01_CRV_F"
 ];
 
-// Everything that can resupply other vehicles
-vehicle_repair_sources = [
-	repair_truck_typename,
-	repair_sling_typename,
-	"B_APC_Tracked_01_CRV_F",
-	"C_Offroad_01_repair_F"
-];
-
 vehicle_rearm_sources = [
 	ammo_truck_typename,
 	ammo_sling_typename,
 	"B_APC_Tracked_01_CRV_F",
 	"Box_NATO_Ammo_F"
-];
-
-vehicle_refuel_sources = [
-	fuel_truck_typename,
-	fuel_sling_typename,
-	"B_APC_Tracked_01_CRV_F"
 ];
 
 vehicle_artillery = [
