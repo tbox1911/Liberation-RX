@@ -11,11 +11,11 @@ if ( isNil "repair_truck_typename" ) then { repair_truck_typename = "O_Truck_03_
 if ( isNil "repair_sling_typename" ) then { repair_sling_typename = "Land_Pod_Heli_Transport_04_repair_F" };
 if ( isNil "fuel_sling_typename" ) then { fuel_sling_typename = "Land_Pod_Heli_Transport_04_fuel_F" };
 if ( isNil "ammo_sling_typename" ) then { ammo_sling_typename = "Land_Pod_Heli_Transport_04_ammo_F" };
-if ( isNil "medic_sling_typename" ) then { medic_sling_typename = "B_Slingload_01_Medevac_F" };
+if ( isNil "medic_sling_typename" ) then { medic_sling_typename = "Land_Pod_Heli_Transport_04_medevac_F" };
 if ( isNil "mobile_respawn" ) then { mobile_respawn = "Land_TentDome_F" };		// "Land_SatelliteAntenna_01_F"
 if ( isNil "mobile_respawn_bag" ) then { mobile_respawn_bag = "B_Kitbag_Base" };
 if ( isNil "medicalbox_typename" ) then { medicalbox_typename = "Box_B_UAV_06_medical_F" };
-if ( isNil "huron_typename" ) then { huron_typename = "O_Heli_Transport_04_F" };
+if ( isNil "huron_typename" ) then { huron_typename = "O_Heli_Transport_04_black_F" };
 if ( isNil "ammobox_b_typename" ) then { ammobox_b_typename = "Box_NATO_AmmoVeh_F" };
 if ( isNil "ammobox_o_typename" ) then { ammobox_o_typename = "Box_East_AmmoVeh_F" };
 if ( isNil "ammobox_i_typename" ) then { ammobox_i_typename = "Box_IND_AmmoVeh_F" };
@@ -125,11 +125,7 @@ air_vehicles = [
 	["I_Heli_light_03_unarmed_F",1,50,5,GRLIB_perm_tank],
 	["I_Heli_light_03_F",10,2000,20,GRLIB_perm_air],
 	["O_Heli_Light_02_dynamicLoadout_F",5,200,10,GRLIB_perm_air],
-	["O_Heli_Transport_04_F",10,1000,15,GRLIB_perm_air],
-	["O_Heli_Transport_04_bench_F",10,1000,15,GRLIB_perm_air],
-	["O_Heli_Transport_04_repair_F",10,1000,15,GRLIB_perm_air],
-	["O_Heli_Transport_04_ammo_F",10,1000,15,GRLIB_perm_air],
-	["O_Heli_Transport_04_medevac_F",10,1000,15,GRLIB_perm_air],
+	["O_Heli_Transport_04",10,600,15,GRLIB_perm_air],
 	["O_Heli_Attack_02_dynamicLoadout_F",10,2000,20,GRLIB_perm_air],
 	["O_T_VTOL_02_infantry_dynamicLoadout_F", 10,2500,20,GRLIB_perm_max],
 	["O_T_VTOL_02_vehicle_dynamicLoadout_F", 10,2500,20,GRLIB_perm_max],
@@ -223,9 +219,12 @@ support_vehicles = [
 	["O_G_Offroad_01_repair_F",5,15,5,GRLIB_perm_inf],
 	["O_G_Van_01_fuel_F",5,15,20,GRLIB_perm_inf],
 	[Respawn_truck_typename,15,50,5,GRLIB_perm_log],
+	["Land_Pod_Heli_Transport_04_bench_F",0,50,0,GRLIB_perm_log],
+	["Land_Pod_Heli_Transport_04_covered_F",0,50,0,GRLIB_perm_log],
 	[repair_sling_typename,10,100,0,GRLIB_perm_log],
 	[fuel_sling_typename,0,100,30,GRLIB_perm_log],
 	[ammo_sling_typename,0,150,0,GRLIB_perm_log],
+	[medic_sling_typename,0,150,0,GRLIB_perm_log],
 	[ammo_truck_typename,5,150,10,GRLIB_perm_tank],
 	[repair_truck_typename,10,130,10,GRLIB_perm_tank],
 	[fuel_truck_typename,5,120,40,GRLIB_perm_tank],
