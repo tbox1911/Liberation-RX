@@ -350,7 +350,6 @@ vehicle_rearm_sources = [
 	"Box_NATO_Ammo_F"
 ];
 
-
 vehicle_artillery = [
 	"O_Mortar_01_F",
 	"I_E_Truck_02_MRL_F",
