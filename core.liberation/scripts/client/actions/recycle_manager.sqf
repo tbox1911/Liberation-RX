@@ -4,7 +4,7 @@ private _searchradius = 100;
 
 private _nearrecycl = [];
 private _recycleable_blacklist = [huron_typename,"myLARsBox"];
-private _recycleable_classnames = ["LandVehicle","Air","Ship","Slingload_01_Base_F"];
+private _recycleable_classnames = ["LandVehicle","Air","Ship","Slingload_01_Base_F", "Pod_Heli_Transport_04_base_F"];
 {_recycleable_classnames pushBack ( _x select 0 )} foreach (static_vehicles + support_vehicles + buildings + opfor_recyclable);
 _recycleable_classnames = _recycleable_classnames + GRLIB_vehicle_whitelist;
 
