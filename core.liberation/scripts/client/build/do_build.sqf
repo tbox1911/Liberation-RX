@@ -86,8 +86,12 @@ while { true } do {
 			_unit enableIRLasers true;
 			_unit enableGunLights "Auto";
 			[_unit] call player_EVH;
-			_loadouts_folder = format ["scripts\loadouts\%1\", GRLIB_side_friendly];
- 			[] call compileFinal preprocessFileLineNUmbers (format ["%1%2.sqf", _loadouts_folder, typeOf _unit]);
+
+			if (typeOf _unit in units_loadout_overide) then {
+				_loadouts_folder = format ["scripts\loadouts\%1\%2.sqf", GRLIB_side_friendly, typeOf _unit];
+				[_unit] call compileFinal preprocessFileLineNUmbers _loadouts_folder;
+			};
+
 			stats_blufor_soldiers_recruited = stats_blufor_soldiers_recruited + 1; publicVariable "stats_blufor_soldiers_recruited";
 		};
 		if (!([_price] call F_pay)) exitWith {};

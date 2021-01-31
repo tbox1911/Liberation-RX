@@ -26,7 +26,11 @@ player setVariable ["GREUH_ammo_count", 0, true];
 if (GRLIB_forced_loadout > 0) then {
 	[player] call compile preprocessFileLineNumbers (format ["scripts\loadouts\vanilla\player_set%1.sqf", GRLIB_forced_loadout]);
 } else {
- 	[player, configfile >> "CfgVehicles" >> typeOf player] call BIS_fnc_loadInventory;
+	[player, configfile >> "CfgVehicles" >> typeOf player] call BIS_fnc_loadInventory;
+	if (typeOf player in units_loadout_overide) then {
+		_loadouts_folder = format ["scripts\loadouts\%1\%2.sqf", GRLIB_side_friendly, typeOf player];
+		[player] call compileFinal preprocessFileLineNUmbers _loadouts_folder;
+	};
 };
 if (isMultiplayer) then {
 	PAR_Grp_ID = getPlayerUID player;
