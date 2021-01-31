@@ -737,11 +737,11 @@ GRLIB_vehicle_blacklist = [
   	"Box_NATO_WpsLaunch_F",
 	"B_Heli_Transport_01_F",
 	"O_Heli_Light_02_unarmed_F",
-	"O_Truck_03_transport_F",
-	"O_Truck_03_covered_F",
-	"O_Truck_03_ammo_F",
-	"O_Truck_03_fuel_F",
-	"O_Truck_03_medical_F"
+	"B_Truck_01_transport_F",
+	"B_Truck_01_covered_F",
+	"B_Truck_01_ammo_F",
+	"B_Truck_01_fuel_F",
+	"B_Truck_01_medical_F"
 ];
 //{GRLIB_vehicle_blacklist pushBack ( _x select 0 )} foreach (support_vehicles);
 
