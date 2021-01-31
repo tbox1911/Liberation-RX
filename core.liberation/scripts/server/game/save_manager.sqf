@@ -152,25 +152,9 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 			_nextpos = _x select 1;
 			_nextdir = _x select 2;
 
-			private _hascrew = false;
-			private _owner = "";
-			private _color = "";
-			private _color_name = "";
-			private _lst_a3 = [];
-			private	_lst_r3f = [];
-			private	_lst_grl = [];
-
-			if (count _x > 3) then {
-				_hascrew = _x select 3;
-				_owner = _x select 4;
-				_color = _x select 5;
-				_color_name = _x select 6;
-				_lst_a3 = _x select 7;
-				_lst_r3f = _x select 8;
-				if (count _x > 9) then {	// migration fix
-					_lst_grl = _x select 9;
-				};
-			};
+			[_x select 3] params [["_hascrew", false]];
+			_owner = "";
+			if (count _x > 3) then { [_x select 4] params [["_owner", ""]] };
 
 			_nextbuilding = _nextclass createVehicle _nextpos;
 			_nextbuilding allowDamage false;
@@ -196,13 +180,19 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 			};
 
 			if ( _owner != "" ) then {
+				[_x select 5] params [["_color", ""]];
+				[_x select 6] params [["_color_name", ""]];
+				[_x select 7] params [["_lst_a3", []]];
+				[_x select 8] params [["_lst_r3f", []]];
+				[_x select 9] params [["_lst_grl", []]];
+
 				_nextbuilding setVehicleLock "LOCKED";
 				_nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
 				_nextbuilding setVariable ["R3F_LOG_disabled", true, true];
-				[_nextbuilding, _color, _color_name, []] call RPT_fnc_TextureVehicle;
+				[_nextbuilding, _color, _color_name, []] spawn RPT_fnc_TextureVehicle;
 				{_nextbuilding addWeaponWithAttachmentsCargoGlobal [ _x, 1]} forEach _lst_a3;
-				[_nextbuilding, _lst_r3f] call R3F_LOG_FNCT_transporteur_charger_auto;
-				{[_nextbuilding, _x] call attach_object_direct} forEach _lst_grl;
+				[_nextbuilding, _lst_r3f] spawn R3F_LOG_FNCT_transporteur_charger_auto;
+				{[_nextbuilding, _x] spawn attach_object_direct} forEach _lst_grl;
 			};
 
 			if ( _hascrew ) then {
