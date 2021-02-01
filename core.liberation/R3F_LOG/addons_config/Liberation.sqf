@@ -23,6 +23,8 @@ R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
 
 R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 [
+	"Slingload_01_Base_F",
+	"Pod_Heli_Transport_04_base_F"
 ];
 
 R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
@@ -254,6 +256,8 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	medic_sling_typename,
 	A3W_BoxWps,
 	canisterFuel,
+	"Land_Pod_Heli_Transport_04_bench_F",
+	"Land_Pod_Heli_Transport_04_covered_F",
 	"Land_PierLadder_F",
 	"Box_NATO_Ammo_F",
     "Box_NATO_WpsLaunch_F",
