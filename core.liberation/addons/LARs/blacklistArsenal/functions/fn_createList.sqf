@@ -113,7 +113,7 @@ switch ( toLower _listType ) do {
 					};
 				};
 			};
-//diag_log format ["DBG2: %1 %2", _index, count _newlist];
+
 			if !( isNil "_index" ) then {
 				if ( count _newlist > _index ) then {
 

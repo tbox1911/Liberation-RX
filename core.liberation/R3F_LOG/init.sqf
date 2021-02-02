@@ -139,7 +139,6 @@
 				case "setVelocity": {_argument setVelocity _parametre;};
 				case "detachSetVelocity": {detach _argument; _argument setVelocity _parametre;};
 				case "paraDrop": {
-					diag_log format ["DBG: %1 %2",_argument, _parametre];
 					detach _argument;
 					_argument setVelocity _parametre;
 					sleep 1;
