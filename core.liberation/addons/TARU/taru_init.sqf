@@ -92,13 +92,10 @@ HALV_detachTarupods = {
 	_pos = getPosATL _pod;
 	sleep 2;
 	_pod enableCollisionWith _heli;
-	HALVPV_PARAPOD = [true,[player,_pod]];
-	publicVariableServer "HALVPV_PARAPOD";
+
 	if (_pos select 2 > 25) then {
 		_pos = getPosATL _pod;
 		_chute = createVehicle ["B_Parachute_02_F", _pos, [], 0, "CAN_COLLIDE"];
-		HALVPV_PARAPOD = [false,[player,_chute]];
-		publicVariableServer "HALVPV_PARAPOD";
 		_chute disableCollisionWith _pod;
 		_chute disableCollisionWith _heli;
 		_pod attachTo [_chute,[0,0,0.6]];
@@ -108,9 +105,10 @@ HALV_detachTarupods = {
 			detach _chute;
 			deleteVehicle _chute;
 		};
-		_pos = getPos _pod;
-		_pos set [2,0];
-		_pod setPos _pos;
+		// force land
+		//_pos = getPos _pod;
+		//_pos set [2,0];
+		//_pod setPos _pos;
 	};
 };
 
