@@ -138,6 +138,23 @@
 				case "setDir": {_argument setDir _parametre;};
 				case "setVelocity": {_argument setVelocity _parametre;};
 				case "detachSetVelocity": {detach _argument; _argument setVelocity _parametre;};
+				case "paraDrop": {
+					diag_log format ["DBG: %1 %2",_argument, _parametre];
+					detach _argument;
+					_argument setVelocity _parametre;
+					sleep 1;
+					_pos = getPosATL _argument;
+					_chute = createVehicle ["B_Parachute_02_F", _pos, [], 0, "CAN_COLLIDE"];
+					_chute disableCollisionWith _argument;
+					_argument attachTo [_chute,[0,0,0.6]];
+
+					_dt = time + 150;
+					waitUntil{sleep 1;(isTouchingGround _argument || time > _dt)};
+					if !(isNull _chute) then {
+						detach _chute;
+						deleteVehicle _chute;
+					};
+				};
 			};
 		};
 
@@ -241,6 +258,7 @@
 
 		R3F_LOG_action_heliporter_valide = false;
 		R3F_LOG_action_heliport_larguer_valide = false;
+		R3F_LOG_action_heliport_paradrop_valide = false;
 
 		R3F_LOG_action_deplacer_objet_valide = false;
 		R3F_LOG_action_remorquer_direct_valide = false;
