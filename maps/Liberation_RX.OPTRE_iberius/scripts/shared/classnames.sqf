@@ -26,8 +26,8 @@ if ( isNil "opfor_ammobox_transport" ) then { opfor_ammobox_transport = "O_Truck
 if ( isNil "commander_classname" ) then { commander_classname = "OPTRE_UNSC_ODST_Soldier_TeamLeader"; };
 if ( isNil "crewman_classname" ) then { crewman_classname = "OPTRE_UNSC_Airforce_Soldier_Airman" };
 if ( isNil "pilot_classname" ) then { pilot_classname = "OPTRE_UNSC_Army_Soldier_Crewman_OLI" };
-if ( isNil "FAR_Medikit" ) then { FAR_Medikit = "OPTRE_MedKit" };
-if ( isNil "FAR_AidKit" ) then { FAR_AidKit = "OPTRE_Biofoam" };
+if ( isNil "PAR_Medikit" ) then { PAR_Medikit = "OPTRE_MedKit" };
+if ( isNil "PAR_AidKit" ) then { PAR_AidKit = "OPTRE_Biofoam" };
 if ( isNil "A3W_BoxWps" ) then { A3W_BoxWps = "OPTRE_Ammo_Rack_Ammo" };
 if ( isNil "canisterFuel" ) then { canisterFuel = "Land_CanisterFuel_Red_F" };
 
@@ -50,7 +50,6 @@ infantry_units = [
 	["OPTRE_UNSC_ODST_Soldier_Scout_Sniper",1,0,0,GRLIB_perm_log],
 	["OPTRE_UNSC_Army_Soldier_AA_Specialist_OLI",1,0,0,GRLIB_perm_inf],
 	["OPTRE_UNSC_Army_Soldier_AT_Specialist_OLI",1,0,0,GRLIB_perm_inf],
-	["OPTRE_Spartan2_Soldier_Rifleman_AR",2,0,0,GRLIB_perm_tank],
 	["OPTRE_Spartan2_Soldier_Rifleman_BR",2,0,0,GRLIB_perm_tank],
 	["OPTRE_Spartan2_Soldier_Engineer",2,0,0,GRLIB_perm_tank],
 	["OPTRE_Spartan2_Soldier_Automatic_Rifleman",2,0,0,GRLIB_perm_tank],
@@ -274,6 +273,16 @@ if ( count blufor_squad_aa == 0 ) then { blufor_squad_aa = [
 	"OPTRE_UNSC_Marine_Soldier_Rifleman_AR"
 	];
 };
+if ( isNil "blufor_squad_mix" ) then { blufor_squad_mix = [] };
+if ( count blufor_squad_mix == 0 ) then { blufor_squad_mix = [
+	"OPTRE_UNSC_Marine_Soldier_SquadLead",
+	"OPTRE_UNSC_Marine_Soldier_TeamLead",
+	"OPTRE_UNSC_Marine_Soldier_AA_Specialist",
+	"OPTRE_UNSC_Marine_Soldier_AT_Specialist",
+	"OPTRE_UNSC_Marine_Soldier_Rifleman_BR",
+	"OPTRE_UNSC_Marine_Soldier_Rifleman_AR"
+	];
+};
 if ( isNil "blufor_squad_recon" ) then { blufor_squad_recon = [] };
 if ( count blufor_squad_recon == 0 ) then { blufor_squad_recon = [
 	"OPTRE_UNSC_Marine_Soldier_SquadLead",
@@ -350,7 +359,6 @@ ai_healing_sources = [
 	medicalbox_typename,
 	medic_sling_typename
 ];
-
 
 vehicle_rearm_sources = [
 	ammo_truck_typename,
@@ -712,21 +720,7 @@ GRLIB_vehicle_whitelist = [
 	"Land_CncWall4_F",
 	"Land_HBarrier_5_F",
 	"Land_BagBunker_Small_F",
-	"Land_CncWall1_F",
-	"Land_BagFence_Long_F",
-	"Land_HBarrier_5_F",
-	"O_Truck_03_covered_F",
-	"O_Truck_03_transport_F",
-	"OPTRE_M12_LRV_ins",
-	"OPTRE_M12A1_LRV_ins",
-	"O_APC_Wheeled_02_rcws_F",
-	"O_APC_Tracked_02_cannon_F",
-	"O_APC_Tracked_02_AA_F",
-	"O_MBT_02_cannon_F",
-	"O_MBT_04_cannon_F",
-	"O_MBT_04_command_F",
-	"O_Heli_Attack_02_F",
-	"O_Heli_Attack_02_black_F"
+	"Land_BagFence_Long_F"
 ];
 
 // Blacklist Vehicle (lock and paint)

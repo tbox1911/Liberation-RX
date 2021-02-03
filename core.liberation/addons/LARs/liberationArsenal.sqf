@@ -68,8 +68,31 @@ if ( GRLIB_GM_enabled ) then {
 	) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x)} ;
 };
 
+// Add OPTRE Weapons
+if ( GRLIB_OPTRE_enabled ) then {
+	 GRLIB_OPTRE_Blacklist = [
+	 ];
+	(
+		"
+		getText (_x >> 'dlc') == 'OPTRE' &&
+		getNumber (_x >> 'scope') > 1 &&
+		toLower (configName _x) find '_coyote' < 0 &&
+		!((configName _x) in GRLIB_OPTRE_Blacklist)
+		"
+		configClasses (configfile >> "CfgWeapons" )
+	) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
+
+	(
+		"
+		((configName _x) select [0,6]) == 'OPTRE_' &&
+		(configName _x) find '_Tracer' < 0
+		"
+    	configClasses (configfile >> "CfgMagazines")
+	) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x)} ;
+};
+
 // if mod enabled
-if ( GRLIB_GM_enabled ) then {
+if ( GRLIB_GM_enabled || GRLIB_OPTRE_enabled ) then {
 	[_this, ["GRLIB_whitelisted_from_arsenal", "GRLIB_blacklisted_from_arsenal"], false, "Liberation", { false }] call LARs_fnc_blacklistArsenal;
 } else {
 	//[ myBox, [ whitelist, blacklist ], targets, name, condition ] call LARs_fnc_blacklistArsenal;
