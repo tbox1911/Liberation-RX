@@ -94,21 +94,7 @@ HALV_detachTarupods = {
 	_pod enableCollisionWith _heli;
 
 	if (_pos select 2 > 25) then {
-		_pos = getPosATL _pod;
-		_chute = createVehicle ["B_Parachute_02_F", _pos, [], 0, "CAN_COLLIDE"];
-		_chute disableCollisionWith _pod;
-		_chute disableCollisionWith _heli;
-		_pod attachTo [_chute,[0,0,0.6]];
-		_dt = diag_tickTime;
-		waitUntil{sleep 1;(isTouchingGround _pod || diag_tickTime - _dt > 150)};
-		if !(isNull _chute) then {
-			detach _chute;
-			deleteVehicle _chute;
-		};
-		// force land
-		//_pos = getPos _pod;
-		//_pos set [2,0];
-		//_pod setPos _pos;
+		[_pod, _heli] spawn F_addParachute;
 	};
 };
 

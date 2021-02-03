@@ -28,7 +28,7 @@ else
 
 	if ( R3F_LOG_action_heliport_paradrop_valide ) then {
 		// Parachuter l'objet et lui appliquer la vitesse de l'h�liporteur (inertie)
-		[_objet, "paraDrop", velocity _heliporteur] call R3F_LOG_FNCT_exec_commande_MP;
+		[_objet, "paraDrop", _heliporteur] call R3F_LOG_FNCT_exec_commande_MP;
 	} else {
 		// D�tacher l'objet et lui appliquer la vitesse de l'h�liporteur (inertie)
 		[_objet, "detachSetVelocity", velocity _heliporteur] call R3F_LOG_FNCT_exec_commande_MP;
