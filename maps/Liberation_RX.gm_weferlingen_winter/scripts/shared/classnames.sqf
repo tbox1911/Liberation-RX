@@ -328,6 +328,18 @@ vehicle_artillery = [
 	"B_Mortar_01_F"
 ];
 
+vehicle_big_units = [
+	"Land_Cargo_Tower_V1_F",
+	"B_T_VTOL_01_infantry_F",
+	"B_T_VTOL_01_vehicle_F",
+	"B_T_VTOL_01_armed_F",
+	"O_T_VTOL_01_infantry_F",
+	"O_T_VTOL_01_vehicle_F",
+	"O_T_VTOL_01_armed_F",
+	"Land_SM_01_shed_F",
+	"Land_Hangar_F"
+];
+
 // *** BADDIES ***
 //gm_gc_army_rifleman_mpiak74n_80_str
 //gm_gc_army_rifleman_mpiak74n_80_win

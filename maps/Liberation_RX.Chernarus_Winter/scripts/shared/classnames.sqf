@@ -359,6 +359,18 @@ vehicle_artillery = [
 	"B_MBT_01_arty_F"
 ];
 
+vehicle_big_units = [
+	"Land_Cargo_Tower_V1_F",
+	"B_T_VTOL_01_infantry_F",
+	"B_T_VTOL_01_vehicle_F",
+	"B_T_VTOL_01_armed_F",
+	"O_T_VTOL_01_infantry_F",
+	"O_T_VTOL_01_vehicle_F",
+	"O_T_VTOL_01_armed_F",
+	"Land_SM_01_shed_F",
+	"Land_Hangar_F"
+];
+
 // *** BADDIES ***
 
 if ( isNil "opfor_sentry") then { opfor_sentry = "O_SoldierU_F" };
