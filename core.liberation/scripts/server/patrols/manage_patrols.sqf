@@ -19,16 +19,16 @@ waitUntil { sleep 0.3; !isNil "blufor_sectors" };
 waitUntil { sleep 0.3; count blufor_sectors > 3 };
 
 {
-	[_x, 1, _forEachIndex] spawn compileFinal preprocessFileLineNumbers "scripts\server\patrols\manage_one_patrol.sqf";
+	[_x, 1, _forEachIndex] spawn manage_one_patrol;
 	sleep 1;
 } foreach _combat_triggers_infantry;
 
 {
-	[_x, 2, _forEachIndex] spawn compileFinal preprocessFileLineNumbers "scripts\server\patrols\manage_one_patrol.sqf";
+	[_x, 2, _forEachIndex] spawn manage_one_patrol;
 	sleep 1;
 } foreach _combat_triggers_armor;
 
 {
-	[_x, 3, _forEachIndex] spawn compileFinal preprocessFileLineNumbers "scripts\server\patrols\manage_one_patrol.sqf";
+	[_x, 3, _forEachIndex] spawn manage_one_patrol;
 	sleep 1;
 } foreach _combat_triggers_static;
