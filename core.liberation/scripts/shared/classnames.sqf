@@ -129,7 +129,7 @@ air_vehicles = [
 	["B_Heli_Transport_01_camo_F",10,2000,15,GRLIB_perm_air],
 	["B_T_VTOL_01_infantry_F",10,1300,15,GRLIB_perm_air],
 	["B_T_VTOL_01_vehicle_F",10,1400,15,GRLIB_perm_air],
-	["B_T_VTOL_01_armed_F",20,3500,40,GRLIB_perm_max],
+	["B_T_VTOL_01_armed_F",20,2500,40,GRLIB_perm_max],
 	["B_Heli_Attack_01_dynamicLoadout_F",10,3000,20,GRLIB_perm_air],
 	["B_Heli_Attack_02_dynamicLoadout_F",10,4500,20,GRLIB_perm_max],
 	["I_Plane_Fighter_03_dynamicLoadout_F", 10,3500,20,GRLIB_perm_max],
