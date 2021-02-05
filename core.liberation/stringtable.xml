@@ -73,7 +73,7 @@
 					<German>DU BIST VERWUNDET</German>
 					<Spanish>ESTAS HERIDO</Spanish>
 					<Russian>ВЫ БЕЗ СОЗНАНИЯ</Russian>
-					<Chinesesimp>你重伤昏迷了！</Chinesesimp>
+					<Chinesesimp>已重伤昏迷！</Chinesesimp>
 			</Key>
 			<Key ID="STR_BUILD_ACTION">
 					<Original>-- BUILD</Original>
@@ -81,7 +81,7 @@
 					<German>-- BAUEN</German>
 					<Spanish>-- CONSTRUIR</Spanish>
 					<Russian>-- ОБЕСПЕЧЕНИЕ</Russian>
-					<Chinesesimp>-- 建造</Chinesesimp>
+					<Chinesesimp>-- 建造 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_BUILD_TITLE">
 					<Original>BUILD MENU</Original>
@@ -145,7 +145,7 @@
 					<German>-- Rotieren</German>
 					<Spanish>-- Rotación</Spanish>
 					<Russian>-- Вращать</Russian>
-					<Chinesesimp>-- 旋转</Chinesesimp>
+					<Chinesesimp>-- 旋转 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_PLACEMENT">
 					<Original>-- Build</Original>
@@ -153,7 +153,7 @@
 					<German>-- Bauen</German>
 					<Spanish>-- Construir</Spanish>
 					<Russian>-- Поставить</Russian>
-					<Chinesesimp>-- 建造</Chinesesimp>
+					<Chinesesimp>-- 建造 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_PLACEMENT_BIS">
 					<Original>-- Build and Repeat</Original>
@@ -161,7 +161,7 @@
 					<German>-- Bauen und Wiederholen</German>
 					<Spanish>-- Construir y repetir</Spanish>
 					<Russian>-- Поставить и повторить</Russian>
-					<Chinesesimp>-- 建造并重复</Chinesesimp>
+					<Chinesesimp>-- 建造并重复 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_CANCEL">
 					<Original>-- Cancel</Original>
@@ -169,7 +169,7 @@
 					<German>-- Abbrechen</German>
 					<Spanish>-- Cancelar</Spanish>
 					<Russian>-- Отмена</Russian>
-					<Chinesesimp>-- 取消</Chinesesimp>
+					<Chinesesimp>-- 取消 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_CANCEL_HINT">
 					<Original>Building canceled.</Original>
@@ -209,7 +209,7 @@
 					<German>-- ARSENAL</German>
 					<Spanish>-- ARSENAL</Spanish>
 					<Russian>-- АРСЕНАЛ</Russian>
-					<Chinesesimp>-- 军火库</Chinesesimp>
+					<Chinesesimp>-- 军火库 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_ACTION_LOAD_BOX">
 					<Original>-- LOAD</Original>
@@ -217,7 +217,7 @@
 					<German>-- AUFLADEN</German>
 					<Spanish>-- CARGAR</Spanish>
 					<Russian>-- ЗАГРУЗИТЬ</Russian>
-					<Chinesesimp>-- 背负</Chinesesimp>
+					<Chinesesimp>-- 背负 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_ACTION_UNLOAD_BOX">
 					<Original>-- UNLOAD</Original>
@@ -225,7 +225,7 @@
 					<German>--  ABLADEN</German>
 					<Spanish>-- DESCARGAR</Spanish>
 					<Russian>-- ВЫГРУЗИТЬ</Russian>
-					<Chinesesimp>-- 卸载</Chinesesimp>
+					<Chinesesimp>-- 卸载 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_BOX_LOADED">
 					<Original>Ammo box successfully loaded on the transport vehicle.</Original>
@@ -257,7 +257,7 @@
 					<German>-- FOB Bereitstellen</German>
 					<Spanish>-- DESPLEGAR FOB</Spanish>
 					<Russian>-- РАЗВЕРНУТЬ FOB</Russian>
-					<Chinesesimp>-- 部署 FOB</Chinesesimp>
+					<Chinesesimp>-- 部署 FOB --</Chinesesimp>
 			</Key>
 			<Key ID="STR_FOB_BUILDING_IMPOSSIBLE">
 					<Original>Can't deploy a new FOB here, you must be at least %1 meters away from every other FOB. Nearest FOB is %2 meters away.</Original>
@@ -345,7 +345,7 @@
 					<German>-- NEU EINSETZEN</German>
 					<Spanish>-- REDESPLEGAR</Spanish>
 					<Russian>-- ПЕРЕМЕСТИТЬСЯ</Russian>
-					<Chinesesimp>-- 重新部署</Chinesesimp>
+					<Chinesesimp>-- 重新部署 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_BUILD_CREW">
 					<Original>Build (Crew)</Original>
@@ -450,7 +450,7 @@
 					<German>-- UMDREHEN</German>
 					<Spanish>-- RECOLOCAR VEHÍCULO</Spanish>
 					<Russian>-- ПЕРЕВЕРНУТЬ</Russian>
-					<Chinesesimp>-- 翻正</Chinesesimp>
+					<Chinesesimp>-- 翻正 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_GRID">
 					<Original>-- Grid mode</Original>
@@ -458,7 +458,7 @@
 					<German>-- Rastermodus</German>
 					<Spanish>-- Modo rejilla</Spanish>
 					<Russian>-- Режим сетки</Russian>
-					<Chinesesimp>-- 网格模式</Chinesesimp>
+					<Chinesesimp>-- 网格模式 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_SECONDARY_CAPTURE">
 					<Original>-- CAPTURE</Original>
@@ -466,7 +466,7 @@
 					<German>-- GEFANGENNEHMEN</German>
 					<Spanish>-- CAPTURAR</Spanish>
 					<Russian>-- ЗАХВАТИТЬ</Russian>
-					<Chinesesimp>-- 俘虏</Chinesesimp>
+					<Chinesesimp>-- 俘虏 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_SQUAD_MEMBER">
 					<Original>Squad member</Original>
@@ -474,7 +474,7 @@
 					<German>Truppenmitglieder</German>
 					<Spanish>Miembro de escuadra</Spanish>
 					<Russian>Член отряда</Russian>
-					<Chinesesimp>班组成员</Chinesesimp>
+					<Chinesesimp>班组成员 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_SPAWN_NEAR">
 					<Original>Near</Original>
@@ -490,7 +490,7 @@
 					<German>-- WIEDERVERWERTEN</German>
 					<Spanish>-- RECICLAR</Spanish>
 					<Russian>-- УТИЛИЗИРОВАТЬ</Russian>
-					<Chinesesimp>-- 回收</Chinesesimp>
+					<Chinesesimp>-- 回收 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_RECYCLING">
 					<Original>Recycling</Original>
@@ -1353,6 +1353,7 @@
 			<Key ID="STR_PARAM_WILDLIFE">
 					<Original>Enable the Wildlife Manager</Original>
 					<French>Activer le gestionnaire de vie sauvage</French>
+					<Chinesesimp>启用野生动物管理</Chinesesimp>
 			</Key>
 			<Key ID="STR_FRIENDLY_FIRE">
 					<Original>Warning: friendly fire</Original>
@@ -3570,10 +3571,12 @@
 		<Key ID="STR_TAXI_ACTION1">
 			<Original>-- TAXI Destination</Original>
 			<French>-- TAXI Destination</French>
+			<Chinesesimp>-- 目的地</Chinesesimp>
 		</Key>
 		<Key ID="STR_TAXI_ACTION2">
 			<Original>-- TAXI Cancel</Original>
 			<French>-- TAXI Annulation</French>
+			<Chinesesimp>-- 取消</Chinesesimp>
 		</Key>
 		<Key ID="STR_TAXI_ONLY_ONE">
 			<Original>Sorry, only one Taxi at time.</Original>
@@ -3700,6 +3703,7 @@
 			<English>Loadout Editor</English>
 			<Dutch>Bewapening Aanpassen</Dutch>
 			<German>Ausrüstung Anpassen</German>
+			<Chinesesimp>挂架编辑</Chinesesimp>
 		</Key>
 	</Package>
 	<Package name="Dialogs">
@@ -3708,42 +3712,49 @@
 			<English>APPLY</English>
 			<Dutch>TOEPASSEN</Dutch>
 			<German>ANWENDEN</German>
+			<Chinesesimp>应用</Chinesesimp>
 		</Key>
 		<Key ID="STR_DALE_Dialogs_Cancel">
 			<Original>CANCEL</Original>
 			<English>CANCEL</English>
 			<Dutch>ANNULEREN</Dutch>
 			<German>ABBRECHEN</German>
+			<Chinesesimp>取消</Chinesesimp>
 		</Key>
 		<Key ID="STR_DALE_Dialogs_Custom">
 			<Original>Custom</Original>
 			<English>Custom</English>
 			<Dutch>Aangepast</Dutch>
 			<German>Eigene</German>
+			<Chinesesimp>常规</Chinesesimp>
 		</Key>
 		<Key ID="STR_DALE_Dialogs_Empty">
 			<Original>empty</Original>
 			<English>empty</English>
 			<Dutch>leeg</Dutch>
 			<German>leer</German>
+			<Chinesesimp>空</Chinesesimp>
 		</Key>
 		<Key ID="STR_DALE_Dialogs_Single">
 			<Original>Single</Original>
 			<English>Single</English>
 			<Dutch>Enkel</Dutch>
 			<German>Einzel</German>
+			<Chinesesimp>单次</Chinesesimp>
 		</Key>
 		<Key ID="STR_DALE_Dialogs_Double">
 			<Original>Double</Original>
 			<English>Double</English>
 			<Dutch>Dubbel</Dutch>
 			<German>Doppelt</German>
+			<Chinesesimp>镜像</Chinesesimp>
 		</Key>
 		<Key ID="STR_DALE_Dialogs_Burst">
 			<Original>Burst</Original>
 			<English>Burst</English>
 			<Dutch>Salvo</Dutch>
 			<German>Salve</German>
+			<Chinesesimp>全部</Chinesesimp>
 		</Key>
 	</Package>
 </Project>
