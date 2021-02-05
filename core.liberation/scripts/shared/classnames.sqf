@@ -127,9 +127,9 @@ air_vehicles = [
 	["B_Heli_Light_01_dynamicLoadout_F",5,200,10,GRLIB_perm_air],
 	["B_Heli_Transport_03_F",10,1000,15,GRLIB_perm_air],
 	["B_Heli_Transport_01_camo_F",10,2000,15,GRLIB_perm_air],
-	["B_T_VTOL_01_infantry_F",10,1000,15,GRLIB_perm_air],
-	["B_T_VTOL_01_vehicle_F",10,1000,15,GRLIB_perm_air],
-	["B_T_VTOL_01_armed_F",20,4000,40,GRLIB_perm_max],
+	["B_T_VTOL_01_infantry_F",10,1300,15,GRLIB_perm_air],
+	["B_T_VTOL_01_vehicle_F",10,1400,15,GRLIB_perm_air],
+	["B_T_VTOL_01_armed_F",20,3500,40,GRLIB_perm_max],
 	["B_Heli_Attack_01_dynamicLoadout_F",10,3000,20,GRLIB_perm_air],
 	["B_Heli_Attack_02_dynamicLoadout_F",10,4500,20,GRLIB_perm_max],
 	["I_Plane_Fighter_03_dynamicLoadout_F", 10,3500,20,GRLIB_perm_max],
@@ -360,6 +360,19 @@ vehicle_artillery = [
 	"I_E_Truck_02_MRL_F",
 	"B_MBT_01_arty_F"
 ];
+
+vehicle_big_units = [
+	"Land_Cargo_Tower_V1_F",
+	"B_T_VTOL_01_infantry_F",
+	"B_T_VTOL_01_vehicle_F",
+	"B_T_VTOL_01_armed_F",
+	"O_T_VTOL_01_infantry_F",
+	"O_T_VTOL_01_vehicle_F",
+	"O_T_VTOL_01_armed_F",
+	"Land_SM_01_shed_F",
+	"Land_Hangar_F"
+];
+
 
 // *** BADDIES ***
 
