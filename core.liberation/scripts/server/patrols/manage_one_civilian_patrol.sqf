@@ -19,15 +19,14 @@ while { GRLIB_endgame == 0 } do {
 	} foreach ((sectors_bigtown + sectors_capture + sectors_factory) - (active_sectors));
 
 	if ( count _usable_sectors > 0 ) then {
-		_spawnsector = _usable_sectors call BIS_fnc_selectRandom;
+		_spawnsector = selectRandom _usable_sectors;
 
 		_grp = createGroup [GRLIB_side_civilian, true];
 		sleep 0.5;
 		if ( random 100 < 33) then {
 			_civnumber = 1 + (floor (random 2));
 			while { count units _grp < _civnumber } do {
-				//_unit = _grp createUnit [( civilians call BIS_fnc_selectRandom ), markerpos _spawnsector, [], 0, "FORM"];
-				( civilians call BIS_fnc_selectRandom ) createUnit [ markerpos _spawnsector, _grp, "this addMPEventHandler [""MPKilled"", {_this spawn kill_manager}]", 0.5, "PRIVATE"];
+				( selectRandom civilians ) createUnit [ markerpos _spawnsector, _grp, "this addMPEventHandler [""MPKilled"", {_this spawn kill_manager}]", 0.5, "PRIVATE"];
 			};
 			_grpspeed = "LIMITED";
 		} else {
@@ -40,8 +39,8 @@ while { GRLIB_endgame == 0 } do {
 
 			_spawnpos = getpos _nearestroad;
 
-			( civilians call BIS_fnc_selectRandom ) createUnit [ _spawnpos, _grp, "this addMPEventHandler [""MPKilled"", {_this spawn kill_manager}]", 0.5, "PRIVATE"];
-			_civveh = ( civilian_vehicles call BIS_fnc_selectRandom ) createVehicle _spawnpos;
+			( selectRandom civilians ) createUnit [ _spawnpos, _grp, "this addMPEventHandler [""MPKilled"", {_this spawn kill_manager}]", 0.5, "PRIVATE"];
+			_civveh = ( selectRandom civilian_vehicles ) createVehicle _spawnpos;
 			_civveh setpos _spawnpos;
 			_civveh addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
 			_civveh addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) == GRLIB_side_friendly ) then { _damage = _this select 2 } else { _damage = 0 }; _damage }];
@@ -66,7 +65,7 @@ while { GRLIB_endgame == 0 } do {
 		_sectors_patrol_random = [];
 		_sectorcount = count _sectors_patrol;
 		while { count _sectors_patrol_random < _sectorcount } do {
-			_nextsector = _sectors_patrol call BIS_fnc_selectRandom;
+			_nextsector = selectRandom _sectors_patrol;
 			_sectors_patrol_random pushback _nextsector;
 			_sectors_patrol = _sectors_patrol - [_nextsector];
 

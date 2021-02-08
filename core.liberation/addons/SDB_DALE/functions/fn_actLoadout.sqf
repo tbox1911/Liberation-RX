@@ -8,7 +8,7 @@ if (!isNil {_veh getVariable "DALE_var_IDLoadout"}) exitWith {};
 private _cfgComponent = configFile >> "CfgVehicles" >> typeOf _veh >> "Components" >> "TransportPylonsComponent";
 
 if (!isClass _cfgComponent) exitWith {};
-if (!(_veh isKindOf "Plane")) exitWith {};
+if (!(_veh isKindOf "Air")) exitWith {};
 
 private _actionCond = "(isTouchingGround _target) && (driver _target isEqualTo _this) && (speed _target < 1) && ([player, 'REAMMO', 30, true] call F_check_near)";
 private _actionText = localize "STR_DALE_Actions_Loadout";

@@ -83,60 +83,59 @@ switch ( toLower _listType ) do {
 	//CARGO - Same structure as addVirtualCargo [ Items, Weapons, Magazines, Backpacks ]
 	case "cargo" : {
 		{
-//			if !( isNil "_x" ) then {
-//
-//				{
+			_item = _x;
+			_itemType = _item call BIS_fnc_itemType;
+//diag_log format ["DBG1: %1 %2", _item, _itemType];
 
-					_item = _x;
-					_itemType = _item call BIS_fnc_itemType;
-					_index = if !( ( _itemType select 0 ) isEqualTo "" ) then {
-						switch ( _itemType select 0 ) do {
-							case "Item" : {
-								if ( _itemType select 1 == "binocular" ) then {
-									1
-								}else{
-									0
-								};
-							};
-							case "Weapon" : {
-								1
-							};
-							case "Magazine";
-							case 'Mine' : {
-								2
-							};
-							case "Equipment" : {
-								if ( ( _itemType select 1 ) == 'Backpack' ) then {
-									3
-								}else{
-									0
-								};
-							};
-						};
-					};
-					if !( isNil "_index" ) then {
-						if ( count _newlist > _index ) then {
-
-							_tmpList = _newList select _index;
-							if !( isNil "_tmpList" ) then {
-								_nul = _tmpList pushBack _item;
-							}else{
-								_newList set [ _index, [ _item ] ];
-							};
+			_index = if !( ( _itemType select 0 ) isEqualTo "" ) then {
+				switch ( _itemType select 0 ) do {
+					case "Item" : {
+						if ( _itemType select 1 == "binocular" ) then {
+							1
 						}else{
-							_newList set [ _index, [ _item ] ];
-						};
-					}else{
-						if (
-							isClass( configFile >> "CfgWeapons" >> _item ) ||
-							isClass( configFile >> "CfgGlasses" >> _item )
-						) then {
-							format[ "VirtualCargo Index for %1 not found", _item ] call BIS_fnc_error;
-							diag_log format[ "VirtualCargo Index for %1 not found", _item ];
+							0
 						};
 					};
-//				}forEach _x;
-//			};
+					case "VehicleWeapon";
+					case "Weapon" : {
+						1
+					};
+					case "Magazine";
+					case 'Mine' : {
+						2
+					};
+					case "Equipment" : {
+						if ( ( _itemType select 1 ) == 'Backpack' ) then {
+							3
+						}else{
+							0
+						};
+					};
+				};
+			};
+
+			if !( isNil "_index" ) then {
+				if ( count _newlist > _index ) then {
+
+					_tmpList = _newList select _index;
+					if !( isNil "_tmpList" ) then {
+						_nul = _tmpList pushBack _item;
+					}else{
+						_newList set [ _index, [ _item ] ];
+					};
+				}else{
+					_newList set [ _index, [ _item ] ];
+				};
+			}else{
+				if (
+					isClass( configFile >> "CfgWeapons" >> _item ) ||
+					isClass( configFile >> "CfgGlasses" >> _item )
+				) then {
+					format[ "VirtualCargo Index for %1 not found", _item ] call BIS_fnc_error;
+					diag_log format[ "VirtualCargo Index for %1 not found", _item ];
+				};
+			};
+
 		}forEach _list;
 	};
 };

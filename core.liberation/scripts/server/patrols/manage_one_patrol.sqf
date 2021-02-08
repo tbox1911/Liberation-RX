@@ -46,7 +46,7 @@ while { GRLIB_endgame == 0 } do {
 	if (_patrol_type == 2) then {
 		private [ "_vehicle_object" ];
 		if (combat_readiness > 75 && (random 100) > 70) then {
-			_vehicle_object = [ _sector_spawn_pos, opfor_choppers call BIS_fnc_selectRandom ] call F_libSpawnVehicle;
+			_vehicle_object = [ _sector_spawn_pos, selectRandom opfor_choppers ] call F_libSpawnVehicle;
 		} else {
 			_vehicle_object = [ _sector_spawn_pos, [] call F_getAdaptiveVehicle ] call F_libSpawnVehicle;
 		};
@@ -60,7 +60,7 @@ while { GRLIB_endgame == 0 } do {
 		if ( count _opfor_spawn > 0) then {
 			_grp = createGroup [GRLIB_side_enemy, true];
 			_tower_spawn_pos = [ getMarkerPos (selectRandom _opfor_spawn), random 50, random 360 ] call BIS_fnc_relPos;
-			_vehicle_object = [ _tower_spawn_pos, opfor_statics call BIS_fnc_selectRandom ] call F_libSpawnVehicle;
+			_vehicle_object = [ _tower_spawn_pos, selectRandom opfor_statics ] call F_libSpawnVehicle;
 			_grp_veh = group _vehicle_object;
 			[_vehicle_object] spawn protect_static;
 			"O_spotter_F" createUnit [ getpos _vehicle_object, _grp, "this addMPEventHandler [""MPKilled"", {_this spawn kill_manager}]", 0.5, "PRIVATE"];

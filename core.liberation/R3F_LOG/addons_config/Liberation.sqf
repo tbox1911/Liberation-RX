@@ -10,18 +10,22 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 
 R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
 [
-	"I_Heli_light_03_unarmed_F",
+	"O_Heli_Light_02_unarmed_F",
+	"O_Heli_Transport_04_F",
 	"O_Heli_Light_02_unarmed_F",
 	"B_Heli_Transport_03_F",
 	"B_Heli_Transport_03_unarmed_F",
 	"B_Heli_Transport_01_F",
 	"B_Heli_Transport_01_camo_F",
-	"I_Heli_light_03_F",
-	"B_Heli_Attack_01_F"
+	"B_Heli_Attack_01_F",
+	"I_Heli_light_03_unarmed_F",
+	"I_Heli_light_03_F"
 ];
 
 R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 [
+	"Slingload_01_Base_F",
+	"Pod_Heli_Transport_04_base_F"
 ];
 
 R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
@@ -34,10 +38,15 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["B_Heli_Transport_01_F", 100],
 	["B_Heli_Transport_01_camo_F", 100],
 	["B_Heli_Transport_03_F", 150],
+	["O_Heli_Transport_04_F", 150],
 	["B_Heli_Transport_03_unarmed_F", 200],
 	["I_Heli_light_03_F",100],
 	["B_T_VTOL_01_infantry_F", 100],
 	["B_T_VTOL_01_vehicle_F", 100],
+	["B_T_VTOL_01_armed_F", 100],
+	["O_T_VTOL_01_infantry_F", 100],
+	["O_T_VTOL_01_vehicle_F", 100],
+	["O_T_VTOL_01_armed_F", 100],
 	["B_UAV_01_F", 1],
 	["B_UAV_02_dynamicLoadout_F", 1],
 	["B_UAV_06_F", 5],
@@ -142,11 +151,11 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["Quadbike_01_base_F", 3],
 	["Tank_F", 50],
 	["Truck_F", 100],
-	["C_Offroad_01_repair_F", 25],
 	["Hatchback_01_base_F", 5],
 	["SUV_01_base_F", 5],
-	["Offroad_01_base_F", 7],
-	["Offroad_02_base_F", 7],
+	["Offroad_01_base_F", 10],
+	["Offroad_02_base_F", 10],
+	["Offroad_01_repair_base_F", 7],
 	["MRAP_01_base_F", 15],
 	["MRAP_02_base_F", 15],
 	["MRAP_03_base_F", 15],
@@ -252,6 +261,8 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	medic_sling_typename,
 	A3W_BoxWps,
 	canisterFuel,
+	"Land_Pod_Heli_Transport_04_bench_F",
+	"Land_Pod_Heli_Transport_04_covered_F",
 	"Land_PierLadder_F",
 	"Box_NATO_Ammo_F",
     "Box_NATO_WpsLaunch_F",

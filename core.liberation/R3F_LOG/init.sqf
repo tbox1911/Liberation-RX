@@ -138,6 +138,17 @@
 				case "setDir": {_argument setDir _parametre;};
 				case "setVelocity": {_argument setVelocity _parametre;};
 				case "detachSetVelocity": {detach _argument; _argument setVelocity _parametre;};
+				case "paraDrop": {
+					[_argument, _parametre] spawn {
+						params ["_objet", "_heli"];
+						_objet disableCollisionWith _heli;
+						detach _objet;
+						_objet setVelocity (velocity _heli);
+						sleep 2;
+						_objet enableCollisionWith _heli;
+						[_objet, _heli] spawn F_addParachute;
+					};
+				};
 			};
 		};
 
@@ -241,6 +252,7 @@
 
 		R3F_LOG_action_heliporter_valide = false;
 		R3F_LOG_action_heliport_larguer_valide = false;
+		R3F_LOG_action_heliport_paradrop_valide = false;
 
 		R3F_LOG_action_deplacer_objet_valide = false;
 		R3F_LOG_action_remorquer_direct_valide = false;

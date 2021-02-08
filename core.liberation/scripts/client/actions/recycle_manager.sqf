@@ -4,17 +4,9 @@ private _searchradius = 100;
 
 private _nearrecycl = [];
 private _recycleable_blacklist = [huron_typename,"myLARsBox"];
-private _recycleable_classnames = ["LandVehicle","Air","Ship","Slingload_01_Base_F"];
+private _recycleable_classnames = ["LandVehicle","Air","Ship","Slingload_01_Base_F", "Pod_Heli_Transport_04_base_F"];
 {_recycleable_classnames pushBack ( _x select 0 )} foreach (static_vehicles + support_vehicles + buildings + opfor_recyclable);
 _recycleable_classnames = _recycleable_classnames + GRLIB_vehicle_whitelist;
-
-private _big_unit = [
-	"Land_Cargo_Tower_V1_F",
-	"B_T_VTOL_01_infantry_F",
-	"B_T_VTOL_01_vehicle_F",
-	"Land_SM_01_shed_F",
-	"Land_Hangar_F"
-];
 
 waitUntil {sleep 1; !isNil "build_confirmed" };
 waitUntil {sleep 1; !isNil "one_synchro_done" };
@@ -32,8 +24,8 @@ while { true } do {
 	{
 		_vehicle = _x;
 		_distvehclose = 5;
-		if (typeOf _vehicle in _big_unit) then {
-			_distvehclose = _distvehclose * 4;
+		if (typeOf _vehicle in vehicle_big_units) then {
+			_distvehclose = _distvehclose * 3;
 		};
 		_vehicle addAction ["<t color='#FFFF00'>-- RECYCLE</t> <img size='1' image='res\ui_recycle.paa'/>","scripts\client\actions\do_recycle.sqf","",-950,false,true,"","[_target] call is_menuok && [_target] call F_is_recyclable",_distvehclose];
 

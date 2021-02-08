@@ -31,7 +31,7 @@ class liberation_admin {
   class ArsenalButton: StdButton
   {
     idc = 1600;
-    action = "'B_supplyCrate_F' createVehicle (player getRelPos[3, 0]);hint 'Arsenal spawned !'";
+    action = "Arsenal_typename createVehicle (player getRelPos[3, 0]);hint 'Arsenal spawned !'";
     text = "Spawn Arsenal";
     x = 0.2275 * safezoneW + safezoneX;
     y = 0.208 * safezoneH + safezoneY;
@@ -41,7 +41,7 @@ class liberation_admin {
   class AmmoButton: StdButton
   {
     idc = 1601;
-    action = "['Box_NATO_AmmoVeh_F', player getRelPos[3, 0], false] remoteExec ['boxSetup', 2]; hint 'AmmoBox spawned !'";
+    action = "[ammobox_b_typename, player getRelPos[3, 0], false] remoteExec ['boxSetup', 2]; hint 'AmmoBox spawned !'";
 
     text = "Spawn AmmoBox";
     x = 0.2275 * safezoneW + safezoneX;

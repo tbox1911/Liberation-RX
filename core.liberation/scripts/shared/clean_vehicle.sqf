@@ -6,10 +6,12 @@ _towed = _vehicle getVariable ["R3F_LOG_remorque", objNull];
 if (!isNull _towed) then {
 	[_towed] remoteExec ["R3F_LOG_FNCT_remorqueur_detacher", 0];
 };
+sleep 0.2;
 
 // Delete R3F Cargo
 {[_x] remoteExec ["deleteVehicle", 0]} forEach (_vehicle getVariable ["R3F_LOG_objets_charges", []]);
 _vehicle setVariable ["R3F_LOG_objets_charges", [], true];
+sleep 0.2;
 
 // Delete GRLIB Cargo
 if ( _vehicle getVariable ["GRLIB_ammo_truck_load", 0] >= 1 ) then {
@@ -22,6 +24,7 @@ if ( _vehicle getVariable ["GRLIB_ammo_truck_load", 0] >= 1 ) then {
 		};
 	} foreach (attachedObjects _vehicle);
 };
+sleep 0.2;
 
 //Delete A3 Cargo
 clearWeaponCargoGlobal _vehicle;

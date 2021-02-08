@@ -26,7 +26,11 @@ player setVariable ["GREUH_ammo_count", 0, true];
 if (GRLIB_forced_loadout > 0) then {
 	[player] call compile preprocessFileLineNumbers (format ["scripts\loadouts\vanilla\player_set%1.sqf", GRLIB_forced_loadout]);
 } else {
- 	[player, configfile >> "CfgVehicles" >> typeOf player] call BIS_fnc_loadInventory;
+	[player, configfile >> "CfgVehicles" >> typeOf player] call BIS_fnc_loadInventory;
+	if (typeOf player in units_loadout_overide) then {
+		_loadouts_folder = format ["scripts\loadouts\%1\%2.sqf", GRLIB_side_friendly, typeOf player];
+		[player] call compileFinal preprocessFileLineNUmbers _loadouts_folder;
+	};
 };
 if (isMultiplayer) then {
 	PAR_Grp_ID = getPlayerUID player;
@@ -92,12 +96,13 @@ if (!GRLIB_ACE_enabled) then {
 };
 [] execVM "addons\VIRT\virtual_garage_init.sqf";
 [] execVM "addons\TAXI\taxi_init.sqf";
+[] execVM "addons\TARU\taru_init.sqf";
 
 // Init Tips Tables from XML
 GREUH_TipsText = [];
 {
 	if (_x select [0, 1] != "t" && _x != "br") then {
-    	GREUH_TipsText pushback (_x select [8]);
+    	GREUH_TipsText pushback (_x select [7]);
 	};
 } forEach ((localize "STR_TUTO_TEXT12") splitString "></");
 

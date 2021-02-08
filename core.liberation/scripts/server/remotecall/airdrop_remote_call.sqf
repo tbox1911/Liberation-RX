@@ -11,19 +11,4 @@ _veh setdir (random 360);
 _text = format ["Player %1 call Air Support.  Dropping: %2 !", name _unit, getText (configFile >> "CfgVehicles" >> typeOf _veh >> "displayName")];
 [gamelogic, _text] remoteExec ["globalChat", 0];
 [_unit] remoteExec ["remote_call_airdrop", owner _unit];
-
-
-waitUntil {sleep 0.5;(getposATL _veh select 2) < 150};
-_para = createVehicle ["B_Parachute_02_F",(getposATL _veh), [], 0, "NONE"];
-_veh attachTo [_para, [0,0,0]];
-
-_stop = diag_tickTime + (2 * 60); // wait 2min max
-waitUntil {sleep 0.2;(getposATL _veh select 2) < 7 || diag_tickTime > _stop};
-detach _veh;
-_veh allowDamage false;
-
-"SmokeShellBlue" createVehicle (getposATL _veh);
-"SmokeShellBlue" createVehicle (getposATL _veh);
-sleep 6;
-deleteVehicle _para;
-_veh allowDamage true;
+[_veh, objNull] spawn F_addParachute;
