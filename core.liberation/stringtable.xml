@@ -3393,9 +3393,9 @@
 				<Chinesesimp>您可以完全使用静态武器&lt;br/&gt;您可以使用飞机。&lt;br/&gt;您还有一个额外的AI。</Chinesesimp>
 			</Key>
 			<Key ID="STR_RANK_LVL4">
-				<Original>You can build Tank unit&lt;br/&gt;You have Full Acces to Building and Logistic</br>You can Recycle unit.&lt;br/&gt;You have an extra AI.</Original>
+				<Original>You can build Tank unit&lt;br/&gt;You have Full Acces to Building and Logistic&lt;br/&gt;You can Recycle unit.&lt;br/&gt;You have an extra AI.</Original>
 				<French>Vous pouvez construire des Tanks.&lt;br/&gt;Vous avez un acces complet aux Batiments et au Support.&lt;br/&gt;Vous pouvez recycler les objets.&lt;br/&gt;Vous avez une unitée en plus.</French>
-				<Chinesesimp>你可以建造坦克单位&lt;br/&gt;您拥有对建筑和物流的完全访问权限</br>您可以回收单位。&lt;br/&gt;您还有一个额外的AI。</Chinesesimp>
+				<Chinesesimp>你可以建造坦克单位&lt;br/&gt;您拥有对建筑和物流的完全访问权限&lt;br/&gt;您可以回收单位。&lt;br/&gt;您还有一个额外的AI。</Chinesesimp>
 			</Key>
 			<Key ID="STR_RANK_LVL5">
 				<Original>You can build Air unit&lt;br/&gt;You can start Special Side Missions at HQ.&lt;br/&gt;You have an extra AI.</Original>
@@ -3473,11 +3473,7 @@
 				<French>Vous avez payé: %1 Ammo</French>
 				<Chinesesimp>你为一身装备支付: %1 弹药</Chinesesimp>
 			</Key>
-
 		</Package>
-</Project>
-
-<Project name="NRE Earplugs">
 	<Package name="NREEarplugs">
 		<Key ID="STR_NREEP_IN_HINT">
 			<Original>You have insert the earplugs!</Original>
@@ -3512,9 +3508,7 @@
 			<Chinesesimp>摘下耳塞</Chinesesimp>
 		</Key>
 	</Package>
-</Project>
-
-<Project name="LRX_PAR">
+	
 	<Package name="LRX_PAR">
 		<!-- pSiKO AI Revive -->
 		<Key ID="STR_PAR_CM_01">
@@ -3563,9 +3557,7 @@
 			<Chinesesimp>抱歉 %1，附近没有单位能来救你...</Chinesesimp>
 		</Key>
 	</Package>
-</Project>
-
-<Project name="LRX_TAXI">
+	
 	<Package name="LRX_TAXI">
 		<!-- Taxi -->
 		<Key ID="STR_TAXI_ACTION1">
@@ -3629,9 +3621,7 @@
 			<Chinesesimp>返回空军基地。\n下次见...</Chinesesimp>
 		</Key>
 	</Package>
-</Project>
 
-<Project name="LRX_TK">
 	<Package name="LRX_TK">
 		<Key ID="STR_TK_MODE">
 			<Original>TeamKill Mode</Original>
@@ -3694,10 +3684,9 @@
 			<Chinesesimp>TK: %1 原谅了 %2.</Chinesesimp>
 		</Key>
 	</Package>
-</Project>
 
-<Project name="SDB_DALE">
-	<Package name="Actions">
+	<Package name="SDB_DALE">
+		<Container name="Actions">
 		<Key ID="STR_DALE_Actions_Loadout">
 			<Original>Loadout Editor</Original>
 			<English>Loadout Editor</English>
@@ -3705,8 +3694,8 @@
 			<German>Ausrüstung Anpassen</German>
 			<Chinesesimp>挂架编辑</Chinesesimp>
 		</Key>
-	</Package>
-	<Package name="Dialogs">
+	</Container>
+	<Container name="Dialogs">
 		<Key ID="STR_DALE_Dialogs_Apply">
 			<Original>APPLY</Original>
 			<English>APPLY</English>
@@ -3755,6 +3744,7 @@
 			<Dutch>Salvo</Dutch>
 			<German>Salve</German>
 			<Chinesesimp>全部</Chinesesimp>
-		</Key>
+			</Key>
+		</Container>
 	</Package>
 </Project>
