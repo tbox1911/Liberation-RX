@@ -26,7 +26,7 @@ attach_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\ga
 reinforcements_manager = compileFinal preprocessFileLineNumbers "scripts\server\patrols\reinforcements_manager.sqf";
 send_paratroopers = compileFinal preprocessFileLineNumbers "scripts\server\patrols\send_paratroopers.sqf";
 manage_one_patrol = compileFinal preprocessFileLineNumbers "scripts\server\patrols\manage_one_patrol.sqf";
-manage_one_civilian_patrol = compileFinal preprocessFileLineNumbers "scripts\server\patrols\manage_one_civilian_patrol";
+manage_one_civilian_patrol = compileFinal preprocessFileLineNumbers "scripts\server\patrols\manage_one_civilian_patrol.sqf";
 
 // Wildlife
 manage_one_wildlife = compileFinal preprocessFileLineNumbers "scripts\server\patrols\manage_one_wildlife.sqf";
