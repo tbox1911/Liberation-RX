@@ -51,6 +51,43 @@
 #define ST_UP             0x08
 #define ST_VCENTER        0x0C
 
+#ifdef ST_SINGLE
+#undef ST_SINGLE
+#endif
+#ifdef ST_MULTI
+#undef ST_MULTI
+#endif
+#ifdef ST_TITLE_BAR
+#undef ST_TITLE_BAR
+#endif
+#ifdef ST_PICTURE
+#undef ST_PICTURE
+#endif
+#ifdef ST_FRAME
+#undef ST_FRAME
+#endif
+#ifdef ST_BACKGROUND
+#undef ST_BACKGROUND
+#endif
+#ifdef ST_GROUP_BOX
+#undef ST_GROUP_BOX
+#endif
+#ifdef ST_GROUP_BOX2
+#undef ST_GROUP_BOX2
+#endif
+#ifdef ST_TILE_PICTURE
+#undef ST_TILE_PICTURE
+#endif
+#ifdef ST_WITH_RECT
+#undef ST_WITH_RECT
+#endif
+#ifdef ST_LINE
+#undef ST_LINE
+#endif
+#ifdef ST_HUD_BACKGROUND
+#undef ST_HUD_BACKGROUND
+#endif
+
 #define ST_TYPE           0xF0
 #define ST_SINGLE         0x00
 #define ST_MULTI          0x10
