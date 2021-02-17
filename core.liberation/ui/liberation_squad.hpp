@@ -16,7 +16,7 @@ class liberation_squad {
 		style = ST_SINGLE;
 		colorText[] = COLOR_BLACK;
 		colorBackground[] = COLOR_BROWN;
-		font = FontM;
+		font = FONTM;
 		sizeEx = 0.023;
 		x = (0.15 * safezoneW + safezoneX) - ( 2 * BORDERSIZE);
 		y = ((BASE_Y + 0.02) * safezoneH) + safezoneY - (3 * BORDERSIZE);
@@ -43,7 +43,7 @@ class liberation_squad {
 		type = CT_BUTTON;
 		style = ST_CENTER;
 		default = false;
-		font = FontM;
+		font = FONTM;
 		sizeEx = 0.018 * safezoneH;
 		colorText[] = { 0, 0, 0, 1 };
 		colorFocused[] = { 1, 1, 1, 1 };
@@ -268,7 +268,7 @@ class liberation_squad {
 		style = ST_PICTURE;
 		colorText[] = {1,1,1,1};
         colorBackground[] = {1,1,1,1};
-		font = FontM;
+		font = FONTM;
 		sizeEx = 0.023;
 		x = 0.44 * safezoneW + safezoneX + ( 2 * BORDERSIZE);
 		y = (0.25 * safezoneH + safezoneY);

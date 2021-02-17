@@ -13,7 +13,7 @@ class deathscreen
 	style = ST_LEFT;
 	colorText[] = COLOR_BLACK;
 	colorBackground[] = COLOR_BLACK;
-	font = FontM;
+	font = FONTM;
 	sizeEx = 0.023;
 	x = -3; y = -3;
 	w = 9;  h = 9;
@@ -25,7 +25,7 @@ class deathscreen
 		style = ST_PICTURE;
 		colorText[] = { 1,1,1,0.15 };
 		colorBackground[] = COLOR_NOALPHA;
-		font = FontM;
+		font = FONTM;
 		sizeEx = 0.1 * safezoneH;
 		x = 0.3 * safezoneW + safezoneX;
 		w = 0.4 * safezoneW;
@@ -39,7 +39,7 @@ class deathscreen
 	style = ST_CENTER;
 	colorText[] = COLOR_WHITE;
 	colorBackground[] = COLOR_NOALPHA;
-	font = FontM;
+	font = FONTM;
 	sizeEx = 0.07 * safezoneH;
 	shadow = 1;
 	x = 0.3 * safezoneW + safezoneX;

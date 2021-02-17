@@ -1,5 +1,5 @@
 /**
- * Constantes pour rendre les définitions des boîtes de dialogue plus lisible et maintenable
+ * Constantes pour rendre les dï¿½finitions des boï¿½tes de dialogue plus lisible et maintenable
  */
 
 #define R3F_LOG_ID_transporteur_START 65430
@@ -49,7 +49,7 @@
 #define CT_USER             99
 #define CT_MAP              100
 #define CT_MAP_MAIN         101
-#define CT_List_N_Box       102 // Arma 2 - N columns list box
+#define CT_LIST_N_BOX       102 // Arma 2 - N columns list box
 
 // Static styles
 #define ST_POS            0x0F

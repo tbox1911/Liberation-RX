@@ -32,19 +32,19 @@ class kndr_MapControl
 	colorGridMap[] = {0, 0, 0, 0.5};
 	alphaFadeStartScale = 5;
 	alphaFadeEndScale = 5;
-	font = FontM;
+	font = FONTM;
 	sizeEx = 0.075;
-	fontLabel = FontM;
+	fontLabel = FONTM;
 	sizeExLabel = 0.075;
-	fontGrid = FontM;
+	fontGrid = FONTM;
 	sizeExGrid = 0.02;
-	fontUnits = FontM;
+	fontUnits = FONTM;
 	sizeExUnits = 0.075;
-	fontNames = FontM;
+	fontNames = FONTM;
 	sizeExNames = 0.075;
-	fontInfo = FontM;
+	fontInfo = FONTM;
 	sizeExInfo = 0.075;
-	fontLevel = FontM;
+	fontLevel = FONTM;
 	sizeExLevel = 0.02;
 	stickX[] = {0.20, {"Gamma", 1.00, 1.50} };
 	stickY[] = {0.20, {"Gamma", 1.00, 1.50} };
@@ -351,7 +351,7 @@ class StdText {
 	style = ST_LEFT;
 	colorText[] = COLOR_WHITE;
 	colorBackground[] = COLOR_NOALPHA;
-	font = FontM;
+	font = FONTM;
 	sizeEx = 0.02 * safezoneH;
     shadow = 2;
 	text = "";
@@ -368,7 +368,7 @@ class StdButton {
 	type = CT_BUTTON;
 	style = ST_CENTER;
 	default = false;
-	font = FontM;
+	font = FONTM;
 	sizeEx = 0.018 * safezoneH;
 	colorText[] = { 0, 0, 0, 1 };
 	colorFocused[] = { 1, 1, 1, 1 };
@@ -399,7 +399,7 @@ class StdBG {
 		type =  CT_STATIC;
 		style = ST_SINGLE;
 		colorText[] = COLOR_BLACK;
-		font = FontM;
+		font = FONTM;
 		sizeEx = 0.023;
 		text = "";
 };
@@ -408,7 +408,7 @@ class StdListBox {
 	idc = -1;
 	type = 5;
 	style = 0 + 0x10;
-	font = FontM;
+	font = FONTM;
 	sizeEx = 0.018 * safezoneH;
     rowHeight = 0.018 * safezoneH * 1.25;
 	color[] = COLOR_LIGHTGRAY;
@@ -442,7 +442,7 @@ class StdListBox {
 
 class StdListNBox : StdListBox {
 	idc = -1;
-	type = CT_List_N_Box;
+	type = CT_LIST_N_BOX;
 	drawSideArrows = 0;
 	idcLeft = -10;
 	idcRight = -11;
@@ -473,7 +473,7 @@ class BgPicture {
 	style = ST_PICTURE;
 	colorText[] = {0.5, 0.4, 0.25, 0.6};
 	colorBackground[] = {0, 0, 0, 1};
-	font = FontM;
+	font = FONTM;
 	sizeEx = 0.023;
 	moving = false;
 	text = "res\camo03.jpg";
@@ -498,7 +498,7 @@ class StdCombo {
 	color[] = COLOR_LIGHTGRAY;
 	colorActive[] = COLOR_BRIGHTGREEN;
 	colorDisabled[] = COLOR_GREEN;
-	font = FontM;
+	font = FONTM;
 	sizeEx = 0.031;
 	soundSelect[] = {"\a3\Ui_f\data\Sound\CfgIngameUI\hintExpand", 0.09, 1};
 	soundExpand[] = {"\a3\Ui_f\data\Sound\CfgIngameUI\hintExpand", 0.09, 1};

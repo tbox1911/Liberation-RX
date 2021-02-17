@@ -66,7 +66,7 @@ class liberation_sendammo_menu {
 			w = (0.015 * safezoneW);
 			h = (0.025 * safezoneH);
 			moving = false;
-			font = FontM;
+			font = FONTM;
 			text = "";
 		};
 		class AmmoImageShadow : IconImage {

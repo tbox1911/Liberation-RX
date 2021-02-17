@@ -31,7 +31,7 @@
 #define CT_USER             99
 #define CT_MAP              100
 #define CT_MAP_MAIN         101
-#define CT_List_N_Box       102 // Arma 2 - N columns list box
+#define CT_LIST_N_BOX       102 // Arma 2 - N columns list box
 
 
 // Static styles
@@ -79,7 +79,7 @@
 #define LB_TEXTURES       0x10
 #define LB_MULTI          0x20
 
-#define FontM             "puristaMedium"
+#define FONTM             "puristaMedium"
 
 #ifdef COLOR_BROWN
 #undef COLOR_BROWN
@@ -168,7 +168,7 @@ class RscListBox {
 	idc = -1;
 	type = 5;
 	style = 0 + 0x10;
-	font = FontM;
+	font = FONTM;
 	sizeEx = 0.018 * safezoneH;
 	rowHeight = 0.02 * safezoneH;
 	color[] = COLOR_LIGHTGRAY;
@@ -220,7 +220,7 @@ class RscCombo {
 	color[] = COLOR_LIGHTGRAY;
 	colorActive[] = COLOR_BRIGHTGREEN;
 	colorDisabled[] = COLOR_GREEN;
-	font = FontM;
+	font = FONTM;
 	sizeEx = 0.031;
 	soundSelect[] = {"\a3\Ui_f\data\Sound\CfgIngameUI\hintExpand", 0.09, 1};
 	soundExpand[] = {"\a3\Ui_f\data\Sound\CfgIngameUI\hintExpand", 0.09, 1};
@@ -264,7 +264,7 @@ class GREUH_Menu {
 		style = ST_PICTURE;
 		colorText[] = {0.5, 0.4, 0.25, 0.6};
 		colorBackground[] = {0, 0, 0, 1};
-		font = FontM;
+		font = FONTM;
 		sizeEx = 0.023;
 		moving = false;
 		text = "res\camo03.jpg";
@@ -280,7 +280,7 @@ class GREUH_Menu {
 		style = ST_SINGLE;
 		colorText[] = COLOR_BLACK;
 		colorBackground[] = COLOR_BROWN;
-		font = FontM;
+		font = FONTM;
 		sizeEx = 0.023;
 		x = (0.15 * safezoneW + safezoneX) - ( 2 * BORDERSIZE);
 		y = ((BASE_Y + 0.02) * safezoneH) + safezoneY - (3 * BORDERSIZE);
@@ -307,7 +307,7 @@ class GREUH_Menu {
 		style = ST_LEFT;
 		colorText[] = COLOR_WHITE;
 		colorBackground[] = COLOR_NOALPHA;
-		font = FontM;
+		font = FONTM;
 		sizeEx = 0.02 * safezoneH;
 		shadow = 2;
 	};
@@ -348,7 +348,7 @@ class GREUH_Menu {
 		type = CT_BUTTON;
 		style = ST_CENTER;
 		default = false;
-		font = FontM;
+		font = FONTM;
 		sizeEx = 0.018 * safezoneH;
 		colorText[] = { 0, 0, 0, 1 };
 		colorFocused[] = { 1, 1, 1, 1 };
@@ -725,7 +725,7 @@ class GREUH_Menu {
 		colorSelection[] = {1,1,1,0.25};
 		colorDisabled[] = { 0.2, 0.2, 0.2, 0.7 };
 		colorBackgroundDisabled[] = { 0.5, 0.5, 0.5, 0.5 };
-		font = FontM;
+		font = FONTM;
 		sizeEx = 0.02 * safezoneH;
 		autocomplete = "";
 		text = "";
@@ -850,7 +850,7 @@ class GreuhButton {
 	type = CT_BUTTON;
 	style = ST_CENTER;
 	default = false;
-	font = FontM;
+	font = FONTM;
 	sizeEx = 0.018 * safezoneH;
 	colorText[] = { 0, 0, 0, 1 };
 	colorFocused[] = { 1, 1, 1, 1 };
@@ -932,7 +932,7 @@ class GREUH_respawn {
 		style = ST_CENTER;
 		colorText[] = COLOR_WHITE;
 		colorBackground[] = COLOR_NOALPHA;
-		font = FontM;
+		font = FONTM;
 		sizeEx = 0.02 * safezoneH;
 		shadow = 1;
 		x = 0.4 * safezoneW + safezoneX;
@@ -947,7 +947,7 @@ class GREUH_respawn {
 		style = ST_CENTER;
 		colorText[] = COLOR_WHITE;
 		colorBackground[] = COLOR_NOALPHA;
-		font = FontM;
+		font = FONTM;
 		sizeEx = 0.07 * safezoneH;
 		shadow = 1;
 		x = 0.3 * safezoneW + safezoneX;
@@ -971,7 +971,7 @@ class GREUH_respawn {
 		style = ST_SINGLE;
 		colorText[] = COLOR_WHITE;
 		colorBackground[] = COLOR_BLEEDOUT;
-		font = FontM;
+		font = FONTM;
 		sizeEx = 0.023;
 		x = 0.4 * safezoneW + safezoneX;
 		y = 0.7 * safezoneH + safezoneY;

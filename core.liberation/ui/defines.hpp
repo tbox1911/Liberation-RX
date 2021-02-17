@@ -31,7 +31,7 @@
 #define CT_USER             99
 #define CT_MAP              100
 #define CT_MAP_MAIN         101
-#define CT_List_N_Box       102 // Arma 2 - N columns list box
+#define CT_LIST_N_BOX       102 // Arma 2 - N columns list box
 
 
 // Static styles
@@ -79,7 +79,7 @@
 #define LB_TEXTURES       0x10
 #define LB_MULTI          0x20
 
-#define FontM		"puristaMedium"
+#define FONTM		"puristaMedium"
 
 #ifdef COLOR_BROWN
 #undef COLOR_BROWN
