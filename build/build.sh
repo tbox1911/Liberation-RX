@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # by Vitalii B.
-# Dependencies: Mikero DePbo Tools v.0.7.70 or later
+# Dependencies: Mikero DePbo Tools v.0.7.92 or later
 # Download page: https://mikero.bytex.digital/Downloads
-# Direct link: https://mikero.bytex.digital/api/download?filename=depbo-tools-0.7.70-linux-64bit.tgz
+# Direct link: https://mikero.bytex.digital/api/download?filename=depbo-tools-0.7.92-linux-64bit.tgz
 echo -e "- Liberation_RX PBO build script -\n"
 
 which makepbo &>/dev/null
@@ -25,7 +25,7 @@ for dir in $(ls -1 ../maps | grep -E "^Liberation_RX\.*"); do
     if [[ -d custom ]]; then
 	cp -r ./custom/* ./${dir}/
     fi
-    makepbo -X=none ./${dir} ${dir}.pbo >/dev/null
+    makepbo -X=none ${dir} ${dir}.pbo >/dev/null
     rm -rf ./${dir}
     echo "Done."
 done
