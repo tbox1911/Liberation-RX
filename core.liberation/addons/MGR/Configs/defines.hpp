@@ -3,8 +3,8 @@
 #define GUI_GRID_Y	(0)
 #define GUI_GRID_W	(0.025)
 #define GUI_GRID_H	(0.04)
-#define GUI_GRID_WAbs	(1)
-#define GUI_GRID_HAbs	(1)
+#define GUI_GRID_WABS	(1)
+#define GUI_GRID_HABS	(1)
 
 // Control types
 #define CT_STATIC           0
@@ -115,7 +115,7 @@
 
 #define SL_TEXTURES       0x10
 
-// progress bar 
+// progress bar
 #define ST_VERTICAL       0x01
 #define ST_HORIZONTAL     0
 
@@ -204,7 +204,7 @@ class outlw_MR_RscListBox
 	colorSelectBackground[] = {0.95,0.95,0.95,1};
 	colorSelectBackground2[] = {1,1,1,0.5};
 	colorBackground[] = {0,0,0,0};
-	soundSelect[] = 
+	soundSelect[] =
 	{
 		"\A3\ui_f\data\sound\RscListbox\soundSelect",
 		0.09,
@@ -262,7 +262,7 @@ class outlw_MR_IGUIBack
 	y = 0.1;
 	w = 0.1;
 	h = 0.1;
-	colorbackground[] = 
+	colorbackground[] =
 	{
 		"(profilenamespace getvariable ['IGUI_BCG_RGB_R',0])",
 		"(profilenamespace getvariable ['IGUI_BCG_RGB_G',1])",
@@ -330,25 +330,25 @@ class outlw_MR_RscButtonMenu
 		w = 0.0225;
 		h = 0.03;
 	};
-	soundEnter[] = 
+	soundEnter[] =
 	{
 		"\A3\ui_f\data\sound\RscButtonMenu\soundEnter",
 		0.09,
 		1
 	};
-	soundPush[] = 
+	soundPush[] =
 	{
 		"\A3\ui_f\data\sound\RscButtonMenu\soundPush",
 		0.09,
 		1
 	};
-	soundClick[] = 
+	soundClick[] =
 	{
 		"\A3\ui_f\data\sound\RscButtonMenu\soundClick",
 		0.09,
 		1
 	};
-	soundEscape[] = 
+	soundEscape[] =
 	{
 		"\A3\ui_f\data\sound\RscButtonMenu\soundEscape",
 		0.09,
@@ -399,19 +399,19 @@ class outlw_MR_RscCombo
 	colorText[] = {1,1,1,1};
 	colorBackground[] = {0,0,0,1};
 	colorScrollbar[] = {1,0,0,1};
-	soundSelect[] = 
+	soundSelect[] =
 	{
 		"\A3\ui_f\data\sound\RscCombo\soundSelect",
 		0.1,
 		1
 	};
-	soundExpand[] = 
+	soundExpand[] =
 	{
 		"\A3\ui_f\data\sound\RscCombo\soundExpand",
 		0.1,
 		1
 	};
-	soundCollapse[] = 
+	soundCollapse[] =
 	{
 		"\A3\ui_f\data\sound\RscCombo\soundCollapse",
 		0.1,

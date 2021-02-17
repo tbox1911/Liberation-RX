@@ -2,19 +2,19 @@
  * Constantes pour rendre les d�finitions des bo�tes de dialogue plus lisible et maintenable
  */
 
-#define R3F_LOG_ID_transporteur_START 65430
+#define R3F_LOG_ID_TRANSPORTEUR_START 65430
 
-#define R3F_LOG_IDD_dlg_contenu_vehicule (R3F_LOG_ID_transporteur_START + 1)
+#define R3F_LOG_IDD_DLG_CONTENU_VEHICULE (R3F_LOG_ID_TRANSPORTEUR_START + 1)
 
-#define R3F_LOG_IDC_dlg_CV_capacite_vehicule (R3F_LOG_ID_transporteur_START + 2)
-#define R3F_LOG_IDC_dlg_CV_liste_contenu (R3F_LOG_ID_transporteur_START + 3)
-#define R3F_LOG_IDC_dlg_CV_btn_decharger (R3F_LOG_ID_transporteur_START + 4)
+#define R3F_LOG_IDC_DLG_CV_CAPACITE_VEHICULE (R3F_LOG_ID_TRANSPORTEUR_START + 2)
+#define R3F_LOG_IDC_DLG_CV_LISTE_CONTENU (R3F_LOG_ID_TRANSPORTEUR_START + 3)
+#define R3F_LOG_IDC_DLG_CV_BTN_DECHARGER (R3F_LOG_ID_TRANSPORTEUR_START + 4)
 
-#define R3F_LOG_IDC_dlg_CV_titre (R3F_LOG_ID_transporteur_START + 10)
-#define R3F_LOG_IDC_dlg_CV_credits (R3F_LOG_ID_transporteur_START + 11)
-#define R3F_LOG_IDC_dlg_CV_btn_fermer (R3F_LOG_ID_transporteur_START + 12)
+#define R3F_LOG_IDC_DLG_CV_TITRE (R3F_LOG_ID_TRANSPORTEUR_START + 10)
+#define R3F_LOG_IDC_DLG_CV_CREDITS (R3F_LOG_ID_TRANSPORTEUR_START + 11)
+#define R3F_LOG_IDC_DLG_CV_BTN_FERMER (R3F_LOG_ID_TRANSPORTEUR_START + 12)
 
-#define R3F_LOG_IDC_dlg_CV_jauge_chargement (R3F_LOG_ID_transporteur_START + 13)
+#define R3F_LOG_IDC_DLG_CV_JAUGE_CHARGEMENT (R3F_LOG_ID_TRANSPORTEUR_START + 13)
 
 // Control types
 #define CT_STATIC           0
