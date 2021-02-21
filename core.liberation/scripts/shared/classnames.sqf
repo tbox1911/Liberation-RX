@@ -719,7 +719,9 @@ GRLIB_vehicle_whitelist = [
 	"Land_HBarrier_5_F",
 	"Land_BagBunker_Small_F",
 	"Land_BagFence_Long_F"
-];
+] + opfor_statics;
+//{GRLIB_vehicle_whitelist pushBack ( _x select 0 )} foreach (support_vehicles);
+
 
 // Blacklist Vehicle (lock and paint)
 GRLIB_vehicle_blacklist = [
@@ -727,7 +729,6 @@ GRLIB_vehicle_blacklist = [
 	mobile_respawn,
 	huron_typename,
 	opfor_ammobox_transport,
-	Respawn_truck_typename,
 	FOB_box_typename,
 	FOB_truck_typename,
 	canisterFuel,
