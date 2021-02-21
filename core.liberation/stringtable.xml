@@ -3508,9 +3508,21 @@
 			<Chinesesimp>摘下耳塞</Chinesesimp>
 		</Key>
 	</Package>
-	
+
 	<Package name="LRX_PAR">
 		<!-- pSiKO AI Revive -->
+		<Key ID="STR_PAR_AC_01">
+			<Original>Revive</Original>
+			<French>Revivre</French>
+		</Key>
+		<Key ID="STR_PAR_AC_02">
+			<Original>Drag</Original>
+			<French>Tirer</French>
+		</Key>
+		<Key ID="STR_PAR_AC_03">
+			<Original>Release</Original>
+			<French>Lacher</French>
+		</Key>
 		<Key ID="STR_PAR_CM_01">
 			<Original>Bad news %1, your medic (%2) is blocked somewhere... (dist: %3m / try: %4)</Original>
 			<French>Mauvaise nouvelle %1, votre médecin (%2) est bloqué quelque part... (dist: %3m / try: %4)</French>
@@ -3557,7 +3569,7 @@
 			<Chinesesimp>抱歉 %1，附近没有单位能来救你...</Chinesesimp>
 		</Key>
 	</Package>
-	
+
 	<Package name="LRX_TAXI">
 		<!-- Taxi -->
 		<Key ID="STR_TAXI_ACTION1">
