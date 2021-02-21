@@ -43,30 +43,6 @@
 					<Russian>Закрыть</Russian>
 					<Chinesesimp>关闭</Chinesesimp>
 			</Key>
-			<Key ID="STR_FAR_Need_Medic1">
-					<Original>I need a medic!</Original>
-					<French>J'ai besoin d'un medic!</French>
-					<German>Ich brauche einen Sanitäter!</German>
-					<Spanish>¡Necesito un médico!</Spanish>
-					<Russian>Мне нужен медик!</Russian>
-					<Chinesesimp>我需要医疗兵!</Chinesesimp>
-			</Key>
-			<Key ID="STR_FAR_Need_Medic2">
-					<Original>I'm hit! Medic!</Original>
-					<French>Je suis touché! Medic!</French>
-					<German>Wurde getroffen! Sanitäter!</German>
-					<Spanish>Herido! Médico!</Spanish>
-					<Russian>Меня подстрелили! Медик!</Russian>
-					<Chinesesimp>庸医！我中弹了</Chinesesimp>
-			</Key>
-			<Key ID="STR_FAR_Need_Medic3">
-					<Original>I'm down! Medic!</Original>
-					<French>Je suis à terre! Medic!</French>
-					<German>Ich bin gefallen! Sanitäter!</German>
-					<Spanish>Estoy abatido! Médico!</Spanish>
-					<Russian>Я ранен! Медик!</Russian>
-					<Chinesesimp>爷倒了！庸医救我！</Chinesesimp>
-			</Key>
 			<Key ID="STR_REVIVE_LABEL">
 					<Original>YOU ARE WOUNDED</Original>
 					<French>VOUS ETES BLESSE</French>
@@ -3511,6 +3487,30 @@
 
 	<Package name="LRX_PAR">
 		<!-- pSiKO AI Revive -->
+		<Key ID="STR_PAR_Need_Medic1">
+			<Original>I need a medic!</Original>
+			<French>J'ai besoin d'un medic!</French>
+			<German>Ich brauche einen Sanitäter!</German>
+			<Spanish>¡Necesito un médico!</Spanish>
+			<Russian>Мне нужен медик!</Russian>
+			<Chinesesimp>我需要医疗兵!</Chinesesimp>
+		</Key>
+		<Key ID="STR_PAR_Need_Medic2">
+			<Original>I'm hit! Medic!</Original>
+			<French>Je suis touché! Medic!</French>
+			<German>Wurde getroffen! Sanitäter!</German>
+			<Spanish>Herido! Médico!</Spanish>
+			<Russian>Меня подстрелили! Медик!</Russian>
+			<Chinesesimp>庸医！我中弹了</Chinesesimp>
+		</Key>
+		<Key ID="STR_PAR_Need_Medic3">
+			<Original>I'm down! Medic!</Original>
+			<French>Je suis à terre! Medic!</French>
+			<German>Ich bin gefallen! Sanitäter!</German>
+			<Spanish>Estoy abatido! Médico!</Spanish>
+			<Russian>Я ранен! Медик!</Russian>
+			<Chinesesimp>爷倒了！庸医救我！</Chinesesimp>
+		</Key>
 		<Key ID="STR_PAR_AC_01">
 			<Original>Revive</Original>
 			<French>Revivre</French>
