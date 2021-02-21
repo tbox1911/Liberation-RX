@@ -21,6 +21,11 @@ if (isServer) then {
 	lhd setpos getmarkerpos "base_chimera";
 	lhd hideObject true;
 	//{ deleteVehicle _x } foreach ( ( getmarkerpos "lhd" ) nearObjects 500 );
+	{
+		_x removeAllMPEventHandlers "MPKilled";
+		_x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+	} foreach vehicles;
+
 	[] execVM "scripts\server\init_server.sqf";
 };
 
