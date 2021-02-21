@@ -375,7 +375,7 @@ while { true } do {
 
 				if(buildtype != 6) then {
 					_vehicle addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
-					_vehicle addEventHandler ["HandleDamage", damage_manager_EH ];
+					_vehicle addEventHandler ["HandleDamage", { _this spawn damage_manager_EH }];
 					{ _x addMPEventHandler ["MPKilled", { _this spawn kill_manager }] } foreach (crew _vehicle);
 				};
 

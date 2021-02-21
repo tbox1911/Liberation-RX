@@ -58,7 +58,10 @@ if ( _classname in militia_vehicles ) then {
 } else {
 	createVehicleCrew _newvehicle;
 	sleep 1;
-	{ _x addMPEventHandler ['MPKilled', {_this spawn kill_manager}]; } foreach (crew _newvehicle);
+	{
+		_x addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
+		_x addEventHandler ["HandleDamage", {_this spawn damage_manager_EH}];
+	} foreach (crew _newvehicle);
 };
 _newvehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
 
