@@ -307,6 +307,7 @@ while { true } do {
 				if(buildtype in [2,3,4,7,9]) then {
 					if (!(typeOf _vehicle in GRLIB_vehicle_blacklist) ) then {
 						_vehicle setVariable ["GRLIB_vehicle_owner", getPlayerUID player, true];
+						_vehicle allowCrewInImmobile true;
 					};
 				};
 
