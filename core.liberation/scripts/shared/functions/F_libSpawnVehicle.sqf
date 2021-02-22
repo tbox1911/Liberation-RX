@@ -60,11 +60,12 @@ if ( _classname in militia_vehicles ) then {
 	sleep 1;
 	{
 		_x addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
-		_x addEventHandler ["HandleDamage", {_this spawn damage_manager_EH}];
+		_x addEventHandler ["HandleDamage", {_this call damage_manager_EH}];
 	} foreach (crew _newvehicle);
 };
 _newvehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
 _newvehicle allowCrewInImmobile true;
+_newvehicle setUnloadInCombat [true, false];
 
 if ( _random_rotate ) then {
 	_newvehicle setdir (random 360);

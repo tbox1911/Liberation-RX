@@ -308,6 +308,7 @@ while { true } do {
 					if (!(typeOf _vehicle in GRLIB_vehicle_blacklist) ) then {
 						_vehicle setVariable ["GRLIB_vehicle_owner", getPlayerUID player, true];
 						_vehicle allowCrewInImmobile true;
+						_vehicle setUnloadInCombat [true, false];
 					};
 				};
 
@@ -376,8 +377,6 @@ while { true } do {
 
 				if(buildtype != 6) then {
 					_vehicle addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
-					_vehicle addEventHandler ["HandleDamage", { _this spawn damage_manager_EH }];
-					{ _x addMPEventHandler ["MPKilled", { _this spawn kill_manager }] } foreach (crew _vehicle);
 				};
 
 				if (!([_price] call F_pay)) exitWith {};

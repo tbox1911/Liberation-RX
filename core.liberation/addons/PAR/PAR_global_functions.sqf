@@ -73,7 +73,7 @@ PAR_public_EH = {
 PAR_fn_AI_Damage_EH = {
 	params ["_unit"];
 	_unit removeAllEventHandlers "HandleDamage";
-	_unit addEventHandler ["HandleDamage", damage_manager_EH ];
+	_unit addEventHandler ["HandleDamage", { _this call damage_manager_EH }];
 	_unit addEventHandler ["HandleDamage", {
 		params ["_unit","","_dam"];
 		_veh = objectParent _unit;
@@ -129,15 +129,16 @@ PAR_AI_Manager = {
               _x distance2D player <= 500 &&
               isNil {_x getVariable 'PAR_busy'} &&
               isNil {_x getVariable 'PAR_heal'}
-            ) then {
-              doStop _x;
-              unassignVehicle _x;
-              [_x] orderGetIn false;
-              if (!isnull objectParent _x) then {
-                doGetOut _x;
-                sleep 3;
-              };
-              _x doMove (getPos player);
+        ) then {
+			doStop _x;
+			sleep 0.1;
+			if (_x != vehicle _x && gunner (vehicle _x) != _x) then {
+				unassignVehicle _x;
+				[_x] orderGetIn false;
+				doGetOut _x;
+				sleep 3;
+			};
+			_x doMove (getPos player);
         };
 
         // Blood trail
@@ -173,7 +174,7 @@ PAR_AI_Manager = {
 PAR_Player_Init = {
 	// Clear event handler before adding it
 	player removeAllEventHandlers "HandleDamage";
-	player addEventHandler ["HandleDamage", PAR_HandleDamage_EH];
+	player addEventHandler ["HandleDamage", {_this call PAR_HandleDamage_EH}];
 	player removeAllMPEventHandlers "MPKilled";
 	player addMPEventHandler ["MPKilled", {_this spawn PAR_Player_MPKilled}];
 	player setVariable ["GREUH_isUnconscious", 0, true];
@@ -196,7 +197,7 @@ PAR_Player_Init = {
 
 PAR_HandleDamage_EH = {
 	params ["_unit", "_selectionName", "_amountOfDamage", "_killer", "_projectile", "_hitPartIndex", "_instigator"];
-
+	if (isNull _unit) exitWith {0};
 	if (!(isNull _instigator)) then {
 		_killer = _instigator;
 	} else {
@@ -204,22 +205,23 @@ PAR_HandleDamage_EH = {
 			_killer = effectiveCommander _killer;
 		};
 	};
-	private _veh_unit = vehicle _unit;
-	private _veh_killer = vehicle _killer;
+
 	private _max_damage = 0.86;
-	private _isProtected = _unit getVariable ["PAR_isProtected", 0];
+	private _isProtected = _unit getVariable ["GRLIB_isProtected", 0];
 	private _isUnconscious = _unit getVariable ["PAR_isUnconscious", 0];
 
 	if (GRLIB_tk_mode != 2) then {
 		// TK Protect
+		private _veh_unit = vehicle _unit;
+		private _veh_killer = vehicle _killer;
 		if (_isProtected == 0 && _isUnconscious == 0 && isPlayer _killer && _killer != _unit && _veh_unit != _veh_killer && LRX_tk_vip find (name _killer) == -1) then {
-			_unit setVariable ["PAR_isProtected", 1, true];
+			_unit setVariable ["GRLIB_isProtected", 1, true];
 			PAR_tkMessage = [_unit, _killer];
 			publicVariable "PAR_tkMessage";
 			["PAR_tkMessage", [_unit, _killer]] call PAR_public_EH;
 			[_unit, _killer] call LRX_tk_check;
 			[_unit, _killer] remoteExec ["LRX_tk_check", owner _killer];
-			[_unit] spawn { sleep 3;(_this select 0) setVariable ["PAR_isProtected", 0, true] };
+			[_unit] spawn { sleep 3;(_this select 0) setVariable ["GRLIB_isProtected", 0, true] };
 			_isProtected = 1;
 		};
 
@@ -236,7 +238,8 @@ PAR_HandleDamage_EH = {
 		_unit setVariable ["PAR_BleedOutTimer", round(time + PAR_BleedOut), true];
 		[_unit, _killer] spawn PAR_Player_Unconscious;
 	};
-
+	private _msg = format ["DBG3: unit:%1 killer:%2 -- damage:%3 protected:%4 curdamage:%5", name _unit, name _killer, _amountOfDamage, _isProtected, damage _unit];
+	diag_log _msg;
 	_amountOfDamage min _max_damage;
 };
 
