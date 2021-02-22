@@ -79,7 +79,7 @@ PAR_fn_AI_Damage_EH = {
 		_veh = objectParent _unit;
 		if (!(isNull _veh) && round(damage _veh) > 0.8) then {[_veh, _unit, true] spawn PAR_fn_eject};
 
-		if (!(_unit getVariable ["PAR_wounded",false]) && (_dam >= 0.86)) then {
+		if (!(_unit getVariable ["PAR_wounded",false]) && _dam >= 0.86) then {
 			if (!(isNull _veh)) then {[_veh, _unit] spawn PAR_fn_eject};
 			_unit allowDamage false;
 			_unit setVariable ["PAR_wounded", true];
@@ -206,31 +206,26 @@ PAR_HandleDamage_EH = {
 		};
 	};
 
-	private _max_damage = 0.86;
-	private _isProtected = _unit getVariable ["GRLIB_isProtected", 0];
 	private _isUnconscious = _unit getVariable ["PAR_isUnconscious", 0];
 
 	if (GRLIB_tk_mode != 2) then {
 		// TK Protect
 		private _veh_unit = vehicle _unit;
 		private _veh_killer = vehicle _killer;
-		if (_isProtected == 0 && _isUnconscious == 0 && isPlayer _killer && _killer != _unit && _veh_unit != _veh_killer && LRX_tk_vip find (name _killer) == -1) then {
-			_unit setVariable ["GRLIB_isProtected", 1, true];
-			PAR_tkMessage = [_unit, _killer];
-			publicVariable "PAR_tkMessage";
-			["PAR_tkMessage", [_unit, _killer]] call PAR_public_EH;
-			[_unit, _killer] call LRX_tk_check;
-			[_unit, _killer] remoteExec ["LRX_tk_check", owner _killer];
-			[_unit] spawn { sleep 3;(_this select 0) setVariable ["GRLIB_isProtected", 0, true] };
-			_isProtected = 1;
-		};
-
-		if (_isProtected == 1) then {
-			_max_damage = 0.15;
+		if (_isUnconscious == 0 && isPlayer _killer && _killer != _unit && _veh_unit != _veh_killer && LRX_tk_vip find (name _killer) == -1) then {
+			if ( _unit getVariable ["GRLIB_isProtected", 0] < time ) then {
+				PAR_tkMessage = [_unit, _killer];
+				publicVariable "PAR_tkMessage";
+				["PAR_tkMessage", [_unit, _killer]] call PAR_public_EH;
+				[_unit, _killer] call LRX_tk_check;
+				[_unit, _killer] remoteExec ["LRX_tk_check", owner _killer];
+				_unit setVariable ["GRLIB_isProtected", round(time + 3), true];
+			};
+			_amountOfDamage = 0.15;
 		};
 	};
 
-	if (_isProtected == 0 && _isUnconscious == 0 && (_amountOfDamage >= 0.86)) then {
+	if (_isUnconscious == 0 && _amountOfDamage >= 0.86) then {
 		closedialog 0;
 		_unit setVariable ["PAR_isUnconscious", 1, true];
 		_unit setCaptive true;
@@ -238,9 +233,8 @@ PAR_HandleDamage_EH = {
 		_unit setVariable ["PAR_BleedOutTimer", round(time + PAR_BleedOut), true];
 		[_unit, _killer] spawn PAR_Player_Unconscious;
 	};
-	private _msg = format ["DBG3: unit:%1 killer:%2 -- damage:%3 protected:%4 curdamage:%5", name _unit, name _killer, _amountOfDamage, _isProtected, damage _unit];
-	diag_log _msg;
-	_amountOfDamage min _max_damage;
+
+	_amountOfDamage min 0.86;
 };
 
 PAR_Player_Unconscious = {
