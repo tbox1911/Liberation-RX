@@ -4,7 +4,7 @@ if ( isNil "cinematic_camera_started" ) then { cinematic_camera_started = false 
 if (isMultiplayer) then {
 	waituntil {(time > 2) && (getClientStateNumber >= 10) && (getClientState == "BRIEFING READ")};
 } else {
-	sleep 2;
+	uiSleep 2;
 };
 
 [] spawn cinematic_camera;

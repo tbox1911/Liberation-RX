@@ -13,5 +13,5 @@ while { dialog && (_caretPosition <= count _linearray) } do {
 	if ( ( _caretPosition % 2 == 0 ) && ( _caretPosition != count _linearray ) ) then { _caretcharacter = "_" };
 	ctrlSetText [ _control, format [ "%1%2", toString _currentline, _caretcharacter ] ];
 	_caretPosition = _caretPosition + 1;
-	sleep 0.04;
+	uiSleep 0.04;
 };

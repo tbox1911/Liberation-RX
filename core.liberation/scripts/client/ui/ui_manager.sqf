@@ -10,8 +10,8 @@ GRLIB_ui_notif = "";
 
 _uiticks = 0;
 
-waitUntil {sleep 1; !isNil "synchro_done" };
-waitUntil {sleep 1; synchro_done };
+waitUntil {uiSleep 1; !isNil "synchro_done" };
+waitUntil {uiSleep 1; synchro_done };
 
 if ( isNil "cinematic_camera_started" ) then { cinematic_camera_started = false };
 if ( isNil "halojumping" ) then { halojumping = false };

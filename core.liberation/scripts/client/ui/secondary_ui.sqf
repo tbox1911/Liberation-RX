@@ -62,7 +62,7 @@ while { dialog && alive player && dostartsecondary == 0 } do {
 	};
 
 	ctrlSetText [ 107, format [ localize "STR_SECONDARY_INTEL", resources_intel ] ];
-	sleep 0.1;
+	uiSleep 0.1;
 };
 
 if ( dostartsecondary == 1 ) then {
