@@ -24,6 +24,7 @@ if (isNil "manned") then { manned = false };
 if (isNil "gridmode" ) then { gridmode = 0 };
 if (isNil "repeatbuild" ) then { repeatbuild = false };
 if (isNil "build_rotation" ) then { build_rotation = 0 };
+if (isNil "build_altitude" ) then { build_altitude = 0 };
 
 waitUntil { sleep 0.2; !isNil "dobuild" };
 
@@ -137,6 +138,8 @@ while { true } do {
 
 			_idactcancel = -1;
 			_idactsnap = -1;
+			_idactupper = -1;
+			_idactlower = -1;
 			_idactplacebis = -1;
 
 			if (buildtype == 6 ) then {
@@ -144,6 +147,8 @@ while { true } do {
 			};
 			if (buildtype == 6 || buildtype == 99) then {
 				_idactsnap = player addAction ["<t color='#B0FF00'>" + localize "STR_GRID" + "</t>","scripts\client\build\do_grid.sqf","",-755,false,false,"","build_confirmed == 1"];
+				_idactupper = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEUP" + "</t> <img size='1' image='R3F_LOG\icons\r3f_lift.paa'/>","scripts\client\build\build_up.sqf","",-755,false,false,"","build_confirmed == 1"];
+				_idactlower = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEDOWN" + "</t> <img size='1' image='R3F_LOG\icons\r3f_release.paa'/>","scripts\client\build\build_down.sqf","",-755,false,false,"","build_confirmed == 1"];
 			};
 			_idactplace = player addAction ["<t color='#B0FF00'>" + localize "STR_PLACEMENT" + "</t> <img size='1' image='res\ui_confirm.paa'/>","scripts\client\build\build_place.sqf","",-750,false,true,"","build_invalid == 0 && build_confirmed == 1"];
 			_idactrotate = player addAction ["<t color='#B0FF00'>" + localize "STR_ROTATION" + "</t> <img size='1' image='res\ui_rotation.paa'/>","scripts\client\build\build_rotate.sqf","",-756,false,false,"","build_confirmed == 1"];
@@ -168,7 +173,7 @@ while { true } do {
 
 			while { build_confirmed == 1 && alive player } do {
 				_truedir = 90 - (getdir player);
-				_truepos = [((getpos player) select 0) + (_dist * (cos _truedir)), ((getpos player) select 1) + (_dist * (sin _truedir)),0];
+				_truepos = [((getpos player) select 0) + (_dist * (cos _truedir)), ((getpos player) select 1) + (_dist * (sin _truedir)), build_altitude];
 				_actualdir = ((getdir player) + build_rotation);
 				if ( _classname == "Land_Cargo_Patrol_V1_F" || _classname == "Land_PortableLight_single_F" ) then { _actualdir = _actualdir + 180 };
 				if ( _classname == FOB_typename ) then { _actualdir = _actualdir + 270 };
@@ -392,6 +397,10 @@ while { true } do {
 			if ( _idactplacebis != -1 ) then {
 				player removeAction _idactplacebis;
 			};
+			if ( _idactupper != -1 ) then {
+				player removeAction _idactupper;
+				player removeAction _idactlower;
+			};
 			player removeAction _idactrotate;
 			player removeAction _idactplace;
 
@@ -410,6 +419,8 @@ while { true } do {
 		repeatbuild = false;
 	} else {
 		dobuild = 0;
+		build_rotation = 0;
+		build_altitude = 0;
 	};
 	manned = false;
 };

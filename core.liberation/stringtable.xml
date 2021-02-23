@@ -139,6 +139,14 @@
 					<Russian>-- Поставить и повторить</Russian>
 					<Chinesesimp>-- 建造并重复 --</Chinesesimp>
 			</Key>
+			<Key ID="STR_MOVEUP">
+					<Original>-- Move up</Original>
+					<French>-- Monter</French>
+			</Key>
+			<Key ID="STR_MOVEDOWN">
+					<Original>-- Move down</Original>
+					<French>-- Descendre</French>
+			</Key>
 			<Key ID="STR_CANCEL">
 					<Original>-- Cancel</Original>
 					<French>-- Annuler</French>
