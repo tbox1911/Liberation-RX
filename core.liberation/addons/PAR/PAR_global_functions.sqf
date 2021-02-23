@@ -130,15 +130,14 @@ PAR_AI_Manager = {
               isNil {_x getVariable 'PAR_busy'} &&
               isNil {_x getVariable 'PAR_heal'}
         ) then {
-			doStop _x;
-			sleep 0.1;
-			if (_x != vehicle _x && gunner (vehicle _x) != _x) then {
-				unassignVehicle _x;
-				[_x] orderGetIn false;
-				doGetOut _x;
-				sleep 3;
-			};
-			_x doMove (getPos player);
+        	doStop _x;
+            unassignVehicle _x;
+            [_x] orderGetIn false;
+            if (!isnull objectParent _x) then {
+            	doGetOut _x;
+            	sleep 3;
+            };
+            _x doMove (getPos player);
         };
 
         // Blood trail
