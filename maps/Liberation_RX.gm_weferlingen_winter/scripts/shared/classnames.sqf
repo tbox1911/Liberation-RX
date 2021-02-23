@@ -201,12 +201,12 @@ buildings = [
 
 support_vehicles = [
 	[Arsenal_typename,0,10,0,0],
-	["Box_B_UAV_06_medical_F",5,5,0,0],
+	[medicalbox_typename,5,5,0,0],
 	[mobile_respawn,10,5,0,0],
-	["gm_jerrycan",0,5,1,0],
+	[canisterFuel,0,5,1,0],
 	["gm_ge_army_shelteraceII_repair",5,50,5,GRLIB_perm_inf],
 	["gm_gc_army_shelteraceII_medic",5,50,5,GRLIB_perm_inf],
-	[Respawn_truck_typename,15,50,5,GRLIB_perm_log],
+	[Respawn_truck_typename,15,150,5,GRLIB_perm_log],
 	["gm_gc_army_shelterlakII_repair",10,100,0,GRLIB_perm_log],
 	["gm_gc_army_shelterlakII_medic",10,100,0,GRLIB_perm_log],
 	["gm_ge_army_kat1_451_reammo",5,150,10,GRLIB_perm_tank],
@@ -279,12 +279,24 @@ if ( count blufor_squad_mix == 0 ) then { blufor_squad_mix = [
 	];
 };
 
+if ( isNil "blufor_squad_recon" ) then { blufor_squad_recon = [] };
+if ( count blufor_squad_recon == 0 ) then { blufor_squad_recon = [
+	"gm_ge_army_sf_squadleader_mp5sd3_p2a1_80_wdl",
+	"gm_ge_army_medic_g3a3_80_ols",
+	"gm_ge_army_sf_marksman_g3a3_80_wdl",
+	"gm_ge_army_sf_antitank_mp5a2_pzf84_80_wdl",
+	"gm_ge_army_sf_rifleman_g3a4_80_wdl",
+	"gm_ge_army_sf_rifleman_g3a4_80_wdl"
+	];
+};
+
 squads = [
 	[blufor_squad_inf_light,10,300,0,GRLIB_perm_max],
-	[blufor_squad_at,25,400,0,GRLIB_perm_max],
-	[blufor_squad_aa,25,500,0,GRLIB_perm_max],
-	[blufor_squad_mix,25,600,0,GRLIB_perm_max],
-	[blufor_squad_inf,20,800,0,GRLIB_perm_max]
+	[blufor_squad_inf,20,400,0,GRLIB_perm_max],
+	[blufor_squad_recon,25,500,0,GRLIB_perm_max],
+	[blufor_squad_at,25,600,0,GRLIB_perm_max],
+	[blufor_squad_aa,25,600,0,GRLIB_perm_max],
+	[blufor_squad_mix,25,600,0,GRLIB_perm_max]
 ];
 
 // All the UAVs must be declared here
@@ -300,17 +312,21 @@ elite_vehicles = [
 	"gm_ge_army_Leopard1a3a3"
 ];
 
+{ if (_x select 4 == GRLIB_perm_max) then { elite_vehicles pushback (_x select 0)} } foreach light_vehicles + heavy_vehicles + air_vehicles + static_vehicles;
+
 // Everything the AI troups should be able to resupply from
 ai_resupply_sources = [
 	Arsenal_typename,
-	"gm_ge_army_kat1_451_reammo",
+	ammo_truck_typename,
+	ammo_sling_typename,
 	"gm_ge_army_bpz2a0"
 ];
 
 // Everything the AI troups should be able to healing from
 ai_healing_sources = [
 	Respawn_truck_typename,
-	"Box_B_UAV_06_medical_F",
+	medicalbox_typename,
+	medic_sling_typename,
 	"gm_gc_army_shelteraceII_medic",
 	"gm_gc_army_shelterlakII_medic",
 	"gm_dk_army_m113a1dk_medic",
@@ -318,6 +334,8 @@ ai_healing_sources = [
 ];
 
 vehicle_rearm_sources = [
+	ammo_truck_typename,
+	ammo_sling_typename,
 	"gm_ge_army_bpz2a0",
 	"gm_ge_army_kat1_451_reammo",
 	"gm_AmmoBox_wood_02_empty",
@@ -339,6 +357,7 @@ vehicle_big_units = [
 	"Land_SM_01_shed_F",
 	"Land_Hangar_F"
 ];
+
 
 // *** BADDIES ***
 //gm_gc_army_rifleman_mpiak74n_80_str
@@ -441,6 +460,10 @@ militia_vehicles = [
 ];
 
 opfor_boat = [
+	"O_Boat_Armed_01_hmg_F",
+	"O_T_Boat_Armed_01_hmg_F",
+	"O_Boat_Armed_01_hmg_F",
+	"O_T_Boat_Armed_01_hmg_F"
 ];
 
 opfor_vehicles = [
@@ -534,12 +557,15 @@ opfor_air = [
 opfor_statics = [
 	"O_HMG_01_high_F",
 	"O_GMG_01_high_F",
+	"O_static_AA_F",
+	"O_static_AT_F",
 	"O_Mortar_01_F"
 ];
 
 ind_recyclable = [
 	["I_Truck_02_covered_F",0,round (20 / GRLIB_recycling_percentage),0],
-	["I_Truck_02_transport_F",0,round (20 / GRLIB_recycling_percentage),0]
+	["I_Truck_02_transport_F",0,round (20 / GRLIB_recycling_percentage),0],
+	["I_Heli_light_03_dynamicLoadout_F",0,round (20 / GRLIB_recycling_percentage),0]
 ];
 
 opfor_texture_overide = [
@@ -699,7 +725,9 @@ GRLIB_vehicle_whitelist = [
 	"Land_HBarrier_5_F",
 	"Land_BagBunker_Small_F",
 	"Land_BagFence_Long_F"
-];
+] + opfor_statics;
+//{GRLIB_vehicle_whitelist pushBack ( _x select 0 )} foreach (support_vehicles);
+
 
 // Blacklist Vehicle (lock and paint)
 GRLIB_vehicle_blacklist = [
@@ -707,7 +735,6 @@ GRLIB_vehicle_blacklist = [
 	mobile_respawn,
 	huron_typename,
 	opfor_ammobox_transport,
-	Respawn_truck_typename,
 	FOB_box_typename,
 	FOB_truck_typename,
 	canisterFuel,
@@ -809,7 +836,7 @@ air_vehicles_classnames = [] + opfor_choppers;
 markers_reset = [99999,99999,0];
 zeropos = [0,0,0];
 squads_names = [ localize "STR_LIGHT_RIFLE_SQUAD", localize "STR_RIFLE_SQUAD", localize "STR_AT_SQUAD", localize "STR_AA_SQUAD", localize "STR_MIXED_SQUAD", localize "STR_RECON_SQUAD" ];
-boats_names = [ "B_Boat_Transport_01_F", "B_Boat_Armed_01_minigun_F" ];
+boats_names = [ "B_Boat_Transport_01_F", "C_Boat_Transport_02_F", "B_Boat_Armed_01_minigun_F" ];
 ammobox_transports_typenames = [];
 { ammobox_transports_typenames pushback (_x select 0) } foreach box_transport_config;
 ammobox_transports_typenames = [ ammobox_transports_typenames , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
@@ -855,8 +882,9 @@ GRLIB_ignore_colisions_when_building = [
 GRLIB_sar_wreck = "Land_Wreck_Heli_Attack_01_F";
 GRLIB_sar_fire = "test_EmptyObjectForFireBig";
 GRLIB_Ammobox = [
+	Arsenal_typename,
 	A3W_BoxWps,
-	"Box_B_UAV_06_medical_F",
+	medicalbox_typename,
 	"gm_AmmoBox_wood_02_empty",
 	"gm_AmmoBox_wood_03_empty",
 	"mission_USLaunchers",
@@ -871,8 +899,8 @@ GRLIB_AirDrop_1 = [
 ];
 GRLIB_AirDrop_2 = [
 	"I_G_Offroad_01_armed_F",
-	"B_G_Offroad_01_armed_F"
-	,"O_G_Offroad_01_armed_F",
+	"B_G_Offroad_01_armed_F",
+	"O_G_Offroad_01_armed_F",
 	"I_C_Offroad_02_LMG_F"
 ];
 GRLIB_AirDrop_3 = [
@@ -889,7 +917,7 @@ GRLIB_AirDrop_4 = [
 ];
 GRLIB_AirDrop_5 = [
 	"I_APC_tracked_03_cannon_F",
-	"I_APC_Wheeled_03_cannon_F",
+	"B_APC_Wheeled_03_cannon_F",
 	"B_APC_Wheeled_01_cannon_F"
 ];
 GRLIB_AirDrop_6 = [
