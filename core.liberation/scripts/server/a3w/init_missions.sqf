@@ -11,6 +11,7 @@ fn_refillbox  = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scrip
 fn_findString = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\fn_findString.sqf";
 fn_vehSafeDistance = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\fn_vehSafeDistance.sqf";
 
+sideMissionProcessor = compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\sideMissionProcessor.sqf";
 generateMissionWeights = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_generateMissionWeights.sqf";
 setMissionState = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_setMissionState.sqf";
 setLocationState = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_setLocationState.sqf";
@@ -29,6 +30,7 @@ waitUntil {sleep 1; !isNil "blufor_sectors" };
 waitUntil {sleep 1; !isNil "sectors_allSectors" };
 waitUntil {sleep 1; !isNil "save_is_loaded" };
 
+[] call a3w_setupMissionArrays;
+[] spawn a3w_masterController;
+
 diag_log "- A3W Initializing Missions-";
-[] call compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionArrays.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\masterController.sqf";
