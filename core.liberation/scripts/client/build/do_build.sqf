@@ -1,4 +1,10 @@
 private [ "_maxdist", "_truepos", "_built_object_remote", "_unit", "_pos", "_grp", "_classname", "_idx", "_unitrank", "_posfob", "_ghost_spot", "_vehicle", "_dist", "_actualdir", "_near_objects", "_near_objects_25", "_debug_colisions" ];
+_isInClass = {
+	params ["_unit"];
+	private _ret = false;
+  	{ if (_unit isKindOf _x) then { _ret = true } } forEach GRLIB_ignore_colisions_classes;
+	_ret;
+};
 
 build_confirmed = 0;
 _maxdist = GRLIB_fob_range;
@@ -214,14 +220,14 @@ while { true } do {
 
 				private _remove_objects = [];
 				{
-					if ((_x isKindOf "Animal") || ((typeof _x) in GRLIB_ignore_colisions_when_building) || (_x == player) || (_x == _vehicle )) then {
+					if ((_x isKindOf "Animal") || ((typeof _x) in GRLIB_ignore_colisions_objects) || ([_x] call _isInClass) || (_x == player) || (_x == _vehicle )) then {
 						_remove_objects pushback _x;
 					};
 				} foreach _near_objects;
 
 				private _remove_objects_25 = [];
 				{
-					if ((_x isKindOf "Animal") || ((typeof _x) in GRLIB_ignore_colisions_when_building) || (_x == player) || (_x == _vehicle ))  then {
+					if ((_x isKindOf "Animal") || ((typeof _x) in GRLIB_ignore_colisions_objects) || ([_x] call _isInClass) || (_x == player) || (_x == _vehicle ))  then {
 						_remove_objects_25 pushback _x;
 					};
 				} foreach _near_objects_25;
