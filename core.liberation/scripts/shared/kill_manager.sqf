@@ -19,6 +19,17 @@ if ( isServer ) then {
 			_killer = _unit getVariable ["ace_medical_lastDamageSource", objNull];
 		};
 	};
+
+	// unTow
+	private _towed = _unit getVariable ["R3F_LOG_remorque", objNull];
+	if (!isNull _towed) then {
+		[_towed] call R3F_LOG_FNCT_remorqueur_detacher;
+	};
+
+	if (!isNull(_unit getVariable ["R3F_LOG_est_transporte_par", objNull])) then {
+		[_unit] call R3F_LOG_FNCT_remorqueur_detacher;
+	};
+
 	waitUntil { sleep 0.3; (isNull attachedTo _unit) };
 
 	if ( (typeof _unit) in [FOB_box_typename, FOB_truck_typename, foodbarrel_typename, waterbarrel_typename] ) exitWith {
@@ -29,7 +40,7 @@ if ( isServer ) then {
 	if ( typeof _unit == mobile_respawn ) exitWith { [_unit, "del"] remoteExec ["addel_beacon_remote_call", 2] };
 
 	if ( ((typeof _unit) in [ammobox_o_typename, ammobox_b_typename, ammobox_i_typename, fuelbarrel_typename]) && ((getPosATL _unit) select 2 < 10) ) exitWith {
-		sleep random 2;
+		sleep random 1;
 		( "R_80mm_HE" createVehicle (getPosATL _unit) ) setVelocity [0, 0, -200];
 		deleteVehicle _unit;
 	};
