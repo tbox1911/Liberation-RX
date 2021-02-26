@@ -866,12 +866,9 @@ GRLIB_ignore_colisions_when_building = [
 	"Sign_Sphere100cm_F",
 	"TMR_Autorest_Georef",
 	"Land_ClutterCutter_large_F",
-	"Land_HighVoltageColumn_F",
-	"Land_HighVoltageColumnWire_F",
-	"Land_PowerLine_01_pole_small_F",
-	"Land_PowerLine_01_pole_tall_F",
-	"Land_PowerLine_01_wire_50m_F",
-	"Land_PowerLine_01_wire_50m_main_F"
+	"PowerLines_base_F",
+	"PowerLines_Small_base_F",
+	"PowerLines_Wires_base_F"
 ];
 GRLIB_sar_wreck = "Land_Wreck_Heli_Attack_01_F";
 GRLIB_sar_fire = "test_EmptyObjectForFireBig";
