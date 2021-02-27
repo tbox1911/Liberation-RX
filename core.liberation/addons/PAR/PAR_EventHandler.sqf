@@ -115,8 +115,6 @@ if (_unit == player && alive player && player isKindOf "Man") then {
 						_unit switchMove "amovpknlmstpsraswrfldnon";
 					} else {
 						hintSilent "Unit is too far or is unconscious. (max 50m)";
-						sleep 2;
-						hintSilent "";
 					};
 				} forEach _unit_array;
 			};

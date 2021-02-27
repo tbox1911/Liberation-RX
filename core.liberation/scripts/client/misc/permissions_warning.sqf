@@ -6,9 +6,9 @@ if ( GRLIB_permissions_param ) then {
 
 	while { count GRLIB_permissions == 0 } do {
 		hint localize "STR_PERMISSION_WARNING";
-		sleep 5;
 		GRLIB_permissions = [["Default",[true,false,false,true,false,true]]];
 		publicVariable "GRLIB_permissions";
+		sleep 5;
 	};
 
 	hintSilent "";
