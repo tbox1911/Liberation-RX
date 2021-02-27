@@ -23,12 +23,10 @@ if ( isServer ) then {
 	// unTow
 	private _towed = _unit getVariable ["R3F_LOG_remorque", objNull];
 	if (!isNull _towed) then {
-		//[_towed] call R3F_LOG_FNCT_remorqueur_detacher;
 		[_towed] remoteExec ["R3F_LOG_FNCT_remorqueur_detacher", owner _towed];
 	};
 
 	if (!isNull(_unit getVariable ["R3F_LOG_est_transporte_par", objNull])) then {
-		//[_unit] call R3F_LOG_FNCT_remorqueur_detacher;
 		[_unit] remoteExec ["R3F_LOG_FNCT_remorqueur_detacher", owner _unit];
 	};
 
