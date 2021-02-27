@@ -31,6 +31,11 @@ waitUntil {sleep 1; !isNil "sectors_allSectors" };
 waitUntil {sleep 1; !isNil "save_is_loaded" };
 
 [] call a3w_setupMissionArrays;
-[] spawn a3w_masterController;
+
+for "_i" from 1 to 4 do {
+	// Start Permanent controller
+	[_i, false] spawn a3w_sideMissionController;
+	sleep 1;
+};
 
 diag_log "- A3W Initializing Missions-";

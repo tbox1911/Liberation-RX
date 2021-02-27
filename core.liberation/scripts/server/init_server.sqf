@@ -54,7 +54,6 @@ createlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scr
 showlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_showLandMines.sqf";
 clearlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_clearLandMines.sqf";
 a3w_setupMissionArrays = compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionArrays.sqf";
-a3w_masterController = compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\masterController.sqf";
 a3w_sideMissionController = compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\sideMissionController.sqf";
 
 if (!([] call F_getValid)) exitWith {};
