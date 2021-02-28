@@ -79,7 +79,8 @@ PAR_fn_AI_Damage_EH = {
 		_veh = objectParent _unit;
 		if (!(isNull _veh) && round(damage _veh) > 0.8) then {[_veh, _unit, true] spawn PAR_fn_eject};
 
-		if (!(_unit getVariable ["PAR_wounded",false]) && _dam >= 0.86) then {
+		private _isNotWounded = !(_unit getVariable ["PAR_wounded", false]);
+		if (_isNotWounded && _dam >= 0.86) then {
 			if (!(isNull _veh)) then {[_veh, _unit] spawn PAR_fn_eject};
 			_unit allowDamage false;
 			_unit setVariable ["PAR_wounded", true];
@@ -178,6 +179,7 @@ PAR_Player_Init = {
 	player addMPEventHandler ["MPKilled", {_this spawn PAR_Player_MPKilled}];
 	player setVariable ["GREUH_isUnconscious", 0, true];
 	player setVariable ["PAR_isUnconscious", 0, true];
+	player setVariable ["PAR_wounded", false];
 	player setVariable ["PAR_isDragged", 0, true];
 	player setVariable ["ace_sys_wounds_uncon", false];
 	player setVariable ["PAR_Grp_ID",format["Bros_%1", PAR_Grp_ID], true];
@@ -205,13 +207,13 @@ PAR_HandleDamage_EH = {
 		};
 	};
 
-	private _isUnconscious = _unit getVariable ["PAR_isUnconscious", 0];
+	private _isNotWounded = !(_unit getVariable ["PAR_wounded", false]);
 
 	if (GRLIB_tk_mode != 2) then {
 		// TK Protect
 		private _veh_unit = vehicle _unit;
 		private _veh_killer = vehicle _killer;
-		if (_isUnconscious == 0 && isPlayer _killer && _killer != _unit && _veh_unit != _veh_killer && LRX_tk_vip find (name _killer) == -1) then {
+		if ( _isNotWounded && isPlayer _killer && _killer != _unit && _veh_unit != _veh_killer && LRX_tk_vip find (name _killer) == -1) then {
 			if ( _unit getVariable ["GRLIB_isProtected", 0] < time ) then {
 				PAR_tkMessage = [_unit, _killer];
 				publicVariable "PAR_tkMessage";
@@ -224,13 +226,14 @@ PAR_HandleDamage_EH = {
 		};
 	};
 
-	if (_isUnconscious == 0 && _amountOfDamage >= 0.86) then {
-		closedialog 0;
+	if ( _isNotWounded && _amountOfDamage >= 0.86) then {
+		_unit setVariable ["PAR_wounded", true];
 		_unit setVariable ["PAR_isUnconscious", 1, true];
 		_unit setCaptive true;
 		_unit allowDamage false;
 		_unit setVariable ["PAR_BleedOutTimer", round(time + PAR_BleedOut), true];
 		[_unit, _killer] spawn PAR_Player_Unconscious;
+		closedialog 0;
 	};
 
 	_amountOfDamage min 0.86;
@@ -269,7 +272,6 @@ PAR_Player_Unconscious = {
 	// PAR AI Revive Call
 	_unit setVariable ["GREUH_isUnconscious", 1, true];
 	_unit setUnconscious true;
-	_unit setVariable ["PAR_wounded", true];
 
 	// Mute Radio
 	5 fadeRadio 0;
