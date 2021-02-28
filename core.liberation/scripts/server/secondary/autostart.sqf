@@ -4,12 +4,12 @@ waitUntil {
 	time > 20;
 };
 
-if ( isNil "GRLIB_secondary_in_progress" ) then { GRLIB_secondary_in_progress = -1; };
+if ( isNil "GRLIB_secondary_starting" ) then { GRLIB_secondary_starting = false; };
 private _delay = (60 * 60) * 1.5;
 
 while {true} do {
 	sleep _delay;
-	if (GRLIB_secondary_in_progress == -1) then {
-		[ [round(random [1,1.5,2]), true], "start_secondary_remote_call" ] call BIS_fnc_MP;
+	if (!GRLIB_secondary_starting) then {
+		[(selectRandom [1,2]), true] call start_secondary_remote_call;
 	};
 };
