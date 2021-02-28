@@ -12,7 +12,7 @@ while { count units _grp < 3 } do {
 ((units _grp) select 1) moveInGunner _vehicle;
 ((units _grp) select 2) moveInCommander _vehicle;
 {
-	if ( vehicle _x == _x ) then {
+	if ( objectParent _x == _x ) then {
 		deleteVehicle _x;
 	} else {
 		[ _x ] call loadout_crewman;

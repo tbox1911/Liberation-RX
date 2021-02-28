@@ -54,9 +54,9 @@ if ( isServer ) then {
 		[_unit] spawn clean_vehicle;
 	};
 
-	if ( _unit isKindOf "Man" && vehicle _unit != _unit ) then {
+	if ( _unit isKindOf "Man" && objectParent _unit != _unit ) then {
 		sleep 3;
-		_unit action ["Eject", vehicle _unit];
+		_unit action ["Eject", objectParent _unit];
 		//moveOut _unit;
 	};
 

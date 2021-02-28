@@ -55,7 +55,7 @@ while { true } do {
 	{_UnitList append units _x} foreach hcAllGroups player;
 	{
 		// Out vehicle
-		if (_x != player && lifeState _x != 'INCAPACITATED' && vehicle _x == _x) then {
+		if (_x != player && lifeState _x != 'INCAPACITATED' && objectParent _x == _x) then {
 			_needammo1 = false;
 			_needammo2 = false;
 			_needmedic = false;
@@ -109,9 +109,9 @@ while { true } do {
 		};
 
 		// In vehicle
-		if (lifeState _x != 'INCAPACITATED' && ( ((gunner vehicle _x) == _x) || ((driver vehicle _x) == _x) || ((commander vehicle _x) == _x) )) then {
+		if (lifeState _x != 'INCAPACITATED' && ( ((gunner objectParent _x) == _x) || ((driver objectParent _x) == _x) || ((commander objectParent _x) == _x) )) then {
 			_unit = _x;
-			_vehicle = vehicle _unit;
+			_vehicle = objectParent _unit;
 			_vehicle_class = typeOf _vehicle;
 			_vehicle_class_text =  getText (configFile >> "CfgVehicles" >> _vehicle_class >> "displayName");
 			_near_arsenal = [_vehicle, "REAMMO", _distarsenal, true] call F_check_near;

@@ -20,7 +20,7 @@ _basenamestr = "BASE CHIMERA";
 
 while { true } do {
 	waitUntil {
-		(GRLIB_endgame == 1 || GRLIB_force_redeploy || (player distance (getmarkerpos GRLIB_respawn_marker) < 50) ) && vehicle player == player && alive player && !dialog && howtoplay == 0
+		(GRLIB_endgame == 1 || GRLIB_force_redeploy || (player distance (getmarkerpos GRLIB_respawn_marker) < 50) ) && objectParent player == player && alive player && !dialog && howtoplay == 0
 	};
 	if (GRLIB_endgame == 1 ) exitWith {};
 	fullmap = 0;
@@ -162,7 +162,7 @@ while { true } do {
 			if (!isNil "_my_squad") then {
 				{ _unit_list pushBack _x } forEach units _my_squad;
 			};
-			_unit_list_redep = [_unit_list, { _x != player && vehicle _x == _x && (_x distance2D _player_pos) < 40 && lifestate _x != 'INCAPACITATED' }] call BIS_fnc_conditionalSelect;
+			_unit_list_redep = [_unit_list, { _x != player && objectParent _x == _x && (_x distance2D _player_pos) < 40 && lifestate _x != 'INCAPACITATED' }] call BIS_fnc_conditionalSelect;
 			[_unit_list_redep] spawn {
 				params ["_list"];
 				{

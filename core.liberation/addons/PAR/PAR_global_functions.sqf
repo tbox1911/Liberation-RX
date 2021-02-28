@@ -115,7 +115,7 @@ PAR_AI_Manager = {
         _isMedic = [_x] call PAR_is_medic;
         _hasMedikit = [_x] call PAR_has_medikit;
         if ( _isMedic && _hasMedikit &&
-            vehicle _x == _x &&
+            objectParent _x == _x &&
             (behaviour _x) != "COMBAT" &&
             lifeState _x != 'INCAPACITATED' &&
             isNil {_x getVariable 'PAR_busy'} &&
@@ -142,7 +142,7 @@ PAR_AI_Manager = {
         };
 
         // Blood trail
-        if (damage _x > 0.6 && vehicle _x == _x) then {
+        if (damage _x > 0.6 && objectParent _x == _x) then {
           private _spray = createVehicle ["BloodSpray_01_New_F", getPos _x, [], 0, "CAN_COLLIDE"];
           _spray spawn {sleep (10 + random 5); deleteVehicle _this};
         };
@@ -211,7 +211,7 @@ PAR_HandleDamage_EH = {
 
 	if (GRLIB_tk_mode != 2) then {
 		// TK Protect
-		private _veh_unit = vehicle _unit;
+		private _veh_unit = objectParent _unit;
 		private _veh_killer = vehicle _killer;
 		if ( _isNotWounded && isPlayer _killer && _killer != _unit && _veh_unit != _veh_killer && LRX_tk_vip find (name _killer) == -1) then {
 			if ( _unit getVariable ["GRLIB_isProtected", 0] < time ) then {
@@ -251,7 +251,7 @@ PAR_Player_Unconscious = {
 	};
 
 	// Eject unit if inside vehicle
-	private _veh_unit = vehicle _unit;
+	private _veh_unit = objectParent _unit;
 	if (_veh_unit != _unit) then {[_veh_unit, _unit] spawn PAR_fn_eject};
 
 	[] call R3F_LOG_FNCT_objet_relacher;
