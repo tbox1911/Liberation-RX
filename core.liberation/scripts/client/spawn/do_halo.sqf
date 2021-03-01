@@ -49,7 +49,7 @@ if ( dojump > 0 ) then {
 		{ _UnitList pushBack _x } forEach units _my_squad;
 	};
 	{
-		if ( round (_x distance2D _player_pos) <= 30 && lifestate _x != 'INCAPACITATED' && vehicle _x == _x ) then {
+		if ( round (_x distance2D _player_pos) <= 30 && lifestate _x != 'INCAPACITATED' && objectParent _x == _x ) then {
 			[_x,  halo_position] spawn paraDrop;
 			sleep random [1,1.5,2];
 		};

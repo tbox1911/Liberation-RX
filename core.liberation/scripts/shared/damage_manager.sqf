@@ -11,7 +11,7 @@ if (!(isNull _instigator)) then {
 
 private _ret = _amountOfDamage;
 if (!isNull _killer && _unit != _killer) then {
-	private _veh_unit = vehicle _unit;
+	private _veh_unit = objectParent _unit;
 	private _veh_killer = vehicle _killer;
 
 	// Friendly fires penalty

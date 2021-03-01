@@ -4,7 +4,7 @@ private _nearrecycl = [];
 private _ret = false;
 private _distveh = 15;
 private _alive = alive player;
-private _onfoot = vehicle player == player;
+private _onfoot = objectParent player == player;
 private _R3F_move = isNull R3F_LOG_joueur_deplace_objet;
 private _far_lhd = player distance2D lhd >= 1000;
 private _noflight = getPosATL player select 2 <= 5;

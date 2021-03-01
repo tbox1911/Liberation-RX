@@ -16,7 +16,7 @@ if ( count crew _veh == 0 ) then {
 	((units _grp) select 1) moveInGunner _veh;
 	((units _grp) select 2) moveInCommander _veh;
 	sleep 0.1;
-	{ if ( vehicle _x == _x ) then { deleteVehicle _x }; } foreach (units _grp);
+	{ if ( objectParent _x == _x ) then { deleteVehicle _x }; } foreach (units _grp);
 	sleep 1;
  };
 

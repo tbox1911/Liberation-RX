@@ -130,8 +130,8 @@ while { _mission_in_progress } do {
 
 		{
 			unAssignVehicle _x;
-			_x action ["eject", vehicle _x];
-			_x action ["getout", vehicle _x];
+			_x action ["eject", objectParent _x];
+			_x action ["getout", objectParent _x];
 			unAssignVehicle _x;
 			sleep 0.7;
 		} foreach (units _troops_group);

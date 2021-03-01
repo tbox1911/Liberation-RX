@@ -11,7 +11,7 @@ while { true } do {
 	if (!isNil "_my_squad") then {
 
 		_leader = leader _my_squad;
-		_veh_player = vehicle player;
+		_veh_player = objectParent player;
 		_wPos = player getVariable ["my_squad_dest", nil];
 
 		//get in
@@ -20,7 +20,7 @@ while { true } do {
 				_cargo_seat_free = ( (fullCrew [_veh_player, "cargo", true] - fullCrew [_veh_player, "cargo", false]) +
 									 (fullCrew [_veh_player, "Turret", true] - fullCrew [_veh_player, "Turret", false]) );
 
-				if (vehicle _x != _veh_player && count _cargo_seat_free > 0 ) then {
+				if (objectParent _x != _veh_player && count _cargo_seat_free > 0 ) then {
 
 					if (_cargo_seat_free select 0 select 1 == "cargo" ) then {
 						_cargo_idx = _cargo_seat_free select 0 select 2;
@@ -33,7 +33,7 @@ while { true } do {
 					};
 					sleep 0.5;
 				};
-				if (vehicle _x == _x && count _cargo_seat_free == 0 ) then {
+				if (objectParent _x == _x && count _cargo_seat_free == 0 ) then {
 					_x doMove (getPos player);
 				};
 			} forEach units _my_squad;
@@ -42,7 +42,7 @@ while { true } do {
 		//para drop
 		if (_veh_player iskindof "Steerable_Parachute_F") then {
 			{
-				if ( vehicle _x != _x && !(vehicle _x iskindof "Steerable_Parachute_F") ) then {
+				if ( objectParent _x != _x && !(objectParent _x iskindof "Steerable_Parachute_F") ) then {
 					[_x, getPos _x] spawn paraDrop;
 					sleep 0.3;
 				};
@@ -53,8 +53,8 @@ while { true } do {
 		if (_veh_player == player) then {
 			{
 				//group leaveVehicle vehicle
-				if ( vehicle _x != _x && (getPosATL _x select 2) <= 5) then {
-					_x action ["getOut", vehicle _x];
+				if ( objectParent _x != _x && (getPosATL _x select 2) <= 5) then {
+					_x action ["getOut", objectParent _x];
 					unassignVehicle _x;
 					commandGetOut _x;
 					doGetOut _x;
