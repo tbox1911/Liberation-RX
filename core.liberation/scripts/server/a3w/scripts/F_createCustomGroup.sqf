@@ -8,6 +8,7 @@ private _patrol = param [4, true];
 private _radius = 10;
 private _uPos = zeropos;
 
+if (isNil "_grp") exitWith {};
 switch (_type) do {
 	case ("infantry"): { _unitTypes = opfor_infantry };
 	case ("militia"): { _unitTypes = militia_squad };
@@ -32,7 +33,6 @@ for "_i" from 1 to _nbUnits do {
 	_x setVariable ["mission_AI", true];
 } forEach (units _grp);
 
-sleep 0.5;
 if (_patrol) then {
 	[ _grp, _pos, 200] spawn add_defense_waypoints;
 };
