@@ -133,6 +133,6 @@ GRLIB_secondary_in_progress = -1; publicVariable "GRLIB_secondary_in_progress";
 sleep 1;
 trigger_server_save = true;
 
-sleep 3;
+sleep 300;
 { moveOut _x; deleteVehicle _x } forEach units _grpdefenders;
 { if ((_x distance2D _base_position) <= 100) then {deleteVehicle _x}} foreach (_base_objectives + _base_objects);
