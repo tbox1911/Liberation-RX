@@ -36,7 +36,7 @@ while { true } do {
 		};
 		_vehicle addAction ["<t color='#00DD00'>-- SELL CARGO</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_sell.sqf","",-900,true,true,"","[_target] call is_menuok && [_target, 'SRV', _distveh, true] call F_check_near && [_this, _target] call is_owner && (locked _target == 0 || locked _target == 1)", _distvehclose];
 		_vehicle addAction ["<t color='#00F000'>-- REFUEL</t> <img size='1' image='R3F_LOG\icons\r3f_fuel.paa'/>", "scripts\client\actions\do_refuel.sqf","",-900,false,true,"","[_target] call is_menuok && [_target] call F_check_nearFuel", _distvehclose];
-		_vehicle addAction ["<t color='#FFFF00'>-- SALVAGE</t> <img size='1' image='res\ui_recycle.paa'/>","scripts\client\actions\do_wreck.sqf","",-900,true,true,"","isNull R3F_LOG_joueur_deplace_objet && alive player && objectParent player == player && !(alive _target) && !(_target getVariable ['wreck_in_use', false]) && !(player getVariable ['salvage_wreck', false])", _distveh];
+		_vehicle addAction ["<t color='#FFFF00'>-- SALVAGE</t> <img size='1' image='res\ui_recycle.paa'/>","scripts\client\actions\do_wreck.sqf","",-900,true,true,"","isNull R3F_LOG_joueur_deplace_objet && alive player && vehicle player == player && !(alive _target) && !(_target getVariable ['wreck_in_use', false]) && !(player getVariable ['salvage_wreck', false])", _distveh];
 		_vehicle addAction ["<t color='#FFFF00'>-- UNFLIP</t> <img size='1' image='res\ui_flipveh.paa'/>","scripts\client\actions\do_unflip.sqf","",-900,true,true,"","[_target] call is_menuok && !(typeOf _target in uavs) && [_this, _target] call is_owner && (locked _target == 0 || locked _target == 1)", _distveh];
 
 		if (! (typeOf _vehicle in GRLIB_vehicle_blacklist)) then {

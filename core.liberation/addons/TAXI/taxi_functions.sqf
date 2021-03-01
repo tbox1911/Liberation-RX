@@ -36,7 +36,7 @@ taxi_outboard = {
 	params ["_vehicle"];
 	_ret = true;
 	{
-		if ( objectParent _x == _vehicle) then {
+		if ( vehicle _x == _vehicle) then {
 			unassignVehicle _x;
 			doGetOut _x;
 			sleep 0.5;

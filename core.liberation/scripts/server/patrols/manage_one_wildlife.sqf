@@ -18,7 +18,7 @@ while {alive _unit} do {
 		case (_nbplayer > 3): {_wildlife_max = 1};
 	};
 
-	if (_wildlife < _wildlife_max && _unit distance2D lhd >= GRLIB_sector_size && _fobdistance > GRLIB_sector_size && objectParent _unit == _unit && !(_sector in sectors_bigtown)) then {
+	if (_wildlife < _wildlife_max && _unit distance2D lhd >= GRLIB_sector_size && _fobdistance > GRLIB_sector_size && vehicle _unit == _unit && !(_sector in sectors_bigtown)) then {
 		private _managed_units = ( [ getPos _unit ] call F_spawnWildLife );
 		_wildlife = _wildlife + 1;
 		_unit setVariable ["GRLIB_Wildlife", _wildlife, true];

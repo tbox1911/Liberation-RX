@@ -2,7 +2,7 @@ params [ "_unit", ["_force_surrender", false] ];
 
 if ( (!_force_surrender) && (( random 100 ) > GRLIB_surrender_chance) ) exitWith {};
 
-if ( (_unit isKindOf "Man") && ( alive _unit ) && (objectParent _unit == _unit) && (side group _unit == GRLIB_side_enemy) && (typeof _unit != pilot_classname) && (!(_unit getVariable ["mission_AI", false])) ) then {
+if ( (_unit isKindOf "Man") && ( alive _unit ) && (vehicle _unit == _unit) && (side group _unit == GRLIB_side_enemy) && (typeof _unit != pilot_classname) && (!(_unit getVariable ["mission_AI", false])) ) then {
 	sleep (random 5);
 
 	// Init priso
@@ -47,10 +47,10 @@ if ( (_unit isKindOf "Man") && ( alive _unit ) && (objectParent _unit == _unit) 
 			_unit setUnitPos "AUTO";
 			_unit setVariable ["GRLIB_is_prisonner", true, true];
 
-			if ((objectParent _unit != _unit) && !(_unit isEqualTo (driver objectParent _unit))) then {
+			if ((vehicle _unit != _unit) && !(_unit isEqualTo (driver vehicle _unit))) then {
 				unAssignVehicle _unit;
-				_unit action ["eject", objectParent _unit];
-				_unit action ["getout", objectParent _unit];
+				_unit action ["eject", vehicle _unit];
+				_unit action ["getout", vehicle _unit];
 				unAssignVehicle _unit;
 			};
 
@@ -75,7 +75,7 @@ if ( (_unit isKindOf "Man") && ( alive _unit ) && (objectParent _unit == _unit) 
 		if ( _is_near_fob ) then {
 			private _unit_owner = leader group _unit;
 			sleep (3 + (random 3));
-			if (objectParent _unit != _unit) then {
+			if (vehicle _unit != _unit) then {
 				unassignVehicle _unit;
 				doGetOut _unit;
 			};

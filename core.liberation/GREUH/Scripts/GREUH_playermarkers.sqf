@@ -34,33 +34,33 @@ while { true } do {
 			};
 
 			{
-				if ( objectParent _x == _x ) then {
+				if ( vehicle _x == _x ) then {
 					_marked_players pushbackUnique _x;
 				} else {
-					_marked_vehicles pushbackUnique (objectParent _x);
+					_marked_vehicles pushbackUnique (vehicle _x);
 				};
 			 } foreach _playableunits;
 
 			{
 				if ( alive _x && !(isPlayer _x) ) then {
-					if ( objectParent _x == _x ) then {
+					if ( vehicle _x == _x ) then {
 						_marked_squadmates pushbackUnique _x;
 					} else {
-						_marked_vehicles pushbackUnique (objectParent _x);
+						_marked_vehicles pushbackUnique (vehicle _x);
 					};
 				};
 			} foreach (units (group player));
 
 			private _stuff_to_unmark = [];
 			{
-				if ( (objectParent _x != _x) || !(alive _x) ) then {
+				if ( (vehicle _x != _x) || !(alive _x) ) then {
 					_stuff_to_unmark pushback _x;
 					_marked_players = _marked_players - [_x];
 				};
 			} foreach _marked_players;
 
 			{
-				if ( (objectParent _x != _x) || !(alive _x) ) then {
+				if ( (vehicle _x != _x) || !(alive _x) ) then {
 					_stuff_to_unmark pushback _x;
 					_marked_squadmates = _marked_squadmates - [_x];
 				};

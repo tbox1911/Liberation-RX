@@ -6,7 +6,7 @@ while { true } do {
 
 	_scanned_units = [ allUnits, { ( alive _x ) && ( side group _x == GRLIB_side_friendly ) } ] call BIS_fnc_conditionalSelect;
 	_scanned_units = [ _scanned_units, { (_x == leader group player ) || (_x distance player < nametags_distance) } ] call BIS_fnc_conditionalSelect;
-	_scanned_units = [ _scanned_units, { (_x != player) && (( objectParent player ) != ( objectParent _x )) } ] call BIS_fnc_conditionalSelect;
+	_scanned_units = [ _scanned_units, { (_x != player) && (( vehicle player ) != ( vehicle _x )) } ] call BIS_fnc_conditionalSelect;
 	GRLIB_nametag_units = [] + _scanned_units;
 
 	_scanned_groups = [ allGroups, { ( side _x == side player ) && ( isplayer (leader _x) ) } ] call BIS_fnc_conditionalSelect;
