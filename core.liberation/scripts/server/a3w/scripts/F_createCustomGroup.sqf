@@ -7,10 +7,11 @@ private _type =  param [3, "infantry"];
 private _patrol = param [4, true];
 private _radius = 10;
 private _uPos = zeropos;
+private _unitTypes = opfor_infantry;
 
 if (isNil "_grp") exitWith {};
+
 switch (_type) do {
-	case ("infantry"): { _unitTypes = opfor_infantry };
 	case ("militia"): { _unitTypes = militia_squad };
 	case ("divers"): { _unitTypes = divers_squad };
 	case ("resistance"): { _unitTypes = resistance_squad };
