@@ -71,7 +71,7 @@ _setupObjects =
 	(crew _veh1) joinSilent _aiGroupRes;
 
 	_veh2 = createVehicle ["I_static_AA_F", _missionPos, [], 50, "None"];
-	[_vehi2] spawn protect_static;
+	[_veh2] spawn protect_static;
 	_veh2 setDir random 360;
 	createVehicleCrew _veh2;
 	(crew _veh2) joinSilent _aiGroupRes;
