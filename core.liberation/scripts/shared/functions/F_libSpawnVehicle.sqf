@@ -67,14 +67,14 @@ _newvehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
 _newvehicle allowCrewInImmobile true;
 _newvehicle setUnloadInCombat [true, false];
 
+sleep 2;
 if ( _random_rotate ) then {
 	_newvehicle setdir (random 360);
 };
 _newvehicle setVectorUp surfaceNormal position _newvehicle;
-
-sleep 0.1;
-_newvehicle allowdamage true;
 _newvehicle setdamage 0;
+_newvehicle allowdamage true;
+
 
 diag_log format [ "Done Spawning vehicle %1 at %2", _classname , time ];
 
