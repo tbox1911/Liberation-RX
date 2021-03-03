@@ -10,20 +10,20 @@ waitUntil { sleep 0.2; !(alive _troup_transport) || !(alive (driver _troup_trans
 
 if ((alive _troup_transport) && (alive (driver _troup_transport))) then {
 	_troupgrp = createGroup [GRLIB_side_enemy, true];
-	sleep 0.5;
-
 	{
 		_x createUnit [_start_pos, _troupgrp,"this addMPEventHandler [""MPKilled"", {_this spawn kill_manager}]", 0.5, "PRIVATE"];
+		sleep 0.1;
 	} foreach ([] call F_getAdaptiveSquadComp);
 
 	{
+		_x assignAsCargo _troup_transport;
 		_x moveInCargo _troup_transport;
 		_x setVariable ["GRLIB_counter_TTL", round(time + 1800)];
 	} foreach (units _troupgrp);
 
 	while {(count (waypoints _troupgrp)) != 0} do {deleteWaypoint ((waypoints _troupgrp) select 0);};
 
-	sleep 3;
+	sleep 2;
 
 	_transport_waypoint =  _transport_group addWaypoint [getpos _troup_transport, 0,0];
 	_transport_waypoint setWaypointType "TR UNLOAD";

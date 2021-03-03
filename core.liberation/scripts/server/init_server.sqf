@@ -15,7 +15,6 @@ troup_transport = compileFinal preprocessFileLineNumbers "scripts\server\ai\trou
 
 // Battlegroup
 spawn_air = compileFinal preprocessFileLineNumbers "scripts\server\battlegroup\spawn_air.sqf";
-spawn_airblu = compileFinal preprocessFileLineNumbers "scripts\server\battlegroup\spawn_airblu.sqf";
 spawn_battlegroup = compileFinal preprocessFileLineNumbers "scripts\server\battlegroup\spawn_battlegroup.sqf";
 
 // Game

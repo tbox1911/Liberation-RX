@@ -1,32 +1,34 @@
-params ["_first_objective"];
+params ["_first_objective", "_side"];
 
-_planes_number = 2;
+if (isNil "_side") then {_side = GRLIB_side_enemy};
+private _planeType = opfor_air;
+if (_side == GRLIB_side_friendly) then {_planeType = blufor_air};
+
+private _planes_number = 1;
+if ( combat_readiness >= 50 ) then { _planes_number = 2 };
 if ( combat_readiness >= 75 ) then { _planes_number = 3 };
 if ( combat_readiness >= 85 ) then { _planes_number = 4 };
 
-_plane_type = selectRandom opfor_air;
 _air_spawnpoint = ( [ sectors_airspawn , [ _first_objective ] , { (markerpos _x) distance _input0 }, "ASCEND"] call BIS_fnc_sortBy ) select 0;
-_air_grp = createGroup [GRLIB_side_enemy, true];
+_air_grp = createGroup [_side, true];
 
-for [ {_idx=0},{_idx < _planes_number},{_idx=_idx+1}] do {
-
-	_air_spawnpos = markerpos _air_spawnpoint;
-	_air_spawnpos = [(((_air_spawnpos select 0) + 500) - random 1000),(((_air_spawnpos select 1) + 500) - random 1000),0];
-
-	_newvehicle = createVehicle [_plane_type, _air_spawnpos, [], 0, "FLY"];
-	_newvehicle flyInHeight (120 + (random 180));
+for "_i" from 1 to _planes_number do {
+	private _newvehicle = createVehicle [ (selectRandom _planeType), (markerPos _air_spawnpoint), [], 50, "FLY"];
+	_newvehicle setPos (getPosATL _newvehicle vectorAdd [0, 0, 400]);
 	createVehicleCrew _newvehicle;
-	sleep 1;
+	_newvehicle flyInHeight 400;
+
+	private _pilot_group = group ((crew _newvehicle) select 0);
 	_newvehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	{ _x addMPEventHandler ["MPKilled", {_this spawn kill_manager}]; } foreach (crew _newvehicle);
-
 	(crew _newvehicle) joinSilent _air_grp;
+	sleep 1;
 };
 
 while {(count (waypoints _air_grp)) != 0} do {deleteWaypoint ((waypoints _air_grp) select 0);};
-sleep 1;
+sleep 0.2;
 {_x doFollow leader _air_grp} foreach units _air_grp;
-sleep 1;
+sleep 0.2;
 
 _waypoint = _air_grp addWaypoint [ _first_objective, 500];
 _waypoint setWaypointType "MOVE";
@@ -59,5 +61,3 @@ _waypoint = _air_grp addWaypoint [ _first_objective, 500];
 _waypoint setWaypointType "CYCLE";
 
 _air_grp setCurrentWaypoint [ _air_grp, 2];
-
-
