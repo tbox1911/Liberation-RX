@@ -558,12 +558,6 @@ opfor_statics = [
 	"O_Mortar_01_F"
 ];
 
-ind_recyclable = [
-	["I_Truck_02_covered_F",0,round (20 / GRLIB_recycling_percentage),0],
-	["I_Truck_02_transport_F",0,round (20 / GRLIB_recycling_percentage),0],
-	["I_Heli_light_03_dynamicLoadout_F",0,round (20 / GRLIB_recycling_percentage),0]
-];
-
 opfor_texture_overide = [
 	"Urban",
 	"Digital"
@@ -606,6 +600,16 @@ opfor_recyclable = [
 	["O_Plane_Fighter_02_Stealth_F",20,round (1000 / GRLIB_recycling_percentage),30],
 	["O_T_VTOL_02_vehicle_F",20,round (1000 / GRLIB_recycling_percentage),20],
 	["O_T_VTOL_02_infantry_F",20,round (1000 / GRLIB_recycling_percentage),20]
+];
+
+// Indep
+ind_recyclable = [
+	["I_static_AA_F",0,round (80 / GRLIB_recycling_percentage),0],
+	["I_static_AT_F",0,round (80 / GRLIB_recycling_percentage),0],
+	["I_Mortar_01_F",0,round (300 / GRLIB_recycling_percentage),0],
+	["I_Truck_02_covered_F",0,round (20 / GRLIB_recycling_percentage),0],
+	["I_Truck_02_transport_F",0,round (20 / GRLIB_recycling_percentage),0],
+	["I_Heli_light_03_dynamicLoadout_F",0,round (20 / GRLIB_recycling_percentage),0]
 ];
 
 // Other stuff
