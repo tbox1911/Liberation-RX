@@ -60,7 +60,13 @@ sleep 2;
 if ( _random_rotate ) then {
 	_newvehicle setdir (random 360);
 };
-_newvehicle setVectorUp surfaceNormal position _newvehicle;
+
+// Correct position
+if ((vectorUp _newvehicle) select 2 < 0.70) then {
+	_newvehicle setpos [(getposATL _newvehicle) select 0,(getposATL _newvehicle) select 1, 0.5];
+	_newvehicle setVectorUp surfaceNormal position _newvehicle;
+};
+
 _newvehicle setdamage 0;
 _newvehicle allowdamage true;
 
