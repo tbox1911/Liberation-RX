@@ -1,16 +1,12 @@
-private [ "_spawnsector", "_grp", "_usable_sectors", "_spawntype", "_civnumber", "_vehdriver", "_spawnpos", "_civveh", "_sectors_patrol",
-		"_patrol_startpos", "_waypoint", "_grpspeed", "_sectors_patrol_random", "_sectorcount", "_nextsector", "_nearestroad" ];
-
-_civveh = objNull;
-sleep (150 + (random 150));
-_spawnsector = "";
-
 if ( isNil "active_sectors" ) then { active_sectors = [] };
 
 while { GRLIB_endgame == 0 } do {
+	sleep round (60 + random 150);
+	waitUntil {sleep 10; (GRLIB_side_civilian countSide allUnits) < (GRLIB_civilians_amount * 3) };
 
-	_spawnsector = "";
-	_usable_sectors = [];
+	private _civveh = objNull;
+	private _spawnsector = "";
+	private _usable_sectors = [];
 	{
 		if ( ( ( [ getmarkerpos _x , 1000 , GRLIB_side_friendly ] call F_getUnitsCount ) == 0 ) && ( count ( [ getmarkerpos _x , 3500 ] call F_getNearbyPlayers ) > 0 ) ) then {
 			_usable_sectors pushback _x;
@@ -21,75 +17,37 @@ while { GRLIB_endgame == 0 } do {
 	if ( count _usable_sectors > 0 ) then {
 		_spawnsector = selectRandom _usable_sectors;
 
-		_grp = createGroup [GRLIB_side_civilian, true];
-		sleep 0.5;
-		if ( random 100 < 33) then {
-			_civnumber = 1 + (floor (random 2));
-			while { count units _grp < _civnumber } do {
-				( selectRandom civilians ) createUnit [ markerpos _spawnsector, _grp, "this addMPEventHandler [""MPKilled"", {_this spawn kill_manager}]", 0.5, "PRIVATE"];
-			};
-			_grpspeed = "LIMITED";
-		} else {
+		private _civnumber = 1 + (floor (random 2));
+		private _civs = [_spawnsector, _civnumber] call F_spawnCivilians;
+		private _grp = group (_civs select 0);
 
+		if ( random 100 > 35 && _civnumber == 1 ) then {
 			_nearestroad = objNull;
 			while { isNull _nearestroad } do {
-				_nearestroad = [ [  getmarkerpos (_spawnsector), random(100), random(360)  ] call BIS_fnc_relPos, 200, [] ] call BIS_fnc_nearestRoad;
-				sleep 1;
+				_nearestroad = [ [getmarkerpos (_spawnsector), random(100), random(360)] call BIS_fnc_relPos, 200, [] ] call BIS_fnc_nearestRoad;
+				sleep 0.5;
 			};
 
-			_spawnpos = getpos _nearestroad;
+			private _spawnpos = getpos _nearestroad;
+			private _classname = selectRandom civilian_vehicles;
+			if ( _classname isKindOf "Air" ) then {
+				_civveh = createVehicle [_classname, _spawnpos, [], 0, 'FLY'];
+				_civveh setPos (getPosATL _civveh vectorAdd [0, 0, 250]);
+				_civveh flyInHeight 250;
+			} else {
+				if (surfaceIsWater _spawnpos) then {
+					_classname = selectRandom boats_names;
+				};
+				_civveh = _classname createVehicle _spawnpos;
+				_civveh setpos _spawnpos;
+			};
+			(_civs select 0) moveInDriver _civveh;
 
-			( selectRandom civilians ) createUnit [ _spawnpos, _grp, "this addMPEventHandler [""MPKilled"", {_this spawn kill_manager}]", 0.5, "PRIVATE"];
-			_civveh = ( selectRandom civilian_vehicles ) createVehicle _spawnpos;
-			_civveh setpos _spawnpos;
 			_civveh addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
 			_civveh addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) == GRLIB_side_friendly ) then { _damage = _this select 2 } else { _damage = 0 }; _damage }];
 			_civveh addEventHandler ["Fuel", { if (!(_this select 1)) then {(_this select 0) setFuel 1}}];
-			((units _grp) select 0) moveInDriver _civveh;
-			((units _grp) select 0) disableAI "FSM";
-			((units _grp) select 0) disableAI "AUTOCOMBAT";
-			_grpspeed = "LIMITED";
-
+			[_grp] call add_civ_waypoints;
 		};
-
-		{ _x addEventHandler ["HandleDamage", { private [ "_damage" ]; if (( side (_this select 3) != GRLIB_side_friendly ) && ( side (_this select 3) != GRLIB_side_enemy )) then { _damage = 0 } else { _damage = _this select 2 }; _damage } ]; } foreach units _grp;
-		{ _x setVariable ['GRLIB_can_speak', true, true] } foreach units _grp;
-		_sectors_patrol = [];
-		_patrol_startpos = getpos (leader _grp);
-		{
-			if ( (_patrol_startpos distance (markerpos _x) < 5000 ) && ( count ( [ getmarkerpos _x , 4000 ] call F_getNearbyPlayers ) > 0 ) ) then {
-				_sectors_patrol pushback _x;
-			};
-		} foreach (sectors_bigtown + sectors_capture + sectors_factory);
-
-		_sectors_patrol_random = [];
-		_sectorcount = count _sectors_patrol;
-		while { count _sectors_patrol_random < _sectorcount } do {
-			_nextsector = selectRandom _sectors_patrol;
-			_sectors_patrol_random pushback _nextsector;
-			_sectors_patrol = _sectors_patrol - [_nextsector];
-
-		};
-
-		while {(count (waypoints _grp)) != 0} do {deleteWaypoint ((waypoints _grp) select 0);};
-		{_x doFollow leader _grp} foreach units _grp;
-
-		{
-			_nearestroad = [ [  getmarkerpos (_x), random(100), random(360)  ] call BIS_fnc_relPos, 200, [] ] call BIS_fnc_nearestRoad;
-			if ( isNull _nearestroad ) then {
-				_waypoint = _grp addWaypoint [ markerpos _x, 100 ];
-			} else {
-				_waypoint = _grp addWaypoint [ getpos _nearestroad, 0 ];
-			};
-			_waypoint setWaypointType "MOVE";
-			_waypoint setWaypointSpeed _grpspeed;
-			_waypoint setWaypointBehaviour "SAFE";
-			_waypoint setWaypointCombatMode "BLUE";
-			_waypoint setWaypointCompletionRadius 100;
-		} foreach _sectors_patrol_random;
-
-		_waypoint = _grp addWaypoint [_patrol_startpos , 100];
-		_waypoint setWaypointType "CYCLE";
 
 		if ( local _grp ) then {
 			_headless_client = [] call F_lessLoadedHC;
@@ -117,5 +75,4 @@ while { GRLIB_endgame == 0 } do {
 		};
 	};
 
-	sleep 150 + (random (150));
 };
