@@ -649,8 +649,10 @@ civilians = [
 ];
 
 civilian_vehicles = [
+	"C_Heli_light_01_sheriff_F",
 	"C_Heli_Light_01_civil_F",
 	"C_Heli_light_01_furious_F",
+	"C_Heli_light_01_graywatcher_F",
 	"C_Hatchback_01_F",
 	"C_Hatchback_01_sport_F",
 	"C_Offroad_01_F",
