@@ -74,10 +74,10 @@ while { count (units _grp) > 0 } do {
 		};
 
 		if ( reinforcements_sector_under_attack == "" ) then {
-			_patrol_startpos = getpos (leader _grp);
-			_sector_radius = 2000;
-			_sector_list = (sectors_allSectors - blufor_sectors - sectors_tower);
-			_max_waypoints = 4;  // + back to startpos and cycle
+			private _patrol_startpos = getpos (leader _grp);
+			private _sector_radius = 2000;
+			private _sector_list = (sectors_allSectors - blufor_sectors - sectors_tower);
+			private _max_waypoints = 4;  // + back to startpos and cycle
 
 			if (_patrol_type == 1) then {
 				_sector_radius = 600;
