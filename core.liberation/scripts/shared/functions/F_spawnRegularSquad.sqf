@@ -10,7 +10,7 @@ _grp = createGroup [GRLIB_side_enemy, true];
 		_spawnpos = zeropos;
 		_max_try = 10;
 
-		while { (_spawnpos isEqualTo zeropos) || _max_try == 0 } do {
+		while { (_spawnpos isEqualTo zeropos) || _max_try > 0 } do {
 			_safepos = [getMarkerPos _sector, 5, 200, 1, 0, 0, 0, [], [zeropos, zeropos]] call BIS_fnc_findSafePos;
 			_spawnpos = _safepos findEmptyPosition [1, 20, "B_Heli_Light_01_F"];
 			if ( count _spawnpos == 0 || surfaceIsWater _spawnpos) then { _spawnpos = zeropos };

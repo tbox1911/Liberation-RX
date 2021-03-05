@@ -24,7 +24,7 @@ while { GRLIB_endgame == 0 } do {
 		if ( random 100 > 35 ) then {
 			_nearestroad = objNull;
 			_max_try = 10;
-			while { isNull _nearestroad || _max_try == 0} do {
+			while { isNull _nearestroad || _max_try > 0} do {
 				_nearestroad = [ [getmarkerpos (_spawnsector), random(100), random(360)] call BIS_fnc_relPos, 200, [] ] call BIS_fnc_nearestRoad;
 				_max_try = _max_try - 1;
 				sleep 0.5;

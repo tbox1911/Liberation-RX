@@ -6,7 +6,7 @@ params ["_type", "_pos", "_locked"];
 private _max_try = 10;
 private _radius = 100;
 private _spawnpos = zeropos;
-while { _spawnpos distance zeropos < 100 || _max_try > 1 } do {
+while { _spawnpos distance zeropos < 100 || _max_try > 0 } do {
 	_spawnpos = _pos findEmptyPosition [ 5, _radius, "B_Heli_Transport_01_F" ];
 	if ( count _spawnpos == 0 ) then { _spawnpos = zeropos; _radius = _radius + 20 };
 	_max_try = _max_try - 1;
