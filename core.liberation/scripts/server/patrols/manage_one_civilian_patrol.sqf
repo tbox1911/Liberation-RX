@@ -29,18 +29,18 @@ while { GRLIB_endgame == 0 } do {
 			};
 
 			if (!isNull _nearestroad) then {
-				private _spawnpos = getpos _nearestroad;
+				private _spawnpos = getposATL _nearestroad;
 				private _classname = selectRandom civilian_vehicles;
 				if ( _classname isKindOf "Air" ) then {
 					_civveh = createVehicle [_classname, _spawnpos, [], 0, 'FLY'];
-					_civveh setPos (getPosATL _civveh vectorAdd [0, 0, 250]);
+					_civveh setPosATL (getPosATL _civveh vectorAdd [0, 0, 250]);
 					_civveh flyInHeight 250;
 				} else {
 					if (surfaceIsWater _spawnpos) then {
 						_classname = selectRandom boats_names;
 					};
 					_civveh = _classname createVehicle _spawnpos;
-					_civveh setpos _spawnpos;
+					_civveh setposATL _spawnpos;
 				};
 				(_civs select 0) moveInDriver _civveh;
 
@@ -64,10 +64,12 @@ while { GRLIB_endgame == 0 } do {
 		};
 
 		if ( count (units _grp) > 0 ) then {
-			if ( !isNull _civveh ) then {
-				if ( _civveh getVariable ["GRLIB_vehicle_owner", ""] == "") then { [_civveh] call clean_vehicle; deleteVehicle _civveh };
+			if ( count ( [ getpos leader _grp , 4000 ] call F_getNearbyPlayers ) == 0 ) then {
+				if ( !(isNull _civveh) ) then {
+					 if ( {(alive _x) && (side group _x == GRLIB_side_friendly)} count (crew _civveh) == 0 && _civveh getVariable ["GRLIB_vehicle_owner", ""] == "") then { [_civveh] call clean_vehicle; deleteVehicle _civveh };
+				};
+				{ deletevehicle _x } foreach units _grp;
 			};
-			{ deletevehicle _x } foreach units _grp;
 		};
 	};
 
