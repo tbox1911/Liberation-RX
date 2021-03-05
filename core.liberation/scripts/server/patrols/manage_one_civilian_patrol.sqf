@@ -1,7 +1,7 @@
 if ( isNil "active_sectors" ) then { active_sectors = [] };
 
 while { GRLIB_endgame == 0 } do {
-	sleep round (60 + random 150);
+	sleep round (30 + random 30);
 	waitUntil {sleep 10; (GRLIB_side_civilian countSide allUnits) < (GRLIB_civilians_amount * 3) };
 
 	private _civveh = objNull;
@@ -11,20 +11,18 @@ while { GRLIB_endgame == 0 } do {
 		if ( ( ( [ getmarkerpos _x , 1000 , GRLIB_side_friendly ] call F_getUnitsCount ) == 0 ) && ( count ( [ getmarkerpos _x , 3500 ] call F_getNearbyPlayers ) > 0 ) ) then {
 			_usable_sectors pushback _x;
 		}
-
 	} foreach ((sectors_bigtown + sectors_capture + sectors_factory) - (active_sectors));
 
 	if ( count _usable_sectors > 0 ) then {
 		_spawnsector = selectRandom _usable_sectors;
 
-		private _civnumber = 1 + (floor (random 2));
-		private _civs = [_spawnsector, _civnumber] call F_spawnCivilians;
+		private _civs = [_spawnsector, 1] call F_spawnCivilians;
 		private _grp = group (_civs select 0);
 
 		if ( random 100 > 35 ) then {
-			_nearestroad = objNull;
-			_max_try = 10;
-			while { isNull _nearestroad || _max_try > 0} do {
+			private _nearestroad = objNull;
+			private _max_try = 10;
+			while { isNull _nearestroad && _max_try > 0} do {
 				_nearestroad = [ [getmarkerpos (_spawnsector), random(100), random(360)] call BIS_fnc_relPos, 200, [] ] call BIS_fnc_nearestRoad;
 				_max_try = _max_try - 1;
 				sleep 0.5;
@@ -66,16 +64,10 @@ while { GRLIB_endgame == 0 } do {
 		};
 
 		if ( count (units _grp) > 0 ) then {
-			if ( count ( [ getpos leader _grp , 4000 ] call F_getNearbyPlayers ) == 0 ) then {
-
-				if ( !(isNull _civveh) ) then {
-					 if ( { ( alive _x ) && (side group _x == GRLIB_side_friendly ) } count (crew _civveh) == 0 ) then {
-						deleteVehicle _civveh
-					};
-				};
-
-				{ deletevehicle _x } foreach units _grp;
+			if ( !isNull _civveh ) then {
+				if ( _civveh getVariable ["GRLIB_vehicle_owner", ""] == "") then { [_civveh] call clean_vehicle; deleteVehicle _civveh };
 			};
+			{ deletevehicle _x } foreach units _grp;
 		};
 	};
 
