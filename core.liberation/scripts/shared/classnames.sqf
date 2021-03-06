@@ -488,6 +488,7 @@ opfor_vehicles = [
 opfor_vehicles_low_intensity = [
 	"O_APC_Tracked_02_cannon_F",
 	"O_APC_Wheeled_02_rcws_F",
+	"O_Truck_02_covered_F",
 	"O_MRAP_02_hmg_F",
 	"O_MRAP_02_hmg_F",
 	"O_MRAP_02_gmg_F",

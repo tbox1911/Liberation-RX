@@ -16,16 +16,14 @@ _sendPara = {
 	sleep 0.2;
 
 	while { count units _para_group < 8 } do {
-		opfor_paratrooper createUnit [ getmarkerpos _spawnsector, _para_group, 'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]'];
+		_unit = _para_group createUnit [opfor_paratrooper, getmarkerpos _spawnsector, [], 0, "NONE"];
+		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+		_unit assignAsCargo _newvehicle;
+		_unit moveInCargo _newvehicle;
+		_unit allowFleeing 0;
+		_unit setVariable ["GRLIB_counter_TTL", round(time + 3600)];
 		sleep 0.1;
 	};
-
-	{
-		_x assignAsCargo _newvehicle;
-		_x moveInCargo _newvehicle;
-		_x allowFleeing 0;
-	} foreach (units _para_group);
-    sleep 0.2;
 
 	while {(count (waypoints _pilot_group)) != 0} do {deleteWaypoint ((waypoints _pilot_group) select 0);};
 	while {(count (waypoints _para_group)) != 0} do {deleteWaypoint ((waypoints _para_group) select 0);};
