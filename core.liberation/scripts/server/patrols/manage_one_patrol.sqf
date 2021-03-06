@@ -98,6 +98,7 @@ while { GRLIB_endgame == 0 } do {
 							};
 							deleteVehicle _x;
 						} foreach (units _grp);
+						deleteGroup _grp;
 					};
 				};
 			};

@@ -68,6 +68,7 @@ while { GRLIB_endgame == 0 } do {
 					if ( {(alive _x) && (side group _x == GRLIB_side_friendly)} count (crew _civveh) == 0 && _civveh getVariable ["GRLIB_vehicle_owner", ""] == "") then { [_civveh] call clean_vehicle; deleteVehicle _civveh };
 			};
 			{ deletevehicle _x } foreach units _grp;
+			deleteGroup _grp;
 		};
 	};
 };
