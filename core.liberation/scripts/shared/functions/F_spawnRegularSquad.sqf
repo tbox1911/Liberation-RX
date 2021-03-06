@@ -35,6 +35,6 @@ if ( _sector in sectors_capture ) then {
 	} foreach (units _grp);
 };
 
-diag_log format [ "Done Spawning regular squad at %1", time ];
+diag_log format [ "Done Spawning regular squad (%1) at %2", count (units _grp), time ];
 
 _grp;
