@@ -50,10 +50,10 @@ _setupObjects =
 
 	// create Nikos units
 	_mission_grp = createGroup [GRLIB_side_civilian, true];
-	_man1 = _mission_grp createUnit ["C_Nikos", _missionPos, [], 0, "NONE"];sleep 0.1;
-	_man2 = _mission_grp createUnit ["C_Orestes", _missionPos2, [], 0, "NONE"];sleep 0.1;
-	_man3 = _mission_grp createUnit ["C_Orestes", _missionPos3, [], 0, "NONE"];sleep 0.1;
-	_man4 = _mission_grp createUnit ["C_Nikos_aged", _missionPosEnd, [], 0, "NONE"];sleep 0.1;
+	_man1 = _mission_grp createUnit ["C_Nikos", _missionPos, [], 0, "NONE"];
+	_man2 = _mission_grp createUnit ["C_Orestes", _missionPos2, [], 0, "NONE"];
+	_man3 = _mission_grp createUnit ["C_Orestes", _missionPos3, [], 0, "NONE"];
+	_man4 = _mission_grp createUnit ["C_Nikos_aged", _missionPosEnd, [], 0, "NONE"];
 
 	GRLIB_A3W_Mission_SD = [_man1, _man2, _man3, _man4];
 	publicVariable "GRLIB_A3W_Mission_SD";
