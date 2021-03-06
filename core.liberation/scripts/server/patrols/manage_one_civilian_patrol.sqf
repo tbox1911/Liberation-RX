@@ -16,8 +16,8 @@ while { GRLIB_endgame == 0 } do {
 	if ( count _usable_sectors > 0 ) then {
 		_spawnsector = selectRandom _usable_sectors;
 
-		private _civs = [_spawnsector, 1] call F_spawnCivilians;
-		private _grp = group (_civs select 0);
+		private _civ = ([_spawnsector, 1] call F_spawnCivilians) select 0;
+		private _grp = group _civ;
 
 		if ( random 100 > 60 ) then {
 			private _nearestroad = objNull;
@@ -42,7 +42,7 @@ while { GRLIB_endgame == 0 } do {
 					_civveh = _classname createVehicle _spawnpos;
 					_civveh setposATL _spawnpos;
 				};
-				(_civs select 0) moveInDriver _civveh;
+				_civ moveInDriver _civveh;
 
 				_civveh addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
 				_civveh addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) == GRLIB_side_friendly ) then { _damage = _this select 2 } else { _damage = 0 }; _damage }];
@@ -60,14 +60,14 @@ while { GRLIB_endgame == 0 } do {
 
 		waitUntil {
 			sleep (30 + (random 30));
-			( ( ({alive _x} count (units _grp)) == 0 ) || ( count ([getpos leader _grp , 4000] call F_getNearbyPlayers) == 0 ) )
+			( (!alive _civ) || ( count ([getpos _civ , 4000] call F_getNearbyPlayers) == 0 ) )
 		};
 
-		if ( ({alive _x} count (units _grp)) > 0 ) then {
+		if ( alive _civ ) then {
 			if ( !(isNull _civveh) ) then {
 					if ( {(alive _x) && (side group _x == GRLIB_side_friendly)} count (crew _civveh) == 0 && _civveh getVariable ["GRLIB_vehicle_owner", ""] == "") then { [_civveh] call clean_vehicle; deleteVehicle _civveh };
 			};
-			{ deletevehicle _x } foreach units _grp;
+			deletevehicle _civ;
 			deleteGroup _grp;
 		};
 	};
