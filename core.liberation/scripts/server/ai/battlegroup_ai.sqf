@@ -1,9 +1,4 @@
-_grp = _this select 0;
-_infantry = false;
-
-if ( count _this == 2 ) then {
-	_infantry = true;
-};
+params ["_grp", "_infantry"];
 
 if (isNil "reset_battlegroups_ai" ) then { reset_battlegroups_ai = false };
 
