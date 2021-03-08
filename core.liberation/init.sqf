@@ -1,3 +1,4 @@
+titleText ["","BLACK FADED", 1000];
 [] call compileFinal preprocessFileLineNUmbers "build_info.sqf";
 diag_log "--- Liberation RX by pSiKO ---";
 diag_log format ["Build date: %1", GRLIB_build_date];
@@ -13,8 +14,6 @@ setGroupIconsVisible [false,false];
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\liberation_functions.sqf";
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\init_sectors.sqf";
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\classnames.sqf";
-
-[] execVM "GREUH\scripts\GREUH_activate.sqf";
 if (!GRLIB_ACE_enabled) then {[] execVM "R3F_LOG\init.sqf"};
 
 if (isServer) then {
@@ -34,8 +33,9 @@ if (!isDedicated && !hasInterface && isMultiplayer) then {
 };
 
 if (!isDedicated && hasInterface) then {
-	waitUntil { alive player };
+	waitUntil { sleep 1; !isNil "GRLIB_init_server" };
 	[] execVM "scripts\client\init_client.sqf";
+	[] execVM "GREUH\scripts\GREUH_activate.sqf";
 } else {
 	setViewDistance 1600;
 };

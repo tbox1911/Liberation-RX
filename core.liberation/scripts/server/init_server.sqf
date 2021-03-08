@@ -108,4 +108,5 @@ GRLIB_side_enemy setFriend [resistance, 0];
 
 addMissionEventHandler ['HandleDisconnect', cleanup_player];
 addMissionEventHandler ["MPEnded", {diag_log "LRX - MP End."}];
+GRLIB_init_server = true; publicVariable "GRLIB_init_server";
 diag_log "--- Server Init stop ---";
