@@ -1,4 +1,5 @@
-waitUntil { !isNil "blufor_sectors" };
+waitUntil { sleep 1; !isNil "blufor_sectors" };
+waitUntil { sleep 1; !isNil "GRLIB_player_spawned" };
 private ["_near_arsenal", "_near_medic", "_needammo1", "_needammo2", "_needmedic", "_magType", "_list_vehicles", "_min"];
 
 _distarsenal = 30;
@@ -42,7 +43,7 @@ _AddAmmo = {
 };
 
 while { true } do {
-	waitUntil {sleep 1;GRLIB_player_spawned)};
+	waitUntil {sleep 1;GRLIB_player_spawned};
 
 	if (count(units group player) > 1) then {
 		_maxpri = 10;
