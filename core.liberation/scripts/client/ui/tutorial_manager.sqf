@@ -1,6 +1,5 @@
 private [ "_tutorial_titles", "_tutorial_pages", "_current_page", "_old_page", "_dialog", "_text" ];
 
-
 _tutorial_titles = [
 	localize "STR_TUTO_TITLE1",
 	localize "STR_TUTO_TITLE2",
@@ -64,6 +63,7 @@ while { howtoplay == 1 && alive player && dialog } do {
 	uiSleep 0.2;
 };
 if ( dialog ) then { closeDialog 0 };
+disableUserInput true;
 
 cinematic_camera_started = false;
 howtoplay = 0;

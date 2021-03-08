@@ -4,19 +4,13 @@ _old_fullmap = 0;
 _standard_map_pos = [];
 _frame_pos = [];
 _spawn_str = "";
+_basenamestr = "BASE CHIMERA";
 
 GRLIB_force_redeploy = false;
 
 waitUntil { !isNil "GRLIB_all_fobs" };
-waitUntil { !isNil "blufor_sectors" };
-waitUntil { !isNil "save_is_loaded" };
-
 waitUntil { !isNil "introDone" };
-waitUntil { introDone };
-waitUntil { !isNil "cinematic_camera_stop" };
-waitUntil { cinematic_camera_stop };
-
-_basenamestr = "BASE CHIMERA";
+waitUntil { !isNil "blufor_sectors" };
 
 while { true } do {
 	waitUntil {
@@ -30,6 +24,8 @@ while { true } do {
 
 	_dialog = createDialog "liberation_deploy";
 	_noesckey = (findDisplay 5201) displayAddEventHandler ["KeyDown", "if ((_this select 1) == 1) then { true }"];
+	disableUserInput false;
+	disableUserInput true;
 	disableUserInput false;
 	deploy = 0;
 	_oldsel = -999;

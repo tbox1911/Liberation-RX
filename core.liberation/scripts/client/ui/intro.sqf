@@ -36,6 +36,7 @@ disableUserInput true;
 disableUserInput false;
 waitUntil { dialog };
 waitUntil { dostartgame == 1 || howtoplay == 1 || !dialog };
+disableUserInput true;
 
 closeDialog 0;
 if ( howtoplay == 0 ) then {
@@ -43,4 +44,3 @@ if ( howtoplay == 0 ) then {
 };
 introDone = true;
 (findDisplay 5651) displayRemoveEventHandler ["KeyDown", _noesckey];
-disableUserInput true;
