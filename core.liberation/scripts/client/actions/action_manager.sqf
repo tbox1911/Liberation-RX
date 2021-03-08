@@ -257,7 +257,7 @@ while { true } do {
 
 		// Squad Management
 		_idact_squad = _id_actions select 19;
-		if ((leader group player == player) && (count units group player > 1) && (_fobdistance < _distredeploy || (player distance lhd) <= 200) ) then {
+		if ((leader group player == player) && (count units group player > 1) && (_fobdistance < _distfob || (player distance lhd) <= 200) ) then {
 			if ( _idact_squad == -1 ) then {
 				_idact = player addAction ["<t color='#80FF80'>" + localize "STR_SQUAD_MANAGEMENT_ACTION" + "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\ui\squad_management.sqf","",-760,false,true,"","build_confirmed == 0"];
 				_id_actions set [19, _idact];
