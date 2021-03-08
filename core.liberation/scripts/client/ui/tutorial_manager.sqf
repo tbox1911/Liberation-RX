@@ -1,6 +1,5 @@
 private [ "_tutorial_titles", "_tutorial_pages", "_current_page", "_old_page", "_dialog", "_text" ];
 
-if ( isNil "howtoplay" ) then { howtoplay = 0; };
 
 _tutorial_titles = [
 	localize "STR_TUTO_TITLE1",
@@ -32,44 +31,43 @@ _tutorial_pages = [
 	"STR_TUTO_TEXT12"
 ];
 
-while { true } do {
-	_current_page = 0;
-	_old_page = -99;
+_current_page = 0;
+_old_page = -99;
 
-	waitUntil { uiSleep 0.3; howtoplay == 1 };
-	waitUntil { !dialog };
-	uiSleep 0.1;
+howtoplay=1;
+waitUntil { uiSleep 0.3; !dialog };
 
-	disableUserInput false;
-	_dialog = createDialog "liberation_tutorial";
-	if ( !cinematic_camera_started ) then {
-		[] spawn cinematic_camera;
+disableUserInput false;
+disableUserInput true;
+disableUserInput false;
+_dialog = createDialog "liberation_tutorial";
+if ( !cinematic_camera_started ) then {
+	[] spawn cinematic_camera;
+};
+
+waitUntil { dialog };
+
+{
+	lbAdd [ 513, _x];
+} foreach _tutorial_titles;
+
+lbSetCurSel [ 513, 0 ];
+
+while { howtoplay == 1 && alive player && dialog } do {
+	_current_page = lbCurSel 513;
+	if ( _current_page != _old_page ) then {
+		ctrlSetText [ 514, _tutorial_titles select _current_page ];
+		_text = format [(localize (_tutorial_pages select _current_page)), worldname];
+		((findDisplay 5353) displayCtrl (515)) ctrlSetStructuredText parseText _text;
+		_old_page = _current_page;
 	};
+	uiSleep 0.2;
+};
+if ( dialog ) then { closeDialog 0 };
 
-	waitUntil { dialog };
-
-	{
-		lbAdd [ 513, _x];
-	} foreach _tutorial_titles;
-
-	lbSetCurSel [ 513, 0 ];
-
-	while { howtoplay == 1 && alive player && dialog } do {
-		_current_page = lbCurSel 513;
-		if ( _current_page != _old_page ) then {
-			ctrlSetText [ 514, _tutorial_titles select _current_page ];
-			_text = format [(localize (_tutorial_pages select _current_page)), worldname];
-			((findDisplay 5353) displayCtrl (515)) ctrlSetStructuredText parseText _text;
-			_old_page = _current_page;
-		};
-		uiSleep 0.2;
-	};
-	if ( dialog ) then { closeDialog 0 };
-
-	cinematic_camera_started = false;
-	howtoplay = 0;
-	if (GRLIB_player_spawned) then {
-		uiSleep 0.5;
-		titleText ["" ,"BLACK IN", 3];
-	};
+cinematic_camera_started = false;
+howtoplay = 0;
+if (GRLIB_player_spawned) then {
+	uiSleep 0.5;
+	titleText ["" ,"BLACK IN", 3];
 };

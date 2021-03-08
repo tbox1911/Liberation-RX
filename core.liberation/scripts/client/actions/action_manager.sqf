@@ -47,7 +47,7 @@ while { true } do {
 		_idact_tutorial = _id_actions select 0;
 		if ((player distance lhd) <= 200 ) then {
 			if ( _idact_tutorial == -1 ) then {
-				_idact = player addAction ["<t color='#80FF80'>" + localize "STR_TUTO_ACTION" + "</t> <img size='1' image='" + _icon_tuto + "'/>","howtoplay = 1","",-740,false,true,"",""];
+				_idact = player addAction ["<t color='#80FF80'>" + localize "STR_TUTO_ACTION" + "</t> <img size='1' image='" + _icon_tuto + "'/>","[] execVM 'scripts\client\ui\tutorial_manager.sqf'","",-740,false,true,"",""];
 				_id_actions set [0, _idact];
 			};
 		} else {

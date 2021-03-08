@@ -5,12 +5,12 @@ if (isMultiplayer) then {
 	waituntil {(time > 2) && (getClientStateNumber >= 10) && (getClientState == "BRIEFING READ")};
 } else {
 	GRLIB_introduction = true;
-	uiSleep 2;
 };
 
 [] spawn cinematic_camera;
 if (serverName == "DevSrv") then {
 	GRLIB_introduction = false;
+	uiSleep 1;
 };
 
 if ( GRLIB_introduction ) then {
@@ -31,6 +31,8 @@ howtoplay = 0;
 
 _dialog = createDialog "liberation_menu";
 _noesckey = (findDisplay 5651) displayAddEventHandler ["KeyDown", "if ((_this select 1) == 1) then { true }"];
+disableUserInput false;
+disableUserInput true;
 disableUserInput false;
 waitUntil { dialog };
 waitUntil { dostartgame == 1 || howtoplay == 1 || !dialog };
