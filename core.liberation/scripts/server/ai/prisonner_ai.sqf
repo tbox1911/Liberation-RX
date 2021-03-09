@@ -54,19 +54,21 @@ if ( (_unit isKindOf "Man") && ( alive _unit ) && (vehicle _unit == _unit) && (s
 				unAssignVehicle _unit;
 			};
 
-			while {(count (waypoints _grp)) != 0} do {deleteWaypoint ((waypoints _grp) select 0);};
-			{_x doFollow leader _grp} foreach units _grp;
+			private _sectors = (sectors_allSectors - blufor_sectors);
+			private _nearest_sector = [ 10000, getPos _unit, _sectors ] call F_getNearestSector;
 
-			_possible_sectors = (sectors_allSectors - blufor_sectors);
-			if ( count _possible_sectors > 0 ) then {
+			if (_nearest_sector != "") then {
 
-				_possible_sectors = [ _possible_sectors , [getpos _unit, 5000] , { (markerPos _x) distance _input0 } , 'ASCEND' ] call BIS_fnc_sortBy;
-				if ( count _possible_sectors > 0 ) then {
-					_target_sector = _possible_sectors select 0;
-					_waypoint = _grp addWaypoint [markerpos _target_sector, 300];
-					_waypoint setWaypointType "MOVE";
-					_waypoint setWaypointSpeed "FULL";
-				};
+				while {(count (waypoints _grp)) != 0} do {deleteWaypoint ((waypoints _grp) select 0);};
+				{_x doFollow leader _grp} foreach units _grp;
+				sleep 0.2;
+
+				_waypoint = _grp addWaypoint [markerPos _nearest_sector, 50];
+				_waypoint setWaypointType "MOVE";
+				_waypoint setWaypointSpeed "FULL";
+				_waypoint setWaypointBehaviour "AWARE";
+				_waypoint setWaypointCombatMode "GREEN";
+				_waypoint setWaypointStatements ["true", "deleteVehicle this"];
 			};
 		};
 
