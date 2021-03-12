@@ -18,7 +18,6 @@ _grp = createGroup [GRLIB_side_enemy, true];
 		};
 		if (!(_spawnpos isEqualTo zeropos)) then {
 			_x createUnit [([_spawnpos, random 300, random 360] call BIS_fnc_relPos), _grp,'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]'];
-			_x switchMove "amovpknlmstpsraswrfldnon";
 		};
 	};
 	sleep 0.1;
