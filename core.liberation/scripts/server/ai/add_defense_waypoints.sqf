@@ -9,9 +9,7 @@ if ( vehicle (leader _grp) == (leader _grp) ) then { _is_infantry = true };
 
 sleep 5;
 while {(count (waypoints _grp)) != 0} do {deleteWaypoint ((waypoints _grp) select 0);};
-sleep 1;
 {_x doFollow leader _grp} foreach units _grp;
-sleep 1;
 
 if ( _is_infantry ) then {
 	_waypoint = _grp addWaypoint [_flagpos, _radius];

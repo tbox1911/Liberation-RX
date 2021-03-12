@@ -80,14 +80,19 @@ while {
 
 				while {(count (waypoints _flee_grp)) != 0} do {deleteWaypoint ((waypoints _flee_grp) select 0);};
 				{_x doFollow leader _flee_grp} foreach units _flee_grp;
-				sleep 0.2;
 
-				_waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 50];
+				_waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];
 				_waypoint setWaypointType "MOVE";
 				_waypoint setWaypointSpeed "FULL";
 				_waypoint setWaypointBehaviour "AWARE";
 				_waypoint setWaypointCombatMode "GREEN";
+				_waypoint setWaypointCompletionRadius 50;
+
+				_waypoint = _grp addWaypoint [markerPos _nearest_sector, 0];
+				_waypoint setWaypointType "MOVE";
+				_waypoint setWaypointCompletionRadius 50;
 				_waypoint setWaypointStatements ["true", "deleteVehicle this"];
+				sleep 10;
 			};
 		};
 	} foreach units _air_grp;
