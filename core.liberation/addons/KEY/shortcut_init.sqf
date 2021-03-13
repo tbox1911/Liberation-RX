@@ -48,11 +48,13 @@ waitUntil {sleep 0.5;!(isNull (findDisplay 46))};
 }];
 
 // LRX Diag
-(findDisplay 46) displayAddEventHandler ["KeyDown", {
-	if (_this select 1 == (actionKeys 'User20') select 0) then {
-		_save = 0;  // Dump savegame: 0 = no, 1 = yes
-		[_save] execVM "scripts\shared\diag_debug.sqf";
-		[_save, "scripts\shared\diag_debug.sqf"] remoteExec ["execVM", 2];
-		gamelogic globalChat "LRX Diag called.";
-	};
-}];
+if ((getPlayerUID player) in GRLIB_whitelisted_steamids) then {
+	(findDisplay 46) displayAddEventHandler ["KeyDown", {
+		if (_this select 1 == (actionKeys 'User20') select 0) then {
+			_save = 0;  // Dump savegame: 0 = no, 1 = yes
+			[_save] execVM "scripts\shared\diag_debug.sqf";
+			[_save, "scripts\shared\diag_debug.sqf"] remoteExec ["execVM", 2];
+			gamelogic globalChat "LRX Diag called.";
+		};
+	}];
+}:
