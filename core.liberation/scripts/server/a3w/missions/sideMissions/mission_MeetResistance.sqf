@@ -25,6 +25,11 @@ _setupVars =
 	_ignoreAiDeaths = true;
 
 	_locationsArray = nil;
+
+	GRLIB_A3W_Mission_MR = nil;
+	publicVariable "GRLIB_A3W_Mission_MR";
+	GRLIB_A3W_Mission_MRR = nil;
+	publicVariable "GRLIB_A3W_Mission_MRR";
 };
 
 _setupObjects =
