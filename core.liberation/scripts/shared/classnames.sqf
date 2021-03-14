@@ -328,7 +328,7 @@ uavs = [
 ];
 if ( isNil "uavs" ) then { uavs = [] };
 
-elite_vehicles = ["B_APC_Tracked_01_CRV_F", "B_MBT_01_TUSK_F" ];
+elite_vehicles = [];
 { if (_x select 4 == GRLIB_perm_max) then { elite_vehicles pushback (_x select 0)} } foreach light_vehicles + heavy_vehicles + air_vehicles + static_vehicles;
 
 // Everything the AI troups should be able to resupply from
