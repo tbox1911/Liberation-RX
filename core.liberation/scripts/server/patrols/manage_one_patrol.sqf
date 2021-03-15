@@ -10,7 +10,7 @@ while { GRLIB_endgame == 0 } do {
 
 	sleep ((random 5) * 60);
 
-	while { [] call F_opforCap > GRLIB_patrol_cap } do {
+	while { [] call F_opforCap > GRLIB_patrol_cap || (diag_fps < 25.0) } do {
 		sleep (random 30);
 	};
 
@@ -89,7 +89,7 @@ while { GRLIB_endgame == 0 } do {
 			if ( count (units _grp) == 0  ) then {
 				_patrol_continue = false;
 			} else {
-				if ( time - _started_time > (30 * 60) ) then {
+				if ( time - _started_time > 800 ) then {
 					if ( [ getpos (leader _grp) , 4000 , GRLIB_side_friendly ] call F_getUnitsCount == 0 ) then {
 						_patrol_continue = false;
 						{
