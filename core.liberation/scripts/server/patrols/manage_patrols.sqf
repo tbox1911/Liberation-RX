@@ -1,3 +1,4 @@
+if (GRLIB_Patrol_manager == 0) exitWith {};
 waitUntil {sleep 0.5; !isNil "GRLIB_A3W_Init"};
 
 // Infantry Patrol
