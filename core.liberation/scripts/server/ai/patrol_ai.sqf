@@ -49,7 +49,7 @@ while { count (units _grp) > 0 } do {
 		};
 		sleep 30;
 	} else {
-		if ( reinforcements_sector_under_attack != "" ) then {
+		if ( reinforcements_sector_under_attack != "" && (markerpos reinforcements_sector_under_attack) distance2D (getPos leader _grp) < 4000 ) then {
 
 			while {(count (waypoints _grp)) != 0} do {deleteWaypoint ((waypoints _grp) select 0);};
 			{_x doFollow leader _grp} foreach units _grp;
@@ -71,9 +71,7 @@ while { count (units _grp) > 0 } do {
 			_waypoint setWaypointType "CYCLE";
 
 			sleep 300;
-		};
-
-		if ( reinforcements_sector_under_attack == "" ) then {
+		} else {
 			private _patrol_startpos = getpos (leader _grp);
 			private _sector_radius = 2000;
 			private _sector_list = (sectors_allSectors - blufor_sectors - sectors_tower);

@@ -1,15 +1,15 @@
-_reset_time = 1800;
+private _reset_time = 1200;
 
 reinforcements_set = false;
 
 while { true } do {
 
-	waitUntil { sleep 0.3; reinforcements_set };
+	waitUntil { sleep 1; reinforcements_set };
 	reinforcements_set = false;
 
-	_localtime = time;
+	private _localtime = time;
 
-	waitUntil { sleep 0.3; ( time > ( _localtime + _reset_time ) ) || reinforcements_set };
+	waitUntil { sleep 1; ( time > ( _localtime + _reset_time ) ) || reinforcements_set };
 
 	if ( !reinforcements_set && !([] call F_isBigtownActive) ) then { reinforcements_sector_under_attack = ""; }
 
