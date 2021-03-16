@@ -49,7 +49,7 @@ while { count (units _grp) > 0 } do {
 		};
 		sleep 30;
 	} else {
-		if ( reinforcements_sector_under_attack != "" && (markerpos reinforcements_sector_under_attack) distance2D (getPos leader _grp) < 4000 ) then {
+		if ( reinforcements_sector_under_attack != "" && (markerpos reinforcements_sector_under_attack) distance2D (getPos (leader _grp)) < 4000 ) then {
 
 			while {(count (waypoints _grp)) != 0} do {deleteWaypoint ((waypoints _grp) select 0);};
 			{_x doFollow leader _grp} foreach units _grp;
@@ -73,12 +73,12 @@ while { count (units _grp) > 0 } do {
 			sleep 300;
 		} else {
 			private _patrol_startpos = getpos (leader _grp);
-			private _sector_radius = 2000;
+			private _sector_radius = 4000;
 			private _sector_list = (sectors_allSectors - blufor_sectors - sectors_tower);
 			private _max_waypoints = 4;  // + back to startpos and cycle
 
 			if (_patrol_type == 1) then {
-				_sector_radius = 600;
+				_sector_radius = 2000;
 				_a3w_missions = [];
 				{_a3w_missions pushBack ( _x select 0 )} foreach (SpawnMissionMarkers + ForestMissionMarkers);
 				_sector_list = (sectors_allSectors + _a3w_missions - blufor_sectors );
@@ -109,6 +109,6 @@ while { count (units _grp) > 0 } do {
 			_waypoint = _grp addWaypoint [_patrol_startpos , 300];
 			_waypoint setWaypointType "CYCLE";
 		};
-		waitUntil { sleep 5;(count (units _grp) == 0) || (reinforcements_sector_under_attack != "") };
+		waitUntil { sleep 5;(count (units _grp) == 0) || ( reinforcements_sector_under_attack != "" && ((markerpos reinforcements_sector_under_attack) distance2D (getPos leader _grp) < 4000) ) };
 	};
 };

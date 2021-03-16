@@ -1,11 +1,11 @@
 _grp = _this select 0;
 private ["_waypoint"];
+while {(count (waypoints _grp)) != 0} do {deleteWaypoint ((waypoints _grp) select 0);};
+{_x doFollow leader _grp} foreach units _grp;
 
 _civveh = objectParent (leader _grp);
 if (isNull _civveh) then {
 	private _basepos = getpos (leader _grp);
-	while {(count (waypoints _grp)) != 0} do {deleteWaypoint ((waypoints _grp) select 0);};
-	{_x doFollow leader _grp} foreach units _grp;
 
 	_waypoint = _grp addWaypoint [_basepos, 300];
 	_waypoint setWaypointType "MOVE";
@@ -59,9 +59,6 @@ if (isNull _civveh) then {
 		_sectors_patrol_random pushback _nextsector;
 		_sectors_patrol = _sectors_patrol - [_nextsector];
 	};
-
-	while {(count (waypoints _grp)) != 0} do {deleteWaypoint ((waypoints _grp) select 0);};
-	{_x doFollow leader _grp} foreach units _grp;
 
 	{
 		private _nearestroad = [ [ markerpos (_x), random(100), random(360)  ] call BIS_fnc_relPos, 200, [] ] call BIS_fnc_nearestRoad;
