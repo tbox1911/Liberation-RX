@@ -1,5 +1,7 @@
 params ["_static"];
 
+if (!(_static in opfor_statics + static_vehicles)) exitWith {};
+
 while { alive _static } do {
 	// No damage
 	_static allowDamage false;
