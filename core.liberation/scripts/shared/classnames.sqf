@@ -886,7 +886,6 @@ GRLIB_ignore_colisions_classes = [
 GRLIB_sar_wreck = "Land_Wreck_Heli_Attack_01_F";
 GRLIB_sar_fire = "test_EmptyObjectForFireBig";
 GRLIB_Ammobox = [
-	Arsenal_typename,
 	A3W_BoxWps,
 	medicalbox_typename,
 	"Box_NATO_Ammo_F",
