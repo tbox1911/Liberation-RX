@@ -755,13 +755,7 @@ GRLIB_vehicle_blacklist = [
 	ammo_sling_typename,
 	medic_sling_typename,
 	"Box_NATO_Ammo_F",
-  	"Box_NATO_WpsLaunch_F",
-	"O_Heli_Light_02_unarmed_F",
-	"O_Truck_03_transport_F",
-	"O_Truck_03_covered_F",
-	"O_Truck_03_ammo_F",
-	"O_Truck_03_fuel_F",
-	"O_Truck_03_medical_F"
+  	"Box_NATO_WpsLaunch_F"
 ];
 //{GRLIB_vehicle_blacklist pushBack ( _x select 0 )} foreach (support_vehicles);
 
