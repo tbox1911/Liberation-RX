@@ -34,8 +34,8 @@ while { GRLIB_endgame == 0 } do {
 					private _classname = selectRandom civilian_vehicles;
 					if ( _classname isKindOf "Air" ) then {
 						_civveh = createVehicle [_classname, _spawnpos, [], 0, 'FLY'];
-						_civveh setPosATL (getPosATL _civveh vectorAdd [0, 0, 250]);
-						_civveh flyInHeight 250;
+						_civveh setPosATL (getPosATL _civveh vectorAdd [0, 0, 150]);
+						_civveh flyInHeight 150;
 					} else {
 						if (surfaceIsWater _spawnpos) then {
 							_classname = selectRandom boats_names;
