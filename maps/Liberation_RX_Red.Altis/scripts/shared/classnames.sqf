@@ -31,6 +31,14 @@ if ( isNil "PAR_AidKit" ) then { PAR_AidKit = "FirstAidKit" };
 if ( isNil "A3W_BoxWps" ) then { A3W_BoxWps = "Box_East_Wps_F" };
 if ( isNil "canisterFuel" ) then { canisterFuel = "Land_CanisterFuel_Red_F" };
 
+// *** DLC ***
+_hasKart = (288520 in (getDLCs 1));
+_hasHeli = (304380 in (getDLCs 1));
+if (!_hasHeli) then {
+	// Change Huron if no Heli DLC
+	//huron_typename = "B_Heli_Transport_01_F";
+};
+
 // *** FRIENDLIES ***
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 infantry_units = [
@@ -367,6 +375,7 @@ vehicle_big_units = [
 	"Land_Hangar_F"
 ];
 
+
 // *** BADDIES ***
 
 if ( isNil "opfor_sentry") then { opfor_sentry = "B_Soldier_lite_F" };
@@ -627,8 +636,10 @@ civilians = [
 ];
 
 civilian_vehicles = [
+	"C_Heli_light_01_sheriff_F",
 	"C_Heli_Light_01_civil_F",
 	"C_Heli_light_01_furious_F",
+	"C_Heli_light_01_graywatcher_F",
 	"C_Hatchback_01_F",
 	"C_Hatchback_01_sport_F",
 	"C_Offroad_01_F",
@@ -709,7 +720,6 @@ GRLIB_vehicle_whitelist = [
 GRLIB_vehicle_blacklist = [
 	Arsenal_typename,
 	mobile_respawn,
-	huron_typename,
 	opfor_ammobox_transport,
 	FOB_box_typename,
 	FOB_truck_typename,
@@ -726,7 +736,6 @@ GRLIB_vehicle_blacklist = [
 	"Land_Pod_Heli_Transport_04_covered_F",
 	"Box_NATO_Ammo_F",
   	"Box_NATO_WpsLaunch_F",
-	"O_Heli_Light_02_v2_F",
 	"B_Truck_01_transport_F",
 	"B_Truck_01_covered_F",
 	"B_Truck_01_ammo_F",
