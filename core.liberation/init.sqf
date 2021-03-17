@@ -14,6 +14,8 @@ setGroupIconsVisible [false,false];
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\liberation_functions.sqf";
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\init_sectors.sqf";
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\classnames.sqf";
+
+waitUntil { sleep 1; !isNil "GRLIB_ACE_enabled" };
 if (!GRLIB_ACE_enabled) then {[] execVM "R3F_LOG\init.sqf"};
 
 if (isServer) then {
@@ -23,6 +25,7 @@ if (isServer) then {
 	{
 		_x removeAllMPEventHandlers "MPKilled";
 		_x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+		_x setVariable ["GRLIB_vehicle_owner", "public", true];
 	} foreach vehicles;
 
 	[] execVM "scripts\server\init_server.sqf";
