@@ -1,7 +1,7 @@
 waitUntil {sleep 1; !isNil "GRLIB_all_fobs" };
 waitUntil {sleep 1; !isNil "save_is_loaded" };
 
-private [ "_fobbox" ];
+private [ "_fobbox", "_foblist" ];
 
 _fob_type = FOB_box_typename;
 if ( GRLIB_fob_type == 1 ) then {
@@ -9,10 +9,14 @@ if ( GRLIB_fob_type == 1 ) then {
 };
 
 while { true } do {
-	_fobbox = entities [[FOB_box_typename, FOB_truck_typename], [], false, false];
 
-	if ( count GRLIB_all_fobs == 0 && count _fobbox == 0) then {
+	_foblist = [entities _fob_type, {
+		_x getVariable ["GRLIB_vehicle_owner", ""] == "public"
+	}] call BIS_fnc_conditionalSelect;
+
+	if ( count _foblist == 0 && count GRLIB_all_fobs == 0 ) then {
 		_fobbox = _fob_type createVehicle (getpos base_boxspawn);
+		_fobbox allowdamage false;
 		_fobbox setposasl (getposasl base_boxspawn vectorAdd [0,0,GRLIB_spawn_altitude]);
 		_fobbox setdir (getdir base_boxspawn);
 		_fobbox setMass 3000;
@@ -21,8 +25,11 @@ while { true } do {
 		clearItemCargoGlobal _fobbox;
 		clearBackpackCargoGlobal _fobbox;
 		_fobbox enableSimulationGlobal true;
-		_fobbox setDamage 0;
+		_fobbox setVariable ["GRLIB_vehicle_owner", "public", true];
 		sleep 3;
+		_fobbox setDamage 0;
+		_fobbox allowdamage true;
+
 		waitUntil {
 			sleep 1;
 			!(alive _fobbox) || count GRLIB_all_fobs > 0
