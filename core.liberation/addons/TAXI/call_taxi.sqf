@@ -36,8 +36,8 @@ if (isNil "GRLIB_all_fobs" || count GRLIB_all_fobs == 0) then {
 
 _air_spawnpos = [(((_air_spawnpos select 0) + 500) - random 1000),(((_air_spawnpos select 1) + 500) - random 1000), 120];
 _vehicle = createVehicle [_taxi_type, _air_spawnpos, [], 0, "FLY"];
-_vehicle setVariable ["GRLIB_vehicle_owner", "server"];
-_vehicle setVariable ["R3F_LOG_disabled", true];
+_vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
+_vehicle setVariable ["R3F_LOG_disabled", true, true];
 [_vehicle] spawn protect_static;
 _vehicle flyInHeight (100 + (random 60));
 player setVariable ["GRLIB_taxi_called", _vehicle, true];
