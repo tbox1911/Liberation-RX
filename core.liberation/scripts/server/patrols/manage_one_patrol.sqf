@@ -5,8 +5,8 @@ waitUntil { !isNil "blufor_sectors" };
 waitUntil { !isNil "combat_readiness" };
 
 while { GRLIB_endgame == 0 } do {
-	waitUntil { sleep 0.3; count blufor_sectors >= 3; };
-	waitUntil { sleep 0.3; combat_readiness >= (_minimum_readiness / GRLIB_difficulty_modifier); };
+	waitUntil { sleep 1; count blufor_sectors >= 3; };
+	waitUntil { sleep 1; combat_readiness >= (_minimum_readiness / GRLIB_difficulty_modifier); };
 
 	sleep ((random 5) * 60);
 
