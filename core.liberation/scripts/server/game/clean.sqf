@@ -121,8 +121,8 @@ while {deleteManagerPublic} do {
 	private _units_ttl = [] call _getTTLunits;
 	if (count _units_ttl > 0) then {
 		{
-			_ttl = _x getVariable "GRLIB_counter_TTL";
-			if ([_x,_deadMenDist,(playableUnits + switchableUnits)] call _isHidden && _ttl > time ) then {
+			private _ttl = _x getVariable "GRLIB_counter_TTL";
+			if ([_x,_deadMenDist,(playableUnits + switchableUnits)] call _isHidden && time > _ttl ) then {
 				detach _x;
 				deleteVehicle _x;
 				_stats = _stats + 1;
