@@ -218,8 +218,7 @@ PAR_HandleDamage_EH = {
 				PAR_tkMessage = [_unit, _killer];
 				publicVariable "PAR_tkMessage";
 				["PAR_tkMessage", [_unit, _killer]] call PAR_public_EH;
-				[_unit, _killer] call LRX_tk_check;
-				[_unit, _killer] remoteExec ["LRX_tk_check", owner _killer];
+				[_unit, _killer] remoteExec ["LRX_tk_check", [0,-2] select isDedicated];
 				_unit setVariable ["GRLIB_isProtected", round(time + 3), true];
 			};
 			_amountOfDamage = 0.15;
