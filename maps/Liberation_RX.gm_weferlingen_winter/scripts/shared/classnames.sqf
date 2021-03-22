@@ -31,14 +31,6 @@ if ( isNil "PAR_AidKit" ) then { PAR_AidKit = "gm_ge_army_burnBandage" };
 if ( isNil "A3W_BoxWps" ) then { A3W_BoxWps = "Box_East_Wps_F" };
 if ( isNil "canisterFuel" ) then { canisterFuel = "gm_jerrycan" };
 
-// *** DLC ***
-_hasKart = (288520 in (getDLCs 1));
-_hasHeli = (304380 in (getDLCs 1));
-if (!_hasHeli) then {
-	// Change Huron if no Heli DLC
-	//huron_typename = "B_Heli_Transport_01_F";
-};
-
 // *** FRIENDLIES ***
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 //gm_ge_army_rifleman_g3a3_80_ols

@@ -9,14 +9,14 @@ GRLIB_color_friendly = "ColorBLUFOR";
 GRLIB_color_enemy = "ColorOPFOR";
 GRLIB_color_enemy_bright = "ColorRED";
 
-GRLIB_sector_size = 600;
+GRLIB_sector_size = 700;
 GRLIB_capture_size = 175;
 GRLIB_radiotower_size = 2500;
 GRLIB_spawn_min = 2000;
 GRLIB_spawn_max = 5000;
 GRLIB_recycling_percentage = 0.65;
 GRLIB_endgame = 0;
-GRLIB_vulnerability_timer = 1200;
+GRLIB_vulnerability_timer = 900;
 GRLIB_defended_buildingpos_part = 0.4;
 GRLIB_sector_military_value = 3;
 GRLIB_secondary_objective_impact = 0.7;
