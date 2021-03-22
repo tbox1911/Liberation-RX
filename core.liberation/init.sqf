@@ -8,12 +8,11 @@ enableSaving [false, false];
 disableMapIndicators [false,true,false,false];
 setGroupIconsVisible [false,false];
 
-[] call compileFinal preprocessfilelinenumbers "scripts\shared\init_shared.sqf";
-[] call compileFinal preprocessFileLineNUmbers "scripts\shared\fetch_params.sqf";
-[] call compileFinal preprocessFileLineNUmbers "gameplay_constants.sqf";
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\liberation_functions.sqf";
-[] call compileFinal preprocessFileLineNUmbers "scripts\shared\init_sectors.sqf";
+[] call compileFinal preprocessFileLineNUmbers "scripts\shared\fetch_params.sqf";
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\classnames.sqf";
+[] call compileFinal preprocessfilelinenumbers "scripts\shared\init_shared.sqf";
+[] call compileFinal preprocessFileLineNUmbers "scripts\shared\init_sectors.sqf";
 
 waitUntil { sleep 1; !isNil "GRLIB_ACE_enabled" };
 if (!GRLIB_ACE_enabled) then {[] execVM "R3F_LOG\init.sqf"};
