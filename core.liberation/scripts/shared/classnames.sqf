@@ -530,6 +530,7 @@ opfor_troup_transports = [
 	"O_Truck_02_covered_F",
 	"O_Truck_02_transport_F",
 	"O_Heli_Transport_04_bench_F",
+	"O_Heli_Attack_02_F",
 	"O_Heli_Light_02_F",
 	"O_T_VTOL_02_infantry_F"
 ];
