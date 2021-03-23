@@ -14,9 +14,6 @@ setGroupIconsVisible [false,false];
 [] call compileFinal preprocessfilelinenumbers "scripts\shared\init_shared.sqf";
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\init_sectors.sqf";
 
-waitUntil { sleep 1; !isNil "GRLIB_ACE_enabled" };
-if (!GRLIB_ACE_enabled) then {[] execVM "R3F_LOG\init.sqf"};
-
 if (isServer) then {
 	lhd setpos getmarkerpos "base_chimera";
 	lhd hideObject true;
