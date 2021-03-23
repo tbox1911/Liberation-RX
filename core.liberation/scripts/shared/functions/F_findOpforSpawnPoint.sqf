@@ -96,7 +96,7 @@ if ( count _filtered_possible_sectors != 0 ) then {
 
 	if ( count _nearest_possible_sectors != 0 ) then {
 		if ( _spawn_target == '' ) then {
-			_opfor_spawn_point = _nearest_possible_sectors select (random (count _nearest_possible_sectors));
+			_opfor_spawn_point = selectRandom _nearest_possible_sectors;
 		} else {
 			_opfor_spawn_point = ( [ _nearest_possible_sectors , [ _spawn_target ] , { ( getmarkerpos _input0 ) distance ( getmarkerpos _x ) } , 'ASCEND' ] call BIS_fnc_sortBy ) select 0;
 		};
