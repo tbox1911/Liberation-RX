@@ -734,6 +734,9 @@ GRLIB_vehicle_whitelist = [
 // Blacklist Vehicle (lock and paint)
 GRLIB_vehicle_blacklist = [
 	Arsenal_typename,
+	ammobox_b_typename,
+	ammobox_o_typename,
+	ammobox_i_typename,
 	mobile_respawn,
 	opfor_ammobox_transport,
 	FOB_box_typename,
@@ -748,7 +751,8 @@ GRLIB_vehicle_blacklist = [
 	ammo_sling_typename,
 	medic_sling_typename,
 	"Box_NATO_Ammo_F",
-  	"Box_NATO_WpsLaunch_F"
+  	"Box_NATO_WpsLaunch_F",
+	"Land_CargoBox_V1_F"
 ];
 //{GRLIB_vehicle_blacklist pushBack ( _x select 0 )} foreach (support_vehicles);
 

@@ -200,6 +200,11 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 				{[_nextbuilding, _x] spawn attach_object_direct} forEach _lst_grl;
 			};
 
+			if (_nextclass == huron_typename ) then {
+				_nextbuilding setVariable ["GRLIB_vehicle_owner", "public", true];
+				_nextbuilding setVariable ["GRLIB_vehicle_ishuron", true, true];
+			};
+
 			if ( _hascrew ) then {
 				[ _nextbuilding ] call F_forceBluforCrew;
 				_nextbuilding setVariable ["GRLIB_vehicle_manned", true, true];
@@ -277,13 +282,13 @@ while { true } do {
 		{
 			_fobpos = _x;
 			_nextbuildings = [ _fobpos nearobjects (GRLIB_fob_range * 2), {
+				( getObjectType _x >= 8 ) &&
 				((typeof _x) in _classnames_to_save ) &&
 				( alive _x) &&
 				( speed _x < 5 ) &&
 				( isNull attachedTo _x ) &&
 				(((getpos _x) select 2) < 10 ) &&
-				( !(_x getVariable ['R3F_LOG_disabled', false]) || (_x getVariable ['GRLIB_vehicle_owner', "server"] != "server") ) &&
-				( getObjectType _x >= 8 )
+				( (_x getVariable ['R3F_LOG_disabled', false]) || !(_x getVariable ['GRLIB_vehicle_owner', ""] in ["server", "public"]) || typeOf _x == huron_typename )
  				} ] call BIS_fnc_conditionalSelect;
 
 			_all_buildings = _all_buildings + _nextbuildings;
@@ -312,13 +317,13 @@ while { true } do {
 			private	_lst_r3f = [];
 			private	_lst_grl = [];
 
-			if ( _nextclass in _classnames_to_save_blu + all_hostile_classnames ) then {
+			if ( _nextclass in _classnames_to_save_blu + all_hostile_classnames - GRLIB_vehicle_blacklist) then {
 				if (side _x != GRLIB_side_enemy) then {
 					_hascrew = _x getVariable ["GRLIB_vehicle_manned", false];
 					_owner = _x getVariable ["GRLIB_vehicle_owner", ""];
 					_color = _x getVariable ["GRLIB_vehicle_color", ""];
 					_color_name = _x getVariable ["GRLIB_vehicle_color_name", ""];
-					if ( _owner != "" ) then {
+					if ( _owner != "") then {
 						_lst_a3 = weaponsItemsCargo _x;
 						{_lst_r3f pushback (typeOf _x)} forEach (_x getVariable ["R3F_LOG_objets_charges", []]);
 						{_lst_grl pushback (typeOf _x)} forEach (attachedObjects _x);
