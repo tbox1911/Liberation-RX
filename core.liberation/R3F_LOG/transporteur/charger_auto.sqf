@@ -123,6 +123,12 @@ _objets_charges = _transporteur getVariable ["R3F_LOG_objets_charges", []];
 					[_objet, "add"] remoteExec ["addel_beacon_remote_call", 2];
 				};
 
+				// Clear Cargo
+				clearWeaponCargoGlobal _objet;
+				clearMagazineCargoGlobal _objet;
+				clearItemCargoGlobal _objet;
+				clearBackpackCargoGlobal _objet;
+
 				// MPKilled
 				_objet addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 			}
