@@ -158,7 +158,7 @@ while {deleteManagerPublic} do {
 	if (!(_vehiclesLimit isEqualTo -1)) then {
 		private _nbVehicles = [vehicles,
 			{ alive _x &&
-			 _x getVariable ["GRLIB_vehicle_owner", ""] == "" &&
+			 [_x] call is_abandoned &&
 			 isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) &&
 			 !(_x getVariable ['R3F_LOG_disabled', true]) &&
 			 count (crew _x) == 0 &&

@@ -27,7 +27,7 @@ while { true } do {
 
 		{
 			if (
-				(side _x == GRLIB_side_friendly || ! (_x getVariable ["GRLIB_vehicle_owner", ""] in ["", "server", "public"]) ) &&
+				(side _x == GRLIB_side_friendly || !(_x getVariable ["GRLIB_vehicle_owner", ""] in ["", "server", "public"]) ) &&
 				(_x distance lhd > 500) &&
 				!(_x getVariable ['R3F_LOG_disabled', false]) &&
 				isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) &&

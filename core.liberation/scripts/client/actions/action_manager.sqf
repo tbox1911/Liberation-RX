@@ -243,7 +243,7 @@ while { true } do {
 
 		// Build Menu
 		_idact_build = _id_actions select 18;
-		if (_fobdistance < _distfob && (player distance lhd) >= 1000 && ( ([player, 3] call fetch_permission) || (player == ([] call F_getCommander) || [] call F_isAdmin)) ) then {
+		if (_fobdistance < _distfob && (player distance lhd) >= 1000 && ( ([player, 3] call fetch_permission) || (player == ([] call F_getCommander) || [] call is_admin)) ) then {
 			if ( _idact_build == -1 ) then {
 				_idact = player addAction ["<t color='#FFFF00'>" + localize "STR_BUILD_ACTION" + "</t> <img size='1' image='res\ui_build.paa'/>","scripts\client\build\open_build_menu.sqf","",-985,false,true,"","build_confirmed == 0"];
 				_id_actions set [18, _idact];
@@ -271,7 +271,7 @@ while { true } do {
 
 		// Commander Menu
 		_idact_commander = _id_actions select 20;
-		if (( player == ( [] call F_getCommander ) || [] call F_isAdmin ) && GRLIB_permissions_param ) then {
+		if (( player == ( [] call F_getCommander ) || [] call is_admin ) && GRLIB_permissions_param ) then {
 			if ( _idact_commander == -1 ) then {
 				_idact = player addAction ["<t color='#FF8000'>" + localize "STR_COMMANDER_ACTION" + "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\commander\open_permissions.sqf","",-996,false,true,"","build_confirmed == 0"];
 				_id_actions set [20, _idact];
@@ -285,7 +285,7 @@ while { true } do {
 
 		// Secondary Objectives
 		_idact_secondary = _id_actions select 21;
-		if (count GRLIB_all_fobs > 0 && ( GRLIB_endgame == 0 ) && (_fobdistance < _distredeploy || (player distance lhd) <= 200) && (score player >= GRLIB_perm_air ||  player == ( [] call F_getCommander ) || [] call F_isAdmin) ) then {
+		if (count GRLIB_all_fobs > 0 && ( GRLIB_endgame == 0 ) && (_fobdistance < _distredeploy || (player distance lhd) <= 200) && (score player >= GRLIB_perm_air ||  player == ( [] call F_getCommander ) || [] call is_admin) ) then {
 			if ( _idact_secondary == -1 ) then {
 				_idact = player addAction ["<t color='#FFFF00'>" + localize "STR_SECONDARY_OBJECTIVES" + "</t>","scripts\client\ui\secondary_ui.sqf","",-995,false,true,"","build_confirmed == 0"];
 				_id_actions set [21, _idact];
@@ -299,7 +299,7 @@ while { true } do {
 
 		// Pack FOB
 		_idact_packfob = _id_actions select 22;
-		if ((_fobdistance < _distarsenal && (player distance lhd) >= 1000) && ( (score player >= GRLIB_perm_max) || (player == ( [] call F_getCommander ) || [] call F_isAdmin) )) then {
+		if ((_fobdistance < _distarsenal && (player distance lhd) >= 1000) && ( (score player >= GRLIB_perm_max) || (player == ( [] call F_getCommander ) || [] call is_admin) )) then {
 			if ( _idact_packfob == -1 ) then {
 				_idact = player addAction ["<t color='#FF6F00'>" + localize "STR_FOB_REPACKAGE" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_repackage_fob.sqf",([] call F_getNearestFob),-981,false,true,"","build_confirmed == 0 && !(cursorObject getVariable ['fob_in_use', false])"];
 				_id_actions set [22, _idact];
@@ -369,7 +369,7 @@ while { true } do {
 
 		// Admin Menu
 		_idact_admin = _id_actions select 27;
-		if (([] call F_isAdmin) && GRLIB_admin_menu ) then {
+		if (([] call is_admin) && GRLIB_admin_menu ) then {
 			if ( _idact_admin == -1 ) then {
 				_idact = player addAction ["<t color='#0000F8'>-- ADMIN MENU</t>","scripts\client\commander\admin_menu.sqf","",999,false,true,"",""];
 				_id_actions set [27, _idact];

@@ -10,9 +10,7 @@ if ( GRLIB_fob_type == 1 ) then {
 
 while { true } do {
 
-	_foblist = [entities _fob_type, {
-		_x getVariable ["GRLIB_vehicle_owner", ""] == "public"
-	}] call BIS_fnc_conditionalSelect;
+	_foblist = [entities _fob_type, {[_x] call is_public}] call BIS_fnc_conditionalSelect;
 
 	if ( count _foblist == 0 && count GRLIB_all_fobs == 0 ) then {
 		_fobbox = _fob_type createVehicle (getpos base_boxspawn);
