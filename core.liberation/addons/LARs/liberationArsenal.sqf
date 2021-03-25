@@ -72,7 +72,6 @@ if ( GRLIB_OPTRE_enabled ) then {
 	(
 		"
 		getText (_x >> 'dlc') == 'OPTRE' &&
-		getNumber (_x >> 'scope') > 1 &&
 		toLower (configName _x) find '_coyote' < 0 &&
 		!((configName _x) in GRLIB_OPTRE_Blacklist)
 		"
