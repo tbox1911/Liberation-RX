@@ -735,6 +735,9 @@ GRLIB_vehicle_whitelist = [
 // Blacklist Vehicle (lock and paint)
 GRLIB_vehicle_blacklist = [
 	Arsenal_typename,
+	ammobox_b_typename,
+	ammobox_o_typename,
+	ammobox_i_typename,
 	mobile_respawn,
 	opfor_ammobox_transport,
 	FOB_box_typename,
@@ -748,6 +751,9 @@ GRLIB_vehicle_blacklist = [
 	fuel_sling_typename,
 	ammo_sling_typename,
 	medic_sling_typename,
+	"Box_NATO_Ammo_F",
+  	"Box_NATO_WpsLaunch_F",
+	"Land_CargoBox_V1_F",
 	"gm_AmmoBox_wood_02_empty",
         "gm_AmmoBox_wood_03_empty",
 	"O_Heli_Light_02_unarmed_F",
@@ -886,7 +892,6 @@ GRLIB_ignore_colisions_classes = [
 GRLIB_sar_wreck = "Land_Wreck_Heli_Attack_01_F";
 GRLIB_sar_fire = "test_EmptyObjectForFireBig";
 GRLIB_Ammobox = [
-	Arsenal_typename,
 	A3W_BoxWps,
 	medicalbox_typename,
 	"gm_AmmoBox_wood_02_empty",
