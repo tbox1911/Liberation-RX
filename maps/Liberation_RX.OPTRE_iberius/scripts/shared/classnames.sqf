@@ -332,7 +332,7 @@ ai_healing_sources = [
 	Respawn_truck_typename,
 	medicalbox_typename,
 	medic_sling_typename,
-	"OPTRE_M313_UNSC",
+	"OPTRE_M313_UNSC"
 ];
 
 vehicle_rearm_sources = [
