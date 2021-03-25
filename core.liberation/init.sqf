@@ -10,7 +10,6 @@ setGroupIconsVisible [false,false];
 
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\liberation_functions.sqf";
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\fetch_params.sqf";
-[] call compileFinal preprocessFileLineNUmbers "scripts\shared\classnames.sqf";
 [] call compileFinal preprocessfilelinenumbers "scripts\shared\init_shared.sqf";
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\init_sectors.sqf";
 
@@ -21,7 +20,9 @@ if (isServer) then {
 	{
 		_x removeAllMPEventHandlers "MPKilled";
 		_x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-		_x setVariable ["GRLIB_vehicle_owner", "public", true];
+		if (isNil {_x getVariable "GRLIB_vehicle_owner"} ) then {
+			_x setVariable ["GRLIB_vehicle_owner", "public", true];
+		};
 	} foreach vehicles;
 
 	[] execVM "scripts\server\init_server.sqf";
