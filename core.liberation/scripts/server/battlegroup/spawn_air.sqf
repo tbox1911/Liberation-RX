@@ -74,28 +74,27 @@ while {
 		if ( alive _unit && vehicle _unit == _unit ) then {
 			private _sectors = (sectors_allSectors - blufor_sectors);
 			if (_side == GRLIB_side_friendly) then {_sectors = blufor_sectors};
-			private _nearest_sector = [ 10000, getPos _unit, _sectors ] call F_getNearestSector;
+			private _nearest_sector = [_sectors, _unit] call BIS_fnc_nearestPosition;
 
-			if (_nearest_sector != "") then {
-				private _flee_grp = createGroup [_side, true];
-				[_unit] joinSilent _flee_grp;
+			private _flee_grp = createGroup [_side, true];
+			[_unit] joinSilent _flee_grp;
 
-				while {(count (waypoints _flee_grp)) != 0} do {deleteWaypoint ((waypoints _flee_grp) select 0);};
-				{_x doFollow leader _flee_grp} foreach units _flee_grp;
+			while {(count (waypoints _flee_grp)) != 0} do {deleteWaypoint ((waypoints _flee_grp) select 0);};
+			{_x doFollow leader _flee_grp} foreach units _flee_grp;
 
-				_waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];
-				_waypoint setWaypointType "MOVE";
-				_waypoint setWaypointSpeed "FULL";
-				_waypoint setWaypointBehaviour "AWARE";
-				_waypoint setWaypointCombatMode "GREEN";
-				_waypoint setWaypointCompletionRadius 50;
+			_waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];
+			_waypoint setWaypointType "MOVE";
+			_waypoint setWaypointSpeed "FULL";
+			_waypoint setWaypointBehaviour "AWARE";
+			_waypoint setWaypointCombatMode "GREEN";
+			_waypoint setWaypointCompletionRadius 50;
 
-				_waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];
-				_waypoint setWaypointType "MOVE";
-				_waypoint setWaypointCompletionRadius 50;
-				_waypoint setWaypointStatements ["true", "deleteVehicle this"];
-				sleep 10;
-			};
+			_waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];
+			_waypoint setWaypointType "MOVE";
+			_waypoint setWaypointCompletionRadius 50;
+			_waypoint setWaypointStatements ["true", "deleteVehicle this"];
+			sleep 10;
+
 		};
 	} foreach units _air_grp;
 
