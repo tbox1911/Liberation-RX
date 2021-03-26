@@ -4,15 +4,9 @@
 
 if (GRLIB_wildlife_manager == 0) exitWith {};
 
-while {true} do {
+GRLIB_wildlife_max = 4;
 
-	{
-		if (isNil {_x getVariable "GRLIB_Wildlife"}) then {
-			_x setVariable ["GRLIB_Wildlife", 0, true];
-			[_x] spawn manage_one_wildlife;
-			sleep 1;
-		};
-	} forEach AllPlayers;
-
- 	sleep 5;
+for "_i" from 1 to GRLIB_wildlife_max do {
+	[] spawn manage_one_wildlife;
+	sleep 1;
 };
