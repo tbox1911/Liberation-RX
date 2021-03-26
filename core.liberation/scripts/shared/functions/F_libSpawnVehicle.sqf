@@ -18,7 +18,7 @@ if ( _precise_position ) then {
 		if (surfaceIsWater _safepos) then {
 			_spawnpos = _safepos;
 		} else {
-			_spawnpos = _safepos findEmptyPosition [1, 20, "B_Heli_Light_01_F"];
+			_spawnpos = _safepos findEmptyPosition [1, 20, "B_Heli_Transport_03_unarmed_F"];
 		};
 		if ( count _spawnpos == 0 ) then { _spawnpos = zeropos; };
 	};
@@ -34,7 +34,7 @@ if ( _classname in opfor_choppers ) then {
 		_classname = selectRandom opfor_boat;
 	};
 	_newvehicle = _classname createVehicle _spawnpos;
-	//_newvehicle setpos _spawnpos;
+	_newvehicle setpos _spawnpos;
 };
 _newvehicle allowdamage false;
 clearWeaponCargoGlobal _newvehicle;
@@ -48,6 +48,7 @@ if ( _classname in militia_vehicles ) then {
 	createVehicleCrew _newvehicle;
 	sleep 1;
 	{
+		_x allowdamage false;
 		_x addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
 		_x addEventHandler ["HandleDamage", {_this call damage_manager_EH}];
 	} foreach (crew _newvehicle);
@@ -56,19 +57,9 @@ _newvehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
 _newvehicle allowCrewInImmobile true;
 _newvehicle setUnloadInCombat [true, false];
 
-sleep 2;
 if ( _random_rotate ) then {
 	_newvehicle setdir (random 360);
 };
-
-// Correct position
-if ((vectorUp _newvehicle) select 2 < 0.70) then {
-	_newvehicle setpos [(getposATL _newvehicle) select 0,(getposATL _newvehicle) select 1, 0.5];
-	_newvehicle setVectorUp surfaceNormal position _newvehicle;
-};
-
-_newvehicle setdamage 0;
-_newvehicle allowdamage true;
 
 // A3 textures
 if ( _classname in ["I_E_Truck_02_MRL_F"] ) then {
@@ -82,7 +73,21 @@ if (count opfor_texture_overide > 0) then {
 	[_newvehicle, _texture, _texture_name,[]] call RPT_fnc_TextureVehicle;
 };
 
+[_newvehicle] spawn {
+	params ["_veh"];
+	sleep 5;
+	// Correct position
+	if ((vectorUp _veh) select 2 < 0.70) then {
+		_veh setpos [(getposATL _veh) select 0,(getposATL _veh) select 1, 0.5];
+		_veh setVectorUp surfaceNormal position _veh;
+		sleep 2;
+	};
+	_veh setdamage 0;
+	_veh allowdamage true;
+	{ _x allowdamage true } foreach (crew _veh);
+};
+
 diag_log format [ "Done Spawning vehicle %1 at %2", _classname , time ];
 
-_newvehicle
+_newvehicle;
 
