@@ -16,6 +16,7 @@ for "_i" from 1 to _planes_number do {
 	private _newvehicle = createVehicle [ (selectRandom _planeType), (markerPos _air_spawnpoint), [], 50, "FLY"];
 	_newvehicle setPos (getPosATL _newvehicle vectorAdd [0, 0, 400]);
 	createVehicleCrew _newvehicle;
+	sleep 1;
 	_newvehicle flyInHeight 400;
 
 	private _pilot_group = group ((crew _newvehicle) select 0);
