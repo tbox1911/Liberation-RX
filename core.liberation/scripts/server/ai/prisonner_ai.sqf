@@ -68,12 +68,6 @@ if ( (_unit isKindOf "Man") && ( alive _unit ) && (vehicle _unit == _unit) && (s
 				_waypoint setWaypointCombatMode "GREEN";
 				_waypoint setWaypointCompletionRadius 50;
 
-				_waypoint = _grp addWaypoint [markerPos _nearest_sector, 0];
-				_waypoint setWaypointType "MOVE";
-				_waypoint setWaypointCompletionRadius 50;
-				_waypoint setWaypointStatements ["true", "deleteVehicle this"];
-				sleep 10;
-			};
 		};
 
 		// Captured
