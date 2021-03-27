@@ -26,7 +26,7 @@ while { true } do {
 				if (_cur < GRLIB_perm_ban || !([] call F_getValid) ) then {
 					_uid = getPlayerUID _x;
 					BTC_logic setVariable [_uid, 99, true];
-					[] remoteExec ["LRX_tk_actions", owner _x];
+					[_x] remoteExec ["LRX_tk_actions", owner _x];
 					diag_log format ["-- LRX TK: BAN for player %1 - UID: %2", name _x,  _uid];
 				};
 				if ((_cur >= GRLIB_perm_ban) && (_cur < -5) && (_cur < _last)) then {_rank = "None"; _newrank = true};
@@ -91,14 +91,14 @@ while { true } do {
 						[gamelogic, _text] remoteExec ["globalChat", 0];
 						_text = "Over.";
 						[gamelogic, _text] remoteExec ["globalChat", 0];
-						[getPosATL _x, 'rain','blue'] spawn GRAD_fireworks_fnc_prepareFireworks;
+						[getPosATL _x, 'normal','blue'] spawn GRAD_fireworks_fnc_prepareFireworks;
 						sleep 2;
-						[getPosATL _x, 'rain','white'] spawn GRAD_fireworks_fnc_prepareFireworks;
+						[getPosATL _x, 'normal','white'] spawn GRAD_fireworks_fnc_prepareFireworks;
 						sleep 2;
 					};
 
 					// Fireworks
-					[getPosATL _x, 'rain','red'] spawn GRAD_fireworks_fnc_prepareFireworks;
+					[getPosATL _x, 'normal','red'] spawn GRAD_fireworks_fnc_prepareFireworks;
 				};
 			};
 			_x setVariable ["score_last",_cur];
