@@ -1,7 +1,6 @@
 titleText ["","BLACK FADED", 1000];
-[] call compileFinal preprocessFileLineNUmbers "build_info.sqf";
 diag_log "--- Liberation RX by pSiKO ---";
-diag_log format ["Build date: %1", GRLIB_build_date];
+[] call compileFinal preprocessFileLineNUmbers "build_info.sqf";
 diag_log "--- Init start ---";
 
 enableSaving [false, false];
