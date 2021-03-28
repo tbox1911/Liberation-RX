@@ -73,14 +73,17 @@ _waypoint setWaypointCompletionRadius 100;
 
 //-----------------------------------------
 // ammo transport
-sleep 10;
+//sleep 10;
+waitUntil {sleep 2; speed _scout_vehicle > 2};
+
 private _transport_vehicle = [ _spawnpos, opfor_ammobox_transport, true, false ] call F_libSpawnVehicle;
 _transport_vehicle addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage } ];
 for "_n" from 1 to _boxes_amount do { [_transport_vehicle, ammobox_o_typename] call attach_object_direct };
 ( crew _transport_vehicle ) joinSilent _convoy_group;
 
 // troop transport
-sleep 10;
+//sleep 10;
+waitUntil {sleep 2; speed _transport_vehicle > 2};
 private _troop_vehicle = [ _spawnpos, opfor_transport_truck, true, false ] call F_libSpawnVehicle;
 _troop_vehicle addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage } ];
 
