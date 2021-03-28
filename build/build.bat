@@ -7,7 +7,7 @@ set GRLIB_file="..\core.liberation\build_info.sqf"
 echo //Liberation_RX was build on : > %GRLIB_file%
 echo GRLIB_build_date = "%DATE%"; >> %GRLIB_file%
 echo GRLIB_build_time = "%TIME:~0,8%"; >> %GRLIB_file%
-echo diag_log format ["Build date: %1", GRLIB_build_date]; >> >> %GRLIB_file%
+echo diag_log format ["Build date: %1", GRLIB_build_date]; >> %GRLIB_file%
 
 for /f %%i in ('dir /B /A:D ..\maps\liberation_RX*') do (
 	echo.
