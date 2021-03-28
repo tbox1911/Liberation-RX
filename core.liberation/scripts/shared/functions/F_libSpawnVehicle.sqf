@@ -47,11 +47,12 @@ if ( _classname in militia_vehicles ) then {
 } else {
 	createVehicleCrew _newvehicle;
 	sleep 1;
+	private _vehcrew = crew _newvehicle;
 	{
 		_x allowdamage false;
 		_x addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
 		_x addEventHandler ["HandleDamage", {_this call damage_manager_EH}];
-	} foreach (crew _newvehicle);
+	} foreach _vehcrew;
 };
 _newvehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
 _newvehicle allowCrewInImmobile true;
@@ -73,8 +74,8 @@ if (count opfor_texture_overide > 0) then {
 	[_newvehicle, _texture, _texture_name,[]] call RPT_fnc_TextureVehicle;
 };
 
-[_newvehicle] spawn {
-	params ["_veh"];
+[_newvehicle,_vehcrew] spawn {
+	params ["_veh", "_crew"];
 	sleep 5;
 	// Correct position
 	if ((vectorUp _veh) select 2 < 0.70) then {
@@ -84,7 +85,7 @@ if (count opfor_texture_overide > 0) then {
 	};
 	_veh setdamage 0;
 	_veh allowdamage true;
-	{ _x allowdamage true } foreach (crew _veh);
+	{ _x allowdamage true } foreach _crew;
 };
 
 diag_log format [ "Done Spawning vehicle %1 at %2", _classname , time ];
