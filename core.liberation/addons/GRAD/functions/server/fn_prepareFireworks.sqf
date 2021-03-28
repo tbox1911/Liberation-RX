@@ -38,9 +38,9 @@ _randomSleepShort = (random 0.1) - 0.05;
 // take color parameter and convert into color code
 switch (_color) do {
 	case "random": 	{_color = selectRandom _colorArray};
-	case "green": 	{_color = [0.42,0.81,0.1]};
-	case "red": 	{_color = [0.8,0.1,0.35]};
-	case "blue": 	{_color = [0.2,0.73,0.85]};
+	case "green": 	{_color = [0,1,0]};
+	case "red": 	{_color = [1,0,0]};
+	case "blue": 	{_color = [0,0,1]};
 	case "white": 	{_color = [1,1,1]};
 	default 		{_color = [1,1,1]};
 };
