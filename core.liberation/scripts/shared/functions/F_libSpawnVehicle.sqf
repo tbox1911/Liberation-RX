@@ -91,4 +91,3 @@ if (count opfor_texture_overide > 0) then {
 diag_log format [ "Done Spawning vehicle %1 at %2", _classname , time ];
 
 _newvehicle;
-
