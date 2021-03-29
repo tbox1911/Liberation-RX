@@ -18,7 +18,7 @@ _crew allowGetIn false;
 if (side _grp == GRLIB_side_civilian) then {
 	hintSilent "Warning !!\n -5 pts Malus for Ejecting Civilian.";
 	playSound "vtolAlarm";
-	player addScore -5;
+	[player, -5] call F_addScore;
 
 	_sectors_patrol = [];
 	_patrol_startpos = getpos (leader _grp);
