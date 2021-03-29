@@ -9,6 +9,7 @@ diag_log format [ "Spawning vehicle %1 at %2", _classname , time ];
 
 private _newvehicle = objNull;
 private _spawnpos = zeropos;
+private _vehcrew = [];
 
 if ( _precise_position ) then {
 	_spawnpos = [] + _sectorpos;
@@ -47,7 +48,7 @@ if ( _classname in militia_vehicles ) then {
 } else {
 	createVehicleCrew _newvehicle;
 	sleep 1;
-	private _vehcrew = crew _newvehicle;
+	_vehcrew = crew _newvehicle;
 	{
 		_x allowdamage false;
 		_x addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
