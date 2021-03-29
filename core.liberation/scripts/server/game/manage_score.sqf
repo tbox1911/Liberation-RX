@@ -18,7 +18,7 @@ while { true } do {
 		_rank = _x getVariable ["GRLIB_Rank", ""];
 		if (isPlayer _x && _rank != "") then {
 			_cur = [_x] call F_getScore;
-			_last = _x getVariable["score_last",0];
+			_last = _x getVariable["GREUH_score_last",0];
 			if (_cur != _last) then {
 				//Score has changed for player _x
 				_newrank = false;
@@ -101,7 +101,7 @@ while { true } do {
 					[getPosATL _x, 'normal','red'] spawn GRAD_fireworks_fnc_prepareFireworks;
 				};
 			};
-			_x setVariable ["score_last",_cur];
+			_x setVariable ["GREUH_score_last",_cur];
 		};
 	} forEach allPlayers;
 	sleep 5;

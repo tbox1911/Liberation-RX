@@ -16,14 +16,14 @@ while { true } do {
 			{
 				if ( (getPlayerUID _nextplayer) == (_x select 0) ) then {
 					[_nextplayer, ((_x select 1) - ([_nextplayer] call F_getScore))] call F_addScore;
-					_nextplayer setVariable ["score_last",[_nextplayer] call F_getScore, true];
+					_nextplayer setVariable ["GREUH_score_last",[_nextplayer] call F_getScore, true];
 					_nextplayer setVariable ["GREUH_ammo_count", (_x select 2), true];
 				};
 			} foreach GRLIB_player_scores;
 
 			// new player
-			if (isNil {_nextplayer getVariable ["score_last", nil]}) then {
-				_nextplayer setVariable ["score_last", 0, true];
+			if (isNil {_nextplayer getVariable ["GREUH_score_last", nil]}) then {
+				_nextplayer setVariable ["GREUH_score_last", 0, true];
 				_nextplayer setVariable ["GREUH_ammo_count", GREUH_start_ammo, true];
 				GRLIB_player_scores pushback [getPlayerUID _nextplayer, 0, GREUH_start_ammo, name _nextplayer];
 			};
