@@ -2654,6 +2654,7 @@
 			<Key ID="STR_TUTO_TITLE6">
 					<Original>6. Game Icons </Original>
 					<French>6. Icônes du Jeu</French>
+                                        <Chinesesimp>6. 游戏图标 </Chinesesimp>
 			</Key>
 			<Key ID="STR_TUTO_TEXT6">
 					<Original>&lt;br/&gt;
@@ -2676,6 +2677,16 @@
 					- &lt;t size='1' color='#f80000'&gt;&lt;img image='\a3\ui_f\data\map\markers\handdrawn\warning_ca.paa'/&gt;&lt;/t&gt; DANGER: (Global) Le niveau d'Alerte global de l'ennemie. Plus le niveau d'alerte est haut plus les réactions de l'ennemie seront violentes. Peut etre diminué par les Operations Speciales. &lt;br/&gt; &lt;br/&gt;
 					- &lt;t size='1' color='#0000f8'&gt;&lt;img image='\a3\ui_f\data\gui\cfg\ranks\general_gs.paa'/&gt;&lt;/t&gt; INTEL: (Global) Vos ressource en Informations. Dépend du nombre de prisonniers capturés ou des infromations trouvées dans les bases. Permet de lancer les Operations Speciales. &lt;br/&gt; &lt;br/&gt;
 					</French>
+				        <Chinesesimp>&lt;br/&gt;
+					在游戏过程中，这些图标会告诉你当前情况 : &lt;br/&gt; &lt;br/&gt;
+					- &lt;t size='1'&gt;&lt;img image='res\ui_arsenal.paa'/&gt;&lt;/t&gt; 军功点: (个人) 你的军功点，取决于你的行动。允许你提升等级。 (查看军衔表) &lt;br/&gt; &lt;br/&gt;
+					- &lt;t size='1'&gt;&lt;img image='res\ui_ammo.paa'/&gt;&lt;/t&gt; 弹药: (个人) 你的弹药，弹药在游戏中作为货币使用。用于购买武器或车辆。 &lt;br/&gt; &lt;br/&gt;
+					- &lt;t size='1'&gt;&lt;img image='res\ui_manpo.paa'/&gt;&lt;/t&gt; 兵力资源: (全体) 你的人力资源。取决于控制的城市数量。包括步兵等车辆人员。上锁的车辆不消耗人员。 &lt;br/&gt; &lt;br/&gt;
+					- &lt;t size='1'&gt;&lt;img image='res\ui_fuel.paa'/&gt;&lt;/t&gt; 油料: (全体) 你的燃料资源。取决于控制的工厂数量。上锁的车辆不消耗燃料。 &lt;br/&gt; &lt;br/&gt;
+					- &lt;t size='1'&gt;&lt;img image='\a3\ui_f_curator\data\displays\rscdisplaycurator\modegroups_ca.paa'/&gt;&lt;/t&gt; 单位: (全体) 你的步兵资源。取决于你控制的城市数量。这只涉及玩家和他们的单位。 &lt;br/&gt; &lt;br/&gt;
+					- &lt;t size='1' color='#f80000'&gt;&lt;img image='\a3\ui_f\data\map\markers\handdrawn\warning_ca.paa'/&gt;&lt;/t&gt; 威胁: (全体) 敌人的整体警戒等级。警戒等级越高，敌人的反应越激烈。可以通过特种作战降低警戒程度。 &lt;br/&gt; &lt;br/&gt;
+					- &lt;t size='1' color='#0000f8'&gt;&lt;img image='\a3\ui_f\data\gui\cfg\ranks\general_gs.paa'/&gt;&lt;/t&gt; 情报: (全体) 你的信息资源。取决于抓获的俘虏数量或在基地发现的信息。用于发动特种作战行动。 &lt;br/&gt; &lt;br/&gt;
+					</Chinesesimp>
 			</Key>
 			<Key ID="STR_TUTO_TITLE7">
 					<Original>7. Alert level</Original>
@@ -3194,6 +3205,7 @@
 			<Key ID="STR_PARAM_HURON_TYPE">
 					<Original>The type of Huron</Original>
 					<French>Le type de Huron</French>
+				        <Chinesesimp>移动重生直升机类型</Chinesesimp>
 			</Key>
 			<Key ID="STR_HINT_FOBS_EXCEEDED">
 					<Original>You are not allowed to deploy more than %1 FOBs at the same time.</Original>
