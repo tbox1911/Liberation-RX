@@ -17,7 +17,7 @@ if (!isPlayer _medic) then {
     _medic playMoveNow "ainvpknlmstpslaywrfldnon_medicother";
   };
   private _grbg = createVehicle [(selectRandom PAR_MedGarbage), getPos _wnded, [], 0, "CAN_COLLIDE"];
-  _grbg spawn {sleep (60 + random 10); deleteVehicle _this};
+  _grbg spawn {sleep (60 + floor(random 30)); deleteVehicle _this};
   sleep 6;
 };
 

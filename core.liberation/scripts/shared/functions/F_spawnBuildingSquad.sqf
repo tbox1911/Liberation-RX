@@ -37,7 +37,7 @@ _idxposit = 0;
 	[ _nextunit, _sector ] spawn building_defence_ai;
 	if ( _infsquad == "militia" ) then {
 		[ _nextunit ] spawn ( selectRandom militia_standard_squad );
-		if ( random 100 < 40 ) then {
+		if ( floor(random 100) < 40 ) then {
 			_nextunit addPrimaryWeaponItem "acc_flashlight";
 		};
 

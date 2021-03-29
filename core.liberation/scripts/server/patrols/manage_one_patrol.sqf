@@ -8,29 +8,29 @@ while { GRLIB_endgame == 0 } do {
 	waitUntil { sleep 1; count blufor_sectors >= 3; };
 	waitUntil { sleep 1; combat_readiness >= (_minimum_readiness / GRLIB_difficulty_modifier); };
 
-	sleep ((random 5) * 60);
+	sleep (floor(random 5) * 60);
 
 	while { [] call F_opforCap > GRLIB_patrol_cap || (diag_fps < 25.0) } do {
-		sleep (random 30);
+		sleep (30 + floor(random 30));
 	};
 
 	while { (count sectors_allSectors - count blufor_sectors) < ((_index + 1) * 2) } do {
-		sleep (150 + (random 150));
+		sleep (150 + floor(random 150));
 	};
 
 	private _spawn_marker = "";
 	while { _spawn_marker == "" } do {
 		_spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max, true] call F_findOpforSpawnPoint;
 		if ( _spawn_marker == "" ) then {
-			sleep (150 + (random 150));
+			sleep (150 + floor(random 150));
 		};
 	};
 
 	private _grp = grpNull;
-	private _sectorpos = [ getMarkerPos _spawn_marker, random 100, random 360 ] call BIS_fnc_relPos;
+	private _sectorpos = [ getMarkerPos _spawn_marker, floor(random 100), random 360 ] call BIS_fnc_relPos;
 	private _sector_spawn_pos = zeropos;
 	while { _sector_spawn_pos distance zeropos < 100 } do {
-		_sector_spawn_pos = ( [ _sectorpos, random 50, random 360 ] call BIS_fnc_relPos ) findEmptyPosition [1, 200, "B_Heli_Light_01_F"];
+		_sector_spawn_pos = ( [ _sectorpos, floor(random 50), random 360 ] call BIS_fnc_relPos ) findEmptyPosition [1, 200, "B_Heli_Light_01_F"];
 		if ( count _sector_spawn_pos == 0 || surfaceIsWater _sector_spawn_pos ) then { _sector_spawn_pos = zeropos; };
 	};
 
@@ -45,7 +45,7 @@ while { GRLIB_endgame == 0 } do {
 
 	if (_patrol_type == 2) then {
 		private [ "_vehicle_object" ];
-		if (combat_readiness > 75 && (random 100) > 70) then {
+		if (combat_readiness > 75 && floor(random 100) > 70) then {
 			_vehicle_object = [ _sector_spawn_pos, selectRandom opfor_choppers ] call F_libSpawnVehicle;
 		} else {
 			_vehicle_object = [ _sector_spawn_pos, [] call F_getAdaptiveVehicle ] call F_libSpawnVehicle;
@@ -59,7 +59,7 @@ while { GRLIB_endgame == 0 } do {
 		_opfor_spawn = [sectors_tower + sectors_military, {!( _x in blufor_sectors)}] call BIS_fnc_conditionalSelect;
 		if ( count _opfor_spawn > 0) then {
 			_grp = createGroup [GRLIB_side_enemy, true];
-			_tower_spawn_pos = [ getMarkerPos (selectRandom _opfor_spawn), random 50, random 360 ] call BIS_fnc_relPos;
+			_tower_spawn_pos = [ getMarkerPos (selectRandom _opfor_spawn), floor(random 50), random 360 ] call BIS_fnc_relPos;
 			_vehicle_object = [ _tower_spawn_pos, selectRandom opfor_statics ] call F_libSpawnVehicle;
 			_grp_veh = group _vehicle_object;
 			[_vehicle_object] spawn protect_static;

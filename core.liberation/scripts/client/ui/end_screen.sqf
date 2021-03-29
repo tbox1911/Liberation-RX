@@ -135,7 +135,7 @@ if ( dialog ) then {  [ 691, format [ "%1 %2", localize "STR_STATS_24", stats_pl
 if ( dialog ) then { uiSleep 2 };
 if ( dialog ) then {  [ 692, format [ "%1 %2", localize "STR_STATS_6", stats_blufor_teamkills ] ] call write_credit_line; };
 if ( dialog ) then { uiSleep 2 };
-if ( dialog ) then {  [ 693, format [ "%1 %2", localize "STR_STATS_25", round (random 69) ] ] call write_credit_line; };
+if ( dialog ) then {  [ 693, format [ "%1 %2", localize "STR_STATS_25", floor(random 128) ] ] call write_credit_line; };
 if ( dialog ) then { uiSleep _page_delay };
 if ( dialog ) then {
 	ctrlSetText [ 691, "" ];

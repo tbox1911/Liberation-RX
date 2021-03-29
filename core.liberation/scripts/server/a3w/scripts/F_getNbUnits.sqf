@@ -10,5 +10,5 @@ switch (true) do {
  case ( _nb_player > 2): {_ret = AI_GROUP_MEDIUM};
 };
 
-_ret = _ret + round(random (_ret*0.4));
+_ret = _ret + floor(random (_ret/2));
 _ret;

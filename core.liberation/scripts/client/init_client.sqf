@@ -25,7 +25,7 @@ player setVariable ["GREUH_ammo_count", 0, true];
 if (isMultiplayer) then {
 	PAR_Grp_ID = getPlayerUID player;
 } else {
-	PAR_Grp_ID = str round(random 4096);
+	PAR_Grp_ID = str floor(random 4096);
 };
 my_group = group player;
 [my_group, "add"] remoteExec ["addel_group_remote_call", 2];

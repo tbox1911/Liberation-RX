@@ -19,7 +19,7 @@ _grp = createGroup [GRLIB_side_enemy, true];
 			_max_try = _max_try - 1;
 		};
 		if (!(_spawnpos isEqualTo zeropos)) then {
-			_x createUnit [([_spawnpos, random 300, random 360] call BIS_fnc_relPos), _grp,'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]'];
+			_x createUnit [([_spawnpos, floor(random 300), random 360] call BIS_fnc_relPos), _grp,'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]'];
 		};
 	};
 	sleep 0.1;
@@ -29,7 +29,7 @@ if ( _sector in sectors_capture ) then {
 	_unitidx = 0;
 	{
 		[ _x ] spawn ( militia_standard_squad select _unitidx );
-		if ( random 100 < 40 ) then {
+		if ( floor(random 100) < 40 ) then {
 			_x addPrimaryWeaponItem "acc_flashlight";
 		};
 		_unitidx = _unitidx + 1;

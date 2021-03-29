@@ -1,7 +1,7 @@
 if ( isNil "active_sectors" ) then { active_sectors = [] };
 
 while { GRLIB_endgame == 0 } do {
-	sleep round (30 + random 30);
+	sleep (30 + floor(random 30));
 	waitUntil {sleep 10; (GRLIB_side_civilian countSide allUnits) < (GRLIB_civilians_amount * 3) };
 
 	private _civveh = objNull;
@@ -20,11 +20,11 @@ while { GRLIB_endgame == 0 } do {
 		if (!isNil "_civ") then {
 			private _grp = group _civ;
 
-			if ( random 100 > 60 ) then {
+			if ( floor(random 100) > 60 ) then {
 				private _nearestroad = objNull;
 				private _max_try = 10;
 				while { isNull _nearestroad && _max_try > 0} do {
-					_nearestroad = [ [getmarkerpos (_spawnsector), random(100), random(360)] call BIS_fnc_relPos, 200, [] ] call BIS_fnc_nearestRoad;
+					_nearestroad = [ [getmarkerpos (_spawnsector), floor(random 100), random 360] call BIS_fnc_relPos, 200, [] ] call BIS_fnc_nearestRoad;
 					_max_try = _max_try - 1;
 					sleep 0.5;
 				};
@@ -60,7 +60,7 @@ while { GRLIB_endgame == 0 } do {
 			};
 
 			waitUntil {
-				sleep (30 + (random 30));
+				sleep (30 + floor(random 30));
 				( (!alive _civ) || ( count ([getpos _civ , 4000] call F_getNearbyPlayers) == 0 ) )
 			};
 

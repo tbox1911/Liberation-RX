@@ -21,9 +21,9 @@ sleep 0.5;
 for "_i" from 1 to _nbUnits do {
 	if (_type == "divers") then {
 		 _seadepth = getTerrainHeightASL _pos;
-		_uPos = _pos vectorAdd ([[random _radius, 0, _seadepth + 3], random 360] call BIS_fnc_rotateVector2D);
+		_uPos = _pos vectorAdd ([[floor(random _radius), 0, _seadepth + 3], random 360] call BIS_fnc_rotateVector2D);
 	} else {
-		_uPos = _pos vectorAdd ([[random _radius, 0, 1], random 360] call BIS_fnc_rotateVector2D);
+		_uPos = _pos vectorAdd ([[floor(random _radius), 0, 1], random 360] call BIS_fnc_rotateVector2D);
 	};
 	(selectRandom _unitTypes) createUnit [_uPos, _grp, "this addMPEventHandler [""MPKilled"", {_this spawn kill_manager}]", 0.65, "PRIVATE"];
 };

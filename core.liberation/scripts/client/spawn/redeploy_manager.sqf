@@ -147,10 +147,10 @@ while { true } do {
 			_player_pos = getPos player;
 			if (count (choiceslist select _idxchoice) == 3) then {
 				_truck = (choiceslist select _idxchoice) select 2;
-				player setpos ([_truck, 5 + (random 3), random 360] call BIS_fnc_relPos);
+				player setpos ([_truck, 5 + floor(random 3), random 360] call BIS_fnc_relPos);
 			} else {
 				_destpos = ((choiceslist select _idxchoice) select 1);
-				player setpos [((_destpos select 0) + 5) - (random 10),((_destpos select 1) + 5) - (random 10),0];
+				player setpos [((_destpos select 0) + 5) - floor(random 10),((_destpos select 1) + 5) - floor(random 10),0];
 			};
 
 			_unit_list = units group player;
@@ -163,7 +163,7 @@ while { true } do {
 				params ["_list"];
 				{
 					sleep 0.3;
-					_x setpos ([position player, 5 + (random 3), random 360] call BIS_fnc_relPos);
+					_x setpos ([position player, 5 + floor(random 3), random 360] call BIS_fnc_relPos);
 					_x doFollow leader player;
 				} forEach _list;
 			};

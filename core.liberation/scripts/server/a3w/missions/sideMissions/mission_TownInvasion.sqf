@@ -12,7 +12,6 @@ _setupVars =
 {
 	_missionType = "Town Invasion";
 	_nbUnits = [] call getNbUnits;
-	_nbUnits = _nbUnits + round(random (_nbUnits*0.4));
 
 	// settings for this mission
 	_missionLocation = selectRandom ((blufor_sectors select {["capture_", _x] call fn_startsWith;}) apply {[_x, false]}) select 0;

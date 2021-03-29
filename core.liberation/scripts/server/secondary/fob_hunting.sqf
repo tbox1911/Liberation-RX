@@ -53,7 +53,7 @@ sleep 1;
 	_nextpos = [((_base_position select 0) + (_nextpos select 0)),((_base_position select 1) + (_nextpos select 1)),0.5];
 	_nextdir = _x select 2;
 
-	_nextobject = _nextclass createVehicle [(_nextpos select 0) + (random 500),(_nextpos select 1) + (random 500),0.5];
+	_nextobject = _nextclass createVehicle [(_nextpos select 0) + floor(random 500),(_nextpos select 1) + floor(random 500),0.5];
 	_nextobject setVectorUp [0,0,1];
 	_nextobject setpos _nextpos;
 	_nextobject setdir _nextdir;

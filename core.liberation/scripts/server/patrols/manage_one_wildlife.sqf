@@ -1,7 +1,7 @@
 waitUntil {sleep 1; !isNil "sectors_allSectors" };
 
 while { GRLIB_endgame == 0 } do {
-	sleep round (30 + random 30);
+	sleep (30 + floor(random 30));
 
 	private _unit_lst = [(allPlayers - (entities "HeadlessClient_F")), {
 		alive _x && vehicle _x == _x &&
@@ -17,7 +17,7 @@ while { GRLIB_endgame == 0 } do {
 		sleep 1;
 
 		waitUntil {
-			sleep (30 + (random 30));
+			sleep (30 + floor(random 30));
 			( (!alive _unit) || ({alive _x} count _managed_units) == 0 || ({_unit distance2D _x > GRLIB_sector_size} count _managed_units) > 0 )
 		};
 

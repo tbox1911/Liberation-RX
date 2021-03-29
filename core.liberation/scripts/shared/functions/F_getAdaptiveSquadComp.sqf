@@ -16,7 +16,7 @@ if ( !isNil 'combat_readiness' ) then {
 
 if ( armor_weight > 40 && !_specialists) then {
 	_randomchance = (armor_weight - 40) * 1.35;
-	if ( (random 100) < _randomchance) then {
+	if ( floor(random 100) < _randomchance) then {
 		_specialists = true;
 		_squadcomp = opfor_squad_8_tankkillers;
 	};
@@ -24,7 +24,7 @@ if ( armor_weight > 40 && !_specialists) then {
 
 if ( air_weight > 40 && !_specialists) then {
 	_randomchance = (air_weight - 40) * 1.35;
-	if ( (random 100) < _randomchance) then {
+	if ( floor(random 100) < _randomchance) then {
 		_specialists = true;
 		_squadcomp = opfor_squad_8_airkillers;
 	};
@@ -32,7 +32,7 @@ if ( air_weight > 40 && !_specialists) then {
 
 if ( infantry_weight > 40 && !_specialists) then {
 	_randomchance = (infantry_weight - 40) * 1.35;
-	if ( (random 100) < _randomchance) then {
+	if ( floor(random 100) < _randomchance) then {
 		_specialists = true;
 		_squadcomp = opfor_squad_8_infkillers;
 	};

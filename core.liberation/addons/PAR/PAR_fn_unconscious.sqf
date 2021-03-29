@@ -38,7 +38,7 @@ sleep 8;
       _target setVariable ["PAR_BleedOutTimer", _bleedOut + PAR_BleedOutExtra, true];
     };
     _grbg = createVehicle [(selectRandom PAR_MedGarbage), getPos _target, [], 0, "CAN_COLLIDE"];
-    _grbg spawn {sleep (60 + random 10); deleteVehicle _this};
+    _grbg spawn {sleep (60 + floor(random 30)); deleteVehicle _this};
     if (stance _caller == 'PRONE') then {
       _caller playMoveNow 'ainvppnemstpslaywrfldnon_medicother';
     } else {
@@ -93,7 +93,7 @@ while {lifeState _unit == "INCAPACITATED" && time <= _unit getVariable ["PAR_Ble
   _cnt = _cnt - 1;
   sleep 1;
 };
-_bld spawn {sleep (50 + random 10); deleteVehicle _this};
+_bld spawn {sleep (30 + floor(random 30)); deleteVehicle _this};
 
 [(_unit getVariable ["PAR_myMedic", objNull]), _unit] call PAR_fn_medicRelease;
 _unit setCaptive false;

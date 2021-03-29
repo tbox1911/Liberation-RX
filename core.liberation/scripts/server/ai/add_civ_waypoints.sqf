@@ -61,7 +61,7 @@ if (isNull _civveh) then {
 	};
 
 	{
-		private _nearestroad = [ [ markerpos (_x), random(100), random(360)  ] call BIS_fnc_relPos, 200, [] ] call BIS_fnc_nearestRoad;
+		private _nearestroad = [ [ markerpos (_x), floor(random 100), random 360 ] call BIS_fnc_relPos, 200, [] ] call BIS_fnc_nearestRoad;
 		if ( isNull _nearestroad ) then {
 			_waypoint = _grp addWaypoint [ markerpos _x, 100 ];
 		} else {
