@@ -2654,7 +2654,7 @@
 			<Key ID="STR_TUTO_TITLE6">
 					<Original>6. Game Icons </Original>
 					<French>6. Icônes du Jeu</French>
-                                        <Chinesesimp>6. 游戏图标 </Chinesesimp>
+                    <Chinesesimp>6. 游戏图标 </Chinesesimp>
 			</Key>
 			<Key ID="STR_TUTO_TEXT6">
 					<Original>&lt;br/&gt;
@@ -2677,7 +2677,7 @@
 					- &lt;t size='1' color='#f80000'&gt;&lt;img image='\a3\ui_f\data\map\markers\handdrawn\warning_ca.paa'/&gt;&lt;/t&gt; DANGER: (Global) Le niveau d'Alerte global de l'ennemie. Plus le niveau d'alerte est haut plus les réactions de l'ennemie seront violentes. Peut etre diminué par les Operations Speciales. &lt;br/&gt; &lt;br/&gt;
 					- &lt;t size='1' color='#0000f8'&gt;&lt;img image='\a3\ui_f\data\gui\cfg\ranks\general_gs.paa'/&gt;&lt;/t&gt; INTEL: (Global) Vos ressource en Informations. Dépend du nombre de prisonniers capturés ou des infromations trouvées dans les bases. Permet de lancer les Operations Speciales. &lt;br/&gt; &lt;br/&gt;
 					</French>
-				        <Chinesesimp>&lt;br/&gt;
+				    <Chinesesimp>&lt;br/&gt;
 					在游戏过程中，这些图标会告诉你当前情况 : &lt;br/&gt; &lt;br/&gt;
 					- &lt;t size='1'&gt;&lt;img image='res\ui_arsenal.paa'/&gt;&lt;/t&gt; 军功点: (个人) 你的军功点，取决于你的行动。允许你提升等级。 (查看军衔表) &lt;br/&gt; &lt;br/&gt;
 					- &lt;t size='1'&gt;&lt;img image='res\ui_ammo.paa'/&gt;&lt;/t&gt; 弹药: (个人) 你的弹药，弹药在游戏中作为货币使用。用于购买武器或车辆。 &lt;br/&gt; &lt;br/&gt;
