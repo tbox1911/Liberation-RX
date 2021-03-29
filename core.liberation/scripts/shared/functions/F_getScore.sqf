@@ -3,7 +3,7 @@ if (isNil "_unit") exitWith {0};
 
 private _score = 0;
 if ( isMultiplayer ) then {
-	_score = [_unit] call F_getScore;
+	_score = score _unit;
 } else {
 	_score = _unit getVariable ["GREUH_score_count", 0];
 };
