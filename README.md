@@ -1,6 +1,6 @@
 # Liberation RX (en)
 
-## ARMA-3 Liberation RX - Extendend Version
+## ARMA-3 Liberation RX - Extended Version
 
 ![alt text](https://raw.githubusercontent.com/tbox1911/Liberation-RX/master/liberation.png "Liberation RX")
 
