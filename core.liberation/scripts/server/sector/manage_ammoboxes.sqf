@@ -34,6 +34,7 @@ if ( !( _sector in GRLIB_military_sectors_already_activated )) then {
 		if ( _crates_amount > 4 ) then { _crates_amount = 4 };
 
 		_vehicle = opfor_ammobox_transport createVehicle (markerpos _sector);
+		_vehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		_vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
 
 		for "_i" from 1 to _crates_amount do {
