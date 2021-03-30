@@ -88,7 +88,7 @@ _successExec =
 			(isTouchingGround _veh || _pos select 2 < 5) && {vectorMagnitude velocity _veh < [1,5] select surfaceIsWater _pos}
 		};
 
-		_wreckPos = (getPosATL _veh) vectorAdd ([[_veh call fn_vehSafeDistance, 0, 0], random 360] call BIS_fnc_rotateVector2D);
+		_wreckPos = getPosATL _veh;
 		_box1 = [ammobox_o_typename, _wreckPos, false] call boxSetup;
 		_box2 = [ammobox_o_typename, _wreckPos, false] call boxSetup;
 	};
