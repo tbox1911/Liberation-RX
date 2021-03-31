@@ -1,52 +1,58 @@
-private [ "_loadouts_data", "_saved_loadouts", "_counter", "_loadplayers", "_playerselected", "_namestr", "_nextplayer"];
-
 load_loadout = 0;
 edit_loadout = 0;
 respawn_loadout = 0;
 load_from_player = -1;
 exit_on_load = 0;
 
-createDialog "liberation_arsenal";
-
-_saved_loadouts = profileNamespace getVariable "bis_fnc_saveInventory_data";
 GRLIB_backup_loadout = [player] call F_getLoadout;
 player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
-_loadouts_data = [];
-_counter = 0;
+
+private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
+private _saved_loadouts = profileNamespace getVariable "bis_fnc_saveInventory_data";
+private _loadouts_data = [];
+private _counter = 0;
+
 if ( !isNil "_saved_loadouts" ) then {
+	private _grp = createGroup [GRLIB_side_friendly, true];
+	private _unit = _grp createUnit ["B_Soldier_F", [0,0,0], [], 0, "NONE"];
 	{
 		if ( _counter % 2 == 0 ) then {
-			_loadouts_data pushback _x;
+			[_unit, [profileNamespace, _x]] call bis_fnc_loadInventory;
+			_price = [_unit] call F_loadoutPrice;
+			_loadouts_data pushback [_x, _price];
 		};
 		_counter = _counter + 1;
 	} foreach _saved_loadouts;
+	deleteVehicle _unit;
 };
 
+createDialog "liberation_arsenal";
 waitUntil { dialog };
+ctrlEnable [ 202, false ];
+ctrlEnable [ 203, false ];
+ctrlEnable [ 204, false ];
 
 if ( count _loadouts_data > 0 ) then {
-	_grp = createGroup [GRLIB_side_friendly, true];
-	_unit = _grp createUnit ["B_Soldier_F", [0,0,0], [], 0, "NONE"];
 	lbClear 201;
 	{
-		[_unit, [profileNamespace, _x]] call bis_fnc_loadInventory;
-		_price = [_unit] call F_loadoutPrice;
-		((findDisplay 5251) displayCtrl (201)) lnbAddRow [format [ "%1" ,_x], format [ "%1" ,_price]];
+		((findDisplay 5251) displayCtrl (201)) lnbAddRow [format [ "%1" ,_x select 0], format [ "%1" ,_x select 1]];
+
+ 		if ( (_x select 1) <= _ammo_collected ) then {
+			((findDisplay 5251) displayCtrl (201)) lnbSetColor  [[((lnbSize 201) select 0) - 1, 0], [1,1,1,1]];
+			((findDisplay 5251) displayCtrl (201)) lnbSetColor  [[((lnbSize 201) select 0) - 1, 1], [1,1,1,1]];
+		} else {
+			((findDisplay 5251) displayCtrl (201)) lnbSetColor  [[((lnbSize 201) select 0) - 1, 0], [0.4,0.4,0.4,1]];
+			((findDisplay 5251) displayCtrl (201)) lnbSetColor  [[((lnbSize 201) select 0) - 1, 1], [0.4,0.4,0.4,1]];
+		};
+
 	} foreach _loadouts_data ;
-	deleteVehicle _unit;
 
 	if ( lbSize 201 > 0 ) then {
-		ctrlEnable [ 202, true ];
 		lbSetCurSel [ 201, 0 ];
-	} else {
-		ctrlEnable [ 202, false ];
 	};
-
-} else {
-	ctrlEnable [ 202, false ];
 };
 
-_loadplayers = [];
+private _loadplayers = [];
 {
 	if ( !(name _x in [ "HC1", "HC2", "HC3" ]) )  then {
 		_loadplayers pushback [ name _x, _x ];
@@ -54,10 +60,9 @@ _loadplayers = [];
 } foreach ( allPlayers - [ player ] );
 
 if ( count _loadplayers > 0 ) then {
-
 	{
-		_nextplayer = _x select 1;
-		_namestr = "";
+		private _nextplayer = _x select 1;
+		private _namestr = "";
 		if(count (squadParams _nextplayer) != 0) then {
 			_namestr = "[" + ((squadParams _nextplayer select 0) select 0) + "] ";
 		};
@@ -66,18 +71,27 @@ if ( count _loadplayers > 0 ) then {
 		lbAdd [ 203, _namestr ];
 		lbSetCurSel [ 203, 0 ];
 	} foreach _loadplayers;
-
-} else {
-	ctrlEnable [ 203, false ];
-	ctrlEnable [ 204, false ];
+	ctrlEnable [ 203, true ];
+	ctrlEnable [ 204, true ];
 };
 
 ((findDisplay 5251) displayCtrl 201) ctrlAddEventHandler [ "mouseButtonDblClick" , { exit_on_load = 1; load_loadout = 1; } ];
 
 while { dialog && (alive player) && edit_loadout == 0 } do {
 
+	private _cur_sel = (lbCurSel 201);
+	if (_cur_sel != -1) then {
+		private _selected_loadout = _loadouts_data select _cur_sel;
+		if ((_selected_loadout select 1) <= _ammo_collected) then {
+			ctrlEnable [ 202, true ];
+		} else {
+			ctrlEnable [ 202, false ];
+		};
+	};
+
 	if ( load_loadout > 0 ) then {
-		private _loaded_loadout = _loadouts_data select (lbCurSel 201);
+		private _selected_loadout = _loadouts_data select _cur_sel;
+		private _loaded_loadout = (_selected_loadout select 0);
 		[player, [profileNamespace, _loaded_loadout]] call bis_fnc_loadInventory;
 		hint format [ localize "STR_HINT_LOADOUT_LOADED", _loaded_loadout];
 		if ( exit_on_load == 1 ) then {
@@ -93,14 +107,14 @@ while { dialog && (alive player) && edit_loadout == 0 } do {
 	};
 
 	if ( load_from_player >= 0 ) then {
-		_playerselected = ( _loadplayers select load_from_player ) select 1;
+		private _playerselected = ( _loadplayers select load_from_player ) select 1;
 		if ( alive _playerselected ) then {
       		[player, [_playerselected, ["repetitive"]] call F_getLoadout] call F_setLoadout;
 			hint format [ localize "STR_LOAD_PLAYER_LOADOUT_HINT", name _playerselected ];
 		};
 		load_from_player = -1;
 	};
-	sleep 0.1;
+	sleep 0.2;
 };
 
 if ( edit_loadout > 0 ) then {
