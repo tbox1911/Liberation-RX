@@ -23,17 +23,6 @@ _setupObjects =
 	_missionPos = markerPos ((selectRandom _citylist) select 0);
 	_vehicleClass = selectRandom opfor_choppers;
 
-	_createVehicle =
-	{
-		params ["_type", "_position", "_direction", "_aiGroup"];
-		_veh_array = [_position, _direction, _type, _aiGroup] call bis_fnc_spawnvehicle;
-		_vehicle = _veh_array select 0;
-		_vehicle flyInHeight 300;
-		_vehicle setVariable ["R3F_LOG_disabled", true, true];
-		_vehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-		_vehicle
-	};
-
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	//_aiGroup setCombatMode "WHITE"; // Defensive behaviour
 	_aiGroup setCombatMode "RED"; // Agressive behaviour
@@ -42,7 +31,8 @@ _setupObjects =
 	_speedMode = if (count AllPlayers > 2) then { "NORMAL" } else { "LIMITED" };
 	_aiGroup setSpeedMode _speedMode;
 
-	_vehicle = [_vehicleClass, _missionPos, 0, _aiGroup] call _createVehicle;
+	_vehicle = [_missionPos, _vehicleClass, false] call F_libSpawnVehicle;
+	(crew _vehicle) joinSilent _aiGroup;
 	_leader = effectiveCommander _vehicle;
 	_aiGroup selectLeader _leader;
 
