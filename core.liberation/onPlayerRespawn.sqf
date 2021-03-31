@@ -12,5 +12,6 @@ removeBackpack player;
 removeHeadgear player;
 removeGoggles player;
 player setVariable ["GREUH_stuff_price", 0];
+GRLIB_backup_loadout = [player] call F_getLoadout;
 
 [] execVM "scripts\client\misc\welcome.sqf";
