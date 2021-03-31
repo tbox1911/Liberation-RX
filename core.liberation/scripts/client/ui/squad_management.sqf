@@ -156,7 +156,7 @@ while { dialog && alive player } do {
 			if ( leader group player == player ) then {
 				ctrlEnable [ 211, true ];
 			};
-			ctrlEnable [ 212, true ];
+			ctrlEnable [ 212, false ]; //ReplaceButton disabled
 			ctrlEnable [ 217, true ];
 		} else {
 			ctrlEnable [ 210, false ];
@@ -184,26 +184,24 @@ while { dialog && alive player } do {
 		GRLIB_squadconfirm = -1;
 
 		if ( GRLIB_squadaction == 1 ) then {
-
-			_nearfob = [ getpos _selectedmember ] call F_getNearestFob;
-			_fobdistance = 9999;
-			if ( count _nearfob == 3 ) then {
-				_fobdistance = _selectedmember distance _nearfob;
-			};
-
-			_nearsquad = ( (getpos _selectedmember) nearEntities [ ai_resupply_sources , 30 ] );
-
-			if ( _fobdistance < 100 || count _nearsquad > 0 ) then {
-
-				_tempgmp = createGroup [GRLIB_side_friendly, true];
-				(typeof _selectedmember) createUnit [ markers_reset, _tempgmp,''];
-				[ (units _tempgmp) select 0, _selectedmember ] call F_swapInventory;
-				deleteVehicle ((units _tempgmp) select 0);
-				//_selectedmember setDamage 0;
-				hint localize 'STR_RESUPPLY_OK';
-				_resupplied = true;
-			} else {
-				hint localize 'STR_RESUPPLY_KO';
+			private _ai_rank = (GREUH_rank_level find (rank _selectedmember)) + 1;
+			private _pl_rank = (GREUH_rank_level find (rank player));
+			private _ai_score = _selectedmember getVariable ["PAR_AI_score", nil];
+			if (!isNil "_ai_score") then {
+				if (_ai_rank < _pl_rank) then {
+					private _cost = (_ai_score * 15);
+					private _msg = format ["<t align='center'>Promote %1 for %2 Ammo<br/>Are you sure ?</t>", name _selectedmember, _cost];
+					private _result = [_msg, "Warning !", true, true] call BIS_fnc_guiMessage;
+					if (_result) then {
+						if (!([_cost] call F_pay)) exitWith {};
+						_selectedmember setVariable ["PAR_AI_score", 0];
+						hint localize 'STR_PROMOTE_OK';
+						waitUntil {sleep 0.3; _selectedmember getVariable ["PAR_AI_score", 0] !=0 };
+						_resupplied = true;
+					};
+				} else {
+					hint localize 'STR_PROMOTE_KO';
+				};
 			};
 		};
 
@@ -220,37 +218,30 @@ while { dialog && alive player } do {
 
 		if (GRLIB_squadaction == 3) then {
 
-			closeDialog 0;
-
-			if ( primaryWeapon player == "" && secondaryWeapon player == "" ) then {
-				[ _selectedmember, player ] call F_swapInventory;
-			};
-
-			_destpos = getposATL _selectedmember;
-			_destdir = getdir _selectedmember;
-
-			if ( damage _selectedmember > 0.4 ) then {
-				if ( damage _selectedmember < 0.7 ) then {
-					player setDamage (damage _selectedmember);
-				} else {
-					player setDamage 0.7;
-				};
-			};
-
-			deleteVehicle _selectedmember;
-			uiSleep 0.01;
-
-			player setPosATL _destpos;
-			player setDir _destdir;
-
-			uiSleep 0.01;
-
-			[ localize 'STR_SQUAD_DEPLOY' ] spawn spawn_camera;
+			// closeDialog 0;
+			// if ( primaryWeapon player == "" && secondaryWeapon player == "" ) then {
+			// 	[ _selectedmember, player ] call F_swapInventory;
+			// };
+			// _destpos = getposATL _selectedmember;
+			// _destdir = getdir _selectedmember;
+			// if ( damage _selectedmember > 0.4 ) then {
+			// 	if ( damage _selectedmember < 0.7 ) then {
+			// 		player setDamage (damage _selectedmember);
+			// 	} else {
+			// 		player setDamage 0.7;
+			// 	};
+			// };
+			// deleteVehicle _selectedmember;
+			// uiSleep 0.01;
+			// player setPosATL _destpos;
+			// player setDir _destdir;
+			// uiSleep 0.01;
+			// [ localize 'STR_SQUAD_DEPLOY' ] spawn spawn_camera;
 
 		};
 
 		if (GRLIB_squadaction == 4) then {
-			if ((player distance _selectedmember) < 20) then {
+			if ((player distance _selectedmember) < 30) then {
 				private _price = [player] call F_loadoutPrice;
 				private _price_ai = [_selectedmember] call F_loadoutPrice;
 				private _cost = 0 max (_price -_price_ai);
