@@ -651,12 +651,14 @@ civilians = [
 ];
 
 civilian_vehicles = [
+	"C_Quadbike_01_F",
 	"C_Heli_light_01_sheriff_F",
 	"C_Heli_Light_01_civil_F",
 	"C_Heli_light_01_furious_F",
 	"C_Heli_light_01_graywatcher_F",
 	"C_Hatchback_01_F",
 	"C_Hatchback_01_sport_F",
+	"C_Quadbike_01_F",
 	"C_Offroad_01_F",
 	"C_Offroad_01_darkred_F",
 	"C_Offroad_luxe_F",
@@ -664,6 +666,7 @@ civilian_vehicles = [
 	"C_Offroad_01_covered_F",
 	"C_Offroad_01_comms_F",
 	"I_C_Offroad_02_unarmed_F",
+	"C_Quadbike_01_F",
 	"SUV_01_base_black_F",
 	"C_SUV_01_F",
 	"C_Van_01_transport_F",
