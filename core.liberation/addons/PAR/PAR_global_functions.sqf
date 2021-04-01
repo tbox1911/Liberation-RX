@@ -182,7 +182,6 @@ PAR_Player_Init = {
 	player setVariable ["PAR_Grp_ID",format["Bros_%1", PAR_Grp_ID], true];
 	player setVariable ["PAR_myMedic", nil];
 	player setVariable ["PAR_busy", nil];
-	player setVariable ["AirCoolDown", 0, true];
 	if (!GRLIB_fatigue ) then { player enableStamina false };
 	player setCustomAimCoef 0.35;
 	player setUnitRecoilCoefficient 0.6;
