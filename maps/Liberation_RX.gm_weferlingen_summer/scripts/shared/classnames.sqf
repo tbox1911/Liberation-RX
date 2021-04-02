@@ -359,7 +359,7 @@ vehicle_big_units = [
 
 if ( isNil "opfor_sentry") then { opfor_sentry = "gm_gc_bgs_rifleman_mpikm72_80_str" };
 if ( isNil "opfor_rifleman") then { opfor_rifleman = "gm_gc_army_rifleman_mpiak74n_80_str" };
-if ( isNil "opfor_grenadier") then { opfor_grenadier = "O_Soldier_GL_F" };
+if ( isNil "opfor_grenadier") then { opfor_grenadier = "gm_pl_army_grenadier_akm_pallad_80_moro" };
 if ( isNil "opfor_squad_leader") then { opfor_squad_leader = "gm_gc_army_squadleader_mpiak74n_80_str" };
 if ( isNil "opfor_team_leader") then { opfor_team_leader = "gm_gc_army_sf_squadleader_mpikms72_80_str" };
 if ( isNil "opfor_marksman") then { opfor_marksman = "gm_gc_army_sf_marksman_svd_80_str" };
