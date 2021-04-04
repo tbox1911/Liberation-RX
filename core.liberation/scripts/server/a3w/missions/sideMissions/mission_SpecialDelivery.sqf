@@ -125,7 +125,7 @@ _successExec = {
 	};
 	_successHintMessage = format ["Special Delivery<br/><t color='%1'>SUCCESS</t> !!<br/><br/>The information have been collected, Well done.", sideMissionColor];
 
-	private _nb = floor(random 4);
+	private _nb = selectRandom [1,2];
 	for "_i" from 1 to _nb do {
 		[ammobox_i_typename, _missionPosEnd, false] call boxSetup;
 		sleep 0.2;
