@@ -1373,6 +1373,7 @@
 			<Key ID="STR_PARAM_SECTOR_RADIUS">
 					<Original>The size of a sector (radius)</Original>
 					<French>La taille d'un secteur (radius)</French>
+                    <Chinesesimp>一个战区的规模（半径）</Chinesesimp>
 			</Key>
 			<Key ID="STR_PARAM_PASSIVE_INCOME">
 					<Original>Replace ammo boxes spawns with passive income</Original>
@@ -1529,10 +1530,12 @@
 			<Key ID="STR_PROMOTE">
 					<Original>Level UP!</Original>
 					<French>Level UP!</French>
+                    <Chinesesimp>升级！</Chinesesimp>
 			</Key>
 			<Key ID="STR_PROMOTE_TOOLTIP">
 					<Original>Promotes the unit to the next rank in exchange for Ammo. It cannot be higher than the player's rank.</Original>
 					<French>Promeut l'unité au rang suivant en échange d'Ammo. Il ne peut pas être supérieur au rang du joueur.</French>
+                    <Chinesesimp>提升单位到下一个等级以换取弹药。不能高于玩家的等级。</Chinesesimp>
 			</Key>
 			<Key ID="STR_CONFIRM">
 					<Original>Confirm</Original>
@@ -1633,10 +1636,12 @@
 			<Key ID="STR_PROMOTE_OK">
 					<Original>The unit has been successfully promoted.</Original>
 					<French>L'unité a été promue avec succès.</French>
+                    <Chinesesimp>该单位已成功晋升。</Chinesesimp>
 			</Key>
 			<Key ID="STR_PROMOTE_KO">
 					<Original>The unit cannot be promoted, maximum rank has been reached.</Original>
 					<French>L'unité ne peut pas être promue, le rang maximum a été atteint.</French>
+                    <Chinesesimp>无法晋升该单位，已达到最高等级。</Chinesesimp>
 			</Key>
 			<Key ID="STR_PERMISSIONS_TITLE">
 					<Original>PERMISSIONS MANAGEMENT</Original>
@@ -2924,7 +2929,7 @@
 				- Покладіть Палатку до вашого транспорту щоб розгорнути будь де&lt;br/&gt;
 				- Рытування транспорту у випадку аварії гарний спосід заробити Амуніцію&lt;br/&gt;
 				- Переробка Коробки з Амуніцією дасть вам Амуніцію та XP&lt;br/&gt;
-				- Поранені АІ або полонені не можуть бути видалені або переспоряджені&lt;br/&gt;
+				- Поранені АІ або полонені не можуть бути видалені або переспоряджені&lt;br/&gt;
 				- Полонені не можуть використовувати транспорт (командиром/водієм/стрілком) або брати зброю&lt;br/&gt;
 				- Коли купляєте транспорт - він замкнений для гравця за замочування&lt;br/&gt;
 				- Коли скидуєте з парашутом транспорт - він НЕ замкнений за замовчуванням&lt;br/&gt;
@@ -3782,3 +3787,4 @@
 		</Container>
 	</Package>
 </Project>
+
