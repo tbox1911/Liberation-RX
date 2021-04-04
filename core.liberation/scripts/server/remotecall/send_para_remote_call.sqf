@@ -2,9 +2,8 @@ if ( isServer ) then {
 	params [ "_targetsector" ];
 
 	private _grp1 = [_targetsector] call send_paratroopers;
-	sleep 5;
+	sleep 3;
 	private _grp2 = [_targetsector] call send_paratroopers;
-	sleep 5;
 
 	GRLIB_A3W_Mission_MR = [_grp1, _grp2];
 	publicVariable "GRLIB_A3W_Mission_MR";

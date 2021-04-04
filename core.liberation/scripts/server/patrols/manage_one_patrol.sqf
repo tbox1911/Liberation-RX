@@ -8,7 +8,7 @@ while { GRLIB_endgame == 0 } do {
 	waitUntil { sleep 1; count blufor_sectors >= 3; };
 	waitUntil { sleep 1; combat_readiness >= (_minimum_readiness / GRLIB_difficulty_modifier); };
 
-	sleep (floor(random 5) * 60);
+	sleep ((1 + floor(random 5)) * 60);
 
 	while { [] call F_opforCap > GRLIB_patrol_cap || (diag_fps < 25.0) } do {
 		sleep (30 + floor(random 30));

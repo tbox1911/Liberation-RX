@@ -3,7 +3,7 @@ diag_log format [ "Spawning Troop in vehicle %1 at %2", typeOf _troup_transport,
 _transport_group = (group (driver _troup_transport));
 _start_pos = getpos _troup_transport;
 _dat_objective =  ([getpos _troup_transport] call F_getNearestBluforObjective) select 0;
-_unload_distance = 800;
+_unload_distance = 700;
 sleep 1;
 _initial_crewcount = count crew _troup_transport;
 
