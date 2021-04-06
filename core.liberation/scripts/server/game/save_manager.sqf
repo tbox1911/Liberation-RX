@@ -207,7 +207,6 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 			if ( _hascrew ) then {
 				[ _nextbuilding ] call F_forceBluforCrew;
 				_nextbuilding setVariable ["GRLIB_vehicle_manned", true, true];
-
 			};
 
 			if (_nextclass in _list_static) then {
@@ -264,6 +263,7 @@ if ( count GRLIB_vehicle_to_military_base_links == 0 ) then {
 publicVariable "GRLIB_vehicle_to_military_base_links";
 publicVariable "GRLIB_permissions";
 save_is_loaded = true; publicVariable "save_is_loaded";
+sleep 5;
 
 // Manager Save Loop
 while { true } do {

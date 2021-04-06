@@ -10,6 +10,7 @@ waitUntil { !isNil "blufor_sectors" };
 waitUntil { !isNil "GRLIB_all_fobs" };
 
 fullmap = 0;
+cinematic_camera_started = false;
 _old_fullmap = 0;
 
 _dialog = createDialog "liberation_deploy";
