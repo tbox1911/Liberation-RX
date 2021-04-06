@@ -47,7 +47,6 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 };
 
 [] execVM "scripts\client\ui\intro.sqf";
-[] execVM "scripts\client\spawn\redeploy_manager.sqf";
 [] execVM "scripts\client\ammoboxes\ammobox_action_manager.sqf";
 [] execVM "scripts\client\markers\sector_manager.sqf";
 [] execVM "scripts\client\misc\sides_stats_manager.sqf";

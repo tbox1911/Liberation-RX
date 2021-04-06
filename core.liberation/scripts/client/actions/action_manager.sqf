@@ -203,7 +203,7 @@ while { true } do {
 		_idact_redeploy = _id_actions select 15;
 		if ((_fobdistance < _distredeploy || _near_spawn || (player distance lhd) <= 200) ) then {
 			if ( _idact_redeploy == -1 ) then {
-				_idact = player addAction ["<t color='#80FF80'>" + localize "STR_DEPLOY_ACTION" + "</t> <img size='1' image='res\ui_redeploy.paa'/>","scripts\client\actions\do_redeploy.sqf","",-750,false,true,"","build_confirmed == 0"];
+				_idact = player addAction ["<t color='#80FF80'>" + localize "STR_DEPLOY_ACTION" + "</t> <img size='1' image='res\ui_redeploy.paa'/>","scripts\client\spawn\redeploy_manager.sqf","",-750,false,true,"","build_confirmed == 0"];
 				_id_actions set [15, _idact];
 			};
 		} else {

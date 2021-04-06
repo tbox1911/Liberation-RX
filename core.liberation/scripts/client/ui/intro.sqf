@@ -39,8 +39,11 @@ waitUntil { dostartgame == 1 || howtoplay == 1 || !dialog };
 disableUserInput true;
 
 closeDialog 0;
-if ( howtoplay == 0 ) then {
-	cinematic_camera_started = false;
-};
-introDone = true;
 (findDisplay 5651) displayRemoveEventHandler ["KeyDown", _noesckey];
+
+if ( howtoplay == 1 ) then {
+	[] call compileFinal preprocessFileLineNUmbers "scripts\client\ui\tutorial_manager.sqf";
+};
+cinematic_camera_started = false;
+[] execVM "scripts\client\spawn\redeploy_manager.sqf";
+
