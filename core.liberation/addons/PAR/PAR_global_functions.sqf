@@ -77,7 +77,7 @@ PAR_fn_AI_Damage_EH = {
 	_unit addEventHandler ["HandleDamage", {
 		params ["_unit","","_dam"];
 		_veh = objectParent _unit;
-		if (!(isNull _veh) && round(damage _veh) > 0.8) then {[_veh, _unit, true] spawn PAR_fn_eject};
+		if (!(isNull _veh) && damage _veh > 0.8) then {[_veh, _unit, true] spawn PAR_fn_eject};
 
 		private _isNotWounded = !(_unit getVariable ["PAR_wounded", false]);
 		if (_isNotWounded && _dam >= 0.86) then {
@@ -91,7 +91,7 @@ PAR_fn_AI_Damage_EH = {
 		_dam min 0.86;
 	}];
 	_unit removeAllMPEventHandlers "MPKilled";
-	_unit addMPEventHandler ["MPKilled", {_this spawn PAR_Player_MPKilled}];
+	_unit addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
 	_unit setVariable ["PAR_wounded", false];
 	_unit setVariable ["PAR_myMedic", nil];
 	_unit setVariable ["PAR_busy", nil];
@@ -173,7 +173,7 @@ PAR_Player_Init = {
 	player removeAllEventHandlers "HandleDamage";
 	player addEventHandler ["HandleDamage", {_this call PAR_HandleDamage_EH}];
 	player removeAllMPEventHandlers "MPKilled";
-	player addMPEventHandler ["MPKilled", {_this spawn PAR_Player_MPKilled}];
+	player addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	player setVariable ["GREUH_isUnconscious", 0, true];
 	player setVariable ["PAR_isUnconscious", 0, true];
 	player setVariable ["PAR_wounded", false];
@@ -189,6 +189,9 @@ PAR_Player_Init = {
 	player setMass 10;
 	PAR_isDragging = false;
 	[player] spawn player_EVH;
+	1 fadeSound 1;
+	1 fadeRadio 1;
+	NRE_EarplugsActive = 0;
 	hintSilent "";
 };
 
@@ -202,6 +205,9 @@ PAR_HandleDamage_EH = {
 			_killer = effectiveCommander _killer;
 		};
 	};
+
+	_veh = objectParent _unit;
+	if (!(isNull _veh) && damage _veh > 0.8) then {[_veh, _unit, true] spawn PAR_fn_eject};
 
 	private _isNotWounded = !(_unit getVariable ["PAR_wounded", false]);
 
