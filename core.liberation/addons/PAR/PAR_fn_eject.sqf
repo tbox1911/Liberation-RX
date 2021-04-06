@@ -2,9 +2,9 @@ params ["_veh", "_unit", ["_all",false]];
 
 _unit_eject = {
 	params ["_veh", "_unit"];
+	if (isNull _unit || !alive _unit) exitWith {};
 	unAssignVehicle _unit;
 	_unit allowDamage false;
-	//_unit action ["eject", _veh];
 	moveOut _unit;
 	_unit setPos (getPosATL _veh vectorAdd [([[-15,0,15], 2] call F_getRND), ([[-15,0,15], 2] call F_getRND), 0]);
 	if (round(getPosATL _unit select 2) > 20) then {
@@ -20,7 +20,7 @@ _unit_eject = {
 if (_veh getVariable ["evacVeh", false]) exitWith {};
 if (_veh iskindof "Steerable_Parachute_F") exitWith {};
 
-waitUntil {sleep 1; (round (speed _veh) == 0 && (round(getPosATL _veh select 2) < 5)) || round (damage _veh) > 0.8};  // No eject when driving
+waitUntil {sleep 1; (round (speed _veh) == 0 && (round(getPosATL _veh select 2) < 5)) || damage _veh > 0.8 || (round(getPosATL _veh select 2) > 20)};  // No eject when driving
 
 if (_all) then {
 	_veh setVariable ["evacVeh", true];

@@ -10,8 +10,7 @@ _crew allowGetIn false;
 		commandGetOut _x;
 		doGetOut _x;
 	} else {
-		_x action ["Eject", _vehicle];
-		//moveOut _x;
+		moveOut _x;
 	};
 } forEach _crew;
 
