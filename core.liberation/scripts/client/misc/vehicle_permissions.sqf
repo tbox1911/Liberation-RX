@@ -4,7 +4,6 @@ private _doeject = false;
 private _role = (assignedVehicleRole _unit) select 0;
 if (isNil "_role") exitWith {false};  // Eject unit
 if (count GRLIB_all_fobs == 0 && typeOf _vehicle in [FOB_truck_typename,huron_typename]) exitWith {true}; // Allowed at start
-if ([_vehicle] call is_public) exitWith {true}; // Allowed public
 
 private _msg = "";
 if (!((_role == "cargo") || (_vehicle isKindOf "Steerable_Parachute_F"))) then {
@@ -40,7 +39,7 @@ if (!((_role == "cargo") || (_vehicle isKindOf "Steerable_Parachute_F"))) then {
 		_msg = localize "STR_PERMISSION_NO_SUP";
 	};
 
-	if (!([_unit, _vehicle] call is_owner)) then {
+	if (!([_unit, _vehicle] call is_owner) && !([_vehicle] call is_public)) then {
 		_msg = localize "STR_PERMISSION_NO_OWN";
 		if (isPlayer _unit) then {
 			playSound3D ["A3\Sounds_F\sfx\alarmcar.wss", _vehicle, false, getPosASL _vehicle, 1, 1, 500];
