@@ -50,7 +50,6 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 [] execVM "scripts\client\ammoboxes\ammobox_action_manager.sqf";
 [] execVM "scripts\client\markers\sector_manager.sqf";
 [] execVM "scripts\client\misc\sides_stats_manager.sqf";
-[] execVM "scripts\client\ui\ui_manager.sqf";
 [] execVM "scripts\client\build\build_overlay.sqf";
 [] execVM "scripts\client\build\do_build.sqf";
 [] execVM "scripts\client\markers\empty_vehicles_marker.sqf";
@@ -75,6 +74,7 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 [] execVM "scripts\client\actions\dog_manager.sqf";
 [] execVM "scripts\client\actions\man_manager.sqf";
 [] execVM "scripts\client\actions\squad_manager.sqf";
+[] execVM "scripts\client\ui\ui_manager.sqf";
 
 if (GRLIB_enable_arsenal) then {
 	[] execVM "addons\LARs\liberationArsenal.sqf";

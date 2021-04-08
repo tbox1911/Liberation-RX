@@ -10,7 +10,6 @@ waitUntil { !isNil "blufor_sectors" };
 waitUntil { !isNil "GRLIB_all_fobs" };
 
 fullmap = 0;
-cinematic_camera_started = false;
 _old_fullmap = 0;
 
 _dialog = createDialog "liberation_deploy";
@@ -30,9 +29,8 @@ respawn_camera camSetTarget respawn_object;
 respawn_camera cameraEffect ["internal","back"];
 respawn_camera camcommit 0;
 
-if (!GRLIB_player_spawned) then { titleText ["","BLACK IN", 5] };
 waitUntil { dialog };
-
+titleText ["","BLACK IN", 5];
 ((findDisplay 5201) displayCtrl 201) ctrlAddEventHandler [ "mouseButtonDblClick" , { deploy = 1; } ];
 
 _standard_map_pos = ctrlPosition ((findDisplay 5201) displayCtrl 251);
@@ -159,6 +157,7 @@ if (dialog && deploy == 1) then {
 			} forEach _list;
 		};
 		GRLIB_player_spawned = ([] call F_getValid);
+		cinematic_camera_started = false;
 	};
 
 	GRLIB_loadout_overide = nil;
