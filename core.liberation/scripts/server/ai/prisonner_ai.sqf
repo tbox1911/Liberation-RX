@@ -1,10 +1,12 @@
 params [ "_unit", ["_force_surrender", false] ];
 
-if (typeof _unit == pilot_classname) exitWith {};
+if ( (!_force_surrender) && (typeof _unit == pilot_classname) ) exitWith {};
 if ( (!_force_surrender) && ((random 100) > GRLIB_surrender_chance) ) exitWith {};
+if ( (!_force_surrender) && (!(_unit getVariable ["mission_AI", false])) ) exitWith {};
 
-if ( (_unit isKindOf "Man") && ( alive _unit ) && (vehicle _unit == _unit) && (side group _unit == GRLIB_side_enemy) && (!(_unit getVariable ["mission_AI", false])) ) then {
-	sleep (3 + floor( 5));
+if ( (_unit isKindOf "Man") && ( alive _unit ) && (vehicle _unit == _unit) && (side group _unit == GRLIB_side_enemy) ) then {
+	sleep (2 + floor(4));
+	if (!alive _unit) exitWith {};
 
 	// Init priso
 	removeAllWeapons _unit;
@@ -68,7 +70,7 @@ if ( (_unit isKindOf "Man") && ( alive _unit ) && (vehicle _unit == _unit) && (s
 				_waypoint setWaypointBehaviour "AWARE";
 				_waypoint setWaypointCombatMode "GREEN";
 				_waypoint setWaypointCompletionRadius 50;
-
+			};
 		};
 
 		// Captured
