@@ -121,7 +121,7 @@ air_vehicles = [
 	["B_T_UAV_03_dynamicLoadout_F",5,1500,10,GRLIB_perm_max],
 	["B_UAV_05_F",5,2000,15,GRLIB_perm_max],
 	["C_Plane_Civil_01_F",1,50,5,GRLIB_perm_air],
-	["B_Heli_Light_01_F",1,50,5,GRLIB_perm_tank],
+	["B_Heli_Light_01_F",1,50,5,GRLIB_perm_log],
 	["I_Heli_light_03_unarmed_F",1,50,5,GRLIB_perm_tank],
 	["I_Heli_light_03_dynamicLoadout_F",10,1500,20,GRLIB_perm_air],
 	["B_Heli_Light_01_dynamicLoadout_F",5,200,10,GRLIB_perm_air],
