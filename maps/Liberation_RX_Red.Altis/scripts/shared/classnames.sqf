@@ -224,7 +224,7 @@ support_vehicles = [
 	[repair_sling_typename,10,100,0,GRLIB_perm_log],
 	[fuel_sling_typename,0,100,30,GRLIB_perm_log],
 	[ammo_sling_typename,0,150,0,GRLIB_perm_log],
-	[medic_sling_typename,0,150,0,GRLIB_perm_log],
+	[medic_sling_typename,10,100,0,GRLIB_perm_log],
 	[ammo_truck_typename,5,200,10,GRLIB_perm_tank],
 	[repair_truck_typename,10,130,10,GRLIB_perm_tank],
 	[fuel_truck_typename,5,120,40,GRLIB_perm_tank],
@@ -591,6 +591,14 @@ ind_recyclable = [
 	["I_Heli_light_03_dynamicLoadout_F",0,round (20 / GRLIB_recycling_percentage),0]
 ];
 
+ind_statics = [
+	"I_HMG_01_high_F",
+	"I_GMG_01_high_F",
+	"I_static_AA_F",
+	"I_static_AT_F",
+	"I_Mortar_01_F"
+];
+
 // Other stuff
 
 civilians = [
@@ -628,12 +636,14 @@ civilians = [
 ];
 
 civilian_vehicles = [
+	"C_Quadbike_01_F",
 	"C_Heli_light_01_sheriff_F",
 	"C_Heli_Light_01_civil_F",
 	"C_Heli_light_01_furious_F",
 	"C_Heli_light_01_graywatcher_F",
 	"C_Hatchback_01_F",
 	"C_Hatchback_01_sport_F",
+	"C_Quadbike_01_F",
 	"C_Offroad_01_F",
 	"C_Offroad_01_darkred_F",
 	"C_Offroad_luxe_F",
@@ -641,6 +651,7 @@ civilian_vehicles = [
 	"C_Offroad_01_covered_F",
 	"C_Offroad_01_comms_F",
 	"I_C_Offroad_02_unarmed_F",
+	"C_Quadbike_01_F",
 	"SUV_01_base_black_F",
 	"C_SUV_01_F",
 	"C_Van_01_transport_F",
@@ -731,12 +742,7 @@ GRLIB_vehicle_blacklist = [
 	"Land_Pod_Heli_Transport_04_covered_F",
 	"Box_NATO_Ammo_F",
   	"Box_NATO_WpsLaunch_F",
-	"Land_CargoBox_V1_F",
-	"B_Truck_01_transport_F",
-	"B_Truck_01_covered_F",
-	"B_Truck_01_ammo_F",
-	"B_Truck_01_fuel_F",
-	"B_Truck_01_medical_F"
+	"Land_CargoBox_V1_F"
 ];
 //{GRLIB_vehicle_blacklist pushBack ( _x select 0 )} foreach (support_vehicles);
 
