@@ -23,7 +23,8 @@ _smoke2 attachTo [_objet,[0,0,0.6]];
 _objet allowDamage false;
 waitUntil {sleep 0.2;((getPos _objet select 2) < 7 || !(alive _objet) || time > _stop)};
 detach _objet;
-{ detach _x } forEach attachedObjects _objet;
+detach _smoke1;
+detach _smoke2;
 sleep 4;
 if ((vectorUp _objet) select 2 < 0.70 || (getPos _objet) select 2 < 0) then {
 	_objet setpos [(getPos _objet) select 0,(getPos _objet) select 1, 0.5];
