@@ -1,6 +1,6 @@
 params ["_static"];
 
-if (!(typeOf _static in opfor_statics + static_vehicles)) exitWith {};
+if (!(typeOf _static in opfor_statics + static_vehicles + ind_statics)) exitWith {};
 // No damage
 _static allowDamage false;
 

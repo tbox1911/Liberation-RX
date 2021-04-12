@@ -614,6 +614,14 @@ ind_recyclable = [
 	["I_Heli_light_03_dynamicLoadout_F",0,round (20 / GRLIB_recycling_percentage),0]
 ];
 
+ind_statics = [
+	"I_HMG_01_high_F",
+	"I_GMG_01_high_F",
+	"I_static_AA_F",
+	"I_static_AT_F",
+	"I_Mortar_01_F"
+];
+
 // Other stuff
 
 civilians = [
