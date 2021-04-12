@@ -51,11 +51,19 @@ createVehicleCrew _vehicle;
 sleep 1;
 private _pilots = crew _vehicle;
 {
+	_x assignAsDriver _vehicle;
+    [_x] orderGetIn true;
 	_x allowDamage false;
 	_x allowFleeing 0;
 	_x setVariable ["GRLIB_counter_TTL", round(time + 1800), true];  // 30 minutes TTL
  } foreach _pilots;
 _pilots joinSilent _air_grp;
+
+// Pickup Marker
+_marker = createMarkerLocal ["taxi_lz", _dest];
+_marker setMarkerShapeLocal "ICON";
+_marker setMarkerTypeLocal "mil_pickup";
+_marker setMarkerTextlocal "Taxi PickUp";
 
 // Goto Pickup Point
 [_air_grp, _dest] call taxi_dest;
@@ -66,12 +74,6 @@ waitUntil {
 };
 
 [_vehicle] call taxi_land;
-
-// Pickup Marker
-_marker = createMarkerLocal ["taxi_lz", getPos _vehicle];
-_marker setMarkerShapeLocal "ICON";
-_marker setMarkerTypeLocal "mil_pickup";
-_marker setMarkerTextlocal "Taxi PickUp";
 
 private _stop = time + (5 * 60); // wait 5min max
 waitUntil {
