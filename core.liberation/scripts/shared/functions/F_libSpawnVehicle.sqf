@@ -42,6 +42,7 @@ clearWeaponCargoGlobal _newvehicle;
 clearMagazineCargoGlobal _newvehicle;
 clearItemCargoGlobal _newvehicle;
 clearBackpackCargoGlobal _newvehicle;
+sleep 1;
 
 if ( _classname in militia_vehicles ) then {
 	[ _newvehicle ] call F_libSpawnMilitiaCrew;
@@ -86,7 +87,7 @@ if (count opfor_texture_overide > 0) then {
 	};
 	_veh setdamage 0;
 	_veh allowdamage true;
-	{ _x allowdamage true } foreach _crew;
+	{ _x setdamage 0;_x allowdamage true } foreach _crew;
 };
 
 diag_log format [ "Done Spawning vehicle %1 at %2", _classname , time ];
