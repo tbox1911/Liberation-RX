@@ -1,3 +1,4 @@
+PAR_fn_Killed = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_Killed.sqf";
 PAR_fn_medic = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_medic.sqf";
 PAR_fn_medicRelease = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_medicRelease.sqf";
 PAR_fn_medicRecall = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_medicRecall.sqf";
@@ -90,6 +91,8 @@ PAR_fn_AI_Damage_EH = {
 		};
 		_dam min 0.86;
 	}];
+	_unit removeAllEventHandlers "Killed";
+	_unit addEventHandler ["Killed", {_this spawn PAR_fn_Killed}];
 	_unit removeAllMPEventHandlers "MPKilled";
 	_unit addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
 	_unit setVariable ["PAR_wounded", false];
