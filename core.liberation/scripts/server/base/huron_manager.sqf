@@ -13,12 +13,12 @@ while { true } do {
 	}] call BIS_fnc_conditionalSelect;
 
 	if ( count _huronlist == 0) then {
-		huron = huron_typename createVehicle ( getpos huronspawn );
+		huron = huron_typename createVehicle ( getPosATL huronspawn );
 		huron allowdamage false;
 		huron addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		huron setVariable ["GRLIB_vehicle_owner", "public", true];
 		huron setVariable ["GRLIB_vehicle_ishuron", true, true];
-		huron setposasl (getposasl huronspawn vectorAdd [0,0,GRLIB_spawn_altitude]);
+		huron setPosATL (getPosATL huronspawn);
 		huron setDir (getDir huronspawn);
 		sleep 0.5;
 		huron AnimateDoor ["Door_rear_source", 1, true];
