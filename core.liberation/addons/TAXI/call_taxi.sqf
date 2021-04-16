@@ -31,7 +31,7 @@ hintSilent format [localize "STR_TAXI_CALLED", getText(configFile >> "cfgVehicle
 private _air_grp = createGroup [GRLIB_side_civilian, true];
 private _air_spawnpos = [] call F_getNearestFob;
 if (isNil "GRLIB_all_fobs" || count GRLIB_all_fobs == 0) then {
-	_air_spawnpos = markerPos "base_chimera";
+	_air_spawnpos = getPos lhd;
 };
 
 _air_spawnpos = [(((_air_spawnpos select 0) + 500) - floor(random 1000)),(((_air_spawnpos select 1) + 500) - floor(random 1000)), 120];
