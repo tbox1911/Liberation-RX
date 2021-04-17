@@ -39,12 +39,14 @@ if (!((_role == "cargo") || (_vehicle isKindOf "Steerable_Parachute_F"))) then {
 		_msg = localize "STR_PERMISSION_NO_SUP";
 	};
 
-	if (!([_unit, _vehicle] call is_owner) && !([_vehicle] call is_public)) then {
-		_msg = localize "STR_PERMISSION_NO_OWN";
-		if (isPlayer _unit) then {
-			playSound3D ["A3\Sounds_F\sfx\alarmcar.wss", _vehicle, false, getPosASL _vehicle, 1, 1, 500];
+	if (GRLIB_permission_vehicles) then {
+		if (!([_unit, _vehicle] call is_owner) && !([_vehicle] call is_public)) then {
+			_msg = localize "STR_PERMISSION_NO_OWN";
+			if (isPlayer _unit) then {
+				playSound3D ["A3\Sounds_F\sfx\alarmcar.wss", _vehicle, false, getPosASL _vehicle, 1, 1, 500];
+			};
+			_doeject = true;
 		};
-		_doeject = true;
 	};
 
 	if ( side _unit != GRLIB_side_friendly ) then {
