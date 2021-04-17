@@ -6,7 +6,6 @@ _frame_pos = [];
 _spawn_str = "";
 _basenamestr = "BASE CHIMERA";
 
-waitUntil { !isNil "blufor_sectors" };
 waitUntil { !isNil "GRLIB_all_fobs" };
 
 fullmap = 0;
