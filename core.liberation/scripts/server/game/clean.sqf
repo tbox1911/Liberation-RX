@@ -123,8 +123,12 @@ while {deleteManagerPublic} do {
 		{
 			private _ttl = _x getVariable "GRLIB_counter_TTL";
 			if ([_x,_deadMenDist,(playableUnits + switchableUnits)] call _isHidden && time > _ttl ) then {
-				detach _x;
-				deleteVehicle _x;
+				if (_x isKindOf "Man") then {
+					deleteVehicle _x;
+				} else {
+					[_x] call clean_vehicle;
+					deleteVehicle _x;
+				};
 				_stats = _stats + 1;
 			};
 		} count _units_ttl;
@@ -137,7 +141,6 @@ while {deleteManagerPublic} do {
 			if (_deadMenDistCheck) then {
 				{
 					if ([_x,_deadMenDist,(playableUnits + switchableUnits)] call _isHidden) then {
-						detach _x;
 						deleteVehicle _x;
 						_stats = _stats + 1;
 					};
@@ -146,7 +149,6 @@ while {deleteManagerPublic} do {
 
 			while {(((count allDeadMen) - _deadMenLimit) > 0)} do {
 				_unit = selectRandom allDeadMen;
-				detach _unit;
 				deleteVehicle _unit;
 				_stats = _stats + 1;
 				sleep 0.5;

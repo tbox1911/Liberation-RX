@@ -204,7 +204,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 						deleteVehicle _x;
 					};
 				} else {
-					[ _x ] call F_cleanOpforVehicle;
+					_x setVariable ["GRLIB_counter_TTL", 0];
 				};
 			} foreach _managed_units;
 
@@ -222,7 +222,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 					if (_x isKindOf "Man") then {
 						deleteVehicle _x;
 					} else {
-						[ _x ] call F_cleanOpforVehicle;
+						_x setVariable ["GRLIB_counter_TTL", 0];
 					};
 				} foreach _managed_units;
 

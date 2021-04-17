@@ -94,7 +94,7 @@ while { GRLIB_endgame == 0 } do {
 						_patrol_continue = false;
 						{
 							if ( vehicle _x != _x ) then {
-								[ (vehicle _x) ] call F_cleanOpforVehicle;
+								(vehicle _x) setVariable ["GRLIB_counter_TTL", 0];
 							};
 							deleteVehicle _x;
 						} foreach (units _grp);

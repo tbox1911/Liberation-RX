@@ -1,6 +1,10 @@
 params ["_vehicle"];
 if (isNil "_vehicle") exitWith {};
 
+// Detach
+detach _vehicle;
+sleep 0.2;
+
 // Delete R3F Cargo
 {[_x] remoteExec ["deleteVehicle", 0]} forEach (_vehicle getVariable ["R3F_LOG_objets_charges", []]);
 _vehicle setVariable ["R3F_LOG_objets_charges", [], true];
