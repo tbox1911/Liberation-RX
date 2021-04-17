@@ -71,6 +71,7 @@ trigger_server_save = false;
 greuh_liberation_savegame = profileNamespace getVariable GRLIB_save_key;
 
 // Manager Load Save
+diag_log format [ "--- LRX Load Game start at %1", time ];
 if ( !isNil "greuh_liberation_savegame" ) then {
 
 	blufor_sectors = greuh_liberation_savegame select 0;
@@ -230,11 +231,6 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 	} foreach _buildings_created;
 };
 
-publicVariable "GRLIB_garage";
-publicVariable "blufor_sectors";
-publicVariable "GRLIB_all_fobs";
-publicVariable "GRLIB_mobile_respawn";
-
 if ( count GRLIB_vehicle_to_military_base_links == 0 ) then {
 	private [ "_assigned_bases", "_assigned_vehicles", "_nextbase", "_nextvehicle" ];
 	_assigned_bases = [];
@@ -255,9 +251,14 @@ if ( count GRLIB_vehicle_to_military_base_links == 0 ) then {
 		};
 	} foreach _classnames_to_check;
 };
+publicVariable "GRLIB_garage";
+publicVariable "blufor_sectors";
+publicVariable "GRLIB_all_fobs";
+publicVariable "GRLIB_mobile_respawn";
 publicVariable "GRLIB_vehicle_to_military_base_links";
 publicVariable "GRLIB_permissions";
 save_is_loaded = true; publicVariable "save_is_loaded";
+diag_log format [ "--- LRX Load Game finish at %1", time ];
 sleep 5;
 
 // Manager Save Loop
