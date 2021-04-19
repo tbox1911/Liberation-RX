@@ -86,7 +86,7 @@ while { GRLIB_endgame == 0 } do {
 
 		while { _patrol_continue } do {
 			sleep 60;
-			if ( count (units _grp) == 0  ) then {
+			if ( count (units _grp) == 0 ) then {
 				_patrol_continue = false;
 			} else {
 				if ( time - _started_time > 900 ) then {
@@ -94,7 +94,7 @@ while { GRLIB_endgame == 0 } do {
 						_patrol_continue = false;
 						{
 							if ( vehicle _x != _x ) then {
-								(vehicle _x) setVariable ["GRLIB_counter_TTL", 0];
+								deleteVehicle (vehicle _x);
 							};
 							deleteVehicle _x;
 						} foreach (units _grp);

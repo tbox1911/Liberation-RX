@@ -184,48 +184,23 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 
 	while { !_stopit } do {
 
-		if ( ( [_sectorpos, _local_capture_size] call F_sectorOwnership == GRLIB_side_friendly ) && ( GRLIB_endgame == 0 ) ) then {
-
+		if ( ([_sectorpos, _local_capture_size] call F_sectorOwnership == GRLIB_side_friendly) && (GRLIB_endgame == 0) ) then {
 			[ _sector ] spawn sector_liberated_remote_call;
-
 			_stopit = true;
-
-			{ [_x] spawn prisonner_ai; } foreach ( (getmarkerpos _sector) nearEntities [ [ "Man" ], _local_capture_size * 1.2 ] );
-
+			{ [_x] spawn prisonner_ai; } foreach ( (getmarkerpos _sector) nearEntities [ ["Man"], _local_capture_size * 1.2 ] );
 			sleep 60;
 
 			active_sectors = active_sectors - [ _sector ]; publicVariable "active_sectors";
-
-			sleep 600;
-
-			{
-				if (_x isKindOf "Man") then {
-					if ( side group _x != GRLIB_side_friendly ) then {
-						deleteVehicle _x;
-					};
-				} else {
-					_x setVariable ["GRLIB_counter_TTL", 0];
-				};
-			} foreach _managed_units;
-
+			{ _x setVariable ["GRLIB_counter_TTL", 0] } foreach _managed_units;
 		} else {
-
-			if ( ( [_sectorpos, ( ( [ _opforcount ] call F_getCorrectedSectorRange ) + 300 ), GRLIB_side_friendly ] call F_getUnitsCount ) == 0 ) then {
+			if ( ([_sectorpos, (([_opforcount] call F_getCorrectedSectorRange) + 300), GRLIB_side_friendly] call F_getUnitsCount) == 0 ) then {
 				_sector_despawn_tickets = _sector_despawn_tickets - 1;
 			} else {
-				_sector_despawn_tickets = 12;
+				_sector_despawn_tickets = 24;
 			};
 
 			if ( _sector_despawn_tickets <= 0 ) then {
-
-				{
-					if (_x isKindOf "Man") then {
-						deleteVehicle _x;
-					} else {
-						_x setVariable ["GRLIB_counter_TTL", 0];
-					};
-				} foreach _managed_units;
-
+				{ deleteVehicle _x } foreach _managed_units;
 				_stopit = true;
 				active_sectors = active_sectors - [ _sector ]; publicVariable "active_sectors";
 			};
