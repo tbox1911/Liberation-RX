@@ -20,6 +20,7 @@ spawn_battlegroup = compileFinal preprocessFileLineNumbers "scripts\server\battl
 // Game
 check_victory_conditions = compileFinal preprocessFileLineNumbers "scripts\server\game\check_victory_conditions.sqf";
 attach_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\attach_object_direct.sqf";
+load_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\load_object_direct.sqf";
 
 // Patrol
 reinforcements_manager = compileFinal preprocessFileLineNumbers "scripts\server\patrols\reinforcements_manager.sqf";
@@ -57,37 +58,39 @@ a3w_sideMissionController = compileFinal preprocessFileLineNumbers "scripts\serv
 
 if (!([] call F_getValid)) exitWith {};
 
-[] execVM "scripts\server\game\init_marker.sqf";
-[] execVM "scripts\server\game\apply_default_permissions.sqf";
 [] execVM "scripts\server\game\save_manager.sqf";
+waitUntil { sleep 1; !isNil "save_is_loaded" };
 [] execVM "scripts\server\game\apply_saved_scores.sqf";
-[] execVM "scripts\server\game\manage_time.sqf";
-[] execVM "scripts\server\game\manage_weather.sqf";
-[] execVM "scripts\server\game\periodic_save.sqf";
-[] execVM "scripts\server\game\playtime.sqf";
-[] execVM "scripts\server\game\spawn_radio_towers.sqf";
-[] execVM "scripts\server\game\manage_score.sqf";
-[] execVM "scripts\server\game\hall_of_fame.sqf";
+[] execVM "scripts\server\game\apply_default_permissions.sqf";
 [] execVM "scripts\server\base\fobbox_manager.sqf";
 [] execVM "scripts\server\base\huron_manager.sqf";
+[] execVM "scripts\server\game\spawn_radio_towers.sqf";
+[] execVM "scripts\server\game\hall_of_fame.sqf";
 [] execVM "scripts\server\battlegroup\counter_battlegroup.sqf";
 [] execVM "scripts\server\battlegroup\random_battlegroups.sqf";
 [] execVM "scripts\server\battlegroup\readiness_increase.sqf";
-[] execVM "scripts\server\patrols\civilian_patrols.sqf";
-[] execVM "scripts\server\patrols\manage_patrols.sqf";
-[] execVM "scripts\server\patrols\manage_wildlife.sqf";
-[] execVM "scripts\server\a3w\init_missions.sqf";
 [] execVM "scripts\server\patrols\reinforcements_resetter.sqf";
-[] execVM "scripts\server\resources\manage_resources.sqf";
 [] execVM "scripts\server\resources\recalculate_resources.sqf";
 [] execVM "scripts\server\resources\recalculate_timer.sqf";
 [] execVM "scripts\server\resources\unit_cap.sqf";
-[] execVM "scripts\server\sector\lose_sectors.sqf";
+[] execVM "scripts\server\resources\manage_resources.sqf";
+[] execVM "scripts\server\patrols\civilian_patrols.sqf";
+[] execVM "scripts\server\patrols\manage_patrols.sqf";
+[] execVM "scripts\server\patrols\manage_wildlife.sqf";
 [] execVM "scripts\server\sector\manage_sectors.sqf";
+[] execVM "scripts\server\sector\lose_sectors.sqf";
+[] execVM "scripts\server\game\manage_score.sqf";
+[] execVM "scripts\server\game\manage_time.sqf";
+[] execVM "scripts\server\game\manage_weather.sqf";
+[] execVM "scripts\server\game\periodic_save.sqf";
+[] execVM "scripts\server\a3w\init_missions.sqf";
+[] execVM "scripts\server\game\init_marker.sqf";
 [] execVM "scripts\server\secondary\autostart.sqf";
 [] execVM "scripts\server\game\synchronise_vars.sqf";
 [] execVM "scripts\server\game\zeus_synchro.sqf";
+[] execVM "scripts\server\game\playtime.sqf";
 [] execVM "scripts\server\game\clean.sqf";
+
 
 // Offloading
 [] execVM "scripts\server\offloading\offload_calculation.sqf";

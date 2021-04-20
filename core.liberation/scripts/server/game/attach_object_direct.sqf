@@ -14,8 +14,22 @@ private _truck_load = _truck getVariable ["GRLIB_ammo_truck_load", 0];
 if (  _truck_load < _maxload ) then {
 	_truck_to_load = _truck;
 	_truck_offset = _offsets select _truck_load;
-	_object = _object_type createVehicle zeropos;
-	_object addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
+	private _object = _object_type createVehicle zeropos;
+
+	// Clear Cargo
+	clearWeaponCargoGlobal _object;
+	clearMagazineCargoGlobal _object;
+	clearItemCargoGlobal _object;
+	clearBackpackCargoGlobal _object;
+
+		// Mobile respawn
+	if (_classe == mobile_respawn) then {
+		[_object, "add"] remoteExec ["addel_beacon_remote_call", 2];
+	};
+
+	// MPKilled
+	_object addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+
 	if (typeOf _object in [waterbarrel_typename,fuelbarrel_typename,foodbarrel_typename]) then {
 		_truck_offset = _truck_offset vectorAdd [0, 0, -0.4];
 	};
