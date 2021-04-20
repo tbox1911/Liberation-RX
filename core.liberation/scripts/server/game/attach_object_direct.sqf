@@ -23,7 +23,7 @@ if (  _truck_load < _maxload ) then {
 	clearBackpackCargoGlobal _object;
 
 		// Mobile respawn
-	if (_classe == mobile_respawn) then {
+	if (_object_type == mobile_respawn) then {
 		[_object, "add"] remoteExec ["addel_beacon_remote_call", 2];
 	};
 
