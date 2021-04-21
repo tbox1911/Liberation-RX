@@ -38,11 +38,11 @@
 + Admin Menu (unban/ammo/score/teleport/skiptime/God/spawn obj)
 
 + User Actions Keys:
-    (UserAction n°10) Weapon to back
-    (UserAction n°11) Always run
-    (UserAction n°12) Toggle earplugs
-    (UserAction n°13) Toggle HUD
-    (UserAction n°14) Take Screenshot  (game engine) 
+- (UserAction n°10) Weapon to back
+- (UserAction n°11) Always run
+- (UserAction n°12) Toggle earplugs
+- (UserAction n°13) Toggle HUD
+- (UserAction n°14) Take Screenshot (game engine) 
     
 + MULTI 6 - English, French, German, Spanish, Russian, Chinesesimp
 
