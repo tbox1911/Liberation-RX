@@ -47,7 +47,7 @@ _setupObjects =
 	} foreach _allbuildings;
 
 	// spawn some enemies
-	_managed_units = (["infantry", (_nbUnits - 3), _buildingpositions, _missionPos] call F_spawnBuildingSquad);
+	_managed_units = (["militia", (_nbUnits - 3), _buildingpositions, _missionPos] call F_spawnBuildingSquad);
 	{ _x setVariable ["mission_AI", true] } forEach _managed_units;
 
 	if (count _managed_units > 0) then {
