@@ -79,7 +79,7 @@ _setupObjects =
 
 	// Enemies
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
-	[_aiGroup, _missionPosEnd, _nbUnits, "infantry"] call createCustomGroup;
+	[_aiGroup, _missionPosEnd, _nbUnits, "militia"] call createCustomGroup;
 
 	_marker = createMarker ["side_mission_A3W_Mission_SD", _missionPosEnd];
 	_marker setMarkerShape "ICON";

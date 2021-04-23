@@ -55,7 +55,7 @@ _setupObjects =
 	} else {
 		_aiGroup = createGroup [GRLIB_side_enemy, true];
 	};
-	[_aiGroup, _missionPos, (_nbUnits - (count _managed_units)) , "infantry"] call createCustomGroup;
+	[_aiGroup, _missionPos, (_nbUnits - (count _managed_units)) , "militia"] call createCustomGroup;
 
 	[_missionPos, 25] call createlandmines;
 
