@@ -40,5 +40,5 @@ while { true } do {
 		};
 	} foreach allPlayers;
 	GRLIB_player_scores = _newscores;
-	sleep 10;
+	sleep 5;
 };
