@@ -142,8 +142,6 @@ PAR_AI_Manager = {
             	sleep 3;
             };
             _x doMove (getPos player);
-        } else {
-			doStop _x;
 		};
 
         // Blood trail
