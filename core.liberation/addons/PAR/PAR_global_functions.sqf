@@ -130,24 +130,26 @@ PAR_AI_Manager = {
         // AI stop doing shit !
         if ( leader group player != player &&
               lifeState player == 'INCAPACITATED' &&
-              _x distance2D player <= 500 &&
+			  lifeState _x != 'INCAPACITATED' &&
               isNil {_x getVariable 'PAR_busy'} &&
               isNil {_x getVariable 'PAR_heal'}
         ) then {
-        	doStop _x;
-            unassignVehicle _x;
-            [_x] orderGetIn false;
-            if (!isnull objectParent _x) then {
-            	doGetOut _x;
-            	sleep 3;
-            };
-            _x doMove (getPos player);
+			if (_x distance2D player <= 600) then {
+				doStop _x;
+				unassignVehicle _x;
+				[_x] orderGetIn false;
+				if (!isnull objectParent _x) then {
+					doGetOut _x;
+					sleep 3;
+				};
+				_x doMove (getPos player);
+			} else {doStop _x};
 		};
 
         // Blood trail
         if (damage _x > 0.6 && vehicle _x == _x) then {
           private _spray = createVehicle ["BloodSpray_01_New_F", getPos _x, [], 0, "CAN_COLLIDE"];
-          _spray spawn {sleep (10 + floor(random 5));; deleteVehicle _this};
+          _spray spawn {sleep (10 + floor(random 5)); deleteVehicle _this};
         };
 
 		// AI level UP
