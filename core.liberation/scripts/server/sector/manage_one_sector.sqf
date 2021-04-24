@@ -200,7 +200,14 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 			};
 
 			if ( _sector_despawn_tickets <= 0 ) then {
-				{ deleteVehicle _x } foreach _managed_units;
+				//{ deleteVehicle _x } foreach _managed_units;
+				{
+					if (_x isKindOf "Man") then {
+						deleteVehicle _x;
+					} else {
+						_x setVariable ["GRLIB_counter_TTL", 0];
+					};
+				} foreach _managed_units;
 				_stopit = true;
 				active_sectors = active_sectors - [ _sector ]; publicVariable "active_sectors";
 			};
