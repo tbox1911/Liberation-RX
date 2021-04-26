@@ -376,6 +376,10 @@ while { true } do {
 				// Static Weapon
 				if (_classname in _list_static) then {
 					[_vehicle] spawn protect_static;
+					if (_classname == "B_AAA_System_01_F" ) then {
+						[ _vehicle ] call F_forceBluforCrew;
+						_vehicle setVariable ["GRLIB_vehicle_manned", true, true];
+					};
 				};
 
 				sleep 0.3;
