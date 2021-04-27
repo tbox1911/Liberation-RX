@@ -18,7 +18,7 @@ if (!isNull _killer && _unit != _killer) then {
 	if (isPlayer _killer && side group _unit == GRLIB_side_friendly && _unit != _killer && _veh_unit != _veh_killer && lifeState _unit != "INCAPACITATED" && _amountOfDamage > 0.02 ) then {
 		if ( _unit getVariable ["GRLIB_isProtected", 0] < time ) then {
 			gamelogic globalChat (format ["%1 - %2 Watch your fire !! ", localize "STR_FRIENDLY_FIRE", name _killer]);
-			[_killer, -5] remoteExec ["F_addScore", 2];
+			[_killer, -5] remoteExec ["addScore", 2];
 			_unit setVariable ["GRLIB_isProtected", round(time + 3), true];
 		};
 		_ret = _amountOfDamage min 0.86;

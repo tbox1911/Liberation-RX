@@ -81,7 +81,7 @@ while { dialog && (alive player) } do {
 		_dst_id = _score_combo lbData (lbCurSel _score_combo);
 		_player = _dst_id call BIS_fnc_getUnitByUID;
 		if (!isNull _player) then {
-			[_player, 200] remoteExec ["F_addScore", 2];
+			[_player, 200] remoteExec ["addScore", 2];
 			systemchat format ["Add 200 XP to player: %1.", _dst_name];
 			sleep 1;
 		};

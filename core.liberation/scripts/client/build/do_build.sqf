@@ -52,7 +52,7 @@ while { true } do {
 			_lst_a3 = build_unit select 3;
 			_lst_r3f = build_unit select 4;
 		} else {
-			_score = [player] call F_getScore;
+			_score = score player;
 			_build_list = [];
 			{
 				if ( _score >= (_x select 4) ) then {_build_list pushback _x};
