@@ -297,6 +297,19 @@ while { true } do {
 			_all_buildings = _all_buildings + _nextbuildings;
 		} foreach GRLIB_all_fobs;
 
+		// Filter low score Player
+		private _player_scores = [];
+		private _keep_score_id = ["Default"];
+		{
+			_id = _x select 0;
+			_score = _x select 1;
+			if (_score >= 20 ) then {
+				_keep_score_id pushback _id;
+				_player_scores pushback _x;
+			};
+		} forEach GRLIB_player_scores;
+
+		// Save objects
 		{
 			private _savedpos = [];
 
@@ -331,25 +344,16 @@ while { true } do {
 						{_lst_r3f pushback (typeOf _x)} forEach (_x getVariable ["R3F_LOG_objets_charges", []]);
 						{_lst_grl pushback (typeOf _x)} forEach (attachedObjects _x);
 					};
-					buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner, _color, _color_name, _lst_a3, _lst_r3f, _lst_grl];
+					if (_owner in _keep_score_id) then {
+						buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner, _color, _color_name, _lst_a3, _lst_r3f, _lst_grl];
+					};
 				};
 			} else {
 				buildings_to_save pushback [ _nextclass, _savedpos, _nextdir ];
 			};
 		} foreach _all_buildings;
 
-		// Filter low score Player
-		private _player_scores = [];
-		private _keep_score_id = ["Default"];
-		{
-			_id = _x select 0;
-			_score = _x select 1;
-			if (_score >= 20 ) then {
-				_keep_score_id pushback _id;
-				_player_scores pushback _x;
-			};
-		} forEach GRLIB_player_scores;
-
+		// Save scores
 		private _permissions = [];
 		{
 			_id = _x select 0;
