@@ -27,15 +27,15 @@ if ( _precise_position ) then {
 
 _newvehicle = objNull;
 if ( _classname in opfor_choppers ) then {
-	_newvehicle = createVehicle [_classname, _spawnpos, [], 0, 'FLY'];
+	_newvehicle = createVehicle [_classname, _spawnpos, [], 0, "FLY"];
 	_newvehicle setPos (getPosATL _newvehicle vectorAdd [0, 0, 400]);
 	_newvehicle flyInHeight 400;
 } else {
 	if (surfaceIsWater _spawnpos && !(_classname in opfor_boat)) then {
 		_classname = selectRandom opfor_boat;
 	};
-	_newvehicle = _classname createVehicle _spawnpos;
-	_newvehicle setpos _spawnpos;
+	_spawnpos set [2,0];
+	_newvehicle = createVehicle [_classname, _spawnpos, [], 0, "NONE"];
 };
 _newvehicle allowdamage false;
 clearWeaponCargoGlobal _newvehicle;
