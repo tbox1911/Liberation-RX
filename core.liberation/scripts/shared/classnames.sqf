@@ -229,7 +229,6 @@ support_vehicles = [
 	[ammo_truck_typename,5,200,10,GRLIB_perm_tank],
 	[repair_truck_typename,10,130,10,GRLIB_perm_tank],
 	[fuel_truck_typename,5,120,40,GRLIB_perm_tank],
-	["Box_NATO_Ammo_F",0,80,0,GRLIB_perm_log],
 	["Box_NATO_WpsLaunch_F",0,150,0,GRLIB_perm_tank],
 	["Land_CargoBox_V1_F",0,500,0,GRLIB_perm_max],
 	[FOB_box_typename,50,1500,50,GRLIB_perm_max],
@@ -350,8 +349,10 @@ ai_healing_sources = [
 vehicle_rearm_sources = [
 	ammo_truck_typename,
 	ammo_sling_typename,
-	"B_APC_Tracked_01_CRV_F",
-	"Box_NATO_Ammo_F"
+	ammobox_b_typename,
+	ammobox_o_typename,
+	ammobox_i_typename,
+	"B_APC_Tracked_01_CRV_F"
 ];
 
 vehicle_artillery = [
@@ -760,7 +761,6 @@ GRLIB_vehicle_blacklist = [
 	fuel_sling_typename,
 	ammo_sling_typename,
 	medic_sling_typename,
-	"Box_NATO_Ammo_F",
   	"Box_NATO_WpsLaunch_F",
 	"Land_CargoBox_V1_F"
 ];
@@ -859,7 +859,6 @@ GRLIB_ignore_colisions_objects = [
 	mobile_respawn,
 	canisterFuel,
 	medicalbox_typename,
-	"Box_NATO_Ammo_F",
   	"Box_NATO_WpsLaunch_F",
 	"Land_CargoBox_V1_F",
 	"B_HMG_01_F",
@@ -892,10 +891,10 @@ GRLIB_ignore_colisions_classes = [
 
 GRLIB_sar_wreck = "Land_Wreck_Heli_Attack_01_F";
 GRLIB_sar_fire = "test_EmptyObjectForFireBig";
-GRLIB_Ammobox = [
+// Ammobox you want keep contents
+GRLIB_Ammobox_keep = [
 	A3W_BoxWps,
 	medicalbox_typename,
-	"Box_NATO_Ammo_F",
 	"Box_NATO_WpsLaunch_F",
 	"mission_USLaunchers",
 	"Land_CargoBox_V1_F"

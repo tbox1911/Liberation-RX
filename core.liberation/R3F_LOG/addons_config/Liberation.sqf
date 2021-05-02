@@ -243,7 +243,6 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 	[A3W_BoxWps, 7],
 	[canisterFuel, 1],
 	["Land_PierLadder_F", 2],
-	["Box_NATO_Ammo_F",3],
     ["Box_NATO_WpsLaunch_F",3],
 	["Land_CargoBox_V1_F", 20]
 ];
@@ -269,7 +268,6 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	"Land_Pod_Heli_Transport_04_bench_F",
 	"Land_Pod_Heli_Transport_04_covered_F",
 	"Land_PierLadder_F",
-	"Box_NATO_Ammo_F",
     "Box_NATO_WpsLaunch_F",
 	"Land_CargoBox_V1_F",
 	"Land_Cargo_House_V1_F",

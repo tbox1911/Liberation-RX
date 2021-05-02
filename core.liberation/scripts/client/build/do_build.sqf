@@ -306,8 +306,8 @@ while { true } do {
 				_vehicle setdir _vehdir;
 				_vehicle setposATL _truepos;
 
-				// Ammo Box
-				if (!(_classname in  GRLIB_Ammobox)) then {
+				// Ammo Box clean inventory
+				if (!(_classname in  GRLIB_Ammobox_keep)) then {
 					clearWeaponCargoGlobal _vehicle;
 					clearMagazineCargoGlobal _vehicle;
 					clearItemCargoGlobal _vehicle;
