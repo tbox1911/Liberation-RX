@@ -22,11 +22,6 @@ if (  _truck_load < _maxload ) then {
 	clearItemCargoGlobal _object;
 	clearBackpackCargoGlobal _object;
 
-		// Mobile respawn
-	if (_object_type == mobile_respawn) then {
-		[_object, "add"] remoteExec ["addel_beacon_remote_call", 2];
-	};
-
 	// MPKilled
 	_object addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 
