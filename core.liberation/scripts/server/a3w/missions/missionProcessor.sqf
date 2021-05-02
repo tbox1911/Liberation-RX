@@ -80,11 +80,10 @@ waitUntil {
 
 	_newAiCount = count units _aiGroup;
 
-	if (_newAiCount < _oldAiCount || GRLIB_A3W_ExtendTimer == _missionType) then {
+	if (_newAiCount < _oldAiCount) then {
 		// some units were killed, mission expiry will be reset to 20 mins if it's currently lower than that
 		_adjustTime = if (_missionTimeout < MISSION_TIMER_EXTENSION) then { MISSION_TIMER_EXTENSION - _missionTimeout } else { 0 };
 		_startTime = _startTime max (diag_tickTime - ((MISSION_TIMER_EXTENSION - _adjustTime) max 0));
-		if (GRLIB_A3W_ExtendTimer == _missionType) then { GRLIB_A3W_ExtendTimer = ""};
 	};
 
 	_oldAiCount = _newAiCount;
@@ -94,6 +93,7 @@ waitUntil {
 	if (!isNil "_waitUntilMarkerPos") then { _marker setMarkerPos (call _waitUntilMarkerPos) };
 	if (!isNil "_waitUntilExec") then { call _waitUntilExec };
 
+	_expired = (diag_tickTime - _startTime >= _missionTimeout && count ([_missionPos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount) == 0);
 	_failed = ((!isNil "_waitUntilCondition" && {call _waitUntilCondition}) || diag_tickTime - _startTime >= _missionTimeout || count allPlayers == 0);
 
 	if (!isNil "_waitUntilSuccessCondition" && {call _waitUntilSuccessCondition}) then {
