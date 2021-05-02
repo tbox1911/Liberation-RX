@@ -93,7 +93,7 @@ waitUntil {
 	if (!isNil "_waitUntilMarkerPos") then { _marker setMarkerPos (call _waitUntilMarkerPos) };
 	if (!isNil "_waitUntilExec") then { call _waitUntilExec };
 
-	_expired = (diag_tickTime - _startTime >= _missionTimeout && count ([_missionPos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount) == 0);
+	_expired = (diag_tickTime - _startTime >= _missionTimeout && ([_missionPos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount) == 0);
 	_failed = ((!isNil "_waitUntilCondition" && {call _waitUntilCondition}) || diag_tickTime - _startTime >= _missionTimeout || count allPlayers == 0);
 
 	if (!isNil "_waitUntilSuccessCondition" && {call _waitUntilSuccessCondition}) then {
