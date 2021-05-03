@@ -2,7 +2,7 @@ waituntil {sleep 1;!isNull player};
 private ["_msg", "_pos", "_sector", "_opf", "_default"];
 while { true } do {
 	_pos = getPos player;
-	_sector = (allMapMarkers select {_x select [0,13] == "side_mission_" && (getMarkerPos _x) distance2D _pos < (GRLIB_sector_size/2)}) select 0;
+	_sector = [GRLIB_sector_size, _pos, sectors_missions] call F_getNearestSector;
 
 	if (!isnil "_sector") then {
 		_text = markerText _sector;

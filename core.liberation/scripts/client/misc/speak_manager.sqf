@@ -29,8 +29,7 @@ speak_leader_AI = {
 	private ["_grp", "_pos", "_sector"];
 	_grp = group _unit;
 	_pos = getPos _unit;
-	_sector = (sectors_allSectors select {_x select [0,8] == "capture_" && (getMarkerPos _x) distance2D _pos < (GRLIB_sector_size/2)}) select 0;
-	if (isNil "_sector") exitWith {};
+	_sector = [100, _pos] call F_getNearestSector;
 
 	{_x setVariable ["GRLIB_can_speak", false, true]} foreach units _grp;
 	gamelogic globalChat "Hello, I Need to speak with you, listen to me.";
