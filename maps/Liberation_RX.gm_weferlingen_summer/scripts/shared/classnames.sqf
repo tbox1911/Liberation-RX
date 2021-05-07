@@ -56,20 +56,20 @@ infantry_units = [
 
 // calc units price
 [] call compileFinal preprocessFileLineNumbers "scripts\loadouts\init_loadouts.sqf";
-_grp = createGroup [GRLIB_side_friendly, true];
+private _grp = createGroup [GRLIB_side_friendly, true];
 {
 	_unit_class = _x select 0;
 	_unit_mp = _x select 1;
 	_unit_rank = _x select 4;
 	_unit = _grp createUnit [_unit_class, [0,0,0], [], 0, "NONE"];
 	if (typeOf _unit in units_loadout_overide) then {
-		_loadouts_folder = format ["scripts\loadouts\%1\%2.sqf", GRLIB_side_friendly, typeOf _unit];
+		private _loadouts_folder = format ["scripts\loadouts\%1\%2.sqf", GRLIB_side_friendly, typeOf _unit];
 		[_unit] call compileFinal preprocessFileLineNUmbers _loadouts_folder;
 	};
 	_price = [_unit] call F_loadoutPrice;
-	infantry_units set [_forEachIndex, [_unit_class, _unit_mp, _price, 0,_unit_rank] ];
+	infantry_units set [_forEachIndex, [_unit_class, _unit_mp, _price, 0,_unit_rank]];
 	deleteVehicle _unit;
-} foreach infantry_units ;
+} foreach infantry_units;
 
 light_vehicles = [
 	["gm_gc_army_bicycle_01_oli",1,5,1,0],
@@ -300,14 +300,7 @@ uavs = [
 ];
 if ( isNil "uavs" ) then { uavs = [] };
 
-elite_vehicles = [
-	"gm_ge_army_Leopard1a5",
-	"gm_ge_army_bpz2a0",
-	"gm_ge_army_bo105p_pah1a1",
-	"gm_ge_army_Leopard1a1a4",
-	"gm_ge_army_Leopard1a3a3"
-];
-
+elite_vehicles = [];
 { if (_x select 4 == GRLIB_perm_max) then { elite_vehicles pushback (_x select 0)} } foreach light_vehicles + heavy_vehicles + air_vehicles + static_vehicles;
 
 // Everything the AI troups should be able to resupply from
@@ -883,7 +876,8 @@ GRLIB_ignore_colisions_classes = [
 
 GRLIB_sar_wreck = "Land_Wreck_Heli_Attack_01_F";
 GRLIB_sar_fire = "test_EmptyObjectForFireBig";
-GRLIB_Ammobox = [
+// Ammobox you want keep contents
+GRLIB_Ammobox_keep = [
 	A3W_BoxWps,
 	medicalbox_typename,
 	"gm_AmmoBox_wood_02_empty",
