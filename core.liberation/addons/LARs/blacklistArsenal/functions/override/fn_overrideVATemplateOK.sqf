@@ -2,7 +2,7 @@
 #include "\A3\Ui_f\hpp\defineResinclDesign.inc"
 #include "macros.hpp"
 
-DEBUG( "Override OK" );
+diag_log  "Override OK";
 
 private[ "_notification" ];
 
@@ -13,7 +13,7 @@ _hideTemplate = true;
 _ctrlTemplateName = _display displayCtrl IDC_RSCDISPLAYARSENAL_TEMPLATE_EDITNAME;
 if (ctrlEnabled _ctrlTemplateName) then {
 	//--- Save
-	DEBUG( "Override OK: Save" );
+	diag_log "Override OK: Save";
 	[
 		_center,
 		[profileNamespace,ctrlText _ctrlTemplateName],
@@ -25,7 +25,7 @@ if (ctrlEnabled _ctrlTemplateName) then {
 	] call BIS_fnc_saveInventory;
 } else {
 	//--- Load
-	DEBUG( "Override OK: Load" );
+	diag_log "Override OK: Load";
 	_ctrlTemplateValue = _display displayCtrl IDC_RSCDISPLAYARSENAL_TEMPLATE_VALUENAME;
 	if ((_ctrlTemplateValue lbValue lnbCurSelRow _ctrlTemplateValue) >= 0) then {
 		_inventory = _ctrlTemplateValue lnbText [lnbCurSelRow _ctrlTemplateValue,0];

@@ -2,7 +2,7 @@
 #include "\A3\Ui_f\hpp\defineResinclDesign.inc"
 #include "macros.hpp"
 
-DEBUG( "LoadInventory WhiteList" );
+diag_log "LoadInventory WhiteList";
 
 #define DEFAULT_SLOT 0
 #define MUZZLE_SLOT 101
@@ -50,7 +50,7 @@ if (_nameID >= 0) then {
 _whiteList = _this param [2,[],[[]]];
 
 _msg = format[ "LoadInventory: WL: %1", _whiteList ];
-DEBUG( _msg );
+diag_log _msg;
 
 //--- Send to where the object is local (weapons can be changed only locally)
 if !(local _object) exitWith {[[_object,_cfg,_whiteList],"LARs_fnc_loadInventory_whiteList",_object] call BIS_fnc_MP; false};

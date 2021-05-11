@@ -7,7 +7,7 @@ while { GRLIB_endgame == 0 } do {
 		alive _x && vehicle _x == _x &&
 		(_x distance2D lhd) > GRLIB_sector_size &&
 		(_x distance2D (getmarkerpos 'respawn_west')) > GRLIB_sector_size &&
-		(_x distance2D ([] call F_getNearestFob)) > GRLIB_sector_size &&
+		(_x distance2D ([getPos _x] call F_getNearestFob)) > GRLIB_sector_size &&
 		!(([ GRLIB_sector_size, getPos _x ] call F_getNearestSector) in sectors_bigtown)
 	}] call BIS_fnc_conditionalSelect;
 

@@ -3,24 +3,24 @@
 
 params[ "_display" ];
 
-_msg = format[ "SEH: VCargo: %1", uiNamespace getVariable "LARs_override_virtualCargo" ];
-DEBUG( _msg );
+//_msg = format[ "SEH: VCargo: %1", uiNamespace getVariable "LARs_override_virtualCargo" ];
+//diag_log _msg;
 
 //VA template button OK
 _ctrlTemplateButtonOK = _display displayCtrl IDC_RSCDISPLAYARSENAL_TEMPLATE_BUTTONOK;
 _ctrlTemplateButtonOK ctrlRemoveAllEventHandlers "buttonclick";
 _ctrlTemplateButtonOK ctrlAddEventHandler ["buttonclick","with uinamespace do {[ctrlparent (_this select 0)] call LARs_fnc_overrideVATemplateOK;};"];
 
-_msg = format[ "SEH: OK: %1", _ctrlTemplateButtonOK ];
-DEBUG( _msg );
+//_msg = format[ "SEH: OK: %1", _ctrlTemplateButtonOK ];
+//diag_log _msg;
 
 //VA template listbox DblClick
 _ctrlTemplateValue = _display displayCtrl IDC_RSCDISPLAYARSENAL_TEMPLATE_VALUENAME;
 _ctrlTemplateValue ctrlRemoveAllEventHandlers "lbdblclick";
 _ctrlTemplateValue ctrlAddEventHandler ["lbdblclick","with uinamespace do {[ctrlparent (_this select 0)] call LARs_fnc_overrideVATemplateOK;};"];
 
-_msg = format[ "SEH: OK: %1", _ctrlTemplateValue ];
-DEBUG( _msg );
+//_msg = format[ "SEH: OK: %1", _ctrlTemplateValue ];
+//diag_log _msg;
 
 //VA button down, needed to override ENTER on template listbox
 _display displayRemoveAllEventHandlers "keyDown";

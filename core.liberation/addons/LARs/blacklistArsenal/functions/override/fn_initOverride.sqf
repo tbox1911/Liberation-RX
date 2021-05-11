@@ -15,23 +15,23 @@ if ( hasInterface ) then {
 		"LARs_fnc_addVAKeyEvents"
 	];
 
-	DEBUG( "Adding arsenalOpened SEH" );
+	//diag_log "Adding arsenalOpened SEH";
 
 	[ missionNamespace, "arsenalOpened", {
 	    disableSerialization;
 	    _display = _this select 0;
 		
-		DEBUG( "arsenalOpened SEH called" );
+		//diag_log "arsenalOpened SEH called";
 		
 		waitUntil { !isNil "BIS_fnc_arsenal_target" };
 
-		DEBUG( "SEH target done" );
+		//diag_log "SEH target done";
 
 		_center = BIS_fnc_arsenal_center;
 		_cargo = BIS_fnc_arsenal_cargo;
 		
 		_msg = format[ "SEH: Center: %1, Cargo: %2", _center, _cargo ];
-		DEBUG( _msg );
+		diag_log _msg;
 
 		_virtualItemCargo =
 			(missionNamespace call BIS_fnc_getVirtualItemCargo) +

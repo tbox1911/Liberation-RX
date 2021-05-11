@@ -4,7 +4,7 @@
 params[ "_display" ];
 
 _whiteList = uiNamespace getVariable [ "LARs_override_virtualCargo", [] ];
-if ( _whiteList isEqualTo [] ) exitWith { DEBUG( "No whiteList" ) };
+if ( _whiteList isEqualTo [] ) exitWith { diag_log "No whiteList" };
 if ( ctrlText ( _display displayCtrl IDC_RSCDISPLAYARSENAL_TEMPLATE_TITLE ) != "Load" ) exitWith {};
 
 _ctrlTemplateValue = _display displayCtrl IDC_RSCDISPLAYARSENAL_TEMPLATE_VALUENAME;
@@ -34,7 +34,7 @@ _fnc_recurseInv = {
 	}else{
 		_msg = format[ "Rec N: %1, D: %2", _name, [ str _itemData, _itemData ] select ( _itemData isEqualType [] ) ];
 	};
-	DEBUG( _msg );
+	diag_log _msg;
 	
 	
 	switch ( typeName _itemData ) do {
@@ -57,7 +57,7 @@ _fnc_recurseInv = {
 	
 	if ( _isBaseCall ) then {
 		_msg = format[ "Ended with %1", _allowed ];
-		DEBUG( _msg );
+		diag_log _msg;
 		[ _name, _allowed ] call _fnc_setLnBEntry;
 	}else{
 		_allowed

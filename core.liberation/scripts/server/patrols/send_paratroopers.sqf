@@ -23,7 +23,8 @@ _sendPara = {
 	} foreach (crew _newvehicle);
 	sleep 0.2;
 
-	for "_i" from 1 to 8 do {
+	private _cargo_seat_free = count (fullCrew [_newvehicle, "cargo", true] - fullCrew [_newvehicle, "cargo", false]);
+	for "_i" from 1 to _cargo_seat_free do {
 		_unit = _para_group createUnit [opfor_paratrooper, getmarkerpos _spawnsector, [], 0, "NONE"];
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		_unit assignAsCargo _newvehicle;
