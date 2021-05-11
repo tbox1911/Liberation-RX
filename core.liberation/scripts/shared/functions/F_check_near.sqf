@@ -15,16 +15,17 @@ switch ( _list ) do {
 	case "ATM" : { _classlist = GRLIB_Marker_ATM};
 	case "FUEL" : { _classlist = GRLIB_Marker_FUEL};
 	case "REPAIR" : { _classlist = GRLIB_Marker_REPAIR};
-	case "RESPAWN" : { _classlist = GRLIB_mobile_respawn};
+	case "RESPAWN" : { _object = [mobile_respawn, Respawn_truck_typename, huron_typename]};
 	case "MEDIC" : { _object = ai_healing_sources};
-	case "ARSENAL" : { _object = Arsenal_typename};
+	case "ARSENAL" : { _object = [Arsenal_typename]};
 	case "REAMMO" : { _object = vehicle_rearm_sources};
 	case "REAMMO_AI" : { _object = ai_resupply_sources};
 };
 
 if (count(_classlist) == 0 ) then {
 	// From Objects
-	_near = (_vehpos nearEntities [_object, _dist]);
+	//_near = (_vehpos nearEntities [_object, _dist]); //dont find tent
+	_near = nearestObjects [_vehpos, _object, _dist];
 } else {
 	// From GRLIB_Marker
 	_near = _classlist select {( _vehpos distance2D _x) <= _dist};
