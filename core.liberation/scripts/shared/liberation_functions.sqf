@@ -1,3 +1,5 @@
+F_addPlayerScore = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_addPlayerScore.sqf";
+F_addPlayerAmmo = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_addPlayerAmmo.sqf";
 F_getNearestFob = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getNearestFob.sqf";
 F_getMobileRespawns = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getMobileRespawns.sqf";
 F_getUnitsCount = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getUnitsCount.sqf";

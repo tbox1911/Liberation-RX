@@ -18,13 +18,13 @@ class liberation_admin {
 	  "Item01Button",
 	  "Item02Button",
     "Item03Button",
+    "Item04Button",    
 	  "CancelButton",
     "adminInfo01",
     "admin_cb_1607",
     "admin_cb_text",
-    "PlayerList",
-    "PlayerList2",
-    "PlayerList3"
+    "BannedList",
+    "PlayerList"
 	};
 
 	objects[] = {};
@@ -104,56 +104,54 @@ class liberation_admin {
     font = "RobotoCondensed";
     sizeEx = 0.04;
   };
-
   class Item01Button: StdButton
   {
     idc = 1602;
     action = "do_unban=1";
-
     text = "UnBAN player";
     x = 0.2275 * safezoneW + safezoneX;
     y = 0.364 * safezoneH + safezoneY;
     w = 0.0875 * safezoneW;
     h = 0.04 * safezoneH;
   };
-  class PlayerList: StdCombo {
+  class BannedList: StdCombo {
     idc = 1611;
     x = 0.3275 * safezoneW + safezoneX;
     y = 0.368 * safezoneH + safezoneY;
     w = 0.09 * safezoneW;
     h = 0.033 * safezoneH;
   };
-  class Item02Button: StdButton
-  {
+  class Item02Button: RscActiveText {
     idc = 1603;
     action = "do_score=1";
-    text = "Add 200 Points";
+    text = "";
     x = 0.2275 * safezoneW + safezoneX;
     y = 0.416 * safezoneH + safezoneY;
-    w = 0.0875 * safezoneW;
+    w = 0.0290 * safezoneW;
     h = 0.04 * safezoneH;
   };
-  class PlayerList2: StdCombo {
-    idc = 1612;
-    x = 0.3275 * safezoneW + safezoneX;
-    y = 0.420 * safezoneH + safezoneY;
-    w = 0.09 * safezoneW;
-    h = 0.033 * safezoneH;
-  };
-  class Item03Button: StdButton
-  {
+  class Item03Button: RscActiveText {
     idc = 1615;
     action = "do_ammo=1";
-    text = "Add 300 Ammo";
-    x = 0.2275 * safezoneW + safezoneX;
-    y = 0.468 * safezoneH + safezoneY;
-    w = 0.0875 * safezoneW;
+    text = "";
+    x = 0.2567 * safezoneW + safezoneX;
+    y = 0.416 * safezoneH + safezoneY;
+    w = 0.0290 * safezoneW;
     h = 0.04 * safezoneH;
   };
-  class PlayerList3: StdCombo {
+  class Item04Button: RscActiveText {
     idc = 1616;
+    action = "do_change=1";
+    text = "";
+    x = 0.2859 * safezoneW + safezoneX;
+    y = 0.416 * safezoneH + safezoneY;
+    w = 0.0290 * safezoneW;
+    h = 0.04 * safezoneH;
+  };  
+  class PlayerList: StdCombo {
+    idc = 1612;
     x = 0.3275 * safezoneW + safezoneX;
-    y = 0.472 * safezoneH + safezoneY;
+    y = 0.416 * safezoneH + safezoneY;
     w = 0.09 * safezoneW;
     h = 0.033 * safezoneH;
   };
@@ -187,7 +185,6 @@ class liberation_admin {
     w = 0.0875 * safezoneW;
     h = 0.04 * safezoneH;
   };
-
   class adminInfo01: GREUH_RscStructuredText
   {
     idc = 1606;
