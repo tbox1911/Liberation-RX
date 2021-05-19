@@ -131,7 +131,7 @@ air_vehicles = [
 	["B_T_VTOL_01_infantry_F",10,1300,15,GRLIB_perm_air],
 	["B_T_VTOL_01_vehicle_F",10,1400,15,GRLIB_perm_air],
 	["B_T_VTOL_01_armed_F",20,2500,40,GRLIB_perm_max],
-	["B_Heli_Attack_01_dynamicLoadout_F",10,3000,20,GRLIB_perm_air],
+	["B_Heli_Attack_01_dynamicLoadout_F",10,2250,20,GRLIB_perm_air],
 	["B_Heli_Attack_02_dynamicLoadout_F",10,4500,20,GRLIB_perm_max],
 	["I_Plane_Fighter_03_dynamicLoadout_F", 10,3500,20,GRLIB_perm_max],
 	["B_Plane_CAS_01_dynamicLoadout_F",20,3000,40,GRLIB_perm_max],
@@ -160,6 +160,13 @@ static_vehicles = [
 	["B_static_AT_F",0,50,0,GRLIB_perm_air],
 	["B_Mortar_01_F",0,500,0,GRLIB_perm_max],
 	["B_AAA_System_01_F",10,500,0,GRLIB_perm_max]
+];
+
+// *** Static Weapon with AI ***
+static_vehicles_AI = [
+	"B_AAA_System_01_F",
+	"B_SAM_System_02_F",
+	"O_SAM_System_04_F"
 ];
 
 buildings = [
@@ -317,7 +324,7 @@ squads = [
 uavs = [
 	"B_UAV_01_F",
 	"B_UAV_02_dynamicLoadout_F",
-	"B_T_UAV_03_F",
+	"B_T_UAV_03_dynamicLoadout_F",
 	"B_UAV_05_F",
 	"B_UAV_06_F",
 	"C_UAV_06_F",

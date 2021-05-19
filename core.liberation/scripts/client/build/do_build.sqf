@@ -315,7 +315,7 @@ while { true } do {
 				};
 
 				// Vehicle owner
-				if(buildtype in [2,3,4,7,9]) then {
+				if(buildtype in [2,3,4,5,7,9]) then {
 					if (!(typeOf _vehicle in GRLIB_vehicle_blacklist) ) then {
 						_vehicle setVariable ["GRLIB_vehicle_owner", getPlayerUID player, true];
 						_vehicle allowCrewInImmobile true;
@@ -328,11 +328,6 @@ while { true } do {
 					[ _vehicle ] call F_forceBluforCrew;
 					_vehicle setVariable ["GRLIB_vehicle_manned", true, true];
 					player hcSetGroup [group _vehicle];
-				};
-
-				// set mass heavy Static
-				if ( _classname in ["B_AAA_System_01_F","B_Ship_Gun_01_F"] ) then {
-					_vehicle setMass 5000;
 				};
 
 				// Default Paint
@@ -376,9 +371,12 @@ while { true } do {
 				// Static Weapon
 				if (_classname in _list_static) then {
 					[_vehicle] spawn protect_static;
-					if (_classname == "B_AAA_System_01_F" ) then {
+					if (_classname in static_vehicles_AI) then {
+						_vehicle setMass 5000;
 						[ _vehicle ] call F_forceBluforCrew;
 						_vehicle setVariable ["GRLIB_vehicle_manned", true, true];
+						_vehicle setVehicleLock "LOCKEDPLAYER";
+						_vehicle addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1}];
 					};
 				};
 

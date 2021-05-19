@@ -64,6 +64,12 @@ _building_classnames = [FOB_typename];
 	_classnames_to_save_blu pushback (_x select 0);
 } foreach (static_vehicles + air_vehicles + heavy_vehicles + light_vehicles + support_vehicles + ind_recyclable);
 
+_list_static_weapons = [];
+{
+	_list_static_weapons pushback (_x select 0);
+} foreach static_vehicles;
+_vehicles_blacklist = _list_static_weapons + uavs + [mobile_respawn];
+
 _classnames_to_save = _classnames_to_save + _classnames_to_save_blu + all_hostile_classnames;
 _buildings_created = [];
 
@@ -176,7 +182,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 					_nextbuilding setAmmoCargo 0;
 				};
 
-				if ( _owner != "" && _owner != "public" ) then {
+				if ( _owner != "" && _owner != "public" && !(_nextclass in _vehicles_blacklist)) then {
 					[_x select 5] params [["_color", ""]];
 					[_x select 6] params [["_color_name", ""]];
 					[_x select 7] params [["_lst_a3", []]];
@@ -206,13 +212,27 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 					_nextbuilding setVariable ["GRLIB_vehicle_ishuron", true, true];
 				};
 
+				if (_nextclass in _list_static) then {
+					[_nextbuilding] spawn protect_static;
+					_nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
+					_nextbuilding setVariable ["R3F_LOG_disabled", false, true];
+					if (_nextclass in static_vehicles_AI) then {
+						_nextbuilding setVehicleLock "LOCKEDPLAYER";
+						_nextbuilding addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1}];
+						_nextbuilding allowCrewInImmobile true;
+						_nextbuilding setUnloadInCombat [true, false];			
+					};
+				};
+
+				if (_nextclass in uavs) then {
+					_nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
+					_nextbuilding setVehicleLock "LOCKED";
+					_nextbuilding setVariable ["R3F_LOG_disabled", true, true];
+				};
+
 				if ( _hascrew ) then {
 					[ _nextbuilding ] call F_forceBluforCrew;
 					_nextbuilding setVariable ["GRLIB_vehicle_manned", true, true];
-				};
-
-				if (_nextclass in _list_static) then {
-					[_nextbuilding] spawn protect_static;
 				};
 
 				if ( !(_nextclass in no_kill_handler_classnames ) ) then {
