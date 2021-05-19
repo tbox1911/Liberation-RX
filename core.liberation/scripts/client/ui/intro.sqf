@@ -1,11 +1,10 @@
-private [ "_dialog" ];
-
 if ( isNil "cinematic_camera_started" ) then { cinematic_camera_started = false };
 if (isMultiplayer) then {
 	waituntil {(time > 2) && (getClientStateNumber >= 10) && (getClientState == "BRIEFING READ")};
 } else {
 	GRLIB_introduction = true;
 };
+waitUntil {!(isNull (findDisplay 46))};
 
 [] spawn cinematic_camera;
 uiSleep 1;
@@ -30,12 +29,14 @@ showcaminfo = true;
 dostartgame = 0;
 howtoplay = 0;
 
-_dialog = createDialog "liberation_menu";
+createDialog "liberation_menu";
+waitUntil { dialog };
+
 _noesckey = (findDisplay 5651) displayAddEventHandler ["KeyDown", "if ((_this select 1) == 1) then { true }"];
 disableUserInput false;
 disableUserInput true;
 disableUserInput false;
-waitUntil { dialog };
+
 waitUntil { dostartgame == 1 || howtoplay == 1 || !dialog };
 //disableUserInput true;
 (findDisplay 5651) displayRemoveEventHandler ["KeyDown", _noesckey];
