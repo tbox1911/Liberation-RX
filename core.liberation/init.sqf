@@ -1,11 +1,7 @@
 titleText ["","BLACK FADED", 1000];
 diag_log "--- Liberation RX by pSiKO ---";
 [] call compileFinal preprocessFileLineNUmbers "build_info.sqf";
-if (!isMultiplayer ) then {
-	titleText ["Sorry, -Liberation RX- is a Multiplayer mission only...","BLACK FADED", 1000];
-	sleep 5;
-	endMission "LOSER";
-};
+if (!isMultiplayer) exitWith { diag_log "Sorry, Liberation RX is a Multiplayer Mission Only..." };
 diag_log "--- Init start ---";
 
 enableSaving [false, false];
