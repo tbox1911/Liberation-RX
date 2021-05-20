@@ -48,8 +48,8 @@ switch ( toLower _listType ) do {
 							{
 								{
 									_itemType = ( _x call BIS_fnc_itemType ) select 0;
-									if ( { _itemType == _x }count [ "Weapon", "Item", "Equipment", "Magazine", "Mine" ] ) then {
-										_nul = _newlist pushBack _x;
+									if ( _itemType in [ "Weapon", "Item", "Equipment", "Magazine", "Mine" ] ) then {
+										_newlist pushBack _x;
 									};
 								}forEach _x;
 							}forEach [
@@ -58,7 +58,7 @@ switch ( toLower _listType ) do {
 							];
 						}else{
 							//Its a classname so push item into the list
-							_nul = _newlist pushBack _x;
+							_newlist pushBack _x;
 						};
 					}else{
 						//Get global vars data

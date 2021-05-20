@@ -21,7 +21,7 @@ if ( GRLIB_CUPW_enabled ) then {
 		"CUP_optic_AN_PAS_13c2",
 		"CUP_optic_GOSHAWK",
 		"CUP_optic_GOSHAWK_RIS"
-	 ];
+	];
 	(
 		"
 		getText (_x >> 'DLC') == 'CUP_Weapons' &&
@@ -36,7 +36,8 @@ if ( GRLIB_CUPW_enabled ) then {
 	(
 		"
 		((configName _x) select [0,4]) == 'CUP_' &&
-		(configName _x) find '_Tracer' < 0
+		(configName _x) find '_Tracer' < 0 &&
+		!((configName _x) in GRLIB_CUPW_Blacklist)
 		"
     	configClasses (configfile >> "CfgMagazines")
 	) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x)} ;
@@ -45,7 +46,7 @@ if ( GRLIB_CUPW_enabled ) then {
 // Add GM Weapons
 if ( GRLIB_GM_enabled ) then {
 	 GRLIB_GM_Blacklist = [
-	 ];
+	];
 	(
 		"
 		getText (_x >> 'dlc') == 'gm' &&
@@ -59,7 +60,8 @@ if ( GRLIB_GM_enabled ) then {
 	(
 		"
 		((configName _x) select [0,3]) == 'gm_' &&
-		(configName _x) find '_Tracer' < 0
+		(configName _x) find '_Tracer' < 0 &&
+		!((configName _x) in GRLIB_GM_Blacklist)
 		"
     	configClasses (configfile >> "CfgMagazines")
 	) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x)} ;
@@ -68,7 +70,7 @@ if ( GRLIB_GM_enabled ) then {
 // Add OPTRE Weapons
 if ( GRLIB_OPTRE_enabled ) then {
 	 GRLIB_OPTRE_Blacklist = [
-	 ];
+	];
 	(
 		"
 		getText (_x >> 'dlc') == 'OPTRE' &&
@@ -81,11 +83,33 @@ if ( GRLIB_OPTRE_enabled ) then {
 	(
 		"
 		((configName _x) select [0,6]) == 'OPTRE_' &&
-		(configName _x) find '_Tracer' < 0
+		(configName _x) find '_Tracer' < 0 &&
+		!((configName _x) in GRLIB_OPTRE_Blacklist)
 		"
     	configClasses (configfile >> "CfgMagazines")
 	) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x)} ;
 };
+
+ // Add EricJ Weapons
+if ( GRLIB_EJW_enabled ) then {
+    GRLIB_EJW_Blacklist = [
+	];
+    (
+        "
+        getText (_x >> 'dlc') == 'u100' &&
+        !((configName _x) in GRLIB_EJW_Blacklist)
+        "
+        configClasses (configfile >> "CfgWeapons" )
+    ) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
+
+    (
+        "
+        (getText (_x >> 'ammo') select [0,3]) == 'ej_' &&
+		!((configName _x) in GRLIB_EJW_Blacklist)
+        "
+        configClasses (configfile >> "CfgMagazines")
+    ) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x)} ;
+}; 
 
 // if mod enabled
 if ( GRLIB_GM_enabled || GRLIB_OPTRE_enabled ) then {
