@@ -95,7 +95,7 @@ while { true } do {
 			[_unit] call player_EVH;
 
 			if (typeOf _unit in units_loadout_overide) then {
-				_loadouts_folder = format ["scripts\loadouts\%1\%2.sqf", GRLIB_side_friendly, typeOf _unit];
+				_loadouts_folder = format ["scripts\loadouts\forced\%1\%2.sqf", GRLIB_side_friendly, typeOf _unit];
 				[_unit] call compileFinal preprocessFileLineNUmbers _loadouts_folder;
 			};
 

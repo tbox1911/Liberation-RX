@@ -11,6 +11,7 @@ while { count units _grp < 3 } do {
 ((units _grp) select 0) moveInDriver _vehicle;
 ((units _grp) select 1) moveInGunner _vehicle;
 ((units _grp) select 2) moveInCommander _vehicle;
+sleep 0.2;
 {
 	if ( vehicle _x == _x ) then {
 		deleteVehicle _x;

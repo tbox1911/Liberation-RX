@@ -25,16 +25,21 @@ if ( _precise_position ) then {
 	};
 };
 
+if (surfaceIsWater _spawnpos && !(_classname in opfor_boat)) then {
+	_classname = selectRandom opfor_boat;
+};
+
 _newvehicle = objNull;
 if ( _classname in opfor_choppers ) then {
 	_newvehicle = createVehicle [_classname, _spawnpos, [], 0, "FLY"];
 	_newvehicle setPos (getPosATL _newvehicle vectorAdd [0, 0, 400]);
 	_newvehicle flyInHeight 400;
 } else {
-	if (surfaceIsWater _spawnpos && !(_classname in opfor_boat)) then {
-		_classname = selectRandom opfor_boat;
+	_spawnpos set [2, 0.5];  //ATL
+	if (surfaceIsWater _spawnpos) then {
+		_seadepth = abs (getTerrainHeightASL _spawnpos);
+		_spawnpos set [2, _seadepth + 0.5];  //ASL
 	};
-	_spawnpos set [2,0];
 	_newvehicle = createVehicle [_classname, _spawnpos, [], 0, "NONE"];
 };
 _newvehicle allowdamage false;
@@ -48,14 +53,16 @@ if ( _classname in militia_vehicles ) then {
 	[ _newvehicle ] call F_libSpawnMilitiaCrew;
 } else {
 	createVehicleCrew _newvehicle;
-	sleep 1;
-	_vehcrew = crew _newvehicle;
-	{
-		_x allowdamage false;
-		_x addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
-		_x addEventHandler ["HandleDamage", {_this call damage_manager_EH}];
-	} foreach _vehcrew;
+	sleep 0.2;
 };
+
+_vehcrew = crew _newvehicle;
+{
+	_x allowdamage false;
+	_x addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
+	_x addEventHandler ["HandleDamage", {_this call damage_manager_EH}];
+} foreach _vehcrew;
+
 _newvehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
 _newvehicle allowCrewInImmobile true;
 _newvehicle setUnloadInCombat [true, false];

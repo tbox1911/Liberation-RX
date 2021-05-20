@@ -6,7 +6,8 @@ waitUntil {sleep 1; !isNil "GRLIB_limited_arsenal"};
 // Initalize Blacklist
 GRLIB_whitelisted_from_arsenal = [];
 GRLIB_blacklisted_from_arsenal = [];
-[] call compileFinal preprocessFileLineNUmbers "addons\LARs\liberationBlacklist.sqf";
+[] call compileFinal preprocessFileLineNUmbers format ["scripts\mod_template\%1\arsenal.sqf", GRLIB_mod_west];
+
 // Check LRX option
 if (GRLIB_limited_arsenal) then {
 	GRLIB_blacklisted_from_arsenal = blacklisted_bag + blacklisted_weapon;

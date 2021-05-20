@@ -1,4 +1,12 @@
-// All Object classname used in RX must be declared here
+// All Object classname used in LRX must be declared here
+
+// *** FRIENDLIES ***
+[] call compileFinal preprocessFileLineNUmbers format ["scripts\mod_template\%1\classnames_west.sqf", GRLIB_mod_west];
+[] call F_calcUnitsCost;
+// *** BADDIES ***
+[] call compileFinal preprocessFileLineNUmbers format ["scripts\mod_template\%1\classnames_east.sqf", GRLIB_mod_east];
+// *** CIVILIAN ***
+[] call compileFinal preprocessFileLineNUmbers format ["scripts\mod_template\%1\classnames_civ.sqf", GRLIB_mod_west];
 
 if ( isNil "FOB_typename" ) then { FOB_typename = "Land_Cargo_HQ_V1_F" };
 if ( isNil "FOB_box_typename" ) then { FOB_box_typename = "B_Slingload_01_Cargo_F" };
@@ -30,146 +38,40 @@ if ( isNil "PAR_Medikit" ) then { PAR_Medikit = "Medikit" };
 if ( isNil "PAR_AidKit" ) then { PAR_AidKit = "FirstAidKit" };
 if ( isNil "A3W_BoxWps" ) then { A3W_BoxWps = "Box_East_Wps_F" };
 if ( isNil "canisterFuel" ) then { canisterFuel = "Land_CanisterFuel_Red_F" };
+if ( isNil "uavs" ) then { uavs = [] };
+if ( isNil "vehicle_artillery" ) then { vehicle_artillery = [] };
+if ( isNil "vehicle_big_units" ) then { vehicle_big_units = [] };
+if ( isNil "civilians" ) then { civilians = ["C_man_1"] };
+if ( isNil "civilian_vehicles" ) then { civilian_vehicles = ["C_SUV_01_F"] };
 
-// *** FRIENDLIES ***
-// [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
-infantry_units = [
-	["Alsatian_Random_F",0,0,0,GRLIB_perm_max],
-	["Fin_random_F",0,0,0,0],
-	["B_soldier_F",1,0,0,0],
-	["B_medic_F",1,0,0,0],
-	["B_engineer_F",1,0,0,0],
-	["B_soldier_GL_F",1,0,0,GRLIB_perm_inf],
-	["B_soldier_M_F",1,0,0,GRLIB_perm_inf],
-	["B_soldier_LAT_F",1,0,0,0],
-	["B_Sharpshooter_F",1,0,0,GRLIB_perm_inf],
-	["B_HeavyGunner_F",1,0,0,GRLIB_perm_inf],
-	["B_recon_F",1,0,0,GRLIB_perm_log],
-	["B_recon_M_F",1,0,0,GRLIB_perm_log],
-	["B_Recon_Sharpshooter_F",1,0,0,GRLIB_perm_log],
-	["B_soldier_AA_F",1,0,0,GRLIB_perm_log],
-	["B_soldier_AT_F",1,0,0,GRLIB_perm_log],
-	["B_sniper_F",1,0,0,GRLIB_perm_log],
-	["B_soldier_PG_F",1,0,0,GRLIB_perm_log],
-	[crewman_classname,1,0,0,GRLIB_perm_inf],
-	[pilot_classname,1,0,0,GRLIB_perm_log]
-];
+// *** SUPPORT ***
+support_vehicles = [
+	[Arsenal_typename,0,10,0,0],
+	[medicalbox_typename,5,5,0,0],
+	[mobile_respawn,10,5,0,0],
+	[canisterFuel,0,5,1,0],
+	[Respawn_truck_typename,15,150,5,GRLIB_perm_log],
+	[repair_sling_typename,10,100,0,GRLIB_perm_log],
+	[fuel_sling_typename,0,100,30,GRLIB_perm_log],
+	[ammo_sling_typename,0,150,0,GRLIB_perm_log],
+	[medic_sling_typename,10,100,0,GRLIB_perm_log],
+	[ammo_truck_typename,5,200,10,GRLIB_perm_tank],
+	[repair_truck_typename,10,130,10,GRLIB_perm_tank],
+	[fuel_truck_typename,5,120,40,GRLIB_perm_tank],
+	[FOB_box_typename,50,1500,50,GRLIB_perm_max],
+	[FOB_truck_typename,50,1500,50,GRLIB_perm_max],
+	["Land_CargoBox_V1_F",0,500,0,GRLIB_perm_max],
+	[ammobox_b_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
+	[ammobox_o_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
+	[ammobox_i_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
+	[A3W_BoxWps,0,round(150 / GRLIB_recycling_percentage),0,99999],
+	[waterbarrel_typename,0,round(100 / GRLIB_recycling_percentage),0,GRLIB_perm_inf],
+	[fuelbarrel_typename,0,round(100 / GRLIB_recycling_percentage),0,GRLIB_perm_inf],
+	[foodbarrel_typename,0,round(100 / GRLIB_recycling_percentage),0,GRLIB_perm_inf]
+] + support_vehicles_west;
 
-// calc units price
-[] call compileFinal preprocessFileLineNumbers "scripts\loadouts\init_loadouts.sqf";
-private _grp = createGroup [GRLIB_side_friendly, true];
-{
-	_unit_class = _x select 0;
-	_unit_mp = _x select 1;
-	_unit_rank = _x select 4;
-	_unit = _grp createUnit [_unit_class, [0,0,0], [], 0, "NONE"];
-	if (typeOf _unit in units_loadout_overide) then {
-		private _loadouts_folder = format ["scripts\loadouts\%1\%2.sqf", GRLIB_side_friendly, typeOf _unit];
-		[_unit] call compileFinal preprocessFileLineNUmbers _loadouts_folder;
-	};
-	_price = [_unit] call F_loadoutPrice;
-	infantry_units set [_forEachIndex, [_unit_class, _unit_mp, _price, 0,_unit_rank]];
-	deleteVehicle _unit;
-} foreach infantry_units;
-
-light_vehicles = [
-	["B_Quadbike_01_F",1,5,1,0],
-	["B_Boat_Transport_01_F",1,25,1,GRLIB_perm_inf],
-	["C_Boat_Transport_02_F",2,25,2,GRLIB_perm_log],
-	["B_Boat_Armed_01_minigun_F",5,30,5,GRLIB_perm_log],
-	["B_SDV_01_F",5,30,5,GRLIB_perm_log],
-	["C_Scooter_Transport_01_F",1,5,1,0],
-	["SUV_01_base_black_F",1,10,1,0],
-	["B_G_Offroad_01_F",1,10,1,0],
-	["B_G_Offroad_01_armed_F",1,50,1,GRLIB_perm_inf],
-	["C_SUV_01_F",1,10,1,GRLIB_perm_inf],
-	["C_Van_01_transport_F",1,15,1,0],
-	["B_MRAP_01_F",2,25,2,0],
-	["B_MRAP_01_hmg_F",5,100,2,GRLIB_perm_inf],
-	["B_MRAP_01_gmg_F",5,125,2,GRLIB_perm_log],
-	["I_MRAP_03_F",2,25,2,0],
-	["I_MRAP_03_hmg_F",5,100,2,GRLIB_perm_inf],
-	["I_MRAP_03_gmg_F",5,125,2,GRLIB_perm_log],
-	["B_Truck_01_transport_F",5,30,5,GRLIB_perm_log],
-	["B_Truck_01_covered_F",5,30,5,GRLIB_perm_log],
-	["I_LT_01_cannon_F",2,200,2,GRLIB_perm_log],
-	["B_LSV_01_unarmed_F",2,25,2,GRLIB_perm_inf],
-	["B_LSV_01_armed_F",5,100,2,GRLIB_perm_log],
-	["B_UGV_01_F",5,10,5,GRLIB_perm_inf],
-	["B_UGV_01_rcws_F",5,250,5,GRLIB_perm_log]
-];
-
-heavy_vehicles = [
-	["B_APC_Tracked_01_rcws_F",10,500,10,GRLIB_perm_log],
-	["B_APC_Wheeled_01_cannon_F",10,500,10,GRLIB_perm_log],
-	["B_APC_Tracked_01_AA_F",10,500,10,GRLIB_perm_tank],
-	["I_APC_Wheeled_03_cannon_F",10,500,10,GRLIB_perm_tank],
-	["I_APC_tracked_03_cannon_F",10,500,10,GRLIB_perm_tank],
-	["B_MBT_01_cannon_F",15,1000,15,GRLIB_perm_tank],
-	["B_MBT_01_TUSK_F",15,1500,15,GRLIB_perm_air],
-	["I_MBT_03_cannon_F",15,4500,15,GRLIB_perm_max],
-	["B_AFV_Wheeled_01_cannon_F",15,3000,15,GRLIB_perm_max],
-	["B_AFV_Wheeled_01_up_cannon_F",15,3500,15,GRLIB_perm_max],
-	["B_MBT_01_arty_F",15,3500,15,GRLIB_perm_max],
-	["I_E_Truck_02_MRL_F",15,3500,15,GRLIB_perm_max]
-];
-
-air_vehicles = [
-	["B_UAV_01_F",1,10,5,GRLIB_perm_log],
-	["B_UAV_06_F",1,30,5,GRLIB_perm_tank],
-	["B_UAV_02_dynamicLoadout_F",5,1000,5,GRLIB_perm_air],
-	["B_T_UAV_03_dynamicLoadout_F",5,1500,10,GRLIB_perm_max],
-	["B_UAV_05_F",5,2000,15,GRLIB_perm_max],
-	["C_Plane_Civil_01_F",1,50,5,GRLIB_perm_air],
-	["B_Heli_Light_01_F",1,50,5,GRLIB_perm_log],
-	["I_Heli_light_03_unarmed_F",1,50,5,GRLIB_perm_tank],
-	["I_Heli_light_03_dynamicLoadout_F",10,1500,20,GRLIB_perm_air],
-	["B_Heli_Light_01_dynamicLoadout_F",5,200,10,GRLIB_perm_air],
-	["B_Heli_Transport_03_unarmed_F",10,500,15,GRLIB_perm_tank],
-	["B_Heli_Transport_03_F",10,1500,15,GRLIB_perm_air],
-	["B_Heli_Transport_01_F",10,1500,15,GRLIB_perm_tank],
-	["B_T_VTOL_01_infantry_F",10,1300,15,GRLIB_perm_air],
-	["B_T_VTOL_01_vehicle_F",10,1400,15,GRLIB_perm_air],
-	["B_T_VTOL_01_armed_F",20,2500,40,GRLIB_perm_max],
-	["B_Heli_Attack_01_dynamicLoadout_F",10,2250,20,GRLIB_perm_air],
-	["B_Heli_Attack_02_dynamicLoadout_F",10,4500,20,GRLIB_perm_max],
-	["I_Plane_Fighter_03_dynamicLoadout_F", 10,3500,20,GRLIB_perm_max],
-	["B_Plane_CAS_01_dynamicLoadout_F",20,3000,40,GRLIB_perm_max],
-	["B_Plane_Fighter_01_F",20,4500,40,GRLIB_perm_max],
-	["B_Plane_Fighter_01_Stealth_F",20,4500,40,GRLIB_perm_max]
-];
-
-blufor_air = [
-	"I_Heli_light_03_F",
-	"B_Heli_Attack_01_F",
-	"B_Plane_CAS_01_F",
-	"B_Plane_Fighter_01_F",
-	"I_Heli_light_03_F",
-	"B_Heli_Attack_01_F",
-	"I_Plane_Fighter_04_F"
-];
-
-static_vehicles = [
-	["B_UGV_02_Demining_F",0,5,0,GRLIB_perm_inf],
-	["B_Static_Designator_01_F",0,5,0,GRLIB_perm_inf],
-	["B_HMG_01_F",0,10,0,GRLIB_perm_log],
-	["B_HMG_01_high_F",0,10,0,GRLIB_perm_tank],
-	["B_GMG_01_F",0,20,0,GRLIB_perm_log],
-	["B_GMG_01_high_F",0,20,0,GRLIB_perm_tank],
-	["B_static_AA_F",0,50,0,GRLIB_perm_air],
-	["B_static_AT_F",0,50,0,GRLIB_perm_air],
-	["B_Mortar_01_F",0,500,0,GRLIB_perm_max],
-	["B_AAA_System_01_F",10,500,0,GRLIB_perm_max]
-];
-
-// *** Static Weapon with AI ***
-static_vehicles_AI = [
-	"B_AAA_System_01_F",
-	"B_SAM_System_02_F",
-	"O_SAM_System_04_F"
-];
-
-buildings = [
+// *** BUILDINGS ***
+buildings = buildings_west + [
 	["Land_PierLadder_F",0,0,0,GRLIB_perm_inf],
 	["Land_CncBarrierMedium4_F",0,0,0,0],
 	["Land_CncWall4_F",0,0,0,0],
@@ -184,15 +86,11 @@ buildings = [
 	["Land_HBarrierTower_F",0,0,0,GRLIB_perm_tank],
 	["Land_HBarrierBig_F",0,0,0,GRLIB_perm_tank],
 	["Land_CncShelter_F",0,0,0,GRLIB_perm_log],
-	["Land_Cargo_Tower_V1_F",0,0,0,GRLIB_perm_tank],
-	["Land_Cargo_House_V1_F",0,0,0,GRLIB_perm_inf],
-	["Land_Cargo_Patrol_V1_F",0,0,0,GRLIB_perm_log],
 	["Land_BagBunker_Small_F",0,0,0,0],
 	["Land_BagBunker_Large_F",0,0,0,GRLIB_perm_tank],
 	["Land_BagBunker_Tower_F",0,0,0,GRLIB_perm_tank],
 	["Land_SM_01_shed_F",0,0,0,GRLIB_perm_max],
 	["Land_Hangar_F",0,0,0,GRLIB_perm_max],
-	["Flag_NATO_F",0,0,0,0],
 	["Land_PortableLight_double_F",0,0,0,GRLIB_perm_log],
 	["Land_LampHalogen_F",0,0,0,GRLIB_perm_tank],
 	["Land_HelipadSquare_F",0,0,0,GRLIB_perm_log],
@@ -221,119 +119,7 @@ buildings = [
 	["Land_CzechHedgehog_01_new_F",0,0,0,GRLIB_perm_inf]
 ];
 
-support_vehicles = [
-	[Arsenal_typename,0,10,0,0],
-	[medicalbox_typename,5,5,0,0],
-	[mobile_respawn,10,5,0,0],
-	[canisterFuel,0,5,1,0],
-	["B_G_Offroad_01_repair_F",5,15,5,GRLIB_perm_inf],
-	["B_G_Van_01_fuel_F",5,15,20,GRLIB_perm_inf],
-	[Respawn_truck_typename,15,150,5,GRLIB_perm_log],
-	[repair_sling_typename,10,100,0,GRLIB_perm_log],
-	[fuel_sling_typename,0,100,30,GRLIB_perm_log],
-	[ammo_sling_typename,0,150,0,GRLIB_perm_log],
-	[medic_sling_typename,10,100,0,GRLIB_perm_log],
-	[ammo_truck_typename,5,200,10,GRLIB_perm_tank],
-	[repair_truck_typename,10,130,10,GRLIB_perm_tank],
-	[fuel_truck_typename,5,120,40,GRLIB_perm_tank],
-	["Box_NATO_WpsLaunch_F",0,150,0,GRLIB_perm_tank],
-	["Land_CargoBox_V1_F",0,500,0,GRLIB_perm_max],
-	[FOB_box_typename,50,1500,50,GRLIB_perm_max],
-	[FOB_truck_typename,50,1500,50,GRLIB_perm_max],
-	["B_APC_Tracked_01_CRV_F",10,2000,20,GRLIB_perm_max],
-	[ammobox_b_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
-	[ammobox_o_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
-	[ammobox_i_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
-	[A3W_BoxWps,0,round(150 / GRLIB_recycling_percentage),0,99999],
-	[waterbarrel_typename,0,round(100 / GRLIB_recycling_percentage),0,GRLIB_perm_inf],
-	[fuelbarrel_typename,0,round(100 / GRLIB_recycling_percentage),0,GRLIB_perm_inf],
-	[foodbarrel_typename,0,round(100 / GRLIB_recycling_percentage),0,GRLIB_perm_inf]
-];
-
-if ( isNil "blufor_squad_inf_light" ) then { blufor_squad_inf_light = [] };
-if ( count blufor_squad_inf_light == 0 ) then { blufor_squad_inf_light = [
-	"B_Soldier_SL_F",
-	"B_medic_F",
-	"B_Soldier_GL_F",
-	"B_soldier_AR_F",
-	"B_Soldier_F",
-	"B_Soldier_F"
-	];
-};
-if ( isNil "blufor_squad_inf" ) then { blufor_squad_inf = [] };
-if ( count blufor_squad_inf == 0 ) then { blufor_squad_inf = [
-	"B_Soldier_SL_F",
-	"B_medic_F",
-	"B_soldier_M_F",
-	"B_Soldier_AR_F",
-	"B_HeavyGunner_F",
-	"B_Sharpshooter_F"
-	];
-};
-if ( isNil "blufor_squad_at" ) then { blufor_squad_at = [] };
-if ( count blufor_squad_at == 0 ) then { blufor_squad_at = [
-	"B_Soldier_SL_F",
-	"B_medic_F",
-	"B_soldier_AT_F",
-	"B_soldier_AT_F",
-	"B_soldier_F",
-	"B_soldier_F"
-	];
-};
-if ( isNil "blufor_squad_aa" ) then { blufor_squad_aa = [] };
-if ( count blufor_squad_aa == 0 ) then { blufor_squad_aa = [
-	"B_Soldier_SL_F",
-	"B_medic_F",
-	"B_soldier_AA_F",
-	"B_soldier_AA_F",
-	"B_soldier_F",
-	"B_soldier_F"
-	];
-};
-if ( isNil "blufor_squad_mix" ) then { blufor_squad_mix = [] };
-if ( count blufor_squad_mix == 0 ) then { blufor_squad_mix = [
-	"B_Soldier_SL_F",
-	"B_medic_F",
-	"B_soldier_AA_F",
-	"B_soldier_AT_F",
-	"B_soldier_F",
-	"B_soldier_F"
-	];
-};
-if ( isNil "blufor_squad_recon" ) then { blufor_squad_recon = [] };
-if ( count blufor_squad_recon == 0 ) then { blufor_squad_recon = [
-	"B_recon_TL_F",
-	"B_recon_medic_F",
-	"B_Recon_Sharpshooter_F",
-	"B_recon_LAT_F",
-	"B_recon_M_F",
-	"B_recon_F"
-	];
-};
-
-squads = [
-	[blufor_squad_inf_light,10,300,0,GRLIB_perm_max],
-	[blufor_squad_inf,20,400,0,GRLIB_perm_max],
-	[blufor_squad_recon,25,500,0,GRLIB_perm_max],
-	[blufor_squad_at,25,600,0,GRLIB_perm_max],
-	[blufor_squad_aa,25,600,0,GRLIB_perm_max],
-	[blufor_squad_mix,25,600,0,GRLIB_perm_max]
-];
-
-// All the UAVs must be declared here
-uavs = [
-	"B_UAV_01_F",
-	"B_UAV_02_dynamicLoadout_F",
-	"B_T_UAV_03_dynamicLoadout_F",
-	"B_UAV_05_F",
-	"B_UAV_06_F",
-	"C_UAV_06_F",
-	"B_UGV_01_F",
-	"B_UGV_01_rcws_F",
-	"B_UGV_02_Demining_F"
-];
-if ( isNil "uavs" ) then { uavs = [] };
-
+// *** ELITES ***
 elite_vehicles = [];
 { if (_x select 4 == GRLIB_perm_max) then { elite_vehicles pushback (_x select 0)} } foreach light_vehicles + heavy_vehicles + air_vehicles + static_vehicles;
 
@@ -341,112 +127,26 @@ elite_vehicles = [];
 ai_resupply_sources = [
 	Arsenal_typename,
 	ammo_truck_typename,
-	ammo_sling_typename,
-	"B_APC_Tracked_01_CRV_F"
-];
+	ammo_sling_typename
+] + ai_resupply_sources_west;
 
 // Everything the AI troups should be able to healing from
 ai_healing_sources = [
 	Respawn_truck_typename,
 	medicalbox_typename,
-	medic_sling_typename,
-	"B_APC_Tracked_01_CRV_F"
-];
+	medic_sling_typename
+] + ai_healing_sources_west;
 
 vehicle_rearm_sources = [
 	ammo_truck_typename,
 	ammo_sling_typename,
 	ammobox_b_typename,
 	ammobox_o_typename,
-	ammobox_i_typename,
-	"B_APC_Tracked_01_CRV_F"
-];
-
-vehicle_artillery = [
-	"B_Mortar_01_F",
-	"B_Ship_Gun_01_F",
-	"I_E_Truck_02_MRL_F",
-	"B_MBT_01_arty_F"
-];
-
-vehicle_big_units = [
-	"Land_Cargo_Tower_V1_F",
-	"B_T_VTOL_01_infantry_F",
-	"B_T_VTOL_01_vehicle_F",
-	"B_T_VTOL_01_armed_F",
-	"O_T_VTOL_01_infantry_F",
-	"O_T_VTOL_01_vehicle_F",
-	"O_T_VTOL_01_armed_F",
-	"Land_SM_01_shed_F",
-	"Land_Hangar_F"
-];
+	ammobox_i_typename
+] + vehicle_rearm_sources_west;
 
 
-// *** BADDIES ***
-
-if ( isNil "opfor_sentry") then { opfor_sentry = "O_Soldier_lite_F" };
-if ( isNil "opfor_rifleman") then { opfor_rifleman = "O_Soldier_F" };
-if ( isNil "opfor_grenadier") then { opfor_grenadier = "O_Soldier_GL_F" };
-if ( isNil "opfor_squad_leader") then { opfor_squad_leader = "O_Soldier_SL_F" };
-if ( isNil "opfor_team_leader") then { opfor_team_leader = "O_Soldier_TL_F" };
-if ( isNil "opfor_marksman") then { opfor_marksman = "O_soldier_M_F" };
-if ( isNil "opfor_machinegunner") then { opfor_machinegunner = "O_Soldier_AR_F" };
-if ( isNil "opfor_heavygunner") then { opfor_heavygunner = "O_HeavyGunner_F" };
-if ( isNil "opfor_medic") then { opfor_medic = "O_medic_F" };
-if ( isNil "opfor_rpg") then { opfor_rpg = "O_Soldier_LAT_F" };
-if ( isNil "opfor_at") then { opfor_at = "O_Soldier_AT_F" };
-if ( isNil "opfor_aa") then { opfor_aa = "O_Soldier_AA_F" };
-if ( isNil "opfor_officer") then { opfor_officer = "O_officer_F" };
-if ( isNil "opfor_sharpshooter") then { opfor_sharpshooter = "O_Sharpshooter_F" };
-if ( isNil "opfor_sniper") then { opfor_sniper = "O_sniper_F" };
-if ( isNil "opfor_engineer") then { opfor_engineer = "O_engineer_F" };
-if ( isNil "opfor_paratrooper") then { opfor_paratrooper = "O_soldier_PG_F" };
-if ( isNil "opfor_mrap") then { opfor_mrap = "O_MRAP_02_F" };
-if ( isNil "opfor_mrap_hmg") then { opfor_mrap_hmg = "O_MRAP_02_hmg_F" };
-if ( isNil "opfor_mrap_gmg") then { opfor_mrap_gmg = "O_MRAP_02_gmg_F" };
-if ( isNil "opfor_transport_helo") then { opfor_transport_helo = "O_Heli_Transport_04_bench_F" };
-if ( isNil "opfor_transport_truck") then { opfor_transport_truck = "O_Truck_03_covered_F" };
-if ( isNil "opfor_fuel_truck") then { opfor_fuel_truck = "O_Truck_03_fuel_F" };
-if ( isNil "opfor_ammo_truck") then { opfor_ammo_truck = "O_Truck_03_ammo_F" };
-if ( isNil "opfor_fuel_container") then { opfor_fuel_container = "Land_Pod_Heli_Transport_04_fuel_F" };
-if ( isNil "opfor_ammo_container") then { opfor_ammo_container = "Land_Pod_Heli_Transport_04_ammo_F" };
-if ( isNil "opfor_flag") then { opfor_flag = "Flag_CSAT_F" };
-
-militia_squad = [
-	"O_G_Soldier_SL_F",
-	"O_G_Soldier_A_F",
-	"O_G_Soldier_AR_F",
-	"O_G_medic_F",
-	"O_G_engineer_F",
-	"O_G_Soldier_exp_F",
-	"O_G_Soldier_GL_F",
-	"O_G_Soldier_M_F",
-	"O_G_Soldier_F",
-	"O_G_Soldier_LAT_F",
-	"O_G_Soldier_lite_F",
-	"O_G_Sharpshooter_F",
-	"O_G_Soldier_TL_F",
-	"O_Soldier_AA_F",
-	"O_Soldier_AT_F"
-];
-
-divers_squad = [
-	"O_diver_TL_F",
-	"O_diver_TL_F",
-	"O_diver_exp_F",
-	"O_diver_exp_F",
-	"O_diver_exp_F",
-	"O_diver_exp_F",
-	"O_diver_F",
-	"O_diver_F",
-	"O_diver_F",
-	"O_diver_F",
-	"O_diver_F",
-	"O_diver_F",
-	"O_diver_F",
-	"O_diver_F"
-];
-
+// *** RESISTANCE ***
 resistance_squad = [
 	"I_G_Soldier_SL_F",
 	"I_G_Soldier_A_F",
@@ -462,156 +162,6 @@ resistance_squad = [
 	"I_G_Soldier_TL_F"
 ];
 
-militia_vehicles = [
-	"O_G_Offroad_01_armed_F",
-	"O_G_Offroad_01_armed_F",
-	"O_G_Offroad_01_AT_F",
-	"I_C_Offroad_02_LMG_F",
-	"O_LSV_02_armed_F",
-	"O_LSV_02_AT_F"
-];
-
-opfor_boat = [
-	"O_Boat_Armed_01_hmg_F",
-	"O_T_Boat_Armed_01_hmg_F",
-	"O_Boat_Armed_01_hmg_F",
-	"O_T_Boat_Armed_01_hmg_F"
-];
-
-opfor_vehicles = [
-	"O_APC_Tracked_02_cannon_F",
-	"O_APC_Wheeled_02_rcws_F",
-	"O_APC_Tracked_02_cannon_F",
-	"O_APC_Wheeled_02_rcws_F",
-	"O_MBT_02_cannon_F",
-	"O_MBT_02_cannon_F",
-	"O_APC_Tracked_02_AA_F",
-	"O_MRAP_02_gmg_F",
-	"O_MRAP_02_hmg_F",
-	"O_MRAP_02_hmg_F",
-	"O_MBT_04_cannon_F",
-	"O_MBT_04_command_F"
-];
-
-opfor_vehicles_low_intensity = [
-	"O_APC_Tracked_02_cannon_F",
-	"O_APC_Wheeled_02_rcws_F",
-	"O_MRAP_02_hmg_F",
-	"O_MRAP_02_hmg_F",
-	"O_MRAP_02_gmg_F",
-	"O_LSV_02_armed_F",
-	"O_LSV_02_AT_F"
-];
-
-opfor_battlegroup_vehicles = [
-	"O_MRAP_02_hmg_F",
-	"O_MRAP_02_gmg_F",
-	"O_APC_Tracked_02_cannon_F",
-	"O_APC_Wheeled_02_rcws_F",
-	"O_Truck_03_covered_F",
-	"O_MBT_02_cannon_F",
-	"O_MBT_02_cannon_F",
-	"O_APC_Tracked_02_AA_F",
-	"O_Heli_Attack_02_F",
-	"O_Heli_Light_02_F",
-	"O_Heli_Transport_04_bench_F",
-	"O_MBT_04_cannon_F",
-	"O_MBT_04_command_F"
-];
-
-opfor_battlegroup_vehicles_low_intensity = [
-	"O_APC_Tracked_02_cannon_F",
-	"O_APC_Wheeled_02_rcws_F",
-	"O_MRAP_02_hmg_F",
-	"O_MRAP_02_hmg_F",
-	"O_MRAP_02_gmg_F",
-	"O_Truck_02_transport_F",
-	"O_Heli_Transport_04_bench_F",
-	"O_LSV_02_armed_F",
-	"O_LSV_02_AT_F"
-];
-
-opfor_troup_transports = [
-	"O_Truck_03_transport_F",
-	"O_Truck_03_covered_F",
-	"O_Truck_02_covered_F",
-	"O_Truck_02_transport_F",
-	"O_Heli_Transport_04_bench_F",
-	"O_Heli_Attack_02_F",
-	"O_Heli_Light_02_F",
-	"O_T_VTOL_02_infantry_F"
-];
-
-opfor_choppers = [
-	"O_Heli_Light_02_F",
-	"O_Heli_Light_02_v2_F",
-	"O_Heli_Attack_02_F",
-	"O_Heli_Attack_02_black_F",
-	"O_Heli_Transport_04_bench_F",
-	"O_T_VTOL_02_infantry_F"
-];
-
-opfor_air = [
-	"O_Heli_Attack_02_F",
-	"O_Heli_Attack_02_black_F",
-	"O_T_VTOL_02_infantry_F",
-	"O_Plane_CAS_02_F",
-	"O_Plane_Fighter_02_F"
-];
-
-opfor_statics = [
-	"O_HMG_01_high_F",
-	"O_GMG_01_high_F",
-	"O_static_AA_F",
-	"O_static_AT_F",
-	"O_Mortar_01_F"
-];
-
-opfor_texture_overide = [
-	//"Urban",
-	//"Digital"
-];
-
-opfor_recyclable = [
-	["O_HMG_01_high_F",0,round (20 / GRLIB_recycling_percentage),0],
-	["O_GMG_01_high_F",0,round (40 / GRLIB_recycling_percentage),0],
-	["O_static_AA_F",0,round (80 / GRLIB_recycling_percentage),0],
-	["O_static_AT_F",0,round (80 / GRLIB_recycling_percentage),0],
-	["O_Mortar_01_F",0,round (300 / GRLIB_recycling_percentage),0],
-	["O_LSV_02_armed_F",1,round (20 / GRLIB_recycling_percentage),2],
-	["O_LSV_02_AT_F",1,round (40 / GRLIB_recycling_percentage),2],
-	["O_G_Offroad_01_armed_F",1,round (30 / GRLIB_recycling_percentage),2],
-	["O_G_Offroad_01_AT_F",1,round (40 / GRLIB_recycling_percentage),2],
-	["I_C_Offroad_02_LMG_F",1,round (30 / GRLIB_recycling_percentage),2],
-	["O_Truck_02_covered_F",5,round (20 / GRLIB_recycling_percentage),5],
-	["O_Truck_02_transport_F",5,round (20 / GRLIB_recycling_percentage),5],
-	["O_Truck_03_covered_F",5,round (50 / GRLIB_recycling_percentage),5],
-	["O_Truck_03_transport_F",5,round (50 / GRLIB_recycling_percentage),5],
-	["O_MRAP_02_hmg_F",5,round (50 / GRLIB_recycling_percentage),3],
-	["O_MRAP_02_gmg_F",5,round (50 / GRLIB_recycling_percentage),3],
-	["O_Boat_Armed_01_hmg_F",2,round (100 / GRLIB_recycling_percentage),2],
-	["O_T_Boat_Armed_01_hmg_F",2,round (100 / GRLIB_recycling_percentage),2],
-	["O_APC_Wheeled_02_rcws_F",10,round (150 / GRLIB_recycling_percentage),10],
-	["O_APC_Tracked_02_cannon_F",10,round (200 / GRLIB_recycling_percentage),10],
-	["O_APC_Tracked_02_AA_F",10,round (300 / GRLIB_recycling_percentage),10],
-	["O_MBT_02_cannon_F",15,round (400 / GRLIB_recycling_percentage),15],
-	["O_MBT_04_cannon_F",15,round (500 / GRLIB_recycling_percentage),15],
-	["O_MBT_04_command_F",15,round (500 / GRLIB_recycling_percentage),15],
-	["O_Heli_Attack_02_F",10,round (700 / GRLIB_recycling_percentage),15],
-	["O_Heli_Attack_02_dynamicLoadout_F",10,round (700 / GRLIB_recycling_percentage),15],
-	["O_Heli_Attack_02_black_F",10,round (700 / GRLIB_recycling_percentage),15],
-	["O_Heli_Light_02_F",10,round (600 / GRLIB_recycling_percentage),10],
-	["O_Heli_Light_02_dynamicLoadout_F",10,round (600 / GRLIB_recycling_percentage),10],
-	["O_Heli_Light_02_v2_F",10,round (600 / GRLIB_recycling_percentage),10],
-	["O_Heli_Transport_04_bench_F",10,round (500 / GRLIB_recycling_percentage),10],
-	["O_Plane_CAS_02_F",20,round (1000 / GRLIB_recycling_percentage),30],
-	["O_Plane_Fighter_02_F",20,round (1000 / GRLIB_recycling_percentage),30],
-	["O_Plane_Fighter_02_Stealth_F",20,round (1000 / GRLIB_recycling_percentage),30],
-	["O_T_VTOL_02_vehicle_F",20,round (1000 / GRLIB_recycling_percentage),20],
-	["O_T_VTOL_02_infantry_F",20,round (1000 / GRLIB_recycling_percentage),20]
-];
-
-// Indep
 ind_recyclable = [
 	["I_static_AA_F",0,round (80 / GRLIB_recycling_percentage),0],
 	["I_static_AT_F",0,round (80 / GRLIB_recycling_percentage),0],
@@ -627,74 +177,6 @@ ind_statics = [
 	"I_static_AA_F",
 	"I_static_AT_F",
 	"I_Mortar_01_F"
-];
-
-// Other stuff
-
-civilians = [
-	"C_Orestes",
-	"C_Nikos",
-	"C_Nikos_aged",
-	"C_man_1",
-	"C_man_polo_6_F",
-	"C_man_polo_3_F",
-	"C_man_polo_2_F",
-	"C_man_polo_4_F",
-	"C_man_polo_5_F",
-	"C_man_polo_1_F",
-	"C_man_p_beggar_F",
-	"C_man_1_2_F",
-	"C_man_p_fugitive_F",
-	"C_man_hunter_1_F",
-	"C_Man_Fisherman_01_F",
-	"C_man_sport_1_F",
-	"C_man_sport_3_F",
-	"C_man_sport_2_F",
-	"C_Man_Messenger_01_F",
-	"C_Story_Mechanic_01_F",
-	"C_Man_casual_2_F",
-	"C_Man_casual_4_F",
-	"C_Man_casual_1_F",
-	"C_Man_casual_3_F",
-	"C_Man_casual_5_F",
-	"C_journalist_F",
-	"C_man_shorts_2_F",
-	"C_man_w_worker_F",
-	"C_Paramedic_01_base_F",
-	"C_Man_UAV_06_F",
-	"C_Man_UtilityWorker_01_F"
-];
-
-civilian_vehicles = [
-	"C_Quadbike_01_F",
-	"C_Heli_light_01_sheriff_F",
-	"C_Heli_Light_01_civil_F",
-	"C_Heli_light_01_furious_F",
-	"C_Heli_light_01_graywatcher_F",
-	"C_Hatchback_01_F",
-	"C_Hatchback_01_sport_F",
-	"C_Quadbike_01_F",
-	"C_Offroad_01_F",
-	"C_Offroad_01_darkred_F",
-	"C_Offroad_luxe_F",
-	"C_Offroad_02_unarmed_F",
-	"C_Offroad_01_covered_F",
-	"C_Offroad_01_comms_F",
-	"I_C_Offroad_02_unarmed_F",
-	"C_Quadbike_01_F",
-	"SUV_01_base_black_F",
-	"C_SUV_01_F",
-	"C_Van_01_transport_F",
-	"C_Van_01_box_F",
-	"C_Van_01_fuel_F",
-	"C_Quadbike_01_F",
-	"C_Van_02_transport_F",
-	"C_Van_02_medevac_F",
-	"C_Van_02_service_F",
-	"B_GEN_Van_02_transport_F",
-	"C_Truck_02_covered_F",
-	"C_Truck_02_transport_F",
-	"C_Tractor_01_F"
 ];
 
 // Configuration for ammo boxes transport
@@ -745,9 +227,7 @@ GRLIB_vehicle_whitelist = [
 	"Land_HBarrier_5_F",
 	"Land_BagBunker_Small_F",
 	"Land_BagFence_Long_F"
-] + opfor_statics;
-//{GRLIB_vehicle_whitelist pushBack ( _x select 0 )} foreach (support_vehicles);
-
+] + GRLIB_vehicle_whitelist_west + opfor_statics;
 
 // Blacklist Vehicle (lock and paint)
 GRLIB_vehicle_blacklist = [
@@ -770,8 +250,7 @@ GRLIB_vehicle_blacklist = [
 	medic_sling_typename,
   	"Box_NATO_WpsLaunch_F",
 	"Land_CargoBox_V1_F"
-];
-//{GRLIB_vehicle_blacklist pushBack ( _x select 0 )} foreach (support_vehicles);
+] + GRLIB_vehicle_blacklist_west;
 
 infantry_units = [ infantry_units ] call F_filterMods;
 light_vehicles = [ light_vehicles ] call F_filterMods;
@@ -898,6 +377,7 @@ GRLIB_ignore_colisions_classes = [
 
 GRLIB_sar_wreck = "Land_Wreck_Heli_Attack_01_F";
 GRLIB_sar_fire = "test_EmptyObjectForFireBig";
+
 // Ammobox you want keep contents
 GRLIB_Ammobox_keep = [
 	A3W_BoxWps,

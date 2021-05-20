@@ -42,6 +42,18 @@ class Params
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 1;
 	};
+	class ModPresetWest {
+		title = "MOD Preset - Friendly";
+		values[] = { 0,1,2,3,4,5 };
+		texts[] = { "A3", "CUPS", "GM", "EJW", "OPTRE", "RHS", "USAF"};
+		default = 0;
+	};
+	class ModPresetEast {
+		title = "MOD Preset - Enemy";
+		values[] = { 0,1,2,3,4,5 };
+		texts[] = { "A3", "CUPS", "GM", "EJW", "OPTRE", "RHS", "USAF"};
+		default = 0;
+	};
 	class ForcedLoadout {
 		title = $STR_FORCE_LOADOUT;
 		values[] = { 0,1,2 };

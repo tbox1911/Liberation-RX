@@ -1,98 +1,54 @@
-if ( isMultiplayer ) then {
-	GRLIB_difficulty_modifier = ["Difficulty",1] call bis_fnc_getParamValue;
-	GRLIB_time_factor = ["DayDuration",1] call bis_fnc_getParamValue;
-	GRLIB_resources_multiplier = ["ResourcesMultiplier",1] call bis_fnc_getParamValue;
-	GRLIB_fatigue = ["Fatigue",0] call bis_fnc_getParamValue;
-	GRLIB_revive = ["Revive",2] call bis_fnc_getParamValue;
-	GRLIB_tk_mode = ["TK_mode",0] call bis_fnc_getParamValue;
-	GRLIB_tk_count = ["TK_count",4] call bis_fnc_getParamValue;
-	GRLIB_introduction = ["Introduction",1] call bis_fnc_getParamValue;
-	GRLIB_deployment_cinematic = ["DeploymentCinematic",1] call bis_fnc_getParamValue;
-	GRLIB_unitcap = ["Unitcap",1] call bis_fnc_getParamValue;
-	GRLIB_adaptive_opfor = ["AdaptToPlayercount",1] call bis_fnc_getParamValue;
-	GRLIB_civilian_activity = ["Civilians",1] call bis_fnc_getParamValue;
-	GRLIB_wildlife_manager = ["Wildlife",1] call bis_fnc_getParamValue;
-	GRLIB_Patrol_manager = ["Patrol",1] call bis_fnc_getParamValue;
-	GRLIB_sector_radius = ["SectorRadius",0] call bis_fnc_getParamValue;
-	GRLIB_admin_menu = ["AdminMenu",1] call bis_fnc_getParamValue;
-	GRLIB_param_wipe_savegame_1 = ["WipeSave1",0] call bis_fnc_getParamValue;
-	GRLIB_param_wipe_savegame_2 = ["WipeSave2",0] call bis_fnc_getParamValue;
-	GRLIB_passive_income = ["PassiveIncome",0] call bis_fnc_getParamValue;
-	GRLIB_permissions_param = ["Permissions",1] call bis_fnc_getParamValue;
-	GRLIB_halo_param = ["HaloJump",1] call bis_fnc_getParamValue;
-	GRLIB_use_whitelist = ["Whitelist",1] call bis_fnc_getParamValue;
-	GRLIB_cleanup_vehicles = ["CleanupVehicles",2] call bis_fnc_getParamValue;
-	GRLIB_csat_aggressivity = ["Aggressivity",1] call bis_fnc_getParamValue;
-	GRLIB_weather_param = ["Weather",4] call bis_fnc_getParamValue;
-	GRLIB_shorter_nights = ["ShorterNights",1] call bis_fnc_getParamValue;
-	GRLIB_ammo_bounties = [ "AmmoBounties",0] call bis_fnc_getParamValue;
-	GRLIB_civ_penalties = [ "CivPenalties",0] call bis_fnc_getParamValue;
-	GRLIB_remote_sensors = [ "DisableRemoteSensors",0] call bis_fnc_getParamValue;
-	GRLIB_blufor_defenders = [ "BluforDefenders",1] call bis_fnc_getParamValue;
-	GRLIB_autodanger = [ "Autodanger",0] call bis_fnc_getParamValue;
-	GRLIB_maximum_fobs = [ "MaximumFobs",5] call bis_fnc_getParamValue;
-	GRLIB_fob_type = [ "FobType",0] call bis_fnc_getParamValue;
-	GRLIB_huron_type = [ "HuronType", 0] call bis_fnc_getParamValue;
-	GRLIB_squad_size = ["SquadSize",3] call bis_fnc_getParamValue;
-	GRLIB_max_squad_size = ["MaxSquadSize",7] call bis_fnc_getParamValue;
-	GRLIB_enable_arsenal = ["EnableArsenal",1] call bis_fnc_getParamValue;
-	GRLIB_limited_arsenal = ["LimitedArsenal",1] call bis_fnc_getParamValue;
-	GRLIB_permission_vehicles = ["EnableLock",1] call bis_fnc_getParamValue;
-	GRLIB_forced_loadout = ["ForcedLoadout",0] call bis_fnc_getParamValue;
-	GRLIB_fancy_info = ["FancyInfo",1] call bis_fnc_getParamValue;
-	GRLIB_hide_opfor = ["HideOpfor",0] call bis_fnc_getParamValue;
-	GRLIB_thermic = ["Thermic",1] call bis_fnc_getParamValue;
-} else {
-	GRLIB_difficulty_modifier = 1;
-	GRLIB_time_factor = 1;
-	GRLIB_resources_multiplier = 1;
-	GRLIB_fatigue = 0;
-	GRLIB_revive = 2;
-	GRLIB_tk_mode = 0;
-	GRLIB_tk_count = 4;
-	GRLIB_introduction = 0;
-	GRLIB_deployment_cinematic = 0;
-	GRLIB_adaptive_opfor = 1;
-	GRLIB_unitcap = 1;
-	GRLIB_civilian_activity = 1;
-	GRLIB_wildlife_manager = 1;
-	GRLIB_Patrol_manager = 1;
-	GRLIB_sector_radius = 700;
-	GRLIB_admin_menu = 1;
-	GRLIB_param_wipe_savegame_1 = 0;
-	GRLIB_param_wipe_savegame_2 = 0;
-	GRLIB_passive_income = 0;
-	GRLIB_permissions_param = 1;
-	GRLIB_halo_param = 1;
-	GRLIB_use_whitelist = 0;
-	GRLIB_cleanup_vehicles = 2;
-	GRLIB_csat_aggressivity = 1;
-	GRLIB_weather_param = 4;
-	GRLIB_shorter_nights = 1;
-	GRLIB_ammo_bounties = 1;
-	GRLIB_civ_penalties = 1;
-	GRLIB_remote_sensors = 0;
-	GRLIB_blufor_defenders = 1;
-	GRLIB_autodanger = 0;
-	GRLIB_maximum_fobs = 5;
-	GRLIB_fob_type = 0;
-	GRLIB_huron_type = 0;
-	GRLIB_squad_size = 3;
-	GRLIB_max_squad_size = 10;
-	GRLIB_enable_arsenal = 1;
-	GRLIB_limited_arsenal = 1;
-	GRLIB_permission_vehicles = 1;
-	GRLIB_forced_loadout = 0;
-	GRLIB_fancy_info = 2;
-	GRLIB_hide_opfor = 0;
-	GRLIB_thermic = 1;
-};
+GRLIB_difficulty_modifier = ["Difficulty",1] call bis_fnc_getParamValue;
+GRLIB_time_factor = ["DayDuration",1] call bis_fnc_getParamValue;
+GRLIB_resources_multiplier = ["ResourcesMultiplier",1] call bis_fnc_getParamValue;
+GRLIB_fatigue = ["Fatigue",0] call bis_fnc_getParamValue;
+GRLIB_revive = ["Revive",2] call bis_fnc_getParamValue;
+GRLIB_tk_mode = ["TK_mode",0] call bis_fnc_getParamValue;
+GRLIB_tk_count = ["TK_count",4] call bis_fnc_getParamValue;
+GRLIB_introduction = ["Introduction",1] call bis_fnc_getParamValue;
+GRLIB_deployment_cinematic = ["DeploymentCinematic",1] call bis_fnc_getParamValue;
+GRLIB_unitcap = ["Unitcap",1] call bis_fnc_getParamValue;
+GRLIB_adaptive_opfor = ["AdaptToPlayercount",1] call bis_fnc_getParamValue;
+GRLIB_civilian_activity = ["Civilians",1] call bis_fnc_getParamValue;
+GRLIB_wildlife_manager = ["Wildlife",1] call bis_fnc_getParamValue;
+GRLIB_Patrol_manager = ["Patrol",1] call bis_fnc_getParamValue;
+GRLIB_sector_radius = ["SectorRadius",0] call bis_fnc_getParamValue;
+GRLIB_admin_menu = ["AdminMenu",1] call bis_fnc_getParamValue;
+GRLIB_param_wipe_savegame_1 = ["WipeSave1",0] call bis_fnc_getParamValue;
+GRLIB_param_wipe_savegame_2 = ["WipeSave2",0] call bis_fnc_getParamValue;
+GRLIB_passive_income = ["PassiveIncome",0] call bis_fnc_getParamValue;
+GRLIB_permissions_param = ["Permissions",1] call bis_fnc_getParamValue;
+GRLIB_halo_param = ["HaloJump",1] call bis_fnc_getParamValue;
+GRLIB_use_whitelist = ["Whitelist",1] call bis_fnc_getParamValue;
+GRLIB_cleanup_vehicles = ["CleanupVehicles",2] call bis_fnc_getParamValue;
+GRLIB_csat_aggressivity = ["Aggressivity",1] call bis_fnc_getParamValue;
+GRLIB_weather_param = ["Weather",4] call bis_fnc_getParamValue;
+GRLIB_shorter_nights = ["ShorterNights",1] call bis_fnc_getParamValue;
+GRLIB_ammo_bounties = [ "AmmoBounties",0] call bis_fnc_getParamValue;
+GRLIB_civ_penalties = [ "CivPenalties",0] call bis_fnc_getParamValue;
+GRLIB_remote_sensors = [ "DisableRemoteSensors",0] call bis_fnc_getParamValue;
+GRLIB_blufor_defenders = [ "BluforDefenders",1] call bis_fnc_getParamValue;
+GRLIB_autodanger = [ "Autodanger",0] call bis_fnc_getParamValue;
+GRLIB_maximum_fobs = [ "MaximumFobs",5] call bis_fnc_getParamValue;
+GRLIB_fob_type = [ "FobType",0] call bis_fnc_getParamValue;
+GRLIB_huron_type = [ "HuronType", 0] call bis_fnc_getParamValue;
+GRLIB_squad_size = ["SquadSize",3] call bis_fnc_getParamValue;
+GRLIB_max_squad_size = ["MaxSquadSize",7] call bis_fnc_getParamValue;
+GRLIB_enable_arsenal = ["EnableArsenal",1] call bis_fnc_getParamValue;
+GRLIB_limited_arsenal = ["LimitedArsenal",1] call bis_fnc_getParamValue;
+GRLIB_permission_vehicles = ["EnableLock",1] call bis_fnc_getParamValue;
+GRLIB_forced_loadout = ["ForcedLoadout",0] call bis_fnc_getParamValue;
+GRLIB_fancy_info = ["FancyInfo",1] call bis_fnc_getParamValue;
+GRLIB_hide_opfor = ["HideOpfor",0] call bis_fnc_getParamValue;
+GRLIB_thermic = ["Thermic",1] call bis_fnc_getParamValue;
+GRLIB_mod_preset_west = ["ModPresetWest", 0] call bis_fnc_getParamValue;  
+GRLIB_mod_preset_east = ["ModPresetEast", 0] call bis_fnc_getParamValue;  
 
 GRLIB_r1 = "&#108;&#105;&#98;&#101;&#114;&#97;&#116;&#105;&#111;&#110;";
 GRLIB_r2 = "&#114;&#120;";
 GRLIB_r3 = "&#76;&#82;&#88;&#32;&#73;&#110;&#102;&#111;";
 
-//Detect Addons ACE ACRE OPTRE GM
+// Detect Addons
 GRLIB_ACE_enabled = isClass(configFile >> "cfgPatches" >> "ace_main"); // Returns true if ACE is enabled
 GRLIB_ACRE_enabled = isClass(configFile >> "cfgPatches" >> "acre_main"); // Returns true if ACRE is enabled
 GRLIB_OPTRE_enabled = isClass(configFile >> "cfgPatches" >> "OPTRE_Core"); // Returns true if OPTRE is enabled
@@ -109,6 +65,11 @@ if ( !GRLIB_OPTRE_enabled && !GRLIB_GM_enabled && !GRLIB_Red_Edition) then {
 		case 2: {huron_typename = "B_Heli_Transport_01_F" };
 	};
 };
+
+// Classename MOD source
+_mod_list = ["A3", "CUPS", "GM", "EJW", "OPTRE", "RHS", "USAF"];
+GRLIB_mod_west = _mod_list select GRLIB_mod_preset_west;
+GRLIB_mod_east = _mod_list select GRLIB_mod_preset_east;
 
 if ( GRLIB_ACE_enabled ) then {	GRLIB_revive = 0; GRLIB_fatigue = 1; GRLIB_fancy_info = 0; GRLIB_limited_arsenal = 0 };  // Disable PAR/Fatigue/Fancy if ACE present
 if ( GRLIB_OPTRE_enabled ) then { GRLIB_MOD_signature = "OPTRE_" };
@@ -141,6 +102,12 @@ if (GRLIB_sector_radius != 0) then { GRLIB_sector_size = GRLIB_sector_radius };
 
 // Define classname
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\classnames.sqf";
+
+// Overide Textures
+opfor_texture_overide = [];
+if (missionName in ["Chernarus_Winter"]) then {
+	opfor_texture_overide = ["Urban","Digital"];
+};
 
 // Start R3F if ACE no present
 if (!GRLIB_ACE_enabled) then {[] execVM "R3F_LOG\init.sqf"};

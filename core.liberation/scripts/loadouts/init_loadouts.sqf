@@ -1,4 +1,4 @@
-_loadouts_folder = "scripts\loadouts\vanilla\";
+_loadouts_folder = format ["scripts\loadouts\%1\", GRLIB_mod_east];
 
 loadout_crewman = compile preprocessFileLineNumbers (format ["%1%2.sqf", _loadouts_folder, "crewman"]);
 loadout_sl = compile preprocessFileLineNumbers (format ["%1%2.sqf", _loadouts_folder, "sl"]);
