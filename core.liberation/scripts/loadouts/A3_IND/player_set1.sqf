@@ -16,7 +16,7 @@ _unit addHandgunItem "optic_MRD_black";
 _unit addHandgunItem "11Rnd_45ACP_Mag";
 
 //  "Add containers";
-_unit forceAddUniform "U_B_CombatUniform_mcam";
+_unit forceAddUniform "U_I_CombatUniform";
 _unit addVest "V_Rangemaster_belt";
 
 //  "Add items to containers";

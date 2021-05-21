@@ -1,5 +1,17 @@
 // *** FRIENDLIES ***
 
+huron_typename = "O_Heli_Transport_04_black_F";
+FOB_typename = "Land_Cargo_HQ_V3_F";
+FOB_box_typename = "Land_Pod_Heli_Transport_04_box_black_F";
+FOB_truck_typename = "O_T_Truck_03_device_ghex_F";
+Respawn_truck_typename = "O_Truck_03_medical_F";
+ammo_truck_typename = "O_Truck_03_ammo_F";
+fuel_truck_typename = "O_Truck_03_fuel_F";
+repair_truck_typename = "O_Truck_03_Repair_F";
+repair_sling_typename = "Land_Pod_Heli_Transport_04_repair_F";
+fuel_sling_typename = "Land_Pod_Heli_Transport_04_fuel_F";
+ammo_sling_typename = "Land_Pod_Heli_Transport_04_ammo_F";
+medic_sling_typename = "Land_Pod_Heli_Transport_04_medevac_F";
 commander_classname = "O_officer_F";
 pilot_classname = "O_Helipilot_F";
 crewman_classname = "O_crew_F";

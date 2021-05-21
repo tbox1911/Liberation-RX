@@ -58,7 +58,7 @@ class Params
 		title = $STR_FORCE_LOADOUT;
 		values[] = { 0,1,2 };
 		texts[] = { $STR_PARAMS_DISABLED, "Preset 1", "Preset 2" };
-		default = 0;
+		default = 1;
 	};
 	class TextureOveride {
 		title = "Overide OPFor Vehicles Texture";

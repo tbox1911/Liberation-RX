@@ -52,5 +52,5 @@ GRLIB_offload_diag = false;
 //NRE_Key = 199;
 MGR_Key = 19;
 
-//GRLIB_mod_preset_west = 1;
-//GRLIB_mod_preset_east = 1;
+GRLIB_mod_west = "A3_OPF";
+GRLIB_mod_east = "A3_IND";

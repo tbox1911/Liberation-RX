@@ -37,22 +37,22 @@ GRLIB_max_squad_size = ["MaxSquadSize",7] call bis_fnc_getParamValue;
 GRLIB_enable_arsenal = ["EnableArsenal",1] call bis_fnc_getParamValue;
 GRLIB_limited_arsenal = ["LimitedArsenal",1] call bis_fnc_getParamValue;
 GRLIB_permission_vehicles = ["EnableLock",1] call bis_fnc_getParamValue;
-GRLIB_forced_loadout = ["ForcedLoadout",0] call bis_fnc_getParamValue;
+GRLIB_forced_loadout = ["ForcedLoadout",1] call bis_fnc_getParamValue;
 GRLIB_overide_opfor = ["TextureOveride",0] call bis_fnc_getParamValue;
 GRLIB_fancy_info = ["FancyInfo",1] call bis_fnc_getParamValue;
 GRLIB_hide_opfor = ["HideOpfor",0] call bis_fnc_getParamValue;
 GRLIB_thermic = ["Thermic",1] call bis_fnc_getParamValue;
+GRLIB_mod_preset_west = ["ModPresetWest", 0] call bis_fnc_getParamValue;
+GRLIB_mod_preset_east = ["ModPresetEast", 0] call bis_fnc_getParamValue;
 
 // Define constant
 [] call compileFinal preprocessFileLineNUmbers "gameplay_constants.sqf";
-if (isNil "GRLIB_mod_preset_west") then { GRLIB_mod_preset_west = ["ModPresetWest", 0] call bis_fnc_getParamValue};
-if (isNil "GRLIB_mod_preset_east") then { GRLIB_mod_preset_east = ["ModPresetEast", 0] call bis_fnc_getParamValue};
 
 // Classename MOD source
 private _mod_list_west = ["A3_BLU", "A3_OPF", "CUPS", "GM_WEST", "GM_WEST_WINT", "RHS", "USAF"];
 private _mod_list_east = ["A3_OPF", "A3_BLU", "A3_IND", "CUPS", "GM_EAST", "GM_EAST_WINT", "EJW", "RHS", "USAF"];
-GRLIB_mod_west = _mod_list_west select GRLIB_mod_preset_west;
-GRLIB_mod_east = _mod_list_east select GRLIB_mod_preset_east;
+if (isNil "GRLIB_mod_west") then { GRLIB_mod_west = _mod_list_west select GRLIB_mod_preset_west };
+if (isNil "GRLIB_mod_east") then { GRLIB_mod_east = _mod_list_east select GRLIB_mod_preset_east };
 
 GRLIB_r1 = "&#108;&#105;&#98;&#101;&#114;&#97;&#116;&#105;&#111;&#110;";
 GRLIB_r2 = "&#114;&#120;";

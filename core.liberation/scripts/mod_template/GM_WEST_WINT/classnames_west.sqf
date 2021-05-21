@@ -1,6 +1,5 @@
 // *** FRIENDLIES ***
 
-
 FOB_box_typename = "gm_ge_army_shelteraceII_standard";
 FOB_truck_typename = "gm_ge_army_kat1_454_cargo";
 Respawn_truck_typename = "gm_gc_army_ural375d_medic";
@@ -16,6 +15,9 @@ A3W_BoxWps = "Box_East_Wps_F";
 canisterFuel = "gm_jerrycan";
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
+//gm_ge_army_rifleman_g3a3_80_ols
+//gm_ge_army_rifleman_g3a3_parka_80_ols
+//gm_ge_army_rifleman_g3a3_parka_80_win
 infantry_units = [
 	["Alsatian_Random_F",0,0,0,GRLIB_perm_max],
 	["Fin_random_F",0,0,0,0],

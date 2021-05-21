@@ -84,11 +84,11 @@ while { true } do {
 		} else {
 			_grp = group player;
 			_unit = _grp createUnit [_classname, _pos, [], 5, "NONE"];
+			[_unit] joinSilent _grp;
 			_unit addUniform uniform player;
 			_unit setMass 10;
 			_unit setUnitRank "PRIVATE";
 			_unit setSkill 0.6;
-			_grp = group player;
 			_unit setVariable ["PAR_Grp_ID", format["Bros_%1",PAR_Grp_ID], true];
 			_unit enableIRLasers true;
 			_unit enableGunLights "Auto";
@@ -116,6 +116,7 @@ while { true } do {
 					if(_idx == 0) then { _unitrank = "SERGEANT"; };
 					if(_idx == 1) then { _unitrank = "CORPORAL"; };
 					_unit = _grp createUnit [_x, _pos, [], 5, "NONE"];
+					[_unit] joinSilent _grp;
 					_unit setUnitRank _unitrank;
 					_unit setSkill 0.6;
 					_unit enableIRLasers true;

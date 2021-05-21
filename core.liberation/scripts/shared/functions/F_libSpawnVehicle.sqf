@@ -56,7 +56,9 @@ if ( _classname in militia_vehicles ) then {
 	sleep 0.2;
 };
 
+_grp = createGroup [GRLIB_side_enemy, true];
 _vehcrew = crew _newvehicle;
+[_vehcrew] joinSilent _grp;
 {
 	_x allowdamage false;
 	_x addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
