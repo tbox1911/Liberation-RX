@@ -38,6 +38,7 @@ GRLIB_enable_arsenal = ["EnableArsenal",1] call bis_fnc_getParamValue;
 GRLIB_limited_arsenal = ["LimitedArsenal",1] call bis_fnc_getParamValue;
 GRLIB_permission_vehicles = ["EnableLock",1] call bis_fnc_getParamValue;
 GRLIB_forced_loadout = ["ForcedLoadout",0] call bis_fnc_getParamValue;
+GRLIB_overide_opfor = ["TextureOveride",0] call bis_fnc_getParamValue;
 GRLIB_fancy_info = ["FancyInfo",1] call bis_fnc_getParamValue;
 GRLIB_hide_opfor = ["HideOpfor",0] call bis_fnc_getParamValue;
 GRLIB_thermic = ["Thermic",1] call bis_fnc_getParamValue;
@@ -64,9 +65,8 @@ GRLIB_OPTRE_enabled = isClass(configFile >> "cfgPatches" >> "OPTRE_Core"); // Re
 GRLIB_GM_enabled = isClass(configFile >> "cfgPatches" >> "gm_Core"); // Returns true if GlobMob is enabled
 GRLIB_CUPW_enabled = isClass(configFile >> "CfgPatches" >> "CUP_Weapons_AK"); // Returns true if CUP Weapons is enabled
 GRLIB_EJW_enabled = isClass(configFile >> "CfgPatches" >> "Ej_u100"); // Returns true if EricJ Weapons is enabled 
-GRLIB_Red_Edition = (missionName find "RX_Red" > 0);
 
-if ( !GRLIB_OPTRE_enabled && !GRLIB_GM_enabled && !GRLIB_Red_Edition) then {
+if ( GRLIB_mod_west in ["A3_BLU", "CUPS"]) then {
 	// Huron type
 	switch (GRLIB_huron_type) do {
 		case 0: {huron_typename = "B_Heli_Transport_03_unarmed_F" };
@@ -106,8 +106,11 @@ if (GRLIB_sector_radius != 0) then { GRLIB_sector_size = GRLIB_sector_radius };
 
 // Overide Textures
 opfor_texture_overide = [];
-if (missionName in ["Chernarus_Winter"]) then {
-	opfor_texture_overide = ["Urban","Digital"];
+if (GRLIB_overide_opfor > 0) then {
+	switch (GRLIB_overide_opfor) do {
+		case 1: {opfor_texture_overide = ["Urban","Digital"] };
+		case 2: {opfor_texture_overide = ["Pink"] };
+	};
 };
 
 // Start R3F if ACE no present

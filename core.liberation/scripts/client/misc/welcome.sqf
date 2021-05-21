@@ -25,7 +25,7 @@ if (!GRLIB_loadout_overide) then {
 		[player, configfile >> "CfgVehicles" >> typeOf player] call BIS_fnc_loadInventory;
 	};
 	if (typeOf player in units_loadout_overide) then {
-		_loadouts_folder = format ["scripts\loadouts\forced\%1\%2.sqf", GRLIB_side_friendly, typeOf player];
+		_loadouts_folder = format ["scripts\loadouts\forced\%1.sqf", typeOf player];
 		[player] call compileFinal preprocessFileLineNUmbers _loadouts_folder;
 	};
 	if (!(isNil "GRLIB_respawn_loadout")) then {
