@@ -21,4 +21,5 @@ sleep 0.2;
 	};
 } foreach (units _grp);
 
+(crew _vehicle) joinSilent _grp;
 diag_log format [ "Done Spawning militia crew at %1", time ];

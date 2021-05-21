@@ -7,12 +7,11 @@ _sendPara = {
 	private _spawnsector = ( [ sectors_airspawn , [ _targetpos ] , { (markerpos _x) distance _input0 }, "ASCEND"] call BIS_fnc_sortBy ) select 0;
 	private _newvehicle = createVehicle [ (selectRandom opfor_choppers), (markerPos _spawnsector), [], 50, "FLY"];
 	_newvehicle setPos (getPosATL _newvehicle vectorAdd [0, 0, 400]);
-	createVehicleCrew _newvehicle;
-	sleep 1;
+	[_newvehicle] call F_forceOpforCrew;
+	private _pilot_group = group ((crew _newvehicle) select 0);
+	
 	_newvehicle flyInHeight 400;
 	_newvehicle setVariable ["GRLIB_counter_TTL", round(time + 3600)];
-
-	private _pilot_group = group ((crew _newvehicle) select 0);
 	_newvehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	{
 		_x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
@@ -36,7 +35,7 @@ _sendPara = {
 		_unit setVariable ["GRLIB_counter_TTL", round(time + 3600)];
 		sleep 0.1;
 	};
-
+	(units _para_group) joinSilent _para_group;
 	while {(count (waypoints _pilot_group)) != 0} do {deleteWaypoint ((waypoints _pilot_group) select 0);};
 	while {(count (waypoints _para_group)) != 0} do {deleteWaypoint ((waypoints _para_group) select 0);};
 	sleep 0.2;

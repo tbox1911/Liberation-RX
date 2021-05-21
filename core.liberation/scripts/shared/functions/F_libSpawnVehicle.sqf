@@ -41,29 +41,20 @@ if ( _classname in opfor_choppers ) then {
 		_spawnpos set [2, _seadepth + 0.5];  //ASL
 	};
 	_newvehicle = createVehicle [_classname, _spawnpos, [], 0, "NONE"];
+	_newvehicle setPos _spawnpos;
 };
 _newvehicle allowdamage false;
 clearWeaponCargoGlobal _newvehicle;
 clearMagazineCargoGlobal _newvehicle;
 clearItemCargoGlobal _newvehicle;
 clearBackpackCargoGlobal _newvehicle;
-sleep 1;
+sleep 0.1;
 
 if ( _classname in militia_vehicles ) then {
 	[ _newvehicle ] call F_libSpawnMilitiaCrew;
 } else {
-	createVehicleCrew _newvehicle;
-	sleep 0.2;
+	[ _newvehicle ] call F_forceOpforCrew;
 };
-
-_grp = createGroup [GRLIB_side_enemy, true];
-_vehcrew = crew _newvehicle;
-[_vehcrew] joinSilent _grp;
-{
-	_x allowdamage false;
-	_x addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
-	_x addEventHandler ["HandleDamage", {_this call damage_manager_EH}];
-} foreach _vehcrew;
 
 _newvehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
 _newvehicle allowCrewInImmobile true;
@@ -83,20 +74,6 @@ if (count opfor_texture_overide > 0) then {
 	_texture_name = selectRandom opfor_texture_overide;
 	_texture = [ RPT_colorList, { _x select 0 == _texture_name } ] call BIS_fnc_conditionalSelect select 0 select 1;
 	[_newvehicle, _texture, _texture_name,[]] call RPT_fnc_TextureVehicle;
-};
-
-[_newvehicle,_vehcrew] spawn {
-	params ["_veh", "_crew"];
-	sleep 5;
-	// Correct position
-	if ((vectorUp _veh) select 2 < 0.70) then {
-		_veh setpos [(getposATL _veh) select 0,(getposATL _veh) select 1, 0.5];
-		_veh setVectorUp surfaceNormal position _veh;
-		sleep 2;
-	};
-	_veh setdamage 0;
-	_veh allowdamage true;
-	{ _x setdamage 0;_x allowdamage true } foreach _crew;
 };
 
 diag_log format [ "Done Spawning vehicle %1 at %2", _classname , time ];
