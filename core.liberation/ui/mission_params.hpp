@@ -44,14 +44,14 @@ class Params
 	};
 	class ModPresetWest {
 		title = "MOD Preset - Friendly";
-		values[] = { 0,1,2,3,4,5 };
-		texts[] = { "A3_BLU", "A3_OPF", "CUPS", "GM", "RHS", "USAF" };
+		values[] = { 0,1,2,3,4,5,6 };
+		texts[] = { "A3_BLU", "A3_OPF", "CUPS", "GM_WEST", "GM_WEST_WINT", "RHS", "USAF" };
 		default = 0;
 	};
 	class ModPresetEast {
 		title = "MOD Preset - Enemy";
-		values[] = { 0,1,2,3,4,5,6,7 };
-		texts[] = { "A3_OPF", "A3_BLU", "A3_IND", "CUPS", "GM", "EJW", "RHS", "USAF"};
+		values[] = { 0,1,2,3,4,5,6,7,8 };
+		texts[] = { "A3_OPF", "A3_BLU", "A3_IND", "CUPS", "GM_EAST", "GM_EAST_WINT", "EJW", "RHS", "USAF"};
 		default = 0;
 	};
 	class ForcedLoadout {
