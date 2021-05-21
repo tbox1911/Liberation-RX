@@ -1,5 +1,7 @@
-//Blacklist Items
+// Initalize Side
+GRLIB_arsenal_side = WEST;
 
+//Blacklist Items
 blacklisted_bag = [
 	"B_Static_Designator_01_weapon_F",
 	"B_W_Static_Designator_01_weapon_F",

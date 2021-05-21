@@ -94,9 +94,7 @@ opfor_vehicles_low_intensity = [
 	"I_G_Offroad_01_armed_F",
 	"I_APC_Wheeled_03_cannon_F",
 	"I_MRAP_03_hmg_F",
-	"I_MRAP_03_gmg_F",
-	"I_Heli_Transport_02_F",
-	"I_Truck_02_covered_F"
+	"I_MRAP_03_gmg_F"
 ];
 
 opfor_battlegroup_vehicles = [
