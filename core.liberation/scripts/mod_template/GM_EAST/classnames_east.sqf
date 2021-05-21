@@ -15,6 +15,7 @@ if ( isNil "opfor_aa") then { opfor_aa = "gm_gc_army_antiair_mpiak74n_9k32m_80_s
 if ( isNil "opfor_officer") then { opfor_officer = "gm_gc_army_officer_pm_80_str" };
 if ( isNil "opfor_sharpshooter") then { opfor_sharpshooter = "gm_gc_army_sf_rifleman_pm63_80_str" };
 if ( isNil "opfor_sniper") then { opfor_sniper = "gm_pl_army_sf_marksman_svd_80_moro" };
+if ( isNil "opfor_spotter") then { opfor_spotter = "gm_gc_bgs_rifleman_mpikm72_80_str" };
 if ( isNil "opfor_engineer") then { opfor_engineer = "gm_gc_army_engineer_mpiaks74n_80_str" };
 if ( isNil "opfor_paratrooper") then { opfor_paratrooper = "gm_gc_army_paratrooper_mpiaks74n_80_str" };
 if ( isNil "opfor_mrap") then { opfor_mrap = "gm_gc_army_brdm2um" };

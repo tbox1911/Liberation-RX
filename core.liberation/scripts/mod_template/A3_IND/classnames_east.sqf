@@ -15,6 +15,7 @@ if ( isNil "opfor_aa") then { opfor_aa = "I_Soldier_AA_F" };
 if ( isNil "opfor_officer") then { opfor_officer = "I_officer_F" };
 if ( isNil "opfor_sharpshooter") then { opfor_sharpshooter = "I_Soldier_M_F" };
 if ( isNil "opfor_sniper") then { opfor_sniper = "I_sniper_F" };
+if ( isNil "opfor_spotter") then { opfor_spotter = "I_spotter_F" };
 if ( isNil "opfor_engineer") then { opfor_engineer = "I_engineer_F" };
 if ( isNil "opfor_pilot" ) then { opfor_pilot = "I_Pilot_F" };
 if ( isNil "opfor_crew" ) then { opfor_crew = "I_crew_F" };
