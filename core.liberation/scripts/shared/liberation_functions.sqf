@@ -42,6 +42,7 @@ F_getCommander = compileFinal preprocessFileLineNumbers "scripts\shared\function
 F_getLoadout = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getLoadout.sqf";
 F_setLoadout = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_setLoadout.sqf";
 F_forceBluforCrew = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_forceBluforCrew.sqf";
+F_forceOpforCrew = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_forceOpforCrew.sqf";
 F_getCorrectedSectorRange = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getCorrectedSectorRange.sqf";
 F_getLocationName = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getLocationName.sqf";
 F_correctLaserBatteries = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_correctLaserBatteries.sqf";
