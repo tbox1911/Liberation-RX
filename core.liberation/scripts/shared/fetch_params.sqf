@@ -41,8 +41,17 @@ GRLIB_forced_loadout = ["ForcedLoadout",0] call bis_fnc_getParamValue;
 GRLIB_fancy_info = ["FancyInfo",1] call bis_fnc_getParamValue;
 GRLIB_hide_opfor = ["HideOpfor",0] call bis_fnc_getParamValue;
 GRLIB_thermic = ["Thermic",1] call bis_fnc_getParamValue;
-GRLIB_mod_preset_west = ["ModPresetWest", 0] call bis_fnc_getParamValue;  
-GRLIB_mod_preset_east = ["ModPresetEast", 0] call bis_fnc_getParamValue;  
+
+// Define constant
+[] call compileFinal preprocessFileLineNUmbers "gameplay_constants.sqf";
+if (isNil "GRLIB_mod_preset_west") then { GRLIB_mod_preset_west = ["ModPresetWest", 0] call bis_fnc_getParamValue};
+if (isNil "GRLIB_mod_preset_east") then { GRLIB_mod_preset_east = ["ModPresetEast", 0] call bis_fnc_getParamValue};
+
+// Classename MOD source
+private _mod_list_west = ["A3_BLU", "A3_OPF", "CUPS", "GM_WEST", "GM_WEST_WINT", "RHS", "USAF"];
+private _mod_list_east = ["A3_OPF", "A3_BLU", "A3_IND", "CUPS", "GM_EAST", "GM_EAST_WINT", "EJW", "RHS", "USAF"];
+GRLIB_mod_west = _mod_list_west select GRLIB_mod_preset_west;
+GRLIB_mod_east = _mod_list_east select GRLIB_mod_preset_east;
 
 GRLIB_r1 = "&#108;&#105;&#98;&#101;&#114;&#97;&#116;&#105;&#111;&#110;";
 GRLIB_r2 = "&#114;&#120;";
@@ -66,11 +75,6 @@ if ( !GRLIB_OPTRE_enabled && !GRLIB_GM_enabled && !GRLIB_Red_Edition) then {
 	};
 };
 
-// Classename MOD source
-_mod_list = ["A3", "CUPS", "GM", "EJW", "OPTRE", "RHS", "USAF"];
-GRLIB_mod_west = _mod_list select GRLIB_mod_preset_west;
-GRLIB_mod_east = _mod_list select GRLIB_mod_preset_east;
-
 if ( GRLIB_ACE_enabled ) then {	GRLIB_revive = 0; GRLIB_fatigue = 1; GRLIB_fancy_info = 0; GRLIB_limited_arsenal = 0 };  // Disable PAR/Fatigue/Fancy if ACE present
 if ( GRLIB_OPTRE_enabled ) then { GRLIB_MOD_signature = "OPTRE_" };
 if ( GRLIB_GM_enabled ) then { GRLIB_MOD_signature = "gm_" };
@@ -93,9 +97,6 @@ if ( GRLIB_civ_penalties == 1 ) then { GRLIB_civ_penalties = true } else { GRLIB
 if ( GRLIB_blufor_defenders == 1 ) then { GRLIB_blufor_defenders = true } else { GRLIB_blufor_defenders = false };
 if ( GRLIB_autodanger == 1 ) then { GRLIB_autodanger = true } else { GRLIB_autodanger = false };
 if ( GRLIB_thermic == 1 ) then { GRLIB_thermic = true } else { GRLIB_thermic = false };
-
-// Define constant
-[] call compileFinal preprocessFileLineNUmbers "gameplay_constants.sqf";
 
 // Overide sector radius
 if (GRLIB_sector_radius != 0) then { GRLIB_sector_size = GRLIB_sector_radius };

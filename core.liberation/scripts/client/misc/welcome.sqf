@@ -20,7 +20,7 @@ private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
 if (isNil "GRLIB_loadout_overide") then { GRLIB_loadout_overide = false };
 if (!GRLIB_loadout_overide) then {
 	if (GRLIB_forced_loadout > 0) then {
-		[player] call compile preprocessFileLineNumbers (format ["scripts\loadouts\vanilla\player_set%1.sqf", GRLIB_forced_loadout]);
+		[player] call compile preprocessFileLineNumbers (format ["scripts\loadouts\%1\player_set%2.sqf", GRLIB_mod_west, GRLIB_forced_loadout]);
 	} else {
 		[player, configfile >> "CfgVehicles" >> typeOf player] call BIS_fnc_loadInventory;
 	};

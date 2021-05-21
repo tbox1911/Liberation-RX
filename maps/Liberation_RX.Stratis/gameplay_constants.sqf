@@ -51,3 +51,6 @@ GRLIB_offload_diag = false;
 
 //NRE_Key = 199;
 MGR_Key = 19;
+
+//GRLIB_mod_preset_west = 1;
+//GRLIB_mod_preset_east = 1;
