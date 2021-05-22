@@ -3,7 +3,7 @@ if (isNil "_vehicle") exitWith { 0 };
 
 private _totalCurAmmo = 0;
 private _defTotalAmmo = 0;
-private _getVehicleAmmoDef = 0;
+private _getVehicleAmmoDef = 1;
 private _ignore_ammotype = ["Laserbatteries", "8Rnd_82mm_Mo_Flare_white", "8Rnd_82mm_Mo_Smoke_white"];
 
 {
