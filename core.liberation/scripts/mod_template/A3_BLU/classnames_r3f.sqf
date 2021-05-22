@@ -11,7 +11,6 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
 [
 	huron_typename,
-	"B_Heli_Light_01_F",
 	"O_Heli_Light_02_unarmed_F",
 	"O_Heli_Transport_04_F",
 	"O_Heli_Light_02_unarmed_F",
@@ -21,6 +20,7 @@ R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
 	"I_Heli_Transport_02_F",
 	"B_Heli_Transport_01_camo_F",
 	"B_Heli_Attack_01_F",
+	"B_Heli_Attack_01_dynamicLoadout_F",
 	"I_Heli_light_03_unarmed_F",
 	"I_Heli_light_03_F"
 ];
@@ -38,6 +38,7 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["B_Heli_Light_01_armed_F", 10],
 	["O_Heli_Light_02_unarmed_F", 50],
 	["B_Heli_Attack_01_F", 25],
+	["B_Heli_Attack_01_dynamicLoadout_F", 25],
 	["I_Heli_light_03_unarmed_F", 50],
 	["B_Heli_Transport_01_F", 100],
 	["B_Heli_Transport_01_camo_F", 100],
@@ -48,10 +49,10 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["I_Heli_light_03_F",100],
 	["B_T_VTOL_01_infantry_F", 100],
 	["B_T_VTOL_01_vehicle_F", 100],
-	["B_T_VTOL_01_armed_F", 100],
+	["B_T_VTOL_01_armed_F", 40],
 	["O_T_VTOL_01_infantry_F", 100],
-	["O_T_VTOL_01_vehicle_F", 100],
-	["O_T_VTOL_01_armed_F", 100],
+	["O_T_VTOL_01_vehicle_F", 150],
+	["O_T_VTOL_01_armed_F", 40],
 	["B_UAV_01_F", 1],
 	["B_UAV_02_dynamicLoadout_F", 1],
 	["B_UAV_06_F", 5],
