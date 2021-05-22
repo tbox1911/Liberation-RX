@@ -31,9 +31,9 @@ if (!GRLIB_loadout_overide) then {
 	if (!(isNil "GRLIB_respawn_loadout")) then {
 		[player, GRLIB_respawn_loadout] call F_setLoadout;
 	};
-	gamelogic globalChat "You pay your Startup Equipments";
 	[player] call F_filterLoadout;
-	[player] call F_payLoadout;
+	// gamelogic globalChat "You pay your Startup Equipments";
+	// [player] call F_payLoadout;
 };
 
 // first time notice
