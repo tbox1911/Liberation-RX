@@ -4,6 +4,14 @@ if (!isMultiplayer) exitWith {
 	sleep 5;
 	endMission "LOSER";
 };
+
+waitUntil {!isNil "abort_loading" };
+if (abort_loading) exitWith {
+	titleText ["Sorry, An error occured on savegame loading.\nPlease check the error logs.","BLACK FADED", 1000];
+	sleep 5;
+	endMission "LOSER";
+};
+
 titleText ["Loading...","BLACK FADED", 1000];
 GRLIB_player_spawned = false;
 waitUntil {sleep 0.1; !isNil "GRLIB_revive"};

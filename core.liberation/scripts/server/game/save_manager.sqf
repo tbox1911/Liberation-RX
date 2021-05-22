@@ -76,6 +76,10 @@ _buildings_created = [];
 trigger_server_save = false;
 greuh_liberation_savegame = profileNamespace getVariable GRLIB_save_key;
 
+_side_west = "";
+_side_east = "";
+abort_loading = false;
+
 // Manager Load Save
 diag_log format [ "--- LRX Load Game start at %1", time ];
 if ( !isNil "greuh_liberation_savegame" ) then {
@@ -88,6 +92,13 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 	GRLIB_garage = greuh_liberation_savegame select 5;
 	if (typeName GRLIB_garage != "ARRAY") then {GRLIB_garage = []};
 
+	_side_west = greuh_liberation_savegame select 6;
+	_side_east = greuh_liberation_savegame select 7;
+	if ( typeName _side_west == "STRING" && typeName _side_east == "STRING" ) then {
+		if ( _side_west != GRLIB_mod_west || _side_east != GRLIB_mod_east ) then {
+			abort_loading = true;
+		};
+	};
 	_stats = greuh_liberation_savegame select 9;
 	stats_opfor_soldiers_killed = _stats select 0;
 	stats_opfor_killed_by_players = _stats select 1;
@@ -286,6 +297,15 @@ publicVariable "GRLIB_vehicle_to_military_base_links";
 publicVariable "GRLIB_permissions";
 publicVariable "GRLIB_player_scores";
 save_is_loaded = true; publicVariable "save_is_loaded";
+publicVariable "abort_loading";
+if (abort_loading) exitWith {
+	diag_log "*********************************************************************************";
+	diag_log format ["FATAL! - This Savegame was made with a differents Modset (%1/%2)", _side_west, _side_east];
+	diag_log "Loading Aborted to protect data integrity.";
+	diag_log "Correct the Modset or Wipe the savegame.";
+	diag_log "*********************************************************************************";
+};
+
 diag_log format [ "--- LRX Load Game finish at %1", time ];
 sleep 5;
 
@@ -420,7 +440,8 @@ while { true } do {
 			time_of_day,
 			round combat_readiness,
 			GRLIB_garage,
-			0,0,0,		//free for extened use
+			GRLIB_mod_west,GRLIB_mod_east,
+			0,		//free for extened use
 			_stats,
 			[ round infantry_weight, round armor_weight, round air_weight ],
 			GRLIB_vehicle_to_military_base_links,
