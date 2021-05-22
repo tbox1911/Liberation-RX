@@ -1,6 +1,5 @@
 // *** FRIENDLIES ***
 
-
 FOB_box_typename = "gm_ge_army_shelteraceII_standard";
 FOB_truck_typename = "gm_ge_army_kat1_454_cargo";
 Respawn_truck_typename = "gm_gc_army_ural375d_medic";
