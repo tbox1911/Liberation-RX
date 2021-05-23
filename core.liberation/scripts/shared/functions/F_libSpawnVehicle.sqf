@@ -25,17 +25,16 @@ if ( _precise_position ) then {
 	};
 };
 
-if (surfaceIsWater _spawnpos && !(_classname in opfor_boat)) then {
-	_classname = selectRandom opfor_boat;
-};
-
 _newvehicle = objNull;
-if ( _classname in opfor_choppers ) then {
+if ( _classname isKindOf "Air" ) then {
 	_newvehicle = createVehicle [_classname, _spawnpos, [], 0, "FLY"];
 	_newvehicle setPos (getPosATL _newvehicle vectorAdd [0, 0, 400]);
 	_newvehicle flyInHeight 400;
 } else {
 	_spawnpos set [2, 0.5];  //ATL
+	if (surfaceIsWater _spawnpos && !(_classname isKindOf "Ship")) then {
+		_classname = selectRandom opfor_boat;
+	};
 	if (surfaceIsWater _spawnpos) then {
 		_seadepth = abs (getTerrainHeightASL _spawnpos);
 		_spawnpos set [2, _seadepth + 0.5];  //ASL
@@ -43,7 +42,7 @@ if ( _classname in opfor_choppers ) then {
 	_newvehicle = createVehicle [_classname, _spawnpos, [], 0, "NONE"];
 	_newvehicle setPos _spawnpos;
 };
-_newvehicle allowdamage false;
+
 clearWeaponCargoGlobal _newvehicle;
 clearMagazineCargoGlobal _newvehicle;
 clearItemCargoGlobal _newvehicle;
