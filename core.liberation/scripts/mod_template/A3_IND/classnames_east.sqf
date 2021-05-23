@@ -143,8 +143,6 @@ opfor_air = [
 	"I_Plane_Fighter_03_CAS_F",
 	"I_Plane_Fighter_04_F",
 	"I_Heli_light_03_F",
-	"I_Heli_light_03_F",
-	"I_Heli_light_03_F",
 	"I_Heli_light_03_F"			
 ];
 
