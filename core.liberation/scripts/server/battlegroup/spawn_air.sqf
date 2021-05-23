@@ -68,7 +68,7 @@ while {
 			if (_side == GRLIB_side_friendly) then {_sectors = blufor_sectors};
 			private _nearest_sector = [_sectors, _unit] call BIS_fnc_nearestPosition;
 
-			if (!isNil "_nearest_sector") then {
+			if (typeName _nearest_sector == "STRING") then {
 				private _flee_grp = createGroup [_side, true];
 				[_unit] joinSilent _flee_grp;
 

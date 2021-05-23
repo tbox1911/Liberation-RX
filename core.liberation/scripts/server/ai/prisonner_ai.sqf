@@ -45,8 +45,6 @@ if ( (_unit isKindOf "Man") && ( alive _unit ) && (vehicle _unit == _unit) && (s
 		// Flee
 		private _is_near_blufor = count ([allUnits, { side _x == GRLIB_side_friendly && (_x distance2D _unit) < 100 }] call BIS_fnc_conditionalSelect);
 		if ( _is_near_blufor == 0 && side group _unit == GRLIB_side_friendly ) then {
-			_grp = createGroup [GRLIB_side_enemy, true];
-			[_unit] joinSilent _grp;
 			_unit setUnitPos "AUTO";
 			_unit setVariable ["GRLIB_is_prisonner", true, true];
 
@@ -57,19 +55,27 @@ if ( (_unit isKindOf "Man") && ( alive _unit ) && (vehicle _unit == _unit) && (s
 				unAssignVehicle _unit;
 			};
 
-			while {(count (waypoints _grp)) != 0} do {deleteWaypoint ((waypoints _grp) select 0);};
-			{_x doFollow leader _grp} foreach units _grp;
+			private _nearest_sector = [(sectors_allSectors - blufor_sectors), _unit] call BIS_fnc_nearestPosition;
 
-			private _sectors = (sectors_allSectors - blufor_sectors);
-			private _nearest_sector = [_sectors, _unit] call BIS_fnc_nearestPosition;
+			if (typeName _nearest_sector == "STRING") then {
+				private _flee_grp = createGroup [GRLIB_side_civilian, true];
+				[_unit] joinSilent _flee_grp;
 
-			if (!isNil "_nearest_sector") then {
-				_waypoint = _grp addWaypoint [markerPos _nearest_sector, 0];
+				while {(count (waypoints _flee_grp)) != 0} do {deleteWaypoint ((waypoints _flee_grp) select 0);};
+				{_x doFollow leader _flee_grp} foreach units _flee_grp;
+
+				_waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];
 				_waypoint setWaypointType "MOVE";
 				_waypoint setWaypointSpeed "FULL";
 				_waypoint setWaypointBehaviour "AWARE";
 				_waypoint setWaypointCombatMode "GREEN";
 				_waypoint setWaypointCompletionRadius 50;
+
+				_waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];
+				_waypoint setWaypointType "MOVE";
+				_waypoint setWaypointCompletionRadius 50;
+				_waypoint setWaypointStatements ["true", "deleteVehicle this"];
+				sleep 10;
 			};
 		};
 
