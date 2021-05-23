@@ -138,7 +138,7 @@ if (dialog && deploy == 1) then {
 			player setpos ([_truck, 5 + floor(random 3), random 360] call BIS_fnc_relPos);
 		} else {
 			_destpos = ((choiceslist select _idxchoice) select 1);
-			player setpos [((_destpos select 0) + 5) - floor(random 10),((_destpos select 1) + 5) - floor(random 10),0];
+			player setpos [((_destpos select 0) + 5) - floor(random 10),((_destpos select 1) + 5) - floor(random 10),0.3];
 		};
 
 		_unit_list = units group player;
