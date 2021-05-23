@@ -49,8 +49,8 @@ GRLIB_mod_preset_east = ["ModPresetEast", 0] call bis_fnc_getParamValue;
 [] call compileFinal preprocessFileLineNUmbers "gameplay_constants.sqf";
 
 // Classename MOD source
-private _mod_list_west = ["A3_BLU", "A3_OPF", "CUPS", "GM_WEST", "GM_WEST_WINT", "RHS", "USAF"];
-private _mod_list_east = ["A3_OPF", "A3_BLU", "A3_IND", "CUPS", "GM_EAST", "GM_EAST_WINT", "EJW", "RHS", "USAF"];
+private _mod_list_west = ["A3_BLU", "A3_OPF", "CP_NATO", "CP_RF", "GM_WEST", "GM_WEST_WINT"];
+private _mod_list_east = ["A3_OPF", "A3_BLU", "A3_IND", "CP_RF", "CP_TA", "GM_EAST", "GM_EAST_WINT", "EJW_TA"];
 if (isNil "GRLIB_mod_west") then { GRLIB_mod_west = _mod_list_west select GRLIB_mod_preset_west };
 if (isNil "GRLIB_mod_east") then { GRLIB_mod_east = _mod_list_east select GRLIB_mod_preset_east };
 
