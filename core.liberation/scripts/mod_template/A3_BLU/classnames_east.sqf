@@ -1,33 +1,34 @@
 // *** BADDIES ***
+// All class MUST be defined !
 
-if ( isNil "opfor_sentry") then { opfor_sentry = "B_Soldier_lite_F" };
-if ( isNil "opfor_rifleman") then { opfor_rifleman = "B_Soldier_F" };
-if ( isNil "opfor_grenadier") then { opfor_grenadier = "B_Soldier_GL_F" };
-if ( isNil "opfor_squad_leader") then { opfor_squad_leader = "B_Soldier_SL_F" };
-if ( isNil "opfor_team_leader") then { opfor_team_leader = "B_Soldier_TL_F" };
-if ( isNil "opfor_marksman") then { opfor_marksman = "B_soldier_M_F" };
-if ( isNil "opfor_machinegunner") then { opfor_machinegunner = "B_Soldier_AR_F" };
-if ( isNil "opfor_heavygunner") then { opfor_heavygunner = "B_HeavyGunner_F" };
-if ( isNil "opfor_medic") then { opfor_medic = "B_medic_F" };
-if ( isNil "opfor_rpg") then { opfor_rpg = "B_Soldier_LAT_F" };
-if ( isNil "opfor_at") then { opfor_at = "B_Soldier_AT_F" };
-if ( isNil "opfor_aa") then { opfor_aa = "B_Soldier_AA_F" };
-if ( isNil "opfor_officer") then { opfor_officer = "B_officer_F" };
-if ( isNil "opfor_sharpshooter") then { opfor_sharpshooter = "B_Sharpshooter_F" };
-if ( isNil "opfor_sniper") then { opfor_sniper = "B_sniper_F" };
-if ( isNil "opfor_spotter") then { opfor_spotter = "B_spotter_F" };
-if ( isNil "opfor_engineer") then { opfor_engineer = "B_engineer_F" };
-if ( isNil "opfor_paratrooper") then { opfor_paratrooper = "B_soldier_PG_F" };
-if ( isNil "opfor_mrap") then { opfor_mrap = "B_MRAP_02_F" };
-if ( isNil "opfor_mrap_hmg") then { opfor_mrap_hmg = "B_MRAP_01_hmg_F" };
-if ( isNil "opfor_mrap_gmg") then { opfor_mrap_gmg = "B_MRAP_01_gmg_F" };
-if ( isNil "opfor_transport_helo") then { opfor_transport_helo = "B_Heli_Transport_03_F" };
-if ( isNil "opfor_transport_truck") then { opfor_transport_truck = "B_Truck_01_covered_F" };
-if ( isNil "opfor_fuel_truck") then { opfor_fuel_truck = "B_Truck_01_fuel_F" };
-if ( isNil "opfor_ammo_truck") then { opfor_ammo_truck = "B_Truck_01_ammo_F" };
-if ( isNil "opfor_fuel_container") then { opfor_fuel_container = "B_Slingload_01_Fuel_F" };
-if ( isNil "opfor_ammo_container") then { opfor_ammo_container = "B_Slingload_01_Ammo_F" };
-if ( isNil "opfor_flag") then { opfor_flag = "Flag_NATO_F" };
+opfor_sentry = "B_Soldier_lite_F";
+opfor_rifleman = "B_Soldier_F";
+opfor_grenadier = "B_Soldier_GL_F";
+opfor_squad_leader = "B_Soldier_SL_F";
+opfor_team_leader = "B_Soldier_TL_F";
+opfor_marksman = "B_soldier_M_F";
+opfor_machinegunner = "B_Soldier_AR_F";
+opfor_heavygunner = "B_HeavyGunner_F";
+opfor_medic = "B_medic_F";
+opfor_rpg = "B_Soldier_LAT_F";
+opfor_at = "B_Soldier_AT_F";
+opfor_aa = "B_Soldier_AA_F";
+opfor_officer = "B_officer_F";
+opfor_sharpshooter = "B_Sharpshooter_F";
+opfor_sniper = "B_sniper_F";
+opfor_spotter = "B_spotter_F";
+opfor_engineer = "B_engineer_F";
+opfor_paratrooper = "B_soldier_PG_F";
+opfor_mrap = "B_MRAP_02_F";
+opfor_mrap_hmg = "B_MRAP_01_hmg_F";
+opfor_mrap_gmg = "B_MRAP_01_gmg_F";
+opfor_transport_helo = "B_Heli_Transport_03_F";
+opfor_transport_truck = "B_Truck_01_covered_F";
+opfor_fuel_truck = "B_Truck_01_fuel_F";
+opfor_ammo_truck = "B_Truck_01_ammo_F";
+opfor_fuel_container = "B_Slingload_01_Fuel_F";
+opfor_ammo_container = "B_Slingload_01_Ammo_F";
+opfor_flag = "Flag_NATO_F";
 
 militia_squad = [
 	"B_G_Soldier_SL_F",

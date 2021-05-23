@@ -1,4 +1,5 @@
 // *** FRIENDLIES ***
+// Default classname and advanced definition in : scripts\shared\classnames.sqf
 
 huron_typename = "O_Heli_Transport_04_black_F";
 FOB_typename = "Land_Cargo_HQ_V3_F";

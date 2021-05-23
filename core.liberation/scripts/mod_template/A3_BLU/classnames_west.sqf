@@ -1,4 +1,5 @@
 // *** FRIENDLIES ***
+// Default classname and advanced definition in : scripts\shared\classnames.sqf
 
 commander_classname = "B_officer_F";
 pilot_classname = "B_Helipilot_F";

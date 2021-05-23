@@ -1,37 +1,38 @@
 // *** BADDIES ***
+// All class MUST be defined !
 
 //gm_gc_army_rifleman_mpiak74n_80_str
 //gm_gc_army_rifleman_mpiak74n_80_win
 //gm_gc_army_sf_rifleman_mpikms72_80_str
 //gm_gc_army_sf_rifleman_mpikms72_80_win
 
-if ( isNil "opfor_sentry") then { opfor_sentry = "gm_gc_bgs_rifleman_mpikm72_80_str" };
-if ( isNil "opfor_rifleman") then { opfor_rifleman = "gm_gc_army_rifleman_mpiak74n_80_str" };
-if ( isNil "opfor_grenadier") then { opfor_grenadier = "gm_pl_army_grenadier_akm_pallad_80_moro" };
-if ( isNil "opfor_squad_leader") then { opfor_squad_leader = "gm_gc_army_squadleader_mpiak74n_80_str" };
-if ( isNil "opfor_team_leader") then { opfor_team_leader = "gm_gc_army_sf_squadleader_mpikms72_80_str" };
-if ( isNil "opfor_marksman") then { opfor_marksman = "gm_gc_army_sf_marksman_svd_80_str" };
-if ( isNil "opfor_machinegunner") then { opfor_machinegunner = "gm_gc_army_machinegunner_lmgrpk74_80_str" };
-if ( isNil "opfor_heavygunner") then { opfor_heavygunner = "gm_gc_army_machinegunner_pk_80_str" };
-if ( isNil "opfor_medic") then { opfor_medic = "gm_pl_army_medic_akm_80_autumn_moro" };
-if ( isNil "opfor_rpg") then { opfor_rpg = "gm_gc_army_antitank_mpiak74n_rpg7_80_str" };
-if ( isNil "opfor_at") then { opfor_at = "gm_gc_army_antitank_mpiak74n_fagot_80_str" };
-if ( isNil "opfor_aa") then { opfor_aa = "gm_gc_army_antiair_mpiak74n_9k32m_80_str" };
-if ( isNil "opfor_officer") then { opfor_officer = "gm_gc_army_officer_pm_80_str" };
-if ( isNil "opfor_sharpshooter") then { opfor_sharpshooter = "gm_gc_army_sf_rifleman_pm63_80_str" };
-if ( isNil "opfor_sniper") then { opfor_sniper = "gm_pl_army_sf_marksman_svd_80_moro" };
-if ( isNil "opfor_spotter") then { opfor_spotter = "gm_gc_bgs_rifleman_mpikm72_80_str" };
-if ( isNil "opfor_engineer") then { opfor_engineer = "gm_gc_army_engineer_mpiaks74n_80_str" };
-if ( isNil "opfor_paratrooper") then { opfor_paratrooper = "gm_gc_army_paratrooper_mpiaks74n_80_str" };
-if ( isNil "opfor_mrap") then { opfor_mrap = "gm_gc_army_brdm2um" };
-if ( isNil "opfor_mrap_armed") then { opfor_mrap_armed = "gm_gc_army_brdm2" };
-if ( isNil "opfor_transport_helo") then { opfor_transport_helo = "gm_gc_airforce_mi2p" };
-if ( isNil "opfor_transport_truck") then { opfor_transport_truck = "gm_gc_army_ural4320_cargo" };
-if ( isNil "opfor_fuel_truck") then { opfor_fuel_truck = "gm_gc_army_ural375d_refuel" };
-if ( isNil "opfor_ammo_truck") then { opfor_ammo_truck = "gm_gc_army_ural4320_reammo" };
-if ( isNil "opfor_fuel_container") then { opfor_fuel_container = "Land_Pod_Heli_Transport_04_fuel_F" };
-if ( isNil "opfor_ammo_container") then { opfor_ammo_container = "Land_Pod_Heli_Transport_04_ammo_F" };
-if ( isNil "opfor_flag") then { opfor_flag = "gm_flag_GC" };
+opfor_sentry = "gm_gc_bgs_rifleman_mpikm72_80_str";
+opfor_rifleman = "gm_gc_army_rifleman_mpiak74n_80_str";
+opfor_grenadier = "gm_pl_army_grenadier_akm_pallad_80_moro";
+opfor_squad_leader = "gm_gc_army_squadleader_mpiak74n_80_str";
+opfor_team_leader = "gm_gc_army_sf_squadleader_mpikms72_80_str";
+opfor_marksman = "gm_gc_army_sf_marksman_svd_80_str";
+opfor_machinegunner = "gm_gc_army_machinegunner_lmgrpk74_80_str";
+opfor_heavygunner = "gm_gc_army_machinegunner_pk_80_str";
+opfor_medic = "gm_pl_army_medic_akm_80_autumn_moro";
+opfor_rpg = "gm_gc_army_antitank_mpiak74n_rpg7_80_str";
+opfor_at = "gm_gc_army_antitank_mpiak74n_fagot_80_str";
+opfor_aa = "gm_gc_army_antiair_mpiak74n_9k32m_80_str";
+opfor_officer = "gm_gc_army_officer_pm_80_str";
+opfor_sharpshooter = "gm_gc_army_sf_rifleman_pm63_80_str";
+opfor_sniper = "gm_pl_army_sf_marksman_svd_80_moro";
+opfor_spotter = "gm_gc_bgs_rifleman_mpikm72_80_str";
+opfor_engineer = "gm_gc_army_engineer_mpiaks74n_80_str";
+opfor_paratrooper = "gm_gc_army_paratrooper_mpiaks74n_80_str";
+opfor_mrap = "gm_gc_army_brdm2um";
+opfor_mrap_armed = "gm_gc_army_brdm2";
+opfor_transport_helo = "gm_gc_airforce_mi2p";
+opfor_transport_truck = "gm_gc_army_ural4320_cargo";
+opfor_fuel_truck = "gm_gc_army_ural375d_refuel";
+opfor_ammo_truck = "gm_gc_army_ural4320_reammo";
+opfor_fuel_container = "Land_Pod_Heli_Transport_04_fuel_F";
+opfor_ammo_container = "Land_Pod_Heli_Transport_04_ammo_F";
+opfor_flag = "gm_flag_GC";
 
 militia_squad = [
 	"gm_pl_army_sf_squadleader_akmn_80_moro",
