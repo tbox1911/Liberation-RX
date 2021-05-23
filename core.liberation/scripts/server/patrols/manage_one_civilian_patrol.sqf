@@ -76,7 +76,10 @@ while { GRLIB_endgame == 0 } do {
 
 			if ( alive _civ ) then {
 				if ( !(isNull _civveh) ) then {
-						if ( {(alive _x) && (side group _x == GRLIB_side_friendly)} count (crew _civveh) == 0 && [_civveh] call is_abandoned) then { [_civveh] call clean_vehicle; deleteVehicle _civveh };
+					if ( {(alive _x) && (side group _x == GRLIB_side_friendly)} count (crew _civveh) == 0 && [_civveh] call is_abandoned) then {
+						[_civveh] call clean_vehicle;
+						deleteVehicle _civveh;
+					};
 				};
 				deletevehicle _civ;
 				deleteGroup _grp;

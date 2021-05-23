@@ -45,7 +45,7 @@ if (isNull _civveh) then {
 	private _basepos = getpos _civveh;
 	private _sectors_patrol = [];
 	{
-		if ( (_basepos distance (markerpos _x) < 4000 ) && ( count ( [ getmarkerpos _x , 4000 ] call F_getNearbyPlayers ) > 0 ) ) then {
+		if ( (_basepos distance (markerpos _x) < 5000 ) && ( count ( [ getmarkerpos _x , 4000 ] call F_getNearbyPlayers ) > 0 ) ) then {
 			_sectors_patrol pushback _x;
 		};
 	} foreach (sectors_bigtown + sectors_capture + sectors_factory);
