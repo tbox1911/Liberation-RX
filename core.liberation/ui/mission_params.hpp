@@ -42,16 +42,28 @@ class Params
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 1;
 	};
+	class Thermic {
+		title = $STR_THERMAL;
+		values[] = { 1, 0 };
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
+		default = 1;
+	};
+	class Space5 {
+		title = "Mod";
+		values[] = { "" };
+		texts[] = { "" };
+		default = "";
+	};
 	class ModPresetWest {
 		title = "MOD Preset - Friendly";
-		values[] = { 0,1,2,3,4,5 };
-		texts[] = { "A3_BLU", "A3_OPF", "CP_NATO", "CP_RF", "GM_WEST", "GM_WEST_WINT" };
+		values[] = { 0,1,2,3,4,5,6 };
+		texts[] = { "A3_BLU", "A3_OPF", "A3_IND", "CP_NATO", "CP_RF", "GM_WEST", "GM_WEST_WINT" };
 		default = 0;
 	};
 	class ModPresetEast {
 		title = "MOD Preset - Enemy";
 		values[] = { 0,1,2,3,4,5,6,7 };
-		texts[] = {"A3_OPF", "A3_BLU", "A3_IND", "CP_RF", "CP_TA", "GM_EAST", "GM_EAST_WINT", "EJW_TA"};
+		texts[] = { "A3_OPF", "A3_BLU", "A3_IND", "CP_RF", "CP_TA", "GM_EAST", "GM_EAST_WINT", "EJW_TA" };
 		default = 0;
 	};
 	class ForcedLoadout {
@@ -66,11 +78,17 @@ class Params
 		texts[] = { $STR_PARAMS_DISABLED, "Urban", "pink"};
 		default = 0;
 	};
-	class Thermic {
-		title = $STR_THERMAL;
-		values[] = { 1, 0 };
-		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 1;
+	class FobType{
+		title = $STR_PARAM_FOB_TYPE ;
+		values[] = {0,1};
+		texts[] = {"Huron", "Truck"};
+		default = 0;
+	};
+	class HuronType{
+		title = $STR_PARAM_HURON_TYPE ;
+		values[] = {0,1,2};
+		texts[] = {"CH-67 Huron", "CH-49 Mohawk", "UH-80 Ghost Hawk"};
+		default = 0;
 	};
 	class Space1 {
 		title = "";
@@ -102,7 +120,6 @@ class Params
 		texts[] = {$STR_PARAMS_DISABLED,300,400,500,600,700,800,900,1000,1200,1500};
 		default = 0;
 	};
-
 	class DayDuration {
 		title = $STR_PARAMS_DAYDURATION;
 		values[] = { 48, 24, 16, 12, 9.6, 8, 6.8, 6, 4.8, 4, 3, 2.4, 2, 1.6, 1, 0.66, 0.5, 0.375, 0.25, 0.1875, 0.125, 0.11 };
@@ -145,21 +162,18 @@ class Params
 		texts[] = { $STR_PARAMS_REVIVE3, $STR_PARAMS_REVIVE2, $STR_PARAMS_REVIVE1, $STR_PARAMS_DISABLED };
 		default = 2;
 	};
-
 	class TK_mode {
 		title = $STR_TK_MODE;
 		values[] = { 0, 1, 2 };
 		texts[] = { $STR_TK_MODE_STRICT, $STR_TK_MODE_RELAX, $STR_PARAMS_DISABLED };
 		default = 0;
 	};
-
 	class TK_count {
 		title = $STR_TK_COUNT;
 		values[] = { 3, 4, 5, 6, 7, 8, 9, 10 };
 		texts[] = { 3, 4, 5, 6, 7, 8, 9, 10 };
 		default = 4;
 	};
-
 	class PassiveIncome{
 		title = $STR_PARAM_PASSIVE_INCOME;
 		values[] = {1,0};
@@ -226,19 +240,6 @@ class Params
 		texts[] = {3,5,7,10,15,20,26};
 		default = 5;
 	};
-	class FobType{
-		title = $STR_PARAM_FOB_TYPE ;
-		values[] = {0,1};
-		texts[] = {"Huron", "Truck"};
-		default = 0;
-	};
-	class HuronType{
-		title = $STR_PARAM_HURON_TYPE ;
-		values[] = {0,1,2};
-		texts[] = {"CH-67 Huron", "CH-49 Mohawk", "UH-80 Ghost Hawk"};
-		default = 0;
-	};
-
 	class SquadSize{
 		title = $STR_PARAM_SQUAD_SIZE_START;
 		values[] = {0,1,2,3,4,5,6,7,8,9,10};
