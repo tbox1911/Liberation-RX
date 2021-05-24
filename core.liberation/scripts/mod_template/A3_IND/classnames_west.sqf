@@ -1,7 +1,6 @@
 // *** FRIENDLIES ***
 // Default classname and advanced definition in : scripts\shared\classnames.sqf
 
-
 huron_typename = "I_Heli_Transport_02_F";
 FOB_typename = "Land_Cargo_HQ_V2_F";
 FOB_box_typename = "B_Slingload_01_Cargo_F";
@@ -18,82 +17,80 @@ commander_classname = "I_officer_F";
 pilot_classname = "I_Helipilot_F";
 crewman_classname = "I_crew_F";
 
-
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 infantry_units = [
-	["Alsatian_Random_F",0,0,0,GRLII_perm_max],
+	["Alsatian_Random_F",0,0,0,GRLIB_perm_max],
 	["Fin_random_F",0,0,0,0],
 	["I_soldier_F",1,0,0,0],
 	["I_medic_F",1,0,0,0],
 	["I_engineer_F",1,0,0,0],
-	["I_soldier_GL_F",1,0,0,GRLII_perm_inf],
-	["I_soldier_M_F",1,0,0,GRLII_perm_inf],
+	["I_soldier_GL_F",1,0,0,GRLIB_perm_inf],
+	["I_soldier_M_F",1,0,0,GRLIB_perm_inf],
 	["I_soldier_LAT_F",1,0,0,0],
-	["I_Sharpshooter_F",1,0,0,GRLII_perm_inf],
-	["I_HeavyGunner_F",1,0,0,GRLII_perm_inf],
-	["I_recon_F",1,0,0,GRLII_perm_log],
-	["I_recon_M_F",1,0,0,GRLII_perm_log],
-	["I_Recon_Sharpshooter_F",1,0,0,GRLII_perm_log],
-	["I_soldier_AA_F",1,0,0,GRLII_perm_log],
-	["I_soldier_AT_F",1,0,0,GRLII_perm_log],
-	["I_sniper_F",1,0,0,GRLII_perm_log],
-	["I_soldier_PG_F",1,0,0,GRLII_perm_log],
-	[crewman_classname,1,0,0,GRLII_perm_inf],
-	[pilot_classname,1,0,0,GRLII_perm_log]
+	["I_Sharpshooter_F",1,0,0,GRLIB_perm_inf],
+	["I_HeavyGunner_F",1,0,0,GRLIB_perm_inf],
+	["I_recon_F",1,0,0,GRLIB_perm_log],
+	["I_recon_M_F",1,0,0,GRLIB_perm_log],
+	["I_Recon_Sharpshooter_F",1,0,0,GRLIB_perm_log],
+	["I_soldier_AA_F",1,0,0,GRLIB_perm_log],
+	["I_soldier_AT_F",1,0,0,GRLIB_perm_log],
+	["I_sniper_F",1,0,0,GRLIB_perm_log],
+	[crewman_classname,1,0,0,GRLIB_perm_inf],
+	[pilot_classname,1,0,0,GRLIB_perm_log]
 ];
 
 light_vehicles = [
 	["I_Quadbike_01_F",1,5,1,0],
-	["I_Boat_Transport_01_F",1,25,1,GRLII_perm_inf],
-	["C_Boat_Transport_02_F",2,25,2,GRLII_perm_log],
-	["I_Boat_Armed_01_minigun_F",5,30,5,GRLII_perm_log],
-	["I_SDV_01_F",5,30,5,GRLII_perm_log],
+	["I_Boat_Transport_01_F",1,25,1,GRLIB_perm_inf],
+	["C_Boat_Transport_02_F",2,25,2,GRLIB_perm_log],
+	["I_Boat_Armed_01_minigun_F",5,30,5,GRLIB_perm_log],
+	["I_SDV_01_F",5,30,5,GRLIB_perm_log],
 	["C_Scooter_Transport_01_F",1,5,1,0],
 	["SUV_01_base_black_F",1,10,1,0],
 	["I_G_Offroad_01_F",1,10,1,0],
-	["I_G_Offroad_01_armed_F",1,50,1,GRLII_perm_inf],
-	["C_SUV_01_F",1,10,1,GRLII_perm_inf],
+	["I_G_Offroad_01_armed_F",1,50,1,GRLIB_perm_inf],
+	["C_SUV_01_F",1,10,1,GRLIB_perm_inf],
 	["C_Van_01_transport_F",1,15,1,0],
 	["I_MRAP_03_F",2,25,2,0],
-	["I_MRAP_03_hmg_F",5,100,2,GRLII_perm_inf],
-	["I_MRAP_03_gmg_F",5,125,2,GRLII_perm_log],
-	["I_Truck_02_transport_F",5,30,5,GRLII_perm_log],
-	["I_Truck_02_covered_F",5,30,5,GRLII_perm_log],
-	["I_LT_01_cannon_F",2,200,2,GRLII_perm_log],
-	["I_LSV_01_unarmed_F",2,25,2,GRLII_perm_inf],
-	["I_LSV_01_armed_F",5,100,2,GRLII_perm_log],
-	["I_UGV_01_F",5,10,5,GRLII_perm_inf],
-	["I_UGV_01_rcws_F",5,250,5,GRLII_perm_log]
+	["I_MRAP_03_hmg_F",5,100,2,GRLIB_perm_inf],
+	["I_MRAP_03_gmg_F",5,125,2,GRLIB_perm_log],
+	["I_Truck_02_transport_F",5,30,5,GRLIB_perm_log],
+	["I_Truck_02_covered_F",5,30,5,GRLIB_perm_log],
+	["I_LT_01_cannon_F",2,200,2,GRLIB_perm_log],
+	["I_LSV_01_unarmed_F",2,25,2,GRLIB_perm_inf],
+	["I_LSV_01_armed_F",5,100,2,GRLIB_perm_log],
+	["I_UGV_01_F",5,10,5,GRLIB_perm_inf],
+	["I_UGV_01_rcws_F",5,250,5,GRLIB_perm_log]
 ];
 
 heavy_vehicles = [
-  ["I_E_APC_tracked_03_cannon_F",10,500,10,GRLII_perm_log],
-	["I_APC_Wheeled_03_cannon_F",10,500,10,GRLII_perm_tank],
-	["I_APC_tracked_03_cannon_F",10,500,10,GRLII_perm_tank],
-	["I_MBT_01_cannon_F",15,1000,15,GRLII_perm_tank],
-	["I_MBT_03_cannon_F",15,4500,15,GRLII_perm_max],
-	["I_Truck_02_MRL_F",15,3500,15,GRLII_perm_max]
+  ["I_E_APC_tracked_03_cannon_F",10,500,10,GRLIB_perm_log],
+	["I_APC_Wheeled_03_cannon_F",10,500,10,GRLIB_perm_tank],
+	["I_APC_tracked_03_cannon_F",10,500,10,GRLIB_perm_tank],
+	["I_MBT_01_cannon_F",15,1000,15,GRLIB_perm_tank],
+	["I_MBT_03_cannon_F",15,4500,15,GRLIB_perm_max],
+	["I_Truck_02_MRL_F",15,3500,15,GRLIB_perm_max]
 ];
 
 air_vehicles = [
-	["I_UAV_01_F",1,10,5,GRLII_perm_log],
-	["I_UAV_06_F",1,30,5,GRLII_perm_tank],
-	["I_UAV_02_dynamicLoadout_F",5,1000,5,GRLII_perm_air],
-	["I_T_UAV_03_dynamicLoadout_F",5,1500,10,GRLII_perm_max],
-	["I_UAV_05_F",5,2000,15,GRLII_perm_max],
-	["C_Plane_Civil_01_F",1,50,5,GRLII_perm_air],
+	["I_UAV_01_F",1,10,5,GRLIB_perm_log],
+	["I_UAV_06_F",1,30,5,GRLIB_perm_tank],
+	["I_UAV_02_dynamicLoadout_F",5,1000,5,GRLIB_perm_air],
+	["I_T_UAV_03_dynamicLoadout_F",5,1500,10,GRLIB_perm_max],
+	["I_UAV_05_F",5,2000,15,GRLIB_perm_max],
+	["C_Plane_Civil_01_F",1,50,5,GRLIB_perm_air],
 	
-	["I_Heli_light_03_F",1,150,5,GRLII_perm_log],
-	["I_Heli_light_03_dynamicLoadout_F",1,150,5,GRLII_perm_air],
-	["I_E_Heli_light_03_dynamicLoadout_F",1,150,5,GRLII_perm_tank],
+	["I_Heli_light_03_F",1,150,5,GRLIB_perm_log],
+	["I_Heli_light_03_dynamicLoadout_F",1,150,5,GRLIB_perm_air],
+	["I_E_Heli_light_03_dynamicLoadout_F",1,150,5,GRLIB_perm_tank],
 	
-	["I_Heli_light_03_unarmed_F",1,50,5,GRLII_perm_tank],
-	["I_Heli_Transport_02_F",10,1500,15,GRLII_perm_air],
+	["I_Heli_light_03_unarmed_F",1,50,5,GRLIB_perm_tank],
+	["I_Heli_Transport_02_F",10,1500,15,GRLIB_perm_air],
 
-	["I_Plane_Fighter_03_dynamicLoadout_F", 10,3500,20,GRLII_perm_max],
-	["I_Plane_Fighter_03_Cluster_F",20,3000,40,GRLII_perm_max],
-	["I_Plane_Fighter_04_F",20,4500,40,GRLII_perm_max],
-	["I_Plane_Fighter_04_Cluster_F",20,4500,40,GRLII_perm_max]
+	["I_Plane_Fighter_03_dynamicLoadout_F", 10,3500,20,GRLIB_perm_max],
+	["I_Plane_Fighter_03_Cluster_F",20,3000,40,GRLIB_perm_max],
+	["I_Plane_Fighter_04_F",20,4500,40,GRLIB_perm_max],
+	["I_Plane_Fighter_04_Cluster_F",20,4500,40,GRLIB_perm_max]
 ];
 
 blufor_air = [
@@ -108,17 +105,17 @@ blufor_air = [
 ];
 
 static_vehicles = [
-	["I_UGV_02_Demining_F",0,5,0,GRLII_perm_inf],
-	["I_Static_Designator_01_F",0,5,0,GRLII_perm_inf],
-	["I_HMG_01_F",0,10,0,GRLII_perm_log],
-	["I_HMG_01_high_F",0,10,0,GRLII_perm_tank],
-	["I_GMG_01_F",0,20,0,GRLII_perm_log],
-	["I_GMG_01_high_F",0,20,0,GRLII_perm_tank],
-	["I_static_AA_F",0,50,0,GRLII_perm_air],
-	["I_static_AT_F",0,50,0,GRLII_perm_air],
-	["I_Mortar_01_F",0,500,0,GRLII_perm_max],
-	["B_AAA_System_01_F",10,500,0,GRLII_perm_max],
-	["I_E_SAM_System_03_F",10,800,0,GRLII_perm_max]
+	["I_UGV_02_Demining_F",0,5,0,GRLIB_perm_inf],
+	["I_Static_Designator_01_F",0,5,0,GRLIB_perm_inf],
+	["I_HMG_01_F",0,10,0,GRLIB_perm_log],
+	["I_HMG_01_high_F",0,10,0,GRLIB_perm_tank],
+	["I_GMG_01_F",0,20,0,GRLIB_perm_log],
+	["I_GMG_01_high_F",0,20,0,GRLIB_perm_tank],
+	["I_static_AA_F",0,50,0,GRLIB_perm_air],
+	["I_static_AT_F",0,50,0,GRLIB_perm_air],
+	["I_Mortar_01_F",0,500,0,GRLIB_perm_max],
+	["B_AAA_System_01_F",10,500,0,GRLIB_perm_max],
+	["I_E_SAM_System_03_F",10,800,0,GRLIB_perm_max]
 ];
 
 // *** Static Weapon with AI ***
@@ -130,15 +127,15 @@ static_vehicles_AI = [
 ];
 
 support_vehicles_west = [
-	["I_G_Offroad_01_repair_F",5,15,5,GRLII_perm_inf],
-	["I_G_Van_01_fuel_F",5,15,20,GRLII_perm_inf],
-	["Box_NATO_WpsLaunch_F",0,150,0,GRLII_perm_tank]
+	["I_G_Offroad_01_repair_F",5,15,5,GRLIB_perm_inf],
+	["I_G_Van_01_fuel_F",5,15,20,GRLIB_perm_inf],
+	["Box_NATO_WpsLaunch_F",0,150,0,GRLIB_perm_tank]
 ];
 
 buildings_west = [
-	["Land_Cargo_Tower_V2_F",0,0,0,GRLII_perm_tank],
-	["Land_Cargo_House_V2_F",0,0,0,GRLII_perm_inf],
-	["Land_Cargo_Patrol_V2_F",0,0,0,GRLII_perm_log],
+	["Land_Cargo_Tower_V2_F",0,0,0,GRLIB_perm_tank],
+	["Land_Cargo_House_V2_F",0,0,0,GRLIB_perm_inf],
+	["Land_Cargo_Patrol_V2_F",0,0,0,GRLIB_perm_log],
 	["Flag_FIA_F",0,0,0,0]
 ];
 
@@ -204,12 +201,12 @@ if ( count blufor_squad_recon == 0 ) then { blufor_squad_recon = [
 };
 
 squads = [
-	[blufor_squad_inf_light,10,300,0,GRLII_perm_max],
-	[blufor_squad_inf,20,400,0,GRLII_perm_max],
-	[blufor_squad_recon,25,500,0,GRLII_perm_max],
-	[blufor_squad_at,25,600,0,GRLII_perm_max],
-	[blufor_squad_aa,25,600,0,GRLII_perm_max],
-	[blufor_squad_mix,25,600,0,GRLII_perm_max]
+	[blufor_squad_inf_light,10,300,0,GRLIB_perm_max],
+	[blufor_squad_inf,20,400,0,GRLIB_perm_max],
+	[blufor_squad_recon,25,500,0,GRLIB_perm_max],
+	[blufor_squad_at,25,600,0,GRLIB_perm_max],
+	[blufor_squad_aa,25,600,0,GRLIB_perm_max],
+	[blufor_squad_mix,25,600,0,GRLIB_perm_max]
 ];
 
 // All the UAVs must be declared here
@@ -258,10 +255,10 @@ vehicle_big_units = [
 	"Land_Hangar_F"
 ];
 
-GRLII_vehicle_whitelist_west = [
+GRLIB_vehicle_whitelist_west = [
 
 ];
 
-GRLII_vehicle_blacklist_west = [
+GRLIB_vehicle_blacklist_west = [
 
 ];
