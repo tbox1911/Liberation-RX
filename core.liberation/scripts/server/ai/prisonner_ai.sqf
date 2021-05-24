@@ -84,11 +84,14 @@ if ( (_unit isKindOf "Man") && ( alive _unit ) && (vehicle _unit == _unit) && (s
 		if ( _is_near_fob ) then {
 			private _unit_owner = leader group _unit;
 			sleep (3 + floor(random 5));
-			if (vehicle _unit != _unit) then {
-				unassignVehicle _unit;
+			doStop _unit;
+			unassignVehicle _unit;
+			[_unit] orderGetIn false;
+			if (!isnull objectParent _unit) then {
 				doGetOut _unit;
+				sleep 3;
 			};
-			sleep 4;
+			sleep 3;
 			_grp = createGroup [GRLIB_side_friendly, true];
 			[_unit] joinSilent _grp;
 			_unit playmove "AmovPercMstpSnonWnonDnon_AmovPsitMstpSnonWnonDnon_ground";
