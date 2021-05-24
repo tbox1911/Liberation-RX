@@ -68,9 +68,9 @@ GRLIB_EJW_enabled = isClass(configFile >> "CfgPatches" >> "Ej_u100"); // Returns
 if ( GRLIB_mod_west in ["A3_BLU", "A3_IND"]) then {
 	// Huron type
 	switch (GRLIB_huron_type) do {
-		case 0: {huron_typename = "B_Heli_Transport_03_unarmed_F" };
-		case 1: {huron_typename = "I_Heli_Transport_02_F" };
-		case 2: {huron_typename = "B_Heli_Transport_01_F" };
+		case 1: {huron_typename = "B_Heli_Transport_03_unarmed_F" };
+		case 2: {huron_typename = "I_Heli_Transport_02_F" };
+		case 3: {huron_typename = "B_Heli_Transport_01_F" };
 	};
 };
 
