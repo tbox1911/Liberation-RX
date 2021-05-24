@@ -1,7 +1,7 @@
 // *** FRIENDLIES ***
 // Default classname and advanced definition in : scripts\shared\classnames.sqf
 
-huron_typename = "I_Heli_Transport_02_F";
+huron_typename = "I_Heli_Transport_02_F";  // comment to use value from lobby/server.cfg
 FOB_typename = "Land_Cargo_HQ_V2_F";
 FOB_box_typename = "B_Slingload_01_Cargo_F";
 FOB_truck_typename = "B_Truck_01_box_F";

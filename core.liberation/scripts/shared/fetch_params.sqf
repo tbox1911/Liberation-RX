@@ -65,7 +65,7 @@ GRLIB_GM_enabled = isClass(configFile >> "cfgPatches" >> "gm_Core"); // Returns 
 GRLIB_CUPW_enabled = isClass(configFile >> "CfgPatches" >> "CUP_Weapons_AK"); // Returns true if CUP Weapons is enabled
 GRLIB_EJW_enabled = isClass(configFile >> "CfgPatches" >> "Ej_u100"); // Returns true if EricJ Weapons is enabled 
 
-if ( GRLIB_mod_west in ["A3_BLU", "CUPS"]) then {
+if ( GRLIB_mod_west in ["A3_BLU", "A3_IND"]) then {
 	// Huron type
 	switch (GRLIB_huron_type) do {
 		case 0: {huron_typename = "B_Heli_Transport_03_unarmed_F" };
