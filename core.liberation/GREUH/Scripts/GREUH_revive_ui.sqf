@@ -1,7 +1,6 @@
-private ["_noesckey","_dialog"];
-_dialog = createDialog "GREUH_respawn";
-_noesckey = (findDisplay 5566) displayAddEventHandler ["KeyDown", "if ((_this select 1) == 1) then { true }"];
+createDialog "GREUH_respawn";
 waitUntil { dialog };
+private _noesckey = (findDisplay 5566) displayAddEventHandler ["KeyDown", "if ((_this select 1) == 1) then { true }"];
 
 _labelwidth = -1;
 _labelpos = [];

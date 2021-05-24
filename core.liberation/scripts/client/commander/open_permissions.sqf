@@ -1,9 +1,9 @@
 waitUntil { !isNil "GRLIB_permissions" };
 
-private [ "_dialog", "_nextplayer", "_players_array", "_displayname", "_idx", "_control", "_player_uid", "_player_idx", "_player_uids", "_player_permissions", "_modify_permissions" ];
+private [ "_nextplayer", "_players_array", "_displayname", "_idx", "_control", "_player_uid", "_player_idx", "_player_uids", "_player_permissions", "_modify_permissions" ];
 
 _players_array = [];
-_dialog = createDialog "liberation_permissions";
+createDialog "liberation_permissions";
 permission_playerid = -1;
 permission_toset = -1;
 save_changes = 0;

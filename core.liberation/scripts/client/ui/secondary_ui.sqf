@@ -1,7 +1,7 @@
 if ( isNil "GRLIB_secondary_starting" ) then { GRLIB_secondary_starting = false; };
 if ( isNil "GRLIB_secondary_in_progress" ) then { GRLIB_secondary_in_progress = -1; };
 
-_dialog = createDialog "liberation_secondary";
+createDialog "liberation_secondary";
 dostartsecondary = 0;
 
 waitUntil { dialog };

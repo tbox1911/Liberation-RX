@@ -37,7 +37,7 @@ if (!GRLIB_loadout_overide) then {
 };
 
 // first time notice
-if (_score == 0) then {	_dialog = createDialog "liberation_notice" };
+if (_score == 0) then {	createDialog "liberation_notice" };
 
 private _msg = format ["Welcome <t color='#00008f'>%1</t> !<br/><br/>
 Your Rank : <t color='#000080'>%2</t><br/>

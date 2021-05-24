@@ -1,4 +1,4 @@
-private [ "_line_delay", "_page_delay", "_dialog", "_playtime_days", "_playtime_hours", "_playtime_minutes", "_playtime_seconds", "_comma", "_playtime_str" ];
+private [ "_line_delay", "_page_delay", "_playtime_days", "_playtime_hours", "_playtime_minutes", "_playtime_seconds", "_comma", "_playtime_str" ];
 if (isDedicated) exitWith {};
 if ( isNil "cinematic_camera_started" ) then { cinematic_camera_started = false };
 _line_delay = 0.75;
@@ -20,8 +20,7 @@ if (alive player && vehicle player == player && lifestate player != "INCAPACITAT
 
 [] spawn cinematic_camera;
 
-_dialog = createDialog "liberation_endscreen";
-
+createDialog "liberation_endscreen";
 waitUntil { dialog };
 
 if ( dialog ) then { uiSleep 3 };

@@ -1,6 +1,6 @@
 _fob_pos = _this select 3;
 if (isNil "_fob_pos") exitWith {};
-private [ "_dialog", "_fob_hq", "_fobbox" ];
+private ["_fob_hq", "_fobbox" ];
 
 //only one at time
 _fob_hq = (player nearobjects [FOB_typename, GRLIB_fob_range] select 0);
@@ -8,7 +8,7 @@ if ((_fob_hq getVariable ["fob_in_use", false])) exitWith {};
 _fob_hq setVariable ["fob_in_use", true, true];
 
 dorepackage = 0;
-_dialog = createDialog "liberation_repackage_fob";
+createDialog "liberation_repackage_fob";
 waitUntil { dialog };
 while { dialog && alive player && dorepackage == 0 } do {
 	sleep 0.5;

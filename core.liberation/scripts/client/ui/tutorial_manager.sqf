@@ -1,4 +1,4 @@
-private [ "_tutorial_titles", "_tutorial_pages", "_current_page", "_old_page", "_dialog", "_text" ];
+private [ "_tutorial_titles", "_tutorial_pages", "_current_page", "_old_page", "_text" ];
 
 _tutorial_titles = [
 	localize "STR_TUTO_TITLE1",
@@ -39,7 +39,7 @@ waitUntil { uiSleep 0.3; !dialog };
 disableUserInput false;
 disableUserInput true;
 disableUserInput false;
-_dialog = createDialog "liberation_tutorial";
+createDialog "liberation_tutorial";
 if ( !cinematic_camera_started ) then {
 	[] spawn cinematic_camera;
 };

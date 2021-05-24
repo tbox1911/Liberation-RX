@@ -5,7 +5,7 @@ if (isNil "_vehicle") exitWith {};
 if ((_vehicle getVariable ["recycle_in_use", false])) exitWith {};
 _vehicle setVariable ["recycle_in_use", true, true];
 
-private [ "_objectinfo", "_cfg", "_dialog" ];
+private [ "_objectinfo", "_cfg", "_msg" ];
 // XP AmmoBox
 if (typeOf _vehicle == ammobox_i_typename && score player <= GRLIB_perm_log) then {
 	_msg = format ["<t align='center'>Select Reward:<br/>50 XP or 300 AMMO</t>"];
@@ -27,7 +27,7 @@ if (isNil "_objectinfo") then {
 dorecycle = 0;
 
 _cfg = configFile >> "cfgVehicles";
-_dialog = createDialog "liberation_recycle";
+createDialog "liberation_recycle";
 waitUntil { dialog };
 
 private _ammount_ammo = round ((_objectinfo select 2) * GRLIB_recycling_percentage);
