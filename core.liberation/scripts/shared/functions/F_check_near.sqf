@@ -27,8 +27,10 @@ if (count(_classlist) == 0 ) then {
 	//_near_list = (_vehpos nearEntities [_object, _dist]); //dont find tent
 	_near = [ nearestObjects [_vehpos, _object, _dist], {
 			alive _x &&
-			(!(_x getVariable ['R3F_LOG_disabled', true]) || typeOf _x in [Arsenal_typename] )&&
-			(isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) || typeOf _x in [Arsenal_typename])
+			( typeOf _x in [Arsenal_typename] || 
+			  isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) || 
+			  !(_x getVariable ['R3F_LOG_disabled', true])
+			)
 			}] call BIS_fnc_conditionalSelect;
 } else {
 	// From GRLIB_Marker
