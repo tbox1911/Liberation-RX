@@ -1,6 +1,5 @@
 // Additional Key Shortcut
 waitUntil {sleep 0.5;!(isNull (findDisplay 46))};
-[] call compileFinal preprocessFileLineNumbers "whitelist.sqf";
 
 // Weapon to the back
 (findDisplay 46) displayAddEventHandler ["KeyDown", {

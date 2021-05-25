@@ -1,4 +1,5 @@
 // All Object classname used in LRX must be declared here
+[] call compileFinal preprocessFileLineNumbers "scripts\loadouts\init_loadouts.sqf";
 
 // *** FRIENDLIES ***
 [] call compileFinal preprocessFileLineNUmbers format ["scripts\mod_template\%1\classnames_west.sqf", GRLIB_mod_west];

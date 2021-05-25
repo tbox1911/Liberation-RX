@@ -1,3 +1,6 @@
+waitUntil {!isNil "abort_loading" };
+if (abort_loading) exitWith {};
+
 if ( isNil "cinematic_camera_started" ) then { cinematic_camera_started = false };
 waituntil {(time > 2) && (getClientStateNumber >= 10) && (getClientState == "BRIEFING READ")};
 
@@ -27,11 +30,14 @@ disableUserInput false;
 disableUserInput true;
 disableUserInput false;
 
+closeDialog 0;
+uisleep 1;
+
 createDialog "liberation_menu";
 waitUntil { dialog };
 _noesckey = (findDisplay 5651) displayAddEventHandler ["KeyDown", "if ((_this select 1) == 1) then { true }"];
 waitUntil { dostartgame == 1 || howtoplay == 1 || !dialog };
-disableUserInput true;
+//disableUserInput true;
 (findDisplay 5651) displayRemoveEventHandler ["KeyDown", _noesckey];
 closeDialog 0;
 

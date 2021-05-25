@@ -9,8 +9,6 @@ _commanderobj = [] call F_getCommander;
 if ( !isNull _commanderobj ) then {
 	if ( player == _commanderobj && !([] call is_admin)) then {
 
-		[] call compileFinal preprocessFileLineNumbers "whitelist.sqf";
-
 		_tagmatch = false;
 		_idmatch = false;
 		_namematch = false;

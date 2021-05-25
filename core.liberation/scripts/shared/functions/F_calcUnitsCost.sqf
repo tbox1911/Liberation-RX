@@ -1,4 +1,3 @@
-[] call compileFinal preprocessFileLineNumbers "scripts\loadouts\init_loadouts.sqf";
 private _grp = createGroup [GRLIB_side_friendly, true];
 {
 	_unit_class = _x select 0;

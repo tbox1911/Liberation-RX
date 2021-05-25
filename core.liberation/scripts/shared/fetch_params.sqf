@@ -100,9 +100,6 @@ if ( GRLIB_thermic == 1 ) then { GRLIB_thermic = true } else { GRLIB_thermic = f
 // Overide sector radius
 if (GRLIB_sector_radius != 0) then { GRLIB_sector_size = GRLIB_sector_radius };
 
-// Define classname
-[] call compileFinal preprocessFileLineNUmbers "scripts\shared\classnames.sqf";
-
 // Overide Textures
 opfor_texture_overide = [];
 if (GRLIB_overide_opfor > 0) then {
@@ -111,6 +108,3 @@ if (GRLIB_overide_opfor > 0) then {
 		case 2: {opfor_texture_overide = ["Pink"] };
 	};
 };
-
-// Start R3F if ACE no present
-if (!GRLIB_ACE_enabled) then {[] execVM "R3F_LOG\init.sqf"};
