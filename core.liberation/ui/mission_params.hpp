@@ -62,8 +62,8 @@ class Params
 	};
 	class ModPresetEast {
 		title = "MOD Preset - Enemy";
-		values[] = { 0,1,2,3,4,5,6,7 };
-		texts[] = { "A3_OPF", "A3_BLU", "A3_IND", "CP_RF", "CP_TA", "GM_EAST", "GM_EAST_WINT", "EJW_TA" };
+		values[] = { 0,1,2,3,4,5,6 };
+		texts[] = { "A3_OPF", "A3_BLU", "A3_IND", "CP_RF", "CP_TA", "GM_EAST", "GM_EAST_WINT"};
 		default = 0;
 	};
 	class ForcedLoadout {
