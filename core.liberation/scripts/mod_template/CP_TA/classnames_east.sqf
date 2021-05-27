@@ -29,8 +29,8 @@ opfor_transport_truck = "CUP_O_V3S_Covered_TKA";
 opfor_fuel_truck = "CUP_O_V3S_Refuel_TKA";
 opfor_ammo_truck = "CUP_O_V3S_Rearm_TKA";
 opfor_fuel_container = "Land_Pod_Heli_Transport_04_fuel_F";
-opfor_ammo_container = "Land_Pod_Heli_Transport_04_ammo_F";
-opfor_flag = "Flag_FIA_F";
+opfor_ammo_container = "CUP_TKBasicAmmunitionBox_EP1";
+opfor_flag = "CUP_Flag_Black";
 
 militia_squad = [
 	"CUP_O_TK_INS_Soldier_FNFAL",
@@ -150,7 +150,7 @@ opfor_choppers = [
 ];
 
 opfor_air = [
-  "CUP_O_Su25_Dyn_TKA",
+  	"CUP_O_Su25_Dyn_TKA",
 	"CUP_O_L39_TK",
 	"CUP_O_AN2_TK",
 	"CUP_O_MI6A_TKA",

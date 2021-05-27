@@ -16,15 +16,15 @@ _unit addHandgunItem "optic_MRD_black";
 _unit addHandgunItem "11Rnd_45ACP_Mag";
 
 //  "Add containers";
-_unit forceAddUniform "U_B_CombatUniform_mcam";
-_unit addVest "V_Rangemaster_belt";
+_unit forceAddUniform "CUP_U_B_BAF_DDPM_UBACSLONG";
+_unit addVest "CUP_V_B_BAF_DDPM_Osprey_Mk3_Officer";
 
 //  "Add items to containers";
 _unit addItemToUniform "FirstAidKit";
 for "_i" from 1 to 2 do {_unit addItemToUniform "SmokeShell";};
 for "_i" from 1 to 2 do {_unit addItemToUniform "11Rnd_45ACP_Mag";};
 for "_i" from 1 to 2 do {_unit addItemToVest "11Rnd_45ACP_Mag";};
-_unit addHeadgear "H_Booniehat_mcamo";
+_unit addHeadgear "CUP_H_BAF_PARA_BERET";
 
 //  "Add items";
 _unit linkItem "ItemMap";

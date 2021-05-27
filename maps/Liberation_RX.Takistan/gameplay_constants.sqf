@@ -46,5 +46,5 @@ if ( GRLIB_blufor_cap > 100 ) then { GRLIB_blufor_cap = 100 }; // Don't forget t
 GRLIB_offload_diag = false;
 //NRE_Key = 199;
 MGR_Key = 19;
-//GRLIB_mod_west = "CP_OTAN";
-//GRLIB_mod_east = "CP_TA";
+GRLIB_mod_west = "CP_BAF";
+GRLIB_mod_east = "CP_TA";

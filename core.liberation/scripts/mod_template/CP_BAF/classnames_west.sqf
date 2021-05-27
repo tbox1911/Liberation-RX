@@ -1,30 +1,32 @@
 // *** FRIENDLIES ***
 // Default classname and advanced definition in : scripts\shared\classnames.sqf
 
-//huron_typename = "B_Heli_Transport_03_unarmed_F";  // comment to use value from lobby/server.cfg
-commander_classname = "B_officer_F";
-pilot_classname = "B_Helipilot_F";
-crewman_classname = "B_crew_F";
+huron_typename = "CUP_B_Merlin_HC3_GB";  // comment to use value from lobby/server.cfg
+Respawn_truck_typename = "CUP_B_LR_Ambulance_GB_D";
+ammo_truck_typename = "CUP_B_T810_Reammo_CZ_DES";
+fuel_truck_typename = "CUP_B_T810_Refuel_CZ_DES";
+repair_truck_typename = "CUP_B_T810_Repair_CZ_DES";
+pilot_classname = "CUP_B_BAF_Soldier_Pilot_DDPM";
+crewman_classname = "CUP_B_BAF_Soldier_Crew_DDPM";
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 infantry_units = [
 	["Alsatian_Random_F",0,0,0,GRLIB_perm_max],
 	["Fin_random_F",0,0,0,0],
-	["B_soldier_F",1,0,0,0],
-	["B_medic_F",1,0,0,0],
-	["B_engineer_F",1,0,0,0],
-	["B_soldier_GL_F",1,0,0,GRLIB_perm_inf],
-	["B_soldier_M_F",1,0,0,GRLIB_perm_inf],
-	["B_soldier_LAT_F",1,0,0,0],
-	["B_Sharpshooter_F",1,0,0,GRLIB_perm_inf],
-	["B_HeavyGunner_F",1,0,0,GRLIB_perm_inf],
-	["B_recon_F",1,0,0,GRLIB_perm_log],
-	["B_recon_M_F",1,0,0,GRLIB_perm_log],
-	["B_Recon_Sharpshooter_F",1,0,0,GRLIB_perm_log],
-	["B_soldier_AA_F",1,0,0,GRLIB_perm_log],
-	["B_soldier_AT_F",1,0,0,GRLIB_perm_log],
-	["B_sniper_F",1,0,0,GRLIB_perm_log],
-	["B_soldier_PG_F",1,0,0,GRLIB_perm_log],
+	["CUP_B_BAF_Soldier_Rifleman_DDPM",1,0,0,0],
+	["CUP_B_BAF_Soldier_Medic_DDPM",1,0,0,0],
+	["CUP_B_BAF_Soldier_Engineer_DDPM",1,0,0,0],
+	["CUP_B_BAF_Soldier_Grenadier_DDPM",1,0,0,GRLIB_perm_inf],
+	["CUP_B_BAF_Soldier_Marksman_DDPM",1,0,0,GRLIB_perm_inf],
+	["CUP_B_BAF_Soldier_RiflemanLAT_DDPM",1,0,0,0],
+	["CUP_B_BAF_Soldier_AutoRifleman_DDPM",1,0,0,GRLIB_perm_log],
+	["CUP_B_BAF_Soldier_SharpShooter_DDPM",1,0,0,GRLIB_perm_inf],
+	["CUP_B_BAF_Soldier_HeavyGunner_DDPM",1,0,0,GRLIB_perm_inf],
+	["CUP_B_BAF_Soldier_RiflemanAT_DDPM",1,0,0,GRLIB_perm_log],
+	["CUP_B_BAF_Soldier_AA_DDPM",1,0,0,GRLIB_perm_log],
+	["CUP_B_BAF_Soldier_AT_DDPM",1,0,0,GRLIB_perm_log],
+	["CUP_B_BAF_Sniper_DDPM",1,0,0,GRLIB_perm_log],
+	["CUP_B_BAF_Soldier_Paratrooper_DDPM",1,0,0,GRLIB_perm_log],
 	[crewman_classname,1,0,0,GRLIB_perm_inf],
 	[pilot_classname,1,0,0,GRLIB_perm_log]
 ];
@@ -34,88 +36,61 @@ light_vehicles = [
 	["B_Boat_Transport_01_F",1,25,1,GRLIB_perm_inf],
 	["C_Boat_Transport_02_F",2,25,2,GRLIB_perm_log],
 	["B_Boat_Armed_01_minigun_F",5,30,5,GRLIB_perm_log],
-	["B_SDV_01_F",5,30,5,GRLIB_perm_log],
-	["C_Scooter_Transport_01_F",1,5,1,0],
-	["SUV_01_base_black_F",1,10,1,0],
-	["B_G_Offroad_01_F",1,10,1,0],
-	["B_G_Offroad_01_armed_F",1,50,1,GRLIB_perm_inf],
-	["C_SUV_01_F",1,10,1,GRLIB_perm_inf],
 	["C_Van_01_transport_F",1,15,1,0],
-	["B_MRAP_01_F",2,25,2,0],
-	["B_MRAP_01_hmg_F",5,100,2,GRLIB_perm_inf],
-	["B_MRAP_01_gmg_F",5,125,2,GRLIB_perm_log],
-	//["I_MRAP_03_F",2,25,2,0],
-	//["I_MRAP_03_hmg_F",5,100,2,GRLIB_perm_inf],
-	//["I_MRAP_03_gmg_F",5,125,2,GRLIB_perm_log],
-	//["I_LT_01_cannon_F",2,200,2,GRLIB_perm_log],
-	["B_Truck_01_transport_F",5,30,5,GRLIB_perm_log],
-	["B_Truck_01_covered_F",5,30,5,GRLIB_perm_tank],
-	["I_Truck_02_transport_F",5,30,5,GRLIB_perm_log],
-	["I_Truck_02_covered_F",5,30,5,GRLIB_perm_tank],
-	["B_LSV_01_unarmed_F",2,25,2,GRLIB_perm_inf],
-	["B_LSV_01_armed_F",5,100,2,GRLIB_perm_log],
-	["B_UGV_01_F",5,10,5,GRLIB_perm_inf],
-	["B_UGV_01_rcws_F",5,250,5,GRLIB_perm_tank]
+	["CUP_B_LR_Transport_GB_D",2,10,2,0],
+	["CUP_B_LR_Special_M2_GB_D",2,20,2,0],
+	["CUP_B_LR_Special_GMG_GB_D",2,20,2,0],
+	["CUP_B_Jackal2_L2A1_GB_D",1,100,1,0],
+	["CUP_B_Jackal2_GMG_GB_D",1,100,1,0],
+	["CUP_B_Ridgback_HMG_GB_D",1,150,1,GRLIB_perm_inf],
+	["CUP_B_Ridgback_GMG_GB_D",1,150,1,GRLIB_perm_inf],
+	["CUP_B_Wolfhound_LMG_GB_D",5,100,2,GRLIB_perm_inf],
+	["CUP_B_Wolfhound_GMG_GB_D",5,125,2,GRLIB_perm_log],
+	["CUP_B_T810_Armed_CZ_DES",5,30,5,GRLIB_perm_log],
+	["B_Truck_01_covered_F",5,30,5,GRLIB_perm_tank]
 ];
 
 heavy_vehicles = [
-	["B_APC_Tracked_01_rcws_F",10,500,10,GRLIB_perm_log],
-	["B_APC_Wheeled_01_cannon_F",10,500,10,GRLIB_perm_log],
-	["B_APC_Tracked_01_AA_F",10,500,10,GRLIB_perm_tank],
-	["I_APC_Wheeled_03_cannon_F",10,500,10,GRLIB_perm_tank],
-	["I_APC_tracked_03_cannon_F",10,500,10,GRLIB_perm_tank],
-	//["I_MBT_03_cannon_F",15,4500,15,GRLIB_perm_max],
-	//["I_E_Truck_02_MRL_F",15,3500,15,GRLIB_perm_max],
-	["B_MBT_01_cannon_F",15,1000,15,GRLIB_perm_tank],
-	["B_MBT_01_TUSK_F",15,1500,15,GRLIB_perm_air],
-	["B_AFV_Wheeled_01_cannon_F",15,3000,15,GRLIB_perm_max],
-	["B_AFV_Wheeled_01_up_cannon_F",15,3500,15,GRLIB_perm_max],
-	["B_MBT_01_arty_F",15,3500,15,GRLIB_perm_max]
+	["CUP_B_Mastiff_HMG_GB_D",10,500,10,GRLIB_perm_log],
+	["CUP_B_Mastiff_GMG_GB_D",10,500,10,GRLIB_perm_log],
+	["CUP_B_BAF_Coyote_L2A1_D",10,500,10,GRLIB_perm_tank],
+	["CUP_B_BAF_Coyote_GMG_D",10,500,10,GRLIB_perm_tank],
+	["CUP_B_MCV80_GB_D",10,500,10,GRLIB_perm_tank],
+	["CUP_B_MCV80_GB_D_SLAT",10,500,10,GRLIB_perm_tank],
+	["CUP_B_FV510_GB_D",15,1000,15,GRLIB_perm_tank],
+	["CUP_B_FV510_GB_D_SLAT",15,1500,15,GRLIB_perm_air],
+	["CUP_B_Challenger2_Desert_BAF",15,3000,15,GRLIB_perm_max],
+	["CUP_B_Challenger2_2CD_BAF",15,3500,15,GRLIB_perm_max]
 ];
 
 air_vehicles = [
-	["B_UAV_01_F",1,10,5,GRLIB_perm_log],
-	["B_UAV_06_F",1,30,5,GRLIB_perm_tank],
-	["B_UAV_02_dynamicLoadout_F",5,1000,5,GRLIB_perm_air],
-	["B_T_UAV_03_dynamicLoadout_F",5,1500,10,GRLIB_perm_max],
-	["B_UAV_05_F",5,2000,15,GRLIB_perm_max],
 	["C_Plane_Civil_01_F",1,50,5,GRLIB_perm_air],
-	["B_Heli_Light_01_F",1,50,5,GRLIB_perm_log],
-	//["I_Heli_light_03_unarmed_F",1,50,5,GRLIB_perm_tank],
-	//["I_Heli_light_03_dynamicLoadout_F",10,1500,20,GRLIB_perm_air],
-	//["I_Plane_Fighter_03_dynamicLoadout_F", 10,3500,20,GRLIB_perm_max],
-	["B_Heli_Light_01_dynamicLoadout_F",5,200,10,GRLIB_perm_air],
-	["B_Heli_Transport_03_unarmed_F",10,500,15,GRLIB_perm_tank],
-	["B_Heli_Transport_03_F",10,1500,15,GRLIB_perm_air],
-	["B_Heli_Transport_01_F",10,1500,15,GRLIB_perm_tank],
-	["B_T_VTOL_01_infantry_F",10,1300,15,GRLIB_perm_air],
-	["B_T_VTOL_01_vehicle_F",10,1400,15,GRLIB_perm_air],
-	["B_T_VTOL_01_armed_F",20,2500,40,GRLIB_perm_max],
-	["B_Heli_Attack_01_dynamicLoadout_F",10,2250,20,GRLIB_perm_air],
-	["B_Plane_CAS_01_dynamicLoadout_F",20,3000,40,GRLIB_perm_max],
-	["B_Plane_Fighter_01_F",20,4500,40,GRLIB_perm_max],
-	["B_Plane_Fighter_01_Stealth_F",20,4500,40,GRLIB_perm_max]
+	["CUP_B_AC47_Spooky_USA",1,150,5,GRLIB_perm_max],
+	["CUP_B_AW159_Unarmed_GB",1,50,5,GRLIB_perm_log],
+	["CUP_B_AW159_GB",5,200,10,GRLIB_perm_air],	
+	["CUP_B_SA330_Puma_HC1_BAF",5,300,10,GRLIB_perm_air],
+	["CUP_B_Merlin_HC3_GB",10,500,15,GRLIB_perm_tank],
+	["CUP_B_Merlin_HC3_Armed_GB",10,1500,15,GRLIB_perm_air],
+	["CUP_B_AH1_DL_BAF",10,1300,15,GRLIB_perm_air],
+	["CUP_B_CH47F_GB",20,2500,40,GRLIB_perm_max],
+	["CUP_B_GR9_DYN_GB",20,3000,40,GRLIB_perm_max],
+	["CUP_B_F35B_BAF",20,4500,40,GRLIB_perm_max]
 ];
 
 blufor_air = [
-	"B_Heli_Attack_01_F",
-	"B_Plane_CAS_01_F",
-	"B_Plane_Fighter_01_F",
-	"B_Heli_Attack_01_F"
+	"CUP_B_AH1_DL_BAF",
+	"CUP_B_AH1_DL_BAF",
+	"CUP_B_GR9_DYN_GB",
+	"CUP_B_F35B_BAF"
 ];
 
 static_vehicles = [
-	["B_UGV_02_Demining_F",0,5,0,GRLIB_perm_inf],
-	["B_Static_Designator_01_F",0,5,0,GRLIB_perm_inf],
-	["B_HMG_01_F",0,10,0,GRLIB_perm_log],
-	["B_HMG_01_high_F",0,10,0,GRLIB_perm_tank],
-	["B_GMG_01_F",0,20,0,GRLIB_perm_log],
-	["B_GMG_01_high_F",0,20,0,GRLIB_perm_tank],
-	["B_static_AA_F",0,50,0,GRLIB_perm_air],
-	["B_static_AT_F",0,50,0,GRLIB_perm_air],
-	["B_Mortar_01_F",0,500,0,GRLIB_perm_max],
-	["B_AAA_System_01_F",10,500,0,GRLIB_perm_max],
-	["B_SAM_System_02_F",10,800,0,GRLIB_perm_max]
+	["CUP_B_SearchLight_static_BAF_DDPM",0,10,0,GRLIB_perm_log],
+	["CUP_B_L111A1_BAF_DDPM",0,50,0,GRLIB_perm_log],
+	["CUP_B_L111A1_MiniTripod_BAF_DDPM",0,70,0,GRLIB_perm_tank],
+	["CUP_B_CZ_Soldier_805_WDL",0,150,0,GRLIB_perm_air],
+	["CUP_B_M119_HIL",0,150,0,GRLIB_perm_air],
+	["CUP_B_L16A2_BAF_DDPM",0,500,0,GRLIB_perm_max]
 ];
 
 // *** Static Weapon with AI ***
@@ -129,81 +104,70 @@ support_vehicles_west = [
 	["B_G_Offroad_01_repair_F",5,15,5,GRLIB_perm_inf],
 	["B_G_Van_01_fuel_F",5,15,20,GRLIB_perm_inf],
 	["Box_NATO_WpsLaunch_F",0,150,0,GRLIB_perm_tank],
-	["B_APC_Tracked_01_CRV_F",10,2000,20,GRLIB_perm_max]
+	["CUP_B_FV432_Bulldog_GB_D",10,2000,20,GRLIB_perm_max]
 ];
 
 buildings_west = [
 	["Land_Cargo_Tower_V1_F",0,0,0,GRLIB_perm_tank],
 	["Land_Cargo_House_V1_F",0,0,0,GRLIB_perm_inf],
 	["Land_Cargo_Patrol_V1_F",0,0,0,GRLIB_perm_log],
-	["Flag_NATO_F",0,0,0,0]
+	["CUP_FlagCarrierBAF",0,0,0,0]
 ];
 
 if ( isNil "blufor_squad_inf_light" ) then { blufor_squad_inf_light = [] };
 if ( count blufor_squad_inf_light == 0 ) then { blufor_squad_inf_light = [
-	"B_Soldier_SL_F",
-	"B_medic_F",
-	"B_Soldier_GL_F",
-	"B_soldier_AR_F",
-	"B_Soldier_F",
-	"B_Soldier_F"
+	"CUP_B_BAF_Soldier_SquadLeader_DDPM",
+	"CUP_B_BAF_Soldier_Medic_DDPM",
+	"CUP_B_BAF_Soldier_Grenadier_DDPM",
+	"CUP_B_BAF_Soldier_AutoRifleman_DDPM",
+	"CUP_B_BAF_Soldier_Rifleman_DDPM",
+	"CUP_B_BAF_Soldier_Rifleman_DDPM"
 	];
 };
 if ( isNil "blufor_squad_inf" ) then { blufor_squad_inf = [] };
 if ( count blufor_squad_inf == 0 ) then { blufor_squad_inf = [
-	"B_Soldier_SL_F",
-	"B_medic_F",
-	"B_soldier_M_F",
-	"B_Soldier_AR_F",
-	"B_HeavyGunner_F",
-	"B_Sharpshooter_F"
+	"CUP_B_BAF_Soldier_SquadLeader_DDPM",
+	"CUP_B_BAF_Soldier_Medic_DDPM",
+	"CUP_B_BAF_Soldier_Marksman_DDPM",
+	"CUP_B_BAF_Soldier_AutoRifleman_DDPM",
+	"CUP_B_BAF_Soldier_HeavyGunner_DDPM",
+	"CUP_B_BAF_Soldier_SharpShooter_DDPM"
 	];
 };
 if ( isNil "blufor_squad_at" ) then { blufor_squad_at = [] };
 if ( count blufor_squad_at == 0 ) then { blufor_squad_at = [
-	"B_Soldier_SL_F",
-	"B_medic_F",
-	"B_soldier_AT_F",
-	"B_soldier_AT_F",
-	"B_soldier_F",
-	"B_soldier_F"
+	"CUP_B_BAF_Soldier_SquadLeader_DDPM",
+	"CUP_B_BAF_Soldier_Medic_DDPM",
+	"CUP_B_BAF_Soldier_AT_DDPM",
+	"CUP_B_BAF_Soldier_AT_DDPM",
+	"CUP_B_BAF_Soldier_Rifleman_DDPM",
+	"CUP_B_BAF_Soldier_Rifleman_DDPM"
 	];
 };
 if ( isNil "blufor_squad_aa" ) then { blufor_squad_aa = [] };
 if ( count blufor_squad_aa == 0 ) then { blufor_squad_aa = [
-	"B_Soldier_SL_F",
-	"B_medic_F",
-	"B_soldier_AA_F",
-	"B_soldier_AA_F",
-	"B_soldier_F",
-	"B_soldier_F"
+	"CUP_B_BAF_Soldier_SquadLeader_DDPM",
+	"CUP_B_BAF_Soldier_Medic_DDPM",
+	"CUP_B_BAF_Soldier_AA_DDPM",
+	"CUP_B_BAF_Soldier_AA_DDPM",
+	"CUP_B_BAF_Soldier_Rifleman_DDPM",
+	"CUP_B_BAF_Soldier_Rifleman_DDPM"
 	];
 };
 if ( isNil "blufor_squad_mix" ) then { blufor_squad_mix = [] };
 if ( count blufor_squad_mix == 0 ) then { blufor_squad_mix = [
-	"B_Soldier_SL_F",
-	"B_medic_F",
-	"B_soldier_AA_F",
-	"B_soldier_AT_F",
-	"B_soldier_F",
-	"B_soldier_F"
-	];
-};
-if ( isNil "blufor_squad_recon" ) then { blufor_squad_recon = [] };
-if ( count blufor_squad_recon == 0 ) then { blufor_squad_recon = [
-	"B_recon_TL_F",
-	"B_recon_medic_F",
-	"B_Recon_Sharpshooter_F",
-	"B_recon_LAT_F",
-	"B_recon_M_F",
-	"B_recon_F"
+	"CUP_B_BAF_Soldier_SquadLeader_DDPM",
+	"CUP_B_BAF_Soldier_Medic_DDPM",
+	"CUP_B_BAF_Soldier_AA_DDPM",
+	"CUP_B_BAF_Soldier_AT_DDPM",
+	"CUP_B_BAF_Soldier_Rifleman_DDPM",
+	"CUP_B_BAF_Soldier_Rifleman_DDPM"
 	];
 };
 
 squads = [
 	[blufor_squad_inf_light,10,300,0,GRLIB_perm_max],
 	[blufor_squad_inf,20,400,0,GRLIB_perm_max],
-	[blufor_squad_recon,25,500,0,GRLIB_perm_max],
 	[blufor_squad_at,25,600,0,GRLIB_perm_max],
 	[blufor_squad_aa,25,600,0,GRLIB_perm_max],
 	[blufor_squad_mix,25,600,0,GRLIB_perm_max]
@@ -224,16 +188,16 @@ uavs = [
 
 // Everything the AI troups should be able to resupply from
 ai_resupply_sources_west = [
-  "B_APC_Tracked_01_CRV_F"
+  "CUP_B_FV432_Bulldog_GB_D"
 ];
 
 // Everything the AI troups should be able to healing from
 ai_healing_sources_west = [
-	"B_APC_Tracked_01_CRV_F"
+	"CUP_B_FV432_Bulldog_GB_D"
 ];
 
 vehicle_rearm_sources_west = [
-	"B_APC_Tracked_01_CRV_F"
+	"CUP_B_FV432_Bulldog_GB_D"
 ];
 
 vehicle_artillery = [
