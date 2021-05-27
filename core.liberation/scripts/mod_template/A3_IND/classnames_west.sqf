@@ -27,11 +27,8 @@ infantry_units = [
 	["I_soldier_GL_F",1,0,0,GRLIB_perm_inf],
 	["I_soldier_M_F",1,0,0,GRLIB_perm_inf],
 	["I_soldier_LAT_F",1,0,0,0],
-	["I_Sharpshooter_F",1,0,0,GRLIB_perm_inf],
-	["I_HeavyGunner_F",1,0,0,GRLIB_perm_inf],
-	["I_recon_F",1,0,0,GRLIB_perm_log],
-	["I_recon_M_F",1,0,0,GRLIB_perm_log],
-	["I_Recon_Sharpshooter_F",1,0,0,GRLIB_perm_log],
+	["I_Soldier_AR_F",1,0,0,GRLIB_perm_inf],
+	["I_Soldier_exp_F",1,0,0,GRLIB_perm_log],
 	["I_soldier_AA_F",1,0,0,GRLIB_perm_log],
 	["I_soldier_AT_F",1,0,0,GRLIB_perm_log],
 	["I_sniper_F",1,0,0,GRLIB_perm_log],
@@ -155,8 +152,8 @@ if ( count blufor_squad_inf == 0 ) then { blufor_squad_inf = [
 	"I_medic_F",
 	"I_soldier_M_F",
 	"I_Soldier_AR_F",
-	"I_HeavyGunner_F",
-	"I_Sharpshooter_F"
+	"I_Soldier_F",
+	"I_Soldier_AR_F"
 	];
 };
 if ( isNil "blufor_squad_at" ) then { blufor_squad_at = [] };
@@ -191,12 +188,12 @@ if ( count blufor_squad_mix == 0 ) then { blufor_squad_mix = [
 };
 if ( isNil "blufor_squad_recon" ) then { blufor_squad_recon = [] };
 if ( count blufor_squad_recon == 0 ) then { blufor_squad_recon = [
-	"I_recon_TL_F",
-	"I_recon_medic_F",
-	"I_Recon_Sharpshooter_F",
-	"I_recon_LAT_F",
-	"I_recon_M_F",
-	"I_recon_F"
+	"I_C_Soldier_Para_2_F",
+	"I_C_Soldier_Para_3_F",
+	"I_C_Soldier_Para_4_F",
+	"I_C_Soldier_Para_5_F",
+	"I_C_Soldier_Para_6_F",
+	"I_C_Soldier_Para_7_F"
 	];
 };
 

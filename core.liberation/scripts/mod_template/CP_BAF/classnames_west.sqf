@@ -67,10 +67,12 @@ air_vehicles = [
 	["C_Plane_Civil_01_F",1,50,5,GRLIB_perm_air],
 	["CUP_B_AC47_Spooky_USA",1,150,5,GRLIB_perm_max],
 	["CUP_B_AW159_Unarmed_GB",1,50,5,GRLIB_perm_log],
-	["CUP_B_AW159_GB",5,200,10,GRLIB_perm_air],	
+	["CUP_B_AW159_GB",5,200,10,GRLIB_perm_air],
+	["CUP_B_AW159_RN_Blackcat",5,200,10,GRLIB_perm_tank],	
 	["CUP_B_SA330_Puma_HC1_BAF",5,300,10,GRLIB_perm_air],
 	["CUP_B_Merlin_HC3_GB",10,500,15,GRLIB_perm_tank],
 	["CUP_B_Merlin_HC3_Armed_GB",10,1500,15,GRLIB_perm_air],
+	["CUP_B_Merlin_HC4_GB",10,1500,15,GRLIB_perm_max],
 	["CUP_B_AH1_DL_BAF",10,1300,15,GRLIB_perm_air],
 	["CUP_B_CH47F_GB",20,2500,40,GRLIB_perm_max],
 	["CUP_B_GR9_DYN_GB",20,3000,40,GRLIB_perm_max],
@@ -78,7 +80,7 @@ air_vehicles = [
 ];
 
 blufor_air = [
-	"CUP_B_AH1_DL_BAF",
+	"CUP_B_AW159_RN_Blackcat",
 	"CUP_B_AH1_DL_BAF",
 	"CUP_B_GR9_DYN_GB",
 	"CUP_B_F35B_BAF"
