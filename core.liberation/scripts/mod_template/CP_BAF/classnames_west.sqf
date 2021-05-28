@@ -32,11 +32,14 @@ infantry_units = [
 ];
 
 light_vehicles = [
-	["B_Quadbike_01_F",1,5,1,0],
+	["CUP_O_TT650_TKA",1,5,1,0],
+	["CUP_B_M1030_USMC",1,5,1,GRLIB_perm_log],
 	["B_Boat_Transport_01_F",1,25,1,GRLIB_perm_inf],
 	["C_Boat_Transport_02_F",2,25,2,GRLIB_perm_log],
-	["B_Boat_Armed_01_minigun_F",5,30,5,GRLIB_perm_log],
-	["C_Van_01_transport_F",1,15,1,0],
+	["CUP_B_MK10_GB",5,30,5,GRLIB_perm_log],
+	//["C_Van_01_transport_F",1,15,1,0],
+	["CUP_B_T810_Unarmed_CZ_DES",1,15,1,0],
+	["CUP_B_T810_Armed_CZ_DES",5,30,5,GRLIB_perm_log],
 	["CUP_B_LR_Transport_GB_D",2,10,2,0],
 	["CUP_B_LR_Special_M2_GB_D",2,20,2,0],
 	["CUP_B_LR_Special_GMG_GB_D",2,20,2,0],
@@ -46,8 +49,7 @@ light_vehicles = [
 	["CUP_B_Ridgback_GMG_GB_D",1,150,1,GRLIB_perm_inf],
 	["CUP_B_Wolfhound_LMG_GB_D",5,100,2,GRLIB_perm_inf],
 	["CUP_B_Wolfhound_GMG_GB_D",5,125,2,GRLIB_perm_log],
-	["CUP_B_T810_Armed_CZ_DES",5,30,5,GRLIB_perm_log],
-	["B_Truck_01_covered_F",5,30,5,GRLIB_perm_tank]
+	["CUP_B_MTVR_BAF_DES",5,30,5,GRLIB_perm_tank]
 ];
 
 heavy_vehicles = [
@@ -226,4 +228,10 @@ GRLIB_vehicle_whitelist_west = [
 
 GRLIB_vehicle_blacklist_west = [
 
+];
+
+box_transport_config_west = [
+	[ "CUP_B_MTVR_BAF_DES", -6.5, [0, -0.4, 0.4], [0, -2.1, 0.4] ],
+	[ "CUP_B_T810_Unarmed_CZ_DES", -5.5, [0, 0.3, 0], [0, -1.25, 0] ],
+	[ "CUP_B_T810_Armed_CZ_DES", -5.5, [0, 0.3, -0.3], [0, -1.25, -0.3] ]
 ];

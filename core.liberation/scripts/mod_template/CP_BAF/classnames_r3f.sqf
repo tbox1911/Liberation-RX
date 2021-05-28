@@ -85,6 +85,10 @@ R3F_LOG_CFG_can_tow = R3F_LOG_CFG_can_tow +
 [
 	"Tank_F",
 	"Truck_F",
+	"CUP_T810_Base",
+	"CUP_LR_Base",
+	"CUP_BAF_Jackal2_BASE_D",
+	"CUP_BAF_Coyote_BASE_D",
 	"Hatchback_01_base_F",
 	"Offroad_01_base_F",
 	"Offroad_02_base_F",
@@ -113,6 +117,10 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 		"APC_Tracked_03_base_F",
 		"LT_01_base_F",
 	"Truck_F",
+	"CUP_T810_Base",
+	"CUP_LR_Base",
+	"CUP_BAF_Jackal2_BASE_D",
+	"CUP_BAF_Coyote_BASE_D",
 	"Hatchback_01_base_F",
 	"SUV_01_base_F",
 	//"Offroad_01_base_F",
@@ -138,6 +146,10 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 [
 	"Tank_F",
 	"Truck_F",
+	"CUP_T810_Base",
+	"CUP_LR_Base",
+	"CUP_BAF_Jackal2_BASE_D",
+	"CUP_BAF_Coyote_BASE_D",
 	"Hatchback_01_base_F",
 	"SUV_01_base_F",
 	"Offroad_01_base_F",
@@ -155,8 +167,13 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 [
 	["Quadbike_01_base_F", 3],
+	["Car_F", 7],
 	["Tank_F", 50],
 	["Truck_F", 100],
+	["CUP_T810_Base", 100],
+	["CUP_LR_Base", 20],
+	["CUP_BAF_Jackal2_BASE_D", 30],
+	["CUP_BAF_Coyote_BASE_D", 30],
 	["Hatchback_01_base_F", 5],
 	["SUV_01_base_F", 5],
 	["Offroad_01_base_F", 10],
@@ -174,12 +191,16 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 [
-	["Quadbike_01_base_F", 10]
+	["Quadbike_01_base_F", 10],
+	["CUP_M1030_Base", 10],
+	["CUP_TT650_Base", 10]
 ];
 
 R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 [
-	"Quadbike_01_base_F"
+	"Quadbike_01_base_F",
+	"CUP_M1030_Base",
+	"CUP_TT650_Base"
 ];
 
 //--------------- Ship ---------------

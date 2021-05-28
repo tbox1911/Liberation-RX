@@ -37,6 +37,7 @@ civilians = [
 civilian_vehicles = [
 	"C_Quadbike_01_F",
 	"CUP_O_TT650_TKA",
+	"CUP_I_TT650_NAPA",
 	"C_Heli_light_01_sheriff_F",
 	"C_Heli_Light_01_civil_F",
 	"C_Heli_light_01_furious_F",
@@ -64,5 +65,6 @@ civilian_vehicles = [
 	"B_GEN_Van_02_transport_F",
 	"C_Truck_02_covered_F",
 	"C_Truck_02_transport_F",
-	"CUP_O_Tractor_Old_TKA"	
+	"CUP_O_Tractor_Old_TKA",
+	"CUP_C_Datsun"
 ];
