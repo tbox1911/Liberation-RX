@@ -315,7 +315,11 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 	["O_static_AA_F",10],
 	["O_static_AT_F",10],
 	["O_Mortar_01_F",10],
-	["Land_CzechHedgehog_01_new_F", 5]
+	["Land_CzechHedgehog_01_new_F", 5],
+	["CUP_B_SearchLight_static_BAF_DDPM", 10],
+	["CUP_B_L111A1_BAF_DDPM", 10],
+	["CUP_B_L111A1_MiniTripod_BAF_DDPM", 10],
+	["CUP_B_L16A2_BAF_DDPM", 10]
 ];
 
 R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
@@ -323,7 +327,22 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	"StaticMGWeapon",
 	"StaticGrenadeLauncher",
 	"StaticMortar",
-	"Land_CzechHedgehog_01_new_F"
+	"Land_CzechHedgehog_01_new_F",
+	"CUP_B_SearchLight_static_BAF_DDPM",
+	"CUP_B_L111A1_BAF_DDPM",
+	"CUP_B_L111A1_MiniTripod_BAF_DDPM",
+	"CUP_B_L16A2_BAF_DDPM",
+	"CUP_B_M119_HIL"
+];
+
+R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
+[
+	"CUP_B_M119_HIL"
+];
+
+R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
+[
+	"CUP_B_M119_HIL"
 ];
 
 //--------------- Camping ---------------

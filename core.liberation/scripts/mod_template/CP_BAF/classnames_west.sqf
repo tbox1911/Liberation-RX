@@ -90,9 +90,8 @@ static_vehicles = [
 	["CUP_B_SearchLight_static_BAF_DDPM",0,10,0,GRLIB_perm_log],
 	["CUP_B_L111A1_BAF_DDPM",0,50,0,GRLIB_perm_log],
 	["CUP_B_L111A1_MiniTripod_BAF_DDPM",0,70,0,GRLIB_perm_tank],
-	["CUP_B_CZ_Soldier_805_WDL",0,150,0,GRLIB_perm_air],
-	["CUP_B_M119_HIL",0,150,0,GRLIB_perm_air],
-	["CUP_B_L16A2_BAF_DDPM",0,500,0,GRLIB_perm_max]
+	["CUP_B_L16A2_BAF_DDPM",0,500,0,GRLIB_perm_max],
+	["CUP_B_M119_HIL",0,1000,0,GRLIB_perm_air]
 ];
 
 // *** Static Weapon with AI ***
