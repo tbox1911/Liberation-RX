@@ -251,6 +251,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 				};
 
 				if ( _nextclass == FOB_typename ) then {
+					_nextbuilding allowDamage false;
 					_nextbuilding addEventHandler ["HandleDamage", { 0 }];
 				};
 
