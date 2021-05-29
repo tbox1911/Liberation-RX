@@ -28,6 +28,7 @@ _free_items = [
 	"smokeshell",
 	"grenade",
 	"charge_remote_mag",
+	"Laserbatteries",
 	"chemlight"
 ];
 
