@@ -22,7 +22,18 @@ R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
 	"B_Heli_Attack_01_F",
 	"B_Heli_Attack_01_dynamicLoadout_F",
 	"I_Heli_light_03_unarmed_F",
-	"I_Heli_light_03_F"
+	"I_Heli_light_03_F",
+	"CUP_B_AW159_Unarmed_GB",
+	"CUP_B_AW159_GB",
+	"CUP_B_AW159_RN_Blackcat",
+	"CUP_B_SA330_Puma_HC1_BAF",
+	"CUP_B_Merlin_HC3_GB",
+	"CUP_B_Merlin_HC3_Armed_GB",
+	"CUP_B_Merlin_HC4_GB",
+	"CUP_B_AH1_DL_BAF",
+	"CUP_B_CH47F_GB",
+	"CUP_B_GR9_DYN_GB",
+	"CUP_B_F35B_BAF"
 ];
 
 R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
@@ -47,6 +58,17 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["I_Heli_Transport_02_F", 150],
 	["B_Heli_Transport_03_unarmed_F", 200],
 	["I_Heli_light_03_F",100],
+	["CUP_B_AW159_Unarmed_GB", 50],
+	["CUP_B_AW159_GB", 50],
+	["CUP_B_AW159_RN_Blackcat", 50],
+	["CUP_B_SA330_Puma_HC1_BAF", 50],
+	["CUP_B_Merlin_HC3_GB", 50],
+	["CUP_B_Merlin_HC3_Armed_GB", 150],
+	["CUP_B_Merlin_HC4_GB", 150],
+	["CUP_B_AH1_DL_BAF", 50],
+	["CUP_B_CH47F_GB", 50],
+	["CUP_B_GR9_DYN_GB", 50],
+	["CUP_B_F35B_BAF", 50],
 	["B_T_VTOL_01_infantry_F", 100],
 	["B_T_VTOL_01_vehicle_F", 100],
 	["B_T_VTOL_01_armed_F", 40],
