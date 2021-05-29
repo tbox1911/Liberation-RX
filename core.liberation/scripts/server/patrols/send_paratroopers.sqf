@@ -15,7 +15,7 @@ _sendPara = {
 	sleep 0.2;
 
 	private _cargo_seat_free = count (fullCrew [_newvehicle, "cargo", true] - fullCrew [_newvehicle, "cargo", false]);
-	if (_cargo_seat_free >= 16) then {_cargo_seat_free = 16};
+	if (_cargo_seat_free > 8) then {_cargo_seat_free = 8};
 	for "_i" from 1 to _cargo_seat_free do {
 		_unit = _para_group createUnit [opfor_paratrooper, getmarkerpos _spawnsector, [], 0, "NONE"];
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
