@@ -231,7 +231,7 @@ GRLIB_vehicle_blacklist_west = [
 ];
 
 box_transport_config_west = [
-	[ "CUP_B_MTVR_BAF_DES", -6.5, [0, -0.4, 0.4], [0, -2.1, 0.4] ],
+	[ "CUP_B_MTVR_BAF_DES", -6.5, [0, -0.4, 0.3], [0, -2.1, 0.3] ],
 	[ "CUP_B_T810_Unarmed_CZ_DES", -5.5, [0, 0.3, 0], [0, -1.25, 0] ],
 	[ "CUP_B_T810_Armed_CZ_DES", -5.5, [0, 0.3, -0.3], [0, -1.25, -0.3] ]
 ];

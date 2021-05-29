@@ -93,7 +93,29 @@ blacklisted_bag = [
 	"I_Protagonist_VR_F",
 	"U_I_Protagonist_VR",
 	"C_Protagonist_VR_F",
-	"U_C_Protagonist_VR"
+	"U_C_Protagonist_VR",
+	"CUP_B_DShkM_Gun_Bag",
+	"CUP_B_DShkM_TripodHigh_Bag",
+	"CUP_B_DShkM_TripodLow_Bag",
+	"CUP_B_Kord_Gun_Bag",
+	"CUP_B_Kord_Tripod_Bag",
+	"CUP_B_Metis_Gun_Bag",
+	"CUP_B_Metis_Tripod_Bag",
+	"CUP_B_AGS30_Gun_Bag",
+	"CUP_B_AGS30_Tripod_Bag",
+	"CUP_B_SPG9_Gun_Bag",
+	"CUP_B_SPG9_Tripod_Bag",
+	"CUP_B_Podnos_Gun_Bag",
+	"CUP_B_Podnos_Bipod_Bag",
+	"CUP_B_M2_Gun_Bag",
+	"CUP_B_M2_Tripod_Bag",
+	"CUP_B_M2_MiniTripod_Bag",
+	"CUP_B_Mk19_Gun_Bag",
+	"CUP_B_Mk19_Tripod_Bag",
+	"CUP_B_Tow_Gun_Bag",
+	"CUP_B_TOW_Tripod_Bag",
+	"CUP_B_M252_Gun_Bag",
+	"CUP_B_M252_Bipod_Bag"
 ];
 
 blacklisted_weapon = [
