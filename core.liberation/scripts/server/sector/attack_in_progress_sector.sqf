@@ -1,18 +1,20 @@
 params [ "_sector" ];
-private [ "_attacktime", "_ownership", "_grp", "_squad_type" ];
+private _max_prisonners = 4;
 
 sleep 5;
 
-_ownership = [ markerpos _sector ] call F_sectorOwnership;
+private _ownership = [ markerpos _sector ] call F_sectorOwnership;
 if ( _ownership != GRLIB_side_enemy ) exitWith {};
 
-_squad_type = blufor_squad_inf_light;
+private _squad_type = blufor_squad_inf_light;
 if ( _sector in sectors_military ) then {
 	_squad_type = blufor_squad_inf;
 };
 
-_grp = createGroup [GRLIB_side_friendly, true];
-if ( GRLIB_blufor_defenders ) then {
+private _grp = createGroup [GRLIB_side_friendly, true];
+private	_is_side_sector = (count (allMapMarkers select {_x select [0,12] == "side_mission" && markerPos _x distance2D markerPos _sector <= GRLIB_capture_size}) > 0);
+
+if ( GRLIB_blufor_defenders && !_is_side_sector) then {
 	{ _x createUnit [ markerpos _sector, _grp,'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]']; } foreach _squad_type;
 };
 
@@ -33,7 +35,7 @@ if ( _ownership == GRLIB_side_friendly ) exitWith {
 };
 
 [ _sector, 1 ] remoteExec ["remote_call_sector", 0];
-_attacktime = GRLIB_vulnerability_timer;
+private _attacktime = GRLIB_vulnerability_timer;
 
 while { _attacktime > 0 && ( _ownership == GRLIB_side_enemy || _ownership == GRLIB_side_resistance ) } do {
 	_ownership = [markerpos _sector] call F_sectorOwnership;
@@ -57,7 +59,12 @@ if ( GRLIB_endgame == 0 ) then {
 		stats_sectors_lost = stats_sectors_lost + 1;
 	} else {
 		[ _sector, 3 ] remoteExec ["remote_call_sector", 0];
-		{ [_x] spawn prisonner_ai; } foreach ( (getmarkerpos _sector) nearEntities [ ["Man"], GRLIB_capture_size * 0.8 ] );
+		{
+			if ( _max_prisonners > 0 && ((random 100) < GRLIB_surrender_chance) ) then {
+				[_x] spawn prisonner_ai;
+				_max_prisonners = _max_prisonners - 1;
+			};
+		} foreach ( (getmarkerpos _sector) nearEntities [ ["Man"], GRLIB_capture_size * 0.8 ] );
 	};
 };
 
