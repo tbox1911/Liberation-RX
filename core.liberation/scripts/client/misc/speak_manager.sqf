@@ -57,9 +57,15 @@ speak_mission_delivery_1 = {
 	uIsleep 3;
 	gamelogic globalChat "Look at the marker on your Map.";
 
-	if ( isNull (player getVariable ["GRLIB_A3W_Mission_Marker", objNull])) then {
+	_quest_item = player getVariable ["GRLIB_A3W_Mission_Item", objNull];
+	if (isNull _quest_item) then {
 		_pos = player modelToWorld [0,1,1];
 		_can = createVehicle ["Land_Suitcase_F", _pos, [], 0, "CAN_COLLIDE"];
+		player setVariable ["GRLIB_A3W_Mission_Item", _can];
+		_can addEventHandler ["Deleted", {
+			player setVariable ["GRLIB_A3W_Mission_Item", nil]; 
+			player setVariable ["GRLIB_A3W_Mission_Marker", GRLIB_A3W_Mission_SD select 0]; 
+		}];
 		[_can] spawn R3F_LOG_FNCT_objet_deplacer;
 	};
 	player setVariable ["GRLIB_A3W_Mission_Marker", _next_unit];
