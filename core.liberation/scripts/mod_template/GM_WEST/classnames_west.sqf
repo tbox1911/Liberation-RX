@@ -257,3 +257,7 @@ GRLIB_vehicle_blacklist_west = [
   "gm_AmmoBox_wood_03_empty"
 
 ];
+
+box_transport_config_west = [
+
+];
