@@ -1,10 +1,8 @@
-choiceslist = [];
-fullmap = 0;
-_old_fullmap = 0;
-_standard_map_pos = [];
-_frame_pos = [];
-_spawn_str = "";
-_basenamestr = "BASE CHIMERA";
+private _choiceslist = [];
+private _standard_map_pos = [];
+private _frame_pos = [];
+private _spawn_str = "";
+private _basenamestr = "BASE CHIMERA";
 
 waitUntil { !isNil "GRLIB_all_fobs" };
 
@@ -52,22 +50,22 @@ lbAdd [ 203, "--"] ;
 lbSetCurSel [ 203, 0 ];
 
 while { dialog && alive player && deploy == 0} do {
-	choiceslist = [ [ _basenamestr, getpos lhd ] ];
+	_choiceslist = [ [ _basenamestr, getpos lhd ] ];
 
 	for [{_idx=0},{_idx < count GRLIB_all_fobs},{_idx=_idx+1}] do {
-		choiceslist = choiceslist + [[format [ "FOB %1 - %2", (military_alphabet select _idx),mapGridPosition (GRLIB_all_fobs select _idx) ],GRLIB_all_fobs select _idx]];
+		_choiceslist = _choiceslist + [[format [ "FOB %1 - %2", (military_alphabet select _idx),mapGridPosition (GRLIB_all_fobs select _idx) ],GRLIB_all_fobs select _idx]];
 	};
 
 	_respawn_trucks = call F_getMobileRespawns;
 
 	for [ {_idx=0},{_idx < count _respawn_trucks},{_idx=_idx+1} ] do {
-		choiceslist = choiceslist + [[format [ "%1 - %2", localize "STR_RESPAWN_TRUCK",mapGridPosition (getpos (_respawn_trucks select _idx)) ],getpos (_respawn_trucks select _idx),(_respawn_trucks select _idx)]];
+		_choiceslist = _choiceslist + [[format [ "%1 - %2", localize "STR_RESPAWN_TRUCK",mapGridPosition (getpos (_respawn_trucks select _idx)) ],getpos (_respawn_trucks select _idx),(_respawn_trucks select _idx)]];
 	};
 
 	lbClear 201;
 	{
 		lbAdd [201, (_x select 0)];
-	} foreach choiceslist;
+	} foreach _choiceslist;
 
 	if ( lbCurSel 201 == -1 ) then {
 			lbSetCurSel [201,0];
@@ -77,23 +75,16 @@ while { dialog && alive player && deploy == 0} do {
 		_oldsel = lbCurSel 201;
 		_objectpos = [0,0,0];
 		if ( dialog ) then {
-			_objectpos = ((choiceslist select _oldsel) select 1);
+			_objectpos = ((_choiceslist select _oldsel) select 1);
 		};
 		if ( surfaceIsWater _objectpos) then {
 			respawn_object setposasl [_objectpos select 0, _objectpos select 1, 15];
 		} else {
-			respawn_object setpos ((choiceslist select _oldsel) select 1);
+			respawn_object setpos ((_choiceslist select _oldsel) select 1);
 		};
 		_startdist = 120;
 		_enddist = 120;
 		_alti = 35;
-		if ( dialog ) then {
-			if (((choiceslist select (lbCurSel 201)) select 0) == "BLUFOR LHD") then {
-				_startdist = 200;
-				_enddist = 300;
-				_alti = 30;
-			};
-		};
 
 		"spawn_marker" setMarkerPosLocal (getpos respawn_object);
 		ctrlMapAnimClear ((findDisplay 5201) displayCtrl 251);
@@ -122,22 +113,22 @@ while { dialog && alive player && deploy == 0} do {
 		_oldsel = -1;
 	};
 
-	uiSleep 0.1;
+	uiSleep 1;
 };
 
 if (dialog && deploy == 1) then {
 	_idxchoice = lbCurSel 201;
-	_spawn_str = (choiceslist select _idxchoice) select 0;
+	_spawn_str = (_choiceslist select _idxchoice) select 0;
 
-	if (((choiceslist select _idxchoice) select 0) == _basenamestr) then {
+	if (((_choiceslist select _idxchoice) select 0) == _basenamestr) then {
 		call respawn_lhd;
 	} else {
 		_player_pos = getPos player;
-		if (count (choiceslist select _idxchoice) == 3) then {
-			_truck = (choiceslist select _idxchoice) select 2;
+		if (count (_choiceslist select _idxchoice) == 3) then {
+			_truck = (_choiceslist select _idxchoice) select 2;
 			player setpos ([_truck, 5 + floor(random 3), random 360] call BIS_fnc_relPos);
 		} else {
-			_destpos = ((choiceslist select _idxchoice) select 1);
+			_destpos = ((_choiceslist select _idxchoice) select 1);
 			player setpos [((_destpos select 0) + 5) - floor(random 10),((_destpos select 1) + 5) - floor(random 10),0.3];
 		};
 
