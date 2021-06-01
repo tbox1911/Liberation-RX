@@ -86,6 +86,7 @@ speak_mission_delivery_2 = {
 		gamelogic globalChat "he's hidding in a small house, enemy forces try to catch him!";
 		uIsleep 3;
 		gamelogic globalChat "Look at the marker on your Map, Hurry hup!";
+		[getPos _next_unit, "militia"] remoteExec ["a3w_create_enemy", 2];
 	} else {
 		gamelogic globalChat "Oh, I dont knows,";
 		uIsleep 3;

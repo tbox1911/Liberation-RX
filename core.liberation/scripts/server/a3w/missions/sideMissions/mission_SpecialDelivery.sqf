@@ -7,14 +7,13 @@ if (!isServer) exitwith {};
 if (!isNil "GRLIB_A3W_Mission_SD") exitWith {};
 #include "sideMissionDefines.sqf"
 
-private ["_nbUnits", "_townName",
+private ["_townName",
 		"_missionPos2", "_missionPos3", "_missionPosEnd",
 		"_missionPosEnd", "_mission_grp", "_house"];
 
 _setupVars =
 {
 	_missionType = "Special Delivery";
-	_nbUnits = [] call getNbUnits;
 	_ignoreAiDeaths = true;
 	_locationsArray = nil;
 };
@@ -76,10 +75,6 @@ _setupObjects =
 	_man4 enableAI "Cover";
 	_house = createVehicle ["Land_i_House_Small_01_V1_F", _missionPosEnd, [], 2, "None"];
 	_man4 setPosATL (getposATL _house);
-
-	// Enemies
-	_aiGroup = createGroup [GRLIB_side_enemy, true];
-	[_aiGroup, _missionPosEnd, _nbUnits, "militia"] call createCustomGroup;
 
 	_marker = createMarker ["side_mission_A3W_Mission_SD", _missionPosEnd];
 	_marker setMarkerShape "ICON";
