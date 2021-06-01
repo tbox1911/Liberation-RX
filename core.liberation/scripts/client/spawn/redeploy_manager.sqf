@@ -68,7 +68,7 @@ while { dialog && alive player && deploy == 0} do {
 	} foreach _choiceslist;
 
 	if ( lbCurSel 201 == -1 ) then {
-			lbSetCurSel [201,0];
+		lbSetCurSel [201,0];
 	};
 
 	if ( lbCurSel 201 != _oldsel ) then {
