@@ -60,12 +60,13 @@ if ( GRLIB_endgame == 0 ) then {
 		stats_fobs_lost = stats_fobs_lost + 1;
 	} else {
 		[ _thispos , 3 ] remoteExec ["remote_call_fob", 0];
+		_enemy_left = [allUnits, {(alive _x) && (vehicle _x == _x) && (side group _x == GRLIB_side_enemy) && ((_thispos distance2D _x) < GRLIB_capture_size * 0.8)}] call BIS_fnc_conditionalSelect;
 		{ 
 			if ( _max_prisonners > 0 && ((random 100) < GRLIB_surrender_chance) ) then {
 				[_x] spawn prisonner_ai;
 				_max_prisonners = _max_prisonners - 1;
 			};
-		} foreach ( _thispos nearEntities [ ["Man"], GRLIB_capture_size * 0.8 ] );
+		} foreach _enemy_left;
 	};
 };
 
