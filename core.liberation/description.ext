@@ -29,9 +29,14 @@ class CfgFunctions {
 class cfgSounds {
  	class parasound {
  		name = "parasound";
- 		sound[] = {"res\c130.ogg", 1.0, 1};
+ 		sound[] = {"res\c130.ogg", 1, 1};
  		titles[] = {};
  	};
+	class bombershout {
+		name = "bombershout";
+		sound[] = {"res\shout.ogg", 1, 1};
+		titles[] = {};
+	};
 	#include "addons\GRAD\cfgSounds.hpp"
 };
 
