@@ -75,15 +75,12 @@ air_vehicles = [
 	["I_UAV_02_dynamicLoadout_F",5,1000,5,GRLIB_perm_air],
 	["I_T_UAV_03_dynamicLoadout_F",5,1500,10,GRLIB_perm_max],
 	["I_UAV_05_F",5,2000,15,GRLIB_perm_max],
-	["C_Plane_Civil_01_F",1,50,5,GRLIB_perm_air],
-	
+	["C_Plane_Civil_01_F",1,50,5,GRLIB_perm_air],	
 	["I_Heli_light_03_F",1,150,5,GRLIB_perm_log],
 	["I_Heli_light_03_dynamicLoadout_F",1,150,5,GRLIB_perm_air],
-	["I_E_Heli_light_03_dynamicLoadout_F",1,150,5,GRLIB_perm_tank],
-	
+	["I_E_Heli_light_03_dynamicLoadout_F",1,150,5,GRLIB_perm_tank],	
 	["I_Heli_light_03_unarmed_F",1,50,5,GRLIB_perm_tank],
 	["I_Heli_Transport_02_F",10,1500,15,GRLIB_perm_air],
-
 	["I_Plane_Fighter_03_dynamicLoadout_F", 10,3500,20,GRLIB_perm_max],
 	["I_Plane_Fighter_03_Cluster_F",20,3000,40,GRLIB_perm_max],
 	["I_Plane_Fighter_04_F",20,4500,40,GRLIB_perm_max],
@@ -94,7 +91,7 @@ blufor_air = [
   "I_Heli_light_03_F",
 	"I_Heli_light_03_dynamicLoadout_F",
 	"I_E_Heli_light_03_dynamicLoadout_F",
-  "I_Plane_Fighter_03_AA_F",
+    "I_Plane_Fighter_03_AA_F",
 	"I_Plane_Fighter_03_dynamicLoadout_F",
 	"I_Plane_Fighter_03_Cluster_F",
 	"I_Plane_Fighter_04_F",
