@@ -1,4 +1,4 @@
-if (!isServer) exitWith {};
+if (!isServer && hasInterface) exitWith {};
 params [ "_unit", "_cmd" ];
 
 _my_dog = _unit getVariable ["my_dog", nil];

@@ -1,6 +1,6 @@
+if (!isServer && hasInterface) exitWith {};
 params ["_beacon", "_action"];
 
-if (!isServer) exitWith {};
 if (isNil "_beacon") exitWith {};
 
 private _tmp_global_locked_beacon = [];

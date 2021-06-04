@@ -444,7 +444,7 @@ while { true } do {
 			GRLIB_mod_west,GRLIB_mod_east,
 			0,		//free for extened use
 			_stats,
-			[ round infantry_weight, round armor_weight, round air_weight ],
+			[ round infantry_weight max 33, round armor_weight max 33, round air_weight max 33 ],
 			GRLIB_vehicle_to_military_base_links,
 			_permissions,
 			0,  //ai_groups
