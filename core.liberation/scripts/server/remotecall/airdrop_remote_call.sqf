@@ -1,4 +1,4 @@
-if (!isServer) exitWith {};
+if (!isServer && hasInterface) exitWith {};
 params [ "_unit", "_class" ];
 {
 	_dist = round (_unit distance2D _x);

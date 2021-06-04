@@ -1,6 +1,6 @@
 if ( isDedicated ) exitWith {};
 params [ "_location", "_penalty"];
-if (score player < GRLIB_perm_air || (player distance2D _location < GRLIB_sector_size) || time < (15 * 60) ) exitWith {};
+if (score player < GRLIB_perm_tank || (player distance2D _location < GRLIB_sector_size) || time < (15 * 60) ) exitWith {};
 
 _fobname = [ _location ] call F_getFobName;
 
