@@ -11,13 +11,17 @@ while { count units _grp < 3 } do {
 ((units _grp) select 0) moveInDriver _vehicle;
 ((units _grp) select 1) moveInGunner _vehicle;
 ((units _grp) select 2) moveInCommander _vehicle;
-sleep 0.2;
+sleep 1;
 {
 	if ( vehicle _x == _x ) then {
 		deleteVehicle _x;
 	} else {
 		[ _x ] call loadout_crewman;
-
+		_x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+		_x addEventHandler ["HandleDamage", {_this call damage_manager_EH}];
+		_x setSkill 0.65;
+		_x setSkill ["courage", 1];
+		_x allowFleeing 0;
 	};
 } foreach (units _grp);
 
