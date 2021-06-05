@@ -23,6 +23,7 @@ removeAllWeapons _unit;
 removeHeadgear _unit;
 removeBackpack _unit;
 removeVest _unit;
+removeGoggles _unit;
 
 _unit forceAddUniform _cloth;
 _unit addVest "V_Chestrig_khk";
