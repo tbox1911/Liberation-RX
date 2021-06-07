@@ -113,7 +113,7 @@ while { dialog && alive player && deploy == 0} do {
 		_oldsel = -1;
 	};
 
-	uiSleep 1;
+	uiSleep 0.2;
 };
 
 if (dialog && deploy == 1) then {
