@@ -29,7 +29,7 @@ if ( _ownership == GRLIB_side_friendly ) exitWith {
 
 [ _thispos , 1 ] remoteExec ["remote_call_fob", 0];
 
-private _attacktime = GRLIB_vulnerability_timer;
+private _attacktime = (GRLIB_vulnerability_timer + (5 * 60));
 
 while { _attacktime > 0 && ( _ownership == GRLIB_side_enemy || _ownership == GRLIB_side_civilian ) } do {
 	_ownership = [ _thispos ] call F_sectorOwnership;
