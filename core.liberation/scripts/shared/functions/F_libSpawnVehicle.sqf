@@ -43,6 +43,7 @@ if ( _classname isKindOf "Air" ) then {
 	_newvehicle setPos _spawnpos;
 };
 
+_newvehicle allowDamage false;
 clearWeaponCargoGlobal _newvehicle;
 clearMagazineCargoGlobal _newvehicle;
 clearItemCargoGlobal _newvehicle;
@@ -55,6 +56,8 @@ if ( _classname in militia_vehicles ) then {
 	[ _newvehicle ] call F_forceOpforCrew;
 };
 
+_vehcrew = crew _newvehicle;
+{ _x allowDamage false } forEach _vehcrew;
 _newvehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
 _newvehicle allowCrewInImmobile true;
 _newvehicle setUnloadInCombat [true, false];
@@ -73,6 +76,14 @@ if (count opfor_texture_overide > 0) then {
 	_texture_name = selectRandom opfor_texture_overide;
 	_texture = [ RPT_colorList, { _x select 0 == _texture_name } ] call BIS_fnc_conditionalSelect select 0 select 1;
 	[_newvehicle, _texture, _texture_name,[]] call RPT_fnc_TextureVehicle;
+};
+
+[_newvehicle, _vehcrew] spawn {
+	params ["_veh", "_crew"];
+	sleep 5;
+	_veh setDamage 0;
+	_veh allowDamage true;
+	{ _x setDamage 0; _x allowDamage false } forEach _crew;
 };
 
 diag_log format [ "Done Spawning vehicle %1 at %2", _classname , time ];
