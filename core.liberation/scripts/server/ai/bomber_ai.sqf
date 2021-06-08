@@ -13,8 +13,6 @@ private _targets = [];
 private _target = objNull;
 
 _unit removeAllMPEventHandlers "MPKilled";
-_unit removeAllEventHandlers "HandleDamage";
-
 _grp = createGroup [GRLIB_side_civilian, true];
 [_unit] joinSilent _grp;
 
@@ -55,6 +53,7 @@ while {alive _unit} do {
 			_explosive setDamage 1;
 		} else {
 			_unit doMove (getPos _target);
+			_unit switchMove "amovpknlmstpsraswrfldnon";
 		};
 		sleep 4;
 	};
