@@ -25,7 +25,16 @@ if ( GRLIB_CUPW_enabled ) then {
 		"CUP_optic_AN_PAS_13c1",
 		"CUP_optic_AN_PAS_13c2",
 		"CUP_optic_GOSHAWK",
-		"CUP_optic_GOSHAWK_RIS"
+		"CUP_optic_GOSHAWK_RIS",
+		"CUP_B_M2_Gun_Bag",
+		"CUP_B_M2_Tripod_Bag",
+		"CUP_B_M2_MiniTripod_Bag",
+		"CUP_B_Mk19_Gun_Bag",
+		"CUP_B_Mk19_Tripod_Bag",
+		"CUP_B_Tow_Gun_Bag",
+		"CUP_B_TOW_Tripod_Bag",
+		"CUP_B_M252_Gun_Bag",
+		"CUP_B_M252_Bipod_Bag"
 	];
 	(
 		"
