@@ -83,7 +83,7 @@ if (count opfor_texture_overide > 0) then {
 	sleep 5;
 	_veh setDamage 0;
 	_veh allowDamage true;
-	{ _x setDamage 0; _x allowDamage false } forEach _crew;
+	{ _x setDamage 0; _x allowDamage true } forEach _crew;
 };
 
 diag_log format [ "Done Spawning vehicle %1 at %2", _classname , time ];
