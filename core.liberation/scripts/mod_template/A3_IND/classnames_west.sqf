@@ -88,10 +88,10 @@ air_vehicles = [
 ];
 
 blufor_air = [
-  "I_Heli_light_03_F",
+  	"I_Heli_light_03_F",
 	"I_Heli_light_03_dynamicLoadout_F",
 	"I_E_Heli_light_03_dynamicLoadout_F",
-    "I_Plane_Fighter_03_AA_F",
+	"I_Plane_Fighter_03_AA_F",
 	"I_Plane_Fighter_03_dynamicLoadout_F",
 	"I_Plane_Fighter_03_Cluster_F",
 	"I_Plane_Fighter_04_F",

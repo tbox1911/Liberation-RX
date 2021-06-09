@@ -64,7 +64,7 @@ _building_classnames = [FOB_typename];
 	_classnames_to_save_blu pushback (_x select 0);
 } foreach (static_vehicles + air_vehicles + heavy_vehicles + light_vehicles + support_vehicles + ind_recyclable);
 
-_list_static_weapons = [];
+_list_static_weapons = [] + opfor_statics;
 {
 	_list_static_weapons pushback (_x select 0);
 } foreach static_vehicles;
@@ -154,8 +154,6 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 	GRLIB_all_fobs = _correct_fobs;
 	stats_saves_loaded = stats_saves_loaded + 1;
 
-	_list_static = [] + opfor_statics;
-	{_list_static pushBack ( _x select 0 )} foreach (static_vehicles);
 	diag_log format [ "--- LRX Load Game %1 objects to load...", count(buildings_to_save)];
 	{
 		_nextclass = _x select 0;
@@ -223,7 +221,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 					_nextbuilding setVariable ["GRLIB_vehicle_ishuron", true, true];
 				};
 
-				if (_nextclass in _list_static) then {
+				if (_nextclass in _list_static_weapons) then {
 					[_nextbuilding] spawn protect_static;
 					_nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
 					_nextbuilding setVariable ["R3F_LOG_disabled", false, true];
