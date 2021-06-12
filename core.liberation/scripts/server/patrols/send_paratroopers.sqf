@@ -1,9 +1,8 @@
-params [ "_targetsector" ];
+params [ "_targetpos" ];
 
 _sendPara = {
-	params [ "_targetsector", "_para_group" ];
+	params [ "_targetpos", "_para_group" ];
 
-	private _targetpos = getMarkerPos _targetsector;
 	private _spawnsector = ( [ sectors_airspawn , [ _targetpos ] , { (markerpos _x) distance _input0 }, "ASCEND"] call BIS_fnc_sortBy ) select 0;
 	private _pilot_group = createGroup [GRLIB_side_enemy, true];
 	private _newvehicle = [markerpos _spawnsector, selectRandom opfor_choppers] call F_libSpawnVehicle;
@@ -128,5 +127,5 @@ _sendPara = {
 };
 
 _para_group = createGroup [GRLIB_side_enemy, true];
-[_targetsector,_para_group] spawn _sendPara;
+[_targetpos, _para_group] spawn _sendPara;
 _para_group;
