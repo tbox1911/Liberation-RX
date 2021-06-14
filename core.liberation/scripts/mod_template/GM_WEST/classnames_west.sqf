@@ -1,5 +1,6 @@
 // *** FRIENDLIES ***
-// Default classname and advanced definition in : scripts\shared\classnames.sqf
+// Default classname: scripts\shared\default_classnames.sqf
+// Advanced definition: scripts\shared\classnames.sqf
 
 FOB_box_typename = "gm_ge_army_shelteraceII_standard";
 FOB_truck_typename = "gm_ge_army_kat1_454_cargo";

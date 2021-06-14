@@ -1,5 +1,6 @@
 // *** FRIENDLIES ***
-// Default classname and advanced definition in : scripts\shared\classnames.sqf
+// Default classname: scripts\shared\default_classnames.sqf
+// Advanced definition: scripts\shared\classnames.sqf
 
 //huron_typename = "B_Heli_Transport_03_unarmed_F";  // comment to use value from lobby/server.cfg
 commander_classname = "B_officer_F";
@@ -81,7 +82,7 @@ air_vehicles = [
 	["B_UAV_05_F",5,2000,15,GRLIB_perm_max],
 	["C_Plane_Civil_01_F",1,50,5,GRLIB_perm_air],
 	["B_Heli_Light_01_F",1,50,15,GRLIB_perm_log],
-	//["I_Heli_light_03_unarmed_F",1,50,5,GRLIB_perm_tank],
+	["I_Heli_light_03_unarmed_F",1,50,5,GRLIB_perm_tank],
 	//["I_Heli_light_03_dynamicLoadout_F",10,1500,20,GRLIB_perm_air],
 	//["I_Plane_Fighter_03_dynamicLoadout_F", 10,3500,20,GRLIB_perm_max],
 	["B_Heli_Light_01_dynamicLoadout_F",5,200,20,GRLIB_perm_air],

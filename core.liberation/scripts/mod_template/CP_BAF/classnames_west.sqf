@@ -1,5 +1,6 @@
 // *** FRIENDLIES ***
-// Default classname and advanced definition in : scripts\shared\classnames.sqf
+// Default classname: scripts\shared\default_classnames.sqf
+// Advanced definition: scripts\shared\classnames.sqf
 
 huron_typename = "CUP_B_Merlin_HC3_GB";  // comment to use value from lobby/server.cfg
 Respawn_truck_typename = "CUP_B_LR_Ambulance_GB_D";
