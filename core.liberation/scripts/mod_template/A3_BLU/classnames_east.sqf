@@ -109,8 +109,7 @@ opfor_battlegroup_vehicles = [
 	"B_Heli_Transport_01_F",
 	"B_Truck_01_transport_F",
 	"B_MBT_01_TUSK_F",
-	"B_MBT_01_TUSK_F",
-	"B_AFV_Wheeled_01_cannon_F"
+	"B_MBT_01_TUSK_F"
 ];
 
 opfor_battlegroup_vehicles_low_intensity = [

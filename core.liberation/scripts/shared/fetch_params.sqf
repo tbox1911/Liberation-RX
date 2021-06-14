@@ -59,6 +59,7 @@ if (GRLIB_mod_list_west == GRLIB_mod_list_east) exitWith {
 	diag_log "Loading Aborted to protect data integrity.";
 	diag_log "Correct the Side selection.";
 	diag_log "*********************************************************************************";
+	abort_loading = true; publicVariable "abort_loading";
 };
 
 GRLIB_r1 = "&#108;&#105;&#98;&#101;&#114;&#97;&#116;&#105;&#111;&#110;";
