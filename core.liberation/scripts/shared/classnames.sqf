@@ -177,6 +177,12 @@ box_transport_config = [
 transport_vehicles = [];
 {transport_vehicles pushBack ( _x select 0 )} foreach (box_transport_config);
 
+// Big_units
+vehicle_big_units append vehicle_big_units_west;
+
+// Artillery
+vehicle_artillery append vehicle_artillery_west;
+
 // Whitelist Vehicle (recycle)
 GRLIB_vehicle_whitelist = [
 	Arsenal_typename,

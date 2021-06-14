@@ -234,13 +234,13 @@ ai_healing_sources_west = [
 vehicle_rearm_sources_west = [
 ];
 
-vehicle_artillery = [
+vehicle_artillery_west = [
 	"O_Mortar_01_F",
 	"I_E_Truck_02_MRL_F",
 	"O_MBT_02_arty_F"
 ];
 
-vehicle_big_units = [
+vehicle_big_units_west = [
 	"Land_Cargo_Tower_V1_F",
 	"B_T_VTOL_01_infantry_F",
 	"B_T_VTOL_01_vehicle_F",
