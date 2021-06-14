@@ -4,7 +4,6 @@
 
 FOB_typename = "Land_DeconTent_01_CSAT_greenhex_F";
 huron_typename = "O_Heli_Transport_04_black_F";
-FOB_typename = "Land_Cargo_HQ_V3_F";
 FOB_box_typename = "Land_Pod_Heli_Transport_04_box_black_F";
 FOB_truck_typename = "O_T_Truck_03_device_ghex_F";
 Respawn_truck_typename = "rhs_gaz66_ap2_msv" ;
@@ -43,8 +42,8 @@ infantry_units = [
 ];
 
 light_vehicles = [
-  ["rhs_tigr_msv",1,10,1,0],
-  ["rhs_tigr_3camo_msv",1,10,1,0],
+	["rhs_tigr_msv",1,10,1,0],
+	["rhs_tigr_3camo_msv",1,10,1,0],
 	["rhs_tigr_sts_3camo_msv",1,30,1,GRLIB_perm_inf],
 	["rhs_tigr_sts_msv",1,30,1,GRLIB_perm_inf],
 	["rhs_gaz66_vv",1,30,1,GRLIB_perm_inf],
@@ -157,10 +156,10 @@ support_vehicles_west = [
 	["RHS_Ural_Fuel_VV_01",1,30,1,GRLIB_perm_inf],
 	["RHS_Ural_Repair_VV_01",1,30,1,GRLIB_perm_inf],
 	["rhs_weapon_crate",0,150,0,GRLIB_perm_tank],
-  ["rhs_spec_weapons_crate",0,150,0,GRLIB_perm_tank],
-  ["rhs_launcher_crate",0,150,0,GRLIB_perm_tank],
-  ["rhs_gear_crate",0,150,0,GRLIB_perm_tank],
-  ["rhs_mags_crate",0,150,0,GRLIB_perm_tank]
+	["rhs_spec_weapons_crate",0,150,0,GRLIB_perm_tank],
+	["rhs_launcher_crate",0,150,0,GRLIB_perm_tank],
+	["rhs_gear_crate",0,150,0,GRLIB_perm_tank],
+	["rhs_mags_crate",0,150,0,GRLIB_perm_tank]
 ];
 
 buildings_west = [
@@ -173,12 +172,12 @@ buildings_west = [
 if ( isNil "blufor_squad_inf_light" ) then { blufor_squad_inf_light = [] };
 if ( count blufor_squad_inf_light == 0 ) then { blufor_squad_inf_light = [
 	"rhs_vmf_emr_medic",
-  "rhs_vmf_emr_at",
-  "rhs_vmf_emr_efreitor",
-  "rhs_vmf_emr_junior_sergeant",
-  "rhs_vmf_emr_rifleman",
-  "rhs_vmf_emr_grenadier",
-  "rhs_vmf_emr_machinegunner"
+	"rhs_vmf_emr_at",
+	"rhs_vmf_emr_efreitor",
+	"rhs_vmf_emr_junior_sergeant",
+	"rhs_vmf_emr_rifleman",
+	"rhs_vmf_emr_grenadier",
+	"rhs_vmf_emr_machinegunner"
   ];
 };
 if ( isNil "blufor_squad_inf" ) then { blufor_squad_inf = [] };
@@ -193,7 +192,7 @@ if ( count blufor_squad_inf == 0 ) then { blufor_squad_inf = [
     "rhs_vmf_emr_rifleman",
     "rhs_vmf_emr_grenadier",
     "rhs_vmf_emr_machinegunner"
-	];
+  ];
 };
 if ( isNil "blufor_squad_at" ) then { blufor_squad_at = [] };
 if ( count blufor_squad_at == 0 ) then { blufor_squad_at = [
@@ -209,7 +208,7 @@ if ( count blufor_squad_at == 0 ) then { blufor_squad_at = [
     "rhs_vmf_emr_aa",
     "rhs_vmf_emr_marksman",
     "rhs_vmf_emr_at"
-	];
+  ];
 };
 if ( isNil "blufor_squad_aa" ) then { blufor_squad_aa = [] };
 if ( count blufor_squad_aa == 0 ) then { blufor_squad_aa = [
@@ -224,7 +223,7 @@ if ( count blufor_squad_aa == 0 ) then { blufor_squad_aa = [
     "rhs_vmf_emr_aa",
     "rhs_vmf_emr_marksman",
     "rhs_vmf_emr_aa"
-	];
+  ];
 };
 if ( isNil "blufor_squad_mix" ) then { blufor_squad_mix = [] };
 if ( count blufor_squad_mix == 0 ) then { blufor_squad_mix = [
@@ -245,7 +244,7 @@ if ( count blufor_squad_mix == 0 ) then { blufor_squad_mix = [
     "rhs_vmf_emr_aa",
     "rhs_vmf_emr_marksman",
     "rhs_vmf_emr_aa"
-	];
+  ];
 };
 if ( isNil "blufor_squad_recon" ) then { blufor_squad_recon = [] };
 if ( count blufor_squad_recon == 0 ) then { blufor_squad_recon = [
@@ -269,7 +268,7 @@ if ( count blufor_squad_recon == 0 ) then { blufor_squad_recon = [
     "rhs_vmf_emr_medic",
     "rhs_vmf_emr_aa",
     "rhs_vmf_emr_aa"
-	];
+  ];
 };
 
 squads = [
