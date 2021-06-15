@@ -340,6 +340,7 @@ GRLIB_ignore_colisions_objects = [
 	"Land_runway_edgelight_blue_F",
 	"Land_HelipadSquare_F",
 	"Sign_Sphere100cm_F",
+	"Sign_Arrow_F",
 	"Land_ClutterCutter_large_F",
  	"Land_PowLine_wire_BB_EP1",
  	"Land_PowLine_wire_AB_EP1",
