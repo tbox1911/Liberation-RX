@@ -78,7 +78,6 @@ greuh_liberation_savegame = profileNamespace getVariable GRLIB_save_key;
 
 _side_west = "";
 _side_east = "";
-abort_loading = false;
 
 // Manager Load Save
 diag_log format [ "--- LRX Load Game start at %1", time ];
@@ -296,7 +295,6 @@ publicVariable "GRLIB_vehicle_to_military_base_links";
 publicVariable "GRLIB_permissions";
 publicVariable "GRLIB_player_scores";
 save_is_loaded = true; publicVariable "save_is_loaded";
-publicVariable "abort_loading";
 if (abort_loading) exitWith {
 	diag_log "*********************************************************************************";
 	diag_log format ["FATAL! - This Savegame was made with a differents Modset (%1/%2)", _side_west, _side_east];
