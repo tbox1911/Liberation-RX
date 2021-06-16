@@ -3,8 +3,6 @@
 // ******************************************************************************************
 //	@file Version: 1.0
 //	@file Name: mission_AirWreck.sqf
-//	@file Author: [404] Deadbeat, [404] Costlyy, AgentRev
-//	@file Created: 08/12/2012 15:19
 
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
