@@ -41,13 +41,13 @@ if ( isServer ) then {
 		} else {
 			if ( _unit isKindOf "Tank" ) then {
 				infantry_weight = infantry_weight - 0.50;
-				armor_weight = armor_weight + 6;
+				armor_weight = armor_weight + 5;
 				air_weight = air_weight - 0.10;
 			};
 			if ( _unit isKindOf "Air" ) then {
 				infantry_weight = infantry_weight - 0.50;
 				armor_weight = armor_weight - 0.10;
-				air_weight = air_weight + 6;
+				air_weight = air_weight + 7;
 			};
 		};
 
