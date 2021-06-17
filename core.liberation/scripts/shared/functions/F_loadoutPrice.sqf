@@ -29,7 +29,12 @@ _free_items = [
 	"grenade",
 	"charge_remote_mag",
 	"Laserbatteries",
-	"chemlight"
+	"chemlight",
+	"ItemMap",
+	"ItemGPS",
+	"ItemRadio",
+	"ItemCompass",
+	"ItemWatch"
 ];
 
 _fn_isfree = {
