@@ -236,10 +236,6 @@ vehicle_rearm_sources_west = [
 	"gm_AmmoBox_wood_03_empty"
 ];
 
-vehicle_artillery_west = [
-	"B_Mortar_01_F"
-];
-
 vehicle_big_units_west = [
 	"Land_Cargo_Tower_V1_F",
 	"B_T_VTOL_01_infantry_F",

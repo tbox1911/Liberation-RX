@@ -181,9 +181,6 @@ transport_vehicles = [];
 // Big_units
 vehicle_big_units append vehicle_big_units_west;
 
-// Artillery
-vehicle_artillery append vehicle_artillery_west;
-
 // Whitelist Vehicle (recycle)
 GRLIB_vehicle_whitelist = [
 	Arsenal_typename,

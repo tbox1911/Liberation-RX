@@ -56,19 +56,6 @@ _unit addEventHandler ["FiredMan",	{
 	if (count GRLIB_all_fobs >= 0) then {
 		if (((_unit distance2D ([] call F_getNearestFob) < GRLIB_fob_range) || (_unit distance2D lhd < 500)) && _weapon == "Put") then {deleteVehicle _projectile};
 	};
-
-	// Pay for atry shoot
-	// if (typeOf _vehicle in vehicle_artillery) then {
-	// 	private _cost = 5;
-	// 	private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
-	// 	if (_ammo_collected >= 5) then {
-    // 		player setVariable ["GREUH_ammo_count", (_ammo_collected - _cost), true];
-	// 		gamelogic globalChat (format ["Artillery fire cost %1 Ammo.", _cost]);
-	// 	} else {
-	// 		gamelogic globalChat "Not enough Ammo, Artillery fire canceled.";
-	// 		deleteVehicle _projectile;
-	// 	};
-	// };
 }];
 
 // Player

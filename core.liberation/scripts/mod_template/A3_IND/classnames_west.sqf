@@ -231,13 +231,6 @@ vehicle_rearm_sources_west = [
 	"I_Truck_02_ammo_F"
 ];
 
-vehicle_artillery_west = [
-	"I_Mortar_01_F",
-	"I_Ship_Gun_01_F",
-	"I_E_Truck_02_MRL_F",
-	"I_MBT_01_arty_F"
-];
-
 vehicle_big_units_west = [
 	"Land_Cargo_Tower_V1_F",
 	"B_T_VTOL_01_infantry_F",
