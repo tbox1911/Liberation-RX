@@ -11,7 +11,8 @@ private _icon_tuto = "\a3\ui_f\data\map\markers\handdrawn\unknown_ca.paa";
 private _id_actions = [
 	-1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
 	-1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-	-1, -1, -1, -1, -1, -1, -1, -1, -1, -1
+	-1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+	-1, -1
 ];
 
 is_DogOnDuty = {
@@ -34,9 +35,10 @@ if (!(player diarySubjectExists str(parseText GRLIB_r3))) exitWith {};
 while { true } do {
 	if ([] call is_menuok) then {
 		_fobdistance = round (player distance2D ([] call F_getNearestFob));
+		_near_outpost = (count (player nearObjects [FOB_outpost, _distfob]) > 0);
 		_near_arsenal = [player, "ARSENAL", _distarsenal, true] call F_check_near;
-		_near_spawn = ([player, "RESPAWN", _distvehclose, true] call F_check_near) || (count(player nearEntities [[Respawn_truck_typename, huron_typename], _distspawn])>0) ;
-		_near_fobbox = player nearEntities [[FOB_box_typename, FOB_truck_typename], _distspawn];
+		_near_spawn = [player, "RESPAWN", _distvehclose, true] call F_check_near;
+		_near_fobbox = player nearEntities [[FOB_box_typename, FOB_truck_typename, FOB_box_outpost], _distspawn];
 		_near_fuel = [player, "FUEL", _distvehclose, false] call F_check_near;
 		_near_repair = [player, "REPAIR", _distvehclose, false] call F_check_near;
 		_near_atm = [player, "ATM", _distvehclose, true] call F_check_near;
@@ -229,7 +231,7 @@ while { true } do {
 
 		// Virtual Garage
 		_idact_garage = _id_actions select 17;
-		if (_fobdistance > 15 && _fobdistance < _distfob && (player distance lhd) >= 1000 && score player >= GRLIB_perm_inf ) then {
+		if (_fobdistance > 15 && _fobdistance < _distfob && (!_near_outpost) && (player distance lhd) >= 1000 && score player >= GRLIB_perm_inf ) then {
 			if ( _idact_garage == -1 ) then {
 				_idact = player addAction ["<t color='#0080FF'>-- VIRTUAL GARAGE" + "</t> <img size='1' image='res\ui_veh.paa'/>","addons\VIRT\virtual_garage.sqf","",-984,false,true,"",""];
 				_id_actions set [17, _idact];
@@ -285,7 +287,7 @@ while { true } do {
 
 		// Secondary Objectives
 		_idact_secondary = _id_actions select 21;
-		if (count GRLIB_all_fobs > 0 && ( GRLIB_endgame == 0 ) && (_fobdistance < _distredeploy || (player distance lhd) <= 200) && (score player >= GRLIB_perm_air ||  player == ( [] call F_getCommander ) || [] call is_admin) ) then {
+		if (count GRLIB_all_fobs > 0 && ( GRLIB_endgame == 0 ) && (_fobdistance < _distredeploy || (player distance lhd) <= 200) && (!_near_outpost) && (score player >= GRLIB_perm_air ||  player == ( [] call F_getCommander ) || [] call is_admin) ) then {
 			if ( _idact_secondary == -1 ) then {
 				_idact = player addAction ["<t color='#FFFF00'>" + localize "STR_SECONDARY_OBJECTIVES" + "</t>","scripts\client\ui\secondary_ui.sqf","",-995,false,true,"","build_confirmed == 0"];
 				_id_actions set [21, _idact];
@@ -299,7 +301,7 @@ while { true } do {
 
 		// Pack FOB
 		_idact_packfob = _id_actions select 22;
-		if ((_fobdistance < _distarsenal && (player distance lhd) >= 1000) && ( (score player >= GRLIB_perm_max) || (player == ( [] call F_getCommander ) || [] call is_admin) )) then {
+		if ((_fobdistance < _distarsenal && (player distance lhd) >= 1000) && (!_near_outpost) && ( (score player >= GRLIB_perm_max) || (player == ( [] call F_getCommander ) || [] call is_admin) )) then {
 			if ( _idact_packfob == -1 ) then {
 				_idact = player addAction ["<t color='#FF6F00'>" + localize "STR_FOB_REPACKAGE" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_repackage_fob.sqf",([] call F_getNearestFob),-981,false,true,"","build_confirmed == 0 && !(cursorObject getVariable ['fob_in_use', false])"];
 				_id_actions set [22, _idact];
@@ -315,7 +317,11 @@ while { true } do {
 		_idact_unpackfob = _id_actions select 23;
 		if ((_fobdistance > GRLIB_sector_size && (player distance lhd) >= 1000) && cursorObject in _near_fobbox ) then {
 			if ( _idact_unpackfob == -1 ) then {
-				_idact = player addAction ["<t color='#FF6F00'>" + localize "STR_FOB_ACTION" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_build_fob.sqf",cursorObject,-981,false,true,"","build_confirmed == 0 && !(cursorObject getVariable ['box_in_use', false])"];
+				_str = localize "STR_FOB_ACTION";
+				if (typeOf cursorObject == FOB_box_outpost) then {
+					_str = localize "STR_OUTPOST_ACTION";
+				};
+				_idact = player addAction ["<t color='#FF6F00'>" + _str + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_build_fob.sqf",cursorObject,-981,false,true,"","build_confirmed == 0 && !(cursorObject getVariable ['box_in_use', false])"];
 				_id_actions set [23, _idact];
 			};
 		} else {
@@ -380,6 +386,21 @@ while { true } do {
 				_id_actions set [27, -1];
 			};
 		};
+
+		// Destroy Outpost
+		_idact_destroyfob = _id_actions select 28;
+		if ((_fobdistance < _distarsenal && (player distance lhd) >= 1000) && (_near_outpost) && ( (score player >= GRLIB_perm_log) || (player == ( [] call F_getCommander ) || [] call is_admin) )) then {
+			if ( _idact_destroyfob == -1 ) then {
+				_idact = player addAction ["<t color='#FF6F00'>" + "-- DESTROY OUTPOST" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_destroy_fob.sqf",([] call F_getNearestFob),-981,false,true,"","build_confirmed == 0 && !(cursorObject getVariable ['fob_in_use', false])"];
+				_id_actions set [28, _idact];
+			};
+		} else {
+			if ( _idact_destroyfob != -1 ) then {
+				player removeAction _idact_destroyfob;
+				_id_actions set [28, -1];
+			};
+		};
+
 	} else {
 		{
 			if (_x != -1) then {

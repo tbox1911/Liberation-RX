@@ -50,10 +50,10 @@ resources_intel = 0;
 GRLIB_player_scores = [];
 GRLIB_garage = [];
 
-no_kill_handler_classnames = [FOB_typename, huron_typename];
-_classnames_to_save = [FOB_typename, huron_typename];
+no_kill_handler_classnames = [FOB_typename, FOB_outpost, huron_typename];
+_classnames_to_save = [FOB_typename, FOB_outpost, huron_typename];
 _classnames_to_save_blu = [];
-_building_classnames = [FOB_typename];
+_building_classnames = [FOB_typename, FOB_outpost];
 {
 	no_kill_handler_classnames pushback (_x select 0);
 	_classnames_to_save pushback (_x select 0);
@@ -247,7 +247,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 					_nextbuilding addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 				};
 
-				if ( _nextclass == FOB_typename ) then {
+				if ( _nextclass in [FOB_typename, FOB_outpost] ) then {
 					_nextbuilding allowDamage false;
 					_nextbuilding addEventHandler ["HandleDamage", { 0 }];
 				};

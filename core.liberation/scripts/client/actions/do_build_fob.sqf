@@ -5,12 +5,11 @@ private [ "_minfobdist", "_minsectordist", "_distfob", "_clearedtobuildfob", "_d
 
 //only one at time
 if ((_box getVariable ["box_in_use", false])) exitWith {};
-_box setVariable ["box_in_use", true, true];
-
 if ( count GRLIB_all_fobs >= GRLIB_maximum_fobs ) exitWith {
 	hint format [ localize "STR_HINT_FOBS_EXCEEDED", GRLIB_maximum_fobs ];
 };
 
+_box setVariable ["box_in_use", true, true];
 _minfobdist = 1000;
 _minsectordist = GRLIB_capture_size + GRLIB_fob_range;
 _distfob = 1;
@@ -44,8 +43,13 @@ if (!_clearedtobuildfob) then {
 	if ( !_clearedtobuildsector ) then {
 		hint format [localize "STR_FOB_BUILDING_IMPOSSIBLE_SECTOR",floor _minsectordist,floor _distsector];
 	} else {
-		buildtype = 99;
-		dobuild = 1;
+		if (typeOf _box == FOB_box_outpost) then {
+			buildtype = 98;
+			dobuild = 1;
+		} else {
+			buildtype = 99;
+			dobuild = 1;
+		};
 	};
 };
 _box setVariable ["box_in_use", false, true];

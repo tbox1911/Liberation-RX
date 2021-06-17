@@ -53,7 +53,13 @@ while { dialog && alive player && deploy == 0} do {
 	_choiceslist = [ [ _basenamestr, getpos lhd ] ];
 
 	for [{_idx=0},{_idx < count GRLIB_all_fobs},{_idx=_idx+1}] do {
-		_choiceslist = _choiceslist + [[format [ "FOB %1 - %2", (military_alphabet select _idx),mapGridPosition (GRLIB_all_fobs select _idx) ],GRLIB_all_fobs select _idx]];
+		_fobpos = GRLIB_all_fobs select _idx;
+		_near_outpost = (count (_fobpos nearObjects [FOB_outpost, 100]) > 0);
+		if (_near_outpost) then {
+			_choiceslist = _choiceslist + [[format [ "Outpost %1 - %2", (military_alphabet select _idx),mapGridPosition (GRLIB_all_fobs select _idx) ],GRLIB_all_fobs select _idx]];
+		} else {
+			_choiceslist = _choiceslist + [[format [ "FOB %1 - %2", (military_alphabet select _idx),mapGridPosition (GRLIB_all_fobs select _idx) ],GRLIB_all_fobs select _idx]];
+		};
 	};
 
 	_respawn_trucks = call F_getMobileRespawns;

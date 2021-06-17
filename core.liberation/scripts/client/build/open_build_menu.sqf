@@ -26,6 +26,7 @@ private _iscommander = false;
 if ( player == [] call F_getCommander ) then {
 	_iscommander = true;
 };
+private _near_outpost = (count (player nearObjects [FOB_outpost, 100]) > 0);
 ctrlSetText [1011, format ["%1 - %2", _title, _rank]];
 ctrlShow [ 108, _iscommandant ];
 ctrlShow [ 1085, _iscommandant ];
@@ -45,13 +46,13 @@ localize "STR_BUILD8"
 while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
  	_build_list = [];
 	{
+		if (_near_outpost && buildtype in [3,4,8]) exitWith {};
 		if (buildtype == 8 ) then {
 			_build_list pushback _x;
 		} else {
 			if ( _score >= (_x select 4) ) then {_build_list pushback _x};
 		};
 	} forEach (build_lists select buildtype);
-
 
 	if (_oldbuildtype != buildtype || synchro_done ) then {
 		synchro_done = false;
@@ -103,6 +104,10 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 			};
 
 		} foreach _build_list;
+
+		if (_near_outpost && count (_build_list) == 0) then {
+			((findDisplay 5501) displayCtrl (110)) lnbAddRow [ "       Unavailable at Outpost.","-","-","-"];
+		};
 	};
 
 	if(_initindex != -1) then {
