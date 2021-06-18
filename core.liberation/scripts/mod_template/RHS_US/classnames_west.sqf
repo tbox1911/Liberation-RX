@@ -2,32 +2,31 @@
 // Default classname: scripts\shared\default_classnames.sqf
 // Advanced definition: scripts\shared\classnames.sqf
 
-//huron_typename = "B_Heli_Transport_03_unarmed_F";  // comment to use value from lobby/server.cfg
+huron_typename = "RHS_CH_47F";
 FOB_typename = "Land_DeconTent_01_NATO_tropic_F";
-Respawn_truck_typename = "rhsusf_M1085A1P2_B_WD_Medical_fmtv_usarmy";
+Respawn_truck_typename = "rhsusf_M1085A1P2_B_WD_Medical_fmtv_usarmy";  //"rhsusf_m113_usarmy_medical"
 commander_classname = "B_officer_F";
-pilot_classname = "B_Helipilot_F";
-crewman_classname = "B_crew_F";
+pilot_classname = "rhsusf_army_ucp_helipilot";
+crewman_classname = "rhsusf_army_ucp_crewman";
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 infantry_units = [
 	["Alsatian_Random_F",0,0,0,GRLIB_perm_max],
 	["Fin_random_F",0,0,0,0],
-	["B_soldier_F",1,0,0,0],
-	["B_medic_F",1,0,0,0],
-	["B_engineer_F",1,0,0,0],
-	["B_soldier_GL_F",1,0,0,GRLIB_perm_inf],
-	["B_soldier_M_F",1,0,0,GRLIB_perm_inf],
-	["B_soldier_LAT_F",1,0,0,0],
-	["B_Sharpshooter_F",1,0,0,GRLIB_perm_inf],
-	["B_HeavyGunner_F",1,0,0,GRLIB_perm_inf],
-	["B_recon_F",1,0,0,GRLIB_perm_log],
-	["B_recon_M_F",1,0,0,GRLIB_perm_log],
-	["B_Recon_Sharpshooter_F",1,0,0,GRLIB_perm_log],
-	["B_soldier_AA_F",1,0,0,GRLIB_perm_log],
-	["B_soldier_AT_F",1,0,0,GRLIB_perm_log],
-	["B_sniper_F",1,0,0,GRLIB_perm_log],
-	["B_soldier_PG_F",1,0,0,GRLIB_perm_log],
+	["rhsusf_army_ucp_rifleman_m590",1,0,0,0],
+	["rhsusf_army_ucp_medic",1,0,0,0],
+	["rhsusf_army_ucp_engineer",1,0,0,0],
+	["rhsusf_army_ucp_grenadier",1,0,0,GRLIB_perm_inf],
+	["rhsusf_army_ucp_marksman",1,0,0,GRLIB_perm_inf],
+	["rhsusf_army_ucp_riflemanat",1,0,0,0],
+	["rhsusf_army_ucp_sniper",1,0,0,GRLIB_perm_inf],
+	["rhsusf_army_ucp_machinegunner",1,0,0,GRLIB_perm_inf],
+	["rhsusf_army_ucp_sniper_m107",1,0,0,GRLIB_perm_log],
+	["rhsusf_army_ucp_rifleman_m590",1,0,0,GRLIB_perm_log],
+	["rhsusf_army_ucp_aa",1,0,0,GRLIB_perm_log],
+	["rhsusf_army_ucp_javelin",1,0,0,GRLIB_perm_log],
+	["rhsusf_army_ucp_sniper_m107",1,0,0,GRLIB_perm_log],
+	["rhsusf_usmc_recon_marpat_wd_rifleman_lite",1,0,0,GRLIB_perm_log],
 	[crewman_classname,1,0,0,GRLIB_perm_inf],
 	[pilot_classname,1,0,0,GRLIB_perm_log]
 ];
@@ -94,14 +93,9 @@ heavy_vehicles = [
 ];
 
 air_vehicles = [
-	["B_UAV_01_F",1,10,5,GRLIB_perm_log],
-	["B_UAV_06_F",1,30,5,GRLIB_perm_tank],
-	["B_UAV_02_dynamicLoadout_F",5,1000,5,GRLIB_perm_air],
-	["B_T_UAV_03_dynamicLoadout_F",5,1500,10,GRLIB_perm_max],
-	["B_UAV_05_F",5,2000,15,GRLIB_perm_max],
 	["RHS_MELB_H6M",10,200,15,0],
-    ["RHS_MELB_MH6M",10,200,15,0],
-    ["RHS_MELB_AH6M",10,200,15,0],
+  ["RHS_MELB_MH6M",10,200,15,0],
+  ["RHS_MELB_AH6M",10,200,15,0],
 	["RHS_UH1Y_UNARMED",10,100,15,0],
 	["RHS_UH1Y_FFAR",10,500,15,GRLIB_perm_log],
 	["RHS_UH1Y",10,200,5,GRLIB_perm_air],
@@ -110,26 +104,18 @@ air_vehicles = [
 	["RHS_AH1Z_wd",10,500,5,GRLIB_perm_air],
 	["rhsusf_CH53e_USMC_cargo",5,350,100,GRLIB_perm_log],
 	["rhsusf_CH53E_USMC_GAU21",5,300,100,GRLIB_perm_log],
-    ["RHS_CH_47F",5,350,100,0],
+  ["RHS_CH_47F",5,350,100,0],
 	["RHS_CH_47F_cargo",5,300,100,0],
-    ["RHS_UH60M",5,350,100,GRLIB_perm_log],
-    ["RHS_UH60M_ESSS",5,350,100,GRLIB_perm_log],
-    ["RHS_UH60M_ESSS2",5,350,100,GRLIB_perm_log],
-    ["RHS_UH60M2",5,350,100,GRLIB_perm_log],
-    ["RHS_UH60M_MEV2",5,350,100,GRLIB_perm_log],
-    ["RHS_UH60M_MEV",5,350,100,GRLIB_perm_log],
+  ["RHS_UH60M",5,350,100,GRLIB_perm_log],
+  ["RHS_UH60M_ESSS",5,350,100,GRLIB_perm_log],
+  ["RHS_UH60M_ESSS2",5,350,100,GRLIB_perm_log],
+  ["RHS_UH60M2",5,350,100,GRLIB_perm_log],
+  ["RHS_UH60M_MEV2",5,350,100,GRLIB_perm_log],
+  ["RHS_UH60M_MEV",5,350,100,GRLIB_perm_log],
 	["RHS_C130J_Cargo",100,300,110,GRLIB_perm_inf],
 	["RHS_C130J",100,300,110,GRLIB_perm_inf],
-	["B_T_VTOL_01_infantry_F",10,1300,15,GRLIB_perm_air],
-	["B_T_VTOL_01_vehicle_F",10,1400,15,GRLIB_perm_air],
-	["B_T_VTOL_01_armed_F",20,2500,40,GRLIB_perm_max],
-	["B_Heli_Attack_01_dynamicLoadout_F",10,3000,20,GRLIB_perm_air],
-	["B_Heli_Attack_02_dynamicLoadout_F",10,4500,20,GRLIB_perm_max],
 	["rhsusf_f22",15,1500,15,GRLIB_perm_max],
-	["B_Plane_CAS_01_dynamicLoadout_F",20,3000,40,GRLIB_perm_max],
-	["B_Plane_Fighter_01_F",20,4500,40,GRLIB_perm_max],
-	["RHS_TU95MS_vvs_old",50,9000,50,GRLIB_perm_max],
-	["B_Plane_Fighter_01_Stealth_F",20,4500,40,GRLIB_perm_max]
+	["RHS_TU95MS_vvs_old",50,9000,50,GRLIB_perm_max]
 ];
 
 blufor_air = [
@@ -140,14 +126,12 @@ blufor_air = [
 ];
 
 static_vehicles = [
-	["B_UGV_02_Demining_F",0,5,0,GRLIB_perm_inf],
-	["B_Static_Designator_01_F",0,5,0,GRLIB_perm_inf],
-	["B_HMG_01_F",0,10,0,GRLIB_perm_log],
-	["B_HMG_01_high_F",0,10,0,GRLIB_perm_tank],
+	["RHS_M2StaticMG_WD",0,10,0,GRLIB_perm_log],
+	["RHS_M2StaticMG_MiniTripod_WD",0,10,0,GRLIB_perm_tank],
 	["B_GMG_01_F",0,20,0,GRLIB_perm_log],
-	["B_GMG_01_high_F",0,20,0,GRLIB_perm_tank],
-	["B_static_AA_F",0,50,0,GRLIB_perm_air],
-	["B_static_AT_F",0,50,0,GRLIB_perm_air],
+	["RHS_TOW_TriPod_WD",0,20,0,GRLIB_perm_tank],
+	["RHS_Stinger_AA_pod_WD",0,50,0,GRLIB_perm_air],
+	["RHS_MK19_TriPod_WD",0,50,0,GRLIB_perm_air],
 	["B_Mortar_01_F",0,500,0,GRLIB_perm_max],
 	["B_AAA_System_01_F",10,500,0,GRLIB_perm_max],
 	["B_SAM_System_02_F",10,800,0,GRLIB_perm_max]
@@ -155,19 +139,15 @@ static_vehicles = [
 
 // *** Static Weapon with AI ***
 static_vehicles_AI = [
-	"B_AAA_System_01_F",
-	"B_SAM_System_02_F",
-	"O_SAM_System_04_F"
 ];
 
 support_vehicles_west = [
 	["rhs_D30_msv",10,150,0,GRLIB_perm_log],
 	["rhs_D30_at_msv",10,150,0,GRLIB_perm_log],
 	["rhsusf_mags_crate",0,50,0,GRLIB_perm_tank],
-    ["rhsusf_gear_crate",0,50,0,GRLIB_perm_tank],
-    ["rhsusf_launcher_crate",0,50,0,GRLIB_perm_tank],
-    ["rhsusf_spec_weapons_crate",0,50,0,GRLIB_perm_tank],
-	["B_APC_Tracked_01_CRV_F",15,2000,50,GRLIB_perm_max]
+  ["rhsusf_gear_crate",0,50,0,GRLIB_perm_tank],
+  ["rhsusf_launcher_crate",0,50,0,GRLIB_perm_tank],
+  ["rhsusf_spec_weapons_crate",0,50,0,GRLIB_perm_tank]
 ];
 
 buildings_west = [
@@ -182,10 +162,8 @@ if ( count blufor_squad_inf_light == 0 ) then { blufor_squad_inf_light = [
 	"rhsusf_army_ucp_arb_autorifleman",
     "rhsusf_army_ucp_arb_autoriflemana",
     "rhsusf_army_ucp_arb_medic",
-    "rhsusf_army_ucp_arb_medic",
     "rhsusf_army_ucp_arb_engineer",
     "rhsusf_army_ucp_arb_machinegunner",
-    "rhsusf_army_ucp_arb_marksman",
     "rhsusf_army_ucp_arb_marksman",
     "rhsusf_army_ucp_arb_squadleader",
     "rhsusf_army_ucp_arb_teamleader"
@@ -198,8 +176,6 @@ if ( count blufor_squad_inf == 0 ) then { blufor_squad_inf = [
     "rhsusf_army_ucp_arb_sniper_m107",
     "rhsusf_army_ucp_arb_machinegunner",
     "rhsusf_army_ucp_arb_grenadier",
-    "rhsusf_army_ucp_arb_grenadier",
-    "rhsusf_army_ucp_arb_medic",
     "rhsusf_army_ucp_arb_medic",
     "rhsusf_army_ucp_arb_maaws",
     "rhsusf_army_ucp_arb_maaws"
@@ -207,36 +183,25 @@ if ( count blufor_squad_inf == 0 ) then { blufor_squad_inf = [
 };
 if ( isNil "blufor_squad_at" ) then { blufor_squad_at = [] };
 if ( count blufor_squad_at == 0 ) then { blufor_squad_at = [
-	"rhsusf_usmc_recon_marpat_d_grenadier_m32",
+	  "rhsusf_army_ucp_arb_squadleader",
     "rhsusf_usmc_recon_marpat_d_teamleader",
-    "rhsusf_usmc_recon_marpat_d_teamleader_lite",
-    "rhsusf_usmc_recon_marpat_d_sniper_M107",
     "rhsusf_usmc_recon_marpat_d_sniper_M107",
     "rhsusf_army_ocp_arb_maaws",
     "rhsusf_army_ocp_arb_maaws",
-    "rhsusf_army_ocp_javelin_assistant",
     "rhsusf_army_ocp_javelin",
     "rhsusf_army_ocp_javelin",
-    "rhsusf_army_ocp_javelin_assistant",
-    "rhsusf_army_ocp_medic",
     "rhsusf_army_ocp_medic"
 	];
 };
 if ( isNil "blufor_squad_aa" ) then { blufor_squad_aa = [] };
 if ( count blufor_squad_aa == 0 ) then { blufor_squad_aa = [
-	"rhsusf_army_ocp_machinegunner",
+    "rhsusf_army_ucp_arb_squadleader",
+	  "rhsusf_army_ocp_machinegunner",
     "rhsusf_army_ocp_medic",
-    "rhsusf_army_ocp_medic",
     "rhsusf_army_ocp_aa",
     "rhsusf_army_ocp_aa",
     "rhsusf_army_ocp_aa",
     "rhsusf_army_ocp_aa",
-    "rhsusf_army_ocp_machinegunner",
-	"rhsusf_army_ocp_machinegunner",
-	"rhsusf_army_ocp_machinegunner",
-    "rhsusf_army_ocp_squadleader",
-    "rhsusf_army_ocp_teamleader",
-    "rhsusf_army_ocp_sniper_m107",
     "rhsusf_army_ocp_sniper_m24sws"
 	];
 };
@@ -245,16 +210,11 @@ if ( count blufor_squad_mix == 0 ) then { blufor_squad_mix = [
 	"rhsusf_army_ocp_arb_teamleader",
     "rhsusf_army_ocp_arb_squadleader",
     "rhsusf_army_ocp_arb_sniper_m107",
-    "rhsusf_army_ocp_arb_sniper_m107",
     "rhsusf_army_ocp_rifleman_arb_m16",
-    "rhsusf_army_ocp_rifleman_arb_m16",
-    "rhsusf_army_ocp_arb_riflemanat",
     "rhsusf_army_ocp_arb_riflemanat",
     "rhsusf_army_ocp_arb_rifleman",
     "rhsusf_army_ocp_arb_rifleman",
     "rhsusf_army_ocp_arb_machinegunner",
-    "rhsusf_army_ocp_arb_machinegunner",
-    "rhsusf_army_ocp_arb_medic",
     "rhsusf_army_ocp_arb_medic",
     "rhsusf_army_ocp_arb_maaws",
     "rhsusf_army_ocp_javelin",
@@ -279,20 +239,11 @@ squads = [
 	[blufor_squad_recon,25,500,0,GRLIB_perm_max],
 	[blufor_squad_at,25,600,0,GRLIB_perm_max],
 	[blufor_squad_aa,25,600,0,GRLIB_perm_max],
-	[blufor_squad_mix,25,2500,0,GRLIB_perm_max]
+	[blufor_squad_mix,25,800,0,GRLIB_perm_max]
 ];
 
 // All the UAVs must be declared here
 uavs = [
-	"B_UAV_01_F",
-	"B_UAV_02_dynamicLoadout_F",
-	"B_T_UAV_03_dynamicLoadout_F",
-	"B_UAV_05_F",
-	"B_UAV_06_F",
-	"C_UAV_06_F",
-	"B_UGV_01_F",
-	"B_UGV_01_rcws_F",
-	"B_UGV_02_Demining_F"
 ];
 
 // Everything the AI troups should be able to resupply from
@@ -310,15 +261,7 @@ vehicle_rearm_sources_west = [
 ];
 
 vehicle_big_units_west = [
-	"Land_Cargo_Tower_V1_F",
-	"B_T_VTOL_01_infantry_F",
-	"B_T_VTOL_01_vehicle_F",
-	"B_T_VTOL_01_armed_F",
-	"O_T_VTOL_01_infantry_F",
-	"O_T_VTOL_01_vehicle_F",
-	"O_T_VTOL_01_armed_F",
-	"Land_SM_01_shed_F",
-	"Land_Hangar_F"
+
 ];
 
 GRLIB_vehicle_whitelist_west = [
@@ -330,5 +273,10 @@ GRLIB_vehicle_blacklist_west = [
 ];
 
 box_transport_config_west = [
-
+	[ "rhs_kamaz5350_open_msv", -6.5, [0,	  0.8,	  0], [0,	  -0.8,	  0.0], [0,	-2.5,	0] ],
+	[ "rhsusf_M1078A1P2_wd_open_fmtv_usarmy", -6.5, [0,	  -0.2,	  0.6], [0,	  -1.8,	  0.6] ],
+	[ "rhsusf_M1078A1P2_B_M2_wd_fmtv_usarmy", -6.5, [0,	  -0.2,	  0.6], [0,	  -1.8,	  0.6] ],
+	[ "rhsusf_M977A4_BKIT_usarmy_wd", -6.5, [0,	  0.5,	  1.5], [0,	  -0.9,	  1.5], [0,	  -2.4,	  1.5], [0,	  -3.8,	  1.5], [0,	  0,	  3], [0,	  -1.5,	  3], [0,	  -3,	  3] ],
+	[ "rhsusf_M977A4_BKIT_M2_usarmy_wd", -6.5, [0,	  0.5,	  0.8], [0,	  -0.9,	  0.8], [0,	  -2.4,	  0.8], [0,	  -3.8,	  0.8], [0,	  0,	  2.3], [0,	  -1.5,	  2.3], [0,	  -3,	  2.3] ],
+	[ "RHS_CH_47F", -7.5, [0,	2,	-1.8], [0,	0.6,	-1.8], [0,	-1.2, -1.8], [0,	-2.6, -1.8] ]
 ];
