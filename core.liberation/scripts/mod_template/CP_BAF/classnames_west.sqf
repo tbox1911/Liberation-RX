@@ -45,12 +45,12 @@ light_vehicles = [
 	["CUP_B_LR_Special_M2_GB_D",2,20,2,0],
 	["CUP_B_LR_Special_GMG_GB_D",2,20,2,0],
 	["CUP_B_Jackal2_L2A1_GB_D",1,100,1,0],
-	["CUP_B_Jackal2_GMG_GB_D",1,100,1,0],
+	["CUP_B_Jackal2_GMG_GB_D",1,110,1,0],
 	["CUP_B_Ridgback_HMG_GB_D",1,150,1,GRLIB_perm_inf],
-	["CUP_B_Ridgback_GMG_GB_D",1,150,1,GRLIB_perm_inf],
-	["CUP_B_Wolfhound_LMG_GB_D",5,100,2,GRLIB_perm_inf],
-	["CUP_B_Wolfhound_GMG_GB_D",5,125,2,GRLIB_perm_log],
-	["CUP_B_MTVR_BAF_DES",5,30,5,GRLIB_perm_tank]
+	["CUP_B_Ridgback_GMG_GB_D",1,125,1,GRLIB_perm_inf],
+	["CUP_B_Wolfhound_LMG_GB_D",5,200,2,GRLIB_perm_inf],
+	["CUP_B_Wolfhound_GMG_GB_D",5,225,2,GRLIB_perm_log],
+	["CUP_B_MTVR_BAF_DES",5,300,5,GRLIB_perm_tank]
 ];
 
 heavy_vehicles = [

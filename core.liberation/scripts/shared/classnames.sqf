@@ -131,20 +131,14 @@ resistance_squad = [
 ];
 
 ind_recyclable = [
+	["I_HMG_01_high_F",0,round (80 / GRLIB_recycling_percentage),0],
+	["I_GMG_01_high_F",0,round (80 / GRLIB_recycling_percentage),0],
 	["I_static_AA_F",0,round (80 / GRLIB_recycling_percentage),0],
 	["I_static_AT_F",0,round (80 / GRLIB_recycling_percentage),0],
 	["I_Mortar_01_F",0,round (300 / GRLIB_recycling_percentage),0],
 	["I_Truck_02_covered_F",0,round (20 / GRLIB_recycling_percentage),0],
 	["I_Truck_02_transport_F",0,round (20 / GRLIB_recycling_percentage),0],
 	["I_Heli_light_03_dynamicLoadout_F",0,round (20 / GRLIB_recycling_percentage),0]
-];
-
-ind_statics = [
-	"I_HMG_01_high_F",
-	"I_GMG_01_high_F",
-	"I_static_AA_F",
-	"I_static_AT_F",
-	"I_Mortar_01_F"
 ];
 
 if ( isNil "box_transport_config_west" ) then { box_transport_config_west = [] };
