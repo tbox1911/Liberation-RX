@@ -137,8 +137,8 @@ R3F_LOG_CFG_string_condition_allow_creation_factory_on_this_client = "false";
 
 /****** LIST OF ADDONS CONFIG TO INCLUDE / LISTE DES CONFIG D'ADDONS A INCLURE ******/
 #include "addons_config\Liberation.sqf"
-[] call compileFinal preprocessFileLineNUmbers format ["scripts\mod_template\%1\classnames_r3f.sqf", GRLIB_mod_west];
-[] call compileFinal preprocessFileLineNUmbers format ["scripts\mod_template\%1\classnames_r3f.sqf", GRLIB_mod_east];
+[] call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_r3f.sqf", GRLIB_mod_west];
+[] call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_r3f.sqf", GRLIB_mod_east];
 /****** TOW WITH VEHICLE / REMORQUER AVEC VEHICULE ******/
 
 /**
