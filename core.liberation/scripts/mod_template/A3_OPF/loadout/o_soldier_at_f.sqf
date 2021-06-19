@@ -5,8 +5,7 @@ private _militia_uniforms = [
     "U_OG_Guerilla2_1",
     "U_OG_Guerilla2_2",
     "U_OG_Guerilla2_3",
-    "U_OG_Guerilla3_1",
-    "U_OG_Guerilla3_2 "
+    "U_OG_Guerilla3_1"
 ];
 
 _unit forceAddUniform (selectRandom _militia_uniforms);
