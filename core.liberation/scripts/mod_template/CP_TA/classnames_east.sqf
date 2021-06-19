@@ -50,6 +50,9 @@ militia_squad = [
 	"CUP_O_TK_INS_Soldier_AT"
 ];
 
+militia_loadout_overide = [
+];
+
 divers_squad = [
 	"I_diver_TL_F",
 	"I_diver_TL_F",

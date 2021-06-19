@@ -48,6 +48,11 @@ militia_squad = [
 	"O_Soldier_AT_F"
 ];
 
+militia_loadout_overide = [
+    "O_Soldier_AA_F",
+    "O_Soldier_AT_F"
+];
+
 divers_squad = [
 	"O_diver_TL_F",
 	"O_diver_TL_F",
