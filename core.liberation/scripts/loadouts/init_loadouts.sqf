@@ -1,7 +1,6 @@
 // Customize loadout - Only Militia 
-_loadouts_folder = format ["scripts\loadouts\%1", GRLIB_mod_east];
-loadout_crewman = compile preprocessFileLineNumbers (format ["%1\%2.sqf", _loadouts_folder, "crewman"]);
-loadout_militia = compile preprocessFileLineNumbers (format ["%1\%2.sqf", _loadouts_folder, "default"]);
+loadout_crewman = compile preprocessFileLineNumbers (format ["scripts\loadouts\%1\%2.sqf", GRLIB_mod_east, "default"]);
+loadout_crewman = compile preprocessFileLineNumbers (format ["scripts\loadouts\%1\%2.sqf", GRLIB_mod_east, "crewman"]);
 
 // Customize loadout - Only player and build AI 
 _west_loadout_overide = [

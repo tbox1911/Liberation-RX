@@ -2,8 +2,6 @@ _unit = _this select 0;
 
 // Overide default loadout for specific type
 private _militia_loadout_overide = [
-    "O_Soldier_AA_F",
-	"O_Soldier_AT_F"
 ];
 
 if (typeOf _unit in _militia_loadout_overide) then {
