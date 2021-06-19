@@ -4,9 +4,8 @@ _unit = _this select 0;
 private _militia_loadout_overide = [
 ];
 
-if (typeOf _unit in _militia_loadout_overide) then {
-    _loadouts_folder = format ["scripts\loadouts\%1", GRLIB_mod_east];
-    [_unit] compile preprocessFileLineNumbers (format ["%1\%2.sqf", _loadouts_folder, toLower (typeOf _unit)]);
+if ( (typeOf _unit) in _militia_loadout_overide ) then {
+    [_unit] call compile preprocessFileLineNumbers format ["scripts\loadouts\%1\%2.sqf", GRLIB_mod_east, toLower (typeOf _unit)];
 } else {
     // Global overide militia default loadout
 

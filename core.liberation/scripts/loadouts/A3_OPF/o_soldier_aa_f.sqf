@@ -9,6 +9,7 @@ private _militia_uniforms = [
     "U_OG_Guerilla3_2 "
 ];
 
+removeUniform _unit;
 _unit forceAddUniform (selectRandom _militia_uniforms);
 _unit addHeadgear "H_Booniehat_oli";
 _unit addGoggles "G_Balaclava_lowprofile";
