@@ -186,6 +186,7 @@ opfor_statics = [
 	"O_Mortar_01_F"
 ];
 
+// Overide Textures
 opfor_texture_overide = [
 	//"Urban",
 	//"Digital"

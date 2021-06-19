@@ -24,9 +24,9 @@ militia_standard_squad = [
 	loadout_rifleman_akm,
 	loadout_marksman,
 	loadout_at,
-  loadout_at2,
-  loadout_at,
-  loadout_at2,
+	loadout_at2,
+	loadout_at,
+	loadout_at2,
 	loadout_aa
 ];
 
