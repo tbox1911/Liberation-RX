@@ -318,6 +318,12 @@ class Params
 		texts[] = {$STR_WIPE_NO,$STR_WIPE_YES};
 		default = 0;
 	};
+	class ForceLoading{
+		title = "Force save game loading.";
+		values[] = {0,1};
+		texts[] = {$STR_WIPE_NO,$STR_WIPE_YES};
+		default = 0;
+	};
 	class DisableRemoteSensors{
 		title = "Disable Remote Sensors (experimental!)";
 		values[] = {0,1,2};

@@ -43,6 +43,7 @@ GRLIB_hide_opfor = ["HideOpfor",0] call bis_fnc_getParamValue;
 GRLIB_thermic = ["Thermic",1] call bis_fnc_getParamValue;
 GRLIB_mod_preset_west = ["ModPresetWest", 0] call bis_fnc_getParamValue;
 GRLIB_mod_preset_east = ["ModPresetEast", 0] call bis_fnc_getParamValue;
+GRLIB_force_load = ["ForceLoading", 0] call bis_fnc_getParamValue;
 
 // Define constant
 [] call compileFinal preprocessFileLineNUmbers "gameplay_constants.sqf";
@@ -55,7 +56,7 @@ GRLIB_r1 = "&#108;&#105;&#98;&#101;&#114;&#97;&#116;&#105;&#111;&#110;";
 GRLIB_r2 = "&#114;&#120;";
 GRLIB_r3 = "&#76;&#82;&#88;&#32;&#73;&#110;&#102;&#111;";
 // Check wrong sides
-if (GRLIB_mod_west == GRLIB_mod_east) then { abort_loading = true };
+if (GRLIB_force_load == 0 && GRLIB_mod_west == GRLIB_mod_east) then { abort_loading = true };
 if (abort_loading) exitWith {
 	diag_log "*********************************************************************************";
 	diag_log "FATAL! - Invalid Side selection !";
