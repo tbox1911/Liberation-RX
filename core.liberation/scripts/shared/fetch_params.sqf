@@ -56,7 +56,7 @@ GRLIB_r1 = "&#108;&#105;&#98;&#101;&#114;&#97;&#116;&#105;&#111;&#110;";
 GRLIB_r2 = "&#114;&#120;";
 GRLIB_r3 = "&#76;&#82;&#88;&#32;&#73;&#110;&#102;&#111;";
 // Check wrong sides
-if (GRLIB_mod_west == GRLIB_mod_east) then { abort_loading = true };
+if (GRLIB_force_load == 0 && GRLIB_mod_west == GRLIB_mod_east) then { abort_loading = true };
 if (abort_loading) exitWith {
 	diag_log "*********************************************************************************";
 	diag_log "FATAL! - Invalid Side selection !";
