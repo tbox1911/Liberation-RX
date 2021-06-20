@@ -30,7 +30,7 @@ if (isNil "manned") then { manned = false };
 if (isNil "gridmode" ) then { gridmode = 0 };
 if (isNil "repeatbuild" ) then { repeatbuild = false };
 if (isNil "build_rotation" ) then { build_rotation = 0 };
-if (isNil "build_altitude" ) then { build_altitude = 0 };
+if (isNil "build_altitude" ) then { build_altitude = 0.2 };
 
 waitUntil { sleep 0.2; !isNil "dobuild" };
 
@@ -262,7 +262,7 @@ while { true } do {
 
 				if (count _near_objects == 0 && ((_truepos distance _posfob) < _maxdist || buildtype == 9) && (  ((!surfaceIsWater _truepos) && (!surfaceIsWater getpos player)) || (_classname in boats_names) ) ) then {
 
-					_vehicle setposATL _truepos;
+					_vehicle setpos (_truepos vectorAdd [0, 0, build_altitude]);
 
 					if(build_invalid == 1) then {
 						GRLIB_ui_notif = "";
@@ -313,7 +313,7 @@ while { true } do {
 				_vehicle = _classname createVehicle _truepos;
 				_vehicle allowDamage false;
 				_vehicle setdir _vehdir;
-				_vehicle setposATL _truepos;
+				_vehicle setpos (_truepos vectorAdd [0, 0, build_altitude]);
 
 				// Ammo Box clean inventory
 				if (!(_classname in  GRLIB_Ammobox_keep)) then {
@@ -435,7 +435,7 @@ while { true } do {
 	} else {
 		dobuild = 0;
 		build_rotation = 0;
-		build_altitude = 0;
+		build_altitude = 0.2;
 	};
 	manned = false;
 };

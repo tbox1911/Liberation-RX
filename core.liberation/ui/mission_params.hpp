@@ -321,7 +321,7 @@ class Params
 	class ForceLoading{
 		title = "Force save game loading.";
 		values[] = {0,1};
-		texts[] = {$STR_WIPE_NO,$STR_WIPE_YES};
+		texts[] = { $STR_NO,$STR_YES };
 		default = 0;
 	};
 	class DisableRemoteSensors{
