@@ -31,6 +31,7 @@ if ( isNil "PAR_AidKit" ) then { PAR_AidKit = "FirstAidKit" };
 if ( isNil "A3W_BoxWps" ) then { A3W_BoxWps = "Box_East_Wps_F" };
 if ( isNil "canisterFuel" ) then { canisterFuel = "Land_CanisterFuel_Red_F" };
 if ( isNil "uavs" ) then { uavs = [] };
+if ( isNil "boats" ) then { boats = [] };
 if ( isNil "ai_resupply_sources" ) then { ai_resupply_sources = [] };
 if ( isNil "ai_healing_sources" ) then { ai_healing_sources = [] };
 if ( isNil "vehicle_rearm_sources" ) then { vehicle_rearm_sources = [] };

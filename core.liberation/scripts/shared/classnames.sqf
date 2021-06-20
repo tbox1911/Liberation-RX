@@ -113,6 +113,12 @@ vehicle_rearm_sources = [
 	ammobox_i_typename
 ] + vehicle_rearm_sources_west;
 
+// *** Boats ***
+boats_names = [ 
+	"B_Boat_Transport_01_F",
+	"C_Boat_Transport_02_F",
+	"B_Boat_Armed_01_minigun_F"
+] + opfor_boat + boats;
 
 // *** RESISTANCE ***
 resistance_squad = [
@@ -173,7 +179,17 @@ transport_vehicles = [];
 {transport_vehicles pushBack ( _x select 0 )} foreach (box_transport_config);
 
 // Big_units
-vehicle_big_units append vehicle_big_units_west;
+vehicle_big_units = [
+	"Land_Cargo_Tower_V1_F",
+	"B_T_VTOL_01_infantry_F",
+	"B_T_VTOL_01_vehicle_F",
+	"B_T_VTOL_01_armed_F",
+	"O_T_VTOL_01_infantry_F",
+	"O_T_VTOL_01_vehicle_F",
+	"O_T_VTOL_01_armed_F",
+	"Land_SM_01_shed_F",
+	"Land_Hangar_F"
+] + vehicle_big_units_west;
 
 // Whitelist Vehicle (recycle)
 GRLIB_vehicle_whitelist = [
@@ -299,7 +315,6 @@ air_vehicles_classnames = [] + opfor_choppers;
 markers_reset = [99999,99999,0];
 zeropos = [0,0,0];
 squads_names = [ localize "STR_LIGHT_RIFLE_SQUAD", localize "STR_RIFLE_SQUAD", localize "STR_AT_SQUAD", localize "STR_AA_SQUAD", localize "STR_MIXED_SQUAD", localize "STR_RECON_SQUAD" ];
-boats_names = [ "B_Boat_Transport_01_F", "C_Boat_Transport_02_F", "B_Boat_Armed_01_minigun_F" ];
 ammobox_transports_typenames = [];
 { ammobox_transports_typenames pushback (_x select 0) } foreach box_transport_config;
 ammobox_transports_typenames = [ ammobox_transports_typenames , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
