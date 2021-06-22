@@ -1,4 +1,3 @@
-titleText ["","BLACK FADED", 1000];
 diag_log "--- Liberation RX by pSiKO ---";
 [] call compileFinal preprocessFileLineNUmbers "build_info.sqf";
 if (!isMultiplayer) exitWith { diag_log "Sorry, Liberation RX is a Multiplayer Mission Only..." };
@@ -41,6 +40,7 @@ if (!abort_loading) then {
 };
 
 if (!isDedicated && hasInterface) then {
+	titleText ["","BLACK FADED", 1000];
 	waitUntil { sleep 1; !isNil "GRLIB_init_server" };
 	[] execVM "scripts\client\init_client.sqf";
 	[] execVM "GREUH\scripts\GREUH_activate.sqf";
