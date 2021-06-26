@@ -9,13 +9,11 @@ while { true } do {
 	// If Squad
 	private _my_squad = player getVariable ["my_squad", nil];
 	if (!isNil "_my_squad") then {
-
-		_leader = leader _my_squad;
-		_veh_player = vehicle player;
-		_wPos = player getVariable ["my_squad_dest", nil];
+		private _leader = leader _my_squad;
+		private _veh_player = vehicle player;
 
 		//get in
-		if ( _veh_player != player && _leader distance2D player <= 15 && isNil "_wPos" ) then {
+		if ( _veh_player != player && _leader distance2D player <= 15 && count (waypoints _my_squad) == 0 ) then {
 			{
 				_cargo_seat_free = ( (fullCrew [_veh_player, "cargo", true] - fullCrew [_veh_player, "cargo", false]) +
 									 (fullCrew [_veh_player, "Turret", true] - fullCrew [_veh_player, "Turret", false]) );
@@ -24,12 +22,16 @@ while { true } do {
 
 					if (_cargo_seat_free select 0 select 1 == "cargo" ) then {
 						_cargo_idx = _cargo_seat_free select 0 select 2;
-						_x action ["getInCargo", _veh_player, _cargo_idx]
+						_x action ["getInCargo", _veh_player, _cargo_idx];
+						_x assignAsCargo _veh_player;
+						[_x] orderGetIn true ;
 					};
 
 					if (_cargo_seat_free select 0 select 1 == "Turret" ) then {
 						_cargo_idx = _cargo_seat_free select 0 select 3 select 0;
-						_x action ["getInTurret", _veh_player, [_cargo_idx]]
+						_x action ["getInTurret", _veh_player, [_cargo_idx]];
+						_x assignAsTurret [_veh_player, [_cargo_idx] ];
+						[_x] orderGetIn true ;
 					};
 					sleep 0.5;
 				};
@@ -37,51 +39,51 @@ while { true } do {
 					_x doMove (getPos player);
 				};
 			} forEach units _my_squad;
-		};
+		} else {
 
-		//para drop
-		if (_veh_player iskindof "Steerable_Parachute_F") then {
-			{
-				if ( vehicle _x != _x && !(vehicle _x iskindof "Steerable_Parachute_F") ) then {
-					[_x, getPos _x] spawn paraDrop;
-					sleep 0.3;
-				};
-			} forEach units _my_squad;
-		};
+			//para drop
+			if (_veh_player iskindof "Steerable_Parachute_F") then {
+				{
+					if ( vehicle _x != _x && !(vehicle _x iskindof "Steerable_Parachute_F") ) then {
+						[_x, getPos _x] spawn paraDrop;
+						sleep 0.3;
+					};
+				} forEach units _my_squad;
+			};
 
-		//get out
-		if (_veh_player == player) then {
-			{
-				//group leaveVehicle vehicle
-				if ( vehicle _x != _x && (getPosATL _x select 2) <= 5) then {
-					_x action ["getOut", vehicle _x];
-					unassignVehicle _x;
-					commandGetOut _x;
-					doGetOut _x;
-					sleep 0.5;
-				};
-			} forEach units _my_squad;
-		};
+			//get out
+			if (_veh_player == player) then {
+				{
+					//group leaveVehicle vehicle
+					if ( vehicle _x != _x && (getPosATL _x select 2) <= 5) then {
+						_x action ["getOut", vehicle _x];
+						unassignVehicle _x;
+						commandGetOut _x;
+						doGetOut _x;
+						sleep 0.5;
+					};
+				} forEach units _my_squad;
+			};
 
-		//go Pos
-		_wPos = player getVariable ["my_squad_dest", getPos player];
-		if  (_leader distance2D _wPos > 10) then {
-			_leader setUnitPos "UP";
-			_leader setSpeedMode 'FULL';
-			_leader doMove _wPos;
+			//go Pos
+			private _wPos = getPos player;
+			if (count (waypoints _my_squad) > 0 ) then {
+				_wPos = getWPPos [_my_squad, 0];
+			};
+
+			if  (_leader distance2D _wPos > 10) then {
+				_leader setUnitPos "UP";
+				_leader setSpeedMode 'FULL';
+				_leader doMove _wPos;
+			} else {
+				doStop _leader;
+			};
 			_squad_grp = (units _my_squad - [_leader]);
 			_squad_grp doFollow _leader;
 		};
-
+		
 		_my_squad_order = player getVariable ["my_squad_order", nil];
 		if (!isNil "_my_squad_order") then {
-			if (_my_squad_order == "follow") then {
-				_leader setPos (getPos _leader vectorAdd [([] call F_getRND), ([] call F_getRND), 1]);
-				_leader doFollow player;
-			};
-			if (_my_squad_order == "move") then {_leader doMove _wPos};
-			if (_my_squad_order == "stop") then {doStop _leader};
-
 			_leader sideChat "Order Received !!";
 			player setVariable ["my_squad_order", nil, true];
 		};

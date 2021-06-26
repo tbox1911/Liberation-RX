@@ -4,12 +4,13 @@ private _my_squad = player getVariable ["my_squad", nil];
 if (!isNil "_my_squad") then {
 
 	if (!isNil "_my_squad_order") then {
+		while {(count (waypoints _my_squad)) != 0} do {deleteWaypoint ((waypoints _my_squad) select 0);};
 		player setVariable ["my_squad_order", _my_squad_order, true];
 		_leader = leader _my_squad;
 
 		//follow player
 		if (_my_squad_order == "follow") then {
-			player setVariable ["my_squad_dest", nil, true];
+			_leader setPos (getPos _leader vectorAdd [([] call F_getRND), ([] call F_getRND), 1]);
 			player sideChat "Squad Regroup!";
 		};
 
@@ -17,11 +18,12 @@ if (!isNil "_my_squad") then {
 		if (_my_squad_order == "move") then {
 
 			_wPos = screenToWorld [0.5,0.5];
-			player setVariable ["my_squad_dest", _wPos, true];
+			_my_squad addWaypoint [_wPos, 0];
 			player sideChat "Squad Move!";
 
 			_pingId =  addMissionEventHandler ["Draw3D", {
-				_wPos = player getVariable ["my_squad_dest", player];
+				_my_squad = player getVariable ["my_squad", nil];
+				_wPos = getWPPos [_my_squad, 0];
 				_icon = (getText (configfile >> "CfgInGameUI" >> "TacticalPing" >> "texture"));
 				drawIcon3D [_icon, [1,1,1,1], _wPos, 2, 2, 0];
 			}];
@@ -32,7 +34,7 @@ if (!isNil "_my_squad") then {
 
 		// stop
 		if (_my_squad_order == "stop") then {
-			player setVariable ["my_squad_dest", getPos _leader, true];
+			_my_squad addWaypoint [getPos _leader, 0];
 			player sideChat "Squad Stop!";
 		};
 
