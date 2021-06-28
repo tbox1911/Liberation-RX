@@ -79,7 +79,7 @@ heavy_vehicles = [
 	["RHS_M2A3_BUSKI_wd",20,250,25,GRLIB_perm_log],
 	["RHS_M2A3_BUSKIII_wd",10,300,10,GRLIB_perm_log],
 	["RHS_M6_wd",10,400,10,GRLIB_perm_log],
-    ["rhsusf_m1a1aimwd_usarmy",20,350,25,GRLIB_perm_inf],
+	["rhsusf_m1a1aimwd_usarmy",20,350,25,GRLIB_perm_inf],
 	["rhsusf_m1a1aim_tuski_wd",20,350,25,GRLIB_perm_tank],
 	["rhsusf_m1a2sep1wd_usarmy",20,350,25,GRLIB_perm_tank],
 	["rhsusf_m1a2sep1tuskiwd_usarmy",20,400,25,GRLIB_perm_tank],

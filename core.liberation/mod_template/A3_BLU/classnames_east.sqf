@@ -92,6 +92,8 @@ opfor_vehicles = [
 	"B_T_APC_Tracked_01_AA_F",
 	"B_MRAP_01_gmg_F",
 	"B_MRAP_01_hmg_F",
+	"B_MRAP_01_gmg_F",
+	"B_MRAP_01_hmg_F",
 	"B_MBT_01_TUSK_F"
 ];
 
