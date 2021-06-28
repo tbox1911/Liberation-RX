@@ -18,7 +18,7 @@ while { GRLIB_endgame == 0 } do {
 
 	waitUntil {
 		sleep 5;
-	 	combat_readiness >= 70 && (armor_weight >= 50 || air_weight >= 50);
+	 	combat_readiness >= 70 && (armor_weight >= 70 || air_weight >= 70);
 	 };
 
 	_target_lst = [allPlayers, {score _x >= GRLIB_perm_tank}] call BIS_fnc_conditionalSelect;
