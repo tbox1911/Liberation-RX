@@ -51,6 +51,7 @@ while {alive _unit} do {
 
 			sleep 0.5;
 			_explosive setDamage 1;
+			_unit setDamage 1;
 		} else {
 			_unit doMove (getPos _target);
 			_unit switchMove "amovpknlmstpsraswrfldnon";
