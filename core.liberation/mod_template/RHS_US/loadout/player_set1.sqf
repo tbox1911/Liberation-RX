@@ -11,20 +11,19 @@ removeHeadgear _unit;
 removeGoggles _unit;
 
 //  "Add weapons";
-_unit addWeapon "hgun_Pistol_heavy_01_green_F";
-_unit addHandgunItem "optic_MRD_black";
-_unit addHandgunItem "11Rnd_45ACP_Mag";
+_unit addWeapon "rhsusf_weap_m9";
+_unit addHandgunItem "rhsusf_mag_15Rnd_9x19_FMJ";
 
 //  "Add containers";
-_unit forceAddUniform "U_B_CombatUniform_mcam";
-_unit addVest "V_Rangemaster_belt";
+_unit forceAddUniform "rhs_uniform_acu_ucp";
+_unit addVest "rhsusf_iotv_ucp_Rifleman";
 
 //  "Add items to containers";
 _unit addItemToUniform "FirstAidKit";
 for "_i" from 1 to 2 do {_unit addItemToUniform "SmokeShell";};
-for "_i" from 1 to 2 do {_unit addItemToUniform "11Rnd_45ACP_Mag";};
-for "_i" from 1 to 2 do {_unit addItemToVest "11Rnd_45ACP_Mag";};
-_unit addHeadgear "H_Booniehat_mcamo";
+for "_i" from 1 to 2 do {_unit addItemToUniform "rhsusf_mag_15Rnd_9x19_FMJ";};
+for "_i" from 1 to 2 do {_unit addItemToVest "rhsusf_mag_15Rnd_9x19_FMJ";};
+_unit addHeadgear "rhsusf_patrolcap_ucp";
 
 //  "Add items";
 _unit linkItem "ItemMap";

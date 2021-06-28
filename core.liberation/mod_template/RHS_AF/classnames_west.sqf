@@ -14,9 +14,9 @@ repair_sling_typename = "Land_Pod_Heli_Transport_04_repair_F";
 fuel_sling_typename = "Land_Pod_Heli_Transport_04_fuel_F";
 ammo_sling_typename = "Land_Pod_Heli_Transport_04_ammo_F";
 medic_sling_typename = "Land_Pod_Heli_Transport_04_medevac_F";
-commander_classname = "O_officer_F";
-pilot_classname = "O_Helipilot_F";
-crewman_classname = "O_crew_F";
+commander_classname = "rhs_msv_emr_officer";
+pilot_classname = "rhs_pilot_combat_heli";
+crewman_classname = "rhs_msv_emr_combatcrew";
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 infantry_units = [
@@ -153,12 +153,7 @@ support_vehicles_west = [
 	["rhs_kamaz5350_ammo_vv",1,30,1,GRLIB_perm_inf],
 	["RHS_Ural_Ammo_VV_01",1,30,1,GRLIB_perm_inf],
 	["RHS_Ural_Fuel_VV_01",1,30,1,GRLIB_perm_inf],
-	["RHS_Ural_Repair_VV_01",1,30,1,GRLIB_perm_inf],
-	["rhs_weapon_crate",0,150,0,GRLIB_perm_tank],
-	["rhs_spec_weapons_crate",0,150,0,GRLIB_perm_tank],
-	["rhs_launcher_crate",0,150,0,GRLIB_perm_tank],
-	["rhs_gear_crate",0,150,0,GRLIB_perm_tank],
-	["rhs_mags_crate",0,150,0,GRLIB_perm_tank]
+	["RHS_Ural_Repair_VV_01",1,30,1,GRLIB_perm_inf]
 ];
 
 buildings_west = [
