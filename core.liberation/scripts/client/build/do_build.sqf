@@ -30,8 +30,8 @@ if (isNil "manned") then { manned = false };
 if (isNil "gridmode" ) then { gridmode = 0 };
 if (isNil "repeatbuild" ) then { repeatbuild = false };
 if (isNil "build_rotation" ) then { build_rotation = 0 };
-if (isNil "build_altitude" ) then { build_altitude = 0.2 };
-
+if (isNil "build_altitude" ) then { build_altitude = 0 };
+if (isNil "building_altitude" ) then { building_altitude = 0 };
 waitUntil { sleep 0.2; !isNil "dobuild" };
 
 while { true } do {
@@ -40,6 +40,9 @@ while { true } do {
 	build_confirmed = 1;
 	build_invalid = 0;
 	_classname = "";
+	
+	if ( buildtype == 6 ) then { build_altitude = building_altitude } else { build_altitude = 0.2 };
+
 	if ( buildtype == 99 ) then {
 		_classname = FOB_typename;
 		_price = 0;
@@ -432,10 +435,11 @@ while { true } do {
 	if ( repeatbuild ) then {
 		dobuild = 1;
 		repeatbuild = false;
+		building_altitude = build_altitude;
 	} else {
 		dobuild = 0;
 		build_rotation = 0;
-		build_altitude = 0.2;
+		building_altitude = 0;
 	};
 	manned = false;
 };
