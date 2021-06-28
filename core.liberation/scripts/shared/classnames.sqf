@@ -173,7 +173,7 @@ box_transport_config = [
 	[ "B_Heli_Transport_03_F", -7.5, [0, 2.2, -1], [0, 0.8, -1], [0, -1.0, -1] ],
 	[ "B_Heli_Transport_03_unarmed_F", -7.5, [0, 2.2, -1], [0, 0.8, -1], [0, -1.0, -1] ],
 	[ "I_Heli_Transport_02_F", -6.5, [0, 4.2, -1.45], [0, 2.5, -1.45], [0, 0.8, -1.45], [0, -0.9, -1.45] ]
-] + box_transport_config_west;
+] + box_transport_config_west + box_transport_config_east;
 
 transport_vehicles = [];
 {transport_vehicles pushBack ( _x select 0 )} foreach (box_transport_config);
