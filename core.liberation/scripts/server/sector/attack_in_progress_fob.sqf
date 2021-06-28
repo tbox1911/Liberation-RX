@@ -1,4 +1,5 @@
 params [ "_thispos" ];
+diag_log format ["Spawn Attack FOB %1 at %2", _thispos, time];
 private _max_prisonners = 4;
 sleep 5;
 
