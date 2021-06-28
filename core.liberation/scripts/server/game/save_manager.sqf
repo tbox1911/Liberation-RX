@@ -452,5 +452,5 @@ while { true } do {
 		saveProfileNamespace;
 		diag_server_save = true;
 	};
-	diag_log format ["DBG: Weight %1 %2 %3", infantry_weight,armor_weight,air_weight];
+
 };
