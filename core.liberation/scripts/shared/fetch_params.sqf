@@ -85,6 +85,7 @@ if ( GRLIB_mod_west in ["A3_BLU", "A3_IND"]) then {
 if ( GRLIB_ACE_enabled ) then {	GRLIB_revive = 0; GRLIB_fatigue = 1; GRLIB_fancy_info = 0; GRLIB_limited_arsenal = 0 };  // Disable PAR/Fatigue/Fancy if ACE present
 if ( GRLIB_OPTRE_enabled ) then { GRLIB_MOD_signature = "OPTRE_" };
 if ( GRLIB_GM_enabled ) then { GRLIB_MOD_signature = "gm_" };
+if ( GRLIB_CUPW_enabled ) then { GRLIB_MOD_signature = "CUP_" };
 
 if ( GRLIB_fatigue == 1 ) then { GRLIB_fatigue = true } else { GRLIB_fatigue = false };
 if ( GRLIB_introduction == 1 ) then { GRLIB_introduction = true } else { GRLIB_introduction = false };

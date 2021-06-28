@@ -130,6 +130,7 @@ if ( edit_loadout > 0 ) then {
 		if (GRLIB_limited_arsenal) then {
 			_savedCargo = _box getVariable [ "bis_addVirtualWeaponCargo_cargo", [] ];
 			_savedMissionCargo = missionNamespace getVariable [ "bis_addVirtualWeaponCargo_cargo", [] ];
+			waitUntil {sleep 0.5; !isNil {_box getVariable "LARs_arsenal_Liberation_cargo"} };
 			_cargo = _box getVariable "LARs_arsenal_Liberation_cargo";
 			_box setVariable [ "bis_addVirtualWeaponCargo_cargo", _cargo ];
 			missionNamespace setVariable [ "bis_addVirtualWeaponCargo_cargo", _cargo ];

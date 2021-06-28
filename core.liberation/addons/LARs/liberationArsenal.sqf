@@ -21,24 +21,26 @@ if (GRLIB_limited_arsenal) then {
 
 // Add CUP Weapons
 if ( GRLIB_CUPW_enabled ) then {
-	 GRLIB_CUPW_Blacklist = [
+	// CUPS blacklisted
+	GRLIB_CUPW_Blacklist = [
 		"CUP_optic_AN_PAS_13c1",
 		"CUP_optic_AN_PAS_13c2",
 		"CUP_optic_GOSHAWK",
-		"CUP_optic_GOSHAWK_RIS",
-		"CUP_B_M2_Gun_Bag",
-		"CUP_B_M2_Tripod_Bag",
-		"CUP_B_M2_MiniTripod_Bag",
-		"CUP_B_Mk19_Gun_Bag",
-		"CUP_B_Mk19_Tripod_Bag",
-		"CUP_B_Tow_Gun_Bag",
-		"CUP_B_TOW_Tripod_Bag",
-		"CUP_B_M252_Gun_Bag",
-		"CUP_B_M252_Bipod_Bag"
+		"CUP_optic_GOSHAWK_RIS"
 	];
+	// CUP whitelisted
+	GRLIB_whitelisted_from_arsenal = GRLIB_whitelisted_from_arsenal + [
+		"ItemGPS",
+		"Laserdesignator",
+		"Binocular",
+		"MineDetector",
+		"Rangefinder"
+	];
+
+	// Weapons
 	(
 		"
-		getText (_x >> 'DLC') == 'CUP_Weapons' &&
+		(getText (_x >> 'DLC') == 'CUP_Weapons' || getText (_x >> 'DLC') == 'CUP_Units') &&
 		getNumber (_x >> 'scope') > 1 &&
 		toLower (configName _x) find '_coyote' < 0 &&
 		tolower (configName _x) find '_od' < 0 &&
@@ -47,6 +49,35 @@ if ( GRLIB_CUPW_enabled ) then {
 		configClasses (configfile >> "CfgWeapons" )
 	) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
 
+	// Equipements (uniforme, etc..)
+	(
+		"
+		(getText (_x >> 'DLC') == 'CUP_Weapons' || getText (_x >> 'DLC') == 'CUP_Units') &&
+		!((configName _x) in GRLIB_CUPW_Blacklist)
+		"
+		configClasses (configfile >> "CfgWeapons" )
+	) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
+
+	// Others object (bagpack, etc..)
+	(
+		"
+		(getText (_x >> 'DLC') == 'CUP_Weapons' || getText (_x >> 'DLC') == 'CUP_Units') &&
+		!((configName _x) in GRLIB_CUPW_Blacklist) &&
+		( (configName _x) find '_Bag' == -1 )
+		"
+		configClasses (configfile >> "CfgVehicles" )
+	) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
+
+	// Glasses
+	(
+		"
+		(getText (_x >> 'DLC') == 'CUP_Weapons' || getText (_x >> 'DLC') == 'CUP_Units') &&
+		!((configName _x) in GRLIB_CUPW_Blacklist)
+		"
+		configClasses (configfile >> "CfgGlasses" )
+	) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
+
+	// Magazines
 	(
 		"
 		((configName _x) select [0,4]) == 'CUP_' &&
@@ -126,7 +157,7 @@ if ( GRLIB_EJW_enabled ) then {
 }; 
 
 // if mod enabled
-if ( GRLIB_GM_enabled || GRLIB_OPTRE_enabled ) then {
+if ( GRLIB_CUPW_enabled || GRLIB_GM_enabled || GRLIB_OPTRE_enabled || GRLIB_EJW_enabled) then {
 	[myLARsBox, ["GRLIB_whitelisted_from_arsenal", "GRLIB_blacklisted_from_arsenal"], false, "Liberation", { false }] call LARs_fnc_blacklistArsenal;
 } else {
 	//[ myBox, [ whitelist, blacklist ], targets, name, condition ] call LARs_fnc_blacklistArsenal;
