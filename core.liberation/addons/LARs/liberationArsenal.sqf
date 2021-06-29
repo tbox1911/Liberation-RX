@@ -32,7 +32,7 @@ if ( GRLIB_CUPW_enabled ) then {
 	GRLIB_whitelisted_from_arsenal = GRLIB_whitelisted_from_arsenal + [
 		"Medikit",
 		"FirstAidKit",
-		"Toolkit",
+		"ToolKit",
 		"ItemGPS",
 		"Laserdesignator",
 		"Binocular",
@@ -166,6 +166,9 @@ if ( GRLIB_RHS_enabled ) then {
 	];
 	// RHS whitelisted
 	GRLIB_whitelisted_from_arsenal = GRLIB_whitelisted_from_arsenal + [
+		"Medikit",
+		"FirstAidKit",
+		"ToolKit",
 		"ItemGPS",
 		"Laserdesignator",
 		"Binocular",

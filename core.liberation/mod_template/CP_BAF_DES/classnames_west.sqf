@@ -9,6 +9,7 @@ fuel_truck_typename = "CUP_B_T810_Refuel_CZ_DES";
 repair_truck_typename = "CUP_B_T810_Repair_CZ_DES";
 pilot_classname = "CUP_B_BAF_Soldier_Pilot_DDPM";
 crewman_classname = "CUP_B_BAF_Soldier_Crew_DDPM";
+A3W_BoxWps = "CUP_LocalBasicWeaponsBox";
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 infantry_units = [
@@ -217,7 +218,11 @@ GRLIB_vehicle_whitelist_west = [
 ];
 
 GRLIB_vehicle_blacklist_west = [
-
+	"CUP_B_SearchLight_static_BAF_DDPM",
+	"CUP_B_L111A1_BAF_DDPM",
+	"CUP_B_L111A1_MiniTripod_BAF_DDPM",
+	"CUP_B_L16A2_BAF_DDPM",
+	"CUP_B_M119_HIL"
 ];
 
 box_transport_config_west = [

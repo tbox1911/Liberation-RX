@@ -213,7 +213,7 @@ GRLIB_vehicle_whitelist = [
 	"Land_BagFence_Long_F"
 ] + GRLIB_vehicle_whitelist_west + opfor_statics;
 
-// Blacklist Vehicle (lock and paint)
+// Blacklist Vehicle (lock, paint, delete)
 GRLIB_vehicle_blacklist = [
 	Arsenal_typename,
 	ammobox_b_typename,
@@ -234,7 +234,10 @@ GRLIB_vehicle_blacklist = [
 	ammo_sling_typename,
 	medic_sling_typename,
   	"Box_NATO_WpsLaunch_F",
-	"Land_CargoBox_V1_F"
+	"Land_CargoBox_V1_F",
+	"StaticMGWeapon",
+	"StaticGrenadeLauncher",
+	"StaticMortar"
 ] + GRLIB_vehicle_blacklist_west;
 
 infantry_units = [ infantry_units ] call F_filterMods;
@@ -308,7 +311,7 @@ opfor_squad_8_airkillers = [
 	opfor_aa
 ];
 all_resistance_troops = [] + militia_squad;
-all_hostile_classnames = (land_vehicles_classnames + opfor_air + opfor_choppers + opfor_troup_transports + opfor_vehicles_low_intensity + opfor_boat);
+all_hostile_classnames = (land_vehicles_classnames + opfor_air + opfor_choppers + opfor_troup_transports + opfor_vehicles_low_intensity + opfor_statics + opfor_boat);
 { land_vehicles_classnames pushback (_x select 0); } foreach (heavy_vehicles + light_vehicles);
 air_vehicles_classnames = [] + opfor_choppers;
 { air_vehicles_classnames pushback (_x select 0); } foreach air_vehicles;
@@ -325,20 +328,16 @@ GRLIB_intel_table = "Land_CampingTable_small_F";
 GRLIB_intel_chair = "Land_CampingChair_V2_F";
 GRLIB_intel_file = "Land_File1_F";
 GRLIB_intel_laptop = "Land_Laptop_device_F";
-GRLIB_ignore_colisions_objects = [
+GRLIB_ignore_colisions = [
 	Arsenal_typename,
 	mobile_respawn,
 	canisterFuel,
 	medicalbox_typename,
   	"Box_NATO_WpsLaunch_F",
 	"Land_CargoBox_V1_F",
-	"B_HMG_01_F",
-	"B_HMG_01_high_F",
-	"B_GMG_01_F",
-	"B_GMG_01_high_F",
-	"B_static_AA_F",
-	"B_static_AT_F",
-	"B_Mortar_01_F",
+	"StaticMGWeapon",
+	"StaticGrenadeLauncher",
+	"StaticMortar",
 	"CamoNet_BLUFOR_open_F",
 	"CamoNet_BLUFOR_big_F",
 	"Land_Flush_Light_red_F",
@@ -349,16 +348,14 @@ GRLIB_ignore_colisions_objects = [
 	"Land_HelipadSquare_F",
 	"Sign_Sphere100cm_F",
 	"Sign_Arrow_F",
+	"PowerLines_base_F",
+	"PowerLines_Small_base_F",
+	"PowerLines_Wires_base_F",
 	"Land_ClutterCutter_large_F",
  	"Land_PowLine_wire_BB_EP1",
  	"Land_PowLine_wire_AB_EP1",
  	"Land_PowLine_wire_A_left_EP1",
  	"Land_PowLine_wire_A_right_EP1"
-];
-GRLIB_ignore_colisions_classes = [
-	"PowerLines_base_F",
-	"PowerLines_Small_base_F",
-	"PowerLines_Wires_base_F"
 ];
 
 GRLIB_sar_wreck = "Land_Wreck_Heli_Attack_01_F";

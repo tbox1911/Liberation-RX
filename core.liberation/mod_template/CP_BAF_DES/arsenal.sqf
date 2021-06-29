@@ -18,7 +18,8 @@ blacklisted_weapon = [
 	"U_O_V_Soldier_Viper_hex_F",
 	"U_O_V_Soldier_Viper_F",
 	"O_V_Soldier_Viper_F",
-	"O_V_Soldier_Viper_hex_F"
+	"O_V_Soldier_Viper_hex_F",
+	"CUP_optic_CWS"
 ];
 
 GRLIB_whitelisted_from_arsenal = [

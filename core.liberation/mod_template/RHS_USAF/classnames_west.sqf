@@ -10,6 +10,7 @@ Respawn_truck_typename = "rhsusf_M1085A1P2_B_WD_Medical_fmtv_usarmy";  //"rhsusf
 commander_classname = "rhsusf_army_ucp_officer";
 pilot_classname = "rhsusf_army_ucp_helipilot";
 crewman_classname = "rhsusf_army_ucp_crewman";
+A3W_BoxWps = "rhs_weapon_crate";
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 infantry_units = [
@@ -265,7 +266,12 @@ vehicle_big_units_west = [
 ];
 
 GRLIB_vehicle_whitelist_west = [
-
+	"RHS_M2StaticMG_WD",
+	"RHS_M2StaticMG_MiniTripod_WD",
+	"RHS_TOW_TriPod_WD",
+	"RHS_Stinger_AA_pod_WD",
+	"RHS_MK19_TriPod_WD",
+	"RHS_M119_WD"
 ];
 
 GRLIB_vehicle_blacklist_west = [
