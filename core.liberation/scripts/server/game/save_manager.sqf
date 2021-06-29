@@ -62,7 +62,7 @@ _building_classnames = [FOB_typename, FOB_outpost];
 
 {
 	_classnames_to_save_blu pushback (_x select 0);
-} foreach (static_vehicles + air_vehicles + heavy_vehicles + light_vehicles + support_vehicles + ind_recyclable);
+} foreach (air_vehicles + heavy_vehicles + light_vehicles + support_vehicles + static_vehicles + ind_recyclable);
 
 _list_static_weapons = [] + opfor_statics;
 {
@@ -328,7 +328,7 @@ while { true } do {
 				( speed _x < 5 ) &&
 				( isNull attachedTo _x ) &&
 				(((getpos _x) select 2) < 10 ) &&
-				( (_x getVariable ['R3F_LOG_disabled', false]) || !(_x getVariable ['GRLIB_vehicle_owner', ""] in ["server", "public"]) || typeOf _x == huron_typename )
+				( !(_x getVariable ['GRLIB_vehicle_owner', ""] in ["server", "public"]) || typeOf _x == huron_typename )
  				} ] call BIS_fnc_conditionalSelect;
 
 			_all_buildings = _all_buildings + _nextbuildings;
@@ -370,18 +370,19 @@ while { true } do {
 			private	_lst_r3f = [];
 			private	_lst_grl = [];
 
-			if ( _nextclass in _classnames_to_save_blu + all_hostile_classnames - GRLIB_vehicle_blacklist) then {
+			if ( _nextclass in _classnames_to_save_blu + all_hostile_classnames && !([_nextclass, GRLIB_vehicle_blacklist] call F_itemIsInClass) ) then {
 				if (side _x != GRLIB_side_enemy) then {
-					_hascrew = _x getVariable ["GRLIB_vehicle_manned", false];
 					_owner = _x getVariable ["GRLIB_vehicle_owner", ""];
-					_color = _x getVariable ["GRLIB_vehicle_color", ""];
-					_color_name = _x getVariable ["GRLIB_vehicle_color_name", ""];
-					if ( _owner != "") then {
+					if (_owner == "") then {
+						buildings_to_save pushback [ _nextclass, _savedpos, _nextdir ];
+					};
+					if (_owner in _keep_score_id) then {
+						_hascrew = _x getVariable ["GRLIB_vehicle_manned", false];
+						_color = _x getVariable ["GRLIB_vehicle_color", ""];
+						_color_name = _x getVariable ["GRLIB_vehicle_color_name", ""];
 						_lst_a3 = weaponsItemsCargo _x;
 						{_lst_r3f pushback (typeOf _x)} forEach (_x getVariable ["R3F_LOG_objets_charges", []]);
 						{_lst_grl pushback (typeOf _x)} forEach (attachedObjects _x);
-					};
-					if (_owner in _keep_score_id) then {
 						buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner, _color, _color_name, _lst_a3, _lst_r3f, _lst_grl];
 					};
 				};
