@@ -72,9 +72,10 @@ GRLIB_OPTRE_enabled = isClass(configFile >> "cfgPatches" >> "OPTRE_Core"); // Re
 GRLIB_GM_enabled = isClass(configFile >> "cfgPatches" >> "gm_Core"); // Returns true if GlobMob is enabled
 GRLIB_CUPW_enabled = isClass(configFile >> "CfgPatches" >> "CUP_Weapons_AK"); // Returns true if CUP Weapons is enabled
 GRLIB_EJW_enabled = isClass(configFile >> "CfgPatches" >> "Ej_u100"); // Returns true if EricJ Weapons is enabled 
+GRLIB_RHS_enabled = isClass(configFile >> "CfgPatches" >> "rhs_main"); // Returns true if RHS is enabled 
 
+// Overide Huron type
 if ( GRLIB_mod_west in ["A3_BLU", "A3_IND"]) then {
-	// Huron type
 	switch (GRLIB_huron_type) do {
 		case 1: {huron_typename = "B_Heli_Transport_03_unarmed_F" };
 		case 2: {huron_typename = "I_Heli_Transport_02_F" };
@@ -86,6 +87,7 @@ if ( GRLIB_ACE_enabled ) then {	GRLIB_revive = 0; GRLIB_fatigue = 1; GRLIB_fancy
 if ( GRLIB_OPTRE_enabled ) then { GRLIB_MOD_signature = "OPTRE_" };
 if ( GRLIB_GM_enabled ) then { GRLIB_MOD_signature = "gm_" };
 if ( GRLIB_CUPW_enabled ) then { GRLIB_MOD_signature = "CUP_" };
+if ( GRLIB_RHS_enabled ) then { GRLIB_MOD_signature = "rhs_" };
 
 if ( GRLIB_fatigue == 1 ) then { GRLIB_fatigue = true } else { GRLIB_fatigue = false };
 if ( GRLIB_introduction == 1 ) then { GRLIB_introduction = true } else { GRLIB_introduction = false };

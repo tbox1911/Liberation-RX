@@ -156,8 +156,60 @@ if ( GRLIB_EJW_enabled ) then {
     ) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x)} ;
 }; 
 
+// Add RHS Weapons
+if ( GRLIB_RHS_enabled ) then {
+	// RHS blacklisted
+	GRLIB_RHS_Blacklist = [
+	];
+	// RHS whitelisted
+	GRLIB_whitelisted_from_arsenal = GRLIB_whitelisted_from_arsenal + [
+		"ItemGPS",
+		"Laserdesignator",
+		"Binocular",
+		"MineDetector",
+		"Rangefinder"
+	];
+
+	// Weapons + Equipements (uniforme, etc..)
+	(
+		"
+		getText (_x >> 'DLC') == GRLIB_mod_west &&
+		!((configName _x) in GRLIB_RHS_Blacklist)
+		"
+		configClasses (configfile >> "CfgWeapons" )
+	) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
+
+	// Others object (bagpack, etc..)
+	(
+		"
+		getText (_x >> 'DLC') == GRLIB_mod_west &&
+		!((configName _x) in GRLIB_RHS_Blacklist) 
+		"
+		configClasses (configfile >> "CfgVehicles" )
+	) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
+
+	// Glasses
+	(
+		"
+		getText (_x >> 'DLC') == GRLIB_mod_west &&
+		!((configName _x) in GRLIB_RHS_Blacklist)
+		"
+		configClasses (configfile >> "CfgGlasses" )
+	) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
+
+	// Magazines
+	(
+		"
+		((configName _x) select [0,4]) == 'rhs_' &&
+		(configName _x) find '_Tracer' < 0 &&
+		!((configName _x) in GRLIB_RHS_Blacklist)
+		"
+    	configClasses (configfile >> "CfgMagazines")
+	) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x)} ;
+};
+
 // if mod enabled
-if ( GRLIB_CUPW_enabled || GRLIB_GM_enabled || GRLIB_OPTRE_enabled || GRLIB_EJW_enabled) then {
+if ( GRLIB_CUPW_enabled || GRLIB_GM_enabled || GRLIB_OPTRE_enabled || GRLIB_EJW_enabled || GRLIB_RHS_enabled) then {
 	[myLARsBox, ["GRLIB_whitelisted_from_arsenal", "GRLIB_blacklisted_from_arsenal"], false, "Liberation", { false }] call LARs_fnc_blacklistArsenal;
 } else {
 	//[ myBox, [ whitelist, blacklist ], targets, name, condition ] call LARs_fnc_blacklistArsenal;
