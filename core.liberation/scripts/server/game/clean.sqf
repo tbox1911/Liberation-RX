@@ -165,7 +165,7 @@ while {deleteManagerPublic} do {
 			 !(_x getVariable ['R3F_LOG_disabled', true]) &&
 			 count (crew _x) == 0 &&
 			 (_x distance lhd) >= 1000 &&
-			 !(typeOf _x in _no_cleanup_classnames)
+			 !([typeOf _x, _no_cleanup_classnames] call F_itemIsInClass)
 			}] call BIS_fnc_conditionalSelect;
 
 		if ((count (_nbVehicles)) > _vehiclesLimit) then {

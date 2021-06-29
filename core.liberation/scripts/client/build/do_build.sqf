@@ -1,10 +1,4 @@
 private [ "_maxdist", "_truepos", "_built_object_remote", "_unit", "_pos", "_grp", "_classname", "_idx", "_unitrank", "_posfob", "_ghost_spot", "_vehicle", "_dist", "_actualdir", "_near_objects", "_near_objects_25", "_debug_colisions" ];
-_isInClass = {
-	params ["_unit"];
-	private _ret = false;
-  	{ if (_unit isKindOf _x) then { _ret = true } } forEach GRLIB_ignore_colisions_classes;
-	_ret;
-};
 
 build_confirmed = 0;
 _maxdist = GRLIB_fob_range;
@@ -232,14 +226,14 @@ while { true } do {
 
 				private _remove_objects = [];
 				{
-					if ((_x isKindOf "Animal") || ((typeof _x) in GRLIB_ignore_colisions_objects) || ([_x] call _isInClass) || (_x == player) || (_x == _vehicle )) then {
+					if ((_x isKindOf "Animal") || ([_x, GRLIB_ignore_colisions] call F_itemIsInClass) || (_x == player) || (_x == _vehicle )) then {
 						_remove_objects pushback _x;
 					};
 				} foreach _near_objects;
 
 				private _remove_objects_25 = [];
 				{
-					if ((_x isKindOf "Animal") || ((typeof _x) in GRLIB_ignore_colisions_objects) || ([_x] call _isInClass) || (_x == player) || (_x == _vehicle ))  then {
+					if ((_x isKindOf "Animal") || ([_x, GRLIB_ignore_colisions] call F_itemIsInClass) || (_x == player) || (_x == _vehicle ))  then {
 						_remove_objects_25 pushback _x;
 					};
 				} foreach _near_objects_25;
@@ -328,7 +322,7 @@ while { true } do {
 
 				// Vehicle owner
 				if(buildtype in [2,3,4,5,7,9]) then {
-					if (!(typeOf _vehicle in GRLIB_vehicle_blacklist) ) then {
+					if (!([typeOf _vehicle, GRLIB_vehicle_blacklist] call F_itemIsInClass)) then {
 						_vehicle setVariable ["GRLIB_vehicle_owner", getPlayerUID player, true];
 						_vehicle allowCrewInImmobile true;
 						_vehicle setUnloadInCombat [true, false];
