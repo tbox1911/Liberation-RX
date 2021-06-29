@@ -30,6 +30,9 @@ if ( GRLIB_CUPW_enabled ) then {
 	];
 	// CUP whitelisted
 	GRLIB_whitelisted_from_arsenal = GRLIB_whitelisted_from_arsenal + [
+		"Medikit",
+		"FirstAidKit",
+		"Toolkit",
 		"ItemGPS",
 		"Laserdesignator",
 		"Binocular",
