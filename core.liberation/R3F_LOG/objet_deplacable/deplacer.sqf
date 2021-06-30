@@ -40,7 +40,7 @@ else
 	{
 		if (isNull (_objet getVariable ["R3F_LOG_remorque", objNull])) then
 		{
-			if (count crew _objet == 0 || getNumber (configFile >> "CfgVehicles" >> (typeOf _objet) >> "isUav") == 1) then
+			if (count crew _objet == 0 || getNumber (configFile >> "CfgVehicles" >> (typeOf _objet) >> "isUav") == 1 || typeOf _objet in static_vehicles_AI) then
 			{
 				[_objet, _joueur] call R3F_LOG_FNCT_definir_proprietaire_verrou;
 				
