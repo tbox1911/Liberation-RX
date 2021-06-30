@@ -114,14 +114,13 @@ static_vehicles = [
 	["O_static_AA_F",0,50,0,GRLIB_perm_air],
 	["O_static_AT_F",0,50,0,GRLIB_perm_air],
 	["O_Mortar_01_F",0,500,0,GRLIB_perm_max],
-	["O_SAM_System_04_F",10,500,0,GRLIB_perm_max],
-	["B_AAA_System_01_F",10,800,0,GRLIB_perm_max]
+	["B_AAA_System_01_F",10,800,0,GRLIB_perm_air],
+	["O_SAM_System_04_F",10,500,0,GRLIB_perm_max]
 ];
 
 // *** Static Weapon with AI ***
 static_vehicles_AI = [
 	"B_AAA_System_01_F",
-	"B_SAM_System_02_F",
 	"O_SAM_System_04_F"
 ];
 

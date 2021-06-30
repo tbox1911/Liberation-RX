@@ -131,20 +131,11 @@ static_vehicles = [
 	["RHS_NSV_TriPod_VMF",0,5,0,GRLIB_perm_inf],
 	["rhs_SPG9M_VMF",0,5,0,GRLIB_perm_inf],
 	["RHS_ZU23_VMF",0,50,0,GRLIB_perm_inf],
-	["RHS_M119_WD",10,150,0,GRLIB_perm_log],
-	["B_SAM_System_02_F",10,150,0,GRLIB_perm_log],
-	["B_Ship_Gun_01_F",10,150,0,GRLIB_perm_log],
-	["B_SAM_System_01_F",10,500,0,GRLIB_perm_max],
-	["O_Radar_System_02_F",10,500,0,GRLIB_perm_max],
-	["B_AAA_System_01_F",10,500,0,GRLIB_perm_max],
-	["O_SAM_System_04_F",10,500,0,GRLIB_perm_max]
+	["RHS_M119_WD",10,150,0,GRLIB_perm_log]
 ];
 
 // *** Static Weapon with AI ***
 static_vehicles_AI = [
-	"B_AAA_System_01_F",
-	"B_SAM_System_02_F",
-	"O_SAM_System_04_F"
 ];
 
 support_vehicles_west = [

@@ -59,7 +59,7 @@ civilian_vehicles = [
 	"C_Van_01_fuel_F",
 	"C_Quadbike_01_F",
 	"C_Van_02_transport_F",
-	"C_Van_02_medevac_F",
+	"CUP_B_S1203_Ambulance_CDF",
 	"C_Van_02_service_F",
 	"B_GEN_Van_02_transport_F",
 	"C_Truck_02_covered_F",

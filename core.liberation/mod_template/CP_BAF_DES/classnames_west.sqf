@@ -42,6 +42,7 @@ light_vehicles = [
 	//["C_Van_01_transport_F",1,15,1,0],
 	["CUP_B_T810_Unarmed_CZ_DES",1,15,1,0],
 	["CUP_B_T810_Armed_CZ_DES",5,30,5,GRLIB_perm_log],
+	["CUP_B_MTVR_BAF_DES",5,30,5,GRLIB_perm_tank],
 	["CUP_B_LR_Transport_GB_D",2,10,2,0],
 	["CUP_B_LR_Special_M2_GB_D",2,20,2,0],
 	["CUP_B_LR_Special_GMG_GB_D",2,20,2,0],
@@ -50,21 +51,20 @@ light_vehicles = [
 	["CUP_B_Ridgback_HMG_GB_D",1,150,1,GRLIB_perm_inf],
 	["CUP_B_Ridgback_GMG_GB_D",1,125,1,GRLIB_perm_inf],
 	["CUP_B_Wolfhound_LMG_GB_D",5,200,2,GRLIB_perm_inf],
-	["CUP_B_Wolfhound_GMG_GB_D",5,225,2,GRLIB_perm_log],
-	["CUP_B_MTVR_BAF_DES",5,300,5,GRLIB_perm_tank]
+	["CUP_B_Wolfhound_GMG_GB_D",5,225,2,GRLIB_perm_log]
 ];
 
 heavy_vehicles = [
-	["CUP_B_Mastiff_HMG_GB_D",10,500,10,GRLIB_perm_log],
-	["CUP_B_Mastiff_GMG_GB_D",10,500,10,GRLIB_perm_log],
-	["CUP_B_BAF_Coyote_L2A1_D",10,700,10,GRLIB_perm_tank],
-	["CUP_B_BAF_Coyote_GMG_D",10,700,10,GRLIB_perm_tank],
-	["CUP_B_MCV80_GB_D",10,800,10,GRLIB_perm_tank],
-	["CUP_B_MCV80_GB_D_SLAT",10,1000,10,GRLIB_perm_tank],
-	["CUP_B_FV510_GB_D",15,1200,15,GRLIB_perm_tank],
-	["CUP_B_FV510_GB_D_SLAT",15,1400,15,GRLIB_perm_air],
-	["CUP_B_Challenger2_Desert_BAF",15,2000,15,GRLIB_perm_max],
-	["CUP_B_Challenger2_2CD_BAF",15,2250,15,GRLIB_perm_max]
+	["CUP_B_Mastiff_HMG_GB_D",10,400,10,GRLIB_perm_log],
+	["CUP_B_Mastiff_GMG_GB_D",10,400,10,GRLIB_perm_log],
+	["CUP_B_BAF_Coyote_L2A1_D",10,500,10,GRLIB_perm_tank],
+	["CUP_B_BAF_Coyote_GMG_D",10,500,10,GRLIB_perm_tank],
+	["CUP_B_MCV80_GB_D",10,600,10,GRLIB_perm_tank],
+	["CUP_B_MCV80_GB_D_SLAT",10,600,10,GRLIB_perm_tank],
+	["CUP_B_FV510_GB_D",15,800,15,GRLIB_perm_tank],
+	["CUP_B_FV510_GB_D_SLAT",15,800,15,GRLIB_perm_air],
+	["CUP_B_Challenger2_Desert_BAF",15,1200,15,GRLIB_perm_max],
+	["CUP_B_Challenger2_2CD_BAF",15,1250,15,GRLIB_perm_max]
 ];
 
 air_vehicles = [
@@ -98,15 +98,18 @@ static_vehicles = [
 	["CUP_B_SearchLight_static_BAF_DDPM",0,10,0,GRLIB_perm_log],
 	["CUP_B_L111A1_BAF_DDPM",0,50,0,GRLIB_perm_log],
 	["CUP_B_L111A1_MiniTripod_BAF_DDPM",0,70,0,GRLIB_perm_tank],
-	["CUP_B_L16A2_BAF_DDPM",0,500,0,GRLIB_perm_max],
-	["CUP_B_M119_HIL",0,500,0,GRLIB_perm_air]
+	["CUP_B_L16A2_BAF_DDPM",0,100,0,GRLIB_perm_max],
+	["CUP_B_M119_HIL",0,150,0,GRLIB_perm_air],
+	["CUP_WV_B_CRAM",0,200,0,GRLIB_perm_air],
+	["CUP_WV_B_RAM_Launcher",0,250,0,GRLIB_perm_max],
+	["CUP_WV_B_SS_Launcher",0,250,0,GRLIB_perm_max]
 ];
 
 // *** Static Weapon with AI ***
 static_vehicles_AI = [
-	"B_AAA_System_01_F",
-	"B_SAM_System_02_F",
-	"O_SAM_System_04_F"
+	"CUP_WV_B_CRAM",
+	"CUP_WV_B_RAM_Launcher",
+	"CUP_B_L16A2_BAF_DDPM"
 ];
 
 support_vehicles_west = [
