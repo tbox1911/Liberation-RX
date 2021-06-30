@@ -193,7 +193,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 					_nextbuilding setAmmoCargo 0;
 				};
 
-				if ( _owner != "" && _owner != "public" && !(_nextclass in _vehicles_blacklist)) then {
+				if ( _owner != "" && _owner != "public" && !(_nextclass in _vehicles_blacklist) ) then {
 					[_x select 5] params [["_color", ""]];
 					[_x select 6] params [["_color_name", ""]];
 					[_x select 7] params [["_lst_a3", []]];
@@ -218,12 +218,12 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 					};
 				};
 
-				if (_owner == "public" && _nextclass == huron_typename) then {
+				if ( _owner == "public" && _nextclass == huron_typename ) then {
 					_nextbuilding setVariable ["GRLIB_vehicle_owner", "public", true];
 					_nextbuilding setVariable ["GRLIB_vehicle_ishuron", true, true];
 				};
 
-				if (_nextclass in _list_static_weapons) then {
+				if ( _nextclass in _list_static_weapons ) then {
 					[_nextbuilding] spawn protect_static;
 					_nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
 					_nextbuilding setVariable ["R3F_LOG_disabled", false, true];
@@ -235,7 +235,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 					};
 				};
 
-				if (_nextclass in uavs) then {
+				if ( _nextclass in uavs ) then {
 					_nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
 					_nextbuilding setVehicleLock "LOCKED";
 					_nextbuilding setVariable ["R3F_LOG_disabled", true, true];
@@ -373,14 +373,14 @@ while { true } do {
 			private	_lst_r3f = [];
 			private	_lst_grl = [];
 
-			if ( _nextclass in _classnames_to_save_blu + all_hostile_classnames && !([_nextclass, GRLIB_vehicle_blacklist] call F_itemIsInClass) ) then {
+			if ( _nextclass in _classnames_to_save_blu + all_hostile_classnames ) then {
 				if (side _x != GRLIB_side_enemy) then {
 					_owner = _x getVariable ["GRLIB_vehicle_owner", ""];
 					_hascrew = _x getVariable ["GRLIB_vehicle_manned", false];
 					if (_owner == "") then {
 						buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew ];
 					};
-					if (_owner in _keep_score_id) then {
+					if (_owner in _keep_score_id && !([_nextclass, GRLIB_vehicle_blacklist] call F_itemIsInClass)) then {
 						_color = _x getVariable ["GRLIB_vehicle_color", ""];
 						_color_name = _x getVariable ["GRLIB_vehicle_color_name", ""];
 						_lst_a3 = weaponsItemsCargo _x;
