@@ -66,80 +66,82 @@ _marker setMarkerTextlocal "Taxi PickUp";
 
 // Goto Pickup Point
 [_air_grp, _dest] call taxi_dest;
+private _stop = time + (5 * 60); // wait 5min max
 waitUntil {
   sleep 5;
   hintSilent format [localize "STR_TAXI_MOVE", round (_vehicle distance2D _dest)];
-  (_vehicle distance2D _dest < 150)
+  (_vehicle distance2D _dest < 150 || time > _stop)
 };
-
-[_vehicle] call taxi_land;
-
-private _stop = time + (5 * 60); // wait 5min max
-waitUntil {
-	hintSilent format [localize "STR_TAXI_ARRIVED", round (_stop - time)];
-	sleep 1;
-	((count ([_vehicle, _pilots] call taxi_cargo) > 0) || time > _stop)
-};
-hintSilent "";
 
 if (time < _stop) then {
-
+	[_vehicle] call taxi_land;
 	private _stop = time + (5 * 60); // wait 5min max
 	waitUntil {
-		sleep 0.5;
-		( (markerPos "taxi_dz") distance2D zeropos > 100 || isNil {player getVariable ["GRLIB_taxi_called", nil]} || time > _stop )
+		hintSilent format [localize "STR_TAXI_ARRIVED", round (_stop - time)];
+		sleep 1;
+		((count ([_vehicle, _pilots] call taxi_cargo) > 0) || time > _stop)
 	};
+	hintSilent "";
 
-	removeAllActions _vehicle;
-	deleteMarkerLocal "taxi_lz";
-
-	if ( (markerPos "taxi_dz") distance2D zeropos > 100 ) then {
-		hintSilent "Ok, let's go...";
-		_vehicle lock 2;
-		{ _x allowDamage false } forEach ([_vehicle, _pilots] call taxi_cargo);
-
-		_dest = markerPos "taxi_dz";
-		_helipad = taxi_helipad_type createVehicle _dest;
-		[_air_grp, _dest] call taxi_dest;
-		(driver _vehicle) doMove _dest;
-		sleep 30;
+	if (time < _stop) then {
 
 		private _stop = time + (5 * 60); // wait 5min max
 		waitUntil {
-			hintSilent format [localize "STR_TAXI_PROGRESS", round (_vehicle distance2D _dest)];
+			sleep 0.5;
+			( (markerPos "taxi_dz") distance2D zeropos > 100 || isNil {player getVariable ["GRLIB_taxi_called", nil]} || time > _stop )
+		};
+
+		removeAllActions _vehicle;
+		deleteMarkerLocal "taxi_lz";
+
+		if ( (markerPos "taxi_dz") distance2D zeropos > 100 ) then {
+			hintSilent "Ok, let's go...";
+			_vehicle lock 2;
+			{ _x allowDamage false } forEach ([_vehicle, _pilots] call taxi_cargo);
+
+			_dest = markerPos "taxi_dz";
+			_helipad = taxi_helipad_type createVehicle _dest;
+			[_air_grp, _dest] call taxi_dest;
+			(driver _vehicle) doMove _dest;
+			sleep 30;
+
+			private _stop = time + (5 * 60); // wait 5min max
+			waitUntil {
+				hintSilent format [localize "STR_TAXI_PROGRESS", round (_vehicle distance2D _dest)];
+				sleep 5;
+				if (round (speed _vehicle) == 0) then {
+					_vehicle setpos (getPos _vehicle vectorAdd [0, 0, 2]);
+				};
+				(_vehicle distance2D _dest < 150 || time > _stop)
+			};
+
+			[_vehicle] call taxi_land;
+			{ _x allowDamage true } forEach ([_vehicle, _pilots] call taxi_cargo);
+
+			deleteVehicle _helipad;
+			deleteMarkerLocal "taxi_dz";
+		};
+
+		// Board Out
+		_vehicle lock 3;
+		waitUntil {[_vehicle] call taxi_outboard};
+		sleep 5;
+
+		// Go back
+		hintSilent localize "STR_TAXI_RETURN";
+		[_air_grp, zeropos] call taxi_dest;
+		(driver _vehicle) doMove zeropos;
+		sleep 30;
+
+		private _stop = time + (2 * 60); // wait 2min max
+		waitUntil {
 			sleep 5;
-			if (round (speed _vehicle) == 0) then {
+			_speed = round (speed _vehicle);
+			if (_speed == 0) then {
 				_vehicle setpos (getPos _vehicle vectorAdd [0, 0, 2]);
 			};
-			(_vehicle distance2D _dest < 150 || time > _stop)
+			(_speed >= 10 || time > _stop)
 		};
-
-		[_vehicle] call taxi_land;
-		{ _x allowDamage true } forEach ([_vehicle, _pilots] call taxi_cargo);
-
-		deleteVehicle _helipad;
-		deleteMarkerLocal "taxi_dz";
-	};
-
-	// Board Out
-	_vehicle lock 3;
-	waitUntil {[_vehicle] call taxi_outboard};
-	sleep 5;
-
-	// Go back
-	hintSilent localize "STR_TAXI_RETURN";
-	[_air_grp, zeropos] call taxi_dest;
-	(driver _vehicle) doMove zeropos;
-	sleep 30;
-
-	private _stop = time + (2 * 60); // wait 2min max
-	waitUntil {
-		sleep 5;
-		_speed = round (speed _vehicle);
-		if (_speed == 0) then {
-			_vehicle setpos (getPos _vehicle vectorAdd [0, 0, 2]);
-		};
-		(_speed >= 10 || time > _stop)
 	};
 };
 

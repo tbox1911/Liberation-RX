@@ -32,7 +32,16 @@ if !(isNull _unit) then {
 
 	// Remove Taxi
 	private _taxi = _unit getVariable ["GRLIB_taxi_called", nil];
-	if (!isNil "_taxi") then { deleteVehicle _taxi };
+	if (!isNil "_taxi") then {
+		deleteVehicle (nearestObjects [markerPos "taxi_lz", [taxi_helipad_type], 50] select 0);
+		deleteMarkerLocal "taxi_lz";
+		deleteVehicle (nearestObjects [markerPos "taxi_dz", [taxi_helipad_type], 50] select 0);
+		deleteMarkerLocal "taxi_dz";
+		{
+			if (!isNil {_x getVariable ["GRLIB_counter_TTL", nil]}) then { deletevehicle _x };
+		} forEach (crew _taxi);
+		deleteVehicle _taxi;
+	};
 
 	// Remove Squad
 	private _my_squad = _unit getVariable ["my_squad", nil];
