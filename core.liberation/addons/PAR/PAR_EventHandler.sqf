@@ -13,8 +13,8 @@ params ["_unit"];
 // For all
 
 // Check Veh perms
-_unit addEventHandler ["GetInMan", {_this call vehicle_defense;_this call vehicle_permissions}];
-_unit addEventHandler ["SeatSwitchedMan", {_this spawn vehicle_permissions}];
+_unit addEventHandler ["GetInMan", {_this call vehicle_permissions}];
+_unit addEventHandler ["SeatSwitchedMan", {_this call vehicle_permissions}];
 _unit addEventHandler ["GetOutMan", {
 	params ["_unit", "_role", "_veh"];
 	if (_veh == getConnectedUAV player) then {
@@ -115,7 +115,6 @@ if (_unit == player && alive player && player isKindOf "Man") then {
 		1 fadeSound ( NRE_vehvolume / 100.0 );
 		NRE_EarplugsActive = 1;
 		[player, "hide"] remoteExec ["dog_action_remote_call", 2];
-		_this call vehicle_defense;
 		_this call vehicle_permissions;
 	}];
 

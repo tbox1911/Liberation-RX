@@ -48,5 +48,3 @@ GRLIB_offload_diag = false;
 MGR_Key = 19;
 //GRLIB_mod_west = "RHS_AFRF";
 //GRLIB_mod_east = "RHS_USAF";
-GRLIB_mod_west = "CP_BAF_DES";
-GRLIB_mod_east = "CP_TA";

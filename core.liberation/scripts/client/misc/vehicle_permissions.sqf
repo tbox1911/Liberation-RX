@@ -1,5 +1,6 @@
 params ["_unit", "_role", "_vehicle"];
 
+["_unit", "_vehicle"] spawn vehicle_defense;
 private _doeject = false;
 private _role = (assignedVehicleRole _unit) select 0;
 if (isNil "_role") exitWith {false};  // Eject unit
