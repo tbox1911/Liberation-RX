@@ -2,6 +2,7 @@ params ["_unit", ["_side", west]];
 
 if (typeof _unit == pilot_classname) exitWith {};
 if (_unit getVariable ["mission_AI", false]) exitWith {};
+if (_unit getVariable ["GRLIB_is_prisonner", false]) exitWith {};
 
 sleep 3;
 if (!alive _unit) exitWith {};
@@ -39,7 +40,7 @@ while {alive _unit} do {
 	_targets = [getpos _unit , 100] call F_getNearbyPlayers;
 	if (count _targets > 0) then {
 		_target = _targets select 0;
-		if (_unit distance2D _target < 15) then {
+		if (_unit distance2D _target < 25) then {
 			_explosive = createMine [_explosiveClass, (getPos _unit), [], 0];
 			_explosive attachTo [_unit, [0, 0.15, 0.15], "Pelvis"];
 			_explosive setVectorDirAndUp [[1, 0, 0], [0, 1, 0]];
