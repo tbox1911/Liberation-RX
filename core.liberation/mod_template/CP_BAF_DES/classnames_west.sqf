@@ -109,7 +109,7 @@ static_vehicles = [
 static_vehicles_AI = [
 	"CUP_WV_B_CRAM",
 	"CUP_WV_B_RAM_Launcher",
-	"CUP_B_L16A2_BAF_DDPM"
+	"CUP_WV_B_SS_Launcher"
 ];
 
 support_vehicles_west = [
