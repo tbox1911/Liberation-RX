@@ -51,8 +51,8 @@ GRLIB_player_scores = [];
 GRLIB_garage = [];
 
 no_kill_handler_classnames = [FOB_typename, FOB_outpost, huron_typename];
-_classnames_to_save = [FOB_typename, FOB_outpost, huron_typename];
-_classnames_to_save_blu = [];
+_classnames_to_save = [];
+_classnames_to_save_blu = [FOB_typename, FOB_outpost, huron_typename];
 _building_classnames = [FOB_typename, FOB_outpost];
 {
 	no_kill_handler_classnames pushback (_x select 0);
@@ -380,6 +380,9 @@ while { true } do {
 					if (_owner == "") then {
 						buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew ];
 					};
+					if (_owner == "public") then {
+						buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner ];
+					};					
 					if (_owner in _keep_score_id && !([_nextclass, GRLIB_vehicle_blacklist] call F_itemIsInClass)) then {
 						_color = _x getVariable ["GRLIB_vehicle_color", ""];
 						_color_name = _x getVariable ["GRLIB_vehicle_color_name", ""];
