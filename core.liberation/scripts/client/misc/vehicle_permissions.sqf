@@ -1,6 +1,5 @@
 params ["_unit", "_role", "_vehicle"];
 
-["_unit", "_vehicle"] spawn vehicle_defense;
 private _doeject = false;
 private _role = (assignedVehicleRole _unit) select 0;
 if (isNil "_role") exitWith {false};  // Eject unit
@@ -59,6 +58,10 @@ if (!((_role == "cargo") || (_vehicle isKindOf "Steerable_Parachute_F"))) then {
 if (_doeject) then {
 	hintSilent _msg;
 	moveOut _unit;
+} else {
+	if (isPlayer _unit) then {
+		[_vehicle] spawn vehicle_defense;
+	};
 };
 
 !(_doeject);
