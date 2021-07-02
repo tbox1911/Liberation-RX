@@ -1,4 +1,6 @@
 // *** FRIENDLIES ***
+// Default classname: scripts\shared\default_classnames.sqf
+// Advanced definition: scripts\shared\classnames.sqf
 
 FOB_typename = "Land_ArmoryA_Green";
 Arsenal_typename = "OPTRE_Ammo_Rack_Weapons";
@@ -108,9 +110,9 @@ static_vehicles = [
 
 // *** Static Weapon with AI ***
 static_vehicles_AI = [
-	"B_AAA_System_01_F",
+	"B_SAM_System_01_F",
 	"B_SAM_System_02_F",
-	"O_SAM_System_04_F"
+	"B_AAA_System_01_F"
 ];
 
 support_vehicles_west = [
@@ -224,23 +226,8 @@ vehicle_rearm_sources_west = [
 	"OPTRE_M313_UNSC"
 ];
 
-vehicle_artillery = [
-	"B_Mortar_01_F",
-	"B_Ship_Gun_01_F",
-	"I_E_Truck_02_MRL_F",
-	"B_MBT_01_arty_F"
-];
+vehicle_big_units_west = [
 
-vehicle_big_units = [
-	"Land_Cargo_Tower_V1_F",
-	"B_T_VTOL_01_infantry_F",
-	"B_T_VTOL_01_vehicle_F",
-	"B_T_VTOL_01_armed_F",
-	"O_T_VTOL_01_infantry_F",
-	"O_T_VTOL_01_vehicle_F",
-	"O_T_VTOL_01_armed_F",
-	"Land_SM_01_shed_F",
-	"Land_Hangar_F"
 ];
 
 GRLIB_vehicle_whitelist_west = [

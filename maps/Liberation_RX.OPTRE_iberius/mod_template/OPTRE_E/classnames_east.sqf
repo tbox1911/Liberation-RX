@@ -1,4 +1,5 @@
 // *** BADDIES ***
+// All class MUST be defined !
 
 if ( isNil "opfor_sentry") then { opfor_sentry = "OPTRE_Ins_BJ_Soldier_Corpsman" };
 if ( isNil "opfor_rifleman") then { opfor_rifleman = "OPTRE_Ins_BJ_Soldier_Rifleman_AR" };
@@ -45,6 +46,10 @@ militia_squad = [
 	"OPTRE_Ins_BJ_Soldier_URB_Scout_Sniper",
 	"OPTRE_Ins_URF_AA_Specialist",
 	"OPTRE_Ins_URF_AT_Specialist"
+];
+
+militia_loadout_overide = [
+
 ];
 
 divers_squad = [
@@ -172,6 +177,10 @@ opfor_statics = [
 	"O_static_AA_F",
 	"O_static_AT_F",
 	"O_Mortar_01_F"
+];
+
+// Overide Textures
+opfor_texture_overide = [
 ];
 
 opfor_recyclable = [
