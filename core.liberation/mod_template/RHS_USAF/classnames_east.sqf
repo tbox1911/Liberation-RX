@@ -31,28 +31,28 @@ opfor_ammo_container = "B_Slingload_01_Ammo_F";
 opfor_flag = "Flag_US_F";
 
 militia_squad = [
-	"B_G_Soldier_SL_F",
-	"B_G_Soldier_A_F",
-	"B_G_Soldier_AR_F",
-	"B_G_Soldier_AR_F",	
-	"B_G_medic_F",
-	"B_G_engineer_F",
-	"B_G_Soldier_exp_F",
-	"B_G_Soldier_GL_F",
-	"B_G_Soldier_M_F",
-	"B_G_Soldier_F",
-	"B_G_Soldier_LAT_F",
-	"B_G_Soldier_LAT_F",	
-	"B_G_Soldier_lite_F",
-	"B_G_Sharpshooter_F",
-	"B_G_Soldier_TL_F",
-	"B_Soldier_AA_F",
-	"B_Soldier_AT_F"
+	"rhsusf_usmc_marpat_wd_squadleader",
+	"rhsusf_usmc_marpat_wd_rifleman",
+	"rhsusf_usmc_marpat_wd_autorifleman",
+	"rhsusf_usmc_marpat_wd_autorifleman",	
+	"rhsusf_usmc_marpat_wd_machinegunner",
+	"rhsusf_usmc_marpat_wd_engineer",
+	"rhsusf_usmc_marpat_wd_rifleman_m4",
+	"rhsusf_usmc_marpat_wd_grenadier",
+	"rhsusf_usmc_marpat_wd_grenadier_m32",
+	"rhsusf_usmc_marpat_wd_rifleman",
+	"rhsusf_usmc_marpat_wd_smaw",
+	"rhsusf_usmc_marpat_wd_smaw",	
+	"rhsusf_usmc_marpat_wd_sniper",
+	"rhsusf_usmc_marpat_wd_rifleman_m590",
+	"rhsusf_usmc_marpat_wd_rifleman_m4",
+	"rhsusf_usmc_marpat_wd_teamleader",
+	"rhsusf_usmc_marpat_wd_stinger",
+	"rhsusf_usmc_marpat_wd_javelin"
 ];
 
 militia_loadout_overide = [
-	"B_Soldier_AA_F",
-	"B_Soldier_AT_F"
+
 ];
 
 divers_squad = [

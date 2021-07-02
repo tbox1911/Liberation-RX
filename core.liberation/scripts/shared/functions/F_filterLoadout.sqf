@@ -5,7 +5,7 @@ if (!GRLIB_limited_arsenal) exitWith {};
 private _checkItem = {
     params ["_item"];
     private _ret = false;
-    if ( (str _item) find GRLIB_MOD_signature == -1 && !(_item in GRLIB_whitelisted_from_arsenal)) then { _ret = true };
+    if ( [str _item, GRLIB_MOD_signature] call fn_startsWith && !(_item in GRLIB_whitelisted_from_arsenal)) then { _ret = true };
     _ret;
 };
 

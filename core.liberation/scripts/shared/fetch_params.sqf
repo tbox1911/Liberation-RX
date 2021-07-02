@@ -115,5 +115,5 @@ if ( GRLIB_filter_arsenal ) then {
 	if ( GRLIB_OPTRE_enabled ) then { GRLIB_MOD_signature = "OPTRE_" };
 	if ( GRLIB_GM_enabled ) then { GRLIB_MOD_signature = "gm_" };
 	if ( GRLIB_CUPW_enabled ) then { GRLIB_MOD_signature = "CUP_" };
-	if ( GRLIB_RHS_enabled ) then { GRLIB_MOD_signature = "rhs_" };
+	if ( GRLIB_RHS_enabled ) then { GRLIB_MOD_signature = "rhs" };
 };
