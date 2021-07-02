@@ -2,6 +2,7 @@
 if ( GRLIB_OPTRE_enabled ) then {
 	 GRLIB_OPTRE_Blacklist = [
 	];
+	// Weapons
 	(
 		"
 		getText (_x >> 'dlc') == 'OPTRE' &&
@@ -9,6 +10,24 @@ if ( GRLIB_OPTRE_enabled ) then {
 		!((configName _x) in GRLIB_OPTRE_Blacklist)
 		"
 		configClasses (configfile >> "CfgWeapons" )
+	) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
+
+	// Others object (bagpack, etc..)
+	(
+		"
+		getText (_x >> 'dlc') == 'OPTRE' &&
+		!((configName _x) in GRLIB_OPTRE_Blacklist)
+		"
+		configClasses (configfile >> "CfgVehicles" )
+	) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
+
+	// Glasses
+	(
+		"
+		getText (_x >> 'dlc') == 'OPTRE' &&
+		!((configName _x) in GRLIB_OPTRE_Blacklist)
+		"
+		configClasses (configfile >> "CfgGlasses" )
 	) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
 
 	(

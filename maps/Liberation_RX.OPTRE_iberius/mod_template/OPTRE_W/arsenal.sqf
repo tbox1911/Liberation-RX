@@ -13,8 +13,14 @@ blacklisted_weapon = [
 ];
 
 GRLIB_whitelisted_from_arsenal = [
+	"Medikit",
+	"FirstAidKit",
 	"ToolKit",
+	"ItemGPS",
+	"Laserdesignator",
+	"Binocular",
 	"MineDetector",
+	"Rangefinder",
 	"UNSCMine_Range_Mag",
 	"C12_Remote_Mag"
 ];
