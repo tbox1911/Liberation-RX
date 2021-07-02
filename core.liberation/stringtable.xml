@@ -3445,6 +3445,10 @@
 				<French>Activer l'Arsenal Virtuel limité</French>
 				<Chinesesimp>启用限制的虚拟武器库</Chinesesimp>
 			</Key>
+			<Key ID="STR_FILTER_ARSENAL">
+				<Original>Enable Virtual Arsenal MOD filter</Original>
+				<French>Activer le filtres du MOD Arsenal Virtuel</French>
+			</Key>
 			<Key ID="STR_VEH_LOCK">
 				<Original>Enable Vehicles Ownership</Original>
 				<French>Activer la Propriété des Véhicules </French>
