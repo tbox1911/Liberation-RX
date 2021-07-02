@@ -5,7 +5,6 @@
 if (!isServer) exitWith {};
 
 cityList = compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\towns.sqf";
-fn_startsWith = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\fn_startsWith.sqf";
 fn_selectRandomWeighted = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\fn_selectRandomWeighted.sqf";
 fn_refillbox  = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\fn_refillbox.sqf";
 fn_findString = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\fn_findString.sqf";

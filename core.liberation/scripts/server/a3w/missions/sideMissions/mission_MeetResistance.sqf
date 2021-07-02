@@ -20,7 +20,7 @@ _setupVars =
 	_nbUnits = _nbUnits + floor(random (_nbUnits/2));
 
 	// settings for this mission
-	_missionLocation = selectRandom ((blufor_sectors select {["capture_", _x] call fn_startsWith;}) apply {[_x, false]}) select 0 ;
+	_missionLocation = selectRandom ((blufor_sectors select {["capture_", _x] call F_startsWith;}) apply {[_x, false]}) select 0 ;
 	_townName = markerText _missionLocation;
 	_ignoreAiDeaths = true;
 
