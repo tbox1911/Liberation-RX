@@ -98,7 +98,10 @@ while { true } do {
 			_unit enableIRLasers true;
 			_unit enableGunLights "Auto";
 			[_unit] call player_EVH;
-
+			if (GRLIB_opfor_english) then {
+				//[_unit, _spk] remoteExec ["setSpeaker", 0];
+				_unit setSpeaker (format ["Male0%1ENG",selectRandom [2,3,4,5,6,7,8,9]]);
+			};
 			if (typeOf _unit in units_loadout_overide) then {
 				_loadouts_folder = format ["scripts\loadouts\forced\%1.sqf", typeOf _unit];
 				[_unit] call compileFinal preprocessFileLineNUmbers _loadouts_folder;

@@ -188,6 +188,7 @@ PAR_Player_Init = {
 	player setVariable ["PAR_myMedic", nil];
 	player setVariable ["PAR_busy", nil];
 	if (!GRLIB_fatigue ) then { player enableStamina false };
+	if (GRLIB_opfor_english) then {player setSpeaker "Male01ENG"};
 	player setCustomAimCoef 0.35;
 	player setUnitRecoilCoefficient 0.6;
 	player setCaptive false;
