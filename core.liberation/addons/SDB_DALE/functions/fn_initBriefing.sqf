@@ -1,5 +1,6 @@
 scriptName _fnc_scriptName;
 if (!hasInterface) exitWith {};
+if (player diarySubjectExists "DALE") exitWith {};
 
 private _subject = "DALE";
 private _briefing = [

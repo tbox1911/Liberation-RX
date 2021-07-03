@@ -1,4 +1,4 @@
-
+if (player diarySubjectExists "LRX Info") exitWith {};
 _getRandomColor = {
 	private _str = "#";
 	private _mColors = ["ff","20","40","80","B0"];
