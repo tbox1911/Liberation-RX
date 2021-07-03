@@ -26,7 +26,7 @@ if (GRLIB_mod_west in ["A3_OPF","RHS_AFRF"]) then {
 	sleep 2;
 	selectPlayer (units _group select 0);
 	deleteVehicle _player;
-	[] call compile preprocessFileLineNumbers "addons\SDB_DALE\functions\fn_initBriefing.sqf";
+	[] call DALE_fnc_initBriefing;
     [] call compile preprocessFileLineNumbers "GREUH\scripts\GREUH_version.sqf";
 };
 
