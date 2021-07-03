@@ -42,9 +42,19 @@ if (!abort_loading) then {
 
 if (!isDedicated && hasInterface) then {
 	titleText ["","BLACK FADED", 1000];
-	waitUntil { sleep 1; !isNil "GRLIB_init_server" };
-	[] execVM "scripts\client\init_client.sqf";
+	waitUntil {!isNil "GRLIB_init_server" };
+	waitUntil {!(isNull player)};
+	if (GRLIB_mod_west in ["A3_OPF","RHS_AFRF"]) then {
+		_player = player;
+		private _r1 = (typeOf player) splitString "";
+		_r1 set [0, "O"];
+		(_r1 joinString "") createUnit [position player, group player, "newPlayer = this"];
+		sleep 2;
+		selectPlayer newPlayer;
+		deleteVehicle _player;
+	};
 	[] execVM "GREUH\scripts\GREUH_activate.sqf";
+	[] execVM "scripts\client\init_client.sqf";
 } else {
 	setViewDistance 1600;
 };
