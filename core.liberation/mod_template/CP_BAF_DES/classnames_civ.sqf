@@ -36,6 +36,7 @@ civilians = [
 
 civilian_vehicles = [
 	"C_Quadbike_01_F",
+	"C_Plane_Civil_01_F",
 	"CUP_O_TT650_TKA",
 	"CUP_I_TT650_NAPA",
 	"C_Heli_light_01_sheriff_F",

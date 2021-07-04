@@ -16,20 +16,6 @@ if (abort_loading) exitWith {
 
 waitUntil {sleep 1; alive player};
 player setPos ((getmarkerpos GRLIB_respawn_marker) findEmptyPosition [0,20, "B_soldier_F"]);
-if (GRLIB_mod_west in ["A3_OPF","RHS_AFRF"]) then {
-	// an ugly workaround to change player spawn class from B_xxx to O_xxx
-	_player = player;
-	private _r1 = (typeOf player) splitString "";
-	private _group = createGroup [GRLIB_side_friendly, true];
-	_r1 set [0, "O"];
-	(_r1 joinString "") createUnit [position player, _group, ""];
-	sleep 1;
-	selectPlayer (units _group select 0);
-	sleep 1;
-	deleteVehicle _player;
-	[] call DALE_fnc_initBriefing;
-	[] call compile preprocessFileLineNumbers "GREUH\scripts\GREUH_version.sqf";
-};
 
 GRLIB_player_spawned = false;
 waitUntil {sleep 0.1; !isNil "GRLIB_revive"};

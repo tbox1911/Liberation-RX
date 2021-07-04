@@ -30,12 +30,12 @@ civilians = [
 	"C_man_shorts_2_F",
 	"C_man_w_worker_F",
 	"C_Paramedic_01_base_F",
-	"C_Man_UAV_06_F",
 	"C_Man_UtilityWorker_01_F"
 ];
 
 civilian_vehicles = [
 	"C_Quadbike_01_F",
+	"C_Plane_Civil_01_F",
 	"C_Heli_light_01_sheriff_F",
 	"C_Heli_Light_01_civil_F",
 	"C_Heli_light_01_furious_F",
