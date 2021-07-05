@@ -70,9 +70,14 @@ _i = 0;
 // Build Vehicles list
 _i = 0;
 {
-	_build_combo lbAdd format["%1", getText(configFile >> "cfgVehicles" >> ( _x select 0 ) >> "DisplayName")];
-	_build_combo lbSetData [_i, ( _x select 0 )];
-	_i = _i + 1;
+	_strname = getText(configFile >> "cfgVehicles" >> ( _x select 0 ) >> "DisplayName");
+	if (isNil "_strname" ||_strname == "") then {
+		diag_log format ["--- LRX Error: Classname not found: %1", ( _x select 0 )];
+	} else {
+		_build_combo lbAdd format["%1", _strname];
+		_build_combo lbSetData [_i, ( _x select 0 )];
+		_i = _i + 1;
+	};
 } forEach light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles + opfor_recyclable;
 
 _ban_combo lbSetCurSel 0;
