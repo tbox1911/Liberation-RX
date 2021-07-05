@@ -2,8 +2,8 @@
 // Default classname: scripts\shared\default_classnames.sqf
 // Advanced definition: scripts\shared\classnames.sqf
 
-FOB_typename = "Land_DeconTent_01_CSAT_greenhex_F";
-huron_typename = "O_Heli_Transport_04_black_F";
+FOB_typename = "Land_Cargo_HQ_V3_F";
+huron_typename = "RHS_Mi8mt_vv";
 FOB_box_typename = "Land_Pod_Heli_Transport_04_box_black_F";
 FOB_truck_typename = "O_T_Truck_03_device_ghex_F";
 Respawn_truck_typename = "rhs_gaz66_ap2_msv" ;
@@ -130,7 +130,7 @@ buildings_west = [
 	["Land_Cargo_Tower_V3_F",0,0,0,GRLIB_perm_tank],
 	["Land_Cargo_House_V3_F",0,0,0,GRLIB_perm_inf],
 	["Land_Cargo_Patrol_V3_F",0,0,0,GRLIB_perm_log],
-	["Flag_CSAT_F",0,0,0,0]
+	["rhs_Flag_Russia_F",0,0,0,0]
 ];
 
 if ( isNil "blufor_squad_inf_light" ) then { blufor_squad_inf_light = [] };
@@ -246,4 +246,6 @@ box_transport_config_west = [
 	[ "rhs_kamaz5350_open_msv", -6.5, [0,0.8,0], [0,-0.8,0.0], [0,-2.5,0] ],
 	[ "RHS_Ural_Open_MSV_01", -6.5, [0,0.5,1.5], [0,-0.9,1.5], [0,-2.4,1.5] ],
 	[ "rhs_kraz255b1_cargo_open_msv", -6.5, [0,0.5,1.5], [0,-0.9,1.5], [0,-2.4,1.5], [0,-3.8,1.5] ],
+	[ "RHS_Mi8mt_vv", -7.5, [0,2,-1.8], [0,0.6,-1.8], [0,-1.2,-1.8], [0,-2.6,-1.8] ]
+	
 ];

@@ -3,7 +3,7 @@
 // Advanced definition: scripts\shared\classnames.sqf
 
 huron_typename = "RHS_CH_47F";
-FOB_typename = "Land_DeconTent_01_NATO_tropic_F";
+FOB_typename = "Land_Cargo_HQ_V1_F";
 Respawn_truck_typename = "rhsusf_M1085A1P2_B_WD_Medical_fmtv_usarmy";  //"rhsusf_m113_usarmy_medical"
 //FOB_box_typename = "B_Slingload_01_Cargo_F";
 //FOB_truck_typename = "B_Truck_01_box_F";
