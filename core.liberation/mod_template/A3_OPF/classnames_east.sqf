@@ -83,8 +83,6 @@ militia_vehicles = [
 
 opfor_boat = [
 	"O_Boat_Armed_01_hmg_F",
-	"O_T_Boat_Armed_01_hmg_F",
-	"O_Boat_Armed_01_hmg_F",
 	"O_T_Boat_Armed_01_hmg_F"
 ];
 
