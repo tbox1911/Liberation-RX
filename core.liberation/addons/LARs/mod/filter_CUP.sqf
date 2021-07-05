@@ -69,5 +69,4 @@ if ( GRLIB_CUPW_enabled ) then {
     	configClasses (configfile >> "CfgMagazines")
 	) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x)} ;
 
-    GRLIB_mod_enabled = true;
 };
