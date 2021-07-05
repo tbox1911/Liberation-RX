@@ -67,16 +67,12 @@ divers_squad = [
 ];
 
 militia_vehicles = [
-	"LOP_ChDKZ_BM21",
-	"LOP_ChDKZ_UAZ_AGS",
-	"LOP_ChDKZ_UAZ_DshKM",
-	"LOP_ChDKZ_UAZ_SPG",
-	"LOP_ChDKZ_BMP2",
-	"LOP_ChDKZ_BMP1",
-	"LOP_ChDKZ_BTR60",
-	"LOP_ChDKZ_BTR70",
-	"LOP_ChDKZ_T72BB",
-	"LOP_ChDKZ_ZSU234"
+	"O_G_Offroad_01_armed_F",
+	"O_G_Offroad_01_armed_F",
+	"O_G_Offroad_01_AT_F",
+	"rhs_btr60_msv",
+	"rhs_btr70_msv",
+	"rhs_btr80_msv"
 ];
 
 opfor_boat = [
