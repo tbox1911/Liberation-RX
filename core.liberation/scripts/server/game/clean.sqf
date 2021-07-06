@@ -149,9 +149,11 @@ while {deleteManagerPublic} do {
 
 			while {(((count allDeadMen) - _deadMenLimit) > 0)} do {
 				_unit = selectRandom allDeadMen;
-				deleteVehicle _unit;
-				_stats = _stats + 1;
-				sleep 0.5;
+				if (!isNil "_unit") then {
+					deleteVehicle _unit;
+					_stats = _stats + 1;
+					sleep 0.2;
+				};
 			};
 		};
 	};
@@ -184,7 +186,7 @@ while {deleteManagerPublic} do {
 				[_veh] call clean_vehicle;
 				deleteVehicle _veh;
 				_stats = _stats + 1;
-				sleep 0.5;
+				sleep 0.2;
 			};
 		};
 	};
@@ -207,7 +209,7 @@ while {deleteManagerPublic} do {
 				[_veh] call clean_vehicle;
 				deleteVehicle _veh;
 				_stats = _stats + 1;
-				sleep 0.5;
+				sleep 0.2;
 			};
 		};
 	};
@@ -227,7 +229,7 @@ while {deleteManagerPublic} do {
 			while {(((count (allMissionObjects "CraterLong")) - _craterLimit) > 0)} do {
 				deleteVehicle (selectRandom (allMissionObjects "CraterLong"));
 				_stats = _stats + 1;
-				sleep 0.5;
+				sleep 0.2;
 			};
 		};
 	};
@@ -247,7 +249,7 @@ while {deleteManagerPublic} do {
 			while {(((count (allMissionObjects "WeaponHolder")) - _weaponHolderLimit) > 0)} do {
 				deleteVehicle (selectRandom (allMissionObjects "WeaponHolder"));
 				_stats = _stats + 1;
-				sleep 0.5;
+				sleep 0.2;
 			};
 		};
 	};
@@ -271,7 +273,7 @@ while {deleteManagerPublic} do {
 			while {(((count allMines) - _minesLimit) > 0)} do {
 				deleteVehicle (selectRandom allMines);
 				_stats = _stats + 1;
-				sleep 0.5;
+				sleep 0.2;
 			};
 		};
 	};
@@ -291,7 +293,7 @@ while {deleteManagerPublic} do {
 			while {(((count (allMissionObjects "StaticWeapon")) - _staticsLimit) > 0)} do {
 				deleteVehicle (selectRandom (allMissionObjects "StaticWeapon"));
 				_stats = _stats + 1;
-				sleep 0.5;
+				sleep 0.2;
 			};
 		};
 	};
@@ -320,7 +322,7 @@ while {deleteManagerPublic} do {
 				_ruins resize (count _ruins - 1);
 				deleteVehicle (selectRandom _ruins);
 				_stats = _stats + 1;
-				sleep 0.5;
+				sleep 0.2;
 			};
 		};
 	};
