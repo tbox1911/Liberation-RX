@@ -5,12 +5,17 @@
 [] call compileFinal preprocessFileLineNUmbers format ["scripts\shared\default_classnames.sqf"];
 [] call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_west.sqf", GRLIB_mod_west];
 [] call F_calcUnitsCost;
+
 // *** BADDIES ***
 [] call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_east.sqf", GRLIB_mod_east];
+
 // *** CIVILIAN ***
 [] call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_civ.sqf", GRLIB_mod_west];
 
 // *** GLOBAL DEFINITIOON ***
+GRLIB_side_friendly = WEST;
+GRLIB_side_enemy = EAST;
+
 // *** SUPPORT ***
 support_vehicles = [
 	[Arsenal_typename,0,10,0,0],
