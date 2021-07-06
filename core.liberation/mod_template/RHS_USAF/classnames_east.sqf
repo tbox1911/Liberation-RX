@@ -1,4 +1,5 @@
 // *** BADDIES ***
+GRLIB_side_enemy = WEST;
 // All class MUST be defined !
 
 opfor_sentry = "rhsusf_army_ucp_rifleman";
