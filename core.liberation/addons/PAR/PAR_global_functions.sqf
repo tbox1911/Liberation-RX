@@ -75,22 +75,21 @@ PAR_fn_AI_Damage_EH = {
 	params ["_unit"];
 	_unit removeAllEventHandlers "HandleDamage";
 	_unit addEventHandler ["HandleDamage", { _this call damage_manager_EH }];
-	_unit addEventHandler ["HandleDamage", {
-		params ["_unit","","_dam"];
-		_veh = objectParent _unit;
-		if (!(isNull _veh) && damage _veh > 0.8) then {[_veh, _unit, true] spawn PAR_fn_eject};
-
-		private _isNotWounded = !(_unit getVariable ["PAR_wounded", false]);
-		if (_isNotWounded && _dam >= 0.86) then {
-			if (!(isNull _veh)) then {[_veh, _unit] spawn PAR_fn_eject};
-			_unit allowDamage false;
-			_unit setVariable ["PAR_wounded", true];
-			_unit setUnconscious true;
-			_unit setVariable ["PAR_BleedOutTimer", round(time + PAR_BleedOut), true];
-			[_unit] spawn PAR_fn_unconscious;
-		};
-		_dam min 0.86;
-	}];
+	if (GRLIB_revive != 0) then {
+		_unit addEventHandler ["HandleDamage", {
+			params ["_unit","","_dam"];
+			private _isNotWounded = !(_unit getVariable ["PAR_wounded", false]);
+			if (_isNotWounded && _dam >= 0.86) then {
+				if (!(isNull _veh)) then {[_veh, _unit] spawn PAR_fn_eject};
+				_unit allowDamage false;
+				_unit setVariable ["PAR_wounded", true];
+				_unit setUnconscious true;
+				_unit setVariable ["PAR_BleedOutTimer", round(time + PAR_BleedOut), true];
+				[_unit] spawn PAR_fn_unconscious;
+			};
+			_dam min 0.86;
+		}];
+	};
 	_unit removeAllEventHandlers "Killed";
 	_unit addEventHandler ["Killed", {_this spawn PAR_fn_Killed}];
 	_unit removeAllMPEventHandlers "MPKilled";
@@ -101,6 +100,7 @@ PAR_fn_AI_Damage_EH = {
 	_unit setVariable ["PAR_heal", nil];
 	_unit setVariable ["PAR_healed", nil];
 	_unit setVariable ["PAR_AI_score", 5, true];
+	[_unit] spawn player_EVH;
 };
 
 PAR_AI_Manager = {
@@ -176,7 +176,10 @@ PAR_AI_Manager = {
 PAR_Player_Init = {
 	// Clear event handler before adding it
 	player removeAllEventHandlers "HandleDamage";
-	player addEventHandler ["HandleDamage", {_this call PAR_HandleDamage_EH}];
+	player addEventHandler ["HandleDamage", { _this call damage_manager_EH }];
+	if (GRLIB_revive != 0) then {
+		player addEventHandler ["HandleDamage", { _this call PAR_HandleDamage_EH }];
+	};
 	player removeAllMPEventHandlers "MPKilled";
 	player addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	player setVariable ["GREUH_isUnconscious", 0, true];

@@ -14,6 +14,9 @@ if (!isNull _killer && _unit != _killer) then {
 	private _veh_unit = vehicle _unit;
 	private _veh_killer = vehicle _killer;
 
+	// Eject
+	if (_veh_unit != _unit && damage _veh_unit > 0.8) then {[_veh_unit, _unit, true] spawn PAR_fn_eject};
+
 	// Friendly fires penalty
 	if (isPlayer _killer && side group _unit == GRLIB_side_friendly && _unit != _killer && _veh_unit != _veh_killer && lifeState _unit != "INCAPACITATED" && _amountOfDamage > 0.05 ) then {
 		if ( _unit getVariable ["GRLIB_isProtected", 0] < time ) then {

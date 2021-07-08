@@ -19,8 +19,6 @@ _spawn_pos = (getmarkerpos GRLIB_respawn_marker) findEmptyPosition [0,20, "B_sol
 player setPos _spawn_pos;
 
 GRLIB_player_spawned = false;
-waitUntil {sleep 0.1; !isNil "GRLIB_revive"};
-if (GRLIB_revive == 0) then {[player] call player_EVH}; 	// if PAR is disabled, minimal handler
 
 removeAllWeapons player;
 removeAllItems player;
