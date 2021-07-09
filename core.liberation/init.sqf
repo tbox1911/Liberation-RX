@@ -41,7 +41,6 @@ if (!abort_loading) then {
 };
 
 if (!isDedicated && hasInterface) then {
-	titleText ["","BLACK FADED", 1000];
 	waitUntil {!isNil "GRLIB_init_server" };
 	[] execVM "GREUH\scripts\GREUH_activate.sqf";
 	[] execVM "scripts\client\init_client.sqf";
