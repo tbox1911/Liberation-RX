@@ -8,7 +8,6 @@ FOB_truck_typename = "gm_ge_army_kat1_454_cargo";
 Respawn_truck_typename = "gm_gc_army_ural375d_medic";
 huron_typename = "gm_ge_army_ch53g";
 
-opfor_ammobox_transport = "gm_gc_army_ural4320_cargo";
 commander_classname = "gm_ge_army_officer_p1_80_oli";
 crewman_classname = "gm_ge_army_crew_mp2a1_80_oli";
 pilot_classname = "gm_ge_army_pilot_p1_80_oli";
@@ -247,10 +246,10 @@ GRLIB_vehicle_whitelist_west = [
 
 GRLIB_vehicle_blacklist_west = [
 	"gm_AmmoBox_wood_02_empty",
-  "gm_AmmoBox_wood_03_empty"
+	"gm_AmmoBox_wood_03_empty"
 
 ];
 
 box_transport_config_west = [
-
+	[ "gm_ge_army_u1300l_container", -5.5, [0, 0.3, 0], [0, -1.25, 0] ]
 ];

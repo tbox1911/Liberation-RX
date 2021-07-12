@@ -11,7 +11,8 @@ blacklisted_bag = [
 blacklisted_weapon = [
 	"optic_Nightstalker",
 	"optic_tws",
-	"optic_tws_mg"
+	"optic_tws_mg",
+	"gm_p2a1_launcher_blk"
 ];
 
 GRLIB_whitelisted_from_arsenal = [
