@@ -133,7 +133,7 @@ buildings_west = [
 	["Land_Cargo_Tower_V1_F",0,0,0,GRLIB_perm_tank],
 	["Land_Cargo_House_V1_F",0,0,0,GRLIB_perm_inf],
 	["Land_Cargo_Patrol_V1_F",0,0,0,GRLIB_perm_log],
-	["Flag_NATO_F",0,0,0,0]
+	["gm_flag_GE",0,0,0,0]
 ];
 
 if ( isNil "blufor_squad_inf_light" ) then { blufor_squad_inf_light = [] };
@@ -214,7 +214,7 @@ uavs = [
 
 // Everything the AI troups should be able to resupply from
 ai_resupply_sources_west = [
-  "gm_ge_army_bpz2a0"
+	"gm_ge_army_bpz2a0"
 ];
 
 // Everything the AI troups should be able to healing from
@@ -241,6 +241,8 @@ GRLIB_vehicle_whitelist_west = [
 ];
 
 GRLIB_vehicle_blacklist_west = [
+	"gm_ge_army_mg3_aatripod",
+	"gm_ge_army_milan_launcher_tripod",
 	"gm_AmmoBox_wood_02_empty",
 	"gm_AmmoBox_wood_03_empty"
 ];

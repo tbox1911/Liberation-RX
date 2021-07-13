@@ -155,13 +155,16 @@ opfor_troup_transports = [
 	"gm_gc_bgs_ural4320_cargo",
 	"gm_gc_airforce_mi2p",
 	"gm_gc_airforce_mi2t",
-	"gm_gc_airforce_l410t",
-	"gm_gc_airforce_l410s_salon"
+	"gm_gc_airforce_l410t"
 ];
 
 opfor_choppers = [
 	"gm_gc_airforce_mi2p",
 	"gm_gc_airforce_mi2t",
+	"gm_gc_airforce_l410t"
+];
+
+opfor_air = [
 	"gm_gc_airforce_mi2urn",
 	"gm_gc_airforce_mi2urn",
 	"gm_gc_airforce_mi2us",
@@ -173,16 +176,10 @@ opfor_choppers = [
 	"gm_pl_airforce_mi2urn"
 ];
 
-opfor_air = [
-	"gm_gc_airforce_l410t",
-	"gm_gc_airforce_l410s_salon"
-];
-
 opfor_statics = [
-	"O_HMG_01_high_F",
-	"O_GMG_01_high_F",
-	"O_static_AA_F",
-	"O_static_AT_F",
+	"gm_gc_army_dshkm_aatripod",
+	"gm_gc_army_fagot_launcher_tripod",
+	"gm_gc_army_spg9_tripod",
 	"O_Mortar_01_F"
 ];
 
