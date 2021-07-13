@@ -75,9 +75,13 @@ PAR_fn_AI_Damage_EH = {
 	params ["_unit"];
 	_unit removeAllEventHandlers "HandleDamage";
 	_unit addEventHandler ["HandleDamage", { _this call damage_manager_EH }];
+
 	if (GRLIB_revive != 0) then {
 		_unit addEventHandler ["HandleDamage", {
 			params ["_unit","","_dam"];
+			_veh = objectParent _unit;
+			if (!(isNull _veh) && damage _veh > 0.8) then {[_veh, _unit, true] spawn PAR_fn_eject};
+
 			private _isNotWounded = !(_unit getVariable ["PAR_wounded", false]);
 			if (_isNotWounded && _dam >= 0.86) then {
 				if (!(isNull _veh)) then {[_veh, _unit] spawn PAR_fn_eject};

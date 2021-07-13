@@ -9,12 +9,9 @@ if (!(isNull _instigator)) then {
 	};
 };
 
-private _veh_unit = vehicle _unit;
-// Eject
-if (_veh_unit != _unit && damage _veh_unit > 0.8) then {[_veh_unit, _unit, true] spawn PAR_fn_eject};
-
 private _ret = _amountOfDamage;
 if (!isNull _killer && _unit != _killer) then {
+	private _veh_unit = vehicle _unit;
 	private _veh_killer = vehicle _killer;
 
 	// Friendly fires penalty
