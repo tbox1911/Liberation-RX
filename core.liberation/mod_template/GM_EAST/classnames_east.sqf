@@ -222,6 +222,5 @@ opfor_recyclable = [
 ];
 
 box_transport_config_east = [
-	//[ "CUP_B_MTVR_BAF_DES", -6.5, [0, -0.4, 0.3], [0, -2.1, 0.3] ],
-	[ "gm_gc_army_ural4320_cargo", -5.5, [0, 0.3, 0], [0, -1.25, 0] ]
+	[ "gm_gc_army_ural4320_cargo", -5.5, [0, -0.7, 0.04], [0, -2.4, 0.04] ]
 ];

@@ -51,7 +51,6 @@ light_vehicles = [
 	["gm_ge_army_m113a1g_apc_milan",5,100,2,GRLIB_perm_inf],
 	["gm_ge_army_m113a1g_medic",5,125,2,GRLIB_perm_log],
 	["gm_ge_army_kat1_451_container",5,30,5,GRLIB_perm_log],
-	["gm_ge_army_kat1_451_cargo",5,30,5,GRLIB_perm_log],
 	["gm_dk_army_m113a1dk_apc",2,25,2,GRLIB_perm_inf],
 	["gm_dk_army_m113a1dk_medic",5,10,5,GRLIB_perm_inf],
 	["gm_dk_army_m113a2dk",5,200,2,GRLIB_perm_log],
@@ -247,6 +246,6 @@ GRLIB_vehicle_blacklist_west = [
 ];
 
 box_transport_config_west = [
-	[ "gm_ge_army_u1300l_container", -5.5, [0, 0.3, 0], [0, -1.25, 0] ],
-	[ "gm_ge_army_kat1_451_cargo", -5.5, [0, 0.3, -0.3], [0, -1.25, -0.3] ]
+	[ "gm_ge_army_u1300l_container", -4.5, [0, -0.5, -0.4], [0, -2.1, -0.4] ],
+	[ "gm_ge_army_kat1_451_container", -5.5, [0, 0.21, -0.01], [0, -1.34, -0.01], [0, -2.9, -0.01]]
 ];
