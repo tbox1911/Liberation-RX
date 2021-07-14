@@ -98,11 +98,10 @@ opfor_vehicles = [
 	"gm_gc_army_t55ak",
 	"gm_gc_army_t55am2",
 	"gm_gc_army_t55am2b",
-	"gm_gc_army_zsu234v1",
+	//"gm_gc_army_zsu234v1",
 	"gm_pl_army_pt76b",
 	"gm_pl_army_t55",
-	"gm_pl_army_t55ak",
-	"gm_gc_army_zsu234v1"
+	"gm_pl_army_t55ak"
 ];
 
 opfor_vehicles_low_intensity = [
@@ -128,11 +127,11 @@ opfor_battlegroup_vehicles = [
 	"gm_gc_army_t55ak",
 	"gm_gc_army_t55am2",
 	"gm_gc_army_t55am2b",
-	"gm_gc_army_zsu234v1",
+	//"gm_gc_army_zsu234v1",
 	"gm_pl_army_pt76b",
 	"gm_pl_army_t55",
 	"gm_pl_army_t55ak",
-	"gm_gc_army_zsu234v1",
+	//"gm_gc_army_zsu234v1",
 	"gm_gc_bgs_ural4320_repair",
 	"gm_gc_bgs_ural4320_reammo"
 ];
@@ -203,7 +202,7 @@ opfor_recyclable = [
 	["gm_pl_army_t55ak",0,round (400 / GRLIB_recycling_percentage),0],
 	["gm_gc_army_t55am2",0,round (500 / GRLIB_recycling_percentage),0],
 	["gm_gc_army_t55am2b",0,round (500 / GRLIB_recycling_percentage),0],
-	["gm_gc_army_zsu234v1",0,round (500 / GRLIB_recycling_percentage),0],
+	["gm_pl_army_zsu234v1",0,round (500 / GRLIB_recycling_percentage),0],
 	["gm_gc_army_zsu234v1",0,round (500 / GRLIB_recycling_percentage),0],
 	["gm_gc_airforce_mi2p",0,round (500 / GRLIB_recycling_percentage),0],
 	["gm_gc_airforce_mi2t",0,round (500 / GRLIB_recycling_percentage),0],

@@ -41,8 +41,6 @@ infantry_units = [
 light_vehicles = [
 	["gm_gc_army_bicycle_01_oli",1,5,1,0],
 	["gm_ge_army_k125",1,10,1,0],
-	["gm_gc_civ_p601",1,15,1,0],
-	["gm_ge_civ_typ1200",1,15,1,GRLIB_perm_inf],
 	["gm_ge_army_u1300l_container",1,25,1,0],
 	["gm_ge_army_iltis_cargo",1,5,1,0],
 	["gm_ge_army_iltis_milan",5,100,2,GRLIB_perm_inf],

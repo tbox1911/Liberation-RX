@@ -217,7 +217,7 @@ opfor_recyclable = [
 	["gm_pl_army_t55ak",0,round (400 / GRLIB_recycling_percentage),0],
 	["gm_gc_army_t55am2",0,round (500 / GRLIB_recycling_percentage),0],
 	["gm_gc_army_t55am2b",0,round (500 / GRLIB_recycling_percentage),0],
-	["gm_gc_army_zsu234v1",0,round (500 / GRLIB_recycling_percentage),0],
+	["gm_pl_army_zsu234v1",0,round (500 / GRLIB_recycling_percentage),0],
 	["gm_gc_army_zsu234v1",0,round (500 / GRLIB_recycling_percentage),0],
 	["gm_gc_airforce_mi2p",0,round (500 / GRLIB_recycling_percentage),0],
 	["gm_gc_airforce_mi2t",0,round (500 / GRLIB_recycling_percentage),0],
