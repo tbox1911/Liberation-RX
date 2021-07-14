@@ -132,8 +132,8 @@ opfor_battlegroup_vehicles = [
 	"gm_pl_army_t55",
 	"gm_pl_army_t55ak",
 	//"gm_gc_army_zsu234v1",
-	"gm_gc_bgs_ural4320_repair",
-	"gm_gc_bgs_ural4320_reammo"
+	"gm_gc_airforce_mi2p",
+	"gm_gc_bgs_ural4320_cargo"
 ];
 
 opfor_battlegroup_vehicles_low_intensity = [
@@ -145,7 +145,8 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"gm_gc_army_pt76b",
 	"gm_gc_army_btr60pa",
 	"gm_gc_army_btr60pb",
-	"gm_gc_bgs_ural4320_repair"
+	"gm_gc_airforce_mi2p",
+	"gm_gc_army_ural4320_cargo"
 ];
 
 opfor_troup_transports = [
