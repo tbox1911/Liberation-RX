@@ -65,7 +65,7 @@ civilian_vehicles = [
 	"gm_ge_civ_typ1200",
 	"gm_ge_pol_typ1200",
 	"gm_ge_ff_typ1200",
-	"gm_ge_ff_u1300l_firefighter"
+	"gm_ge_ff_u1300l_firefighter",
 	"gm_ge_dbp_typ1200",
 	"gm_pl_army_ural4320_cargo",
 	"gm_gc_army_ural4320_cargo",

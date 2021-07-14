@@ -13,7 +13,7 @@ crewman_classname = "gm_ge_army_crew_mp2a1_80_oli";
 pilot_classname = "gm_ge_army_pilot_p1_80_oli";
 PAR_Medikit = "gm_ge_army_medkit_80";
 PAR_AidKit = "gm_ge_army_burnBandage";
-A3W_BoxWps = "Box_East_Wps_F";
+A3W_BoxWps = "gm_AmmoBox_1000Rnd_762x51mm_ap_DM151_g3";
 canisterFuel = "gm_jerrycan";
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]

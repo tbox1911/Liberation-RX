@@ -372,7 +372,10 @@ GRLIB_Ammobox_keep = [
 	medicalbox_typename,
 	"Box_NATO_WpsLaunch_F",
 	"mission_USLaunchers",
-	"Land_CargoBox_V1_F"
+	"Land_CargoBox_V1_F",
+	"rhs_weapon_crate",
+	"CUP_LocalBasicWeaponsBox",
+	"gm_AmmoBox_1000Rnd_762x51mm_ap_DM151_g3"
 ];
 
 GRLIB_player_grave = [
