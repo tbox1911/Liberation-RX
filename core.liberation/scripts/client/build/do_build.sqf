@@ -10,8 +10,6 @@ _ammo = 0;
 _lst_a3 = [];
 _lst_r3f = [];
 build_unit = [];
-_list_static = [] + opfor_statics;
-{_list_static pushBack ( _x select 0 )} foreach (static_vehicles);
 
 GRLIB_preview_spheres = [];
 while { count GRLIB_preview_spheres < 36 } do {
@@ -168,6 +166,7 @@ while { true } do {
 			_idactrotate = player addAction ["<t color='#B0FF00'>" + localize "STR_ROTATION" + "</t> <img size='1' image='res\ui_rotation.paa'/>","scripts\client\build\build_rotate.sqf","",-756,false,false,"","build_confirmed == 1"];
 			_idactcancel = player addAction ["<t color='#B0FF00'>" + localize "STR_CANCEL" + "</t> <img size='1' image='res\ui_cancel.paa'/>","scripts\client\build\build_cancel.sqf","",-760,false,true,"","build_confirmed == 1 && buildtype != 9"];
 			_ghost_spot = (getmarkerpos "ghost_spot") findEmptyPosition [1,250,_classname];
+			_ghost_spot = _ghost_spot vectorAdd [0, 0, build_altitude];
 
 			_vehicle = _classname createVehicleLocal _ghost_spot;
 			_vehicle allowdamage false;
@@ -259,11 +258,14 @@ while { true } do {
 					GRLIB_conflicting_objects = [];
 				};
 
-				if (count _near_objects == 0 && ((_truepos distance _posfob) < _maxdist || buildtype == 9) && (  ((!surfaceIsWater _truepos) && (!surfaceIsWater getpos player)) || (_classname in boats_names) ) ) then {
-
-					_vehicle setpos (_truepos vectorAdd [0, 0, build_altitude]);
-
-					if(build_invalid == 1) then {
+				if ( count _near_objects == 0 && ((_truepos distance _posfob) < _maxdist || buildtype == 9) && (((!surfaceIsWater _truepos) && (!surfaceIsWater getpos player)) || (_classname in boats_names)) ) then {
+					if ( _classname isKindOf "Ship" && surfaceIsWater _truepos ) then {
+						_vehicle setposASL _truepos;
+					} else {
+						_vehicle setposATL _truepos;
+					};
+					
+					if ( build_invalid == 1 ) then {
 						GRLIB_ui_notif = "";
 						{ _x setObjectTexture [0, "#(rgb,8,8,3)color(0,1,0,1)"]; } foreach GRLIB_preview_spheres;
 					};
@@ -273,7 +275,7 @@ while { true } do {
 					if ( build_invalid == 0 ) then {
 						{ _x setObjectTexture [0, "#(rgb,8,8,3)color(1,0,0,1)"]; } foreach GRLIB_preview_spheres;
 					};
-					_vehicle setpos _ghost_spot;
+					_vehicle setposATL _ghost_spot;
 					build_invalid = 1;
 					if(count _near_objects > 0) then {
 						GRLIB_ui_notif = format [localize "STR_PLACEMENT_IMPOSSIBLE",count _near_objects, round _dist];
@@ -312,7 +314,6 @@ while { true } do {
 				_vehicle = _classname createVehicle _truepos;
 				_vehicle allowDamage false;
 				_vehicle setdir _vehdir;
-				_vehicle setpos (_truepos vectorAdd [0, 0, build_altitude]);
 
 				// Ammo Box clean inventory
 				if (!(_classname in  GRLIB_Ammobox_keep)) then {
@@ -377,7 +378,7 @@ while { true } do {
 				};
 
 				// Static Weapon
-				if (_classname in _list_static) then {
+				if (_classname in list_static_weapons) then {
 					[_vehicle] spawn protect_static;
 					if (_classname in static_vehicles_AI) then {
 						_vehicle setMass 5000;
