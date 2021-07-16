@@ -96,6 +96,10 @@ buildings = buildings_west + [
 elite_vehicles = [];
 { if (_x select 4 == GRLIB_perm_max) then { elite_vehicles pushback (_x select 0)} } foreach light_vehicles + heavy_vehicles + air_vehicles + static_vehicles;
 
+// Static Weapons
+list_static_weapons = [] + opfor_statics;
+{ list_static_weapons pushback (_x select 0) } foreach static_vehicles;
+
 // Everything the AI troups should be able to resupply from
 ai_resupply_sources = [
 	Arsenal_typename,

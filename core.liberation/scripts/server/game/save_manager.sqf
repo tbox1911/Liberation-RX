@@ -64,11 +64,7 @@ _building_classnames = [FOB_typename, FOB_outpost];
 	_classnames_to_save_blu pushback (_x select 0);
 } foreach (air_vehicles + heavy_vehicles + light_vehicles + support_vehicles + static_vehicles + ind_recyclable);
 
-_list_static_weapons = [] + opfor_statics;
-{
-	_list_static_weapons pushback (_x select 0);
-} foreach static_vehicles;
-_vehicles_blacklist = _list_static_weapons + uavs + [mobile_respawn];
+_vehicles_blacklist = list_static_weapons + uavs + [mobile_respawn];
 
 _classnames_to_save = _classnames_to_save + _classnames_to_save_blu + all_hostile_classnames;
 _buildings_created = [];
@@ -223,7 +219,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 					_nextbuilding setVariable ["GRLIB_vehicle_ishuron", true, true];
 				};
 
-				if ( _nextclass in _list_static_weapons ) then {
+				if ( _nextclass in list_static_weapons ) then {
 					[_nextbuilding] spawn protect_static;
 					_nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
 					_nextbuilding setVariable ["R3F_LOG_disabled", false, true];

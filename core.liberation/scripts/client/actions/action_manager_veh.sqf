@@ -22,9 +22,6 @@ private _wreck_class = [
 	"O_SAM_System_04_F"
 ];
 
-private _recycleable_blacklist = [] + opfor_statics;
-{_recycleable_blacklist pushBack ( _x select 0 )} foreach static_vehicles;
-
 waitUntil { sleep 1; !isNil "build_confirmed" };
 waitUntil { sleep 1; !isNil "one_synchro_done" };
 waitUntil { sleep 1; one_synchro_done };
@@ -37,7 +34,7 @@ while { true } do {
 	// Vehicles actions
 	_nearmyveh = [nearestObjects [player, ["LandVehicle","Air","Ship"], _searchradius], {
 		(_x distance lhd) >= GRLIB_sector_size &&
-		!(typeOf _x in _recycleable_blacklist) &&
+		!(typeOf _x in list_static_weapons) &&
 		isNil {_x getVariable "GRLIB_vehicle_action"}
 	}] call BIS_fnc_conditionalSelect;
 
