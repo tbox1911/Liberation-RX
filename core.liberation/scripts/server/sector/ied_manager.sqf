@@ -27,16 +27,16 @@ if (_number > 0) then {
 
 if ( !(isnull _roadobj) ) then {
 
-	_roadpos = getpos _roadobj;
+	_roadpos = getposATL _roadobj;
 	_ied_obj = createMine [ _ied_type, [ _roadpos, _spread, random(360) ] call BIS_fnc_relPos, [], 0];
 	_ied_obj setdir (random 360);
 
 	while { mineActive _ied_obj && !_goes_boom } do {
-		_nearinfantry = [ (getpos _ied_obj) nearEntities [ "Man", _activation_radius_infantry ] , { side _x == GRLIB_side_friendly } ] call BIS_fnc_conditionalSelect;
-		_nearvehicles = [ (getpos _ied_obj) nearEntities [ [ "Car", "Tank", "Air" ], _activation_radius_vehicles ] , { side _x == GRLIB_side_friendly } ] call BIS_fnc_conditionalSelect;
+		_nearinfantry = [ (getposATL _ied_obj) nearEntities [ "Man", _activation_radius_infantry ] , { side _x == GRLIB_side_friendly } ] call BIS_fnc_conditionalSelect;
+		_nearvehicles = [ (getposATL _ied_obj) nearEntities [ [ "Car", "Tank", "Air" ], _activation_radius_vehicles ] , { side _x == GRLIB_side_friendly } ] call BIS_fnc_conditionalSelect;
 		if ( count _nearinfantry >= _infantry_trigger || count _nearvehicles >= _vehicle_trigger ) then {
 			if ( _ultra_strong ) then {
-				"Bomb_04_F" createVehicle (getpos _ied_obj);
+				"Bomb_04_F" createVehicle (getposATL _ied_obj);
 				deleteVehicle _ied_obj;
 			} else {
 				_ied_obj setDamage 1;
