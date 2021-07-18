@@ -16,7 +16,8 @@ if ( _truck_to_unload getVariable ["GRLIB_ammo_truck_load", 0] > 0 ) then {
 		[ _next_box, false ] remoteExec [ "F_objectProtection", 0 ];
 		sleep 0.5;
 		detach _next_box;
-		_next_box setposATL ( [ getpos _truck_to_unload, _offset, getdir _truck_to_unload] call BIS_fnc_relPos );
+		_next_pos = [getposATL _truck_to_unload, _offset, getdir _truck_to_unload] call BIS_fnc_relPos;
+		_next_box setposATL (_next_pos vectorAdd [0, 0, 0.2]);
 		_next_box setdir (getdir _truck_to_unload);
 		_next_box setVelocity [ 0,0,0 ];
 		_next_box setDamage 0;
