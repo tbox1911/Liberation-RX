@@ -67,7 +67,7 @@ while {
 		if ( alive _unit && vehicle _unit == _unit ) then {
 			private _sectors = (sectors_allSectors - blufor_sectors);
 			if (_side == GRLIB_side_friendly) then {_sectors = blufor_sectors};
-			private _nearest_sector = [_sectors, _unit] call BIS_fnc_nearestPosition;
+			private _nearest_sector = [_sectors, _unit] call F_nearestPosition;
 
 			if (typeName _nearest_sector == "STRING") then {
 				private _flee_grp = createGroup [_side, true];

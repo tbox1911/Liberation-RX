@@ -2,7 +2,7 @@ waitUntil {sleep 1; !isNil "GRLIB_player_spawned" };
 private ["_msg", "_sector", "_opf", "_default"];
 
 while { true } do {
-	_sector = [(allMapMarkers select {_x select [0,12] == "side_mission" && markerPos _x distance2D player <= GRLIB_capture_size}), player] call BIS_fnc_nearestPosition;
+	_sector = [(allMapMarkers select {_x select [0,12] == "side_mission" && markerPos _x distance2D player <= GRLIB_capture_size}), player] call F_nearestPosition;
 	if (typeName _sector == "STRING") then {
 		_opf = 0;
 		_msg = "";

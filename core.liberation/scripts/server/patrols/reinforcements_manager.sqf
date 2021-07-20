@@ -33,6 +33,7 @@ if ( combat_readiness > 15 ) then {
 					[ markerPos _targetsector ] spawn send_paratroopers;
 				};
 				stats_reinforcements_called = stats_reinforcements_called + 1;
+				publicVariable "stats_reinforcements_called";
 			};
 		};
 	};
