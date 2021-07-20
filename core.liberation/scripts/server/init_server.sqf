@@ -94,7 +94,6 @@ if (abort_loading) exitWith {GRLIB_init_server = false; publicVariable "GRLIB_in
 [] execVM "scripts\server\game\playtime.sqf";
 [] execVM "scripts\server\game\clean.sqf";
 
-
 // Offloading
 [] execVM "scripts\server\offloading\offload_calculation.sqf";
 [] execVM "scripts\server\offloading\offload_manager.sqf";
