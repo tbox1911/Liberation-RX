@@ -16,6 +16,7 @@ blacklisted_weapon = [
 ];
 
 GRLIB_whitelisted_from_arsenal = [
+	"B_Kitbag_Base",
 	"gm_ge_facewear_m65",
 	"gm_gc_army_facewear_schm41m",
 	"gm_gc_army_facewear_dustglasses",

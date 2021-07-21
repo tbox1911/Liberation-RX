@@ -9,19 +9,19 @@ GRLIB_side_enemy = EAST;
 
 opfor_sentry = "gm_gc_bgs_rifleman_mpikm72_80_str";
 opfor_rifleman = "gm_gc_army_rifleman_mpiak74n_80_str";
-opfor_grenadier = "gm_pl_army_grenadier_akm_pallad_80_moro";
+opfor_grenadier = "gm_gc_army_demolition_mpiaks74n_80_str";
 opfor_squad_leader = "gm_gc_army_squadleader_mpiak74n_80_str";
 opfor_team_leader = "gm_gc_army_sf_squadleader_mpikms72_80_str";
 opfor_marksman = "gm_gc_army_sf_marksman_svd_80_str";
 opfor_machinegunner = "gm_gc_army_machinegunner_lmgrpk74_80_str";
 opfor_heavygunner = "gm_gc_army_machinegunner_pk_80_str";
-opfor_medic = "gm_pl_army_medic_akm_80_autumn_moro";
+opfor_medic = "gm_gc_army_medic_mpiak74n_80_str";
 opfor_rpg = "gm_gc_army_antitank_mpiak74n_rpg7_80_str";
-opfor_at = "gm_gc_army_antitank_mpiak74n_fagot_80_str";
+opfor_at = "gm_gc_army_antitank_mpiak74n_rpg7_80_str";
 opfor_aa = "gm_gc_army_antiair_mpiak74n_9k32m_80_str";
 opfor_officer = "gm_gc_army_officer_pm_80_str";
 opfor_sharpshooter = "gm_gc_army_sf_rifleman_pm63_80_str";
-opfor_sniper = "gm_pl_army_sf_marksman_svd_80_moro";
+opfor_sniper = "gm_gc_army_marksman_svd_80_str";
 opfor_spotter = "gm_gc_bgs_rifleman_mpikm72_80_str";
 opfor_engineer = "gm_gc_army_engineer_mpiaks74n_80_str";
 opfor_paratrooper = "gm_gc_army_paratrooper_mpiaks74n_80_str";
@@ -103,11 +103,10 @@ opfor_vehicles = [
 	"gm_gc_army_t55ak",
 	"gm_gc_army_t55am2",
 	"gm_gc_army_t55am2b",
-	"gm_gc_army_zsu234v1",
+	//"gm_gc_army_zsu234v1",
 	"gm_pl_army_pt76b",
 	"gm_pl_army_t55",
-	"gm_pl_army_t55ak",
-	"gm_gc_army_zsu234v1"
+	"gm_pl_army_t55ak"
 ];
 
 opfor_vehicles_low_intensity = [
@@ -133,13 +132,13 @@ opfor_battlegroup_vehicles = [
 	"gm_gc_army_t55ak",
 	"gm_gc_army_t55am2",
 	"gm_gc_army_t55am2b",
-	"gm_gc_army_zsu234v1",
+	//"gm_gc_army_zsu234v1",
 	"gm_pl_army_pt76b",
 	"gm_pl_army_t55",
 	"gm_pl_army_t55ak",
-	"gm_gc_army_zsu234v1",
-	"gm_gc_bgs_ural4320_repair",
-	"gm_gc_bgs_ural4320_reammo"
+	//"gm_gc_army_zsu234v1",
+	"gm_gc_airforce_mi2p",
+	"gm_gc_bgs_ural4320_cargo"
 ];
 
 opfor_battlegroup_vehicles_low_intensity = [
@@ -151,7 +150,8 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"gm_gc_army_pt76b",
 	"gm_gc_army_btr60pa",
 	"gm_gc_army_btr60pb",
-	"gm_gc_bgs_ural4320_repair"
+	"gm_gc_airforce_mi2p",
+	"gm_gc_army_ural4320_cargo"
 ];
 
 opfor_troup_transports = [
@@ -160,13 +160,16 @@ opfor_troup_transports = [
 	"gm_gc_bgs_ural4320_cargo",
 	"gm_gc_airforce_mi2p",
 	"gm_gc_airforce_mi2t",
-	"gm_gc_airforce_l410t",
-	"gm_gc_airforce_l410s_salon"
+	"gm_gc_airforce_l410t"
 ];
 
 opfor_choppers = [
 	"gm_gc_airforce_mi2p",
 	"gm_gc_airforce_mi2t",
+	"gm_gc_airforce_l410t"
+];
+
+opfor_air = [
 	"gm_gc_airforce_mi2urn",
 	"gm_gc_airforce_mi2urn",
 	"gm_gc_airforce_mi2us",
@@ -178,16 +181,10 @@ opfor_choppers = [
 	"gm_pl_airforce_mi2urn"
 ];
 
-opfor_air = [
-	"gm_gc_airforce_l410t",
-	"gm_gc_airforce_l410s_salon"
-];
-
 opfor_statics = [
-	"O_HMG_01_high_F",
-	"O_GMG_01_high_F",
-	"O_static_AA_F",
-	"O_static_AT_F",
+	"gm_gc_army_dshkm_aatripod",
+	"gm_gc_army_fagot_launcher_tripod",
+	"gm_gc_army_spg9_tripod",
 	"O_Mortar_01_F"
 ];
 
