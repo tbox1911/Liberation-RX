@@ -142,12 +142,12 @@
 			<Key ID="STR_MOVEUP">
 					<Original>-- Move up</Original>
 					<French>-- Monter</French>
-					<Chinesesimp>-- 向上移</Chinesesimp>
+					<Chinesesimp>-- 向上移 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_MOVEDOWN">
 					<Original>-- Move down</Original>
 					<French>-- Descendre</French>
-					<Chinesesimp>-- 向下移</Chinesesimp>
+					<Chinesesimp>-- 向下移 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_CANCEL">
 					<Original>-- Cancel</Original>
@@ -251,7 +251,7 @@
 					<German>-- OUTPOST Bereitstellen</German>
 					<Spanish>-- DESPLEGAR OUTPOST</Spanish>
 					<Russian>-- РАЗВЕРНУТЬ OUTPOST</Russian>
-					<Chinesesimp>-- 部署 OUTPOST --</Chinesesimp>
+					<Chinesesimp>-- 部署前哨站 --</Chinesesimp>
 			</Key>			
 			<Key ID="STR_FOB_BUILDING_IMPOSSIBLE">
 					<Original>Can't deploy a new FOB here, you must be at least %1 meters away from every other FOB. Nearest FOB is %2 meters away.</Original>
@@ -299,7 +299,7 @@
 					<German>Outpost Container</German>
 					<Spanish>Contenedor de Outpost</Spanish>
 					<Russian>Outpost контейнер</Russian>
-					<Chinesesimp>Outpost 集装箱</Chinesesimp>
+					<Chinesesimp>前哨站集装箱</Chinesesimp>
 			</Key>
 			<Key ID="STR_FOBTRUCK">
 					<Original>FOB Truck</Original>
@@ -1318,7 +1318,7 @@
 					<German>Zivile Aktivität</German>
 					<Spanish>Actividad civil</Spanish>
 					<Russian>Гражданская активность</Russian>
-					<Chinesesimp>平民活动</Chinesesimp>
+					<Chinesesimp>平民活动管理</Chinesesimp>
 			</Key>
 			<Key ID="STR_PARAMS_CIVILIANS1">
 					<Original>None</Original>
@@ -1360,7 +1360,7 @@
 			<Key ID="STR_PARAM_PATROL">
 					<Original>Enable the Patrol Manager</Original>
 					<French>Activer le Gestionnaire de Patrouilles</French>
-					<Chinesesimp>启用野生动物管理</Chinesesimp>
+					<Chinesesimp>启用巡逻队管理</Chinesesimp>
 			</Key>
 			<Key ID="STR_FRIENDLY_FIRE">
 					<Original>Warning: friendly fire</Original>
@@ -1389,7 +1389,7 @@
 			<Key ID="STR_PARAM_SECTOR_RADIUS">
 					<Original>The size of a sector (radius)</Original>
 					<French>La taille d'un secteur (radius)</French>
-                    <Chinesesimp>一个战区的规模（半径）</Chinesesimp>
+                    			<Chinesesimp>一个战区的规模（半径）</Chinesesimp>
 			</Key>
 			<Key ID="STR_PARAM_PASSIVE_INCOME">
 					<Original>Replace ammo boxes spawns with passive income</Original>
@@ -1453,7 +1453,7 @@
 					<German>Logistik</German>
 					<Spanish>Logística</Spanish>
 					<Russian>Снабжение</Russian>
-					<Chinesesimp>物流</Chinesesimp>
+					<Chinesesimp>后勤</Chinesesimp>
 			</Key>
 			<Key ID="STR_BUILD8">
 					<Original>Infantry squads</Original>
@@ -1509,7 +1509,7 @@
 					<German>-- GRUPPENVERWALTUNG</German>
 					<Spanish>-- GESTIÓN DE ESCUADRA</Spanish>
 					<Russian>-- УПРАВЛЕНИЕ СОСТАВОМ ГРУПП</Russian>
-					<Chinesesimp>-- 班组管理</Chinesesimp>
+					<Chinesesimp>-- 班组管理 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_DEPLOY_ON_MEMBER">
 					<Original>Replace</Original>
@@ -1546,12 +1546,12 @@
 			<Key ID="STR_PROMOTE">
 					<Original>Level UP!</Original>
 					<French>Level UP!</French>
-                    <Chinesesimp>升级！</Chinesesimp>
+					<Chinesesimp>升级！</Chinesesimp>
 			</Key>
 			<Key ID="STR_PROMOTE_TOOLTIP">
 					<Original>Promotes the unit to the next rank in exchange for Ammo. It cannot be higher than the player's rank.</Original>
 					<French>Promeut l'unité au rang suivant en échange d'Ammo. Il ne peut pas être supérieur au rang du joueur.</French>
-                    <Chinesesimp>提升单位到下一个等级以换取弹药。不能高于玩家的等级。</Chinesesimp>
+                    			<Chinesesimp>提升单位到下一个等级以换取弹药。不能高于玩家的等级。</Chinesesimp>
 			</Key>
 			<Key ID="STR_CONFIRM">
 					<Original>Confirm</Original>
@@ -1652,12 +1652,12 @@
 			<Key ID="STR_PROMOTE_OK">
 					<Original>The unit has been successfully promoted.</Original>
 					<French>L'unité a été promue avec succès.</French>
-                    <Chinesesimp>该单位已成功晋升。</Chinesesimp>
+					<Chinesesimp>该单位已成功晋升。</Chinesesimp>
 			</Key>
 			<Key ID="STR_PROMOTE_KO">
 					<Original>The unit cannot be promoted, maximum rank has been reached.</Original>
 					<French>L'unité ne peut pas être promue, le rang maximum a été atteint.</French>
-                    <Chinesesimp>无法晋升该单位，已达到最高等级。</Chinesesimp>
+					<Chinesesimp>无法晋升该单位，已达到最高等级。</Chinesesimp>
 			</Key>
 			<Key ID="STR_PERMISSIONS_TITLE">
 					<Original>PERMISSIONS MANAGEMENT</Original>
@@ -1801,7 +1801,7 @@
 					<German>-- RECHTE</German>
 					<Spanish>-- PERMISOS</Spanish>
 					<Russian>-- РАЗРЕШЕНИЯ</Russian>
-					<Chinesesimp>-- 权限</Chinesesimp>
+					<Chinesesimp>-- 权限 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_SAVE_CHANGES">
 					<Original>Save Changes</Original>
@@ -2248,7 +2248,7 @@
 					<German>-- GEHEIMDIENSTINFORMATIONEN AUFNEHMEN</German>
 					<Spanish>-- COGER INTELIGENCIA</Spanish>
 					<Russian>-- ПОЛУЧИТЬ РАЗВЕДДАННЫЕ</Russian>
-					<Chinesesimp>-- 获取情报</Chinesesimp>
+					<Chinesesimp>-- 获取情报 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_SECONDARY_OBJECTIVES">
 					<Original>-- SECONDARY OBJECTIVES</Original>
@@ -2256,7 +2256,7 @@
 					<German>-- SEKUNDÄRE ZIELE</German>
 					<Spanish>-- OBJETIVOS SECUNDARIOS</Spanish>
 					<Russian>-- ДОПОЛНИТЕЛЬНЫЕ ЗАДАЧИ</Russian>
-					<Chinesesimp>-- 次要目标</Chinesesimp>
+					<Chinesesimp>-- 次要目标 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_AMMO_BOUNTIES">
 					<Original>Ammunition bounties</Original>
@@ -2363,7 +2363,7 @@
 					<German>-- TUTORIAL</German>
 					<Spanish>-- TUTORIAL</Spanish>
 					<Russian>-- РУКОВОДСТВО</Russian>
-					<Chinesesimp>-- 教程</Chinesesimp>
+					<Chinesesimp>-- 教程 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_TUTO_TITLE">
 					<Original>TUTORIAL</Original>
@@ -2659,7 +2659,7 @@
 			<Key ID="STR_TUTO_TITLE6">
 					<Original>6. Game Icons </Original>
 					<French>6. Icônes du Jeu</French>
-                    <Chinesesimp>6. 游戏图标 </Chinesesimp>
+                   			 <Chinesesimp>6. 游戏图标 </Chinesesimp>
 			</Key>
 			<Key ID="STR_TUTO_TEXT6">
 					<Original>&lt;br/&gt;
@@ -3401,12 +3401,12 @@
 			<Key ID="STR_RANK_LVL2">
 				<Original>You have Full Acces to Infantry.&lt;br/&gt;You can use Tanks.&lt;br/&gt;You have an extra AI.&lt;br/&gt;You have access to the Virtual Garage.</Original>
 				<French>Vous avez un acces complet à l'Infanterie.&lt;br/&gt;Vous pouvez utiliser les Tanks.&lt;br/&gt;Vous avez une unitée en plus.&lt;br/&gt;Vous avez acces au Garage Virtuel.</French>
-				<Chinesesimp>您可以完全控制步兵。&lt;br/&gt;您可以使用坦克。&lt;br/&gt;您还可以招募一个额外的AI。</Chinesesimp>
+				<Chinesesimp>您可以完全控制步兵。&lt;br/&gt;您可以使用坦克。&lt;br/&gt;您还可以招募一个额外的AI。&lt;br/&gt;你可以使用虚拟车库。</Chinesesimp>
 			</Key>
 			<Key ID="STR_RANK_LVL3">
 				<Original>You have Full Acces to Static Weapons&lt;br/&gt;You can use Aircraft.&lt;br/&gt;You can build Outpost.&lt;br/&gt;You have an extra AI.</Original>
 				<French>Vous avez un acces complet aux Défense Statique.&lt;br/&gt;Vous pouvez utiliser les Avions.&lt;br/&gt;Vous pouvez construire des Outpost.&lt;br/&gt;Vous avez une unitée en plus.</French>
-				<Chinesesimp>您可以完全使用静态武器&lt;br/&gt;您可以使用飞机。&lt;br/&gt;您还可以招募一个额外的AI。</Chinesesimp>
+				<Chinesesimp>您可以完全使用静态武器&lt;br/&gt;您可以使用飞机。&lt;br/&gt;你可以建造前哨站。&lt;br/&gt;您还可以招募一个额外的AI。</Chinesesimp>
 			</Key>
 			<Key ID="STR_RANK_LVL4">
 				<Original>You can build Tank unit&lt;br/&gt;You have Full Acces to Building and Logistic&lt;br/&gt;You can Recycle unit.&lt;br/&gt;You have an extra AI.</Original>
@@ -3448,10 +3448,12 @@
 			<Key ID="STR_FILTER_ARSENAL">
 				<Original>Enable Virtual Arsenal MOD filter</Original>
 				<French>Activer le filtres du MOD Arsenal Virtuel</French>
+				<Chinesesimp>启用虚拟武器库MOD过滤器</Chinesesimp>
 			</Key>
 			<Key ID="STR_VEH_LOCK">
 				<Original>Enable Vehicles Ownership</Original>
 				<French>Activer la Propriété des Véhicules </French>
+				<Chinesesimp>启用车辆所有权</Chinesesimp>
 			</Key>
 			<Key ID="STR_FORCE_LOADOUT">
 				<Original>Force default equipment</Original>
@@ -3626,12 +3628,12 @@
 		<Key ID="STR_TAXI_ACTION1">
 			<Original>-- TAXI Destination</Original>
 			<French>-- TAXI Destination</French>
-			<Chinesesimp>-- 目的地</Chinesesimp>
+			<Chinesesimp>-- 目的地 --</Chinesesimp>
 		</Key>
 		<Key ID="STR_TAXI_ACTION2">
 			<Original>-- TAXI Cancel</Original>
 			<French>-- TAXI Annulation</French>
-			<Chinesesimp>-- 取消</Chinesesimp>
+			<Chinesesimp>-- 取消 --</Chinesesimp>
 		</Key>
 		<Key ID="STR_TAXI_ONLY_ONE">
 			<Original>Sorry, only one Taxi at time.</Original>
