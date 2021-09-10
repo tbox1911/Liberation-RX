@@ -198,7 +198,7 @@ class liberation_admin {
   class admin_cb_1607: RscCheckbox
   {
     idc = 1607;
-    text = $STR_ADMIN_GODMODE; //--- ToDo: Localize;
+    text = $STR_ADMIN_GODMODE;
     x = 0.4125 * safezoneW + safezoneX;
     y = 0.68 * safezoneH + safezoneY;
     w = 0.0125 * safezoneW;
@@ -212,7 +212,7 @@ class liberation_admin {
   class admin_cb_text: GREUH_RscStructuredText
   {
     idc = 1608;
-    text = "<t size='0.7'>GodMode :</t>"; //--- ToDo: Localize;
+    text = "<t size='0.7'>GodMode :</t>";
     x = 0.3625 * safezoneW + safezoneX;
     y = 0.68 * safezoneH + safezoneY;
     w = 0.05 * safezoneW;

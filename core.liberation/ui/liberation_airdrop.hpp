@@ -64,7 +64,7 @@ class liberation_airdrop {
   {
     idc = 1607;
     action = "air_type=8;do_action=1";
-    text = $STR_AIRDROP_TAXI; //--- ToDo: Localize;
+    text = $STR_AIRDROP_TAXI;
     x = 0.206094 * safezoneW + safezoneX;
     y = 0.2186 * safezoneH + safezoneY;
     w = 0.061875 * safezoneW;
@@ -72,7 +72,7 @@ class liberation_airdrop {
   };
   class LabelTaxi: GREUH_RscStructuredText
   {
-    text = $STR_CALL_HELITAXI; //--- ToDo: Localize;
+    text = $STR_CALL_HELITAXI;
     x = 0.283437 * safezoneW + safezoneX;
     y = 0.2186 * safezoneH + safezoneY;
     w = 0.149531 * safezoneW;
@@ -83,7 +83,7 @@ class liberation_airdrop {
   {
     idc = 1600;
     action = "air_type=1;do_action=1";
-    text = $STR_AIRDROP_LIGHT; //--- ToDo: Localize;
+    text = $STR_AIRDROP_LIGHT;
     x = 0.206094 * safezoneW + safezoneX;
     y = 0.2786 * safezoneH + safezoneY;
     w = 0.061875 * safezoneW;
@@ -91,7 +91,7 @@ class liberation_airdrop {
   };
   class LabelLight: GREUH_RscStructuredText
   {
-    text = $STR_QUAD_OFFLOAD; //--- ToDo: Localize;
+    text = $STR_QUAD_OFFLOAD;
     x = 0.283437 * safezoneW + safezoneX;
     y = 0.2786 * safezoneH + safezoneY;
     w = 0.149531 * safezoneW;
@@ -102,7 +102,7 @@ class liberation_airdrop {
   {
     idc = 1601;
     action = "air_type=2;do_action=1";
-    text = $STR_AIRDROP_LIGHTPLUS; //--- ToDo: Localize;
+    text = $STR_AIRDROP_LIGHTPLUS;
     x = 0.206094 * safezoneW + safezoneX;
     y = 0.3386 * safezoneH + safezoneY;
     w = 0.061875 * safezoneW;
@@ -121,7 +121,7 @@ class liberation_airdrop {
   {
     idc = 1602;
     action = "air_type=3;do_action=1";
-    text = $STR_AIRDROP_ARMORED; //--- ToDo: Localize;
+    text = $STR_AIRDROP_ARMORED;
     x = 0.206094 * safezoneW + safezoneX;
     y = 0.3986 * safezoneH + safezoneY;
     w = 0.061875 * safezoneW;
@@ -140,7 +140,7 @@ class liberation_airdrop {
   {
     idc = 1603;
     action = "air_type=4;do_action=1";
-    text = $STR_AIRDROP_TRUCK; //--- ToDo: Localize;
+    text = $STR_AIRDROP_TRUCK;
     x = 0.206094 * safezoneW + safezoneX;
     y = 0.4586 * safezoneH + safezoneY;
     w = 0.061875 * safezoneW;
@@ -159,7 +159,7 @@ class liberation_airdrop {
   {
     idc = 1604;
     action = "air_type=5;do_action=1";
-    text = $STR_AIRDROP_APC; //--- ToDo: Localize;
+    text = $STR_AIRDROP_APC;
     x = 0.206094 * safezoneW + safezoneX;
     y = 0.5186 * safezoneH + safezoneY;
     w = 0.061875 * safezoneW;
@@ -179,7 +179,7 @@ class liberation_airdrop {
   {
     idc = 1606;
     action = "air_type=6;do_action=1";
-    text = $STR_AIRDROP_BOAT; //--- ToDo: Localize;
+    text = $STR_AIRDROP_BOAT;
     x = 0.206094 * safezoneW + safezoneX;
     y = 0.5786 * safezoneH + safezoneY;
     w = 0.061875 * safezoneW;
@@ -198,7 +198,7 @@ class liberation_airdrop {
   {
     idc = 1605;
     action = "air_type=7;do_action=1";
-    text = $STR_AIRDROP_AIRSUPERIORITY; //--- ToDo: Localize;
+    text = $STR_AIRDROP_AIRSUPERIORITY;
     x = 0.206094 * safezoneW + safezoneX;
     y = 0.6386 * safezoneH + safezoneY;
     w = 0.061875 * safezoneW;
