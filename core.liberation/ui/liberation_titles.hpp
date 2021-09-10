@@ -6,8 +6,7 @@ class RscTitles
       duration = 4;
       idd = -1;
       movingEnable = false;
-      controls[]=
-      {
+      controls[] = {
          GenericLabelShadow, GenericLabel2
       };
 	  class GenericLabel2 {
@@ -36,8 +35,7 @@ class RscTitles
       duration = 4;
       idd = -1;
       movingEnable = false;
-      controls[]=
-      {
+      controls[] = {
          GenericLabelShadow, GenericLabel2
       };
 	  class GenericLabel2 {
@@ -52,7 +50,7 @@ class RscTitles
 		w = 0.4 * safezoneW;
 		y = 0.65 * safezoneH + safezoneY;
 		h = 0.1 * safezoneH;
-		text = "now, Revived and eXtended to the best,";
+		text = "now, Revived and eXtended to the best...";
 		shadow = 1;
 	  };
 	  class GenericLabelShadow : GenericLabel2{
@@ -65,8 +63,7 @@ class RscTitles
       duration = 4;
       idd = -1;
       movingEnable = false;
-      controls[]=
-      {
+      controls[] = {
          GenericLabelShadow, GenericLabel2
       };
 	  class GenericLabel2 {
@@ -81,7 +78,7 @@ class RscTitles
 		w = 0.4 * safezoneW;
 		y = 0.65 * safezoneH + safezoneY;
 		h = 0.1 * safezoneH;
-		text = "[AKH] is proud to presents:";
+		text = "[AKH pSiKO] is proud to presents:";
 		shadow = 1;
 	  };
 	  class GenericLabelShadow : GenericLabel2{
@@ -95,8 +92,7 @@ class RscTitles
       duration = 7;
       idd = -1;
       movingEnable = false;
-      controls[]=
-      {
+      controls[] = {
          VersionLabelShadow, Splash, VersionLabel
       };
 	  	class Splash {
@@ -141,7 +137,7 @@ class RscTitles
       idd = 6666;
       movingEnable = true;
 	  onLoad = "";
-      controls[]={};
+      controls[] = {};
    };
 
    class fasttravel
@@ -151,8 +147,7 @@ class RscTitles
       idd = -1;
       movingEnable = true;
 
-      controls[]=
-      {
+      controls[] = {
          OuterBackground,GenericLabel111
       };
 	  class OuterBackground {
@@ -188,7 +183,7 @@ class RscTitles
       idd = 6666;
       movingEnable = true;
 	  onLoad = "uiNamespace setVariable ['GUI_OVERLAY', _this select 0];";
-    controls[]= { BGPicture,LabelScore,LabelAmmo,LabelManpower,LabelFuel,LabelCap,PictureAmmoShadow,PictureScoreShadow,PictureManpowerShadow,
+	  controls[] = { BGPicture,LabelScore,LabelAmmo,LabelManpower,LabelFuel,LabelCap,PictureAmmoShadow,PictureScoreShadow,PictureManpowerShadow,
 		BGPictureActiveSectors,PictureFuelShadow,PictureCapShadow,PictureScore,PictureAmmo,PictureManpower,PictureFuel,PictureCap,PictureCombatReadinessShadow,
 		PictureCombatReadiness,PictureIntelShadow,PictureIntel,LabelIntel,BGPictureSector,CaptureFrame_OPFOR,CaptureFrame_BLUFOR,CaptureFrame,LabelPoint,
 	  LabelCombatReadiness,CentralShadow,CentralLabel,ActiveSectors,AlertBGPicture,AlertLabel,AlertTimer };

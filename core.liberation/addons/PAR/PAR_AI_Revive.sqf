@@ -14,10 +14,12 @@ Instructions:
 
 	ExecVM from initclient.sqf or init.sqf in your mission directory.
 
-Based on: AI REVIVE HEAL SCRIPT SP/MP by Pierre MGI
-
+Based on: 
+  AI REVIVE HEAL SCRIPT SP/MP by Pierre MGI
   at : https://forums.bohemia.net/forums/topic/207522-ai-revive-heal-script-spmp/
 
+  Farooq's Revive by farooqaaa
+  at : https://forums.bohemia.net/forums/topic/146926-farooqs-revive/
 _________________________________________________________________________*/
 if (isDedicated) exitWith {};
 

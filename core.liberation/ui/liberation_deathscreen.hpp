@@ -3,8 +3,7 @@ class deathscreen
 
   idd = 5651;
   movingEnable = false;
-  controls[]=
-  {
+  controls[] = {
 	"OuterBackground", "Skull", "GREUH_WoundedLabel"
   };
   class OuterBackground {
