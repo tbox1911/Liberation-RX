@@ -33,7 +33,7 @@ if ( _classname isKindOf "Air" ) then {
 } else {
 	_spawnpos set [2, 0.5];  //ATL
 	if (surfaceIsWater _spawnpos && !(_classname isKindOf "Ship")) then {
-		_classname = selectRandom opfor_boat;
+		_classname = selectRandom boats_east;
 	};
 	if (surfaceIsWater _spawnpos) then {
 		_seadepth = abs (getTerrainHeightASL _spawnpos);

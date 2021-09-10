@@ -76,7 +76,7 @@ militia_vehicles = [
 	"rhs_btr80_msv"
 ];
 
-opfor_boat = [
+boats_east = [
 	"O_Boat_Armed_01_hmg_F",
 	"O_T_Boat_Armed_01_hmg_F"
 ];

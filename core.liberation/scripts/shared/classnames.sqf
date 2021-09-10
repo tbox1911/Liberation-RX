@@ -129,7 +129,7 @@ boats_names = [
 	"B_Boat_Transport_01_F",
 	"C_Boat_Transport_02_F",
 	"B_Boat_Armed_01_minigun_F"
-] + opfor_boat + boats;
+] + boats_east + boats_west;
 
 // *** RESISTANCE ***
 resistance_squad = [
@@ -322,7 +322,7 @@ opfor_squad_8_airkillers = [
 	opfor_aa
 ];
 all_resistance_troops = [] + militia_squad;
-all_hostile_classnames = (land_vehicles_classnames + opfor_air + opfor_choppers + opfor_troup_transports + opfor_vehicles_low_intensity + opfor_statics + opfor_boat);
+all_hostile_classnames = (land_vehicles_classnames + opfor_air + opfor_choppers + opfor_troup_transports + opfor_vehicles_low_intensity + opfor_statics + boats_east);
 { land_vehicles_classnames pushback (_x select 0); } foreach (heavy_vehicles + light_vehicles);
 air_vehicles_classnames = [] + opfor_choppers;
 { air_vehicles_classnames pushback (_x select 0); } foreach air_vehicles;
