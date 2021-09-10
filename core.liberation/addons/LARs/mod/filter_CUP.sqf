@@ -19,19 +19,7 @@ if ( GRLIB_CUPW_enabled ) then {
 		"Rangefinder"
 	];
 
-	// Weapons
-	(
-		"
-		(getText (_x >> 'DLC') == 'CUP_Weapons' || getText (_x >> 'DLC') == 'CUP_Units') &&
-		getNumber (_x >> 'scope') > 1 &&
-		toLower (configName _x) find '_coyote' < 0 &&
-		tolower (configName _x) find '_od' < 0 &&
-		!((configName _x) in GRLIB_CUPW_Blacklist)
-		"
-		configClasses (configfile >> "CfgWeapons" )
-	) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
-
-	// Equipements (uniforme, etc..)
+	// Weapons + Equipements (uniforme, etc..)
 	(
 		"
 		(getText (_x >> 'DLC') == 'CUP_Weapons' || getText (_x >> 'DLC') == 'CUP_Units') &&

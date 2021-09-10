@@ -118,8 +118,9 @@ GRLIB_mod_enabled = false;
 
 // Arsenal MOD filters
 if ( GRLIB_filter_arsenal ) then {
-	if ( GRLIB_OPTRE_enabled ) then { GRLIB_MOD_signature = "OPTRE_"; GRLIB_mod_enabled = true };
+	if ( GRLIB_OPTRE_enabled ) then { GRLIB_MOD_signature = "optre_"; GRLIB_mod_enabled = true };
+	//if ( GRLIB_EJW_enabled ) then { GRLIB_MOD_signature = "ej_"; GRLIB_mod_enabled = true };
 	if ( GRLIB_GM_enabled ) then { GRLIB_MOD_signature = "gm_"; GRLIB_mod_enabled = true };
-	if ( GRLIB_CUPW_enabled ) then { GRLIB_MOD_signature = "CUP_"; GRLIB_mod_enabled = true };
+	if ( GRLIB_CUPW_enabled ) then { GRLIB_MOD_signature = "cup_"; GRLIB_mod_enabled = true };
 	if ( GRLIB_RHS_enabled ) then { GRLIB_MOD_signature = "rhs"; GRLIB_mod_enabled = true };
 };
