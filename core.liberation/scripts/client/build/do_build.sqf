@@ -314,6 +314,11 @@ while { true } do {
 				_vehicle = _classname createVehicle _truepos;
 				_vehicle allowDamage false;
 				_vehicle setdir _vehdir;
+				if ( _classname isKindOf "Ship" && surfaceIsWater _truepos ) then {
+					_vehicle setposASL _truepos;
+				} else {
+					_vehicle setposATL _truepos;
+				};
 
 				// Ammo Box clean inventory
 				if (!(_classname in  GRLIB_Ammobox_keep)) then {
