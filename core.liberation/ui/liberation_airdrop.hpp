@@ -31,7 +31,7 @@ class liberation_airdrop {
     {
       idc = 1610;
       action = "closeDialog 0";
-      text = "Cancel";
+      text = $STR_AIRDROP_CANCEL;
       x = 0.269271 * safezoneW + safezoneX;
       y = 0.71 * safezoneH + safezoneY;
       w = 0.09 * safezoneW;
@@ -64,7 +64,7 @@ class liberation_airdrop {
   {
     idc = 1607;
     action = "air_type=8;do_action=1";
-    text = "Taxi"; //--- ToDo: Localize;
+    text = $STR_AIRDROP_TAXI; //--- ToDo: Localize;
     x = 0.206094 * safezoneW + safezoneX;
     y = 0.2186 * safezoneH + safezoneY;
     w = 0.061875 * safezoneW;
@@ -72,7 +72,7 @@ class liberation_airdrop {
   };
   class LabelTaxi: GREUH_RscStructuredText
   {
-    text = "<t size='0.8'>Call Heli Taxi.<br/>Cost: 100 Ammo</t>"; //--- ToDo: Localize;
+    text = $STR_CALL_HELITAXI; //--- ToDo: Localize;
     x = 0.283437 * safezoneW + safezoneX;
     y = 0.2186 * safezoneH + safezoneY;
     w = 0.149531 * safezoneW;
@@ -83,7 +83,7 @@ class liberation_airdrop {
   {
     idc = 1600;
     action = "air_type=1;do_action=1";
-    text = "Light"; //--- ToDo: Localize;
+    text = $STR_AIRDROP_LIGHT; //--- ToDo: Localize;
     x = 0.206094 * safezoneW + safezoneX;
     y = 0.2786 * safezoneH + safezoneY;
     w = 0.061875 * safezoneW;
@@ -91,7 +91,7 @@ class liberation_airdrop {
   };
   class LabelLight: GREUH_RscStructuredText
   {
-    text = "<t size='0.8'>Quad, Unarmed Offroad.<br/>Cost:  50 Ammo</t>"; //--- ToDo: Localize;
+    text = $STR_QUAD_OFFLOAD; //--- ToDo: Localize;
     x = 0.283437 * safezoneW + safezoneX;
     y = 0.2786 * safezoneH + safezoneY;
     w = 0.149531 * safezoneW;
@@ -102,7 +102,7 @@ class liberation_airdrop {
   {
     idc = 1601;
     action = "air_type=2;do_action=1";
-    text = "Light+"; //--- ToDo: Localize;
+    text = $STR_AIRDROP_LIGHTPLUS; //--- ToDo: Localize;
     x = 0.206094 * safezoneW + safezoneX;
     y = 0.3386 * safezoneH + safezoneY;
     w = 0.061875 * safezoneW;
@@ -110,7 +110,7 @@ class liberation_airdrop {
   };
   class LabelLight2: GREUH_RscStructuredText
   {
-    text = "<t size='0.8'>Armed Offroad.<br/>Cost: 100 Ammo</t>";
+    text = $STR_ARMED_OFFLOAD;
     x = 0.283437 * safezoneW + safezoneX;
     y = 0.3386 * safezoneH + safezoneY;
     w = 0.149531 * safezoneW;
@@ -121,7 +121,7 @@ class liberation_airdrop {
   {
     idc = 1602;
     action = "air_type=3;do_action=1";
-    text = "Armed"; //--- ToDo: Localize;
+    text = $STR_AIRDROP_ARMORED; //--- ToDo: Localize;
     x = 0.206094 * safezoneW + safezoneX;
     y = 0.3986 * safezoneH + safezoneY;
     w = 0.061875 * safezoneW;
@@ -129,7 +129,7 @@ class liberation_airdrop {
   };
   class LabelMed: GREUH_RscStructuredText
   {
-    text = "<t size='0.8'>Armed MRAPs.<br/>Cost: 200 Ammo</t>";
+    text = $STR_MRAP;
     x = 0.283437 * safezoneW + safezoneX;
     y = 0.3986 * safezoneH + safezoneY;
     w = 0.149531 * safezoneW;
@@ -140,7 +140,7 @@ class liberation_airdrop {
   {
     idc = 1603;
     action = "air_type=4;do_action=1";
-    text = "Truck"; //--- ToDo: Localize;
+    text = $STR_AIRDROP_TRUCK; //--- ToDo: Localize;
     x = 0.206094 * safezoneW + safezoneX;
     y = 0.4586 * safezoneH + safezoneY;
     w = 0.061875 * safezoneW;
@@ -148,7 +148,7 @@ class liberation_airdrop {
   };
   class LabelSup: GREUH_RscStructuredText
   {
-    text = "<t size='0.8'>Large Trucks.<br/>Cost: 300 Ammo</t>";
+    text = $STR_TRUCK;
     x = 0.283437 * safezoneW + safezoneX;
     y = 0.4586 * safezoneH + safezoneY;
     w = 0.149531 * safezoneW;
@@ -159,7 +159,7 @@ class liberation_airdrop {
   {
     idc = 1604;
     action = "air_type=5;do_action=1";
-    text = "Heavy"; //--- ToDo: Localize;
+    text = $STR_AIRDROP_APC; //--- ToDo: Localize;
     x = 0.206094 * safezoneW + safezoneX;
     y = 0.5186 * safezoneH + safezoneY;
     w = 0.061875 * safezoneW;
@@ -167,7 +167,7 @@ class liberation_airdrop {
   };
   class LabelHeavy: GREUH_RscStructuredText
   {
-    text = "<t size='0.8'>Armored APCs.<br/>Cost: 750 Ammo</t>";
+    text = $STR_APC;
     x = 0.283437 * safezoneW + safezoneX;
     y = 0.5186 * safezoneH + safezoneY;
     w = 0.149531 * safezoneW;
@@ -179,7 +179,7 @@ class liberation_airdrop {
   {
     idc = 1606;
     action = "air_type=6;do_action=1";
-    text = "Boat"; //--- ToDo: Localize;
+    text = $STR_AIRDROP_BOAT; //--- ToDo: Localize;
     x = 0.206094 * safezoneW + safezoneX;
     y = 0.5786 * safezoneH + safezoneY;
     w = 0.061875 * safezoneW;
@@ -187,7 +187,7 @@ class liberation_airdrop {
   };
   class LabelBoat: GREUH_RscStructuredText
   {
-    text = "<t size='0.8'>Transport Boats.<br/>Cost: 250 Ammo</t>";
+    text = $STR_BOAT;
     x = 0.283437 * safezoneW + safezoneX;
     y = 0.5786 * safezoneH + safezoneY;
     w = 0.149531 * safezoneW;
@@ -198,7 +198,7 @@ class liberation_airdrop {
   {
     idc = 1605;
     action = "air_type=7;do_action=1";
-    text = "Air Support"; //--- ToDo: Localize;
+    text = $STR_AIRDROP_AIRSUPERIORITY; //--- ToDo: Localize;
     x = 0.206094 * safezoneW + safezoneX;
     y = 0.6386 * safezoneH + safezoneY;
     w = 0.061875 * safezoneW;
@@ -206,7 +206,7 @@ class liberation_airdrop {
   };
   class LabelAir: GREUH_RscStructuredText
   {
-    text = "<t size='0.8'>Air Suppremacy.<br/>Cost: 2000 Ammo</t>";
+    text = $STR_AIRSUPERIORITY;
     x = 0.283437 * safezoneW + safezoneX;
     y = 0.6386 * safezoneH + safezoneY;
     w = 0.149531 * safezoneW;
@@ -239,7 +239,7 @@ class liberation_airdrop {
   };
   class Header: StdHeader
   {
-    text = "-- Air Support Menu --";
+    text = $STR_AIRDROP_MENU;
     x = 0.1985 * safezoneW + safezoneX;
     y = 0.1444 * safezoneH + safezoneY;
     w = 0.2375 * safezoneW;

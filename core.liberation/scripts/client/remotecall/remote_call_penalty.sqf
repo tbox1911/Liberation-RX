@@ -4,9 +4,7 @@ if (score player < GRLIB_perm_tank || (player distance2D _location < GRLIB_secto
 
 _fobname = [ _location ] call F_getFobName;
 
-private _msg = format ["Warning <t color='#00008f'>%1</t> !<br/><br/>
-You failed to defend FOB: <t color='#0000F0'>%2</t>...<br/><br/>
-The HQ order a score penalty of: <t color='#A00000'>%3</t>.<br/>", name player, _fobname, _penalty];
+private _msg = format [localize "STR_REMOTE_PENALTY", name player, _fobname, _penalty];
 [_msg, 0, 0, 10, 0, 0, 90] spawn BIS_fnc_dynamicText;
 
 playSound "taskfailed";

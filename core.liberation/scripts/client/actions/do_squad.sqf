@@ -39,8 +39,8 @@ if (!isNil "_my_squad") then {
 		};
 
 		if (_my_squad_order == "del") then {
-			_msg = format ["<t align='center'>Dismiss the Squad<br/>Are you sure ?</t>"];
-			_result = [_msg, "Warning !", true, true] call BIS_fnc_guiMessage;
+			_msg = format [localize "STR_DO_SQUAD"];
+			_result = [_msg, localize "STR_WARNING", true, true] call BIS_fnc_guiMessage;
 			if (_result) then {
 				{deleteVehicle _x} forEach units _my_squad;
 			};

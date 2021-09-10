@@ -28,7 +28,7 @@ class RPT_vehicle_repaint {
 
 	class controls {
 		class Header: StdHeader {
-			text = "-- Vehicle Paint Shop --";
+			text = $STR_PAINT_SHOP;
 			x = 0.1985 * safezoneW + safezoneX;
 			y = 0.1444 * safezoneH + safezoneY;
 			w = 0.2375 * safezoneW;
@@ -103,7 +103,7 @@ class RPT_vehicle_repaint {
 		};
 		class PaintButton : StdButton {
 			idc = -1;
-			text = "Paint";
+			text = $STR_SHOP_PAINT;
 			onButtonClick = "paint_veh = 1";
 			x = 0.3300 * safezoneW + safezoneX;
 			y = 0.71 * safezoneH + safezoneY;

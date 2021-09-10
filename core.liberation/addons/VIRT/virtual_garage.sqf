@@ -82,17 +82,17 @@ while { dialog && alive player } do {
 				private _timer = _vehicle getVariable ["GREUH_rearm_timer", 0];
 				private _msg = format [ "%1\nRearming Cooldown (%2 sec)\nPlease Wait...", _vehicle_name, round (_timer - time) ];
 
-				if (count ([GRLIB_garage, {(getPlayerUID player == _x select 3)}] call BIS_fnc_conditionalSelect) >= _max_vehicle) exitWith { hintSilent (format ["Garage is Full !!\nMax %1 vehicles.", _max_vehicle]) };
+				if (count ([GRLIB_garage, {(getPlayerUID player == _x select 3)}] call BIS_fnc_conditionalSelect) >= _max_vehicle) exitWith { hintSilent (format [localize "STR_FULL_GARAGE", _max_vehicle]) };
 				if (damage _vehicle != 0) exitWith { hintSilent "Damaged Vehicles cannot be Parked !" };
-				if (_vehicle getVariable ["GRLIB_ammo_truck_load", 0] > 0) exitWith { hintSilent "Loaded Vehicles cannot be Parked !" };
-				if (count (crew _vehicle) > 0 && !(typeOf _vehicle in uavs)) exitWith { hintSilent "Vehicles with crew cannot be Parked !" };
+				if (_vehicle getVariable ["GRLIB_ammo_truck_load", 0] > 0) exitWith { hintSilent localize "STR_CANT_PARK" };
+				if (count (crew _vehicle) > 0 && !(typeOf _vehicle in uavs)) exitWith { hintSilent localize "STR_CANT_PARKUAV" };
 				if (_timer >= time) exitWith { hintSilent _msg };
 
-				private _result = ["<t align='center'>Only Weapons and Cargo is Saved !!<br/>Are you sure ?</t>", "Warning !", true, true] call BIS_fnc_guiMessage;
+				private _result = [localize "STR_ONLY_WEAPONS",localize "STR_WARNING", true, true] call BIS_fnc_guiMessage;
 				if (_result) then {
 					ctrlEnable [ 120, false ];
 					[player, _vehicle, load_veh] remoteExec ["vehicle_garage_remote_call", 2];
-					hintSilent (format ["Vehicle %1\nLoaded in Garage.", _vehicle_name]);
+					hintSilent (format [localize "STR_LOADED", _vehicle_name]);
 				};
 			};
 

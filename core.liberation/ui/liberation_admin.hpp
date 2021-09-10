@@ -18,7 +18,7 @@ class liberation_admin {
 	  "Item01Button",
 	  "Item02Button",
     "Item03Button",
-    "Item04Button",    
+    "Item04Button",
 	  "CancelButton",
     "adminInfo01",
     "admin_cb_1607",
@@ -32,7 +32,7 @@ class liberation_admin {
   {
     idc = 1600;
     action = "Arsenal_typename createVehicle (player getRelPos[3, 0]);hint 'Arsenal spawned !'";
-    text = "Spawn Arsenal";
+    text = $STR_ADMIN_ARSENAL;
     x = 0.2275 * safezoneW + safezoneX;
     y = 0.208 * safezoneH + safezoneY;
     w = 0.0875 * safezoneW;
@@ -43,7 +43,7 @@ class liberation_admin {
     idc = 1601;
     action = "[ammobox_b_typename, player getRelPos[3, 0], false] remoteExec ['boxSetup', 2]; hint 'AmmoBox spawned !'";
 
-    text = "Spawn AmmoBox";
+    text = $STR_ADMIN_AMMOBOX;
     x = 0.2275 * safezoneW + safezoneX;
     y = 0.26 * safezoneH + safezoneY;
     w = 0.0875 * safezoneW;
@@ -54,7 +54,7 @@ class liberation_admin {
     idc = 1601;
     action = "do_spawn=1";
 
-    text = "Build Vehicle";
+    text = $STR_ADMIN_BUILD;
     x = 0.2275 * safezoneW + safezoneX;
     y = 0.312 * safezoneH + safezoneY;
     w = 0.0875 * safezoneW;
@@ -108,7 +108,7 @@ class liberation_admin {
   {
     idc = 1602;
     action = "do_unban=1";
-    text = "UnBAN player";
+    text = $STR_ADMIN_UNBAN;
     x = 0.2275 * safezoneW + safezoneX;
     y = 0.364 * safezoneH + safezoneY;
     w = 0.0875 * safezoneW;
@@ -147,7 +147,7 @@ class liberation_admin {
     y = 0.416 * safezoneH + safezoneY;
     w = 0.0290 * safezoneW;
     h = 0.04 * safezoneH;
-  };  
+  };
   class PlayerList: StdCombo {
     idc = 1612;
     x = 0.3275 * safezoneW + safezoneX;
@@ -159,7 +159,7 @@ class liberation_admin {
   {
     idc = 1604;
     action = "10 remoteExec ['SkipTime', 2];hint 'Time Forward...'";
-    text = "Skip Time +10H";
+    text = $STR_ADMIN_SKIPTIME;
     x = 0.2275 * safezoneW + safezoneX;
     y = 0.520 * safezoneH + safezoneY;
     w = 0.0875 * safezoneW;
@@ -169,7 +169,7 @@ class liberation_admin {
   {
     idc = 1609;
     action = "_x = cursorobject;_x setvariable ['R3F_LOG_disabled', false, true];_x setvariable ['GRLIB_vehicle_owner', '', true];hint format ['%1 Unlocked.',typeOf _x]";
-    text = "Unlock Vehicle";
+    text = $STR_ADMIN_UNLOCK;
     x = 0.2275 * safezoneW + safezoneX;
     y = 0.572 * safezoneH + safezoneY;
     w = 0.0875 * safezoneW;
@@ -179,7 +179,7 @@ class liberation_admin {
   {
     idc = 1610;
     action = "deleteVehicle (cursorObject)";
-    text = "Delete Object";
+    text = $STR_ADMIN_DELETEOBJ;
     x = 0.2275 * safezoneW + safezoneX;
     y = 0.624 * safezoneH + safezoneY;
     w = 0.0875 * safezoneW;
@@ -198,7 +198,7 @@ class liberation_admin {
   class admin_cb_1607: RscCheckbox
   {
     idc = 1607;
-    text = "GodMode"; //--- ToDo: Localize;
+    text = $STR_ADMIN_GODMODE; //--- ToDo: Localize;
     x = 0.4125 * safezoneW + safezoneX;
     y = 0.68 * safezoneH + safezoneY;
     w = 0.0125 * safezoneW;
@@ -254,7 +254,7 @@ class liberation_admin {
   };
   class Header: StdHeader
   {
-    text = "-- ADMIN MENU --";
+    text = $STR_ADMIN_MENUMENU;
     x = 0.1985 * safezoneW + safezoneX;
     y = 0.1444 * safezoneH + safezoneY;
     w = 0.2375 * safezoneW;

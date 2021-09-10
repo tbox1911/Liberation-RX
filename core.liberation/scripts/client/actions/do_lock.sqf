@@ -7,4 +7,4 @@ _vehicle setVariable ["R3F_LOG_disabled", true, true];
 _vehicle setVariable ["GRLIB_counter_TTL", nil, true];
 
 _text = getText (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "displayName");
-hintSilent format ["%1 is Locked !", _text];
+hintSilent format [localize "STR_DO_LOCK", _text];
