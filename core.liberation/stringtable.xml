@@ -4015,74 +4015,92 @@
 			<Key ID="STR_DOG_FIND">
 				<Original>-- DOG FIND</Original>
 				<Japanese>-- 犬に敵を探させる</Japanese>
+				<Chinesesimp>-- 军犬搜寻 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_DOG_RECALL">
 				<Original>-- DOG RECALL</Original>
 				<Japanese>-- 犬を呼び戻す</Japanese>
+				<Chinesesimp>-- 召回军犬 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_DOG_STOP">
 				<Original>-- DOG STOP</Original>
 				<Japanese>-- 犬を止める</Japanese>
+				<Chinesesimp>-- 军犬停下 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_DOG_DISMISS">
 				<Original>-- DOG DISMISS</Original>
 				<Japanese>-- 犬とバイバイする</Japanese>
+				<Chinesesimp>-- 解雇军犬 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_SQUAD_MOVE">
 				<Original>-- SQUAD MOVE</Original>
 				<Japanese>-- 分隊移動</Japanese>
+				<Chinesesimp>-- 小队移动 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_SQUAD_FOLLOW">
 				<Original>-- SQUAD FOLLOW</Original>
 				<Japanese>-- 分隊追随</Japanese>
+				<Chinesesimp>-- 小队跟随 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_SQUAD_STOP">
 				<Original>-- SQUAD STOP</Original>
 				<Japanese>-- 分隊停止</Japanese>
+				<Chinesesimp>-- 小队停下 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_SQUAD_DISMISS">
 				<Original>-- SQUAD DISMISS</Original>
 				<Japanese>-- 分隊解散</Japanese>
+				<Chinesesimp>-- 小队解散 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_SEND_AMMO">
 				<Original>-- SEND AMMO</Original>
 				<Japanese>-- 弾薬を送る</Japanese>
+				<Chinesesimp>-- 发送弹药 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_BUY_FUEL">
 				<Original>-- BUY FUEL</Original>
 				<Japanese>-- 燃料を買う</Japanese>
+				<Chinesesimp>-- 购买燃料 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_TAKE_LEADRSHIP">
 				<Original>-- TAKE LEADRSHIP</Original>
 				<Japanese>-- 指揮権を執る</Japanese>
+				<Chinesesimp>-- 带队 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_AIR_SUPPORT">
 				<Original>-- AIR SUPPORT</Original>
 				<Japanese>-- エアサポート</Japanese>
+				<Chinesesimp>-- 空中支援 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_VIRTUAL_GARAGE">
 				<Original>-- VIRTUAL GARAGE</Original>
 				<Japanese>-- バーチャルガレージ</Japanese>
+				<Chinesesimp>-- 虚拟车库 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_PACK_BEACON">
 				<Original>-- PACK BEACON</Original>
 				<Japanese>-- モバイルリスポーンを畳む</Japanese>
+				<Chinesesimp>-- 打包帐篷 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_UNPACK_BEACON">
 				<Original>-- UNPACK BEACON</Original>
 				<Japanese>-- モバイルリスポーンを展開する</Japanese>
+				<Chinesesimp>-- 撑起帐篷 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_EXTENDED_OPTIONS">
 				<Original>-- Extended Options</Original>
 				<Japanese>-- 拡張設定</Japanese>
+				<Chinesesimp>-- 扩展选项 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_ADMIN_MENU">
 				<Original>-- ADMIN MENU</Original>
 				<Japanese>-- 管理者メニュー</Japanese>
+				<Chinesesimp>-- 管理员菜单 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_DESTROY_OUTPOST">
 				<Original>-- DESTROY OUTPOST</Original>
 				<Japanese>-- 前哨基地を破壊</Japanese>
+				<Chinesesimp>-- 摧毁前哨站 --</Chinesesimp>
 			</Key>
 
 			<!-- action_manager_veh.sqf -->
@@ -4090,42 +4108,52 @@
 			<Key ID="STR_SELL_CARGO">
 				<Original>-- SELL CARGO</Original>
 				<Japanese>-- 積んだ武器を売る</Japanese>
+				<Chinesesimp>-- 出售库存 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_RE_FUEL">
 				<Original>-- REFUEL</Original>
 				<Japanese>-- 給油</Japanese>
+				<Chinesesimp>-- 加油 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_SALVAGE">
 				<Original>-- SALVAGE</Original>
 				<Japanese>-- 解体</Japanese>
+				<Chinesesimp>-- 回收 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_UN_FLIP">
 				<Original>-- UNFLIP</Original>
 				<Japanese>-- ひっくり返す</Japanese>
+				<Chinesesimp>-- 翻正 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_LOCK">
 				<Original>-- LOCK</Original>
 				<Japanese>-- 鍵をかける</Japanese>
+				<Chinesesimp>-- 锁车 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_UNLOCK">
 				<Original>-- UNLOCK</Original>
 				<Japanese>-- 鍵をあける</Japanese>
+				<Chinesesimp>-- 解锁 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_ABANDON">
 				<Original>-- ABANDON</Original>
 				<Japanese>-- 所有権を放棄する</Japanese>
+				<Chinesesimp>-- 丢弃 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_PAINT">
 				<Original>-- PAINT</Original>
 				<Japanese>-- ペイントする</Japanese>
+				<Chinesesimp>-- 喷漆 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_EJECT_CREW">
 				<Original>-- EJECT CREW</Original>
 				<Japanese>-- 乗員を降ろす</Japanese>
+				<Chinesesimp>-- 弹射乘员 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_REMOVE_BODY">
 				<Original>-- REMOVE BODY</Original>
 				<Japanese>-- 死体を消す</Japanese>
+				<Chinesesimp>-- 移除尸体 --</Chinesesimp>
 			</Key>
 
 			<!-- recycle_manager.sqf -->
@@ -4133,10 +4161,12 @@
 			<Key ID="STR_RECYCLE_MANAGER">
 				<Original>-- RECYCLE</Original>
 				<Japanese>-- リサイクル</Japanese>
+				<Chinesesimp>-- 回收 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_RECYCLE_FIREWORKS">
 				<Original>-- FIREWORKS !</Original>
 				<Japanese>-- 花火！</Japanese>
+				<Chinesesimp>-- 烟花！</Chinesesimp>
 			</Key>
 
 			<!-- do_abondon.sqf -->
@@ -4144,6 +4174,7 @@
 			<Key ID="STR_DO_ABANDON">
 				<Original>%1 is now public !</Original>
 				<Japanese>%1 の所有権は放棄されました！</Japanese>
+				<Chinesesimp>%1 现在被丢弃了！</Chinesesimp>
 			</Key>
 
 			<!-- do_beacon_unpack.sqf -->
@@ -4151,6 +4182,7 @@
 			<Key ID="STR_BEACON_UNPACK">
 				<Original>No Enought ManPower: %1</Original>
 				<Japanese>マンパワーが足りません: %1</Japanese>
+				<Chinesesimp>没有足够的兵力资源: %1</Chinesesimp>
 			</Key>
 
 			<!-- do_buyfuel.sqf -->
@@ -4158,10 +4190,12 @@
 			<Key ID="STR_DO_BUYFUEL">
 				<Original>&lt;t align='center'&gt;Fuel Jerican cost: %1 Ammo&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
 				<Japanese>&lt;t align='center'&gt;燃料缶コスト: %1 弾薬&lt;br/&gt;よろしいですか？&lt;/t&gt;</Japanese>
+				<Chinesesimp>&lt;t align='center'&gt;燃油费用: %1 弹药&lt;br/&gt;你确定吗？&lt;/t&gt;</Chinesesimp>
 			</Key>
 			<Key ID="STR_FUEL_READY">
 				<Original>Jerican Fuel ready.\nThank you !</Original>
 				<Japanese>燃料缶は用意されました。</Japanese>
+				<Chinesesimp>加油完毕.\n感谢光临！</Chinesesimp>
 			</Key>
 
 			<!-- do_destroy_fob.sqf -->
@@ -4169,6 +4203,7 @@
 			<Key ID="STR_DO_DESTROYFOB">
 				<Original>&lt;t align='center'&gt;Destroy the Outpost&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
 				<Japanese>&lt;t align='center'&gt;前哨基地を破壊します&lt;br/&gt;よろしいですか？&lt;/t&gt;</Japanese>
+				<Chinesesimp>&lt;t align='center'&gt;摧毁前哨站&lt;br/&gt;你确定吗？&lt;/t&gt;</Chinesesimp>
 			</Key>
 
 			<!-- do_dog.sqf -->
@@ -4176,14 +4211,17 @@
 			<Key ID="STR_DISMISS_DOG">
 				<Original>&lt;t align='center'&gt;Dismiss the Dog&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
 				<Japanese>&lt;t align='center'&gt;犬とバイバイします&lt;br/&gt;よろしいですか？&lt;/t&gt;</Japanese>
+				<Chinesesimp>&lt;t align='center'&gt;即将解雇军犬&lt;br/&gt;你确定吗？&lt;/t&gt;</Chinesesimp>
 			</Key>
 			<Key ID="STR_DOG_FOUND_NOTHING">
 				<Original>The dog found nothing...</Original>
 				<Japanese>犬は何も見つけられませんでした...</Japanese>
+				<Chinesesimp>军犬什么也没发现...</Chinesesimp>
 			</Key>
 			<Key ID="STR_DOG_FOUND">
 				<Original>The dog found something %1m away !!</Original>
 				<Japanese>犬は %1m　離れたところに何か見つけました！！</Japanese>
+				<Chinesesimp>军犬在 %1米外发现了什么！！！</Chinesesimp>
 			</Key>
 
 			<!-- do_eject.sqf -->
@@ -4191,6 +4229,7 @@
 			<Key ID="STR_DO_EJECT">
 				<Original>Warning !!\n -5 pts Malus for Ejecting Civilian.</Original>
 				<Japanese>警告！！ \n 民間人を引きずり出したので -5 ポイント</Japanese>
+				<Chinesesimp>警告！\n 驱逐平民 -5 军功点。</Chinesesimp>
 			</Key>
 
 			<!-- do_lock.sqf -->
@@ -4198,6 +4237,7 @@
 			<Key ID="STR_DO_LOCK">
 				<Original>%1 is Locked !</Original>
 				<Japanese>%1 に鍵をかけました！</Japanese>
+				<Chinesesimp>%1 已锁上！</Chinesesimp>
 			</Key>
 
 			<!-- do_recycle.sqf -->
@@ -4205,26 +4245,32 @@
 			<Key ID="STR_DO_RECYCLE">
 				<Original>&lt;t align='center'&gt;Select Reward:&lt;br/&gt;50 XP or 300 AMMO&lt;/t&gt;</Original>
 				<Japanese>&lt;t align='center'&gt;報酬を選んで下さい:&lt;br/&gt;50 ポイント か 300 弾薬&lt;/t&gt;</Japanese>
+				<Chinesesimp>&lt;t align='center'&gt;选择奖励:&lt;br/&gt;50 军功点或者 300 弹药&lt;/t&gt;</Chinesesimp>
 			</Key>
 			<Key ID="STR_SP_BOX">
 				<Original>Special Box !</Original>
 				<Japanese>スペシャルボックス！</Japanese>
+				<Chinesesimp>特别箱！</Chinesesimp>
 			</Key>
 			<Key ID="STR_PTS">
 				<Original>XP</Original>
 				<Japanese>ポイント</Japanese>
+				<Chinesesimp>军功点</Chinesesimp>
 			</Key>
 			<Key ID="STR_AMMORWD">
 				<Original>AMMO</Original>
 				<Japanese>弾薬</Japanese>
+				<Chinesesimp>弹药</Chinesesimp>
 			</Key>
 			<Key ID="STR_AMMO_SELL">
 				<Original>%1\nScore + 50 Pts!</Original>
 				<Japanese>%1\nスコア + 50 ポイント！</Japanese>
+				<Chinesesimp>%1\n奖励 + 50 军功点！</Chinesesimp>
 			</Key>
 			<Key ID="STR_AMMO_SELL2">
 				<Original>%1\nBonus Score + 10 Pts!</Original>
 				<Japanese>%1\nボーナススコア + 10 ポイント！</Japanese>
+				<Chinesesimp>%1\n奖励 + 10 军功点！</Chinesesimp>
 			</Key>
 
 			<!-- do_refuel.sqf -->
@@ -4232,6 +4278,7 @@
 			<Key ID="STR_DO_REFUEL">
 				<Original>Fuel refilling Done.</Original>
 				<Japanese>燃料補充完了</Japanese>
+				<Chinesesimp>燃料添加完毕。</Chinesesimp>
 			</Key>
 
 			<!-- do_squad.sqf -->
@@ -4239,6 +4286,7 @@
 			<Key ID="STR_DO_SQUAD">
 				<Original>&lt;t align='center'&gt;Dismiss the Squad&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
 				<Japanese>&lt;t align='center'&gt;分隊を解散します&lt;br/&gt;よろしいですか？&lt;/t&gt;</Japanese>
+				<Chinesesimp>&lt;t align='center'&gt;解散小队&lt;br/&gt;你确定吗？&lt;/t&gt;</Chinesesimp>
 			</Key>
 
 			<!-- do_unlock.sqf -->
@@ -4246,6 +4294,7 @@
 			<Key ID="STR_DO_UNLOCK">
 				<Original>%1 is Unlocked !</Original>
 				<Japanese>%1 の鍵をあけました！</Japanese>
+				<Chinesesimp>%1 已解锁！</Chinesesimp>
 			</Key>
 
 			<!-- do_wreck.sqf -->
@@ -4253,6 +4302,7 @@
 			<Key ID="STR_DO_WRECK">
 				<Original>%1\nBonus Score + %2 Pts\nBonus Ammo + %3 !!</Original>
 				<Japanese>%1\nボーナススコア + %2 ポイント\nボーナス弾薬 + %3 ！！</Japanese>
+				<Chinesesimp>%1\n奖励 + %2 军功点\n弹药 + %3！！</Chinesesimp>
 			</Key>
 
 			<!-- do_sell.sqf -->
@@ -4260,18 +4310,22 @@
 			<Key ID="STR_DO_SELL">
 				<Original>There is nothing to sell.</Original>
 				<Japanese>この車両には売れるものは入っていません。</Japanese>
+				<Chinesesimp>没什么可卖的。</Chinesesimp>
 			</Key>
 			<Key ID="STR_CARGO_SOLD">
 				<Original>%1 Cargo Sold.\n%2 +%3 AMMO !</Original>
 				<Japanese>%1 の荷物は売られました。\n%2 +%3 弾薬！</Japanese>
+				<Chinesesimp>%1 库存已出售。\n%2 +%3 弹药！</Chinesesimp>
 			</Key>
 			<Key ID="STR_SELL_BUTTON">
 				<Original>SELL CARGO</Original>
 				<Japanese>荷物を売る</Japanese>
+				<Chinesesimp>出售库存</Chinesesimp>
 			</Key>
 			<Key ID="STR_SELL_CONFIRM">
 				<Original>&lt;t align='center'&gt;Sell ALL %1 cargo&lt;br/&gt;for %2 AMMO.&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
 				<Japanese>&lt;t align='center'&gt;%1 の荷物を全て売ります。&lt;br/&gt;取得： %2 弾薬&lt;br/&gt;よろしいですか？&lt;/t&gt;</Japanese>
+				<Chinesesimp>&lt;t align='center'&gt;出售所有 %1 库存&lt;br/&gt;获得 %2 弹药。&lt;br/&gt;你确定吗？&lt;/t&gt;</Chinesesimp>
 			</Key>
 
 			<!-- man_manager.sqf -->
@@ -4279,6 +4333,7 @@
 			<Key ID="STR_MAN_MANAGER">
 				<Original>-- SPEAK</Original>
 				<Japanese>-- 話す</Japanese>
+				<Chinesesimp>-- 打探情报 --</Chinesesimp>
 			</Key>
 
 			<!-- remote_call_penalty.sqf -->
@@ -4290,6 +4345,9 @@
 				<Japanese>警告 &lt;t color='#00008f'&gt;%1&lt;/t&gt; !&lt;br/&gt;&lt;br/&gt;
 				あなたはFOBの防衛に失敗しました: &lt;t color='#0000F0'&gt;%2&lt;/t&gt;...&lt;br/&gt;&lt;br/&gt;
 				司令部はスコアペナルティを課しました: &lt;t color='#A00000'&gt;%3&lt;/t&gt;.&lt;br/&gt;</Japanese>
+				<Chinesesimp>警告 &lt;t color='#00008f'&gt;%1&lt;/t&gt; ！&lt;br/&gt;&lt;br/&gt;
+				你未能捍卫FOB： &lt;t color='#0000F0'&gt;%2&lt;/t&gt;...&lt;br/&gt;&lt;br/&gt;
+				HQ下达军功点惩罚： &lt;t color='#A00000'&gt;%3&lt;/t&gt;.&lt;br/&gt;</Chinesesimp>
 			</Key>
 
 			<!-- init_client.sqf -->
@@ -4297,10 +4355,12 @@
 			<Key ID="STR_READ_ME">
 				<Original>-= READ  ME =-</Original>
 				<Japanese>-= 読んでください =-</Japanese>
+				<Chinesesimp>-= 萌新教学 =-</Chinesesimp>
 			</Key>
 			<Key ID="STR_TIPS">
 				<Original>-=   TIPS   =-</Original>
 				<Japanese>-=   前提知識   =-</Japanese>
+				<Chinesesimp>-=   小贴士   =-</Chinesesimp>
 			</Key>
 
 			<!-- virtual_garage.hpp -->
@@ -4308,14 +4368,17 @@
 			<Key ID="STR_VIRT_GARAGE">
 				<Original>-- Virtual Garage --</Original>
 				<Japanese>-- バーチャルガレージ --</Japanese>
+				<Chinesesimp>-- 虚拟车库 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_GARAGE_LOAD">
 				<Original>-- LOAD --</Original>
 				<Japanese>-- 入庫 --</Japanese>
+				<Chinesesimp>存放</Chinesesimp>
 			</Key>
 			<Key ID="STR_GARAGE_UNLOAD">
 				<Original>-- UNLOAD --</Original>
 				<Japanese>-- 出庫 --</Japanese>
+				<Chinesesimp>取出</Chinesesimp>
 			</Key>
 
 			<!-- virtual_garage.sqf -->
@@ -4323,26 +4386,32 @@
 			<Key ID="STR_FULL_GARAGE">
 				<Original>Garage is Full !!\nMax %1 vehicles.</Original>
 				<Japanese>ガレージは満杯です！！\n最大 %1 台。</Japanese>
+				<Chinesesimp>车库已满！\n最大 %1 辆载具。</Chinesesimp>
 			</Key>
 			<Key ID="STR_CANT_PARK">
 				<Original>Loaded Vehicles cannot be Parked !</Original>
 				<Japanese>その乗り物はガレージに入れられません！</Japanese>
+				<Chinesesimp>不能停放已装载的车辆！</Chinesesimp>
 			</Key>
 			<Key ID="STR_CANT_PARKUAV">
 				<Original>Vehicles with crew cannot be Parked !</Original>
 				<Japanese>乗員が乗っている乗り物はガレージに入れられません！</Japanese>
+				<Chinesesimp>不能停放有乘员的载具！</Chinesesimp>
 			</Key>
 			<Key ID="STR_ONLY_WEAPONS">
 				<Original>&lt;t align='center'&gt;Only Weapons and Cargo is Saved !!&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
 				<Japanese>&lt;t align='center'&gt;武器と荷物だけが保存されます！！&lt;br/&gt;よろしいですか？&lt;/t&gt;</Japanese>
+				<Chinesesimp>&lt;t align='center'&gt;只保存武器和库存！&lt;br/&gt;你确定吗？&lt;/t&gt;</Chinesesimp>
 			</Key>
 			<Key ID="STR_WARNING">
 				<Original>Warning !</Original>
 				<Japanese>警告！</Japanese>
+				<Chinesesimp>警告！</Chinesesimp>
 			</Key>
 			<Key ID="STR_LOADED">
 				<Original>Vehicle %1\nLoaded in Garage.</Original>
 				<Japanese>乗り物 %1\nはガレージに入りました。</Japanese>
+				<Chinesesimp>载具 %1\n已存入车库！</Chinesesimp>
 			</Key>
 
 			<!-- veh_repaint -->
@@ -4350,10 +4419,12 @@
 			<Key ID="STR_PAINT_SHOP">
 				<Original>-- Paint Shop --</Original>
 				<Japanese>-- ペイントショップ --</Japanese>
+				<Chinesesimp>-- 涂装 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_SHOP_PAINT">
 				<Original>Paint</Original>
 				<Japanese>ペイント</Japanese>
+				<Chinesesimp>喷漆</Chinesesimp>
 			</Key>
 
 			<!-- liberation_airdrop.hpp -->
@@ -4361,74 +4432,92 @@
 			<Key ID="STR_AIRDROP_CANCEL">
 				<Original>Cancel</Original>
 				<Japanese>キャンセル</Japanese>
+				<Chinesesimp>取消</Chinesesimp>
 			</Key>
 			<Key ID="STR_AIRDROP_TAXI">
 				<Original>Taxi</Original>
 				<Japanese>タクシー</Japanese>
+				<Chinesesimp>空投/接送</Chinesesimp>
 			</Key>
 			<Key ID="STR_AIRDROP_LIGHT">
 				<Original>Light</Original>
 				<Japanese>軽車両</Japanese>
+				<Chinesesimp>越野</Chinesesimp>
 			</Key>
 			<Key ID="STR_AIRDROP_LIGHTPLUS">
 				<Original>Light+</Original>
 				<Japanese>軽車両+</Japanese>
+				<Chinesesimp>越野+</Chinesesimp>
 			</Key>
 			<Key ID="STR_AIRDROP_ARMORED">
 				<Original>Armored</Original>
 				<Japanese>装甲車</Japanese>
+				<Chinesesimp>装甲车</Chinesesimp>
 			</Key>
 			<Key ID="STR_AIRDROP_TRUCK">
 				<Original>Truck</Original>
 				<Japanese>トラック</Japanese>
+				<Chinesesimp>卡车</Chinesesimp>
 			</Key>
 			<Key ID="STR_AIRDROP_APC">
 				<Original>APC</Original>
 				<Japanese>APC</Japanese>
+				<Chinesesimp>APC</Chinesesimp>
 			</Key>
 			<Key ID="STR_AIRDROP_BOAT">
 				<Original>Boat</Original>
 				<Japanese>ボート</Japanese>
+				<Chinesesimp>船只</Chinesesimp>
 			</Key>
 			<Key ID="STR_AIRDROP_AIRSUPERIORITY">
 				<Original>Air Superiority</Original>
 				<Japanese>制空権</Japanese>
+				<Chinesesimp>夺取制空</Chinesesimp>
 			</Key>
 			<Key ID="STR_AIRDROP_MENU">
 				<Original>-- Air Support Menu --</Original>
 				<Japanese>-- エアサポートメニュー --</Japanese>
+				<Chinesesimp>-- 空中支援菜单 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_CALL_HELITAXI">
 				<Original>&lt;t size='0.8'&gt;Call Heli Taxi.&lt;br/&gt;Cost: 100 Ammo&lt;/t&gt;</Original>
 				<Japanese>&lt;t size='0.8'&gt;ヘリタクシーを呼ぶ&lt;br/&gt;コスト: 100 弾薬&lt;/t&gt;</Japanese>
+				<Chinesesimp>&lt;t size='0.8'&gt;呼叫直升机接送.&lt;br/&gt;花费: 100 弹药&lt;/t&gt;</Chinesesimp>
 			</Key>
 			<Key ID="STR_QUAD_OFFLOAD">
 				<Original>&lt;t size='0.8'&gt;Quad, Unarmed Offroad.&lt;br/&gt;Cost:  50 Ammo&lt;/t&gt;</Original>
 				<Japanese>&lt;t size='0.8'&gt;ATV、非武装ピックアップ&lt;br/&gt;コスト: 50 弾薬&lt;/t&gt;</Japanese>
+				<Chinesesimp>&lt;t size='0.8'&gt;四轮摩托，越野车.&lt;br/&gt;花费:  50 弹药&lt;/t&gt;</Chinesesimp>
 			</Key>
 			<Key ID="STR_ARMED_OFFLOAD">
 				<Original>&lt;t size='0.8'&gt;Armed Offroad.&lt;br/&gt;Cost: 100 Ammo&lt;/t&gt;</Original>
 				<Japanese>&lt;t size='0.8'&gt;武装ピックアップ&lt;br/&gt;コスト: 100 弾薬&lt;/t&gt;</Japanese>
+				<Chinesesimp>&lt;t size='0.8'&gt;武装越野车.&lt;br/&gt;花费: 100 弹药&lt;/t&gt;</Chinesesimp>
 			</Key>
 			<Key ID="STR_MRAP">
 				<Original>&lt;t size='0.8'&gt;MRAPs.&lt;br/&gt;Cost: 200 Ammo&lt;/t&gt;</Original>
 				<Japanese>&lt;t size='0.8'&gt;MRAP&lt;br/&gt;コスト: 200 弾薬&lt;/t&gt;</Japanese>
+				<Chinesesimp>&lt;t size='0.8'&gt;武装MRAP.&lt;br/&gt;花费: 200 弹药&lt;/t&gt;</Chinesesimp>
 			</Key>
 			<Key ID="STR_TRUCK">
 				<Original>&lt;t size='0.8'&gt;Large Trucks.&lt;br/&gt;Cost: 300 Ammo&lt;/t&gt;</Original>
 				<Japanese>&lt;t size='0.8'&gt;大型トラック&lt;br/&gt;コスト: 300 弾薬&lt;/t&gt;</Japanese>
+				<Chinesesimp>&lt;t size='0.8'&gt;运兵卡车.&lt;br/&gt;花费: 300 弹药&lt;/t&gt;</Chinesesimp>
 			</Key>
 			<Key ID="STR_APC">
 				<Original>&lt;t size='0.8'&gt;APC.&lt;br/&gt;Cost: 400 Ammo&lt;/t&gt;</Original>
 				<Japanese>&lt;t size='0.8'&gt;APC&lt;br/&gt;コスト: 400 弾薬&lt;/t&gt;</Japanese>
+				<Chinesesimp>&lt;t size='0.8'&gt;APC.&lt;br/&gt;花费: 400 弹药&lt;/t&gt;</Chinesesimp>
 			</Key>
 			<Key ID="STR_BOAT">
 				<Original>&lt;t size='0.8'&gt;Transport Boats.&lt;br/&gt;Cost: 250 Ammo&lt;/t&gt;</Original>
 				<Japanese>&lt;t size='0.8'&gt;ボート&lt;br/&gt;コスト: 250 弾薬&lt;/t&gt;</Japanese>
+				<Chinesesimp>&lt;t size='0.8'&gt;运输船只.&lt;br/&gt;花费: 250 弹药&lt;/t&gt;</Chinesesimp>
 			</Key>
 			<Key ID="STR_AIRSUPERIORITY">
 				<Original>&lt;t size='0.8'&gt;Air Superiority.&lt;br/&gt;Cost: 500 Ammo&lt;/t&gt;</Original>
 				<Japanese>&lt;t size='0.8'&gt;制空権&lt;br/&gt;コスト: 500 弾薬&lt;/t&gt;</Japanese>
+				<Chinesesimp>&lt;t size='0.8'&gt;制空权&lt;br/&gt;花费: 500 弹药&lt;/t&gt;</Chinesesimp>
 			</Key>
 
 			<!-- liberation_sendammo.hpp -->
@@ -4436,18 +4525,22 @@
 			<Key ID="STR_SENDAMMO_MENU">
 				<Original>-- Send Ammo Menu --</Original>
 				<Japanese>-- 弾薬譲渡メニュー --</Japanese>
+				<Chinesesimp>-- 发送弹药菜单 --</Chinesesimp>
 			</Key>
 			<Key ID="STR_SENDAMMO_PLAYER">
 				<Original>PLayer:</Original>
 				<Japanese>プレイヤー:</Japanese>
+				<Chinesesimp>玩家:</Chinesesimp>
 			</Key>
 			<Key ID="STR_SENDAMMO_AMMO">
 				<Original>Ammo:</Original>
 				<Japanese>弾薬:</Japanese>
+				<Chinesesimp>弹药:</Chinesesimp>
 			</Key>
 			<Key ID="STR_SENDAMMO_SEND">
 				<Original>Send</Original>
 				<Japanese>送る</Japanese>
+				<Chinesesimp>发送</Chinesesimp>
 			</Key>
 
 			<!-- liberation_admin.hpp -->
@@ -4455,38 +4548,47 @@
 			<Key ID="STR_ADMIN_ARSENAL">
 				<Original>Spawn Arsenal</Original>
 				<Japanese>アーセナルを出す</Japanese>
+				<Chinesesimp>生成武器库</Chinesesimp>
 			</Key>
 			<Key ID="STR_ADMIN_AMMOBOX">
 				<Original>Spawn Ammobox</Original>
 				<Japanese>弾薬箱を出す</Japanese>
+				<Chinesesimp>生成弹药箱</Chinesesimp>
 			</Key>
 			<Key ID="STR_ADMIN_BUILD">
 				<Original>Build</Original>
 				<Japanese>ビルド</Japanese>
+				<Chinesesimp>建造</Chinesesimp>
 			</Key>
 			<Key ID="STR_ADMIN_UNBAN">
 				<Original>Unban Player</Original>
 				<Japanese>プレイヤーのBANを解除</Japanese>
+				<Chinesesimp>UnBAN玩家</Chinesesimp>
 			</Key>
 			<Key ID="STR_ADMIN_SKIPTIME">
 				<Original>SkipTime 10hrs</Original>
 				<Japanese>10時間進める</Japanese>
+				<Chinesesimp>跳过时间 +10H</Chinesesimp>
 			</Key>
 			<Key ID="STR_ADMIN_UNLOCK">
 				<Original>Unlock Vehicle</Original>
 				<Japanese>乗り物を開錠する</Japanese>
+				<Chinesesimp>解锁车辆</Chinesesimp>
 			</Key>
 			<Key ID="STR_ADMIN_DELETEOBJ">
 				<Original>Delete Object</Original>
 				<Japanese>オブジェクトを消す</Japanese>
+				<Chinesesimp>删除物体</Chinesesimp>
 			</Key>
 			<Key ID="STR_ADMIN_GODMODE">
 				<Original>God Mode</Original>
 				<Japanese>ゴッドモード</Japanese>
+				<Chinesesimp>无敌模式</Chinesesimp>
 			</Key>
 			<Key ID="STR_ADMIN_MENUMENU">
 				<Original>-- Admin Menu --</Original>
 				<Japanese>-- 管理者メニュー --</Japanese>
+				<Chinesesimp>-- 管理员菜单 --</Chinesesimp>
 			</Key>
 
 		  <!-- liberation_notification.hpp -->
@@ -4494,18 +4596,22 @@
 			<Key ID="STR_SIDE_START">
 				<Original>Side Mission %1 Started.</Original>
 				<Japanese>サイドミッション: %1 がスタートしました。</Japanese>
+				<Chinesesimp>支线任务 %1 已开始</Chinesesimp>
 			</Key>
 			<Key ID="STR_SIDE_SUCCESS">
 				<Original>Side Mission %1 Success.</Original>
 				<Japanese>サイドミッション: %1 が成功しました。</Japanese>
+				<Chinesesimp>支线任务 %1 成功</Chinesesimp>
 			</Key>
 			<Key ID="STR_SIDE_FAILED">
 				<Original>Side Mission %1 Fail.</Original>
 				<Japanese>サイドミッション: %1 が失敗しました。</Japanese>
+				<Chinesesimp>支线任务 %1 失败</Chinesesimp>
 			</Key>
 			<Key ID="STR_NOTIFICATION_REINFORCEMENTS_TITLE2">
 				<Original>Air Supremacy is Incoming...</Original>
 				<Japanese>敵航空部隊が向かっています...</Japanese>
+				<Chinesesimp>制空权即将夺取...</Chinesesimp>
 			</Key>
 
 			<!-- liberation_squad.hpp -->
@@ -4513,346 +4619,416 @@
 			<Key ID="STR_LIKEME">
 				<Original>Like Me</Original>
 				<Japanese>自装備をユニットに反映</Japanese>
+				<Chinesesimp>复制装备</Chinesesimp>
 			</Key>
 			<Key ID="STR_RENAME">
 				<Original>Rename</Original>
 				<Japanese>リネーム</Japanese>
+				<Chinesesimp>重命名</Chinesesimp>
 			</Key>
 			<Key ID="STR_RENAME_BUTTON">
 				<Original>Rename</Original>
 				<Japanese>リネーム</Japanese>
+				<Chinesesimp>重命名</Chinesesimp>
 			</Key>
 			<Key ID="STR_CANCEL_BUTTON">
 				<Original>Cancel</Original>
 				<Japanese>キャンセル</Japanese>
+				<Chinesesimp>取消</Chinesesimp>
 			</Key>
 
-      <!--
-			mission_AirWreck.sqf
-
+      		<!-- mission_AirWreck.sqf -->
+			
 			<Key ID="STR_AIRWRECK">
 				<Original>Aircraft Wreck</Original>
 				<Japanese>航空機の残骸</Japanese>
+				<Chinesesimp>飞机残骸</Chinesesimp>
 			</Key>
 			<Key ID="STR_AIRWRECK_MESSAGE1">
 				<Original>A helicopter has come down under enemy fire!</Original>
 				<Japanese>ヘリが敵の攻撃で墜落した！</Japanese>
+				<Chinesesimp>一架直升机在敌人的炮火下坠毁了！</Chinesesimp>
 			</Key>
 			<Key ID="STR_AIRWRECK_MESSAGE2">
 				<Original>The airwreck supplies have been collected, well done.</Original>
 				<Japanese>ヘリの残骸は回収された。よくやった！</Japanese>
+				<Chinesesimp>空难物资已收集，干得好！</Chinesesimp>
 			</Key>
 
-			mission_FoodDelivery.sqf
+	  		<!-- mission_FoodDelivery.sqf -->
 
 			<Key ID="STR_FOODDELI">
 				<Original>Food Delivery</Original>
 				<Japanese>食料の配達</Japanese>
+				<Chinesesimp>送外卖</Chinesesimp>
 			</Key>
 			<Key ID="STR_FOODDELI_MESSAGE1">
 				<Original>Food Delivery at &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Talk&lt;/t&gt; to the &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; to get information.</Original>
 				<Japanese>食料調達: &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;係の者&lt;/t&gt;に&lt;t color='#0000F0'&gt;聞いて&lt;/t&gt;情報を得てください。</Japanese>
+				<Chinesesimp>送外卖：在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt; 与 &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; &lt;t color='#00F000'&gt;交谈&lt;/t> 获取任务信息。</Chinesesimp>
 			</Key>
 			<Key ID="STR_FOODDELI_MESSAGE2">
 				<Original>Food Delivery has...&lt;br/&gt;&lt;t color='%1'&gt;FAILED&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;Better luck next time!</Original>
 				<Japanese>食料配達は...&lt;br/&gt;&lt;t color='%1'&gt;失敗しました&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;次回は頑張ってください！</Japanese>
+				<Chinesesimp>送外卖...&lt;br/&gt;&lt;t color='%1'&gt;失败&lt;/t&gt;！！&lt;br/&gt;&lt;br/&gt;祝你下次好运！</Chinesesimp>
 			</Key>
 			<Key ID="STR_FOODDELI_MESSAGE3">
 				<Original>Food Delivery&lt;br/&gt;&lt;t color='%1'&gt;SUCCESS&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;The Food Pallets have been delivered, Well done.</Original>
 				<Japanese>食料配達は...&lt;br/&gt;&lt;t color='%1'&gt;成功しました&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;食料は配達されました！ありがとうございます。</Japanese>
+				<Chinesesimp>外卖&lt;br/&gt;&lt;t color='%1'&gt;送达&lt;/t&gt;！！&lt;br/&gt;&lt;br/&gt;外卖已交付，干得好。</Chinesesimp>
 			</Key>
 
-			remote_call_a3w_info.sqf
+			<!-- remote_call_a3w_info.sqf -->
 
 			<Key ID="STR_REMOTE_A3W">
 				<Original>Thank you %1, The whole village is grateful for your help!, good luck.</Original>
 				<Japanese>ありがとう %1 村中があなたの活躍に感謝しています。幸運を！</Japanese>
+				<Chinesesimp>%1, 全村人都十分感谢你的帮助！祝你好运！</Chinesesimp>
 			</Key>
 
-			mission_FuelDelivery.sqf
+			<!-- mission_FuelDelivery.sqf -->
 
 			<Key ID="STR_FUELDELI">
 				<Original>Fuel Delivery</Original>
 				<Japanese>燃料配達</Japanese>
+				<Chinesesimp>燃料运送</Chinesesimp>
 			</Key>
 			<Key ID="STR_FUELDELI_MESSAGE1">
 				<Original>Fuel Delivery at &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Talk&lt;/t&gt; to the &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; to get information.</Original>
 				<Japanese>燃料配達: &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;係の者&lt;/t&gt;に&lt;t color='#0000F0'&gt;聞いて&lt;/t&gt;情報を得てください。</Japanese>
+				<Chinesesimp>运送燃料：在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt; 与 &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; &lt;t color='#00F000'&gt;交谈</t&gt; 获取任务信息。</Chinesesimp>
 			</Key>
 			<Key ID="STR_FUELDELI_MESSAGE2">
 				<Original>Fuel Delivery has...&lt;br/&gt;&lt;t color='%1'&gt;FAILED&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;Better luck next time!</Original>
 				<Japanese>燃料配達は...&lt;br/&gt;&lt;t color='%1'&gt;失敗しました&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;次回は頑張ってください！</Japanese>
+				<Chinesesimp>燃料运送...&lt;br/&gt;&lt;t color='%1'&gt;失败&lt;/t&gt;！！&lt;br/&gt;&lt;br/&gt;祝你下次好运！</Chinesesimp>
 			</Key>
 			<Key ID="STR_FUELDELI_MESSAGE3">
 				<Original>Fuel Delivery&lt;br/&gt;&lt;t color='%1'&gt;SUCCESS&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;The Barrels of Fuel have been delivered, Well done.</Original>
 				<Japanese>燃料配達は...&lt;br/&gt;&lt;t color='%1'&gt;成功しました&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;燃料は配達されました！ありがとうございます。</Japanese>
+				<Chinesesimp>燃料运送&lt;br/&gt;&lt;t color='%1'&gt;成功&lt;/t&gt;！！&lt;br/&gt;&lt;br/&gt;燃料已交付，干得好！</Chinesesimp>
 			</Key>
 
-			mission_HostileHelicopter.sqf
+			<!-- mission_HostileHelicopter.sqf -->
 
 			<Key ID="STR_HOSSTILE_HELI1">
 				<Original>Hostile Helicopter</Original>
 				<Japanese>敵のヘリ</Japanese>
+				<Chinesesimp>敌军直升机</Chinesesimp>
 			</Key>
 			<Key ID="STR_HOSSTILE_HELI2">
 				<Original>An armed &lt;t color='%2'&gt;%1&lt;/t&gt; is patrolling the island. Intercept it and recover its cargo!</Original>
 				<Japanese>武装した &lt;t color='%2'&gt;%1&lt;/t&gt; が飛行している。迎撃して貨物を回収せよ！</Japanese>
+				<Chinesesimp>一架武装直升机 &lt;t color='%2'&gt;%1&lt;/t&gt; 正在岛上巡逻，拦截并收回货物！</Chinesesimp>
 			</Key>
 			<Key ID="STR_HOSSTILE_HELI3">
 				<Original>The sky is clear again, the enemy patrol was taken out! Ammo crates have fallen near the wreck.</Original>
 				<Japanese>ヘリは撃墜された、残骸の近くの弾薬箱を回収せよ。</Japanese>
+				<Chinesesimp>天又放晴了，敌军巡逻机被干掉了！弹药箱掉在了残骸附近。</Chinesesimp>
 			</Key>
 
-			mission_MeetResistance.sqf
+			<!-- mission_MeetResistance.sqf -->
 
 			<Key ID="STR_RESISTANCE1">
 				<Original>The Resistance</Original>
 				<Japanese>レジスタンス</Japanese>
+				<Chinesesimp>抵抗组织</Chinesesimp>
 			</Key>
 			<Key ID="STR_RESISTANCE2">
 				<Original>Meet the Resistance at &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Talk&lt;/t&gt; to the &lt;t color='#0000F0'&gt;Leader&lt;/t&gt; to get information.&lt;br/&gt;Be ready for any situation!</Original>
 				<Japanese>&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;でレジスタンスと合流し、&lt;t color='#00F000'&gt;リーダー&lt;/t&gt;と&lt;t color='#0000F0'&gt;話して&lt;/t&gt;情報を得てください。&lt;br/&gt;あらゆる状況に対応できるよう準備を。</Japanese>
+				<Chinesesimp>与抵抗组织 &lt;t color='#0000F0'&gt;领导人&lt;/t&gt; 在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;交谈&lt;/t&gt; 获取任务信息。&lt;br/&gt;为任何情况做好准备！</Chinesesimp>
 			</Key>
 			<Key ID="STR_RESISTANCE3">
 				<Original>All members of the Resistance are...&lt;br/&gt;&lt;t color='%1'&gt;DEAD&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;Better luck next time!</Original>
 				<Japanese>レジスタンスのメンバーは皆...&lt;br/&gt;&lt;t color='%1'&gt;死亡しました。&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;次回頑張ってください！</Japanese>
+				<Chinesesimp>所有抵抗组织的成员...&lt;br/&gt;&lt;t color='%1'&gt;都牺牲&lt;/t&gt;了！&lt;br/&gt;&lt;br/&gt;悼念他们！</Chinesesimp>
 			</Key>
 			<Key ID="STR_RESISTANCE4">
 				<Original>Nice work!&lt;br/&gt;&lt;br/&gt;&LT;t color='%1'&gt;%2&LT;/t&gt;&lt;br/&gt;is a safe place again!&lt;br/&gt;Take your reward!</Original>
 				<Japanese>よくやった！&lt;br/&gt;&lt;br/&gt;&LT;t color='%1'&gt;%2&LT;/t&gt;&lt;br/&gt;は再び安全な場所になった！&lt;br/&gt;報酬を受け取ってくれ！</Japanese>
+				<Chinesesimp>干得好！&lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;又是个安全的地方了！&lt;br/&gt;接受你的奖励吧！</Chinesesimp>
 			</Key>
 
-			mission_Outpost.sqf
+			<!-- mission_Outpost.sqf -->
 
 			<Key ID="STR_OUTPOST1">
 				<Original>Enemy Outpost</Original>
 				<Japanese>敵前哨基地</Japanese>
+				<Chinesesimp>敌军前哨</Chinesesimp>
 			</Key>
 			<Key ID="STR_OUTPOST2">
 				<Original>An armed &lt;t color='%1'&gt;outpost&lt;/t&gt; containing weapon crates has been spotted near the marker, go capture it!</Original>
 				<Japanese>武装した &lt;t color='%1'&gt;敵の前哨基地&lt;/t&gt; がマップのマーカー近くで発見されました、行って物資を略奪してください！</Japanese>
+				<Chinesesimp>在标记附近发现了一个装有武器箱的&lt;t color='%1'&gt;武装前哨站&lt;/t&gt;，去夺取它吧！</Chinesesimp>
 			</Key>
 			<Key ID="STR_OUTPOST3">
 				<Original>The outpost has been captured, good work.</Original>
 				<Japanese>敵の前哨基地は我々の手に落ちました！おめでとうございます。</Japanese>
+				<Chinesesimp>前哨站已被占领，干得好。</Chinesesimp>
 			</Key>
 
-			mission_SpecialDelivery.sqf
+			<!-- mission_SpecialDelivery.sqf -->
 
 			<Key ID="STR_SPECIALDELI1">
 				<Original>Special Delivery</Original>
 				<Japanese>特別配送</Japanese>
+				<Chinesesimp>特快专递</Chinesesimp>
 			</Key>
 			<Key ID="STR_SPECIALDELI2">
 				<Original>Special Delivery at &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Talk&lt;/t&gt; to &lt;t color='#0000F0'&gt;Nikos&lt;/t&gt; to get information.&lt;br/&gt;Be ready for any situation!</Original>
 				<Japanese>特別配送： &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Nikos&lt;/t&gt; と &lt;t color='#0000F0'&gt;話して&lt;/t&gt; 情報を得てください。&lt;br/&gt;あらゆる状況に対応できるよう準備を。</Japanese>
+				<Chinesesimp>特快专递：在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;与 &lt;t color='#0000F0'&gt;Nikos&lt;/t&gt; &lt;t color='#00F000'&gt;交谈&lt;/t&gt; 来获取任务信息.&lt;br/&gt;做好应对任何突发情况的准备！</Chinesesimp>
 			</Key>
 			<Key ID="STR_SPECIALDELI3">
 				<Original>Special Delivery&lt;br/&gt;&lt;t color='%1'&gt;FAILED&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;Better luck next time!</Original>
 				<Japanese>特別配送は&lt;br/&gt;&lt;t color='%1'&gt;失敗しました。&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;次回頑張ってください！</Japanese>
+				<Chinesesimp>特快专递&lt;br/&gt;&lt;t color='%1'&gt;失败&lt;/t&gt;！&lt;br/&gt;&lt;br/&gt;下次好运！</Chinesesimp>
 			</Key>
 			<Key ID="STR_SPECIALDELI4">
 				<Original>Special Delivery&lt;br/&gt;&lt;t color='%1'&gt;SUCCESS&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;The information have been collected, Well done.</Original>
 				<Japanese>特別配送は&lt;br/&gt;&lt;t color='%1'&gt;成功しました。&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;情報は確保されました。ありがとうございます。</Japanese>
+				<Chinesesimp>特快专递&lt;br/&gt;&lt;t color='%1'&gt;成功&lt;/t&gt;！&lt;br/&gt;&lt;br/&gt;信息已经收集，干得好！</Chinesesimp>
 			</Key>
 
-			 mission_SunkenSupplies.sqf
+			<!-- mission_SunkenSupplies.sqf -->
 
 			<Key ID="STR_SUNKEN1">
 				<Original>Sunken Supplies</Original>
 				<Japanese>水没した物資</Japanese>
+				<Chinesesimp>沉船物资</Chinesesimp>
 			</Key>
 			<Key ID="STR_SUNKEN2">
 				<Original>Sunken supplies have been spotted in the ocean near the marker, and are heavily guarded. Diving gear and an underwater weapon are recommended.</Original>
 				<Japanese>水没した物資がマップのマーカー付近で発見されました。また、付近では敵が活動中の為、潜水具の他に水中でも使用可能な武器を持っていて下さい。</Japanese>
+				<Chinesesimp>沉没的补给在标记附近的大海中被发现，并有重兵把守。建议装备潜水用具和水下武器。</Chinesesimp>
 			</Key>
 			<Key ID="STR_SUNKEN3">
 				<Original>The sunken supplies have been collected, well done.</Original>
 				<Japanese>水没した物資は確保されました。おめでとうございます。</Japanese>
+				<Chinesesimp>沉船物资已打捞上岸，做得很好！</Chinesesimp>
 			</Key>
 
-			 mission_TownInvasion.sqf
+			<!-- mission_TownInvasion.sqf -->
 
 			<Key ID="STR_INVASION1">
 				<Original>Town Invasion</Original>
 				<Japanese>占拠された街</Japanese>
+				<Chinesesimp>城镇入侵</Chinesesimp>
 			</Key>
 			<Key ID="STR_INVASION2">
 				<Original>Hostiles have taken over &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;There seem to be &lt;t color='%1'&gt;%3 enemies&lt;/t&gt; hiding inside or on top of buildings. Get rid of them all, and take their supplies!&lt;br/&gt;Watch out for those windows!</Original>
 				<Japanese>敵が&lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;を占拠しました。 &lt;t color='%1'&gt;%3 人の敵&lt;/t&gt; が建物の中や外に居ます。敵勢力を排除し物資を確保してください。&lt;br/&gt;窓に警戒を！</Japanese>
+				<Chinesesimp>敌人已经占领了 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;似乎有 &lt;t color='%1'&gt;%3 名敌人&lt;/t&gt; 躲在建筑物内部或顶部。 把他们全部干掉，拿走他们补给!&lt;br/&gt;小心那些窗户后面！</Chinesesimp>
 			</Key>
 			<Key ID="STR_INVASION3">
 				<Original>Nice work!&lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;is a safe place again!&lt;br/&gt;Their belongings are now yours to take!</Original>
 				<Japanese>おめでとうございます！&lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;は再び安全な場所に戻りました&lt;br/&gt;敵の所有物はあなたのものです。</Japanese>
+				<Chinesesimp>干得漂亮！&lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;又是个安全的地方了！&lt;br/&gt;他们的武器现在是你的了！</Chinesesimp>
 			</Key>
 
-			 mission_WaterDelivery.sqf
+			<!-- mission_WaterDelivery.sqf -->
 
 			<Key ID="STR_WATERDELI1">
 				<Original>Water Delivery</Original>
 				<Japanese>水の配達</Japanese>
+				<Chinesesimp>送水</Chinesesimp>
 			</Key>
 			<Key ID="STR_WATERDELI2">
 				<Original>Water Delivery at &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Talk&lt;/t&gt; to the &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; to get information.</Original>
 				<Japanese>水の配達：&lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;係の者&lt;/t&gt;と&lt;t color='#0000F0'&gt;話して&lt;/t&gt;情報を得てください。</Japanese>
+				<Chinesesimp>送水：在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;交谈&lt;/t&gt; 与 &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; 来获取任务信息。</Chinesesimp>
 			</Key>
 			<Key ID="STR_WATERDELI3">
 				<Original>Water Delivery has...&lt;br/&gt;&lt;t color='%1'&gt;FAILED&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;Better luck next time!</Original>
 				<Japanese>水の配達は...&lt;br/&gt;&lt;t color='%1'&gt;失敗しました。&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;次回頑張ってください！</Japanese>
+				<Chinesesimp>送水...&lt;br/&gt;&lt;t color='%1'&gt;失败&lt;/t&gt;！&lt;br/&gt;&lt;br/&gt;下次好运！</Chinesesimp>
 			</Key>
 			<Key ID="STR_WATERDELI4">
 				<Original>Water Delivery&lt;br/&gt;&lt;t color='%1'&gt;SUCCESS&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;The Barrels of Water have been delivered, Well done.</Original>
 				<Japanese>水の配達は&lt;br/&gt;&lt;t color='%1'&gt;成功しました。&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;水の樽は届けられました。ありがとうございます。</Japanese>
+				<Chinesesimp>送水&lt;br/&gt;&lt;t color='%1'&gt;送达&lt;/t&gt;！&lt;br/&gt;&lt;br/&gt;水已经交付，做得很好！</Chinesesimp>
 			</Key>
 
-			 mission_VehicleCapture.sqf
+			<!-- mission_VehicleCapture.sqf -->
 
 			<Key ID="STR_VEHICLECAP1">
 				<Original>Vehicle Capture</Original>
 				<Japanese>車両鹵獲</Japanese>
+				<Chinesesimp>车辆抢夺</Chinesesimp>
 			</Key>
 			<Key ID="STR_VEHICLECAP2">
 				<Original>A &lt;t color='%2'&gt;%1&lt;/t&gt; has been immobilized, go get it for your team!</Original>
 				<Japanese>&lt;t color='%2'&gt;%1&lt;/t&gt;が無力化されました、マップのマーカー付近に行って車両を奪取してください！</Japanese>
+				<Chinesesimp>一辆&lt;t color='%2'&gt;%1&lt;/t&gt; 瘫痪在那，为你的队伍去把它抢回来！</Chinesesimp>
 			</Key>
 			<Key ID="STR_VEHICLECAP3">
 				<Original>The %1 has been captured, well done.</Original>
 				<Japanese>%1 は鹵獲されました。おめでとうございます。</Japanese>
+				<Chinesesimp>%1 已经被夺取, 干得好！</Chinesesimp>
 			</Key>
 
-			 mission_WepCache.sqf
+			<!-- mission_WepCache.sqf -->
 
 			<Key ID="STR_WEAPCACHE1">
 				<Original>Weapon Cache</Original>
 				<Japanese>敵物資</Japanese>
+				<Chinesesimp>武器藏匿点</Chinesesimp>
 			</Key>
 			<Key ID="STR_WEAPCACHE2">
 				<Original>A weapon cache has been spotted near the marker.</Original>
 				<Japanese>敵物資がマップのマーカー付近で確認されました。</Japanese>
+				<Chinesesimp>在标记附近发现了一个武器藏匿点。</Chinesesimp>
 			</Key>
 			<Key ID="STR_WEAPCACHE3">
 				<Original>The supplies have been collected, well done.</Original>
 				<Japanese>敵物資は確保されました。おめでとうございます。</Japanese>
+				<Chinesesimp>物资已摧毁，做得很好！</Chinesesimp>
 			</Key>
-      -->
+      
 
-			<!--
-			speak_manager.sqf
+			<!-- speak_manager.sqf -->
 
 			<Key ID="STR_SPEAKMANAGER1">
 				<Original>Hello, you see somes enemies around here ?</Original>
 				<Japanese>こんにちは、この辺りで敵兵を見ませんでしたか？</Japanese>
+				<Chinesesimp>你好，你在这附近看到敌人了吗？</Chinesesimp>
 			</Key>
 			<Key ID="STR_SPEAKMANAGER2">
 				<Original>Hi, Yes, I see someone at %1 meters, Azimut %2, Hurry up!</Original>
 				<Japanese>はい、%2方向、%1mに敵兵を見ました。急いでください。</Japanese>
+				<Chinesesimp>嗨，是的，我看到有人在 %1米处，方位角 %2，快去！</Chinesesimp>
 			</Key>
 			<Key ID="STR_SPEAKMANAGER3">
 				<Original>Hi, Sorry No.</Original>
 				<Japanese>すいません、見ていません。</Japanese>
+				<Chinesesimp>嗨。对不起，没有。</Chinesesimp>
 			</Key>
 			<Key ID="STR_SPEAKMANAGER4">
 				<Original>I dont care, Go away !</Original>
 				<Japanese>知るか！どっか行け！</Japanese>
+				<Chinesesimp>我不关注这个，走开！</Chinesesimp>
 			</Key>
 			<Key ID="STR_SPEAKMANAGER5">
 				<Original>Hello, I have no fucking idea of who are your enemies...</Original>
 				<Japanese>やぁ、すまねぇが敵がどこにいるかは全く分からねぇ...</Japanese>
+				<Chinesesimp>我他妈的不知道谁是你的敌人...</Chinesesimp>
 			</Key>
 			<Key ID="STR_SPEAKMANAGER6">
 				<Original>Hello, Where is your leader ?</Original>
 				<Japanese>やぁ、指揮官はどこだい？</Japanese>
+				<Chinesesimp>你好，你们的指挥官在哪里？</Chinesesimp>
 			</Key>
 			<Key ID="STR_SPEAKMANAGER7">
 				<Original>Hi, he's at %1 meters, Azimut %2, Hurry up!</Original>
 				<Japanese>彼は%2方向、%1m先にいます、急いで！</Japanese>
+				<Chinesesimp>嗨，他在 %1米处，方位角 %2，快去！</Chinesesimp>
 			</Key>
 			<Key ID="STR_SPEAKMANAGER8">
 				<Original>Hello, I Need to speak with you, listen to me.</Original>
 				<Japanese>やぁ、どうか話を聞いてくれ。</Japanese>
+				<Chinesesimp>你好，我需要和你谈谈，听我说。</Chinesesimp>
 			</Key>
 			<Key ID="STR_SPEAKMANAGER9">
 				<Original>We have informations, Opfor will attack this place soon.</Original>
 				<Japanese>どうやら敵がもうすぐこの場所を攻撃してくるらしい。</Japanese>
+				<Chinesesimp>我们得到消息，Opfor很快就会攻击这个地方。</Chinesesimp>
 			</Key>
 			<Key ID="STR_SPEAKMANAGER10">
 				<Original>Big Air assault is expected, help us to defend the city...</Original>
 				<Japanese>航空部隊の飛来が予想される。どうか私たちを助けてくれ...</Japanese>
+				<Chinesesimp>预计将发起大空袭，请帮助我们保卫城市...</Chinesesimp>
 			</Key>
 			<Key ID="STR_SPEAKMANAGER11">
 				<Original>...the Resistance must survive!</Original>
 				<Japanese>レジスタンスは生き延びねばならないのだ！</Japanese>
+				<Chinesesimp>...抵抗组织必须幸存下来！</Chinesesimp>
 			</Key>
 			<Key ID="STR_SPEAKMANAGER12">
 				<Original>Maybe another time...</Original>
 				<Japanese>また別の時に...</Japanese>
+				<Chinesesimp>也许下次吧...</Chinesesimp>
 			</Key>
 			<Key ID="STR_SPEAKMANAGER13">
 				<Original>Hello, I Need to speak with you, listen to me.</Original>
 				<Japanese>やぁ、ちょっと話があるんだ。聞いてくれ。</Japanese>
+				<Chinesesimp>你好，我需要和你谈谈，听我说。</Chinesesimp>
 			</Key>
 			<Key ID="STR_SPEAKMANAGER14">
 				<Original>You have to deliver this precious information to my father.</Original>
 				<Japanese>この重要情報を父に届けてほしいんだ。</Japanese>
+				<Chinesesimp>你必须把这个宝贵的消息告诉我父亲。</Chinesesimp>
 			</Key>
 			<Key ID="STR_SPEAKMANAGER15">
 				<Original>Go to see my friend %1 for more infos.</Original>
 				<Japanese>%1 に会って更なる情報を得てくれ。</Japanese>
+				<Chinesesimp>去找我的朋友 %1 了解更多信息。</Chinesesimp>
 			</Key>
 			<Key ID="STR_SPEAKMANAGER16">
 				<Original>Look at the marker on your Map.</Original>
 				<Japanese>マップのマーカーを見てくれ。</Japanese>
+				<Chinesesimp>查看地图上的标记。</Chinesesimp>
 			</Key>
 			<Key ID="STR_SPEAKMANAGER17">
 				<Original>Yes, I know him !</Original>
 				<Japanese>ああ、彼のことなら知っている！</Japanese>
+				<Chinesesimp>是的，我认识他！</Chinesesimp>
 			</Key>
 			<Key ID="STR_SPEAKMANAGER18">
 				<Original>he's hidding in a small house, enemy forces try to catch him!</Original>
 				<Japanese>彼は小さな家の中で隠れている。敵が彼を捕まえようとしている！</Japanese>
+				<Chinesesimp>他躲在一个小房子里，敌军想要抓住他！</Chinesesimp>
 			</Key>
 			<Key ID="STR_SPEAKMANAGER18">
 				<Original>Look at the marker on your Map, Hurry hup!</Original>
 				<Japanese>マップのマーカーを確認してくれ。早く！</Japanese>
+				<Chinesesimp>看你地图上的标记，快去！</Chinesesimp>
 			</Key>
 			<Key ID="STR_SPEAKMANAGER19">
 				<Original>Oh, I dont knows,</Original>
 				<Japanese>あー、知らんな。</Japanese>
+				<Chinesesimp>哦，我不知道,</Chinesesimp>
 			</Key>
 			<Key ID="STR_SPEAKMANAGER20">
 				<Original>Go to see my friend %1 for more infos.</Original>
 				<Japanese>%1 に会ってもっと情報を得てくれ。</Japanese>
+				<Chinesesimp>去找我的朋友 %1 了解更多信息。</Chinesesimp>
 			</Key>
 			<Key ID="STR_SPEAKMANAGER21">
 				<Original>Look at the marker on your Map.</Original>
 				<Japanese>マップのマーカーを見てくれ。</Japanese>
+				<Chinesesimp>查看地图上的标记。</Chinesesimp>
 			</Key>
 			<Key ID="STR_SPEAKMANAGER22">
 				<Original>Thank you very much, Please take your reward.</Original>
 				<Japanese>感謝する。褒美を受け取ってくれ。</Japanese>
+				<Chinesesimp>非常感谢，请收下奖励。</Chinesesimp>
 			</Key>
 			<Key ID="STR_SPEAKMANAGER23">
 				<Original>Sorry, I wait for something special...</Original>
 				<Japanese>すまない、特別な何かを待っているんだ...</Japanese>
+				<Chinesesimp>抱歉，我在等一些特别的东西...</Chinesesimp>
 			</Key>
 			<Key ID="STR_SPEAKMANAGER24">
 				<Original>Hello, What do you need ?</Original>
 				<Japanese>やぁ、何が必要だ？</Japanese>
+				<Chinesesimp>你好，你需要什么？</Chinesesimp>
 			</Key>
 			<Key ID="STR_SPEAKMANAGER25">
 				<Original>Hi, We running out of %1 !</Original>
 				<Japanese>やぁ、私たちは %1 が不足している！</Japanese>
+				<Chinesesimp>嗨，我们用光了 %1！</Chinesesimp>
 			</Key>
 			<Key ID="STR_SPEAKMANAGER26">
 				<Original>Please bring us back 3 %1 of %2</Original>
 				<Japanese>どうか私たちに3 %1 の %2 を持ってきてくれ。</Japanese>
+				<Chinesesimp>请帮我们带回一些%3 %2的 %1</Chinesesimp>
 			</Key>
 			<Key ID="STR_SPEAKMANAGER27">
 				<Original>I will wait here for you to come back with the %1, Please hurry up!</Original>
 				<Japanese>私はここで君が %1 を持ってきてくれるのを待っているよ。どうか急いでくれ！</Japanese>
+				<Chinesesimp>我会在这里等你带着 %1 回来，请快点！</Chinesesimp>
 			</Key>
-      -->
-
 		</Package>
 	<Package name="NREEarplugs">
 		<Key ID="STR_NREEP_IN_HINT">
