@@ -1,6 +1,22 @@
  // Add EricJ Weapons
 if ( GRLIB_EJW_enabled ) then {
     GRLIB_EJW_Blacklist = [
+        "Afghan01Hat",
+        "Afghan02Hat",
+        "Afghan03Hat",
+        "Afghan04Hat",
+        "Afghan05Hat",
+        "Afghan06Hat",        
+        "U_Afghan01",
+        "U_Afghan01NH",
+        "U_Afghan02",
+        "U_Afghan02NH",
+        "U_Afghan03",
+        "U_Afghan03NH",
+        "U_Afghan04",
+        "U_Afghan05",
+        "U_Afghan06",
+        "U_Afghan06NH"
 	];
     (
         "
