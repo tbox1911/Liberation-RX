@@ -125,6 +125,9 @@ chimera_sign addAction ["<t color='#FFFFFF'>" + localize "STR_TIPS" + "</t>",{cr
 waitUntil { time > 2 };
 initAmbientLife;
 enableEnvironment [true, true];
-
+waitUntil {!isNull findDisplay 46};
+(findDisplay 46) displayAddEventHandler ["Unload",{	
+	// code here gets executed on the client at end of mission, whether due to player abort, loss of connection, or mission ended by server; might not work on headless clients
+}];
 [] execVM "scripts\client\ui\intro.sqf";
 diag_log "--- Client Init stop ---";
