@@ -60,9 +60,12 @@ if (!([] call F_getValid)) exitWith {};
 
 [] execVM "scripts\server\game\save_manager.sqf";
 waitUntil { sleep 1; !isNil "save_is_loaded" };
-waitUntil { sleep 1; !isNil "abort_loading" };
-publicVariable "abort_loading";
-if (abort_loading) exitWith {GRLIB_init_server = false; publicVariable "GRLIB_init_server";};
+if (abort_loading) exitWith {
+	GRLIB_init_server = false;
+	publicVariable "GRLIB_init_server";
+	publicVariable "abort_loading";
+	publicVariable "abort_loading_msg";
+};
 [] execVM "scripts\server\game\apply_saved_scores.sqf";
 [] execVM "scripts\server\game\apply_default_permissions.sqf";
 [] execVM "scripts\server\base\fobbox_manager.sqf";
@@ -117,5 +120,6 @@ GRLIB_side_enemy setFriend [resistance, 0];
 addMissionEventHandler ['HandleDisconnect', cleanup_player];
 addMissionEventHandler ["MPEnded", {diag_log "--- LRX MP Mission End"}];
 addMissionEventHandler ["Ended", {diag_log "--- LRX Mission End"}];
-GRLIB_init_server = true; publicVariable "GRLIB_init_server";
+GRLIB_init_server = true;
+publicVariable "GRLIB_init_server";
 diag_log "--- Server Init stop ---";

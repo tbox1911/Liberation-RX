@@ -60,13 +60,13 @@ GRLIB_r3 = "&#76;&#82;&#88;&#32;&#73;&#110;&#102;&#111;";
 
 // Check wrong sides
 if (GRLIB_force_load == 0 && GRLIB_mod_west == GRLIB_mod_east) then { abort_loading = true };
-if (abort_loading) exitWith {
-	diag_log "*********************************************************************************";
-	diag_log "FATAL! - Invalid Side selection !";
-	diag_log format ["side West (%1) conflict with side East (%2)", GRLIB_mod_west, GRLIB_mod_east];
-	diag_log "Loading Aborted to protect data integrity.";
-	diag_log "Correct the Side selection.";
-	diag_log "*********************************************************************************";
+if (abort_loading) exitWith { abort_loading_msg = format [
+	"********************************\n
+	FATAL! - Invalid Side selection !\n\n
+	side West (%1) conflict with side East (%2)\n\n
+	Loading Aborted to protect data integrity.\n
+	Correct the Side selection.\n
+	*********************************", GRLIB_mod_west, GRLIB_mod_east];
 };
 
 // Detect Addons
@@ -90,13 +90,13 @@ if ( !GRLIB_GM_enabled && "GM_WEST" in [GRLIB_mod_west, GRLIB_mod_east]) then { 
 if ( !GRLIB_GM_enabled && "GM_WEST_WINT" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
 if ( !GRLIB_GM_enabled && "GM_EAST" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
 if ( !GRLIB_GM_enabled && "GM_EAST_WINT" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
-if (abort_loading) exitWith {
-	diag_log "*********************************************************************************";
-	diag_log "FATAL! - Invalid Side selection !";
-	diag_log format ["Missing MOD Addons for side West (%1) or side East (%2)", GRLIB_mod_west, GRLIB_mod_east];
-	diag_log "Loading Aborted to protect data integrity.";
-	diag_log "Correct the Side selection.";
-	diag_log "*********************************************************************************";
+if (abort_loading) exitWith { abort_loading_msg = format [
+	"********************************\n
+	FATAL! - Invalid Side selection !\n\n
+	Missing MOD Addons for side West (%1) or side East (%2)\n\n
+	Loading Aborted to protect data integrity.\n
+	Correct the Side selection.\n
+	*********************************", GRLIB_mod_west, GRLIB_mod_east];
 };
 
 // Overide Huron type

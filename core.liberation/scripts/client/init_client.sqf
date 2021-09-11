@@ -1,8 +1,11 @@
 diag_log "--- Client Init start ---";
-titleText ["Loading...","BLACK FADED", 1000];
+
 waitUntil {!isNil "abort_loading" };
-if (abort_loading) exitWith {
-	titleText ["Sorry, An error occured on savegame loading.\nPlease check the error logs.","BLACK FADED", 1000];
+waitUntil {!isNil "GRLIB_init_server" };
+if (!GRLIB_init_server || abort_loading) exitWith {
+	private _msg = format ["Sorry, An error occured on Server startup.\nPlease check the error logs.\n\n%1", abort_loading_msg];
+	titleText [_msg ,"BLACK FADED", 100];
+	diag_log _msg;
 	uisleep 10;
 	endMission "LOSER";
 };
@@ -48,7 +51,7 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 	[] execVM "scripts\client\misc\synchronise_vars.sqf";
 	[] execVM "scripts\client\ui\ui_manager.sqf";
 };
-
+[] execVM "scripts\client\ui\intro.sqf";
 [] execVM "scripts\client\ammoboxes\ammobox_action_manager.sqf";
 [] execVM "scripts\client\markers\sector_manager.sqf";
 [] execVM "scripts\client\misc\sides_stats_manager.sqf";
@@ -77,6 +80,7 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 [] execVM "scripts\client\actions\man_manager.sqf";
 [] execVM "scripts\client\actions\squad_manager.sqf";
 [] execVM "scripts\client\ui\ui_manager.sqf";
+[] execVM "GREUH\scripts\GREUH_activate.sqf";
 
 if (GRLIB_enable_arsenal) then {
 	[] execVM "addons\LARs\liberationArsenal.sqf";
@@ -122,12 +126,13 @@ addMissionEventHandler["draw3D",{
 chimera_sign addAction ["<t color='#FFFFFF'>" + localize "STR_READ_ME" + "</t>",{createDialog "liberation_notice"},"",999,true,true,"","[] call is_menuok",5];
 chimera_sign addAction ["<t color='#FFFFFF'>" + localize "STR_TIPS" + "</t>",{createDialog "liberation_tips"},"",998,true,true,"","[] call is_menuok",5];
 
-waitUntil { time > 2 };
-initAmbientLife;
-enableEnvironment [true, true];
 waitUntil {!isNull findDisplay 46};
 (findDisplay 46) displayAddEventHandler ["Unload",{	
 	// code here gets executed on the client at end of mission, whether due to player abort, loss of connection, or mission ended by server; might not work on headless clients
 }];
-[] execVM "scripts\client\ui\intro.sqf";
+
+waitUntil { time > 5 };
+initAmbientLife;
+enableEnvironment [true, true];
+
 diag_log "--- Client Init stop ---";

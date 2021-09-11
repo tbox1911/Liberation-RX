@@ -1,14 +1,19 @@
 diag_log "--- Liberation RX by pSiKO ---";
-titleText ["","BLACK FADED", 1000];
 [] call compileFinal preprocessFileLineNUmbers "build_info.sqf";
-if (!isMultiplayer) exitWith { diag_log "Sorry, Liberation RX is a Multiplayer Mission Only..." };
+if (!isMultiplayer) exitWith {
+	titleText ["Sorry, Liberation RX is a Multiplayer Mission Only...","BLACK FADED", 100];
+	uisleep 10;
+	endMission "LOSER";
+};
 diag_log "--- Init start ---";
+titleText ["Loading...","BLACK FADED", 100];
 
 enableSaving [false, false];
 disableMapIndicators [false,true,false,false];
 setGroupIconsVisible [false,false];
 
 abort_loading = false;
+abort_loading_msg = "Unkwon Error";
 GRLIB_ACE_enabled = false;
 [] call compileFinal preprocessFileLineNUmbers "whitelist.sqf";
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\liberation_functions.sqf";
@@ -37,12 +42,12 @@ if (!abort_loading) then {
 	};
 } else {
 	GRLIB_init_server = false;
+	publicVariable "GRLIB_init_server";
 	publicVariable "abort_loading";
+	publicVariable "abort_loading_msg";
 };
 
 if (!isDedicated && hasInterface) then {
-	waitUntil {!isNil "GRLIB_init_server" };
-	[] execVM "GREUH\scripts\GREUH_activate.sqf";
 	[] execVM "scripts\client\init_client.sqf";
 } else {
 	setViewDistance 1600;
