@@ -1,5 +1,7 @@
 // *** FRIENDLIES ***
 GRLIB_side_friendly = RESISTANCE;
+GRLIB_color_friendly = "ColorGUER";
+
 // Default classname: scripts\shared\default_classnames.sqf
 // Advanced definition: scripts\shared\classnames.sqf
 
