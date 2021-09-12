@@ -36,7 +36,7 @@ GRLIB_squad_size = ["SquadSize",3] call bis_fnc_getParamValue;
 GRLIB_max_squad_size = ["MaxSquadSize",7] call bis_fnc_getParamValue;
 GRLIB_enable_arsenal = ["EnableArsenal",1] call bis_fnc_getParamValue;
 GRLIB_limited_arsenal = ["LimitedArsenal",1] call bis_fnc_getParamValue;
-GRLIB_filter_arsenal = ["EnableFilter",1] call bis_fnc_getParamValue;
+GRLIB_filter_arsenal = ["EnableFilter",0] call bis_fnc_getParamValue;
 GRLIB_permission_vehicles = ["EnableLock",1] call bis_fnc_getParamValue;
 GRLIB_forced_loadout = ["ForcedLoadout",1] call bis_fnc_getParamValue;
 GRLIB_fancy_info = ["FancyInfo",1] call bis_fnc_getParamValue;
@@ -60,12 +60,13 @@ GRLIB_r3 = "&#76;&#82;&#88;&#32;&#73;&#110;&#102;&#111;";
 
 // Check wrong sides
 if (GRLIB_force_load == 0 && GRLIB_mod_west == GRLIB_mod_east) then { abort_loading = true };
-if (abort_loading) exitWith {
-	diag_log "*********************************************************************************";
-	diag_log "FATAL! - Invalid Side selection !";
-	diag_log "Loading Aborted to protect data integrity.";
-	diag_log "Correct the Side selection.";
-	diag_log "*********************************************************************************";
+if (abort_loading) exitWith { abort_loading_msg = format [
+	"********************************\n
+	FATAL! - Invalid Side selection !\n\n
+	side West (%1) conflict with side East (%2)\n\n
+	Loading Aborted to protect data integrity.\n
+	Correct the Side selection.\n
+	*********************************", GRLIB_mod_west, GRLIB_mod_east];
 };
 
 // Detect Addons
@@ -74,8 +75,29 @@ GRLIB_ACRE_enabled = isClass(configFile >> "cfgPatches" >> "acre_main"); // Retu
 GRLIB_OPTRE_enabled = isClass(configFile >> "cfgPatches" >> "OPTRE_Core"); // Returns true if OPTRE is enabled
 GRLIB_GM_enabled = isClass(configFile >> "cfgPatches" >> "gm_Core"); // Returns true if GlobMob is enabled
 GRLIB_CUPW_enabled = isClass(configFile >> "CfgPatches" >> "CUP_Weapons_AK"); // Returns true if CUP Weapons is enabled
+GRLIB_CUPU_enabled = isClass(configFile >> "CfgPatches" >> "CUP_Creatures_Extra"); // Returns true if CUP Units is enabled
+GRLIB_CUPV_enabled = isClass(configFile >> "CfgPatches" >> "CUP_AirVehciles_AH1Z"); // Returns true if CUP Vehicles is enabled
 GRLIB_EJW_enabled = isClass(configFile >> "CfgPatches" >> "Ej_u100"); // Returns true if EricJ Weapons is enabled 
 GRLIB_RHS_enabled = isClass(configFile >> "CfgPatches" >> "rhs_main"); // Returns true if RHS is enabled 
+
+// Check side Addon
+if ( !GRLIB_EJW_enabled && "EJW" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
+if ( !GRLIB_CUPU_enabled && !GRLIB_CUPV_enabled && "CP_BAF_DES" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
+if ( !GRLIB_CUPU_enabled && !GRLIB_CUPV_enabled && "CP_TA" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
+if ( !GRLIB_RHS_enabled && "RHS_AFRF" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
+if ( !GRLIB_RHS_enabled && "RHS_USAF" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
+if ( !GRLIB_GM_enabled && "GM_WEST" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
+if ( !GRLIB_GM_enabled && "GM_WEST_WINT" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
+if ( !GRLIB_GM_enabled && "GM_EAST" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
+if ( !GRLIB_GM_enabled && "GM_EAST_WINT" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
+if (abort_loading) exitWith { abort_loading_msg = format [
+	"********************************\n
+	FATAL! - Invalid Side selection !\n\n
+	Missing MOD Addons for side West (%1) or side East (%2)\n\n
+	Loading Aborted to protect data integrity.\n
+	Correct the Side selection.\n
+	*********************************", GRLIB_mod_west, GRLIB_mod_east];
+};
 
 // Overide Huron type
 if ( GRLIB_mod_west in ["A3_BLU", "A3_IND"]) then {
@@ -118,8 +140,9 @@ GRLIB_mod_enabled = false;
 
 // Arsenal MOD filters
 if ( GRLIB_filter_arsenal ) then {
-	if ( GRLIB_OPTRE_enabled ) then { GRLIB_MOD_signature = "OPTRE_"; GRLIB_mod_enabled = true };
+	if ( GRLIB_OPTRE_enabled ) then { GRLIB_MOD_signature = "optre_"; GRLIB_mod_enabled = true };
+	if ( GRLIB_EJW_enabled ) then { GRLIB_MOD_signature = "ej_"; GRLIB_mod_enabled = true };
 	if ( GRLIB_GM_enabled ) then { GRLIB_MOD_signature = "gm_"; GRLIB_mod_enabled = true };
-	if ( GRLIB_CUPW_enabled ) then { GRLIB_MOD_signature = "CUP_"; GRLIB_mod_enabled = true };
+	if ( GRLIB_CUPW_enabled ) then { GRLIB_MOD_signature = "cup_"; GRLIB_mod_enabled = true };
 	if ( GRLIB_RHS_enabled ) then { GRLIB_MOD_signature = "rhs"; GRLIB_mod_enabled = true };
 };

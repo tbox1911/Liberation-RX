@@ -174,7 +174,7 @@ while { true } do {
 			_vehicle enableSimulationGlobal false;
 			_vehicle setVariable ["R3F_LOG_disabled", true];
 
-			_dist = 0.6 * (sizeOf _classname);
+			_dist = 0.4 * (sizeOf _classname);
 			if (_dist < 3.5) then { _dist = 3.5 };
 			_dist = _dist + 0.5;
 
@@ -244,7 +244,7 @@ while { true } do {
 
 				if ( count _near_objects == 0 ) then {
 					{
-						_dist22 = 0.6 * (sizeOf (typeof _x));
+						_dist22 = 0.4 * (sizeOf (typeof _x));
 						if ( _dist22 < 1 ) then { _dist22 = 1 };
 						if (_truepos distance _x < _dist22) then {
 							_near_objects pushback _x;

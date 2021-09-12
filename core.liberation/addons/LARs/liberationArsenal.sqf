@@ -27,7 +27,7 @@ if (GRLIB_limited_arsenal) then {
 // Add OPTRE Weapons
 [] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_OPTRE.sqf";
  // Add EricJ Weapons
-[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_ERICJ.sqf";
+[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_EJW.sqf";
 // Add RHS Weapons
 [] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_RHS.sqf";
 

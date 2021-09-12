@@ -40,7 +40,7 @@ class Params
 		title = $STR_FILTER_ARSENAL;
 		values[] = { 1, 0 };
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 1;
+		default = 0;
 	};	
 	class EnableLock {
 		title = $STR_VEH_LOCK;
@@ -68,8 +68,8 @@ class Params
 	};
 	class ModPresetEast {
 		title = "MOD Preset - Enemy";
-		values[] = { 0,1,2,3,4,5,6,7,8 };
-		texts[] = { "A3 CSAT", "A3 NATO", "A3 AAF", "A3 CSAT Urban", "CP Takistan", "RHS AFRF", "RHS USAF", "GM EAST", "GM EAST Winter"};
+		values[] = { 0,1,2,3,4,5,6,7,8,9 };
+		texts[] = { "A3 CSAT", "A3 NATO", "A3 AAF", "A3 CSAT Urban", "CP Takistan", "EJW Taliban", "RHS AFRF", "RHS USAF", "GM EAST", "GM EAST Winter"};
 		default = 0;
 	};
 	class ForcedLoadout {

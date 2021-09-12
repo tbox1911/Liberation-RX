@@ -1,5 +1,8 @@
 // *** BADDIES ***
 GRLIB_side_enemy = EAST;
+GRLIB_color_enemy = "ColorOPFOR";
+GRLIB_color_enemy_bright = "ColorRED";
+
 // All class MUST be defined !
 
 opfor_sentry = "O_Soldier_lite_F";
@@ -88,6 +91,9 @@ boats_east = [
 ];
 
 opfor_vehicles = [
+	"O_MRAP_02_hmg_F",
+	"O_MRAP_02_hmg_F",
+	"O_MRAP_02_gmg_F",
 	"O_APC_Tracked_02_cannon_F",
 	"O_APC_Wheeled_02_rcws_F",
 	"O_APC_Tracked_02_cannon_F",
@@ -95,10 +101,6 @@ opfor_vehicles = [
 	"O_MBT_02_cannon_F",
 	"O_MBT_02_cannon_F",
 	"O_APC_Tracked_02_AA_F",
-	"O_MRAP_02_gmg_F",
-	"O_MRAP_02_hmg_F",
-	"O_MRAP_02_gmg_F",
-	"O_MRAP_02_hmg_F",
 	"O_MBT_04_cannon_F",
 	"O_MBT_04_command_F"
 ];
@@ -116,10 +118,11 @@ opfor_vehicles_low_intensity = [
 opfor_battlegroup_vehicles = [
 	"O_MRAP_02_hmg_F",
 	"O_MRAP_02_gmg_F",
+	"O_MRAP_02_hmg_F",
+	"O_MRAP_02_gmg_F",
 	"O_APC_Tracked_02_cannon_F",
 	"O_APC_Wheeled_02_rcws_F",
 	"O_Truck_03_covered_F",
-	"O_MBT_02_cannon_F",
 	"O_MBT_02_cannon_F",
 	"O_APC_Tracked_02_AA_F",
 	"O_Heli_Attack_02_F",

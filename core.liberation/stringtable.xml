@@ -4979,52 +4979,52 @@
 				<Japanese>彼は小さな家の中で隠れている。敵が彼を捕まえようとしている！</Japanese>
 				<Chinesesimp>他躲在一个小房子里，敌军想要抓住他！</Chinesesimp>
 			</Key>
-			<Key ID="STR_SPEAKMANAGER18">
+			<Key ID="STR_SPEAKMANAGER19">
 				<Original>Look at the marker on your Map, Hurry hup!</Original>
 				<Japanese>マップのマーカーを確認してくれ。早く！</Japanese>
 				<Chinesesimp>看你地图上的标记，快去！</Chinesesimp>
 			</Key>
-			<Key ID="STR_SPEAKMANAGER19">
+			<Key ID="STR_SPEAKMANAGER20">
 				<Original>Oh, I dont knows,</Original>
 				<Japanese>あー、知らんな。</Japanese>
 				<Chinesesimp>哦，我不知道,</Chinesesimp>
 			</Key>
-			<Key ID="STR_SPEAKMANAGER20">
+			<Key ID="STR_SPEAKMANAGER21">
 				<Original>Go to see my friend %1 for more infos.</Original>
 				<Japanese>%1 に会ってもっと情報を得てくれ。</Japanese>
 				<Chinesesimp>去找我的朋友 %1 了解更多信息。</Chinesesimp>
 			</Key>
-			<Key ID="STR_SPEAKMANAGER21">
+			<Key ID="STR_SPEAKMANAGER22">
 				<Original>Look at the marker on your Map.</Original>
 				<Japanese>マップのマーカーを見てくれ。</Japanese>
 				<Chinesesimp>查看地图上的标记。</Chinesesimp>
 			</Key>
-			<Key ID="STR_SPEAKMANAGER22">
+			<Key ID="STR_SPEAKMANAGER23">
 				<Original>Thank you very much, Please take your reward.</Original>
 				<Japanese>感謝する。褒美を受け取ってくれ。</Japanese>
 				<Chinesesimp>非常感谢，请收下奖励。</Chinesesimp>
 			</Key>
-			<Key ID="STR_SPEAKMANAGER23">
+			<Key ID="STR_SPEAKMANAGER24">
 				<Original>Sorry, I wait for something special...</Original>
 				<Japanese>すまない、特別な何かを待っているんだ...</Japanese>
 				<Chinesesimp>抱歉，我在等一些特别的东西...</Chinesesimp>
 			</Key>
-			<Key ID="STR_SPEAKMANAGER24">
+			<Key ID="STR_SPEAKMANAGER25">
 				<Original>Hello, What do you need ?</Original>
 				<Japanese>やぁ、何が必要だ？</Japanese>
 				<Chinesesimp>你好，你需要什么？</Chinesesimp>
 			</Key>
-			<Key ID="STR_SPEAKMANAGER25">
+			<Key ID="STR_SPEAKMANAGER26">
 				<Original>Hi, We running out of %1 !</Original>
 				<Japanese>やぁ、私たちは %1 が不足している！</Japanese>
 				<Chinesesimp>嗨，我们用光了 %1！</Chinesesimp>
 			</Key>
-			<Key ID="STR_SPEAKMANAGER26">
+			<Key ID="STR_SPEAKMANAGER27">
 				<Original>Please bring us back 3 %1 of %2</Original>
 				<Japanese>どうか私たちに3 %1 の %2 を持ってきてくれ。</Japanese>
 				<Chinesesimp>请帮我们带回一些%3 %2的 %1</Chinesesimp>
 			</Key>
-			<Key ID="STR_SPEAKMANAGER27">
+			<Key ID="STR_SPEAKMANAGER28">
 				<Original>I will wait here for you to come back with the %1, Please hurry up!</Original>
 				<Japanese>私はここで君が %1 を持ってきてくれるのを待っているよ。どうか急いでくれ！</Japanese>
 				<Chinesesimp>我会在这里等你带着 %1 回来，请快点！</Chinesesimp>
@@ -5259,7 +5259,7 @@
 			<Original>Strict - Warning + Autoban</Original>
 			<French>Strict - Warning + Autoban</French>
 			<Chinesesimp>严厉 - 警告 + 自动ban</Chinesesimp>
-			<Japanese>厳しめ< - 警告 + オートキック</Japanese>
+			<Japanese>厳しめ - 警告 + オートキック</Japanese>
 		</Key>
 		<Key ID="STR_TK_MODE_RELAX">
 			<Original>Relax - The Player decide</Original>
