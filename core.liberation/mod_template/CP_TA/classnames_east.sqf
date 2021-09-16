@@ -155,11 +155,11 @@ opfor_troup_transports = [
 opfor_choppers = [
 	"CUP_O_Mi17_TK",
 	"CUP_O_MI6T_TKA",
-	"CUP_O_MI6A_TKA"
+	"CUP_O_UH1H_armed_TKA"
 ];
 
 opfor_air = [
-  	"CUP_O_Su25_Dyn_TKA",
+	"CUP_O_Su25_Dyn_TKA",
 	"CUP_O_L39_TK",
 	"CUP_O_AN2_TK",
 	"CUP_O_MI6A_TKA",
