@@ -3,6 +3,12 @@ GRLIB_arsenal_side = WEST;
 
 //Blacklist Items
 blacklisted_bag = [
+	"CUP_B_M2_Gun_Bag",
+	"CUP_B_M2_MiniTripod_Bag",
+	"CUP_B_M252_Bipod_Bag",
+	"CUP_B_M252_Gun_Bag",
+	"CUP_B_Mk19_Gun_Bag",
+	"CUP_B_Mk19_Tripod_Bag",
 	"B_Static_Designator_01_weapon_F",
 	"B_W_Static_Designator_01_weapon_F",
 	"O_Static_Designator_02_weapon_F",
@@ -110,9 +116,20 @@ blacklisted_weapon = [
 	"U_O_V_Soldier_Viper_F",
 	"O_V_Soldier_Viper_F",
 	"O_V_Soldier_Viper_hex_F",
-	"CUP_optic_CWS"
+	"CUP_optic_CWS",
+	"CUP_optic_AN_PAS_13c1",
+	"CUP_optic_AN_PAS_13c2",
+	"CUP_optic_GOSHAWK",
+	"CUP_optic_GOSHAWK_RIS"	
 ];
 
 GRLIB_whitelisted_from_arsenal = [
-
+	"Medikit",
+	"FirstAidKit",
+	"ToolKit",
+	"ItemGPS",
+	"Laserdesignator",
+	"Binocular",
+	"MineDetector",
+	"Rangefinder"
 ];

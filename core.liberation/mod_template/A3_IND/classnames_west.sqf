@@ -40,6 +40,8 @@ infantry_units = [
 	[pilot_classname,1,0,0,GRLIB_perm_log]
 ];
 
+units_loadout_overide = [];
+
 light_vehicles = [
 	["I_Quadbike_01_F",1,5,1,0],
 	["I_Boat_Transport_01_F",1,25,1,GRLIB_perm_inf],

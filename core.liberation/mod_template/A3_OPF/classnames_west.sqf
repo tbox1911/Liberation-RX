@@ -43,6 +43,9 @@ infantry_units = [
 	[crewman_classname,1,0,0,GRLIB_perm_inf],
 	[pilot_classname,1,0,0,GRLIB_perm_log]
 ];
+units_loadout_overide = [
+	"O_medic_F"
+];
 
 light_vehicles = [
 	["O_Quadbike_01_F",1,5,1,0],

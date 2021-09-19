@@ -36,6 +36,12 @@ infantry_units = [
 	[pilot_classname,1,0,0,GRLIB_perm_log]
 ];
 
+units_loadout_overide = [
+	"CUP_B_BAF_Soldier_RiflemanAT_DDPM",
+	"CUP_B_BAF_Soldier_AA_DDPM",
+	"CUP_B_BAF_Soldier_AT_DDPM"
+];	
+
 light_vehicles = [
 	["CUP_O_TT650_TKA",1,5,1,0],
 	["CUP_B_M1030_USMC",1,5,1,GRLIB_perm_log],
