@@ -9,6 +9,13 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 
 R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
 [
+	"CUP_O_Su25_Dyn_TKA",
+	"CUP_O_L39_TK",
+	"CUP_O_MI6A_TKA",
+	"CUP_O_MI6T_TKA",
+	"CUP_O_Mi17_TK",
+	"CUP_O_Mi24_D_Dynamic_TK",
+	"CUP_O_UH1H_armed_TKA"
 ];
 
 R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
@@ -20,8 +27,11 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
   	["CUP_O_Su25_Dyn_TKA", 25],
 	["CUP_O_L39_TK", 25],
 	["CUP_O_AN2_TK", 25],
-	["CUP_O_MI6A_TKA", 25],
-	["CUP_O_Mi24_D_Dynamic_TK", 25]
+	["CUP_O_MI6A_TKA", 50],
+	["CUP_O_MI6T_TKA", 50],
+	["CUP_O_Mi17_TK", 25],
+	["CUP_O_Mi24_D_Dynamic_TK", 25],
+	["CUP_O_UH1H_armed_TKA", 25]
 ];
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
@@ -30,11 +40,6 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 
 R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 [
-    "CUP_O_Su25_Dyn_TKA",
-	"CUP_O_L39_TK",
-	"CUP_O_AN2_TK",
-	"CUP_O_MI6A_TKA",
-	"CUP_O_Mi24_D_Dynamic_TK"	
 ];
 
 //--------------- Ground ---------------
