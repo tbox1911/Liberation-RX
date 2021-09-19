@@ -4419,16 +4419,16 @@
 				<Japanese>&lt;t size='0.8'&gt;大型トラック&lt;br/&gt;コスト: 300 弾薬&lt;/t&gt;</Japanese>
 			</Key>
 			<Key ID="STR_APC">
-				<Original>&lt;t size='0.8'&gt;APC.&lt;br/&gt;Cost: 400 Ammo&lt;/t&gt;</Original>
-				<Japanese>&lt;t size='0.8'&gt;APC&lt;br/&gt;コスト: 400 弾薬&lt;/t&gt;</Japanese>
+				<Original>&lt;t size='0.8'&gt;APC.&lt;br/&gt;Cost: 750 Ammo&lt;/t&gt;</Original>
+				<Japanese>&lt;t size='0.8'&gt;APC&lt;br/&gt;コスト: 750 弾薬&lt;/t&gt;</Japanese>
 			</Key>
 			<Key ID="STR_BOAT">
 				<Original>&lt;t size='0.8'&gt;Transport Boats.&lt;br/&gt;Cost: 250 Ammo&lt;/t&gt;</Original>
 				<Japanese>&lt;t size='0.8'&gt;ボート&lt;br/&gt;コスト: 250 弾薬&lt;/t&gt;</Japanese>
 			</Key>
 			<Key ID="STR_AIRSUPERIORITY">
-				<Original>&lt;t size='0.8'&gt;Air Superiority.&lt;br/&gt;Cost: 500 Ammo&lt;/t&gt;</Original>
-				<Japanese>&lt;t size='0.8'&gt;制空権&lt;br/&gt;コスト: 500 弾薬&lt;/t&gt;</Japanese>
+				<Original>&lt;t size='0.8'&gt;Air Superiority.&lt;br/&gt;Cost: 2000 Ammo&lt;/t&gt;</Original>
+				<Japanese>&lt;t size='0.8'&gt;制空権&lt;br/&gt;コスト: 2000 弾薬&lt;/t&gt;</Japanese>
 			</Key>
 
 			<!-- liberation_sendammo.hpp -->
