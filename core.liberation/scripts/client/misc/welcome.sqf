@@ -16,7 +16,7 @@ if (!GRLIB_loadout_overide) then {
 		[player, configfile >> "CfgVehicles" >> typeOf player] call BIS_fnc_loadInventory;
 	};
 	if (typeOf player in units_loadout_overide) then {
-		_loadouts_folder = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, toLower (typeOf _unit)];
+		_loadouts_folder = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, toLower (typeOf player)];
 		[player] call compileFinal preprocessFileLineNUmbers _loadouts_folder;
 	};
 	if (!(isNil "GRLIB_respawn_loadout")) then {
