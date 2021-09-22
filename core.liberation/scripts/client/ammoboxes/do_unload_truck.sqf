@@ -1,5 +1,5 @@
 params [ "_truck_to_unload"];
-private [ "_next_box", "_next_pos", "_offset" ];
+private [ "_next_box", "_next_pos", "_offset", "_all_objects" ];
 
 _offset = 0;
 
@@ -10,7 +10,7 @@ _offset = 0;
 if ( _truck_to_unload getVariable ["GRLIB_ammo_truck_load", 0] > 0 ) then {
 	_truck_to_unload setVariable ["GRLIB_ammo_truck_load", 0, true];
 	[ _truck_to_unload, false ] remoteExec [ "F_objectProtection", 0 ];
-
+	_all_objects = attachedObjects _truck_to_unload;
 	{
 		_next_box = _x;
 		[ _next_box, false ] remoteExec [ "F_objectProtection", 0 ];
@@ -23,12 +23,13 @@ if ( _truck_to_unload getVariable ["GRLIB_ammo_truck_load", 0] > 0 ) then {
 		_next_box setDamage 0;
 		_offset = _offset - 2.2;
 		sleep 0.5;
-		_next_box setVariable ["R3F_LOG_disabled", false, true];
-		[ _next_box, true ] remoteExec [ "F_objectProtection", 0 ];
-	} foreach ( attachedObjects _truck_to_unload);
+	} foreach _all_objects;
 
-	sleep 0.5;
-
+	sleep 1;
+	{
+		[ _x, true ] remoteExec [ "F_objectProtection", 0 ];
+		_x setVariable ["R3F_LOG_disabled", false, true];
+	} forEach _all_objects;
 	[ _truck_to_unload, true ] remoteExec [ "F_objectProtection", 0 ];
 
 	hint localize "STR_BOX_UNLOADED";
