@@ -36,7 +36,6 @@ F_lessLoadedHC = compileFinal preprocessFileLineNumbers "scripts\shared\function
 F_adaptiveOpforFactor = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_adaptiveOpforFactor.sqf";
 F_getFobName = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getFobName.sqf";
 F_getValid = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getValid.sqf";
-F_objectProtection = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_objectProtection.sqf";
 F_isBigtownActive = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_isBigtownActive.sqf";
 F_getUnitPositionId = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getUnitPositionId.sqf";
 F_getCommander = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getCommander.sqf";
