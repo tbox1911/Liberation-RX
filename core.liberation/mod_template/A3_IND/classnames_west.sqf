@@ -32,6 +32,7 @@ infantry_units = [
 	["I_soldier_M_F",1,0,0,GRLIB_perm_inf],
 	["I_soldier_LAT_F",1,0,0,0],
 	["I_Soldier_AR_F",1,0,0,GRLIB_perm_inf],
+	["I_diver_F",1,0,0,GRLIB_perm_inf],
 	["I_Soldier_exp_F",1,0,0,GRLIB_perm_log],
 	["I_soldier_AA_F",1,0,0,GRLIB_perm_log],
 	["I_soldier_AT_F",1,0,0,GRLIB_perm_log],
