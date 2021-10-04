@@ -3,8 +3,8 @@ waitUntil {sleep 1; !isNil "sectors_allSectors" };
 while { GRLIB_endgame == 0 } do {
 	sleep (30 + floor(random 30));
 
-	private _unit_lst = [(allPlayers - (entities "HeadlessClient_F")), {
-		alive _x && vehicle _x == _x &&
+	private _unit_lst = [allPlayers, {
+		alive _x && vehicle _x == _x && isPlayer _x &&
 		(_x distance2D lhd) > GRLIB_sector_size &&
 		(_x distance2D (getmarkerpos GRLIB_respawn_marker)) > GRLIB_sector_size &&
 		(_x distance2D ([getPos _x] call F_getNearestFob)) > GRLIB_sector_size &&
