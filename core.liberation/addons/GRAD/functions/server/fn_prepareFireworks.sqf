@@ -175,4 +175,4 @@ if (_type == "rain") then {
 	_singleFizz,
 	_groupFizz,
 	_randomSleepShort
-] remoteExec ["GRAD_fireworks_fnc_spawnFireworks", 0];
+] remoteExec ["GRAD_fireworks_fnc_spawnFireworks", -2];
