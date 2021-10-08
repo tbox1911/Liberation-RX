@@ -21,7 +21,6 @@ getBallMagazine = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scr
 missionHint = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_missionHint.sqf";
 processItems = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_processItems.sqf";
 updateMissionsList = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_updateMissionsList.sqf";
-updateMissionsMarker = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_updateMissionsMarker.sqf";
 getNbUnits = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_getNbUnits.sqf";
 
 waitUntil {sleep 1; !isNil "blufor_sectors" };

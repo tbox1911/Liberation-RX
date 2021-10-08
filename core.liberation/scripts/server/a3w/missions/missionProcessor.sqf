@@ -91,7 +91,7 @@ waitUntil {
 	if (!isNull _leaderTemp) then { _leader = _leaderTemp }; // Update current leader
 	if (!isNil "_waitUntilMarkerPos") then { _marker setMarkerPos (call _waitUntilMarkerPos) };
 	if (!isNil "_waitUntilExec") then { call _waitUntilExec };
-	[_marker, (diag_tickTime - _startTime)] call updateMissionMarker;
+	_marker setMarkerText format ["%1 - %2 min left", _missionType, round (_timer/60)];
 
 	_expired = (diag_tickTime - _startTime >= _missionTimeout && ([_missionPos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount) == 0);
 	_failed = ((!isNil "_waitUntilCondition" && {call _waitUntilCondition}) || _expired || count allPlayers == 0);
