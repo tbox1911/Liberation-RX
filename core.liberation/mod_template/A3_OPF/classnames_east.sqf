@@ -26,7 +26,7 @@ opfor_paratrooper = "O_soldier_PG_F";
 opfor_mrap = "O_MRAP_02_F";
 opfor_mrap_hmg = "O_MRAP_02_hmg_F";
 opfor_mrap_gmg = "O_MRAP_02_gmg_F";
-opfor_transport_helo = "O_Heli_Transport_04_bench_F";
+opfor_transport_helo = "O_Heli_Transport_04_covered_F";
 opfor_transport_truck = "O_Truck_03_covered_F";
 opfor_fuel_truck = "O_Truck_03_fuel_F";
 opfor_ammo_truck = "O_Truck_03_ammo_F";
@@ -127,7 +127,7 @@ opfor_battlegroup_vehicles = [
 	"O_APC_Tracked_02_AA_F",
 	"O_Heli_Attack_02_F",
 	"O_Heli_Light_02_F",
-	"O_Heli_Transport_04_bench_F",
+	"O_Heli_Transport_04_covered_F",
 	"O_MBT_04_cannon_F",
 	"O_MBT_04_command_F"
 ];
@@ -139,7 +139,7 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"O_MRAP_02_hmg_F",
 	"O_MRAP_02_gmg_F",
 	"O_Truck_02_transport_F",
-	"O_Heli_Transport_04_bench_F",
+	"O_Heli_Transport_04_covered_F",
 	"O_LSV_02_armed_F",
 	"O_LSV_02_AT_F"
 ];
@@ -149,7 +149,7 @@ opfor_troup_transports = [
 	"O_Truck_03_covered_F",
 	"O_Truck_02_covered_F",
 	"O_Truck_02_transport_F",
-	"O_Heli_Transport_04_bench_F",
+	"O_Heli_Transport_04_covered_F",
 	"O_Heli_Attack_02_F",
 	"O_Heli_Light_02_F",
 	"O_T_VTOL_02_infantry_F"
@@ -160,7 +160,7 @@ opfor_choppers = [
 	"O_Heli_Light_02_v2_F",
 	"O_Heli_Attack_02_F",
 	"O_Heli_Attack_02_black_F",
-	"O_Heli_Transport_04_bench_F",
+	"O_Heli_Transport_04_covered_F",
 	"O_T_VTOL_02_infantry_F"
 ];
 
@@ -211,7 +211,7 @@ opfor_recyclable = [
 	["O_Heli_Light_02_F",10,round (600 / GRLIB_recycling_percentage),10],
 	["O_Heli_Light_02_dynamicLoadout_F",10,round (600 / GRLIB_recycling_percentage),10],
 	["O_Heli_Light_02_v2_F",10,round (600 / GRLIB_recycling_percentage),10],
-	["O_Heli_Transport_04_bench_F",10,round (500 / GRLIB_recycling_percentage),10],
+	["O_Heli_Transport_04_covered_F",10,round (400 / GRLIB_recycling_percentage),10],
 	["O_Plane_CAS_02_F",20,round (1000 / GRLIB_recycling_percentage),30],
 	["O_Plane_Fighter_02_F",20,round (1000 / GRLIB_recycling_percentage),30],
 	["O_Plane_Fighter_02_Stealth_F",20,round (1000 / GRLIB_recycling_percentage),30],
