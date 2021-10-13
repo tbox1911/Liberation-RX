@@ -27,12 +27,13 @@ waitUntil {sleep 1; !isNil "blufor_sectors" };
 waitUntil {sleep 1; !isNil "sectors_allSectors" };
 waitUntil {sleep 1; !isNil "save_is_loaded" };
 
+diag_log "- A3W Initializing Missions-";
 [] call a3w_setupMissionArrays;
 
+sleep (4*60);
+diag_log "- A3W  Starting sideMissionController";
 for "_i" from 1 to 4 do {
 	// Start Permanent controller
-	[_i, false] spawn a3w_sideMissionController;
+	[_i, false] execVM "scripts\server\a3w\missions\sideMissionController.sqf";
 	sleep 1;
 };
-
-diag_log "- A3W Initializing Missions-";

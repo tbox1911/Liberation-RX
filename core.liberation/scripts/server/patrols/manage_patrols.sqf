@@ -1,5 +1,7 @@
 if (GRLIB_Patrol_manager == 0) exitWith {};
-waitUntil {sleep 0.5; !isNil "GRLIB_A3W_Init"};
+waitUntil {sleep 1; !isNil "GRLIB_A3W_Init"};
+sleep (3*60);
+diag_log "-- LRX Starting Patrol Manager";
 
 // Infantry Patrol
 _combat_triggers_infantry = [15,35,55,75];
@@ -19,16 +21,16 @@ if ( GRLIB_unitcap > 1.3 ) then { _combat_triggers_static = [15,25,45,65,75,85,9
 waitUntil { sleep 0.3; !isNil "blufor_sectors" };
 
 {
-	[_x, 1, _forEachIndex] spawn manage_one_patrol;
+	[_x, 1, _forEachIndex] execVM "scripts\server\patrols\manage_one_patrol.sqf";
 	sleep 1;
 } foreach _combat_triggers_infantry;
 
 {
-	[_x, 2, _forEachIndex] spawn manage_one_patrol;
+	[_x, 2, _forEachIndex] execVM "scripts\server\patrols\manage_one_patrol.sqf";
 	sleep 1;
 } foreach _combat_triggers_armor;
 
 {
-	[_x, 3, _forEachIndex] spawn manage_one_patrol;
+	[_x, 3, _forEachIndex] execVM "scripts\server\patrols\manage_one_patrol.sqf";
 	sleep 1;
 } foreach _combat_triggers_static;

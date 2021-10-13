@@ -26,11 +26,6 @@ load_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game
 // Patrol
 reinforcements_manager = compileFinal preprocessFileLineNumbers "scripts\server\patrols\reinforcements_manager.sqf";
 send_paratroopers = compileFinal preprocessFileLineNumbers "scripts\server\patrols\send_paratroopers.sqf";
-manage_one_patrol = compileFinal preprocessFileLineNumbers "scripts\server\patrols\manage_one_patrol.sqf";
-manage_one_civilian_patrol = compileFinal preprocessFileLineNumbers "scripts\server\patrols\manage_one_civilian_patrol.sqf";
-
-// Wildlife
-manage_one_wildlife = compileFinal preprocessFileLineNumbers "scripts\server\patrols\manage_one_wildlife.sqf";
 
 // Resources
 recalculate_caps = compileFinal preprocessFileLineNumbers "scripts\server\resources\recalculate_caps.sqf";
@@ -54,7 +49,6 @@ createlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scr
 showlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_showLandMines.sqf";
 clearlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_clearLandMines.sqf";
 a3w_setupMissionArrays = compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionArrays.sqf";
-a3w_sideMissionController = compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\sideMissionController.sqf";
 
 if (!([] call F_getValid)) exitWith {};
 
