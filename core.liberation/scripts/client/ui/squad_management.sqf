@@ -207,10 +207,11 @@ while { dialog && alive player } do {
 
 		if (GRLIB_squadaction == 2) then {
 			private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
-			private _refund = [_selectedmember] call F_loadoutPrice;
+			private _ai_rank = 1 + (GRLIB_rank_level find (rank _selectedmember));
+			private _refund = ([_selectedmember] call F_loadoutPrice) * _ai_rank;
 			player setVariable ["GREUH_ammo_count", (_ammo_collected + _refund), true];
 			playSound "rearm";
-			gamelogic globalChat format ["Soldier Refund: %1, Thank you !", _refund];
+			gamelogic globalChat format ["Soldier Refund: %1 - Rank bonus x%2, Thank you !", _refund, _ai_rank];
 			deleteVehicle _selectedmember;
 			_resupplied = true;
 			hint localize 'STR_REMOVE_OK';
