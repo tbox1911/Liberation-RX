@@ -36,28 +36,5 @@ Your Score : <t color='#008000'>%3</t><br/>
 Your Credit : <t color='#800000'>%4</t>", name player, _rank, _score, _ammo_collected];
 [_msg, 0, 0, 10, 0, 0, 90] spawn BIS_fnc_dynamicText;
 
-// HCI Command IA
-hcRemoveAllGroups player;
-if ( player == [] call F_getCommander ) then {
-	private _myveh = [vehicles, {
-		(_x distance lhd) >= 1000 &&
-		[player, _x] call is_owner &&
-		_x getVariable ["GRLIB_vehicle_manned", false] &&
-		count (crew _x) > 0
-	}] call BIS_fnc_conditionalSelect;
-
-	{ player hcSetGroup [group _x] } foreach _myveh;
-};
-private _grp = player getVariable ["my_squad", nil];
-if (!isNil "_grp") then { player hcSetGroup [_grp] };
-{player hcSetGroup [group _x]} forEach ([vehicles, {(typeOf _x) in uavs && [player, _x] call is_owner}] call BIS_fnc_conditionalSelect);
-
-// IA Recall
-private _grp = group player;
-private _squad = allUnits select {(_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1",PAR_Grp_ID]};
-{
-	if ( !(_x in units _grp) ) then {
-		if ( count (units _grp) < (GRLIB_squad_size + GRLIB_squad_size_bonus) ) then { [_x] joinSilent _grp};
-		sleep 0.5;
-	};
-} forEach _squad;
+// Recover AI
+[ player ] remoteExec ["recover_ai_remote_call", 2];
