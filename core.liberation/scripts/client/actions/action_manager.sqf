@@ -43,7 +43,7 @@ while { true } do {
 		_near_repair = [player, "REPAIR", _distvehclose, false] call F_check_near;
 		_near_atm = [player, "ATM", _distvehclose, true] call F_check_near;
 		_my_dog = player getVariable ["my_dog", objNull];
-		_my_squad = player getVariable ["my_squad", objNull];
+		_my_squad = player getVariable ["my_squad", nil];
 
 		// Tuto
 		_idact_tutorial = _id_actions select 0;
@@ -90,7 +90,7 @@ while { true } do {
 
 		// Squad - Actions
 		_idact_squad_action1 = _id_actions select 5;
-		if (!isNull _my_squad ) then {
+		if (!isNil "_my_squad") then {		
 			if ( _idact_squad_action1 == -1 ) then {
 				_idact = player addAction ["<t color='#80FF80'>" + localize "STR_SQUAD_MOVE" + "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\actions\do_squad.sqf","move",-635,false,true,"",""];
 				_id_actions set [5, _idact];
