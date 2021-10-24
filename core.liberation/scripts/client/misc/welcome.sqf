@@ -37,4 +37,4 @@ Your Credit : <t color='#800000'>%4</t>", name player, _rank, _score, _ammo_coll
 [_msg, 0, 0, 10, 0, 0, 90] spawn BIS_fnc_dynamicText;
 
 // Recover AI
-[ player ] remoteExec ["recover_ai_remote_call", 2];
+[player, GRLIB_squad_size_bonus] remoteExec ["recover_ai_remote_call", 2];
