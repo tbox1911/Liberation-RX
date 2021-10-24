@@ -9,8 +9,10 @@ _offset = 0;
 
 _truck_to_unload allowDamage false;
 _all_objects = attachedObjects _truck_to_unload;
-{ _x allowDamage false } forEach _all_objects;
-//object disableCollisionWith object
+{ 
+	_truck_to_unload disableCollisionWith _x;
+	_x allowDamage false;
+} forEach _all_objects;
 
 sleep 0.5;
 {
@@ -24,11 +26,11 @@ sleep 0.5;
 	sleep 0.5;	
 } foreach _all_objects;
 
-sleep 1;
-_truck_to_unload allowDamage true;
+sleep 2;
 {
+	_truck_to_unload enableCollisionWith _x;
 	_x setDamage 0;
 	_x allowDamage true;
 	_x setVariable ["R3F_LOG_disabled", false, true];
 } forEach _all_objects;
-//vehicle enableCollisionWith vehicle
+_truck_to_unload allowDamage true;
