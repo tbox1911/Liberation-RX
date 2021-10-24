@@ -4,7 +4,7 @@ private _frame_pos = [];
 private _spawn_str = "";
 private _basenamestr = "BASE CHIMERA";
 
-waitUntil { !isNil "GRLIB_all_fobs" };
+if (isNil "GRLIB_all_fobs") then { waitUntil {sleep 1; !isNil "GRLIB_all_fobs"} };
 
 fullmap = 0;
 _old_fullmap = 0;
