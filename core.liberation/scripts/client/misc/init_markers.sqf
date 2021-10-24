@@ -14,6 +14,9 @@ GRLIB_Marker_ATM = [];
 GRLIB_Marker_FUEL = [];
 GRLIB_Marker_REPAIR = [];
 
+waituntil {sleep 1; !isNil "GRLIB_sectors_init"};
+sleep 5;
+
 private _marker_dist = {
   params ["_type", "_pos"];
   private _list = [];
@@ -47,6 +50,7 @@ GRLIB_Marker_ATM = [];
     GRLIB_Marker_ATM pushback _x;
   };
 } forEach _tmp_marker;
+//diag_log format ["Done GRLIB_Marker_ATM: %1 at %2", count GRLIB_Marker_ATM, round time];
 
 private _tmp_marker = GRLIB_Marker_SRV;
 GRLIB_Marker_SRV = [];
@@ -61,6 +65,7 @@ GRLIB_Marker_SRV = [];
     GRLIB_Marker_SRV pushback _x;
   };
 } forEach _tmp_marker;
+//diag_log format ["Done GRLIB_Marker_SRV: %1 at %2", count GRLIB_Marker_SRV, round time];
 
 private _tmp_marker = GRLIB_Marker_FUEL;
 GRLIB_Marker_FUEL = [];
@@ -75,6 +80,7 @@ GRLIB_Marker_FUEL = [];
     GRLIB_Marker_FUEL pushback _x;
   };
 } forEach _tmp_marker;
+//diag_log format ["Done GRLIB_Marker_FUEL: %1 at %2", count GRLIB_Marker_FUEL, round time];
 
 private _tmp_marker = [];
 _tmp_marker = [vehicles, {(alive _x) && typeOf _x == "C_Offroad_01_repair_F" && (_x getVariable ["GRLIB_vehicle_owner", ""] == "server")}] call BIS_fnc_conditionalSelect;
@@ -86,5 +92,6 @@ _tmp_marker = [vehicles, {(alive _x) && typeOf _x == "C_Offroad_01_repair_F" && 
     _marker setMarkerSizeLocal [ 0.75, 0.75 ];
     GRLIB_Marker_REPAIR pushback getPos _x;
 } forEach _tmp_marker;
+//diag_log format ["Done GRLIB_Marker_REPAIR: %1 at %2", count GRLIB_Marker_REPAIR, round time];
 
 GRLIB_marker_init = true;

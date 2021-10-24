@@ -38,9 +38,8 @@ if (isMultiplayer) then {
 my_group = group player;
 [my_group, "add"] remoteExec ["addel_group_remote_call", 2];
 
-[] execVM "scripts\client\misc\init_markers.sqf";
-if (!([] call F_getValid)) exitWith {endMission "LOSER"};
 
+if (!([] call F_getValid)) exitWith {endMission "LOSER"};
 if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 	[] execVM "scripts\client\markers\empty_vehicles_marker.sqf";
 	[] execVM "scripts\client\markers\fob_markers.sqf";
@@ -73,6 +72,7 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 [] execVM "scripts\client\misc\synchronise_vars.sqf";
 [] execVM "scripts\client\misc\manage_weather.sqf";
 [] execVM "scripts\client\misc\no_thermic.sqf";
+[] execVM "scripts\client\misc\init_markers.sqf";
 [] execVM "scripts\client\actions\action_manager.sqf";
 [] execVM "scripts\client\actions\action_manager_veh.sqf";
 [] execVM "scripts\client\actions\recycle_manager.sqf";
