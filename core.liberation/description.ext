@@ -14,7 +14,7 @@ respawnOnStart = 0;
 reviveMode = 0; 
 disabledAI = true;
 enableDebugConsole = 1;
-allowFunctionsLog = 1;
+allowFunctionsLog = 0;
 forceRotorLibSimulation = 2;
 
 briefing = 0;
