@@ -1,4 +1,3 @@
-//missionConfigFile >> "Traders_Shop"
 class Traders_Shop {
   	idd = 2304;
 	name = "Traders_Shop";
@@ -37,7 +36,6 @@ class Traders_Shop {
 		class InnerBG_F2: InnerBG2 {
 			style = ST_FRAME;
 		};
-
 	};
 
 	class controls {
@@ -90,19 +88,19 @@ class Traders_Shop {
 			default = true;
 		};
 
-		class LoadButton : StdButton {
+		class SellButton : StdButton {
 			idc = 120;
 			text = "SELL";
-			action = "load_veh = 1";
+			action = "shop_action = 1";
 			x = 0.23 * safezoneW + safezoneX;
 			y = 0.71 * safezoneH + safezoneY;
 			w = 0.09 * safezoneW;
 			h = 0.035 * safezoneH;
 		};
-		class UnloadButton : StdButton {
+		class BuyButton : StdButton {
 			idc = 121;
 			text = "BUY";
-			action = "load_veh = 2";
+			action = "shop_action = 2";
 			x = 0.40 * safezoneW + safezoneX;
 			y = 0.71 * safezoneH + safezoneY;
 			w = 0.09 * safezoneW;
