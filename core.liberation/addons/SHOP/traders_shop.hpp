@@ -1,6 +1,7 @@
-class VIRT_vehicle_garage {
-  	idd = 2301;
-	name = "VIRT_vehicle_garage";
+//missionConfigFile >> "Traders_Shop"
+class Traders_Shop {
+  	idd = 2304;
+	name = "Traders_Shop";
 	movingEnable = false;
 	enableSimulation = true;
 
@@ -9,7 +10,7 @@ class VIRT_vehicle_garage {
 			colorBackground[] = COLOR_BROWN;
 			x = 0.19175 * safezoneW + safezoneX;
 			y = 0.1324 * safezoneH + safezoneY;
-			w = 0.25 * safezoneW;
+			w = 0.33 * safezoneW;
 			h = 0.62 * safezoneH;
 		};
 		class OuterBG_F1: OuterBG1 {
@@ -19,44 +20,71 @@ class VIRT_vehicle_garage {
 			colorBackground[] = COLOR_GREEN;
 			x = 0.1985 * safezoneW + safezoneX;
 			y = 0.1916 * safezoneH + safezoneY;
-			w = 0.2375 * safezoneW;
+			w = 0.1515 * safezoneW;
 			h = 0.512 * safezoneH;
 		};
 		class InnerBG_F1: InnerBG1 {
 			style = ST_FRAME;
 		};
+		
+		class InnerBG2: OuterBG1 {
+			colorBackground[] = COLOR_GREEN;
+			x = 0.3630 * safezoneW + safezoneX;
+			y = 0.1916 * safezoneH + safezoneY;
+			w = 0.1515 * safezoneW;
+			h = 0.512 * safezoneH;
+		};
+		class InnerBG_F2: InnerBG2 {
+			style = ST_FRAME;
+		};
+
 	};
 
 	class controls {
 		class Header: StdHeader {
-			text = $STR_VIRT_GARAGE;
-			x = 0.1985 * safezoneW + safezoneX;
-			y = 0.1444 * safezoneH + safezoneY;
-			w = 0.2375 * safezoneW;
-			h = 0.04 * safezoneH;
+			text = "-- Traders Shop --";
+			x = 0.198875 * safezoneW + safezoneX;
+			y = 0.1414 * safezoneH + safezoneY;
+			w = 0.314531 * safezoneW;
+			h = 0.044 * safezoneH;
 		};
 
-		class VehList: StdListNBox {
+		class VehList1 : StdListNBox {
 			idc = 110;
-			x = 0.205887 * safezoneW + safezoneX;
-			y = 0.2074 * safezoneH + safezoneY;
-			w = 0.221719 * safezoneW;
-			h = 0.473 * safezoneH;
-			columns[] = {0, 0.75};
+			columns[] = {0,0.75};
 			onLBSelChanged = "";
 			shadow = 2;
 			rowHeight = "1.25 * 0.018 * safezoneH";
 			colorPicture[] = {1,1,1,1};
 			colorPictureSelected[] = {0,1,0,1};
 			colorPictureDisabled[] = {0.4,0.4,0.4,1};
+			x = 0.2027 * safezoneW + safezoneX;
+			y = 0.2074 * safezoneH + safezoneY;
+			w = 0.1444 * safezoneW;
+			h = 0.484 * safezoneH;
+		};
+
+		class VehList2: StdListNBox {
+			idc = 111;
+			columns[] = {0,0.75};
+			onLBSelChanged = "";
+			shadow = 2;
+			rowHeight = "1.25 * 0.018 * safezoneH";
+			colorPicture[] = {1,1,1,1};
+			colorPictureSelected[] = {0,1,0,1};
+			colorPictureDisabled[] = {0.4,0.4,0.4,1};
+			x = 0.3679 * safezoneW + safezoneX;
+			y = 0.2074 * safezoneH + safezoneY;
+			w = 0.1444 * safezoneW;
+			h = 0.484 * safezoneH;
 		};
 
 		class CancelButton : StdButton {
 			idc = -1;
 			action = "closeDialog 0";
 			text = "X";
-			x = 0.42 * safezoneW + safezoneX;
-			y = 0.1444 * safezoneH + safezoneY;
+			x = 0.4990 * safezoneW + safezoneX;
+			y = 0.1430 * safezoneH + safezoneY;
 			w = 0.015 * safezoneW;
 			h = 0.02 * safezoneH;
 			default = true;
@@ -64,18 +92,18 @@ class VIRT_vehicle_garage {
 
 		class LoadButton : StdButton {
 			idc = 120;
-			text = $STR_GARAGE_LOAD;
+			text = "SELL";
 			action = "load_veh = 1";
-			x = 0.33 * safezoneW + safezoneX;
+			x = 0.23 * safezoneW + safezoneX;
 			y = 0.71 * safezoneH + safezoneY;
 			w = 0.09 * safezoneW;
 			h = 0.035 * safezoneH;
 		};
 		class UnloadButton : StdButton {
 			idc = 121;
-			text = $STR_GARAGE_UNLOAD;
+			text = "BUY";
 			action = "load_veh = 2";
-			x = 0.21 * safezoneW + safezoneX;
+			x = 0.40 * safezoneW + safezoneX;
 			y = 0.71 * safezoneH + safezoneY;
 			w = 0.09 * safezoneW;
 			h = 0.035 * safezoneH;
