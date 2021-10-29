@@ -1,4 +1,5 @@
-// Virtual Garage
+// LRX Virtual Garage
+// by pSiKO
 
 private _cfg = configFile >> "cfgVehicles";
 private _myveh = [];
