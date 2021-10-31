@@ -78,10 +78,7 @@ militia_vehicles = [
 ];
 
 opfor_boat = [
-	"O_Boat_Armed_01_hmg_F",
-	"O_T_Boat_Armed_01_hmg_F",
-	"O_Boat_Armed_01_hmg_F",
-	"O_T_Boat_Armed_01_hmg_F"
+	"O_Boat_Armed_01_hmg_F"
 ];
 
 opfor_vehicles = [
@@ -203,7 +200,6 @@ opfor_recyclable = [
 	["OPTRE_M12_LRV_ins",0,round (50 / GRLIB_recycling_percentage),0],
 	["OPTRE_M12A1_LRV_ins",0,round (50 / GRLIB_recycling_percentage),0],
 	["O_Boat_Armed_01_hmg_F",0,round (100 / GRLIB_recycling_percentage),0],
-	["O_T_Boat_Armed_01_hmg_F",0,round (100 / GRLIB_recycling_percentage),0],
 	["O_APC_Wheeled_02_rcws_F",10,round (150 / GRLIB_recycling_percentage),10],
 	["O_APC_Tracked_02_cannon_F",10,round (200 / GRLIB_recycling_percentage),10],
 	["O_APC_Tracked_02_AA_F",10,round (300 / GRLIB_recycling_percentage),10],
