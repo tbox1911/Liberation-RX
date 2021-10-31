@@ -42,6 +42,7 @@ while { true } do {
 		_near_fuel = [player, "FUEL", _distvehclose, false] call F_check_near;
 		_near_repair = [player, "REPAIR", _distvehclose, false] call F_check_near;
 		_near_atm = [player, "ATM", _distvehclose, true] call F_check_near;
+		_near_shop = [player, "SHOP", _distvehclose, false] call F_check_near;
 		_my_dog = player getVariable ["my_dog", objNull];
 		_my_squad = player getVariable ["my_squad", nil];
 
@@ -398,6 +399,20 @@ while { true } do {
 			if ( _idact_destroyfob != -1 ) then {
 				player removeAction _idact_destroyfob;
 				_id_actions set [28, -1];
+			};
+		};
+
+		// Shop
+		_idact_shop = _id_actions select 29;
+		if ((player distance lhd) >= 1000 && _near_shop ) then {
+			if ( _idact_shop == -1 ) then {
+				_idact = player addAction ["<t color='#00F080'>" + localize "STR_SHOP_ENTER" + "</t> <img size='1' image='res\ui_recycle.paa'/>", "addons\SHOP\traders_shop.sqf","",-900,true,true,"",""];
+				_id_actions set [29, _idact];
+			};
+		} else {
+			if ( _idact_shop != -1 ) then {
+				player removeAction _idact_shop;
+				_id_actions set [29, -1];
 			};
 		};
 

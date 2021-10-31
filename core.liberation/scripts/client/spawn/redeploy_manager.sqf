@@ -10,6 +10,9 @@ fullmap = 0;
 _old_fullmap = 0;
 
 createDialog "liberation_deploy";
+waitUntil { dialog };
+titleText ["","BLACK IN", 5];
+((findDisplay 5201) displayCtrl 201) ctrlAddEventHandler [ "mouseButtonDblClick" , { deploy = 1; } ];
 _noesckey = (findDisplay 5201) displayAddEventHandler ["KeyDown", "if ((_this select 1) == 1) then { true }"];
 disableUserInput false;
 disableUserInput true;
@@ -25,10 +28,6 @@ respawn_object hideObject true;
 respawn_camera camSetTarget respawn_object;
 respawn_camera cameraEffect ["internal","back"];
 respawn_camera camcommit 0;
-
-waitUntil { dialog };
-titleText ["","BLACK IN", 5];
-((findDisplay 5201) displayCtrl 201) ctrlAddEventHandler [ "mouseButtonDblClick" , { deploy = 1; } ];
 
 _standard_map_pos = ctrlPosition ((findDisplay 5201) displayCtrl 251);
 _frame_pos = ctrlPosition ((findDisplay 5201) displayCtrl 198);

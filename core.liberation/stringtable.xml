@@ -5326,6 +5326,39 @@
 		</Key>
 	</Package>
 
+	<Package name="LRX_SHOP">
+		<Key ID="STR_SHOP_NAME">
+			<Original>-- Traders Shop --</Original>
+		</Key>
+		<Key ID="STR_SHOP_ENTER">
+			<Original>-- ENTER SHOP</Original>
+		</Key>
+		<Key ID="STR_SHOP_ACTION1">
+			<Original>SELL</Original>
+			<French>VENDRE</French>
+		</Key>
+		<Key ID="STR_SHOP_ACTION2">
+			<Original>BUY</Original>
+			<French>ACHETER</French>
+		</Key>
+		<Key ID="STR_SHOP_SELL">
+			<Original>SELL VEHICLE</Original>
+			<French>VENDRE VEHICULE</French>
+		</Key>
+		<Key ID="STR_SHOP_SELL_MSG">
+			<Original>&lt;t align='center'&gt;Sell %1&lt;br/&gt;for %2 AMMO.&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
+			<French>&lt;t align='center'&gt;Vendre %1&lt;br/&gt;pour %2 AMMO.&lt;br/&gt;Êtes-vous sûr ?&lt;/t&gt;</French>
+		</Key>
+		<Key ID="STR_SHOP_BUY">
+			<Original>BUY VEHICLE</Original>
+			<French>ACHETER VEHICULE</French>
+		</Key>
+		<Key ID="STR_SHOP_BUY_MSG">
+			<Original>&lt;t align='center'&gt;Sell %1&lt;br/&gt;for %2 AMMO.&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
+			<French>&lt;t align='center'&gt;Acheter %1&lt;br/&gt;pour %2 AMMO.&lt;br/&gt;Êtes-vous sûr ?&lt;/t&gt;</French>
+		</Key>
+	</Package>
+
 	<Package name="SDB_DALE">
 		<Container name="Actions">
 		<Key ID="STR_DALE_Actions_Loadout">
