@@ -36,7 +36,7 @@ PAR_BleedOutExtra = 60;
 
 // Enable info killer message
 PAR_EnableDeathMessages = true;
-PAR_ReviveMode = ( GRLIB_revive - 1 );
+
 //------------------------------------------//
 PAR_BloodSplat = [
   "BloodPool_01_Large_New_F",
