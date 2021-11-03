@@ -13,7 +13,7 @@ while { true } do {
 
 		// Hide Dog
 		// go to ..\addons\PAR\PAR_EventHandler.sqf
-		private _onfoot = vehicle player == player;
+		private _onfoot = isNull objectParent player;
 
 		// Reset Dog
 		private _dog_pos = getPos _my_dog;

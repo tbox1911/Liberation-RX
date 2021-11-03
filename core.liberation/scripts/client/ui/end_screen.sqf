@@ -11,7 +11,7 @@ if (lifestate player == "INCAPACITATED") then {
 	uiSleep 4;
 };
 
-if (alive player && vehicle player == player && lifestate player != "INCAPACITATED") then {
+if (alive player && isNull objectParent player && lifestate player != "INCAPACITATED") then {
 	player switchCamera "EXTERNAL";
 	player switchMove "";
 	player playMoveNow "acts_briefing_sb_in";

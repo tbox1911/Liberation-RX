@@ -17,8 +17,8 @@ while { true } do {
 		(round _olddistance_inf != round desiredviewdistance_inf)
 		|| (round _olddistance_veh != round desiredviewdistance_veh)
 		|| (round _olddistance_obj != round desiredviewdistance_obj)
-		|| ( (( vehicle player == player ) && _was_vehicle)
-		|| (( vehicle player != player ) && !_was_vehicle) )
+		|| ( (( isNull objectParent player ) && _was_vehicle)
+		|| (( !isNull objectParent player ) && !_was_vehicle) )
 		|| !(alive player)
 		|| ( round _olddesiredvolume != round desired_vehvolume)
 		|| GREUH_force_adjust_view_distance };
@@ -28,7 +28,7 @@ while { true } do {
 	_olddistance_veh = round desiredviewdistance_veh;
 	_olddistance_obj = round desiredviewdistance_obj;
 	_olddesiredvolume = desired_vehvolume;
-	_was_vehicle = ( vehicle player != player );
+	_was_vehicle = ( !isNull objectParent player );
 
 	if ( _was_vehicle ) then {
 
