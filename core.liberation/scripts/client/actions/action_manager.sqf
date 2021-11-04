@@ -1,9 +1,7 @@
 private _distfob = 100;
 private _distarsenal = 10;
-private _distspawn = 10;
 private _distredeploy = 20;
-private _distveh = 15;
-private _distvehclose = 5;
+private _distvehclose = 8;
 private _icon_dog = (getText (configFile >> "CfgVehicleIcons" >> "iconAnimal"));
 private _icon_grp = "\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa";
 private _icon_tuto = "\a3\ui_f\data\map\markers\handdrawn\unknown_ca.paa";
@@ -37,8 +35,8 @@ while { true } do {
 		_fobdistance = round (player distance2D ([] call F_getNearestFob));
 		_near_outpost = (count (player nearObjects [FOB_outpost, _distfob]) > 0);
 		_near_arsenal = [player, "ARSENAL", _distarsenal, true] call F_check_near;
-		_near_spawn = [player, "RESPAWN", _distvehclose, true] call F_check_near;
-		_near_fobbox = player nearEntities [[FOB_box_typename, FOB_truck_typename, FOB_box_outpost], _distspawn];
+		_near_spawn = ([player, "SPAWNT", _distvehclose, true] call F_check_near || [player, "SPAWNV", _distvehclose, true] call F_check_near);		
+		_near_fobbox = player nearEntities [[FOB_box_typename, FOB_truck_typename, FOB_box_outpost], _distvehclose];
 		_near_fuel = [player, "FUEL", _distvehclose, false] call F_check_near;
 		_near_repair = [player, "REPAIR", _distvehclose, false] call F_check_near;
 		_near_atm = [player, "ATM", _distvehclose, true] call F_check_near;
@@ -120,7 +118,7 @@ while { true } do {
 
 		// Halo Jump
 		_idact_halo = _id_actions select 9;
-		if ((_fobdistance < _distredeploy || _near_spawn || (player distance lhd) <= 200) && GRLIB_halo_param > 0) then {
+		if (( _near_spawn || (player distance lhd) <= 200) && GRLIB_halo_param > 0) then {
 			if ( _idact_halo == -1 ) then {
 				_idact = player addAction ["<t color='#80FF80'>" + localize "STR_HALO_ACTION" + "</t> <img size='1' image='res\ui_redeploy.paa'/>","scripts\client\spawn\do_halo.sqf","",-749,false,true,"","build_confirmed == 0"];
 				_id_actions set [9, _idact];
@@ -204,7 +202,7 @@ while { true } do {
 
 		// Redeploy
 		_idact_redeploy = _id_actions select 15;
-		if ((_fobdistance < _distredeploy || _near_spawn || (player distance lhd) <= 200) ) then {
+		if ((_near_spawn || (player distance lhd) <= 200) ) then {
 			if ( _idact_redeploy == -1 ) then {
 				_idact = player addAction ["<t color='#80FF80'>" + localize "STR_DEPLOY_ACTION" + "</t> <img size='1' image='res\ui_redeploy.paa'/>","scripts\client\spawn\redeploy_manager.sqf","",-750,false,true,"","build_confirmed == 0"];
 				_id_actions set [15, _idact];

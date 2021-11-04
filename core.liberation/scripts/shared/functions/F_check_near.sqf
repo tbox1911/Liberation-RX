@@ -15,7 +15,8 @@ switch ( _list ) do {
 	case "FUEL" : { _classlist = GRLIB_Marker_FUEL};
 	case "REPAIR" : { _classlist = GRLIB_Marker_REPAIR};
 	case "SHOP" : { _classlist = GRLIB_Marker_SHOP};
-	case "RESPAWN" : { _classlist = [mobile_respawn, Respawn_truck_typename, huron_typename]};
+	case "SPAWNT" : { _classlist = GRLIB_mobile_respawn};
+	case "SPAWNV" : { _classlist =  [Respawn_truck_typename, huron_typename]};
 	case "MEDIC" : { _classlist = ai_healing_sources};
 	case "ARSENAL" : { _classlist = [Arsenal_typename]};
 	case "REAMMO" : { _classlist = vehicle_rearm_sources};
@@ -29,7 +30,8 @@ if (_includeFOB) then {
 	if (_fobdistance <= (_dist * 2) ) then {_ret = true};
 };
 
-if (count(_classlist) == 0) exitWith {_ret};
+if (_ret) exitWith {true};
+if (count(_classlist) == 0) exitWith {false};
 
 if (typeName (_classlist select 0) == "STRING") then {
 	// From Objects classname
@@ -41,7 +43,7 @@ if (typeName (_classlist select 0) == "STRING") then {
 			)
 			}] call BIS_fnc_conditionalSelect;
 } else {
-	// From GRLIB_Marker position
+	// From Position
 	_near = _classlist select {( _vehpos distance2D _x) <= _dist};
 };
 
