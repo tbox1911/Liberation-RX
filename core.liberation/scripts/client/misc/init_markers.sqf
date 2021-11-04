@@ -95,7 +95,7 @@ private _tmp_marker = GRLIB_Marker_SHOP;
 GRLIB_Marker_SHOP = [];
 {
   _dist = ["SHOP", _x] call _marker_dist;
-  if (_dist > 1000) then {
+  if (_dist > 1500) then {
     _marker = createMarkerLocal [format ["marked_shop%1", _forEachIndex], _x];
     _marker setMarkerColorLocal "ColorPink";
     _marker setMarkerTypeLocal "mil_dot";
