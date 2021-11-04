@@ -120,7 +120,7 @@ while { true } do {
 
 		// Halo Jump
 		_idact_halo = _id_actions select 9;
-		if ((_fobdistance < _distredeploy || _near_spawn || (player distance lhd) <= 200) && GRLIB_halo_param > 0) then {
+		if ((_fobdistance < _distredeploy || _near_spawn || typeOf cursorObject == mobile_respawn || (player distance lhd) <= 200) && GRLIB_halo_param > 0) then {
 			if ( _idact_halo == -1 ) then {
 				_idact = player addAction ["<t color='#80FF80'>" + localize "STR_HALO_ACTION" + "</t> <img size='1' image='res\ui_redeploy.paa'/>","scripts\client\spawn\do_halo.sqf","",-749,false,true,"","build_confirmed == 0"];
 				_id_actions set [9, _idact];
