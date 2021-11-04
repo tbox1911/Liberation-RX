@@ -100,7 +100,10 @@ elite_vehicles = [];
 
 // Static Weapons
 list_static_weapons = ["I_static_AA_F"] + opfor_statics;
-{ list_static_weapons pushback (_x select 0) } foreach static_vehicles;
+{ 
+	private _veh = _x select 0;
+	if (!(_veh in uavs)) then { list_static_weapons pushback _veh };
+} foreach static_vehicles;
 
 // Everything the AI troups should be able to resupply from
 ai_resupply_sources = [

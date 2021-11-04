@@ -33,7 +33,7 @@ if (count(_classlist) == 0) exitWith {_ret};
 
 if (typeName (_classlist select 0) == "STRING") then {
 	// From Objects classname
-	_near = [ nearestObjects [_vehpos, _classlist, _dist], {
+	_near = [ _vehpos nearEntities [_classlist, _dist], {
 			alive _x &&
 			( typeOf _x in [Arsenal_typename] || 
 			  isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) || 

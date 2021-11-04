@@ -22,7 +22,7 @@ while { dialog && alive player } do {
 	if ( _refresh ) then {
 		_refresh = false;
 
-		_myveh_lst = [nearestObjects [player, ["LandVehicle","Air","Ship"], 200], {
+		_myveh_lst = [getPosATL player nearEntities [["LandVehicle","Air","Ship"], 150], {			
 			alive _x && (count (crew _x) == 0 || typeOf _x in uavs) &&
 			(_x distance lhd) >= 1000 &&
 			_x getVariable ["GRLIB_vehicle_owner", ""] == getPlayerUID player &&
