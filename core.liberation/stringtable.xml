@@ -5329,33 +5329,41 @@
 	<Package name="LRX_SHOP">
 		<Key ID="STR_SHOP_NAME">
 			<Original>-- Traders Shop --</Original>
+			<Chinesesimp>-- 贸易商店 --</Chinesesimp>
 		</Key>
 		<Key ID="STR_SHOP_ENTER">
 			<Original>-- ENTER SHOP</Original>
+			<Chinesesimp>-- 进入店铺 --</Chinesesimp>
 		</Key>
 		<Key ID="STR_SHOP_ACTION1">
 			<Original>SELL</Original>
 			<French>VENDRE</French>
+			<Chinesesimp>出售</Chinesesimp>
 		</Key>
 		<Key ID="STR_SHOP_ACTION2">
 			<Original>BUY</Original>
 			<French>ACHETER</French>
+			<Chinesesimp>购买</Chinesesimp>
 		</Key>
 		<Key ID="STR_SHOP_SELL">
 			<Original>SELL VEHICLE</Original>
 			<French>VENDRE VEHICULE</French>
+			<Chinesesimp>出售载具</Chinesesimp>
 		</Key>
 		<Key ID="STR_SHOP_SELL_MSG">
 			<Original>&lt;t align='center'&gt;Sell %1&lt;br/&gt;for %2 AMMO.&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
 			<French>&lt;t align='center'&gt;Vendre %1&lt;br/&gt;pour %2 AMMO.&lt;br/&gt;Êtes-vous sûr ?&lt;/t&gt;</French>
+			<Chinesesimp>&lt;t align='center'&gt;出售 %1&lt;br/&gt;以获得 %2 弹药。&lt;br/&gt;你确定吗？&lt;/t&gt;</Chinesesimp>
 		</Key>
 		<Key ID="STR_SHOP_BUY">
 			<Original>BUY VEHICLE</Original>
 			<French>ACHETER VEHICULE</French>
+			<Chinesesimp>购买载具</Chinesesimp>
 		</Key>
 		<Key ID="STR_SHOP_BUY_MSG">
 			<Original>&lt;t align='center'&gt;Sell %1&lt;br/&gt;for %2 AMMO.&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
 			<French>&lt;t align='center'&gt;Acheter %1&lt;br/&gt;pour %2 AMMO.&lt;br/&gt;Êtes-vous sûr ?&lt;/t&gt;</French>
+			<Chinesesimp>&lt;t align='center'&gt;出售 %1&lt;br/&gt;以获得 %2 弹药。&lt;br/&gt;你确定吗？&lt;/t&gt;</Chinesesimp>
 		</Key>
 	</Package>
 
@@ -5408,7 +5416,7 @@
 			<English>Single</English>
 			<Dutch>Enkel</Dutch>
 			<German>Einzel</German>
-			<Chinesesimp>单次</Chinesesimp>
+			<Chinesesimp>单轮开火</Chinesesimp>
 			<Japanese>シングル</Japanese>
 		</Key>
 		<Key ID="STR_DALE_Dialogs_Double">
@@ -5416,7 +5424,7 @@
 			<English>Double</English>
 			<Dutch>Dubbel</Dutch>
 			<German>Doppelt</German>
-			<Chinesesimp>镜像</Chinesesimp>
+			<Chinesesimp>镜像开火</Chinesesimp>
 			<Japanese>ダブル</Japanese>
 		</Key>
 		<Key ID="STR_DALE_Dialogs_Burst">
@@ -5424,7 +5432,7 @@
 			<English>Burst</English>
 			<Dutch>Salvo</Dutch>
 			<German>Salve</German>
-			<Chinesesimp>全部</Chinesesimp>
+			<Chinesesimp>齐射</Chinesesimp>
 			<Japanese>バースト</Japanese>
 			</Key>
 		</Container>
