@@ -51,15 +51,11 @@ PAR_MedGarbage = [
   "MedicalGarbage_01_3x3_v2_F"
 ];
 
-waituntil {sleep 0.5;!isNull player && GRLIB_player_spawned};
-waituntil {sleep 0.5;!isNil {player getVariable ["GRLIB_Rank", nil]}};
+waituntil {GRLIB_player_spawned};
+waituntil {!isNil {player getVariable ["GRLIB_Rank", nil]}};
 
 [] spawn PAR_AI_Manager;
 [] spawn PAR_Player_Init;
-
-// Public event handlers
-"PAR_deathMessage" addPublicVariableEventHandler PAR_public_EH;
-"PAR_tkMessage" addPublicVariableEventHandler PAR_public_EH;
 
 // Event Handlers
 player addEventHandler ["Respawn", {[] spawn PAR_Player_Init}];

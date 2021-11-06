@@ -36,35 +36,24 @@ PAR_has_medikit = {
 	_ret
 };
 PAR_public_EH = {
-	private ["_timeout", "_action", "_msg"];
-	if(count _this < 2) exitWith {};
-
-	_EH  = _this select 0;
-	_target = _this select 1;
+	params ["_EH", "_target"];
+	private _killed = _target select 0;
+	private _killer = _target select 1;
 
 	// PAR_deathMessage
-	if (_EH == "PAR_deathMessage") then
-	{
-		_killed = _target select 0;
-		_killer = _target select 1;
-		if (isPlayer _killed) then
-		{
+	if (_EH == "PAR_deathMessage") then {
+		if (isPlayer _killed) then {
 			if (isNull _killer) then {
-				gamelogic globalChat (format ["%1 was injured for an unknown reason", name _killed] );
+				gamelogic globalChat (format ["%1 was injured for an unknown reason", name _killed]);
 			} else {
-				gamelogic globalChat (format ["%1 was injured by %2", name _killed, name _killer] );
-			}
+				gamelogic globalChat (format ["%1 was injured by %2", name _killed, name _killer]);
+			};
 		};
 	};
 
 	// PAR_tkMessage
-	if (_EH == "PAR_tkMessage") then
-	{
-		_killed = _target select 0;
-		_killer = _target select 1;
-
-		if (isPlayer _killer && isPlayer _killed ) then
-		{
+	if (_EH == "PAR_tkMessage") then {
+		if (isPlayer _killer && isPlayer _killed ) then {
 			gamelogic globalChat (format ["%1 has committed TK on %2",name _killer, name _killed]);
 		};
 	};
@@ -230,9 +219,7 @@ PAR_HandleDamage_EH = {
 		private _veh_killer = vehicle _killer;
 		if ( _isNotWounded && isPlayer _killer && _killer != _unit && _veh_unit != _veh_killer && LRX_tk_vip find (name _killer) == -1) then {
 			if ( _unit getVariable ["GRLIB_isProtected", 0] < time ) then {
-				PAR_tkMessage = [_unit, _killer];
-				publicVariable "PAR_tkMessage";
-				["PAR_tkMessage", [_unit, _killer]] call PAR_public_EH;
+				["PAR_tkMessage", [_unit, _killer]] remoteExec ["PAR_public_EH", 0];
 				[_unit, _killer] remoteExec ["LRX_tk_check", 0];
 				_unit setVariable ["GRLIB_isProtected", round(time + 3), true];
 			};
@@ -257,11 +244,8 @@ PAR_Player_Unconscious = {
 	params [ "_unit", "_killer" ];
 
 	// Death message
-	if (PAR_EnableDeathMessages && !isNil "_killer" && _killer != _unit) then
-	{
-		PAR_deathMessage = [_unit, _killer];
-		publicVariable "PAR_deathMessage";
-		["PAR_deathMessage", [_unit, _killer]] call PAR_public_EH;
+	if (PAR_EnableDeathMessages && !isNil "_killer" && _killer != _unit) then {
+		["PAR_deathMessage", [_unit, _killer]] remoteExec ["PAR_public_EH", 0];
 	};
 
 	// Eject unit if inside vehicle
