@@ -19,7 +19,7 @@ if ( _precise_position ) then {
 		if (surfaceIsWater _safepos) then {
 			_spawnpos = _safepos;
 		} else {
-			_spawnpos = _safepos findEmptyPosition [1, 20, "B_Heli_Transport_03_unarmed_F"];
+			_spawnpos = _safepos findEmptyPosition [1, GRLIB_capture_size, "B_Heli_Transport_03_unarmed_F"];
 		};
 		if ( count _spawnpos == 0 ) then { _spawnpos = zeropos; };
 	};
@@ -40,10 +40,13 @@ if ( _classname isKindOf "Air" ) then {
 		_spawnpos set [2, _seadepth + 0.5];  //ASL
 	};
 	_newvehicle = createVehicle [_classname, _spawnpos, [], 0, "NONE"];
+	_newvehicle allowDamage false;
 	_newvehicle setPos _spawnpos;
 };
 
-_newvehicle allowDamage false;
+_newvehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
+_newvehicle allowCrewInImmobile true;
+_newvehicle setUnloadInCombat [true, false];
 clearWeaponCargoGlobal _newvehicle;
 clearMagazineCargoGlobal _newvehicle;
 clearItemCargoGlobal _newvehicle;
@@ -58,9 +61,6 @@ if ( _classname in militia_vehicles ) then {
 
 _vehcrew = crew _newvehicle;
 { _x allowDamage false } forEach _vehcrew;
-_newvehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
-_newvehicle allowCrewInImmobile true;
-_newvehicle setUnloadInCombat [true, false];
 
 if ( _random_rotate ) then {
 	_newvehicle setdir (random 360);
