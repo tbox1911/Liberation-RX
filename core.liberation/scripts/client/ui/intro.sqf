@@ -50,5 +50,8 @@ closeDialog 0;
 
 if ( howtoplay == 1 ) then {
 	[] call compileFinal preprocessFileLineNUmbers "scripts\client\ui\tutorial_manager.sqf";
-	dostartgame = 1;
 };
+
+cinematic_camera_started = false;
+introDone = true;
+dostartgame = 1;

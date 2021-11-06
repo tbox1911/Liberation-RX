@@ -276,4 +276,4 @@ _cinematic_camera cameraEffect ["Terminate", "BACK"];
 camDestroy _cinematic_camera;
 camUseNVG false;
 cinematic_camera_stop = true;
-titleText ["","BLACK IN", 3];
+titleText ["","BLACK FADED", 100];
