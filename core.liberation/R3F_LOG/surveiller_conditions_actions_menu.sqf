@@ -132,7 +132,7 @@ while {true} do
 							// L'arri�re du remorqueur est proche de l'avant de l'objet point�
 							abs (_delta_pos select 0) < 3 && abs (_delta_pos select 1) < 5
 						}
-					} count (_objet_pointe nearEntities [["LandVehicle"], 30]) != 0
+					} count (_objet_pointe nearEntities [["All"], 30]) != 0
 				};
 
 			// Condition action detacher
