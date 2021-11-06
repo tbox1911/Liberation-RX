@@ -38,15 +38,17 @@ if ( _ownership == GRLIB_side_friendly ) exitWith {
 [ _sector, 1 ] remoteExec ["remote_call_sector", 0];
 private _attacktime = GRLIB_vulnerability_timer;
 
-while { _attacktime > 0 && ( _ownership == GRLIB_side_enemy || _ownership == GRLIB_side_resistance ) } do {
+while { _attacktime > 0 && _ownership == GRLIB_side_enemy } do {
 	_ownership = [markerpos _sector] call F_sectorOwnership;
 	_attacktime = _attacktime - 1;
 	sleep 1;
 };
 
-waitUntil {
+private _countblufor = [markerpos _sector, GRLIB_capture_size, GRLIB_side_friendly ] call F_getUnitsCount;
+while { _countblufor > 0 && _ownership == GRLIB_side_enemy } do {
+	_ownership = [markerpos _sector] call F_sectorOwnership;
+	_countblufor = [markerpos _sector, GRLIB_capture_size, GRLIB_side_friendly ] call F_getUnitsCount;
 	sleep 1;
-	[markerpos _sector] call F_sectorOwnership != GRLIB_side_resistance;
 };
 
 if ( GRLIB_endgame == 0 ) then {
