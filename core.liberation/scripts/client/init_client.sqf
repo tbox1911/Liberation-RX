@@ -27,17 +27,13 @@ get_lrx_name = compileFinal preprocessFileLineNumbers "scripts\client\misc\get_l
 R3F_LOG_joueur_deplace_objet = objNull;
 GRLIB_player_spawned = false;
 
-if (isMultiplayer) then {
-	PAR_Grp_ID = getPlayerUID player;
-	setTerrainGrid 25;
-} else {
-	PAR_Grp_ID = str floor(random 4096);
-	setTerrainGrid 12.5;  //Very High = 6.25, Ultra = 3.125
+PAR_Grp_ID = getPlayerUID player;
+if (PAR_Grp_ID == "") exitWith {
+	titleText ["Multiplayer Initialization Error!\nPlease reconnect to server." ,"BLACK FADED", 100];
+	uisleep 10;
+	endMission "LOSER"
 };
-((units player) - [player]) joinSilent grpNull;
-my_group = group player;
-[my_group, "add"] remoteExec ["addel_group_remote_call", 2];
-
+[group player, "add"] remoteExec ["addel_group_remote_call", 2];
 
 if (!([] call F_getValid)) exitWith {endMission "LOSER"};
 if ( typeOf player == "VirtualSpectator_F" ) exitWith {
@@ -137,5 +133,6 @@ waitUntil {!isNull findDisplay 46};
 waitUntil { time > 5 };
 initAmbientLife;
 enableEnvironment [true, true];
+setTerrainGrid 25;  //High = 12.5, Very High = 6.25, Ultra = 3.125
 
 diag_log "--- Client Init stop ---";
