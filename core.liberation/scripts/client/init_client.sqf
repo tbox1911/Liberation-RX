@@ -28,8 +28,8 @@ R3F_LOG_joueur_deplace_objet = objNull;
 GRLIB_player_spawned = false;
 
 PAR_Grp_ID = getPlayerUID player;
-if (PAR_Grp_ID == "") exitWith {
-	titleText ["Multiplayer Initialization Error!\nPlease reconnect to server." ,"BLACK FADED", 100];
+if (PAR_Grp_ID == "" || !(isPlayer player)) exitWith {
+	titleText ["ARMA3 Multiplayer Initialization Error!\nPlease reconnect to the server." ,"BLACK FADED", 100];
 	uisleep 10;
 	endMission "LOSER"
 };
