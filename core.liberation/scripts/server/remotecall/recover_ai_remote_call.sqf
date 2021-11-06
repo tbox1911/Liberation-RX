@@ -24,7 +24,6 @@ if (!isNil "_grp") then { _player hcSetGroup [_grp] };
 // IA Recall
 _pid = _player getVariable ["PAR_Grp_ID","1"];
 _squad = (units GRLIB_side_friendly) select {(_x getVariable ["PAR_Grp_ID","0"]) == _pid};
-diag_log format ["DBG: RECO %1 %2 %3 %4", name _player, _pid, count(_squad), _extra_units];
 if (count _squad > 1) then {
     {
         if ( !(_x in units _player) ) then {
