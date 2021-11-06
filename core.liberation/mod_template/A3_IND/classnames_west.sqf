@@ -144,8 +144,10 @@ if ( count blufor_squad_inf_light == 0 ) then { blufor_squad_inf_light = [
 	"I_medic_F",
 	"I_Soldier_GL_F",
 	"I_soldier_AR_F",
-	"I_Soldier_F",
-	"I_Soldier_F"
+	"I_soldier_LAT_F",
+	"I_Soldier_lite_F",
+	"I_Soldier_lite_F",
+	"I_Soldier_lite_F"
 	];
 };
 if ( isNil "blufor_squad_inf" ) then { blufor_squad_inf = [] };
@@ -154,8 +156,12 @@ if ( count blufor_squad_inf == 0 ) then { blufor_squad_inf = [
 	"I_medic_F",
 	"I_soldier_M_F",
 	"I_Soldier_AR_F",
+	"I_soldier_LAT_F",
+	"I_Soldier_AR_F",
+	"I_Soldier_M_F",
 	"I_Soldier_F",
-	"I_Soldier_AR_F"
+	"I_Soldier_F",
+	"I_Soldier_F"
 	];
 };
 if ( isNil "blufor_squad_at" ) then { blufor_squad_at = [] };

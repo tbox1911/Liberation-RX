@@ -125,23 +125,28 @@ buildings_west = [
 
 if ( isNil "blufor_squad_inf_light" ) then { blufor_squad_inf_light = [] };
 if ( count blufor_squad_inf_light == 0 ) then { blufor_squad_inf_light = [
-	"rhsusf_army_ucp_arb_autorifleman",
+	"rhsusf_army_ucp_arb_squadleader",
     "rhsusf_army_ucp_arb_medic",
-    "rhsusf_army_ucp_arb_machinegunner",
+	"rhsusf_army_ucp_arb_autorifleman",
     "rhsusf_army_ucp_arb_marksman",
-    "rhsusf_army_ucp_arb_squadleader",
-    "rhsusf_army_ucp_arb_teamleader"
+	"rhsusf_army_ucp_arb_maaws",
+	"rhsusf_army_ucp_arb_rifleman_m590",
+	"rhsusf_army_ucp_arb_rifleman",
+	"rhsusf_army_ucp_arb_rifleman"
 	];
 };
 if ( isNil "blufor_squad_inf" ) then { blufor_squad_inf = [] };
 if ( count blufor_squad_inf == 0 ) then { blufor_squad_inf = [
 	"rhsusf_army_ucp_arb_teamleader",
-    "rhsusf_army_ucp_arb_squadleader",
+    "rhsusf_army_ucp_arb_medic",
     "rhsusf_army_ucp_arb_sniper_m107",
     "rhsusf_army_ucp_arb_machinegunner",
     "rhsusf_army_ucp_arb_grenadier",
-    "rhsusf_army_ucp_arb_medic",
-    "rhsusf_army_ucp_arb_maaws"
+    "rhsusf_army_ucp_arb_maaws",
+    "rhsusf_army_ucp_arb_maaws",
+	"rhsusf_army_ucp_arb_rifleman_m590",	
+	"rhsusf_army_ucp_arb_rifleman",
+	"rhsusf_army_ucp_arb_rifleman"
 	];
 };
 if ( isNil "blufor_squad_at" ) then { blufor_squad_at = [] };

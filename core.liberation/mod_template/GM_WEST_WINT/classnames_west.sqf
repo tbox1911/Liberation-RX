@@ -144,8 +144,11 @@ buildings_west = [
 if ( isNil "blufor_squad_inf_light" ) then { blufor_squad_inf_light = [] };
 if ( count blufor_squad_inf_light == 0 ) then { blufor_squad_inf_light = [
 	"gm_ge_army_sf_squadleader_mp5sd3_p2a1_80_win",
+	"gm_ge_army_medic_g3a3_80_win",
 	"gm_ge_army_sf_marksman_g3a3_80_win",
 	"gm_ge_army_sf_antitank_mp5a2_pzf84_80_win",
+	"gm_ge_army_sf_rifleman_mp5a3_80_win",
+	"gm_ge_army_sf_rifleman_g3a4_80_win",		
 	"gm_ge_army_sf_rifleman_g3a4_80_win",
 	"gm_ge_army_sf_rifleman_g3a4_80_win"
 	];
@@ -154,6 +157,8 @@ if ( isNil "blufor_squad_inf" ) then { blufor_squad_inf = [] };
 if ( count blufor_squad_inf == 0 ) then { blufor_squad_inf = [
 	"gm_ge_army_sf_squadleader_mp5sd3_p2a1_80_win",
 	"gm_ge_army_medic_g3a3_80_win",
+	"gm_ge_army_sf_antitank_mp5a2_pzf84_80_win",
+	"gm_ge_army_sf_antitank_mp5a2_pzf84_80_win",	
 	"gm_ge_army_sf_marksman_g3a3_80_win",
 	"gm_ge_army_sf_marksman_g3a3_80_win",
 	"gm_ge_army_sf_rifleman_g3a4_80_win",

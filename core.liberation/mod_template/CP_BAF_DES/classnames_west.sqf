@@ -141,6 +141,8 @@ if ( count blufor_squad_inf_light == 0 ) then { blufor_squad_inf_light = [
 	"CUP_B_BAF_Soldier_Medic_DDPM",
 	"CUP_B_BAF_Soldier_Grenadier_DDPM",
 	"CUP_B_BAF_Soldier_AutoRifleman_DDPM",
+	"CUP_B_BAF_Soldier_AT_DDPM",
+	"CUP_B_BAF_Soldier_Rifleman_DDPM"	
 	"CUP_B_BAF_Soldier_Rifleman_DDPM",
 	"CUP_B_BAF_Soldier_Rifleman_DDPM"
 	];
@@ -152,7 +154,11 @@ if ( count blufor_squad_inf == 0 ) then { blufor_squad_inf = [
 	"CUP_B_BAF_Soldier_Marksman_DDPM",
 	"CUP_B_BAF_Soldier_AutoRifleman_DDPM",
 	"CUP_B_BAF_Soldier_HeavyGunner_DDPM",
-	"CUP_B_BAF_Soldier_SharpShooter_DDPM"
+	"CUP_B_BAF_Soldier_SharpShooter_DDPM",
+	"CUP_B_BAF_Soldier_AT_DDPM",
+	"CUP_B_BAF_Soldier_Rifleman_DDPM",
+	"CUP_B_BAF_Soldier_Rifleman_DDPM",	
+	"CUP_B_BAF_Soldier_Rifleman_DDPM"
 	];
 };
 if ( isNil "blufor_squad_at" ) then { blufor_squad_at = [] };
