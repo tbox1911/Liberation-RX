@@ -5,7 +5,7 @@ private [ "_minfobdist", "_minsectordist", "_distfob", "_clearedtobuildfob", "_d
 
 //only one at time
 if ((_box getVariable ["box_in_use", false])) exitWith {};
-if ( count GRLIB_all_fobs >= GRLIB_maximum_fobs ) exitWith {
+if ( count (GRLIB_all_fobs select {count (_x nearObjects [FOB_typename, 50]) > 0}) >= GRLIB_maximum_fobs && typeOf _box != FOB_box_outpost ) exitWith {
 	hint format [ localize "STR_HINT_FOBS_EXCEEDED", GRLIB_maximum_fobs ];
 };
 
