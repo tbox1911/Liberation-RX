@@ -46,7 +46,7 @@ while { true } do {
 		buildtype = 99;
 	};
 
-	if (buildtype == 9 ) then {
+	if ( buildtype in [9,10] ) then {
 		_price = 0;
 		_classname = build_unit select 0;
 		_color = build_unit select 1;
@@ -55,7 +55,8 @@ while { true } do {
 		_lst_r3f = build_unit select 4;
 	};
 	
-	if (buildtype in [1,2,3,4,5,6,7,8]) then {
+
+	if ( buildtype in [1,2,3,4,5,6,7,8] ) then {
 		_score = score player;
 		_build_list = [];
 		{
@@ -85,6 +86,7 @@ while { true } do {
 				sleep 3;
 			};
 		} else {
+			if (!([_price] call F_pay)) exitWith {};
 			_grp = group player;
 			_unit = _grp createUnit [_classname, _pos, [], 5, "NONE"];
 			[_unit] joinSilent _grp;
@@ -106,11 +108,11 @@ while { true } do {
 
 			stats_blufor_soldiers_recruited = stats_blufor_soldiers_recruited + 1; publicVariable "stats_blufor_soldiers_recruited";
 		};
-		if (!([_price] call F_pay)) exitWith {};
 		build_confirmed = 0;
 	} else {
 		if ( buildtype == 8 ) then {
 			if (isNil {player getVariable ["my_squad", nil]} ) then {
+				if (!([_price] call F_pay)) exitWith {};
 				_pos = [(getpos player select 0) + 1,(getpos player select 1) + 1, 0];
 				_grp = createGroup [GRLIB_side_friendly, true];
 				player setVariable ["my_squad", _grp, true];
@@ -134,7 +136,6 @@ while { true } do {
 				_grp setCombatMode "GREEN";
 				_grp setBehaviour "AWARE";
 
-				if (!([_price] call F_pay)) exitWith {};
 				stats_blufor_soldiers_recruited = stats_blufor_soldiers_recruited + count (units _grp); publicVariable "stats_blufor_soldiers_recruited";
 				player hcSetGroup [_grp];
 			} else {
@@ -305,113 +306,119 @@ while { true } do {
 			if ( !alive player || build_confirmed == 3 ) then {
 				deleteVehicle _vehicle;
 				buildtype = 1;
+				dobuild = 0;
+				sleep 3;	// time to trap build canceled
 			};
 
 			if ( build_confirmed == 2 ) then {
+				if (!([_price] call F_pay)) exitWith {};
 				_vehdir = getdir _vehicle;
 				deleteVehicle _vehicle;
 				sleep 0.1;
-				_vehicle = _classname createVehicle _truepos;
-				_vehicle allowDamage false;
-				_vehicle setdir _vehdir;
-				if ( _classname isKindOf "Ship" && surfaceIsWater _truepos ) then {
-					_vehicle setposASL _truepos;
+
+				if (_classname == "Land_ClutterCutter_large_F") then {
+					 createSimpleObject [_classname, ATLToASL _truepos];
 				} else {
-					_vehicle setposATL _truepos;
-				};
-
-				// Ammo Box clean inventory
-				if (!(_classname in  GRLIB_Ammobox_keep)) then {
-					clearWeaponCargoGlobal _vehicle;
-					clearMagazineCargoGlobal _vehicle;
-					clearItemCargoGlobal _vehicle;
-					clearBackpackCargoGlobal _vehicle;
-				};
-
-				// Vehicle owner
-				if(buildtype in [2,3,4,5,7,9]) then {
-					if (!([typeOf _vehicle, GRLIB_vehicle_blacklist] call F_itemIsInClass)) then {
-						_vehicle setVariable ["GRLIB_vehicle_owner", getPlayerUID player, true];
-						_vehicle allowCrewInImmobile true;
-						_vehicle setUnloadInCombat [true, false];
+					_vehicle = _classname createVehicle _truepos;
+					_vehicle allowDamage false;
+					_vehicle setdir _vehdir;
+					if ( _classname isKindOf "Ship" && surfaceIsWater _truepos ) then {
+						_vehicle setposASL _truepos;
+					} else {
+						_vehicle setposATL _truepos;
 					};
-				};
 
-				// Crewed vehicle
-				if ( (_classname in uavs) || manned ) then {
-					[ _vehicle ] call F_forceBluforCrew;
-					_vehicle setVariable ["GRLIB_vehicle_manned", true, true];
-					player hcSetGroup [group _vehicle];
-				};
+					// Ammo Box clean inventory
+					if ( !(_classname in GRLIB_Ammobox_keep) ) then {
+						clearWeaponCargoGlobal _vehicle;
+						clearMagazineCargoGlobal _vehicle;
+						clearItemCargoGlobal _vehicle;
+						clearBackpackCargoGlobal _vehicle;
+					};
 
-				// Default Paint
-				if ( _classname in ["I_E_Truck_02_MRL_F"] ) then {
-					[_vehicle, ["EAF",1], true ] call BIS_fnc_initVehicle;
-				};
+					// Vehicle owner
+					if ( buildtype in [2,3,4,5,7,9,10] ) then {
+						if (!([typeOf _vehicle, GRLIB_vehicle_blacklist] call F_itemIsInClass)) then {
+							_vehicle setVariable ["GRLIB_vehicle_owner", getPlayerUID player, true];
+							_vehicle allowCrewInImmobile true;
+							_vehicle setUnloadInCombat [true, false];
+						};
+					};
 
-				// Color
-				if (count _color > 0) then {
-					[_vehicle, _color, "N/A", []] call RPT_fnc_TextureVehicle;
-				};
-
-				// Remaining Ammo
-				if (_ammo > 0) then {
-					_vehicle setVehicleAmmoDef _ammo;
-				};
-
-				// Automatic ReAmmo
-				if (_classname in vehicle_rearm_sources) then {
-					_vehicle setAmmoCargo 0;
-				};
-
-				// Give real truck horn to APC,Truck,Tank
-				if ( _vehicle isKindOf "Wheeled_APC_F" || _vehicle isKindOf "Tank_F" || _vehicle isKindOf "Truck_F" ) then {
-					_vehicle removeWeaponTurret ["TruckHorn", [-1]];
-					_vehicle removeWeaponTurret ["TruckHorn2", [-1]];
-					_vehicle addWeaponTurret ["TruckHorn3", [-1]];
-				};
-
-				// Mobile respawn
-				if (_classname == mobile_respawn) then {
-					[_vehicle, "add"] remoteExec ["addel_beacon_remote_call", 2];
-				};
-
-				// A3 / R3F Inventory
-				if (buildtype == 9 && !(_classname in GRLIB_vehicle_whitelist) ) then {
-					{_vehicle addWeaponWithAttachmentsCargoGlobal [ _x, 1] } forEach _lst_a3;
-					[_vehicle, _lst_r3f] call R3F_LOG_FNCT_transporteur_charger_auto;
-				};
-
-				// Static Weapon
-				if (_classname in list_static_weapons) then {
-					[_vehicle] spawn protect_static;
-					if (_classname in static_vehicles_AI) then {
-						_vehicle setMass 5000;
+					// Crewed vehicle
+					if ( (_classname in uavs) || manned ) then {
 						[ _vehicle ] call F_forceBluforCrew;
 						_vehicle setVariable ["GRLIB_vehicle_manned", true, true];
-						_vehicle setVehicleLock "LOCKEDPLAYER";
-						_vehicle addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1}];
+						player hcSetGroup [group _vehicle];
+					};
+
+					// Default Paint
+					if ( _classname in ["I_E_Truck_02_MRL_F"] ) then {
+						[_vehicle, ["EAF",1], true ] call BIS_fnc_initVehicle;
+					};
+
+					// Color
+					if ( count _color > 0 ) then {
+						[_vehicle, _color, "N/A", []] call RPT_fnc_TextureVehicle;
+					};
+
+					// Remaining Ammo
+					if ( _ammo > 0 ) then {
+						_vehicle setVehicleAmmoDef _ammo;
+					};
+
+					// Automatic ReAmmo
+					if ( _classname in vehicle_rearm_sources ) then {
+						_vehicle setAmmoCargo 0;
+					};
+
+					// Give real truck horn to APC,Truck,Tank
+					if ( _vehicle isKindOf "Wheeled_APC_F" || _vehicle isKindOf "Tank_F" || _vehicle isKindOf "Truck_F" ) then {
+						_vehicle removeWeaponTurret ["TruckHorn", [-1]];
+						_vehicle removeWeaponTurret ["TruckHorn2", [-1]];
+						_vehicle addWeaponTurret ["TruckHorn3", [-1]];
+					};
+
+					// Mobile respawn
+					if ( _classname == mobile_respawn ) then {
+						[_vehicle, "add"] remoteExec ["addel_beacon_remote_call", 2];
+					};
+
+					// A3 / R3F Inventory
+					if ( buildtype == 10 && !(_classname in GRLIB_vehicle_whitelist) ) then {
+						{_vehicle addWeaponWithAttachmentsCargoGlobal [ _x, 1] } forEach _lst_a3;
+						[_vehicle, _lst_r3f] call R3F_LOG_FNCT_transporteur_charger_auto;
+					};
+
+					// Static Weapon
+					if ( _classname in list_static_weapons ) then {
+						[_vehicle] spawn protect_static;
+						if (_classname in static_vehicles_AI) then {
+							_vehicle setMass 5000;
+							[ _vehicle ] call F_forceBluforCrew;
+							_vehicle setVariable ["GRLIB_vehicle_manned", true, true];
+							_vehicle setVehicleLock "LOCKEDPLAYER";
+							_vehicle addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1}];
+						};
+					};
+
+					// FOB
+					if(buildtype == 99) then {
+						_vehicle addEventHandler ["HandleDamage", {0}];
+						[_vehicle, false] remoteExec ["allowDamage", 0];
+						[(getpos _vehicle), false] remoteExec ["build_fob_remote_call", 0];
+					} else {
+						sleep 0.3;
+						_vehicle allowDamage true;
+						_vehicle setDamage 0;
 					};
 				};
-
-				sleep 0.3;
-				_vehicle allowDamage true;
-				_vehicle setDamage 0;
 
 				if(buildtype != 6) then {
 					_vehicle addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
 				};
 
-				if (!([_price] call F_pay)) exitWith {};
 				stats_blufor_vehicles_built = stats_blufor_vehicles_built + 1; publicVariable "stats_blufor_vehicles_built";
-			};
-
-			// FOB
-			if(buildtype == 99 && build_confirmed != 3) then {
-				_vehicle addEventHandler ["HandleDamage", { 0 }];
-				[_vehicle, false] remoteExec ["allowDamage", 0];
-				[(getpos _vehicle), false] remoteExec ["build_fob_remote_call", 0];
-				buildtype = 1;
 			};
 
 			if ( _idactcancel != -1 ) then {

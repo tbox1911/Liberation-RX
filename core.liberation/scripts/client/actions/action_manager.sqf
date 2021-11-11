@@ -232,7 +232,7 @@ while { true } do {
 		_idact_garage = _id_actions select 17;
 		if (_fobdistance > 15 && _fobdistance < _distfob && (!_near_outpost) && (player distance lhd) >= 1000 && score player >= GRLIB_perm_inf ) then {
 			if ( _idact_garage == -1 ) then {
-				_idact = player addAction ["<t color='#0080FF'>" + localize "STR_VIRTUAL_GARAGE" + "</t> <img size='1' image='res\ui_veh.paa'/>","addons\VIRT\virtual_garage.sqf","",-984,false,true,"",""];
+				_idact = player addAction ["<t color='#0080FF'>" + localize "STR_VIRTUAL_GARAGE" + "</t> <img size='1' image='res\ui_veh.paa'/>","addons\VIRT\virtual_garage.sqf","",-984,false,true,"","build_confirmed == 0"];
 				_id_actions set [17, _idact];
 			};
 		} else {
