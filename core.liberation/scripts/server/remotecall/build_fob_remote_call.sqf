@@ -14,8 +14,6 @@ if ( _create_fob_building ) then {
 	sleep 1;
 };
 
-{deleteVehicle _x} foreach ([_new_fob nearObjects GRLIB_sector_size ,{( typeof _x in [FOB_box_typename, FOB_truck_typename, FOB_box_outpost] )}] call BIS_fnc_conditionalSelect);
-
 trigger_server_save = true;
 sleep 3;
 [ _new_fob, 0 ] remoteExec ["remote_call_fob", 0];

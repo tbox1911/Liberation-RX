@@ -50,6 +50,8 @@ if (!_clearedtobuildfob) then {
 			buildtype = 99;
 			dobuild = 1;
 		};
+		waitUntil {sleep 0.3; dobuild == 0};
+		if (build_confirmed == 0) then { deleteVehicle _box };
 	};
 };
 _box setVariable ["box_in_use", false, true];

@@ -4,6 +4,7 @@ if ( !(isNil "GRLIB_param_wipe_savegame_1") && !(isNil "GRLIB_param_wipe_savegam
 		saveProfileNamespace;
 	};
 };
+private ["_nextbuilding"];
 
 date_year = date select 0;
 date_month = date select 1;
@@ -52,14 +53,12 @@ GRLIB_garage = [];
 
 no_kill_handler_classnames = [FOB_typename, FOB_outpost, huron_typename];
 _classnames_to_save = [];
-_classnames_to_save_blu = [FOB_typename, FOB_outpost, huron_typename];
-_building_classnames = [FOB_typename, FOB_outpost];
 {
 	no_kill_handler_classnames pushback (_x select 0);
 	_classnames_to_save pushback (_x select 0);
-	_building_classnames pushback (_x select 0);
 } foreach buildings;
 
+_classnames_to_save_blu = [FOB_typename, FOB_outpost, huron_typename];
 {
 	_classnames_to_save_blu pushback (_x select 0);
 } foreach (air_vehicles + heavy_vehicles + light_vehicles + support_vehicles + static_vehicles + ind_recyclable);
@@ -168,93 +167,93 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 				_owner = _x select 4;
 			};
 
-			_nextbuilding = _nextclass createVehicle _nextpos;
-			_nextbuilding allowDamage false;
-			_nextbuilding setVectorUp [0,0,1];
-			_nextbuilding setPosATL _nextpos;
-			_nextbuilding setdir _nextdir;
-			_nextbuilding setdamage 0;
+			if (_nextclass == "Land_ClutterCutter_large_F") then {
+				_nextbuilding = createSimpleObject [_nextclass, ATLToASL _nextpos];
+			} else {
+				_nextbuilding = _nextclass createVehicle _nextpos;
+				_nextbuilding allowDamage false;
+				_nextbuilding setVectorUp [0,0,1];
+				_nextbuilding setPosATL _nextpos;
+				_nextbuilding setdir _nextdir;
+				_nextbuilding setdamage 0;
+			};
 			_buildings_created pushback _nextbuilding;
 
-			if ( _nextclass in _building_classnames ) then {
-				_nextbuilding setVariable [ "GRLIB_saved_pos", _nextpos, false];
-			} else {
-				// Clear Cargo
-				clearWeaponCargoGlobal _nextbuilding;
-				clearMagazineCargoGlobal _nextbuilding;
-				clearItemCargoGlobal _nextbuilding;
-				clearBackpackCargoGlobal _nextbuilding;
+			// Clear Cargo
+			clearWeaponCargoGlobal _nextbuilding;
+			clearMagazineCargoGlobal _nextbuilding;
+			clearItemCargoGlobal _nextbuilding;
+			clearBackpackCargoGlobal _nextbuilding;
 
-				if ( _nextclass in vehicle_rearm_sources ) then {
-					_nextbuilding setAmmoCargo 0;
+			if ( _nextclass in vehicle_rearm_sources ) then {
+				_nextbuilding setAmmoCargo 0;
+			};
+
+			if ( _owner != "" && _owner != "public" && !(_nextclass in _vehicles_blacklist) ) then {
+				[_x select 5] params [["_color", ""]];
+				[_x select 6] params [["_color_name", ""]];
+				[_x select 7] params [["_lst_a3", []]];
+				[_x select 8] params [["_lst_r3f", []]];
+				[_x select 9] params [["_lst_grl", []]];
+
+				_nextbuilding setVehicleLock "LOCKED";
+				_nextbuilding allowCrewInImmobile true;
+				_nextbuilding setUnloadInCombat [true, false];
+				_nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
+				_nextbuilding setVariable ["R3F_LOG_disabled", true, true];
+
+				[_nextbuilding, _color, _color_name, []] call RPT_fnc_TextureVehicle;
+				if (count _lst_a3 > 0) then {
+					{_nextbuilding addWeaponWithAttachmentsCargoGlobal [ _x, 1]} forEach _lst_a3;
 				};
+				if (count _lst_r3f > 0) then {
+					[_nextbuilding, _lst_r3f] call load_object_direct;
+				};
+				if (count _lst_grl > 0) then {
+					{[_nextbuilding, _x] call attach_object_direct} forEach _lst_grl;
+				};
+			};
 
-				if ( _owner != "" && _owner != "public" && !(_nextclass in _vehicles_blacklist) ) then {
-					[_x select 5] params [["_color", ""]];
-					[_x select 6] params [["_color_name", ""]];
-					[_x select 7] params [["_lst_a3", []]];
-					[_x select 8] params [["_lst_r3f", []]];
-					[_x select 9] params [["_lst_grl", []]];
+			if ( _owner == "public" && _nextclass == huron_typename ) then {
+				_nextbuilding setVariable ["GRLIB_vehicle_owner", "public", true];
+				_nextbuilding setVariable ["GRLIB_vehicle_ishuron", true, true];
+			};
 
-					_nextbuilding setVehicleLock "LOCKED";
+			if ( _nextclass in list_static_weapons ) then {
+				[_nextbuilding] spawn protect_static;
+				_nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
+				_nextbuilding setVariable ["R3F_LOG_disabled", false, true];
+				if (_nextclass in static_vehicles_AI) then {
+					_nextbuilding setVehicleLock "LOCKEDPLAYER";
+					_nextbuilding addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1}];
 					_nextbuilding allowCrewInImmobile true;
-					_nextbuilding setUnloadInCombat [true, false];
-					_nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
-					_nextbuilding setVariable ["R3F_LOG_disabled", true, true];
-
-					[_nextbuilding, _color, _color_name, []] call RPT_fnc_TextureVehicle;
-					if (count _lst_a3 > 0) then {
-						{_nextbuilding addWeaponWithAttachmentsCargoGlobal [ _x, 1]} forEach _lst_a3;
-					};
-					if (count _lst_r3f > 0) then {
-						[_nextbuilding, _lst_r3f] call load_object_direct;
-					};
-					if (count _lst_grl > 0) then {
-						{[_nextbuilding, _x] call attach_object_direct} forEach _lst_grl;
-					};
+					_nextbuilding setUnloadInCombat [true, false];			
 				};
+			};
 
-				if ( _owner == "public" && _nextclass == huron_typename ) then {
-					_nextbuilding setVariable ["GRLIB_vehicle_owner", "public", true];
-					_nextbuilding setVariable ["GRLIB_vehicle_ishuron", true, true];
-				};
+			if ( _nextclass in uavs ) then {
+				_nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
+				_nextbuilding setVehicleLock "LOCKED";
+				_nextbuilding setVariable ["R3F_LOG_disabled", true, true];
+			};
 
-				if ( _nextclass in list_static_weapons ) then {
-					[_nextbuilding] spawn protect_static;
-					_nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
-					_nextbuilding setVariable ["R3F_LOG_disabled", false, true];
-					if (_nextclass in static_vehicles_AI) then {
-						_nextbuilding setVehicleLock "LOCKEDPLAYER";
-						_nextbuilding addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1}];
-						_nextbuilding allowCrewInImmobile true;
-						_nextbuilding setUnloadInCombat [true, false];			
-					};
-				};
+			if ( _hascrew ) then {
+				[ _nextbuilding ] call F_forceBluforCrew;
+				_nextbuilding setVariable ["GRLIB_vehicle_manned", true, true];
+			};
 
-				if ( _nextclass in uavs ) then {
-					_nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
-					_nextbuilding setVehicleLock "LOCKED";
-					_nextbuilding setVariable ["R3F_LOG_disabled", true, true];
-				};
+			if ( !(_nextclass in no_kill_handler_classnames ) ) then {
+				_nextbuilding addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+			};
 
-				if ( _hascrew ) then {
-					[ _nextbuilding ] call F_forceBluforCrew;
-					_nextbuilding setVariable ["GRLIB_vehicle_manned", true, true];
-				};
+			if ( _nextclass in [FOB_typename, FOB_outpost] ) then {
+				_nextbuilding allowDamage false;
+				_nextbuilding addEventHandler ["HandleDamage", { 0 }];
+			};
 
-				if ( !(_nextclass in no_kill_handler_classnames ) ) then {
-					_nextbuilding addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-				};
-
-				if ( _nextclass in [FOB_typename, FOB_outpost] ) then {
-					_nextbuilding allowDamage false;
-					_nextbuilding addEventHandler ["HandleDamage", { 0 }];
-				};
-
-				if ( _nextclass == mobile_respawn ) then {
-					GRLIB_mobile_respawn pushback _nextbuilding;
-					_nextbuilding addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-				};
+			if ( _nextclass == mobile_respawn ) then {
+				GRLIB_mobile_respawn pushback _nextbuilding;
+				_nextbuilding addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 			};
 			//diag_log format [ "--- LRX Load Game %1 loaded at %2.", typeOf _nextbuilding, time];
 		};
@@ -347,18 +346,7 @@ while { true } do {
 
 		// Save objects
 		{
-			private _savedpos = [];
-
-			if ( (typeof _x) in _building_classnames ) then {
-				_savedpos = _x getVariable [ "GRLIB_saved_pos", [] ];
-				if ( count _savedpos == 0 ) then {
-					_x setVariable [ "GRLIB_saved_pos", getposATL _x, false ];
-					_savedpos = getposATL _x;
-				};
-			} else {
-				_savedpos = getposATL _x;
-			};
-
+			private _savedpos = getposATL _x;
 			private _nextclass = typeof _x;
 			private _nextdir = getdir _x;
 			private _hascrew = false;
