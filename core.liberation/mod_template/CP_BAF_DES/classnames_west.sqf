@@ -142,7 +142,7 @@ if ( count blufor_squad_inf_light == 0 ) then { blufor_squad_inf_light = [
 	"CUP_B_BAF_Soldier_Grenadier_DDPM",
 	"CUP_B_BAF_Soldier_AutoRifleman_DDPM",
 	"CUP_B_BAF_Soldier_AT_DDPM",
-	"CUP_B_BAF_Soldier_Rifleman_DDPM"	
+	"CUP_B_BAF_Soldier_Rifleman_DDPM",
 	"CUP_B_BAF_Soldier_Rifleman_DDPM",
 	"CUP_B_BAF_Soldier_Rifleman_DDPM"
 	];
