@@ -1,4 +1,4 @@
-private ["_unit_class", "_unit_mp", "_unit_cost", "_unit_rank"];
+private ["_unit", "_unit_class", "_unit_mp", "_unit_cost", "_unit_rank"];
 private _grp = createGroup [GRLIB_side_friendly, true];
 {
 	_unit_class = _x select 0;
@@ -16,3 +16,4 @@ private _grp = createGroup [GRLIB_side_friendly, true];
 	};
 	infantry_units set [_forEachIndex, [_unit_class, _unit_mp, _unit_cost, 0,_unit_rank]];
 } foreach infantry_units;
+deleteGroup _grp;
