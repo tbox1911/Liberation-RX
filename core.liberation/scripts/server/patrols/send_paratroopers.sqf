@@ -1,6 +1,6 @@
 params [ "_targetpos" ];
 
-_sendPara = {
+private _sendPara = {
 	params [ "_targetpos", "_para_group" ];
 
 	private _spawnsector = ( [ sectors_airspawn , [ _targetpos ] , { (markerpos _x) distance _input0 }, "ASCEND"] call BIS_fnc_sortBy ) select 0;
