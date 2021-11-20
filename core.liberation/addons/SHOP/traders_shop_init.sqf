@@ -22,6 +22,7 @@ waituntil {sleep 1; !isNil "GRLIB_marker_init"};
     if (_str find "warehouse_03" > 0) then { _offset = [-2, 0, 0]};  // Tanoa
     if (_str find "metalshelter_02" > 0) then { _deskDir = (180 + _deskDir); _offset = [2, 0, 0]};  // Tanoa
     if (_str find "villagestore" > 0) then { _offset = [4, 2, 0.70]};  // Enoch
+    if (_str find "ind_workshop01_02" > 0) then { _offset = [0, 2, 0]};  // Chernarus
     
     _deskPos = (getposASL _shop) vectorAdd ([_offset, -_deskDir] call BIS_fnc_rotateVector2D);   
     _desk = createSimpleObject [SHOP_desk, _deskPos, true];  
