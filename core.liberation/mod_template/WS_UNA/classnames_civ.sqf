@@ -30,15 +30,12 @@ civilians = [
 	"C_man_shorts_2_F",
 	"C_man_w_worker_F",
 	"C_Paramedic_01_base_F",
-	"C_Man_UAV_06_F",
 	"C_Man_UtilityWorker_01_F"
 ];
 
 civilian_vehicles = [
 	"C_Quadbike_01_F",
 	"C_Plane_Civil_01_F",
-	"CUP_O_TT650_TKA",
-	"CUP_I_TT650_NAPA",
 	"C_Heli_light_01_sheriff_F",
 	"C_Heli_Light_01_civil_F",
 	"C_Heli_light_01_furious_F",
@@ -48,7 +45,6 @@ civilian_vehicles = [
 	"C_Quadbike_01_F",
 	"C_Offroad_01_F",
 	"C_Offroad_01_darkred_F",
-	"CUP_O_SUV_TKA",
 	"C_Offroad_02_unarmed_F",
 	"C_Offroad_01_covered_F",
 	"C_Offroad_01_comms_F",
@@ -60,11 +56,8 @@ civilian_vehicles = [
 	"C_Van_01_fuel_F",
 	"C_Quadbike_01_F",
 	"C_Van_02_transport_F",
-	"CUP_B_S1203_Ambulance_CDF",
 	"C_Van_02_service_F",
 	"B_GEN_Van_02_transport_F",
 	"C_Truck_02_covered_F",
-	"C_Truck_02_transport_F",
-	"CUP_O_Tractor_Old_TKA",
-	"CUP_C_Datsun"
+	"C_Truck_02_transport_F"
 ];

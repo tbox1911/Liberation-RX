@@ -93,7 +93,9 @@ blacklisted_bag = [
 	"I_Protagonist_VR_F",
 	"U_I_Protagonist_VR",
 	"C_Protagonist_VR_F",
-	"U_C_Protagonist_VR"
+	"U_C_Protagonist_VR",
+	"launch_O_Vorona_green_F",
+	"launch_O_Vorona_brown_F"	
 ];
 
 blacklisted_weapon = [
@@ -156,8 +158,6 @@ GRLIB_whitelisted_from_arsenal = [
 	"SMG_03_black",
 	"SMG_03_TR_black",
 	"SMG_03C_TR_black",
-	"launch_O_Vorona_green_F",
-	"launch_O_Vorona_brown_F",
 	"launch_RPG32_green_F",
 	"launch_RPG32_camo_F",
 	"NVGoggles_OPFOR",
