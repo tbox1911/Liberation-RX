@@ -63,13 +63,13 @@ class Params
 	class ModPresetWest {
 		title = "MOD Preset - Friendly";
 		values[] = { 0,1,2,3,4,5,6,7,8 };
-		texts[] = { "A3 NATO", "A3 CSAT", "A3 AAF", "CP BAF Desert", "RHS USAF", "RHS AFRF", "GM WEST", "GM WEST Winter", "OPTRE West" };
+		texts[] = { "A3 NATO", "A3 CSAT", "A3 AAF", "CP BAF Desert", "RHS USAF", "RHS AFRF", "GM WEST", "GM WEST Winter", "OPTRE West", "WS UNA" };
 		default = 0;
 	};
 	class ModPresetEast {
 		title = "MOD Preset - Enemy";
 		values[] = { 0,1,2,3,4,5,6,7,8,9,10 };
-		texts[] = { "A3 CSAT", "A3 NATO", "A3 AAF", "A3 CSAT Urban", "CP Takistan", "EJW Taliban", "RHS AFRF", "RHS USAF", "GM EAST", "GM EAST Winter", "OPTRE East"};
+		texts[] = { "A3 CSAT", "A3 NATO", "A3 AAF", "A3 CSAT Urban", "CP Takistan", "EJW Taliban", "RHS AFRF", "RHS USAF", "GM EAST", "GM EAST Winter", "OPTRE East", "WS SFIA"};
 		default = 0;
 	};
 	class ForcedLoadout {
