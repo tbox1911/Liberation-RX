@@ -228,7 +228,7 @@
 					<German>-- AUFLADEN</German>
 					<Spanish>-- CARGAR</Spanish>
 					<Russian>-- ЗАГРУЗИТЬ</Russian>
-					<Chinesesimp>-- 背负 --</Chinesesimp>
+					<Chinesesimp>-- 装载 --</Chinesesimp>
 					<Japanese>-- 積み込み --</Japanese>
 			</Key>
 			<Key ID="STR_ACTION_UNLOAD_BOX">
@@ -336,7 +336,7 @@
 					<German>Outpost Container</German>
 					<Spanish>Contenedor de Outpost</Spanish>
 					<Russian>Outpost контейнер</Russian>
-					<Chinesesimp>Outpost 集装箱</Chinesesimp>
+					<Chinesesimp>前哨站集装箱</Chinesesimp>
 					<Japanese>前哨基地コンテナ</Japanese>
 			</Key>
 			<Key ID="STR_FOBTRUCK">
@@ -1203,7 +1203,7 @@
 					<German>Einfach</German>
 					<Spanish>Fácil</Spanish>
 					<Russian>Легко</Russian>
-					<Chinesesimp>简单</Chinesesimp>
+					<Chinesesimp>新兵入伍</Chinesesimp>
 					<Japanese>イージー</Japanese>
 			</Key>
 			<Key ID="STR_PARAMS_DIFFICULTY3">
@@ -1212,7 +1212,7 @@
 					<German>Normal</German>
 					<Spanish>Normal</Spanish>
 					<Russian>Нормально</Russian>
-					<Chinesesimp>正常</Chinesesimp>
+					<Chinesesimp>行伍匹夫</Chinesesimp>
 					<Japanese>ノーマル</Japanese>
 			</Key>
 			<Key ID="STR_PARAMS_DIFFICULTY4">
@@ -1221,7 +1221,7 @@
 					<German>Moderat</German>
 					<Spanish>Moderado</Spanish>
 					<Russian>Посложнее</Russian>
-					<Chinesesimp>适中</Chinesesimp>
+					<Chinesesimp>久经沙场</Chinesesimp>
 					<Japanese>モデレート</Japanese>
 			</Key>
 			<Key ID="STR_PARAMS_DIFFICULTY5">
@@ -1230,7 +1230,7 @@
 					<German>Schwer</German>
 					<Spanish>Difícil</Spanish>
 					<Russian>Сложно</Russian>
-					<Chinesesimp>困难</Chinesesimp>
+					<Chinesesimp>百炼成钢</Chinesesimp>
 					<Japanese>ハード</Japanese>
 			</Key>
 			<Key ID="STR_PARAMS_DIFFICULTY6">
@@ -1239,7 +1239,7 @@
 					<German>Schwer</German>
 					<Spanish>Extremo</Spanish>
 					<Russian>Экстремально</Russian>
-					<Chinesesimp>极端</Chinesesimp>
+					<Chinesesimp>很强很暴力</Chinesesimp>
 					<Japanese>エクストリーム</Japanese>
 			</Key>
 			<Key ID="STR_PARAMS_DIFFICULTY7">
@@ -1248,7 +1248,7 @@
 					<German>grotesk</German>
 					<Spanish>Ridículo</Spanish>
 					<Russian>Весело</Russian>
-					<Chinesesimp>地狱</Chinesesimp>
+					<Chinesesimp>噩梦</Chinesesimp>
 					<Japanese>クレイジー</Japanese>
 			</Key>
 			<Key ID="STR_PARAMS_DIFFICULTY8">
@@ -1257,7 +1257,7 @@
 					<German>Mein Gott, wir werden alle sterben!</German>
 					<Spanish>Oh dios mío, vamos a morir!</Spanish>
 					<Russian>Боже мой, мы все умрём!</Russian>
-					<Chinesesimp>天啊，天啊，我们都要死了</Chinesesimp>
+					<Chinesesimp>地狱噩梦</Chinesesimp>
 					<Japanese>おお神よ、我々は皆死ぬ。</Japanese>
 			</Key>
 			<Key ID="STR_PARAMS_RESOURCESMULTIPLIER">
@@ -1529,7 +1529,7 @@
 			<Key ID="STR_PARAM_PATROL">
 					<Original>Enable the Patrol Manager</Original>
 					<French>Activer le Gestionnaire de Patrouilles</French>
-					<Chinesesimp>启用野生动物管理</Chinesesimp>
+					<Chinesesimp>启用巡逻管理</Chinesesimp>
 					<Japanese>敵の巡回</Japanese>
 			</Key>
 			<Key ID="STR_FRIENDLY_FIRE">
@@ -1562,7 +1562,7 @@
 			<Key ID="STR_PARAM_SECTOR_RADIUS">
 					<Original>The size of a sector (radius)</Original>
 					<French>La taille d'un secteur (radius)</French>
-          <Chinesesimp>一个战区的规模（半径）</Chinesesimp>
+                    <Chinesesimp>一个战区的规模（半径）</Chinesesimp>
 					<Japanese>区域の大きさ(半径)</Japanese>
 			</Key>
 			<Key ID="STR_PARAM_PASSIVE_INCOME">
@@ -1571,7 +1571,7 @@
 					<German>Ersetzt Munitionskisten durch passives Einkommen</German>
 					<Spanish>Reemplazar cajas de munición por ingresos pasivos</Spanish>
 					<Russian>Заменяет ящики с боеприпасами пассивным доходом</Russian>
-					<Chinesesimp>替换弹药箱以获取被动收入</Chinesesimp>
+					<Chinesesimp>替换弹药箱以获取直接弹药收入</Chinesesimp>
 					<Japanese>スポーンする弾薬箱をパッシブインカムに変更</Japanese>
 			</Key>
 			<Key ID="STR_BUILD1">
@@ -1616,7 +1616,7 @@
 					<German>Statische Verteidigung</German>
 					<Spanish>Defensas estáticas</Spanish>
 					<Russian>Стационары</Russian>
-					<Chinesesimp>静态防御</Chinesesimp>
+					<Chinesesimp>静态防御武器</Chinesesimp>
 					<Japanese>固定兵器</Japanese>
 			</Key>
 			<Key ID="STR_BUILD6">
@@ -1634,7 +1634,7 @@
 					<German>Logistik</German>
 					<Spanish>Logística</Spanish>
 					<Russian>Снабжение</Russian>
-					<Chinesesimp>物流</Chinesesimp>
+					<Chinesesimp>后勤</Chinesesimp>
 					<Japanese>ロジスティック</Japanese>
 			</Key>
 			<Key ID="STR_BUILD8">
@@ -1670,7 +1670,7 @@
 					<German>VERSCHLOSSEN VON</German>
 					<Spanish>BLOQUEADO POR</Spanish>
 					<Russian>ЗАБЛОКИРОВАНО</Russian>
-					<Chinesesimp>锁定</Chinesesimp>
+					<Chinesesimp>锁车</Chinesesimp>
 					<Japanese>ロックされています</Japanese>
 			</Key>
 			<Key ID="STR_VEHICLE_UNLOCKED">
@@ -1739,13 +1739,13 @@
 			<Key ID="STR_PROMOTE">
 					<Original>Level UP!</Original>
 					<French>Level UP!</French>
-          <Chinesesimp>升级！</Chinesesimp>
+                    <Chinesesimp>升级！</Chinesesimp>
 					<Japanese>昇格しました！</Japanese>
 			</Key>
 			<Key ID="STR_PROMOTE_TOOLTIP">
 					<Original>Promotes the unit to the next rank in exchange for Ammo. It cannot be higher than the player's rank.</Original>
 					<French>Promeut l'unité au rang suivant en échange d'Ammo. Il ne peut pas être supérieur au rang du joueur.</French>
-          <Chinesesimp>提升单位到下一个等级以换取弹药。不能高于玩家的等级。</Chinesesimp>
+                    <Chinesesimp>提升单位到下一个等级以换取弹药。不能高于玩家的等级。</Chinesesimp>
 					<Japanese>弾薬を使ってユニットを昇格させます。プレイヤーの階級より上には昇格出来ません。</Japanese>
 			</Key>
 			<Key ID="STR_CONFIRM">
@@ -1859,13 +1859,13 @@
 			<Key ID="STR_PROMOTE_OK">
 					<Original>The unit has been successfully promoted.</Original>
 					<French>L'unité a été promue avec succès.</French>
-          <Chinesesimp>该单位已成功晋升。</Chinesesimp>
+                    <Chinesesimp>该单位已成功晋升。</Chinesesimp>
 					<Japanese>隊員は正常に解雇されました。</Japanese>
 			</Key>
 			<Key ID="STR_PROMOTE_KO">
 					<Original>The unit cannot be promoted, maximum rank has been reached.</Original>
 					<French>L'unité ne peut pas être promue, le rang maximum a été atteint.</French>
-          <Chinesesimp>无法晋升该单位，已达到最高等级。</Chinesesimp>
+                    <Chinesesimp>无法晋升该单位，已达到最高等级。</Chinesesimp>
 					<Japanese>ユニットは昇格できません、最大階級に達しています。</Japanese>
 			</Key>
 			<Key ID="STR_PERMISSIONS_TITLE">
@@ -2253,7 +2253,7 @@
 					<German>Verlegung im Gange</German>
 					<Spanish>Despliegue en curso...</Spanish>
 					<Russian>В процессе выполнения ...</Russian>
-					<Chinesesimp>正在部署...</Chinesesimp>
+					<Chinesesimp>正在投放...</Chinesesimp>
 					<Japanese>出撃中...</Japanese>
 			</Key>
 			<Key ID="STR_WHITELIST_PARAM">
@@ -2387,7 +2387,7 @@
 					<German>Einsatzposition:</German>
 					<Spanish>Lugar para el despliegue:</Spanish>
 					<Russian>Позиция размешения:</Russian>
-					<Chinesesimp>部署地点:</Chinesesimp>
+					<Chinesesimp>投放地点:</Chinesesimp>
 					<Japanese>出撃先:</Japanese>
 			</Key>
 			<Key ID="STR_AGGRESSIVITY_PARAM">
@@ -3950,11 +3950,13 @@
 			<Key ID="STR_FILTER_ARSENAL">
 				<Original>Enable Virtual Arsenal MOD filter</Original>
 				<French>Activer le filtres du MOD Arsenal Virtuel</French>
+				<Chinesesimp>启用虚拟武器库MOD过滤器</Chinesesimp>
 				<Japanese>バーチャルアーセナルにMODフィルターをかける</Japanese>
 			</Key>
 			<Key ID="STR_VEH_LOCK">
 				<Original>Enable Vehicles Ownership</Original>
 				<French>Activer la Propriété des Véhicules </French>
+				<Chinesesimp>启用车辆所有权</Chinesesimp>
 				<Japanese>乗り物の所有権</Japanese>
 			</Key>
 			<Key ID="STR_FORCE_LOADOUT">
@@ -4250,7 +4252,7 @@
 			<Key ID="STR_SP_BOX">
 				<Original>Special Box !</Original>
 				<Japanese>スペシャルボックス！</Japanese>
-				<Chinesesimp>特别箱！</Chinesesimp>
+				<Chinesesimp>特种箱！</Chinesesimp>
 			</Key>
 			<Key ID="STR_PTS">
 				<Original>XP</Original>
@@ -4784,6 +4786,7 @@
 			<Key ID="STR_SPECIALDELI3">
 				<Original>Special Delivery&lt;br/&gt;&lt;t color='%1'&gt;FAILED&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;Better luck next time!</Original>
 				<Japanese>特別配送は&lt;br/&gt;&lt;t color='%1'&gt;失敗しました。&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;次回頑張ってください！</Japanese>
+                <Chinesesimp>特快专递&lt;br/&gt;&lt;t color='%1'&gt;失败&lt;/t&gt;！&lt;br/&gt;&lt;br/&gt;再接再厉！</Chinesesimp>
 			</Key>
 			<Key ID="STR_SPECIALDELI4">
 				<Original>Special Delivery&lt;br/&gt;&lt;t color='%1'&gt;SUCCESS&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;The information have been collected, Well done.</Original>
