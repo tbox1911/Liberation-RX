@@ -105,6 +105,9 @@ while { true } do {
 				_loadouts_folder = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, toLower (typeOf _unit)];
 				[_unit] call compileFinal preprocessFileLineNUmbers _loadouts_folder;
 			};
+			if (GRLIB_ACE_enabled) then { 
+				_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+			};
 
 			stats_blufor_soldiers_recruited = stats_blufor_soldiers_recruited + 1; publicVariable "stats_blufor_soldiers_recruited";
 		};
@@ -130,7 +133,11 @@ while { true } do {
 					_unit enableGunLights "Auto";
 					_unit setVariable ["PAR_Grp_ID", format["AI_%1",PAR_Grp_ID], true];
 					_unit addUniform uniform player;
-					[_unit] call PAR_fn_AI_Damage_EH;
+					if (GRLIB_ACE_enabled) then { 
+						_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+					} else {
+						[_unit] call PAR_fn_AI_Damage_EH;
+					};
 					_idx = _idx + 1;
 				} foreach _classname;
 				_grp setCombatMode "GREEN";
