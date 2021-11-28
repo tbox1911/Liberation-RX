@@ -72,6 +72,7 @@ while { dialog && alive player } do {
 		_sell_list = [getPosATL player nearEntities [_sell_classnames, 100], {
 			alive _x && (count (crew _x) == 0 || typeOf _x in uavs) &&
 			locked _x != 2 &&
+			!(_x getVariable ["R3F_LOG_disabled", false]) &&
 			[player, _x] call is_owner &&
 			!(typeOf _x in _sell_blacklist)
 		}] call BIS_fnc_conditionalSelect;
