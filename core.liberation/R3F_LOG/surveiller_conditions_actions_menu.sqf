@@ -68,7 +68,8 @@ while {true} do
 			// Condition action deplacer_objet
 			R3F_LOG_action_deplacer_objet_valide = (count crew _objet_pointe == 0 || _isUav || typeOf _objet_pointe in static_vehicles_AI) && (isNull R3F_LOG_joueur_deplace_objet) &&
 				_objet_pas_en_cours_de_deplacement && isNull (_objet_pointe getVariable "R3F_LOG_est_transporte_par") &&
-				_objet_deverrouille && !(_objet_pointe getVariable "R3F_LOG_disabled");
+				_objet_deverrouille && !(_objet_pointe getVariable "R3F_LOG_disabled") &&
+				([_joueur, _objet_pointe] call is_owner);
 
 			// Condition action revendre_usine_deplace
 			R3F_LOG_action_revendre_usine_deplace_valide = _usine_autorisee_client && R3F_LOG_CFG_CF_sell_back_bargain_rate != -1 &&
@@ -160,7 +161,8 @@ while {true} do
 			// Condition action selectionner_objet_charge
 			R3F_LOG_action_selectionner_objet_charge_valide = (count crew _objet_pointe == 0 || _isUav) && isNull R3F_LOG_joueur_deplace_objet &&
 				isNull (_objet_pointe getVariable "R3F_LOG_est_transporte_par") &&
-				_objet_pas_en_cours_de_deplacement && _objet_deverrouille && !(_objet_pointe getVariable "R3F_LOG_disabled");
+				_objet_pas_en_cours_de_deplacement && _objet_deverrouille && !(_objet_pointe getVariable "R3F_LOG_disabled") &&
+				([_joueur, _objet_pointe] call is_owner);
 		};
 
 		// Si l'objet est un v�hicule remorqueur
