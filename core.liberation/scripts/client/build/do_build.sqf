@@ -196,7 +196,7 @@ while { true } do {
 				_truedir = 90 - (getdir player);
 				_truepos = [((getpos player) select 0) + (_dist * (cos _truedir)), ((getpos player) select 1) + (_dist * (sin _truedir)), build_altitude];
 				_actualdir = ((getdir player) + build_rotation);
-				if ( _classname == "Land_Cargo_Patrol_V1_F" || _classname == "Land_PortableLight_single_F" ) then { _actualdir = _actualdir + 180 };
+				if ( _classname == "Land_Cargo_Patrol_V1_F" ) then { _actualdir = _actualdir + 180 };
 				if ( _classname == FOB_typename ) then { _actualdir = _actualdir + 270 };
 
 				while { _actualdir > 360 } do { _actualdir = _actualdir - 360 };
@@ -323,8 +323,8 @@ while { true } do {
 				deleteVehicle _vehicle;
 				sleep 0.1;
 
-				if (_classname == "Land_ClutterCutter_large_F") then {
-					 createSimpleObject [_classname, ATLToASL _truepos];
+				if ([_classname, simple_objects] call F_itemIsInClass) then {					
+					 createSimpleObject [_classname, AGLtoASL _truepos];
 				} else {
 					_vehicle = _classname createVehicle _truepos;
 					_vehicle allowDamage false;

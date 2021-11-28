@@ -132,7 +132,7 @@ while { true } do {
 
 		// Send Ammo
 		_idact_send = _id_actions select 10;
-		if  ([] call is_menuok && score player > 20 && ( (player distance lhd) <= 200 || _near_atm ) && count AllPlayers > 1 ) then {
+		if  (score player > 20 && ( (player distance lhd) <= 200 || _near_atm ) && count AllPlayers > 1) then {
 			if ( _idact_send == -1 ) then {
 				_idact = player addAction ["<t color='#80FF00'>" + localize "STR_SEND_AMMO" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\misc\send_ammo.sqf","",-981,true,true,"","build_confirmed == 0"];
 				_id_actions set [10, _idact];
@@ -411,6 +411,20 @@ while { true } do {
 			if ( _idact_shop != -1 ) then {
 				player removeAction _idact_shop;
 				_id_actions set [29, -1];
+			};
+		};
+
+		// Recycle PortableHelipadLight (simple objects)
+		_idact_recycle = _id_actions select 30;
+		if ((player distance lhd) >= 1000 && _fobdistance < _distfob && cursorObject isKindof "Land_PortableHelipadLight_01_F") then {
+			if ( _idact_recycle == -1 ) then {
+				_idact = player addAction ["<t color='#FFFF00'>" + localize "STR_RECYCLE_MANAGER" + "</t> <img size='1' image='res\ui_recycle.paa'/>",{deleteVehicle cursorObject},"",-950,false,true,"","[cursorObject] call is_recyclable",_distvehclose];
+				_id_actions set [30, _idact];
+			};
+		} else {
+			if ( _idact_recycle != -1 ) then {
+				player removeAction _idact_recycle;
+				_id_actions set [30, -1];
 			};
 		};
 

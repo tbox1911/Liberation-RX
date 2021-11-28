@@ -103,10 +103,16 @@ buildings = buildings_west + [
 	["Land_DieselGroundPowerUnit_01_F",0,0,0,GRLIB_perm_tank],
 	["Land_Pallet_MilBoxes_F",0,0,0,GRLIB_perm_tank],
 	["Land_PaperBox_open_full_F",0,0,0,GRLIB_perm_tank],
-	["Land_ClutterCutter_large_F",0,0,0,GRLIB_perm_tank],
 	["Land_CzechHedgehog_01_new_F",0,0,0,GRLIB_perm_inf],
 	["Land_ConcreteHedgehog_01_F",0,0,0,GRLIB_perm_log],
-	["Land_DragonsTeeth_01_4x2_old_redwhite_F",0,0,0,GRLIB_perm_tank]
+	["Land_DragonsTeeth_01_4x2_old_redwhite_F",0,0,0,GRLIB_perm_tank],
+	["Land_ClutterCutter_large_F",0,0,0,GRLIB_perm_tank]
+];
+
+// *** SIMPLE OBJECTS ***
+simple_objects = [
+	"Land_ClutterCutter_large_F",
+	"Land_PortableHelipadLight_01_F"
 ];
 
 // *** ELITES ***
@@ -264,10 +270,7 @@ GRLIB_vehicle_blacklist = [
 	ammo_sling_typename,
 	medic_sling_typename,
   	"Box_NATO_WpsLaunch_F",
-	"Land_CargoBox_V1_F",
-	"StaticMGWeapon",
-	"StaticGrenadeLauncher",
-	"StaticMortar"
+	"Land_CargoBox_V1_F"
 ] + GRLIB_vehicle_blacklist_west;
 
 infantry_units = [ infantry_units ] call F_filterMods;
