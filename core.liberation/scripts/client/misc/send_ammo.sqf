@@ -34,16 +34,15 @@ if(!isNull (findDisplay 2337)) then {
 	_player_combo lbSetCurSel 0;
 	_ammo_combo lbSetCurSel 0;
 
-	while { dialog && (alive player) && send_ammo == 0 } do {
-		sleep 0.1;
-	};
-	closeDialog 0;
-
-	if (send_ammo == 1) then {
-		_dst_id = _player_combo lbData (lbCurSel _player_combo);
-		if (_dst_id != getPlayerUID _src) then {
-			_ammo = _ammo_combo lbValue (lbCurSel _ammo_combo);
-			[_src, _dst_id, _ammo] remoteExec ["sendammo_remote_call", 2];
+	while { dialog && (alive player) } do {
+		if (send_ammo == 1) then {
+			_dst_id = _player_combo lbData (lbCurSel _player_combo);
+			if (_dst_id != getPlayerUID _src) then {
+				_ammo = _ammo_combo lbValue (lbCurSel _ammo_combo);
+				[_src, _dst_id, _ammo] remoteExec ["sendammo_remote_call", 2];
+			};
+			send_ammo = 0;
 		};
+		sleep 0.1;
 	};
 };
