@@ -25,7 +25,8 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 [
 	[huron_typename, 200],
 	["B_Heli_Transport_01_F", 50],
-	["B_Heli_Transport_01_camo_F", 50]
+	["B_Heli_Transport_01_camo_F", 50],
+	["Heli_Light_01_base_F", 10]
 ];
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
@@ -310,11 +311,10 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	"Land_CampingChair_V2_F",
 	"Land_CampingTable_F",
 	"Land_Metal_rack_Tall_F",
-	"PortableHelipadLight_01_blue_F",
+	"Land_PortableHelipadLight_01_F",
 	"Land_DieselGroundPowerUnit_01_F",
 	"Land_Pallet_MilBoxes_F",
-	"Land_PaperBox_open_full_F",
-	"Land_ClutterCutter_large_F"
+	"Land_PaperBox_open_full_F"
 ];
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
@@ -351,9 +351,8 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 	["Land_CampingChair_V2_F", 5],
 	["Land_CampingTable_F", 5],
 	["Land_Metal_rack_Tall_F", 5],
-	["PortableHelipadLight_01_blue_F", 5],
+	["Land_PortableHelipadLight_01_F", 1],
 	["Land_DieselGroundPowerUnit_01_F", 5],
 	["Land_Pallet_MilBoxes_F", 5],
-	["Land_PaperBox_open_full_F", 5],
-	["Land_ClutterCutter_large_F", 5]
+	["Land_PaperBox_open_full_F", 5]
 ];
