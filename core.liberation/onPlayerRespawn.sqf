@@ -1,3 +1,4 @@
+titleText ["" ,"BLACK FADED", 100];
 player allowDamage false;
 disableUserInput true;
 _spawn_pos = (getmarkerpos GRLIB_respawn_marker) findEmptyPosition [0,20, "B_soldier_F"];
