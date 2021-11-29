@@ -48,7 +48,6 @@ boxSetup = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_
 createlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_createLandMines.sqf";
 showlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_showLandMines.sqf";
 clearlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_clearLandMines.sqf";
-a3w_setupMissionArrays = compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionArrays.sqf";
 
 // on map vehicles set handler and owner
 {
@@ -92,13 +91,13 @@ if (abort_loading) exitWith {
 [] execVM "scripts\server\game\manage_time.sqf";
 [] execVM "scripts\server\game\manage_weather.sqf";
 [] execVM "scripts\server\game\periodic_save.sqf";
-[] execVM "scripts\server\a3w\init_missions.sqf";
 [] execVM "scripts\server\game\init_marker.sqf";
 [] execVM "scripts\server\secondary\autostart.sqf";
 [] execVM "scripts\server\game\synchronise_vars.sqf";
 [] execVM "scripts\server\game\zeus_synchro.sqf";
 [] execVM "scripts\server\game\playtime.sqf";
 [] execVM "scripts\server\game\clean.sqf";
+[] execVM "scripts\server\a3w\init_missions.sqf";
 
 // Offloading
 [] execVM "scripts\server\offloading\offload_calculation.sqf";

@@ -3,6 +3,7 @@
 // ******************************************************************************************
 //	@file Name: towns.sqf
 //	@file Author: AgentRev, JoSchaap
+//	LRX Integration: pSiKO
 /*
 private _towns =
 [

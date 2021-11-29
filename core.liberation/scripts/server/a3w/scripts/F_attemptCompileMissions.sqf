@@ -3,6 +3,7 @@
 // ******************************************************************************************
 //	@file Name: attemptCompileMissions.sqf
 //	@file Author: AgentRev
+//	LRX Integration: pSiKO
 
 private ["_missionsArray", "_missionsFolder"];
 
