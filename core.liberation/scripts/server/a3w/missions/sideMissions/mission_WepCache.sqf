@@ -22,9 +22,9 @@ _setupObjects =
 	_box2 = [A3W_BoxWps, _missionPos, true] call boxSetup;
 	_box3 = [ammobox_o_typename, _missionPos, true] call boxSetup;
 
+	[_missionPos, 25] call createlandmines;	
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	[_aiGroup, _missionPos, _nbUnits, "infantry"] call createCustomGroup;
-	[_missionPos, 25] call createlandmines;
 
 	_missionPicture = "\A3\Static_f_gamma\data\ui\gear_StaticTurret_GMG_CA.paa";
 	_missionHintText = "A weapon cache has been spotted near the marker.";

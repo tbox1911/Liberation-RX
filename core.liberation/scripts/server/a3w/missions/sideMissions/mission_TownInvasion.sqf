@@ -47,14 +47,13 @@ _setupObjects =
 	} foreach _allbuildings;
 
 	// spawn some enemies
+	[_missionPos, 25] call createlandmines;
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	_managed_units = (["militia", (_nbUnits - 4), _buildingpositions, _missionPos] call F_spawnBuildingSquad);
 	{ _x setVariable ["mission_AI", true] } forEach _managed_units;
 	_managed_units joinSilent _aiGroup;
 
 	[_aiGroup, _missionPos, (_nbUnits - (count _managed_units)) , "militia"] call createCustomGroup;
-
-	[_missionPos, 25] call createlandmines;
 
 	_missionHintText = format ["Hostiles have taken over <br/><t size='1.25' color='%1'>%2</t><br/><br/>There seem to be <t color='%1'>%3 enemies</t> hiding inside or on top of buildings. Get rid of them all, and take their supplies!<br/>Watch out for those windows!", sideMissionColor, _townName, _nbUnits];
 };

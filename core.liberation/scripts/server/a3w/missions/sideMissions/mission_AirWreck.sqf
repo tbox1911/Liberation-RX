@@ -27,10 +27,10 @@ _setupObjects =
 	_box2 = [A3W_BoxWps, _missionPos, true] call boxSetup;
 	_box3 = [ammobox_b_typename, _missionPos, true] call boxSetup;
 
+	[_missionPos, 25] call createlandmines;
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	[_aiGroup, _missionPos, _nbUnits, "infantry"] call createCustomGroup;
 
-	[_missionPos, 25] call createlandmines;
 	_missionPicture = "\A3\Air_F\Heli_Light_02\Data\UI\Heli_Light_02_CA.paa";
 	_missionHintText = "A helicopter has come down under enemy fire!";
 };
