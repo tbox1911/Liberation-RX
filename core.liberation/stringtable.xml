@@ -3972,8 +3972,8 @@
 				<Japanese>サーマル装備を有効にする</Japanese>
 			</Key>
 			<Key ID="STR_DEATHCHAT">
-				<Original>Disable chat/voice if wounded</Original>
-				<French>Desactiver le chat/voie si blessé</French>
+				<Original>Disable chat/voice if Wounded</Original>
+				<French>Desactiver le chat/voie si Blessé</French>
 			</Key>
 			<!-- Permissions -->
 			<Key ID="STR_PERMISSION_NO_VIP">
