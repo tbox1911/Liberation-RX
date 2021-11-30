@@ -26,14 +26,12 @@ getNbUnits = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\
 waitUntil {sleep 1; !isNil "blufor_sectors" };
 waitUntil {sleep 1; !isNil "sectors_allSectors" };
 waitUntil {sleep 1; !isNil "save_is_loaded" };
+[] call compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionArrays.sqf";
+diag_log "-- LRX A3W Missions Initialized";
 
-diag_log "- A3W Initializing Missions-";
-[] call a3w_setupMissionArrays;
-
-sleep (4*60);
-diag_log "- A3W  Starting sideMissionController";
 for "_i" from 1 to 4 do {
 	// Start Permanent controller
+	sleep ((floor random 16) * 60);
+	diag_log format ["-- LRX A3W Starting Mission Controller #%1 at %2", _i, time];
 	[_i, false] execVM "scripts\server\a3w\missions\sideMissionController.sqf";
-	sleep 1;
 };
