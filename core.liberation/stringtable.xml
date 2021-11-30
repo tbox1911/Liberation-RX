@@ -3971,7 +3971,10 @@
 				<Chinesesimp>启用热成像装备</Chinesesimp>
 				<Japanese>サーマル装備を有効にする</Japanese>
 			</Key>
-
+			<Key ID="STR_DEATHCHAT">
+				<Original>Disable chat/voice if wounded</Original>
+				<French>Desactiver le chat/voie si blessé</French>
+			</Key>
 			<!-- Permissions -->
 			<Key ID="STR_PERMISSION_NO_VIP">
 				<Original>You are NOT allowed to use Special Vehicles.</Original>

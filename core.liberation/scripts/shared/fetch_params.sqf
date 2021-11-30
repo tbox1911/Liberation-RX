@@ -46,6 +46,7 @@ GRLIB_mod_preset_west = ["ModPresetWest", 0] call bis_fnc_getParamValue;
 GRLIB_mod_preset_east = ["ModPresetEast", 0] call bis_fnc_getParamValue;
 GRLIB_force_load = ["ForceLoading", 0] call bis_fnc_getParamValue;
 GRLIB_opfor_english = ["EnglishOpfor", 0] call bis_fnc_getParamValue;
+GRLIB_disable_death_chat = ["DeathChat", 1] call bis_fnc_getParamValue;
 
 // Define constant
 [] call compileFinal preprocessFileLineNUmbers "gameplay_constants.sqf";
@@ -128,6 +129,7 @@ if ( GRLIB_blufor_defenders == 1 ) then { GRLIB_blufor_defenders = true } else {
 if ( GRLIB_autodanger == 1 ) then { GRLIB_autodanger = true } else { GRLIB_autodanger = false };
 if ( GRLIB_thermic == 1 ) then { GRLIB_thermic = true } else { GRLIB_thermic = false };
 if ( GRLIB_opfor_english == 1 ) then { GRLIB_opfor_english = true } else { GRLIB_opfor_english = false };
+if ( GRLIB_disable_death_chat == 1 ) then { GRLIB_disable_death_chat = true } else { GRLIB_disable_death_chat = false };
 
 // Overide sector radius
 if (GRLIB_sector_radius != 0) then { GRLIB_sector_size = GRLIB_sector_radius };

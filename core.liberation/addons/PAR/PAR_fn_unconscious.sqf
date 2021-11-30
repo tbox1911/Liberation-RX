@@ -13,6 +13,10 @@ if (!isNil {_unit getVariable "PAR_busy"} || !isNil {_unit getVariable "PAR_heal
 _unit setVariable ["PAR_healed", nil];
 [(_unit getVariable ["PAR_myMedic", objNull]), _unit] call PAR_fn_medicRelease;
 _unit setCaptive true;
+if (GRLIB_disable_death_chat) then {
+  0 enableChannel false;
+  1 enableChannel false;
+};
 _unit switchMove "AinjPpneMstpSnonWrflDnon";  // lay down
 sleep 8;
 
@@ -97,7 +101,10 @@ _bld spawn {sleep (30 + floor(random 30)); deleteVehicle _this};
 
 [(_unit getVariable ["PAR_myMedic", objNull]), _unit] call PAR_fn_medicRelease;
 _unit setCaptive false;
-
+if (GRLIB_disable_death_chat) then {
+  0 enableChannel true;
+  1 enableChannel true;
+};
 if (lifeState _unit == "INCAPACITATED" && time > _unit getVariable ["PAR_BleedOutTimer", 0]) then {
   _unit spawn PAR_fn_death;
 };
