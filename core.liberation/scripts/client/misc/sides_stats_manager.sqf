@@ -1,5 +1,6 @@
 waitUntil {sleep 1; !isNil "GRLIB_player_spawned" };
 private ["_msg", "_sector", "_opf", "_default"];
+private	_cleanup_counter = 0;
 
 while { true } do {
 	_sector = [(allMapMarkers select {_x select [0,12] == "side_mission" && markerPos _x distance2D player <= GRLIB_capture_size}), player] call F_nearestPosition;
@@ -30,10 +31,18 @@ while { true } do {
 		};
 
 		hintSilent _msg;
+		_cleanup_counter = 2;
 	};
 
 	if (underwater vehicle player) then {
 		hintSilent format ["Oxygen Remaining: %1%2", round(100 * getOxygenRemaining player), "%"];
+		_cleanup_counter = 2;
 	};
+
+	if (_cleanup_counter > 0) then {
+		_cleanup_counter = _cleanup_counter - 1;
+		if (_cleanup_counter == 0) then { hintSilent "" };
+	};
+
 	sleep 5;
 };
