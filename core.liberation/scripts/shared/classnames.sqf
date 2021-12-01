@@ -56,6 +56,8 @@ buildings = buildings_west + [
 	["Land_BagFence_Long_F",0,0,0,0],
 	["Land_BagFence_Short_F",0,0,0,GRLIB_perm_inf],
 	["Land_BagFence_Corner_F",0,0,0,GRLIB_perm_log],
+	["Land_RampConcrete_F",0,0,0,GRLIB_perm_log],
+	["Land_RampConcreteHigh_F",0,0,0,GRLIB_perm_tank],
 	["Land_HBarrier_5_F",0,0,0,0],
 	["Land_HBarrierWall_corridor_F",0,0,0,0],
 	["Land_HBarrierWall4_F",0,0,0,GRLIB_perm_tank],
