@@ -132,7 +132,7 @@ while { true } do {
 
 		// Send Ammo
 		_idact_send = _id_actions select 10;
-		if  (score player > 20 && ( (player distance lhd) <= 200 || _near_atm ) && count AllPlayers > 1) then {
+		if  (( (player distance lhd) <= 200 || _near_atm ) && count AllPlayers > 1) then {
 			if ( _idact_send == -1 ) then {
 				_idact = player addAction ["<t color='#80FF00'>" + localize "STR_SEND_AMMO" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\misc\send_ammo.sqf","",-981,true,true,"","build_confirmed == 0"];
 				_id_actions set [10, _idact];
