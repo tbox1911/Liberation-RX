@@ -98,6 +98,7 @@ if (abort_loading) exitWith {
 [] execVM "scripts\server\game\playtime.sqf";
 [] execVM "scripts\server\game\clean.sqf";
 [] execVM "scripts\server\a3w\init_missions.sqf";
+[] execVM "scripts\server\ar\fn_advancedRappellingInit.sqf";
 
 // Offloading
 [] execVM "scripts\server\offloading\offload_calculation.sqf";

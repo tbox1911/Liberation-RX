@@ -31,7 +31,7 @@ diag_log "-- LRX A3W Missions Initialized";
 
 for "_i" from 1 to 4 do {
 	// Start Permanent controller
-	sleep ((floor random 16) * 60);
+	sleep ((2 + floor random 14) * 60);
 	diag_log format ["-- LRX A3W Starting Mission Controller #%1 at %2", _i, time];
 	[_i, false] execVM "scripts\server\a3w\missions\sideMissionController.sqf";
 };
