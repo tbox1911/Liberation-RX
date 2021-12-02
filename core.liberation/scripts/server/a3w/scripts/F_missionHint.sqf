@@ -27,7 +27,7 @@ if (GRLIB_fancy_info == 2) then {
 		_text,
 		_titleColor
 	];
-	_info = [_msg, 0, 0, 5, 0, -1, 90];
+	_info = [_msg, 0, 0, 6, 0, -1, 90];
 } else {
 	_info = [
 		format ["%1", _title],
