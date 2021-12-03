@@ -191,6 +191,7 @@ PAR_Player_Init = {
 	player setMass 10;
 	PAR_isDragging = false;
 	[player] spawn player_EVH;
+	[player] call AR_Add_Player_Actions;
 	1 fadeSound 1;
 	1 fadeRadio 1;
 	NRE_EarplugsActive = 0;
