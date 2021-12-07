@@ -13,7 +13,7 @@ if (!isNil {_unit getVariable "PAR_busy"} || !isNil {_unit getVariable "PAR_heal
 _unit setVariable ["PAR_healed", nil];
 [(_unit getVariable ["PAR_myMedic", objNull]), _unit] call PAR_fn_medicRelease;
 _unit setCaptive true;
-if (GRLIB_disable_death_chat) then {
+if (GRLIB_disable_death_chat && isPlayer _unit) then {
   0 enableChannel false;
   1 enableChannel false;
 };
@@ -101,7 +101,7 @@ _bld spawn {sleep (30 + floor(random 30)); deleteVehicle _this};
 
 [(_unit getVariable ["PAR_myMedic", objNull]), _unit] call PAR_fn_medicRelease;
 _unit setCaptive false;
-if (GRLIB_disable_death_chat) then {
+if (GRLIB_disable_death_chat && isPlayer _unit) then {
   0 enableChannel true;
   1 enableChannel true;
 };
