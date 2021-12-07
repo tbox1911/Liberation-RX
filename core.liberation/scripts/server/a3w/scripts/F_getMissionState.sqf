@@ -12,11 +12,7 @@ _mArray = param [0, [], [[]]];
 _mType = param [1, "", [""]];
 
 {
-	if (_x select 0 == _mType) exitWith
-	{
-		//_x set [2, _mState];
-		_mState = _x select 2;
-	};
+	if (_x select 0 == _mType) exitWith	{ _mState = _x select 2 };
 } forEach _mArray;
 
 _mState
