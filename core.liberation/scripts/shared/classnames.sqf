@@ -78,6 +78,8 @@ buildings = buildings_west + [
 	["Land_Medevac_house_V1_F",0,0,0,GRLIB_perm_tank],
 	["Land_Medevac_HQ_V1_F",0,0,0,GRLIB_perm_air],
 	["Land_PortableLight_double_F",0,0,0,GRLIB_perm_log],
+	["Land_TentLamp_01_suspended_F",0,0,0,GRLIB_perm_log],
+    ["Land_TentLamp_01_suspended_red_F",0,0,0,GRLIB_perm_log],
 	["Land_LampHalogen_F",0,0,0,GRLIB_perm_tank],
 	["Land_HelipadSquare_F",0,0,0,GRLIB_perm_log],
 	["Land_Razorwire_F",0,0,0,GRLIB_perm_tank],
