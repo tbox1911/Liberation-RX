@@ -16,7 +16,7 @@ if ( _status == 0 ) then {
 if ( _status == 1 ) then {
 	[ "lib_fob_attacked", [ _fobtype, _fobname ] ] call BIS_fnc_showNotification;
 	"opfor_capture_marker" setMarkerPosLocal _fobpos;
-	sector_timer = (GRLIB_vulnerability_timer + (5 * 60));
+	sector_timer = GRLIB_vulnerability_timer + (5 * 60);
 };
 
 if ( _status == 2 ) then {
