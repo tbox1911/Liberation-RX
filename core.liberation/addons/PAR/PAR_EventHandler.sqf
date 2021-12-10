@@ -125,10 +125,13 @@ if (_unit == player && alive player && player isKindOf "Man") then {
 		params ["_unit", "_role", "_vehicle"];
 		1 fadeSound 1;
 		NRE_EarplugsActive = 0;
-		if ( (getPos _unit) select 2 > 20 ) then {
+		if ( (getPosATL _unit) select 2 > 20 && !(_unit getVariable ["AR_Is_Rappelling",false]) ) then {
 			[_vehicle, _unit] spawn PAR_fn_eject;
-		} else {
-			_unit selectWeapon primaryWeapon _unit;
+		};
+		[_unit] spawn {
+			params ["_unit"];
+			waitUntil {sleep 1; isTouchingGround _unit};
+			if (primaryWeapon _unit != "") then { _unit selectWeapon primaryWeapon _unit };
 			[_unit, "show"] remoteExec ["dog_action_remote_call", 2];
 		};
 	}];

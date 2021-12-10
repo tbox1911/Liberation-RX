@@ -52,7 +52,7 @@ if (_isMedic && _hasMedikit) then {
   } count (actionIDs _wnded);
 }] remoteExec ["bis_fnc_call", 0];
 
-_wnded selectWeapon primaryWeapon _wnded;
+if (primaryWeapon _wnded != "") then { _wnded selectWeapon primaryWeapon _wnded };
 sleep 0.5;
 
 if (isPlayer _wnded) then {

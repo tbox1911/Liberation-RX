@@ -731,7 +731,7 @@ AR_Advanced_Rappelling_Install = {
 		
 		_player addAction ["Rappel AI Units", { 
 			{
-				if(!isPlayer _x) then {
+				if(!isPlayer _x && assignedVehicleRole _x select 0 == "cargo") then {
 					sleep 1;
 					[_x, vehicle _x] call AR_Rappel_From_Heli_Action;
 				};
@@ -741,10 +741,6 @@ AR_Advanced_Rappelling_Install = {
 		_player addAction ["Detach Rappel Device", { 
 			[player] call AR_Rappel_Detach_Action;
 		}, nil, 0, false, true, "", "[player] call AR_Rappel_Detach_Action_Check"];
-		
-		_player addEventHandler ["Respawn", {
-			player setVariable ["AR_Actions_Loaded",false];
-		}];
 		
 	};
 
