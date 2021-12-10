@@ -4,6 +4,15 @@ if (rating _unit < -2000) exitWith {_unit spawn PAR_fn_death};
 if (!([] call F_getValid)) exitWith {_unit spawn PAR_fn_death};
 waituntil {sleep (0.5 + random 2); lifeState _unit == "INCAPACITATED" && (isTouchingGround _unit || (round (getPos _unit select 2) <= 1))};
 
+if (isPlayer _unit) then {
+  private _score = score _unit;
+  private _penalty = 0;
+  if ( _score > GRLIB_perm_inf ) then { _penalty = 1 };
+  if ( _score > GRLIB_perm_air ) then { _penalty = 2 };
+  if ( _score > GRLIB_perm_max ) then { _penalty = 3 };
+  if ( _penalty > 0 ) then { [_unit, -_penalty] remoteExec ["addScore", 2] };
+};
+
 if (!isNil {_unit getVariable "PAR_busy"} || !isNil {_unit getVariable "PAR_heal"}) then {
   _unit setVariable ["PAR_busy", nil];
   _unit setVariable ["PAR_heal", nil];
