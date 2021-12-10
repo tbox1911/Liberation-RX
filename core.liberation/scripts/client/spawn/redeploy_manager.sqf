@@ -69,7 +69,7 @@ while { dialog && alive player && deploy == 0} do {
 
 	_respawn_trucks = call F_getMobileRespawns;
 
-	for [ {_idx=0},{_idx < count _respawn_trucks},{_idx=_idx+1} ] do {
+	for "_idx" from 0 to ((count _respawn_trucks) -1) do {
 		_choiceslist = _choiceslist + [[format [ "%1 - %2", localize "STR_RESPAWN_TRUCK",mapGridPosition (getpos (_respawn_trucks select _idx)) ],getpos (_respawn_trucks select _idx),(_respawn_trucks select _idx)]];
 	};
 
@@ -78,9 +78,7 @@ while { dialog && alive player && deploy == 0} do {
 		lbAdd [201, (_x select 0)];
 	} foreach _choiceslist;
 
-	if ( lbCurSel 201 == -1 ) then {
-		lbSetCurSel [201,0];
-	};
+	if ( lbCurSel 201 == -1 ) then { lbSetCurSel [201,0] };
 
 	if ( lbCurSel 201 != _oldsel ) then {
 		_oldsel = lbCurSel 201;
