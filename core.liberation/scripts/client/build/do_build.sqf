@@ -318,7 +318,7 @@ while { true } do {
 				deleteVehicle _vehicle;
 				buildtype = 1;
 				dobuild = 0;
-				sleep 3;	// time to trap build canceled
+				sleep 2;	// time to trap build canceled
 			};
 
 			if ( build_confirmed == 2 ) then {
