@@ -58,7 +58,7 @@ _unit addEventHandler ["FiredMan",	{
 }];
 
 // Player
-if (_unit == player && alive player && player isKindOf "Man") then {
+if (_unit == player) then {
 	// ACE specific
 	if (GRLIB_ACE_enabled) then {
 		["ace_arsenal_displayClosed", {[player] call F_payLoadout}] call CBA_fnc_addEventHandler;
@@ -99,6 +99,7 @@ if (_unit == player && alive player && player isKindOf "Man") then {
 				} forEach _unit_array;
 			};
 		};
+
 		// Unblock units
 		missionNamespace setVariable [
 		"BIS_fnc_addCommMenuItem_menu", [
@@ -116,8 +117,8 @@ if (_unit == player && alive player && player isKindOf "Man") then {
 		1 fadeSound ( NRE_vehvolume / 100.0 );
 		NRE_EarplugsActive = 1;
 		[player, "hide"] remoteExec ["dog_action_remote_call", 2];
-		_this call vehicle_permissions;
 		_vehicle disableTIEquipment true;
+		_this call vehicle_permissions;
 	}];
 
 	_unit removeAllEventHandlers "GetOutMan";
@@ -125,7 +126,7 @@ if (_unit == player && alive player && player isKindOf "Man") then {
 		params ["_unit", "_role", "_vehicle"];
 		1 fadeSound 1;
 		NRE_EarplugsActive = 0;
-		if ( (getPosATL _unit) select 2 > 20 && !(_unit getVariable ["AR_Is_Rappelling",false]) ) then {
+		if ( (getPos _unit) select 2 > 20 && !(_unit getVariable ["AR_Is_Rappelling",false]) ) then {
 			[_vehicle, _unit] spawn PAR_fn_eject;
 		};
 		[_unit] spawn {
