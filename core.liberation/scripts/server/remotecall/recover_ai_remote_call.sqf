@@ -1,6 +1,5 @@
 if (!isServer && hasInterface) exitWith {};
 params ["_player", "_extra_units"];
-if (isNil "_player") exitWith {};
 private ["_grp", "_pid", "_squad", "_myveh"];
 
 waitUntil {sleep 0.2; !isNil {_player getVariable ["PAR_Grp_ID", nil]}};
