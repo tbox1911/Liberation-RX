@@ -277,6 +277,11 @@ GRLIB_vehicle_blacklist = [
 	"Land_CargoBox_V1_F"
 ] + GRLIB_vehicle_blacklist_west;
 
+// Recycleable objects
+GRLIB_recycleable_classnames = ["LandVehicle","Air","Ship","StaticWeapon","Slingload_01_Base_F","Pod_Heli_Transport_04_base_F"];
+{GRLIB_recycleable_classnames pushBack ( _x select 0 )} foreach (support_vehicles + buildings + opfor_recyclable);
+
+// Filter Mods
 infantry_units = [ infantry_units ] call F_filterMods;
 light_vehicles = [ light_vehicles ] call F_filterMods;
 heavy_vehicles = [ heavy_vehicles ] call F_filterMods;
