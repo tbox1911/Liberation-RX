@@ -15,7 +15,7 @@ if (!isNull _killer && _unit != _killer) then {
 	private _veh_killer = vehicle _killer;
 
 	// Friendly fires penalty AI
-	if (isPlayer _killer && !(isPlayer _unit) && side group _unit == GRLIB_side_friendly && _unit != _killer && _veh_unit != _veh_killer && lifeState _unit != "INCAPACITATED" && _amountOfDamage > 0.05 ) then {
+	if (isPlayer _killer && !(isPlayer _unit) && side group _unit == GRLIB_side_friendly && _unit != _killer && _veh_unit != _veh_killer && lifeState _unit != "INCAPACITATED" && _amountOfDamage > 0.10 ) then {
 		if ( _unit getVariable ["GRLIB_isProtected", 0] < time ) then {
 			private _msg = format ["%1 - %2 Watch your fire !! ", localize "STR_FRIENDLY_FIRE", name _killer];
 			[gamelogic, _msg] remoteExec ["globalChat", 0];
@@ -36,6 +36,16 @@ if (!isNull _killer && _unit != _killer) then {
 			_unit setVariable ["GRLIB_isProtected", round(time + 3), true];
 		};
 		_ret = 0;
+	};
+
+	// Static AI
+	if ( typeOf _unit in static_vehicles_AI ) then {
+		if ( _unit getVariable ["GRLIB_isProtected", 0] < time ) then {
+			_ret = damage _unit + (_amountOfDamage min 0.10);
+			_unit setVariable ["GRLIB_isProtected", round(time + 3), true];
+		} else {
+			_ret = damage _unit;
+		};
 	};
 };
 _ret;
