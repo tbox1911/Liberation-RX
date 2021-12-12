@@ -4,19 +4,16 @@ sleep (3*60);
 diag_log "-- LRX Starting Patrol Manager";
 
 // Infantry Patrol
-_combat_triggers_infantry = [15,35,55,75];
-if ( GRLIB_unitcap < 0.9 ) then { _combat_triggers_infantry = [15,35,75] };
-if ( GRLIB_unitcap > 1.3 ) then { _combat_triggers_infantry = [10,20,40,60,70,80,90] };
+_combat_triggers_infantry = [15,35,55];
+if ( GRLIB_unitcap > 1.3 ) then { _combat_triggers_infantry = [15,35,55,75] };
 
 // Armored Patrol
-_combat_triggers_armor = [20,40,60,80];
-if ( GRLIB_unitcap < 0.9 ) then { _combat_triggers_armor = [20,40,80] };
-if ( GRLIB_unitcap > 1.3 ) then { _combat_triggers_armor = [15,25,45,65,75,85,95] };
+_combat_triggers_armor = [20,40,60];
+if ( GRLIB_unitcap > 1.3 ) then { _combat_triggers_armor = [20,40,60,80] };
 
 // Static Patrol
-_combat_triggers_static = [25,45,65,85];
-if ( GRLIB_unitcap < 0.9 ) then { _combat_triggers_static = [25,45,85] };
-if ( GRLIB_unitcap > 1.3 ) then { _combat_triggers_static = [15,25,45,65,75,85,95] };
+_combat_triggers_static = [25,45,65];
+if ( GRLIB_unitcap > 1.3 ) then { _combat_triggers_static = [25,45,65,85] };
 
 waitUntil { sleep 0.3; !isNil "blufor_sectors" };
 
