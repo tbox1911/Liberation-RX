@@ -144,6 +144,7 @@ ai_healing_sources = [
 	medic_sling_typename
 ] + ai_healing_sources_west;
 
+// Everything the AI vehicle should be able to reammo from
 vehicle_rearm_sources = [
 	ammo_truck_typename,
 	ammo_sling_typename,
@@ -151,6 +152,16 @@ vehicle_rearm_sources = [
 	ammobox_o_typename,
 	ammobox_i_typename
 ] + vehicle_rearm_sources_west;
+
+// Everything the AI vehicle should be able to repair from
+vehicle_repair_sources = [
+	repair_sling_typename,
+	repair_truck_typename,
+	"B_APC_Tracked_01_CRV_F",
+	"C_Offroad_01_repair_F",
+	"B_G_Offroad_01_repair_F",
+	"Land_RepairDepot_01_civ_F"
+];
 
 // *** Boats ***
 boats_names = [ 
@@ -274,7 +285,8 @@ GRLIB_vehicle_blacklist = [
 	ammo_sling_typename,
 	medic_sling_typename,
   	"Box_NATO_WpsLaunch_F",
-	"Land_CargoBox_V1_F"
+	"Land_CargoBox_V1_F",
+	"Land_RepairDepot_01_civ_F"	
 ] + GRLIB_vehicle_blacklist_west;
 
 // Recycleable objects

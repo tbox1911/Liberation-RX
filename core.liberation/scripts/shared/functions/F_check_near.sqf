@@ -21,6 +21,7 @@ switch ( _list ) do {
 	case "ARSENAL" : { _classlist = [Arsenal_typename]};
 	case "REAMMO" : { _classlist = vehicle_rearm_sources};
 	case "REAMMO_AI" : { _classlist = ai_resupply_sources};
+	case "REPAIR_AI" : { _classlist = vehicle_repair_sources};
 };
 
 // Include FOB
