@@ -41,7 +41,7 @@ if (!isNull _killer && _unit != _killer) then {
 	// Static AI
 	if ( typeOf _unit in static_vehicles_AI ) then {
 		if ( _unit getVariable ["GRLIB_isProtected", 0] < time ) then {
-			_ret = damage _unit + (_amountOfDamage min 0.10);
+			_ret = damage _unit + (_amountOfDamage min 0.15);
 			_unit setVariable ["GRLIB_isProtected", round(time + 3), true];
 		} else {
 			_ret = damage _unit;
