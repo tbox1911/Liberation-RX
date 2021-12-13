@@ -110,7 +110,8 @@ buildings = buildings_west + [
 	["Land_CzechHedgehog_01_new_F",0,0,0,GRLIB_perm_inf],
 	["Land_ConcreteHedgehog_01_F",0,0,0,GRLIB_perm_log],
 	["Land_DragonsTeeth_01_4x2_old_redwhite_F",0,0,0,GRLIB_perm_tank],
-	["Land_ClutterCutter_large_F",0,0,0,GRLIB_perm_tank]
+	["Land_ClutterCutter_large_F",0,0,0,GRLIB_perm_tank],
+	[FOB_sign,0,0,0,99999]
 ];
 
 // *** SIMPLE OBJECTS ***
@@ -272,8 +273,8 @@ GRLIB_vehicle_blacklist = [
 	ammobox_i_typename,
 	mobile_respawn,
 	opfor_ammobox_transport,
-	FOB_box_typename,
 	FOB_truck_typename,
+	FOB_box_typename,
 	FOB_box_outpost,
 	canisterFuel,
 	waterbarrel_typename,
@@ -290,8 +291,11 @@ GRLIB_vehicle_blacklist = [
 ] + GRLIB_vehicle_blacklist_west;
 
 // Recycleable objects
+GRLIB_recycleable_blacklist = [FOB_sign];
 GRLIB_recycleable_classnames = ["LandVehicle","Air","Ship","StaticWeapon","Slingload_01_Base_F","Pod_Heli_Transport_04_base_F"];
-{GRLIB_recycleable_classnames pushBack ( _x select 0 )} foreach (support_vehicles + buildings + opfor_recyclable);
+{
+	if (!((_x select 0) in GRLIB_recycleable_blacklist)) then {GRLIB_recycleable_classnames pushBack (_x select 0)};
+} foreach (support_vehicles + buildings + opfor_recyclable);
 
 // Filter Mods
 infantry_units = [ infantry_units ] call F_filterMods;

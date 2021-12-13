@@ -419,6 +419,15 @@ while { true } do {
 						_vehicle addEventHandler ["HandleDamage", {0}];
 						[_vehicle, false] remoteExec ["allowDamage", 0];
 						[(getpos _vehicle), false] remoteExec ["build_fob_remote_call", 0];
+
+						// Add owner sign
+						_fobdir = (getdir _vehicle);
+						_sign_pos = (getposATL _vehicle) vectorAdd ([[-6, -5, -0.2], -_fobdir] call BIS_fnc_rotateVector2D);    
+						_sign = createVehicle [FOB_sign, _sign_pos, [], 0, "CAN_COLLIDE"];
+						_sign setDir _fobdir + 90;
+						_sign allowDamage false;
+						_sign setVariable ["GRLIB_vehicle_owner", getPlayerUID player, true];
+						_sign setObjectTextureGlobal [0, getMissionPath "res\splash_libe2.paa"];
 					} else {
 						sleep 0.3;
 						_vehicle allowDamage true;

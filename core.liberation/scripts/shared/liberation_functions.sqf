@@ -58,6 +58,7 @@ F_getNextSector = compileFinal preprocessFileLineNumbers "scripts\shared\functio
 F_addParachute = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_addParachute.sqf";
 F_itemIsInClass = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_itemIsInClass.sqf";
 F_startsWith = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_startsWith.sqf";
+F_hof_msg = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_hof_msg.sqf";
 is_admin = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_isAdmin.sqf";
 is_recyclable = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_isRecyclable.sqf";
 is_owner = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_isOwner.sqf";

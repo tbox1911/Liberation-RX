@@ -58,7 +58,7 @@ _classnames_to_save = [];
 	_classnames_to_save pushback (_x select 0);
 } foreach buildings;
 
-_classnames_to_save_blu = [FOB_typename, FOB_outpost, huron_typename];
+_classnames_to_save_blu = [FOB_typename, FOB_outpost, FOB_sign, huron_typename];
 {
 	_classnames_to_save_blu pushback (_x select 0);
 } foreach (air_vehicles + heavy_vehicles + light_vehicles + support_vehicles + static_vehicles + ind_recyclable);
@@ -256,6 +256,12 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 				GRLIB_mobile_respawn pushback _nextbuilding;
 				_nextbuilding addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 			};
+			if ( _nextclass == FOB_sign ) then {
+				_nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
+				_nextbuilding setObjectTextureGlobal [0, getMissionPath "res\splash_libe2.paa"];
+				_nextbuilding allowDamage false;
+			};
+			
 			//diag_log format [ "--- LRX Load Game %1 loaded at %2.", typeOf _nextbuilding, time];
 		};
 	} foreach buildings_to_save;

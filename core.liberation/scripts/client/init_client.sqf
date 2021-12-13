@@ -117,11 +117,20 @@ addMissionEventHandler ["Draw3D",{
 		drawIcon3D ["", [1,1,1,1], _pos vectorAdd [0, 0, 3], 0, 0, 0, "- READ ME -", 2, 0.05, "TahomaB"];
 	};
 
-	private _near_grave = nearestObjects [player, GRLIB_player_grave , 2];
+	private _near_grave = nearestObjects [player, GRLIB_player_grave, 2];
 	if (count (_near_grave) != 0) then {
 		private _grave = _near_grave select 0;
 		private _grave_pos = ASLToAGL getPosASL _grave;
 		drawIcon3D [getMissionPath "res\skull.paa", [1,1,1,1], _grave_pos vectorAdd [0, 0, 1], 2, 2, 0, (_grave getVariable ["GRLIB_grave_message", ""]), 2, 0.05, "RobotoCondensed", "center"];
+	};
+
+	private _near_sign = player nearobjects [FOB_sign, 5];
+	if (count (_near_sign) != 0 && player distance2D lhd >= 1000) then {  
+		private _sign = _near_sign select 0;  
+		private _sign_pos = ASLToAGL getPosASL _sign;  
+		private _gid = _sign getVariable ["GRLIB_vehicle_owner", ""];  
+		private _name = GRLIB_player_scores select { _x select 0 == _gid} select 0 select 3;  
+		drawIcon3D ["", [1,1,1,1], _sign_pos vectorAdd [0, 0, 2.5], 0, 0, 0, format ["- FOB %1 -", _name], 2, 0.07, "RobotoCondensed", "center"];  
 	};
 }];
 chimera_sign addAction ["<t color='#FFFFFF'>" + localize "STR_READ_ME" + "</t>",{createDialog "liberation_notice"},"",999,true,true,"","[] call is_menuok",5];
