@@ -4,13 +4,15 @@ private _frame_pos = [];
 private _spawn_str = "";
 private _basenamestr = "BASE CHIMERA";
 
-waitUntil { !isNil "GRLIB_all_fobs" };
-waitUntil { !isNil "blufor_sectors" };
-waitUntil { !isNil "save_is_loaded" };
-waitUntil { !isNil "introDone" };
-waitUntil { introDone };
-waitUntil { !isNil "cinematic_camera_stop" };
-waitUntil { cinematic_camera_stop };
+if (!GRLIB_player_spawned) then {
+	waitUntil {sleep 0.2; !isNil "GRLIB_all_fobs" };
+	waitUntil {sleep 0.2; !isNil "blufor_sectors" };
+	waitUntil {sleep 0.2; !isNil "save_is_loaded" };
+	waitUntil {sleep 0.2; !isNil "introDone" };
+	waitUntil {sleep 0.2; introDone };
+	waitUntil {sleep 0.2; !isNil "cinematic_camera_stop" };
+	waitUntil {sleep 0.2; cinematic_camera_stop };
+};
 
 fullmap = 0;
 _old_fullmap = 0;
