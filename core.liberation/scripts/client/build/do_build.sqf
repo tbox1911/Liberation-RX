@@ -428,6 +428,9 @@ while { true } do {
 						_sign allowDamage false;
 						_sign setVariable ["GRLIB_vehicle_owner", getPlayerUID player, true];
 						_sign setObjectTextureGlobal [0, getMissionPath "res\splash_libe2.paa"];
+						if (score player < 20) then {
+							[player, 20] remoteExec ["addScore", 2]; 
+						};
 					} else {
 						sleep 0.3;
 						_vehicle allowDamage true;
