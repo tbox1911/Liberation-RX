@@ -8,6 +8,9 @@ _fob_sign = (getPosATL _fob_hq) nearobjects [FOB_sign, 10] select 0;
 if ((_fob_hq getVariable ["fob_in_use", false])) exitWith {};
 _fob_hq setVariable ["fob_in_use", true, true];
 
+//check owner
+if ( getPlayerUID player != _fob_sign getVariable ["GRLIB_vehicle_owner", ""] ) exitWith {hintSilent "Error!\nYour are NOT the owner of the FOB!"};
+
 dorepackage = 0;
 createDialog "liberation_repackage_fob";
 waitUntil { dialog };
