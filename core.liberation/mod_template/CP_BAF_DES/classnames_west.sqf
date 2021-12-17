@@ -7,9 +7,9 @@ GRLIB_color_friendly = "ColorKhaki";
 
 huron_typename = "CUP_B_Merlin_HC3_GB";  // comment to use value from lobby/server.cfg
 Respawn_truck_typename = "CUP_B_LR_Ambulance_GB_D";
-ammo_truck_typename = "CUP_B_T810_Reammo_CZ_DES";
-fuel_truck_typename = "CUP_B_T810_Refuel_CZ_DES";
-repair_truck_typename = "CUP_B_T810_Repair_CZ_DES";
+ammo_truck_typename = "CUP_B_MTVR_Ammo_BAF_DES";
+fuel_truck_typename = "CUP_B_MTVR_Refuel_BAF_DES";
+repair_truck_typename = "CUP_B_MTVR_Repair_BAF_DES";
 pilot_classname = "CUP_B_BAF_Soldier_Pilot_DDPM";
 crewman_classname = "CUP_B_BAF_Soldier_Crew_DDPM";
 A3W_BoxWps = "CUP_LocalBasicWeaponsBox";
@@ -89,7 +89,8 @@ air_vehicles = [
 	["CUP_B_AH1_DL_BAF",10,1300,15,GRLIB_perm_air],
 	["CUP_B_CH47F_GB",20,2500,40,GRLIB_perm_max],
 	["CUP_B_GR9_DYN_GB",20,3000,40,GRLIB_perm_max],
-	["CUP_B_F35B_BAF",20,4500,40,GRLIB_perm_max]
+	["CUP_B_F35B_BAF",20,4500,40,GRLIB_perm_max],
+	["CUP_B_C130J_Cargo_GB",20,3000,50,GRLIB_perm_max]
 ];
 
 blufor_air = [
@@ -122,9 +123,9 @@ static_vehicles_AI = [
 ];
 
 support_vehicles_west = [
-	["B_G_Offroad_01_repair_F",5,15,5,GRLIB_perm_inf],
-	["B_G_Van_01_fuel_F",5,15,20,GRLIB_perm_inf],
-	["Box_NATO_WpsLaunch_F",0,150,0,GRLIB_perm_tank],
+	["CUP_B_nM1038_Repair_USA_DES",5,15,5,GRLIB_perm_inf],
+	["CUP_B_MTVR_Refuel_BAF_DES",5,15,20,GRLIB_perm_inf],
+	["CUP_BOX_GB_WpsLaunch_F",0,150,0,GRLIB_perm_tank],
 	["CUP_B_FV432_Bulldog_GB_D",10,2000,20,GRLIB_perm_max]
 ];
 
