@@ -268,7 +268,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 
 	sleep 1;
 	{
-		if (! (typeOf _x in [FOB_typename])) then { _x allowDamage true };
+		if (! (typeOf _x in [FOB_typename, FOB_sign])) then { _x allowDamage true };
 	} foreach _buildings_created;
 };
 
