@@ -19,7 +19,6 @@ if ( isServer ) then {
 			_killer = _unit getVariable ["ace_medical_lastDamageSource", objNull];
 		};
 	};
-	if (isNull _killer) exitWith {};
 
 	if (isNil "infantry_weight") then { infantry_weight = 33 };
 	if (isNil "armor_weight") then { armor_weight = 33 };
