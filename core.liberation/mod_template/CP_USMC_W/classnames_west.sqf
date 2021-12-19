@@ -51,16 +51,16 @@ units_loadout_overide = [
 light_vehicles = [
 	["CUP_B_M1030_USMC",1,5,1,0],
 	["CUP_C_Golf4_camo_Civ",1,15,1,0],
-	["CUP_B_Zodiac_USMC",1,25,1,GRLIB_perm_inf],
+	["CUP_B_Zodiac_USMC",1,25,1,0],
 	["CUP_B_RHIB_USMC",4,50,4,GRLIB_perm_log],
 	["CUP_B_LCU1600_USMC",5,30,5,GRLIB_perm_log],
-	//["C_Van_01_transport_F",1,15,1,0],
+	["C_Van_01_transport_F",1,15,1,0],
 	["CUP_B_T810_Unarmed_CZ_WDL",1,15,1,GRLIB_perm_inf],
 	["CUP_B_T810_Armed_CZ_WDL",5,30,5,GRLIB_perm_log],
 	["CUP_B_MTVR_USMC",5,30,5,GRLIB_perm_tank],
-	["CUP_B_nM1025_Unarmed_USMC_WDL",2,10,2,GRLIB_perm_inf],
+	["CUP_B_nM1025_Unarmed_USMC_WDL",2,10,2,0],
 	["CUP_B_nM1025_M2_USMC_WDL",2,20,2,GRLIB_perm_inf],
-	["CUP_B_nM1025_Mk19_USMC_WDL",2,20,2,GRLIB_perm_inf],
+	["CUP_B_nM1025_Mk19_USMC_WDL",2,20,2,GRLIB_perm_log],
 	["CUP_B_nM1025_M240_USMC_WDL",2,30,2,GRLIB_perm_log],
 	["CUP_B_M1151_Deploy_USMC",1,100,1,GRLIB_perm_inf],
 	["CUP_B_M1151_Mk19_USMC",1,110,1,GRLIB_perm_inf],
@@ -118,7 +118,7 @@ blufor_air = [
 ];
 
 boats_west = [
-  "CUP_B_LCU1600_USMC"
+  	"CUP_B_LCU1600_USMC"
 ];
 
 static_vehicles = [
