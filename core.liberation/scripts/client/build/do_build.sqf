@@ -426,10 +426,11 @@ while { true } do {
 						_sign = createVehicle [FOB_sign, _sign_pos, [], 0, "CAN_COLLIDE"];
 						_sign setDir _fobdir + 90;
 						_sign allowDamage false;
-						_sign setVariable ["GRLIB_vehicle_owner", getPlayerUID player, true];
 						_sign setObjectTextureGlobal [0, getMissionPath "res\splash_libe2.paa"];
-						if (score player < 20) then {
-							[player, 20] remoteExec ["addScore", 2]; 
+						if (count GRLIB_all_fobs == 0) then {
+							_sign setVariable ["GRLIB_vehicle_owner", "public", true];
+						} else {
+							_sign setVariable ["GRLIB_vehicle_owner", getPlayerUID player, true];
 						};
 					} else {
 						sleep 0.3;
