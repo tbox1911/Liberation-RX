@@ -59,7 +59,12 @@ if (isPlayer _wnded) then {
   player setVariable ["PAR_isUnconscious", 0, true];
   player setVariable ["PAR_isDragged", 0, true];
   group _wnded selectLeader player;
-  if (isPlayer _medic && score _medic <= GRLIB_perm_tank) then {[_medic, 5] remoteExec ["addScore", 2]};
+  if (isPlayer _medic && score _medic <= GRLIB_perm_tank) then {
+    private _bonus = 5;
+    [_medic,_bonus] remoteExec ["addScore", 2];
+    private _text = format ["You revived %1!\nBonus score %2,\nThank you!", name _wnded, _bonus];
+	  [_text] remoteExec ["hintSilent", owner _medic];
+  };
 } else {
   _wnded switchMove "amovpknlmstpsraswrfldnon"; //go up
   _wnded setSpeedMode (speedMode group player);
