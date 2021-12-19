@@ -52,4 +52,7 @@ if !(isNull _unit) then {
 
 	// Delete body
 	deleteVehicle _unit;
+
+	//remove marker
+	deletemarker format ["PAR_marker_%1", name _unit];
 };

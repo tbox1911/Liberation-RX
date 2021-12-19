@@ -5,6 +5,7 @@ if (!([] call F_getValid)) exitWith {_unit spawn PAR_fn_death};
 waituntil {sleep (0.5 + random 2); lifeState _unit == "INCAPACITATED" && (isTouchingGround _unit || (round (getPos _unit select 2) <= 1))};
 
 if (isPlayer _unit) then {
+  [] call PAR_show_marker;
   private _score = score _unit;
   private _penalty = 0;
   if ( _score > GRLIB_perm_inf ) then { _penalty = 1 };
@@ -22,6 +23,7 @@ if (!isNil {_unit getVariable "PAR_busy"} || !isNil {_unit getVariable "PAR_heal
 _unit setVariable ["PAR_healed", nil];
 [(_unit getVariable ["PAR_myMedic", objNull]), _unit] call PAR_fn_medicRelease;
 _unit setCaptive true;
+
 if (GRLIB_disable_death_chat && isPlayer _unit) then {
   0 enableChannel false;
   1 enableChannel false;
@@ -110,10 +112,15 @@ _bld spawn {sleep (30 + floor(random 30)); deleteVehicle _this};
 
 [(_unit getVariable ["PAR_myMedic", objNull]), _unit] call PAR_fn_medicRelease;
 _unit setCaptive false;
-if (GRLIB_disable_death_chat && isPlayer _unit) then {
-  0 enableChannel true;
-  1 enableChannel true;
+
+if (isPlayer _unit) then {
+  [] call PAR_del_marker;
+  if (GRLIB_disable_death_chat) then {
+    0 enableChannel true;
+    1 enableChannel true;
+  };
 };
+
 if (lifeState _unit == "INCAPACITATED" && time > _unit getVariable ["PAR_BleedOutTimer", 0]) then {
   _unit spawn PAR_fn_death;
 };

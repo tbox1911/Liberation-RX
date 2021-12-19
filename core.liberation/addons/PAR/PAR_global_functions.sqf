@@ -74,6 +74,15 @@ PAR_unit_eject = {
 	sleep 3;
 	_unit allowDamage true;
 };
+PAR_show_marker = {
+	_mk1 = createMarker [format ["PAR_marker_%1", name player], position player];
+	_mk1 setMarkerType "loc_Hospital"; 
+	_mk1 setMarkerColor "ColorRed"; 
+	_mk1 setMarkerText format ["%1 Injured", name player];
+};
+PAR_del_marker = {
+	deletemarker format ["PAR_marker_%1", name player];
+};
 
 // AI Section
 PAR_fn_AI_Damage_EH = {
