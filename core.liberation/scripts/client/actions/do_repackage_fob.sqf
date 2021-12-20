@@ -9,7 +9,8 @@ if ((_fob_hq getVariable ["fob_in_use", false])) exitWith {};
 _fob_hq setVariable ["fob_in_use", true, true];
 
 //check owner
-if ( getPlayerUID player != _fob_sign getVariable ["GRLIB_vehicle_owner", ""] ) exitWith {hintSilent "Error!\nYour are NOT the owner of the FOB!"};
+if (isNil "_fob_sign") then { _fob_sign = objNull};
+if (getPlayerUID player != _fob_sign getVariable ["GRLIB_vehicle_owner", ""]) exitWith {hintSilent "Error!\nYour are NOT the owner of the FOB!"};
 
 dorepackage = 0;
 createDialog "liberation_repackage_fob";
