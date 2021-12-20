@@ -38,14 +38,15 @@ if (typeName (_classlist select 0) == "STRING") then {
 	// From Objects classname
 	_near = [ _vehpos nearEntities [_classlist, _dist], {
 			alive _x &&
-			( typeOf _x in [Arsenal_typename] || 
+			( 
+			  typeOf _x in [Arsenal_typename] || 
 			  isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) || 
 			  !(_x getVariable ['R3F_LOG_disabled', true])
 			)
 			}] call BIS_fnc_conditionalSelect;
 } else {
 	// From Position
-	_near = _classlist select {( _vehpos distance2D _x) <= _dist};
+	_near = _classlist select { (_vehpos distance2D _x) <= _dist };
 };
 
 if (count _near > 0) then {_ret = true};
