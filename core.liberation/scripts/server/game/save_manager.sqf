@@ -253,9 +253,11 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 			};
 
 			if ( _nextclass == mobile_respawn ) then {
-				GRLIB_mobile_respawn pushback _nextbuilding;
+				_nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
 				_nextbuilding addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+				GRLIB_mobile_respawn pushback _nextbuilding;
 			};
+
 			if ( _nextclass == FOB_sign ) then {
 				_nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
 				_nextbuilding setObjectTextureGlobal [0, getMissionPath "res\splash_libe2.paa"];

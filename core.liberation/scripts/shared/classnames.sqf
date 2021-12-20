@@ -42,9 +42,9 @@ support_vehicles = [
 	[ammobox_o_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
 	[ammobox_i_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
 	[A3W_BoxWps,0,round(150 / GRLIB_recycling_percentage),0,99999],
-	[waterbarrel_typename,0,round(100 / GRLIB_recycling_percentage),0,GRLIB_perm_inf],
-	[fuelbarrel_typename,0,round(100 / GRLIB_recycling_percentage),0,GRLIB_perm_inf],
-	[foodbarrel_typename,0,round(100 / GRLIB_recycling_percentage),0,GRLIB_perm_inf]
+	[waterbarrel_typename,0,round(70 / GRLIB_recycling_percentage),0,GRLIB_perm_inf],
+	[fuelbarrel_typename,0,round(70 / GRLIB_recycling_percentage),0,GRLIB_perm_inf],
+	[foodbarrel_typename,0,round(70 / GRLIB_recycling_percentage),0,GRLIB_perm_inf]
 ] + support_vehicles_west;
 
 // *** BUILDINGS ***
@@ -271,7 +271,6 @@ GRLIB_vehicle_blacklist = [
 	ammobox_b_typename,
 	ammobox_o_typename,
 	ammobox_i_typename,
-	mobile_respawn,
 	opfor_ammobox_transport,
 	FOB_truck_typename,
 	FOB_box_typename,

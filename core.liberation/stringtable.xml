@@ -3790,6 +3790,11 @@
 					<Chinesesimp>每个小队AI招募限制。</Chinesesimp>
 					<Japanese>AIの運用を小隊ごとに制限する。</Japanese>
 			</Key>
+			<Key ID="STR_PARAM_SPAWN_MAX">
+					<Original>Spawn Point limit per player.</Original>
+					<French>Limite de point de respawn par joueur.</French>
+			</Key>
+
 			<Key ID="STR_NOTIFICATION_SAR_STARTED">
 					<Original>Crashed helicopter near %1.</Original>
 					<French>Helicopter crashé près de %1.</French>
@@ -4640,6 +4645,12 @@
 				<Original>Cancel</Original>
 				<Japanese>キャンセル</Japanese>
 				<Chinesesimp>取消</Chinesesimp>
+			</Key>
+
+			<!-- F_getMobileRespawnsPlayer.sqf -->
+			<Key ID="STR_TOO_MANY_SPAWN">
+				<Original>You have too many respawn point!</Original>
+				<French>Vous avez trop de point de respawn !</French>
 			</Key>
 
       <!--

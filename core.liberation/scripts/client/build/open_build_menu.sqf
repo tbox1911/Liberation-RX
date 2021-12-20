@@ -91,6 +91,12 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 				_affordable = false;
 			};
 
+			if (_x select 0 == mobile_respawn) then {
+				if (([getPlayerUID player] call F_getMobileRespawnsPlayer) select 1) then {
+					_affordable = false;
+				};
+			};
+
 			if ( _affordable ) then {
 				((findDisplay 5501) displayCtrl (110)) lnbSetColor  [[((lnbSize 110) select 0) - 1, 0], [1,1,1,1]];
 				((findDisplay 5501) displayCtrl (110)) lnbSetColor  [[((lnbSize 110) select 0) - 1, 1], [1,1,1,1]];
@@ -131,6 +137,12 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 				((_build_item select 3 == 0 ) || ((_build_item select 3) <= (fuel_cap - resources_fuel)))
 		) then {
 			_affordable = true;
+		};
+
+		if (_build_item select 0 == mobile_respawn) then {
+			if (([getPlayerUID player] call F_getMobileRespawnsPlayer) select 1) then {
+				_affordable = false;
+			};
 		};
 
 		if ( buildtype != 8 ) then {
