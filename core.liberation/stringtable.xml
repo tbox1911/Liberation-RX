@@ -4631,11 +4631,6 @@
 				<Japanese>自装備をユニットに反映</Japanese>
 				<Chinesesimp>复制装备</Chinesesimp>
 			</Key>
-			<Key ID="STR_RENAME">
-				<Original>Rename</Original>
-				<Japanese>リネーム</Japanese>
-				<Chinesesimp>重命名</Chinesesimp>
-			</Key>
 			<Key ID="STR_RENAME_BUTTON">
 				<Original>Rename</Original>
 				<Japanese>リネーム</Japanese>

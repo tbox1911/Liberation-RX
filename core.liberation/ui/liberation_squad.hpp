@@ -168,7 +168,7 @@ class liberation_squad {
 		w = (0.055 * safezoneW);
 		h = (0.04 * safezoneH);
 		sizeEx = 0.025 * safezoneH;
-		text = $STR_RENAME;
+		text = $STR_RENAME_BUTTON;
 		tooltip = "Rename unit.";
 		action = "GRLIB_squadaction = 5";
 	};
