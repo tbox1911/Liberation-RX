@@ -3,8 +3,8 @@ if (isNull _tent) exitWith {};
 
 //only one at time
 if ((_tent getVariable ["tent_in_use", false])) exitWith {};
+player setVariable ["GRLIB_action_inuse", true];
 _tent setVariable ["tent_in_use", true, true];
-
 _tent setVariable ["R3F_LOG_disabled", true, true];
 _pos = getPosATL _tent;
 
@@ -22,3 +22,4 @@ if (backpack player == "") then {
 disableUserInput false;
 disableUserInput true;
 disableUserInput false;
+player setVariable ["GRLIB_action_inuse", false];

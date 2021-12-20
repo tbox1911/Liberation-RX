@@ -1,3 +1,5 @@
+if (count (attachedObjects player) > 0) exitWith {};
+if (player getVariable ["GRLIB_action_inuse", false]) exitWith {};
 private [ "_backpack", "_backpackcontents" ];
 
 if ( isNil "GRLIB_last_halo_jump" ) then { GRLIB_last_halo_jump = -6000; };

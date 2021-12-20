@@ -1,3 +1,5 @@
+if (count (attachedObjects player) > 0) exitWith {};
+if (player getVariable ["GRLIB_action_inuse", false]) exitWith {};
 private _choiceslist = [];
 private _standard_map_pos = [];
 private _frame_pos = [];
