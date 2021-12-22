@@ -1171,14 +1171,13 @@
 					<Japanese>== テクニカルオプション ==</Japanese>
 			</Key>
 			<Key ID="STR_PARAMS_DAYDURATION">
-					<Original>Day duration (hours)</Original>
-					<French>Durée du jour (heures)</French>
-					<German>Länge eines Tages (Stunden)</German>
-					<Spanish>Duración del día (horas)</Spanish>
-					<Russian>Продолжительность дня (часов)</Russian>
-					<Chinesesimp>一天时间(小时)</Chinesesimp>
-					<Japanese>ゲーム内時間(時間)</Japanese>
+					<Original>Day duration (multiplier)</Original>
+					<French>Durée du jour (multiplicateur)</French>
 			</Key>
+			<Key ID="STR_PARAMS_NIGHTDURATION">
+					<Original>Night duration (multiplier)</Original>
+					<French>Durée de la nuit (multiplicateur)</French>
+			</Key>			
 			<Key ID="STR_PARAMS_DIFFICULTY">
 					<Original>Difficulty</Original>
 					<French>Difficulté</French>
@@ -2488,15 +2487,6 @@
 					<Russian>Случайно</Russian>
 					<Chinesesimp>随机</Chinesesimp>
 					<Japanese>ランダム</Japanese>
-			</Key>
-			<Key ID="STR_SHORTER_NIGHTS_PARAM">
-					<Original>Shorter nights</Original>
-					<French>Nuits plus courtes</French>
-					<German>Kürzere Nächte</German>
-					<Spanish>Noches más cortas</Spanish>
-					<Russian>Короткие ночи</Russian>
-					<Chinesesimp>短暂夜晚</Chinesesimp>
-					<Japanese>夜間短縮</Japanese>
 			</Key>
 			<Key ID="STR_REPAIRING">
 					<Original>Repairing</Original>
