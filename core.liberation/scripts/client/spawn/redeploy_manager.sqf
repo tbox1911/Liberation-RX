@@ -74,8 +74,11 @@ while { dialog && alive player && deploy == 0} do {
 	_respawn_trucks = [] call F_getMobileRespawns;
 
 	for "_idx" from 0 to ((count _respawn_trucks) -1) do {
-		private _name = format ["(%1)", name ([(_respawn_trucks select _idx) getVariable ["GRLIB_vehicle_owner", ""]] call BIS_fnc_getUnitByUID)];
-		if (isNil "_name") then {_name = ""};
+		private _owner = (_respawn_trucks select _idx) getVariable ["GRLIB_vehicle_owner", "public"];
+		private _name = "";
+		if (_owner != "public") then {
+			_name = format ["(%1)", name ([_owner] call BIS_fnc_getUnitByUID)];
+		};
 		_choiceslist = _choiceslist + [[format [ "%1 - %2 %3", localize "STR_RESPAWN_TRUCK", mapGridPosition (getpos (_respawn_trucks select _idx)), _name], getpos (_respawn_trucks select _idx), (_respawn_trucks select _idx)]];
 	};
 
