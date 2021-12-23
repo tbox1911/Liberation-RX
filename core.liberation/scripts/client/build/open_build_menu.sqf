@@ -91,9 +91,11 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 				_affordable = false;
 			};
 
-			if (_x select 0 == mobile_respawn) then {
-				if (([getPlayerUID player] call F_getMobileRespawnsPlayer) select 1) then {
-					_affordable = false;
+			if ( buildtype == 7 ) then {
+				if (_x select 0 == mobile_respawn) then {
+					if (([getPlayerUID player] call F_getMobileRespawnsPlayer) select 1) then {
+						_affordable = false;
+					};
 				};
 			};
 
@@ -139,9 +141,11 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 			_affordable = true;
 		};
 
-		if (_build_item select 0 == mobile_respawn) then {
-			if (([getPlayerUID player] call F_getMobileRespawnsPlayer) select 1) then {
-				_affordable = false;
+		if ( buildtype == 7 ) then {
+			if (_build_item select 0 == mobile_respawn) then {
+				if (([getPlayerUID player] call F_getMobileRespawnsPlayer) select 1) then {
+					_affordable = false;
+				};
 			};
 		};
 
