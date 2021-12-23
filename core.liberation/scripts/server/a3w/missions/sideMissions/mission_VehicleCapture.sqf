@@ -11,7 +11,7 @@ private ["_nbUnits", "_vehicle", "_vehicleName", "_vehiclePos", "_smoke"];
 _setupVars =
 {
 	_missionType = "Vehicle Capture";
-	_locationsArray = SpawnMissionMarkers;
+	_locationsArray = [SpawnMissionMarkers] call checkSpawn;
 	_nbUnits = [] call getNbUnits;
 };
 
