@@ -252,9 +252,9 @@ while { dialog && alive player } do {
 
 		if (GRLIB_squadaction == 4) then {
 			if ((player distance _selectedmember) < 30) then {
-				private _price = [player] call F_loadoutPrice;
 				private _price_ai = [_selectedmember] call F_loadoutPrice;
-				private _cost = 0 max (_price -_price_ai);
+				private _price = [player] call F_loadoutPrice;
+				private _cost = 0 max (_price - _price_ai);
 				if ([_cost] call F_pay) then {
 					_selectedmember setUnitLoadout (getUnitLoadout player);
 					hintSilent format ["Loadout copied, Price: %1\nThank you !", _cost];
