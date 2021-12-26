@@ -16,8 +16,8 @@ private _sendPara = {
 	private _cargo_seat_free = count (fullCrew [_newvehicle, "cargo", true] - fullCrew [_newvehicle, "cargo", false]);
 	if (_cargo_seat_free > 8) then {_cargo_seat_free = 8};
 	for "_i" from 1 to _cargo_seat_free do {
-		_unit = _para_group createUnit [opfor_paratrooper, getmarkerpos _spawnsector, [], 0, "NONE"];
-		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+		opfor_paratrooper createUnit [getmarkerpos _spawnsector, _para_group, 'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]'];
+		_unit = (units _para_group) select ((count (units _para_group)) -1);
 		_unit assignAsCargo _newvehicle;
 		_unit moveInCargo _newvehicle;
 		_unit addBackpack "B_Parachute";
@@ -27,7 +27,7 @@ private _sendPara = {
 		_unit setVariable ["GRLIB_counter_TTL", round(time + 3600)];
 		sleep 0.1;
 	};
-	(units _para_group) joinSilent _para_group;
+
 	while {(count (waypoints _pilot_group)) != 0} do {deleteWaypoint ((waypoints _pilot_group) select 0);};
 	while {(count (waypoints _para_group)) != 0} do {deleteWaypoint ((waypoints _para_group) select 0);};
 	sleep 0.2;

@@ -1,3 +1,10 @@
+// *** GLOBAL DEFINITIOON ***
+GRLIB_side_friendly = WEST;
+GRLIB_color_friendly = "ColorBLUFOR";
+GRLIB_side_enemy = EAST;
+GRLIB_color_enemy = "ColorOPFOR";
+GRLIB_color_enemy_bright = "ColorRED";
+
 // All Object classname used in LRX must be declared here
 [] call compileFinal preprocessFileLineNumbers "scripts\loadouts\init_loadouts.sqf";
 
@@ -13,10 +20,6 @@
 
 // *** DEFAULT ***
 [] call compileFinal preprocessFileLineNUmbers format ["scripts\shared\default_classnames.sqf"];
-
-// *** GLOBAL DEFINITIOON ***
-GRLIB_side_friendly = WEST;
-GRLIB_side_enemy = EAST;
 
 // *** SUPPORT ***
 support_vehicles = [

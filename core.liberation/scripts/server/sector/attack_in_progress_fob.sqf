@@ -9,7 +9,10 @@ if ( _ownership != GRLIB_side_enemy ) exitWith {};
 private _grp = createGroup [GRLIB_side_friendly, true];
 
 if ( GRLIB_blufor_defenders ) then {
-	{ _x createUnit [ _thispos, _grp,'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]']; } foreach blufor_squad_inf;
+	{ 
+		_x createUnit [ _thispos, _grp,'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]'];
+		sleep 0.1;
+	} foreach blufor_squad_inf;
 };
 
 sleep 3;

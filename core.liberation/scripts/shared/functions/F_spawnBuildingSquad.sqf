@@ -45,6 +45,7 @@ _idxposit = 0;
 		_everythingspawned = _everythingspawned + (units _grp);
 		_grp = createGroup [_default_side, true];
 	};
+	sleep 0.1;
 } foreach _squadtospawnnn;
 
 if ( !(isNull _grp)) then {
