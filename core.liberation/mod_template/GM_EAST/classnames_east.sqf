@@ -27,7 +27,6 @@ opfor_mrap = "gm_gc_army_brdm2um";
 opfor_mrap_armed = "gm_gc_army_brdm2";
 opfor_transport_helo = "gm_gc_airforce_mi2p";
 opfor_transport_truck = "gm_gc_army_ural4320_cargo";
-opfor_ammobox_transport = "gm_gc_army_ural4320_cargo";
 opfor_fuel_truck = "gm_gc_army_ural375d_refuel";
 opfor_ammo_truck = "gm_gc_army_ural4320_reammo";
 opfor_fuel_container = "Land_Pod_Heli_Transport_04_fuel_F";

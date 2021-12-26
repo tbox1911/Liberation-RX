@@ -14,7 +14,7 @@ if ( _liberated_sector in sectors_capture ) then {
 if ( _liberated_sector in sectors_military ) then {
 	_combat_readiness_increase = (5 + (floor (random 11))) * GRLIB_difficulty_modifier;
 
-	private _trucklist = [entities [[opfor_ammobox_transport], [], false, false], {
+	private _trucklist = [entities [[opfor_transport_truck], [], false, false], {
 		(getPos _x) distance2D (markerPos _liberated_sector) < 300
 	}] call BIS_fnc_conditionalSelect;
 	{
