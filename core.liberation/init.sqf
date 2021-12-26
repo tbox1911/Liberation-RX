@@ -35,6 +35,7 @@ if (!abort_loading) then {
 };
 
 if (!isDedicated && hasInterface) then {
+	waitUntil { sleep 1; !isNil "GRLIB_init_server" };
 	[] execVM "scripts\client\init_client.sqf";
 } else {
 	setViewDistance 1600;

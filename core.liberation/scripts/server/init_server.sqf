@@ -105,10 +105,6 @@ if (abort_loading) exitWith {
 [] execVM "scripts\server\offloading\offload_manager.sqf";
 [] execVM "scripts\server\offloading\show_fps.sqf";
 
-{
-	if ( (_x != player) && (_x distance (getmarkerpos GRLIB_respawn_marker) < 200 ) ) then {deleteVehicle _x};
-} foreach allUnits;
-
 if (isNil "global_locked_group") then { global_locked_group = [] };
 publicVariable "global_locked_group";
 
