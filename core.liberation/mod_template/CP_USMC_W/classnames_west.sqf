@@ -118,7 +118,10 @@ blufor_air = [
 ];
 
 boats_west = [
-  	"CUP_B_LCU1600_USMC"
+	"CUP_B_Zodiac_USMC",
+	"CUP_B_RHIB_USMC",
+  	"CUP_B_LCU1600_USMC",
+	"CUP_B_Frigate_ANZAC"
 ];
 
 static_vehicles = [
