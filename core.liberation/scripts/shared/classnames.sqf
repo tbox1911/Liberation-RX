@@ -174,6 +174,14 @@ boats_names = [
 	"B_Boat_Armed_01_minigun_F"
 ] + boats_east + boats_west;
 
+boats_names_civ = [ 
+	"C_Scooter_Transport_01_F",
+	"C_Boat_Civil_01_F",
+	"C_Boat_Transport_02_F",
+	"C_Boat_Civil_01_police_F",
+	"C_Boat_Civil_01_rescue_F"
+];
+
 // *** RESISTANCE ***
 resistance_squad = [
 	"I_G_Soldier_SL_F",
