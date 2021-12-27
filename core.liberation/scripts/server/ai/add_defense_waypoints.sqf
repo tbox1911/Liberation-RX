@@ -34,7 +34,6 @@ if ( _is_infantry ) then {
 	_waypoint setWaypointSpeed "LIMITED";
 	_waypoint setWaypointCompletionRadius 30;
 };
-_grp setCurrentWaypoint [_grp, 0];
 
 waitUntil {
 	sleep 10;
@@ -59,5 +58,4 @@ if ( { alive _x } count (units _grp) > 0 ) then {
 	_waypoint setWaypointType "SAD";
 	_waypoint = _grp addWaypoint [_basepos, _radius];
 	_waypoint setWaypointType "CYCLE";
-	_grp setCurrentWaypoint [_grp, 0];
 };
