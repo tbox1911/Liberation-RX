@@ -36,18 +36,20 @@ if ( _ownership == GRLIB_side_friendly ) exitWith {
 private _near_outpost = (count (_thispos nearObjects [FOB_outpost, 100]) > 0);
 private _attacktime = GRLIB_vulnerability_timer + (5 * 60);
 
-while { _attacktime > 0 && ( _ownership == GRLIB_side_enemy || _ownership == GRLIB_side_civilian ) } do {
-	_ownership = [ _thispos ] call F_sectorOwnership;
+while { _attacktime > 0 && _ownership == GRLIB_side_enemy } do {
+	_ownership = [_thispos] call F_sectorOwnership;
 	_attacktime = _attacktime - 1;
 	if (_attacktime mod 60 == 0 && !_near_outpost) then {
 		[ _thispos , 4 ] remoteExec ["remote_call_fob", 0];
-	};
+	};	
 	sleep 1;
 };
 
-waitUntil {
+private _countblufor = [_thispos, GRLIB_capture_size, GRLIB_side_friendly ] call F_getUnitsCount;
+while { _countblufor > 0 && _ownership == GRLIB_side_enemy } do {
+	_ownership = [_thispos] call F_sectorOwnership;
+	_countblufor = [_thispos, GRLIB_capture_size, GRLIB_side_friendly ] call F_getUnitsCount;
 	sleep 1;
-	[ _thispos ] call F_sectorOwnership != GRLIB_side_civilian;
 };
 
 if ( GRLIB_endgame == 0 ) then {
