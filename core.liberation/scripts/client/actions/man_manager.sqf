@@ -11,8 +11,7 @@ while { true } do {
 	// Man
 	_near_man = [player nearEntities [["Man"], _searchradius], {
  		(alive _x) && vehicle _x == _x &&
-		!(_x in [playableUnits + switchableUnits]) &&
-		(side _x == GRLIB_side_civilian || side _x == GRLIB_side_resistance) &&
+		(_x getVariable ['GRLIB_can_speak', false]) &&
 		isNil {_x getVariable "GRLIB_speak_action"}
 	}] call BIS_fnc_conditionalSelect;
 
