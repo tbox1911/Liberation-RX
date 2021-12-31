@@ -23,7 +23,7 @@ private _object_created = [];
 	_object attachTo [R3F_LOG_PUBVAR_point_attache, [] call R3F_LOG_FNCT_3D_tirer_position_degagee_ciel];
 	_object setVariable ["R3F_LOG_est_transporte_par", _vehicle, true];
 	if (!(_x in GRLIB_vehicle_blacklist)) then {
-		_object setVariable ["GRLIB_vehicle_owner", _vehicle_owner];
+		_object setVariable ["GRLIB_vehicle_owner", _vehicle_owner, true];
 	};
 	_object_created pushback _object;
 } forEach _objects;
