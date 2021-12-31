@@ -34,21 +34,20 @@ if ( isServer ) then {
 			if ( combat_readiness > 100.0 && GRLIB_difficulty_modifier < 2 ) then { combat_readiness = 100.0 };
 		};
 
-		if ( _unit isKindOf "Man" ) then {
+		if ( (vehicle _killer) isKindOf "Man" ) then {
 			infantry_weight = infantry_weight + 1;
 			armor_weight = armor_weight - 0.1;
 			air_weight = air_weight - 0.1;
-		} else {
-			if ( _unit isKindOf "Tank" ) then {
-				infantry_weight = infantry_weight - 0.50;
-				armor_weight = armor_weight + 5;
-				air_weight = air_weight - 0.10;
-			};
-			if ( _unit isKindOf "Air" ) then {
-				infantry_weight = infantry_weight - 0.50;
-				armor_weight = armor_weight - 0.10;
-				air_weight = air_weight + 5;
-			};
+		};
+		if ( (vehicle _killer) isKindOf "Tank" ) then {
+			infantry_weight = infantry_weight - 0.50;
+			armor_weight = armor_weight + 5;
+			air_weight = air_weight - 0.10;
+		};
+		if ( (vehicle _killer) isKindOf "Air" ) then {
+			infantry_weight = infantry_weight - 0.50;
+			armor_weight = armor_weight - 0.10;
+			air_weight = air_weight + 5;
 		};
 
 		if ( infantry_weight > 100 ) then { infantry_weight = 100 };
