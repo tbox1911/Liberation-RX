@@ -18,6 +18,10 @@ if (!GRLIB_player_spawned) then {
 
 fullmap = 0;
 _old_fullmap = 0;
+waitUntil {
+	sleep 0.1;
+	( vehicle player == player && alive player && !dialog )
+};
 
 createDialog "liberation_deploy";
 waitUntil { dialog };
