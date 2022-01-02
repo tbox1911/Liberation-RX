@@ -90,6 +90,7 @@ while { true } do {
 				if (_near_medic) then {
 					if (damage _x > 0.1 && (behaviour _x) != "COMBAT") then {
 						_needmedic = true;
+						_x groupchat format ["Healing myself."];						
 					};
 				};
 
