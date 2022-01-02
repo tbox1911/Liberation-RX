@@ -5062,7 +5062,7 @@
 				<Chinesesimp>船只</Chinesesimp>
 				<Chinese>船隻</Chinese>
 			</Key>
-			<Key ID="STR_AIRDROP_AIRSUPERIORITY">
+			<Key ID="STR_AIRDROP_AIRSUPREMACY">
 				<Original>Air Superiority</Original>
 				<Japanese>制空権</Japanese>
 				<Chinesesimp>夺取制空</Chinesesimp>
@@ -5116,7 +5116,7 @@
 				<Chinesesimp>&lt;t size='0.8'&gt;运输船只.&lt;br/&gt;花费: 250 弹药&lt;/t&gt;</Chinesesimp>
 				<Chinese>&lt;t size='0.8'&gt;運輸船隻.&lt;br/&gt;花費: 250 彈藥&lt;/t&gt;</Chinese>
 			</Key>
-			<Key ID="STR_AIRSUPERIORITY">
+			<Key ID="STR_AIRSUPREMACY">
 				<Original>&lt;t size='0.8'&gt;Air Superiority.&lt;br/&gt;Cost: 2000 Ammo&lt;/t&gt;</Original>
 				<Japanese>&lt;t size='0.8'&gt;制空権&lt;br/&gt;コスト: 2000 弾薬&lt;/t&gt;</Japanese>
 				<Chinesesimp>&lt;t size='0.8'&gt;制空权&lt;br/&gt;花费: 2000 弹药&lt;/t&gt;</Chinesesimp>
