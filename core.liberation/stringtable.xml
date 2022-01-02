@@ -5471,7 +5471,7 @@
 				<Original>Town Invasion</Original>
 				<Japanese>占拠された街</Japanese>
 				<Chinesesimp>城镇入侵</Chinesesimp>
-				<Chinese>城鎮入侵/Chinese>
+				<Chinese>城鎮入侵</Chinese>
 			</Key>
 			<Key ID="STR_INVASION2">
 				<Original>Hostiles have taken over &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;There seem to be &lt;t color='%1'&gt;%3 enemies&lt;/t&gt; hiding inside or on top of buildings. Get rid of them all, and take their supplies!&lt;br/&gt;Watch out for those windows!</Original>
