@@ -1,6 +1,6 @@
-waitUntil {sleep 1; !isNil "GRLIB_player_spawned" };
-private ["_msg", "_sector", "_opf", "_default"];
+private ["_msg", "_sector", "_opf", "_res", "_last_man", "_default"];
 private	_cleanup_counter = 0;
+private _side_name = ["Invasion", "Cache", "Wreck", "Capture"];
 
 while { true } do {
 	_sector = [(allMapMarkers select {_x select [0,12] == "side_mission" && markerPos _x distance2D player <= GRLIB_capture_size}), player] call F_nearestPosition;
@@ -22,8 +22,8 @@ while { true } do {
 			if (count _opf > 0) then {_msg = format ["Status:\nEnemy squad: %1", count _opf]};
 		};
 
+		// Others
 		_default = false;
-		_side_name = ["Invasion", "Cache", "Wreck", "Capture"];
 		{if ( (_sector find _x) > 0 ) exitwith {_default = true}} forEach _side_name;
 		if ( _default ) then {
 			_opf = [(getMarkerPos _sector) nearEntities ["Man", (GRLIB_sector_size/2)], {(alive _x) && (side _x == GRLIB_side_enemy)}] call BIS_fnc_conditionalSelect;

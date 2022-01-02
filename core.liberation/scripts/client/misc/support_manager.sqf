@@ -1,5 +1,4 @@
 waitUntil { sleep 1; !isNil "blufor_sectors" };
-waitUntil { sleep 1; !isNil "GRLIB_player_spawned" };
 private ["_near_arsenal", "_near_medic", "_needammo1", "_needammo2", "_maxpri", "_minpri", "_needmedic", "_magType", "_list_vehicles", "_guid", "_static_ai"];
 
 private _distarsenal = 30;           // minimal distance from source (ammo/repair)
