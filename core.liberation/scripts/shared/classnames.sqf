@@ -169,8 +169,10 @@ vehicle_repair_sources = [
 
 // *** Boats ***
 boats_names = [ 
-	"B_Boat_Transport_01_F",
+	"C_Scooter_Transport_01_F",
+	"C_Boat_Civil_01_F",
 	"C_Boat_Transport_02_F",
+	"B_Boat_Transport_01_F",
 	"B_Boat_Armed_01_minigun_F"
 ] + boats_east + boats_west;
 
