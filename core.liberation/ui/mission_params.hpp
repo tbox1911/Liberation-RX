@@ -68,14 +68,47 @@ class Params
 	};
 	class ModPresetWest {
 		title = "MOD Preset - Friendly";
-		values[] = { 0,1,2,3,4,5,6,7,8,9,10 };
-		texts[] = { "A3 NATO", "A3 CSAT", "A3 AAF", "CUP BAF Desert", "CUP USMC", "RHS USAF", "RHS AFRF", "GM WEST", "GM WEST Winter", "OPTRE West", "WS UNA" };
+		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 };
+		texts[] = { 
+					"A3 NATO", 
+					"A3 CSAT",
+					"A3 AAF",
+					"CUP BAF Desert",
+					"CUP USMC",
+					"R3F WEST Desert",
+					"R3F WEST Wood",
+					"RHS USAF",
+					"RHS AFRF",
+					"FFAA SPAIN Desert",
+					"FFAA SPAIN Wood",
+					"GM WEST",
+					"GM WEST Winter",
+					"OPTRE West",
+					"WS UNA"
+				};
 		default = 0;
 	};
 	class ModPresetEast {
 		title = "MOD Preset - Enemy";
-		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11 };
-		texts[] = { "A3 CSAT", "A3 NATO", "A3 AAF", "A3 CSAT Urban", "CUP Takistan", "EJW Taliban", "RHS AFRF", "RHS USAF", "GM EAST", "GM EAST Winter", "OPTRE East", "WS FIA"};
+		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16 };
+		texts[] = { 
+					"A3 CSAT",
+					"A3 NATO",
+					"A3 AAF",
+					"A3 CSAT Urban",
+					"CUP Takistan",
+					"EJW Taliban",
+ 					"R3F WEST Desert",
+					"R3F WEST Wood",
+					"RHS USAF",
+					"RHS AFRF",
+					"FFAA SPAIN Desert",
+					"FFAA SPAIN Wood",
+					"GM EAST",
+					"GM EAST Winter",
+					"OPTRE East",
+					"WS FIA"
+				};
 		default = 0;
 	};
 	class ForcedLoadout {

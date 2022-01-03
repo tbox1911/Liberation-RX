@@ -3,8 +3,16 @@ GRLIB_arsenal_side = WEST;
 
 //Blacklist Items
 blacklisted_bag = [
+    "B_AT_01_weapon_F",
+	"R3F_Sac_FNMAG58_weapon",
+    "R3F_MMP_STATIC_Bag_support",
+	"R3F_Sac_FNMAG58_support",
+    "R3F_MMP_STATIC_Bag",
+	"R3F_Support_MO81_LLR",
 	"B_Static_Designator_01_weapon_F",
+	"R3F_Tube_MO81_LLR",
 	"B_W_Static_Designator_01_weapon_F",
+	"R3F_DLO_backpack",
 	"O_Static_Designator_02_weapon_F",
 	"B_UAV_06_backpack_F",
 	"O_UAV_06_backpack_F",

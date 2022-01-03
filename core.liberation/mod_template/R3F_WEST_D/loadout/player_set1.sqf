@@ -16,15 +16,19 @@ _unit addHandgunItem "R3F_LAMPE_SURB";
 _unit addHandgunItem "R3F_15Rnd_9x19_HKUSP";
 
 //  "Add containers";
-_unit forceAddUniform "R3F_uniform_f1";
-_unit addVest "V_LegStrapBag_black_F";
+_unit forceAddUniform "R3F_uniform_f1_DA";
+_unit addVest "V_LegStrapBag_coyote_F";
+
+//  "Add binoculars";
+_unit addMagazine "Laserbatteries";
+_unit addWeapon "R3F_JIM_LR_DES";
 
 //  "Add items to containers";
 for "_i" from 1 to 2 do {_unit addItemToUniform "FirstAidKit";};
 for "_i" from 1 to 2 do {_unit addItemToVest "SmokeShell";};
 for "_i" from 1 to 3 do {_unit addItemToVest "R3F_15Rnd_9x19_HKUSP";};
 for "_i" from 1 to 2 do {_unit addItemToVest "R3F_Grenade_df_mag";};
-_unit addHeadgear "R3F_casquette_off";
+_unit addHeadgear "R3F_casquette_off_DA";
 
 //  "Add items";
 _unit linkItem "ItemMap";
