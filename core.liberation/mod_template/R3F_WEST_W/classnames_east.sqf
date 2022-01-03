@@ -1,7 +1,4 @@
 // *** BADDIES ***
-GRLIB_side_enemy = WEST;
-GRLIB_color_enemy = "ColorBLUFOR";
-GRLIB_color_enemy_bright = "ColorBLUE";
 
 // All class MUST be defined !
 

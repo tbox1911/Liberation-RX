@@ -1,6 +1,4 @@
 // *** FRIENDLIES ***
-GRLIB_side_friendly = WEST;
-GRLIB_color_friendly = "ColorBLUFOR";
 
 // Default classname: scripts\shared\default_classnames.sqf
 // Advanced definition: scripts\shared\classnames.sqf
@@ -102,6 +100,10 @@ blufor_air = [
 	"B_FR_Rafale_M_01",
 	"B_FR_Mirage_2000_5F_01",
 	"ffaa_nh90_tth_transport"
+];
+
+boats_west = [
+	"B_FR_Hors_bord_01"
 ];
 
 static_vehicles = [
