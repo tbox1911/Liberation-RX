@@ -1,7 +1,7 @@
 diag_log format [ "Spawning cargopost squad at %1", time ];
 
 params [ "_squadpos" ];
-private [ "_spawned_units_local", "_allposts", "_grp2", "_building_positions", "_unitclasspost", "_totalx2", "_totaly2", "_avgx2", "_avgy2", "_vd2", "_newdir2" ];
+private [ "_spawned_units_local", "_allposts", "_grp2", "_building_positions", "_unitclasspost", "_nextunit", "_totalx2", "_totaly2", "_avgx2", "_avgy2", "_vd2", "_newdir2" ];
 
 _spawned_units_local = [];
 
@@ -12,13 +12,14 @@ if ( count _allposts > 0 ) then {
 	{
 		_building_positions = 	[_x] call BIS_fnc_buildingPositions;
 		_unitclasspost = opfor_marksman;
-		nextunit_post = objNull;
 		if ( floor(random 100) > 60 ) then {
 			_unitclasspost = opfor_machinegunner;
 		};
-		_unitclasspost createUnit [ _squadpos, _grp2, 'nextunit_post = this; this addMPEventHandler [''MPKilled'', {_this spawn kill_manager}]', 0.5, 'private'];
-		nextunit_post setpos (_building_positions select 1);
-		nextunit_post setdir (180 + (getdir _x ));
+		_unitclasspost createUnit [ _squadpos, _grp2, 'this addMPEventHandler [''MPKilled'', {_this spawn kill_manager}]', 0.5, 'private'];
+		_nextunit = (units _grp) select ((count (units _grp)) -1);
+		_nextunit setpos (_building_positions select 1);
+		_nextunit setdir (180 + (getdir _x ));
+		[ _nextunit ] call reammo_ai;
 		sleep 0.1;
 	} foreach _allposts;
 

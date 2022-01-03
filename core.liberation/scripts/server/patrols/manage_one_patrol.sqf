@@ -1,5 +1,5 @@
 params [ "_minimum_readiness", "_patrol_type", "_index" ];
-private [ "_headless_client" ];
+private [ "_headless_client", "_unit" ];
 
 waitUntil { !isNil "blufor_sectors" };
 waitUntil { !isNil "combat_readiness" };
@@ -40,6 +40,8 @@ while { GRLIB_endgame == 0 } do {
 		sleep 0.5;
 		{
 			_x createUnit [_sector_spawn_pos, _grp, 'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.5, "PRIVATE"];
+			_unit = (units _grp) select ((count (units _grp)) -1);
+			[ _unit ] call reammo_ai;
 			sleep 0.1;
 		} foreach _squad;
 	};

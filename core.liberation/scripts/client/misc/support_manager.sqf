@@ -8,34 +8,6 @@ private _maxsec_def = 3;             // maximum magazines unit can take (seconda
 private _minsec_def = 1;             // minimal magazines before unit need to reload
 private _guid = getPlayerUID player;
 
-_NeedAmmo = {
-	params ["_unit", "_item", "_min"];
-	private _ret = false;
-	if ( isClass( configFile >> "CfgWeapons" >> _item ) &&
-		 {!( getArray( configFile >> "CfgWeapons" >> _item >> "magazines" ) isEqualTo [])}
-		) then {
-		_magType = getArray( configFile >> "CfgWeapons" >> _item >> "magazines" ) select 0;
-		_magCnt = {_x == _magType} count magazines _unit;
-		if (_magCnt < _min) then {_ret = true};
-	};
-	_ret;
-};
-
-_AddAmmo = {
-	params ["_unit", "_item", "_max"];
-	private _stop = true;
-	_magType = getArray( configFile >> "CfgWeapons" >> _item >> "magazines" ) select 0;
-	for [{_i=0}, {_i<_max && _stop}, {_i=_i+1}] do {
-		if (_unit canAdd _magType && loadAbs _unit < 980) then {
-			_unit addMagazines [_magType, 1];
-		} else {
-			_stop = false;
-			_unit groupchat "Inventory is full !!";
-		};
-	};
-	_stop;
-};
-
 while { true } do {
 	waitUntil {sleep 1;GRLIB_player_spawned};
 
@@ -66,19 +38,19 @@ while { true } do {
 					_minpri = _minpri_def;
 					// check primary Weapon
 					if ( (primaryWeapon _x) find "LMG" >= 0 || (primaryWeapon _x) find "MMG" >= 0 || (primaryWeapon _x) find "RPK12" >= 0 ) then { _minpri = 1; _maxpri = 3 };
-					_needammo1 = [_x, primaryWeapon _x, _minpri] call _NeedAmmo;
+					_needammo1 = [_x, primaryWeapon _x, _minpri] call F_UnitNeedAmmo;
 					if (_needammo1) then {
 						_x groupchat "Rearming Primary Weapon.";
-						_needammo1 = [_x, primaryWeapon _x, _maxpri] call _AddAmmo;
+						_needammo1 = [_x, primaryWeapon _x, _maxpri] call F_UnitAddAmmo;
 					};
 
 					// check secondary Weapon if backpack present
 					if (!isNull (unitBackpack _x)) then {
-						_needammo2 = [_x, secondaryWeapon _x, _minsec_def] call _NeedAmmo;
+						_needammo2 = [_x, secondaryWeapon _x, _minsec_def] call F_UnitNeedAmmo;
 						if (_needammo2) then {
 							//clearAllItemsFromBackpack _x;
 							_x groupchat "Rearming Secondary Weapon.";
-							_needammo2 = [_x, secondaryWeapon _x, _maxsec_def] call _AddAmmo;
+							_needammo2 = [_x, secondaryWeapon _x, _maxsec_def] call F_UnitAddAmmo;
 						};
 					};
 				};

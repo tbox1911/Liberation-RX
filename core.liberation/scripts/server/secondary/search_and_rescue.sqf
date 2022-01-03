@@ -37,6 +37,8 @@ private _patrolcorners = [
 
 { 
 	_x createUnit [ _patrolcorners select 0, _grppatrol,'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.5, "private"];
+	_unit = (units _grppatrol) select ((count (units _grppatrol)) -1);
+	[ _unit ] call reammo_ai;
 	sleep 0.1;
 } foreach ([] call F_getAdaptiveSquadComp);
 
@@ -59,6 +61,8 @@ private _nbsentry = 2 + (floor (random 3));
 
 for [ {_idx=0},{_idx < _nbsentry},{_idx=_idx+1} ] do {
 	opfor_sentry createUnit [ [ _pilotsPos, 1, random 360 ] call BIS_fnc_relPos, _grpsentry,'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.5, "private"];
+	_unit = (units _grpsentry) select ((count (units _grpsentry)) -1);
+	[ _unit ] call reammo_ai;
 	sleep 0.1;
 };
 (leader _grpsentry) setDir (random 360);

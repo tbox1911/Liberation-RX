@@ -34,6 +34,8 @@ for "_i" from 1 to _nbUnits do {
 	_unit allowFleeing 0;
 	_unit setVariable ["mission_AI", true];
 	_unit switchMove "amovpknlmstpsraswrfldnon";
+	[ _unit ] call loadout_militia;
+	[ _unit ] call reammo_ai;
 	sleep 0.1;
 };
 

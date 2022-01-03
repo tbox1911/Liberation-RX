@@ -22,6 +22,7 @@ _grp = createGroup [GRLIB_side_enemy, true];
 			_x createUnit [([_spawnpos, floor(random 300), random 360] call BIS_fnc_relPos), _grp,'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]'];
 			_nextunit = (units _grp) select ((count (units _grp)) -1);
 			[ _nextunit ] call loadout_militia;
+			[ _nextunit ] call reammo_ai;
 		};
 	};
 	sleep 0.1;

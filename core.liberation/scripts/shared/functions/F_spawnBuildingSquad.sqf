@@ -38,6 +38,8 @@ _idxposit = 0;
 	if ( _infsquad == "militia" ) then {
 		[ _nextunit ] call loadout_militia;
 	};
+	[ _nextunit ] call loadout_militia;
+	[ _nextunit ] call reammo_ai;
 
 	_idxposit = _idxposit + 1;
 
