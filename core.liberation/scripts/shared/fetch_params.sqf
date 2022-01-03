@@ -79,19 +79,24 @@ GRLIB_GM_enabled = isClass(configFile >> "cfgPatches" >> "gm_Core"); // Returns 
 GRLIB_CUPW_enabled = isClass(configFile >> "CfgPatches" >> "CUP_Weapons_AK"); // Returns true if CUP Weapons is enabled
 GRLIB_CUPU_enabled = isClass(configFile >> "CfgPatches" >> "CUP_Creatures_Extra"); // Returns true if CUP Units is enabled
 GRLIB_CUPV_enabled = isClass(configFile >> "CfgPatches" >> "CUP_AirVehciles_AH1Z"); // Returns true if CUP Vehicles is enabled
-GRLIB_EJW_enabled = isClass(configFile >> "CfgPatches" >> "Ej_u100"); // Returns true if EricJ Weapons is enabled 
-GRLIB_RHS_enabled = isClass(configFile >> "CfgPatches" >> "rhs_main"); // Returns true if RHS is enabled 
+GRLIB_EJW_enabled = isClass(configFile >> "CfgPatches" >> "Ej_u100"); // Returns true if EricJ Weapons is enabled
+GRLIB_RHS_enabled = isClass(configFile >> "CfgPatches" >> "rhs_main"); // Returns true if RHS is enabled
+GRLIB_R3F_enabled = isClass(configFile >> "CfgPatches" >> "r3f_armes"); // Returns true if R3F is enabled
+GRLIB_AMF_enabled = isClass(configFile >> "CfgPatches" >> "AMF_Patches"); // Returns true if AMF is enabled
 
 // Check side Addon
 if ( !GRLIB_EJW_enabled && "EJW" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
-if ( !GRLIB_CUPU_enabled && !GRLIB_CUPV_enabled && "CP_BAF_DES" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
-if ( !GRLIB_CUPU_enabled && !GRLIB_CUPV_enabled && "CP_TA" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
+if ( (!GRLIB_CUPU_enabled || !GRLIB_CUPV_enabled) && "CP_BAF_DES" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
+if ( (!GRLIB_CUPU_enabled || !GRLIB_CUPV_enabled) && "CP_TA" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
 if ( !GRLIB_RHS_enabled && "RHS_AFRF" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
 if ( !GRLIB_RHS_enabled && "RHS_USAF" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
 if ( !GRLIB_GM_enabled && "GM_WEST" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
 if ( !GRLIB_GM_enabled && "GM_WEST_WINT" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
 if ( !GRLIB_GM_enabled && "GM_EAST" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
 if ( !GRLIB_GM_enabled && "GM_EAST_WINT" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
+if ( (!GRLIB_R3F_enabled || !GRLIB_AMF_enabled) && "R3F_WEST_D" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
+if ( (!GRLIB_R3F_enabled || !GRLIB_AMF_enabled) && "R3F_WEST_W" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
+
 if (abort_loading) exitWith { abort_loading_msg = format [
 	"********************************\n
 	FATAL! - Invalid Side selection !\n\n
@@ -147,4 +152,5 @@ if ( GRLIB_filter_arsenal ) then {
 	if ( GRLIB_GM_enabled ) then { GRLIB_MOD_signature = "gm_"; GRLIB_mod_enabled = true };
 	if ( GRLIB_CUPW_enabled ) then { GRLIB_MOD_signature = "cup_"; GRLIB_mod_enabled = true };
 	if ( GRLIB_RHS_enabled ) then { GRLIB_MOD_signature = "rhs"; GRLIB_mod_enabled = true };
+	if ( GRLIB_R3F_enabled ) then { GRLIB_MOD_signature = ["r3f_", "amf_"]; GRLIB_mod_enabled = true };
 };
