@@ -5,8 +5,11 @@ waitUntil {sleep 1; !isNil "GRLIB_limited_arsenal"};
 waitUntil {sleep 1; !isNil "GRLIB_mod_enabled"};
 
 // Initalize Blacklist
-GRLIB_whitelisted_from_arsenal = [];
-GRLIB_blacklisted_from_arsenal = [];
+GRLIB_blacklisted_from_arsenal = [];			// Global blacklist (All objects will be removed from Arsenal)
+
+// Initalize Withelist
+GRLIB_whitelisted_from_arsenal = [];			// whitelist when Arsenal is enabled
+GRLIB_whitelisted_from_arsenal_limited = [];	// minimal whitelist when MOD filter is enabled
 
 // Initalize Side
 GRLIB_arsenal_side = WEST;
@@ -18,6 +21,9 @@ if (GRLIB_limited_arsenal) then {
 	GRLIB_blacklisted_from_arsenal = blacklisted_bag + blacklisted_weapon;
 } else {
 	GRLIB_blacklisted_from_arsenal = blacklisted_bag;
+};
+if (GRLIB_filter_arsenal) then {
+	GRLIB_whitelisted_from_arsenal = GRLIB_whitelisted_from_arsenal_limited;
 };
 
 // Add CUP Weapons
@@ -35,7 +41,6 @@ if (GRLIB_limited_arsenal) then {
 // Add AMF Weapons
 [] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_AMF.sqf";
 
-// if mod enabled
 if ( GRLIB_filter_arsenal && GRLIB_mod_enabled) then {
 	[myLARsBox, ["GRLIB_whitelisted_from_arsenal", "GRLIB_blacklisted_from_arsenal"], false, "Liberation", { false }] call LARs_fnc_blacklistArsenal;
 } else {
