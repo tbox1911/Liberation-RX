@@ -6,6 +6,7 @@ while { GRLIB_endgame == 0 } do {
 		sleep (30 + floor(random 30));
 	};
 
+	private _civ_veh = objNull;
 	private _usable_sectors = [];
 	{
 		if ( ( ( [ getmarkerpos _x , 1000 , GRLIB_side_friendly ] call F_getUnitsCount ) == 0 ) && ( count ( [ getmarkerpos _x , 3500 ] call F_getNearbyPlayers ) > 0 ) ) then {
@@ -22,8 +23,7 @@ while { GRLIB_endgame == 0 } do {
 
 			// 40% in vehicles
 			if ( floor(random 100) > 60 ) then {
-				private _classname = selectRandom civilian_vehicles;
-				private _civ_veh = [markerPos _spawnsector, _classname, false, true, true] call F_libSpawnVehicle;
+				_civ_veh = [markerPos _spawnsector, (selectRandom civilian_vehicles), false, true, true] call F_libSpawnVehicle;
 				_civ_unit moveInDriver _civ_veh;
 				_civ_veh addEventHandler ["HandleDamage", { 
 					params ["_unit", "_selection", "_damage", "_source"];
@@ -53,7 +53,7 @@ while { GRLIB_endgame == 0 } do {
 			};
 
 			if ( alive _civ_unit ) then {
-				if ( !(isNil "_civ_veh") ) then {
+				if ( !(isNull _civ_veh) ) then {
 					if ( {(alive _x) && (side group _x == GRLIB_side_friendly)} count (crew _civ_veh) == 0 && [_civ_veh] call is_abandoned) then {
 						[_civ_veh] call clean_vehicle;
 						deleteVehicle _civ_veh;
