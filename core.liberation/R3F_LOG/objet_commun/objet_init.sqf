@@ -14,7 +14,7 @@ private ["_objet", "_config", "_nom", "_fonctionnalites"];
 
 _objet = _this select 0;
 
-_config = configFile >> "CfgVehicles" >> (typeOf _objet);
+_config = configOf _objet;
 _nom = getText (_config >> "displayName");
 
 // D�finition locale de la variable si elle n'est pas d�finie sur le r�seau

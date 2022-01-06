@@ -39,7 +39,7 @@ else
 			if (isNull (_objet getVariable "R3F_LOG_est_transporte_par") && (isNull (_objet getVariable "R3F_LOG_est_deplace_par") || (!alive (_objet getVariable "R3F_LOG_est_deplace_par")) || (!isPlayer (_objet getVariable "R3F_LOG_est_deplace_par")))) then
 			{
 				// Finalement on autorise l'h�liport d'un v�hicule avec du personnel � bord
-				//if (count crew _objet == 0 || getNumber (configFile >> "CfgVehicles" >> (typeOf _objet) >> "isUav") == 1) then
+				//if (count crew _objet == 0 || getNumber (configOf _objet >> "isUav") == 1) then
 				//{
 					// Ne pas h�liporter quelque chose qui remorque autre chose
 					if (isNull (_objet getVariable ["R3F_LOG_remorque", objNull])) then
@@ -134,7 +134,7 @@ else
 								[_objet, "setDir", 90] call R3F_LOG_FNCT_exec_commande_MP;
 							};
 							
-							systemChat format [STR_R3F_LOG_action_heliporter_fait, getText (configFile >> "CfgVehicles" >> (typeOf _objet) >> "displayName")];
+							systemChat format [STR_R3F_LOG_action_heliporter_fait, getText (configOf _objet >> "displayName")];
 							
 							// Boucle de contr�le pendant l'h�liportage
 							[_heliporteur, _objet] spawn
@@ -163,7 +163,7 @@ else
 										// D�tacher l'objet et lui appliquer la vitesse de l'h�liporteur (inertie)
 										[_objet, "detachSetVelocity", velocity _heliporteur] call R3F_LOG_FNCT_exec_commande_MP;
 										
-										systemChat format [STR_R3F_LOG_action_heliport_larguer_fait, getText (configFile >> "CfgVehicles" >> (typeOf _objet) >> "displayName")];
+										systemChat format [STR_R3F_LOG_action_heliport_larguer_fait, getText (configOf _objet >> "displayName")];
 									};
 									
 									sleep 0.1;
@@ -200,17 +200,17 @@ else
 					}
 					else
 					{
-						systemChat format [STR_R3F_LOG_objet_remorque_en_cours, getText (configFile >> "CfgVehicles" >> (typeOf _objet) >> "displayName")];
+						systemChat format [STR_R3F_LOG_objet_remorque_en_cours, getText (configOf _objet >> "displayName")];
 					};
 				//}
 				//else
 				//{
-				//	systemChat format [STR_R3F_LOG_joueur_dans_objet, getText (configFile >> "CfgVehicles" >> (typeOf _objet) >> "displayName")];
+				//	systemChat format [STR_R3F_LOG_joueur_dans_objet, getText (configOf _objet >> "displayName")];
 				//};
 			}
 			else
 			{
-				systemChat format [STR_R3F_LOG_objet_en_cours_transport, getText (configFile >> "CfgVehicles" >> (typeOf _objet) >> "displayName")];
+				systemChat format [STR_R3F_LOG_objet_en_cours_transport, getText (configOf _objet >> "displayName")];
 			};
 		};
 	};

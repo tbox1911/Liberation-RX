@@ -5,7 +5,7 @@ private _price = 0;
 _price = [_vehicle] call F_loadoutPrice;
 if (_price == 0) exitWith {hintSilent "There is nothing to sell."};
 
-private _vehtext = getText (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "displayName");
+private _vehtext = getText (configOf _vehicle >> "displayName");
 private _msg = format ["<t align='center'>Sell ALL %1 cargo<br/>for %2 AMMO.<br/>Are you sure ?</t>", _vehtext, _price];
 private _result = [_msg, "SELL CARGO", true, true] call BIS_fnc_guiMessage;
 if (_result && _price > 0) then {

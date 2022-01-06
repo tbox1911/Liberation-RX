@@ -91,12 +91,12 @@ _objets_charges = _transporteur getVariable ["R3F_LOG_objets_charges", []];
 	{
 		diag_log format ["[Auto-load ""%1"" in ""%2""] : %3",
 			getText (configFile >> "CfgVehicles" >> _classe >> "displayName"),
-			getText (configFile >> "CfgVehicles" >> (typeOf _transporteur) >> "displayName"),
+			getText (configOf _transporteur >> "displayName"),
 			"The object is not a transporable class."];
 
 		systemChat format ["[Auto-load ""%1"" in ""%2""] : %3",
 			getText (configFile >> "CfgVehicles" >> _classe >> "displayName"),
-			getText (configFile >> "CfgVehicles" >> (typeOf _transporteur) >> "displayName"),
+			getText (configOf _transporteur >> "displayName"),
 			"The object is not a transporable class."];
 	}
 	else
@@ -159,12 +159,12 @@ _objets_charges = _transporteur getVariable ["R3F_LOG_objets_charges", []];
 						{
 							diag_log format ["[Auto-load ""%1"" in ""%2""] : %3",
 								getText (configFile >> "CfgVehicles" >> _classe >> "displayName"),
-								getText (configFile >> "CfgVehicles" >> (typeOf _transporteur) >> "displayName"),
+								getText (configOf _transporteur >> "displayName"),
 								STR_R3F_LOG_action_charger_pas_assez_de_place];
 
 							systemChat format ["[Auto-load ""%1"" in ""%2""] : %3",
 								getText (configFile >> "CfgVehicles" >> _classe >> "displayName"),
-								getText (configFile >> "CfgVehicles" >> (typeOf _transporteur) >> "displayName"),
+								getText (configOf _transporteur >> "displayName"),
 								STR_R3F_LOG_action_charger_pas_assez_de_place];
 
 							if (typeName _objet_ou_classe == "STRING") then
