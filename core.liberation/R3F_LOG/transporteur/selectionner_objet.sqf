@@ -13,7 +13,7 @@ else
 	R3F_LOG_mutex_local_verrou = true;
 	
 	R3F_LOG_objet_selectionne = _this select 0;
-	systemChat format [STR_R3F_LOG_action_selectionner_objet_fait, getText (configFile >> "CfgVehicles" >> (typeOf R3F_LOG_objet_selectionne) >> "displayName")];
+	systemChat format [STR_R3F_LOG_action_selectionner_objet_fait, getText (configOf R3F_LOG_objet_selectionne >> "displayName")];
 	
 	[R3F_LOG_objet_selectionne, player] call R3F_LOG_FNCT_definir_proprietaire_verrou;
 	
