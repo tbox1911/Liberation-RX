@@ -87,10 +87,7 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 [] execVM "scripts\client\actions\squad_manager.sqf";
 [] execVM "scripts\client\ui\ui_manager.sqf";
 [] execVM "GREUH\scripts\GREUH_activate.sqf";
-
-if (GRLIB_enable_arsenal) then {
-	[] execVM "addons\LARs\liberationArsenal.sqf";
-};
+[] execVM "addons\LARs\liberationArsenal.sqf";
 
 if (!GRLIB_ACE_enabled) then {
 	[] execVM "addons\PAR\PAR_AI_Revive.sqf";

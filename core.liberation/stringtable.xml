@@ -4444,13 +4444,6 @@
 				<Chinese>有限制的虛擬武器庫</Chinese>
 				<Japanese>バーチャルアーセナルに制限をかける</Japanese>
 			</Key>
-			<Key ID="STR_FILTER_ARSENAL">
-				<Original>Enable Virtual Arsenal MOD filter</Original>
-				<French>Activer le filtres du MOD Arsenal Virtuel</French>
-				<Chinesesimp>虚拟武器库MOD过滤器</Chinesesimp>
-				<Chinese>虛擬武器庫MOD過濾器</Chinese>
-				<Japanese>バーチャルアーセナルにMODフィルターをかける</Japanese>
-			</Key>
 			<Key ID="STR_VEH_LOCK">
 				<Original>Enable Vehicles Ownership</Original>
 				<French>Activer la Propriété des Véhicules </French>

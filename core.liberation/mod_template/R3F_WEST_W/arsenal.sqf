@@ -118,7 +118,7 @@ blacklisted_weapon = [
 	"U_O_V_Soldier_Viper_F",
 	"O_V_Soldier_Viper_F",
 	"O_V_Soldier_Viper_hex_F",
-	"R3F_LGI_DEM"	
+	"R3F_LGI_DEM"
 ];
 
 GRLIB_whitelisted_from_arsenal = [
@@ -192,51 +192,8 @@ GRLIB_whitelisted_from_arsenal = [
 	"B_Bergen_mcamo_F",
 	"B_Bergen_hex_F"
 ];
-
 GRLIB_whitelisted_from_arsenal_limited = [
-	"Binocular",
-	"FirstAidKit",
-	"APERSTripMine_Wire_Mag",
-	"APERSMine_Range_Mag",
-	"APERSBoundingMine_Range_Mag",
-	"TrainingMine_Mag",
-	"SLAMDirectionalMine_Wire_Mag",
-	"IEDLandSmall_Remote_Mag",
-	"MineDetector",
-	"ToolKit",
-	"Medikit",
-	"SatchelCharge_Remote_Mag",
-	"DemoCharge_Remote_Mag",
-	"ClaymoreDirectionalMine_Remote_Mag",
-	"APERSMineDispenser_Mag",
-	"IEDLandBig_Remote_Mag",
-	"ItemMap",
-	"ItemCompass",
-	"ItemWatch",
-	"ItemRadio",
-	"ItemGPS",
-	"IEDUrbanSmall_Remote_Mag",
-	"IEDUrbanBig_Remote_Mag",
-	"ATMine_Range_Mag",
-	"SmokeShell",
-	"SmokeShellBlue",
-	"SmokeShellYellow",
-	"SmokeShellOrange",
-	"SmokeShellRed",
-	"SmokeShellGreen",
-	"SmokeShellPurple",
-	"V_Rangemaster_belt",
-	"NVGoggles_tna_F",
-	"NVGoggles_INDEP",
-	"NVGoggles_OPFOR",
-	"NVGoggles",
-	"B_UavTerminal",
-	"G_Diving",
-	"G_I_Diving",
-	"G_O_Diving",
-	"G_B_Diving",
-	"G_Combat",
-	"B_Parachute",
-	"G_Tactical_Clear",
-	"Laserbatteries"
+	"launch_I_Titan_F",
+	"launch_RPG32_green_F",
+	"launch_MRAWS_green_F"
 ];

@@ -37,7 +37,12 @@ GRLIB_max_squad_size = ["MaxSquadSize",7] call bis_fnc_getParamValue;
 GRLIB_max_spawn_point = ["MaxSpawnPoint",2] call bis_fnc_getParamValue;
 GRLIB_enable_arsenal = ["EnableArsenal",1] call bis_fnc_getParamValue;
 GRLIB_limited_arsenal = ["LimitedArsenal",1] call bis_fnc_getParamValue;
-GRLIB_filter_arsenal = ["EnableFilter",0] call bis_fnc_getParamValue;
+GRLIB_filter_arsenalCUP = ["EnableFilterCUP",0] call bis_fnc_getParamValue;
+GRLIB_filter_arsenalRHS = ["EnableFilterRHS",0] call bis_fnc_getParamValue;
+GRLIB_filter_arsenalR3F = ["EnableFilterR3F",0] call bis_fnc_getParamValue;
+GRLIB_filter_arsenalEJW = ["EnableFilterEJW",0] call bis_fnc_getParamValue;
+GRLIB_filter_arsenalGM = ["EnableFilterGM",0] call bis_fnc_getParamValue;
+GRLIB_filter_arsenalOPTRE = ["EnableFilterOPTRE",0] call bis_fnc_getParamValue;
 GRLIB_permission_vehicles = ["EnableLock",1] call bis_fnc_getParamValue;
 GRLIB_forced_loadout = ["ForcedLoadout",1] call bis_fnc_getParamValue;
 GRLIB_fancy_info = ["FancyInfo",1] call bis_fnc_getParamValue;
@@ -115,6 +120,9 @@ if ( GRLIB_mod_west in ["A3_BLU", "A3_IND"]) then {
 	};
 };
 
+// ACE
+if ( GRLIB_ACE_enabled ) then {	GRLIB_revive = 0; GRLIB_fatigue = 1; GRLIB_fancy_info = 0; GRLIB_limited_arsenal = 0 };  // Disable PAR/Fatigue/Fancy if ACE present
+
 if ( GRLIB_fatigue == 1 ) then { GRLIB_fatigue = true } else { GRLIB_fatigue = false };
 if ( GRLIB_introduction == 1 ) then { GRLIB_introduction = true } else { GRLIB_introduction = false };
 if ( GRLIB_deployment_cinematic == 1 ) then { GRLIB_deployment_cinematic = true } else { GRLIB_deployment_cinematic = false };
@@ -122,7 +130,12 @@ if ( GRLIB_admin_menu == 1 ) then { GRLIB_admin_menu = true } else { GRLIB_admin
 if ( GRLIB_hide_opfor == 1 ) then { GRLIB_hide_opfor = true } else { GRLIB_hide_opfor = false };
 if ( GRLIB_enable_arsenal == 1 ) then { GRLIB_enable_arsenal = true } else { GRLIB_enable_arsenal = false };
 if ( GRLIB_limited_arsenal == 1 ) then { GRLIB_limited_arsenal = true } else { GRLIB_limited_arsenal = false };
-if ( GRLIB_filter_arsenal == 1 ) then { GRLIB_filter_arsenal = true } else { GRLIB_filter_arsenal = false };
+if ( GRLIB_filter_arsenalCUP == 1 ) then { GRLIB_filter_arsenalCUP = true } else { GRLIB_filter_arsenalCUP = false };
+if ( GRLIB_filter_arsenalRHS == 1 ) then { GRLIB_filter_arsenalRHS = true } else { GRLIB_filter_arsenalRHS = false };
+if ( GRLIB_filter_arsenalR3F == 1 ) then { GRLIB_filter_arsenalR3F = true } else { GRLIB_filter_arsenalR3F = false };
+if ( GRLIB_filter_arsenalEJW == 1 ) then { GRLIB_filter_arsenalEJW = true } else { GRLIB_filter_arsenalEJW = false };
+if ( GRLIB_filter_arsenalGM == 1 ) then { GRLIB_filter_arsenalGM = true } else { GRLIB_filter_arsenalGM = false };
+if ( GRLIB_filter_arsenalOPTRE == 1 ) then { GRLIB_filter_arsenalOPTRE = true } else { GRLIB_filter_arsenalOPTRE = false };
 if ( GRLIB_permission_vehicles == 1 ) then { GRLIB_permission_vehicles = true } else { GRLIB_permission_vehicles = false };
 if ( GRLIB_adaptive_opfor == 1 ) then { GRLIB_adaptive_opfor = true } else { GRLIB_adaptive_opfor = false };
 if ( GRLIB_passive_income == 1 ) then { GRLIB_passive_income = true } else { GRLIB_passive_income = false };
@@ -139,18 +152,15 @@ if ( GRLIB_disable_death_chat == 1 ) then { GRLIB_disable_death_chat = true } el
 // Overide sector radius
 if (GRLIB_sector_radius != 0) then { GRLIB_sector_size = GRLIB_sector_radius };
 
-// ACE
-if ( GRLIB_ACE_enabled ) then {	GRLIB_revive = 0; GRLIB_fatigue = 1; GRLIB_fancy_info = 0; GRLIB_limited_arsenal = 0 };  // Disable PAR/Fatigue/Fancy if ACE present
-
 // Check MOD
 GRLIB_mod_enabled = false;
+GRLIB_filter_arsenal = false;
+GRLIB_MOD_signature = [];
 
 // Arsenal MOD filters
-if ( GRLIB_filter_arsenal ) then {
-	if ( GRLIB_OPTRE_enabled ) then { GRLIB_MOD_signature = ["optre_"]; GRLIB_mod_enabled = true };
-	if ( GRLIB_EJW_enabled ) then { GRLIB_MOD_signature = ["ej_"]; GRLIB_mod_enabled = true };
-	if ( GRLIB_GM_enabled ) then { GRLIB_MOD_signature = ["gm_"]; GRLIB_mod_enabled = true };
-	if ( GRLIB_CUPW_enabled ) then { GRLIB_MOD_signature = ["cup_"]; GRLIB_mod_enabled = true };
-	if ( GRLIB_RHS_enabled ) then { GRLIB_MOD_signature = ["rhs"]; GRLIB_mod_enabled = true };
-	if ( GRLIB_R3F_enabled ) then { GRLIB_MOD_signature = ["r3f_", "amf_"]; GRLIB_mod_enabled = true };
-};
+if ( GRLIB_OPTRE_enabled && GRLIB_filter_arsenalOPTRE ) then { GRLIB_MOD_signature append ["optre_"]; GRLIB_mod_enabled = true };
+if ( GRLIB_EJW_enabled && GRLIB_filter_arsenalEJW ) then { GRLIB_MOD_signature append ["ej_"]; GRLIB_mod_enabled = true };
+if ( GRLIB_GM_enabled && GRLIB_filter_arsenalGM) then { GRLIB_MOD_signature append ["gm_"]; GRLIB_mod_enabled = true };
+if ( GRLIB_CUPW_enabled && GRLIB_filter_arsenalCUP) then { GRLIB_MOD_signature append ["cup_"]; GRLIB_mod_enabled = true };
+if ( GRLIB_RHS_enabled && GRLIB_filter_arsenalRHS) then { GRLIB_MOD_signature append ["rhs"]; GRLIB_mod_enabled = true };
+if ( GRLIB_R3F_enabled && GRLIB_filter_arsenalR3F) then { GRLIB_MOD_signature append ["r3f_", "amf_"]; GRLIB_mod_enabled = true };

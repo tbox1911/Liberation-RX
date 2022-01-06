@@ -22,26 +22,37 @@ if (GRLIB_limited_arsenal) then {
 } else {
 	GRLIB_blacklisted_from_arsenal = blacklisted_bag;
 };
-if (GRLIB_filter_arsenal) then {
-	GRLIB_whitelisted_from_arsenal = GRLIB_whitelisted_from_arsenal_limited;
+if (GRLIB_mod_enabled) then {
+	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\whitelist_arsenal_limited.sqf";
 };
 
 // Add CUP Weapons
-[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_CUP.sqf";
+if (GRLIB_filter_arsenalCUP) then {	
+	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_CUP.sqf";
+};
 // Add GM Weapons
-[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_GM.sqf";
+if (GRLIB_filter_arsenalGM) then {
+	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_GM.sqf";
+};
 // Add OPTRE Weapons
-[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_OPTRE.sqf";
- // Add EricJ Weapons
-[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_EJW.sqf";
+if (GRLIB_filter_arsenalOPTRE) then {
+	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_OPTRE.sqf";
+};
+// Add EricJ Weapons
+if (GRLIB_filter_arsenalEJW) then {
+	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_EJW.sqf";
+};
 // Add RHS Weapons
-[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_RHS.sqf";
-// Add R3F Weapons
-[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_R3F.sqf";
-// Add AMF Weapons
-[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_AMF.sqf";
+if (GRLIB_filter_arsenalRHS) then {	
+	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_RHS.sqf";
+};
+// Add R3F/AMF Weapons
+if (GRLIB_filter_arsenalR3F) then {
+	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_R3F.sqf";
+	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_AMF.sqf";
+};
 
-if ( GRLIB_filter_arsenal && GRLIB_mod_enabled) then {
+if (GRLIB_mod_enabled) then {
 	[myLARsBox, ["GRLIB_whitelisted_from_arsenal", "GRLIB_blacklisted_from_arsenal"], false, "Liberation", { false }] call LARs_fnc_blacklistArsenal;
 } else {
 	//[ myBox, [ whitelist, blacklist ], targets, name, condition ] call LARs_fnc_blacklistArsenal;

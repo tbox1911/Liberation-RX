@@ -24,24 +24,6 @@ class Params
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 0;
 	};
-	class EnableArsenal {
-		title = $STR_ARSENAL;
-		values[] = { 1, 0 };
-		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 1;
-	};
-	class LimitedArsenal {
-		title = $STR_LIMIT_ARSENAL;
-		values[] = { 1, 0 };
-		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 1;
-	};
-	class EnableFilter {
-		title = $STR_FILTER_ARSENAL;
-		values[] = { 1, 0 };
-		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 0;
-	};	
 	class EnableLock {
 		title = $STR_VEH_LOCK;
 		values[] = { 1, 0 };
@@ -60,6 +42,60 @@ class Params
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 0;
 	};
+	class Space6 {
+		title = "";
+		values[] = { "" };
+		texts[] = { "" };
+		default = "";
+	};
+	class EnableArsenal {
+		title = $STR_ARSENAL;
+		values[] = { 1, 0 };
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
+		default = 1;
+	};
+	class LimitedArsenal {
+		title = $STR_LIMIT_ARSENAL;
+		values[] = { 1, 0 };
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
+		default = 1;
+	};
+	class EnableFilterCUP {
+		title = "MOD filter: CUP Weapons";
+		values[] = { 1, 0 };
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
+		default = 0;
+	};
+	class EnableFilterRHS {
+		title = "MOD filter: RHS";
+		values[] = { 1, 0 };
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
+		default = 0;
+	};
+	class EnableFilterR3F {
+		title = "MOD filter R3F";
+		values[] = { 1, 0 };
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
+		default = 0;
+	};	
+	class EnableFilterEJW {
+		title = "MOD filter: Eric JW";
+		values[] = { 1, 0 };
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
+		default = 0;
+	};
+	class EnableFilterGM {
+		title = "MOD filter: Global Mob";
+		values[] = { 1, 0 };
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
+		default = 0;
+	};		
+	class EnableFilterOPTRE {
+		title = "MOD filter: OPTRE";
+		values[] = { 1, 0 };
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
+		default = 0;
+	};
 	class Space5 {
 		title = "";
 		values[] = { "" };
@@ -69,8 +105,8 @@ class Params
 	class ModPresetWest {
 		title = "MOD Preset - Friendly";
 		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14 };
-		texts[] = { 
-					"A3 NATO", 
+		texts[] = {
+					"A3 NATO",
 					"A3 CSAT",
 					"A3 AAF",
 					"CUP BAF Desert",
@@ -91,7 +127,7 @@ class Params
 	class ModPresetEast {
 		title = "MOD Preset - Enemy";
 		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 };
-		texts[] = { 
+		texts[] = {
 					"A3 CSAT",
 					"A3 NATO",
 					"A3 AAF",
@@ -176,7 +212,7 @@ class Params
 		values[] = { 0.25, 0.5, 1, 1.5, 2, 2.5, 3, 5, 10, 20, 30, 60 };
 		texts[] = { "0.25", "0.5", "1", "1.5", "2", "2.5", "3", "5", "10", "20", "30", "60" };
 		default = 1;
-	};	
+	};
 	class Weather {
 		title = $STR_WEATHER_PARAM;
 		values[] = { 1,2,3,4 };
