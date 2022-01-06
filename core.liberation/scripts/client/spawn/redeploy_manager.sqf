@@ -159,7 +159,7 @@ if (dialog && deploy == 1) then {
 		if (!isNil "_my_squad") then {
 			{ _unit_list pushBack _x } forEach units _my_squad;
 		};
-		_unit_list_redep = [_unit_list, { _x != player && vehicle _x == _x && (_x distance2D _player_pos) < 40 && lifestate _x != 'INCAPACITATED' }] call BIS_fnc_conditionalSelect;
+		_unit_list_redep = [_unit_list, { !(isPlayer _x) && vehicle _x == _x && (_x distance2D _player_pos) < 40 && lifestate _x != 'INCAPACITATED' }] call BIS_fnc_conditionalSelect;
 		[_unit_list_redep] spawn {
 			params ["_list"];
 			{
