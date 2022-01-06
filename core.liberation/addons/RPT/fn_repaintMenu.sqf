@@ -12,14 +12,14 @@ waitUntil { dialog };
 if(!isNull (findDisplay 2300)) then {
 	_display = findDisplay 2300;
 	_color = _vehicle getVariable ["GRLIB_vehicle_color_name", "Default"];
-	_pic = getText(configFile >> "CfgVehicles" >> typeOf _vehicle >> "picture");
-	_text = getText(configFile >> "cfgVehicles" >> typeOf _vehicle >> "DisplayName");
+	_pic = getText(configOf _vehicle >> "picture");
+	_text = getText(configOf _vehicle >> "DisplayName");
 
 	ctrlSetText [230, format ["%1 - (%2)", _text, _color]];
 	ctrlSetText [234, _pic];
 	ctrlSetText [235, _pic];
 
-	_veh_texture_list = (configfile >> "CfgVehicles" >> typeOf _vehicle >> "TextureSources") call Bis_fnc_getCfgSubClasses;
+	_veh_texture_list = (configOf _vehicle >> "TextureSources") call Bis_fnc_getCfgSubClasses;
 
 	_i = 0;
 	{

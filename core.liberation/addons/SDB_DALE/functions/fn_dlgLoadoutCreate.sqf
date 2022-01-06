@@ -4,7 +4,7 @@ scriptName _fnc_scriptName;
 if (!hasInterface) exitWith {};
 
 private _veh = param [0,objNull,[objNull]];
-private _cfgVeh = configFile >> "CfgVehicles" >> typeOf _veh;
+private _cfgVeh = configOf _veh;
 private _cfgComponent = _cfgVeh >> "Components" >> "TransportPylonsComponent";
 private _selectedPreset = _veh getVariable ["DALE_var_LoadoutPreset",0];
 private _selectedPriority = _veh getVariable ["DALE_var_LoadoutPriority",0];

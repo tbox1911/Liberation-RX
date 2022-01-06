@@ -8,7 +8,7 @@ private _index = param [1,0,[0]];
 private _display = ctrlParent _ctrl;
 private _veh = _display getVariable ["DALE_var_LoadoutVehicle",objNull];
 
-private _cfgComponent = configFile >> "CfgVehicles" >> typeOf _veh >> "Components" >> "TransportPylonsComponent";
+private _cfgComponent = configOf _veh >> "Components" >> "TransportPylonsComponent";
 private _pylonCount = -1+count (_cfgComponent >> "Pylons");
 
 private _priorityArray = [];

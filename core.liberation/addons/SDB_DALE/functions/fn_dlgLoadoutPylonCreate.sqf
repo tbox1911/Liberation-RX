@@ -5,7 +5,7 @@ if (!hasInterface) exitWith {};
 
 private _display = param [0,displayNull,[displayNull]];
 private _veh = _display getVariable ["DALE_var_LoadoutVehicle",objNull];
-private _cfgVeh = configFile >> "CfgVehicles" >> typeOf _veh;
+private _cfgVeh = configOf _veh;
 private _cfgComponent = _cfgVeh >> "Components" >> "TransportPylonsComponent";
 
 private _cfgLoadoutCtrls = missionConfigFile >> "DALE_RscLoadout" >> "controls";

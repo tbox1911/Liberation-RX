@@ -7,7 +7,7 @@ private _ctrl = param [0,controlNull,[controlNull]];
 private _display = ctrlParent _ctrl;
 private _veh = _display getVariable ["DALE_var_loadoutVehicle",objNull];
 
-private _cfgComponent = configFile >> "CfgVehicles" >> typeOf _veh >> "Components" >> "TransportPylonsComponent";
+private _cfgComponent = configOf _veh >> "Components" >> "TransportPylonsComponent";
 
 private _cfgLoadoutCtrls = missionConfigFile >> "DALE_RscLoadout" >> "controls";
 private _ctrlPreset = _display displayCtrl getNumber (_cfgLoadoutCtrls >> "comboPreset" >> "idc");

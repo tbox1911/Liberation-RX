@@ -35,8 +35,8 @@ _setupObjects =
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	[_aiGroup, _missionPos, _nbUnits, "infantry"] call createCustomGroup;
 
-	_missionPicture = getText (configFile >> "CfgVehicles" >>  (typeOf _vehicle) >> "picture");
-	_vehicleName = getText (configFile >> "CfgVehicles" >>  (typeOf _vehicle) >> "displayName");
+	_missionPicture = getText (configOf _vehicle) >> "picture";
+	_vehicleName = getText (configOf _vehicle) >> "displayName";
 	_missionHintText = format ["A <t color='%2'>%1</t> has been immobilized, go get it for your team!", _vehicleName, sideMissionColor];
 };
 
