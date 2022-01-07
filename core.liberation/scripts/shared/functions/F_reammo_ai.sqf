@@ -2,7 +2,7 @@ params ["_unit"];
 private _primary_weapon = primaryWeapon _unit;
 private _maxpri = 10;           // maximum magazines unit can take (primary weapon)
 private _minpri = 6;            // minimal magazines before unit need to reload
-private _remove_items = [       // remove all items from inventory
+private _remove_items = [
     "R3F_FlashBang_mag"
 ];
 
