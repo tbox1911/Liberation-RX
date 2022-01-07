@@ -11,20 +11,19 @@ diag_log format [ "Spawning vehicle %1 at %2", _classname , time ];
 private _newvehicle = objNull;
 private _spawnpos = zeropos;
 private _vehcrew = [];
+private _max_try = 10;
+private _radius = GRLIB_capture_size;
 
 if ( _precise_position ) then {
 	_spawnpos = [] + _sectorpos;
 } else {
-	while { _spawnpos isEqualTo zeropos } do {
-		_safepos = [_sectorpos, 5, 300, 1, 1, 0.25, 0, [], [zeropos, zeropos]] call BIS_fnc_findSafePos;
-		if (surfaceIsWater _safepos) then {
-			_spawnpos = _safepos;
-		} else {
-			_spawnpos = _safepos findEmptyPosition [1, GRLIB_capture_size, "B_Heli_Transport_03_unarmed_F"];
-		};
-		if ( count _spawnpos == 0 ) then { _spawnpos = zeropos; };
+	while { (_spawnpos isEqualTo zeropos) && _max_try > 0 } do {
+		_spawnpos = [_sectorpos, 0, _radius, 3, 1, 0.25, 0, [], [zeropos, zeropos]] call BIS_fnc_findSafePos;
+		_radius = _radius + 20;
+		_max_try = _max_try - 1;
 	};
 };
+if ( _spawnpos distance2D zeropos < 300 ) exitWith { diag_log format ["--- LRX Error: No place to build %1 from position %2", _classname, _sectorpos]; objNull };
 
 _newvehicle = objNull;
 if ( _classname isKindOf "Air" ) then {
@@ -36,7 +35,7 @@ if ( _classname isKindOf "Air" ) then {
 		_newvehicle flyInHeight 400;
 	};
 } else {
-	_spawnpos set [2, 0.5];  //ATL
+	_spawnpos set [2, 0.5];
 	if (surfaceIsWater _spawnpos && !(_classname isKindOf "Ship")) then {
 		if ( _civilian ) then {
 			_classname = selectRandom boats_names_civ;
@@ -44,13 +43,8 @@ if ( _classname isKindOf "Air" ) then {
 			_classname = selectRandom boats_east;
 		};
 	};
-	if (surfaceIsWater _spawnpos) then {
-		_seadepth = abs (getTerrainHeightASL _spawnpos);
-		_spawnpos set [2, _seadepth + 0.5];  //ASL
-	};
 	_newvehicle = createVehicle [_classname, _spawnpos, [], 0, "NONE"];
 	_newvehicle allowDamage false;
-	_newvehicle setPos _spawnpos;
 };
 
 _newvehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
