@@ -24,12 +24,6 @@ class Params
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 0;
 	};
-	class EnableLock {
-		title = $STR_VEH_LOCK;
-		values[] = { 1, 0 };
-		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 1;
-	};
 	class Thermic {
 		title = $STR_THERMAL;
 		values[] = { 1, 0 };
@@ -357,6 +351,12 @@ class Params
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 1;
 	};
+	class EnableLock {
+		title = $STR_VEH_LOCK;
+		values[] = { 1, 0 };
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
+		default = 1;
+	};	
 	class CleanupVehicles {
 		title = $STR_CLEANUP_PARAM;
 		values[] = { 0,1,2,4 };
