@@ -28,9 +28,10 @@ _setupObjects =
 		_x setDir random 360;
 	} forEach [_box1, _box2];
 
+
+	_vehicle = [_missionPos, "O_Boat_Armed_01_hmg_F", true] call F_libSpawnVehicle;
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	[_aiGroup, _missionPos, _nbUnits, "divers"] call createCustomGroup;
-	_vehicle = [_missionPos, "O_Boat_Armed_01_hmg_F", true] call F_libSpawnVehicle;
 	(crew _vehicle) joinSilent _aiGroup;
 
 	_missionPicture = getText (configFile >> "CfgVehicles" >> "O_Boat_Armed_01_hmg_F" >> "picture");
