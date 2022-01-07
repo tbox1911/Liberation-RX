@@ -61,7 +61,7 @@ else
 								
 								systemChat format [STR_R3F_LOG_action_charger_fait,
 									getText (configOf _objet >> "displayName"),
-									getText (configOf _transporteur) >> "displayName")];
+									getText (configOf _transporteur >> "displayName")];
 							}
 							else
 							{

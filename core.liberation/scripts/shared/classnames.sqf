@@ -390,7 +390,7 @@ zeropos = [0,0,0];
 squads_names = [
 	localize "STR_LIGHT_RIFLE_SQUAD",
 	localize "STR_RIFLE_SQUAD",
-	localize "STR_RECON_SQUAD"
+	localize "STR_RECON_SQUAD",
 	localize "STR_AT_SQUAD",
 	localize "STR_AA_SQUAD",
 	localize "STR_MIXED_SQUAD"
