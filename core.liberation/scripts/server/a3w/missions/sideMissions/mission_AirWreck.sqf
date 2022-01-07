@@ -19,13 +19,11 @@ _setupVars =
 _setupObjects =
 {
 	_missionPos = markerPos _missionLocation;
-	_wreckPos = _missionPos vectorAdd ([[25 + floor(random 20), 0, 0], random 360] call BIS_fnc_rotateVector2D);
-
-	// Class, Position, Fuel, Ammo, Damage, Special
+	_wreckPos = _missionPos vectorAdd ([[5 + floor(random 20), 0, 0], random 360] call BIS_fnc_rotateVector2D);
 	_wreck = createVehicle [GRLIB_sar_wreck, _wreckPos, [], 0, "NONE"];
 	_box1 = [ammobox_b_typename, _missionPos, true] call boxSetup;
-	_box2 = [A3W_BoxWps, _missionPos, true] call boxSetup;
-	_box3 = [ammobox_b_typename, _missionPos, true] call boxSetup;
+	_box2 = [ammobox_b_typename, _missionPos, true] call boxSetup;
+	_box3 = [A3W_BoxWps, _missionPos, true] call boxSetup;
 
 	[_missionPos, 25] call createlandmines;
 	_aiGroup = createGroup [GRLIB_side_enemy, true];

@@ -18,19 +18,11 @@ _setupVars =
 _setupObjects =
 {
 	_missionPos = markerPos _missionLocation;
-
 	_box1 = [ammobox_o_typename, _missionPos, true] call boxSetup;
 	_box2 = [ammobox_o_typename, _missionPos, true] call boxSetup;
-	{
-		_boxPos = getPosASL _x;
-		_boxPos set [2, getTerrainHeightASL _boxPos + 1];
-		_x setPos _boxPos;
-		_x setDir random 360;
-	} forEach [_box1, _box2];
-
+	_vehicle = [_missionPos, "O_Boat_Armed_01_hmg_F", true] call F_libSpawnVehicle;
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	[_aiGroup, _missionPos, _nbUnits, "divers"] call createCustomGroup;
-	_vehicle = [_missionPos, "O_Boat_Armed_01_hmg_F", true] call F_libSpawnVehicle;
 	(crew _vehicle) joinSilent _aiGroup;
 
 	_missionPicture = getText (configFile >> "CfgVehicles" >> "O_Boat_Armed_01_hmg_F" >> "picture");
