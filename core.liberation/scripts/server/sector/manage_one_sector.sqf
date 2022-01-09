@@ -116,6 +116,8 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 		};
 		_building_ai_max = 0;
 		if(floor(random 100) > 75) then { _vehtospawn pushback ( [] call F_getAdaptiveVehicle ); };
+		[markerPos _sector] call clearlandmines;
+		sleep 2;
 		[markerPos _sector, 50] call createlandmines;
 	};
 

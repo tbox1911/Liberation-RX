@@ -47,6 +47,8 @@ _setupObjects =
 	} foreach _allbuildings;
 
 	// spawn some enemies
+	[_missionPos] call clearlandmines;
+	sleep 2;
 	[_missionPos, 25] call createlandmines;
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	_managed_units = (["militia", (_nbUnits - 4), _buildingpositions, _missionPos] call F_spawnBuildingSquad);
