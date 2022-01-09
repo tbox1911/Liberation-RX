@@ -203,3 +203,7 @@ opfor_recyclable = [
 	["O_T_VTOL_02_vehicle_F",20,round (2500 / GRLIB_recycling_percentage),20],
 	["O_T_VTOL_02_infantry_F",20,round (2500 / GRLIB_recycling_percentage),20]
 ];
+
+box_transport_config_east = [
+	[ "O_SFIA_Truck_02_covered_lxWS", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ]	
+];
