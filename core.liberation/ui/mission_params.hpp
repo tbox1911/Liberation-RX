@@ -244,7 +244,7 @@ class Params
 		title = $STR_TK_MODE;
 		values[] = { 0, 1, 2 };
 		texts[] = { $STR_TK_MODE_STRICT, $STR_TK_MODE_RELAX, $STR_PARAMS_DISABLED };
-		default = 0;
+		default = 1;
 	};
 	class TK_count {
 		title = $STR_TK_COUNT;
