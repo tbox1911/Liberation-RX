@@ -1,5 +1,5 @@
-if (count (attachedObjects player) > 0) exitWith {};
 if (player getVariable ["GRLIB_action_inuse", false]) exitWith {};
+if (count (attachedObjects player) > 0) then {{detach _x} forEach attachedObjects player};
 private _choiceslist = [];
 private _standard_map_pos = [];
 private _frame_pos = [];
