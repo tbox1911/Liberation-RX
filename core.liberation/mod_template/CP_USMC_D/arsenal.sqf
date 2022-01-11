@@ -256,6 +256,6 @@ GRLIB_whitelisted_from_arsenal_limited = [
 	"G_O_Diving",
 	"G_B_Diving",
 	"B_Parachute",
-	"V_BandollierB_rgr",
+	"V_BandollierB_cbr",
 	"Laserbatteries"
 ];
