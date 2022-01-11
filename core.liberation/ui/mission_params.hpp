@@ -98,19 +98,20 @@ class Params
 	};
 	class ModPresetWest {
 		title = "MOD Preset - Friendly";
-		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14 };
+		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 };
 		texts[] = {
 					"A3 NATO",
 					"A3 CSAT",
 					"A3 AAF",
 					"CUP BAF Desert",
-					"CUP USMC",
+					"CUP USMC Desert",
+					"CUP USMC Woodland",
 					"R3F WEST Desert",
-					"R3F WEST Wood",
+					"R3F WEST Woodland",
 					"RHS USAF",
 					"RHS AFRF",
 					"FFAA SPAIN Desert",
-					"FFAA SPAIN Wood",
+					"FFAA SPAIN Woodland",
 					"GM WEST",
 					"GM WEST Winter",
 					"OPTRE West",
@@ -120,13 +121,15 @@ class Params
 	};
 	class ModPresetEast {
 		title = "MOD Preset - Enemy";
-		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 };
+		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17 };
 		texts[] = {
 					"A3 CSAT",
 					"A3 NATO",
 					"A3 AAF",
 					"A3 CSAT Urban",
 					"CUP Takistan",
+					"CUP USMC Desert",
+					"CUP USMC Woodland",					
 					"EJW Taliban",
  					"R3F WEST Desert",
 					"R3F WEST Wood",
