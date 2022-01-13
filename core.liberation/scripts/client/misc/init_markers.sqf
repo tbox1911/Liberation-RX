@@ -1,3 +1,6 @@
+private ["_marker"];
+_marker_debug = false;
+
 _marker = createMarkerLocal ["zone_capture", markers_reset];
 _marker setMarkerColorLocal "ColorUNKNOWN";
 _marker setMarkerShapeLocal "Ellipse";
@@ -12,8 +15,8 @@ _marker setMarkerTypeLocal "Select";
 GRLIB_Marker_SRV = [];
 GRLIB_Marker_ATM = [];
 GRLIB_Marker_FUEL = [];
-GRLIB_Marker_REPAIR = [];
 GRLIB_Marker_SHOP = [];
+GRLIB_Marker_REPAIR = [];
 
 waituntil {sleep 1; !isNil "GRLIB_sectors_init"};
 sleep 5;
@@ -34,8 +37,8 @@ private _marker_dist = {
 // Objects too long to search (atm, phone, etc ..)
 [] call compileFinal preprocessFileLineNUmbers "fixed_position.sqf";
 
-// Search Objects by classname
-[] call compileFinal preprocessFileLineNUmbers "compute_position.sqf";
+// Search Objects by classname (only when dev)
+//[] call compileFinal preprocessFileLineNUmbers "compute_position.sqf";
 
 // Draw/Filter Markers
 private _tmp_marker = GRLIB_Marker_ATM;
@@ -46,7 +49,11 @@ GRLIB_Marker_ATM = [];
     _marker = createMarkerLocal [format ["marked_atm%1", _forEachIndex], _x];
     _marker setMarkerColorLocal "ColorGreen";
     _marker setMarkerTypeLocal "mil_dot";
-    _marker setMarkerTextLocal "ATM";
+    if (_marker_debug) then {
+      _marker setMarkerTextLocal format ["ATM %1", _x];
+    } else {
+      _marker setMarkerTextLocal "ATM";
+    };
     _marker setMarkerSizeLocal [ 0.75, 0.75 ];
     GRLIB_Marker_ATM pushback _x;
   };
@@ -60,7 +67,11 @@ GRLIB_Marker_SRV = [];
     _marker = createMarkerLocal [format ["marked_car%1", _forEachIndex], _x];
     _marker setMarkerColorLocal "ColorBlue";
     _marker setMarkerTypeLocal "mil_dot";
-    _marker setMarkerTextLocal "SELL";
+     if (_marker_debug) then {
+      _marker setMarkerTextLocal format ["SELL %1", _x];
+    } else {
+      _marker setMarkerTextLocal "SELL";
+    };
     _marker setMarkerSizeLocal [ 0.75, 0.75 ];
     GRLIB_Marker_SRV pushback _x;
   };
@@ -74,9 +85,31 @@ GRLIB_Marker_FUEL = [];
     _marker = createMarkerLocal [format ["marked_fuel%1", _forEachIndex], _x];
     _marker setMarkerColorLocal "ColorYellow";
     _marker setMarkerTypeLocal "mil_dot";
-    _marker setMarkerTextLocal "FUEL";
+    if (_marker_debug) then {
+      _marker setMarkerTextLocal format ["FUEL %1", _x];
+    } else {    
+      _marker setMarkerTextLocal "FUEL";
+    };
     _marker setMarkerSizeLocal [ 0.75, 0.75 ];
     GRLIB_Marker_FUEL pushback _x;
+  };
+} forEach _tmp_marker;
+
+private _tmp_marker = GRLIB_Marker_SHOP;
+GRLIB_Marker_SHOP = [];
+{
+  _dist = ["SHOP", _x] call _marker_dist;
+  if (_dist > 1500) then {
+    _marker = createMarkerLocal [format ["marked_shop%1", _forEachIndex], _x];
+    _marker setMarkerColorLocal "ColorPink";
+    _marker setMarkerTypeLocal "mil_dot";
+    if (_marker_debug) then {
+      _marker setMarkerTextLocal format ["SHOP %1", _x];
+    } else {    
+      _marker setMarkerTextLocal "SHOP";
+    };
+    _marker setMarkerSizeLocal [ 0.75, 0.75 ];
+    GRLIB_Marker_SHOP pushback _x;
   };
 } forEach _tmp_marker;
 
@@ -89,20 +122,6 @@ _tmp_marker = [vehicles, {(alive _x) && typeOf _x == "C_Offroad_01_repair_F" && 
     _marker setMarkerTextLocal "Repair";
     _marker setMarkerSizeLocal [ 0.75, 0.75 ];
     GRLIB_Marker_REPAIR pushback getPos _x;
-} forEach _tmp_marker;
-
-private _tmp_marker = GRLIB_Marker_SHOP;
-GRLIB_Marker_SHOP = [];
-{
-  _dist = ["SHOP", _x] call _marker_dist;
-  if (_dist > 1500) then {
-    _marker = createMarkerLocal [format ["marked_shop%1", _forEachIndex], _x];
-    _marker setMarkerColorLocal "ColorPink";
-    _marker setMarkerTypeLocal "mil_dot";
-    _marker setMarkerTextLocal "SHOP";
-    _marker setMarkerSizeLocal [ 0.75, 0.75 ];
-    GRLIB_Marker_SHOP pushback _x;
-  };
 } forEach _tmp_marker;
 
 GRLIB_marker_init = true;

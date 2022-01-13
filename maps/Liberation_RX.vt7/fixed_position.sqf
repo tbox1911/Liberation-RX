@@ -1,18 +1,7 @@
-// ATM position, generated one by:
-/*
- private _pos = getArray(configFile >> "CfgWorlds" >> worldName >> "centerPosition");
- {
-  if (_x distance2D lhd > 1000) then {
-    if (str _x find "atm_" > 0) then { diag_log (getpos _x); };
-  };
-} foreach nearestobjects [_pos, [], worldSize / 2];
+GRLIB_Marker_ATM = [];
 
-executed in console, result in RPT file.
-*/
-GRLIB_Marker_ATM =[
- 
-];
+GRLIB_Marker_SHOP = [];
 
-GRLIB_Marker_SRV = [
+GRLIB_Marker_SRV = [[1109.9,7251.83,0],[6299.82,7190.21,0],[7317.24,12765.7,0],[8032.82,10316.7,0],[8970.25,10517.3,0],[10508.6,4452.69,0],[12477.2,7796.05,0],[14566.7,8355.45,0],[14827.4,14621.9,0]];
 
-];
+GRLIB_Marker_FUEL = [[1492.79,6970.34,0]];
