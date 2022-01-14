@@ -266,6 +266,8 @@ PAR_HandleDamage_EH = {
 PAR_Player_Unconscious = {
 	params [ "_unit", "_killer" ];
 
+	R3F_LOG_joueur_deplace_objet = objNull;
+
 	// Death message
 	if (PAR_EnableDeathMessages && !isNil "_killer" && _killer != _unit) then {
 		["PAR_deathMessage", [_unit, _killer]] remoteExec ["PAR_public_EH", 0];
@@ -274,8 +276,6 @@ PAR_Player_Unconscious = {
 	// Eject unit if inside vehicle
 	private _veh_unit = vehicle _unit;
 	if (_veh_unit != _unit) then {[_veh_unit, _unit] spawn PAR_fn_eject};
-
-	[] call R3F_LOG_FNCT_objet_relacher;
 
 	_random_medic_message = floor (random 3);
 	_medic_message = "";
