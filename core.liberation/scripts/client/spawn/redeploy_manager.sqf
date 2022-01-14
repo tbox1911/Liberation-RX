@@ -172,7 +172,9 @@ if (dialog && deploy == 1) then {
 		cinematic_camera_started = false;
 	};
 
-	GRLIB_loadout_overide = nil;
+	// Player Loadout
+	GRLIB_loadout_overide = false;
+
 	if ( (lbCurSel 203) > 0 ) then {
 		GRLIB_backup_loadout = [player] call F_getLoadout;
 		player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
@@ -180,6 +182,29 @@ if (dialog && deploy == 1) then {
 		[player] call F_filterLoadout;
 		[player] call F_payLoadout;
 		GRLIB_loadout_overide = true;
+	};
+
+	if (!GRLIB_loadout_overide) then {
+		if (GRLIB_forced_loadout > 0) then {
+			[player] call compile preprocessFileLineNumbers (format ["mod_template\%1\loadout\player_set%2.sqf", GRLIB_mod_west, GRLIB_forced_loadout]);
+		} else {
+			[player, configOf player] call BIS_fnc_loadInventory;
+		};
+
+		if (typeOf player in units_loadout_overide) then {
+			_loadouts_folder = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, toLower (typeOf player)];
+			[player] call compileFinal preprocessFileLineNUmbers _loadouts_folder;
+		};
+		
+		GRLIB_backup_loadout = [player] call F_getLoadout;
+		player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
+
+		if (!(isNil "GRLIB_respawn_loadout")) then {
+			[player, GRLIB_respawn_loadout] call F_setLoadout;
+		};
+
+		[player] call F_filterLoadout;
+		[player] call F_payLoadout;	
 	};
 };
 
