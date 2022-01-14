@@ -49,8 +49,7 @@ if ( dorecycle == 1 && !(isNull _vehicle) && alive _vehicle) exitWith {
 		hint format [localize "STR_AMMO_SELL2", name player];
 		playSound "taskSucceeded";
 	};
-	private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
-	player setVariable ["GREUH_ammo_count", (_ammo_collected + _ammount_ammo), true];
+	[player, _ammount_ammo] remoteExec ["ammo_add_remote_call", 2];
 	player addRating 500;
 
 	if (typeOf _vehicle == mobile_respawn) exitWith {

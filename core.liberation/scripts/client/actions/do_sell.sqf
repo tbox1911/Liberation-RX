@@ -14,8 +14,7 @@ if (_result && _price > 0) then {
 	clearItemCargoGlobal _vehicle;
 	clearBackpackCargoGlobal _vehicle;
 
-	private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
-	player setVariable ["GREUH_ammo_count", (_ammo_collected + _price), true];
+	[player, _price] remoteExec ["ammo_add_remote_call", 2];
 
 	hintSilent format ["%1 Cargo Sold.\n%2 +%3 AMMO !", _vehtext, name player, _price];
 };

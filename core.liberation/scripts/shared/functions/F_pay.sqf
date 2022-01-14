@@ -1,20 +1,36 @@
 params ["_price"];
-_ret = false;
 
 if (_price <= 0) exitWith {true};
+if (player getVariable ["trx_complete", 0] == 1) exitWith {false};
 
-private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
+// trx_complete
+// 0 = no transaction
+// 1 = transaction in progress
+// 2 = success
+// 3 = fail
+
+private _ret = false;
 private _msg = "";
 
-if (_ammo_collected < _price) then {
-	_msg = localize "STR_GRLIB_NOAMMO";
-} else {
-	player setVariable ["GREUH_ammo_count", (_ammo_collected - _price), true];
+player setVariable ["trx_complete", 1, true];
+[player, _price] remoteExec ["ammo_del_remote_call", 2];
+
+private _timout = round (time + 3);
+waitUntil {sleep 0.1; (player getVariable ["trx_complete", 1] > 1) || time > _timout};
+
+private _res = player getVariable ["trx_complete", 3];
+
+if (_res == 2) then {
 	playSound "rearm";
 	_msg = format [localize "STR_GRLIB_PAY", _price];
-	stats_ammo_spent = stats_ammo_spent + _price; publicVariable "stats_ammo_spent";
 	_ret = true;
 };
+
+if (_res == 3) then {
+	_msg = localize "STR_GRLIB_NOAMMO";
+};
+
+player setVariable ["trx_complete", 0, true];
 
 hintSilent _msg;
 gamelogic globalChat _msg;

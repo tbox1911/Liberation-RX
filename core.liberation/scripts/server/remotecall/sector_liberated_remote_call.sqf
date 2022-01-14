@@ -43,8 +43,7 @@ private _income = (75 + floor(random 100));
 private _text = format ["Reward Received: + %1 Ammo.", _income];
 {
 	if (_x distance2D (markerpos _liberated_sector) < GRLIB_sector_size ) then {
-		private _ammo_collected = _x getVariable ["GREUH_ammo_count",0];
-		_x setVariable ["GREUH_ammo_count", _ammo_collected + _income, true];
+		[_x, _income] call ammo_add_remote_call;
 		[gamelogic, _text] remoteExec ["globalChat", owner _x];
 	};
 } forEach allPlayers;

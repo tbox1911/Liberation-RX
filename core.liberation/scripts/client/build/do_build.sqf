@@ -323,7 +323,7 @@ while { true } do {
 			};
 
 			if ( build_confirmed == 2 ) then {
-				if (!([_price] call F_pay)) exitWith {};
+				if (!([_price] call F_pay)) exitWith {deleteVehicle _vehicle};
 				_vehdir = getdir _vehicle;
 				deleteVehicle _vehicle;
 				sleep 0.1;
