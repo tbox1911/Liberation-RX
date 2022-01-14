@@ -1,5 +1,4 @@
 params ["_unit"];
-diag_log format ["DBG; killed %1", _unit];
 _unit connectTerminalToUAV objNull;
 
 [(_unit getVariable ['PAR_myMedic', objNull]), _unit] call PAR_fn_medicRelease;
