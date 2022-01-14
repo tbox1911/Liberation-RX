@@ -36,18 +36,18 @@ if ( isServer ) then {
 
 		if ( (vehicle _killer) isKindOf "Man" ) then {
 			infantry_weight = infantry_weight + 1;
-			armor_weight = armor_weight - 0.1;
-			air_weight = air_weight - 0.1;
+			armor_weight = armor_weight - 0.5;
+			air_weight = air_weight - 0.5;
 		};
 		if ( (vehicle _killer) isKindOf "Tank" ) then {
 			infantry_weight = infantry_weight - 0.50;
-			armor_weight = armor_weight + 5;
-			air_weight = air_weight - 0.10;
+			armor_weight = armor_weight + 2;
+			air_weight = air_weight - 0.50;
 		};
 		if ( (vehicle _killer) isKindOf "Air" ) then {
 			infantry_weight = infantry_weight - 0.50;
-			armor_weight = armor_weight - 0.10;
-			air_weight = air_weight + 5;
+			armor_weight = armor_weight - 0.50;
+			air_weight = air_weight + 2;
 		};
 
 		if ( infantry_weight > 100 ) then { infantry_weight = 100 };
