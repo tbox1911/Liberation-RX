@@ -68,10 +68,6 @@ if (_unit == player) then {
 	if (GRLIB_ACE_enabled) then {
 		["ace_arsenal_displayClosed", {[player] call F_payLoadout}] call CBA_fnc_addEventHandler;
 	} else {
-		// Clean player body
-		_unit removeAllEventHandlers "Killed";
-		_unit addEventHandler ["Killed", {_this spawn PAR_fn_Killed}];
-
 		// Filter and Pay Loadout
 		[missionNamespace, "arsenalClosed", {[player] call F_filterLoadout;[player] call F_payLoadout}] call BIS_fnc_addScriptedEventHandler;
 
