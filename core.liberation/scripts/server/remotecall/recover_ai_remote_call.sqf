@@ -22,7 +22,7 @@ if (!isNil "_grp") then { _player hcSetGroup [_grp] };
 
 // IA Recall
 _pid = _player getVariable ["PAR_Grp_ID","1"];
-_squad = (units GRLIB_side_friendly) select {!isPlayer _x && (_x getVariable ["PAR_Grp_ID","0"]) == _pid};
+_squad = allUnits select {!isPlayer _x && (_x getVariable ["PAR_Grp_ID","0"]) == _pid};
 if (count _squad > 1) then {
     while { count units _player <= count _squad } do {
         {
