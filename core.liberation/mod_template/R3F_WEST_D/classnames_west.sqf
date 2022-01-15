@@ -43,6 +43,7 @@ infantry_units = [
 units_loadout_overide = [
 	"B_soldier_AA_F",
 	"B_soldier_PG_F",
+	"R3F_APSO_BLUFOR_DA",
 	"R3F_CDE600_APSO_AF_BLUFOR"
 ];
 
