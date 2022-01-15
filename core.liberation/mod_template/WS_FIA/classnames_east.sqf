@@ -151,7 +151,7 @@ opfor_choppers = [
 opfor_air = [
 	"O_SFIA_Heli_Attack_02_dynamicLoadout_lxWS",
 	"O_Heli_Attack_02_black_F",
-	"O_T_VTOL_02_infantry_F",
+	//"O_T_VTOL_02_infantry_F",
 	"O_Plane_CAS_02_F",
 	"O_Plane_Fighter_02_F"
 ];
