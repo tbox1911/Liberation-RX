@@ -20,8 +20,8 @@ for "_i" from 1 to _nbcivs do {
 	_nextciv = ((units _grp) select 0);
 	_nextciv addEventHandler ["HandleDamage", { private [ "_damage" ]; if (( side (_this select 3) != GRLIB_side_friendly ) && ( side (_this select 3) != GRLIB_side_enemy )) then { _damage = 0 } else { _damage = _this select 2 }; _damage } ];
 	_nextciv setVariable ['GRLIB_can_speak', true, true];
-	//_nextciv disableAI "FSM";
-	//_nextciv disableAI "AUTOCOMBAT";
+	_nextciv disableAI "FSM";
+	_nextciv disableAI "AUTOCOMBAT";
 	_nextciv switchMove "amovpknlmstpsraswrfldnon";
 	_createdcivs pushBack _nextciv;
 	sleep 0.1;

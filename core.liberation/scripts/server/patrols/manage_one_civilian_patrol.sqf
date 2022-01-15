@@ -37,6 +37,7 @@ while { GRLIB_endgame == 0 } do {
 					_dam;
 				}];
 				_civ_veh addEventHandler ["Fuel", { if (!(_this select 1)) then {(_this select 0) setFuel 1}}];
+				_civ_veh allowCrewInImmobile true;
 			};
 			
 			// set waypoints
