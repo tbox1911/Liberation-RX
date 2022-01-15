@@ -16,7 +16,7 @@ player setVariable ["trx_complete", 1, true];
 [player, _price] remoteExec ["ammo_del_remote_call", 2];
 
 private _timout = round (time + 3);
-waitUntil {sleep 0.1; (player getVariable ["trx_complete", 1] > 1) || time > _timout};
+waitUntil {(player getVariable ["trx_complete", 1] > 1) || time > _timout};
 
 private _res = player getVariable ["trx_complete", 3];
 
