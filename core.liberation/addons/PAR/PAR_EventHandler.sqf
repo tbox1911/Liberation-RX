@@ -66,10 +66,10 @@ _unit addEventHandler ["FiredMan",	{
 if (_unit == player) then {
 	// ACE specific
 	if (GRLIB_ACE_enabled) then {
-		["ace_arsenal_displayClosed", {[player] call F_payLoadout}] call CBA_fnc_addEventHandler;
+		["ace_arsenal_displayClosed", {[] spawn {[player] call F_payLoadout}}] call CBA_fnc_addEventHandler;
 	} else {
 		// Filter and Pay Loadout
-		[missionNamespace, "arsenalClosed", {[player] call F_filterLoadout;[player] call F_payLoadout}] call BIS_fnc_addScriptedEventHandler;
+		[missionNamespace, "arsenalClosed", {[] spawn {[player] call F_filterLoadout;[player] call F_payLoadout}}] call BIS_fnc_addScriptedEventHandler;
 
 		// Unblock unit(s) 0-8-1
 		PAR_unblock_AI = {
