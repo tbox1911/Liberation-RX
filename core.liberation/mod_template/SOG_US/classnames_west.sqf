@@ -47,6 +47,23 @@ infantry_units = [
 units_loadout_overide = [
 ];
 
+LOADOUT_fixed_price = [
+  //["launch_o_vorona_brown_f" , 200]
+];
+
+LOADOUT_expensive_items = [
+  "vn_b_item_toolkit",
+  "vn_b_item_medikit"
+];
+
+LOADOUT_free_items = [
+  "_mag",
+  "vn_b_item_map",
+  "vn_b_item_radio_urc10",
+  "vn_b_item_compass",
+  "vn_b_item_watch"
+];
+
 light_vehicles = [
 	// Boat
 	["vn_o_boat_01_02",1,10,1,0],

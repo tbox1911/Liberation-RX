@@ -51,6 +51,10 @@ if (GRLIB_filter_arsenalR3F) then {
 	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_R3F.sqf";
 	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_AMF.sqf";
 };
+// Add SOG Weapons
+if (GRLIB_filter_arsenalSOG) then {	
+	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_SOG.sqf";
+};
 
 if (GRLIB_mod_enabled) then {
 	[myLARsBox, ["GRLIB_whitelisted_from_arsenal", "GRLIB_blacklisted_from_arsenal"], false, "Liberation", { false }] call LARs_fnc_blacklistArsenal;
