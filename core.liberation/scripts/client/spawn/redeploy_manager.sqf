@@ -179,14 +179,14 @@ if (dialog && deploy == 1) then {
 	if ( (lbCurSel 203) > 0 ) then {
 		[player, [ profileNamespace, _loadouts_data select ((lbCurSel 203) - 1) ] ] call bis_fnc_loadInventory;
 		[player] call F_filterLoadout;
-		[player] call F_payLoadout;
+		[player] spawn F_payLoadout;
 		GRLIB_loadout_overide = true;
 	};
 
 	if (!GRLIB_loadout_overide && !(isNil "GRLIB_respawn_loadout")) then {
 		[player, GRLIB_respawn_loadout] call F_setLoadout;
 		[player] call F_filterLoadout;
-		[player] call F_payLoadout;	
+		[player] spawn F_payLoadout;	
 	};
 	
 };
