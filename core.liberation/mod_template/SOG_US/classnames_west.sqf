@@ -60,6 +60,7 @@ LOADOUT_expensive_items = [
 
 LOADOUT_free_items = [
   "_mag",
+  "vn_b_item_firstaidkit",
   "vn_b_item_map",
   "vn_b_item_radio_urc10",
   "vn_b_item_compass",
