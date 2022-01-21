@@ -88,7 +88,7 @@ light_vehicles = [
 ];
 
 heavy_vehicles = [
-	["vn_b_wheeled_m54_mg_01",5,250,5,GRLIB_perm_tank]
+	["vn_b_wheeled_m54_mg_01",5,250,5,GRLIB_perm_tank],
 	["vn_b_wheeled_m54_mg_02",10,500,6,GRLIB_perm_tank],
 	["vn_b_wheeled_m54_mg_03",5,250,5,GRLIB_perm_tank],
 	["vn_b_wheeled_m151_mg_05",6,300,6,GRLIB_perm_air],
