@@ -139,7 +139,7 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"O_LSV_02_AT_F"
 ];
 
-opfor_troup_transports = [
+opfor_troup_transports_truck = [
 	"O_Truck_03_transport_F",
 	"O_Truck_03_covered_F",
 	"O_Truck_02_covered_F",
@@ -150,7 +150,7 @@ opfor_troup_transports = [
 	"O_T_VTOL_02_infantry_F"
 ];
 
-opfor_choppers = [
+opfor_troup_transports_heli = [
 	"OPTRE_UNSC_hornet_ins",
 	"OPTRE_Pelican_armed_ins",
 	"O_Heli_Light_02_F",

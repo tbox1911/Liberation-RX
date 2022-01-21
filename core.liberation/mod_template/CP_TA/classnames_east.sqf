@@ -141,14 +141,14 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"CUP_O_BTR40_MG_TKA"
 ];
 
-opfor_troup_transports = [
+opfor_troup_transports_truck = [
 	"CUP_O_Mi17_TK",
 	"CUP_O_BTR40_MG_TKM",
 	"CUP_O_V3S_Covered_TKM",
 	"CUP_O_V3S_Open_TKM"
 ];
 
-opfor_choppers = [
+opfor_troup_transports_heli = [
 	"CUP_O_Mi17_TK",
 	"CUP_O_MI6T_TKA",
 	"CUP_O_UH1H_armed_TKA"

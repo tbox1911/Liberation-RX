@@ -134,14 +134,14 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"B_T_LSV_01_AT_F"
 ];
 
-opfor_troup_transports = [
+opfor_troup_transports_truck = [
 	"B_Truck_01_covered_F",
 	"B_Truck_01_transport_F",
 	"B_Heli_Transport_01_F",
 	"B_Heli_Transport_03_F"
 ];
 
-opfor_choppers = [
+opfor_troup_transports_heli = [
 	"B_Heli_Transport_01_F",
 	"B_Heli_Transport_03_F",
 	"B_CTRG_Heli_Transport_01_sand_F"

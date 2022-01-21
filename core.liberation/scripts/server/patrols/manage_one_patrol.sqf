@@ -49,7 +49,7 @@ while { GRLIB_endgame == 0 } do {
 	if (_patrol_type == 2) then {
 		private [ "_vehicle_object" ];
 		if (combat_readiness > 75 && floor(random 100) > 70) then {
-			_vehicle_object = [ _sector_spawn_pos, selectRandom opfor_choppers ] call F_libSpawnVehicle;
+			_vehicle_object = [ _sector_spawn_pos, selectRandom opfor_troup_transports_heli ] call F_libSpawnVehicle;
 		} else {
 			_vehicle_object = [ _sector_spawn_pos, [] call F_getAdaptiveVehicle ] call F_libSpawnVehicle;
 		};

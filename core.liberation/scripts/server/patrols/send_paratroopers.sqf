@@ -6,7 +6,7 @@ private _sendPara = {
 
 	private _spawnsector = ( [ sectors_airspawn , [ _targetpos ] , { (markerpos _x) distance _input0 }, "ASCEND"] call BIS_fnc_sortBy ) select 0;
 	private _pilot_group = createGroup [GRLIB_side_enemy, true];
-	private _newvehicle = [markerpos _spawnsector, selectRandom opfor_choppers] call F_libSpawnVehicle;
+	private _newvehicle = [markerpos _spawnsector, selectRandom opfor_troup_transports_heli] call F_libSpawnVehicle;
 	(crew _newvehicle) joinSilent _pilot_group;
 	_newvehicle setVariable ["GRLIB_counter_TTL", round(time + 3600)];
 	{

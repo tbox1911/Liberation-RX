@@ -137,13 +137,13 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"I_Truck_02_covered_F"
 ];
 
-opfor_troup_transports = [
+opfor_troup_transports_truck = [
 	"I_Heli_Transport_02_F",
 	"I_Truck_02_covered_F",
 	"I_Truck_02_transport_F"
 ];
 
-opfor_choppers = [
+opfor_troup_transports_heli = [
 	"I_Heli_Transport_02_F",
 	"I_Heli_light_03_unarmed_F"
 ];

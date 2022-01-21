@@ -139,7 +139,7 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"R3F_PVP_WASP_DA"
 ];
 
-opfor_troup_transports = [
+opfor_troup_transports_truck = [
 	"AMF_GBC180_PERS_01",
 	"B_AMF_VAB_ULTIMA_X8_TDF_F",
 	"B_AMF_Heli_Transport_4RHFS_01_F",
@@ -147,7 +147,7 @@ opfor_troup_transports = [
 	"B_AMF_PLANE_TRANSPORT_01_F"
 ];
 
-opfor_choppers = [
+opfor_troup_transports_heli = [
 	"B_AMF_Heli_Transport_4RHFS_01_F",
 	"ffaa_nh90_tth_transport",
 	"ffaa_famet_cougar"

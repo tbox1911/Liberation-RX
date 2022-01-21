@@ -42,7 +42,7 @@ if ( _spawn_marker != "" ) then {
 		[_nextgrp, false] spawn battlegroup_ai;
 		{ _x setVariable ["GRLIB_counter_TTL", round(time + 1800)] } forEach (units _nextgrp);
 		_bg_groups pushback _nextgrp;
-		if ( ( _x in opfor_troup_transports ) &&  ( [] call F_opforCap < GRLIB_battlegroup_cap ) ) then {
+		if ( ( _x in opfor_troup_transports_truck ) &&  ( [] call F_opforCap < GRLIB_battlegroup_cap ) ) then {
 			[_vehicle] spawn troup_transport;
 		};
 		last_battlegroup_size = last_battlegroup_size + 1.3;
