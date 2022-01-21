@@ -51,6 +51,20 @@ militia_loadout_overide = [
 ];
 
 divers_squad = [
+	"O_diver_TL_F",
+	"O_diver_TL_F",
+	"O_diver_exp_F",
+	"O_diver_exp_F",
+	"O_diver_exp_F",
+	"O_diver_exp_F",
+	"O_diver_F",
+	"O_diver_F",
+	"O_diver_F",
+	"O_diver_F",
+	"O_diver_F",
+	"O_diver_F",
+	"O_diver_F",
+	"O_diver_F"
 ];
 
 militia_vehicles = [

@@ -236,7 +236,6 @@ squads = [
 	[blufor_squad_inf_light,15,400,0,GRLIB_perm_max],
 	[blufor_squad_inf,25,550,0,GRLIB_perm_max],
 	[blufor_squad_at,25,600,0,GRLIB_perm_max],
-	[blufor_squad_aa,25,999999,0,GRLIB_perm_max],
 	[blufor_squad_mix,25,600,0,GRLIB_perm_max],
 	[blufor_squad_recon,20,450,0,GRLIB_perm_max]
 ];
