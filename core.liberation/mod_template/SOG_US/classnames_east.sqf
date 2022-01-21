@@ -100,15 +100,8 @@ opfor_battlegroup_vehicles = [
 	"vn_b_wheeled_m54_mg_02",
 	"vn_b_armor_m41_01_01",
 	"vn_b_wheeled_m151_mg_05",
-	"vn_b_air_oh6a_01",
-	"vn_b_air_oh6a_03",
-	"vn_b_air_oh6a_02",
-	"vn_b_air_oh6a_05",
-	"vn_b_air_ch34_03_01",
 	"vn_b_air_ch34_04_03",
 	"vn_b_air_uh1d_02_02",
-	"vn_b_air_uh1c_04_02",
-	"vn_b_air_uh1c_02_02",
 	"vn_b_wheeled_m54_01",
 	"vn_b_wheeled_m54_02"
 ];
@@ -119,15 +112,10 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"vn_b_wheeled_m151_mg_03",
 	"vn_b_wheeled_m54_01",
 	"vn_b_wheeled_m54_02",
-	"vn_b_air_oh6a_01",
-	"vn_b_air_ch34_03_01",
 	"vn_b_air_uh1d_02_02"
 ];
 
 opfor_troup_transports_truck = [
-	"vn_b_air_oh6a_01",
-	"vn_b_air_ch34_03_01",
-	"vn_b_air_uh1d_02_02",
 	"vn_b_wheeled_m54_02",
 	"vn_b_wheeled_m54_01"
 ];

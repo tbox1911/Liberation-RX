@@ -141,19 +141,18 @@ opfor_battlegroup_vehicles_low_intensity = [
 
 opfor_troup_transports_truck = [
 	"AMF_GBC180_PERS_01",
-	"B_AMF_VAB_ULTIMA_X8_F",
-	"B_AMF_Heli_Transport_4RHFS_01_F",
-	"ffaa_nh90_tth_transport",
-	"B_AMF_PLANE_TRANSPORT_01_F"
+	"B_AMF_VAB_ULTIMA_X8_F"
 ];
 
 opfor_troup_transports_heli = [
+	"B_AMF_PLANE_TRANSPORT_01_F",
 	"B_AMF_Heli_Transport_4RHFS_01_F",
 	"ffaa_nh90_tth_transport",
 	"ffaa_famet_cougar"
 ];
 
 opfor_air = [
+	"ffaa_famet_cougar",
 	"AMF_gazelle_minigun_f",
 	"AMF_GBC180_PERS_01",
 	"AMF_RAFALE_M_01_F",

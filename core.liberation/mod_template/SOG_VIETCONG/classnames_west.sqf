@@ -83,12 +83,12 @@ light_vehicles = [
 	["vn_o_wheeled_btr40_mg_02_nva65",3,100,2,GRLIB_perm_log],
 	["vn_o_wheeled_z157_01_nva65",3,100,3,GRLIB_perm_log],
 	["vn_o_wheeled_z157_02_nva65",4,150,4,GRLIB_perm_tank],
-	["vn_o_wheeled_z157_mg_01_nva65",4,150,4,GRLIB_perm_tank],
-	["vn_o_wheeled_btr40_mg_03_nva65",10,500,6,GRLIB_perm_air],
-	["vn_o_wheeled_z157_mg_02_nva65",10,650,8,GRLIB_perm_air]
+	["vn_o_wheeled_z157_mg_01_nva65",4,150,4,GRLIB_perm_tank]
 ];
 
 heavy_vehicles = [
+	["vn_o_wheeled_btr40_mg_03_nva65",10,500,6,GRLIB_perm_air],
+	["vn_o_wheeled_z157_mg_02_nva65",10,650,8,GRLIB_perm_air],
 	["vn_o_armor_type63_01_nva65",20,1500,25,GRLIB_perm_max]
 ];
 

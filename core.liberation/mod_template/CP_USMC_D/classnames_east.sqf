@@ -124,7 +124,8 @@ opfor_battlegroup_vehicles = [
 	"CUP_B_M2A3Bradley_USA_D",
 	"CUP_B_M1165_GMV_USA",
 	"CUP_B_M1151_Deploy_USA",
-	"CUP_B_M1151_Mk19_USA"
+	"CUP_B_M1151_Mk19_USA",
+	"CUP_B_C130J_USMC"
 ];
 
 opfor_battlegroup_vehicles_low_intensity = [
@@ -143,15 +144,11 @@ opfor_troup_transports_truck = [
 	"CUP_B_MTVR_USA",
 	"CUP_B_M113A3_desert_USA",
 	"CUP_B_M1126_ICV_M2_Desert",
-	"CUP_B_MH47E_USA",
-	"CUP_B_UH60M_US",
-	"CUP_B_MH6M_USA",
-	"CUP_B_C130J_USMC",
-	"CUP_B_MV22_USMC_RAMPGUN",
-	"CUP_B_UH1Y_UNA_USMC"
+	"CUP_B_MV22_USMC_RAMPGUN"
 ];
 
 opfor_troup_transports_heli = [
+	"CUP_B_C130J_USMC",
 	"CUP_B_MH47E_USA",
 	"CUP_B_UH60M_US",
 	"CUP_B_MH6M_USA",
@@ -159,6 +156,7 @@ opfor_troup_transports_heli = [
 ];
 
 opfor_air = [
+	"CUP_B_UH60M_FFV_US",
 	"CUP_B_AH1Z_Dynamic_USMC",
 	"CUP_B_UH1Y_Gunship_Dynamic_USMC",
 	"CUP_B_A10_DYN_USA",
