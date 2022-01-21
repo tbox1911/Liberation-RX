@@ -306,7 +306,7 @@ PAR_Player_Unconscious = {
 
 	while { !isNull _unit && alive _unit && _unit getVariable ["PAR_isUnconscious", 0] == 1 } do {
 		_bleedOut = player getVariable ["PAR_BleedOutTimer", 0];
-		hintSilent format[localize "STR_BLEEDOUT_MESSAGE" + "\n", round (_bleedOut - time)];
+		hintSilent format [localize "STR_BLEEDOUT_MESSAGE" + "\n", round (_bleedOut - time)];
 		public_bleedout_message = format [localize "STR_BLEEDOUT_MESSAGE", round (_bleedOut - time)];
 		public_bleedout_timer = round (_bleedOut - time);
 		sleep 0.5;

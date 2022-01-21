@@ -5868,6 +5868,11 @@
 			<Chinese>%1 正在治療 %2 ...</Chinese>
 			<Japanese>%1 は %2 を治療しています...</Japanese>
 		</Key>
+		<Key ID="STR_PAR_ST_02">
+			<Original>You revived %1!\nBonus score %2,\nThank you!</Original>
+			<French>"Vous avez sauver %1!\nBonus score %2,\nMerci!",</French>
+		</Key>
+
 		<Key ID="STR_PAR_UC_01">
 			<Original>I need a Medic !!</Original>
 			<French>J'ai besoin d'un médecin !!</French>
