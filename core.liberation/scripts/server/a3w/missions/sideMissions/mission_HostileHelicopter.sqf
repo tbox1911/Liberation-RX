@@ -18,7 +18,7 @@ _setupVars =
 _setupObjects =
 {
 	_missionPos = markerPos ((selectRandom _citylist) select 0);
-	_vehicleClass = selectRandom opfor_troup_transports_heli;
+	_vehicleClass = selectRandom opfor_air;
 
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	//_aiGroup setCombatMode "WHITE"; // Defensive behaviour
