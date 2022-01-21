@@ -373,9 +373,6 @@ GRLIB_ignore_colisions = [
  	"Land_PowLine_wire_A_right_EP1"
 ];
 
-GRLIB_sar_wreck = "Land_Wreck_Heli_Attack_01_F";
-GRLIB_sar_fire = "test_EmptyObjectForFireBig";
-
 // Ammobox you want keep contents
 GRLIB_Ammobox_keep = [
 	A3W_BoxWps,
