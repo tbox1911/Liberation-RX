@@ -1,7 +1,7 @@
 if (!isServer) exitWith {};
 params ["_grp", "_pos", ["_nbUnits", 7], ["_type", "infantry"], ["_patrol", true]];
 if (isNil "_grp" || isNil "_pos") exitWith {};
-diag_log format [ "Spawning SideMission squad type %1 (%2) at %3", _type, _nbUnits, time ];
+diag_log format [ "Spawn SideMission squad type %1 (%2) at %3", _type, _nbUnits, time ];
 
 private _spawnpos = zeropos;
 private _radius = 20;

@@ -1,7 +1,7 @@
 params ["_troup_transport"];
 private [ "_unit" ];
 
-diag_log format [ "Spawning Troop in vehicle %1 at %2", typeOf _troup_transport, time ];
+diag_log format [ "Spawn Troop in vehicle %1 at %2", typeOf _troup_transport, time ];
 private _transport_group = (group (driver _troup_transport));
 private _start_pos = getpos _troup_transport;
 private _dat_objective =  ([getpos _troup_transport] call F_getNearestBluforObjective) select 0;

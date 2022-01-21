@@ -1,7 +1,7 @@
 params [ "_vehicle" ];
 private [ "_grp", "_vehcrew" ];
 
-diag_log format [ "Spawning militia crew at %1", time ];
+diag_log format [ "Spawn militia crew at %1", time ];
 
 _grp = createGroup [GRLIB_side_enemy, true];
 _vehcrew = [];

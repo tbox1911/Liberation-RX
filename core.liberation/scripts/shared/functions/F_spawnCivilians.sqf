@@ -1,4 +1,4 @@
-diag_log format [ "Spawning civilians at %1", time ];
+diag_log format [ "Spawn civilians at %1", time ];
 
 params [ "_sector", "_nbcivs" ];
 private [ "_spread", "_spawnpos", "_grp", "_nextciv" ];
