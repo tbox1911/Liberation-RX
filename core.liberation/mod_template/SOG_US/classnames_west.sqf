@@ -22,9 +22,6 @@ commander_classname = "vn_b_men_army_28";
 pilot_classname = "vn_b_men_aircrew_05";
 crewman_classname = "vn_b_men_army_24";
 Arsenal_typename = "Land_vn_us_weapons_stack3";
-waterbarrel_typename = "Land_vn_waterbottle_01_stack_f";
-fuelbarrel_typename = "Land_vn_b_prop_fueldrum_03";
-foodbarrel_typename = "Land_vn_sacks_goods_f";
 PAR_Medikit = "vn_b_item_medikit_01";
 PAR_AidKit = "vn_b_item_firstaidkit";
 
@@ -87,14 +84,14 @@ light_vehicles = [
 	["vn_b_wheeled_m151_mg_02",3,100,2,GRLIB_perm_log],
 	["vn_b_wheeled_m151_mg_03",3,125,2,GRLIB_perm_log],
 	["vn_b_wheeled_m54_01",3,100,3,GRLIB_perm_log],
-	["vn_b_wheeled_m54_02",4,150,4,GRLIB_perm_tank],
-	["vn_b_wheeled_m54_mg_01",5,250,5,GRLIB_perm_tank],
-	["vn_b_wheeled_m54_mg_03",5,250,5,GRLIB_perm_tank],
-	["vn_b_wheeled_m54_mg_02",10,500,6,GRLIB_perm_air],
-	["vn_b_wheeled_m151_mg_05",6,300,6,GRLIB_perm_air]
+	["vn_b_wheeled_m54_02",4,150,4,GRLIB_perm_tank]
 ];
 
 heavy_vehicles = [
+	["vn_b_wheeled_m54_mg_01",5,250,5,GRLIB_perm_tank]
+	["vn_b_wheeled_m54_mg_02",10,500,6,GRLIB_perm_tank],
+	["vn_b_wheeled_m54_mg_03",5,250,5,GRLIB_perm_tank],
+	["vn_b_wheeled_m151_mg_05",6,300,6,GRLIB_perm_air],
 	["vn_b_armor_m41_01_01",20,1500,25,GRLIB_perm_max]
 ];
 

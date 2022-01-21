@@ -124,7 +124,7 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"vn_b_air_uh1d_02_02"
 ];
 
-opfor_troup_transports = [
+opfor_troup_transports_truck = [
 	"vn_b_air_oh6a_01",
 	"vn_b_air_ch34_03_01",
 	"vn_b_air_uh1d_02_02",
@@ -132,7 +132,7 @@ opfor_troup_transports = [
 	"vn_b_wheeled_m54_01"
 ];
 
-opfor_choppers = [
+opfor_troup_transports_heli = [
 	"vn_b_air_oh6a_01",
 	"vn_b_air_ch34_03_01",
 	"vn_b_air_uh1d_02_02"

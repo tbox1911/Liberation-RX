@@ -22,9 +22,6 @@ commander_classname = "vn_o_men_nva_15";
 pilot_classname = "vn_o_men_aircrew_01";
 crewman_classname = "vn_o_men_nva_41";
 Arsenal_typename = "Land_vn_pavn_weapons_stack3";
-waterbarrel_typename = "Land_vn_waterbottle_01_stack_f";
-fuelbarrel_typename = "Land_vn_b_prop_fueldrum_03";
-foodbarrel_typename = "Land_vn_sacks_goods_f";
 PAR_Medikit = "vn_o_item_medikit_01";
 PAR_AidKit = "vn_o_item_firstaidkit";
 
