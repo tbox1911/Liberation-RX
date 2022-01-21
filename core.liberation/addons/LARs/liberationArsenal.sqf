@@ -22,8 +22,8 @@ if (GRLIB_limited_arsenal) then {
 } else {
 	GRLIB_blacklisted_from_arsenal = blacklisted_bag;
 };
-if (GRLIB_mod_enabled) then {
-	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\whitelist_arsenal_limited.sqf";
+if (GRLIB_mod_enabled && !isNil "GRLIB_whitelisted_from_arsenal_limited") then {
+	GRLIB_whitelisted_from_arsenal append GRLIB_whitelisted_from_arsenal_limited;
 };
 
 // Add CUP Weapons

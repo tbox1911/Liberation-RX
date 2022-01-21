@@ -193,6 +193,15 @@ GRLIB_whitelisted_from_arsenal = [
 	"B_Bergen_hex_F"
 ];
 GRLIB_whitelisted_from_arsenal_limited = [
+	"ToolKit",
+	"Medikit",
+	"FirstAidKit",
+	"MineDetector",
+	"ItemMap",
+	"ItemCompass",
+	"ItemWatch",
+	"ItemRadio",
+	"ItemGPS",
 	"launch_I_Titan_F",
 	"Titan_AA",
 	"launch_RPG32_green_F",
