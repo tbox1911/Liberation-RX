@@ -43,9 +43,9 @@ PAR_public_EH = {
 	if (_EH == "PAR_deathMessage") then {
 		if (isPlayer _killed) then {
 			if (isNull _killer) then {
-				gamelogic globalChat (format ["%1 was injured for an unknown reason", name _killed]);
+				gamelogic globalChat format ["%1 was injured for an unknown reason", name _killed];
 			} else {
-				gamelogic globalChat (format ["%1 was injured by %2", name _killed, name _killer]);
+				gamelogic globalChat format ["%1 was injured by %2", name _killed, name _killer];
 			};
 		};
 	};
@@ -53,7 +53,7 @@ PAR_public_EH = {
 	// PAR_tkMessage
 	if (_EH == "PAR_tkMessage") then {
 		if (isPlayer _killer && isPlayer _killed ) then {
-			gamelogic globalChat (format ["%1 has committed TK on %2",name _killer, name _killed]);
+			gamelogic globalChat format ["%1 has committed TK on %2",name _killer, name _killed];
 		};
 	};
 };

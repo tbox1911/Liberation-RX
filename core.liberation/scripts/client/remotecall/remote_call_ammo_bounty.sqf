@@ -10,7 +10,7 @@ if(count (squadParams _killer) != 0) then {
 };
 _playername = _playername + name _killer;
 
-gamelogic globalChat (format [localize "STR_BOUNTY_MESSAGE"+".  Bonus Score %4pts !",  _bounty, _vehiclename, _playername, _bonus] );
+gamelogic globalChat format [localize "STR_BOUNTY_MESSAGE"+".  Bonus Score %4pts !",  _bounty, _vehiclename, _playername, _bonus];
 
 if (player == _killer) then {
 	[_killer, _bounty] remoteExec ["ammo_add_remote_call", 2];
