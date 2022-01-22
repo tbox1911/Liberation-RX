@@ -44,7 +44,7 @@ for "_i" from 1 to _nbUnits do {
 	};
 };
 
-if (_patrol) then { [ _grp, _spawnpos, 200] spawn add_defense_waypoints };
+if (_patrol) then { [_grp, _spawnpos, 150] spawn add_defense_waypoints };
 
 sleep 5;
 { _x allowDamage true } forEach (units _grp);

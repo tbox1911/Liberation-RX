@@ -148,25 +148,25 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 
 	if ( count _squad1 > 0 ) then {
 		_grp = [ _sector, _infsquad, _squad1 ] call F_spawnRegularSquad;
-		[ _grp, _sectorpos ] spawn add_defense_waypoints;
+		[ _grp, _sectorpos, 150 ] spawn add_defense_waypoints;
 		_managed_units = _managed_units + (units _grp);
 	};
 
 	if ( count _squad2 > 0 ) then {
 		_grp = [ _sector, _infsquad, _squad2 ] call F_spawnRegularSquad;
-		[ _grp, _sectorpos ] spawn add_defense_waypoints;
+		[ _grp, _sectorpos, 250 ] spawn add_defense_waypoints;
 		_managed_units = _managed_units + (units _grp);
 	};
 
 	if ( count _squad3 > 0 ) then {
 		_grp = [ _sector, _infsquad, _squad3 ] call F_spawnRegularSquad;
-		[ _grp, _sectorpos ] spawn add_defense_waypoints;
+		[ _grp, _sectorpos, 350 ] spawn add_defense_waypoints;
 		_managed_units = _managed_units + (units _grp);
 	};
 
 	if ( count _squad4 > 0 ) then {
 		_grp = [ _sector, _infsquad, _squad4 ] call F_spawnRegularSquad;
-		[ _grp, _sectorpos ] spawn add_defense_waypoints;
+		[ _grp, _sectorpos, 450 ] spawn add_defense_waypoints;
 		_managed_units = _managed_units + (units _grp);
 	};
 
