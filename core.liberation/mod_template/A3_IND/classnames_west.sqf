@@ -136,8 +136,7 @@ buildings_west = [
 	["Flag_FIA_F",0,0,0,0]
 ];
 
-if ( isNil "blufor_squad_inf_light" ) then { blufor_squad_inf_light = [] };
-if ( count blufor_squad_inf_light == 0 ) then { blufor_squad_inf_light = [
+blufor_squad_inf_light = [
 	"I_Soldier_SL_F",
 	"I_medic_F",
 	"I_Soldier_GL_F",
@@ -146,10 +145,8 @@ if ( count blufor_squad_inf_light == 0 ) then { blufor_squad_inf_light = [
 	"I_Soldier_lite_F",
 	"I_Soldier_lite_F",
 	"I_Soldier_lite_F"
-	];
-};
-if ( isNil "blufor_squad_inf" ) then { blufor_squad_inf = [] };
-if ( count blufor_squad_inf == 0 ) then { blufor_squad_inf = [
+];
+blufor_squad_inf = [
 	"I_Soldier_SL_F",
 	"I_medic_F",
 	"I_soldier_M_F",
@@ -160,48 +157,39 @@ if ( count blufor_squad_inf == 0 ) then { blufor_squad_inf = [
 	"I_Soldier_F",
 	"I_Soldier_F",
 	"I_Soldier_F"
-	];
-};
-if ( isNil "blufor_squad_at" ) then { blufor_squad_at = [] };
-if ( count blufor_squad_at == 0 ) then { blufor_squad_at = [
+];
+blufor_squad_at = [
 	"I_Soldier_SL_F",
 	"I_medic_F",
 	"I_soldier_AT_F",
 	"I_soldier_AT_F",
 	"I_soldier_F",
 	"I_soldier_F"
-	];
-};
-if ( isNil "blufor_squad_aa" ) then { blufor_squad_aa = [] };
-if ( count blufor_squad_aa == 0 ) then { blufor_squad_aa = [
+];
+blufor_squad_aa = [
 	"I_Soldier_SL_F",
 	"I_medic_F",
 	"I_soldier_AA_F",
 	"I_soldier_AA_F",
 	"I_soldier_F",
 	"I_soldier_F"
-	];
-};
-if ( isNil "blufor_squad_mix" ) then { blufor_squad_mix = [] };
-if ( count blufor_squad_mix == 0 ) then { blufor_squad_mix = [
+];
+blufor_squad_mix = [
 	"I_Soldier_SL_F",
 	"I_medic_F",
 	"I_soldier_AA_F",
 	"I_soldier_AT_F",
 	"I_soldier_F",
 	"I_soldier_F"
-	];
-};
-if ( isNil "blufor_squad_recon" ) then { blufor_squad_recon = [] };
-if ( count blufor_squad_recon == 0 ) then { blufor_squad_recon = [
+];
+blufor_squad_recon = [
 	"I_C_Soldier_Para_2_F",
 	"I_C_Soldier_Para_3_F",
 	"I_C_Soldier_Para_4_F",
 	"I_C_Soldier_Para_5_F",
 	"I_C_Soldier_Para_6_F",
 	"I_C_Soldier_Para_7_F"
-	];
-};
+];
 
 squads = [
 	[blufor_squad_inf_light,10,300,0,GRLIB_perm_max],

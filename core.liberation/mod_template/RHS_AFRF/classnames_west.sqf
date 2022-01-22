@@ -136,8 +136,7 @@ buildings_west = [
 	["rhs_Flag_Russia_F",0,0,0,0]
 ];
 
-if ( isNil "blufor_squad_inf_light" ) then { blufor_squad_inf_light = [] };
-if ( count blufor_squad_inf_light == 0 ) then { blufor_squad_inf_light = [
+blufor_squad_inf_light = [
 	"rhs_vmf_emr_medic",
 	"rhs_vmf_emr_at",
 	"rhs_vmf_emr_efreitor",
@@ -146,10 +145,8 @@ if ( count blufor_squad_inf_light == 0 ) then { blufor_squad_inf_light = [
 	"rhs_vmf_emr_grenadier",
 	"rhs_vmf_emr_rifleman",
 	"rhs_vmf_emr_rifleman"		
-  ];
-};
-if ( isNil "blufor_squad_inf" ) then { blufor_squad_inf = [] };
-if ( count blufor_squad_inf == 0 ) then { blufor_squad_inf = [
+ ];
+blufor_squad_inf = [
     "rhs_vmf_emr_medic",
     "rhs_vmf_emr_at",
     "rhs_vmf_emr_efreitor",
@@ -160,10 +157,8 @@ if ( count blufor_squad_inf == 0 ) then { blufor_squad_inf = [
     "rhs_vmf_emr_machinegunner",
 	"rhs_vmf_emr_rifleman",
 	"rhs_vmf_emr_rifleman"
-  ];
-};
-if ( isNil "blufor_squad_at" ) then { blufor_squad_at = [] };
-if ( count blufor_squad_at == 0 ) then { blufor_squad_at = [
+ ];
+blufor_squad_at = [
     "rhs_vmf_emr_medic",
     "rhs_vmf_emr_at",
     "rhs_vmf_emr_at",
@@ -171,10 +166,8 @@ if ( count blufor_squad_at == 0 ) then { blufor_squad_at = [
     "rhs_vmf_emr_aa",
     "rhs_vmf_emr_rifleman",
     "rhs_vmf_emr_marksman"
-  ];
-};
-if ( isNil "blufor_squad_aa" ) then { blufor_squad_aa = [] };
-if ( count blufor_squad_aa == 0 ) then { blufor_squad_aa = [
+ ];
+blufor_squad_aa = [
     "rhs_vmf_emr_medic",
     "rhs_vmf_emr_aa",
     "rhs_vmf_emr_aa",
@@ -182,10 +175,8 @@ if ( count blufor_squad_aa == 0 ) then { blufor_squad_aa = [
     "rhs_vmf_emr_at",
     "rhs_vmf_emr_rifleman",
     "rhs_vmf_emr_marksman"
-  ];
-};
-if ( isNil "blufor_squad_mix" ) then { blufor_squad_mix = [] };
-if ( count blufor_squad_mix == 0 ) then { blufor_squad_mix = [
+ ];
+blufor_squad_mix = [
     "rhs_vmf_emr_medic",
     "rhs_vmf_emr_aa",
     "rhs_vmf_emr_aa",
@@ -193,8 +184,7 @@ if ( count blufor_squad_mix == 0 ) then { blufor_squad_mix = [
     "rhs_vmf_emr_at",
     "rhs_vmf_emr_rifleman",
     "rhs_vmf_emr_marksman"
-  ];
-};
+ ];
 
 squads = [
 	[blufor_squad_inf_light,10,300,0,GRLIB_perm_max],

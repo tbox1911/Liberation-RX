@@ -159,18 +159,15 @@ buildings_west = [
 	["Land_vn_o_shelter_05",0,0,0,0]
 ];
 
-if ( isNil "blufor_squad_inf_light" ) then { blufor_squad_inf_light = [] };
-if ( count blufor_squad_inf_light == 0 ) then { blufor_squad_inf_light = [
+blufor_squad_inf_light = [
 	"vn_o_men_nva_15",
 	"vn_o_men_nva_22",
 	"vn_o_men_nva_21",
 	"vn_o_men_nva_25",
 	"vn_o_men_nva_28",
 	"vn_o_men_nva_19"
-	];
-};
-if ( isNil "blufor_squad_inf" ) then { blufor_squad_inf = [] };
-if ( count blufor_squad_inf == 0 ) then { blufor_squad_inf = [
+];
+blufor_squad_inf = [
 	"vn_o_men_nva_15",
 	"vn_o_men_nva_22",
 	"vn_o_men_nva_17",
@@ -180,48 +177,39 @@ if ( count blufor_squad_inf == 0 ) then { blufor_squad_inf = [
 	"vn_o_men_nva_24",
 	"vn_o_men_nva_19",
 	"vn_o_men_nva_19"
-	];
-};
-if ( isNil "blufor_squad_at" ) then { blufor_squad_at = [] };
-if ( count blufor_squad_at == 0 ) then { blufor_squad_at = [
+];
+blufor_squad_at = [
 	"vn_o_men_nva_15",
 	"vn_o_men_nva_22",
 	"vn_o_men_nva_28",
 	"vn_o_men_nva_28",
 	"vn_o_men_nva_19",
 	"vn_o_men_nva_19"
-	];
-};
-if ( isNil "blufor_squad_aa" ) then { blufor_squad_aa = [] };
-if ( count blufor_squad_aa == 0 ) then { blufor_squad_aa = [
+];
+blufor_squad_aa = [
 	"vn_o_men_nva_15",
 	"vn_o_men_nva_22",
 	"vn_o_men_nva_44",
 	"vn_o_men_nva_44",
 	"vn_o_men_nva_19",
 	"vn_o_men_nva_19"
-	];
-};
-if ( isNil "blufor_squad_mix" ) then { blufor_squad_mix = [] };
-if ( count blufor_squad_mix == 0 ) then { blufor_squad_mix = [
+];
+blufor_squad_mix = [
 	"vn_o_men_nva_15",
 	"vn_o_men_nva_22",
 	"vn_o_men_nva_28",
 	"vn_o_men_nva_44",
 	"vn_o_men_nva_19",
 	"vn_o_men_nva_19"
-	];
-};
-if ( isNil "blufor_squad_recon" ) then { blufor_squad_recon = [] };
-if ( count blufor_squad_recon == 0 ) then { blufor_squad_recon = [
+];
+blufor_squad_recon = [
 	"vn_o_men_vc_01",
 	"vn_o_men_vc_08",
 	"vn_o_men_vc_10",
 	"vn_o_men_vc_11",
 	"vn_o_men_vc_14",
 	"vn_o_men_vc_04"
-	];
-};
+];
 
 squads = [
 	[blufor_squad_inf_light,15,400,0,GRLIB_perm_max],
