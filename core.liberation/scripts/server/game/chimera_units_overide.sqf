@@ -11,11 +11,12 @@ allUnits apply { if ((getPosATL _x) distance2D lhd < 500 && !isPlayer _x) then {
     _items = getArray (configfile >> "CfgVehicles" >> _unit_model >> "linkedItems");
     _weapon = getArray (configfile >> "CfgVehicles" >> _unit_model >> "weapons") select 0;
     _mag = getArray (configFile >> "CfgWeapons" >> _weapon >> "magazines" ) select 0;
+    //diag_log format ["DBG: %1 %2 %3 %4", _unit_model, _items, _weapon, _mag];
     _unit = _x;
     _unit forceAddUniform _cloth;
+    removeAllWeapons _unit;
     removeAllAssignedItems _unit;
     {_unit linkItem _x} forEach _items;
-    removeAllWeapons _unit;
     for "_i" from 1 to 5 do {_unit addItem _mag};
     _unit addWeapon _weapon;
 } forEach _chimera_soldiers;

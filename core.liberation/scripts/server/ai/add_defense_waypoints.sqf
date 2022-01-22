@@ -3,10 +3,10 @@ private ["_basepos", "_waypoint"];
 if (isNil "_grp") exitWith {};
 
 private _patrolcorners = [
-	[ (_missionPos select 0) - _radius, (_missionPos select 1) - _radius, 0 ],
-	[ (_missionPos select 0) + _radius, (_missionPos select 1) - _radius, 0 ],
-	[ (_missionPos select 0) + _radius, (_missionPos select 1) + _radius, 0 ],
-	[ (_missionPos select 0) - _radius, (_missionPos select 1) + _radius, 0 ]
+	[ (_flagpos select 0) - _radius, (_flagpos select 1) - _radius, 0 ],
+	[ (_flagpos select 0) + _radius, (_flagpos select 1) - _radius, 0 ],
+	[ (_flagpos select 0) + _radius, (_flagpos select 1) + _radius, 0 ],
+	[ (_flagpos select 0) - _radius, (_flagpos select 1) + _radius, 0 ]
 ];
 
 while {(count (waypoints _grp)) != 0} do {deleteWaypoint ((waypoints _grp) select 0)};
