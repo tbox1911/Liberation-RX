@@ -24,6 +24,14 @@ crewman_classname = "vn_o_men_nva_41";
 Arsenal_typename = "Land_vn_pavn_weapons_stack3";
 PAR_Medikit = "vn_o_item_medikit_01";
 PAR_AidKit = "vn_o_item_firstaidkit";
+//GRLIB_sar_wreck = "Land_Wreck_Heli_Attack_01_F"
+waterbarrel_typename = "Land_WaterBottle_01_stack_F";
+fuelbarrel_typename = "Land_vn_metalbarrel_f";
+foodbarrel_typename = "Land_vn_sacks_goods_f";
+chimera_vehicle_overide = [
+  ["B_Heli_Light_01_F",  "vn_b_air_oh6a_01"],
+  ["B_Heli_Transport_01_F", "vn_b_air_uh1d_02_04"]
+];
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 infantry_units = [
@@ -47,7 +55,12 @@ units_loadout_overide = [
 ];
 
 LOADOUT_fixed_price = [
-  //["launch_o_vorona_brown_f" , 200]
+  //["launch_o_vorona_brown_f" , 200],
+  ["vn_sa7_mag" , 6],
+  ["vn_sa7b_mag" , 6],
+  ["vn_m72_mag" , 3],
+  ["vn_rpg2_mag" , 3],
+  ["vn_rpg7_mag" , 3]
 ];
 
 LOADOUT_expensive_items = [
@@ -150,9 +163,10 @@ buildings_west = [
 	["Land_vn_o_bunker_04",0,0,0,GRLIB_perm_log],
 	["Land_vn_o_platform_06",0,0,0,GRLIB_perm_log],
 	["Land_vn_fence_bamboo_02",0,0,0,0],
-	["Land_vn_fence_punji_01_10",0,0,0,0],
+	["Land_vn_fence_bamboo_02_gate",0,0,0,0],
+	["Land_vn_fence_punji_01_10",0,0,0,GRLIB_perm_log],
 	["Land_vn_o_trench_firing_01",0,0,0,0],
-	["Land_vn_wf_field_hospital_east",0,0,0,0],
+	["Land_vn_wf_field_hospital_east",0,0,0,GRLIB_perm_inf],
 	["vn_banner_pavn",0,0,0,0],
 	["vn_flag_pavn",0,0,0,0],
 	["Land_vn_o_bunker_02",0,0,0,0],
@@ -240,7 +254,19 @@ vehicle_big_units_west = [
 ];
 
 GRLIB_vehicle_whitelist_west = [
-
+    "Land_vn_o_tower_02",
+	"Land_vn_o_bunker_03",
+	"Land_vn_o_bunker_04",
+	"Land_vn_o_platform_06",
+	"Land_vn_fence_bamboo_02",
+	"Land_vn_fence_bamboo_02_gate",
+	"Land_vn_fence_punji_01_10",
+	"Land_vn_o_trench_firing_01",
+	"Land_vn_wf_field_hospital_east",
+	"vn_banner_pavn",
+	"vn_flag_pavn",
+	"Land_vn_o_bunker_02",
+	"Land_vn_o_shelter_05"
 ];
 
 GRLIB_vehicle_blacklist_west = [

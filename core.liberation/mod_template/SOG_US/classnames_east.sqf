@@ -139,12 +139,7 @@ opfor_air = [
 ];
 
 opfor_statics = [
-	"vn_b_army_static_m60_low",
-	"vn_b_army_static_m60_high",
-	"vn_b_army_static_m1919a6",
-	"vn_b_army_static_m1919a4_low",
 	"vn_b_army_static_m1919a4_high",
-	"vn_b_army_static_m2_low",
 	"vn_b_army_static_m2_high",
 	"vn_b_army_static_m45",
 	"vn_b_army_static_tow",
