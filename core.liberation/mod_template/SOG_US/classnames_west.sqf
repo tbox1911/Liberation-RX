@@ -25,9 +25,13 @@ Arsenal_typename = "Land_vn_us_weapons_stack3";
 PAR_Medikit = "vn_b_item_medikit_01";
 PAR_AidKit = "vn_b_item_firstaidkit";
 //GRLIB_sar_wreck = "Land_Wreck_Heli_Attack_01_F"
-//waterbarrel_typename = "Land_vn_waterbottle_01_stack_f";
-//fuelbarrel_typename = "Land_vn_b_prop_fueldrum_03";
-//foodbarrel_typename = "Land_vn_sacks_goods_f";
+waterbarrel_typename = "Land_WaterBottle_01_stack_F";
+fuelbarrel_typename = "Land_vn_metalbarrel_f";
+foodbarrel_typename = "Land_vn_sacks_goods_f";
+chimera_vehicle_overide = [
+  ["B_Heli_Light_01_F",  "vn_b_air_oh6a_01"],
+  ["B_Heli_Transport_01_F", "vn_b_air_uh1d_02_04"]
+];
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 infantry_units = [

@@ -68,6 +68,7 @@ if (abort_loading) exitWith {
 	publicVariable "abort_loading";
 	publicVariable "abort_loading_msg";
 };
+[] execVM "scripts\server\game\chimera_units_overide.sqf";
 [] execVM "scripts\server\game\apply_saved_scores.sqf";
 [] execVM "scripts\server\game\apply_default_permissions.sqf";
 [] execVM "scripts\server\base\fobbox_manager.sqf";
