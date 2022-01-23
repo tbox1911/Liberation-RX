@@ -188,3 +188,10 @@ opfor_recyclable = [
 	["vn_o_air_mi2_04_02",8,round (400 / GRLIB_recycling_percentage),20],
 	["vn_o_wheeled_z157_01_nva65",2,round (100 / GRLIB_recycling_percentage),4]
 ];
+
+box_transport_config_east = [
+    [ "vn_o_wheeled_z157_01_nva65", -6.5, [0, -0.8, 0.4], [0, -2.5, 0.4] ],
+    [ "vn_o_wheeled_z157_02_nva65", -6.5, [0, -0.8, 0.4], [0, -2.5, 0.4] ],
+    [ "vn_o_boat_03_02", 25, [1, -10.7, -0.9], [-1, -10.7, -0.9] ],
+    [ "vn_o_boat_04_02", 25, [1, -10.7, -0.9], [-1, -10.7, -0.9] ]
+];
