@@ -6,6 +6,7 @@ if (_name in ["HC1","HC2","HC3" ]) exitWith {
 	deleteMarker "fpsmarkerHC3";
 };
 
+diag_log format ["--- LRX: Cleanup player %1 (%2)", name _unit, _uid];
 if !(isNull _unit) then {
 
 	// Remove Dog
@@ -50,11 +51,11 @@ if !(isNull _unit) then {
 	private _text = format ["Bye bye %1, see you soon...", _name];
 	[gamelogic, _text] remoteExec ["globalChat", -2];
 
+	//remove marker
+	deletemarker format ["PAR_marker_%1", _name];
+	
 	// Delete body
 	deleteVehicle _unit;
-
-	//remove marker
-	deletemarker format ["PAR_marker_%1", name _unit];
 
 	// remove grave box
 	private _grave_box = _unit getVariable ["GRLIB_grave_box", nil];
