@@ -297,8 +297,9 @@ opfor_squad_8_infkillers = [
 	opfor_machinegunner,
 	opfor_heavygunner,
 	opfor_marksman,
-	opfor_sharpshooter,
 	opfor_sniper,
+	opfor_rifleman,
+	opfor_rifleman,
 	opfor_rpg
 ];
 opfor_squad_8_tankkillers = [
@@ -316,7 +317,7 @@ opfor_squad_8_airkillers = [
 	opfor_medic,
 	opfor_machinegunner,
 	opfor_rpg,
-	opfor_rpg,
+	opfor_aa,
 	opfor_aa,
 	opfor_aa,
 	opfor_aa
