@@ -104,7 +104,7 @@ class Params
 	};
 	class ModPresetWest {
 		title = "MOD Preset - Friendly";
-		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17 };
+		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16 };
 		texts[] = {
 					"A3 NATO",
 					"A3 CSAT",
@@ -128,7 +128,7 @@ class Params
 	};
 	class ModPresetEast {
 		title = "MOD Preset - Enemy";
-		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19 };
+		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18 };
 		texts[] = {
 					"A3 CSAT",
 					"A3 NATO",
