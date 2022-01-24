@@ -22,28 +22,8 @@ _setupObjects =
 	_box2 = [ammobox_o_typename, _missionPos, true] call boxSetup;
 	_vehicle = [_missionPos, "O_Boat_Armed_01_hmg_F", true] call F_libSpawnVehicle;
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
-	[_aiGroup, _missionPos, _nbUnits, "divers", false] call createCustomGroup;
+	[_aiGroup, _missionPos, _nbUnits, "divers", true] call createCustomGroup;
 	(crew _vehicle) joinSilent _aiGroup;
-
-	private _patrolcorners = [
-		[ (_missionPos select 0) - 60, (_missionPos select 1) - 60, 0 ],
-		[ (_missionPos select 0) + 60, (_missionPos select 1) - 60, 0 ],
-		[ (_missionPos select 0) + 60, (_missionPos select 1) + 60, 0 ],
-		[ (_missionPos select 0) - 60, (_missionPos select 1) + 60, 0 ]
-	];
-
-	while {(count (waypoints _aiGroup)) != 0} do {deleteWaypoint ((waypoints _aiGroup) select 0);};
-	{
-		_waypoint = _aiGroup addWaypoint [_x ,0];
-		_waypoint setWaypointType "MOVE";
-		_waypoint setWaypointSpeed "LIMITED";
-		_waypoint setWaypointBehaviour "SAFE";
-		_waypoint setWaypointCompletionRadius 5;
-	} foreach _patrolcorners;
-
-	_waypoint = _aiGroup addWaypoint [(_patrolcorners select 0), 0];
-	_waypoint setWaypointType "CYCLE";
-	{_x doFollow (leader _aiGroup)} foreach units _aiGroup;
 
 	_missionPicture = getText (configFile >> "CfgVehicles" >> "O_Boat_Armed_01_hmg_F" >> "picture");
 	_missionHintText = "Sunken supplies have been spotted in the ocean near the marker, and are heavily guarded. Diving gear and an underwater weapon are recommended.";
