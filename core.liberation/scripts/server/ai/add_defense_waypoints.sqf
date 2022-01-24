@@ -1,6 +1,9 @@
-params ["_grp", "_flagpos", ["_radius", 200]];
+params ["_grp", "_flagpos", ["_radius", 100]];
 private ["_basepos", "_waypoint"];
 if (isNil "_grp") exitWith {};
+
+private _patrol_in_water = false;
+if (surfaceIsWater _flagpos) then { _patrol_in_water = true; _radius = 60 };
 
 private _patrolcorners = [
 	[ (_flagpos select 0) - _radius, (_flagpos select 1) - _radius, 0 ],
@@ -12,13 +15,21 @@ private _patrolcorners = [
 while {(count (waypoints _grp)) != 0} do {deleteWaypoint ((waypoints _grp) select 0)};
 sleep 1;
 {
-	_waypoint = _grp addWaypoint [_x, 20];
+	if (_patrol_in_water) then {
+		_waypoint = _grp addWaypoint [_x, 0];
+	} else {
+		if (surfaceIsWater _x) then {
+			_waypoint = _grp addWaypoint [_flagpos, _radius];
+		} else {
+			_waypoint = _grp addWaypoint [_x, 0];
+		};
+	};
 	_waypoint setWaypointType "MOVE";
 	_waypoint setWaypointBehaviour "AWARE";
 	_waypoint setWaypointCombatMode "GREEN";
 	_waypoint setWaypointSpeed "LIMITED";
 	_waypoint setWaypointBehaviour "SAFE";
-	_waypoint setWaypointCompletionRadius 5;
+	_waypoint setWaypointCompletionRadius 10;
 } foreach _patrolcorners;
 
 _waypoint = _grp addWaypoint [(_patrolcorners select 0), 0];
