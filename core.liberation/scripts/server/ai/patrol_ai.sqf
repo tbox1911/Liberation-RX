@@ -16,18 +16,19 @@ while { count (units _grp) > 0 } do {
 
 			// Default for HMG, GMG
 			private _radius = 800;
-			private _kind = ["Man"];
-
+			private _kind = "Man";
 			private _veh_class = typeOf _vehicle;
-			if (_veh_class isKindOf "AT_01_base_F") then {_radius = 1500; _kind = ["Car", "Tank"]};
-			if (_veh_class isKindOf "StaticMortar") then {_radius = 2000; _kind = ["Man"]};
-			if (_veh_class isKindOf "AA_01_base_F") then {_radius = 2500; _kind = ["Air"]};
 
-			private _scan_target = [ ((getPos _vehicle) nearEntities [ _kind, _radius]), {
+			if (_veh_class isKindOf "AT_01_base_F") then {_radius = 1000; _kind = "LandVehicle"};
+			if (_veh_class isKindOf "StaticMortar") then {_radius = 1500; _kind = "Man"};
+			if (_veh_class isKindOf "AA_01_base_F") then {_radius = 2000; _kind = "Air"};
+
+			private _scan_target = [units GRLIB_side_friendly, {
 				alive _x &&
-				side _x == GRLIB_side_friendly &&
+				_x isKindOf _kind &&
 				!(_x getVariable ['R3F_LOG_disabled', false]) &&
 				_x distance2D lhd > 500 &&
+				_x distance2D (getPos _vehicle) <= _radius &&
 				_x distance2D ([getPos _x] call F_getNearestFob) >= GRLIB_sector_size
 			} ] call BIS_fnc_conditionalSelect;
 
