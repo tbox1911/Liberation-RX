@@ -3,7 +3,7 @@
 // Default classname: scripts\shared\default_classnames.sqf
 // Advanced definition: scripts\shared\classnames.sqf
 
-huron_typename = "ffaa_famet_ec135";  // comment to use value from lobby/server.cfg
+huron_typename = "ffaa_nh90_nfh_transport";  // comment to use value from lobby/server.cfg
 FOB_typename = "Land_Cargo_HQ_V4_F";
 FOB_box_typename = "B_Slingload_01_Cargo_F";
 FOB_truck_typename = "ffaa_et_m250_repara_municion_blin" ;
@@ -18,6 +18,10 @@ medic_sling_typename = "B_Slingload_01_Medevac_F";
 commander_classname = "ffaa_brilat_jefe_escuadra";
 pilot_classname = "ffaa_piloto_hmsd_famet";
 crewman_classname = "ffaa_brilat_carrista";
+chimera_vehicle_overide = [
+  ["B_Heli_Light_01_F",  "ffaa_famet_ec135"],
+  ["B_Heli_Transport_01_F", "ffaa_famet_cougar_armed"]
+];
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 infantry_units = [
@@ -97,6 +101,7 @@ air_vehicles = [
 	["ffaa_et_searcherIII",5,200,5,GRLIB_perm_log],
 	["ffaa_ea_reaper",20,2000,25,GRLIB_perm_max],
 	["C_Plane_Civil_01_F",1,100,5,GRLIB_perm_log],
+	["ffaa_famet_ec135",5,200,10,GRLIB_perm_tank],
 	["ffaa_famet_cougar",10,350,20,GRLIB_perm_tank],
 	["ffaa_famet_cougar_armed",15,450,25,GRLIB_perm_air],
 	["ffaa_nh90_tth_transport",15,600,35,GRLIB_perm_tank],
@@ -142,16 +147,16 @@ static_vehicles_AI = [
 
 support_vehicles_west = [
 	["B_G_Offroad_01_repair_F",5,50,5,GRLIB_perm_inf],
-	["ffaa_famet_ec135",15,600,15,GRLIB_perm_log],
+	["ffaa_nh90_nfh_transport",15,600,15,GRLIB_perm_log],
 	["B_G_Van_01_fuel_F",5,50,20,GRLIB_perm_inf],
 	["Box_FFAA_WpsLaunch_F",0,300,0,GRLIB_perm_tank],
 	["B_APC_Tracked_01_CRV_F",15,2000,50,GRLIB_perm_max]
 ];
 
 buildings_west = [
-	["Land_Cargo_Tower_V4_F",0,0,0,GRLIB_perm_tank],
-	["Land_Cargo_House_V4_F",0,0,0,GRLIB_perm_inf],
-	["Land_Cargo_Patrol_V4_F",0,0,0,GRLIB_perm_log],
+	["Land_Cargo_Tower_V1_F",0,0,0,GRLIB_perm_tank],
+	["Land_Cargo_House_V1_F",0,0,0,GRLIB_perm_inf],
+	["Land_Cargo_Patrol_V1_F",0,0,0,GRLIB_perm_log],
 	["ffaa_bandera_espa",0,0,0,0]
 ];
 
@@ -255,5 +260,43 @@ GRLIB_vehicle_blacklist_west = [
 ];
 
 box_transport_config_west = [
+    [ "ffaa_ar_lcm", 30, [2, -4, -1.7], [2, -2.4, -1.7], [2, -0.8, -1.7], [2, 0.8, -1.7], [2, 2.4, -1.7], [2, 4, -1.7] ],
+    [ "ffaa_et_pegaso_carga", -6.5, [0.05, -1, 0.4], [0.05, -2.6, 0.4] ],
+    [ "ffaa_et_pegaso_carga_lona", -6.5, [0.05, -1, 0.4], [0.05, -2.6, 0.4] ],
+    [ "ffaa_et_m250_carga_blin", -6.5, [-0.1, 0.6, 0.3], [-0.1, -1, 0.3], [-0.1, -2.6, 0.3] ],
+    [ "ffaa_et_m250_carga_lona_blin", -6.5, [-0.1, 0.6, 0.3], [-0.1, -1, 0.3], [-0.1, -2.6, 0.3] ],
+    [ "ffaa_et_m250_estacion_nasams_blin", -6.5,  [-0.1, -1.5, 0.3], [-0.1, -3.1, 0.3] ],
+    [ "ffaa_famet_cougar", -12, [0.15, 2.45, -1.05] ],
+    [ "ffaa_famet_ch47_mg_cargo", -10, [0, 1.3, -1.9], [0, -0.5, -1.9], [0, -2.1, -1.9] ],
+    [ "ffaa_nh90_tth_cargo", -12, [0.1, 2, -1.15], [0.1, 0.4, -1.15] ],
+	[ "ffaa_famet_ch47_mg", -10, [0, 1.3, -1.9], [0, -0.5, -1.9], [0, -2.1, -1.9] ],
+    [ "ffaa_nh90_tth_transport", -12, [0.1, 0.35, -1.15] ],
+    [ "ffaa_nh90_tth_armed", -12, [0.1, 0.4, -1.15] ],
+    [ "ffaa_nh90_nfh_transport", -12, [0.1, 0.35, -1.15] ],
+	[ "ffaa_ea_hercules_cargo", -12, [0, 6, -3.7], [0, 4.4, -3.7], [0, 2.8, -3.7], [0, 1.2, -3.7], [0, -0.4, -3.7], [0, -2, -3.7] ]
+];
 
+GRLIB_AirDrop_1 = [
+	"B_Quadbike_01_F"
+];
+
+GRLIB_AirDrop_2 = [
+	"ffaa_et_vamtac_m2"
+];
+
+GRLIB_AirDrop_3 = [
+	"ffaa_et_lince_mg3"
+];
+
+GRLIB_AirDrop_4 = [
+	"ffaa_et_m250_carga_lona_blin"
+];
+
+GRLIB_AirDrop_5 = [
+	"ffaa_ar_piranhaIIIC",
+	"ffaa_et_pizarro_mauser"
+];
+
+GRLIB_AirDrop_6 = [
+	"B_Boat_Armed_01_minigun_F"
 ];

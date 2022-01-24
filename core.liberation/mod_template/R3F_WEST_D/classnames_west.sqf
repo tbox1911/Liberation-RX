@@ -18,6 +18,10 @@ medic_sling_typename = "B_Slingload_01_Medevac_F";
 commander_classname = "R3F_FANTASSIN_OFFICIER_BLUFOR_DA";
 pilot_classname = "R3F_APSO_PILOT_BLUFOR";
 crewman_classname = "R3F_APSO_PILOT_VEHI_BLUFOR_DA";
+chimera_vehicle_overide = [
+  ["B_Heli_Light_01_F",  "AMF_gazelle_afte_f"],
+  ["B_Heli_Transport_01_F", "AMF_panther_FRA"]
+];
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 infantry_units = [
@@ -61,6 +65,7 @@ light_vehicles = [
 	["R3F_PVP_FN_DA",5,100,10,GRLIB_perm_inf],
 	["R3F_PVP_WASP_DA",7,125,10,GRLIB_perm_log],
 	["R3F_PLFS_A",5,150,10,GRLIB_perm_log],
+	["AMF_GBC180_PLATEAU_02",5,100,10,GRLIB_perm_log],
 	["AMF_GBC180_PERS_02",5,150,10,GRLIB_perm_log],
 	["B_UGV_01_F",2,25,5,GRLIB_perm_inf],
 	["B_UGV_01_rcws_F",7,200,5,GRLIB_perm_tank]
@@ -246,5 +251,35 @@ GRLIB_vehicle_blacklist_west = [
 ];
 
 box_transport_config_west = [
+    [ "R3F_KAMAZ_DA_medevac", -6.5, [0, 0.3, 0.1], [0, -1.3, 0.1], [0, -2.9, 0.1] ],
+    [ "AMF_GBC180_PLATEAU_02", -6.5, [0.75, 0.4, 2.4], [0.75, -1.2, 2.4],[0.75, -2.8, 2.4], [-0.75, 0.4, 2.4], [-0.75, -1.2, 2.4],[-0.75, -2.8, 2.4] ],
+    [ "ffaa_famet_cougar", -12, [0.15, 2.45, -1.05] ],
+    [ "B_AMF_Heli_Transport_4RHFS_01_F", -20, [0, -1.6, 2.1], [0, -3.2, 2.1] ],
+    [ "ffaa_nh90_tth_cargo", -12, [0.1, 2, -1.15], [0.1, 0.4, -1.15] ],
+	[ "ffaa_nh90_tth_transport", -12, [0.1, 0.35, -1.15] ],
+];
 
+GRLIB_AirDrop_1 = [
+	"B_Quadbike_01_F"
+];
+
+GRLIB_AirDrop_2 = [
+	"R3F_PVP_FN_DA"
+];
+
+GRLIB_AirDrop_3 = [
+	"R3F_PLFS_A"
+];
+
+GRLIB_AirDrop_4 = [
+	"AMF_GBC180_PERS_02"
+];
+
+GRLIB_AirDrop_5 = [
+	"AMF_VBCI_TDF_01_F",
+	"AMF_VBMR_GENIE_TDF"
+];
+
+GRLIB_AirDrop_6 = [
+	"B_FR_Hors_bord_01"
 ];

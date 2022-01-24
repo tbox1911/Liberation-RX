@@ -110,7 +110,8 @@ R3F_LOG_CFG_can_tow = R3F_LOG_CFG_can_tow +
 	"C_Van_02_service_F",
 	"B_GEN_Van_02_transport_F",
 	"C_Truck_02_covered_F",
-	"C_Truck_02_transport_F"
+	"C_Truck_02_transport_F",
+	"AMF_GBC180_PLATEAU_02"
 ];
 
 R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
@@ -157,7 +158,8 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 	"B_GEN_Van_02_transport_F",
 	"C_Truck_02_covered_F",
 	"C_Truck_02_transport_F",
-	"B_Quadbike_01_F"
+	"B_Quadbike_01_F",
+	"AMF_GBC180_PLATEAU_02"
 ];
 
 R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
@@ -208,7 +210,8 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 	"B_GEN_Van_02_transport_F",
 	"C_Truck_02_covered_F",
 	"C_Truck_02_transport_F",
-	"B_Quadbike_01_F"
+	"B_Quadbike_01_F",
+	"AMF_GBC180_PLATEAU_02"
 ];
 
 R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
@@ -253,7 +256,8 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["B_GEN_Van_02_transport_F", 30],
 	["C_Truck_02_covered_F", 75],
 	["C_Truck_02_transport_F", 50],
-	["B_Quadbike_01_F", 10]
+	["B_Quadbike_01_F", 10],
+	["AMF_GBC180_PLATEAU_02", 100]
 ];
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +

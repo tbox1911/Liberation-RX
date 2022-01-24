@@ -227,3 +227,11 @@ opfor_recyclable = [
 	["CUP_B_A10_DYN_USA",20,round (2000 / GRLIB_recycling_percentage),40],
 	["CUP_B_AV8B_DYN_USMC",20,round (1750 / GRLIB_recycling_percentage),40]
 ];
+
+box_transport_config_east = [
+    [ "CUP_B_MTVR_USA", -8, [0, -0.3, 0.3], [0, -1.9, 0.3] ],
+    [ "CUP_B_M6LineBacker_USA_D", -8, [0, 0, -0.9] ],
+    [ "CUP_B_MV22_USMC_RAMPGUN", -14, [0, 1.1, -1.6], [0, -0.5, -1.6], [0, -2.1, -1.6] ],
+    [ "CUP_B_C130J_Cargo_USMC", -15, [0, 5, -3.7], [0, 3.4, -3.7], [0, 1.8, -3.7], [0, 0.2, -3.7], [0, -1.4, -3.7], [0, -3, -3.7] ],
+    [ "CUP_B_MH47E_USA", -10, [0, 1.1, -1.9], [0, -0.5, -1.9], [0, -2.1, -1.9] ]
+];
