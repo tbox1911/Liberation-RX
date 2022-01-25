@@ -103,7 +103,7 @@ if ( !GRLIB_GM_enabled && "GM_EAST" in [GRLIB_mod_west, GRLIB_mod_east]) then { 
 if ( !GRLIB_GM_enabled && "GM_EAST_WINT" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
 if ( (!GRLIB_R3F_enabled || !GRLIB_AMF_enabled) && "R3F_WEST_D" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
 if ( (!GRLIB_R3F_enabled || !GRLIB_AMF_enabled) && "R3F_WEST_W" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
-if ( !GRLIB_SOG_enabled && "SOG_US" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
+if ( !GRLIB_SOG_enabled && "SOG_USA" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
 if ( !GRLIB_SOG_enabled && "SOG_VIETCONG" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
 
 if (abort_loading) exitWith { abort_loading_msg = format [
