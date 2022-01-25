@@ -25,7 +25,7 @@ sleep 5;
 [] call compileFinal preprocessFileLineNUmbers "fixed_position.sqf";
 
 // Search Objects by classname (only when dev)
-//[] call compileFinal preprocessFileLineNUmbers "compute_position.sqf";
+//[] execVM "compute_position.sqf";
 
 // ATM Markers
 {
