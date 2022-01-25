@@ -35,7 +35,6 @@ private _sendPara = {
 	while {(count (waypoints _para_group)) != 0} do {deleteWaypoint ((waypoints _para_group) select 0);};
 	sleep 1;
 
-	_newvehicle flyInHeight 300;
 	_waypoint = _pilot_group addWaypoint [ _targetpos, 300];
 	_waypoint setWaypointType "MOVE";
 	_waypoint setWaypointSpeed "FULL";
@@ -64,7 +63,6 @@ private _sendPara = {
 	while {(count (waypoints _para_group)) != 0} do {deleteWaypoint ((waypoints _para_group) select 0);};
 	sleep 0.2;
 
-	_newvehicle flyInHeight 300;
 	_waypoint = _pilot_group addWaypoint [ _targetpos, 200];
 	_waypoint setWaypointBehaviour "COMBAT";
 	_waypoint setWaypointCombatMode "RED";

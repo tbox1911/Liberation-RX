@@ -32,7 +32,7 @@ if ( _classname isKindOf "Air" ) then {
 	if ( _civilian ) then {
 		_newvehicle flyInHeight 200;
 	} else {
-		_newvehicle flyInHeight 400;
+		_newvehicle flyInHeightASL [200, 100, 400];
 	};
 } else {
 	_spawnpos set [2, 0.5];
