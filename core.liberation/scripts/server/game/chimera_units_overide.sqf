@@ -17,7 +17,8 @@ allUnits apply { if ((getPosATL _x) distance2D lhd < 500 && !isPlayer _x) then {
     removeAllWeapons _unit;
     removeAllAssignedItems _unit;
     {_unit linkItem _x} forEach _items;
-    for "_i" from 1 to 5 do {_unit addItem _mag};
+    for "_i" from 1 to 3 do {_unit addItem _mag};
+    for "_i" from 1 to 3 do {_unit addItemToVest _mag};
     _unit addWeapon _weapon;
 } forEach _chimera_soldiers;
 
