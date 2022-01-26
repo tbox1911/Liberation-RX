@@ -5,6 +5,9 @@ GRLIB_side_enemy = EAST;
 GRLIB_color_enemy = "ColorOPFOR";
 GRLIB_color_enemy_bright = "ColorRED";
 
+markers_reset = [99999,99999,0];
+zeropos = [0,0,0];
+
 // All Object classname used in LRX must be declared here
 [] call compileFinal preprocessFileLineNumbers "scripts\loadouts\init_loadouts.sqf";
 
@@ -327,8 +330,6 @@ all_hostile_classnames = (land_vehicles_classnames + opfor_air + opfor_troup_tra
 { land_vehicles_classnames pushback (_x select 0); } foreach (heavy_vehicles + light_vehicles);
 air_vehicles_classnames = [] + opfor_troup_transports_heli;
 { air_vehicles_classnames pushback (_x select 0); } foreach air_vehicles;
-markers_reset = [99999,99999,0];
-zeropos = [0,0,0];
 squads_names = [
 	localize "STR_LIGHT_RIFLE_SQUAD",
 	localize "STR_RIFLE_SQUAD",
