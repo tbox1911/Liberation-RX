@@ -21,7 +21,7 @@ while { true } do {
 	if ( [ player, 5 ] call fetch_permission ) then {
 
 		_nearammoboxes = [((getpos player) nearEntities [ _classname_box ,10]), { !(_x getVariable ["R3F_LOG_disabled", false]) }] call BIS_fnc_conditionalSelect;
-		_neartransporttrucks = [((getpos player) nearEntities [ ammobox_transports_typenames ,10]), {[player, _x] call is_owner || [_x] call is_public}] call BIS_fnc_conditionalSelect;
+		_neartransporttrucks = [((getpos player) nearEntities [ transport_vehicles ,10]), {[player, _x] call is_owner || [_x] call is_public}] call BIS_fnc_conditionalSelect;
 
 		_checked_trucks = [];
 
@@ -57,7 +57,7 @@ while { true } do {
 
 		{
 			_next_box = _x;
-			if ( !(_next_box in _managed_boxes) && ( isNull attachedTo _next_box ) && !(_next_box getVariable ['R3F_LOG_disabled', true]) ) then {
+			if ( !(_next_box in _managed_boxes) && ( isNull attachedTo _next_box ) && !(_next_box getVariable ['R3F_LOG_disabled', false]) ) then {
 				_action_id = _next_box addAction ["<t color='#FFFF00'>" + localize "STR_ACTION_LOAD_BOX" + "</t>","scripts\client\ammoboxes\do_load_box_action.sqf","",-501,true,true,"","[_target] call is_menuok  && [] call is_neartransport && build_confirmed == 0 && (!(_target getVariable ['R3F_LOG_disabled', false])) && (_this distance _target < 5)"];
 				_next_box setVariable [ "GRLIB_ammo_box_action", _action_id, false ];
 				_managed_boxes pushback _next_box;
