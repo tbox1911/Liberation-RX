@@ -1,3 +1,4 @@
+_unit = _this select 0;
 
 removeAllWeapons _unit;
 removeAllItems _unit;
