@@ -2,51 +2,53 @@
 
 // All class MUST be defined !
 
-opfor_sentry = "gm_gc_bgs_rifleman_mpikm72_80_str";
-opfor_rifleman = "gm_gc_army_rifleman_mpiak74n_80_str";
-opfor_grenadier = "gm_gc_army_demolition_mpiaks74n_80_str";
-opfor_squad_leader = "gm_gc_army_squadleader_mpiak74n_80_str";
-opfor_team_leader = "gm_gc_army_sf_squadleader_mpikms72_80_str";
-opfor_marksman = "gm_gc_army_sf_marksman_svd_80_str";
-opfor_machinegunner = "gm_gc_army_machinegunner_lmgrpk74_80_str";
-opfor_heavygunner = "gm_gc_army_machinegunner_pk_80_str";
-opfor_medic = "gm_gc_army_medic_mpiak74n_80_str";
-opfor_rpg = "gm_gc_army_antitank_mpiak74n_rpg7_80_str";
-opfor_at = "gm_gc_army_antitank_mpiak74n_rpg7_80_str";
-opfor_aa = "gm_gc_army_antiair_mpiak74n_9k32m_80_str";
-opfor_officer = "gm_gc_army_officer_pm_80_str";
-opfor_sharpshooter = "gm_gc_army_sf_rifleman_pm63_80_str";
-opfor_sniper = "gm_gc_army_marksman_svd_80_str";
-opfor_spotter = "gm_gc_bgs_rifleman_mpikm72_80_str";
-opfor_engineer = "gm_gc_army_engineer_mpiaks74n_80_str";
-opfor_paratrooper = "gm_gc_army_paratrooper_mpiaks74n_80_str";
-opfor_mrap = "gm_gc_army_brdm2um";
-opfor_mrap_armed = "gm_gc_army_brdm2";
-opfor_transport_helo = "gm_gc_airforce_mi2p";
-opfor_transport_truck = "gm_gc_army_ural4320_cargo";
+opfor_sentry = "gm_pl_army_radioman_akm_80_moro";
+opfor_rifleman = "gm_pl_army_rifleman_akm_80_moro";
+opfor_grenadier = "gm_pl_army_grenadier_akm_pallad_80_moro";
+opfor_squad_leader = "gm_pl_army_squadleader_akm_80_moro";
+opfor_team_leader = "gm_pl_army_squadleader_akm_80_moro";
+opfor_marksman = "gm_pl_army_marksman_svd_80_moro";
+opfor_machinegunner = "gm_pl_army_machinegunner_rpk_80_moro";
+opfor_heavygunner = "gm_pl_army_machinegunner_pk_80_moro";
+opfor_medic = "gm_pl_army_medic_akm_80_moro";
+opfor_rpg = "gm_pl_army_antitank_akm_rpg7_80_moro";
+opfor_at = "gm_pl_army_antitank_akm_fagot_80_moro";
+opfor_aa = "gm_pl_army_antiair_akm_9k32m_80_moro";
+opfor_officer = "gm_pl_army_officer_pm_80_moro";
+opfor_sharpshooter = "gm_pl_army_marksman_svd_80_moro";
+opfor_sniper = "gm_pl_army_marksman_svd_80_moro";
+opfor_spotter = "gm_pl_army_marksman_svd_80_moro";
+opfor_engineer = "gm_pl_army_engineer_akm_80_moro";
+opfor_paratrooper = "gm_pl_army_paratrooper_pm63_80_moro";
+opfor_mrap = "gm_gc_army_uaz469_cargo";
+opfor_mrap_hmg = "gm_gc_army_uaz469_dshkm";
+opfor_mrap_gmg = "gm_gc_army_uaz469_spg9";
+opfor_transport_helo = "gm_pl_airforce_mi2t";
+opfor_transport_truck = "gm_gc_army_ural375d_cargo";
 opfor_fuel_truck = "gm_gc_army_ural375d_refuel";
 opfor_ammo_truck = "gm_gc_army_ural4320_reammo";
-opfor_fuel_container = "Land_Pod_Heli_Transport_04_fuel_F";
-opfor_ammo_container = "Land_Pod_Heli_Transport_04_ammo_F";
+opfor_fuel_container = "B_Slingload_01_Fuel_F";
+opfor_ammo_container = "gm_ge_army_shelteraceII_reammo";
 opfor_flag = "gm_flag_GC";
 
 militia_squad = [
-	"gm_pl_army_sf_squadleader_akmn_80_moro",
-	"gm_pl_army_medic_akm_80_moro",
-	"gm_pl_army_sf_rifleman_pm63_80_moro",
-	"gm_pl_army_sf_rifleman_pm63_80_moro",
-	"gm_pl_army_sf_rifleman_akmn_80_moro",
-	"gm_pl_army_sf_rifleman_akmn_80_moro",
-	"gm_pl_army_sf_machinegunner_rpk_80_moro",
-	"gm_pl_army_sf_antitank_akmn_rpg7_80_moro",
-	"gm_pl_army_sf_antitank_akmn_rpg7_80_moro",
-	"gm_pl_army_sf_antiair_pm63_9k32m_80_moro",
-	"gm_pl_army_sf_antiair_pm63_9k32m_80_moro",
-	"gm_pl_army_sf_marksman_svd_80_moro",
-	"gm_pl_army_sf_machinegunner_rpk_80_moro",
-	"gm_pl_army_sf_marksman_svd_80_moro",
-	"gm_pl_army_sf_rifleman_pm63_80_moro",
-	"gm_pl_army_sf_rifleman_akmn_80_moro"
+	"gm_gc_army_sf_squadleader_mpikms72_80_str",
+	"gm_gc_army_sf_rifleman_mpikms72_80_str",
+	"gm_gc_army_sf_machinegunner_lmgrpk_80_str",
+	"gm_gc_army_sf_machinegunner_lmgrpk_80_str",	
+	"gm_gc_army_sf_engineer_mpikms72_80_str",
+	"gm_gc_army_sf_demolition_pm63_80_str",
+	"gm_gc_army_sf_demolition_pm63_80_str",
+	"gm_gc_army_sf_rifleman_pm63_80_str",
+	"gm_gc_army_sf_rifleman_pm63_80_str",
+	"gm_gc_army_sf_rifleman_pm63_80_str",
+	"gm_gc_army_sf_radioman_mpikms72_80_str",
+	"gm_gc_army_sf_marksman_svd_80_str",	
+	"gm_gc_army_sf_marksman_svd_80_str",
+	"gm_gc_army_sf_radioman_mpikms72_80_str",
+	"gm_gc_army_sf_antiair_pm63_9k32m_80_str",
+	"gm_gc_army_sf_antitank_mpikms72_rpg7_80_str",
+	"gm_gc_army_sf_antitank_mpikms72_fagot_80_str"
 ];
 
 militia_loadout_overide = [
@@ -70,16 +72,8 @@ divers_squad = [
 ];
 
 militia_vehicles = [
-	"gm_pl_army_brdm2",
-	"gm_pl_army_ot64a",
-	"gm_pl_army_bmp1sp2",
-	"gm_gc_army_brdm2",
-	"gm_gc_army_btr60pa",
-	"gm_gc_army_btr60pb",
-	"gm_gc_army_bmp1sp2",
-	"gm_pl_army_brdm2",
-	"gm_pl_army_ot64a",
-	"gm_pl_army_bmp1sp2"
+	"gm_gc_army_uaz469_dshkm",
+	"gm_gc_army_uaz469_spg9"
 ];
 
 boats_east = [
@@ -87,86 +81,71 @@ boats_east = [
 ];
 
 opfor_vehicles = [
+	"gm_gc_army_uaz469_dshkm",
+	"gm_gc_army_uaz469_spg9",
+	"gm_gc_army_brdm2",
+	"gm_gc_army_brdm2",
+	"gm_gc_army_bmp1sp2",
 	"gm_gc_army_pt76b",
-	"gm_gc_army_pt76b",
-	"gm_gc_army_t55",
-	"gm_gc_army_t55a",
 	"gm_gc_army_t55ak",
-	"gm_gc_army_t55am2",
-	"gm_gc_army_t55am2b",
-	//"gm_gc_army_zsu234v1",
-	"gm_pl_army_pt76b",
-	"gm_pl_army_t55",
-	"gm_pl_army_t55ak"
+	"gm_gc_army_zsu234v1",
+	"gm_gc_army_btr60pa"
 ];
 
 opfor_vehicles_low_intensity = [
-	"gm_pl_army_brdm2",
-	"gm_pl_army_brdm2",
-	"gm_gc_army_btr60pa",
-	"gm_gc_army_btr60pb",
-	"gm_gc_army_pt76b",
-	"gm_gc_army_pt76b",
-	"gm_pl_army_ot64a",
-	"gm_pl_army_ot64a",
-	"gm_pl_army_pt76b"
+	"gm_gc_army_uaz469_dshkm",
+	"gm_gc_army_uaz469_spg9",
+	"gm_gc_army_brdm2",
+	"gm_gc_army_brdm2",
+	"gm_gc_army_btr60pa"
 ];
 
 opfor_battlegroup_vehicles = [
-  	"gm_gc_airforce_mi2p",
-  	"gm_gc_airforce_mi2urn",
-  	"gm_gc_airforce_mi2us",
-  	"gm_gc_bgs_mi2us",
+	"gm_gc_army_uaz469_dshkm",
+	"gm_gc_army_uaz469_spg9",
+	"gm_gc_army_brdm2",
+	"gm_gc_army_bmp1sp2",
 	"gm_gc_army_pt76b",
-	"gm_gc_army_t55",
-	"gm_gc_army_t55a",
-	"gm_gc_army_t55ak",
-	"gm_gc_army_t55am2",
 	"gm_gc_army_t55am2b",
-	//"gm_gc_army_zsu234v1",
-	"gm_pl_army_pt76b",
-	"gm_pl_army_t55",
-	"gm_pl_army_t55ak",
-	//"gm_gc_army_zsu234v1",
-	"gm_gc_airforce_mi2p",
-	"gm_gc_bgs_ural4320_cargo"
+	"gm_gc_army_zsu234v1",
+	"gm_gc_army_btr60pb",
+	"gm_pl_army_ot64a",
+	"gm_gc_army_ural375d_mlrs",
+	"gm_gc_army_ural375d_cargo",
+	"gm_pl_airforce_mi2urs",
+	"gm_pl_airforce_mi2us",
+	"gm_pl_airforce_mi2p",
+	"gm_gc_army_btr60pa",
+	"gm_pl_airforce_mi2t"
 ];
 
 opfor_battlegroup_vehicles_low_intensity = [
-	"gm_gc_airforce_mi2urn",
-	"gm_gc_airforce_mi2us",
-	"gm_gc_bgs_mi2us",
+	"gm_gc_army_bmp1sp2",
 	"gm_gc_army_pt76b",
-	"gm_gc_army_t55",
-	"gm_gc_army_pt76b",
+	"gm_gc_army_zsu234v1",
+	"gm_pl_army_ot64a",
+	"gm_gc_army_ural375d_mlrs",
+	"gm_gc_army_ural375d_cargo",
+	"gm_pl_airforce_mi2p",
 	"gm_gc_army_btr60pa",
-	"gm_gc_army_btr60pb",
-	"gm_gc_airforce_mi2p",
-	"gm_gc_army_ural4320_cargo"
+	"gm_pl_airforce_mi2t"
 ];
 
 opfor_troup_transports_truck = [
-	"gm_gc_army_btr60pu12",
-	"gm_gc_army_ural4320_cargo",
-	"gm_gc_bgs_ural4320_cargo"
+	"gm_gc_army_ural375d_cargo",
+	"gm_gc_army_btr60pb",
+	"gm_pl_army_ot64a",
+	"gm_gc_army_btr60pa"
 ];
 
 opfor_troup_transports_heli = [
-	"gm_gc_airforce_mi2p",
-	"gm_gc_airforce_mi2t",
-	"gm_gc_airforce_l410t"
+	"gm_pl_airforce_mi2p",
+	"gm_pl_airforce_mi2t"
 ];
 
 opfor_air = [
-	"gm_gc_airforce_mi2urn",
-	"gm_gc_airforce_mi2urn",
-	"gm_gc_airforce_mi2us",
-	"gm_gc_bgs_mi2us",
-	"gm_pl_airforce_mi2us",
 	"gm_pl_airforce_mi2urs",
-	"gm_pl_airforce_mi2urpg",
-	"gm_pl_airforce_mi2urp",
-	"gm_pl_airforce_mi2urn"
+	"gm_pl_airforce_mi2us"
 ];
 
 opfor_statics = [
@@ -176,41 +155,34 @@ opfor_statics = [
 	"O_Mortar_01_F"
 ];
 
-opfor_recyclable = [
-	["gm_gc_army_pt76b",0,round (20 / GRLIB_recycling_percentage),0],
-	["gm_pl_army_pt76b",0,round (20 / GRLIB_recycling_percentage),0],
-	["gm_gc_bgs_ural4320_repair",0,round (20 / GRLIB_recycling_percentage),0],
-	["gm_gc_bgs_ural4320_reammo",0,round (20 / GRLIB_recycling_percentage),0],
-	["gm_gc_army_ural4320_cargo",0,round (20 / GRLIB_recycling_percentage),0],
-	["gm_gc_bgs_ural4320_cargo",0,round (20 / GRLIB_recycling_percentage),0],
-	["gm_gc_army_brdm2um",0,round (20 / GRLIB_recycling_percentage),0],
-	["gm_pl_army_brdm2",0,round (50 / GRLIB_recycling_percentage),0],
-	["gm_pl_army_ot64a",0,round (50 / GRLIB_recycling_percentage),0],
-	["gm_gc_army_btr60pa",0,round (150 / GRLIB_recycling_percentage),0],
-	["gm_gc_army_btr60pb",0,round (150 / GRLIB_recycling_percentage),0],
-	["gm_pl_army_bmp1sp2",0,round (150 / GRLIB_recycling_percentage),0],
-	["gm_gc_army_t55",0,round (400 / GRLIB_recycling_percentage),0],
-	["gm_pl_army_t55",0,round (400 / GRLIB_recycling_percentage),0],
-	["gm_gc_army_t55a",0,round (400 / GRLIB_recycling_percentage),0],
-	["gm_gc_army_t55ak",0,round (400 / GRLIB_recycling_percentage),0],
-	["gm_pl_army_t55ak",0,round (400 / GRLIB_recycling_percentage),0],
-	["gm_gc_army_t55am2",0,round (500 / GRLIB_recycling_percentage),0],
-	["gm_gc_army_t55am2b",0,round (500 / GRLIB_recycling_percentage),0],
-	["gm_pl_army_zsu234v1",0,round (500 / GRLIB_recycling_percentage),0],
-	["gm_gc_army_zsu234v1",0,round (500 / GRLIB_recycling_percentage),0],
-	["gm_gc_airforce_mi2p",0,round (500 / GRLIB_recycling_percentage),0],
-	["gm_gc_airforce_mi2t",0,round (500 / GRLIB_recycling_percentage),0],
-	["gm_gc_airforce_mi2urn",0,round (500 / GRLIB_recycling_percentage),0],
-	["gm_pl_airforce_mi2urn",0,round (500 / GRLIB_recycling_percentage),0],
-	["gm_gc_airforce_mi2us",0,round (500 / GRLIB_recycling_percentage),0],
-	["gm_pl_airforce_mi2us",0,round (500 / GRLIB_recycling_percentage),0],
-	["gm_pl_airforce_mi2urs",0,round (500 / GRLIB_recycling_percentage),0],
-	["gm_pl_airforce_mi2urpg",0,round (500 / GRLIB_recycling_percentage),0],
-	["gm_pl_airforce_mi2urp",0,round (500 / GRLIB_recycling_percentage),0],
-	["gm_gc_airforce_l410t",0,round (500 / GRLIB_recycling_percentage),0],
-	["gm_gc_airforce_l410s_salon",0,round (500 / GRLIB_recycling_percentage),0]
-];
 
-box_transport_config_east = [
-	[ "gm_gc_army_ural4320_cargo", -5.5, [0, -0.7, 0.04], [0, -2.4, 0.04] ]
+opfor_recyclable = [
+	// statics
+	["gm_gc_army_fagot_launcher_tripod",0,round (40 / GRLIB_recycling_percentage),0],
+	["gm_gc_army_dshkm_aatripod",0,round (7 / GRLIB_recycling_percentage),0],
+	["gm_gc_army_spg9_tripod",0,round (25 / GRLIB_recycling_percentage),0],
+	// boat
+	["O_Boat_Armed_01_hmg_F",3,round (65 / GRLIB_recycling_percentage),3],
+	// ground
+	["gm_gc_army_uaz469_cargo",1,round (10 / GRLIB_recycling_percentage),1],
+	["gm_gc_army_uaz469_dshkm",2,round (25 / GRLIB_recycling_percentage),2],
+	["gm_gc_army_uaz469_spg9",3,round (40 / GRLIB_recycling_percentage),3],
+	["gm_gc_army_ural375d_cargo",2,round (50 / GRLIB_recycling_percentage),7],
+	["gm_gc_army_ural375d_refuel",5,round (60 / GRLIB_recycling_percentage),40],
+	["gm_gc_army_ural4320_reammo",5,round (100 / GRLIB_recycling_percentage),10],
+	["gm_gc_army_brdm2",5,round (150 / GRLIB_recycling_percentage),7],
+	["gm_gc_army_bmp1sp2",10,round (375 / GRLIB_recycling_percentage),10],
+	["gm_gc_army_pt76b",12,round (400 / GRLIB_recycling_percentage),12],
+	["gm_gc_army_t55ak",50,round (1000 / GRLIB_recycling_percentage),15],
+	["gm_gc_army_zsu234v1",10,round (500 / GRLIB_recycling_percentage),15],
+	["gm_gc_army_btr60pa",3,round (125 / GRLIB_recycling_percentage),10],
+	["gm_gc_army_t55am2b",60,round (1250 / GRLIB_recycling_percentage),15],
+	["gm_gc_army_btr60pb",5,round (175 / GRLIB_recycling_percentage),10],
+	["gm_pl_army_ot64a",7,round (200 / GRLIB_recycling_percentage),12],
+	["gm_gc_army_ural375d_mlrs",60,round (1500 / GRLIB_recycling_percentage),15],
+	// air
+	["gm_pl_airforce_mi2t",10,round (325 / GRLIB_recycling_percentage),10],
+	["gm_pl_airforce_mi2urs",30,round (300 / GRLIB_recycling_percentage),15],
+	["gm_pl_airforce_mi2us",10,round (250 / GRLIB_recycling_percentage),15],
+	["gm_pl_airforce_mi2p",5,round (150 / GRLIB_recycling_percentage),10]
 ];

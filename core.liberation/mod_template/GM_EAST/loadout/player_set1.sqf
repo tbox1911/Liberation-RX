@@ -11,25 +11,25 @@ removeHeadgear _unit;
 removeGoggles _unit;
 
 //  "Add weapons";
-_unit addWeapon "gm_p1_blk";
-_unit addHandgunItem "gm_8Rnd_9x19mm_B_DM51_p1_blk";
+_unit addWeapon "gm_pm_blk";
+_unit addHandgunItem "gm_8Rnd_9x18mm_B_pst_pm_blk";
 
 //  "Add containers";
-_unit forceAddUniform "gm_ge_army_uniform_soldier_80_ols";
-_unit addVest "gm_ge_army_vest_80_officer";
+_unit forceAddUniform "gm_pl_army_uniform_soldier_80_moro";
+_unit addVest "gm_pl_army_vest_80_rig_gry";
 
 _unit addWeapon "gm_ferod16_oli";
 
 //  "Add items to containers";
-for "_i" from 1 to 4 do {_unit addItemToUniform "gm_ge_army_burnBandage";};
-for "_i" from 1 to 4 do {_unit addItemToUniform "gm_8Rnd_9x19mm_B_DM51_p1_blk";};
-_unit addItemToUniform "gm_handgrenade_frag_dm51";
+for "_i" from 1 to 4 do {_unit addItemToUniform "gm_gc_army_medkit";};
+for "_i" from 1 to 4 do {_unit addItemToUniform "gm_8Rnd_9x18mm_B_pst_pm_blk";};
+_unit addItemToUniform "gm_handgrenade_frag_rgd5";
 _unit addItemToUniform "gm_smokeshell_wht_gc";
-_unit addHeadgear "gm_ge_headgear_hat_80_oli";
+_unit addHeadgear "gm_pl_army_headgear_cap_80_moro";
 
 //  "Add items";
 _unit linkItem "ItemMap";
-_unit linkItem "gm_ge_army_conat2";
+_unit linkItem "gm_gc_compass_f73";
 _unit linkItem "gm_watch_kosei_80";
 _unit linkItem "ItemRadio";
 _unit linkItem "ItemGPS";
