@@ -144,11 +144,19 @@ opfor_troup_transports_heli = [
 ];
 
 opfor_air = [
+	"gm_gc_airforce_mi2urn",
+	"gm_gc_airforce_mi2us",
+	"gm_gc_bgs_mi2us",
+	"gm_pl_airforce_mi2us",
 	"gm_pl_airforce_mi2urs",
-	"gm_pl_airforce_mi2us"
+	"gm_pl_airforce_mi2urpg",
+	"gm_pl_airforce_mi2urp",
+	"gm_pl_airforce_mi2urn"
 ];
 
 opfor_statics = [
+	"O_HMG_01_F",
+	"O_HMG_01_high_F",
 	"gm_gc_army_dshkm_aatripod",
 	"gm_gc_army_fagot_launcher_tripod",
 	"gm_gc_army_spg9_tripod",

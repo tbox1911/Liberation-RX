@@ -140,6 +140,11 @@ opfor_troup_transports_heli = [
 ];
 
 opfor_air = [
+	"gm_ge_army_bo105p1m_vbh",
+	"gm_ge_army_bo105p1m_vbh",
+	"gm_ge_army_bo105p_pah1",
+	"gm_ge_army_bo105p_pah1",
+	"gm_ge_army_bo105p_pah1a1",
 	"gm_ge_army_bo105p_pah1a1"
 ];
 

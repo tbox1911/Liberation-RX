@@ -108,10 +108,14 @@ air_vehicles = [
 ];
 
 blufor_air = [
+	"gm_gc_airforce_mi2urn",
+	"gm_gc_airforce_mi2us",
+	"gm_gc_bgs_mi2us",
 	"gm_pl_airforce_mi2us",
-	"gm_pl_airforce_mi2urn",
 	"gm_pl_airforce_mi2urs",
-	"gm_pl_airforce_mi2urp"
+	"gm_pl_airforce_mi2urpg",
+	"gm_pl_airforce_mi2urp",
+	"gm_pl_airforce_mi2urn"
 ];
 
 boats_west = [
@@ -120,10 +124,12 @@ boats_west = [
 ];
 
 static_vehicles = [
-	["gm_gc_bgs_searchlight_01",0,5,0,0],
+	["O_HMG_01_F",0,10,0,GRLIB_perm_log],
+	["O_HMG_01_high_F",0,10,0,GRLIB_perm_tank],
 	["gm_gc_army_dshkm_aatripod",0,15,0,GRLIB_perm_inf],
 	["gm_gc_army_fagot_launcher_tripod",0,75,0,GRLIB_perm_air],
-	["gm_gc_army_spg9_tripod",0,50,0,GRLIB_perm_tank]
+	["gm_gc_army_spg9_tripod",0,50,0,GRLIB_perm_tank],
+	["O_Mortar_01_F",0,500,0,GRLIB_perm_max]
 ];
 
 // *** Static Weapon with AI ***

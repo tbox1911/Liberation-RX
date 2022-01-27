@@ -100,15 +100,29 @@ heavy_vehicles = [
 ];
 
 air_vehicles = [
-	["gm_ge_army_bo105p1m_vbh",5,300,10,GRLIB_perm_log],
-	["gm_ge_army_ch53g",15,600,20,GRLIB_perm_tank],
-	["gm_ge_army_bo105p_pah1a1",30,1250,30,GRLIB_perm_max],
-	["gm_ge_airforce_do28d2",5,500,15,GRLIB_perm_air]
+	["gm_ge_army_bo105m_vbh",1,100,5,GRLIB_perm_tank],
+	["gm_ge_army_bo105p1m_vbh",5,120,10,GRLIB_perm_air],
+	["gm_gc_civ_mi2p",1,100,5,GRLIB_perm_tank],
+	["gm_gc_civ_mi2sr",10,130,20,GRLIB_perm_air],
+	["gm_ge_army_bo105p1m_vbh_swooper",1,250,5,GRLIB_perm_air],
+	["gm_ge_army_bo105p_pah1",10,500,15,GRLIB_perm_air],
+	["gm_ge_army_bo105p_pah1a1",10,500,15,GRLIB_perm_air],
+	["gm_ge_army_ch53g",10,500,15,GRLIB_perm_air],
+	["gm_ge_army_ch53gs",20,800,40,GRLIB_perm_max],
+	["gm_ge_airforce_do28d2",5,200,10,GRLIB_perm_air],
+	["gm_gc_civ_l410s_passenger",5,220,10,GRLIB_perm_air]
 ];
 
 blufor_air = [
-	"gm_ge_army_bo105p_pah1a1"
+	"gm_ge_army_bo105p1m_vbh",
+	"gm_ge_army_bo105p1m_vbh",
+	"gm_ge_army_bo105p_pah1",
+	"gm_ge_army_bo105p_pah1",
+	"gm_ge_army_bo105p_pah1a1",
+	"gm_ge_army_bo105p_pah1a1",
+	"gm_ge_army_ch53gs"
 ];
+
 
 boats_west = [
 	"B_Boat_Transport_01_F",
