@@ -6,7 +6,7 @@
 huron_typename = "gm_gc_airforce_mi2p";  // comment to use value from lobby/server.cfg
 FOB_typename = "Land_Cargo_HQ_V1_F";
 FOB_box_typename = "Land_Pod_Heli_Transport_04_box_black_F";
-FOB_truck_typename = "gm_gc_army_ural4320_cargo" ;
+FOB_truck_typename = "gm_gc_bgs_ural4320_repair" ;
 Respawn_truck_typename = "gm_gc_army_ural375d_medic";
 ammo_truck_typename = "gm_gc_army_ural4320_reammo";
 fuel_truck_typename = "gm_gc_army_ural375d_refuel";
@@ -263,4 +263,9 @@ GRLIB_AirDrop_5 = [
 
 GRLIB_AirDrop_6 = [
 	"I_Boat_Armed_01_minigun_F"
+];
+
+box_transport_config_west = [
+    [ "gm_gc_airforce_l410t", -8, [0, 2.7, -1.1], [0, 1.1, -1.1], [0, -0.5, -1.1] ],
+	[ "gm_gc_army_ural4320_cargo", -5.5, [0, -0.7, 0.04], [0, -2.4, 0.04] ]
 ];
