@@ -81,7 +81,7 @@ sleep 5;
 
 // Repair Marker
 private _tmp_marker = [];
-_tmp_marker = [vehicles, {(alive _x) && typeOf _x == "C_Offroad_01_repair_F" && (_x getVariable ["GRLIB_vehicle_owner", ""] == "server")}] call BIS_fnc_conditionalSelect;
+_tmp_marker = [vehicles, {(alive _x) && typeOf _x == repair_offroad && (_x getVariable ["GRLIB_vehicle_owner", ""] == "server")}] call BIS_fnc_conditionalSelect;
 {
   _marker = createMarkerLocal [format ["marked_repair%1", _forEachIndex], getPos _x];
   _marker setMarkerColorLocal "ColorOrange";

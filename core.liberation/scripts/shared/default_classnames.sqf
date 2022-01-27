@@ -26,6 +26,7 @@ if ( isNil "waterbarrel_typename" ) then { waterbarrel_typename = "Land_BarrelWa
 if ( isNil "fuelbarrel_typename" ) then { fuelbarrel_typename = "Land_MetalBarrel_F" };
 if ( isNil "foodbarrel_typename" ) then { foodbarrel_typename = "Land_FoodSacks_01_large_brown_idap_F" };
 if ( isNil "opfor_transport_truck" ) then { opfor_transport_truck = "O_Truck_03_transport_F" };
+if ( isNil "repair_offroad" ) then { repair_offroad = "C_Offroad_01_repair_F" };
 if ( isNil "commander_classname" ) then { commander_classname = "B_officer_F" };
 if ( isNil "crewman_classname" ) then { crewman_classname = "B_crew_F" };
 if ( isNil "pilot_classname" ) then { pilot_classname = "B_Helipilot_F" };
