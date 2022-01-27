@@ -9,7 +9,7 @@ allUnits apply { if ((getPosATL _x) distance2D lhd < 500 && !isPlayer _x) then {
     _unit_model = selectRandom blufor_squad_inf;
     _cloth = getText(configfile >> "CfgVehicles" >> _unit_model >> "uniformClass");
     _items = getArray (configfile >> "CfgVehicles" >> _unit_model >> "linkedItems");
-    _weapon = getArray (configfile >> "CfgVehicles" >> _unit_model >> "weapons") select 0;
+    _weapon = (getArray (configfile >> "CfgVehicles" >> _unit_model >> "weapons") - ["Throw","Put"]) select 0;
     _mag = getArray (configFile >> "CfgWeapons" >> _weapon >> "magazines" ) select 0;
     //diag_log format ["DBG: %1 %2 %3 %4", _unit_model, _items, _weapon, _mag];
     _unit = _x;
