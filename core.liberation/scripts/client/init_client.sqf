@@ -28,7 +28,6 @@ respawn_lhd = compileFinal preprocessFileLineNumbers "scripts\client\spawn\respa
 spawn_camera = compileFinal preprocessFileLineNumbers "scripts\client\spawn\spawn_camera.sqf";
 cinematic_camera = compileFinal preprocessFileLineNumbers "scripts\client\ui\cinematic_camera.sqf";
 write_credit_line = compileFinal preprocessFileLineNumbers "scripts\client\ui\write_credit_line.sqf";
-do_load_box = compileFinal preprocessFileLineNumbers "scripts\client\ammoboxes\do_load_box.sqf";
 set_rank = compileFinal preprocessFileLineNumbers "scripts\client\misc\set_rank.sqf";
 vehicle_permissions = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_permissions.sqf";
 vehicle_defense = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_defense.sqf";
@@ -57,7 +56,6 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 };
 [] execVM "scripts\client\commander\enforce_whitelist.sqf";
 [] execVM "scripts\client\ui\intro.sqf";
-[] execVM "scripts\client\ammoboxes\ammobox_action_manager.sqf";
 [] execVM "scripts\client\markers\sector_manager.sqf";
 [] execVM "scripts\client\misc\sides_stats_manager.sqf";
 [] execVM "scripts\client\build\build_overlay.sqf";
