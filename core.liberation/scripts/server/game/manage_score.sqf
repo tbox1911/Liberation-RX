@@ -27,7 +27,7 @@ while { true } do {
 					_uid = getPlayerUID _x;
 					BTC_logic setVariable [_uid, 99, true];
 					[_x] remoteExec ["LRX_tk_actions", owner _x];
-					diag_log format ["-- LRX TK: BAN for player %1 - UID: %2", name _x,  _uid];
+					diag_log format ["--- LRX TK: BAN for player %1 - UID: %2", name _x,  _uid];
 				};
 				if ((_cur >= GRLIB_perm_ban) && (_cur < GRLIB_perm_min) && (_cur < _last)) then {_rank = "None"; _newrank = true};
 				if ((_cur >= GRLIB_perm_min) && (_cur < GRLIB_perm_inf) && (_rank != "Private")) then {_rank = "Private"; _newrank = true};

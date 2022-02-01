@@ -4,7 +4,7 @@
 
 if (GRLIB_wildlife_manager == 0) exitWith {};
 sleep (2*60);
-diag_log "-- LRX Starting Wildlife Manager";
+diag_log "--- LRX Starting Wildlife Manager";
 GRLIB_wildlife_max = 4;
 
 for "_i" from 1 to GRLIB_wildlife_max do {
