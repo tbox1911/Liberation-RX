@@ -2403,7 +2403,7 @@
 			</Key>
 			<Key ID="STR_HALO_PARAM">
 					<Original>HALO jump</Original>
-					<French>Saut OPERATIONNEL</French>
+					<French>Saut HALO</French>
 					<German>HALO-Sprung</German>
 					<Spanish>Salto HALO</Spanish>
 					<Russian>HALO прыжок</Russian>
@@ -2413,7 +2413,7 @@
 			</Key>
 			<Key ID="STR_HALO_PARAM1">
 					<Original>Enabled - No cooldown</Original>
-					<French>Activé - Pas d'apaisement</French>
+					<French>Activé - Pas d'attente</French>
 					<German>Aktiviert - Keine Abklingzeit</German>
 					<Spanish>Activado - Sin tiempo de espera</Spanish>
 					<Russian>Вкл - без перерыва</Russian>
@@ -2423,7 +2423,7 @@
 			</Key>
 			<Key ID="STR_HALO_PARAM2">
 					<Original>Enabled - 5 minutes cooldown</Original>
-					<French>Activé - Apaisement de 5 minutes</French>
+					<French>Activé - Attente de 5 minutes</French>
 					<German>Aktiviert - 5 Minuten Abklingzeit</German>
 					<Spanish>Activado - 5 minutos de espera</Spanish>
 					<Russian>Вкл - 5 минут перерыв</Russian>
@@ -2433,7 +2433,7 @@
 			</Key>
 			<Key ID="STR_HALO_PARAM3">
 					<Original>Enabled - 10 minutes cooldown</Original>
-					<French>Activé - Apaisement de 10 minutes</French>
+					<French>Activé - Attente de 10 minutes</French>
 					<German>Aktiviert - 10 Minuten Abklingzeit</German>
 					<Spanish>Activado - 10 minutos de espera</Spanish>
 					<Russian>Вкл - 10 минут перерыв</Russian>
@@ -2443,7 +2443,7 @@
 			</Key>
 			<Key ID="STR_HALO_PARAM4">
 					<Original>Enabled - 15 minutes cooldown</Original>
-					<French>Activé - Apaisement de 15 minutes</French>
+					<French>Activé - Attente de 15 minutes</French>
 					<German>Aktiviert - 15 Minuten Abklingzeit</German>
 					<Spanish>Activado - 15 minutos de espera</Spanish>
 					<Russian>Вкл - 15 минут перерыв</Russian>
@@ -2453,7 +2453,7 @@
 			</Key>
 			<Key ID="STR_HALO_PARAM5">
 					<Original>Enabled - 20 minutes cooldown</Original>
-					<French>Activé - Apaisement de 20 minutes</French>
+					<French>Activé - Attente de 20 minutes</French>
 					<German>Aktiviert - 20 Minuten Abklingzeit</German>
 					<Spanish>Activado - 20 minutos de espera</Spanish>
 					<Russian>Вкл - 20 минут перерыв</Russian>
@@ -2463,7 +2463,7 @@
 			</Key>
 			<Key ID="STR_HALO_PARAM6">
 					<Original>Enabled - 30 minutes cooldown</Original>
-					<French>Activé - Apaisement de 30 minutes</French>
+					<French>Activé - Attente de 30 minutes</French>
 					<German>Aktiviert - 30 Minuten Abklingzeut</German>
 					<Spanish>Activado - 30 minutos de espera</Spanish>
 					<Russian>Вкл - 30 минут перерыв</Russian>
@@ -2473,7 +2473,7 @@
 			</Key>
 			<Key ID="STR_HALO_DENIED_COOLDOWN">
 					<Original>Can't perform HALO jump, you are on cooldown for %1 more minute(s).</Original>
-					<French>Impossible d'effectuer un saut Opérationnel, vous êtes en apaisement pour encore %1 minute(s).</French>
+					<French>Impossible d'effectuer un saut Opérationnel, vous êtes en attente pour encore %1 minute(s).</French>
 					<German>HALO Sprung noch nicht möglich. Verbleibende Abklingzeit von %1 Minuten.</German>
 					<Spanish>No puedes saltar en HALO, te quedan %1 minuto(s) de espera.</Spanish>
 					<Russian>HALO прыжок недоступен, подождите %1 минут</Russian>
@@ -2483,7 +2483,7 @@
 			</Key>
 			<Key ID="STR_HALO_ACTION">
 					<Original>-- HALO JUMP</Original>
-					<French>-- SAUT OPERATIONNEL</French>
+					<French>-- SAUT HALO</French>
 					<German>-- HALO-SPRUNG</German>
 					<Spanish>-- SALTO HALO</Spanish>
 					<Russian>-- HALO прыжок</Russian>
@@ -2493,7 +2493,7 @@
 			</Key>
 			<Key ID="STR_HALO_TITLE">
 					<Original>HALO JUMP</Original>
-					<French>SAUT OPERATIONNEL</French>
+					<French>SAUT HALO</French>
 					<German>HALO-SPRUNG</German>
 					<Spanish>SALTO HALO</Spanish>
 					<Russian>HALO ПРЫЖОК</Russian>
