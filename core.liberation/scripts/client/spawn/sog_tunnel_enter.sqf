@@ -1,10 +1,12 @@
-params ["_tunnelName"];
+// Enter SoG tunnel
+private _tunnel_marker = [(allMapMarkers select {_x select [0,20] == "side_mission_sog_tun" && markerPos _x distance2D player <= GRLIB_capture_size}), player] call F_nearestPosition;
+private _tunnel_name = format ["LRX%1", (_tunnel_marker select [12, 11])];
+private _tunnel = missionNameSpace getVariable [_tunnel_name, objNull];
 
+// AI follow
 private _ai_follow = true;
 private _ai_follow_max = 2;
 private _unit_list_redep = [];
-private _tunnel = missionNameSpace getVariable [_tunnelName, "error_no_tunnel"];
-if (str _tunnel == "error_no_tunnel") exitWith {};
 
 // Enter SoG tunnel with AI
 if (_ai_follow) then {
@@ -20,9 +22,9 @@ if (_ai_follow) then {
     };
 };
 
-private _position = _tunnel getVariable ["tunnel_position", 0];
+private _position = (_tunnel getVariable ["tunnel_position", 0]) + 1;
 private _msg = format ["You enter in the <t color='#008f00'>Guerrilla</t> tunnel no <t color='#008f00'>%1</t> !<br/><br/>
-Expect NO <t color='#00008f'>Support</t>, NO <t color='#00008f'>Help</t>. <br/>
+Expect NO <t color='#00008f'>Support</t>,  NO <t color='#00008f'>Help</t>. <br/>
 Expect NO <t color='#8f0000'>Mercy</t> !<br/><br/>
 You are on your own....", _position];
 [_msg, 0, 0, 10, 0, 0, 90] spawn BIS_fnc_dynamicText;
@@ -30,6 +32,5 @@ You are on your own....", _position];
 player setVariable ["SOG_enter_tunnel", round (time)];
 player setVariable ["SOG_unit_list", _unit_list_redep];
 showMap false;
-[player, _tunnelName] remoteExec [ "sog_tunnel_enter_remotecall", 2 ];
+[player, _tunnel_name] remoteExec [ "sog_tunnel_enter_remotecall", 2 ];
 
-//diag_log format ["DBG: enter tunnel %1 %2", _tunnelName, allVariables _tunnel];
