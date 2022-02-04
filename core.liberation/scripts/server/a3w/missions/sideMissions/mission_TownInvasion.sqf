@@ -58,6 +58,7 @@ _setupObjects =
 	[_aiGroup, _missionPos, (_nbUnits - (count _managed_units)) , "militia"] call createCustomGroup;
 
 	_missionHintText = format ["Hostiles have taken over <br/><t size='1.25' color='%1'>%2</t><br/><br/>There seem to be <t color='%1'>%3 enemies</t> hiding inside or on top of buildings. Get rid of them all, and take their supplies!<br/>Watch out for those windows!", sideMissionColor, _townName, _nbUnits];
+	true;
 };
 
 _waitUntilMarkerPos = nil;

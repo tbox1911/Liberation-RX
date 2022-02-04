@@ -27,6 +27,7 @@ _setupObjects =
 
 	_missionPicture = getText (configFile >> "CfgVehicles" >> "O_Boat_Armed_01_hmg_F" >> "picture");
 	_missionHintText = "Sunken supplies have been spotted in the ocean near the marker, and are heavily guarded. Diving gear and an underwater weapon are recommended.";
+	true;
 };
 
 _waitUntilMarkerPos = nil;

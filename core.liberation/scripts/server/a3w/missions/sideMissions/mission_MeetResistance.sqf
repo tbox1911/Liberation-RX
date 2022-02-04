@@ -91,6 +91,7 @@ _setupObjects =
 	GRLIB_A3W_Mission_MRR = _aiGroupRes;
 	publicVariable "GRLIB_A3W_Mission_MRR";
 	_missionHintText = format ["Meet the Resistance at <br/><t size='1.25' color='%1'>%2</t><br/><br/><t color='#00F000'>Talk</t> to the <t color='#0000F0'>Leader</t> to get information.<br/>Be ready for any situation!", sideMissionColor, _townName];
+	true;
 };
 
 _waitUntilMarkerPos = nil;

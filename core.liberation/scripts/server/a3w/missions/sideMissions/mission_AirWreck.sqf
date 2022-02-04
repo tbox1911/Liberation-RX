@@ -33,6 +33,7 @@ _setupObjects =
 
 	_missionPicture = "\A3\Air_F\Heli_Light_02\Data\UI\Heli_Light_02_CA.paa";
 	_missionHintText = "A helicopter has come down under enemy fire!";
+	true;
 };
 
 _waitUntilMarkerPos = nil;

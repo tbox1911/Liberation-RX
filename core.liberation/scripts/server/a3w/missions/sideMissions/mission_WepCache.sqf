@@ -30,6 +30,7 @@ _setupObjects =
 
 	_missionPicture = "\A3\Static_f_gamma\data\ui\gear_StaticTurret_GMG_CA.paa";
 	_missionHintText = "A weapon cache has been spotted near the marker.";
+	true;
 };
 
 _waitUntilMarkerPos = nil;
