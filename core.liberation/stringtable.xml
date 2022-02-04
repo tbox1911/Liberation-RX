@@ -4761,7 +4761,7 @@
 
 			<Key ID="STR_DO_BUYFUEL">
 				<Original>&lt;t align='center'&gt;Fuel Jerrican cost: %1 Ammo&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
-				<French>&lt;t align='center'&gt;Un jerrican d'essence coûte: %1 Mun&lt;br/&gt;Es tu sûr ?&lt;/t&gt;</Original>
+				<French>&lt;t align='center'&gt;Un jerrican d'essence coûte: %1 Mun&lt;br/&gt;Es tu sûr ?&lt;/t&gt;</French>
 				<Japanese>&lt;t align='center'&gt;燃料缶コスト: %1 弾薬&lt;br/&gt;よろしいですか？&lt;/t&gt;</Japanese>
 				<Chinesesimp>&lt;t align='center'&gt;燃油费用: %1 弹药&lt;br/&gt;你确定吗？&lt;/t&gt;</Chinesesimp>
 				<Chinese>&lt;t align='center'&gt;燃油費用: %1 彈藥&lt;br/&gt;你確定嗎？ &lt;/t&gt;</Chinese>
