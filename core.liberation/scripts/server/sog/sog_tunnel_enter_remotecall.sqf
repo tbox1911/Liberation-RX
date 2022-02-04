@@ -37,8 +37,10 @@ while { _mission_continue } do {
 // victory
 if (_active_enemy == 0) then {
     private _position = (_tunnel getVariable ["tunnel_position", 0]) + 1;
+    private _bonus = 100;
     {
-        [_position] remoteExec ["remote_call_tunnel_success", owner _x];
+        _x addScore _bonus;
+        [_position, _bonus] remoteExec ["remote_call_tunnel_success", owner _x];
     } forEach ([allPlayers, { alive _x && (_x distance2D _start_pos) < 200}] call BIS_fnc_conditionalSelect);
 };
 
