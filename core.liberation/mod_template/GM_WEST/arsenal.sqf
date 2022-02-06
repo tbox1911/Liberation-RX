@@ -103,6 +103,7 @@ blacklisted_weapon = [
 	"optic_Nightstalker",
 	"optic_tws",
 	"optic_tws_mg",
+	"gm_p2a1_launcher_blk",
 	"NVGoggles_tna_F",
 	"NVGogglesB_blk_F",
 	"NVGogglesB_grn_F",
@@ -208,6 +209,8 @@ GRLIB_whitelisted_from_arsenal_limited = [
     "gm_ge_backpack_satchel_80_blk",
     "gm_ge_backpack_satchel_80_san",
     "gm_backpack_t10_parachute",
+	"gm_fagot_launcher_weaponBag",
+	"gm_milan_launcher_weaponBag",
 	"ItemMap",
 	"ItemRadio",
 	"ItemGPS"
