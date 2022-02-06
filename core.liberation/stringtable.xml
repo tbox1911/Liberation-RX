@@ -4679,14 +4679,14 @@
 			</Key>
 			<Key ID="STR_LOCK">
 				<Original>-- LOCK</Original>
-				<French>-- VERROU</French>
+				<French>-- LOCK</French>
 				<Japanese>-- 鍵をかける</Japanese>
 				<Chinesesimp>-- 锁车 --</Chinesesimp>
 				<Chinese>-- 鎖車 --</Chinese>
 			</Key>
 			<Key ID="STR_UNLOCK">
 				<Original>-- UNLOCK</Original>
-				<French>-- DEVERROU</French>
+				<French>-- UNLOCK</French>
 				<Japanese>-- 鍵をあける</Japanese>
 				<Chinesesimp>-- 解锁 --</Chinesesimp>
 				<Chinese>-- 解鎖 --</Chinese>
@@ -4700,7 +4700,7 @@
 			</Key>
 			<Key ID="STR_PAINT">
 				<Original>-- PAINT</Original>
-				<French>-- Coul.PEINT</French>
+				<French>-- PEINTURE</French>
 				<Japanese>-- ペイントする</Japanese>
 				<Chinesesimp>-- 喷漆 --</Chinesesimp>
 				<Chinese>-- 噴漆 --</Chinese>
