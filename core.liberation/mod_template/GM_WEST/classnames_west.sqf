@@ -131,10 +131,10 @@ boats_west = [
 ];
 
 static_vehicles = [
-	["B_HMG_01_F",0,10,0,GRLIB_perm_log],
-	["B_HMG_01_high_F",0,10,0,GRLIB_perm_tank],
-	["gm_ge_army_mg3_aatripod",0,50,0,GRLIB_perm_air],
-	["gm_ge_army_milan_launcher_tripod",0,50,0,GRLIB_perm_air],
+	["B_HMG_01_F",0,10,0,GRLIB_perm_inf],
+	["B_HMG_01_high_F",0,10,0,GRLIB_perm_log],
+	["gm_ge_army_mg3_aatripod",0,50,0,GRLIB_perm_tank],
+	["gm_ge_army_milan_launcher_tripod",0,50,0,GRLIB_perm_tank],
 	["B_Mortar_01_F",0,500,0,GRLIB_perm_max]
 ];
 
