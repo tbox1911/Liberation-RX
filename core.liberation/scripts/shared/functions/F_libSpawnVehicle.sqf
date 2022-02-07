@@ -27,13 +27,12 @@ if ( _spawnpos distance2D zeropos < 300 ) exitWith { diag_log format ["--- LRX E
 
 _newvehicle = objNull;
 if ( _classname isKindOf "Air" ) then {
+	private _veh_alt = 300;
+	if ( _civilian ) then { _veh_alt = 200 };
+	_spawnpos set [2, _veh_alt];
 	_newvehicle = createVehicle [_classname, _spawnpos, [], 0, "FLY"];
-	_newvehicle setPos (getPosATL _newvehicle vectorAdd [0, 0, 400]);
-	if ( _civilian ) then {
-		_newvehicle flyInHeight 200;
-	} else {
-		_newvehicle flyInHeightASL [200, 100, 400];
-	};
+	_newvehicle flyInHeightASL [_veh_alt, 150, 400];
+
 } else {
 	_spawnpos set [2, 0.5];
 	if (surfaceIsWater _spawnpos && !(_classname isKindOf "Ship")) then {
@@ -44,7 +43,6 @@ if ( _classname isKindOf "Air" ) then {
 		};
 	};
 	_newvehicle = createVehicle [_classname, _spawnpos, [], 0, "NONE"];
-	_newvehicle allowDamage false;
 };
 
 _newvehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
@@ -57,6 +55,8 @@ clearBackpackCargoGlobal _newvehicle;
 sleep 0.2;
 
 if ( !_civilian ) then {
+	_newvehicle allowDamage false;
+
 	if ( _classname in militia_vehicles ) then {
 		[ _newvehicle ] call F_libSpawnMilitiaCrew;
 	} else {
