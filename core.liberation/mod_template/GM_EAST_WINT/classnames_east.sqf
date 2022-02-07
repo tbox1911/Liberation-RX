@@ -12,7 +12,7 @@ opfor_machinegunner = "gm_pl_army_machinegunner_rpk_80_win";
 opfor_heavygunner = "gm_pl_army_machinegunner_pk_80_win";
 opfor_medic = "gm_pl_army_medic_akm_80_win";
 opfor_rpg = "gm_pl_army_antitank_akm_rpg7_80_win";
-opfor_at = "gm_pl_army_antitank_akm_fagot_80_win";
+opfor_at = "gm_pl_army_antitank_akm_rpg7_80_win";
 opfor_aa = "gm_pl_army_antiair_akm_9k32m_80_win";
 opfor_officer = "gm_pl_army_officer_pm_80_win";
 opfor_sharpshooter = "gm_pl_army_marksman_svd_80_win";
@@ -48,7 +48,7 @@ militia_squad = [
 	"gm_gc_army_sf_radioman_mpikms72_80_win",
 	"gm_gc_army_sf_antiair_pm63_9k32m_80_win",
 	"gm_gc_army_sf_antitank_mpikms72_rpg7_80_win",
-	"gm_gc_army_sf_antitank_mpikms72_fagot_80_win"
+	"gm_gc_army_sf_antitank_mpikms72_rpg7_80_win"
 ];
 
 militia_loadout_overide = [

@@ -58,7 +58,7 @@ resistance_squad = [
 	"gm_gc_army_sf_radioman_mpikms72_80_win",
 	"gm_gc_army_sf_marksman_svd_80_win",
 	"gm_gc_army_sf_antitank_mpikms72_rpg7_80_win",
-	"gm_gc_army_sf_antitank_mpikms72_fagot_80_win",
+	"gm_gc_army_sf_antitank_mpikms72_rpg7_80_win",
 	"gm_gc_army_sf_rifleman_mpikms72_80_win",
 	"gm_gc_army_sf_marksman_svd_80_win"
 ];
