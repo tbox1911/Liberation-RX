@@ -97,7 +97,10 @@ opfor_vehicles_low_intensity = [
 	"gm_gc_army_uaz469_spg9",
 	"gm_gc_army_brdm2",
 	"gm_gc_army_brdm2",
-	"gm_gc_army_btr60pa"
+	"gm_gc_army_btr60pa",
+	"gm_gc_army_pt76b",
+	"gm_gc_army_bmp1sp2",
+	"gm_gc_army_ural375d_cargo"	
 ];
 
 opfor_battlegroup_vehicles = [
@@ -105,14 +108,11 @@ opfor_battlegroup_vehicles = [
 	"gm_gc_army_uaz469_spg9",
 	"gm_gc_army_brdm2",
 	"gm_gc_army_bmp1sp2",
-	"gm_gc_army_pt76b",
 	"gm_gc_army_t55am2b",
 	"gm_gc_army_zsu234v1",
 	"gm_gc_army_btr60pb",
 	"gm_pl_army_ot64a",
-	"gm_gc_army_ural375d_mlrs",
-	"gm_gc_army_ural375d_cargo",
-	"gm_pl_airforce_mi2urs",
+	"gm_gc_army_t55ak",
 	"gm_pl_airforce_mi2us",
 	"gm_pl_airforce_mi2p",
 	"gm_gc_army_btr60pa",
@@ -124,7 +124,7 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"gm_gc_army_pt76b",
 	"gm_gc_army_zsu234v1",
 	"gm_pl_army_ot64a",
-	"gm_gc_army_ural375d_mlrs",
+	"gm_gc_army_t55ak",
 	"gm_gc_army_ural375d_cargo",
 	"gm_pl_airforce_mi2p",
 	"gm_gc_army_btr60pa",

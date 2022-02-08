@@ -72,10 +72,10 @@ light_vehicles = [
 	["gm_ge_army_typ1200_cargo",1,10,1,0],
 	["gm_ge_army_iltis_cargo",1,20,1,0],
 	["gm_ge_civ_u1300l",2,40,5,0],
-	["gm_ge_army_kat1_451_container",1,15,1,0],
 
 	// lvl 1
 	["gm_ge_army_iltis_mg3",2,50,2,GRLIB_perm_inf],
+	["gm_ge_army_kat1_451_container",1,90,1,GRLIB_perm_inf],
 	// lvl 2
 	["gm_ge_army_kat1_451_cargo",2,100,7,GRLIB_perm_log],
 	// lvl 3
@@ -271,7 +271,7 @@ GRLIB_AirDrop_6 = [
 ];
 
 box_transport_config_west = [
-	[ "gm_ge_civ_u1300l", -4.5, [0, -0.5, -0.4], [0, -2.1, -0.4] ],
+	[ "gm_ge_civ_u1300l", -4.5, [0, -0.5, 0], [0, -2.1, 0] ],
     [ "gm_ge_army_u1300l_container", -4.5, [0, -0.5, -0.4], [0, -2.1, -0.4] ],
     [ "gm_ge_army_kat1_451_container", -5.5, [0, 0.21, -0.01], [0, -1.34, -0.01], [0, -2.9, -0.01]]
 ];
