@@ -83,13 +83,12 @@ light_vehicles = [
 heavy_vehicles = [
 	// lvl 2
 	["gm_gc_army_brdm2um",3,200,7,GRLIB_perm_log],
-	["gm_gc_army_btr60pa",3,250,10,GRLIB_perm_log],
+	["gm_gc_army_brdm2",3,250,10,GRLIB_perm_log],
 	// lvl 3
-	["gm_gc_army_brdm2",5,300,7,GRLIB_perm_tank],
+	["gm_gc_army_bmp1sp2",5,300,7,GRLIB_perm_tank],
 	["gm_gc_army_btr60pb",5,350,10,GRLIB_perm_tank],
 	["gm_pl_army_ot64a",7,400,12,GRLIB_perm_tank],
 	// lvl 4
-	["gm_gc_army_bmp1sp2",10,750,10,GRLIB_perm_air],
 	["gm_gc_army_pt76b",12,800,12,GRLIB_perm_air],
 	["gm_gc_army_t55ak",20,2000,25,GRLIB_perm_air],
 	["gm_gc_army_zsu234v1",10,1000,15,GRLIB_perm_air],

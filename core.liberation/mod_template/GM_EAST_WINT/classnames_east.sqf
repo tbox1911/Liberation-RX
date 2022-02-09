@@ -89,7 +89,7 @@ opfor_vehicles = [
 	"gm_gc_army_pt76b",
 	"gm_gc_army_t55ak",
 	"gm_gc_army_zsu234v1",
-	"gm_gc_army_btr60pa"
+	"gm_gc_army_btr60pb"
 ];
 
 opfor_vehicles_low_intensity = [
@@ -97,7 +97,7 @@ opfor_vehicles_low_intensity = [
 	"gm_gc_army_uaz469_spg9",
 	"gm_gc_army_brdm2",
 	"gm_gc_army_brdm2",
-	"gm_gc_army_btr60pa",
+	"gm_gc_army_btr60pb",
 	"gm_gc_army_pt76b",
 	"gm_gc_army_bmp1sp2",
 	"gm_gc_army_ural375d_cargo"	
@@ -115,7 +115,7 @@ opfor_battlegroup_vehicles = [
 	"gm_gc_army_t55ak",
 	"gm_pl_airforce_mi2us",
 	"gm_pl_airforce_mi2p",
-	"gm_gc_army_btr60pa",
+	"gm_gc_army_btr60pb",
 	"gm_pl_airforce_mi2t"
 ];
 
@@ -127,7 +127,7 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"gm_gc_army_t55ak",
 	"gm_gc_army_ural375d_cargo",
 	"gm_pl_airforce_mi2p",
-	"gm_gc_army_btr60pa",
+	"gm_gc_army_btr60pb",
 	"gm_pl_airforce_mi2t"
 ];
 
@@ -135,7 +135,7 @@ opfor_troup_transports_truck = [
 	"gm_gc_army_ural375d_cargo",
 	"gm_gc_army_btr60pb",
 	"gm_pl_army_ot64a",
-	"gm_gc_army_btr60pa"
+	"gm_gc_army_btr60pb"
 ];
 
 opfor_troup_transports_heli = [
@@ -179,13 +179,12 @@ opfor_recyclable = [
 	["gm_gc_army_ural375d_refuel",5,round (60 / GRLIB_recycling_percentage),40],
 	["gm_gc_army_ural4320_reammo",5,round (100 / GRLIB_recycling_percentage),10],
 	["gm_gc_army_brdm2",5,round (150 / GRLIB_recycling_percentage),7],
-	["gm_gc_army_bmp1sp2",10,round (375 / GRLIB_recycling_percentage),10],
+	["gm_gc_army_bmp1sp2",10,round (300 / GRLIB_recycling_percentage),10],
 	["gm_gc_army_pt76b",12,round (400 / GRLIB_recycling_percentage),12],
 	["gm_gc_army_t55ak",50,round (1000 / GRLIB_recycling_percentage),15],
 	["gm_gc_army_zsu234v1",10,round (500 / GRLIB_recycling_percentage),15],
-	["gm_gc_army_btr60pa",3,round (125 / GRLIB_recycling_percentage),10],
 	["gm_gc_army_t55am2b",60,round (1250 / GRLIB_recycling_percentage),15],
-	["gm_gc_army_btr60pb",5,round (175 / GRLIB_recycling_percentage),10],
+	["gm_gc_army_btr60pb",5,round (350 / GRLIB_recycling_percentage),10],
 	["gm_pl_army_ot64a",7,round (200 / GRLIB_recycling_percentage),12],
 	["gm_gc_army_ural375d_mlrs",60,round (1500 / GRLIB_recycling_percentage),15],
 	// air
