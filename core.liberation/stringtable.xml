@@ -399,7 +399,7 @@
 			</Key>
 			<Key ID="STR_ARSENAL_BOX">
 					<Original>Arsenal box</Original>
-					<French>Caisse armurie</French>
+					<French>Caisse Arsenal</French>
 					<German>Arsenalkiste</German>
 					<Spanish>Caja de Arsenal</Spanish>
 					<Russian>Ящик с арсеналом</Russian>
@@ -5095,14 +5095,14 @@
 			</Key>
 			<Key ID="STR_AIRDROP_LIGHT">
 				<Original>Light</Original>
-				<French>Luninosité</French>
+				<French>Light</French>
 				<Japanese>軽車両</Japanese>
 				<Chinesesimp>越野</Chinesesimp>
 				<Chinese>越野</Chinese>
 			</Key>
 			<Key ID="STR_AIRDROP_LIGHTPLUS">
 				<Original>Light+</Original>
-				<French>Luminosité+</French>
+				<French>Light+</French>
 				<Japanese>軽車両+</Japanese>
 				<Chinesesimp>越野+</Chinesesimp>
 				<Chinese>越野+</Chinese>
