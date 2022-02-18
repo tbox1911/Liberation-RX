@@ -1,9 +1,10 @@
 waitUntil { !isNil "save_is_loaded" };
 waitUntil { !isNil "blufor_sectors" };
 
+sleep 600;
+
 while { GRLIB_endgame == 0 } do {
-	//sleep (floor random [10,15,20] * 60);
-	sleep 60;
+	sleep 300;
 
 	if ( count allPlayers > 0 ) then {
 
