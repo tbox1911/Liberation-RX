@@ -1,7 +1,7 @@
 private _distfob = 100;
 private _distarsenal = 10;
 private _distredeploy = 20;
-private _distvehclose = 8;
+private _distvehclose = 5;
 private _icon_dog = (getText (configFile >> "CfgVehicleIcons" >> "iconAnimal"));
 private _icon_grp = "\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa";
 private _icon_tuto = "\a3\ui_f\data\map\markers\handdrawn\unknown_ca.paa";
@@ -39,8 +39,7 @@ while { true } do {
 		private _near_fuel = [player, "FUEL", _distvehclose, false] call F_check_near;
 		private _near_repair = [player, "REPAIR", _distvehclose, false] call F_check_near;
 		private _near_atm = [player, "ATM", _distvehclose, true] call F_check_near;
-		private _near_shop = [player, "SHOP", _distvehclose, false] call F_check_near;
-		private _my_dog = player getVariable ["my_dog", objNull];
+		private _my_dog = player getVariable ["my_dog", nil];
 		private _my_squad = player getVariable ["my_squad", nil];
 
 		// Tuto
@@ -59,7 +58,7 @@ while { true } do {
 
 		// Dog - Actions
 		private _idact_dog_action1 = _id_actions select 1;
-		if (!isNull _my_dog ) then {
+		if (!isNil "_my_dog") then {
 			if ( _idact_dog_action1 == -1 ) then {
 				_idact = player addAction ["<t color='#80FF80'>" + localize "STR_DOG_FIND" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","find",-640,false,true,"","!call is_DogOnDuty"];
 				_id_actions set [1, _idact];
@@ -399,31 +398,17 @@ while { true } do {
 			};
 		};
 
-		// Shop
-		private _idact_shop = _id_actions select 29;
-		if ((player distance2D lhd) >= 1000 && _near_shop ) then {
-			if ( _idact_shop == -1 ) then {
-				_idact = player addAction ["<t color='#00F080'>" + localize "STR_SHOP_ENTER" + "</t> <img size='1' image='res\ui_recycle.paa'/>", "addons\SHOP\traders_shop.sqf","",-900,true,true,"",""];
-				_id_actions set [29, _idact];
-			};
-		} else {
-			if ( _idact_shop != -1 ) then {
-				player removeAction _idact_shop;
-				_id_actions set [29, -1];
-			};
-		};
-
 		// Recycle PortableHelipadLight (simple objects)
-		private _idact_recycle = _id_actions select 30;
+		private _idact_recycle = _id_actions select 29;
 		if ((player distance2D lhd) >= 1000 && _fobdistance < _distfob && cursorObject isKindof "Land_PortableHelipadLight_01_F") then {
 			if ( _idact_recycle == -1 ) then {
 				_idact = player addAction ["<t color='#FFFF00'>" + localize "STR_RECYCLE_MANAGER" + "</t> <img size='1' image='res\ui_recycle.paa'/>",{deleteVehicle cursorObject},"",-950,false,true,"","[cursorObject] call is_recyclable",_distvehclose];
-				_id_actions set [30, _idact];
+				_id_actions set [29, _idact];
 			};
 		} else {
 			if ( _idact_recycle != -1 ) then {
 				player removeAction _idact_recycle;
-				_id_actions set [30, -1];
+				_id_actions set [29, -1];
 			};
 		};
 
