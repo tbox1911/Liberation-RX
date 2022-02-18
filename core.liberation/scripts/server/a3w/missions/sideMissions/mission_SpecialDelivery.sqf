@@ -64,7 +64,7 @@ _setupObjects =
 		_x disableAI "ANIM";
 		_x removeAllEventHandlers "AnimDone";
 		_x addEventHandler [ "AnimDone", {
-		params[ "_unit", "_anim" ];
+			params[ "_unit", "_anim" ];
 			if ( _anim == "LHD_krajPaluby" ) then { _unit switchMove "LHD_krajPaluby" };
 		}];
 		sleep 1;
