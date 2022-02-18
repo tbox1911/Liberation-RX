@@ -2,7 +2,8 @@ waitUntil { !isNil "save_is_loaded" };
 waitUntil { !isNil "blufor_sectors" };
 
 while { GRLIB_endgame == 0 } do {
-	sleep (floor random [10,15,20] * 60);
+	//sleep (floor random [10,15,20] * 60);
+	sleep 60;
 
 	if ( count allPlayers > 0 ) then {
 
@@ -21,11 +22,10 @@ while { GRLIB_endgame == 0 } do {
 				{
 					[_x, _income] call ammo_add_remote_call;
 				} forEach allPlayers;
-				_text = format ["Reward Received: + %1 Ammo.", _income];
+				_text = format ["Passive Income Received: + %1 Ammo.", _income];
 				[gamelogic, _text] remoteExec ["globalChat", 0];
 			} else {
-				if ( ( { typeof _x == ammobox_b_typename } count vehicles ) <= ( ceil ( ( count _blufor_mil_sectors ) * 1.1 ) ) ) then {
-
+				if ( ( { typeof _x == ammobox_b_typename && (getPosATL _x) distance2D ([getPosATL _x] call F_getNearestFob) > GRLIB_fob_range} count vehicles ) <= (count allPlayers * 3) ) then {
 					_spawnsector = ( selectRandom _blufor_mil_sectors );
 					_newbox = [ammobox_b_typename,  markerpos _spawnsector, false] call boxSetup;
 
@@ -46,8 +46,7 @@ while { GRLIB_endgame == 0 } do {
 		} foreach blufor_sectors;
 
 		if ( count _blufor_fuel_sectors > 0 ) then {
-			if ( ( { typeof _x == fuelbarrel_typename } count vehicles ) <= ( ceil ( ( count _blufor_fuel_sectors ) * 0.95 ) ) ) then {
-
+			if ( ( { typeof _x == fuelbarrel_typename && (getPosATL _x) distance2D ([getPosATL _x] call F_getNearestFob) > GRLIB_fob_range} count vehicles ) <= (count allPlayers * 3) ) then {
 				_spawnsector = ( selectRandom _blufor_fuel_sectors );
 				_newbox = [fuelbarrel_typename, markerpos _spawnsector, false] call boxSetup;
 			};
@@ -62,8 +61,7 @@ while { GRLIB_endgame == 0 } do {
 		} foreach blufor_sectors;
 
 		if ( count _blufor_water_sectors > 0 ) then {
-			if ( ( { typeof _x == waterbarrel_typename } count vehicles ) <= ( ceil ( ( count _blufor_water_sectors ) * 0.95 ) ) ) then {
-
+			if ( ( { typeof _x == waterbarrel_typename && (getPosATL _x) distance2D ([getPosATL _x] call F_getNearestFob) > GRLIB_fob_range} count vehicles ) <= (count allPlayers * 3) ) then {
 				_spawnsector = ( selectRandom _blufor_water_sectors );
 				_newbox = [waterbarrel_typename, markerpos _spawnsector, false] call boxSetup;
 			};
@@ -78,8 +76,7 @@ while { GRLIB_endgame == 0 } do {
 		} foreach blufor_sectors;
 
 		if ( count _blufor_food_sectors > 0 ) then {
-			if ( ( { typeof _x == foodbarrel_typename } count vehicles ) <= ( ceil ( ( count _blufor_food_sectors ) * 3 ) ) ) then {
-
+			if ( ( { typeof _x == foodbarrel_typename && (getPosATL _x) distance2D ([getPosATL _x] call F_getNearestFob) > GRLIB_fob_range} count vehicles ) <= (count allPlayers * 3) ) then {
 				_spawnsector = ( selectRandom _blufor_food_sectors );
 				_newbox = [foodbarrel_typename, markerpos _spawnsector, false] call boxSetup;
 			};
