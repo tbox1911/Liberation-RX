@@ -3,23 +3,86 @@ onLoadName = $STR_MISSION_TITLE;
 briefingName = $STR_MISSION_TITLE;
 onLoadMission = $STR_MISSION_DESCRIPTION;
 overviewText = $STR_MISSION_DESCRIPTION;
-overviewPicture = "res\liberation.paa";
-loadScreen = "res\liberation.paa";
-onLoadIntro = "Welcome on the Liberaton RX planet.";
+overviewPicture = "res\MilSimUnited.paa";
+loadScreen = "res\MilSimUnited.paa";
+onLoadIntro = "MilSim United";
 
 respawn = 3;
 respawndelay = 5;
-respawnButton = 0;
+respawnButton = 1;
 respawnOnStart = 0;
-reviveMode = 0; 
 disabledAI = true;
 enableDebugConsole = 1;
-allowFunctionsLog = 0;
-forceRotorLibSimulation = 2;
+allowFunctionsLog = 1;
+forceRotorLibSimulation = 0;
 
-briefing = 0;
-joinUnassigned = 0;
-LARs_calculateSideGear = 1;
+
+// As a security measure, functions are by default protected against rewriting during mission.
+// This restriction does not apply in missions previewed from the editor.
+allowFunctionsRecompile = "[0, 1] select (is3DENMultiplayer || is3DEN)";
+
+// Disable specific channels for voice and text communication.
+// MOTD and admin say have exception and will show in global.
+// 0 Global, 1 Side, 2 Command, 3 Group, 4 Vehicle, 5 Direct, 6 System
+disableChannels[] = {0};
+
+
+/*
+    ----- Corpse & Wreck Management -----
+*/
+
+// Sets the mode for corpse removal manager.
+// 0 = None                 - None of the units are managed by the manager
+// 1 = All                  - All units are managed by the manager
+// 2 = None_But_Respawned   - Only units that can respawn are managed by the manager
+// 3 = All_But_Respawned    - All units are managed by the manager with exception of respawned (opposite to mode 2)
+corpseManagerMode = 1;
+
+// Corpse limit before which (<=) corpseRemovalMaxTime applies and after which (>) corpseRemovalMinTime applies.
+corpseLimit = 24;
+
+// Remove all bodies that have been dead longer than corpseRemovalMinTime when corpseLimit is reached.
+corpseRemovalMinTime = 900;
+
+// Maximum time a corpse can remain on the ground if total number of corpses is equal or under corpseLimit.
+corpseRemovalMaxTime = 1800;
+
+// Sets the mode for wreck removal manager.
+// 0 = None                 - None of the vehicles are managed by the manager
+// 1 = All                  - All vehicles are managed by the manager
+// 2 = None_But_Respawned   - Only vehicles that can respawn are managed by the manager
+// 3 = All_But_Respawned    - All vehicles are managed by the manager with exception of respawned (opposite to mode 2)
+wreckManagerMode = 1;
+
+// Vehicle wreck limit before which (<=) wreckRemovalMaxTime applies and after which (>) wreckRemovalMinTime applies.
+wreckLimit = 12;
+
+// Remove all wrecks that have existed longer than wreckRemovalMinTime when wreckLimit is breached.
+wreckRemovalMinTime = 900;
+
+// Maximum time a wreck can remain on the ground if total number of wrecks is equal or under wreckLimit.
+wreckRemovalMaxTime = 1800;
+
+// The minimum distance between corpse or wreck and nearest player before the corpse or wreck is allowed to be removed by the garbage collector.
+minPlayerDistance = 600;
+
+
+// By default a new player is not auto assigned a free playable slot in the mission lobby in Multiplayer.
+// Disable this setting to make him auto assigned to the side with least players.
+joinUnassigned = 1;
+
+// When enabled, joining player will join the mission bypassing role selection screen.
+// The joinUnassigned param will be set to 1 automatically, so that player receives 1st available role from mission template.
+// When leaving such mission, player will go straight back to server browser.
+skipLobby = 0;
+
+// Defines if the map is shown after the mission starts.
+showMap = 1;
+
+
+briefing = 1;
+
+LARs_calculateSideGear = 0;
 
 class CfgFunctions {
 	#include "addons\LARs\blacklistArsenal\functions\blacklistArsenal.fncs"
@@ -42,9 +105,9 @@ class cfgSounds {
 };
 
 class Header {
-	gameType = CTI;
-	minPlayers = 1;
-	maxPlayers = 22;
+	gameType = "CTI";
+	minPlayers = 0;
+	maxPlayers = 32;
 };
 
 class CfgDebriefing {
