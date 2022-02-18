@@ -4914,13 +4914,17 @@
 			</Key>
 
 			<!-- do_sell.sqf -->
-
-			<Key ID="STR_DO_SELL">
-				<Original>There is nothing to sell.</Original>
-				<French>Il n' y a rien à vendre</French>
-				<Japanese>この車両には売れるものは入っていません。</Japanese>
-				<Chinesesimp>没什么可卖的。</Chinesesimp>
-				<Chinese>沒什麼可賣的。</Chinese>
+			<Key ID="STR_SELL_WELCOME">
+				<Original>Hello stranger, I buy your vehicle's cargo for a good price!</Original>
+				<French>Bonjour étranger, j'achète la cargaison de votre véhicule à un bon prix !</French>
+			</Key>
+			<Key ID="STR_SELL_NO_VEH">
+				<Original>There is no vehicle nearby.</Original>
+				<French>Il n'y a pas de véhicule à proximité.</French>
+			</Key>
+			<Key ID="STR_NOTHING_TO_SELL">
+				<Original>There's nothing I can buy in the cargo of your vehicle</Original>
+				<French>Il n'y a rien que je puisse acheter dans la cargaison de votre véhicule</French>
 			</Key>
 			<Key ID="STR_CARGO_SOLD">
 				<Original>%1 Cargo Sold.\n%2 +%3 AMMO !</Original>
@@ -4937,8 +4941,8 @@
 				<Chinese>出售庫存</Chinese>
 			</Key>
 			<Key ID="STR_SELL_CONFIRM">
-				<Original>&lt;t align='center'&gt;Sell ALL %1 cargo&lt;br/&gt;for %2 AMMO.&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
-				<French>&lt;t align='center'&gt;TOUT VENDRE %1 cargo&lt;br/&gt;pour %2 MUN.&lt;br/&gt;Es tu sûr ?&lt;/t&gt;</French>
+				<Original>&lt;t align='center'&gt;Sell the cargo of %1&lt;br/&gt;for %2 AMMO.&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
+				<French>&lt;t align='center'&gt;Vendre la cargaison de %1&lt;br/&gt;pour %2 MUN.&lt;br/&gt;Es tu sûr ?&lt;/t&gt;</French>
 				<Japanese>&lt;t align='center'&gt;%1 の荷物を全て売ります。&lt;br/&gt;取得： %2 弾薬&lt;br/&gt;よろしいですか？&lt;/t&gt;</Japanese>
 				<Chinesesimp>&lt;t align='center'&gt;出售所有 %1 库存&lt;br/&gt;获得 %2 弹药。&lt;br/&gt;你确定吗？&lt;/t&gt;</Chinesesimp>
 				<Chinese>&lt;t align='center'&gt;出售所有 %1 庫存&lt;br/&gt;獲得 %2 彈藥。 &lt;br/&gt;你確定嗎？ &lt;/t&gt;</Chinese>
