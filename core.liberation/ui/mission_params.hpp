@@ -10,16 +10,40 @@ class Params
 		title = $STR_PARAMS_UNITCAP;
 		values[] = {0.5,0.75,1,1.25,1.5,2};
 		texts[] = {$STR_PARAMS_UNITCAP1,$STR_PARAMS_UNITCAP2,$STR_PARAMS_UNITCAP3,$STR_PARAMS_UNITCAP4,$STR_PARAMS_UNITCAP5,$STR_PARAMS_UNITCAP6};
-		default = 1;
+		default = 2;
 	};
 	class FancyInfo {
 		title = $STR_FANCY;
 		values[] = { 2, 1, 0 };
 		texts[] = { $STR_PARAMS_ENABLED, "Info", $STR_PARAMS_DISABLED };
-		default = 1;
+		default = 0;
 	};
 	class HideOpfor {
 		title = $STR_OPFORMARK;
+		values[] = { 1, 0 };
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
+		default = 0;
+	};
+	class EnableArsenal {
+		title = $STR_ARSENAL;
+		values[] = { 1, 0 };
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
+		default = 1;
+	};
+	class LimitedArsenal {
+		title = $STR_LIMIT_ARSENAL;
+		values[] = { 1, 0 };
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
+		default = 0;
+	};
+	class EnableFilter {
+		title = $STR_FILTER_ARSENAL;
+		values[] = { 1, 0 };
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
+		default = 0;
+	};	
+	class EnableLock {
+		title = $STR_VEH_LOCK;
 		values[] = { 1, 0 };
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 0;
@@ -36,66 +60,6 @@ class Params
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 0;
 	};
-	class Space6 {
-		title = "";
-		values[] = { "" };
-		texts[] = { "" };
-		default = "";
-	};
-	class EnableArsenal {
-		title = $STR_ARSENAL;
-		values[] = { 1, 0 };
-		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 1;
-	};
-	class LimitedArsenal {
-		title = $STR_LIMIT_ARSENAL;
-		values[] = { 1, 0 };
-		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 1;
-	};
-	class EnableFilterCUP {
-		title = "MOD filter: CUP Weapons";
-		values[] = { 1, 0 };
-		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 0;
-	};
-	class EnableFilterRHS {
-		title = "MOD filter: RHS";
-		values[] = { 1, 0 };
-		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 0;
-	};
-	class EnableFilterR3F {
-		title = "MOD filter R3F";
-		values[] = { 1, 0 };
-		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 0;
-	};	
-	class EnableFilterEJW {
-		title = "MOD filter: Eric JW";
-		values[] = { 1, 0 };
-		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 0;
-	};
-	class EnableFilterGM {
-		title = "MOD filter: Global Mob";
-		values[] = { 1, 0 };
-		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 0;
-	};		
-	class EnableFilterOPTRE {
-		title = "MOD filter: OPTRE";
-		values[] = { 1, 0 };
-		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 0;
-	};
-	class EnableFilterSOG {
-		title = "MOD filter: SoG";
-		values[] = { 1, 0 };
-		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 0;
-	};	
 	class Space5 {
 		title = "";
 		values[] = { "" };
@@ -104,57 +68,15 @@ class Params
 	};
 	class ModPresetWest {
 		title = "MOD Preset - Friendly";
-		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18 };
-		texts[] = {
-					"A3 NATO",
-					"A3 CSAT",
-					"A3 AAF",
-					"CUP BAF Desert",
-					"CUP USMC Woodland",
-					"CUP USMC Desert",
-					"R3F WEST Desert",
-					"R3F WEST Woodland",
-					"RHS USAF",
-					"RHS AFRF",
-					"FFAA SPAIN Woodland",
-					"GM WEST",
-					"GM WEST Winter",
-					"GM EAST",
-    				"GM EAST Winter",
-					"OPTRE West",
-					"WS UNA",
-					"SoG USA",
-					"SoG VIETCONG"
-				};
-		default = 0;
+		values[] = { 0,1,2,3,4,5,6,7,8,9,10 };
+		texts[] = { "A3 NATO", "A3 CSAT", "A3 AAF", "CUP BAF Desert", "CUP USMC", "RHS USAF", "RHS AFRF", "GM WEST", "GM WEST Winter", "OPTRE West", "WS UNA" };
+		default = 5;
 	};
 	class ModPresetEast {
 		title = "MOD Preset - Enemy";
-		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 };
-		texts[] = {
-					"A3 CSAT",
-					"A3 NATO",
-					"A3 AAF",
-					"A3 CSAT Urban",
-					"CUP Takistan",
-					"CUP USMC Woodland",
-					"CUP USMC Desert",
-					"EJW Taliban",
- 					"R3F WEST Desert",
-					"R3F WEST Wood",
-					"RHS USAF",
-					"RHS AFRF",
-					"FFAA SPAIN Wood",
-					"GM WEST",
-					"GM WEST Winter",
-					"GM EAST",
-					"GM EAST Winter",
-					"OPTRE East",
-					"WS FIA",
-					"SoG USA",
-					"SoG VIETCONG"
-				};
-		default = 0;
+		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11 };
+		texts[] = { "A3 CSAT", "A3 NATO", "A3 AAF", "A3 CSAT Urban", "CUP Takistan", "EJW Taliban", "RHS AFRF", "RHS USAF", "GM EAST", "GM EAST Winter", "OPTRE East", "WS FIA"};
+		default = 6;
 	};
 	class ForcedLoadout {
 		title = $STR_FORCE_LOADOUT;
@@ -172,7 +94,7 @@ class Params
 		title = $STR_PARAM_FOB_TYPE ;
 		values[] = {0,1};
 		texts[] = {"Huron", "Truck"};
-		default = 0;
+		default = 1;
 	};
 	class HuronType{
 		title = $STR_PARAM_HURON_TYPE ;
@@ -190,7 +112,7 @@ class Params
 		title = $STR_PARAMS_DIFFICULTY;
 		values[] = { 0.5, 0.75, 1, 1.25, 1.5, 2, 4, 10 };
 		texts[] = { $STR_PARAMS_DIFFICULTY1, $STR_PARAMS_DIFFICULTY2, $STR_PARAMS_DIFFICULTY3, $STR_PARAMS_DIFFICULTY4, $STR_PARAMS_DIFFICULTY5, $STR_PARAMS_DIFFICULTY6, $STR_PARAMS_DIFFICULTY7, $STR_PARAMS_DIFFICULTY8 };
-		default = 1;
+		default = 2;
 	};
 	class Aggressivity{
 		title = $STR_AGGRESSIVITY_PARAM;
@@ -208,18 +130,18 @@ class Params
 		title = $STR_PARAM_SECTOR_RADIUS;
 		values[] = {0,300,400,500,600,700,800,900,1000,1200,1500};
 		texts[] = {$STR_PARAMS_DISABLED,300,400,500,600,700,800,900,1000,1200,1500};
-		default = 0;
+		default = 600;
 	};
 	class DayDuration {
 		title = $STR_PARAMS_DAYDURATION;
-		values[] = { 0.25, 0.5, 1, 1.5, 2, 2.5, 3, 5, 10, 20, 30, 60 };
-		texts[] = { "0.25", "0.5", "1", "1.5", "2", "2.5", "3", "5", "10", "20", "30", "60" };
-		default = 1;
+        values[] = {7, 6, 4, 3, 2, 1};
+        texts[] = {"3.43","4","6","8","12","24"};
+		default = 7;
 	};
-	class NightDuration {
-		title = $STR_PARAMS_NIGHTDURATION;
-		values[] = { 0.25, 0.5, 1, 1.5, 2, 2.5, 3, 5, 10, 20, 30, 60 };
-		texts[] = { "0.25", "0.5", "1", "1.5", "2", "2.5", "3", "5", "10", "20", "30", "60" };
+	class ShorterNights {
+		title = $STR_SHORTER_NIGHTS_PARAM;
+		values[] = {1,0};
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 1;
 	};
 	class Weather {
@@ -256,13 +178,13 @@ class Params
 		title = $STR_TK_MODE;
 		values[] = { 0, 1, 2 };
 		texts[] = { $STR_TK_MODE_STRICT, $STR_TK_MODE_RELAX, $STR_PARAMS_DISABLED };
-		default = 1;
+		default = 2;
 	};
 	class TK_count {
 		title = $STR_TK_COUNT;
 		values[] = { 3, 4, 5, 6, 7, 8, 9, 10 };
 		texts[] = { 3, 4, 5, 6, 7, 8, 9, 10 };
-		default = 4;
+		default = 10;
 	};
 	class PassiveIncome{
 		title = $STR_PARAM_PASSIVE_INCOME;
@@ -298,7 +220,7 @@ class Params
 		title = $STR_AMMO_BOUNTIES;
 		values[] = {1,0};
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 1;
+		default = 0;
 	};
 	class CivPenalties{
 		title = $STR_CIV_PENALTIES;
@@ -310,25 +232,25 @@ class Params
 		title = $STR_HALO_PARAM;
 		values[] = {1,5,10,15,20,30,0};
 		texts[] = { $STR_HALO_PARAM1, $STR_HALO_PARAM2, $STR_HALO_PARAM3, $STR_HALO_PARAM4, $STR_HALO_PARAM5, $STR_HALO_PARAM6, $STR_PARAMS_DISABLED };
-		default = 1;
+		default = 0;
 	};
 	class BluforDefenders{
 		title = $STR_PARAM_BLUFOR_DEFENDERS;
 		values[] = {1,0};
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 1;
+		default = 0;
 	};
 	class Autodanger{
 		title = $STR_PARAM_AUTODANGER;
 		values[] = {1,0};
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 1;
+		default = 0;
 	};
 	class MaximumFobs{
 		title = $STR_PARAM_FOBS_COUNT;
 		values[] = {3,5,7,10,15,20,26};
 		texts[] = {3,5,7,10,15,20,26};
-		default = 5;
+		default = 3;
 	};
 	class SquadSize{
 		title = $STR_PARAM_SQUAD_SIZE_START;
@@ -340,13 +262,13 @@ class Params
 		title = $STR_PARAM_SQUAD_SIZE;
 		values[] = {0,1,2,3,4,5,6,7,8,9,10};
 		texts[] = {0,1,2,3,4,5,6,7,8,9,10};
-		default = 7;
+		default = 3;
 	};
 	class MaxSpawnPoint{
 		title = $STR_PARAM_SPAWN_MAX;
-		values[] = {1,2,3,4};
-		texts[] = {1,2,3,4};
-		default = 2;
+		values[] = {0,1,2,3,4};
+		texts[] = {0,1,2,3,4};
+		default = 0;
 	};
 	class Space3 {
 		title = "";
@@ -366,12 +288,6 @@ class Params
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 1;
 	};
-	class EnableLock {
-		title = $STR_VEH_LOCK;
-		values[] = { 1, 0 };
-		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 1;
-	};	
 	class CleanupVehicles {
 		title = $STR_CLEANUP_PARAM;
 		values[] = { 0,1,2,4 };
@@ -382,13 +298,13 @@ class Params
 		title = $STR_PARAMS_INTRO;
 		values[] = { 1, 0 };
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 1;
+		default = 0;
 	};
 	class DeploymentCinematic {
 		title = $STR_PARAMS_DEPLOYMENTCAMERA;
 		values[] = { 1, 0 };
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 0;
+		default = 1;
 	};
 /*	class FirstFob {
 		title = $STR_PARAMS_FIRSTFOB;
@@ -400,7 +316,7 @@ class Params
 		title = "Enable the Admin Menu";
 		values[] = { 1, 0 };
 		texts[] = { $STR_YES, $STR_NO };
-		default = 1;
+		default = 0;
 	};
 	class Space4 {
 		title = "";
