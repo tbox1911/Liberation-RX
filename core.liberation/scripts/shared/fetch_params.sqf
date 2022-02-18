@@ -1,10 +1,9 @@
 GRLIB_difficulty_modifier = ["Difficulty",1] call bis_fnc_getParamValue;
-GRLIB_day_factor = ["DayDuration",1] call bis_fnc_getParamValue;
-GRLIB_night_factor = ["NightDuration",1] call bis_fnc_getParamValue;
+GRLIB_time_factor = ["DayDuration",1] call bis_fnc_getParamValue;
 GRLIB_resources_multiplier = ["ResourcesMultiplier",1] call bis_fnc_getParamValue;
 GRLIB_fatigue = ["Fatigue",0] call bis_fnc_getParamValue;
 GRLIB_revive = ["Revive",2] call bis_fnc_getParamValue;
-GRLIB_tk_mode = ["TK_mode",1] call bis_fnc_getParamValue;
+GRLIB_tk_mode = ["TK_mode",0] call bis_fnc_getParamValue;
 GRLIB_tk_count = ["TK_count",4] call bis_fnc_getParamValue;
 GRLIB_introduction = ["Introduction",1] call bis_fnc_getParamValue;
 GRLIB_deployment_cinematic = ["DeploymentCinematic",1] call bis_fnc_getParamValue;
@@ -18,11 +17,13 @@ GRLIB_admin_menu = ["AdminMenu",1] call bis_fnc_getParamValue;
 GRLIB_param_wipe_savegame_1 = ["WipeSave1",0] call bis_fnc_getParamValue;
 GRLIB_param_wipe_savegame_2 = ["WipeSave2",0] call bis_fnc_getParamValue;
 GRLIB_passive_income = ["PassiveIncome",0] call bis_fnc_getParamValue;
+GRLIB_permissions_param = ["Permissions",1] call bis_fnc_getParamValue;
 GRLIB_halo_param = ["HaloJump",1] call bis_fnc_getParamValue;
 GRLIB_use_whitelist = ["Whitelist",1] call bis_fnc_getParamValue;
 GRLIB_cleanup_vehicles = ["CleanupVehicles",2] call bis_fnc_getParamValue;
 GRLIB_csat_aggressivity = ["Aggressivity",1] call bis_fnc_getParamValue;
 GRLIB_weather_param = ["Weather",4] call bis_fnc_getParamValue;
+GRLIB_shorter_nights = ["ShorterNights",1] call bis_fnc_getParamValue;
 GRLIB_ammo_bounties = [ "AmmoBounties",0] call bis_fnc_getParamValue;
 GRLIB_civ_penalties = [ "CivPenalties",0] call bis_fnc_getParamValue;
 GRLIB_remote_sensors = [ "DisableRemoteSensors",0] call bis_fnc_getParamValue;
@@ -36,14 +37,7 @@ GRLIB_max_squad_size = ["MaxSquadSize",7] call bis_fnc_getParamValue;
 GRLIB_max_spawn_point = ["MaxSpawnPoint",2] call bis_fnc_getParamValue;
 GRLIB_enable_arsenal = ["EnableArsenal",1] call bis_fnc_getParamValue;
 GRLIB_limited_arsenal = ["LimitedArsenal",1] call bis_fnc_getParamValue;
-GRLIB_filter_arsenalCUP = ["EnableFilterCUP",0] call bis_fnc_getParamValue;
-GRLIB_filter_arsenalRHS = ["EnableFilterRHS",0] call bis_fnc_getParamValue;
-GRLIB_filter_arsenalR3F = ["EnableFilterR3F",0] call bis_fnc_getParamValue;
-GRLIB_filter_arsenalEJW = ["EnableFilterEJW",0] call bis_fnc_getParamValue;
-GRLIB_filter_arsenalGM = ["EnableFilterGM",0] call bis_fnc_getParamValue;
-GRLIB_filter_arsenalOPTRE = ["EnableFilterOPTRE",0] call bis_fnc_getParamValue;
-GRLIB_filter_arsenalSOG = ["EnableFilterSOG",0] call bis_fnc_getParamValue;
-GRLIB_permissions_param = ["Permissions",1] call bis_fnc_getParamValue;
+GRLIB_filter_arsenal = ["EnableFilter",0] call bis_fnc_getParamValue;
 GRLIB_permission_vehicles = ["EnableLock",1] call bis_fnc_getParamValue;
 GRLIB_forced_loadout = ["ForcedLoadout",1] call bis_fnc_getParamValue;
 GRLIB_fancy_info = ["FancyInfo",1] call bis_fnc_getParamValue;
@@ -85,27 +79,19 @@ GRLIB_GM_enabled = isClass(configFile >> "cfgPatches" >> "gm_Core"); // Returns 
 GRLIB_CUPW_enabled = isClass(configFile >> "CfgPatches" >> "CUP_Weapons_AK"); // Returns true if CUP Weapons is enabled
 GRLIB_CUPU_enabled = isClass(configFile >> "CfgPatches" >> "CUP_Creatures_Extra"); // Returns true if CUP Units is enabled
 GRLIB_CUPV_enabled = isClass(configFile >> "CfgPatches" >> "CUP_AirVehciles_AH1Z"); // Returns true if CUP Vehicles is enabled
-GRLIB_EJW_enabled = isClass(configFile >> "CfgPatches" >> "Ej_u100"); // Returns true if EricJ Weapons is enabled
-GRLIB_RHS_enabled = isClass(configFile >> "CfgPatches" >> "rhs_main"); // Returns true if RHS is enabled
-GRLIB_R3F_enabled = isClass(configFile >> "CfgPatches" >> "r3f_armes"); // Returns true if R3F is enabled
-GRLIB_AMF_enabled = isClass(configFile >> "CfgPatches" >> "AMF_Patches"); // Returns true if AMF is enabled
-GRLIB_SOG_enabled = isClass(configFile >> "CfgPatches" >> "vn_misc"); // Returns true if SOG is enabled
+GRLIB_EJW_enabled = isClass(configFile >> "CfgPatches" >> "Ej_u100"); // Returns true if EricJ Weapons is enabled 
+GRLIB_RHS_enabled = isClass(configFile >> "CfgPatches" >> "rhs_main"); // Returns true if RHS is enabled 
 
 // Check side Addon
 if ( !GRLIB_EJW_enabled && "EJW" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
-if ( (!GRLIB_CUPU_enabled || !GRLIB_CUPV_enabled) && "CP_BAF_DES" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
-if ( (!GRLIB_CUPU_enabled || !GRLIB_CUPV_enabled) && "CP_TA" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
+if ( !GRLIB_CUPU_enabled && !GRLIB_CUPV_enabled && "CP_BAF_DES" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
+if ( !GRLIB_CUPU_enabled && !GRLIB_CUPV_enabled && "CP_TA" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
 if ( !GRLIB_RHS_enabled && "RHS_AFRF" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
 if ( !GRLIB_RHS_enabled && "RHS_USAF" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
 if ( !GRLIB_GM_enabled && "GM_WEST" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
 if ( !GRLIB_GM_enabled && "GM_WEST_WINT" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
 if ( !GRLIB_GM_enabled && "GM_EAST" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
 if ( !GRLIB_GM_enabled && "GM_EAST_WINT" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
-if ( (!GRLIB_R3F_enabled || !GRLIB_AMF_enabled) && "R3F_WEST_D" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
-if ( (!GRLIB_R3F_enabled || !GRLIB_AMF_enabled) && "R3F_WEST_W" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
-if ( !GRLIB_SOG_enabled && "SOG_USA" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
-if ( !GRLIB_SOG_enabled && "SOG_VIETCONG" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
-
 if (abort_loading) exitWith { abort_loading_msg = format [
 	"********************************\n
 	FATAL! - Invalid Side selection !\n\n
@@ -124,9 +110,6 @@ if ( GRLIB_mod_west in ["A3_BLU", "A3_IND"]) then {
 	};
 };
 
-// ACE
-if ( GRLIB_ACE_enabled ) then {	GRLIB_revive = 0; GRLIB_fatigue = 1; GRLIB_fancy_info = 0; GRLIB_limited_arsenal = 0 };  // Disable PAR/Fatigue/Fancy if ACE present
-
 if ( GRLIB_fatigue == 1 ) then { GRLIB_fatigue = true } else { GRLIB_fatigue = false };
 if ( GRLIB_introduction == 1 ) then { GRLIB_introduction = true } else { GRLIB_introduction = false };
 if ( GRLIB_deployment_cinematic == 1 ) then { GRLIB_deployment_cinematic = true } else { GRLIB_deployment_cinematic = false };
@@ -134,18 +117,13 @@ if ( GRLIB_admin_menu == 1 ) then { GRLIB_admin_menu = true } else { GRLIB_admin
 if ( GRLIB_hide_opfor == 1 ) then { GRLIB_hide_opfor = true } else { GRLIB_hide_opfor = false };
 if ( GRLIB_enable_arsenal == 1 ) then { GRLIB_enable_arsenal = true } else { GRLIB_enable_arsenal = false };
 if ( GRLIB_limited_arsenal == 1 ) then { GRLIB_limited_arsenal = true } else { GRLIB_limited_arsenal = false };
-if ( GRLIB_filter_arsenalCUP == 1 ) then { GRLIB_filter_arsenalCUP = true } else { GRLIB_filter_arsenalCUP = false };
-if ( GRLIB_filter_arsenalRHS == 1 ) then { GRLIB_filter_arsenalRHS = true } else { GRLIB_filter_arsenalRHS = false };
-if ( GRLIB_filter_arsenalR3F == 1 ) then { GRLIB_filter_arsenalR3F = true } else { GRLIB_filter_arsenalR3F = false };
-if ( GRLIB_filter_arsenalEJW == 1 ) then { GRLIB_filter_arsenalEJW = true } else { GRLIB_filter_arsenalEJW = false };
-if ( GRLIB_filter_arsenalGM == 1 ) then { GRLIB_filter_arsenalGM = true } else { GRLIB_filter_arsenalGM = false };
-if ( GRLIB_filter_arsenalOPTRE == 1 ) then { GRLIB_filter_arsenalOPTRE = true } else { GRLIB_filter_arsenalOPTRE = false };
-if ( GRLIB_filter_arsenalSOG == 1 ) then { GRLIB_filter_arsenalSOG = true } else { GRLIB_filter_arsenalSOG = false };
+if ( GRLIB_filter_arsenal == 1 ) then { GRLIB_filter_arsenal = true } else { GRLIB_filter_arsenal = false };
 if ( GRLIB_permission_vehicles == 1 ) then { GRLIB_permission_vehicles = true } else { GRLIB_permission_vehicles = false };
 if ( GRLIB_adaptive_opfor == 1 ) then { GRLIB_adaptive_opfor = true } else { GRLIB_adaptive_opfor = false };
 if ( GRLIB_passive_income == 1 ) then { GRLIB_passive_income = true } else { GRLIB_passive_income = false };
 if ( GRLIB_permissions_param == 1 ) then { GRLIB_permissions_param = true } else { GRLIB_permissions_param = false };
 if ( GRLIB_use_whitelist == 1 ) then { GRLIB_use_whitelist = true } else { GRLIB_use_whitelist = false };
+if ( GRLIB_shorter_nights == 1 ) then { GRLIB_shorter_nights = true } else { GRLIB_shorter_nights = false };
 if ( GRLIB_ammo_bounties == 1 ) then { GRLIB_ammo_bounties = true } else { GRLIB_ammo_bounties = false };
 if ( GRLIB_civ_penalties == 1 ) then { GRLIB_civ_penalties = true } else { GRLIB_civ_penalties = false };
 if ( GRLIB_blufor_defenders == 1 ) then { GRLIB_blufor_defenders = true } else { GRLIB_blufor_defenders = false };
@@ -157,16 +135,17 @@ if ( GRLIB_disable_death_chat == 1 ) then { GRLIB_disable_death_chat = true } el
 // Overide sector radius
 if (GRLIB_sector_radius != 0) then { GRLIB_sector_size = GRLIB_sector_radius };
 
+// ACE
+if ( GRLIB_ACE_enabled ) then {	GRLIB_revive = 0; GRLIB_fatigue = true; GRLIB_fancy_info = 0; GRLIB_limited_arsenal = true; };  // Disable PAR/Fatigue/Fancy if ACE present
+
 // Check MOD
-GRLIB_mod_enabled = false;
-GRLIB_filter_arsenal = false;
-GRLIB_MOD_signature = [];
+GRLIB_mod_enabled = true;
 
 // Arsenal MOD filters
-if ( GRLIB_OPTRE_enabled && GRLIB_filter_arsenalOPTRE ) then { GRLIB_MOD_signature append ["optre_"]; GRLIB_mod_enabled = true };
-if ( GRLIB_EJW_enabled && GRLIB_filter_arsenalEJW ) then { GRLIB_MOD_signature append ["ej_"]; GRLIB_mod_enabled = true };
-if ( GRLIB_GM_enabled && GRLIB_filter_arsenalGM) then { GRLIB_MOD_signature append ["gm_"]; GRLIB_mod_enabled = true };
-if ( GRLIB_CUPW_enabled && GRLIB_filter_arsenalCUP) then { GRLIB_MOD_signature append ["cup_"]; GRLIB_mod_enabled = true };
-if ( GRLIB_RHS_enabled && GRLIB_filter_arsenalRHS) then { GRLIB_MOD_signature append ["rhs"]; GRLIB_mod_enabled = true };
-if ( GRLIB_R3F_enabled && GRLIB_filter_arsenalR3F) then { GRLIB_MOD_signature append ["r3f_", "amf_"]; GRLIB_mod_enabled = true };
-if ( GRLIB_SOG_enabled && GRLIB_filter_arsenalSOG) then { GRLIB_MOD_signature append ["vn_"]; GRLIB_mod_enabled = true };
+if ( GRLIB_filter_arsenal ) then {
+	if ( GRLIB_OPTRE_enabled ) then { GRLIB_MOD_signature = "optre_"; GRLIB_mod_enabled = true };
+	if ( GRLIB_EJW_enabled ) then { GRLIB_MOD_signature = "ej_"; GRLIB_mod_enabled = true };
+	if ( GRLIB_GM_enabled ) then { GRLIB_MOD_signature = "gm_"; GRLIB_mod_enabled = true };
+	if ( GRLIB_CUPW_enabled ) then { GRLIB_MOD_signature = "cup_"; GRLIB_mod_enabled = true };
+	if ( GRLIB_RHS_enabled ) then { GRLIB_MOD_signature = "rhs"; GRLIB_mod_enabled = true };
+};

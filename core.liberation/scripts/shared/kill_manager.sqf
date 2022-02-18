@@ -34,20 +34,21 @@ if ( isServer ) then {
 			if ( combat_readiness > 100.0 && GRLIB_difficulty_modifier < 2 ) then { combat_readiness = 100.0 };
 		};
 
-		if ( (vehicle _killer) isKindOf "Man" ) then {
+		if ( _unit isKindOf "Man" ) then {
 			infantry_weight = infantry_weight + 1;
-			armor_weight = armor_weight - 0.5;
-			air_weight = air_weight - 0.5;
-		};
-		if ( (vehicle _killer) isKindOf "Tank" ) then {
-			infantry_weight = infantry_weight - 0.50;
-			armor_weight = armor_weight + 2;
-			air_weight = air_weight - 0.50;
-		};
-		if ( (vehicle _killer) isKindOf "Air" ) then {
-			infantry_weight = infantry_weight - 0.50;
-			armor_weight = armor_weight - 0.50;
-			air_weight = air_weight + 2;
+			armor_weight = armor_weight - 0.1;
+			air_weight = air_weight - 0.1;
+		} else {
+			if ( _unit isKindOf "Tank" ) then {
+				infantry_weight = infantry_weight - 0.50;
+				armor_weight = armor_weight + 5;
+				air_weight = air_weight - 0.10;
+			};
+			if ( _unit isKindOf "Air" ) then {
+				infantry_weight = infantry_weight - 0.50;
+				armor_weight = armor_weight - 0.10;
+				air_weight = air_weight + 5;
+			};
 		};
 
 		if ( infantry_weight > 100 ) then { infantry_weight = 100 };
@@ -71,23 +72,29 @@ if ( isServer ) then {
 				_msg = format ["%1 kill a Kamikaze !!", name _killer] ;
 				[gamelogic, _msg] remoteExec ["globalChat", 0];
 				[_killer, 1] remoteExec ["addScore", 2];
+				
+				_killer setVariable ["GREUH_ammo_count", ( (_killer getVariable ["GREUH_ammo_count", 0]) + 1 ), true];
+				
 			};
 
 			if ( !_isKamikaz && side (group _unit) == GRLIB_side_civilian || _isPrisonner ) then {
 				stats_civilians_killed = stats_civilians_killed + 1;
-				if ( isPlayer _killer ) then {
+				/* if ( isPlayer _killer ) then {
 					stats_civilians_killed_by_players = stats_civilians_killed_by_players + 1;
 					if ( GRLIB_civ_penalties ) then {
 						private _penalty = GRLIB_civ_killing_penalty;
 						private _score = score _killer;
-						if ( _score < GRLIB_perm_inf ) then { _penalty = 5 };
-						if ( _score > GRLIB_perm_inf ) then { _penalty = 10 };
-						if ( _score > GRLIB_perm_air ) then { _penalty = 20 };
-						if ( _score > GRLIB_perm_max ) then { _penalty = 60 };
+						if ( _score < GRLIB_perm_inf ) then { _penalty = 25 };
+						if ( _score > GRLIB_perm_inf ) then { _penalty = 25 };
+						if ( _score > GRLIB_perm_air ) then { _penalty = 50 };
+						if ( _score > GRLIB_perm_max ) then { _penalty = 100 };
 						[_killer, -_penalty] remoteExec ["addScore", 2];
+						
+						_killer setVariable ["GREUH_ammo_count", ( (_killer getVariable ["GREUH_ammo_count", 0]) - _penalty), true];
+						
 						[name _unit, _penalty, _killer] remoteExec ["remote_call_civ_penalty", 0];
 					};
-				};
+				}; */
 				_isDriver = (driver (vehicle _killer) == _killer);
 
 				if ( side (group _killer) == GRLIB_side_friendly && (!isPlayer _killer) && (!_isDriver) ) then {
@@ -99,6 +106,9 @@ if ( isServer ) then {
 					if (_owner_id != "0") then {
 						_owner_player = _owner_id call BIS_fnc_getUnitByUID;
 						[_owner_player, -GRLIB_civ_killing_penalty] remoteExec ["addScore", 2];
+						
+						_owner_player setVariable ["GREUH_ammo_count", ( (_owner_player getVariable ["GREUH_ammo_count", 0]) - GRLIB_civ_killing_penalty), true];
+						
 						_msg = format ["%1, Your AI kill Civilian !!", name _owner_player] ;
 						[gamelogic, _msg] remoteExec ["globalChat", 0];
 						[name _unit, GRLIB_civ_killing_penalty, _owner_player] remoteExec ["remote_call_civ_penalty", 0];
@@ -111,7 +121,10 @@ if ( isServer ) then {
 					stats_opfor_soldiers_killed = stats_opfor_soldiers_killed + 1;
 					if ( isplayer _killer ) then {
 						stats_opfor_killed_by_players = stats_opfor_killed_by_players + 1;
-						if (GRLIB_ACE_enabled) then { [_killer, 1] remoteExec ["addScore", 2] };
+						if (GRLIB_ACE_enabled) then {
+							// [_killer, 1] remoteExec ["addScore", 2];
+							// _killer setVariable ["GREUH_ammo_count", ( (_killer getVariable ["GREUH_ammo_count", 0]) + 1 ), true];
+						};
 					};
 
 					private _ai_score = _killer getVariable ["PAR_AI_score", nil];
@@ -122,6 +135,9 @@ if ( isServer ) then {
 				if ( side (group _unit) == GRLIB_side_friendly ) then {
 					stats_blufor_teamkills = stats_blufor_teamkills + 1;
 					[_killer, -10] remoteExec ["addScore", 2];
+					
+					_killer setVariable ["GREUH_ammo_count", ( (_killer getVariable ["GREUH_ammo_count", 0]) - 10 ), true];
+					
 					_msg = localize "STR_FRIENDLY_FIRE";
 					[gamelogic, _msg] remoteExec ["globalChat", 0];
 				};
