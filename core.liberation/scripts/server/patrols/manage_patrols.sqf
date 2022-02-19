@@ -19,15 +19,15 @@ waitUntil { sleep 0.3; !isNil "blufor_sectors" };
 
 {
 	[_x, 1, _forEachIndex] execVM "scripts\server\patrols\manage_one_patrol.sqf";
-	sleep 1;
+	sleep 5;
 } foreach _combat_triggers_infantry;
 
 {
 	[_x, 2, _forEachIndex] execVM "scripts\server\patrols\manage_one_patrol.sqf";
-	sleep 1;
+	sleep 5;
 } foreach _combat_triggers_armor;
 
 {
 	[_x, 3, _forEachIndex] execVM "scripts\server\patrols\manage_one_patrol.sqf";
-	sleep 1;
+	sleep 5;
 } foreach _combat_triggers_static;
