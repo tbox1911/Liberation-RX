@@ -16,6 +16,8 @@ if (!GRLIB_player_spawned) then {
 	waitUntil {sleep 0.2; introDone };
 	waitUntil {sleep 0.2; !isNil "cinematic_camera_stop" };
 	waitUntil {sleep 0.2; cinematic_camera_stop };
+	waitUntil {sleep 0.2; !(isNil "dostartgame")};
+	waitUntil {sleep 0.2; dostartgame == 1};
 };
 
 fullmap = 0;

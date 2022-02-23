@@ -23,8 +23,6 @@ if (typeOf player in units_loadout_overide) then {
 player setVariable ["GREUH_stuff_price", 0];
 GRLIB_backup_loadout = [player] call F_getLoadout;
 
-waitUntil {sleep 0.2; !(isNil "dostartgame")};
-waitUntil {sleep 0.2; dostartgame == 1};
 player allowDamage true;
 
 [] execVM "scripts\client\spawn\redeploy_manager.sqf";
