@@ -2,7 +2,7 @@ params [
 	"_sectorpos",
 	"_classname",
 	[ "_precise_position", false ],
-	[ "_random_rotate", true ],
+	[ "_random_rotate", false ],
 	[ "_civilian", false]
 ];
 
@@ -13,6 +13,7 @@ private _spawnpos = zeropos;
 private _vehcrew = [];
 private _max_try = 10;
 private _radius = GRLIB_capture_size;
+private _airveh_alt = 500;
 
 if ( _precise_position ) then {
 	_spawnpos = [] + _sectorpos;
@@ -25,14 +26,10 @@ if ( _precise_position ) then {
 };
 if ( _spawnpos distance2D zeropos < 300 ) exitWith { diag_log format ["--- LRX Error: No place to build %1 from position %2", _classname, _sectorpos]; objNull };
 
-_newvehicle = objNull;
 if ( _classname isKindOf "Air" ) then {
-	private _veh_alt = 300;
-	if ( _civilian ) then { _veh_alt = 200 };
-	_spawnpos set [2, _veh_alt];
+	if ( _civilian ) then { _airveh_alt = 250 };
+	_spawnpos set [2, _airveh_alt];
 	_newvehicle = createVehicle [_classname, _spawnpos, [], 0, "FLY"];
-	_newvehicle flyInHeightASL [_veh_alt, 150, 400];
-
 } else {
 	_spawnpos set [2, 0.5];
 	if (surfaceIsWater _spawnpos && !(_classname isKindOf "Ship")) then {
@@ -44,19 +41,20 @@ if ( _classname isKindOf "Air" ) then {
 	};
 	_newvehicle = createVehicle [_classname, _spawnpos, [], 0, "NONE"];
 };
+waitUntil {!isNull _newvehicle};
+_newvehicle allowDamage false;
 
-_newvehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
-_newvehicle allowCrewInImmobile true;
-_newvehicle setUnloadInCombat [true, false];
-clearWeaponCargoGlobal _newvehicle;
-clearMagazineCargoGlobal _newvehicle;
-clearItemCargoGlobal _newvehicle;
-clearBackpackCargoGlobal _newvehicle;
-sleep 0.2;
+if ( _newvehicle isKindOf "Air" ) then {
+	_newvehicle engineOn true;
+	if ( _civilian ) then { _airveh_alt = 250 };
+	_newvehicle flyInHeightASL [_airveh_alt, 300, 1000];
+};
+
+if ( _random_rotate ) then {
+	_newvehicle setdir (random 360);
+};
 
 if ( !_civilian ) then {
-	_newvehicle allowDamage false;
-
 	if ( _classname in militia_vehicles ) then {
 		[ _newvehicle ] call F_libSpawnMilitiaCrew;
 	} else {
@@ -90,6 +88,17 @@ if ( !_civilian ) then {
 		{ _x setDamage 0; _x allowDamage true } forEach _crew;
 	};
 };
+
+_newvehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
+_newvehicle allowCrewInImmobile true;
+_newvehicle setUnloadInCombat [true, false];
+
+clearWeaponCargoGlobal _newvehicle;
+clearMagazineCargoGlobal _newvehicle;
+clearItemCargoGlobal _newvehicle;
+clearBackpackCargoGlobal _newvehicle;
+
+if ( _civilian ) then { _newvehicle allowDamage true };
 
 diag_log format [ "Done Spawning vehicle %1 at %2", _classname , time ];
 
