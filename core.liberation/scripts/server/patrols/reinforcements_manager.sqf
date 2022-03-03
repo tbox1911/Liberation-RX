@@ -1,6 +1,6 @@
 params [ "_targetsector" ];
-
-if (floor(random combat_readiness) > (15 + (30 / GRLIB_csat_aggressivity))) then {
+diag_log format ["Spawn Reinforcement Sector %1 at %2", _targetsector, time];
+if ( combat_readiness > 15 ) then {
 
 	_init_units_count = ( ([ getmarkerpos _targetsector , GRLIB_capture_size , GRLIB_side_enemy ] call F_getUnitsCount) );
 
@@ -28,9 +28,10 @@ if (floor(random combat_readiness) > (15 + (30 / GRLIB_csat_aggressivity))) then
 			if ( (_targetsector in active_sectors) && !(_targetsector in blufor_sectors) && !(_nearestower in blufor_sectors) && (!([] call F_isBigtownActive) || _targetsector in sectors_bigtown)  ) then {
 				reinforcements_sector_under_attack = _targetsector;
 				reinforcements_set = true;
-				diag_log format ["Spawn Reinforcement on Sector %1 at %2", _targetsector, time];
 				["lib_reinforcements", [markertext _targetsector]] remoteExec ["bis_fnc_shownotification", 0];
-				[ markerPos _targetsector ] spawn send_paratroopers;
+				if ( floor(random combat_readiness) > (20 + (30 / GRLIB_csat_aggressivity) ) ) then {
+					[ markerPos _targetsector ] spawn send_paratroopers;
+				};
 				stats_reinforcements_called = stats_reinforcements_called + 1;
 				publicVariable "stats_reinforcements_called";
 			};

@@ -68,13 +68,12 @@ if (abort_loading) exitWith {
 	publicVariable "abort_loading";
 	publicVariable "abort_loading_msg";
 };
-[] execVM "scripts\server\game\chimera_units_overide.sqf";
 [] execVM "scripts\server\game\apply_saved_scores.sqf";
 [] execVM "scripts\server\game\apply_default_permissions.sqf";
 [] execVM "scripts\server\base\fobbox_manager.sqf";
 [] execVM "scripts\server\base\huron_manager.sqf";
 [] execVM "scripts\server\game\spawn_radio_towers.sqf";
-[] execVM "scripts\server\game\hall_of_fame.sqf";
+// [] execVM "scripts\server\game\hall_of_fame.sqf";
 [] execVM "scripts\server\battlegroup\counter_battlegroup.sqf";
 [] execVM "scripts\server\battlegroup\random_battlegroups.sqf";
 [] execVM "scripts\server\battlegroup\readiness_increase.sqf";
@@ -85,6 +84,7 @@ if (abort_loading) exitWith {
 [] execVM "scripts\server\resources\manage_resources.sqf";
 [] execVM "scripts\server\patrols\civilian_patrols.sqf";
 [] execVM "scripts\server\patrols\manage_patrols.sqf";
+[] execVM "scripts\server\patrols\manage_wildlife.sqf";
 [] execVM "scripts\server\sector\manage_sectors.sqf";
 [] execVM "scripts\server\sector\lose_sectors.sqf";
 [] execVM "scripts\server\game\manage_score.sqf";
@@ -104,6 +104,10 @@ if (abort_loading) exitWith {
 [] execVM "scripts\server\offloading\offload_calculation.sqf";
 [] execVM "scripts\server\offloading\offload_manager.sqf";
 [] execVM "scripts\server\offloading\show_fps.sqf";
+
+{
+	if ( (_x != player) && (_x distance (getmarkerpos GRLIB_respawn_marker) < 200 ) ) then {deleteVehicle _x};
+} foreach allUnits;
 
 if (isNil "global_locked_group") then { global_locked_group = [] };
 publicVariable "global_locked_group";

@@ -97,7 +97,6 @@ blacklisted_bag = [
 ];
 
 blacklisted_weapon = [
-	"O_UavTerminal",
 	"optic_Nightstalker",
 	"optic_tws",
 	"optic_tws_mg",
@@ -114,7 +113,6 @@ blacklisted_weapon = [
 ];
 
 GRLIB_whitelisted_from_arsenal = [
-	"B_UavTerminal",
 	"1Rnd_HE_Grenade_shell",
 	"3Rnd_HE_Grenade_shell",
 	"30Rnd_65x39_caseless_msbs_mag",
@@ -162,7 +160,6 @@ GRLIB_whitelisted_from_arsenal = [
 	"launch_O_Vorona_brown_F",
 	"launch_RPG32_green_F",
 	"launch_RPG32_camo_F",
-	"launch_MRAWS_green_F",
 	"NVGoggles_OPFOR",
 	"optic_Arco_blk_F",
 	"optic_KHS_blk",

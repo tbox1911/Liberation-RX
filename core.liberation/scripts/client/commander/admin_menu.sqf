@@ -29,7 +29,7 @@ if (!isDamageAllowed player) then {
 };
 
 // Teleport on map
-player onMapSingleClick "if (_alt) then {player setPosATL _pos}";
+// player onMapSingleClick "if (_alt) then {player setPosATL _pos}";
 
 // Clear listbox
 _ban_combo = _display displayCtrl 1611;
@@ -40,9 +40,9 @@ _build_combo = _display displayCtrl 1614;
 lbClear _build_combo;
 
 (_display displayCtrl 1603) ctrlSetText getMissionPath "res\ui_confirm.paa";
-(_display displayCtrl 1603) ctrlSetToolTip "Add 200 XP Score";
+(_display displayCtrl 1603) ctrlSetToolTip "Add 5 XP Score";
 (_display displayCtrl 1615) ctrlSetText getMissionPath "res\ui_arsenal.paa";
-(_display displayCtrl 1615) ctrlSetToolTip "Add 300 Ammo";
+(_display displayCtrl 1615) ctrlSetToolTip "Add 50 Ammo";
 (_display displayCtrl 1616) ctrlSetText getMissionPath "res\ui_rotation.paa";
 (_display displayCtrl 1616) ctrlSetToolTip "Rejoin player";
 
@@ -102,8 +102,8 @@ while { alive player && dialog } do {
 		do_score = 0;
 		_name = _score_combo lbText (lbCurSel _score_combo);
 		_uid = _score_combo lbData (lbCurSel _score_combo);
-		[_uid, 200] remoteExec ["F_addPlayerScore", 2];
-		_msg = format ["Add 200 XP to player: %1.", _name];
+		[_uid, 5] remoteExec ["F_addPlayerScore", 2];
+		_msg = format ["Add 5 XP to player: %1.", _name];
 		hint _msg;
 		systemchat _msg;
 		sleep 1;
@@ -126,8 +126,8 @@ while { alive player && dialog } do {
 		do_ammo = 0;
 		_name = _score_combo lbText (lbCurSel _score_combo);
 		_uid = _score_combo lbData (lbCurSel _score_combo);
-		[_uid, 300] remoteExec ["F_addPlayerAmmo", 2];
-		_msg = format ["Add 300 Ammo to player: %1.", _name];
+		[_uid, 50] remoteExec ["F_addPlayerAmmo", 2];
+		_msg = format ["Add 50 Ammo to player: %1.", _name];
 		hint _msg;
 		systemchat _msg;
 		sleep 1;

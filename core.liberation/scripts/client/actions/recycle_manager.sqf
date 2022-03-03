@@ -1,7 +1,7 @@
-private  ["_vehicle", "_distvehclose"];
 waitUntil {sleep 1; !isNil "build_confirmed" };
 waitUntil {sleep 1; !isNil "one_synchro_done" };
 waitUntil {sleep 1; one_synchro_done };
+waitUntil {sleep 1; !isNil "GRLIB_player_spawned" };
 waituntil {sleep 1; GRLIB_player_spawned; (player getVariable ["GRLIB_score_set", 0] == 1)};
 
 while { true } do {
@@ -13,14 +13,14 @@ while { true } do {
 	private _nearfob = _fobdistance <= GRLIB_fob_range;
 	if (_nearfob) then {
 		private _nearrecycl = [nearestObjects [player, GRLIB_recycleable_classnames + GRLIB_vehicle_whitelist, 30], {
-			(_x distance lhd) >= 1000 &&
+			(_x distance lhd) >= 200 &&
 			!([_x] call is_public) &&
 			isNil {_x getVariable "GRLIB_recycle_action"}
 		}] call BIS_fnc_conditionalSelect;
 
 		{
-			_vehicle = _x;
-			_distvehclose = 5;
+			private _vehicle = _x;
+			private _distvehclose = 5;
 			if (typeOf _vehicle in vehicle_big_units) then {
 				_distvehclose = _distvehclose * 3;
 			};

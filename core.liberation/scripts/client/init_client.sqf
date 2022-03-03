@@ -2,7 +2,8 @@ diag_log "--- Client Init start ---";
 titleText ["" ,"BLACK FADED", 100];
 
 waitUntil {!isNil "abort_loading" };
-if (abort_loading) exitWith {
+waitUntil {!isNil "GRLIB_init_server" };
+if (!GRLIB_init_server || abort_loading) exitWith {
 	private _msg = format ["Sorry, An error occured on Server startup.\nPlease check the error logs.\n\n%1", abort_loading_msg];
 	titleText [_msg, "BLACK FADED", 100];
 	uisleep 10;
@@ -28,6 +29,7 @@ respawn_lhd = compileFinal preprocessFileLineNumbers "scripts\client\spawn\respa
 spawn_camera = compileFinal preprocessFileLineNumbers "scripts\client\spawn\spawn_camera.sqf";
 cinematic_camera = compileFinal preprocessFileLineNumbers "scripts\client\ui\cinematic_camera.sqf";
 write_credit_line = compileFinal preprocessFileLineNumbers "scripts\client\ui\write_credit_line.sqf";
+do_load_box = compileFinal preprocessFileLineNumbers "scripts\client\ammoboxes\do_load_box.sqf";
 set_rank = compileFinal preprocessFileLineNumbers "scripts\client\misc\set_rank.sqf";
 vehicle_permissions = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_permissions.sqf";
 vehicle_defense = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_defense.sqf";
@@ -40,6 +42,17 @@ get_lrx_name = compileFinal preprocessFileLineNumbers "scripts\client\misc\get_l
 
 R3F_LOG_joueur_deplace_objet = objNull;
 GRLIB_player_spawned = false;
+
+
+[player] call player_EVH;
+
+is_commander = false;
+if ( !isNil "GRLIB_whitelisted_steamids" ) then {
+	if ( ( getPlayerUID player ) in GRLIB_whitelisted_steamids ) then {
+		is_commander = true;
+	};
+};
+
 
 [group player, "add"] remoteExec ["addel_group_remote_call", 2];
 
@@ -56,6 +69,7 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 };
 [] execVM "scripts\client\commander\enforce_whitelist.sqf";
 [] execVM "scripts\client\ui\intro.sqf";
+[] execVM "scripts\client\ammoboxes\ammobox_action_manager.sqf";
 [] execVM "scripts\client\markers\sector_manager.sqf";
 [] execVM "scripts\client\misc\sides_stats_manager.sqf";
 [] execVM "scripts\client\build\build_overlay.sqf";
@@ -74,7 +88,6 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 [] execVM "scripts\client\misc\stop_renegade.sqf";
 [] execVM "scripts\client\misc\synchronise_vars.sqf";
 [] execVM "scripts\client\misc\manage_weather.sqf";
-[] execVM "scripts\client\misc\manage_wildlife.sqf";
 [] execVM "scripts\client\misc\no_thermic.sqf";
 [] execVM "scripts\client\misc\init_markers.sqf";
 [] execVM "scripts\client\actions\action_manager.sqf";
@@ -86,7 +99,10 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 [] execVM "scripts\client\actions\squad_manager.sqf";
 [] execVM "scripts\client\ui\ui_manager.sqf";
 [] execVM "GREUH\scripts\GREUH_activate.sqf";
-[] execVM "addons\LARs\liberationArsenal.sqf";
+
+if (GRLIB_enable_arsenal) then {
+	[] execVM "addons\LARs\liberationArsenal.sqf";
+};
 
 if (!GRLIB_ACE_enabled) then {
 	[] execVM "addons\PAR\PAR_AI_Revive.sqf";
@@ -95,10 +111,9 @@ if (!GRLIB_ACE_enabled) then {
 	[] execVM "addons\KEY\shortcut_init.sqf";
 	[] execVM "scripts\client\misc\support_manager.sqf";
 };
-[] execVM "addons\VIRT\virtual_garage_init.sqf";
-[] execVM "addons\SELL\sell_shop_init.sqf";
-[] execVM "addons\SHOP\traders_shop_init.sqf";
-[] execVM "addons\TAXI\taxi_init.sqf";
+// [] execVM "addons\VIRT\virtual_garage_init.sqf";
+// [] execVM "addons\SHOP\traders_shop_init.sqf";
+// [] execVM "addons\TAXI\taxi_init.sqf";
 [] execVM "addons\TARU\taru_init.sqf";
 
 // Init Tips Tables from XML
@@ -128,7 +143,7 @@ addMissionEventHandler ["Draw3D",{
 	};
 
 	private _near_sign = player nearobjects [FOB_sign, 5];
-	if (count (_near_sign) > 0 && player distance2D lhd >= 1000) then {  
+	if (count (_near_sign) > 0 && player distance2D lhd >= 200) then {  
 		private _sign = _near_sign select 0;
 		private _gid = _sign getVariable ["GRLIB_vehicle_owner", "public"];
 		private _name = "- LRX";
@@ -139,7 +154,7 @@ addMissionEventHandler ["Draw3D",{
 	};
 }];
 chimera_sign addAction ["<t color='#FFFFFF'>" + localize "STR_READ_ME" + "</t>",{createDialog "liberation_notice"},"",999,true,true,"","[] call is_menuok",5];
-chimera_sign addAction ["<t color='#FFFFFF'>" + localize "STR_TIPS" + "</t>",{createDialog "liberation_tips"},"",998,true,true,"","[] call is_menuok",5];
+// chimera_sign addAction ["<t color='#FFFFFF'>" + localize "STR_TIPS" + "</t>",{createDialog "liberation_tips"},"",998,true,true,"","[] call is_menuok",5];
 
 waitUntil {!isNull findDisplay 46};
 (findDisplay 46) displayAddEventHandler ["Unload",{	

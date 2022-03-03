@@ -23,9 +23,7 @@ waituntil {sleep 1; !isNil "GRLIB_marker_init"};
     if (_str find "metalshelter_02" > 0) then { _deskDir = (180 + _deskDir); _offset = [2, 0, 0]};  // Tanoa
     if (_str find "villagestore" > 0) then { _offset = [4, 2, 0.70]};  // Enoch
     if (_str find "ind_workshop01_02" > 0) then { _offset = [0, 2, 0]};  // Chernarus
-    if (_str find "house_c_4_ep1" > 0) then { _offset = [1, 0, 0.60]};  // Isladuala
-    if (_str find "house_big_02" > 0) then { _deskDir = (180 + _deskDir); _offset = [-0.7, -2, 0.25]};
-
+    
     _deskPos = (getposASL _shop) vectorAdd ([_offset, -_deskDir] call BIS_fnc_rotateVector2D);   
     _desk = createSimpleObject [SHOP_desk, _deskPos, true];  
     _desk allowDamage false;  
@@ -40,7 +38,6 @@ waituntil {sleep 1; !isNil "GRLIB_marker_init"};
     _man setDir _deskDir; 
     _man switchMove "AidlPercMstpSnonWnonDnon_AI"; 
     _man setVariable ["SHOP_ratio", (SHOP_ratio select (_forEachIndex % count SHOP_ratio))];
-    _man addAction ["<t color='#00F080'>" + localize "STR_SHOP_ENTER" + "</t> <img size='1' image='res\ui_recycle.paa'/>", "addons\SHOP\traders_shop.sqf","",-900,true,true,"","", 5];
     sleep 0.2;
 } forEach GRLIB_Marker_SHOP;
 

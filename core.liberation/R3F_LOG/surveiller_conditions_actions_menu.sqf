@@ -46,7 +46,7 @@ while {true} do
 		_objet_pas_en_cours_de_deplacement = (isNull (_objet_pointe getVariable ["R3F_LOG_est_deplace_par", objNull]) ||
 			{(!alive (_objet_pointe getVariable "R3F_LOG_est_deplace_par")) || (!isPlayer (_objet_pointe getVariable "R3F_LOG_est_deplace_par"))});
 
-		_isUav =  (getNumber (configOf _objet_pointe >> "isUav") == 1);
+		_isUav =  (getNumber (configFile >> "CfgVehicles" >> (typeOf _objet_pointe) >> "isUav") == 1);
 
 		_usine_autorisee_client = call compile R3F_LOG_CFG_string_condition_allow_creation_factory_on_this_client;
 

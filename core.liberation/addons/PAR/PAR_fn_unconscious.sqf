@@ -1,12 +1,17 @@
 params ["_unit"];
 
-if (rating _unit < -2000) exitWith {[_unit] spawn PAR_fn_death};
-if (!([] call F_getValid)) exitWith {[_unit] spawn PAR_fn_death};
+if (rating _unit < -2000) exitWith {_unit spawn PAR_fn_death};
+if (!([] call F_getValid)) exitWith {_unit spawn PAR_fn_death};
 waituntil {sleep (0.5 + random 2); lifeState _unit == "INCAPACITATED" && (isTouchingGround _unit || (round (getPos _unit select 2) <= 1))};
 
 if (isPlayer _unit) then {
   [] call PAR_show_marker;
-  if ( score _unit > GRLIB_perm_log ) then { [_unit, -1] remoteExec ["addScore", 2] };
+  private _score = score _unit;
+  private _penalty = 0;
+  if ( _score > GRLIB_perm_inf ) then { _penalty = 1 };
+  if ( _score > GRLIB_perm_air ) then { _penalty = 2 };
+  if ( _score > GRLIB_perm_max ) then { _penalty = 3 };
+  if ( _penalty > 0 ) then { [_unit, -_penalty] remoteExec ["addScore", 2] };
 };
 
 if (!isNil {_unit getVariable "PAR_busy"} || !isNil {_unit getVariable "PAR_heal"}) then {
@@ -63,11 +68,11 @@ sleep 8;
       [[_target, _caller], {
         if (isDedicated) exitWith {};
         if (!isNil "GRLIB_player_spawned") then {
-          if (GRLIB_player_spawned) then {
+           if (GRLIB_player_spawned) then {
             [(_this select 0),(_this select 1)] call PAR_fn_sortie;
-          };
-        };
-      }] remoteExec ["bis_fnc_call", 0];
+           };
+         };
+        }] remoteExec ["bis_fnc_call", 0];
     };
   },
   {
@@ -117,5 +122,5 @@ if (isPlayer _unit) then {
 };
 
 if (lifeState _unit == "INCAPACITATED" && time > _unit getVariable ["PAR_BleedOutTimer", 0]) then {
-  [_unit] spawn PAR_fn_death;
+  _unit spawn PAR_fn_death;
 };

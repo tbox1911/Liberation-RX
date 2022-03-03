@@ -25,6 +25,7 @@ if ( _rank == "Colonel" ) then {
 private _iscommander = false;
 if ( player == [] call F_getCommander ) then {
 	_iscommander = true;
+	_iscommandant = true;
 };
 private _near_outpost = (count (player nearObjects [FOB_outpost, 100]) > 0);
 ctrlSetText [1011, format ["%1 - %2", _title, _rank]];
@@ -91,11 +92,9 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 				_affordable = false;
 			};
 
-			if ( buildtype == 7 ) then {
-				if (_x select 0 == mobile_respawn) then {
-					if (([getPlayerUID player] call F_getMobileRespawnsPlayer) select 1) then {
-						_affordable = false;
-					};
+			if (_x select 0 == mobile_respawn) then {
+				if (([getPlayerUID player] call F_getMobileRespawnsPlayer) select 1) then {
+					_affordable = false;
 				};
 			};
 
@@ -141,11 +140,9 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 			_affordable = true;
 		};
 
-		if ( buildtype == 7 ) then {
-			if (_build_item select 0 == mobile_respawn) then {
-				if (([getPlayerUID player] call F_getMobileRespawnsPlayer) select 1) then {
-					_affordable = false;
-				};
+		if (_build_item select 0 == mobile_respawn) then {
+			if (([getPlayerUID player] call F_getMobileRespawnsPlayer) select 1) then {
+				_affordable = false;
 			};
 		};
 

@@ -41,5 +41,5 @@ RPT_colorList =[
 
 if ( hasInterface ) then {
 	waitUntil {!(isNull (findDisplay 46))};
-	systemChat "-------- Paint Shop Initialized --------";
+	// systemChat "-------- Paint Shop Initialized --------";
 };

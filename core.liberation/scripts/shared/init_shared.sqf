@@ -22,9 +22,6 @@ vehicle_garage_remote_call = compileFinal preprocessFileLineNumbers "scripts\ser
 a3w_create_enemy = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\a3w_create_enemy.sqf";
 unload_truck_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\unload_truck_remote_call.sqf";
 recover_ai_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\recover_ai_remote_call.sqf";
-ammo_add_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\ammo_add_remote_call.sqf";
-ammo_del_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\ammo_del_remote_call.sqf";
-sog_tunnel_enter_remotecall = compileFinal preprocessFileLineNumbers "scripts\server\sog\sog_tunnel_enter_remotecall.sqf";
 
 // Client Side
 remote_call_penalty = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_penalty.sqf";
@@ -38,7 +35,6 @@ remote_call_intel = compileFinal preprocessFileLineNumbers "scripts\client\remot
 remote_call_incoming = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_incoming.sqf";
 remote_call_showinfo = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_showinfo.sqf";
 remote_call_a3w_info = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_a3w_info.sqf";
-remote_call_tunnel_success = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_tunnel_success.sqf";
 
 // Vehicle Color
 [] execVM "addons\RPT\RPT_init.sqf";

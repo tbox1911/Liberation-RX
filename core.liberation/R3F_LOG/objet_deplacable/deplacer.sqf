@@ -40,7 +40,7 @@ else
 	{
 		if (isNull (_objet getVariable ["R3F_LOG_remorque", objNull])) then
 		{
-			if (count crew _objet == 0 || getNumber (configOf _objet >> "isUav") == 1 || typeOf _objet in static_vehicles_AI) then
+			if (count crew _objet == 0 || getNumber (configFile >> "CfgVehicles" >> (typeOf _objet) >> "isUav") == 1 || typeOf _objet in static_vehicles_AI) then
 			{
 				[_objet, _joueur] call R3F_LOG_FNCT_definir_proprietaire_verrou;
 				
@@ -165,7 +165,7 @@ else
 					R3F_LOG_deplace_force_attachTo = false; // Mettre � true pour forcer le repositionnement de l'objet, en for�ant les filtres anti-flood
 					
 					// Ajout des actions de gestion de l'orientation
-					_action_relacher = _joueur addAction [("<t color=""#ee0000"">" + format [STR_R3F_LOG_action_relacher_objet, getText (configOf _objet >> "displayName")] + "</t>  <img size='1' image='R3F_LOG\icons\r3f_release.paa'/>"), {_this call R3F_LOG_FNCT_objet_relacher}, nil, 10, true, true];
+					_action_relacher = _joueur addAction [("<t color=""#ee0000"">" + format [STR_R3F_LOG_action_relacher_objet, getText (configFile >> "CfgVehicles" >> (typeOf _objet) >> "displayName")] + "</t>  <img size='1' image='R3F_LOG\icons\r3f_release.paa'/>"), {_this call R3F_LOG_FNCT_objet_relacher}, nil, 10, true, true];
 					_action_aligner_pente = _joueur addAction [("<t color=""#00eeff"">" + STR_R3F_LOG_action_aligner_pente + "</t>"), {R3F_LOG_deplace_mode_alignement = "pente"; R3F_LOG_deplace_force_setVector = true;}, nil, 6, false, true, "", "R3F_LOG_deplace_mode_alignement != ""pente"""];
 					_action_aligner_sol = _joueur addAction [("<t color=""#00eeff"">" + STR_R3F_LOG_action_aligner_sol + "</t>"), {R3F_LOG_deplace_mode_alignement = "sol"; R3F_LOG_deplace_force_setVector = true;}, nil, 6, false, true, "", "R3F_LOG_deplace_mode_alignement != ""sol"""];
 					_action_aligner_horizon = _joueur addAction [("<t color=""#00eeff"">" + STR_R3F_LOG_action_aligner_horizon + "</t>"), {R3F_LOG_deplace_mode_alignement = "horizon"; R3F_LOG_deplace_force_setVector = true;}, nil, 6, false, true, "", "R3F_LOG_deplace_mode_alignement != ""horizon"""];
@@ -480,19 +480,19 @@ else
 			}
 			else
 			{
-				hintC format [STR_R3F_LOG_joueur_dans_objet, getText (configOf _objet >> "displayName")];
+				hintC format [STR_R3F_LOG_joueur_dans_objet, getText (configFile >> "CfgVehicles" >> (typeOf _objet) >> "displayName")];
 				R3F_LOG_mutex_local_verrou = false;
 			};
 		}
 		else
 		{
-			hintC format [STR_R3F_LOG_objet_remorque_en_cours, getText (configOf _objet >> "displayName")];
+			hintC format [STR_R3F_LOG_objet_remorque_en_cours, getText (configFile >> "CfgVehicles" >> (typeOf _objet) >> "displayName")];
 			R3F_LOG_mutex_local_verrou = false;
 		};
 	}
 	else
 	{
-		hintC format [STR_R3F_LOG_objet_en_cours_transport, getText (configOf _objet >> "displayName")];
+		hintC format [STR_R3F_LOG_objet_en_cours_transport, getText (configFile >> "CfgVehicles" >> (typeOf _objet) >> "displayName")];
 		R3F_LOG_mutex_local_verrou = false;
 	};
 };

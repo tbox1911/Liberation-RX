@@ -16,10 +16,11 @@ private ["_nbUnits", "_townName",
 _setupVars =
 {
 	_missionType = "The Resistance";
-	_nbUnits = 10;
+	_nbUnits = 6;
+	_nbUnits = _nbUnits + floor(random (_nbUnits/2));
 
 	// settings for this mission
-	_missionLocation = selectRandom ((blufor_sectors select {["capture_", _x] call F_startsWith;}) apply {[_x, false]}) select 0;
+	_missionLocation = selectRandom ((blufor_sectors select {["capture_", _x] call F_startsWith;}) apply {[_x, false]}) select 0 ;
 	_townName = markerText _missionLocation;
 	_ignoreAiDeaths = true;
 
@@ -58,7 +59,7 @@ _setupObjects =
 	} foreach _allbuildings;
 
 	// spawn some resistance
-	_managed_units = (["resistance", 4, _buildingpositions, _missionPos] call F_spawnBuildingSquad);
+	_managed_units = (["resistance", (_nbUnits - 3), _buildingpositions, _missionPos] call F_spawnBuildingSquad);
 	if (count _managed_units > 0) then {
 		_aiGroupRes = group leader (_managed_units select 0);
 	} else {
@@ -70,19 +71,23 @@ _setupObjects =
 	_veh1 = createVehicle ["I_static_AA_F", _missionPos, [], 50, "None"];
 	[_veh1] spawn protect_static;
 	_veh1 setDir random 360;
+	_grp = createVehicleCrew _veh1;
 	sleep 0.5;
-	_gunner = (units _aiGroupRes) select ((count (units _aiGroupRes)) -1);
+	_gunner = units _grp select 0;
 	_gunner assignAsGunner _veh1;
 	[_gunner] orderGetIn true;
+	(crew _veh1) joinSilent _aiGroupRes;
 	sleep 1;
 
 	_veh2 = createVehicle ["I_static_AA_F", _missionPos, [], 50, "None"];
 	[_veh2] spawn protect_static;
 	_veh2 setDir random 360;
+	_grp = createVehicleCrew _veh2;
 	sleep 0.5;
-	_gunner = (units _aiGroupRes) select ((count (units _aiGroupRes)) -2);
+	_gunner = units _grp select 0;
 	_gunner assignAsGunner _veh2;
 	[_gunner] orderGetIn true;
+	(crew _veh2) joinSilent _aiGroupRes;
 
 	// remove dead body to let the leader change
 	//{_x addEventHandler ["Killed", {_this spawn {sleep 20;hidebody (_this select 0);sleep 5;deleteVehicle (_this select 0)}}]} forEach units _aiGroupRes;
@@ -91,7 +96,6 @@ _setupObjects =
 	GRLIB_A3W_Mission_MRR = _aiGroupRes;
 	publicVariable "GRLIB_A3W_Mission_MRR";
 	_missionHintText = format ["Meet the Resistance at <br/><t size='1.25' color='%1'>%2</t><br/><br/><t color='#00F000'>Talk</t> to the <t color='#0000F0'>Leader</t> to get information.<br/>Be ready for any situation!", sideMissionColor, _townName];
-	true;
 };
 
 _waitUntilMarkerPos = nil;
@@ -131,7 +135,8 @@ _successExec = {
 	GRLIB_A3W_Mission_MRR = nil;
 	publicVariable "GRLIB_A3W_Mission_MRR";
 
-	for "_i" from 1 to (selectRandom [1,2]) do {
+	private _nb = selectRandom [1,2];
+	for "_i" from 1 to _nb do {
 		_pos = _missionPos vectorAdd [([[-50,0,50], 20] call F_getRND), ([[-50,0,50], 20] call F_getRND), 0];
 		[ammobox_i_typename, _pos, false] call boxSetup;
 	};

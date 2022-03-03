@@ -9,4 +9,4 @@ if(count (squadParams _killer) != 0) then {
 };
 _playername = _playername + name _killer;
 
-gamelogic globalChat format [localize "STR_CIV_PENALTY_MESSAGE",  _civ_penalty, _civname, _playername];
+gamelogic globalChat (format [ localize "STR_CIV_PENALTY_MESSAGE",  _civ_penalty, _civname, _playername ] );

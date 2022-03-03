@@ -21,7 +21,6 @@ if ( GRLIB_EJW_enabled ) then {
     (
         "
         getText (_x >> 'dlc') == 'u100' &&
-        !((configName _x) in GRLIB_blacklisted_from_arsenal) &&
         !((configName _x) in GRLIB_EJW_Blacklist)
         "
         configClasses (configfile >> "CfgWeapons" )
@@ -30,7 +29,6 @@ if ( GRLIB_EJW_enabled ) then {
     (
         "
         (tolower (configName _x) select [0,3]) == 'ej_' &&
-        !((configName _x) in GRLIB_blacklisted_from_arsenal) &&
 		!((configName _x) in GRLIB_EJW_Blacklist)
         "
         configClasses (configfile >> "CfgMagazines")
@@ -39,7 +37,6 @@ if ( GRLIB_EJW_enabled ) then {
 	(
 		"
         (tolower (configName _x) select [0,3]) == 'ej_' &&
-        !((configName _x) in GRLIB_blacklisted_from_arsenal) &&
 		!((configName _x) in GRLIB_EJW_Blacklist)
 		"
 		configClasses (configfile >> "CfgVehicles" )

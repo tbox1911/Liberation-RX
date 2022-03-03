@@ -28,7 +28,7 @@ waitUntil
 	}
 };
 
-private ["_transporteur", "_liste_a_charger", "_chargement", "_chargement_actuel", "_chargement_maxi", "_objets_charges", "_vehicle_owner", "_cout_chargement_objet"];
+private ["_transporteur", "_liste_a_charger", "_chargement", "_chargement_actuel", "_chargement_maxi", "_objets_charges", "_cout_chargement_objet"];
 private ["_objet_ou_classe", "_quantite", "_objet", "_classe", "_bbox", "_bbox_dim", "_pos_degagee", "_fonctionnalites", "_i"];
 
 _transporteur = _this select 0;
@@ -38,7 +38,6 @@ _chargement = [_transporteur] call R3F_LOG_FNCT_calculer_chargement_vehicule;
 _chargement_actuel = _chargement select 0;
 _chargement_maxi = _chargement select 1;
 _objets_charges = _transporteur getVariable ["R3F_LOG_objets_charges", []];
-_vehicle_owner = _transporteur getVariable ["GRLIB_vehicle_owner", ""];
 
 // Pour chaque �l�ment de la liste � charger
 {
@@ -92,12 +91,12 @@ _vehicle_owner = _transporteur getVariable ["GRLIB_vehicle_owner", ""];
 	{
 		diag_log format ["[Auto-load ""%1"" in ""%2""] : %3",
 			getText (configFile >> "CfgVehicles" >> _classe >> "displayName"),
-			getText (configOf _transporteur >> "displayName"),
+			getText (configFile >> "CfgVehicles" >> (typeOf _transporteur) >> "displayName"),
 			"The object is not a transporable class."];
 
 		systemChat format ["[Auto-load ""%1"" in ""%2""] : %3",
 			getText (configFile >> "CfgVehicles" >> _classe >> "displayName"),
-			getText (configOf _transporteur >> "displayName"),
+			getText (configFile >> "CfgVehicles" >> (typeOf _transporteur) >> "displayName"),
 			"The object is not a transporable class."];
 	}
 	else
@@ -132,11 +131,6 @@ _vehicle_owner = _transporteur getVariable ["GRLIB_vehicle_owner", ""];
 
 				// MPKilled
 				_objet addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-
-				// Owner
-				if (!(_objet in GRLIB_vehicle_blacklist)) then {
-					_objet setVariable ["GRLIB_vehicle_owner", _vehicle_owner, true];
-				};
 			}
 			else
 			{
@@ -165,12 +159,12 @@ _vehicle_owner = _transporteur getVariable ["GRLIB_vehicle_owner", ""];
 						{
 							diag_log format ["[Auto-load ""%1"" in ""%2""] : %3",
 								getText (configFile >> "CfgVehicles" >> _classe >> "displayName"),
-								getText (configOf _transporteur >> "displayName"),
+								getText (configFile >> "CfgVehicles" >> (typeOf _transporteur) >> "displayName"),
 								STR_R3F_LOG_action_charger_pas_assez_de_place];
 
 							systemChat format ["[Auto-load ""%1"" in ""%2""] : %3",
 								getText (configFile >> "CfgVehicles" >> _classe >> "displayName"),
-								getText (configOf _transporteur >> "displayName"),
+								getText (configFile >> "CfgVehicles" >> (typeOf _transporteur) >> "displayName"),
 								STR_R3F_LOG_action_charger_pas_assez_de_place];
 
 							if (typeName _objet_ou_classe == "STRING") then

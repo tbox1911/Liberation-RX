@@ -120,7 +120,7 @@ while { dialog && alive player } do {
 			private _result = [_msg, localize "STR_SHOP_SELL", true, true] call BIS_fnc_guiMessage;
 			if (_result && !(isNull _vehicle) && alive _vehicle) then {
 				[_vehicle] remoteExec ["deleteVehicle", 2];
-				[player, _price] remoteExec ["ammo_add_remote_call", 2];
+				player setVariable ["GREUH_ammo_count", (_ammo_collected + _price), true];
 				hintSilent format ["%1 Sold for %2 AMMO !", _vehicle_name, _price];
 				ctrlEnable [120, false];
 				playSound "taskSucceeded";
@@ -135,7 +135,7 @@ while { dialog && alive player } do {
 			private _msg = format [localize "STR_SHOP_BUY_MSG", _vehicle_name, _price];
 			private _result = [_msg, localize "STR_SHOP_BUY", true, true] call BIS_fnc_guiMessage;
 			if (_result) then {
-				[_price] call F_pay;
+				player setVariable ["GREUH_ammo_count", (_ammo_collected - _price), true];
 				private _veh_class = _buy_list_dlg1 select _selected_item select 0;
 				buildtype = 9;
 				build_unit = [_veh_class,[],1,[],[]];

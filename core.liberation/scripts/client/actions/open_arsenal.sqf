@@ -12,8 +12,10 @@ private _saved_loadouts = profileNamespace getVariable "bis_fnc_saveInventory_da
 private _loadouts_data = [];
 private _counter = 0;
 
+/*
 if ( !isNil "_saved_loadouts" ) then {
-	_unit = "B_Survivor_F" createVehicleLocal zeropos;
+	private _grp = createGroup [GRLIB_side_friendly, true];
+	private _unit = _grp createUnit ["B_Survivor_F", [0,0,0], [], 0, "NONE"];
 	private _max_loadout = 24;
 	{
 		if ( _counter % 2 == 0 && _max_loadout > 0) then {
@@ -26,6 +28,7 @@ if ( !isNil "_saved_loadouts" ) then {
 	} foreach _saved_loadouts;
 	deleteVehicle _unit;
 };
+*/
 
 createDialog "liberation_arsenal";
 waitUntil { dialog };
@@ -124,7 +127,8 @@ if ( edit_loadout > 0 ) then {
 	_box = missionNamespace getVariable ["myLARsBox", objNull];
 	if (GRLIB_ACE_enabled) then {
 		[_box, true] call ace_arsenal_fnc_initBox;
-		[_box, player, true] call ace_arsenal_fnc_openBox;
+		[_box, blacklisted_weapon] call ace_arsenal_fnc_removeVirtualItems;
+		[_box, player, false] call ace_arsenal_fnc_openBox;
 	} else {
 		if (GRLIB_limited_arsenal) then {
 			_savedCargo = _box getVariable [ "bis_addVirtualWeaponCargo_cargo", [] ];
@@ -136,20 +140,18 @@ if ( edit_loadout > 0 ) then {
 
 			['Open',[nil,_box]] call BIS_fnc_arsenal;
 
-			_box setVariable [ "LARs_arsenalClosedID", [ missionNamespace, "arsenalClosed", compile format ["
+			_box setVariable [ "LARs_arsenalClosedID", [ missionNamespace, "arsenalClosed", compile format[ "
 				%1 setVariable [ 'bis_addvirtualWeaponCargo_cargo', %2 ];
 				missionNamespace setVariable [ 'bis_addvirtualWeaponCargo_cargo', %3 ];
 				[ missionNamespace, 'arsenalClosed', %1 getVariable 'LARs_arsenalClosedID' ] call BIS_fnc_removeScriptedEventHandler;
 				%1 setVariable [ 'LARs_arsenalClosedID', nil ];
-				[player] call F_filterLoadout;
-				[player] spawn F_payLoadout;
-			", _box, _savedCargo, _savedMissionCargo ] ] call BIS_fnc_addScriptedEventHandler ];
+			", _box, _savedCargo, _savedMissionCargo ] ]call BIS_fnc_addScriptedEventHandler ];
 		} else {
 			["Open", [true]] call BIS_fnc_arsenal;
 		};
 	};
-} else {
-	//filter and pay loadout
-	[player] call F_filterLoadout;
-	[player] spawn F_payLoadout;
 };
+
+//filter and pay loadout
+[player] call F_filterLoadout;
+[player] call F_payLoadout;

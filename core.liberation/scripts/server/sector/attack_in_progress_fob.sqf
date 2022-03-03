@@ -9,10 +9,7 @@ if ( _ownership != GRLIB_side_enemy ) exitWith {};
 private _grp = createGroup [GRLIB_side_friendly, true];
 
 if ( GRLIB_blufor_defenders ) then {
-	{ 
-		_x createUnit [ _thispos, _grp,'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]'];
-		sleep 0.1;
-	} foreach blufor_squad_inf;
+	{ _x createUnit [ _thispos, _grp,'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]']; } foreach blufor_squad_inf;
 };
 
 sleep 3;
@@ -36,24 +33,25 @@ if ( _ownership == GRLIB_side_friendly ) exitWith {
 private _near_outpost = (count (_thispos nearObjects [FOB_outpost, 100]) > 0);
 private _attacktime = GRLIB_vulnerability_timer + (5 * 60);
 
-while { _attacktime > 0 && _ownership == GRLIB_side_enemy } do {
-	_ownership = [_thispos] call F_sectorOwnership;
+while { _attacktime > 0 && ( _ownership == GRLIB_side_enemy || _ownership == GRLIB_side_civilian ) } do {
+	_ownership = [ _thispos ] call F_sectorOwnership;
 	_attacktime = _attacktime - 1;
 	if (_attacktime mod 60 == 0 && !_near_outpost) then {
 		[ _thispos , 4 ] remoteExec ["remote_call_fob", 0];
-	};	
+	};
 	sleep 1;
 };
 
-private _countblufor = [_thispos, GRLIB_capture_size, GRLIB_side_friendly ] call F_getUnitsCount;
-while { _countblufor > 0 && _ownership == GRLIB_side_enemy } do {
-	_ownership = [_thispos] call F_sectorOwnership;
-	_countblufor = [_thispos, GRLIB_capture_size, GRLIB_side_friendly ] call F_getUnitsCount;
+waitUntil {
 	sleep 1;
+	[ _thispos ] call F_sectorOwnership != GRLIB_side_civilian;
 };
+
+
+private _countblufor_ownership = [_thispos, GRLIB_capture_size, GRLIB_side_friendly] call F_getUnitsCount;
 
 if ( GRLIB_endgame == 0 ) then {
-	if ( _attacktime <= 1 && ( [ _thispos ] call F_sectorOwnership == GRLIB_side_enemy ) ) then {
+	if ( _attacktime <= 1 && ( [ _thispos ] call F_sectorOwnership == GRLIB_side_enemy ) && ( _countblufor_ownership < 3 ) ) then {
 		[ _thispos , 2 ] remoteExec ["remote_call_fob", 0];
 		sleep 3;
 		if (!_near_outpost) then {

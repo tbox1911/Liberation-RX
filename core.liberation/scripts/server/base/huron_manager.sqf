@@ -6,6 +6,7 @@ private [ "_huronlist" ];
 
 huron = objNull;
 
+/*
 while { true } do {
 
 	_huronlist = [entities huron_typename, {
@@ -44,3 +45,4 @@ while { true } do {
 	};
 	sleep 10;
 };
+*/

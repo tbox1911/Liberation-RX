@@ -136,7 +136,8 @@ buildings_west = [
 	["CUP_FlagCarrierBAF",0,0,0,0]
 ];
 
-blufor_squad_inf_light = [
+if ( isNil "blufor_squad_inf_light" ) then { blufor_squad_inf_light = [] };
+if ( count blufor_squad_inf_light == 0 ) then { blufor_squad_inf_light = [
 	"CUP_B_BAF_Soldier_SquadLeader_DDPM",
 	"CUP_B_BAF_Soldier_Medic_DDPM",
 	"CUP_B_BAF_Soldier_Grenadier_DDPM",
@@ -145,8 +146,10 @@ blufor_squad_inf_light = [
 	"CUP_B_BAF_Soldier_Rifleman_DDPM",
 	"CUP_B_BAF_Soldier_Rifleman_DDPM",
 	"CUP_B_BAF_Soldier_Rifleman_DDPM"
-];
-blufor_squad_inf = [
+	];
+};
+if ( isNil "blufor_squad_inf" ) then { blufor_squad_inf = [] };
+if ( count blufor_squad_inf == 0 ) then { blufor_squad_inf = [
 	"CUP_B_BAF_Soldier_SquadLeader_DDPM",
 	"CUP_B_BAF_Soldier_Medic_DDPM",
 	"CUP_B_BAF_Soldier_Marksman_DDPM",
@@ -157,31 +160,38 @@ blufor_squad_inf = [
 	"CUP_B_BAF_Soldier_Rifleman_DDPM",
 	"CUP_B_BAF_Soldier_Rifleman_DDPM",	
 	"CUP_B_BAF_Soldier_Rifleman_DDPM"
-];
-blufor_squad_at = [
+	];
+};
+if ( isNil "blufor_squad_at" ) then { blufor_squad_at = [] };
+if ( count blufor_squad_at == 0 ) then { blufor_squad_at = [
 	"CUP_B_BAF_Soldier_SquadLeader_DDPM",
 	"CUP_B_BAF_Soldier_Medic_DDPM",
 	"CUP_B_BAF_Soldier_AT_DDPM",
 	"CUP_B_BAF_Soldier_AT_DDPM",
 	"CUP_B_BAF_Soldier_Rifleman_DDPM",
 	"CUP_B_BAF_Soldier_Rifleman_DDPM"
-];
-blufor_squad_aa = [
+	];
+};
+if ( isNil "blufor_squad_aa" ) then { blufor_squad_aa = [] };
+if ( count blufor_squad_aa == 0 ) then { blufor_squad_aa = [
 	"CUP_B_BAF_Soldier_SquadLeader_DDPM",
 	"CUP_B_BAF_Soldier_Medic_DDPM",
 	"CUP_B_BAF_Soldier_AA_DDPM",
 	"CUP_B_BAF_Soldier_AA_DDPM",
 	"CUP_B_BAF_Soldier_Rifleman_DDPM",
 	"CUP_B_BAF_Soldier_Rifleman_DDPM"
-];
-blufor_squad_mix = [
+	];
+};
+if ( isNil "blufor_squad_mix" ) then { blufor_squad_mix = [] };
+if ( count blufor_squad_mix == 0 ) then { blufor_squad_mix = [
 	"CUP_B_BAF_Soldier_SquadLeader_DDPM",
 	"CUP_B_BAF_Soldier_Medic_DDPM",
 	"CUP_B_BAF_Soldier_AA_DDPM",
 	"CUP_B_BAF_Soldier_AT_DDPM",
 	"CUP_B_BAF_Soldier_Rifleman_DDPM",
 	"CUP_B_BAF_Soldier_Rifleman_DDPM"
-];
+	];
+};
 
 squads = [
 	[blufor_squad_inf_light,10,300,0,GRLIB_perm_max],

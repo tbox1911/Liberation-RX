@@ -1,4 +1,7 @@
 // *** BADDIES ***
+GRLIB_side_enemy = RESISTANCE;
+GRLIB_color_enemy = "ColorGUER";
+GRLIB_color_enemy_bright = "ColorGreen";
 
 // All class MUST be defined !
 
@@ -137,13 +140,13 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"I_Truck_02_covered_F"
 ];
 
-opfor_troup_transports_truck = [
+opfor_troup_transports = [
 	"I_Heli_Transport_02_F",
 	"I_Truck_02_covered_F",
 	"I_Truck_02_transport_F"
 ];
 
-opfor_troup_transports_heli = [
+opfor_choppers = [
 	"I_Heli_Transport_02_F",
 	"I_Heli_light_03_unarmed_F"
 ];

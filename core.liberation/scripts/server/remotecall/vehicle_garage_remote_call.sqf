@@ -6,7 +6,6 @@ if (!isNil "GRLIB_garage_in_use") then { waitUntil {sleep 0.1; isNil "GRLIB_gara
 GRLIB_garage_in_use = true;
 publicVariable "GRLIB_garage_in_use";
 
-// Load
 if (_cmd == 1) then {
 	_color = _veh getVariable ["GRLIB_vehicle_color", ""];
 	_ammo = [_veh] call F_getVehicleAmmoDef;
@@ -18,7 +17,6 @@ if (_cmd == 1) then {
 	deleteVehicle _veh;
 };
 
-// Unload
 if (_cmd == 2) then {
 	private _veh_lst = [];
 	{

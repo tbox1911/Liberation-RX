@@ -26,6 +26,7 @@ while { (_idx < (count GRLIB_all_fobs)) && _clearedtobuildfob } do {
 	_idx = _idx + 1;
 };
 
+/*
 _idx = 0;
 if(_clearedtobuildfob) then {
 	while { (_idx < (count sectors_allSectors)) && _clearedtobuildsector } do {
@@ -36,6 +37,7 @@ if(_clearedtobuildfob) then {
 		_idx = _idx + 1;
 	};
 };
+*/
 
 if (!_clearedtobuildfob) then {
 	hint format [localize "STR_FOB_BUILDING_IMPOSSIBLE",floor _minfobdist,floor _distfob];

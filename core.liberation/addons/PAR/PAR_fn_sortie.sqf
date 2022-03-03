@@ -59,13 +59,14 @@ if (isPlayer _wnded) then {
   player setVariable ["PAR_isUnconscious", 0, true];
   player setVariable ["PAR_isDragged", 0, true];
   group _wnded selectLeader player;
-  if (isPlayer _medic) then {
+  if (isPlayer _medic && score _medic <= GRLIB_perm_tank) then {
     private _bonus = 5;
-    [_medic, _bonus] remoteExec ["addScore", 2];
-    private _text = format [localize "STR_PAR_ST_02", name _wnded, _bonus];
-    [[_medic, _text], {
-      if (player == (_this select 0)) then { hintSilent (_this select 1) };
-    }] remoteExec ["bis_fnc_call", -2];
+    [_medic,_bonus] remoteExec ["addScore", 2];
+	
+	_medic setVariable ["GREUH_ammo_count", ( (_medic getVariable ["GREUH_ammo_count", 0]) + _bonus ), true];
+	
+    private _text = format ["You revived %1!\nBonus score %2,\nThank you!", name _wnded, _bonus];
+	  [_text] remoteExec ["hintSilent", owner _medic];
   };
 } else {
   _wnded switchMove "amovpknlmstpsraswrfldnon"; //go up

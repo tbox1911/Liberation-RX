@@ -8,7 +8,7 @@ GREUH_allow_worldquality = true;
 GREUH_allow_customsquads = true;
 
 // Permettre aux joueurs de se voir sur la carte
-GREUH_allow_mapmarkers = true;
+GREUH_allow_mapmarkers = false;
 
 // Permettre aux joueurs de voir le platoon sur la carte et le hud
-GREUH_allow_platoonview = true;
+GREUH_allow_platoonview = false;

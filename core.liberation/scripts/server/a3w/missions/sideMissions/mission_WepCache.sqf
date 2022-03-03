@@ -11,7 +11,7 @@ private ["_nbUnits", "_box1", "_box2", "_box3"];
 _setupVars =
 {
 	_missionType = "Weapon Cache";
-	_locationsArray = [ForestMissionMarkers] call checkSpawn;
+	_locationsArray = ForestMissionMarkers;
 	_nbUnits = [] call getNbUnits;
 };
 
@@ -19,18 +19,15 @@ _setupObjects =
 {
 	_missionPos = markerPos _missionLocation;
 	_box1 = [ammobox_o_typename, _missionPos, true] call boxSetup;
-	_box2 = [ammobox_o_typename, _missionPos, true] call boxSetup;
-	_box3 = [A3W_BoxWps, _missionPos, true] call boxSetup;
+	_box2 = [A3W_BoxWps, _missionPos, true] call boxSetup;
+	_box3 = [ammobox_o_typename, _missionPos, true] call boxSetup;
 
-	[_missionPos] call clearlandmines;
-	sleep 2;
 	[_missionPos, 25] call createlandmines;	
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	[_aiGroup, _missionPos, _nbUnits, "infantry"] call createCustomGroup;
 
 	_missionPicture = "\A3\Static_f_gamma\data\ui\gear_StaticTurret_GMG_CA.paa";
 	_missionHintText = "A weapon cache has been spotted near the marker.";
-	true;
 };
 
 _waitUntilMarkerPos = nil;

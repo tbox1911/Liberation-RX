@@ -90,7 +90,6 @@ while { dialog && alive player } do {
 				private _color = "";
 				private	_vehicle_name = (_display displayCtrl (110)) lnbText [_selected_item,0];
 
-				// Load
 				if (load_veh == 1) then {
 					private _vehicle = _myveh_lst select _selected_item;
 					private _timer = _vehicle getVariable ["GREUH_rearm_timer", 0];
@@ -110,7 +109,6 @@ while { dialog && alive player } do {
 					};
 				};
 
-				// Unload
 				if (load_veh == 2) then {
 					private _vehicle = (_myveh select _selected_item) select 2;
 					ctrlEnable [ 121, false ];

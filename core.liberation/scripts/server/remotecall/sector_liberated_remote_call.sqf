@@ -14,7 +14,7 @@ if ( _liberated_sector in sectors_capture ) then {
 if ( _liberated_sector in sectors_military ) then {
 	_combat_readiness_increase = (5 + (floor (random 11))) * GRLIB_difficulty_modifier;
 
-	private _trucklist = [entities [[opfor_transport_truck], [], false, false], {
+	private _trucklist = [entities [[opfor_ammobox_transport], [], false, false], {
 		(getPos _x) distance2D (markerPos _liberated_sector) < 300
 	}] call BIS_fnc_conditionalSelect;
 	{
@@ -39,13 +39,19 @@ if ( _liberated_sector in sectors_tower ) then {
 	_combat_readiness_increase = (floor (random 4));
 };
 
-private _income = (75 + floor(random 100));
+private _income = 50; // (45 + floor(random 20));
 private _text = format ["Reward Received: + %1 Ammo.", _income];
 {
-	if (_x distance2D (markerpos _liberated_sector) < GRLIB_sector_size ) then {
-		[_x, _income] call ammo_add_remote_call;
-		[gamelogic, _text] remoteExec ["globalChat", owner _x];
-	};
+	// if (_x distance2D (markerpos _liberated_sector) < GRLIB_sector_size ) then {};
+	
+	private _ammo_collected = _x getVariable ["GREUH_ammo_count",0];
+	
+	_x setVariable ["GREUH_ammo_count", _ammo_collected + _income, true];
+	
+	[_x, 5] remoteExec ["addScore", 2];
+	
+	[gamelogic, _text] remoteExec ["globalChat", owner _x];
+	
 } forEach allPlayers;
 [markerPos _liberated_sector] call showlandmines;
 
@@ -74,7 +80,7 @@ if ( GRLIB_endgame == 0 ) then {
 	   (!( _liberated_sector in sectors_tower )) &&
 	   ((floor(random (200.0 / (GRLIB_difficulty_modifier * GRLIB_csat_aggressivity) )) < (combat_readiness - 20)) || ( _liberated_sector in sectors_bigtown )) &&
 	   ([] call F_opforCap < GRLIB_battlegroup_cap) &&
-	   (diag_fps > 20.0)
+	   (diag_fps > 15.0)
 	) then {
 		[ _liberated_sector ] spawn spawn_battlegroup;
 	};

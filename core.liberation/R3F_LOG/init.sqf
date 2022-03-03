@@ -293,7 +293,7 @@
 					{
 						(_this select 2) action ["GetOut", _this select 0];
 						(_this select 2) action ["Eject", _this select 0];
-						if (player == _this select 2) then {hintC format [STR_R3F_LOG_objet_en_cours_transport, getText (configOf (_this select 0) >> "displayName")];};
+						if (player == _this select 2) then {hintC format [STR_R3F_LOG_objet_en_cours_transport, getText (configFile >> "CfgVehicles" >> (typeOf (_this select 0)) >> "displayName")];};
 					};
 				};
 			};

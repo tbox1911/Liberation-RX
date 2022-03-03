@@ -1,4 +1,7 @@
 // *** BADDIES ***
+GRLIB_side_enemy = WEST;
+GRLIB_color_enemy = "ColorBLUFOR";
+GRLIB_color_enemy_bright = "ColorBLUE";
 
 // All class MUST be defined !
 
@@ -161,7 +164,7 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"RHS_CH_47F"	
 ];
 
-opfor_troup_transports_truck = [
+opfor_troup_transports = [
 	"rhsusf_M1078A1P2_B_M2_WD_fmtv_usarmy",
 	"rhsusf_M1083A1P2_B_M2_WD_fmtv_usarmy",
 	"RHS_UH60M",
@@ -170,7 +173,7 @@ opfor_troup_transports_truck = [
 	"rhsusf_CH53E_USMC_GAU21_D"
 ];
 
-opfor_troup_transports_heli = [
+opfor_choppers = [
 	"RHS_UH60M",
 	"RHS_UH1Y",
 	"RHS_CH_47F"

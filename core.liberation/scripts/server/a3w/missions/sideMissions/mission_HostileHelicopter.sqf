@@ -6,19 +6,21 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private [ "_citylist", "_vehicleClass", "_vehicle", "_leader", "_speedMode", "_waypoint", "_vehicleName", "_numWaypoints", "_box1", "_box2"];
+private ["_vehicleClass", "_vehicle", "_createVehicle", "_vehicles", "_leader", "_speedMode", "_waypoint", "_vehicleName", "_numWaypoints", "_box1", "_box2"];
+_citylist = [(call cityList)] call checkSpawn;
+
+if (count (_citylist) <= 1) exitWith {};
 
 _setupVars =
 {
 	_missionType = "Hostile Helicopter";
-	_citylist = [] call cityList;
 	_locationsArray = nil; // locations are generated on the fly from towns
 };
 
 _setupObjects =
 {
 	_missionPos = markerPos ((selectRandom _citylist) select 0);
-	_vehicleClass = selectRandom opfor_air;
+	_vehicleClass = selectRandom opfor_choppers;
 
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	//_aiGroup setCombatMode "WHITE"; // Defensive behaviour
@@ -49,7 +51,6 @@ _setupObjects =
 	_vehicleName = getText (configFile >> "CfgVehicles" >> (_vehicleClass param [0,""]) >> "displayName");
 	_missionHintText = format ["An armed <t color='%2'>%1</t> is patrolling the island. Intercept it and recover its cargo!", _vehicleName, sideMissionColor];
 	_numWaypoints = count waypoints _aiGroup;
-	true;
 };
 
 _waitUntilMarkerPos = {getPosATL _leader};

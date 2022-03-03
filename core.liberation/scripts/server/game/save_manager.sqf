@@ -260,7 +260,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 
 			if ( _nextclass == FOB_sign ) then {
 				_nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
-				_nextbuilding setObjectTextureGlobal [0, getMissionPath "res\splash_libe2.paa"];
+				_nextbuilding setObjectTextureGlobal [0, getMissionPath "res\liberation.paa"];
 				_nextbuilding allowDamage false;
 			};
 			
@@ -346,10 +346,8 @@ while { true } do {
 		{
 			_id = _x select 0;
 			_score = _x select 1;
-			if (_score >= 20 ) then {
-				_keep_score_id pushback _id;
-				_player_scores pushback _x;
-			};
+			_keep_score_id pushback _id;
+			_player_scores pushback _x;
 		} forEach GRLIB_player_scores;
 
 		// Save objects
@@ -367,22 +365,27 @@ while { true } do {
 
 			if ( _nextclass in _classnames_to_save_blu + all_hostile_classnames ) then {
 				if (side _x != GRLIB_side_enemy) then {
+					/*
 					_owner = _x getVariable ["GRLIB_vehicle_owner", ""];
-					_hascrew = _x getVariable ["GRLIB_vehicle_manned", false];
 					if (_owner == "") then {
 						buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew ];
 					};
 					if (_owner == "public") then {
 						buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner ];
-					};					
-					if (_owner in _keep_score_id && !([_nextclass, GRLIB_vehicle_blacklist] call F_itemIsInClass)) then {
-						_color = _x getVariable ["GRLIB_vehicle_color", ""];
-						_color_name = _x getVariable ["GRLIB_vehicle_color_name", ""];
-						_lst_a3 = weaponsItemsCargo _x;
-						{_lst_r3f pushback (typeOf _x)} forEach (_x getVariable ["R3F_LOG_objets_charges", []]);
-						{_lst_grl pushback (typeOf _x)} forEach (attachedObjects _x);
-						buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner, _color, _color_name, _lst_a3, _lst_r3f, _lst_grl];
 					};
+					if (_owner in _keep_score_id && !([_nextclass, GRLIB_vehicle_blacklist] call F_itemIsInClass)) then {
+					};
+					*/
+					
+					_owner = "public";
+					_hascrew = _x getVariable ["GRLIB_vehicle_manned", false];
+					_color = _x getVariable ["GRLIB_vehicle_color", ""];
+					_color_name = _x getVariable ["GRLIB_vehicle_color_name", ""];
+					_lst_a3 = weaponsItemsCargo _x;
+					{_lst_r3f pushback (typeOf _x)} forEach (_x getVariable ["R3F_LOG_objets_charges", []]);
+					{_lst_grl pushback (typeOf _x)} forEach (attachedObjects _x);
+
+					buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner, _color, _color_name, _lst_a3, _lst_r3f, _lst_grl];
 				};
 			} else {
 				buildings_to_save pushback [ _nextclass, _savedpos, _nextdir ];

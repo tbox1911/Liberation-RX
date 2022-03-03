@@ -1,14 +1,14 @@
 params [ "_minimum_readiness", "_patrol_type", "_index" ];
+private [ "_headless_client" ];
+
 waitUntil { !isNil "blufor_sectors" };
 waitUntil { !isNil "combat_readiness" };
-
-private [ "_headless_client", "_unit", "_vehicle_object" ];
 
 while { GRLIB_endgame == 0 } do {
 	waitUntil { sleep 1; count blufor_sectors >= 3; };
 	waitUntil { sleep 1; combat_readiness >= (_minimum_readiness / GRLIB_difficulty_modifier); };
 
-	sleep ((1 + random 5) * 60);
+	sleep ((1 + floor(random 5)) * 60);
 
 	while { [] call F_opforCap > GRLIB_patrol_cap || (diag_fps < 25.0) } do {
 		sleep (30 + floor(random 30));
@@ -40,15 +40,13 @@ while { GRLIB_endgame == 0 } do {
 		sleep 0.5;
 		{
 			_x createUnit [_sector_spawn_pos, _grp, 'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.5, "PRIVATE"];
-			_unit = (units _grp) select ((count (units _grp)) -1);
-			[ _unit ] call reammo_ai;
-			sleep 0.1;
 		} foreach _squad;
 	};
 
 	if (_patrol_type == 2) then {
+		private [ "_vehicle_object" ];
 		if (combat_readiness > 75 && floor(random 100) > 70) then {
-			_vehicle_object = [ _sector_spawn_pos, selectRandom opfor_air ] call F_libSpawnVehicle;
+			_vehicle_object = [ _sector_spawn_pos, selectRandom opfor_choppers ] call F_libSpawnVehicle;
 		} else {
 			_vehicle_object = [ _sector_spawn_pos, [] call F_getAdaptiveVehicle ] call F_libSpawnVehicle;
 		};
@@ -57,6 +55,7 @@ while { GRLIB_endgame == 0 } do {
 	};
 
 	if (_patrol_type == 3) then {
+		private [ "_vehicle_object" ];
 		_opfor_spawn = [sectors_tower + sectors_military, {!( _x in blufor_sectors)}] call BIS_fnc_conditionalSelect;
 		if ( count _opfor_spawn > 0) then {
 			_grp = createGroup [GRLIB_side_enemy, true];
@@ -74,7 +73,7 @@ while { GRLIB_endgame == 0 } do {
 	sleep 1;
 	if (!isNil "_grp") then {
 		[_grp, _patrol_type] spawn patrol_ai;
-		sleep 1;
+
 		_started_time = time;
 		_patrol_continue = true;
 

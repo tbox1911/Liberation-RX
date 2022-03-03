@@ -12,28 +12,27 @@ private ["_nbUnits", "_wreckPos", "_wreck", "_box1", "_box2", "_box3"];
 _setupVars =
 {
 	_missionType = "Aircraft Wreck";
-	_locationsArray = [SpawnMissionMarkers] call checkSpawn;
+	_locationsArray = SpawnMissionMarkers;
 	_nbUnits = [] call getNbUnits;
 };
 
 _setupObjects =
 {
 	_missionPos = markerPos _missionLocation;
-	_wreckPos = _missionPos vectorAdd ([[5 + floor(random 20), 0, 0], random 360] call BIS_fnc_rotateVector2D);
+	_wreckPos = _missionPos vectorAdd ([[25 + floor(random 20), 0, 0], random 360] call BIS_fnc_rotateVector2D);
+
+	// Class, Position, Fuel, Ammo, Damage, Special
 	_wreck = createVehicle [GRLIB_sar_wreck, _wreckPos, [], 0, "NONE"];
 	_box1 = [ammobox_b_typename, _missionPos, true] call boxSetup;
-	_box2 = [ammobox_b_typename, _missionPos, true] call boxSetup;
-	_box3 = [A3W_BoxWps, _missionPos, true] call boxSetup;
+	_box2 = [A3W_BoxWps, _missionPos, true] call boxSetup;
+	_box3 = [ammobox_b_typename, _missionPos, true] call boxSetup;
 
-	[_missionPos] call clearlandmines;
-	sleep 2;
 	[_missionPos, 25] call createlandmines;
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	[_aiGroup, _missionPos, _nbUnits, "infantry"] call createCustomGroup;
 
 	_missionPicture = "\A3\Air_F\Heli_Light_02\Data\UI\Heli_Light_02_CA.paa";
 	_missionHintText = "A helicopter has come down under enemy fire!";
-	true;
 };
 
 _waitUntilMarkerPos = nil;

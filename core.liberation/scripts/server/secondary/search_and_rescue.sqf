@@ -35,16 +35,12 @@ private _patrolcorners = [
 	[ (getpos _helowreck select 0) - 40, (getpos _helowreck select 1) + 40, 0 ]
 ];
 
-{ 
-	_x createUnit [ _patrolcorners select 0, _grppatrol,'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.5, "private"];
-	_unit = (units _grppatrol) select ((count (units _grppatrol)) -1);
-	[ _unit ] call reammo_ai;
-	sleep 0.1;
-} foreach ([] call F_getAdaptiveSquadComp);
+{ _x createUnit [ _patrolcorners select 0, _grppatrol,'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.5, "private"]; } foreach ([] call F_getAdaptiveSquadComp);
 
 while {(count (waypoints _grppatrol)) != 0} do {deleteWaypoint ((waypoints _grppatrol) select 0);};
 {
-	_waypoint = _grppatrol addWaypoint [_x, 0];
+	private _nextcorner = _x;
+	_waypoint = _grppatrol addWaypoint [_nextcorner,0];
 	_waypoint setWaypointType "MOVE";
 	_waypoint setWaypointSpeed "LIMITED";
 	_waypoint setWaypointBehaviour "SAFE";
@@ -60,9 +56,6 @@ private _nbsentry = 2 + (floor (random 3));
 
 for [ {_idx=0},{_idx < _nbsentry},{_idx=_idx+1} ] do {
 	opfor_sentry createUnit [ [ _pilotsPos, 1, random 360 ] call BIS_fnc_relPos, _grpsentry,'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.5, "private"];
-	_unit = (units _grpsentry) select ((count (units _grpsentry)) -1);
-	[ _unit ] call reammo_ai;
-	sleep 0.1;
 };
 (leader _grpsentry) setDir (random 360);
 

@@ -14,7 +14,7 @@ scopeName "applyVehicleTexture";
 // if _texture == ["string"], extract data from TextureSources config
 if (_texture isEqualType [] && {_texture isEqualTypeAll ""}) then {
 	_textureSource = _texture select 0;
-	private _srcTextures = getArray (configOf _veh >> "TextureSources" >> _textureSource >> "textures");
+	private _srcTextures = getArray (configFile >> "CfgVehicles" >> typeOf _veh >> "TextureSources" >> _textureSource >> "textures");
 
 	if (_srcTextures isEqualTo []) exitWith { breakOut "applyVehicleTexture" };
 

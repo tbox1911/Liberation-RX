@@ -33,27 +33,15 @@ private _free_items = [
 	"smokeshell",
 	"grenade",
 	"charge_remote_mag",
-	"laserbatteries",
+	"Laserbatteries",
 	"chemlight",
-	"itemmap",
-	"itemgps",
-	"itemradio",
-	"itemcompass",
-	"itemwatch"
+	"ItemMap",
+	"ItemGPS",
+	"ItemRadio",
+	"ItemCompass",
+	"ItemWatch"
 ];
 
-// overide custom list
-if (!iSNil "LOADOUT_fixed_price") then {
-	_fixed_price append LOADOUT_fixed_price;
-};
-if (!iSNil "LOADOUT_expensive_items") then {
-	_expensive_items append LOADOUT_expensive_items;
-};
-if (!iSNil "LOADOUT_free_items") then {
-	_free_items append LOADOUT_free_items;
-};
-
-// functions
 _fn_isfixed = {
 	params ["_item"];
 	private _ret = -1;
@@ -86,7 +74,7 @@ _fn_getprice = {
 	private _ret = 0;
 
 	if (isNil "_item") exitWith {0};
-	private _price = [_item] call _fn_isfixed;
+	_price = [_item] call _fn_isfixed;
 	if (_price < 0) then {
 		_isfree = [_item] call _fn_isfree;
 		if (!_isfree) then {

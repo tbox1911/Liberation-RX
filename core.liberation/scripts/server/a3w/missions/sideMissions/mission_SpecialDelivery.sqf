@@ -7,7 +7,9 @@ if (!isServer) exitwith {};
 if (!isNil "GRLIB_A3W_Mission_SD") exitWith {};
 #include "sideMissionDefines.sqf"
 
-private ["_missionPos", "_missionPos2", "_missionPos3", "_missionPosEnd", "_mission_grp"];
+private ["_townName",
+		"_missionPos2", "_missionPos3", "_missionPosEnd",
+		"_missionPosEnd", "_mission_grp", "_house"];
 
 _setupVars =
 {
@@ -18,40 +20,39 @@ _setupVars =
 
 _setupObjects =
 {
-	private _missionEnd = selectRandom ([SpawnMissionMarkers, { ([markerpos _x] call F_getNearestBluforObjective) select 1 > GRLIB_sector_size }] call BIS_fnc_conditionalSelect) select 0;
-	if (!isNil "_missionEnd") then {	
-		private _missionLocationList = [blufor_sectors, {(_x select [0,8]) == "capture_" && (markerpos _x) distance2D (markerpos _missionEnd) < 5000 }] call BIS_fnc_conditionalSelect;
-		if (count _missionLocationList >= 3) then {
-			_m1 = selectRandom _missionLocationList;
-			_missionPicture = getText (configFile >> "CfgVehicles" >> "C_Hatchback_01_F" >> "picture");
-			_missionHintText = format ["Special Delivery at <br/><t size='1.25' color='%1'>%2</t><br/><br/><t color='#00F000'>Talk</t> to <t color='#0000F0'>Nikos</t> to get information.<br/>Be ready for any situation!", sideMissionColor, markerText _m1];
-			_missionPos = (markerPos _m1 vectorAdd [([[-100,0,100], 20] call F_getRND), ([[-100,0,100], 20] call F_getRND), 0]);
-			_missionLocationList = _missionLocationList - [ _m1 ];
-
-			_m1 = selectRandom _missionLocationList;
-			_missionPos2 = (markerPos _m1 vectorAdd [([[-100,0,100], 20] call F_getRND), ([[-100,0,100], 20] call F_getRND), 0]);
-			_missionLocationList = _missionLocationList - [ _m1 ];
-
-			_m1 = selectRandom _missionLocationList;
-			_missionPos3 = (markerPos _m1 vectorAdd [([[-100,0,100], 20] call F_getRND), ([[-100,0,100], 20] call F_getRND), 0]);
-
-			_missionPosEnd = (markerpos _missionEnd);
+	// settings for this mission
+	_missionLocation  = selectRandom ((blufor_sectors select {["capture_", _x] call F_startsWith}) apply {[_x, false]}) select 0;
+	if (!isNil "_missionLocation") then {
+		_missionPos  = (markerPos _missionLocation vectorAdd [([[-100,0,100], 20] call F_getRND), ([[-100,0,100], 20] call F_getRND), 0]);
+		_townName = markerText _missionLocation;
+		_missionPicture = getText (configFile >> "CfgVehicles" >> "C_Hatchback_01_F" >> "picture");
+		_missionHintText = format ["Special Delivery at <br/><t size='1.25' color='%1'>%2</t><br/><br/><t color='#00F000'>Talk</t> to <t color='#0000F0'>Nikos</t> to get information.<br/>Be ready for any situation!", sideMissionColor, _townName];
+		_missionLocation2 = selectRandom ((blufor_sectors select {["capture_", _x] call F_startsWith && (markerPos _x) distance2D (markerPos _missionLocation) > 500 && (markerPos _x) distance2D (markerPos _missionLocation) < 3000 }) apply {[_x, false]}) select 0;
+		if (!isNil "_missionLocation2") then {
+			_missionPos2 = (markerPos _missionLocation2 vectorAdd [([[-100,0,100], 20] call F_getRND), ([[-100,0,100], 20] call F_getRND), 0]);
+			_missionLocation3 = selectRandom ((blufor_sectors select {["capture_", _x] call F_startsWith && (markerPos _x) distance2D (markerPos _missionLocation2) > 500 && (markerPos _x) distance2D (markerPos _missionLocation2) < 3000}) apply {[_x, false]}) select 0;
+			if (!isNil "_missionLocation3") then {
+				_missionPos3 = (markerPos _missionLocation3 vectorAdd [([[-100,0,100], 20] call F_getRND), ([[-100,0,100], 20] call F_getRND), 0]);
+				_missionLocationEnd = (selectRandom ((SpawnMissionMarkers select {(markerPos (_x select 0)) distance2D (markerPos _missionLocation3) > 500 && (markerPos (_x select 0)) distance2D (markerPos _missionLocation3) < 4000}) apply {[_x, false]}) select 0) select 0;
+				if (!isNil "_missionLocationEnd") then {
+					_missionPosEnd = (markerPos _missionLocationEnd vectorAdd [([[-100,0,100], 20] call F_getRND), ([[-100,0,100], 20] call F_getRND), 0]);
+				};
+			};
 		};
 	};
 
 	if (isnil "_missionPos" || isnil "_missionPos2" || isnil "_missionPos3" || isnil "_missionPosEnd") exitWith {
-		diag_log format ["--- LRX Error: side mission SD, cannot find location from marker %1", _missionEnd];
+		gamelogic globalChat "Initialize Side Mission Error !!";
 		GRLIB_A3W_Mission_SD = [];
 		publicVariable "GRLIB_A3W_Mission_SD";
-		false;
 	};
 
 	// create Nikos units
-	private _mission_grp = createGroup [GRLIB_side_civilian, true];
-	private _man1 = _mission_grp createUnit ["C_Nikos", _missionPos, [], 0, "NONE"];
-	private _man2 = _mission_grp createUnit ["C_Orestes", _missionPos2, [], 0, "NONE"];
-	private _man3 = _mission_grp createUnit ["C_Orestes", _missionPos3, [], 0, "NONE"];
-	private _man4 = _mission_grp createUnit ["C_Nikos_aged", _missionPosEnd, [], 0, "NONE"];
+	_mission_grp = createGroup [GRLIB_side_civilian, true];
+	_man1 = _mission_grp createUnit ["C_Nikos", _missionPos, [], 0, "NONE"];
+	_man2 = _mission_grp createUnit ["C_Orestes", _missionPos2, [], 0, "NONE"];
+	_man3 = _mission_grp createUnit ["C_Orestes", _missionPos3, [], 0, "NONE"];
+	_man4 = _mission_grp createUnit ["C_Nikos_aged", _missionPosEnd, [], 0, "NONE"];
 
 	GRLIB_A3W_Mission_SD = [_man1, _man2, _man3, _man4];
 	publicVariable "GRLIB_A3W_Mission_SD";
@@ -64,7 +65,7 @@ _setupObjects =
 		_x disableAI "ANIM";
 		_x removeAllEventHandlers "AnimDone";
 		_x addEventHandler [ "AnimDone", {
-			params[ "_unit", "_anim" ];
+		params[ "_unit", "_anim" ];
 			if ( _anim == "LHD_krajPaluby" ) then { _unit switchMove "LHD_krajPaluby" };
 		}];
 		sleep 1;
@@ -72,13 +73,13 @@ _setupObjects =
 	} forEach GRLIB_A3W_Mission_SD;
 
 	_man4 enableAI "Cover";
-	private _house = createVehicle ["Land_i_House_Small_01_V1_F", _missionPosEnd, [], 2, "None"];
+	_house = createVehicle ["Land_i_House_Small_01_V1_F", _missionPosEnd, [], 2, "None"];
 	_man4 setPosATL (getposATL _house);
 
-	private _marker = createMarker ["side_mission_A3W_Mission_SD", _missionPosEnd];
+	_marker = createMarker ["side_mission_A3W_Mission_SD", _missionPosEnd];
 	_marker setMarkerShape "ICON";
 	_marker setMarkerType "Empty";
-	true;
+
 };
 
 _waitUntilMarkerPos = nil;
@@ -119,7 +120,8 @@ _successExec = {
 	};
 	_successHintMessage = format ["Special Delivery<br/><t color='%1'>SUCCESS</t> !!<br/><br/>The information have been collected, Well done.", sideMissionColor];
 
-	for "_i" from 1 to (selectRandom [1,2]) do {
+	private _nb = selectRandom [1,2];
+	for "_i" from 1 to _nb do {
 		[ammobox_i_typename, _missionPosEnd, false] call boxSetup;
 		sleep 0.2;
 	};

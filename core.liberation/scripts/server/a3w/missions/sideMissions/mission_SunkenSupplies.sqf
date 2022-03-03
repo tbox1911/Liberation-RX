@@ -11,23 +11,30 @@ private ["_nbUnits", "_box1", "_box2", "_vehicle", "_boxPos", "_aiGroup", "_unit
 _setupVars =
 {
 	_missionType = "Sunken Supplies";
-	_locationsArray = [SunkenMissionMarkers] call checkSpawn;
+	_locationsArray = SunkenMissionMarkers;
 	_nbUnits = [] call getNbUnits;
 };
 
 _setupObjects =
 {
 	_missionPos = markerPos _missionLocation;
+
 	_box1 = [ammobox_o_typename, _missionPos, true] call boxSetup;
 	_box2 = [ammobox_o_typename, _missionPos, true] call boxSetup;
-	_vehicle = [_missionPos, "O_Boat_Armed_01_hmg_F", true] call F_libSpawnVehicle;
+	{
+		_boxPos = getPosASL _x;
+		_boxPos set [2, getTerrainHeightASL _boxPos + 1];
+		_x setPos _boxPos;
+		_x setDir random 360;
+	} forEach [_box1, _box2];
+
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
-	[_aiGroup, _missionPos, _nbUnits, "divers", true] call createCustomGroup;
+	[_aiGroup, _missionPos, _nbUnits, "divers"] call createCustomGroup;
+	_vehicle = [_missionPos, "O_Boat_Armed_01_hmg_F", true] call F_libSpawnVehicle;
 	(crew _vehicle) joinSilent _aiGroup;
 
 	_missionPicture = getText (configFile >> "CfgVehicles" >> "O_Boat_Armed_01_hmg_F" >> "picture");
 	_missionHintText = "Sunken supplies have been spotted in the ocean near the marker, and are heavily guarded. Diving gear and an underwater weapon are recommended.";
-	true;
 };
 
 _waitUntilMarkerPos = nil;

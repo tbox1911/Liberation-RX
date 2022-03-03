@@ -1,4 +1,7 @@
 // *** BADDIES ***
+GRLIB_side_enemy = EAST;
+GRLIB_color_enemy = "ColorOPFOR";
+GRLIB_color_enemy_bright = "ColorRED";
 
 // All class MUST be defined !
 
@@ -130,14 +133,18 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"O_LSV_02_AT_F"
 ];
 
-opfor_troup_transports_truck = [
+opfor_troup_transports = [
 	"O_Truck_03_transport_F",
 	"O_Truck_03_covered_F",
 	"O_Truck_02_covered_F",
-	"O_Truck_02_transport_F"
+	"O_Truck_02_transport_F",
+	"O_Heli_Transport_04_covered_F",
+	"O_SFIA_Heli_Attack_02_dynamicLoadout_lxWS",
+	"O_Heli_Light_02_F"
 ];
 
-opfor_troup_transports_heli = [
+opfor_choppers = [
+	"O_Heli_Light_02_F",
 	"O_Heli_Light_02_v2_F",
 	"O_SFIA_Heli_Attack_02_dynamicLoadout_lxWS",
 	"O_Heli_Attack_02_black_F",
@@ -145,10 +152,9 @@ opfor_troup_transports_heli = [
 ];
 
 opfor_air = [
-	"O_Heli_Light_02_v2_F",
 	"O_SFIA_Heli_Attack_02_dynamicLoadout_lxWS",
 	"O_Heli_Attack_02_black_F",
-	//"O_T_VTOL_02_infantry_F",
+	"O_T_VTOL_02_infantry_F",
 	"O_Plane_CAS_02_F",
 	"O_Plane_Fighter_02_F"
 ];
@@ -199,8 +205,4 @@ opfor_recyclable = [
 	["O_Plane_Fighter_02_Stealth_F",20,round (2000 / GRLIB_recycling_percentage),30],
 	["O_T_VTOL_02_vehicle_F",20,round (2500 / GRLIB_recycling_percentage),20],
 	["O_T_VTOL_02_infantry_F",20,round (2500 / GRLIB_recycling_percentage),20]
-];
-
-box_transport_config_east = [
-	[ "O_SFIA_Truck_02_covered_lxWS", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ]	
 ];

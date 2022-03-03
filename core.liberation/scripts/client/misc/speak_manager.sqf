@@ -21,7 +21,7 @@ speak_unit_AI = {
 	private _leader = leader group _unit;
 	player globalChat "Hello, Where is your leader ?";
 	uIsleep 2;
-	gamelogic globalChat format ["Hi, he's at %1 meters, Azimut %2, Hurry up!", round(_unit distance2D _leader), round(_unit getDir _leader)];
+	gamelogic globalChat (format ["Hi, he's at %1 meters, Azimut %2, Hurry up!", round(_unit distance2D _leader), round(_unit getDir _leader)]);
 };
 
 speak_leader_AI = {

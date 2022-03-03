@@ -19,7 +19,7 @@ private _squad4 = [];
 private _minimum_building_positions = 5;
 private _max_prisonners = 5;
 private _sector_despawn_tickets = 24;
-private _popfactor = 1;
+private _popfactor = 1.5;
 
 if ( GRLIB_unitcap < 1 ) then { _popfactor = GRLIB_unitcap; };
 
@@ -31,7 +31,7 @@ diag_log format ["Spawn Defend Sector %1 at %2", _sector, time];
 private _opforcount = [] call F_opforCap;
 sleep 10;
 
-if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector_size, GRLIB_side_friendly ] call F_getUnitsCount ) > 0 ) ) then {
+if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcount ] call F_getCorrectedSectorRange , GRLIB_side_friendly ] call F_getUnitsCount ) > 0 ) ) then {
 
 	if ( _sector in sectors_bigtown ) then {
 		_vehtospawn =
@@ -116,8 +116,6 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 		};
 		_building_ai_max = 0;
 		if(floor(random 100) > 75) then { _vehtospawn pushback ( [] call F_getAdaptiveVehicle ); };
-		[markerPos _sector] call clearlandmines;
-		sleep 2;
 		[markerPos _sector, 50] call createlandmines;
 	};
 
@@ -147,26 +145,26 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 	_managed_units = _managed_units + ( [ _sectorpos ] call F_spawnMilitaryPostSquad );
 
 	if ( count _squad1 > 0 ) then {
-		_grp = [ _sector, _infsquad, _squad1 ] call F_spawnRegularSquad;
-		[ _grp, _sectorpos, 100 ] spawn add_defense_waypoints;
+		_grp = [ _sector, _squad1 ] call F_spawnRegularSquad;
+		[ _grp, _sectorpos ] spawn add_defense_waypoints;
 		_managed_units = _managed_units + (units _grp);
 	};
 
 	if ( count _squad2 > 0 ) then {
-		_grp = [ _sector, _infsquad, _squad2 ] call F_spawnRegularSquad;
-		[ _grp, _sectorpos, 200 ] spawn add_defense_waypoints;
+		_grp = [ _sector, _squad2 ] call F_spawnRegularSquad;
+		[ _grp, _sectorpos ] spawn add_defense_waypoints;
 		_managed_units = _managed_units + (units _grp);
 	};
 
 	if ( count _squad3 > 0 ) then {
-		_grp = [ _sector, _infsquad, _squad3 ] call F_spawnRegularSquad;
-		[ _grp, _sectorpos, 300 ] spawn add_defense_waypoints;
+		_grp = [ _sector, _squad3 ] call F_spawnRegularSquad;
+		[ _grp, _sectorpos ] spawn add_defense_waypoints;
 		_managed_units = _managed_units + (units _grp);
 	};
 
 	if ( count _squad4 > 0 ) then {
-		_grp = [ _sector, _infsquad, _squad4 ] call F_spawnRegularSquad;
-		[ _grp, _sectorpos, 400 ] spawn add_defense_waypoints;
+		_grp = [ _sector, _squad4 ] call F_spawnRegularSquad;
+		[ _grp, _sectorpos ] spawn add_defense_waypoints;
 		_managed_units = _managed_units + (units _grp);
 	};
 
@@ -204,7 +202,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 			active_sectors = active_sectors - [ _sector ]; publicVariable "active_sectors";
 			{ _x setVariable ["GRLIB_counter_TTL", 0] } foreach _managed_units;
 		} else {
-			if ( ([_sectorpos, (GRLIB_sector_size + 300), GRLIB_side_friendly] call F_getUnitsCount) == 0 ) then {
+			if ( ([_sectorpos, (([_opforcount] call F_getCorrectedSectorRange) + 300), GRLIB_side_friendly] call F_getUnitsCount) == 0 ) then {
 				_sector_despawn_tickets = _sector_despawn_tickets - 1;
 			} else {
 				_sector_despawn_tickets = 24;

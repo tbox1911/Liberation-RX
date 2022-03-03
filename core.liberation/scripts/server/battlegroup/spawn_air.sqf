@@ -16,7 +16,7 @@ for "_i" from 1 to _planes_number do {
 	_newvehicle = [markerpos _air_spawnpoint, selectRandom _planeType] call F_libSpawnVehicle;
 	(crew _newvehicle) joinSilent _air_grp;
 	{_x addBackpack "B_Parachute"} forEach (crew _newvehicle);
-	diag_log format [ "Spawn Air vehicle %1 at %2", typeOf _newvehicle, time ];
+	diag_log format [ "Spawning Air vehicle %1 at %2", typeOf _newvehicle, time ];
 	sleep 5;
 };
 
@@ -24,26 +24,37 @@ while {(count (waypoints _air_grp)) != 0} do {deleteWaypoint ((waypoints _air_gr
 {_x doFollow leader _air_grp} foreach units _air_grp;
 sleep 0.2;
 
+_waypoint = _air_grp addWaypoint [ _first_objective, 500];
+_waypoint setWaypointType "MOVE";
+_waypoint setWaypointSpeed "FULL";
+_waypoint setWaypointBehaviour "AWARE";
+_waypoint setWaypointCombatMode "RED";
+_waypoint = _air_grp addWaypoint [ _first_objective, 500];
+_waypoint setWaypointType "MOVE";
+_waypoint setWaypointSpeed "FULL";
+_waypoint setWaypointBehaviour "AWARE";
+_waypoint setWaypointCombatMode "RED";
+_waypoint = _air_grp addWaypoint [ _first_objective, 500];
+_waypoint setWaypointType "MOVE";
+_waypoint setWaypointSpeed "FULL";
+_waypoint setWaypointBehaviour "AWARE";
+_waypoint setWaypointCombatMode "RED";
+_waypoint = _air_grp addWaypoint [ _first_objective, 500];
+_waypoint setWaypointType "SAD";
 _waypoint = _air_grp addWaypoint [ _first_objective, 1000];
-_waypoint setWaypointType "MOVE";
-_waypoint setWaypointSpeed "FULL";
-_waypoint setWaypointBehaviour "AWARE";
-_waypoint setWaypointCombatMode "GREEN";
-_waypoint = _air_grp addWaypoint [ _first_objective, 700];
-_waypoint setWaypointType "MOVE";
-_waypoint setWaypointSpeed "FULL";
-_waypoint setWaypointBehaviour "AWARE";
-_waypoint setWaypointCombatMode "GREEN";
-_waypoint = _air_grp addWaypoint [ _first_objective, 500];
 _waypoint setWaypointType "SAD";
-_waypoint setWaypointCombatMode "RED";
-_waypoint = _air_grp addWaypoint [ _first_objective, 500];
+_waypoint = _air_grp addWaypoint [ _first_objective, 2000];
 _waypoint setWaypointType "SAD";
-_waypoint setWaypointCombatMode "RED";
+_waypoint = _air_grp addWaypoint [ _first_objective, 3000];
+_waypoint setWaypointType "SAD";
+_waypoint = _air_grp addWaypoint [ _first_objective, 4000];
+_waypoint setWaypointType "SAD";
+_waypoint = _air_grp addWaypoint [ _first_objective, 5000];
+_waypoint setWaypointType "SAD";
 _waypoint = _air_grp addWaypoint [ _first_objective, 500];
-_waypoint setWaypointCombatMode "RED";
 _waypoint setWaypointType "CYCLE";
 
+_air_grp setCurrentWaypoint [ _air_grp, 2];
 sleep 60;
 
 while {

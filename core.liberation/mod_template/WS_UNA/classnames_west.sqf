@@ -1,4 +1,6 @@
 // *** FRIENDLIES ***
+GRLIB_side_friendly = WEST;
+GRLIB_color_friendly = "ColorBLUFOR";
 
 // Default classname: scripts\shared\default_classnames.sqf
 // Advanced definition: scripts\shared\classnames.sqf
@@ -144,7 +146,8 @@ buildings_west = [
 	["Flag_UNO_F",0,0,0,0]
 ];
 
-blufor_squad_inf_light = [
+if ( isNil "blufor_squad_inf_light" ) then { blufor_squad_inf_light = [] };
+if ( count blufor_squad_inf_light == 0 ) then { blufor_squad_inf_light = [
 	"B_Soldier_SL_F",
 	"B_medic_F",
 	"B_Soldier_GL_F",
@@ -153,8 +156,10 @@ blufor_squad_inf_light = [
 	"B_Soldier_lite_F",
 	"B_Soldier_lite_F",
 	"B_Soldier_lite_F"
-];
-blufor_squad_inf = [
+	];
+};
+if ( isNil "blufor_squad_inf" ) then { blufor_squad_inf = [] };
+if ( count blufor_squad_inf == 0 ) then { blufor_squad_inf = [
 	"B_Soldier_SL_F",
 	"B_medic_F",
 	"B_soldier_M_F",
@@ -165,39 +170,48 @@ blufor_squad_inf = [
 	"B_Soldier_F",
 	"B_Soldier_F",
 	"B_Soldier_F"
-];
-blufor_squad_at = [
+	];
+};
+if ( isNil "blufor_squad_at" ) then { blufor_squad_at = [] };
+if ( count blufor_squad_at == 0 ) then { blufor_squad_at = [
 	"B_Soldier_SL_F",
 	"B_medic_F",
 	"B_soldier_AT_F",
 	"B_soldier_AT_F",
 	"B_soldier_F",
 	"B_soldier_F"
-];
-blufor_squad_aa = [
+	];
+};
+if ( isNil "blufor_squad_aa" ) then { blufor_squad_aa = [] };
+if ( count blufor_squad_aa == 0 ) then { blufor_squad_aa = [
 	"B_Soldier_SL_F",
 	"B_medic_F",
 	"B_soldier_AA_F",
 	"B_soldier_AA_F",
 	"B_soldier_F",
 	"B_soldier_F"
-];
-blufor_squad_mix = [
+	];
+};
+if ( isNil "blufor_squad_mix" ) then { blufor_squad_mix = [] };
+if ( count blufor_squad_mix == 0 ) then { blufor_squad_mix = [
 	"B_Soldier_SL_F",
 	"B_medic_F",
 	"B_soldier_AA_F",
 	"B_soldier_AT_F",
 	"B_soldier_F",
 	"B_soldier_F"
-];
-blufor_squad_recon = [
+	];
+};
+if ( isNil "blufor_squad_recon" ) then { blufor_squad_recon = [] };
+if ( count blufor_squad_recon == 0 ) then { blufor_squad_recon = [
 	"B_recon_TL_F",
 	"B_recon_medic_F",
 	"B_Recon_Sharpshooter_F",
 	"B_recon_LAT_F",
 	"B_recon_M_F",
 	"B_recon_F"
-];
+	];
+};
 
 squads = [
 	[blufor_squad_inf_light,10,300,0,GRLIB_perm_max],

@@ -11,14 +11,14 @@ private ["_nbUnits", "_vehicle", "_vehicleName", "_vehiclePos", "_smoke"];
 _setupVars =
 {
 	_missionType = "Vehicle Capture";
-	_locationsArray = [SpawnMissionMarkers] call checkSpawn;
+	_locationsArray = SpawnMissionMarkers;
 	_nbUnits = [] call getNbUnits;
 };
 
 _setupObjects =
 {
 	_missionPos = markerPos _missionLocation;
-	_vehiclePos = _missionPos vectorAdd ([[5 + floor(random 20), 0, 0], random 360] call BIS_fnc_rotateVector2D);
+	_vehiclePos = _missionPos vectorAdd ([[25 + floor(random 20), 0, 0], random 360] call BIS_fnc_rotateVector2D);
 
 	// Class, Position, Fuel, Ammo, Damage, Special
 	_vehicle = createVehicle [ (selectRandom opfor_vehicles), _vehiclePos, [], 0, "NONE"];
@@ -31,16 +31,13 @@ _setupObjects =
 	_smoke = "test_EmptyObjectForSmoke" createVehicle _vehiclePos;
 	_smoke attachTo [_vehicle, [0, 1.5, 0]];
 
-	[_missionPos] call clearlandmines;
-	sleep 2;
 	[_missionPos, 25] call createlandmines;
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	[_aiGroup, _missionPos, _nbUnits, "infantry"] call createCustomGroup;
 
-	_missionPicture = getText (configOf _vehicle >> "picture");
-	_vehicleName = getText (configOf _vehicle >> "displayName");
+	_missionPicture = getText (configFile >> "CfgVehicles" >>  (typeOf _vehicle) >> "picture");
+	_vehicleName = getText (configFile >> "CfgVehicles" >>  (typeOf _vehicle) >> "displayName");
 	_missionHintText = format ["A <t color='%2'>%1</t> has been immobilized, go get it for your team!", _vehicleName, sideMissionColor];
-	true;
 };
 
 _waitUntilMarkerPos = nil;

@@ -5,7 +5,7 @@ private _veh = param [0,objNull,[objNull]];
 
 if (!isNil {_veh getVariable "DALE_var_IDLoadout"}) exitWith {};
 
-private _cfgComponent = configOf _veh >> "Components" >> "TransportPylonsComponent";
+private _cfgComponent = configFile >> "CfgVehicles" >> typeOf _veh >> "Components" >> "TransportPylonsComponent";
 
 if (!isClass _cfgComponent) exitWith {};
 if (!(_veh isKindOf "Air")) exitWith {};

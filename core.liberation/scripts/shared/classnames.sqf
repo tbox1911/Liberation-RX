@@ -1,13 +1,3 @@
-// *** GLOBAL DEFINITIOON ***
-GRLIB_side_friendly = WEST;
-GRLIB_color_friendly = "ColorBLUFOR";
-GRLIB_side_enemy = EAST;
-GRLIB_color_enemy = "ColorOPFOR";
-GRLIB_color_enemy_bright = "ColorRED";
-
-markers_reset = [99999,99999,0];
-zeropos = [0,0,0];
-
 // All Object classname used in LRX must be declared here
 [] call compileFinal preprocessFileLineNumbers "scripts\loadouts\init_loadouts.sqf";
 
@@ -24,42 +14,107 @@ zeropos = [0,0,0];
 // *** DEFAULT ***
 [] call compileFinal preprocessFileLineNUmbers format ["scripts\shared\default_classnames.sqf"];
 
+// *** GLOBAL DEFINITIOON ***
+GRLIB_side_friendly = WEST;
+GRLIB_side_enemy = EAST;
+
 // *** SUPPORT ***
-support_vehicles = [
-	[Arsenal_typename,0,10,0,0],
-	[medicalbox_typename,5,5,0,0],
-	[mobile_respawn,10,5,0,0],
-	[canisterFuel,0,5,1,0],
-	[Respawn_truck_typename,15,150,5,GRLIB_perm_log],
-	["Land_RepairDepot_01_civ_F",10,150,0,GRLIB_perm_log],
-	["Land_MedicalTent_01_MTP_closed_F",5,100,0,GRLIB_perm_log],
-	[repair_sling_typename,10,100,0,GRLIB_perm_log],
-	[fuel_sling_typename,0,100,30,GRLIB_perm_log],
-	[ammo_sling_typename,0,150,0,GRLIB_perm_log],
-	[medic_sling_typename,10,100,0,GRLIB_perm_log],
-	[ammo_truck_typename,5,200,10,GRLIB_perm_tank],
-	[repair_truck_typename,10,130,10,GRLIB_perm_tank],
-	[fuel_truck_typename,5,120,40,GRLIB_perm_tank],
-	[FOB_box_outpost,25,500,20,GRLIB_perm_log],
-	[FOB_box_typename,50,1500,50,GRLIB_perm_max],
-	[FOB_truck_typename,50,1500,50,GRLIB_perm_max],
-	["Land_CargoBox_V1_F",0,500,0,GRLIB_perm_max],
-	[ammobox_b_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
-	[ammobox_o_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
-	[ammobox_i_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
-	[A3W_BoxWps,0,round(150 / GRLIB_recycling_percentage),0,99999],
-	[waterbarrel_typename,0,round(70 / GRLIB_recycling_percentage),0,GRLIB_perm_inf],
+support_vehicles = support_vehicles_west + [
+	[FOB_box_typename,0,500,0,GRLIB_perm_inf],
+	[FOB_truck_typename,0,500,0,GRLIB_perm_inf],
 	[fuelbarrel_typename,0,round(70 / GRLIB_recycling_percentage),0,GRLIB_perm_inf],
-	[foodbarrel_typename,0,round(70 / GRLIB_recycling_percentage),0,GRLIB_perm_inf]
-] + support_vehicles_west;
+	[canisterFuel,0,5,0,GRLIB_perm_inf],
+	[fuel_sling_typename,0,0,0,GRLIB_perm_inf],
+	[ammo_sling_typename,0,0,0,GRLIB_perm_inf],
+	[repair_sling_typename,0,0,0,GRLIB_perm_inf],
+	[medic_sling_typename,0,0,0,GRLIB_perm_inf],
+	[ammobox_b_typename,0,round(5 / GRLIB_recycling_percentage),0,99999],
+	[ammobox_o_typename,0,round(5 / GRLIB_recycling_percentage),0,99999],
+	[ammobox_i_typename,0,round(5 / GRLIB_recycling_percentage),0,99999],
+	[A3W_BoxWps,0,round(50 / GRLIB_recycling_percentage),0,99999],
+	[waterbarrel_typename,0,round(50 / GRLIB_recycling_percentage),0,GRLIB_perm_inf],
+	[foodbarrel_typename,0,round(50 / GRLIB_recycling_percentage),0,GRLIB_perm_inf]
+	// [Arsenal_typename,0,10,0,GRLIB_perm_inf],
+	// [medicalbox_typename,5,5,0,GRLIB_perm_inf],
+	// [mobile_respawn,10,5,0,GRLIB_perm_inf],
+	// [Respawn_truck_typename,15,150,5,GRLIB_perm_inf],
+	// ["Land_RepairDepot_01_civ_F",10,150,0,GRLIB_perm_inf],
+	// ["Land_MedicalTent_01_MTP_closed_F",5,100,0,GRLIB_perm_inf],
+	// [ammo_truck_typename,5,200,10,GRLIB_perm_inf],
+	// [repair_truck_typename,10,130,10,GRLIB_perm_inf],
+	// [fuel_truck_typename,5,120,40,GRLIB_perm_inf],
+	// [FOB_box_outpost,25,500,20,GRLIB_perm_inf],
+	// ["Land_CargoBox_V1_F",0,500,0,GRLIB_perm_inf]
+];
 
 // *** BUILDINGS ***
-buildings = [[FOB_sign,0,0,0,99999]];
-if (isNil "buildings_west_overide") then {
-	buildings append buildings_default + buildings_west;
-} else {
-	buildings append buildings_west;
-};
+buildings = buildings_west + [
+	/*
+	["Land_PierLadder_F",0,0,0,GRLIB_perm_inf],
+	["Land_CncBarrierMedium4_F",0,0,0,GRLIB_perm_inf],
+	["Land_CncWall4_F",0,0,0,GRLIB_perm_inf],
+	["Land_BagFence_Round_F",0,0,0,GRLIB_perm_inf],
+	["Land_BagFence_Long_F",0,0,0,GRLIB_perm_inf],
+	["Land_BagFence_Short_F",0,0,0,GRLIB_perm_inf],
+	["Land_BagFence_Corner_F",0,0,0,GRLIB_perm_inf],
+	["Land_RampConcrete_F",0,0,0,GRLIB_perm_inf],
+	["Land_RampConcreteHigh_F",0,0,0,GRLIB_perm_inf],
+	["Land_HBarrier_5_F",0,0,0,GRLIB_perm_inf],
+	["Land_HBarrierWall_corridor_F",0,0,0,GRLIB_perm_inf],
+	["Land_HBarrierWall4_F",0,0,0,GRLIB_perm_inf],
+	["Land_HBarrierWall6_F",0,0,0,GRLIB_perm_inf],
+	["Land_HBarrierWall_corner_F",0,0,0,GRLIB_perm_inf],
+	["Land_HBarrierTower_F",0,0,0,GRLIB_perm_inf],
+	["Land_HBarrierBig_F",0,0,0,GRLIB_perm_inf],
+	["Land_CncShelter_F",0,0,0,GRLIB_perm_inf],
+	["Land_BagBunker_Small_F",0,0,0,GRLIB_perm_inf],
+	["Land_BagBunker_Large_F",0,0,0,GRLIB_perm_inf],
+	["Land_MedicalTent_01_NATO_generic_open_F",0,0,0,GRLIB_perm_inf],
+	//["Land_BagBunker_Tower_F",0,0,0,GRLIB_perm_inf],
+	["Land_SandbagBarricade_01_F",0,0,0,GRLIB_perm_inf],
+	["Land_SandbagBarricade_01_hole_F",0,0,0,GRLIB_perm_inf],
+	["Land_SandbagBarricade_01_half_F",0,0,0,GRLIB_perm_inf],
+	["Land_SM_01_shed_F",0,0,0,GRLIB_perm_inf],
+	["Land_Hangar_F",0,0,0,GRLIB_perm_inf],
+	["Land_Medevac_house_V1_F",0,0,0,GRLIB_perm_inf],
+	["Land_Medevac_HQ_V1_F",0,0,0,GRLIB_perm_inf],
+	["Land_PortableLight_double_F",0,0,0,GRLIB_perm_inf],
+	["Land_TentLamp_01_suspended_F",0,0,0,GRLIB_perm_inf],
+    ["Land_TentLamp_01_suspended_red_F",0,0,0,GRLIB_perm_inf],
+	["Land_LampHalogen_F",0,0,0,GRLIB_perm_inf],
+	["Land_HelipadSquare_F",0,0,0,GRLIB_perm_inf],
+	["Land_Razorwire_F",0,0,0,GRLIB_perm_inf],
+	["Land_ToolTrolley_02_F",0,0,0,GRLIB_perm_inf],
+	["Land_WeldingTrolley_01_F",0,0,0,GRLIB_perm_inf],
+	["Land_GasTank_02_F",0,0,0,GRLIB_perm_inf],
+	["Land_Workbench_01_F",0,0,0,GRLIB_perm_inf],
+	["Land_WaterTank_F",0,0,0,GRLIB_perm_inf],
+	["Land_WaterBarrel_F",0,0,0,GRLIB_perm_inf],
+	["Land_BarGate_F",0,0,0,GRLIB_perm_inf],
+	["Land_MetalCase_01_large_F",0,0,0,GRLIB_perm_tank],
+	["CargoNet_01_box_F",0,0,0,GRLIB_perm_inf],
+	["CamoNet_BLUFOR_open_F",0,0,GRLIB_perm_inf],
+	["CamoNet_BLUFOR_big_F",0,0,0,GRLIB_perm_inf],
+	["Land_CampingChair_V1_F",0,0,0,GRLIB_perm_inf],
+	["Land_CampingChair_V2_F",0,0,0,GRLIB_perm_inf],
+	["Land_CampingTable_F",0,0,0,GRLIB_perm_inf],
+	["MapBoard_altis_F",0,0,0,GRLIB_perm_inf],
+	["Land_Metal_rack_Tall_F",0,0,0,GRLIB_perm_inf],
+	["PortableHelipadLight_01_blue_F",0,0,0,GRLIB_perm_inf],
+	["PortableHelipadLight_01_red_F",0,0,0,GRLIB_perm_inf],
+	["PortableHelipadLight_01_white_F",0,0,0,GRLIB_perm_inf],
+	["PortableHelipadLight_01_green_F",0,0,0,GRLIB_perm_inf],
+	["PortableHelipadLight_01_yellow_F",0,0,0,GRLIB_perm_inf],
+	["Land_DieselGroundPowerUnit_01_F",0,0,0,GRLIB_perm_inf],
+	["Land_Pallet_MilBoxes_F",0,0,0,GRLIB_perm_inf],
+	["Land_PaperBox_open_full_F",0,0,0,GRLIB_perm_inf],
+	["Land_CzechHedgehog_01_new_F",0,0,0,GRLIB_perm_inf],
+	["Land_ConcreteHedgehog_01_F",0,0,0,GRLIB_perm_inf],
+	["Land_DragonsTeeth_01_4x2_old_redwhite_F",0,0,0,GRLIB_perm_inf],
+	["Land_ClutterCutter_large_F",0,0,0,GRLIB_perm_inf],
+	*/
+	[FOB_sign,0,0,0,99999]
+];
 
 // *** SIMPLE OBJECTS ***
 simple_objects = [
@@ -113,20 +168,10 @@ vehicle_repair_sources = [
 
 // *** Boats ***
 boats_names = [ 
-	"C_Scooter_Transport_01_F",
-	"C_Boat_Civil_01_F",
-	"C_Boat_Transport_02_F",
 	"B_Boat_Transport_01_F",
+	"C_Boat_Transport_02_F",
 	"B_Boat_Armed_01_minigun_F"
 ] + boats_east + boats_west;
-
-boats_names_civ = [ 
-	"C_Scooter_Transport_01_F",
-	"C_Boat_Civil_01_F",
-	"C_Boat_Transport_02_F",
-	"C_Boat_Civil_01_police_F",
-	"C_Boat_Civil_01_rescue_F"
-];
 
 // *** RESISTANCE ***
 resistance_squad = [
@@ -207,7 +252,7 @@ GRLIB_vehicle_whitelist = [
 	ammobox_o_typename,
 	ammobox_i_typename,
 	mobile_respawn,
-	opfor_transport_truck,
+	opfor_ammobox_transport,
 	A3W_BoxWps,
 	canisterFuel,
 	waterbarrel_typename,
@@ -228,7 +273,7 @@ GRLIB_vehicle_blacklist = [
 	ammobox_b_typename,
 	ammobox_o_typename,
 	ammobox_i_typename,
-	opfor_transport_truck,
+	opfor_ammobox_transport,
 	FOB_truck_typename,
 	FOB_box_typename,
 	FOB_box_outpost,
@@ -268,8 +313,8 @@ opfor_vehicles = [ opfor_vehicles , { [ _x ] call F_checkClass } ]  call BIS_fnc
 opfor_vehicles_low_intensity = [ opfor_vehicles_low_intensity , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
 opfor_battlegroup_vehicles = [ opfor_battlegroup_vehicles , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
 opfor_battlegroup_vehicles_low_intensity = [ opfor_battlegroup_vehicles_low_intensity , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
-opfor_troup_transports_truck = [ opfor_troup_transports_truck , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
-opfor_troup_transports_heli = [ opfor_troup_transports_heli , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
+opfor_troup_transports = [ opfor_troup_transports , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
+opfor_choppers = [ opfor_choppers , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
 opfor_air = [ opfor_air , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
 civilians = [ civilians , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
 civilian_vehicles = [ civilian_vehicles , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
@@ -300,9 +345,8 @@ opfor_squad_8_infkillers = [
 	opfor_machinegunner,
 	opfor_heavygunner,
 	opfor_marksman,
+	opfor_sharpshooter,
 	opfor_sniper,
-	opfor_rifleman,
-	opfor_rifleman,
 	opfor_rpg
 ];
 opfor_squad_8_tankkillers = [
@@ -320,24 +364,22 @@ opfor_squad_8_airkillers = [
 	opfor_medic,
 	opfor_machinegunner,
 	opfor_rpg,
-	opfor_aa,
+	opfor_rpg,
 	opfor_aa,
 	opfor_aa,
 	opfor_aa
 ];
 all_resistance_troops = [] + militia_squad;
-all_hostile_classnames = (land_vehicles_classnames + opfor_air + opfor_troup_transports_heli + opfor_troup_transports_truck + opfor_vehicles_low_intensity + opfor_statics + boats_east);
+all_hostile_classnames = (land_vehicles_classnames + opfor_air + opfor_choppers + opfor_troup_transports + opfor_vehicles_low_intensity + opfor_statics + boats_east);
 { land_vehicles_classnames pushback (_x select 0); } foreach (heavy_vehicles + light_vehicles);
-air_vehicles_classnames = [] + opfor_troup_transports_heli;
+air_vehicles_classnames = [] + opfor_choppers;
 { air_vehicles_classnames pushback (_x select 0); } foreach air_vehicles;
-squads_names = [
-	localize "STR_LIGHT_RIFLE_SQUAD",
-	localize "STR_RIFLE_SQUAD",
-	localize "STR_RECON_SQUAD",
-	localize "STR_AT_SQUAD",
-	localize "STR_AA_SQUAD",
-	localize "STR_MIXED_SQUAD"
-];
+markers_reset = [99999,99999,0];
+zeropos = [0,0,0];
+squads_names = [ localize "STR_LIGHT_RIFLE_SQUAD", localize "STR_RIFLE_SQUAD", localize "STR_AT_SQUAD", localize "STR_AA_SQUAD", localize "STR_MIXED_SQUAD", localize "STR_RECON_SQUAD" ];
+ammobox_transports_typenames = [];
+{ ammobox_transports_typenames pushback (_x select 0) } foreach box_transport_config;
+ammobox_transports_typenames = [ ammobox_transports_typenames , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
 elite_vehicles = [ elite_vehicles , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
 opfor_infantry = [opfor_sentry,opfor_rifleman,opfor_grenadier,opfor_squad_leader,opfor_team_leader,opfor_marksman,opfor_machinegunner,opfor_heavygunner,opfor_medic,opfor_rpg,opfor_at,opfor_aa,opfor_officer,opfor_sharpshooter,opfor_sniper,opfor_engineer];
 GRLIB_rank_level = ["PRIVATE", "CORPORAL", "SERGEANT", "LIEUTENANT", "CAPTAIN", "MAJOR", "COLONEL"];
@@ -372,6 +414,9 @@ GRLIB_ignore_colisions = [
  	"Land_PowLine_wire_A_right_EP1"
 ];
 
+GRLIB_sar_wreck = "Land_Wreck_Heli_Attack_01_F";
+GRLIB_sar_fire = "test_EmptyObjectForFireBig";
+
 // Ammobox you want keep contents
 GRLIB_Ammobox_keep = [
 	A3W_BoxWps,
@@ -392,54 +437,36 @@ GRLIB_player_grave = [
 
 if ( isNil "GRLIB_AirDrop_1" ) then {
 	GRLIB_AirDrop_1 = [
-		"I_Quadbike_01_F",
-		"I_G_Offroad_01_F",
-		"I_G_Quadbike_01_F",
-		"C_Offroad_01_F",
-		"B_G_Offroad_01_F"
+		"ACE_medicalSupplyCrate_advanced"
 	];
 };
 
 if ( isNil "GRLIB_AirDrop_2" ) then {
 	GRLIB_AirDrop_2 = [
-		"I_G_Offroad_01_armed_F",
-		"B_G_Offroad_01_armed_F",
-		"O_G_Offroad_01_armed_F",
-		"I_C_Offroad_02_LMG_F"
+		"Box_EAF_WpsLaunch_F"
 	];
 };
 
 if ( isNil "GRLIB_AirDrop_3" ) then {	
 	GRLIB_AirDrop_3 = [
-		"I_MRAP_03_hmg_F",
-		"I_MRAP_03_gmg_F",
-		"B_T_MRAP_01_hmg_F",
-		"B_T_MRAP_01_gmg_F"
+		"B_Quadbike_01_F"
 	];
 };
 
 if ( isNil "GRLIB_AirDrop_4" ) then {	
 	GRLIB_AirDrop_4 = [
-		"B_Truck_01_transport_F",
-		"B_Truck_01_covered_F",
-		"I_Truck_02_covered_F",
-		"I_Truck_02_transport_F"
+		"UK3CB_BAF_LandRover_Soft_FFR_Arctic_A_Arctic"
 	];
 };
 
 if ( isNil "GRLIB_AirDrop_5" ) then {	
 	GRLIB_AirDrop_5 = [
-		"I_APC_tracked_03_cannon_F",
-		"B_APC_Wheeled_03_cannon_F",
-		"B_APC_Wheeled_01_cannon_F"
+		"rhs_kamaz5350_ammo_vmf"
 	];
 };
 
 if ( isNil "GRLIB_AirDrop_6" ) then {	
 	GRLIB_AirDrop_6 = [
-		"C_Boat_Civil_01_F",
-		"C_Boat_Transport_02_F",
-		"B_Boat_Transport_01_F",
-		"I_C_Boat_Transport_02_F"
+		"B_Boat_Transport_01_F"
 	];
 };

@@ -1,4 +1,7 @@
 // *** BADDIES ***
+GRLIB_side_enemy = EAST;
+GRLIB_color_enemy = "ColorOPFOR";
+GRLIB_color_enemy_bright = "ColorRED";
 
 // All class MUST be defined !
 
@@ -140,14 +143,20 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"O_LSV_02_AT_F"
 ];
 
-opfor_troup_transports_truck = [
+opfor_troup_transports = [
 	"O_Truck_03_transport_F",
 	"O_Truck_03_covered_F",
 	"O_Truck_02_covered_F",
-	"O_Truck_02_transport_F"
+	"O_Truck_02_transport_F",
+	"O_Heli_Transport_04_covered_F",
+	"O_Heli_Attack_02_F",
+	"O_Heli_Light_02_F",
+	"O_T_VTOL_02_infantry_F"
 ];
 
-opfor_troup_transports_heli = [
+opfor_choppers = [
+	"O_Heli_Light_02_F",
+	"O_Heli_Light_02_v2_F",
 	"O_Heli_Attack_02_F",
 	"O_Heli_Attack_02_black_F",
 	"O_Heli_Transport_04_covered_F",
@@ -155,8 +164,6 @@ opfor_troup_transports_heli = [
 ];
 
 opfor_air = [
-	"O_Heli_Light_02_F",
-	"O_Heli_Light_02_v2_F",	
 	"O_Heli_Attack_02_F",
 	"O_Heli_Attack_02_black_F",
 	"O_T_VTOL_02_infantry_F",

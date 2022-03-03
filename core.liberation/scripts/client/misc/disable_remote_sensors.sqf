@@ -8,7 +8,7 @@ while { true } do {
 		if ( GRLIB_remote_sensors == 1 ) then {
 			if ( { (local _x) && !(isPlayer _x) } count allUnits > 0 ) then {
 				disableRemoteSensors false;
-				hint "Remote sensors ENABLED";
+				// hint "Remote sensors ENABLED";
 			};
 		};
 	} else {
@@ -26,7 +26,7 @@ while { true } do {
 
 		if ( _disable ) then {
 			disableRemoteSensors true;
-			hint "Remote sensors DISABLED";
+			// hint "Remote sensors DISABLED";
 		};
 	};
 

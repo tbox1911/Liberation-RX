@@ -20,12 +20,11 @@ class liberation_airdrop {
     "LabelSup",
 	  "ButtonHeavy",
     "LabelHeavy",
-    "ButtonAir",
-    "LabelAir",
     "ButtonBoat",
     "LabelBoat",
 	  "CancelButton"
 	};
+//    "ButtonAir","LabelAir",
 	objects[] = {};
   class CancelButton: StdButton
     {
@@ -194,11 +193,13 @@ class liberation_airdrop {
     h = 0.044 * safezoneH;
     sizeEx = 0.018 * safezoneH * GUI_GRID_H * GUI_GRID_H;
   };
+  
+  /*
   class ButtonAir: StdButton
   {
     idc = 1605;
     action = "air_type=7;do_action=1";
-    text = $STR_AIRDROP_AIRSUPREMACY;
+    text = $STR_AIRDROP_AIRSUPERIORITY;
     x = 0.206094 * safezoneW + safezoneX;
     y = 0.6386 * safezoneH + safezoneY;
     w = 0.061875 * safezoneW;
@@ -206,13 +207,15 @@ class liberation_airdrop {
   };
   class LabelAir: GREUH_RscStructuredText
   {
-    text = $STR_AIRSUPREMACY;
+    text = $STR_AIRSUPERIORITY;
     x = 0.283437 * safezoneW + safezoneX;
     y = 0.6386 * safezoneH + safezoneY;
     w = 0.149531 * safezoneW;
     h = 0.044 * safezoneH;
     sizeEx = 0.018 * safezoneH * GUI_GRID_H * GUI_GRID_H;
   };
+  */
+  
   class OuterBG1: StdBG
   {
     colorBackground[] = COLOR_BROWN;

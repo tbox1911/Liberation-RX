@@ -1,12 +1,10 @@
+if (count (attachedObjects player) > 0) exitWith {};
 if (player getVariable ["GRLIB_action_inuse", false]) exitWith {};
-if (count (attachedObjects player) > 0) then {{detach _x} forEach attachedObjects player};
-R3F_LOG_joueur_deplace_objet = objNull;
-
 private _choiceslist = [];
 private _standard_map_pos = [];
 private _frame_pos = [];
 private _spawn_str = "";
-private _basenamestr = "BASE CHIMERA";
+private _basenamestr = "Operation Base";
 
 if (!GRLIB_player_spawned) then {
 	waitUntil {sleep 0.2; !isNil "GRLIB_all_fobs" };
@@ -16,16 +14,10 @@ if (!GRLIB_player_spawned) then {
 	waitUntil {sleep 0.2; introDone };
 	waitUntil {sleep 0.2; !isNil "cinematic_camera_stop" };
 	waitUntil {sleep 0.2; cinematic_camera_stop };
-	waitUntil {sleep 0.2; !(isNil "dostartgame")};
-	waitUntil {sleep 0.2; dostartgame == 1};
 };
 
 fullmap = 0;
 _old_fullmap = 0;
-waitUntil {
-	sleep 0.1;
-	( vehicle player == player && alive player && !dialog )
-};
 
 createDialog "liberation_deploy";
 waitUntil { dialog };
@@ -53,6 +45,8 @@ _frame_pos = ctrlPosition ((findDisplay 5201) displayCtrl 198);
 _saved_loadouts = profileNamespace getVariable "bis_fnc_saveInventory_data";
 _loadouts_data = [];
 _counter = 0;
+
+/*
 if ( GRLIB_enable_arsenal && !isNil "_saved_loadouts" ) then {
 	{
 		if ( _counter % 2 == 0 ) then {
@@ -61,6 +55,7 @@ if ( GRLIB_enable_arsenal && !isNil "_saved_loadouts" ) then {
 		_counter = _counter + 1;
 	} foreach _saved_loadouts;
 };
+*/
 
 lbAdd [ 203, "--"] ;
 { lbAdd [ 203, _x ]; } foreach _loadouts_data;
@@ -82,11 +77,8 @@ while { dialog && alive player && deploy == 0} do {
 	_respawn_trucks = [] call F_getMobileRespawns;
 
 	for "_idx" from 0 to ((count _respawn_trucks) -1) do {
-		private _owner = (_respawn_trucks select _idx) getVariable ["GRLIB_vehicle_owner", "public"];
-		private _name = "";
-		if (_owner != "public") then {
-			_name = format ["(%1)", name ([_owner] call BIS_fnc_getUnitByUID)];
-		};
+		private _name = format ["(%1)", name ([(_respawn_trucks select _idx) getVariable ["GRLIB_vehicle_owner", ""]] call BIS_fnc_getUnitByUID)];
+		if (isNil "_name") then {_name = ""};
 		_choiceslist = _choiceslist + [[format [ "%1 - %2 %3", localize "STR_RESPAWN_TRUCK", mapGridPosition (getpos (_respawn_trucks select _idx)), _name], getpos (_respawn_trucks select _idx), (_respawn_trucks select _idx)]];
 	};
 
@@ -163,7 +155,7 @@ if (dialog && deploy == 1) then {
 		if (!isNil "_my_squad") then {
 			{ _unit_list pushBack _x } forEach units _my_squad;
 		};
-		_unit_list_redep = [_unit_list, { !(isPlayer _x) && vehicle _x == _x && (_x distance2D _player_pos) < 40 && lifestate _x != 'INCAPACITATED' }] call BIS_fnc_conditionalSelect;
+		_unit_list_redep = [_unit_list, { _x != player && vehicle _x == _x && (_x distance2D _player_pos) < 40 && lifestate _x != 'INCAPACITATED' }] call BIS_fnc_conditionalSelect;
 		[_unit_list_redep] spawn {
 			params ["_list"];
 			{
@@ -176,21 +168,15 @@ if (dialog && deploy == 1) then {
 		cinematic_camera_started = false;
 	};
 
-	// Player Loadout
-	GRLIB_loadout_overide = false;
+	GRLIB_loadout_overide = nil;
 	if ( (lbCurSel 203) > 0 ) then {
+		GRLIB_backup_loadout = [player] call F_getLoadout;
+		player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
 		[player, [ profileNamespace, _loadouts_data select ((lbCurSel 203) - 1) ] ] call bis_fnc_loadInventory;
 		[player] call F_filterLoadout;
-		[player] spawn F_payLoadout;
+		[player] call F_payLoadout;
 		GRLIB_loadout_overide = true;
 	};
-
-	if (!GRLIB_loadout_overide && !(isNil "GRLIB_respawn_loadout")) then {
-		[player, GRLIB_respawn_loadout] call F_setLoadout;
-		[player] call F_filterLoadout;
-		[player] spawn F_payLoadout;	
-	};
-	
 };
 
 respawn_camera cameraEffect ["Terminate","back"];

@@ -5,9 +5,7 @@ if (!GRLIB_limited_arsenal) exitWith {};
 private _checkItem = {
     params ["_item"];
     private _ret = true;
-    {
-        if ( [_x, _item] call F_startsWith || (_item in GRLIB_whitelisted_from_arsenal)) exitWith { _ret = false };
-    } forEach GRLIB_MOD_signature;
+    if ( [GRLIB_MOD_signature, _item] call F_startsWith || (_item in GRLIB_whitelisted_from_arsenal)) then { _ret = false };
     _ret;
 };
 
@@ -26,7 +24,7 @@ private _checkItem = {
     { if (_x == _item) then {_unit removeItem _item} } forEach ((vestItems _unit)+(uniformItems _unit)+(backpackItems _unit)+(items _unit));
 } forEach GRLIB_blacklisted_from_arsenal;
 
-if (count GRLIB_MOD_signature > 0) then {
+if (!isNil "GRLIB_MOD_signature") then {
     if ([handgunWeapon _unit] call _checkItem) then {_unit removeWeapon (handgunWeapon _unit)};
     if ([primaryWeapon _unit] call _checkItem) then {_unit removeWeapon (primaryWeapon _unit)};
     if ([secondaryWeapon _unit] call _checkItem) then {_unit removeWeapon (secondaryWeapon _unit)};

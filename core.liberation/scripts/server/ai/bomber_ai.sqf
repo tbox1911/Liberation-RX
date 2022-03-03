@@ -7,7 +7,7 @@ if (_unit getVariable ["GRLIB_is_prisonner", false]) exitWith {};
 sleep 3;
 if (!alive _unit) exitWith {};
 
-private _cloth = getText(configfile >> "CfgVehicles" >> selectRandom civilians >> "uniformClass");
+private _cloth = selectRandom ["U_C_Poloshirt_blue","U_C_Poloshirt_burgundy","U_C_Poloshirt_stripped","U_C_Poloshirt_tricolour","U_C_Poloshirt_salmon","U_C_Poloshirt_redwhite"];
 private _targets = [];
 private _target = objNull;
 
@@ -24,6 +24,7 @@ removeGoggles _unit;
 { _unit unlinkItem _x } forEach (assignedItems _unit);
 
 _unit forceAddUniform _cloth;
+_unit addVest "V_TacChestrig_cbr_F";
 _unit setHitPointDamage ["hitLegs", 0];
 {_unit disableAI _x} count ["TARGET","AUTOTARGET","AUTOCOMBAT","SUPPRESSION"];
 _unit setUnitPos "UP";

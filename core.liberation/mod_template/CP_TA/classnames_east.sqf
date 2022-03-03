@@ -1,4 +1,7 @@
 // *** BADDIES ***
+GRLIB_side_enemy = EAST;
+GRLIB_color_enemy = "ColorBrown";
+GRLIB_color_enemy_bright = "ColorRED";
 
 // All class MUST be defined !
 
@@ -27,6 +30,7 @@ opfor_mrap_hmg = "CUP_O_UAZ_MG_TKA";
 opfor_mrap_gmg = "CUP_O_UAZ_SPG9_TKA";
 opfor_transport_helo = "CUP_O_MI6T_TKA";
 opfor_transport_truck = "CUP_O_V3S_Covered_TKA";
+opfor_ammobox_transport = "CUP_O_V3S_Covered_TKA";
 opfor_fuel_truck = "CUP_O_V3S_Refuel_TKA";
 opfor_ammo_truck = "CUP_O_V3S_Rearm_TKA";
 opfor_fuel_container = "Land_Pod_Heli_Transport_04_fuel_F";
@@ -141,13 +145,14 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"CUP_O_BTR40_MG_TKA"
 ];
 
-opfor_troup_transports_truck = [
+opfor_troup_transports = [
+	"CUP_O_Mi17_TK",
 	"CUP_O_BTR40_MG_TKM",
 	"CUP_O_V3S_Covered_TKM",
 	"CUP_O_V3S_Open_TKM"
 ];
 
-opfor_troup_transports_heli = [
+opfor_choppers = [
 	"CUP_O_Mi17_TK",
 	"CUP_O_MI6T_TKA",
 	"CUP_O_UH1H_armed_TKA"
@@ -170,48 +175,48 @@ opfor_statics = [
 ];
 
 opfor_recyclable = [
-	["I_MRAP_03_F",0,round (20 / GRLIB_recycling_percentage),0],
+	["I_MRAP_03_F",0,round (60 / GRLIB_recycling_percentage),0],
 	["CUP_O_MTLB_pk_TK_MILITIA",0,round (50 / GRLIB_recycling_percentage),0],
-	["CUP_O_BTR40_MG_TKM",0,round (70 / GRLIB_recycling_percentage),0],
-	["O_HMG_01_high_F",0,round (80 / GRLIB_recycling_percentage),0],
-	["O_GMG_01_high_F",0,round (80 / GRLIB_recycling_percentage),0],
-	["O_static_AA_F",0,round (80 / GRLIB_recycling_percentage),0],
-	["O_static_AT_F",0,round (80 / GRLIB_recycling_percentage),0],
-	["O_Mortar_01_F",0,round (300 / GRLIB_recycling_percentage),0],
-	["CUP_O_LR_MG_TKM",1,round (20 / GRLIB_recycling_percentage),2],
-	["CUP_O_LR_SPG9_TKM",1,round (20 / GRLIB_recycling_percentage),2],
-	["CUP_O_BTR60_TK",1,round (20 / GRLIB_recycling_percentage),2],
-	["CUP_O_BMP1P_TKA",1,round (20 / GRLIB_recycling_percentage),2],
-	["CUP_O_MTLB_pk_TKA",1,round (20 / GRLIB_recycling_percentage),2],
-	["CUP_O_UAZ_MG_TKA",1,round (20 / GRLIB_recycling_percentage),2],
-	["CUP_O_UAZ_AGS30_TKA",1,round (20 / GRLIB_recycling_percentage),2],
-	["CUP_O_UAZ_SPG9_TKA",1,round (20 / GRLIB_recycling_percentage),2],
-	["CUP_O_BMP2_TKA",1,round (20 / GRLIB_recycling_percentage),2],
-	["CUP_O_BRDM2_TKA",1,round (40 / GRLIB_recycling_percentage),2],
-	["CUP_O_BRDM2_ATGM_TKA",1,round (40 / GRLIB_recycling_percentage),2],
-	["CUP_O_BMP2_ZU_TKA",1,round (40 / GRLIB_recycling_percentage),2],
-	["CUP_O_ZSU23_Afghan_TK",1,round (40 / GRLIB_recycling_percentage),2],
-	["CUP_O_ZSU23_TK",1,round (40 / GRLIB_recycling_percentage),2],
-	["CUP_O_LR_MG_TKA",1,round (30 / GRLIB_recycling_percentage),2],
-	["CUP_O_UH1H_slick_TKA",1,round (40 / GRLIB_recycling_percentage),2],
-	["CUP_O_BTR40_MG_TKA",1,round (30 / GRLIB_recycling_percentage),2],
-	["CUP_O_Mi17_TK",1,round (30 / GRLIB_recycling_percentage),2],
-	["CUP_O_BTR40_MG_TKM",1,round (30 / GRLIB_recycling_percentage),2],
-	["CUP_O_V3S_Covered_TKM",5,round (20 / GRLIB_recycling_percentage),5],
-	["CUP_O_V3S_Open_TKM",5,round (20 / GRLIB_recycling_percentage),5],
-	["CUP_O_L39_TK",10,round (700 / GRLIB_recycling_percentage),15],
-	["CUP_O_AN2_TK",10,round (500 / GRLIB_recycling_percentage),10],
-	["CUP_O_MI6A_TKA",20,round (1000 / GRLIB_recycling_percentage),30],
-	["CUP_O_MI6T_TKA",20,round (1000 / GRLIB_recycling_percentage),30],
-	["CUP_O_Mi24_D_Dynamic_TK",20,round (1000 / GRLIB_recycling_percentage),30],
-	["CUP_O_Su25_Dyn_TKA",20,round (1000 / GRLIB_recycling_percentage),30],
-	["CUP_O_M113_TKA",1,round (400 / GRLIB_recycling_percentage),2],
-	["CUP_O_BRDM2_HQ_TKA",1,round (400 / GRLIB_recycling_percentage),2],
-	["CUP_O_BMP1_TKA",1,round (440 / GRLIB_recycling_percentage),2],
-	["CUP_O_LR_SPG9_TKA",1,round (500 / GRLIB_recycling_percentage),2],
-	["CUP_O_T90_RU",1,round (800 / GRLIB_recycling_percentage),2],
-	["CUP_O_T55_TK",1,round (1040 / GRLIB_recycling_percentage),2],
-	["CUP_O_T72_TKA",1,round (1040 / GRLIB_recycling_percentage),2]
+	["CUP_O_BTR40_MG_TKM",0,round (60 / GRLIB_recycling_percentage),0],
+	["O_HMG_01_high_F",0,round (0 / GRLIB_recycling_percentage),0],
+	["O_GMG_01_high_F",0,round (0 / GRLIB_recycling_percentage),0],
+	["O_static_AA_F",0,round (0 / GRLIB_recycling_percentage),0],
+	["O_static_AT_F",0,round (0 / GRLIB_recycling_percentage),0],
+	["O_Mortar_01_F",0,round (0 / GRLIB_recycling_percentage),0],
+	["CUP_O_LR_MG_TKM",1,round (50 / GRLIB_recycling_percentage),2],
+	["CUP_O_LR_SPG9_TKM",1,round (50 / GRLIB_recycling_percentage),2],
+	["CUP_O_BTR60_TK",1,round (50 / GRLIB_recycling_percentage),2],
+	["CUP_O_BMP1P_TKA",1,round (50 / GRLIB_recycling_percentage),2],
+	["CUP_O_MTLB_pk_TKA",1,round (50 / GRLIB_recycling_percentage),2],
+	["CUP_O_UAZ_MG_TKA",1,round (50 / GRLIB_recycling_percentage),2],
+	["CUP_O_UAZ_AGS30_TKA",1,round (50 / GRLIB_recycling_percentage),2],
+	["CUP_O_UAZ_SPG9_TKA",1,round (50 / GRLIB_recycling_percentage),2],
+	["CUP_O_BMP2_TKA",1,round (60 / GRLIB_recycling_percentage),2],
+	["CUP_O_BRDM2_TKA",1,round (60 / GRLIB_recycling_percentage),2],
+	["CUP_O_BRDM2_ATGM_TKA",1,round (60 / GRLIB_recycling_percentage),2],
+	["CUP_O_BMP2_ZU_TKA",1,round (60 / GRLIB_recycling_percentage),2],
+	["CUP_O_ZSU23_Afghan_TK",1,round (70 / GRLIB_recycling_percentage),2],
+	["CUP_O_ZSU23_TK",1,round (70 / GRLIB_recycling_percentage),2],
+	["CUP_O_LR_MG_TKA",1,round (50 / GRLIB_recycling_percentage),2],
+	["CUP_O_UH1H_slick_TKA",1,round (90 / GRLIB_recycling_percentage),2],
+	["CUP_O_BTR40_MG_TKA",1,round (60 / GRLIB_recycling_percentage),2],
+	["CUP_O_Mi17_TK",1,round (50 / GRLIB_recycling_percentage),2],
+	["CUP_O_BTR40_MG_TKM",1,round (60 / GRLIB_recycling_percentage),2],
+	["CUP_O_V3S_Covered_TKM",5,round (50 / GRLIB_recycling_percentage),5],
+	["CUP_O_V3S_Open_TKM",5,round (50 / GRLIB_recycling_percentage),5],
+	["CUP_O_L39_TK",10,round (100 / GRLIB_recycling_percentage),15],
+	["CUP_O_AN2_TK",10,round (100 / GRLIB_recycling_percentage),10],
+	["CUP_O_MI6A_TKA",20,round (90 / GRLIB_recycling_percentage),30],
+	["CUP_O_MI6T_TKA",20,round (90 / GRLIB_recycling_percentage),30],
+	["CUP_O_Mi24_D_Dynamic_TK",20,round (90 / GRLIB_recycling_percentage),30],
+	["CUP_O_Su25_Dyn_TKA",20,round (100 / GRLIB_recycling_percentage),30],
+	["CUP_O_M113_TKA",1,round (60 / GRLIB_recycling_percentage),2],
+	["CUP_O_BRDM2_HQ_TKA",1,round (60 / GRLIB_recycling_percentage),2],
+	["CUP_O_BMP1_TKA",1,round (60 / GRLIB_recycling_percentage),2],
+	["CUP_O_LR_SPG9_TKA",1,round (50 / GRLIB_recycling_percentage),2],
+	["CUP_O_T90_RU",1,round (80 / GRLIB_recycling_percentage),2],
+	["CUP_O_T55_TK",1,round (70 / GRLIB_recycling_percentage),2],
+	["CUP_O_T72_TKA",1,round (80 / GRLIB_recycling_percentage),2]
 
 ];
 

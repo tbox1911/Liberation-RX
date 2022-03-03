@@ -12,7 +12,7 @@ private ["_nbUnits", "_townName","_buildingpositions", "_man1", "_marker_zone"];
 _setupVars =
 {
 	_missionType = "Food Delivery";
-	_missionLocation = selectRandom ((blufor_sectors select {["capture_", _x] call F_startsWith;}) apply {[_x, false]}) select 0;
+	_missionLocation = selectRandom ((blufor_sectors select {["capture_", _x] call F_startsWith;}) apply {[_x, false]}) select 0 ;
 	_townName = markerText _missionLocation;
 	_ignoreAiDeaths = true;
 	_locationsArray = nil;
@@ -30,7 +30,7 @@ _setupObjects =
 	_man1 disableAI "ANIM";
 	_man1 removeAllEventHandlers "AnimDone";
 	_man1 addEventHandler [ "AnimDone", {
-		params[ "_unit", "_anim" ];
+	params[ "_unit", "_anim" ];
 		if ( _anim == "LHD_krajPaluby" ) then { _unit switchMove "LHD_krajPaluby" };
 	}];
  	sleep 1;
@@ -43,7 +43,6 @@ _setupObjects =
 	_marker_zone setMarkerSize [20,20];
 
 	_missionHintText = format ["Food Delivery at <br/><t size='1.25' color='%1'>%2</t><br/><br/><t color='#00F000'>Talk</t> to the <t color='#0000F0'>Marshal</t> to get information.", sideMissionColor, _townName];
-	true;
 };
 
 _waitUntilMarkerPos = nil;
@@ -54,9 +53,9 @@ _waitUntilSuccessCondition = {
 	_ret = false;
 	private _barrels = [_man1 nearEntities [Foodbarrel_typename, 20], {isNil {_x getVariable "R3F_LOG_objets_charges"} && !(_x getVariable ['R3F_LOG_disabled', false])}] call BIS_fnc_conditionalSelect;
 	if (count _barrels == 3) then {
-		sleep 1;
 		[_missionType, _man1] remoteExec ["remote_call_a3w_info", 0];
-		{ deleteVehicle _x } forEach _barrels;
+		{ _x setVariable ["R3F_LOG_disabled", true, true] } forEach _barrels;
+		{ sleep 1; deleteVehicle _x } forEach _barrels;
 		_ret = true;
 	};
 	_ret;

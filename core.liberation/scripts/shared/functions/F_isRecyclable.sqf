@@ -4,7 +4,7 @@ private _ret = false;
 private _alive = alive player;
 private _onfoot = isNull objectParent player;
 private _R3F_move = isNull R3F_LOG_joueur_deplace_objet;
-private _far_lhd = player distance2D lhd >= 1000;
+private _far_lhd = player distance2D lhd >= 200;
 private _noflight = getPosATL player select 2 <= 5;
 private _r3f_enabled = !(_vehicle getVariable ['R3F_LOG_disabled', false]);
 private _grl_isempty = (_vehicle getVariable ["GRLIB_ammo_truck_load", 0] == 0);

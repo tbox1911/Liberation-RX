@@ -132,14 +132,13 @@ while { true } do {
 					_unit enableIRLasers true;
 					_unit enableGunLights "Auto";
 					_unit setVariable ["PAR_Grp_ID", format["AI_%1",PAR_Grp_ID], true];
-					//_unit forceAddUniform (uniform player);
+					_unit addUniform uniform player;
 					if (GRLIB_ACE_enabled) then { 
 						_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 					} else {
 						[_unit] call PAR_fn_AI_Damage_EH;
 					};
 					_idx = _idx + 1;
-					sleep 0.1;
 				} foreach _classname;
 				_grp setCombatMode "GREEN";
 				_grp setBehaviour "AWARE";
@@ -323,7 +322,7 @@ while { true } do {
 			};
 
 			if ( build_confirmed == 2 ) then {
-				if (!([_price] call F_pay)) exitWith {deleteVehicle _vehicle};
+				if (!([_price] call F_pay)) exitWith {};
 				_vehdir = getdir _vehicle;
 				deleteVehicle _vehicle;
 				sleep 0.1;
@@ -396,11 +395,13 @@ while { true } do {
 						[_vehicle, "add"] remoteExec ["addel_beacon_remote_call", 2];
 					};
 
+					/*
 					// A3 / R3F Inventory
 					if ( buildtype == 10 && !(_classname in GRLIB_vehicle_whitelist) ) then {
 						{_vehicle addWeaponWithAttachmentsCargoGlobal [ _x, 1] } forEach _lst_a3;
 						[_vehicle, _lst_r3f] call R3F_LOG_FNCT_transporteur_charger_auto;
-					};
+					}; 
+					*/
 
 					// Static Weapon
 					if ( _classname in list_static_weapons ) then {
@@ -427,7 +428,7 @@ while { true } do {
 						_sign = createVehicle [FOB_sign, _sign_pos, [], 0, "CAN_COLLIDE"];
 						_sign setDir _fobdir + 90;
 						_sign allowDamage false;
-						_sign setObjectTextureGlobal [0, getMissionPath "res\splash_libe2.paa"];
+						_sign setObjectTextureGlobal [0, getMissionPath "res\liberation.paa"];
 						if (count GRLIB_all_fobs == 0) then {
 							_sign setVariable ["GRLIB_vehicle_owner", "public", true];
 						} else {

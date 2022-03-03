@@ -5,6 +5,7 @@
 //	@file Author: AgentRev
 //	LRX Integration: pSiKO
 
+/*
 if (!isServer) exitwith {};
 
 #define MISSION_LOCATION_COOLDOWN (10*60)
@@ -39,11 +40,7 @@ if (!isNil "_locationsArray") then {
 	[_locationsArray, _missionLocation, markerPos _missionLocation] call cleanLocationObjects; // doesn't matter if _missionLocation is not a marker, the function will know
 };
 
-_continue_mission = true;
-if (!isNil "_setupObjects") then { _continue_mission = call _setupObjects };
-if (!_continue_mission) exitWith {
-	diag_log format ["%1 Mission%2 failed to setup: %3", MISSION_PROC_TYPE_NAME, _controllerSuffix, _missionType];
-};
+if (!isNil "_setupObjects") then { call _setupObjects };
 
 _leader = leader _aiGroup;
 _marker = [_missionType, _missionPos] call createMissionMarker;
@@ -191,3 +188,6 @@ if (!isNil "_locationsArray") then
 {
 	[_locationsArray, _missionLocation, false] call setLocationState;
 };
+
+*/
+

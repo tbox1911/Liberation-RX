@@ -1,3 +1,4 @@
+PAR_fn_Killed = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_Killed.sqf";
 PAR_fn_medic = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_medic.sqf";
 PAR_fn_medicRelease = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_medicRelease.sqf";
 PAR_fn_medicRecall = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_medicRecall.sqf";
@@ -20,7 +21,7 @@ PAR_is_medic = {
 	params ["_unit"];
 	private _ret = false;
 
-	if ( getNumber (configOf _unit >> "attendant") == 1 ) then {
+	if ( getNumber (configfile >> "CfgVehicles" >> typeOf _unit >> "attendant") == 1 ) then {
 		_ret = true;
 	};
 	_ret
@@ -43,9 +44,9 @@ PAR_public_EH = {
 	if (_EH == "PAR_deathMessage") then {
 		if (isPlayer _killed) then {
 			if (isNull _killer) then {
-				gamelogic globalChat format ["%1 was injured for an unknown reason", name _killed];
+				gamelogic globalChat (format ["%1 was injured for an unknown reason", name _killed]);
 			} else {
-				gamelogic globalChat format ["%1 was injured by %2", name _killed, name _killer];
+				gamelogic globalChat (format ["%1 was injured by %2", name _killed, name _killer]);
 			};
 		};
 	};
@@ -53,7 +54,7 @@ PAR_public_EH = {
 	// PAR_tkMessage
 	if (_EH == "PAR_tkMessage") then {
 		if (isPlayer _killer && isPlayer _killed ) then {
-			gamelogic globalChat format ["%1 has committed TK on %2",name _killer, name _killed];
+			gamelogic globalChat (format ["%1 has committed TK on %2",name _killer, name _killed]);
 		};
 	};
 };
@@ -107,6 +108,8 @@ PAR_fn_AI_Damage_EH = {
 			_dam min 0.86;
 		}];
 	};
+	_unit removeAllEventHandlers "Killed";
+	_unit addEventHandler ["Killed", {_this spawn PAR_fn_Killed}];
 	_unit removeAllMPEventHandlers "MPKilled";
 	_unit addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
 	_unit setVariable ["PAR_wounded", false];
@@ -205,7 +208,7 @@ PAR_Player_Init = {
 	player setVariable ["PAR_Grp_ID",format["Bros_%1", PAR_Grp_ID], true];
 	player setVariable ["PAR_myMedic", nil];
 	player setVariable ["PAR_busy", nil];
-	if (!GRLIB_fatigue ) then { player enableFatigue false; player enableStamina false };
+	if (!GRLIB_fatigue ) then { player enableStamina false };
 	if (GRLIB_opfor_english) then {player setSpeaker "Male01ENG"};
 	player setCustomAimCoef 0.35;
 	player setUnitRecoilCoefficient 0.6;
@@ -218,7 +221,6 @@ PAR_Player_Init = {
 	1 fadeRadio 1;
 	NRE_EarplugsActive = 0;
 	hintSilent "";
-	showMap true;
 };
 
 PAR_HandleDamage_EH = {
@@ -267,8 +269,6 @@ PAR_HandleDamage_EH = {
 PAR_Player_Unconscious = {
 	params [ "_unit", "_killer" ];
 
-	R3F_LOG_joueur_deplace_objet = objNull;
-
 	// Death message
 	if (PAR_EnableDeathMessages && !isNil "_killer" && _killer != _unit) then {
 		["PAR_deathMessage", [_unit, _killer]] remoteExec ["PAR_public_EH", 0];
@@ -277,6 +277,8 @@ PAR_Player_Unconscious = {
 	// Eject unit if inside vehicle
 	private _veh_unit = vehicle _unit;
 	if (_veh_unit != _unit) then {[_veh_unit, _unit] spawn PAR_fn_eject};
+
+	[] call R3F_LOG_FNCT_objet_relacher;
 
 	_random_medic_message = floor (random 3);
 	_medic_message = "";
@@ -307,7 +309,7 @@ PAR_Player_Unconscious = {
 
 	while { !isNull _unit && alive _unit && _unit getVariable ["PAR_isUnconscious", 0] == 1 } do {
 		_bleedOut = player getVariable ["PAR_BleedOutTimer", 0];
-		hintSilent format [localize "STR_BLEEDOUT_MESSAGE" + "\n", round (_bleedOut - time)];
+		hintSilent format[localize "STR_BLEEDOUT_MESSAGE" + "\n", round (_bleedOut - time)];
 		public_bleedout_message = format [localize "STR_BLEEDOUT_MESSAGE", round (_bleedOut - time)];
 		public_bleedout_timer = round (_bleedOut - time);
 		sleep 0.5;

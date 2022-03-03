@@ -1,4 +1,6 @@
 // *** FRIENDLIES ***
+GRLIB_side_friendly = EAST;
+GRLIB_color_friendly = "ColorOPFOR";
 
 // Default classname: scripts\shared\default_classnames.sqf
 // Advanced definition: scripts\shared\classnames.sqf
@@ -118,14 +120,12 @@ static_vehicles = [
 	["O_static_AA_F",0,50,0,GRLIB_perm_air],
 	["O_static_AT_F",0,50,0,GRLIB_perm_air],
 	["O_Mortar_01_F",0,500,0,GRLIB_perm_max],
-	["B_SAM_System_01_F",10,500,0,GRLIB_perm_tank],
-	["B_AAA_System_01_F",10,500,0,GRLIB_perm_air],
+	["B_AAA_System_01_F",10,800,0,GRLIB_perm_air],
 	["O_SAM_System_04_F",10,500,0,GRLIB_perm_max]
 ];
 
 // *** Static Weapon with AI ***
 static_vehicles_AI = [
-	"B_SAM_System_01_F",
 	"B_AAA_System_01_F",
 	"O_SAM_System_04_F"
 ];
@@ -145,7 +145,8 @@ buildings_west = [
 	["Flag_CSAT_F",0,0,0,0]
 ];
 
-blufor_squad_inf_light = [
+if ( isNil "blufor_squad_inf_light" ) then { blufor_squad_inf_light = [] };
+if ( count blufor_squad_inf_light == 0 ) then { blufor_squad_inf_light = [
 	"O_Soldier_SL_F",
 	"O_medic_F",
 	"O_Soldier_GL_F",
@@ -154,8 +155,10 @@ blufor_squad_inf_light = [
 	"O_Soldier_lite_F",
 	"O_Soldier_lite_F",
 	"O_Soldier_lite_F"
-];
-blufor_squad_inf = [
+	];
+};
+if ( isNil "blufor_squad_inf" ) then { blufor_squad_inf = [] };
+if ( count blufor_squad_inf == 0 ) then { blufor_squad_inf = [
 	"O_Soldier_SL_F",
 	"O_medic_F",
 	"O_soldier_M_F",
@@ -166,39 +169,48 @@ blufor_squad_inf = [
 	"O_Soldier_F",
 	"O_Soldier_F",
 	"O_Soldier_F"
-];
-blufor_squad_at = [
+	];
+};
+if ( isNil "blufor_squad_at" ) then { blufor_squad_at = [] };
+if ( count blufor_squad_at == 0 ) then { blufor_squad_at = [
 	"O_Soldier_SL_F",
 	"O_medic_F",
 	"O_soldier_AT_F",
 	"O_soldier_AT_F",
 	"O_soldier_F",
 	"O_soldier_F"
-];
-blufor_squad_aa = [
+	];
+};
+if ( isNil "blufor_squad_aa" ) then { blufor_squad_aa = [] };
+if ( count blufor_squad_aa == 0 ) then { blufor_squad_aa = [
 	"O_Soldier_SL_F",
 	"O_medic_F",
 	"O_soldier_AA_F",
 	"O_soldier_AA_F",
 	"O_soldier_F",
 	"O_soldier_F"
-];
-blufor_squad_mix = [
+	];
+};
+if ( isNil "blufor_squad_mix" ) then { blufor_squad_mix = [] };
+if ( count blufor_squad_mix == 0 ) then { blufor_squad_mix = [
 	"O_Soldier_SL_F",
 	"O_medic_F",
 	"O_soldier_AA_F",
 	"O_soldier_AT_F",
 	"O_soldier_F",
 	"O_soldier_F"
-];
-blufor_squad_recon = [
+	];
+};
+if ( isNil "blufor_squad_recon" ) then { blufor_squad_recon = [] };
+if ( count blufor_squad_recon == 0 ) then { blufor_squad_recon = [
 	"O_recon_TL_F",
 	"O_recon_medic_F",
 	"O_recon_F",
 	"O_recon_LAT_F",
 	"O_recon_M_F",
 	"O_recon_F"
-];
+	];
+};
 
 squads = [
 	[blufor_squad_inf_light,10,300,0,GRLIB_perm_max],

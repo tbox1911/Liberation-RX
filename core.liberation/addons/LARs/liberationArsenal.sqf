@@ -5,11 +5,8 @@ waitUntil {sleep 1; !isNil "GRLIB_limited_arsenal"};
 waitUntil {sleep 1; !isNil "GRLIB_mod_enabled"};
 
 // Initalize Blacklist
-GRLIB_blacklisted_from_arsenal = [];			// Global blacklist (All objects will be removed from Arsenal)
-
-// Initalize Withelist
-GRLIB_whitelisted_from_arsenal = [];			// whitelist when Arsenal is enabled
-GRLIB_whitelisted_from_arsenal_limited = [];	// minimal whitelist when MOD filter is enabled
+GRLIB_whitelisted_from_arsenal = [];
+GRLIB_blacklisted_from_arsenal = [];
 
 // Initalize Side
 GRLIB_arsenal_side = WEST;
@@ -22,41 +19,20 @@ if (GRLIB_limited_arsenal) then {
 } else {
 	GRLIB_blacklisted_from_arsenal = blacklisted_bag;
 };
-if (GRLIB_mod_enabled && !isNil "GRLIB_whitelisted_from_arsenal_limited") then {
-	GRLIB_whitelisted_from_arsenal = GRLIB_whitelisted_from_arsenal_limited;
-};
 
 // Add CUP Weapons
-if (GRLIB_filter_arsenalCUP) then {	
-	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_CUP.sqf";
-};
+[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_CUP.sqf";
 // Add GM Weapons
-if (GRLIB_filter_arsenalGM) then {
-	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_GM.sqf";
-};
+[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_GM.sqf";
 // Add OPTRE Weapons
-if (GRLIB_filter_arsenalOPTRE) then {
-	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_OPTRE.sqf";
-};
-// Add EricJ Weapons
-if (GRLIB_filter_arsenalEJW) then {
-	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_EJW.sqf";
-};
+[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_OPTRE.sqf";
+ // Add EricJ Weapons
+[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_EJW.sqf";
 // Add RHS Weapons
-if (GRLIB_filter_arsenalRHS) then {	
-	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_RHS.sqf";
-};
-// Add R3F/AMF Weapons
-if (GRLIB_filter_arsenalR3F) then {
-	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_R3F.sqf";
-	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_AMF.sqf";
-};
-// Add SOG Weapons
-if (GRLIB_filter_arsenalSOG) then {	
-	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_SOG.sqf";
-};
+[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_RHS.sqf";
 
-if (GRLIB_mod_enabled) then {
+// if mod enabled
+if ( GRLIB_filter_arsenal && GRLIB_mod_enabled) then {
 	[myLARsBox, ["GRLIB_whitelisted_from_arsenal", "GRLIB_blacklisted_from_arsenal"], false, "Liberation", { false }] call LARs_fnc_blacklistArsenal;
 } else {
 	//[ myBox, [ whitelist, blacklist ], targets, name, condition ] call LARs_fnc_blacklistArsenal;
