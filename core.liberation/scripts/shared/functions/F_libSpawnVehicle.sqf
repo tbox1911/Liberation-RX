@@ -16,7 +16,7 @@ private _radius = GRLIB_capture_size;
 private _airveh_alt = 500;
 
 if ( _precise_position ) then {
-	_spawnpos = [] + _sectorpos;
+	_spawnpos = _sectorpos;
 } else {
 	while { (_spawnpos isEqualTo zeropos) && _max_try > 0 } do {
 		_spawnpos = [_sectorpos, 0, _radius, 3, 1, 0.25, 0, [], [zeropos, zeropos]] call BIS_fnc_findSafePos;
