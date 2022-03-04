@@ -23,10 +23,6 @@ Based on:
 _________________________________________________________________________*/
 if (isDedicated) exitWith {};
 
-PAR_isDragging = false;
-PAR_deathMessage = [];
-PAR_tkMessage = [];
-
 call compile preprocessFile "addons\TKP\tk_init.sqf";
 call compile preprocessFile "addons\PAR\PAR_global_functions.sqf";
 

@@ -1,10 +1,9 @@
 if ( isDedicated ) exitWith {};
 
 params [ "_classname", "_bounty", "_bonus", "_killer" ];
-private [ "_vehiclename", "_playername", "_ammo_collected" ];
 
-_vehiclename =  getText ( configFile >> "cfgVehicles" >> _classname >> "displayName" );
-_playername = "";
+private _vehiclename =  getText ( configFile >> "cfgVehicles" >> _classname >> "displayName" );
+private _playername = "";
 if(count (squadParams _killer) != 0) then {
 	_playername = "[" + ((squadParams _killer select 0) select 0) + "] ";
 };

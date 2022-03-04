@@ -1,9 +1,8 @@
 if ( isDedicated ) exitWith {};
 
 params [ "_civname", "_civ_penalty", "_killer" ];
-private [ "_playername" ];
 
-_playername = "";
+private _playername = "";
 if(count (squadParams _killer) != 0) then {
 	_playername = "[" + ((squadParams _killer select 0) select 0) + "] ";
 };
