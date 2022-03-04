@@ -70,7 +70,7 @@ if ( isServer ) then {
 			if ( _isKamikaz ) then { 
 				_msg = format ["%1 kill a Kamikaze !!", name _killer] ;
 				[gamelogic, _msg] remoteExec ["globalChat", 0];
-				[_killer, 1] remoteExec ["addScore", 2];
+				[_killer, 11] remoteExec ["addScore", 2];
 			};
 
 			if ( !_isKamikaz && side (group _unit) == GRLIB_side_civilian || _isPrisonner ) then {
