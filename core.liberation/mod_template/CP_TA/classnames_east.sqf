@@ -76,10 +76,21 @@ divers_squad = [
 ];
 
 militia_vehicles = [
-	"CUP_O_LR_MG_TKM",
-	"CUP_O_LR_SPG9_TKM",
+	"CUP_O_BTR40_MG_TKM",
+	"CUP_O_BTR40_TKM",
 	"CUP_O_MTLB_pk_TK_MILITIA",
-	"CUP_O_BTR40_MG_TKM"
+	"CUP_O_Hilux_AGS30_TK_INS",
+	"CUP_O_Hilux_unarmed_TK_INS",
+	"CUP_O_Hilux_DSHKM_TK_INS",
+	"CUP_O_Hilux_igla_TK_INS",
+	"CUP_O_Hilux_metis_TK_INS",
+	"CUP_O_Hilux_MLRS_TK_INS",
+	"CUP_O_Hilux_podnos_TK_INS",
+	"CUP_O_Hilux_SPG9_TK_INS",
+	"CUP_O_Hilux_UB32_TK_INS",
+	"CUP_O_Hilux_zu23_TK_INS",
+	"CUP_O_T34_TKA",
+	"CUP_O_UH1H_slick_TKA"
 ];
 
 boats_east = [
@@ -87,62 +98,76 @@ boats_east = [
 ];
 
 opfor_vehicles = [
-	"CUP_O_M113_TKA",
-	"CUP_O_BRDM2_TKA",
-	"CUP_O_BRDM2_ATGM_TKA",
-	"CUP_O_BRDM2_HQ_TKA",
-	"CUP_O_BTR60_TK",
-	"CUP_O_BMP1P_TKA",
-	"CUP_O_BMP2_TKA",
-	"CUP_O_BMP1_TKA",
-	"CUP_O_LR_MG_TKA",
+	"CUP_O_BM21_TKA",
 	"CUP_O_LR_SPG9_TKA",
-	"CUP_O_ZSU23_TK",
-	"CUP_O_T90_RU",
+	"CUP_O_LR_AA_TKA",
 	"CUP_O_T55_TK",
 	"CUP_O_T72_TKA",
+	"CUP_O_BMP1_TKA",
+	"CUP_O_BMP1P_TKA",
+	"CUP_O_BMP2_TKA",
+	"CUP_O_BMP_HQ_TKA",
+	"CUP_O_BRDM2_ATGM_TKA",
+	"CUP_O_BTR40_MG_TKA",
+	"CUP_O_BTR60_TK",
+	"CUP_O_BTR80_TK",
+	"CUP_O_BTR80A_TK",
+	"CUP_O_M113A3_TKA",
+	"CUP_O_LR_MG_TKA",
+	"CUP_O_UAZ_METIS_TKA",
+	"CUP_O_UAZ_AGS30_TKA",
+	"CUP_O_UAZ_MG_TKA",
+	"CUP_O_ZSU23_TK",
+	"CUP_O_ZSU23_Afghan_TK",
+	"CUP_O_Ural_ZU23_TKA",
 	"CUP_O_BMP2_ZU_TKA"
 ];
 
 opfor_vehicles_low_intensity = [
-	"CUP_O_LR_MG_TKM",
-	"CUP_O_LR_SPG9_TKM",
-	"CUP_O_UAZ_MG_TKA",
-	"CUP_O_UAZ_AGS30_TKA",
-	"CUP_O_BMP2_ZU_TKA",
-	"CUP_O_MTLB_pk_TKA",
-	"CUP_O_UAZ_MG_TKA",
-	"CUP_O_UAZ_SPG9_TKA"
+	"CUP_O_BTR40_MG_TKM",
+	"CUP_O_BTR40_TKM",
+	"CUP_O_MTLB_pk_TK_MILITIA",
+	"CUP_O_Hilux_AGS30_TK_INS",
+	"CUP_O_Hilux_unarmed_TK_INS",
+	"CUP_O_Hilux_DSHKM_TK_INS",
+	"CUP_O_Hilux_igla_TK_INS",
+	"CUP_O_Hilux_metis_TK_INS",
+	"CUP_O_Hilux_MLRS_TK_INS",
+	"CUP_O_Hilux_podnos_TK_INS",
+	"CUP_O_Hilux_SPG9_TK_INS",
+	"CUP_O_Hilux_UB32_TK_INS",
+	"CUP_O_Hilux_zu23_TK_INS",
+	"CUP_O_T34_TKA",
+	"CUP_O_UH1H_slick_TKA"
 ];
 
 opfor_battlegroup_vehicles = [
-	"CUP_O_BRDM2_TKA",
-	"CUP_O_BRDM2_ATGM_TKA",
-	"CUP_O_BTR60_TK",
-	"CUP_O_BMP2_ZU_TKA",
-	"CUP_O_ZSU23_Afghan_TK",
-	"CUP_O_T72_TKA",
-	"CUP_O_ZSU23_TK",
-	"CUP_O_Mi24_D_Dynamic_TK",
-	"CUP_O_BMP1P_TKA",
-	"CUP_O_UH1H_slick_TKA",
-	"CUP_O_BTR40_MG_TKA",
-	"CUP_O_T72_TKA"
+	"CUP_O_2S6M_RU",
+	"CUP_O_2S6_RU",
+	"CUP_O_T90_RU",
+	"CUP_O_T72_RU",
+	"CUP_O_BTR90_RU",
+	"CUP_O_GAZ_Vodnik_BPPU_RU",
+	"CUP_O_GAZ_Vodnik_AGS_RU",
+	"CUP_O_GAZ_Vodnik_KPVT_RU",
+	"CUP_O_MTLB_pk_WDL_RU",
+	"CUP_O_Ka50_DL_RU",
+	"CUP_O_Ka52_RU",
+	"CUP_O_BMP3_RU",
+	"CUP_O_RU_Soldier_Engineer_Ratnik_Autumn",
+	"CUP_O_GAZ_Vodnik_Unarmed_RU",
+	"CUP_O_Mi24_D_Dynamic_TK"
 ];
 
 opfor_battlegroup_vehicles_low_intensity = [
-	"CUP_O_LR_MG_TKM",
-	"CUP_O_LR_SPG9_TKM",
-	"CUP_O_BTR60_TK",
-	"CUP_O_BMP1P_TKA",
-	"CUP_O_UAZ_MG_TKA",
-	"CUP_O_UAZ_AGS30_TKA",
-	"CUP_O_UAZ_SPG9_TKA",
-	"CUP_O_BMP2_TKA",
-	"CUP_O_BRDM2_TKA",
-	"CUP_O_LR_MG_TKA",
-	"CUP_O_UH1H_slick_TKA",
-	"CUP_O_BTR40_MG_TKA"
+	"CUP_O_BTR80A_TK",
+	"CUP_O_BTR80_TK",
+	"CUP_O_Ural_ZU23_TKA",
+	"CUP_O_ZSU23_Afghan_TK",
+	"CUP_O_T72_TKA",
+	"CUP_O_MTLB_pk_TKA",
+	"CUP_O_UH1H_armed_TKA",
+	"CUP_O_UH1H_gunship_TKA"
 ];
 
 opfor_troup_transports = [
@@ -153,25 +178,33 @@ opfor_troup_transports = [
 ];
 
 opfor_choppers = [
-	"CUP_O_Mi17_TK",
+	"CUP_O_UH1H_gunship_TKA",
+	"CUP_O_UH1H_armed_TKA",
+	"CUP_O_UH1H_slick_TKA",
+	"CUP_O_C130J_TKA",
 	"CUP_O_MI6T_TKA",
-	"CUP_O_UH1H_armed_TKA"
+	"CUP_O_Mi17_TK",
+	"CUP_O_Mi24_D_Dynamic_TK",
+	"CUP_O_Ka50_DL_RU",
+	"CUP_O_Ka52_RU"
 ];
 
 opfor_air = [
-	"CUP_O_Su25_Dyn_TKA",
-	"CUP_O_L39_TK",
 	"CUP_O_AN2_TK",
-	"CUP_O_MI6A_TKA",
-	"CUP_O_Mi24_D_Dynamic_TK"			
+	"CUP_O_C130J_TKA",
+	"CUP_O_Su25_Dyn_TKA"	
 ];
 
 opfor_statics = [
-	"O_HMG_01_high_F",
-	"O_GMG_01_high_F",
-	"O_static_AA_F",
-	"O_static_AT_F",
-	"O_Mortar_01_F"
+	"CUP_O_AGS_TK",
+	"CUP_O_D30_AT_TK",
+	"CUP_O_Igla_AA_pod_TK",
+	"CUP_O_KORD_high_TK",
+	"CUP_O_KORD_TK",
+	"CUP_O_Metis_TK",
+	"CUP_O_2b14_82mm_TK",
+	"CUP_O_ZU23_TK",
+	"CUP_O_D30_TK"
 ];
 
 opfor_recyclable = [
