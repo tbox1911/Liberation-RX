@@ -1,10 +1,10 @@
-GRLIB_save_key = "GREUH_LIBERATION_TAKISTAN_SAVEGAME"; // change this value if you want different savegames on different map
+GRLIB_save_key = "GREUH_LIBERATION_SAHRANI_SAVEGAME"; // change this value if you want different savegames on different map
 GRLIB_side_resistance = RESISTANCE;
 GRLIB_side_civilian = CIVILIAN;
 GRLIB_respawn_marker = "respawn_west";
 GRLIB_sector_size = 600;
 GRLIB_capture_size = 400;
-GRLIB_radiotower_size = 2500;
+GRLIB_radiotower_size = 1800;
 GRLIB_spawn_min = 2000;
 GRLIB_spawn_max = 5000;
 GRLIB_recycling_percentage = 1.00;
