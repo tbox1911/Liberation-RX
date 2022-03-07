@@ -13,7 +13,7 @@ private _spawnpos = zeropos;
 private _vehcrew = [];
 private _max_try = 10;
 private _radius = GRLIB_capture_size;
-private _airveh_alt = 500;
+private _airveh_alt = 400;
 
 if ( _precise_position ) then {
 	_spawnpos = _sectorpos;
@@ -47,7 +47,7 @@ _newvehicle allowDamage false;
 if ( _newvehicle isKindOf "Air" ) then {
 	_newvehicle engineOn true;
 	if ( _civilian ) then { _airveh_alt = 250 };
-	_newvehicle flyInHeightASL [_airveh_alt, 300, 1000];
+	_newvehicle flyInHeightASL [_airveh_alt, 300, 800];
 };
 
 if ( _random_rotate ) then {
