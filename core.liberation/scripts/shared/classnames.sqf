@@ -279,7 +279,7 @@ opfor_squad_low_intensity = [
 	opfor_squad_leader,
 	opfor_medic,
 	opfor_rpg,
-	opfor_sentry,
+	opfor_marksman,
 	opfor_sentry,
 	opfor_sentry,
 	opfor_sentry
@@ -290,7 +290,7 @@ opfor_squad_8_standard = [
 	opfor_machinegunner,
 	opfor_rpg,
 	opfor_heavygunner,
-	opfor_marksman,
+	opfor_sharpshooter,
 	opfor_marksman,
 	opfor_grenadier
 ];
@@ -301,6 +301,7 @@ opfor_squad_8_infkillers = [
 	opfor_heavygunner,
 	opfor_marksman,
 	opfor_sniper,
+	opfor_sharpshooter,
 	opfor_rifleman,
 	opfor_rifleman,
 	opfor_rpg
