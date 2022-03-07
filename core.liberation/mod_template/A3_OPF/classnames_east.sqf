@@ -124,6 +124,7 @@ opfor_battlegroup_vehicles = [
 	"O_Heli_Attack_02_F",
 	"O_Heli_Light_02_F",
 	"O_Heli_Transport_04_covered_F",
+	"O_T_VTOL_02_vehicle_F",
 	"O_MBT_04_cannon_F",
 	"O_MBT_04_command_F"
 ];
@@ -159,7 +160,9 @@ opfor_air = [
 	"O_Heli_Light_02_v2_F",	
 	"O_Heli_Attack_02_F",
 	"O_Heli_Attack_02_black_F",
-	"O_T_VTOL_02_infantry_F",
+	"O_T_VTOL_02_vehicle_F",
+	"O_Plane_CAS_02_F",
+	"O_Plane_Fighter_02_F",
 	"O_Plane_CAS_02_F",
 	"O_Plane_Fighter_02_F"
 ];
