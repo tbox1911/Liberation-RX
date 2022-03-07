@@ -133,7 +133,7 @@ while { true } do {
 				} else {
 					_bar ctrlCommit 2;
 				};
-				((uiNamespace getVariable 'GUI_OVERLAY') displayCtrl (205)) ctrlSetText (markerText _nearest_active_sector);
+//				((uiNamespace getVariable 'GUI_OVERLAY') displayCtrl (205)) ctrlSetText (markerText _nearest_active_sector);
 				{ ((uiNamespace getVariable 'GUI_OVERLAY') displayCtrl (_x)) ctrlShow true; } foreach  _sectorcontrols;
 
 				"zone_capture" setMarkerSizeLocal [ _zone_size,_zone_size ];
