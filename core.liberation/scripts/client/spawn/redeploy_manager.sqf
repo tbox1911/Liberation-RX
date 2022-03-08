@@ -143,6 +143,22 @@ while { dialog && alive player && deploy == 0} do {
 };
 
 if (dialog && deploy == 1) then {
+	// Player Loadout
+	GRLIB_loadout_overide = false;
+	if ( (lbCurSel 203) > 0 ) then {
+		[player, [ profileNamespace, _loadouts_data select ((lbCurSel 203) - 1) ] ] call bis_fnc_loadInventory;
+		[player] call F_filterLoadout;
+		[player] spawn F_payLoadout;
+		GRLIB_loadout_overide = true;
+	};
+
+	if (!GRLIB_loadout_overide && !GRLIB_player_spawned && !(isNil "GRLIB_respawn_loadout")) then {
+		[player, GRLIB_respawn_loadout] call F_setLoadout;
+		[player] call F_filterLoadout;
+		[player] spawn F_payLoadout;	
+	};
+
+	// Redeploy
 	_idxchoice = lbCurSel 201;
 	_spawn_str = (_choiceslist select _idxchoice) select 0;
 
@@ -174,23 +190,7 @@ if (dialog && deploy == 1) then {
 		};
 		GRLIB_player_spawned = ([] call F_getValid);
 		cinematic_camera_started = false;
-	};
-
-	// Player Loadout
-	GRLIB_loadout_overide = false;
-	if ( (lbCurSel 203) > 0 ) then {
-		[player, [ profileNamespace, _loadouts_data select ((lbCurSel 203) - 1) ] ] call bis_fnc_loadInventory;
-		[player] call F_filterLoadout;
-		[player] spawn F_payLoadout;
-		GRLIB_loadout_overide = true;
-	};
-
-	if (!GRLIB_loadout_overide && !(isNil "GRLIB_respawn_loadout")) then {
-		[player, GRLIB_respawn_loadout] call F_setLoadout;
-		[player] call F_filterLoadout;
-		[player] spawn F_payLoadout;	
-	};
-	
+	};	
 };
 
 respawn_camera cameraEffect ["Terminate","back"];
