@@ -156,7 +156,8 @@ if (dialog && deploy == 1) then {
 			_loadouts_folder = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, toLower (typeOf player)];
 			[player] call compileFinal preprocessFileLineNUmbers _loadouts_folder;
 		};
-		player setVariable ["GREUH_stuff_price", 0];
+		private _price = [player] call F_loadoutPrice;
+		player setVariable ["GREUH_stuff_price", _price];
 		GRLIB_backup_loadout = [player] call F_getLoadout;
 
 		// respawn loadout
