@@ -53,6 +53,10 @@ if ( _newvehicle isKindOf "Air" ) then {
 	};
 };
 
+if ( _newvehicle isKindOf "Land" ) then {
+	_newvehicle setVectorUp surfaceNormal position _newvehicle;
+};
+
 if ( _random_rotate ) then {
 	_newvehicle setdir (random 360);
 };
