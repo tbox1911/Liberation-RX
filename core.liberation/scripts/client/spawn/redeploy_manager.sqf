@@ -143,21 +143,34 @@ while { dialog && alive player && deploy == 0} do {
 };
 
 if (dialog && deploy == 1) then {
-	// Player Loadout
-	GRLIB_loadout_overide = false;
+
+	// Manage Player Loadout
+	if ( !GRLIB_player_spawned ) then {
+		// init loadout
+		if ( GRLIB_forced_loadout > 0) then {
+			[player] call compile preprocessFileLineNumbers (format ["mod_template\%1\loadout\player_set%2.sqf", GRLIB_mod_west, GRLIB_forced_loadout]);
+		} else {
+			[player, configOf player] call BIS_fnc_loadInventory;
+		};
+		if ( typeOf player in units_loadout_overide ) then {
+			_loadouts_folder = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, toLower (typeOf player)];
+			[player] call compileFinal preprocessFileLineNUmbers _loadouts_folder;
+		};
+		player setVariable ["GREUH_stuff_price", 0];
+		GRLIB_backup_loadout = [player] call F_getLoadout;
+
+		// respawn loadout
+		if ( !isNil "GRLIB_respawn_loadout" ) then {
+			[player, GRLIB_respawn_loadout] call F_setLoadout;
+		};
+	};
+	// choosen loadout
 	if ( (lbCurSel 203) > 0 ) then {
 		[player, [ profileNamespace, _loadouts_data select ((lbCurSel 203) - 1) ] ] call bis_fnc_loadInventory;
-		[player] call F_filterLoadout;
-		[player] spawn F_payLoadout;
-		GRLIB_loadout_overide = true;
 	};
-
-	if (!GRLIB_loadout_overide && !GRLIB_player_spawned && !(isNil "GRLIB_respawn_loadout")) then {
-		[player, GRLIB_respawn_loadout] call F_setLoadout;
-		[player] call F_filterLoadout;
-		[player] spawn F_payLoadout;	
-	};
-
+	[player] call F_filterLoadout;
+	[player] call F_payLoadout;
+	
 	// Redeploy
 	_idxchoice = lbCurSel 201;
 	_spawn_str = (_choiceslist select _idxchoice) select 0;

@@ -151,5 +151,5 @@ if ( edit_loadout > 0 ) then {
 } else {
 	//filter and pay loadout
 	[player] call F_filterLoadout;
-	[player] spawn F_payLoadout;
+	[player] call F_payLoadout;
 };
