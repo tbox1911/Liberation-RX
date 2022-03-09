@@ -6,7 +6,7 @@ waituntil {sleep 1; !isNil "GRLIB_marker_init"};
 
 {
     _manPos = _x;
-    _manPos set [2, 1];
+    //_manPos set [2, 0];
     _man = "C_Story_Mechanic_01_F" createVehicleLocal _manPos;  
     _man allowDamage false;  
     { _man disableAI _x } forEach ["MOVE","FSM","TARGET","AUTOTARGET","AUTOCOMBAT"]; 
