@@ -46,8 +46,11 @@ _newvehicle allowDamage false;
 
 if ( _newvehicle isKindOf "Air" ) then {
 	_newvehicle engineOn true;
-	if ( _civilian ) then { _airveh_alt = 250 };
-	_newvehicle flyInHeightASL [_airveh_alt, 300, 800];
+	if ( _civilian ) then {
+		_newvehicle flyInHeight _airveh_alt;
+	} else {
+		_newvehicle flyInHeightASL [_airveh_alt, 300, 600];
+	};
 };
 
 if ( _random_rotate ) then {
