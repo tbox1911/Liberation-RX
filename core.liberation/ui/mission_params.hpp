@@ -130,7 +130,7 @@ class Params
 	};
 	class ModPresetEast {
 		title = "MOD Preset - Enemy";
-		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 };
+		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22 };
 		texts[] = {
 					"A3 CSAT",
 					"A3 NATO",
@@ -139,6 +139,8 @@ class Params
 					"CUP Takistan",
 					"CUP USMC Woodland",
 					"CUP USMC Desert",
+					"CUP AFRF Modern MSV",
+					"CUP Royal Army Corps",
 					"EJW Taliban",
  					"R3F WEST Desert",
 					"R3F WEST Wood",

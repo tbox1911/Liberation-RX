@@ -30,7 +30,9 @@ GRLIB_mod_list_east = [
     "A3_OPF_UB",
     "CP_TA",
     "CP_USMC_W",
-    "CP_USMC_D",    
+    "CP_USMC_D",
+    "CP_AFRF",		// Z@warrior
+    "CP_SAHRA_D",	// Z@Warrior
     "EJW",
     "R3F_WEST_D",
     "R3F_WEST_W",
