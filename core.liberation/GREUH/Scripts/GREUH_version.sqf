@@ -24,10 +24,13 @@ player createDiaryRecord ["LRX Info", ["Thanks", format ["<font color='%1'>Bohem
 player createDiaryRecord ["LRX Info", ["Thanks", format ["<font color='%1'>Arturo</font> for additional work.", call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["Thanks", format ["<font color='%1'>Mihuan</font>, <font color='%2'>O360_A1AD</font> for langage translation.", call _getRandomColor, call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["Thanks", format ["<font color='%1'>Varrkan</font>, <font color='%2'>Polox</font> for MP testing and much more.", call _getRandomColor, call _getRandomColor]]];
-player createDiaryRecord ["LRX Info", ["Thanks", format ["<font color='%1'>C0br4</font> for MOD template editing.", call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["Thanks", format ["<font color='%1'>v1ct0r</font> for code scripting.", call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["Thanks", format ["<font color='%1'>Isa</font> for all the love.", call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["Thanks", "Thanks to all the people who contribute to the mission:"]];
+
+player createDiaryRecord ["LRX Info", ["Modders", format ["<font color='%1'>Z-Warrior</font> for CUPS templates.", call _getRandomColor]]];
+player createDiaryRecord ["LRX Info", ["Modders", format ["<font color='%1'>C0br4</font> for lots of templates.", call _getRandomColor]]];
+player createDiaryRecord ["LRX Info", ["Modders", "Thanks to the Mod Template Master:"]];
 
 player createDiarySubject ["LRX Info", "Support LRX !"];
 player createDiaryRecord ["LRX Info", ["Support LRX !", "<img image='res\mail.paa' height='32' width='25'/>  <img image='res\paypal.paa' height='32' width='32'/>     <font color='#0080ff'>tbox1911@gmail.com</font><br/><br/>Thank you !"]];
