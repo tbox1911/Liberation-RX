@@ -64,26 +64,26 @@ light_vehicles = [
 ];
 
 heavy_vehicles = [
-	["CUP_B_M163_Vulcan_USA",3,300,3,GRLIB_perm_inf],
-	["CUP_B_LAV25_USMC",3,300,3,GRLIB_perm_inf],
-	["CUP_B_M113A3_GER",3,300,3,GRLIB_perm_inf],
-	["CUP_B_Boxer_HMG_GER_WDL",3,300,3,GRLIB_perm_inf],
-	["CUP_B_Boxer_GMG_GER_WDL",3,300,3,GRLIB_perm_inf],
+	["CUP_B_M163_Vulcan_USA",3,400,3,GRLIB_perm_inf],
+	["CUP_B_LAV25_USMC",3,400,3,GRLIB_perm_inf],
+	["CUP_B_M113A3_GER",3,400,3,GRLIB_perm_inf],
+	["CUP_B_Boxer_HMG_GER_WDL",3,400,3,GRLIB_perm_inf],
+	["CUP_B_Boxer_GMG_GER_WDL",3,400,3,GRLIB_perm_inf],
 	
-    ["CUP_B_M1126_ICV_M2_Woodland",3,400,3,GRLIB_perm_inf],
-	["CUP_B_M1126_ICV_MK19_Woodland",3,400,3,GRLIB_perm_inf],
-	["CUP_B_M1129_MC_MK19_Woodland",3,400,3,GRLIB_perm_inf],
-	["CUP_B_M1128_MGS_Woodland",3,450,3,GRLIB_perm_inf],
-	["CUP_B_M1135_ATGMV_Woodland",3,450,3,GRLIB_perm_inf],
+    ["CUP_B_M1126_ICV_M2_Woodland",3,500,3,GRLIB_perm_inf],
+	["CUP_B_M1126_ICV_MK19_Woodland",3,500,3,GRLIB_perm_inf],
+	["CUP_B_M1129_MC_MK19_Woodland",3,500,3,GRLIB_perm_inf],
+	["CUP_B_M1128_MGS_Woodland",3,550,3,GRLIB_perm_inf],
+	["CUP_B_M1135_ATGMV_Woodland",3,550,3,GRLIB_perm_inf],
 	
-	["CUP_B_M7Bradley_USA_W",3,500,3,GRLIB_perm_inf],
-	["CUP_B_M2Bradley_USA_W",3,500,3,GRLIB_perm_inf],
-	["CUP_B_M2A3Bradley_USA_W",3,500,3,GRLIB_perm_inf],
-	["CUP_B_M60A3_TTS_USMC",3,550,3,GRLIB_perm_inf],
-	["CUP_B_Leopard2A6_GER",3,600,3,GRLIB_perm_inf],
-	["CUP_B_M1A1SA_Woodland_US_Army",3,600,3,GRLIB_perm_inf],
-	["CUP_B_M1A2SEP_TUSK_Woodland_US_Army",3,625,3,GRLIB_perm_inf],
-	["CUP_B_M1A2C_TUSK_II_Woodland_US_Army",3,650,3,GRLIB_perm_inf]
+	["CUP_B_M7Bradley_USA_W",3,600,3,GRLIB_perm_inf],
+	["CUP_B_M2Bradley_USA_W",3,600,3,GRLIB_perm_inf],
+	["CUP_B_M2A3Bradley_USA_W",3,600,3,GRLIB_perm_inf],
+	["CUP_B_M60A3_TTS_USMC",3,650,3,GRLIB_perm_inf],
+	["CUP_B_Leopard2A6_GER",3,700,3,GRLIB_perm_inf],
+	["CUP_B_M1A1SA_Woodland_US_Army",3,700,3,GRLIB_perm_inf],
+	["CUP_B_M1A2SEP_TUSK_Woodland_US_Army",3,725,3,GRLIB_perm_inf],
+	["CUP_B_M1A2C_TUSK_II_Woodland_US_Army",3,750,3,GRLIB_perm_inf]
 ];
 
 air_vehicles = [
@@ -95,23 +95,23 @@ air_vehicles = [
 	["CUP_B_CH53E_GER",3,600,3,GRLIB_perm_inf],
 	["CUP_B_C130J_Cargo_USMC",3,600,3,GRLIB_perm_inf],
 	
-	["CUP_B_AH6M_USA",3,550,3,GRLIB_perm_inf],	
-	["CUP_B_UH60S_USN",3,500,3,GRLIB_perm_inf],
-	["CUP_B_UH1Y_UNA_USMC",3,600,3,GRLIB_perm_inf],
-	["CUP_B_UH1D_gunship_GER_KSK",3,600,3,GRLIB_perm_inf],
-	["CUP_B_AW159_GERdd",3,600,3,GRLIB_perm_inf],
-	["CUP_B_MH60L_DAP_2x_USN",3,600,3,GRLIB_perm_inf],
-	["CUP_B_MH60L_DAP_4x_USN",3,650,3,GRLIB_perm_inf],
+	["CUP_B_AH6M_USA",3,850,3,GRLIB_perm_inf],	
+	["CUP_B_UH60S_USN",3,800,3,GRLIB_perm_inf],
+	["CUP_B_UH1Y_UNA_USMC",3,900,3,GRLIB_perm_inf],
+	["CUP_B_UH1D_gunship_GER_KSK",3,900,3,GRLIB_perm_inf],
+	["CUP_B_AW159_GERdd",3,900,3,GRLIB_perm_inf],
+	["CUP_B_MH60L_DAP_2x_USN",3,900,3,GRLIB_perm_inf],
+	["CUP_B_MH60L_DAP_4x_USN",3,950,3,GRLIB_perm_inf],
 	
 	["CUP_B_MV22_USMC",3,600,3,GRLIB_perm_inf], // Osprey
 	["CUP_B_AC47_Spooky_USA",3,650,3,GRLIB_perm_inf],
-	["CUP_B_CESSNA_T41_ARMED_USA",3,700,3,GRLIB_perm_inf],
+	["CUP_B_CESSNA_T41_ARMED_USA",3,1000,3,GRLIB_perm_inf],
 	
-	["CUP_B_USMC_DYN_MQ9",3,800,3,GRLIB_perm_inf], // Reaper
+	["CUP_B_USMC_DYN_MQ9",3,1300,3,GRLIB_perm_inf], // Reaper
 	
-	["CUP_B_AH64D_DL_USA",3,800,3,GRLIB_perm_inf],
-	["CUP_B_A10_DYN_USA",3,900,3,GRLIB_perm_inf],
-	["CUP_B_F35B_USMC",3,900,3,GRLIB_perm_inf]
+	["CUP_B_AH64D_DL_USA",3,1300,3,GRLIB_perm_inf],
+	["CUP_B_A10_DYN_USA",3,1500,3,GRLIB_perm_inf],
+	["CUP_B_F35B_USMC",3,1500,3,GRLIB_perm_inf]
 ];
 
 blufor_air = [
