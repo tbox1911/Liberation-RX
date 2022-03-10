@@ -2,10 +2,12 @@ diag_log "--- Server Init start ---";
 
 // Init on map vehicles
 {
-	_x removeAllMPEventHandlers "MPKilled";
-	_x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-	if (isNil {_x getVariable "GRLIB_vehicle_owner"} ) then {
-		_x setVariable ["GRLIB_vehicle_owner", "public", true];
+	if (_x isKindOf "AllVehicles") then {
+		_x removeAllMPEventHandlers "MPKilled";
+		_x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+		if (isNil {_x getVariable "GRLIB_vehicle_owner"} ) then {
+			_x setVariable ["GRLIB_vehicle_owner", "public", true];
+		};
 	};
 } foreach vehicles;
 
