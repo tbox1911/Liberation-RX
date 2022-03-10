@@ -82,7 +82,7 @@ while { true } do {
 	} forEach _nearveh;
 
 	// Salvage Wreck & Ruins
-	_nearruins = [nearestObjects [player, ["Ruins_F"], _searchradius], {(_x distance lhd) >= GRLIB_sector_size && (typeof _x in _recycleable_classnames_exp) && isNil {_x getVariable "GRLIB_salvage_action"}}] call BIS_fnc_conditionalSelect;
+	_nearruins = [nearestObjects [player, ["Ruins_F"], _searchradius], {(_x distance lhd) >= GRLIB_sector_size && (typeof _x in _recycleable_classnames_exp) && getObjectType _x == 8 && isNil {_x getVariable "GRLIB_salvage_action"}}] call BIS_fnc_conditionalSelect;
 	_nearwreck = [nearestObjects [player, _wreck_class, _searchradius], {(_x distance lhd) >= GRLIB_sector_size && !(alive _x) && isNil {_x getVariable "GRLIB_salvage_action"}}] call BIS_fnc_conditionalSelect;
 	{
 		_vehicle = _x;
