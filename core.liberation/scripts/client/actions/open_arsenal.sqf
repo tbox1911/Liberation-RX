@@ -7,6 +7,16 @@ exit_on_load = 0;
 GRLIB_backup_loadout = [player] call F_getLoadout;
 player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
 
+_box = missionNamespace getVariable ["myLARsBox", objNull];
+[_box, true] call ace_arsenal_fnc_initBox;
+[_box, blacklisted_weapon] call ace_arsenal_fnc_removeVirtualItems;
+[_box, player, false] call ace_arsenal_fnc_openBox;
+
+//filter and pay loadout
+[player] call F_filterLoadout;
+[player] call F_payLoadout;
+
+/*
 private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
 private _saved_loadouts = profileNamespace getVariable "bis_fnc_saveInventory_data";
 private _loadouts_data = [];
@@ -29,7 +39,7 @@ if ( !isNil "_saved_loadouts" ) then {
 	deleteVehicle _unit;
 };
 */
-
+/*
 createDialog "liberation_arsenal";
 waitUntil { dialog };
 ctrlEnable [ 202, false ];
@@ -124,7 +134,7 @@ while { dialog && (alive player) && edit_loadout == 0 } do {
 if ( edit_loadout > 0 ) then {
 	closeDialog 0;
 	waitUntil {!dialog};
-	_box = missionNamespace getVariable ["myLARsBox", objNull];
+
 	if (GRLIB_ACE_enabled) then {
 		[_box, true] call ace_arsenal_fnc_initBox;
 		[_box, blacklisted_weapon] call ace_arsenal_fnc_removeVirtualItems;
