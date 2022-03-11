@@ -92,4 +92,5 @@ while {true} do{
 	};
 };
 
+["InitializePlayer", [player, true]] call BIS_fnc_dynamicGroups;
 // hint format['%1:%2', (_hs_time select 3), (_hs_time select 4)];

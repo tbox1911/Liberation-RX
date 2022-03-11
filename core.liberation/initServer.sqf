@@ -58,5 +58,5 @@ _msg = format [ "%1 killed by %2 (%3)", side group _unit, name _killer, side _ki
 			
 */
 
-
+["Initialize", [true]] call BIS_fnc_dynamicGroups;
 
