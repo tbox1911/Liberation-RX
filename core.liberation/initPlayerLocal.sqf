@@ -1,5 +1,7 @@
 waitUntil {!isNull player};
 
+["InitializePlayer", [player, true]] call BIS_fnc_dynamicGroups;
+
 _rules = '
 DE<br /><br />
 Natürlich gelten hier wie auch auf dem Server die üblichen (Verhaltens)Regeln. Wir verzichten darauf, diese hier alle aufzuführen. Einige Punkte sind aber vor allem spielerisch hervorzuheben:<br /><br />
@@ -92,5 +94,4 @@ while {true} do{
 	};
 };
 
-["InitializePlayer", [player, true]] call BIS_fnc_dynamicGroups;
 // hint format['%1:%2', (_hs_time select 3), (_hs_time select 4)];

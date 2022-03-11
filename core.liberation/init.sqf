@@ -4,7 +4,7 @@ diag_log "--- Init start ---";
 titleText ["Loading...","BLACK FADED", 100];
 
 enableSaving [false, false];
-disableMapIndicators [false,true,false,false];
+disableMapIndicators [true,true,false,false];
 setGroupIconsVisible [false,false];
 
 abort_loading = false;
