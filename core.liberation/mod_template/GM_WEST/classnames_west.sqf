@@ -20,6 +20,8 @@ pilot_classname = "gm_ge_army_pilot_p1_80_oli";
 crewman_classname = "gm_ge_army_crew_mp2a1_80_oli";
 PAR_Medikit = "gm_ge_army_medkit_80";
 PAR_AidKit = "gm_ge_army_burnBandage";
+A3W_BoxWps = "gm_pl_army_ammobox_allmagazines_80";
+canisterFuel = "gm_jerrycan";
 chimera_vehicle_overide = [
   ["B_Heli_Light_01_F",  "gm_ge_bgs_bo105m_vbh"],
   ["B_Heli_Transport_01_F", "gm_ge_bgs_bo105m_vbh"]
