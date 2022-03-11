@@ -129,20 +129,22 @@ boats_names_civ = [
 ];
 
 // *** RESISTANCE ***
-resistance_squad = [
-	"I_G_Soldier_SL_F",
-	"I_G_Soldier_A_F",
-	"I_G_Soldier_AR_F",
-	"I_G_medic_F",
-	"I_G_Soldier_exp_F",
-	"I_G_Soldier_GL_F",
-	"I_G_Soldier_M_F",
-	"I_G_Soldier_F",
-	"I_G_Soldier_LAT_F",
-	"I_G_Soldier_lite_F",
-	"I_G_Sharpshooter_F",
-	"I_G_Soldier_TL_F"
-];
+if ( isNil "resistance_squad" ) then {
+	resistance_squad = [
+		"I_G_Soldier_SL_F",
+		"I_G_Soldier_A_F",
+		"I_G_Soldier_AR_F",
+		"I_G_medic_F",
+		"I_G_Soldier_exp_F",
+		"I_G_Soldier_GL_F",
+		"I_G_Soldier_M_F",
+		"I_G_Soldier_F",
+		"I_G_Soldier_LAT_F",
+		"I_G_Soldier_lite_F",
+		"I_G_Sharpshooter_F",
+		"I_G_Soldier_TL_F"
+	];
+};
 
 ind_recyclable = [
 	["I_HMG_01_high_F",0,round (80 / GRLIB_recycling_percentage),0],
