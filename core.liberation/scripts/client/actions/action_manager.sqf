@@ -180,7 +180,7 @@ while { true } do {
 
 		// Take Leadership
 		_idact_lead = _id_actions select 13;
-		if (!(isPlayer (leader (group player))) && (local (group player)) ) then {
+/*		if (!(isPlayer (leader (group player))) && (local (group player)) ) then {
 			if ( _idact_lead == -1 ) then {
 				_idact = player addAction ["<t color='#80FF80'>" + localize "STR_TAKE_LEADRSHIP" + "</t> <img size='1' image='" + _icon_grp + "'/>", {(group player) selectLeader player}, [],0,true,true,"", "build_confirmed == 0"];
 				_id_actions set [13, _idact];
@@ -191,7 +191,7 @@ while { true } do {
 				_id_actions set [13, -1];
 			};
 		};
-
+*/
 		// Air Drop
 		/*
 		_idact_drop = _id_actions select 14;
