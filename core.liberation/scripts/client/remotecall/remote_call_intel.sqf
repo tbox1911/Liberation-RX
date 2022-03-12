@@ -15,21 +15,21 @@ if ( _notiftype == 2 ) then {
 	waitUntil {sleep 1; count secondary_objective_position_marker > 0 };
 	waitUntil {sleep 1; secondary_objective_position_marker distance zeropos > 1000 };
 	[ "lib_intel_fob", [ markertext ( [ 10000, secondary_objective_position_marker ] call F_getNearestSector ) ] ] call BIS_fnc_showNotification;
-	_secondary_marker = createMarkerLocal ["secondarymarker", secondary_objective_position_marker];
-	_secondary_marker setMarkerColorLocal GRLIB_color_enemy_bright;
-	_secondary_marker setMarkerTypeLocal "hd_unknown";
+	_secondary_marker = createMarker ["secondarymarker", secondary_objective_position_marker];
+	_secondary_marker setMarkerColor GRLIB_color_enemy_bright;
+	_secondary_marker setMarkerType "hd_unknown";
 
-	_secondary_marker_zone = createMarkerLocal ["secondarymarkerzone", secondary_objective_position_marker];
-	_secondary_marker_zone setMarkerColorLocal GRLIB_color_enemy_bright;
-	_secondary_marker_zone setMarkerShapeLocal "ELLIPSE";
-	_secondary_marker_zone setMarkerBrushLocal "FDiagonal";
-	_secondary_marker_zone setMarkerSizeLocal [1500,1500];
+	_secondary_marker_zone = createMarker ["secondarymarkerzone", secondary_objective_position_marker];
+	_secondary_marker_zone setMarkerColor GRLIB_color_enemy_bright;
+	_secondary_marker_zone setMarkerShape "ELLIPSE";
+	_secondary_marker_zone setMarkerBrush "FDiagonal";
+	_secondary_marker_zone setMarkerSize [1500,1500];
 };
 
 if ( _notiftype == 3 ) then {
 	[ "lib_secondary_fob_destroyed" ] call BIS_fnc_showNotification;
-	deleteMarkerLocal "secondarymarker";
-	deleteMarkerLocal "secondarymarkerzone";
+	deleteMarker "secondarymarker";
+	deleteMarker "secondarymarkerzone";
 	secondary_objective_position_marker = [];
 };
 
@@ -46,15 +46,15 @@ if ( _notiftype == 6 ) then {
 	waitUntil {sleep 1; count secondary_objective_position_marker > 0 };
 	waitUntil {sleep 1; secondary_objective_position_marker distance zeropos > 1000 };
 	[ "lib_intel_sar", [ markertext ( [ 10000, secondary_objective_position_marker ] call F_getNearestSector ) ] ] call BIS_fnc_showNotification;
-	_secondary_marker = createMarkerLocal ["secondarymarker", secondary_objective_position_marker];
-	_secondary_marker setMarkerColorLocal GRLIB_color_enemy_bright;
-	_secondary_marker setMarkerTypeLocal "hd_unknown";
+	_secondary_marker = createMarker ["secondarymarker", secondary_objective_position_marker];
+	_secondary_marker setMarkerColor GRLIB_color_enemy_bright;
+	_secondary_marker setMarkerType "hd_unknown";
 
-	_secondary_marker_zone = createMarkerLocal ["secondarymarkerzone", secondary_objective_position_marker];
-	_secondary_marker_zone setMarkerColorLocal GRLIB_color_enemy_bright;
-	_secondary_marker_zone setMarkerShapeLocal "ELLIPSE";
-	_secondary_marker_zone setMarkerBrushLocal "FDiagonal";
-	_secondary_marker_zone setMarkerSizeLocal [1500,1500];
+	_secondary_marker_zone = createMarker ["secondarymarkerzone", secondary_objective_position_marker];
+	_secondary_marker_zone setMarkerColor GRLIB_color_enemy_bright;
+	_secondary_marker_zone setMarkerShape "ELLIPSE";
+	_secondary_marker_zone setMarkerBrush "FDiagonal";
+	_secondary_marker_zone setMarkerSize [1500,1500];
 };
 
 if (_notiftype == 7 || _notiftype == 8) then {
@@ -64,7 +64,7 @@ if (_notiftype == 7 || _notiftype == 8) then {
 	if ( _notiftype == 8 ) then {
 		[ "lib_intel_sar_succeeded" ] call BIS_fnc_showNotification;
 	};
-	deleteMarkerLocal "secondarymarker";
-	deleteMarkerLocal "secondarymarkerzone";
+	deleteMarker "secondarymarker";
+	deleteMarker "secondarymarkerzone";
 	secondary_objective_position_marker = [];
 };
