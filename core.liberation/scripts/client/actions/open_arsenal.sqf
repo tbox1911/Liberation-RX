@@ -7,161 +7,135 @@ exit_on_load = 0;
 GRLIB_backup_loadout = [player] call F_getLoadout;
 player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
 
+//Blacklist Items
+_blacklisted_ace_arsenal= [
+	"B_Static_Designator_01_weapon_F",
+	"B_W_Static_Designator_01_weapon_F",
+	"O_Static_Designator_02_weapon_F",
+	"B_UAV_06_backpack_F",
+	"O_UAV_06_backpack_F",
+	"I_UAV_06_backpack_F",
+	"B_UAV_06_medical_backpack_F",
+	"O_UAV_06_medical_backpack_F",
+	"I_UAV_06_medical_backpack_F",
+	"B_UGV_02_Science_backpack_F",
+	"O_UGV_02_Science_backpack_F",
+	"I_UGV_02_Science_backpack_F",
+	"B_UGV_02_Demining_backpack_F",
+	"O_UGV_02_Demining_backpack_F",
+	"I_UGV_02_Demining_backpack_F",
+	"Land_TentDome_F",
+	"B_Respawn_Sleeping_bag_blue_F",
+	"B_Respawn_Sleeping_bag_brown_F",
+	"B_Respawn_TentDome_F",
+	"B_Respawn_Sleeping_bag_F",
+	"B_Respawn_TentA_F",
+	"B_Patrol_Respawn_bag_F",
+	"B_Patrol_Respawn_tent_F",
+	"B_HMG_01_support_F",
+	"O_HMG_01_support_F",
+	"I_HMG_01_support_F",
+	"B_HMG_01_support_high_F",
+	"O_HMG_01_support_high_F",
+	"I_HMG_01_support_high_F",
+	"I_HMG_01_A_weapon_F",
+	"B_HMG_01_A_weapon_F",
+	"O_HMG_01_A_weapon_F",
+	"O_HMG_01_weapon_F",
+	"B_HMG_01_weapon_F",
+	"I_HMG_01_weapon_F",
+	"I_HMG_01_high_weapon_F",
+	"O_HMG_01_high_weapon_F",
+	"B_HMG_01_high_weapon_F",
+	"B_HMG_01_support_grn_F",
+	"B_HMG_01_Weapon_grn_F",
+	"B_HMG_02_high_weapon_F",
+	"B_G_HMG_02_high_weapon_F",
+	"I_HMG_02_high_weapon_F",
+	"O_HMG_02_high_weapon_F",
+	"B_HMG_02_support_F",
+	"B_G_HMG_02_support_F",
+	"I_HMG_02_support_F",
+	"O_HMG_02_support_F",
+	"B_HMG_02_support_high_F",
+	"B_G_HMG_02_support_high_F",
+	"I_HMG_02_support_high_F",
+	"O_HMG_02_support_high_F",
+	"B_HMG_02_weapon_F",
+	"B_G_HMG_02_weapon_F",
+	"I_HMG_02_weapon_F",
+	"O_HMG_02_weapon_F",
+	"I_GMG_01_A_weapon_F",
+	"O_GMG_01_A_weapon_F",
+	"B_GMG_01_A_weapon_F",
+	"O_GMG_01_weapon_F",
+	"I_GMG_01_weapon_F",
+	"B_GMG_01_weapon_F",
+	"B_GMG_01_high_weapon_F",
+	"I_GMG_01_high_weapon_F",
+	"O_GMG_01_high_weapon_F",
+	"I_Mortar_01_support_F",
+	"B_Mortar_01_support_F",
+	"O_Mortar_01_support_F",
+	"B_Mortar_01_weapon_F",
+	"O_Mortar_01_weapon_F",
+	"I_Mortar_01_weapon_F",
+	"B_AA_01_weapon_F",
+	"O_AA_01_weapon_F",
+	"I_AA_01_weapon_F",
+	"B_AT_01_weapon_F",
+	"O_AT_01_weapon_F",
+	"I_AT_01_weapon_F",
+	"I_UAV_01_backpack_F",
+	"B_UAV_01_backpack_F",
+	"O_UAV_01_backpack_F",
+	"B_Mortar_01_support_grn_F",
+	"B_GMG_01_Weapon_grn_F",
+	"B_Mortar_01_Weapon_grn_F",
+	"B_Protagonist_VR_F",
+	"U_B_Protagonist_VR",
+	"O_Protagonist_VR_F",
+	"U_O_Protagonist_VR",
+	"I_Protagonist_VR_F",
+	"U_I_Protagonist_VR",
+	"C_Protagonist_VR_F",
+	"B_UavTerminal",
+	"TFAR_rf7800str",
+	"C_UavTerminal",
+	"I_E_UavTerminal",
+	"TFAR_anprc152",
+	"O_UavTerminal",
+	"TFAR_pnr1000a",
+	"TFAR_pnr1000a",
+	"TFAR_fadak",
+	"I_UavTerminal",
+	"ItemGPS",
+	"TFAR_anprc154",
+	"TFAR_anprc148jem",
+	"U_C_Protagonist_VR",
+	"optic_Nightstalker",
+	"optic_tws",
+	"optic_tws_mg",
+	"optic_NVS",
+	"NVGoggles_tna_F",
+	"NVGogglesB_blk_F",
+	"NVGogglesB_grn_F",
+	"NVGogglesB_gry_F",
+	"H_HelmetO_ViperSP_hex_F",
+	"H_HelmetO_ViperSP_ghex_F",
+	"U_O_V_Soldier_Viper_hex_F",
+	"U_O_V_Soldier_Viper_F",
+	"O_V_Soldier_Viper_F",
+	"O_V_Soldier_Viper_hex_F"
+];
+
+
 _box = missionNamespace getVariable ["myLARsBox", objNull];
 [_box, true] call ace_arsenal_fnc_initBox;
-[_box, blacklisted_weapon] call ace_arsenal_fnc_removeVirtualItems;
+[_box, _blacklisted_ace_arsenal] call ace_arsenal_fnc_removeVirtualItems;
 [_box, player, false] call ace_arsenal_fnc_openBox;
 
 //filter and pay loadout
 [player] call F_filterLoadout;
 [player] call F_payLoadout;
 
-/*
-private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
-private _saved_loadouts = profileNamespace getVariable "bis_fnc_saveInventory_data";
-private _loadouts_data = [];
-private _counter = 0;
-
-/*
-if ( !isNil "_saved_loadouts" ) then {
-	private _grp = createGroup [GRLIB_side_friendly, true];
-	private _unit = _grp createUnit ["B_Survivor_F", [0,0,0], [], 0, "NONE"];
-	private _max_loadout = 24;
-	{
-		if ( _counter % 2 == 0 && _max_loadout > 0) then {
-			[_unit, [profileNamespace, _x]] call bis_fnc_loadInventory;
-			_price = [_unit] call F_loadoutPrice;
-			_loadouts_data pushback [_x, _price];
-			_max_loadout = _max_loadout - 1;
-		};
-		_counter = _counter + 1;
-	} foreach _saved_loadouts;
-	deleteVehicle _unit;
-};
-*/
-/*
-createDialog "liberation_arsenal";
-waitUntil { dialog };
-ctrlEnable [ 202, false ];
-ctrlEnable [ 203, false ];
-ctrlEnable [ 204, false ];
-
-if ( count _loadouts_data > 0 ) then {
-	lbClear 201;
-	{
-		((findDisplay 5251) displayCtrl (201)) lnbAddRow [format [ "%1" ,_x select 0], format [ "%1" ,_x select 1]];
-
- 		if ( (_x select 1) <= _ammo_collected ) then {
-			((findDisplay 5251) displayCtrl (201)) lnbSetColor  [[((lnbSize 201) select 0) - 1, 0], [1,1,1,1]];
-			((findDisplay 5251) displayCtrl (201)) lnbSetColor  [[((lnbSize 201) select 0) - 1, 1], [1,1,1,1]];
-		} else {
-			((findDisplay 5251) displayCtrl (201)) lnbSetColor  [[((lnbSize 201) select 0) - 1, 0], [0.4,0.4,0.4,1]];
-			((findDisplay 5251) displayCtrl (201)) lnbSetColor  [[((lnbSize 201) select 0) - 1, 1], [0.4,0.4,0.4,1]];
-		};
-
-	} foreach _loadouts_data ;
-
-	if ( lbSize 201 > 0 ) then {
-		lbSetCurSel [ 201, 0 ];
-	};
-};
-
-private _loadplayers = [];
-{
-	if ( !(name _x in [ "HC1", "HC2", "HC3" ]) )  then {
-		_loadplayers pushback [ name _x, _x ];
-	};
-} foreach ( allPlayers - [ player ] );
-
-if ( count _loadplayers > 0 ) then {
-	{
-		private _nextplayer = _x select 1;
-		private _namestr = "";
-		if(count (squadParams _nextplayer) != 0) then {
-			_namestr = "[" + ((squadParams _nextplayer select 0) select 0) + "] ";
-		};
-		_namestr = _namestr + name _nextplayer;
-
-		lbAdd [ 203, _namestr ];
-		lbSetCurSel [ 203, 0 ];
-	} foreach _loadplayers;
-	ctrlEnable [ 203, true ];
-	ctrlEnable [ 204, true ];
-};
-
-((findDisplay 5251) displayCtrl 201) ctrlAddEventHandler [ "mouseButtonDblClick" , { exit_on_load = 1; load_loadout = 1; } ];
-
-while { dialog && (alive player) && edit_loadout == 0 } do {
-
-	private _cur_sel = (lbCurSel 201);
-	if (_cur_sel != -1) then {
-		private _selected_loadout = _loadouts_data select _cur_sel;
-		if ((_selected_loadout select 1) <= _ammo_collected) then {
-			ctrlEnable [ 202, true ];
-		} else {
-			ctrlEnable [ 202, false ];
-		};
-	};
-
-	if ( load_loadout > 0 ) then {
-		private _selected_loadout = _loadouts_data select _cur_sel;
-		private _loaded_loadout = (_selected_loadout select 0);
-		[player, [profileNamespace, _loaded_loadout]] call bis_fnc_loadInventory;
-		hint format [ localize "STR_HINT_LOADOUT_LOADED", _loaded_loadout];
-		if ( exit_on_load == 1 ) then {
-			closeDialog 0;
-		};
-		load_loadout = 0;
-	};
-
-	if ( respawn_loadout > 0 ) then {
-		GRLIB_respawn_loadout = [ player, ["repetitive"] ] call F_getLoadout;
-		hint localize "STR_MAKE_RESPAWN_LOADOUT_HINT";
-		respawn_loadout = 0;
-	};
-
-	if ( load_from_player >= 0 ) then {
-		private _playerselected = ( _loadplayers select load_from_player ) select 1;
-		if ( alive _playerselected ) then {
-      		[player, [_playerselected, ["repetitive"]] call F_getLoadout] call F_setLoadout;
-			hint format [ localize "STR_LOAD_PLAYER_LOADOUT_HINT", name _playerselected ];
-		};
-		load_from_player = -1;
-	};
-	sleep 0.1;
-};
-
-if ( edit_loadout > 0 ) then {
-	closeDialog 0;
-	waitUntil {!dialog};
-
-	if (GRLIB_ACE_enabled) then {
-		[_box, true] call ace_arsenal_fnc_initBox;
-		[_box, blacklisted_weapon] call ace_arsenal_fnc_removeVirtualItems;
-		[_box, player, false] call ace_arsenal_fnc_openBox;
-	} else {
-		if (GRLIB_limited_arsenal) then {
-			_savedCargo = _box getVariable [ "bis_addVirtualWeaponCargo_cargo", [] ];
-			_savedMissionCargo = missionNamespace getVariable [ "bis_addVirtualWeaponCargo_cargo", [] ];
-			waitUntil {!isNil {_box getVariable "LARs_arsenal_Liberation_cargo"} };
-			_cargo = _box getVariable "LARs_arsenal_Liberation_cargo";
-			_box setVariable [ "bis_addVirtualWeaponCargo_cargo", _cargo ];
-			missionNamespace setVariable [ "bis_addVirtualWeaponCargo_cargo", _cargo ];
-
-			['Open',[nil,_box]] call BIS_fnc_arsenal;
-
-			_box setVariable [ "LARs_arsenalClosedID", [ missionNamespace, "arsenalClosed", compile format[ "
-				%1 setVariable [ 'bis_addvirtualWeaponCargo_cargo', %2 ];
-				missionNamespace setVariable [ 'bis_addvirtualWeaponCargo_cargo', %3 ];
-				[ missionNamespace, 'arsenalClosed', %1 getVariable 'LARs_arsenalClosedID' ] call BIS_fnc_removeScriptedEventHandler;
-				%1 setVariable [ 'LARs_arsenalClosedID', nil ];
-			", _box, _savedCargo, _savedMissionCargo ] ]call BIS_fnc_addScriptedEventHandler ];
-		} else {
-			["Open", [true]] call BIS_fnc_arsenal;
-		};
-	};
-};
-
-//filter and pay loadout
-[player] call F_filterLoadout;
-[player] call F_payLoadout;
