@@ -511,7 +511,7 @@ _hs_hint = format['_crate: %1', typeOf _crate];
 // Arsenal
 	[_vehicle, true] call ace_arsenal_fnc_initBox;
 	[_vehicle, blacklisted_weapon] call ace_arsenal_fnc_removeVirtualItems;
-
+	execVM "scripts\client\actions\open_arsenal.sqf";
 
 	
 // Everything
