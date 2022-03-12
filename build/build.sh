@@ -18,9 +18,9 @@ GRLIB_build_date = \"$(date +'%d/%m/%Y')\";
 GRLIB_build_time = \"$(date +'%H:%M:%S')\";
 " > ../core.liberation/build_info.sqf
 
-for dir in $(ls -1 ../maps | grep -E "^Liberation_RX\.*"); do
+for dir in $(ls -1 ../maps-MilSimUnited | grep -E "^Liberation_RX\.*"); do
     echo "Building PBO for map ${dir}"
-    cp -r ../maps/${dir} .
+    cp -r ../maps-MilSimUnited/${dir} .
     cp -r ../core.liberation/* ./${dir}/
     if [[ -d custom ]]; then
 	cp -r ./custom/* ./${dir}/
