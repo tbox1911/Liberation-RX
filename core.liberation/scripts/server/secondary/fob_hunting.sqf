@@ -124,7 +124,7 @@ waitUntil {
 	 ( { alive _x } count _base_objectives ) <= 1
 };
 
-combat_readiness = round (combat_readiness * GRLIB_secondary_objective_impact);
+combat_readiness = round (combat_readiness *  GRLIB_secondary_objective_impact);
 stats_secondary_objectives = stats_secondary_objectives + 1;
 
 [ 3 ] remoteExec ["remote_call_intel", 0];

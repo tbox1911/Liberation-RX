@@ -56,7 +56,7 @@ private _text = format ["Reward Received: + %1 Ammo.", _income];
 [markerPos _liberated_sector] call showlandmines;
 
 combat_readiness = combat_readiness + _combat_readiness_increase;
-if ( combat_readiness > 100.0 && GRLIB_difficulty_modifier <= 2.0 ) then { combat_readiness = 100.0 };
+if ( combat_readiness >= 100.0 && GRLIB_difficulty_modifier <= 2.0 ) then { combat_readiness = 100.0 };
 stats_readiness_earned = stats_readiness_earned + _combat_readiness_increase;
 publicVariable "stats_readiness_earned";
 
