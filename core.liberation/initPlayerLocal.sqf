@@ -1,6 +1,7 @@
 waitUntil {!isNull player};
 
 ["InitializePlayer", [player, true]] call BIS_fnc_dynamicGroups;
+(group player) setVariable ["BIS_dg_reg",nil,true];
 
 _rules = '
 DE<br /><br />
@@ -95,3 +96,4 @@ while {true} do{
 };
 
 // hint format['%1:%2', (_hs_time select 3), (_hs_time select 4)];
+
