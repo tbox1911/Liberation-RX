@@ -101,6 +101,7 @@ air_vehicles = [
 	["CUP_B_CH47F_VIV_USA",3,600,3,GRLIB_perm_inf],
 	["CUP_B_C130J_Cargo_USMC",3,600,3,GRLIB_perm_inf],
 	["CUP_B_AH6M_USA",3,850,3,GRLIB_perm_inf],	
+	["CUP_B_UH1D_GER_KSK",3,600,3,GRLIB_perm_inf],
 	["CUP_B_UH60S_USN",3,600,3,GRLIB_perm_inf],
 	["CUP_B_UH60M_Unarmed_FFV_MEV_US",3,800,3,GRLIB_perm_inf],
 	["CUP_B_UH1Y_MEV_USMC",3,900,3,GRLIB_perm_inf],
