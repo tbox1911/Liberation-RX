@@ -97,52 +97,7 @@ boats_east = [
 	"I_Boat_Armed_01_minigun_F"
 ];
 
-opfor_vehicles = [
-	"CUP_O_BM21_TKA",
-	"CUP_O_LR_SPG9_TKA",
-	"CUP_O_LR_AA_TKA",
-	"CUP_O_T55_TK",
-	"CUP_O_T72_TKA",
-	"CUP_O_BMP1_TKA",
-	"CUP_O_BMP1P_TKA",
-	"CUP_O_BMP2_TKA",
-	"CUP_O_BMP_HQ_TKA",
-	"CUP_O_BRDM2_ATGM_TKA",
-	"CUP_O_BTR40_MG_TKA",
-	"CUP_O_BTR60_TK",
-	"CUP_O_BTR80_TK",
-	"CUP_O_BTR80A_TK",
-	"CUP_O_M113A3_TKA",
-	"CUP_O_LR_MG_TKA",
-	"CUP_O_UAZ_METIS_TKA",
-	"CUP_O_UAZ_AGS30_TKA",
-	"CUP_O_UAZ_MG_TKA",
-	"CUP_O_ZSU23_TK",
-	"CUP_O_ZSU23_Afghan_TK",
-	"CUP_O_Ural_ZU23_TKA",
-	"CUP_O_BMP2_ZU_TKA"
-];
-
-opfor_vehicles_low_intensity = [
-	"CUP_O_BTR40_MG_TKM",
-	"CUP_O_BTR40_TKM",
-	"CUP_O_MTLB_pk_TK_MILITIA",
-	"CUP_O_Hilux_AGS30_TK_INS",
-	"CUP_O_Hilux_unarmed_TK_INS",
-	"CUP_O_Hilux_DSHKM_TK_INS",
-	"CUP_O_Hilux_igla_TK_INS",
-	"CUP_O_Hilux_metis_TK_INS",
-	"CUP_O_Hilux_MLRS_TK_INS",
-	"CUP_O_Hilux_podnos_TK_INS",
-	"CUP_O_Hilux_SPG9_TK_INS",
-	"CUP_O_Hilux_UB32_TK_INS",
-	"CUP_O_Hilux_zu23_TK_INS",
-	"CUP_O_T34_TKA",
-	"CUP_O_UH1H_slick_TKA"
-];
-
 opfor_battlegroup_vehicles = [
-	"CUP_O_2S6M_RU",
 	"CUP_O_2S6_RU",
 	"CUP_O_T90_RU",
 	"CUP_O_T72_RU",
@@ -170,18 +125,21 @@ opfor_battlegroup_vehicles_low_intensity = [
 ];
 
 opfor_troup_transports = [
+	"CUP_O_T55_TK",
+	"CUP_O_M113A3_TKA",
+	"CUP_O_BTR60_TK",
+	"CUP_O_T72_TKA",
+	"CUP_O_MTLB_pk_TKA",
+	"CUP_O_BTR80A_TK",
+	"CUP_O_BTR80_TK",
+	"CUP_O_T34_TKA",
+	"CUP_O_BMP3_RU",
 	"CUP_O_Mi17_TK",
-	"CUP_O_BTR40_MG_TKM",
 	"CUP_O_V3S_Covered_TKM",
 	"CUP_O_V3S_Open_TKM"
 ];
 
 opfor_choppers = [
-	"CUP_O_UH1H_gunship_TKA",
-	"CUP_O_UH1H_armed_TKA",
-	"CUP_O_UH1H_slick_TKA",
-	"CUP_O_C130J_TKA",
-	"CUP_O_MI6T_TKA",
 	"CUP_O_Mi17_TK",
 	"CUP_O_Mi24_D_Dynamic_TK",
 	"CUP_O_Ka50_DL_RU",
@@ -189,9 +147,8 @@ opfor_choppers = [
 ];
 
 opfor_air = [
-	"CUP_O_AN2_TK",
-	"CUP_O_C130J_TKA",
-	"CUP_O_Su25_Dyn_TKA"	
+	"CUP_O_Su25_Dyn_TKA",
+	"CUP_O_SU34_RU"	
 ];
 
 opfor_statics = [
@@ -263,8 +220,8 @@ opfor_recyclable = [
 	["CUP_O_GAZ_Vodnik_BPPU_RU",1,round (50 / GRLIB_recycling_percentage),2],
 	["CUP_O_BTR90_RU",1,round (50 / GRLIB_recycling_percentage),2],
 	["CUP_O_T72_RU",1,round (50 / GRLIB_recycling_percentage),2],
-	["CUP_O_2S6_RU",1,round (100 / GRLIB_recycling_percentage),2],
-	["CUP_O_2S6M_RU",1,round (100 / GRLIB_recycling_percentage),2],
+	["CUP_O_2S6_RU",1,round (450 / GRLIB_recycling_percentage),2],
+	["CUP_O_2S6M_RU",1,round (450 / GRLIB_recycling_percentage),2],
 	["CUP_O_T34_TKA",1,round (40 / GRLIB_recycling_percentage),2],
 	["CUP_O_BTR40_TKM",1,round (50 / GRLIB_recycling_percentage),2],
 	["CUP_O_Hilux_zu23_TK_INS",1,round (30 / GRLIB_recycling_percentage),2],
