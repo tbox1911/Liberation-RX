@@ -25,6 +25,47 @@ if (!isMultiplayer) exitWith {
 	endMission "LOSER";
 };
 
+//TFR Checker !isServer
+waitUntil {!isNull player };
+
+private _tfarEnabled = call TFAR_fnc_isTeamSpeakPluginEnabled;
+private _debug = isServer && hasInterface;
+
+
+if(!_tfarEnabled) then {
+	while {!_tfarEnabled && !_debug} do {
+		private _msg = format ["To play, you need to have Task Force Radio (Beta) enabled. Please check your Plugin Version. Ask for help on teamspeak at 94.130.39.20"];
+		titleText [_msg, "BLACK FADED", 100];
+		20 cutFadeOut 20;
+		_tfarEnabled = call TFAR_fnc_isTeamSpeakPluginEnabled;
+		sleep 1;
+	};
+};
+
+if(_tfarenabled) then {
+	_correctServer = call TFAR_fnc_getTeamSpeakServerName;
+	while {!(_correctServer == "Kampfverband 13")&& !_debug} do {
+		private _msg = format ["Please connect to our teamspeak at 94.130.39.20"];
+		titleText [_msg, "BLACK FADED", 100];
+		20 cutFadeOut 0.1;
+		sleep 1;
+		_correctServer = call TFAR_fnc_getTeamSpeakServerName;
+	};
+	_correctChannel = call TFAR_fnc_getTeamSpeakChannelName;
+	if (!(_correctChannel == "TFAR") && !_debug) then {
+		while {!(_correctChannel == "TFAR")} do {
+			private _msg = format ["Please reload your Plugin to be moved into the correct channel. If it does not work, please contact a moderator."];
+			titleText [_msg, "BLACK FADED", 100];
+			20 cutFadeOut 20;
+			sleep 1;
+			_correctChannel = call TFAR_fnc_getTeamSpeakChannelName;
+		};
+	};
+};
+20 cutFadeOut 2;
+sleep 2;
+titleText ["TFAR Plugin working, Welcome!","PLAIN DOWN"];
+
 respawn_lhd = compileFinal preprocessFileLineNumbers "scripts\client\spawn\respawn_lhd.sqf";
 spawn_camera = compileFinal preprocessFileLineNumbers "scripts\client\spawn\spawn_camera.sqf";
 cinematic_camera = compileFinal preprocessFileLineNumbers "scripts\client\ui\cinematic_camera.sqf";
@@ -36,15 +77,12 @@ vehicle_defense = compileFinal preprocessFileLineNumbers "scripts\client\misc\ve
 fetch_permission = compileFinal preprocessFileLineNumbers "scripts\client\misc\fetch_permission.sqf";
 is_menuok = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_menuok.sqf";
 is_neartransport = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_neartransport.sqf";
-player_EVH = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_EventHandler.sqf";
 paraDrop = compileFinal preprocessFileLineNumbers "scripts\client\spawn\paraDrop.sqf";
 get_lrx_name = compileFinal preprocessFileLineNumbers "scripts\client\misc\get_lrx_name.sqf";
 
 R3F_LOG_joueur_deplace_objet = objNull;
 GRLIB_player_spawned = false;
 
-
-[player] call player_EVH;
 
 is_commander = false;
 if ( !isNil "GRLIB_whitelisted_steamids" ) then {
@@ -100,20 +138,6 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 [] execVM "scripts\client\ui\ui_manager.sqf";
 [] execVM "GREUH\scripts\GREUH_activate.sqf";
 
-if (GRLIB_enable_arsenal) then {
-	[] execVM "addons\LARs\liberationArsenal.sqf";
-};
-
-if (!GRLIB_ACE_enabled) then {
-	[] execVM "addons\PAR\PAR_AI_Revive.sqf";
-	[] execVM "addons\MGR\MagRepack_init.sqf";
-	[] execVM "addons\NRE\NRE_init.sqf";
-	[] execVM "addons\KEY\shortcut_init.sqf";
-	[] execVM "scripts\client\misc\support_manager.sqf";
-};
-// [] execVM "addons\VIRT\virtual_garage_init.sqf";
-// [] execVM "addons\SHOP\traders_shop_init.sqf";
-// [] execVM "addons\TAXI\taxi_init.sqf";
 [] execVM "addons\TARU\taru_init.sqf";
 
 // Init Tips Tables from XML
@@ -170,43 +194,6 @@ setTerrainGrid 25;  //High = 12.5, Very High = 6.25, Ultra = 3.125
 
 (group player) setVariable ["BIS_dg_reg",nil,true];
 
-//TFR Checker !isServer
-waitUntil {!isNull player };
-
-private _tfarEnabled = call TFAR_fnc_isTeamSpeakPluginEnabled;
-private _debug = isServer && hasInterface;
-
-
-if(!_tfarEnabled) then {
-	while {!_tfarEnabled && !_debug} do {
-		20 cutText ["To play, you need to have Task Force Radio (Beta) enabled. Please check your Plugin Version. Ask for help on teamspeak at 94.130.39.20","BLACK FADED"];
-		20 cutFadeOut 20;
-		_tfarEnabled = call TFAR_fnc_isTeamSpeakPluginEnabled;
-		sleep 1;
-	};
-};
-
-if(_tfarenabled) then {
-	_correctServer = call TFAR_fnc_getTeamSpeakServerName;
-	while {!(_correctServer == "Kampfverband 13")&& !_debug} do {
-		20 cutText ["Please connect to our teamspeak at 94.130.39.20","BLACK FADED"];
-		20 cutFadeOut 0.1;
-		sleep 1;
-		_correctServer = call TFAR_fnc_getTeamSpeakServerName;
-	};
-	_correctChannel = call TFAR_fnc_getTeamSpeakChannelName;
-	if (!(_correctChannel == "TFAR") && !_debug) then {
-		while {!(_correctChannel == "TFAR")} do {
-			20 cutText ["Please reload your Plugin to be moved into the correct channel. If it does not work, please contact a moderator.","BLACK FADED"];
-			20 cutFadeOut 20;
-			sleep 1;
-			_correctChannel = call TFAR_fnc_getTeamSpeakChannelName;
-		};
-	};
-};
-20 cutFadeOut 2;
-sleep 2;
-titleText ["TFAR Plugin working, Welcome!","PLAIN DOWN"];
 
 findDisplay 46 displayAddEventHandler ["KeyDown",{
     if ((_this select 1) in actionKeys "IngamePause") then {
