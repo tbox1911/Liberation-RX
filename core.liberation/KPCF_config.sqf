@@ -10,12 +10,11 @@
 
 // The Base object is for the player interaction, so at these object you can open the dialog
 KPCF_cratefillerBase = [
-    "Land_Cargo10_military_green_F",
 	"Land_RepairDepot_01_green_F"
 ];
 
 // The Spawn object is the point where crates will spawn and acts the center for the KPCF_spawnRadius
-KPCF_cratefillerSpawn = "Land_HelipadCivil_F";
+KPCF_cratefillerSpawn = "Land_RepairDepot_01_green_F";
 
 // This variable defines if the player will be able to spawn and delete crates
 KPCF_canSpawnAndDelete = true;
@@ -28,7 +27,7 @@ KPCF_generateLists = true;
 KPCF_spawnRadius = 10;
 
 // Defines the distance for the interaction (addAction / ACE)
-KPCF_interactRadius = 5;
+KPCF_interactRadius = 12;
 
 // Defines the available crates
 KPCF_crates = [
