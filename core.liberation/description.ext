@@ -82,10 +82,7 @@ showMap = 1;
 
 briefing = 1;
 
-LARs_calculateSideGear = 0;
-
 class CfgFunctions {
-	#include "addons\LARs\blacklistArsenal\functions\blacklistArsenal.fncs"
 	#include "addons\GRAD\cfgFunctions.hpp"
 	#include "addons\SDB_DALE\CfgFunctions.hpp"
 	
@@ -134,7 +131,6 @@ class Repaint {
 #include "ui\liberation_notifications.hpp"
 #include "ui\mission_params.hpp"
 #include "R3F_LOG\desc_include.h"
-#include "addons\MGR\MagRepack_Config.hpp"
 #include "addons\RPT\veh_repaint.hpp"
 #include "addons\VIRT\virtual_garage.hpp"
 #include "addons\SHOP\traders_shop.hpp"
