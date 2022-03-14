@@ -188,15 +188,15 @@ if(!_tfarEnabled) then {
 
 if(_tfarenabled) then {
 	_correctServer = call TFAR_fnc_getTeamSpeakServerName;
-	while {!(_correctServer == "Task Force 47")&& !_debug} do {
+	while {!(_correctServer == "Kampfverband 13")&& !_debug} do {
 		20 cutText ["Please connect to our teamspeak at 94.130.39.20","BLACK FADED"];
 		20 cutFadeOut 0.1;
 		sleep 1;
 		_correctServer = call TFAR_fnc_getTeamSpeakServerName;
 	};
 	_correctChannel = call TFAR_fnc_getTeamSpeakChannelName;
-	if (!(_correctChannel == "Radio Communication - Public") && !_debug) then {
-		while {!(_correctChannel == "Radio Communication - Public")} do {
+	if (!(_correctChannel == "TFAR") && !_debug) then {
+		while {!(_correctChannel == "TFAR")} do {
 			20 cutText ["Please reload your Plugin to be moved into the correct channel. If it does not work, please contact a moderator.","BLACK FADED"];
 			20 cutFadeOut 20;
 			sleep 1;
@@ -206,7 +206,7 @@ if(_tfarenabled) then {
 };
 20 cutFadeOut 2;
 sleep 2;
-titleText ["TFR Plugin working, Welcome!","PLAIN DOWN"];
+titleText ["TFAR Plugin working, Welcome!","PLAIN DOWN"];
 
 findDisplay 46 displayAddEventHandler ["KeyDown",{
     if ((_this select 1) in actionKeys "IngamePause") then {
