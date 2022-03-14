@@ -156,6 +156,8 @@ addMissionEventHandler ["Draw3D",{
 chimera_sign addAction ["<t color='#FFFFFF'>" + localize "STR_READ_ME" + "</t>",{createDialog "liberation_notice"},"",999,true,true,"","[] call is_menuok",5];
 // chimera_sign addAction ["<t color='#FFFFFF'>" + localize "STR_TIPS" + "</t>",{createDialog "liberation_tips"},"",998,true,true,"","[] call is_menuok",5];
 
+
+
 waitUntil {!isNull findDisplay 46};
 (findDisplay 46) displayAddEventHandler ["Unload",{	
 	// code here gets executed on the client at end of mission, whether due to player abort, loss of connection, or mission ended by server;
@@ -166,5 +168,58 @@ waitUntil { time > 5 };
 initAmbientLife;
 enableEnvironment [true, true];
 setTerrainGrid 25;  //High = 12.5, Very High = 6.25, Ultra = 3.125
+
+//TFR Checker !isServer
+waitUntil {!isNull player };
+
+private _tfarEnabled = call TFAR_fnc_isTeamSpeakPluginEnabled;
+private _debug = isServer && hasInterface;
+
+
+if(!_tfarEnabled) then {
+	while {!_tfarEnabled && !_debug} do {
+		20 cutText ["To play, you need to have Task Force Radio (Beta) enabled. Please check your Plugin Version. Ask for help on teamspeak at 94.130.39.20","BLACK FADED"];
+		20 cutFadeOut 20;
+		_tfarEnabled = call TFAR_fnc_isTeamSpeakPluginEnabled;
+		sleep 1;
+	};
+};
+
+if(_tfarenabled) then {
+	_correctServer = call TFAR_fnc_getTeamSpeakServerName;
+	while {!(_correctServer == "Task Force 47")&& !_debug} do {
+		20 cutText ["Please connect to our teamspeak at 94.130.39.20","BLACK FADED"];
+		20 cutFadeOut 0.1;
+		sleep 1;
+		_correctServer = call TFAR_fnc_getTeamSpeakServerName;
+	};
+	_correctChannel = call TFAR_fnc_getTeamSpeakChannelName;
+	if (!(_correctChannel == "Radio Communication - Public") && !_debug) then {
+		while {!(_correctChannel == "Radio Communication - Public")} do {
+			20 cutText ["Please reload your Plugin to be moved into the correct channel. If it does not work, please contact a moderator.","BLACK FADED"];
+			20 cutFadeOut 20;
+			sleep 1;
+			_correctChannel = call TFAR_fnc_getTeamSpeakChannelName;
+		};
+	};
+};
+20 cutFadeOut 2;
+sleep 2;
+titleText ["TFR Plugin working, Welcome!","PLAIN DOWN"];
+
+findDisplay 46 displayAddEventHandler ["KeyDown",{
+    if ((_this select 1) in actionKeys "IngamePause") then {
+        0 spawn {
+            _t = diag_tickTime + 1;
+            waitUntil {diag_tickTime > _t || !isNull findDisplay 49};
+            if (diag_tickTime > _t) exitWith {};
+            findDisplay 49 displayCtrl 1010 ctrlAddEventHandler ["ButtonClick",{
+				_message = format ["%1 has respawned!", name player];
+				_message remoteExec ["hint", -2];
+			}];
+        };
+    };
+    false
+}];
 
 diag_log "--- Client Init stop ---";
