@@ -17,7 +17,9 @@
 // *** GLOBAL DEFINITIOON ***
 GRLIB_side_friendly = WEST;
 GRLIB_side_enemy = EAST;
+
 opfor_vehicles = [];
+opfor_vehicles_low_intensity= [];
 
 // *** SUPPORT ***
 support_vehicles = support_vehicles_west + [
