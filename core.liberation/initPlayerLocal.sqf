@@ -1,7 +1,6 @@
 waitUntil {!isNull player};
 
 ["InitializePlayer", [player, true]] call BIS_fnc_dynamicGroups;
-(group player) setVariable ["BIS_dg_reg",nil,true];
 
 _rules = '
 DE<br /><br />

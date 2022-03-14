@@ -157,7 +157,6 @@ chimera_sign addAction ["<t color='#FFFFFF'>" + localize "STR_READ_ME" + "</t>",
 // chimera_sign addAction ["<t color='#FFFFFF'>" + localize "STR_TIPS" + "</t>",{createDialog "liberation_tips"},"",998,true,true,"","[] call is_menuok",5];
 
 
-
 waitUntil {!isNull findDisplay 46};
 (findDisplay 46) displayAddEventHandler ["Unload",{	
 	// code here gets executed on the client at end of mission, whether due to player abort, loss of connection, or mission ended by server;
@@ -168,6 +167,8 @@ waitUntil { time > 5 };
 initAmbientLife;
 enableEnvironment [true, true];
 setTerrainGrid 25;  //High = 12.5, Very High = 6.25, Ultra = 3.125
+
+(group player) setVariable ["BIS_dg_reg",nil,true];
 
 //TFR Checker !isServer
 waitUntil {!isNull player };
