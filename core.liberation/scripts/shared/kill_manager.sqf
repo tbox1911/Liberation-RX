@@ -134,12 +134,14 @@ if ( isServer ) then {
 				};
 				if ( side (group _unit) == GRLIB_side_friendly ) then {
 					stats_blufor_teamkills = stats_blufor_teamkills + 1;
+					
+					/*
 					[_killer, -10] remoteExec ["addScore", 2];
-					
 					_killer setVariable ["GREUH_ammo_count", ( (_killer getVariable ["GREUH_ammo_count", 0]) - 10 ), true];
-					
 					_msg = localize "STR_FRIENDLY_FIRE";
 					[gamelogic, _msg] remoteExec ["globalChat", 0];
+					*/
+					
 				};
 			} else {
 				if ( side (group _unit) == GRLIB_side_friendly ) then {

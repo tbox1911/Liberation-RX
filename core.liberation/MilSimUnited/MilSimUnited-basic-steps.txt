@@ -163,7 +163,15 @@ add money bonus for POW to FOB
 
 
 \scripts\shared\damage_manager.sqf
-add money penalty for shooting friendly AI
+ca. 17: comment friendly fire section because it is handled via initServer.sqf
+there is another one in \scripts\shared\kill_manager.sqf
+
+
+\addons\PAR\PAR_fn_death.sqf
+\scripts\shared\kill_manager.sqf
+amount of penalty for killing the wrong people
+ca. 82: comment civ penalty because already fired by initServer.sqf
+ca. 138: comment friendly fire penalty because already fired by initServer.sqf
 
 
 \scripts\server\remotecall\sector_liberated_remote_call.sqf
@@ -192,12 +200,6 @@ ca. 40:
 if (_rank != "None") then {
 	_unit setUnitRank _rank;
 };
-
-
-\addons\PAR\PAR_fn_death.sqf
-\scripts\shared\kill_manager.sqf
-amount of penalty for killing the wrong people
-ca. 82: comment civ penalty because already fired by initServer.sqf
 
 
 \scripts\client\ui\squad_management.sqf
@@ -268,6 +270,10 @@ ca. 14: comment bohemia loadout listing
 \scripts\server\sector\attack_in_progress_fob.sqf
 ca. 51: private _countblufor_ownership = [_thispos, GRLIB_capture_size, GRLIB_side_friendly] call F_getUnitsCount;
 add condition ( _countblufor_ownership < 3 )
+
+
+\scripts\client\init_client.sqf
+ca. 28: TFR Checker
 
 
 ------------------------------------------------------------------------------------------
@@ -547,11 +553,19 @@ combat_readiness = 99;
 GRLIB_permissions
 und auf server
 
+
+
 GRLIB_permissions = [HIER DAS ARRAY EINFÜGEN]
 global ausführen
 
 
+
 Map Marker in einem Ordner verschieben und sichtbarkeit entfernen
+
+
+
+https://linuxgsm.com/
+
 
 
 

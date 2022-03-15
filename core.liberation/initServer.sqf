@@ -39,6 +39,39 @@ addMissionEventHandler ['HandleDisconnect',{
 
 
 
+["B_Soldier_F", "InitPost", {
+	if ( isServer ) then {
+		params ["_vehicle"];
+		_vehicle addMPEventHandler ["MPHit", {
+			params ["_unit", "_causedBy", "_damage", "_instigator"];
+			if (isPlayer _causedBy) then {
+				_msg = format ["Friendly fire from %1 to %2. Penalty: -1 rank and ammo", name _causedBy, name _unit];
+				[gamelogic, _msg] remoteExec ["globalChat", 0];
+				_causedBy setVariable ["GREUH_ammo_count", ( (_causedBy getVariable ["GREUH_ammo_count", 1]) - 1), true];
+				[_causedBy, -1] remoteExec ["addScore", 2];
+			};
+		}];
+	};
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["CUP_B_GER_Operator_Medic", "InitPost", {
+	if ( isServer ) then {
+		params ["_vehicle"];
+		_vehicle addMPEventHandler ["MPHit", {
+			params ["_unit", "_causedBy", "_damage", "_instigator"];
+			if (isPlayer _causedBy) then {
+				_msg = format ["Friendly fire from %1 to %2. Penalty: -1 rank and ammo", name _causedBy, name _unit];
+				[gamelogic, _msg] remoteExec ["globalChat", 0];
+				_causedBy setVariable ["GREUH_ammo_count", ( (_causedBy getVariable ["GREUH_ammo_count", 1]) - 1), true];
+				[_causedBy, -1] remoteExec ["addScore", 2];
+			};
+		}];
+	};
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+
+
+
 /*
 
 if (_hs_unconscious == true) then { [_unit, -25] remoteExec ["addScore", 2]; };
