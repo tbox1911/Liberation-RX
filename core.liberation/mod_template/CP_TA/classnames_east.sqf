@@ -94,7 +94,8 @@ militia_vehicles = [
 ];
 
 boats_east = [
-	"I_Boat_Armed_01_minigun_F"
+	"I_Boat_Armed_01_minigun_F",
+	"CUP_O_ZUBR_SLA"
 ];
 
 opfor_vehicles = [
