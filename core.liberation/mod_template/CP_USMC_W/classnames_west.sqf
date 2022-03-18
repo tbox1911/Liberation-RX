@@ -66,8 +66,10 @@ light_vehicles = [
 ];
 
 heavy_vehicles = [
+	["CUP_B_AAV_USMC_TTS",3,500,3,GRLIB_perm_inf],
 	["CUP_B_M163_Vulcan_USA",3,400,3,GRLIB_perm_inf],
 	["CUP_B_LAV25_USMC",3,400,3,GRLIB_perm_inf],
+	["CUP_B_LAV25M240_USMC",3,500,3,GRLIB_perm_inf],
 	["CUP_B_M113A3_GER",3,400,3,GRLIB_perm_inf],
 	["CUP_B_Boxer_HMG_GER_WDL",3,400,3,GRLIB_perm_inf],
 	["CUP_B_Boxer_GMG_GER_WDL",3,400,3,GRLIB_perm_inf],
@@ -80,7 +82,7 @@ heavy_vehicles = [
 	["CUP_B_M2Bradley_USA_W",3,600,3,GRLIB_perm_inf],
 	["CUP_B_M2A3Bradley_USA_W",3,600,3,GRLIB_perm_inf],
 	["CUP_B_Leopard2A6_GER",3,700,3,GRLIB_perm_inf],
-	["CUP_B_Challenger2_2CW_BAF",3,700,3,GRLIB_perm_inf],
+	["CUP_B_M1A1FEP_Woodland_USMC",3,700,3,GRLIB_perm_inf],
 	["CUP_B_M1A1SA_Woodland_US_Army",3,700,3,GRLIB_perm_inf],
 	["CUP_B_M1A2SEP_TUSK_Woodland_US_Army",3,725,3,GRLIB_perm_inf],
 	["CUP_B_M1A2C_TUSK_II_Woodland_US_Army",3,750,3,GRLIB_perm_inf],
