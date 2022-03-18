@@ -24,7 +24,19 @@ addMissionEventHandler ['EntityKilled',{
 			_killer setVariable ["GREUH_ammo_count", ( (_killer getVariable ["GREUH_ammo_count", 15]) - 15), true];
 			[_killer, -15] remoteExec ["addScore", 2];
 		};
+		/*
 		
+		
+		_tre = [ configFile >> "CfgVehicles" >> typeOf _unit, true ] call BIS_fnc_returnParents; 
+
+		if (("House" in _tre) && !("Strategic" in _tre) && side _killer == blufor) then {
+			_msg = format ["%1 killed a House. Penalty: -50 rank and ammo", name _killer];
+			[gamelogic, _msg] remoteExec ["globalChat", 0];
+			_killer setVariable ["GREUH_ammo_count", ( (_killer getVariable ["GREUH_ammo_count", 50]) - 50), true];
+			[_killer, -50] remoteExec ["addScore", 2];
+		};
+		
+		*/
 	};
 	
 }];
