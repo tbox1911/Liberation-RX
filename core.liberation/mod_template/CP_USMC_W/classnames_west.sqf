@@ -174,8 +174,6 @@ support_vehicles_west = [
     	["B_CargoNet_01_ammo_F",0,300,0,GRLIB_perm_inf],
     	["CargoNet_01_barrels_F",0,300,0,GRLIB_perm_inf],
     	["Land_RepairDepot_01_green_F",0,0,0,GRLIB_perm_inf],
-	["CUP_B_nM1038_Repair_USMC_WDL",0,200,0,GRLIB_perm_inf],
-	["CUP_B_MTVR_Refuel_USMC",0,200,0,GRLIB_perm_inf],
     	["ACE_Track",0,0,0,GRLIB_perm_inf],
     	["ACE_Wheel",0,0,0,GRLIB_perm_inf],
 	["Box_NATO_Equip_F",0,0,0,GRLIB_perm_inf]
@@ -188,7 +186,7 @@ buildings_west = [
     ["Land_HBarrier_3_F",0,0,0,GRLIB_perm_inf],
     ["Flag_UNO_F",0,0,0,GRLIB_perm_inf],
     ["Flag_NATO_F",0,0,0,GRLIB_perm_inf],
-	["FlagCarrierGermany_EP1",0,0,0,GRLIB_perm_inf],
+    ["FlagCarrierGermany_EP1",0,0,0,GRLIB_perm_inf],
     ["FlagCarrierRU",0,0,0,GRLIB_perm_inf],
     ["Flag_UK_F",0,0,0,GRLIB_perm_inf],
     ["Flag_US_F",0,0,0,GRLIB_perm_inf],
