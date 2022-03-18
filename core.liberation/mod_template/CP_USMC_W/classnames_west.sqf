@@ -146,6 +146,10 @@ static_vehicles = [
 	["CUP_B_M119_USMC",0,150,0,GRLIB_perm_inf],
 	["CUP_WV_B_CRAM",0,200,0,GRLIB_perm_inf],
 	["CUP_WV_B_RAM_Launcher",0,250,0,GRLIB_perm_inf],
+	["B_Radar_System_01_F",0,600,0,GRLIB_perm_inf],
+	["B_SAM_System_03_F",0,1200,0,GRLIB_perm_inf],
+	["B_Ship_MRLS_01_F",0,5000,0,GRLIB_perm_inf],
+	["B_AAA_System_01_F",0,250,0,GRLIB_perm_inf],
 	["CUP_WV_B_SS_Launcher",0,250,0,GRLIB_perm_inf]
 ];
 
@@ -157,17 +161,23 @@ static_vehicles_AI = [
 ];
 
 support_vehicles_west = [
-    ["CargoNet_01_box_F",0,300,0,GRLIB_perm_inf],
-    ["B_CargoNet_01_ammo_F",0,300,0,GRLIB_perm_inf],
-    ["CargoNet_01_barrels_F",0,300,0,GRLIB_perm_inf],
-	
-    ["Land_RepairDepot_01_green_F",0,0,0,GRLIB_perm_inf],
-	
+
+    	["CUP_B_nM1038_Repair_DF_USA_WDL",0,500,0,GRLIB_perm_inf],
+    	["CUP_B_nM1038_Ammo_DF_USA_WDL",0,500,0,GRLIB_perm_inf],
+    	["CUP_B_MTVR_Repair_USMC",0,500,0,GRLIB_perm_inf],
+    	["CUP_B_MTVR_Refuel_USMC",0,500,0,GRLIB_perm_inf],
+    	["CUP_B_MTVR_Ammo_USMC",0,500,0,GRLIB_perm_inf],
+    	["CargoNet_01_box_F",0,300,0,GRLIB_perm_inf],
+    	["CargoNet_01_box_F",0,300,0,GRLIB_perm_inf],
+    	["CargoNet_01_box_F",0,300,0,GRLIB_perm_inf],
+    	["CargoNet_01_box_F",0,300,0,GRLIB_perm_inf],
+    	["B_CargoNet_01_ammo_F",0,300,0,GRLIB_perm_inf],
+    	["CargoNet_01_barrels_F",0,300,0,GRLIB_perm_inf],
+    	["Land_RepairDepot_01_green_F",0,0,0,GRLIB_perm_inf],
 	["CUP_B_nM1038_Repair_USMC_WDL",0,200,0,GRLIB_perm_inf],
 	["CUP_B_MTVR_Refuel_USMC",0,200,0,GRLIB_perm_inf],
-	
-    ["ACE_Track",0,0,0,GRLIB_perm_inf],
-    ["ACE_Wheel",0,0,0,GRLIB_perm_inf],
+    	["ACE_Track",0,0,0,GRLIB_perm_inf],
+    	["ACE_Wheel",0,0,0,GRLIB_perm_inf],
 	["Box_NATO_Equip_F",0,0,0,GRLIB_perm_inf]
 ];
 
@@ -269,8 +279,13 @@ uavs = [
 	"B_UGV_01_F",
 	"B_UGV_01_rcws_F",
 	"B_UGV_02_Demining_F",
-	"CUP_B_USMC_DYN_MQ9"
-];
+	"B_Radar_System_01_F",
+	"CUP_B_USMC_DYN_MQ9",
+	"CUP_WV_B_CRAM",
+	"B_SAM_System_03_F",
+	"B_Ship_MRLS_01_F",
+	"B_AAA_System_01_F"
+	];
 
 // Everything the AI troups should be able to resupply from
 ai_resupply_sources_west = [
