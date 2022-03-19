@@ -8,18 +8,18 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1834;
+		nextID=1835;
 	};
 	class LayerIndexProvider
 	{
-		nextID=158;
+		nextID=179;
 	};
 	class Camera
 	{
-		pos[]={14017.981,58.728882,5916.1206};
-		dir[]={-0.33846179,-0.65272075,-0.67780012};
-		up[]={-0.29160628,0.75759357,-0.58396912};
-		aside[]={-0.89466637,-2.066372e-007,0.44675466};
+		pos[]={10236.623,43.588688,311.96463};
+		dir[]={0.47374734,-0.32434389,-0.81877148};
+		up[]={0.16244042,0.94593436,-0.28074357};
+		aside[]={-0.86556304,-2.6338967e-009,-0.5008195};
 	};
 };
 binarizationWanted=0;
@@ -25013,15 +25013,15 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={10293.811,18.686047,271.4032};
-				angles[]={6.2806482,0.028832838,0};
+				position[]={10293.811,18.686047,271.40295};
+				angles[]={6.2806549,0.028832838,0};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
 				skill=0.60000002;
-				lock="UNLOCKED";
+				lock="LOCKEDPLAYER";
 				init="clearWeaponCargoGlobal this;   clearMagazineCargoGlobal this;   clearItemCargoGlobal this;   clearBackpackCargoGlobal this;";
 			};
 			id=1747;
@@ -25056,19 +25056,19 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={10294.845,18.634804,236.83145};
+				position[]={10294.845,18.634888,236.83176};
 				angles[]={0,0.039147735,0};
 			};
 			side="Empty";
 			class Attributes
 			{
 				skill=0.60000002;
-				lock="UNLOCKED";
+				lock="LOCKEDPLAYER";
 				init="clearWeaponCargoGlobal this;   clearMagazineCargoGlobal this;   clearItemCargoGlobal this;   clearBackpackCargoGlobal this;";
 			};
 			id=1748;
 			type="CUP_MH60S_Unarmed_USN";
-			atlOffset=36.188919;
+			atlOffset=36.188999;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -25276,7 +25276,7 @@ class Mission
 			name="lib_basics";
 			class Entities
 			{
-				items=6;
+				items=7;
 				class Item0
 				{
 					dataType="Logic";
@@ -25943,9 +25943,121 @@ class Mission
 						nAttributes=5;
 					};
 				};
+				class Item6
+				{
+					dataType="Logic";
+					class PositionInfo
+					{
+						position[]={11011.157,7.5267086,1660.192};
+						angles[]={0.072675511,1.9642982,0.0091106193};
+					};
+					name="zm7";
+					id=1834;
+					type="ModuleCurator_F";
+					atlOffset=-4.7683716e-007;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="ModuleCurator_F_Owner";
+							expression="_this setVariable ['Owner',_value,true];";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="76561198100256441";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="ModuleCurator_F_Forced";
+							expression="_this setVariable ['Forced',_value,true];";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=0;
+								};
+							};
+						};
+						class Attribute2
+						{
+							property="ModuleCurator_F_Name";
+							expression="_this setVariable ['Name',_value,true];";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="-Sonic-";
+								};
+							};
+						};
+						class Attribute3
+						{
+							property="ModuleInfo";
+							expression="false";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"BOOL"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						class Attribute4
+						{
+							property="ModuleCurator_F_Addons";
+							expression="_this setVariable ['Addons',_value,true];";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=3;
+								};
+							};
+						};
+						nAttributes=5;
+					};
+				};
 			};
 			id=1761;
-			atlOffset=-0.077527523;
+			atlOffset=-0.081731796;
 		};
 		class Item591
 		{
