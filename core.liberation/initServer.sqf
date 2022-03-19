@@ -38,7 +38,7 @@ addMissionEventHandler ['HandleDisconnect',{
 }];
 
 
-
+/*
 ["B_Soldier_F", "InitPost", {
 	if ( isServer ) then {
 		params ["_vehicle"];
@@ -68,7 +68,7 @@ addMissionEventHandler ['HandleDisconnect',{
 		}];
 	};
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
+*/
 
 
 
