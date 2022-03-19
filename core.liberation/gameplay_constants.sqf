@@ -42,7 +42,10 @@ GRLIB_offload_diag = false;
 //NRE_Key = 199;
 MGR_Key = 19;
 
+skill_scan = true;
 skill_parachuters = 1;
 skill_air_vehicles_planes = 1;
 skill_air_vehicles_helicopters = 1;
 skill_ground_vehicles = 1;
+
+
