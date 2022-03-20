@@ -44,6 +44,15 @@
 	// Chargement du fichier de langage
 	call compile preprocessFile format ["R3F_LOG\%1_strings_lang.sqf", R3F_LOG_CFG_language];
 
+	// Dedup list
+	R3F_LOG_CFG_can_tow = R3F_LOG_CFG_can_tow arrayIntersect R3F_LOG_CFG_can_tow;
+	R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed arrayIntersect R3F_LOG_CFG_can_be_towed;
+	R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift arrayIntersect R3F_LOG_CFG_can_lift;
+	R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted arrayIntersect R3F_LOG_CFG_can_be_lifted;
+	R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo arrayIntersect R3F_LOG_CFG_can_transport_cargo;
+	R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo arrayIntersect R3F_LOG_CFG_can_be_transported_cargo;
+	R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player arrayIntersect R3F_LOG_CFG_can_be_moved_by_player;
+
 	/*
 	 * On inverse l'ordre de toutes les listes de noms de classes pour donner
 	 * la priorit� aux classes sp�cifiques sur les classes g�n�riques
