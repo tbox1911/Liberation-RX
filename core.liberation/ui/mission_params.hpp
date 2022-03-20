@@ -104,11 +104,11 @@ class Params
 	};
 	class ModPresetWest {
 		title = "MOD Preset - Friendly";
-		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18 };
+		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 };
 		texts[] = {
-					"A3 NATO",
-					"A3 CSAT",
-					"A3 AAF",
+					"ArmA3 NATO",
+					"ArmA3 CSAT",
+					"ArmA3 AAF",
 					"CUP BAF Desert",
 					"CUP USMC Woodland",
 					"CUP USMC Desert",
@@ -122,20 +122,25 @@ class Params
 					"GM EAST",
     				"GM EAST Winter",
 					"OPTRE West",
-					"WS UNA",
+					"West Sahara UNA",
 					"SoG USA",
-					"SoG VIETCONG"
+					"SoG VIETCONG",
+					"Project Opfor Ukrainian Army",
+					"3CB British Army Woodland",
+					"3CB British Army Desert",
+					"3CB Chernarussian Red Star",
+					"Bundenswehr Tropentarn"
 				};
 		default = 0;
 	};
 	class ModPresetEast {
 		title = "MOD Preset - Enemy";
-		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22 };
+		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28 };
 		texts[] = {
-					"A3 CSAT",
-					"A3 NATO",
-					"A3 AAF",
-					"A3 CSAT Urban",
+					"ArmA3 CSAT",
+					"ArmA3 NATO",
+					"ArmA3 AAF",
+					"ArmA3 CSAT Urban",
 					"CUP Takistan",
 					"CUP USMC Woodland",
 					"CUP USMC Desert",
@@ -152,9 +157,15 @@ class Params
 					"GM EAST",
 					"GM EAST Winter",
 					"OPTRE East",
-					"WS FIA",
+					"West Sahara FIA",
 					"SoG USA",
-					"SoG VIETCONG"
+					"SoG VIETCONG",
+					"Project Opfor Takistani Army",
+					"Project Opfor Sahrani Army",
+					"Project Opfor Ukrainian Army",
+					"3CB British Army Woodland",
+					"3CB British Army desert",
+					"3CB Chernarussian Red Star"
 				};
 		default = 0;
 	};
