@@ -85,8 +85,9 @@ briefing = 1;
 class CfgFunctions {
 	#include "addons\GRAD\cfgFunctions.hpp"
 	#include "addons\SDB_DALE\CfgFunctions.hpp"
-	
-	#include "KPCF\KPCF_functions.hpp"
+	class KP { 
+		#include "KP\KPCF\functions.hpp" 
+	};
 };
 
 class cfgSounds {
@@ -136,5 +137,7 @@ class Repaint {
 #include "addons\SHOP\traders_shop.hpp"
 #include "addons\SDB_DALE\RscLoadout.hpp"
 
-#include "KPGUI\KPGUI_defines.hpp"
-#include "KPCF\ui\KPCF_dialog.hpp"
+#include "KP\KPGUI\KPGUI_defines.hpp"
+
+#include "KP\KPCF\ui\defines.hpp"
+#include "KP\KPCF\ui\KP_cratefiller_dialog.hpp"

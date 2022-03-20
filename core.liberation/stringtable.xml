@@ -5434,215 +5434,330 @@
 </Project>
 
 
-<Project name="KPDS">
+<Project name="KP">
+        <Package name="KPCF">
     <!-- English and German localization by Dubjunk: https://github.com/Dubjunk -->
     <!-- Polish localization by veteran29: https://github.com/veteran29 -->
-    <Package name="KPCF">
+
         <Container name="Titles">
-            <Key ID="STR_KPCF_ACTIONOPEN">
+            <Key ID="STR_KP_CRATEFILLER_ACTIONOPEN">
                 <English>-- KP Cratefiller --</English>
                 <German>-- KP Kistenfüller --</German>
                 <Polish>-- KP Cratefiller --</Polish>
             </Key>
-            <Key ID="STR_KPCF_TITLE">
+            <Key ID="STR_KP_CRATEFILLER_TITLE">
                 <English>KP Cratefiller</English>
                 <German>KP Kistenfüller</German>
                 <Polish>KP Cratefiller</Polish>
             </Key>
-            <Key ID="STR_KPCF_TITLETRANSPORT">
-                <English>Transport medium</English>
-                <German>Transportmedium</German>
-                <Polish>Środek transportu</Polish>
-            </Key>
-            <Key ID="STR_KPCF_TITLEEQUIPMENT">
+            <Key ID="STR_KP_CRATEFILLER_TITLEEQUIPMENT">
                 <English>Equipment</English>
                 <German>Ausrüstung</German>
                 <Polish>Ekwipunek</Polish>
             </Key>
-            <Key ID="STR_KPCF_TITLEINVENTORY">
+            <Key ID="STR_KP_CRATEFILLER_TITLEINVENTORY">
                 <English>Inventory</English>
                 <German>Inventar</German>
                 <Polish>Ekwipunek</Polish>
             </Key>
+			<Key ID="STR_KP_CRATEFILLER_TITLEOVERVIEW">
+				<English>Equipment overview</English>
+				<German>Ausrüstungsübersicht</German>
+			</Key>
+            <Key ID="STR_KP_CRATEFILLER_TITLETRANSPORT">
+                <English>Transport medium</English>
+                <German>Transportmedium</German>
+                <Polish>Środek transportu</Polish>
+            </Key>
         </Container>
 
         <Container name="Dialog controls">
-            <Key ID="STR_KPCF_SPAWNCRATE">
-                <English>Request crate</English>
-                <German>Kiste anfordern</German>
-                <Polish>Utwórz skrzynię</Polish>
+            <Key ID="STR_KP_CRATEFILLER_CLEARINVENTORY">
+                <English>Clear storage</English>
+                <German>Laderaum leeren/German>
             </Key>
-            <Key ID="STR_KPCF_DELETECRATE">
+            <Key ID="STR_KP_CRATEFILLER_DELETECRATE">
                 <English>Store crate</English>
                 <German>Kiste einlagern</German>
                 <Polish>Zeskładuj skrzynię</Polish>
             </Key>
-            <Key ID="STR_KPCF_EXPORT">
+            <Key ID="STR_KP_CRATEFILLER_EXPORT">
                 <English>Export</English>
                 <German>Exportieren</German>
                 <Polish>Eksportuj</Polish>
             </Key>
-            <Key ID="STR_KPCF_IMPORT">
+            <Key ID="STR_KP_CRATEFILLER_IMPORT">
                 <English>Import</English>
                 <German>Importieren</German>
                 <Polish>Importuj</Polish>
             </Key>
-            <Key ID="STR_KPCF_LISTWEAPONS">
-                <English>Weapons</English>
-                <German>Waffen</German>
-                <Polish>Bronie</Polish>
-            </Key>
-            <Key ID="STR_KPCF_LISTMAGAZINES">
-                <English>Magazines</English>
-                <German>Magazine</German>
-                <Polish>Magazynki</Polish>
-            </Key>
-            <Key ID="STR_KPCF_LISTATTACHMENTS">
+            <Key ID="STR_KP_CRATEFILLER_LISTATTACHMENTS">
                 <English>Weapon attachments</English>
                 <German>Waffenzubehör</German>
                 <Polish>Akcesoria do broni</Polish>
             </Key>
-            <Key ID="STR_KPCF_LISTGRENADES">
-                <English>Grenades</English>
-                <German>Granaten</German>
-                <Polish>Granaty</Polish>
-            </Key>
-            <Key ID="STR_KPCF_LISTEXPLOSIVES">
-                <English>Explosives</English>
-                <German>Sprengstoffe</German>
-                <Polish>Ładunki wybuchowe</Polish>
-            </Key>
-            <Key ID="STR_KPCF_LISTVARIOUS">
-                <English>Others</English>
-                <German>Sonstiges</German>
-                <Polish>Inne</Polish>
-            </Key>
-            <Key ID="STR_KPCF_LISTBACKPACKS">
+            <Key ID="STR_KP_CRATEFILLER_LISTBACKPACKS">
                 <English>Backpacks</English>
                 <German>Rucksäcke</German>
                 <Polish>Plecaki</Polish>
             </Key>
+            <Key ID="STR_KP_CRATEFILLER_LISTEXPLOSIVES">
+                <English>Explosives</English>
+                <German>Sprengstoffe</German>
+                <Polish>Ładunki wybuchowe</Polish>
+            </Key>
+            <Key ID="STR_KP_CRATEFILLER_LISTGRENADES">
+                <English>Grenades</English>
+                <German>Granaten</German>
+                <Polish>Granaty</Polish>
+            </Key>
+            <Key ID="STR_KP_CRATEFILLER_LISTMAGAZINES">
+                <English>Magazines</English>
+                <German>Magazine</German>
+                <Polish>Magazynki</Polish>
+            </Key>
+            <Key ID="STR_KP_CRATEFILLER_LISTVARIOUS">
+                <English>Others</English>
+                <German>Sonstiges</German>
+                <Polish>Inne</Polish>
+            </Key>
+            <Key ID="STR_KP_CRATEFILLER_LISTWEAPONS">
+                <English>Weapons</English>
+                <German>Waffen</German>
+                <Polish>Bronie</Polish>
+            </Key>
+            <Key ID="STR_KP_CRATEFILLER_SPAWNCRATE">
+                <English>Request crate</English>
+                <German>Kiste anfordern</German>
+                <Polish>Utwórz skrzynię</Polish>
+            </Key>
         </Container>
 
         <Container name="Tooltips">
-            <Key ID="STR_KPCF_TOOLTIPCRATE">
-                <English>Select a crate that you want to spawn.</English>
-                <German>Wähle eine Kiste aus, die gespawnt werden soll.</German>
-                <Polish>Wybierz skrzynię którą chcesz utworzyć.</Polish>
+            <Key ID="STR_KP_CRATEFILLER_ACTIVATEOVERVIEW_TT">
+                <English>Enables/Disables the cratefiller equipment overview.</English>
+                <German>Aktiviert/Deaktiviert die Kistenfüller Ausrüstungsübersicht.</German>
             </Key>
-            <Key ID="STR_KPCF_TOOLTIPINVENTORY">
-                <English>Select an inventory that you want to edit.</English>
-                <German>Wähle einen Laderaum aus, den du bearbeiten möchtest.</German>
-                <Polish>Wybierz ekwipunek który chcesz edytować.</Polish>
+            <Key ID="STR_KP_CRATEFILLER_ADDITIONAL_TT">
+                <English>Defines the cratefiller additional items (should be used when some items are missing or will get unwanted blacklisted).</English>
+                <German>Definiert die zusätzlichen Kistenfüller items (Dient der verfügbarkeit von items, die nicht erkannt oder falsch auf der blacklist landen).</German>
             </Key>
-            <Key ID="STR_KPCF_TOOLTIPREFRESH">
-                <English>Search for new inventories.</English>
-                <German>Nach neuem Laderaum suchen.</German>
-                <Polish>Szukaj nowych ekwipunków.</Polish>
+            <Key ID="STR_KP_CRATEFILLER_BLACKLIST_TT">
+                <English>Defines the cratefiller item blacklist.</English>
+                <German>Definiert die Kistenfüller item Blacklist.</German>
             </Key>
-            <Key ID="STR_KPCF_TOOLTIPCATEGORY">
+            <Key ID="STR_KP_CRATEFILLER_BUILDINGS_TT">
+                <English>Defines which objects will get the cratefiller action.</English>
+                <German>Definiert welche Objekte die Kistenfüller Interaktion erhalten.</German>
+            </Key>
+            <Key ID="STR_KP_CRATEFILLER_CATEGORY_TT">
                 <English>Choose a category from which you want to stow items.</English>
                 <German>Wähle eine Kategorie aus, von der du Gegenstände verladen willst.</German>
                 <Polish>Wybierz kategorie z której chcesz pobrać przedmioty.</Polish>
             </Key>
-            <Key ID="STR_KPCF_TOOLTIPWEAPONSELECTION">
-                <English>Choose a weapon to find the right magazines or attachments.</English>
-                <German>Wähle eine Waffe um die passenden Magazine oder Zubehör zu finden.</German>
-                <Polish>Wybierz broń do której mają być wyszukane magazynki oraz dodatki.</Polish>
+            <Key ID="STR_KP_CRATEFILLER_CRATE_TT">
+                <English>Select a crate that you want to spawn.</English>
+                <German>Wähle eine Kiste aus, die gespawnt werden soll.</German>
+                <Polish>Wybierz skrzynię którą chcesz utworzyć.</Polish>
             </Key>
-            <Key ID="STR_KPCF_TOOLTIPFILLLEVEL">
-                <English>Shows the current cargo space.</English>
-                <German>Zeigt den aktuellen Laderaumstand.</German>
-                <Polish>Pokazuje aktualny stan załadunku.</Polish>
+            <Key ID="STR_KP_CRATEFILLER_CRATES_TT">
+                <English>Defines which crates can be spawned and deleted with the dialog.</English>
+                <German>Definiert welche Kisten über den Kistenfüller dialog gespawnt oder gelöscht werden können.</German>
             </Key>
-            <Key ID="STR_KPCF_TOOLTIPDELETE">
+            <Key ID="STR_KP_CRATEFILLER_DELETE_TT">
                 <English>Deletes the selected preset.</English>
                 <German>Löscht das ausgewählte Ausrüstungsset.</German>
                 <Polish>Usuwa wybrany szablon.</Polish>
             </Key>
-            <Key ID="STR_KPCF_TOOLTIPHELP">
-                <English>KP-Cratefiller v1.1.0\nBy Dubjunk</English>
-                <German>KP-Kistenfüller v1.1.0\nBy Dubjunk</German>
-                <Polish>KP-Cratefiller v1.1.0\nBy Dubjunk</Polish>
-            </Key>
-            <Key ID="STR_KPCF_TOOLTIPEXPORT">
+            <Key ID="STR_KP_CRATEFILLER_EXPORT_TT">
                 <English>Enter the name of the preset to be exported.</English>
                 <German>Trage den Namen für das zu exportierende Ausrüstungsset ein.</German>
                 <Polish>Wpisz nazwę szablonu do wyeksportowania.</Polish>
             </Key>
-            <Key ID="STR_KPCF_TOOLTIPIMPORT">
+            <Key ID="STR_KP_CRATEFILLER_FILLLEVEL_TT">
+                <English>Shows the current cargo space.</English>
+                <German>Zeigt den aktuellen Laderaumstand.</German>
+                <Polish>Pokazuje aktualny stan załadunku.</Polish>
+            </Key>
+            <Key ID="STR_KP_CRATEFILLER_GENERATEPRESET_TT">
+                <English>Enables/Disables the preset generation, all available items get crawled out of the config (on deactivated the whitelist is used instead).</English>
+                <German>Aktiviert/Deaktiviert das generieren der Presets, alle verfügbaren Gegenstände werden asu der Konfig ausgelesen (Bei deaktivierung wird die Whitelist stattdessen genutzt).</German>
+            </Key>
+			<Key ID="STR_KP_CRATEFILLER_GROUPS_TT">
+				<English>Select a group, whose players should be shown.</English>
+				<German>Wähle eine Gruppe, deren Spieler angezeigt werden sollen.</German>
+			</Key>
+            <Key ID="STR_KP_CRATEFILLER_HELP_TT">
+                <English>KP-Cratefiller v1.2.0\nBy Dubjunk</English>
+                <German>KP-Kistenfüller v1.2.0\nBy Dubjunk</German>
+                <Polish>KP-Cratefiller v1.2.0\nBy Dubjunk</Polish>
+            </Key>
+            <Key ID="STR_KP_CRATEFILLER_IMPORT_TT">
                 <English>Select the preset to be imported.</English>
                 <German>Wähle das zu importierende Ausrüstungsset.</German>
                 <Polish>Wybierz szablon do zaimportowania.</Polish>
             </Key>
+            <Key ID="STR_KP_CRATEFILLER_INTERACTRADIUS_TT">
+                <English>Defines the range, in which the cratefiller actions will be accessible.</English>
+                <German>Definiert die Reichweite, in der man auf den Kistenfüller zugreifen kann.</German>
+            </Key>
+            <Key ID="STR_KP_CRATEFILLER_INVENTORY_TT">
+                <English>Select an inventory that you want to edit.</English>
+                <German>Wähle einen Laderaum aus, den du bearbeiten möchtest.</German>
+                <Polish>Wybierz ekwipunek który chcesz edytować.</Polish>
+            </Key>
+            <Key ID="STR_KP_CRATEFILLER_INVENTORYBLACKLIST_tt">
+                <English>This inventories won't be filled with the cratefiller.</English>
+                <German>Diese Frachträume sind nicht mit dem Kistenfüller nutzbar.</German>
+            </Key>
+            <Key ID="STR_KP_CRATEFILLER_ITEMS_TT">
+                <English>Defines the cratefiller items.</English>
+                <German>Definiert die Kistenfüller Gegenstände.</German>
+            </Key>
+            <Key ID="STR_KP_CRATEFILLER_PLAYERS_TT">
+				<English>Select a player, whose weapons should be shown.</English>
+				<German>Wähle einen Spieler, dessen Waffen angezeigt werden sollen.</German>
+			</Key>
+            <Key ID="STR_KP_CRATEFILLER_REFRESH_TT">
+                <English>Search for new inventories.</English>
+                <German>Nach neuem Laderaum suchen.</German>
+                <Polish>Szukaj nowych ekwipunków.</Polish>
+            </Key>
+            <Key ID="STR_KP_CRATEFILLER_SEARCH_TT">
+				<English>Search for a specified weapon.</English>
+				<German>Suche nach einer bestimmten Waffe.</German>
+			</Key>
+            <Key ID="STR_KP_CRATEFILLER_SPAWNDELETE_TT">
+                <English>Enables/Disables the spawning and deleting of the pre defined crates.</English>
+                <German>Aktiviert/Deaktiviert das spawnen und löschen von definierten Kisten.</German>
+            </Key>
+            <Key ID="STR_KP_CRATEFILLER_USAGERADIUS_TT">
+                <English>Defines the range, in which the inventories can be filled and where new crates will spawn.</English>
+                <German>Definiert die Reichweite, in der Inventare befüllt werden können und Kisten spawnen.</German>
+            </Key>
+            <Key ID="STR_KP_CRATEFILLER_USEACEACTIONS_TT">
+                <English>Enables/Disables the usage of the ACE interaction instead of the BI scrollmenu.</English>
+                <German>Aktiviert/Deaktiviert die benutzung des ACE Interaktionsmenüs anstatt der BI Variante.</German>
+            </Key>
+            <Key ID="STR_KP_CRATEFILLER_WEAPONSELECTION_TT">
+                <English>Choose a weapon to find the right magazines or attachments.</English>
+                <German>Wähle eine Waffe um die passenden Magazine oder Zubehör zu finden.</German>
+                <Polish>Wybierz broń do której mają być wyszukane magazynki oraz dodatki.</Polish>
+            </Key>
         </Container>
 
         <Container name="Hints">
-            <Key ID="STR_KPCF_HINTSELECTION">
-                <English>Incomplete selection.</English>
-                <German>Unvollständige Auswahl.</German>
-                <Polish>Niepełny wybór.</Polish>
-            </Key>
-            <Key ID="STR_KPCF_HINTADDED">
+            <Key ID="STR_KP_CRATEFILLER_HINTADDED">
                 <English>%1 was loaded %2 times.</English>
                 <German>%1 wurde %2 mal geladen.</German>
                 <Polish>%1 zostało załadowane %2 razy.</Polish>
             </Key>
-            <Key ID="STR_KPCF_HINTNONDELETEABLE">
-                <English>Selected transport medium can't be stored.</English>
-                <German>Ausgewähltes Transportmedium kann nicht eingelagert werden.</German>
-                <Polish>Wybrany środek transportu nie może być zeskładowany.</Polish>
-            </Key>
-            <Key ID="STR_KPCF_HINTDELETE">
-                <English>%1 was stored.</English>
-                <German>%1 wurde eingelagert.</German>
-                <Polish>%1 został zeskładowany.</Polish>
-            </Key>
-            <Key ID="STR_KPCF_HINTCLEARFULL">
-                <English>Selected storage is emptied.</English>
-                <German>Ausgewählter Laderaum wurde geleert.</German>
-                <Polish>Wybrana skrzynia została opróżniona.</Polish>
-            </Key>
-            <Key ID="STR_KPCF_HINTCLEAR">
+            <Key ID="STR_KP_CRATEFILLER_HINTCLEAR">
                 <English>%1 was unloaded %2 times.</English>
                 <German>%1 wurde %2 mal entladen.</German>
                 <Polish>%1 zostało wyładowane %2 razy.</Polish>
             </Key>
-            <Key ID="STR_KPCF_HINTZONE">
-                <English>The loading zone is busy.</English>
-                <German>Die Ladezone ist besetzt.</German>
-                <Polish>Strefa załadunku jest okupowana.</Polish>
+            <Key ID="STR_KP_CRATEFILLER_HINTDELETE">
+                <English>%1 was stored.</English>
+                <German>%1 wurde eingelagert.</German>
+                <Polish>%1 został zeskładowany.</Polish>
             </Key>
-            <Key ID="STR_KPCF_HINTSPAWN">
-                <English>%1 was provided.</English>
-                <German>%1 wurde bereitgestellt.</German>
-                <Polish>%1 został dostarczony.</Polish>
-            </Key>
-            <Key ID="STR_KPCF_HINTFULL">
+            <Key ID="STR_KP_CRATEFILLER_HINTFULL">
                 <English>The selected storage doesn't have sufficient space.</English>
                 <German>Der ausgewählte Laderaum hat keinen ausreichenden Platz.</German>
                 <Polish>Wybrany kontener nie ma dość wolnego miejsca.</Polish>
             </Key>
-            <Key ID="STR_KPCF_HINTNOSPAWN">
-                <English>No loading zone available, base object is used instead.</English>
-                <German>Keine Ladezone vorhanden, das Basis Objekt wird stattdessen benutzt.</German>
-                <Polish>Strefa załadunku nie jest dostępna, obiekt bazy zostanie wykorzystany w zastępstwie.</Polish>
-            </Key>
-            <Key ID="STR_KPCF_HINTNOSTORAGE">
-                <English>No storage selected.</English>
-                <German>Kein Laderaum ausgewählt.</German>
-                <Polish>Nie wybrano skrzyni.</Polish>
-            </Key>
-            <Key ID="STR_KPCF_HINTNAME">
+            <Key ID="STR_KP_CRATEFILLER_HINTNAME">
                 <English>Invalid name.</English>
                 <German>Ungültiger Name.</German>
                 <Polish>Nieprawidłowa nazwa.</Polish>
             </Key>
-            <Key ID="STR_KPCF_HINTRANGE">
+            <Key ID="STR_KP_CRATEFILLER_HINTNONDELETEABLE">
+                <English>Selected transport medium can't be stored.</English>
+                <German>Ausgewähltes Transportmedium kann nicht eingelagert werden.</German>
+                <Polish>Wybrany środek transportu nie może być zeskładowany.</Polish>
+            </Key>
+            <Key ID="STR_KP_CRATEFILLER_HINTNOSTORAGE">
+                <English>No storage selected.</English>
+                <German>Kein Laderaum ausgewählt.</German>
+                <Polish>Nie wybrano skrzyni.</Polish>
+            </Key>
+            <Key ID="STR_KP_CRATEFILLER_HINTRANGE">
                 <English>Selected transport medium is out of range.</English>
                 <German>Ausgewähltes Transportmedium ist außer Reichweite.</German>
                 <Polish>Wybrany środek transportu jest poza zasięgiem.</Polish>
             </Key>
+            <Key ID="STR_KP_CRATEFILLER_HINTSELECTION">
+                <English>Incomplete selection.</English>
+                <German>Unvollständige Auswahl.</German>
+                <Polish>Niepełny wybór.</Polish>
+            </Key>
+            <Key ID="STR_KP_CRATEFILLER_HINTSPAWN">
+                <English>%1 was provided.</English>
+                <German>%1 wurde bereitgestellt.</German>
+                <Polish>%1 został dostarczony.</Polish>
+            </Key>
+            <Key ID="STR_KP_CRATEFILLER_HINTZONE">
+                <English>The loading zone is busy.</English>
+                <German>Die Ladezone ist besetzt.</German>
+                <Polish>Strefa załadunku jest okupowana.</Polish>
+            </Key>
         </Container>
+
+        <Container name="Settings">
+            <Key ID="STR_KP_CRATEFILLER_ACTIVATEOVERVIEW">
+                <English>Enable cratefiller equipment overview</English>
+                <German>Kistenfüller Ausrüstungsübersicht aktivieren</German>
+            </Key>
+            <Key ID="STR_KP_CRATEFILLER_ADDITIONAL">
+                <English>Cratefiller additional items</English>
+                <German>Kistenfüller zusätzliche Items</German>
+            </Key>
+            <Key ID="STR_KP_CRATEFILLER_BLACKLIST">
+                <English>Cratefiller blacklist</English>
+                <German>Kistenfüller Blacklist</German>
+            </Key>
+            <Key ID="STR_KP_CRATEFILLER_BUILDINGS">
+                <English>Defines the cratefiller objects</English>
+                <German>Definiert das Kistenfüller Objekt</German>
+            </Key>
+            <Key ID="STR_KP_CRATEFILLER_CRATES">
+                <English>Defines the spawnable crates</English>
+                <German>Definiert die spawnbaren Kisten</German>
+            </Key>
+            <Key ID="STR_KP_CRATEFILLER_GENERATEPRESET">
+                <English>Enable cratefiller preset generation</English>
+                <German>Kistenfüller Preset generierung aktivieren</German>
+            </Key>
+            <Key ID="STR_KP_CRATEFILLER_INTERACTRADIUS">
+                <English>Defines the interaction radius</English>
+                <German>Definiert den Interaktions Radius</German>
+            </Key>
+            <Key ID="STR_KP_CRATEFILLER_INVENTORYBLACKLIST">
+                <English>Inventory blacklist</English>
+                <German>Gesperrte Frachträume</German>
+            </Key>
+            <Key ID="STR_KP_CRATEFILLER_ITEMS">
+                <English>Cratefiller items</English>
+                <German>Kistenfüller Gegenstände</German>
+            </Key>
+            <Key ID="STR_KP_CRATEFILLER_SETTINGS">
+                <English>KP - Cratefiller</English>
+                <German>KP - Kistenfüller</German>
+            </Key>
+            <Key ID="STR_KP_CRATEFILLER_SPAWNDELETE">
+                <English>Enable the spawning/deleting of crates</English>
+                <German>Aktiviert das spawnen/löschen von Kisten</German>
+            </Key>
+            <Key ID="STR_KP_CRATEFILLER_USAGERADIUS">
+                <English>Defines the working range</English>
+                <German>Definiert die Arbeitsweite</German>
+            </Key>
+            <Key ID="STR_KP_CRATEFILLER_USEACEACTIONS">
+                <English>Enable ACE interaction usage</English>
+                <German>Aktiviert die verwendung des ACE Interaktionsmenüs</German>
+            </Key>
+        </Container>
+
     </Package>
 </Project>

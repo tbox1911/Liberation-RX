@@ -47,7 +47,8 @@ KPCF_blacklistedItems = [
 // Defines the whitelisted items
 // Whitelisted items will be added after the item detection to ensure the availability
 KPCF_whitelistedItems = [
-    "CUP_Stinger_M"
+    "CUP_Stinger_M",
+    "CUP_lunch_FIM92Stinger_Loaded"
 ];
 
 // ----- These Variables will be replaced with activated generatedLists -----
