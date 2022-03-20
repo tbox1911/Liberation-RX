@@ -24,11 +24,13 @@ if ( _spawn_marker != "" ) then {
 	GRLIB_last_battlegroup_time = time;
 
 	_selected_opfor_battlegroup = [];
-	_target_size = GRLIB_battlegroup_size * ([] call F_adaptiveOpforFactor) * (sqrt GRLIB_csat_aggressivity);
+	_target_size = round (GRLIB_battlegroup_size * ([] call F_adaptiveOpforFactor) * (sqrt GRLIB_csat_aggressivity));
 	if ( _target_size >= 16 ) then { _target_size = 16; };
 	if ( combat_readiness < 60 ) then { _target_size = round (_target_size * 0.65) };
-	if ( count allPlayers <= 3 ) then { _target_size = round (_target_size * 0.65) };
-	while { count _selected_opfor_battlegroup < _target_size } do {
+	if ( count allPlayers <= 2 ) then { _target_size = round (_target_size * 0.65) };
+	diag_log format ["Spawn BattlegGroup (%1) on sector %2 at %3", _target_size, _spawn_marker, time];
+
+	for "_i" from 1 to _target_size do {
 		_selected_opfor_battlegroup pushback (selectRandom _vehicle_pool);
 	};
 
@@ -37,10 +39,10 @@ if ( _spawn_marker != "" ) then {
 	{
 		_nextgrp = createGroup [GRLIB_side_enemy, true];
 		_vehicle = [markerpos _spawn_marker, _x] call F_libSpawnVehicle;
-		_vehicle setVariable ["GRLIB_counter_TTL", round(time + 1800)];  // 30 minutes TTL
+		_vehicle setVariable ["GRLIB_counter_TTL", round(time + 3600)];  // 60 minutes TTL
 		(crew _vehicle) joinSilent _nextgrp;
 		[_nextgrp, false] spawn battlegroup_ai;
-		{ _x setVariable ["GRLIB_counter_TTL", round(time + 1800)] } forEach (units _nextgrp);
+		{ _x setVariable ["GRLIB_counter_TTL", round(time + 3600)] } forEach (units _nextgrp);
 		_bg_groups pushback _nextgrp;
 		if ( ( _x in opfor_troup_transports_truck + opfor_troup_transports_heli) &&  ( [] call F_opforCap < GRLIB_battlegroup_cap ) ) then {
 			[_vehicle] spawn troup_transport;
@@ -48,6 +50,7 @@ if ( _spawn_marker != "" ) then {
 		last_battlegroup_size = last_battlegroup_size + 1.3;
 		sleep 2;
 	} foreach _selected_opfor_battlegroup;
+	diag_log format ["Done Spawning BattlegGroup at %1", time];
 
 	sleep 5;
 	if ( GRLIB_csat_aggressivity > 0.7 ) then {
