@@ -62,7 +62,7 @@ light_vehicles = [
 	["CUP_B_RHIB_USMC",0,50,0,GRLIB_perm_inf],
 	["CUP_B_LCU1600_USMC",0,30,0,GRLIB_perm_inf],
     ["B_Boat_Armed_01_minigun_F",0,50,0,GRLIB_perm_inf],
-	["B_SDV_01_F",0,0,0,GRLIB_perm_inf]
+	["B_SDV_01_F",0,50,0,GRLIB_perm_inf]
 ];
 
 heavy_vehicles = [

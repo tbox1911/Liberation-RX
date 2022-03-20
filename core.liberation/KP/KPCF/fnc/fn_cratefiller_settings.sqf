@@ -64,7 +64,7 @@
     "EDITBOX",
     [localize "STR_KP_CRATEFILLER_CRATES", localize "STR_KP_CRATEFILLER_CRATES_TT"],
     localize "STR_KP_CRATEFILLER_SETTINGS",
-    "[""B_supplyCrate_F"", ""CargoNet_01_box_F""]",
+    "[""B_supplyCrate_F""]",
     1,
     {}
 ] call CBA_Settings_fnc_init;
@@ -77,7 +77,7 @@
     "EDITBOX",
     [localize "STR_KP_CRATEFILLER_INVENTORYBLACKLIST", localize "STR_KP_CRATEFILLER_INVENTORYBLACKLIST_TT"],
     localize "STR_KP_CRATEFILLER_SETTINGS",
-    "[]",
+    "[""CUP_launch_FIM92Stinger""]",
     1,
     {}
 ] call CBA_Settings_fnc_init;
@@ -116,7 +116,7 @@
     "EDITBOX",
     [localize "STR_KP_CRATEFILLER_ADDITIONAL", localize "STR_KP_CRATEFILLER_ADDITIONAL_TT"],
     localize "STR_KP_CRATEFILLER_SETTINGS",
-    "[]",
+    "[""CUP_launch_FIM92Stinger_Loaded"", ""CUP_Stinger_M""]",
     1,
     {}
 ] call CBA_Settings_fnc_init;
