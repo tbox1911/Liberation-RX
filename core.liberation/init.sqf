@@ -46,6 +46,34 @@ if (!isDedicated && hasInterface) then {
 
 // MilSim United ===========================================================================
 
+["B_Soldier_F", "InitPost", {
+	params ["_vehicle"];
+	_vehicle addEventHandler ["Dammaged", {
+		params ["_unit", "_selection", "_damage", "_hitIndex", "_hitPoint", "_shooter", "_projectile"];
+		if ( (isPlayer _shooter) && (_shooter != _unit) && ( ( getPlayerUID _shooter ) in GRLIB_whitelisted_steamids ) ) then {
+			_msg = format ["Friendly fire from %1 to %2. Penalty: -1 rank and ammo", name _shooter, name _unit];
+			[gamelogic, _msg] remoteExec ["globalChat", 0];
+			_shooter setVariable ["GREUH_ammo_count", ( (_shooter getVariable ["GREUH_ammo_count", 1]) - 1), true];
+			[_shooter, -1] remoteExec ["addScore", 2];
+		};
+	}];
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+
+["CUP_B_GER_Operator_Medic", "InitPost", {
+	params ["_vehicle"];
+	_vehicle addEventHandler ["Dammaged", {
+		params ["_unit", "_selection", "_damage", "_hitIndex", "_hitPoint", "_shooter", "_projectile"];
+		if ( (isPlayer _shooter) && (_shooter != _unit) && ( ( getPlayerUID _shooter ) in GRLIB_whitelisted_steamids ) ) then {
+			_msg = format ["Friendly fire from %1 to %2. Penalty: -1 rank and ammo", name _shooter, name _unit];
+			[gamelogic, _msg] remoteExec ["globalChat", 0];
+			_shooter setVariable ["GREUH_ammo_count", ( (_shooter getVariable ["GREUH_ammo_count", 1]) - 1), true];
+			[_shooter, -1] remoteExec ["addScore", 2];
+		};
+	}];
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+
 ["CargoNet_01_box_F", "InitPost", {
     params ["_vehicle"];
 	[_vehicle,3] call ace_cargo_fnc_setSize;
