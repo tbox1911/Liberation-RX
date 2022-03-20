@@ -132,6 +132,7 @@ while { dialog && alive player } do {
 						hintSilent (format ["Vehicle %1\nUnloaded from Garage.", getText (configFile >> "cfgVehicles" >> _veh_class >> "displayName")]);
 					};
 				};
+				sleep 2;
 				_refresh = true;
 				load_veh = 0;
 			};
