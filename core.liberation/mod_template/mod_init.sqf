@@ -12,7 +12,7 @@ GRLIB_mod_list_west = [
     "R3F_WEST_W",
     "RHS_USAF",
     "RHS_AFRF",
-	"FFAA_SPAIN_W",
+    "FFAA_SPAIN_W",
     "GM_WEST",
     "GM_WEST_WINT",
     "GM_EAST",
@@ -20,7 +20,12 @@ GRLIB_mod_list_west = [
     "OPTRE_WEST",
     "WS_UNA",
     "SOG_USA",
-    "SOG_VIETCONG"
+    "SOG_VIETCONG",
+    "PO_UAF",		// Z@Warrior Project Opfor Ukrainian Armed Forces
+    "3CB_BAF_W",	// Z@Warrior British Armed Forces Woodland
+    "3CB_BAF_D",	// Z@Warrior British Armed Forces Desert
+    "3CB_ChDKZ",	// Z@Warrior Chernarussian Movement of the Red Star
+    "BW_MOD"		// Z@Warrior Bundenswehr Tropentarn    
 ];
 
 GRLIB_mod_list_east = [
@@ -31,14 +36,14 @@ GRLIB_mod_list_east = [
     "CP_TA",
     "CP_USMC_W",
     "CP_USMC_D",
-    "CP_AFRF",		// Z@warrior
-    "CP_SAHRA_D",	// Z@Warrior
+    "CP_AFRF",		// Z@warrior CUP AFRF
+    "CP_SAHRA_D",	// Z@Warrior CUP Sahrani Desert
     "EJW",
     "R3F_WEST_D",
     "R3F_WEST_W",
     "RHS_USAF",
     "RHS_AFRF",
-	"FFAA_SPAIN_W",
+    "FFAA_SPAIN_W",
     "GM_WEST",
     "GM_WEST_WINT",
     "GM_EAST",
@@ -46,5 +51,11 @@ GRLIB_mod_list_east = [
     "OPTRE_EAST",
     "WS_FIA",
     "SOG_USA",
-    "SOG_VIETCONG"
+    "SOG_VIETCONG",
+    "PO_TA",		// Z@Warrior Project Opfor Takistani Armed Forces
+    "PO_SA",		// Z@Warrior Project Opfor Sahrani Liberation Army
+    "PO_UAF",		// Z@Warrior Project Opfor Ukrainian Armed Forces
+    "3CB_BAF_W",	// Z@Warrior British Armed Forces Woodland
+    "3CB_BAF_D",	// Z@Warrior British Armed Forces Desert
+    "3CB_ChDKZ"		// Z@Warrior Chernarussian Movement of the Red Star
 ];
