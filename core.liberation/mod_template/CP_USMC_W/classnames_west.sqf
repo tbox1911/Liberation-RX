@@ -49,8 +49,7 @@ light_vehicles = [
 	["CUP_B_M1165_GMV_USMC",0,140,0,GRLIB_perm_inf],
 	["CUP_B_BAF_Coyote_L2A1_W",0,150,0,GRLIB_perm_inf],
 	["CUP_B_M1167_USMC",0,170,0,GRLIB_perm_inf],
-	["CUP_B_nM1097_AVENGER_USA_WDL",0,170,0,GRLIB_perm_inf],
-	
+	["CUP_B_nM1097_AVENGER_USA_WDL",0,170,0,GRLIB_perm_inf],	
 	["CUP_B_RG31_M2_OD_USMC",0,220,0,GRLIB_perm_inf],
 	["CUP_B_RG31_Mk19_OD_USMC",0,220,0,GRLIB_perm_inf],
 	["CUP_B_RG31E_M2_OD_USMC",0,220,0,GRLIB_perm_inf],
@@ -58,11 +57,12 @@ light_vehicles = [
 	["CUP_B_Dingo_GL_GER_Wdl",0,220,0,GRLIB_perm_inf],
 	["CUP_B_nM1025_SOV_M2_USMC_WDL",0,150,0,GRLIB_perm_inf],
 	["CUP_B_nM1025_SOV_Mk19_USMC_WDL",0,150,0,GRLIB_perm_inf],
-    	["B_Boat_Transport_01_F",0,30,0,GRLIB_perm_inf],
+    ["B_Boat_Transport_01_F",0,30,0,GRLIB_perm_inf],
 	["CUP_B_Zodiac_USMC",0,30,0,GRLIB_perm_inf],
 	["CUP_B_RHIB_USMC",0,50,0,GRLIB_perm_inf],
 	["CUP_B_LCU1600_USMC",0,30,0,GRLIB_perm_inf],
-    	["B_Boat_Armed_01_minigun_F",0,50,0,GRLIB_perm_inf]
+    ["B_Boat_Armed_01_minigun_F",0,50,0,GRLIB_perm_inf],
+	["B_SDV_01_F",0,0,0,GRLIB_perm_inf]
 ];
 
 heavy_vehicles = [
@@ -73,7 +73,7 @@ heavy_vehicles = [
 	["CUP_B_M113A3_GER",3,400,3,GRLIB_perm_inf],
 	["CUP_B_Boxer_HMG_GER_WDL",3,400,3,GRLIB_perm_inf],
 	["CUP_B_Boxer_GMG_GER_WDL",3,400,3,GRLIB_perm_inf],
-    	["CUP_B_M1126_ICV_M2_Woodland",3,500,3,GRLIB_perm_inf],
+    ["CUP_B_M1126_ICV_M2_Woodland",3,500,3,GRLIB_perm_inf],
 	["CUP_B_M1126_ICV_MK19_Woodland",3,500,3,GRLIB_perm_inf],
 	["CUP_B_M1129_MC_MK19_Woodland",3,500,3,GRLIB_perm_inf],
 	["CUP_B_M1128_MGS_Woodland",3,550,3,GRLIB_perm_inf],
@@ -176,29 +176,66 @@ support_vehicles_west = [
     	["Land_RepairDepot_01_green_F",0,0,0,GRLIB_perm_inf],
     	["ACE_Track",0,0,0,GRLIB_perm_inf],
     	["ACE_Wheel",0,0,0,GRLIB_perm_inf],
-	["Box_NATO_Equip_F",0,0,0,GRLIB_perm_inf]
+		["Box_NATO_Equip_F",0,0,0,GRLIB_perm_inf]
+
 ];
 
 buildings_west = [
+	
     ["Land_HBarrier_01_wall_6_green_F",0,0,0,GRLIB_perm_inf],
     ["Land_HBarrier_01_line_3_green_F",0,0,0,GRLIB_perm_inf],
+	["Land_HBarrier_01_big_tower_green_F",0,0,0,GRLIB_perm_inf],
+	["Land_HBarrier_01_tower_green_F",0,0,0,GRLIB_perm_inf],
+	["Land_HBarrier_01_wall_corridor_green_F",0,0,0,GRLIB_perm_inf],
+	["Land_HBarrier_01_wall_corner_green_F",0,0,0,GRLIB_perm_inf],
+	["Land_HBarrier_01_wall_4_green_F",0,0,0,GRLIB_perm_inf],
+
+	["Land_HBarrier_1_F",0,0,0,GRLIB_perm_inf],
     ["Land_HBarrierWall6_F",0,0,0,GRLIB_perm_inf],
     ["Land_HBarrier_3_F",0,0,0,GRLIB_perm_inf],
+	["Land_HBarrierTower_F",0,0,0,GRLIB_perm_inf],
+	["Land_HBarrierWall_corridor_F",0,0,0,GRLIB_perm_inf],
+	["Land_HBarrierWall4_F",0,0,0,GRLIB_perm_inf],
+	["Land_HBarrierWall_corner_F",0,0,0,GRLIB_perm_inf],
+
+	["Land_CncBarrierMedium_F",0,0,0,GRLIB_perm_inf],
+	["Land_CncBarrierMedium4_F",0,0,0,GRLIB_perm_inf],
+	["Land_CncShelter_F",0,0,0,GRLIB_perm_inf],
+	["Land_CncWall1_F",0,0,0,GRLIB_perm_inf],
+	["Land_CncWall4_F",0,0,0,GRLIB_perm_inf],
+	["Land_CncBarrier_stripes_F",0,0,0,GRLIB_perm_inf],
+
     ["Flag_UNO_F",0,0,0,GRLIB_perm_inf],
     ["Flag_NATO_F",0,0,0,GRLIB_perm_inf],
     ["FlagCarrierGermany_EP1",0,0,0,GRLIB_perm_inf],
     ["FlagCarrierRU",0,0,0,GRLIB_perm_inf],
     ["Flag_UK_F",0,0,0,GRLIB_perm_inf],
     ["Flag_US_F",0,0,0,GRLIB_perm_inf],
+
     ["Land_PortableLight_single_F",0,0,0,GRLIB_perm_inf],
+
     ["Land_Campfire_F",0,0,0,GRLIB_perm_inf],
     ["Land_CampingChair_V1_F",0,0,0,GRLIB_perm_inf],
     ["Land_CampingTable_F",0,0,0,GRLIB_perm_inf],
+
     ["Land_fort_bagfence_long",0,0,0,GRLIB_perm_inf],
+
     ["Land_HelipadSquare_F",0,0,0,GRLIB_perm_inf],
     ["PortableHelipadLight_01_blue_F",0,0,0,GRLIB_perm_inf],
     ["PortableHelipadLight_01_green_F",0,0,0,GRLIB_perm_inf],
-    ["Land_ClutterCutter_large_F",0,0,0,GRLIB_perm_inf]
+
+    ["Land_ClutterCutter_large_F",0,0,0,GRLIB_perm_inf],
+
+	["Land_Hangar_F",0,0,0,GRLIB_perm_inf],
+	["Land_Cargo_Tower_V1_F",0,0,0,GRLIB_perm_inf],
+	["Land_Medevac_house_V1_F",0,0,0,GRLIB_perm_inf],
+	["Land_Medevac_HQ_V1_F",0,0,0,GRLIB_perm_inf],
+	
+	["Land_PortableLight_double_F",0,0,0,GRLIB_perm_inf],
+	["Land_LampAirport_F",0,0,0,GRLIB_perm_inf],
+	["Land_LampStreet_02_double_F",0,0,0,GRLIB_perm_inf],
+	["Land_Lampa_sidl_3",0,0,0,GRLIB_perm_inf]
+
 ];
 
 if ( isNil "blufor_squad_inf_light" ) then { blufor_squad_inf_light = [] };
