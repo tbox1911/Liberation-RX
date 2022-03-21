@@ -23,7 +23,9 @@ private _getPrice = {
 private _buy_list_static = [
 	[Arsenal_typename, 0, 67],
 	[medicalbox_typename, 0, 60],
-	[fuelbarrel_typename, 0, 150]
+	[waterbarrel_typename, 0, 70],	
+	[foodbarrel_typename, 0, 72],
+	[fuelbarrel_typename, 0, 74]
 	//["Box_NATO_WpsLaunch_F", 0, 140]
 ];
 private _buy_blacklist = [];
@@ -120,7 +122,7 @@ while { dialog && alive player } do {
 			private _result = [_msg, localize "STR_SHOP_SELL", true, true] call BIS_fnc_guiMessage;
 			if (_result && !(isNull _vehicle) && alive _vehicle) then {
 				[_vehicle] remoteExec ["deleteVehicle", 2];
-				[player, _price] remoteExec ["ammo_add_remote_call", 2];
+				[player, _price, 0] remoteExec ["ammo_add_remote_call", 2];
 				hintSilent format ["%1 Sold for %2 AMMO !", _vehicle_name, _price];
 				ctrlEnable [120, false];
 				playSound "taskSucceeded";

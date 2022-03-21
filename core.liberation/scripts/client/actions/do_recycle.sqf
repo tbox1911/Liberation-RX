@@ -32,10 +32,11 @@ waitUntil { dialog };
 
 private _cfg = configFile >> "cfgVehicles";
 private _ammount_ammo = round ((_objectinfo select 2) * GRLIB_recycling_percentage);
-ctrlSetText [ 134, format [ localize "STR_RECYCLING_YIELD", getText (_cfg >> (_objectinfo select 0) >> "displayName" ) ] ];
-ctrlSetText [ 131, format [ "%1", round (_objectinfo select 1) ] ];
-ctrlSetText [ 132, format [ "%1", _ammount_ammo] ];
-ctrlSetText [ 133, format [ "%1", round ( _objectinfo select 3) ] ];
+private _ammount_fuel = _objectinfo select 3;
+ctrlSetText [ 134, format [ localize "STR_RECYCLING_YIELD", getText (_cfg >> (_objectinfo select 0) >> "displayName") ] ];
+ctrlSetText [ 131, format [ "%1", _objectinfo select 1 ] ];
+ctrlSetText [ 132, format [ "%1", _ammount_ammo ] ];
+ctrlSetText [ 133, format [ "%1", _ammount_fuel ] ];
 
 while { dialog && (alive player) && dorecycle == 0 } do {
 	sleep 0.5;
@@ -50,7 +51,7 @@ if ( dorecycle == 1 && !(isNull _vehicle) && alive _vehicle) exitWith {
 		hint format [localize "STR_AMMO_SELL2", name player];
 		playSound "taskSucceeded";
 	};
-	[player, _ammount_ammo] remoteExec ["ammo_add_remote_call", 2];
+	[player, _ammount_ammo, _ammount_fuel] remoteExec ["ammo_add_remote_call", 2];
 	player addRating 500;
 
 	if (typeOf _vehicle == mobile_respawn) exitWith {

@@ -1,4 +1,4 @@
-params ["_price"];
+params ["_price", ["_fuel", 0]];
 
 if (_price <= 0) exitWith {true};
 if (player getVariable ["trx_complete", 0] == 1) exitWith {false};
@@ -13,7 +13,7 @@ private _ret = false;
 private _msg = "";
 
 player setVariable ["trx_complete", 1, true];
-[player, _price] remoteExec ["ammo_del_remote_call", 2];
+[player, _price, _fuel] remoteExec ["ammo_del_remote_call", 2];
 
 private _timout = round (time + 3);
 waitUntil {sleep 0.1; (player getVariable ["trx_complete", 1] > 1 || time > _timout)};

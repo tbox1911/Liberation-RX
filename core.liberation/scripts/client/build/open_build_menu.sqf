@@ -54,8 +54,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 		};
 	} forEach (build_lists select buildtype);
 
-	if (_oldbuildtype != buildtype || synchro_done ) then {
-		synchro_done = false;
+	if (_oldbuildtype != buildtype) then {
 		_oldbuildtype = buildtype;
 
 		lbClear 110;
@@ -83,10 +82,11 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 
 			_affordable = true;
 			_ammo_collected = player getVariable ["GREUH_ammo_count",0];
+			_fuel_collected = player getVariable ["GREUH_fuel_count",0];
 			if(
 				((_x select 1 > 0) && ((_x select 1) > (infantry_cap - resources_infantry))) ||
 				((_x select 2 > 0) && ((_x select 2) > _ammo_collected)) ||
-				((_x select 3 > 0) && ((_x select 3) > (fuel_cap - resources_fuel)))
+				((_x select 3 > 0) && ((_x select 3) > _fuel_collected))
 				) then {
 				_affordable = false;
 			};
@@ -127,6 +127,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 	_affordable = false;
 	_squad_full = false;
 	_ammo_collected = player getVariable ["GREUH_ammo_count",0];
+	_fuel_collected = player getVariable ["GREUH_fuel_count",0];
 	_bros = allUnits select {(_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1",PAR_Grp_ID]};
 	_linked = false;
 	_linked_unlocked = true;
@@ -136,7 +137,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 		if (
 				((_build_item select 1 == 0 ) || ((_build_item select 1) <= (infantry_cap - resources_infantry))) &&
 				((_build_item select 2 == 0 ) || ((_build_item select 2) <= _ammo_collected)) &&
-				((_build_item select 3 == 0 ) || ((_build_item select 3) <= (fuel_cap - resources_fuel)))
+				((_build_item select 3 == 0 ) || ((_build_item select 3) <= _fuel_collected))
 		) then {
 			_affordable = true;
 		};
@@ -174,9 +175,9 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 	ctrlShow [ 121, _iscommander && buildtype in [2,3,4,5]];
 	ctrlEnable [ 121, _affordable_crew && _linked_unlocked];
 
-	ctrlSetText [131, format [ "%1 : %2/%3" , localize "STR_MANPOWER" , (floor resources_infantry), infantry_cap]] ;
-	ctrlSetText [132, format [ "%1 : %2" , localize "STR_AMMO" , (floor  (player getVariable ["GREUH_ammo_count",0]))] ];
-	ctrlSetText [133, format [ "%1 : %2/%3" , localize "STR_FUEL" , (floor resources_fuel), fuel_cap] ];
+	ctrlSetText [131, format [ "%1 : %2/%3" , localize "STR_MANPOWER" , (floor resources_infantry), infantry_cap] ];
+	ctrlSetText [132, format [ "%1 : %2" , localize "STR_AMMO" , (player getVariable ["GREUH_ammo_count",0])] ];
+	ctrlSetText [133, format [ "%1 : %2" , localize "STR_FUEL" , (player getVariable ["GREUH_fuel_count",0])] ];
 	ctrlSetText [134, format [ "%1 : %2/%3" , localize "STR_UNITCAP" , unitcap, ([] call F_localCap)] ];
 
 	_link_color = "#0040e0";

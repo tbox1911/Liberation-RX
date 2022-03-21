@@ -213,7 +213,7 @@ while { dialog && alive player } do {
 			} else {
 				_refund = [_selectedmember] call F_loadoutPrice;
 			};
-			[player, _refund] remoteExec ["ammo_add_remote_call", 2];
+			[player, _refund, 0] remoteExec ["ammo_add_remote_call", 2];
 			playSound "taskSucceeded";
 			if (_ai_rank > 1 ) then {
 				gamelogic globalChat format ["Soldier rank %2 Refund: %1, Thank you !", _refund, _ai_rank];

@@ -19,7 +19,7 @@ if (_result) then {
 	clearMagazineCargoGlobal _vehicle;
 	clearItemCargoGlobal _vehicle;
 	clearBackpackCargoGlobal _vehicle;
-	[player, _price] remoteExec ["ammo_add_remote_call", 2];
+	[player, _price, 0] remoteExec ["ammo_add_remote_call", 2];
 	hintSilent format [localize "STR_CARGO_SOLD", _vehtext, name player, _price];
 	playSound "taskSucceeded";
 };

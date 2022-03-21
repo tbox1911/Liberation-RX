@@ -5,6 +5,7 @@ _maxdist = GRLIB_fob_range;
 _truepos = [];
 _debug_colisions = false;
 _price = 0;
+_price_fuel = 0;
 _color = [];
 _ammo = 0;
 _lst_a3 = [];
@@ -38,16 +39,19 @@ while { true } do {
 	if ( buildtype == 99 ) then {
 		_classname = FOB_typename;
 		_price = 0;
+		_price_fuel = 0;
 	};
 	
 	if ( buildtype == 98 ) then {
 		_classname = FOB_outpost;
 		_price = 0;
+		_price_fuel = 0;
 		buildtype = 99;
 	};
 
 	if ( buildtype in [9,10] ) then {
 		_price = 0;
+		_price_fuel = 0;
 		_classname = build_unit select 0;
 		_color = build_unit select 1;
 		_ammo = build_unit select 2;
@@ -65,6 +69,7 @@ while { true } do {
 
 		_classname = (_build_list select buildindex) select 0;
 		_price = (_build_list select buildindex) select 2;
+		_price_fuel = (_build_list select buildindex) select 3;
 		_color = [];
 		_ammo = 0;
 	};
@@ -323,7 +328,7 @@ while { true } do {
 			};
 
 			if ( build_confirmed == 2 ) then {
-				if (!([_price] call F_pay)) exitWith {deleteVehicle _vehicle};
+				if (!([_price, _price_fuel] call F_pay)) exitWith {deleteVehicle _vehicle};
 				_vehdir = getdir _vehicle;
 				deleteVehicle _vehicle;
 				sleep 0.1;

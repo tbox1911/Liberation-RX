@@ -12,7 +12,7 @@ _playername = _playername + name _killer;
 gamelogic globalChat format [localize "STR_BOUNTY_MESSAGE"+".  Bonus Score %4pts !",  _bounty, _vehiclename, _playername, _bonus];
 
 if (player == _killer) then {
-	[_killer, _bounty] remoteExec ["ammo_add_remote_call", 2];
+	[_killer, _bounty, 0] remoteExec ["ammo_add_remote_call", 2];
 	[_killer, _bonus] remoteExec ["addScore", 2];
 	_killer addRating 500;
 };

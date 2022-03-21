@@ -29,7 +29,7 @@ support_vehicles = [
 	[Arsenal_typename,0,10,0,0],
 	[medicalbox_typename,5,5,0,0],
 	[mobile_respawn,10,5,0,0],
-	[canisterFuel,0,5,1,0],
+	[canisterFuel,0,10,5,0],
 	[Respawn_truck_typename,15,150,5,GRLIB_perm_log],
 	["Land_RepairDepot_01_civ_F",10,150,0,GRLIB_perm_log],
 	["Land_MedicalTent_01_MTP_closed_F",5,100,0,GRLIB_perm_log],
@@ -48,9 +48,9 @@ support_vehicles = [
 	[ammobox_o_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
 	[ammobox_i_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
 	[A3W_BoxWps,0,round(150 / GRLIB_recycling_percentage),0,99999],
-	[waterbarrel_typename,0,round(70 / GRLIB_recycling_percentage),0,GRLIB_perm_inf],
-	[fuelbarrel_typename,0,round(70 / GRLIB_recycling_percentage),0,GRLIB_perm_inf],
-	[foodbarrel_typename,0,round(70 / GRLIB_recycling_percentage),0,GRLIB_perm_inf]
+	[waterbarrel_typename,0,round(100 / GRLIB_recycling_percentage),0,99999],
+	[fuelbarrel_typename,0,round(60 / GRLIB_recycling_percentage),30,99999],
+	[foodbarrel_typename,0,round(100 / GRLIB_recycling_percentage),0,99999]
 ] + support_vehicles_west;
 
 // *** BUILDINGS ***

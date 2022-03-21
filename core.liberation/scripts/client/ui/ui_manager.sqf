@@ -10,8 +10,7 @@ GRLIB_ui_notif = "";
 
 _uiticks = 0;
 
-waitUntil {uiSleep 1; !isNil "synchro_done" };
-waitUntil {uiSleep 1; synchro_done };
+waituntil {sleep 1; GRLIB_player_spawned};
 
 if ( isNil "cinematic_camera_started" ) then { cinematic_camera_started = false };
 if ( isNil "halojumping" ) then { halojumping = false };
@@ -58,9 +57,9 @@ while { true } do {
 		if ( _uiticks % 5 == 0 ) then {
 
 			((uiNamespace getVariable 'GUI_OVERLAY') displayCtrl (107)) ctrlSetText format [ "%1", round(score player) ];
-			((uiNamespace getVariable 'GUI_OVERLAY') displayCtrl (102)) ctrlSetText format [ "%1", (floor  (player getVariable ["GREUH_ammo_count",0])) ];
+			((uiNamespace getVariable 'GUI_OVERLAY') displayCtrl (102)) ctrlSetText format [ "%1", (player getVariable ["GREUH_ammo_count",0]) ];
+			((uiNamespace getVariable 'GUI_OVERLAY') displayCtrl (103)) ctrlSetText format [ "%1", (player getVariable ["GREUH_fuel_count",0]) ];
 			((uiNamespace getVariable 'GUI_OVERLAY') displayCtrl (101)) ctrlSetText format [ "%1/%2", (floor resources_infantry),infantry_cap ];
-			((uiNamespace getVariable 'GUI_OVERLAY') displayCtrl (103)) ctrlSetText format [ "%1/%2", (floor resources_fuel),fuel_cap ];
 			((uiNamespace getVariable 'GUI_OVERLAY') displayCtrl (104)) ctrlSetText format [ "%1/%2", unitcap,([] call F_localCap) ];
 			((uiNamespace getVariable 'GUI_OVERLAY') displayCtrl (105)) ctrlSetText format [ "%1%2", round(combat_readiness),"%" ];
 			((uiNamespace getVariable 'GUI_OVERLAY') displayCtrl (106)) ctrlSetText format [ "%1", round(resources_intel) ];
