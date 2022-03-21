@@ -40,9 +40,9 @@ while { GRLIB_endgame == 0 } do {
 		if ( count _blufor_mil_sectors > 0 ) then {
 			if ( GRLIB_passive_income ) then {
 
-				private _income = (75 + floor(random 100));
+				private _income = (100 + floor(random 100));
 				{
-					[_x, _income] call ammo_add_remote_call;
+					[_x, _income, 0] call ammo_add_remote_call;
 				} forEach allPlayers;
 				_text = format ["Passive Income Received: + %1 Ammo.", _income];
 				[gamelogic, _text] remoteExec ["globalChat", 0];

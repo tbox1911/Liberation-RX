@@ -47,8 +47,8 @@ PAR_MedGarbage = [
   "MedicalGarbage_01_3x3_v2_F"
 ];
 
-waituntil {GRLIB_player_spawned};
-waituntil {!isNil {player getVariable ["GRLIB_Rank", nil]}};
+waituntil {sleep 1; GRLIB_player_spawned};
+waituntil {sleep 1; !isNil {player getVariable ["GRLIB_Rank", nil]}};
 
 [] spawn PAR_AI_Manager;
 [] spawn PAR_Player_Init;
