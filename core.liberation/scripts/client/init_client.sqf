@@ -51,7 +51,6 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 	[] execVM "scripts\client\markers\huron_marker.sqf";
 	[] execVM "scripts\client\markers\sector_manager.sqf";
 	[] execVM "scripts\client\markers\spot_timer.sqf";
-	[] execVM "scripts\client\misc\synchronise_vars.sqf";
 	[] execVM "scripts\client\ui\ui_manager.sqf";
 };
 [] execVM "scripts\client\commander\enforce_whitelist.sqf";
@@ -68,11 +67,9 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 [] execVM "scripts\client\markers\spot_timer.sqf";
 [] execVM "scripts\client\misc\broadcast_squad_colors.sqf";
 [] execVM "scripts\client\misc\disable_remote_sensors.sqf";
-//[] execVM "scripts\client\misc\offload_diag.sqf";
 [] execVM "scripts\client\misc\permissions_warning.sqf";
 [] execVM "scripts\client\misc\secondary_jip.sqf";
 [] execVM "scripts\client\misc\stop_renegade.sqf";
-[] execVM "scripts\client\misc\synchronise_vars.sqf";
 [] execVM "scripts\client\misc\manage_weather.sqf";
 [] execVM "scripts\client\misc\manage_wildlife.sqf";
 [] execVM "scripts\client\misc\no_thermic.sqf";
