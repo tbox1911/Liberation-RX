@@ -38,9 +38,6 @@ load_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game
 reinforcements_manager = compileFinal preprocessFileLineNumbers "scripts\server\patrols\reinforcements_manager.sqf";
 send_paratroopers = compileFinal preprocessFileLineNumbers "scripts\server\patrols\send_paratroopers.sqf";
 
-// Resources
-recalculate_caps = compileFinal preprocessFileLineNumbers "scripts\server\resources\recalculate_caps.sqf";
-
 // Secondary objectives
 fob_hunting = compileFinal preprocessFileLineNumbers "scripts\server\secondary\fob_hunting.sqf";
 convoy_hijack = compileFinal preprocessFileLineNumbers "scripts\server\secondary\convoy_hijack.sqf";
@@ -70,6 +67,7 @@ if (abort_loading) exitWith {
 	publicVariable "abort_loading";
 	publicVariable "abort_loading_msg";
 };
+
 [] execVM "scripts\server\game\chimera_units_overide.sqf";
 [] execVM "scripts\server\game\apply_saved_scores.sqf";
 [] execVM "scripts\server\game\apply_default_permissions.sqf";
@@ -81,8 +79,6 @@ if (abort_loading) exitWith {
 [] execVM "scripts\server\battlegroup\random_battlegroups.sqf";
 [] execVM "scripts\server\battlegroup\readiness_increase.sqf";
 [] execVM "scripts\server\patrols\reinforcements_resetter.sqf";
-[] execVM "scripts\server\resources\recalculate_resources.sqf";
-[] execVM "scripts\server\resources\recalculate_timer.sqf";
 [] execVM "scripts\server\resources\unit_cap.sqf";
 [] execVM "scripts\server\resources\manage_resources.sqf";
 [] execVM "scripts\server\patrols\civilian_patrols.sqf";

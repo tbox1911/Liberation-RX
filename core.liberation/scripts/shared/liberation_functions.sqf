@@ -9,7 +9,6 @@ F_getUnitsCount = compileFinal preprocessFileLineNumbers "scripts\shared\functio
 F_spartanScan = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_spartanScan.sqf";
 F_getGroupType = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getGroupType.sqf";
 F_getForceRatio = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getForceRatio.sqf";
-F_localCap = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_localCap.sqf";
 F_opforCap = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_opforCap.sqf";
 F_getNearestSector = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getNearestSector.sqf";
 F_getNearestTower = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getNearestTower.sqf";

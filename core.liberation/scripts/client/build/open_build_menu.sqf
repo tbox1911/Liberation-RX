@@ -164,7 +164,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 	};
 
 	_affordable_crew = _affordable;
-	if ( unitcap >= ([] call F_localCap)) then {
+	if ( unitcap >= GRLIB_blufor_cap) then {
 		_affordable_crew = false;
 		if (buildtype == 1 || buildtype == 8) then {
 			_affordable = false;
@@ -175,10 +175,10 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 	ctrlShow [ 121, _iscommander && buildtype in [2,3,4,5]];
 	ctrlEnable [ 121, _affordable_crew && _linked_unlocked];
 
-	ctrlSetText [131, format [ "%1 : %2/%3" , localize "STR_MANPOWER" , (floor resources_infantry), infantry_cap] ];
-	ctrlSetText [132, format [ "%1 : %2" , localize "STR_AMMO" , (player getVariable ["GREUH_ammo_count",0])] ];
-	ctrlSetText [133, format [ "%1 : %2" , localize "STR_FUEL" , (player getVariable ["GREUH_fuel_count",0])] ];
-	ctrlSetText [134, format [ "%1 : %2/%3" , localize "STR_UNITCAP" , unitcap, ([] call F_localCap)] ];
+	ctrlSetText [131, format [ "%1 : %2/%3", localize "STR_MANPOWER", resources_infantry, infantry_cap] ];
+	ctrlSetText [132, format [ "%1 : %2", localize "STR_AMMO", (player getVariable ["GREUH_ammo_count",0])] ];
+	ctrlSetText [133, format [ "%1 : %2", localize "STR_FUEL", (player getVariable ["GREUH_fuel_count",0])] ];
+	ctrlSetText [134, format [ "%1 : %2/%3", localize "STR_UNITCAP", unitcap, GRLIB_blufor_cap] ];
 
 	_link_color = "#0040e0";
 	_link_str = localize "STR_VEHICLE_UNLOCKED";
