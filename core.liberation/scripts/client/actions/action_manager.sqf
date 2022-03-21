@@ -22,8 +22,6 @@ is_DogOnDuty = {
 };
 
 waitUntil { sleep 1; !isNil "build_confirmed" };
-waitUntil { sleep 1; !isNil "one_synchro_done" };
-waitUntil { sleep 1; one_synchro_done };
 waituntil { sleep 1; GRLIB_player_spawned; (player getVariable ["GRLIB_score_set", 0] == 1)};
 waitUntil { sleep 1; !isNil "GRLIB_mobile_respawn" };
 waituntil { sleep 1; !isNil "GRLIB_marker_init" };

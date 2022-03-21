@@ -1,7 +1,5 @@
 private  ["_cargo_seat_free", "_cargo_idx"];
 waitUntil {sleep 1; !isNil "build_confirmed" };
-waitUntil {sleep 1; !isNil "one_synchro_done" };
-waitUntil {sleep 1; one_synchro_done };
 
 while { true } do {
 
