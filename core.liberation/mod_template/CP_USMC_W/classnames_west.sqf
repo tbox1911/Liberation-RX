@@ -69,7 +69,7 @@ light_vehicles = [
 	["CUP_C_Datsun_4seat",1,12,2,0],
 	["CUP_C_Pickup_unarmed_CIV",1,20,3,0],
 	["CUP_C_S1203_CIV_CR",1,15,5,0],
-	["CUP_B_MTVR_USMC",2,200,15,GRLIB_perm_log],
+	["CUP_B_MTVR_USMC",2,40,15,0],
 	["CUP_B_nM1097_AVENGER_USMC_WDL",4,175,8,GRLIB_perm_tank],
 	["CUP_B_nM1038_4s_USA_WDL",2,50,7,GRLIB_perm_inf],
 	["CUP_B_nM1025_Unarmed_USA_WDL",2,30,2,GRLIB_perm_inf],
