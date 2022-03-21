@@ -315,12 +315,12 @@ sleep 5;
 
 // Manager Save Loop
 while { true } do {
-	waitUntil {sleep 1; trigger_server_save || GRLIB_endgame == 1};
+	waitUntil {sleep 10; trigger_server_save || GRLIB_endgame == 1};
 
 	if ( GRLIB_endgame == 1 ) then {
 		profileNamespace setVariable [ GRLIB_save_key, nil ];
 		saveProfileNamespace;
-		while { true } do { sleep 300; };
+		while { true } do { sleep 300; };  // dream forever
 	} else {
 		trigger_server_save = false;
 		buildings_to_save = [];
@@ -333,7 +333,7 @@ while { true } do {
 				( alive _x) &&
 				( speed _x < 5 ) &&
 				( isNull attachedTo _x ) &&
-				(((getpos _x) select 2) < 10 ) &&
+				(((getPosATL _x) select 2) < 10 ) &&
 				!(_x getVariable ["GRLIB_vehicle_owner", ""] == "server")
  				} ] call BIS_fnc_conditionalSelect;
 
