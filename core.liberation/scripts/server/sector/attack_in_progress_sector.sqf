@@ -66,7 +66,6 @@ if ( GRLIB_endgame == 0 ) then {
 		[ _sector, 2 ] remoteExec ["remote_call_sector", 0];
 		reset_battlegroups_ai = true;
 		trigger_server_save = true;
-		[] call recalculate_caps;
 		stats_sectors_lost = stats_sectors_lost + 1;
 	} else {
 		[ _sector, 3 ] remoteExec ["remote_call_sector", 0];
