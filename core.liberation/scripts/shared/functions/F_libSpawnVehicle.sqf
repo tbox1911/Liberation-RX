@@ -46,15 +46,14 @@ _newvehicle allowDamage false;
 
 if ( _newvehicle isKindOf "Air" ) then {
 	_newvehicle engineOn true;
-	if ( _civilian ) then {
-		_newvehicle flyInHeight _airveh_alt;
-	} else {
-		_newvehicle flyInHeightASL [_airveh_alt, 300, 600];
-	};
+	_newvehicle flyInHeight _airveh_alt;
 };
 
 if ( _newvehicle isKindOf "Land" ) then {
-	_newvehicle setVectorUp surfaceNormal position _newvehicle;
+	if ((vectorUp _newvehicle) select 2 < 0.70 || (getPosATL _newvehicle) select 2 < 0) then {
+		_newvehicle setpos [(getPosATL _newvehicle) select 0,(getPosATL _newvehicle) select 1, 0.5];
+		_newvehicle setVectorUp surfaceNormal position _newvehicle;
+	};
 };
 
 if ( _random_rotate ) then {
