@@ -23,13 +23,13 @@ private _getPrice = {
 private _buy_list_static = [
 	[Arsenal_typename, 0, 67],
 	[medicalbox_typename, 0, 60],
-	[fuelbarrel_typename, 0, 150],
-	["Box_NATO_WpsLaunch_F", 0, 140]
+	[fuelbarrel_typename, 0, 150]
+	//["Box_NATO_WpsLaunch_F", 0, 140]
 ];
 private _buy_blacklist = [];
 
 private _buy_list = [opfor_recyclable, {
-	(_x select 3) >= 2 && (_x select 3) <= 15 &&
+	!((_x select 0) isKindOf "Air") &&
 	!((_x select 0) in _buy_blacklist)
 }] call BIS_fnc_conditionalSelect;
 
