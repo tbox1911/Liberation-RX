@@ -16,7 +16,7 @@ while { true } do {
 
 		{
 			if ( (alive _x) &&
-				 [player, _x] call is_owner &&
+				 (_x getVariable ["GRLIB_vehicle_owner", ""] == getPlayerUID player) &&
 				 !(_x getVariable ['R3F_LOG_disabled', false]) &&
 				 isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull])
 				) then {
