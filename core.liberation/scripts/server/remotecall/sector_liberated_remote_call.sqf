@@ -1,7 +1,9 @@
 if (!isServer && hasInterface) exitWith {};
 params [ "_liberated_sector" ];
 diag_log format ["Sector %1 liberated", _liberated_sector];
-_combat_readiness_increase = 0;
+private _combat_readiness_increase = 0;
+private _rwd_ammo = (100 + floor(random 100));
+private _rwd_fuel = (10 + floor(random 10));
 
 if ( _liberated_sector in sectors_bigtown ) then {
 	_combat_readiness_increase = (floor (random 10)) * GRLIB_difficulty_modifier;
@@ -33,14 +35,13 @@ if ( _liberated_sector in sectors_military ) then {
 
 if ( _liberated_sector in sectors_factory ) then {
 	_combat_readiness_increase = (3 + (floor (random 7))) * GRLIB_difficulty_modifier;
+	_rwd_fuel = _rwd_fuel * 2;
 };
 
 if ( _liberated_sector in sectors_tower ) then {
 	_combat_readiness_increase = (floor (random 4));
 };
 
-private _rwd_ammo = (100 + floor(random 100));
-private _rwd_fuel = (10 + floor(random 10));
 private _text = format ["Reward Received: %1 Ammo and %2 Fuel", _rwd_ammo, _rwd_fuel];
 {
 	if (_x distance2D (markerpos _liberated_sector) < GRLIB_sector_size ) then {
