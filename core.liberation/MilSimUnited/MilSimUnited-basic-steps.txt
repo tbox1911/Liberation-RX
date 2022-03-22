@@ -565,6 +565,16 @@ Map Marker in einem Ordner verschieben und sichtbarkeit entfernen
 
 
 https://linuxgsm.com/
+Arma Docker Container
+
+
+
+&& ( ( getPlayerUID _shooter ) in GRLIB_whitelisted_steamids ) 
+testing only for admins
+
+
+
+
 
 
 

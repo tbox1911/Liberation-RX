@@ -50,10 +50,10 @@ if (!isDedicated && hasInterface) then {
 	params ["_vehicle"];
 	_vehicle addEventHandler ["Dammaged", {
 		params ["_unit", "_selection", "_damage", "_hitIndex", "_hitPoint", "_shooter", "_projectile"];
-		if ( (isPlayer _shooter) && (_shooter != _unit) && ( ( getPlayerUID _shooter ) in GRLIB_whitelisted_steamids ) ) then {
-			_msg = format ["Friendly fire from %1 to %2. Penalty: -1 rank and ammo", name _shooter, name _unit];
+		if ( (isPlayer _shooter) && (_shooter != _unit) ) then {
+			_msg = format ["Friendly fire from %1 to %2. Penalty: -1 rank and -10 ammo", name _shooter, name _unit];
 			[gamelogic, _msg] remoteExec ["globalChat", 0];
-			_shooter setVariable ["GREUH_ammo_count", ( (_shooter getVariable ["GREUH_ammo_count", 1]) - 1), true];
+			_shooter setVariable ["GREUH_ammo_count", ( (_shooter getVariable ["GREUH_ammo_count", 10]) - 10), true];
 			[_shooter, -1] remoteExec ["addScore", 2];
 		};
 	}];
@@ -64,10 +64,10 @@ if (!isDedicated && hasInterface) then {
 	params ["_vehicle"];
 	_vehicle addEventHandler ["Dammaged", {
 		params ["_unit", "_selection", "_damage", "_hitIndex", "_hitPoint", "_shooter", "_projectile"];
-		if ( (isPlayer _shooter) && (_shooter != _unit) && ( ( getPlayerUID _shooter ) in GRLIB_whitelisted_steamids ) ) then {
-			_msg = format ["Friendly fire from %1 to %2. Penalty: -1 rank and ammo", name _shooter, name _unit];
+		if ( (isPlayer _shooter) && (_shooter != _unit) ) then {
+			_msg = format ["Friendly fire from %1 to %2. Penalty: -1 rank and -10 ammo", name _shooter, name _unit];
 			[gamelogic, _msg] remoteExec ["globalChat", 0];
-			_shooter setVariable ["GREUH_ammo_count", ( (_shooter getVariable ["GREUH_ammo_count", 1]) - 1), true];
+			_shooter setVariable ["GREUH_ammo_count", ( (_shooter getVariable ["GREUH_ammo_count", 10]) - 10), true];
 			[_shooter, -1] remoteExec ["addScore", 2];
 		};
 	}];
