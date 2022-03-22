@@ -19,6 +19,7 @@ medic_sling_typename = "B_Slingload_01_Medevac_F";
 commander_classname = "CUP_B_FR_Commander";
 pilot_classname = "CUP_B_USMC_Pilot";
 crewman_classname = "CUP_B_USMC_Crew";
+A3W_BoxWps = "CUP_LocalBasicWeaponsBox";
 chimera_vehicle_overide = [
   ["B_Heli_Light_01_F",  "CUP_B_MH6M_USA"],
   ["B_Heli_Transport_01_F", "CUP_B_UH60M_US"]
