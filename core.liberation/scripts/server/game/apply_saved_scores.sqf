@@ -32,7 +32,7 @@ while { true } do {
 				_nextplayer setVariable ["GREUH_score_last", 0, true];
 				_nextplayer setVariable ["GREUH_ammo_count", GREUH_start_ammo, true];
 				_nextplayer setVariable ["GREUH_fuel_count", GREUH_start_fuel, true];
-				GRLIB_player_scores pushback [getPlayerUID _nextplayer, 0, GREUH_start_ammo, name _nextplayer];
+				GRLIB_player_scores pushback [getPlayerUID _nextplayer, 0, GREUH_start_ammo, GREUH_start_fuel, name _nextplayer];
 			};
 			_nextplayer setVariable ["GRLIB_score_set", 1, true];
 		};
@@ -50,5 +50,6 @@ while { true } do {
 		};
 	} foreach allPlayers;
 	GRLIB_player_scores = _newscores;
+	publicVariable "GRLIB_player_scores";
 	sleep 5;
 };
