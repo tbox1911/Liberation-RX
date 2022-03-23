@@ -85,7 +85,8 @@ sleep 45;
 
 if ( _liberated_sector in sectors_tower ) then {
 	_pos = markerPos _liberated_sector;
-	_nextower = "Land_Communication_F" createVehicle _pos;
+	_nextower = Radio_tower createVehicle _pos;
 	_nextower setpos _pos;
 	_nextower setVectorUp [0,0,1];
+	_nextower setVariable ["GRLIB_Radio_Tower", true];
 };
