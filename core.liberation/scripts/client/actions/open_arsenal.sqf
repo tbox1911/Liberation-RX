@@ -63,13 +63,8 @@ private _loadplayers = [];
 if ( count _loadplayers > 0 ) then {
 	{
 		private _nextplayer = _x select 1;
-		private _namestr = "";
-		if(count (squadParams _nextplayer) != 0) then {
-			_namestr = "[" + ((squadParams _nextplayer select 0) select 0) + "] ";
-		};
-		_namestr = _namestr + name _nextplayer;
-
-		lbAdd [ 203, _namestr ];
+		private _playername = [_nextplayer] call get_player_name;
+		lbAdd [ 203, _playername ];
 		lbSetCurSel [ 203, 0 ];
 	} foreach _loadplayers;
 	ctrlEnable [ 203, true ];

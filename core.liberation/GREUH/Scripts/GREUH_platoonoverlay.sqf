@@ -8,7 +8,7 @@ wounded_icon = "\A3\ui_f\data\map\vehicleicons\pictureHeal_ca.paa";
 
 nametags_distance = 32.0;
 
-private [ "_groups", "_unitstocount", "_totalx", "_totaly", "_totalz", "_alpha", "_textalpha", "_size", "_screenpos", "_grouppos", "_distlabel", "_dist", "_nextunit", "_color", "_drawicon", "_displayname", "_iconpos" ];
+private [ "_groups", "_unitstocount", "_totalx", "_totaly", "_totalz", "_alpha", "_textalpha", "_size", "_screenpos", "_grouppos", "_distlabel", "_dist", "_nextunit", "_color", "_drawicon", "_playername", "_iconpos" ];
 
 waitUntil {sleep 1; !isNil "GRLIB_overlay_groups" };
 waitUntil {sleep 1; !isNil "GRLIB_nametag_units" };
@@ -121,17 +121,10 @@ waitUntil {sleep 1; !isNil "GRLIB_nametag_units" };
 				};
 			};
 
-			_displayname = "";
-			if(count (squadParams _nextunit) != 0) then {
-				_displayname = "[" + ((squadParams _nextunit select 0) select 0) + "] ";
-			};
-			_displayname = _displayname + ( name _nextunit );
-
 			_height = 2 + ((player distance _nextunit) / (0.75 * _local_nametags_distance));
-
 			_iconpos = [  getPosATL _nextunit select 0,  getPosATL _nextunit select 1,  (getPosATL _nextunit select 2) + _height ];
-
-			drawIcon3D [ _drawicon, _color, _iconpos , 0.75, 0.75,0, format [ "%1", _displayname] , 2, 0.032, "puristaMedium"];
+			_playername = [_nextunit] call get_player_name;
+			drawIcon3D [ _drawicon, _color, _iconpos , 0.75, 0.75,0, format [ "%1", _playername] , 2, 0.032, "puristaMedium"];
 
 		} foreach GRLIB_nametag_units;
 	};

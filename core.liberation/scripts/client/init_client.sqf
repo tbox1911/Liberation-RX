@@ -37,11 +37,14 @@ is_neartransport = compileFinal preprocessFileLineNumbers "scripts\client\misc\i
 player_EVH = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_EventHandler.sqf";
 paraDrop = compileFinal preprocessFileLineNumbers "scripts\client\spawn\paraDrop.sqf";
 get_lrx_name = compileFinal preprocessFileLineNumbers "scripts\client\misc\get_lrx_name.sqf";
+get_player_name = compileFinal preprocessFileLineNumbers "scripts\client\misc\get_player_name.sqf";
 
 R3F_LOG_joueur_deplace_objet = objNull;
 GRLIB_player_spawned = false;
 
-[group player, "add"] remoteExec ["addel_group_remote_call", 2];
+private _grp = createGroup [GRLIB_side_friendly, true];
+[player] joinSilent _grp;
+[_grp, "add"] remoteExec ["addel_group_remote_call", 2];
 
 if (!([] call F_getValid)) exitWith {endMission "LOSER"};
 if ( typeOf player == "VirtualSpectator_F" ) exitWith {
@@ -131,7 +134,7 @@ addMissionEventHandler ["Draw3D",{
 		private _gid = _sign getVariable ["GRLIB_vehicle_owner", "public"];
 		private _name = "- LRX";
 		if (_gid != "public") then {
-			_name = GRLIB_player_scores select { _x select 0 == _gid} select 0 select 3;
+			_name = GRLIB_player_scores select { _x select 0 == _gid} select 0 select 4;
 		};
 		drawIcon3D ["", [1,1,1,1], (ASLToAGL getPosASL _sign) vectorAdd [0, 0, 2.5], 0, 0, 0, format ["- FOB %1 -", _name], 2, 0.07, "RobotoCondensed", "center"];
 	};

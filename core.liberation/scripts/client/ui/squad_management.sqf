@@ -35,13 +35,10 @@ while { dialog && alive player } do {
 		lbClear 101;
 		{
 			if ( alive _x ) then {
-				_unitname =  format ["%1. ", [ _x ] call F_getUnitPositionId];
-				if(isPlayer _x) then {
-					if ( count (squadParams _x ) != 0) then {
-						_unitname = "[" + ((squadParams _x select 0) select 0) + "] ";
-					};
+				_unitname =  format ["%1. %2", [ _x ] call F_getUnitPositionId, name _x];
+				if (isPlayer _x) then {
+					_unitname = [_x] call get_player_name;
 				};
-				_unitname = _unitname + ( name _x );
 				lbAdd [ 101, _unitname ];
 			};
 		} foreach (_bros);
@@ -80,13 +77,10 @@ while { dialog && alive player } do {
 			};
 			_squad_camera camcommit 0;
 
-			_unitname = format ["%1. ", [ _selectedmember ] call F_getUnitPositionId];
-			if(isPlayer _selectedmember) then {
-				if ( count (squadParams _selectedmember ) != 0) then {
-					_unitname = "[" + ((squadParams _selectedmember select 0) select 0) + "] ";
-				};
+			_unitname = format ["%1. %2", [ _selectedmember ] call F_getUnitPositionId, name _selectedmember];
+			if (isPlayer _selectedmember) then {
+				_unitname = [_selectedmember] call get_player_name;
 			};
-			_unitname = _unitname + ( name _selectedmember );
 			ctrlSetText [ 201, _unitname];
 
 			ctrlSetText [ 202, format ["%1 (%2)", getText (_cfgVehicles >> (typeof _selectedmember) >> "displayName"), rank _selectedmember] ];
