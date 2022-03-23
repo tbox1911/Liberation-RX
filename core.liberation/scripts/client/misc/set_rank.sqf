@@ -37,18 +37,18 @@ if ((_score >= GRLIB_perm_tank) && (_score < GRLIB_perm_air)) then {
 if ((_score >= GRLIB_perm_air) && (_score < GRLIB_perm_max)) then {
 	_rank = "Major";
 	GRLIB_squad_size_bonus = 4;
-	infantry_cap = 35 * GRLIB_resources_multiplier;
+	infantry_cap = 40 * GRLIB_resources_multiplier;
 };
 
 if (_score >= GRLIB_perm_max) then {
 	_rank = "Colonel";
 	GRLIB_squad_size_bonus = 5;
-	infantry_cap = 50 * GRLIB_resources_multiplier;
+	infantry_cap = 70 * GRLIB_resources_multiplier;
 };
 
 if (_score >= 2 * GRLIB_perm_max) then {
 	GRLIB_squad_size_bonus = 6;
-	infantry_cap = 80 * GRLIB_resources_multiplier;
+	infantry_cap = 100 * GRLIB_resources_multiplier;
 };
 
 if ( (GRLIB_squad_size + GRLIB_squad_size_bonus) > GRLIB_max_squad_size) then {
