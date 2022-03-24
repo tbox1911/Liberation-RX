@@ -276,6 +276,7 @@ class ScenarioData
 	author="[GREUH] Zbug, [GREUH] McKeewa, [KP] Wyqer";
 	respawnDialog=0;
 	disabledAI=1;
+	joinUnassigned=0;
 	respawn=3;
 	respawnDelay=5;
 	class Header
