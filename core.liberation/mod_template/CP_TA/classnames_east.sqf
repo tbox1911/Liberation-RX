@@ -5,25 +5,25 @@ GRLIB_color_enemy_bright = "ColorRED";
 
 // All class MUST be defined !
 
-opfor_sentry = "CUP_O_TK_Soldier_AR";
-opfor_rifleman = "CUP_O_TK_Soldier";
-opfor_grenadier = "CUP_O_TK_Soldier_GL";
-opfor_squad_leader = "CUP_O_TK_Soldier_SL";
-opfor_team_leader = "CUP_O_TK_SpecOps_TL";
-opfor_marksman = "CUP_O_TK_Soldier_M";
-opfor_machinegunner = "CUP_O_TK_Soldier_MG";
-opfor_heavygunner = "CUP_O_TK_SpecOps_MG";
-opfor_medic = "CUP_O_TK_Medic";
-opfor_rpg = "CUP_O_TK_Soldier_LAT";
-opfor_at = "CUP_O_TK_Soldier_HAT";
-opfor_aa = "CUP_O_TK_Soldier_AA";
-opfor_officer = "CUP_O_TK_Officer";
-opfor_sharpshooter = "CUP_O_TK_Soldier_AT";
-opfor_sniper = "CUP_O_TK_Sniper";
-opfor_spotter = "CUP_O_TK_Spotter";
-opfor_engineer = "CUP_O_TK_Engineer";
+opfor_sentry = "CUP_O_RU_Soldier_AA_M_EMR_V2";
+opfor_rifleman = "CUP_O_RU_Soldier_M_EMR_V2";
+opfor_grenadier = "CUP_O_RU_Soldier_GL_M_EMR_V2";
+opfor_squad_leader = "CUP_O_RU_Soldier_SL_M_EMR_V2";
+opfor_team_leader = "CUP_O_RU_Soldier_TL_M_EMR_V2";
+opfor_marksman = "CUP_O_RU_Soldier_Marksman_M_EMR_V2";
+opfor_machinegunner = "CUP_O_RU_Soldier_MG_M_EMR_V2";
+opfor_heavygunner = "CUP_O_RU_Soldier_Exp_M_EMR_V2";
+opfor_medic = "CUP_O_RU_Soldier_Medic_M_EMR_V2";
+opfor_rpg = "CUP_O_RU_Soldier_AT_M_EMR_V2";
+opfor_at = "CUP_O_RU_Soldier_HAT_M_EMR_V2";
+opfor_aa = "CUP_O_RU_Soldier_AA_M_EMR_V2";
+opfor_officer = "CUP_O_RU_Officer_M_EMR_V2";
+opfor_sharpshooter = "CUP_O_RU_Soldier_Marksman_M_EMR_V2";
+opfor_sniper = "CUP_O_RU_Soldier_AHAT_M_EMR_V2";
+opfor_spotter = "CUP_O_RU_Soldier_Marksman_M_EMR_V2";
+opfor_engineer = "CUP_O_RU_Soldier_Engineer_M_EMR_V2";
 opfor_pilot = "CUP_O_TK_Pilot";
-opfor_crew = "CUP_O_TK_Crew";
+opfor_crew = "CUP_O_RU_Soldier_Engineer_M_EMR_V2";
 opfor_paratrooper = "CUP_O_MVD_Soldier_Marksman";
 opfor_mrap = "CUP_O_UAZ_Open_TKA";
 opfor_mrap_hmg = "CUP_O_UAZ_MG_TKA";
@@ -38,21 +38,28 @@ opfor_ammo_container = "CUP_TKBasicAmmunitionBox_EP1";
 opfor_flag = "CUP_Flag_Black";
 
 militia_squad = [
-	"CUP_O_TK_INS_Soldier_FNFAL",
-	"CUP_O_TK_INS_Soldier_FNFAL",
-	"CUP_O_TK_INS_Soldier_AR",
-	"CUP_O_TK_INS_Guerilla_Medic",
-	"CUP_O_TK_INS_Mechanic",
-	"CUP_O_TK_INS_Sniper",
-	"CUP_O_TK_INS_Soldier_GL",
-	"CUP_O_TK_INS_Soldier_MG",
-	"CUP_O_TK_INS_Soldier",
-	"CUP_O_TK_INS_Soldier_Enfield",
-	"CUP_O_TK_INS_Soldier_Enfield",
-	"CUP_O_TK_INS_Soldier_AAT",
-	"CUP_O_TK_INS_Soldier_TL",
-	"CUP_O_TK_INS_Soldier_AA",
-	"CUP_O_TK_INS_Soldier_AT"
+"CUP_O_RU_Soldier_AHAT_M_EMR_V2",
+"CUP_O_RU_Soldier_AR_M_EMR_V2",
+"CUP_O_RU_Soldier_GL_M_EMR_V2",
+"CUP_O_RU_Soldier_Engineer_M_EMR_V2",
+"CUP_O_RU_Soldier_A_M_EMR_V2",
+"CUP_O_RU_Officer_M_EMR_V2",
+"CUP_O_RU_Soldier_AA_M_EMR_V2",
+"CUP_O_RU_Soldier_LAT_M_EMR_V2",
+"CUP_O_RU_Soldier_Repair_M_EMR_V2",
+"CUP_O_RU_Soldier_Medic_M_EMR_V2",
+"CUP_O_RU_Soldier_M_EMR_V2",
+"CUP_O_RU_Soldier_Lite_M_EMR_V2",
+"CUP_O_RU_Soldier_AT_M_EMR_V2",
+"CUP_O_RU_Soldier_Saiga_M_EMR_V2",
+"CUP_O_RU_Soldier_HAT_M_EMR_V2",
+"CUP_O_RU_Soldier_Marksman_M_EMR_V2",
+"CUP_O_RU_Soldier_MG_M_EMR_V2",
+"CUP_O_RU_Soldier_Exp_M_EMR_V2",
+"CUP_O_RU_Soldier_TL_M_EMR_V2",
+"CUP_O_RU_Soldier_SL_M_EMR_V2",
+"CUP_O_RU_Soldier_AAR_M_EMR_V2",
+"CUP_O_RU_Soldier_AAT_M_EMR_V2"
 ];
 
 militia_loadout_overide = [
@@ -99,6 +106,54 @@ boats_east = [
 ];
 
 opfor_vehicles = [
+"CUP_O_T72_RU",
+"CUP_O_GAZ_Vodnik_KPVT_RU",
+"CUP_O_GAZ_Vodnik_BPPU_RU",
+"CUP_O_GAZ_Vodnik_AGS_RU",
+"CUP_O_BTR90_RU",
+"CUP_O_BTR80A_GREEN_RU",
+"CUP_O_BRDM2_ATGM_RUS",
+"CUP_O_BMP3_RU",
+"CUP_O_BMP2_RU",
+"CUP_O_BM21_RU"
+];
+
+opfor_vehicles_low_intensity = [
+	"CUP_O_BTR40_MG_TKM",
+	"CUP_O_BTR40_TKM",
+	"CUP_O_MTLB_pk_TK_MILITIA",
+	"CUP_O_Hilux_AGS30_TK_INS",
+	"CUP_O_Hilux_unarmed_TK_INS",
+	"CUP_O_Hilux_DSHKM_TK_INS",
+	"CUP_O_Hilux_igla_TK_INS",
+	"CUP_O_Hilux_metis_TK_INS",
+	"CUP_O_Hilux_MLRS_TK_INS",
+	"CUP_O_Hilux_podnos_TK_INS",
+	"CUP_O_Hilux_SPG9_TK_INS",
+	"CUP_O_Hilux_UB32_TK_INS",
+	"CUP_O_Hilux_zu23_TK_INS",
+	"CUP_O_T34_TKA",
+	"CUP_O_UH1H_slick_TKA"
+];
+
+opfor_battlegroup_vehicles = [
+	"CUP_O_BM21_TKA",
+	"CUP_O_2S6_RU",
+	"CUP_O_T90_RU",
+	"CUP_O_T72_RU",
+	"CUP_O_BTR90_RU",
+	"CUP_O_GAZ_Vodnik_BPPU_RU",
+	"CUP_O_GAZ_Vodnik_AGS_RU",
+	"CUP_O_GAZ_Vodnik_KPVT_RU",
+	"CUP_O_MTLB_pk_WDL_RU",
+	"CUP_O_Ka50_DL_RU",
+	"CUP_O_Ka52_RU",
+	"CUP_O_BMP3_RU",
+	"CUP_O_GAZ_Vodnik_Unarmed_RU",
+	"CUP_O_Mi24_D_Dynamic_TK"
+];
+
+opfor_battlegroup_vehicles_low_intensity = [
 	"CUP_O_BM21_TKA",
 	"CUP_O_LR_SPG9_TKA",
 	"CUP_O_LR_AA_TKA",
@@ -124,52 +179,10 @@ opfor_vehicles = [
 	"CUP_O_BMP2_ZU_TKA"
 ];
 
-opfor_vehicles_low_intensity = [
-	"CUP_O_BTR40_MG_TKM",
-	"CUP_O_BTR40_TKM",
-	"CUP_O_MTLB_pk_TK_MILITIA",
-	"CUP_O_Hilux_AGS30_TK_INS",
-	"CUP_O_Hilux_unarmed_TK_INS",
-	"CUP_O_Hilux_DSHKM_TK_INS",
-	"CUP_O_Hilux_igla_TK_INS",
-	"CUP_O_Hilux_metis_TK_INS",
-	"CUP_O_Hilux_MLRS_TK_INS",
-	"CUP_O_Hilux_podnos_TK_INS",
-	"CUP_O_Hilux_SPG9_TK_INS",
-	"CUP_O_Hilux_UB32_TK_INS",
-	"CUP_O_Hilux_zu23_TK_INS",
-	"CUP_O_T34_TKA",
-	"CUP_O_UH1H_slick_TKA"
-];
-
-opfor_battlegroup_vehicles = [
-	"CUP_O_2S6_RU",
-	"CUP_O_T90_RU",
-	"CUP_O_T72_RU",
-	"CUP_O_BTR90_RU",
-	"CUP_O_GAZ_Vodnik_BPPU_RU",
-	"CUP_O_GAZ_Vodnik_AGS_RU",
-	"CUP_O_GAZ_Vodnik_KPVT_RU",
-	"CUP_O_MTLB_pk_WDL_RU",
-	"CUP_O_Ka50_DL_RU",
-	"CUP_O_Ka52_RU",
-	"CUP_O_BMP3_RU",
-	"CUP_O_GAZ_Vodnik_Unarmed_RU",
-	"CUP_O_Mi24_D_Dynamic_TK"
-];
-
-opfor_battlegroup_vehicles_low_intensity = [
-	"CUP_O_BTR80A_TK",
-	"CUP_O_BTR80_TK",
-	"CUP_O_Ural_ZU23_TKA",
-	"CUP_O_ZSU23_Afghan_TK",
-	"CUP_O_T72_TKA",
-	"CUP_O_MTLB_pk_TKA",
-	"CUP_O_UH1H_armed_TKA",
-	"CUP_O_UH1H_gunship_TKA"
-];
-
 opfor_troup_transports = [
+	"CUP_O_MI6T_TKA",
+	"CUP_O_BMP3_RU",
+	"CUP_O_MTLB_pk_WDL_RU",
 	"CUP_O_T55_TK",
 	"CUP_O_M113A3_TKA",
 	"CUP_O_BTR60_TK",
@@ -185,6 +198,7 @@ opfor_troup_transports = [
 ];
 
 opfor_choppers = [
+	"CUP_O_MI6T_TKA",
 	"CUP_O_Mi17_TK",
 	"CUP_O_Mi24_D_Dynamic_TK",
 	"CUP_O_Ka50_DL_RU",
@@ -197,8 +211,8 @@ opfor_air = [
 ];
 
 opfor_statics = [
+	"CUP_O_BM21_TKA",
 	"CUP_O_AGS_TK",
-	"CUP_O_D30_AT_TK",
 	"CUP_O_Igla_AA_pod_TK",
 	"CUP_O_KORD_high_TK",
 	"CUP_O_KORD_TK",
@@ -209,6 +223,14 @@ opfor_statics = [
 ];
 
 opfor_recyclable = [
+	["CUP_O_BM21_TKA",0,round (60 / GRLIB_recycling_percentage),0],
+	["I_MRAP_03_F",0,round (60 / GRLIB_recycling_percentage),0],
+	["I_MRAP_03_F",0,round (60 / GRLIB_recycling_percentage),0],
+	["I_MRAP_03_F",0,round (60 / GRLIB_recycling_percentage),0],
+	["I_MRAP_03_F",0,round (60 / GRLIB_recycling_percentage),0],
+	["I_MRAP_03_F",0,round (60 / GRLIB_recycling_percentage),0],
+	["I_MRAP_03_F",0,round (60 / GRLIB_recycling_percentage),0],
+	["I_MRAP_03_F",0,round (60 / GRLIB_recycling_percentage),0],
 	["I_MRAP_03_F",0,round (60 / GRLIB_recycling_percentage),0],
 	["CUP_O_MTLB_pk_TK_MILITIA",0,round (50 / GRLIB_recycling_percentage),0],
 	["CUP_O_BTR40_MG_TKM",0,round (60 / GRLIB_recycling_percentage),0],
