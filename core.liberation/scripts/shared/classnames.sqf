@@ -19,14 +19,14 @@ GRLIB_side_friendly = WEST;
 GRLIB_side_enemy = EAST;
 
 opfor_vehicles = [];
-opfor_vehicles_low_intensity= [];
+opfor_vehicles_low_intensity = [];
 
 // *** SUPPORT ***
 support_vehicles = support_vehicles_west + [
 	[FOB_box_typename,0,500,0,GRLIB_perm_inf],
 	[FOB_truck_typename,0,500,0,GRLIB_perm_inf],
-	[fuelbarrel_typename,0,round(70 / GRLIB_recycling_percentage),0,GRLIB_perm_inf],
-	[canisterFuel,0,5,0,GRLIB_perm_inf],
+	[fuelbarrel_typename,0,round(5 / GRLIB_recycling_percentage),0,GRLIB_perm_inf],
+	[canisterFuel,0,0,0,GRLIB_perm_inf],
 	[fuel_sling_typename,0,0,0,GRLIB_perm_inf],
 	[ammo_sling_typename,0,0,0,GRLIB_perm_inf],
 	[repair_sling_typename,0,0,0,GRLIB_perm_inf],
@@ -34,9 +34,9 @@ support_vehicles = support_vehicles_west + [
 	[ammobox_b_typename,0,round(5 / GRLIB_recycling_percentage),0,99999],
 	[ammobox_o_typename,0,round(5 / GRLIB_recycling_percentage),0,99999],
 	[ammobox_i_typename,0,round(5 / GRLIB_recycling_percentage),0,99999],
-	[A3W_BoxWps,0,round(50 / GRLIB_recycling_percentage),0,99999],
-	[waterbarrel_typename,0,round(50 / GRLIB_recycling_percentage),0,GRLIB_perm_inf],
-	[foodbarrel_typename,0,round(50 / GRLIB_recycling_percentage),0,GRLIB_perm_inf]
+	[A3W_BoxWps,0,round(5 / GRLIB_recycling_percentage),0,99999],
+	[waterbarrel_typename,0,round(5 / GRLIB_recycling_percentage),0,GRLIB_perm_inf],
+	[foodbarrel_typename,0,round(5 / GRLIB_recycling_percentage),0,GRLIB_perm_inf]
 	// [Arsenal_typename,0,10,0,GRLIB_perm_inf],
 	// [medicalbox_typename,5,5,0,GRLIB_perm_inf],
 	// [mobile_respawn,10,5,0,GRLIB_perm_inf],
