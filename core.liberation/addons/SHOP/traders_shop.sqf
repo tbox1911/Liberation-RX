@@ -27,10 +27,10 @@ private _getPrice = {
 
 // Init BUY list
 private _buy_list_static = [
-	[Arsenal_typename, 0, fuel_box],
+	[Arsenal_typename, 0, ars_box],
 	[medicalbox_typename, 0, med_box],
-	[fuelbarrel_typename, 0, wps_box],
-	["Box_NATO_WpsLaunch_F", 0, ars_box]
+	[fuelbarrel_typename, 0, fuel_box],
+	["Box_NATO_WpsLaunch_F", 0, wps_box]
 ];
 private _buy_blacklist = [];
 
