@@ -33,8 +33,8 @@ units_loadout_overide = [
 ];	
 
 light_vehicles = [
-	["CUP_I_SUV_Armored_ION",0,100,0,GRLIB_perm_inf],
-	["CUP_I_SUV_ION",0,180,0,GRLIB_perm_inf],
+	["CUP_I_SUV_Armored_ION",0,180,0,GRLIB_perm_inf],
+	["CUP_I_SUV_ION",0,100,0,GRLIB_perm_inf],
 	["CUP_B_M1030_USMC",0,40,0,GRLIB_perm_inf],
 	["C_Van_01_transport_F",0,70,0,GRLIB_perm_inf],
 	["CUP_B_T810_Unarmed_CZ_WDL",0,100,0,GRLIB_perm_inf],
@@ -57,11 +57,11 @@ light_vehicles = [
 	["CUP_B_Dingo_GL_GER_Wdl",0,220,0,GRLIB_perm_inf],
 	["CUP_B_nM1025_SOV_M2_USMC_WDL",0,150,0,GRLIB_perm_inf],
 	["CUP_B_nM1025_SOV_Mk19_USMC_WDL",0,150,0,GRLIB_perm_inf],
-    ["B_Boat_Transport_01_F",0,30,0,GRLIB_perm_inf],
+    	["B_Boat_Transport_01_F",0,30,0,GRLIB_perm_inf],
 	["CUP_B_Zodiac_USMC",0,30,0,GRLIB_perm_inf],
 	["CUP_B_RHIB_USMC",0,50,0,GRLIB_perm_inf],
 	["CUP_B_LCU1600_USMC",0,30,0,GRLIB_perm_inf],
-    ["B_Boat_Armed_01_minigun_F",0,50,0,GRLIB_perm_inf],
+    	["B_Boat_Armed_01_minigun_F",0,50,0,GRLIB_perm_inf],
 	["B_SDV_01_F",0,50,0,GRLIB_perm_inf]
 ];
 
@@ -73,19 +73,19 @@ heavy_vehicles = [
 	["CUP_B_M113A3_GER",3,400,3,GRLIB_perm_inf],
 	["CUP_B_Boxer_HMG_GER_WDL",3,400,3,GRLIB_perm_inf],
 	["CUP_B_Boxer_GMG_GER_WDL",3,400,3,GRLIB_perm_inf],
-    ["CUP_B_M1126_ICV_M2_Woodland",3,500,3,GRLIB_perm_inf],
-	["CUP_B_M1126_ICV_MK19_Woodland",3,500,3,GRLIB_perm_inf],
-	["CUP_B_M1129_MC_MK19_Woodland",3,500,3,GRLIB_perm_inf],
-	["CUP_B_M1128_MGS_Woodland",3,550,3,GRLIB_perm_inf],
+    	["CUP_B_M1126_ICV_M2_Woodland",3,400,3,GRLIB_perm_inf],
+	["CUP_B_M1126_ICV_MK19_Woodland",3,400,3,GRLIB_perm_inf],
+	["CUP_B_M1129_MC_MK19_Woodland",3,800,3,GRLIB_perm_inf],
+	["CUP_B_M1128_MGS_Woodland",3,650,3,GRLIB_perm_inf],
 	["CUP_B_M1135_ATGMV_Woodland",3,550,3,GRLIB_perm_inf],
-	["CUP_B_M7Bradley_USA_W",3,600,3,GRLIB_perm_inf],
-	["CUP_B_M2Bradley_USA_W",3,600,3,GRLIB_perm_inf],
-	["CUP_B_M2A3Bradley_USA_W",3,600,3,GRLIB_perm_inf],
-	["CUP_B_Leopard2A6_GER",3,700,3,GRLIB_perm_inf],
-	["CUP_B_M1A1FEP_Woodland_USMC",3,700,3,GRLIB_perm_inf],
-	["CUP_B_M1A1SA_Woodland_US_Army",3,700,3,GRLIB_perm_inf],
-	["CUP_B_M1A2SEP_TUSK_Woodland_US_Army",3,725,3,GRLIB_perm_inf],
-	["CUP_B_M1A2C_TUSK_II_Woodland_US_Army",3,750,3,GRLIB_perm_inf],
+	["CUP_B_M7Bradley_USA_W",3,480,3,GRLIB_perm_inf],
+	["CUP_B_M2Bradley_USA_W",3,550,3,GRLIB_perm_inf],
+	["CUP_B_M2A3Bradley_USA_W",3,650,3,GRLIB_perm_inf],
+	["CUP_B_Leopard2A6_GER",3,750,3,GRLIB_perm_inf],
+	["CUP_B_M1A1FEP_Woodland_USMC",3,750,3,GRLIB_perm_inf],
+	["CUP_B_M1A1SA_Woodland_US_Army",3,750,3,GRLIB_perm_inf],
+	["CUP_B_M1A2SEP_TUSK_Woodland_US_Army",3,780,3,GRLIB_perm_inf],
+	["CUP_B_M1A2C_TUSK_II_Woodland_US_Army",3,800,3,GRLIB_perm_inf],
 	["CUP_B_M270_HE_USMC",3,3500,3,GRLIB_perm_inf]
 ];
 
@@ -101,7 +101,7 @@ air_vehicles = [
 	["CUP_B_CH53E_GER",3,600,3,GRLIB_perm_inf],
 	["CUP_B_CH53E_VIV_USMC",3,600,3,GRLIB_perm_inf],
 	["CUP_B_CH47F_VIV_USA",3,600,3,GRLIB_perm_inf],
-	["CUP_B_C130J_Cargo_USMC",3,600,3,GRLIB_perm_inf],
+	["CUP_B_C130J_Cargo_USMC",3,400,3,GRLIB_perm_inf],
 	["CUP_B_AH6M_USA",3,850,3,GRLIB_perm_inf],	
 	["CUP_B_UH1D_GER_KSK",3,600,3,GRLIB_perm_inf],
 	["CUP_B_UH60S_USN",3,600,3,GRLIB_perm_inf],
@@ -118,6 +118,7 @@ air_vehicles = [
 	["CUP_B_AH64_DL_USA",3,1000,3,GRLIB_perm_inf],
 	["CUP_B_AH1Z_Dynamic_USMC",3,1000,3,GRLIB_perm_inf],
 	["CUP_B_USMC_DYN_MQ9",3,1300,3,GRLIB_perm_inf], // Reaper
+	["B_UAV_05_F",3,1300,3,GRLIB_perm_inf], //Sentinel
 	["CUP_B_AH64D_DL_USA",3,1300,3,GRLIB_perm_inf],
 	["CUP_B_A10_DYN_USA",3,1500,3,GRLIB_perm_inf],
 	["CUP_B_AV8B_DYN_USMC",3,1500,3,GRLIB_perm_inf],
@@ -155,8 +156,20 @@ static_vehicles = [
 
 // *** Static Weapon with AI ***
 static_vehicles_AI = [
+	"CUP_B_SearchLight_static_USMC",
+	"CUP_B_M2StaticMG_USMC",
+	"CUP_B_M2StaticMG_MiniTripod_USMC",
+	"CUP_B_MK19_TriPod_USMC",
+	"CUP_B_Stinger_AA_pod_Base_USMC",
+	"CUP_B_TOW_TriPod_USMC",
+	"CUP_B_M252_USMC",
+	"CUP_B_M119_USMC",
 	"CUP_WV_B_CRAM",
 	"CUP_WV_B_RAM_Launcher",
+	"B_Radar_System_01_F",
+	"B_SAM_System_03_F",
+	"B_Ship_MRLS_01_F",
+	"B_AAA_System_01_F",
 	"CUP_WV_B_SS_Launcher"
 ];
 
@@ -176,7 +189,7 @@ support_vehicles_west = [
     	["Land_RepairDepot_01_green_F",0,0,0,GRLIB_perm_inf],
     	["ACE_Track",0,0,0,GRLIB_perm_inf],
     	["ACE_Wheel",0,0,0,GRLIB_perm_inf],
-		["Box_NATO_Equip_F",0,0,0,GRLIB_perm_inf]
+	["Box_NATO_Equip_F",0,0,0,GRLIB_perm_inf]
 
 ];
 
