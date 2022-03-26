@@ -1,6 +1,12 @@
 // LRX Trader Shop
 // by pSiKO
 
+fuel_box = 8;
+med_box = 10;
+wps_box = 15;
+ars_box = 20;
+
+
 createDialog "Traders_Shop";
 waitUntil { dialog };
 
@@ -21,10 +27,10 @@ private _getPrice = {
 
 // Init BUY list
 private _buy_list_static = [
-	[Arsenal_typename, 0, 67],
-	[medicalbox_typename, 0, 60],
-	[fuelbarrel_typename, 0, 150],
-	["Box_NATO_WpsLaunch_F", 0, 140]
+	[Arsenal_typename, 0, fuel_box],
+	[medicalbox_typename, 0, med_box],
+	[fuelbarrel_typename, 0, wps_box],
+	["Box_NATO_WpsLaunch_F", 0, ars_box]
 ];
 private _buy_blacklist = [];
 
