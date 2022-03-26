@@ -5,6 +5,14 @@ GRLIB_arsenal_side = WEST;
 blacklisted_bag = [];
 
 blacklisted_weapon = [
+	"launch_B_Titan_F",
+	"launch_I_Titan_F",
+	"launch_O_Titan_F",
+	"launch_Titan_F",
+	"launch_B_Titan_short_F",
+	"launch_I_Titan_short_F",
+	"launch_O_Titan_short_F",
+	"launch_Titan_short_F",
 	"U_O_CombatUniform_ocamo",
 	"U_O_CombatUniform_oucamo",
 	"U_O_OfficerUniform_ocamo",
