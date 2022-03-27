@@ -9,6 +9,12 @@ player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
 
 //Blacklist Items
 _blacklisted_ace_arsenal= [
+	"launch_I_Titan_eaf_F",
+	"launch_B_Titan_olive_F",
+	"launch_B_Titan_tna_F",
+	"launch_B_Titan_short_tna_F",
+	"launch_O_Titan_ghex_F",
+	"launch_O_Titan_short_ghex_F",
 	"launch_B_Titan_F",
 	"launch_I_Titan_F",
 	"launch_O_Titan_F",
