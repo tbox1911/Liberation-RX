@@ -18,21 +18,21 @@ player addEventHandler [
 		if (_vehicle isKindof "Helicopter") then { 
 			if !(_GrpRol in HeliUnits) then{ 
 				_unit action ["getOut", _vehicle]; 
-				hint format ["Worng Group Role", name player];
+				hint format ["Wrong Group Role", name player];
 			}; 
 		}; 
 
 		if (_vehicle isKindof "Plane") then { 
 			if !(_GrpRol in PlaneUnits) then{ 
 				_unit action ["getOut", _vehicle]; 
-				hint format ["Worng Group Role", name player];
+				hint format ["Wrong Group Role", name player];
 			}; 
 		}; 
 
 		if (_vehicle isKindof "Tank") then { 
 			if !(_GrpRol in TankUnits) then{ 
 				_unit action ["getOut", _vehicle]; 
-				hint format ["Worng Group Role", name player];
+				hint format ["Wrong Group Role", name player];
 			}; 
 		}; 
 	}  
