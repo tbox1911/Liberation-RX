@@ -249,8 +249,23 @@ buildings_west = [
 	["Land_PortableLight_double_F",0,0,0,GRLIB_perm_inf],
 	["Land_LampAirport_F",0,0,0,GRLIB_perm_inf],
 	["Land_LampStreet_02_double_F",0,0,0,GRLIB_perm_inf],
+	["Land_SandbagBarricade_01_hole_F",0,0,0,GRLIB_perm_inf],
+	["Land_fortified_nest_small",0,0,0,GRLIB_perm_inf],
+	["Land_fortified_nest_big",0,0,0,GRLIB_perm_inf],
+	["Land_BagBunker_Small_F",0,0,0,GRLIB_perm_inf],
+	["land_bunker_garage",0,0,0,GRLIB_perm_inf],
+	["Land_Trench_01_grass_F",0,0,0,GRLIB_perm_inf],
+	["Land_fort_rampart",0,0,0,GRLIB_perm_inf],
+	["Land_fort_artillery_nest",0,0,0,GRLIB_perm_inf],
+	["Land_HBarrierBig_lxWS",0,0,0,GRLIB_perm_inf],
+	["Land_HBarrier_3_lxWS",0,0,0,GRLIB_perm_inf],
+	["Land_HBarrier_01_line_5_green_F",0,0,0,GRLIB_perm_inf],
+	["Land_HBarrier_01_big_4_green_F",0,0,0,GRLIB_perm_inf],
+	["zed2",0,0,0,GRLIB_perm_inf],
+	["US_WarfareBBarrier10xTall_EP1",0,0,0,GRLIB_perm_inf],
+	["WarfareBCamp",0,0,0,GRLIB_perm_inf],
+	["Fortress2",0,0,0,GRLIB_perm_inf],
 	["Land_Lampa_sidl_3",0,0,0,GRLIB_perm_inf]
-
 ];
 
 if ( isNil "blufor_squad_inf_light" ) then { blufor_squad_inf_light = [] };
