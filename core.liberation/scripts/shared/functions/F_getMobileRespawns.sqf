@@ -12,7 +12,7 @@ private _allplayer_respawn_unsorted = [];
 {
 	_player_respawn_unsorted = ([getPlayerUID _x] call F_getMobileRespawnsPlayer) select 0;
 	_allplayer_respawn_unsorted append _player_respawn_unsorted;
-} forEach allPlayers;
+} forEach (AllPlayers - (entities "HeadlessClient_F"));
 
 private _respawn_trucks_sorted = [ _respawn_huron_unsorted + _allplayer_respawn_unsorted , [] , { (getpos _x) select 0 } , 'ASCEND' ] call BIS_fnc_sortBy;
 

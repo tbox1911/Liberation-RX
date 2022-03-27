@@ -27,7 +27,8 @@ _countSectorBox = {
 while { GRLIB_endgame == 0 } do {
 	sleep 1200;
 
-	if ( count allPlayers > 0 ) then {
+	_nb_players = (AllPlayers - (entities "HeadlessClient_F"));
+	if ( count _nb_players > 0 ) then {
 
 		// AmmoBox
 		_blufor_mil_sectors = [];
@@ -43,11 +44,11 @@ while { GRLIB_endgame == 0 } do {
 				private _income = (100 + floor(random 100));
 				{
 					[_x, _income, 0] call ammo_add_remote_call;
-				} forEach allPlayers;
+				} forEach _nb_players;
 				_text = format ["Passive Income Received: + %1 Ammo.", _income];
 				[gamelogic, _text] remoteExec ["globalChat", 0];
 			} else {
-				if ( ([ammobox_b_typename] call _countAllBox) <= (count allPlayers * 3) ) then {	
+				if ( ([ammobox_b_typename] call _countAllBox) <= (count _nb_players * 3) ) then {	
 					_spawnsector = ( selectRandom _blufor_mil_sectors );
 					if ( ([ammobox_b_typename, _spawnsector] call _countSectorBox) < 3 ) then {
 						_newbox = [ammobox_b_typename,  markerpos _spawnsector, false] call boxSetup;
@@ -69,7 +70,7 @@ while { GRLIB_endgame == 0 } do {
 		} foreach blufor_sectors;
 
 		if ( count _blufor_fuel_sectors > 0 ) then {
-			if ( ([fuelbarrel_typename] call _countAllBox) <= (count allPlayers * 3) ) then {
+			if ( ([fuelbarrel_typename] call _countAllBox) <= (count _nb_players * 3) ) then {
 				_spawnsector = ( selectRandom _blufor_fuel_sectors );
 				if ( ([fuelbarrel_typename, _spawnsector] call _countSectorBox) < 3 ) then {
 					_newbox = [fuelbarrel_typename, markerpos _spawnsector, false] call boxSetup;
@@ -86,7 +87,7 @@ while { GRLIB_endgame == 0 } do {
 		} foreach blufor_sectors;
 
 		if ( count _blufor_water_sectors > 0 ) then {
-			if ( ([waterbarrel_typename] call _countAllBox) <= (count allPlayers * 3) ) then {
+			if ( ([waterbarrel_typename] call _countAllBox) <= (count _nb_players * 3) ) then {
 				_spawnsector = ( selectRandom _blufor_water_sectors );
 				if ( ([waterbarrel_typename, _spawnsector] call _countSectorBox) < 3 ) then {
 					_newbox = [waterbarrel_typename, markerpos _spawnsector, false] call boxSetup;
@@ -103,7 +104,7 @@ while { GRLIB_endgame == 0 } do {
 		} foreach blufor_sectors;
 
 		if ( count _blufor_food_sectors > 0 ) then {
-			if ( ([foodbarrel_typename] call _countAllBox) <= (count allPlayers * 3) ) then {
+			if ( ([foodbarrel_typename] call _countAllBox) <= (count _nb_players * 3) ) then {
 				_spawnsector = ( selectRandom _blufor_food_sectors );
 				if ( ([foodbarrel_typename, _spawnsector] call _countSectorBox) < 3 ) then {
 					_newbox = [foodbarrel_typename, markerpos _spawnsector, false] call boxSetup;

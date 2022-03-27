@@ -2,7 +2,7 @@ if (!isServer && hasInterface) exitWith {};
 params [ "_unit", "_class" ];
 {
 	if ((_unit distance2D _x) <= 500) then {["parasound"] remoteExec ["playSound", owner _x]};
-} forEach allPlayers;
+} forEach (AllPlayers - (entities "HeadlessClient_F"));
 
 _pos = (getPosATL _unit) vectorAdd [0, 0, 400];
 _veh = createVehicle [_class, _pos, [], 0, "NONE"];

@@ -27,7 +27,7 @@ if ( _spawn_marker != "" ) then {
 	_target_size = round (GRLIB_battlegroup_size * ([] call F_adaptiveOpforFactor) * (sqrt GRLIB_csat_aggressivity));
 	if ( _target_size >= 16 ) then { _target_size = 16; };
 	if ( combat_readiness < 60 ) then { _target_size = round (_target_size * 0.65) };
-	if ( count allPlayers <= 2 ) then { _target_size = round (_target_size * 0.65) };
+	if ( count (AllPlayers - (entities "HeadlessClient_F")) <= 2 ) then { _target_size = round (_target_size * 0.65) };
 	diag_log format ["Spawn BattlegGroup (%1) on sector %2 at %3", _target_size, _spawn_marker, time];
 
 	for "_i" from 1 to _target_size do {

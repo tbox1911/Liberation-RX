@@ -128,7 +128,7 @@ while { true } do {
 
 		// Send Ammo
 		private _idact_send = _id_actions select 10;
-		if  (( (player distance2D lhd) <= 200 || _near_atm ) && count AllPlayers > 1) then {
+		if  (( (player distance2D lhd) <= 200 || _near_atm ) && count (AllPlayers - (entities "HeadlessClient_F")) > 1) then {
 			if ( _idact_send == -1 ) then {
 				_idact = player addAction ["<t color='#80FF00'>" + localize "STR_SEND_AMMO" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\misc\send_ammo.sqf","",-981,true,true,"","build_confirmed == 0"];
 				_id_actions set [10, _idact];
