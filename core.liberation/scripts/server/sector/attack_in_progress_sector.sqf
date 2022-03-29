@@ -41,26 +41,22 @@ if ( _ownership == GRLIB_side_friendly ) exitWith {
 };
 
 [ _sector, 1 ] remoteExec ["remote_call_sector", 0];
-private _attacktime = GRLIB_vulnerability_timer;
+
+private _sector_timer = GRLIB_vulnerability_timer;
 if (_sector in sectors_bigtown) then {
-	_attacktime = _attacktime + (10 * 60);
+	_sector_timer = _sector_timer + (10 * 60);
 };
 
-while { _attacktime > 0 && _ownership == GRLIB_side_enemy } do {
-	_ownership = [markerpos _sector] call F_sectorOwnership;
-	_attacktime = _attacktime - 1;
-	sleep 1;
-};
-
-private _countblufor = [markerpos _sector, GRLIB_capture_size, GRLIB_side_friendly ] call F_getUnitsCount;
-while { _countblufor > 0 && _ownership == GRLIB_side_enemy } do {
-	_ownership = [markerpos _sector] call F_sectorOwnership;
-	_countblufor = [markerpos _sector, GRLIB_capture_size, GRLIB_side_friendly ] call F_getUnitsCount;
+private _activeplayers = 0;
+while { (_sector_timer > 0 || _activeplayers > 0) && _ownership == GRLIB_side_enemy } do {
+	_ownership = [markerPos _sector] call F_sectorOwnership;
+	_activeplayers = count ([allPlayers, {alive _x && (_x distance2D (markerPos _sector)) < GRLIB_sector_size}] call BIS_fnc_conditionalSelect);
+	_sector_timer = _sector_timer - 1;
 	sleep 1;
 };
 
 if ( GRLIB_endgame == 0 ) then {
-	if ( _attacktime <= 1 && ( [markerpos _sector] call F_sectorOwnership == GRLIB_side_enemy ) ) then {
+	if ( _ownership == GRLIB_side_enemy ) then {
 		blufor_sectors = blufor_sectors - [ _sector ];
 		publicVariable "blufor_sectors";
 		[ _sector, 2 ] remoteExec ["remote_call_sector", 0];
@@ -88,3 +84,5 @@ if ( GRLIB_blufor_defenders ) then {
 		if ( alive _x ) then { deleteVehicle _x };
 	} foreach units _grp;
 };
+
+deleteGroup _grp;
