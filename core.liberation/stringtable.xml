@@ -4822,7 +4822,7 @@
 
 			<Key ID="STR_DO_LOCK">
 				<Original>%1 is Locked !</Original>
-				<French>%1 est vérouiller !</French>
+				<French>%1 est vérouillé !</French>
 				<Japanese>%1 に鍵をかけました！</Japanese>
 				<Chinesesimp>%1 已锁上！</Chinesesimp>
 				<Chinese>%1 已鎖上！</Chinese>
