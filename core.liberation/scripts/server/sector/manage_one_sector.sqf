@@ -22,11 +22,12 @@ private _sector_despawn_tickets = 24;
 private _popfactor = 1;
 
 if ( GRLIB_adaptive_opfor ) then {
-	private _activeplayers = count ( [ allPlayers , { alive _x && ( _x distance2D ( getmarkerpos _sector ) ) < GRLIB_sector_size } ] call BIS_fnc_conditionalSelect );
+	private _activeplayers = count ([allPlayers, {alive _x && (_x distance2D (getmarkerpos _sector)) < GRLIB_sector_size}] call BIS_fnc_conditionalSelect);
 	switch (true) do {
-		case (_activeplayers > 2) : { _popfactor = 1.2 };
-		case (_activeplayers > 4) : { _popfactor = 1.3 };
 		case (_activeplayers > 6) : { _popfactor = 1.4 };
+		case (_activeplayers > 4) : { _popfactor = 1.3 };
+		case (_activeplayers > 2) : { _popfactor = 1.2 };
+		case (_activeplayers > 1) : { _popfactor = 1.1 };
 		default { _popfactor = GRLIB_unitcap };
 	};
 };
