@@ -16,7 +16,7 @@ player addEventHandler [
 		
 	//	if ((_vehicle in opfor_battlegroup_vehicles_low_intensity) || (_vehicle in opfor_battlegroup_vehicles_high_intensity) || (_vehicle in opfor_vehicles)) then {
 	//		hint "Keine Ahnung wie man die Waffen bedient...";
-	//		_vehicle setAmmo 0;
+	//		_vehicle setVehicleAmmo 0;
 	//		
 	//		};
 
