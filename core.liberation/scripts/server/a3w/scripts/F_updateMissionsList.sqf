@@ -27,7 +27,6 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 	};
 };
 
-
 // Town capture
 _mission_name = "mission_TownInvasion";
 if (!([_missionsList, _mission_name] call getMissionState)) then {

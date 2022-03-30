@@ -9,7 +9,7 @@ private _radius = (GRLIB_sector_size * 0.85);
 	{
 		if ( (_position distance2D ( markerPos _x)) <= _radius ) exitWith { _item = false };
 		if ( (_position distance2D ([_position] call F_getNearestFob)) <= _radius ) exitWith { _item = false };
-
+		if ( (_position distance2D ([_position] call F_getNearestBluforObjective select 0)) > GRLIB_spawn_max ) exitWith { _item = false };
 	} forEach blufor_sectors;
 	if (_item) then { _list pushback _x };
 } forEach _markers;
