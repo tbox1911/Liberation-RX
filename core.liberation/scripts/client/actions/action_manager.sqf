@@ -373,11 +373,11 @@ while { true } do {
 		};
 
 		// Options
-/*		_idact_options = _id_actions select 26;
+		_idact_options = _id_actions select 26;
 		if ( _idact_options == -1 ) then {
 			_idact = player addAction ["<t color='#FF8000'>" + localize "STR_EXTENDED_OPTIONS" + "</t>","GREUH\scripts\GREUH_dialog.sqf","",-997,false,true];
 			_id_actions set [26, _idact];
-		};*/
+		};
 		/*
 		if ( (_fobdistance < _distredeploy || (player distance2D lhd) <= 200) ) then {
 		} else {
