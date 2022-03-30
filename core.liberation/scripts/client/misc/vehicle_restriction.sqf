@@ -11,7 +11,7 @@ player addEventHandler [
 		If !(SNC_VehRestriction) exitwith{};	
 		
 		If (_role == "Cargo") exitwith {}; 
-
+		if (_vehicle isKindof "ParachuteBase") exitwith {}; 
 		private _GrpRol = group _unit getVariable ["BIS_dg_rol","b_unknown"];  
 		
 	//	if ((_vehicle in opfor_battlegroup_vehicles_low_intensity) || (_vehicle in opfor_battlegroup_vehicles_high_intensity) || (_vehicle in opfor_vehicles)) then {
@@ -20,8 +20,9 @@ player addEventHandler [
 	//		
 	//		};
 
-
+		
 		if (_vehicle isKindof "Helicopter") then { 
+		
 			if !(_GrpRol in HeliUnits) then{ 
 				_unit action ["getOut", _vehicle]; 
 				hint format ["Wrong Group Role", name player];
