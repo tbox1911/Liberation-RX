@@ -13,6 +13,12 @@ player addEventHandler [
 		If (_role == "Cargo") exitwith {}; 
 
 		private _GrpRol = group _unit getVariable ["BIS_dg_rol","b_unknown"];  
+		
+	//	if ((_vehicle in opfor_battlegroup_vehicles_low_intensity) || (_vehicle in opfor_battlegroup_vehicles_high_intensity) || (_vehicle in opfor_vehicles)) then {
+	//		hint "Keine Ahnung wie man die Waffen bedient...";
+	//		_vehicle setAmmo 0;
+	//		
+	//		};
 
 
 		if (_vehicle isKindof "Helicopter") then { 
