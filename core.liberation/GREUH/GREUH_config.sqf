@@ -5,7 +5,7 @@ GREUH_allow_viewdistance = true;
 GREUH_allow_worldquality = true;
 
 // Permettre aux joueurs de modifier leurs escouades
-GREUH_allow_customsquads = false;
+GREUH_allow_customsquads = true;
 
 // Permettre aux joueurs de se voir sur la carte
 GREUH_allow_mapmarkers = false;
