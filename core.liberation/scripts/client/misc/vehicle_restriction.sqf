@@ -8,17 +8,17 @@ player addEventHandler [
 
 		params ["_unit", "_role", "_vehicle", "_turret"]; 
 //		systemChat format ["%1 - %2 ",_role, _turret];   Debug
-		If !(SNC_VehRestriction) exitwith{};	
+		if !(SNC_VehRestriction) exitwith{};	
 		
-		If (_role == "Cargo") exitwith {}; 
+		if (_role == "Cargo") exitwith {}; 
 		if (_vehicle isKindof "ParachuteBase") exitwith {}; 
 		private _GrpRol = group _unit getVariable ["BIS_dg_rol","b_unknown"];  
 		
-	//	if ((_vehicle in opfor_battlegroup_vehicles_low_intensity) || (_vehicle in opfor_battlegroup_vehicles_high_intensity) || (_vehicle in opfor_vehicles)) then {
-	//		hint "Keine Ahnung wie man die Waffen bedient...";
-	//		_vehicle setVehicleAmmo 0;
-	//		
-	//		};
+ 
+		if ((typeOf _vehicle in opfor_battlegroup_vehicles) || (typeOf _vehicle in opfor_vehicles)) then {
+			_vehicle setVehicleAmmo 0; 
+			hint "keine Ahnung wie man das Ding abfeuert...";
+			};
 
 		
 		if (_vehicle isKindof "Helicopter") then { 
