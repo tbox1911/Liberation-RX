@@ -2,7 +2,27 @@
 GRLIB_arsenal_side = WEST;
 
 //Blacklist Items
-blacklisted_bag = [];
+blacklisted_bag = [
+	"I_UAV_06_backpack_F",
+	"O_UAV_06_backpack_F",
+	"B_UAV_06_backpack_F",
+	"I_UAV_06_medical_backpack_F",
+	"O_UAV_06_medical_backpack_F",
+	"C_IDAP_UAV_06_medical_backpack_F",
+	"B_UAV_06_medical_backpack_F",
+	"I_UAV_01_backpack_F",
+	"O_UAV_01_backpack_F",
+	"B_UAV_01_backpack_F",
+	"C_IDAP_UAV_06_antimine_backpack_F",
+	"C_UAV_06_backpack_F",
+	"C_IDAP_UAV_06_backpack_F",
+	"C_UAV_06_medical_backpack_F",
+	"C_IDAP_UAV_01_backpack_F",
+	"I_E_UAV_06_backpack_F",
+	"I_E_UAV_06_medical_backpack_F",
+	"I_E_UAV_01_backpack_F"
+
+];
 
 blacklisted_weapon = [
 	"launch_B_Titan_F",
