@@ -219,6 +219,7 @@ ca. 42: remove && score player <= GRLIB_perm_log
 
 
 \scripts\server\ai\bomber_ai.sqf
+ca. 14: change GRLIB_side_civilian to GRLIB_side_enemy
 ca. 42: _unit addVest "V_TacChestrig_cbr_F";
 
 

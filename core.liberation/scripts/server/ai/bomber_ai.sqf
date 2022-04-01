@@ -11,7 +11,7 @@ private _cloth = selectRandom ["U_C_Poloshirt_blue","U_C_Poloshirt_burgundy","U_
 private _targets = [];
 private _target = objNull;
 
-_grp = createGroup [GRLIB_side_civilian, true];
+_grp = createGroup [GRLIB_side_enemy, true]; // GRLIB_side_civilian
 [_unit] joinSilent _grp;
 _unit setVariable ["GRLIB_is_kamikaze", true, true];
 
