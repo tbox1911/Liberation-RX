@@ -8,6 +8,36 @@ PAR_fn_death = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_death.s
 PAR_fn_unconscious = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_unconscious.sqf";
 PAR_fn_eject = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_eject.sqf";
 PAR_fn_checkWounded = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_checkWounded.sqf";
+
+PAR_unblock_AI = {
+	// Unblock unit(s) 0-8-1
+	params ["_unit_array"];
+	if ( count _unit_array == 0 ) then {
+		player setPosATL (getPosATL player vectorAdd [([] call F_getRND), ([] call F_getRND), 0.5]);
+	} else {
+		{
+			_unit = _x;
+			if (round (player distance2D _unit) < 50 && (lifeState _unit != 'INCAPACITATED') && vehicle _unit == _unit) then {
+				doStop _unit;
+				sleep 1;
+				_unit doWatch objNull;
+				_unit switchmove "";
+				_unit disableAI "ALL";
+				_grp = createGroup [GRLIB_side_friendly, true];
+				[_unit] joinSilent _grp;
+				doStop _unit;
+				sleep 1;
+				_unit setPosATL (getPosATL player vectorAdd [([] call F_getRND), ([] call F_getRND), 0.5]);
+				[_unit] joinSilent (group player);
+				_unit enableAI "ALL";
+				_unit doFollow leader player;
+				_unit switchMove "amovpknlmstpsraswrfldnon";
+			} else {
+				hintSilent "Unit is too far or is unconscious. (max 50m)";
+			};
+		} forEach _unit_array;
+	};
+};
 PAR_fn_globalchat = {
   params ["_speaker", "_msg"];
   if (isDedicated) exitWith {};
@@ -196,7 +226,9 @@ PAR_Player_Init = {
 		player addEventHandler ["HandleDamage", { _this call PAR_HandleDamage_EH }];
 	};
 	player removeAllMPEventHandlers "MPKilled";
-	player addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+	if (GRLIB_ACE_enabled)
+	then { player addMPEventHandler ["MPKilled", {_this spawn PAR_fn_death}] }
+	else { player addMPEventHandler ["MPKilled", {_this spawn kill_manager}] };
 	player setVariable ["GREUH_isUnconscious", 0, true];
 	player setVariable ["PAR_isUnconscious", 0, true];
 	player setVariable ["PAR_wounded", false];

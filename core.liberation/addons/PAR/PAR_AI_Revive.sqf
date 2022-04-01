@@ -50,11 +50,9 @@ PAR_MedGarbage = [
 waituntil {sleep 1; GRLIB_player_spawned};
 waituntil {sleep 1; !isNil {player getVariable ["GRLIB_Rank", nil]}};
 
-[] spawn PAR_AI_Manager;
 [] spawn PAR_Player_Init;
 
-// Event Handlers
-player addEventHandler ["Respawn", {[] spawn PAR_Player_Init}];
+if (!GRLIB_ACE_enabled) then { [] spawn PAR_AI_Manager };
 
 waitUntil {!(isNull (findDisplay 46))};
 systemChat "-------- pSiKo AI Revive Initialized --------";

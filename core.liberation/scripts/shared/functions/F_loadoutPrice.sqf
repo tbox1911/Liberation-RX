@@ -28,6 +28,7 @@ private _expensive_items = [
 ];
 
 private _free_items = [
+	"ace_",
 	"rnd_",
 	"firstaidkit",
 	"smokeshell",

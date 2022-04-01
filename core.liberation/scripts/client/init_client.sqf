@@ -87,15 +87,16 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 [] execVM "scripts\client\actions\squad_manager.sqf";
 [] execVM "scripts\client\ui\ui_manager.sqf";
 [] execVM "GREUH\scripts\GREUH_activate.sqf";
-[] execVM "addons\LARs\liberationArsenal.sqf";
 
 if (!GRLIB_ACE_enabled) then {
-	[] execVM "addons\PAR\PAR_AI_Revive.sqf";
 	[] execVM "addons\MGR\MagRepack_init.sqf";
 	[] execVM "addons\NRE\NRE_init.sqf";
 	[] execVM "addons\KEY\shortcut_init.sqf";
 	[] execVM "scripts\client\misc\support_manager.sqf";
 };
+
+[] execVM "addons\PAR\PAR_AI_Revive.sqf";
+[] execVM "addons\LARs\liberationArsenal.sqf";
 [] execVM "addons\VIRT\virtual_garage_init.sqf";
 [] execVM "addons\SELL\sell_shop_init.sqf";
 [] execVM "addons\SHOP\traders_shop_init.sqf";

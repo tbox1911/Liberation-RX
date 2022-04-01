@@ -19,7 +19,9 @@ _unit addEventHandler ["GetInMan", {
 		_vehicle spawn vehicle_defense;
 	};
 }];
+
 _unit addEventHandler ["SeatSwitchedMan", {_this spawn vehicle_permissions}];
+
 _unit addEventHandler ["GetOutMan", {
 	params ["_unit", "_role", "_vehicle"];
 	if (_vehicle == getConnectedUAV player) then {
@@ -64,54 +66,26 @@ _unit addEventHandler ["FiredMan",	{
 
 // Player
 if (_unit == player) then {
+	// Player respawn
+	_unit removeAllEventHandlers "Respawn";
+	_unit addEventHandler ["Respawn", {[] spawn PAR_Player_Init}];
+	
 	// ACE specific
 	if (GRLIB_ACE_enabled) then {
 		["ace_arsenal_displayClosed", {[player] spawn F_payLoadout}] call CBA_fnc_addEventHandler;
-	} else {
-		// Filter and Pay Loadout
-		//[missionNamespace, "arsenalClosed", {[] spawn {[player] call F_filterLoadout;[player] call F_payLoadout}}] call BIS_fnc_addScriptedEventHandler;
-
-		// Unblock unit(s) 0-8-1
-		PAR_unblock_AI = {
-			params ["_unit_array"];
-			if ( count _unit_array == 0 ) then {
-				player setPosATL (getPosATL player vectorAdd [([] call F_getRND), ([] call F_getRND), 0.5]);
-			} else {
-				{
-					_unit = _x;
-					if (round (player distance2D _unit) < 50 && (lifeState _unit != 'INCAPACITATED') && vehicle _unit == _unit) then {
-						doStop _unit;
-						sleep 1;
-						_unit doWatch objNull;
-						_unit switchmove "";
-						_unit disableAI "ALL";
-						_grp = createGroup [GRLIB_side_friendly, true];
-						[_unit] joinSilent _grp;
-						doStop _unit;
-						sleep 1;
-						_unit setPosATL (getPosATL player vectorAdd [([] call F_getRND), ([] call F_getRND), 0.5]);
-						[_unit] joinSilent (group player);
-						_unit enableAI "ALL";
-						_unit doFollow leader player;
-						_unit switchMove "amovpknlmstpsraswrfldnon";
-					} else {
-						hintSilent "Unit is too far or is unconscious. (max 50m)";
-					};
-				} forEach _unit_array;
-			};
-		};
-
-		// Unblock units
-		missionNamespace setVariable [
-		"BIS_fnc_addCommMenuItem_menu", [
-			["Do it !", true],
-			["Unblock unit.", [2], "", -5, [["expression", "[groupSelectedUnits player] spawn PAR_unblock_AI"]], "1", "1"]
-		]];
-
-		// Cannot DisAssemble
-		inGameUISetEventHandler ["Action", "if (_this select 3 == 'DisAssemble') then { hintSilent 'You are not allowed to do this';true}"];
 	};
 
+	// Unblock units
+	missionNamespace setVariable [
+	"BIS_fnc_addCommMenuItem_menu", [
+		["Do it !", true],
+		["Unblock unit.", [2], "", -5, [["expression", "[groupSelectedUnits player] spawn PAR_unblock_AI"]], "1", "1"]
+	]];
+
+	// Cannot DisAssemble
+	inGameUISetEventHandler ["Action", "if (_this select 3 == 'DisAssemble') then { hintSilent 'You are not allowed to do this';true}"];
+
+	// Get in Vehicle
 	_unit removeAllEventHandlers "GetInMan";
 	_unit addEventHandler ["GetInMan", {
 		params ["_unit", "_role", "_vehicle"];
@@ -124,6 +98,7 @@ if (_unit == player) then {
 		};
 	}];
 
+	// Get out Vehicle
 	_unit removeAllEventHandlers "GetOutMan";
 	_unit addEventHandler ["GetOutMan", {
 		params ["_unit", "_role", "_vehicle"];
