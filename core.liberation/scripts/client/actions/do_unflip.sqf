@@ -1,7 +1,8 @@
 params ["_vehicle"];
 if (isNil "_vehicle") exitWith {};
 
-if ( !isNull _vehicle ) then {
+if (true) then {
+	if (true) exitWith {hint "Unflip deakitiviert!";};
 	if !(player == vehicle player) exitWith {hint "Not Empty!";};
 	_vehicle allowDamage false;
 	sleep 0.2;
