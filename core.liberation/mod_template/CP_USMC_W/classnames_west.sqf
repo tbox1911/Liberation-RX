@@ -164,6 +164,7 @@ air_vehicles = [
 	["CUP_B_USMC_DYN_MQ9",0,1300,0,GRLIB_perm_inf], // Reaper
 	["B_UAV_05_F",0,1300,0,GRLIB_perm_inf], //Sentinel
 	["CUP_B_AH64D_DL_USA",0,1300,0,GRLIB_perm_inf],
+	["I_Plane_Fighter_04_F",0,1500,0,GRLIB_perm_inf],
 	["CUP_B_A10_DYN_USA",0,1500,0,GRLIB_perm_inf],
 	["CUP_B_AV8B_DYN_USMC",0,1500,0,GRLIB_perm_inf],
 	["CUP_B_F35B_USMC",0,1500,0,GRLIB_perm_inf],
@@ -262,12 +263,9 @@ support_vehicles_west = [
     	["CUP_B_MTVR_Repair_USMC",0,500,0,GRLIB_perm_inf],
     	["CUP_B_MTVR_Refuel_USMC",0,500,0,GRLIB_perm_inf],
     	["CUP_B_MTVR_Ammo_USMC",0,500,0,GRLIB_perm_inf],
-    	["CargoNet_01_box_F",0,300,0,GRLIB_perm_inf],
-    	["CargoNet_01_box_F",0,300,0,GRLIB_perm_inf],
-    	["CargoNet_01_box_F",0,300,0,GRLIB_perm_inf],
-    	["CargoNet_01_box_F",0,300,0,GRLIB_perm_inf],
-    	["B_CargoNet_01_ammo_F",0,300,0,GRLIB_perm_inf],
-    	["CargoNet_01_barrels_F",0,300,0,GRLIB_perm_inf],
+    	["CargoNet_01_box_F",0,0,0,GRLIB_perm_inf],
+    	["B_CargoNet_01_ammo_F",0,0,0,GRLIB_perm_inf],
+    	["CargoNet_01_barrels_F",0,0,0,GRLIB_perm_inf],
     	["Land_RepairDepot_01_green_F",0,0,0,GRLIB_perm_inf],
     	["ACE_Track",0,0,0,GRLIB_perm_inf],
     	["ACE_Wheel",0,0,0,GRLIB_perm_inf],

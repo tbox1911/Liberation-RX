@@ -215,6 +215,7 @@ ca. 42: comment the vehicle owner condition
 
 
 \scripts\client\actions\do_recycle.sqf
+ca. 11: comment "XP AmmoBox" stuff -> add to opfor recycle list instead, so every player can profit
 ca. 42: remove && score player <= GRLIB_perm_log
 
 

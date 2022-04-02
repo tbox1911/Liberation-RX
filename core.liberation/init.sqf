@@ -76,8 +76,8 @@ SNC_VehRestriction= true;
 
 ["CargoNet_01_box_F", "InitPost", {
     params ["_vehicle"];
-	[_vehicle,3] call ace_cargo_fnc_setSize;
-	[_vehicle,2] call ace_cargo_fnc_setSpace;
+	[_vehicle,8] call ace_cargo_fnc_setSize;
+	[_vehicle,4] call ace_cargo_fnc_setSpace;
 	["ACE_Wheel", _vehicle] call ace_cargo_fnc_addCargoItem;
 	["ACE_Track", _vehicle] call ace_cargo_fnc_addCargoItem;
 	[_vehicle, true, [0, 1.5, 0], 0] call ace_dragging_fnc_setCarryable; 
@@ -87,7 +87,8 @@ SNC_VehRestriction= true;
 
 ["B_CargoNet_01_ammo_F", "InitPost", {
     params ["_vehicle"];
-	[_vehicle,3] call ace_cargo_fnc_setSize;
+	[_vehicle,8] call ace_cargo_fnc_setSize;
+	[_vehicle,4] call ace_cargo_fnc_setSpace;
 	[_vehicle, 150000] call ace_rearm_fnc_makeSource;
 	[_vehicle, true, [0, 1.5, 0], 0] call ace_dragging_fnc_setCarryable;
 	[_vehicle, true, [0, 1.5, 0], 0] call ace_dragging_fnc_setDraggable;
@@ -95,10 +96,17 @@ SNC_VehRestriction= true;
 
 ["CargoNet_01_barrels_F", "InitPost", {
     params ["_vehicle"];
-	[_vehicle,3] call ace_cargo_fnc_setSize;
+	[_vehicle,8] call ace_cargo_fnc_setSize;
+	[_vehicle,4] call ace_cargo_fnc_setSpace;
     [_vehicle, 15000] call ace_refuel_fnc_makeSource;
 	[_vehicle, true, [0, 1.5, 0], 0] call ace_dragging_fnc_setCarryable;
 	[_vehicle, true, [0, 1.5, 0], 0] call ace_dragging_fnc_setDraggable;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["Land_MetalBarrel_F", "InitPost", {
+    params ["_vehicle"];
+	[_vehicle,4] call ace_cargo_fnc_setSize;
+    [_vehicle, 3750] call ace_refuel_fnc_makeSource;
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
 ["Box_NATO_AmmoVeh_F", "InitPost", {
@@ -330,11 +338,14 @@ SNC_VehRestriction= true;
 	_vehicle setObjectTextureGlobal [3,"A3\armor_f\data\cage_olive_co.paa"];
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
-["Box_NATO_Equip_F", "InitPost", {
+["I_Plane_Fighter_04_F", "InitPost", {
     params ["_vehicle"];
-	clearItemCargoGlobal _vehicle;
+	[
+		_vehicle,
+		["CamoGrey",1], 
+		true
+	] call BIS_fnc_initVehicle;
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
 
 ["rhsusf_socom_marsoc_sarc", "InitPost", {
 	params ["_vehicle"];

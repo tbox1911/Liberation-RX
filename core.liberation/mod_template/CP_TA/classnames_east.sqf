@@ -223,6 +223,14 @@ opfor_statics = [
 ];
 
 opfor_recyclable = [
+	// necessary so everyone can profit from logistics
+	["Box_NATO_AmmoVeh_F",0,round(10 / GRLIB_recycling_percentage),0], 
+	["Box_East_AmmoVeh_F",0,round(10 / GRLIB_recycling_percentage),0], 
+	["Box_IND_AmmoVeh_F",0,round(10 / GRLIB_recycling_percentage),0], 
+	["Land_BarrelWater_F",0,round(10 / GRLIB_recycling_percentage),0], 
+	["Land_FoodSacks_01_large_brown_idap_F",0,round(10 / GRLIB_recycling_percentage),0], 
+	["Land_MetalBarrel_F",0,round(10 / GRLIB_recycling_percentage),0], 
+	
 	["CUP_O_BM21_TKA",0,round (60 / GRLIB_recycling_percentage),0],
 	["I_MRAP_03_F",0,round (60 / GRLIB_recycling_percentage),0],
 	["I_MRAP_03_F",0,round (60 / GRLIB_recycling_percentage),0],
