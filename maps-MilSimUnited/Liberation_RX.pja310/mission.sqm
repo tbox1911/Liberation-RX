@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=3470;
+		nextID=3473;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=816;
+		nextID=869;
 	};
 	class Camera
 	{
-		pos[]={1558.826,97.381187,5662.3423};
-		dir[]={0.14472903,-0.36431438,0.91999984};
-		up[]={0.056619611,0.93125904,0.35992464};
-		aside[]={0.98788941,1.3010322e-006,-0.15540603};
+		pos[]={-3216.854,158.8255,5122.2173};
+		dir[]={0.95245421,-0.04700958,0.30113161};
+		up[]={0.044838335,0.99889177,0.014175761};
+		aside[]={0.30146596,-4.5082561e-007,-0.95351267};
 	};
 };
 binarizationWanted=0;
@@ -364,7 +364,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=389;
+		items=391;
 		class Item0
 		{
 			dataType="Marker";
@@ -32082,13 +32082,13 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={1585.712,0,5872.6938};
+				position[]={-3230.385,0,5338.3081};
 			};
 			side="Empty";
 			class Attributes
 			{
 			};
-			id=3468;
+			id=3470;
 			type="ffaa_ar_bam";
 			atlOffset=1.7669487;
 			class CustomAttributes
@@ -32143,48 +32143,148 @@ class Mission
 						};
 					};
 				};
+				nAttributes=1;
+			};
+		};
+		class Item389
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={-3901.6152,0,6104.4624};
+			};
+			side="Empty";
+			class Attributes
+			{
+			};
+			id=3471;
+			type="ffaa_ar_bam";
+			atlOffset=1.7669487;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="CustomWinchCargo";
+					expression="_this setVariable ['CustomWinchCargo',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"ARRAY"
+								};
+							};
+							class value
+							{
+								items=2;
+								class Item0
+								{
+									class data
+									{
+										class type
+										{
+											type[]=
+											{
+												"STRING"
+											};
+										};
+										value="ffaa_ar_zodiac_hurricane";
+									};
+								};
+								class Item1
+								{
+									class data
+									{
+										class type
+										{
+											type[]=
+											{
+												"STRING"
+											};
+										};
+										value="ffaa_ar_zodiac_hurricane";
+									};
+								};
+							};
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item390
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={-3858.4041,0,3622.9971};
+			};
+			side="Empty";
+			class Attributes
+			{
+			};
+			id=3472;
+			type="ffaa_ar_bam";
+			atlOffset=1.7669481;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="CustomWinchCargo";
+					expression="_this setVariable ['CustomWinchCargo',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"ARRAY"
+								};
+							};
+							class value
+							{
+								items=2;
+								class Item0
+								{
+									class data
+									{
+										class type
+										{
+											type[]=
+											{
+												"STRING"
+											};
+										};
+										value="ffaa_ar_zodiac_hurricane";
+									};
+								};
+								class Item1
+								{
+									class data
+									{
+										class type
+										{
+											type[]=
+											{
+												"STRING"
+											};
+										};
+										value="ffaa_ar_zodiac_hurricane";
+									};
+								};
+							};
+						};
+					};
+				};
 				class Attribute1
 				{
-					property="ace_refuel_fuelCargo";
-					expression="if (_value != (if (isNumber (configOf _this >> ""ace_refuel_fuelCargo"")) then {getNumber (configOf _this >> ""ace_refuel_fuelCargo"")} else {-1})) then {[_this, _value] call ace_refuel_fnc_makeSource}";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"SCALAR"
-								};
-							};
-							value=30000;
-						};
-					};
-				};
-				class Attribute2
-				{
-					property="ace_isRepairFacility";
-					expression="if (_value != (if (isNumber (configOf _this >> ""ace_repair_canRepair"")) then {getNumber (configOf _this >> ""ace_repair_canRepair"")} else {0})) then {_this setVariable ['ace_isRepairFacility', _value, true]}";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"SCALAR"
-								};
-							};
-							value=1;
-						};
-					};
-				};
-				class Attribute3
-				{
-					property="ace_isMedicalFacility";
-					expression="_this setVariable [""ace_medical_isMedicalFacility"", _value, true];";
+					property="AllowAi";
+					expression="_this setVariable ['FFAA_shipWeaponsAuto',_value,true];";
 					class Value
 					{
 						class data
@@ -32196,30 +32296,11 @@ class Mission
 									"BOOL"
 								};
 							};
-							value=1;
+							value=0;
 						};
 					};
 				};
-				class Attribute4
-				{
-					property="ace_rearm_rearmCargo";
-					expression="if (_value != (if (isNumber (configOf _this >> ""ace_rearm_defaultSupply"")) then {getNumber (configOf _this >> ""ace_rearm_defaultSupply"")} else {-1})) then {[_this, _value] call ace_rearm_fnc_makeSource}";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"SCALAR"
-								};
-							};
-							value=60000;
-						};
-					};
-				};
-				nAttributes=5;
+				nAttributes=2;
 			};
 		};
 	};
