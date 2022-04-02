@@ -6,7 +6,7 @@ _grp = group (_crew select 0);
 _crew allowGetIn false;
 {
 	if (alive _x && lifeState _x != "INCAPACITATED") then {
-		if (side group _this == GRLIB_side_enemy) exitWith {hint "EAST";
+		if (side _grp == GRLIB_side_enemy) exitWith {hint "EAST";
 			playSound "vtolAlarm";
 			[player, -5] remoteExec ["addScore", 2];};
 		unassignVehicle _x;
