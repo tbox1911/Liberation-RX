@@ -33,10 +33,7 @@ support_vehicles = support_vehicles_west + [
 	[ammobox_b_typename,0,round(10 / GRLIB_recycling_percentage),0,99999],
 	[ammobox_o_typename,0,round(10 / GRLIB_recycling_percentage),0,99999],
 	[ammobox_i_typename,0,round(10 / GRLIB_recycling_percentage),0,99999],
-	[fuelbarrel_typename,0,round(10 / GRLIB_recycling_percentage),0,99999],
-	[A3W_BoxWps,0,round(5 / GRLIB_recycling_percentage),0,99999],
-	[waterbarrel_typename,0,round(10 / GRLIB_recycling_percentage),0,99999],
-	[foodbarrel_typename,0,round(10 / GRLIB_recycling_percentage),0,99999]
+	[A3W_BoxWps,0,round(5 / GRLIB_recycling_percentage),0,99999]
 	// [Arsenal_typename,0,10,0,GRLIB_perm_inf],
 	// [medicalbox_typename,5,5,0,GRLIB_perm_inf],
 	// [mobile_respawn,10,5,0,GRLIB_perm_inf],
