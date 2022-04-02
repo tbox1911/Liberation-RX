@@ -106,6 +106,7 @@ boats_east = [
 ];
 
 opfor_vehicles = [
+"CUP_O_2S6_RU",
 "CUP_O_T72_RU",
 "CUP_O_GAZ_Vodnik_KPVT_RU",
 "CUP_O_GAZ_Vodnik_BPPU_RU",
