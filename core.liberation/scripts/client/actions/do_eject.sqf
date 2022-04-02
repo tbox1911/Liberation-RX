@@ -6,7 +6,7 @@ _grp = group (_crew select 0);
 _crew allowGetIn false;
 {
 	if (alive _x && lifeState _x != "INCAPACITATED") then {
-		if(side group _this == "EAST") {};
+		if(side group _this == "EAST") exitWith {};
 		unassignVehicle _x;
 		commandGetOut _x;
 		doGetOut _x;
