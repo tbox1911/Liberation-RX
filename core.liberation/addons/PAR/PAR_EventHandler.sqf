@@ -12,6 +12,9 @@ params ["_unit"];
 
 // For all
 
+// Cannot DisAssemble
+_unit enableWeaponDisassembly false;
+
 // Check Veh perms
 _unit addEventHandler ["GetInMan", {
 	params ["_unit", "_role", "_vehicle"];
