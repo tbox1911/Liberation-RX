@@ -1,9 +1,7 @@
-if ( !(isNil "GRLIB_param_wipe_savegame_1") && !(isNil "GRLIB_param_wipe_savegame_2") ) then {
-	if ( GRLIB_param_wipe_savegame_1 == 1 && GRLIB_param_wipe_savegame_2 == 1 ) then {
-		profileNamespace setVariable [ GRLIB_save_key, nil ];
-		saveProfileNamespace;
-	};
-};
+// the precious Load/Save Manager loop
+// edit with caution !
+
+diag_log format [ "--- LRX Save Manager start at %1", time ];
 private ["_nextbuilding"];
 
 date_year = date select 0;
@@ -68,15 +66,26 @@ _vehicles_blacklist = list_static_weapons + uavs + [mobile_respawn];
 _classnames_to_save = _classnames_to_save + _classnames_to_save_blu + all_hostile_classnames;
 _buildings_created = [];
 
+// Wipe Savegame
+if ( GRLIB_param_wipe_savegame_1 == 1 && GRLIB_param_wipe_savegame_2 == 1 ) then {
+	if (GRLIB_param_wipe_keepscore == 1) then {
+		GRLIB_permissions = profileNamespace getVariable GRLIB_save_key select 12;
+		GRLIB_player_scores = profileNamespace getVariable GRLIB_save_key select 15;
+	};
+	profileNamespace setVariable [ GRLIB_save_key, nil ];
+	saveProfileNamespace;
+};
+sleep 2;
+
+// Load Savegame
 trigger_server_save = false;
 greuh_liberation_savegame = profileNamespace getVariable GRLIB_save_key;
 
 _side_west = "";
 _side_east = "";
 
-// Manager Load Save
-diag_log format [ "--- LRX Load Game start at %1", time ];
 if ( !isNil "greuh_liberation_savegame" ) then {
+	diag_log format [ "--- LRX Load Game start at %1", time ];
 
 	blufor_sectors = greuh_liberation_savegame select 0;
 	GRLIB_all_fobs = greuh_liberation_savegame select 1;
@@ -272,6 +281,8 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 	{
 		if (! (typeOf _x in [FOB_typename, FOB_sign])) then { _x allowDamage true };
 	} foreach _buildings_created;
+
+	diag_log format [ "--- LRX Load Game finish at %1", time ];
 };
 
 if ( count GRLIB_vehicle_to_military_base_links == 0 ) then {
@@ -310,10 +321,9 @@ if (abort_loading) exitWith { abort_loading_msg = format [
 	*********************************", _side_west, _side_east];
 };
 
-diag_log format [ "--- LRX Load Game finish at %1", time ];
-sleep 5;
+sleep 60;
 
-// Manager Save Loop
+// Savegame Loop
 while { true } do {
 	waitUntil {sleep 10; trigger_server_save || GRLIB_endgame == 1};
 

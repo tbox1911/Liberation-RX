@@ -439,6 +439,12 @@ class Params
 		texts[] = {$STR_WIPE_NO,$STR_WIPE_YES};
 		default = 0;
 	};
+	class KeepScore{
+		title = $STR_WIPE_TITLE_3;
+		values[] = {0,1};
+		texts[] = {$STR_NO, $STR_YES};
+		default = 0;
+	};	
 	class ForceLoading{
 		title = "Force save game loading.";
 		values[] = {0,1};

@@ -538,6 +538,10 @@
 					<Chinese>確認: 清除存檔</Chinese>
 					<Japanese>確認：セーブデータ消去</Japanese>
 			</Key>
+			<Key ID="STR_WIPE_TITLE_3">
+					<Original>Keep Players Datas</Original>
+					<French>Garder les infos des Joueurs</French>
+			</Key>
 			<Key ID="STR_WIPE_NO">
 					<Original>No</Original>
 					<French>Non</French>
