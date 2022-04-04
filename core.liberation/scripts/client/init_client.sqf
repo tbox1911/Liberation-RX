@@ -1,5 +1,7 @@
 diag_log "--- Client Init start ---";
 titleText ["" ,"BLACK FADED", 100];
+R3F_LOG_joueur_deplace_objet = objNull;
+GRLIB_player_spawned = false;
 
 waitUntil {!isNil "abort_loading" };
 if (abort_loading) exitWith {
@@ -38,9 +40,6 @@ player_EVH = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_EventHandler
 paraDrop = compileFinal preprocessFileLineNumbers "scripts\client\spawn\paraDrop.sqf";
 get_lrx_name = compileFinal preprocessFileLineNumbers "scripts\client\misc\get_lrx_name.sqf";
 get_player_name = compileFinal preprocessFileLineNumbers "scripts\client\misc\get_player_name.sqf";
-
-R3F_LOG_joueur_deplace_objet = objNull;
-GRLIB_player_spawned = false;
 
 private _grp = createGroup [GRLIB_side_friendly, true];
 [player] joinSilent _grp;

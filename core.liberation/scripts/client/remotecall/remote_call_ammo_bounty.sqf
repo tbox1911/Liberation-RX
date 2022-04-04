@@ -1,4 +1,5 @@
-if ( isDedicated ) exitWith {};
+if (isDedicated) exitWith {};
+if (!GRLIB_player_spawned) exitWith {};
 
 params [ "_classname", "_bounty", "_bonus", "_killer" ];
 
