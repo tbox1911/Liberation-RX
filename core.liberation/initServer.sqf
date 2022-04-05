@@ -1,48 +1,85 @@
 
 
+
+
+ ["ace_unconscious", { // global event (runs on all machines)
+    params ["_unit", "_isUnconscious"];
+
+    _allHCs = entities "HeadlessClient_F";
+    _allHPs = allPlayers - _allHCs;
+    _aliveCount = 0;
+    _allCount = count _allHPs;
+	
+    if ((_isUnconscious) && (_unit in _allHPs)) then {
+        // (format ["%1 is down", name _unit]) remoteExec ["systemChat", 0];
+		[getPlayerUID _unit, -25] remoteExec ["F_addPlayerAmmo", 2];
+    }else{
+		[getPlayerUID _unit, +25] remoteExec ["F_addPlayerAmmo", 2];
+	};
+    
+}] call CBA_fnc_addEventHandler;
+
+
+
+
 addMissionEventHandler ['EntityKilled',{
 	
 	params ["_unit", "_killer"];
 	
 	if (isPlayer _unit) then {
 		
+		/*
 		_hs_unconscious = _unit getVariable ['ACE_isUnconscious', false];
 		if (_hs_unconscious == true) then {
 			_unit setVariable ["GREUH_ammo_count", ( (_unit getVariable ["GREUH_ammo_count", 25]) - 25), true];
 		};
+		*/
 		
 	}else{
 		
-		if ( (side group _unit == opfor) && (isPlayer _killer) ) then {
-			_killer setVariable ["GREUH_ammo_count", ( (_killer getVariable ["GREUH_ammo_count", 0]) + 1), true];
-			[_killer, 1] remoteExec ["addScore", 2];
+		if (isPlayer _killer) then {
+			
+			if (side group _unit == opfor) then {
+				
+				[getPlayerUID _killer, +1] remoteExec ["F_addPlayerScore", 2];
+				[getPlayerUID _killer, +1] remoteExec ["F_addPlayerAmmo", 2];
+				
+			} else {
+				
+				if (side group _unit == civilian) then {
+					
+					_msg = format ["%1 killed a civillian. Penalty: -15 rank and ammo", name _killer];
+					[gamelogic, _msg] remoteExec ["globalChat", 0];
+					[getPlayerUID _killer, -15] remoteExec ["F_addPlayerScore", 2];
+					[getPlayerUID _killer, -15] remoteExec ["F_addPlayerAmmo", 2];
+					
+				} else {
+					// _msg = format ["%1 destroyed %2", name _killer, typeOf _unit];
+					// [gamelogic, _msg] remoteExec ["globalChat", 0];
+					
+					_tre = [ configFile >> "CfgVehicles" >> typeOf _unit, true ] call BIS_fnc_returnParents;
+					
+					if ( ("House" in _tre) && !("Strategic" in _tre) ) then {
+						_msg = format ["%1 destroyed civilian infra structure", name _killer];
+						[gamelogic, _msg] remoteExec ["globalChat", 0];
+						[getPlayerUID _killer, -15] remoteExec ["F_addPlayerScore", 2];
+						[getPlayerUID _killer, -15] remoteExec ["F_addPlayerAmmo", 2];
+					};
+					
+				};
+				
+			};
+			
 		};
 		
-		if (side group _unit == civilian && side _killer == blufor) then {
-			_msg = format ["%1 killed a civillian. Penalty: -15 rank and ammo", name _killer];
-			[gamelogic, _msg] remoteExec ["globalChat", 0];
-			_killer setVariable ["GREUH_ammo_count", ( (_killer getVariable ["GREUH_ammo_count", 15]) - 15), true];
-			[_killer, -15] remoteExec ["addScore", 2];
-		};
-		/*
-		
-		
-		_tre = [ configFile >> "CfgVehicles" >> typeOf _unit, true ] call BIS_fnc_returnParents; 
-
-		if (("House" in _tre) && !("Strategic" in _tre) && side _killer == blufor) then {
-			_msg = format ["%1 killed a House. Penalty: -50 rank and ammo", name _killer];
-			[gamelogic, _msg] remoteExec ["globalChat", 0];
-			_killer setVariable ["GREUH_ammo_count", ( (_killer getVariable ["GREUH_ammo_count", 50]) - 50), true];
-			[_killer, -50] remoteExec ["addScore", 2];
-		};
-		
-		*/
 	};
 	
 }];
 
 
 
+
+/*
 addMissionEventHandler ['HandleDisconnect',{
 	_unit = _this select 0;
 	_hs_unconscious = _unit getVariable ['ACE_isUnconscious', false];
@@ -50,8 +87,17 @@ addMissionEventHandler ['HandleDisconnect',{
 		_unit setVariable ["GREUH_ammo_count", ( (_unit getVariable ["GREUH_ammo_count", 25]) - 25), true];
 	};
 }];
+*/
+
 
 
 
 ["Initialize", [true]] call BIS_fnc_dynamicGroups;
+
+
+
+
+
+
+
 
