@@ -1936,13 +1936,6 @@
 					<Chinese>選定的班組成員將被刪除。</Chinese>
 					<Japanese>選択された隊員は解雇されます。</Japanese>
 			</Key>
-			<Key ID="STR_PROMOTE">
-					<Original>Level UP!</Original>
-					<French>Grade Sup!</French>
-                    <Chinesesimp>升级！</Chinesesimp>
-					<Chinese>升級！</Chinese>
-					<Japanese>昇格しました！</Japanese>
-			</Key>
 			<Key ID="STR_PROMOTE_TOOLTIP">
 					<Original>Promotes the unit to the next rank in exchange for Ammo. It cannot be higher than the player's rank.</Original>
 					<French>Promeut l'unité au rang suivant en échange d'Ammo. Il ne peut pas être supérieur au rang du joueur.</French>
@@ -2517,7 +2510,7 @@
 			</Key>
 			<Key ID="STR_WHITELIST_PARAM">
 					<Original>Use the commander whitelist</Original>
-					<French>Utiliser le planBlanc pour le commandant</French>
+					<French>Utiliser la Whitelist pour le commandant</French>
 					<German>Nutze die Whitelist für den Kommandanten</German>
 					<Spanish>Utilizar la lista blanca para Comandantes</Spanish>
 					<Russian>Использование "белого" списка командиров</Russian>
@@ -4669,7 +4662,7 @@
 			</Key>
 			<Key ID="STR_SALVAGE">
 				<Original>-- SALVAGE</Original>
-				<French>-- RECYCLER</French>
+				<French>-- SALVAGE</French>
 				<Japanese>-- 解体</Japanese>
 				<Chinesesimp>-- 回收 --</Chinesesimp>
 				<Chinese>-- 回收 --</Chinese>
@@ -5342,6 +5335,13 @@
 				<Chinesesimp>复制装备</Chinesesimp>
 				<Chinese>複製裝備</Chinese>
 			</Key>
+			<Key ID="STR_PROMOTE">
+					<Original>Level UP!</Original>
+					<French>Grade Sup!</French>
+                    <Chinesesimp>升级！</Chinesesimp>
+					<Chinese>升級！</Chinese>
+					<Japanese>昇格しました！</Japanese>
+			</Key>			
 			<Key ID="STR_RENAME_BUTTON">
 				<Original>Rename</Original>
 				<French>Renomer</French>
