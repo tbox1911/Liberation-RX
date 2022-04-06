@@ -70,7 +70,16 @@ _buildings_created = [];
 if ( GRLIB_param_wipe_savegame_1 == 1 && GRLIB_param_wipe_savegame_2 == 1 ) then {
 	if (GRLIB_param_wipe_keepscore == 1) then {
 		GRLIB_permissions = profileNamespace getVariable GRLIB_save_key select 12;
-		GRLIB_player_scores = profileNamespace getVariable GRLIB_save_key select 15;
+		private _keep_players = [];
+		{
+			if (_x select 1 > GRLIB_perm_tank) then {
+				_x set [1, GRLIB_perm_tank];  	// score
+			};
+			_x set [2, GREUH_start_ammo];  		// ammo
+			_x set [3, GREUH_start_fuel];  		// fuel
+			_keep_players pushback _x;
+		} foreach (profileNamespace getVariable GRLIB_save_key select 15);
+		GRLIB_player_scores = _keep_players;
 	};
 	profileNamespace setVariable [ GRLIB_save_key, nil ];
 	saveProfileNamespace;
