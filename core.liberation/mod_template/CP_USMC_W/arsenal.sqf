@@ -25,6 +25,10 @@ blacklisted_bag = [
 ];
 
 blacklisted_weapon = [
+	"B_UavTerminal",
+	"O_UavTerminal",
+	"I_UavTerminal",
+	"C_UavTerminal",
 	"launch_B_Titan_F",
 	"launch_I_Titan_F",
 	"launch_O_Titan_F",
