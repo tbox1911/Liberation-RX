@@ -9,6 +9,10 @@ player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
 
 //Blacklist Items
 _blacklisted_ace_arsenal= [
+	"B_UavTerminal",
+	"O_UavTerminal",
+	"I_UavTerminal",
+	"C_UavTerminal",
 	"I_UAV_06_backpack_F",
 	"O_UAV_06_backpack_F",
 	"B_UAV_06_backpack_F",
