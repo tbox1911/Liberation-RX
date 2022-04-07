@@ -331,8 +331,6 @@ buildings_west = [
 	["Land_Trench_01_grass_F",0,0,0,GRLIB_perm_inf],
 	["Land_fort_rampart",0,0,0,GRLIB_perm_inf],
 	["Land_fort_artillery_nest",0,0,0,GRLIB_perm_inf],
-	["Land_HBarrierBig_lxWS",0,0,0,GRLIB_perm_inf],
-	["Land_HBarrier_3_lxWS",0,0,0,GRLIB_perm_inf],
 	["Land_HBarrier_01_line_5_green_F",0,0,0,GRLIB_perm_inf],
 	["Land_HBarrier_01_big_4_green_F",0,0,0,GRLIB_perm_inf],
 	["zed2",0,0,0,GRLIB_perm_inf],
