@@ -21,7 +21,7 @@ GRLIB_battlegroup_size = 7 * (sqrt GRLIB_unitcap) * (sqrt GRLIB_csat_aggressivit
 GRLIB_civilians_amount = 3 * GRLIB_civilian_activity;
 GRLIB_fob_range = 300;
 GRLIB_surrender_chance = 80;
-GRLIB_secondary_missions_costs = [ 30, 20, 10 ];
+GRLIB_secondary_missions_costs = [ 50, 40, 20 ];
 GRLIB_halo_altitude = 2000;
 GRLIB_civ_killing_penalty = 0;
 GRLIB_squad_size_bonus = 0;
@@ -37,7 +37,7 @@ GRLIB_date_day = 30;
 GRLIB_nights_start = 21;
 GRLIB_nights_stop = 4;
 GREUH_start_ammo = 200;
-if ( GRLIB_blufor_cap > 10 ) then { GRLIB_blufor_cap = 200 }; // Don't forget that the human commander manages those, not the server
+if ( GRLIB_blufor_cap >= 10 ) then { GRLIB_blufor_cap = 200 }; // Don't forget that the human commander manages those, not the server
 GRLIB_offload_diag = false;
 //NRE_Key = 199;
 MGR_Key = 19;
