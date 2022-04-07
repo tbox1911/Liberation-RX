@@ -60,10 +60,10 @@ light_vehicles = [
 	["CUP_B_nM1025_SOV_M2_USMC_WDL",0,150,0,GRLIB_perm_inf],
 	["CUP_B_nM1025_SOV_Mk19_USMC_WDL",0,150,0,GRLIB_perm_inf],
 	//FFAA
-	["ffaa_et_anibal",0,100,0,GRLIB_perm_inf],
+	["ffaa_et_anibal",0,80,0,GRLIB_perm_inf],
 	["ffaa_et_vamtac_m2",0,130,0,GRLIB_perm_inf],
 	["ffaa_et_vamtac_lag40",0,130,0,GRLIB_perm_inf],
-	["ffaa_et_vamtac_tow",0,180,0,GRLIB_perm_inf],
+	["ffaa_et_vamtac_tow",0,250,0,GRLIB_perm_inf],
 	["ffaa_et_vamtac_crows",0,200,0,GRLIB_perm_inf],
 	["ffaa_et_vamtac_mistral",0,180,0,GRLIB_perm_inf],
 	["ffaa_et_vamtac_cardom",0,500,0,GRLIB_perm_inf],
@@ -78,20 +78,20 @@ light_vehicles = [
 	["ffaa_et_m250_carga_blin",0,150,0,GRLIB_perm_inf],
 	["ffaa_et_m250_carga_lona_blin",0,150,0,GRLIB_perm_inf],
 	["ffaa_et_m250_recuperacion_blin",0,150,0,GRLIB_perm_inf],
-	["ffaa_et_m250_estacion_nasams_blin",0,900,0,GRLIB_perm_inf],
+	["ffaa_et_m250_estacion_nasams_blin",0,250,0,GRLIB_perm_inf],
 	["ffaa_et_pegaso_carga",0,140,0,GRLIB_perm_inf],
 	["ffaa_et_pegaso_carga_lona",0,140,0,GRLIB_perm_inf],
     	["B_Boat_Transport_01_F",0,30,0,GRLIB_perm_inf],
 	["CUP_B_Zodiac_USMC",0,30,0,GRLIB_perm_inf],
-	["CUP_B_RHIB_USMC",0,50,0,GRLIB_perm_inf],
+	["CUP_B_RHIB_USMC",0,80,0,GRLIB_perm_inf],
 	["CUP_B_LCU1600_USMC",0,30,0,GRLIB_perm_inf],
     	//["ffaa_ar_bam",0,5000,0,GRLIB_perm_inf],
-	["CUP_B_RHIB2Turret_USMC",0,50,0,GRLIB_perm_inf],
-	["CUP_B_RHIB_USMC",0,50,0,GRLIB_perm_inf],
-	["ffaa_ar_supercat",0,50,0,GRLIB_perm_inf],
+	["CUP_B_RHIB2Turret_USMC",0,80,0,GRLIB_perm_inf],
+	["CUP_B_RHIB_USMC",0,80,0,GRLIB_perm_inf],
+	["ffaa_ar_supercat",0,80,0,GRLIB_perm_inf],
 	["ffaa_ar_lcm",0,50,0,GRLIB_perm_inf],
 	["ffaa_ar_zodiac_hurricane",0,50,0,GRLIB_perm_inf],
-	["ffaa_ar_zodiac_hurricane_long",0,50,0,GRLIB_perm_inf]
+	["ffaa_ar_zodiac_hurricane_long",0,80,0,GRLIB_perm_inf]
 	
 ];
 
@@ -107,7 +107,7 @@ heavy_vehicles = [
 	["CUP_B_M1126_ICV_MK19_Woodland",0,400,0,GRLIB_perm_inf],
 	["CUP_B_M1129_MC_MK19_Woodland",0,800,0,GRLIB_perm_inf],
 	["CUP_B_M1128_MGS_Woodland",0,650,0,GRLIB_perm_inf],
-	["CUP_B_M1135_ATGMV_Woodland",0,550,0,GRLIB_perm_inf],
+	["CUP_B_M1135_ATGMV_Woodland",0,450,0,GRLIB_perm_inf],
 	["CUP_B_M7Bradley_USA_W",0,480,0,GRLIB_perm_inf],
 	["CUP_B_M2Bradley_USA_W",0,550,0,GRLIB_perm_inf],
 	["CUP_B_M2A3Bradley_USA_W",0,650,0,GRLIB_perm_inf],
@@ -118,8 +118,8 @@ heavy_vehicles = [
 	["CUP_B_M1A2C_TUSK_II_Woodland_US_Army",0,800,0,GRLIB_perm_inf],
 	["CUP_B_M270_HE_USMC",0,3500,0,GRLIB_perm_inf],
 	//FFAA
-	["ffaa_ar_piranhaIIIC_lance",0,300,0,GRLIB_perm_inf],
-	["ffaa_ar_piranhaIIIC",0,300,0,GRLIB_perm_inf],
+	["ffaa_ar_piranhaIIIC_lance",0,350,0,GRLIB_perm_inf],
+	["ffaa_ar_piranhaIIIC",0,350,0,GRLIB_perm_inf],
 	["ffaa_et_toa_spike",0,300,0,GRLIB_perm_inf],
 	["ffaa_et_toa_m2",0,300,0,GRLIB_perm_inf],
 	["ffaa_et_toa_zapador",0,300,0,GRLIB_perm_inf],
@@ -127,8 +127,8 @@ heavy_vehicles = [
 	//["ffaa_et_leopardo",0,800,0,GRLIB_perm_inf],
 	["ffaa_et_toa_ambulancia",0,300,0,GRLIB_perm_inf],
 	["ffaa_et_toa_mando",0,300,0,GRLIB_perm_inf],
-	["ffaa_et_m109",0,300,0,GRLIB_perm_inf],
-	["ffaa_ar_m109",0,300,0,GRLIB_perm_inf]
+	["ffaa_et_m109",0,800,0,GRLIB_perm_inf],
+	["ffaa_ar_m109",0,800,0,GRLIB_perm_inf]
 
 ];
 
@@ -172,7 +172,7 @@ air_vehicles = [
 	["ffaa_famet_ec135",0,450,0,GRLIB_perm_inf],
 	["ffaa_et_searcherIII",0,50,0,GRLIB_perm_inf],
 	["ffaa_ea_reaper",0,1000,0,GRLIB_perm_inf],
-	["ffaa_UAVStation",0,250,0,GRLIB_perm_inf],
+
 	["ffaa_famet_ch47_des_mg",0,500,0,GRLIB_perm_inf],
 	["ffaa_famet_ch47_mg",0,500,0,GRLIB_perm_inf],
 	["ffaa_famet_cougar_olive",0,450,0,GRLIB_perm_inf],
@@ -255,6 +255,7 @@ static_vehicles_AI = [
 ];
 
 support_vehicles_west = [
+	["ffaa_UAVStation",0,0,0,GRLIB_perm_inf],
 	["ffaa_et_m250_repara_municion_blin",0,300,0,GRLIB_perm_inf],
 	["ffaa_et_m250_combustible_blin",0,300,0,GRLIB_perm_inf],
 	["ffaa_et_m250_municion_blin",0,300,0,GRLIB_perm_inf],
