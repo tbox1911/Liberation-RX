@@ -4765,7 +4765,7 @@
 			</Key>
 			<Key ID="STR_FUEL_READY">
 				<Original>Jerrican Fuel ready.\nThank you !</Original>
-				<Original>Jerricane d'essence prêt.\nMerci à toi !</Original>
+				<French>Jerricane d'essence prêt.\nMerci !</French>
 				<Japanese>燃料缶は用意されました。</Japanese>
 				<Chinesesimp>加油完毕.\n感谢光临！</Chinesesimp>
 				<Chinese>加油完畢.\n感謝光臨！</Chinese>
