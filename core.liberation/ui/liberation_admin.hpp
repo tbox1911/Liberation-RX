@@ -3,10 +3,10 @@ class liberation_admin {
 	movingEnable = false;
 	controlsBackground[] = {};
 	controls[] = {
-	  "OuterBG1",
-	  "OuterBG_F1",
-	  "InnerBG1",
-	  "InnerBG_F1",
+	  "OuterBG",
+	  "OuterBG_F",
+	  "InnerBG",
+	  "InnerBG_F",
 	  "Header",
 	  "ArsenalButton",
 	  "AmmoButton",
@@ -14,6 +14,15 @@ class liberation_admin {
     "BuildList",
 	  "SkipTimeButton",
     "UnlockButton",
+    "ExportButton",
+    "ImportButton",
+    "Input_OuterBG",
+    "Input_InnerBG",
+    "Input_OuterBG_F",
+    "Input_InnerBG_F",
+    "Input_ButtonName_Ok",
+    "Input_ButtonName_Abort",
+    "Input_TextField",
     "DeleteButton",
 	  "Item01Button",
 	  "Item02Button",
@@ -28,6 +37,30 @@ class liberation_admin {
 	};
 
 	objects[] = {};
+  class OuterBG: StdBG
+  {
+    colorBackground[] = COLOR_BROWN;
+    x = 0.19175 * safezoneW + safezoneX;
+    y = 0.1324 * safezoneH + safezoneY;
+    w = 0.25 * safezoneW;
+    h = 0.62 * safezoneH;
+  };
+  class OuterBG_F: OuterBG
+  {
+		style = ST_FRAME;
+  };
+  class InnerBG: OuterBG
+  {
+    colorBackground[] = COLOR_GREEN;
+    x = 0.1985 * safezoneW + safezoneX;
+    y = 0.1916 * safezoneH + safezoneY;
+    w = 0.2375 * safezoneW;
+    h = 0.512 * safezoneH;
+  };
+  class InnerBG_F: InnerBG
+  {
+  	style = ST_FRAME;
+  };
   class ArsenalButton: StdButton
   {
     idc = 1600;
@@ -185,6 +218,82 @@ class liberation_admin {
     w = 0.0875 * safezoneW;
     h = 0.04 * safezoneH;
   };
+  class ExportButton: StdButton
+  {
+    idc = 1613;
+    action = "do_export=1";
+    text = $STR_ADMIN_EXPORT;
+    x = 0.3275 * safezoneW + safezoneX;
+    y = 0.572 * safezoneH + safezoneY;
+    w = 0.0875 * safezoneW;
+    h = 0.04 * safezoneH;
+  };
+  class ImportButton: StdButton
+  {
+    idc = 1614;
+    action = "do_import=1";
+    text = $STR_ADMIN_IMPORT;
+    x = 0.3275 * safezoneW + safezoneX;
+    y = 0.624 * safezoneH + safezoneY;
+    w = 0.0875 * safezoneW;
+    h = 0.04 * safezoneH;
+  };
+  //----------------
+	class Input_OuterBG : OuterBG {
+		idc = 521;
+		style = ST_SINGLE;
+		x = (0.37 * safezoneW + safezoneX) - (BORDERSIZE);
+		y = ((BASE_Y + 0.41) * safezoneH) + safezoneY - (1.5 * BORDERSIZE);
+		w = 0.2 * safezoneW +  (2 * BORDERSIZE);
+		h = 0.05 * safezoneH  + (3 * BORDERSIZE);
+	};  
+	class Input_InnerBG : InnerBG {
+		idc = 522;
+		colorBackground[] = COLOR_GREEN;
+		x = (0.37 * safezoneW + safezoneX);
+		y = ((BASE_Y + 0.41) * safezoneH) + safezoneY;
+		w = 0.2 * safezoneW;
+		h = 0.05 * safezoneH;
+	};
+	class Input_OuterBG_F : OuterBG_F {
+		idc = 523;
+		style = ST_FRAME;
+	};
+	class Input_InnerBG_F : InnerBG_F {
+		idc = 524;
+		style = ST_FRAME;
+	};
+	class Input_ButtonName_Ok : StdButton {
+		idc = 525;
+		x = 0.4875 * safezoneW + safezoneX;
+    y = ((BASE_Y + 0.42) * safezoneH) + safezoneY;
+		w = ((0.2 * safezoneW) / 5) - BORDERSIZE;
+		text = "OK";
+		action = "input_save = ctrlText 527;";
+	};
+	class Input_ButtonName_Abort : StdButton {
+		idc = 526;
+		x = (0.4875 * safezoneW + safezoneX) + ((0.2 * safezoneW) / 5);
+    y = ((BASE_Y + 0.42) * safezoneH) + safezoneY;
+		w = ((0.2 * safezoneW) / 5) - BORDERSIZE;    
+		text = "Cancel";
+		action = "closeDialog 0;";
+	};
+	class Input_TextField : StdButton {
+		idc = 527;
+		type = CT_EDIT;
+		style = ST_LEFT;
+		x = (0.37 * safezoneW + safezoneX) + BORDERSIZE;
+    y = ((BASE_Y + 0.42) * safezoneH) + safezoneY;    
+		w = 0.11 * safezoneW;
+		text = "";
+		action = "";
+		colorText[] = COLOR_WHITE;
+		colorSelection[] = COLOR_BRIGHTGREEN;
+		autocomplete = "";
+	};
+  //------------------------
+
   class adminInfo01: GREUH_RscStructuredText
   {
     idc = 1606;
@@ -227,30 +336,6 @@ class liberation_admin {
     y = 0.71 * safezoneH + safezoneY;
     w = 0.09 * safezoneW;
     h = 0.035 * safezoneH;
-  };
-  class OuterBG1: StdBG
-  {
-    colorBackground[] = COLOR_BROWN;
-    x = 0.19175 * safezoneW + safezoneX;
-    y = 0.1324 * safezoneH + safezoneY;
-    w = 0.25 * safezoneW;
-    h = 0.62 * safezoneH;
-  };
-  class OuterBG_F1: OuterBG1
-  {
-		style = ST_FRAME;
-  };
-  class InnerBG1: OuterBG1
-  {
-    colorBackground[] = COLOR_GREEN;
-    x = 0.1985 * safezoneW + safezoneX;
-    y = 0.1916 * safezoneH + safezoneY;
-    w = 0.2375 * safezoneW;
-    h = 0.512 * safezoneH;
-  };
-  class InnerBG_F1: InnerBG1
-  {
-  	style = ST_FRAME;
   };
   class Header: StdHeader
   {

@@ -333,8 +333,10 @@ if (abort_loading) exitWith { abort_loading_msg = format [
 sleep 60;
 
 // Savegame Loop
+GRLIB_server_stopped = false;
 while { true } do {
 	waitUntil {sleep 10; trigger_server_save || GRLIB_endgame == 1};
+	if ( GRLIB_server_stopped ) exitWith {};
 
 	if ( GRLIB_endgame == 1 ) then {
 		if (GRLIB_param_wipe_keepscore == 1) then {
@@ -373,7 +375,8 @@ while { true } do {
 			profileNamespace setVariable [ GRLIB_save_key, nil ];
 		};
 		saveProfileNamespace;
-		while { true } do { sleep 300; };  // dream forever
+		sleep 3;
+		GRLIB_server_stopped = true;
 	} else {
 		trigger_server_save = false;
 		buildings_to_save = [];
@@ -507,3 +510,5 @@ while { true } do {
 	};
 
 };
+
+diag_log format [ "--- LRX Save Manager finish at %1", time ];

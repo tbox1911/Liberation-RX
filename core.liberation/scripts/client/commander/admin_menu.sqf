@@ -6,6 +6,8 @@ do_score = 0;
 do_spawn = 0;
 do_ammo = 0;
 do_change = 0;
+do_export = 0;
+do_import = 0;
 
 private _getBannedUID = {
 	params ["_ban_combo"];
@@ -38,6 +40,10 @@ _score_combo = _display displayCtrl 1612;
 lbClear _score_combo;
 _build_combo = _display displayCtrl 1614;
 lbClear _build_combo;
+
+// Clear input
+private _input_controls = [521,522,523,524,525,526,527];
+{ ctrlShow [_x, false] } foreach _input_controls;
 
 (_display displayCtrl 1603) ctrlSetText getMissionPath "res\ui_confirm.paa";
 (_display displayCtrl 1603) ctrlSetToolTip "Add 200 XP Score";
@@ -147,6 +153,37 @@ while { alive player && dialog } do {
 		};
 	};
 
+	if (do_export == 1) then {
+		do_export = 0;
+		copyToClipboard str (profileNamespace getVariable GRLIB_save_key);
+		_msg = format ['Savegame %1 Exported to clipboard.', GRLIB_save_key];
+		hint _msg;
+	};
+
+	if (do_import == 1) then {
+		do_import = 0;
+		{ ctrlShow [_x, true] } foreach _input_controls;
+		
+		input_save = "";
+		waitUntil {uiSleep 0.1; ((input_save != "") || !(dialog) || !(alive player)) };
+
+		if ( input_save select [0,1] == "[" ) then {
+			private _save = parseSimpleArray input_save;
+			if (count _save == count greuh_liberation_savegame) then {
+				[_save, {
+					GRLIB_server_stopped = true;	
+					profileNamespace setVariable [GRLIB_save_key, _this];
+					saveProfileNamespace;
+					sleep 3;
+					["END"] remoteExec ["endMission", 0];
+				}] remoteExec ["bis_fnc_call", 2];
+
+				systemchat format ['Import Savegame in %1, Exiting now!', GRLIB_save_key];
+				closeDialog 0;
+			};
+		};
+		{ ctrlShow [_x, false] } foreach _input_controls;
+	};
 	sleep 0.5;
 };
 closeDialog 0;

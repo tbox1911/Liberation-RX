@@ -5276,6 +5276,12 @@
 				<Chinesesimp>删除物体</Chinesesimp>
 				<Chinese>刪除物體</Chinese>
 			</Key>
+			<Key ID="STR_ADMIN_EXPORT">
+				<Original>Export Game</Original>
+			</Key>
+			<Key ID="STR_ADMIN_IMPORT">
+				<Original>Import Game</Original>
+			</Key>
 			<Key ID="STR_ADMIN_GODMODE">
 				<Original>God Mode</Original>
 				<Japanese>ゴッドモード</Japanese>
