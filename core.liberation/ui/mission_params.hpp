@@ -430,19 +430,19 @@ class Params
 	class WipeSave1{
 		title = $STR_WIPE_TITLE;
 		values[] = {0,1};
-		texts[] =  {$STR_WIPE_NO,$STR_WIPE_YES};
+		texts[] =  { $STR_WIPE_NO, $STR_WIPE_YES };
 		default = 0;
 	};
 	class WipeSave2{
 		title = $STR_WIPE_TITLE_2;
 		values[] = {0,1};
-		texts[] = {$STR_WIPE_NO,$STR_WIPE_YES};
+		texts[] = { $STR_WIPE_NO, $STR_WIPE_YES };
 		default = 0;
 	};
 	class KeepScore{
 		title = $STR_WIPE_TITLE_3;
 		values[] = {0,1};
-		texts[] = {$STR_NO, $STR_YES};
+		texts[] = { $STR_PARAMS_DISABLED, $STR_PARAMS_ENABLED };
 		default = 0;
 	};	
 	class ForceLoading{

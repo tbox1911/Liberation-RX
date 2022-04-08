@@ -539,7 +539,7 @@
 					<Japanese>確認：セーブデータ消去</Japanese>
 			</Key>
 			<Key ID="STR_WIPE_TITLE_3">
-					<Original>Keep Players Datas</Original>
+					<Original>Keep Players datas</Original>
 					<French>Garder les infos des Joueurs</French>
 			</Key>
 			<Key ID="STR_WIPE_NO">
@@ -2309,14 +2309,8 @@
 					<Japanese>貴方のスコアは航空機を使うには低すぎます。</Japanese>
 			</Key>
 			<Key ID="STR_PERMISSION_WARNING">
-					<Original>No permissions have been set. The commander must setup the permissions to allow player actions and vehicle usage. Alternatively, the permission system can be disabled from the mission options.</Original>
-					<French>Aucune permission n'a été définie. Le commandant doit configurer les permissions pour permettre aux joueurs d'effectuer des actions et d'utiliser les véhicules. Sinon, le système de permissions est peut être désactivé dans les options de mission.</French>
-					<German>Keine Rechte wurden vergeben. Der Kommandant muss die Rechte verwalten um Spielern Aktionen und die Nutzung von Fahrzeugen zu erlaubne. Alternativ kann das Rechtesystem in den Missionsoptionen deaktiviert werden.</German>
-					<Spanish>No hay permisos definidos. El comandante debe asignar los permisos para permitir a los jugadores el uso de los vehículos y acciones. Alternativamente, puede desactivarse el sistema de permisos desde las opciones de misión</Spanish>
-					<Russian>Разрешения не были даны. Командир должен настроить разрешения, чтобы позволить игроку действия и использование техники. Кроме того, система разрешений может быть отключена в настройках миссии.</Russian>
-					<Chinesesimp>尚未设置任何权限。指挥官必须设置权限以允许玩家操作和使用车辆。或者，可以从任务选项中禁用许可系统。</Chinesesimp>
-					<Chinese>尚未設置任何權限。指揮官必須設置權限以允許玩家操作和使用車輛。或者，可以從任務選項中禁用許可系統。</Chinese>
-					<Japanese>権限が設定されていません。指揮官は権限を設定し、プレイヤーに乗り物やアクションの使用を許可してください。また、権限システムはミッションオプションから無効にする事も可能です。</Japanese>
+					<Original>Automatic creation of default permissions.</Original>
+					<French>Création automatique des permissions par defaut.</French>
 			</Key>
 			<Key ID="STR_ARSENAL_TITLE">
 					<Original>ARSENAL</Original>
