@@ -156,21 +156,24 @@ if (dialog && deploy == 1) then {
 			_loadouts_folder = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, toLower (typeOf player)];
 			[player] call compileFinal preprocessFileLineNUmbers _loadouts_folder;
 		};
-		private _price = [player] call F_loadoutPrice;
-		player setVariable ["GREUH_stuff_price", _price];
+		player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
 		GRLIB_backup_loadout = [player] call F_getLoadout;
 
 		// respawn loadout
 		if ( !isNil "GRLIB_respawn_loadout" ) then {
 			[player, GRLIB_respawn_loadout] call F_setLoadout;
 		};
+		[player] call F_filterLoadout;
+		[player] call F_payLoadout;
 	};
 	// choosen loadout
 	if ( (lbCurSel 203) > 0 ) then {
+		player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
+		GRLIB_backup_loadout = [player] call F_getLoadout;
 		[player, [ profileNamespace, _loadouts_data select ((lbCurSel 203) - 1) ] ] call bis_fnc_loadInventory;
+		[player] call F_filterLoadout;
+		[player] call F_payLoadout;
 	};
-	[player] call F_filterLoadout;
-	[player] call F_payLoadout;
 	
 	// Redeploy
 	_idxchoice = lbCurSel 201;
