@@ -148,7 +148,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 
 	GRLIB_vehicle_to_military_base_links = greuh_liberation_savegame select 11;
 	GRLIB_permissions = greuh_liberation_savegame select 12;
-	ai_groups = greuh_liberation_savegame select 13;
+	GRLIB_player_units = greuh_liberation_savegame select 13;
 	resources_intel = greuh_liberation_savegame select 14;
 	GRLIB_player_scores = greuh_liberation_savegame select 15;
 
@@ -337,7 +337,41 @@ while { true } do {
 	waitUntil {sleep 10; trigger_server_save || GRLIB_endgame == 1};
 
 	if ( GRLIB_endgame == 1 ) then {
-		profileNamespace setVariable [ GRLIB_save_key, nil ];
+		if (GRLIB_param_wipe_keepscore == 1) then {
+			GRLIB_permissions = profileNamespace getVariable GRLIB_save_key select 12;
+			private _keep_players = [];
+			{
+				if (_x select 1 > GRLIB_perm_tank) then {
+					_x set [1, GRLIB_perm_tank];  	// score
+				};
+				_x set [2, GREUH_start_ammo];  		// ammo
+				_x set [3, GREUH_start_fuel];  		// fuel
+				_keep_players pushback _x;
+			} foreach (profileNamespace getVariable GRLIB_save_key select 15);
+			GRLIB_player_scores = _keep_players;
+
+			private _savegame = [
+				[],
+				[],
+				[],
+				time_of_day,
+				0,
+				[],
+				GRLIB_mod_west,
+				GRLIB_mod_east,
+				0,
+				[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+				[33, 33, 33],
+				[],
+				GRLIB_permissions,
+				[],
+				0,
+				GRLIB_player_scores
+			];
+			profileNamespace setVariable [ GRLIB_save_key, _savegame ];
+		} else {
+			profileNamespace setVariable [ GRLIB_save_key, nil ];
+		};
 		saveProfileNamespace;
 		while { true } do { sleep 300; };  // dream forever
 	} else {
@@ -455,13 +489,14 @@ while { true } do {
 			time_of_day,
 			round combat_readiness,
 			GRLIB_garage,
-			GRLIB_mod_west,GRLIB_mod_east,
-			0,		//free for extened use
+			GRLIB_mod_west,
+			GRLIB_mod_east,
+			0,		// free for future use
 			_stats,
 			[ round infantry_weight max 33, round armor_weight max 33, round air_weight max 33 ],
 			GRLIB_vehicle_to_military_base_links,
 			_permissions,
-			0,  //ai_groups
+			[],  	// GRLIB_player_units
 			resources_intel,
 			_player_scores
 		];
