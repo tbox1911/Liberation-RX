@@ -333,6 +333,7 @@ if (abort_loading) exitWith { abort_loading_msg = format [
 sleep 60;
 
 // Savegame Loop
+diag_log format [ "--- LRX Save Loop start at %1", time ];
 GRLIB_server_stopped = false;
 while { true } do {
 	waitUntil {sleep 10; trigger_server_save || GRLIB_endgame == 1};
