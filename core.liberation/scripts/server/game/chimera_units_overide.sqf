@@ -20,6 +20,7 @@ allUnits apply { if ((getPosATL _x) distance2D lhd < 500 && !isPlayer _x) then {
     for "_i" from 1 to 3 do {_unit addItem _mag};
     for "_i" from 1 to 3 do {_unit addItemToVest _mag};
     _unit addWeapon _weapon;
+    for "_i" from 1 to 3 do {_unit addItemToVest _mag};
 } forEach _chimera_soldiers;
 
 
