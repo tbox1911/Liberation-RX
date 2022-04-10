@@ -2,6 +2,8 @@ if (!isServer && hasInterface) exitWith {};
 params ["_beacon", "_action"];
 
 if (isNil "_beacon") exitWith {};
+waitUntil {sleep 0.1; isNil "GRLIB_manage_beacon"};
+GRLIB_manage_beacon = true;
 
 private _tmp_global_locked_beacon = [];
 {
@@ -19,3 +21,5 @@ switch (_action) do {
 };
 
 publicVariable "GRLIB_mobile_respawn";
+sleep 0.1;
+GRLIB_manage_beacon = nil;

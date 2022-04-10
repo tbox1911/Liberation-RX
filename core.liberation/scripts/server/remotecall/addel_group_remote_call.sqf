@@ -2,8 +2,9 @@ if (!isServer && hasInterface) exitWith {};
 params ["_group", "_action"];
 
 if (isNull _group) exitWith {};
-if (isNil "global_locked_group") then { global_locked_group = [] };
 
+waitUntil {sleep 0.1; isNil "GRLIB_manage_group"};
+GRLIB_manage_group = true;
 private _tmp_global_locked_group = [];
 {
 	if (!isNil "_x") then {
@@ -20,3 +21,5 @@ switch (_action) do {
 };
 
 publicVariable "global_locked_group";
+sleep 0.1;
+GRLIB_manage_group = nil;
