@@ -168,7 +168,10 @@ air_vehicles = [
 	["CUP_B_A10_DYN_USA",0,1500,0,GRLIB_perm_inf],
 	["CUP_B_AV8B_DYN_USMC",0,1500,0,GRLIB_perm_inf],
 	["CUP_B_F35B_USMC",0,1500,0,GRLIB_perm_inf],
+	//F-15 Firewill
 	["FIR_F15E",0,1500,0,GRLIB_perm_inf],
+	["FIR_F15J_1",0,1500,0,GRLIB_perm_inf],
+	["FIR_F15C",0,1500,0,GRLIB_perm_inf],
 	//ffaa
 	["ffaa_famet_ec135",0,450,0,GRLIB_perm_inf],
 	["ffaa_et_searcherIII",0,50,0,GRLIB_perm_inf],
