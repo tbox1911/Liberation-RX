@@ -426,6 +426,7 @@ GRLIB_Ammobox_keep = [
 	"Land_CargoBox_V1_F",
 	"rhs_weapon_crate",
 	"CUP_LocalBasicWeaponsBox",
+	"SNC_Javelin",
 	"gm_AmmoBox_1000Rnd_762x51mm_ap_DM151_g3"
 ];
 
