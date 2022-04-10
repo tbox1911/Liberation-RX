@@ -1,10 +1,10 @@
 gamelogic globalChat localize "STR_SELL_WELCOME";
 
 private _searchradius = 30;
-private _vehicle = [player nearEntities [["LandVehicle","Air","Ship"], _searchradius], {
+private _vehicle = [player nearEntities [["LandVehicle","Air","Ship", A3W_BoxWps], _searchradius], {
 		(_x distance lhd) >= GRLIB_sector_size &&
 		!(typeOf _x in list_static_weapons) &&
-		[player, _x] call is_owner && (locked _x == 0 || locked _x == 1)
+		[player, _x] call is_owner && locked _x != 2
 }] call BIS_fnc_conditionalSelect select 0;
 if (isNil "_vehicle") exitWith { gamelogic globalChat localize "STR_SELL_NO_VEH" };
 
@@ -22,6 +22,7 @@ if (_result) then {
 	[player, _price, 0] remoteExec ["ammo_add_remote_call", 2];
 	hintSilent format [localize "STR_CARGO_SOLD", _vehtext, name player, _price];
 	playSound "taskSucceeded";
+	if (typeOf _vehicle == A3W_BoxWps) then {deleteVehicle _vehicle};
 };
 
 gamelogic globalChat "Have a nice day...";

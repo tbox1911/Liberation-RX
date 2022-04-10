@@ -141,7 +141,7 @@ if (_unit isKindOf "Man") then {
 	_val = _val + (2 * count(assignedItems _unit));
 };
 
-if (_unit iskindof "LandVehicle") then {
+if (_unit iskindof "LandVehicle" || typeOf _unit == A3W_BoxWps) then {
 	_weap_cargo = weaponCargo _unit;
 	if (count _weap_cargo > 0) then {
 		{

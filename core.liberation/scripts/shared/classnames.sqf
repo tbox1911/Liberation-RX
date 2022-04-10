@@ -9,7 +9,9 @@ markers_reset = [99999,99999,0];
 zeropos = [0,0,0];
 
 // All Object classname used in LRX must be declared here
-[] call compileFinal preprocessFileLineNumbers "scripts\loadouts\init_loadouts.sqf";
+
+// *** DEFAULT ***
+[] call compileFinal preprocessFileLineNUmbers format ["scripts\shared\default_classnames.sqf"];
 
 // *** FRIENDLIES ***
 [] call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_west.sqf", GRLIB_mod_west];
@@ -17,12 +19,10 @@ zeropos = [0,0,0];
 
 // *** BADDIES ***
 [] call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_east.sqf", GRLIB_mod_east];
+[] call compileFinal preprocessFileLineNumbers "scripts\loadouts\init_loadouts.sqf";
 
 // *** CIVILIAN ***
 [] call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_civ.sqf", GRLIB_mod_west];
-
-// *** DEFAULT ***
-[] call compileFinal preprocessFileLineNUmbers format ["scripts\shared\default_classnames.sqf"];
 
 // *** SUPPORT ***
 support_vehicles = [
