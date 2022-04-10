@@ -56,5 +56,5 @@ cinematic_camera_started = false;
 introDone = true;
 dostartgame = 1;
 
-// Recover AI
-[player] remoteExec ["recover_ai_remote_call", 2];
+// Load Player Context
+[player] remoteExec ["load_context_remote_call", 2];

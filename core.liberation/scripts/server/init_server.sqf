@@ -103,7 +103,7 @@ if (abort_loading) exitWith {
 [] execVM "scripts\server\offloading\offload_manager.sqf";
 [] execVM "scripts\server\offloading\show_fps.sqf";
 
-if (isNil "global_locked_group") then { global_locked_group = [] };
+global_locked_group = [];
 publicVariable "global_locked_group";
 
 resistance setFriend [GRLIB_side_friendly, 1];
@@ -111,11 +111,9 @@ GRLIB_side_friendly setFriend [resistance, 1];
 resistance setFriend [GRLIB_side_enemy, 0];
 GRLIB_side_enemy setFriend [resistance, 0];
 
-//private _group = createGroup [GRLIB_side_friendly, true];
-//allUnits apply { if ((getPos _x) distance2D lhd < 500 && side _x != GRLIB_side_friendly) then {[_x] joinSilent _group} };
-
 addMissionEventHandler ['HandleDisconnect', cleanup_player];
 addMissionEventHandler ["MPEnded", {diag_log "--- LRX Mission End"}];
+
 GRLIB_init_server = true;
 publicVariable "GRLIB_init_server";
 diag_log "--- Server Init stop ---";
