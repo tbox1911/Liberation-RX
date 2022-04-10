@@ -156,6 +156,14 @@ _blacklisted_ace_arsenal= [
 	"CUP_U_C_Priest_01",
 	"CUP_launch_Javelin",
 	"CUP_Javelin_M",
+	"MMG_01_hex_F",
+	"MMG_01_tan_F",
+	"MMG_02_black_F",
+	"MMG_02_sand_F",
+	"MMG_02_camo_F",
+	"arifle_ARX_blk_F",
+	"arifle_ARX_hex_F",
+	"arifle_ARX_ghex_F",
 	"O_V_Soldier_Viper_hex_F"
 ];
 
