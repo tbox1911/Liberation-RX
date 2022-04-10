@@ -30,6 +30,8 @@ spawn_air = compileFinal preprocessFileLineNumbers "scripts\server\battlegroup\s
 spawn_battlegroup = compileFinal preprocessFileLineNumbers "scripts\server\battlegroup\spawn_battlegroup.sqf";
 
 // Game
+load_game_mp = compileFinal preprocessFileLineNumbers "scripts\server\game\load_game_mp.sqf";
+save_game_mp  = compileFinal preprocessFileLineNumbers "scripts\server\game\save_game_mp.sqf";
 check_victory_conditions = compileFinal preprocessFileLineNumbers "scripts\server\game\check_victory_conditions.sqf";
 attach_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\attach_object_direct.sqf";
 load_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\load_object_direct.sqf";
@@ -59,8 +61,7 @@ clearlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scri
 
 if (!([] call F_getValid)) exitWith {};
 
-[] execVM "scripts\server\game\save_manager.sqf";
-waitUntil { sleep 1; !isNil "save_is_loaded" };
+[] call load_game_mp;
 if (abort_loading) exitWith {
 	GRLIB_init_server = false;
 	publicVariable "GRLIB_init_server";
@@ -88,7 +89,6 @@ if (abort_loading) exitWith {
 [] execVM "scripts\server\game\manage_score.sqf";
 [] execVM "scripts\server\game\manage_time.sqf";
 [] execVM "scripts\server\game\manage_weather.sqf";
-[] execVM "scripts\server\game\periodic_save.sqf";
 [] execVM "scripts\server\game\init_marker.sqf";
 [] execVM "scripts\server\secondary\autostart.sqf";
 [] execVM "scripts\server\game\synchronise_vars.sqf";
@@ -112,7 +112,7 @@ resistance setFriend [GRLIB_side_enemy, 0];
 GRLIB_side_enemy setFriend [resistance, 0];
 
 addMissionEventHandler ['HandleDisconnect', cleanup_player];
-addMissionEventHandler ["MPEnded", {diag_log "--- LRX Mission End"}];
+addMissionEventHandler ["MPEnded", {[] call save_game_mp;diag_log "--- LRX Mission End"}];
 
 GRLIB_init_server = true;
 publicVariable "GRLIB_init_server";
