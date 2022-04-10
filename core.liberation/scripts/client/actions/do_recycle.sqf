@@ -41,6 +41,8 @@ _cfg = configFile >> "cfgVehicles";
 createDialog "liberation_recycle";
 waitUntil { dialog };
 
+private _ammount_ammo;
+
 if (typeOf _vehicle in GRLIB_Ammobox_keep) then {
 	_ammount_ammo= 5;
 }else {
