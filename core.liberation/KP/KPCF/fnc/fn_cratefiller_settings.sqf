@@ -77,7 +77,7 @@
     "EDITBOX",
     [localize "STR_KP_CRATEFILLER_INVENTORYBLACKLIST", localize "STR_KP_CRATEFILLER_INVENTORYBLACKLIST_TT"],
     localize "STR_KP_CRATEFILLER_SETTINGS",
-    "[""CUP_launch_FIM92Stinger""]",
+    "[""CUP_launch_FIM92Stinger"",""CUP_launch_Javelin"",""CUP_Javelin_M""]",
     1,
     {}
 ] call CBA_Settings_fnc_init;
@@ -103,7 +103,7 @@
     "EDITBOX",
     [localize "STR_KP_CRATEFILLER_BLACKLIST", localize "STR_KP_CRATEFILLER_BLACKLIST_TT"],
     localize "STR_KP_CRATEFILLER_SETTINGS",
-    "[]",
+    "[""CUP_launch_Javelin"",""CUP_Javelin_M""]",
     1,
     {}
 ] call CBA_Settings_fnc_init;

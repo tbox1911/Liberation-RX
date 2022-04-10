@@ -154,6 +154,8 @@ _blacklisted_ace_arsenal= [
 	"U_O_V_Soldier_Viper_F",
 	"O_V_Soldier_Viper_F",
 	"CUP_U_C_Priest_01",
+	"CUP_launch_Javelin",
+	"CUP_Javelin_M",
 	"O_V_Soldier_Viper_hex_F"
 ];
 
