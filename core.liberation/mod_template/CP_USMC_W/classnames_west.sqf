@@ -274,6 +274,7 @@ support_vehicles_west = [
     	["Land_RepairDepot_01_green_F",0,0,0,GRLIB_perm_inf],
     	["ACE_Track",0,0,0,GRLIB_perm_inf],
     	["ACE_Wheel",0,0,0,GRLIB_perm_inf],
+    	["SNC_Javelin",0,400,0,GRLIB_perm_inf],
 	["Box_NATO_Equip_F",0,0,0,GRLIB_perm_inf]
 ];
 
