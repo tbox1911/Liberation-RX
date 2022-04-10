@@ -41,6 +41,7 @@ _cfg = configFile >> "cfgVehicles";
 createDialog "liberation_recycle";
 waitUntil { dialog };
 
+<<<<<<< HEAD
 private _ammount_ammo;
 
 if (typeOf _vehicle in GRLIB_Ammobox_keep) then {
@@ -49,6 +50,9 @@ if (typeOf _vehicle in GRLIB_Ammobox_keep) then {
 	_ammount_ammo = round ((_objectinfo select 2) * GRLIB_recycling_percentage);
 };
 
+=======
+private _ammount_ammo = round ((_objectinfo select 2) * GRLIB_recycling_percentage);
+>>>>>>> parent of bcb214fe (Bug disable)
 ctrlSetText [ 134, format [ localize "STR_RECYCLING_YIELD", getText (_cfg >> (_objectinfo select 0) >> "displayName" ) ] ];
 ctrlSetText [ 131, format [ "%1", round (_objectinfo select 1) ] ];
 ctrlSetText [ 132, format [ "%1", _ammount_ammo] ];
