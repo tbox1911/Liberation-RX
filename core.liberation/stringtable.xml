@@ -6168,6 +6168,12 @@
 		</Key>
 	</Package>
 
+	<Package name="LRX_SELL">
+		<Key ID="STR_SELL_NAME">
+			<Original>-- Sell Shop --</Original>
+		</Key>
+	</Package>
+
 	<Package name="LRX_SHOP">
 		<Key ID="STR_SHOP_NAME">
 			<Original>-- Traders Shop --</Original>
