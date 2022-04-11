@@ -3,7 +3,6 @@ clean_vehicle = compileFinal preprocessFileLineNumbers "scripts\shared\clean_veh
 protect_static = compileFinal preprocessFileLineNumbers "scripts\shared\protect_static.sqf";
 damage_manager_EH = compileFinal preprocessFileLineNumbers "scripts\shared\damage_manager.sqf";
 prisonner_captured = compileFinal preprocessFileLineNumbers "scripts\server\ai\prisonner_captured.sqf";
-save_context = compileFinal preprocessFileLineNumbers "scripts\shared\save_context.sqf";
 
 // Remote Call
 // Server Side
