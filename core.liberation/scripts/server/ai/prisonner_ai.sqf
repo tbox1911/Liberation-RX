@@ -1,7 +1,6 @@
 params [ "_unit", ["_force_surrender", false] ];
 
 if ( (!_force_surrender) && (typeof _unit == pilot_classname) ) exitWith {};
-if ( (!_force_surrender) && (_unit getVariable ["mission_AI", false]) ) exitWith {};
 
 sleep 3;
 if (!alive _unit) exitWith {};

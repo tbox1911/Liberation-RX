@@ -64,7 +64,7 @@ if ( GRLIB_endgame == 0 ) then {
 		stats_sectors_lost = stats_sectors_lost + 1;
 	} else {
 		[ _sector, 3 ] remoteExec ["remote_call_sector", 0];
-		_enemy_left = [allUnits, {(alive _x) && (vehicle _x == _x) && (side group _x == GRLIB_side_enemy) && (((getmarkerpos _sector) distance2D _x) < GRLIB_capture_size * 0.8)}] call BIS_fnc_conditionalSelect;
+		_enemy_left = [allUnits, {(alive _x) && (vehicle _x == _x) && (side group _x == GRLIB_side_enemy) && !(_x getVariable ["mission_AI", false]) && (((getmarkerpos _sector) distance2D _x) < GRLIB_capture_size * 0.8)}] call BIS_fnc_conditionalSelect;
 		{
 			if ( _max_prisonners > 0 && ((random 100) < GRLIB_surrender_chance) ) then {
 				[_x] spawn prisonner_ai;
