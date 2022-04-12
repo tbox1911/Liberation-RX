@@ -10,7 +10,6 @@ if (!isPlayer _medic) then {
   _bleedOut = _wnded getVariable ["PAR_BleedOutTimer", 0];
   _wnded setVariable ["PAR_BleedOutTimer", _bleedOut + PAR_BleedOutExtra, true];
   _medic setDir (_medic getDir _wnded);
-  //_medic removeitem "FirstAidKit";
   if (stance _medic == "PRONE") then {
     _medic playMoveNow "ainvppnemstpslaywrfldnon_medicother";
   } else {
@@ -26,9 +25,10 @@ if (lifeState _medic == "INCAPACITATED" || (!alive _wnded)) exitWith { [_medic, 
 // Revived
 _wnded setUnconscious false;
 _wnded doFollow player;
-_isMedic = [_medic] call PAR_is_medic;
-_hasMedikit = [_medic] call PAR_has_medikit;
-if (_isMedic && _hasMedikit) then {
+if (GRLIB_revive == 2) then { 
+  _medic removeItem "FirstAidKit";
+};
+if ([_medic] call PAR_is_medic) then {
   _wnded setDamage 0;
 } else {
   _wnded setDamage 0.25;

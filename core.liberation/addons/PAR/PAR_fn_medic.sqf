@@ -10,10 +10,20 @@ private _medics = _bros select {
   isNil {_x getVariable "PAR_busy"}
 };
 
+// PAR only medic
+if (GRLIB_revive == 1) then { _medics = _medics select {[_x] call PAR_is_medic} };
+// PAR Medikit/Firstkit
+if (GRLIB_revive == 2) then { _medics = _medics select {[_x] call PAR_has_medikit} };
+
 if (count _medics == 0) exitWith {
   _wnded setVariable ["PAR_myMedic", nil];
   _msg = format [localize "STR_PAR_MD_01", name _wnded];
   [_wnded, _msg] call PAR_fn_globalchat;
+
+  if (GRLIB_revive in [1,2]) then {
+    _msg = localize "STR_PAR_MD_04";
+    [_wnded, _msg] call PAR_fn_globalchat;
+  };
 
   _lst = _bros select {!isPlayer _x && alive _x && lifeState _x != "INCAPACITATED"};
   _msg = format [localize "STR_PAR_MD_02", count (_lst)];

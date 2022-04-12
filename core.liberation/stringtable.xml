@@ -1486,24 +1486,12 @@
 			<Japanese>有効 - 衛生兵のみ蘇生可能</Japanese>
 		</Key>
 		<Key ID="STR_PARAMS_REVIVE2">
-			<Original>Enabled - Everyone can revive using a FAK</Original>
-			<French>Activé - Tout le monde peut ressusciter avec un kit premiers soins</French>
-			<German>Aktiv - Jeder  mit einem Erste-Hilfe-Kasten kann wiederbeleben</German>
-			<Spanish>Activado - Cualquiera puede revivir usando un Kit de primeros auxilios</Spanish>
-			<Russian>Включено - Любой может возродить с помощью пакета первой помощи</Russian>
-			<Chinesesimp>启用 - 每个人都可以使用医药包复活他人</Chinesesimp>
-			<Chinese>啟用 - 每個人都可以使用醫藥包復活他人</Chinese>
-			<Japanese>有効 - すべての兵士がFAKを使って蘇生可能</Japanese>
+			<Original>Enabled - Everyone can revive using a MedKit or FAK</Original>
+			<French>Activé - Tout le monde peut ressusciter avec un kit médical ou un kit soins</French>
 		</Key>
 		<Key ID="STR_PARAMS_REVIVE3">
-			<Original>Enabled - Everyone can revive using a MedKit</Original>
-			<French>Activé - Tout le monde peut ressusciter avec un kit médical</French>
-			<German>Jeder mit einem Verbandskasten kann wiederbeleben</German>
-			<Spanish>Activado - Cualquiera puede revivir usando un Botiquín</Spanish>
-			<Russian>Включено - Любой может возродить используя медицинскую аптечку</Russian>
-			<Chinesesimp>启用 - 每个人都可以使用急救箱复活他人</Chinesesimp>
-			<Chinese>啟用 - 每個人都可以使用急救箱復活他人</Chinese>
-			<Japanese>有効 - すべての兵士がMedKitを使って蘇生可能</Japanese>
+			<Original>Enabled - Everyone can revive</Original>
+			<French>Activé - Tout le monde peut ressusciter</French>
 		</Key>
 		<Key ID="STR_PARAMS_INTRO">
 			<Original>Introduction</Original>
@@ -1718,16 +1706,6 @@
 			<Chinesesimp>警告：友军误击</Chinesesimp>
 			<Chinese>警告：友軍誤擊</Chinese>
 			<Japanese>警告: 友軍誤射</Japanese>
-		</Key>
-		<Key ID="STR_PARAM_TEAMKILL_PENALTY">
-			<Original>Teamkill penalty</Original>
-			<French>Pénalité pour tirs alliés</French>
-			<German>Strafe für das Töten von Verbündeten</German>
-			<Spanish>Penalización por fuego amigo</Spanish>
-			<Russian>Штраф за убийство своего</Russian>
-			<Chinesesimp>TK惩罚</Chinesesimp>
-			<Chinese>TK懲罰</Chinese>
-			<Japanese>チームキルペナルティ</Japanese>
 		</Key>
 		<Key ID="STR_PARAM_ADAPT_TO_PLAYERCOUNT">
 			<Original>Hostile presence adapts to player count</Original>
@@ -5281,7 +5259,7 @@
 		</Key>
 		<Key ID="STR_ADMIN_IMPORT">
 			<Original>Import Game</Original>
-		</Key>		
+		</Key>
 		<Key ID="STR_ADMIN_GODMODE">
 			<Original>God Mode</Original>
 			<Japanese>ゴッドモード</Japanese>
@@ -5970,6 +5948,10 @@
 			<Chinese>堅持住 %1 ！ %2 (距離: %3 米)，正在來救你！</Chinese>
 			<Japanese>持ちこたえてください %1 !、 %2 (距離: %3m)、 があなたを救おうとしています！</Japanese>
 		</Key>
+		<Key ID="STR_PAR_MD_04">
+			<Original>Maybe no more Medic or insuficient Medkit ?</Original>
+			<French>Peut etre plus de Médecin ou plus de kit de soins ?</French>
+		</Key>		
 		<Key ID="STR_PAR_ST_01">
 			<Original>%1 is healing %2 now...</Original>
 			<French>%1 soigne %2 maintenant...</French>

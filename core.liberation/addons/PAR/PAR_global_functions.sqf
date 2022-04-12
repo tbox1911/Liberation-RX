@@ -138,7 +138,7 @@ PAR_fn_AI_Damage_EH = {
 		}];
 	};
 	_unit removeAllMPEventHandlers "MPKilled";
-	_unit addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
+	_unit addMPEventHandler ["MPKilled", {_this spawn PAR_fn_death}]; 
 	_unit setVariable ["PAR_wounded", false];
 	_unit setVariable ["PAR_myMedic", nil];
 	_unit setVariable ["PAR_busy", nil];

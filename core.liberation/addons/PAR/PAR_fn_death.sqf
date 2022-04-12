@@ -68,11 +68,12 @@ if (_unit == player) then {
 	};
 
 	// respawn penalty
-	if ( score _unit > GRLIB_perm_log + 10 ) then { [_unit, -10] remoteExec ["addScore", 2] };
+	if ( score _unit > GRLIB_perm_log + 20 ) then { [_unit, -10] remoteExec ["addScore", 2] };
 };
 
 removeAllWeapons _unit;
+sleep 5;
 hidebody _unit;
 _unit setDamage 1;
-sleep 3;
+sleep 30;
 deleteVehicle _unit;
