@@ -63,9 +63,9 @@ _getTTLunits = {
 deleteManagerPublic = TRUE;								// To terminate script via debug console
 
 private _checkPlayerCount = TRUE;						// dynamic sleep. Set TRUE to have sleep automatically adjust based on # of players.
-private _checkFrequencyDefault = 600;					// sleep default (GRLIB_cleanup_vehicles*60)*60
-private _checkFrequencyAccelerated = 300;				// sleep accelerated
 private _playerThreshold = 4;							// How many players before accelerated cycle kicks in?
+private _checkFrequencyDefault = GRLIB_cleanup_vehicles;	        // sleep default
+private _checkFrequencyAccelerated = (_checkFrequencyDefault/2);	// sleep accelerated
 
 private _vehiclesLimit = 30;							// Vehicles Set -1 to disable.
 private _vehicleDistCheck = TRUE;						// TRUE to delete any vehicles that are far from players.

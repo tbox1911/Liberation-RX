@@ -6,6 +6,18 @@ class Params
 		texts[] = { "" };
 		default = "";
 	};
+	class Introduction {
+		title = $STR_PARAMS_INTRO;
+		values[] = { 1, 0 };
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
+		default = 1;
+	};
+	class DeploymentCinematic {
+		title = $STR_PARAMS_DEPLOYMENTCAMERA;
+		values[] = { 1, 0 };
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
+		default = 0;
+	};	
 	class Unitcap{
 		title = $STR_PARAMS_UNITCAP;
 		values[] = {0.5,0.75,1,1.25,1.5,2};
@@ -53,54 +65,6 @@ class Params
 		values[] = { 1, 0 };
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 1;
-	};
-	class EnableFilterCUP {
-		title = "MOD filter: CUP Weapons";
-		values[] = { 1, 0 };
-		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 0;
-	};
-	class EnableFilterRHS {
-		title = "MOD filter: RHS";
-		values[] = { 1, 0 };
-		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 0;
-	};
-	class EnableFilterR3F {
-		title = "MOD filter R3F";
-		values[] = { 1, 0 };
-		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 0;
-	};
-	class EnableFilterEJW {
-		title = "MOD filter: Eric JW";
-		values[] = { 1, 0 };
-		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 0;
-	};
-	class EnableFilterGM {
-		title = "MOD filter: Global Mob";
-		values[] = { 1, 0 };
-		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 0;
-	};
-	class EnableFilterOPTRE {
-		title = "MOD filter: OPTRE";
-		values[] = { 1, 0 };
-		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 0;
-	};
-	class EnableFilterSOG {
-		title = "MOD filter: SoG";
-		values[] = { 1, 0 };
-		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 0;
-	};
-	class Space5 {
-		title = "";
-		values[] = { "" };
-		texts[] = { "" };
-		default = "";
 	};
 	class ModPresetWest {
 		title = "MOD Preset - Friendly";
@@ -168,6 +132,54 @@ class Params
 					"3CB Chernarussian Red Star"
 				};
 		default = 0;
+	};	
+	class EnableFilterCUP {
+		title = "MOD filter: CUP Weapons";
+		values[] = { 1, 0 };
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
+		default = 0;
+	};
+	class EnableFilterRHS {
+		title = "MOD filter: RHS";
+		values[] = { 1, 0 };
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
+		default = 0;
+	};
+	class EnableFilterR3F {
+		title = "MOD filter R3F";
+		values[] = { 1, 0 };
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
+		default = 0;
+	};
+	class EnableFilterEJW {
+		title = "MOD filter: Eric JW";
+		values[] = { 1, 0 };
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
+		default = 0;
+	};
+	class EnableFilterGM {
+		title = "MOD filter: Global Mob";
+		values[] = { 1, 0 };
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
+		default = 0;
+	};
+	class EnableFilterOPTRE {
+		title = "MOD filter: OPTRE";
+		values[] = { 1, 0 };
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
+		default = 0;
+	};
+	class EnableFilterSOG {
+		title = "MOD filter: SoG";
+		values[] = { 1, 0 };
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
+		default = 0;
+	};
+	class Space5 {
+		title = "";
+		values[] = { "" };
+		texts[] = { "" };
+		default = "";
 	};
 	class ForcedLoadout {
 		title = $STR_FORCE_LOADOUT;
@@ -208,18 +220,6 @@ class Params
 	class PassiveIncome{
 		title = $STR_PARAM_PASSIVE_INCOME;
 		values[] = {1,0};
-		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 0;
-	};
-	class Introduction {
-		title = $STR_PARAMS_INTRO;
-		values[] = { 1, 0 };
-		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 1;
-	};
-	class DeploymentCinematic {
-		title = $STR_PARAMS_DEPLOYMENTCAMERA;
-		values[] = { 1, 0 };
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 0;
 	};
@@ -405,21 +405,21 @@ class Params
 	};
 	class CleanupVehicles {
 		title = $STR_CLEANUP_PARAM;
-		values[] = { 0,1,2,4 };
-		texts[] = { $STR_PARAMS_DISABLED, $STR_CLEANUP_PARAM1, $STR_CLEANUP_PARAM2, $STR_CLEANUP_PARAM3 };
-		default = 1;
+		values[] = { 0,900,1800,3600,7200,14400 };
+		texts[] = { $STR_PARAMS_DISABLED, $STR_CLEANUP_PARAM1, $STR_CLEANUP_PARAM2, $STR_CLEANUP_PARAM3, $STR_CLEANUP_PARAM4, $STR_CLEANUP_PARAM5 };
+		default = 1800;
+	};
+	class AutoSave{
+		title = "AutoSave Timer";
+		values[] = {0,300,900,1800,3600,7200};
+		texts[] = { $STR_PARAMS_DISABLED, "5 minutes", $STR_CLEANUP_PARAM1, $STR_CLEANUP_PARAM2, $STR_CLEANUP_PARAM3, $STR_CLEANUP_PARAM4 };
+		default = 3600;
 	};
 	class Whitelist {
 		title = $STR_WHITELIST_PARAM;
 		values[] = { 1, 0 };
 		texts[] = { $STR_WHITELIST_ENABLED, $STR_PARAMS_DISABLED };
 		default = 1;
-	};
-	class AutoSave{
-		title = "AutoSave Timer";
-		values[] = {0,300,600,1800,7200};
-		texts[] = { $STR_PARAMS_DISABLED, "5 min", "10 min", "30 min", "1 hour", "2 hour" };
-		default = 0;
 	};
 	class Space4 {
 		title = "";

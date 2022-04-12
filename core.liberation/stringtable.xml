@@ -2520,34 +2520,24 @@
 			<Japanese>FOB外に放棄された車両を削除</Japanese>
 		</Key>
 		<Key ID="STR_CLEANUP_PARAM1">
-			<Original>Enabled - 1 hour delay</Original>
-			<French>Activé - 1 heure de délai</French>
-			<German>Aktiv - 1 Stunde Verzögerung</German>
-			<Spanish>Activado- abandonados durante 1 hora</Spanish>
-			<Russian>Вкл - задержка 1 час</Russian>
-			<Chinesesimp>启用 - 间隔1小时</Chinesesimp>
-			<Chinese>啟用 - 間隔1小時</Chinese>
-			<Japanese>有効 - 1時間後</Japanese>
-		</Key>
+			<Original>15 minutes delay</Original>
+			<French> 15 minutes de délai</French>
+		</Key>				
 		<Key ID="STR_CLEANUP_PARAM2">
-			<Original>Enabled - 2 hours delay</Original>
-			<French>Activé - 2 heures de délai</French>
-			<German>Aktiv - 2 Stunde Verzögerung</German>
-			<Spanish>Activado - abandonados durante 2 horas</Spanish>
-			<Russian>Вкл - задержка 2 часа</Russian>
-			<Chinesesimp>启用 - 间隔2小时</Chinesesimp>
-			<Chinese>啟用 - 間隔2小時</Chinese>
-			<Japanese>有効 - 2時間後</Japanese>
-		</Key>
+			<Original>30 minutes delay</Original>
+			<French> 30 minutes de délai</French>
+		</Key>		
 		<Key ID="STR_CLEANUP_PARAM3">
-			<Original>Enabled - 4 hours delay</Original>
-			<French>Activé - 4 heures de délai</French>
-			<German>Aktiv - 4 Stunden Verzögerung</German>
-			<Spanish>Activado - abandonados durante 4 horas</Spanish>
-			<Russian>Вкл - задержка 4 часа</Russian>
-			<Chinesesimp>启用 - 间隔4小时</Chinesesimp>
-			<Chinese>啟用 - 間隔4小時</Chinese>
-			<Japanese>有効 - 4時間後</Japanese>
+			<Original>1 hour delay</Original>
+			<French>1 heure de délai</French>
+		</Key>
+		<Key ID="STR_CLEANUP_PARAM4">
+			<Original>2 hours delay</Original>
+			<French>2 heures de délai</French>
+		</Key>
+		<Key ID="STR_CLEANUP_PARAM4">
+			<Original>4 hours delay</Original>
+			<French>4 heures de délai</French>
 		</Key>
 		<Key ID="STR_SORRY">
 			<Original>Sorry!</Original>
@@ -4388,7 +4378,7 @@
 		<!-- Added in v0.928 -->
 		<Key ID="STR_FANCY">
 			<Original>Fancy Information</Original>
-			<French>Informations Fantaisie</French>
+			<French>Information Colorée</French>
 			<Chinesesimp>花式信息</Chinesesimp>
 			<Chinese>花式信息</Chinese>
 			<Japanese>分かりやすい情報</Japanese>
