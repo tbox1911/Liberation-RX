@@ -71,7 +71,7 @@ class Params
 		values[] = { 1, 0 };
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 0;
-	};	
+	};
 	class EnableFilterEJW {
 		title = "MOD filter: Eric JW";
 		values[] = { 1, 0 };
@@ -83,7 +83,7 @@ class Params
 		values[] = { 1, 0 };
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 0;
-	};		
+	};
 	class EnableFilterOPTRE {
 		title = "MOD filter: OPTRE";
 		values[] = { 1, 0 };
@@ -95,7 +95,7 @@ class Params
 		values[] = { 1, 0 };
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 0;
-	};	
+	};
 	class Space5 {
 		title = "";
 		values[] = { "" };
@@ -193,6 +193,36 @@ class Params
 		texts[] = {$STR_PARAMS_DISABLED, "CH-67 Huron", "CH-49 Mohawk", "UH-80 Ghost Hawk"};
 		default = 0;
 	};
+	class MaximumFobs{
+		title = $STR_PARAM_FOBS_COUNT;
+		values[] = {3,5,7,10,15,20,26};
+		texts[] = {3,5,7,10,15,20,26};
+		default = 5;
+	};
+	class Autodanger{
+		title = $STR_PARAM_AUTODANGER;
+		values[] = {1,0};
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
+		default = 1;
+	};
+	class PassiveIncome{
+		title = $STR_PARAM_PASSIVE_INCOME;
+		values[] = {1,0};
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
+		default = 0;
+	};
+	class Introduction {
+		title = $STR_PARAMS_INTRO;
+		values[] = { 1, 0 };
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
+		default = 1;
+	};
+	class DeploymentCinematic {
+		title = $STR_PARAMS_DEPLOYMENTCAMERA;
+		values[] = { 1, 0 };
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
+		default = 0;
+	};
 	class Space1 {
 		title = "";
 		values[] = { "" };
@@ -247,6 +277,12 @@ class Params
 		texts[] = { "x0.25", "x0.5", "x0.75", "x1", "x1.25","x1.5","x2","x3","x5","x10","x20","x50" };
 		default = 1;
 	};
+	class MaxSpawnPoint{
+		title = $STR_PARAM_SPAWN_MAX;
+		values[] = {1,2,3,4};
+		texts[] = {1,2,3,4};
+		default = 2;
+	};
 	class Space2 {
 		title = "";
 		values[] = { "" };
@@ -263,7 +299,7 @@ class Params
 		title = $STR_PARAMS_REVIVE;
 		values[] = { 3, 2, 1, 0 };
 		texts[] = { $STR_PARAMS_REVIVE3, $STR_PARAMS_REVIVE2, $STR_PARAMS_REVIVE1, $STR_PARAMS_DISABLED };
-		default = 2;
+		default = 3;
 	};
 	class TK_mode {
 		title = $STR_TK_MODE;
@@ -277,11 +313,35 @@ class Params
 		texts[] = { 3, 4, 5, 6, 7, 8, 9, 10 };
 		default = 4;
 	};
-	class PassiveIncome{
-		title = $STR_PARAM_PASSIVE_INCOME;
+	class SquadSize{
+		title = $STR_PARAM_SQUAD_SIZE_START;
+		values[] = {0,1,2,3,4,5,6,7,8,9,10};
+		texts[] = {0,1,2,3,4,5,6,7,8,9,10};
+		default = 3;
+	};
+	class MaxSquadSize{
+		title = $STR_PARAM_SQUAD_SIZE;
+		values[] = {0,1,2,3,4,5,6,7,8,9,10};
+		texts[] = {0,1,2,3,4,5,6,7,8,9,10};
+		default = 7;
+	};
+	class Permissions{
+		title = $STR_PERMISSIONS_PARAM;
 		values[] = {1,0};
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 0;
+		default = 1;
+	};
+	class EnableLock {
+		title = $STR_VEH_LOCK;
+		values[] = { 1, 0 };
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
+		default = 1;
+	};
+	class Space7 {
+		title = "";
+		values[] = { "" };
+		texts[] = { "" };
+		default = "";
 	};
 	class Civilians{
 		title = $STR_PARAMS_CIVILIANS;
@@ -297,12 +357,6 @@ class Params
 	};
 	class Patrol{
 		title = $STR_PARAM_PATROL;
-		values[] = {1,0};
-		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 1;
-	};
-	class TeamkillPenalty{
-		title = $STR_PARAM_TEAMKILL_PENALTY;
 		values[] = {1,0};
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 1;
@@ -331,36 +385,6 @@ class Params
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 1;
 	};
-	class Autodanger{
-		title = $STR_PARAM_AUTODANGER;
-		values[] = {1,0};
-		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 1;
-	};
-	class MaximumFobs{
-		title = $STR_PARAM_FOBS_COUNT;
-		values[] = {3,5,7,10,15,20,26};
-		texts[] = {3,5,7,10,15,20,26};
-		default = 5;
-	};
-	class SquadSize{
-		title = $STR_PARAM_SQUAD_SIZE_START;
-		values[] = {0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {0,1,2,3,4,5,6,7,8,9,10};
-		default = 3;
-	};
-	class MaxSquadSize{
-		title = $STR_PARAM_SQUAD_SIZE;
-		values[] = {0,1,2,3,4,5,6,7,8,9,10};
-		texts[] = {0,1,2,3,4,5,6,7,8,9,10};
-		default = 7;
-	};
-	class MaxSpawnPoint{
-		title = $STR_PARAM_SPAWN_MAX;
-		values[] = {1,2,3,4};
-		texts[] = {1,2,3,4};
-		default = 2;
-	};
 	class Space3 {
 		title = "";
 		values[] = { "" };
@@ -373,59 +397,35 @@ class Params
 		texts[] = { "" };
 		default = "";
 	};
-	class Permissions{
-		title = $STR_PERMISSIONS_PARAM;
-		values[] = {1,0};
-		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 1;
-	};
-	class EnableLock {
-		title = $STR_VEH_LOCK;
-		values[] = { 1, 0 };
-		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 1;
-	};	
-	class CleanupVehicles {
-		title = $STR_CLEANUP_PARAM;
-		values[] = { 0,1,2,4 };
-		texts[] = { $STR_PARAMS_DISABLED, $STR_CLEANUP_PARAM1, $STR_CLEANUP_PARAM2, $STR_CLEANUP_PARAM3 };
-		default = 1;
-	};
-	class Introduction {
-		title = $STR_PARAMS_INTRO;
-		values[] = { 1, 0 };
-		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 1;
-	};
-	class DeploymentCinematic {
-		title = $STR_PARAMS_DEPLOYMENTCAMERA;
-		values[] = { 1, 0 };
-		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 0;
-	};
-/*	class FirstFob {
-		title = $STR_PARAMS_FIRSTFOB;
-		values[] = { 1, 0 };
-		texts[] = { $STR_YES, $STR_NO };
-		default = 0;
-	};*/
 	class AdminMenu {
 		title = "Enable the Admin Menu";
 		values[] = { 1, 0 };
 		texts[] = { $STR_YES, $STR_NO };
 		default = 1;
 	};
-	class Space4 {
-		title = "";
-		values[] = { "" };
-		texts[] = { "" };
-		default = "";
+	class CleanupVehicles {
+		title = $STR_CLEANUP_PARAM;
+		values[] = { 0,1,2,4 };
+		texts[] = { $STR_PARAMS_DISABLED, $STR_CLEANUP_PARAM1, $STR_CLEANUP_PARAM2, $STR_CLEANUP_PARAM3 };
+		default = 1;
 	};
 	class Whitelist {
 		title = $STR_WHITELIST_PARAM;
 		values[] = { 1, 0 };
 		texts[] = { $STR_WHITELIST_ENABLED, $STR_PARAMS_DISABLED };
 		default = 1;
+	};
+	class AutoSave{
+		title = "AutoSave Timer";
+		values[] = {0,300,600,1800,7200};
+		texts[] = { $STR_PARAMS_DISABLED, "5 min", "10 min", "30 min", "1 hour", "2 hour" };
+		default = 0;
+	};
+	class Space4 {
+		title = "";
+		values[] = { "" };
+		texts[] = { "" };
+		default = "";
 	};
 	class WipeSave1{
 		title = $STR_WIPE_TITLE;
@@ -444,7 +444,7 @@ class Params
 		values[] = {0,1};
 		texts[] = { $STR_PARAMS_DISABLED, $STR_PARAMS_ENABLED };
 		default = 0;
-	};	
+	};
 	class ForceLoading{
 		title = "Force save game loading.";
 		values[] = {0,1};
