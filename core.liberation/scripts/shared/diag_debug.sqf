@@ -24,4 +24,13 @@ if (_save == 1) then {
     } else { diag_log _x };
   } foreach _greuh_liberation_savegame;
   diag_log "-----------------------------------------------------";
+  diag_log "Player Context";
+  {
+    diag_log format ["player: %1", (_x select 0)];
+    diag_log format ["player stuff: %1", (_x select 1)];
+    {
+      diag_log format ["player AI stuff: %1", _x];
+    } forEach (_x select 2);
+  } forEach GRLIB_player_context;
+  diag_log "-----------------------------------------------------";
 };
