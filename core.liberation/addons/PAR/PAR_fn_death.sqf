@@ -70,10 +70,11 @@ if (_unit == player) then {
 
 	// respawn penalty
 	if ( score _unit > GRLIB_perm_log + 20 ) then { [_unit, -10] remoteExec ["addScore", 2] };
+	titleText ["" ,"BLACK FADED", 100];
 };
 
 removeAllWeapons _unit;
 hidebody _unit;
 _unit setDamage 1;
-sleep 30;
+if (!isPlayer _unit) then { sleep 30 };
 deleteVehicle _unit;
