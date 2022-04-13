@@ -1,17 +1,18 @@
 params ["_unit"];
-_unit connectTerminalToUAV objNull;
+private ["_pos", "_grave", "_grave_box", "_uniform", "_vest", "_backpack" ];
 
+_unit connectTerminalToUAV objNull;
 [(_unit getVariable ['PAR_myMedic', objNull]), _unit] call PAR_fn_medicRelease;
 _unit setVariable ['PAR_wounded', false];
 
 if (_unit == player) then {
 	// Grave + stuff box
-	private ["_pos", "_grave", "_grave_box", "_uniform", "_vest", "_backpack" ];
 	_pos = getPosATL _unit;
 	if ( isNull objectParent player && _pos distance2D lhd >= 1000 && _pos distance2D ([] call F_getNearestFob) >= GRLIB_sector_size && round(_pos select 2) == 0 && !(surfaceIsWater _pos)) then {
 		_unit setPos zeropos;
 		// create grave
 		_grave = (selectRandom GRLIB_player_grave) createVehicle _pos;
+		_grave setPosATL _pos;
 		_grave setvariable ["GRLIB_grave_message", format ["%1 - R.I.P -", name player], true];
 		_grave_dir = getDir _grave;
 
@@ -20,8 +21,8 @@ if (_unit == player) then {
 		if (!isNil "_old_grave_box") then { deleteVehicle _old_grave_box };
 
 		// create grave box
-		_grave_box = "Land_PlasticCase_01_small_black_F" createVehicle zeropos;
 		_grave_box_pos = (getposATL _grave) vectorAdd ([[-1.75, 0, 0], -_grave_dir] call BIS_fnc_rotateVector2D);
+		_grave_box = "Land_PlasticCase_01_small_black_F" createVehicle _grave_box_pos;
 		_grave_box setPosATL _grave_box_pos;
 		_grave_box attachto [_grave];
 		_grave_box setVariable ["R3F_LOG_disabled", true, true];
@@ -72,7 +73,6 @@ if (_unit == player) then {
 };
 
 removeAllWeapons _unit;
-sleep 5;
 hidebody _unit;
 _unit setDamage 1;
 sleep 30;
