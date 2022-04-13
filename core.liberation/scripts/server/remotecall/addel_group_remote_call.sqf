@@ -2,6 +2,7 @@ if (!isServer && hasInterface) exitWith {};
 params ["_group", "_action"];
 
 if (isNull _group) exitWith {};
+if (isNil "global_locked_group") then { global_locked_group = [] };
 
 waitUntil {sleep 0.1; isNil "GRLIB_manage_group"};
 GRLIB_manage_group = true;
