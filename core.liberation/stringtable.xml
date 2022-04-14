@@ -541,6 +541,8 @@
 		<Key ID="STR_WIPE_TITLE_3">
 			<Original>Keep Players datas</Original>
 			<French>Garder les infos des Joueurs</French>
+			<Chinesesimp>保存玩家数据</Chinesesimp>
+			<Chinese>保存玩家数据</Chinese>
 		</Key>
 		<Key ID="STR_WIPE_NO">
 			<Original>No</Original>
@@ -1299,8 +1301,8 @@
 			<German>== Technische Einstellungen</German>
 			<Spanish>== OPCIONES TÉCNICAS ==</Spanish>
 			<Russian>== ТЕХНИЧЕСКИЕ ОПЦИИ ==</Russian>
-			<Chinesesimp>== 技术选项 ==</Chinesesimp>
-			<Chinese>== 技術選項 ==</Chinese>
+			<Chinesesimp>== 难度选项 ==</Chinesesimp>
+			<Chinese>== 难度選項 ==</Chinese>
 			<Japanese>== テクニカルオプション ==</Japanese>
 		</Key>
 		<Key ID="STR_PARAMS_DAYDURATION">
@@ -1488,10 +1490,14 @@
 		<Key ID="STR_PARAMS_REVIVE2">
 			<Original>Enabled - Everyone can revive using a MedKit or FAK</Original>
 			<French>Activé - Tout le monde peut ressusciter avec un kit médical ou un kit soins</French>
+			<Chinesesimp>启用——每个人都可以使用医疗包或急救包进行复活</Chinesesimp>
+			<Chinese>启用——每个人都可以使用医疗包或急救包进行复活</Chinese>
 		</Key>
 		<Key ID="STR_PARAMS_REVIVE3">
 			<Original>Enabled - Everyone can revive</Original>
 			<French>Activé - Tout le monde peut ressusciter</French>
+			<Chinesesimp>启用——每个人都可以随意复活</Chinesesimp>
+			<Chinese>启用——每个人都可以随意复活</Chinese>
 		</Key>
 		<Key ID="STR_PARAMS_INTRO">
 			<Original>Introduction</Original>
@@ -2289,6 +2295,8 @@
 		<Key ID="STR_PERMISSION_WARNING">
 			<Original>Automatic creation of default permissions.</Original>
 			<French>Création automatique des permissions par defaut.</French>
+			<Chinesesimp>自动创建默认权限。</Chinesesimp>
+			<Chinese>自动创建默认权限。</Chinese>
 		</Key>
 		<Key ID="STR_ARSENAL_TITLE">
 			<Original>ARSENAL</Original>
@@ -2522,22 +2530,32 @@
 		<Key ID="STR_CLEANUP_PARAM1">
 			<Original>15 minutes delay</Original>
 			<French> 15 minutes de délai</French>
+			<Chinesesimp>15分钟间隔</Chinesesimp>
+			<Chinese>15分钟间隔</Chinese>
 		</Key>				
 		<Key ID="STR_CLEANUP_PARAM2">
 			<Original>30 minutes delay</Original>
 			<French> 30 minutes de délai</French>
+			<Chinesesimp>30分钟间隔</Chinesesimp>
+			<Chinese>30分钟间隔</Chinese>
 		</Key>		
 		<Key ID="STR_CLEANUP_PARAM3">
 			<Original>1 hour delay</Original>
 			<French>1 heure de délai</French>
+			<Chinesesimp>1小时间隔</Chinesesimp>
+			<Chinese>1小时间隔</Chinese>
 		</Key>
 		<Key ID="STR_CLEANUP_PARAM4">
 			<Original>2 hours delay</Original>
 			<French>2 heures de délai</French>
+			<Chinesesimp>2小时间隔</Chinesesimp>
+			<Chinese>2小时间隔</Chinese>
 		</Key>
 		<Key ID="STR_CLEANUP_PARAM4">
 			<Original>4 hours delay</Original>
 			<French>4 heures de délai</French>
+			<Chinesesimp>4小时间隔</Chinesesimp>
+			<Chinese>4小时间隔</Chinese>
 		</Key>
 		<Key ID="STR_SORRY">
 			<Original>Sorry!</Original>
@@ -4876,14 +4894,20 @@
 		<Key ID="STR_SELL_WELCOME">
 			<Original>Hello stranger, I buy your vehicle's cargo for a good price!</Original>
 			<French>Bonjour étranger, j'achète la cargaison de votre véhicule à un bon prix !</French>
+			<Chinesesimp>陌生人你好，我会以一个合适的价格购买你的车辆里的东西！</Chinesesimp>
+			<Chinese>陌生人你好，我会以一个合适的价格购买你的车辆里的东西！</Chinese>
 		</Key>
 		<Key ID="STR_SELL_NO_VEH">
 			<Original>There is no vehicle nearby.</Original>
 			<French>Il n'y a pas de véhicule à proximité.</French>
+			<Chinesesimp>附件没有车辆。</Chinesesimp>
+			<Chinese>附件没有车辆。</Chinese>
 		</Key>
 		<Key ID="STR_NOTHING_TO_SELL">
 			<Original>There's nothing I can buy in the cargo of your vehicle</Original>
 			<French>Il n'y a rien que je puisse acheter dans la cargaison de votre véhicule</French>
+			<Chinesesimp>你车上的货物我什么也不需要</Chinesesimp>
+			<Chinese>你车上的货物我什么也不需要</Chinese>
 		</Key>
 		<Key ID="STR_CARGO_SOLD">
 			<Original>%1 Cargo Sold.\n%2 +%3 AMMO !</Original>
@@ -5246,9 +5270,13 @@
 		</Key>
 		<Key ID="STR_ADMIN_EXPORT">
 			<Original>Export Game</Original>
+			<Chinesesimp>导入游戏存档</Chinesesimp>
+			<Chinese>导入游戏存档</Chinese>
 		</Key>
 		<Key ID="STR_ADMIN_IMPORT">
 			<Original>Import Game</Original>
+			<Chinesesimp>导出游戏存档</Chinesesimp>
+			<Chinese>导出游戏存档</Chinese>
 		</Key>
 		<Key ID="STR_ADMIN_GODMODE">
 			<Original>God Mode</Original>
@@ -5941,6 +5969,8 @@
 		<Key ID="STR_PAR_MD_04">
 			<Original>Maybe no more Medic or insuficient Medkit ?</Original>
 			<French>Peut etre plus de Médecin ou plus de kit de soins ?</French>
+			<Chinesesimp>也许没有更多的医疗人员，或者医疗包不足？</Chinesesimp>
+			<Chinese>也许没有更多的医疗人员，或者医疗包不足？</Chinese>
 		</Key>		
 		<Key ID="STR_PAR_ST_01">
 			<Original>%1 is healing %2 now...</Original>
@@ -6143,6 +6173,8 @@
 	<Package name="LRX_SELL">
 		<Key ID="STR_SELL_NAME">
 			<Original>-- Sell Shop --</Original>
+			<Chinesesimp>-- 当铺 --</Chinesesimp>
+			<Chinese>-- 当铺 --</Chinese>
 		</Key>
 	</Package>
 
