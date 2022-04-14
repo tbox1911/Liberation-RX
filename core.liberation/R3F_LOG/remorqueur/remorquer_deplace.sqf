@@ -1,5 +1,5 @@
 /**
- * Remorque l'objet déplacé par le joueur avec un remorqueur
+ * Remorque l'objet dï¿½placï¿½ par le joueur avec un remorqueur
  * 
  * Copyright (C) 2014 Team ~R3F~
  * 
@@ -16,7 +16,7 @@ else
 {
 	R3F_LOG_mutex_local_verrou = true;
 	
-	private ["_objet", "_remorqueur", "_offset_attach_y"];
+	private ["_objet", "_remorqueur", "_offset_attach_x", "_offset_attach_y", "_offset_attach_z", "_pos_x", "_pos_y", "_pos_z"];
 	
 	_objet = R3F_LOG_joueur_deplace_objet;
 	_remorqueur = [_objet, 5] call R3F_LOG_FNCT_3D_cursorTarget_virtuel;
@@ -31,7 +31,7 @@ else
 		_remorqueur setVariable ["R3F_LOG_remorque", _objet, true];
 		_objet setVariable ["R3F_LOG_est_transporte_par", _remorqueur, true];
 		
-		// On place le joueur sur le côté du véhicule en fonction qu'il se trouve à sa gauche ou droite
+		// On place le joueur sur le cï¿½tï¿½ du vï¿½hicule en fonction qu'il se trouve ï¿½ sa gauche ou droite
 		if ((_remorqueur worldToModel (player modelToWorld [0,0,0])) select 0 > 0) then
 		{
 			player attachTo [_remorqueur, [
@@ -66,17 +66,20 @@ else
 		}];
 		sleep 2;
 		
-		// Quelques corrections visuelles pour des classes spécifiques
-		if (typeOf _remorqueur == "B_Truck_01_mover_F") then {_offset_attach_y = 1.0;}
-		else {_offset_attach_y = 0.2;};
-		
-		// Attacher à l'arrière du véhicule au ras du sol
-		_objet attachTo [_remorqueur, [
-			(boundingCenter _objet select 0),
-			(boundingBoxReal _remorqueur select 0 select 1) + (boundingBoxReal _objet select 0 select 1) + _offset_attach_y,
-			(boundingBoxReal _remorqueur select 0 select 2) - (boundingBoxReal _objet select 0 select 2)
-		]];
-		
+		// Quelques corrections visuelles pour des classes spï¿½cifiques
+		_offset_attach_x = 0;
+		_offset_attach_y = 0.2;
+		_offset_attach_z = 0;
+		if (typeOf _remorqueur == "B_Truck_01_mover_F") then {_offset_attach_y = 1.0};
+		if (typeOf _remorqueur isKindOf "CUP_UAZ_Base") then {_offset_attach_z = 2.6};
+		if (typeOf _objet isKindOf "CUP_UAZ_Base") then {_offset_attach_z = _offset_attach_z - 2.4};
+					
+		// Attacher ï¿½ l'arriï¿½re du vï¿½hicule au ras du sol
+		_pos_x = (boundingCenter _objet select 0) + _offset_attach_x;
+		_pos_y = (boundingBoxReal _remorqueur select 0 select 1) + (boundingBoxReal _objet select 0 select 1) + _offset_attach_y;
+		_pos_z = (boundingBoxReal _remorqueur select 0 select 2) - (boundingBoxReal _objet select 0 select 2) + _offset_attach_z;
+		_objet attachTo [_remorqueur, [_pos_x, _pos_y, _pos_z]];
+	
 		detach player;
 		
 		// Si l'objet est une arme statique, on corrige l'orientation en fonction de la direction du canon
@@ -86,7 +89,7 @@ else
 			
 			_azimut_canon = ((_objet weaponDirection (weapons _objet select 0)) select 0) atan2 ((_objet weaponDirection (weapons _objet select 0)) select 1);
 			
-			// Seul le D30 a le canon pointant vers le véhicule
+			// Seul le D30 a le canon pointant vers le vï¿½hicule
 			if !(_objet isKindOf "D30_Base") then // All in Arma
 			{
 				_azimut_canon = _azimut_canon + 180;
