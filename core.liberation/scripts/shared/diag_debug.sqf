@@ -1,5 +1,6 @@
-//Dump process  : [0] execVM "scripts\shared\diag_debug.sqf";
-//Add Save dump : [1] execVM "scripts\shared\diag_debug.sqf";
+// LRX Diag Tools - pSiKO
+// Dump process  : [0] execVM "scripts\shared\diag_debug.sqf";
+// Add Save dump : [1] execVM "scripts\shared\diag_debug.sqf";
 params [["_save", 0]];
 diag_log "--------------------- LRX Diag -----------------------";
 diag_log "LRX version:";
