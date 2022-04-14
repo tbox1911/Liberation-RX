@@ -1,16 +1,19 @@
 params ["_player", "_uid"];
 
 private _puid = _player getVariable ["PAR_Grp_ID","1"];
-private _bros = allUnits select { alive _x && lifeState _x != "INCAPACITATED" && !(_x getVariable ["GRLIB_score_set", 0] == 1) && (_x getVariable ["PAR_Grp_ID","0"]) == _puid};
-
 private _ai_group = [];
-{
-	_ai_group pushback [typeOf _x, rank _x, [_x] call F_getLoadout];
-	deleteVehicle _x;
-} forEach _bros;
+private _loadout = [];
+
+if (alive _player && lifeState _player != "INCAPACITATED" ) then {
+	private _bros = allUnits select { alive _x && lifeState _x != "INCAPACITATED" && !(_x getVariable ["GRLIB_score_set", 0] == 1) && (_x getVariable ["PAR_Grp_ID","0"]) == _puid};
+	{
+		_ai_group pushback [typeOf _x, rank _x, [_x] call F_getLoadout];
+		deleteVehicle _x;
+	} forEach _bros;
+	_loadout = [_player] call F_getLoadout;
+};
 
 private _new = true;
-private _loadout = [_player] call F_getLoadout;
 {
 	if (_x select 0 == _uid) exitWith {
 		_x set [1, _loadout];
