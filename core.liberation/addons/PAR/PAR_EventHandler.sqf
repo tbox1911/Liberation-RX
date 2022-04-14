@@ -44,7 +44,7 @@ _unit addEventHandler ["InventoryClosed", {
 _unit addEventHandler ["InventoryOpened", {
 	params ["_unit", "_container"];
 	_ret = false;
-	if (!([_unit, _container] call is_owner)) then {
+	if (!([_unit, _container] call is_owner) || locked _container >= 1) then {
 		closeDialog 106;
 		_ret = true;
 	} else {
