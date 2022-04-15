@@ -575,8 +575,37 @@ Arma Docker Container
 testing only for admins
 
 
+Spieler Score hinzufügen
++5 = +5 score
+[getPlayerUID _this, +5] remoteExec ["F_addPlayerScore", 2];
 
 
+Spieler Ammo hinzufügen
+
+_player = "slotzi";
+_ammo = 10000;
+{
+if ( (_x select 3) == _player) exitWith {
+_uid = (_x select 0);
+hint _uid;
+private _p1 = _uid call BIS_fnc_getUnitByUID;
+hint str(_pl);
+if (!isNull _p1) then {
+_cur_ammo = _p1 getVariable ['GREUH_ammo_count', 0];
+hint str(_cur_ammo);
+
+_p1 setVariable ['GREUH_ammo_count', (_cur_ammo + _ammo), true];
+} forEach GRLIB_player_scores;
+{
+if ( (_x select 0) == _uid) exitWith {
+_cur_ammo = (_x select 2);
+_x set [2, (_cur_ammo + _ammo)];
+
+};
+} forEach GRLIB_player_scores;
+
+};
+} forEach GRLIB_player_scores;
 
 
 
