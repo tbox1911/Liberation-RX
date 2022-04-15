@@ -93,7 +93,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 	_side_west = greuh_liberation_savegame select 6;
 	_side_east = greuh_liberation_savegame select 7;
 	if ( GRLIB_force_load == 0 && typeName _side_west == "STRING" && typeName _side_east == "STRING" ) then {
-		if ( _side_west != GRLIB_mod_west || _side_east != GRLIB_mod_east ) then {
+		if ( _side_west != GRLIB_mod_west || _side_east != GRLIB_mod_east ) exitWith {
 			abort_loading = true;
 		};
 	};
@@ -310,5 +310,6 @@ if (abort_loading) exitWith { abort_loading_msg = format [
 	FATAL! - This Savegame was made with a differents Modset (%1/%2)\n\n
 	Loading Aborted to protect data integrity.\n
 	Correct the Modset or Wipe the savegame..\n
-	*********************************", _side_west, _side_east];
+	Current Modset: (%3/%4)\n
+	*********************************", _side_west, _side_east, GRLIB_mod_west, GRLIB_mod_east];
 };
