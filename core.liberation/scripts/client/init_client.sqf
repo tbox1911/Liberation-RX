@@ -9,6 +9,7 @@ waitUntil {!isNil "abort_loading" };
 if (abort_loading) exitWith {
 	private _msg = format ["Sorry, An error occured on Server startup.\nPlease check the error logs.\n\n%1", abort_loading_msg];
 	titleText [_msg, "BLACK FADED", 100];
+	diag_log abort_loading_msg;
 	uisleep 10;
 	endMission "LOSER";
 };
