@@ -46,7 +46,7 @@ player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["DALE Pylons v1.0
 player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["GRAD Fireworks v.1.20<br/>by <font color='%1'>-Nomisum-</font>", call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["Dynamic Animal v.1.00<br/>by <font color='%1'>-Vandeanson-</font>", call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["Mag Repack v3.13<br/>by <font color='%1'>-Outlawled-</font>", call _getRandomColor]]];
-player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["A3W Missions v1.30<br/>by <font color='%1'>-AgentRev-</font>", call _getRandomColor]]];
+player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["A3W Missions, fpsFix and so much!!<br/>by <font color='%1'>-AgentRev-</font>", call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["R3F Logistics v3.10<br/>by <font color='%1'>-Team-R3F.org-</font>", call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["Robust Air Taxi v1.05<br/>by <font color='%1'>-pSiKO-</font>", call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["pSiKO AI Revive v2.04<br/>by <font color='%1'>-pSiKO-</font>", call _getRandomColor]]];
