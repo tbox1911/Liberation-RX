@@ -15,8 +15,6 @@ GRLIB_mod_list_west = [
     "FFAA_SPAIN_W",
     "GM_WEST",
     "GM_WEST_WINT",
-    "GM_EAST",
-    "GM_EAST_WINT",
     "OPTRE_WEST",
     "WS_UNA",
     "SOG_USA",
@@ -36,23 +34,21 @@ GRLIB_mod_list_east = [
     "A3_OPF_UB",
     "CP_TA",
     "CP_USMC_W",
-    "CP_USMC_D",
-    "CP_AFRF",		// Z@warrior CUP AFRF
-    "CP_SAHRA_D",	// Z@Warrior CUP Sahrani Desert
+    "CP_USMC_D",    
     "EJW",
     "R3F_WEST_D",
     "R3F_WEST_W",
     "RHS_USAF",
     "RHS_AFRF",
     "FFAA_SPAIN_W",
-    "GM_WEST",
-    "GM_WEST_WINT",
     "GM_EAST",
     "GM_EAST_WINT",
     "OPTRE_EAST",
     "WS_FIA",
     "SOG_USA",
     "SOG_VIETCONG",
+    "CP_AFRF",		// Z@warrior CUP AFRF
+    "CP_SAHRA_D",	// Z@Warrior CUP Sahrani Desert
     "PO_TA",		// Z@Warrior Project Opfor Takistani Armed Forces
     "PO_SA",		// Z@Warrior Project Opfor Sahrani Liberation Army
     "PO_UAF",		// Z@Warrior Project Opfor Ukrainian Armed Forces
