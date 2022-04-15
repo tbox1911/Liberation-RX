@@ -52,6 +52,20 @@ infantry_units = [
 	[pilot_classname,1,0,0,GRLIB_perm_log]
 ];
 
+
+// *** RESISTANCE - ARVN ***
+resistance_squad = [
+	"vn_i_men_sf_04",
+	"vn_i_men_sf_08",
+	"vn_i_men_sf_02",
+	"vn_i_men_sf_12",
+	"vn_i_men_sf_06",
+	"vn_i_men_sf_07",
+	"vn_i_men_sf_09",
+	"vn_i_men_sf_05",
+	"vn_i_men_sf_03"
+];
+
 units_loadout_overide = [
 ];
 

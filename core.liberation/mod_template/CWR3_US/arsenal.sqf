@@ -1,5 +1,5 @@
 // Initalize Side - Use Eneable limited Virtual Arsenal = Enabled (all MOD-Filter disabled)
-GRLIB_arsenal_side = EAST;
+GRLIB_arsenal_side = WEST;
 
 //Blacklist Items
 blacklisted_bag = [
@@ -412,9 +412,9 @@ GRLIB_whitelisted_from_arsenal_limited= [
 	"Medikit",
 	"FirstAidKit",
 	"ToolKit",
-	"ItemGPS",
-	"Laserdesignator",
+	//"ItemGPS",
+	//"Laserdesignator",
 	"Binocular",
-	"MineDetector",
-	"Rangefinder"
+	// "Rangefinder",
+	"MineDetector"
 ];

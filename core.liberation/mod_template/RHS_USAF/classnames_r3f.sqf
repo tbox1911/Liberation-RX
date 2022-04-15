@@ -9,10 +9,51 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 
 R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
 [
+	"RHS_MELB_MH6M",
+	"RHS_MELB_AH6M",
+	"RHS_UH1Y_UNARMED",
+	"RHS_UH1Y",
+	"rhsusf_CH53e_USMC_cargo",
+	"rhsusf_CH53E_USMC_GAU21",
+	"RHS_CH_47F",
+	"rhsusf_CH53E_USMC",
+	"RHS_UH60M",
+	"RHS_UH60M2",
+	"RHS_AH64D_wd",
+	"RHS_AH1Z_wd"
 ];
 
 R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 [
+	"B_Boat_Transport_01_F",
+	"B_Boat_Armed_01_minigun_F",
+	"rhsusf_m1025_w",
+	"rhsusf_m1025_w_m2",
+	"rhsusf_m1025_w_mk19",
+	"rhsusf_M1078A1P2_B_WD_flatbed_fmtv_usarmy",
+	"rhsusf_M1084A1P2_B_WD_fmtv_usarmy",
+	"rhsusf_M977A4_usarmy_wd",
+	"rhsusf_m1151_usarmy_wd",
+	"rhsusf_m1151_m240_v2_usarmy_wd",
+	"rhsusf_m1151_m2_v2_usarmy_wd",
+	"rhsusf_M1083A1P2_B_WD_fmtv_usarmy",
+	"rhsusf_m1240a1_usarmy_wd",
+	"rhsusf_m1240a1_m2_usarmy_wd",
+	"rhsusf_m1240a1_mk19_usarmy_wd",
+	"RHS_M2A2_wd",
+	"RHS_M2A3_wd",
+	"RHS_M2A2_BUSKI_WD",
+	"RHS_M2A3_BUSKIII_wd",
+	"RHS_M6_wd",
+	"rhsusf_m1a1aim_tuski_wd",
+	"rhsusf_m1a2sep1wd_usarmy",
+	"rhsusf_m1a2sep1tuskiwd_usarmy",
+	"rhsusf_m1a2sep1tuskiiwd_usarmy",
+	"rhsusf_m1a1hc_wd",
+	"rhsusf_M142_usmc_WD",
+	"rhsusf_m109_usarmy",
+	"rhsusf_stryker_m1126_m2_wd",
+	"rhsusf_M1078A1P2_WD_fmtv_usarmy"
 ];
 
 R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
@@ -31,6 +72,7 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["RHS_UH1Y", 150],
 	["RHS_MELB_AH6M", 150],
 	["RHS_UH60M", 250],
+	["RHS_UH60M2", 250],
 	["RHS_CH_47F_10_cargo", 500],
 	["rhsusf_CH53e_USMC_cargo", 700],
 	["rhsusf_CH53E_USMC_GAU21", 700],
@@ -50,10 +92,64 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 
 R3F_LOG_CFG_can_tow = R3F_LOG_CFG_can_tow +
 [
+	"rhsusf_m1025_w",
+	"rhsusf_m1025_w_m2",
+	"rhsusf_m1025_w_mk19",
+	"rhsusf_M1078A1P2_B_WD_flatbed_fmtv_usarmy",
+	"rhsusf_M1084A1P2_B_WD_fmtv_usarmy",
+	"rhsusf_M977A4_usarmy_wd",
+	"rhsusf_m1151_usarmy_wd",
+	"rhsusf_m1151_m240_v2_usarmy_wd",
+	"rhsusf_m1151_m2_v2_usarmy_wd",
+	"rhsusf_M1083A1P2_B_WD_fmtv_usarmy",
+	"rhsusf_m1240a1_usarmy_wd",
+	"rhsusf_m1240a1_m2_usarmy_wd",
+	"rhsusf_m1240a1_mk19_usarmy_wd",
+	"RHS_M2A2_wd",
+	"RHS_M2A3_wd",
+	"RHS_M2A2_BUSKI_WD",
+	"RHS_M2A3_BUSKIII_wd",
+	"RHS_M6_wd",
+	"rhsusf_m1a1aim_tuski_wd",
+	"rhsusf_m1a2sep1wd_usarmy",
+	"rhsusf_m1a2sep1tuskiwd_usarmy",
+	"rhsusf_m1a2sep1tuskiiwd_usarmy",
+	"rhsusf_m1a1hc_wd",
+	"rhsusf_M142_usmc_WD",
+	"rhsusf_m109_usarmy",
+	"rhsusf_stryker_m1126_m2_wd",
+	"rhsusf_M1078A1P2_WD_fmtv_usarmy"
 ];
 
 R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 [
+	"rhsusf_m1025_w",
+	"rhsusf_m1025_w_m2",
+	"rhsusf_m1025_w_mk19",
+	"rhsusf_M1078A1P2_B_WD_flatbed_fmtv_usarmy",
+	"rhsusf_M1084A1P2_B_WD_fmtv_usarmy",
+	"rhsusf_M977A4_usarmy_wd",
+	"rhsusf_m1151_usarmy_wd",
+	"rhsusf_m1151_m240_v2_usarmy_wd",
+	"rhsusf_m1151_m2_v2_usarmy_wd",
+	"rhsusf_M1083A1P2_B_WD_fmtv_usarmy",
+	"rhsusf_m1240a1_usarmy_wd",
+	"rhsusf_m1240a1_m2_usarmy_wd",
+	"rhsusf_m1240a1_mk19_usarmy_wd",
+	"RHS_M2A2_wd",
+	"RHS_M2A3_wd",
+	"RHS_M2A2_BUSKI_WD",
+	"RHS_M2A3_BUSKIII_wd",
+	"RHS_M6_wd",
+	"rhsusf_m1a1aim_tuski_wd",
+	"rhsusf_m1a2sep1wd_usarmy",
+	"rhsusf_m1a2sep1tuskiwd_usarmy",
+	"rhsusf_m1a2sep1tuskiiwd_usarmy",
+	"rhsusf_m1a1hc_wd",
+	"rhsusf_M142_usmc_WD",
+	"rhsusf_m109_usarmy",
+	"rhsusf_stryker_m1126_m2_wd",
+	"rhsusf_M1078A1P2_WD_fmtv_usarmy"
 ];
 
 R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
@@ -176,6 +272,8 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 
 R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 [
+	["B_Boat_Transport_01_F", 50],
+	["B_Boat_Armed_01_minigun_F", 50]
 ];
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
@@ -188,10 +286,16 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 
 R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 [
+	"B_Boat_Transport_01_F",
+	"B_Boat_Armed_01_minigun_F"
+
 ];
 
 R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 [
+	"B_Boat_Transport_01_F",
+	"B_Boat_Armed_01_minigun_F"
+
 ];
 
 //--------------- Building ---------------

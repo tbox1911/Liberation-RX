@@ -55,3 +55,14 @@ GRLIB_whitelisted_from_arsenal = [
 	"MineDetector",
 	"Rangefinder"
 ];
+
+GRLIB_whitelisted_from_arsenal_limited = [
+	"Medikit",
+	"FirstAidKit",
+	"ToolKit",
+	"ItemGPS",
+	"Laserdesignator",
+	"Binocular",
+	"MineDetector",
+	"Rangefinder"
+];

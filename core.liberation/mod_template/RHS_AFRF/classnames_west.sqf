@@ -20,6 +20,10 @@ pilot_classname = "rhs_pilot_combat_heli";
 crewman_classname = "rhs_msv_emr_combatcrew";
 A3W_BoxWps = "rhs_weapon_crate";
 
+chimera_vehicle_overide = [
+  ["B_Heli_Transport_01_F", "rhs_ka60_grey"]
+];
+
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 infantry_units = [
 	["Alsatian_Random_F",0,0,0,GRLIB_perm_max],
@@ -43,6 +47,22 @@ infantry_units = [
 ];
 
 units_loadout_overide = [];
+
+
+// *** RHS NAPA ***
+resistance_squad = [
+	"rhsgref_nat_pmil_commander",
+	"rhsgref_nat_pmil_specialist_aa",
+	"rhsgref_nat_pmil_machinegunner",
+	"rhsgref_nat_pmil_grenadier_rpg",
+	"rhsgref_nat_pmil_saboteur",
+	"rhsgref_nat_pmil_medic",
+	"rhsgref_nat_pmil_rifleman_akm",
+	"rhsgref_nat_pmil_rifleman_aksu",
+	"rhsgref_nat_pmil_grenadier",
+	"rhsgref_nat_pmil_rifleman",
+	"rhsgref_nat_pmil_hunter"
+];
 
 light_vehicles = [
 	["O_Boat_Transport_01_F",1,25,1,GRLIB_perm_inf],
@@ -244,4 +264,31 @@ box_transport_config_west = [
 	[ "rhs_kraz255b1_cargo_open_msv", -6.5, [0,0.5,1.5], [0,-0.9,1.5], [0,-2.4,1.5], [0,-3.8,1.5] ],
 	[ "RHS_Mi8mt_vv", -7.5, [0,2,-1.8], [0,0.6,-1.8], [0,-1.2,-1.8], [0,-2.6,-1.8] ]
 	
+];
+
+
+
+
+GRLIB_AirDrop_1 = [			// Unarmed Offroader 50
+	"RHS_UAZ_MSV_01"
+];
+
+GRLIB_AirDrop_2 = [			// Armed Offroader 100
+	"rhs_tigr_sts_msv"
+];
+
+GRLIB_AirDrop_3 = [			// MRAP 200
+	"rhsgref_BRDM2UM_msv"
+];
+
+GRLIB_AirDrop_4 = [			// Large Truck 300
+	"rhs_gaz66_msv"
+];
+
+GRLIB_AirDrop_5 = [			// APC 750
+	"rhs_btr60_msv"
+];
+
+GRLIB_AirDrop_6 = [			// Boat 250
+	"O_Boat_Transport_01_F"
 ];

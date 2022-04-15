@@ -52,6 +52,24 @@ infantry_units = [
 	[pilot_classname,1,0,0,GRLIB_perm_log]
 ];
 
+
+// *** RESISTANCE - Viet Cong - Local VC  ***
+resistance_squad = [
+	"vn_o_men_vc_local_21",
+	"vn_o_men_vc_local_11",
+	"vn_o_men_vc_local_01",
+	"vn_o_men_vc_local_28",
+	"vn_o_men_vc_local_09",
+	"vn_o_men_vc_local_08",
+	"vn_o_men_vc_local_30",
+	"vn_o_men_vc_local_16",
+	"vn_o_men_vc_local_05",
+	"vn_o_men_vc_local_24",
+	"vn_o_men_vc_local_19",
+	"vn_o_men_vc_local_06",
+	"vn_o_men_vc_local_14"
+];
+
 units_loadout_overide = [
 ];
 
@@ -279,4 +297,30 @@ box_transport_config_west = [
     [ "vn_o_wheeled_z157_02_nva65", -6.5, [0, -0.8, 0.4], [0, -2.5, 0.4] ],
     [ "vn_o_boat_03_02", 25, [1, -10.7, -0.9], [-1, -10.7, -0.9] ],
     [ "vn_o_boat_04_02", 25, [1, -10.7, -0.9], [-1, -10.7, -0.9] ]
+];
+
+
+GRLIB_AirDrop_1 = [		// cost = 50 Unarmed Offroad
+	"vn_o_wheeled_btr40_01"
+];
+
+GRLIB_AirDrop_2 = [		// cost 100 Armed Offroader
+	"vn_o_wheeled_btr40_mg_01"
+];
+
+GRLIB_AirDrop_3 = [		// cost 200 MRAPs (Mine Resistant Ambush Protected Vehicle)
+	"vn_o_wheeled_btr40_mg_02"
+];
+
+GRLIB_AirDrop_4 = [		// cost 300 Large Truck
+	"vn_o_wheeled_z157_01_nvam"
+];
+
+GRLIB_AirDrop_5 = [		// cost 750 APC (Armoured personnel carrier)
+	"vn_o_wheeled_btr40_mg_03"
+];
+
+
+GRLIB_AirDrop_6 = [		// cost 250 Boat
+	"vn_o_boat_01_01"
 ];

@@ -13,6 +13,11 @@ pilot_classname = "rhsusf_army_ucp_helipilot";
 crewman_classname = "rhsusf_army_ucp_crewman";
 A3W_BoxWps = "rhs_weapon_crate";
 
+chimera_vehicle_overide = [
+  ["B_Heli_Light_01_F", "RHS_MELB_MH6M"],
+  ["B_Heli_Transport_01_F", "RHS_UH60M2"]
+];
+
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 infantry_units = [
 	["Alsatian_Random_F",0,0,0,GRLIB_perm_max],
@@ -51,7 +56,9 @@ light_vehicles = [
 	["rhsusf_M1083A1P2_B_WD_fmtv_usarmy",5,30,15,GRLIB_perm_log],
 	["rhsusf_m1240a1_usarmy_wd",5,50,10,0],
 	["rhsusf_m1240a1_m2_usarmy_wd",5,150,5,GRLIB_perm_inf],
-	["rhsusf_m1240a1_mk19_usarmy_wd",5,150,5,GRLIB_perm_tank]
+	["rhsusf_m1240a1_mk19_usarmy_wd",5,150,5,GRLIB_perm_tank],
+	["rhsusf_stryker_m1126_m2_wd",5,250,5,GRLIB_perm_tank]
+
 ];
 
 heavy_vehicles = [
@@ -85,6 +92,15 @@ air_vehicles = [
 	["rhsusf_f22",15,1500,15,GRLIB_perm_max],
 	["RHS_A10",15,1500,15,GRLIB_perm_max]
 ];
+
+// Additional Airplanes
+if (isClass(configFile >> "CfgPatches" >> "FIR_A10A_F")) then  {air_vehicles pushBack ["FIR_A10A_Grey_Bonus",15,1600,15,GRLIB_perm_max];};
+if (isClass(configFile >> "CfgPatches" >> "FIR_AV8B_F")) then  {air_vehicles pushBack ["FIR_AV8B_NA_VMA211",15,1700,15,GRLIB_perm_max];};
+if (isClass(configFile >> "CfgPatches" >> "FIR_F14_RS_F")) then  {air_vehicles pushBack ["FIR_F14A_VF201_LOVIZ",15,2000,15,GRLIB_perm_max];};
+if (isClass(configFile >> "CfgPatches" >> "FIR_F15_F")) then  {air_vehicles pushBack ["FIR_F15C_Blank",15,2200,15,GRLIB_perm_max];};
+if (isClass(configFile >> "CfgPatches" >> "FIR_F16_F")) then  {air_vehicles pushBack ["FIR_F16C_Blank",15,2400,15,GRLIB_perm_max];};
+if (isClass(configFile >> "CfgPatches" >> "FLAN_EA18G_F")) then  {air_vehicles pushBack ["EA18G_137LOW",15,2600,15,GRLIB_perm_max];};
+
 
 blufor_air = [
 	"RHS_AH1Z_wd",
@@ -220,4 +236,28 @@ box_transport_config_west = [
 	[ "rhsusf_M1084A1P2_B_WD_fmtv_usarmy", -6.5, [0,-0.2,0.6], [0,-1.8,0.6] ],
 	[ "rhsusf_M977A4_usarmy_wd", -6.5, [0,0.5,1.5], [0,-0.9,1.5], [0,-2.4,1.5], [0,-3.8,1.5] ],
 	[ "RHS_CH_47F", -7.5, [0,2,-1.8], [0,0.6,-1.8], [0,-1.2,-1.8], [0,-2.6,-1.8] ]
+];
+
+GRLIB_AirDrop_1 = [			// Unarmed Offroader 50
+	"rhsusf_m1025_w"
+];
+
+GRLIB_AirDrop_2 = [			// Armed Offroader 100
+	"rhsusf_m1025_w_mk19"
+];
+
+GRLIB_AirDrop_3 = [			// MRAP 200
+	"rhsusf_m1240a1_m2_usarmy_wd"
+];
+
+GRLIB_AirDrop_4 = [			// Large Truck 300
+	"rhsusf_M1078A1P2_WD_fmtv_usarmy"
+];
+
+GRLIB_AirDrop_5 = [			// APC 750
+	"rhsusf_stryker_m1126_m2_wd"
+];
+
+GRLIB_AirDrop_6 = [			// Boat 250
+	"B_Boat_Transport_01_F"
 ];

@@ -9,6 +9,18 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 
 R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
 [
+"RHS_Mi8mt_Cargo_vdv",
+"RHS_Mi8T_vdv",
+"RHS_Mi24P_vdv",
+"RHS_Mi24V_vdv",
+"RHS_Mi8MTV3_vdv",
+"RHS_Mi8mtv3_Cargo_vdv",
+"RHS_Mi8MTV3_heavy_vdv",
+"RHS_UH1Y_UNARMED",
+"RHS_UH1Y_FFAR",
+"RHS_UH1Y",
+"RHS_MELB_AH6M",
+"RHS_UH60M"
 ];
 
 R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
@@ -50,10 +62,74 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 
 R3F_LOG_CFG_can_tow = R3F_LOG_CFG_can_tow +
 [
+"RHS_UAZ_MSV_01",
+"O_G_Offroad_01_armed_F",
+"rhs_gaz66_msv",
+"rhs_kamaz5350_open_msv",
+"RHS_Ural_Open_MSV_01",
+"rhs_kraz255b1_cargo_open_msv",
+"rhs_tigr_m_msv",
+"rhs_btr70_msv",
+"rhs_btr80_msv",
+"rhs_btr80a_msv",	
+"rhs_kamaz5350_msv",
+"RHS_Ural_Zu23_MSV_01",
+"rhs_brm1k_msv",
+"rhs_bmp1_msv",
+"rhs_bmp1k_msv",	
+"rhs_bmp1p_msv",
+"rhs_prp3_msv",
+"rhs_bmp3mera_msv",                   
+"rhs_bmp2k_msv",
+"rhs_t72bb_tv",
+"rhs_t72be_tv",
+"rhs_t80bvk",
+"rhs_t80u45m",
+"rhs_t90sab_tv",
+"rhs_t90saa_tv",
+"rhs_zsu234_aa",
+"rhs_t14_tv",
+"RHS_BM21_MSV_01",
+"rhs_2s3_tv",
+"rhs_tigr_sts_msv",
+"rhsgref_BRDM2UM_msv",
+"rhs_btr60_msv"
 ];
 
 R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 [
+"RHS_UAZ_MSV_01",
+"O_G_Offroad_01_armed_F",
+"rhs_gaz66_msv",
+"rhs_kamaz5350_open_msv",
+"RHS_Ural_Open_MSV_01",
+"rhs_kraz255b1_cargo_open_msv",
+"rhs_tigr_m_msv",
+"rhs_btr70_msv",
+"rhs_btr80_msv",
+"rhs_btr80a_msv",	
+"rhs_kamaz5350_msv",
+"RHS_Ural_Zu23_MSV_01",
+"rhs_brm1k_msv",
+"rhs_bmp1_msv",
+"rhs_bmp1k_msv",	
+"rhs_bmp1p_msv",
+"rhs_prp3_msv",
+"rhs_bmp3mera_msv",                   
+"rhs_bmp2k_msv",
+"rhs_t72bb_tv",
+"rhs_t72be_tv",
+"rhs_t80bvk",
+"rhs_t80u45m",
+"rhs_t90sab_tv",
+"rhs_t90saa_tv",
+"rhs_zsu234_aa",
+"rhs_t14_tv",
+"RHS_BM21_MSV_01",
+"rhs_2s3_tv",
+"rhs_tigr_sts_msv",
+"rhsgref_BRDM2UM_msv",
+"rhs_btr60_msv"
 ];
 
 R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
@@ -62,6 +138,38 @@ R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
 
 R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 [
+"RHS_UAZ_MSV_01",
+"O_G_Offroad_01_armed_F",
+"rhs_gaz66_msv",
+"rhs_kamaz5350_open_msv",
+"RHS_Ural_Open_MSV_01",
+"rhs_kraz255b1_cargo_open_msv",
+"rhs_tigr_m_msv",
+"rhs_btr70_msv",
+"rhs_btr80_msv",
+"rhs_btr80a_msv",	
+"rhs_kamaz5350_msv",
+"RHS_Ural_Zu23_MSV_01",
+"rhs_brm1k_msv",
+"rhs_bmp1_msv",
+"rhs_bmp1k_msv",	
+"rhs_bmp1p_msv",
+"rhs_prp3_msv",
+"rhs_bmp3mera_msv",                   
+"rhs_bmp2k_msv",
+"rhs_t72bb_tv",
+"rhs_t72be_tv",
+"rhs_t80bvk",
+"rhs_t80u45m",
+"rhs_t90sab_tv",
+"rhs_t90saa_tv",
+"rhs_zsu234_aa",
+"rhs_t14_tv",
+"RHS_BM21_MSV_01",
+"rhs_2s3_tv",
+"rhs_tigr_sts_msv",
+"rhsgref_BRDM2UM_msv",
+"rhs_btr60_msv"
 ];
 
 R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
@@ -161,7 +269,10 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["rhsusf_m1a1fep_od", 150],
 	["rhsusf_m1a1hc_wd", 150],
 	["rhsusf_M142_usmc_WD", 150],
-	["rhsusf_m109_usarmy", 150]
+	["rhsusf_m109_usarmy", 150],
+	["rhsgref_BRDM2UM_msv", 150],
+	["rhs_gaz66_msv", 150],
+	["rhs_btr60_msv", 150]
 ];
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
@@ -176,6 +287,9 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 
 R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 [
+	["O_Boat_Transport_01_F", 10],
+	["O_Boat_Armed_01_hmg_F", 50]
+
 ];
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
@@ -192,6 +306,8 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 
 R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 [
+"O_Boat_Transport_01_F",
+"O_Boat_Armed_01_hmg_F"
 ];
 
 //--------------- Building ---------------
