@@ -34,7 +34,7 @@ for "_i" from 1 to _nbUnits do {
 		_unit setSkill 0.6;
 		_unit setSkill ["courage", 1];
 		_unit allowFleeing 0;
-		_unit setVariable ["mission_AI", true];
+		_unit setVariable ["GRLIB_mission_AI", true];
 		_unit switchMove "amovpknlmstpsraswrfldnon";
 		if (_type == "militia") then { 
 			[ _unit ] call loadout_militia;

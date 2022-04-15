@@ -27,6 +27,7 @@ private _sendPara = {
 		_unit setSkill ["courage", 1];
 		_unit allowFleeing 0;
 		_unit setVariable ["GRLIB_counter_TTL", round(time + 3600)];
+		_unit setVariable ["GRLIB_mission_AI", true];
 		[ _unit ] call reammo_ai;
 		sleep 0.1;
 	};
