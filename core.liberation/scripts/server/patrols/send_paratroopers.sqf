@@ -50,7 +50,7 @@ private _sendPara = {
 	_waypoint setWaypointCompletionRadius 20;
 
 	waitUntil { sleep 1;
-		!(alive _newvehicle) || (damage _newvehicle > 0.2 ) || (_newvehicle distance2D _targetpos < 250)
+		!(alive _newvehicle) || (damage _newvehicle > 0.2 ) || (_newvehicle distance2D _targetpos < 300)
 	};
 
 	_newvehicle flyInHeight 200;
