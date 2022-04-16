@@ -138,6 +138,5 @@ class Repaint {
 #include "addons\SDB_DALE\RscLoadout.hpp"
 
 #include "KP\KPGUI\KPGUI_defines.hpp"
-
 #include "KP\KPCF\ui\defines.hpp"
 #include "KP\KPCF\ui\KP_cratefiller_dialog.hpp"

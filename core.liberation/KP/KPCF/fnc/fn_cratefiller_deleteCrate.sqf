@@ -30,7 +30,7 @@ if (isNull _storage) exitWith {
 };
 
 // Check if the active storage is a pre defined crate
-if ((typeOf _storage) in CGVAR("crates", [])) exitWith {
+if (!((typeOf _storage) == "Box_NATO_equip_F")) exitWith {
     [localize "STR_KP_CRATEFILLER_HINTNONDELETEABLE"] call CBA_fnc_notify;
 };
 
