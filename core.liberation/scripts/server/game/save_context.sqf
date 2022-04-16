@@ -26,4 +26,4 @@ if (_new) then {
 	GRLIB_player_context pushback [ _uid, _loadout, _ai_group ];
 };
 
-diag_log format ["--- LRX Squad Player %1 Saved at %2 ", name _player, time];
+diag_log format ["--- LRX Squad Player %1 Saved at %2", name _player, time];
