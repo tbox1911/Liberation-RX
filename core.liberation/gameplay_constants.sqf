@@ -34,8 +34,8 @@ GRLIB_perm_max = 1200;
 GRLIB_date_year = 2022;
 GRLIB_date_month = 6;
 GRLIB_date_day = 30;
-GRLIB_nights_start = 21;
-GRLIB_nights_stop = 4;
+GRLIB_nights_start = 18;
+GRLIB_nights_stop = 6;
 GREUH_start_ammo = 200;
 if ( GRLIB_blufor_cap >= 10 ) then { GRLIB_blufor_cap = 200 }; // Don't forget that the human commander manages those, not the server
 GRLIB_offload_diag = false;
