@@ -45,7 +45,7 @@ light_vehicles = [
     ["CUP_B_T810_Unarmed_CZ_WDL",0,100,0,GRLIB_perm_inf],
 
     ["B_MRAP_01_F",0,120,0,GRLIB_perm_inf],
-    ["B_MRAP_01__HMG_F",0,130,0,GRLIB_perm_inf],
+    ["B_MRAP_01_HMG_F",0,130,0,GRLIB_perm_inf],
     ["B_MRAP_01_GMG_F",0,150,0,GRLIB_perm_inf],
     
     ["CUP_B_MTVR_USMC",0,110,0,GRLIB_perm_inf],
