@@ -43,6 +43,11 @@ light_vehicles = [
     ["CUP_B_RHIB2Turret_USMC",0,80,0,GRLIB_perm_inf],
     ["CUP_I_SUV_ION",0,100,0,GRLIB_perm_inf],
     ["CUP_B_T810_Unarmed_CZ_WDL",0,100,0,GRLIB_perm_inf],
+
+    ["B_MRAP_01_F",0,120,0,GRLIB_perm_inf],
+    ["B_MRAP_01__HMG_F",0,130,0,GRLIB_perm_inf],
+    ["B_MRAP_01_GMG_F",0,150,0,GRLIB_perm_inf],
+    
     ["CUP_B_MTVR_USMC",0,110,0,GRLIB_perm_inf],
     ["CUP_B_nM1025_Unarmed_USMC_WDL",0,120,0,GRLIB_perm_inf],
     ["CUP_B_nM1025_M2_USMC_WDL",0,130,0,GRLIB_perm_inf],
@@ -66,6 +71,8 @@ light_vehicles = [
     ["CUP_B_Dingo_GL_GER_Wdl",0,250,0,GRLIB_perm_inf],
     ["CUP_I_SUV_Armored_ION",0,240,0,GRLIB_perm_inf],
     //FFAA
+  
+    ["B_SDV_01_F",0,30,0,GRLIB_perm_inf],
     ["B_Boat_Transport_01_F",0,30,0,GRLIB_perm_inf],
     ["ffaa_ar_zodiac_hurricane",0,50,0,GRLIB_perm_inf],
     ["ffaa_ar_lcm",0,50,0,GRLIB_perm_inf],
@@ -204,10 +211,7 @@ air_vehicles = [
     ["ffaa_famet_ec135",0,250,0,GRLIB_perm_inf],
     ["ffaa_ea_reaper",0,2000,0,GRLIB_perm_inf],
   
-    //["ffaa_ea_hercules_camo",0,250,0,GRLIB_perm_inf],
-    //["ffaa_ea_hercules_cargo",0,250,0,GRLIB_perm_inf],
     ["ffaa_famet_cougar",0,300,0,GRLIB_perm_inf],
-    //["ffaa_famet_ch47_des_mg",0,500,0,GRLIB_perm_inf],
     ["ffaa_famet_ch47_mg",0,500,0,GRLIB_perm_inf],
     ["ffaa_nh90_tth_armed",0,500,0,GRLIB_perm_inf],                                 //NH-90
     ["ffaa_nh90_tth_cargo",0,350,0,GRLIB_perm_inf],
