@@ -53,15 +53,15 @@ if !(isNull _unit) then {
 	// Remove AI
 	{ deleteVehicle _x } forEach (units _unit);
 
-	private _text = format ["Bye bye %1, see you soon...", _name];
-	[gamelogic, _text] remoteExec ["globalChat", -2];
+	// Remove Grave Box
+	private _grave_box = _unit getVariable ["GRLIB_grave_box", nil];
+	if (!isNil "_grave_box") then { deleteVehicle _grave_box };
 
 	// Delete Body
 	deleteVehicle _unit;
 
-	// Remove Grave Box
-	private _grave_box = _unit getVariable ["GRLIB_grave_box", nil];
-	if (!isNil "_grave_box") then { deleteVehicle _grave_box };
+	private _text = format ["Bye bye %1, see you soon...", _name];
+	[gamelogic, _text] remoteExec ["globalChat", -2];		
 };
 
 private _player_left = count (AllPlayers - (entities "HeadlessClient_F"));
