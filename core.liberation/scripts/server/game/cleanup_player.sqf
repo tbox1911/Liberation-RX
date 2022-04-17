@@ -50,6 +50,9 @@ if !(isNull _unit) then {
 	{if ((_x select 0) == _uid) exitWith {_score = (_x select 1)}} forEach GRLIB_player_scores; 
 	if (_score > 20) then { [_unit, _uid] call save_context };
 
+	// Remove AI
+	{ deleteVehicle _x } forEach (units _unit);
+
 	private _text = format ["Bye bye %1, see you soon...", _name];
 	[gamelogic, _text] remoteExec ["globalChat", -2];
 
