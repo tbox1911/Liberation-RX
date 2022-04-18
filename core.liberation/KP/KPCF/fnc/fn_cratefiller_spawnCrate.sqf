@@ -54,7 +54,7 @@ clearItemCargoGlobal _crate;
 clearBackpackCargoGlobal _crate;
 
 if(_crateType == "ACE_medicalSupplyCrate_advanced") then {
-_crate addItemCargo ["ACE_adenosine",50];
+
 _crate addItemCargo ["ACE_elasticBandage",100];
 _crate addItemCargo ["ACE_packingBandage",100];
 _crate addItemCargo ["ACE_quikclot",100];

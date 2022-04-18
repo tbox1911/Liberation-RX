@@ -155,6 +155,7 @@ SNC_VehRestriction= true;
     params ["_vehicle"];
 	clearItemCargoGlobal _vehicle;
 	_vehicle addAction	["Endheilen",{ params ["_target", "_caller", "_actionId", "_arguments"]; [_caller,true] execVM "MilSimUnited\heal.sqf";},nil,1.5,false,true,"","true",5,false,"",""];
+	_vehicle addAction	["Bereichsheilung",{ params ["_target", "_caller", "_actionId", "_arguments"]; [_caller,true] execVM "MilSimUnited\heal_aoe.sqf";},nil,1.5,false,true,"","true",5,false,"",""];
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
 ["B_Slingload_01_Ammo_F", "InitPost", {

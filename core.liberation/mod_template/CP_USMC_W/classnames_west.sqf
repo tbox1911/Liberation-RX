@@ -45,8 +45,8 @@ light_vehicles = [
     ["CUP_B_T810_Unarmed_CZ_WDL",0,100,0,GRLIB_perm_inf],
 
     ["B_MRAP_01_F",0,120,0,GRLIB_perm_inf],
-    ["B_MRAP_01_HMG_F",0,130,0,GRLIB_perm_inf],
-    ["B_MRAP_01_GMG_F",0,150,0,GRLIB_perm_inf],
+    ["B_MRAP_01_HMG_F",0,200,0,GRLIB_perm_inf],
+    ["B_MRAP_01_GMG_F",0,300,0,GRLIB_perm_inf],
     
     ["CUP_B_MTVR_USMC",0,110,0,GRLIB_perm_inf],
     ["CUP_B_nM1025_Unarmed_USMC_WDL",0,120,0,GRLIB_perm_inf],
@@ -172,13 +172,6 @@ air_vehicles = [
     ["CUP_B_UH60M_Unarmed_FFV_MEV_US",0,500,0,GRLIB_perm_inf],
     ["CUP_B_MH60L_DAP_2x_US",0,850,0,GRLIB_perm_inf],
     ["CUP_B_UH60S_USN",0,500,0,GRLIB_perm_inf],
- 
- 
- 
- 
- 
- 
- 
  
  
     ["CUP_I_Ka60_GL_Blk_ION",0,630,0,GRLIB_perm_inf],
