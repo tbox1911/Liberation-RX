@@ -53,6 +53,21 @@ clearMagazineCargoGlobal _crate;
 clearItemCargoGlobal _crate;
 clearBackpackCargoGlobal _crate;
 
+if(_crateType == "ACE_medicalSupplyCrate_advanced") then {
+_crate addItemCargo ["ACE_adenosine",50];
+_crate addItemCargo ["ACE_elasticBandage",100];
+_crate addItemCargo ["ACE_packingBandage",100];
+_crate addItemCargo ["ACE_quikclot",100];
+_crate addItemCargo ["ACE_bloodIV",50];
+_crate addItemCargo ["ACE_bloodIV_500",50];
+_crate addItemCargo ["ACE_epinephrine",50];
+_crate addItemCargo ["ACE_morphine",50];
+_crate addItemCargo ["ACE_splint",50];
+_crate addItemCargo ["ACE_surgicalKit",10];
+_crate addItemCargo ["ACE_tourniquet",25];
+
+};
+
 private _config = [_crateType] call KP_fnc_cratefiller_getConfigPath;
 private _name = (getText (_config >> "displayName"));
 [format [localize "STR_KP_CRATEFILLER_HINTSPAWN", _name]] call CBA_fnc_notify;

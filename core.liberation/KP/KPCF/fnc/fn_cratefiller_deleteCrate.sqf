@@ -30,7 +30,7 @@ if (isNull _storage) exitWith {
 };
 
 // Check if the active storage is a pre defined crate
-if (!((typeOf _storage) == "Box_NATO_equip_F")) exitWith {
+if ((!((typeOf _storage) == "Box_NATO_equip_F")) and (!((typeOf _storage) == "ACE_medicalSupplyCrate_advanced")) ) exitWith {
     [localize "STR_KP_CRATEFILLER_HINTNONDELETEABLE"] call CBA_fnc_notify;
 };
 
