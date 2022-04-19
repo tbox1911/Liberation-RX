@@ -48,7 +48,7 @@ addMissionEventHandler ['EntityKilled',{
 				
 				if ( (side group _unit == civilian) || (side group _unit == blufor) ) then {
 					
-					_msg = format ["%1 killed a civillian/friendly. Penalty: -15 rank, -45 ammo", name _killer];
+					_msg = format ["%1 killed a civillian/friendly.", name _killer];
 					[gamelogic, _msg] remoteExec ["globalChat", 0];
 					[getPlayerUID _killer, tkill_score] remoteExec ["F_addPlayerScore", 2];
 					[getPlayerUID _killer, tkill_ammo] remoteExec ["F_addPlayerAmmo", 2];
