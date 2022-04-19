@@ -50,8 +50,8 @@ addMissionEventHandler ['EntityKilled',{
 					
 					_msg = format ["%1 killed a civillian/friendly. Penalty: -15 rank, -45 ammo", name _killer];
 					[gamelogic, _msg] remoteExec ["globalChat", 0];
-					[getPlayerUID _killer, -15] remoteExec ["F_addPlayerScore", 2];
-					[getPlayerUID _killer, -45] remoteExec ["F_addPlayerAmmo", 2];
+					[getPlayerUID _killer, tkill_score] remoteExec ["F_addPlayerScore", 2];
+					[getPlayerUID _killer, tkill_ammo] remoteExec ["F_addPlayerAmmo", 2];
 					
 				} else {
 					// _msg = format ["%1 destroyed %2", name _killer, typeOf _unit];
