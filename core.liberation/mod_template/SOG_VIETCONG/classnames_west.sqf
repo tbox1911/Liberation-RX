@@ -74,26 +74,26 @@ units_loadout_overide = [
 ];
 
 LOADOUT_fixed_price = [
-  //["launch_o_vorona_brown_f" , 200],
-  ["vn_sa7_mag" , 6],
-  ["vn_sa7b_mag" , 6],
-  ["vn_m72_mag" , 3],
-  ["vn_rpg2_mag" , 3],
-  ["vn_rpg7_mag" , 3]
+	//["launch_o_vorona_brown_f" , 200],
+	["vn_sa7_mag" , 6],
+	["vn_sa7b_mag" , 6],
+	["vn_m72_mag" , 3],
+	["vn_rpg2_mag" , 3],
+	["vn_rpg7_mag" , 3]
 ];
 
 LOADOUT_expensive_items = [
-  "vn_o_item_toolkit",
-  "vn_o_item_medikit"
+	"vn_o_item_toolkit",
+	"vn_o_item_medikit"
 ];
 
 LOADOUT_free_items = [
-  "_mag",
-  "vn_o_item_firstaidkit",
-  "vn_o_item_map",
-  "vn_o_item_radio_urc10",
-  "vn_o_item_compass",
-  "vn_o_item_watch"
+	"_mag",
+	"vn_o_item_firstaidkit",
+	"vn_o_item_map",
+	"vn_o_item_radio_urc10",
+	"vn_o_item_compass",
+	"vn_o_item_watch"
 ];
 
 light_vehicles = [
