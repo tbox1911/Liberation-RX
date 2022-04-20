@@ -32,14 +32,17 @@ if (!isNil "chimera_vehicle_overide") then {
         _veh_lst = [ vehicles, { alive _x && _x distance lhd < 500 && typeOf _x == _src_class }] call BIS_fnc_conditionalSelect;
 
         {
-            _src_pos = getPosATL _x;
+            _src_pos = (getPosATL _x) vectorAdd [0, 0, 0.2];
             _src_dir = getDir _x;
             deleteVehicle _x;
             sleep 0.1;
             _veh = _dst_class createVehicle _src_pos;
+            _veh allowDamage false;
             _veh setPosATL _src_pos;
             _veh setDir _src_dir;
             _veh setVariable ["GRLIB_vehicle_owner", "public", true];
+            sleep 0.1;
+            _veh allowDamage true;
         } forEach _veh_lst;
 
     } forEach chimera_vehicle_overide;
