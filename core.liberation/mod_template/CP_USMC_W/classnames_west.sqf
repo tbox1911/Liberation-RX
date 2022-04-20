@@ -241,8 +241,8 @@ static_vehicles = [
     ["ffaa_mistral_tripode",0,0,0,GRLIB_perm_inf],
     ["ffaa_spike_tripode",0,0,0,GRLIB_perm_inf],
     ["ffaa_tow_tripode",0,0,0,GRLIB_perm_inf],
-    ["ffaa_et_m250_sistema_nasams_blin",0,900,0,GRLIB_perm_inf],                        //Nasams Truck
-    ["ffaa_lanzador_nasams",0,750,0,GRLIB_perm_inf],                            //Nasams Launcher
+    ["ffaa_et_m250_sistema_nasams_blin",0,650,0,GRLIB_perm_inf],                        //Nasams Truck
+    ["ffaa_lanzador_nasams",0,500,0,GRLIB_perm_inf],                            //Nasams Launcher
     ["CUP_B_SearchLight_static_USMC",0,0,0,GRLIB_perm_inf],
     ["CUP_B_M2StaticMG_USMC",0,0,0,GRLIB_perm_inf],
     ["CUP_B_M2StaticMG_MiniTripod_USMC",0,0,0,GRLIB_perm_inf],
@@ -255,7 +255,7 @@ static_vehicles = [
     ["CUP_WV_B_RAM_Launcher",500,0,0,GRLIB_perm_inf],
     ["B_Radar_System_01_F",250,0,0,GRLIB_perm_inf],
     ["B_SAM_System_03_F",500,0,0,GRLIB_perm_inf],
-    ["B_Ship_MRLS_01_F",0,5000,0,GRLIB_perm_inf],
+    ["B_Ship_MRLS_01_F",0,20000,0,GRLIB_perm_inf],
     ["B_AAA_System_01_F",500,0,0,GRLIB_perm_inf],
     ["CUP_WV_B_SS_Launcher",500,0,0,GRLIB_perm_inf]
    
