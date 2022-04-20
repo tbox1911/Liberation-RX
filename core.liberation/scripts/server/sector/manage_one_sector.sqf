@@ -21,6 +21,13 @@ private _max_prisonners = 5;
 private _sector_despawn_tickets = 24;
 private _popfactor = 1;
 
+if ( isNil "active_sectors" ) then { active_sectors = [] };
+if ( _sector in active_sectors ) exitWith {};
+active_sectors pushback _sector; publicVariable "active_sectors";
+
+diag_log format ["Spawn Defend Sector %1 at %2", _sector, time];
+sleep 5;
+
 if ( GRLIB_adaptive_opfor ) then {
 	private _activeplayers = count ([allPlayers, {alive _x && (_x distance2D (getmarkerpos _sector)) < GRLIB_sector_size}] call BIS_fnc_conditionalSelect);
 	switch (true) do {
@@ -31,13 +38,6 @@ if ( GRLIB_adaptive_opfor ) then {
 		default { _popfactor = GRLIB_unitcap };
 	};
 };
-
-if ( isNil "active_sectors" ) then { active_sectors = [] };
-if ( _sector in active_sectors ) exitWith {};
-active_sectors pushback _sector; publicVariable "active_sectors";
-
-diag_log format ["Spawn Defend Sector %1 at %2", _sector, time];
-sleep 5;
 
 if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector_size, GRLIB_side_friendly ] call F_getUnitsCount ) > 0 ) ) then {
 

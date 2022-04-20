@@ -8,7 +8,6 @@
 // If you decide to use this in another mission, a little mention in the credits would be appreciated :) - AgentRev
 
 if (isDedicated || !hasInterface) exitWith {};
-waitUntil {	sleep 1; time > 60 };
 
 #define MOVEMENT_DISTANCE_RESCAN 100
 #define DISABLE_DISTANCE_IMMOBILE 1600
@@ -19,7 +18,7 @@ private ["_eventCode", "_vehicleManager"];
 _eventCode = {
 	_vehicle = _this select 0;
 	if (!simulationEnabled _vehicle) then { _vehicle enableSimulation true };
-	_vehicle setVariable ["fpsFix_simulationCooloff", diag_tickTime + 20];
+	_vehicle setVariable ["fpsFix_simulationCooloff", time + 20];
 };
 
 _vehicleManager = {
@@ -31,24 +30,25 @@ _vehicleManager = {
 			_tryEnable = true;
 
 			if (!local _vehicle &&
-			   {_vehicle isKindOf "Man" || {count crew _vehicle == 0}} &&
-			   {_vehicle getVariable ["fpsFix_simulationCooloff", 0] < diag_tickTime} &&
-			   {isTouchingGround _vehicle}) then {
-				_dist = _vehicle distance positionCameraToWorld [0,0,0];
-				_vel = velocity _vehicle distance [0,0,0];
+			   (_vehicle isKindOf "Man" || count (crew _vehicle) == 0) &&
+			   (_vehicle getVariable ["fpsFix_simulationCooloff", 0] < time) &&
+			   isTouchingGround _vehicle
+			   ) then {
+				_dist = _vehicle distance2D positionCameraToWorld [0,0,0];
+				_vel = velocity _vehicle distance2D [0,0,0];
 
-				if ((_vel < 0.1 && {!(_vehicle isKindOf "Man")} && {_dist > DISABLE_DISTANCE_IMMOBILE}) || {_dist > DISABLE_DISTANCE_MOBILE}) then {
+				if ( (_vel < 0.1 && !(_vehicle isKindOf "Man") && _dist > DISABLE_DISTANCE_IMMOBILE) || (_dist > DISABLE_DISTANCE_MOBILE) ) then {
 					_vehicle enableSimulation false;
 					_tryEnable = false;
 					sleep 0.01;
 				};
 			};
 			
-			if (_tryEnable && {!simulationEnabled _vehicle}) then {
+			if (_tryEnable && !(simulationEnabled _vehicle) && (isNull attachedTo _vehicle)) then {
 				_vehicle enableSimulation true;
 			};
 
-			if !(_vehicle getVariable ["fpsFix_eventHandlers", false]) then	{
+			if (!(_vehicle getVariable ["fpsFix_eventHandlers", false])) then {
 				if (_vehicle isKindOf "AllVehicles" && {!(_vehicle isKindOf "Man")}) then {
 					//_vehicle addEventHandler ["EpeContactStart", _eventCode];
 					_vehicle addEventHandler ["GetIn", _eventCode];
@@ -64,11 +64,12 @@ _vehicleManager = {
 _lastPos = [0,0,0];
 
 systemChat "-------- FPS-Fix Loaded --------";
+waitUntil { sleep 1; time > 120 };
 while {true} do
 {
 	_camPos = positionCameraToWorld [0,0,0];
 
-	if (_lastPos distance _camPos > MOVEMENT_DISTANCE_RESCAN) then {
+	if (_lastPos distance2D _camPos > MOVEMENT_DISTANCE_RESCAN) then {
 		_lastPos = _camPos;
 		call _vehicleManager;
 	};
