@@ -50,21 +50,29 @@ respawn_camera camcommit 0;
 _standard_map_pos = ctrlPosition ((findDisplay 5201) displayCtrl 251);
 _frame_pos = ctrlPosition ((findDisplay 5201) displayCtrl 198);
 
-_saved_loadouts = profileNamespace getVariable "bis_fnc_saveInventory_data";
 _loadouts_data = [];
-_counter = 0;
-if ( GRLIB_enable_arsenal && !isNil "_saved_loadouts" ) then {
-	{
-		if ( _counter % 2 == 0 ) then {
-			_loadouts_data pushback _x;
-		};
-		_counter = _counter + 1;
-	} foreach _saved_loadouts;
-};
+_loadout_controls = [101,203,205];
 
-lbAdd [ 203, "--"] ;
-{ lbAdd [ 203, _x ]; } foreach _loadouts_data;
-lbSetCurSel [ 203, 0 ];
+if ( GRLIB_player_spawned ) then {	
+	_saved_loadouts = profileNamespace getVariable "bis_fnc_saveInventory_data";
+	_counter = 0;
+
+	if ( GRLIB_enable_arsenal && !isNil "_saved_loadouts" ) then {
+		{
+			if ( _counter % 2 == 0 ) then {
+				_loadouts_data pushback _x;
+			};
+			_counter = _counter + 1;
+		} foreach _saved_loadouts;
+		{ ctrlShow [_x, true] } foreach _loadout_controls;
+	};
+
+	lbAdd [ 203, "--"] ;
+	{ lbAdd [ 203, _x ]; } foreach _loadouts_data;
+	lbSetCurSel [ 203, 0 ];
+} else {
+	{ ctrlShow [_x, false] } foreach _loadout_controls;
+};
 
 while { dialog && alive player && deploy == 0} do {
 	_choiceslist = [ [ _basenamestr, getpos lhd ] ];
@@ -115,7 +123,8 @@ while { dialog && alive player && deploy == 0} do {
 		"spawn_marker" setMarkerPosLocal (getpos respawn_object);
 		ctrlMapAnimClear ((findDisplay 5201) displayCtrl 251);
 		private _transition_map_pos = getpos respawn_object;
-		private _fullscreen_map_offset = 4000;
+		private _fullscreen_map_offset = round (worldsize / 7);
+		if (_fullscreen_map_offset < 500) then {_fullscreen_map_offset = 4500};
 		if(fullmap % 2 == 1) then {
 			_transition_map_pos = [(_transition_map_pos select 0) - _fullscreen_map_offset,  (_transition_map_pos select 1) + (_fullscreen_map_offset * 0.75), 0];
 		};
@@ -145,23 +154,24 @@ while { dialog && alive player && deploy == 0} do {
 if (dialog && deploy == 1) then {
 
 	// Manage Player Loadout
-	if ( !GRLIB_player_spawned ) then {
-		// init loadout
-		if ( GRLIB_forced_loadout > 0) then {
-			[player] call compile preprocessFileLineNumbers (format ["mod_template\%1\loadout\player_set%2.sqf", GRLIB_mod_west, GRLIB_forced_loadout]);
-		} else {
-			[player, configOf player] call BIS_fnc_loadInventory;
-		};
-		if ( typeOf player in units_loadout_overide ) then {
-			_loadouts_folder = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, toLower (typeOf player)];
-			[player] call compileFinal preprocessFileLineNUmbers _loadouts_folder;
-		};
-		player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
-		GRLIB_backup_loadout = [player] call F_getLoadout;
-
+	if ( !GRLIB_player_spawned ) then {	
 		// respawn loadout
 		if ( !isNil "GRLIB_respawn_loadout" ) then {
 			[player, GRLIB_respawn_loadout] call F_setLoadout;
+		} else {
+			// init loadout
+			if ( GRLIB_forced_loadout > 0) then {
+				[player] call compile preprocessFileLineNumbers (format ["mod_template\%1\loadout\player_set%2.sqf", GRLIB_mod_west, GRLIB_forced_loadout]);
+			} else {
+				if ( typeOf player in units_loadout_overide ) then {
+					_loadouts_folder = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, toLower (typeOf player)];
+					[player] call compileFinal preprocessFileLineNUmbers _loadouts_folder;
+				} else {
+					[player, configOf player] call BIS_fnc_loadInventory;
+				};
+			};
+			player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
+			GRLIB_backup_loadout = [player] call F_getLoadout;
 		};
 		[player] call F_filterLoadout;
 		[player] call F_payLoadout;

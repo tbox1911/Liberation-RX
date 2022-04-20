@@ -68,6 +68,7 @@ class liberation_deploy {
 	};
 
 	class LabelLoadout : StdText{
+		idc = 205;
 		x = (0.15 * safezoneW + safezoneX);
 		w = (0.15 * safezoneW);
 		h = (0.03 * safezoneH);
@@ -94,7 +95,7 @@ class liberation_deploy {
 		action = "deploy = 1";
 	};
 	class MapButton : StdButton{
-		idc = 202;
+		idc = 204;
 		x = (0.285 * safezoneW + safezoneX);
 		y = (0.56 * safezoneH + safezoneY);
 		w = (0.015 * safezoneW);
@@ -110,6 +111,6 @@ class liberation_deploy {
 		w = 0.015 * safezoneW;
 		h = 0.02 * safezoneH;
 		text = "X";
-		action = "if (GRLIB_player_spawned) then {closeDialog 0}";
+		action = "closeDialog 0";
 	};
 };
