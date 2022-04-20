@@ -118,7 +118,9 @@ blacklisted_weapon = [
 	"U_O_V_Soldier_Viper_F",
 	"O_V_Soldier_Viper_F",
 	"O_V_Soldier_Viper_hex_F",
-	"R3F_LGI_DEM"
+	"R3F_LGI_DEM",
+	"R3F_securite_mag",
+	"R3F_securite_fn_mag"
 ];
 
 GRLIB_whitelisted_from_arsenal = [
@@ -209,11 +211,9 @@ GRLIB_whitelisted_from_arsenal_limited = [
 	"APERSTripMine_Wire_Mag",
 	"APERSMine_Range_Mag",
 	"APERSBoundingMine_Range_Mag",
-	"TrainingMine_Mag",
 	"SLAMDirectionalMine_Wire_Mag",
 	"IEDLandSmall_Remote_Mag",
 	"SatchelCharge_Remote_Mag",
-	"DemoCharge_Remote_Mag",
 	"ClaymoreDirectionalMine_Remote_Mag",
 	"APERSMineDispenser_Mag",
 	"IEDLandBig_Remote_Mag",
@@ -239,5 +239,11 @@ GRLIB_whitelisted_from_arsenal_limited = [
 	"launch_RPG32_green_F",
 	"RPG32_F",
 	"launch_MRAWS_green_F",
-	"MRAWS_HEAT_F"
+	"MRAWS_HEAT_F",
+	"25Rnd_samas_f1_mag",
+	"50Rnd_mag58_mag",
+	"20Rnd_762x51_HK417_mag",
+	"10Rnd_762x51_Mag",
+	"7Rnd_Perseis_II_mag",
+	"150Rnd_MINI_MG_mag"
 ];
