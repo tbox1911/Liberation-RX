@@ -1,16 +1,11 @@
 // Add R3F Weapons
 
 if ( GRLIB_R3F_enabled ) then {
-	GRLIB_R3F_blacklist = [
-		"R3F_securite_mag",
-		"R3F_securite_fn_mag"
-	];
 
 	// Weapons + Equipements (uniforme, etc..)
 	(
 		"
-		((configName _x) select [0,4]) == 'R3F_' &&
-		!((configName _x) in GRLIB_R3F_blacklist) &&
+		tolower ((configName _x) select [0,4]) == 'r3f_' &&
 		!((configName _x) in GRLIB_blacklisted_from_arsenal)
 		"
 		configClasses (configfile >> "CfgWeapons" )
@@ -19,8 +14,7 @@ if ( GRLIB_R3F_enabled ) then {
 	// Others object (bagpack, etc..)
 	(
 		"
-		((configName _x) select [0,4]) == 'R3F_' &&
-		!((configName _x) in GRLIB_R3F_blacklist) &&
+		tolower ((configName _x) select [0,4]) == 'r3f_' &&
 		!((configName _x) in GRLIB_blacklisted_from_arsenal) &&
 		( (configName _x) find '_Bag' == -1 )
 		"
@@ -30,8 +24,7 @@ if ( GRLIB_R3F_enabled ) then {
 	// Glasses
 	(
 		"
-		((configName _x) select [0,4]) == 'R3F_' &&
-		!((configName _x) in GRLIB_R3F_blacklist) &&
+		tolower ((configName _x) select [0,4]) == 'r3f_' &&
 		!((configName _x) in GRLIB_blacklisted_from_arsenal)
 		"
 		configClasses (configfile >> "CfgGlasses" )
@@ -40,9 +33,8 @@ if ( GRLIB_R3F_enabled ) then {
 	// Magazines
 	(
 		"
-		((configName _x) select [0,4]) == 'R3F_' &&
-		(configName _x) find '_Tracer' < 0 &&
-		!((configName _x) in GRLIB_R3F_blacklist) &&
+		tolower ((configName _x) select [0,4]) == 'r3f_' &&
+		tolower (configName _x) find '_tracer' < 0 &&
 		!((configName _x) in GRLIB_blacklisted_from_arsenal)
 		"
     	configClasses (configfile >> "CfgMagazines")

@@ -3,7 +3,7 @@ if ( GRLIB_OPTRE_enabled ) then {
 	// Weapons
 	(
 		"
-		getText (_x >> 'dlc') == 'OPTRE' &&
+		tolower (getText (_x >> 'dlc')) == 'optre' &&
 		toLower (configName _x) find '_coyote' < 0 &&
 		!((configName _x) in GRLIB_blacklisted_from_arsenal)
 		"
@@ -13,7 +13,7 @@ if ( GRLIB_OPTRE_enabled ) then {
 	// Others object (bagpack, etc..)
 	(
 		"
-		getText (_x >> 'dlc') == 'OPTRE' &&
+		tolower (getText (_x >> 'dlc')) == 'optre' &&
 		!((configName _x) in GRLIB_blacklisted_from_arsenal)
 		"
 		configClasses (configfile >> "CfgVehicles" )
@@ -22,7 +22,7 @@ if ( GRLIB_OPTRE_enabled ) then {
 	// Glasses
 	(
 		"
-		getText (_x >> 'dlc') == 'OPTRE' &&
+		tolower (getText (_x >> 'dlc')) == 'optre' &&
 		!((configName _x) in GRLIB_blacklisted_from_arsenal)
 		"
 		configClasses (configfile >> "CfgGlasses" )
@@ -30,8 +30,8 @@ if ( GRLIB_OPTRE_enabled ) then {
 
 	(
 		"
-		((configName _x) select [0,6]) == 'OPTRE_' &&
-		(configName _x) find '_Tracer' < 0 &&
+		tolower ((configName _x) select [0,6]) == 'optre_' &&
+		tolower ((configName _x) find '_tracer' < 0 &&
 		!((configName _x) in GRLIB_blacklisted_from_arsenal)
 		"
     	configClasses (configfile >> "CfgMagazines")

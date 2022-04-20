@@ -3,7 +3,7 @@ if ( GRLIB_CUPW_enabled ) then {
 	// Weapons + Equipements (uniforms, etc..)
 	(
 		"
-		(getText (_x >> 'DLC') == 'CUP_Weapons' || getText (_x >> 'DLC') == 'CUP_Units') &&
+		(tolower (getText (_x >> 'DLC')) == 'cup_weapons' || tolower (getText (_x >> 'DLC')) == 'cup_units') &&
 		!((configName _x) in GRLIB_blacklisted_from_arsenal)
 		"
 		configClasses (configfile >> "CfgWeapons" )
@@ -12,7 +12,7 @@ if ( GRLIB_CUPW_enabled ) then {
 	// Others object (backpack, etc..)
 	(
 		"
-		(getText (_x >> 'DLC') == 'CUP_Weapons' || getText (_x >> 'DLC') == 'CUP_Units') &&
+		(tolower (getText (_x >> 'DLC')) == 'cup_weapons' || tolower (getText (_x >> 'DLC')) == 'cup_units') &&
 		!((configName _x) in GRLIB_blacklisted_from_arsenal) &&
 		( (configName _x) find '_Bag' == -1 )
 		"
@@ -22,7 +22,7 @@ if ( GRLIB_CUPW_enabled ) then {
 	// Glasses
 	(
 		"
-		(getText (_x >> 'DLC') == 'CUP_Weapons' || getText (_x >> 'DLC') == 'CUP_Units') &&
+		(tolower (getText (_x >> 'DLC')) == 'cup_weapons' || tolower (getText (_x >> 'DLC')) == 'cup_units') &&
 		!((configName _x) in GRLIB_blacklisted_from_arsenal)
 		"
 		configClasses (configfile >> "CfgGlasses" )
@@ -31,7 +31,7 @@ if ( GRLIB_CUPW_enabled ) then {
 	// Magazines
 	(
 		"
-		((configName _x) select [0,4]) == 'CUP_' &&
+		tolower ((configName _x) select [0,4]) == 'cup_' &&
 		(configName _x) find '_Tracer' < 0 &&
 		!((configName _x) in GRLIB_blacklisted_from_arsenal)
 		"

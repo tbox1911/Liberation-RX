@@ -21,7 +21,7 @@ if ( GRLIB_EJW_enabled ) then {
 
     (
         "
-        getText (_x >> 'dlc') == 'u100' &&
+        tolower (getText (_x >> 'dlc')) == 'u100' &&
         !((configName _x) in GRLIB_blacklisted_from_arsenal) &&
         !((configName _x) in GRLIB_EJW_Blacklist)
         "
@@ -30,7 +30,7 @@ if ( GRLIB_EJW_enabled ) then {
 
     (
         "
-        (getText (_x >> 'ammo') select [0,3]) == 'ej_'  &&
+        tolower (getText (_x >> 'ammo') select [0,3]) == 'ej_'  &&
         !((configName _x) in GRLIB_blacklisted_from_arsenal) &&
 		!((configName _x) in GRLIB_EJW_Blacklist)
         "
@@ -39,7 +39,7 @@ if ( GRLIB_EJW_enabled ) then {
 
 	(
 		"
-        getText (_x >> 'dlc') == 'u100' &&
+        tolower (getText (_x >> 'dlc')) == 'u100' &&
         !((configName _x) in GRLIB_blacklisted_from_arsenal) &&
 		!((configName _x) in GRLIB_EJW_Blacklist)
 		"

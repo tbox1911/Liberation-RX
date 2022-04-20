@@ -7,7 +7,7 @@ if ( GRLIB_SOG_enabled ) then {
 	// Weapons + Equipements (uniforme, etc..)
 	(
 		"
-		((configName _x) select [0,3]) == 'vn_' &&
+		tolower ((configName _x) select [0,3]) == 'vn_' &&
 		!((configName _x) in GRLIB_SOG_blacklist) &&
 		!((configName _x) in GRLIB_blacklisted_from_arsenal)
 		"
@@ -17,7 +17,7 @@ if ( GRLIB_SOG_enabled ) then {
 	// Others object (bagpack, etc..)
 	(
 		"
-		((configName _x) select [0,3]) == 'vn_' &&
+		tolower ((configName _x) select [0,3]) == 'vn_' &&
 		!((configName _x) in GRLIB_SOG_blacklist) &&
 		!((configName _x) in GRLIB_blacklisted_from_arsenal) &&
 		( (configName _x) find '_Bag' == -1 )
@@ -28,7 +28,7 @@ if ( GRLIB_SOG_enabled ) then {
 	// Glasses
 	(
 		"
-		((configName _x) select [0,3]) == 'vn_' &&
+		tolower ((configName _x) select [0,3]) == 'vn_' &&
 		!((configName _x) in GRLIB_SOG_blacklist) &&
 		!((configName _x) in GRLIB_blacklisted_from_arsenal)
 		"
@@ -38,8 +38,8 @@ if ( GRLIB_SOG_enabled ) then {
 	// Magazines
 	(
 		"
-		((configName _x) select [0,3]) == 'vn_' &&
-		(configName _x) find '_Tracer' < 0 &&
+		tolower ((configName _x) select [0,3]) == 'vn_' &&
+		tolower (configName _x) find '_tracer' < 0 &&
 		!((configName _x) in GRLIB_SOG_blacklist) &&
 		!((configName _x) in GRLIB_blacklisted_from_arsenal)
 		"
