@@ -18,6 +18,7 @@ if ( GRLIB_EJW_enabled ) then {
         "U_Afghan06",
         "U_Afghan06NH"
 	];
+
     (
         "
         getText (_x >> 'dlc') == 'u100' &&
@@ -29,7 +30,7 @@ if ( GRLIB_EJW_enabled ) then {
 
     (
         "
-        (tolower (configName _x) select [0,3]) == 'ej_' &&
+        (getText (_x >> 'ammo') select [0,3]) == 'ej_'  &&
         !((configName _x) in GRLIB_blacklisted_from_arsenal) &&
 		!((configName _x) in GRLIB_EJW_Blacklist)
         "
@@ -38,7 +39,7 @@ if ( GRLIB_EJW_enabled ) then {
 
 	(
 		"
-        (tolower (configName _x) select [0,3]) == 'ej_' &&
+        getText (_x >> 'dlc') == 'u100' &&
         !((configName _x) in GRLIB_blacklisted_from_arsenal) &&
 		!((configName _x) in GRLIB_EJW_Blacklist)
 		"

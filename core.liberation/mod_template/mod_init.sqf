@@ -8,6 +8,7 @@ GRLIB_mod_list_west = [
     "CP_BAF_DES",
     "CP_USMC_W",
     "CP_USMC_D",
+    "EJW",
     "R3F_WEST_D",
     "R3F_WEST_W",
     "RHS_USAF",

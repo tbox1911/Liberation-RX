@@ -68,7 +68,7 @@ class Params
 	};
 	class ModPresetWest {
 		title = "MOD Preset - Friendly";
-		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24 };
+		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25 };
 		texts[] = {
 					"ArmA3 NATO",
 					"ArmA3 CSAT",
@@ -76,6 +76,7 @@ class Params
 					"CUP BAF Desert",
 					"CUP USMC Woodland",
 					"CUP USMC Desert",
+					"EJW Task Force",
 					"R3F WEST Desert",
 					"R3F WEST Woodland",
 					"RHS USAF",
@@ -154,7 +155,7 @@ class Params
 		default = 0;
 	};
 	class EnableFilterEJW {
-		title = "MOD filter: Eric JW";
+		title = "MOD filter: EJW";
 		values[] = { 1, 0 };
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 0;

@@ -1,6 +1,6 @@
 // Add CUP Weapons
 if ( GRLIB_CUPW_enabled ) then {
-	// Weapons + Equipements (uniforme, etc..)
+	// Weapons + Equipements (uniforms, etc..)
 	(
 		"
 		(getText (_x >> 'DLC') == 'CUP_Weapons' || getText (_x >> 'DLC') == 'CUP_Units') &&
@@ -9,7 +9,7 @@ if ( GRLIB_CUPW_enabled ) then {
 		configClasses (configfile >> "CfgWeapons" )
 	) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
 
-	// Others object (bagpack, etc..)
+	// Others object (backpack, etc..)
 	(
 		"
 		(getText (_x >> 'DLC') == 'CUP_Weapons' || getText (_x >> 'DLC') == 'CUP_Units') &&
