@@ -180,6 +180,8 @@ while { alive player && dialog } do {
 
 				systemchat format ['Import Savegame in %1, Exiting now!', GRLIB_save_key];
 				closeDialog 0;
+			} else {
+				systemchat "An error occure in restoring data...";
 			};
 		};
 		{ ctrlShow [_x, false] } foreach _input_controls;
