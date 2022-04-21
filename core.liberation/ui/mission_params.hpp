@@ -66,6 +66,12 @@ class Params
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 1;
 	};
+	class Space8 {
+		title = "";
+		values[] = { "" };
+		texts[] = { "" };
+		default = "";
+	};	
 	class ModPresetWest {
 		title = "MOD Preset - Friendly";
 		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25 };
@@ -137,13 +143,13 @@ class Params
 		default = 0;
 	};	
 	class EnableFilterCUP {
-		title = "MOD filter: CUP Weapons";
+		title = "MOD filter CUP Weapons";
 		values[] = { 1, 0 };
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 0;
 	};
 	class EnableFilterRHS {
-		title = "MOD filter: RHS";
+		title = "MOD filter RHS";
 		values[] = { 1, 0 };
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 0;
@@ -155,25 +161,25 @@ class Params
 		default = 0;
 	};
 	class EnableFilterEJW {
-		title = "MOD filter: EJW";
+		title = "MOD filter EJW";
 		values[] = { 1, 0 };
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 0;
 	};
 	class EnableFilterGM {
-		title = "MOD filter: Global Mob";
+		title = "MOD filter Global Mob";
 		values[] = { 1, 0 };
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 0;
 	};
 	class EnableFilterOPTRE {
-		title = "MOD filter: OPTRE";
+		title = "MOD filter OPTRE";
 		values[] = { 1, 0 };
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 0;
 	};
 	class EnableFilterSOG {
-		title = "MOD filter: SoG";
+		title = "MOD filter SoG";
 		values[] = { 1, 0 };
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 0;

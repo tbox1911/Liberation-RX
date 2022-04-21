@@ -171,24 +171,24 @@ blufor_squad_at = [
 	"B_medic_F",
 	"B_soldier_AT_F",
 	"B_soldier_AT_F",
-	"B_soldier_F",
-	"B_soldier_F"
+	"B_Soldier_F",
+	"B_Soldier_F"
 ];
 blufor_squad_aa = [
 	"B_Soldier_SL_F",
 	"B_medic_F",
 	"B_soldier_AA_F",
 	"B_soldier_AA_F",
-	"B_soldier_F",
-	"B_soldier_F"
+	"B_Soldier_F",
+	"B_Soldier_F"
 ];
 blufor_squad_mix = [
 	"B_Soldier_SL_F",
 	"B_medic_F",
 	"B_soldier_AA_F",
 	"B_soldier_AT_F",
-	"B_soldier_F",
-	"B_soldier_F"
+	"B_Soldier_F",
+	"B_Soldier_F"
 ];
 blufor_squad_recon = [
 	"B_recon_TL_F",

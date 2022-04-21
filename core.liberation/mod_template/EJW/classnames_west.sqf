@@ -23,15 +23,14 @@ crewman_classname = "B_crew_F";
 infantry_units = [
 	["Alsatian_Random_F",0,0,0,GRLIB_perm_max],
 	["Fin_random_F",0,0,0,0],
-	["B_soldier_F",1,0,0,0],
+	["B_Soldier_F",1,0,0,0],
 	["B_medic_F",1,0,0,0],
 	["B_engineer_F",1,0,0,0],
-	["B_soldier_GL_F",1,0,0,GRLIB_perm_inf],
+	["B_Soldier_GL_F",1,0,0,GRLIB_perm_inf],
 	["B_soldier_M_F",1,0,0,GRLIB_perm_inf],
 	["B_soldier_LAT_F",1,0,0,0],
 	["B_Sharpshooter_F",1,0,0,GRLIB_perm_inf],
 	["B_HeavyGunner_F",1,0,0,GRLIB_perm_inf],
-	["B_recon_F",1,0,0,GRLIB_perm_log],
 	["B_diver_F",1,0,0,GRLIB_perm_log],
 	["B_soldier_AA_F",1,0,0,GRLIB_perm_log],
 	["B_soldier_AT_F",1,0,0,GRLIB_perm_log],
@@ -42,23 +41,27 @@ infantry_units = [
 ];
 
 units_loadout_overide = [
-	"B_soldier_F",
+	"B_Soldier_F",
 	"B_medic_F",
 	"B_engineer_F",
-	"B_soldier_GL_F",
+	"B_Soldier_GL_F",
 	"B_soldier_M_F",
 	"B_soldier_LAT_F",
 	"B_Sharpshooter_F",
 	"B_HeavyGunner_F",
-	"B_recon_F",
 	"B_diver_F",
-	"B_Recon_Sharpshooter_F",
 	"B_soldier_AA_F",
 	"B_soldier_AT_F",
 	"B_sniper_F",
 	"B_soldier_PG_F",
 	crewman_classname,
 	pilot_classname	
+];
+
+LOADOUT_expensive_items = [
+	"ej_m24w",
+	"Ej_u100",
+	"ej_m103d"
 ];
 
 LOADOUT_free_items = [
@@ -207,8 +210,8 @@ blufor_squad_at = [
 	"B_medic_F",
 	"B_soldier_AT_F",
 	"B_soldier_AT_F",
-	"B_soldier_F",
-	"B_soldier_F"
+	"B_Soldier_F",
+	"B_Soldier_F"
 ];
 
 blufor_squad_aa = [
@@ -216,16 +219,16 @@ blufor_squad_aa = [
 	"B_medic_F",
 	"B_soldier_AA_F",
 	"B_soldier_AA_F",
-	"B_soldier_F",
-	"B_soldier_F"
+	"B_Soldier_F",
+	"B_Soldier_F"
 ];
 blufor_squad_mix = [
 	"B_Soldier_SL_F",
 	"B_medic_F",
 	"B_soldier_AA_F",
 	"B_soldier_AT_F",
-	"B_soldier_F",
-	"B_soldier_F"
+	"B_Soldier_F",
+	"B_Soldier_F"
 ];
 blufor_squad_recon = [
 	"B_recon_TL_F",
