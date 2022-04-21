@@ -166,24 +166,20 @@ while { alive player && dialog } do {
 		
 		input_save = "";
 		waitUntil {uiSleep 0.1; ((input_save != "") || !(dialog) || !(alive player)) };
-
-		if ( input_save select [0,1] == "[" ) then {
+		if ( input_save select [0,1] == "[" && input_save select [(count input_save)-1,(count input_save)] == "]") then {
 			private _save = parseSimpleArray input_save;
-			if (count _save == count greuh_liberation_savegame) then {
-				[_save, {
-					GRLIB_server_stopped = true;	
-					profileNamespace setVariable [GRLIB_save_key, _this];
-					saveProfileNamespace;
-					sleep 3;
-					["END"] remoteExec ["endMission", 0];
-				}] remoteExec ["bis_fnc_call", 2];
-
-				systemchat format ['Import Savegame in %1, Exiting now!', GRLIB_save_key];
-				closeDialog 0;
-			} else {
-				systemchat "An error occure in restoring data...";
-			};
-		};
+			[_save, {
+				params ["_save"];
+				if (count _save == count greuh_liberation_savegame) exitWith {};
+				GRLIB_server_stopped = true;
+				profileNamespace setVariable [GRLIB_save_key, _this];
+				saveProfileNamespace;
+				sleep 3;
+				["END"] remoteExec ["endMission", 0];
+			}] remoteExec ["bis_fnc_call", 2];
+			systemchat format ['Import Savegame in %1, Exiting now!', GRLIB_save_key];
+			closeDialog 0;
+		} else { systemchat "Error: Invalid data!" };
 		{ ctrlShow [_x, false] } foreach _input_controls;
 	};
 	sleep 0.5;
