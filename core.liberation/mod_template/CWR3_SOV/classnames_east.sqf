@@ -33,21 +33,22 @@ opfor_ammo_container = "Land_Pod_Heli_Transport_04_ammo_F";
 opfor_flag = "cwr3_Flag_Russia";
 
 militia_squad = [
-"cwr3_o_soldier82",
-"cwr3_o_soldier82_at_rpg18",
-"cwr3_o_soldier82_radio",
-"cwr3_o_soldier82_sl",
-"cwr3_o_soldier82_spotter",
-"cwr3_o_soldier82_ar",
-"cwr3_o_soldier82_sapper",
-"cwr3_o_soldier82_engineer",
-"cwr3_o_soldier82_gl",
-"cwr3_o_soldier82_hg",
-"cwr3_o_soldier82_mg",
-"cwr3_o_soldier82_marksman",
-"cwr3_o_soldier82_at_at4",
-"cwr3_o_soldier82_aa_strela",
-"cwr3_o_soldier82_medic"];
+	"cwr3_o_soldier82",
+	"cwr3_o_soldier82_at_rpg18",
+	"cwr3_o_soldier82_radio",
+	"cwr3_o_soldier82_sl",
+	"cwr3_o_soldier82_spotter",
+	"cwr3_o_soldier82_ar",
+	"cwr3_o_soldier82_sapper",
+	"cwr3_o_soldier82_engineer",
+	"cwr3_o_soldier82_gl",
+	"cwr3_o_soldier82_hg",
+	"cwr3_o_soldier82_mg",
+	"cwr3_o_soldier82_marksman",
+	"cwr3_o_soldier82_at_at4",
+	"cwr3_o_soldier82_aa_strela",
+	"cwr3_o_soldier82_medic"
+];
 
 militia_loadout_overide = [
 
@@ -71,137 +72,137 @@ divers_squad = [
 ];
 
 militia_vehicles = [
-"cwr3_o_uaz_dshkm",
-"cwr3_o_uaz_ags30",
-"cwr3_o_uaz",
-"cwr3_o_brdm2",
-"cwr3_o_btr60",
-"cwr3_o_brdm2um",
-"cwr3_o_bmp1"
+	"cwr3_o_uaz_dshkm",
+	"cwr3_o_uaz_ags30",
+	"cwr3_o_uaz",
+	"cwr3_o_brdm2",
+	"cwr3_o_btr60",
+	"cwr3_o_brdm2um",
+	"cwr3_o_bmp1"
 ];
 
 opfor_boat = [
-"cwr3_o_zodiac",
-"cwr3_o_boat"
+	"cwr3_o_zodiac",
+	"cwr3_o_boat"
 ];
 
 opfor_vehicles = [
-"cwr3_o_uaz452",
-"cwr3_o_uaz",
-"cwr3_o_uaz_ags30",
-"cwr3_o_uaz_dshkm",
-"cwr3_o_uaz_spg9",
-"cwr3_o_bmp1",
-"cwr3_o_bmp1p",
-"cwr3_o_bmp2",
-"cwr3_o_bmp2_hq",
-"cwr3_o_brdm2",
-"cwr3_o_brdm2_atgm",
-"cwr3_o_brdm2um",
-"cwr3_o_btr60",
-"cwr3_o_btr80",
-"cwr3_o_pt76b",
-"cwr3_o_t55",
-"cwr3_o_t55a",
-"cwr3_o_t55amv",
-"cwr3_o_t64b",
-"cwr3_o_t64bv",
-"cwr3_o_t72a",
-"cwr3_o_t72b1",
-"cwr3_o_scud",
-"cwr3_o_bm21",
-"cwr3_o_bmp2_zu23",
-"cwr3_o_mtlb_sa13",
-"cwr3_o_ural_zu23",
-"cwr3_o_zsu"
+	"cwr3_o_uaz452",
+	"cwr3_o_uaz",
+	"cwr3_o_uaz_ags30",
+	"cwr3_o_uaz_dshkm",
+	"cwr3_o_uaz_spg9",
+	"cwr3_o_bmp1",
+	"cwr3_o_bmp1p",
+	"cwr3_o_bmp2",
+	"cwr3_o_bmp2_hq",
+	"cwr3_o_brdm2",
+	"cwr3_o_brdm2_atgm",
+	"cwr3_o_brdm2um",
+	"cwr3_o_btr60",
+	"cwr3_o_btr80",
+	"cwr3_o_pt76b",
+	"cwr3_o_t55",
+	"cwr3_o_t55a",
+	"cwr3_o_t55amv",
+	"cwr3_o_t64b",
+	"cwr3_o_t64bv",
+	"cwr3_o_t72a",
+	"cwr3_o_t72b1",
+	"cwr3_o_scud",
+	"cwr3_o_bm21",
+	"cwr3_o_bmp2_zu23",
+	"cwr3_o_mtlb_sa13",
+	"cwr3_o_ural_zu23",
+	"cwr3_o_zsu"
 ];
 
 opfor_vehicles_low_intensity = [
-"cwr3_o_uaz452",
-"cwr3_o_uaz",
-"cwr3_o_uaz_ags30",
-"cwr3_o_uaz_dshkm",
-"cwr3_o_uaz_spg9",
-"cwr3_o_bmp1",
-"cwr3_o_bmp1p",
-"cwr3_o_bmp2",
-"cwr3_o_bmp2_hq"
+	"cwr3_o_uaz452",
+	"cwr3_o_uaz",
+	"cwr3_o_uaz_ags30",
+	"cwr3_o_uaz_dshkm",
+	"cwr3_o_uaz_spg9",
+	"cwr3_o_bmp1",
+	"cwr3_o_bmp1p",
+	"cwr3_o_bmp2",
+	"cwr3_o_bmp2_hq"
 ];
 
 opfor_battlegroup_vehicles = [
-"cwr3_o_bmp1",
-"cwr3_o_bmp1p",
-"cwr3_o_bmp2",
-"cwr3_o_bmp2_hq",
-"cwr3_o_brdm2",
-"cwr3_o_brdm2_atgm",
-"cwr3_o_brdm2um",
-"cwr3_o_btr60",
-"cwr3_o_btr80",
-"cwr3_o_pt76b",
-"cwr3_o_t55",
-"cwr3_o_t55a",
-"cwr3_o_t55amv",
-"cwr3_o_t64b",
-"cwr3_o_t64bv",
-"cwr3_o_t72a",
-"cwr3_o_t72b1",
-"cwr3_o_scud",
-"cwr3_o_bm21",
-"cwr3_o_bmp2_zu23",
-"cwr3_o_mtlb_sa13",
-"cwr3_o_ural_zu23",
-"cwr3_o_zsu",
-"cwr3_o_mi24d",
-"cwr3_o_mi24p",
-"cwr3_o_mi24v",
-"cwr3_o_v80"
+	"cwr3_o_bmp1",
+	"cwr3_o_bmp1p",
+	"cwr3_o_bmp2",
+	"cwr3_o_bmp2_hq",
+	"cwr3_o_brdm2",
+	"cwr3_o_brdm2_atgm",
+	"cwr3_o_brdm2um",
+	"cwr3_o_btr60",
+	"cwr3_o_btr80",
+	"cwr3_o_pt76b",
+	"cwr3_o_t55",
+	"cwr3_o_t55a",
+	"cwr3_o_t55amv",
+	"cwr3_o_t64b",
+	"cwr3_o_t64bv",
+	"cwr3_o_t72a",
+	"cwr3_o_t72b1",
+	"cwr3_o_scud",
+	"cwr3_o_bm21",
+	"cwr3_o_bmp2_zu23",
+	"cwr3_o_mtlb_sa13",
+	"cwr3_o_ural_zu23",
+	"cwr3_o_zsu",
+	"cwr3_o_mi24d",
+	"cwr3_o_mi24p",
+	"cwr3_o_mi24v",
+	"cwr3_o_v80"
 ];
 
 opfor_battlegroup_vehicles_low_intensity = [
-"cwr3_o_uaz_ags30",
-"cwr3_o_uaz_dshkm",
-"cwr3_o_uaz_spg9",
-"cwr3_o_bmp1",
-"cwr3_o_bmp1p",
-"cwr3_o_bmp2",
-"cwr3_o_bmp2_hq"
+	"cwr3_o_uaz_ags30",
+	"cwr3_o_uaz_dshkm",
+	"cwr3_o_uaz_spg9",
+	"cwr3_o_bmp1",
+	"cwr3_o_bmp1p",
+	"cwr3_o_bmp2",
+	"cwr3_o_bmp2_hq"
 ];
 
 opfor_troup_transports_truck = [
-"cwr3_o_ural",
-"cwr3_o_uaz452",
-"cwr3_o_mtlb_pk"
+	"cwr3_o_ural",
+	"cwr3_o_uaz452",
+	"cwr3_o_mtlb_pk"
 ];
 
 opfor_troup_transports_heli = [
-"cwr3_o_mi6t",
-"cwr3_o_mi8_mtv3",
-"cwr3_o_mi8_amt"
+	"cwr3_o_mi6t",
+	"cwr3_o_mi8_mtv3",
+	"cwr3_o_mi8_amt"
 ];
 
 opfor_air = [
-"cwr3_o_mi24d",
-"cwr3_o_mi24p",
-"cwr3_o_mi24v",
-"cwr3_o_mi8_mtv3",
-"cwr3_o_v80",
-"cwr3_o_mig23",
-"cwr3_o_mig27",
-"cwr3_o_su17m4",
-"cwr3_o_su25",
-"CUP_O_Pchela1T_RU"
+	"cwr3_o_mi24d",
+	"cwr3_o_mi24p",
+	"cwr3_o_mi24v",
+	"cwr3_o_mi8_mtv3",
+	"cwr3_o_v80",
+	"cwr3_o_mig23",
+	"cwr3_o_mig27",
+	"cwr3_o_su17m4",
+	"cwr3_o_su25",
+	"CUP_O_Pchela1T_RU"
 ];
 
 opfor_statics = [
-"cwr3_o_ags30",
-"cwr3_o_d30_at",
-"cwr3_o_konkurs_tripod",
-"cwr3_o_nsv_high",
-"cwr3_o_nsv_low",
-"cwr3_o_spg9",
-"cwr3_o_zu23",
-"cwr3_o_2b14"
+	"cwr3_o_ags30",
+	"cwr3_o_d30_at",
+	"cwr3_o_konkurs_tripod",
+	"cwr3_o_nsv_high",
+	"cwr3_o_nsv_low",
+	"cwr3_o_spg9",
+	"cwr3_o_zu23",
+	"cwr3_o_2b14"
 ];
 
 // Overide Textures

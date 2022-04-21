@@ -26,7 +26,6 @@ blacklisted_bag = [
 	"B_UGV_02_Demining_backpack_F",
 	"O_UGV_02_Demining_backpack_F",
 	"I_UGV_02_Demining_backpack_F",
-	"Land_TentDome_F",
 	"B_Respawn_Sleeping_bag_blue_F",
 	"B_Respawn_Sleeping_bag_brown_F",
 	"B_Respawn_TentDome_F",
