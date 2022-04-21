@@ -18,6 +18,8 @@ GRLIB_filter_arsenalEJW = ["EnableFilterEJW",0] call bis_fnc_getParamValue;
 GRLIB_filter_arsenalGM = ["EnableFilterGM",0] call bis_fnc_getParamValue;
 GRLIB_filter_arsenalOPTRE = ["EnableFilterOPTRE",0] call bis_fnc_getParamValue;
 GRLIB_filter_arsenalSOG = ["EnableFilterSOG",0] call bis_fnc_getParamValue;
+GRLIB_filter_arsenal3CB = ["EnableFilter3CB",0] call bis_fnc_getParamValue;
+GRLIB_filter_arsenalCWR = ["EnableFilterCWR",0] call bis_fnc_getParamValue;
 //------------------------------------------------------------------------
 GRLIB_forced_loadout = ["ForcedLoadout",1] call bis_fnc_getParamValue;
 GRLIB_opfor_english = ["EnglishOpfor", 0] call bis_fnc_getParamValue;
@@ -101,6 +103,8 @@ GRLIB_RHS_enabled = isClass(configFile >> "CfgPatches" >> "rhs_main"); // Return
 GRLIB_R3F_enabled = isClass(configFile >> "CfgPatches" >> "r3f_armes"); // Returns true if R3F is enabled
 GRLIB_AMF_enabled = isClass(configFile >> "CfgPatches" >> "AMF_Patches"); // Returns true if AMF is enabled
 GRLIB_SOG_enabled = isClass(configFile >> "CfgPatches" >> "vn_misc"); // Returns true if SOG is enabled
+GRLIB_3CB_enabled = isClass(configFile >> "CfgMods" >> "UK3CB_BAF_Weapons"); // Returns true if UK3 CB is enabled
+GRLIB_CWR_enabled = isClass(configFile >> "CfgMods" >> "cwr3_dlc"); // Returns true if CWR3 is enabled
 
 // Check side Addon
 if ( !GRLIB_EJW_enabled && "EJW" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
@@ -116,6 +120,9 @@ if ( (!GRLIB_R3F_enabled || !GRLIB_AMF_enabled) && "R3F_WEST_D" in [GRLIB_mod_we
 if ( (!GRLIB_R3F_enabled || !GRLIB_AMF_enabled) && "R3F_WEST_W" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
 if ( !GRLIB_SOG_enabled && "SOG_USA" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
 if ( !GRLIB_SOG_enabled && "SOG_VIETCONG" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
+if ( (!GRLIB_CWR_enabled || !GRLIB_CUPW_enabled) && "CWR3_US" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
+if ( (!GRLIB_CWR_enabled || !GRLIB_CUPW_enabled) && "CWR3_SOV" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
+// + 3cb check
 
 if (abort_loading) exitWith { abort_loading_msg = format [
 	"********************************\n
@@ -152,6 +159,8 @@ if ( GRLIB_filter_arsenalEJW == 1 ) then { GRLIB_filter_arsenalEJW = true } else
 if ( GRLIB_filter_arsenalGM == 1 ) then { GRLIB_filter_arsenalGM = true } else { GRLIB_filter_arsenalGM = false };
 if ( GRLIB_filter_arsenalOPTRE == 1 ) then { GRLIB_filter_arsenalOPTRE = true } else { GRLIB_filter_arsenalOPTRE = false };
 if ( GRLIB_filter_arsenalSOG == 1 ) then { GRLIB_filter_arsenalSOG = true } else { GRLIB_filter_arsenalSOG = false };
+if ( GRLIB_filter_arsenal3CB == 1 ) then { GRLIB_filter_arsenal3CB = true } else { GRLIB_filter_arsenal3CB = false };
+if ( GRLIB_filter_arsenalCWR == 1 ) then { GRLIB_filter_arsenalCWR = true } else { GRLIB_filter_arsenalCWR = false };
 if ( GRLIB_permission_vehicles == 1 ) then { GRLIB_permission_vehicles = true } else { GRLIB_permission_vehicles = false };
 if ( GRLIB_adaptive_opfor == 1 ) then { GRLIB_adaptive_opfor = true } else { GRLIB_adaptive_opfor = false };
 if ( GRLIB_passive_income == 1 ) then { GRLIB_passive_income = true } else { GRLIB_passive_income = false };
@@ -181,3 +190,5 @@ if ( GRLIB_CUPW_enabled && GRLIB_filter_arsenalCUP) then { GRLIB_MOD_signature a
 if ( GRLIB_RHS_enabled && GRLIB_filter_arsenalRHS) then { GRLIB_MOD_signature append ["rhs"]; GRLIB_mod_enabled = true };
 if ( GRLIB_R3F_enabled && GRLIB_filter_arsenalR3F) then { GRLIB_MOD_signature append ["r3f_", "amf_"]; GRLIB_mod_enabled = true };
 if ( GRLIB_SOG_enabled && GRLIB_filter_arsenalSOG) then { GRLIB_MOD_signature append ["vn_"]; GRLIB_mod_enabled = true };
+if ( GRLIB_3CB_enabled && GRLIB_filter_arsenal3CB) then { GRLIB_MOD_signature append ["rhs", "uk3cb_"]; GRLIB_mod_enabled = true };
+if ( GRLIB_CWR_enabled && GRLIB_filter_arsenalCWR) then { GRLIB_MOD_signature append ["cup_", "cwr3_"]; GRLIB_mod_enabled = true };

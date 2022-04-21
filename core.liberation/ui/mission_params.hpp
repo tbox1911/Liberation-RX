@@ -184,6 +184,18 @@ class Params
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 0;
 	};
+	class EnableFilter3CB {
+		title = "MOD filter UK 3CB";
+		values[] = { 1, 0 };
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
+		default = 0;
+	};
+	class EnableFilterCWR {
+		title = "MOD filter CWR 3";
+		values[] = { 1, 0 };
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
+		default = 0;
+	};		
 	class Space5 {
 		title = "";
 		values[] = { "" };
