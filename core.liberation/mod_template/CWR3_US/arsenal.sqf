@@ -190,7 +190,7 @@ blacklisted_weapon = [
 	"CUP_optic_AN_PAS_13c1",
 	"CUP_optic_AN_PAS_13c2",
 	"CUP_optic_GOSHAWK",
-	"CUP_optic_GOSHAWK_RIS"	
+	"CUP_optic_GOSHAWK_RIS",
 	"H_HelmetO_ViperSP_hex_F",
 	"H_HelmetO_ViperSP_ghex_F",
 	"U_O_V_Soldier_Viper_hex_F",

@@ -92,7 +92,23 @@ blacklisted_bag = [
 	"I_Protagonist_VR_F",
 	"U_I_Protagonist_VR",
 	"C_Protagonist_VR_F",
-	"U_C_Protagonist_VR"
+	"U_C_Protagonist_VR",
+	"Afghan_01Hat",
+	"Afghan_02Hat",
+	"Afghan_03Hat",
+	"Afghan_04Hat",
+	"Afghan_05Hat",
+	"Afghan_06Hat",
+	"U_Afghan01",
+	"U_Afghan01NH",
+	"U_Afghan02",
+	"U_Afghan02NH",
+	"U_Afghan03",
+	"U_Afghan03NH",
+	"U_Afghan04",
+	"U_Afghan05",
+	"U_Afghan06",
+	"U_Afghan06NH"
 ];
 
 blacklisted_weapon = [
