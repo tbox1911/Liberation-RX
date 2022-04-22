@@ -56,21 +56,25 @@ private _input_controls = [521,522,523,524,525,526,527];
 [_ban_combo] call _getBannedUID;
 
 // Build Players list
-_i = 0;
+private _i = 0;
+private _list = [];
 {
-	_score_combo lbAdd format["%1", name _x];
 	_uid = getPlayerUID _x;
+	_list pushBack _uid;
+	_score_combo lbAdd format["%1", name _x];
 	_score_combo lbSetData [_i, _uid];
 	_score_combo lbSetColor [_i, _color];
 	_i = _i + 1;
 } foreach (AllPlayers - (entities "HeadlessClient_F"));
 
 {
-	_score_combo lbAdd format["%1", _x select 4];
 	_uid = _x  select 0;
-	_score_combo lbSetData [_i, _uid];
-	_score_combo lbSetColor [_i, _color];
-	_i = _i + 1;
+	if !(_uid in _list) then {
+		_score_combo lbAdd format["%1", _x select 4];
+		_score_combo lbSetData [_i, _uid];
+		_score_combo lbSetColor [_i, _color];
+		_i = _i + 1;
+	};
 } foreach GRLIB_player_scores;
 
 // Build Vehicles list
