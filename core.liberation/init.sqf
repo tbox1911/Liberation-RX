@@ -32,6 +32,8 @@ if (!abort_loading) then {
 	publicVariable "GRLIB_init_server";
 	publicVariable "abort_loading";
 	publicVariable "abort_loading_msg";
+	diag_log "--- LRX Startup Error ---";
+	diag_log abort_loading_msg;
 };
 
 if (!isDedicated && hasInterface) then {
