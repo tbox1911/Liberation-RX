@@ -9,46 +9,61 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf";
 
-private ["_nbUnits", "_outpost", "_objects"];
+private ["_objects"];
 
-_setupVars =
-{
+_setupVars = {
 	_missionType = "Enemy Outpost";
-	_locationsArray = MissionSpawnMarkers;
-	_nbUnits = AI_GROUP_MEDIUM;
+	_locationsArray = [SpawnMissionMarkers] call checkSpawn;
 };
 
-_setupObjects =
-{
+_setupObjects = {
 	_missionPos = markerPos _missionLocation;
+	private _base_output = [_missionPos, false, true] call createOutpost;
 
-	//_outpost = (call compile preprocessFileLineNumbers "server\missions\outposts\outpostsList.sqf") call BIS_fnc_selectRandom;
-	_outpost = selectRandom (call compile preprocessFileLineNumbers "server\missions\outposts\outpostsList.sqf");
-	_objects = [_outpost, _missionPos, 0] call createOutpost;
+	_objects = _base_output select 0;
+	//_objectives = _base_output select 1;
+	_aiGroup = _base_output select 2;
 
-	_aiGroup = createGroup CIVILIAN;
-	[_aiGroup, _missionPos, _nbUnits, 5] call createCustomGroup;
-
-	_missionHintText = format ["An armed <t color='%1'>outpost</t> containing weapon crates has been spotted near the marker, go capture it!", sideMissionColor]
+	_missionHintText = format ["An armed <t color='%1'>Outpost</t> containing weapon crates has been spotted near the marker, Go capture it!", sideMissionColor];
+	true;
 };
 
 _waitUntilMarkerPos = nil;
 _waitUntilExec = nil;
 _waitUntilCondition = nil;
 
-_failedExec =
-{
+_failedExec = {
 	// Mission failed
 	{ deleteVehicle _x } forEach _objects;
+	{ moveOut _x; deleteVehicle _x } forEach units _aiGroup;
 };
 
-_successExec =
-{
+_successExec = {
 	// Mission complete
-	{ _x setVariable ["R3F_LOG_disabled", false, true] } forEach _objects;
-	[_locationsArray, _missionLocation, _objects] call setLocationObjects;
+	_successHintMessage = "The outpost has been captured, Good Work.";
+	for "_i" from 1 to 3 do {
+		_box = selectRandom [ammobox_b_typename, ammobox_o_typename, ammobox_i_typename, fuelbarrel_typename];
+		[_box, _missionPos, false] call boxSetup;
+	};
 
-	_successHintMessage = "The outpost has been captured, good work.";
+	{
+		if (typeOf _x isKindof "AllVehicles") then {
+			_x setVariable ["GRLIB_vehicle_owner", "", true];
+			_x lock 0;
+		};
+	} foreach _objects;
+
+	[_objects, _missionPos] spawn { 
+		sleep 300;
+		{
+			if (count (crew _x) == 0 && (_x getVariable ["GRLIB_vehicle_owner", ""] == "")) then {
+				deleteVehicle _x;
+			};
+		} forEach (_this select 0);
+
+		_nearruins = [nearestObjects [(_this select 1), ["Ruins_F"], 100], { getObjectType _x == 8 }] call BIS_fnc_conditionalSelect;
+		{ deleteVehicle _x } forEach  _nearruins;
+	};
 };
 
 _this call sideMissionProcessor;
