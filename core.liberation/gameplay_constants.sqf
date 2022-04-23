@@ -42,10 +42,10 @@ GRLIB_offload_diag = false;
 //NRE_Key = 199;
 MGR_Key = 19;
 
-FAC_MSU_ACTIVE = false; //true to activate Factions selection
-
 tkill_score = -20;
 tkill_ammo = -50;
+
+FAC_MSU_ACTIVE = false; //true to activate Factions selection
 
 skill_scan = true;
 skill_parachuters = 1;
@@ -53,4 +53,12 @@ skill_air_vehicles_planes = 1;
 skill_air_vehicles_helicopters = 1;
 skill_ground_vehicles = 1;
 
+item_blacklist = 
+[
+	"",
+	""
 
+
+
+
+];
