@@ -4,7 +4,7 @@ if (FAC_MSU_ACTIVE) then {
     if (_fac == "Nofaction") exitwith {
         hint "Bitte erstelle eine Gruppe im groupmanager, und wähle deine Fraktion in den Gruppendetails!";
     };
-    hint str _fac;
+    
     _prc = format ["FAC_MSU\%1\arsenal.sqf", _fac];
     // [] call compile preprocessFileLineNumbers _prc;
     
@@ -28,7 +28,6 @@ if (FAC_MSU_ACTIVE) then {
     [player] call F_filterloadout;
     [player] call F_payloadout;
 } else {
-    hint str "did not work";
     load_loadout = 0;
     edit_loadout = 0;
     respawn_loadout = 0;
