@@ -47,6 +47,7 @@ player createDiaryRecord ['Diary', ['Situation', _situation], taskNull, '', fals
 sleep 10;
 
 execVM "scripts\client\misc\vehicle_restriction.sqf";
+execVM "MilSimUnited\create_arsenal_Itemlist.sqf";
 
 
 hint format['

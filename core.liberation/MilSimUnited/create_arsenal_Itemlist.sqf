@@ -9,7 +9,7 @@ private _blacklist = [];
 private _type = [];
 private _specialitems = [];
 
-_blacklist = item_blacklist;
+private _blacklist = item_blacklist;
 
 // Fetch all needed config classes
 
@@ -38,9 +38,8 @@ private _configClasses = [];
     };
 } forEach _classnames;
 
-// Black- and Whitelisting
+// Blackisting
 _classnames = _classnames - _blacklist;
-
 
 // sort all classnames into the different categories
 {
@@ -48,7 +47,7 @@ _classnames = _classnames - _blacklist;
     switch (_type select 0) do {
         case "Weapon": {
             if ((_type select 1) isEqualto "UnknownWeapon") then {
-                _items pushBack _x
+                all_items pushBack _x
             } else {
                 if ((_x call BIS_fnc_baseWeapon) isEqualto _x) then {
                     all_weapons pushBack _x;
@@ -83,4 +82,3 @@ _classnames = _classnames - _blacklist;
 } forEach (_classnames arrayintersect _classnames);
 
 all_items append _specialitems;
-
