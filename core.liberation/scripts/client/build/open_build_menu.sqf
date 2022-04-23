@@ -1,8 +1,8 @@
 // Joh Factions
 
 if (FAC_MSU_ACTIVE) then {
-	_fac = group player getVariable ["BIS_dg_fac", true];// gibt true wenn keine Gruppe oder Fraktion festgelegt.
-	if (_fac) exitWith {
+	_fac = group player getVariable ["BIS_dg_fac", true];// gibt "NoFaction" wenn keine Gruppe oder Fraktion festgelegt.
+	if (_fac == "NoFaction") exitWith {
 		hint "Bitte erstelle eine Gruppe im Groupmanager, und wähle deine Fraktion in den Gruppendetails!";
 	};
 
