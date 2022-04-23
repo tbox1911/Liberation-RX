@@ -42,6 +42,8 @@ GRLIB_offload_diag = false;
 //NRE_Key = 199;
 MGR_Key = 19;
 
+FAC_MSU_ACTIVE = false; //true to activate Factions selection
+
 tkill_score = -20;
 tkill_ammo = -50;
 
