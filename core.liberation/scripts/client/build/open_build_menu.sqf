@@ -1,3 +1,24 @@
+// Joh Factions
+
+if (FAC_MSU_ACTIVE) then {
+	_fac = group player getVariable ["BIS_dg_fac", true];// gibt true wenn keine Gruppe oder Fraktion festgelegt.
+	if (_fac) exitWith {
+		hint "Bitte erstelle eine Gruppe im Groupmanager, und wähle deine Fraktion in den Gruppendetails!";
+	};
+
+	_prc = format ["FAC_MSU\%1\classnames_west.sqf", _fac];
+	// [] call compile preprocessFileLineNumbers _prc;
+
+	_handle = player execVM _prc;
+	waitUntil {
+		scriptDone _handle
+	};
+	[] call F_calcUnitsCost;
+
+	build_lists = [[], infantry_units, light_vehicles, heavy_vehicles, air_vehicles, static_vehicles, buildings, support_vehicles, squads];
+};
+// END Joh Factions
+
 private [ "_oldbuildtype", "_cfg", "_initindex", "_iscommandant", "_squadname", "_buildpages", "_build_list", "_classnamevar", "_entrytext", "_icon", "_affordable", "_affordable_crew", "_selected_item", "_linked", "_linked_unlocked", "_base_link", "_link_color", "_link_str" ];
 
 if ( ( [ getpos player , 500 , GRLIB_side_enemy ] call F_getUnitsCount ) > 4 ) exitWith { hint localize "STR_BUILD_ENEMIES_NEARBY"; };
