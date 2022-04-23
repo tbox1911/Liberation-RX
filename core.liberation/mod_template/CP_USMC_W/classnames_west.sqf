@@ -31,16 +31,14 @@ units_loadout_overide = [
     "CUP_B_USMC_Soldier_AA",
     "CUP_B_USMC_Soldier_HAT"
 ];  
- 
+
 light_vehicles = [
  
     ["B_Quadbike_01_F",0,10,0,GRLIB_perm_inf],
     ["CUP_B_M1030_USMC",0,20,0,GRLIB_perm_inf],
-    ["CUP_B_LCU1600_USMC",0,30,0,GRLIB_perm_inf],
-    ["CUP_B_Zodiac_USMC",0,30,0,GRLIB_perm_inf],
+
     ["C_Van_01_transport_F",0,70,0,GRLIB_perm_inf],
-    ["CUP_B_RHIB_USMC",0,80,0,GRLIB_perm_inf],
-    ["CUP_B_RHIB2Turret_USMC",0,80,0,GRLIB_perm_inf],
+
     ["CUP_I_SUV_ION",0,100,0,GRLIB_perm_inf],
     ["CUP_B_T810_Unarmed_CZ_WDL",0,100,0,GRLIB_perm_inf],
 
@@ -70,14 +68,8 @@ light_vehicles = [
     ["CUP_B_Dingo_GER_Wdl",0,220,0,GRLIB_perm_inf],
     ["CUP_B_Dingo_GL_GER_Wdl",0,250,0,GRLIB_perm_inf],
     ["CUP_I_SUV_Armored_ION",0,240,0,GRLIB_perm_inf],
+    
     //FFAA
-  
-    ["B_SDV_01_F",0,30,0,GRLIB_perm_inf],
-    ["B_Boat_Transport_01_F",0,30,0,GRLIB_perm_inf],
-    ["ffaa_ar_zodiac_hurricane",0,50,0,GRLIB_perm_inf],
-    ["ffaa_ar_lcm",0,50,0,GRLIB_perm_inf],
-    ["ffaa_ar_zodiac_hurricane_long",0,80,0,GRLIB_perm_inf],
-    ["ffaa_ar_supercat",0,80,0,GRLIB_perm_inf],
     ["ffaa_et_anibal",0,50,0,GRLIB_perm_inf],
     ["ffaa_et_vamtac_m2",0,130,0,GRLIB_perm_inf],
     ["ffaa_ar_vamtac_st5_vsp_lag40",0,150,0,GRLIB_perm_inf],
@@ -86,13 +78,6 @@ light_vehicles = [
     ["ffaa_et_vamtac_st5_spike",0,220,0,GRLIB_perm_inf],
     ["ffaa_et_vamtac_ume",0,120,0,GRLIB_perm_inf],
     ["ffaa_et_neton_mk2",0,60,0,GRLIB_perm_inf],
- 
- 
- 
- 
- 
- 
- 
     ["ffaa_et_lince_m2",0,130,0,GRLIB_perm_inf],
     ["ffaa_et_vamtac_lag40",0,200,0,GRLIB_perm_inf],
     ["ffaa_et_pegaso_carga",0,110,0,GRLIB_perm_inf],
@@ -110,7 +95,17 @@ light_vehicles = [
     ["ffaa_et_rg31_samson",0,230,0,GRLIB_perm_inf],
     ["ffaa_et_vamtac_tow",0,250,0,GRLIB_perm_inf],
     ["ffaa_et_m250_estacion_nasams_blin",0,250,0,GRLIB_perm_inf],
-    ["ffaa_et_vamtac_cardom",0,500,0,GRLIB_perm_inf]
+    ["ffaa_et_vamtac_cardom",0,500,0,GRLIB_perm_inf],
+    ["CUP_B_LCU1600_USMC",0,30,0,GRLIB_perm_inf],
+    ["CUP_B_Zodiac_USMC",0,30,0,GRLIB_perm_inf],
+    ["CUP_B_RHIB_USMC",0,80,0,GRLIB_perm_inf],
+    ["CUP_B_RHIB2Turret_USMC",0,80,0,GRLIB_perm_inf],
+    ["B_SDV_01_F",0,30,0,GRLIB_perm_inf],
+    ["B_Boat_Transport_01_F",0,30,0,GRLIB_perm_inf],
+    ["ffaa_ar_zodiac_hurricane",0,50,0,GRLIB_perm_inf],
+    ["ffaa_ar_lcm",0,50,0,GRLIB_perm_inf],
+    ["ffaa_ar_zodiac_hurricane_long",0,80,0,GRLIB_perm_inf],
+    ["ffaa_ar_supercat",0,80,0,GRLIB_perm_inf]
 ];
  
 heavy_vehicles = [
