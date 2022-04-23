@@ -236,7 +236,7 @@ static_vehicles = [
     ["ffaa_mistral_tripode",0,0,0,GRLIB_perm_inf],
     ["ffaa_spike_tripode",0,0,0,GRLIB_perm_inf],
     ["ffaa_tow_tripode",0,0,0,GRLIB_perm_inf],
-    ["ffaa_et_m250_sistema_nasams_blin",0,650,0,GRLIB_perm_inf],                        //Nasams Truck
+  //  ["ffaa_et_m250_sistema_nasams_blin",0,650,0,GRLIB_perm_inf],                        //Nasams Truck
     ["ffaa_lanzador_nasams",0,500,0,GRLIB_perm_inf],                            //Nasams Launcher
     ["CUP_B_SearchLight_static_USMC",0,0,0,GRLIB_perm_inf],
     ["CUP_B_M2StaticMG_USMC",0,0,0,GRLIB_perm_inf],
