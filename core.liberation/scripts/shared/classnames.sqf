@@ -214,13 +214,7 @@ GRLIB_vehicle_whitelist = [
 	waterbarrel_typename,
 	fuelbarrel_typename,
 	foodbarrel_typename,
-	medicalbox_typename,
-	"Land_PierLadder_F",
-	"Land_CncBarrierMedium4_F",
-	"Land_CncWall4_F",
-	"Land_HBarrier_5_F",
-	"Land_BagBunker_Small_F",
-	"Land_BagFence_Long_F"
+	medicalbox_typename
 ] + GRLIB_vehicle_whitelist_west + opfor_statics;
 
 // Blacklist Vehicle (lock, paint, delete)
