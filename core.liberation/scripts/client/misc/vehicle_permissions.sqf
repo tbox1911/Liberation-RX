@@ -6,7 +6,7 @@ if (isNil "_role") exitWith {moveOut _unit;};  // Eject unit
 if (count GRLIB_all_fobs == 0 && typeOf _vehicle in [FOB_truck_typename,huron_typename]) exitWith {true}; // Allowed at start
 
 private _msg = "";
-if (!(_role == "cargo" || _vehicle isKindOf "Steerable_Parachute_F")) then {
+if (!(_role == "cargo" || _vehicle isKindOf "Steerable_Parachute_F" || typeOf _vehicle in list_static_weapons)) then {
 	if (GRLIB_permissions_param) then {
 		if (!([player, 0] call fetch_permission)) then {
 			_doeject = true;
