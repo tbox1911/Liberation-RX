@@ -52,9 +52,14 @@ _successExec = {
 		_x setVariable ["R3F_LOG_disabled", false, true];
 		_x setVariable ["GRLIB_vehicle_owner", nil, true];
 	} forEach [_box1, _box2, _box3];
-	deleteVehicle _wreck;
+
 	_successHintMessage = "The airwreck supplies have been collected, well done.";
 	[_missionPos] call showlandmines;
+
+	[_wreck] spawn { 
+		sleep 300;
+		deleteVehicle (_this select 0);
+	};
 };
 
 _this call sideMissionProcessor;

@@ -2,9 +2,7 @@
 // * This project is licensed under the GNU Affero GPL v3. Copyright © 2014 A3Wasteland.com *
 // ******************************************************************************************
 //	@file Version: 1.0
-//	@file Name: mission_VehicleCapture.sqf
-//	@file Author: [404] Deadbeat, [404] Costlyy, JoSchaap, AgentRev
-//	@file Created: 08/12/2012 15:19
+//	@file Name: mission_Outpost.sqf
 
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf";
@@ -40,7 +38,7 @@ _failedExec = {
 
 _successExec = {
 	// Mission complete
-	_successHintMessage = "The outpost has been captured, Good Work.";
+	_successHintMessage = "The outpost has been Captured!, Good Work.";
 	for "_i" from 1 to 3 do {
 		_box = selectRandom [ammobox_b_typename, ammobox_o_typename, ammobox_i_typename, fuelbarrel_typename];
 		[_box, _missionPos, false] call boxSetup;

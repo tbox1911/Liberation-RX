@@ -10,7 +10,7 @@ private ["_nbUnits", "_outpost", "_objects"];
 
 _setupVars =
 {
-	_missionType = "Enemy Outpost";
+	_missionType = "Help Civilians";
 	_locationsArray = MissionSpawnMarkers;
 	_nbUnits = AI_GROUP_MEDIUM;
 };
@@ -36,7 +36,7 @@ _successExec =
 {
 	// Mission complete
 
-	_successHintMessage = "The outpost has been captured, good work.";
+	_successHintMessage = "All the civilians has been helped, good work.";
 };
 
 _this call sideMissionProcessor;
