@@ -41,8 +41,8 @@ if (GRLIB_cleanup_vehicles == 0) exitWith {};
 
 //==================== IGNORE VEHICLES
 
-private _no_cleanup_classnames = [] + GRLIB_vehicle_blacklist;
-{ _no_cleanup_classnames pushback (_x select 0) } foreach (support_vehicles + static_vehicles + opfor_recyclable);
+private _no_cleanup_classnames = []; // + GRLIB_vehicle_blacklist;
+// { _no_cleanup_classnames pushback (_x select 0) } foreach (support_vehicles + static_vehicles + opfor_recyclable);
 
 //==================== HIDDEN-FROM-PLAYERS FUNCTION
 
@@ -63,41 +63,41 @@ _getTTLunits = {
 deleteManagerPublic = TRUE;								// To terminate script via debug console
 
 private _checkPlayerCount = TRUE;						// dynamic sleep. Set TRUE to have sleep automatically adjust based on # of players.
-private _checkFrequencyDefault = 600;					// sleep default (GRLIB_cleanup_vehicles*60)*60
-private _checkFrequencyAccelerated = 300;				// sleep accelerated
-private _playerThreshold = 4;							// How many players before accelerated cycle kicks in?
+private _checkFrequencyDefault = 240;					// sleep default (GRLIB_cleanup_vehicles*60)*60
+private _checkFrequencyAccelerated = 120;				// sleep accelerated
+private _playerThreshold = 0;							// How many players before accelerated cycle kicks in?
 
-private _vehiclesLimit = 30;							// Vehicles Set -1 to disable.
+private _vehiclesLimit = 10;							// Vehicles Set -1 to disable.
 private _vehicleDistCheck = TRUE;						// TRUE to delete any vehicles that are far from players.
 private _vehicleDist = (GRLIB_sector_size * 2);			// Distance (meters) from players that vehicles are not deleted if below max.
 
-private _deadMenLimit = 50;								// Bodies. Set -1 to disable.
+private _deadMenLimit = 16;								// Bodies. Set -1 to disable.
 private _deadMenDistCheck = TRUE;						// TRUE to delete any bodies that are far from players.
-private _deadMenDist = (GRLIB_sector_size * 2);			// Distance (meters) from players that bodies are not deleted if below max.
+private _deadMenDist = GRLIB_sector_size;			// Distance (meters) from players that bodies are not deleted if below max.
 
-private _deadVehiclesLimit = 30;						// Wrecks. Set -1 to disable.
+private _deadVehiclesLimit = 10;						// Wrecks. Set -1 to disable.
 private _deadVehicleDistCheck = TRUE;					// TRUE to delete any destroyed vehicles that are far from players.
-private _deadVehicleDist = (GRLIB_sector_size * 2);		// Distance (meters) from players that destroyed vehicles are not deleted if below max.
+private _deadVehicleDist = GRLIB_sector_size;		// Distance (meters) from players that destroyed vehicles are not deleted if below max.
 
 private _craterLimit = -1;								// Craters. Set -1 to disable.
 private _craterDistCheck = TRUE;						// TRUE to delete any craters that are far from players.
-private _craterDist = (GRLIB_sector_size * 2);			// Distance (meters) from players that craters are not deleted if below max.
+private _craterDist = GRLIB_sector_size;			// Distance (meters) from players that craters are not deleted if below max.
 
-private _weaponHolderLimit = 50;						// Weapon Holders. Set -1 to disable.
+private _weaponHolderLimit = 10;						// Weapon Holders. Set -1 to disable.
 private _weaponHolderDistCheck = TRUE;					// TRUE to delete any weapon holders that are far from players.
-private _weaponHolderDist = (GRLIB_sector_size * 2);	// Distance (meters) from players that ground garbage is not deleted if below max.
+private _weaponHolderDist = GRLIB_sector_size;	// Distance (meters) from players that ground garbage is not deleted if below max.
 
-private _minesLimit = 40;								// Land mines. Set -1 to disable.
+private _minesLimit = 20;								// Land mines. Set -1 to disable.
 private _minesDistCheck = TRUE;							// TRUE to delete any mines that are far from ANY UNIT (not just players).
-private _minesDist = (GRLIB_sector_size * 2);			// Distance (meters) from players that land mines are not deleted if below max.
+private _minesDist = GRLIB_sector_size;			// Distance (meters) from players that land mines are not deleted if below max.
 
-private _staticsLimit = -1;								// Static weapons. Set -1 to disable.
+private _staticsLimit = 10;								// Static weapons. Set -1 to disable.
 private _staticsDistCheck = TRUE;						// TRUE to delete any static weapon that is far from ANY UNIT (not just players).
 private _staticsDist = (GRLIB_sector_size * 2);			// Distance (meters) from players that static weapons are not deleted if below max.
 
-private _ruinsLimit = 20;								// Ruins. Set -1 to disable.
+private _ruinsLimit = 10;								// Ruins. Set -1 to disable.
 private _ruinsDistCheck = TRUE;							// TRUE to delete any ruins that are far from players.
-private _ruinsDist = (GRLIB_sector_size * 2);			// Distance (meters) from players that ruins are not deleted if below max.
+private _ruinsDist = GRLIB_sector_size;			// Distance (meters) from players that ruins are not deleted if below max.
 
 private _orphanedTriggers = TRUE;						// Clean orphaned triggers in MP.
 private _emptyGroups = TRUE;							// Set FALSE to not delete empty groups.
