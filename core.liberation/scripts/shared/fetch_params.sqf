@@ -190,5 +190,5 @@ if ( GRLIB_CUPW_enabled && GRLIB_filter_arsenalCUP) then { GRLIB_MOD_signature a
 if ( GRLIB_RHS_enabled && GRLIB_filter_arsenalRHS) then { GRLIB_MOD_signature append ["rhs"]; GRLIB_mod_enabled = true };
 if ( GRLIB_R3F_enabled && GRLIB_filter_arsenalR3F) then { GRLIB_MOD_signature append ["r3f_", "amf_"]; GRLIB_mod_enabled = true };
 if ( GRLIB_SOG_enabled && GRLIB_filter_arsenalSOG) then { GRLIB_MOD_signature append ["vn_"]; GRLIB_mod_enabled = true };
-if ( GRLIB_3CB_enabled && GRLIB_filter_arsenal3CB) then { GRLIB_MOD_signature append ["rhs", "uk3cb_"]; GRLIB_mod_enabled = true };
-if ( GRLIB_CWR_enabled && GRLIB_filter_arsenalCWR) then { GRLIB_MOD_signature append ["cup_", "cwr3_"]; GRLIB_filter_arsenalCUP = true; GRLIB_mod_enabled = true };
+if ( GRLIB_3CB_enabled && GRLIB_filter_arsenal3CB) then { GRLIB_MOD_signature append ["uk3cb_"]; GRLIB_mod_enabled = true };
+if ( GRLIB_CWR_enabled && GRLIB_filter_arsenalCWR) then { GRLIB_MOD_signature append ["cwr3"]; GRLIB_mod_enabled = true };
