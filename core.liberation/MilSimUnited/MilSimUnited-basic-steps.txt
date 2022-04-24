@@ -242,6 +242,7 @@ ca. 44: comment "Paint Shop Initialized"
 
 \scripts\server\init_server.sqf
 ca. 76: comment hall of fame
+ca. 94: comment init_marker (service offroaders)
 
 
 \scripts\client\actions\do_build_fob.sqf
@@ -259,6 +260,10 @@ scripts\server\a3w\missions\sideMissionProcessor.sqf
 NOPE!
 \scripts\server\a3w\missions\missionProcessor.sqf
 ca. 8: exitwith {};
+
+
+\scripts\server\a3w\missions\missionController.sqf
+ca. 62: comment remote_call_showinfo ("Starting in x minutes...")
 
 
 \scripts\client\spawn\redeploy_manager.sqf

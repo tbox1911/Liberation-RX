@@ -59,7 +59,7 @@ while {true} do {
 	} else {
 		_info = ["Next Objective", "", format ["Starting in %1 minutes", _missionDelay / 60]];
 	};
-	[_info] remoteExec ["remote_call_showinfo", 0];
+	// [_info] remoteExec ["remote_call_showinfo", 0];
 
 	_timer = round (time + _missionDelay);
 	waitUntil {sleep 5; (time > _timer || count allPlayers == 0)};
