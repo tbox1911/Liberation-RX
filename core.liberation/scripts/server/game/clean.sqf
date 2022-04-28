@@ -63,9 +63,9 @@ _getTTLunits = {
 deleteManagerPublic = TRUE;								// To terminate script via debug console
 
 private _checkPlayerCount = TRUE;						// dynamic sleep. Set TRUE to have sleep automatically adjust based on # of players.
-private _checkFrequencyDefault = 240;					// sleep default (GRLIB_cleanup_vehicles*60)*60
-private _checkFrequencyAccelerated = 120;				// sleep accelerated
-private _playerThreshold = 0;							// How many players before accelerated cycle kicks in?
+private _checkFrequencyDefault = 60;					// sleep default (GRLIB_cleanup_vehicles*60)*60
+private _checkFrequencyAccelerated = 60;				// sleep accelerated
+private _playerThreshold = 4;							// How many players before accelerated cycle kicks in?
 
 private _vehiclesLimit = 10;							// Vehicles Set -1 to disable.
 private _vehicleDistCheck = TRUE;						// TRUE to delete any vehicles that are far from players.
@@ -79,11 +79,11 @@ private _deadVehiclesLimit = 10;						// Wrecks. Set -1 to disable.
 private _deadVehicleDistCheck = TRUE;					// TRUE to delete any destroyed vehicles that are far from players.
 private _deadVehicleDist = GRLIB_sector_size;		// Distance (meters) from players that destroyed vehicles are not deleted if below max.
 
-private _craterLimit = -1;								// Craters. Set -1 to disable.
+private _craterLimit = 10;								// Craters. Set -1 to disable.
 private _craterDistCheck = TRUE;						// TRUE to delete any craters that are far from players.
 private _craterDist = GRLIB_sector_size;			// Distance (meters) from players that craters are not deleted if below max.
 
-private _weaponHolderLimit = 10;						// Weapon Holders. Set -1 to disable.
+private _weaponHolderLimit = 16;						// Weapon Holders. Set -1 to disable.
 private _weaponHolderDistCheck = TRUE;					// TRUE to delete any weapon holders that are far from players.
 private _weaponHolderDist = GRLIB_sector_size;	// Distance (meters) from players that ground garbage is not deleted if below max.
 
@@ -162,9 +162,9 @@ while {deleteManagerPublic} do {
 	if (!(_vehiclesLimit isEqualTo -1)) then {
 		private _nbVehicles = [vehicles,
 			{ alive _x &&
-			 [_x] call is_abandoned &&
+			 // [_x] call is_abandoned &&
 			 isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) &&
-			 !(_x getVariable ['R3F_LOG_disabled', true]) &&
+			 // !(_x getVariable ['R3F_LOG_disabled', true]) &&
 			 count (crew _x) == 0 &&
 			 (_x distance lhd) >= 1000 &&
 			 !([typeOf _x, _no_cleanup_classnames] call F_itemIsInClass)
@@ -181,6 +181,7 @@ while {deleteManagerPublic} do {
 				} count (_nbVehicles);
 			};
 
+			/*
 			while {(( (count (_nbVehicles)) - _vehiclesLimit) > 0)} do {
 				_veh = selectRandom (_nbVehicles);
 				[_veh] call clean_vehicle;
@@ -188,9 +189,12 @@ while {deleteManagerPublic} do {
 				_stats = _stats + 1;
 				sleep 0.2;
 			};
+			*/
 		};
 	};
+	
 	sleep 1;
+	
 	//================================= WRECKS
 	if (!(_deadVehiclesLimit isEqualTo -1)) then {
 		if ((count (allDead - allDeadMen)) > _deadVehiclesLimit) then {
@@ -345,6 +349,12 @@ while {deleteManagerPublic} do {
 		} count allGroups;
 	};
     sleep 1;
-
+	
+	
 	diag_log format ["--- LRX Garbage Collector --- Run at: %1 - Delete: %2 objects - %3 fps", round(time), _stats, diag_fps];
+	
+	/*
+	_msg = format ["--- LRX Garbage Collector --- Run at: %1 - Delete: %2 objects - %3 fps", round(time), _stats, diag_fps];
+	[gamelogic, _msg] remoteExec ["globalChat", 0];
+	*/
 };
