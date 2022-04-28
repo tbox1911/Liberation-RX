@@ -18,8 +18,8 @@ private _sendPara = {
 	if (_cargo_seat_free > 8) then {_cargo_seat_free = 8};
 	diag_log format ["Spawn (%1) ParaTroopers on sector %2 at %3", _cargo_seat_free, _spawnsector, time];
 	for "_i" from 1 to _cargo_seat_free do {
-		opfor_paratrooper createUnit [getmarkerpos _spawnsector, _para_group, 'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]'];
-		_unit = (units _para_group) select ((count (units _para_group)) -1);
+		_unit = _para_group createUnit [opfor_paratrooper, markerpos _spawnsector, [], 5, "NONE"];
+		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		_unit assignAsCargo _newvehicle;
 		_unit moveInCargo _newvehicle;
 		_unit addBackpack "B_Parachute";
