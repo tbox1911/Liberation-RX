@@ -28,8 +28,8 @@ for "_i" from 1 to _nbUnits do {
 		_max_try = _max_try - 1;
 	};
 	if (!(_spawnpos isEqualTo zeropos)) then {
-		(selectRandom _unitTypes) createUnit [_spawnpos, _grp, 'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]'];
-		_unit = (units _grp) select ((count (units _grp)) -1);
+		_unit = _grp createUnit [(selectRandom _unitTypes), _spawnpos, [], 5, "NONE"];
+		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		_unit allowDamage false;
 		_unit setSkill 0.6;
 		_unit setSkill ["courage", 1];

@@ -14,8 +14,8 @@ _grp = createGroup [GRLIB_side_enemy, true];
 			_max_try = _max_try - 1;
 		};
 		if (!(_spawnpos isEqualTo zeropos)) then {
-			_x createUnit [_spawnpos, _grp, 'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]'];
-			_nextunit = (units _grp) select ((count (units _grp)) -1);
+			_nextunit = _grp createUnit [_x, _spawnpos, [], 5, "NONE"];
+			_nextunit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 			if ( _infsquad == "militia" ) then {
 				[ _nextunit ] call loadout_militia;
 			};

@@ -15,8 +15,8 @@ if ( count _allposts > 0 ) then {
 		if ( floor(random 100) > 60 ) then {
 			_unitclasspost = opfor_machinegunner;
 		};
-		_unitclasspost createUnit [ _squadpos, _grp, 'this addMPEventHandler [''MPKilled'', {_this spawn kill_manager}]', 0.5, 'private'];
-		_unit = (units _grp) select ((count (units _grp)) -1);
+		_unit = _grp createUnit [_unitclasspost, _squadpos, [], 5, "NONE"];
+		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		_unit setpos (_building_positions select 1);
 		_unit setdir (180 + (getdir _x ));
 		[ _unit ] call reammo_ai;
