@@ -7,7 +7,7 @@ if (!isServer) exitwith {};
 if (!isNil "GRLIB_A3W_Mission_SD") exitWith {};
 #include "sideMissionDefines.sqf"
 
-private ["_missionPos", "_missionPos2", "_missionPos3", "_missionPosEnd", "_mission_grp"];
+private ["_missionPos", "_missionPos2", "_missionPos3", "_missionPosEnd", "_mission_grp", "_house"];
 
 _setupVars =
 {
@@ -72,7 +72,7 @@ _setupObjects =
 	} forEach GRLIB_A3W_Mission_SD;
 
 	_man4 enableAI "Cover";
-	private _house = createVehicle ["Land_i_House_Small_01_V1_F", _missionPosEnd, [], 2, "None"];
+	_house = createVehicle ["Land_i_House_Small_01_V1_F", _missionPosEnd, [], 2, "None"];
 	_man4 setPosATL (getposATL _house);
 
 	private _marker = createMarker ["side_mission_A3W_Mission_SD", _missionPosEnd];
