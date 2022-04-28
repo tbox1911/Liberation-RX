@@ -165,12 +165,14 @@ while { true } do {
 			};
 
 			_idactcancel = -1;
+			_idactview = -1;
 			_idactsnap = -1;
 			_idactupper = -1;
 			_idactlower = -1;
 			_idactplacebis = -1;
 
 			if (buildtype == 6 ) then {
+				_idactview = player addAction ["<t color='#B0FF00'>" + "-- Build view" + "</t>","scripts\client\build\build_view.sqf","",-755,false,false,"","build_confirmed == 1"];
 				_idactplacebis = player addAction ["<t color='#B0FF00'>" + localize "STR_PLACEMENT_BIS" + "</t> <img size='1' image='res\ui_confirm.paa'/>","scripts\client\build\build_place_bis.sqf","",-752,false,false,"","build_invalid == 0 && build_confirmed == 1"];
 			};
 			if (buildtype == 6 || buildtype == 99) then {
@@ -460,6 +462,9 @@ while { true } do {
 			if ( _idactsnap != -1 ) then {
 				player removeAction _idactsnap;
 			};
+			if ( _idactview != -1 ) then {
+				player removeAction _idactview;
+			};			
 			if ( _idactplacebis != -1 ) then {
 				player removeAction _idactplacebis;
 			};
