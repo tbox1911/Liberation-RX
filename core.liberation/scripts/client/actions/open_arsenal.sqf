@@ -13,18 +13,18 @@ private _loadouts_data = [];
 private _counter = 0;
 
 if ( !isNil "_saved_loadouts" ) then {
-	_unit = "B_Survivor_F" createVehicleLocal zeropos;
-	private _max_loadout = 24;
+	private _grp = createGroup [GRLIB_side_friendly, true];
+	private _unit = _grp createUnit ["B_Survivor_F", zeropos, [], 5, "NONE"];
 	{
-		if ( _counter % 2 == 0 && _max_loadout > 0) then {
+		if ( _counter % 2 == 0 && _counter < 40) then {
 			[_unit, [profileNamespace, _x]] call bis_fnc_loadInventory;
 			_price = [_unit] call F_loadoutPrice;
 			_loadouts_data pushback [_x, _price];
-			_max_loadout = _max_loadout - 1;
 		};
 		_counter = _counter + 1;
 	} foreach _saved_loadouts;
 	deleteVehicle _unit;
+	deleteGroup _grp;
 };
 
 createDialog "liberation_arsenal";
