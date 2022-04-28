@@ -10,7 +10,7 @@ _offset = 0;
 _truck_to_unload allowDamage false;
 _truck_to_unload enableSimulationGlobal false;
 _all_objects = attachedObjects _truck_to_unload;
-{ 
+{
 	_truck_to_unload disableCollisionWith _x;
 	_x allowDamage false;
 } forEach _all_objects;
@@ -24,16 +24,16 @@ sleep 0.5;
 	_next_box setdir (getdir _truck_to_unload);
 	_next_box setVelocity [ 0,0,0 ];
 	_offset = _offset - 2.2;
-	sleep 0.5;	
+	sleep 0.5;
 } foreach _all_objects;
 
-sleep 2;
 {
+	_x enableSimulationGlobal true;
 	_truck_to_unload enableCollisionWith _x;
 	_x setDamage 0;
+	sleep 0.5;
 	_x allowDamage true;
 	_x setVariable ["R3F_LOG_disabled", false, true];
-	_x enableSimulationGlobal true;
 } forEach _all_objects;
 
 _truck_to_unload enableSimulationGlobal true;
