@@ -94,7 +94,7 @@ private _troops_group = createGroup [GRLIB_side_enemy, true];
 	_unit = _troops_group createUnit [_x, _spawnpos, [], 5, "NONE"];
 	_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	[_unit] call reammo_ai;
-	_unit moveInCargo _troop_vehicle
+	_unit moveInCargo _troop_vehicle;
 	sleep 0.1;
 } foreach ([] call F_getAdaptiveSquadComp);
 
