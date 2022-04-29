@@ -171,7 +171,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
         if ([_nextclass, simple_objects] call F_itemIsInClass) then {
             _nextbuilding = createSimpleObject [_nextclass, AGLtoASL _nextpos];
         } else {
-            _nextbuilding = _nextclass createVehicle _nextpos;
+			_nextbuilding = createVehicle [_nextclass, _nextpos, [], 0, "CAN_COLLIDE"];
             _nextbuilding allowDamage false;
             _nextbuilding setVectorUp [0,0,1];
             _nextbuilding setPosATL _nextpos;
