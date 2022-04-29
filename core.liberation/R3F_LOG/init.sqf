@@ -328,6 +328,8 @@
 			}];
 		};
 
+		waituntil { sleep 1; GRLIB_player_spawned };
+
 		/** Variable publique passer � true pour informer le script surveiller_nouveaux_objets.sqf de la cr�ation d'un objet */
 		R3F_LOG_PUBVAR_nouvel_objet_a_initialiser = false;
 
