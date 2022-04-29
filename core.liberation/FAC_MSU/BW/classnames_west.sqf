@@ -1,6 +1,13 @@
 light_vehicles = [
       ["CUP_B_Dingo_GER_Wdl",0,220,0,GRLIB_perm_inf],
-      ["CUP_B_Dingo_GL_GER_Wdl",0,250,0,GRLIB_perm_inf]
+      ["CUP_B_Dingo_GL_GER_Wdl",0,250,0,GRLIB_perm_inf],
+      ["BWA3_Eagle_Tropen",0,300,0,GRLIB_perm_inf],
+      ["BWA3_Dingo2_FLW200_M2_CG13_Tropen",0,300,0,GRLIB_perm_inf],
+      ["BWA3_Dingo2_FLW200_GMW_CG13_Tropen",0,300,0,GRLIB_perm_inf],
+      ["BWA3_Dingo2_FLW200_M2_Tropen",0,300,0,GRLIB_perm_inf],
+      ["BWA3_Dingo2_FLW200_GMW_Tropen",0,300,0,GRLIB_perm_inf],
+      ["BWA3_Eagle_FLW100_Tropen",0,300,0,GRLIB_perm_inf],
+      ["BWA3_Dingo2_FLW100_MG3_Tropen",0,300,0,GRLIB_perm_inf]
     
     ];
     
@@ -8,7 +15,9 @@ light_vehicles = [
     
       ["CUP_B_M113A3_GER",0,150,0,GRLIB_perm_inf],
       ["CUP_B_Boxer_HMG_GER_WDL",0,300,0,GRLIB_perm_inf],
-      ["CUP_B_Boxer_GMG_GER_WDL",0,400,0,GRLIB_perm_inf]
+      ["BWA3_Leopard2_Tropen",0,1200,0,GRLIB_perm_inf],
+      ["BWA3_Puma_Tropen",0,1000,0,GRLIB_perm_inf],
+      ["BWA3_Panzerhaubitze2000_Tropen",0,5000,0,GRLIB_perm_inf]
     
     ];
     
@@ -19,3 +28,15 @@ light_vehicles = [
         ["CUP_B_UH1D_gunship_GER_KSK",0,1000,0,GRLIB_perm_inf]
 
     ];
+
+
+
+
+
+
+
+
+
+
+
+

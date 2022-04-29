@@ -105,7 +105,17 @@ light_vehicles = [
     ["ffaa_ar_zodiac_hurricane",0,50,0,GRLIB_perm_inf],
     ["ffaa_ar_lcm",0,50,0,GRLIB_perm_inf],
     ["ffaa_ar_zodiac_hurricane_long",0,80,0,GRLIB_perm_inf],
-    ["ffaa_ar_supercat",0,80,0,GRLIB_perm_inf]
+    ["ffaa_ar_supercat",0,80,0,GRLIB_perm_inf],
+
+    ["BWA3_Eagle_Tropen",0,300,0,GRLIB_perm_inf],
+    ["BWA3_Dingo2_FLW200_M2_CG13_Tropen",0,300,0,GRLIB_perm_inf],
+    ["BWA3_Dingo2_FLW200_GMW_CG13_Tropen",0,300,0,GRLIB_perm_inf],
+    ["BWA3_Dingo2_FLW200_M2_Tropen",0,300,0,GRLIB_perm_inf],
+    ["BWA3_Dingo2_FLW200_GMW_Tropen",0,300,0,GRLIB_perm_inf],
+    ["BWA3_Eagle_FLW100_Tropen",0,300,0,GRLIB_perm_inf],
+    ["BWA3_Dingo2_FLW100_MG3_Tropen",0,300,0,GRLIB_perm_inf]
+
+
 ];
  
 heavy_vehicles = [
@@ -142,7 +152,11 @@ heavy_vehicles = [
     ["ffaa_et_pizarro_mauser",0,550,0,GRLIB_perm_inf],
     //["ffaa_et_leopardo",0,800,0,GRLIB_perm_inf],
     ["ffaa_et_m109",0,1900,0,GRLIB_perm_inf],
-    ["ffaa_ar_m109",0,1900,0,GRLIB_perm_inf]
+    ["ffaa_ar_m109",0,1900,0,GRLIB_perm_inf],
+    //BW mod
+    ["BWA3_Leopard2_Tropen",0,1200,0,GRLIB_perm_inf],
+    ["BWA3_Puma_Tropen",0,1000,0,GRLIB_perm_inf],
+    ["BWA3_Panzerhaubitze2000_Tropen",0,5000,0,GRLIB_perm_inf]
  
 ];
  
