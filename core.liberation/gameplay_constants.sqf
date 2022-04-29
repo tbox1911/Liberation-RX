@@ -1,4 +1,4 @@
-GRLIB_save_key = "GREUH_LIBERATION_KAP_saveGame_PSK";
+GRLIB_save_key = "GREUH_LIBERATION_ALTIS_saveGame_PSK";
 // change this value if you want different saveGames on different map
 GRLIB_side_resistance = resistance;
 GRLIB_side_civilian = civilian;
@@ -35,8 +35,8 @@ GRLIB_perm_max = 1200;
 GRLIB_date_year = 2022;
 GRLIB_date_month = 6;
 GRLIB_date_day = 30;
-GRLIB_nights_start = 18;
-GRLIB_nights_stop = 6;
+GRLIB_nights_start = 20;
+GRLIB_nights_stop = 5;
 GREUH_start_ammo = 200;
 if (GRLIB_blufor_cap >= 10) then {
     GRLIB_blufor_cap = 200
@@ -215,6 +215,52 @@ item_blacklist =
     "arifle_ARX_blk_F",
     "arifle_ARX_hex_F",
     "arifle_ARX_ghex_F",
+    "CUP_arifle_type_56_2_Early",
+    "CUP_arifle_type_56_2",
+    "CUP_arifle_type_56_2_top_rail",
+    "CUP_lmg_UK59",
+    "CUP_sgun_slamfire",
+    "CUP_arifle_Sa58_Carbine_RIS_AFG",
+    "CUP_arfile_Sa58_Carbine_RIS_AFG_desert",
+    "CUP_arfile_Sa58_Carbine_RIS_AFG_woodland",
+    "CUP_arifle_Sa58_Carbine_RIS_VFG",
+    "CUP_arifle_Sa58_Carbine_RIS_VFG_desert",
+    "CUP_arifle_Sa58_Carbine_RIS_VFG_woodland",
+    "CUP_arifle_Sa58_sporter_compact",
+    "CUP_arifle_Sa58_sporter_compact_rearris",
+    "CUP_arifle_Sa58P",
+    "CUP_arifle_Sa58P_des",
+    "CUP_arifle_Sa58P_rearris",
+    "CUP_arifle_Sa58P_frontris",
+    "CUP_arifle_Sa58P_frontris_desert",
+    "CUP_arifle_Sa58P_frontris_woodland",
+    "CUP_arifle_Sa58P_RIS1",
+    "CUP_arifle_Sa58P_wood",
+    "CUP_arifle_Sa58P_woodland",
+    "CUP_arifle_Sa58pi",
+    "CUP_arifle_Sa58s",
+    "CUP_arifle_Sa58s_rearris",
+    "CUP_arifle_Sa58V",
+    "CUP_arifle_Sa58V_camo",
+    "CUP_arifle_Sa58V_rearris",
+    "CUP_arifle_Sa58V_frontris",
+    "CUP_arifle_Sa58RIS1",
+    "CUP_arifle_Sa58RIS1_des",
+    "CUP_arifle_Sa58RIS1_woodland",
+    "CUP_arifle_Sa58V_wood",
+    "CUP_arifle_Sa58V_woodland",
+    "CUP_arifle_Sa58RIS2",
+    "CUP_arifle_Sa58RIS2_camo",
+    "CUP_arifle_Sa58RIS2_woodland",
+    "CUP_arifle_Sa58RIS2_gl",
+    "CUP_arifle_Sa58RIS2_gl_desert",
+    "CUP_arifle_Sa58RIS2_gl_woodland",
+    "CUP_smg_SA61",
+    "CUP_smg_SA61_RIS",
+    "CUP_arifle_Sa58_Klec",
+    "CUP_arifle_Sa58_Klec_rearris",
+    "CUP_arifle_Sa58_Klec_frontris",
+    "CUP_arifle_Sa58_Klec_ris",
     "O_V_Soldier_Viper_hex_F"
     
 ];

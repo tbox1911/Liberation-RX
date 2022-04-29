@@ -4,14 +4,28 @@ waitUntil {!isNull player};
 
 _rules = '
 DE<br /><br />
-Natürlich gelten hier wie auch auf dem Server die üblichen (Verhaltens)Regeln. Wir verzichten darauf, diese hier alle aufzuführen. Einige Punkte sind aber vor allem spielerisch hervorzuheben:<br /><br />
+Natürlich gelten hier wie auch auf dem Server die üblichen (Verhaltens)Regeln.<br /><br />
 - Spielt zusammen und versucht stets, ein gemeinsames Spiel zu ermöglichen<br />
 - Respawn oder Disconnect, während man bewusstlos ist, kostet Euch Geld -> Wartet also nach Möglichkeit immer auf Rettung<br />
 - Jeder Spieler muss mittels TFAR auf dem Teamspeak-Server 94.130.39.20 erreichbar sein<br />
-- Die Gruppen sprechen sich gegenseitig ab und schreiben ihre Frequenz auf den Kartenrand (50 ist normalerweise Zugfunk)<br />
 - Infos über Fahrzeug- und Baurechte erhaltet ihr auf dem MilSim United Discord.<br />
 - Nur signierte Mods aus dem Workshop oder unserem Repository nutzen<br />
 - Spass haben und lieb sein zueinander
+<br /><br />
+Spielregeln:<br /><br />
+1. Bewusstes Teamkilling ist strengstens untersagt, unbewusstes wird immer untersucht.<br />
+2. Wir setzen ein funktionierendes und qualitatives Mikrofon zur Spielteilnahme voraus.<br />
+3. Trolling ist untersagt, Beleidigungen, Rassismus ebenso, verhaltet euch freundlich.<br />
+4. Eine gute Kommunikation ist alles, ihr seid daher angewiesen die zugewiesenen Kanäle strikt einzuhalten und zu benutzen.<br />
+5. Der Teamleader darf über die Waffenklasse einzelner seines Trupps, wie auch über die zu Spielende Fraktion bestimmen.<br />
+6. Boden-Teams sind von außen immer LR(“Long-Range”) auf der 50 für Bodenstreitkräfte zu erreichen.<br />
+7. Boden-Luft Kommunikation ist immer auf der 51.<br />
+8. Luft-Luft Kommunikation ist auf der 52.<br />
+8.1 Innerhalb des Teams sind außer den Hauptkanälen 50,51,52  alle anderen Kanäle frei wählbar.<br />
+9. ALLE Elemente müssen sich mit dem Groupmanager eintragen. Der Rufname ist Sinnvoll/Seriös zu wählen. (ACE Self Interaction Menü -> Groupmanager)<br />
+10. Wir behalten uns Änderungen des Regelwerkes vor.<br />
+11. Jeder ist angehalten sich selbst über Änderungen des Regelwerkes zu informieren.<br />
+
 
 <br /><br />
 EN<br /><br />
@@ -19,11 +33,25 @@ Of course, the usual (behavioural) rules apply here as well as on the server. We
 - Play together as a group.<br />
 - Respawning or disconnecting while unconscious costs you money -> always wait for rescue if possible.<br />
 - Every player must be reachable via TFAR on the teamspeak server 94.130.39.20<br />
-- The groups talk to each other and write their frequency on the edge of the card (LR50 is usually the platoon-frequency)<br />
 - Informations on vehicle- and building can be found on the MilSim United Discord.<br />
 - Only use signed mods from the workshop or our repository<br />
 - Have fun and be nice to each other
 <br /><br /> 
+
+Gameplay Rules:<br /><br />
+1. Killing Friendly Units is strictly forbidden, accedents will always be looked at.<br />
+2. It is required to have a working and a good quality microphone.<br />
+3. Trolling, insults and racism are strictly forbidden.<br />
+4. Good communication is everything. You are required to use the assigned channels.<br />
+5. The group leader can dictate the weapon class of group members, as well as the faction that is played.<br />
+6. Infantryteams are required to be on the Long-Range-Radio channel 50 for ground to ground communication.<br />
+7. Ground to Air communication is on Long-Range-Radio channel 51.<br />
+8. Air to Air communication is on Long-Range-Radio channel 52.<br />
+9. All elements must be named correctly in the Groupmanager. Chose your callsign sensibly/serious.(ACE Self Interaction Menü -> Groupmanager)<br />
+10. We reserve the right to change the rules.<br />
+11. Everyone should keep himself up to date with changes made to the rules.<br />
+
+
 <br /><br />
 ';
 
