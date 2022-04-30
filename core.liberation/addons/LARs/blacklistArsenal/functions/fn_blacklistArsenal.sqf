@@ -163,7 +163,7 @@ _thread = _this spawn {
 			alive _target && {_target distance _this < 5} && {call _condition}
 		", _arsenalName ]
 	]];
-	
+	// Ace Arsenal Filter thing.
 	if (GRLIB_ACE_enabled) then {
 		if (GRLIB_limited_arsenal) then {	
 			[_box, false, false] call ace_arsenal_fnc_initBox;
