@@ -1,14 +1,3 @@
-
-
-
-kette
-
-
-["rnt_gmw_static_ai",0,0,0,GRLIB_perm_inf],
-["Redd_Milan_Static",0,0,0,GRLIB_perm_inf],
-["rnt_mg3_static_ai",0,0,0,GRLIB_perm_inf],
-["rnt_mantis_base",0,0,0,GRLIB_perm_inf],
-
 light_vehicles = [
       ["CUP_B_Dingo_GER_Wdl",0,220,0,GRLIB_perm_inf],
       ["CUP_B_Dingo_GL_GER_Wdl",0,250,0,GRLIB_perm_inf],
