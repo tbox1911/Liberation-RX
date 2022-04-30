@@ -1,9 +1,10 @@
 all_weapons = [];
+all_magazines = [];
 all_grenades = [];
 all_explosives = [];
 all_items = [];
 all_backpacks = [];
-
+all_accessorys = [];
 private _classnames = [];
 private _blacklist = [];
 private _type = [];
@@ -58,21 +59,33 @@ _classnames = _classnames - _blacklist;
             all_explosives pushBack _x
         };
         case "Magazine": {
-            if ((((_type select 1) isEqualto "Grenade") || ((_type select 1) isEqualto "SmokeShell")) && !((getNumber (configFile >> "Cfgmagazines" >> _x >> "type")) isEqualto 16)) then {
-                all_grenades pushBack _x
-            }
+            if ((((_type select 1) isEqualto "Grenade") || ((_type select 1) isEqualto "SmokeShell"))) then {
+                all_grenades pushBack _x;
+            } else {
+                if (((_type select 1) isEqualto "Bullet") || ((_type select 1) isEqualto "Missile") || ((_type select 1) isEqualto "Rocket") || ((_type select 1) isEqualto "ShotgunShell") || ((_type select 1) isEqualto "UnknownMagazine") || ((_type select 1) isEqualto "Shell")) then {
+                    all_magazines pushBack _x;
+                };
+            };
         };
         case "Equipment": {
-            if ((_type select 1) isEqualto "backpack") then {
+            if ((_type select 1) isEqualto "Backpack") then {
                 all_backpacks pushBack _x
             }
         };
         case "Item": {
             switch (_type select 1) do {
-                case "AccessoryMuzzle" : {};
-                case "AccessoryPointer" : {};
-                case "AccessorySights" : {};
-                case "AccessoryBipod" : {};
+                case "AccessoryMuzzle" : {
+                    all_accessorys pushBack _x
+                };
+                case "AccessoryPointer" : {
+                    all_accessorys pushBack _x
+                };
+                case "AccessorySights" : {
+                    all_accessorys pushBack _x
+                };
+                case "AccessoryBipod" : {
+                    all_accessorys pushBack _x
+                };
                 default {
                     all_items pushBack _x
                 };

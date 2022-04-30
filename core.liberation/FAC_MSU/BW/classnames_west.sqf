@@ -32,7 +32,7 @@ light_vehicles = [
       ["CUP_B_Boxer_HMG_GER_WDL",0,300,0,GRLIB_perm_inf],
       ["BWA3_Leopard2_Tropen",0,1200,0,GRLIB_perm_inf],
       ["BWA3_Puma_Tropen",0,1000,0,GRLIB_perm_inf],
-      ["BWA3_Panzerhaubitze2000_Tropen",0,5000,0,GRLIB_perm_inf]
+      ["BWA3_Panzerhaubitze2000_Tropen",0,1900,0,GRLIB_perm_inf]
     
     ];
     

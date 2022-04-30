@@ -17,7 +17,10 @@ if (FAC_MSU_ACTIVE) then {
     [_box, false] call ace_arsenal_fnc_initBox;
     [_box, true, false] call ace_arsenal_fnc_removeVirtualitems;
     [_box, arsenal] call ace_arsenal_fnc_addVirtualitems;
+    [_box, items_allFac] call ace_arsenal_fnc_addVirtualitems;
     [_box, all_weapons] call ace_arsenal_fnc_addVirtualitems;
+    [_box, all_magazines] call ace_arsenal_fnc_addVirtualitems;
+    [_box, all_accessorys] call ace_arsenal_fnc_addVirtualitems;
     [_box, all_grenades] call ace_arsenal_fnc_addVirtualitems;
     [_box, all_explosives] call ace_arsenal_fnc_addVirtualitems;
     [_box, all_items] call ace_arsenal_fnc_addVirtualitems;

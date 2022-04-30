@@ -49,7 +49,7 @@ MGR_Key = 19;
 tkill_score = -20;
 tkill_ammo = -50;
 
-FAC_MSU_ACTIVE = false;
+FAC_MSU_ACTIVE = true;
 // true to activate factions selection
 
 skill_scan = true;
@@ -57,6 +57,19 @@ skill_parachuters = 1;
 skill_air_vehicles_planes = 1;
 skill_air_vehicles_helicopters = 1;
 skill_ground_vehicles = 1;
+
+items_allFac = [
+    "U_B_FullGhillie_lsh",
+    "U_B_FullGhillie_sard",
+    "U_B_GhillieSuit",
+    "U_B_T_FullGhillie_tna_F",
+    "U_B_T_Sniper_F",
+    "U_B_Wetsuit",
+    "U_B_pilotCoveralls",
+    "H_pilotHelmetFighter_B",
+    "H_pilotHelmetHeli_B",
+    "V_RebreatherB"
+];
 
 item_blacklist =
 [
