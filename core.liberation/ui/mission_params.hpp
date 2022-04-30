@@ -22,7 +22,7 @@ class Params
 		title = $STR_OPFORMARK;
 		values[] = { 1, 0 };
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 1;
+		default = 0;
 	};
 	class EnableArsenal {
 		title = $STR_ARSENAL;
