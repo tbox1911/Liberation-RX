@@ -34,7 +34,7 @@ units_loadout_overide = [
 
 light_vehicles = [
  
-    ["B_Quadbike_01_F",0,10,0,GRLIB_perm_inf],
+
     ["CUP_B_M1030_USMC",0,20,0,GRLIB_perm_inf],
 
     ["C_Van_01_transport_F",0,70,0,GRLIB_perm_inf],
@@ -244,6 +244,11 @@ boats_west = [
 ];
  
 static_vehicles = [
+    ["rnt_gmw_static_ai",0,0,0,GRLIB_perm_inf],
+    ["Redd_Milan_Static",0,0,0,GRLIB_perm_inf],
+    ["rnt_mg3_static_ai",0,0,0,GRLIB_perm_inf],
+    ["rnt_mantis_base",0,0,0,GRLIB_perm_inf],
+    ["rnt_mantis_radar",0,0,0,GRLIB_perm_inf],
     ["ffaa_m2_tripode",0,0,0,GRLIB_perm_inf],
     ["ffaa_lag40_tripode",0,0,0,GRLIB_perm_inf],
     ["ffaa_milan_tripode",0,0,0,GRLIB_perm_inf],
@@ -291,6 +296,7 @@ static_vehicles_AI = [
 ];
  
 support_vehicles_west = [
+    ["B_Quadbike_01_F",0,10,0,GRLIB_perm_inf],
     ["ffaa_UAVStation",0,0,0,GRLIB_perm_inf],
     ["ffaa_et_m250_repara_municion_blin",0,300,0,GRLIB_perm_inf],
     ["ffaa_et_m250_combustible_blin",0,300,0,GRLIB_perm_inf],
