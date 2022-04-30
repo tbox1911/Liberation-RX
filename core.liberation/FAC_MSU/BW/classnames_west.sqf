@@ -1,3 +1,14 @@
+
+
+
+kette
+
+
+["rnt_gmw_static_ai",0,0,0,GRLIB_perm_inf],
+["Redd_Milan_Static",0,0,0,GRLIB_perm_inf],
+["rnt_mg3_static_ai",0,0,0,GRLIB_perm_inf],
+["rnt_mantis_base",0,0,0,GRLIB_perm_inf],
+
 light_vehicles = [
       ["CUP_B_Dingo_GER_Wdl",0,220,0,GRLIB_perm_inf],
       ["CUP_B_Dingo_GL_GER_Wdl",0,250,0,GRLIB_perm_inf],
@@ -7,8 +18,14 @@ light_vehicles = [
       ["BWA3_Dingo2_FLW200_M2_Tropen",0,300,0,GRLIB_perm_inf],
       ["BWA3_Dingo2_FLW200_GMW_Tropen",0,300,0,GRLIB_perm_inf],
       ["BWA3_Eagle_FLW100_Tropen",0,300,0,GRLIB_perm_inf],
+      ["rnt_lkw_10t_mil_gl_kat_i_repair_fleck",0,300,0,GRLIB_perm_inf],
+      ["rnt_lkw_5t_mil_gl_kat_i_transport_fleck",0,300,0,GRLIB_perm_inf],
+      ["rnt_lkw_5t_mil_gl_kat_i_fuel_fleck",0,300,0,GRLIB_perm_inf],
+      ["rnt_lkw_7t_mil_gl_kat_i_mun_fleck",0,300,0,GRLIB_perm_inf],
+      ["Redd_Tank_LKW_leicht_gl_Wolf_Flecktarn_San",0,200,0,GRLIB_perm_inf],
+      ["Redd_Tank_LKW_leicht_gl_Wolf_Flecktarn_FJg",0,200,0,GRLIB_perm_inf],
+      ["Redd_Tank_LKW_leicht_gl_Wolf_Flecktarn_Moerser",0,300,0,GRLIB_perm_inf],
       ["BWA3_Dingo2_FLW100_MG3_Tropen",0,300,0,GRLIB_perm_inf]
-    
     ];
     
     heavy_vehicles = [
@@ -28,6 +45,15 @@ light_vehicles = [
       ["gm_ge_army_bpz2a0",0,150,0,GRLIB_perm_inf],
       ["gm_ge_army_fuchsa0_command",0,150,0,GRLIB_perm_inf],
       */
+      ["Redd_Tank_Gepard_1A2_Flecktarn",0,400,0,GRLIB_perm_inf],
+      ["Redd_Marder_1A5_Flecktarn",0,450,0,GRLIB_perm_inf],
+      ["Redd_Tank_Wiesel_1A2_TOW_Flecktarn",0,450,0,GRLIB_perm_inf],
+      ["Redd_Tank_Wiesel_1A4_MK20_Flecktarn",0,450,0,GRLIB_perm_inf],
+      ["Redd_Tank_Fuchs_1A4_Jg_Milan_Flecktarn",0,300,0,GRLIB_perm_inf],
+      ["Redd_Tank_Fuchs_1A4_Jg_Flecktarn",0,250,0,GRLIB_perm_inf],
+      ["Redd_Tank_Fuchs_1A4_Pi_Flecktarn",0,250,0,GRLIB_perm_inf],
+      ["Redd_Tank_Fuchs_1A4_San_Flecktarn",0,250,0,GRLIB_perm_inf],
+      ["rnt_sppz_2a2_luchs_flecktarn",0,550,0,GRLIB_perm_inf],
       ["CUP_B_M113A3_GER",0,150,0,GRLIB_perm_inf],
       ["CUP_B_Boxer_HMG_GER_WDL",0,300,0,GRLIB_perm_inf],
       ["BWA3_Leopard2_Tropen",0,1200,0,GRLIB_perm_inf],
@@ -38,6 +64,10 @@ light_vehicles = [
     
     air_vehicles = [
         //["gm_ge_army_ch53gs",0,400,0,GRLIB_perm_inf],
+        ["BWA3_Tiger_Gunpod_FZ",0,1000,0,GRLIB_perm_inf],
+            ["BWA3_Tiger_Gunpod_FZ",0,1000,0,GRLIB_perm_inf],
+            ["BWA3_Tiger_Gunpod_PARS",0,1000,0,GRLIB_perm_inf],
+            ["BWA3_Tiger_Gunpod_Heavy",0,1000,0,GRLIB_perm_inf],
         ["CUP_B_AW159_Unarmed_GER",0,350,0,GRLIB_perm_inf],
         //["CUP_B_UH1D_GER_KSK",0,400,0,GRLIB_perm_inf], //verursacht script fehler
         ["CUP_B_AW159_GER",0,900,0,GRLIB_perm_inf],
