@@ -1,5 +1,4 @@
 light_vehicles = [
-    ["B_Quadbike_01_F",0,10,0,GRLIB_perm_inf],
     ["ffaa_et_anibal",0,50,0,GRLIB_perm_inf],
     ["ffaa_et_vamtac_m2",0,130,0,GRLIB_perm_inf],
     ["ffaa_ar_vamtac_st5_vsp_lag40",0,150,0,GRLIB_perm_inf],
