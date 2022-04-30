@@ -12,7 +12,22 @@ light_vehicles = [
     ];
     
     heavy_vehicles = [
-    
+    */
+      ["gm_ge_army_fuchsa0_reconnaissance",0,150,0,GRLIB_perm_inf],
+      ["gm_ge_army_fuchsa0_engineer",0,150,0,GRLIB_perm_inf],
+      ["gm_ge_army_m109g",0,150,0,GRLIB_perm_inf],
+      ["gm_ge_army_kat1_463_mlrs",0,150,0,GRLIB_perm_inf],
+      ["gm_ge_army_gepard1a1",0,150,0,GRLIB_perm_inf],
+      ["gm_ge_army_milan_launcher_tripod",0,150,0,GRLIB_perm_inf],
+      ["gm_ge_army_luchsa1",0,150,0,GRLIB_perm_inf],
+      ["gm_ge_army_luchsa2",0,150,0,GRLIB_perm_inf],
+      ["gm_ge_army_marder1a1plus",0,150,0,GRLIB_perm_inf],
+      ["gm_ge_army_marder1a1a",0,150,0,GRLIB_perm_inf],
+      ["gm_ge_army_marder1a2",0,150,0,GRLIB_perm_inf],
+      ["gm_ge_army_bibera0",0,150,0,GRLIB_perm_inf],
+      ["gm_ge_army_bpz2a0",0,150,0,GRLIB_perm_inf],
+      ["gm_ge_army_fuchsa0_command",0,150,0,GRLIB_perm_inf],
+      /*
       ["CUP_B_M113A3_GER",0,150,0,GRLIB_perm_inf],
       ["CUP_B_Boxer_HMG_GER_WDL",0,300,0,GRLIB_perm_inf],
       ["BWA3_Leopard2_Tropen",0,1200,0,GRLIB_perm_inf],
@@ -22,6 +37,7 @@ light_vehicles = [
     ];
     
     air_vehicles = [
+        //["gm_ge_army_ch53gs",0,400,0,GRLIB_perm_inf],
         ["CUP_B_AW159_Unarmed_GER",0,350,0,GRLIB_perm_inf],
         ["CUP_B_UH1D_GER_KSK",0,400,0,GRLIB_perm_inf],
         ["CUP_B_AW159_GERdd",0,900,0,GRLIB_perm_inf],
