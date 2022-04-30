@@ -1,7 +1,6 @@
 
 light_vehicles = [
  
-    ["B_Quadbike_01_F",0,10,0,GRLIB_perm_inf],
     ["B_MRAP_01_F",0,120,0,GRLIB_perm_inf],
     ["B_MRAP_01_HMG_F",0,200,0,GRLIB_perm_inf],
     ["B_MRAP_01_GMG_F",0,300,0,GRLIB_perm_inf],
