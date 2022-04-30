@@ -243,6 +243,21 @@ bw = ["CUP_U_B_GER_Fleck_Crye",
 "BWA3_Uniform_tee_Multi",
 "BWA3_Uniform_Tropen",
 "BWA3_Uniform_sleeves_Tropen",
+"CUP_H_OpsCore_Spray_SF",
+"CUP_H_OpsCore_Tan_SF",
+"CUP_H_OpsCore_Covered_MCAM_SF",
+
+"CUP_V_JPC_communications_mc",
+"CUP_V_JPC_medical_mc",
+"CUP_V_JPC_tl_mc",
+"CUP_V_JPC_weapons_mc",
+"CUP_V_JPC_communicationsbelt_mc",
+"CUP_V_JPC_medicalbelt_mc",
+"CUP_V_JPC_tlbelt_mc",
+"CUP_V_JPC_weaponsbelt_mc",
+
+"CUP_V_B_Armatus_BB_MCam",
+
 "BWA3_Uniform_tee_Tropen"
 ];
 arsenal = bw;
