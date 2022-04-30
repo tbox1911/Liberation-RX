@@ -18,13 +18,7 @@ if (FAC_MSU_ACTIVE) then {
     [_box, true, false] call ace_arsenal_fnc_removeVirtualitems;
     [_box, arsenal] call ace_arsenal_fnc_addVirtualitems;
     [_box, items_allFac] call ace_arsenal_fnc_addVirtualitems;
-    [_box, all_weapons] call ace_arsenal_fnc_addVirtualitems;
-    [_box, all_magazines] call ace_arsenal_fnc_addVirtualitems;
-    [_box, all_accessorys] call ace_arsenal_fnc_addVirtualitems;
-    [_box, all_grenades] call ace_arsenal_fnc_addVirtualitems;
-    [_box, all_explosives] call ace_arsenal_fnc_addVirtualitems;
-    [_box, all_items] call ace_arsenal_fnc_addVirtualitems;
-    [_box, all_backpacks] call ace_arsenal_fnc_addVirtualitems;
+    [_box, equipment] call ace_arsenal_fnc_addVirtualitems;
     [_box, player, false] call ace_arsenal_fnc_openBox;
     
     // filter and pay loadout
@@ -191,9 +185,6 @@ if (FAC_MSU_ACTIVE) then {
         "CUP_Javelin_M",
         "MMG_01_hex_F",
         "MMG_01_tan_F",
-        "MMG_02_black_F",
-        "MMG_02_sand_F",
-        "MMG_02_camo_F",
         "arifle_ARX_blk_F",
         "arifle_ARX_hex_F",
         "arifle_ARX_ghex_F",
