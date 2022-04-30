@@ -68,7 +68,7 @@ _classnames = _classnames - _blacklist;
             };
         };
         case "Equipment": {
-            if ((_type select 1) isEqualto "Backpack") then {
+            if (((_type select 1) isEqualto "Backpack") || ((_type select 1) isEqualto "Glasses")) then {
                 all_backpacks pushBack _x
             }
         };
