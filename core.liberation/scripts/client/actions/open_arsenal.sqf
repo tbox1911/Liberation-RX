@@ -120,6 +120,11 @@ if ( edit_loadout > 0 ) then {
 	if (GRLIB_ACE_enabled) then {
 		[_box, true] call ace_arsenal_fnc_initBox;
 		[_box, player, true] call ace_arsenal_fnc_openBox;
+		["ace_arsenal_displayClosed", {				
+			player spawn F_payLoadout;
+			systemChat str _thisArgs;
+			[_thisType, _thisId] call CBA_fnc_removeEventHandler
+		}, "Closed Arsenal"] call CBA_fnc_addEventHandlerArgs;
 	} else {
 		if (GRLIB_limited_arsenal) then {
 			_savedCargo = _box getVariable [ "bis_addVirtualWeaponCargo_cargo", [] ];
