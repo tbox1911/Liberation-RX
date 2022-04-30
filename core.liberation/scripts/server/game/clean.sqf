@@ -162,9 +162,9 @@ while {deleteManagerPublic} do {
 	if (!(_vehiclesLimit isEqualTo -1)) then {
 		private _nbVehicles = [vehicles,
 			{ alive _x &&
-			 // [_x] call is_abandoned &&
+			 [_x] call is_abandoned &&
 			 isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) &&
-			 // !(_x getVariable ['R3F_LOG_disabled', true]) &&
+			 !(_x getVariable ['R3F_LOG_disabled', true]) &&
 			 count (crew _x) == 0 &&
 			 (_x distance lhd) >= 1000 &&
 			 !([typeOf _x, _no_cleanup_classnames] call F_itemIsInClass)
