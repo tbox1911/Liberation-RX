@@ -296,6 +296,11 @@ static_vehicles_AI = [
 ];
  
 support_vehicles_west = [
+    ["BWA3_TCK9_Fuel_Fleck",0,300,0,GRLIB_perm_inf],
+    ["BWA3_WLP14_Flatbed_Oliv",0,0,0,GRLIB_perm_inf],
+    ["BWA3_Multi_Fleck",0,0,0,GRLIB_perm_inf],
+    ["BWA3_WLP14_Repair_Fleck",0,0,0,GRLIB_perm_inf],
+    ["BWA3_WLP14_Ammo_Fleck",0,0,0,GRLIB_perm_inf],
     ["B_Quadbike_01_F",0,10,0,GRLIB_perm_inf],
     ["ffaa_UAVStation",0,0,0,GRLIB_perm_inf],
     ["ffaa_et_m250_repara_municion_blin",0,300,0,GRLIB_perm_inf],
