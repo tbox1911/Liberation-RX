@@ -58,9 +58,9 @@ skill_air_vehicles_planes = 1;
 skill_air_vehicles_helicopters = 1;
 skill_ground_vehicles = 1;
 
-
 light_vehicle_price_hmg = 220;
 light_vehicle_price_gmg = 250;
+heavy_vehicle_price_tank = 500;
 heavy_vehicle_price_tank_light = 1000;
 heavy_vehicle_price_tank_heavy = 1500;
 logistic_air_vehicle_price = 250;
@@ -228,8 +228,6 @@ item_blacklist =
     "CUP_U_C_Priest_01",
     "CUP_launch_Javelin",
     "CUP_Javelin_M",
-    "MMG_01_hex_F",
-    "MMG_01_tan_F",
     "arifle_ARX_blk_F",
     "arifle_ARX_hex_F",
     "arifle_ARX_ghex_F",

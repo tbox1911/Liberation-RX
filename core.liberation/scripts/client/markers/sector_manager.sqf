@@ -23,7 +23,7 @@ _cfg = configFile >> "cfgVehicles";
 	_marker = createMarkerLocal [format ["vehicleunlockmarker%1",_nextbase], [ markerpos _nextbase select 0, (markerpos _nextbase select 1) + 125]];
 	_marker setMarkerTextLocal ( getText (_cfg >> _nextvehicle >> "displayName") );
 	_marker setMarkerColorLocal GRLIB_color_enemy;
-	_marker setMarkerAlphaLocal 0;
+	_marker setMarkerAlphaLocal 1;
 	_marker setMarkerTypeLocal "mil_pickup";
 	_vehicle_unlock_markers pushback [ _marker, _nextbase ];
 } foreach GRLIB_vehicle_to_military_base_links;
@@ -39,7 +39,7 @@ while { true } do {
 		{
 			_x setMarkerColorLocal GRLIB_color_enemy;
 			_x setMarkerTypeLocal "Empty";
-			_x setMarkerAlphaLocal 0;
+			_x setMarkerAlphaLocal 1;
 		} foreach (sectors_allSectors - blufor_sectors);
 		{
 			_x setMarkerColorLocal GRLIB_color_friendly;

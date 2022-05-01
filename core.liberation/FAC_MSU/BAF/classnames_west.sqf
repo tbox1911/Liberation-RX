@@ -30,10 +30,10 @@ heavy_vehicles = [
     ["CUP_B_FV510_GB_D", 0, heavy_vehicle_price_tank_light, 0, GRLIB_perm_inf],
     ["CUP_B_FV510_GB_W", 0, heavy_vehicle_price_tank_light, 0, GRLIB_perm_inf],
     ["CUP_B_FV432_Mortar", 0, heavy_vehicle_price_tank_light, 0, GRLIB_perm_inf],
-    ["CUP_B_FV432_GB_GPMG", 0, heavy_vehicle_price_tank_light, 0, GRLIB_perm_inf],
-    ["CUP_B_FV432_Bulldog_GB_W", 0, heavy_vehicle_price_tank_light, 0, GRLIB_perm_inf],
-    ["CUP_B_FV432_Bulldog_GB_W_RWS", 0, heavy_vehicle_price_tank_light, 0, GRLIB_perm_inf],
-    ["CUP_B_FV432_GB_Ambulance", 0, heavy_vehicle_price_tank_light, 0, GRLIB_perm_inf],
+    ["CUP_B_FV432_GB_GPMG", 0, heavy_vehicle_price_tank, 0, GRLIB_perm_inf],
+    ["CUP_B_FV432_Bulldog_GB_W", 0, heavy_vehicle_price_tank, 0, GRLIB_perm_inf],
+    ["CUP_B_FV432_Bulldog_GB_W_RWS", 0, heavy_vehicle_price_tank, 0, GRLIB_perm_inf],
+    ["CUP_B_FV432_GB_Ambulance", 0, heavy_vehicle_price_tank, 0, GRLIB_perm_inf],
     ["CUP_B_Challenger2_Woodland_BAF", 0, heavy_vehicle_price_tank_light, 0, GRLIB_perm_inf]
     
 ];
