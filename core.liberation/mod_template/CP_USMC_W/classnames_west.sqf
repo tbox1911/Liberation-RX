@@ -305,7 +305,7 @@ static_vehicles = [
     ["ffaa_lag40_tripode",0,0,0,GRLIB_perm_inf],
     ["ffaa_milan_tripode",0,0,0,GRLIB_perm_inf],
     ["ffaa_mistral_tripode",0,0,0,GRLIB_perm_inf],
-    ["ffaa_spike_tripode",0,0,0,GRLIB_perm_inf],
+  // ["ffaa_spike_tripode",0,0,0,GRLIB_perm_inf],    verbuggt
     ["ffaa_tow_tripode",0,0,0,GRLIB_perm_inf],
   //  ["ffaa_et_m250_sistema_nasams_blin",0,650,0,GRLIB_perm_inf],                        //Nasams Truck
     ["ffaa_lanzador_nasams",0,500,0,GRLIB_perm_inf],                            //Nasams Launcher
