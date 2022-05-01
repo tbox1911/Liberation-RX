@@ -52,16 +52,19 @@ light_vehicles = [
     ];
     
     air_vehicles = [
-        //["gm_ge_army_ch53gs",0,400,0,GRLIB_perm_inf],
+        //["gm_ge_army_ch53gs",0,550,0,GRLIB_perm_inf],
+        ["CUP_B_CH53E_GER",0,550,0,GRLIB_perm_inf],
+        ["CUP_B_CH53E_VIV_GER",0,550,0,GRLIB_perm_inf],
         ["BWA3_Tiger_Gunpod_FZ",0,1000,0,GRLIB_perm_inf],
-            ["BWA3_Tiger_Gunpod_FZ",0,1000,0,GRLIB_perm_inf],
-            ["BWA3_Tiger_Gunpod_PARS",0,1000,0,GRLIB_perm_inf],
-            ["BWA3_Tiger_Gunpod_Heavy",0,1000,0,GRLIB_perm_inf],
+        ["BWA3_Tiger_Gunpod_FZ",0,1000,0,GRLIB_perm_inf],
+        ["BWA3_Tiger_Gunpod_PARS",0,1000,0,GRLIB_perm_inf],
+        ["BWA3_Tiger_Gunpod_Heavy",0,1000,0,GRLIB_perm_inf],
         ["CUP_B_AW159_Unarmed_GER",0,350,0,GRLIB_perm_inf],
         //["CUP_B_UH1D_GER_KSK",0,400,0,GRLIB_perm_inf], //verursacht script fehler
+        //["CUP_B_UH1D_gunship_GER_KSK",0,1000,0,GRLIB_perm_inf], //verursacht script fehler
         ["CUP_B_AW159_GER",0,900,0,GRLIB_perm_inf],
-        ["ffaa_famet_ec135",0,250,0,GRLIB_perm_inf],
-        ["CUP_B_UH1D_gunship_GER_KSK",0,1000,0,GRLIB_perm_inf]
+        ["ffaa_famet_ec135",0,250,0,GRLIB_perm_inf]
+
 
     ];
 
