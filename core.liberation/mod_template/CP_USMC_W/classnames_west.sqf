@@ -508,6 +508,8 @@ squads = [
  
 // All the UAVs must be declared here
 uavs = [
+    "rnt_mantis_base",
+    "rnt_mantis_radar",
     "ffaa_et_searcherIII",
     "ffaa_ea_reaper",
     "ffaa_raven",
