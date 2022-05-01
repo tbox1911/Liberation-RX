@@ -58,6 +58,14 @@ skill_air_vehicles_planes = 1;
 skill_air_vehicles_helicopters = 1;
 skill_ground_vehicles = 1;
 
+
+light_vehicle_price_hmg = 220;
+light_vehicle_price_gmg = 250;
+heavy_vehicle_price_tank_light = 1000;
+heavy_vehicle_price_tank_heavy = 1500;
+logistic_air_vehicle_price = 250;
+logistic_ground_vehicle_price = 200;
+
 items_allFac = [
     "U_B_FullGhillie_lsh",
     "U_B_FullGhillie_sard",
