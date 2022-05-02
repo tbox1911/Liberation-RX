@@ -226,7 +226,7 @@ PAR_Player_Init = {
 		player addEventHandler ["HandleDamage", { _this call PAR_HandleDamage_EH }];
 	};
 	player removeAllMPEventHandlers "MPKilled";
-	if (GRLIB_ACE_enabled)
+	if (GRLIB_ACE_medical_enabled)
 	then { player addMPEventHandler ["MPKilled", {_this spawn PAR_fn_death}] }
 	else { player addMPEventHandler ["MPKilled", {_this spawn kill_manager}] };
 	player setVariable ["GREUH_isUnconscious", 0, true];

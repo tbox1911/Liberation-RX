@@ -92,6 +92,7 @@ if (abort_loading) exitWith { abort_loading_msg = format [
 
 // Detect Addons
 GRLIB_ACE_enabled = isClass(configFile >> "cfgPatches" >> "ace_main"); // Returns true if ACE is enabled
+GRLIB_ACE_medical_enabled = isClass(configFile >> "cfgPatches" >> "ace_medical"); // Returns true if ACE Medical is enabled
 GRLIB_ACRE_enabled = isClass(configFile >> "cfgPatches" >> "acre_main"); // Returns true if ACRE is enabled
 GRLIB_OPTRE_enabled = isClass(configFile >> "cfgPatches" >> "OPTRE_Core"); // Returns true if OPTRE is enabled
 GRLIB_GM_enabled = isClass(configFile >> "cfgPatches" >> "gm_Core"); // Returns true if GlobMob is enabled
@@ -143,7 +144,8 @@ if ( GRLIB_mod_west in ["A3_BLU", "A3_IND"]) then {
 };
 
 // ACE
-if ( GRLIB_ACE_enabled ) then {	GRLIB_revive = 0; GRLIB_fatigue = 1; GRLIB_fancy_info = 0; GRLIB_limited_arsenal = 0 };  // Disable PAR/Fatigue/Fancy if ACE present
+if ( GRLIB_ACE_enabled ) then { GRLIB_fancy_info = 0 };  // Disable Fancy if ACE present
+if ( GRLIB_ACE_medical_enabled ) then { GRLIB_revive = 0; GRLIB_fatigue = 1  };  // Disable PAR/Fatigue if ACE Medical is present
 
 if ( GRLIB_fatigue == 1 ) then { GRLIB_fatigue = true } else { GRLIB_fatigue = false };
 if ( GRLIB_introduction == 1 ) then { GRLIB_introduction = true } else { GRLIB_introduction = false };
