@@ -10,7 +10,8 @@ private _grp = createGroup [GRLIB_side_friendly, true];
 
 if ( GRLIB_blufor_defenders ) then {
 	{ 
-		_x createUnit [ _thispos, _grp,'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]'];
+		_unit = _grp createUnit [_x, _thispos, [], 5, "NONE"];
+		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		sleep 0.1;
 	} foreach blufor_squad_inf;
 };
