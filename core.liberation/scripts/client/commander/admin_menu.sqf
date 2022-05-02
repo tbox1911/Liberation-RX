@@ -9,6 +9,7 @@ do_change = 0;
 do_export = 0;
 do_import = 0;
 
+private _msg = "";
 private _getBannedUID = {
 	params ["_ban_combo"];
 	lbClear _ban_combo;
@@ -159,8 +160,17 @@ while { alive player && dialog } do {
 
 	if (do_export == 1) then {
 		do_export = 0;
-		copyToClipboard str (profileNamespace getVariable GRLIB_save_key);
-		_msg = format ['Savegame %1 Exported to clipboard.', GRLIB_save_key];
+		if (isServer) then {
+			copyToClipboard str (profileNamespace getVariable GRLIB_save_key);
+			_msg = format ['Savegame %1 Exported to clipboard.', GRLIB_save_key];
+		} else {
+			// [player, {
+			// 	diag_log "--- LRX Savegame Start ----------------------------------";
+			// 	{ diag_log _x } foreach (profileNamespace getVariable GRLIB_save_key);
+			// 	diag_log "--- LRX Savegame End ------------------------------------";
+			// }] remoteExec ["bis_fnc_call", 2];
+			_msg = format ['Savegame %1 Exported to server log.', GRLIB_save_key];
+		};
 		hint _msg;
 	};
 
