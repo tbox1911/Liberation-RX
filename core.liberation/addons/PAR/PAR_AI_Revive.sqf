@@ -50,8 +50,17 @@ PAR_MedGarbage = [
 waituntil {sleep 1; GRLIB_player_spawned};
 waituntil {sleep 1; !isNil {player getVariable ["GRLIB_Rank", nil]}};
 
-[] spawn PAR_Player_Init;
+// Init player
+[] call PAR_Player_Init;
 
+// Player respawn EH
+player removeAllEventHandlers "Respawn";
+player addEventHandler ["Respawn", { [] spawn PAR_Player_Init }];
+
+// Init player EH
+[player] call PAR_EventHandler;
+
+// if ACE med is active no AI revive
 if (!GRLIB_ACE_medical_enabled) then { [] spawn PAR_AI_Manager };
 
 waitUntil {!(isNull (findDisplay 46))};

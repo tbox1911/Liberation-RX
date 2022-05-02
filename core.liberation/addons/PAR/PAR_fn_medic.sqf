@@ -2,10 +2,11 @@ params ["_wnded"];
 
 private _bros = allunits select {(_x getVariable ["PAR_Grp_ID","0"]) == (_wnded getVariable ["PAR_Grp_ID","1"])};
 private _medics = _bros select {
-  round (_x distance2D _wnded) <= 600 &&
-  (!(objectParent _x iskindof "Steerable_Parachute_F")) &&
   !isPlayer _x && _x != _wnded &&
   alive _x && speed (vehicle _x) <= 20 &&
+  round (_x distance2D _wnded) <= 600 &&
+  (getPosATL _x select 2) <= 20 &&
+  (!(objectParent _x iskindof "Steerable_Parachute_F")) &&
   lifeState _x != "INCAPACITATED" &&
   isNil {_x getVariable "PAR_busy"}
 };

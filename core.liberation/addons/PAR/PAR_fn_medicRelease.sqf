@@ -1,5 +1,7 @@
 params ["_medic", "_wnded"];
 
+if (isNull _medic) exitWith {_wnded setVariable ['PAR_myMedic', nil]};
+
 _medic setUnitPos "AUTO";
 {_medic enableAI _x} count ["TARGET","AUTOTARGET","AUTOCOMBAT","SUPPRESSION"];
 [_medic] joinSilent (_medic getVariable "PAR_AIgrp");

@@ -1,3 +1,4 @@
+PAR_EventHandler = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_EventHandler.sqf";
 PAR_fn_medic = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_medic.sqf";
 PAR_fn_medicRelease = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_medicRelease.sqf";
 PAR_fn_medicRecall = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_medicRecall.sqf";
@@ -145,7 +146,7 @@ PAR_fn_AI_Damage_EH = {
 	_unit setVariable ["PAR_heal", nil];
 	_unit setVariable ["PAR_healed", nil];
 	_unit setVariable ["PAR_AI_score", 5, true];
-	[_unit] spawn player_EVH;
+	[_unit] spawn PAR_EventHandler;
 };
 
 PAR_AI_Manager = {
@@ -237,6 +238,8 @@ PAR_Player_Init = {
 	player setVariable ["PAR_Grp_ID",format["Bros_%1", PAR_Grp_ID], true];
 	player setVariable ["PAR_myMedic", nil];
 	player setVariable ["PAR_busy", nil];
+	player setVariable ["PAR_heal", nil];
+	player setVariable ["PAR_healed", nil];
 	if (!GRLIB_fatigue ) then { player enableFatigue false; player enableStamina false };
 	if (GRLIB_opfor_english) then {player setSpeaker "Male01ENG"};
 	player setCustomAimCoef 0.35;
@@ -244,7 +247,6 @@ PAR_Player_Init = {
 	player setCaptive false;
 	player setMass 10;
 	PAR_isDragging = false;
-	[player] spawn player_EVH;
 	[player] call AR_Add_Player_Actions;
 	1 fadeSound 1;
 	1 fadeRadio 1;

@@ -69,14 +69,6 @@ _unit addEventHandler ["FiredMan",	{
 
 // Player
 if (_unit == player) then {
-	// Player respawn
-	_unit removeAllEventHandlers "Respawn";
-	_unit addEventHandler ["Respawn", {[] spawn PAR_Player_Init}];
-	
-	// ACE specific
-	//if (GRLIB_ACE_enabled) then {
-	//	["ace_arsenal_displayClosed", {[player] spawn F_payLoadout}] call CBA_fnc_addEventHandler;
-	//};
 
 	// Unblock units
 	missionNamespace setVariable [
