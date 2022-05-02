@@ -52,7 +52,7 @@ waituntil {sleep 1; !isNil {player getVariable ["GRLIB_Rank", nil]}};
 
 [] spawn PAR_Player_Init;
 
-if (!GRLIB_ACE_enabled) then { [] spawn PAR_AI_Manager };
+if (!GRLIB_ACE_medical_enabled) then { [] spawn PAR_AI_Manager };
 
 waitUntil {!(isNull (findDisplay 46))};
 systemChat "-------- pSiKo AI Revive Initialized --------";
