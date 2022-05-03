@@ -134,13 +134,21 @@ light_vehicles = [
     ["CUP_B_BAF_Coyote_L2A1_W", 0, light_vehicle_price_hmg, 0, GRLIB_perm_inf],
     ["CUP_B_BAF_Coyote_L2A1_D", 0, light_vehicle_price_hmg, 0, GRLIB_perm_inf],
     ["CUP_B_BAF_Coyote_GMG_W", 0, light_vehicle_price_gmg, 0, GRLIB_perm_inf],
-    ["CUP_B_BAF_Coyote_GMG_D", 0, light_vehicle_price_gmg, 0, GRLIB_perm_inf]
+    ["CUP_B_BAF_Coyote_GMG_D", 0, light_vehicle_price_gmg, 0, GRLIB_perm_inf],
+    //BW
+    ["rnt_lkw_10t_mil_gl_kat_i_repair_fleck",0,300,0,GRLIB_perm_inf],
+    ["rnt_lkw_5t_mil_gl_kat_i_transport_fleck",0,300,0,GRLIB_perm_inf],
+    ["rnt_lkw_5t_mil_gl_kat_i_fuel_fleck",0,300,0,GRLIB_perm_inf],
+    ["rnt_lkw_7t_mil_gl_kat_i_mun_fleck",0,300,0,GRLIB_perm_inf],
+    ["Redd_Tank_LKW_leicht_gl_Wolf_Flecktarn_San",0,200,0,GRLIB_perm_inf],
+    ["Redd_Tank_LKW_leicht_gl_Wolf_Flecktarn_FJg",0,200,0,GRLIB_perm_inf],
+    ["Redd_Tank_LKW_leicht_gl_Wolf_Flecktarn_Moerser",0,300,0,GRLIB_perm_inf],
+    ["BWA3_Dingo2_FLW100_MG3_Tropen",0,300,0,GRLIB_perm_inf]
 
 
 ];
  
 heavy_vehicles = [
-    ["CUP_B_M113A3_GER",0,150,0,GRLIB_perm_inf],
     ["CUP_B_Boxer_HMG_GER_WDL",0,300,0,GRLIB_perm_inf],
     ["CUP_B_Boxer_GMG_GER_WDL",0,400,0,GRLIB_perm_inf],
     ["CUP_B_AAV_USMC_TTS",0,400,0,GRLIB_perm_inf],
@@ -175,6 +183,16 @@ heavy_vehicles = [
     ["ffaa_et_m109",0,1900,0,GRLIB_perm_inf],
     ["ffaa_ar_m109",0,1900,0,GRLIB_perm_inf],
     //BW mod
+    ["Redd_Tank_Gepard_1A2_Flecktarn",0,400,0,GRLIB_perm_inf],
+    ["Redd_Marder_1A5_Flecktarn",0,450,0,GRLIB_perm_inf],
+    ["Redd_Tank_Wiesel_1A2_TOW_Flecktarn",0,450,0,GRLIB_perm_inf],
+    ["Redd_Tank_Wiesel_1A4_MK20_Flecktarn",0,450,0,GRLIB_perm_inf],
+    ["Redd_Tank_Fuchs_1A4_Jg_Milan_Flecktarn",0,300,0,GRLIB_perm_inf],
+    ["Redd_Tank_Fuchs_1A4_Jg_Flecktarn",0,250,0,GRLIB_perm_inf],
+    ["Redd_Tank_Fuchs_1A4_Pi_Flecktarn",0,250,0,GRLIB_perm_inf],
+    ["Redd_Tank_Fuchs_1A4_San_Flecktarn",0,250,0,GRLIB_perm_inf],
+    ["rnt_sppz_2a2_luchs_flecktarn",0,550,0,GRLIB_perm_inf],
+    ["CUP_B_M113A3_GER",0,150,0,GRLIB_perm_inf],
     ["BWA3_Leopard2_Tropen",0,1200,0,GRLIB_perm_inf],
     ["BWA3_Puma_Tropen",0,1000,0,GRLIB_perm_inf],
     ["BWA3_Panzerhaubitze2000_Tropen",0,1900,0,GRLIB_perm_inf],
@@ -188,7 +206,9 @@ heavy_vehicles = [
     ["CUP_B_FV432_Bulldog_GB_W", 0, heavy_vehicle_price_tank_light, 0, GRLIB_perm_inf],
     ["CUP_B_FV432_Bulldog_GB_W_RWS", 0, heavy_vehicle_price_tank_light, 0, GRLIB_perm_inf],
     ["CUP_B_FV432_GB_Ambulance", 0, heavy_vehicle_price_tank_light, 0, GRLIB_perm_inf],
-    ["CUP_B_Challenger2_Woodland_BAF", 0, heavy_vehicle_price_tank_light, 0, GRLIB_perm_inf]
+    ["CUP_B_Challenger2_Woodland_BAF", 0, heavy_vehicle_price_tank_light, 0, GRLIB_perm_inf],
+    ["B_T_AFV_Wheeled_01_cannon_F", 0, heavy_vehicle_price_tank_light, 0, GRLIB_perm_inf],
+    ["B_AFV_Wheeled_01_up_cannon_F", 0, heavy_vehicle_price_tank_heavy, 0, GRLIB_perm_inf]
  
 ];
  
@@ -271,7 +291,23 @@ air_vehicles = [
     ["CUP_B_AH1_DL_BAF", 0, 1300, 0, GRLIB_perm_inf],
     ["CUP_B_GR9_DYN_GB", 0, 1300, 0, GRLIB_perm_inf],
     ["CUP_B_F35B_BAF", 0, 1300, 0, GRLIB_perm_inf],
-    ["CUP_B_F35B_Stealth_BAF", 0, 1300, 0, GRLIB_perm_inf]
+    ["CUP_B_F35B_Stealth_BAF", 0, 1300, 0, GRLIB_perm_inf],
+  // BW
+    ["BWA3_Tiger_RMK_FZ",0,1800,0,GRLIB_perm_inf],
+    ["BWA3_Tiger_RMK_PARS",0,1800,0,GRLIB_perm_inf],
+    ["BWA3_Tiger_RMK_Heavy",0,1800,0,GRLIB_perm_inf],
+    ["BWA3_Tiger_RMK_Universal",0,1800,0,GRLIB_perm_inf],
+    ["CUP_B_CH53E_GER",0,550,0,GRLIB_perm_inf],
+    ["CUP_B_CH53E_VIV_GER",0,550,0,GRLIB_perm_inf],
+    ["BWA3_Tiger_Gunpod_FZ",0,1000,0,GRLIB_perm_inf],
+    ["BWA3_Tiger_Gunpod_PARS",0,1000,0,GRLIB_perm_inf],
+    ["BWA3_Tiger_Gunpod_Heavy",0,1000,0,GRLIB_perm_inf],
+    ["CUP_B_AW159_Unarmed_GER",0,350,0,GRLIB_perm_inf],
+  //["CUP_B_UH1D_GER_KSK",0,400,0,GRLIB_perm_inf], //verursacht script fehler
+  //["CUP_B_UH1D_gunship_GER_KSK",0,1000,0,GRLIB_perm_inf], //verursacht script fehler
+    ["CUP_B_AW159_GER",0,900,0,GRLIB_perm_inf],
+    ["ffaa_famet_ec135",0,250,0,GRLIB_perm_inf]
+
     
 ];
  

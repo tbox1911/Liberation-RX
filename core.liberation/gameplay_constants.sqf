@@ -19,9 +19,9 @@ GRLIB_sector_cap = 150 * GRLIB_unitcap;
 GRLIB_battlegroup_cap = 75 * GRLIB_unitcap;
 GRLIB_patrol_cap = 75 * GRLIB_unitcap;
 GRLIB_battlegroup_size = 7 * (sqrt GRLIB_unitcap) * (sqrt GRLIB_csat_aggressivity);
-GRLIB_civilians_amount = 3 * GRLIB_civilian_activity;
+GRLIB_civilians_amount = 2 * GRLIB_civilian_activity;
 GRLIB_fob_range = 300;
-GRLIB_surrender_chance = 80;
+GRLIB_surrender_chance = 60;
 GRLIB_secondary_missions_costs = [ 50, 40, 20 ];
 GRLIB_halo_altitude = 2000;
 GRLIB_civ_killing_penalty = 0;
@@ -277,6 +277,10 @@ item_blacklist =
     "CUP_arifle_Sa58_Klec_rearris",
     "CUP_arifle_Sa58_Klec_frontris",
     "CUP_arifle_Sa58_Klec_ris",
-    "O_V_Soldier_Viper_hex_F"
-    
+    "O_V_Soldier_Viper_hex_F",
+    "ffaa_spike_tripode_Bag",
+    "Redd_Tank_M120_Tampella_Tripod",
+    "Redd_Tank_M120_Tampella_Barrel",
+    "rnt_mg3_static_barell_ai",
+    "rnt_mg3_static_tripod_ai"
 ];
