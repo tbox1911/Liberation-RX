@@ -1,15 +1,9 @@
 params [ "_unit"];
 
 private _side = side _unit;
-private _wounded = false;
-(group _unit) allowFleeing 0;
-if ( damage _unit > 0.25 ) then { _wounded = true; };
-
+private _wounded = (damage _unit > 0.25);
 private _skillmodifier = sqrt GRLIB_difficulty_modifier;
-private _inVehicle = false;
-if ( vehicle _unit != _unit ) then {
-	_inVehicle = true;
-};
+private _inVehicle = !(isNull objectParent player);
 
 if ( !(GRLIB_autodanger) && (_side == GRLIB_side_friendly)) then {
 	_unit disableAI "AUTOCOMBAT";

@@ -16,6 +16,7 @@ _grp = createGroup [GRLIB_side_enemy, true];
 		if (!(_spawnpos isEqualTo zeropos)) then {
 			_nextunit = _grp createUnit [_x, _spawnpos, [], 5, "NONE"];
 			_nextunit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+			[_nextunit] joinSilent _grp;
 			if ( _infsquad == "militia" ) then {
 				[ _nextunit ] call loadout_militia;
 			};

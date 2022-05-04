@@ -4,10 +4,13 @@ diag_log format [ "Spawn militia crew at %1", time ];
 
 private _grp = createGroup [GRLIB_side_enemy, true];
 private _driver = _grp createUnit [(selectRandom militia_squad), getpos _vehicle, [], 5, "NONE"];
+[_driver] joinSilent _grp;
 _driver moveInDriver _vehicle;
 private _gunner = _grp createUnit [(selectRandom militia_squad), getpos _vehicle, [], 5, "NONE"];
+[_gunner] joinSilent _grp;
 _gunner moveInGunner _vehicle;
 private _commander = _grp createUnit [(selectRandom militia_squad), getpos _vehicle, [], 5, "NONE"];
+[_commander] joinSilent _grp;
 _commander moveInCommander _vehicle;
 sleep 1;
 

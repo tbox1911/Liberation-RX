@@ -20,6 +20,7 @@ private _sendPara = {
 	for "_i" from 1 to _cargo_seat_free do {
 		_unit = _para_group createUnit [opfor_paratrooper, markerpos _spawnsector, [], 5, "NONE"];
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+		[_unit] joinSilent _para_group;
 		_unit assignAsCargo _newvehicle;
 		_unit moveInCargo _newvehicle;
 		_unit addBackpack "B_Parachute";
