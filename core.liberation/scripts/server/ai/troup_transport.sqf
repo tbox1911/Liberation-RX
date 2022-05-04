@@ -14,8 +14,9 @@ waitUntil { sleep 0.2; !(alive _troup_transport) || !(alive (driver _troup_trans
 if ((alive _troup_transport) && (alive (driver _troup_transport))) then {
 	private _troupgrp = createGroup [GRLIB_side_enemy, true];
 	{
-		_x createUnit [_start_pos, _troupgrp, 'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]'];
-		_unit = (units _troupgrp) select ((count (units _troupgrp)) -1);
+		_unit = _troupgrp createUnit [_x, _start_pos, [], 5, "NONE"];
+		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+        [_unit] joinSilent _troupgrp;
 		_unit assignAsCargo _troup_transport;
 		_unit moveInCargo _troup_transport;
 		_unit allowFleeing 0;

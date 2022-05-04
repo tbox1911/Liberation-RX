@@ -30,6 +30,7 @@ _idxposit = 0;
 {
 	_nextunit = _grp createUnit [_x, _sectorpos, [], 5, "NONE"];
 	_nextunit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+	[_nextunit] joinSilent _grp;
 	_nextunit setpos (_buildingpositions select (_position_indexes select _idxposit));
 	_nextunit setdir (random 360);
 	[ _nextunit, _sector ] spawn building_defence_ai;

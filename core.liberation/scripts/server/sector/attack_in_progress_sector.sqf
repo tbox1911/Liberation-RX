@@ -19,6 +19,7 @@ if ( GRLIB_blufor_defenders && !_is_side_sector) then {
 	{ 
 		_unit = _grp createUnit [_x, markerpos _sector, [], 5, "NONE"];
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+		[_unit] joinSilent _grp;
 		_unit setSkill 0.65;
 		_unit setSkill ["courage", 1];
 		_unit allowFleeing 0;

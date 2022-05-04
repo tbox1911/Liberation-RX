@@ -43,6 +43,7 @@ while { GRLIB_endgame == 0 } do {
 		{
 			_unit = _grp createUnit [_x, _sector_spawn_pos, [], 5, "NONE"];
 			_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+			[_unit] joinSilent _grp;
 			[ _unit ] call reammo_ai;
 			sleep 0.1;
 		} foreach _squad;
