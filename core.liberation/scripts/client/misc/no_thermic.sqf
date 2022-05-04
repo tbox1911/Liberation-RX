@@ -1,11 +1,10 @@
 //disable Thermic
 if (GRLIB_thermic) exitWith {};
 
-_layer = 85125;
+private _layer = 85125;
 
 while {true} do {
-
-  if (currentVisionMode player == 2) then {
+  if (currentVisionMode player == 2 && !(daytime > GRLIB_nights_start || daytime < GRLIB_nights_stop)) then {
     _layer cutText ["Thermal OFFLINE...","BLACK"];
     playSound "FD_CP_Not_Clear_F";
     waituntil {currentVisionMode player != 2};
