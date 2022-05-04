@@ -1,4 +1,4 @@
-private [ "_sourcestr", "_position", "_myfpsmarker", "_myfps", "_localunits", "_localvehicles" ];
+private [ "_sourcestr", "_position", "_myfpsmarker", "_myfps", "_units_blu", "_units_opf", "_units_civ", "_vehicles_blu", "_vehicles_opf", "_vehicles_civ" ];
 
 if ( isServer ) then {
 	_sourcestr = "Server";
@@ -40,28 +40,13 @@ while { true } do {
 
 	_myfps = diag_fps;
 
-	_localunits_civ = 0;
-	_localvehicles_civ = 0;
-	_localunits_blu = 0;
-	_localvehicles_blu = 0;
-	_localunits_opfor = 0;
-	_localvehicles_opfor = 0;
+	_units_blu = { alive _x && isNull objectparent _x && (_x distance2D lhd) >= 500 } count units GRLIB_side_friendly;
+	_units_opf = { alive _x && isNull objectparent _x} count units GRLIB_side_enemy;
+	_units_civ = { alive _x && isNull objectparent _x} count units GRLIB_side_civilian;
 
-	{
-		switch (side _x) do {
-			case GRLIB_side_civilian: {_localunits_civ = _localunits_civ +1};
-			case GRLIB_side_friendly: {_localunits_blu = _localunits_blu +1};
-			case GRLIB_side_enemy: {_localunits_opfor = _localunits_opfor +1};
-		};
-	} forEach ([allUnits, {(local _x) && (alive _x) && (_x distance2D lhd) >= 500 }] call BIS_fnc_conditionalSelect);
-
-	{
-		switch (side _x) do {
-			case GRLIB_side_civilian: {_localvehicles_civ = _localvehicles_civ +1};
-			case GRLIB_side_friendly: {_localvehicles_blu = _localvehicles_blu +1};
-			case GRLIB_side_enemy: {_localvehicles_opfor = _localvehicles_opfor +1};
-		};
-	} forEach ([vehicles, {(local _x) && (alive _x) && (_x distance2D lhd) >= 500 && (!isNull (currentPilot _x))}] call BIS_fnc_conditionalSelect);
+	_vehicles_blu = { alive _x && side _x == GRLIB_side_friendly && count (crew _x) > 0 && (_x distance2D lhd) >= 500 } count vehicles;
+	_vehicles_opf = { alive _x && side _x == GRLIB_side_enemy && count (crew _x) > 0} count vehicles;
+	_vehicles_civ = { alive _x && side _x == GRLIB_side_civilian && count (crew _x) > 0} count vehicles;
 
 	_myfpsmarker setMarkerColor "ColorGREEN";
 	if ( _myfps < 30 ) then { _myfpsmarker setMarkerColor "ColorYELLOW"; };
@@ -70,8 +55,8 @@ while { true } do {
 
 	_myfpsmarker setMarkerText format [ "%1: %2 fps - Up: %9 - Inf: civ:%3 blu:%4 red:%5 - Veh:civ:%6 blu:%7 red:%8",
 		_sourcestr, ( round ( _myfps * 100.0 ) ) / 100.0 ,
-		_localunits_civ,_localunits_blu,_localunits_opfor,
-		_localvehicles_civ,_localvehicles_blu,_localvehicles_opfor,[time/3600,"HH:MM:SS"] call BIS_fnc_timeToString];
+		_units_civ,_units_blu,_units_opf,
+		_vehicles_civ,_vehicles_blu,_vehicles_opf,[time/3600,"HH:MM:SS"] call BIS_fnc_timeToString];
 
 	sleep 15;
 };
