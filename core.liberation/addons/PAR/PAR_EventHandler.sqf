@@ -70,6 +70,14 @@ _unit addEventHandler ["FiredMan",	{
 // Player
 if (_unit == player) then {
 
+	// ACE specific
+	if (GRLIB_ACE_enabled) then {		
+		["ace_arsenal_displayClosed", {
+			[player] call F_filterLoadout;
+			[player] spawn F_payLoadout;
+		}] call CBA_fnc_addEventHandler;
+	};
+
 	// Unblock units
 	missionNamespace setVariable [
 	"BIS_fnc_addCommMenuItem_menu", [

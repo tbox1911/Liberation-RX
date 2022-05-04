@@ -142,13 +142,6 @@ addMissionEventHandler ["Draw3D",{
 	};
 }];
 
-if (GRLIB_ACE_enabled) then {		
-	["ace_arsenal_displayClosed", {
-			player spawn F_payLoadout;
-			player call F_filterLoadout;
-	}] call CBA_fnc_addEventHandler;
-};
-
 chimera_sign addAction ["<t color='#FFFFFF'>" + localize "STR_READ_ME" + "</t>",{createDialog "liberation_notice"},"",999,true,true,"","[] call is_menuok",5];
 chimera_sign addAction ["<t color='#FFFFFF'>" + localize "STR_TIPS" + "</t>",{createDialog "liberation_tips"},"",998,true,true,"","[] call is_menuok",5];
 
