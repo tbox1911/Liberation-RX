@@ -54,8 +54,8 @@ civkill_ammo = -50;
 tkill_score = 5;
 tkill_ammo = 150;
 
-FAC_MSU_ACTIVE = true;
 // true to activate factions selection
+FAC_MSU_ACTIVE = false;
 
 skill_scan = true;
 skill_parachuters = 1;
