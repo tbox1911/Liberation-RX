@@ -220,16 +220,16 @@ PAR_AI_Manager = {
 
 // Player Section
 PAR_Player_Init = {
-	// Clear event handler before adding it
-	player removeAllEventHandlers "HandleDamage";
-	player addEventHandler ["HandleDamage", { _this call damage_manager_EH }];
-	if (GRLIB_revive != 0) then {
-		player addEventHandler ["HandleDamage", { _this call PAR_HandleDamage_EH }];
-	};
 	player removeAllMPEventHandlers "MPKilled";
-	if (GRLIB_ACE_medical_enabled)
-	then { player addMPEventHandler ["MPKilled", {_this spawn PAR_fn_death}] }
-	else { player addMPEventHandler ["MPKilled", {_this spawn kill_manager}] };
+	player addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+	if (!GRLIB_ACE_medical_enabled) then { 
+		player removeAllEventHandlers "HandleDamage";
+		if (GRLIB_revive != 0) then {
+			player addEventHandler ["HandleDamage", { _this call PAR_HandleDamage_EH }];
+		} else {
+			player addEventHandler ["HandleDamage", { _this call damage_manager_EH }];
+		};
+	};
 	player setVariable ["GREUH_isUnconscious", 0, true];
 	player setVariable ["PAR_isUnconscious", 0, true];
 	player setVariable ["PAR_wounded", false];
