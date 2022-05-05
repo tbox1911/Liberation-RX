@@ -13,6 +13,7 @@ if(!isNull (findDisplay 2306)) then {
 		lbSetData [231, (lbSize 231)-1, _x select 1];
 	} foreach JKB_music_list;
 
+	ctrlSetText [232, format ["%1", count JKB_music_list]];
 	lbSetCurSel [231, JKB_last_music];
 
 	while { dialog && alive player } do {

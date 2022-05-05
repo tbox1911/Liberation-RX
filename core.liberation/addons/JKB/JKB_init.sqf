@@ -1,5 +1,8 @@
-// Music list
+// exit if sog ?
+// auto play
+// random
 
+// Music list
 // manual
 JKB_music_list = [
 	["Radio", "radio_music"],
@@ -10,14 +13,21 @@ JKB_music_list = [
 ];
 
 // auto
+JKB_music_blacklist = [
+	"EventTrack01_F_Curator",
+	"EventTrack02_F_Curator",
+	"EventTrack03_F_Curator"
+];
+
 ( 
 	" 
-	( (configName _x) find 'Music' >= 1  || (configName _x) find 'Track' >= 1 ) 
+	( (configName _x) find 'Music' >= 0  || (configName _x) find 'Track' >= 0 ) &&
+	!((configName _x) in JKB_music_blacklist)
 	" 
 	configClasses (configfile >> "CfgMusic")
 ) apply {
 	_title = getText(_x >> "name");
-	if (_title == "") then {_title = "Unknown"};
+	if (_title == "") then {_title = (configName _x)};
 	JKB_music_list pushback [_title, (configName _x)];
 };
 

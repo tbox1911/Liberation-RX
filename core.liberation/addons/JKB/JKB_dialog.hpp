@@ -37,7 +37,7 @@ class JKB_dialog {
 		 class VehText: StdText {
 			idc = -1;
 			x = (0.210 * safezoneW + safezoneX);
-			y = 0.2294 * safezoneH + safezoneY;
+			y = 0.2094 * safezoneH + safezoneY;
 			w = 0.061 * safezoneW;
 			h = 0.033 * safezoneH;
 			font = "PuristaMedium";
@@ -49,7 +49,7 @@ class JKB_dialog {
         class VehText2: StdText {
 			idc = 230;
 			x = (0.272 * safezoneW + safezoneX);
-			y = 0.2294 * safezoneH + safezoneY;
+			y = 0.2094 * safezoneH + safezoneY;
 			w = 0.151875 * safezoneW;
 			h = 0.033 * safezoneH;
 			font = "PuristaMedium";
@@ -60,11 +60,34 @@ class JKB_dialog {
 		class JKB_titleList : StdCombo {
 			idc = 231;
 			x = 0.2100 * safezoneW + safezoneX;
-			y = 0.2876 * safezoneH + safezoneY;
+			y = 0.2576 * safezoneH + safezoneY;
 			w = 0.20 * safezoneW;
 			h = 0.033 * safezoneH;
 			//sizeEx = 0.018 * safezoneH * GUI_GRID_H * GUI_GRID_H;
 		};
+		 class VehText3: StdText {
+			idc = -1;
+			x = (0.210 * safezoneW + safezoneX);
+			y = 0.3058 * safezoneH + safezoneY;
+			w = 0.075 * safezoneW;
+			h = 0.033 * safezoneH;
+			font = "PuristaMedium";
+            align = "center";
+			colorText[] = {1, 1, 1};
+			size = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+			text = "Music in Jukebox: ";
+ 		};
+        class VehText4: StdText {
+			idc = 232;
+			x = (0.286 * safezoneW + safezoneX);
+			y = 0.3058 * safezoneH + safezoneY;
+			w = 0.151875 * safezoneW;
+			h = 0.033 * safezoneH;
+			font = "PuristaMedium";
+            align = "center";
+			colorText[] = {0, 0, 1};
+			size = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+ 		};
 		class StopButton : StdButton {
 			idc = -1;
 			text = $STR_JKB_STOP;
