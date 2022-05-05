@@ -38,16 +38,21 @@ GRLIB_date_day = 30;
 GRLIB_nights_start = 21;
 GRLIB_nights_stop = 5;
 GREUH_start_ammo = 200;
+
 if (GRLIB_blufor_cap >= 10) then {
     GRLIB_blufor_cap = 200
 };
+
 // don't forget that the human commander manages those, not the server
 GRLIB_offload_diag = false;
+
 // NRE_Key = 199;
 MGR_Key = 19;
 
-tkill_score = -20;
-tkill_ammo = -50;
+civkill_score = -20;
+civkill_ammo = -50;
+tkill_score = 5;
+tkill_ammo = 150;
 
 FAC_MSU_ACTIVE = true;
 // true to activate factions selection

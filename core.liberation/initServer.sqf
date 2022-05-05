@@ -1,8 +1,4 @@
-
-
-
-
- ["ace_unconscious", { // global event (runs on all machines)
+["ace_unconscious", { // global event (runs on all machines)
     params ["_unit", "_isUnconscious"];
 
     _allHCs = entities "HeadlessClient_F";
@@ -50,8 +46,8 @@ addMissionEventHandler ['EntityKilled',{
 					
 					_msg = format ["%1 killed a civillian/friendly.", name _killer];
 					[gamelogic, _msg] remoteExec ["globalChat", 0];
-					[getPlayerUID _killer, tkill_score] remoteExec ["F_addPlayerScore", 2];
-					[getPlayerUID _killer, tkill_ammo] remoteExec ["F_addPlayerAmmo", 2];
+					[getPlayerUID _killer, civkill_score] remoteExec ["F_addPlayerScore", 2];
+					[getPlayerUID _killer, civkill_ammo] remoteExec ["F_addPlayerAmmo", 2];
 					
 				} else {
 					// _msg = format ["%1 destroyed %2", name _killer, typeOf _unit];
