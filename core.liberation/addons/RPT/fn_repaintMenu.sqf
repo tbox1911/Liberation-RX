@@ -1,16 +1,19 @@
+// Vehicle Paint v1.07
+// by pSiko
+
 params ["_vehicle"];
-private["_display","_vehicles","_detected_vehicles","_color","_pic","_text"];
+
 if (isNil "_vehicle") exitWith {};
 if (!([player, _vehicle] call is_owner)) exitWith { hintSilent "Wrong Vehicle Owner.\nAccess is Denied !" };
 if ((damage _vehicle) != 0) exitWith { hintSilent "Damaged Vehicles cannot be Painted !" };
 if ([typeOf _vehicle, GRLIB_vehicle_blacklist] call F_itemIsInClass) exitWith { hintSilent "This Vehicle cannot be Painted !" };
 
+private["_color","_pic","_text"];
 paint_veh = 0;
 createDialog "RPT_vehicle_repaint";
 waitUntil { dialog };
 
 if(!isNull (findDisplay 2300)) then {
-	_display = findDisplay 2300;
 	_color = _vehicle getVariable ["GRLIB_vehicle_color_name", "Default"];
 	_pic = getText(configOf _vehicle >> "picture");
 	_text = getText(configOf _vehicle >> "DisplayName");
@@ -46,6 +49,7 @@ if(!isNull (findDisplay 2300)) then {
 
 			if (_texture == "" ) then {_texture = [_name]};
 			[_vehicle, _texture, _name, []] call RPT_fnc_TextureVehicle;
+			ctrlSetText [230, format ["%1 - (%2)", _text, _name]];
 			paint_veh = 0;
 			sleep 0.5;
 		};
