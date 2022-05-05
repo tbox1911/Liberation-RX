@@ -9,7 +9,5 @@ while { true } do {
 
 	setTimeMultiplier _accelerated_time;
 
-	// Object WeaponHolderSimulated can't have zero or negative mass!
-	{ if (round (getMass _x) <= 0) then { _x setMass 1 } } forEach (entities "WeaponHolderSimulated");
 	sleep 10;
 };
