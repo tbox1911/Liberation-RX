@@ -5064,6 +5064,21 @@
 			<Chinese>噴漆</Chinese>
 		</Key>
 
+		<!-- JKB_dialog -->
+
+		<Key ID="STR_JKB_MENU">
+			<Original>-- Juke Box --</Original>
+		</Key>
+		<Key ID="STR_JKB_ACTION">
+			<Original>Open JukeBox</Original>
+		</Key>
+		<Key ID="STR_JKB_START">
+			<Original>Play</Original>
+		</Key>		
+		<Key ID="STR_JKB_STOP">
+			<Original>Stop</Original>
+		</Key>
+	
 		<!-- liberation_airdrop.hpp -->
 
 		<Key ID="STR_AIRDROP_CANCEL">
@@ -5326,7 +5341,7 @@
 
 		<Key ID="STR_LIKEME">
 			<Original>Like Me</Original>
-			<French>Comme Moi</French>
+			<French>Like Me</French>
 			<Japanese>自装備をユニットに反映</Japanese>
 			<Chinesesimp>复制装备</Chinesesimp>
 			<Chinese>複製裝備</Chinese>
