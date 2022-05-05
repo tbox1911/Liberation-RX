@@ -39,12 +39,19 @@ _ban_combo = _display displayCtrl 1611;
 lbClear _ban_combo;
 _score_combo = _display displayCtrl 1612;
 lbClear _score_combo;
-_build_combo = _display displayCtrl 1614;
+_build_combo = _display displayCtrl 1618;
 lbClear _build_combo;
 
 // Clear input
 private _input_controls = [521,522,523,524,525,526,527];
 { ctrlShow [_x, false] } foreach _input_controls;
+
+// Clear output
+private _output_controls = [531,532,533,534,535,536];
+{ ctrlShow [_x, false] } foreach _output_controls;
+
+// Action buttons
+private _button_controls = [1600,1601,1602,1603,1604,1609,1610,1611,1612,1613,1614,1615,1616,1617,1618];
 
 (_display displayCtrl 1603) ctrlSetText getMissionPath "res\ui_confirm.paa";
 (_display displayCtrl 1603) ctrlSetToolTip "Add 200 XP Score";
@@ -160,26 +167,34 @@ while { alive player && dialog } do {
 
 	if (do_export == 1) then {
 		do_export = 0;
-		if (isServer) then {
+		//if (isServer) then {
+		if (false) then {			
 			copyToClipboard str (profileNamespace getVariable GRLIB_save_key);
-			_msg = format ['Savegame %1 Exported to clipboard.', GRLIB_save_key];
+			_msg = format ["Savegame %1 Exported to clipboard.", GRLIB_save_key];
+			hint _msg;
 		} else {
-			// [player, {
-			// 	diag_log "--- LRX Savegame Start ----------------------------------";
-			// 	{ diag_log _x } foreach (profileNamespace getVariable GRLIB_save_key);
-			// 	diag_log "--- LRX Savegame End ------------------------------------";
-			// }] remoteExec ["bis_fnc_call", 2];
-			_msg = format ['Savegame %1 Exported to server log.', GRLIB_save_key];
+			{ ctrlEnable  [_x, false] } foreach _button_controls;
+			{ ctrlShow [_x, true] } foreach _output_controls;
+			output_save = [];
+			[player, {
+				output_save = profileNamespace getVariable GRLIB_save_key; 
+				[profileNamespace, ["output_save"]] remoteExec ["setVariable", owner _this]; 
+				[gamelogic, "Copy the Savegame from Text Field."] remoteExec ["globalChat", owner _this];
+			}] remoteExec ["bis_fnc_call", 2];
+			waitUntil {uiSleep 0.3; ((count output_save > 0) || !(dialog) || !(alive player))};
+			ctrlSetText [ 536, str output_save ];
+			waitUntil {uiSleep 0.3; (!(dialog) || !(alive player)) };
+			{ ctrlShow [_x, false] } foreach _output_controls;
+			{ ctrlEnable  [_x, true] } foreach _button_controls;
 		};
-		hint _msg;
 	};
 
 	if (do_import == 1) then {
 		do_import = 0;
-		{ ctrlShow [_x, true] } foreach _input_controls;
-		
+		{ ctrlEnable  [_x, false] } foreach _button_controls;
+		{ ctrlShow [_x, true] } foreach _input_controls;	
 		input_save = "";
-		waitUntil {uiSleep 0.1; ((input_save != "") || !(dialog) || !(alive player)) };
+		waitUntil {uiSleep 0.3; ((input_save != "") || !(dialog) || !(alive player))};
 		if ( input_save select [0,1] == "[" && input_save select [(count input_save)-1,(count input_save)] == "]") then {
 			private _save = parseSimpleArray input_save;
 			[_save, {
@@ -191,10 +206,11 @@ while { alive player && dialog } do {
 				sleep 3;
 				["END"] remoteExec ["endMission", 0];
 			}] remoteExec ["bis_fnc_call", 2];
-			systemchat format ['Import Savegame in %1, Exiting now!', GRLIB_save_key];
+			systemchat format ["Import Savegame in %1, Exiting now!", GRLIB_save_key];
 			closeDialog 0;
 		} else { systemchat "Error: Invalid data!" };
 		{ ctrlShow [_x, false] } foreach _input_controls;
+		{ ctrlEnable  [_x, true] } foreach _button_controls;
 	};
 	sleep 0.5;
 };

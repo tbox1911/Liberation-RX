@@ -23,6 +23,12 @@ class liberation_admin {
     "Input_ButtonName_Ok",
     "Input_ButtonName_Abort",
     "Input_TextField",
+    "Output_OuterBG",
+    "Output_InnerBG",
+    "Output_OuterBG_F",
+    "Output_InnerBG_F",
+    "Output_ButtonName_Abort",
+    "Output_TextField",    
     "DeleteButton",
 	  "Item01Button",
 	  "Item02Button",
@@ -84,7 +90,7 @@ class liberation_admin {
   };
   class BuildButton: StdButton
   {
-    idc = 1601;
+    idc = 1617;
     action = "do_spawn=1";
 
     text = $STR_ADMIN_BUILD;
@@ -94,7 +100,7 @@ class liberation_admin {
     h = 0.04 * safezoneH;
   };
   class BuildList: StdCombo {
-    idc = 1614;
+    idc = 1618;
     x = 0.3275 * safezoneW + safezoneX;
     y = 0.316 * safezoneH + safezoneY;
     w = 0.09 * safezoneW;
@@ -201,7 +207,7 @@ class liberation_admin {
   class UnlockButton: StdButton
   {
     idc = 1609;
-    action = "_x = cursorobject;_x setvariable ['R3F_LOG_disabled', false, true];_x setvariable ['GRLIB_vehicle_owner', '', true];hint format ['%1 Unlocked.',typeOf _x]";
+    action = "_x = cursorobject;if (isNull _x) exitWith {};_x setvariable ['R3F_LOG_disabled', false, true];_x setvariable ['GRLIB_vehicle_owner', '', true];hint format ['%1 Unlocked.',typeOf _x]";
     text = $STR_ADMIN_UNLOCK;
     x = 0.2275 * safezoneW + safezoneX;
     y = 0.572 * safezoneH + safezoneY;
@@ -242,18 +248,18 @@ class liberation_admin {
 	class Input_OuterBG : OuterBG {
 		idc = 521;
 		style = ST_SINGLE;
-		x = (0.37 * safezoneW + safezoneX) - (BORDERSIZE);
-		y = ((BASE_Y + 0.41) * safezoneH) + safezoneY - (1.5 * BORDERSIZE);
-		w = 0.2 * safezoneW +  (2 * BORDERSIZE);
-		h = 0.05 * safezoneH  + (3 * BORDERSIZE);
+		x = (0.46 * safezoneW + safezoneX) - (BORDERSIZE);
+		y = ((BASE_Y + 0.31) * safezoneH) + safezoneY - (1.5 * BORDERSIZE);
+		w = 0.17 * safezoneW +  (2 * BORDERSIZE);
+		h = 0.35 * safezoneH  + (3 * BORDERSIZE);
 	};  
 	class Input_InnerBG : InnerBG {
 		idc = 522;
 		colorBackground[] = COLOR_GREEN;
-		x = (0.37 * safezoneW + safezoneX);
-		y = ((BASE_Y + 0.41) * safezoneH) + safezoneY;
-		w = 0.2 * safezoneW;
-		h = 0.05 * safezoneH;
+		x = (0.46 * safezoneW + safezoneX);
+		y = ((BASE_Y + 0.31) * safezoneH) + safezoneY;
+		w = 0.17 * safezoneW;
+		h = 0.35 * safezoneH;
 	};
 	class Input_OuterBG_F : OuterBG_F {
 		idc = 523;
@@ -265,27 +271,28 @@ class liberation_admin {
 	};
 	class Input_ButtonName_Ok : StdButton {
 		idc = 525;
-		x = 0.4875 * safezoneW + safezoneX;
-    y = ((BASE_Y + 0.42) * safezoneH) + safezoneY;
+		x = 0.58 * safezoneW + safezoneX;
+    y = ((BASE_Y + 0.32) * safezoneH) + safezoneY;
 		w = ((0.2 * safezoneW) / 5) - BORDERSIZE;
 		text = "OK";
 		action = "input_save = ctrlText 527;";
 	};
 	class Input_ButtonName_Abort : StdButton {
 		idc = 526;
-		x = (0.4875 * safezoneW + safezoneX) + ((0.2 * safezoneW) / 5);
-    y = ((BASE_Y + 0.42) * safezoneH) + safezoneY;
+		x = 0.58 * safezoneW + safezoneX;
+    y = ((BASE_Y + 0.36) * safezoneH) + safezoneY;
 		w = ((0.2 * safezoneW) / 5) - BORDERSIZE;    
 		text = "Cancel";
-		action = "closeDialog 0;";
+		action = "input_save = 'null';";
 	};
 	class Input_TextField : StdButton {
 		idc = 527;
 		type = CT_EDIT;
-		style = ST_LEFT;
-		x = (0.37 * safezoneW + safezoneX) + BORDERSIZE;
-    y = ((BASE_Y + 0.42) * safezoneH) + safezoneY;    
+		style = ST_MULTI;
+		x = (0.46 * safezoneW + safezoneX) + BORDERSIZE;
+    y = ((BASE_Y + 0.32) * safezoneH) + safezoneY;    
 		w = 0.11 * safezoneW;
+    h = 0.33 * safezoneH;
 		text = "";
 		action = "";
 		colorText[] = COLOR_WHITE;
@@ -293,7 +300,54 @@ class liberation_admin {
 		autocomplete = "";
 	};
   //------------------------
-
+	class Output_OuterBG : OuterBG {
+		idc = 531;
+		style = ST_SINGLE;
+		x = (0.46 * safezoneW + safezoneX) - (BORDERSIZE);
+		y = ((BASE_Y + 0.31) * safezoneH) + safezoneY - (1.5 * BORDERSIZE);
+		w = 0.17 * safezoneW +  (2 * BORDERSIZE);
+		h = 0.35 * safezoneH  + (3 * BORDERSIZE);
+	};  
+	class Output_InnerBG : InnerBG {
+		idc = 532;
+		colorBackground[] = COLOR_GREEN;
+		x = (0.46 * safezoneW + safezoneX);
+		y = ((BASE_Y + 0.31) * safezoneH) + safezoneY;
+		w = 0.17 * safezoneW;
+		h = 0.35 * safezoneH;
+	};
+	class Output_OuterBG_F : OuterBG_F {
+		idc = 533;
+		style = ST_FRAME;
+	};
+	class Output_InnerBG_F : InnerBG_F {
+		idc = 534;
+		style = ST_FRAME;
+	};
+	class Output_ButtonName_Abort : StdButton {
+		idc = 535;
+		x = 0.58 * safezoneW + safezoneX;
+    y = ((BASE_Y + 0.32) * safezoneH) + safezoneY;
+		w = ((0.2 * safezoneW) / 5) - BORDERSIZE;
+		text = "OK";
+		action = "closeDialog 0;";
+	};
+	class Output_TextField : StdButton {
+		idc = 536;
+		type = CT_EDIT;
+		style = ST_MULTI;
+		x = (0.46 * safezoneW + safezoneX) + BORDERSIZE;
+    y = ((BASE_Y + 0.32) * safezoneH) + safezoneY;    
+		w = 0.11 * safezoneW;
+    h = 0.33 * safezoneH;
+		text = "";
+		action = "";
+		colorText[] = COLOR_WHITE;
+		colorSelection[] = COLOR_BRIGHTGREEN;
+		autocomplete = "";
+    canModify = 0;
+	};
+  //------------------------
   class adminInfo01: GREUH_RscStructuredText
   {
     idc = 1606;
