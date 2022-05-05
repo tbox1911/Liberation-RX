@@ -166,10 +166,10 @@ while {true} do
 		};
 
 		// Si l'objet est un v�hicule remorqueur
-		if (_fonctionnalites select __can_tow) then
+		if (_fonctionnalites select __can_tow && !isNull R3F_LOG_joueur_deplace_objet) then
 		{
 			// Condition action remorquer_deplace
-			R3F_LOG_action_remorquer_deplace_valide = alive _objet_pointe && !isNull R3F_LOG_joueur_deplace_objet &&
+			R3F_LOG_action_remorquer_deplace_valide = alive _objet_pointe &&
 				!(R3F_LOG_joueur_deplace_objet getVariable "R3F_LOG_disabled") && (R3F_LOG_joueur_deplace_objet != _objet_pointe) &&
 				(R3F_LOG_joueur_deplace_objet getVariable ["R3F_LOG_fonctionnalites", R3F_LOG_CST_zero_log] select __can_be_towed) &&
 				isNull (_objet_pointe getVariable "R3F_LOG_est_transporte_par") &&
@@ -180,22 +180,29 @@ while {true} do
 		// Si l'objet est un v�hicule transporteur
 		if (_fonctionnalites select __can_transport_cargo) then
 		{
-			// Condition action charger_deplace
-			R3F_LOG_action_charger_deplace_valide = alive _objet_pointe && !isNull R3F_LOG_joueur_deplace_objet && 
-				!(R3F_LOG_joueur_deplace_objet getVariable "R3F_LOG_disabled") && (R3F_LOG_joueur_deplace_objet != _objet_pointe) &&
-				(R3F_LOG_joueur_deplace_objet getVariable ["R3F_LOG_fonctionnalites", R3F_LOG_CST_zero_log] select __can_be_transported_cargo) &&
-				(vectorMagnitude velocity _objet_pointe < 6) && _objet_deverrouille && !(_objet_pointe getVariable "R3F_LOG_disabled");
-
-			// Condition action charger_selection
-			R3F_LOG_action_charger_selection_valide = alive _objet_pointe && (isNull R3F_LOG_joueur_deplace_objet) &&
-				(!isNull R3F_LOG_objet_selectionne) && (R3F_LOG_objet_selectionne != _objet_pointe) &&
-				!(R3F_LOG_objet_selectionne getVariable "R3F_LOG_disabled") &&
-				(R3F_LOG_objet_selectionne getVariable ["R3F_LOG_fonctionnalites", R3F_LOG_CST_zero_log] select __can_be_transported_cargo) &&
-				(vectorMagnitude velocity _objet_pointe < 6) && _objet_deverrouille && !(_objet_pointe getVariable "R3F_LOG_disabled");
-
-			// Condition action contenu_vehicule
-			R3F_LOG_action_contenu_vehicule_valide = alive _objet_pointe && (isNull R3F_LOG_joueur_deplace_objet) &&
-				(vectorMagnitude velocity _objet_pointe < 6) && _objet_deverrouille && !(_objet_pointe getVariable "R3F_LOG_disabled");
+			if (!isNull R3F_LOG_joueur_deplace_objet) then 
+			{
+				// Condition action charger_deplace
+				R3F_LOG_action_charger_deplace_valide = alive _objet_pointe && 
+					!(R3F_LOG_joueur_deplace_objet getVariable "R3F_LOG_disabled") && (R3F_LOG_joueur_deplace_objet != _objet_pointe) &&
+					(R3F_LOG_joueur_deplace_objet getVariable ["R3F_LOG_fonctionnalites", R3F_LOG_CST_zero_log] select __can_be_transported_cargo) &&
+					(vectorMagnitude velocity _objet_pointe < 6) && _objet_deverrouille && !(_objet_pointe getVariable "R3F_LOG_disabled");
+			} 
+			else 
+			{
+				if (!isNull R3F_LOG_objet_selectionne) then
+				{
+					// Condition action charger_selection
+					R3F_LOG_action_charger_selection_valide = alive _objet_pointe &&
+						(R3F_LOG_objet_selectionne != _objet_pointe) &&
+						!(R3F_LOG_objet_selectionne getVariable "R3F_LOG_disabled") &&
+						(R3F_LOG_objet_selectionne getVariable ["R3F_LOG_fonctionnalites", R3F_LOG_CST_zero_log] select __can_be_transported_cargo) &&
+						(vectorMagnitude velocity _objet_pointe < 6) && _objet_deverrouille && !(_objet_pointe getVariable "R3F_LOG_disabled");
+				};
+				// Condition action contenu_vehicule
+				R3F_LOG_action_contenu_vehicule_valide = alive _objet_pointe &&
+					(vectorMagnitude velocity _objet_pointe < 6) && _objet_deverrouille && !(_objet_pointe getVariable "R3F_LOG_disabled");
+			};
 		};
 
 		// Condition action ouvrir_usine
