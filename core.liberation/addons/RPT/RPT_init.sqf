@@ -1,3 +1,6 @@
+// Vehicle Paint v1.07
+// by pSiKO
+
 RPT_color = "#(rgb,1,1,1)color";
 RPT_texDir = "addons\RPT\textures\";
 

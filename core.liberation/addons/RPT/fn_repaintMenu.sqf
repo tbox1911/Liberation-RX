@@ -1,5 +1,5 @@
 // Vehicle Paint v1.07
-// by pSiko
+// by pSiKO
 
 params ["_vehicle"];
 
