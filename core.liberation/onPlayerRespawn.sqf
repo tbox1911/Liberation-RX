@@ -1,6 +1,9 @@
 titleText ["" ,"BLACK FADED", 100];
 player allowDamage false;
 disableUserInput true;
+if (GRLIB_ACE_medical_enabled) then {
+	player call ACE_medical_treatment_fnc_fullHealLocal;
+};
 player setPosATL ((getmarkerpos GRLIB_respawn_marker) findEmptyPosition [0,50]);
 GRLIB_player_spawned = false;
 removeAllWeapons player;
