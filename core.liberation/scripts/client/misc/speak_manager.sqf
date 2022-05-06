@@ -65,7 +65,7 @@ speak_mission_delivery_1 = {
 			player setVariable ["GRLIB_A3W_Mission_Item", nil]; 
 			player setVariable ["GRLIB_A3W_Mission_Marker", GRLIB_A3W_Mission_SD select 0]; 
 		}];
-		[_can] spawn R3F_LOG_FNCT_objet_deplacer;
+		[_can, player, 0, true] spawn R3F_LOG_FNCT_objet_deplacer;
 	};
 	player setVariable ["GRLIB_A3W_Mission_Marker", _next_unit];
 	uIsleep 3;
