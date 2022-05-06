@@ -45,8 +45,8 @@ speak_leader_AI = {
 speak_mission_delivery_1 = {
 	params ["_unit"];
 	if (!(_unit getVariable ["GRLIB_A3W_Mission_SD", false])) exitWith {gamelogic globalChat "Maybe another time..."};
-	_next_indx = (GRLIB_A3W_Mission_SD find _unit) + 1;
-	_next_unit = GRLIB_A3W_Mission_SD select _next_indx;
+	private _next_indx = (GRLIB_A3W_Mission_SD find _unit) + 1;
+	private _next_unit = GRLIB_A3W_Mission_SD select _next_indx;
 
 	gamelogic globalChat "Hello, I Need to speak with you, listen to me.";
 	uIsleep 3;
@@ -58,27 +58,24 @@ speak_mission_delivery_1 = {
 
 	_quest_item = player getVariable ["GRLIB_A3W_Mission_Item", objNull];
 	if (isNull _quest_item) then {
-		_pos = player modelToWorld [0,1,1];
-		_can = createVehicle ["Land_Suitcase_F", _pos, [], 0, "CAN_COLLIDE"];
+		private _can = createVehicle ["Land_Suitcase_F", (player modelToWorld [0,1,1]), [], 0, "CAN_COLLIDE"];
 		player setVariable ["GRLIB_A3W_Mission_Item", _can];
 		_can addEventHandler ["Deleted", {
 			player setVariable ["GRLIB_A3W_Mission_Item", nil]; 
-			player setVariable ["GRLIB_A3W_Mission_Marker", GRLIB_A3W_Mission_SD select 0]; 
+			GRLIB_A3W_Mission_Marker = GRLIB_A3W_Mission_SD select 0;
 		}];
 		[_can, player, 0, true] spawn R3F_LOG_FNCT_objet_deplacer;
 	};
-	player setVariable ["GRLIB_A3W_Mission_Marker", _next_unit];
+	GRLIB_A3W_Mission_Marker = _next_unit;
 	uIsleep 3;
 };
 // Orestes
 speak_mission_delivery_2 = {
 	params ["_unit"];
-	_target = player getVariable ["GRLIB_A3W_Mission_Marker", objNull];
-	if (!(_unit getVariable ["GRLIB_A3W_Mission_SD", false]) || _unit != _target) exitWith {gamelogic globalChat "Maybe another time..."};
-	_next_indx = (GRLIB_A3W_Mission_SD find _unit) + 1;
-	_next_unit = GRLIB_A3W_Mission_SD select _next_indx;
-	_last_man = GRLIB_A3W_Mission_SD select (count GRLIB_A3W_Mission_SD) - 1;
-
+	if (!(_unit getVariable ["GRLIB_A3W_Mission_SD", false]) || _unit != GRLIB_A3W_Mission_Marker) exitWith {gamelogic globalChat "Maybe another time..."};
+	private _next_indx = (GRLIB_A3W_Mission_SD find _unit) + 1;
+	private _next_unit = GRLIB_A3W_Mission_SD select _next_indx;
+	private _last_man = GRLIB_A3W_Mission_SD select (count GRLIB_A3W_Mission_SD) - 1;
 	if (_next_unit == _last_man) then {
 		gamelogic globalChat "Yes, I know him !";
 		uIsleep 3;
@@ -93,15 +90,13 @@ speak_mission_delivery_2 = {
 		uIsleep 3;
 		gamelogic globalChat "Look at the marker on your Map.";
 	};
-	player setVariable ["GRLIB_A3W_Mission_Marker", _next_unit];
+	GRLIB_A3W_Mission_Marker = _next_unit;
 	uIsleep 3;
 };
 // Nikos Old
 speak_mission_delivery_3 = {
 	params ["_unit"];
-	private _target = player getVariable ["GRLIB_A3W_Mission_Marker", objNull];
-	if (!(_unit getVariable ["GRLIB_A3W_Mission_SD", false]) || _unit != _target) exitWith {gamelogic globalChat "Maybe another time..."};
-
+	if (!(_unit getVariable ["GRLIB_A3W_Mission_SD", false]) || _unit != GRLIB_A3W_Mission_Marker) exitWith {gamelogic globalChat "Maybe another time..."};
 	private _near_case = getPosATL _unit nearEntities [["Land_Suitcase_F"], 10];
 	if (count _near_case > 0) then {
 		deleteVehicle (_near_case select 0);
@@ -109,7 +104,7 @@ speak_mission_delivery_3 = {
 		gamelogic globalChat "Thank you very much, Please take your reward.";
 		{_x setVariable ['GRLIB_can_speak', false, true]} foreach GRLIB_A3W_Mission_SD;
 		_unit setVariable ["GRLIB_A3W_Mission_SD_END", true, true];
-		player setVariable ["GRLIB_A3W_Mission_Marker", nil];
+		GRLIB_A3W_Mission_Marker = nil;
 	} else {
 		gamelogic globalChat "Sorry, I wait for something special...";
 	};

@@ -100,8 +100,9 @@ _failedExec = {
 	if (!isNil "_house") then {deleteVehicle _house};
 	{ deleteVehicle _x } forEach GRLIB_A3W_Mission_SD;
 	GRLIB_A3W_Mission_SD = nil;
+	GRLIB_A3W_Mission_SD_Spawn = nil;
 	publicVariable "GRLIB_A3W_Mission_SD";
-	[player, ["GRLIB_A3W_Mission_Marker", nil]] remoteExec ["setVariable", -2];
+	[missionNamespace, ["GRLIB_A3W_Mission_Marker", nil]] remoteExec ["setVariable", -2];
 	_failedHintMessage = format ["Special Delivery<br/><t color='%1'>FAILED</t> !!<br/><br/>Better luck next time!", sideMissionColor];
 };
 
@@ -113,6 +114,7 @@ _successExec = {
 		sleep 60;
 		{ deleteVehicle _x } forEach GRLIB_A3W_Mission_SD;
 		GRLIB_A3W_Mission_SD = nil;
+		GRLIB_A3W_Mission_SD_Spawn = nil;
 		publicVariable "GRLIB_A3W_Mission_SD";
 		sleep 60;
 		deleteVehicle _house;
