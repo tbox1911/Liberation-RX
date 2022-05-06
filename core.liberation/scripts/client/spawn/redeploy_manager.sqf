@@ -157,6 +157,8 @@ if (dialog && deploy == 1) then {
 	if ( !GRLIB_player_spawned ) then {	
 		// respawn loadout
 		if ( !isNil "GRLIB_respawn_loadout" ) then {
+			GRLIB_backup_loadout = GRLIB_default_loadout;
+			player setVariable ["GREUH_stuff_price", GRLIB_default_price];
 			[player, GRLIB_respawn_loadout] call F_setLoadout;
 		} else {
 			// init loadout
@@ -170,8 +172,10 @@ if (dialog && deploy == 1) then {
 					[player, configOf player] call BIS_fnc_loadInventory;
 				};
 			};
-			player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
+			GRLIB_default_price = [player] call F_loadoutPrice;
+			player setVariable ["GREUH_stuff_price", GRLIB_default_price];
 			GRLIB_backup_loadout = [player] call F_getLoadout;
+			GRLIB_default_loadout = GRLIB_backup_loadout;
 		};
 		[player] call F_filterLoadout;
 		[player] call F_payLoadout;
