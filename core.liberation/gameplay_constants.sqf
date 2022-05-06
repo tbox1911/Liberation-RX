@@ -49,10 +49,10 @@ GRLIB_offload_diag = false;
 // NRE_Key = 199;
 MGR_Key = 19;
 
-civkill_score = -20;
-civkill_ammo = -50;
-tkill_score = 5;
-tkill_ammo = 150;
+civkill_score = -30;
+civkill_ammo = -300;
+tkill_score = 4;
+tkill_ammo = 40;
 
 // true to activate factions selection
 FAC_MSU_ACTIVE = false;
