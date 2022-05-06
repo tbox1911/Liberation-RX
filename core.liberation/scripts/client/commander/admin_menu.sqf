@@ -163,8 +163,7 @@ while { alive player && dialog } do {
 
 	if (do_export == 1) then {
 		do_export = 0;
-		//if (isServer) then {
-		if (false) then {			
+		if (isServer) then {
 			copyToClipboard str (profileNamespace getVariable GRLIB_save_key);
 			_msg = format ["Savegame %1 Exported to clipboard.", GRLIB_save_key];
 			hint _msg;
@@ -173,8 +172,8 @@ while { alive player && dialog } do {
 			{ ctrlShow [_x, true] } foreach _output_controls;
 			output_save = [];
 			[player, {
-				output_save = profileNamespace getVariable GRLIB_save_key; 
-				[profileNamespace, ["output_save"]] remoteExec ["setVariable", owner _this]; 
+				[] call save_game_mp;
+				[missionNamespace, ["output_save", greuh_liberation_savegame]] remoteExec ["setVariable", owner _this];
 				["Copy the Savegame from Text Field."] remoteExec ["hint", owner _this];
 			}] remoteExec ["bis_fnc_call", 2];
 			waitUntil {uiSleep 0.3; ((count output_save > 0) || !(dialog) || !(alive player))};

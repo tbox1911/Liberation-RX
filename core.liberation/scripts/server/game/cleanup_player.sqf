@@ -65,4 +65,4 @@ if !(isNull _unit) then {
 };
 
 private _player_left = count (AllPlayers - (entities "HeadlessClient_F"));
-if (_player_left == 0) then {[] call save_game_mp};
+if (_player_left == 0) then {if (time > 300) then {[] call save_game_mp}};

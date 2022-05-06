@@ -1,5 +1,4 @@
 //--- LRX Savegame
-if (time < 300 || !([] call F_getValid)) exitWith {};
 diag_log format [ "--- LRX Save start at %1", time ];
 if (!isNil "GRLIB_server_stopped") exitWith {};
 
@@ -15,6 +14,7 @@ private _classnames_to_save_blu = [FOB_typename, FOB_outpost, FOB_sign, huron_ty
 
 _classnames_to_save = _classnames_to_save + _classnames_to_save_blu + all_hostile_classnames;
 
+if !([] call F_getValid) exitWith {};
 if ( GRLIB_endgame == 1 ) then {
     if (GRLIB_param_wipe_keepscore == 1) then {
         GRLIB_permissions = profileNamespace getVariable GRLIB_save_key select 12;
