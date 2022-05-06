@@ -1,9 +1,9 @@
 disableSerialization;
 
 _array = _this select 0;
-_ctrl  = _array select 0;
+_ctrl_chkd = (_array select 2 == 1);
 
-if (ctrlChecked _ctrl) then {
+if (_ctrl_chkd) then {
 	hint "GodMode ON !";
 	player forceAddUniform "U_B_Protagonist_VR";
 	player allowDamage false;
@@ -13,4 +13,3 @@ if (ctrlChecked _ctrl) then {
 	player forceAddUniform "U_B_CombatUniform_mcam";
 	player allowDamage true;
 };
-sleep 5;

@@ -25,11 +25,7 @@ private _color = getArray (configFile >> "CfgMarkerColors" >> GRLIB_color_friend
 private _display = findDisplay 5204;
 
 // GodMode ?
-if (!isDamageAllowed player) then {
-	(_display displayCtrl 1607) ctrlSetChecked true;
-} else {
-	(_display displayCtrl 1607) ctrlSetChecked false;
-};
+if (!isDamageAllowed player) then {	(_display displayCtrl 1607) ctrlSetChecked true; };
 
 // Teleport on map
 player onMapSingleClick "if (_alt) then {player setPosATL _pos}";
@@ -179,7 +175,7 @@ while { alive player && dialog } do {
 			[player, {
 				output_save = profileNamespace getVariable GRLIB_save_key; 
 				[profileNamespace, ["output_save"]] remoteExec ["setVariable", owner _this]; 
-				[gamelogic, "Copy the Savegame from Text Field."] remoteExec ["globalChat", owner _this];
+				["Copy the Savegame from Text Field."] remoteExec ["hint", owner _this];
 			}] remoteExec ["bis_fnc_call", 2];
 			waitUntil {uiSleep 0.3; ((count output_save > 0) || !(dialog) || !(alive player))};
 			ctrlSetText [ 536, str output_save ];
@@ -206,7 +202,7 @@ while { alive player && dialog } do {
 				sleep 3;
 				["END"] remoteExec ["endMission", 0];
 			}] remoteExec ["bis_fnc_call", 2];
-			systemchat format ["Import Savegame in %1, Exiting now!", GRLIB_save_key];
+			hint format ["Import Savegame in %1, Exiting now!", GRLIB_save_key];
 			closeDialog 0;
 		} else { systemchat "Error: Invalid data!" };
 		{ ctrlShow [_x, false] } foreach _input_controls;
