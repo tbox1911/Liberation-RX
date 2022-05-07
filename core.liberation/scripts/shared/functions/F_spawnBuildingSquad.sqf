@@ -1,9 +1,9 @@
 params [ "_infsquad", "_building_ai_max", "_buildingpositions", "_sectorpos", [ "_sector", "" ] ];
-private [ "_squadtospawnnn", "_infsquad_classnames", "_usedposits", "_nextposit", "_remainingposits", "_grp", "_everythingspawned", "_nextunit", "_position_indexes", "_position_count", "_idxposit", "_groupunitscount" ];
-diag_log format [ "Spawn building squad type %1 at %2", _infsquad, time ];
+private [ "_squadtospawnnn", "_infsquad_classnames", "_usedposits", "_nextposit", "_remainingposits", "_grp", "_unit", "_position_indexes", "_position_count", "_idxposit", "_groupunitscount" ];
+diag_log format ["Spawn building squad type %1 at %2", _infsquad, time];
 
-_everythingspawned = [];
-_default_side = GRLIB_side_enemy;
+private _spawned_units_local = [];
+private _default_side = GRLIB_side_enemy;
 
 switch (_infsquad) do {
 	case ("infantry"): { _infsquad_classnames = opfor_infantry };
@@ -28,30 +28,20 @@ while { count _position_indexes < count _squadtospawnnn } do {
 _grp = createGroup [_default_side, true];
 _idxposit = 0;
 {
-	_nextunit = _grp createUnit [_x, _sectorpos, [], 5, "NONE"];
-	_nextunit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-	[_nextunit] joinSilent _grp;
-	_nextunit setpos (_buildingpositions select (_position_indexes select _idxposit));
-	_nextunit setdir (random 360);
-	[ _nextunit, _sector ] spawn building_defence_ai;
+	_unit = _grp createUnit [_x, _sectorpos, [], 5, "NONE"];
+	_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+	[_unit] joinSilent _grp;
+	_unit setpos (_buildingpositions select (_position_indexes select _idxposit));
 	if ( _infsquad == "militia" ) then {
-		[ _nextunit ] call loadout_militia;
+		[ _unit ] call loadout_militia;
 	};
-	[ _nextunit ] call reammo_ai;
-
+	[ _unit ] call reammo_ai;
+	[ _unit, _sector ] spawn building_defence_ai;
 	_idxposit = _idxposit + 1;
-
-	if ( count units _grp > 10 ) then {
-		_everythingspawned = _everythingspawned + (units _grp);
-		_grp = createGroup [_default_side, true];
-	};
+	_spawned_units_local pushback _unit;
 	sleep 0.1;
 } foreach _squadtospawnnn;
 
-if ( !(isNull _grp)) then {
-	_everythingspawned = _everythingspawned + (units _grp);
-};
+diag_log format ["Done Spawning building squad (%1) at %2", count _spawned_units_local, time];
 
-diag_log format [ "Done Spawning building squad at %1", time ];
-
-_everythingspawned
+_spawned_units_local;
