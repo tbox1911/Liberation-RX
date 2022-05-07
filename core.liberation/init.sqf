@@ -50,7 +50,7 @@ SNC_VehRestriction= true;
 	params ["_vehicle"];
 	_vehicle addEventHandler ["Dammaged", {
 		params ["_unit", "_selection", "_damage", "_hitIndex", "_hitPoint", "_shooter", "_projectile"];
-		if ( (isPlayer _shooter) && (_shooter != _unit) ) then {
+		if ( (isPlayer _shooter) && (_shooter != _unit) && (alive _unit) ) then {
 			_msg = format ["Friendly fire from %1 to %2. Penalty: -5 rank and -150 ammo", name _shooter, name _unit];
 			[gamelogic, _msg] remoteExec ["globalChat", 0];
 			_shooter setVariable ["GREUH_ammo_count", ( (_shooter getVariable ["GREUH_ammo_count", 10]) - tkill_ammo), true];
@@ -64,7 +64,7 @@ SNC_VehRestriction= true;
 	params ["_vehicle"];
 	_vehicle addEventHandler ["Dammaged", {
 		params ["_unit", "_selection", "_damage", "_hitIndex", "_hitPoint", "_shooter", "_projectile"];
-		if ( (isPlayer _shooter) && (_shooter != _unit) ) then {
+		if ( (isPlayer _shooter) && (_shooter != _unit) && (alive _unit) ) then {
 			_msg = format ["Friendly fire from %1 to %2. Penalty: -5 rank and -150 ammo", name _shooter, name _unit];
 			[gamelogic, _msg] remoteExec ["globalChat", 0];
 			_shooter setVariable ["GREUH_ammo_count", ( (_shooter getVariable ["GREUH_ammo_count", 10]) - tkill_ammo), true];
