@@ -428,7 +428,7 @@ class Params
 		title = $STR_CLEANUP_PARAM;
 		values[] = { 0,900,1800,3600,7200,14400 };
 		texts[] = { $STR_PARAMS_DISABLED, $STR_CLEANUP_PARAM1, $STR_CLEANUP_PARAM2, $STR_CLEANUP_PARAM3, $STR_CLEANUP_PARAM4, $STR_CLEANUP_PARAM5 };
-		default = 1800;
+		default = 900;
 	};
 	class AutoSave{
 		title = "AutoSave Timer";
