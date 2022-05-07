@@ -15,7 +15,7 @@ removeBackpack player;
 removeHeadgear player;
 removeGoggles player;
 player setVariable ["GREUH_stuff_price", 0];
-GRLIB_backup_loadout = [player] call F_getLoadout;
+GRLIB_backup_loadout = [player, ["repetitive"]] call F_getLoadout;
 
 waitUntil {sleep 1; !isNil "GRLIB_init_server" };
 player allowDamage true;
