@@ -13,7 +13,7 @@ private _spawnpos = zeropos;
 private _vehcrew = [];
 private _max_try = 10;
 private _radius = GRLIB_capture_size;
-private _airveh_alt = 400;
+private _airveh_alt = 300;
 
 if ( _precise_position ) then {
 	_spawnpos = _sectorpos;
