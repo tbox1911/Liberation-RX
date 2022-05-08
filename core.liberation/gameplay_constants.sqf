@@ -56,11 +56,13 @@ opfor_kill_score = 1;
 opfor_kill_ammo = 5;
 kamikaze_kill_score = 5;
 kamikaze_kill_ammo = 25;
-civkill_score = -30;
-civkill_ammo = -300;
+civkill_score = -25;
+civkill_ammo = -100;
 tkill_score = -4;
 tkill_ammo = -40;
-box_recycle_value = 30;
+box_recycle_value = 35;
+prisoner_score = 10;
+prisoner_ammo = 35;
 
 
 // true to activate factions selection

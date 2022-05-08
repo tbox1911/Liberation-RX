@@ -23,7 +23,7 @@ _unit disableAI "ANIM";
 _unit disableAI "MOVE";
 _unit playmove "AmovPercMstpSnonWnonDnon_AmovPercMstpSsurWnonDnon" ;
 sleep 2;
-_grp = createGroup [GRLIB_side_civilian, true];
+_grp = createGroup [GRLIB_side_enemy, true];
 [_unit] joinSilent _grp;
 sleep 2;
 _unit setCaptive true;
@@ -102,7 +102,7 @@ while {alive _unit} do {
 		sleep 5;
 		[_unit, "AidlPsitMstpSnonWnonDnon_ground00"] remoteExec ["switchmove", 0];
 		[_unit, _unit_owner] call prisonner_captured;
-		sleep 300;
+		sleep 5;
 		deleteVehicle _unit;
 	};
 

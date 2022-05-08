@@ -154,8 +154,13 @@ comment "ButtonAir","LabelAir" stuff
 add money bonus for medic
 
 
+\scripts\server\ai\prisonner_ai.sqf:
+side of prisoner can be changed
+civillian problematic, because of instant punishment
+
+
 \scripts\server\ai\prisonner_captured.sqf:
-add money bonus for capturer
+add rank and money bonus for everybody
 
 
 \scripts\server\remotecall\intel_remote_call.sqf
