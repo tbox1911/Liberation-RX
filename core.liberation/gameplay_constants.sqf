@@ -49,10 +49,16 @@ GRLIB_offload_diag = false;
 // NRE_Key = 199;
 MGR_Key = 19;
 
+
+// gain and punishment
+respawn_ammo = 30; // +/- is conditional
+opfor_kill_score = 1;
+opfor_kill_ammo = 5;
 civkill_score = -30;
 civkill_ammo = -300;
-tkill_score = 4;
-tkill_ammo = 40;
+tkill_score = -4;
+tkill_ammo = -40;
+
 
 // true to activate factions selection
 FAC_MSU_ACTIVE = false;

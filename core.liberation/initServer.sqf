@@ -8,9 +8,9 @@
 	
     if ((_isUnconscious) && (_unit in _allHPs)) then {
         // (format ["%1 is down", name _unit]) remoteExec ["systemChat", 0];
-		[getPlayerUID _unit, -25] remoteExec ["F_addPlayerAmmo", 2];
+		[getPlayerUID _unit, - respawn_ammo] remoteExec ["F_addPlayerAmmo", 2];
     }else{
-		[getPlayerUID _unit, +25] remoteExec ["F_addPlayerAmmo", 2];
+		[getPlayerUID _unit, + respawn_ammo] remoteExec ["F_addPlayerAmmo", 2];
 	};
     
 }] call CBA_fnc_addEventHandler;
@@ -37,8 +37,8 @@ addMissionEventHandler ['EntityKilled',{
 			
 			if (side group _unit == opfor) then {
 				
-				[getPlayerUID _killer, +1] remoteExec ["F_addPlayerScore", 2];
-				[getPlayerUID _killer, +1] remoteExec ["F_addPlayerAmmo", 2];
+				[getPlayerUID _killer, opfor_kill_score] remoteExec ["F_addPlayerScore", 2];
+				[getPlayerUID _killer, opfor_kill_ammo] remoteExec ["F_addPlayerAmmo", 2];
 				
 			} else {
 				

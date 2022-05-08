@@ -51,10 +51,11 @@ SNC_VehRestriction= true;
 	_vehicle addEventHandler ["Dammaged", {
 		params ["_unit", "_selection", "_damage", "_hitIndex", "_hitPoint", "_shooter", "_projectile"];
 		if ( (isPlayer _shooter) && (_shooter != _unit) && (alive _unit) ) then {
-			_msg = format ["Friendly fire from %1 to %2. Penalty: -5 rank and -150 ammo", name _shooter, name _unit];
+			_msg = format ["Friendly fire from %1 to %2. Penalty: %3 rank and %4 ammo", name _shooter, name _unit, tkill_score, tkill_ammo];
 			[gamelogic, _msg] remoteExec ["globalChat", 0];
-			_shooter setVariable ["GREUH_ammo_count", ( (_shooter getVariable ["GREUH_ammo_count", 10]) - tkill_ammo), true];
-			[_shooter, - tkill_score] remoteExec ["addScore", 2];
+			[getPlayerUID _shooter, tkill_score] remoteExec ["F_addPlayerScore", 2];
+			[getPlayerUID _shooter, tkill_ammo] remoteExec ["F_addPlayerAmmo", 2];
+			
 		};
 	}];
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
@@ -65,10 +66,10 @@ SNC_VehRestriction= true;
 	_vehicle addEventHandler ["Dammaged", {
 		params ["_unit", "_selection", "_damage", "_hitIndex", "_hitPoint", "_shooter", "_projectile"];
 		if ( (isPlayer _shooter) && (_shooter != _unit) && (alive _unit) ) then {
-			_msg = format ["Friendly fire from %1 to %2. Penalty: -5 rank and -150 ammo", name _shooter, name _unit];
+			_msg = format ["Friendly fire from %1 to %2. Penalty: %3 rank and %4 ammo", name _shooter, name _unit, tkill_score, tkill_ammo];
 			[gamelogic, _msg] remoteExec ["globalChat", 0];
-			_shooter setVariable ["GREUH_ammo_count", ( (_shooter getVariable ["GREUH_ammo_count", 10]) - tkill_ammo), true];
-			[_shooter, - tkill_score] remoteExec ["addScore", 2];
+			[getPlayerUID _shooter, tkill_score] remoteExec ["F_addPlayerScore", 2];
+			[getPlayerUID _shooter, tkill_ammo] remoteExec ["F_addPlayerAmmo", 2];
 		};
 	}];
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
