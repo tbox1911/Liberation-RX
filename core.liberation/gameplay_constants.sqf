@@ -58,6 +58,7 @@ civkill_score = -30;
 civkill_ammo = -300;
 tkill_score = -4;
 tkill_ammo = -40;
+box_recycle_value = 30;
 
 
 // true to activate factions selection
