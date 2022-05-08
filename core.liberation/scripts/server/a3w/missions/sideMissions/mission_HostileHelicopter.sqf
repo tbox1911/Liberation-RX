@@ -28,7 +28,7 @@ _setupObjects =
 	_speedMode = if (count AllPlayers > 2) then { "NORMAL" } else { "LIMITED" };
 	_aiGroup setSpeedMode _speedMode;
 
-	_vehicle = [_missionPos, _vehicleClass, false] call F_libSpawnVehicle;
+	_vehicle = [_missionPos, _vehicleClass] call F_libSpawnVehicle;
 	(crew _vehicle) joinSilent _aiGroup;
 	_leader = effectiveCommander _vehicle;
 	_aiGroup selectLeader _leader;

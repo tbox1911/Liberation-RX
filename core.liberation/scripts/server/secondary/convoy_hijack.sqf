@@ -39,7 +39,7 @@ private _spawnpos = _convoy_destinations select 0;
 private _convoy_group = createGroup [GRLIB_side_enemy, true];
 
 // scout
-private _scout_vehicle = [_spawnpos, selectRandom opfor_vehicles_low_intensity, true, false ] call F_libSpawnVehicle;
+private _scout_vehicle = [_spawnpos, selectRandom opfor_vehicles_low_intensity, true] call F_libSpawnVehicle;
 _scout_vehicle addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage } ];
 ( crew _scout_vehicle ) joinSilent _convoy_group;
 
@@ -78,7 +78,7 @@ _waypoint setWaypointCompletionRadius 100;
 sleep 10;
 waitUntil {sleep 2; speed _scout_vehicle > 2 || !(alive _scout_vehicle)};
 
-private _transport_vehicle = [ _spawnpos, opfor_transport_truck, true, false ] call F_libSpawnVehicle;
+private _transport_vehicle = [ _spawnpos, opfor_transport_truck, true ] call F_libSpawnVehicle;
 _transport_vehicle addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage } ];
 for "_n" from 1 to _boxes_amount do { [_transport_vehicle, ammobox_o_typename] call attach_object_direct };
 ( crew _transport_vehicle ) joinSilent _convoy_group;
@@ -86,12 +86,13 @@ for "_n" from 1 to _boxes_amount do { [_transport_vehicle, ammobox_o_typename] c
 // troop transport
 sleep 10;
 waitUntil {sleep 2; speed _transport_vehicle > 2 || !(alive _transport_vehicle) };
-private _troop_vehicle = [ _spawnpos, opfor_transport_truck, true, false ] call F_libSpawnVehicle;
+private _troop_vehicle = [ _spawnpos, opfor_transport_truck, true ] call F_libSpawnVehicle;
 _troop_vehicle addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage } ];
 
 private _troops_group = createGroup [GRLIB_side_enemy, true];
 {
 	_unit = _troops_group createUnit [_x, _spawnpos, [], 5, "NONE"];
+	sleep 0.1;
 	_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	[_unit] joinSilent _troops_group;
 	[_unit] call reammo_ai;
