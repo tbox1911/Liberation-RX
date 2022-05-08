@@ -385,6 +385,51 @@ GRLIB_player_grave = [
 	"Land_Grave_dirt_F"
 ];
 
+if (GRLIB_ACE_enabled) then { 
+	GRLIB_movableObjects = boats_names + [
+		mobile_respawn,
+		Arsenal_typename,
+		FOB_box_typename,
+		FOB_box_outpost,
+		ammobox_b_typename,
+		ammobox_o_typename,
+		ammobox_i_typename,
+		waterbarrel_typename,
+		fuelbarrel_typename,
+		foodbarrel_typename,
+		medicalbox_typename,
+		repair_sling_typename,
+		fuel_sling_typename,
+		ammo_sling_typename,
+		medic_sling_typename,
+		A3W_BoxWps,
+		canisterFuel,
+		"Land_RepairDepot_01_civ_F",
+		"Land_Pod_Heli_Transport_04_bench_F",
+		"Land_Pod_Heli_Transport_04_covered_F",
+		"Box_NATO_WpsLaunch_F",
+		"Land_CargoBox_V1_F",
+		"Land_Cargo_House_V1_F",
+		"Land_Cargo_Patrol_V1_F",
+		"Land_Cargo_House_V2_F",
+		"Land_Cargo_Patrol_V2_F",
+		"Land_Cargo_House_V3_F",
+		"Land_Cargo_Patrol_V3_F",
+		"Box_NATO_WpsLaunch_F",
+		"mission_USLaunchers",
+		"Land_CargoBox_V1_F",
+		"rhs_weapon_crate",
+		"CUP_LocalBasicWeaponsBox",
+		"gm_AmmoBox_1000Rnd_762x51mm_ap_DM151_g3",
+		"Land_MedicalTent_01_MTP_closed_F"
+	];
+	
+	{
+		GRLIB_movableObjects pushback (_x select 0);
+	} foreach buildings;
+
+};
+
 if ( isNil "GRLIB_AirDrop_1" ) then {
 	GRLIB_AirDrop_1 = [
 		"I_Quadbike_01_F",
