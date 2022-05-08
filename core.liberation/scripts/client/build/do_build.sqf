@@ -423,6 +423,14 @@ while { true } do {
 							_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_EH }];
 						};
 					};
+					
+					//Make objects movable with ACE3.
+					if (GRLIB_ACE_enabled) then {
+						if (_classname in GRLIB_movableObjects) then {
+							[_vehicle, true, [0, 3, 1], 0] call ace_dragging_fnc_setCarryable;
+						};
+					};
+
 
 					// FOB
 					if(buildtype == 99) then {
