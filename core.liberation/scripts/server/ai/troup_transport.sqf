@@ -15,6 +15,7 @@ if ((alive _troup_transport) && (alive (driver _troup_transport))) then {
 	private _troupgrp = createGroup [GRLIB_side_enemy, true];
 	{
 		_unit = _troupgrp createUnit [_x, _start_pos, [], 5, "NONE"];
+		sleep 0.1;
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
         [_unit] joinSilent _troupgrp;
 		_unit assignAsCargo _troup_transport;

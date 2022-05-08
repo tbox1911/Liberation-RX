@@ -29,6 +29,7 @@ _grp = createGroup [_default_side, true];
 _idxposit = 0;
 {
 	_unit = _grp createUnit [_x, _sectorpos, [], 5, "NONE"];
+	sleep 0.1;
 	_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	[_unit] joinSilent _grp;
 	_unit setpos (_buildingpositions select (_position_indexes select _idxposit));

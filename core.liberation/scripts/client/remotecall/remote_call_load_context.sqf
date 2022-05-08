@@ -10,6 +10,7 @@ private _pos = getPosATL player;
 
 {
     _unit = _grp createUnit [ (_x select 0), _pos, [], 5, "NONE"];
+    sleep 0.1;
     _unit setPosATL (_pos vectorAdd [([] call F_getRND), ([] call F_getRND), 0.5]);
     [_unit] joinSilent _grp;
     _unit setMass 10;

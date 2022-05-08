@@ -14,6 +14,7 @@ if ( count _allposts > 0 ) then {
 			_unitclasspost = opfor_machinegunner;
 		};
 		_unit = _grp createUnit [_unitclasspost, _squadpos, [], 5, "NONE"];
+		sleep 0.1;
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		[_unit] joinSilent _grp;
 		_unit setpos (_building_positions select 1);
