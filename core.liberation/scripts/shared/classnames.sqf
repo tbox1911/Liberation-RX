@@ -30,9 +30,6 @@ support_vehicles = support_vehicles_west + [
 	[ammo_sling_typename,0,0,0,GRLIB_perm_inf],
 	[repair_sling_typename,0,0,0,GRLIB_perm_inf],
 	[medic_sling_typename,0,0,0,GRLIB_perm_inf],
-	[ammobox_b_typename,0,round(10 / GRLIB_recycling_percentage),0,99999],
-	[ammobox_o_typename,0,round(10 / GRLIB_recycling_percentage),0,99999],
-	[ammobox_i_typename,0,round(10 / GRLIB_recycling_percentage),0,99999],
 	[A3W_BoxWps,0,round(5 / GRLIB_recycling_percentage),0,99999]
 	// [Arsenal_typename,0,10,0,GRLIB_perm_inf],
 	// [medicalbox_typename,5,5,0,GRLIB_perm_inf],

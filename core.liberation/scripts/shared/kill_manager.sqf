@@ -68,13 +68,12 @@ if ( isServer ) then {
 		if ( _unit != _killer ) then {
 			_isPrisonner = _unit getVariable ["GRLIB_is_prisonner", false];
 			_isKamikaz = _unit getVariable ["GRLIB_is_kamikaze", false];
-			if ( _isKamikaz ) then { 
-				_msg = format ["%1 kill a Kamikaze !!", name _killer] ;
+			
+			if ( _isKamikaz ) then {
+				_msg = format ["%1 killed a Kamikaze !!", name _killer] ;
 				[gamelogic, _msg] remoteExec ["globalChat", 0];
-				[_killer, 1] remoteExec ["addScore", 2];
-				
-				_killer setVariable ["GREUH_ammo_count", ( (_killer getVariable ["GREUH_ammo_count", 0]) + 1 ), true];
-				
+				[getPlayerUID _killer, kamikaze_kill_score] remoteExec ["F_addPlayerScore", 2];
+				[getPlayerUID _killer, kamikaze_kill_ammo] remoteExec ["F_addPlayerAmmo", 2];
 			};
 
 			if ( !_isKamikaz && side (group _unit) == GRLIB_side_civilian || _isPrisonner ) then {
@@ -105,12 +104,12 @@ if ( isServer ) then {
 
 					if (_owner_id != "0") then {
 						_owner_player = _owner_id call BIS_fnc_getUnitByUID;
-						[_owner_player, -GRLIB_civ_killing_penalty] remoteExec ["addScore", 2];
 						
-						_owner_player setVariable ["GREUH_ammo_count", ( (_owner_player getVariable ["GREUH_ammo_count", 0]) - GRLIB_civ_killing_penalty), true];
-						
-						_msg = format ["%1, Your AI kill Civilian !!", name _owner_player] ;
+						_msg = format ["%1, Your AI killed a Civilian !!  Penalty: %2 rank and %3 ammo", name _owner_player, civkill_score, civkill_ammo] ;
 						[gamelogic, _msg] remoteExec ["globalChat", 0];
+						
+						[getPlayerUID _owner_id, civkill_score] remoteExec ["F_addPlayerScore", 2];
+						[getPlayerUID _owner_id, civkill_ammo] remoteExec ["F_addPlayerAmmo", 2];
 						[name _unit, GRLIB_civ_killing_penalty, _owner_player] remoteExec ["remote_call_civ_penalty", 0];
 					};
 				};
@@ -127,10 +126,10 @@ if ( isServer ) then {
 						};
 					};
 
-					private _ai_score = _killer getVariable ["PAR_AI_score", nil];
+					/* private _ai_score = _killer getVariable ["PAR_AI_score", nil];
 					if (!isNil "_ai_score") then {
 						_killer setVariable ["PAR_AI_score", (_ai_score - 1), true];
-					};
+					}; */
 				};
 				if ( side (group _unit) == GRLIB_side_friendly ) then {
 					stats_blufor_teamkills = stats_blufor_teamkills + 1;
