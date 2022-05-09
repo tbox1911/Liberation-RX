@@ -1,4 +1,4 @@
-private [ "_maxdist", "_truepos", "_built_object_remote", "_unit", "_pos", "_grp", "_classname", "_idx", "_unitrank", "_posfob", "_ghost_spot", "_vehicle", "_dist", "_actualdir", "_near_objects", "_near_objects_25", "_debug_colisions","_spaceIndex", "_sizeIndex", "_cargoSpace","_cargoSize" ];
+private [ "_maxdist", "_truepos", "_built_object_remote", "_unit", "_pos", "_grp", "_classname", "_idx", "_unitrank", "_posfob", "_ghost_spot", "_vehicle", "_dist", "_actualdir", "_near_objects", "_near_objects_25", "_debug_colisions"];
 
 build_confirmed = 0;
 _maxdist = GRLIB_fob_range;
@@ -11,10 +11,6 @@ _ammo = 0;
 _lst_a3 = [];
 _lst_r3f = [];
 build_unit = [];
-_spaceIndex = -1;
-_sizeIndex = -1;
-_cargoSpace = 0;
-_cargoSize = 0;
 
 
 GRLIB_preview_spheres = [];
@@ -431,20 +427,19 @@ while { true } do {
 					
 					//Make objects movable with ACE3.
 					if (GRLIB_ACE_enabled) then {
-						if ( _classname in GRLIB_transportCargo ) then {
-							_spaceIndex = [R3F_LOG_CFG_can_transport_cargo, _classname, -1] call F_ArrayGetNestedIndex;
-							if (_spaceIndex != -1) then {
-								_cargoSpace = ((R3F_LOG_CFG_can_transport_cargo select _spaceIndex) select 1);
-								[_vehicle, _cargoSpace] call ace_cargo_fnc_setSpace;
-							};
+						//Set the inventory space of object/vehicle.
+						if ( _classname in (GRLIB_cargoSpace select 0)) then {
+							_cargoSpace = ((GRLIB_cargoSpace select 1) select ((GRLIB_cargoSpace select 0) find _classname));
+							[_vehicle, _cargoSpace] call ace_cargo_fnc_setSpace;				
 						};
 						if (_classname in GRLIB_movableObjects) then {
-							_sizeIndex = [R3F_LOG_CFG_can_be_transported_cargo, _classname, -1] call F_ArrayGetNestedIndex;
-							if (_sizeIndex != -1)  then {
-								_cargoSize = ((R3F_LOG_CFG_can_be_transported_cargo select _sizeIndex) select 1);
+							//Set the size of cargo
+							if ( _classname in (GRLIB_cargoSize select 0)) then {
+								_cargoSize = ((GRLIB_cargoSize select 1) select ((GRLIB_cargoSize select 0) find _classname));
 								[_vehicle, _cargoSize] call ace_cargo_fnc_setSize;
 							};
-							[_vehicle, true, [0, 3, 1], 0] call ace_dragging_fnc_setCarryable;
+							// Set object movable with ACE. [_object, _enabled, [_offsetSide,_offsetForward,_offsetUp],_rotation] call ace_dragging_fnc_setCarryable;		
+							[_nextbuilding, true, [0, 3, 1], 0] call ace_dragging_fnc_setCarryable;
 						};
 					};
 

@@ -7,9 +7,6 @@ private _spawnpos = zeropos;
 private _max_try = 10;
 private _radius = 30;
 
-//ACE
-private _sizeIndex = -1;
-private _cargoSize = 0;
 
 
 
@@ -41,11 +38,12 @@ if (_locked) then {
 //ACE
 if (GRLIB_ace_enabled) then {
  if (_type in GRLIB_movableObjects) then {
-	 	_sizeIndex = [R3F_LOG_CFG_can_be_transported_cargo, _type, 0] call F_ArrayGetNestedIndex;
-		if (_sizeIndex != -1)  then {
-			_cargoSize = ((R3F_LOG_CFG_can_be_transported_cargo select _sizeIndex) select 1);
+	 	//Set the size of cargo
+		if ( _type in (GRLIB_cargoSize select 0)) then {
+			_cargoSize = ((GRLIB_cargoSize select 1) select ((GRLIB_cargoSize select 0) find _type));
 			[_box, _cargoSize] call ace_cargo_fnc_setSize;
 		};	
+		// Set object movable with ACE. [_object, _enabled, [_offsetSide,_offsetForward,_offsetUp],_rotation] call ace_dragging_fnc_setCarryable;		
 		[_box, true, [0, 3, 1], 0] call ace_dragging_fnc_setCarryable;
 	};
 };

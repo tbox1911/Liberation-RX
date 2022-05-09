@@ -52,6 +52,12 @@ if ( dorepackage > 0 ) then {
 		clearBackpackCargoGlobal _fobbox;
 		_fobbox setVariable ["fob_in_use", false, true];
 		_fobbox addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
+		if (GRLIB_ace_enabled) then {
+			if (_fobbox == FOB_box_typename) then {
+				[_fobbox, 50] call ace_cargo_fnc_setSize;
+			};
+			[_fobbox, -1] call ace_cargo_fnc_setSpace;
+		};
 	};
 	hint localize "STR_FOB_REPACKAGE_HINT";
 };
