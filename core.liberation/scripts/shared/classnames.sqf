@@ -37,7 +37,7 @@ call compileFinal preprocessFileLineNUmbers format ["R3F_LOG\addons_config\Liber
 call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_r3f.sqf", GRLIB_mod_west];
 call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_r3f.sqf", GRLIB_mod_east];
 
-];
+};
 
 // *** SUPPORT ***
 support_vehicles = [
