@@ -1,4 +1,4 @@
-private [ "_maxdist", "_truepos", "_built_object_remote", "_unit", "_pos", "_grp", "_classname", "_idx", "_unitrank", "_posfob", "_ghost_spot", "_vehicle", "_dist", "_actualdir", "_near_objects", "_near_objects_25", "_debug_colisions" ];
+private [ "_maxdist", "_truepos", "_built_object_remote", "_unit", "_pos", "_grp", "_classname", "_idx", "_unitrank", "_posfob", "_ghost_spot", "_vehicle", "_dist", "_actualdir", "_near_objects", "_near_objects_25", "_debug_colisions","_spaceIndex", "_sizeIndex", "_cargoSpace","_cargoSize" ];
 
 build_confirmed = 0;
 _maxdist = GRLIB_fob_range;
@@ -11,6 +11,11 @@ _ammo = 0;
 _lst_a3 = [];
 _lst_r3f = [];
 build_unit = [];
+_spaceIndex = -1;
+_sizeIndex = -1;
+_cargoSpace = 0;
+_cargoSize = 0;
+
 
 GRLIB_preview_spheres = [];
 while { count GRLIB_preview_spheres < 36 } do {
@@ -423,6 +428,26 @@ while { true } do {
 							_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_EH }];
 						};
 					};
+					
+					//Make objects movable with ACE3.
+					if (GRLIB_ACE_enabled) then {
+						if ( _classname in GRLIB_transportCargo ) then {
+							_spaceIndex = [R3F_LOG_CFG_can_transport_cargo, _classname, -1] call F_ArrayGetNestedIndex;
+							if (_spaceIndex != -1) then {
+								_cargoSpace = ((R3F_LOG_CFG_can_transport_cargo select _spaceIndex) select 1);
+								[_vehicle, _cargoSpace] call ace_cargo_fnc_setSpace;
+							};
+						};
+						if (_classname in GRLIB_movableObjects) then {
+							_sizeIndex = [R3F_LOG_CFG_can_be_transported_cargo, _classname, -1] call F_ArrayGetNestedIndex;
+							if (_sizeIndex != -1)  then {
+								_cargoSize = ((R3F_LOG_CFG_can_be_transported_cargo select _sizeIndex) select 1);
+								[_vehicle, _cargoSize] call ace_cargo_fnc_setSize;
+							};
+							[_vehicle, true, [0, 3, 1], 0] call ace_dragging_fnc_setCarryable;
+						};
+					};
+
 
 					// FOB
 					if(buildtype == 99) then {

@@ -67,3 +67,4 @@ is_recyclable = compileFinal preprocessFileLineNumbers "scripts\shared\functions
 is_owner = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_isOwner.sqf";
 is_public = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_isPublic.sqf";
 is_abandoned = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_isAbandoned.sqf";
+F_ArrayGetNestedIndex = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_ArrayGetNestedIndex.sqf";
