@@ -306,9 +306,24 @@ air_vehicles = [
   //["CUP_B_UH1D_GER_KSK",0,400,0,GRLIB_perm_inf], //verursacht script fehler
   //["CUP_B_UH1D_gunship_GER_KSK",0,1000,0,GRLIB_perm_inf], //verursacht script fehler
     ["CUP_B_AW159_GER",0,900,0,GRLIB_perm_inf],
-    ["ffaa_famet_ec135",0,250,0,GRLIB_perm_inf]
+    ["ffaa_famet_ec135",0,250,0,GRLIB_perm_inf],
 
-    
+    ["USAF_F35A",0,1500,0,GRLIB_perm_inf],
+	["USAF_F35A_LIGHT",0,1200,0,GRLIB_perm_inf],
+	["USAF_F35A_STEALTH",0,1000,0,GRLIB_perm_inf],
+	["USAF_F22_Heavy",0,1500,0,GRLIB_perm_inf],
+	["USAF_F22_EWP_AG",0,1500,0,GRLIB_perm_inf],
+	["USAF_F22_EWP_AA",0,1200,0,GRLIB_perm_inf],
+	["USAF_F22",0,1000,0,GRLIB_perm_inf],
+	["USAF_A10",0,1500,0,GRLIB_perm_inf],
+	["USAF_C130J_Cargo",0,350,0,GRLIB_perm_inf],
+	["USAF_C130J",0,350,0,GRLIB_perm_inf],
+	["USAF_C17",0,350,0,GRLIB_perm_inf],
+	["USAF_MQ9",0,1200,0,GRLIB_perm_inf],
+	["USAF_RQ4A",0,300,0,GRLIB_perm_inf],
+	["USAF_SlingLoad_Ammo",0,0,0,GRLIB_perm_inf],
+	["USAF_SlingLoad_Repair",0,0,0,GRLIB_perm_inf],
+	["USAF_SlingLoad_Fuel",0,0,0,GRLIB_perm_inf]
 ];
  
 blufor_air = [
