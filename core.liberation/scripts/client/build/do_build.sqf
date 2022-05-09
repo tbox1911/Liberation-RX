@@ -439,7 +439,7 @@ while { true } do {
 								[_vehicle, _cargoSize] call ace_cargo_fnc_setSize;
 							};
 							// Set object movable with ACE. [_object, _enabled, [_offsetSide,_offsetForward,_offsetUp],_rotation] call ace_dragging_fnc_setCarryable;		
-							[_nextbuilding, true, [0, 3, 1], 0] call ace_dragging_fnc_setCarryable;
+							[_vehicle, true, [0, 3, 1], 0] call ace_dragging_fnc_setCarryable;
 						};
 					};
 
