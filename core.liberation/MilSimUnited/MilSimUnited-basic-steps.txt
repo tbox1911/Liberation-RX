@@ -224,6 +224,12 @@ ca. 11: comment "XP AmmoBox" stuff -> add to opfor recycle list instead, so ever
 ca. 42: remove && score player <= GRLIB_perm_log
 
 
+\scripts\client\ui\squad_management.sqf
+recycle ai units 
+ca. 42: _refund
+disable loadout prices
+
+
 \scripts\server\ai\bomber_ai.sqf
 ca. 14: change GRLIB_side_civilian to GRLIB_side_enemy
 ca. 42: _unit addVest "V_TacChestrig_cbr_F";

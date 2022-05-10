@@ -39,9 +39,7 @@ GRLIB_nights_start = 21;
 GRLIB_nights_stop = 5;
 GREUH_start_ammo = 200;
 
-if (GRLIB_blufor_cap >= 10) then {
-    GRLIB_blufor_cap = 10
-};
+GRLIB_blufor_cap = 64;
 
 // don't forget that the human commander manages those, not the server
 GRLIB_offload_diag = false;
@@ -63,6 +61,7 @@ tkill_ammo = -40;
 box_recycle_value = 35;
 prisoner_score = 10;
 prisoner_ammo = 35;
+ai_value = 35;
 
 
 // true to activate factions selection

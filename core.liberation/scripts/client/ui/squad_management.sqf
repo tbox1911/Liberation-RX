@@ -27,7 +27,8 @@ _squad_camera camcommit 0;
 "rtt" setPiPEffect [0];
 
 while { dialog && alive player } do {
-	_bros = allUnits select {(_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1",PAR_Grp_ID]};
+	// _bros = allUnits select {(_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1",PAR_Grp_ID]};
+	_bros = units player;
 	if (  { alive _x } count (_bros) != _membercount || _renamed ) then {
 
 		_membercount = { alive _x } count (_bros);
@@ -128,7 +129,9 @@ while { dialog && alive player } do {
 				ctrlSetText [ 207, format ["%1: %2", localize 'STR_SECONDARY_WEAPON', localize 'STR_NONE' ] ];
 				ctrlSetText [ 208, format ["%1: %2", localize 'STR_AMMO', 0 ] ];
 			};
-			ctrlSetText [ 216, format ["Loadout Price: %1 Ammo", ([_selectedmember] call F_loadoutPrice)] ];
+			
+			// ctrlSetText [ 216, format ["Loadout Price: %1 Ammo", ([_selectedmember] call F_loadoutPrice)] ];
+			ctrlSetText [ 216, format ["Loadout Price: 0"] ];
 
 			if ( vehicle _selectedmember == _selectedmember ) then {
 				ctrlSetText [ 209, "" ];
@@ -208,7 +211,7 @@ while { dialog && alive player } do {
 		if (GRLIB_squadaction == 2) then {
 			private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
 			private _ai_rank = 1 + (GRLIB_rank_level find (rank _selectedmember));
-			private _refund = 25;
+			private _refund = ai_value;
 			/*
 			if (_ai_rank > 1 ) then {
 				_refund = round (([_selectedmember] call F_loadoutPrice) * (_ai_rank * 0.7));
@@ -255,12 +258,15 @@ while { dialog && alive player } do {
 
 		if (GRLIB_squadaction == 4) then {
 			if ((player distance _selectedmember) < 30) then {
-				private _price = [player] call F_loadoutPrice;
-				private _price_ai = [_selectedmember] call F_loadoutPrice;
+				// private _price = [player] call F_loadoutPrice;
+				// private _price_ai = [_selectedmember] call F_loadoutPrice;
+				private _price = 0;
+				private _price_ai = 0;
 				private _cost = 0 max (_price -_price_ai);
 				if ([_cost] call F_pay) then {
 					_selectedmember setUnitLoadout (getUnitLoadout player);
-					hintSilent format ["Loadout copied, Price: %1\nThank you !", _cost];
+					//hintSilent format ["Loadout copied, Price: %1\nThank you !", _cost];
+					hintSilent format ["Loadout copied."];
 				};
 			} else {
 				hintSilent "Unit too far from you.";

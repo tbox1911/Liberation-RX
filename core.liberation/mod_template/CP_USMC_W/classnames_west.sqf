@@ -23,7 +23,7 @@ A3W_BoxWps = "CUP_LocalBasicWeaponsBox";
  
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 infantry_units = [
-    ["CUP_B_GER_Operator_Medic",0,50,0,GRLIB_perm_inf]
+    ["CUP_B_GER_Operator_Medic",0,ai_value,0,GRLIB_perm_inf]
 ];
  
 units_loadout_overide = [
@@ -379,14 +379,6 @@ static_vehicles = [
  
 // *** Static Weapon with AI ***
 static_vehicles_AI = [
-    "CUP_B_SearchLight_static_USMC",
-    "CUP_B_M2StaticMG_USMC",
-    "CUP_B_M2StaticMG_MiniTripod_USMC",
-    "CUP_B_MK19_TriPod_USMC",
-    "CUP_B_Stinger_AA_pod_Base_USMC",
-    "CUP_B_TOW_TriPod_USMC",
-    "CUP_B_M252_USMC",
-    "CUP_B_M119_USMC",
     "CUP_WV_B_CRAM",
     "CUP_WV_B_RAM_Launcher",
     "B_Radar_System_01_F",
@@ -576,7 +568,9 @@ uavs = [
     "CUP_WV_B_CRAM",
     "B_SAM_System_03_F",
     "B_Ship_MRLS_01_F",
-    "B_AAA_System_01_F"
+    "B_AAA_System_01_F",
+    "USAF_MQ9",
+    "USAF_RQ4A"
     ];
  
 // Everything the AI troups should be able to resupply from
