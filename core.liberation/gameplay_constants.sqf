@@ -40,7 +40,7 @@ GRLIB_nights_stop = 5;
 GREUH_start_ammo = 200;
 
 if (GRLIB_blufor_cap >= 10) then {
-    GRLIB_blufor_cap = 200
+    GRLIB_blufor_cap = 10
 };
 
 // don't forget that the human commander manages those, not the server

@@ -23,7 +23,7 @@ A3W_BoxWps = "CUP_LocalBasicWeaponsBox";
  
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 infantry_units = [
-    ["CUP_B_GER_Operator_Medic",0,25,0,GRLIB_perm_inf]
+    ["CUP_B_GER_Operator_Medic",0,50,0,GRLIB_perm_inf]
 ];
  
 units_loadout_overide = [
@@ -159,6 +159,7 @@ heavy_vehicles = [
     ["CUP_B_M1126_ICV_MK19_Woodland",0,400,0,GRLIB_perm_inf],
     ["CUP_B_M7Bradley_USA_W",0,480,0,GRLIB_perm_inf],
     ["CUP_B_M6LineBacker_USA_W",0,450,0,GRLIB_perm_inf],
+    ["B_T_APC_Tracked_01_AA_F",0,500,0,GRLIB_perm_inf],
     ["CUP_B_M1135_ATGMV_Woodland",0,500,0,GRLIB_perm_inf],
     ["CUP_B_M2Bradley_USA_W",0,520,0,GRLIB_perm_inf],
     ["CUP_B_M1128_MGS_Woodland",0,650,0,GRLIB_perm_inf],
@@ -350,8 +351,6 @@ static_vehicles = [
     ["rnt_gmw_static_ai",0,0,0,GRLIB_perm_inf],
     ["Redd_Milan_Static",0,0,0,GRLIB_perm_inf],
     ["rnt_mg3_static_ai",0,0,0,GRLIB_perm_inf],
-    ["rnt_mantis_base",0,0,0,GRLIB_perm_inf],
-    ["rnt_mantis_radar",0,0,0,GRLIB_perm_inf],
     ["ffaa_m2_tripode",0,0,0,GRLIB_perm_inf],
     ["ffaa_lag40_tripode",0,0,0,GRLIB_perm_inf],
     ["ffaa_milan_tripode",0,0,0,GRLIB_perm_inf],
@@ -559,8 +558,6 @@ squads = [
  
 // All the UAVs must be declared here
 uavs = [
-    "rnt_mantis_base",
-    "rnt_mantis_radar",
     "ffaa_et_searcherIII",
     "ffaa_ea_reaper",
     "ffaa_raven",
