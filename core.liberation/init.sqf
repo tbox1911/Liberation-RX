@@ -340,6 +340,15 @@ SNC_VehRestriction= true;
 	_vehicle setObjectTextureGlobal [3,"A3\armor_f\data\cage_olive_co.paa"];
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
+["I_LT_01_scout_F", "InitPost", {
+    params ["_vehicle"];
+	[
+		_vehicle,
+		["Indep_Olive",1], 
+		["showTools",1,"showCamonetHull",0,"showBags",0,"showSLATHull",0]
+	] call BIS_fnc_initVehicle;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
 ["I_Plane_Fighter_04_F", "InitPost", {
     params ["_vehicle"];
 	[

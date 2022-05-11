@@ -159,7 +159,7 @@ heavy_vehicles = [
     ["CUP_B_M1126_ICV_MK19_Woodland",0,400,0,GRLIB_perm_inf],
     ["CUP_B_M7Bradley_USA_W",0,480,0,GRLIB_perm_inf],
     ["CUP_B_M6LineBacker_USA_W",0,450,0,GRLIB_perm_inf],
-    ["B_T_APC_Tracked_01_AA_F",0,500,0,GRLIB_perm_inf],
+    ["B_T_APC_Tracked_01_AA_F",0,700,0,GRLIB_perm_inf],
     ["CUP_B_M1135_ATGMV_Woodland",0,500,0,GRLIB_perm_inf],
     ["CUP_B_M2Bradley_USA_W",0,520,0,GRLIB_perm_inf],
     ["CUP_B_M1128_MGS_Woodland",0,650,0,GRLIB_perm_inf],
@@ -186,8 +186,15 @@ heavy_vehicles = [
     //BW mod
     ["Redd_Tank_Gepard_1A2_Flecktarn",0,400,0,GRLIB_perm_inf],
     ["Redd_Marder_1A5_Flecktarn",0,450,0,GRLIB_perm_inf],
+	
     ["Redd_Tank_Wiesel_1A2_TOW_Flecktarn",0,450,0,GRLIB_perm_inf],
     ["Redd_Tank_Wiesel_1A4_MK20_Flecktarn",0,450,0,GRLIB_perm_inf],
+	
+    ["I_LT_01_cannon_F",0,500,0,GRLIB_perm_inf],
+    ["I_LT_01_AT_F",0,500,0,GRLIB_perm_inf],
+    ["I_LT_01_AA_F",0,500,0,GRLIB_perm_inf],
+    ["I_LT_01_scout_F",0,500,0,GRLIB_perm_inf],
+	
     ["Redd_Tank_Fuchs_1A4_Jg_Milan_Flecktarn",0,300,0,GRLIB_perm_inf],
     ["Redd_Tank_Fuchs_1A4_Jg_Flecktarn",0,250,0,GRLIB_perm_inf],
     ["Redd_Tank_Fuchs_1A4_Pi_Flecktarn",0,250,0,GRLIB_perm_inf],
