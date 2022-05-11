@@ -30,9 +30,7 @@ while { true } do {
 		if (GRLIB_ACE_enabled) then {
 			if (_fob_type == FOB_box_typename) then {
 				[_fobbox, 50] call ace_cargo_fnc_setSize;
-				[_fobbox, true, [0, 3, 1], 0] call ace_dragging_fnc_setCarryable;
-			} else {
-				[_fobbox, -1] call ace_cargo_fnc_setSize;
+				[_fobbox, true, [0, 3, 0], 0] call ace_dragging_fnc_setDraggable;
 			};
 			[_fobbox, 0] call ace_cargo_fnc_setSpace;	
 		};

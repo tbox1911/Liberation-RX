@@ -13,19 +13,19 @@ call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_
 call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_r3f.sqf", GRLIB_mod_east];
 
 
-if (GRLIB_ACE_enabled) then { 
-	GRLIB_cargoSpace = [];
-	GRLIB_cargoSize = [];
 
-	// Vehicles & Objects cargo space
-	GRLIB_cargoSpace = [R3F_LOG_CFG_can_transport_cargo, 2] call F_invertArray;
+GRLIB_cargoSpace = [];
+GRLIB_cargoSize = [];
+// Maxiumim size object can be liftable, will still be dragable.
+GRLIB_maxLiftWeight = 10;
 
-	// Objects that can be moved
-	GRLIB_movableObjects = [] + boats_names + R3F_LOG_CFG_can_be_moved_by_player;	
-	{
-		GRLIB_movableObjects pushback (_x select 0);
-	} foreach buildings;
+// Vehicles & Objects cargo space
+GRLIB_cargoSpace = [R3F_LOG_CFG_can_transport_cargo, 2] call F_invertArray;
+// Objects that can be transported with its size
+GRLIB_cargoSize = [R3F_LOG_CFG_can_be_transported_cargo, 2] call F_invertArray;
+// Objects that can be moved
+GRLIB_movableObjects = [] + boats_names + R3F_LOG_CFG_can_be_moved_by_player;
+// Adding each buildings to movableObjects	
+{GRLIB_movableObjects pushback (_x select 0);} foreach buildings;
 
-	// Objects that can be transported with its size
-	GRLIB_cargoSize = [R3F_LOG_CFG_can_be_transported_cargo, 2] call F_invertArray;
-};
+

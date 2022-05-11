@@ -38,10 +38,13 @@ if (GRLIB_ACE_enabled) then {
 	 	//Set the size of cargo
 		if ( _type in (GRLIB_cargoSize select 0)) then {
 			_cargoSize = ((GRLIB_cargoSize select 1) select ((GRLIB_cargoSize select 0) find _type));
+			if (_cargoSize <= GRLIB_maxLiftWeight) then {
+				[_box, true, [0, 3, 1], 0] call ace_dragging_fnc_setCarryable;
+			};
 			[_box, _cargoSize] call ace_cargo_fnc_setSize;
 		};	
 		// Set object movable with ACE. [_object, _enabled, [_offsetSide,_offsetForward,_offsetUp],_rotation] call ace_dragging_fnc_setCarryable;		
-		[_box, true, [0, 3, 1], 0] call ace_dragging_fnc_setCarryable;
+		[_box, true, [0, 3, 0], 0] call ace_dragging_fnc_setDraggable;
 	};
 };
 
