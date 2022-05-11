@@ -47,7 +47,6 @@ resources_intel = 0;
 GRLIB_player_scores = [];
 GRLIB_garage = [];
 
-
 no_kill_handler_classnames = [FOB_typename, FOB_outpost, huron_typename];
 {
 	no_kill_handler_classnames pushback (_x select 0);
@@ -265,7 +264,6 @@ if ( !isNil "greuh_liberation_savegame" ) then {
             _nextbuilding setObjectTextureGlobal [0, getMissionPath "res\splash_libe2.paa"];
             _nextbuilding allowDamage false;
         };
-
 
 		if (GRLIB_ACE_enabled) then {
 			//Set the inventory space of object/vehicle.

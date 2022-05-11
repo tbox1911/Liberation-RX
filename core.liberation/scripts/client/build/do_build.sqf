@@ -12,7 +12,6 @@ _lst_a3 = [];
 _lst_r3f = [];
 build_unit = [];
 
-
 GRLIB_preview_spheres = [];
 while { count GRLIB_preview_spheres < 36 } do {
 	GRLIB_preview_spheres pushback ( "Sign_Sphere100cm_F" createVehicleLocal [ 0, 0, 0 ] );
@@ -442,7 +441,6 @@ while { true } do {
 							[_vehicle, true, [0, 3, 1], 0] call ace_dragging_fnc_setCarryable;
 						};
 					};
-
 
 					// FOB
 					if(buildtype == 99) then {

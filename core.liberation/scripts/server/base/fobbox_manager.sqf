@@ -27,7 +27,7 @@ while { true } do {
 		sleep 3;
 		_fobbox setDamage 0;
 		_fobbox allowdamage true;
-		if (GRLIB_ace_enabled) then {
+		if (GRLIB_ACE_enabled) then {
 			if (_fob_type == FOB_box_typename) then {
 				[_fobbox, 50] call ace_cargo_fnc_setSize;
 				[_fobbox, true, [0, 3, 1], 0] call ace_dragging_fnc_setCarryable;

@@ -31,7 +31,7 @@ while { true } do {
 		sleep 3;
 		huron setDamage 0;
 		huron allowdamage true;
-		if (GRLIB_ace_enabled) then {
+		if (GRLIB_ACE_enabled) then {
 			[huron, 200] call ace_cargo_fnc_setSpace;	
 		};
 

@@ -43,7 +43,7 @@ if (!isNil "chimera_vehicle_overide") then {
             _veh setVariable ["GRLIB_vehicle_owner", "public", true];
             sleep 0.1;
             _veh allowDamage true;
-            if (GRLIB_ace_enabled) then {
+            if (GRLIB_ACE_enabled) then {
                 if (_src_class == "B_Heli_Light_01_F") then {
                     [_veh, 15] call ace_cargo_fnc_setSpace;
                 };
@@ -55,5 +55,3 @@ if (!isNil "chimera_vehicle_overide") then {
 
     } forEach chimera_vehicle_overide;
 };
-
-

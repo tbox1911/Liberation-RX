@@ -24,21 +24,6 @@ zeropos = [0,0,0];
 // *** CIVILIAN ***
 [] call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_civ.sqf", GRLIB_mod_west];
 
-if (GRLIB_ace_enabled) then {
-R3F_LOG_CFG_can_tow = [];
-R3F_LOG_CFG_can_be_towed = [];
-R3F_LOG_CFG_can_lift = [];
-R3F_LOG_CFG_can_be_lifted = [];
-R3F_LOG_CFG_can_transport_cargo = [];
-R3F_LOG_CFG_can_be_transported_cargo = [];
-R3F_LOG_CFG_can_be_moved_by_player = [];
-
-call compileFinal preprocessFileLineNUmbers format ["R3F_LOG\addons_config\Liberation.sqf"];
-call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_r3f.sqf", GRLIB_mod_west];
-call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_r3f.sqf", GRLIB_mod_east];
-
-};
-
 // *** SUPPORT ***
 support_vehicles = [
 	[Arsenal_typename,0,25,0,0],
@@ -415,7 +400,6 @@ if (GRLIB_ACE_enabled) then {
 
 	// Objects that can be transported with its size
 	GRLIB_cargoSize = [R3F_LOG_CFG_can_be_transported_cargo, 2] call F_invertArray;
-	
 };
 
 if ( isNil "GRLIB_AirDrop_1" ) then {

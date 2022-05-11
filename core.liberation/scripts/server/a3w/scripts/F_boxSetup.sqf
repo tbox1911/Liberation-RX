@@ -7,9 +7,6 @@ private _spawnpos = zeropos;
 private _max_try = 10;
 private _radius = 30;
 
-
-
-
 while { (_spawnpos isEqualTo zeropos) && _max_try > 0 } do {
 	_spawnpos = [_pos, 0, _radius, 3, 1, 0.25, 0, [], [zeropos, zeropos]] call BIS_fnc_findSafePos;
 	_radius = _radius + 10;
@@ -36,7 +33,7 @@ if (_locked) then {
 };
 
 //ACE
-if (GRLIB_ace_enabled) then {
+if (GRLIB_ACE_enabled) then {
  if (_type in GRLIB_movableObjects) then {
 	 	//Set the size of cargo
 		if ( _type in (GRLIB_cargoSize select 0)) then {
