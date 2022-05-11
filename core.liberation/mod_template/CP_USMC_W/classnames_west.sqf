@@ -269,7 +269,6 @@ air_vehicles = [
     ["FIR_F15C",0,2000,0,GRLIB_perm_inf],
     ["FIR_F15E",0,2550,0,GRLIB_perm_inf],
     //ffaa
-    ["ffaa_et_searcherIII",0,150,0,GRLIB_perm_inf],
     ["ffaa_famet_ec135",0,250,0,GRLIB_perm_inf],
     ["ffaa_ea_reaper",0,2000,0,GRLIB_perm_inf],
   
@@ -557,7 +556,6 @@ squads = [
  
 // All the UAVs must be declared here
 uavs = [
-    "ffaa_et_searcherIII",
     "ffaa_ea_reaper",
     "ffaa_raven",
     "ffaa_lanzador_nasams",
