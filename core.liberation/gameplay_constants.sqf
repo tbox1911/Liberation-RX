@@ -297,5 +297,7 @@ item_blacklist =
     "Redd_Tank_M120_Tampella_Tripod",
     "Redd_Tank_M120_Tampella_Barrel",
     "rnt_mg3_static_barell_ai",
-    "rnt_mg3_static_tripod_ai"
+    "rnt_mg3_static_tripod_ai",
+    "H_HelmetO_ViperSP_ghex_F",
+    "H_HelmetO_ViperSP_hex_F"
 ];
