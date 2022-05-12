@@ -44,7 +44,6 @@ while { true } do {
 		{
 			_x setMarkerColorLocal GRLIB_color_friendly;
 			_x setMarkerTypeLocal ([_x] call _getMarkerType);
-			_x setMarkerAlphaLocal 1;
 		 } foreach blufor_sectors;
 	} else {
 		{ _x setMarkerColorLocal GRLIB_color_enemy; } foreach (sectors_allSectors - blufor_sectors);
@@ -54,9 +53,7 @@ while { true } do {
 	{
 		_nextmarker = _x;
 		(_nextmarker select 0) setMarkerColorLocal GRLIB_color_enemy;
-		(_nextmarker select 0) setMarkerAlphaLocal 0;
 		{
-			if ( _x == (_nextmarker select 1) ) exitWith { (_nextmarker select 0) setMarkerColorLocal GRLIB_color_friendly; (_nextmarker select 0) setMarkerAlphaLocal 1;};
 		} foreach blufor_sectors;
 	} foreach _vehicle_unlock_markers;
 	_sector_count = count blufor_sectors;
