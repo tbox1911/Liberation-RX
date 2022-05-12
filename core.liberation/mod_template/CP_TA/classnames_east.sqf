@@ -207,8 +207,8 @@ opfor_choppers = [
 ];
 
 opfor_air = [
-	"CUP_O_Su25_Dyn_TKA",
-	"CUP_O_SU34_RU"	
+	"O_Plane_CAS_02_Cluster_F",
+	"O_Plane_Fighter_02_F"	
 ];
 
 opfor_statics = [
