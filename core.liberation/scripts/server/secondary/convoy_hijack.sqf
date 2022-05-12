@@ -89,18 +89,16 @@ waitUntil {sleep 2; speed _transport_vehicle > 2 || !(alive _transport_vehicle) 
 private _troop_vehicle = [ _spawnpos, opfor_transport_truck, true ] call F_libSpawnVehicle;
 _troop_vehicle addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage } ];
 
-private _troops_group = createGroup [GRLIB_side_enemy, true];
+private _troops_group = [_spawnpos, ([] call F_getAdaptiveSquadComp), GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
 {
-	_unit = _troops_group createUnit [_x, _spawnpos, [], 5, "NONE"];
-	sleep 0.1;
-	_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-	[_unit] joinSilent _troops_group;
-	[_unit] call reammo_ai;
-	_unit moveInCargo _troop_vehicle;
-	sleep 0.1;
-} foreach ([] call F_getAdaptiveSquadComp);
-
-( crew _troop_vehicle ) joinSilent _convoy_group;
+	[_x] joinSilent _convoy_group;
+	_x assignAsCargo _troop_vehicle;
+	_x moveInCargo _troop_vehicle;
+	_x setSkill 0.65;
+	_x setSkill ["courage", 1];
+	_x allowFleeing 0;
+} foreach (units _troops_group);
+sleep 1;
 //-----------------------------------------
 
 // Markers

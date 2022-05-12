@@ -1,26 +1,20 @@
 params [ "_squadpos" ];
-private [ "_grp", "_building_positions", "_unitclasspost", "_unit", "_totalx2", "_totaly2", "_avgx2", "_avgy2", "_vd2", "_newdir2" ];
+private [ "_grp", "_building_positions", "_unitclass", "_unit", "_totalx2", "_totaly2", "_avgx2", "_avgy2", "_vd2", "_newdir2" ];
 diag_log format ["Spawn cargopost squad at %1", time];
 
 private _spawned_units_local = [];
-private _allposts = [ nearestObjects [ _squadpos, [ 'Land_Cargo_Patrol_V1_F','Land_Cargo_Patrol_V2_F','Land_Cargo_Patrol_V3_F' ], GRLIB_capture_size ] , { alive _x } ] call BIS_fnc_conditionalSelect;
+private _allposts = [ nearestObjects [ _squadpos, [ 'Land_Cargo_Patrol_V1_F','Land_Cargo_Patrol_V2_F','Land_Cargo_Patrol_V3_F', 'Industry_base_F' ], GRLIB_capture_size ] , { alive _x } ] call BIS_fnc_conditionalSelect;
+private _garnison = 5;
 if ( count _allposts > 0 ) then {
-	_grp = createGroup [GRLIB_side_enemy, true];
-
 	{
-		_building_positions = 	[_x] call BIS_fnc_buildingPositions;
-		_unitclasspost = opfor_marksman;
-		if ( floor(random 100) > 60 ) then {
-			_unitclasspost = opfor_machinegunner;
-		};
-		_unit = _grp createUnit [_unitclasspost, _squadpos, [], 5, "NONE"];
-		sleep 0.1;
-		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-		[_unit] joinSilent _grp;
-		_unit setpos (_building_positions select 1);
-		[ _unit ] call reammo_ai;
-		_spawned_units_local pushback _unit;
-		sleep 0.1;
+		_building_positions = [_x, _garnison] call BIS_fnc_buildingPositions;
+		_unitclass = [];
+		while { (count _unitclass) < _garnison } do { _unitclass pushback (selectRandom opfor_infantry) };	
+		_grp = [_squadpos, _unitclass, GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
+		{	
+			_x setPos (_building_positions select _forEachIndex);
+			_spawned_units_local pushback _x;
+		} foreach (units _grp);
 	} foreach _allposts;
 
 	_totalx2 = 0;

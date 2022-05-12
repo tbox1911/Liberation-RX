@@ -37,17 +37,7 @@ while { GRLIB_endgame == 0 } do {
 	diag_log format [ "Spawn Patrol type %1 on sector %2 at %3", _patrol_type, _spawn_marker, time ];
 
 	if (_patrol_type == 1) then {
-		_grp = createGroup [GRLIB_side_enemy, true];
-		_squad = [] call F_getAdaptiveSquadComp;
-		sleep 0.5;
-		{
-			_unit = _grp createUnit [_x, _sector_spawn_pos, [], 5, "NONE"];
-			sleep 0.1;
-			_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-			[_unit] joinSilent _grp;
-			[ _unit ] call reammo_ai;
-			sleep 0.1;
-		} foreach _squad;
+		_grp = [_sector_spawn_pos, ([] call F_getAdaptiveSquadComp), GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
 	};
 
 	if (_patrol_type == 2) then {

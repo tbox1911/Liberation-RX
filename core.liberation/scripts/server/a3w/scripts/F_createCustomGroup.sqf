@@ -3,11 +3,7 @@ params ["_grp", "_pos", ["_nbUnits", 7], ["_type", "infantry"], ["_patrol", true
 if (isNil "_grp" || isNil "_pos") exitWith {};
 diag_log format [ "Spawn SideMission squad type %1 (%2) at %3", _type, _nbUnits, time ];
 
-private _spawnpos = zeropos;
-private _radius = 20;
-private _max_try = 10;
 private _unitTypes = opfor_infantry;
-
 switch (_type) do {
 	case ("infantry"): { _unitTypes = opfor_infantry };
 	case ("militia"): { _unitTypes = militia_squad };
@@ -15,41 +11,20 @@ switch (_type) do {
 	case ("resistance"): { _unitTypes = resistance_squad };
 };
 
-sleep 0.5;
-for "_i" from 1 to _nbUnits do {
-	if (_type == "divers") then {
-		_spawnpos = _pos vectorAdd [floor(random _radius), floor(random _radius), -3];
-	} else {
-		_spawnpos = _pos vectorAdd [floor(random _radius), floor(random _radius), 0.5];
-	};
+private _unitclass = [];
+while { (count _unitclass) < _nbUnits } do { _unitclass pushback (selectRandom _unitTypes) };
+private _grp_tmp = [_pos, _unitclass, GRLIB_side_enemy, _type, _patrol] call F_libSpawnUnits;
 
-	while { (_spawnpos isEqualTo zeropos) && _max_try > 0 } do {
-		_spawnpos = [getMarkerPos _sector, 0, GRLIB_capture_size, 1, 0, 0, 0, [], [zeropos, zeropos]] call BIS_fnc_findSafePos;
-		_max_try = _max_try - 1;
-	};
-	if (!(_spawnpos isEqualTo zeropos)) then {
-		_unit = _grp createUnit [(selectRandom _unitTypes), _spawnpos, [], 5, "NONE"];
-		sleep 0.1;
-		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-		[_unit] joinSilent _grp;
-		_unit allowDamage false;
-		_unit setSkill 0.6;
-		_unit setSkill ["courage", 1];
-		_unit allowFleeing 0;
-		_unit setVariable ["GRLIB_mission_AI", true];
-		//_unit switchMove "amovpknlmstpsraswrfldnon";
-		if (_type == "militia") then { 
-			[ _unit ] call loadout_militia;
-		};	
-		[ _unit ] call reammo_ai;
-		sleep 0.1;
-	};
-};
+{
+	[_x] joinSilent _grp; 
+	_x setSkill 0.6;
+	_x setSkill ["courage", 1];
+	_x allowFleeing 0;
+	_x setVariable ["GRLIB_mission_AI", true];
+} forEach (units _grp_tmp);
 
-if (_patrol) then { [_grp, _spawnpos] spawn add_defense_waypoints };
-
-sleep 5;
-{ _x allowDamage true } forEach (units _grp);
+sleep 1;
+if (_patrol) then { [_grp, _pos] spawn add_defense_waypoints };
 
 //Unit Skill;
 //  Novice < 0.25

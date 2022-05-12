@@ -1,34 +1,29 @@
-params [ "_thispos" ];
-diag_log format ["Spawn Attack FOB %1 at %2", _thispos, time];
+params [ "_fobpos" ];
+diag_log format ["Spawn Attack FOB %1 at %2", _fobpos, time];
 private _max_prisonners = 4;
-sleep 5;
+sleep 10;
 
-private _ownership = [ _thispos ] call F_sectorOwnership;
+private _ownership = [ _fobpos ] call F_sectorOwnership;
 if ( _ownership != GRLIB_side_enemy ) exitWith {};
 
-private _grp = createGroup [GRLIB_side_friendly, true];
-
+private _grp = grpNull;
 if ( GRLIB_blufor_defenders ) then {
-	{ 
-		_unit = _grp createUnit [_x, _thispos, [], 5, "NONE"];
-		sleep 0.1;
-		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-		[_unit] joinSilent _grp;
-		_unit setSkill 0.65;
-		_unit setSkill ["courage", 1];
-		_unit allowFleeing 0;
-		sleep 0.1;
-	} foreach blufor_squad_inf;
+	_grp = [markerpos _sector, blufor_squad_mix, GRLIB_side_friendly, "infantry"] call F_libSpawnUnits;
+	_grp setCombatMode "RED";
+	_grp setBehaviourStrong "COMBAT";
+	{
+		_x setSkill 0.65;
+		_x setSkill ["courage", 1];
+		_x allowFleeing 0;
+	} foreach (units _grp);
+	_grp setCombatMode "GREEN";
+	_grp setBehaviour "COMBAT";
+	[_grp, markerpos _sector] spawn add_defense_waypoints;
 };
-
-sleep 3;
-
-_grp setCombatMode "GREEN";
-_grp setBehaviour "COMBAT";
 
 sleep 60;
 
-_ownership = [ _thispos ] call F_sectorOwnership;
+_ownership = [ _fobpos ] call F_sectorOwnership;
 if ( _ownership == GRLIB_side_friendly ) exitWith {
 	if ( GRLIB_blufor_defenders ) then {
 		{
@@ -37,37 +32,37 @@ if ( _ownership == GRLIB_side_friendly ) exitWith {
 	};
 };
 
-[ _thispos , 1 ] remoteExec ["remote_call_fob", 0];
+[ _fobpos , 1 ] remoteExec ["remote_call_fob", 0];
 
 private _sector_timer = GRLIB_vulnerability_timer + (5 * 60);
-private _near_outpost = (count (_thispos nearObjects [FOB_outpost, 100]) > 0);
+private _near_outpost = (count (_fobpos nearObjects [FOB_outpost, 100]) > 0);
 private _activeplayers = 0;
 while { (_sector_timer > 0 || _activeplayers > 0) && _ownership == GRLIB_side_enemy } do {
-	_ownership = [_thispos] call F_sectorOwnership;
-	_activeplayers = count ([allPlayers, {alive _x && (_x distance2D (_thispos)) < GRLIB_sector_size}] call BIS_fnc_conditionalSelect);
+	_ownership = [_fobpos] call F_sectorOwnership;
+	_activeplayers = count ([allPlayers, {alive _x && (_x distance2D (_fobpos)) < GRLIB_sector_size}] call BIS_fnc_conditionalSelect);
 	_sector_timer = _sector_timer - 1;
 	if (_sector_timer mod 60 == 0 && !_near_outpost) then {
-		[ _thispos , 4 ] remoteExec ["remote_call_fob", 0];
+		[ _fobpos , 4 ] remoteExec ["remote_call_fob", 0];
 	};	
 	sleep 1;
 };
 
 if ( GRLIB_endgame == 0 ) then {
 	if ( _ownership == GRLIB_side_enemy ) then {
-		[ _thispos , 2 ] remoteExec ["remote_call_fob", 0];
+		[ _fobpos , 2 ] remoteExec ["remote_call_fob", 0];
 		sleep 3;
 		if (!_near_outpost) then {
-			[_thispos, 250] remoteExec ["remote_call_penalty", 0];
+			[_fobpos, 250] remoteExec ["remote_call_penalty", 0];
 			sleep 3;
 		};
-		GRLIB_all_fobs = GRLIB_all_fobs - [_thispos];
+		GRLIB_all_fobs = GRLIB_all_fobs - [_fobpos];
 		publicVariable "GRLIB_all_fobs";
 		reset_battlegroups_ai = true;
-		[_thispos] call destroy_fob;
+		[_fobpos] call destroy_fob;
 		stats_fobs_lost = stats_fobs_lost + 1;
 	} else {
-		[ _thispos , 3 ] remoteExec ["remote_call_fob", 0];
-		_enemy_left = [allUnits, {(alive _x) && (vehicle _x == _x) && (side group _x == GRLIB_side_enemy) && ((_thispos distance2D _x) < GRLIB_capture_size * 0.8)}] call BIS_fnc_conditionalSelect;
+		[ _fobpos , 3 ] remoteExec ["remote_call_fob", 0];
+		_enemy_left = [allUnits, {(alive _x) && (vehicle _x == _x) && (side group _x == GRLIB_side_enemy) && ((_fobpos distance2D _x) < GRLIB_capture_size * 0.8)}] call BIS_fnc_conditionalSelect;
 		{ 
 			if ( _max_prisonners > 0 && ((random 100) < GRLIB_surrender_chance) ) then {
 				[_x] spawn prisonner_ai;

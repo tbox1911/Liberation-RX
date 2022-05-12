@@ -1,34 +1,28 @@
 params [ "_sector" ];
 diag_log format ["Spawn Attack Sector %1 at %2", _sector, time];
 private _max_prisonners = 4;
-
-sleep 5;
+sleep 10;
 
 private _ownership = [ markerpos _sector ] call F_sectorOwnership;
 if ( _ownership != GRLIB_side_enemy ) exitWith {};
 
-private _squad_type = blufor_squad_inf_light;
-if ( _sector in sectors_military ) then {
-	_squad_type = blufor_squad_inf;
-};
-
-private _grp = createGroup [GRLIB_side_friendly, true];
+private _grp = grpNull;
 private	_is_side_sector = (count (allMapMarkers select {_x select [0,12] == "side_mission" && markerPos _x distance2D markerPos _sector <= GRLIB_capture_size}) > 0);
 
 if ( GRLIB_blufor_defenders && !_is_side_sector) then {
-	{ 
-		_unit = _grp createUnit [_x, markerpos _sector, [], 5, "NONE"];
-		sleep 0.1;
-		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-		[_unit] joinSilent _grp;
-		_unit setSkill 0.65;
-		_unit setSkill ["courage", 1];
-		_unit allowFleeing 0;
-		sleep 0.1;
-	} foreach _squad_type;
-
+	private _squad_type = blufor_squad_inf_light;
+	if ( _sector in sectors_military ) then {
+		_squad_type = blufor_squad_mix;
+	};
+	_grp = [markerpos _sector, _squad_type, GRLIB_side_friendly, "infantry"] call F_libSpawnUnits;
 	_grp setCombatMode "RED";
 	_grp setBehaviourStrong "COMBAT";
+	{
+		_x setSkill 0.65;
+		_x setSkill ["courage", 1];
+		_x allowFleeing 0;
+	} foreach (units _grp);
+	[_grp, markerpos _sector] spawn add_defense_waypoints;
 };
 
 sleep 60;

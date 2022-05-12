@@ -84,7 +84,6 @@ if (_enable_defenders) then {
         _nextpos = [((_base_position select 0) + (_nextpos select 0)),((_base_position select 1) + (_nextpos select 1)),(_nextpos select 2)];
         _nextdir = _nextentry select 2;
         _unit = _grpdefenders createUnit [_nextclass, _nextpos, [], 5, "NONE"];
-        sleep 0.1;
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
         [_unit] joinSilent _grpdefenders;
         _unit setpos _nextpos;
@@ -95,16 +94,8 @@ if (_enable_defenders) then {
 
     private _sentry = ceil ((3 + (floor (random 4))) * ( sqrt ( GRLIB_unitcap ) ) );
 
-    private _grpsentry = createGroup [GRLIB_side_enemy, true];
     private _base_sentry_pos = [(_base_position select 0) + ((_base_corners select 0) select 0), (_base_position select 1) + ((_base_corners select 0) select 1),0];
-    for [ {_idx=0},{_idx < _sentry},{_idx=_idx+1} ] do {
-        _unit = _grpsentry createUnit [opfor_sentry, _base_sentry_pos, [], 5, "NONE"];
-        sleep 0.1;
-		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-        [_unit] joinSilent _grpsentry;
-        [_unit] call reammo_ai;
-        sleep 0.1;
-    };
+    private _grpsentry = [_base_sentry_pos, ([] call F_getAdaptiveSquadComp), GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
 
     while {(count (waypoints _grpsentry)) != 0} do {deleteWaypoint ((waypoints _grpsentry) select 0);};
     {
