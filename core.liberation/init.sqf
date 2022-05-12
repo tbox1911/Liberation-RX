@@ -20,11 +20,9 @@ if (!abort_loading) then {
 	[] call compileFinal preprocessFileLineNUmbers "scripts\shared\init_sectors.sqf";
 	if (!GRLIB_ACE_enabled) then {
 		[] execVM "R3F_LOG\init.sqf";
-	else {
-		call compileFinal preprocessFileLineNUmbers format ["R3F_LOG\addons_config\Liberation.sqf"];
-		call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_r3f.sqf", GRLIB_mod_west];
-		call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_r3f.sqf", GRLIB_mod_east];
-	}};
+	} else {
+		[] call compileFinal preprocessFileLineNUmbers "scripts\shared\init_ace.sqf";
+	};
 
 	if (isServer) then {
 		[] execVM "scripts\server\init_server.sqf";
