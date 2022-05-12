@@ -1,3 +1,4 @@
+// Initialize ACE
 
 R3F_LOG_CFG_can_tow = [];
 R3F_LOG_CFG_can_be_towed = [];
@@ -7,12 +8,9 @@ R3F_LOG_CFG_can_transport_cargo = [];
 R3F_LOG_CFG_can_be_transported_cargo = [];
 R3F_LOG_CFG_can_be_moved_by_player = [];
 
-
 call compileFinal preprocessFileLineNUmbers format ["R3F_LOG\addons_config\Liberation.sqf"];
 call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_r3f.sqf", GRLIB_mod_west];
 call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_r3f.sqf", GRLIB_mod_east];
-
-
 
 GRLIB_cargoSpace = [];
 GRLIB_cargoSize = [];
@@ -27,5 +25,3 @@ GRLIB_cargoSize = [R3F_LOG_CFG_can_be_transported_cargo, 2] call F_invertArray;
 GRLIB_movableObjects = [] + boats_names + R3F_LOG_CFG_can_be_moved_by_player;
 // Adding each buildings to movableObjects	
 {GRLIB_movableObjects pushback (_x select 0);} foreach buildings;
-
-
