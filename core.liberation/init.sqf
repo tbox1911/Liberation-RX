@@ -362,7 +362,7 @@ SNC_VehRestriction= true;
     params ["_vehicle"];
     [
         _vehicle,
-        ["SU-57 Syle 1", 1],
+        ["Su57_Style1", 1],
         true
     ] call BIS_fnc_initvehicle;
     
@@ -377,7 +377,7 @@ SNC_VehRestriction= true;
     params ["_vehicle"];
     [
         _vehicle,
-        ["SU-57 Syle 1", 1],
+        ["Su57_Style1", 1],
         true
     ] call BIS_fnc_initvehicle;
     
@@ -417,7 +417,6 @@ SNC_VehRestriction= true;
 	
 	_vehicle linkItem "NVGoggles_OPFOR";
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
 
 ["BWA3_Medic_Fleck", "InitPost", {
 	params ["_vehicle"];
