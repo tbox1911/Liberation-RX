@@ -92,8 +92,7 @@ if (_enable_defenders) then {
         sleep 0.1;
     } foreach _idxselected;
 
-    private _sentry = ceil ((3 + (floor (random 4))) * ( sqrt ( GRLIB_unitcap ) ) );
-
+    private _sentry = ceil ((5 + (floor (random 4))) * (sqrt (GRLIB_unitcap)) );
     private _base_sentry_pos = [(_base_position select 0) + ((_base_corners select 0) select 0), (_base_position select 1) + ((_base_corners select 0) select 1),0];
     private _grpsentry = [_base_sentry_pos, ([] call F_getAdaptiveSquadComp), GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
 

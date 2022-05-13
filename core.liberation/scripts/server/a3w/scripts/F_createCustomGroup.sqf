@@ -1,5 +1,11 @@
 if (!isServer) exitWith {};
-params ["_grp", "_pos", ["_nbUnits", 7], ["_type", "infantry"], ["_patrol", true]];
+params [
+	"_grp",
+	"_pos",
+	["_nbUnits", 7],
+	["_type", "infantry"],
+	["_patrol", true]
+];
 if (isNil "_grp" || isNil "_pos") exitWith {};
 diag_log format [ "Spawn SideMission squad type %1 (%2) at %3", _type, _nbUnits, time ];
 
