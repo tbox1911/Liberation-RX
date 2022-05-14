@@ -96,7 +96,7 @@ militia_vehicles = [
 	"CUP_O_Hilux_SPG9_TK_INS",
 	"CUP_O_Hilux_UB32_TK_INS",
 	"CUP_O_Hilux_zu23_TK_INS",
-	"CUP_O_T34_TKA",
+	"O_MBT_02_cannon_F",
 	"CUP_O_UH1H_slick_TKA"
 ];
 
@@ -106,7 +106,7 @@ boats_east = [
 
 opfor_vehicles = [
 "CUP_O_2S6_RU",
-"CUP_O_T72_RU",
+"O_MBT_02_cannon_F",
 "CUP_O_GAZ_Vodnik_KPVT_RU",
 "CUP_O_GAZ_Vodnik_BPPU_RU",
 "CUP_O_GAZ_Vodnik_AGS_RU",
@@ -132,8 +132,8 @@ opfor_vehicles_low_intensity = [
 	"CUP_O_Hilux_SPG9_TK_INS",
 	"CUP_O_Hilux_UB32_TK_INS",
 	"CUP_O_Hilux_zu23_TK_INS",
-	"CUP_O_T34_TKA",
 	"CUP_O_ZSU23_TK",
+	"O_MBT_02_cannon_F",
 	"CUP_O_ZSU23_Afghan_TK",
 	"CUP_O_UH1H_slick_TKA"
 ];
@@ -141,8 +141,9 @@ opfor_vehicles_low_intensity = [
 opfor_battlegroup_vehicles = [
 	"CUP_O_BM21_TKA",
 	"CUP_O_2S6M_RU",
-	"CUP_O_T90_RU",
-	"CUP_O_T72_RU",
+	"O_MBT_04_command_F",
+	"O_MBT_04_cannon_F",
+	"O_MBT_02_cannon_F",
 	"CUP_O_BTR90_RU",
 	"CUP_O_GAZ_Vodnik_BPPU_RU",
 	"CUP_O_GAZ_Vodnik_AGS_RU",
@@ -152,7 +153,9 @@ opfor_battlegroup_vehicles = [
 	"CUP_O_Ka52_RU",
 	"CUP_O_BMP3_RU",
 	"CUP_O_GAZ_Vodnik_Unarmed_RU",
-	"CUP_O_Mi24_D_Dynamic_TK"
+	"CUP_O_Mi24_D_Dynamic_TK",
+	"O_Plane_CAS_02_Cluster_F",
+	"O_Plane_Fighter_02_F"
 ];
 
 opfor_battlegroup_vehicles_low_intensity = [
@@ -160,8 +163,8 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"CUP_O_BM21_TKA",
 	"CUP_O_LR_SPG9_TKA",
 	"CUP_O_LR_AA_TKA",
-	"CUP_O_T55_TK",
-	"CUP_O_T72_TKA",
+	"O_MBT_04_cannon_F",
+	"O_MBT_02_cannon_F",
 	"CUP_O_BMP1_TKA",
 	"CUP_O_BMP1P_TKA",
 	"CUP_O_BMP2_TKA",
@@ -184,14 +187,13 @@ opfor_troup_transports = [
 	"CUP_O_MI6T_TKA",
 	"CUP_O_BMP3_RU",
 	"CUP_O_MTLB_pk_WDL_RU",
-	"CUP_O_T55_TK",
+	"O_MBT_04_cannon_F",
+	"O_MBT_02_cannon_F",
 	"CUP_O_M113A3_TKA",
 	"CUP_O_BTR60_TK",
-	"CUP_O_T72_TKA",
 	"CUP_O_MTLB_pk_TKA",
 	"CUP_O_BTR80A_TK",
 	"CUP_O_BTR80_TK",
-	"CUP_O_T34_TKA",
 	"CUP_O_BMP3_RU",
 	"CUP_O_Mi17_TK",
 	"CUP_O_V3S_Covered_TKM",
@@ -231,7 +233,6 @@ opfor_recyclable = [
 	["Land_BarrelWater_F",0,round(box_recycle_value / GRLIB_recycling_percentage),0], 
 	["Land_FoodSacks_01_large_brown_idap_F",0,round(box_recycle_value / GRLIB_recycling_percentage),0], 
 	["Land_MetalBarrel_F",0,round(box_recycle_value / GRLIB_recycling_percentage),0], 
-	
 	["CUP_O_BM21_TKA",0,round (60 / GRLIB_recycling_percentage),0],
 	["I_MRAP_03_F",0,round (60 / GRLIB_recycling_percentage),0],
 	["I_MRAP_03_F",0,round (60 / GRLIB_recycling_percentage),0],
@@ -310,6 +311,11 @@ opfor_recyclable = [
 	["CUP_O_Hilux_DSHKM_TK_INS",1,round (30 / GRLIB_recycling_percentage),2],
 	["CUP_O_Hilux_unarmed_TK_INS",1,round (30 / GRLIB_recycling_percentage),2],
 	["CUP_O_Hilux_AGS30_TK_INS",1,round (30 / GRLIB_recycling_percentage),2],
+	["O_Plane_CAS_02_Cluster_F",1,round (300 / GRLIB_recycling_percentage),2],
+	["O_Plane_Fighter_02_F",1,round (300 / GRLIB_recycling_percentage),2],
+	["O_MBT_04_command_F",1,round (150 / GRLIB_recycling_percentage),2],
+	["O_MBT_04_cannon_F",1,round (120 / GRLIB_recycling_percentage),2],
+	["O_MBT_02_cannon_F",1,round (100 / GRLIB_recycling_percentage),2],
 	["CUP_O_T72_TKA",1,round (60 / GRLIB_recycling_percentage),2]
 ];
 

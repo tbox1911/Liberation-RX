@@ -51,9 +51,14 @@ while {alive _unit} do {
 			_expl3 setVectorDirAndUp [[0.5, -0.5, 0], [0.5, 0.5, 0]];
 
 			sleep 3;
+	/*		
 			{
 				if ((_unit distance2D _x) <= 150) then { ["bombershout"] remoteExec ["playSound", owner _x] };
 			} forEach allPlayers;
+	*/
+
+			playsound3d [getMissionPath "res\shout.ogg",_unit,false,getPosASL _unit,5,1,150];
+
 
 			sleep 0.5;
 			if (alive _unit) then {
