@@ -3419,7 +3419,7 @@
 					&lt;t size='1'&gt;
 					Your mission is to destroy all supply assets (trucks, containers) at the objective by any means at your disposal. Unfortunately our intelligence is not able to provide you with a precise position for the base, you will have to locate the objective in the red zone on your map.&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
-					&lt;t size='1.15' color='#00a0ff'&gt;Cost: 30&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
+					&lt;t size='1.15' color='#00a0ff'&gt;Cost: 50&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 					&lt;br/&gt;
 					&lt;t size='1.15' color='#ffa000'&gt;Reward: OPFOR alert level reduced by 60%&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
@@ -3434,7 +3434,7 @@
 					&lt;t size='1'&gt;
 					Votre mission est de détruire tous les équipements logistiques (camions, containers) présents sur l'objectif. Malheureusement nos renseignements ne permettent pas de vous donner la position précise de la base, vous devrez la chercher dans la zone rouge visible sur votre carte.&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
-					&lt;t size='1.15' color='#00a0ff'&gt;Coût: 30&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
+					&lt;t size='1.15' color='#00a0ff'&gt;Coût: 50&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 					&lt;br/&gt;
 					&lt;t size='1.15' color='#ffa000'&gt;Récompense: niveau d'alerte de l'OPFOR réduit de 60%&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
@@ -3449,7 +3449,7 @@
 					&lt;t size='1'&gt;
 					Ihr Auftrag ist es alle Nachschubkapazitäten (Container und Trucks) zu zerstören. Leider ist unser Geheimdienst nicht in der Lage Ihnen die genaue Position des Ortes mitzuteilen. Sie werden das Ziel innerhalb der makierten roten Zone auf der Karte suchen müssen.&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
-					&lt;t size='1.15' color='#00a0ff'&gt;Kosten: 30&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
+					&lt;t size='1.15' color='#00a0ff'&gt;Kosten: 50&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 					&lt;br/&gt;
 					&lt;t size='1.15' color='#ffa000'&gt;Belohnung: OPFOR Alarmstatus wird um 60% reduziert&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
@@ -3464,7 +3464,7 @@
 					&lt;t size='1'&gt;
 					Tu misión consiste en destruir todos los recursos (camiones, containers) en el objetivo por cualquier medio que esté en tus manos. Desafortunadamente nuestra inteligencia no permite obtener una localización precisa de la base, deberás encontrarla dentro de la zona marcada en rojo en el mapa.&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
-					&lt;t size='1.15' color='#00a0ff'&gt;Cost: 30&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
+					&lt;t size='1.15' color='#00a0ff'&gt;Cost: 50&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 					&lt;br/&gt;
 					&lt;t size='1.15' color='#ffa000'&gt;Recompensa: nivel de alerta del OPFOR reducido en un 60%&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
@@ -3475,7 +3475,7 @@
 					&lt;br/&gt;&lt;br/&gt;&lt;t size='1'&gt;Силы OPFOR используют небольшие базы снабжения, расположенные за линией фронта. Уничтожение материальных средств этих баз значительно нарушит связи снабжения OPFOR и ухудшит их способность реагировать на ваши действия.&lt;/t&gt;&lt;br/&gt;	&lt;t size='1'&gt;
 					Ваша миссия состоит в том, чтобы уничтожить на базах все средства снабжения (грузовики, контейнеры) любыми средствами, находящимися в вашем распоряжении. К сожалению, наша разведка не в состоянии предоставить вам точное положение этих баз, вам придется найти их самостоятельно. Ищите базы снабжения в районе красной зоны, отмеченной на вашей карте.&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
-					&lt;t size='1.15' color='#00a0ff'&gt;Требуется: 30&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
+					&lt;t size='1.15' color='#00a0ff'&gt;Требуется: 50&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 					&lt;br/&gt;
 					&lt;t size='1.15' color='#ffa000'&gt;Награда: уровень тревоги OPFOR уменьшится на 60%&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
@@ -3693,7 +3693,7 @@
 					&lt;t size='1'&gt;
 					The helicopter may have crashlanded anywhere in a large zone around its last known position. Your mission is to retrieve the chopper crew and their precious intel. Hostile forces may have found them first, so you must be quick, careful, and ready to engage.&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
-					&lt;t size='1.15' color='#00a0ff'&gt;Cost: 10&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
+					&lt;t size='1.15' color='#00a0ff'&gt;Cost: 20&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 					&lt;br/&gt;
 					&lt;t size='1.15' color='#ffa000'&gt;Reward: 20 intel points (10 for each crew alive).&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
@@ -3708,7 +3708,7 @@
 					&lt;t size='1'&gt;
 					L'hélicopter a pu finir sa course dans une large zone autour de sa dernière position connue. Votre mission est de retrouver l'équipage et sa précieuse intel. Les forces hostiles les auront peut-être déjà retrouvés, votre action doit donc être rapide et décisive.&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
-					&lt;t size='1.15' color='#00a0ff'&gt;Cout: 10&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
+					&lt;t size='1.15' color='#00a0ff'&gt;Cout: 20&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 					&lt;br/&gt;
 					&lt;t size='1.15' color='#ffa000'&gt;Récompense: 20 points d'intel (10 pour chaque équipage vivant).&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
@@ -3723,7 +3723,7 @@
 					&lt;t size='1'&gt;
 					Der Helikopter muss irgendwo in einem größeren Bereich um seine letzte bekannte Position notgelandet sein. Ihr Auftrag ist es die Besatzung zu finden und deren Aufklärungsbericht zu beschaffen. Feindliche Kräfte könnten sie bereits gefunden haben, also müssen sie schnell, vorsichtig und auf alles vorbereitet sein.&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
-					&lt;t size='1.15' color='#00a0ff'&gt;Cost: 10&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
+					&lt;t size='1.15' color='#00a0ff'&gt;Cost: 20&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 					&lt;br/&gt;
 					&lt;t size='1.15' color='#ffa000'&gt;Reward: 20 intel points (10 for each crew alive).&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
@@ -3738,7 +3738,7 @@
 					&lt;t size='1'&gt;
 					这架直升机可能在它最后已知位置附近区域的任何地点坠毁。你的任务是找回机组人员和他们收集的宝贵情报。敌军可能已经先发现了他们，所以你必须迅速，小心，并准备交战。&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
-					&lt;t size='1.15' color='#00a0ff'&gt;花费: 10&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
+					&lt;t size='1.15' color='#00a0ff'&gt;花费: 20&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 					&lt;br/&gt;
 					&lt;t size='1.15' color='#ffa000'&gt;奖励: 20 情报点 (每名活着的机组乘员10情报点).&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
@@ -3753,7 +3753,7 @@
 					&lt;t size='1'&gt;
 					ヘリは最後に確認された地点を中心としたエリアのどこかに不時着していると考えられる。貴君らの任務は墜落したヘリの乗員の救助と彼らが持つ情報の回収である。敵が既に墜落地点を特定している可能性があるので迅速にかつ慎重に任務を遂行してほしい。&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
-					&lt;t size='1.15' color='#00a0ff'&gt;コスト: 10&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
+					&lt;t size='1.15' color='#00a0ff'&gt;コスト: 20&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 					&lt;br/&gt;
 					&lt;t size='1.15' color='#ffa000'&gt;報酬: 20 情報 (乗員一人につき10).&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
