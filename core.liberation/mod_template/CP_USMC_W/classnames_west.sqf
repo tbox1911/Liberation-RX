@@ -8,7 +8,7 @@ GRLIB_color_friendly = "ColorBLUFOR";
 huron_typename = "CUP_B_CH47F_USA";  // comment to use value from lobby/server.cfg
 FOB_typename = "Land_Cargo_HQ_V1_F";
 FOB_box_typename = "B_Slingload_01_Cargo_F";
-FOB_truck_typename = "CUP_B_AAV_Unarmed_USMC" ;
+FOB_truck_typename = "CUP_B_M113A3_HQ_GER";
 Respawn_truck_typename = "CUP_B_nM997_USMC_WDL";
 ammo_truck_typename = "CUP_B_MTVR_Ammo_USMC";
 fuel_truck_typename = "CUP_B_MTVR_Refuel_USMC";
@@ -33,14 +33,19 @@ units_loadout_overide = [
 ];  
 
 light_vehicles = [
- 
-
+	
     ["CUP_B_M1030_USMC",0,20,0,GRLIB_perm_inf],
 
     ["C_Van_01_transport_F",0,70,0,GRLIB_perm_inf],
 
     ["CUP_I_SUV_ION",0,100,0,GRLIB_perm_inf],
     ["CUP_B_T810_Unarmed_CZ_WDL",0,100,0,GRLIB_perm_inf],
+	
+	// Tobis Bundeswehr Mod
+    ["TBW_LSV_Schnee",0,100,0,GRLIB_perm_inf],
+    ["TBW_Fennek_Schnee",0,120,0,GRLIB_perm_inf],
+    ["TBW_Fennek_MG_Schnee",0,200,0,GRLIB_perm_inf],
+    ["TBW_Fennek_GMG_Schnee",0,300,0,GRLIB_perm_inf],
 
     ["B_MRAP_01_F",0,120,0,GRLIB_perm_inf],
     ["B_MRAP_01_HMG_F",0,200,0,GRLIB_perm_inf],
@@ -149,6 +154,14 @@ light_vehicles = [
 ];
  
 heavy_vehicles = [
+	
+	// Tobis Bundeswehr Mod
+    ["TBW_Wiesel3_A_Schnee",0,500,0,GRLIB_perm_inf],
+    ["TBW_Wiesel3_AA_Schnee",0,500,0,GRLIB_perm_inf],
+    ["TBW_Wiesel3_MK_Schnee",0,500,0,GRLIB_perm_inf],
+    ["TBW_Wiesel3_AT_Schnee",0,500,0,GRLIB_perm_inf],
+    ["TBW_Leopard2_Schnee",0,850,0,GRLIB_perm_inf],
+	
     ["CUP_B_Boxer_HMG_GER_WDL",0,300,0,GRLIB_perm_inf],
     ["CUP_B_Boxer_GMG_GER_WDL",0,400,0,GRLIB_perm_inf],
     ["CUP_B_AAV_USMC_TTS",0,400,0,GRLIB_perm_inf],

@@ -4,11 +4,11 @@ RPT_texDir = "addons\RPT\textures\";
 fnc_getVIP = compileFinal preprocessFileLineNumbers "addons\RPT\RPT_vip_textures.sqf";
 
 RPT_colorList =[
-	["Olive", RPT_color + "(0.15,0.15,0.09,3)"] // #(argb,8,8,3)color(0.1,0.1,0.1,0.1)
+	["Olive", RPT_color + "(0.15,0.15,0.09,3)"], // #(argb,8,8,3)color(0.1,0.1,0.1,0.1)
 	
 	// Winter
-	//["Digital", RPT_texDir + "digi.paa"],
-	//["Abstract Modern", RPT_texDir + "abstraitmoderne.paa"],
+	["Digital", RPT_texDir + "digi.paa"],
+	["Abstract Modern", RPT_texDir + "abstraitmoderne.paa"]
 	
 	// Acceptable
 	//["Woodland", RPT_texDir + "woodland.paa"],

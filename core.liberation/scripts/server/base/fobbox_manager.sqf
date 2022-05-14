@@ -17,7 +17,7 @@ while { true } do {
 		_fobbox allowdamage false;
 		_fobbox setPosATL (getPosATL base_boxspawn);
 		_fobbox setdir (getdir base_boxspawn);
-		_fobbox setMass 3000;
+		//_fobbox setMass 3000;
 		clearWeaponCargoGlobal _fobbox;
 		clearMagazineCargoGlobal _fobbox;
 		clearItemCargoGlobal _fobbox;

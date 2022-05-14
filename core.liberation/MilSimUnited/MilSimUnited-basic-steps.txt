@@ -41,6 +41,10 @@ ca. 13: commander must be able to repackage fob (using variable is_commander)
 add condition (!is_commander)
 
 
+\scripts\server\base\fobbox_manager.sqf
+ca. 20: comment  _fobbox setMass 3000; becaues it makes vehicle extremely slow
+
+
 \scripts\client\init_client.sqf: Initialise player handlers including get_in
 ca. 46: [player] call player_EVH;
 ca. 48: if on whitelist, then commander (variable is_commander)
