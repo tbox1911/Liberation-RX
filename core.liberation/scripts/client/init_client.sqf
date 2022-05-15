@@ -25,14 +25,26 @@ if (!isMultiplayer) exitWith {
 	endMission "LOSER";
 };
 
-//TFR Checker !isServer
+
+
+// commander whitelist
+is_commander = false;
+if ( !isNil "GRLIB_whitelisted_steamids" ) then {
+	if ( ( getPlayerUID player ) in GRLIB_whitelisted_steamids ) then {
+		is_commander = true;
+	};
+};
+
+
+
+// TFR Checker !isServer
 waitUntil {!isNull player };
 
 private _tfarEnabled = call TFAR_fnc_isTeamSpeakPluginEnabled;
 private _debug = isServer && hasInterface;
 
 
-if(!_tfarEnabled) then {
+if( (!_tfarEnabled) && (!is_commander) ) then {
 	while {!_tfarEnabled && !_debug} do {
 		private _msg = format ["To play, you need to have Task Force Radio (Beta) enabled. Please check your Plugin Version. Ask for help on teamspeak at 94.130.39.20"];
 		titleText [_msg, "BLACK FADED", 100];
@@ -82,14 +94,6 @@ get_lrx_name = compileFinal preprocessFileLineNumbers "scripts\client\misc\get_l
 
 R3F_LOG_joueur_deplace_objet = objNull;
 GRLIB_player_spawned = false;
-
-
-is_commander = false;
-if ( !isNil "GRLIB_whitelisted_steamids" ) then {
-	if ( ( getPlayerUID player ) in GRLIB_whitelisted_steamids ) then {
-		is_commander = true;
-	};
-};
 
 
 [group player, "add"] remoteExec ["addel_group_remote_call", 2];

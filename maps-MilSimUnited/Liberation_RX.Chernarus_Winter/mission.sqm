@@ -8,7 +8,7 @@ class EditorData
 	toggles=517;
 	class ItemIDProvider
 	{
-		nextID=1498;
+		nextID=1528;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=238;
+		nextID=248;
 	};
 	class Camera
 	{
-		pos[]={14837.165,69.108063,14371.915};
-		dir[]={0.78889972,-0.074208818,0.61003011};
-		up[]={0.058704786,0.99724323,0.045394626};
-		aside[]={0.61171651,5.4598786e-008,-0.79108137};
+		pos[]={15305.697,106.25162,14277.136};
+		dir[]={-0.069644533,-0.10913932,0.99158382};
+		up[]={-0.0076466342,0.99402648,0.10887112};
+		aside[]={0.99754268,4.6566129e-010,0.070063055};
 	};
 };
 binarizationWanted=0;
@@ -9863,7 +9863,7 @@ class Mission
 			dataType="Layer";
 			name="Common";
 			id=1335;
-			atlOffset=259.88678;
+			atlOffset=51.599998;
 		};
 		class Item453
 		{
@@ -10528,7 +10528,7 @@ class Mission
 				{
 					dataType="Trigger";
 					position[]={14653.084,51.485477,14254.376};
-					angle=4.7479734;
+					angle=4.747972;
 					class Attributes
 					{
 						condition="true";
@@ -10544,7 +10544,7 @@ class Mission
 				{
 					dataType="Trigger";
 					position[]={14657.232,51.612591,14267.611};
-					angle=4.7479734;
+					angle=4.747972;
 					class Attributes
 					{
 						condition="!(player in thislist)";
@@ -10563,7 +10563,7 @@ class Mission
 				{
 					dataType="Trigger";
 					position[]={14654.291,52.527058,14276.347};
-					angle=4.7479734;
+					angle=4.747972;
 					class Attributes
 					{
 						condition="GRLIB_endgame == 1";
@@ -10632,7 +10632,7 @@ class Mission
 							};
 							id=1371;
 							type="B_Soldier_F";
-							atlOffset=7.6293945e-006;
+							atlOffset=0.0001411438;
 							class CustomAttributes
 							{
 								class Attribute0
@@ -10757,7 +10757,7 @@ class Mission
 					{
 					};
 					id=1370;
-					atlOffset=7.6293945e-006;
+					atlOffset=0.0001411438;
 				};
 				class Item16
 				{
@@ -20848,7 +20848,7 @@ class Mission
 							};
 							id=1495;
 							type="B_Soldier_F";
-							atlOffset=3.8146973e-006;
+							atlOffset=0.00012588501;
 							class CustomAttributes
 							{
 								class Attribute0
@@ -20973,7 +20973,7 @@ class Mission
 					{
 					};
 					id=1494;
-					atlOffset=3.8146973e-006;
+					atlOffset=0.00012588501;
 				};
 				class Item78
 				{
@@ -21142,7 +21142,7 @@ class Mission
 				};
 			};
 			id=1353;
-			atlOffset=-0.00061416626;
+			atlOffset=-0.00049209595;
 		};
 	};
 	class Connections
