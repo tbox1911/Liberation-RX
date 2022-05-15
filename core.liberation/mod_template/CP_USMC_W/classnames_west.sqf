@@ -186,7 +186,9 @@ heavy_vehicles = [
     ["B_T_AFV_Wheeled_01_cannon_F", 0, heavy_vehicle_price_tank_light, 0, GRLIB_perm_inf],
     ["B_AFV_Wheeled_01_up_cannon_F", 0, heavy_vehicle_price_tank_heavy, 0, GRLIB_perm_inf],
     ["B_MBT_01_TUSK_F", 0, heavy_vehicle_price_tank_heavy, 0, GRLIB_perm_inf],
-    ["B_MBT_01_cannon_F", 0, heavy_vehicle_price_tank_heavy, 0, GRLIB_perm_inf]
+    ["B_MBT_01_cannon_F", 0, heavy_vehicle_price_tank_heavy, 0, GRLIB_perm_inf],
+    ["I_MBT_03_cannon_F", 0, heavy_vehicle_price_tank_heavy, 0, GRLIB_perm_inf]
+
  
 ];
  
@@ -434,7 +436,7 @@ buildings_west = [
     ["Fortress2",0,0,0,GRLIB_perm_inf],
     ["Land_Lampa_sidl_3",0,0,0,GRLIB_perm_inf],
     ["Land_TentHangar_V1_F", 0, 0, 0, GRLIB_perm_inf] 
-    
+
 ];
  
 if ( isNil "blufor_squad_inf_light" ) then { blufor_squad_inf_light = [] };
