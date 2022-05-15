@@ -184,7 +184,9 @@ heavy_vehicles = [
     ["CUP_B_FV432_GB_Ambulance", 0, heavy_vehicle_price_tank_light, 0, GRLIB_perm_inf],
     ["CUP_B_Challenger2_Woodland_BAF", 0, heavy_vehicle_price_tank_light, 0, GRLIB_perm_inf],
     ["B_T_AFV_Wheeled_01_cannon_F", 0, heavy_vehicle_price_tank_light, 0, GRLIB_perm_inf],
-    ["B_AFV_Wheeled_01_up_cannon_F", 0, heavy_vehicle_price_tank_heavy, 0, GRLIB_perm_inf]
+    ["B_AFV_Wheeled_01_up_cannon_F", 0, heavy_vehicle_price_tank_heavy, 0, GRLIB_perm_inf],
+    ["B_MBT_01_TUSK_F", 0, heavy_vehicle_price_tank_heavy, 0, GRLIB_perm_inf],
+    ["B_MBT_01_cannon_F", 0, heavy_vehicle_price_tank_heavy, 0, GRLIB_perm_inf]
  
 ];
  
@@ -208,7 +210,8 @@ air_vehicles = [
     ["CUP_B_UH60M_Unarmed_FFV_US",0,320,0,GRLIB_perm_inf],
     ["CUP_B_UH60M_Unarmed_FFV_MEV_US",0,500,0,GRLIB_perm_inf],
     ["CUP_B_MH60L_DAP_2x_US",0,850,0,GRLIB_perm_inf],
-    ["CUP_B_UH60S_USN",0,500,0,GRLIB_perm_inf],
+    ["CUP_B_UH60S_USN",0,500,0,GRLIB_perm_inf],   
+    ["B_Heli_Transport_01_F",0,500,0,GRLIB_perm_inf],
  
  
     ["CUP_I_Ka60_GL_Blk_ION",0,630,0,GRLIB_perm_inf],
@@ -285,7 +288,12 @@ air_vehicles = [
 	["USAF_RQ4A",0,300,0,GRLIB_perm_inf],
 	["USAF_SlingLoad_Ammo",0,0,0,GRLIB_perm_inf],
 	["USAF_SlingLoad_Repair",0,0,0,GRLIB_perm_inf],
-	["USAF_SlingLoad_Fuel",0,0,0,GRLIB_perm_inf]
+	["USAF_SlingLoad_Fuel",0,0,0,GRLIB_perm_inf],
+    ["B_Plane_Fighter_01_F",0,1500,0,GRLIB_perm_inf],
+    ["B_Plane_Fighter_01_Stealth_F",0,2000,0,GRLIB_perm_inf],
+    ["B_W_VTOL_01_armed_F",0,4000,0,GRLIB_perm_inf],
+    ["B_T_VTOL_01_vehicle_F",0,350,0,GRLIB_perm_inf],
+    ["B_T_VTOL_01_infantry_F",0,350,0,GRLIB_perm_inf]
 ];
  
 blufor_air = [
@@ -424,7 +432,9 @@ buildings_west = [
     ["US_WarfareBBarrier10xTall_EP1",0,0,0,GRLIB_perm_inf],
     ["WarfareBCamp",0,0,0,GRLIB_perm_inf],
     ["Fortress2",0,0,0,GRLIB_perm_inf],
-    ["Land_Lampa_sidl_3",0,0,0,GRLIB_perm_inf]
+    ["Land_Lampa_sidl_3",0,0,0,GRLIB_perm_inf],
+    ["Land_TentHangar_V1_F", 0, 0, 0, GRLIB_perm_inf] 
+    
 ];
  
 if ( isNil "blufor_squad_inf_light" ) then { blufor_squad_inf_light = [] };
