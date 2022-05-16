@@ -96,7 +96,6 @@ militia_vehicles = [
 	"CUP_O_Hilux_SPG9_TK_INS",
 	"CUP_O_Hilux_UB32_TK_INS",
 	"CUP_O_Hilux_zu23_TK_INS",
-	"O_MBT_02_cannon_F",
 	"CUP_O_UH1H_slick_TKA"
 ];
 
@@ -133,7 +132,6 @@ opfor_vehicles_low_intensity = [
 	"CUP_O_Hilux_UB32_TK_INS",
 	"CUP_O_Hilux_zu23_TK_INS",
 	"CUP_O_ZSU23_TK",
-	"O_MBT_02_cannon_F",
 	"CUP_O_ZSU23_Afghan_TK",
 	"CUP_O_UH1H_slick_TKA"
 ];
