@@ -5376,6 +5376,12 @@
 			<Chinese>你的重生點太多了！</Chinese>
 		</Key>
 
+		<!-- intro.sqf -->
+		<Key ID="STR_SQUAD_WAIT">
+			<Original>Your Squad is waiting for you\nat the next FOB!</Original>
+			<French>Votre Squad vous attend\nà la prochaine FOB!</French>
+		</Key>
+
 		<!--
 			mission_AirWreck.sqf
 
