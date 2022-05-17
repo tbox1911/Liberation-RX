@@ -28,9 +28,15 @@ params [
 // Get the cratefiller object and store it
 CCSVAR("object", _data select 0, false);
 
+if(score player < GRLIB_perm_inf) exitwith{
+    hint "Dein Score ist zu niedrig!";
+};
+
 // Create dialog
 createDialog "KP_cratefiller";
 disableSerialization;
+
+
 
 // Dialog controls
 private _dialog = findDisplay KP_CRATEFILLER_IDC_DIALOG;
