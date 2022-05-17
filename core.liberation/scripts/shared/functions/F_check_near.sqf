@@ -1,4 +1,9 @@
-params ["_vehicle", "_list", "_dist", "_includeFOB"];
+params [
+	"_vehicle",
+	"_list",
+	["_dist", 15],
+	["_includeFOB", true]
+];
 
 private _ret = false;
 private _classlist = [];
@@ -6,10 +11,10 @@ private _near = [];
 private _vehpos = getPosATL _vehicle;
 
 if (isNil "_list") exitWith {_ret};
-if (isNil "_dist") then {_dist = 15};
-if (isNil "_includeFOB") then {_includeFOB = true};
 
 switch ( _list ) do {
+	case "LHD" : { _classlist = [lhd]; _includeFOB = false};	
+	case "FOB" : { _classlist = GRLIB_all_fobs; _includeFOB = false};
 	case "SRV" : { _classlist = GRLIB_Marker_SRV};
 	case "ATM" : { _classlist = GRLIB_Marker_ATM};
 	case "FUEL" : { _classlist = GRLIB_Marker_FUEL};

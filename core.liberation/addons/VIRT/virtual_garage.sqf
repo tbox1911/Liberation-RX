@@ -26,7 +26,7 @@ while { dialog && alive player } do {
 
 		_myveh_lst = [getPosATL player nearEntities [["LandVehicle","Air","Ship"], 150], {			
 			alive _x && (count (crew _x) == 0 || typeOf _x in uavs) &&
-			(_x distance lhd) >= 1000 &&
+			!([_x, "LHD", GRLIB_sector_size] call F_check_near) &&
 			_x getVariable ["GRLIB_vehicle_owner", ""] == _guid &&
 			!(typeOf _x in _recycleable_blacklist)
 		}] call BIS_fnc_conditionalSelect;

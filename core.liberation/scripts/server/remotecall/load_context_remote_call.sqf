@@ -7,7 +7,7 @@ waitUntil {sleep 0.2; !isNil {_player getVariable ["PAR_Grp_ID", nil]}};
 hcRemoveAllGroups _player;
 if ( _player == [] call F_getCommander ) then {
 	private _myveh = [vehicles, {
-		(_x distance lhd) >= 1000 &&
+		!([_x, "LHD", GRLIB_sector_size] call F_check_near) &&
 		[_player, _x] call is_owner &&
 		_x getVariable ["GRLIB_vehicle_manned", false] &&
 		count (crew _x) > 0

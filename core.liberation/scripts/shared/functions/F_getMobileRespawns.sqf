@@ -1,7 +1,7 @@
 // Public Hurron
 private _respawn_huron_unsorted = [entities [[huron_typename], [], false, true], {
 	_x getVariable ["GRLIB_vehicle_ishuron", false] &&
-	_x distance2D lhd > GRLIB_sector_size &&
+	!([_x, "LHD", GRLIB_sector_size] call F_check_near) &&
 	!surfaceIsWater (getpos _x) &&
 	((getpos _x) select 2) < 5 &&  speed _x < 5		
 }] call BIS_fnc_conditionalSelect;

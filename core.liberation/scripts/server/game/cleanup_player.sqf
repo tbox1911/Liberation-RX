@@ -16,7 +16,7 @@ if !(isNull _unit) then {
 	// Unlock Car too Far
 	private _cleanveh = [vehicles, {
 		_x getVariable ["GRLIB_vehicle_owner", ""] == _uid &&
-		((getPos _x) distance2D ([getPos _x] call F_getNearestFob)) >= 500
+		!([_x, "FOB", 500] call F_check_near)
 	}] call BIS_fnc_conditionalSelect;
 
 	{

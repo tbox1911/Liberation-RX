@@ -8,7 +8,11 @@ _unit setVariable ['PAR_wounded', false];
 if (_unit == player) then {
 	// Grave + stuff box
 	_pos = getPosATL _unit;
-	if ( isNull objectParent player && _pos distance2D lhd >= 1000 && _pos distance2D ([] call F_getNearestFob) >= GRLIB_sector_size && round(_pos select 2) == 0 && !(surfaceIsWater _pos)) then {
+	if ( isNull objectParent player &&
+			!([_unit, "LHD", GRLIB_sector_size] call F_check_near) &&
+			!([_unit, "FOB", GRLIB_sector_size] call F_check_near) &&
+			round (_pos select 2) == 0 && !(surfaceIsWater _pos)
+	) then {
 		_unit setPos zeropos;
 		// create grave
 		_grave = (selectRandom GRLIB_player_grave) createVehicle _pos;

@@ -3,15 +3,10 @@ waitUntil {sleep 1; !isNil "build_confirmed" };
 waituntil {sleep 1; GRLIB_player_spawned; (player getVariable ["GRLIB_score_set", 0] == 1)};
 
 while { true } do {
-	private	_nearestfob = [] call F_getNearestFob;
-	private	_fobdistance = 9999;
-	if ( count _nearestfob == 3 ) then {
-		_fobdistance = round (player distance2D _nearestfob);
-	};
-	private _nearfob = _fobdistance <= GRLIB_fob_range;
+	private _nearfob = [player, "FOB", GRLIB_fob_range] call F_check_near;
 	if (_nearfob) then {
 		private _nearrecycl = [nearestObjects [player, GRLIB_recycleable_classnames + GRLIB_vehicle_whitelist, 30], {
-			(_x distance lhd) >= 1000 &&
+			!([_x, "LHD", GRLIB_sector_size] call F_check_near) &&
 			!([_x] call is_public) &&
 			isNil {_x getVariable "GRLIB_recycle_action"}
 		}] call BIS_fnc_conditionalSelect;

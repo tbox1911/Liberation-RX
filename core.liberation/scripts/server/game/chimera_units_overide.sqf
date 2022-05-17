@@ -4,7 +4,7 @@ private [ "_unit_model", "_cloth", "_items", "_weapon", "_mag",  "_src_class", "
 
 // repaint man units 
 private _chimera_soldiers = [];
-allUnits apply { if ((getPosATL _x) distance2D lhd < 500 && !isPlayer _x) then {_chimera_soldiers pushback _x} };
+allUnits apply { if ([_x, "LHD", GRLIB_sector_size] call F_check_near && !isPlayer _x) then {_chimera_soldiers pushback _x} };
 {
     _unit_model = selectRandom blufor_squad_inf;
     _cloth = getText(configfile >> "CfgVehicles" >> _unit_model >> "uniformClass");
@@ -29,7 +29,7 @@ if (!isNil "chimera_vehicle_overide") then {
     {
         _src_class = _x select 0;
         _dst_class = _x select 1;
-        _veh_lst = [ vehicles, { alive _x && _x distance lhd < 500 && typeOf _x == _src_class }] call BIS_fnc_conditionalSelect;
+        _veh_lst = [ vehicles, { alive _x && [_x, "LHD", GRLIB_sector_size] call F_check_near && typeOf _x == _src_class }] call BIS_fnc_conditionalSelect;
 
         {
             _src_pos = (getPosATL _x) vectorAdd [0, 0, 0.2];

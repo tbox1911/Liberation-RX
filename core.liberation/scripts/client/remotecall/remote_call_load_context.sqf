@@ -10,7 +10,7 @@ private _grp = group player;
 if (count (_context select 2) >= 1 ) then {
     waitUntil {
         sleep 3;
-        if ((player distance2D ([getpos player] call F_getNearestFob)) < GRLIB_fob_range) exitWith { true };
+        if ([player, "FOB", GRLIB_fob_range] call F_check_near) exitWith { true };
         hintSilent localize "$STR_SQUAD_WAIT";
         false;
     };

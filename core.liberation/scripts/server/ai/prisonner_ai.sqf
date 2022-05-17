@@ -77,8 +77,8 @@ while {alive _unit} do {
 	};
 
 	// Captured
-	private _is_near_fob = (( _unit distance ([getpos _unit] call F_getNearestFob) ) < 30 );
-	if ( _is_near_fob ) then {
+	private _nearfob = [_unit, "FOB", 30] call F_check_near;
+	if (_nearfob) then {
 		private _unit_owner = leader group _unit;
 		sleep (3 + floor(random 5));
 		doStop _unit;

@@ -27,9 +27,9 @@ while { count (units _grp) > 0 } do {
 				alive _x &&
 				(vehicle _x) isKindOf _kind &&
 				!(_x getVariable ['R3F_LOG_disabled', false]) &&
-				_x distance2D lhd > 500 &&
-				_x distance2D (getPos _vehicle) <= _radius &&
-				_x distance2D ([getPos _x] call F_getNearestFob) >= GRLIB_sector_size
+				!([_x, "LHD", GRLIB_sector_size] call F_check_near) &&
+				!([_x, "FOB", GRLIB_sector_size] call F_check_near) &&
+				_x distance2D (getPos _vehicle) <= _radius
 			} ] call BIS_fnc_conditionalSelect;
 
 			if (count (_scan_target) > 0 ) then {
