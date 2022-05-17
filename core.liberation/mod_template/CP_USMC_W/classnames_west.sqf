@@ -295,7 +295,17 @@ air_vehicles = [
     ["B_Plane_Fighter_01_Stealth_F",0,2000,0,GRLIB_perm_inf],
     ["B_W_VTOL_01_armed_F",0,4000,0,GRLIB_perm_inf],
     ["B_T_VTOL_01_vehicle_F",0,350,0,GRLIB_perm_inf],
-    ["B_T_VTOL_01_infantry_F",0,350,0,GRLIB_perm_inf]
+    ["B_T_VTOL_01_infantry_F",0,350,0,GRLIB_perm_inf],
+
+
+
+    // F-18 super hornet 
+    ["JS_JC_FA18F",0,1850,0,GRLIB_perm_inf],
+    ["JS_JC_FA18E",0,1850,0,GRLIB_perm_inf],
+
+    // Eurofighter
+    ["EAWS_EF2000_GER_CAP",0,1850,0,GRLIB_perm_inf]
+
 ];
  
 blufor_air = [
