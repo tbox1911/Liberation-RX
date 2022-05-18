@@ -8,7 +8,7 @@ if ( _ownership != GRLIB_side_enemy ) exitWith {};
 
 private _grp = grpNull;
 if ( GRLIB_blufor_defenders ) then {
-	_grp = [markerpos _sector, blufor_squad_mix, GRLIB_side_friendly, "infantry"] call F_libSpawnUnits;
+	_grp = [_thispos, blufor_squad_mix, GRLIB_side_friendly, "infantry"] call F_libSpawnUnits;
 	_grp setCombatMode "RED";
 	_grp setBehaviourStrong "COMBAT";
 	{
@@ -18,7 +18,7 @@ if ( GRLIB_blufor_defenders ) then {
 	} foreach (units _grp);
 	_grp setCombatMode "GREEN";
 	_grp setBehaviour "COMBAT";
-	[_grp, markerpos _sector] spawn add_defense_waypoints;
+	[_grp, _thispos] spawn add_defense_waypoints;
 };
 
 sleep 60;
