@@ -15,7 +15,7 @@ if (count (_context select 2) >= 1 ) then {
         false;
     };
     hintSilent "";
-    
+
     {
         _unit = _grp createUnit [(_x select 0), getPosATL player, [], 10, "NONE"];
         sleep 0.1;
@@ -32,3 +32,5 @@ if (count (_context select 2) >= 1 ) then {
 
     _grp selectLeader player;
 };
+
+player setVariable ["GRLIB_player_context_loaded", true, true];
