@@ -331,7 +331,7 @@ static_vehicles = [
     ["CUP_B_M2StaticMG_USMC",0,0,0,GRLIB_perm_inf],
     ["CUP_B_M2StaticMG_MiniTripod_USMC",0,0,0,GRLIB_perm_inf],
     ["CUP_B_MK19_TriPod_USMC",0,0,0,GRLIB_perm_inf],
-    ["CUP_B_Stinger_AA_pod_Base_USMC",250,0,0,GRLIB_perm_inf],
+    ["CUP_B_Stinger_AA_pod_Base_USMC",0,0,0,GRLIB_perm_inf],
     ["CUP_B_TOW_TriPod_USMC",0,0,0,GRLIB_perm_inf],
     ["CUP_B_M252_USMC",0,0,0,GRLIB_perm_inf],
     ["CUP_B_M119_USMC",0,800,0,GRLIB_perm_inf],
