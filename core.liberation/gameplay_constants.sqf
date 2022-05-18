@@ -36,7 +36,7 @@ GRLIB_date_year = 2022;
 GRLIB_date_month = 6;
 GRLIB_date_day = 30;
 GRLIB_nights_start = 21;
-GRLIB_nights_stop = 5;
+GRLIB_nights_stop = 4;
 GREUH_start_ammo = 200;
 
 GRLIB_blufor_cap = 64;
