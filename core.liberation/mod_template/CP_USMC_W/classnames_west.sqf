@@ -369,6 +369,7 @@ support_vehicles_west = [
 	["CUP_B_MTVR_Repair_USMC",0,500,0,GRLIB_perm_inf],
 	["CUP_B_MTVR_Refuel_USMC",0,500,0,GRLIB_perm_inf],
 	["CUP_B_MTVR_Ammo_USMC",0,500,0,GRLIB_perm_inf],
+    ["B_Truck_01_Ammo_F",0,0,0,GRLIB_perm_inf],
 	["CargoNet_01_box_F",0,0,0,GRLIB_perm_inf],
 	["B_CargoNet_01_ammo_F",0,0,0,GRLIB_perm_inf],
 	["CargoNet_01_barrels_F",0,0,0,GRLIB_perm_inf],
