@@ -189,6 +189,21 @@ box_transport_config = [
 transport_vehicles = [];
 {transport_vehicles pushBack ( _x select 0 )} foreach (box_transport_config);
 
+// Additional offset per object
+// objects in this list can be loaded on vehicle position defined above
+box_transport_offset = [
+	["B_supplyCrate_F", [0, 0, 0] ],
+	["Box_NATO_AmmoVeh_F", [0, 0, 0] ],
+	["Box_East_AmmoVeh_F", [0, 0, 0] ],
+	["Box_IND_AmmoVeh_F", [0, 0, 0] ],
+	["Land_BarrelWater_F", [0, 0, -0.4] ],
+	["Land_MetalBarrel_F", [0, 0, -0.4] ],
+	["Land_FoodSacks_01_large_brown_idap_F", [0, 0, -0.4] ]
+] + box_transport_offset_west;
+
+box_transport_loadable = [];
+{box_transport_loadable pushBack ( _x select 0 )} foreach (box_transport_offset);
+
 // Big_units
 vehicle_big_units = [
 	"Land_Cargo_Tower_V1_F",

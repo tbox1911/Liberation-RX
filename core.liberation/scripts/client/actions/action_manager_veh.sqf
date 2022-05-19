@@ -32,16 +32,6 @@ private _wreck_class = [
 	"O_SAM_System_04_F"
 ];
 
-private _classname_box = [
-	Arsenal_typename,
-	ammobox_b_typename,
-	ammobox_o_typename,
-	ammobox_i_typename,
-	waterbarrel_typename,
-	fuelbarrel_typename,
-	foodbarrel_typename
-];
-
 waitUntil { sleep 1; !isNil "build_confirmed" };
 waituntil { sleep 1; GRLIB_player_spawned; (player getVariable ["GRLIB_score_set", 0] == 1)};
 waituntil { sleep 1; !isNil "GRLIB_marker_init" };
@@ -89,7 +79,7 @@ while { true } do {
 	} forEach _nearwreck + _nearruins;
 
 	// Box
-	_nearboxes = [(player nearEntities [ _classname_box, _searchradius]), { isNil {_x getVariable "GRLIB_boxes_action"} }] call BIS_fnc_conditionalSelect;
+	_nearboxes = [(player nearEntities [box_transport_loadable, _searchradius]), { isNil {_x getVariable "GRLIB_boxes_action"} }] call BIS_fnc_conditionalSelect;
 	{
 		_vehicle = _x;
 		_vehicle addAction ["<t color='#FFFF00'>" + localize "STR_ACTION_LOAD_BOX" + "</t>","scripts\client\ammoboxes\do_load_box.sqf","",-501,true,true,"","[_target] call is_menuok  && [] call is_neartransport && (!(_target getVariable ['R3F_LOG_disabled', false]))", _distvehclose];
