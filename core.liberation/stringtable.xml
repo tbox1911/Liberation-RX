@@ -3693,7 +3693,7 @@
 					&lt;t size='1'&gt;
 					The helicopter may have crashlanded anywhere in a large zone around its last known position. Your mission is to retrieve the chopper crew and their precious intel. Hostile forces may have found them first, so you must be quick, careful, and ready to engage.&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
-					&lt;t size='1.15' color='#00a0ff'&gt;Cost: 20&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
+					&lt;t size='1.15' color='#00a0ff'&gt;Cost: 5&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 					&lt;br/&gt;
 					&lt;t size='1.15' color='#ffa000'&gt;Reward: 20 intel points (10 for each crew alive).&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
@@ -3708,7 +3708,7 @@
 					&lt;t size='1'&gt;
 					L'hélicopter a pu finir sa course dans une large zone autour de sa dernière position connue. Votre mission est de retrouver l'équipage et sa précieuse intel. Les forces hostiles les auront peut-être déjà retrouvés, votre action doit donc être rapide et décisive.&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
-					&lt;t size='1.15' color='#00a0ff'&gt;Cout: 20&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
+					&lt;t size='1.15' color='#00a0ff'&gt;Cout: 5&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 					&lt;br/&gt;
 					&lt;t size='1.15' color='#ffa000'&gt;Récompense: 20 points d'intel (10 pour chaque équipage vivant).&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
@@ -3723,7 +3723,7 @@
 					&lt;t size='1'&gt;
 					Der Helikopter muss irgendwo in einem größeren Bereich um seine letzte bekannte Position notgelandet sein. Ihr Auftrag ist es die Besatzung zu finden und deren Aufklärungsbericht zu beschaffen. Feindliche Kräfte könnten sie bereits gefunden haben, also müssen sie schnell, vorsichtig und auf alles vorbereitet sein.&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
-					&lt;t size='1.15' color='#00a0ff'&gt;Cost: 20&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
+					&lt;t size='1.15' color='#00a0ff'&gt;Cost: 5&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 					&lt;br/&gt;
 					&lt;t size='1.15' color='#ffa000'&gt;Reward: 20 intel points (10 for each crew alive).&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
@@ -3738,7 +3738,7 @@
 					&lt;t size='1'&gt;
 					这架直升机可能在它最后已知位置附近区域的任何地点坠毁。你的任务是找回机组人员和他们收集的宝贵情报。敌军可能已经先发现了他们，所以你必须迅速，小心，并准备交战。&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
-					&lt;t size='1.15' color='#00a0ff'&gt;花费: 20&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
+					&lt;t size='1.15' color='#00a0ff'&gt;花费: 5&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 					&lt;br/&gt;
 					&lt;t size='1.15' color='#ffa000'&gt;奖励: 20 情报点 (每名活着的机组乘员10情报点).&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
@@ -3753,7 +3753,7 @@
 					&lt;t size='1'&gt;
 					ヘリは最後に確認された地点を中心としたエリアのどこかに不時着していると考えられる。貴君らの任務は墜落したヘリの乗員の救助と彼らが持つ情報の回収である。敵が既に墜落地点を特定している可能性があるので迅速にかつ慎重に任務を遂行してほしい。&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
-					&lt;t size='1.15' color='#00a0ff'&gt;コスト: 20&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
+					&lt;t size='1.15' color='#00a0ff'&gt;コスト: 5&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 					&lt;br/&gt;
 					&lt;t size='1.15' color='#ffa000'&gt;報酬: 20 情報 (乗員一人につき10).&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
