@@ -20,4 +20,4 @@ for /f %%i in ('dir /B /A:D ..\maps-MilSimUnited\liberation_RX*') do (
 	echo Done.
 )
 
-pause
+exit
