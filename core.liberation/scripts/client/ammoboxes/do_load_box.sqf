@@ -2,7 +2,7 @@ params [ "_ammobox" ];
 private [ "_truck_to_load", "_truck_load", "_next_truck", "_maxload", "_offsets" ];
 
 private _max_transport_distance = 15;
-private _neartransporttrucks = [ nearestObjects [ player, transport_vehicles, _max_transport_distance], {
+private _neartransporttrucks = [ nearestObjects [player, transport_vehicles, _max_transport_distance], {
 	 alive _x && speed _x < 5 &&
 	 ((getpos _x) select 2) < 5 &&
 	 ([player, _x] call is_owner || [_x] call is_public) &&
@@ -29,13 +29,13 @@ if (isNil "_box_offset") then {_box_offset = [0, 0, 0]};
 		if (  _truck_load < _maxload ) then {
 			_truck_to_load = _next_truck;
 			_truck_offset = (_offsets select _truck_load) vectorAdd _box_offset;
-			_ammobox attachTo [ _truck_to_load, _truck_offset ];
+			_ammobox attachTo [ _next_truck, _truck_offset ];
 			_ammobox setVariable ["R3F_LOG_disabled", true, true];
 			_ammobox allowDamage false;
 			[_ammobox, false] remoteExec ["enableSimulationGlobal", 2];
-			_truck_to_load setVariable ["GRLIB_ammo_truck_load", _truck_load + 1, true];
+			_next_truck setVariable ["GRLIB_ammo_truck_load", _truck_load + 1, true];
 			hint localize "STR_BOX_LOADED";
-		}
+		};
 	};
 } foreach _neartransporttrucks;
 
