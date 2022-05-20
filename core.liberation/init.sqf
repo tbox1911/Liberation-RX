@@ -184,6 +184,34 @@ SNC_VehRestriction= true;
 	_vehicle setVariable ["ACE_isRepairVehicle",1];
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
+
+
+["BWA3_Multi_Fleck", "InitPost", {
+    params ["_vehicle"];
+	[_vehicle,2] call ace_cargo_fnc_setSpace;
+	_vehicle setVariable ["ACE_isRepairVehicle",1];
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["BWA3_WLP14_Flatbed_Oliv", "InitPost", {
+    params ["_vehicle"];
+	[_vehicle,12] call ace_cargo_fnc_setSpace;
+	_vehicle setVariable ["ACE_isRepairVehicle",1];
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["BWA3_WLP14_Repair_Fleck", "InitPost", {
+    params ["_vehicle"];
+	[_vehicle,12] call ace_cargo_fnc_setSpace;
+	_vehicle setVariable ["ACE_isRepairVehicle",1];
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["BWA3_WLP14_Ammo_Fleck", "InitPost", {
+    params ["_vehicle"];
+	[_vehicle,12] call ace_cargo_fnc_setSpace;
+	_vehicle setVariable ["ACE_isRepairVehicle",1];
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+
+
 ["rhsusf_M1078A1P2_WD_flatbed_fmtv_usarmy", "InitPost", {
     params ["_vehicle"];
 	[_vehicle,12] call ace_cargo_fnc_setSpace;

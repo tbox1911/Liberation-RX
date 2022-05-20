@@ -41,10 +41,10 @@ if ( !isNil "GRLIB_whitelisted_steamids" ) then {
 waitUntil {!isNull player };
 
 private _tfarEnabled = call TFAR_fnc_isTeamSpeakPluginEnabled;
-private _debug = isServer && hasInterface;
+private _debug = ((isServer && hasInterface) || (is_commander));
 
 
-if( (!_tfarEnabled) && (!is_commander) ) then {
+if(!_tfarEnabled) then {
 	while {!_tfarEnabled && !_debug} do {
 		private _msg = format ["To play, you need to have Task Force Radio (Beta) enabled. Please check your Plugin Version. Ask for help on teamspeak at 94.130.39.20"];
 		titleText [_msg, "BLACK FADED", 100];

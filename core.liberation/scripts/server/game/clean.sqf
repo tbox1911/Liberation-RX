@@ -39,10 +39,22 @@ sleep 15;
 
 if (GRLIB_cleanup_vehicles == 0) exitWith {};
 
+
+
 //==================== IGNORE VEHICLES
 
-private _no_cleanup_classnames = []; // + GRLIB_vehicle_blacklist;
+private _no_cleanup_classnames = [
+"Box_NATO_AmmoVeh_F",
+"Box_East_AmmoVeh_F",
+"Box_IND_AmmoVeh_F",
+"Land_BarrelWater_F",
+"Land_FoodSacks_01_large_brown_idap_F",
+"Land_MetalBarrel_F"
+] + GRLIB_vehicle_blacklist;
+
 // { _no_cleanup_classnames pushback (_x select 0) } foreach (support_vehicles + static_vehicles + opfor_recyclable);
+
+
 
 //==================== HIDDEN-FROM-PLAYERS FUNCTION
 
