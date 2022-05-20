@@ -113,7 +113,9 @@ light_vehicles = [
     ["CUP_B_BAF_Coyote_L2A1_W", 0, light_vehicle_price_hmg, 0, GRLIB_perm_inf],
     ["CUP_B_BAF_Coyote_L2A1_D", 0, light_vehicle_price_hmg, 0, GRLIB_perm_inf],
     ["CUP_B_BAF_Coyote_GMG_W", 0, light_vehicle_price_gmg, 0, GRLIB_perm_inf],
-    ["CUP_B_BAF_Coyote_GMG_D", 0, light_vehicle_price_gmg, 0, GRLIB_perm_inf]
+    ["CUP_B_BAF_Coyote_GMG_D", 0, light_vehicle_price_gmg, 0, GRLIB_perm_inf],
+    ["B_SDV_01_F",0,30,0,GRLIB_perm_inf],
+    ["B_Boat_Transport_01_F",0,30,0,GRLIB_perm_inf]
 	
 ];
  
