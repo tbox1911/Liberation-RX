@@ -10,7 +10,7 @@ private _grp = group player;
 if (count (_context select 2) >= 1 ) then {
     waitUntil {
         sleep 3;
-        if ([player, "FOB", GRLIB_fob_range] call F_check_near) exitWith { true };
+        if ([] call is_menuok && [player, "FOB", GRLIB_fob_range] call F_check_near) exitWith { true };
         hintSilent localize "$STR_SQUAD_WAIT";
         false;
     };
