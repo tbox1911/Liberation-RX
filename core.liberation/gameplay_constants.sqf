@@ -1,13 +1,13 @@
-GRLIB_save_key = "GREUH_LIBERATION_Chernarus_Winter_saveGame_PSK";
+GRLIB_save_key = "GREUH_LIBERATION_Malden_saveGame_PSK";
 // change this value if you want different saveGames on different map
 GRLIB_side_resistance = resistance;
 GRLIB_side_civilian = civilian;
 GRLIB_respawn_marker = "respawn_west";
 GRLIB_sector_size = 600;
 GRLIB_capture_size = 400;
-GRLIB_radiotower_size = 1800;
+GRLIB_radiotower_size = 2500;
 GRLIB_spawn_min = 2000;
-GRLIB_spawn_max = 5000;
+GRLIB_spawn_max = 4000;
 GRLIB_recycling_percentage = 1.00;
 GRLIB_endgame = 0;
 GRLIB_vulnerability_timer = 1200;
@@ -21,8 +21,8 @@ GRLIB_patrol_cap = 75 * GRLIB_unitcap;
 GRLIB_battlegroup_size = 7 * (sqrt GRLIB_unitcap) * (sqrt GRLIB_csat_aggressivity);
 GRLIB_civilians_amount = 2 * GRLIB_civilian_activity;
 GRLIB_fob_range = 300;
-GRLIB_surrender_chance = 60;
-GRLIB_secondary_missions_costs = [ 50, 40, 5 ];
+GRLIB_surrender_chance = 90;
+GRLIB_secondary_missions_costs = [ 40, 10, 10 ];
 GRLIB_halo_altitude = 2000;
 GRLIB_civ_killing_penalty = 0;
 GRLIB_squad_size_bonus = 0;
