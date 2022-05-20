@@ -23,7 +23,6 @@ if (isNil "_box_offset") then {_box_offset = [0, 0, 0]};
 			for "_i" from 2 to (count _x) do { _offsets pushback (_x select _i) };
 		};
 	} foreach box_transport_config;
-diag_log _offsets;
 
 	if ( isNull _truck_to_load ) then {
 		_truck_load = _next_truck getVariable ["GRLIB_ammo_truck_load", 0];
