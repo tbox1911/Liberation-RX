@@ -41,6 +41,7 @@ if (!isNil "chimera_vehicle_overide") then {
             _veh setPosATL _src_pos;
             _veh setDir _src_dir;
             _veh setVariable ["GRLIB_vehicle_owner", "public", true];
+            _veh addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
             sleep 0.1;
             _veh allowDamage true;
             if (GRLIB_ACE_enabled) then {
