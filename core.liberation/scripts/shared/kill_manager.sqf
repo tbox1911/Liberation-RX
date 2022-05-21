@@ -151,7 +151,7 @@ if ( isServer ) then {
 			waitUntil { sleep 0.3; (isNull attachedTo _unit) };
 		};
 
-		if ( (typeof _unit) in [FOB_box_typename, FOB_truck_typename, foodbarrel_typename, waterbarrel_typename] ) exitWith {
+		if ( (typeof _unit) in [Arsenal_typename, FOB_box_typename, FOB_truck_typename, foodbarrel_typename, waterbarrel_typename] ) exitWith {
 			sleep 30;
 			deleteVehicle _unit;
 		};
