@@ -52,7 +52,7 @@ while {alive _unit} do {
 			sleep 3;
 			{
 				if ((_x distance2D _unit) <= 200) then {
-					[[getMissionPath "res\shout.ogg", _unit, false, getPosASL _unit, 2, 0.8, 0]] remoteExec ["playSound3D", owner _x];
+					[[getMissionPath "res\shout.ogg", _unit, false, getPosASL _unit, 4, 1, 250]] remoteExec ["playSound3D", owner _x];
 				};
 			} forEach (AllPlayers - (entities "HeadlessClient_F"));
 

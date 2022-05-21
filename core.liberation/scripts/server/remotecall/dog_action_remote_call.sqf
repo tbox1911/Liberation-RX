@@ -11,7 +11,7 @@ if (!isNil "_my_dog") then {
 	if (_cmd == "bark") then {
 		{
 			if ((_x distance2D _my_dog) <= 200) then {
-				[["a3\sounds_f\ambient\animals\dog1.wss", _my_dog, false, getPosASL _my_dog, 2, 0.8, 0]] remoteExec ["playSound3D", owner _x];
+				[["a3\sounds_f\ambient\animals\dog1.wss", _my_dog, false, getPosASL _my_dog, 2, 0.8, 250]] remoteExec ["playSound3D", owner _x];
 			};
 		} forEach (AllPlayers - (entities "HeadlessClient_F"));
 	};

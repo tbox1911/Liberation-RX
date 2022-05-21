@@ -34,11 +34,6 @@ class cfgSounds {
  		sound[] = {"res\c130.ogg", 1, 1};
  		titles[] = {};
  	};
-	class bombershout {
-		name = "bombershout";
-		sound[] = {"res\shout.ogg", 1, 1};
-		titles[] = {};
-	};
 	#include "addons\GRAD\cfgSounds.hpp"
 };
 
