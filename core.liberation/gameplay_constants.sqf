@@ -1,4 +1,4 @@
-GRLIB_save_key = "GREUH_LIBERATION_Malden_saveGame_PSK";
+GRLIB_save_key = "GREUH_LIBERATION_Lythium_saveGame_PSK";
 // change this value if you want different saveGames on different map
 GRLIB_side_resistance = resistance;
 GRLIB_side_civilian = civilian;
@@ -37,7 +37,7 @@ GRLIB_date_month = 6;
 GRLIB_date_day = 30;
 GRLIB_nights_start = 21;
 GRLIB_nights_stop = 4;
-GREUH_start_ammo = 200;
+GREUH_start_ammo = 1000;
 
 GRLIB_blufor_cap = 64;
 
@@ -64,7 +64,7 @@ prisoner_ammo = 35;
 ai_value = 35;
 
 // Building Penalty
-building_penalty_isActive = true;
+building_penalty_isActive = false;
 
 // true to activate factions selection
 FAC_MSU_ACTIVE = false;
