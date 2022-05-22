@@ -8,8 +8,8 @@ params [
 private ["_unit", "_nb_unit", "_validpos", "_max_try"];
 if (count _classname == 0) exitWith {diag_log ["DBG: Error libunit ", _this]};
 
-if (_type in ["divers", "para"]) then {
-	_nb_unit = round (count _classname);
+if (_type in ["divers", "para", "defender"]) then {
+	_nb_unit = count _classname;
 } else {
 	_nb_unit = round ((count _classname) * ([] call F_adaptiveOpforFactor));
 };
