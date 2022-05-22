@@ -12,40 +12,40 @@ while { count (units _grp) > 0 } do {
 			if (_gunner != gunner _vehicle) then {
 				_gunner assignAsGunner _vehicle;
 				[_gunner] orderGetIn true;
-			};
-
-			// Default for HMG, GMG
-			private _radius = 800;
-			private _kind = "Man";
-			private _veh_class = typeOf _vehicle;
-
-			if (_veh_class isKindOf "AT_01_base_F") then {_radius = 1000; _kind = "LandVehicle"};
-			if (_veh_class isKindOf "StaticMortar") then {_radius = 1500; _kind = "Man"};
-			if (_veh_class isKindOf "AA_01_base_F") then {_radius = 2000; _kind = "Air"};
-
-			private _scan_target = [units GRLIB_side_friendly, {
-				alive _x &&
-				(vehicle _x) isKindOf _kind &&
-				!(_x getVariable ['R3F_LOG_disabled', false]) &&
-				!([_x, "LHD", GRLIB_sector_size] call F_check_near) &&
-				!([_x, "FOB", GRLIB_sector_size] call F_check_near) &&
-				_x distance2D (getPos _vehicle) <= _radius
-			} ] call BIS_fnc_conditionalSelect;
-
-			if (count (_scan_target) > 0 ) then {
-				// closest first
-				private _target_list = _scan_target apply {[_x distance2D _vehicle, _x]};
-				_target_list sort true;
-				private _next_target = _target_list select 0 select 1;
-
-				_vehicle setDir (_vehicle getDir _next_target);
-				_grp setBehaviour "COMBAT";
-				_grp reveal _next_target;
-				_gunner doTarget _next_target;
-				//_vehicle fireAtTarget [_next_target];
 			} else {
-				_grp setBehaviour "CARELESS";
-				_gunner doTarget objNull;
+				// Default for HMG, GMG
+				private _radius = 800;
+				private _kind = "Man";
+				private _veh_class = typeOf _vehicle;
+
+				if (_veh_class isKindOf "AT_01_base_F") then {_radius = 1000; _kind = "LandVehicle"};
+				if (_veh_class isKindOf "StaticMortar") then {_radius = 1500; _kind = "Man"};
+				if (_veh_class isKindOf "AA_01_base_F") then {_radius = 2000; _kind = "Air"};
+
+				private _scan_target = [units GRLIB_side_friendly, {
+					alive _x &&
+					(vehicle _x) isKindOf _kind &&
+					!(_x getVariable ['R3F_LOG_disabled', false]) &&
+					!([_x, "LHD", GRLIB_sector_size] call F_check_near) &&
+					!([_x, "FOB", GRLIB_sector_size] call F_check_near) &&
+					_x distance2D (getPos _vehicle) <= _radius
+				} ] call BIS_fnc_conditionalSelect;
+
+				if (count (_scan_target) > 0 ) then {
+					// closest first
+					private _target_list = _scan_target apply {[_x distance2D _vehicle, _x]};
+					_target_list sort true;
+					private _next_target = _target_list select 0 select 1;
+
+					_vehicle setDir (_vehicle getDir _next_target);
+					_grp setBehaviour "COMBAT";
+					_grp reveal _next_target;
+					_gunner doTarget _next_target;
+					//_vehicle fireAtTarget [_next_target];
+				} else {
+					_grp setBehaviour "CARELESS";
+					_gunner doTarget objNull;
+				};
 			};
 		};
 		sleep 30;
