@@ -31,6 +31,7 @@ private _sendPara = {
 		_x allowFleeing 0;
 		_x setVariable ["GRLIB_counter_TTL", round(time + 3600)];
 		_x setVariable ["GRLIB_mission_AI", true];
+		sleep 0.1;
 	} foreach (units _para_group_tmp);
 
 	while {(count (waypoints _pilot_group)) != 0} do {deleteWaypoint ((waypoints _pilot_group) select 0);};
@@ -96,4 +97,5 @@ private _sendPara = {
 
 private _para_group = createGroup [GRLIB_side_enemy, true];
 [_targetpos, _para_group] spawn _sendPara;
+waituntil {sleep 3; count (units _para_group) > 0};
 _para_group;
