@@ -12,4 +12,4 @@
 #define MISSION_CTRL_COLOR_DEFINE sideMissionColor
 
 #include "sideMissions\sideMissionDefines.sqf"
-#include "missionController.sqf";
+#include "missionController.sqf"

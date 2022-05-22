@@ -10,4 +10,4 @@
 #define MISSION_PROC_COLOR_DEFINE sideMissionColor
 
 #include "sideMissions\sideMissionDefines.sqf"
-#include "missionProcessor.sqf";
+#include "missionProcessor.sqf"
