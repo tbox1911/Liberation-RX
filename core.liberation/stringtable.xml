@@ -5068,15 +5068,23 @@
 
 		<Key ID="STR_JKB_MENU">
 			<Original>-- Juke Box --</Original>
+			<Chinesesimp>-- 音乐播放器 --</Chinesesimp>
+			<Chinese>-- 音樂播放器 --</Chinese>
 		</Key>
 		<Key ID="STR_JKB_ACTION">
 			<Original>Open JukeBox</Original>
+			<Chinesesimp>打开音乐播放器</Chinesesimp>
+			<Chinese>打開音樂播放器</Chinese>
 		</Key>
 		<Key ID="STR_JKB_START">
 			<Original>Play</Original>
+			<Chinesesimp>播放</Chinesesimp>
+			<Chinese>播放</Chinese>
 		</Key>		
 		<Key ID="STR_JKB_STOP">
 			<Original>Stop</Original>
+			<Chinesesimp>暂停</Chinesesimp>
+			<Chinese>暫停</Chinese>
 		</Key>
 	
 		<!-- liberation_airdrop.hpp -->
@@ -5380,6 +5388,8 @@
 		<Key ID="STR_SQUAD_WAIT">
 			<Original>Your Squad is waiting for you\nat the next FOB!</Original>
 			<French>Votre Squad vous attend\nà la prochaine FOB!</French>
+			<Chinesesimp>你的小队正在下一个FOB等着你！</Chinesesimp>
+			<Chinese>你的小隊正在下一個FOB等著你！</Chinese>
 		</Key>
 
 		<!--
