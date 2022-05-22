@@ -1,8 +1,6 @@
 params [ "_targetpos" ];
 
-private ["_waypoint", "_unit"];
 private _spawnsector = ( [ sectors_airspawn , [ _targetpos ] , { (markerpos _x) distance _input0 }, "ASCEND"] call BIS_fnc_sortBy ) select 0;
-
 private _para_group = createGroup [GRLIB_side_enemy, true];
 private _pilot_group = createGroup [GRLIB_side_enemy, true];
 
@@ -36,7 +34,7 @@ private _para_group_tmp = [markerpos _spawnsector, _unitclass, GRLIB_side_enemy,
 
 [_newvehicle, _targetpos, _pilot_group, _para_group] spawn {
 	params [ "_newvehicle", "_targetpos", "_pilot_group", "_para_group"];
-
+	private ["_waypoint"];
 	while {(count (waypoints _pilot_group)) != 0} do {deleteWaypoint ((waypoints _pilot_group) select 0);};
 	while {(count (waypoints _para_group)) != 0} do {deleteWaypoint ((waypoints _para_group) select 0);};
 	sleep 1;
