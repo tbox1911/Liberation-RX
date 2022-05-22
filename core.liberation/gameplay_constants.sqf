@@ -63,6 +63,8 @@ prisoner_score = 10;
 prisoner_ammo = 35;
 ai_value = 35;
 
+// Building Penalty
+building_penalty_isActive = true;
 
 // true to activate factions selection
 FAC_MSU_ACTIVE = false;
