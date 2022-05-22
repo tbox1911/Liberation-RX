@@ -34,7 +34,6 @@ private _para_group_tmp = [markerpos _spawnsector, _unitclass, GRLIB_side_enemy,
 	sleep 0.1;
 } foreach (units _para_group_tmp);
 
-
 [_newvehicle, _targetpos, _pilot_group, _para_group] spawn {
 	params [ "_newvehicle", "_targetpos", "_pilot_group", "_para_group"];
 
