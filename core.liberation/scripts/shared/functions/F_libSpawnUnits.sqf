@@ -2,21 +2,30 @@ params [
     "_spawnpos",                    // position to spawn
     ["_classname", []],             // array of classname to create
     ["_side", GRLIB_side_enemy],    // side of units group
-    ["_type", "infantry"]           // type of unit 
+    ["_type", "infantry"]           // type of unit
 ];
 
-private ["_unit", "_validpos", "_max_try"];
+private ["_unit", "_nb_unit", "_validpos", "_max_try"];
 if (count _classname == 0) exitWith {diag_log ["DBG: Error libunit ", _this]};
-private _grp = createGroup [_side, true];
-private _nb_unit = round ((count _classname) * ([] call F_adaptiveOpforFactor));
 
+if (_type in ["divers", "para"]) then {
+	_nb_unit = round (count _classname);
+} else {
+	_nb_unit = round ((count _classname) * ([] call F_adaptiveOpforFactor));
+};
+
+private _grp = createGroup [_side, true];
 {
 	if ( (count units _grp) < _nb_unit) then {
 		_validpos = zeropos;
 		_max_try = 10;
         
         if (_type == "divers") then {
-            _validpos = _spawnpos vectorAdd [floor(random 20), floor(random 20), -3];
+            _validpos = _spawnpos vectorAdd [floor(random 20), floor(random 20), -4];
+        };
+
+        if (_type == "para") then {
+            _validpos = _spawnpos vectorAdd [floor(random 20), floor(random 20), 0];
         };
 
 		while { (_validpos isEqualTo zeropos) && _max_try > 0 } do {
@@ -28,6 +37,7 @@ private _nb_unit = round ((count _classname) * ([] call F_adaptiveOpforFactor));
 			_unit = _grp createUnit [_x, _validpos, [], 5, "NONE"];
 			_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 			[_unit] joinSilent _grp;
+			if (_type == "para") then {_unit addBackpack "B_Parachute"};
 			if (_type == "militia") then {[ _unit ] call loadout_militia};
 			[ _unit ] call reammo_ai;
             _unit switchMove "amovpknlmstpsraswrfldnon";
