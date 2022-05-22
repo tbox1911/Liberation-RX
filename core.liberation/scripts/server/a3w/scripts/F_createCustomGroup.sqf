@@ -19,7 +19,7 @@ switch (_type) do {
 
 private _unitclass = [];
 while { (count _unitclass) < _nbUnits } do { _unitclass pushback (selectRandom _unitTypes) };
-private _grp_tmp = [_pos, _unitclass, GRLIB_side_enemy, _type, _patrol] call F_libSpawnUnits;
+private _grp_tmp = [_pos, _unitclass, GRLIB_side_enemy, _type] call F_libSpawnUnits;
 
 {
 	[_x] joinSilent _grp; 
