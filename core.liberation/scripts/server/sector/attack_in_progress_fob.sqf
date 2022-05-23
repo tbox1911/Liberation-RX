@@ -8,7 +8,7 @@ if ( _ownership != GRLIB_side_enemy ) exitWith {};
 
 private _grp = grpNull;
 if ( GRLIB_blufor_defenders ) then {
-	_grp = [_fobpos, blufor_squad_mix, GRLIB_side_friendly, "infantry"] call F_libSpawnUnits;
+	_grp = [_fobpos, blufor_squad_mix, GRLIB_side_friendly, "defender"] call F_libSpawnUnits;
 	_grp setCombatMode "RED";
 	_grp setBehaviourStrong "COMBAT";
 	{
