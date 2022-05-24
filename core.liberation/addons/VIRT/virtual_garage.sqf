@@ -120,7 +120,7 @@ while { dialog && alive player } do {
 					_ammo = _veh_info select 2;
 					_lst_a3 = _veh_info select 4;
 					_lst_r3f = _veh_info select 5;
-					buildtype = 10;
+					buildtype = 13;
 					build_unit = [_veh_class,_color,_ammo,_lst_a3,_lst_r3f];
 					dobuild = 1;
 

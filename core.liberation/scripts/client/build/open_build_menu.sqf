@@ -6,16 +6,13 @@ if (FAC_MSU_ACTIVE) then {
 		hint "Bitte erstelle eine Gruppe im Groupmanager, und wähle deine Fraktion in den Gruppendetails!";
 	};
 
-	_prc = format ["FAC_MSU\%1\classnames_west.sqf", _fac];
-	// [] call compile preprocessFileLineNumbers _prc;
+	
 
-	_handle = player execVM _prc;
-	waitUntil {
-		scriptDone _handle
-	};
 	[] call F_calcUnitsCost;
 
-	build_lists = [[], infantry_units, light_vehicles, heavy_vehicles, air_vehicles, static_vehicles, buildings, support_vehicles, squads];
+	_comp_build_lists = compile format ["[[], infantry_units, %1_light_vehicles, %1_heavy_vehicles, %1_air_vehicles, static_vehicles, buildings, support_vehicles, squads];", _fac];
+	build_lists = call _comp_build_lists;
+
 };
 // END Joh Factions
 
@@ -24,7 +21,7 @@ private [ "_oldbuildtype", "_cfg", "_initindex", "_iscommandant", "_squadname", 
 if ( ( [ getpos player , 500 , GRLIB_side_enemy ] call F_getUnitsCount ) > 4 ) exitWith { hint localize "STR_BUILD_ENEMIES_NEARBY"; };
 
 if ( isNil "buildtype" ) then { buildtype = 1 };
-if ( buildtype > 8 ) then { buildtype = 1 };
+if ( buildtype > 11 ) then { buildtype = 1 };
 if ( isNil "buildindex" ) then { buildindex = -1 };
 dobuild = 0;
 _oldbuildtype = -1;
@@ -62,14 +59,18 @@ localize "STR_BUILD4",
 localize "STR_BUILD5",
 localize "STR_BUILD6",
 localize "STR_BUILD7",
-localize "STR_BUILD8"
+localize "STR_BUILD8",
+localize "STR_BUILD9",
+localize "STR_BUILD10",
+localize "STR_BUILD11"
+
 ];
 
 while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
  	_build_list = [];
 	{
 		if (_near_outpost && buildtype in [3,4,8]) exitWith {};
-		if (buildtype == 8 ) then {
+		if (buildtype == 11 ) then {
 			_build_list pushback _x;
 		} else {
 			if ( _score >= (_x select 4) ) then {_build_list pushback _x};
@@ -83,7 +84,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 		lbClear 110;
 		{
 			ctrlSetText [ 151, _buildpages select ( buildtype - 1) ];
-			if ( buildtype != 8 ) then {
+			if ( buildtype != 12 ) then {
 				_entrytext = [(_x select 0)] call get_lrx_name;
 				((findDisplay 5501) displayCtrl (110)) lnbAddRow [ _entrytext, format [ "%1" ,_x select 1], format [ "%1" ,_x select 2], format [ "%1" ,_x select 3]];
 
@@ -183,7 +184,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 	_affordable_crew = _affordable;
 	if ( unitcap >= ([] call F_localCap)) then {
 		_affordable_crew = false;
-		if (buildtype == 1 || buildtype == 8) then {
+		if (buildtype == 1 || buildtype == 11) then {
 			_affordable = false;
 		};
 	};

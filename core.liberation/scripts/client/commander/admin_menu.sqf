@@ -78,7 +78,7 @@ _i = 0;
 		_build_combo lbSetData [_i, ( _x select 0 )];
 		_i = _i + 1;
 	};
-} forEach light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles + opfor_recyclable;
+} forEach light_vehicles + strong_light_vehicles  + heavy_vehicles + strong_heavy_vehicles + air_vehicles + fast_air_vehicle + static_vehicles + support_vehicles + support_crates + opfor_recyclable;
 
 _ban_combo lbSetCurSel 0;
 _score_combo lbSetCurSel 0;
@@ -116,7 +116,7 @@ while { alive player && dialog } do {
 		_msg = format ["Build Vehicle: %1", _veh_text];
 		hint _msg;
 		systemchat _msg;
-		buildtype = 9;
+		buildtype = 13;
 		build_unit = [_veh_class,[],1,[],[]];
 		dobuild = 1;
 		closeDialog 0;

@@ -2,7 +2,7 @@
 
 private ["_shop", "_deskDir", "_deskPos", "_desk", "_man", "_offset", "_str"];
 
-SHOP_list = light_vehicles + heavy_vehicles + air_vehicles + support_vehicles + opfor_recyclable + ind_recyclable;
+SHOP_list = light_vehicles + strong_light_vehicles + heavy_vehicles + strong_heavy_vehicles + air_vehicles + fast_air_vehicle + support_vehicles + support_crates + opfor_recyclable + ind_recyclable;
 SHOP_desk = "Land_CashDesk_F";
 SHOP_man = "C_Man_formal_1_F";
 SHOP_ratio = [

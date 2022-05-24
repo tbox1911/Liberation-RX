@@ -143,7 +143,7 @@ while { dialog && alive player } do {
 			if (_result) then {
 				player setVariable ["GREUH_ammo_count", (_ammo_collected - _price), true];
 				private _veh_class = _buy_list_dlg1 select _selected_item select 0;
-				buildtype = 9;
+				buildtype = 13;
 				build_unit = [_veh_class,[],1,[],[]];
 				dobuild = 1;
 				closeDialog 0;

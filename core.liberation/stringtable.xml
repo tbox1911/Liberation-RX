@@ -1593,6 +1593,15 @@
 					<Japanese>軽車両</Japanese>
 			</Key>
 			<Key ID="STR_BUILD3">
+					<Original>Armed Light vehicles</Original>
+					<French>Véhicules légers</French>
+					<German>bewaffnete leichte Fahrzeuge</German>
+					<Spanish>Vehículos ligeros</Spanish>
+					<Russian>Легкая техника</Russian>
+					<Chinesesimp>轻型车辆</Chinesesimp>
+					<Japanese>軽車両</Japanese>
+			</Key>
+			<Key ID="STR_BUILD4">
 					<Original>Armored vehicles</Original>
 					<French>Vehicules blindés</French>
 					<German>Gepanzerte Fahrzeuge</German>
@@ -1601,7 +1610,16 @@
 					<Chinesesimp>装甲车辆</Chinesesimp>
 					<Japanese>装甲車両</Japanese>
 			</Key>
-			<Key ID="STR_BUILD4">
+			<Key ID="STR_BUILD5">
+					<Original>Heavy Armored vehicles</Original>
+					<French>Vehicules blindés</French>
+					<German>Schwer gepanzerte Fahrzeuge</German>
+					<Spanish>Vehículos blindados</Spanish>
+					<Russian>Бронетехника</Russian>
+					<Chinesesimp>装甲车辆</Chinesesimp>
+					<Japanese>装甲車両</Japanese>
+			</Key>
+			<Key ID="STR_BUILD6">
 					<Original>Air vehicles</Original>
 					<French>Véhicules aériens</French>
 					<German>Luftfahrzeuge</German>
@@ -1610,7 +1628,16 @@
 					<Chinesesimp>飞行器</Chinesesimp>
 					<Japanese>航空機</Japanese>
 			</Key>
-			<Key ID="STR_BUILD5">
+			<Key ID="STR_BUILD7">
+					<Original>Planes and Jets</Original>
+					<French>Véhicules aériens</French>
+					<German>Flugzeuge und Jets</German>
+					<Spanish>Vehículos aéreos</Spanish>
+					<Russian>Авиационная техника</Russian>
+					<Chinesesimp>飞行器</Chinesesimp>
+					<Japanese>航空機</Japanese>
+			</Key>
+			<Key ID="STR_BUILD8">
 					<Original>Static defenses</Original>
 					<French>Defenses statiques</French>
 					<German>Statische Verteidigung</German>
@@ -1619,7 +1646,7 @@
 					<Chinesesimp>静态防御武器</Chinesesimp>
 					<Japanese>固定兵器</Japanese>
 			</Key>
-			<Key ID="STR_BUILD6">
+			<Key ID="STR_BUILD9">
 					<Original>Buildings</Original>
 					<French>Batiments</French>
 					<German>Gebäude</German>
@@ -1628,7 +1655,7 @@
 					<Chinesesimp>建筑</Chinesesimp>
 					<Japanese>建物</Japanese>
 			</Key>
-			<Key ID="STR_BUILD7">
+			<Key ID="STR_BUILD10">
 					<Original>Logistics</Original>
 					<French>Logistique</French>
 					<German>Logistik</German>
@@ -1637,7 +1664,16 @@
 					<Chinesesimp>后勤</Chinesesimp>
 					<Japanese>ロジスティック</Japanese>
 			</Key>
-			<Key ID="STR_BUILD8">
+			<Key ID="STR_BUILD11">
+					<Original>Logistic Crates </Original>
+					<French>Logistique</French>
+					<German>Logistik Kisten</German>
+					<Spanish>Logística</Spanish>
+					<Russian>Снабжение</Russian>
+					<Chinesesimp>后勤</Chinesesimp>
+					<Japanese>ロジスティック</Japanese>
+			</Key>
+			<Key ID="STR_BUILD12">
 					<Original>Infantry squads</Original>
 					<French>Escouades d'infanterie</French>
 					<German>Infanteriegruppen</German>

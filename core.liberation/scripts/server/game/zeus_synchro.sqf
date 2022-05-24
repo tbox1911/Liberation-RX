@@ -5,7 +5,7 @@ _vehicleClassnames = [huron_typename];
 
 {
 	_vehicleClassnames = _vehicleClassnames + [_x select 0];
-} foreach (light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles) ;
+} foreach (light_vehicles + strong_light_vehicles  + heavy_vehicles + strong_heavy_vehicles + air_vehicles + fast_air_vehicle + static_vehicles + support_vehicles + support_crates) ;
 
 while { true } do {
 

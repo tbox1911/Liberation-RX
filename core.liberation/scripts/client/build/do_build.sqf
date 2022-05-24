@@ -33,7 +33,7 @@ while { true } do {
 	build_invalid = 0;
 	_classname = "";
 	
-	if ( buildtype == 6 ) then { build_altitude = building_altitude } else { build_altitude = 0.2 };
+	if ( buildtype == 13 ) then { build_altitude = building_altitude } else { build_altitude = 0.2 };
 
 	if ( buildtype == 99 ) then {
 		_classname = FOB_typename;
@@ -46,7 +46,7 @@ while { true } do {
 		buildtype = 99;
 	};
 
-	if ( buildtype in [9,10] ) then {
+	if ( buildtype in [13,14] ) then {
 		_price = 0;
 		_classname = build_unit select 0;
 		_color = build_unit select 1;
@@ -56,7 +56,7 @@ while { true } do {
 	};
 	
 
-	if ( buildtype in [1,2,3,4,5,6,7,8] ) then {
+	if ( buildtype in [1,2,3,4,5,6,7,8,9,10,11,12] ) then {
 		_score = score player;
 		_build_list = [];
 		{
@@ -113,7 +113,7 @@ while { true } do {
 		};
 		build_confirmed = 0;
 	} else {
-		if ( buildtype == 8 ) then {
+		if ( buildtype == 12 ) then {
 			if (isNil {player getVariable ["my_squad", nil]} ) then {
 				if (!([_price] call F_pay)) exitWith {};
 				_pos = [(getpos player select 0) + 1,(getpos player select 1) + 1, 0];
@@ -162,10 +162,10 @@ while { true } do {
 			_idactlower = -1;
 			_idactplacebis = -1;
 
-			if (buildtype == 6 ) then {
+			if (buildtype == 9 ) then {
 				_idactplacebis = player addAction ["<t color='#B0FF00'>" + localize "STR_PLACEMENT_BIS" + "</t> <img size='1' image='res\ui_confirm.paa'/>","scripts\client\build\build_place_bis.sqf","",-752,false,false,"","build_invalid == 0 && build_confirmed == 1"];
 			};
-			if (buildtype == 6 || buildtype == 99) then {
+			if (buildtype == 9 || buildtype == 99) then {
 				_idactsnap = player addAction ["<t color='#B0FF00'>" + localize "STR_GRID" + "</t>","scripts\client\build\do_grid.sqf","",-755,false,false,"","build_confirmed == 1"];
 				_idactupper = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEUP" + "</t> <img size='1' image='R3F_LOG\icons\r3f_lift.paa'/>","scripts\client\build\build_up.sqf","",-755,false,false,"","build_confirmed == 1"];
 				_idactlower = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEDOWN" + "</t> <img size='1' image='R3F_LOG\icons\r3f_release.paa'/>","scripts\client\build\build_down.sqf","",-755,false,false,"","build_confirmed == 1"];
@@ -205,7 +205,7 @@ while { true } do {
 
 				while { _actualdir > 360 } do { _actualdir = _actualdir - 360 };
 				while { _actualdir < 0 } do { _actualdir = _actualdir + 360 };
-				if ( ((buildtype == 6) || (buildtype == 99)) && ((gridmode % 2) == 1) ) then {
+				if ( ((buildtype == 9) || (buildtype == 99)) && ((gridmode % 2) == 1) ) then {
 					if ( _actualdir >= 22.5 && _actualdir <= 67.5 ) then { _actualdir = 45 };
 					if ( _actualdir >= 67.5 && _actualdir <= 112.5 ) then { _actualdir = 90 };
 					if ( _actualdir >= 112.5 && _actualdir <= 157.5 ) then { _actualdir = 135 };
@@ -232,7 +232,7 @@ while { true } do {
 				_near_objects_25 = _near_objects_25 + (_truepos nearobjects [FOB_box_typename, 50]);
 				_near_objects_25 = _near_objects_25 + (_truepos nearobjects [Arsenal_typename, 50]);
 
-				if(	buildtype != 6 ) then {
+				if(	buildtype != 9 ) then {
 					_near_objects = _near_objects + (_truepos nearobjects ["Static", _dist]);
 					_near_objects_25 = _near_objects_25 + (_truepos nearobjects ["Static", 50]);
 				};
@@ -348,7 +348,7 @@ while { true } do {
 					};
 
 					// Vehicle owner
-					if ( buildtype in [2,3,4,5,7,9,10] ) then {
+					if ( buildtype in [2,3,4,5,6,7,8,10,11] ) then {
 						if (!([typeOf _vehicle, GRLIB_vehicle_blacklist] call F_itemIsInClass)) then {
 							_vehicle setVariable ["GRLIB_vehicle_owner", getPlayerUID player, true];
 							_vehicle allowCrewInImmobile true;
@@ -441,7 +441,7 @@ while { true } do {
 					};
 				};
 
-				if(buildtype != 6) then {
+				if(buildtype != 9) then {
 					_vehicle addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
 				};
 

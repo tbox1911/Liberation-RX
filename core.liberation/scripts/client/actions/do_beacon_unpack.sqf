@@ -10,7 +10,7 @@ if (resources_infantry + _tent_cost >= infantry_cap) then {
 	sleep 2;
 	removeBackpack player;
 	sleep 6;
-	buildtype = 9;
+	buildtype = 13;
 	build_unit = [mobile_respawn,[],1,[],[]];
 	dobuild = 1;
 	disableUserInput false;

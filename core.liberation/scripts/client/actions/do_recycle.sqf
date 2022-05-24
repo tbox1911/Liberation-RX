@@ -5,6 +5,13 @@ if (isNil "_vehicle") exitWith {};
 if ((_vehicle getVariable ["recycle_in_use", false])) exitWith {};
 _vehicle setVariable ["recycle_in_use", true, true];
 
+ // loads classname list with all factions
+ _handle = player execVM "mod_template\CP_USMC_W\classnames_west.sqf";
+	waitUntil {
+    	scriptDone _handle
+ }; 
+
+
 private [ "_objectinfo", "_objectinfo_loot", "_loot", "_cfg", "_msg" ];
 // XP AmmoBox
 if (typeOf _vehicle == ammobox_i_typename && score player <= GRLIB_perm_log) then {
@@ -30,7 +37,7 @@ if (!isNil "_objectinfo_loot") then {
 };
 
 
-_objectinfo = ( [ (light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles + buildings + opfor_recyclable + ind_recyclable), { typeof _vehicle == _x select 0 } ] call BIS_fnc_conditionalSelect ) select 0;
+_objectinfo = ( [ (light_vehicles + strong_light_vehicles  + heavy_vehicles + strong_heavy_vehicles + air_vehicles + fast_air_vehicle + static_vehicles + support_vehicles + support_crates + buildings + opfor_recyclable + ind_recyclable), { typeof _vehicle == _x select 0 } ] call BIS_fnc_conditionalSelect ) select 0;
 if (isNil "_objectinfo") then {
 	_objectinfo = [typeOf _vehicle, 0, 0, 0];
 };

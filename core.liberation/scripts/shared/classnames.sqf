@@ -121,7 +121,7 @@ simple_objects = [
 
 // *** ELITES ***
 elite_vehicles = [];
-{ if (_x select 4 == GRLIB_perm_max) then { elite_vehicles pushback (_x select 0)} } foreach light_vehicles + heavy_vehicles + air_vehicles + static_vehicles;
+{ if (_x select 4 == GRLIB_perm_max) then { elite_vehicles pushback (_x select 0)} } foreach light_vehicles + strong_light_vehicles + heavy_vehicles + strong_heavy_vehicles + air_vehicles + fast_air_vehicle + static_vehicles;
 
 // Static Weapons
 list_static_weapons = ["I_static_AA_F"] + opfor_statics;
@@ -303,7 +303,7 @@ air_vehicles = [ air_vehicles ] call F_filterMods;
 support_vehicles = [ support_vehicles ] call F_filterMods;
 static_vehicles = [ static_vehicles ] call F_filterMods;
 buildings = [ buildings ] call F_filterMods;
-build_lists = [[],infantry_units,light_vehicles,heavy_vehicles,air_vehicles,static_vehicles,buildings,support_vehicles,squads];
+build_lists = [[],infantry_units,light_vehicles,strong_light_vehicles,heavy_vehicles,strong_heavy_vehicles,air_vehicles,fast_air_vehicle,static_vehicles,buildings,support_vehicles,support_crates,squads];
 militia_squad = [ militia_squad , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
 militia_vehicles = [ militia_vehicles , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
 opfor_vehicles = [ opfor_vehicles , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;

@@ -61,7 +61,7 @@ _classnames_to_save = [];
 _classnames_to_save_blu = [FOB_typename, FOB_outpost, FOB_sign, huron_typename];
 {
 	_classnames_to_save_blu pushback (_x select 0);
-} foreach (air_vehicles + heavy_vehicles + light_vehicles + support_vehicles + static_vehicles + ind_recyclable);
+} foreach (light_vehicles + strong_light_vehicles  + heavy_vehicles + strong_heavy_vehicles + air_vehicles + fast_air_vehicle + support_vehicles + support_crates + static_vehicles + ind_recyclable);
 
 _vehicles_blacklist = list_static_weapons + uavs + [mobile_respawn];
 

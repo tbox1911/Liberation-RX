@@ -4,11 +4,11 @@ class liberation_build {
 	controlsBackground[] = {};
 
 	controls[] = {"OuterBG", "RecycleBG", "OuterBG_F", "InnerBG", "InnerBG_F", "Header",
-	"ButtonClose","BuildInfantryButton","BuildTransportVehicleButton",
-	"BuildCombatVehicleButton","BuildAerialButton","BuildDefenceButton",
-	"BuildSupportButton","BuildSquadButton","BuildBuildingButton","BuildInfantryImage",
-	"BuildTransportVehicleImage","BuildCombatVehicleImage","BuildAerialImage","ManpowerImageShadow","AmmoImageShadow","FuelImageShadow",
-	"BuildDefenceImage","BuildSupportImage","BuildSquadImage","BuildBuildingImage","ListBG","ManpowerImage","AmmoImage","FuelImage",
+	"ButtonClose","BuildInfantryButton","BuildTransportVehicleButton","BuildArmedTransportVehicleButton",
+	"BuildCombatVehicleButton","BuildHeavyCombatVehicleButton","BuildAerialButton","BuildDefenceButton",
+	"BuildSupportButton","BuildCratesButton","BuildSquadButton","BuildJetsButton","BuildBuildingButton","BuildInfantryImage",
+	"BuildTransportVehicleImage","BuildArmedTransportVehicleImage","BuildCombatVehicleImage","BuildHeavyCombatVehicleImage","BuildAerialImage","ManpowerImageShadow","AmmoImageShadow","FuelImageShadow",
+	"BuildDefenceImage","BuildSupportImage","BuildCratesImage","BuildSquadImage","BuildJetsImage","BuildBuildingImage","ListBG","ManpowerImage","AmmoImage","FuelImage",
 	"BuildList","BuildButton","LabelManpower","LabelAmmo","LabelFuel","LabelCap","BuildMannedButton","PageLabel", "LinkedSector"
 
 	};
@@ -81,91 +81,135 @@ class liberation_build {
 	};
 	class BuildInfantryImage : BuildTypeImage {
 		idc = 1025;
-		x = (0.402 * safezoneW + safezoneX);
+		x = (0.3645 * safezoneW + safezoneX);
 		text = "\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeUnits_ca.paa";
 	};
 	class BuildInfantryButton : BuildTypeButton{
 		idc = 102;
 		text = "";
 		action = "buildtype=1";
-		x = (0.4 * safezoneW + safezoneX);
+		x = (0.3625 * safezoneW + safezoneX);
 	};
 	class BuildTransportVehicleImage : BuildTypeImage {
 		idc = 1035;
-		x = (0.427 * safezoneW + safezoneX);
+		x = (0.3895 * safezoneW + safezoneX);
 		text = "\A3\ui_f\data\map\vehicleicons\iconCar_ca.paa";
 	};
 	class BuildTransportVehicleButton : BuildTypeButton{
 		idc = 103;
 		text = "";
 		action = "buildtype=2";
-		x = (0.425 * safezoneW + safezoneX);
+		x = (0.3875 * safezoneW + safezoneX);
+	};
+	class BuildArmedTransportVehicleImage : BuildTypeImage {
+		idc = 903;
+		x = (0.4145 * safezoneW + safezoneX);
+		text = "\A3\ui_f\data\map\vehicleicons\iconCar_ca.paa";
+	};
+	class BuildArmedTransportVehicleButton : BuildTypeButton{
+		idc = 904;
+		text = "";
+		action = "buildtype=3";
+		x = (0.4125 * safezoneW + safezoneX);
 	};
 	class BuildCombatVehicleImage : BuildTypeImage {
 		idc = 1045;
-		x = (0.452 * safezoneW + safezoneX);
+		x = (0.4395 * safezoneW + safezoneX);
 		text = "\A3\ui_f\data\map\vehicleicons\iconTank_ca.paa";
 	};
 	class BuildCombatVehicleButton : BuildTypeButton{
 		idc = 104;
 		text = "";
-		action = "buildtype=3";
-		x = (0.45 * safezoneW + safezoneX);
+		action = "buildtype=4";
+		x = (0.4375 * safezoneW + safezoneX);
+	};
+	class BuildHeavyCombatVehicleImage : BuildTypeImage {
+		idc = 905;
+		x = (0.4645 * safezoneW + safezoneX);
+		text = "\A3\ui_f\data\map\vehicleicons\iconTank_ca.paa";
+	};
+	class BuildHeavyCombatVehicleButton : BuildTypeButton{
+		idc = 906;
+		text = "";
+		action = "buildtype=5";
+		x = (0.4625 * safezoneW + safezoneX);
 	};
 	class BuildAerialImage : BuildTypeImage {
 		idc = 1055;
-		x = (0.477 * safezoneW + safezoneX);
+		x = (0.4895 * safezoneW + safezoneX);
 		text = "\A3\ui_f\data\map\vehicleicons\iconHelicopter_ca.paa";
 	};
 	class BuildAerialButton : BuildTypeButton{
 		idc = 105;
 		text = "";
-		action = "buildtype=4";
-		x = (0.475 * safezoneW + safezoneX);
+		action = "buildtype=6";
+		x = (0.4875 * safezoneW + safezoneX);
+	};
+	class BuildJetsImage : BuildTypeImage {
+		idc = 901;
+		x = (0.5145 * safezoneW + safezoneX);
+		text = "\A3\ui_f\data\map\vehicleicons\iconPlane_ca.paa";
+	};
+	class BuildJetsButton : BuildTypeButton{
+		idc = 902;
+		text = "";
+		action = "buildtype=7";
+		x = (0.5125 * safezoneW + safezoneX);
 	};
 	class BuildDefenceImage : BuildTypeImage {
 		idc = 11065;
-		x = (0.502 * safezoneW + safezoneX);
+		x = (0.5395 * safezoneW + safezoneX);
 		text = "\A3\ui_f\data\map\vehicleicons\iconStaticCannon_ca.paa";
 	};
 	class BuildDefenceButton : BuildTypeButton{
 		idc = 1106;
 		text = "";
-		action = "buildtype=5";
-		x = (0.5 * safezoneW + safezoneX);
+		action = "buildtype=8";
+		x = (0.5375 * safezoneW + safezoneX);
 	};
 	class BuildBuildingImage : BuildTypeImage {
 		idc = 1095;
-		x = (0.527 * safezoneW + safezoneX);
+		x = (0.5645 * safezoneW + safezoneX);
 		text = "\A3\ui_f\data\map\mapcontrol\Bunker_CA.paa";
 	};
 	class BuildBuildingButton : BuildTypeButton{
 		idc = 109;
 		text = "";
-		action = "buildtype=6";
-		x = (0.525 * safezoneW + safezoneX);
+		action = "buildtype=9";
+		x = (0.5625 * safezoneW + safezoneX);
 	};
 	class BuildSupportImage : BuildTypeImage {
 		idc = 1075;
-		x = (0.552 * safezoneW + safezoneX);
+		x = (0.5895 * safezoneW + safezoneX);
 		text = "\A3\ui_f\data\map\vehicleicons\iconCrateAmmo_ca.paa";
 	};
 	class BuildSupportButton : BuildTypeButton{
 		idc = 107;
 		text = "";
-		action = "buildtype=7";
-		x = (0.55 * safezoneW + safezoneX);
+		action = "buildtype=10";
+		x = (0.5875 * safezoneW + safezoneX);
+	};
+	class BuildCratesImage : BuildTypeImage {
+		idc = 1075;
+		x = (0.6145 * safezoneW + safezoneX);
+		text = "\A3\ui_f\data\map\vehicleicons\iconCrateAmmo_ca.paa";
+	};
+	class BuildCratesButton : BuildTypeButton{
+		idc = 107;
+		text = "";
+		action = "buildtype=11";
+		x = (0.6125 * safezoneW + safezoneX);
 	};
 	class BuildSquadImage : BuildTypeImage {
 		idc = 1085;
-		x = (0.577 * safezoneW + safezoneX);
+		x = (0.6395 * safezoneW + safezoneX);
 		text = "\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa";
 	};
 	class BuildSquadButton : BuildTypeButton{
 		idc = 108;
 		text = "";
-		action = "buildtype=8";
-		x = (0.575 * safezoneW + safezoneX);
+		action = "buildtype=12";
+		x = (0.6375 * safezoneW + safezoneX);
 	};
 
 	class IconImage {
