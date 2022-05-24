@@ -137,7 +137,7 @@ light_vehicles = [
     ["ffaa_et_rg31_rollers",0,220,0,GRLIB_perm_inf],
     ["ffaa_et_rg31_samson",0,230,0,GRLIB_perm_inf],
     ["ffaa_et_vamtac_tow",0,250,0,GRLIB_perm_inf],
-    ["ffaa_et_m250_estacion_nasams_blin",0,250,0,GRLIB_perm_inf],
+    ["ffaa_et_m250_estacion_nasams_blin",0,250,0,GRLIB_perm_inf], // NASAMS COMMAND
     ["ffaa_et_vamtac_cardom",0,500,0,GRLIB_perm_inf],
     ["CUP_B_LCU1600_USMC",0,30,0,GRLIB_perm_inf],
     ["CUP_B_Zodiac_USMC",0,30,0,GRLIB_perm_inf],
@@ -386,11 +386,12 @@ static_vehicles = [
     ["CUP_B_M119_USMC",0,800,0,GRLIB_perm_inf],
     ["CUP_WV_B_CRAM",200,0,0,GRLIB_perm_inf],
     ["CUP_WV_B_RAM_Launcher",500,0,0,GRLIB_perm_inf],
-    ["B_Radar_System_01_F",250,0,0,GRLIB_perm_inf],
-    ["B_SAM_System_03_F",500,0,0,GRLIB_perm_inf],
+    ["B_Radar_System_01_F",150,0,0,GRLIB_perm_inf],
+    ["B_SAM_System_03_F",250,0,0,GRLIB_perm_inf],
     ["B_Ship_MRLS_01_F",0,20000,0,GRLIB_perm_inf],
     ["B_AAA_System_01_F",500,0,0,GRLIB_perm_inf],
-    ["CUP_WV_B_SS_Launcher",500,0,0,GRLIB_perm_inf]
+    ["CUP_WV_B_SS_Launcher",250,0,0,GRLIB_perm_inf],
+    ["ffaa_lanzador_nasams",100,0,0,GRLIB_perm_inf]
    
 ];
  
