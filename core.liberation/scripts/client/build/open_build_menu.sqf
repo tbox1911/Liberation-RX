@@ -23,7 +23,7 @@ if ( _rank == "Colonel" ) then {
 	_iscommandant = true;
 };
 private _iscommander = false;
-if ( player == [] call F_getCommander ) then {
+if ( player == ([] call F_getCommander) ) then {
 	_iscommander = true;
 };
 private _near_outpost = (count (player nearObjects [FOB_outpost, 100]) > 0);

@@ -1,44 +1,35 @@
-if ( !GRLIB_use_whitelist ) exitWith {};
+params ["_player"];
 
-private [ "_commanderobj", "_tagmatch", "_idmatch", "_namematch" ];
+private _ret = true;
+private _tagmatch = false;
+private _idmatch = false;
+private _namematch = false;
 
-waitUntil { alive player };
-sleep 1;
-
-_commanderobj = [] call F_getCommander;
-if ( !isNull _commanderobj ) then {
-	if ( player == _commanderobj && !([] call is_admin)) then {
-
-		_tagmatch = false;
-		_idmatch = false;
-		_namematch = false;
-
-		if ( !isNil "GRLIB_whitelisted_tags" ) then {
-			if ( count (squadParams _commanderobj) != 0 ) then {
-				if ( ((squadParams _commanderobj select 0) select 0) in GRLIB_whitelisted_tags  ) then {
-					_tagmatch = true;
-				};
-			};
-		};
-
-		if ( !isNil "GRLIB_whitelisted_steamids" ) then {
-			if ( ( getPlayerUID _commanderobj ) in GRLIB_whitelisted_steamids ) then {
-				_idmatch = true;
-			};
-		};
-
-		if ( !isNil "GRLIB_whitelisted_names" ) then {
-			if ( ( name _commanderobj ) in GRLIB_whitelisted_names ) then {
-				_namematch = true;
-			};
-		};
-
-		if ( !( _tagmatch || _idmatch || _namematch ) ) then {
-
-			sleep 1;
-			if ( alive _commanderobj ) then {
-				endMission "END1";
+if ( !GRLIB_use_whitelist || ([] call is_admin) ) exitWith { _ret };
+if ( typeOf _player == commander_classname ) then {
+	if ( !isNil "GRLIB_whitelisted_tags" ) then {
+		if ( count (squadParams _player) != 0 ) then {
+			if ( (squadParams _player select 0 select 0) in GRLIB_whitelisted_tags  ) then {
+				_tagmatch = true;
 			};
 		};
 	};
+
+	if ( !isNil "GRLIB_whitelisted_steamids" ) then {
+		if ( ( getPlayerUID _player ) in GRLIB_whitelisted_steamids ) then {
+			_idmatch = true;
+		};
+	};
+
+	if ( !isNil "GRLIB_whitelisted_names" ) then {
+		if ( ( name _player ) in GRLIB_whitelisted_names ) then {
+			_namematch = true;
+		};
+	};
+
+	if ( !( _tagmatch || _idmatch || _namematch ) ) then {
+		_ret = false;
+	};
 };
+
+_ret;

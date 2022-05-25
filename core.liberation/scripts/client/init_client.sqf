@@ -29,6 +29,9 @@ if (!isMultiplayer) exitWith {
 	endMission "LOSER";
 };
 
+private _commander_check = [player] call compileFinal preprocessFileLineNUmbers "scripts\client\commander\enforce_whitelist.sqf";
+if (!_commander_check) exitWith { endMission "END1" };
+
 respawn_lhd = compileFinal preprocessFileLineNumbers "scripts\client\spawn\respawn_lhd.sqf";
 spawn_camera = compileFinal preprocessFileLineNumbers "scripts\client\spawn\spawn_camera.sqf";
 cinematic_camera = compileFinal preprocessFileLineNumbers "scripts\client\ui\cinematic_camera.sqf";
@@ -57,7 +60,7 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 	[] execVM "scripts\client\markers\spot_timer.sqf";
 	[] execVM "scripts\client\ui\ui_manager.sqf";
 };
-[] execVM "scripts\client\commander\enforce_whitelist.sqf";
+
 [] execVM "scripts\client\ui\intro.sqf";
 [] execVM "scripts\client\markers\sector_manager.sqf";
 [] execVM "scripts\client\misc\sides_stats_manager.sqf";
