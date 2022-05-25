@@ -62,7 +62,8 @@ localize "STR_BUILD7",
 localize "STR_BUILD8",
 localize "STR_BUILD9",
 localize "STR_BUILD10",
-localize "STR_BUILD11"
+localize "STR_BUILD11",
+localize "STR_BUILD12"
 
 ];
 
