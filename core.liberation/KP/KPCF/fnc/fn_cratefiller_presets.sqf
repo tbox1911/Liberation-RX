@@ -43,6 +43,8 @@ _classNames = parseSimpleArray KP_param_cratefiller_items;
 _additional = parseSimpleArray KP_param_cratefiller_additional;
 _blacklist = parseSimpleArray KP_param_cratefiller_blacklist;
 
+_blacklist = _blacklist + item_blacklist;
+
 CSVAR("buildings", _buildings);
 CSVAR("crates", _crates);
 CSVAR("inventoryBlacklist", _inventoryBlacklist);
