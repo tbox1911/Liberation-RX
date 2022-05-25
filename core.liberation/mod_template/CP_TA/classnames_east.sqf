@@ -132,8 +132,7 @@ opfor_vehicles_low_intensity = [
 	"CUP_O_Hilux_UB32_TK_INS",
 	"CUP_O_Hilux_zu23_TK_INS",
 	"CUP_O_ZSU23_TK",
-	"CUP_O_ZSU23_Afghan_TK",
-	"CUP_O_UH1H_slick_TKA"
+	"CUP_O_ZSU23_Afghan_TK"
 ];
 
 opfor_battlegroup_vehicles = [
@@ -147,13 +146,9 @@ opfor_battlegroup_vehicles = [
 	"CUP_O_GAZ_Vodnik_AGS_RU",
 	"CUP_O_GAZ_Vodnik_KPVT_RU",
 	"CUP_O_MTLB_pk_WDL_RU",
-	"CUP_O_Ka50_DL_RU",
-	"CUP_O_Ka52_RU",
 	"CUP_O_BMP3_RU",
-	"CUP_O_GAZ_Vodnik_Unarmed_RU",
-	"CUP_O_Mi24_D_Dynamic_TK",
-	"O_Plane_CAS_02_Cluster_F",
-	"O_Plane_Fighter_02_F"
+	"CUP_O_GAZ_Vodnik_Unarmed_RU"
+
 ];
 
 opfor_battlegroup_vehicles_low_intensity = [
@@ -209,6 +204,7 @@ opfor_choppers = [
 opfor_air = [
 	"O_Plane_CAS_02_Cluster_F",
 	"O_Plane_Fighter_02_F"	
+	
 ];
 
 opfor_statics = [
