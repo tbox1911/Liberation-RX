@@ -118,7 +118,7 @@ strong_light_vehicles = [
     ["CUP_B_M1152_USA",0,strong_light_vehicle_price_tier_2,0,GRLIB_perm_inf],
     ["CUP_B_M1151_M2_USA",0,strong_light_vehicle_price_tier_3,0,GRLIB_perm_inf],
     ["CUP_B_M1151_Mk19_USA",0,strong_light_vehicle_price_tier_3,0,GRLIB_perm_inf],
-    ["CUP_B_M1165_GMV_USA",0,strong_light_vehicle_price_tier_6 = 225,0,GRLIB_perm_inf],
+    ["CUP_B_M1165_GMV_USA",0,strong_light_vehicle_price_tier_6,225,0,GRLIB_perm_inf],
     ["CUP_B_M1167_USA",0,150,0,GRLIB_perm_inf],
     ["CUP_B_HMMWV_Crows_M2_USA",0,strong_light_vehicle_price_tier_6,0,GRLIB_perm_inf],
     ["CUP_B_HMMWV_Crows_MK19_USA",0,strong_light_vehicle_price_tier_7,0,GRLIB_perm_inf],
@@ -199,7 +199,7 @@ heavy_vehicles = [
     ["I_LT_01_AA_F",0,heavy_vehicle_price_tier_8,0,GRLIB_perm_inf],
     ["I_LT_01_AT_F",0,heavy_vehicle_price_tier_9,0,GRLIB_perm_inf],
     ["I_LT_01_cannon_F",0,heavy_vehicle_price_tier_10,0,GRLIB_perm_inf],
-    ["I_APC_Wheeled_03_cannon_F",0,heavy_vehicle_price_tier_10,0,GRLIB_perm_inf],
+    ["I_APC_Wheeled_03_cannon_F",0,heavy_vehicle_price_tier_14,0,GRLIB_perm_inf],
     ["B_AFV_Wheeled_01_cannon_F",0,heavy_vehicle_price_tier_16,0,GRLIB_perm_inf],
     ["B_AFV_Wheeled_01_up_cannon_F",0,heavy_vehicle_price_tier_17,0,GRLIB_perm_inf],
   // Spain
@@ -440,23 +440,20 @@ static_vehicles = [
     // CUP
     ["CUP_B_Stinger_AA_pod_Base_USMC",0,0,0,GRLIB_perm_inf],
     ["CUP_WV_B_CRAM",50,0,0,GRLIB_perm_inf],
-
+    
     // Vanilla
     ["B_Radar_System_01_F",100,0,0,GRLIB_perm_inf],
 
+    
   // Heavy
     // CUP
     ["CUP_WV_B_RAM_Launcher",150,0,0,GRLIB_perm_inf],
-
     // Vanilla
     ["B_SAM_System_03_F",200,0,0,GRLIB_perm_inf],
-
     // FFAA
     ["ffaa_lanzador_nasams",0,500,0,GRLIB_perm_inf],
-
     // CUP
     ["CUP_B_M119_USMC",0,800,0,GRLIB_perm_inf],
-    
   // Super heavy
     ["B_Ship_MRLS_01_F",0,20000,0,GRLIB_perm_inf]
 
@@ -512,7 +509,6 @@ support_crates = [
   // Ersatzteile
     ["ACE_Track",0,0,0,GRLIB_perm_inf],
     ["ACE_Wheel",0,0,0,GRLIB_perm_inf],
-    [canisterFuel,0,0,0,GRLIB_perm_inf],
 
 	// Kisten
     ["Box_NATO_Equip_F",0,0,0,GRLIB_perm_inf],
@@ -566,8 +562,8 @@ support_crates = [
  
 buildings_west = [
    
-    ["Land_HBarrier_01_wall_6_green_F",0,0,0,GRLIB_perm_inf],
-    ["Land_HBarrier_01_line_3_green_F",0,0,0,GRLIB_perm_inf],
+  ["Land_HBarrier_01_wall_6_green_F",0,0,0,GRLIB_perm_inf],
+  ["Land_HBarrier_01_line_3_green_F",0,0,0,GRLIB_perm_inf],
 	["Land_HBarrier_01_big_tower_green_F",0,0,0,GRLIB_perm_inf],
 	["Land_HBarrier_01_tower_green_F",0,0,0,GRLIB_perm_inf],
 	["Land_HBarrier_01_wall_corridor_green_F",0,0,0,GRLIB_perm_inf],
@@ -717,7 +713,8 @@ uavs = [
     "B_Ship_MRLS_01_F",
     "B_AAA_System_01_F",
     "USAF_MQ9",
-    "USAF_RQ4A"
+    "USAF_RQ4A",
+    "ffaa_ea_reaper"
     ];
  
 // Everything the AI troups should be able to resupply from

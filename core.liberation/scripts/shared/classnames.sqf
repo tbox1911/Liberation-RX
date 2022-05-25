@@ -22,15 +22,17 @@ GRLIB_side_enemy = EAST;
 //opfor_vehicles_low_intensity = [];
 
 // *** SUPPORT ***
-support_vehicles = support_vehicles_west + [ /*
+support_vehicles = support_vehicles_west;
+/* + [ 
 	[FOB_box_typename,0,500,0,GRLIB_perm_inf],
 	[FOB_truck_typename,0,500,0,GRLIB_perm_inf],
 	[canisterFuel,0,0,0,GRLIB_perm_inf],
 	[fuel_sling_typename,0,0,0,GRLIB_perm_inf],
-	// [ammo_sling_typename,0,0,0,GRLIB_perm_inf],
-	// [repair_sling_typename,0,0,0,GRLIB_perm_inf],
-	// [medic_sling_typename,0,0,0,GRLIB_perm_inf],
-	// [A3W_BoxWps,0,round(5 / GRLIB_recycling_percentage),0,99999]
+	[ammo_sling_typename,0,0,0,GRLIB_perm_inf],
+	[repair_sling_typename,0,0,0,GRLIB_perm_inf],
+	[medic_sling_typename,0,0,0,GRLIB_perm_inf],
+	[A3W_BoxWps,0,round(5 / GRLIB_recycling_percentage),0,99999]
+	
 	// [Arsenal_typename,0,10,0,GRLIB_perm_inf],
 	// [medicalbox_typename,5,5,0,GRLIB_perm_inf],
 	// [mobile_respawn,10,5,0,GRLIB_perm_inf],
@@ -42,9 +44,9 @@ support_vehicles = support_vehicles_west + [ /*
 	// [fuel_truck_typename,5,120,40,GRLIB_perm_inf],
 	// [FOB_box_outpost,25,500,20,GRLIB_perm_inf],
 	// ["Land_CargoBox_V1_F",0,500,0,GRLIB_perm_inf]
-	*/
+	
 ];
-
+*/
 // *** BUILDINGS ***
 buildings = buildings_west + [
 	/*
