@@ -9,6 +9,8 @@ huron_typename = "CUP_B_CH47F_USA";  // comment to use value from lobby/server.c
 FOB_typename = "Land_Cargo_HQ_V1_F";
 FOB_box_typename = "B_Slingload_01_Cargo_F";
 FOB_truck_typename = "CUP_B_M113A3_HQ_GER";
+FOB_outpost = "M1130_HQ_unfolded_Base_EP1";
+FOB_box_outpost = "CUP_B_M1130_CV_M2_Desert";
 Respawn_truck_typename = "CUP_B_nM997_USMC_WDL";
 ammo_truck_typename = "CUP_B_MTVR_Ammo_USMC";
 fuel_truck_typename = "CUP_B_MTVR_Refuel_USMC";
@@ -448,8 +450,10 @@ static_vehicles = [
   // Heavy
     // CUP
     ["CUP_WV_B_RAM_Launcher",150,0,0,GRLIB_perm_inf],
+    ["CUP_WV_B_SS_Launcher",250,0,0,GRLIB_perm_inf],
     // Vanilla
     ["B_SAM_System_03_F",200,0,0,GRLIB_perm_inf],
+    ["B_AAA_System_01_F",500,0,0,GRLIB_perm_inf],
     // FFAA
     ["ffaa_lanzador_nasams",0,500,0,GRLIB_perm_inf],
     // CUP
@@ -561,7 +565,32 @@ support_crates = [
 
  
 buildings_west = [
-   
+
+  ["US_WarfareBArtilleryRadar_Base_EP1",0,0,0,GRLIB_perm_inf],
+  ["Land_fort_artillery_nest_EP1",0,0,0,GRLIB_perm_inf],
+  ["Land_Mil_Barracks_EP1",0,0,0,GRLIB_perm_inf],
+  ["Land_Mil_Barracks_i_EP1",0,0,0,GRLIB_perm_inf],
+  ["Land_Mil_Barracks_no_interior_EP1_CUP",0,0,0,GRLIB_perm_inf],
+  ["Land_Mil_Barracks_L_EP1",0,0,0,GRLIB_perm_inf],
+  ["Land_fortified_nest_big_EP1",0,0,0,GRLIB_perm_inf],
+  ["Land_fortified_nest_small_EP1",0,0,0,GRLIB_perm_inf],
+  ["Land_Fort_Watchtower_EP1",0,0,0,GRLIB_perm_inf],
+  ["WarfareBDepot",0,0,0,GRLIB_perm_inf],
+  ["US_WarfareBUAVterminal_Base_EP1",0,0,0,GRLIB_perm_inf],
+  ["Land_fort_rampart_EP1",0,0,0,GRLIB_perm_inf],
+  ["US_WarfareBFieldhHospital_Base_EP1",0,0,0,GRLIB_perm_inf],
+  ["US_WarfareBAircraftFactory_Base_EP1",0,0,0,GRLIB_perm_inf],
+  ["US_WarfareBVehicleServicePoint_Base_EP1",0,0,0,GRLIB_perm_inf],
+  ["US_WarfareBBarrier10xTall_EP1",0,0,0,GRLIB_perm_inf],
+  ["US_WarfareBBarracks_Base_EP1",0,0,0,GRLIB_perm_inf],
+  ["Land_Barrack2_EP1",0,0,0,GRLIB_perm_inf],
+  ["US_WarfareBBarrier5x_EP1",0,0,0,GRLIB_perm_inf],
+  ["WarfareBCamp",0,0,0,GRLIB_perm_inf],
+  ["76n6ClamShell_EP1",0,0,0,GRLIB_perm_inf],
+  ["US_WarfareBBarrier10x_EP1",0,0,0,GRLIB_perm_inf],
+  ["US_WarfareBHeavyFactory_Base_EP1",0,0,0,GRLIB_perm_inf],
+  ["Land_CamoNetB_NATO_EP1",0,0,0,GRLIB_perm_inf],
+  ["Land_CamoNet_NATO_EP1",0,0,0,GRLIB_perm_inf],
   ["Land_HBarrier_01_wall_6_green_F",0,0,0,GRLIB_perm_inf],
   ["Land_HBarrier_01_line_3_green_F",0,0,0,GRLIB_perm_inf],
 	["Land_HBarrier_01_big_tower_green_F",0,0,0,GRLIB_perm_inf],
@@ -569,7 +598,7 @@ buildings_west = [
 	["Land_HBarrier_01_wall_corridor_green_F",0,0,0,GRLIB_perm_inf],
 	["Land_HBarrier_01_wall_corner_green_F",0,0,0,GRLIB_perm_inf],
 	["Land_HBarrier_01_wall_4_green_F",0,0,0,GRLIB_perm_inf],
-	 
+
 	["Land_HBarrier_1_F",0,0,0,GRLIB_perm_inf],
 	["Land_HBarrierWall6_F",0,0,0,GRLIB_perm_inf],
 	["Land_HBarrier_3_F",0,0,0,GRLIB_perm_inf],
@@ -577,7 +606,7 @@ buildings_west = [
 	["Land_HBarrierWall_corridor_F",0,0,0,GRLIB_perm_inf],
 	["Land_HBarrierWall4_F",0,0,0,GRLIB_perm_inf],
 	["Land_HBarrierWall_corner_F",0,0,0,GRLIB_perm_inf],
-	 
+
 	["Land_CncBarrierMedium_F",0,0,0,GRLIB_perm_inf],
 	["Land_CncBarrierMedium4_F",0,0,0,GRLIB_perm_inf],
 	["Land_CncShelter_F",0,0,0,GRLIB_perm_inf],
@@ -591,42 +620,42 @@ buildings_west = [
 	["Flag_UK_F",0,0,0,GRLIB_perm_inf],
 	["Flag_US_F",0,0,0,GRLIB_perm_inf],
 	["Land_PortableLight_single_F",0,0,0,GRLIB_perm_inf],
-	 
+
 	["Land_Campfire_F",0,0,0,GRLIB_perm_inf],
 	["Land_CampingChair_V1_F",0,0,0,GRLIB_perm_inf],
 	["Land_CampingTable_F",0,0,0,GRLIB_perm_inf],
 	["Land_fort_bagfence_long",0,0,0,GRLIB_perm_inf],
-	 
+
 	["Land_HelipadSquare_F",0,0,0,GRLIB_perm_inf],
 	["PortableHelipadLight_01_blue_F",0,0,0,GRLIB_perm_inf],
 	["PortableHelipadLight_01_green_F",0,0,0,GRLIB_perm_inf],
-	 
+
 	["Land_ClutterCutter_large_F",0,0,0,GRLIB_perm_inf],
- 
-    ["Land_Hangar_F",0,0,0,GRLIB_perm_inf],
-    ["Land_Cargo_Tower_V1_F",0,0,0,GRLIB_perm_inf],
-    ["Land_Medevac_house_V1_F",0,0,0,GRLIB_perm_inf],
-    ["Land_Medevac_HQ_V1_F",0,0,0,GRLIB_perm_inf],
-   
-    ["Land_PortableLight_double_F",0,0,0,GRLIB_perm_inf],
-    ["Land_LampAirport_F",0,0,0,GRLIB_perm_inf],
-    ["Land_LampStreet_02_double_F",0,0,0,GRLIB_perm_inf],
-    ["Land_SandbagBarricade_01_hole_F",0,0,0,GRLIB_perm_inf],
-    ["Land_fortified_nest_small",0,0,0,GRLIB_perm_inf],
-    ["Land_fortified_nest_big",0,0,0,GRLIB_perm_inf],
-    ["Land_BagBunker_Small_F",0,0,0,GRLIB_perm_inf],
-    ["land_bunker_garage",0,0,0,GRLIB_perm_inf],
-    ["Land_Trench_01_grass_F",0,0,0,GRLIB_perm_inf],
-    ["Land_fort_rampart",0,0,0,GRLIB_perm_inf],
-    ["Land_fort_artillery_nest",0,0,0,GRLIB_perm_inf],
-    ["Land_HBarrier_01_line_5_green_F",0,0,0,GRLIB_perm_inf],
-    ["Land_HBarrier_01_big_4_green_F",0,0,0,GRLIB_perm_inf],
-    ["zed2",0,0,0,GRLIB_perm_inf],
-    ["US_WarfareBBarrier10xTall_EP1",0,0,0,GRLIB_perm_inf],
-    ["WarfareBCamp",0,0,0,GRLIB_perm_inf],
-    ["Fortress2",0,0,0,GRLIB_perm_inf],
-    ["Land_Lampa_sidl_3",0,0,0,GRLIB_perm_inf],
-    ["Land_TentHangar_V1_F", 0, 0, 0, GRLIB_perm_inf] 
+
+	["Land_Hangar_F",0,0,0,GRLIB_perm_inf],
+	["Land_Cargo_Tower_V1_F",0,0,0,GRLIB_perm_inf],
+	["Land_Medevac_house_V1_F",0,0,0,GRLIB_perm_inf],
+	["Land_Medevac_HQ_V1_F",0,0,0,GRLIB_perm_inf],
+
+	["Land_PortableLight_double_F",0,0,0,GRLIB_perm_inf],
+	["Land_LampAirport_F",0,0,0,GRLIB_perm_inf],
+	["Land_LampStreet_02_double_F",0,0,0,GRLIB_perm_inf],
+	["Land_SandbagBarricade_01_hole_F",0,0,0,GRLIB_perm_inf],
+	["Land_fortified_nest_small",0,0,0,GRLIB_perm_inf],
+	["Land_fortified_nest_big",0,0,0,GRLIB_perm_inf],
+	["Land_BagBunker_Small_F",0,0,0,GRLIB_perm_inf],
+	["land_bunker_garage",0,0,0,GRLIB_perm_inf],
+	["Land_Trench_01_grass_F",0,0,0,GRLIB_perm_inf],
+	["Land_fort_rampart",0,0,0,GRLIB_perm_inf],
+	["Land_fort_artillery_nest",0,0,0,GRLIB_perm_inf],
+	["Land_HBarrier_01_line_5_green_F",0,0,0,GRLIB_perm_inf],
+	["Land_HBarrier_01_big_4_green_F",0,0,0,GRLIB_perm_inf],
+	["zed2",0,0,0,GRLIB_perm_inf],
+	["US_WarfareBBarrier10xTall_EP1",0,0,0,GRLIB_perm_inf],
+	["WarfareBCamp",0,0,0,GRLIB_perm_inf],
+	["Fortress2",0,0,0,GRLIB_perm_inf],
+	["Land_Lampa_sidl_3",0,0,0,GRLIB_perm_inf],
+	["Land_TentHangar_V1_F", 0, 0, 0, GRLIB_perm_inf] 
 
 ];
  
