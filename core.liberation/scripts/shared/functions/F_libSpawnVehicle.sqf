@@ -51,7 +51,6 @@ clearWeaponCargoGlobal _newvehicle;
 clearMagazineCargoGlobal _newvehicle;
 clearItemCargoGlobal _newvehicle;
 clearBackpackCargoGlobal _newvehicle;
-sleep 0.2;
 
 if ( _classname in militia_vehicles ) then {
 	[ _newvehicle ] call F_libSpawnMilitiaCrew;
