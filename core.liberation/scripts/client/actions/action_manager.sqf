@@ -13,12 +13,14 @@ private _id_actions = [
 	-1, -1
 ];
 
-is_DogOnDuty = {
-	private _ret = false;
-	private _my_dog = player getVariable ["my_dog", nil];
+private [
+	"_fobdistance",	"_near_outpost", "_near_arsenal", "_near_spawn", "_near_fobbox",
+	"_near_fuel", "_near_repair", "_near_atm", "_near_lhd", "_my_dog", "_my_squad"
+];
 
-	if (!isNil {_my_dog getVariable ["do_find", nil]} || stopped _my_dog) then { _ret = true };
-	_ret;
+is_DogOnDuty = {
+	private _my_dog = player getVariable ["my_dog", nil];
+    (!isNil {_my_dog getVariable ["do_find", nil]} || stopped _my_dog);
 };
 
 waitUntil { sleep 1; !isNil "build_confirmed" };
@@ -29,19 +31,20 @@ if (!(player diarySubjectExists str(parseText GRLIB_r3))) exitWith {};
 
 while { true } do {
 	if ([] call is_menuok) then {
-		private _fobdistance = round (player distance2D ([] call F_getNearestFob));
-		private _near_outpost = (count (player nearObjects [FOB_outpost, _distfob]) > 0);
-		private _near_arsenal = [player, "ARSENAL", _distarsenal, true] call F_check_near;
-		private _near_spawn = ([player, "SPAWNT", _distvehclose, true] call F_check_near || [player, "SPAWNV", _distvehclose, true] call F_check_near);		
-		private _near_fobbox = player nearEntities [[FOB_box_typename, FOB_truck_typename, FOB_box_outpost], _distvehclose];
-		private _near_fuel = [player, "FUEL", _distvehclose, false] call F_check_near;
-		private _near_repair = [player, "REPAIR", _distvehclose, false] call F_check_near;
-		private _near_atm = [player, "ATM", _distvehclose, true] call F_check_near;
-		private _near_lhd = [player, "LHD", GRLIB_sector_size] call F_check_near;
-		private _my_dog = player getVariable ["my_dog", nil];
-		private _my_squad = player getVariable ["my_squad", nil];
+		_fobdistance = round (player distance2D ([] call F_getNearestFob));
+		_near_outpost = (count (player nearObjects [FOB_outpost, _distfob]) > 0);
+		_near_arsenal = [player, "ARSENAL", _distarsenal, true] call F_check_near;
+		_near_spawn = ([player, "SPAWNT", _distvehclose, true] call F_check_near || [player, "SPAWNV", _distvehclose, true] call F_check_near);		
+		_near_fobbox = player nearEntities [[FOB_box_typename, FOB_truck_typename, FOB_box_outpost], _distvehclose];
+		_near_fuel = [player, "FUEL", _distvehclose, false] call F_check_near;
+		_near_repair = [player, "REPAIR", _distvehclose, false] call F_check_near;
+		_near_atm = [player, "ATM", _distvehclose, true] call F_check_near;
+		_near_lhd = [player, "LHD", GRLIB_sector_size] call F_check_near;
+		_my_dog = player getVariable ["my_dog", nil];
+		_my_squad = player getVariable ["my_squad", nil];
 
 		// Tuto
+//		idact_id = 0;
 		private _idact_tutorial = _id_actions select 0;
 		if (_near_lhd ) then {
 			if ( _idact_tutorial == -1 ) then {
@@ -54,6 +57,7 @@ while { true } do {
 				_id_actions set [0, -1];
 			};
 		};
+//		idact_id = idact_id + 1;
 
 		// Dog - Actions
 		private _idact_dog_action1 = _id_actions select 1;
@@ -356,18 +360,18 @@ while { true } do {
 		};
 
 		// Options
-		private _idact_options = _id_actions select 26;
-		if ( (_fobdistance < _distredeploy || _near_lhd) ) then {
-			if ( _idact_options == -1 ) then {
-				_idact = player addAction ["<t color='#FF8000'>" + localize "STR_EXTENDED_OPTIONS" + "</t>","GREUH\scripts\GREUH_dialog.sqf","",-997,false,true];
-				_id_actions set [26, _idact];
-			};
-		} else {
-			if ( _idact_options != -1 ) then {
-				player removeAction _idact_options;
-				_id_actions set [26, -1];
-			};
-		};
+		// private _idact_options = _id_actions select 26;
+		// if ( (_fobdistance < _distredeploy || _near_lhd) ) then {
+		// 	if ( _idact_options == -1 ) then {
+		// 		_idact = player addAction ["<t color='#FF8000'>" + localize "STR_EXTENDED_OPTIONS" + "</t>","GREUH\scripts\GREUH_dialog.sqf","",-997,false,true];
+		// 		_id_actions set [26, _idact];
+		// 	};
+		// } else {
+		// 	if ( _idact_options != -1 ) then {
+		// 		player removeAction _idact_options;
+		// 		_id_actions set [26, -1];
+		// 	};
+		// };
 
 		// Admin Menu
 		private _idact_admin = _id_actions select 27;
