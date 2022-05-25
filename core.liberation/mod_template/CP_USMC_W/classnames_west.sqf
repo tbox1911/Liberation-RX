@@ -444,7 +444,7 @@ static_vehicles = [
     ["CUP_WV_B_CRAM",50,0,0,GRLIB_perm_inf],
     
     // Vanilla
-    ["B_Radar_System_01_F",100,0,0,GRLIB_perm_inf],
+    ["B_Radar_System_01_F",0,0,40,GRLIB_perm_inf],
 
     
   // Heavy
@@ -455,7 +455,7 @@ static_vehicles = [
     ["B_SAM_System_03_F",200,0,0,GRLIB_perm_inf],
     ["B_AAA_System_01_F",500,0,0,GRLIB_perm_inf],
     // FFAA
-    ["ffaa_lanzador_nasams",0,500,0,GRLIB_perm_inf],
+    ["ffaa_lanzador_nasams",50,0,0,GRLIB_perm_inf],
     // CUP
     ["CUP_B_M119_USMC",0,800,0,GRLIB_perm_inf],
   // Super heavy
