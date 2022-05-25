@@ -90,6 +90,7 @@ light_vehicles = [
     ["CUP_B_RG31E_M2_OD_USMC",0,light_vehicle_price_hmg,0,GRLIB_perm_inf],
     ["CUP_I_SUV_Armored_ION",0,240,0,GRLIB_perm_inf],
     
+    
     //BAF
     ["CUP_B_Wolfhound_LMG_GB_D", 0, light_vehicle_price_hmg, 0, GRLIB_perm_inf],
     ["CUP_B_Wolfhound_HMG_GB_D", 0, light_vehicle_price_hmg, 0, GRLIB_perm_inf],
@@ -388,7 +389,7 @@ static_vehicles = [
     ["CUP_B_M119_USMC",0,800,0,GRLIB_perm_inf],
     ["CUP_WV_B_CRAM",200,0,0,GRLIB_perm_inf],
     ["CUP_WV_B_RAM_Launcher",500,0,0,GRLIB_perm_inf],
-    ["B_Radar_System_01_F",0,0,30,GRLIB_perm_inf],
+    ["B_Radar_System_01_F",0,0,40,GRLIB_perm_inf],
     ["B_SAM_System_03_F",150,0,0,GRLIB_perm_inf],
     ["B_Ship_MRLS_01_F",0,20000,0,GRLIB_perm_inf],
     ["B_AAA_System_01_F",500,0,0,GRLIB_perm_inf],
@@ -409,19 +410,20 @@ static_vehicles_AI = [
 ];
  
 support_vehicles_west = [
-    ["BWA3_TCK9_Fuel_Fleck",0,0,0,GRLIB_perm_inf],
-    ["BWA3_WLP14_Flatbed_Oliv",0,0,0,GRLIB_perm_inf],
-    ["BWA3_Multi_Fleck",0,300,0,GRLIB_perm_inf],
-    ["BWA3_WLP14_Repair_Fleck",0,0,0,GRLIB_perm_inf],
-    ["BWA3_WLP14_Ammo_Fleck",0,0,0,GRLIB_perm_inf],
-    ["B_Quadbike_01_F",0,10,0,GRLIB_perm_inf],
-    ["ffaa_UAVStation",0,0,0,GRLIB_perm_inf],
+
+    	["BWA3_TCK9_Fuel_Fleck",0,0,0,GRLIB_perm_inf],
+	["BWA3_WLP14_Flatbed_Oliv",0,0,0,GRLIB_perm_inf],
+	["BWA3_Multi_Fleck",0,300,0,GRLIB_perm_inf],
+	["BWA3_WLP14_Repair_Fleck",0,0,0,GRLIB_perm_inf],
+	["BWA3_WLP14_Ammo_Fleck",0,0,0,GRLIB_perm_inf],
+	["B_Quadbike_01_F",0,10,0,GRLIB_perm_inf],
+	["ffaa_UAVStation",0,0,0,GRLIB_perm_inf],
 	["CUP_B_nM1038_Repair_DF_USA_WDL",0,500,0,GRLIB_perm_inf],
 	["CUP_B_nM1038_Ammo_DF_USA_WDL",0,500,0,GRLIB_perm_inf],
 	["CUP_B_MTVR_Repair_USMC",0,500,0,GRLIB_perm_inf],
 	["CUP_B_MTVR_Refuel_USMC",0,500,0,GRLIB_perm_inf],
 	["CUP_B_MTVR_Ammo_USMC",0,500,0,GRLIB_perm_inf],
-    ["B_Truck_01_Ammo_F",0,0,0,GRLIB_perm_inf],
+	["B_Truck_01_Ammo_F",0,0,0,GRLIB_perm_inf],
 	["CargoNet_01_box_F",0,0,0,GRLIB_perm_inf],
 	["B_CargoNet_01_ammo_F",0,0,0,GRLIB_perm_inf],
 	["CargoNet_01_barrels_F",0,0,0,GRLIB_perm_inf],
@@ -429,7 +431,8 @@ support_vehicles_west = [
 	["ACE_Track",0,0,0,GRLIB_perm_inf],
 	["ACE_Wheel",0,0,0,GRLIB_perm_inf],
 	["SNC_Javelin",0,400,0,GRLIB_perm_inf],
-    ["Box_NATO_Equip_F",0,0,0,GRLIB_perm_inf]
+	["CUP_B_M1130_CV_M2_Desert",0,20000,0,GRLIB_perm_inf],
+	["Box_NATO_Equip_F",0,0,0,GRLIB_perm_inf]
 ];
  
 buildings_west = [
