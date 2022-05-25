@@ -75,6 +75,9 @@ skill_air_vehicles_planes = 1;
 skill_air_vehicles_helicopters = 1;
 skill_ground_vehicles = 1;
 
+
+// Prices for blufor vehicle tiers
+
 light_vehicle_price_hmg = 220;
 light_vehicle_price_gmg = 250;
 heavy_vehicle_price_tank = 500;
@@ -82,6 +85,121 @@ heavy_vehicle_price_tank_light = 1000;
 heavy_vehicle_price_tank_heavy = 1500;
 logistic_air_vehicle_price = 250;
 logistic_ground_vehicle_price = 200;
+
+
+
+
+light_vehicle_price_tier_1 = 50;
+light_vehicle_price_tier_2 = 75;
+light_vehicle_price_tier_3 = 100;
+light_vehicle_price_tier_4 = 125;
+light_vehicle_price_tier_5 = 150;
+light_vehicle_price_tier_6 = 175;
+light_vehicle_price_tier_7 = 200;
+light_vehicle_price_tier_8 = 225;
+light_vehicle_price_tier_9 = 250;
+light_vehicle_price_tier_10 = 275;
+light_vehicle_price_tier_11 = 300;
+light_vehicle_price_tier_12 = 350;
+strong_light_vehicle_price_tier_1 = 100;
+strong_light_vehicle_price_tier_2 = 125;
+strong_light_vehicle_price_tier_3 = 150;
+strong_light_vehicle_price_tier_4 = 175;
+strong_light_vehicle_price_tier_5 = 200;
+strong_light_vehicle_price_tier_6 = 225;
+strong_light_vehicle_price_tier_7 = 250;
+strong_light_vehicle_price_tier_8 = 275;
+strong_light_vehicle_price_tier_9 = 300;
+strong_light_vehicle_price_tier_10 = 325;
+strong_light_vehicle_price_tier_11 = 350;
+strong_light_vehicle_price_tier_12 = 375;
+strong_light_vehicle_price_tier_13 = 400;
+strong_light_vehicle_price_tier_14 = 425;
+strong_light_vehicle_price_tier_15 = 450;
+heavy_vehicle_price_tier_1 = 250;
+heavy_vehicle_price_tier_2 = 275;
+heavy_vehicle_price_tier_3 = 300;
+heavy_vehicle_price_tier_4 = 325;
+heavy_vehicle_price_tier_5 = 350;
+heavy_vehicle_price_tier_6 = 375;
+heavy_vehicle_price_tier_7 = 400;
+heavy_vehicle_price_tier_8 = 450;
+heavy_vehicle_price_tier_9 = 500;
+heavy_vehicle_price_tier_10 = 550;
+heavy_vehicle_price_tier_11 = 600;
+heavy_vehicle_price_tier_12 = 700;
+heavy_vehicle_price_tier_13 = 800;
+heavy_vehicle_price_tier_14 = 1000;
+heavy_vehicle_price_tier_15 = 1250;
+heavy_vehicle_price_tier_16 = 1500;
+heavy_vehicle_price_tier_17 = 1750;
+strong_heavy_vehicle_price_tier_1 = 1000;
+strong_heavy_vehicle_price_tier_2 = 1250;
+strong_heavy_vehicle_price_tier_3 = 1500;
+strong_heavy_vehicle_price_tier_4 = 1750;
+strong_heavy_vehicle_price_tier_5 = 2000;
+strong_heavy_vehicle_price_tier_6 = 5000;
+strong_heavy_vehicle_price_tier_7 = 7500;
+air_vehicle_price_tier_1 = 250;
+air_vehicle_price_tier_2 = 275;
+air_vehicle_price_tier_3 = 300;
+air_vehicle_price_tier_4 = 350;
+air_vehicle_price_tier_5 = 400;
+air_vehicle_price_tier_6 = 500;
+air_vehicle_price_tier_7 = 550;
+air_vehicle_price_tier_8 = 800;
+air_vehicle_price_tier_9 = 900;
+air_vehicle_price_tier_10 = 1000;
+air_vehicle_price_tier_11 = 1300;
+air_vehicle_price_tier_12 = 1500;
+air_vehicle_price_tier_13 = 1800;
+air_vehicle_price_tier_14 = 2000;
+air_vehicle_price_tier_15 = 4000;
+fast_air_vehicle_price_tier_1 = 350;
+fast_air_vehicle_price_tier_2 = 1000;
+fast_air_vehicle_price_tier_3 = 1250;
+fast_air_vehicle_price_tier_4 = 1500;
+fast_air_vehicle_price_tier_5 = 1750;
+fast_air_vehicle_price_tier_6 = 2000;
+fast_air_vehicle_price_tier_7 = 2250;
+fast_air_vehicle_price_tier_8 = 2500;
+fast_air_vehicle_price_tier_9 = 2750;
+fast_air_vehicle_price_tier_10 = 3000;
+logistic_ground_vehicle_price_tier_1 = 250;
+logistic_ground_vehicle_price_tier_2 = 300;
+logistic_ground_vehicle_price_tier_3 = 400;
+
+
+
+
+
+
+
+
+
+
+
+
+
+unarmed_ground_vehicle_price_tier_1 = 100;
+lmg_ground_vehicle_price_tier_2 = 200;
+MMG_ground_vehicle_price_tier_3 = 300;
+HMG_ground_vehicle_price_tier_4 = 350;
+GMG_ground_vehicle_price_tier_5 = 400;
+larmored_ground_vehicle_price_tier_6 = 500;
+marmored_ground_vehicle_price_tier_7 = 650;
+harmored_ground_vehicle_price_tier_8 = 1250;
+unarmed_air_vehicle_price_tier_1 = 200;
+light_armed_air_vehicle_price_tier_1 = 350;
+light_heavy_armed_air_vehicle_price_tier_2 = 500;
+Heavy_armed_air_vehicle_price_tier_3 = 800;
+armed_air_vehicle_price_tier_4 = 1250;
+strong_armed_air_vehicle_price_tier_5 = 1650;
+light_armed_jet_vehicle_price_tier_6 = 1000;
+heavy_armed_jet_vehicle_price_tier_7 = 1500;
+strong_armed_jet_vehicle_price_tier_8 = 2000;
+
+
 
 items_allFac = [
     "U_B_FullGhillie_lsh",
