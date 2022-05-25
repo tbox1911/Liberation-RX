@@ -45,9 +45,10 @@ if ( count _allposts > 0 ) then {
 		if (_newdir2 < 0) then {_dir = 360 + _newdir2 };
 		_x setdir (_newdir2);
 	} foreach (units _grp);
-
+	
+	diag_log format ["Done spawning cargopost squad (%1) at %2", count _spawned_units_local, time];
+} else {
+	diag_log format ["Done spawning cargopost no place found at pos %1", _squadpos];
 };
-
-diag_log format ["Done spawning cargopost squad (%1) at %2", count _spawned_units_local, time];
 
 _spawned_units_local;
