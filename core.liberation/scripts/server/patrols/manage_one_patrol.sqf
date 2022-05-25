@@ -29,7 +29,7 @@ while { GRLIB_endgame == 0 } do {
 	private _sectorpos = [ getMarkerPos _spawn_marker, floor(random 100), random 360 ] call BIS_fnc_relPos;
 	private _sector_spawn_pos = zeropos;
 	while { _sector_spawn_pos distance zeropos < 100 } do {
-		_sector_spawn_pos = ( [ _sectorpos, floor(random 50), random 360 ] call BIS_fnc_relPos ) findEmptyPosition [1, 200, "B_Heli_Light_01_F"];
+		_sector_spawn_pos = ( [ _sectorpos, floor(random 50), random 360 ] call BIS_fnc_relPos ) findEmptyPosition [0, 200, "B_Heli_Light_01_F"];
 		if ( count _sector_spawn_pos == 0 || surfaceIsWater _sector_spawn_pos ) then { _sector_spawn_pos = zeropos; sleep 30};
 		sleep 0.5;
 	};
