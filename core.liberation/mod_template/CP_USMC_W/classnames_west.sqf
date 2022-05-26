@@ -363,7 +363,7 @@ fast_air_vehicle = [
 
     // FFAA
     ["ffaa_ar_harrier",0,fast_air_vehicle_price_tier_7,0,GRLIB_perm_inf],
-    ["ffaa_ea_ef18m",0,fast_air_vehicle_price_tier_8,0,GRLIB_perm_inf],
+    ["ffaa_ea_ef18m",0,fast_air_vehicle_price_tier_5,0,GRLIB_perm_inf],
 
     // USAF
     ["USAF_A10",0,1500,0,GRLIB_perm_inf],
@@ -399,9 +399,11 @@ fast_air_vehicle = [
     ["ffaa_ea_reaper",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],    // Reaper
 
     // Vanilla
-    ["B_UAV_05_F",0,fast_air_vehicle_price_tier_5,0,GRLIB_perm_inf]     //Sentinel
+    ["B_UAV_05_F",0,fast_air_vehicle_price_tier_5,0,GRLIB_perm_inf],     //Sentinel
 
-
+    // FIR F-15
+    ["FIR_F15C",0,fast_air_vehicle_price_tier_4,0,GRLIB_perm_inf],
+    ["FIR_F15E",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf]  
  
   
 
