@@ -90,7 +90,7 @@ if ( dorecycle == 1 && !(isNull _vehicle) && alive _vehicle) exitWith {
 		
 		_msg = format ["+ %1 ammo thanks to %2", _ammount_ammo, name player];
 		
-		if(isDedicated) then {
+		if(hasInterface) then {
 			[gamelogic, _msg] remoteExec ["globalChat", 0];
 		}
 		

@@ -50,7 +50,7 @@ private _text = format ["Reward Received: + %1 Ammo.", _income];
 	
 	[_x, 5] remoteExec ["addScore", 2];
 	
-	if (isDedicated) then {
+	if (hasInterface) then {
 		[gamelogic, _text] remoteExec ["globalChat", owner _x];
 	};
 	
