@@ -421,3 +421,9 @@ item_blacklist =
     "H_HelmetO_ViperSP_ghex_F",
     "H_HelmetO_ViperSP_hex_F"
 ];
+
+moderators = [
+    "76561197997804176", // slotzi
+    "76561198019854511" // Voltaren
+    
+];
