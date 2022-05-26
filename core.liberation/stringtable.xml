@@ -1593,9 +1593,9 @@
 					<Japanese>軽車両</Japanese>
 			</Key>
 			<Key ID="STR_BUILD3">
-					<Original>Armed Light vehicles</Original>
+					<Original>Armored Light vehicles</Original>
 					<French>Véhicules légers</French>
-					<German>bewaffnete leichte Fahrzeuge</German>
+					<German>Gepanzerte leichte Fahrzeuge</German>
 					<Spanish>Vehículos ligeros</Spanish>
 					<Russian>Легкая техника</Russian>
 					<Chinesesimp>轻型车辆</Chinesesimp>
