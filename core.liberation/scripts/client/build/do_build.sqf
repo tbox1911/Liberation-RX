@@ -33,7 +33,7 @@ while { true } do {
 	build_invalid = 0;
 	_classname = "";
 	
-	if ( buildtype == 13 ) then { build_altitude = building_altitude } else { build_altitude = 0.2 };
+	if ( buildtype == 9 ) then { build_altitude = building_altitude } else { build_altitude = 0.2 };
 
 	if ( buildtype == 99 ) then {
 		_classname = FOB_typename;
@@ -172,7 +172,7 @@ while { true } do {
 			};
 			_idactplace = player addAction ["<t color='#B0FF00'>" + localize "STR_PLACEMENT" + "</t> <img size='1' image='res\ui_confirm.paa'/>","scripts\client\build\build_place.sqf","",-750,false,true,"","build_invalid == 0 && build_confirmed == 1"];
 			_idactrotate = player addAction ["<t color='#B0FF00'>" + localize "STR_ROTATION" + "</t> <img size='1' image='res\ui_rotation.paa'/>","scripts\client\build\build_rotate.sqf","",-756,false,false,"","build_confirmed == 1"];
-			_idactcancel = player addAction ["<t color='#B0FF00'>" + localize "STR_CANCEL" + "</t> <img size='1' image='res\ui_cancel.paa'/>","scripts\client\build\build_cancel.sqf","",-760,false,true,"","build_confirmed == 1 && buildtype != 9"];
+			_idactcancel = player addAction ["<t color='#B0FF00'>" + localize "STR_CANCEL" + "</t> <img size='1' image='res\ui_cancel.paa'/>","scripts\client\build\build_cancel.sqf","",-760,false,true,"","build_confirmed == 1 && buildtype != 13"];
 			_ghost_spot = (markerPos "ghost_spot") findEmptyPosition [1,150,"B_Heli_Transport_03_unarmed_F"];
 			_ghost_spot = _ghost_spot vectorAdd [0, 0, build_altitude];
 
@@ -270,7 +270,7 @@ while { true } do {
 					GRLIB_conflicting_objects = [];
 				};
 
-				if ( count _near_objects == 0 && ((_truepos distance _posfob) < _maxdist || buildtype == 9) && (((!surfaceIsWater _truepos) && (!surfaceIsWater getpos player)) || (_classname in boats_names)) ) then {
+				if ( count _near_objects == 0 && ((_truepos distance _posfob) < _maxdist || buildtype == 13) && (((!surfaceIsWater _truepos) && (!surfaceIsWater getpos player)) || (_classname in boats_names)) ) then {
 					if ( _classname isKindOf "Ship" && surfaceIsWater _truepos ) then {
 						_vehicle setposASL _truepos;
 					} else {
@@ -302,7 +302,7 @@ while { true } do {
 					if( ((surfaceIsWater _truepos) || (surfaceIsWater getpos player)) && !(_classname in boats_names)) then {
 						GRLIB_ui_notif = localize "STR_BUILD_ERROR_WATER";
 					};
-					if( (_truepos distance _posfob) > _maxdist && buildtype != 9) then {
+					if( (_truepos distance _posfob) > _maxdist && buildtype != 13) then {
 						GRLIB_ui_notif = format [localize "STR_BUILD_ERROR_DISTANCE",_maxdist];
 					};
 
@@ -348,7 +348,7 @@ while { true } do {
 					};
 
 					// Vehicle owner
-					if ( buildtype in [2,3,4,5,6,7,8,10,11] ) then {
+					if ( buildtype in [2,3,4,5,6,7,8,10] ) then {
 						if (!([typeOf _vehicle, GRLIB_vehicle_blacklist] call F_itemIsInClass)) then {
 							_vehicle setVariable ["GRLIB_vehicle_owner", getPlayerUID player, true];
 							_vehicle allowCrewInImmobile true;

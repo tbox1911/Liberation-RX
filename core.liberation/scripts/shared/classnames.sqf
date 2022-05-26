@@ -296,14 +296,18 @@ GRLIB_recycleable_blacklist = [FOB_sign];
 GRLIB_recycleable_classnames = ["LandVehicle","Air","Ship","StaticWeapon","Slingload_01_Base_F","Pod_Heli_Transport_04_base_F"];
 {
 	if (!((_x select 0) in GRLIB_recycleable_blacklist)) then {GRLIB_recycleable_classnames pushBack (_x select 0)};
-} foreach (support_vehicles + buildings + opfor_recyclable);
+} foreach (support_vehicles + support_crates + buildings + opfor_recyclable);
 
 // Filter Mods
 infantry_units = [ infantry_units ] call F_filterMods;
 light_vehicles = [ light_vehicles ] call F_filterMods;
+strong_light_vehicles = [ strong_light_vehicles ] call F_filterMods;
 heavy_vehicles = [ heavy_vehicles ] call F_filterMods;
+strong_heavy_vehicles = [ strong_heavy_vehicles ] call F_filterMods;
 air_vehicles = [ air_vehicles ] call F_filterMods;
+fast_air_vehicle = [ fast_air_vehicle ] call F_filterMods;
 support_vehicles = [ support_vehicles ] call F_filterMods;
+support_crates = [ support_crates ] call F_filterMods;
 static_vehicles = [ static_vehicles ] call F_filterMods;
 buildings = [ buildings ] call F_filterMods;
 build_lists = [[],infantry_units,light_vehicles,strong_light_vehicles,heavy_vehicles,strong_heavy_vehicles,air_vehicles,fast_air_vehicle,static_vehicles,buildings,support_vehicles,support_crates,squads];

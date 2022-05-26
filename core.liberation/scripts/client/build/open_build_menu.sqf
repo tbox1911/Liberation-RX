@@ -21,7 +21,7 @@ private [ "_oldbuildtype", "_cfg", "_initindex", "_iscommandant", "_squadname", 
 if ( ( [ getpos player , 500 , GRLIB_side_enemy ] call F_getUnitsCount ) > 4 ) exitWith { hint localize "STR_BUILD_ENEMIES_NEARBY"; };
 
 if ( isNil "buildtype" ) then { buildtype = 1 };
-if ( buildtype > 11 ) then { buildtype = 1 };
+if ( buildtype > 12 ) then { buildtype = 1 };
 if ( isNil "buildindex" ) then { buildindex = -1 };
 dobuild = 0;
 _oldbuildtype = -1;
@@ -70,8 +70,8 @@ localize "STR_BUILD12"
 while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
  	_build_list = [];
 	{
-		if (_near_outpost && buildtype in [3,4,8]) exitWith {};
-		if (buildtype == 11 ) then {
+		if (_near_outpost && buildtype in [4,5,6,7,12]) exitWith {};
+		if (buildtype == 12 ) then {
 			_build_list pushback _x;
 		} else {
 			if ( _score >= (_x select 4) ) then {_build_list pushback _x};
@@ -169,7 +169,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 			};
 		};
 
-		if ( buildtype != 8 ) then {
+		if ( buildtype != 12 ) then {
 			{ if ( ( _build_item select 0 ) == ( _x select 0 ) ) exitWith { _base_link = _x select 1; _linked = true; } } foreach GRLIB_vehicle_to_military_base_links;
 
 			if ( _linked ) then {
@@ -185,13 +185,13 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 	_affordable_crew = _affordable;
 	if ( unitcap >= ([] call F_localCap)) then {
 		_affordable_crew = false;
-		if (buildtype == 1 || buildtype == 11) then {
+		if (buildtype == 1 || buildtype == 12) then {
 			_affordable = false;
 		};
 	};
 
 	ctrlEnable [ 120, _affordable && _linked_unlocked && !(_squad_full) ];
-	ctrlShow [ 121, _iscommander && buildtype in [2,3,4,5]];
+	ctrlShow [ 121, _iscommander && buildtype in [2,3,4,5,6,7,8]];
 	ctrlEnable [ 121, _affordable_crew && _linked_unlocked];
 
 	ctrlSetText [131, format [ "%1 : %2/%3" , localize "STR_MANPOWER" , (floor resources_infantry), infantry_cap]] ;
