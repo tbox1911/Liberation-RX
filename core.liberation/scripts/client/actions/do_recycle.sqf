@@ -89,7 +89,11 @@ if ( dorecycle == 1 && !(isNull _vehicle) && alive _vehicle) exitWith {
 		} forEach allPlayers;
 		
 		_msg = format ["+ %1 ammo thanks to %2", _ammount_ammo, name player];
-		[gamelogic, _msg] remoteExec ["globalChat", 0];
+		
+		if(isDedicated) then {
+			[gamelogic, _msg] remoteExec ["globalChat", 0];
+		}
+		
 		
 	};
 	

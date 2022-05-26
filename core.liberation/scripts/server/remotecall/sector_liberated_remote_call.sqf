@@ -50,7 +50,10 @@ private _text = format ["Reward Received: + %1 Ammo.", _income];
 	
 	[_x, 5] remoteExec ["addScore", 2];
 	
-	[gamelogic, _text] remoteExec ["globalChat", owner _x];
+	if (isDedicated) then {
+		[gamelogic, _text] remoteExec ["globalChat", owner _x];
+	};
+	
 	
 } forEach allPlayers;
 [markerPos _liberated_sector] call showlandmines;
