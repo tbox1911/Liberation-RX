@@ -15,7 +15,8 @@ private _id_actions = [
 
 private [
 	"_fobdistance",	"_near_outpost", "_near_arsenal", "_near_spawn", "_near_fobbox",
-	"_near_fuel", "_near_repair", "_near_atm", "_near_lhd", "_my_dog", "_my_squad"
+	"_near_fuel", "_near_repair", "_near_atm", "_near_lhd", "_my_dog", "_my_squad",
+	"_idact_id", "_idact_num"
 ];
 
 is_DogOnDuty = {
@@ -34,7 +35,7 @@ while { true } do {
 		_fobdistance = round (player distance2D ([] call F_getNearestFob));
 		_near_outpost = (count (player nearObjects [FOB_outpost, _distfob]) > 0);
 		_near_arsenal = [player, "ARSENAL", _distarsenal, true] call F_check_near;
-		_near_spawn = ([player, "SPAWNT", _distvehclose, true] call F_check_near || [player, "SPAWNV", _distvehclose, true] call F_check_near);		
+		_near_spawn = ([player, "SPAWNT", _distvehclose, true] call F_check_near || [player, "SPAWNV", _distvehclose, true] call F_check_near);
 		_near_fobbox = player nearEntities [[FOB_box_typename, FOB_truck_typename, FOB_box_outpost], _distvehclose];
 		_near_fuel = [player, "FUEL", _distvehclose, false] call F_check_near;
 		_near_repair = [player, "REPAIR", _distvehclose, false] call F_check_near;
@@ -42,320 +43,339 @@ while { true } do {
 		_near_lhd = [player, "LHD", GRLIB_sector_size] call F_check_near;
 		_my_dog = player getVariable ["my_dog", nil];
 		_my_squad = player getVariable ["my_squad", nil];
+		_idact_id = 0;
 
 		// Tuto
-//		idact_id = 0;
-		private _idact_tutorial = _id_actions select 0;
+		_idact_num = _id_actions select _idact_id;
 		if (_near_lhd ) then {
-			if ( _idact_tutorial == -1 ) then {
+			if ( _idact_num == -1 ) then {
 				_idact = player addAction ["<t color='#80FF80'>" + localize "STR_TUTO_ACTION" + "</t> <img size='1' image='" + _icon_tuto + "'/>","[] execVM 'scripts\client\ui\tutorial_manager.sqf'","",-740,false,true,"",""];
-				_id_actions set [0, _idact];
+				_id_actions set [_idact_id, _idact];
 			};
 		} else {
-			if ( _idact_tutorial != -1 ) then {
-				player removeAction _idact_tutorial;
-				_id_actions set [0, -1];
+			if ( _idact_num != -1 ) then {
+				player removeAction _idact_num;
+				_id_actions set [_idact_id, -1];
 			};
 		};
-//		idact_id = idact_id + 1;
+
 
 		// Dog - Actions
-		private _idact_dog_action1 = _id_actions select 1;
+		_idact_id = _idact_id + 1;
+		_idact_num = _id_actions select _idact_id;
 		if (!isNil "_my_dog") then {
-			if ( _idact_dog_action1 == -1 ) then {
+			if ( _idact_num == -1 ) then {
 				_idact = player addAction ["<t color='#80FF80'>" + localize "STR_DOG_FIND" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","find",-640,false,true,"","!call is_DogOnDuty"];
-				_id_actions set [1, _idact];
+				_id_actions set [_idact_id, _idact];
 				_idact = player addAction ["<t color='#80FF80'>" + localize "STR_DOG_RECALL" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","recall",-640,false,true,"","call is_DogOnDuty"];
-				_id_actions set [2, _idact];
+				_id_actions set [_idact_id+1, _idact];
 				_idact = player addAction ["<t color='#80FF80'>" + localize "STR_DOG_STOP" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","stop",-641,false,true,"","!call is_DogOnDuty"];
-				_id_actions set [3, _idact];
+				_id_actions set [_idact_id+2, _idact];
 				_idact = player addAction ["<t color='#FF8080'>" + localize "STR_DOG_DISMISS" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","del",-641,false,true,"",""];
-				_id_actions set [4, _idact];
+				_id_actions set [_idact_id+3, _idact];
 			};
 		} else {
-			if ( _idact_dog_action1 != -1 ) then {
-				player removeAction _idact_dog_action1;
-				_id_actions set [1, -1];
-				_idact_dog_action2 = _id_actions select 2;
-				player removeAction _idact_dog_action2;
-				_id_actions set [2, -1];
-				_idact_dog_action3 = _id_actions select 3;
-				player removeAction _idact_dog_action3;
-				_id_actions set [3, -1];
-				_idact_dog_action4 = _id_actions select 4;
-				player removeAction _idact_dog_action4;
-				_id_actions set [4, -1];
+			if ( _idact_num != -1 ) then {
+				player removeAction _idact_num;
+				_id_actions set [_idact_id, -1];
+				_idact_num = _id_actions select _idact_id+1;
+				player removeAction _idact_num;
+				_id_actions set [_idact_id, -1];
+				_idact_num = _id_actions select _idact_id+2;
+				player removeAction _idact_num;
+				_id_actions set [_idact_id, -1];
+				_idact_num = _id_actions select _idact_id+3;
+				player removeAction _idact_num;
+				_id_actions set [_idact_id, -1];
 			};
 		};
 
 		// Squad - Actions
-		private _idact_squad_action1 = _id_actions select 5;
-		if (!isNil "_my_squad") then {		
-			if ( _idact_squad_action1 == -1 ) then {
+		_idact_id = _idact_id + 4;
+		_idact_num = _id_actions select _idact_id;
+		if (!isNil "_my_squad") then {
+			if ( _idact_num == -1 ) then {
 				_idact = player addAction ["<t color='#80FF80'>" + localize "STR_SQUAD_MOVE" + "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\actions\do_squad.sqf","move",-635,false,true,"",""];
-				_id_actions set [5, _idact];
+				_id_actions set [_idact_id, _idact];
 				_idact = player addAction ["<t color='#80FF80'>" + localize "STR_SQUAD_FOLLOW" + "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\actions\do_squad.sqf","follow",-635,false,true,"",""];
-				_id_actions set [6, _idact];
+				_id_actions set [_idact_id+1, _idact];
 				_idact = player addAction ["<t color='#80FF80'>" + localize "STR_SQUAD_STOP" + "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\actions\do_squad.sqf","stop",-635,false,true,"",""];
-				_id_actions set [7, _idact];
+				_id_actions set [_idact_id+2, _idact];
 				_idact = player addAction ["<t color='#80FF80'>" + localize "STR_SQUAD_DISMISS" + "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\actions\do_squad.sqf","del",-635,false,true,"",""];
-				_id_actions set [8, _idact];
+				_id_actions set [_idact_id+3, _idact];
 			};
 		} else {
-			if ( _idact_squad_action1 != -1 ) then {
-				player removeAction _idact_squad_action1;
-				_id_actions set [5, -1];
-				_idact_squad_action2 = _id_actions select 6;
-				player removeAction _idact_squad_action2;
-				_id_actions set [6, -1];
-				_idact_squad_action3 = _id_actions select 7;
-				player removeAction _idact_squad_action3;
-				_id_actions set [7, -1];
-				_idact_squad_action4 = _id_actions select 8;
-				player removeAction _idact_squad_action4;
-				_id_actions set [8, -1];
+			if ( _idact_num != -1 ) then {
+				player removeAction _idact_num;
+				_id_actions set [_idact_id, -1];
+				_idact_num = _id_actions select _idact_id+1;
+				player removeAction _idact_num;
+				_id_actions set [_idact_id+1, -1];
+				_idact_num = _id_actions select _idact_id+2;
+				player removeAction _idact_num;
+				_id_actions set [_idact_id+2, -1];
+				_idact_num = _id_actions select _idact_id+3;
+				player removeAction _idact_num;
+				_id_actions set [_idact_id+3, -1];
 			};
 		};
 
 		// Halo Jump
-		private _idact_halo = _id_actions select 9;
+		_idact_id = _idact_id + 4;
+		_idact_num = _id_actions select _idact_id;
 		if ((_near_spawn || _near_lhd) && GRLIB_halo_param > 0) then {
-			if ( _idact_halo == -1 ) then {
+			if ( _idact_num == -1 ) then {
 				_idact = player addAction ["<t color='#80FF80'>" + localize "STR_HALO_ACTION" + "</t> <img size='1' image='res\ui_redeploy.paa'/>","scripts\client\spawn\do_halo.sqf","",-749,false,true,"","build_confirmed == 0"];
-				_id_actions set [9, _idact];
+				_id_actions set [_idact_id, _idact];
 			};
 		} else {
-			if ( _idact_halo != -1 ) then {
-				player removeAction _idact_halo;
-				_id_actions set [9, -1];
+			if ( _idact_num != -1 ) then {
+				player removeAction _idact_num;
+				_id_actions set [_idact_id, -1];
 			};
 		};
 
 		// Send Ammo
-		private _idact_send = _id_actions select 10;
+		_idact_id = _idact_id + 1;
+		_idact_num = _id_actions select _idact_id;
 		if  (( _near_lhd || _near_atm ) && count (AllPlayers - (entities "HeadlessClient_F")) > 1) then {
-			if ( _idact_send == -1 ) then {
+			if ( _idact_num == -1 ) then {
 				_idact = player addAction ["<t color='#80FF00'>" + localize "STR_SEND_AMMO" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\misc\send_ammo.sqf","",-981,true,true,"","build_confirmed == 0"];
-				_id_actions set [10, _idact];
+				_id_actions set [_idact_id, _idact];
 			};
 		} else {
-			if ( _idact_send != -1 ) then {
-				player removeAction _idact_send;
-				_id_actions set [10, -1];
+			if ( _idact_num != -1 ) then {
+				player removeAction _idact_num;
+				_id_actions set [_idact_id, -1];
 			};
 		};
 
 		// Fuel
-		private _idact_buyfuel = _id_actions select 11;
+		_idact_id = _idact_id + 1;
+		_idact_num = _id_actions select _idact_id;
 		if (!_near_lhd && (_near_fuel || _near_repair) ) then {
-			if ( _idact_buyfuel == -1 ) then {
+			if ( _idact_num == -1 ) then {
 				_idact = player addAction ["<t color='#00F080'>" + localize "STR_BUY_FUEL" + "</t> <img size='1' image='R3F_LOG\icons\r3f_fuel.paa'/>", "scripts\client\actions\do_buyfuel.sqf","",-900,true,true,"",""];
-				_id_actions set [11, _idact];
+				_id_actions set [_idact_id, _idact];
 			};
 		} else {
-			if ( _idact_buyfuel != -1 ) then {
-				player removeAction _idact_buyfuel;
-				_id_actions set [11, -1];
+			if ( _idact_num != -1 ) then {
+				player removeAction _idact_num;
+				_id_actions set [_idact_id, -1];
 			};
 		};
 
 		// Heal Self
-		private _idact_heal = _id_actions select 12;
+		_idact_id = _idact_id + 1;
+		_idact_num = _id_actions select _idact_id;
 		if ((_fobdistance < _distarsenal || _near_lhd) && (damage player) >= 0.023) then {
-			if ( _idact_heal == -1 ) then {
+			if ( _idact_num == -1 ) then {
 				_idact = player addAction ["<img size='1' image='\a3\ui_f\data\IGUI\Cfg\Actions\heal_ca'/>", { (_this select 1) playMove "AinvPknlMstpSlayWnonDnon_medic"; (_this select 1) setDamage 0;},"",999,true,true,"", ""];
-				_id_actions set [12, _idact];
+				_id_actions set [_idact_id, _idact];
 			};
 		} else {
-			if ( _idact_heal != -1 ) then {
-				player removeAction _idact_heal;
-				_id_actions set [12, -1];
+			if ( _idact_num != -1 ) then {
+				player removeAction _idact_num;
+				_id_actions set [_idact_id, -1];
 			};
 		};
 
 		// Take Leadrship
-		private _idact_lead = _id_actions select 13;
+		_idact_id = _idact_id + 1;
+		_idact_num = _id_actions select _idact_id;
 		if (!(isPlayer (leader (group player))) && (local (group player)) ) then {
-			if ( _idact_lead == -1 ) then {
+			if ( _idact_num == -1 ) then {
 				_idact = player addAction ["<t color='#80FF80'>" + localize "STR_TAKE_LEADRSHIP" + "</t> <img size='1' image='" + _icon_grp + "'/>", {(group player) selectLeader player}, [],0,true,true,"", "build_confirmed == 0"];
-				_id_actions set [13, _idact];
+				_id_actions set [_idact_id, _idact];
 			};
 		} else {
-			if ( _idact_lead != -1 ) then {
-				player removeAction _idact_lead;
-				_id_actions set [13, -1];
+			if ( _idact_num != -1 ) then {
+				player removeAction _idact_num;
+				_id_actions set [_idact_id, -1];
 			};
 		};
 
 		// Air Drop
-		private _idact_drop = _id_actions select 14;
+		_idact_id = _idact_id + 1;
+		_idact_num = _id_actions select _idact_id;
 		if ((player distance2D ([] call F_getNearestFob)) >= (2 * GRLIB_fob_range) && !_near_lhd ) then {
-			if ( _idact_drop == -1 ) then {
+			if ( _idact_num == -1 ) then {
 				_idact = player addAction ["<t color='#00F0F0'>" + localize "STR_AIR_SUPPORT" + "</t> <img size='1' image='R3F_LOG\icons\r3f_drop.paa'/>","scripts\client\misc\drop_support.sqf","",-980,false,true];
-				_id_actions set [14, _idact];
+				_id_actions set [_idact_id, _idact];
 			};
 		} else {
-			if ( _idact_drop != -1 ) then {
-				player removeAction _idact_drop;
-				_id_actions set [14, -1];
+			if ( _idact_num != -1 ) then {
+				player removeAction _idact_num;
+				_id_actions set [_idact_id, -1];
 			};
 		};
 
 		// Redeploy
-		private _idact_redeploy = _id_actions select 15;
+		_idact_id = _idact_id + 1;
+		_idact_num = _id_actions select _idact_id;
 		if ((_near_spawn || _near_lhd) ) then {
-			if ( _idact_redeploy == -1 ) then {
+			if ( _idact_num == -1 ) then {
 				_idact = player addAction ["<t color='#80FF80'>" + localize "STR_DEPLOY_ACTION" + "</t> <img size='1' image='res\ui_redeploy.paa'/>","scripts\client\spawn\redeploy_manager.sqf","",-750,false,true,"","build_confirmed == 0"];
-				_id_actions set [15, _idact];
+				_id_actions set [_idact_id, _idact];
 			};
 		} else {
-			if ( _idact_redeploy != -1 ) then {
-				player removeAction _idact_redeploy;
-				_id_actions set [15, -1];
+			if ( _idact_num != -1 ) then {
+				player removeAction _idact_num;
+				_id_actions set [_idact_id, -1];
 			};
 		};
 
 		// Arsenal
-		private _idact_arsenal = _id_actions select 16;
+		_idact_id = _idact_id + 1;
+		_idact_num = _id_actions select _idact_id;
 		if (GRLIB_enable_arsenal && (_near_arsenal || _near_lhd) ) then {
-			if (_idact_arsenal == -1) then {
+			if (_idact_num == -1) then {
 				_idact = player addAction ["<t color='#FFFF00'>" + localize "STR_ARSENAL_ACTION" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\open_arsenal.sqf","",-500,true,true,"","build_confirmed == 0"];
-				_id_actions set [16, _idact];
+				_id_actions set [_idact_id, _idact];
 			};
 		} else {
-			if ( _idact_arsenal != -1 ) then {
-				player removeAction _idact_arsenal;
-				_id_actions set [16, -1];
+			if ( _idact_num != -1 ) then {
+				player removeAction _idact_num;
+				_id_actions set [_idact_id, -1];
 			};
 		};
 
 		// Virtual Garage
-		private _idact_garage = _id_actions select 17;
+		_idact_id = _idact_id + 1;
+		_idact_num = _id_actions select _idact_id;
 		if (_fobdistance > 15 && _fobdistance < _distfob && (!_near_outpost) && !_near_lhd && score player >= GRLIB_perm_inf ) then {
-			if ( _idact_garage == -1 ) then {
+			if ( _idact_num == -1 ) then {
 				_idact = player addAction ["<t color='#0080FF'>" + localize "STR_VIRTUAL_GARAGE" + "</t> <img size='1' image='res\ui_veh.paa'/>","addons\VIRT\virtual_garage.sqf","",-984,false,true,"","build_confirmed == 0"];
-				_id_actions set [17, _idact];
+				_id_actions set [_idact_id, _idact];
 			};
 		} else {
-			if ( _idact_garage != -1 ) then {
-				player removeAction _idact_garage;
-				_id_actions set [17, -1];
+			if ( _idact_num != -1 ) then {
+				player removeAction _idact_num;
+				_id_actions set [_idact_id, -1];
 			};
 		};
 
 		// Build Menu
-		private _idact_build = _id_actions select 18;
+		_idact_id = _idact_id + 1;
+		_idact_num = _id_actions select _idact_id;
 		if (_fobdistance < _distfob && !_near_lhd && ( ([player, 3] call fetch_permission) || (player == ([] call F_getCommander) || [] call is_admin)) ) then {
-			if ( _idact_build == -1 ) then {
+			if ( _idact_num == -1 ) then {
 				_idact = player addAction ["<t color='#FFFF00'>" + localize "STR_BUILD_ACTION" + "</t> <img size='1' image='res\ui_build.paa'/>","scripts\client\build\open_build_menu.sqf","",-985,false,true,"","build_confirmed == 0"];
-				_id_actions set [18, _idact];
+				_id_actions set [_idact_id, _idact];
 			};
 		} else {
-			if ( _idact_build != -1 ) then {
-				player removeAction _idact_build;
-				_id_actions set [18, -1];
+			if ( _idact_num != -1 ) then {
+				player removeAction _idact_num;
+				_id_actions set [_idact_id, -1];
 			};
 		};
 
 		// Squad Management
-		private _idact_squad = _id_actions select 19;
+		_idact_id = _idact_id + 1;
+		_idact_num = _id_actions select _idact_id;
 		if ((leader group player == player) && (count units group player > 1) && (_fobdistance < _distfob || _near_lhd) ) then {
-			if ( _idact_squad == -1 ) then {
+			if ( _idact_num == -1 ) then {
 				_idact = player addAction ["<t color='#80FF80'>" + localize "STR_SQUAD_MANAGEMENT_ACTION" + "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\ui\squad_management.sqf","",-760,false,true,"","build_confirmed == 0"];
-				_id_actions set [19, _idact];
+				_id_actions set [_idact_id, _idact];
 			};
 		} else {
-			if ( _idact_squad != -1 ) then {
-				player removeAction _idact_squad;
-				_id_actions set [19, -1];
+			if ( _idact_num != -1 ) then {
+				player removeAction _idact_num;
+				_id_actions set [_idact_id, -1];
 			};
 		};
 
 		// Commander Menu
-		private _idact_commander = _id_actions select 20;
+		_idact_id = _idact_id + 1;
+		_idact_num = _id_actions select _idact_id;
 		if (( player == ( [] call F_getCommander ) || [] call is_admin ) && GRLIB_permissions_param ) then {
-			if ( _idact_commander == -1 ) then {
+			if ( _idact_num == -1 ) then {
 				_idact = player addAction ["<t color='#FF8000'>" + localize "STR_COMMANDER_ACTION" + "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\commander\open_permissions.sqf","",-996,false,true,"","build_confirmed == 0"];
-				_id_actions set [20, _idact];
+				_id_actions set [_idact_id, _idact];
 			};
 		} else {
-			if ( _idact_commander != -1 ) then {
-				player removeAction _idact_commander;
-				_id_actions set [20, -1];
+			if ( _idact_num != -1 ) then {
+				player removeAction _idact_num;
+				_id_actions set [_idact_id, -1];
 			};
 		};
 
 		// Secondary Objectives
-		private _idact_secondary = _id_actions select 21;
+		_idact_id = _idact_id + 1;
+		_idact_num = _id_actions select _idact_id;
 		if (count GRLIB_all_fobs > 0 && ( GRLIB_endgame == 0 ) && (_fobdistance < _distredeploy || _near_lhd) && (!_near_outpost) && (score player >= GRLIB_perm_air ||  player == ( [] call F_getCommander ) || [] call is_admin) ) then {
-			if ( _idact_secondary == -1 ) then {
+			if ( _idact_num == -1 ) then {
 				_idact = player addAction ["<t color='#FFFF00'>" + localize "STR_SECONDARY_OBJECTIVES" + "</t>","scripts\client\ui\secondary_ui.sqf","",-995,false,true,"","build_confirmed == 0"];
-				_id_actions set [21, _idact];
+				_id_actions set [_idact_id, _idact];
 			};
 		} else {
-			if ( _idact_secondary != -1 ) then {
-				player removeAction _idact_secondary;
-				_id_actions set [21, -1];
+			if ( _idact_num != -1 ) then {
+				player removeAction _idact_num;
+				_id_actions set [_idact_id, -1];
 			};
 		};
 
 		// Pack FOB
-		private _idact_packfob = _id_actions select 22;
+		_idact_id = _idact_id + 1;
+		_idact_num = _id_actions select _idact_id;
 		if ((_fobdistance < _distarsenal && !_near_lhd) && (!_near_outpost) && ( (score player >= GRLIB_perm_max) || (player == ( [] call F_getCommander ) || [] call is_admin) )) then {
-			if ( _idact_packfob == -1 ) then {
+			if ( _idact_num == -1 ) then {
 				_idact = player addAction ["<t color='#FF6F00'>" + localize "STR_FOB_REPACKAGE" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_repackage_fob.sqf",([] call F_getNearestFob),-981,false,true,"","build_confirmed == 0 && !(cursorObject getVariable ['fob_in_use', false])"];
-				_id_actions set [22, _idact];
+				_id_actions set [_idact_id, _idact];
 			};
 		} else {
-			if ( _idact_packfob != -1 ) then {
-				player removeAction _idact_packfob;
-				_id_actions set [22, -1];
+			if ( _idact_num != -1 ) then {
+				player removeAction _idact_num;
+				_id_actions set [_idact_id, -1];
 			};
 		};
 
 		// Build FOB
-		private _idact_unpackfob = _id_actions select 23;
+		_idact_id = _idact_id + 1;
+		_idact_num = _id_actions select _idact_id;
 		if ((_fobdistance > GRLIB_sector_size && !_near_lhd) && cursorObject in _near_fobbox ) then {
-			if ( _idact_unpackfob == -1 ) then {
+			if ( _idact_num == -1 ) then {
 				_str = localize "STR_FOB_ACTION";
 				if (typeOf cursorObject == FOB_box_outpost) then {
 					_str = localize "STR_OUTPOST_ACTION";
 				};
 				_idact = player addAction ["<t color='#FF6F00'>" + _str + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_build_fob.sqf",cursorObject,-981,false,true,"","build_confirmed == 0 && !(cursorObject getVariable ['box_in_use', false])"];
-				_id_actions set [23, _idact];
+				_id_actions set [_idact_id, _idact];
 			};
 		} else {
-			if ( _idact_unpackfob != -1 ) then {
-				player removeAction _idact_unpackfob;
-				_id_actions set [23, -1];
+			if ( _idact_num != -1 ) then {
+				player removeAction _idact_num;
+				_id_actions set [_idact_id, -1];
 			};
 		};
 
 		// Pack Beacon
-		private _idact_packtent = _id_actions select 24;
+		_idact_id = _idact_id + 1;
+		_idact_num = _id_actions select _idact_id;
 		if (!_near_lhd && typeOf cursorObject == mobile_respawn ) then {
-			if ( _idact_packtent == -1 ) then {
+			if ( _idact_num == -1 ) then {
 				_idact = player addAction ["<t color='#FFFF00'>" + localize "STR_PACK_BEACON" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_beacon_pack.sqf",cursorObject,-950,true,true,"","!(cursorObject getVariable ['tent_in_use', false])"];
-				_id_actions set [24, _idact];
+				_id_actions set [_idact_id, _idact];
 			};
 		} else {
-			if ( _idact_packtent != -1 ) then {
-				player removeAction _idact_packtent;
-				_id_actions set [24, -1];
+			if ( _idact_num != -1 ) then {
+				player removeAction _idact_num;
+				_id_actions set [_idact_id, -1];
 			};
 		};
 
 		// UnPack Beacon
-		private _idact_unpacktent = _id_actions select 25;
+		_idact_id = _idact_id + 1;
+		_idact_num = _id_actions select _idact_id;
 		if (!_near_lhd && backpack player == mobile_respawn_bag ) then {
-			if ( _idact_unpacktent == -1 ) then {
+			if ( _idact_num == -1 ) then {
 				_idact = player addAction ["<t color='#FFFF00'>" + localize "STR_UNPACK_BEACON" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_beacon_unpack.sqf","",-950,true,true,"",""];
-				_id_actions set [25, _idact];
+				_id_actions set [_idact_id, _idact];
 			};
 		} else {
-			if ( _idact_unpacktent != -1 ) then {
-				player removeAction _idact_unpacktent;
-				_id_actions set [25, -1];
+			if ( _idact_num != -1 ) then {
+				player removeAction _idact_num;
+				_id_actions set [_idact_id, -1];
 			};
 		};
 
@@ -374,44 +394,47 @@ while { true } do {
 		// };
 
 		// Admin Menu
-		private _idact_admin = _id_actions select 27;
+		_idact_id = _idact_id + 1;
+		_idact_num = _id_actions select _idact_id;
 		if (([] call is_admin) && GRLIB_admin_menu ) then {
-			if ( _idact_admin == -1 ) then {
+			if ( _idact_num == -1 ) then {
 				_idact = player addAction ["<t color='#0000F8'>" + localize "STR_ADMIN_MENU" + "</t>","scripts\client\commander\admin_menu.sqf","",999,false,true,"",""];
-				_id_actions set [27, _idact];
+				_id_actions set [_idact_id, _idact];
 			};
 		} else {
-			if ( _idact_admin != -1 ) then {
-				player removeAction _idact_admin;
-				_id_actions set [27, -1];
+			if ( _idact_num != -1 ) then {
+				player removeAction _idact_num;
+				_id_actions set [_idact_id, -1];
 			};
 		};
 
 		// Destroy Outpost
-		private _idact_destroyfob = _id_actions select 28;
+		_idact_id = _idact_id + 1;
+		_idact_num = _id_actions select _idact_id;
 		if ((_fobdistance < _distarsenal && !_near_lhd) && (_near_outpost) && ( (score player >= GRLIB_perm_log) || (player == ( [] call F_getCommander ) || [] call is_admin) )) then {
-			if ( _idact_destroyfob == -1 ) then {
+			if ( _idact_num == -1 ) then {
 				_idact = player addAction ["<t color='#FF6F00'>" + localize "STR_DESTROY_OUTPOST" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_destroy_fob.sqf",([] call F_getNearestFob),-981,false,true,"","build_confirmed == 0 && !(cursorObject getVariable ['fob_in_use', false])"];
-				_id_actions set [28, _idact];
+				_id_actions set [_idact_id, _idact];
 			};
 		} else {
-			if ( _idact_destroyfob != -1 ) then {
-				player removeAction _idact_destroyfob;
-				_id_actions set [28, -1];
+			if ( _idact_num != -1 ) then {
+				player removeAction _idact_num;
+				_id_actions set [_idact_id, -1];
 			};
 		};
 
 		// Recycle PortableHelipadLight (simple objects)
-		private _idact_recycle = _id_actions select 29;
+		_idact_id = _idact_id + 1;
+		_idact_num = _id_actions select _idact_id;
 		if (!_near_lhd && _fobdistance < _distfob && cursorObject isKindof "Land_PortableHelipadLight_01_F") then {
-			if ( _idact_recycle == -1 ) then {
+			if ( _idact_num == -1 ) then {
 				_idact = player addAction ["<t color='#FFFF00'>" + localize "STR_RECYCLE_MANAGER" + "</t> <img size='1' image='res\ui_recycle.paa'/>",{deleteVehicle cursorObject},"",-950,false,true,"","[cursorObject] call is_recyclable",_distvehclose];
-				_id_actions set [29, _idact];
+				_id_actions set [_idact_id, _idact];
 			};
 		} else {
-			if ( _idact_recycle != -1 ) then {
-				player removeAction _idact_recycle;
-				_id_actions set [29, -1];
+			if ( _idact_num != -1 ) then {
+				player removeAction _idact_num;
+				_id_actions set [_idact_id, -1];
 			};
 		};
 
