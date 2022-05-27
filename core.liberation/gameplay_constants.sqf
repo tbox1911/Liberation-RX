@@ -424,6 +424,7 @@ item_blacklist =
 
 moderators = [
     "76561197997804176", // slotzi
-    "76561198019854511" // Voltaren
+    "76561198019854511", // Voltaren
+    "76561198094301584"  // Devin
     
 ];
