@@ -2,7 +2,7 @@ params [ "_minimum_readiness", "_patrol_type", "_index" ];
 waitUntil { !isNil "blufor_sectors" };
 waitUntil { !isNil "combat_readiness" };
 
-private [ "_headless_client", "_unit", "_vehicle_object" ];
+private [ "_grp", "_spawn_marker", "_headless_client", "_unit", "_vehicle_object", "_sectorpos", "_spawnpos" ];
 
 while { GRLIB_endgame == 0 } do {
 	waitUntil { sleep 1; count blufor_sectors >= 3; };
@@ -18,33 +18,31 @@ while { GRLIB_endgame == 0 } do {
 		sleep (150 + floor(random 150));
 	};
 
-	private _spawn_marker = "";
+	_spawn_marker = "";
 	while { _spawn_marker == "" } do {
 		_spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max, true] call F_findOpforSpawnPoint;
 		if ( _spawn_marker == "" ) then { sleep (150 + floor(random 150)) };
-		sleep 0.5;
 	};
 
-	private _grp = grpNull;
-	private _sectorpos = [ getMarkerPos _spawn_marker, floor(random 100), random 360 ] call BIS_fnc_relPos;
-	private _sector_spawn_pos = zeropos;
-	while { _sector_spawn_pos distance zeropos < 100 } do {
-		_sector_spawn_pos = ( [ _sectorpos, floor(random 50), random 360 ] call BIS_fnc_relPos ) findEmptyPosition [0, 200, "B_Heli_Light_01_F"];
-		if ( count _sector_spawn_pos == 0 || surfaceIsWater _sector_spawn_pos ) then { _sector_spawn_pos = zeropos; sleep 30};
-		sleep 0.5;
+	_grp = grpNull;
+	_spawnpos = [];
+	while { count _spawnpos == 0 } do {
+		_sectorpos = [ getMarkerPos _spawn_marker, floor(random 100), random 360 ] call BIS_fnc_relPos;
+		_spawnpos = [4, _sectorpos, 200, 30, false] call R3F_LOG_FNCT_3D_tirer_position_degagee_sol;
+		if ( count _spawnpos == 0 ) then { sleep 30 };
 	};
 
 	diag_log format [ "Spawn Patrol type %1 on sector %2 at %3", _patrol_type, _spawn_marker, time ];
 
 	if (_patrol_type == 1) then {
-		_grp = [_sector_spawn_pos, ([] call F_getAdaptiveSquadComp), GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
+		_grp = [_spawnpos, ([] call F_getAdaptiveSquadComp), GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
 	};
 
 	if (_patrol_type == 2) then {
 		if (combat_readiness > 75 && floor(random 100) > 70) then {
-			_vehicle_object = [ _sector_spawn_pos, selectRandom opfor_air ] call F_libSpawnVehicle;
+			_vehicle_object = [ _spawnpos, selectRandom opfor_air ] call F_libSpawnVehicle;
 		} else {
-			_vehicle_object = [ _sector_spawn_pos, [] call F_getAdaptiveVehicle ] call F_libSpawnVehicle;
+			_vehicle_object = [ _spawnpos, [] call F_getAdaptiveVehicle ] call F_libSpawnVehicle;
 		};
 		sleep 0.5;
 		_grp = group ((crew _vehicle_object) select 0);

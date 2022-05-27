@@ -2,23 +2,13 @@ if (!isServer) exitWith {};
 
 waituntil {sleep 1; !isNil "GRLIB_sectors_init"};
 
+private ["_spawnpos", "_vehicle"];
 {
   // Add repair pickup
-  private _pos = [];
-  private _max_try = 8;
-  private _find_pos = false;
-  private _cur_pos = markerPos _x;
-  while {!_find_pos && _max_try > 0} do {
-    _pos = _cur_pos findEmptyPosition [0,50, repair_offroad];
-    if (count _pos == 3) then {
-      if (!isOnRoad _pos) then {_find_pos = true};
-      _cur_pos = _pos vectorAdd [([[-50,0,50], 5] call F_getRND), ([[-50,0,50], 5] call F_getRND), 0];
-    };
-    _max_try = _max_try - 1;
-  };
+  _spawnpos = [4, markerPos _x, 50, 30, false] call R3F_LOG_FNCT_3D_tirer_position_degagee_sol;
 
-  if (_find_pos) then {
-    _vehicle = repair_offroad createVehicle _pos;
+  if ( count _spawnpos > 0 ) then {
+    _vehicle = repair_offroad createVehicle _spawnpos;
     _vehicle allowDamage false;
     _vehicle setVehicleLock "LOCKED";
     _vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
@@ -28,4 +18,5 @@ waituntil {sleep 1; !isNil "GRLIB_sectors_init"};
     clearItemCargoGlobal _vehicle;
     clearBackpackCargoGlobal _vehicle;
   };
+  sleep 0.2;
 } forEach sectors_factory;

@@ -552,16 +552,15 @@ R3F_LOG_FNCT_3D_tirer_position_degagee_ciel =
  */
 R3F_LOG_FNCT_3D_tirer_position_degagee_sol =
 {
-	private ["_rayon_degage", "_pos_centre", "_rayon_max", "_nb_tirages_max", "_eau_autorise", "_rayon_max_carre"];
+	params [
+		"_rayon_degage",
+		"_pos_centre",
+		"_rayon_max",
+		["_nb_tirages_max", 30],
+		["_eau_autorise", false]
+	];
 	private ["_nb_tirages", "_objets_genants", "_position_degagee", "_rayon_curr", "_angle_curr", "_intersect"];
-	
-	_rayon_degage = 1 max (_this select 0);
-	_pos_centre = _this select 1;
-	_rayon_max = _rayon_degage max (_this select 2);
-	_nb_tirages_max = if (count _this > 3) then {_this select 3} else {30};
-	_eau_autorise = if (count _this > 4) then {_this select 4} else {false};
-	
-	_rayon_max_carre = _rayon_max * _rayon_max;
+	private _rayon_max_carre = _rayon_max * _rayon_max;
 	
 	for [
 		{
@@ -607,7 +606,10 @@ R3F_LOG_FNCT_3D_tirer_position_degagee_sol =
 	] do {};
 	
 	// Echec, position introuvée
-	if (_nb_tirages >= _nb_tirages_max) then {_position_degagee = [];};
+	if (_nb_tirages >= _nb_tirages_max) then {
+		diag_log format ["--- LRX Error: No place found for object size %1 at position %2", _rayon_degage, _pos_centre];
+		_position_degagee = [];
+	};
 	
 	_position_degagee
 };

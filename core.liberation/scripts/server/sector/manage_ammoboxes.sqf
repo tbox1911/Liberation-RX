@@ -33,7 +33,7 @@ if ( !( _sector in GRLIB_military_sectors_already_activated )) then {
 		_crates_amount = ceil (((0.5 * GRLIB_sector_military_value) + (random (0.5 * GRLIB_sector_military_value ))) * GRLIB_resources_multiplier);
 		if ( _crates_amount > 4 ) then { _crates_amount = 4 };
 
-		_spawnpos = (markerpos _sector) findEmptyPosition [0, 150, "B_Heli_Transport_03_unarmed_F"];		
+		_spawnpos = [4, (markerpos _sector), 150, 30, false] call R3F_LOG_FNCT_3D_tirer_position_degagee_sol;
 		if (count _spawnpos > 0) then {
 			_vehicle = opfor_transport_truck createVehicle _spawnpos;
 			_vehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
