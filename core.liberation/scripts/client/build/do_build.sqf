@@ -95,9 +95,6 @@ while { true } do {
 			_grp = group player;
 			_unit = _grp createUnit [_classname, _pos, [], 5, "NONE"];
 			[_unit] joinSilent _grp;
-			if !("Diver" in (_unit call BIS_fnc_objectType)) then {
-				_unit forceAddUniform (uniform player);
-			};
 			_unit setMass 10;
 			_unit setUnitRank "PRIVATE";
 			_unit setSkill 0.6;
@@ -108,9 +105,13 @@ while { true } do {
 				//[_unit, _spk] remoteExec ["setSpeaker", 0];
 				_unit setSpeaker (format ["Male0%1ENG",selectRandom [2,3,4,5,6,7,8,9]]);
 			};
-			if (typeOf _unit in units_loadout_overide) then {
-				_loadouts_folder = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, toLower (typeOf _unit)];
+			[_unit, configOf _unit] call BIS_fnc_loadInventory;
+			if (_classname in units_loadout_overide) then {
+				_loadouts_folder = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, toLower _classname];
 				[_unit] call compileFinal preprocessFileLineNUmbers _loadouts_folder;
+			};
+			if !("Diver" in (_unit call BIS_fnc_objectType)) then {
+				_unit forceAddUniform (uniform player);
 			};
 			if (GRLIB_ACE_enabled) then { 
 				_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];

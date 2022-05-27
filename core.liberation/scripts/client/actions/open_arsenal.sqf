@@ -13,8 +13,8 @@ private _loadouts_data = [];
 private _counter = 0;
 
 if ( !isNil "_saved_loadouts" ) then {
-	private _grp = createGroup [GRLIB_side_friendly, true];
-	private _unit = _grp createUnit ["B_Survivor_F", zeropos, [], 5, "NONE"];
+	private _unit = "B_Soldier_VR_F" createVehicleLocal zeropos;
+	_unit allowDamage false;
 	{
 		if ( _counter % 2 == 0 && _counter < 40) then {
 			[_unit, [profileNamespace, _x]] call bis_fnc_loadInventory;
@@ -24,7 +24,6 @@ if ( !isNil "_saved_loadouts" ) then {
 		_counter = _counter + 1;
 	} foreach _saved_loadouts;
 	deleteVehicle _unit;
-	deleteGroup _grp;
 };
 
 createDialog "liberation_arsenal";
