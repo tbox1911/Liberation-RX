@@ -12,11 +12,18 @@ private _newvehicle = objNull;
 private _spawnpos = [];
 private _vehcrew = [];
 private _airveh_alt = 300;
+private _radius = GRLIB_capture_size;
+private _max_try = 10;
 
 if ( _precise_position ) then {
 	_spawnpos = _sectorpos;
 } else {
-	_spawnpos = [4, _sectorpos, GRLIB_capture_size, 30, true] call R3F_LOG_FNCT_3D_tirer_position_degagee_sol;
+	while { count _spawnpos == 0 && _max_try > 0 } do {
+		_spawnpos = [4, _sectorpos, _radius, 30, true] call R3F_LOG_FNCT_3D_tirer_position_degagee_sol;
+		_radius = _radius + 20;
+		_max_try = _max_try -1;
+		sleep 1;
+	};
 };
 if ( count _spawnpos == 0 ) exitWith { diag_log format ["--- LRX Error: No place to build %1 from position %2", _classname, _sectorpos]; objNull };
 
