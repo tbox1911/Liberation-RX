@@ -44,8 +44,8 @@ if (!isDedicated && hasInterface) then {
 	waitUntil { sleep 1; !isNil "GRLIB_init_server" };
 	[] execVM "scripts\client\init_client.sqf";
 } else {
-	setViewDistance 1600;
-	setTerrainGrid 50;
+	setViewDistance 2000;
+	setTerrainGrid 25;
 };
 
 diag_log "--- Init stop ---";
