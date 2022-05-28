@@ -4949,7 +4949,7 @@
 				The HQ order a score penalty of: &lt;t color='#A00000'&gt;%3&lt;/t&gt;.&lt;br/&gt;</Original>
 			<French>Attention &lt;t color='#00008f'&gt;%1&lt;/t&gt; !&lt;br/&gt;&lt;br/&gt;
 				Tu as échoué à défendre la FOB &lt;t color='#0000F0'&gt;%2&lt;/t&gt;...&lt;br/&gt;&lt;br/&gt;
-				Le Générale d'Armée octroie une pénalité de score: &lt;t color='#A00000'&gt;%3&lt;/t&gt;.&lt;br/&gt;</French>
+				Le Commandement ordonne une pénalitée de : &lt;t color='#A00000'&gt;%3&lt;/t&gt;.&lt;br/&gt;</French>
 			<Japanese>警告 &lt;t color='#00008f'&gt;%1&lt;/t&gt; !&lt;br/&gt;&lt;br/&gt;
 				あなたはFOBの防衛に失敗しました: &lt;t color='#0000F0'&gt;%2&lt;/t&gt;...&lt;br/&gt;&lt;br/&gt;
 				司令部はスコアペナルティを課しました: &lt;t color='#A00000'&gt;%3&lt;/t&gt;.&lt;br/&gt;</Japanese>
