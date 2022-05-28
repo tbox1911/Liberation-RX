@@ -33,7 +33,7 @@ if (!(player diarySubjectExists str(parseText GRLIB_r3))) exitWith {};
 while { true } do {
 	if ([] call is_menuok) then {
 		_fobdistance = round (player distance2D ([] call F_getNearestFob));
-		_near_outpost = (count (player nearObjects [FOB_outpost, _distfob]) > 0);
+		_near_outpost = (count (player nearObjects [FOB_outpost, _distfob+5]) > 0);
 		_near_arsenal = [player, "ARSENAL", _distarsenal, true] call F_check_near;
 		_near_spawn = ([player, "SPAWNT", _distvehclose, true] call F_check_near || [player, "SPAWNV", _distvehclose, true] call F_check_near);
 		_near_fobbox = player nearEntities [[FOB_box_typename, FOB_truck_typename, FOB_box_outpost], _distvehclose];
@@ -243,7 +243,7 @@ while { true } do {
 		// Virtual Garage
 		_idact_id = _idact_id + 1;
 		_idact_num = _id_actions select _idact_id;
-		if (_fobdistance > 15 && _fobdistance < _distfob && (!_near_outpost) && !_near_lhd && score player >= GRLIB_perm_inf ) then {
+		if (_fobdistance > 15 && _fobdistance < _distfob && !_near_outpost && !_near_lhd && score player >= GRLIB_perm_inf ) then {
 			if ( _idact_num == -1 ) then {
 				_idact = player addAction ["<t color='#0080FF'>" + localize "STR_VIRTUAL_GARAGE" + "</t> <img size='1' image='res\ui_veh.paa'/>","addons\VIRT\virtual_garage.sqf","",-984,false,true,"","build_confirmed == 0"];
 				_id_actions set [_idact_id, _idact];
