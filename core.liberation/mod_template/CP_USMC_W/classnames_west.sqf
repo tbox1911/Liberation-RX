@@ -292,7 +292,7 @@ air_vehicles = [
 
   // Heavy Transport
     //CUP
-      ["CUP_B_MH47E_USA",0,air_vehicle_price_tier_5,0,GRLIB_perm_inf],
+     // ["CUP_B_MH47E_USA",0,air_vehicle_price_tier_5,0,GRLIB_perm_inf], // Mobile redeploy
       ["CUP_B_CH47F_USA",0,air_vehicle_price_tier_6,0,GRLIB_perm_inf],
       ["CUP_B_CH47F_VIV_USA",0,air_vehicle_price_tier_6,0,GRLIB_perm_inf],
       ["CUP_B_CH53E_GER",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],
