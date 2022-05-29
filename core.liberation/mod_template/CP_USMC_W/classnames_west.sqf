@@ -155,8 +155,8 @@ strong_light_vehicles = [
     ["BWA3_Dingo2_FLW100_MG3_CG13_Fleck",0,strong_light_vehicle_price_tier_7,0,GRLIB_perm_inf],
     ["BWA3_Dingo2_FLW200_M2_CG13_Fleck",0,strong_light_vehicle_price_tier_8,0,GRLIB_perm_inf],
     ["BWA3_Dingo2_FLW200_GMW_CG13_Fleck",0,strong_light_vehicle_price_tier_9,0,GRLIB_perm_inf],
+    ["CUP_B_FENNEK_GER_Wdl",0,strong_light_vehicle_price_tier_5,0,GRLIB_perm_inf],
   // Vanilla
-    ["I_MRAP_03_F",0,strong_light_vehicle_price_tier_5,0,GRLIB_perm_inf],
     ["B_MRAP_01_F",0,strong_light_vehicle_price_tier_4,0,GRLIB_perm_inf],
     ["B_MRAP_01_HMG_F",0,strong_light_vehicle_price_tier_6,0,GRLIB_perm_inf],
     ["B_MRAP_01_GMG_F",0,strong_light_vehicle_price_tier_7,0,GRLIB_perm_inf]
