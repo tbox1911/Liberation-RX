@@ -3,7 +3,7 @@
 if (!isServer) exitWith {};
 params ["_type", "_pos", "_locked"];
 
-private _spawnpos = [2, _pos, GRLIB_capture_size, 30, true] call R3F_LOG_FNCT_3D_tirer_position_degagee_sol;
+private _spawnpos = [2, _pos, 50, 30, true] call R3F_LOG_FNCT_3D_tirer_position_degagee_sol;
 if ( count _spawnpos == 0 ) exitWith { diag_log format ["--- LRX Error: No place to build %1 from position %2", _type, _pos]; objNull };
 _spawnpos set [2, 0.5];
 
