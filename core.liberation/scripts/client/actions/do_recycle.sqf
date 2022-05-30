@@ -28,7 +28,7 @@ dorecycle = 0;
 createDialog "liberation_recycle";
 waitUntil { dialog };
 
-private _ammount_ammo = round (((_objectinfo select 2) * GRLIB_recycling_percentage) * damage _vehicle);
+private _ammount_ammo = round (((_objectinfo select 2) * GRLIB_recycling_percentage) * (1 - damage _vehicle));
 private _ammount_fuel = _objectinfo select 3;
 ctrlSetText [ 134, format [ localize "STR_RECYCLING_YIELD", getText (configFile >> "cfgVehicles" >> (_objectinfo select 0) >> "displayName") ] ];
 ctrlSetText [ 131, format [ "%1", _objectinfo select 1 ] ];
