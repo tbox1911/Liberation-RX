@@ -22,18 +22,15 @@ if (_result) exitWith {};
 
 // Classic Recycle
 private _objectinfo = ( [ (light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles + buildings + opfor_recyclable + ind_recyclable), { typeof _vehicle == _x select 0 } ] call BIS_fnc_conditionalSelect ) select 0;
-if (isNil "_objectinfo") then {
-	_objectinfo = [typeOf _vehicle, 0, 0, 0];
-};
+if (isNil "_objectinfo") then { _objectinfo = [typeOf _vehicle, 0, 0, 0] };
 dorecycle = 0;
 
 createDialog "liberation_recycle";
 waitUntil { dialog };
 
-private _cfg = configFile >> "cfgVehicles";
-private _ammount_ammo = round ((_objectinfo select 2) * GRLIB_recycling_percentage);
+private _ammount_ammo = round (((_objectinfo select 2) * GRLIB_recycling_percentage) * damage _vehicle);
 private _ammount_fuel = _objectinfo select 3;
-ctrlSetText [ 134, format [ localize "STR_RECYCLING_YIELD", getText (_cfg >> (_objectinfo select 0) >> "displayName") ] ];
+ctrlSetText [ 134, format [ localize "STR_RECYCLING_YIELD", getText (configFile >> "cfgVehicles" >> (_objectinfo select 0) >> "displayName") ] ];
 ctrlSetText [ 131, format [ "%1", _objectinfo select 1 ] ];
 ctrlSetText [ 132, format [ "%1", _ammount_ammo ] ];
 ctrlSetText [ 133, format [ "%1", _ammount_fuel ] ];
