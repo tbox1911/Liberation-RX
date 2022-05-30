@@ -76,6 +76,28 @@ sleep 10;
 
 execVM "scripts\client\misc\vehicle_restriction.sqf";
 execVM "MilSimUnited\create_arsenal_Itemlist.sqf";
+if (!hasInterface && !isDedicated) then {
+	// run on headless clients only
+	[] execVM "scripts\server\game\clean.sqf";
+};
+	
+
+
+
+  	_box = missionnamespace getVariable ["myLARsBox", objNull];
+    [_box, false] call ace_arsenal_fnc_initBox;
+    [_box, true, false] call ace_arsenal_fnc_removeVirtualitems;
+
+	 all_arsenals = [];
+
+    {
+        _prc1 = format ["FAC_MSU\%1\arsenal.sqf", _x];
+        _handle1 = player execVM _prc1;
+    waitUntil {
+        scriptDone _handle1
+    };
+        all_arsenals = all_arsenals + arsenal;   
+    } forEach ['USMC','USARMY','BW','BAF','FFAA','PMC'];
 
 
 hint format['
