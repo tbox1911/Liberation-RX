@@ -77,8 +77,12 @@ sleep 10;
 execVM "scripts\client\misc\vehicle_restriction.sqf";
 execVM "MilSimUnited\create_arsenal_Itemlist.sqf";
 
+if (isNil limit_hc_gr) then {
+        limit_hc_gr = true;
+    };
+
 if (!hasinterface && !isDedicated) then {
-    while(true){
+    while(limit_hc_gr){
         {
             if ((count units _x) isEqualto 0) then {
                 deletegroup _x;
