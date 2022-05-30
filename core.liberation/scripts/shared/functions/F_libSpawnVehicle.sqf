@@ -47,6 +47,28 @@ if ( _classname isKindOf "Air" ) then {
 _newvehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
 _newvehicle allowCrewInImmobile true;
 _newvehicle setUnloadInCombat [true, false];
+
+if (isNil force_datalink) then {
+	force_datalink = false;
+};
+if (isNil force_sensorTarget_opfor) then {
+	force_sensorTarget_opfor = false;
+};
+
+if (force_datalink) then {
+
+vehicle _newvehicle setVehicleReportRemoteTargets true;
+vehicle _newvehicle setVehicleReportOwnPosition true;
+vehicle _newvehicle setVehicleReceiveRemoteTargets true;
+
+};
+
+if (force_datalink && force_sensorTarget_opfor) then {
+
+vehicle _newvehicle confirmSensorTarget [opfor, true];
+
+};
+
 clearWeaponCargoGlobal _newvehicle;
 clearMagazineCargoGlobal _newvehicle;
 clearItemCargoGlobal _newvehicle;
