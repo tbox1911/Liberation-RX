@@ -76,11 +76,17 @@ sleep 10;
 
 execVM "scripts\client\misc\vehicle_restriction.sqf";
 execVM "MilSimUnited\create_arsenal_Itemlist.sqf";
-if (!hasInterface && !isDedicated) then {
-	// run on headless clients only
-	[] execVM "scripts\server\game\clean.sqf";
+
+if (!hasinterface && !isDedicated) then {
+    while(true){
+        {
+            if ((count units _x) isEqualto 0) then {
+                deletegroup _x;
+            };
+        } count allgroups;
+        sleep 1;
+    }
 };
-	
 
 
 
