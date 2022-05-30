@@ -79,7 +79,7 @@ limit_hc_gr = true;
 
 //Datalink Options
 force_datalink = true;
-force_sensorTarget_opfor = true;
+force_sensorTarget_opfor = false;
 
 // Prices for blufor vehicle tiers
 light_vehicle_price_hmg = 220;
