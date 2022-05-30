@@ -75,7 +75,7 @@ skill_air_vehicles_planes = 1;
 skill_air_vehicles_helicopters = 1;
 skill_ground_vehicles = 1;
 
-
+limit_hc_gr = true;
 // Prices for blufor vehicle tiers
 
 light_vehicle_price_hmg = 220;
