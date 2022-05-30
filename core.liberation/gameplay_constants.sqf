@@ -76,8 +76,12 @@ skill_air_vehicles_helicopters = 1;
 skill_ground_vehicles = 1;
 
 limit_hc_gr = true;
-// Prices for blufor vehicle tiers
 
+//Datalink Options
+force_datalink = true;
+force_sensorTarget_opfor = true;
+
+// Prices for blufor vehicle tiers
 light_vehicle_price_hmg = 220;
 light_vehicle_price_gmg = 250;
 heavy_vehicle_price_tank = 500;
