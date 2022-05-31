@@ -70,7 +70,7 @@ blufor_sectors pushback _liberated_sector; publicVariable "blufor_sectors";
 stats_sectors_liberated = stats_sectors_liberated + 1;
 
 [] call recalculate_caps;
-[] spawn check_victory_conditions;
+[] call check_victory_conditions;
 
 sleep 1;
 
