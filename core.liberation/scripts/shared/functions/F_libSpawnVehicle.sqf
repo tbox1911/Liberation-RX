@@ -48,10 +48,10 @@ _newvehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
 _newvehicle allowCrewInImmobile true;
 _newvehicle setUnloadInCombat [true, false];
 
-if (isNil force_datalink) then {
+if (isNil "force_datalink") then {
 	force_datalink = false;
 };
-if (isNil force_sensorTarget_opfor) then {
+if (isNil "force_sensorTarget_opfor") then {
 	force_sensorTarget_opfor = false;
 };
 
