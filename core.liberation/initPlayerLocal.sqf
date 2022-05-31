@@ -77,7 +77,7 @@ sleep 10;
 execVM "scripts\client\misc\vehicle_restriction.sqf";
 execVM "MilSimUnited\create_arsenal_Itemlist.sqf";
 
-if (isNil limit_hc_gr) then {
+if (isNil "limit_hc_gr") then {
         limit_hc_gr = true;
     };
 
