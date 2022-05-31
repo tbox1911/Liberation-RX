@@ -82,7 +82,7 @@ if (isNil "limit_hc_gr") then {
     };
 
 if (!hasinterface && !isDedicated) then {
-    while(limit_hc_gr){
+    while(limit_hc_gr) do {
         {
             if ((count units _x) isEqualto 0) then {
                 deletegroup _x;
