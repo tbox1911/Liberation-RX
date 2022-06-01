@@ -1,4 +1,4 @@
-GRLIB_save_key = "GREUH_LIBERATION_Lythium_saveGame_PSK";
+GRLIB_save_key = "GREUH_LIBERATION_Stratis_saveGame_PSK";
 // change this value if you want different saveGames on different map
 GRLIB_side_resistance = resistance;
 GRLIB_side_civilian = civilian;
@@ -28,16 +28,16 @@ GRLIB_civ_killing_penalty = 0;
 GRLIB_squad_size_bonus = 0;
 GRLIB_perm_ban = -1000000;
 GRLIB_perm_inf = -45;
-GRLIB_perm_log = 300;
-GRLIB_perm_tank = 600;
-GRLIB_perm_air = 900;
-GRLIB_perm_max = 1200;
+GRLIB_perm_log = 400;
+GRLIB_perm_tank = 800;
+GRLIB_perm_air = 1200;
+GRLIB_perm_max = 1600;
 GRLIB_date_year = 2022;
 GRLIB_date_month = 6;
 GRLIB_date_day = 30;
 GRLIB_nights_start = 21;
 GRLIB_nights_stop = 4;
-GREUH_start_ammo = 1000;
+GREUH_start_ammo = 400;
 
 GRLIB_blufor_cap = 64;
 
@@ -49,7 +49,7 @@ MGR_Key = 19;
 
 
 // gain and punishment
-respawn_ammo = 30; // +/- is conditional
+respawn_ammo = 100; // +/- is conditional
 opfor_kill_score = 1;
 opfor_kill_ammo = 5;
 kamikaze_kill_score = 5;
