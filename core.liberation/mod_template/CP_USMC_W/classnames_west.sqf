@@ -184,6 +184,7 @@ heavy_vehicles = [
     ["CUP_B_M1133_MEV_Desert",0,heavy_vehicle_price_tier_1,0,GRLIB_perm_inf],
     ["CUP_B_M1126_ICV_M2_Desert",0,heavy_vehicle_price_tier_2,0,GRLIB_perm_inf],
     ["CUP_B_M1126_ICV_MK19_Desert",0,heavy_vehicle_price_tier_3,0,GRLIB_perm_inf],
+    ["CUP_B_LAV25M240_USMC",0,heavy_vehicle_price_tier_9,0,GRLIB_perm_inf],
     ["CUP_B_M1135_ATGMV_Desert",0,heavy_vehicle_price_tier_12,0,GRLIB_perm_inf],
     ["CUP_B_M1128_MGS_Desert",0,heavy_vehicle_price_tier_12,0,GRLIB_perm_inf],
     ["CUP_B_M6LineBacker_USA_D",0,heavy_vehicle_price_tier_13,0,GRLIB_perm_inf],
