@@ -7,7 +7,7 @@ DE<br /><br />
 Natürlich gelten hier wie auch auf dem Server die üblichen (Verhaltens)Regeln.<br /><br />
 - Spielt zusammen und versucht stets, ein gemeinsames Spiel zu ermöglichen<br />
 - Respawn oder Disconnect, während man bewusstlos ist, kostet Euch Geld -> Wartet also nach Möglichkeit immer auf Rettung<br />
-- Jeder Spieler muss mittels TFAR auf dem Teamspeak-Server 94.130.39.20 erreichbar sein<br />
+- Jeder Spieler muss mittels TFAR auf dem Teamspeak-Server 193.111.198.84 erreichbar sein<br />
 - Infos über Fahrzeug- und Baurechte erhaltet ihr auf dem MilSim United Discord.<br />
 - Nur signierte Mods aus dem Workshop oder unserem Repository nutzen<br />
 - Spass haben und lieb sein zueinander
@@ -32,7 +32,7 @@ EN<br /><br />
 Of course, the usual (behavioural) rules apply here as well as on the server. We refrain from listing them all here. However, some points should be emphasised, especially from a gameplay point of view:<br /><br />
 - Play together as a group.<br />
 - Respawning or disconnecting while unconscious costs you money -> always wait for rescue if possible.<br />
-- Every player must be reachable via TFAR on the teamspeak server 94.130.39.20<br />
+- Every player must be reachable via TFAR on the teamspeak server 193.111.198.84 <br />
 - Informations on vehicle- and building can be found on the MilSim United Discord.<br />
 - Only use signed mods from the workshop or our repository<br />
 - Have fun and be nice to each other
@@ -113,14 +113,14 @@ if (!hasinterface && !isDedicated) then {
 hint format['
 Karte öffnen, Regeln lesen! \n
 Open map, read rules! \n
-TeamSpeak Server: 94.130.39.20 \n
+TeamSpeak Server: 193.111.198.84 \n
 '];
 
 sleep 180;
 hint format['
 Karte öffnen, Regeln lesen! \n
 Open map, read rules! \n
-TeamSpeak Server: 94.130.39.20 \n
+TeamSpeak Server: 193.111.198.84 \n
 '];
 
 while {true} do{
