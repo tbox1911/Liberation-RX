@@ -46,4 +46,12 @@ if ( _wounded ) then {
 		_unit setSkill ["commanding", 0.5];
 		_unit setSkill ["reloadSpeed", 0.5];
 	};
+	
+	if (isNil 'AI_leader_radio') then {
+	AI_leader_radio = false;
+	};
+	
+	if ((AI_leader_radio) && (isFormationLeader _unit) && (side _unit == east)) then {
+	_unit addBackpack "B_RadioBag_01_ghex_F";
+	};
 };
