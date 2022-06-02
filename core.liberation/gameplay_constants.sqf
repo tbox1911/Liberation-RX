@@ -76,6 +76,9 @@ skill_air_vehicles_helicopters = 1;
 skill_ground_vehicles = 1;
 
 limit_hc_gr = true;
+// Readiness Increase from towns
+readiness_calc_bg_town = true;
+readiness_calc_sm_town = true;
 
 //Datalink Options
 force_datalink = true;
