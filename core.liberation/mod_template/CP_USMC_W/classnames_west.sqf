@@ -190,6 +190,7 @@ heavy_vehicles = [
     ["CUP_B_M1135_ATGMV_Desert",0,heavy_vehicle_price_tier_12,0,GRLIB_perm_inf],
     ["CUP_B_M1128_MGS_Desert",0,heavy_vehicle_price_tier_12,0,GRLIB_perm_inf],
     ["CUP_B_M6LineBacker_USA_D",0,heavy_vehicle_price_tier_13,0,GRLIB_perm_inf],
+    ["CUP_B_M1129_MC_MK19_Desert_Slat",0,heavy_vehicle_price_tier_13,0,GRLIB_perm_inf],
     ["CUP_B_M7Bradley_USA_D",0,heavy_vehicle_price_tier_14,0,GRLIB_perm_inf],
     ["CUP_B_M2A3Bradley_USA_D",0,heavy_vehicle_price_tier_15,0,GRLIB_perm_inf],
   // BW CUP
