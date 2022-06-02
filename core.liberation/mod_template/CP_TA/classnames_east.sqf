@@ -211,10 +211,8 @@ opfor_statics = [
 	"CUP_O_BM21_TKA",
 	"CUP_O_AGS_TK",
 	"CUP_O_Igla_AA_pod_TK",
-	"CUP_O_KORD_high_TK",
-	"CUP_O_KORD_TK",
 	"CUP_O_Metis_TK",
-	"CUP_O_2b14_82mm_TK",
+	"CUP_O_Hilux_podnos_TK_INS",
 	"CUP_O_ZU23_TK",
 	"CUP_O_D30_TK"
 ];
