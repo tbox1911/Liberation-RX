@@ -168,7 +168,7 @@ strong_light_vehicles = [
 
 ];
 
- 
+
 heavy_vehicles = [
 	// BAF
     ["CUP_B_FV432_GB_Ambulance",0,heavy_vehicle_price_tier_2,0,GRLIB_perm_inf],
@@ -184,7 +184,9 @@ heavy_vehicles = [
     ["CUP_B_M1133_MEV_Desert",0,heavy_vehicle_price_tier_1,0,GRLIB_perm_inf],
     ["CUP_B_M1126_ICV_M2_Desert",0,heavy_vehicle_price_tier_2,0,GRLIB_perm_inf],
     ["CUP_B_M1126_ICV_MK19_Desert",0,heavy_vehicle_price_tier_3,0,GRLIB_perm_inf],
-    ["CUP_B_LAV25M240_USMC",0,heavy_vehicle_price_tier_9,0,GRLIB_perm_inf],
+    ["CUP_B_LAV25_USMC",0,heavy_vehicle_price_tier_8,0,GRLIB_perm_inf],
+    ["CUP_B_LAV25M240_USMC",0,heavy_vehicle_price_tier_8,0,GRLIB_perm_inf],
+    ["CUP_B_AAV_USMC",0,heavy_vehicle_price_tier_8,0,GRLIB_perm_inf],
     ["CUP_B_M1135_ATGMV_Desert",0,heavy_vehicle_price_tier_12,0,GRLIB_perm_inf],
     ["CUP_B_M1128_MGS_Desert",0,heavy_vehicle_price_tier_12,0,GRLIB_perm_inf],
     ["CUP_B_M6LineBacker_USA_D",0,heavy_vehicle_price_tier_13,0,GRLIB_perm_inf],
@@ -205,6 +207,7 @@ heavy_vehicles = [
   // Vanilla
     ["I_LT_01_scout_F",0,heavy_vehicle_price_tier_7,0,GRLIB_perm_inf],
     ["I_LT_01_AA_F",0,heavy_vehicle_price_tier_8,0,GRLIB_perm_inf],
+    ["B_T_APC_Wheeled_01_cannon_F",0,heavy_vehicle_price_tier_8,0,GRLIB_perm_inf],
     ["I_LT_01_AT_F",0,heavy_vehicle_price_tier_9,0,GRLIB_perm_inf],
     ["I_LT_01_cannon_F",0,heavy_vehicle_price_tier_10,0,GRLIB_perm_inf],
     ["I_APC_Wheeled_03_cannon_F",0,heavy_vehicle_price_tier_14,0,GRLIB_perm_inf],
@@ -303,6 +306,7 @@ air_vehicles = [
       ["CUP_B_CH47F_VIV_USA",0,air_vehicle_price_tier_6,0,GRLIB_perm_inf],
       ["CUP_B_CH53E_GER",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],
       ["CUP_B_CH53E_VIV_GER",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],
+      ["CUP_B_MH47E_USA",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],
 
     //BAF
       ["CUP_B_Merlin_HC3A_GB",0,air_vehicle_price_tier_8,0,GRLIB_perm_inf],
@@ -379,8 +383,6 @@ fast_air_vehicle = [
     ["USAF_F22_Heavy",0,fast_air_vehicle_price_tier_5,0,GRLIB_perm_inf],
     ["USAF_F35A_STEALTH",0,fast_air_vehicle_price_tier_3,0,GRLIB_perm_inf],
     ["USAF_F35A_LIGHT",0,fast_air_vehicle_price_tier_4,0,GRLIB_perm_inf],
-    ["FIR_F16C",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],   
-    ["FIR_F16D",0,fast_air_vehicle_price_tier_8,0,GRLIB_perm_inf],  
     ["USAF_F35A",0,fast_air_vehicle_price_tier_5,0,GRLIB_perm_inf], 
 
     // F-18 super hornet
@@ -411,7 +413,9 @@ fast_air_vehicle = [
 
     // FIR F-15
     ["FIR_F15C",0,fast_air_vehicle_price_tier_4,0,GRLIB_perm_inf],
-    ["FIR_F15E",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf]  
+    ["FIR_F15E",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
+    ["FIR_F16C",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],   
+    ["FIR_F16D",0,fast_air_vehicle_price_tier_8,0,GRLIB_perm_inf]
  
   
 
