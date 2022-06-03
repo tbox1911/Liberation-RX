@@ -72,7 +72,7 @@ _vehcrew = crew _newvehicle;
 	if (change_loadout_opfor_fighter) then {
 		_x addEventHandler ["GetInMan", {
 			params ["_unit", "_role", "_vehicle", "_turret"];
-			if (!(isPlayer _unit) && (side _unit == east)) then {
+			if (!(isPlayer _unit) && (side _unit == EAST)) then {
 				if (typeOf _vehicle == "O_Plane_CAS_02_Cluster_F") then {
 					_loadout_CAS = ["FIR_R77_P_1rnd_M", "CUP_PylonPod_1Rnd_R73_Vympel", "PylonRack_20Rnd_Rocket_03_HE_F", "FIR_RBK250_P_1rnd_M", "PylonRack_3Rnd_ACE_Hellfire_AGM114L", "PylonRack_3Rnd_ACE_Hellfire_AGM114L", "FIR_RBK250_P_1rnd_M", "PylonRack_20Rnd_Rocket_03_HE_F", "CUP_PylonPod_1Rnd_R73_Vympel", "FIR_R77_P_1rnd_M"];
 					{
