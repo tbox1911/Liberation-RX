@@ -43,8 +43,8 @@ if ( !isNil "GRLIB_whitelisted_steamids" ) then {
 waitUntil {!isNull player };
 
 private _tfarEnabled = call TFAR_fnc_isTeamSpeakPluginEnabled;
-// private _debug = ((isServer && hasInterface) || (is_commander));
-private _debug = false;
+private _debug = ((isServer && hasInterface) || (is_commander));
+// private _debug = false;
 
 if(!_tfarEnabled) then {
 	while {!_tfarEnabled && !_debug} do {
