@@ -40,6 +40,8 @@ GRLIB_nights_stop = 4;
 GREUH_start_ammo = 400;
 
 GRLIB_blufor_cap = 64;
+// defines if everyone gets ammo from sector liberations
+Sector_ammo_for_all = false;
 
 // don't forget that the human commander manages those, not the server
 GRLIB_offload_diag = false;
@@ -175,38 +177,6 @@ fast_air_vehicle_price_tier_10 = 3000;
 logistic_ground_vehicle_price_tier_1 = 250;
 logistic_ground_vehicle_price_tier_2 = 300;
 logistic_ground_vehicle_price_tier_3 = 400;
-
-
-
-
-
-
-
-
-
-
-
-
-
-unarmed_ground_vehicle_price_tier_1 = 100;
-lmg_ground_vehicle_price_tier_2 = 200;
-MMG_ground_vehicle_price_tier_3 = 300;
-HMG_ground_vehicle_price_tier_4 = 350;
-GMG_ground_vehicle_price_tier_5 = 400;
-larmored_ground_vehicle_price_tier_6 = 500;
-marmored_ground_vehicle_price_tier_7 = 650;
-harmored_ground_vehicle_price_tier_8 = 1250;
-unarmed_air_vehicle_price_tier_1 = 200;
-light_armed_air_vehicle_price_tier_1 = 350;
-light_heavy_armed_air_vehicle_price_tier_2 = 500;
-Heavy_armed_air_vehicle_price_tier_3 = 800;
-armed_air_vehicle_price_tier_4 = 1250;
-strong_armed_air_vehicle_price_tier_5 = 1650;
-light_armed_jet_vehicle_price_tier_6 = 1000;
-heavy_armed_jet_vehicle_price_tier_7 = 1500;
-strong_armed_jet_vehicle_price_tier_8 = 2000;
-
-
 
 items_allFac = [
     "U_B_FullGhillie_lsh",

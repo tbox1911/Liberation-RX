@@ -40,22 +40,26 @@ if ( _liberated_sector in sectors_tower ) then {
 };
 
 private _income = 50; // (45 + floor(random 20));
-private _text = format ["Reward Received: + %1 Ammo.", _income];
+
 {
-	// if (_x distance2D (markerpos _liberated_sector) < GRLIB_sector_size ) then {};
-	
-	private _ammo_collected = _x getVariable ["GREUH_ammo_count",0];
-	
-	_x setVariable ["GREUH_ammo_count", _ammo_collected + _income, true];
-	
-	[_x, 5] remoteExec ["addScore", 2];
-	
-	if (hasInterface) then {
-		[gamelogic, _text] remoteExec ["globalChat", owner _x];
-	};
-	
-	
-} forEach allPlayers;
+    if (!Sector_ammo_for_all) then {
+        if (_x distance2D (markerPos _liberated_sector) < GRLIB_sector_size * 2) then {
+            private _ammo_collected = _x getVariable ["GREUH_ammo_count", 0];
+            
+            _x setVariable ["GREUH_ammo_count", _ammo_collected + _income, true];
+            
+            [_x, 5] remoteExec ["addscore", 2];
+        
+        };
+    } else {
+        private _ammo_collected = _x getVariable ["GREUH_ammo_count", 0];
+        
+        _x setVariable ["GREUH_ammo_count", _ammo_collected + _income, true];
+        
+        [_x, 5] remoteExec ["addscore", 2];
+        
+    };
+} forEach allplayers;
 [markerPos _liberated_sector] call showlandmines;
 
 combat_readiness = combat_readiness + _combat_readiness_increase;
