@@ -1,5 +1,5 @@
 diag_log "--- Liberation RX by pSiKO ---";
-[] call compileFinal preprocessFileLineNUmbers "build_info.sqf";
+// [] call compileFinal preprocessFileLineNUmbers "build_info.sqf";
 diag_log "--- Init start ---";
 titleText ["Loading...","BLACK FADED", 100];
 
@@ -151,7 +151,6 @@ SNC_VehRestriction= true;
 	[_vehicle, true, [0, 1.5, 0], 0] call ace_dragging_fnc_setCarryable;
 	[_vehicle, true, [0, 1.5, 0], 0] call ace_dragging_fnc_setDraggable;
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
 ["B_Slingload_01_Medevac_F", "InitPost", {
     params ["_vehicle"];
 	clearItemCargoGlobal _vehicle;
