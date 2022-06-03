@@ -26,6 +26,8 @@ if (isServer) then {
     diag_log format ["[KP] [%1] [POST] [CRATEFILLER] Module initializing...", diag_tickTime];
 
     // Create cratefiller presets on startup
+	
+	sleep 2;
     [] call KP_fnc_cratefiller_presets;
 
 };
