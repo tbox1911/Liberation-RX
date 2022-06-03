@@ -392,14 +392,15 @@ SNC_VehRestriction= true;
         ["Su57_Style1", 1],
         true
     ] call BIS_fnc_initvehicle;
-    
+    /*
     _loadout_fighter = ["PylonMissile_Missile_AA_R73_x1", "PylonMissile_Missile_AA_R73_x1", "FIR_RBK250_P_1rnd_M", "FIR_RBK250_P_1rnd_M", "PylonRack_3Rnd_ACE_Hellfire_AGM114L", "PylonRack_3Rnd_ACE_Hellfire_AGM114L", "PylonMissile_Missile_AA_R73_x1", "PylonMissile_Missile_AA_R73_x1", "PylonMissile_Missile_AA_R77_x1", "PylonMissile_Missile_AA_R77_x1", "PylonMissile_Missile_AA_R77_inT_x1", "PylonMissile_Missile_AA_R77_inT_x1", "PylonMissile_Missile_KH58_inT_x1"];
     
     {
         vehicle _vehicle setPylonLoadout [_forEachindex, _x, true];
     } forEach _loadout_fighter;
+	*/
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
+/*
 ["O_Plane_CAS_02_Cluster_F", "initPost", {
     params ["_vehicle"];
     [
@@ -414,7 +415,7 @@ SNC_VehRestriction= true;
         vehicle _vehicle setPylonLoadout [_forEachindex, _x, true];
     } forEach _loadout_CAS;
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
+*/
 ["rhsusf_socom_marsoc_sarc", "InitPost", {
 	params ["_vehicle"];
 	if (!local _vehicle) exitWith {};
