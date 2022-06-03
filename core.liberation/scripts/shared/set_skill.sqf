@@ -48,10 +48,15 @@ if ( _wounded ) then {
 	};
 	
 	if (isNil 'AI_leader_radio') then {
-	AI_leader_radio = false;
+		AI_leader_radio = false;
 	};
-	
+
 	if ((AI_leader_radio) && (isFormationLeader _unit) && (side _unit == east)) then {
-	_unit addBackpack "B_RadioBag_01_ghex_F";
+		if !(backpack _x == "B_RadioBag_01_ghex_F") then {
+			_x addBackpack "B_RadioBag_01_ghex_F"
+		};
+		if !("Binocular" in assignedItems _x) then {
+			_x linkItem "Binocular"
+		};
 	};
 };
