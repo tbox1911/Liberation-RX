@@ -6,7 +6,7 @@ private _yield = _csat_prisonner_intel_yield;
 if ( ( typeof _unit ) in all_resistance_troops ) then {
 	_yield = _resistance_prisonner_intel_yield;
 };
-resources_intel = resources_intel + ( _yield + (round (random _yield)));
+resources_intel = resources_intel + _yield;
 stats_prisonners_captured = stats_prisonners_captured + 1;
 publicVariable "stats_prisonners_captured";
 
