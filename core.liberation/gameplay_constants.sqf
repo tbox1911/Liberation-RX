@@ -60,7 +60,12 @@ civkill_score = -25;
 civkill_ammo = -100;
 tkill_score = -4;
 tkill_ammo = -40;
-box_recycle_value = 35;
+
+// Only use by 2 dividable numbers
+box_recycle_value = 40;
+// Increases the ammo for logistics and decreasese the ammo for everyone
+logistics_ammo_increase = true;
+
 prisoner_score = 10;
 prisoner_ammo = 35;
 ai_value = 35;

@@ -219,12 +219,6 @@ opfor_statics = [
 
 opfor_recyclable = [
 	// necessary so everyone can profit from logistics
-	["Box_NATO_AmmoVeh_F",0,round(box_recycle_value / GRLIB_recycling_percentage),0], 
-	["Box_East_AmmoVeh_F",0,round(box_recycle_value / GRLIB_recycling_percentage),0], 
-	["Box_IND_AmmoVeh_F",0,round(box_recycle_value / GRLIB_recycling_percentage),0], 
-	["Land_BarrelWater_F",0,round(box_recycle_value / GRLIB_recycling_percentage),0], 
-	["Land_FoodSacks_01_large_brown_idap_F",0,round(box_recycle_value / GRLIB_recycling_percentage),0], 
-	["Land_MetalBarrel_F",0,round(box_recycle_value / GRLIB_recycling_percentage),0], 
 	["CUP_O_BM21_TKA",0,round (60 / GRLIB_recycling_percentage),0],
 	["CUP_O_MTLB_pk_TK_MILITIA",0,round (50 / GRLIB_recycling_percentage),0],
 	["CUP_O_BTR40_MG_TKM",0,round (60 / GRLIB_recycling_percentage),0],
@@ -301,6 +295,19 @@ opfor_recyclable = [
 	["O_MBT_04_cannon_F",1,round (120 / GRLIB_recycling_percentage),2],
 	["O_MBT_02_cannon_F",1,round (100 / GRLIB_recycling_percentage),2],
 	["CUP_O_T72_TKA",1,round (60 / GRLIB_recycling_percentage),2]
+];
+
+// loot crates for logistics
+
+loot_crates = [
+
+	["Box_NATO_AmmoVeh_F",0,round(box_recycle_value / GRLIB_recycling_percentage),0], 
+	["Box_East_AmmoVeh_F",0,round(box_recycle_value / GRLIB_recycling_percentage),0], 
+	["Box_IND_AmmoVeh_F",0,round(box_recycle_value / GRLIB_recycling_percentage),0], 
+	["Land_BarrelWater_F",0,round(box_recycle_value / GRLIB_recycling_percentage),0], 
+	["Land_FoodSacks_01_large_brown_idap_F",0,round(box_recycle_value / GRLIB_recycling_percentage),0], 
+	["Land_MetalBarrel_F",0,round(box_recycle_value / GRLIB_recycling_percentage),0]
+
 ];
 
 box_transport_config_east = [
