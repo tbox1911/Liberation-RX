@@ -10,7 +10,7 @@ private _classnames = [];
 private _blacklist = [];
 private _type = [];
 private _specialitems = [];
-
+private _all_gear = [];
 private _blacklist = item_blacklist;
 
 // Fetch all needed config classes
@@ -26,7 +26,7 @@ private _configClasses = [];
     ((_type select 0) != 'vehicleWeapon')
     " configClasses _x
     );
-} forEach [(configFile >> "Cfgweapons"), (configFile >> "Cfgmagazines"), (configFile >> "Cfgvehicles"), (configFile >> "CfgGlasses")];
+} forEach [(configFile >> "Cfgweapons"), (configFile >> "Cfgmagazines"), (configFile >> "Cfgvehicles"), (configFile >> "CfgGlasses"), (configFile >> "CfgUniforms"), (configFile >> "CfgHelments"), (configFile >> "CfgVests")];
 
 // Fetch classnames
 {
@@ -71,7 +71,10 @@ _classnames = _classnames - _blacklist;
         case "Equipment": {
             if (((_type select 1) isEqualto "Backpack") || ((_type select 1) isEqualto "Glasses")) then {
                 _all_backpacks pushBack _x
-            }
+            };
+            if (((_type select 1) isEqualto "Uniform") || ((_type select 1) isEqualto "Headgear") || ((_type select 1) isEqualto "Vest")) then {
+                _all_gear pushBack _x
+            };
         };
         case "Item": {
             switch (_type select 1) do {
@@ -98,4 +101,5 @@ _classnames = _classnames - _blacklist;
 _all_items append _specialitems;
 
 
-equipment = _all_weapons + _all_magazines + _all_grenades + _all_explosives + _all_items + _all_backpacks + _all_accessorys;
+equipment = _all_weapons + _all_magazines + _all_grenades + _all_explosives + _all_items + _all_backpacks + _all_accessorys + _all_gear;
+_all_gear;
