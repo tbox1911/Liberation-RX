@@ -102,4 +102,3 @@ _all_items append _specialitems;
 
 
 equipment = _all_weapons + _all_magazines + _all_grenades + _all_explosives + _all_items + _all_backpacks + _all_accessorys + _all_gear;
-_all_gear;
