@@ -29,20 +29,18 @@ if (isNull _vehicle) exitWith {};
 
 
 // check, if vehicle is looted
-_objectinfo_loot = ( [ (opfor_recyclable + ind_recyclable), { typeof _vehicle == _x select 0 } ] call BIS_fnc_conditionalSelect ) select 0;
+_objectinfo_loot = ( [ (opfor_recyclable + ind_recyclable + loot_crates), { typeof _vehicle == _x select 0 } ] call BIS_fnc_conditionalSelect ) select 0;
 if (!isNil "_objectinfo_loot") then {
 	_loot = true;
 }else{
 	_loot = false;
 };
 
-
-_objectinfo = ( [ (light_vehicles + strong_light_vehicles  + heavy_vehicles + strong_heavy_vehicles + air_vehicles + fast_air_vehicle + static_vehicles + support_vehicles + support_crates + buildings + opfor_recyclable + ind_recyclable), { typeof _vehicle == _x select 0 } ] call BIS_fnc_conditionalSelect ) select 0;
+_objectinfo = ( [ (light_vehicles + strong_light_vehicles  + heavy_vehicles + strong_heavy_vehicles + air_vehicles + fast_air_vehicle + static_vehicles + support_vehicles + support_crates + buildings + opfor_recyclable + ind_recyclable + loot_crates), { typeof _vehicle == _x select 0 } ] call BIS_fnc_conditionalSelect ) select 0;
 if (isNil "_objectinfo") then {
 	_objectinfo = [typeOf _vehicle, 0, 0, 0];
 };
 dorecycle = 0;
-
 
 _cfg = configFile >> "cfgVehicles";
 createDialog "liberation_recycle";
@@ -66,43 +64,59 @@ while { dialog && (alive player) && dorecycle == 0 } do {
 
 if ( dialog ) then { closeDialog 0 };
 
-if ( dorecycle == 1 && !(isNull _vehicle) && alive _vehicle) exitWith {
 
-	if (typeOf _vehicle in [ammobox_b_typename, ammobox_o_typename, ammobox_i_typename] ) then {
-		[player, 5] remoteExec ["addScore", 2];
-		hint format [localize "STR_AMMO_SELL2", name player];
-		playSound "taskSucceeded";
-	};
-	
-	if (_loot == false) then {
-		
-		private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
-		player setVariable ["GREUH_ammo_count", (_ammo_collected + _ammount_ammo), true];
-		player addRating 5;
-		
-	}else{
-		
-		{
-			private _ammo_collected = _x getVariable ["GREUH_ammo_count",0];
-			_x setVariable ["GREUH_ammo_count", (_ammo_collected + _ammount_ammo), true];
-			_x addRating 5;
-		} forEach allPlayers;
-		
-		_msg = format ["+ %1 ammo thanks to %2", _ammount_ammo, name player];
-		
-		if(hasInterface) then {
-			[gamelogic, _msg] remoteExec ["globalChat", 0];
-		}
-		
-		
-	};
-	
-	
 
-	if (typeOf _vehicle == mobile_respawn) exitWith {
-		[_vehicle, "del"] remoteExec ["addel_beacon_remote_call", 2];
-	};
-	[_vehicle] remoteExec ["deleteVehicle", 2];
-	stats_vehicles_recycled = stats_vehicles_recycled + 1; publicVariable "stats_vehicles_recycled";
+_loot_crate = ( [ (loot_crates), { typeof _vehicle == _x select 0 } ] call BIS_fnc_conditionalSelect ) select 0;
+
+if (dorecycle == 1 && !(isNull _vehicle) && alive _vehicle) exitwith {
+    if (typeOf _vehicle in [ammobox_b_typeName, ammobox_o_typeName, ammobox_i_typeName]) then {
+        [player, 5] remoteExec ["addscore", 2];
+        hint format [localize "str_ammo_SELL2", name player];
+        playSound "taskSucceeded";
+    };
+    
+    if (_loot == false) then {
+        private _ammo_collected = player getVariable ["GREUH_ammo_count", 0];
+        player setVariable ["GREUH_ammo_count", (_ammo_collected + _ammount_ammo), true];
+        player addrating 5;
+    } else {
+
+        if (!isNil "_loot_crate" && logistics_ammo_increase) then {
+            {
+                private _ammo_collected = _x getVariable ["GREUH_ammo_count", 0];
+                _x setVariable ["GREUH_ammo_count", (_ammo_collected + (_ammount_ammo / 2)), true];
+                _x addrating 5;
+            } forEach allplayers;
+
+			private _ammo_collected = player getVariable ["GREUH_ammo_count", 0];
+            player setVariable ["GREUH_ammo_count", (_ammo_collected + _ammount_ammo), true];
+
+
+            _msg = format ["+ %1 ammo thanks to %2", _ammount_ammo, name player];
+            
+            if (hasinterface) then {
+                [gamelogic, _msg] remoteExec ["globalChat", 0];
+            }
+        } else {
+            {
+                private _ammo_collected = _x getVariable ["GREUH_ammo_count", 0];
+                _x setVariable ["GREUH_ammo_count", (_ammo_collected + _ammount_ammo), true];
+                _x addrating 5;
+            } forEach allplayers;
+            
+            _msg = format ["+ %1 ammo thanks to %2", _ammount_ammo, name player];
+            
+            if (hasinterface) then {
+                [gamelogic, _msg] remoteExec ["globalChat", 0];
+            }
+        }
+    };
+    
+    if (typeOf _vehicle == mobile_respawn) exitwith {
+        [_vehicle, "del"] remoteExec ["addel_beacon_remote_call", 2];
+    };
+    [_vehicle] remoteExec ["deletevehicle", 2];
+    stats_vehicles_recycled = stats_vehicles_recycled + 1;
+    publicVariable "stats_vehicles_recycled";
 };
 _vehicle setVariable ["recycle_in_use", false, true];

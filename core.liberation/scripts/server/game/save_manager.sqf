@@ -47,7 +47,7 @@ armor_weight = 33;
 air_weight = 33;
 GRLIB_vehicle_to_military_base_links = [];
 GRLIB_permissions = [];
-resources_intel = 0;
+resources_intel = 15;
 GRLIB_player_scores = [];
 GRLIB_garage = [];
 

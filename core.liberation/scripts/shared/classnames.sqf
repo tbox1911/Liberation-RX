@@ -296,7 +296,7 @@ GRLIB_recycleable_blacklist = [FOB_sign];
 GRLIB_recycleable_classnames = ["LandVehicle","Air","Ship","StaticWeapon","Slingload_01_Base_F","Pod_Heli_Transport_04_base_F"];
 {
 	if (!((_x select 0) in GRLIB_recycleable_blacklist)) then {GRLIB_recycleable_classnames pushBack (_x select 0)};
-} foreach (support_vehicles + support_crates + buildings + opfor_recyclable);
+} foreach (support_vehicles + support_crates + buildings + opfor_recyclable + loot_crates);
 
 // Filter Mods
 infantry_units = [ infantry_units ] call F_filterMods;

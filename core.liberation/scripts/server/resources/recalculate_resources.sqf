@@ -39,7 +39,7 @@ while { true } do {
 						_new_manpower_used = _new_manpower_used + (_x select 1);
 						_new_fuel_used = _new_fuel_used + (_x select 3);
 					};
-				} foreach ( light_vehicles + strong_light_vehicles  + heavy_vehicles + strong_heavy_vehicles + air_vehicles + fast_air_vehicle + static_vehicles + support_vehicles + support_crates + opfor_recyclable );
+				} foreach ( light_vehicles + strong_light_vehicles  + heavy_vehicles + strong_heavy_vehicles + air_vehicles + fast_air_vehicle + static_vehicles + support_vehicles + support_crates + opfor_recyclable + loot_crates );
 			};
 		} foreach vehicles + GRLIB_mobile_respawn;
 
