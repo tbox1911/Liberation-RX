@@ -1,4 +1,6 @@
-waitUntil {!isNull player};
+waitUntil {
+	!isNull player
+};
 
 ["InitializePlayer", [player, true]] call BIS_fnc_dynamicGroups;
 
@@ -18,14 +20,13 @@ Spielregeln:<br /><br />
 3. Trolling ist untersagt, Beleidigungen, Rassismus ebenso, verhaltet euch freundlich.<br />
 4. Eine gute Kommunikation ist alles, ihr seid daher angewiesen die zugewiesenen Kanäle strikt einzuhalten und zu benutzen.<br />
 5. Der Teamleader darf über die Waffenklasse einzelner seines Trupps, wie auch über die zu Spielende Fraktion bestimmen.<br />
-6. Boden-Teams sind von außen immer LR(“Long-Range”) auf der 50 für Bodenstreitkräfte zu erreichen.<br />
+6. Boden-teams sind von außen immer LR(“Long-Range”) auf der 50 für Bodenstreitkräfte zu erreichen.<br />
 7. Boden-Luft Kommunikation ist immer auf der 51.<br />
 8. Luft-Luft Kommunikation ist auf der 52.<br />
-8.1 Innerhalb des Teams sind außer den Hauptkanälen 50,51,52  alle anderen Kanäle frei wählbar.<br />
+8.1 Innerhalb des teams sind außer den Hauptkanälen 50, 51, 52 alle anderen Kanäle frei wählbar.<br />
 9. ALLE Elemente müssen sich mit dem Groupmanager eintragen. Der Rufname ist Sinnvoll/Seriös zu wählen. (ACE Self Interaction Menü -> Groupmanager)<br />
 10. Wir behalten uns Änderungen des Regelwerkes vor.<br />
 11. Jeder ist angehalten sich selbst über Änderungen des Regelwerkes zu informieren.<br />
-
 
 <br /><br />
 EN<br /><br />
@@ -36,10 +37,10 @@ Of course, the usual (behavioural) rules apply here as well as on the server. We
 - Informations on vehicle- and building can be found on the MilSim United Discord.<br />
 - Only use signed mods from the workshop or our repository<br />
 - Have fun and be nice to each other
-<br /><br /> 
+<br /><br />
 
 Gameplay Rules:<br /><br />
-1. Killing Friendly Units is strictly forbidden, accedents will always be looked at.<br />
+1. Killing Friendly units is strictly forbidden, accedents will always be looked at.<br />
 2. It is required to have a working and a good quality microphone.<br />
 3. Trolling, insults and racism are strictly forbidden.<br />
 4. Good communication is everything. You are required to use the assigned channels.<br />
@@ -50,7 +51,6 @@ Gameplay Rules:<br /><br />
 9. All elements must be named correctly in the Groupmanager. Chose your callsign sensibly/serious.(ACE Self Interaction Menü -> Groupmanager)<br />
 10. We reserve the right to change the rules.<br />
 11. Everyone should keep himself up to date with changes made to the rules.<br />
-
 
 <br /><br />
 ';
@@ -65,7 +65,7 @@ Sämtliche Streitkräfte bedienen sich aus Effizienzgründen zunehmend am intern
 EN <br /><br />
 A newly formed military alliance in the near future supports conflicting parties in strategically and economically relevant regions in order to gain influence there. A multinational coalition is putting up resistance.
 <br /><br />
-For reasons of efficiency, all armed forces are increasingly making use of the international arms market.
+for reasons of efficiency, all armed forces are increasingly making use of the international arms market.
 <br /><br /><br />
 ';
 
@@ -77,7 +77,6 @@ sleep 10;
 execVM "scripts\client\misc\vehicle_restriction.sqf";
 execVM "MilSimUnited\create_arsenal_Itemlist.sqf";
 
-
 if (isNil "global_arsenal") then {
 	global_arsenal = true;
 };
@@ -87,68 +86,64 @@ if (global_arsenal) then {
 	[_box, false] call ace_arsenal_fnc_initBox;
 	[_box, true, false] call ace_arsenal_fnc_removeVirtualitems;
 	[_box, pub_arsenal_box] call ace_arsenal_fnc_addVirtualitems;
+} else {
+	_box = missionnamespace getVariable ["myLARsBox", objNull];
+	[_box, false] call ace_arsenal_fnc_initBox;
+	[_box, true, false] call ace_arsenal_fnc_removeVirtualitems;
 };
 
 if (isNil "limit_hc_gr") then {
-        limit_hc_gr = true;
-    };
-
-if (!hasinterface && !isDedicated) then {
-    while(limit_hc_gr) do {
-        {
-            if ((count units _x) isEqualto 0) then {
-                deletegroup _x;
-            };
-        } count allgroups;
-        sleep 1;
-    }
+	limit_hc_gr = true;
 };
 
+if (!hasInterface && !isDedicated) then {
+	while(limit_hc_gr) do {
+		{
+			if ((count units _x) isEqualTo 0) then {
+				deleteGroup _x;
+			};
+		} count allGroups;
+		sleep 1;
+	}
+};
 
+all_arsenals = [];
 
-  	_box = missionnamespace getVariable ["myLARsBox", objNull];
-    [_box, false] call ace_arsenal_fnc_initBox;
-    [_box, true, false] call ace_arsenal_fnc_removeVirtualitems;
-
-	 all_arsenals = [];
-
-    {
-        _prc1 = format ["FAC_MSU\%1\arsenal.sqf", _x];
-        _handle1 = player execVM _prc1;
-    waitUntil {
-        scriptDone _handle1
-    };
-        all_arsenals = all_arsenals + arsenal;   
-    } forEach ['USMC','USARMY','BW','BAF','FFAA','PMC'];
-
+{
+	_prc1 = format ["FAC_MSU\%1\arsenal.sqf", _x];
+	_handle1 = player execVM _prc1;
+	waitUntil {
+		scriptDone _handle1
+	};
+	all_arsenals = all_arsenals + arsenal;
+} forEach ['USMC', 'USARMY', 'BW', 'BAF', 'FFAA', 'PMC'];
 
 hint format['
-Karte öffnen, Regeln lesen! \n
-Open map, read rules! \n
-TeamSpeak Server: 193.111.198.84 \n
+	Karte öffnen, Regeln lesen! \n
+	Open map, read rules! \n
+	TeamSpeak Server: 193.111.198.84 \n
 '];
 
 sleep 180;
 hint format['
-Karte öffnen, Regeln lesen! \n
-Open map, read rules! \n
-TeamSpeak Server: 193.111.198.84 \n
+	Karte öffnen, Regeln lesen! \n
+	Open map, read rules! \n
+	TeamSpeak Server: 193.111.198.84 \n
 '];
 
-while {true} do{
+while { true } do {
 	sleep 300;
 	_hs_time = systemTime;
-	
-	if ( ((_hs_time select 3) == 18) &&  ((_hs_time select 4) >= 30) ) then {
+
+	if (((_hs_time select 3) == 18) && ((_hs_time select 4) >= 30)) then {
 		hint format['Server restart 19:00 \nFahrzeuge zurück zur FOB! \nReturn vehicles to FOB!'];
 	};
-	if ( ((_hs_time select 3) == 2) && ((_hs_time select 4) >= 30) ) then {
+	if (((_hs_time select 3) == 2) && ((_hs_time select 4) >= 30)) then {
 		hint format['Server restart 03:00 \nFahrzeuge zurück zur FOB! \nReturn vehicles to FOB!'];
 	};
-	if ( ((_hs_time select 3) == 10) && ((_hs_time select 4) >= 30) ) then {
+	if (((_hs_time select 3) == 10) && ((_hs_time select 4) >= 30)) then {
 		hint format['Server restart 11:00 \nFahrzeuge zurück zur FOB! \nReturn vehicles to FOB!'];
 	};
 };
 
 // hint format['%1:%2', (_hs_time select 3), (_hs_time select 4)];
-
