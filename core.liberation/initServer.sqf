@@ -1,14 +1,12 @@
 //Global Arsenal
-if (isNil 'item_blacklist') then {
-	[] call compileFinal preprocessFileLineNUmbers "scripts\shared\fetch_params.sqf";
+if (isNil 'equipment') then {
+	[] call compileFinal preprocessFileLineNUmbers "MilSimUnited\create_arsenal_Itemlist.sqf";
 };
-if !(isNil 'item_blacklist') then {
-	publicVariable "pub_arsenal_box";
-	pub_arsenal_box = missionnamespace getVariable ["myLARsBox", objNull];
-	[pub_arsenal_box, true, false] call ace_arsenal_fnc_removeVirtualitems;
-	[pub_arsenal_box, true] call ace_arsenal_fnc_initBox;
-	[pub_arsenal_box, item_blacklist] call ace_arsenal_fnc_removeVirtualitems;
+if !(isNil 'equipment') then {
+	pub_arsenal_box = equipment;
+	publicVariable 'pub_arsenal_box';
 };
+
 
 ["ace_unconscious", {
 	// global event (runs on all machines)
