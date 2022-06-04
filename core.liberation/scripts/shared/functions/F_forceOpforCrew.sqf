@@ -1,7 +1,7 @@
 params [ "_veh"];
 
 createVehicleCrew _veh;
-sleep 0.1;
+//sleep 0.1;
 _grp = createGroup [GRLIB_side_enemy, true];
 (crew _veh) joinSilent _grp;
 {
