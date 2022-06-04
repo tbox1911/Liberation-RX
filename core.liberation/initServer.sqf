@@ -1,20 +1,31 @@
-["ace_unconscious", { // global event (runs on all machines)
-    params ["_unit", "_isUnconscious"];
+//Global Arsenal
+if (isNil 'item_blacklist') then {
+	[] call compileFinal preprocessFileLineNUmbers "scripts\shared\fetch_params.sqf";
+};
+if !(isNil 'item_blacklist') then {
+	publicVariable "pub_arsenal_box";
+	pub_arsenal_box = missionnamespace getVariable ["myLARsBox", objNull];
+	[pub_arsenal_box, true, false] call ace_arsenal_fnc_removeVirtualitems;
+	[pub_arsenal_box, true] call ace_arsenal_fnc_initBox;
+	[pub_arsenal_box, item_blacklist] call ace_arsenal_fnc_removeVirtualitems;
+};
 
-    _allHCs = entities "HeadlessClient_F";
-    _allHPs = allPlayers - _allHCs;
-    _aliveCount = 0;
-    _allCount = count _allHPs;
-	
-    if ((_isUnconscious) && (_unit in _allHPs)) then {
-        // (format ["%1 is down", name _unit]) remoteExec ["systemChat", 0];
+["ace_unconscious", {
+	// global event (runs on all machines)
+	params ["_unit", "_isUnconscious"];
+
+	_allHCs = entities "HeadlessClient_F";
+	_allHPs = allPlayers - _allHCs;
+	_aliveCount = 0;
+	_allCount = count _allHPs;
+
+	if ((_isUnconscious) && (_unit in _allHPs)) then {
+		// (format ["%1 is down", name _unit]) remoteExec ["systemChat", 0];
 		[getPlayerUID _unit, - respawn_ammo] remoteExec ["F_addPlayerAmmo", 2];
-    }else{
+	} else {
 		[getPlayerUID _unit, + respawn_ammo] remoteExec ["F_addPlayerAmmo", 2];
 	};
-    
 }] call CBA_fnc_addEventHandler;
-
 
 addMissionEventHandler ['EntityKilled', {
 	params ["_unit", "_killer"];
@@ -56,29 +67,14 @@ addMissionEventHandler ['EntityKilled', {
 	};
 }];
 
-
-
-
-
 /*
-addMissionEventHandler ['HandleDisconnect',{
-	_unit = _this select 0;
-	_hs_unconscious = _unit getVariable ['ACE_isUnconscious', false];
-	if (_hs_unconscious == true) then {
-		_unit setVariable ["GREUH_ammo_count", ( (_unit getVariable ["GREUH_ammo_count", 25]) - 25), true];
-	};
-}];
+	addMissionEventHandler ['HandleDisconnect', {
+		_unit = _this select 0;
+		_hs_unconscious = _unit getVariable ['ACE_isUnconscious', false];
+		if (_hs_unconscious == true) then {
+			_unit setVariable ["GREUH_ammo_count", ((_unit getVariable ["GREUH_ammo_count", 25]) - 25), true];
+		};
+	}];
 */
 
-
-
-
 ["Initialize", [true]] call BIS_fnc_dynamicGroups;
-
-
-
-
-
-
-
-
