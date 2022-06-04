@@ -1,6 +1,6 @@
 params [ "_unit", "_unit_owner" ];
-private _resistance_prisonner_intel_yield = 5;
-private _csat_prisonner_intel_yield = 10;
+private _resistance_prisonner_intel_yield = 10;
+private _csat_prisonner_intel_yield = 15;
 
 private _yield = _csat_prisonner_intel_yield;
 if ( ( typeof _unit ) in all_resistance_troops ) then {
