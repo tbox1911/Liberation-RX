@@ -77,6 +77,18 @@ sleep 10;
 execVM "scripts\client\misc\vehicle_restriction.sqf";
 execVM "MilSimUnited\create_arsenal_Itemlist.sqf";
 
+
+if (isNil "global_arsenal") then {
+	global_arsenal = true;
+};
+
+if (global_arsenal) then {
+	_box = missionnamespace getVariable ["myLARsBox", objNull];
+	[_box, false] call ace_arsenal_fnc_initBox;
+	[_box, true, false] call ace_arsenal_fnc_removeVirtualitems;
+	[_box, pub_arsenal_box] call ace_arsenal_fnc_addVirtualitems;
+};
+
 if (isNil "limit_hc_gr") then {
         limit_hc_gr = true;
     };
