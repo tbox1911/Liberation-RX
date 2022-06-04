@@ -68,6 +68,9 @@ ai_value = 35;
 // Building Penalty
 building_penalty_isActive = false;
 
+// Global arsenal
+global_arsenal = true;
+
 // true to activate factions selection
 FAC_MSU_ACTIVE = false;
 
