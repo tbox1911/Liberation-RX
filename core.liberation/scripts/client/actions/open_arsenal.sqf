@@ -39,7 +39,7 @@ if (FAC_MSU_ACTIVE) then {
 	};
 
 	if (global_arsenal) then {
-		_box = pub_arsenal_box;
+        _box = missionnamespace getVariable ["myLARsBox", objNull];
 		[_box, player, false] call ace_arsenal_fnc_openBox;
 	} else {
 		_box = missionnamespace getVariable ["myLARsBox", objNull];
@@ -48,6 +48,7 @@ if (FAC_MSU_ACTIVE) then {
 		[_box, item_blacklist] call ace_arsenal_fnc_removeVirtualitems;
 		[_box, player, false] call ace_arsenal_fnc_openBox;
 	};
+
 
 	    // filter and pay loadout
 	[player] call F_filterloadout;
