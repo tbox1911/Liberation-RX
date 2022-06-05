@@ -11,7 +11,7 @@ private _income = fallback_income;// default
 
 if (_liberated_sector in sectors_bigtown) then {
 	_combat_readiness_increase = (floor (random 10)) * GRLIB_difficulty_modifier;
-	if (isNil income_sectors_bigtown) then {
+	if (isNil "income_sectors_bigtown") then {
 		income_sectors_bigtown = fallback_income
 	};
 	_income = income_sectors_bigtown;
@@ -19,7 +19,7 @@ if (_liberated_sector in sectors_bigtown) then {
 
 if (_liberated_sector in sectors_capture) then {
 	_combat_readiness_increase = (floor (random 6)) * GRLIB_difficulty_modifier;
-	if (isNil income_sectors_capture) then {
+	if (isNil "income_sectors_capture") then {
 		income_sectors_capture = fallback_income
 	};
 	_income = income_sectors_capture;
@@ -27,7 +27,7 @@ if (_liberated_sector in sectors_capture) then {
 
 if (_liberated_sector in sectors_military) then {
 	_combat_readiness_increase = (5 + (floor (random 11))) * GRLIB_difficulty_modifier;
-	if (isNil income_sectors_military) then {
+	if (isNil "income_sectors_military") then {
 		income_sectors_military = fallback_income
 	};
 	_income = income_sectors_military;
@@ -51,7 +51,7 @@ if (_liberated_sector in sectors_military) then {
 
 if (_liberated_sector in sectors_factory) then {
 	_combat_readiness_increase = (3 + (floor (random 7))) * GRLIB_difficulty_modifier;
-	if (isNil income_sectors_factory) then {
+	if (isNil "income_sectors_factory") then {
 		income_sectors_factory = fallback_income
 	};
 	_income = income_sectors_factory;
@@ -59,7 +59,7 @@ if (_liberated_sector in sectors_factory) then {
 
 if (_liberated_sector in sectors_tower) then {
 	_combat_readiness_increase = (floor (random 4));
-	if (isNil income_sectors_tower) then {
+	if (isNil "income_sectors_tower") then {
 		income_sectors_tower = fallback_income
 	};
 	_income = income_sectors_tower;
