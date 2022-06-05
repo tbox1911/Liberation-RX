@@ -6,15 +6,15 @@ private _rwd_ammo = (100 + floor(random 100));
 private _rwd_fuel = (10 + floor(random 10));
 
 if ( _liberated_sector in sectors_bigtown ) then {
-	_combat_readiness_increase = (floor (random 10)) * GRLIB_difficulty_modifier;
+	_combat_readiness_increase = (5 + (floor (random 10))) * GRLIB_difficulty_modifier;
 };
 
 if ( _liberated_sector in sectors_capture ) then {
-	_combat_readiness_increase = (floor (random 6)) * GRLIB_difficulty_modifier;
+	_combat_readiness_increase = (3 + (floor (random 5))) * GRLIB_difficulty_modifier;
 };
 
 if ( _liberated_sector in sectors_military ) then {
-	_combat_readiness_increase = (5 + (floor (random 11))) * GRLIB_difficulty_modifier;
+	_combat_readiness_increase = (5 + (floor (random 10))) * GRLIB_difficulty_modifier;
 
 	private _trucklist = [entities [[opfor_transport_truck], [], false, false], {
 		(getPos _x) distance2D (markerPos _liberated_sector) < 300
@@ -39,7 +39,7 @@ if ( _liberated_sector in sectors_factory ) then {
 };
 
 if ( _liberated_sector in sectors_tower ) then {
-	_combat_readiness_increase = (floor (random 4));
+	_combat_readiness_increase = (2 + (floor (random 4)));
 };
 
 private _text = format ["Reward Received: %1 Ammo and %2 Fuel", _rwd_ammo, _rwd_fuel];
@@ -52,7 +52,7 @@ private _text = format ["Reward Received: %1 Ammo and %2 Fuel", _rwd_ammo, _rwd_
 [markerPos _liberated_sector] call showlandmines;
 
 combat_readiness = combat_readiness + _combat_readiness_increase;
-if ( combat_readiness > 100.0 && GRLIB_difficulty_modifier <= 2.0 ) then { combat_readiness = 100.0 };
+if ( combat_readiness > 100 && GRLIB_difficulty_modifier <= 2.0 ) then { combat_readiness = 100 };
 stats_readiness_earned = stats_readiness_earned + _combat_readiness_increase;
 publicVariable "stats_readiness_earned";
 
