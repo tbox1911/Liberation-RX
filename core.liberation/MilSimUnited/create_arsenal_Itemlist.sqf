@@ -56,7 +56,7 @@ _classnames = _classnames - _blacklist;
                 };
             };
         };
-        case "mine": {
+        case "Mine": {
             _all_explosives pushBack _x
         };
         case "Magazine": {
