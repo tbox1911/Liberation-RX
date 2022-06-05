@@ -79,6 +79,14 @@ global_arsenal = true;
 // true to activate factions selection
 FAC_MSU_ACTIVE = false;
 
+//Differenced Ammo income 
+fallback_income = 50;
+income_sectors_bigtown = 250;
+income_sectors_capture = 125;
+income_sectors_military = 125;
+income_sectors_factory = 75;
+income_sectors_tower = 50;
+
 skill_scan = true;
 skill_parachuters = 1;
 skill_air_vehicles_planes = 1;
