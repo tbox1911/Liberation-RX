@@ -22,7 +22,7 @@ if ( _precise_position ) then {
 		_spawnpos = [4, _sectorpos, _radius, 30, true] call R3F_LOG_FNCT_3D_tirer_position_degagee_sol;
 		_radius = _radius + 20;
 		_max_try = _max_try -1;
-		sleep 1;
+		sleep 0.5;
 	};
 };
 if ( count _spawnpos == 0 ) exitWith { diag_log format ["--- LRX Error: No place to build vehicle %1 at position %2", _classname, _sectorpos]; objNull };
