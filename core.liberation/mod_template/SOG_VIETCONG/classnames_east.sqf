@@ -31,6 +31,9 @@ opfor_ammo_truck = "vn_o_wheeled_z157_ammo_nvam";
 opfor_fuel_container = "B_Slingload_01_Fuel_F";
 opfor_ammo_container = "B_Slingload_01_Ammo_F";
 opfor_flag = "vn_flag_pavn";
+opfor_house = "Land_vn_o_bunker_03";
+opfor_patrol = "Land_vn_o_tower_02";
+opfor_hq = "Land_vn_b_trench_bunker_04_01";
 
 militia_squad = [
 	"vn_o_men_vc_03",

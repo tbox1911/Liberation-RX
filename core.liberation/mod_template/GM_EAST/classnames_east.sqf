@@ -30,6 +30,9 @@ opfor_ammo_truck = "gm_gc_army_ural4320_reammo";
 opfor_fuel_container = "B_Slingload_01_Fuel_F";
 opfor_ammo_container = "gm_ge_army_shelteraceII_reammo";
 opfor_flag = "gm_flag_GC";
+opfor_house = "Land_Cargo_House_V3_F";
+opfor_patrol = "Land_Cargo_Patrol_V3_F";
+opfor_hq = "Land_Cargo_HQ_V3_F";
 
 militia_squad = [
 	"gm_gc_army_sf_squadleader_mpikms72_80_str",

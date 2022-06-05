@@ -24,7 +24,6 @@ opfor_engineer = "LOP_SLA_Infantry_Engineer";
 opfor_pilot = "LOP_SLA_Infantry_Pilot";
 opfor_crew = "LOP_SLA_Infantry_Crewman";
 opfor_paratrooper = "LOP_SLA_Infantry_MG_Asst";
-
 opfor_mrap = "LOP_SLA_UAZ";
 opfor_mrap_hmg = "LOP_SLA_UAZ_DshKM";
 opfor_mrap_gmg = "LOP_SLA_UAZ_AGS";
@@ -32,10 +31,12 @@ opfor_transport_helo = "LOP_SLA_Mi8MT_Cargo";
 opfor_transport_truck = "LOP_SLA_Ural";
 opfor_fuel_truck = "LOP_SYR_KAMAZ_Fuel";		// from Syrian Armed Forces
 opfor_ammo_truck = "LOP_SYR_KAMAZ_Ammo";		// from Syrian Armed Forces
-
 opfor_fuel_container = "Land_Pod_Heli_Transport_04_fuel_F";
 opfor_ammo_container = "Land_Pod_Heli_Transport_04_ammo_F";
 opfor_flag = "CUP_Flag_Black";
+opfor_house = "Land_Cargo_House_V3_F";
+opfor_patrol = "Land_Cargo_Patrol_V3_F";
+opfor_hq = "Land_Cargo_HQ_V3_F";
 
 // Middle Eastern Militia
 militia_squad = [

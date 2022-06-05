@@ -5,7 +5,7 @@
 // Advanced definition: scripts\shared\classnames.sqf
 
 huron_typename = "CUP_B_UH60M_Unarmed_FFV_MEV_US";  // comment to use value from lobby/server.cfg
-FOB_typename = "Land_Cargo_HQ_V3_F";
+FOB_typename = "Land_Cargo_HQ_V1_F";
 FOB_box_typename = "B_Slingload_01_Cargo_F";
 FOB_truck_typename = "CUP_B_MTVR_Ammo_BAF_DES";
 Respawn_truck_typename = "CUP_B_M113A3_Med_desert_USA";

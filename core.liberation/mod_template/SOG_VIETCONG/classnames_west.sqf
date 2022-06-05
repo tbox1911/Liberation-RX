@@ -5,7 +5,7 @@
 // Advanced definition: scripts\shared\classnames.sqf
 
 huron_typename = "vn_o_air_mi2_01_01";  // comment to use value from lobby/server.cfg
-FOB_typename = "Land_vn_bunker_big_02";
+FOB_typename = "Land_vn_b_trench_bunker_04_01";
 FOB_box_typename = "Land_Pod_Heli_Transport_04_box_black_F";
 FOB_truck_typename = "vn_o_wheeled_z157_repair";
 FOB_outpost = "Land_vn_b_trench_bunker_01_02";
@@ -24,7 +24,8 @@ crewman_classname = "vn_o_men_nva_41";
 Arsenal_typename = "Land_vn_pavn_weapons_stack1";
 PAR_Medikit = "vn_o_item_medikit_01";
 PAR_AidKit = "vn_o_item_firstaidkit";
-//GRLIB_sar_wreck = "Land_Wreck_Heli_Attack_01_F"
+GRLIB_sar_wreck = "vn_air_mi2_01_wreck";
+repair_offroad = "vn_b_wheeled_m54_repair_airport";
 waterbarrel_typename = "Land_WaterBottle_01_stack_F";
 fuelbarrel_typename = "Land_vn_metalbarrel_f";
 foodbarrel_typename = "Land_FoodSacks_01_large_brown_idap_F";

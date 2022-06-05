@@ -19,16 +19,6 @@ chimera_vehicle_overide = [
 ];
 
 
-/* RANK
-PRIVATE<br/>%2", "000", localize "STR_RANK_LVL1"]]];
-CORPORAL<br/>%2", GRLIB_perm_inf, localize "STR_RANK_LVL2"]]];
-SERGEANT<br/>%2", GRLIB_perm_log, localize "STR_RANK_LVL3"]]];
-CAPTAIN<br/>%2", GRLIB_perm_tank, localize "STR_RANK_LVL4"]]];
-MAJOR<br/>%2", GRLIB_perm_air, localize "STR_RANK_LVL5"]]];
-COLONEL<br/>%2", GRLIB_perm_max, localize "STR_RANK_LVL6"]]];
-*/
-
-
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 infantry_units = [
 	["Alsatian_Random_F",0,0,0,GRLIB_perm_max],
