@@ -76,6 +76,7 @@ while { dialog && alive player } do {
 			alive _x && (count (crew _x) == 0 || typeOf _x in uavs) &&
 			locked _x != 2 &&
 			!(_x getVariable ["R3F_LOG_disabled", false]) &&
+			isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) &&
 			[player, _x] call is_owner &&
 			!(typeOf _x in _sell_blacklist)
 		}] call BIS_fnc_conditionalSelect;
