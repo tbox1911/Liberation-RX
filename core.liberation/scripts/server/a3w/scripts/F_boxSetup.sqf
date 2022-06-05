@@ -14,7 +14,7 @@ while { count _spawnpos == 0 && _max_try > 0 } do {
 	sleep 1;
 };
 
-if ( count _spawnpos == 0 ) exitWith { diag_log format ["--- LRX Error: No place to build %1 from position %2", _type, _pos]; objNull };
+if ( count _spawnpos == 0 ) exitWith { diag_log format ["--- LRX Error: No place to build box %1 at position %2", _type, _pos]; objNull };
 _spawnpos set [2, 0.5];
 
 private _box = createVehicle [_type, _spawnpos, [], 5, "None"];

@@ -25,7 +25,7 @@ if ( _precise_position ) then {
 		sleep 1;
 	};
 };
-if ( count _spawnpos == 0 ) exitWith { diag_log format ["--- LRX Error: No place to build %1 from position %2", _classname, _sectorpos]; objNull };
+if ( count _spawnpos == 0 ) exitWith { diag_log format ["--- LRX Error: No place to build vehicle %1 at position %2", _classname, _sectorpos]; objNull };
 
 if ( _classname isKindOf "Air" ) then {
 	if ( _civilian ) then { _airveh_alt = 250 };

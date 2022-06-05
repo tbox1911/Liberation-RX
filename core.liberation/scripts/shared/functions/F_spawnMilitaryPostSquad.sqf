@@ -1,17 +1,19 @@
 params [ "_squadpos" ];
 private [ "_grp", "_building_positions", "_unitclass", "_unit", "_totalx2", "_totaly2", "_avgx2", "_avgy2", "_vd2", "_newdir2" ];
-diag_log format ["Spawn cargopost squad at %1", time];
 
-private _posts_classname =[
+private _posts_classname = [
 	"Cargo_HQ_base_F",
 	"Cargo_Patrol_base_F",
 	"Cargo_Tower_base_F",
 	"Cargo_House_base_F"
 ];
 private _spawned_units_local = [];
-private _allposts = ([nearestObjects [_squadpos, _posts_classname, GRLIB_capture_size], {alive _x}] call BIS_fnc_conditionalSelect) select [0, 4];
 private _garnison_max = 5;
+private _allposts = ([nearestObjects [_squadpos, _posts_classname, GRLIB_capture_size], {alive _x}] call BIS_fnc_conditionalSelect) select [0, 4];
+
 if ( count _allposts > 0 ) then {
+	diag_log format ["Spawn (%1) military post squad at position %2 at %3", count _allposts, _squadpos, time];
+
 	{
 		_building_positions = [_x, _garnison_max] call BIS_fnc_buildingPositions;
 		_garnison = _garnison_max min (count _building_positions);
@@ -46,9 +48,7 @@ if ( count _allposts > 0 ) then {
 		_x setdir (_newdir2);
 	} foreach (units _grp);
 	
-	diag_log format ["Done spawning cargopost squad (%1) at %2", count _spawned_units_local, time];
-} else {
-	diag_log format ["Done spawning cargopost no place found at pos %1", _squadpos];
+	diag_log format ["Done spawning military post squad (%1) at %2", count _spawned_units_local, time];
 };
 
 _spawned_units_local;
