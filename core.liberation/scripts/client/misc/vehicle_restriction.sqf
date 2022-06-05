@@ -23,23 +23,23 @@ player addEventHandler [
 		
 		if (_vehicle isKindof "Helicopter") then { 
 		
-			if !(_GrpRol in HeliUnits) then{ 
+			if (!(_GrpRol in HeliUnits) || !([player,2] call fetch_permission)) then{ 
 				_unit action ["getOut", _vehicle]; 
-				hint format ["Wrong Group Role", name player];
+				hint format ["Wrong Group Role or missing Permission", name player];
 			}; 
 		}; 
 
 		if (_vehicle isKindof "Plane") then { 
-			if !(_GrpRol in PlaneUnits) then{ 
+			if (!(_GrpRol in PlaneUnits) || !([player,2] call fetch_permission)) then{ 
 				_unit action ["getOut", _vehicle]; 
-				hint format ["Wrong Group Role", name player];
+				hint format ["Wrong Group Role or missing Permission", name player];
 			}; 
 		}; 
 
 		if (_vehicle isKindof "Tank") then { 
-			if !(_GrpRol in TankUnits) then{ 
+			if (!(_GrpRol in TankUnits) || !([player,1] call fetch_permission)) then{ 
 				_unit action ["getOut", _vehicle]; 
-				hint format ["Wrong Group Role", name player];
+				hint format ["Wrong Group Role or missing Permission", name player];
 			}; 
 		}; 
 	}  
