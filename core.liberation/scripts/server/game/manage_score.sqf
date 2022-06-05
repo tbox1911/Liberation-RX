@@ -36,7 +36,7 @@ while { true } do {
 				if ((_cur >= GRLIB_perm_air) && (_cur < GRLIB_perm_max) && (_rank != "Captain")) then {_rank = "Captain"; _newrank = true};
 				if ((_cur >= GRLIB_perm_max) && (_rank != "Major")) then {_rank = "Major"; _newrank = true};
 				// if ((_cur >= (GRLIB_perm_max + 250)) && (_rank != "Colonel")) then {_rank = "Colonel"; _newrank = true};
-
+				
 				if (_newrank) then {
 					_uid = getPlayerUID _x;
 					_msg = format ["Congratulation <t color='#00ff00'>%1</t> !!<br />You have been promoted to : <t color='#ff0000'>%2</t>.<br /><br />",name _x, _rank];
@@ -50,27 +50,27 @@ while { true } do {
 						};
 						case "Private" : {
 							_msg2 = localize "STR_RANK_LVL1";
-							[_uid, [true,true,true,true,true,true]] call CHG_Perm;
+						//	[_uid, [true,true,true,true,true,true]] call CHG_Perm;
 						};
 						case "Corporal" : {
 							_msg2 = localize "STR_RANK_LVL2";
-							[_uid, [true,true,true,true,true,true]] call CHG_Perm;
+						//	[_uid, [true,true,true,true,true,true]] call CHG_Perm;
 						};
 						case "Sergeant" : {
 							_msg2 = localize "STR_RANK_LVL3";
-							[_uid, [true,true,true,true,true,true]] call CHG_Perm;
+						//	[_uid, [true,true,true,true,true,true]] call CHG_Perm;
 						};
 						case "Captain" : {
 							_msg2 = localize "STR_RANK_LVL4";
-							[_uid, [true,true,true,true,true,true]] call CHG_Perm;
+						//	[_uid, [true,true,true,true,true,true]] call CHG_Perm;
 						};
 						case "Major" : {
 							_msg2 = localize "STR_RANK_LVL5";
-							[_uid, [true,true,true,true,true,true]] call CHG_Perm;
+						//	[_uid, [true,true,true,true,true,true]] call CHG_Perm;
 						};
 						case "Colonel" : {
 							_msg2 = localize "STR_RANK_LVL6";
-							[_uid, [true,true,true,true,true,true]] call CHG_Perm;
+						//  [_uid, [true,true,true,true,true,true]] call CHG_Perm;
 						};
 					};
 
