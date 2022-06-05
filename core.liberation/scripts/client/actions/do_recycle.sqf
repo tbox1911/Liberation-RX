@@ -92,7 +92,7 @@ if (dorecycle == 1 && !(isNull _vehicle) && alive _vehicle) exitwith {
             player setVariable ["GREUH_ammo_count", (_ammo_collected + _ammount_ammo), true];
 
 
-            _msg = format ["+ %1 ammo thanks to %2", _ammount_ammo, name player];
+            _msg = format ["+ %1 ammo thanks to %2", _ammount_ammo / 2, name player];
             
             if (hasinterface) then {
                 [gamelogic, _msg] remoteExec ["globalChat", 0];
