@@ -87,6 +87,9 @@ income_sectors_military = 125;
 income_sectors_factory = 75;
 income_sectors_tower = 50;
 
+// AI Leaders have automaticly radios
+AI_leader_radio = true;
+
 skill_scan = true;
 skill_parachuters = 1;
 skill_air_vehicles_planes = 1;
