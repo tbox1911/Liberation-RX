@@ -99,10 +99,10 @@ while {alive _unit} do {
 		_unit disableAI "ANIM";
 		_unit disableAI "MOVE";
 		doStop _unit;
-		sleep 5;
+		sleep 15;
 		[_unit, "AidlPsitMstpSnonWnonDnon_ground00"] remoteExec ["switchmove", 0];
 		[_unit, _unit_owner] call prisonner_captured;
-		sleep 5;
+		sleep 15;
 		deleteVehicle _unit;
 	};
 

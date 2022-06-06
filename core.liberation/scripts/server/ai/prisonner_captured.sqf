@@ -1,12 +1,8 @@
 params [ "_unit", "_unit_owner" ];
-private _resistance_prisonner_intel_yield = 10;
-private _csat_prisonner_intel_yield = 15;
 
-private _yield = _csat_prisonner_intel_yield;
-if ( ( typeof _unit ) in all_resistance_troops ) then {
-	_yield = _resistance_prisonner_intel_yield;
-};
-resources_intel = resources_intel + _yield;
+if(!isDedicated) exitWith{};
+
+resources_intel = resources_intel + prisoner_intel;
 stats_prisonners_captured = stats_prisonners_captured + 1;
 publicVariable "stats_prisonners_captured";
 

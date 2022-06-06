@@ -66,6 +66,7 @@ box_recycle_value = 40;
 // Increases the ammo for logistics and decreasese the ammo for everyone
 logistics_ammo_increase = true;
 
+prisoner_intel = 15;
 prisoner_score = 10;
 prisoner_ammo = 35;
 ai_value = 35;
