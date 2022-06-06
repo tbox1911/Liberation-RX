@@ -43,11 +43,9 @@ waitUntil {
 
 if ( { alive _x } count (units _grp) > 0 ) then {
 	while {(count (waypoints _grp)) != 0} do { deleteWaypoint ((waypoints _grp) select 0) };
-	sleep 1;
 	{_x doFollow leader _grp} foreach units _grp;
-	sleep 1;
 
-	_basepos = getpos (leader _grp);
+	_basepos = getPosATL (leader _grp);
 	_waypoint = _grp addWaypoint [_basepos, _radius];
 	_waypoint setWaypointType "SAD";
 	_waypoint setWaypointBehaviour "COMBAT";

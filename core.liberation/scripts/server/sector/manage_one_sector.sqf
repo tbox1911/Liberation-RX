@@ -177,7 +177,13 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 	if ( _spawncivs && GRLIB_civilian_activity > 0) then {
 		private _nbcivs = round ((2 + (floor (random 5))) * GRLIB_civilian_activity);
 		if ( _sector in sectors_bigtown ) then { _nbcivs = _nbcivs + 10 };
-		_managed_units = _managed_units + ([ _sector, _nbcivs ] call F_spawnCivilians);
+		for "_i" from 1 to _nbcivs do {
+			private _civ_unit = [_sector] call F_spawnCivilians;
+			if (!isNil "_civ_unit") then {
+				[group _civ_unit] spawn add_civ_waypoints;
+				_managed_units pushBack _civ_unit;
+			};
+		};
 	};
 
 	[ _sector, _building_range, _iedcount ] spawn ied_manager;

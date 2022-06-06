@@ -1,4 +1,12 @@
 if ( isNil "active_sectors" ) then { active_sectors = [] };
+private [
+	"_usable_sectors",
+	"_spawnsector",
+	"_grp",
+	"_civ_veh",
+	"_civ_unit",
+	"_civ_unit_ttl"
+];
 
 while { GRLIB_endgame == 0 } do {
 	sleep (30 + floor(random 30));
@@ -6,8 +14,8 @@ while { GRLIB_endgame == 0 } do {
 		sleep (30 + floor(random 30));
 	};
 
-	private _civ_veh = objNull;
-	private _usable_sectors = [];
+	_civ_veh = objNull;
+	_usable_sectors = [];
 	{
 		if ( ( ( [ getmarkerpos _x , 1000 , GRLIB_side_friendly ] call F_getUnitsCount ) == 0 ) && ( count ( [ getmarkerpos _x , 3500 ] call F_getNearbyPlayers ) > 0 ) ) then {
 			_usable_sectors pushback _x;
@@ -15,11 +23,10 @@ while { GRLIB_endgame == 0 } do {
 	} foreach ((sectors_bigtown + sectors_capture + sectors_factory) - (active_sectors));
 
 	if ( count _usable_sectors > 0 ) then {
-		private _spawnsector = selectRandom _usable_sectors;
-		private _civ_unit = ([_spawnsector, 1] call F_spawnCivilians) select 0;
-
+		_spawnsector = selectRandom _usable_sectors;
+		_civ_unit = [_spawnsector] call F_spawnCivilians;
 		if (!isNil "_civ_unit") then {
-			private _grp = group _civ_unit;
+			_grp = group _civ_unit;
 
 			// 40% in vehicles
 			if ( floor(random 100) > 60 ) then {
@@ -50,8 +57,9 @@ while { GRLIB_endgame == 0 } do {
 						sleep 5;
 					};
 				};
-				[_grp] call add_civ_waypoints;
 			};
+
+			[_grp] spawn add_civ_waypoints;
 
 			if ( local _grp ) then {
 				_headless_client = [] call F_lessLoadedHC;
@@ -60,10 +68,11 @@ while { GRLIB_endgame == 0 } do {
 				};
 			};
 
-			private _civ_unit_ttl = round(time + 1800);
+			sleep 10;
+			_civ_unit_ttl = round(time + 1800);
 			waitUntil {
 				sleep 10;
-				( (!alive _civ_unit) || (count ([getpos _civ_unit , 4000] call F_getNearbyPlayers) == 0) || time > _civ_unit_ttl )
+				( (!alive _civ_unit) || round (speed _civ_unit) == 0 || (count ([getPosATL _civ_unit , 4000] call F_getNearbyPlayers) == 0) || time > _civ_unit_ttl )
 			};
 
 			if ( alive _civ_unit ) then {
