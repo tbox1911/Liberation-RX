@@ -20,7 +20,7 @@ while { true } do {
 			_vehicle addAction ["<t color='#FFFF00'>" + localize "STR_RECYCLE_MANAGER" + "</t> <img size='1' image='res\ui_recycle.paa'/>","scripts\client\actions\do_recycle.sqf","",-950,false,true,"","[_target] call is_menuok && [_target] call is_recyclable",_distvehclose];
 
 			// Fireworks
-			if (typeOf _vehicle == "Land_CargoBox_V1_F") then {
+			if (typeOf _vehicle == fireworks_typename) then {
 				_vehicle addAction ["<t color='#60FF00'>" + localize "STR_RECYCLE_FIREWORKS" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\do_fireworks.sqf","",-951,false,true,"","[_target] call is_menuok && score player >= GRLIB_perm_max",_distvehclose];
 			};
 			_vehicle setVariable ["GRLIB_recycle_action", true];

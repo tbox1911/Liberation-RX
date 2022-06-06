@@ -43,7 +43,7 @@ support_vehicles = [
 	[FOB_box_outpost,25,500,20,GRLIB_perm_log],
 	[FOB_box_typename,50,1500,50,GRLIB_perm_max],
 	[FOB_truck_typename,50,1500,50,GRLIB_perm_max],
-	["Land_CargoBox_V1_F",0,500,0,GRLIB_perm_max],
+	[fireworks_typename,0,500,0,GRLIB_perm_max],
 	[ammobox_b_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
 	[ammobox_o_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
 	[ammobox_i_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
@@ -250,8 +250,8 @@ GRLIB_vehicle_blacklist = [
 	fuel_sling_typename,
 	ammo_sling_typename,
 	medic_sling_typename,
+	fireworks_typename,
   	"Box_NATO_WpsLaunch_F",
-	"Land_CargoBox_V1_F",
 	"Land_RepairDepot_01_civ_F"	
 ] + GRLIB_vehicle_blacklist_west;
 
@@ -356,12 +356,14 @@ GRLIB_intel_chair = "Land_CampingChair_V2_F";
 GRLIB_intel_file = "Land_File1_F";
 GRLIB_intel_laptop = "Land_Laptop_device_F";
 GRLIB_ignore_colisions = [
+	FOB_box_typename,
+	FOB_box_outpost,
 	Arsenal_typename,
 	mobile_respawn,
 	canisterFuel,
 	medicalbox_typename,
+	fireworks_typename,
   	"Box_NATO_WpsLaunch_F",
-	"Land_CargoBox_V1_F",
 	"StaticMGWeapon",
 	"StaticGrenadeLauncher",
 	"StaticMortar",
@@ -388,7 +390,6 @@ GRLIB_Ammobox_keep = [
 	medicalbox_typename,
 	"Box_NATO_WpsLaunch_F",
 	"mission_USLaunchers",
-	"Land_CargoBox_V1_F",
 	"rhs_weapon_crate",
 	"CUP_LocalBasicWeaponsBox",
 	"gm_AmmoBox_1000Rnd_762x51mm_ap_DM151_g3"

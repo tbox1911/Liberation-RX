@@ -35,7 +35,7 @@ if ( _class == fuelbarrel_typename ) then {
 if ( _class == foodbarrel_typename ) then {
 	_text = "Food Pallet";
 };
-if ( _class == "Land_CargoBox_V1_F" ) then {
+if ( _class == fireworks_typename ) then {
 	_text = "Fireworks Box";
 };
 if ( _class == FOB_box_outpost ) then {
