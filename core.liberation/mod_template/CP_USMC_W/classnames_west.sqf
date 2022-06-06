@@ -269,7 +269,6 @@ air_vehicles = [
       ["CUP_B_UH60M_Unarmed_FFV_MEV_US",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf],
       ["CUP_B_UH60M_Unarmed_US",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf],
       ["CUP_B_UH60M_Unarmed_FFV_US",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf],
-      ["CUP_B_UH60M_Unarmed_FFV_MEV_US",0,air_vehicle_price_tier_6,0,GRLIB_perm_inf],
       ["CUP_B_UH60S_USN",0,air_vehicle_price_tier_6,0,GRLIB_perm_inf],
       ["CUP_B_UH60M_US",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],                                         //Seahawk
       ["CUP_B_UH60M_FFV_US",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],
@@ -301,7 +300,6 @@ air_vehicles = [
       ["CUP_B_CH47F_VIV_USA",0,air_vehicle_price_tier_6,0,GRLIB_perm_inf],
       ["CUP_B_CH53E_GER",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],
       ["CUP_B_CH53E_VIV_GER",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],
-      ["CUP_B_MH47E_USA",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],
 
     //BAF
       ["CUP_B_Merlin_HC3A_GB",0,air_vehicle_price_tier_8,0,GRLIB_perm_inf],
@@ -376,7 +374,7 @@ fast_air_vehicle = [
     ["USAF_F35A_LIGHT",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
     ["USAF_F35A",0,fast_air_vehicle_price_tier_7,0,GRLIB_perm_inf],
 
-    // F-14
+    // FIR F-14
     ["FIR_F14A_HBK1",0,fast_air_vehicle_price_tier_4,0,GRLIB_perm_inf],
 
     // FIR F-15
