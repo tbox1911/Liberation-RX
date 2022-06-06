@@ -66,8 +66,8 @@ if(_tfarenabled) then {
 		_correctServer = call TFAR_fnc_getTeamSpeakServerName;
 	};
 	_correctChannel = call TFAR_fnc_getTeamSpeakChannelName;
-	if (!(_correctChannel == "Ingame TFAR") && !_debug) then {
-		while {!(_correctChannel == "Ingame TFAR")} do {
+	if (!(_correctChannel == tfar_channel) && !_debug) then {
+		while {!(_correctChannel == tfar_channel)} do {
 			private _msg = format ["Please reload your Plugin to be moved into the correct channel. If it does not work, please contact a moderator."];
 			titleText [_msg, "BLACK FADED", 100];
 			20 cutFadeOut 20;
