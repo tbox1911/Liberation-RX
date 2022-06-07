@@ -199,6 +199,9 @@ fast_air_vehicle_price_tier_10 = 3000;
 logistic_ground_vehicle_price_tier_1 = 250;
 logistic_ground_vehicle_price_tier_2 = 300;
 logistic_ground_vehicle_price_tier_3 = 400;
+logistic_ground_vehicle_price_tier_4 = 450;
+logistic_ground_vehicle_price_tier_5 = 500;
+logistic_ground_vehicle_price_tier_6 = 550;
 
 items_allFac = [
     "U_B_FullGhillie_lsh",
