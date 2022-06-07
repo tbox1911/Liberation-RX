@@ -93,15 +93,9 @@ while { true } do {
 						[gamelogic, _text] remoteExec ["globalChat", 0];
 						_text = "Over.";
 						[gamelogic, _text] remoteExec ["globalChat", 0];
-						[getPosATL _x, 'normal','blue'] spawn GRAD_fireworks_fnc_prepareFireworks;
-						sleep 2;
-						[getPosATL _x, 'normal','white'] spawn GRAD_fireworks_fnc_prepareFireworks;
-						sleep 2;
-						[getPosATL _x, 'normal','red'] spawn GRAD_fireworks_fnc_prepareFireworks;
 					};
 
-					// Fireworks
-					// [getPosATL _x, 'normal','red'] spawn GRAD_fireworks_fnc_prepareFireworks;
+					
 				};
 			};
 			_x setVariable ["GREUH_score_last",_cur];

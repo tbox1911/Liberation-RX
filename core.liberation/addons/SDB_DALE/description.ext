@@ -1,9 +1,0 @@
-// CfgDALE
-
-// Functions
-class CfgFunctions {
-	#include "CfgFunctions.hpp"
-};
-
-// Dialogs
-#include "RscLoadout.hpp"

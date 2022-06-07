@@ -83,8 +83,6 @@ showMap = 1;
 briefing = 1;
 
 class CfgFunctions {
-	#include "addons\GRAD\cfgFunctions.hpp"
-	#include "addons\SDB_DALE\CfgFunctions.hpp"
 	class KP { 
 		#include "KP\KPCF\functions.hpp" 
 	};
@@ -101,7 +99,6 @@ class cfgSounds {
 		sound[] = {"res\shout.ogg", 1, 1};
 		titles[] = {};
 	};
-	#include "addons\GRAD\cfgSounds.hpp"
 };
 
 class Header {
@@ -133,9 +130,6 @@ class Repaint {
 #include "ui\mission_params.hpp"
 #include "R3F_LOG\desc_include.h"
 #include "addons\RPT\veh_repaint.hpp"
-#include "addons\VIRT\virtual_garage.hpp"
-#include "addons\SHOP\traders_shop.hpp"
-#include "addons\SDB_DALE\RscLoadout.hpp"
 
 #include "KP\KPGUI\KPGUI_defines.hpp"
 #include "KP\KPCF\ui\defines.hpp"

@@ -236,22 +236,6 @@ while { true } do {
 			};
 		};
 
-		// Virtual Garage
-		/*
-		_idact_garage = _id_actions select 17;
-		if (_fobdistance > 1 && _fobdistance < _distfob && score player >= GRLIB_perm_inf ) then { // && (!_near_outpost) && (player distance2D lhd) >= 1000 
-			if ( _idact_garage == -1 ) then {
-				_idact = player addAction ["<t color='#0080FF'>" + localize "STR_VIRTUAL_GARAGE" + "</t> <img size='1' image='res\ui_veh.paa'/>","addons\VIRT\virtual_garage.sqf","",-984,false,true,"","build_confirmed == 0"];
-				_id_actions set [17, _idact];
-			};
-		} else {
-			if ( _idact_garage != -1 ) then {
-				player removeAction _idact_garage;
-				_id_actions set [17, -1];
-			};
-		};
-		*/
-
 		// Build Menu
 		_idact_build = _id_actions select 18;
 		if (_fobdistance < _distfob && (player distance2D lhd) >= 200 && ( ([player, 3] call fetch_permission) || (player == ([] call F_getCommander) || [] call is_admin)) ) then {
@@ -415,22 +399,6 @@ while { true } do {
 				_id_actions set [28, -1];
 			};
 		};
-
-		// Shop
-		/*
-		_idact_shop = _id_actions select 29;
-		if ((player distance2D lhd) >= 1000 && _near_shop ) then {
-			if ( _idact_shop == -1 ) then {
-				_idact = player addAction ["<t color='#00F080'>" + localize "STR_SHOP_ENTER" + "</t> <img size='1' image='res\ui_recycle.paa'/>", "addons\SHOP\traders_shop.sqf","",-900,true,true,"",""];
-				_id_actions set [29, _idact];
-			};
-		} else {
-			if ( _idact_shop != -1 ) then {
-				player removeAction _idact_shop;
-				_id_actions set [29, -1];
-			};
-		};
-		*/
 
 		// Recycle PortableHelipadLight (simple objects)
 		_idact_recycle = _id_actions select 30;
