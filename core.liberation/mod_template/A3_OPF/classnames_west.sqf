@@ -15,7 +15,6 @@ repair_sling_typename = "Land_Pod_Heli_Transport_04_repair_F";
 fuel_sling_typename = "Land_Pod_Heli_Transport_04_fuel_F";
 ammo_sling_typename = "Land_Pod_Heli_Transport_04_ammo_F";
 medic_sling_typename = "Land_Pod_Heli_Transport_04_medevac_F";
-commander_classname = "O_officer_F";
 pilot_classname = "O_Helipilot_F";
 crewman_classname = "O_crew_F";
 

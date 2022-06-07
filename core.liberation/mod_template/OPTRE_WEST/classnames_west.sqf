@@ -11,7 +11,6 @@ FOB_outpost = "Land_OPTRE_mod_building_green";
 //FOB_box_outpost = "Land_Cargo10_grey_F"
 Arsenal_typename = "OPTRE_Ammo_Rack_Weapons";
 Respawn_truck_typename = "OPTRE_M313_UNSC";
-commander_classname = "OPTRE_UNSC_ODST_Soldier_TeamLeader";
 pilot_classname = "OPTRE_UNSC_Army_Soldier_Crewman_OLI";
 crewman_classname = "OPTRE_UNSC_Airforce_Soldier_Airman";
 PAR_Medikit = "OPTRE_MedKit";

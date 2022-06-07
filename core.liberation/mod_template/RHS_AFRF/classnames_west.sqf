@@ -15,7 +15,6 @@ repair_sling_typename = "Land_Pod_Heli_Transport_04_repair_F";
 fuel_sling_typename = "Land_Pod_Heli_Transport_04_fuel_F";
 ammo_sling_typename = "Land_Pod_Heli_Transport_04_ammo_F";
 medic_sling_typename = "Land_Pod_Heli_Transport_04_medevac_F";
-commander_classname = "rhs_msv_emr_officer";
 pilot_classname = "rhs_pilot_combat_heli";
 crewman_classname = "rhs_msv_emr_combatcrew";
 A3W_BoxWps = "rhs_weapon_crate";

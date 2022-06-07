@@ -8,7 +8,6 @@ FOB_typename = "Land_Cargo_HQ_V1_F";
 Respawn_truck_typename = "UK3CB_CHD_O_Ural";
 //FOB_box_typename = "B_Slingload_01_Cargo_F";
 //FOB_truck_typename = "B_Truck_01_box_F";
-commander_classname = "UK3CB_CHD_O_COM";
 pilot_classname = "UK3CB_CHD_O_HELI_PILOT";
 crewman_classname = "UK3CB_CHD_O_CREW";
 A3W_BoxWps = "UK3CB_RPK_Equipbox_Opfor";  	 //"rhs_weapon_crate";

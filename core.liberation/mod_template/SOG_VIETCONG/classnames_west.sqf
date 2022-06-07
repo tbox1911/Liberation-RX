@@ -18,7 +18,6 @@ repair_sling_typename = "B_Slingload_01_repair_F";
 fuel_sling_typename = "B_Slingload_01_Fuel_F";
 ammo_sling_typename = "B_Slingload_01_Ammo_F";
 medic_sling_typename = "B_Slingload_01_Medevac_F";
-commander_classname = "vn_o_men_nva_15";
 pilot_classname = "vn_o_men_aircrew_01";
 crewman_classname = "vn_o_men_nva_41";
 Arsenal_typename = "Land_vn_pavn_weapons_stack1";
