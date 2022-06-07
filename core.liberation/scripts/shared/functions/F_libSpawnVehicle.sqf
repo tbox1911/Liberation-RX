@@ -68,27 +68,6 @@ if (isNil "change_loadout_opfor_fighter") then {
 _vehcrew = crew _newvehicle;
 {
 	_x allowDamage false;
-	if (change_loadout_opfor_fighter) then {
-		_x addEventHandler ["GetInMan", {
-			params ["_unit", "_role", "_vehicle", "_turret"];
-			if (!(isPlayer _unit) && (side _unit == EAST)) then {
-				if (typeOf _vehicle == "O_Plane_CAS_02_Cluster_F") then {
-					_loadout_CAS = ["FIR_R77_P_1rnd_M", "CUP_PylonPod_1Rnd_R73_Vympel", "PylonRack_20Rnd_Rocket_03_HE_F", "FIR_RBK250_P_1rnd_M", "PylonRack_3Rnd_ACE_Hellfire_AGM114L", "PylonRack_3Rnd_ACE_Hellfire_AGM114L", "FIR_RBK250_P_1rnd_M", "PylonRack_20Rnd_Rocket_03_HE_F", "CUP_PylonPod_1Rnd_R73_Vympel", "FIR_R77_P_1rnd_M"];
-					{
-						_vehicle setPylonLoadout [_forEachindex, _x, true];
-					} forEach _loadout_CAS;
-				};
-				if (typeOf _vehicle == "O_Plane_Fighter_02_F") then {
-					_loadout_fighter = ["PylonMissile_Missile_AA_R73_x1", "PylonMissile_Missile_AA_R73_x1", "FIR_RBK250_P_1rnd_M", "FIR_RBK250_P_1rnd_M", "PylonRack_3Rnd_ACE_Hellfire_AGM114L", "PylonRack_3Rnd_ACE_Hellfire_AGM114L", "PylonMissile_Missile_AA_R73_x1", "PylonMissile_Missile_AA_R73_x1", "PylonMissile_Missile_AA_R77_x1", "PylonMissile_Missile_AA_R77_x1", "PylonMissile_Missile_AA_R77_inT_x1", "PylonMissile_Missile_AA_R77_inT_x1", "PylonMissile_Missile_KH58_inT_x1"];
-
-					{
-						_vehicle setPylonLoadout [_forEachindex, _x, true];
-					} forEach _loadout_fighter;
-				};
-			};
-		}
-	];
-}
 } forEach _vehcrew;
 
 if (_random_rotate) then {
@@ -116,8 +95,23 @@ if (count opfor_texture_overide > 0) then {
 	_veh allowDamage true;
 	{
 		_x setDamage 0;
-		_x allowDamage true
+		_x allowDamage true;
 	} forEach _crew;
+
+	if (typeOf _veh == "O_Plane_CAS_02_Cluster_F") then {
+		_loadout_CAS = ["FIR_AIM120_P_1rnd_M", "CUP_PylonPod_1Rnd_R73_Vympel", "PylonRack_20Rnd_Rocket_03_HE_F", "FIR_RBK250_P_1rnd_M", "PylonRack_3Rnd_ACE_Hellfire_AGM114L", "PylonRack_3Rnd_ACE_Hellfire_AGM114L", "FIR_RBK250_P_1rnd_M", "PylonRack_20Rnd_Rocket_03_HE_F", "CUP_PylonPod_1Rnd_R73_Vympel", "FIR_AIM120_P_1rnd_M"];
+    	{
+			_veh setPylonLoadout [_forEachindex, _x, true];
+		} forEach _loadout_CAS;
+	};
+	if (typeOf _veh == "O_Plane_Fighter_02_F") then {
+		_loadout_fighter = ["FIR_AIM120_P_1rnd_M", "FIR_AIM120_P_1rnd_M", "FIR_RBK250_P_1rnd_M", "FIR_RBK250_P_1rnd_M", "PylonRack_3Rnd_ACE_Hellfire_AGM114L", "PylonRack_3Rnd_ACE_Hellfire_AGM114L", "FIR_AIM120_P_1rnd_M", "FIR_AIM120_P_1rnd_M", "FIR_AIM7F_2_P_1rnd_M", "FIR_AIM7F_2_P_1rnd_M", "FIR_AIM120_P_1rnd_M", "FIR_AIM120_P_1rnd_M", "FIR_AIM120_P_1rnd_M"];
+    
+	{
+		_veh setPylonLoadout [_forEachindex, _x, true];
+	} forEach _loadout_fighter;
+
+	};
 };
 
 diag_log format [ "Done Spawning vehicle %1 at %2", _classname, time ];
