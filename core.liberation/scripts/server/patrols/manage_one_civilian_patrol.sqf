@@ -68,10 +68,9 @@ while { GRLIB_endgame == 0 } do {
 				};
 			};
 
-			sleep 10;
 			_civ_unit_ttl = round(time + 1800);
 			waitUntil {
-				sleep 10;
+				sleep 60;
 				( (!alive _civ_unit) || round (speed _civ_unit) == 0 || (count ([getPosATL _civ_unit , 4000] call F_getNearbyPlayers) == 0) || time > _civ_unit_ttl )
 			};
 
