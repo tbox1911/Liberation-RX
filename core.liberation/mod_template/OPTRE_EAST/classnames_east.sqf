@@ -22,15 +22,15 @@ opfor_paratrooper = "OPTRE_Ins_BJ_Soldier_Rifleman_BR";
 opfor_mrap = "OPTRE_M12_FAV_ins";
 opfor_mrap_armed = "OPTRE_M12A1_LRV_ins";
 opfor_transport_helo = "OPTRE_Pelican_armed_ins";
-opfor_transport_truck = "O_Truck_03_covered_F";
-opfor_fuel_truck = "O_Truck_03_fuel_F";
-opfor_ammo_truck = "O_Truck_03_ammo_F";
+opfor_transport_truck = "OPTRE_m1015_mule_cover_ins";
+opfor_fuel_truck = "OPTRE_m1015_mule_fuel_ins";
+opfor_ammo_truck = "OPTRE_m1015_mule_ammo_ins";
 opfor_fuel_container = "Land_Pod_Heli_Transport_04_fuel_F";
 opfor_ammo_container = "Land_Pod_Heli_Transport_04_ammo_F";
 opfor_flag = "Flag_CSAT_F";
-opfor_house = "Land_Cargo_House_V3_F";
-opfor_patrol = "Land_Cargo_Patrol_V3_F";
-opfor_hq = "Land_Cargo_HQ_V3_F";
+opfor_house = "Land_OPTRE_GuardShack_Mil";
+opfor_patrol = "Land_OPTRE_watchtower_jungle";
+opfor_hq = "Land_OPTRE_mod_building_green";
 
 militia_squad = [
 	"OPTRE_Ins_URF_SquadLead",
@@ -76,108 +76,97 @@ divers_squad = [
 militia_vehicles = [
 	"OPTRE_M12A1_LRV_ins",
 	"OPTRE_M12_LRV_ins",
-	"OPTRE_M12_LRV_ins",
+	"OPTRE_M12_TD_ins",
+	"OPTRE_M12R_AA_ins",
 	"O_LSV_02_armed_F",
 	"O_LSV_02_AT_F"
 ];
 
 opfor_boat = [
-	"O_Boat_Armed_01_hmg_F"
+	"optre_catfish_ins_mg_f"
 ];
 
 opfor_vehicles = [
-	"O_APC_Tracked_02_cannon_F",
-	"O_APC_Wheeled_02_rcws_F",
-	"O_APC_Tracked_02_cannon_F",
-	"O_APC_Wheeled_02_rcws_F",
-	"O_MBT_02_cannon_F",
-	"O_MBT_02_cannon_F",
-	"O_APC_Tracked_02_AA_F",
+	//"O_APC_Tracked_02_cannon_F",
+	//"O_APC_Wheeled_02_rcws_F",
+	//"O_APC_Tracked_02_AA_F",
+	"OPTRE_M808B_INS",
+	"OPTRE_M494_INS",
+	"OPTRE_m1015_mule_cover_ins",
 	"OPTRE_M12R_AA_ins",
 	"OPTRE_M12A1_LRV_ins",
 	"OPTRE_M12_LRV_ins",
-	"OPTRE_M12_LRV_ins",
-	"O_MBT_04_cannon_F",
-	"O_MBT_04_command_F"
+	"OPTRE_M12_TD_ins",
+	"OPTRE_M808B_INS",
+	"OPTRE_M494_INS"
 ];
 
 opfor_vehicles_low_intensity = [
-	"O_APC_Tracked_02_cannon_F",
-	"O_APC_Wheeled_02_rcws_F",
+	//"O_APC_Tracked_02_cannon_F",
+	//"O_APC_Wheeled_02_rcws_F",
+	"OPTRE_m1015_mule_ins",
 	"OPTRE_M12_FAV_APC",
 	"OPTRE_M12_LRV_ins",
-	"OPTRE_M12_LRV_ins",
+	"OPTRE_M12_TD_ins",
 	"OPTRE_M12A1_LRV_ins",
-	"OPTRE_M12A1_LRV_ins",
+	"OPTRE_M12R_AA_ins",
 	"O_LSV_02_armed_F",
 	"O_LSV_02_AT_F"
 ];
 
 opfor_battlegroup_vehicles = [
+	//"O_APC_Tracked_02_cannon_F",
+	//"O_APC_Wheeled_02_rcws_F",
+	//"O_APC_Tracked_02_AA_F",
 	"OPTRE_M12_LRV_ins",
 	"OPTRE_M12A1_LRV_ins",
 	"OPTRE_M12R_AA_ins",
 	"OPTRE_M12_FAV_APC",
-	"O_APC_Tracked_02_cannon_F",
-	"O_APC_Wheeled_02_rcws_F",
-	"O_Truck_03_covered_F",
-	"O_MBT_02_cannon_F",
-	"O_MBT_02_cannon_F",
-	"O_APC_Tracked_02_AA_F",
-	"O_Heli_Attack_02_F",
-	"OPTRE_UNSC_hornet_ins",
-	"OPTRE_UNSC_hornet_ins",
-	"O_MBT_04_cannon_F",
-	"O_MBT_04_command_F"
+	"OPTRE_m1015_mule_cover_ins",
+	"OPTRE_Pelican_armed_ins",
+	"OPTRE_M808B_INS",
+	"OPTRE_M494_INS"
 ];
 
 opfor_battlegroup_vehicles_low_intensity = [
-	"O_APC_Tracked_02_cannon_F",
-	"O_APC_Wheeled_02_rcws_F",
+	//"O_APC_Tracked_02_cannon_F",
+	//"O_APC_Wheeled_02_rcws_F",
+	"OPTRE_m1015_mule_ins",
 	"OPTRE_M12_LRV_ins",
 	"OPTRE_M12_LRV_ins",
 	"OPTRE_M12A1_LRV_ins",
-	"OPTRE_UNSC_hornet_ins",
+	"OPTRE_ins_falcon",
 	"O_LSV_02_armed_F",
 	"O_LSV_02_AT_F"
 ];
 
 opfor_troup_transports_truck = [
-	"O_Truck_03_transport_F",
-	"O_Truck_03_covered_F",
-	"O_Truck_02_covered_F",
-	"O_Truck_02_transport_F",
-	"O_Heli_Transport_04_covered_F",
-	"O_Heli_Attack_02_F",
-	"O_Heli_Light_02_F",
-	"O_T_VTOL_02_infantry_F"
+	"OPTRE_m1015_mule_ins",
+	"OPTRE_m1015_mule_cover_ins"
 ];
 
 opfor_troup_transports_heli = [
-	"OPTRE_UNSC_hornet_ins",
-	"OPTRE_Pelican_armed_ins",
-	"O_Heli_Light_02_F",
-	"O_Heli_Light_02_v2_F",
-	"O_Heli_Attack_02_F",
-	"O_Heli_Attack_02_black_F",
-	"O_Heli_Transport_04_covered_F",
-	"O_T_VTOL_02_infantry_F"
+	"OPTRE_ins_falcon",
+	"OPTRE_Pelican_armed_ins"
 ];
 
 opfor_air = [
-	"O_Heli_Attack_02_F",
-	"O_Heli_Attack_02_black_F",
-	"O_T_VTOL_02_infantry_F",
-	"O_Plane_CAS_02_F",
-	"O_Plane_Fighter_02_F"
+	"OPTRE_UNSC_hornet_ins",
+	"OPTRE_UNSC_hornet_ins",
+	"OPTRE_UNSC_hornet_ins",
+	"OPTRE_UNSC_hornet_ins",
+	"OPTRE_ins_falcon",
+	"OPTRE_ins_falcon",
+	"OPTRE_Pelican_armed_ins",
+	"OPTRE_Pelican_armed_ins",
+	"O_T_VTOL_02_vehicle_F"
 ];
 
 opfor_statics = [
-	"O_HMG_01_high_F",
-	"O_GMG_01_high_F",
-	"O_static_AA_F",
-	"O_static_AT_F",
-	"O_Mortar_01_F"
+	"OPTRE_Static_M41",
+	"OPTRE_Static_ATGM_Ins",
+	"OPTRE_Static_AA_Ins",
+	"OPTRE_Static_Gauss"
 ];
 
 // Overide Textures
@@ -193,33 +182,20 @@ opfor_recyclable = [
 	["OPTRE_M274_ATV_Ins",0,round (250 / GRLIB_recycling_percentage),0],
 	["OPTRE_M914_RV_ins",0,round (250 / GRLIB_recycling_percentage),0],
 	["OPTRE_UNSC_hornet_ins",0,round (450 / GRLIB_recycling_percentage),0],
-	["OPTRE_Pelican_armed_ins",0,round (550 / GRLIB_recycling_percentage),0],
 	["O_LSV_02_armed_F",0,round (20 / GRLIB_recycling_percentage),0],
 	["O_LSV_02_AT_F",0,round (20 / GRLIB_recycling_percentage),0],
-	["O_G_Offroad_01_armed_F",0,round (20 / GRLIB_recycling_percentage),0],
-	["O_G_Offroad_01_AT_F",0,round (20 / GRLIB_recycling_percentage),0],
-	["I_C_Offroad_02_LMG_F",0,round (20 / GRLIB_recycling_percentage),0],
-	["O_Truck_03_covered_F",0,round (20 / GRLIB_recycling_percentage),0],
-	["O_Truck_03_transport_F",0,round (20 / GRLIB_recycling_percentage),0],
+	["OPTRE_m1015_mule_cover_ins",0,round (20 / GRLIB_recycling_percentage),0],
+	["OPTRE_m1015_mule_ins",0,round (20 / GRLIB_recycling_percentage),0],
 	["OPTRE_M12_LRV_ins",0,round (50 / GRLIB_recycling_percentage),0],
 	["OPTRE_M12A1_LRV_ins",0,round (50 / GRLIB_recycling_percentage),0],
-	["O_Boat_Armed_01_hmg_F",0,round (100 / GRLIB_recycling_percentage),0],
+	["optre_catfish_ins_mg_f",0,round (100 / GRLIB_recycling_percentage),0],
 	["O_APC_Wheeled_02_rcws_F",10,round (150 / GRLIB_recycling_percentage),10],
 	["O_APC_Tracked_02_cannon_F",10,round (200 / GRLIB_recycling_percentage),10],
 	["O_APC_Tracked_02_AA_F",10,round (300 / GRLIB_recycling_percentage),10],
-	["O_MBT_02_cannon_F",15,round (400 / GRLIB_recycling_percentage),15],
-	["O_MBT_04_cannon_F",15,round (500 / GRLIB_recycling_percentage),15],
-	["O_MBT_04_command_F",15,round (500 / GRLIB_recycling_percentage),15],
-	["O_Heli_Attack_02_F",10,round (700 / GRLIB_recycling_percentage),15],
-	["O_Heli_Attack_02_dynamicLoadout_F",10,round (700 / GRLIB_recycling_percentage),15],
-	["O_Heli_Attack_02_black_F",10,round (700 / GRLIB_recycling_percentage),15],
-	["O_Heli_Light_02_F",10,round (600 / GRLIB_recycling_percentage),10],
-	["O_Heli_Light_02_dynamicLoadout_F",10,round (600 / GRLIB_recycling_percentage),10],
-	["O_Heli_Light_02_v2_F",10,round (600 / GRLIB_recycling_percentage),10],
-	["O_Heli_Transport_04_covered_F",10,round (400 / GRLIB_recycling_percentage),10],
-	["O_Plane_CAS_02_F",20,round (1000 / GRLIB_recycling_percentage),30],
-	["O_Plane_Fighter_02_F",20,round (1000 / GRLIB_recycling_percentage),30],
-	["O_Plane_Fighter_02_Stealth_F",20,round (1000 / GRLIB_recycling_percentage),30],
+	["OPTRE_M808B_INS",15,round (4500 / GRLIB_recycling_percentage),15],
+	["OPTRE_M494_INS",15,round (2500 / GRLIB_recycling_percentage),15],
+	["OPTRE_ins_falcon",10,round (700 / GRLIB_recycling_percentage),15],
+	["OPTRE_Pelican_armed_ins",0,round (2550 / GRLIB_recycling_percentage),0],
 	["O_T_VTOL_02_vehicle_F",20,round (1000 / GRLIB_recycling_percentage),20],
 	["O_T_VTOL_02_infantry_F",20,round (1000 / GRLIB_recycling_percentage),20]
 ];

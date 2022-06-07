@@ -3,16 +3,32 @@
 // Default classname: scripts\shared\default_classnames.sqf
 // Advanced definition: scripts\shared\classnames.sqf
 
+huron_typename = "OPTRE_Pelican_unarmed";
 FOB_typename = "Land_ArmoryA_Green";
+//FOB_box_typename = "B_Slingload_01_Cargo_F";
+FOB_truck_typename = "OPTRE_m1087_stallion_device_unsc";
+FOB_outpost = "Land_OPTRE_mod_building_green";
+//FOB_box_outpost = "Land_Cargo10_grey_F"
 Arsenal_typename = "OPTRE_Ammo_Rack_Weapons";
 Respawn_truck_typename = "OPTRE_M313_UNSC";
 commander_classname = "OPTRE_UNSC_ODST_Soldier_TeamLeader";
 pilot_classname = "OPTRE_UNSC_Army_Soldier_Crewman_OLI";
 crewman_classname = "OPTRE_UNSC_Airforce_Soldier_Airman";
-huron_typename = "OPTRE_Pelican_unarmed";
 PAR_Medikit = "OPTRE_MedKit";
 PAR_AidKit = "OPTRE_Biofoam";
 A3W_BoxWps = "OPTRE_Ammo_Rack_Ammo";
+Respawn_truck_typename = "OPTRE_m1087_stallion_unsc_medical";
+ammo_truck_typename = "OPTRE_m1087_stallion_unsc_resupply";
+fuel_truck_typename = "OPTRE_m1087_stallion_unsc_refuel";
+repair_truck_typename = "OPTRE_m1087_stallion_unsc_repair";
+GRLIB_sar_wreck = "OPTRE_Objects_Wreck_Pelican";
+//repair_offroad = "OPTRE_forklift";
+//Radio_tower = "Land_Razor_Tower";
+
+chimera_vehicle_overide = [
+  ["B_Heli_Light_01_F",  "OPTRE_UNSC_hornet"],
+  ["B_Heli_Transport_01_F", "OPTRE_UNSC_falcon_unarmed"]
+];
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 infantry_units = [
@@ -46,15 +62,15 @@ light_vehicles = [
 	["OPTRE_M274_ATV",1,5,1,0],
 	["B_Boat_Transport_01_F",1,25,1,GRLIB_perm_inf],
 	["C_Boat_Transport_02_F",2,25,2,GRLIB_perm_log],
-	["B_Boat_Armed_01_minigun_F",5,30,5,GRLIB_perm_log],
+	["optre_catfish_mg_f",5,130,5,GRLIB_perm_log],
 	["OPTRE_M12_FAV",2,25,2,0],
-	["OPTRE_M813_TT",1,10,1,0],
+	["OPTRE_M813_TT",1,30,1,0],
 	["OPTRE_M914_RV",5,100,2,GRLIB_perm_inf],
 	["OPTRE_M12_LRV",5,100,2,GRLIB_perm_inf],
 	["OPTRE_M12G1_LRV",5,125,2,GRLIB_perm_log],
 	["OPTRE_M12R_AA",5,125,2,GRLIB_perm_log],
-	["B_Truck_01_transport_F",5,30,5,GRLIB_perm_log],
-	["B_Truck_01_covered_F",5,30,5,GRLIB_perm_log],
+	["OPTRE_m1087_stallion_unsc",5,30,5,GRLIB_perm_log],
+	["OPTRE_m1087_stallion_cover_unsc",5,30,5,GRLIB_perm_log],
 	["I_LT_01_cannon_F",2,200,2,GRLIB_perm_log],
 	["B_LSV_01_unarmed_F",2,25,2,GRLIB_perm_inf],
 	["B_LSV_01_armed_F",5,100,2,GRLIB_perm_log],
@@ -72,9 +88,7 @@ heavy_vehicles = [
 
 air_vehicles = [
 	["B_UAV_01_F",1,10,5,GRLIB_perm_log],
-	["B_UAV_06_F",1,30,5,GRLIB_perm_tank],
-	["B_UAV_02_F",5,1000,5,GRLIB_perm_air],
-	["B_T_UAV_03_F",5,1500,10,GRLIB_perm_max],
+	["OPTRE_Wombat_S",5,1500,10,GRLIB_perm_max],
 	["OPTRE_UNSC_hornet",1,150,5,GRLIB_perm_tank],
 	["OPTRE_UNSC_hornet_CAP",1,500,5,GRLIB_perm_air],
 	["OPTRE_UNSC_hornet_CAS",1,500,5,GRLIB_perm_air],
@@ -98,24 +112,18 @@ blufor_air = [
 ];
 
 static_vehicles = [
-	["B_UGV_02_Demining_F",0,5,0,GRLIB_perm_inf],
-	["B_Static_Designator_01_F",0,5,0,GRLIB_perm_inf],
-	["B_HMG_01_F",0,10,0,GRLIB_perm_log],
-	["B_HMG_01_high_F",0,10,0,GRLIB_perm_tank],
-	["B_GMG_01_F",0,20,0,GRLIB_perm_log],
-	["B_GMG_01_high_F",0,20,0,GRLIB_perm_tank],
-	["B_static_AA_F",0,50,0,GRLIB_perm_air],
-	["B_static_AT_F",0,50,0,GRLIB_perm_air],
-	["B_Mortar_01_F",0,500,0,GRLIB_perm_max],
-	["B_AAA_System_01_F",10,500,0,GRLIB_perm_max],
-	["B_Ship_Gun_01_F",10,1500,0,GRLIB_perm_max]
+	["OPTRE_Static_M41",0,10,0,GRLIB_perm_log],
+	["OPTRE_Static_AA",0,50,0,GRLIB_perm_air],
+	["OPTRE_Static_ATGM",0,50,0,GRLIB_perm_air],
+	["OPTRE_Static_Gauss",0,500,0,GRLIB_perm_max],
+	["OPTRE_Scythe",10,500,0,GRLIB_perm_max],
+	["OPTRE_Lance",10,1500,0,GRLIB_perm_max]
 ];
 
 // *** Static Weapon with AI ***
 static_vehicles_AI = [
-	"B_SAM_System_01_F",
-	"B_SAM_System_02_F",
-	"B_AAA_System_01_F"
+	"OPTRE_Lance",
+	"OPTRE_Scythe"
 ];
 
 support_vehicles_west = [
@@ -127,7 +135,7 @@ buildings_west = [
 	["Land_Cargo_Tower_V1_F",0,0,0,GRLIB_perm_tank],
 	["Land_Cargo_House_V1_F",0,0,0,GRLIB_perm_inf],
 	["Land_Cargo_Patrol_V1_F",0,0,0,GRLIB_perm_log],
-	["Flag_NATO_F",0,0,0,0]
+	["OPTRE_CTF_Flag_UNSCBlue",0,0,0,0]
 ];
 
 blufor_squad_inf_light = [
