@@ -545,7 +545,7 @@ support_crates = [
     ["CargoNet_01_barrels_F",0,0,0,GRLIB_perm_inf],
 
   // Waffen
-    ["SNC_Javelin",0,400,0,GRLIB_perm_inf],
+   // ["SNC_Javelin",0,400,0,GRLIB_perm_inf],
 
   // Kistenfüller & Container
     ["Land_RepairDepot_01_green_F",0,0,0,GRLIB_perm_inf],
