@@ -326,6 +326,11 @@ SNC_VehRestriction= true;
 	_vehicle setVariable ["ace_medical_medicClass", 1];
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
+["UK3CB_BAF_LandRover_Amb_FFR_Green_A", "InitPost", {
+    params ["_vehicle"];
+	_vehicle setVariable ["ace_medical_medicClass", 1];
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
 
 
 

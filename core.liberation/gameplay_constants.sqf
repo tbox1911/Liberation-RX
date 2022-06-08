@@ -218,6 +218,9 @@ items_allFac = [
 
 item_blacklist =
 [
+    "Titan_AT",
+    "Titan_AP",
+    "Titan_AA",
     "B_UavTerminal",
     "O_UavTerminal",
     "I_UavTerminal",
