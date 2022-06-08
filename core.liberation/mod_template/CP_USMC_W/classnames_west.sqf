@@ -74,6 +74,7 @@ light_vehicles = [
     ["UK3CB_BAF_LandRover_WMIK_HMG_FFR_Green_A",0,light_vehicle_price_tier_5,0,GRLIB_perm_inf],
     ["UK3CB_BAF_LandRover_WMIK_GMG_FFR_Green_A",0,light_vehicle_price_tier_6,0,GRLIB_perm_inf],
     ["UK3CB_BAF_LandRover_WMIK_Milan_FFR_Green_A",0,light_vehicle_price_tier_7,0,GRLIB_perm_inf],
+    ["UK3CB_BAF_LandRover_Panama_Green_A",0,light_vehicle_price_tier_7,0,GRLIB_perm_inf],
     ["UK3CB_BAF_MAN_HX60_Transport_Green",0,light_vehicle_price_tier_5,0,GRLIB_perm_inf],
     ["UK3CB_BAF_MAN_HX58_Transport_Green",0,light_vehicle_price_tier_5,0,GRLIB_perm_inf],
   // FFAA
@@ -556,7 +557,7 @@ support_crates = [
     ["UK3CB_BAF_MAN_HX60_Container_Logistics_Sand",0,0,0,GRLIB_perm_inf],
     ["UK3CB_BAF_MAN_HX60_Container_Servicing_Ground_Green",0,0,0,GRLIB_perm_inf],
     ["UK3CB_BAF_MAN_HX60_Container_Servicing_Ground_Sand",0,0,0,GRLIB_perm_inf],
-    ["UK3CB_BAF_MAN_HX60_Container_Servicing_Ground_Green",0,0,0,GRLIB_perm_inf],
+    ["UK3CB_BAF_MAN_HX60_Container_Servicing_Air_Green",0,0,0,GRLIB_perm_inf],
     ["UK3CB_BAF_MAN_HX60_Container_Servicing_Air_Sand",0,0,0,GRLIB_perm_inf],
     ["UK3CB_BAF_MAN_HX58_Container_Blue",0,0,0,GRLIB_perm_inf],     //Cargo
     ["UK3CB_BAF_MAN_HX58_Container_Green",0,0,0,GRLIB_perm_inf],    //Cargo
@@ -743,6 +744,7 @@ uavs = [
     "B_UGV_02_Demining_F",
     "B_Radar_System_01_F",
     "UK3CB_BAF_MQ9_Reaper_DPMW",
+    "UK3CB_BAF_LandRover_Panama_Green_A",
     "CUP_WV_B_CRAM",
     "B_SAM_System_03_F",
     "B_Ship_MRLS_01_F",
