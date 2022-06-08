@@ -59,11 +59,6 @@ light_vehicles = [
     ["CUP_B_nM1097_AVENGER_USA_DES",0,light_vehicle_price_tier_9,0,GRLIB_perm_inf],
     ["CUP_B_MTVR_BAF_DES",0,light_vehicle_price_tier_5,0,GRLIB_perm_inf],
   // CUP BAF
-    ["CUP_B_LR_Transport_GB_D",0,light_vehicle_price_tier_3,0,GRLIB_perm_inf],
-    ["CUP_B_LR_Ambulance_GB_D",0,light_vehicle_price_tier_3,0,GRLIB_perm_inf],
-    ["CUP_B_LR_MG_GB_D",0,light_vehicle_price_tier_4,0,GRLIB_perm_inf],
-    ["CUP_B_LR_Special_M2_GB_D",0,light_vehicle_price_tier_5,0,GRLIB_perm_inf],
-    ["CUP_B_LR_Special_GMG_GB_D",0,light_vehicle_price_tier_6,0,GRLIB_perm_inf],
     ["CUP_I_LR_AA_AAF",0,light_vehicle_price_tier_7,0,GRLIB_perm_inf],
   // BAF
     ["UK3CB_BAF_Jackal2_L111A1_W",0,light_vehicle_price_tier_6,0,GRLIB_perm_inf],
@@ -303,6 +298,9 @@ air_vehicles = [
       ["ffaa_nh90_tth_cargo",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf],
       ["ffaa_nh90_tth_transport",0,air_vehicle_price_tier_3,0,GRLIB_perm_inf],
       ["ffaa_nh90_nfh_transport",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf],
+    // BAF
+      ["UK3CB_BAF_Wildcat_Transport_RN_ZZ396",0,air_vehicle_price_tier_3,0,GRLIB_perm_inf],
+      ["UK3CB_BAF_Wildcat_AH1_CAS_6A",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],
   // Heavy Transport
     //CUP
       ["CUP_B_MH47E_USA",0,air_vehicle_price_tier_5,0,GRLIB_perm_inf],
