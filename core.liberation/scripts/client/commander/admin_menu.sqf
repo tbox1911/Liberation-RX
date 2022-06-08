@@ -51,7 +51,7 @@ private _output_controls = [531,532,533,534,535,536];
 private _button_controls = [1600,1601,1602,1603,1604,1609,1610,1611,1612,1613,1614,1615,1616,1617,1618];
 
 (_display displayCtrl 1603) ctrlSetText getMissionPath "res\ui_confirm.paa";
-(_display displayCtrl 1603) ctrlSetToolTip "Add 200 XP Score";
+(_display displayCtrl 1603) ctrlSetToolTip "Add 50 XP Score";
 (_display displayCtrl 1615) ctrlSetText getMissionPath "res\ui_arsenal.paa";
 (_display displayCtrl 1615) ctrlSetToolTip "Add 300 Ammo";
 (_display displayCtrl 1616) ctrlSetText getMissionPath "res\ui_rotation.paa";
@@ -117,8 +117,8 @@ while { alive player && dialog } do {
 		do_score = 0;
 		_name = _score_combo lbText (lbCurSel _score_combo);
 		_uid = _score_combo lbData (lbCurSel _score_combo);
-		[_uid, 200] remoteExec ["F_addPlayerScore", 2];
-		_msg = format ["Add 200 XP to player: %1.", _name];
+		[_uid, 50] remoteExec ["F_addPlayerScore", 2];
+		_msg = format ["Add 50 XP to player: %1.", _name];
 		hint _msg;
 		systemchat _msg;
 		sleep 1;
