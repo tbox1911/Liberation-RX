@@ -497,7 +497,6 @@ support_vehicles_west = [
     ["UK3CB_BAF_Husky_Logistics_GPMG_Green",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
     ["UK3CB_BAF_Husky_Logistics_GPMG_Green",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
     ["UK3CB_BAF_Husky_Logistics_GMG_Green",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
-    ["UK3CB_BAF_Coyote_Logistics_L134A1_W",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
     ["UK3CB_BAF_MAN_HX60_Fuel_Green",0,logistic_ground_vehicle_price_tier_2,0,GRLIB_perm_inf],
     ["UK3CB_BAF_MAN_HX60_Repair_Green",0,logistic_ground_vehicle_price_tier2,0,GRLIB_perm_inf],
     ["UK3CB_BAF_MAN_HX60_Cargo_Green_A",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
