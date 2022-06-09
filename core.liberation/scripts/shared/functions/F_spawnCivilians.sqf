@@ -1,7 +1,7 @@
 params [ "_sector" ];
 private _sectorpos = getMarkerPos _sector;
 
-if ((GRLIB_side_civilian countSide allUnits) >= (GRLIB_civilians_amount * 3)) exitWith {_createdcivs};
+if ((GRLIB_side_civilian countSide allUnits) >= (GRLIB_civilians_amount * 3)) exitWith {};
 
 private _spread = 1;
 if ( _sector in sectors_bigtown ) then {
