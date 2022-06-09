@@ -39,8 +39,8 @@ if (FAC_MSU_ACTIVE) then {
 	};
 
 	if (global_arsenal) then {
-        _box = missionnamespace getVariable ["myLARsBox", objNull];
-		[_box, player, false] call ace_arsenal_fnc_openBox;
+        _glob_box = missionnamespace getVariable ["myLARsBox", objNull];
+		[_glob_box, player, false] call ace_arsenal_fnc_openBox;
 	} else {
 		_box = missionnamespace getVariable ["myLARsBox", objNull];
 		[_box, true, false] call ace_arsenal_fnc_removeVirtualitems;
