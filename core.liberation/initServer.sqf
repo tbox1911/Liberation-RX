@@ -3,7 +3,7 @@ if (isNil 'equipment') then {
 	[] call compileFinal preprocessFileLineNUmbers "MilSimUnited\create_arsenal_Itemlist.sqf";
 };
 if !(isNil 'equipment') then {
-	pub_arsenal_box = equipment;
+	pub_arsenal_box = equipment - item_blacklist;
 	publicVariable 'pub_arsenal_box';
 };
 
