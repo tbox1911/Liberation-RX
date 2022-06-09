@@ -199,7 +199,7 @@ while { true } do {
 
 			_dist = 0.5 * (sizeOf _classname);
 			if (_dist < 3.5) then { _dist = 3.5 };
-			_dist = _dist + 0.5;
+			_dist = _dist + 1.5;
 
 			for [{_i=0}, {_i<5}, {_i=_i+1}] do {
 				_vehicle setObjectTextureGlobal [_i, '#(rgb,8,8,3)color(0,1,0,0.8)'];
@@ -237,11 +237,11 @@ while { true } do {
 
 				_near_objects = (_truepos nearobjects ["AllVehicles", _dist]) ;
 				_near_objects = _near_objects + (_truepos nearobjects [FOB_box_typename, _dist]);
-				_near_objects = _near_objects + (_truepos nearobjects [Arsenal_typename, _dist]);
+				_near_objects = _near_objects + (_truepos nearobjects [FOB_box_outpost, _dist]);
 
 				_near_objects_25 = (_truepos nearobjects ["AllVehicles", 50]) ;
 				_near_objects_25 = _near_objects_25 + (_truepos nearobjects [FOB_box_typename, 50]);
-				_near_objects_25 = _near_objects_25 + (_truepos nearobjects [Arsenal_typename, 50]);
+				_near_objects_25 = _near_objects_25 + (_truepos nearobjects [FOB_box_outpost, 50]);
 
 				if(	buildtype != 6 ) then {
 					_near_objects = _near_objects + (_truepos nearobjects ["Static", _dist]);

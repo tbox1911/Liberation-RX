@@ -356,8 +356,6 @@ GRLIB_intel_chair = "Land_CampingChair_V2_F";
 GRLIB_intel_file = "Land_File1_F";
 GRLIB_intel_laptop = "Land_Laptop_device_F";
 GRLIB_ignore_colisions = [
-	FOB_box_typename,
-	FOB_box_outpost,
 	Arsenal_typename,
 	mobile_respawn,
 	canisterFuel,
