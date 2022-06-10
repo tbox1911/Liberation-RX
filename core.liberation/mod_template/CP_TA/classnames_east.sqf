@@ -219,6 +219,8 @@ opfor_statics = [
 
 opfor_recyclable = [
 	// necessary so everyone can profit from logistics
+	
+	["CUP_O_BM21_RU",0,round (60 / GRLIB_recycling_percentage),0],
 	["CUP_O_BM21_TKA",0,round (60 / GRLIB_recycling_percentage),0],
 	["CUP_O_MTLB_pk_TK_MILITIA",0,round (50 / GRLIB_recycling_percentage),0],
 	["CUP_O_BTR40_MG_TKM",0,round (60 / GRLIB_recycling_percentage),0],
