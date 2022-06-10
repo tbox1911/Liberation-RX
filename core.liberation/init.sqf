@@ -50,7 +50,7 @@ SNC_VehRestriction= true;
 	params ["_vehicle"];
 	_vehicle addEventHandler ["Dammaged", {
 		params ["_unit", "_selection", "_damage", "_hitIndex", "_hitPoint", "_shooter", "_projectile"];
-		if ( (isPlayer _shooter) && (_shooter != _unit) && (alive _unit) ) then {
+		if ( (isPlayer _shooter) && (_shooter != _unit) && (alive _unit) && (!isNull _projectile) ) then {
 			_msg = format ["Friendly fire from %1 to %2. Penalty: %3 rank and %4 ammo", name _shooter, name _unit, tkill_score, tkill_ammo];
 			[gamelogic, _msg] remoteExec ["globalChat", 0];
 			[getPlayerUID _shooter, tkill_score] remoteExec ["F_addPlayerScore", 2];
@@ -65,7 +65,7 @@ SNC_VehRestriction= true;
 	params ["_vehicle"];
 	_vehicle addEventHandler ["Dammaged", {
 		params ["_unit", "_selection", "_damage", "_hitIndex", "_hitPoint", "_shooter", "_projectile"];
-		if ( (isPlayer _shooter) && (_shooter != _unit) && (alive _unit) ) then {
+		if ( (isPlayer _shooter) && (_shooter != _unit) && (alive _unit) && (!isNull _projectile) ) then {
 			_msg = format ["Friendly fire from %1 to %2. Penalty: %3 rank and %4 ammo", name _shooter, name _unit, tkill_score, tkill_ammo];
 			[gamelogic, _msg] remoteExec ["globalChat", 0];
 			[getPlayerUID _shooter, tkill_score] remoteExec ["F_addPlayerScore", 2];
