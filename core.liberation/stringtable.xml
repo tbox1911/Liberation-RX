@@ -2567,6 +2567,11 @@
 			<Chinese>對不起！</Chinese>
 			<Japanese>すみません！</Japanese>
 		</Key>
+		<Key ID="STR_NAME_PROHIBITED">
+			<Original>Sorry, this nickname is prohibited on this server!\n\nChange your nickname, lazy ass, and join the game again!</Original>
+			<French>Désolé, ce pseudo est interdit sur ce serveur !\n\nChangez de pseudo, paresseux, et rejoignez le jeu à nouveau !</French>
+			<Russian>Використання ніку %1 ЗАБОРОНЕНО!\n\n Зміни нік, срака ти лінива, та заходь знову.</Russian>
+		</Key>		
 		<Key ID="STR_COMMANDER_NOT_AUTHORIZED">
 			<Original>You are not authorized to use the commander slot on this server.</Original>
 			<French>Vous n'êtes pas authorisé à utiliser la place de commandant sur ce serveur.</French>

@@ -16,3 +16,25 @@ GRLIB_whitelisted_steamids = [
 // For exemple: "Zbug"
 GRLIB_whitelisted_names = [
 ];
+
+// Forbiden player names.
+GRLIB_blacklisted_names = [
+    "admin",
+    "administrator",
+    "administrateur",
+    "pc-user",
+    "pc",
+    "pc1",
+    "player 1",
+    "player",
+    "player1",
+    "steam",
+    "steamuser",
+    "user-pc",
+    "user",
+    "user1",
+    "windows 10",
+    "windows",
+    "acer",
+    "asus"
+];
