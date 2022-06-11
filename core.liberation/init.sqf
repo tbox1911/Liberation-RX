@@ -21,7 +21,43 @@ if (!abort_loading) then {
 	if (!GRLIB_ACE_enabled) then {[] execVM "R3F_LOG\init.sqf"};
 
 	if (isServer) then {
+
 		[] execVM "scripts\server\init_server.sqf";
+
+		
+
+		["B_Soldier_F", "InitPost", {
+			params ["_vehicle"];
+			_vehicle addEventHandler ["Dammaged", {
+				params ["_unit", "_selection", "_damage", "_hitIndex", "_hitPoint", "_shooter", "_projectile"];
+				if (tkill_script) then {
+					if ( (isPlayer _shooter) && (_shooter != _unit) && (alive _unit) && (!isNull _projectile) ) then {
+						_msg = format ["Friendly fire from %1 to %2. Penalty: %3 rank and %4 ammo", name _shooter, name _unit, tkill_score, tkill_ammo];
+						[gamelogic, _msg] remoteExec ["globalChat", 0];
+						[getPlayerUID _shooter, tkill_score] remoteExec ["F_addPlayerScore", 2];
+						[getPlayerUID _shooter, tkill_ammo] remoteExec ["F_addPlayerAmmo", 2];
+					};
+				};
+			}];
+		}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+
+		["CUP_B_GER_Operator_Medic", "InitPost", {
+			params ["_vehicle"];
+			_vehicle addEventHandler ["Dammaged", {
+				params ["_unit", "_selection", "_damage", "_hitIndex", "_hitPoint", "_shooter", "_projectile"];
+				if (tkill_script) then {
+					if ( (isPlayer _shooter) && (_shooter != _unit) && (alive _unit) && (!isNull _projectile) ) then {
+						_msg = format ["Friendly fire from %1 to %2. Penalty: %3 rank and %4 ammo", name _shooter, name _unit, tkill_score, tkill_ammo];
+						[gamelogic, _msg] remoteExec ["globalChat", 0];
+						[getPlayerUID _shooter, tkill_score] remoteExec ["F_addPlayerScore", 2];
+						[getPlayerUID _shooter, tkill_ammo] remoteExec ["F_addPlayerAmmo", 2];
+					};
+				};
+			}];
+		}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+
 	};
 
 	if (!isDedicated && !hasInterface && isMultiplayer) then {
@@ -46,33 +82,6 @@ SNC_VehRestriction= true;
 
 // MilSim United ===========================================================================
 
-["B_Soldier_F", "InitPost", {
-	params ["_vehicle"];
-	_vehicle addEventHandler ["Dammaged", {
-		params ["_unit", "_selection", "_damage", "_hitIndex", "_hitPoint", "_shooter", "_projectile"];
-		if ( (isPlayer _shooter) && (_shooter != _unit) && (alive _unit) && (!isNull _projectile) ) then {
-			_msg = format ["Friendly fire from %1 to %2. Penalty: %3 rank and %4 ammo", name _shooter, name _unit, tkill_score, tkill_ammo];
-			[gamelogic, _msg] remoteExec ["globalChat", 0];
-			[getPlayerUID _shooter, tkill_score] remoteExec ["F_addPlayerScore", 2];
-			[getPlayerUID _shooter, tkill_ammo] remoteExec ["F_addPlayerAmmo", 2];
-			
-		};
-	}];
-}, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
-
-["CUP_B_GER_Operator_Medic", "InitPost", {
-	params ["_vehicle"];
-	_vehicle addEventHandler ["Dammaged", {
-		params ["_unit", "_selection", "_damage", "_hitIndex", "_hitPoint", "_shooter", "_projectile"];
-		if ( (isPlayer _shooter) && (_shooter != _unit) && (alive _unit) && (!isNull _projectile) ) then {
-			_msg = format ["Friendly fire from %1 to %2. Penalty: %3 rank and %4 ammo", name _shooter, name _unit, tkill_score, tkill_ammo];
-			[gamelogic, _msg] remoteExec ["globalChat", 0];
-			[getPlayerUID _shooter, tkill_score] remoteExec ["F_addPlayerScore", 2];
-			[getPlayerUID _shooter, tkill_ammo] remoteExec ["F_addPlayerAmmo", 2];
-		};
-	}];
-}, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
 
 ["CargoNet_01_box_F", "InitPost", {
