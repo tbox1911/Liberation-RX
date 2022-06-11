@@ -37,7 +37,7 @@ if (!abort_loading) then {
 if (!isDedicated && hasInterface) then {
 	[] execVM "scripts\client\init_client.sqf";
 } else {
-	setViewDistance 1600;
+	setViewDistance 2000;
 	setTerrainGrid 50;
 };
 
