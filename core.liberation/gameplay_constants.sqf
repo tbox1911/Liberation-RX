@@ -94,6 +94,10 @@ income_sectors_tower = 50;
 // AI Leaders have automaticly radios
 AI_leader_radio = true;
 
+// AI Limit
+ai_limit = 3;
+ai_limiter_on = true;
+
 skill_scan = true;
 skill_parachuters = 1;
 skill_air_vehicles_planes = 1;
