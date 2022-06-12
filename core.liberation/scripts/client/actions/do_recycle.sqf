@@ -69,6 +69,33 @@ if ( dialog ) then { closeDialog 0 };
 _loot_crate = ( [ (loot_crates), { typeof _vehicle == _x select 0 } ] call BIS_fnc_conditionalSelect ) select 0;
 
 if (dorecycle == 1 && !(isNull _vehicle) && alive _vehicle) exitwith {
+	if (isNil "show_who_recycle_on") then {
+		show_who_recycle_on = false
+	};
+
+	if (show_who_recycle_on) then {
+		private _uid = getPlayerUID player;
+		private _uid_veh = _vehicle getVariable ["GRLIB_vehicle_owner", ""];
+		private _name_player = name player;
+		private _name_player_vehicle = "";
+		private _vehicle_name = getText (_cfg >> (_objectinfo select 0) >> "displayName");
+		if (_uid == _uid_veh) then {
+			hint "That was your vehicle."
+		} else {
+			{
+				if (_x select 0 == _uid_veh) then {
+					_name_player_vehicle = _x select 3;
+				};
+			} count GRLIB_player_scores;
+
+			private _msg_r = format ["%1 recycled the %2 from %3!", _name_player, _vehicle_name, _name_player_vehicle];
+			
+			if (hasInterface) then {
+				[gamelogic, _msg_r] remoteExec ["globalChat", 0];
+			}
+		};
+	};
+
     if (typeOf _vehicle in [ammobox_b_typeName, ammobox_o_typeName, ammobox_i_typeName]) then {
         [player, 5] remoteExec ["addscore", 2];
         hint format [localize "str_ammo_SELL2", name player];
