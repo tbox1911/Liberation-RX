@@ -92,7 +92,7 @@ income_sectors_factory = 50;
 income_sectors_tower = 50;
 
 // AI Leaders have automaticly radios
-AI_leader_radio = true;
+AI_leader_radio = false;
 
 // AI Limit
 ai_limit = 3;
