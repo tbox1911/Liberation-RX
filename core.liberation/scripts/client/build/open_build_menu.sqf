@@ -199,15 +199,12 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1) } do {
 	if (isNil 'ai_limiter_on') then {
 		ai_limiter_on = false
 	};
-	if (isNil 'ai_limit') then {
-		ai_limit = 0
-	};
-	
-	
 
 	if (ai_limiter_on) then {
 		_affordable_crew = _affordable;
+		ai_limit = 3;
 		_c = 0;
+
 		{
 			if !(isPlayer _x) then {
 				_c = _c + 1
