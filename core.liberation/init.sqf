@@ -212,6 +212,17 @@ SNC_VehRestriction= true;
 
 // ACE Cargo definition
 
+["rnt_mantis_radar", "InitPost", {
+    params ["_vehicle"];
+	[_vehicle, -1] call ace_cargo_fnc_setSize;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["rnt_mantis_base", "InitPost", {
+    params ["_vehicle"];
+	[_vehicle, -1] call ace_cargo_fnc_setSize;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+
 ["CUP_B_CH47F_VIV_USA", "InitPost", {
     params ["_vehicle"];
 	[_vehicle,24] call ace_cargo_fnc_setSpace;
