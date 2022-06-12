@@ -82,11 +82,11 @@ if (isNil "global_arsenal") then {
 };
 
 if (global_arsenal) then {
-	_box = missionnamespace getVariable ["myLARsBox", objNull];
-	[_box, false] call ace_arsenal_fnc_initBox;
-	[_box, true, false] call ace_arsenal_fnc_removeVirtualitems;
-	[_box, pub_arsenal_box] call ace_arsenal_fnc_addVirtualitems;
-	[_box, item_blacklist] call ace_arsenal_fnc_removeVirtualitems;
+	_glob_box  = missionnamespace getVariable ["myLARsBox", objNull];
+	[_glob_box, false] call ace_arsenal_fnc_initBox;
+	[_glob_box, true, false] call ace_arsenal_fnc_removeVirtualitems;
+	[_glob_box, pub_arsenal_box] call ace_arsenal_fnc_addVirtualitems;
+	[_glob_box, item_blacklist] call ace_arsenal_fnc_removeVirtualitems;
 } else {
 	_box = missionnamespace getVariable ["myLARsBox", objNull];
 	[_box, false] call ace_arsenal_fnc_initBox;
