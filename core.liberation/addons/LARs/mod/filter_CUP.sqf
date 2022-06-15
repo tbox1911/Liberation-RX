@@ -32,7 +32,7 @@
 (
 	"
 	tolower ((configName _x) select [0,4]) == 'cup_' &&
-	(configName _x) find '_Tracer' < 0 &&
+	tolower (configName _x) find '_tracer' < 0 &&
 	([(configName _x)] call is_allowed_item)
 	"
 	configClasses (configfile >> "CfgMagazines")

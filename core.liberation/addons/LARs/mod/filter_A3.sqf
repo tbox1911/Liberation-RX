@@ -46,7 +46,7 @@ private _A3_Items = [
     (getText (_x >> 'author')) == 'Bohemia Interactive' &&
 	([(configName _x)] call is_allowed_item) &&
 	(
-		((configName _x) find 'Rnd_' >= 0 && (configName _x) find '_Tracer' < 0) ||
+		(tolower (configName _x) find 'rnd_' >= 0 && tolower (configName _x) find '_tracer' < 0) ||
 		([(configName _x), _A3_Items] call F_startsWithMultiple)
 	)
 	"
