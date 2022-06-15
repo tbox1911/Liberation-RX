@@ -4420,13 +4420,6 @@
 			<Chinese>虛擬武器庫</Chinese>
 			<Japanese>バーチャルアーセナルを有効にする</Japanese>
 		</Key>
-		<Key ID="STR_LIMIT_ARSENAL">
-			<Original>Enable limited Virtual Arsenal</Original>
-			<French>Activer l'Arsenal Virtuel limité</French>
-			<Chinesesimp>有限制的虚拟武器库</Chinesesimp>
-			<Chinese>有限制的虛擬武器庫</Chinese>
-			<Japanese>バーチャルアーセナルに制限をかける</Japanese>
-		</Key>
 		<Key ID="STR_VEH_LOCK">
 			<Original>Enable Vehicles Ownership</Original>
 			<French>Activer la Propriété des Véhicules </French>

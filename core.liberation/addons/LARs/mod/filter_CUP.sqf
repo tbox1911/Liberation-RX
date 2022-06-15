@@ -4,7 +4,7 @@
 (
 	"
 	(tolower (getText (_x >> 'DLC')) == 'cup_weapons' || tolower (getText (_x >> 'DLC')) == 'cup_units') &&
-	!((configName _x) in GRLIB_blacklisted_from_arsenal)
+	([(configName _x)] call is_allowed_item)
 	"
 	configClasses (configfile >> "CfgWeapons" )
 ) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
@@ -13,7 +13,7 @@
 (
 	"
 	(tolower (getText (_x >> 'DLC')) == 'cup_weapons' || tolower (getText (_x >> 'DLC')) == 'cup_units') &&
-	!((configName _x) in GRLIB_blacklisted_from_arsenal) &&
+	([(configName _x)] call is_allowed_item) &&
 	( (configName _x) find '_Bag' == -1 )
 	"
 	configClasses (configfile >> "CfgVehicles" )
@@ -23,7 +23,7 @@
 (
 	"
 	(tolower (getText (_x >> 'DLC')) == 'cup_weapons' || tolower (getText (_x >> 'DLC')) == 'cup_units') &&
-	!((configName _x) in GRLIB_blacklisted_from_arsenal)
+	([(configName _x)] call is_allowed_item)
 	"
 	configClasses (configfile >> "CfgGlasses" )
 ) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
@@ -33,7 +33,7 @@
 	"
 	tolower ((configName _x) select [0,4]) == 'cup_' &&
 	(configName _x) find '_Tracer' < 0 &&
-	!((configName _x) in GRLIB_blacklisted_from_arsenal)
+	([(configName _x)] call is_allowed_item)
 	"
 	configClasses (configfile >> "CfgMagazines")
 ) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x)} ;
