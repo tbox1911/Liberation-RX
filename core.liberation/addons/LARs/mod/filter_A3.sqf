@@ -1,5 +1,6 @@
 // Add ArmA3 Weapons
-// todo: add side filter
+private _exclude = "O_";
+if (["A3_OPF", GRLIB_mod_west, true] call F_startsWith) then { _exclude ="B_" };
 
 // Weapons + Equipements (uniforms, etc..)
 private _A3_Items = [
@@ -11,6 +12,7 @@ private _A3_Items = [
 (
 	"
 	(getText (_x >> 'author')) == 'Bohemia Interactive' &&
+	!([_exclude, (configName _x), true] call F_startsWith) &&
     ([(configName _x)] call is_allowed_item) &&
     ([(configName _x), _A3_Items] call F_startsWithMultiple)
 	"
@@ -21,6 +23,7 @@ private _A3_Items = [
 (
 	"
 	(getText (_x >> 'author')) == 'Bohemia Interactive' &&
+	!([_exclude, (configName _x), true] call F_startsWith) &&
 	([(configName _x)] call is_allowed_item) &&
 	((configName _x) iskindof 'Bag_Base') 
 	"
@@ -31,6 +34,7 @@ private _A3_Items = [
 (
 	"
 	(getText (_x >> 'author')) == 'Bohemia Interactive' &&
+	!([_exclude, (configName _x), true] call F_startsWith) &&
 	([(configName _x)] call is_allowed_item)
 	"
 	configClasses (configfile >> "CfgGlasses" )
@@ -44,6 +48,7 @@ private _A3_Items = [
 (
 	"
     (getText (_x >> 'author')) == 'Bohemia Interactive' &&
+	!([_exclude, (configName _x), true] call F_startsWith) &&
 	([(configName _x)] call is_allowed_item) &&
 	(
 		(tolower (configName _x) find 'rnd_' >= 0 && tolower (configName _x) find '_tracer' < 0) ||
