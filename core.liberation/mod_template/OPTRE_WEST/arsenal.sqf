@@ -1,6 +1,7 @@
 //Blacklist Items
 
 blacklisted_bag = [
+	"_Spartan"
 ];
 
 blacklisted_weapon = [
@@ -9,10 +10,14 @@ blacklisted_weapon = [
 GRLIB_whitelisted_from_arsenal = [
 	//"FirstAidKit",
 	//"Medikit",
-	//"ToolKit",
+  	"OPTRE_MedKit",
+  	"OPTRE_Medigel",
+	"ToolKit",
 	"MineDetector",
-	"Binocular",
-	"Rangefinder",
+	//"Binocular",
+	"OPTRE_Binoculars",
+	//"Rangefinder",
+	"OPTRE_Smartfinder",
 	"ItemCompass",
 	"ItemGPS",
 	"ItemMap",
@@ -26,5 +31,8 @@ GRLIB_whitelisted_from_arsenal = [
 	"APERSBoundingMine_Range_Mag",
 	"ATMine_Range_Mag",
 	"SatchelCharge_Remote_Mag",
-	"SLAMDirectionalMine_Wire_Mag"
+	"SLAMDirectionalMine_Wire_Mag",
+	"OPTRE_NVG",
+	"C7_Remote_Mag",
+	"C12_Remote_Mag"
 ];
