@@ -23,6 +23,7 @@ GRLIB_whitelisted_from_arsenal = [
     "vn_b_item_toolkit",
     "vn_b_item_trapkit",
     "vn_b_item_medikit_01",
+    "vn_b_item_wiretap",
 	"ItemRadio",
 	"ItemWatch",
 	"Bandage",
