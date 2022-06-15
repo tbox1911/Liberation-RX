@@ -14,7 +14,8 @@
 	"
 	tolower ((configName _x) select [0,5]) == 'cwr3_' &&
 	([(configName _x)] call is_allowed_item) &&
-	( (configName _x) find '_Bag' == -1 )
+	( (configName _x) find '_Bag' == -1 ) &&
+	((configName _x) iskindof 'Bag_Base') 
 	"
 	configClasses (configfile >> "CfgVehicles" )
 ) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;

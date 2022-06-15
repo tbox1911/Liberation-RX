@@ -134,7 +134,13 @@ blacklisted_bag = [
 	"I_Protagonist_VR_F",
 	"U_I_Protagonist_VR",
 	"C_Protagonist_VR_F",
-	"U_C_Protagonist_VR"
+	"U_C_Protagonist_VR",
+	"B_UAV_02_backpack_lxWS",
+	"ION_UAV_01_backpack_lxWS",
+	"ION_UAV_02_backpack_lxWS",
+	"CIV_UAV_01_backpack_lxWS",
+	"I_UAV_02_backpack_lxWS",
+	"O_UAV_02_backpack_lxWS"
 ];
 
 blacklisted_weapon = [
@@ -149,6 +155,7 @@ blacklisted_weapon = [
 	"U_O_V_Soldier_Viper_F",
 	"O_V_Soldier_Viper_F",
 	"O_V_Soldier_Viper_hex_F",
+	"Pylon",
 	"_missiles",
 	"_Leaflets",
 	"_esd_"
@@ -170,6 +177,7 @@ GRLIB_whitelisted_from_arsenal = [
 	"HandGrenade",
 	"MiniGrenade",
 	"Laserbatteries",
+	"B_UavTerminal",
 	"APERSMine_Range_Mag",
 	"APERSBoundingMine_Range_Mag",
 	"ATMine_Range_Mag",
