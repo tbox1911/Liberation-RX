@@ -99,6 +99,7 @@ GRLIB_3CB_enabled = isClass(configFile >> "CfgMods" >> "UK3CB_BAF_Weapons"); // 
 GRLIB_CWR_enabled = isClass(configFile >> "CfgMods" >> "cwr3_dlc"); // Returns true if CWR3 is enabled
 
 // Check side Addon
+if ( !GRLIB_OPTRE_enabled && "OPTRE" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
 if ( !GRLIB_EJW_enabled && "EJW" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
 if ( (!GRLIB_CUPU_enabled || !GRLIB_CUPV_enabled) && "CP_BAF_DES" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
 if ( (!GRLIB_CUPU_enabled || !GRLIB_CUPV_enabled) && "CP_TA" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };

@@ -110,9 +110,9 @@ while { true } do {
 				_loadouts_folder = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, toLower _classname];
 				[_unit] call compileFinal preprocessFileLineNUmbers _loadouts_folder;
 			};
-			if !("Diver" in (_unit call BIS_fnc_objectType)) then {
-				_unit forceAddUniform (uniform player);
-			};
+			// if (!(GRLIB_OPTRE_enabled && "Diver" in (_unit call BIS_fnc_objectType))) then {
+			// 	_unit forceAddUniform (uniform player);
+			// };
 			if (GRLIB_ACE_enabled) then { 
 				_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 			};

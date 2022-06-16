@@ -41,12 +41,17 @@ infantry_units = [
 	["OPTRE_UNSC_ODST_Soldier_DemolitionsExpert",1,0,0,GRLIB_perm_inf],
 	["OPTRE_UNSC_ODST_Soldier_Scout",1,0,0,GRLIB_perm_inf],
 	["OPTRE_UNSC_ODST_Soldier_Automatic_Rifleman",1,0,0,GRLIB_perm_inf],
-	["OPTRE_UNSC_ODST_Soldier_Marksman",1,0,0,GRLIB_perm_log],
 	["OPTRE_UNSC_ODST_Soldier_Scout_AT",1,0,0,GRLIB_perm_log],
 	["OPTRE_UNSC_ODST_Soldier_Bullfrog",1,0,0,GRLIB_perm_log],
 	["OPTRE_UNSC_ODST_Soldier_Scout_Sniper",1,0,0,GRLIB_perm_log],
 	["OPTRE_UNSC_Army_Soldier_AA_Specialist_OLI",1,0,0,GRLIB_perm_inf],
-	["OPTRE_UNSC_Army_Soldier_AT_Specialist_OLI",1,0,0,GRLIB_perm_inf]
+	["OPTRE_UNSC_Army_Soldier_AT_Specialist_OLI",1,0,0,GRLIB_perm_inf],
+	["OPTRE_Spartan2_Soldier_Rifleman_BR",2,0,0,GRLIB_perm_tank],
+	["OPTRE_Spartan2_Soldier_Engineer",2,0,0,GRLIB_perm_tank],
+	["OPTRE_Spartan2_Soldier_Automatic_Rifleman",2,0,0,GRLIB_perm_tank],
+	["OPTRE_Spartan2_Soldier_Rifleman_AT",2,0,0,GRLIB_perm_tank],
+	["OPTRE_Spartan2_Soldier_Scout_Sniper",2,0,0,GRLIB_perm_tank],
+	["OPTRE_Spartan2_Soldier_Marksman",2,0,0,GRLIB_perm_tank]	
 ];
 
 units_loadout_overide = [];

@@ -13,27 +13,28 @@ switch (_infsquad) do {
 };
 
 if ( _building_ai_max > floor ((count _buildingpositions) * GRLIB_defended_buildingpos_part)) then { _building_ai_max = floor ((count _buildingpositions) * GRLIB_defended_buildingpos_part)};
-_unitclass = [];
-while { (count _unitclass) < _building_ai_max } do { _unitclass pushback (selectRandom _infsquad_classnames) };
+if ( _building_ai_max > 0 ) then {
+	_unitclass = [];
+	while { (count _unitclass) < _building_ai_max } do { _unitclass pushback (selectRandom _infsquad_classnames) };
 
-_position_indexes = [];
-_position_count = count _buildingpositions;
-while { count _position_indexes < count _unitclass } do {
-	_nextposit = floor (random _position_count);
-	if ( !(_nextposit in _position_indexes) ) then {
-		_position_indexes pushback _nextposit;
-	}
+	_position_indexes = [];
+	_position_count = count _buildingpositions;
+	while { count _position_indexes < count _unitclass } do {
+		_nextposit = floor (random _position_count);
+		if ( !(_nextposit in _position_indexes) ) then {
+			_position_indexes pushback _nextposit;
+		}
+	};
+	_grp = [_sectorpos, _unitclass, _default_side, _infsquad] call F_libSpawnUnits;
+
+	_idxposit = 0;
+	{
+		_x setpos (_buildingpositions select (_position_indexes select _idxposit));
+		_spawned_units_local pushback _x;
+		[_x, _sector] spawn building_defence_ai;
+		_idxposit = _idxposit + 1;
+	} foreach (units _grp);
 };
-_grp = [_sectorpos, _unitclass, _default_side, _infsquad] call F_libSpawnUnits;
-
-_idxposit = 0;
-{
-	_x setpos (_buildingpositions select (_position_indexes select _idxposit));
-	_spawned_units_local pushback _x;
-	[_x, _sector] spawn building_defence_ai;
-	_idxposit = _idxposit + 1;
-} foreach (units _grp);
-
 diag_log format ["Done Spawning building squad (%1) at %2", count _spawned_units_local, time];
 
 _spawned_units_local;
