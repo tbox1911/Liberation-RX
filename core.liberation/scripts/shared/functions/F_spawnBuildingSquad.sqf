@@ -23,7 +23,7 @@ if ( _building_ai_max > 0 ) then {
 		_nextposit = floor (random _position_count);
 		if ( !(_nextposit in _position_indexes) ) then {
 			_position_indexes pushback _nextposit;
-		}
+		};
 	};
 	_grp = [_sectorpos, _unitclass, _default_side, _infsquad] call F_libSpawnUnits;
 
