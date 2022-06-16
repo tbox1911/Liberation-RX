@@ -1,81 +1,49 @@
-// A custom Arsenal for Liberation RX
+// A custom Arsenal for Liberation RX by pSiKO
 // from: https://github.com/LarrowZurb/BlacklistArsenal
+
+// How it's supposed to work:
+//
+// - EnableArsenal = 0    The arsenal is completely disabled
+// - EnableArsenal = 1    The arsenal contains the objects of the player's camp.
+//                          - minus the blacklist (which still applies)
+//                          + plus the whitelist (these items are still available)
+//   
+// - FilterArsenal = 0    There is no additional filter
+//                        note: The player can use other objects,
+//                              enemy equipment or anything else.
+//                        
+// - FilterArsenal = 1    The player can ONLY use items present in the Arsenal.
+//                        note: he will not be able to use enemy weapons.
+//
+// possible change:
+// in the "mod_template\TEMPLATE\arsenal.sqf" file
+//
+// - add an object:
+//    add class name to "GRLIB_whitelisted_from_arsenal" list
+//
+// - remove an object
+//    add class name (or part) to "blacklisted_weapon" list
+
 if (isDedicated) exitWith {};
-waitUntil {sleep 1; !isNil "GRLIB_limited_arsenal"};
-waitUntil {sleep 1; !isNil "GRLIB_mod_enabled"};
 
 // Initalize Blacklist
 GRLIB_blacklisted_from_arsenal = [];			// Global blacklist (All objects will be removed from Arsenal)
 
 // Initalize Withelist
 GRLIB_whitelisted_from_arsenal = [];			// whitelist when Arsenal is enabled
-GRLIB_whitelisted_from_arsenal_limited = [];	// minimal whitelist when MOD filter is enabled
-
-// Initalize Side
-GRLIB_arsenal_side = WEST;
 
 [] call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\arsenal.sqf", GRLIB_mod_west];
 
-// Check LRX option
-if (GRLIB_limited_arsenal) then {
-	GRLIB_blacklisted_from_arsenal = blacklisted_bag + blacklisted_weapon;
-} else {
-	GRLIB_blacklisted_from_arsenal = blacklisted_bag;
-};
-if (GRLIB_mod_enabled && !isNil "GRLIB_whitelisted_from_arsenal_limited") then {
-	GRLIB_whitelisted_from_arsenal = GRLIB_whitelisted_from_arsenal_limited;
-};
+// Default LRX blacklist
+GRLIB_blacklisted_from_arsenal = blacklisted_bag + blacklisted_weapon;
 
-// Add CUP Weapons
-if (GRLIB_filter_arsenalCUP) then {	
-	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_CUP.sqf";
-};
-// Add GM Weapons
-if (GRLIB_filter_arsenalGM) then {
-	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_GM.sqf";
-};
-// Add OPTRE Weapons
-if (GRLIB_filter_arsenalOPTRE) then {
-	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_OPTRE.sqf";
-};
-// Add EricJ Weapons
-if (GRLIB_filter_arsenalEJW) then {
-	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_EJW.sqf";
-};
-// Add RHS Weapons
-if (GRLIB_filter_arsenalRHS) then {	
-	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_RHS.sqf";
-};
-// Add R3F/AMF Weapons
-if (GRLIB_filter_arsenalR3F) then {
-	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_R3F.sqf";
-	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_AMF.sqf";
-};
-// Add SOG Weapons
-if (GRLIB_filter_arsenalSOG) then {	
-	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_SOG.sqf";
-};
-// Add 3CB Weapons
-if (GRLIB_filter_arsenal3CB) then {	
-	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_3CB.sqf";
-};
-// Add CWR Weapons
-if (GRLIB_filter_arsenalCWR) then {	
-	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_CWR.sqf";
-};
-
+// Add Mod Items (Weapons,Uniform,etc.)
+[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_init.sqf";
 
 // Dedup list
 GRLIB_whitelisted_from_arsenal = GRLIB_whitelisted_from_arsenal arrayIntersect GRLIB_whitelisted_from_arsenal;
 GRLIB_blacklisted_from_arsenal = GRLIB_blacklisted_from_arsenal arrayIntersect GRLIB_blacklisted_from_arsenal;
 
-if (GRLIB_mod_enabled) then {
-	[myLARsBox, ["GRLIB_whitelisted_from_arsenal", "GRLIB_blacklisted_from_arsenal"], false, "Liberation", { false }] call LARs_fnc_blacklistArsenal;
-} else {
-	//[ myBox, [ whitelist, blacklist ], targets, name, condition ] call LARs_fnc_blacklistArsenal;
-	[myLARsBox, [GRLIB_arsenal_side, "GRLIB_blacklisted_from_arsenal"], false, "Liberation", { false }] call LARs_fnc_blacklistArsenal;
-	waitUntil {sleep 0.5; !(isNil "LARs_initBlacklist")};
+[myLARsBox, ["GRLIB_whitelisted_from_arsenal", "GRLIB_blacklisted_from_arsenal"], false, "Liberation", { false }] call LARs_fnc_blacklistArsenal;
 
-	//[ box, arsenalName, [ white, black ], _targets ] call LARs_fnc_updateArsenal
-	[myLARsBox, "Liberation", ["GRLIB_whitelisted_from_arsenal"], false] call LARs_fnc_updateArsenal;
-};
+diag_log format ["--- LRX Arsenal initialized. blacklist: %1 - whitelist: %2", count GRLIB_blacklisted_from_arsenal, count GRLIB_whitelisted_from_arsenal];

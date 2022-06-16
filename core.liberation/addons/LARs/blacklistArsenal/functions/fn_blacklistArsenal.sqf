@@ -134,19 +134,19 @@ _thread = _this spawn {
 				%1 setVariable [ 'LARs_arsenalClosedID', nil ];
 			", _box, _savedCargo, _savedMissionCargo ] ]call BIS_fnc_addScriptedEventHandler ];
 
-//			_nul = [ _box, _savedCargo, _savedMissionCargo ] spawn {
-//				params[ "_box", "_savedCargo", "_savedMissionCargo" ];
-//
-//				//wait until the arsenal is open
-//				waitUntil{ !isNull ( uiNamespace getVariable [ "RscDisplayArsenal", displayNull ] ) };
-//
-//				//wait until the arsenal has been closed
-//				waitUntil { sleep 0.5; isNull ( uiNamespace getVariable ["BIS_fnc_arsenal_cam",objNull] ) };
-//
-//				//reapply default arsenal whitelist
-//				_box setVariable [ "bis_addvirtualWeaponCargo_cargo", _savedCargo ];
-//				missionNamespace setVariable [ "bis_addvirtualWeaponCargo_cargo", _savedMissionCargo ];
-//			};
+			// _nul = [ _box, _savedCargo, _savedMissionCargo ] spawn {
+			// 	params[ "_box", "_savedCargo", "_savedMissionCargo" ];
+
+			// 	//wait until the arsenal is open
+			// 	waitUntil{ !isNull ( uiNamespace getVariable [ "RscDisplayArsenal", displayNull ] ) };
+
+			// 	//wait until the arsenal has been closed
+			// 	waitUntil { sleep 0.5; isNull ( uiNamespace getVariable ["BIS_fnc_arsenal_cam",objNull] ) };
+
+			// 	//reapply default arsenal whitelist
+			// 	_box setVariable [ "bis_addvirtualWeaponCargo_cargo", _savedCargo ];
+			// 	missionNamespace setVariable [ "bis_addvirtualWeaponCargo_cargo", _savedMissionCargo ];
+			// };
 		},
 		_arsenalName,
 		6,
@@ -163,17 +163,13 @@ _thread = _this spawn {
 			alive _target && {_target distance _this < 5} && {call _condition}
 		", _arsenalName ]
 	]];
+
 	// Ace Arsenal Filter thing.
 	if (GRLIB_ACE_enabled) then {
-		if (GRLIB_limited_arsenal) then {	
-			[_box, false, false] call ace_arsenal_fnc_initBox;
-		
-			{			 
-				[_box, _x] call ace_arsenal_fnc_addVirtualItems; 
-			} forEach _cargo;
-		} else {
-			[_box, true] call ace_arsenal_fnc_initBox;
-		};
+		[_box, false, false] call ace_arsenal_fnc_initBox;
+		{
+			[_box, _x] call ace_arsenal_fnc_addVirtualItems;
+		} forEach _cargo;
 	};
 
 	LARs_initBlacklist = true;

@@ -1,20 +1,19 @@
-// Add Gobal Mobilization Weapons
+// Add RHS Weapons
 
-// Weapons + Equipements (uniforms, etc..)
+// Weapons + Equipements (uniforme, etc..)
 (
 	"
-	tolower (getText (_x >> 'dlc')) == 'gm' &&
-	getNumber (_x >> 'scope') > 1 &&
+	(getText (_x >> 'DLC') == GRLIB_mod_west || (['LOP_', (configName _x), true] call F_startsWith)) &&
 	([(configName _x)] call is_allowed_item)
 	"
 	configClasses (configfile >> "CfgWeapons" )
 ) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
 
-// Others object (backpack, etc..)
+// Others object (bagpack, etc..)
 (
 	"
-	tolower (getText (_x >> 'dlc')) == 'gm' &&
-	([(configName _x)] call is_allowed_item) &&
+	(getText (_x >> 'DLC') == GRLIB_mod_west || (['LOP_', (configName _x), true] call F_startsWith)) &&
+	([(configName _x)] call is_allowed_item)  &&
 	((configName _x) iskindof 'Bag_Base') 
 	"
 	configClasses (configfile >> "CfgVehicles" )
@@ -23,7 +22,7 @@
 // Glasses
 (
 	"
-	tolower (getText (_x >> 'dlc')) == 'gm' &&
+	(getText (_x >> 'DLC') == GRLIB_mod_west || (['LOP_', (configName _x), true] call F_startsWith)) &&
 	([(configName _x)] call is_allowed_item)
 	"
 	configClasses (configfile >> "CfgGlasses" )
@@ -32,8 +31,8 @@
 // Magazines
 (
 	"
-	tolower ((configName _x) select [0,3]) == 'gm_' &&
-	toLower (configName _x) find 'money' < 0 &&
+	((configName _x) select [0,4]) == 'rhs_' &&
+	(configName _x) find '_Tracer' < 0 &&
 	([(configName _x)] call is_allowed_item)
 	"
 	configClasses (configfile >> "CfgMagazines")

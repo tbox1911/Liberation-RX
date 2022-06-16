@@ -51,7 +51,7 @@ if (GRLIB_ACE_enabled) then {
 };
 
 
-if (!GRLIB_mod_enabled && _type == A3W_BoxWps) then {
+if (["A3_", GRLIB_mod_west, true] call F_startsWith && _type == A3W_BoxWps) then {
 	private _box_refill = selectRandom ["mission_Ammo","mission_USLaunchers","mission_USSpecial","mission_Main_A3snipers","mission_Ammo"];
 	[_box, _box_refill] call fn_refillbox;
 };

@@ -1,10 +1,18 @@
 // Add CUP Weapons
+private _exclude = [
+	"CUP_RUS","CUP_G_RUS","CUP_H_RUS","CUP_V_RUS","CUP_O","CUP_V_O","CUP_U_O_","CUP_I_B_","CUP_Vest_RUS",
+	"CUP_H_TKI","CUP_B_TKI","CUP_Vest_TKI"
+];
+
+//as exemple
+if (["CP_AFRF", GRLIB_mod_west, true] call F_startsWith) then { _exclude = ["CUP_BAF","CUP_B"] };
 
 // Weapons + Equipements (uniforms, etc..)
 (
 	"
 	(tolower (getText (_x >> 'DLC')) == 'cup_weapons' || tolower (getText (_x >> 'DLC')) == 'cup_units') &&
-	!((configName _x) in GRLIB_blacklisted_from_arsenal)
+	!([(configName _x), _exclude] call F_startsWithMultiple) &&
+	([(configName _x)] call is_allowed_item)
 	"
 	configClasses (configfile >> "CfgWeapons" )
 ) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
@@ -13,8 +21,10 @@
 (
 	"
 	(tolower (getText (_x >> 'DLC')) == 'cup_weapons' || tolower (getText (_x >> 'DLC')) == 'cup_units') &&
-	!((configName _x) in GRLIB_blacklisted_from_arsenal) &&
-	( (configName _x) find '_Bag' == -1 )
+	!([(configName _x), _exclude] call F_startsWithMultiple) &&
+	([(configName _x)] call is_allowed_item) &&
+	( (configName _x) find '_Bag' == -1 ) &&
+	((configName _x) iskindof 'Bag_Base') 
 	"
 	configClasses (configfile >> "CfgVehicles" )
 ) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
@@ -23,7 +33,8 @@
 (
 	"
 	(tolower (getText (_x >> 'DLC')) == 'cup_weapons' || tolower (getText (_x >> 'DLC')) == 'cup_units') &&
-	!((configName _x) in GRLIB_blacklisted_from_arsenal)
+	!([(configName _x), _exclude] call F_startsWithMultiple) &&
+	([(configName _x)] call is_allowed_item)
 	"
 	configClasses (configfile >> "CfgGlasses" )
 ) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
@@ -32,8 +43,8 @@
 (
 	"
 	tolower ((configName _x) select [0,4]) == 'cup_' &&
-	(configName _x) find '_Tracer' < 0 &&
-	!((configName _x) in GRLIB_blacklisted_from_arsenal)
+	tolower (configName _x) find '_tracer' < 0 &&
+	([(configName _x)] call is_allowed_item)
 	"
 	configClasses (configfile >> "CfgMagazines")
 ) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x)} ;
