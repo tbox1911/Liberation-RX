@@ -1,6 +1,6 @@
 // Add ArmA3 Weapons
 private _exclude = "O_";
-if (["A3_OPF", GRLIB_mod_west, true] call F_startsWith) then { _exclude ="B_" };
+if (["A3_OPF", GRLIB_mod_west, true] call F_startsWith) then { _exclude = "B_" };
 
 // Weapons + Equipements (uniforms, etc..)
 private _A3_Items = [

@@ -16,7 +16,7 @@ GRLIB_blacklisted_from_arsenal = blacklisted_bag + blacklisted_weapon;
 // Add Mod Items (Weapons,Uniform,etc.)
 [] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_init.sqf";
 
-//missing: ffaa, po
+//missing: ffaa, po   
 
 // Dedup list
 GRLIB_whitelisted_from_arsenal = GRLIB_whitelisted_from_arsenal arrayIntersect GRLIB_whitelisted_from_arsenal;

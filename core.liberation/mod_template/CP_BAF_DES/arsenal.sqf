@@ -3,6 +3,8 @@ blacklisted_bag = [
 ];
 
 blacklisted_weapon = [
+	'_Pod_',
+	"CUP_PylonPod_",
 	"CUP_optic_CWS",
 	"CUP_optic_AN_PAS_13c1",
 	"CUP_optic_AN_PAS_13c2",

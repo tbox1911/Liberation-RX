@@ -1,12 +1,9 @@
-// Add SOG Weapons
-private _exclude = "vn_o";
-if (GRLIB_mod_west == "SOG_VIETCONG") then { _exclude = "vn_b" };
+// Add RHS Weapons
 
 // Weapons + Equipements (uniforme, etc..)
 (
 	"
-	tolower ((configName _x) select [0,3]) == 'vn_' &&
-	!([_exclude, (configName _x), true] call F_startsWith) &&
+	(getText (_x >> 'DLC') == GRLIB_mod_west || (['LOP_', (configName _x), true] call F_startsWith)) &&
 	([(configName _x)] call is_allowed_item)
 	"
 	configClasses (configfile >> "CfgWeapons" )
@@ -15,10 +12,8 @@ if (GRLIB_mod_west == "SOG_VIETCONG") then { _exclude = "vn_b" };
 // Others object (bagpack, etc..)
 (
 	"
-	tolower ((configName _x) select [0,3]) == 'vn_' &&
-	!([_exclude, (configName _x), true] call F_startsWith) &&
-	([(configName _x)] call is_allowed_item) &&
-	((configName _x) find '_Bag' == -1 ) &&
+	(getText (_x >> 'DLC') == GRLIB_mod_west || (['LOP_', (configName _x), true] call F_startsWith)) &&
+	([(configName _x)] call is_allowed_item)  &&
 	((configName _x) iskindof 'Bag_Base') 
 	"
 	configClasses (configfile >> "CfgVehicles" )
@@ -27,8 +22,7 @@ if (GRLIB_mod_west == "SOG_VIETCONG") then { _exclude = "vn_b" };
 // Glasses
 (
 	"
-	tolower ((configName _x) select [0,3]) == 'vn_' &&
-	!([_exclude, (configName _x), true] call F_startsWith) &&
+	(getText (_x >> 'DLC') == GRLIB_mod_west || (['LOP_', (configName _x), true] call F_startsWith)) &&
 	([(configName _x)] call is_allowed_item)
 	"
 	configClasses (configfile >> "CfgGlasses" )
@@ -37,9 +31,8 @@ if (GRLIB_mod_west == "SOG_VIETCONG") then { _exclude = "vn_b" };
 // Magazines
 (
 	"
-	tolower ((configName _x) select [0,3]) == 'vn_' &&
-	!([_exclude, (configName _x), true] call F_startsWith) &&
-	tolower (configName _x) find '_t_mag' < 0 &&
+	((configName _x) select [0,4]) == 'rhs_' &&
+	(configName _x) find '_Tracer' < 0 &&
 	([(configName _x)] call is_allowed_item)
 	"
 	configClasses (configfile >> "CfgMagazines")
