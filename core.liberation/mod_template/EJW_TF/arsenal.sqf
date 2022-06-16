@@ -174,8 +174,6 @@ blacklisted_weapon = [
 	"_esd_",
 	"ej_launch_TitanDAT",
 	"ej_launch_TitanAAD"
-
-
 ];
 
 GRLIB_whitelisted_from_arsenal = [

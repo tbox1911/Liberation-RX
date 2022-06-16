@@ -4420,6 +4420,10 @@
 			<Chinese>虛擬武器庫</Chinese>
 			<Japanese>バーチャルアーセナルを有効にする</Japanese>
 		</Key>
+		<Key ID="STR_LIMIT_ARSENAL">
+			<Original>Limit Arsenal to player's camp</Original>
+			<French>Limiter l'Arsenal au camp des joueurs</French>
+		</Key>		
 		<Key ID="STR_VEH_LOCK">
 			<Original>Enable Vehicles Ownership</Original>
 			<French>Activer la Propriété des Véhicules </French>
