@@ -115,7 +115,8 @@ readiness_calc_sm_town = true;
 limit_readiness = true;
 fob_hunting_readiness = 25;
 
-
+// Deactivate HC spawning
+hc_spawn_off = false;
 
 //Datalink Options
 force_datalink = true;
