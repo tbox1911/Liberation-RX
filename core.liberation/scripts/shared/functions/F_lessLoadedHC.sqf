@@ -1,5 +1,7 @@
 private [ "_less_loaded_HC", "_previous_min_load", "_hc_stats"];
 
+if (isNil "hc_spawn_off") then {hc_spawn_off = false};
+
 _less_loaded_HC = objNull;
 _previous_min_load = 99999;
 
@@ -43,4 +45,9 @@ if ( isMultiplayer ) then {
 	};
 };
 
+
+
+				if (hc_spawn_off)then {
+					_less_loaded_HC = objNull;
+					};
 _less_loaded_HC
