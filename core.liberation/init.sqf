@@ -346,7 +346,35 @@ SNC_VehRestriction= true;
 
 
 
+["O_Plane_Fighter_02_F", "initPost", {
+   	params ["_vehicle"];
+   	[
+       	_vehicle,
+       	["Su57_Style1", 1],
+       	true
+   	] call BIS_fnc_initvehicle;
+   	_loadout_fighter = ["FIR_AIM120_P_1rnd_M", "FIR_AIM120_P_1rnd_M", "FIR_RBK250_P_1rnd_M", "FIR_RBK250_P_1rnd_M", "PylonRack_3Rnd_ACE_Hellfire_AGM114L", "PylonRack_3Rnd_ACE_Hellfire_AGM114L", "FIR_AIM120_P_1rnd_M", "FIR_AIM120_P_1rnd_M", "FIR_AIM7F_2_P_1rnd_M", "FIR_AIM7F_2_P_1rnd_M", "FIR_AIM120_P_1rnd_M", "FIR_AIM120_P_1rnd_M", "FIR_AIM120_P_1rnd_M"];
+   
+   	{
+       	vehicle _vehicle setPylonLoadout [_forEachindex, _x, true];
+   	} forEach _loadout_fighter;
 
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["O_Plane_CAS_02_Cluster_F", "initPost", {
+   	params ["_vehicle"];
+   	[
+       	_vehicle,
+       	["Su57_Style1", 1],
+       	true
+   	] call BIS_fnc_initvehicle;
+   
+   	_loadout_CAS = ["FIR_AIM120_P_1rnd_M", "CUP_PylonPod_1Rnd_R73_Vympel", "PylonRack_20Rnd_Rocket_03_HE_F", "FIR_RBK250_P_1rnd_M", "PylonRack_3Rnd_ACE_Hellfire_AGM114L", "PylonRack_3Rnd_ACE_Hellfire_AGM114L", "FIR_RBK250_P_1rnd_M", "PylonRack_20Rnd_Rocket_03_HE_F", "CUP_PylonPod_1Rnd_R73_Vympel", "FIR_AIM120_P_1rnd_M"];
+   
+   	{
+    	   vehicle _vehicle setPylonLoadout [_forEachindex, _x, true];
+   	} forEach _loadout_CAS;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
 
 

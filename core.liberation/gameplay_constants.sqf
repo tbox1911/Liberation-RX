@@ -107,7 +107,6 @@ skill_air_vehicles_planes = 1;
 skill_air_vehicles_helicopters = 1;
 skill_ground_vehicles = 1;
 
-test_hc_init = false;
 limit_hc_gr = true;
 // Readiness Increase from towns
 readiness_calc_bg_town = true;

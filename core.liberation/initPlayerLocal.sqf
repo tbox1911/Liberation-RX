@@ -98,14 +98,13 @@ if (isNil "limit_hc_gr") then {
 };
 
 if (!hasInterface && !isDedicated) then {
-	while(limit_hc_gr) do {
-		{
-			if ((count units _x) isEqualTo 0) then {
-				deleteGroup _x;
-			};
-		} count allGroups;
-		sleep 1;
-	};
+
+
+
+	[] execVM "MilSimUnited\delete_empty_groups.sqf";
+
+
+	
 
 	["O_Plane_Fighter_02_F", "initPost", {
     	params ["_vehicle"];
@@ -136,8 +135,6 @@ if (!hasInterface && !isDedicated) then {
      	   vehicle _vehicle setPylonLoadout [_forEachindex, _x, true];
     	} forEach _loadout_CAS;
 	}, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
-	test_hc_init = true;
 
 };
 
