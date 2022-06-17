@@ -83,6 +83,9 @@ global_arsenal = true;
 // true to activate factions selection
 FAC_MSU_ACTIVE = false;
 
+// Do not allow air vehicles to trigger zones. 
+air_cannot_trigger_on = true;
+
 //Differenced Ammo income 
 fallback_income = 50;
 income_sectors_bigtown = 50;
