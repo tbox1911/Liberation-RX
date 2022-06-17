@@ -101,7 +101,7 @@ while {alive _unit} do {
 		doStop _unit;
 		sleep 15;
 		[_unit, "AidlPsitMstpSnonWnonDnon_ground00"] remoteExec ["switchmove", 0];
-		[_unit, _unit_owner] call prisonner_captured;
+		[_unit, _unit_owner] remoteExec ["prisonner_captured",2];
 		sleep 15;
 		deleteVehicle _unit;
 	};
