@@ -137,10 +137,12 @@ if (!hasInterface && !isDedicated) then {
     	} forEach _loadout_CAS;
 	}, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
+	test_hc_init = true;
+
 };
 
 all_arsenals = [];
-
+/*
 {
 	_prc1 = format ["FAC_MSU\%1\arsenal.sqf", _x];
 	_handle1 = player execVM _prc1;
@@ -149,7 +151,7 @@ all_arsenals = [];
 	};
 	all_arsenals = all_arsenals + arsenal;
 } forEach ['USMC', 'USARMY', 'BW', 'BAF', 'FFAA', 'PMC'];
-
+*/
 hint format['
 	Karte öffnen, Regeln lesen! \n
 	Open map, read rules! \n

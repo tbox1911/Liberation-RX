@@ -37,6 +37,7 @@ if ( !isNil "GRLIB_whitelisted_steamids" ) then {
 
 0 enableChannel [false, true];
 1 enableChannel [false, true];
+2 enableChannel [false, true];
 
 
 // TFR Checker !isServer
