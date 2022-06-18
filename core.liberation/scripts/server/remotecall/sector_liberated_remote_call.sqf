@@ -85,9 +85,18 @@ if (_liberated_sector in sectors_tower) then {
 [markerPos _liberated_sector] call showlandmines;
 
 combat_readiness = combat_readiness + _combat_readiness_increase;
-if (combat_readiness >= 100.0 && GRLIB_difficulty_modifier <= 2.0) then {
-	combat_readiness = 100.0
+
+
+if (limit_readiness) then {
+    if (combat_readiness >= 100.0) then {
+        combat_readiness = 100.0
+    };
+} else {
+    if (combat_readiness >= 100.0 && GRLIB_difficulty_modifier <= 2.0) then {
+        combat_readiness = 100.0
+    };
 };
+
 stats_readiness_earned = stats_readiness_earned + _combat_readiness_increase;
 publicVariable "stats_readiness_earned";
 
@@ -100,7 +109,7 @@ publicVariable "blufor_sectors";
 stats_sectors_liberated = stats_sectors_liberated + 1;
 
 [] call recalculate_caps;
-[] call check_victory_conditions;
+[] spawn check_victory_conditions;
 
 sleep 1;
 
@@ -110,7 +119,7 @@ sleep 45;
 
 if (GRLIB_endgame == 0) then {
 	if ((!( _liberated_sector in sectors_tower )) &&
-	((floor(random (200.0 / (GRLIB_difficulty_modifier * GRLIB_csat_aggressivity) )) < (combat_readiness - 20)) || ( _liberated_sector in sectors_bigtown )) &&
+	((floor(random (200.0 / (GRLIB_difficulty_modifier * GRLIB_csat_aggressivity) )) < (combat_readiness - 10)) || ( _liberated_sector in sectors_bigtown )) &&
 	([] call F_opforCap < GRLIB_battlegroup_cap) &&
 	(diag_fps > 15.0)) then {
 		[ _liberated_sector ] spawn spawn_battlegroup;

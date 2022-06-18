@@ -66,7 +66,7 @@ if (_spawn_marker != "") then {
 
 	sleep 5;
 
-	combat_readiness = round(combat_readiness / 1.2);
+	combat_readiness = round(combat_readiness - 5 );
 
 	if (combat_readiness < 0) then {
 		combat_readiness = 0
