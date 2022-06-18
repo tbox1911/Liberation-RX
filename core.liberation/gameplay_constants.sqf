@@ -100,6 +100,8 @@ AI_leader_radio = false;
 // AI Limit
 ai_limit = 3;
 ai_limiter_on = true;
+// ai skill
+ai_skill = 10;
 
 skill_scan = true;
 skill_parachuters = 1;

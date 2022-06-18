@@ -5,7 +5,7 @@ private _wounded = false;
 (group _unit) allowFleeing 0;
 if ( damage _unit > 0.25 ) then { _wounded = true; };
 
-private _skillmodifier = sqrt GRLIB_difficulty_modifier;
+private _skillmodifier = sqrt ai_skill;
 private _inVehicle = false;
 if ( vehicle _unit != _unit ) then {
 	_inVehicle = true;
