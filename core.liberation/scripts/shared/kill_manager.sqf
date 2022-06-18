@@ -47,8 +47,14 @@ if (isServer) then {
 			if (count _nearby_bigtown > 0) then {
 				combat_readiness = combat_readiness + (0.5 * GRLIB_difficulty_modifier);
 				stats_readiness_earned = stats_readiness_earned + (0.5 * GRLIB_difficulty_modifier);
-				if (combat_readiness > 100.0 && GRLIB_difficulty_modifier < 2) then {
-					combat_readiness = 100.0
+				if (limit_readiness) then {
+				    if (combat_readiness >= 100.0) then {
+				        combat_readiness = 100.0
+				    };
+				} else {
+				    if (combat_readiness >= 100.0 && GRLIB_difficulty_modifier <= 2.0) then {
+				        combat_readiness = 100.0
+				    };
 				};
 			};
 		};
@@ -60,8 +66,14 @@ if (isServer) then {
 			if (count _nearby_smalltown > 0) then {
 				combat_readiness = combat_readiness + (0.02 * GRLIB_difficulty_modifier);
 				stats_readiness_earned = stats_readiness_earned + (0.02 * GRLIB_difficulty_modifier);
-				if (combat_readiness > 100.0 && GRLIB_difficulty_modifier < 2) then {
-					combat_readiness = 100.0
+				if (limit_readiness) then {
+				    if (combat_readiness >= 100.0) then {
+				        combat_readiness = 100.0
+				    };
+				} else {
+				    if (combat_readiness >= 100.0 && GRLIB_difficulty_modifier <= 2.0) then {
+				        combat_readiness = 100.0
+				    };
 				};
 			};
 		};
