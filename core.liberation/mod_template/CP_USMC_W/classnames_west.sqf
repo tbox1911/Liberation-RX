@@ -444,6 +444,9 @@ static_vehicles = [
     // Vanilla
       ["B_SAM_System_03_F",200,0,0,GRLIB_perm_inf],
       ["B_AAA_System_01_F",500,0,0,GRLIB_perm_inf],
+    // Mantis
+      ["rnt_mantis_base",200,0,0,GRLIB_perm_inf],
+      ["rnt_mantis_radar",0,0,0,GRLIB_perm_inf],
     // FFAA
       ["ffaa_lanzador_nasams",50,0,0,GRLIB_perm_inf],
     // CUP
