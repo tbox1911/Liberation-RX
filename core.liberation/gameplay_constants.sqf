@@ -114,7 +114,7 @@ limit_hc_gr = true;
 readiness_calc_bg_town = true;
 readiness_calc_sm_town = true;
 limit_readiness = true;
-fob_hunting_readiness = 25;
+fob_hunting_readiness = 40;
 
 // Deactivate HC spawning
 hc_spawn_off = false;

@@ -45,8 +45,8 @@ if (isServer) then {
 				(!(_x in blufor_sectors)) && ( _unit distance (markerPos _x) < 250)
 			} ] call BIS_fnc_conditionalSelect;
 			if (count _nearby_bigtown > 0) then {
-				combat_readiness = combat_readiness + (0.5 * GRLIB_difficulty_modifier);
-				stats_readiness_earned = stats_readiness_earned + (0.5 * GRLIB_difficulty_modifier);
+				combat_readiness = combat_readiness + (0.2 * GRLIB_difficulty_modifier);
+				stats_readiness_earned = stats_readiness_earned + (0.2 * GRLIB_difficulty_modifier);
 				if (limit_readiness) then {
 				    if (combat_readiness >= 100.0) then {
 				        combat_readiness = 100.0
@@ -64,8 +64,8 @@ if (isServer) then {
 				(!(_x in blufor_sectors)) && ( _unit distance (markerPos _x) < 250)
 			} ] call BIS_fnc_conditionalSelect;
 			if (count _nearby_smalltown > 0) then {
-				combat_readiness = combat_readiness + (0.02 * GRLIB_difficulty_modifier);
-				stats_readiness_earned = stats_readiness_earned + (0.02 * GRLIB_difficulty_modifier);
+				combat_readiness = combat_readiness + (0.01 * GRLIB_difficulty_modifier);
+				stats_readiness_earned = stats_readiness_earned + (0.01 * GRLIB_difficulty_modifier);
 				if (limit_readiness) then {
 				    if (combat_readiness >= 100.0) then {
 				        combat_readiness = 100.0
