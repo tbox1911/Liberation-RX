@@ -407,9 +407,19 @@ SNC_VehRestriction= true;
 	[_vehicle,4] call ace_cargo_fnc_setSpace;
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
-["RHS_MELB_MH6M", "InitPost", {
+["rhsusf_CH53e_USMC_D_cargo", "InitPost", {
     params ["_vehicle"];
-	[_vehicle,4] call ace_cargo_fnc_setSpace;
+	[_vehicle,30] call ace_cargo_fnc_setSpace;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["rhsusf_CH53e_USMC_D", "InitPost", {
+    params ["_vehicle"];
+	[_vehicle,30] call ace_cargo_fnc_setSpace;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["rhsusf_CH53E_USMC_GAU21_D", "InitPost", {
+    params ["_vehicle"];
+	[_vehicle,30] call ace_cargo_fnc_setSpace;
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
 ["RHS_MELB_AH6M", "InitPost", {
@@ -435,7 +445,7 @@ SNC_VehRestriction= true;
 
 ["RHS_CH_47F", "InitPost", {
     params ["_vehicle"];
-	[_vehicle,12] call ace_cargo_fnc_setSpace;
+	[_vehicle,24] call ace_cargo_fnc_setSpace;
 	[
 		_vehicle,
 		["Green",1], 
