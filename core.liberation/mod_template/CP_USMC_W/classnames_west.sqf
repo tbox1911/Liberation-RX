@@ -178,7 +178,7 @@ strong_light_vehicles = [
     ["UK3CB_BAF_Husky_Passenger_HMG_Green",0,strong_light_vehicle_price_tier_9,0,GRLIB_perm_inf],
     ["UK3CB_BAF_Husky_Passenger_GMG_Green",0,strong_light_vehicle_price_tier_10,0,GRLIB_perm_inf],
     ["UK3CB_BAF_Panther_GPMG_Green_A",0,strong_light_vehicle_price_tier_8,0,GRLIB_perm_inf],
-     //RHS
+  // RHS
     ["rhsusf_m1165a1_gmv_m134d_m240_socom_d",0,strong_light_vehicle_price_tier_2,0,GRLIB_perm_inf],
     ["rhsusf_m1165a1_gmv_m2_m240_socom_d",0,strong_light_vehicle_price_tier_2,0,GRLIB_perm_inf],
     ["rhsusf_m1165a1_gmv_mk19_m240_socom_d",0,strong_light_vehicle_price_tier_3,0,GRLIB_perm_inf],
@@ -923,7 +923,7 @@ uavs = [
     "B_AAA_System_01_F",
     "USAF_MQ9",
     "USAF_RQ4A",
-    "ffaa_ea_reaper"
+    "ffaa_ea_reaper",
     "rnt_mantis_base",
     "rnt_mantis_radar"
     ];
