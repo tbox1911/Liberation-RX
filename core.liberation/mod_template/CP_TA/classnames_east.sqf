@@ -109,6 +109,22 @@ opfor_vehicles = [
 	"E22_B_RAF_APC_Tracked_02_AA_F",
 	"E22_B_RAF_APC_Wheeled_04_cannon_F"
 ];
+opfor_vehicles_low_intensity = [
+	"CUP_O_2S6_RU",
+	"CUP_O_BM21_TKA",
+	"CUP_O_LR_SPG9_TKA",
+	"CUP_O_LR_AA_TKA",
+	"O_MBT_04_cannon_F",
+	"O_MBT_02_cannon_F",
+	"CUP_O_BMP1_TKA",
+	"CUP_O_BMP1P_TKA",
+	"CUP_O_BMP2_TKA",
+	"CUP_O_BRDM2_ATGM_TKA",
+	"CUP_O_BTR60_TK",
+	"CUP_O_BTR80_TK",
+	"CUP_O_BTR80A_TK"
+];
+
 
 opfor_battlegroup_vehicles_low_intensity = [
 	"CUP_O_2S6_RU",
@@ -125,6 +141,7 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"CUP_O_BTR80_TK",
 	"CUP_O_BTR80A_TK"
 ];
+
 
 opfor_battlegroup_vehicles = [ 
 	"CUP_O_2S6_RU",
