@@ -1,5 +1,5 @@
 // *** BADDIES *** 
-GRLIB_side_enemy = east; 
+GRLIB_side_enemy = EAST; 
 GRLIB_color_enemy = "ColorOPFOR"; 
 GRLIB_color_enemy_bright = "ColorRED"; 
  
