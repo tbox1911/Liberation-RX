@@ -642,7 +642,38 @@ support_vehicles_west = [
     ["UK3CB_BAF_MAN_HX58_Fuel_Green",0,logistic_ground_vehicle_price_tier_2,0,GRLIB_perm_inf],
     ["UK3CB_BAF_MAN_HX58_Repair_Green",0,logistic_ground_vehicle_price_tier_2,0,GRLIB_perm_inf],
     ["UK3CB_BAF_MAN_HX58_Cargo_Green_A",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
-    ["UK3CB_BAF_MAN_HX58_Cargo_Green_B",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf]
+    ["UK3CB_BAF_MAN_HX58_Cargo_Green_B",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+    
+    //RHS USAF
+    ["rhsusf_M1078A1R_SOV_M2_D_fmtv_socom",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+    ["rhsusf_M1084A1R_SOV_M2_D_fmtv_socom",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+    ["rhsusf_M1078A1P2_WD_fmtv_usarmy",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+    ["rhsusf_M1078A1P2_WD_flatbed_fmtv_usarmy",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+    ["rhsusf_M1078A1P2_B_WD_fmtv_usarmy",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+    ["rhsusf_M1078A1P2_B_WD_flatbed_fmtv_usarmy",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+    ["rhsusf_M1078A1P2_B_M2_WD_fmtv_usarmy",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+    ["rhsusf_M1078A1P2_B_M2_WD_flatbed_fmtv_usarmy",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+    ["rhsusf_M1078A1P2_B_WD_CP_fmtv_usarmy",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+    ["rhsusf_M1083A1P2_WD_fmtv_usarmy",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+    ["rhsusf_M1083A1P2_WD_flatbed_fmtv_usarmy",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+    ["rhsusf_M1083A1P2_B_WD_fmtv_usarmy",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+    ["rhsusf_M1083A1P2_B_WD_flatbed_fmtv_usarmy",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+    ["rhsusf_M1083A1P2_B_M2_WD_fmtv_usarmy",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+    ["rhsusf_M1083A1P2_B_M2_WD_flatbed_fmtv_usarmy",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+    ["rhsusf_M1085A1P2_B_WD_Medical_fmtv_usarmy",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+    ["rhsusf_M1084A1P2_WD_fmtv_usarmy",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+    ["rhsusf_M1084A1P2_B_WD_fmtv_usarmy",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+    ["rhsusf_M1084A1P2_B_M2_WD_fmtv_usarmy",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+    ["rhsusf_M977A4_AMMO_usarmy_wd",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+    ["rhsusf_M977A4_REPAIR_usarmy_wd",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+    ["rhsusf_M977A4_BKIT_usarmy_wd",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+    ["rhsusf_M977A4_AMMO_BKIT_usarmy_wd",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+    ["rhsusf_M977A4_BKIT_M2_usarmy_wd",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+    ["rhsusf_M977A4_AMMO_BKIT_M2_usarmy_wd",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+    ["rhsusf_M977A4_REPAIR_BKIT_M2_usarmy_wd",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+    ["rhsusf_M977A4_REPAIR_BKIT_usarmy_wd",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+    ["rhsusf_M978A4_usarmy_wd",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+    ["rhsusf_M978A4_BKIT_usarmy_wd",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf]
 ];
 
 support_crates = [
