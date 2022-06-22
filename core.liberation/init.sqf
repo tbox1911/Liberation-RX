@@ -24,7 +24,7 @@ if (!abort_loading) then {
 
 		[] execVM "scripts\server\init_server.sqf";
 		//Exec Vcom AI function
-		[] execVM "Vcom\VcomInit.sqf";
+		//[] execVM "Vcom\VcomInit.sqf";
 		//End of Vcom commands
 	};
 
