@@ -83,6 +83,8 @@ showMap = 1;
 briefing = 1;
 
 class CfgFunctions {
+	#include "vcom\cfgFunctions.hpp";
+	
 	class KP { 
 		#include "KP\KPCF\functions.hpp" 
 	};
@@ -122,6 +124,30 @@ class Repaint {
 	class repaintMenu {};
 	class repaintColor {};
 	class repaintVehicle {};
+};
+
+class CfgRemoteExec
+{
+	// List of script functions allowed to be sent from client via remoteExec
+	class Functions
+	{
+		mode = 2;
+		jip = 1;		
+		
+		class vcm_serverask { allowedTargets = 0;jip = 1; };
+		class VCM_PublicScript { allowedTargets = 0;jip = 1; };
+		class BIS_fnc_debugConsoleExec { allowedTargets = 0;jip = 1; };
+		class SpawnScript { allowedTargets = 0;jip = 1; };
+		class enableSimulationGlobal { allowedTargets = 0;jip = 1; };
+		class VCM_fnc_KnowAbout { allowedTargets = 0;jip = 1; };
+		
+	};
+	
+	
+};
+
+class Extended_PreInit_EventHandlers {
+	VCM_CBASettings = call compile preprocessFileLineNumbers "Vcom\Functions\VCM_Functions\fn_CBASettings.sqf";
 };
 
 #include "GREUH\UI\GREUH_interface.hpp"
