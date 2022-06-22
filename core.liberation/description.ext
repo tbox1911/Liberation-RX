@@ -83,8 +83,7 @@ showMap = 1;
 briefing = 1;
 
 class CfgFunctions {
-	#include "Vcom\cfgFunctions.hpp";
-	
+	#include "Vcom\cfgFunctions.hpp"
 	class KP { 
 		#include "KP\KPCF\functions.hpp" 
 	};
