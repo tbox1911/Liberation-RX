@@ -23,6 +23,9 @@ if (!abort_loading) then {
 	if (isServer) then {
 
 		[] execVM "scripts\server\init_server.sqf";
+		//Exec Vcom AI function
+		//[] execVM "Vcom\VcomInit.sqf";
+		//End of Vcom commands
 	};
 
 	if (!isDedicated && !hasInterface && isMultiplayer) then {
