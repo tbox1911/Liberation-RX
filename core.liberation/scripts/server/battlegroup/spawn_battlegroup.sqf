@@ -1,4 +1,6 @@
 if (GRLIB_endgame == 1) exitWith {};
+if (isNil "hc_battlegroup_on") then {hc_battlegroup_on = true};
+
 params ["_liberated_sector"];
 diag_log format ["Spawn BattlegGroup at %1", time];
 
@@ -77,7 +79,7 @@ if (_spawn_marker != "") then {
 	{
 		if (local _x) then {
 			_headless_client = [] call F_lessLoadedHC;
-			if (!isNull _headless_client) then {
+			if ((!isNull _headless_client) && (hc_battlegroup_on)) then {
 				_x setGroupOwner (owner _headless_client);
 			};
 		};
