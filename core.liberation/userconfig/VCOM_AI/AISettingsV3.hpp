@@ -22,11 +22,11 @@ Vcm_Settings =
 	VCM_ARTYWT = -(VCM_ARTYDELAY);
 	VCM_ARTYET = -(VCM_ARTYDELAY);
 	VCM_ARTYRT = -(VCM_ARTYDELAY);
-	VCM_ARTYSIDES = [west,east,resistance];  //Sides that will use VCOM/FFE artillery
-	VCM_AIMagLimit = 5; //Number of mags remaining before AI looks for ammo.
+	VCM_ARTYSIDES = [east];  //Sides that will use VCOM/FFE artillery
+	VCM_AIMagLimit = 3; //Number of mags remaining before AI looks for ammo.
 	VCM_Debug = false; //Enable debug mode.
-	VCM_MINECHANCE = 75; //Chance to lay a mine
-	VCM_SIDEENABLED = [west,east,resistance]; //Sides that will activate Vcom AI
+	VCM_MINECHANCE = 90; //Chance to lay a mine
+	VCM_SIDEENABLED = [east]; //Sides that will activate Vcom AI
 	VCM_RAGDOLL = true; //Should AI ragdoll when hit
 	VCM_RAGDOLLCHC = 50; //CHANCE AI RAGDOLL	
 	VCM_FullSpeed = true; //Enforce full speedmode during combat (Does not reset after combat end)
@@ -50,7 +50,7 @@ Vcm_Settings =
 	//VCM_AIDIFA = [['aimingAccuracy',0.15],['aimingShake',0.1],['aimingSpeed',0.25],['commanding',1],['courage',1],['endurance',1],['general',0.5],['reloadSpeed',1],['spotDistance',0.8],['spotTime',0.8]];
 		
 	//MEDIUM DIFFICULTY
-	VCM_AIDIFA = [['aimingAccuracy',0.25],['aimingShake',0.15],['aimingSpeed',0.35],['commanding',0.85],['courage',0.5],['general',1],['reloadSpeed',1],['spotDistance',0.85],['spotTime',0.85]];
+	VCM_AIDIFA = [['aimingAccuracy',0.25],['aimingShake',0.15],['aimingSpeed',0.35],['commanding',1],['courage',0.5],['general',1],['reloadSpeed',1],['spotDistance',1],['spotTime',0.85]];
 	
 	//HIGH DIFFICULTY
 	//VCM_AIDIFA = [['aimingAccuracy',0.35],['aimingShake',0.4],['aimingSpeed',0.45],['commanding',1],['courage',1],['endurance',1],['general',0.5],['reloadSpeed',1],['spotDistance',0.8],['spotTime',0.8]];
