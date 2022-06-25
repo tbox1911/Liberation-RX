@@ -100,18 +100,18 @@ boats_east = [
 	"I_Boat_Armed_01_minigun_F"
 ];
 
-opfor_vehicles = [
-	"E22_O_RAF_MBT_02_cannon_F",
-	"E22_O_RAF_MBT_04_command_F",
-	"E22_O_RAF_MBT_04_cannon_F",
-	"E22_O_RAF_APC_Tracked_02_cannon_AA_F",
-	"E22_O_RAF_MBT_02_arty_F",
-	"E22_B_RAF_APC_Tracked_02_AA_F",
-	"E22_B_RAF_APC_Wheeled_04_cannon_F"
+opfor_vehicles =  [
+	"CUP_O_Hilux_podnos_TK_INS",
+	"CUP_O_BMP2_RU",
+	"CUP_O_BTR90_RU",
+	"CUP_O_BMP3_RU",
+	"CUP_O_GAZ_Vodnik_BPPU_RU"
 ];
+
+
 opfor_vehicles_low_intensity = [
 	"CUP_O_2S6_RU",
-	"CUP_O_BM21_TKA",
+
 	"CUP_O_LR_SPG9_TKA",
 	"CUP_O_LR_AA_TKA",
 	"CUP_O_BMP1_TKA",
@@ -120,11 +120,13 @@ opfor_vehicles_low_intensity = [
 	"CUP_O_BRDM2_ATGM_TKA",
 	"CUP_O_BTR60_TK",
 	"CUP_O_BTR80_TK",
+
 	"CUP_O_BTR80A_TK"
 ];
 
 
 opfor_battlegroup_vehicles_low_intensity = [
+	"CUP_O_BM21_TKA",
 	"CUP_O_2S6_RU",
 	"CUP_O_BM21_TKA",
 	"CUP_O_LR_SPG9_TKA",
@@ -135,19 +137,23 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"CUP_O_BRDM2_ATGM_TKA",
 	"CUP_O_BTR60_TK",
 	"CUP_O_BTR80_TK",
+	"CUP_O_Hilux_podnos_TK_INS",
 	"CUP_O_BTR80A_TK"
 ];
 
 
 opfor_battlegroup_vehicles = [ 
 	"CUP_O_2S6_RU",
+	"CUP_O_BM21_TKA",
 	"CUP_O_2S6_RU",
+	"CUP_O_Hilux_podnos_TK_INS",
  "E22_O_RAF_MBT_02_cannon_F", 
  "E22_O_RAF_MBT_04_command_F", 
  "E22_O_RAF_MBT_04_cannon_F", 
  "E22_O_RAF_APC_Tracked_02_cannon_AA_F", 
  "E22_O_RAF_MBT_02_arty_F", 
  "E22_O_RAF_SAM_System_04_F", 
+ "E22_O_RAF_Radar_System_02_F",
  "E22_B_RAF_APC_Tracked_02_AA_F", 
  "E22_B_RAF_APC_Wheeled_04_cannon_F" 
 ]; 
