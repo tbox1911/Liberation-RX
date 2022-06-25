@@ -574,16 +574,18 @@ static_vehicles = [
     // CUP
       ["CUP_WV_B_RAM_Launcher",150,0,0,GRLIB_perm_inf],
       ["CUP_WV_B_SS_Launcher",250,0,0,GRLIB_perm_inf],
-    // Vanilla
-      ["B_SAM_System_03_F",200,0,0,GRLIB_perm_inf],
-      ["B_AAA_System_01_F",500,0,0,GRLIB_perm_inf],
+       // Vanilla
+      ["B_SAM_System_03_F",100,0,0,GRLIB_perm_inf],
+      ["B_AAA_System_01_F",50,0,0,GRLIB_perm_inf],
+      ["B_SAM_System_01_F",150,0,0,GRLIB_perm_inf],
     // Mantis
-      ["rnt_mantis_base",200,0,0,GRLIB_perm_inf],
-      ["rnt_mantis_radar",0,0,0,GRLIB_perm_inf],
+      ["rnt_mantis_base",100,0,0,GRLIB_perm_inf],
+      ["rnt_mantis_radar",0,0,40,GRLIB_perm_inf],
+   
     // FFAA
-      ["ffaa_lanzador_nasams",50,0,0,GRLIB_perm_inf],
+      ["ffaa_lanzador_nasams",25,0,0,GRLIB_perm_inf],
     // CUP
-      ["CUP_B_M119_USMC",0,800,0,GRLIB_perm_inf],
+      ["CUP_B_M119_USMC",0,600,0,GRLIB_perm_inf],
   // Super heavy
       ["B_Ship_MRLS_01_F",0,20000,0,GRLIB_perm_inf]
 ];
@@ -622,7 +624,7 @@ support_vehicles_west = [
     ["ffaa_et_m250_municion_blin",0,logistic_ground_vehicle_price_tier_2,0,GRLIB_perm_inf],
     ["ffaa_et_m250_combustible_blin",0,logistic_ground_vehicle_price_tier_2,0,GRLIB_perm_inf],
     ["ffaa_et_m250_repara_municion_blin",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
-    ["ffaa_et_m250_estacion_nasams_blin",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+    ["ffaa_et_m250_estacion_nasams_blin",0,logistic_ground_vehicle_price_tier_1,0,GRLIB_perm_inf],
   // Vanilla
     ["B_Truck_01_Ammo_F",0,logistic_ground_vehicle_price_tier_1,0,GRLIB_perm_inf],
     ["B_Truck_01_flatbed_F",0,logistic_ground_vehicle_price_tier_1,0,GRLIB_perm_inf],
