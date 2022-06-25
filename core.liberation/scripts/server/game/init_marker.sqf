@@ -2,24 +2,28 @@ if (!isServer) exitWith {};
 
 waituntil {sleep 1; !isNil "GRLIB_sectors_init"};
 
-private ["_vehicle", "_spawnpos", "_radius", "_max_try"];
+private ["_vehicle", "_spawnpos", "_startpos", "_radius", "_max_try"];
 private _marker_REPAIR = [];
 
 {
   _spawnpos = [];
   _max_try = 10;
   _radius = 50;
+  _startpos = markerPos _x;
 
   // Add repair pickup
   while { count _spawnpos == 0 && _max_try > 0 } do {
-    _spawnpos = [2, markerPos _x, _radius, 30, false] call R3F_LOG_FNCT_3D_tirer_position_degagee_sol;
-    // if (count _spawnpos > 0) then {
-    //   if (isOnRoad _spawnpos) then { _spawnpos = [] };
-    // };
-		_radius = _radius + 10;
-		_max_try = _max_try -1;
-		sleep 0.5;
-	};
+    _spawnpos = _startpos findEmptyPosition [1, _radius, "B_Heli_Transport_03_unarmed_F"];
+
+    if (count _spawnpos > 0) then {
+      if (isOnRoad _spawnpos) then { _spawnpos = [] };
+    } else {
+      _startpos = [markerPos _x , random 50 , random 360] call BIS_fnc_relPos;
+    };
+    _radius = _radius + 10;
+    _max_try = _max_try -1;
+    sleep 0.2;
+  };
 
   if ( count _spawnpos > 0 ) then {
     _vehicle = repair_offroad createVehicle _spawnpos;
