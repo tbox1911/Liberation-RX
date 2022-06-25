@@ -97,6 +97,9 @@ income_sectors_tower = 50;
 // AI Leaders have automaticly radios
 AI_leader_radio = false;
 
+// HC
+hc_battlegroup_on = false;
+
 // AI Limit
 ai_limit = 3;
 ai_limiter_on = true;
