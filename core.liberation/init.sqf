@@ -31,6 +31,13 @@ if (!abort_loading) then {
 	if (!isDedicated && !hasInterface && isMultiplayer) then {
 		[] execVM "scripts\server\offloading\hc_manager.sqf";
 	};
+	
+	//Tkill with diag.
+	["ace_unconscious", {
+	params ["_unit", "_state"];
+	if (isNil 'tk_active') then {tk_active = false};
+	if ((tk_active) && (_state) && (hasInterface))then {execVM "MilSimUnited\tkill.sqf"}}] call CBA_fnc_addEventHandler;
+	
 } else {
 	GRLIB_init_server = false;
 	publicVariable "GRLIB_init_server";
