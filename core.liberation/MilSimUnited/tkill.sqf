@@ -6,7 +6,7 @@
 	_last_shooter = last_shooter;
 	_got_shooted = got_shooted;
 
-	if (isNil tk_debug) then {tk_debug = false};
+	if (isNil 'tk_debug') then {tk_debug = false};
 
 	if (tk_debug) then {
 	hint (format ["last_shooter = %1, got_shooted = %2, _state = %3, _unit = %4", str _last_shooter,str _got_shooted, str _state, str _unit])
