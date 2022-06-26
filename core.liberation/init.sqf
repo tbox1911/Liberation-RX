@@ -56,7 +56,9 @@ if (!isDedicated && hasInterface) then {
 SNC_VehRestriction= true;
 
 // MilSim United ===========================================================================
+if (isNil "tkill_script") then {tkill_script = false};
 
+if (tkill_script) then {
 ["B_Soldier_F", "InitPost", {
 	params ["_vehicle"];
 	_vehicle addEventHandler ["Dammaged", {
@@ -96,7 +98,7 @@ SNC_VehRestriction= true;
 		};
 	}];
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
+};
 
 ["CargoNet_01_box_F", "InitPost", {
     params ["_vehicle"];
