@@ -80,6 +80,7 @@ if (abort_loading) exitWith { abort_loading_msg = format [
 	Correct the Side selection.\n
 	*********************************", GRLIB_mod_west, GRLIB_mod_east];
 };
+diag_log format ["--- LRX Mod Detection: %1 vs %2", GRLIB_mod_west, GRLIB_mod_east];
 
 // Detect Addons
 GRLIB_ACE_enabled = isClass(configFile >> "cfgPatches" >> "ace_main"); // Returns true if ACE is enabled
