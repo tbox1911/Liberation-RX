@@ -137,6 +137,23 @@ if (!hasInterface && !isDedicated) then {
 	}, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
 };
+if (isNil "tk_active") then {
+	tk_active = false
+};
+
+if (tk_active) then {
+	last_shooter = objNull;
+	got_shooted = objNull;
+	player addEventHandler ["Dammaged", {
+		params ["_unit", "_selection", "_damage", "_hitIndex", "_hitPoint", "_shooter", "_projectile"];
+		if ((isPlayer _shooter) && (_shooter != _unit) && (alive _unit) && (side _shooter == west)) then {
+			_msg = format ["Friendly fire from %1. Cease Fire!!!!", name _shooter];
+			[gamelogic, _msg] remoteExec ["globalChat", 0];
+			if(isPlayer _shooter) then {last_shooter = _shooter};
+			if(isPlayer _unit) then {got_shooted = _unit};
+		};
+	}];
+};
 
 all_arsenals = [];
 /*
