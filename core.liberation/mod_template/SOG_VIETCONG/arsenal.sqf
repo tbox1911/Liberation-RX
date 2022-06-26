@@ -13,6 +13,10 @@ blacklisted_bag = [
 ];
 
 blacklisted_weapon = [
+    "vn_anpvs2_binoc",
+    "vn_o_anpvs2_m40a1",
+    "vn_o_anpvs2_m16",
+    "vn_o_anpvs2_m14"    
 ];
 
 GRLIB_whitelisted_from_arsenal = [
@@ -33,5 +37,13 @@ GRLIB_whitelisted_from_arsenal = [
 	"SatchelCharge_Remote_Mag",
 	"SLAMDirectionalMine_Wire_Mag",
     "B_Kitbag_Base",
-	"B_Parachute"
+	"B_Parachute",
+    "vn_o_9x_m14",
+    "vn_o_9x_m40a1",
+    "vn_o_9x_m40a1_camo",
+    "vn_o_9x_m16",
+    "vn_o_4x_m16",
+    "vn_o_3x_m9130",
+    "vn_o_4x_m4956",
+    "vn_o_3x_m84"    
 ];
