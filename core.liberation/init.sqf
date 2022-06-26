@@ -36,7 +36,7 @@ if (!abort_loading) then {
 	["ace_unconscious", {
 	params ["_unit", "_state"];
 	if (isNil 'tk_active') then {tk_active = false};
-	if ((tk_active) && (_state) && (hasInterface))then {execVM "MilSimUnited\tkill.sqf"}}] call CBA_fnc_addEventHandler;
+	if ((tk_active) && (_state) && (hasInterface)) then {[_state,_unit]execVM "MilSimUnited\tkill.sqf"}}] call CBA_fnc_addEventHandler;
 	
 } else {
 	GRLIB_init_server = false;
