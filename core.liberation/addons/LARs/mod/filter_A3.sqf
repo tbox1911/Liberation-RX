@@ -23,7 +23,6 @@ private _A3_Items = [
 (
 	"
 	(getText (_x >> 'author')) == 'Bohemia Interactive' &&
-	!([_exclude, (configName _x), true] call F_startsWith) &&
 	([(configName _x)] call is_allowed_item) &&
 	((configName _x) iskindof 'Bag_Base') 
 	"
