@@ -1,6 +1,8 @@
 // JukeBox v1.02
 // by pSiKO
 
+if (GRLIB_SOG_enabled) exitWith {};		// SoG add his own jukebox
+
 // Music list
 JKB_music_list = [
 	["Radio", "radio_music",0],
