@@ -606,7 +606,8 @@ static_vehicles_AI = [
     "B_AAA_System_01_F",
     "CUP_WV_B_SS_Launcher",
     "rnt_mantis_base",
-    "rnt_mantis_radar"
+    "rnt_mantis_radar",
+    "B_SAM_System_01_F"
 ];
 
 support_vehicles_west = [
@@ -966,7 +967,8 @@ uavs = [
     "USAF_RQ4A",
     "ffaa_ea_reaper",
     "rnt_mantis_base",
-    "rnt_mantis_radar"
+    "rnt_mantis_radar",
+    "B_SAM_System_01_F"
     ];
 
 // Everything the AI troups should be able to resupply from
