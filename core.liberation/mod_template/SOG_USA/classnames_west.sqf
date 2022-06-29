@@ -180,15 +180,16 @@ support_vehicles_west = [
 
 buildings_west_overide = true;
 buildings_west = [
-	["Land_vn_usaf_revetment_helipad_01",0,0,0,GRLIB_perm_tank],
+	["Land_vn_object_ladder_01",0,0,0,0],
+	["Land_vn_b_trench_firing_04",0,0,0,GRLIB_perm_inf],
 	["Land_vn_b_trench_firing_05",0,0,0,GRLIB_perm_inf],
 	["Land_vn_b_trench_bunker_04_01",0,0,0,GRLIB_perm_log],
-	["Land_vn_b_trench_firing_04",0,0,0,GRLIB_perm_inf],
 	["Land_vn_b_trench_revetment_tall_09",0,0,0,0],
 	["Land_vn_b_tower_01",0,0,0,GRLIB_perm_tank],
+	["Land_vn_usaf_revetment_2",0,0,0,GRLIB_perm_tank],
+	["Land_vn_usaf_revetment_low_2",0,0,0,GRLIB_perm_tank],
+	["Land_vn_usaf_revetment_8",0,0,0,GRLIB_perm_air],
 	["Land_vn_usaf_revetment_low_8",0,0,0,GRLIB_perm_air],
-	["Land_vn_usaf_revetment_low_2",0,0,0,GRLIB_perm_air],
-	["Land_vn_object_ladder_01",0,0,0,0],
 	["Land_vn_b_trench_20_01",0,0,0,0],
 	["Land_vn_b_trench_05_01",0,0,0,0],
 	["Land_vn_b_trench_tee_01",0,0,0,0],
@@ -198,12 +199,11 @@ buildings_west = [
 	["Land_vn_tent_mash_01_03",0,0,0,GRLIB_perm_inf],
 	["Land_vn_bagfence_01_long_green_f",0,0,0,GRLIB_perm_inf],
 	["Land_vn_bagfence_01_round_green_f",0,0,0,GRLIB_perm_inf],
-	["vn_banner_usarmy",0,0,0,0],
-	["vn_flag_usarmy",0,0,0,0],
 	["Land_vn_lampshabby_f_4xdir_far",0,0,0,0],
 	["Land_vn_b_trench_stair_02",0,0,0,0],
-	["Land_vn_usaf_revetment_2",0,0,0,GRLIB_perm_max],
-	["Land_vn_usaf_revetment_8",0,0,0,GRLIB_perm_max]
+	["Land_vn_b_helipad_01",0,0,0,GRLIB_perm_inf],
+	["Land_vn_usaf_revetment_helipad_01",0,0,0,GRLIB_perm_tank],
+	["vn_flag_usarmy",0,0,0,0]
 ];
 
 blufor_squad_inf_light = [
