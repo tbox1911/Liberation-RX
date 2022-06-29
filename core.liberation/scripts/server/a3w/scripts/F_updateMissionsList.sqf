@@ -47,6 +47,16 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 	};
 };
 
+// Helicopter Capture
+_mission_name = "mission_HeliCapture";
+if (!([_missionsList, _mission_name] call getMissionState)) then {
+	if (_opfor_factor > 60) then {
+		[_missionsList, _mission_name, false] call setMissionState;
+	} else {
+		[_missionsList, _mission_name, true] call setMissionState;
+	};
+};
+
 // Disable HostileHelicopter if no more bigcity
 _mission_name = "mission_HostileHelicopter";
 if (!([_missionsList, _mission_name] call getMissionState)) then {

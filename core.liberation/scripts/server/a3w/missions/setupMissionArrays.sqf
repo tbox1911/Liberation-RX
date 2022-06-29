@@ -17,6 +17,7 @@ SideMissions = [
 	["mission_HostileHelicopter", 1],
 	["mission_MeetResistance", 1],
 	["mission_VehicleCapture", 1],
+	["mission_HeliCapture", 1],
 	["mission_Outpost", 1]
 ];
 
