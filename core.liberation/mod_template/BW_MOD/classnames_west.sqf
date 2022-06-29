@@ -122,7 +122,7 @@ support_vehicles_west = [
 	["B_G_Offroad_01_repair_F",5,15,5,GRLIB_perm_inf],
 	["B_G_Van_01_fuel_F",5,15,20,GRLIB_perm_inf],
 	["CargoNet_01_box_F",0,150,0,GRLIB_perm_tank],		// empty box for transporting equipment
-	["Box_NATO_WpsLaunch_F",0,550,0,GRLIB_perm_tank],	// the only one what works (all other boxes are empty ???)
+	["Box_NATO_WpsLaunch_F",0,550,0,GRLIB_perm_tank],
 	["B_APC_Tracked_01_CRV_F",15,2000,50,GRLIB_perm_max]
 ];
 

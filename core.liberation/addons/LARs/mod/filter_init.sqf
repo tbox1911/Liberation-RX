@@ -37,10 +37,12 @@ if (["SOG_", GRLIB_mod_west, true] call F_startsWith) then {
 };
 // Add 3CB Weapons
 if (["3CB_", GRLIB_mod_west, true] call F_startsWith) then {
+	//[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_RHS.sqf";
 	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_3CB.sqf";
 };
 // Add CWR Weapons
-if (["CWR_", GRLIB_mod_west, true] call F_startsWith) then {
+if (["CWR3_", GRLIB_mod_west, true] call F_startsWith) then {
+	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_CUP.sqf";
 	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_CWR.sqf";
 };
 // Add FFAA Weapons
@@ -49,5 +51,6 @@ if (["FFAA_", GRLIB_mod_west, true] call F_startsWith) then {
 };
 // Add PO Weapons
 if (["PO_", GRLIB_mod_west, true] call F_startsWith) then {
+	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_RHS.sqf";
 	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_PO.sqf";
 };

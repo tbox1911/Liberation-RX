@@ -5,7 +5,8 @@ private _exclude = [
 ];
 
 //as exemple
-if (["CP_AFRF", GRLIB_mod_west, true] call F_startsWith) then { _exclude = ["CUP_BAF","CUP_B"] };
+if (GRLIB_mod_west == "CP_AFRF") then { _exclude = ["CUP_B"] };
+if (GRLIB_mod_west == "CWR3_SOV") then { _exclude = ["CUP_B"] };
 
 // Weapons + Equipements (uniforms, etc..)
 (
