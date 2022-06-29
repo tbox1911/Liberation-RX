@@ -1,21 +1,22 @@
 if (!isServer && hasInterface) exitWith {};
 params ["_player", "_vehicle"];
 
-_crew = crew _vehicle;
-_grp = group (_crew select 0);
+private _crew = crew _vehicle;
 _crew allowGetIn false;
 {
 	[_x] spawn {
 		params ["_unit"];
-		unassignVehicle _unit;
-		commandGetOut _unit;
-		doGetOut _unit;
-		sleep 2;
+        if (local _unit) then {
+		    unassignVehicle _unit;
+		    doGetOut _unit;
+		    sleep 2;
+        };
 		if !(isNull objectParent  _unit) then { moveOut _unit };
 	};
 	sleep 0.2;
 } forEach _crew;
 
+private _grp = group (_crew select 0);
 if (side _grp == GRLIB_side_civilian && !([_player, _vehicle] call is_owner)) then {
     [localize "STR_DO_EJECT"] remoteExec ["hintSilent", owner _player];
     ["vtolAlarm"] remoteExec ["playSound", owner _player];
