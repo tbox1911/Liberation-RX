@@ -1,4 +1,6 @@
-params ["_item"]; 
+params ["_item"];
+if (isNil "_item") exitWith { false };
+
 private _ret = true; 
 
 if (GRLIB_blacklisted_from_arsenal find _item >= 0) then {
