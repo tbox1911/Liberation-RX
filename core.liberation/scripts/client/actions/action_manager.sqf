@@ -352,7 +352,7 @@ while { true } do {
 		// Pack Beacon
 		_idact_id = _idact_id + 1;
 		_idact_num = _id_actions select _idact_id;
-		if (!_near_lhd && typeOf cursorObject == mobile_respawn ) then {
+		if (!_near_lhd && typeOf cursorObject == mobile_respawn && ([player, cursorObject] call is_owner) ) then {
 			if ( _idact_num == -1 ) then {
 				_idact = player addAction ["<t color='#FFFF00'>" + localize "STR_PACK_BEACON" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_beacon_pack.sqf",cursorObject,-950,true,true,"","!(cursorObject getVariable ['tent_in_use', false])"];
 				_id_actions set [_idact_id, _idact];
