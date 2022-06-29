@@ -42,7 +42,7 @@ if ( _classname isKindOf "Air" ) then {
 	};
 	_newvehicle = createVehicle [_classname, _spawnpos, [], 0, "NONE"];
 };
-waitUntil {sleep 0.1; !isNull _newvehicle};
+waitUntil {!isNull _newvehicle};
 _newvehicle allowDamage false;
 diag_log format [ "Spawn vehicle %1 pos %2", _classname , _spawnpos ];
 

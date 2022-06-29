@@ -27,7 +27,7 @@ private _marker_REPAIR = [];
 
   if ( count _spawnpos > 0 ) then {
     _vehicle = repair_offroad createVehicle _spawnpos;
-    waitUntil {sleep 0.1; !isNull _vehicle};
+    waitUntil {!isNull _vehicle};
     _vehicle allowDamage false;
     _vehicle setVehicleLock "LOCKED";
     _vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
