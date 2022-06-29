@@ -93,21 +93,17 @@ LOADOUT_free_items = [
 ];
 
 light_vehicles = [
+	["vn_c_bicycle_01",1,1,1,0],
 	// Boat
 	["vn_o_boat_01_02",1,10,1,0],
 	["vn_o_boat_01_mg_02",1,25,1,GRLIB_perm_inf],
-	["vn_o_boat_02_02",1,20,1,GRLIB_perm_inf],
-	["vn_o_boat_02_mg_02",1,45,1,GRLIB_perm_log],
 	["vn_b_boat_06_01",20,400,20,GRLIB_perm_tank],
 	["vn_b_boat_05_01",20,400,20,GRLIB_perm_tank],
 	// Land
-	["vn_o_car_01_01",1,5,1,0],
-	["vn_o_car_03_01",1,10,1,0],
-	["vn_o_car_02_01",1,15,1,0],
+	["vn_b_wheeled_m151_01",1,5,1,0],
+	["vn_b_wheeled_m151_02",2,40,2,GRLIB_perm_inf],
 	["vn_o_car_04_01",1,25,2,0],
 	["vn_o_car_04_mg_01",2,40,2,GRLIB_perm_inf],
-	["vn_b_wheeled_m151_01",2,50,2,GRLIB_perm_inf],
-	["vn_b_wheeled_m151_02",2,65,2,GRLIB_perm_inf],
 	["vn_b_wheeled_m151_mg_04",3,75,2,GRLIB_perm_log],
 	["vn_b_wheeled_m151_mg_02",3,100,2,GRLIB_perm_log],
 	["vn_b_wheeled_m151_mg_03",3,125,2,GRLIB_perm_log],
