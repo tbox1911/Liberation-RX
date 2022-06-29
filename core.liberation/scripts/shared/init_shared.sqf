@@ -24,6 +24,7 @@ unload_truck_remote_call = compileFinal preprocessFileLineNumbers "scripts\serve
 load_context_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\load_context_remote_call.sqf";
 ammo_add_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\ammo_add_remote_call.sqf";
 ammo_del_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\ammo_del_remote_call.sqf";
+eject_crew_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\eject_crew_remote_call.sqf";
 sog_tunnel_enter_remotecall = compileFinal preprocessFileLineNumbers "scripts\server\sog\sog_tunnel_enter_remotecall.sqf";
 
 // Client Side
