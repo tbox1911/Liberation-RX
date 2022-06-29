@@ -229,7 +229,8 @@ GRLIB_vehicle_whitelist = [
 	waterbarrel_typename,
 	fuelbarrel_typename,
 	foodbarrel_typename,
-	medicalbox_typename
+	medicalbox_typename,
+	"Box_NATO_WpsLaunch_F"
 ] + GRLIB_vehicle_whitelist_west + opfor_statics;
 
 // Blacklist Vehicle (lock, paint, delete)
