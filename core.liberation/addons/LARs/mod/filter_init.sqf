@@ -37,7 +37,7 @@ if (["SOG_", GRLIB_mod_west, true] call F_startsWith) then {
 };
 // Add 3CB Weapons
 if (["3CB_", GRLIB_mod_west, true] call F_startsWith) then {
-	//[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_RHS.sqf";
+	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_RHS.sqf";
 	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_3CB.sqf";
 };
 // Add CWR Weapons
