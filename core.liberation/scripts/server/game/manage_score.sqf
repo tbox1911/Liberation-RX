@@ -92,10 +92,13 @@ while { true } do {
 						[gamelogic, _text] remoteExec ["globalChat", 0];
 						_text = "Over.";
 						[gamelogic, _text] remoteExec ["globalChat", 0];
-						[getPosATL _x, 'normal','blue'] spawn GRAD_fireworks_fnc_prepareFireworks;
-						sleep 2;
-						[getPosATL _x, 'normal','white'] spawn GRAD_fireworks_fnc_prepareFireworks;
-						sleep 2;
+						// fireworks !
+						if (_firework) then {
+							[getPosATL _x, 'normal','blue'] spawn GRAD_fireworks_fnc_prepareFireworks;
+							sleep 2;
+							[getPosATL _x, 'normal','white'] spawn GRAD_fireworks_fnc_prepareFireworks;
+							sleep 2;
+						};
 					};
 
 					// fireworks !
