@@ -97,7 +97,9 @@ militia_vehicles = [
 ];
 
 boats_east = [
-	"I_Boat_Armed_01_minigun_F"
+	"CUP_O_BMP2_TKA",
+	"CUP_O_BMP2_ZU_TKA",
+	"CUP_O_BTR80A_TK"
 ];
 
 opfor_vehicles =  [
@@ -128,7 +130,6 @@ opfor_vehicles_low_intensity = [
 opfor_battlegroup_vehicles_low_intensity = [
 	"CUP_O_BM21_TKA",
 	"CUP_O_ZSU23_Afghan_SLA",
-	"CUP_O_BM21_TKA",
 	"CUP_O_LR_SPG9_TKA",
 	"CUP_O_LR_AA_TKA",
 	"CUP_O_BMP1_TKA",
