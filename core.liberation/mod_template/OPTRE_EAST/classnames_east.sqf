@@ -84,7 +84,7 @@ militia_vehicles = [
 	"O_LSV_02_AT_F"
 ];
 
-opfor_boat = [
+boats_east = [
 	"optre_catfish_ins_mg_f"
 ];
 

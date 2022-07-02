@@ -42,7 +42,6 @@ if (["3CB_", GRLIB_mod_west, true] call F_startsWith) then {
 };
 // Add CWR Weapons
 if (["CWR3_", GRLIB_mod_west, true] call F_startsWith) then {
-	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_CUP.sqf";
 	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_CWR.sqf";
 };
 // Add FFAA Weapons
