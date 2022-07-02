@@ -38,28 +38,18 @@ opfor_ammo_container = "CUP_TKBasicAmmunitionBox_EP1";
 opfor_flag = "CUP_Flag_Black";
 
 militia_squad = [
-	"CUP_O_RU_Soldier_AHAT_M_EMR_V2",
-	"CUP_O_RU_Soldier_AR_M_EMR_V2",
-	"CUP_O_RU_Soldier_GL_M_EMR_V2",
-	"CUP_O_RU_Soldier_Engineer_M_EMR_V2",
-	"CUP_O_RU_Soldier_A_M_EMR_V2",
-	"CUP_O_RU_Officer_M_EMR_V2",
-	"CUP_O_RU_Soldier_AA_M_EMR_V2",
-	"CUP_O_RU_Soldier_LAT_M_EMR_V2",
-	"CUP_O_RU_Soldier_Repair_M_EMR_V2",
-	"CUP_O_RU_Soldier_Medic_M_EMR_V2",
-	"CUP_O_RU_Soldier_M_EMR_V2",
-	"CUP_O_RU_Soldier_Lite_M_EMR_V2",
-	"CUP_O_RU_Soldier_AT_M_EMR_V2",
-	"CUP_O_RU_Soldier_Saiga_M_EMR_V2",
-	"CUP_O_RU_Soldier_HAT_M_EMR_V2",
-	"CUP_O_RU_Soldier_Marksman_M_EMR_V2",
-	"CUP_O_RU_Soldier_MG_M_EMR_V2",
-	"CUP_O_RU_Soldier_Exp_M_EMR_V2",
-	"CUP_O_RU_Soldier_TL_M_EMR_V2",
-	"CUP_O_RU_Soldier_SL_M_EMR_V2",
-	"CUP_O_RU_Soldier_AAR_M_EMR_V2",
-	"CUP_O_RU_Soldier_AAT_M_EMR_V2"
+	"CUP_O_RU_Soldier_SL_MSV_VSR93",
+	"CUP_O_RU_Soldier_TL_MSV_VSR93",
+	"CUP_O_RU_Soldier_Exp_MSV_VSR93",
+	"CUP_O_RU_Soldier_MG_MSV_VSR93",
+	"CUP_O_RU_Soldier_Marksman_MSV_VSR93",
+	"CUP_O_RU_Soldier_HAT_MSV_VSR93",
+	"CUP_O_RU_Soldier_AT_MSV_VSR93",
+	"CUP_O_RU_Soldier_LAT_MSV_VSR93",
+	"CUP_O_RU_Soldier_Lite_MSV_VSR93",
+	"CUP_O_RU_Soldier_MSV_VSR93",
+	"CUP_O_RU_Soldier_GL_MSV_VSR93",
+	"CUP_O_RU_Soldier_AR_MSV_VSR93"
 ];
 
 militia_loadout_overide = [
