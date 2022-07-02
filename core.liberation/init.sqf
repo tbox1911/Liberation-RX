@@ -20,23 +20,29 @@ if (!abort_loading) then {
 	[] call compileFinal preprocessFileLineNUmbers "scripts\shared\init_sectors.sqf";
 	if (!GRLIB_ACE_enabled) then {[] execVM "R3F_LOG\init.sqf"};
 
-	if (isServer) then {
+		if (isServer) then {
 
 		[] execVM "scripts\server\init_server.sqf";
 		//Exec Vcom AI function
 		[] execVM "Vcom\VcomInit.sqf";
 		//End of Vcom commands
-	};
 
-	if (!isDedicated && !hasInterface && isMultiplayer) then {
+		//Tkill with diag.
+		if (isNil 'tk_init_allowed') then {tk_init_allowed = false};
+
+		if (tk_init_allowed) then {
+		
+		["ace_unconscious", {
+		params ["_unit", "_state"];
+		if (isNil 'tk_active') then {tk_active = false};
+		if ((tk_active) && (_state) && (hasInterface)) then {[_state,_unit]execVM "MilSimUnited\tkill.sqf"}}] call CBA_fnc_addEventHandler;
+		}
+	};
+	
+		if (!isDedicated && !hasInterface && isMultiplayer) then {
 		[] execVM "scripts\server\offloading\hc_manager.sqf";
 	};
 	
-	//Tkill with diag.
-	["ace_unconscious", {
-	params ["_unit", "_state"];
-	if (isNil 'tk_active') then {tk_active = false};
-	if ((tk_active) && (_state) && (hasInterface)) then {[_state,_unit]execVM "MilSimUnited\tkill.sqf"}}] call CBA_fnc_addEventHandler;
 	
 } else {
 	GRLIB_init_server = false;
