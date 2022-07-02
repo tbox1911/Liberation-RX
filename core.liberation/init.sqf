@@ -29,15 +29,16 @@ if (!abort_loading) then {
 
 		//Tkill with diag.
 		if (isNil 'tk_init_allowed') then {tk_init_allowed = false};
-
-		if (tk_init_allowed) then {
 		
+		if (tk_init_allowed) then {
 		["ace_unconscious", {
 		params ["_unit", "_state"];
+		
 		if (isNil 'tk_active') then {tk_active = false};
-		if ((tk_active) && (_state) && (hasInterface)) then {[_state,_unit]execVM "MilSimUnited\tkill.sqf"}}] call CBA_fnc_addEventHandler;
+		if ((tk_active) && (_state) && (isPlayer _unit)) then {[_state,_unit]execVM "MilSimUnited\tkill.sqf"}}] call CBA_fnc_addEventHandler;
 		}
 	};
+		
 	
 		if (!isDedicated && !hasInterface && isMultiplayer) then {
 		[] execVM "scripts\server\offloading\hc_manager.sqf";
