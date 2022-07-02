@@ -111,7 +111,7 @@ opfor_vehicles =  [
 
 
 opfor_vehicles_low_intensity = [
-	"CUP_O_2S6_RU",
+	"CUP_O_ZSU23_Afghan_SLA",
 	"CUP_O_LR_SPG9_TKA",
 	"CUP_O_LR_AA_TKA",
 	"CUP_O_BMP1_TKA",
@@ -127,7 +127,7 @@ opfor_vehicles_low_intensity = [
 
 opfor_battlegroup_vehicles_low_intensity = [
 	"CUP_O_BM21_TKA",
-	"CUP_O_2S6_RU",
+	"CUP_O_ZSU23_Afghan_SLA",
 	"CUP_O_BM21_TKA",
 	"CUP_O_LR_SPG9_TKA",
 	"CUP_O_LR_AA_TKA",
@@ -144,12 +144,15 @@ opfor_battlegroup_vehicles_low_intensity = [
 
 
 opfor_battlegroup_vehicles = [ 
-	"CUP_O_2S6_RU",
+	"CUP_O_ZSU23_Afghan_SLA",
 	"CUP_O_T90_RU",
+	"CUP_O_BMP3_RU",
+	"CUP_O_BMP3_RU",
 	"CUP_O_BMP3_RU",
 	"CUP_O_BM21_TKA",
 	"CUP_O_BTR80A_TK",
-	"CUP_O_2S6_RU",
+	"CUP_O_BTR80A_TK",
+	"CUP_O_BTR80A_TK",
 	"CUP_O_Hilux_podnos_TK_INS"
 ]; 
 
