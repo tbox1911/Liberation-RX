@@ -409,7 +409,154 @@ if (tkill_script) then {
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
 
+["JS_JC_FA18F", "InitPost", {
+    params ["_vehicle"];
+	_vehicle setVariable ["ace_pylons_magazineWhitelist",
+	[
+	"FIR_AIM9X_P_1rnd_M","FIR_AIM9X_LAU115_P_1rnd_M",
+	"FIR_AIM9X_P_2rnd_M","FIR_AIM9X_LAU115_P_2rnd_M","FIR_AIM120A_P_1rnd_M","FIR_AIM120B_P_1rnd_M","FIR_AIM120_P_1rnd_M",
+	"FIR_AIM120B_LAU115_P_1rnd_M","FIR_AIM120_LAU115_P_1rnd_M","FIR_AIM120B_LAU115_P_2rnd_M",
+	"FIR_AIM120B_LAU115BA_P_2rnd_M","FIR_AIM120_LAU115_P_2rnd_M","FIR_AIM120_LAU115BA_P_2rnd_M",
+	"FIR_AIM7_2_P_1rnd_M","FIR_AIM7F_2_P_1rnd_M","FIR_GBU10_P_1rnd_M","FIR_GBU10_Navy_P_1rnd_M",
+	"FIR_GBU24A_P_1rnd_M","FIR_GBU24B_P_1rnd_M","FIR_GBU24A_BLU109_P_1rnd_M",
+	"FIR_GBU24B_BLU109_P_1rnd_M","FIR_GBU24EB_P_1rnd_M","FIR_GBU12_P_1rnd_M","FIR_GBU12_Navy_P_1rnd_M"
+	,"FIR_GBU12_P_2rnd_M","FIR_GBU12_Navy_P_2rnd_M","FIR_GBU12_P_3rnd_M","FIR_GBU12_Navy_P_3rnd_M",
+	"FIR_EGBU12_P_1rnd_M","FIR_EGBU12_P_2rnd_M","FIR_EGBU12_Navy_P_2rnd_M","FIR_EGBU12_P_3rnd_M",
+	"FIR_GBU16_Navy_P_1rnd_M","FIR_GBU16_Navy_P_2rnd_M","FIR_GBU31_P_1rnd_M","FIR_GBU31_Navy_P_1rnd_M"
+	,"FIR_GBU31_BLU109_P_1rnd_M","FIR_GBU56_P_1rnd_M","FIR_GBU56_Navy_P_1rnd_M","FIR_GBU32_P_1rnd_M",
+	"FIR_GBU32_Navy_P_1rnd_M","FIR_GBU32_Navy_P_2rnd_M","FIR_GBU38_P_1rnd_M","FIR_GBU38_Navy_P_1rnd_M"
+	,"FIR_GBU38_P_2rnd_M","FIR_GBU38_Navy_P_2rnd_M","FIR_GBU38_P_3rnd_M","FIR_GBU54_P_1rnd_M",
+	"FIR_GBU54_P_2rnd_M","FIR_GBU54_Navy_P_2rnd_M","FIR_GBU54_P_3rnd_M",
+	"FIR_AGM154A_P_1rnd_M","FIR_AGM154C_P_1rnd_M","FIR_KGGB_P_1rnd_M",
+	"FIR_Mk82_GP_P_1rnd_M","FIR_Mk82_GP_Navy_P_1rnd_M","FIR_Mk82_GP_prox_P_1rnd_M",
+	"FIR_Mk82_GP_Navy_prox_P_1rnd_M","FIR_Mk82_GP_Navy_P_2rnd_M","FIR_Mk82_GP_P_3rnd_M","FIR_Mk82_snakeye_P_1rnd_M",
+	"FIR_Mk82_snakeye_Navy_P_1rnd_M","FIR_Mk82_snakeye_Navy_P_2rnd_M","FIR_Mk82_snakeye_P_3rnd_M","FIR_Mk83_GP_Navy_P_1rnd_M","FIR_Mk83_GP_Navy_P_2rnd_M",
+	"FIR_Mk84_GP_P_1rnd_M","FIR_Mk84_GP_Navy_P_1rnd_M","FIR_CBU87_P_1rnd_M","FIR_CBU87_P_BRU57_2rnd_M"
+	,"FIR_CBU87_P_TripleRack_2rnd_M","FIR_CBU100_P_1rnd_M","FIR_CBU100_P_TripleRack_2rnd_M",
+	"FIR_CBU100_P_TripleRack_3rnd_M","FIR_CBU78_P_1rnd_M","FIR_CBU78_P_BRU57_2rnd_M",
+	"FIR_CBU89_P_1rnd_M","FIR_CBU89_P_BRU57_2rnd_M","FIR_CBU89_P_TripleRack_2rnd_M",
+	"FIR_CBU97_P_1rnd_M","FIR_CBU97_P_BRU57_2rnd_M","FIR_CBU97_P_TripleRack_2rnd_M",
+	"FIR_CBU103_P_1rnd_M","FIR_CBU103_P_BRU57_2rnd_M","FIR_CBU103_P_TripleRack_2rnd_M",
+	"FIR_CBU105_P_1rnd_M","FIR_CBU105_P_BRU57_2rnd_M","FIR_CBU105_P_TripleRack_2rnd_M",
+	"FIR_PDU5B_P_1rnd_M","FIR_PDU5B_Custom1_P_1rnd_M","FIR_PDU5B_Custom2_P_1rnd_M",
+	"FIR_PDU5B_Custom3_P_1rnd_M","FIR_AGM88_P_1rnd_M","FIR_AGM84E_P_1rnd_M","FIR_AGM84H_P_1rnd_M",
+	"FIR_AGM84K_P_1rnd_M","FIR_AGM158B_P_1rnd_M","FIR_AGM65D_P_1rnd_M",
+	"FIR_AGM65H_P_1rnd_M","FIR_AGM65F_P_1rnd_M","FIR_AGM65G_P_1rnd_M",
+	"FIR_AGM65K_P_1rnd_M","FIR_AGM65E_P_1rnd_M","FIR_AGM65E2_P_1rnd_M","FIR_AGM65L_P_1rnd_M",
+	"FIR_Hydra_P_7rnd_M","FIR_Hydra_LAU130_P_19rnd_M","FIR_Hydra_P_21rnd_M","FIR_Hydra_P_14rnd_M", 
+	"FIR_Hydra_P_38rnd_M","FIR_CRV7_P_19rnd_M","FIR_Hydra_M229_P_7rnd_M","FIR_Hydra_M229_P_19rnd_M",
+	"FIR_Hydra_M229_P_14rnd_M","FIR_Hydra_M229_P_38rnd_M","FIR_Hydra_M247_P_7rnd_M",
+	"FIR_Hydra_M247_P_19rnd_M","FIR_Hydra_M247_P_14rnd_M","FIR_Hydra_M247_P_38rnd_M",
+	"FIR_Hydra_M257_P_7rnd_M","FIR_Hydra_M261_P_7rnd_M","FIR_Hydra_M261_P_19rnd_M",
+	"FIR_Hydra_M261_P_14rnd_M","FIR_Hydra_M261_P_38rnd_M","FIR_Hydra_M282_P_7rnd_M",
+	"FIR_Hydra_M282_P_19rnd_M","FIR_Hydra_M282_P_14rnd_M","FIR_Hydra_M282_P_38rnd_M",
+	"FIR_Hydra_WDU4_P_7rnd_M","FIR_Hydra_WDU4_P_19rnd_M","FIR_Hydra_WDU4_P_14rnd_M",
+	"FIR_Hydra_WDU4_P_38rnd_M","FIR_Hydra_WP_P_7rnd_M","FIR_Hydra_WP_P_21rnd_M",
+	"FIR_Hydra_M259_P_7rnd_M","FIR_Hydra_Smoke_P_7rnd_M","FIR_Hydra_Smoke_P_21rnd_M","FIR_Poniard_P_7rnd_M","FIR_Zuni_P_4rnd_M",
+	"FIR_Zuni_P_8rnd_M","FIR_Zuni_Mk32_P_4rnd_M","FIR_Zuni_Mk32_P_8rnd_M","FIR_Zuni_Fairing_P_4rnd_M",
+	"FIR_Zuni_Fairing_P_8rnd_M","FIR_Zuni_Fairing_Mk32_P_4rnd_M","FIR_Zuni_Fairing_Mk32_P_8rnd_M","FIR_ALQ99_P_1rnd_M",
+	"FIR_ALQ99Hi_P_1rnd_M","FIR_ECMPod_P_1rnd_M","FIR_ALQ184_2_P_1rnd_M","FIR_Mk76_P_1rnd_M","FIR_Mk76_P_2rnd_M",
+	"FIR_Mk76_P_3rnd_M","FIR_ATFLIR_2_P_1rnd_M","FIR_Litening_std_P_1rnd_M","FIR_SniperXR_2_P_1rnd_M",
+	"FIR_AWW13_P_1rnd_M","js_jc_120Rnd_CMChaff_Magazine",
+	"js_jc_120Rnd_CMFlare_Magazine"
+	], true];}, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
+
+["JS_JC_FA18E", "InitPost", {
+    params ["_vehicle"];
+	_vehicle setVariable ["ace_pylons_magazineWhitelist",
+	[
+	"FIR_AIM9X_P_1rnd_M","FIR_AIM9X_LAU115_P_1rnd_M",
+	"FIR_AIM9X_P_2rnd_M","FIR_AIM9X_LAU115_P_2rnd_M","FIR_AIM120A_P_1rnd_M","FIR_AIM120B_P_1rnd_M","FIR_AIM120_P_1rnd_M",
+	"FIR_AIM120B_LAU115_P_1rnd_M","FIR_AIM120_LAU115_P_1rnd_M","FIR_AIM120B_LAU115_P_2rnd_M",
+	"FIR_AIM120B_LAU115BA_P_2rnd_M","FIR_AIM120_LAU115_P_2rnd_M","FIR_AIM120_LAU115BA_P_2rnd_M",
+	"FIR_AIM7_2_P_1rnd_M","FIR_AIM7F_2_P_1rnd_M","FIR_GBU10_P_1rnd_M","FIR_GBU10_Navy_P_1rnd_M",
+	"FIR_GBU24A_P_1rnd_M","FIR_GBU24B_P_1rnd_M","FIR_GBU24A_BLU109_P_1rnd_M",
+	"FIR_GBU24B_BLU109_P_1rnd_M","FIR_GBU24EB_P_1rnd_M","FIR_GBU12_P_1rnd_M","FIR_GBU12_Navy_P_1rnd_M"
+	,"FIR_GBU12_P_2rnd_M","FIR_GBU12_Navy_P_2rnd_M","FIR_GBU12_P_3rnd_M","FIR_GBU12_Navy_P_3rnd_M",
+	"FIR_EGBU12_P_1rnd_M","FIR_EGBU12_P_2rnd_M","FIR_EGBU12_Navy_P_2rnd_M","FIR_EGBU12_P_3rnd_M",
+	"FIR_GBU16_Navy_P_1rnd_M","FIR_GBU16_Navy_P_2rnd_M","FIR_GBU31_P_1rnd_M","FIR_GBU31_Navy_P_1rnd_M"
+	,"FIR_GBU31_BLU109_P_1rnd_M","FIR_GBU56_P_1rnd_M","FIR_GBU56_Navy_P_1rnd_M","FIR_GBU32_P_1rnd_M",
+	"FIR_GBU32_Navy_P_1rnd_M","FIR_GBU32_Navy_P_2rnd_M","FIR_GBU38_P_1rnd_M","FIR_GBU38_Navy_P_1rnd_M"
+	,"FIR_GBU38_P_2rnd_M","FIR_GBU38_Navy_P_2rnd_M","FIR_GBU38_P_3rnd_M","FIR_GBU54_P_1rnd_M",
+	"FIR_GBU54_P_2rnd_M","FIR_GBU54_Navy_P_2rnd_M","FIR_GBU54_P_3rnd_M",
+	"FIR_AGM154A_P_1rnd_M","FIR_AGM154C_P_1rnd_M","FIR_KGGB_P_1rnd_M",
+	"FIR_Mk82_GP_P_1rnd_M","FIR_Mk82_GP_Navy_P_1rnd_M","FIR_Mk82_GP_prox_P_1rnd_M",
+	"FIR_Mk82_GP_Navy_prox_P_1rnd_M","FIR_Mk82_GP_Navy_P_2rnd_M","FIR_Mk82_GP_P_3rnd_M","FIR_Mk82_snakeye_P_1rnd_M",
+	"FIR_Mk82_snakeye_Navy_P_1rnd_M","FIR_Mk82_snakeye_Navy_P_2rnd_M","FIR_Mk82_snakeye_P_3rnd_M","FIR_Mk83_GP_Navy_P_1rnd_M","FIR_Mk83_GP_Navy_P_2rnd_M",
+	"FIR_Mk84_GP_P_1rnd_M","FIR_Mk84_GP_Navy_P_1rnd_M","FIR_CBU87_P_1rnd_M","FIR_CBU87_P_BRU57_2rnd_M"
+	,"FIR_CBU87_P_TripleRack_2rnd_M","FIR_CBU100_P_1rnd_M","FIR_CBU100_P_TripleRack_2rnd_M",
+	"FIR_CBU100_P_TripleRack_3rnd_M","FIR_CBU78_P_1rnd_M","FIR_CBU78_P_BRU57_2rnd_M",
+	"FIR_CBU89_P_1rnd_M","FIR_CBU89_P_BRU57_2rnd_M","FIR_CBU89_P_TripleRack_2rnd_M",
+	"FIR_CBU97_P_1rnd_M","FIR_CBU97_P_BRU57_2rnd_M","FIR_CBU97_P_TripleRack_2rnd_M",
+	"FIR_CBU103_P_1rnd_M","FIR_CBU103_P_BRU57_2rnd_M","FIR_CBU103_P_TripleRack_2rnd_M",
+	"FIR_CBU105_P_1rnd_M","FIR_CBU105_P_BRU57_2rnd_M","FIR_CBU105_P_TripleRack_2rnd_M",
+	"FIR_PDU5B_P_1rnd_M","FIR_PDU5B_Custom1_P_1rnd_M","FIR_PDU5B_Custom2_P_1rnd_M",
+	"FIR_PDU5B_Custom3_P_1rnd_M","FIR_AGM88_P_1rnd_M","FIR_AGM84E_P_1rnd_M","FIR_AGM84H_P_1rnd_M",
+	"FIR_AGM84K_P_1rnd_M","FIR_AGM158B_P_1rnd_M","FIR_AGM65D_P_1rnd_M",
+	"FIR_AGM65H_P_1rnd_M","FIR_AGM65F_P_1rnd_M","FIR_AGM65G_P_1rnd_M",
+	"FIR_AGM65K_P_1rnd_M","FIR_AGM65E_P_1rnd_M","FIR_AGM65E2_P_1rnd_M","FIR_AGM65L_P_1rnd_M",
+	"FIR_Hydra_P_7rnd_M","FIR_Hydra_LAU130_P_19rnd_M","FIR_Hydra_P_21rnd_M","FIR_Hydra_P_14rnd_M", 
+	"FIR_Hydra_P_38rnd_M","FIR_CRV7_P_19rnd_M","FIR_Hydra_M229_P_7rnd_M","FIR_Hydra_M229_P_19rnd_M",
+	"FIR_Hydra_M229_P_14rnd_M","FIR_Hydra_M229_P_38rnd_M","FIR_Hydra_M247_P_7rnd_M",
+	"FIR_Hydra_M247_P_19rnd_M","FIR_Hydra_M247_P_14rnd_M","FIR_Hydra_M247_P_38rnd_M",
+	"FIR_Hydra_M257_P_7rnd_M","FIR_Hydra_M261_P_7rnd_M","FIR_Hydra_M261_P_19rnd_M",
+	"FIR_Hydra_M261_P_14rnd_M","FIR_Hydra_M261_P_38rnd_M","FIR_Hydra_M282_P_7rnd_M",
+	"FIR_Hydra_M282_P_19rnd_M","FIR_Hydra_M282_P_14rnd_M","FIR_Hydra_M282_P_38rnd_M",
+	"FIR_Hydra_WDU4_P_7rnd_M","FIR_Hydra_WDU4_P_19rnd_M","FIR_Hydra_WDU4_P_14rnd_M",
+	"FIR_Hydra_WDU4_P_38rnd_M","FIR_Hydra_WP_P_7rnd_M","FIR_Hydra_WP_P_21rnd_M",
+	"FIR_Hydra_M259_P_7rnd_M","FIR_Hydra_Smoke_P_7rnd_M","FIR_Hydra_Smoke_P_21rnd_M","FIR_Poniard_P_7rnd_M","FIR_Zuni_P_4rnd_M",
+	"FIR_Zuni_P_8rnd_M","FIR_Zuni_Mk32_P_4rnd_M","FIR_Zuni_Mk32_P_8rnd_M","FIR_Zuni_Fairing_P_4rnd_M",
+	"FIR_Zuni_Fairing_P_8rnd_M","FIR_Zuni_Fairing_Mk32_P_4rnd_M","FIR_Zuni_Fairing_Mk32_P_8rnd_M","FIR_ALQ99_P_1rnd_M",
+	"FIR_ALQ99Hi_P_1rnd_M","FIR_ECMPod_P_1rnd_M","FIR_ALQ184_2_P_1rnd_M","FIR_Mk76_P_1rnd_M","FIR_Mk76_P_2rnd_M",
+	"FIR_Mk76_P_3rnd_M","FIR_ATFLIR_2_P_1rnd_M","FIR_Litening_std_P_1rnd_M","FIR_SniperXR_2_P_1rnd_M",
+	"FIR_AWW13_P_1rnd_M","js_jc_120Rnd_CMChaff_Magazine",
+	"js_jc_120Rnd_CMFlare_Magazine"
+	], true];}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+
+["FIR_A10A", "InitPost", {
+    params ["_vehicle"];
+_vehicle setVariable ["ace_pylons_magazineWhitelist",
+	[
+	"FIR_Mk82_GP_P_1rnd_M","FIR_GBU10_P_1rnd_M","FIR_AGM65D_P_1rnd_M",
+	"FIR_AGM65H_P_1rnd_M","FIR_AGM65G_P_1rnd_M","FIR_AGM65K_P_1rnd_M",
+	"FIR_AGM65L_P_1rnd_M","FIR_Mk84_GP_P_1rnd_M",
+	"FIR_SUU23_P_1200rnd_M",
+	"FIR_CBU87_P_1rnd_M","FIR_CBU89_P_1rnd_M","FIR_CBU97_P_1rnd_M",
+	"FIR_AIM9M_P_2rnd_M","FIR_GBU12_P_1rnd_M","FIR_Mk82_GP_prox_P_1rnd_M",
+	"FIR_Mk82_snakeye_P_1rnd_M","FIR_CBU100_P_1rnd_M","FIR_Hydra_P_7rnd_M",
+	"FIR_Hydra_LAU130_P_19rnd_M","FIR_Hydra_P_21rnd_M","FIR_Hydra_M229_P_7rnd_M",
+	"FIR_Hydra_M229_P_19rnd_M","FIR_Hydra_M247_P_7rnd_M","FIR_Hydra_M247_P_19rnd_M",
+	"FIR_Hydra_M257_P_7rnd_M","FIR_Hydra_M261_P_7rnd_M","FIR_Hydra_M261_P_19rnd_M",
+	"FIR_Hydra_M282_P_7rnd_M","FIR_Hydra_M282_P_19rnd_M","FIR_Hydra_WDU4_P_7rnd_M",
+	"FIR_Hydra_WDU4_P_19rnd_M","FIR_Hydra_WP_P_7rnd_M","FIR_Hydra_WP_P_21rnd_M",
+	"FIR_Hydra_M259_P_7rnd_M","FIR_Hydra_Smoke_P_7rnd_M","FIR_Hydra_Smoke_P_21rnd_M",
+	"FIR_Zuni_P_4rnd_M","FIR_Zuni_Mk32_P_4rnd_M","FIR_SUU25_P_8rnd_M","FIR_Empty_P_1rnd_M"
+	], true];
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["FIR_A10C", "InitPost", {
+    params ["_vehicle"];
+_vehicle setVariable ["ace_pylons_magazineWhitelist",
+	[
+	"FIR_ECMPod_P_1rnd_M","FIR_GBU12_P_1rnd_M","FIR_Hydra_M261_P_19rnd_M",
+	"FIR_GBU10_P_1rnd_M","FIR_GBU31_P_1rnd_M","FIR_GBU31_BLU109_P_1rnd_M",
+	"FIR_GBU56_P_1rnd_M","FIR_GBU32_P_1rnd_M","FIR_Mk84_GP_P_1rnd_M","FIR_AGM65D_P_1rnd_M",
+	"FIR_AGM65H_P_1rnd_M","FIR_AGM65G_P_1rnd_M","FIR_AGM65K_P_1rnd_M","FIR_AGM65L_P_1rnd_M",
+	"FIR_CBU87_P_1rnd_M","FIR_CBU89_P_1rnd_M","FIR_CBU97_P_1rnd_M",
+	"FIR_CBU103_P_1rnd_M","FIR_CBU105_P_1rnd_M","FIR_EGBU12_P_1rnd_M",
+	"FIR_GBU38_P_1rnd_M","FIR_GBU54_P_1rnd_M","FIR_Mk82_GP_P_1rnd_M",
+	"FIR_Mk82_GP_prox_P_1rnd_M","FIR_Mk82_snakeye_P_1rnd_M","FIR_CBU100_P_1rnd_M",
+	"FIR_Hydra_P_7rnd_M","FIR_Hydra_LAU130_P_19rnd_M","FIR_Hydra_P_21rnd_M","FIR_Hydra_M229_P_7rnd_M",
+	"FIR_Hydra_M229_P_19rnd_M","FIR_Hydra_M247_P_7rnd_M","FIR_Hydra_M247_P_19rnd_M",
+	"FIR_Hydra_M257_P_7rnd_M","FIR_Hydra_M261_P_7rnd_M","FIR_Hydra_M282_P_7rnd_M",
+	"FIR_Hydra_M282_P_19rnd_M","FIR_Hydra_WDU4_P_7rnd_M","FIR_Hydra_WDU4_P_19rnd_M",
+	"FIR_Hydra_WP_P_7rnd_M","FIR_Hydra_WP_P_21rnd_M","FIR_Hydra_M259_P_7rnd_M","FIR_Hydra_Smoke_P_7rnd_M",
+	"FIR_Hydra_Smoke_P_21rnd_M","FIR_Zuni_P_4rnd_M","FIR_Zuni_Mk32_P_4rnd_M","FIR_SUU25_P_8rnd_M",
+	"FIR_Litening_Nomodel_P_1rnd_M","FIR_AIM9M_P_2rnd_M","FIR_Empty_P_1rnd_M"
+	], true];
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
 ["rhsusf_M1078A1P2_WD_flatbed_fmtv_usarmy", "InitPost", {
     params ["_vehicle"];
