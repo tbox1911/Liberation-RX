@@ -683,6 +683,28 @@ _vehicle setVariable ["ace_pylons_magazineWhitelist",
 	], true];
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
+["USAF_A10", "InitPost", {
+    params ["_vehicle"];
+_vehicle setVariable ["ace_pylons_magazineWhitelist",
+	[
+	"FIR_ECMPod_P_1rnd_M","FIR_GBU12_P_1rnd_M","FIR_Hydra_M261_P_19rnd_M",
+	"FIR_GBU10_P_1rnd_M","FIR_GBU31_P_1rnd_M","FIR_GBU31_BLU109_P_1rnd_M",
+	"FIR_GBU56_P_1rnd_M","FIR_GBU32_P_1rnd_M","FIR_Mk84_GP_P_1rnd_M","FIR_AGM65D_P_1rnd_M",
+	"FIR_AGM65H_P_1rnd_M","FIR_AGM65G_P_1rnd_M","FIR_AGM65K_P_1rnd_M","FIR_AGM65L_P_1rnd_M",
+	"FIR_CBU87_P_1rnd_M","FIR_CBU89_P_1rnd_M","FIR_CBU97_P_1rnd_M",
+	"FIR_CBU103_P_1rnd_M","FIR_CBU105_P_1rnd_M","FIR_EGBU12_P_1rnd_M",
+	"FIR_GBU38_P_1rnd_M","FIR_GBU54_P_1rnd_M","FIR_Mk82_GP_P_1rnd_M",
+	"FIR_Mk82_GP_prox_P_1rnd_M","FIR_Mk82_snakeye_P_1rnd_M","FIR_CBU100_P_1rnd_M",
+	"FIR_Hydra_P_7rnd_M","FIR_Hydra_LAU130_P_19rnd_M","FIR_Hydra_P_21rnd_M","FIR_Hydra_M229_P_7rnd_M",
+	"FIR_Hydra_M229_P_19rnd_M","FIR_Hydra_M247_P_7rnd_M","FIR_Hydra_M247_P_19rnd_M",
+	"FIR_Hydra_M257_P_7rnd_M","FIR_Hydra_M261_P_7rnd_M","FIR_Hydra_M282_P_7rnd_M",
+	"FIR_Hydra_M282_P_19rnd_M","FIR_Hydra_WDU4_P_7rnd_M","FIR_Hydra_WDU4_P_19rnd_M",
+	"FIR_Hydra_WP_P_7rnd_M","FIR_Hydra_WP_P_21rnd_M","FIR_Hydra_M259_P_7rnd_M","FIR_Hydra_Smoke_P_7rnd_M",
+	"FIR_Hydra_Smoke_P_21rnd_M","FIR_Zuni_P_4rnd_M","FIR_Zuni_Mk32_P_4rnd_M","FIR_SUU25_P_8rnd_M",
+	"FIR_Litening_Nomodel_P_1rnd_M","FIR_AIM9M_P_2rnd_M","FIR_Empty_P_1rnd_M"
+	], true];
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
 ["rhsusf_M1078A1P2_WD_flatbed_fmtv_usarmy", "InitPost", {
     params ["_vehicle"];
 	[_vehicle,12] call ace_cargo_fnc_setSpace;
