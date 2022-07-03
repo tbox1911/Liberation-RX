@@ -516,7 +516,7 @@ fast_air_vehicle = [
       ["FIR_F15C",0,fast_air_vehicle_price_tier_5,0,GRLIB_perm_inf],
       ["FIR_F15E",0,fast_air_vehicle_price_tier_10,0,GRLIB_perm_inf],
       ["FIR_F15E_Demo",0,fast_air_vehicle_price_tier_10,0,GRLIB_perm_inf],
-      ["FIR_F15SE_LA",0,fast_air_vehicle_price_tier_10,0,GRLIB_perm_inf],
+     // ["FIR_F15SE_LA",0,fast_air_vehicle_price_tier_10,0,GRLIB_perm_inf], 
     // FIR F-16
       ["FIR_F16C",0,fast_air_vehicle_price_tier_7,0,GRLIB_perm_inf],
       ["FIR_F16D",0,fast_air_vehicle_price_tier_7,0,GRLIB_perm_inf],
