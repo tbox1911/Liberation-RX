@@ -125,6 +125,8 @@ bg_sleeptimer = 1000;
 
 // Deactivate HC spawning
 hc_spawn_off = false;
+hc_spawn_towns = false;
+hc_spawn_patrol = false;
 
 //Datalink Options
 force_datalink = true;
