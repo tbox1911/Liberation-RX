@@ -635,7 +635,7 @@ _vehicle setVariable ["ace_pylons_magazineWhitelist",
 	"FIR_Hydra_M282_P_7rnd_M","FIR_Hydra_M282_P_19rnd_M","FIR_Hydra_WDU4_P_7rnd_M",
 	"FIR_Hydra_WDU4_P_19rnd_M","FIR_Hydra_WP_P_7rnd_M","FIR_Hydra_WP_P_21rnd_M",
 	"FIR_Hydra_M259_P_7rnd_M","FIR_Hydra_Smoke_P_7rnd_M","FIR_Hydra_Smoke_P_21rnd_M",
-	"FIR_Zuni_P_4rnd_M","FIR_Zuni_Mk32_P_4rnd_M","FIR_SUU25_P_8rnd_M","FIR_Empty_P_1rnd_M"
+	"FIR_Zuni_P_4rnd_M","FIR_Zuni_Mk32_P_4rnd_M","FIR_SUU25_P_8rnd_M","CUP_PylonPod_ANAAQ_28","FIR_Empty_P_1rnd_M"
 	], true];
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
@@ -657,7 +657,7 @@ _vehicle setVariable ["ace_pylons_magazineWhitelist",
 	"FIR_Hydra_M282_P_7rnd_M","FIR_Hydra_M282_P_19rnd_M","FIR_Hydra_WDU4_P_7rnd_M",
 	"FIR_Hydra_WDU4_P_19rnd_M","FIR_Hydra_WP_P_7rnd_M","FIR_Hydra_WP_P_21rnd_M",
 	"FIR_Hydra_M259_P_7rnd_M","FIR_Hydra_Smoke_P_7rnd_M","FIR_Hydra_Smoke_P_21rnd_M",
-	"FIR_Zuni_P_4rnd_M","FIR_Zuni_Mk32_P_4rnd_M","FIR_SUU25_P_8rnd_M","FIR_Empty_P_1rnd_M"
+	"FIR_Zuni_P_4rnd_M","FIR_Zuni_Mk32_P_4rnd_M","FIR_SUU25_P_8rnd_M","CUP_PylonPod_ANAAQ_28", "FIR_Empty_P_1rnd_M"
 	], true];
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
@@ -679,7 +679,7 @@ _vehicle setVariable ["ace_pylons_magazineWhitelist",
 	"FIR_Hydra_M282_P_19rnd_M","FIR_Hydra_WDU4_P_7rnd_M","FIR_Hydra_WDU4_P_19rnd_M",
 	"FIR_Hydra_WP_P_7rnd_M","FIR_Hydra_WP_P_21rnd_M","FIR_Hydra_M259_P_7rnd_M","FIR_Hydra_Smoke_P_7rnd_M",
 	"FIR_Hydra_Smoke_P_21rnd_M","FIR_Zuni_P_4rnd_M","FIR_Zuni_Mk32_P_4rnd_M","FIR_SUU25_P_8rnd_M",
-	"FIR_Litening_Nomodel_P_1rnd_M","FIR_AIM9M_P_2rnd_M","FIR_Empty_P_1rnd_M"
+	"FIR_Litening_Nomodel_P_1rnd_M","FIR_AIM9M_P_2rnd_M","CUP_PylonPod_ANAAQ_28","FIR_Empty_P_1rnd_M"
 	], true];
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
@@ -701,7 +701,7 @@ _vehicle setVariable ["ace_pylons_magazineWhitelist",
 	"FIR_Hydra_M282_P_19rnd_M","FIR_Hydra_WDU4_P_7rnd_M","FIR_Hydra_WDU4_P_19rnd_M",
 	"FIR_Hydra_WP_P_7rnd_M","FIR_Hydra_WP_P_21rnd_M","FIR_Hydra_M259_P_7rnd_M","FIR_Hydra_Smoke_P_7rnd_M",
 	"FIR_Hydra_Smoke_P_21rnd_M","FIR_Zuni_P_4rnd_M","FIR_Zuni_Mk32_P_4rnd_M","FIR_SUU25_P_8rnd_M",
-	"FIR_Litening_Nomodel_P_1rnd_M","FIR_AIM9M_P_2rnd_M","FIR_Empty_P_1rnd_M"
+	"FIR_Litening_Nomodel_P_1rnd_M","FIR_AIM9M_P_2rnd_M","CUP_PylonPod_ANAAQ_28","FIR_Empty_P_1rnd_M"
 	], true];
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
