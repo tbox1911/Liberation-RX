@@ -120,6 +120,9 @@ readiness_calc_sm_town = true;
 limit_readiness = true;
 fob_hunting_readiness = 40;
 
+//Battlegroup sleeping (divided with csat aggressivity)
+bg_sleeptimer = 1000;
+
 // Deactivate HC spawning
 hc_spawn_off = false;
 
