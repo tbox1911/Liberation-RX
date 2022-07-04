@@ -68,7 +68,9 @@ if (_spawn_marker != "") then {
 
 	sleep 5;
 
-	combat_readiness = round(combat_readiness - 5 );
+	if (isNil "combat_readiness_reduction") then {combat_readiness_reduction = 1.20};
+	
+	combat_readiness = round(combat_readiness / combat_readiness_reduction );
 
 	if (combat_readiness < 0) then {
 		combat_readiness = 0
