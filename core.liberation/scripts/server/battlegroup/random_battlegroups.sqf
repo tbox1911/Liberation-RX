@@ -1,8 +1,10 @@
 private [ "_sleeptime", "_countplayers" ];
 
-if (isNil "bg_sleeptimer") then {bg_sleeptimer = 1000};
+if (isNil "bg_sleeptimer") then {bg_sleeptimer = 90000};
 
-sleep ( bg_sleeptimer / GRLIB_csat_aggressivity );
+if (combat_readiness <= 0) then {combat_readiness = 1};
+
+sleep ( bg_sleeptimer / combat_readiness );
 
 while { GRLIB_csat_aggressivity > 0.9 && GRLIB_endgame == 0 } do {
 
