@@ -32,6 +32,7 @@ RPT_colorList =[
 	["Digital Desert", RPT_texDir + "digi_desert.paa"],
 	["Digital Desert 2", RPT_texDir + "digi_desert2.paa"],
 	["Digital Woodland", RPT_texDir + "digi_wood.paa"],
+	["Digital Ukraine Land", RPT_texDir + "DigitalUALand.paa"],
 	["Forest 1", RPT_texDir + "foret1.paa"],
 	["Forest 2", RPT_texDir + "raven.paa"],
 	["Jungle", RPT_texDir + "jungle.paa"],
