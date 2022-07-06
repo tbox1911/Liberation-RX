@@ -34,6 +34,7 @@ class liberation_admin {
 	  "Item02Button",
     "Item03Button",
     "Item04Button",
+    "Item05Input",
 	  "CancelButton",
     "adminInfo01",
     "admin_cb_1607",
@@ -178,6 +179,20 @@ class liberation_admin {
     w = 0.0290 * safezoneW;
     h = 0.04 * safezoneH;
   };
+	class Item05Input: StdButton {
+		idc = 1619;
+		type = CT_EDIT;
+		style = ST_LEFT;
+    x = 0.3275 * safezoneW + safezoneX;
+    y = 0.466 * safezoneH + safezoneY;
+    w = 0.09 * safezoneW;
+    h = 0.04 * safezoneH;    
+		text = "";
+		action = "";
+		colorText[] = COLOR_WHITE;
+		colorSelection[] = COLOR_BRIGHTGREEN;
+		autocomplete = "";
+	};
   class PlayerList: StdCombo {
     idc = 1612;
     x = 0.3275 * safezoneW + safezoneX;

@@ -39,6 +39,10 @@ lbClear _score_combo;
 _build_combo = _display displayCtrl 1618;
 lbClear _build_combo;
 
+// Input for XP / Ammo
+_ammount_edit = _display displayCtrl 1619;
+_ammount_edit ctrlSetText "50";
+
 // Clear input
 private _input_controls = [521,522,523,524,525,526,527];
 { ctrlShow [_x, false] } foreach _input_controls;
@@ -48,14 +52,15 @@ private _output_controls = [531,532,533,534,535,536];
 { ctrlShow [_x, false] } foreach _output_controls;
 
 // Action buttons
-private _button_controls = [1600,1601,1602,1603,1604,1609,1610,1611,1612,1613,1614,1615,1616,1617,1618];
+private _button_controls = [1600,1601,1602,1603,1604,1609,1610,1611,1612,1613,1614,1615,1616,1617,1618,1619];
 
 (_display displayCtrl 1603) ctrlSetText getMissionPath "res\ui_confirm.paa";
-(_display displayCtrl 1603) ctrlSetToolTip "Add 50 XP Score";
+(_display displayCtrl 1603) ctrlSetToolTip "Add XP Score";
 (_display displayCtrl 1615) ctrlSetText getMissionPath "res\ui_arsenal.paa";
-(_display displayCtrl 1615) ctrlSetToolTip "Add 300 Ammo";
+(_display displayCtrl 1615) ctrlSetToolTip "Add Ammo credit";
 (_display displayCtrl 1616) ctrlSetText getMissionPath "res\ui_rotation.paa";
 (_display displayCtrl 1616) ctrlSetToolTip "Rejoin player";
+(_display displayCtrl 1619) ctrlSetToolTip "Amount of Ammo or Experience Points to add";
 
 // Build Banned
 [_ban_combo] call _getBannedUID;
@@ -117,8 +122,9 @@ while { alive player && dialog } do {
 		do_score = 0;
 		_name = _score_combo lbText (lbCurSel _score_combo);
 		_uid = _score_combo lbData (lbCurSel _score_combo);
-		[_uid, 50] remoteExec ["F_addPlayerScore", 2];
-		_msg = format ["Add 50 XP to player: %1.", _name];
+		_amount = parseNumber (ctrlText _ammount_edit);
+		[_uid, _amount] remoteExec ["F_addPlayerScore", 2];
+		_msg = format ["Add %1 XP to player: %2.", _amount, _name];
 		hint _msg;
 		systemchat _msg;
 		sleep 1;
@@ -142,8 +148,9 @@ while { alive player && dialog } do {
 		do_ammo = 0;
 		_name = _score_combo lbText (lbCurSel _score_combo);
 		_uid = _score_combo lbData (lbCurSel _score_combo);
-		[_uid, 300] remoteExec ["F_addPlayerAmmo", 2];
-		_msg = format ["Add 300 Ammo to player: %1.", _name];
+		_amount = parseNumber (ctrlText _ammount_edit);
+		[_uid, _amount] remoteExec ["F_addPlayerAmmo", 2];
+		_msg = format ["Add %1 Ammo to player: %2.", _amount, _name];
 		hint _msg;
 		systemchat _msg;
 		sleep 1;
@@ -156,7 +163,7 @@ while { alive player && dialog } do {
 		_player = _uid call BIS_fnc_getUnitByUID;
 		if (!isNull _player) then {
 			hint format ["Teleport to player: %1.", _name];
-			player setPos (getPos _player);
+			player setPos (_player getRelPos [3, 0]);
 			closeDialog 0;
 		} else {
 			hint "Player must be online!";
