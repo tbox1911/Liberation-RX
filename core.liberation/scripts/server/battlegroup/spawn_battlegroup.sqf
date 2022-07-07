@@ -59,7 +59,7 @@ if (_spawn_marker != "") then {
 	} forEach _selected_opfor_battlegroup;
 
 	sleep 5;
-	if (GRLIB_csat_aggressivity > 0.7) then {
+	if (combat_readiness > 50) then {
 		private _objectivepos = ([markerPos _spawn_marker] call F_getNearestBluforObjective) select 0;
 
 		[_objectivepos, GRLIB_side_enemy] spawn spawn_air;
