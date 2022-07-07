@@ -82,6 +82,7 @@ if (isNil "global_arsenal") then {
 };
 
 if (global_arsenal) then {
+	sleep 2;
 	_glob_box  = missionnamespace getVariable ["myLARsBox", objNull];
 	[_glob_box, false] call ace_arsenal_fnc_initBox;
 	[_glob_box, true, false] call ace_arsenal_fnc_removeVirtualitems;

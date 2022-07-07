@@ -1,3 +1,5 @@
+sleep 2;
+
 equipment = [];
 private _all_weapons = [];
 private _all_magazines = [];
