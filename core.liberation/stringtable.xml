@@ -2532,13 +2532,13 @@
 			<French> 15 minutes de délai</French>
 			<Chinesesimp>15分钟间隔</Chinesesimp>
 			<Chinese>15分钟间隔</Chinese>
-		</Key>				
+		</Key>
 		<Key ID="STR_CLEANUP_PARAM2">
 			<Original>30 minutes delay</Original>
 			<French> 30 minutes de délai</French>
 			<Chinesesimp>30分钟间隔</Chinesesimp>
 			<Chinese>30分钟间隔</Chinese>
-		</Key>		
+		</Key>
 		<Key ID="STR_CLEANUP_PARAM3">
 			<Original>1 hour delay</Original>
 			<French>1 heure de délai</French>
@@ -2571,7 +2571,7 @@
 			<Original>Sorry, this nickname is prohibited on this server!\n\nChange your nickname, lazy ass, and join the game again!</Original>
 			<French>Désolé, ce pseudo est interdit sur ce serveur !\n\nChangez de pseudo, paresseux, et rejoignez le jeu à nouveau !</French>
 			<Russian>Використання ніку %1 ЗАБОРОНЕНО!\n\n Зміни нік, срака ти лінива, та заходь знову.</Russian>
-		</Key>		
+		</Key>
 		<Key ID="STR_COMMANDER_NOT_AUTHORIZED">
 			<Original>You are not authorized to use the commander slot on this server.</Original>
 			<French>Vous n'êtes pas authorisé à utiliser la place de commandant sur ce serveur.</French>
@@ -4421,9 +4421,15 @@
 			<Japanese>バーチャルアーセナルを有効にする</Japanese>
 		</Key>
 		<Key ID="STR_LIMIT_ARSENAL">
-			<Original>Limit Arsenal to player's camp</Original>
-			<French>Limiter l'Arsenal au camp des joueurs</French>
-		</Key>		
+			<Original>Arsenal Filter Mode</Original>
+			<French>Mode de Filtrage de l'Arsenal</French>
+		</Key>
+		<Key ID="STR_LIMIT_ARSENAL_PARAM1">
+			<Original>Soft</Original>
+		</Key>
+		<Key ID="STR_LIMIT_ARSENAL_PARAM2">
+			<Original>Strict</Original>
+		</Key>
 		<Key ID="STR_VEH_LOCK">
 			<Original>Enable Vehicles Ownership</Original>
 			<French>Activer la Propriété des Véhicules </French>
@@ -5082,13 +5088,13 @@
 			<Original>Play</Original>
 			<Chinesesimp>播放</Chinesesimp>
 			<Chinese>播放</Chinese>
-		</Key>		
+		</Key>
 		<Key ID="STR_JKB_STOP">
 			<Original>Stop</Original>
 			<Chinesesimp>暂停</Chinesesimp>
 			<Chinese>暫停</Chinese>
 		</Key>
-	
+
 		<!-- liberation_airdrop.hpp -->
 
 		<Key ID="STR_AIRDROP_CANCEL">
@@ -6004,7 +6010,7 @@
 			<French>Peut etre plus de Médecin ou plus de kit de soins ?</French>
 			<Chinesesimp>也许没有更多的医疗人员，或者医疗包不足？</Chinesesimp>
 			<Chinese>也许没有更多的医疗人员，或者医疗包不足？</Chinese>
-		</Key>		
+		</Key>
 		<Key ID="STR_PAR_ST_01">
 			<Original>%1 is healing %2 now...</Original>
 			<French>%1 soigne %2 maintenant...</French>

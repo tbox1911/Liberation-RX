@@ -3,25 +3,27 @@
 
 // How it's supposed to work:
 //
-// - EnableArsenal = 0    The arsenal is completely disabled
-// - EnableArsenal = 1    The arsenal contains the objects of the player's camp.
+// - EnableArsenal = 0    The Arsenal is completely disabled.
+// - EnableArsenal = 1    The Arsenal is enabled and filled according to FilterArsenal value.
 //                          - minus the blacklist (which still applies)
 //                          + plus the whitelist (these items are still available)
-//   
-// - FilterArsenal = 0    There is no additional filter
-//                        note: The player can use other objects,
-//                              enemy equipment or anything else.
-//                        
-// - FilterArsenal = 1    The player can ONLY use items present in the Arsenal.
-//                        note: he will not be able to use enemy weapons.
 //
-// possible change:
+// - FilterArsenal = 0    The Arsenal filter is completely disabled. 
+//                        
+// - FilterArsenal = 1    Soft Mode: The Arsenal only show your side gears.
+//                        but the player can use other objects,
+//                        from enemy equipment or anything else. (saved loadout).
+//                        
+// - FilterArsenal = 2    Strict Mode: The player can ONLY use items present in the Arsenal.
+//                        he will not be able to use enemy weapons or anything else. (saved loadout).
+//
+// customize Arsenal:
 // in the "mod_template\TEMPLATE\arsenal.sqf" file
 //
-// - add an object:
+// - to add an object:
 //    add class name to "GRLIB_whitelisted_from_arsenal" list
 //
-// - remove an object
+// - to remove an object
 //    add class name (or part) to "blacklisted_weapon" list
 
 if (isDedicated) exitWith {};
