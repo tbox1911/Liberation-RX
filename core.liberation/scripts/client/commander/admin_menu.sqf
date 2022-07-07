@@ -1,7 +1,9 @@
 createDialog "liberation_admin";
 waitUntil { dialog };
 disableSerialization;
+if (isNil "do_admin") then { do_admin = 0 };
 if (isNil "last_build") then { last_build = 0 };
+if (isNil "do_teleport") then { do_teleport = 0 };
 do_unban = 0;
 do_score = 0;
 do_spawn = 0;
@@ -26,10 +28,10 @@ private _color = getArray (configFile >> "CfgMarkerColors" >> GRLIB_color_friend
 private _display = findDisplay 5204;
 
 // GodMode ?
-if (!isDamageAllowed player) then {	(_display displayCtrl 1607) ctrlSetChecked true; };
+if (do_admin == 1) then { (_display displayCtrl 1607) ctrlSetChecked true; };
 
-// Teleport on map
-player onMapSingleClick "if (_alt) then {player setPosATL _pos}";
+// Teleport ?
+if (do_teleport == 1) then { (_display displayCtrl 1620) ctrlSetChecked true; };
 
 // Clear listbox
 _ban_combo = _display displayCtrl 1611;
@@ -53,6 +55,7 @@ private _output_controls = [531,532,533,534,535,536];
 
 // Action buttons
 private _button_controls = [1600,1601,1602,1603,1604,1609,1610,1611,1612,1613,1614,1615,1616,1617,1618,1619];
+private _disabled_controls = [1606,1607,1608,1609,1610,1613,1614,1620];
 
 (_display displayCtrl 1603) ctrlSetText getMissionPath "res\ui_confirm.paa";
 (_display displayCtrl 1603) ctrlSetToolTip "Add XP Score";
@@ -103,6 +106,15 @@ _i = 0;
 _ban_combo lbSetCurSel 0;
 _score_combo lbSetCurSel 0;
 _build_combo lbSetCurSel last_build;
+
+// Limit Moderators Menu
+if (getPlayerUID player in GRLIB_whitelisted_moderators) then {
+	{
+		ctrlEnable  [_x, false];
+		ctrlShow [_x, false];
+	} forEach _disabled_controls;
+	_button_controls = _disabled_controls;
+};
 
 while { alive player && dialog } do {
 	if (do_unban == 1) then {

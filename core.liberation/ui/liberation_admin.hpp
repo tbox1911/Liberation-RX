@@ -36,9 +36,10 @@ class liberation_admin {
     "Item04Button",
     "Item05Input",
 	  "CancelButton",
-    "adminInfo01",
-    "admin_cb_1607",
-    "admin_cb_text",
+    "teleport_cb_text",
+    "godmod_cb_text",
+    "godmod_cb_1607",
+    "teleport_cb_1620",
     "BannedList",
     "PlayerList"
 	};
@@ -349,19 +350,32 @@ class liberation_admin {
     canModify = 0;
 	};
   //------------------------
-  class adminInfo01: GREUH_RscStructuredText {
+  class teleport_cb_1620: RscCheckbox {
+    idc = 1620;
+    text = "Teleport";
+    x = 0.305 * safezoneW + safezoneX;
+    y = 0.68 * safezoneH + safezoneY;
+    w = 0.0125 * safezoneW;
+    h = 0.02 * safezoneH;
+    columns = 1;
+    rows = 1;
+    strings[] = {"O"};
+    checked_strings[] = {"X"};
+    onCheckBoxesSelChanged = "[_this] execVM 'scripts\client\misc\teleport.sqf';";
+  };
+  class teleport_cb_text: GREUH_RscStructuredText {
     idc = 1606;
-    text = "<t size='0.7'>[ ALT + LMB ] on Map = Teleport</t>";
+    text = "<t size='0.7'>[ ALT + LMB ] on Map = Teleport :</t>";
     x = 0.2 * safezoneW + safezoneX;
     y = 0.68 * safezoneH + safezoneY;
     w = 0.125 * safezoneW;
     h = 0.02 * safezoneH;
     sizeEx = -2 * GUI_GRID_H;
   };
-  class admin_cb_1607: RscCheckbox {
+  class godmod_cb_1607: RscCheckbox {
     idc = 1607;
     text = $STR_ADMIN_GODMODE;
-    x = 0.4125 * safezoneW + safezoneX;
+    x = 0.400 * safezoneW + safezoneX;
     y = 0.68 * safezoneH + safezoneY;
     w = 0.0125 * safezoneW;
     h = 0.02 * safezoneH;
@@ -371,7 +385,7 @@ class liberation_admin {
     checked_strings[] = {"X"};
     onCheckBoxesSelChanged = "[_this] execVM 'scripts\client\misc\godmode.sqf';";
   };
-  class admin_cb_text: GREUH_RscStructuredText {
+  class godmod_cb_text: GREUH_RscStructuredText {
     idc = 1608;
     text = "<t size='0.7'>GodMode :</t>";
     x = 0.3625 * safezoneW + safezoneX;
