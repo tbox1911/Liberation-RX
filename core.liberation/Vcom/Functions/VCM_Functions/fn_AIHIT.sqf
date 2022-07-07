@@ -24,33 +24,41 @@
 */
 params ["_unit", "_source", "_damage", "_instigator"];
 
-if (VCM_MEDICALACTIVE) exitWith {};
+if !(VCM_MEDICALACTIVE) exitWith {};
 
-//Lay down
-private _GetUnitStance = unitPos _unit;
-if !(_GetUnitStance isEqualTo "DOWN") then
+if (VCM_RAGDOLL && {_unit distance2D _instigator < 101} && {_damage > 0.05} && {!(lifestate _unit isEqualTo "INCAPACITATED")} && {VCM_RAGDOLLCHC > (random 100)}) then
 {
-	_unit setUnitPos "DOWN";
-	[_unit,_GetUnitStance] spawn 
-	{
-		params ["_Unit","_Pos"];
-		sleep 5;
-		if (alive _unit) then 
-		{
-			_unit setUnitPos _Pos;
-		};
-	};
-};
 
-if (VCM_RAGDOLL && {_damage > 0.1} && {!(lifestate _unit isEqualTo "INCAPACITATED")} && {VCM_RAGDOLLCHC > (random 100)}) then
-{
 	_unit setUnconscious true;
 	_unit spawn 
 	{
-		sleep 2;
+		sleep (0.5 + (random 1));
 		_this setUnconscious false;
 		//A check if the unit is still unconscious after a 30 second time. Sometimes AI remain unconscious - this should hopefully prevent this.
 		sleep 30;
 		if (alive _this && {lifeState _this isEqualTo "INCAPACITATED"}) then {_this setUnconscious false;};
+	};
+}
+else
+{
+		
+	//Lay down
+	[_Unit,false,true] spawn VCM_fnc_ForceGrenadeFire;
+	
+	private _GetUnitStance = unitPos _unit;
+	if !(_GetUnitStance isEqualTo "DOWN") then
+	{	
+		_Unit spawn {sleep 5;sleep (random 3);_this call VCM_fnc_HealSelf;}; 
+
+		_unit setUnitPos "DOWN";
+		[_unit,_GetUnitStance] spawn 
+		{
+			params ["_Unit","_Pos"];
+			sleep 5;
+			if (alive _unit) then 
+			{
+				_unit setUnitPos "AUTO";
+			};
+		};
 	};
 };

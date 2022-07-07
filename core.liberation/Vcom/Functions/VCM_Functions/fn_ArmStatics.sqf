@@ -60,7 +60,7 @@ if (count _assignedPairs isEqualTo 0) exitWith {};
 				private _staticGreen = true;
 				private _statictime = VCM_STATICARMT;
 				
-				while {_staticGreen && {alive _unit} && {alive _weap} && {!(isNull (gunner _weap))} && {_unit distance2D (leader (group _unit)) < 500} && {behaviour _unit isEqualTo "COMBAT"}} do
+				while {_staticGreen && {alive _unit} && {alive _weap} && {!(isNull (gunner _weap))} && {_unit distance2D (leader (group _unit)) < 500}} do
 				{
 					sleep 5;
 					private _enemy = _unit findNearestEnemy _unit;

@@ -1,4 +1,6 @@
 //Parameters
+[] spawn {
+sleep 0.1;
 VCM_PublicScript = compileFinal "[] call (_this select 0);";
 VCM_ServerAsk = compileFinal "(_this select 1) publicVariableClient (_this select 0);";
 
@@ -33,11 +35,13 @@ else
 	[] call Vcm_Settings;
 };
 
+
 waitUntil {!(isNil "VCM_AIMagLimit")};
 
 //Mod checks
 //ACE CHECK
 if (!(isNil "ACE_Medical_enableFor") && {ACE_Medical_enableFor isEqualTo 1}) then {VCM_MEDICALACTIVE = false;} else {VCM_MEDICALACTIVE = true;};
+VCM_MEDICALACTIVE = false;
 //CBA CHECK
 if (isClass(configFile >> "CfgPatches" >> "cba_main")) then {CBAACT = true;} else {CBAACT = false;};
 
@@ -51,16 +55,21 @@ VCOM_MINEARRAY = [];
 ["VCMMINEMONITOR", "onEachFrame", {[] call VCM_fnc_MineMonitor}] call BIS_fnc_addStackedEventHandler;
 
 //Below is loop to check for new AI spawning in to be added to the list
+};
+
 [] spawn
 {
-	sleep 2;
+	sleep 4;
 	if (hasInterface) then
 	{
 		//Event handlers for players	
 		player addEventHandler ["Fired",{_this call VCM_fnc_HearingAids;}];
 		player spawn VCM_fnc_IRCHECK;
 		player addEventHandler ["Respawn",{_this spawn VCM_fnc_IRCHECK;}];
+		if (Vcm_PlayerAISkills) then {[] spawn VCM_fnc_PLAYERSQUAD;};
 	};
+	
+	[] spawn VCM_fnc_AIDRIVEBEHAVIOR;
 	
 	while {true} do 
 	{

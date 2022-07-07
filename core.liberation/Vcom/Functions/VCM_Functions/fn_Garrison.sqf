@@ -25,17 +25,16 @@ private _buildingPositions = [];
 
 
 //waitUntil unit is within 50m of building closest to waypoint
-waitUntil {isNull _unit || {!alive _unit} || {_nBuilding distance2D _unit < 50}};
-
+waitUntil {isNull _unit || {!(alive _unit)} || {_nBuilding distance2D _unit < 50}};
 
 //If the array is not more than 0 - then exit.
 
 
 //Find the units in the group!
-_groupUnits = units _this;
-_this setVariable ["VCOM_GARRISONED",true,false];	
+private _groupUnits = units _this;
+_this setVariable ["VCOM_GARRISONED",true];	
 private _waypointIs = "HOLD";
-while {_waypointIs isEqualTo "HOLD"} do
+while {_waypointIs isEqualTo "HOLD" && ({ alive _x } count units _this > 0)} do
 {
 	private _index = currentWaypoint _this;
 	private _waypointIs = waypointType [_this,_index];		
@@ -49,6 +48,7 @@ while {_waypointIs isEqualTo "HOLD"} do
 				private _buildingLocation = selectRandom _tempA;
 				if !(isNil "_buildingLocation") then
 				{
+					_x enableAI "PATH";
 					_x doMove _buildingLocation;
 					_x setUnitPos "UP";
 					[_x,_buildingLocation] spawn 
@@ -68,3 +68,8 @@ while {_waypointIs isEqualTo "HOLD"} do
 	};
 	sleep (30 + (random 60));
 };
+
+//Allow the AI to move again.
+{
+	_x enableAI "PATH";
+} foreach _groupUnits;

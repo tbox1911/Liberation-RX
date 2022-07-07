@@ -11,11 +11,27 @@ class VCOM
 		{
 			ext = ".fsm";
 		};
+		
+		// [] spawn VCM_fnc_AIDRIVEBEHAVIOR
+		class AIDRIVEBEHAVIOR
+		{
+			ext = ".fsm";
+		};		
+		
+		// [] spawn VCM_fnc_PLAYERSQUAD
+		class PLAYERSQUAD
+		{
+			ext = ".fsm";
+		};		
+		
 	};
 	
 	class Functions 
 	{
 		file = "Vcom\Functions\VCM_Functions";
+		
+		//[] spawn VCM_fnc_VcomInit;
+		class VcomInit {};
 		
 		// [unitToRearm, rearmLocation] spawn VCM_fnc_ActRearm
 		class ActRearm {};
@@ -59,13 +75,13 @@ class VCOM
 		// unit call VCM_fnc_EnemyArray;
 		class EnemyArray {};
 		
-		// [groupLeader, moveDistance] call VCM_fnc_FindCover;
+		// [groupLeader] call VCM_fnc_FindCover;
 		class FindCover {};
 		
 		// [groupLeader] spawn VCM_fnc_FlankMove;
 		class FlankMove {};
 		
-		// [groupLeader, moveDistance] call VCM_fnc_ForceMove;
+		// [groupLeader] call VCM_fnc_ForceMove;
 		class ForceMove {};
 		
 		// unit call VCM_fnc_FriendlyArray;
@@ -151,6 +167,69 @@ class VCOM
 
 		//[] call VCM_fnc_CBASettings;
 		class CBASettings {};
+		
+		//[] call VCM_fnc_SniperList
+		class SniperList {};
+		
+		//[] spawn VCM_fnc_SniperEngage;
+		class SniperEngage;
+		
+		//[] spawn VCM_fnc_RangeEngage;
+		class RangeEngage;
+
+		//[] call VCM_fnc_ClstKnwnEnmy;
+		class ClstKnwnEnmy;
+
+		// unit call VCM_fnc_IsDriver;
+		class IsDriver {};			
+
+		//unit call VCM_fnc_VehicleDetection;
+		class VehicleDetection {};
+		
+		//[unit,4] call VCM_fnc_MovePrediction;
+		class MovePrediction {};
+		
+		//[] call VCM_fnc_UpdateDrivers;
+		class UpdateDrivers {};
+
+		//[] call VCM_fnc_IdleAnimations;
+		class IdleAnimations {};
+		
+		//[] call VCM_fnc_CoverDetect;
+		class CoverDetect {};
+		
+		//[] call VCM_fnc_CoverControl;
+		class CoverControl {};
+				
+		//[] call VCM_fnc_Scheduler;
+		class Scheduler {};
+		
+		//[AIArray] call VCM_fnc_ResetAnimation;
+		class ResetAnimation {};
+		
+		//[AI,TRUE] call VCM_fnc_ForceGrenadeFire; //0 = Unit to throw the grenade 1=true, throw grenade, false, throw smoke 
+		class ForceGrenadeFire {};
+		
+		//[Unit,"Text"] call VCM_fnc_DebugText;
+		class DebugText {};
+		
+		//[squadleader] call VCM_fnc_AISpeed;
+		class AISpeed {};
+				
+		//[_StaticList] call VCM_fnc_StaticCheck;
+		class StaticCheck {};
+		
+		//[_Unit,_Pos OR Obj] spawn VCM_fnc_DebugLine;
+		class DebugLine {};
+				
+		//[_unit, true] spawn VCM_fnc_BabeOver; 
+		class BabeOver {};
+		
+		//_Group spawn VCM_fnc_UseEM;
+		class UseEM {};
+		
+		//["_Unit","_Array"] spawn VCM_fnc_3DPathDebug;
+		class 3DPathDebug {};
 	};		
 
 };

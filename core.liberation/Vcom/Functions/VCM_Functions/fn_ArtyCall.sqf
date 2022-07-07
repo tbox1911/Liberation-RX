@@ -22,7 +22,7 @@ VLS fireAtTarget [TARGET, "weapon_vls_01"];
 		
 */
 
-params ["_callGrp","_enemyGrp","_AvgKnw"];
+params ["_callGrp","_enemyGrp","_AvgKnw","_PredictedLoc"];
 private _CallSide = (side _callGrp);
 
 private _LazClass = "LaserTargetE";
@@ -89,19 +89,19 @@ private _MaxRDist = 0;
 private _RndNumber = 0;
 
 
-switch (true) do 
-{
-	case (_AvgKnw >= 0 && {_AvgKnw < 10}): {_MinRDist = 100;_MaxRDist = 300;_RndNumber = 1;};
-	case (_AvgKnw >= 10 && {_AvgKnw < 20}): {_MinRDist = 90;_MaxRDist = 250;_RndNumber = 1;};
-	case (_AvgKnw >= 20 && {_AvgKnw < 30}): {_MinRDist = 80;_MaxRDist = 200;_RndNumber = 1;};
-	case (_AvgKnw >= 30 && {_AvgKnw < 40}): {_MinRDist = 70;_MaxRDist = 150;_RndNumber = 1;};
-	case (_AvgKnw >= 40 && {_AvgKnw < 50}): {_MinRDist = 60;_MaxRDist = 120;_RndNumber = 2;};
-	case (_AvgKnw >= 50 && {_AvgKnw < 60}): {_MinRDist = 50;_MaxRDist = 100;_RndNumber = 2;};
-	case (_AvgKnw >= 60 && {_AvgKnw < 70}): {_MinRDist = 40;_MaxRDist = 80;_RndNumber = 2;};
-	case (_AvgKnw >= 70 && {_AvgKnw < 80}): {_MinRDist = 30;_MaxRDist = 60;_RndNumber = 2;};
-	case (_AvgKnw >= 80 && {_AvgKnw < 90}): {_MinRDist = 20;_MaxRDist = 50;_RndNumber = 3;};
-	case (_AvgKnw >= 90 && {_AvgKnw <= 100}): {_MinRDist = 0;_MaxRDist = 25;_RndNumber = 3;};
-	case (_AvgKnw > 100): {_MinRDist = 0;_MaxRDist = 25;_RndNumber = 3;};
+switch (true) do 	switch (true) do 
+{	{
+	case (_AvgKnw >= 0 && {_AvgKnw < 10}): {_MinRDist = 150;_MaxRDist = 250;_RndNumber = 1;};
+	case (_AvgKnw >= 10 && {_AvgKnw < 20}): {_MinRDist = 125;_MaxRDist = 250;_RndNumber = 1;};
+	case (_AvgKnw >= 20 && {_AvgKnw < 30}): {_MinRDist = 100;_MaxRDist = 200;_RndNumber = 1;};
+	case (_AvgKnw >= 30 && {_AvgKnw < 40}): {_MinRDist = 90;_MaxRDist = 200;_RndNumber = 1;};
+	case (_AvgKnw >= 40 && {_AvgKnw < 50}): {_MinRDist = 80;_MaxRDist = 180;_RndNumber = 2;};
+	case (_AvgKnw >= 50 && {_AvgKnw < 60}): {_MinRDist = 70;_MaxRDist = 150;_RndNumber = 2;};
+	case (_AvgKnw >= 60 && {_AvgKnw < 70}): {_MinRDist = 60;_MaxRDist = 130;_RndNumber = 2;};
+	case (_AvgKnw >= 70 && {_AvgKnw < 80}): {_MinRDist = 50;_MaxRDist = 100;_RndNumber = 2;};
+	case (_AvgKnw >= 80 && {_AvgKnw < 90}): {_MinRDist = 40;_MaxRDist = 80;_RndNumber = 3;};
+	case (_AvgKnw >= 90 && {_AvgKnw <= 100}): {_MinRDist = 30;_MaxRDist = 60;_RndNumber = 3;};
+	case (_AvgKnw > 100): {_MinRDist = 25;_MaxRDist = 50;_RndNumber = 3;};
 };
 
 	if (VCM_Debug) then {systemChat (format ["_AvgKnw: %1  _RndNumber: %2",_AvgKnw,_RndNumber])};
@@ -139,7 +139,7 @@ if (count _VCnt > 0) then
 	private _VAttached = selectRandom _VCnt;
 	private _LazTarget = _LazClass createVehicle [0,0,0];_LazTarget attachto [_VAttached,[0,0,4]]; _LazTarget spawn {sleep 120; deleteVehicle _this;};
 	_CallSide reportRemoteTarget [_VAttached, 120];
-	_VAttached confirmSensorTarget [_CallSide, true];	
+	_VAttached confirmSensorTarget [_CallSide, true];
 	
 	if (VCM_Debug) then {systemChat (format ["_LazTarget: %1 Attached To: %2",_LazTarget,(typeOf _VAttached)])};
 }
@@ -152,7 +152,11 @@ else
 		{
 			{
 				private _Type = getText(configfile/"CfgMagazines"/_x/"displayNameShort");
-				if (["HE", _Type] call BIS_fnc_inString || ["Cluster", _Type] call BIS_fnc_inString && !(["AT", _Type] call BIS_fnc_inString)) then {_FinalArtyArray pushBackUnique _Unit;_FinalAmmoType pushBackUnique _x;};
+				if (!(["AT", _Type] call BIS_fnc_inString) && !(["Smoke", _Type] call BIS_fnc_inString)) then 
+				{
+					_FinalArtyArray pushBackUnique _Unit;
+					_FinalAmmoType pushBackUnique _x;
+				};
 				if (["Smoke", _Type] call BIS_fnc_inString) then {_SmokeArray pushBackUnique _x;};
 			} foreach _ammoArray;		
 		};	
@@ -165,15 +169,18 @@ if (VCM_Debug) then {systemChat (format ["_clstGrp: %1  _FinalAmmoType: %2",_cls
 
 //Now let's fire
 private _RndSelEnmy = selectRandom _AllEmyUnits;
+private _PredictedLoc2 = ((leader _callGrp) targetKnowledge (vehicle _RndSelEnmy))#6;
+
 
 private _aVehGrpUnits = [];
 {_aVehGrpUnits pushback (vehicle _x)} foreach _FinalArtyArray;
 private _randomAmmoArray = selectRandom _FinalAmmoType;
-if (isNil "_randomAmmoArray") exitWith {};
+if (isNil "_randomAmmoArray") exitWith {If (VCM_Debug) then {[(leader _clstGrp),"NO AMMO"] call VCM_fnc_DebugText;};};
+
 
 //Exit if group cannot reach.
-private _continueFiring = (getPos _RndSelEnmy) inRangeOfArtillery [_aVehGrpUnits,_randomAmmoArray];
-if !(_continueFiring) exitWith {};
+private _continueFiring = _PredictedLoc2 inRangeOfArtillery [_aVehGrpUnits,_randomAmmoArray];
+if !(_continueFiring) exitWith {If (VCM_Debug) then {[(leader _clstGrp),"NOT APPROPRIATE RANGE"] call VCM_fnc_DebugText;};};
 
 
 //Make sure we do minimal friendly fire.
@@ -184,15 +191,17 @@ if (_RndNumber isEqualTo 1) then
 {
 		private _FireUnit = selectRandom _aVehGrpUnits;
 		private _dist = (_MinRDist + (random _MaxRDist));
-		private _pos = getpos _RndSelEnmy;		
+		private _pos = _PredictedLoc2;		
 		private _positions = _pos getPos [_dist,(random 360)];
 		private _CF = [_FriendlyArray,_positions,true,"Arty1"] call VCM_fnc_ClstObj;
-		if (_CF distance2D _positions > 100) then
+		if (_CF distance2D _positions > 50) then
 		{
 			_FireUnit doArtilleryFire [_positions,_randomAmmoArray,_RndNumber];	
+			If (VCM_Debug) then {[(leader _clstGrp),"DO FIRE"] call VCM_fnc_DebugText;};
 		}
 		else
 		{
+			If (VCM_Debug) then {[(leader _clstGrp),"SMOKE FIRE"] call VCM_fnc_DebugText;};
 			if (count _SmokeArray > 0) then
 			{
 				_FireUnit doArtilleryFire [_positions,(selectRandom _SmokeArray),_RndNumber];	
@@ -203,12 +212,13 @@ else
 {
 	{
 		private _dist = (_MinRDist + (random _MaxRDist));
-		private _pos = getpos _RndSelEnmy;
+		private _pos = _PredictedLoc2;
 		private _positions = _pos getPos [_dist,(random 360)];
 		private _CF = [_FriendlyArray,_positions,true,"Arty1"] call VCM_fnc_ClstObj;
+		If (VCM_Debug) then {[(leader _clstGrp),"DO FIRE 2"] call VCM_fnc_DebugText;};
 		if (_CF distance2D _positions > 50) then
 		{
-			_x doArtilleryFire [_positions,_randomAmmoArray,_RndNumber];	
+			_x doArtilleryFire [_positions,_randomAmmoArray,_RndNumber];
 		}
 		else
 		{
