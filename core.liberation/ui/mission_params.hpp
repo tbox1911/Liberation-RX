@@ -196,13 +196,13 @@ class Params
 		title = $STR_PARAMS_CIVILIANS;
 		values[] = {0,0.5,1,2};
 		texts[] = {$STR_PARAMS_CIVILIANS1,$STR_PARAMS_CIVILIANS2,$STR_PARAMS_CIVILIANS3,$STR_PARAMS_CIVILIANS4};
-		default = 1;
+		default = 2;
 	};
 	class WildLife{
 		title = $STR_PARAM_WILDLIFE;
 		values[] = {1,0};
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 1;
+		default = 0;
 	};
 	class Patrol{
 		title = $STR_PARAM_PATROL;
