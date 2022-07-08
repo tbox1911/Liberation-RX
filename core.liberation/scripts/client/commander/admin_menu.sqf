@@ -11,6 +11,8 @@ do_ammo = 0;
 do_change = 0;
 do_export = 0;
 do_import = 0;
+do_kick = 0;
+do_ban = 0;
 
 private _msg = "";
 private _getBannedUID = {
@@ -64,6 +66,10 @@ private _disabled_controls = [1606,1607,1608,1609,1610,1613,1614,1620];
 (_display displayCtrl 1616) ctrlSetText getMissionPath "res\ui_rotation.paa";
 (_display displayCtrl 1616) ctrlSetToolTip "Rejoin player";
 (_display displayCtrl 1619) ctrlSetToolTip "Amount of Ammo or Experience Points to add";
+(_display displayCtrl 1621) ctrlSetText getMissionPath "res\ui_redeploy.paa";
+(_display displayCtrl 1621) ctrlSetToolTip "Kick player!";
+(_display displayCtrl 1622) ctrlSetText getMissionPath "res\skull.paa";
+(_display displayCtrl 1622) ctrlSetToolTip "BAN player!";
 
 // Build Banned
 [_ban_combo] call _getBannedUID;
@@ -228,6 +234,29 @@ while { alive player && dialog } do {
 		{ ctrlShow [_x, false] } foreach _input_controls;
 		{ ctrlEnable  [_x, true] } foreach _button_controls;
 	};
+	if (do_kick == 1) then {
+		do_kick = 0;
+		_name = _score_combo lbText (lbCurSel _score_combo);
+		_uid = _score_combo lbData (lbCurSel _score_combo);
+		_player = _uid call BIS_fnc_getUnitByUID;
+		["LOSER"] remoteExec ["endMission", owner _player];
+		_msg = format ["Admin kick player %1.", _name];
+		hint _msg;
+		[_msg] remoteExec ["systemchat", -2];
+		sleep 1;
+	};
+	if (do_ban == 1) then {
+		do_ban = 0;
+		_name = _score_combo lbText (lbCurSel _score_combo);
+		_uid = _score_combo lbData (lbCurSel _score_combo);
+		_player = _uid call BIS_fnc_getUnitByUID;
+		BTC_logic setVariable [_uid, 99, true];
+		[_player] remoteExec ["LRX_tk_actions", owner _player];
+		_msg = format ["Admin BAN player %1.", _name];
+		hint _msg;
+		[_msg] remoteExec ["systemchat", -2];
+		sleep 1;
+	};		
 	sleep 0.5;
 };
 closeDialog 0;
