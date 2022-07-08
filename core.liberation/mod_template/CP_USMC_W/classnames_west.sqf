@@ -42,6 +42,8 @@ light_vehicles = [
   // Vanilla
     ["C_Offroad_02_unarmed_F",0,light_vehicle_price_tier_1,0,GRLIB_perm_inf],
     ["C_Van_01_transport_F",0,light_vehicle_price_tier_2,0,GRLIB_perm_inf],
+    ["B_LSV_01_unarmed_F",0,light_vehicle_price_tier_6,0,GRLIB_perm_inf],
+    ["B_LSV_01_AT_F",0,light_vehicle_price_tier_9,0,GRLIB_perm_inf],
   // CUP
     ["CUP_I_SUV_ION",0,light_vehicle_price_tier_3,0,GRLIB_perm_inf],
     ["CUP_I_SUV_Armored_ION",0,light_vehicle_price_tier_9,0,GRLIB_perm_inf],
@@ -81,6 +83,8 @@ light_vehicles = [
     ["rhsusf_m1045_w",0,light_vehicle_price_tier_7,0,GRLIB_perm_inf],
     ["rhsusf_m1151_m2_v1_usarmy_wd",0,light_vehicle_price_tier_5,0,GRLIB_perm_inf],
     ["rhsusf_m1151_m2_lras3_v1_usarmy_wd",0,light_vehicle_price_tier_5,0,GRLIB_perm_inf],
+        ["rhsusf_m1151_m2crows_usarmy_wd",0,light_vehicle_price_tier_5,0,GRLIB_perm_inf],
+    ["rhsusf_m1151_mk19crows_usarmy_wd",0,light_vehicle_price_tier_5,0,GRLIB_perm_inf],
 	  ["rhsusf_m1151_m240_v1_usarmy_wd",0,light_vehicle_price_tier_5,0,GRLIB_perm_inf],
     ["rhsusf_m1151_mk19_v1_usarmy_wd",0,light_vehicle_price_tier_5,0,GRLIB_perm_inf],
 	  ["rhsusf_m1151_m2_v2_usarmy_wd",0,light_vehicle_price_tier_5,0,GRLIB_perm_inf],
@@ -484,26 +488,17 @@ fast_air_vehicle = [
     // CUP
       ["CUP_B_A10_DYN_USA",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
       ["CUP_B_AV8B_DYN_USMC",0,fast_air_vehicle_price_tier_5,0,GRLIB_perm_inf],
-      ["CUP_B_F35B_USMC",0,fast_air_vehicle_price_tier_5,0,GRLIB_perm_inf],
-      ["CUP_B_L39_CZ",0,fast_air_vehicle_price_tier_5,0,GRLIB_perm_inf],
 
     //RHS 
-      ["rhsusf_f22",0,fast_air_vehicle_price_tier_2,0,GRLIB_perm_inf],
       ["RHS_A10",0,fast_air_vehicle_price_tier_4,0,GRLIB_perm_inf],
     
     // CUP BAF
       ["CUP_B_GR9_DYN_GB", 0, fast_air_vehicle_price_tier_4, 0, GRLIB_perm_inf],
-      ["CUP_B_F35B_BAF", 0, fast_air_vehicle_price_tier_4, 0, GRLIB_perm_inf],
-      ["CUP_B_F35B_Stealth_BAF", 0, fast_air_vehicle_price_tier_4, 0, GRLIB_perm_inf],
     // FFAA
       ["ffaa_ar_harrier",0,fast_air_vehicle_price_tier_5,0,GRLIB_perm_inf],
       ["ffaa_ea_ef18m",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
     // USAF
       ["USAF_A10",0,fast_air_vehicle_price_tier_4,0,GRLIB_perm_inf],
-      ["USAF_F22",0,fast_air_vehicle_price_tier_2,0,GRLIB_perm_inf],
-      ["USAF_F22_Heavy",0,fast_air_vehicle_price_tier_5,0,GRLIB_perm_inf],
-      ["USAF_F35A_STEALTH",0,fast_air_vehicle_price_tier_5,0,GRLIB_perm_inf],
-      ["USAF_F35A",0,fast_air_vehicle_price_tier_7,0,GRLIB_perm_inf],
     // FIR F-14
       ["FIR_F14A_HBK1",0,fast_air_vehicle_price_tier_4,0,GRLIB_perm_inf],
     // FIR F-15
