@@ -238,23 +238,29 @@ while { alive player && dialog } do {
 		do_kick = 0;
 		_name = _score_combo lbText (lbCurSel _score_combo);
 		_uid = _score_combo lbData (lbCurSel _score_combo);
-		_player = _uid call BIS_fnc_getUnitByUID;
-		["LOSER"] remoteExec ["endMission", owner _player];
-		_msg = format ["Admin kick player %1.", _name];
-		hint _msg;
-		[_msg] remoteExec ["systemchat", -2];
+		[_uid, {
+			_player = _this call BIS_fnc_getUnitByUID;
+			if (isPlayer _player) then {
+				["LOSER"] remoteExec ["endMission", owner _player];
+				_msg = format ["Admin kick player %1.", name _player];
+				[_msg] remoteExec ["systemchat", -2];
+			};
+		}] remoteExec ["bis_fnc_call", 2];
 		sleep 1;
 	};
 	if (do_ban == 1) then {
 		do_ban = 0;
 		_name = _score_combo lbText (lbCurSel _score_combo);
 		_uid = _score_combo lbData (lbCurSel _score_combo);
-		_player = _uid call BIS_fnc_getUnitByUID;
-		BTC_logic setVariable [_uid, 99, true];
-		[_player] remoteExec ["LRX_tk_actions", owner _player];
-		_msg = format ["Admin BAN player %1.", _name];
-		hint _msg;
-		[_msg] remoteExec ["systemchat", -2];
+		[_uid, {
+			_player = _this call BIS_fnc_getUnitByUID;
+			if (isPlayer _player) then {
+				BTC_logic setVariable [_this, 99, true];
+				[_player] remoteExec ["LRX_tk_actions", owner _player];
+				_msg = format ["Admin BAN player %1.", name _player];
+				[_msg] remoteExec ["systemchat", -2];
+			};
+		}] remoteExec ["bis_fnc_call", 2];
 		sleep 1;
 	};		
 	sleep 0.5;
