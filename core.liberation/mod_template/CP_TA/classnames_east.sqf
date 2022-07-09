@@ -39,6 +39,9 @@ opfor_flag = "CUP_Flag_Black";
 
 militia_squad = [
 	"CUP_O_RU_Soldier_SL_MSV_VSR93",
+	"CUP_O_RU_Soldier_AA_M_EMR_V2",
+	"CUP_O_RU_Soldier_AA_M_EMR_V2",
+	"CUP_O_RU_Soldier_AA_M_EMR_V2",
 	"CUP_O_RU_Soldier_TL_MSV_VSR93",
 	"CUP_O_RU_Soldier_Exp_MSV_VSR93",
 	"CUP_O_RU_Soldier_MG_MSV_VSR93",
@@ -75,7 +78,6 @@ divers_squad = [
 militia_vehicles = [
 
 	"CUP_O_BMP2_TKA",
-	"CUP_O_Hilux_podnos_TK_INS",
 	"CUP_O_M113A3_TKA",
 	"CUP_O_LR_MG_TKA",
 	"CUP_O_UAZ_METIS_TKA",
@@ -92,7 +94,6 @@ boats_east = [
 ];
 
 opfor_vehicles =  [
-	"CUP_O_Hilux_podnos_TK_INS",
 	"CUP_O_BMP2_RU",
 	"CUP_O_BTR90_RU",
 	"CUP_O_BMP3_RU",
@@ -131,7 +132,6 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"CUP_O_BTR60_TK",
 	"CUP_O_BTR80_TK",
 	"CUP_O_T72_RU",
-	"CUP_O_Hilux_podnos_TK_INS",
 	"CUP_O_BTR80A_TK"
 ];
 
@@ -151,8 +151,7 @@ opfor_battlegroup_vehicles = [
 	"CUP_O_BM21_TKA",
 	"CUP_O_BTR80A_TK",
 	"CUP_O_BTR80A_TK",
-	"CUP_O_BTR80A_TK",
-	"CUP_O_Hilux_podnos_TK_INS"
+	"CUP_O_BTR80A_TK"
 ]; 
 
 
@@ -185,7 +184,6 @@ opfor_statics = [
 	"CUP_O_AGS_TK",
 	"CUP_O_Igla_AA_pod_TK",
 	"CUP_O_Metis_TK",
-	"CUP_O_Hilux_podnos_TK_INS",
 	"CUP_O_ZU23_TK"
 ];
 
