@@ -14,6 +14,8 @@ GRLIB_ACE_enabled = false;
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\liberation_functions.sqf";
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\fetch_params.sqf";
 
+[] spawn VCM_fnc_VcomInit;
+
 if (!abort_loading) then {
 	[] call compileFinal preprocessFileLineNUmbers "scripts\shared\classnames.sqf";
 	[] call compileFinal preprocessfilelinenumbers "scripts\shared\init_shared.sqf";
@@ -23,9 +25,6 @@ if (!abort_loading) then {
 		if (isServer) then {
 
 		[] execVM "scripts\server\init_server.sqf";
-		//Exec Vcom AI function
-		[] execVM "Vcom\VcomInit.sqf";
-		//End of Vcom commands
 
 		//Tkill with diag.
 		if (isNil 'tk_init_allowed') then {tk_init_allowed = false};

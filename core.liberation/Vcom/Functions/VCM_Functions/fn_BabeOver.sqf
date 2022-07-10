@@ -1,7 +1,5 @@
 params ["_climber", "_climbonly"];
 
-EM_debug = false;
-
 if (isNil "_climber") then
 {
 	_climber = missionNamespace getVariable ["bis_fnc_moduleRemoteControl_unit", player]; //player;

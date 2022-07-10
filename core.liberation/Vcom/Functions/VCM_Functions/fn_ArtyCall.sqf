@@ -89,19 +89,19 @@ private _MaxRDist = 0;
 private _RndNumber = 0;
 
 
-switch (true) do 	switch (true) do 
-{	{
-	case (_AvgKnw >= 0 && {_AvgKnw < 10}): {_MinRDist = 150;_MaxRDist = 250;_RndNumber = 1;};
-	case (_AvgKnw >= 10 && {_AvgKnw < 20}): {_MinRDist = 125;_MaxRDist = 250;_RndNumber = 1;};
-	case (_AvgKnw >= 20 && {_AvgKnw < 30}): {_MinRDist = 100;_MaxRDist = 200;_RndNumber = 1;};
-	case (_AvgKnw >= 30 && {_AvgKnw < 40}): {_MinRDist = 90;_MaxRDist = 200;_RndNumber = 1;};
-	case (_AvgKnw >= 40 && {_AvgKnw < 50}): {_MinRDist = 80;_MaxRDist = 180;_RndNumber = 2;};
-	case (_AvgKnw >= 50 && {_AvgKnw < 60}): {_MinRDist = 70;_MaxRDist = 150;_RndNumber = 2;};
-	case (_AvgKnw >= 60 && {_AvgKnw < 70}): {_MinRDist = 60;_MaxRDist = 130;_RndNumber = 2;};
-	case (_AvgKnw >= 70 && {_AvgKnw < 80}): {_MinRDist = 50;_MaxRDist = 100;_RndNumber = 2;};
-	case (_AvgKnw >= 80 && {_AvgKnw < 90}): {_MinRDist = 40;_MaxRDist = 80;_RndNumber = 3;};
-	case (_AvgKnw >= 90 && {_AvgKnw <= 100}): {_MinRDist = 30;_MaxRDist = 60;_RndNumber = 3;};
-	case (_AvgKnw > 100): {_MinRDist = 25;_MaxRDist = 50;_RndNumber = 3;};
+switch (true) do 
+{
+	case (_AvgKnw >= 0 && {_AvgKnw < 10}): {_MinRDist = 50;_MaxRDist = 100;_RndNumber = 1;};
+	case (_AvgKnw >= 10 && {_AvgKnw < 20}): {_MinRDist = 40;_MaxRDist = 80;_RndNumber = 1;};
+	case (_AvgKnw >= 20 && {_AvgKnw < 30}): {_MinRDist = 30;_MaxRDist = 60;_RndNumber = 1;};
+	case (_AvgKnw >= 30 && {_AvgKnw < 40}): {_MinRDist = 20;_MaxRDist = 50;_RndNumber = 1;};
+	case (_AvgKnw >= 40 && {_AvgKnw < 50}): {_MinRDist = 15;_MaxRDist = 50;_RndNumber = 2;};
+	case (_AvgKnw >= 50 && {_AvgKnw < 60}): {_MinRDist = 10;_MaxRDist = 50;_RndNumber = 2;};
+	case (_AvgKnw >= 60 && {_AvgKnw < 70}): {_MinRDist = 8;_MaxRDist = 30;_RndNumber = 2;};
+	case (_AvgKnw >= 70 && {_AvgKnw < 80}): {_MinRDist = 6;_MaxRDist = 30;_RndNumber = 2;};
+	case (_AvgKnw >= 80 && {_AvgKnw < 90}): {_MinRDist = 4;_MaxRDist = 30;_RndNumber = 3;};
+	case (_AvgKnw >= 90 && {_AvgKnw <= 100}): {_MinRDist = 2;_MaxRDist = 30;_RndNumber = 3;};
+	case (_AvgKnw > 100): {_MinRDist = 1;_MaxRDist = 25;_RndNumber = 3;};
 };
 
 	if (VCM_Debug) then {systemChat (format ["_AvgKnw: %1  _RndNumber: %2",_AvgKnw,_RndNumber])};

@@ -48,9 +48,7 @@
 	//CBA CHECK
 	if (isClass(configFile >> "CfgPatches" >> "cba_main")) then {CBAACT = true;} else {CBAACT = false;};
 	//ENHANCED MOVEMENT CHECK
-	//if !(isNil "EM_debug") then {VCOM_EM_ENABLED = true;} else {VCOM_EM_ENABLED = false;};
-	EM_debug = false;
-	VCOM_EM_ENABLED = false;
+	if !(isNil "EM_debug") then {VCOM_EM_ENABLED = true;} else {VCOM_EM_ENABLED = false;};
 	
 	
 	//Global actions compiles

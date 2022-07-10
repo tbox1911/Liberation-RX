@@ -29,11 +29,11 @@ if ((vehicle _nearestEnemy) isKindOf "Air") exitWith {};
 
 //If they don't know about the enemy position, then just exit the function
 private _knows = _grp knowsAbout _nearestEnemy;
-//if (_knows < 2) exitwith 
-//{
-//	sleep 5;
-//	[_leader] spawn VCM_fnc_FlankMove;
-//};
+if (_knows < 2) exitwith 
+{
+	sleep 5;
+	[_leader] spawn VCM_fnc_FlankMove;
+};
 
 if (getpos _nearestEnemy isEqualTo [0,0,0]) exitWith {};
 if !((waypointPosition [_grp,(currentWaypoint _grp)]) isEqualTo [0,0,0]) exitWith {};
