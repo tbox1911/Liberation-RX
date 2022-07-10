@@ -18,7 +18,7 @@ GRLIB_blufor_cap = 10 * GRLIB_unitcap;
 GRLIB_sector_cap = 150 * GRLIB_unitcap;
 GRLIB_battlegroup_cap = 75 * GRLIB_unitcap;
 GRLIB_patrol_cap = 75 * GRLIB_unitcap;
-GRLIB_battlegroup_size = 7 * (sqrt GRLIB_unitcap) * (sqrt GRLIB_csat_aggressivity);
+GRLIB_battlegroup_size = 2 * (sqrt GRLIB_unitcap) * (sqrt GRLIB_csat_aggressivity);
 GRLIB_civilians_amount = 2 * GRLIB_civilian_activity;
 GRLIB_fob_range = 450;
 GRLIB_surrender_chance = 75;
@@ -107,7 +107,7 @@ ai_limiter_on = true;
 // ai skill
 ai_skill = 10;
 
-skill_scan = true;
+skill_scan = false;
 skill_parachuters = 1;
 skill_air_vehicles_planes = 1;
 skill_air_vehicles_helicopters = 1;
