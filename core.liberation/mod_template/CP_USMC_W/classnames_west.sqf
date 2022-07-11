@@ -277,6 +277,7 @@ heavy_vehicles = [
     ["CUP_B_M1129_MC_MK19_Desert_Slat",0,heavy_vehicle_price_tier_11,0,GRLIB_perm_inf],
     ["CUP_B_M7Bradley_USA_D",0,heavy_vehicle_price_tier_12,0,GRLIB_perm_inf],
     ["CUP_B_M2A3Bradley_USA_D",0,heavy_vehicle_price_tier_13,0,GRLIB_perm_inf],
+    ["CUP_B_M163_Vulcan_USA",0,heavy_vehicle_price_tier_9,0,GRLIB_perm_inf],
   // RHS
     ["rhsusf_stryker_m1126_m2_wd",0,heavy_vehicle_price_tier_2,0,GRLIB_perm_inf],
     ["rhsusf_stryker_m1127_m2_wd",0,heavy_vehicle_price_tier_2,0,GRLIB_perm_inf],
@@ -349,7 +350,7 @@ strong_heavy_vehicles = [
     //RHS
     ["rhsusf_m109_usarmy",0,strong_heavy_vehicle_price_tier_4,0,GRLIB_perm_inf],
   // BW
-    ["Redd_Tank_Gepard_1A2_Flecktarn",0,strong_heavy_vehicle_price_tier_1,0,GRLIB_perm_inf],
+    ["Redd_Tank_Gepard_1A2_Flecktarn",0,heavy_vehicle_price_tier_9 ,0,GRLIB_perm_inf],
     ["BWA3_Panzerhaubitze2000_Fleck",0,strong_heavy_vehicle_price_tier_4,0,GRLIB_perm_inf],
     ["BWA3_Leopard2_Fleck",0,strong_heavy_vehicle_price_tier_5,0,GRLIB_perm_inf],
   // Spain
@@ -632,6 +633,8 @@ support_vehicles_west = [
     ["B_Truck_01_fuel_F",0,logistic_ground_vehicle_price_tier_1,0,GRLIB_perm_inf],
     ["B_Truck_01_Repair_F",0,logistic_ground_vehicle_price_tier_1,0,GRLIB_perm_inf],
     ["B_Truck_01_box_F",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+    ["B_T_UGV_01_olive_F",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+    ["B_T_UGV_01_rcws_olive_F",0,heavy_vehicle_price_tier_9 ,0,GRLIB_perm_inf],
   // BAF
     ["UK3CB_BAF_Coyote_Logistics_L111A1_W",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
     ["UK3CB_BAF_Husky_Logistics_GPMG_Green",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
