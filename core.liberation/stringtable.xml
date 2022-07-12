@@ -2568,8 +2568,8 @@
 			<Japanese>すみません！</Japanese>
 		</Key>
 		<Key ID="STR_NAME_PROHIBITED">
-			<Original>Sorry, this nickname is prohibited on this server!\n\nChange your nickname, lazy ass, and join the game again!</Original>
-			<French>Désolé, ce pseudo est interdit sur ce serveur !\n\nChangez de pseudo, paresseux, et rejoignez le jeu à nouveau !</French>
+			<Original>Sorry, nickname %1 is prohibited on this server!\n\nChange your nickname, lazy ass, and join the game again!</Original>
+			<French>Désolé, ce pseudo %1 est interdit sur ce serveur !\n\nChangez de pseudo, paresseux, et rejoignez le jeu à nouveau !</French>
 			<Russian>Використання ніку %1 ЗАБОРОНЕНО!\n\n Зміни нік, срака ти лінива, та заходь знову.</Russian>
 		</Key>
 		<Key ID="STR_COMMANDER_NOT_AUTHORIZED">
