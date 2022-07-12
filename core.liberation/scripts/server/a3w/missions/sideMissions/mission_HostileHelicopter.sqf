@@ -73,7 +73,7 @@ _successExec =
 		{
 			sleep 0.1;
 			_pos = getPos _veh;
-			(isTouchingGround _veh || _pos select 2 < 5) && {vectorMagnitude velocity _veh < [1,5] select surfaceIsWater _pos}
+			(isTouchingGround _veh || _pos select 2 < 5) && {vectorMagnitude velocity _veh < [1,5] select surfaceIsWater _pos};
 		};
 
 		_wreckPos = getPosATL _veh;
