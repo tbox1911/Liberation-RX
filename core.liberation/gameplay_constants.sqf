@@ -15,7 +15,7 @@ GRLIB_defended_buildingPos_part = 0.5;
 GRLIB_sector_military_value = 3;
 GRLIB_secondary_objective_impact = 0.4;
 GRLIB_blufor_cap = 10 * GRLIB_unitcap;
-GRLIB_sector_cap = 150 * GRLIB_unitcap;
+GRLIB_sector_cap = 120 * GRLIB_unitcap;
 GRLIB_battlegroup_cap = 75 * GRLIB_unitcap;
 GRLIB_patrol_cap = 75 * GRLIB_unitcap;
 GRLIB_battlegroup_size = 2 * (sqrt GRLIB_unitcap) * (sqrt GRLIB_csat_aggressivity);
@@ -33,7 +33,7 @@ GRLIB_perm_tank = 800;
 GRLIB_perm_air = 1200;
 GRLIB_perm_max = 1600;
 GRLIB_date_year = 2022;
-GRLIB_date_month = 6;
+GRLIB_date_month = 7;
 GRLIB_date_day = 30;
 GRLIB_nights_start = 21;
 GRLIB_nights_stop = 4;
@@ -105,7 +105,7 @@ hc_battlegroup_on = false;
 ai_limit = 3;
 ai_limiter_on = true;
 // ai skill
-ai_skill = 10;
+ai_skill = 9;
 
 skill_scan = false;
 skill_parachuters = 1;
@@ -1954,6 +1954,7 @@ item_blacklist =
     "rnt_mg3_static_barell_ai",
     "rnt_mg3_static_tripod_ai",
     "H_HelmetO_ViperSP_ghex_F",
-    "H_HelmetO_ViperSP_hex_F"
+    "H_HelmetO_ViperSP_hex_F",
+	"CUP_hgun_Browning_HP"
 ];
 
