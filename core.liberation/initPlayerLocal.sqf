@@ -5,54 +5,47 @@ waitUntil {
 ["InitializePlayer", [player, true]] call BIS_fnc_dynamicGroups;
 
 _rules = '
-DE<br /><br />
-Natürlich gelten hier wie auch auf dem Server die üblichen (Verhaltens)Regeln.<br /><br />
-- Spielt zusammen und versucht stets, ein gemeinsames Spiel zu ermöglichen<br />
-- Respawn oder Disconnect, während man bewusstlos ist, kostet Euch Geld -> Wartet also nach Möglichkeit immer auf Rettung<br />
-- Jeder Spieler muss mittels TFAR auf dem Teamspeak-Server 193.111.198.84 erreichbar sein<br />
-- Infos über Fahrzeug- und Baurechte erhaltet ihr auf dem MilSim United Discord.<br />
-- Nur signierte Mods aus dem Workshop oder unserem Repository nutzen<br />
-- Spass haben und lieb sein zueinander
-<br /><br />
-Spielregeln:<br /><br />
-1. Bewusstes Teamkilling ist strengstens untersagt, unbewusstes wird immer untersucht.<br />
-2. Wir setzen ein funktionierendes und qualitatives Mikrofon zur Spielteilnahme voraus.<br />
-3. Trolling ist untersagt, Beleidigungen, Rassismus ebenso, verhaltet euch freundlich.<br />
-4. Eine gute Kommunikation ist alles, ihr seid daher angewiesen die zugewiesenen Kanäle strikt einzuhalten und zu benutzen.<br />
-5. Der Teamleader darf über die Waffenklasse einzelner seines Trupps, wie auch über die zu Spielende Fraktion bestimmen.<br />
-6. Boden-teams sind von außen immer LR(“Long-Range”) auf der 50 für Bodenstreitkräfte zu erreichen.<br />
-7. Boden-Luft Kommunikation ist immer auf der 51.<br />
-8. Luft-Luft Kommunikation ist auf der 52.<br />
-8.1 Innerhalb des teams sind außer den Hauptkanälen 50, 51, 52 alle anderen Kanäle frei wählbar.<br />
-9. ALLE Elemente müssen sich mit dem Groupmanager eintragen. Der Rufname ist Sinnvoll/Seriös zu wählen. (ACE Self Interaction Menü -> Groupmanager)<br />
-10. Wir behalten uns Änderungen des Regelwerkes vor.<br />
-11. Jeder ist angehalten sich selbst über Änderungen des Regelwerkes zu informieren.<br />
-
-<br /><br />
+DE<br />
+<br />
+Verbote:<br />
+- Trolling, Beleidigungen, Rassismus, Pornographie, sexuelle Belästigung, alles andere, weswegen die Polizei kommt<br />
+- Angriffe auf Verbündete und Zivilisten<br />
+- Boden- und Luftfahrzeuge dürfen ohne Auftrag der Infanterie nicht angreifen.<br />
+- Anderen Spielern das Fahrzeug klauen<br />
+- In FOBs rumballern und Müll auf den Boden schmeißen<br />
+- Übertrieben dumm aufführen, so dass der Server die Bezeichnung "MilSim" nicht mehr verdient.<br />
+- Programfehler ausnutzen<br />
+<br />
+Pflichten:<br />
++ Eigene Gruppen-Infos in den Groupmanager eintragen. (ACE Self Interaction Menü -> Groupmanager)<br />
++ Machen, was der Gruppenführer sagt oder sich eine andere Gruppe suchen.<br />
++ Funktionierendes Mikrofon und TFAR<br />
++ Funkdisziplin: Nur das nötigste, ordentlich formuliert<br />
++ Alle Bodeneinheiten müssen über Kanal 50 erreichbar sein.<br />
++ Alle Lufteinheiten müssen über Kanal 51 (Boden-Luft) und 52 (Luft-Luft) erreichbar sein.<br />
++ Bei Regelverstößen oder Bugs muss ein Beweisvideo vorgelegt werden. (z.B. mit: Nvida Shadow Play, X-Box-Game-Bar)<br />
+<br />
+<br />
 EN<br /><br />
-Of course, the usual (behavioural) rules apply here as well as on the server. We refrain from listing them all here. However, some points should be emphasised, especially from a gameplay point of view:<br /><br />
-- Play together as a group.<br />
-- Respawning or disconnecting while unconscious costs you money -> always wait for rescue if possible.<br />
-- Every player must be reachable via TFAR on the teamspeak server 193.111.198.84 <br />
-- Informations on vehicle- and building can be found on the MilSim United Discord.<br />
-- Only use signed mods from the workshop or our repository<br />
-- Have fun and be nice to each other
-<br /><br />
-
-Gameplay Rules:<br /><br />
-1. Killing Friendly units is strictly forbidden, accedents will always be looked at.<br />
-2. It is required to have a working and a good quality microphone.<br />
-3. Trolling, insults and racism are strictly forbidden.<br />
-4. Good communication is everything. You are required to use the assigned channels.<br />
-5. The group leader can dictate the weapon class of group members, as well as the faction that is played.<br />
-6. Infantryteams are required to be on the Long-Range-Radio channel 50 for ground to ground communication.<br />
-7. Ground to Air communication is on Long-Range-Radio channel 51.<br />
-8. Air to Air communication is on Long-Range-Radio channel 52.<br />
-9. All elements must be named correctly in the Groupmanager. Chose your callsign sensibly/serious.(ACE Self Interaction Menü -> Groupmanager)<br />
-10. We reserve the right to change the rules.<br />
-11. Everyone should keep himself up to date with changes made to the rules.<br />
-
-<br /><br />
+Prohibited:<br />
+- Trolling, insults, racism, pornography, sexual harassment, anything else the police would come for<br />
+- Attacks on allies and civilians<br />
+- Ground and air vehicles are not allowed to attack without infantry order.<br />
+- Stealing other players´ vehicles<br />
+- Shooting around in FOBs and throwing garbage on the ground<br />
+- Acting overly stupid so that the server no longer deserves the name "MilSim".<br />
+- Exploit program bugs<br />
+<br />
+Duties:<br />
++ Add own group info to group manager. (ACE self interaction menu -> Groupmanager).<br />
++ Do what the group leader says or find another group.<br />
++ Working microphone and TFAR<br />
++ Radio discipline: only the most necessary, properly formulated.<br />
++ All ground units must be reachable via channel 50.<br />
++ All air units must be reachable via channel 51 (ground-air) and 52 (air-air).<br />
++ In case of rule violations or bugs, a proof video must be presented. (e.g. with: Nvida Shadow Play, X-Box Game Bar).<br />
+<br />
+<br />
 ';
 
 _situation = '
@@ -82,7 +75,7 @@ if (isNil "global_arsenal") then {
 };
 
 if (global_arsenal) then {
-	sleep 2;
+	sleep 10;
 	_glob_box  = missionnamespace getVariable ["myLARsBox", objNull];
 	[_glob_box, false] call ace_arsenal_fnc_initBox;
 	[_glob_box, true, false] call ace_arsenal_fnc_removeVirtualitems;
