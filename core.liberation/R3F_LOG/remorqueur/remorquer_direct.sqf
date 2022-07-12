@@ -1,7 +1,7 @@
 /**
- * Remorque l'objet point� au v�hicule remorqueur valide le plus proche
+ * Remorque l'objet pointé au véhicule remorqueur valide le plus proche
  * 
- * @param 0 l'objet � remorquer
+ * @param 0 l'objet é remorquer
  * 
  * Copyright (C) 2014 Team ~R3F~
  * 
@@ -50,7 +50,7 @@ else
 					]
 				);
 				
-				// L'arri�re du remorqueur est proche de l'avant de l'objet point�
+				// L'arriére du remorqueur est proche de l'avant de l'objet pointé
 				abs (_delta_pos select 0) < 3 && abs (_delta_pos select 1) < 5
 			}
 		) exitWith {_remorqueur = _x;};
@@ -65,7 +65,7 @@ else
 			_remorqueur setVariable ["R3F_LOG_remorque", _objet, true];
 			_objet setVariable ["R3F_LOG_est_transporte_par", _remorqueur, true];
 			
-			// On place le joueur sur le c�t� du v�hicule en fonction qu'il se trouve � sa gauche ou droite
+			// On place le joueur sur le cété du véhicule en fonction qu'il se trouve é sa gauche ou droite
 			if ((_remorqueur worldToModel (player modelToWorld [0,0,0])) select 0 > 0) then
 			{
 				player attachTo [_remorqueur, [
@@ -97,7 +97,7 @@ else
 			}];
 			sleep 2;
 			
-			// Quelques corrections visuelles pour des classes sp�cifiques
+			// Quelques corrections visuelles pour des classes spécifiques
 			_offset_attach_x = 0;
 			_offset_attach_y = 0.2;
 			_offset_attach_z = 0;
@@ -105,7 +105,7 @@ else
 			if (typeOf _remorqueur isKindOf "CUP_UAZ_Base") then {_offset_attach_z = 2.6};
 			if (typeOf _objet isKindOf "CUP_UAZ_Base") then {_offset_attach_z = _offset_attach_z - 2.4};
 						
-			// Attacher � l'arri�re du v�hicule au ras du sol
+			// Attacher é l'arriére du véhicule au ras du sol
 			_pos_x = (boundingCenter _objet select 0) + _offset_attach_x;
 			_pos_y = (boundingBoxReal _remorqueur select 0 select 1) + (boundingBoxReal _objet select 0 select 1) + _offset_attach_y;
 			_pos_z = (boundingBoxReal _remorqueur select 0 select 2) - (boundingBoxReal _objet select 0 select 2) + _offset_attach_z;
@@ -122,7 +122,7 @@ else
 				
 				_azimut_canon = ((_objet weaponDirection (weapons _objet select 0)) select 0) atan2 ((_objet weaponDirection (weapons _objet select 0)) select 1);
 				
-				// Seul le D30 a le canon pointant vers le v�hicule
+				// Seul le D30 a le canon pointant vers le véhicule
 				if !(_objet isKindOf "D30_Base") then // All in Arma
 				{
 					_azimut_canon = _azimut_canon + 180;

@@ -1,5 +1,5 @@
 /**
- * Initialise un v�hicule transporteur
+ * Initialise un véhicule transporteur
  * 
  * @param 0 le transporteur
  */
@@ -8,7 +8,7 @@ private ["_transporteur"];
 
 _transporteur = _this select 0;
 
-// D�finition locale de la variable si elle n'est pas d�finie sur le r�seau
+// Définition locale de la variable si elle n'est pas définie sur le réseau
 if (isNil {_transporteur getVariable "R3F_LOG_objets_charges"}) then
 {
 	_transporteur setVariable ["R3F_LOG_objets_charges", [], false];

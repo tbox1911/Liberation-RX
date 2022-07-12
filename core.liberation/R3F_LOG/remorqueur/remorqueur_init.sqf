@@ -1,5 +1,5 @@
 /**
- * Initialise un v�hicule remorqueur
+ * Initialise un véhicule remorqueur
  * 
  * @param 0 le remorqueur
  */
@@ -8,7 +8,7 @@ private ["_remorqueur"];
 
 _remorqueur = _this select 0;
 
-// D�finition locale de la variable si elle n'est pas d�finie sur le r�seau
+// Définition locale de la variable si elle n'est pas définie sur le réseau
 if (isNil {_remorqueur getVariable "R3F_LOG_remorque"}) then
 {
 	_remorqueur setVariable ["R3F_LOG_remorque", objNull, false];
