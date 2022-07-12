@@ -39,7 +39,9 @@ if (_spawn_marker != "") then {
 	};
 
 	[ _spawn_marker ] remoteExec ["remote_call_battlegroup", 0];
-
+	
+	sleep 30;
+	
 	{
 		_nextgrp = createGroup [GRLIB_side_enemy, true];
 		_vehicle = [markerPos _spawn_marker, _x] call F_libSpawnVehicle;
