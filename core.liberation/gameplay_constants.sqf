@@ -1955,6 +1955,9 @@ item_blacklist =
     "rnt_mg3_static_tripod_ai",
     "H_HelmetO_ViperSP_ghex_F",
     "H_HelmetO_ViperSP_hex_F",
+	"NVGogglesB_blk_F",
+	"NVGogglesB_grn_F",
+	"NVGogglesB_gry_F",
 	"CUP_hgun_Browning_HP"
 ];
 
