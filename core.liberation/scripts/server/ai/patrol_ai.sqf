@@ -22,13 +22,14 @@ while { count (units _grp) > 0 } do {
 				if (_veh_class isKindOf "StaticMortar") then {_radius = 1500; _kind = "Man"};
 				if (_veh_class isKindOf "AA_01_base_F") then {_radius = 2000; _kind = "Air"};
 
-				private _scan_target = [units GRLIB_side_friendly, {
+				private _scan_target = [allUnits, {
 					alive _x &&
+					side _x == GRLIB_side_friendly &&
 					(vehicle _x) isKindOf _kind &&
 					!(_x getVariable ['R3F_LOG_disabled', false]) &&
 					!([_x, "LHD", GRLIB_sector_size] call F_check_near) &&
 					!([_x, "FOB", GRLIB_sector_size] call F_check_near) &&
-					_x distance2D (getPos _vehicle) <= _radius
+					_x distance2D (getPosATL _vehicle) <= _radius
 				} ] call BIS_fnc_conditionalSelect;
 
 				if (count (_scan_target) > 0 ) then {
@@ -39,7 +40,7 @@ while { count (units _grp) > 0 } do {
 
 					_vehicle setDir (_vehicle getDir _next_target);
 					_grp setBehaviour "COMBAT";
-					//_grp reveal _next_target;
+					_gunner reveal [_next_target, 1.5];
 					_gunner doTarget _next_target;
 					//_vehicle fireAtTarget [_next_target];
 				} else {
