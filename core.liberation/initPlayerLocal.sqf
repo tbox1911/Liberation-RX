@@ -149,6 +149,14 @@ if (tk_active) then {
 	}];
 };
 
+if (isNil "KPFC_active") then {
+	KPFC_active = false
+};
+
+if (KPFC_active) then {
+	player addEventHandler ["GetInMan", {[ _this select 2] execVM "KP\KPFC\kp_fuel_consumption.sqf";}];
+};
+
 all_arsenals = [];
 /*
 {
