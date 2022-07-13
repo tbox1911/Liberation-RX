@@ -1,4 +1,6 @@
 // Add SOG Weapons
+GRLIB_MOD_signature append ["vn_"];
+
 private _exclude = "vn_o";
 if (GRLIB_mod_west == "SOG_VIETCONG") then { _exclude = "vn_b" };
 

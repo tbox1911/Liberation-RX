@@ -1,4 +1,5 @@
 // Add R3F Weapons
+GRLIB_MOD_signature append ["cwr3"];
 
 // Weapons + Equipements (uniforme, etc..)
 (

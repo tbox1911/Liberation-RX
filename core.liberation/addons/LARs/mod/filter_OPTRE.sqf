@@ -1,4 +1,5 @@
 // Add OPTRE Weapons
+GRLIB_MOD_signature append ["optre_"];
 
 // Weapons
 private _OPTRE_Items = [

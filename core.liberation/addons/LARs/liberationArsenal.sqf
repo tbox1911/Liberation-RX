@@ -42,6 +42,9 @@ GRLIB_blacklisted_from_arsenal = blacklisted_bag + blacklisted_weapon;
 // Filters disabled 
 if (GRLIB_filter_arsenal == 0) exitWith { diag_log "--- LRX Arsenal *Unfiltered* initialized." };
 
+// Mod signature
+GRLIB_MOD_signature = [];
+
 // Add Mod Items (Weapons,Uniform,etc.)
 [] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_init.sqf";
 

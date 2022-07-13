@@ -1,5 +1,4 @@
 // Add ArmA3 Weapons
-// todo: add side filter
 
 // Weapons + Equipements (uniforms, etc..)
 private _A3_Items = [
@@ -7,6 +6,7 @@ private _A3_Items = [
 	"Laserdesignator_","H_Bandanna_","H_Beret_","H_Booniehat_","H_Cap_","H_Hat_","H_Helmet","H_MilCap_",
 	"H_PASGT_","U_B_","U_BG_","U_C_","U_I_","U_O_","V_","NVGoggles"
 ];
+GRLIB_MOD_signature append [_A3_Items,"B_","O_","I_","U_"];
 
 (
 	"

@@ -7,6 +7,9 @@ private _checkItem = {
     if (GRLIB_filter_arsenal == 2) then {
         if (!(_item in GRLIB_whitelisted_from_arsenal)) then { _ret = true };
     };
+    if (GRLIB_filter_arsenal == 3) then {
+        if (!(_item in GRLIB_whitelisted_from_arsenal) && !([_item, GRLIB_MOD_signature] call F_startsWithMultiple)) then { _ret = true };        
+    };
     _ret;
 };
 
