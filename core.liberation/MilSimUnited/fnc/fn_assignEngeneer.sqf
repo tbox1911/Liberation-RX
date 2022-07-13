@@ -1,0 +1,40 @@
+private _action = ["assign_Engeneer","assign Engeneer","",{
+	//Code
+
+	_XengeneerInGroup = group player getvariable ["BIS_dg_xeng",0];
+
+	if (ceil ((count units group player)/ MSU_Eng_Div) > _XengeneerInGroup ) then{
+		_Player setVariable ["ACE_isEngineer", 1, true];
+		_Player setVariable ["ACE_isEOD", 1, true];
+		_newamount = _XengeneerInGroup + 1;
+		group player setvariable ["BIS_dg_xeng",_newamount];
+	}else {
+		hint format ["There is already %1 Medic in the group %2",_XengeneerInGroup, groupId group _Player]; 
+	};
+
+},{
+	//Condition
+	(round (player distance2D ([] call F_getNearestFob)) < 20 || (player distance2D lhd) <= 200)&& (_Player getVariable ["ace_medical_medicclass", true] == 0 ) && (_Player getVariable ["ACE_isEngineer", true] == 0 );
+}] call ace_interact_menu_fnc_createAction;
+
+["CAManBase", 1, ["ACE_SelfActions","ACE_TeamManagement"],_action,true] call ace_interact_menu_fnc_addActionToClass;
+
+
+private _action = ["unassign_Engeneer","unassign Engeneer","",{
+	//Code
+
+	_XengeneerInGroup = group player getvariable ["BIS_dg_xeng",0];
+
+	_newamount = _XengeneerInGroup - 1;
+	group player setvariable ["BIS_dg_xeng",_newamount];
+
+	_Player setVariable ["ACE_isEngineer", 0, true];
+	_Player setVariable ["ACE_isEOD", 0, true];
+
+},{
+	//Condition
+	(round (player distance2D ([] call F_getNearestFob)) < 20 || (player distance2D lhd) <= 200)&& (_Player getVariable ["ACE_isEngineer", true] != 0 );
+}] call ace_interact_menu_fnc_createAction;
+
+["CAManBase", 1, ["ACE_SelfActions","ACE_TeamManagement"],_action,true] call ace_interact_menu_fnc_addActionToClass;
+
