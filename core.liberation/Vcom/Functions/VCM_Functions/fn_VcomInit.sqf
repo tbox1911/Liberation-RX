@@ -13,11 +13,11 @@
 	{
 		if (isFilePatchingEnabled) then
 		{
-			private _Filecheck = loadFile "\userconfig\VCOM_AI\AISettingsV3.hpp";
+			private _Filecheck = loadFile "\userconfig\VCOM_AI\AISettingsV3.4.hpp";
 	
 			if !(_FileCheck isEqualTo "") then
 			{
-				[] call compile preprocessFileLineNumbers "\userconfig\VCOM_AI\AISettingsV3.hpp";
+				[] call compile preprocessFileLineNumbers "\userconfig\VCOM_AI\AISettingsV3.4.hpp";
 				[Vcm_Settings] remoteExec ["VCM_PublicScript",0,false];
 			}
 			else
