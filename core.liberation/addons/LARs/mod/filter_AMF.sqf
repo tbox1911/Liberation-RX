@@ -1,5 +1,5 @@
 // Add AMF Weapons
-GRLIB_MOD_signature append ["amf_"];
+GRLIB_MOD_signature = GRLIB_MOD_signature + ["amf_"];
 
 // Weapons + Equipements (uniforme, etc..)
 (

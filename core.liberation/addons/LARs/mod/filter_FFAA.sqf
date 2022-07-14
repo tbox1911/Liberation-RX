@@ -1,5 +1,5 @@
 // Add R3F Weapons
-GRLIB_MOD_signature append ["ffaa_"];
+GRLIB_MOD_signature = GRLIB_MOD_signature + ["ffaa_"];
 
 // Weapons + Equipements (uniforme, etc..)
 (

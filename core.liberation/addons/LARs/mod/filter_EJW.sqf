@@ -1,5 +1,5 @@
  // Add EricJ Weapons
- GRLIB_MOD_signature append ["ej_"];
+GRLIB_MOD_signature = GRLIB_MOD_signature + ["ej_"];
 
 // Weapons + Equipements (uniforme, etc..)
 (

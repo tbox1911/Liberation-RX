@@ -1,4 +1,5 @@
 // Add RHS Weapons
+GRLIB_MOD_signature = GRLIB_MOD_signature + ["LOP_"];
 
 // Weapons + Equipements (uniforme, etc..)
 (

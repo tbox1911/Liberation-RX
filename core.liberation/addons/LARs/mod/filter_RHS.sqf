@@ -1,5 +1,5 @@
 // Add RHS Weapons
-GRLIB_MOD_signature append ["rhs"];
+GRLIB_MOD_signature = GRLIB_MOD_signature + ["rhs"];
 
 // Weapons + Equipements (uniforme, etc..)
 (
