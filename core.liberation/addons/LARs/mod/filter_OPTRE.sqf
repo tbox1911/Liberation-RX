@@ -10,6 +10,7 @@ private _OPTRE_Items = [
 (
 	"
 	tolower (getText (_x >> 'dlc')) == 'optre' &&
+	getNumber (_x >> 'scope') > 1 &&
 	([(configName _x)] call is_allowed_item) &&
 	([(configName _x), _OPTRE_Items] call F_startsWithMultiple)
 	"

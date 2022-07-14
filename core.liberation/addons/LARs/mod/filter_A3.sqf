@@ -12,6 +12,7 @@ GRLIB_MOD_signature append [_A3_Items,"B_","O_","I_","U_"];
 (
 	"
 	(getText (_x >> 'author')) == 'Bohemia Interactive' &&
+	getNumber (_x >> 'scope') > 1 &&
 	!([_exclude, (configName _x), true] call F_startsWith) &&
     ([(configName _x)] call is_allowed_item) &&
     ([(configName _x), _A3_Items] call F_startsWithMultiple)

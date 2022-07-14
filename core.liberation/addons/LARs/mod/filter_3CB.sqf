@@ -5,6 +5,7 @@ GRLIB_MOD_signature append ["uk3cb_"];
 (
 	"
 	tolower ((configName _x) select [0,6]) == 'uk3cb_' &&
+	getNumber (_x >> 'scope') > 1 &&
 	([(configName _x)] call is_allowed_item)
 	"
 	configClasses (configfile >> "CfgWeapons" )

@@ -115,11 +115,13 @@ while { dialog && (alive player) && edit_loadout == 0 } do {
 if ( edit_loadout > 0 ) then {
 	closeDialog 0;
 	waitUntil {!dialog};
-	_box = missionNamespace getVariable ["myLARsBox", objNull];
+	//_box = missionNamespace getVariable ["myLARsBox", objNull];
+	_box = myLARsBox;
 	if (GRLIB_ACE_enabled) then {
 		// Open Arsenal
 		[_box, player] call ace_arsenal_fnc_openBox;
 	} else {
+		// Filters disabled 
 		if (GRLIB_filter_arsenal == 0) then {
 			["Open", [true]] call BIS_fnc_arsenal;
 		} else {

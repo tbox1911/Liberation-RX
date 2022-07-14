@@ -14,6 +14,7 @@ if (GRLIB_mod_west == "CWR3_SOV") then { _exclude = ["CUP_B"] };
 (
 	"
 	(tolower (getText (_x >> 'DLC')) == 'cup_weapons' || tolower (getText (_x >> 'DLC')) == 'cup_units') &&
+	getNumber (_x >> 'scope') > 1 &&
 	!([(configName _x), _exclude] call F_startsWithMultiple) &&
 	([(configName _x)] call is_allowed_item)
 	"
