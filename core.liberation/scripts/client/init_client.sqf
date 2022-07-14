@@ -1,5 +1,4 @@
 diag_log "--- Client Init start ---";
-titleText ["" ,"BLACK FADED", 100];
 
 waitUntil {sleep 0.1;!isNull findDisplay 46};
 R3F_LOG_joueur_deplace_objet = objNull;
