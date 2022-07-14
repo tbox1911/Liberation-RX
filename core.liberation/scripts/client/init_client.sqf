@@ -33,7 +33,8 @@ if (!_commander_check) exitWith { endMission "END1" };
 
 private _name = name player;
 if (toLower _name in GRLIB_blacklisted_names || (_name == str parseNumber _name) || (count trim _name <= 2)) exitWith {
-	titleText [localize "STR_NAME_PROHIBITED", "BLACK FADED", 100];
+	private _msg = format [localize "STR_NAME_PROHIBITED", _name];
+	titleText [_msg, "BLACK FADED", 100];
 	uisleep 10;
 	endMission "LOSER";
 };
