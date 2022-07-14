@@ -12,7 +12,7 @@ while { true } do {
         {
             _unit = _x;
             {
-                if (_unit distance2D _x < _radius && _unit knowsAbout _x < 1 ) then {
+                if (_unit distance2D _x < _radius && _unit knowsAbout _x < 2 ) then {
                     _unit reveal [_x, 4];
                 } else {
                     _unit forgetTarget _x;
