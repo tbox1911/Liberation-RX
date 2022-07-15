@@ -5797,3 +5797,19 @@
 
     </Package>
 </Project>
+<Project name="MSU">
+        <Package name="MSU">
+
+        <Container name="Role">
+            <Key ID="STR_MSU_ROLLMED">
+                <English>There is already %1 Medic in the group %2</English>
+                <German>Es gibt bereits %1 Medic in der Gruppe %2</German>
+            </Key>            
+			<Key ID="STR_MSU_ROLLENG">
+                <English>There is already %1 engeneer in the group %2</English>
+                <German>Es gibt bereits %1 Engeneer in der Gruppe %2</German>
+            </Key>
+        </Container>
+
+    </Package>
+</Project>

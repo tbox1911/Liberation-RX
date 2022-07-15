@@ -1,3 +1,6 @@
+
+if (isNil "MSU_Eng_Div") then {MSU_Eng_Div = 6;};
+
 private _action = ["assign_Engeneer","assign Engeneer","",{
 	//Code
 
@@ -9,12 +12,12 @@ private _action = ["assign_Engeneer","assign Engeneer","",{
 		_newamount = _XengeneerInGroup + 1;
 		group player setvariable ["BIS_dg_xeng",_newamount];
 	}else {
-		hint format ["There is already %1 Medic in the group %2",_XengeneerInGroup, groupId group _Player]; 
+		hint format [localize "STR_MSU_ROLLENG",_XengeneerInGroup, groupId group _Player]; 
 	};
 
 },{
 	//Condition
-	(round (player distance2D ([] call F_getNearestFob)) < 20 || (player distance2D lhd) <= 200)&& (_Player getVariable ["ace_medical_medicclass", true] == 0 ) && (_Player getVariable ["ACE_isEngineer", true] == 0 );
+	(round (player distance2D ([] call F_getNearestFob)) < 20 || (player distance2D lhd) <= 200)&& (_Player getVariable ["ace_medical_medicclass",0] == 0 ) && (_Player getVariable ["ACE_isEngineer", 0] == 0 ) && ["IsGroupRegistered", [group player]] call BIS_fnc_dynamicGroups;
 }] call ace_interact_menu_fnc_createAction;
 
 ["CAManBase", 1, ["ACE_SelfActions","ACE_TeamManagement"],_action,true] call ace_interact_menu_fnc_addActionToClass;
@@ -26,14 +29,15 @@ private _action = ["unassign_Engeneer","unassign Engeneer","",{
 	_XengeneerInGroup = group player getvariable ["BIS_dg_xeng",0];
 
 	_newamount = _XengeneerInGroup - 1;
-	group player setvariable ["BIS_dg_xeng",_newamount];
-
+	group player setvariable ["BIS_dg_xeng",_newamount]; 
+	
+	
 	_Player setVariable ["ACE_isEngineer", 0, true];
 	_Player setVariable ["ACE_isEOD", 0, true];
 
 },{
 	//Condition
-	(round (player distance2D ([] call F_getNearestFob)) < 20 || (player distance2D lhd) <= 200)&& (_Player getVariable ["ACE_isEngineer", true] != 0 );
+	(round (player distance2D ([] call F_getNearestFob)) < 20 || (player distance2D lhd) <= 200)&& (_Player getVariable ["ACE_isEngineer", 0] != 0 );
 }] call ace_interact_menu_fnc_createAction;
 
 ["CAManBase", 1, ["ACE_SelfActions","ACE_TeamManagement"],_action,true] call ace_interact_menu_fnc_addActionToClass;

@@ -84,6 +84,9 @@ global_arsenal = true;
 // true to activate factions selection
 FAC_MSU_ACTIVE = false;
 
+MSU_Med_Div = 4;
+MSU_Eng_Div = 6;
+
 // Do not allow air vehicles to trigger zones. 
 air_cannot_trigger_on = true;
 

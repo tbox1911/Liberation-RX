@@ -1,3 +1,5 @@
+if (isNil "MSU_Med_Div") then {MSU_Med_Div = 4;};
+
 private _action = ["assign_Medic","assign Medic","",{
 	//Code
 	
@@ -9,12 +11,12 @@ private _action = ["assign_Medic","assign Medic","",{
 		_newamount = _XmedicsInGroup + 1;
 		group player setvariable ["BIS_dg_xmed",_newamount];
 	}else {
-		hint format ["There is already %1 Medic in the group %2",_XmedicsInGroup, groupId group _Player] ; 
+		hint format [localize "STR_MSU_ROLLMED",_XmedicsInGroup, groupId group _Player] ; 
 	};
 	
 },{
 	//Condition
-	(round (player distance2D ([] call F_getNearestFob)) < 20 || (player distance2D lhd) <= 200) && (_Player getVariable ["ace_medical_medicclass", true] == 0 ) && (_Player getVariable ["ACE_isEngineer", true] == 0 );
+	(round (player distance2D ([] call F_getNearestFob)) < 20 || (player distance2D lhd) <= 200) && (_Player getVariable ["ace_medical_medicclass", true] == 0 ) && (_Player getVariable ["ACE_isEngineer", true] == 0 ) && ["IsGroupRegistered", [group player]] call BIS_fnc_dynamicGroups;
 }] call ace_interact_menu_fnc_createAction;
 
 ["CAManBase", 1, ["ACE_SelfActions","ACE_TeamManagement"],_action,true] call ace_interact_menu_fnc_addActionToClass;
