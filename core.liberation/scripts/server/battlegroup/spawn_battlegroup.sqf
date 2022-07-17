@@ -61,7 +61,7 @@ if (_spawn_marker != "") then {
 	} forEach _selected_opfor_battlegroup;
 
 	sleep 5;
-	if (combat_readiness > 50) then {
+	if (combat_readiness > 60) then {
 		private _objectivepos = ([markerPos _spawn_marker] call F_getNearestBluforObjective) select 0;
 
 		[_objectivepos, GRLIB_side_enemy] spawn spawn_air;

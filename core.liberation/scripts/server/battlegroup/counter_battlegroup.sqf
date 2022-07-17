@@ -23,7 +23,7 @@ while { GRLIB_endgame == 0 } do {
 
 	_target_lst = [allPlayers, {score _x >= GRLIB_perm_tank}] call BIS_fnc_conditionalSelect;
 
-	if ( count _target_lst > 1 ) then {
+	if ( ( count _target_lst > 1 ) && (combat_readiness > 60) ) then {
 		_target_player = selectRandom _target_lst;
 		if (armor_weight >= 70) then {
 			armor_weight = armor_weight - 35;
