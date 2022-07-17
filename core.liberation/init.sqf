@@ -434,7 +434,7 @@ ffaa_ea_ef18m = ["PylonMissile_1Rnd_Missile_AA_04_F","FIR_AIM120_LAU115_P_2rnd_M
 "FIR_AIM9X_LAU115_P_2rnd_M","FIR_AGM88_P_1rnd_M","PylonRack_Missile_AGM_02_x1",
 "ffaa_ef18m_Fueltank_1rnd_M","FIR_AGM65D_P_1rnd_M","FIR_AGM65E_P_1rnd_M",
 "FIR_AGM65E2_P_1rnd_M","FIR_AGM65F_P_1rnd_M","FIR_AGM65G_P_1rnd_M",
-"FIR_AGM65H_P_1rnd_M","PylonMissile_Bomb_GBU12_x1","FIR_GBU16_Navy_P_1rnd_M",
+"FIR_AGM65H_P_1rnd_M","PylonMissile_Bomb_GBU12_x1","FIR_GBU16_Navy_P_1rnd_M","FIR_AGM65H_P_2rnd_M","FIR_AGM65D_P_2rnd_M",
 "FIR_AGM154C_P_1rnd_M","FIR_AGM154A_P_1rnd_M"];
 
 ["ffaa_ea_ef18m", "InitPost", {
