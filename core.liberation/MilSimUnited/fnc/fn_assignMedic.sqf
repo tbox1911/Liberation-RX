@@ -13,7 +13,7 @@ private _action = ["assign_Medic","assign Medic","",{
 		_Player setVariable ["ace_medical_medicclass", 2, true];
 		
 		_newamount = _XmedicsInGroup + 1;
-		group _Player setvariable ["BIS_dg_xmed",_newamount];
+		group _Player setvariable ["BIS_dg_xmed",_newamount,true];
 	}else {
 		hint format [localize "STR_MSU_ROLLMED",_XmedicsInGroup, groupId group _Player] ; 
 	};
@@ -31,7 +31,7 @@ private _action = ["unassign_Medic","unassign Medic","",{
 	_XmedicsInGroup = group _Player getvariable ["BIS_dg_xmed",0];
 		
 	_newamount = _XmedicsInGroup - 1;
-	group _Player setvariable ["BIS_dg_xmed",_newamount];
+	group _Player setvariable ["BIS_dg_xmed",_newamount,true];
 	
 	_Player setVariable ["ace_medical_medicclass", 0, true];	
 	
@@ -55,7 +55,7 @@ private _action = ["unassign_Medic","unassign Medic","",{
 				_XmedicsInGroup = group Player getvariable ["BIS_dg_xmed",0];
 					
 				_newamount = _XmedicsInGroup - 1;
-				group Player setvariable ["BIS_dg_xmed",_newamount];
+				group Player setvariable ["BIS_dg_xmed",_newamount,true];
 				hint format [localize "STR_MSU_ROLLBLOCKMEDIC",groupId group player] ; 
 			};
 		};
