@@ -2,7 +2,7 @@ diag_log "--- Server Init start ---";
 
 // lock user placed objects 
 {
-	_x setVariable ["GRLIB_vehicle_owner", "server"];
+	if (getObjectType _x >= 8) then { _x setVariable ["GRLIB_vehicle_owner", "server"] };
 } forEach (allMissionObjects "");
 
 // Init on map vehicles
