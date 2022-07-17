@@ -50,7 +50,7 @@ R3F_LOG_CFG_can_tow = R3F_LOG_CFG_can_tow +
 	"CUP_T72_Base",
 	"CUP_T55_Base",
 	"CUP_BRDM2_Base",
-	"CUP_BTR40_Base"
+	"CUP_BTR40_Base",
 	"CUP_BTR60_Base",
 	"CUP_BTR80_Base",
 	"CUP_BTR90_Base",
