@@ -1,5 +1,10 @@
 diag_log "--- Server Init start ---";
 
+// lock user placed objects 
+{
+	_x setVariable ["GRLIB_vehicle_owner", "server"];
+} forEach (allMissionObjects "");
+
 // Init on map vehicles
 {
 	if (_x isKindOf "AllVehicles") then {
