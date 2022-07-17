@@ -21,8 +21,9 @@
 				if !(_result) then {
 					[getPlayerUID _last_shooter, tkill_score] remoteExec ["F_addPlayerScore", 2];
 					[getPlayerUID _last_shooter, tkill_ammo] remoteExec ["F_addPlayerAmmo", 2];
-					format ["You lost %1 Ammo and %2 Score for teamkilling another player.",str(tkill_ammo), str(tkill_score)] remoteExec ["hint", _last_shooter];
-			
+					_msg= format ["You lost %1 Ammo and %2 Score for teamkilling another player.",str(tkill_ammo), str(tkill_score)] remoteExec ["hint", _last_shooter];
+					
+					diag_log format ["[Ammo] %1", _msg ];
 				};
 			}
 		}

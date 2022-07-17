@@ -79,6 +79,8 @@ if (_liberated_sector in sectors_tower) then {
 
 		_x setVariable ["GREUH_ammo_count", _ammo_collected + _income, true];
 
+		diag_log format ["[Ammo] %1 hat Sektor eingenommen: +%2 ", _x, _income];		
+
 		[_x, 5] remoteExec ["addscore", 2];
 	};
 } forEach allPlayers;

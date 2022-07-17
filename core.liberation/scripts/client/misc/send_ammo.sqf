@@ -44,7 +44,7 @@ if(!isNull (findDisplay 2337)) then {
 				[_src, _dst_id, _ammo] remoteExec ["sendammo_remote_call", 2];
 				
 				
-				diag_log format ["[Send Menu] %1 send §2 to %3", _src, _ammo , _dst_Name];
+				diag_log format ["[Ammo] %1 send %2 to %3", _src, _ammo , _dst_Name];
 			};
 			send_ammo = 0;
 		};

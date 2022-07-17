@@ -16,6 +16,7 @@ if (isPlayer _unit_owner) then {
 	
 	_msg = format ["%1 brought in a prisoner. %2 rank and %3 ammo for everybody.", name _unit_owner, prisoner_score, prisoner_ammo];
 	[gamelogic, _msg] remoteExec ["globalChat", 0];
+	diag_log format ["[Ammo] %1", _msg];
 		
 	/*
 	private _bonus = 5;
