@@ -11,6 +11,7 @@ private _action = ["assign_Engeneer","assign Engeneer","",{
 		_Player setVariable ["ACE_isEOD", 1, true];
 		_newamount = _XengeneerInGroup + 1;
 		group player setvariable ["BIS_dg_xeng",_newamount,true];
+		hint format [localize "STR_MSU_ENG"];
 	}else {
 		hint format [localize "STR_MSU_ROLLENG",_XengeneerInGroup, groupId group _Player]; 
 	};
@@ -34,6 +35,7 @@ private _action = ["unassign_Engeneer","unassign Engeneer","",{
 	
 	_Player setVariable ["ACE_isEngineer", 0, true];
 	_Player setVariable ["ACE_isEOD", 0, true];
+	hint format [localize "STR_MSU_NENG"];
 
 },{
 	//Condition

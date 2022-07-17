@@ -5808,8 +5808,24 @@
 			<Key ID="STR_MSU_ROLLENG">
                 <English>There is already %1 engeneer in the group %2</English>
                 <German>Es gibt bereits %1 Engeneer in der Gruppe %2</German>
+            </Key>          
+			<Key ID="STR_MSU_MED">
+                <English>You are now a Medic</English>
+                <German>Du bist jetzt ein Medic</German>
+            </Key>          
+			<Key ID="STR_MSU_ENG">
+                <English>You are now a Engeneer</English>
+                <German>Du bist jetzt ein Engeneer</German>
+            </Key>
+			<Key ID="STR_MSU_NMED">
+                <English>You are now a Medic</English>
+                <German>Du bist jetzt ein Medic</German>
+            </Key>          
+			<Key ID="STR_MSU_NENG">
+                <English>You are no longer an Engeneer</English>
+                <German>Du bist kein Engeneer mehr</German>
             </Key>
         </Container>
 
     </Package>
-</Project>
+</Project> 

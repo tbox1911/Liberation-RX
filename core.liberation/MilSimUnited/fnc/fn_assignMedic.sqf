@@ -14,8 +14,9 @@ private _action = ["assign_Medic","assign Medic","",{
 		
 		_newamount = _XmedicsInGroup + 1;
 		group _Player setvariable ["BIS_dg_xmed",_newamount,true];
+		hint format [localize "STR_MSU_MED"]; 
 	}else {
-		hint format [localize "STR_MSU_ROLLMED",_XmedicsInGroup, groupId group _Player] ; 
+		hint format [localize "STR_MSU_ROLLMED",_XmedicsInGroup, groupId group _Player]; 
 	};
 	
 },{
@@ -33,8 +34,9 @@ private _action = ["unassign_Medic","unassign Medic","",{
 	_newamount = _XmedicsInGroup - 1;
 	group _Player setvariable ["BIS_dg_xmed",_newamount,true];
 	
-	_Player setVariable ["ace_medical_medicclass", 0, true];	
-	
+	_Player setVariable ["ace_medical_medicclass", 0, true];
+	hint format [localize "STR_MSU_NMED"]; 	
+
 },{
 	//Condition
 	(round (_Player distance2D ([] call F_getNearestFob)) < 150 || (_Player distance2D lhd) <= 200) && (_Player getVariable ["ace_medical_medicclass", true] != 0) ;
