@@ -30,6 +30,7 @@ blacklisted_weapon = [
 ];
 
 GRLIB_whitelisted_from_arsenal = [
+	"B_Kitbag_Base",
 	"FirstAidKit",
 	"Medikit",
 	"ToolKit",
