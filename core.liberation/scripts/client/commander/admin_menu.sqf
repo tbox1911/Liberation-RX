@@ -191,6 +191,7 @@ while { alive player && dialog } do {
 	if (do_export == 1) then {
 		do_export = 0;
 		if (isServer) then {
+			[] call save_game_mp;
 			copyToClipboard str (profileNamespace getVariable GRLIB_save_key);
 			_msg = format ["Savegame %1 Exported to clipboard.", GRLIB_save_key];
 			hint _msg;
