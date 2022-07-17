@@ -128,6 +128,7 @@ while { alive player && dialog } do {
 		_uid = _score_combo lbData (lbCurSel _score_combo);
 		[_uid, 50] remoteExec ["F_addPlayerAmmo", 2];
 		_msg = format ["Add 50 Ammo to player: %1.", _name];
+		diag_log format ["[Admin Menu] Add 50 Ammo to player:%1", player];
 		hint _msg;
 		systemchat _msg;
 		sleep 1;

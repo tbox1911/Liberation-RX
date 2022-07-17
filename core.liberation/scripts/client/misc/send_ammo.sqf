@@ -38,9 +38,13 @@ if(!isNull (findDisplay 2337)) then {
 	while { dialog && (alive player) } do {
 		if (send_ammo == 1) then {
 			_dst_id = _player_combo lbData (lbCurSel _player_combo);
+			_dst_Name = _player_combo lbCurSel _player_combo);
 			if (_dst_id != getPlayerUID _src) then {
 				_ammo = _ammo_combo lbValue (lbCurSel _ammo_combo);
 				[_src, _dst_id, _ammo] remoteExec ["sendammo_remote_call", 2];
+				
+				
+				diag_log format ["[Send Menu] %1 send §2 to %3", _src, _ammo , _dst_Name];
 			};
 			send_ammo = 0;
 		};
