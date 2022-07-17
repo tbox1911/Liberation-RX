@@ -16,18 +16,18 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=276;
+		nextID=283;
 	};
 	class Camera
 	{
-		pos[]={15067.719,53.968365,13669.839};
-		dir[]={-0.82678026,-0.56050998,0.047571428};
-		up[]={-0.5595845,0.82814771,0.032197472};
-		aside[]={0.057443175,0,0.99834889};
+		pos[]={16775.758,24.989914,13589.543};
+		dir[]={0.9589529,0.023240861,-0.28262258};
+		up[]={-0.022289593,0.99973094,0.0065691243};
+		aside[]={-0.28269872,1.5855767e-007,-0.95921212};
 	};
 };
 binarizationWanted=0;
-sourceName="Liberation_RX";
+sourceName="Liberation_RX-DEV";
 addons[]=
 {
 	"A3_Ui_F",
@@ -3907,7 +3907,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -4072,7 +4072,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -4237,7 +4237,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -4400,7 +4400,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -4563,7 +4563,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -4726,7 +4726,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -4889,7 +4889,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -5052,7 +5052,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -5215,7 +5215,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -5378,7 +5378,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -5541,7 +5541,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -5706,7 +5706,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -5871,7 +5871,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -6036,7 +6036,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -6199,7 +6199,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -6362,7 +6362,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -6525,7 +6525,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -6688,7 +6688,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -6851,7 +6851,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -7014,7 +7014,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -7177,7 +7177,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -7340,7 +7340,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -7503,7 +7503,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -7666,7 +7666,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -7831,7 +7831,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -7994,7 +7994,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -8157,7 +8157,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -8320,7 +8320,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -8485,7 +8485,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -8648,7 +8648,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -8811,7 +8811,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -8976,7 +8976,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -9139,7 +9139,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -9302,7 +9302,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -9467,7 +9467,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -9632,7 +9632,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -9795,7 +9795,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -9958,7 +9958,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -10123,7 +10123,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -10288,7 +10288,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -10451,7 +10451,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -10616,7 +10616,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -10781,7 +10781,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -10944,7 +10944,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -11109,7 +11109,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -11274,7 +11274,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -11439,7 +11439,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -11602,7 +11602,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -11767,7 +11767,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -11932,7 +11932,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -12097,7 +12097,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -12262,7 +12262,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -12427,7 +12427,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -12590,7 +12590,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -12753,7 +12753,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",true]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 1]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -12916,7 +12916,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",true]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 1]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -13079,7 +13079,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",true]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 1]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -13244,7 +13244,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",true]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 1]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -13409,7 +13409,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",true]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 1]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -13574,7 +13574,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",true]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 1]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -13737,7 +13737,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",true]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 1]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -13900,7 +13900,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",true]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 1]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -14063,7 +14063,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",true]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 1]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
@@ -14226,7 +14226,7 @@ class Mission
 							class Attributes
 							{
 								rank="COLONEL";
-								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",true]; " \n "this setUnitTrait [""Engineer"",true]; " \n "this setUnitTrait [""explosiveSpecialist"",true]; " \n "this setVariable [""ACE_medical_medicClass"", 1]; " \n "this setVariable [""ACE_isEngineer"", 1];" \n "this setVariable [""ACE_isEOD"", 1];}";
+								init="call{this setSpeaker ""NoVoice""; " \n "this setUnitTrait [""Medic"",false]; " \n "this setUnitTrait [""Engineer"",false]; " \n "this setUnitTrait [""explosiveSpecialist"",false]; " \n "this setVariable [""ACE_medical_medicClass"", 0]; " \n "this setVariable [""ACE_isEngineer"", 0];" \n "this setVariable [""ACE_isEOD"", 0];}";
 								description="Rifleman";
 								isPlayable=1;
 								class Inventory
