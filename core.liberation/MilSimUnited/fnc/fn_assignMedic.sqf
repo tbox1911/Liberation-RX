@@ -20,7 +20,7 @@ private _action = ["assign_Medic","assign Medic","",{
 	
 },{
 	//Condition
-	(round (_Player distance2D ([] call F_getNearestFob)) < 20 || (_Player distance2D lhd) <= 200) && (_Player getVariable ["ace_medical_medicclass", true] == 0 ) && (_Player getVariable ["ACE_isEngineer", true] == 0 ) && ["IsGroupRegistered", [group _Player]] call BIS_fnc_dynamicGroups && !(group player getVariable ["BIS_dg_rol","b_unknown"] in Support_Squad);
+	(round (_Player distance2D ([] call F_getNearestFob)) < 150 || (_Player distance2D lhd) <= 200) && (_Player getVariable ["ace_medical_medicclass", true] == 0 ) && (_Player getVariable ["ACE_isEngineer", true] == 0 ) && ["IsGroupRegistered", [group _Player]] call BIS_fnc_dynamicGroups && !(group player getVariable ["BIS_dg_rol","b_unknown"] in Support_Squad);
 }] call ace_interact_menu_fnc_createAction;
 
 ["CAManBase", 1, ["ACE_SelfActions","ACE_TeamManagement"],_action,true] call ace_interact_menu_fnc_addActionToClass;
@@ -37,7 +37,7 @@ private _action = ["unassign_Medic","unassign Medic","",{
 	
 },{
 	//Condition
-	(round (_Player distance2D ([] call F_getNearestFob)) < 20 || (_Player distance2D lhd) <= 200) && (_Player getVariable ["ace_medical_medicclass", true] != 0) ;
+	(round (_Player distance2D ([] call F_getNearestFob)) < 150 || (_Player distance2D lhd) <= 200) && (_Player getVariable ["ace_medical_medicclass", true] != 0) ;
 }] call ace_interact_menu_fnc_createAction;
 
 ["CAManBase", 1, ["ACE_SelfActions","ACE_TeamManagement"],_action,true] call ace_interact_menu_fnc_addActionToClass;
