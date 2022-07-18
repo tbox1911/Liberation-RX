@@ -130,7 +130,8 @@ hc_spawn_patrol = false;
 force_datalink = true;
 force_sensorTarget_opfor = false;
 
-
+//Enemy IEDs
+ied_enemy_sector = ["rhsusf_mine_m49a1_3m_module","ModuleMine_ATMine_F","ModuleMine_SLAMDirectionalMine_F","rhsusf_mine_m14_module","rhsusf_mine_m19_module"];
 
 // AI Limit
 ai_limit = 3;
