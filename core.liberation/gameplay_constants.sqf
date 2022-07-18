@@ -55,7 +55,9 @@ tfar_channel = "╠-● Ingame [TFAR]";
 // gain and punishment
 respawn_ammo = 100; // +/- is conditional
 opfor_kill_score = 1;
-opfor_kill_ammo = 5;
+opfor_kill_ammo = 1;
+opfor_kill_score_infantry = 1;
+opfor_kill_ammo_infantry = 5;
 kamikaze_kill_score = 5;
 kamikaze_kill_ammo = 25;
 civkill_score = 0;

@@ -9,6 +9,7 @@ if !(isNil 'equipment') then {
 };
 
 
+
 ["ace_unconscious", {
 	// global event (runs on all machines)
 	params ["_unit", "_isUnconscious"];
@@ -26,6 +27,8 @@ if !(isNil 'equipment') then {
 	};
 }] call CBA_fnc_addEventHandler;
 
+
+
 addMissionEventHandler ['EntityKilled', {
 	params ["_unit", "_killer"];
 
@@ -39,9 +42,17 @@ addMissionEventHandler ['EntityKilled', {
 	} else {
 		if (isPlayer _killer) then {
 			if (side group _unit == opfor) then {
-				[getPlayerUID _killer, opfor_kill_score] remoteExec ["F_addPlayerScore", 2];
-				[getPlayerUID _killer, opfor_kill_ammo] remoteExec ["F_addPlayerAmmo", 2];
-					diag_log format ["[Ammo] %1 Killed opfor  %2", name _killer, opfor_kill_ammo ];
+				
+				_score = opfor_kill_score;
+				_ammo = opfor_kill_ammo;
+				if  (typeOf _killer == "B_Soldier_F") then {
+					_score = opfor_kill_score_infantry;
+					_ammo = opfor_kill_ammo_infantry;
+				};
+				
+				[getPlayerUID _killer, _score] remoteExec ["F_addPlayerScore", 2];
+				[getPlayerUID _killer, _ammo] remoteExec ["F_addPlayerAmmo", 2];
+				diag_log format ["[Ammo] %1 Killed opfor  %2", name _killer, _ammo ];
 				
 			} else {
 				if (((side group _unit == civilian) && (weapons _unit isEqualTo [])) || (side group _unit == blufor)) then {
@@ -70,6 +81,8 @@ addMissionEventHandler ['EntityKilled', {
 	};
 }];
 
+
+
 /*
 	addMissionEventHandler ['HandleDisconnect', {
 		_unit = _this select 0;
@@ -80,4 +93,11 @@ addMissionEventHandler ['EntityKilled', {
 	}];
 */
 
+
+
 ["Initialize", [true]] call BIS_fnc_dynamicGroups;
+
+
+
+
+
