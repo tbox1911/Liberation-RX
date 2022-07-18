@@ -14,7 +14,7 @@ sleep 7;
 sleep 1;
 if (backpack player == "") then {
 	player addBackpack mobile_respawn_bag;
-	([backpack player] setVariable ["GRLIB_mobile_respawn_bag", true, true];
+	(backpackContainer player) setVariable ["GRLIB_mobile_respawn_bag", true, true];
 } else {
 	sleep 1;
 	_backpack = createVehicle [mobile_respawn_bag, (player getRelPos[3, 0]), [], 0, "CAN_COLLIDE"];
