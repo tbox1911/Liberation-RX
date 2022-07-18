@@ -16,7 +16,6 @@ blacklisted_weapon = [
 ];
 
 GRLIB_whitelisted_from_arsenal = [
-	"B_Kitbag_Base",
 	"gm_gc_army_medbox",
 	"gm_gc_army_medkit",
 	"gm_repairkit_01",

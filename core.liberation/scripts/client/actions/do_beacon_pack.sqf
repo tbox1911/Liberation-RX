@@ -6,7 +6,6 @@ if ((_tent getVariable ["tent_in_use", false])) exitWith {};
 player setVariable ["GRLIB_action_inuse", true];
 _tent setVariable ["tent_in_use", true, true];
 _tent setVariable ["R3F_LOG_disabled", true, true];
-_pos = getPosATL _tent;
 
 disableUserInput true;
 player playMove "AinvPknlMstpSlayWnonDnon_medic";
@@ -15,9 +14,11 @@ sleep 7;
 sleep 1;
 if (backpack player == "") then {
 	player addBackpack mobile_respawn_bag;
+	([backpack player] setVariable ["GRLIB_mobile_respawn_bag", true, true];
 } else {
 	sleep 1;
-	createVehicle [mobile_respawn_bag, _pos, [], 0, "CAN_COLLIDE"];
+	_backpack = createVehicle [mobile_respawn_bag, (player getRelPos[3, 0]), [], 0, "CAN_COLLIDE"];
+	_backpack setVariable ["GRLIB_mobile_respawn_bag", true, true];
 };
 disableUserInput false;
 disableUserInput true;

@@ -18,7 +18,6 @@ blacklisted_weapon = [
 ];
 
 GRLIB_whitelisted_from_arsenal = [
-    "B_Kitbag_Base",
 	"MineDetector",
 	"Binocular",
 	"ItemCompass",
@@ -31,7 +30,6 @@ GRLIB_whitelisted_from_arsenal = [
 	"ATMine_Range_Mag",
 	"SatchelCharge_Remote_Mag",
 	"SLAMDirectionalMine_Wire_Mag",
-    "B_Kitbag_Base",
 	"B_Parachute",
     "vn_o_9x_m14",
     "vn_o_9x_m40a1",

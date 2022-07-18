@@ -54,8 +54,7 @@ blacklisted_weapon = [
 	"rhsusf_Rhino"
 ];
 
-GRLIB_whitelisted_from_arsenal = [
-	"B_Kitbag_Base",	
+GRLIB_whitelisted_from_arsenal = [		
 	"FirstAidKit",
 	"Medikit",
 	"ToolKit",
