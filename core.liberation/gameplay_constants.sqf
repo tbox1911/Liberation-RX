@@ -21,7 +21,7 @@ GRLIB_patrol_cap = 75 * GRLIB_unitcap;
 GRLIB_battlegroup_size = 2 * (sqrt GRLIB_unitcap) * (sqrt GRLIB_csat_aggressivity);
 GRLIB_civilians_amount = 2 * GRLIB_civilian_activity;
 GRLIB_fob_range = 450;
-GRLIB_surrender_chance = 75;
+GRLIB_surrender_chance = 80;
 GRLIB_secondary_missions_costs = [ 50,5 ];
 GRLIB_halo_altitude = 2000;
 GRLIB_civ_killing_penalty = 0;
@@ -73,7 +73,6 @@ logistics_ammo_increase = true;
 prisoner_intel = 15;
 prisoner_score = 10;
 prisoner_ammo = 35;
-ai_value = 35;
 
 // Building Penalty
 building_penalty_isActive = false;
@@ -104,12 +103,6 @@ AI_leader_radio = false;
 // HC
 hc_battlegroup_on = false;
 
-// AI Limit
-ai_limit = 3;
-ai_limiter_on = true;
-// ai skill
-ai_skill = 9;
-
 skill_scan = false;
 skill_parachuters = 1;
 skill_air_vehicles_planes = 1;
@@ -135,6 +128,18 @@ hc_spawn_patrol = false;
 force_datalink = true;
 force_sensorTarget_opfor = false;
 
+
+
+// AI Limit
+ai_limit = 3;
+ai_limiter_on = true;
+// ai skill
+ai_skill = 9;
+ai_value = 35; // buildable ai price
+
+
+
+
 // Prices for blufor vehicle tiers
 light_vehicle_price_hmg = 220;
 light_vehicle_price_gmg = 250;
@@ -143,9 +148,6 @@ heavy_vehicle_price_tank_light = 1000;
 heavy_vehicle_price_tank_heavy = 1500;
 logistic_air_vehicle_price = 250;
 logistic_ground_vehicle_price = 200;
-
-
-
 
 light_vehicle_price_tier_1 = 50;
 light_vehicle_price_tier_2 = 75;
