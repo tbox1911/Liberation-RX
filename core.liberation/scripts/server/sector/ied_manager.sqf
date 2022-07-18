@@ -15,7 +15,7 @@ if ( floor(random 100) < 30 ) then {
 	_ultra_strong = true;
 };
 _vehicle_trigger = 1;
-_ied_type = selectRandom [ "IEDLandBig_F","IEDLandSmall_F","IEDUrbanBig_F","IEDUrbanSmall_F" ];
+_ied_type = selectRandom ied_enemy_sector;
 _ied_obj = objNull;
 _roadobj = [ [  getmarkerpos (_sector), floor(random _radius), random(360)  ] call BIS_fnc_relPos, _radius, [] ] call BIS_fnc_nearestRoad;
 _goes_boom = false;
