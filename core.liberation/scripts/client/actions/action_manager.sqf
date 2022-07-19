@@ -367,7 +367,7 @@ while { true } do {
 		// UnPack Beacon
 		_idact_id = _idact_id + 1;
 		_idact_num = _id_actions select _idact_id;
-		if (!_near_lhd && backpack player == mobile_respawn_bag ) then {
+		if (!_near_lhd && (backpackContainer player) getVariable ["GRLIB_mobile_respawn_bag", false]) then {
 			if ( _idact_num == -1 ) then {
 				_idact = player addAction ["<t color='#FFFF00'>" + localize "STR_UNPACK_BEACON" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_beacon_unpack.sqf","",-950,true,true,"",""];
 				_id_actions set [_idact_id, _idact];
