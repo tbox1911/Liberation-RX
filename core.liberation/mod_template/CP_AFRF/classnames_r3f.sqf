@@ -71,7 +71,7 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 	"CUP_T72_Base",
 	"CUP_T55_Base",
 	"CUP_BRDM2_Base",
-	"CUP_BTR40_Base"
+	"CUP_BTR40_Base",
 	"CUP_BTR60_Base",
 	"CUP_BTR80_Base",
 	"CUP_BTR90_Base",
@@ -96,7 +96,7 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 	"CUP_T72_Base",
 	"CUP_T55_Base",
 	"CUP_BRDM2_Base",
-	"CUP_BTR40_Base"
+	"CUP_BTR40_Base",
 	"CUP_BTR60_Base",
 	"CUP_BTR80_Base",
 	"CUP_BTR90_Base",
