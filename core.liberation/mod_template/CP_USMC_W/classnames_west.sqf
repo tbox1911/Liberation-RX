@@ -25,7 +25,7 @@ chimera_vehicle_overide = [
 ];
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
-infantry_units = [
+infantry_units_west = [
 	["Alsatian_Random_F",0,0,0,GRLIB_perm_max],
 	["Fin_random_F",0,0,0,0],
 	["CUP_B_USMC_Soldier",1,0,0,0],
@@ -47,8 +47,7 @@ infantry_units = [
 ];
 
 units_loadout_overide = [
-	"CUP_B_USMC_SpecOps_des",
-	"CUP_B_USMC_Soldier_AA_des"
+	"CUP_B_USMC_SpecOps_des"
 ];
 
 light_vehicles = [
@@ -273,7 +272,7 @@ GRLIB_vehicle_blacklist_west = [
 
 box_transport_config_west = [
     [ "CUP_C_Fishing_Boat_Chernarus", 15, [-0.2, -3.6, -2.7], [-0.2, -5.3, -2.7] ],
-    [ "CUP_B_MTVR_USMC", -8, [0, -0.3, 0.3], [0, -1.9, 0.3] ],
+    [ "CUP_B_MTVR_USMC", -8, [0, -0.3, 0.4], [0, -1.9, 0.4] ],
     [ "CUP_B_M6LineBacker_USA_W", -8, [0, 0, -0.9] ],
     [ "CUP_B_CH53E_USMC", -10, [0, 4.8, -3.2], [0, 3.2, -3.2], [0, 1.6, -3.2], [0, 0, -3.2] ],
     [ "CUP_B_MV22_USMC_RAMPGUN", -14, [0, 1.1, -1.6], [0, -0.5, -1.6], [0, -2.1, -1.6] ],

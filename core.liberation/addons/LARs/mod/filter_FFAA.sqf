@@ -1,9 +1,11 @@
 // Add R3F Weapons
+GRLIB_MOD_signature = GRLIB_MOD_signature + ["ffaa_"];
 
 // Weapons + Equipements (uniforme, etc..)
 (
 	"
 	tolower ((configName _x) select [0,5]) == 'ffaa_' &&
+	getNumber (_x >> 'scope') > 1 &&
 	([(configName _x)] call is_allowed_item)
 	"
 	configClasses (configfile >> "CfgWeapons" )

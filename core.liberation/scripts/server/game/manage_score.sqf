@@ -68,9 +68,11 @@ while { true } do {
 						};
 						case "Major" : {
 							_msg2 = localize "STR_RANK_LVL5";
+							[_uid, [true,true,true,true,true,true]] call CHG_Perm;
 						};
 						case "Colonel" : {
 							_msg2 = localize "STR_RANK_LVL6";
+							[_uid, [true,true,true,true,true,true]] call CHG_Perm;
 						};
 					};
 

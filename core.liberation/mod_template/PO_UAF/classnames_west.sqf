@@ -19,7 +19,7 @@ chimera_vehicle_overide = [
 
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
-infantry_units = [
+infantry_units_west = [
 	["Alsatian_Random_F",0,0,0,GRLIB_perm_max],
 	["Fin_random_F",0,0,0,0],
 	["LOP_UKR_Infantry_Rifleman",1,0,0,0],

@@ -19,7 +19,7 @@ pilot_classname = "B_UN_Helipilot_lxWS";
 crewman_classname = "B_UN_crew_lxWS";
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
-infantry_units = [
+infantry_units_west = [
 	["Alsatian_Random_F",0,0,0,GRLIB_perm_max],
 	["Fin_random_F",0,0,0,0],
 	["B_UN_Soldier_lite_lxWS",1,0,0,0],

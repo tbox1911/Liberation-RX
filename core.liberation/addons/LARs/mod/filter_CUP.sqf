@@ -1,4 +1,6 @@
 // Add CUP Weapons
+GRLIB_MOD_signature = GRLIB_MOD_signature + ["CUP_"];
+
 private _exclude = [
 	"CUP_RUS","CUP_G_RUS","CUP_H_RUS","CUP_V_RUS","CUP_O","CUP_V_O","CUP_U_O_","CUP_I_B_","CUP_Vest_RUS",
 	"CUP_H_TKI","CUP_B_TKI","CUP_Vest_TKI"
@@ -12,6 +14,7 @@ if (GRLIB_mod_west == "CWR3_SOV") then { _exclude = ["CUP_B"] };
 (
 	"
 	(tolower (getText (_x >> 'DLC')) == 'cup_weapons' || tolower (getText (_x >> 'DLC')) == 'cup_units') &&
+	getNumber (_x >> 'scope') > 1 &&
 	!([(configName _x), _exclude] call F_startsWithMultiple) &&
 	([(configName _x)] call is_allowed_item)
 	"

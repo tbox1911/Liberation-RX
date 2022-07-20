@@ -45,3 +45,6 @@ remote_call_load_context = compileFinal preprocessFileLineNumbers "scripts\clien
 // Vehicle Color
 [] execVM "addons\RPT\RPT_init.sqf";
 RPT_fnc_TextureVehicle = compileFinal preprocessFileLineNumbers "addons\RPT\fn_textureVehicle.sqf";
+
+// Units Awareness
+[] execVM "scripts\shared\active_awareness.sqf";

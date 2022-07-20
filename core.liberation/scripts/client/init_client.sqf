@@ -1,5 +1,4 @@
 diag_log "--- Client Init start ---";
-titleText ["" ,"BLACK FADED", 100];
 
 waitUntil {sleep 0.1;!isNull findDisplay 46};
 R3F_LOG_joueur_deplace_objet = objNull;
@@ -33,11 +32,11 @@ private _commander_check = [player] call compileFinal preprocessFileLineNUmbers 
 if (!_commander_check) exitWith { endMission "END1" };
 
 private _name = name player;
-if (toLower _name in GRLIB_blacklisted_names || (_name == str parseNumber _name) || (count trim _name <= 2) || ("admin" in toLower _name)) exitWith {
-        private _msg = format [localize "STR_NAME_PROHIBITED", _name];
-        titleText [_msg, "BLACK FADED", 100];
-        uisleep 10;
-        endMission "LOSER";
+if (toLower _name in GRLIB_blacklisted_names || (_name == str parseNumber _name) || (count trim _name <= 2)) exitWith {
+	private _msg = format [localize "STR_NAME_PROHIBITED", _name];
+	titleText [_msg, "BLACK FADED", 100];
+	uisleep 10;
+	endMission "LOSER";
 };
 
 respawn_lhd = compileFinal preprocessFileLineNumbers "scripts\client\spawn\respawn_lhd.sqf";

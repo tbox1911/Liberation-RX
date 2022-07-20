@@ -51,13 +51,17 @@ R3F_LOG_CFG_can_tow = R3F_LOG_CFG_can_tow +
 	"CUP_T72_Base",
 	"CUP_T55_Base",
 	"CUP_BRDM2_Base",
+	"CUP_BTR40_Base",
 	"CUP_BTR60_Base",
+	"CUP_BTR80_Base",
+	"CUP_BTR90_Base",
 	"CUP_BMP1_base",
 	"CUP_BMP1P_base",
 	"CUP_BMP2_base"	,
 	"CUP_ZSU23_Base",
 	"CUP_UAZ_Base",
 	"CUP_BTR40_Base",
+	"CUP_Ural_Base",
 	"CUP_LR_Base"
 ];
 
@@ -68,14 +72,18 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 	"CUP_T72_Base",
 	"CUP_T55_Base",
 	"CUP_BRDM2_Base",
+	"CUP_BTR40_Base",
 	"CUP_BTR60_Base",
+	"CUP_BTR80_Base",
+	"CUP_BTR90_Base",
 	"CUP_BMP1_base",
 	"CUP_BMP1P_base",
 	"CUP_BMP2_base"	,
 	"CUP_ZSU23_Base",
 	"CUP_UAZ_Base",
 	"CUP_BTR40_Base",
-	"CUP_LR_Base"	
+	"CUP_Ural_Base",
+	"CUP_LR_Base"
 ];
 
 R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
@@ -89,13 +97,17 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 	"CUP_T72_Base",
 	"CUP_T55_Base",
 	"CUP_BRDM2_Base",
+	"CUP_BTR40_Base",
 	"CUP_BTR60_Base",
+	"CUP_BTR80_Base",
+	"CUP_BTR90_Base",
 	"CUP_BMP1_base",
 	"CUP_BMP1P_base",
 	"CUP_BMP2_base"	,
 	"CUP_ZSU23_Base",
 	"CUP_UAZ_Base",
 	"CUP_BTR40_Base",
+	"CUP_Ural_Base",
 	"CUP_LR_Base"
 ];
 
@@ -106,13 +118,17 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["CUP_T72_Base", 100],
 	["CUP_T55_Base", 100],
 	["CUP_BRDM2_Base", 50],
+	["CUP_BTR40_Base", 50],	
 	["CUP_BTR60_Base", 50],
+	["CUP_BTR80_Base", 50],	
+	["CUP_BTR90_Base", 50],	
 	["CUP_BMP1_base", 50],
 	["CUP_BMP1P_base", 50],
 	["CUP_BMP2_base", 50],
 	["CUP_ZSU23_Base", 50],
 	["CUP_UAZ_Base", 50],
 	["CUP_BTR40_Base", 50],
+	["CUP_Ural_Base", 100],
 	["CUP_LR_Base", 50]
 ];
 

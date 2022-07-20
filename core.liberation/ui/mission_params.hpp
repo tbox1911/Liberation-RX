@@ -62,8 +62,8 @@ class Params
 	};
 	class FilterArsenal {
 		title = $STR_LIMIT_ARSENAL;
-		values[] = { 0,1,2 };
-		texts[] = {$STR_PARAMS_DISABLED, $STR_LIMIT_ARSENAL_PARAM1, $STR_LIMIT_ARSENAL_PARAM2 };
+		values[] = { 0,1,2,3 };
+		texts[] = {$STR_PARAMS_DISABLED, $STR_LIMIT_ARSENAL_PARAM1, $STR_LIMIT_ARSENAL_PARAM2, $STR_LIMIT_ARSENAL_PARAM3 };
 		default = 1;
 	};
 	class Space8 {
