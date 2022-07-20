@@ -29,11 +29,11 @@ jobs:
       - name: Install Pbo tools
         run: |
           echo Install Libs
-          sudo apt-get install liblzo2-2 libvorbis0a libvorbisfile3 libvorbisenc2 libogg0 libuchardet0
+          sudo apt-get install liblzo2-2 libvorbis0a libvorbisfile3 libvorbisenc2 libogg0 libuchardet0 tar
           
           echo Install Pbo tools
           wget https://mikero.bytex.digital/api/download?filename=depbo-tools-0.8.78-linux-x86_64.tgz
-          tar xf depbo-tools-0.7.92-linux-64bit.tgz
+          tar -xf depbo-tools-0.7.92-linux-64bit.tgz
         
           echo Update PATH
           export PATH=$PATH:$HOME/bin
