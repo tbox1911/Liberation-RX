@@ -15,7 +15,7 @@ blacklisted_weapon = [
 	"R3F_securite_fn_mag"
 ];
 
-GRLIB_whitelisted_from_arsenal = [
+whitelisted_from_arsenal = [
 	"FirstAidKit",
 	"Medikit",
 	"ToolKit",

@@ -14,7 +14,7 @@ blacklisted_weapon = [
 	"CUP_Item_optic_AN_PAS_13c1"
 ];
 
-GRLIB_whitelisted_from_arsenal = [
+whitelisted_from_arsenal = [
 	"FirstAidKit",
 	"Medikit",
 	"ToolKit",

@@ -17,7 +17,7 @@ blacklisted_weapon = [
     "_anpvs2"
 ];
 
-GRLIB_whitelisted_from_arsenal = [
+whitelisted_from_arsenal = [
 	"MineDetector",
 	"Binocular",
 	"ItemCompass",

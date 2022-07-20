@@ -14,7 +14,7 @@ blacklisted_weapon = [
 	"gm_gc_army_gauzeCompress"
 ];
 
-GRLIB_whitelisted_from_arsenal = [
+whitelisted_from_arsenal = [
 	"gm_ge_army_medbox",
 	"gm_ge_army_medkit",
 	"gm_repairkit_01",

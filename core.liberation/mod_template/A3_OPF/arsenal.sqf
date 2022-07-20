@@ -155,7 +155,7 @@ blacklisted_weapon = [
 	"_esd_"
 ];
 
-GRLIB_whitelisted_from_arsenal = [
+whitelisted_from_arsenal = [
 	"FirstAidKit",
 	"Medikit",
 	"ToolKit",

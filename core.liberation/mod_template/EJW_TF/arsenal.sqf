@@ -176,7 +176,7 @@ blacklisted_weapon = [
 	"ej_launch_TitanAAD"
 ];
 
-GRLIB_whitelisted_from_arsenal = [
+whitelisted_from_arsenal = [
 	"FirstAidKit",
 	"Medikit",
 	"ToolKit",
