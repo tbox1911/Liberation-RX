@@ -1,7 +1,7 @@
 /**
- * Ouvre la boéte de dialogue du contenu du véhicule et la prérempli en fonction de véhicule
+ * Ouvre la bo�te de dialogue du contenu du v�hicule et la pr�rempli en fonction de v�hicule
  *
- * @param 0 le véhicule dont il faut afficher le contenu
+ * @param 0 le v�hicule dont il faut afficher le contenu
  *
  * Copyright (C) 2014 Team ~R3F~
  *
@@ -43,21 +43,21 @@ while {!isNull _dlg_contenu_vehicule} do
 {
 	_chargement = [_transporteur] call R3F_LOG_FNCT_calculer_chargement_vehicule;
 
-	// Si le contenu a changé, on rafraichit l'interface
+	// Si le contenu a chang�, on rafraichit l'interface
 	if !([_chargement, _chargement_precedent] call BIS_fnc_areEqual) then
 	{
 		_chargement_precedent = +_chargement;
 
 		_contenu = _transporteur getVariable ["R3F_LOG_objets_charges", []];
 
-		/** Liste des noms de classe des objets contenu dans le véhicule, sans doublon */
+		/** Liste des noms de classe des objets contenu dans le v�hicule, sans doublon */
 		_tab_objets = [];
-		/** Quantité associé (par l'index) aux noms de classe dans _tab_objets */
+		/** Quantit� associ� (par l'index) aux noms de classe dans _tab_objets */
 		_tab_quantite = [];
-		/** Coét de chargement associé (par l'index) aux noms de classe dans _tab_objets */
+		/** Co�t de chargement associ� (par l'index) aux noms de classe dans _tab_objets */
 		_tab_cout_chargement = [];
 
-		// Préparation de la liste du contenu et des quantités associées aux objets
+		// Pr�paration de la liste du contenu et des quantit�s associ�es aux objets
 		for [{_i = 0}, {_i < count _contenu}, {_i = _i + 1}] do
 		{
 			private ["_objet"];
@@ -105,13 +105,13 @@ while {!isNull _dlg_contenu_vehicule} do
 				_cout_chargement = _tab_cout_chargement select _i;
 				_icone = getText (configFile >> "CfgVehicles" >> _classe >> "icon");
 
-				// Icéne par défaut
+				// Ic�ne par d�faut
 				if (_icone == "") then
 				{
 					_icone = "\A3\ui_f\data\map\VehicleIcons\iconObject_ca.paa";
 				};
 
-				// Si le chemin commence par A3\ ou a3\, on rajoute un \ au début
+				// Si le chemin commence par A3\ ou a3\, on rajoute un \ au d�but
 				_tab_icone = toArray toLower _icone;
 				if (count _tab_icone >= 3 &&
 					{
@@ -123,7 +123,7 @@ while {!isNull _dlg_contenu_vehicule} do
 					_icone = "\" + _icone;
 				};
 
-				// Si icéne par défaut, on rajoute le chemin de base par défaut
+				// Si ic�ne par d�faut, on rajoute le chemin de base par d�faut
 				_tab_icone = toArray _icone;
 				if (_tab_icone select 0 != (toArray "\" select 0)) then
 				{

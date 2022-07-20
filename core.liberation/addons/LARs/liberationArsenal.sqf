@@ -38,12 +38,16 @@ LRX_arsenal_init_done = false;
 GRLIB_blacklisted_from_arsenal = [];			// Global blacklist (All objects will be removed from Arsenal)
 
 // Initalize Withelist
-GRLIB_whitelisted_from_arsenal = [mobile_respawn_bag];			// whitelist when Arsenal is enabled
+GRLIB_whitelisted_from_arsenal = [];			// whitelist when Arsenal is enabled
 
+// Import list from Mod template
 [] call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\arsenal.sqf", GRLIB_mod_west];
 
 // Default LRX blacklist
 GRLIB_blacklisted_from_arsenal = blacklisted_bag + blacklisted_weapon;
+
+// Default LRX whitelist
+GRLIB_whitelisted_from_arsenal = GRLIB_whitelisted_from_arsenal + [mobile_respawn_bag];
 
 // Ace compat.
 if (GRLIB_ACE_enabled) then { [myLARsBox, true, false] call ace_arsenal_fnc_initBox };
