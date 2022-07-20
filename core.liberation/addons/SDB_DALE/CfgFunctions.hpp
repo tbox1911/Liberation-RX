@@ -1,5 +1,5 @@
-class DALE {
-	class INIT {
+class Dale {
+	class Init {
 		file = "addons\SDB_DALE\functions";
 		class actLoadout {};
 		class addPylonLoadout {};
@@ -12,7 +12,7 @@ class DALE {
 		class pylonRearmRemote {};
 		class setPylonLoadout {};
 	};
-	class DLG {
+	class Dlg {
 		file = "addons\SDB_DALE\functions";
 		class dlgLoadoutApply {};
 		class dlgLoadoutChangePreset {};
