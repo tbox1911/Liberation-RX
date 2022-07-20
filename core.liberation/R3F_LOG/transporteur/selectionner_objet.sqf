@@ -1,7 +1,7 @@
 /**
- * S�lectionne un objet � charger dans un transporteur
+ * Sélectionne un objet é charger dans un transporteur
  * 
- * @param 0 l'objet � s�lectionner
+ * @param 0 l'objet é sélectionner
  */
 
 if (R3F_LOG_mutex_local_verrou) then
@@ -17,7 +17,7 @@ else
 	
 	[R3F_LOG_objet_selectionne, player] call R3F_LOG_FNCT_definir_proprietaire_verrou;
 	
-	// D�selectionner l'objet si le joueur n'en fait rien
+	// Déselectionner l'objet si le joueur n'en fait rien
 	[] spawn
 	{
 		while {!isNull R3F_LOG_objet_selectionne} do
