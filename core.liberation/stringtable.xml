@@ -1308,14 +1308,14 @@
 		<Key ID="STR_PARAMS_DAYDURATION">
 			<Original>Day duration (multiplier)</Original>
 			<French>Durée du jour (multiplicateur)</French>
-			<Chinesesimp>日间时长（倍数）</Chinesesimp>
-			<Chinese>日間時長（倍數）</Chinese>
+			<Chinesesimp>日间时长（倍数，数值越大，游戏中时间越短）</Chinesesimp>
+			<Chinese>日間時長（倍數，數值越大，遊戲中時間越短）</Chinese>
 		</Key>
 		<Key ID="STR_PARAMS_NIGHTDURATION">
 			<Original>Night duration (multiplier)</Original>
 			<French>Durée de la nuit (multiplicateur)</French>
-			<Chinesesimp>夜间时长（倍数）</Chinesesimp>
-			<Chinese>夜間時長（倍數）</Chinese>
+			<Chinesesimp>夜间时长（倍数，数值越大，游戏中时间越短）</Chinesesimp>
+			<Chinese>夜間時長（倍數，數值越大，遊戲中時間越短）</Chinese>
 		</Key>
 		<Key ID="STR_PARAMS_DIFFICULTY">
 			<Original>Difficulty</Original>
@@ -2571,6 +2571,8 @@
 			<Original>Sorry, this nickname (%1) is prohibited on this server!\n\nChange your nickname, lazy ass, and join the game again!</Original>
 			<French>Désolé, ce pseudo (%1) est interdit sur ce serveur !\n\nChangez de pseudo, paresseux, et rejoignez le jeu à nouveau !</French>
 			<Russian>Використання ніку %1 ЗАБОРОНЕНО!\n\n Зміни нік, срака ти лінива, та заходь знову.</Russian>
+			<Chinesesimp>对不起，这个游戏名(%1)在这个服务器上是被禁止的！\n\n更改名字，懒虫，然后再加入服务器吧！</Chinesesimp>
+			<Chinese>對不起，這個遊戲名(%1)在這個服務器上是被禁止的！\n\n更改名字，懶蟲，然後再加入服務器吧！</Chinese>
 		</Key>
 		<Key ID="STR_COMMANDER_NOT_AUTHORIZED">
 			<Original>You are not authorized to use the commander slot on this server.</Original>
@@ -4423,15 +4425,23 @@
 		<Key ID="STR_LIMIT_ARSENAL">
 			<Original>Arsenal Filter Mode</Original>
 			<French>Mode de Filtrage de l'Arsenal</French>
+			<Chinesesimp>武器库过滤模式</Chinesesimp>
+			<Chinese>武器庫過濾模式</Chinese>
 		</Key>
 		<Key ID="STR_LIMIT_ARSENAL_PARAM1">
 			<Original>Soft: The Arsenal only show your side gears, but the player can use other objects.</Original>
+			<Chinesesimp>松懈：武器库只显示玩家一方的装备，但是可以使用其他物品。</Chinesesimp>
+			<Chinese>鬆懈：武器庫只顯示玩家一方的裝備，但是可以使用其他物品。</Chinese>
 		</Key>
 		<Key ID="STR_LIMIT_ARSENAL_PARAM2">
 			<Original>Strict: The player can ONLY use items present in the Arsenal.</Original>
+			<Chinesesimp>严谨：玩家只能使用当前武器库中的装备。</Chinesesimp>
+			<Chinese>嚴謹：玩家只能使用當前武器庫中的裝備。</Chinese>
 		</Key>
 		<Key ID="STR_LIMIT_ARSENAL_PARAM3">
 			<Original>Strict + MOD: The player can ONLY use items present in the Arsenal + items from the current Mod</Original>
+			<Chinesesimp>严谨+MOD：玩家只能使用当前武器库和MOD中的装备。</Chinesesimp>
+			<Chinese>嚴謹+MOD：玩家只能使用當前武器庫和MOD中的裝備。</Chinese>
 		</Key>
 		<Key ID="STR_VEH_LOCK">
 			<Original>Enable Vehicles Ownership</Original>
