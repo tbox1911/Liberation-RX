@@ -29,8 +29,12 @@ if (isNil "_attackedSector") then {
 	};
 };
 _vehicle_pool = opfor_battlegroup_vehicles;
-if ((combat_readiness < 60) || (_attackInProgress)) then {
-	_vehicle_pool = opfor_battlegroup_vehicles_low_intensity;
+if (combat_readiness < 60) then {
+	_vehicle_pool = opfor_battlegroup_vehicles_low_intensity
+};
+
+if (_attackInProgress) then {
+	_vehicle_pool = opfor_reinforcement_vehicles;
 };
 
 if (_spawn_marker != "") then {
