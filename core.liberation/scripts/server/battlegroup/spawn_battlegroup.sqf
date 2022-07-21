@@ -1,10 +1,10 @@
-if ((GRLIB_endgame == 1) || (combat_readiness < 50)) exitWith {};
+params ["_attackedSector", ["_attackInProgress", false]];
 
 if (isNil "hc_battlegroup_on") then {
 	hc_battlegroup_on = true
 };
 
-params ["_attackedSector", ["_attackInProgress", false]];
+if ((GRLIB_endgame == 1) || ((combat_readiness < 50) && !(_attackInProgress)) exitWith {};
 diag_log format ["Spawn BattlegGroup at %1", time];
 
 private [ "_bg_groups", "_target_size", "_vehicle_pool", "_selected_opfor_battlegroup" ];
@@ -14,7 +14,6 @@ last_battlegroup_size = 0;
 _spawn_marker = "";
 if (isNil "_attackedSector") then {
 	_spawn_marker = [ GRLIB_spawn_min, GRLIB_spawn_max, false ] call F_findOpforSpawnPoint;
-	
 } else {
 	if (_attackInProgress) then {
 		if (isNil "limit_bg_dist") then {
@@ -61,11 +60,9 @@ if (_spawn_marker != "") then {
 		_vehicle setSkill skill_ground_vehicles;
 		(crew _vehicle) joinSilent _nextgrp;
 		if (isNil "_attackedSector") then {
-		[_nextgrp, false] spawn battlegroup_ai;
-		
+			[_nextgrp, false] spawn battlegroup_ai;
 		} else {
-		[_nextgrp, false, _attackedSector] spawn battlegroup_ai;
-
+			[_nextgrp, false, _attackedSector] spawn battlegroup_ai;
 		};
 		{
 			_x setVariable ["GRLIB_counter_TTL", round(time + 2700)]
