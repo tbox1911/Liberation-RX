@@ -108,8 +108,8 @@ if (_spawn_marker != "") then {
 if (isNil "combat_readiness_reduction") then {
 	combat_readiness_reduction = 1.15
 };
-
-combat_readiness = round(combat_readiness / combat_readiness_reduction);
+if !(_attackInProgress) then {
+combat_readiness = round(combat_readiness / combat_readiness_reduction)};
 
 if (combat_readiness < 0) then {
 	combat_readiness = 0
