@@ -137,6 +137,18 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"CUP_O_BTR80A_TK"
 ];
 
+opfor_reinforcement_vehicles = [	
+	"CUP_O_Ural_RU",
+	"CUP_O_Ural_RU",
+	"CUP_O_Ural_RU",
+	"CUP_O_Ural_RU",
+	"CUP_O_Ural_RU",
+	"CUP_O_Ural_RU",
+	"CUP_O_UAZ_METIS_TKA",
+	"CUP_O_UAZ_AGS30_TKA",
+	"CUP_O_Hilux_igla_TK_INS",
+	"CUP_O_BTR80A_TK"
+	];
 
 opfor_battlegroup_vehicles = [ 
 	"CUP_O_Ural_RU",
