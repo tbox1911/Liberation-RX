@@ -119,7 +119,7 @@ limit_readiness = true;
 fob_hunting_readiness = 40;
 
 //Battlegroup sleeping (divided with csat aggressivity)
-bg_sleeptimer = 1000;
+bg_sleeptimer = 1000; 
 sector_reinforcement = true;
 limit_bg_dist = 3000;
 
