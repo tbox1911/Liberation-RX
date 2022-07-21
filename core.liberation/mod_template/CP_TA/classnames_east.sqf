@@ -40,8 +40,6 @@ opfor_flag = "CUP_Flag_Black";
 militia_squad = [
 	"CUP_O_RU_Soldier_SL_MSV_VSR93",
 	"CUP_O_RU_Soldier_AA_M_EMR_V2",
-	"CUP_O_RU_Soldier_AA_M_EMR_V2",
-	"CUP_O_RU_Soldier_AA_M_EMR_V2",
 	"CUP_O_RU_Soldier_TL_MSV_VSR93",
 	"CUP_O_RU_Soldier_Exp_MSV_VSR93",
 	"CUP_O_RU_Soldier_MG_MSV_VSR93",
@@ -51,6 +49,10 @@ militia_squad = [
 	"CUP_O_RU_Soldier_LAT_MSV_VSR93",
 	"CUP_O_RU_Soldier_Lite_MSV_VSR93",
 	"CUP_O_RU_Soldier_MSV_VSR93",
+	"CUP_O_RU_Soldier_M_EMR_V2",
+	"CUP_O_RU_Soldier_M_EMR_V2",
+	"CUP_O_RU_Soldier_M_EMR_V2",
+	"CUP_O_RU_Soldier_M_EMR_V2",
 	"CUP_O_RU_Soldier_GL_MSV_VSR93",
 	"CUP_O_RU_Soldier_AR_MSV_VSR93"
 ];
