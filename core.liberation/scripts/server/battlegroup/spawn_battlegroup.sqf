@@ -17,7 +17,8 @@ if (isNil "_attackedSector") then {
 } else {
 	if (_attackInProgress) then {
 		if (isNil "limit_bg_dist") then {limit_bg_dist = 3000};
-		_spawn_marker = [ limit_bg_dist, _attackedSector, sectors_allSectors - blufor_sectors ] call F_getNearestSector;
+		_sector_list = sectors_allSectors - blufor_sectors - sectors_tower - [_attackedSector] - active_sectors;
+		_spawn_marker = [ limit_bg_dist, _attackedSector, _sector_list ] call F_getNearestSector;
 	} else {
 		_spawn_marker = [ GRLIB_spawn_min, GRLIB_spawn_max, false ] call F_findOpforSpawnPoint;
 	};
