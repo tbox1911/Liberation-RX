@@ -13,14 +13,17 @@ _bg_groups = [];
 last_battlegroup_size = 0;
 _spawn_marker = "";
 if (isNil "_attackedSector") then {
-	_spawn_marker = [ GRLIB_spawn_min, GRLIB_spawn_max, false, _attackedSector ] call F_findOpforSpawnPoint;
+	_spawn_marker = [ GRLIB_spawn_min, GRLIB_spawn_max, false ] call F_findOpforSpawnPoint;
+	
 } else {
 	if (_attackInProgress) then {
-		if (isNil "limit_bg_dist") then {limit_bg_dist = 3000};
+		if (isNil "limit_bg_dist") then {
+			limit_bg_dist = 3000
+		};
 		_sector_list = sectors_allSectors - blufor_sectors - sectors_tower - [_attackedSector] - active_sectors;
 		_spawn_marker = [ limit_bg_dist, _attackedSector, _sector_list ] call F_getNearestSector;
 	} else {
-		_spawn_marker = [ GRLIB_spawn_min, GRLIB_spawn_max, false ] call F_findOpforSpawnPoint;
+		_spawn_marker = [ GRLIB_spawn_min, GRLIB_spawn_max, false, _attackedSector ] call F_findOpforSpawnPoint;
 	};
 };
 _vehicle_pool = opfor_battlegroup_vehicles;
@@ -46,8 +49,9 @@ if (_spawn_marker != "") then {
 		_selected_opfor_battlegroup pushBack (selectRandom _vehicle_pool);
 	};
 
-	[ _spawn_marker ] remoteExec ["remote_call_battlegroup", 0];
-
+	if !(_attackInProgress) then {
+		[ _spawn_marker ] remoteExec ["remote_call_battlegroup", 0];
+	};
 	sleep 30;
 
 	{
@@ -56,7 +60,13 @@ if (_spawn_marker != "") then {
 		_vehicle setVariable ["GRLIB_counter_TTL", round(time + 2700)];  // 45 minutes TTL
 		_vehicle setSkill skill_ground_vehicles;
 		(crew _vehicle) joinSilent _nextgrp;
+		if (isNil "_attackedSector") then {
 		[_nextgrp, false] spawn battlegroup_ai;
+		
+		} else {
+		[_nextgrp, false, _attackedSector] spawn battlegroup_ai;
+
+		};
 		{
 			_x setVariable ["GRLIB_counter_TTL", round(time + 2700)]
 		} forEach (units _nextgrp);
