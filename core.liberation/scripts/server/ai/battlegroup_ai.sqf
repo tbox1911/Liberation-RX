@@ -1,4 +1,4 @@
-params ["_grp", "_infantry"];
+params ["_grp", "_infantry","_sectorTarget"];
 
 if (isNil "reset_battlegroups_ai" ) then { reset_battlegroups_ai = false };
 
@@ -9,6 +9,7 @@ while { ( count units _grp != 0 ) && ( GRLIB_endgame == 0 ) } do {
 	sleep (3 + floor(random 5));
 
 	private _objectivepos = ([getpos (leader _grp)] call F_getNearestBluforObjective) select 0;
+	if !(isNil "_sectorTarget") then {_objectivepos = _sectorTarget}; 
 
 	[ _objectivepos ] remoteExec ["remote_call_incoming", 0];
 
