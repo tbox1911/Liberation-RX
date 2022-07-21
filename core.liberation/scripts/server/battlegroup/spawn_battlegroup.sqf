@@ -23,7 +23,7 @@ if (isNil "_attackedSector") then {
 	};
 };
 _vehicle_pool = opfor_battlegroup_vehicles;
-if (combat_readiness < 60) then {
+if ((combat_readiness < 60) || (_attackInProgress)) then {
 	_vehicle_pool = opfor_battlegroup_vehicles_low_intensity;
 };
 
