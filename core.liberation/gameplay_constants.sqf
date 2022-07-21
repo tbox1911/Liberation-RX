@@ -122,6 +122,7 @@ fob_hunting_readiness = 40;
 bg_sleeptimer = 1000; 
 sector_reinforcement = true;
 limit_bg_dist = 3000;
+reinforce_spawn_min = 1500;
 
 // Deactivate HC spawning
 hc_spawn_off = false;
