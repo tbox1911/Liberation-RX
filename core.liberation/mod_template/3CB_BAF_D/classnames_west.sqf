@@ -290,7 +290,6 @@ GRLIB_AirDrop_5 = [		// cost 750 APC (Armoured personnel carrier)
 	"UK3CB_BAF_FV432_Mk3_GPMG_Sand_DDPM"
 ];
 
-
 GRLIB_AirDrop_6 = [		// cost 250 Boat
 	"B_Boat_Transport_01_F"
 ];
