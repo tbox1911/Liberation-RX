@@ -57,10 +57,6 @@ light_vehicles = [
 	["B_MRAP_01_F",2,25,12,0],
 	["B_MRAP_01_hmg_F",5,100,12,GRLIB_perm_inf],
 	["B_MRAP_01_gmg_F",5,125,12,GRLIB_perm_log],
-	//["I_MRAP_03_F",2,25,2,0],
-	//["I_MRAP_03_hmg_F",5,100,2,GRLIB_perm_inf],
-	//["I_MRAP_03_gmg_F",5,125,2,GRLIB_perm_log],
-	//["I_LT_01_cannon_F",2,200,2,GRLIB_perm_log],
 	["B_Truck_01_transport_F",5,30,15,GRLIB_perm_log],
 	["B_UN_Truck_01_covered_lxWS",5,30,15,GRLIB_perm_tank],
 	["B_LSV_01_unarmed_F",2,25,10,GRLIB_perm_inf],
@@ -73,8 +69,6 @@ heavy_vehicles = [
 	["B_APC_Tracked_01_AA_F",10,500,20,GRLIB_perm_tank],
 	["I_APC_Wheeled_03_cannon_F",10,500,20,GRLIB_perm_tank],
 	["I_APC_tracked_03_cannon_F",10,500,20,GRLIB_perm_tank],
-	//["I_MBT_03_cannon_F",15,4500,15,GRLIB_perm_max],
-	//["I_E_Truck_02_MRL_F",15,3500,15,GRLIB_perm_max],
 	["B_MBT_01_cannon_F",15,1500,35,GRLIB_perm_tank],
 	["B_MBT_01_TUSK_F",15,2000,35,GRLIB_perm_air],
 	["B_AFV_Wheeled_01_cannon_F",15,3000,35,GRLIB_perm_max],
@@ -90,9 +84,6 @@ air_vehicles = [
 	["B_UAV_05_F",5,2000,15,GRLIB_perm_max],
 	["C_Plane_Civil_01_F",1,50,5,GRLIB_perm_air],
 	["B_Heli_Light_01_F",1,50,15,GRLIB_perm_log],
-	//["I_Heli_light_03_unarmed_F",1,50,5,GRLIB_perm_tank],
-	//["I_Heli_light_03_dynamicLoadout_F",10,500,20,GRLIB_perm_air],
-	//["I_Plane_Fighter_03_dynamicLoadout_F", 10,3500,20,GRLIB_perm_max],
 	["B_Heli_Light_01_dynamicLoadout_F",5,200,20,GRLIB_perm_air],
 	["B_Heli_Transport_03_unarmed_F",10,500,35,GRLIB_perm_tank],
 	["B_Heli_Transport_03_F",10,1500,35,GRLIB_perm_air],
@@ -244,8 +235,4 @@ GRLIB_vehicle_whitelist_west = [
 
 GRLIB_vehicle_blacklist_west = [
 
-];
-
-box_transport_config_west = [
-	[ "B_UN_Offroad_lxWS", -5, [0, -1.55, 0.2] ]
 ];

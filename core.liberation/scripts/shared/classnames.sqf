@@ -76,7 +76,7 @@ elite_vehicles = [];
 
 // Static Weapons
 list_static_weapons = ["I_static_AA_F"] + opfor_statics;
-{ 
+{
 	private _veh = _x select 0;
 	if (!(_veh in uavs)) then { list_static_weapons pushback _veh };
 } foreach static_vehicles;
@@ -115,7 +115,7 @@ vehicle_repair_sources = [
 ];
 
 // *** Boats ***
-boats_names = [ 
+boats_names = [
 	"C_Scooter_Transport_01_F",
 	"C_Boat_Civil_01_F",
 	"C_Boat_Transport_02_F",
@@ -123,7 +123,7 @@ boats_names = [
 	"B_Boat_Armed_01_minigun_F"
 ] + boats_east + boats_west;
 
-boats_names_civ = [ 
+boats_names_civ = [
 	"C_Scooter_Transport_01_F",
 	"C_Boat_Civil_01_F",
 	"C_Boat_Transport_02_F",
@@ -172,12 +172,18 @@ box_transport_offset = [];
 // Second entry: how far behind the vehicle the boxes should be unloaded
 // Following entries: attachTo position for each box, the number of boxes that can be loaded is derived from the number of entries
 box_transport_config = [
-	// default opfor_transport_truck config
-	[ "O_Truck_03_transport_F", -6.5, [0, -0.8, 0.4], [0, -2.4, 0.4], [0, -4.0, 0.4] ],
 	[ "C_Offroad_01_F", -5, [0, -1.55, 0.2] ],
 	[ "B_G_Offroad_01_F", -5, [0, -1.55, 0.2] ],
 	[ "I_G_Offroad_01_F", -5, [0, -1.55, 0.2] ],
 	[ "O_G_Offroad_01_F", -5, [0, -1.55, 0.2] ],
+	[ "O_Truck_03_transport_F", -6.5, [0, -0.8, 0.4], [0, -2.4, 0.4], [0, -4.0, 0.4] ],
+	[ "B_Truck_01_transport_F", -6.5, [0, -0.4, 0.4], [0, -2.1, 0.4], [0, -3.8, 0.4] ],
+	[ "B_Truck_01_covered_F", -6.5, [0, -0.4, 0.4], [0, -2.1, 0.4], [0, -3.8, 0.4] ],
+	[ "B_Truck_01_medical_F", -6.5, [0, -0.4, 0.4], [0, -2.1, 0.4], [0, -3.8, 0.4] ],
+	[ "B_Heli_Transport_03_F", -7.5, [0, 2.2, -1], [0, 0.8, -1], [0, -1.0, -1] ],
+	[ "B_Heli_Transport_03_unarmed_F", -7.5, [0, 2.2, -1], [0, 0.8, -1], [0, -1.0, -1] ],
+	[ "I_Truck_02_transport_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
+	[ "I_Truck_02_covered_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ]
 	[ "C_Truck_02_transport_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
 	[ "C_Truck_02_covered_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
 	[ "C_Van_01_box_F", -5.3, [0, -1.05, 0.2], [0, -2.6, 0.2] ],
@@ -251,7 +257,7 @@ GRLIB_vehicle_blacklist = [
 	medic_sling_typename,
 	fireworks_typename,
   	"Box_NATO_WpsLaunch_F",
-	"Land_RepairDepot_01_civ_F"	
+	"Land_RepairDepot_01_civ_F"
 ] + GRLIB_vehicle_blacklist_west;
 
 // Recycleable objects
@@ -416,7 +422,7 @@ if ( isNil "GRLIB_AirDrop_2" ) then {
 	];
 };
 
-if ( isNil "GRLIB_AirDrop_3" ) then {	
+if ( isNil "GRLIB_AirDrop_3" ) then {
 	GRLIB_AirDrop_3 = [
 		"I_MRAP_03_hmg_F",
 		"I_MRAP_03_gmg_F",
@@ -425,7 +431,7 @@ if ( isNil "GRLIB_AirDrop_3" ) then {
 	];
 };
 
-if ( isNil "GRLIB_AirDrop_4" ) then {	
+if ( isNil "GRLIB_AirDrop_4" ) then {
 	GRLIB_AirDrop_4 = [
 		"B_Truck_01_transport_F",
 		"B_Truck_01_covered_F",
@@ -434,7 +440,7 @@ if ( isNil "GRLIB_AirDrop_4" ) then {
 	];
 };
 
-if ( isNil "GRLIB_AirDrop_5" ) then {	
+if ( isNil "GRLIB_AirDrop_5" ) then {
 	GRLIB_AirDrop_5 = [
 		"I_APC_tracked_03_cannon_F",
 		"B_APC_Wheeled_03_cannon_F",
@@ -442,7 +448,7 @@ if ( isNil "GRLIB_AirDrop_5" ) then {
 	];
 };
 
-if ( isNil "GRLIB_AirDrop_6" ) then {	
+if ( isNil "GRLIB_AirDrop_6" ) then {
 	GRLIB_AirDrop_6 = [
 		"C_Boat_Civil_01_F",
 		"C_Boat_Transport_02_F",

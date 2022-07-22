@@ -230,13 +230,6 @@ GRLIB_vehicle_blacklist_west = [
 	"RHS_M252_WD"
 ];
 
-box_transport_config_west = [
-	[ "rhsusf_M1078A1P2_B_WD_flatbed_fmtv_usarmy", -6.5, [0,-0.2,0.6], [0,-1.8,0.6] ],
-	[ "rhsusf_M1084A1P2_B_WD_fmtv_usarmy", -6.5, [0,-0.2,0.6], [0,-1.8,0.6] ],
-	[ "rhsusf_M977A4_usarmy_wd", -6.5, [0,0.5,1.5], [0,-0.9,1.5], [0,-2.4,1.5], [0,-3.8,1.5] ],
-	[ "RHS_CH_47F", -7.5, [0,2,-1.8], [0,0.6,-1.8], [0,-1.2,-1.8], [0,-2.6,-1.8] ]
-];
-
 GRLIB_AirDrop_1 = [			// Unarmed Offroader 50
 	"rhsusf_m1025_w"
 ];

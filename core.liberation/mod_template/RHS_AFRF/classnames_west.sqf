@@ -256,18 +256,6 @@ GRLIB_vehicle_blacklist_west = [
 	"RHS_M119_WD"
 ];
 
-box_transport_config_west = [
-	[ "rhs_gaz66_msv", -6.5, [0,-0.2,0.6], [0,-1.8,0.6] ],
-	[ "rhs_kamaz5350_open_msv", -6.5, [0,0.8,0], [0,-0.8,0.0], [0,-2.5,0] ],
-	[ "RHS_Ural_Open_MSV_01", -6.5, [0,0.5,1.5], [0,-0.9,1.5], [0,-2.4,1.5] ],
-	[ "rhs_kraz255b1_cargo_open_msv", -6.5, [0,0.5,1.5], [0,-0.9,1.5], [0,-2.4,1.5], [0,-3.8,1.5] ],
-	[ "RHS_Mi8mt_vv", -7.5, [0,2,-1.8], [0,0.6,-1.8], [0,-1.2,-1.8], [0,-2.6,-1.8] ]
-	
-];
-
-
-
-
 GRLIB_AirDrop_1 = [			// Unarmed Offroader 50
 	"RHS_UAZ_MSV_01"
 ];

@@ -24,7 +24,7 @@ opfor_mrap = "rhsusf_m1151_usmc_wd";
 opfor_mrap_hmg = "rhsusf_m1151_m2crows_usmc_wd";
 opfor_mrap_gmg = "rhsusf_m1151_mk19crows_usmc_wd";
 opfor_transport_helo = "RHS_CH_47F";
-opfor_transport_truck = "rhsusf_M1083A1P2_B_M2_WD_fmtv_usarmy";
+opfor_transport_truck = "rhsusf_M977A4_usarmy_wd";
 opfor_fuel_truck = "rhsusf_M978A4_usarmy_wd";
 opfor_ammo_truck = "rhsusf_M977A4_AMMO_usarmy_wd";
 opfor_fuel_container = "B_Slingload_01_Fuel_F";
@@ -145,8 +145,7 @@ opfor_battlegroup_vehicles = [
 	"rhsusf_m1a1fep_od",
 	"rhsusf_M1083A1P2_B_M2_WD_fmtv_usarmy",
 	"RHS_UH60M",
-	"RHS_CH_47F",
-	"rhsusf_CH53E_USMC_GAU21_D"
+	"RHS_CH_47F"
 ];
 
 opfor_battlegroup_vehicles_low_intensity = [
@@ -166,11 +165,7 @@ opfor_battlegroup_vehicles_low_intensity = [
 
 opfor_troup_transports_truck = [
 	"rhsusf_M1078A1P2_B_M2_WD_fmtv_usarmy",
-	"rhsusf_M1083A1P2_B_M2_WD_fmtv_usarmy",
-	"RHS_UH60M",
-	"RHS_UH1Y",
-	"RHS_CH_47F",
-	"rhsusf_CH53E_USMC_GAU21_D"
+	"rhsusf_M1083A1P2_B_M2_WD_fmtv_usarmy"
 ];
 
 opfor_troup_transports_heli = [
@@ -227,6 +222,8 @@ opfor_recyclable = [
 	["rhsusf_m1165a1_gmv_mk19_m240_socom_d",1,round (20 / GRLIB_recycling_percentage),2],
 	["rhsusf_m1165a1_gmv_m2_m240_socom_d",1,round (20 / GRLIB_recycling_percentage),2],
 	["rhsusf_M1083A1P2_B_M2_WD_fmtv_usarmy",1,round (40 / GRLIB_recycling_percentage),2],
+	["rhsusf_M1078A1P2_B_M2_WD_fmtv_usarmy",1,round (60 / GRLIB_recycling_percentage),2],
+	["rhsusf_M977A4_usarmy_wd",10,round (100 / GRLIB_recycling_percentage),10],
 	["rhsusf_m1a1aimwd_usarmy",10,round (600 / GRLIB_recycling_percentage),10],
 	["rhsusf_m1a2sep1wd_usarmy",10,round (600 / GRLIB_recycling_percentage),10],
 	["rhsusf_m1a2sep2wd_usarmy",10,round (600 / GRLIB_recycling_percentage),10],

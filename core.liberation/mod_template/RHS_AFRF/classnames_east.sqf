@@ -24,7 +24,7 @@ opfor_mrap = "rhs_tigr_msv";
 opfor_mrap_hmg = "rhs_tigr_sts_msv";
 opfor_mrap_gmg = "O_MRAP_02_gmg_F";
 opfor_transport_helo = "RHS_Mi8mt_Cargo_vdv";
-opfor_transport_truck = "rhs_kamaz5350_msv";
+opfor_transport_truck = "rhs_kamaz5350_open_msv";
 opfor_fuel_truck = "RHS_Ural_Fuel_MSV_01";
 opfor_ammo_truck = "rhs_gaz66_ammo_msv";
 opfor_fuel_container = "Land_Pod_Heli_Transport_04_fuel_F";
@@ -139,13 +139,7 @@ opfor_troup_transports_truck = [
 	"rhs_bmd4_vdv",
 	"rhs_bmd2",
 	"rhs_bmd1",
-	"rhs_bmp3mera_msv",
-	"rhs_kamaz5350_msv",
-	"RHS_Mi24P_CAS_vdv",
-	"RHS_Mi24V_UPK23_vdv",
-	"RHS_Mi8AMT_vdv",
-	"RHS_Mi8AMTSh_vvsc",
-	"RHS_Mi8AMTSh_UPK23_vvsc"
+	"rhs_kamaz5350_msv"
 ];
 
 opfor_troup_transports_heli = [
@@ -203,6 +197,7 @@ opfor_recyclable = [
 	["rhs_t80a",10,round (150 / GRLIB_recycling_percentage),10],
 	["rhs_bmp3mera_msv",10,round (150 / GRLIB_recycling_percentage),10],
 	["rhs_kamaz5350_msv",10,round (150 / GRLIB_recycling_percentage),10],
+	["rhs_kamaz5350_open_msv",10,round (150 / GRLIB_recycling_percentage),10],
 	["RHS_Mi24P_CAS_vdv",10,round (150 / GRLIB_recycling_percentage),10],
 	["RHS_Mi24V_UPK23_vdv",10,round (150 / GRLIB_recycling_percentage),10],
 	["RHS_Mi8AMT_vdv",10,round (150 / GRLIB_recycling_percentage),10],
