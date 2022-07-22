@@ -2,7 +2,9 @@ params ["_unit", "_selection", "_amountOfDamage", "_killer", "_projectile", "_hi
 
 if (isNull _unit) exitWith {0};
 if (!(isNull _instigator)) then {
-	_killer = _instigator;
+	if (isNull (getAssignedCuratorLogic _instigator)) then {
+	   	_killer = _instigator;
+	};
 } else {
 	if (!(_killer isKindOf "CAManBase")) then {
 		_killer = effectiveCommander _killer;
