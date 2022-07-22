@@ -286,3 +286,8 @@ opfor_recyclable = [
 	["UK3CB_CW_US_B_LATE_A10_AT",10,round (700 / GRLIB_recycling_percentage),15],
 	["UK3CB_CW_US_B_LATE_A10_CBU",10,round (700 / GRLIB_recycling_percentage),15]
 ];
+
+box_transport_config_east = [
+	// opfor_transport_truck MUST be declared here
+	[ "UK3CB_BAF_MAN_HX58_Transport_Sand_DDPM", -6.5, [0,-0.2,0.6], [0,-1.8,0.6] ]
+];

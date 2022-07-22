@@ -30,7 +30,7 @@ opfor_mrap = "UK3CB_CHD_O_Hilux_Closed";
 opfor_mrap_hmg = "UK3CB_CHD_O_Hilux_Pkm";
 opfor_mrap_gmg = "UK3CB_CHD_O_Hilux_GMG";
 opfor_transport_helo = "UK3CB_CHD_O_Mi8";
-opfor_transport_truck = "UK3CB_CHD_O_Zil131_Covered";
+opfor_transport_truck = "UK3CB_CHD_O_Kamaz_Covered";
 opfor_fuel_truck = "UK3CB_CHD_O_Ural_Fuel";
 opfor_ammo_truck = "UK3CB_CHD_O_Ural_Ammo"; // 3CB Cold War US Early
 opfor_fuel_container = "Land_Pod_Heli_Transport_04_fuel_F";
@@ -308,4 +308,9 @@ opfor_recyclable = [
 	["UK3CB_CHD_O_Su25SM_CAS",10,round (600 / GRLIB_recycling_percentage),15],
 	["UK3CB_CHD_O_Su25SM_Cluster",10,round (600 / GRLIB_recycling_percentage),15],
 	["UK3CB_CHD_O_Su25SM_KH29",10,round (600 / GRLIB_recycling_percentage),15]
+];
+
+box_transport_config_east = [
+	// opfor_transport_truck MUST be declared here
+	[ "UK3CB_CHD_O_Kamaz_Covered", -6.5, [0,0.5,1.5], [0,-0.9,1.5], [0,-2.4,1.5], [0,-3.8,1.5] ]
 ];

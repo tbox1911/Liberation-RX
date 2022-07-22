@@ -200,3 +200,12 @@ opfor_recyclable = [
 	["B_Plane_CAS_01_F",20,round (1500 / GRLIB_recycling_percentage),30],
 	["B_Plane_Fighter_01_F",20,round (2000 / GRLIB_recycling_percentage),30]
 ];
+
+box_transport_config_east = [
+	// opfor_transport_truck MUST be declared here
+	[ "B_Truck_01_covered_F", -6.5, [0, -0.4, 0.4], [0, -2.1, 0.4], [0, -3.8, 0.4] ],
+	[ "B_Truck_01_transport_F", -6.5, [0, -0.4, 0.4], [0, -2.1, 0.4], [0, -3.8, 0.4] ],
+	[ "B_Truck_01_medical_F", -6.5, [0, -0.4, 0.4], [0, -2.1, 0.4], [0, -3.8, 0.4] ],
+	[ "B_Heli_Transport_03_F", -7.5, [0, 2.2, -1], [0, 0.8, -1], [0, -1.0, -1] ],
+	[ "B_Heli_Transport_03_unarmed_F", -7.5, [0, 2.2, -1], [0, 0.8, -1], [0, -1.0, -1] ]		
+];
