@@ -5,7 +5,7 @@ diag_log format [ "Spawning Troop in vehicle %1 at %2", typeOf _troup_transport,
 _transport_group = (group (driver _troup_transport));
 _start_pos = getPos _troup_transport;
 if (isNil "_attackedSector") then {
-	_dat_objective = ([getPos _troup_transport] call F_getNearestBluforObjective) select 0;
+	_dat_objective = ([getPos _troup_transport] call F_getNearestBluforObjective) select 0
 } else {
 	_dat_objective = _attackedSector;
 };
@@ -17,8 +17,9 @@ _initial_crewcount = count crew _troup_transport;
 
 if (isNil "_dat_objective") then {
 	_dat_objective = _attackedSector;
+	sleep 5;
 };
-sleep 1;
+
 
 if (isNil "_dat_objective") then {
 	_dat_objective = ([getPos _troup_transport] call F_getNearestBluforObjective) select 0;
@@ -94,6 +95,9 @@ if ((alive _troup_transport) && (alive (driver _troup_transport))) then {
 	_waypoint2 setWaypointType "CYCLE";
 
 	sleep 10;
-
-	[_troupgrp, true] spawn battlegroup_ai;
+	if (isNil "_attackedSector") then {
+		[_troupgrp, true] spawn battlegroup_ai;
+	} else {
+		[_troupgrp, true, _attackedSector] spawn battlegroup_ai;
+	};
 };
