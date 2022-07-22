@@ -1,4 +1,4 @@
-private _reset_time = 1200;
+private _reset_time = 600;
 
 reinforcements_set = false;
 
