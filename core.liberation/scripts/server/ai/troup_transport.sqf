@@ -5,7 +5,7 @@ diag_log format [ "Spawning Troop in vehicle %1 at %2", typeOf _troup_transport,
 _transport_group = (group (driver _troup_transport));
 _start_pos = getPos _troup_transport;
 if (isNil "_attackedSector") then {
-	_dat_objective = ([getPos _troup_transport] call F_getNearestBluforObjective) select 0
+	_dat_objective = ([getPos _troup_transport] call F_getNearestBluforObjective) select 0;
 } else {
 	_dat_objective = _attackedSector;
 };
