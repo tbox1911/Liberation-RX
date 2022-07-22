@@ -230,9 +230,3 @@ GRLIB_vehicle_whitelist_west = [
 GRLIB_vehicle_blacklist_west = [
 
 ];
-
-box_transport_config_west = [
-	[ "I_Heli_Transport_02_F", -6.5, [0, 4.2, -1.45], [0, 2.5, -1.45], [0, 0.8, -1.45], [0, -0.9, -1.45] ],
-	[ "I_Truck_02_transport_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
-	[ "I_Truck_02_covered_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ]
-];

@@ -193,9 +193,3 @@ opfor_recyclable = [
 	["I_Plane_Fighter_03_CAS_F",20,round (1000 / GRLIB_recycling_percentage),30],
 	["I_Plane_Fighter_04_F",20,round (1000 / GRLIB_recycling_percentage),30]
 ];
-
-box_transport_config_east = [
-	// opfor_transport_truck MUST be declared here
-	[ "I_Truck_02_transport_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
-	[ "I_Truck_02_covered_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ]	
-];

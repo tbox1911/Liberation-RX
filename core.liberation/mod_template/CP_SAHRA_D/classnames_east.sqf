@@ -237,7 +237,3 @@ opfor_recyclable = [
 	["CUP_I_JAS39_RACS",20,round (1000 / GRLIB_recycling_percentage),30]
 ];
 
-box_transport_config_east = [
-	[ "CUP_I_MTVR_RACS", -5.5, [0, 0.3, 0], [0, -1.25, 0] ]
-];
-

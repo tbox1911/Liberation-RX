@@ -309,8 +309,3 @@ opfor_recyclable = [
 	["UK3CB_CHD_O_Su25SM_Cluster",10,round (600 / GRLIB_recycling_percentage),15],
 	["UK3CB_CHD_O_Su25SM_KH29",10,round (600 / GRLIB_recycling_percentage),15]
 ];
-
-box_transport_config_east = [
-	// opfor_transport_truck MUST be declared here
-	[ "UK3CB_CHD_O_Kamaz_Covered", -6.5, [0,0.5,1.5], [0,-0.9,1.5], [0,-2.4,1.5], [0,-3.8,1.5] ]
-];

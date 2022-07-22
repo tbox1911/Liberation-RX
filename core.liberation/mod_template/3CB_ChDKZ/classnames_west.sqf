@@ -255,17 +255,6 @@ GRLIB_vehicle_blacklist_west = [
 
 ];
 
-box_transport_config_west = [
-	[ "UK3CB_CHD_O_Gaz66_Covered", -6.5, [0,-0.2,0.6], [0,-1.8,0.6] ],
-	[ "UK3CB_CHD_O_Kamaz_Open", -6.5, [0,-0.2,0.6], [0,-1.8,0.6] ],
-	[ "UK3CB_CHD_O_Kamaz_Covered", -6.5, [0,0.5,1.5], [0,-0.9,1.5], [0,-2.4,1.5], [0,-3.8,1.5] ],
-	[ "UK3CB_CHD_O_Ural_Open", -6.5, [0,0.5,1.5], [0,-0.9,1.5], [0,-2.4,1.5], [0,-3.8,1.5] ],
-	[ "UK3CB_CHD_O_Ural", -6.5, [0,0.5,1.5], [0,-0.9,1.5], [0,-2.4,1.5], [0,-3.8,1.5] ],
-	[ "UK3CB_CHD_O_Mi8", -7.5, [0,2,-1.8], [0,0.6,-1.8], [0,-1.2,-1.8], [0,-2.6,-1.8] ]
-];
-
-
-
 GRLIB_AirDrop_1 = [		// cost = 50 Unarmed Offroad
 	"UK3CB_CHD_O_Hilux_Closed"
 ];
