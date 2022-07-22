@@ -5,7 +5,8 @@
 
 box_transport_config = box_transport_config + [
     // the 'opfor_transport_truck' MUST be declared here
-	// use default config
+	[ "OPTRE_m1015_mule_ins", -6.5, [0, -0.8, 0.4], [0, -2.4, 0.4], [0, -4.0, 0.4] ],
+	[ "OPTRE_m1015_mule_cover_ins", -6.5, [0, -0.8, 0.4], [0, -2.4, 0.4], [0, -4.0, 0.4] ]
 ];
 
 // Additional offset per object

@@ -5,7 +5,8 @@
 
 box_transport_config = box_transport_config + [
     // the 'opfor_transport_truck' MUST be declared here
-	// use default config
+	[ "OPTRE_m1087_stallion_unsc", -6.5, [0, -0.4, 0.4], [0, -2.1, 0.4], [0, -3.8, 0.4] ],
+	[ "OPTRE_m1087_stallion_cover_unsc", -6.5, [0, -0.4, 0.4], [0, -2.1, 0.4], [0, -3.8, 0.4] ]
 ];
 
 // Additional offset per object

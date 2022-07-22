@@ -5,7 +5,9 @@
 
 box_transport_config = box_transport_config + [
     // the 'opfor_transport_truck' MUST be declared here
-	// use default config
+	[ "gm_ge_civ_u1300l", -4.5, [0, -0.5, -0.4], [0, -2.1, -0.4] ],
+    [ "gm_gc_airforce_l410t", -8, [0, 2.7, -1.1], [0, 1.1, -1.1], [0, -0.5, -1.1] ],
+	[ "gm_gc_army_ural4320_cargo", -5.5, [0, -0.7, 0.04], [0, -2.4, 0.04] ]
 ];
 
 // Additional offset per object

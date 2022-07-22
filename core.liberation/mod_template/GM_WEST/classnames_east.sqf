@@ -188,8 +188,3 @@ opfor_recyclable = [
 	["gm_ge_army_ch53g",25,round (300 / GRLIB_recycling_percentage),15],
 	["gm_ge_army_bo105p_pah1a1",45,round (650 / GRLIB_recycling_percentage),15]
 ];
-
-box_transport_config_east = [
-    [ "gm_ge_army_u1300l_container", -4.5, [0, -0.5, -0.4], [0, -2.1, -0.4] ],
-    [ "gm_ge_army_kat1_451_container", -5.5, [0, 0.21, -0.01], [0, -1.34, -0.01], [0, -2.9, -0.01]]
-];

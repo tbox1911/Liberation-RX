@@ -207,10 +207,3 @@ opfor_recyclable = [
 	["ffaa_et_m250_combustible_blin",3,round (50 / GRLIB_recycling_percentage),8],
 	["ffaa_et_m250_municion_blin",3,round (50 / GRLIB_recycling_percentage),8]
 ];
-
-box_transport_config_east = [
-	[ "ffaa_et_pegaso_carga_lona", -6.5, [0.05, -1, 0.4], [0.05, -2.6, 0.4] ],
-    [ "ffaa_et_m250_carga_lona_blin", -6.5, [-0.1, 0.6, 0.3], [-0.1, -1, 0.3], [-0.1, -2.6, 0.3] ],
-    [ "ffaa_famet_ch47_mg", -10, [0, 1.3, -1.9], [0, -0.5, -1.9], [0, -2.1, -1.9] ],
-    [ "ffaa_nh90_tth_armed", -12, [0.1, 0.4, -1.15] ],
-];
