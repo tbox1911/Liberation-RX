@@ -31,7 +31,6 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 	"rhsusf_m1025_w_m2",
 	"rhsusf_m1025_w_mk19",
 	"rhsusf_M1078A1P2_B_WD_flatbed_fmtv_usarmy",
-	"rhsusf_M1084A1P2_B_WD_fmtv_usarmy",
 	"rhsusf_M977A4_usarmy_wd",
 	"rhsusf_m1151_usarmy_wd",
 	"rhsusf_m1151_m240_v2_usarmy_wd",
@@ -52,8 +51,7 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 	"rhsusf_m1a1hc_wd",
 	"rhsusf_M142_usmc_WD",
 	"rhsusf_m109_usarmy",
-	"rhsusf_stryker_m1126_m2_wd",
-	"rhsusf_M1078A1P2_WD_fmtv_usarmy"
+	"rhsusf_stryker_m1126_m2_wd"
 ];
 
 R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
@@ -96,7 +94,6 @@ R3F_LOG_CFG_can_tow = R3F_LOG_CFG_can_tow +
 	"rhsusf_m1025_w_m2",
 	"rhsusf_m1025_w_mk19",
 	"rhsusf_M1078A1P2_B_WD_flatbed_fmtv_usarmy",
-	"rhsusf_M1084A1P2_B_WD_fmtv_usarmy",
 	"rhsusf_M977A4_usarmy_wd",
 	"rhsusf_m1151_usarmy_wd",
 	"rhsusf_m1151_m240_v2_usarmy_wd",
@@ -117,8 +114,7 @@ R3F_LOG_CFG_can_tow = R3F_LOG_CFG_can_tow +
 	"rhsusf_m1a1hc_wd",
 	"rhsusf_M142_usmc_WD",
 	"rhsusf_m109_usarmy",
-	"rhsusf_stryker_m1126_m2_wd",
-	"rhsusf_M1078A1P2_WD_fmtv_usarmy"
+	"rhsusf_stryker_m1126_m2_wd"
 ];
 
 R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
@@ -127,7 +123,6 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 	"rhsusf_m1025_w_m2",
 	"rhsusf_m1025_w_mk19",
 	"rhsusf_M1078A1P2_B_WD_flatbed_fmtv_usarmy",
-	"rhsusf_M1084A1P2_B_WD_fmtv_usarmy",
 	"rhsusf_M977A4_usarmy_wd",
 	"rhsusf_m1151_usarmy_wd",
 	"rhsusf_m1151_m240_v2_usarmy_wd",
@@ -148,8 +143,7 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 	"rhsusf_m1a1hc_wd",
 	"rhsusf_M142_usmc_WD",
 	"rhsusf_m109_usarmy",
-	"rhsusf_stryker_m1126_m2_wd",
-	"rhsusf_M1078A1P2_WD_fmtv_usarmy"
+	"rhsusf_stryker_m1126_m2_wd"
 ];
 
 R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
@@ -229,14 +223,12 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["rhsusf_stryker_m1126_m2_wd", 250],
 	["rhsusf_stryker_m1126_mk19_wd", 250],
 	["rhsusf_stryker_m1134_wd", 250],
-	["rhsusf_M1078A1P2_WD_fmtv_usarmy", 150],
+	["rhsusf_M1083A1P2_B_WD_fmtv_usarmy", 150],
 	["rhsusf_M1078A1P2_B_WD_fmtv_usarmy", 150],
 	["rhsusf_M1078A1P2_B_M2_WD_fmtv_usarmy", 150],
 	["rhsusf_M1083A1P2_WD_fmtv_usarmy", 150],
-	["rhsusf_M1083A1P2_B_WD_fmtv_usarmy", 150],
 	["rhsusf_M1083A1P2_B_M2_WD_fmtv_usarmy", 150],
 	["rhsusf_M1084A1P2_WD_fmtv_usarmy", 150],
-	["rhsusf_M1084A1P2_B_WD_fmtv_usarmy", 150],
 	["rhsusf_M1084A1P2_B_M2_WD_fmtv_usarmy", 150],
 	["rhsusf_M977A4_usarmy_wd", 150],
 	["rhsusf_M977A4_BKIT_usarmy_wd", 150],

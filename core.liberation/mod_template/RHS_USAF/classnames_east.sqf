@@ -107,6 +107,7 @@ opfor_vehicles = [
 	"RHS_M2A3_BUSKI_wd",
 	"RHS_M2A3_BUSKIII_wd",
 	"RHS_M6_wd",
+	"rhsusf_M1083A1P2_B_M2_WD_fmtv_usarmy",
 	"rhsusf_m1a1aimwd_usarmy",
 	"rhsusf_m1a2sep1wd_usarmy",
 	"rhsusf_m1a2sep2wd_usarmy",
@@ -125,6 +126,7 @@ opfor_vehicles_low_intensity = [
 	"rhsusf_M1230_M2_usarmy_wd",
 	"rhsusf_M1237_M2_usarmy_wd",
 	"rhsusf_m1240a1_m2_usarmy_wd",
+	"rhsusf_M1078A1P2_B_M2_WD_fmtv_usarmy",	
 	"rhsusf_m1165a1_gmv_mk19_m240_socom_d",
 	"rhsusf_m1165a1_gmv_m2_m240_socom_d"
 ];
