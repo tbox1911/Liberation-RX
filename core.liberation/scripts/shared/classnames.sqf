@@ -371,12 +371,14 @@ opfor_squad_8_tankkillers = [
 	opfor_machinegunner,
 	opfor_rpg,
 	opfor_rpg,
-	opfor_at,
-	opfor_at,
+	opfor_rpg,
 	opfor_rifleman,
 	opfor_rifleman,
 	opfor_rifleman,
 	opfor_rifleman,
+	opfor_aa,
+	opfor_grenadier,
+	opfor_grenadier,
 	opfor_at
 ];
 opfor_squad_8_airkillers = [
