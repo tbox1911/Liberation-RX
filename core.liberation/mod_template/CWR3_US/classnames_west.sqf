@@ -249,14 +249,6 @@ GRLIB_vehicle_blacklist_west = [
 
 ];
 
-box_transport_config_west = [
-	[ "cwr3_b_m939_empty", -6.5, [0,-0.2,0.6], [0,-1.8,0.6] ],
-	[ "cwr3_b_hmmwv_transport", -6.5, [0,-0.2,0.6], [0,-1.8,0.6] ],
-	[ "cwr3_b_ch47", -6.5, [0,0.5,1.5], [0,-0.9,1.5], [0,-2.4,1.5], [0,-3.8,1.5] ],
-	[ "cwr3_b_c130_cargo", -7.5, [0,2,-1.8], [0,0.6,-1.8], [0,-1.2,-1.8], [0,-2.6,-1.8] ]
-];
-
-
 GRLIB_AirDrop_1 = [		// cost = 50 Unarmed Offroad
 	"cwr3_b_m151"
 ];
