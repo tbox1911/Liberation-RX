@@ -1,4 +1,4 @@
-params ["_vehicle","_attackedSector"];
+params ["_vehicle", "_attackedSector"];
 
 _troup_transport = _this select 0;
 diag_log format [ "Spawning Troop in vehicle %1 at %2", typeOf _troup_transport, time ];
@@ -14,6 +14,16 @@ if (isNil "unload_distance") then {
 };
 sleep 1;
 _initial_crewcount = count crew _troup_transport;
+
+if (isNil "_dat_objective") then {
+	_dat_objective = _attackedSector
+};
+sleep 1;
+
+if (isNil "_dat_objective") then {
+	_dat_objective = ([getPos _troup_transport] call F_getNearestBluforObjective) select 0;
+	diag_log format ["got %1 as Vehicle and %2 as attackedSector. Not possible to set _dat_objective with %2", typeOf _vehicle, str(_attackedSector)];
+};
 
 waitUntil {
 	sleep 0.2;
