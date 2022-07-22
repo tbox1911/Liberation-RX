@@ -9,7 +9,7 @@ infantry_units = [];
 	if (_unit_cost == 0) then {
 		_unit = _unit_class createVehicle zeropos;
 		_unit allowDamage false;
-		//[_unit, configOf _unit] call BIS_fnc_loadInventory;
+		[_unit, configOf _unit] call BIS_fnc_loadInventory;
 		if (_unit_class in units_loadout_overide) then {
 			_loadouts_folder = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, toLower _unit_class];
 			[_unit] call compileFinal preprocessFileLineNUmbers _loadouts_folder;
