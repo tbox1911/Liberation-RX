@@ -123,6 +123,7 @@ bg_sleeptimer = 1000;
 sector_reinforcement = true;
 limit_bg_dist = 4000; 
 reinforce_spawn_min = 1000;
+unload_distance = 400;
 
 // Deactivate HC spawning
 hc_spawn_off = false;
