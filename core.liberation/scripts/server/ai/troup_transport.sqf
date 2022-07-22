@@ -1,4 +1,4 @@
-params ["_attackedSector"];
+params ["_vehicle","_attackedSector"];
 _troup_transport = _this select 0;
 diag_log format [ "Spawning Troop in vehicle %1 at %2", typeOf _troup_transport, time ];
 _transport_group = (group (driver _troup_transport));
