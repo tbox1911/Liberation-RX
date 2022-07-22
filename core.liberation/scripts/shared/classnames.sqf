@@ -331,6 +331,10 @@ opfor_squad_low_intensity = [
 	opfor_sentry,
 	opfor_sentry,
 	opfor_sentry,
+	opfor_rifleman,
+	opfor_rifleman,
+	opfor_rifleman,
+	opfor_rifleman,
 	opfor_sentry
 ];
 opfor_squad_8_standard = [
@@ -341,6 +345,10 @@ opfor_squad_8_standard = [
 	opfor_heavygunner,
 	opfor_marksman,
 	opfor_marksman,
+	opfor_rifleman,
+	opfor_rifleman,
+	opfor_rifleman,
+	opfor_rifleman,
 	opfor_grenadier
 ];
 opfor_squad_8_infkillers = [
@@ -351,6 +359,10 @@ opfor_squad_8_infkillers = [
 	opfor_marksman,
 	opfor_sharpshooter,
 	opfor_sniper,
+	opfor_rifleman,
+	opfor_rifleman,
+	opfor_rifleman,
+	opfor_rifleman,
 	opfor_rpg
 ];
 opfor_squad_8_tankkillers = [
@@ -361,6 +373,10 @@ opfor_squad_8_tankkillers = [
 	opfor_rpg,
 	opfor_at,
 	opfor_at,
+	opfor_rifleman,
+	opfor_rifleman,
+	opfor_rifleman,
+	opfor_rifleman,
 	opfor_at
 ];
 opfor_squad_8_airkillers = [
@@ -371,6 +387,10 @@ opfor_squad_8_airkillers = [
 	opfor_rpg,
 	opfor_aa,
 	opfor_aa,
+	opfor_rifleman,
+	opfor_rifleman,
+	opfor_rifleman,
+	opfor_rifleman,
 	opfor_aa
 ];
 all_resistance_troops = [] + militia_squad;
