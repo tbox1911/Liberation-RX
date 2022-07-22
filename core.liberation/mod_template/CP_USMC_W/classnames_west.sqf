@@ -487,7 +487,6 @@ fast_air_vehicle = [
 	    ["RHS_C130J_Cargo",0,fast_air_vehicle_price_tier_1,0,GRLIB_perm_inf],
   // Jets
     // CUP
-      ["CUP_B_A10_DYN_USA",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
       ["CUP_B_AV8B_DYN_USMC",0,fast_air_vehicle_price_tier_5,0,GRLIB_perm_inf],
 
     //RHS 
