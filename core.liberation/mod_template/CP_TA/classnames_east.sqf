@@ -5,26 +5,26 @@ GRLIB_color_enemy_bright = "ColorRED";
 
 // All class MUST be defined ! 
 
-opfor_sentry = "CUP_O_RU_Soldier_AA_M_EMR_V2";
-opfor_rifleman = "CUP_O_RU_Soldier_M_EMR_V2";
-opfor_grenadier = "CUP_O_RU_Soldier_GL_M_EMR_V2";
-opfor_squad_leader = "CUP_O_RU_Soldier_SL_M_EMR_V2";
-opfor_team_leader = "CUP_O_RU_Soldier_TL_M_EMR_V2";
-opfor_marksman = "CUP_O_RU_Soldier_Marksman_M_EMR_V2";
-opfor_machinegunner = "CUP_O_RU_Soldier_MG_M_EMR_V2";
-opfor_heavygunner = "CUP_O_RU_Soldier_Exp_M_EMR_V2";
-opfor_medic = "CUP_O_RU_Soldier_Medic_M_EMR_V2";
-opfor_rpg = "CUP_O_RU_Soldier_AT_M_EMR_V2";
-opfor_at = "CUP_O_RU_Soldier_HAT_M_EMR_V2";
-opfor_aa = "CUP_O_RU_Soldier_AA_M_EMR_V2";
-opfor_officer = "CUP_O_RU_Officer_M_EMR_V2";
-opfor_sharpshooter = "CUP_O_RU_Soldier_Marksman_M_EMR_V2";
-opfor_sniper = "CUP_O_RU_Soldier_AHAT_M_EMR_V2";
-opfor_spotter = "CUP_O_RU_Soldier_Marksman_M_EMR_V2";
-opfor_engineer = "CUP_O_RU_Soldier_Engineer_M_EMR_V2";
-opfor_pilot = "CUP_O_TK_Pilot";
-opfor_crew = "CUP_O_RU_Soldier_Engineer_M_EMR_V2";
-opfor_paratrooper = "CUP_O_MVD_Soldier_Marksman";
+opfor_sentry = "CUP_O_RU_Soldier_Engineer_Ratnik_Autumn";
+opfor_rifleman = "CUP_O_RU_Soldier_Ratnik_Autumn";
+opfor_grenadier = "CUP_O_RU_Soldier_GL_Ratnik_Autumn";
+opfor_squad_leader = "CUP_O_RU_Soldier_SL_Ratnik_Autumn";
+opfor_team_leader = "CUP_O_RU_Soldier_TL_Ratnik_Autumn";
+opfor_marksman = "CUP_O_RU_Recon_Marksman_Ratnik_Autumn";
+opfor_machinegunner = "CUP_O_RU_Soldier_MG_Ratnik_Autumn";
+opfor_heavygunner = "CUP_O_RU_Soldier_AAR_Ratnik_Autumn";
+opfor_medic = "CUP_O_RU_Soldier_Medic_Ratnik_Autumn";
+opfor_rpg = "CUP_O_RU_Soldier_AT_Ratnik_Autumn";
+opfor_at = "CUP_O_RU_Soldier_HAT_Ratnik_Autumn";
+opfor_aa = "CUP_O_RU_Soldier_AA_Ratnik_Autumn";
+opfor_officer = "CUP_O_RU_Soldier_SL_Ratnik_Autumn";
+opfor_sharpshooter = "CUP_O_RU_Soldier_Marksman_Ratnik_Autumn";
+opfor_sniper = "CUP_O_RU_Sniper_KSVK_VDV_M_EMR";
+opfor_spotter = "CUP_O_RU_Spotter_VDV_M_EMR";
+opfor_engineer = "CUP_O_RU_Soldier_Engineer_Ratnik_Autumn";
+opfor_pilot = "CUP_O_RU_Pilot_M_EMR";
+opfor_crew = "CUP_O_RU_Soldier_Repair_Ratnik_Autumn";
+opfor_paratrooper = "CUP_O_RU_Recon_Marksman_Ratnik_Winter";
 opfor_mrap = "CUP_O_UAZ_Open_TKA";
 opfor_mrap_hmg = "CUP_O_UAZ_MG_TKA";
 opfor_mrap_gmg = "CUP_O_UAZ_SPG9_TKA";
@@ -38,23 +38,27 @@ opfor_ammo_container = "CUP_TKBasicAmmunitionBox_EP1";
 opfor_flag = "CUP_Flag_Black";
 
 militia_squad = [
-	"CUP_O_RU_Soldier_SL_MSV_VSR93",
-	"CUP_O_RU_Soldier_AA_M_EMR_V2",
-	"CUP_O_RU_Soldier_TL_MSV_VSR93",
-	"CUP_O_RU_Soldier_Exp_MSV_VSR93",
-	"CUP_O_RU_Soldier_MG_MSV_VSR93",
-	"CUP_O_RU_Soldier_Marksman_MSV_VSR93",
-	"CUP_O_RU_Soldier_HAT_MSV_VSR93",
-	"CUP_O_RU_Soldier_AT_MSV_VSR93",
-	"CUP_O_RU_Soldier_LAT_MSV_VSR93",
-	"CUP_O_RU_Soldier_Lite_MSV_VSR93",
-	"CUP_O_RU_Soldier_MSV_VSR93",
-	"CUP_O_RU_Soldier_M_EMR_V2",
-	"CUP_O_RU_Soldier_M_EMR_V2",
-	"CUP_O_RU_Soldier_M_EMR_V2",
-	"CUP_O_RU_Soldier_M_EMR_V2",
-	"CUP_O_RU_Soldier_GL_MSV_VSR93",
-	"CUP_O_RU_Soldier_AR_MSV_VSR93"
+"CUP_O_RU_Soldier_AR",
+"CUP_O_RU_Commander",
+"CUP_O_RU_Soldier_GL",
+"CUP_O_RU_Engineer",
+"CUP_O_RU_Soldier_Marksman",
+"CUP_O_RU_Soldier_MG",
+"CUP_O_RU_Officer",
+"CUP_O_RU_Soldier_AA",
+"CUP_O_RU_Soldier_HAT",
+"CUP_O_RU_Soldier_LAT",
+"CUP_O_RU_Soldier_AT",
+"CUP_O_RU_Soldier_Saiga",
+"CUP_O_RU_Medic",
+"CUP_O_RU_Soldier",
+"CUP_O_RU_Soldier",
+"CUP_O_RU_Sniper",
+"CUP_O_RU_Spotter",
+"CUP_O_RU_Explosive_Specialist",
+"CUP_O_RU_Soldier_TL",
+"CUP_O_RU_Soldier_SL",
+"CUP_O_RU_Soldier_Marksman"
 ];
 
 militia_loadout_overide = [
