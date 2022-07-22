@@ -16,7 +16,7 @@ sleep 1;
 _initial_crewcount = count crew _troup_transport;
 
 if (isNil "_dat_objective") then {
-	_dat_objective = _attackedSector
+	_dat_objective = _attackedSector;
 };
 sleep 1;
 
