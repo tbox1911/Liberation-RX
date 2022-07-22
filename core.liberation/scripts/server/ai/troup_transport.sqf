@@ -1,5 +1,5 @@
 params ["_vehicle", "_attackedSector"];
-
+private ["_troup_transport", "_dat_objective", "_transport_group", "_start_pos"];
 _troup_transport = _this select 0;
 diag_log format [ "Spawning Troop in vehicle %1 at %2", typeOf _troup_transport, time ];
 _transport_group = (group (driver _troup_transport));
@@ -12,7 +12,7 @@ if (isNil "_attackedSector") then {
 if (isNil "unload_distance") then {
 	unload_distance = 700
 };
-sleep 1;
+sleep 5;
 _initial_crewcount = count crew _troup_transport;
 
 if (isNil "_dat_objective") then {
