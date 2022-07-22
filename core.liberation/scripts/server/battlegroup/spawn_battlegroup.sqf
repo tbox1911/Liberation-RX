@@ -76,7 +76,11 @@ if (_spawn_marker != "") then {
 		} forEach (units _nextgrp);
 		_bg_groups pushBack _nextgrp;
 		if (( _x in opfor_troup_transports ) && ( [] call F_opforCap < GRLIB_battlegroup_cap )) then {
-			[_vehicle] spawn troup_transport;
+			if (isNil "_attackedSector") then {
+				[_vehicle] spawn troup_transport;
+			} else {
+				[_vehicle, _attackedSector] spawn troup_transport;
+			};
 		};
 		last_battlegroup_size = last_battlegroup_size + 1;
 		sleep 2;
@@ -109,7 +113,8 @@ if (isNil "combat_readiness_reduction") then {
 	combat_readiness_reduction = 1.15
 };
 if !(_attackInProgress) then {
-combat_readiness = round(combat_readiness / combat_readiness_reduction)};
+	combat_readiness = round(combat_readiness / combat_readiness_reduction)
+};
 
 if (combat_readiness < 0) then {
 	combat_readiness = 0
