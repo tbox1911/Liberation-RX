@@ -234,8 +234,3 @@ opfor_recyclable = [
 	["LOP_TKA_Mi24V_FAB",15,round (850 / GRLIB_recycling_percentage),25],
 	["LOP_TKA_Mi24V_UPK23",15,round (850 / GRLIB_recycling_percentage),25]
 ];
-
-box_transport_config_east = [
-	[ "LOP_TKA_Ural", -5.5, [0, 0.3, 0], [0, -1.25, 0] ]
-];
-

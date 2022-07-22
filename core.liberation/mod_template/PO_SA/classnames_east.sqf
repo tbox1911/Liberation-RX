@@ -219,8 +219,3 @@ opfor_recyclable = [
 ["LOP_SLA_Mi8MTV3_FAB",10,round (760 / GRLIB_recycling_percentage),20],
 ["LOP_SLA_Mi8MTV3_UPK23",10,round (800 / GRLIB_recycling_percentage),20]
 ];
-
-box_transport_config_east = [
-[ "LOP_SLA_Ural", -5.5, [0, 0.3, 0], [0, -1.25, 0] ]
-];
-

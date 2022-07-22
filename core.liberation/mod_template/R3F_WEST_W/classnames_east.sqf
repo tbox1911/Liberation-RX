@@ -157,7 +157,6 @@ opfor_troup_transports_heli = [
 opfor_air = [
 	"ffaa_famet_cougar",
 	"AMF_gazelle_minigun_f",
-	"AMF_GBC180_PERS_01",
 	"AMF_RAFALE_M_01_F",
 	"B_AMF_PLANE_FIGHTER_02_F"
 ];
@@ -213,10 +212,4 @@ opfor_recyclable = [
 	["AMF_RAFALE_M_01_F",6,round (1750 / GRLIB_recycling_percentage),20],
 	["B_AMF_PLANE_FIGHTER_02_F",8,round (1500 / GRLIB_recycling_percentage),20],
 	["AMF_TIGRE_01",7,round (1250 / GRLIB_recycling_percentage),20]
-];
-
-box_transport_config_east = [
-    [ "ffaa_famet_cougar", -12, [0.15, 2.45, -1.05] ],
-    [ "B_AMF_Heli_Transport_4RHFS_01_F", -20, [0, -1.6, 2.1], [0, -3.2, 2.1] ],
-    [ "ffaa_nh90_tth_transport", -12, [0.1, 0.35, -1.15] ]
 ];

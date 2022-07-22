@@ -248,15 +248,6 @@ GRLIB_vehicle_blacklist_west = [
 
 ];
 
-box_transport_config_west = [
-    [ "R3F_KAMAZ_DA_medevac", -6.5, [0, 0.3, 0.1], [0, -1.3, 0.1], [0, -2.9, 0.1] ],
-    [ "AMF_GBC180_PLATEAU_02", -6.5, [0.75, 0.4, 2.4], [0.75, -1.2, 2.4],[0.75, -2.8, 2.4], [-0.75, 0.4, 2.4], [-0.75, -1.2, 2.4],[-0.75, -2.8, 2.4] ],
-    [ "ffaa_famet_cougar", -12, [0.15, 2.45, -1.05] ],
-    [ "B_AMF_Heli_Transport_4RHFS_01_F", -20, [0, -1.6, 2.1], [0, -3.2, 2.1] ],
-    [ "ffaa_nh90_tth_cargo", -12, [0.1, 2, -1.15], [0.1, 0.4, -1.15] ],
-	[ "ffaa_nh90_tth_transport", -12, [0.1, 0.35, -1.15] ]
-];
-
 GRLIB_AirDrop_1 = [
 	"B_Quadbike_01_F"
 ];
