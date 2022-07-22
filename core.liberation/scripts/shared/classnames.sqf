@@ -160,34 +160,29 @@ ind_recyclable = [
 	["I_Heli_light_03_dynamicLoadout_F",0,round (20 / GRLIB_recycling_percentage),0]
 ];
 
-if ( isNil "box_transport_config_west" ) then { box_transport_config_west = [] };
+// *** TRANSPORT CONFIG ***
+box_transport_config = [];
+box_transport_offset = [];
+
+[] call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_transport.sqf", GRLIB_mod_west];
+[] call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_transport.sqf", GRLIB_mod_east];
 
 // Configuration for ammo boxes transport
 // First entry: classname
 // Second entry: how far behind the vehicle the boxes should be unloaded
 // Following entries: attachTo position for each box, the number of boxes that can be loaded is derived from the number of entries
 box_transport_config = [
+	// default opfor_transport_truck config
+	[ "O_Truck_03_transport_F", -6.5, [0, -0.8, 0.4], [0, -2.4, 0.4], [0, -4.0, 0.4] ],
 	[ "C_Offroad_01_F", -5, [0, -1.55, 0.2] ],
 	[ "B_G_Offroad_01_F", -5, [0, -1.55, 0.2] ],
 	[ "I_G_Offroad_01_F", -5, [0, -1.55, 0.2] ],
 	[ "O_G_Offroad_01_F", -5, [0, -1.55, 0.2] ],
-	[ "B_Truck_01_transport_F", -6.5, [0, -0.4, 0.4], [0, -2.1, 0.4], [0, -3.8, 0.4] ],
-	[ "B_Truck_01_covered_F", -6.5, [0, -0.4, 0.4], [0, -2.1, 0.4], [0, -3.8, 0.4] ],
-	[ "B_Truck_01_medical_F", -6.5, [0, -0.4, 0.4], [0, -2.1, 0.4], [0, -3.8, 0.4] ],
 	[ "C_Truck_02_transport_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
 	[ "C_Truck_02_covered_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
-	[ "I_Truck_02_transport_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
-	[ "I_Truck_02_covered_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
-	[ "O_Truck_02_transport_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
-	[ "O_Truck_02_covered_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
-	[ "O_Truck_03_transport_F", -6.5, [0, -0.8, 0.4], [0, -2.4, 0.4], [0, -4.0, 0.4] ],
-	[ "O_Truck_03_covered_F", -6.5, [0, -0.8, 0.4], [0, -2.4, 0.4], [0, -4.0, 0.4] ],
 	[ "C_Van_01_box_F", -5.3, [0, -1.05, 0.2], [0, -2.6, 0.2] ],
-	[ "C_Van_01_transport_F", -5.3, [0, -1.05, 0.2], [0, -2.6, 0.2] ],
-	[ "B_Heli_Transport_03_F", -7.5, [0, 2.2, -1], [0, 0.8, -1], [0, -1.0, -1] ],
-	[ "B_Heli_Transport_03_unarmed_F", -7.5, [0, 2.2, -1], [0, 0.8, -1], [0, -1.0, -1] ],
-	[ "I_Heli_Transport_02_F", -6.5, [0, 4.2, -1.45], [0, 2.5, -1.45], [0, 0.8, -1.45], [0, -0.9, -1.45] ]
-] + box_transport_config_west + box_transport_config_east;
+	[ "C_Van_01_transport_F", -5.3, [0, -1.05, 0.2], [0, -2.6, 0.2] ]
+] + box_transport_config;
 
 transport_vehicles = [];
 {transport_vehicles pushBack ( _x select 0 )} foreach (box_transport_config);
@@ -202,7 +197,7 @@ box_transport_offset = [
 	["Land_BarrelWater_F", [0, 0, -0.4] ],
 	["Land_MetalBarrel_F", [0, 0, -0.4] ],
 	["Land_FoodSacks_01_large_brown_idap_F", [0, 0, -0.4] ]
-] + box_transport_offset_west;
+] + box_transport_offset;
 
 box_transport_loadable = [];
 {box_transport_loadable pushBack ( _x select 0 )} foreach (box_transport_offset);

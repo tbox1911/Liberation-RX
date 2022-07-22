@@ -49,14 +49,9 @@ vehicle_rearm_sources = [];
 vehicle_big_units = [];
 GRLIB_vehicle_whitelist = [];
 GRLIB_vehicle_blacklist = [];
-box_transport_config = [];
 opfor_texture_overide = [];
-box_transport_config_west = [];
-box_transport_config_east = [];
 opfor_statics = [];
 units_loadout_overide = [];
-box_transport_offset_west = [];
-box_transport_offset_east = [];
 
 // *** LRX DEFAULT BUILDINGS CLASSNAMES ***
 buildings_default = [
