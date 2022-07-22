@@ -1,4 +1,5 @@
 params ["_vehicle","_attackedSector"];
+
 _troup_transport = _this select 0;
 diag_log format [ "Spawning Troop in vehicle %1 at %2", typeOf _troup_transport, time ];
 _transport_group = (group (driver _troup_transport));
@@ -6,7 +7,7 @@ _start_pos = getPos _troup_transport;
 if (isNil "_attackedSector") then {
 	_dat_objective = ([getPos _troup_transport] call F_getNearestBluforObjective) select 0
 } else {
-	_dat_objective = markerPos _attackedSector;
+	_dat_objective = _attackedSector;
 };
 if (isNil "unload_distance") then {
 	unload_distance = 700
@@ -16,7 +17,7 @@ _initial_crewcount = count crew _troup_transport;
 
 waitUntil {
 	sleep 0.2;
-	!(alive _troup_transport) || !(alive (driver _troup_transport)) || (((_troup_transport distance2D _dat_objective) < _unload_distance) && (!(surfaceIsWater (getPos _troup_transport))))
+	!(alive _troup_transport) || !(alive (driver _troup_transport)) || (((_troup_transport distance2D _dat_objective) < unload_distance) && (!(surfaceIsWater (getPos _troup_transport))))
 };
 
 if ((alive _troup_transport) && (alive (driver _troup_transport))) then {
