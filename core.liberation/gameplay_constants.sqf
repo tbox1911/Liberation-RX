@@ -264,6 +264,14 @@ items_allFac = [
     "V_RebreatherB"
 ];
 
+
+item_whitelist = [
+    "ACE_HuntIR_M203",
+    "CUP_Stinger_M",
+    "KKiv_Mag_APFSDS"
+];
+
+
 item_blacklist =
 [
     "CUP_arifle_ACRC_snw_556",
@@ -1970,6 +1978,7 @@ item_blacklist =
 	"NVGogglesB_blk_F",
 	"NVGogglesB_grn_F",
 	"NVGogglesB_gry_F",
-	"CUP_hgun_Browning_HP"
+	"CUP_hgun_Browning_HP",
+	"KKiv_Mag_HEDP"
 ];
 

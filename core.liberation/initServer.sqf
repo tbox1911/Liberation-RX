@@ -4,7 +4,7 @@ if (isNil 'equipment') then {
 };
 if !(isNil 'equipment') then {
 	sleep 2;
-	pub_arsenal_box = equipment - item_blacklist;
+	pub_arsenal_box = equipment - item_blacklist + item_whitelist;
 	publicVariable 'pub_arsenal_box';
 };
 

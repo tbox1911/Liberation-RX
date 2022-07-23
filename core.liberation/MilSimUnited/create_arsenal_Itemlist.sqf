@@ -14,6 +14,7 @@ private _type = [];
 private _specialitems = [];
 private _all_gear = [];
 private _blacklist = item_blacklist;
+private _whitelist = item_whitelist;
 
 // Fetch all needed config classes
 
@@ -42,8 +43,13 @@ private _configClasses = [];
     };
 } forEach _classnames;
 
-// Blackisting
+
+// Blacklisting
 _classnames = _classnames - _blacklist;
+
+// Whitelisting
+_classnames = _classnames + _whitelist;
+
 
 // sort all classnames into the different categories
 {
