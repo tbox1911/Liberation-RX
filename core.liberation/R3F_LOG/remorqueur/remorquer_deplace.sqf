@@ -72,7 +72,9 @@ else
 		_offset_attach_z = 0;
 		if (typeOf _remorqueur == "B_Truck_01_mover_F") then {_offset_attach_y = 1.0};
 		if (typeOf _remorqueur isKindOf "CUP_UAZ_Base") then {_offset_attach_z = 2.6};
-		if (typeOf _objet isKindOf "CUP_UAZ_Base") then {_offset_attach_z = _offset_attach_z - 2.4};
+		if (typeOf _objet isKindOf "CUP_UAZ_Base") then {_offset_attach_z = _offset_attach_z - 2.4};	
+		if (typeOf _remorqueur isKindOf "rhs_btr_base") then {_offset_attach_z = 1.6};
+		if (typeOf _objet isKindOf "rhs_btr_base") then {_offset_attach_z = _offset_attach_z - 1.1};	
 					
 		// Attacher � l'arri�re du v�hicule au ras du sol
 		_pos_x = (boundingCenter _objet select 0) + _offset_attach_x;
