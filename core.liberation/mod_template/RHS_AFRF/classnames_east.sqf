@@ -115,7 +115,6 @@ opfor_battlegroup_vehicles = [
 	"RHS_Mi8AMT_vdv",
 	"RHS_Mi8AMTSh_vvsc",
 	"RHS_Mi8AMTSh_UPK23_vvsc",
-	"rhs_pchela1t_vvsc",
 	"RHS_Ka52_vvsc",
 	"RHS_Ka52_UPK23_vvsc",
 	"rhs_mi28n_s13_vvsc",
@@ -130,8 +129,7 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"rhs_kamaz5350_msv",
 	"RHS_Mi8AMT_vdv",
 	"RHS_Mi8AMTSh_vvsc",
-	"RHS_Mi8AMTSh_UPK23_vvsc",
-	"rhs_pchela1t_vvsc"
+	"RHS_Mi8AMTSh_UPK23_vvsc"
 ];
 
 opfor_troup_transports_truck = [
@@ -151,7 +149,6 @@ opfor_troup_transports_heli = [
 ];
 
 opfor_air = [
-	"rhs_pchela1t_vvsc",
 	"RHS_Ka52_vvsc",
 	"RHS_Ka52_UPK23_vvsc",
 	"rhs_mi28n_s13_vvsc",
@@ -197,7 +194,6 @@ opfor_recyclable = [
 	["RHS_Mi8AMT_vdv",10,round (150 / GRLIB_recycling_percentage),10],
 	["RHS_Mi8AMTSh_vvsc",10,round (150 / GRLIB_recycling_percentage),10],
 	["RHS_Mi8AMTSh_UPK23_vvsc",10,round (150 / GRLIB_recycling_percentage),10],
-	["rhs_pchela1t_vvsc",10,round (150 / GRLIB_recycling_percentage),10],
 	["RHS_Ka52_vvsc",10,round (150 / GRLIB_recycling_percentage),10],
 	["RHS_Ka52_UPK23_vvsc",10,round (150 / GRLIB_recycling_percentage),10],
 	["rhs_mi28n_s13_vvsc",10,round (150 / GRLIB_recycling_percentage),10],
