@@ -33,7 +33,13 @@ while { true } do {
 	build_invalid = 0;
 	_classname = "";
 	
-	if ( buildtype == 9 ) then { build_altitude = building_altitude } else { build_altitude = 0.2 };
+	// if ( buildtype == 9 ) then { build_altitude = building_altitude } else { build_altitude = 0.2 };
+	
+	if ( surfaceIsWater position player ) then {
+		build_altitude = (getPosASL player) select 2 + 0.2;
+	}else{
+		build_altitude = 0.2
+	};
 
 	if ( buildtype == 99 ) then {
 		_classname = FOB_typename;
@@ -162,14 +168,15 @@ while { true } do {
 			_idactlower = -1;
 			_idactplacebis = -1;
 
-			if (buildtype == 9 ) then {
+			// if (buildtype == 9 ) then {};
 				_idactplacebis = player addAction ["<t color='#B0FF00'>" + localize "STR_PLACEMENT_BIS" + "</t> <img size='1' image='res\ui_confirm.paa'/>","scripts\client\build\build_place_bis.sqf","",-752,false,false,"","build_invalid == 0 && build_confirmed == 1"];
-			};
-			if (buildtype == 9 || buildtype == 99) then {
+			
+			// if (buildtype == 9 || buildtype == 99) then {};
 				_idactsnap = player addAction ["<t color='#B0FF00'>" + localize "STR_GRID" + "</t>","scripts\client\build\do_grid.sqf","",-755,false,false,"","build_confirmed == 1"];
 				_idactupper = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEUP" + "</t> <img size='1' image='R3F_LOG\icons\r3f_lift.paa'/>","scripts\client\build\build_up.sqf","",-755,false,false,"","build_confirmed == 1"];
 				_idactlower = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEDOWN" + "</t> <img size='1' image='R3F_LOG\icons\r3f_release.paa'/>","scripts\client\build\build_down.sqf","",-755,false,false,"","build_confirmed == 1"];
-			};
+			
+			
 			_idactplace = player addAction ["<t color='#B0FF00'>" + localize "STR_PLACEMENT" + "</t> <img size='1' image='res\ui_confirm.paa'/>","scripts\client\build\build_place.sqf","",-750,false,true,"","build_invalid == 0 && build_confirmed == 1"];
 			_idactrotate = player addAction ["<t color='#B0FF00'>" + localize "STR_ROTATION" + "</t> <img size='1' image='res\ui_rotation.paa'/>","scripts\client\build\build_rotate.sqf","",-756,false,false,"","build_confirmed == 1"];
 			_idactcancel = player addAction ["<t color='#B0FF00'>" + localize "STR_CANCEL" + "</t> <img size='1' image='res\ui_cancel.paa'/>","scripts\client\build\build_cancel.sqf","",-760,false,true,"","build_confirmed == 1 && buildtype != 13"];
@@ -190,9 +197,9 @@ while { true } do {
 			if (_dist < 3.5) then { _dist = 3.5 };
 			_dist = _dist + 0.5;
 
-			for [{_i=0}, {_i<5}, {_i=_i+1}] do {
+			/*for [{_i=0}, {_i<5}, {_i=_i+1}] do {
 				_vehicle setObjectTextureGlobal [_i, '#(rgb,8,8,3)color(0,1,0,0.8)'];
-			};
+			};*/
 
 			{ _x setObjectTexture [0, "#(rgb,8,8,3)color(0,1,0,1)"]; } foreach GRLIB_preview_spheres;
 
@@ -269,9 +276,10 @@ while { true } do {
 				} else {
 					GRLIB_conflicting_objects = [];
 				};
-
-				if ( count _near_objects == 0 && ((_truepos distance _posfob) < _maxdist || buildtype == 13) && (((!surfaceIsWater _truepos) && (!surfaceIsWater getpos player)) || (_classname in boats_names)) ) then {
-					if ( _classname isKindOf "Ship" && surfaceIsWater _truepos ) then {
+				
+				// count _near_objects == 0 && (((!surfaceIsWater _truepos) && (!surfaceIsWater getpos player)) || (_classname in boats_names))
+				if ( ( ((_truepos distance _posfob) < _maxdist) || ((player distance2D lhd) < _maxdist) || (buildtype == 13) )  ) then {
+					if ( /*_classname isKindOf "Ship" && */ surfaceIsWater _truepos ) then {
 						_vehicle setposASL _truepos;
 					} else {
 						_vehicle setposATL _truepos;
@@ -299,10 +307,12 @@ while { true } do {
 							hint format [ "Colisions : %1", _objs_classnames ];
 						};
 					};
-					if( ((surfaceIsWater _truepos) || (surfaceIsWater getpos player)) && !(_classname in boats_names)) then {
+					
+					/* if( ((surfaceIsWater _truepos) || (surfaceIsWater getpos player)) && !(_classname in boats_names)) then {
 						GRLIB_ui_notif = localize "STR_BUILD_ERROR_WATER";
-					};
-					if( (_truepos distance _posfob) > _maxdist && buildtype != 13) then {
+					};*/
+					
+					if( ((_truepos distance _posfob) > _maxdist || ((player distance2D lhd) < _maxdist)) && buildtype != 13) then {
 						GRLIB_ui_notif = format [localize "STR_BUILD_ERROR_DISTANCE",_maxdist];
 					};
 
@@ -333,7 +343,7 @@ while { true } do {
 					_vehicle = _classname createVehicle _truepos;
 					_vehicle allowDamage false;
 					_vehicle setdir _vehdir;
-					if ( _classname isKindOf "Ship" && surfaceIsWater _truepos ) then {
+					if ( /* _classname isKindOf "Ship" && */ surfaceIsWater _truepos ) then {
 						_vehicle setposASL _truepos;
 					} else {
 						_vehicle setposATL _truepos;

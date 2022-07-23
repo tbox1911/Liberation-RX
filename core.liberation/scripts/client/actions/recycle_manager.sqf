@@ -10,10 +10,10 @@ while { true } do {
 	if ( count _nearestfob == 3 ) then {
 		_fobdistance = round (player distance2D _nearestfob);
 	};
-	private _nearfob = _fobdistance <= GRLIB_fob_range;
+	private _nearfob = ( (_fobdistance <= GRLIB_fob_range) || ((player distance2D lhd) <= GRLIB_fob_range) );
 	if (_nearfob) then {
 		private _nearrecycl = [nearestObjects [player, GRLIB_recycleable_classnames + GRLIB_vehicle_whitelist, 30], {
-			(_x distance lhd) >= 200 &&
+			/* (_x distance lhd) >= 200 && */
 			!([_x] call is_public) &&
 			isNil {_x getVariable "GRLIB_recycle_action"}
 		}] call BIS_fnc_conditionalSelect;
