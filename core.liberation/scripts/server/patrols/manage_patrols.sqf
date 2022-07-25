@@ -17,10 +17,10 @@ if ( GRLIB_unitcap > 1.3 ) then { _combat_triggers_static = [25,45,65,85] };
 
 waitUntil { sleep 0.3; !isNil "blufor_sectors" };
 
-{
-	[_x, 1, _forEachIndex] execVM "scripts\server\patrols\manage_one_patrol.sqf";
-	sleep 1;
-} foreach _combat_triggers_infantry;
+//{
+//	[_x, 1, _forEachIndex] execVM "scripts\server\patrols\manage_one_patrol.sqf";
+//	sleep 1;
+//} foreach _combat_triggers_infantry;
 
 {
 	[_x, 2, _forEachIndex] execVM "scripts\server\patrols\manage_one_patrol.sqf";
