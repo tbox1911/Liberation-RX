@@ -410,7 +410,7 @@ if (tkill_script) then {
 
 
 FIR_F16C = ["FIR_AIM120B_P_1rnd_M","FIR_AIM120_P_1rnd_M","FIR_AIM7F_2_P_1rnd_M","","FIR_GEPOD30_P_330rnd_M","FIR_SniperXR_HTS_P_1rnd_M",
-"FIR_AIM9M_P_1rnd_M","FIR_AIM9X_P_1rnd_M","FIR_AIM132_P_1rnd_M"],"FIR_AGM88_P_1rnd_M","FIR_APKWS_P_19rnd_M","FIR_F16C_center_Fueltank_P_1rnd_M","FIR_APKWS_M282_P_7rnd_M","FIR_AGM65H_P_2rnd_M",
+"FIR_AIM9M_P_1rnd_M","FIR_AIM9X_P_1rnd_M","FIR_AIM132_P_1rnd_M","FIR_AGM88_P_1rnd_M","FIR_APKWS_P_19rnd_M","FIR_F16C_center_Fueltank_P_1rnd_M","FIR_APKWS_M282_P_7rnd_M","FIR_AGM65H_P_2rnd_M",
 "FIR_AGM65D_P_2rnd_M","FIR_AGM65D_P_1rnd_M","FIR_AGM65H_P_2rnd_M","FIR_AGM65H_P_1rnd_M","FIR_AGM154C_P_1rnd_M","FIR_AGM65K_P_1rnd_M","FIR_AGM154A_P_1rnd_M",
 "FIR_EGBU12_P_1rnd_M","FIR_EGBU12_P_2rnd_M","FIR_GBU10_PW1_P_1rnd_M","FIR_GBU10_P_1rnd_M",
 "FIR_GBU12_P_2rnd_M","FIR_GBU12_P_1rnd_M","","","FIR_GBU24A_P_1rnd_M","FIR_GBU24A_BLU118_P_1rnd_M",
@@ -477,10 +477,10 @@ FIR_F15E = ["FIR_AIM9X_P_1rnd_M","FIR_AIM120B_P_1rnd_M","FIR_Mk82_GP_P_1rnd_M",
 };
 	_vehicle setVariable ["ace_pylons_magazineWhitelist",FIR_F15E , true]}, nil, nil, true] call CBA_fnc_addClassEventHandler;
 	
-	FIR_F35B_Standard =  ["FIR_Meteor_P_1rnd_M","FIR_Meteor_P_1rnd_M","FIR_AIM132_P_1rnd_M","FIR_AIM120_P_1rnd_M","","FIR_AIM120_LAU115_P_2rnd_M","FIR_AGM65H_P_1rnd_M","FIR_AGM154A_P_1rnd_M","FIR_AGM154C_P_1rnd_M","FIR_AIM9M_P_1rnd_M","FIR_Gunpod_Nomodel_P_1rnd_M"]
-["FIR_GBU12_Navy_P_1rnd_M","FIR_EGBU12_P_1rnd_M","","","","FIR_AGM88_P_1rnd_M","FIR_AIM9X_LAU115_P_2rnd_M","FIR_APKWS_M282_P_7rnd_M","FIR_APKWS_P_7rnd_M","",""]
-["FIR_GBU55_P_1rnd_M","FIR_GBU54_P_1rnd_M","","","","FIR_GBU55_Navy_P_1rnd_M","FIR_GBU10_P_1rnd_M","FIR_GBU12_Navy_P_2rnd_M","FIR_GBU12_P_1rnd_M","","FIR_Gunpod_Nomodel_P_1rnd_M"]
-["FIR_GBU32_P_1rnd_M","FIR_GBU32_P_1rnd_M","FIR_AIM120_P_1rnd_M","FIR_AIM120_P_1rnd_M","","","FIR_GBU53_P_4rnd_M","FIR_GBU31_BLU109_P_1rnd_M","FIR_AGM154C_P_1rnd_M"];
+	FIR_F35B_Standard =  ["FIR_Meteor_P_1rnd_M","FIR_Meteor_P_1rnd_M","FIR_AIM132_P_1rnd_M","FIR_AIM120_P_1rnd_M","","FIR_AIM120_LAU115_P_2rnd_M","FIR_AGM65H_P_1rnd_M","FIR_AGM154A_P_1rnd_M","FIR_AGM154C_P_1rnd_M","FIR_AIM9M_P_1rnd_M","FIR_Gunpod_Nomodel_P_1rnd_M",
+"FIR_GBU12_Navy_P_1rnd_M","FIR_EGBU12_P_1rnd_M","","","","FIR_AGM88_P_1rnd_M","FIR_AIM9X_LAU115_P_2rnd_M","FIR_APKWS_M282_P_7rnd_M","FIR_APKWS_P_7rnd_M",
+"FIR_GBU55_P_1rnd_M","FIR_GBU54_P_1rnd_M","","","","FIR_GBU55_Navy_P_1rnd_M","FIR_GBU10_P_1rnd_M","FIR_GBU12_Navy_P_2rnd_M","FIR_GBU12_P_1rnd_M","","FIR_Gunpod_Nomodel_P_1rnd_M",
+"FIR_GBU32_P_1rnd_M","FIR_GBU32_P_1rnd_M","FIR_AIM120_P_1rnd_M","FIR_AIM120_P_1rnd_M","","","FIR_GBU53_P_4rnd_M","FIR_GBU31_BLU109_P_1rnd_M","FIR_AGM154C_P_1rnd_M"];
 
 
 ["FIR_F35B_Standard", "InitPost", {
