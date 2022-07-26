@@ -840,7 +840,6 @@ item_blacklist =
     "hlc_rifle_m14sopmod_XMAG_grip",
     "hlc_rifle_STG58F_XMAG",
     "hlc_rifle_SAMR_x15",
-    "hlc_rifle_samr2",
     "CUP_5x_22_LR_17_HMR_M",
     "CUP_1Rnd_12Gauge_HE",
     "CUP_10x_303_M",
