@@ -199,10 +199,7 @@ opfor_air = [
 ];
 
 opfor_statics = [
-	"CUP_O_AGS_TK",
-	"CUP_O_Igla_AA_pod_TK",
-	"CUP_O_Metis_TK",
-	"CUP_O_ZU23_TK"
+	"CUP_O_BM21_TKA"
 ];
 
 opfor_recyclable = [
