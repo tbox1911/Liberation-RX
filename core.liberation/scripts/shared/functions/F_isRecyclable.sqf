@@ -15,9 +15,9 @@ private	_fobdistance = 9999;
 if ( count _nearestfob == 3 ) then {
 	_fobdistance = round (player distance2D _nearestfob);
 };
-private _nearfob = _fobdistance <= GRLIB_fob_range;
+private _nearfob = ( (_fobdistance <= GRLIB_fob_range) || ((player distance2D lhd) <= GRLIB_fob_range) );
 
-if ( _alive && _onfoot && _R3F_move && _far_lhd && _nearfob && _noflight && _r3f_enabled && _grl_isempty && _r3f_isempty && (isNull attachedTo _vehicle)) then {
+if ( _alive && _onfoot && _R3F_move && _nearfob && _noflight && _r3f_enabled && _grl_isempty && _r3f_isempty && (isNull attachedTo _vehicle)) then {
 	if ([typeOf _vehicle, GRLIB_vehicle_whitelist] call F_itemIsInClass) exitWith { _ret = true };
 	if (([player, _vehicle] call is_owner) && ([typeOf _vehicle, GRLIB_recycleable_classnames] call F_itemIsInClass) && ([player, 4] call fetch_permission)) exitWith { _ret = true };
 	private _owner_id = _vehicle getVariable ["GRLIB_vehicle_owner", ""];
