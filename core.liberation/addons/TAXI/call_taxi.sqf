@@ -102,6 +102,8 @@ if (time < _stop) then {
 			_dest = markerPos "taxi_dz";
 			_helipad = taxi_helipad_type createVehicle _dest;
 			[_air_grp, _dest] call taxi_dest;
+			_vehicle setFuel 1;
+			_vehicle engineOn true;
 			(driver _vehicle) doMove _dest;
 			sleep 30;
 
