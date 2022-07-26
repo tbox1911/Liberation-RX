@@ -39,6 +39,17 @@ sleep 15;
 
 if (GRLIB_cleanup_vehicles == 0) exitWith {};
 
+//==================== FORCE DELETE
+private _force_cleanup_classnames = [
+	"rhs_k36d5_seat",
+	"rhs_ka52_blade",
+	"rhs_ka52_ejection_vest",
+	"rhs_mi28_wing_right",
+	"rhs_mi28_wing_left",
+	"rhs_mi28_door_gunner",
+	"rhs_mi28_door_pilot"
+];
+
 //==================== IGNORE VEHICLES
 
 private _no_cleanup_classnames = [] + GRLIB_vehicle_blacklist;
@@ -134,7 +145,9 @@ while {deleteManagerPublic} do {
 		} count _units_ttl;
 	};
 	sleep 1;
-
+	//================================= FORCE DELETE
+	{ if (typeOf _x in _force_cleanup_classnames) then { deleteVehicle _x } } forEach (vehicles);
+	sleep 1;
 	//================================= DEAD MEN
 	if (!(_deadMenLimit isEqualTo -1)) then {
 		if ((count allDeadMen) > _deadMenLimit) then {
