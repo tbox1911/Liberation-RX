@@ -96,8 +96,8 @@ heavy_vehicles = [
 	["rhs_t90saa_tv",20,1550,25,GRLIB_perm_air],
 	["rhs_zsu234_aa",20,750,25,GRLIB_perm_air],
 	["rhs_t14_tv",150,1500,300,GRLIB_perm_max],
-	["RHS_BM21_MSV_01",50,1300,100,GRLIB_perm_max],
-	["rhs_2s3_tv",50,1300,100,GRLIB_perm_max]	
+	["rhs_2s1_tv",50,2000,100,GRLIB_perm_max],
+	["rhs_2s3_tv",50,2300,100,GRLIB_perm_max]
 ];
 
 air_vehicles = [
@@ -133,8 +133,9 @@ static_vehicles = [
 	["rhs_Igla_AA_pod_msv",0,50,0,GRLIB_perm_air],
 	["rhs_Metis_9k115_2_msv",0,50,0,GRLIB_perm_log],
 	["rhs_Kornet_9M133_2_msv",0,50,0,GRLIB_perm_tank],
-	["RHS_ZU23_MSV",0,500,0,GRLIB_perm_max],
-	["RHS_M119_WD",10,500,0,GRLIB_perm_max]
+	["RHS_ZU23_MSV",0,500,0,GRLIB_perm_tank],
+	["RHS_M119_WD",10,600,0,GRLIB_perm_air],
+	["RHS_BM21_MSV_01",10,2600,0,GRLIB_perm_max]
 ];
 
 // *** Static Weapon with AI ***
