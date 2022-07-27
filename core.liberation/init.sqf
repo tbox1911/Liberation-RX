@@ -799,7 +799,8 @@ JS_JC_FA18F =
 	"FIR_ALQ99Hi_P_1rnd_M","FIR_ECMPod_P_1rnd_M","FIR_ALQ184_2_P_1rnd_M","FIR_Mk76_P_1rnd_M","FIR_Mk76_P_2rnd_M",
 	"FIR_Mk76_P_3rnd_M","FIR_ATFLIR_2_P_1rnd_M","FIR_Litening_std_P_1rnd_M","FIR_SniperXR_2_P_1rnd_M",
 	"FIR_AWW13_P_1rnd_M","js_jc_120Rnd_CMChaff_Magazine",
-	"js_jc_120Rnd_CMFlare_Magazine"
+	"js_jc_120Rnd_CMFlare_Magazine","js_m_fa18_buddypod_x1","USAF_PylonRack_1Rnd_AGM65K","FIR_APKWS_M282_P_7rnd_M","FIR_APKWS_P_7rnd_M","js_m_fa18_wing_tank_x1",
+	"rhs_mag_aim120","FIR_Meteor_P_1rnd_M","FIR_GBU10_PW1_P_1rnd_M","PylonMissile_Missile_HARM_x1","CUP_PylonPod_ALQ_131","USAF_PylonRack_1Rnd_AGM154C"
 	];
 
 ["JS_JC_FA18F", "InitPost", {
@@ -993,7 +994,8 @@ JS_JC_FA18E =
 	"FIR_ALQ99Hi_P_1rnd_M","FIR_ECMPod_P_1rnd_M","FIR_ALQ184_2_P_1rnd_M","FIR_Mk76_P_1rnd_M","FIR_Mk76_P_2rnd_M",
 	"FIR_Mk76_P_3rnd_M","FIR_ATFLIR_2_P_1rnd_M","FIR_Litening_std_P_1rnd_M","FIR_SniperXR_2_P_1rnd_M",
 	"FIR_AWW13_P_1rnd_M","js_jc_120Rnd_CMChaff_Magazine",
-	"js_jc_120Rnd_CMFlare_Magazine"
+	"js_jc_120Rnd_CMFlare_Magazine","js_m_fa18_buddypod_x1","USAF_PylonRack_1Rnd_AGM65K","FIR_APKWS_M282_P_7rnd_M","FIR_APKWS_P_7rnd_M","js_m_fa18_wing_tank_x1",
+	"rhs_mag_aim120","FIR_Meteor_P_1rnd_M","FIR_GBU10_PW1_P_1rnd_M","PylonMissile_Missile_HARM_x1","CUP_PylonPod_ALQ_131","USAF_PylonRack_1Rnd_AGM154C"
 	];
 
 ["JS_JC_FA18E", "InitPost", {
