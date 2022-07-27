@@ -21,6 +21,6 @@ while { GRLIB_csat_aggressivity > 0.9 && GRLIB_endgame == 0 } do {
 	};
 
 	if ( (floor random 2 == 0) && ([] call F_opforCap < GRLIB_battlegroup_cap) && (combat_readiness >= 50) && (diag_fps > 25.0))  then {
-		//[] spawn spawn_battlegroup;
+		[] spawn spawn_battlegroup;
 	};
 };
