@@ -62,7 +62,7 @@ R3F_LOG_CFG_can_tow = R3F_LOG_CFG_can_tow +
 	"rhsusf_m113tank_base",
 	"rhsusf_m1151_base",
 	"rhsusf_m1152_base",
-	"rhsusf_m1165_base"
+	"rhsusf_m1165_base",
 	"rhsusf_stryker_base"
 ];
 
@@ -77,7 +77,7 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 	"rhsusf_m113tank_base",
 	"rhsusf_m1151_base",
 	"rhsusf_m1152_base",
-	"rhsusf_m1165_base"
+	"rhsusf_m1165_base",
 	"rhsusf_stryker_base"
 ];
 
@@ -96,7 +96,7 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 	"rhsusf_m113tank_base",
 	"rhsusf_m1151_base",
 	"rhsusf_m1152_base",
-	"rhsusf_m1165_base"
+	"rhsusf_m1165_base",
 	"rhsusf_stryker_base"	
 ];
 
