@@ -170,19 +170,13 @@ if (dialog && deploy == 1) then {
 					[player, configOf player] call BIS_fnc_loadInventory;
 				};
 			};
-			player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
 			GRLIB_backup_loadout = [player, ["repetitive"]] call F_getLoadout;
 		};
-		[player] call F_filterLoadout;
-		[player] call F_payLoadout;
 	};
 	// choosen loadout
 	if ( (lbCurSel 203) > 0 ) then {
-		player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
 		GRLIB_backup_loadout = [player, ["repetitive"]] call F_getLoadout;
 		[player, [ profileNamespace, _loadouts_data select ((lbCurSel 203) - 1) ] ] call bis_fnc_loadInventory;
-		[player] call F_filterLoadout;
-		[player] call F_payLoadout;
 	};
 	
 	// Redeploy

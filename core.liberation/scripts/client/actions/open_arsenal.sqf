@@ -5,7 +5,6 @@ load_from_player = -1;
 exit_on_load = 0;
 
 GRLIB_backup_loadout = [player, ["repetitive"]] call F_getLoadout;
-player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
 
 private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
 private _saved_loadouts = profileNamespace getVariable "bis_fnc_saveInventory_data";
@@ -18,7 +17,6 @@ if ( !isNil "_saved_loadouts" ) then {
 	{
 		if ( _counter % 2 == 0 && _counter < 40) then {
 			[_unit, [profileNamespace, _x]] call bis_fnc_loadInventory;
-			_price = [_unit] call F_loadoutPrice;
 			_loadouts_data pushback [_x, _price];
 		};
 		_counter = _counter + 1;
@@ -137,13 +135,7 @@ if ( edit_loadout > 0 ) then {
 				missionNamespace setVariable [ 'bis_addvirtualWeaponCargo_cargo', %3 ];
 				[ missionNamespace, 'arsenalClosed', %1 getVariable 'LARs_arsenalClosedID' ] call BIS_fnc_removeScriptedEventHandler;
 				%1 setVariable [ 'LARs_arsenalClosedID', nil ];
-				[player] call F_filterLoadout;
-				[player] spawn F_payLoadout;
 			", myLARsBox, _savedCargo, _savedMissionCargo ] ] call BIS_fnc_addScriptedEventHandler ];
 		};
 	};
-} else {
-	//filter and pay loadout
-	[player] call F_filterLoadout;
-	[player] call F_payLoadout;
 };

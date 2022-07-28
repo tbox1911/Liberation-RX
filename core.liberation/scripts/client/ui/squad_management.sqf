@@ -122,7 +122,7 @@ while { dialog && alive player } do {
 				ctrlSetText [ 207, format ["%1: %2", localize 'STR_SECONDARY_WEAPON', localize 'STR_NONE' ] ];
 				ctrlSetText [ 208, format ["%1: %2", localize 'STR_AMMO', 0 ] ];
 			};
-			ctrlSetText [ 216, format ["Loadout Price: %1 Ammo", ([_selectedmember] call F_loadoutPrice)] ];
+			ctrlSetText [ 216, "" ];
 
 			if ( vehicle _selectedmember == _selectedmember ) then {
 				ctrlSetText [ 209, "" ];
@@ -202,11 +202,6 @@ while { dialog && alive player } do {
 		if (GRLIB_squadaction == 2) then {
 			private _ai_rank = 1 + (GRLIB_rank_level find (rank _selectedmember));
 			private _refund = 0;
-			if (_ai_rank > 1 ) then {
-				_refund = round (([_selectedmember] call F_loadoutPrice) * (_ai_rank * 0.7));
-			} else {
-				_refund = [_selectedmember] call F_loadoutPrice;
-			};
 			[player, _refund, 0] remoteExec ["ammo_add_remote_call", 2];
 			playSound "taskSucceeded";
 			if (_ai_rank > 1 ) then {
@@ -245,8 +240,8 @@ while { dialog && alive player } do {
 
 		if (GRLIB_squadaction == 4) then {
 			if ((player distance _selectedmember) < 30) then {
-				private _price_ai = [_selectedmember] call F_loadoutPrice;
-				private _price = [player] call F_loadoutPrice;
+				private _price_ai = 0;
+				private _price = 0;
 				private _cost = 0 max (_price - _price_ai);
 				if ([_cost] call F_pay) then {
 					_selectedmember setUnitLoadout (getUnitLoadout player);

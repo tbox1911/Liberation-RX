@@ -35,7 +35,7 @@ JKB_auto_play = false;
 JKB_random = false;
 
 // Action and music events
-// player addAction [localize "STR_JKB_ACTION","addons\JKB\fn_openJukeBox.sqf","",0,false,true,"","!(isNull objectParent player)"];
+player addAction [localize "STR_JKB_ACTION","addons\JKB\fn_openJukeBox.sqf","",0,false,true,"","!(isNull objectParent player)"];
 
 addMusicEventHandler ["MusicStart", {
 	{ if (_x select 1 == _this select 0) exitWith {hintSilent format ["Now Playing:\n%1", _x select 0]} } foreach JKB_music_list;

@@ -4,7 +4,7 @@
 params [["_save", 0]];
 diag_log "--------------------- LRX Diag -----------------------";
 diag_log "LRX version:";
-[] call compileFinal preprocessFileLineNUmbers "build_info.sqf";
+// [] call compileFinal preprocessFileLineNUmbers "build_info.sqf";
 diag_log format ["%1 - Uptime %2sec - Render %3/%4/%5 - %6fps", worldName, round(time), viewDistance, getObjectViewDistance, getTerrainGrid, diag_fps];
 diag_log "[spawn-ed, execVM-ed, exec-ed, execFSM-ed]";
 diag_log diag_activeScripts;

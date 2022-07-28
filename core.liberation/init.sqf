@@ -1,5 +1,5 @@
 diag_log "--- Liberation RX by pSiKO ---";
-[] call compileFinal preprocessFileLineNUmbers "build_info.sqf";
+// [] call compileFinal preprocessFileLineNUmbers "build_info.sqf";
 diag_log "--- Init start ---";
 
 enableSaving [false, false];

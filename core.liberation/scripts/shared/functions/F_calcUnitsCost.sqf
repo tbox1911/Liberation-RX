@@ -14,7 +14,6 @@ infantry_units = [];
 			_loadouts_folder = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, toLower _unit_class];
 			[_unit] call compileFinal preprocessFileLineNUmbers _loadouts_folder;
 		};
-		_unit_cost = [_unit] call F_loadoutPrice;
 		deleteVehicle _unit;
 		sleep 0.1;
 	};

@@ -33,14 +33,6 @@ _unit addEventHandler ["GetOutMan", {
 	};
 }];
 
-_unit addEventHandler ["InventoryClosed", {
-	params ["_unit"];
-	[_unit] call F_filterLoadout;
-	if (_unit == player) then {
-		hintSilent format ["Inventory value:\n%1 AMMO.", ([_unit] call F_loadoutPrice)];
-	};
-}];
-
 _unit addEventHandler ["InventoryOpened", {
 	params ["_unit", "_container"];
 	_ret = false;
@@ -69,15 +61,6 @@ _unit addEventHandler ["FiredMan",	{
 
 // Player
 if (_unit == player) then {
-
-	// ACE specific
-	if (GRLIB_ACE_enabled) then {		
-		["ace_arsenal_displayClosed", {
-			[player] call F_filterLoadout;
-			[player] spawn F_payLoadout;
-		}] call CBA_fnc_addEventHandler;
-	};
-
 	// Unblock units
 	missionNamespace setVariable [
 	"BIS_fnc_addCommMenuItem_menu", [

@@ -120,21 +120,6 @@ while { true } do {
 			};
 		};
 
-		// Halo Jump
-		_idact_id = _idact_id + 4;
-		_idact_num = _id_actions select _idact_id;
-		if ((_near_spawn || _near_lhd) && GRLIB_halo_param > 0) then {
-			if ( _idact_num == -1 ) then {
-				_idact = player addAction ["<t color='#80FF80'>" + localize "STR_HALO_ACTION" + "</t> <img size='1' image='res\ui_redeploy.paa'/>","scripts\client\spawn\do_halo.sqf","",-749,false,true,"","build_confirmed == 0"];
-				_id_actions set [_idact_id, _idact];
-			};
-		} else {
-			if ( _idact_num != -1 ) then {
-				player removeAction _idact_num;
-				_id_actions set [_idact_id, -1];
-			};
-		};
-
 		// Send Ammo
 		_idact_id = _idact_id + 1;
 		_idact_num = _id_actions select _idact_id;

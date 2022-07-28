@@ -250,7 +250,6 @@ PAR_Player_Init = {
 	PAR_isDragging = false;
 	[player] call AR_Add_Player_Actions;
 	player addAction ["<t color='#FF8000'>" + localize "STR_EXTENDED_OPTIONS" + "</t>","GREUH\scripts\GREUH_dialog.sqf","",-997,false,true];
-	player addAction ["<t color='#ffffff'>" + localize "STR_JKB_ACTION" + "</t>","addons\JKB\fn_openJukeBox.sqf","",0,false,true,"","!(isNull objectParent player)"];
 	1 fadeSound 1;
 	1 fadeRadio 1;
 	NRE_EarplugsActive = 0;

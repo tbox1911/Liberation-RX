@@ -26,7 +26,7 @@ while { dialog && alive player } do {
 
 		private _sell_list_dlg = [];
 		{
-			_sell_list_dlg pushBack [(typeOf _x), ([_x] call F_loadoutPrice)];
+			// _sell_list_dlg pushBack [(typeOf _x), ([_x] call /*F_loadoutPrice <-- Function no longer exists. */)];
 		} forEach _sell_list;
 
 		lbClear 110;
