@@ -5,7 +5,7 @@ if (!(typeOf _static in list_static_weapons)) exitWith {};
 
 while { alive _static } do {
 	// No damage
-	_static allowDamage false;
+	//_static allowDamage false;
 
 	// OPFor infinite Ammo
 	if (side _static == GRLIB_side_enemy) then {
