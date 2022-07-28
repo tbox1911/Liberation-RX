@@ -104,6 +104,7 @@ opfor_vehicles =  [
 	"CUP_O_BTR90_RU",
 	"CUP_O_BMP3_RU",
 	"CUP_O_T72_RU",
+	"CUP_O_Hilux_podnos_CHDKZ",
 	"CUP_O_GAZ_Vodnik_BPPU_RU"
 ];
 
@@ -119,6 +120,7 @@ opfor_vehicles_low_intensity = [
 	"CUP_O_BTR60_TK",
 	"CUP_O_BTR80_TK",
 	"CUP_O_T72_RU",
+	"CUP_O_Hilux_podnos_CHDKZ",
 	"CUP_O_BTR80A_TK"
 ];
 
@@ -131,6 +133,7 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"CUP_O_ZSU23_Afghan_SLA",
 	"CUP_O_LR_SPG9_TKA",
 	"CUP_O_LR_AA_TKA",
+	"CUP_O_Hilux_podnos_CHDKZ",
 	"CUP_O_BMP1_TKA",
 	"CUP_O_BMP1P_TKA",
 	"CUP_O_BMP2_TKA",
@@ -146,6 +149,7 @@ opfor_reinforcement_vehicles = [
 	"CUP_O_Ural_RU",
 	"CUP_O_Ural_RU",
 	"CUP_O_Ural_RU",
+	"CUP_O_Hilux_podnos_CHDKZ",
 	"CUP_O_BTR80A_TK",
 	"CUP_O_BTR80A_TK",
 	"CUP_O_UAZ_METIS_TKA",
@@ -174,6 +178,7 @@ opfor_battlegroup_vehicles = [
 
 
 opfor_troup_transports = [
+	"CUP_O_Hilux_podnos_CHDKZ",
 	"CUP_O_Ural_RU",
 	"CUP_O_BMP2_TKA",
 	"CUP_O_BMP3_RU",
@@ -199,6 +204,7 @@ opfor_air = [
 ];
 
 opfor_statics = [
+	"CUP_O_Hilux_podnos_CHDKZ",
 	"CUP_O_BM21_TKA"
 ];
 
