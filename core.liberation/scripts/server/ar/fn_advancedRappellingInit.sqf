@@ -18,8 +18,6 @@ AR_Advanced_Rappelling_Install = {
 	if(!isNil "AR_RAPPELLING_INIT") exitWith {};
 	AR_RAPPELLING_INIT = true;
 
-	diag_log "Advanced Rappelling Loading...";
-
 	AP_RAPPEL_POINTS = [];
 
 	AR_RAPPEL_POINT_CLASS_HEIGHT_OFFSET = [  
@@ -744,7 +742,7 @@ AR_Advanced_Rappelling_Install = {
 		
 	};
 
-	diag_log "Advanced Rappelling Loaded";
+	diag_log "--- LRX Advanced Rappelling Initialized";
 
 };
 
