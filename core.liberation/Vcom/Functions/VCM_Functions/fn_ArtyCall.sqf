@@ -101,7 +101,7 @@ switch (true) do
 	case (_AvgKnw >= 70 && {_AvgKnw < 80}): {_MinRDist = 6;_MaxRDist = 30;_RndNumber = 1;};
 	case (_AvgKnw >= 80 && {_AvgKnw < 90}): {_MinRDist = 4;_MaxRDist = 30;_RndNumber = 1;};
 	case (_AvgKnw >= 90 && {_AvgKnw <= 100}): {_MinRDist = 2;_MaxRDist = 30;_RndNumber = 1;};
-	case (_AvgKnw > 100): {_MinRDist = 1;_MaxRDist = 25;_RndNumber = 3;};
+	case (_AvgKnw > 100): {_MinRDist = 1;_MaxRDist = 25;_RndNumber = 1;};
 };
 
 	if (VCM_Debug) then {systemChat (format ["_AvgKnw: %1  _RndNumber: %2",_AvgKnw,_RndNumber])};
