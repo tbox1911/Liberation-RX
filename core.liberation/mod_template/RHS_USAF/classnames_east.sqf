@@ -185,8 +185,6 @@ opfor_air = [
 ];
 
 opfor_statics = [
-	"B_GMG_01_high_F",
-	"B_Mortar_01_F",
 	"RHS_M2StaticMG_WD",
 	"RHS_M2StaticMG_MiniTripod_WD",
 	"RHS_TOW_TriPod_WD",
@@ -197,10 +195,6 @@ opfor_statics = [
 opfor_recyclable = [
 	["B_Boat_Armed_01_minigun_F",2,round (30 / GRLIB_recycling_percentage),2],
 	["B_T_Boat_Armed_01_minigun_F",2,round (30 / GRLIB_recycling_percentage),2],
-	["B_HMG_01_high_F",0,round (20 / GRLIB_recycling_percentage),0],
-	["B_GMG_01_high_F",0,round (40 / GRLIB_recycling_percentage),0],
-	["B_static_AA_F",0,round (80 / GRLIB_recycling_percentage),0],
-	["B_static_AT_F",0,round (80 / GRLIB_recycling_percentage),0],
 	["RHS_M2StaticMG_WD",0,round (80 / GRLIB_recycling_percentage),0],
 	["RHS_M2StaticMG_MiniTripod_WD",0,round (80 / GRLIB_recycling_percentage),0],
 	["RHS_TOW_TriPod_WD",0,round (80 / GRLIB_recycling_percentage),0],
@@ -243,7 +237,6 @@ opfor_recyclable = [
 	["RHS_AH64D_wd",10,round (700 / GRLIB_recycling_percentage),15],
 	["RHS_UH60M",10,round (700 / GRLIB_recycling_percentage),15],
 	["RHS_AH1Z",10,round (700 / GRLIB_recycling_percentage),15],
-	["rhsusf_CH53E_USMC",10,round (700 / GRLIB_recycling_percentage),15],
 	["RHS_UH1Y",10,round (700 / GRLIB_recycling_percentage),15],
 	["B_Plane_CAS_01_dynamicLoadout_F",20,round (1000 / GRLIB_recycling_percentage),30],
 	["RHS_A10",20,round (1000 / GRLIB_recycling_percentage),30],
