@@ -1,12 +1,12 @@
 
 if (isNil "MSU_Eng_Div") then {MSU_Eng_Div = 6;};
 
-private _action = ["assign_Engeneer","assign Engeneer","",{
+private _action = ["assign_Engeneer","assign EOD","",{
 	//Code
 
 	_XengeneerInGroup = group player getvariable ["BIS_dg_xeng",0];
 
-	if (ceil ((count units group player)/ MSU_Eng_Div) > _XengeneerInGroup ) then{
+	if (ceil ((count (units group player arrayIntersect playableUnits))/ MSU_Eng_Div) > _XengeneerInGroup ) then{
 		_Player setVariable ["ACE_isEngineer", 1, true];
 		_Player setVariable ["ACE_isEOD", 1, true];
 		_newamount = _XengeneerInGroup + 1;
@@ -18,13 +18,13 @@ private _action = ["assign_Engeneer","assign Engeneer","",{
 
 },{
 	//Condition
-	(round (player distance2D ([] call F_getNearestFob)) < 20 || (player distance2D lhd) <= 200)&& (_Player getVariable ["ace_medical_medicclass",0] == 0 ) && (_Player getVariable ["ACE_isEngineer", 0] == 0 ) && ["IsGroupRegistered", [group player]] call BIS_fnc_dynamicGroups;
+	(round (player distance2D ([] call F_getNearestFob)) < 400 || (player distance2D lhd) <= 400)&& (_Player getVariable ["ace_medical_medicclass",0] == 0 ) && (_Player getVariable ["ACE_isEngineer", 0] == 0 ) && ["IsGroupRegistered", [group player]] call BIS_fnc_dynamicGroups;
 }] call ace_interact_menu_fnc_createAction;
 
 ["CAManBase", 1, ["ACE_SelfActions","ACE_TeamManagement"],_action,true] call ace_interact_menu_fnc_addActionToClass;
 
 
-private _action = ["unassign_Engeneer","unassign Engeneer","",{
+private _action = ["unassign_Engeneer","unassign EOD","",{
 	//Code
 
 	_XengeneerInGroup = group player getvariable ["BIS_dg_xeng",0];
@@ -39,7 +39,7 @@ private _action = ["unassign_Engeneer","unassign Engeneer","",{
 
 },{
 	//Condition
-	(round (player distance2D ([] call F_getNearestFob)) < 20 || (player distance2D lhd) <= 200)&& (_Player getVariable ["ACE_isEngineer", 0] != 0 );
+	(round (player distance2D ([] call F_getNearestFob)) < 400 || (player distance2D lhd) <= 400)&& (_Player getVariable ["ACE_isEngineer", 0] != 0 );
 }] call ace_interact_menu_fnc_createAction;
 
 ["CAManBase", 1, ["ACE_SelfActions","ACE_TeamManagement"],_action,true] call ace_interact_menu_fnc_addActionToClass;
