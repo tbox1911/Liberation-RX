@@ -10,7 +10,7 @@ private _action = ["assign_Medic", "assign Medic", "", {
 	// Code
 
 	_XmedicsInGroup = group _Player getvariable ["BIS_dg_xmed", 0];
-	if (ceil ((count (units group player arrayIntersect playableUnits)) >= 2) > _XmedicsInGroup) then {
+	if (count (units group player arrayIntersect playableUnits) >= 2) then {
 		if (ceil ((count (units group player arrayIntersect playableUnits))/ MSU_Med_Div) > _XmedicsInGroup) then {
 			_Player setVariable ["ace_medical_medicclass", 2, true];
 
