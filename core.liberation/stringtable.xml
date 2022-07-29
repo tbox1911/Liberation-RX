@@ -5799,33 +5799,47 @@
 </Project>
 <Project name="MSU">
         <Package name="MSU">
-
         <Container name="Role">
             <Key ID="STR_MSU_ROLLMED">
-                <English>There is already %1 Medic in the group %2</English>
-                <German>Es gibt bereits %1 Medic in der Gruppe %2</German>
+                <English>There is already %1 medic in the group %2</English>
+                <German>Es gibt bereits %1 Sanitäter in der Gruppe %2</German>
             </Key>            
 			<Key ID="STR_MSU_ROLLENG">
-                <English>There is already %1 engeneer in the group %2</English>
-                <German>Es gibt bereits %1 Engeneer in der Gruppe %2</German>
+                <English>There is already %1 EOD in the group %2</English>
+                <German>Es gibt bereits %1 EOD in der Gruppe %2</German>
             </Key>          
 			<Key ID="STR_MSU_MED">
                 <English>You are now a Medic</English>
-                <German>Du bist jetzt ein Medic</German>
+                <German>Du bist jetzt ein Sanitäter! </German>
             </Key>          
 			<Key ID="STR_MSU_ENG">
-                <English>You are now a Engeneer</English>
-                <German>Du bist jetzt ein Engeneer</German>
+                <English>You are now an EOD, and able to defuse mines!</English>
+                <German>Du bist jetzt ein EOD und kannst Minen entschärfen!</German>
             </Key>
 			<Key ID="STR_MSU_NMED">
-                <English>You are now a Medic</English>
-                <German>Du bist jetzt ein Medic</German>
+                <English>You are no longer a medic</English>
+                <German>Du bist kein Sanitäter mehr</German>
             </Key>          
 			<Key ID="STR_MSU_NENG">
-                <English>You are no longer an Engeneer</English>
-                <German>Du bist kein Engeneer mehr</German>
+                <English>You are no longer an EOD.</English>
+                <German>Du bist kein EOD mehr.</German>
+            </Key>
+			<Key ID="STR_MSU_FORCENMED">
+                <English>You switched your group and lost your medic role!</English>
+                <German>Du hast deine Gruppe gewechselt und so deine Rolle als Sanitäter verloren!</German>
+            </Key>          
+			<Key ID="STR_MSU_FORCENENG">
+                <English>You switched your group and lost your EOD role!</English>
+                <German>Du hast deine Gruppe gewechselt und so deine Rolle als EOD verloren!</German>
+            </Key>
+				<Key ID="STR_MSU_PLMED">
+                <English>You can only become a medic with 2 or more players!</English>
+                <German>Du kannst erst ab 2 Spielern ein Sanitäter werden!</German>
+            </Key>          
+			<Key ID="STR_MSU_PLENG">
+                <English>You can only become an EOD with 2 or more players!</English>
+                <German>Du kannst erst ab 2 Spielern ein EOD werden!</German>
             </Key>
         </Container>
-
     </Package>
 </Project> 
