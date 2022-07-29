@@ -23,7 +23,7 @@ opfor_paratrooper = "B_soldier_PG_F";
 opfor_mrap = "R3F_PVP_DA";
 opfor_mrap_hmg = "R3F_PVP_FN_DA";
 opfor_mrap_gmg = "R3F_PVP_WASP_DA";
-opfor_transport_helo = "ffaa_nh90_tth_transport";
+opfor_transport_helo = "AMF_panther_FRA";
 opfor_transport_truck = "AMF_GBC180_PERS_01";
 opfor_fuel_truck = "R3F_KAMAZ_DA_fuel";
 opfor_ammo_truck = "AMF_GBC180_AmmoTruck";
@@ -125,7 +125,7 @@ opfor_battlegroup_vehicles = [
 	"B_AMF_AMX10_RCR_SEPAR_02_F",
 	"AMF_EBRC_TDF_01",
 	"AMF_TIGRE_01",
-	"ffaa_nh90_tth_transport",
+	//"ffaa_nh90_tth_transport",
 	"B_AMF_VAB_ULTIMA_X8_TDF_F",
 	"B_AMF_TANK_TDF_01_F",
 	"B_AMF_TANK_TDF_02_F"
@@ -149,13 +149,13 @@ opfor_troup_transports_truck = [
 
 opfor_troup_transports_heli = [
 	"B_AMF_PLANE_TRANSPORT_01_F",
-	"B_AMF_Heli_Transport_4RHFS_01_F",
-	"ffaa_nh90_tth_transport",
-	"ffaa_famet_cougar"
+	"B_AMF_Heli_Transport_4RHFS_01_F"
+	//"ffaa_nh90_tth_transport",
+	//"ffaa_famet_cougar"
 ];
 
 opfor_air = [
-	"ffaa_famet_cougar",
+	//"ffaa_famet_cougar",
 	"AMF_gazelle_minigun_f",
 	"AMF_RAFALE_M_01_F",
 	"B_AMF_PLANE_FIGHTER_02_F"
