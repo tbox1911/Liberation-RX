@@ -127,7 +127,7 @@ unload_distance = 400;
 
 // Deactivate HC spawning
 hc_spawn_off = false;
-hc_spawn_towns = false;
+hc_spawn_towns = true;
 hc_spawn_patrol = false;
 
 //Datalink Options
