@@ -44,8 +44,9 @@ private _action = ["unassign_Medic","unassign Medic","",{
 
 ["CAManBase", 1, ["ACE_SelfActions","ACE_TeamManagement"],_action,true] call ace_interact_menu_fnc_addActionToClass;
 
+if (isNil "support_medic_restriction") then {support_medic_restriction = false};
 
-
+if (support_medic_restriction) then {
 
 [
 	{
@@ -62,4 +63,4 @@ private _action = ["unassign_Medic","unassign Medic","",{
 			};
 		};
 	}, 60, [Support_Squad]
-] call CBA_fnc_addPerFrameHandler;
+] call CBA_fnc_addPerFrameHandler; };
