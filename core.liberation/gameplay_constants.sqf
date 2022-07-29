@@ -144,7 +144,8 @@ ai_limiter_on = true;
 ai_skill = 9;
 ai_value = 35; // buildable ai price
 
-
+//Medic restrictions
+support_medic_restriction = false;
 
 
 // Prices for blufor vehicle tiers
