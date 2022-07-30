@@ -810,6 +810,49 @@ JS_JC_FA18F =
  	_vehicle setPylonLoadout [_i, "", true]; 
 };
 	_vehicle setVariable ["ace_pylons_magazineWhitelist", JS_JC_FA18F, true]}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+	
+	
+	FIR_F18C =  ["FIR_AIM9X_P_1rnd_M","FIR_AIM120_LAU115_P_1rnd_M","FIR_AIM120_LAU115BA_P_2rnd_M","FIR_AIM7F_2_P_1rnd_M","FIR_FA18_Fueltank_P_1rnd_M",
+"FIR_AIM7_2_P_1rnd_M","FIR_AIM132_P_1rnd_M","FIR_AIM9X_LAU115_P_2rnd_M","FIR_AIM9M_P_1rnd_M",
+"FIR_IRIS_T_P_1rnd_M","FIR_AGM88_P_1rnd_M","FIR_APKWS_M282_P_7rnd_M","FIR_Litening_std_P_1rnd_M","FIR_AGM154A_P_1rnd_M","FIR_AGM154C_P_1rnd_M",
+"FIR_AGM123_P_1rnd_M","FIR_AGM158B_P_1rnd_M","FIR_Nitehawk_P_1rnd_M","FIR_ASQ173LST_P_1rnd_M","FIR_AGM65D_P_1rnd_M","FIR_AGM65E_P_1rnd_M",
+"FIR_AGM65H_P_1rnd_M","FIR_AGM65G_P_1rnd_M","FIR_SniperXR_SIDE_P_1rnd_M","FIR_AWW13_P_1rnd_M","","FIR_AGM65F_P_1rnd_M","FIR_AGM65E2_P_1rnd_M",
+"FIR_AGM65K_P_1rnd_M","FIR_AGM65L_P_1rnd_M","FIR_AGM84D_P_1rnd_M","FIR_AGM84E_P_1rnd_M",
+"FIR_GBU10_P_1rnd_M","FIR_EGBU12_P_2rnd_M","FIR_AGM84K_P_1rnd_M","FIR_AGM84H_P_1rnd_M",
+"FIR_GBU12_Navy_P_2rnd_M","FIR_GBU16_Navy_P_2rnd_M","FIR_GBU24B_P_1rnd_M","FIR_GBU24EB_P_1rnd_M",
+"FIR_CBU103_P_BRU57_2rnd_M","FIR_CBU105_P_BRU57_2rnd_M","FIR_GBU54_Navy_P_2rnd_M","FIR_gbu55_Navy_P_2rnd_M",
+"FIR_AGM62_Walleye2ER_P_1rnd_M","FIR_AGM62_Walleye1ER_P_1rnd_M","FIR_AGM62_Walleye1_P_1rnd_M","FIR_Tiger2_P_1rnd_M"];
+
+
+["FIR_F18C", "InitPost", {
+    params ["_vehicle"];
+		private _pylon = getPylonMagazines _vehicle;
+	for "_i" from 1 to (count _pylon) do { 
+ 	_vehicle setPylonLoadout [_i, "", true]; 
+};
+	_vehicle setVariable ["ace_pylons_magazineWhitelist", FIR_F18C, true]}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+
+
+FIR_F18D =  
+["FIR_AIM9X_P_1rnd_M","FIR_AIM120_LAU115_P_1rnd_M","FIR_AIM120_LAU115BA_P_2rnd_M","FIR_AIM7F_2_P_1rnd_M","FIR_FA18_Fueltank_P_1rnd_M","FIR_AIM7_2_P_1rnd_M","FIR_AIM132_P_1rnd_M","FIR_AIM9X_LAU115_P_2rnd_M","FIR_AIM9M_P_1rnd_M",
+"FIR_IRIS_T_P_1rnd_M","FIR_AGM88_P_1rnd_M","FIR_APKWS_M282_P_7rnd_M","FIR_Litening_std_P_1rnd_M","FIR_AGM154A_P_1rnd_M","FIR_AGM154C_P_1rnd_M",
+"FIR_AGM123_P_1rnd_M","FIR_AGM158B_P_1rnd_M","FIR_Nitehawk_P_1rnd_M","FIR_ASQ173LST_P_1rnd_M","FIR_AGM65D_P_1rnd_M","FIR_AGM65E_P_1rnd_M",
+"FIR_AGM65H_P_1rnd_M","FIR_AGM65G_P_1rnd_M","FIR_SniperXR_SIDE_P_1rnd_M","FIR_AWW13_P_1rnd_M","","FIR_AGM65F_P_1rnd_M","FIR_AGM65E2_P_1rnd_M",
+"FIR_AGM65K_P_1rnd_M","FIR_AGM65L_P_1rnd_M","FIR_AGM84D_P_1rnd_M","FIR_AGM84E_P_1rnd_M",
+"FIR_GBU10_P_1rnd_M","FIR_EGBU12_P_2rnd_M","FIR_AGM84K_P_1rnd_M","FIR_AGM84H_P_1rnd_M",
+"FIR_GBU12_Navy_P_2rnd_M","FIR_GBU16_Navy_P_2rnd_M","FIR_GBU24B_P_1rnd_M","FIR_GBU24EB_P_1rnd_M",
+"FIR_CBU103_P_BRU57_2rnd_M","FIR_CBU105_P_BRU57_2rnd_M","FIR_GBU54_Navy_P_2rnd_M","FIR_gbu55_Navy_P_2rnd_M",
+"FIR_AGM62_Walleye2ER_P_1rnd_M","FIR_AGM62_Walleye1ER_P_1rnd_M","FIR_AGM62_Walleye1_P_1rnd_M","FIR_Tiger2_P_1rnd_M"];
+
+
+["FIR_F18D", "InitPost", {
+    params ["_vehicle"];
+		private _pylon = getPylonMagazines _vehicle;
+	for "_i" from 1 to (count _pylon) do { 
+ 	_vehicle setPylonLoadout [_i, "", true]; 
+};
+	_vehicle setVariable ["ace_pylons_magazineWhitelist", FIR_F18D, true]}, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
 
 CUP_B_GR9_DYN_GB = 
