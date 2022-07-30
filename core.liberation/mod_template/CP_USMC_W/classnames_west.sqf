@@ -741,8 +741,8 @@ support_crates = [
     ["UK3CB_BAF_Vehicles_Servicing_Aircraft_Point",0,0,0,GRLIB_perm_inf],
     ["UK3CB_BAF_Vehicles_Servicing_Ground_Point",0,0,0,GRLIB_perm_inf],
   // FOB
-    [FOB_box_typename,0,500,0,GRLIB_perm_inf],
-    [FOB_truck_typename,0,500,0,GRLIB_perm_inf]
+    [FOB_box_typename,0,15000,0,GRLIB_perm_inf],
+    [FOB_truck_typename,0,15000,0,GRLIB_perm_inf]
 ];
 
 buildings_west = [
