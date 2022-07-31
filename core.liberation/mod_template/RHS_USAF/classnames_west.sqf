@@ -10,7 +10,7 @@ Respawn_truck_typename = "rhsusf_M1085A1P2_B_WD_Medical_fmtv_usarmy";  //"rhsusf
 //FOB_truck_typename = "B_Truck_01_box_F";
 pilot_classname = "rhsusf_army_ucp_helipilot";
 crewman_classname = "rhsusf_army_ucp_crewman";
-A3W_BoxWps = "rhs_weapon_crate";
+A3W_BoxWps = "rhs_mags_crate";
 
 chimera_vehicle_overide = [
   ["B_Heli_Light_01_F", "RHS_MELB_MH6M"],

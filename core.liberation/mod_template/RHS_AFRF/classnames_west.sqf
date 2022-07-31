@@ -17,7 +17,7 @@ ammo_sling_typename = "Land_Pod_Heli_Transport_04_ammo_F";
 medic_sling_typename = "Land_Pod_Heli_Transport_04_medevac_F";
 pilot_classname = "rhs_pilot_combat_heli";
 crewman_classname = "rhs_msv_emr_combatcrew";
-A3W_BoxWps = "rhs_weapon_crate";
+A3W_BoxWps = "rhs_mags_crate";
 
 chimera_vehicle_overide = [
   ["B_Heli_Transport_01_F", "rhs_ka60_grey"]

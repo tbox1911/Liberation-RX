@@ -392,7 +392,6 @@ GRLIB_Ammobox_keep = [
 	medicalbox_typename,
 	"Box_NATO_WpsLaunch_F",
 	"mission_USLaunchers",
-	"rhs_weapon_crate",
 	"CUP_LocalBasicWeaponsBox",
 	"gm_AmmoBox_1000Rnd_762x51mm_ap_DM151_g3"
 ];
