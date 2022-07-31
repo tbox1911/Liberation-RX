@@ -248,9 +248,9 @@ class Params
 	};
 	class MaximumFobs{
 		title = $STR_PARAM_FOBS_COUNT;
-		values[] = {3,5,7,10,15,20,26};
-		texts[] = {3,5,7,10,15,20,26};
-		default = 3;
+		values[] = {1,3,5,7,10,15,20,26};
+		texts[] = {1,3,5,7,10,15,20,26};
+		default = 1;
 	};
 	class SquadSize{
 		title = $STR_PARAM_SQUAD_SIZE_START;
