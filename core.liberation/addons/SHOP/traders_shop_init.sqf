@@ -24,6 +24,8 @@ waituntil {sleep 1; !isNil "GRLIB_marker_init"};
     if (_str find "villagestore" > 0) then { _offset = [4, 2, 0.70]};           // Enoch
     if (_str find "ind_workshop01_02" > 0) then { _offset = [0, 2, 0]};         // Chernarus
     if (_str find "house_c_4_ep1" > 0) then { _offset = [1, 0, 0.60]};          // Isladuala
+    if (_str find "sara_domek_sedy" > 0) then { _offset = [2.5, 1.8, 0.6]};     // Sarahni
+    if (_str find "dum_istan3_hromada" > 0) then { _deskDir = (90 + _deskDir); _offset = [2.6, -0.6, -0.1]};  // Sarahni
     if (_str find "house_c_1_v2_ep1" > 0) then { _offset = [5.5, 1, 0.10]};     // Takistan
     if (_str find "vn_shop_town_03" > 0) then { _offset = [1.5, -1, 0.10]};     // Cam Lao 
     if (_str find "house_big_02" > 0) then { _deskDir = (180 + _deskDir); _offset = [-0.7, -2, 0.25]};
