@@ -88,7 +88,7 @@ if (_enable_defenders) then {
         [_unit] joinSilent _grpdefenders;
         _unit setpos _nextpos;
         [_unit] spawn building_defence_ai;
-        [_unit] call reammo_ai;
+        [_unit] spawn reammo_ai;
         sleep 0.1;
     } foreach _idxselected;
 
