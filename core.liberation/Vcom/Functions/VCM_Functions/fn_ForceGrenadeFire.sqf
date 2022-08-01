@@ -103,6 +103,7 @@ if (count _NEnemies > 0) then
 		if (count _TargetArray > 0 && {!(_Grenade) || _Override}) then
 		{
 			//Smoke grenade use
+			/*
 			private _NE = [_TargetArray,_Unit,true,""] call VCM_fnc_ClstObj;
 			private _PotentialGrenades = ((configfile >> "CfgWeapons" >> "Throw") call BIS_fnc_getCfgSubClasses);
 			private _CurrentGear = magazines _unit;
@@ -166,7 +167,7 @@ if (count _NEnemies > 0) then
 					if (_ExitNow) exitWith {};
 				} foreach _PotentialGrenades;	
 			};
-			
+			*/
 		};
 		
 
