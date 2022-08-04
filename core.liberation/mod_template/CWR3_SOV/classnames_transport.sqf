@@ -6,7 +6,7 @@
 box_transport_config = box_transport_config + [
     // the 'opfor_transport_truck' MUST be declared here
 	[ "cwr3_o_ural", -6.5, [0,-0.2,0.6], [0,-1.8,0.6] ],
-	[ "cwr3_o_ural_open", -6.5, [0,-0.2,0.6], [0,-1.8,0.6] ],	
+	[ "cwr3_o_ural_open", -6.5, [0,-0.2,0.6], [0,-1.8,0.6] ]
 ];
 
 // Additional offset per object
