@@ -1,223 +1,317 @@
-// *** BADDIES ***
+// *** BADDIES *** 
 GRLIB_side_enemy = EAST;
 GRLIB_color_enemy = "ColorOPFOR";
 GRLIB_color_enemy_bright = "ColorRED";
 
-// All class MUST be defined !
+// All class MUST be defined ! 
 
-opfor_sentry = "gm_gc_bgs_rifleman_mpikm72_80_str";
-opfor_rifleman = "gm_gc_army_rifleman_mpiak74n_80_str";
-opfor_grenadier = "gm_gc_army_demolition_mpiaks74n_80_str";
-opfor_squad_leader = "gm_gc_army_squadleader_mpiak74n_80_str";
-opfor_team_leader = "gm_gc_army_sf_squadleader_mpikms72_80_str";
-opfor_marksman = "gm_gc_army_sf_marksman_svd_80_str";
-opfor_machinegunner = "gm_gc_army_machinegunner_lmgrpk74_80_str";
-opfor_heavygunner = "gm_gc_army_machinegunner_pk_80_str";
-opfor_medic = "gm_gc_army_medic_mpiak74n_80_str";
-opfor_rpg = "gm_gc_army_antitank_mpiak74n_rpg7_80_str";
-opfor_at = "gm_gc_army_antitank_mpiak74n_rpg7_80_str";
-opfor_aa = "gm_gc_army_antiair_mpiak74n_9k32m_80_str";
-opfor_officer = "gm_gc_army_officer_pm_80_str";
-opfor_sharpshooter = "gm_gc_army_sf_rifleman_pm63_80_str";
-opfor_sniper = "gm_gc_army_marksman_svd_80_str";
-opfor_spotter = "gm_gc_bgs_rifleman_mpikm72_80_str";
-opfor_engineer = "gm_gc_army_engineer_mpiaks74n_80_str";
-opfor_paratrooper = "gm_gc_army_paratrooper_mpiaks74n_80_str";
-opfor_mrap = "gm_gc_army_brdm2um";
-opfor_mrap_armed = "gm_gc_army_brdm2";
-opfor_transport_helo = "gm_gc_airforce_mi2p";
-opfor_transport_truck = "gm_gc_army_ural4320_cargo";
-opfor_ammobox_transport = "gm_gc_army_ural4320_cargo";
-opfor_fuel_truck = "gm_gc_army_ural375d_refuel";
-opfor_ammo_truck = "gm_gc_army_ural4320_reammo";
+opfor_sentry = "CUP_O_RU_Soldier_Engineer_Ratnik_Autumn";
+opfor_rifleman = "CUP_O_RU_Soldier_Ratnik_Autumn";
+opfor_grenadier = "CUP_O_RU_Soldier_GL_Ratnik_Autumn";
+opfor_squad_leader = "CUP_O_RU_Soldier_SL_Ratnik_Autumn";
+opfor_team_leader = "CUP_O_RU_Soldier_TL_Ratnik_Autumn";
+opfor_marksman = "CUP_O_RU_Soldier_Ratnik_Autumn";
+opfor_machinegunner = "CUP_O_RU_Soldier_MG_Ratnik_Autumn";
+opfor_heavygunner = "CUP_O_RU_Soldier_AAR_Ratnik_Autumn";
+opfor_medic = "CUP_O_RU_Soldier_Medic_Ratnik_Autumn";
+opfor_rpg = "CUP_O_RU_Soldier_AT_Ratnik_Autumn";
+opfor_at = "CUP_O_RU_Soldier_HAT_Ratnik_Autumn";
+opfor_aa = "CUP_O_RU_Soldier_AA_Ratnik_Autumn";
+opfor_officer = "CUP_O_RU_Soldier_SL_Ratnik_Autumn";
+opfor_sharpshooter = "CUP_O_RU_Soldier_Marksman_Ratnik_Autumn";
+opfor_sniper = "CUP_O_RU_Sniper_KSVK_VDV_M_EMR";
+opfor_spotter = "CUP_O_RU_Spotter_VDV_M_EMR";
+opfor_engineer = "CUP_O_RU_Soldier_Engineer_Ratnik_Autumn";
+opfor_pilot = "CUP_O_RU_Pilot_M_EMR";
+opfor_crew = "CUP_O_RU_Soldier_Repair_Ratnik_Autumn";
+opfor_paratrooper = "CUP_O_RU_Recon_Marksman_Ratnik_Autumn";
+opfor_mrap = "CUP_O_UAZ_Open_TKA";
+opfor_mrap_hmg = "CUP_O_UAZ_MG_TKA";
+opfor_mrap_gmg = "CUP_O_UAZ_SPG9_TKA";
+opfor_transport_helo = "CUP_O_MI6T_TKA";
+opfor_transport_truck = "CUP_O_V3S_Covered_TKA";
+opfor_ammobox_transport = "CUP_O_V3S_Covered_TKA";
+opfor_fuel_truck = "CUP_O_V3S_Refuel_TKA";
+opfor_ammo_truck = "CUP_O_V3S_Rearm_TKA";
 opfor_fuel_container = "Land_Pod_Heli_Transport_04_fuel_F";
-opfor_ammo_container = "Land_Pod_Heli_Transport_04_ammo_F";
-opfor_flag = "gm_flag_GC";
+opfor_ammo_container = "CUP_TKBasicAmmunitionBox_EP1";
+opfor_flag = "CUP_Flag_Black";
 
 militia_squad = [
-	"gm_pl_army_sf_squadleader_akmn_80_moro",
-	"gm_pl_army_medic_akm_80_moro",
-	"gm_pl_army_sf_rifleman_pm63_80_moro",
-	"gm_pl_army_sf_rifleman_pm63_80_moro",
-	"gm_pl_army_sf_rifleman_akmn_80_moro",
-	"gm_pl_army_sf_rifleman_akmn_80_moro",
-	"gm_pl_army_sf_machinegunner_rpk_80_moro",
-	"gm_pl_army_sf_antitank_akmn_rpg7_80_moro",
-	"gm_pl_army_sf_antitank_akmn_rpg7_80_moro",
-	"gm_pl_army_sf_antiair_pm63_9k32m_80_moro",
-	"gm_pl_army_sf_antiair_pm63_9k32m_80_moro",
-	"gm_pl_army_sf_marksman_svd_80_moro",
-	"gm_pl_army_sf_machinegunner_rpk_80_moro",
-	"gm_pl_army_sf_marksman_svd_80_moro",
-	"gm_pl_army_sf_rifleman_pm63_80_moro",
-	"gm_pl_army_sf_rifleman_akmn_80_moro"
+"CUP_O_RU_Soldier_AR",
+"CUP_O_RU_Commander",
+"CUP_O_RU_Soldier_GL",
+"CUP_O_RU_Engineer",
+"CUP_O_RU_Soldier_Marksman",
+"CUP_O_RU_Soldier_MG",
+"CUP_O_RU_Officer",
+"CUP_O_RU_Soldier_AA",
+"CUP_O_RU_Soldier_HAT",
+"CUP_O_RU_Soldier_LAT",
+"CUP_O_RU_Soldier_AT",
+"CUP_O_RU_Soldier_Saiga",
+"CUP_O_RU_Medic",
+"CUP_O_RU_Soldier",
+"CUP_O_RU_Soldier",
+"CUP_O_RU_Sniper",
+"CUP_O_RU_Spotter",
+"CUP_O_RU_Explosive_Specialist",
+"CUP_O_RU_Soldier_TL",
+"CUP_O_RU_Soldier_SL",
+"CUP_O_RU_Soldier_Marksman"
 ];
 
 militia_loadout_overide = [
 ];
 
 divers_squad = [
-	"O_diver_TL_F",
-	"O_diver_TL_F",
-	"O_diver_exp_F",
-	"O_diver_exp_F",
-	"O_diver_exp_F",
-	"O_diver_exp_F",
-	"O_diver_F",
-	"O_diver_F",
-	"O_diver_F",
-	"O_diver_F",
-	"O_diver_F",
-	"O_diver_F",
-	"O_diver_F",
-	"O_diver_F"
+	"I_diver_TL_F",
+	"I_diver_TL_F",
+	"I_diver_exp_F",
+	"I_diver_exp_F",
+	"I_diver_exp_F",
+	"I_diver_exp_F",
+	"I_diver_F",
+	"I_diver_F",
+	"I_diver_F",
+	"I_diver_F",
+	"I_diver_F",
+	"I_diver_F",
+	"I_diver_F",
+	"I_diver_F"
 ];
 
 militia_vehicles = [
-	"gm_pl_army_brdm2",
-	"gm_pl_army_ot64a",
-	"gm_pl_army_bmp1sp2",
-	"gm_gc_army_brdm2",
-	"gm_gc_army_btr60pa",
-	"gm_gc_army_btr60pb",
-	"gm_gc_army_bmp1sp2",
-	"gm_pl_army_brdm2",
-	"gm_pl_army_ot64a",
-	"gm_pl_army_bmp1sp2"
+
+	"CUP_O_BMP2_TKA",
+	"CUP_O_M113A3_TKA",
+	"CUP_O_LR_MG_TKA",
+	"CUP_O_UAZ_METIS_TKA",
+	"CUP_O_UAZ_AGS30_TKA",
+	"CUP_O_UAZ_MG_TKA",
+	"CUP_O_Ural_ZU23_TKA",
+	"CUP_O_BMP2_ZU_TKA"
 ];
 
 boats_east = [
-	"O_Boat_Armed_01_hmg_F"
+	"CUP_O_BMP2_TKA",
+	"CUP_O_BMP2_ZU_TKA",
+	"CUP_O_BTR80A_TK"
 ];
 
-opfor_vehicles = [
-	"gm_gc_army_pt76b",
-	"gm_gc_army_pt76b",
-	"gm_gc_army_t55",
-	"gm_gc_army_t55a",
-	"gm_gc_army_t55ak",
-	"gm_gc_army_t55am2",
-	"gm_gc_army_t55am2b",
-	//"gm_gc_army_zsu234v1",
-	"gm_pl_army_pt76b",
-	"gm_pl_army_t55",
-	"gm_pl_army_t55ak"
+opfor_vehicles =  [
+	"CUP_O_BMP2_RU",
+	"CUP_O_BTR90_RU",
+	"CUP_O_BMP3_RU",
+	"CUP_O_T72_RU",
+	"CUP_O_Hilux_podnos_CHDKZ",
+	"CUP_O_GAZ_Vodnik_BPPU_RU"
 ];
+
 
 opfor_vehicles_low_intensity = [
-	"gm_pl_army_brdm2",
-	"gm_pl_army_brdm2",
-	"gm_gc_army_btr60pa",
-	"gm_gc_army_btr60pb",
-	"gm_gc_army_pt76b",
-	"gm_gc_army_pt76b",
-	"gm_pl_army_ot64a",
-	"gm_pl_army_ot64a",
-	"gm_pl_army_pt76b"
+	"CUP_O_ZSU23_Afghan_SLA",
+	"CUP_O_LR_SPG9_TKA",
+	"CUP_O_LR_AA_TKA",
+	"CUP_O_BMP1_TKA",
+	"CUP_O_BMP1P_TKA",
+	"CUP_O_BMP2_TKA",
+	"CUP_O_BRDM2_ATGM_TKA",
+	"CUP_O_BTR60_TK",
+	"CUP_O_BTR80_TK",
+	"CUP_O_T72_RU",
+	"CUP_O_Hilux_podnos_CHDKZ",
+	"CUP_O_BTR80A_TK"
 ];
 
-opfor_battlegroup_vehicles = [
-  	"gm_gc_airforce_mi2p",
-  	"gm_gc_airforce_mi2urn",
-  	"gm_gc_airforce_mi2us",
-  	"gm_gc_bgs_mi2us",
-	"gm_gc_army_pt76b",
-	"gm_gc_army_t55",
-	"gm_gc_army_t55a",
-	"gm_gc_army_t55ak",
-	"gm_gc_army_t55am2",
-	"gm_gc_army_t55am2b",
-	//"gm_gc_army_zsu234v1",
-	"gm_pl_army_pt76b",
-	"gm_pl_army_t55",
-	"gm_pl_army_t55ak",
-	//"gm_gc_army_zsu234v1",
-	"gm_gc_airforce_mi2p",
-	"gm_gc_bgs_ural4320_cargo"
-];
 
 opfor_battlegroup_vehicles_low_intensity = [
-	"gm_gc_airforce_mi2urn",
-	"gm_gc_airforce_mi2us",
-	"gm_gc_bgs_mi2us",
-	"gm_gc_army_pt76b",
-	"gm_gc_army_t55",
-	"gm_gc_army_pt76b",
-	"gm_gc_army_btr60pa",
-	"gm_gc_army_btr60pb",
-	"gm_gc_airforce_mi2p",
-	"gm_gc_army_ural4320_cargo"
+	"CUP_O_Ural_RU",
+	"CUP_O_Ural_RU",
+	"CUP_O_Ural_RU",
+	"CUP_O_BM21_TKA",
+	"CUP_O_ZSU23_Afghan_SLA",
+	"CUP_O_LR_SPG9_TKA",
+	"CUP_O_LR_AA_TKA",
+	"CUP_O_Hilux_podnos_CHDKZ",
+	"CUP_O_BMP1_TKA",
+	"CUP_O_BMP1P_TKA",
+	"CUP_O_BMP2_TKA",
+	"CUP_O_BRDM2_ATGM_TKA",
+	"CUP_O_BTR60_TK",
+	"CUP_O_BTR80_TK",
+	"CUP_O_T72_RU",
+	"CUP_O_BTR80A_TK"
 ];
 
+opfor_reinforcement_vehicles = [	
+	"CUP_O_Ural_RU",
+	"CUP_O_Ural_RU",
+	"CUP_O_Ural_RU",
+	"CUP_O_Ural_RU",
+	"CUP_O_Hilux_podnos_CHDKZ",
+	"CUP_O_BTR80A_TK",
+	"CUP_O_BTR80A_TK",
+	"CUP_O_UAZ_METIS_TKA",
+	"CUP_O_UAZ_AGS30_TKA",
+	"CUP_O_Hilux_igla_TK_INS",
+	"CUP_O_BTR80A_TK"
+	];
+
+opfor_battlegroup_vehicles = [ 
+	"CUP_O_Ural_RU",
+	"CUP_O_Ural_RU",
+	"CUP_O_Ural_RU",
+	"CUP_O_ZSU23_Afghan_SLA",
+	"CUP_O_T90_RU",
+	"CUP_O_BMP3_RU",
+	"CUP_O_BMP3_RU",
+	"CUP_O_BMP3_RU",
+	"CUP_O_Ural_RU",
+	"CUP_O_Ural_RU",
+	"CUP_O_Ural_RU",
+	"CUP_O_BM21_TKA",
+	"CUP_O_BTR80A_TK",
+	"CUP_O_BTR80A_TK",
+	"CUP_O_BTR80A_TK"
+]; 
+
+
 opfor_troup_transports = [
-	"gm_gc_army_btr60pu12",
-	"gm_gc_army_ural4320_cargo",
-	"gm_gc_bgs_ural4320_cargo",
-	"gm_gc_airforce_mi2p",
-	"gm_gc_airforce_mi2t",
-	"gm_gc_airforce_l410t"
+	"CUP_O_Hilux_podnos_CHDKZ",
+	"CUP_O_Ural_RU",
+	"CUP_O_BMP2_TKA",
+	"CUP_O_BMP3_RU",
+	"CUP_O_BTR60_TK",
+	"CUP_O_BTR80_TK",
+	"CUP_O_BTR80A_TK",
+	"CUP_O_Mi24_D_Dynamic_TK",
+	"CUP_O_MI6T_TKA",
+	"CUP_O_Mi17_TK"
 ];
 
 opfor_choppers = [
-	"gm_gc_airforce_mi2p",
-	"gm_gc_airforce_mi2t",
-	"gm_gc_airforce_l410t"
+	"CUP_O_MI6T_TKA",
+	"CUP_O_Mi17_TK",
+	"CUP_O_Mi24_D_Dynamic_TK",
+	"CUP_O_Ka50_DL_RU",
+	"CUP_O_Ka52_RU"
 ];
 
 opfor_air = [
-	"gm_gc_airforce_mi2urn",
-	"gm_gc_airforce_mi2urn",
-	"gm_gc_airforce_mi2us",
-	"gm_gc_bgs_mi2us",
-	"gm_pl_airforce_mi2us",
-	"gm_pl_airforce_mi2urs",
-	"gm_pl_airforce_mi2urpg",
-	"gm_pl_airforce_mi2urp",
-	"gm_pl_airforce_mi2urn"
+	//"O_Plane_CAS_02_Cluster_F",
+	"O_Plane_Fighter_02_F"
 ];
 
 opfor_statics = [
-	"gm_gc_army_dshkm_aatripod",
-	"gm_gc_army_fagot_launcher_tripod",
-	"gm_gc_army_spg9_tripod",
-	"O_Mortar_01_F"
+	"CUP_O_Hilux_podnos_CHDKZ",
+	"CUP_O_BM21_TKA"
 ];
 
 opfor_recyclable = [
-	["gm_gc_army_pt76b",0,round (20 / GRLIB_recycling_percentage),0],
-	["gm_pl_army_pt76b",0,round (20 / GRLIB_recycling_percentage),0],
-	["gm_gc_bgs_ural4320_repair",0,round (20 / GRLIB_recycling_percentage),0],
-	["gm_gc_bgs_ural4320_reammo",0,round (20 / GRLIB_recycling_percentage),0],
-	["gm_gc_army_ural4320_cargo",0,round (20 / GRLIB_recycling_percentage),0],
-	["gm_gc_bgs_ural4320_cargo",0,round (20 / GRLIB_recycling_percentage),0],
-	["gm_gc_army_brdm2um",0,round (20 / GRLIB_recycling_percentage),0],
-	["gm_pl_army_brdm2",0,round (50 / GRLIB_recycling_percentage),0],
-	["gm_pl_army_ot64a",0,round (50 / GRLIB_recycling_percentage),0],
-	["gm_gc_army_btr60pa",0,round (150 / GRLIB_recycling_percentage),0],
-	["gm_gc_army_btr60pb",0,round (150 / GRLIB_recycling_percentage),0],
-	["gm_pl_army_bmp1sp2",0,round (150 / GRLIB_recycling_percentage),0],
-	["gm_gc_army_t55",0,round (400 / GRLIB_recycling_percentage),0],
-	["gm_pl_army_t55",0,round (400 / GRLIB_recycling_percentage),0],
-	["gm_gc_army_t55a",0,round (400 / GRLIB_recycling_percentage),0],
-	["gm_gc_army_t55ak",0,round (400 / GRLIB_recycling_percentage),0],
-	["gm_pl_army_t55ak",0,round (400 / GRLIB_recycling_percentage),0],
-	["gm_gc_army_t55am2",0,round (500 / GRLIB_recycling_percentage),0],
-	["gm_gc_army_t55am2b",0,round (500 / GRLIB_recycling_percentage),0],
-	["gm_pl_army_zsu234v1",0,round (500 / GRLIB_recycling_percentage),0],
-	["gm_gc_army_zsu234v1",0,round (500 / GRLIB_recycling_percentage),0],
-	["gm_gc_airforce_mi2p",0,round (500 / GRLIB_recycling_percentage),0],
-	["gm_gc_airforce_mi2t",0,round (500 / GRLIB_recycling_percentage),0],
-	["gm_gc_airforce_mi2urn",0,round (500 / GRLIB_recycling_percentage),0],
-	["gm_pl_airforce_mi2urn",0,round (500 / GRLIB_recycling_percentage),0],
-	["gm_gc_airforce_mi2us",0,round (500 / GRLIB_recycling_percentage),0],
-	["gm_pl_airforce_mi2us",0,round (500 / GRLIB_recycling_percentage),0],
-	["gm_pl_airforce_mi2urs",0,round (500 / GRLIB_recycling_percentage),0],
-	["gm_pl_airforce_mi2urpg",0,round (500 / GRLIB_recycling_percentage),0],
-	["gm_pl_airforce_mi2urp",0,round (500 / GRLIB_recycling_percentage),0],
-	["gm_gc_airforce_l410t",0,round (500 / GRLIB_recycling_percentage),0],
-	["gm_gc_airforce_l410s_salon",0,round (500 / GRLIB_recycling_percentage),0]
+	 // necessary so everyone can profit from logistics 
+
+	["CUP_O_BM21_RU", 0, round (60 / GRLIB_recycling_percentage), 0],
+	["CUP_O_BM21_TKA", 0, round (60 / GRLIB_recycling_percentage), 0],
+	["CUP_O_MTLB_pk_TK_MILITIA", 0, round (50 / GRLIB_recycling_percentage), 0],
+	["CUP_O_BTR40_MG_TKM", 0, round (60 / GRLIB_recycling_percentage), 0],
+	["O_HMG_01_high_F", 0, round (0 / GRLIB_recycling_percentage), 0],
+	["O_GMG_01_high_F", 0, round (0 / GRLIB_recycling_percentage), 0],
+	["O_static_AA_F", 0, round (0 / GRLIB_recycling_percentage), 0],
+	["O_static_AT_F", 0, round (0 / GRLIB_recycling_percentage), 0],
+	["O_Mortar_01_F", 0, round (0 / GRLIB_recycling_percentage), 0],
+	["CUP_O_LR_MG_TKM", 1, round (50 / GRLIB_recycling_percentage), 2],
+	["CUP_O_LR_SPG9_TKM", 1, round (50 / GRLIB_recycling_percentage), 2],
+	["CUP_O_BTR60_TK", 1, round (50 / GRLIB_recycling_percentage), 2],
+	["CUP_O_BMP1P_TKA", 1, round (50 / GRLIB_recycling_percentage), 2],
+	["CUP_O_MTLB_pk_TKA", 1, round (50 / GRLIB_recycling_percentage), 2],
+	["CUP_O_UAZ_MG_TKA", 1, round (50 / GRLIB_recycling_percentage), 2],
+	["CUP_O_UAZ_AGS30_TKA", 1, round (50 / GRLIB_recycling_percentage), 2],
+	["CUP_O_UAZ_SPG9_TKA", 1, round (50 / GRLIB_recycling_percentage), 2],
+	["CUP_O_BMP2_TKA", 1, round (60 / GRLIB_recycling_percentage), 2],
+	["CUP_O_BRDM2_TKA", 1, round (60 / GRLIB_recycling_percentage), 2],
+	["CUP_O_BRDM2_ATGM_TKA", 1, round (60 / GRLIB_recycling_percentage), 2],
+	["CUP_O_BMP2_ZU_TKA", 1, round (60 / GRLIB_recycling_percentage), 2],
+	["CUP_O_ZSU23_Afghan_TK", 1, round (70 / GRLIB_recycling_percentage), 2],
+	["CUP_O_ZSU23_TK", 1, round (70 / GRLIB_recycling_percentage), 2],
+	["CUP_O_LR_MG_TKA", 1, round (50 / GRLIB_recycling_percentage), 2],
+	["CUP_O_UH1H_slick_TKA", 1, round (90 / GRLIB_recycling_percentage), 2],
+	["CUP_O_BTR40_MG_TKA", 1, round (60 / GRLIB_recycling_percentage), 2],
+	["CUP_O_Mi17_TK", 1, round (50 / GRLIB_recycling_percentage), 2],
+	["CUP_O_V3S_Covered_TKM", 5, round (50 / GRLIB_recycling_percentage), 5],
+	["CUP_O_V3S_Open_TKM", 5, round (50 / GRLIB_recycling_percentage), 5],
+	["CUP_O_L39_TK", 10, round (100 / GRLIB_recycling_percentage), 15],
+	["CUP_O_AN2_TK", 10, round (100 / GRLIB_recycling_percentage), 10],
+	["CUP_O_MI6A_TKA", 20, round (90 / GRLIB_recycling_percentage), 30],
+	["CUP_O_MI6T_TKA", 20, round (90 / GRLIB_recycling_percentage), 30],
+	["CUP_O_Mi24_D_Dynamic_TK", 20, round (90 / GRLIB_recycling_percentage), 30],
+	["CUP_O_Su25_Dyn_TKA", 20, round (100 / GRLIB_recycling_percentage), 30],
+	["CUP_O_M113_TKA", 1, round (60 / GRLIB_recycling_percentage), 2],
+	["CUP_O_BRDM2_HQ_TKA", 1, round (60 / GRLIB_recycling_percentage), 2],
+	["CUP_O_BMP1_TKA", 1, round (60 / GRLIB_recycling_percentage), 2],
+	["CUP_O_LR_SPG9_TKA", 1, round (50 / GRLIB_recycling_percentage), 2],
+	["CUP_O_T90_RU", 1, round (80 / GRLIB_recycling_percentage), 2],
+	["CUP_O_T55_TK", 1, round (40 / GRLIB_recycling_percentage), 2],
+	["CUP_O_Ka52_RU", 1, round (100 / GRLIB_recycling_percentage), 2],
+	["CUP_O_Ka50_DL_RU", 1, round (100 / GRLIB_recycling_percentage), 2],
+	["CUP_O_C130J_TKA", 1, round (80 / GRLIB_recycling_percentage), 2],
+	["CUP_O_UH1H_armed_TKA", 1, round (50 / GRLIB_recycling_percentage), 2],
+	["CUP_O_UH1H_gunship_TKA", 1, round (50 / GRLIB_recycling_percentage), 2],
+	["CUP_O_Ural_ZU23_TKA", 1, round (30 / GRLIB_recycling_percentage), 2],
+	["CUP_O_BTR80_TK", 1, round (50 / GRLIB_recycling_percentage), 2],
+	["CUP_O_BTR80A_TK", 1, round (50 / GRLIB_recycling_percentage), 2],
+	["CUP_O_GAZ_Vodnik_Unarmed_RU", 1, round (50 / GRLIB_recycling_percentage), 2],
+	["CUP_O_BMP3_RU", 1, round (50 / GRLIB_recycling_percentage), 2],
+	["CUP_O_MTLB_pk_WDL_RU", 1, round (50 / GRLIB_recycling_percentage), 2],
+	["CUP_O_GAZ_Vodnik_KPVT_RU", 1, round (50 / GRLIB_recycling_percentage), 2],
+	["CUP_O_GAZ_Vodnik_AGS_RU", 1, round (50 / GRLIB_recycling_percentage), 2],
+	["CUP_O_GAZ_Vodnik_BPPU_RU", 1, round (50 / GRLIB_recycling_percentage), 2],
+	["CUP_O_BTR90_RU", 1, round (50 / GRLIB_recycling_percentage), 2],
+	["CUP_O_T72_RU", 1, round (50 / GRLIB_recycling_percentage), 2],
+	["CUP_O_2S6_RU", 1, round (100 / GRLIB_recycling_percentage), 2],
+	["CUP_O_2S6M_RU", 1, round (100 / GRLIB_recycling_percentage), 2],
+	["CUP_O_T34_TKA", 1, round (40 / GRLIB_recycling_percentage), 2],
+	["CUP_O_BTR40_TKM", 1, round (50 / GRLIB_recycling_percentage), 2],
+	["CUP_O_Hilux_zu23_TK_INS", 1, round (30 / GRLIB_recycling_percentage), 2],
+	["CUP_O_Hilux_UB32_TK_INS", 1, round (30 / GRLIB_recycling_percentage), 2],
+	["CUP_O_Hilux_SPG9_TK_INS", 1, round (30 / GRLIB_recycling_percentage), 2],
+	["CUP_O_Hilux_podnos_TK_INS", 1, round (30 / GRLIB_recycling_percentage), 2],
+	["CUP_O_Hilux_MLRS_TK_INS", 1, round (30 / GRLIB_recycling_percentage), 2],
+	["CUP_O_Hilux_metis_TK_INS", 1, round (30 / GRLIB_recycling_percentage), 2],
+	["CUP_O_Hilux_igla_TK_INS", 1, round (30 / GRLIB_recycling_percentage), 2],
+	["CUP_O_Hilux_DSHKM_TK_INS", 1, round (30 / GRLIB_recycling_percentage), 2],
+	["CUP_O_Hilux_unarmed_TK_INS", 1, round (30 / GRLIB_recycling_percentage), 2],
+	["CUP_O_Hilux_AGS30_TK_INS", 1, round (30 / GRLIB_recycling_percentage), 2],
+	["O_Plane_CAS_02_Cluster_F", 1, round (300 / GRLIB_recycling_percentage), 2],
+	["O_Plane_Fighter_02_F", 1, round (300 / GRLIB_recycling_percentage), 2],
+	["O_MBT_04_command_F", 1, round (150 / GRLIB_recycling_percentage), 2],
+	["O_MBT_04_cannon_F", 1, round (120 / GRLIB_recycling_percentage), 2],
+	["O_MBT_02_cannon_F", 1, round (100 / GRLIB_recycling_percentage), 2],
+	["CUP_O_T72_TKA", 1, round (60 / GRLIB_recycling_percentage), 2],
+	["E22_O_RAF_MBT_02_cannon_F", 1, round (60 / GRLIB_recycling_percentage), 2],
+	["E22_O_RAF_MBT_04_command_F", 1, round (60 / GRLIB_recycling_percentage), 2],
+	["E22_O_RAF_MBT_04_cannon_F", 1, round (60 / GRLIB_recycling_percentage), 2],
+	["E22_O_RAF_APC_Tracked_02_cannon_AA_F", 1, round (60 / GRLIB_recycling_percentage), 2],
+	["E22_O_RAF_MBT_02_arty_F", 1, round (60 / GRLIB_recycling_percentage), 2],
+	["E22_O_RAF_SAM_System_04_F", 1, round (60 / GRLIB_recycling_percentage), 2],
+	["E22_B_RAF_APC_Tracked_02_AA_F", 1, round (60 / GRLIB_recycling_percentage), 2],
+	["E22_B_RAF_APC_Wheeled_04_cannon_F", 1, round (60 / GRLIB_recycling_percentage), 2]
+];
+
+// loot crates for logistics 
+
+loot_crates = [
+
+	["Box_NATO_AmmoVeh_F", 0, round(box_recycle_value / GRLIB_recycling_percentage), 0],
+	["Box_East_AmmoVeh_F", 0, round(box_recycle_value / GRLIB_recycling_percentage), 0],
+	["Box_IND_AmmoVeh_F", 0, round(box_recycle_value / GRLIB_recycling_percentage), 0],
+	["Land_BarrelWater_F", 0, round(box_recycle_value / GRLIB_recycling_percentage), 0],
+	["Land_FoodSacks_01_large_brown_idap_F", 0, round(box_recycle_value / GRLIB_recycling_percentage), 0],
+	["Land_MetalBarrel_F", 0, round(box_recycle_value / GRLIB_recycling_percentage), 0]
+
 ];
 
 box_transport_config_east = [
-	[ "gm_gc_army_ural4320_cargo", -5.5, [0, -0.7, 0.04], [0, -2.4, 0.04] ]
+	 // [ "CUP_B_MTVR_BAF_DES", -6.5, [0, -0.4, 0.3], [0, -2.1, 0.3] ],  
+	[ "CUP_O_V3S_Covered_TKA", -5.5, [0, 0.3, 0], [0, -1.25, 0] ]
 ];
