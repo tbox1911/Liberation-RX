@@ -490,7 +490,7 @@ fast_air_vehicle = [
       ["CUP_B_AV8B_DYN_USMC",0,fast_air_vehicle_price_tier_5,0,GRLIB_perm_inf],
 
     //RHS 
-      ["RHS_A10",0,fast_air_vehicle_price_tier_4,0,GRLIB_perm_inf],
+      ["RHS_A10",0,fast_air_vehicle_price_tier_2,0,GRLIB_perm_inf],
     
     // CUP BAF
       ["CUP_B_GR9_DYN_GB", 0, fast_air_vehicle_price_tier_4, 0, GRLIB_perm_inf],
