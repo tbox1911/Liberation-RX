@@ -178,7 +178,6 @@ opfor_battlegroup_vehicles = [
 
 
 opfor_troup_transports = [
-	"CUP_O_Hilux_podnos_CHDKZ",
 	"CUP_O_Ural_RU",
 	"CUP_O_BMP2_TKA",
 	"CUP_O_BMP3_RU",
