@@ -38,27 +38,24 @@ opfor_ammo_container = "CUP_TKBasicAmmunitionBox_EP1";
 opfor_flag = "CUP_Flag_Black";
 
 militia_squad = [
-"CUP_O_RU_Soldier_AR",
-"CUP_O_RU_Commander",
-"CUP_O_RU_Soldier_GL",
-"CUP_O_RU_Engineer",
-"CUP_O_RU_Soldier_Marksman",
-"CUP_O_RU_Soldier_MG",
-"CUP_O_RU_Officer",
-"CUP_O_RU_Soldier_AA",
-"CUP_O_RU_Soldier_HAT",
-"CUP_O_RU_Soldier_LAT",
-"CUP_O_RU_Soldier_AT",
-"CUP_O_RU_Soldier_Saiga",
-"CUP_O_RU_Medic",
-"CUP_O_RU_Soldier",
-"CUP_O_RU_Soldier",
-"CUP_O_RU_Sniper",
-"CUP_O_RU_Spotter",
-"CUP_O_RU_Explosive_Specialist",
-"CUP_O_RU_Soldier_TL",
-"CUP_O_RU_Soldier_SL",
-"CUP_O_RU_Soldier_Marksman"
+"CUP_O_TK_INS_Soldier_AA",
+"CUP_O_TK_INS_Soldier_AR",
+"CUP_O_TK_INS_Guerilla_Medic",
+"CUP_O_TK_INS_Soldier_MG",
+"CUP_O_TK_INS_Bomber",
+"CUP_O_TK_INS_Mechanic",
+"CUP_O_TK_INS_Soldier_GL",
+"CUP_O_TK_INS_Soldier",
+"CUP_O_TK_INS_Soldier_FNFAL",
+"CUP_O_TK_INS_Soldier_Enfield",
+"CUP_O_TK_INS_Soldier_AAT",
+"CUP_O_TK_INS_Soldier_AT",
+"CUP_O_TK_INS_Sniper",
+"CUP_O_TK_INS_Soldier_TL",
+"CUP_O_TK_INS_Commander",
+"CUP_O_TK_SpecOps_MG",
+"CUP_O_TK_SpecOps",
+"CUP_O_TK_SpecOps_TL"
 ];
 
 militia_loadout_overide = [
@@ -215,6 +212,16 @@ opfor_recyclable = [
 	 // necessary so everyone can profit from logistics 
 
 	["CUP_O_BM21_RU", 0, round (60 / GRLIB_recycling_percentage), 0],
+	["CUP_O_Hilux_armored_BMP1_TK_INS", 1, round (50 / GRLIB_recycling_percentage), 2],
+	["CUP_O_Hilux_armored_BTR60_TK_INS", 1, round (50 / GRLIB_recycling_percentage), 2],
+	["CUP_O_Hilux_armored_podnos_TK_INS", 1, round (50 / GRLIB_recycling_percentage), 2],
+        ["CUP_O_Hilux_armored_SPG9_TK_INS", 1, round (50 / GRLIB_recycling_percentage), 2],
+	["CUP_O_Hilux_armored_igla_TK_INS", 1, round (50 / GRLIB_recycling_percentage), 2],
+	["CUP_O_M113A3_TKA", 1, round (50 / GRLIB_recycling_percentage), 2],
+	["CUP_O_Hilux_armored_MLRS_TK_INS", 1, round (50 / GRLIB_recycling_percentage), 2],
+        ["CUP_O_Hilux_armored_metis_TK_INS", 1, round (50 / GRLIB_recycling_percentage), 2],
+	["CUP_O_Hilux_armored_zu23_TK_INS", 1, round (50 / GRLIB_recycling_percentage), 2],
+	["CUP_O_Mi8_SLA_2", 1, round (50 / GRLIB_recycling_percentage), 2],
 	["CUP_O_BM21_TKA", 0, round (60 / GRLIB_recycling_percentage), 0],
 	["CUP_O_MTLB_pk_TK_MILITIA", 0, round (50 / GRLIB_recycling_percentage), 0],
 	["CUP_O_BTR40_MG_TKM", 0, round (60 / GRLIB_recycling_percentage), 0],
