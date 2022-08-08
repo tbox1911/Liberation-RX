@@ -568,17 +568,16 @@ USAF_A10 = ["USAF_PylonRack_2Rnd_AIM9X_LAU105","USAF_PylonRack_1Rnd_ANAAQ28",
 // 	_vehicle setPylonLoadout [_i, "", true]; 
 //};
 //	_vehicle setVariable ["ace_pylons_magazineWhitelist",USAF_A10, true]}, nil, nil, true] call CBA_fnc_addClassEventHandler;
-//
-//
-//CUP_B_MH60L_DAP_2x_US = ["CUP_PylonPod_1200Rnd_TE1_Red_Tracer_M621_20mm_HE_M",
-//"CUP_PylonPod_1200Rnd_TE1_Red_Tracer_GAU19A_M","CUP_PylonPod_2000Rnd_TE5_Red_Tracer_762x51_M134A_M",
-//"CUP_PylonPod_1200Rnd_TE1_Red_Tracer_30x113mm_M789_HEDP_M","CUP_PylonPod_2000Rnd_TE5_Red_Tracer_762x51_M134A_M",
-//"CUP_PylonPod_1200Rnd_TE1_Red_Tracer_GAU19A_M","CUP_PylonPod_2Rnd_AGM114L_Hellfire_II_M",
-//"FIR_Poniard_P_7rnd_M","CUP_PylonPod_1200Rnd_TE1_Red_Tracer_M621_20mm_HE_M",
-//"CUP_PylonPod_19Rnd_Rocket_FFAR_M","CUP_PylonPod_19Rnd_Rocket_FFAR_M",
-//"CUP_PylonPod_7Rnd_Rocket_FFAR_M","CUP_PylonPod_1200Rnd_TE1_Red_Tracer_M621_20mm_HE_M",
-//"CUP_PylonPod_1200Rnd_TE1_Red_Tracer_GAU19A_M","CUP_PylonPod_2000Rnd_TE5_Red_Tracer_762x51_M134A_M",
-//"CUP_PylonPod_1200Rnd_TE1_Red_Tracer_30x113mm_M789_HEDP_M"];
+
+CUP_B_MH60L_DAP_2x_US = ["CUP_PylonPod_1200Rnd_TE1_Red_Tracer_M621_20mm_HE_M",
+"CUP_PylonPod_1200Rnd_TE1_Red_Tracer_GAU19A_M","CUP_PylonPod_2000Rnd_TE5_Red_Tracer_762x51_M134A_M",
+"CUP_PylonPod_1200Rnd_TE1_Red_Tracer_30x113mm_M789_HEDP_M","CUP_PylonPod_2000Rnd_TE5_Red_Tracer_762x51_M134A_M",
+"CUP_PylonPod_1200Rnd_TE1_Red_Tracer_GAU19A_M","CUP_PylonPod_2Rnd_AGM114L_Hellfire_II_M",
+"FIR_Poniard_P_7rnd_M","CUP_PylonPod_1200Rnd_TE1_Red_Tracer_M621_20mm_HE_M",
+"CUP_PylonPod_19Rnd_Rocket_FFAR_M","CUP_PylonPod_19Rnd_Rocket_FFAR_M",
+"CUP_PylonPod_7Rnd_Rocket_FFAR_M","CUP_PylonPod_1200Rnd_TE1_Red_Tracer_M621_20mm_HE_M",
+"CUP_PylonPod_1200Rnd_TE1_Red_Tracer_GAU19A_M","CUP_PylonPod_2000Rnd_TE5_Red_Tracer_762x51_M134A_M",
+"CUP_PylonPod_1200Rnd_TE1_Red_Tracer_30x113mm_M789_HEDP_M"];
 
 ["CUP_B_MH60L_DAP_2x_US", "InitPost", {
     params ["_vehicle"];
