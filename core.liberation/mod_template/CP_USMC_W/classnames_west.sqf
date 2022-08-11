@@ -399,8 +399,9 @@ air_vehicles = [
       ["CUP_B_UH1Y_UNA_USMC",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf],
       ["CUP_B_UH1Y_Gunship_Dynamic_USMC",0,air_vehicle_price_tier_8,0,GRLIB_perm_inf],
       ["CUP_I_412_Military_Radar_PMC",0,air_vehicle_price_tier_3,0,GRLIB_perm_inf],
+      ["CUP_I_412_Mil_Transport_PMC",0,air_vehicle_price_tier_3,0,GRLIB_perm_inf],
       ["CUP_I_412_Military_Armed_AT_PMC",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],
-      ["CUP_I_Ka60_GL_Blk_ION",0,air_vehicle_price_tier_5,0,GRLIB_perm_inf],
+      ["O_Heli_Light_02_unarmed_F",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf],
       ["CUP_B_AW159_Unarmed_GER",0,air_vehicle_price_tier_3,0,GRLIB_perm_inf],
       ["CUP_B_AW159_GERdd",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],
 
