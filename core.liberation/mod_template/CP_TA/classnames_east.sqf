@@ -101,7 +101,6 @@ opfor_vehicles =  [
 	"CUP_O_T55_TK",
 	"CUP_O_Hilux_armored_BMP1_TK_INS",
 	"CUP_O_Hilux_armored_BTR60_TK_INS",
-	"CUP_O_Hilux_armored_podnos_TK_INS",
 	"CUP_O_MTLB_pk_TK_MILITIA"
 ];
 
@@ -117,7 +116,6 @@ opfor_vehicles_low_intensity = [
 	"CUP_O_BTR60_TK",
 	"CUP_O_BTR80_TK",
 	"CUP_O_T55_TK",
-	"CUP_O_Hilux_podnos_CHDKZ",
 	"CUP_O_BTR80A_TK"
 ];
 
@@ -146,7 +144,6 @@ opfor_reinforcement_vehicles = [
 	"CUP_O_M113A3_TKA",
 	"CUP_O_Ural_RU",
 	"CUP_O_Ural_RU",
-	"CUP_O_Hilux_podnos_CHDKZ",
 	"CUP_O_Hilux_armored_BTR60_TK_INS",
 	"CUP_O_BTR80A_TK",
 	"CUP_O_Hilux_armored_zu23_TK_INS",
@@ -204,7 +201,6 @@ opfor_air = [
 ];
 
 opfor_statics = [
-	"CUP_O_Hilux_podnos_CHDKZ",
 	"CUP_O_BM21_TKA"
 ];
 
