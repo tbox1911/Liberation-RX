@@ -124,7 +124,7 @@ speak_mission_delivery_4 = {
 	if (_unit getVariable ["GRLIB_A3W_Mission_DF", false]) then { _txt1 = "Fuel" };
 	if (_unit getVariable ["GRLIB_A3W_Mission_DN", false]) then { _txt1 = "Food"; _txt2 = "pallets" };
 
-	_unit switchMove "AmovPercMstpSrasWrflDnon_Salute";
+	_unit playMoveNow "AmovPercMstpSrasWrflDnon_Salute";
 	player globalChat "Hello, What do you need ?";
 	uIsleep 2;
 	gamelogic globalChat format ["Hi, We running out of %1 !", _txt1];
@@ -133,7 +133,8 @@ speak_mission_delivery_4 = {
 	uIsleep 2;
 	gamelogic globalChat format ["I will wait here for you to come back with the %1, Please hurry up!", _txt2];
 	sleep 3;
-	_unit switchMove "LHD_krajPaluby"
+	_unit switchMove "LHD_krajPaluby";
+	_unit playMoveNow "LHD_krajPaluby";
 };
 
 GRLIB_speaking = true;

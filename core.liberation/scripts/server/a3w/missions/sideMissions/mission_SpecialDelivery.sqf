@@ -60,15 +60,7 @@ _setupObjects =
 		_x setVariable ['GRLIB_can_speak', true, true];
 		_x setVariable ['GRLIB_A3W_Mission_SD', true, true];
 		_x allowDamage false;
-		_x disableAI "MOVE";
-		_x disableAI "ANIM";
-		_x removeAllEventHandlers "AnimDone";
-		_x addEventHandler [ "AnimDone", {
-			params[ "_unit", "_anim" ];
-			if ( _anim == "LHD_krajPaluby" ) then { _unit switchMove "LHD_krajPaluby" };
-		}];
-		sleep 1;
-		[_x,"LHD_krajPaluby"] remoteExec ["switchMove"];
+		[_x, "LHD_krajPaluby"] spawn F_startAnimMP;
 	} forEach GRLIB_A3W_Mission_SD;
 
 	_man4 enableAI "Cover";
