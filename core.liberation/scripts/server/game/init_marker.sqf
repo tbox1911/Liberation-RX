@@ -94,6 +94,13 @@ _grp_shop = createGroup [GRLIB_side_civilian, true];
     _man setPosASL _manPos;
     _man setDir _deskDir; 
     [_man, "AidlPercMstpSnonWnonDnon_AI"] spawn F_startAnimMP;
+    [_man, _manPos] spawn {
+        params ["_unit", "_pos"];
+        while {true} do {
+          if ((getPosATL _unit) distance2D _pos >= 2) then { _unit setPosASL _pos};
+          sleep 5;
+        };
+    };
     sleep 0.1;
 } forEach GRLIB_Marker_SHOP;
 
