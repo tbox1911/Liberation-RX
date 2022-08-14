@@ -41,6 +41,14 @@ if (GRLIB_cleanup_vehicles == 0) exitWith {};
 
 //==================== FORCE DELETE
 private _force_cleanup_classnames = [
+	"BloodSpray_01_New_F",
+	"BloodPool_01_Large_New_F",
+	"BloodPool_01_Medium_New_F",
+	"BloodSplatter_01_Large_New_F",
+	"BloodSplatter_01_Medium_New_F",
+	"BloodSplatter_01_Small_New_F",
+	"MedicalGarbage_01_3x3_v1_F",
+	"MedicalGarbage_01_3x3_v2_F",
 	"rhs_k36d5_seat",
 	"rhs_ka52_blade",
 	"rhs_ka52_ejection_vest",
@@ -127,7 +135,9 @@ while {deleteManagerPublic} do {
 	} else {
 		sleep _checkFrequencyDefault;
 	};
-
+	//================================= FORCE DELETE
+	{ if (typeOf _x in _force_cleanup_classnames) then { deleteVehicle _x; _stats = _stats + 1 } } forEach (allMissionObjects "All");
+	sleep 1;
 	//================================= LRX TTL UNITS
 	private _units_ttl = [] call _getTTLunits;
 	if (count _units_ttl > 0) then {
@@ -144,9 +154,6 @@ while {deleteManagerPublic} do {
 			};
 		} count _units_ttl;
 	};
-	sleep 1;
-	//================================= FORCE DELETE
-	{ if (typeOf _x in _force_cleanup_classnames) then { deleteVehicle _x } } forEach (vehicles);
 	sleep 1;
 	//================================= DEAD MEN
 	if (!(_deadMenLimit isEqualTo -1)) then {
@@ -269,7 +276,7 @@ while {deleteManagerPublic} do {
 	sleep 1;
 
 	// Object WeaponHolderSimulated can't have zero or negative mass!
-	{ if (round (getMass _x) <= 0) then { _x setMass 1 } } forEach (entities "WeaponHolderSimulated");
+	{ if (round (getMass _x) <= 0) then { deleteVehicle _x } } forEach (entities "WeaponHolderSimulated");
 	sleep 1;
 	//================================= MINES
 	if (!(_minesLimit isEqualTo -1)) then {
