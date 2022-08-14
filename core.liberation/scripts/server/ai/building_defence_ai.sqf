@@ -33,6 +33,7 @@ while { _move_is_disabled && local _unit && alive _unit && !(captive _unit) } do
 			_unit enableAI "MOVE";
 			_unit setUnitPos "AUTO";
 			_unit switchMove "amovpknlmstpsraswrfldnon";
+			_unit playMoveNow "amovpknlmstpsraswrfldnon";
 		};
 	};
 

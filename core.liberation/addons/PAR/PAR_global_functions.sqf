@@ -33,6 +33,7 @@ PAR_unblock_AI = {
 				_unit enableAI "ALL";
 				_unit doFollow leader player;
 				_unit switchMove "amovpknlmstpsraswrfldnon";
+				_unit playMoveNow "amovpknlmstpsraswrfldnon";
 			} else {
 				hintSilent "Unit is too far or is unconscious. (max 50m)";
 			};

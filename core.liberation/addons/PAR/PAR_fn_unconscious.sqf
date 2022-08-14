@@ -24,6 +24,8 @@ if (GRLIB_disable_death_chat && isPlayer _unit) then {
   1 enableChannel false;
 };
 _unit switchMove "AinjPpneMstpSnonWrflDnon";  // lay down
+_unit playMoveNow "AinjPpneMstpSnonWrflDnon";
+ 
 sleep 8;
 
 [

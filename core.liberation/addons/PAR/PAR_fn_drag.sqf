@@ -6,6 +6,8 @@ _target setDir 180;
 _target setVariable ["PAR_isDragged", 1, true];
 
 player switchMove "AcinPknlMstpSrasWrflDnon";
+player playMoveNow "AcinPknlMstpSrasWrflDnon";
+
 sleep 1;
 
 // Wait until release action is used
@@ -20,12 +22,14 @@ waitUntil {
 if (!isNull _target && alive _target) then
 {
 	_target switchMove "AinjPpneMstpSnonWrflDnon";
+	_target playMoveNow  "AinjPpneMstpSnonWrflDnon";
 	_target setVariable ["PAR_isDragged", 0, true];
 	detach _target;
 };
 
 // Switch back to default animation
 player switchMove "amovpknlmstpsraswrfldnon";
+player playMoveNow "amovpknlmstpsraswrfldnon";
 sleep 1;
 
 // Handle release action

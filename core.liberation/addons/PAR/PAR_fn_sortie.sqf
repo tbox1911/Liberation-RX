@@ -71,6 +71,7 @@ if (isPlayer _wnded) then {
   };
 } else {
   _wnded switchMove "amovpknlmstpsraswrfldnon"; //go up
+  _wnded playMoveNow "amovpknlmstpsraswrfldnon";
   _wnded setSpeedMode (speedMode group player);
 };
 [_medic, _wnded] call PAR_fn_medicRelease;

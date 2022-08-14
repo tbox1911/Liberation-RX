@@ -36,7 +36,10 @@ while {alive _unit} do {
 	if (count _targets > 0) then {
 		_target = _targets select 0;
 		_unit doMove (getPos _target);
-		if (round (speed _unit) == 0) then { _unit switchMove "amovpknlmstpsraswrfldnon" };
+		if (round (speed _unit) == 0) then { 
+			_unit switchMove "amovpknlmstpsraswrfldnon";
+			_unit playMoveNow "amovpknlmstpsraswrfldnon";
+		};
 
 		if (_unit distance2D _target < 20) then {
 			_expl1 = "DemoCharge_Remote_Ammo" createVehicle getPos _unit;
