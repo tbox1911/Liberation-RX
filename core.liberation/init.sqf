@@ -328,6 +328,11 @@ if (tkill_script) then {
 	_vehicle setVariable ["ace_medical_medicClass", 1];
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
+["rhsusf_M1085A1P2_B_D_Medical_fmtv_usarmy", "InitPost", {
+    params ["_vehicle"];
+	_vehicle setVariable ["ace_medical_medicClass", 1];
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
 ["ffaa_et_lince_ambulancia", "InitPost", {
     params ["_vehicle"];
 	_vehicle setVariable ["ace_medical_medicClass", 1];
@@ -647,7 +652,7 @@ CUP_B_MH60L_DAP_4x_US =["CUP_PylonPod_1200Rnd_TE1_Red_Tracer_M621_20mm_HE_M",
 
 
 CUP_B_AH6M_USA = ["FIR_Hydra_WDU4_P_7rnd_M","FIR_Hydra_M282_P_7rnd_M","FIR_Hydra_M247_P_7rnd_M",
-"FIR_Hydra_M261_P_7rnd_M","FIR_Hydra_M229_P_7rnd_M","FIR_APKWS_P_7rnd_M",
+"FIR_Hydra_M261_P_7rnd_M","FIR_Hydra_M229_P_7rnd_M","FIR_APKWS_P_7rnd_M","PylonRack_ffaa_12Rnd_tigre_sneb_68mm","PylonRack_ffaa_22Rnd_tigre_sneb_68mm",
 "CUP_PylonPod_7Rnd_Rocket_FFAR_M","CUP_PylonPod_7Rnd_Rocket_FFAR_M"];
 
 
@@ -660,7 +665,7 @@ CUP_B_AH6M_USA = ["FIR_Hydra_WDU4_P_7rnd_M","FIR_Hydra_M282_P_7rnd_M","FIR_Hydra
 	_vehicle setVariable ["ace_pylons_magazineWhitelist", CUP_B_AH6M_USA, true]}, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
 
-RHS_MELB_AH6M = ["rhs_mag_M229_7","rhs_mag_m134_pylon_3000","rhs_mag_m134_pylon_3000",
+RHS_MELB_AH6M = ["rhs_mag_M229_7","rhs_mag_m134_pylon_3000","rhs_mag_m134_pylon_3000","rhs_mag_M151_19",
 "rhs_mag_M151_7","rhs_mag_ATAS_2","rhs_mag_m134_pylon_3000","rhs_mag_m134_pylon_3000","rhs_mag_M151_7"];
 
 ["RHS_MELB_AH6M", "InitPost", {
