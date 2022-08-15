@@ -64,8 +64,8 @@ civkill_score = 0;
 civkill_ammo = -100;
 tkill_score = -4;
 tkill_ammo = -40;
-tkill_script = false;
-tk_active = true; //NEW Tkillscript with dialog
+tkill_script = true;
+tk_active = false; //NEW Tkillscript with dialog
 
 // Only use by 2 dividable numbers
 box_recycle_value = 40;
