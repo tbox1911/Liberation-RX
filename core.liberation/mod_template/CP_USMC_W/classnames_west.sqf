@@ -132,6 +132,9 @@ light_vehicles = [
     ["B_Truck_01_transport_F",0,light_vehicle_price_tier_4,0,GRLIB_perm_inf],
     ["B_Truck_01_covered_F",0,light_vehicle_price_tier_4,0,GRLIB_perm_inf],
     ["B_Truck_01_medical_F",0,light_vehicle_price_tier_4,0,GRLIB_perm_inf],
+    ["B_GEN_Van_02_transport_F",0,light_vehicle_price_tier_2,0,GRLIB_perm_inf],
+    ["B_GEN_Offroad_01_comms_F",0,light_vehicle_price_tier_2,0,GRLIB_perm_inf],
+    ["B_GEN_Offroad_01_gen_F",0,light_vehicle_price_tier_2,0,GRLIB_perm_inf],
   // Boats
     // CUP
       ["CUP_B_LCU1600_USMC",0,light_vehicle_price_tier_1,0,GRLIB_perm_inf],
@@ -401,6 +404,7 @@ air_vehicles = [
       ["CUP_I_412_Military_Radar_PMC",0,air_vehicle_price_tier_3,0,GRLIB_perm_inf],
       ["CUP_I_412_Mil_Transport_PMC",0,air_vehicle_price_tier_3,0,GRLIB_perm_inf],
       ["CUP_I_412_Military_Armed_AT_PMC",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],
+      ["CUP_B_412_dynamicLoadout_HIL",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],
       ["O_Heli_Light_02_unarmed_F",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf],
       ["CUP_B_AW159_Unarmed_GER",0,air_vehicle_price_tier_3,0,GRLIB_perm_inf],
       ["CUP_B_AW159_GERdd",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],
@@ -489,6 +493,8 @@ fast_air_vehicle = [
   // Jets
     // CUP
       ["CUP_B_AV8B_DYN_USMC",0,fast_air_vehicle_price_tier_5,0,GRLIB_perm_inf],
+      ["CUP_B_CESSNA_T41_UNARMED_USA",0,air_vehicle_price_tier_1 ,0,GRLIB_perm_inf],
+      ["CUP_B_CESSNA_T41_ARMED_USA",0,fast_air_vehicle_price_tier_2,0,GRLIB_perm_inf],
 
     //RHS 
       ["RHS_A10",0,fast_air_vehicle_price_tier_2,0,GRLIB_perm_inf],
