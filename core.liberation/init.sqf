@@ -724,7 +724,7 @@ B_UAV_05_F =  ["PylonMissile_Missile_HARM_INT_x1","PylonMissile_Bomb_GBU12_x1","
 CUP_B_AH64D_DL_USA = ["CUP_PylonPod_19Rnd_Rocket_FFAR_M","CUP_PylonPod_4Rnd_AGM114L_Hellfire_II_M",
 "CUP_PylonPod_4Rnd_AGM114L_Hellfire_II_M","CUP_PylonPod_19Rnd_Rocket_FFAR_M",
 "CUP_PylonPod_1Rnd_AIM_9L_Sidewinder_M","CUP_PylonPod_1Rnd_AIM_9L_Sidewinder_M",
-"CUP_PylonPod_19Rnd_Rocket_FFAR_M","CUP_PylonPod_19Rnd_Rocket_FFAR_M",
+"CUP_PylonPod_19Rnd_Rocket_FFAR_M","CUP_PylonPod_19Rnd_Rocket_FFAR_M","PylonRack_4Rnd_ACE_Hellfire_AGM114K","PylonRack_4Rnd_ACE_Hellfire_AGM114L","PylonRack_4Rnd_ACE_Hellfire_AGM114N",
 "CUP_PylonPod_19Rnd_Rocket_FFAR_M","CUP_PylonPod_19Rnd_Rocket_FFAR_M",
 "CUP_PylonPod_1Rnd_AIM_9L_Sidewinder_M","CUP_PylonPod_1Rnd_AIM_9L_Sidewinder_M",
 "CUP_PylonPod_2Rnd_AGM114L_Hellfire_II_M","CUP_PylonPod_4Rnd_AGM114L_Hellfire_II_M",
@@ -738,13 +738,31 @@ CUP_B_AH64D_DL_USA = ["CUP_PylonPod_19Rnd_Rocket_FFAR_M","CUP_PylonPod_4Rnd_AGM1
  	_vehicle setPylonLoadout [_i, "", true]; 
 };
 	_vehicle setVariable ["ace_pylons_magazineWhitelist",CUP_B_AH64D_DL_USA , true]}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+	
+	UK3CB_BAF_Apache_AH1_Generic = ["CUP_PylonPod_19Rnd_Rocket_FFAR_M","CUP_PylonPod_4Rnd_AGM114L_Hellfire_II_M",
+"CUP_PylonPod_4Rnd_AGM114L_Hellfire_II_M","CUP_PylonPod_19Rnd_Rocket_FFAR_M",
+"CUP_PylonPod_1Rnd_AIM_9L_Sidewinder_M","CUP_PylonPod_1Rnd_AIM_9L_Sidewinder_M",
+"CUP_PylonPod_19Rnd_Rocket_FFAR_M","CUP_PylonPod_19Rnd_Rocket_FFAR_M","PylonRack_4Rnd_ACE_Hellfire_AGM114K","PylonRack_4Rnd_ACE_Hellfire_AGM114L","PylonRack_4Rnd_ACE_Hellfire_AGM114N",
+"CUP_PylonPod_19Rnd_Rocket_FFAR_M","CUP_PylonPod_19Rnd_Rocket_FFAR_M","rhs_mag_DAGR_8","PylonRack_ffaa_22Rnd_tigre_sneb_68mm","PylonRack_ffaa_4Rnd_tigre_spike",
+"CUP_PylonPod_1Rnd_AIM_9L_Sidewinder_M","CUP_PylonPod_1Rnd_AIM_9L_Sidewinder_M","FIR_Hydra_M229_P_19rnd_M","FIR_Hydra_LAU130_P_19rnd_M","UK3CB_BAF_PylonPod_19Rnd_CRV7_PG_HEISAP","FIR_AIM9X_P_2rnd_M",
+"CUP_PylonPod_2Rnd_AGM114L_Hellfire_II_M","CUP_PylonPod_4Rnd_AGM114L_Hellfire_II_M",
+"CUP_PylonPod_4Rnd_AGM114L_Hellfire_II_M","CUP_PylonPod_2Rnd_AGM114L_Hellfire_II_M",
+"CUP_PylonPod_1Rnd_AIM_9L_Sidewinder_M","CUP_PylonPod_1Rnd_AIM_9L_Sidewinder_M"];
+
+["UK3CB_BAF_Apache_AH1_Generic", "InitPost", {
+    params ["_vehicle"];
+		private _pylon = getPylonMagazines _vehicle;
+	for "_i" from 1 to (count _pylon) do { 
+ 	_vehicle setPylonLoadout [_i, "", true]; 
+};
+	_vehicle setVariable ["ace_pylons_magazineWhitelist",UK3CB_BAF_Apache_AH1_Generic , true]}, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
 
 CUP_B_AH1Z_Dynamic_USMC = ["CUP_PylonPod_1Rnd_AIM_9L_Sidewinder_M","CUP_PylonPod_2Rnd_AGM114K_Hellfire_II_M",
 "CUP_PylonPod_2Rnd_AGM114K_Hellfire_II_M","CUP_PylonPod_2Rnd_AGM114K_Hellfire_II_M",
 "CUP_PylonPod_2Rnd_AGM114K_Hellfire_II_M","CUP_PylonPod_1Rnd_AIM_9L_Sidewinder_M",
 "CUP_PylonPod_1Rnd_AIM_9L_Sidewinder_M","CUP_PylonPod_19Rnd_Rocket_FFAR_M",
-"CUP_PylonPod_19Rnd_Rocket_FFAR_M","CUP_PylonPod_19Rnd_Rocket_FFAR_M",
+"CUP_PylonPod_19Rnd_Rocket_FFAR_M","CUP_PylonPod_19Rnd_Rocket_FFAR_M","PylonRack_4Rnd_ACE_Hellfire_AGM114K","PylonRack_4Rnd_ACE_Hellfire_AGM114L","PylonRack_4Rnd_ACE_Hellfire_AGM114N",
 "CUP_PylonPod_19Rnd_Rocket_FFAR_M","CUP_PylonPod_1Rnd_AIM_9L_Sidewinder_M",
 "CUP_PylonPod_1Rnd_AIM_9L_Sidewinder_M","FIR_Hydra_WDU4_P_7rnd_M",
 "CUP_PylonPod_2Rnd_AGM114K_Hellfire_II_M","CUP_PylonPod_19Rnd_Rocket_FFAR_M",
