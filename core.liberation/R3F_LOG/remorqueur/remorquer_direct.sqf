@@ -100,12 +100,18 @@ else
 			// Quelques corrections visuelles pour des classes sp�cifiques
 			_offset_attach_x = 0;
 			_offset_attach_y = 0.2;
-			_offset_attach_z = 0;
+			_offset_attach_z = 0.1;
 			if (typeOf _remorqueur == "B_Truck_01_mover_F") then {_offset_attach_y = 1.0};
+		
+			if (typeOf _remorqueur isKindOf "Truck_02_base_F") then {_offset_attach_y = 5.0};
+			if (typeOf _objet isKindOf "Truck_02_base_F") then {_offset_attach_y = 3.0};
+
 			if (typeOf _remorqueur isKindOf "CUP_UAZ_Base") then {_offset_attach_z = 2.6};
 			if (typeOf _objet isKindOf "CUP_UAZ_Base") then {_offset_attach_z = _offset_attach_z - 2.4};
+
 			if (typeOf _remorqueur isKindOf "rhs_btr_base") then {_offset_attach_z = 1.6};
 			if (typeOf _objet isKindOf "rhs_btr_base") then {_offset_attach_z = _offset_attach_z - 1.1};
+
 		    if (typeOf _remorqueur isKindOf "rhs_bmp_base") then {_offset_attach_z = 1.0};
 		    if (typeOf _objet isKindOf "rhs_bmp_base") then {_offset_attach_z = _offset_attach_z - 1.0};			
 			
