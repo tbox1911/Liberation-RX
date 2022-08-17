@@ -34,6 +34,8 @@ while { _move_is_disabled && local _unit && alive _unit && !(captive _unit) } do
 			_unit setUnitPos "AUTO";
 			_unit switchMove "amovpknlmstpsraswrfldnon";
 			_unit playMoveNow "amovpknlmstpsraswrfldnon";
+			(group _unit) setCombatMode "RED";
+			(group _unit) setCombatBehaviour "COMBAT";
 		};
 	};
 
@@ -48,5 +50,4 @@ while { _move_is_disabled && local _unit && alive _unit && !(captive _unit) } do
 	};
 
 	sleep 3;
-
 };

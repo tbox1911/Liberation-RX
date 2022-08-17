@@ -1,23 +1,25 @@
 params ["_base_position", "_enable_objectives", "_enable_defenders"];
 
 private _fob_templates = [
-"scripts\fob_templates\template5.sqf",
-"scripts\fob_templates\template4.sqf",
-"scripts\fob_templates\template3.sqf",
-"scripts\fob_templates\template2.sqf",
-"scripts\fob_templates\template1.sqf"
+    "scripts\fob_templates\template5.sqf",
+    "scripts\fob_templates\template4.sqf",
+    "scripts\fob_templates\template3.sqf",
+    "scripts\fob_templates\template2.sqf",
+    "scripts\fob_templates\template1.sqf"
 ];
 
 // Build Base
 private _base_objects = [];
 private _base_objectives = [];
 private _base_defenders = [];
-private _template = ([] call (compile preprocessFileLineNumbers ( selectRandom _fob_templates )));
+private _template_selected = selectRandom _fob_templates;
+private _template = ([] call compile preprocessFileLineNumbers _template_selected);
 private _objects_to_build = _template select 0;
 private _objectives_to_build = _template select 1;
 private _defenders_to_build = _template select 2;
 private _base_corners =  _template select 3;
-diag_log format ["--- LRX Spawn Outpost pos %1 at %2", _base_position, time];
+diag_log format ["--- LRX Spawn Outpost at %1", time];
+diag_log format ["  Outpost type: %1 position: %2", _template_selected, _base_position];
 
 {
 	_nextclass = _x select 0;
@@ -84,6 +86,9 @@ if (_enable_defenders) then {
         _nextpos = [((_base_position select 0) + (_nextpos select 0)),((_base_position select 1) + (_nextpos select 1)),(_nextpos select 2)];
         _nextdir = _nextentry select 2;
         _unit = _grpdefenders createUnit [_nextclass, _nextpos, [], 5, "NONE"];
+        _unit setSkill 0.65;
+		_unit setSkill ["courage", 1];
+		_unit allowFleeing 0;
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
         [_unit] joinSilent _grpdefenders;
         _unit setpos _nextpos;
