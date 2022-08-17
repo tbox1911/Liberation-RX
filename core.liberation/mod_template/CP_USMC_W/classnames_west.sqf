@@ -498,6 +498,7 @@ fast_air_vehicle = [
     // USAF
       ["USAF_C130J_Cargo",0,fast_air_vehicle_price_tier_1,0,GRLIB_perm_inf],
       ["USAF_C130J",0,fast_air_vehicle_price_tier_1,0,GRLIB_perm_inf],
+      ["USAF_AC130U",0,air_vehicle_price_tier_15,0,GRLIB_perm_inf],
       ["USAF_C17",0,fast_air_vehicle_price_tier_1,0,GRLIB_perm_inf],
     //RHS
 	    ["RHS_C130J_Cargo",0,fast_air_vehicle_price_tier_1,0,GRLIB_perm_inf],
