@@ -707,6 +707,18 @@ ffaa_ea_reaper = ["PylonMissile_1Rnd_Missile_AA_04_F","CUP_PylonPod_1Rnd_GBU12_M
  	_vehicle setPylonLoadout [_i, "", true]; 
 };
 	_vehicle setVariable ["ace_pylons_magazineWhitelist", ffaa_ea_reaper, true]}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+	
+CUP_B_CESSNA_T41_ARMED_USA = ["CUP_PylonPod_2000Rnd_TE5_Red_Tracer_762x51_M134A_M","CUP_PylonPod_1200Rnd_TE1_Red_Tracer_M621_20mm_HE_M",
+"FIR_Hydra_M229_P_19rnd_M","CUP_PylonPod_1200Rnd_TE1_Red_Tracer_GAU19A_M","FIR_APKWS_P_7rnd_M","FIR_APKWS_M282_P_7rnd_M","PylonRack_ffaa_12Rnd_tigre_sneb_68mm","PylonRack_ffaa_22Rnd_tigre_sneb_68mm",
+"FIR_AIM9X_P_2rnd_M","CUP_PylonPod_1Rnd_GBU12_M"];
+
+["CUP_B_CESSNA_T41_ARMED_USA", "InitPost", {
+    params ["_vehicle"];
+		private _pylon = getPylonMagazines _vehicle;
+	for "_i" from 1 to (count _pylon) do { 
+ 	_vehicle setPylonLoadout [_i, "", true]; 
+};
+	_vehicle setVariable ["ace_pylons_magazineWhitelist",CUP_B_CESSNA_T41_ARMED_USA , true]}, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
 
 B_UAV_05_F =  ["PylonMissile_Missile_HARM_INT_x1","PylonMissile_Bomb_GBU12_x1","FIR_GBU32_Navy_P_1rnd_M",
