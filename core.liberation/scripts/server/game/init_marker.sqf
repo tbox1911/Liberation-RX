@@ -104,6 +104,6 @@ _grp_shop = createGroup [GRLIB_side_civilian, true];
     sleep 0.1;
 } forEach GRLIB_Marker_SHOP;
 
-sleep 2;
+sleep 4;
 GRLIB_marker_init = true;
 publicVariable "GRLIB_marker_init";
