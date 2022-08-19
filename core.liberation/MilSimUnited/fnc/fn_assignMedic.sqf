@@ -23,7 +23,8 @@ private _action = ["assign_Medic", "assign Medic", "", {
 	} else {hint format [localize "STR_MSU_PLMED"]};
 }, {
 	// Condition
-	(round (_Player distance2D ([] call F_getNearestFob)) < 400 || (_Player distance2D lhd) <= 400) && (_Player getVariable ["ace_medical_medicclass", true] == 0 ) && (_Player getVariable ["ACE_isEngineer", true] == 0) && ["IsGroupRegistered", [group _Player]] call BIS_fnc_dynamicGroups;
+	/* (round (_Player distance2D ([] call F_getNearestFob)) < 400 || (_Player distance2D lhd) <= 400) && (_Player getVariable ["ace_medical_medicclass", true] == 0 ) && */
+	(_Player getVariable ["ACE_isEngineer", true] == 0) && ["IsGroupRegistered", [group _Player]] call BIS_fnc_dynamicGroups;
 }] call ace_interact_menu_fnc_createAction;
 
 ["CAManBase", 1, ["ACE_SelfActions", "ACE_TeamManagement"], _action, true] call ace_interact_menu_fnc_addActionToClass;
@@ -49,6 +50,7 @@ if (isNil "support_medic_restriction") then {
 	support_medic_restriction = false
 };
 
+/*
 if (support_medic_restriction) then {
 	[
 		{
@@ -67,3 +69,4 @@ if (support_medic_restriction) then {
 		}, 60, [Support_Squad]
 	] call CBA_fnc_addPerFrameHandler;
 };
+*/

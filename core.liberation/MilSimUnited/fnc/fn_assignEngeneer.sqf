@@ -18,7 +18,8 @@ private _action = ["assign_Engeneer","assign EOD","",{
 
 },{
 	//Condition
-	(round (player distance2D ([] call F_getNearestFob)) < 400 || (player distance2D lhd) <= 400)&& (_Player getVariable ["ace_medical_medicclass",0] == 0 ) && (_Player getVariable ["ACE_isEngineer", 0] == 0 ) && ["IsGroupRegistered", [group player]] call BIS_fnc_dynamicGroups;
+	/* (round (player distance2D ([] call F_getNearestFob)) < 400 || (player distance2D lhd) <= 400) && (_Player getVariable ["ACE_isEngineer", 0] == 0 ) && */
+	(_Player getVariable ["ace_medical_medicclass",0] == 0 ) && ["IsGroupRegistered", [group player]] call BIS_fnc_dynamicGroups;
 }] call ace_interact_menu_fnc_createAction;
 
 ["CAManBase", 1, ["ACE_SelfActions","ACE_TeamManagement"],_action,true] call ace_interact_menu_fnc_addActionToClass;
