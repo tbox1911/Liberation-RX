@@ -42,7 +42,7 @@ while { true } do {
 
 	_units_blu = { alive _x && isNull objectparent _x && (_x distance2D lhd) >= 500 } count units GRLIB_side_friendly;
 	_units_opf = { alive _x && isNull objectparent _x} count units GRLIB_side_enemy;
-	_units_civ = { alive _x && isNull objectparent _x} count units GRLIB_side_civilian;
+	_units_civ = { alive _x && isNull objectparent _x && !(typeOf _x in [SHOP_Man, SELL_Man])} count units GRLIB_side_civilian;
 
 	_vehicles_blu = { alive _x && side _x == GRLIB_side_friendly && count (crew _x) > 0 && (_x distance2D lhd) >= 500 } count vehicles;
 	_vehicles_opf = { alive _x && side _x == GRLIB_side_enemy && count (crew _x) > 0} count vehicles;

@@ -276,7 +276,7 @@ while {deleteManagerPublic} do {
 	sleep 1;
 
 	// Object WeaponHolderSimulated can't have zero or negative mass!
-	{ if (round (getMass _x) <= 0) then { deleteVehicle _x } } forEach (entities "WeaponHolderSimulated");
+	{ if (round (getMass _x) <= 0) then { _x setMass 1 } } forEach (entities "WeaponHolderSimulated");
 	sleep 1;
 	//================================= MINES
 	if (!(_minesLimit isEqualTo -1)) then {

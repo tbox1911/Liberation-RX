@@ -7,7 +7,7 @@ waitUntil { dialog };
 private _display = findDisplay 2304;
 private _ammo_collected = player getVariable ["GREUH_ammo_count", 0];
 private _cfg = configFile >> "cfgVehicles";
-private _ratio = (player nearEntities ["C_Man_formal_1_F", 10] select 0) getvariable ["SHOP_ratio", 0.75];
+private _ratio = (player nearEntities [SHOP_Man, 10] select 0) getvariable ["SHOP_ratio", 0.75];
 
 private _sell_list = [];
 private _sell_blacklist = [];

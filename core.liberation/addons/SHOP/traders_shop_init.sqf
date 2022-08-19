@@ -12,7 +12,7 @@ SHOP_ratio = [
 ];
 
 {
-    _man = _x nearEntities ["C_Man_formal_1_F", 10] select 0;
+    _man = _x nearEntities [SHOP_Man, 10] select 0;
     _man setVariable ["SHOP_ratio", (SHOP_ratio select (_forEachIndex % count SHOP_ratio))];
     _man addAction ["<t color='#00F080'>" + localize "STR_SHOP_ENTER" + "</t> <img size='1' image='res\ui_recycle.paa'/>", "addons\SHOP\traders_shop.sqf","",-900,true,true,"","", 5];
 } forEach GRLIB_Marker_SHOP;

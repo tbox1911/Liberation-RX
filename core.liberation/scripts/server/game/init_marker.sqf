@@ -56,7 +56,7 @@ private ["_grp_sell", "_man", "_manPos"];
 _grp_sell = createGroup [GRLIB_side_civilian, true];
 {
     _manPos = _x;
-    _man = _grp_sell createUnit ["C_Story_Mechanic_01_F", _manPos, [], 0, "NONE"];
+    _man = _grp_sell createUnit [SELL_Man, _manPos, [], 0, "NONE"];
     _man allowDamage false;  
     _man setPosATL _manPos;
     [_man, "LHD_krajPaluby"] spawn F_startAnimMP;
@@ -88,7 +88,7 @@ _grp_shop = createGroup [GRLIB_side_civilian, true];
     _desk setDir _deskDir;  
     _deskDir = (180 + _deskDir); 
     _manPos = _deskPos vectorAdd ([[0, -0.7, 0], -_deskDir] call BIS_fnc_rotateVector2D);  
-    _man = _grp_shop createUnit ["C_Man_formal_1_F", _manPos, [], 0, "NONE"];
+    _man = _grp_shop createUnit [SHOP_Man, _manPos, [], 0, "NONE"];
     _man allowDamage false;  
     _man disableCollisionWith _desk;  
     _man setPosASL _manPos;
