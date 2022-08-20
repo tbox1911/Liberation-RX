@@ -8,26 +8,26 @@ RPT_colorList =[
 	
 	// Winter
 	["Digital", RPT_texDir + "digi.paa"],
-	["Abstract Modern", RPT_texDir + "abstraitmoderne.paa"]
+	["Abstract Modern", RPT_texDir + "abstraitmoderne.paa"],
 	
 	// Acceptable
-	//["Woodland", RPT_texDir + "woodland.paa"],
-	//["Digital Woodland", RPT_texDir + "digi_wood.paa"],
-	//["Woodland Tiger", RPT_texDir + "woodtiger.paa"],
-	//["ARPA Navy", RPT_texDir + "arpa_navy.paa"],
-	//["ARPA Woodland", RPT_texDir + "arpa_woodland.paa"],
-	//["Camo Chris", RPT_texDir + "camo_chris.paa"],
-	//["Camo Green 1", RPT_texDir + "camovert1.paa"],
-	//["Camo Green 2", RPT_texDir + "camovert2.paa"],
-	//["Digital Black", RPT_texDir + "digi_black.paa"],
-	//["Digital Desert", RPT_texDir + "digi_desert.paa"],
-	//["Digital Desert 2", RPT_texDir + "digi_desert2.paa"],
-	//["Forest 1", RPT_texDir + "foret1.paa"],
-	//["Jungle", RPT_texDir + "jungle.paa"],
-	//["Gray", RPT_color + "(0.15,0.151,0.152,1)"], // #(argb,8,8,3)color(0.5,0.51,0.512,0.3)
-	//["Panzer Grey", RPT_texDir + "panzergris.paa"],
-	//["Urban", RPT_texDir + "urban.paa"],
-	//["Abstract Red", RPT_texDir + "abstraitrouge.paa"],
+	["Woodland", RPT_texDir + "woodland.paa"],
+	["Digital Woodland", RPT_texDir + "digi_wood.paa"],
+	["Woodland Tiger", RPT_texDir + "woodtiger.paa"],
+	["ARPA Navy", RPT_texDir + "arpa_navy.paa"],
+	["ARPA Woodland", RPT_texDir + "arpa_woodland.paa"],
+	["Camo Chris", RPT_texDir + "camo_chris.paa"],
+	["Camo Green 1", RPT_texDir + "camovert1.paa"],
+	["Camo Green 2", RPT_texDir + "camovert2.paa"],
+	["Digital Black", RPT_texDir + "digi_black.paa"],
+	["Digital Desert", RPT_texDir + "digi_desert.paa"],
+	["Digital Desert 2", RPT_texDir + "digi_desert2.paa"],
+	["Forest 1", RPT_texDir + "foret1.paa"],
+	["Jungle", RPT_texDir + "jungle.paa"],
+	["Gray", RPT_color + "(0.15,0.151,0.152,1)"], // #(argb,8,8,3)color(0.5,0.51,0.512,0.3)
+	["Panzer Grey", RPT_texDir + "panzergris.paa"],
+	["Urban", RPT_texDir + "urban.paa"],
+	["Abstract Red", RPT_texDir + "abstraitrouge.paa"]
 	
 	// Unacceptable
 	//["Black", RPT_color + "(0.01,0.01,0.01,1)"], // #(argb,8,8,3)color(0.1,0.1,0.1,0.1)

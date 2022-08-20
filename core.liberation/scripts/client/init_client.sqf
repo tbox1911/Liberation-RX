@@ -155,9 +155,11 @@ GREUH_TipsText = [];
 	};
 } forEach ((localize "STR_TUTO_TEXT12") splitString "></");
 
+/*
 {
 	[_x] call BIS_fnc_drawCuratorLocations;
 } foreach allCurators;
+*/
 
 // Sign Add
 addMissionEventHandler ["Draw3D",{

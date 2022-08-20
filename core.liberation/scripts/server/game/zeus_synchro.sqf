@@ -1,3 +1,4 @@
+/*
 waitUntil { !isNil "huron_typename" };
 
 _vehicleClassnames = [huron_typename];
@@ -50,3 +51,4 @@ while { true } do {
 
 	sleep 10;
 };
+*/

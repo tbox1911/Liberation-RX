@@ -357,7 +357,6 @@ strong_heavy_vehicles = [
     ["CUP_B_Leopard2A6DST_GER",0,strong_heavy_vehicle_price_tier_4,0,GRLIB_perm_inf],
     ["CUP_B_M270_HE_USMC",0,strong_heavy_vehicle_price_tier_6,0,GRLIB_perm_inf],
     ["CUP_B_RM70_CZ",0,strong_heavy_vehicle_price_tier_7,0,GRLIB_perm_inf],
-    ["CUP_B_T72_CZ",0,strong_heavy_vehicle_price_tier_4,0,GRLIB_perm_inf],
     //RHS
     ["rhsusf_m109_usarmy",0,strong_heavy_vehicle_price_tier_4,0,GRLIB_perm_inf],
   // BW
@@ -416,7 +415,6 @@ air_vehicles = [
       ["O_Heli_Light_02_unarmed_F",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf],
       ["CUP_B_AW159_Unarmed_GER",0,air_vehicle_price_tier_3,0,GRLIB_perm_inf],
       ["CUP_B_AW159_GERdd",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],
-      ["CUP_B_Mi171Sh_Unarmed_ACR",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],
 
       	//RHS
 	    ["RHS_UH60M2_d",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf],
@@ -765,6 +763,15 @@ support_crates = [
 ];
 
 buildings_west = [
+  // event specific CZ stuff
+  ["CUP_B_BMP2_CZ",0,0,0,9999],
+  ["CUP_B_BMP2_AMB_CZ",0,0,0,9999],
+  ["CUP_B_T72_CZ",0,0,0,9999],
+  ["CUP_B_Mi171Sh_Unarmed_ACR",0,0,0,9999],
+  ["CUP_B_Mi171Sh_ACR",0,0,0,9999],
+  ["CUP_B_Mi35_Dynamic_CZ_Dark",0,0,0,9999],
+  ["CUP_B_L39_CZ",0,0,0,9999],
+  
 
   ["US_WarfareBArtilleryRadar_Base_EP1",0,0,0,GRLIB_perm_inf],
   ["Land_fort_artillery_nest_EP1",0,0,0,GRLIB_perm_inf],
