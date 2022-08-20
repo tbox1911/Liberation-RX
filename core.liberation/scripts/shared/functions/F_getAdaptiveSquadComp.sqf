@@ -4,7 +4,7 @@ if ( isNil 'infantry_weight' ) then { infantry_weight = 33 };
 if ( isNil 'armor_weight' ) then { armor_weight = 33 };
 if ( isNil 'air_weight' ) then { air_weight = 33 };
 
-//diag_log format ["--LRX: AI weight: INF:%1 AC:%2 AA:%3", infantry_weight, armor_weight, air_weight];
+diag_log format ["--- LRX: AI weight: INF:%1 AC:%2 AA:%3", infantry_weight, armor_weight, air_weight];
 
 _squadcomp = opfor_squad_8_standard;
 _specialists = false;
