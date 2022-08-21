@@ -10,14 +10,14 @@
 
 - Die mission.sqm aus dem Workshop und alles aus unserem Git-Verzeichnis \Liberation-RX-MilSim-United\core.liberation in dem neuen Ordner zusammen werfen
 
-- Mission im Editor öffnen
+- Mission im Editor Ã¶ffnen
 
 - Mit denen aus einer aktuellen MilSim United Mission ersetzen: Platzierte Spielbare Einheiten, Triggers, ghost_spot, respawn_west, Zeus-Module, etc. alles auf einem Haufen.
 
 - Basis anpassen und eventuell platzierte Gratisfahrzeuge entfernen. Hier steht meist auch eine Kiste "myLARsBox" und ein "chimeraofficer". Letzteren bitte durch ein statisches Objekt, wie z.B. eine Lampe ersetzen. Dieses muss den Variablennamen "chimeraofficer" bekommen.
 
-- opfor_airspawn Marker weit genug außerhalb der Karte platzieren (> 3km oder so)
+- opfor_airspawn Marker weit genug auÃŸerhalb der Karte platzieren (> 3km oder so)
 
-- Kosmetik: Sektor-Marker-Größe 0.65, bei Bigtowns auf 1
+- Kosmetik: Sektor-Marker-GrÃ¶ÃŸe 0.65, bei Bigtowns auf 1
 
 - evtl. weitere Sektoren in leeren Bereichen platzieren
