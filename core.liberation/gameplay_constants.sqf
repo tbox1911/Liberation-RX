@@ -4,21 +4,21 @@ GRLIB_side_resistance = resistance;
 GRLIB_side_civilian = civilian;
 GRLIB_respawn_marker = "respawn_west";
 GRLIB_sector_size = 600;
-GRLIB_capture_size = 400;
-GRLIB_radiotower_size = 2500;
+GRLIB_capture_size = 300;
+GRLIB_radiotower_size = 3000;
 GRLIB_spawn_min = 2000;
 GRLIB_spawn_max = 4000;
 GRLIB_recycling_percentage = 1.00;
 GRLIB_endgame = 0;
-GRLIB_vulnerability_timer = 1200;
+GRLIB_vulnerability_timer = 1000;
 GRLIB_defended_buildingPos_part = 0.5;
 GRLIB_sector_military_value = 3;
 GRLIB_secondary_objective_impact = 0.4;
 GRLIB_blufor_cap = 10 * GRLIB_unitcap;
 GRLIB_sector_cap = 120 * GRLIB_unitcap;
-GRLIB_battlegroup_cap = 75 * GRLIB_unitcap;
-GRLIB_patrol_cap = 75 * GRLIB_unitcap;
-GRLIB_battlegroup_size = 7;
+GRLIB_battlegroup_cap = 50 * GRLIB_unitcap;
+GRLIB_patrol_cap = 18 * GRLIB_unitcap;
+GRLIB_battlegroup_size = 9;
 GRLIB_civilians_amount = 2 * GRLIB_civilian_activity;
 GRLIB_fob_range = 450;
 GRLIB_surrender_chance = 80;
@@ -28,16 +28,16 @@ GRLIB_civ_killing_penalty = 0;
 GRLIB_squad_size_bonus = 0;
 GRLIB_perm_ban = -1000000;
 GRLIB_perm_inf = -45;
-GRLIB_perm_log = 400;
-GRLIB_perm_tank = 800;
-GRLIB_perm_air = 1200;
-GRLIB_perm_max = 1600;
+GRLIB_perm_log = 300;
+GRLIB_perm_tank = 1200;
+GRLIB_perm_air = 2400;
+GRLIB_perm_max = 9999;
 GRLIB_date_year = 2022;
 GRLIB_date_month = 7;
 GRLIB_date_day = 30;
 GRLIB_nights_start = 21;
 GRLIB_nights_stop = 4;
-GREUH_start_ammo = 400;
+GREUH_start_ammo = 200;
 
 GRLIB_blufor_cap = 64;
 // defines if everyone gets ammo from sector liberations
@@ -62,8 +62,8 @@ kamikaze_kill_score = 5;
 kamikaze_kill_ammo = 25;
 civkill_score = 0;
 civkill_ammo = -100;
-tkill_score = -4;
-tkill_ammo = -40;
+tkill_score = -5;
+tkill_ammo = -50;
 tkill_script = true;
 tk_active = false; //NEW Tkillscript with dialog
 
@@ -73,8 +73,8 @@ box_recycle_value = 40;
 logistics_ammo_increase = true;
 
 prisoner_intel = 15;
-prisoner_score = 10;
-prisoner_ammo = 50;
+prisoner_score = 25;
+prisoner_ammo = 100;
 
 // Building Penalty
 building_penalty_isActive = false;
@@ -241,12 +241,9 @@ logistic_ground_vehicle_price_tier_5 = 500;
 logistic_ground_vehicle_price_tier_6 = 550;
 
 moderators = [
-    //"76561197997804176", // slotzi
     "76561198019854511", // Voltaren
     "76561198094301584", // Devin
     "76561198132964589", // Sound_wave
-    //"76561198043617179", // Manta 
-    //"76561198100256441", // Sonic
     "76561198057808323", // Johannes
     "76561197993044168" // Huber Sepp
 ];
