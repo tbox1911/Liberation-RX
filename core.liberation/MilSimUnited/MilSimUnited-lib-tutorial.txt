@@ -1,0 +1,23 @@
+
+
+- Fertige Lib aus Workshop ziehen
+
+- In C:\Program Files (x86)\Steam\userdata nach der Datei suchen. (z.B. ".pbo" -> "Liberation%20RX%20-%20Gulfcoast.Gulfcoast")
+
+- Mit PBOManager auspacken (https://github.com/SteezCram/Armaholic-Archive/tree/main/PBO_Manager)
+
+- Im Missionsverzeichnis einen neuen Ordner mit der exakt richtigen Bezeichnung erzeugen. Mapname z.B. der gedownloadeten Datei entnehmen (z.B. "Liberation_RX-DEV.Gulfcoast"
+
+- Die mission.sqm aus dem Workshop und alles aus unserem Git-Verzeichnis \Liberation-RX-MilSim-United\core.liberation in dem neuen Ordner zusammen werfen
+
+- Mission im Editor öffnen
+
+- Mit denen aus einer aktuellen MilSim United Mission ersetzen: Platzierte Spielbare Einheiten, Triggers, ghost_spot, respawn_west, Zeus-Module, etc. alles auf einem Haufen.
+
+- Basis anpassen und eventuell platzierte Gratisfahrzeuge entfernen. Hier steht meist auch eine Kiste "myLARsBox" und ein "chimeraofficer". Letzteren bitte durch ein statisches Objekt, wie z.B. eine Lampe ersetzen. Dieses muss den Variablennamen "chimeraofficer" bekommen.
+
+- opfor_airspawn Marker weit genug außerhalb der Karte platzieren (> 3km oder so)
+
+- Kosmetik: Sektor-Marker-Größe 0.65, bei Bigtowns auf 1
+
+- evtl. weitere Sektoren in leeren Bereichen platzieren
