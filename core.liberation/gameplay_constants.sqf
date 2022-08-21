@@ -31,7 +31,7 @@ GRLIB_perm_inf = -45;
 GRLIB_perm_log = 300;
 GRLIB_perm_tank = 1200;
 GRLIB_perm_air = 2400;
-GRLIB_perm_max = 9999;
+GRLIB_perm_max = 3600;
 GRLIB_date_year = 2022;
 GRLIB_date_month = 7;
 GRLIB_date_day = 30;
@@ -1509,6 +1509,36 @@ item_blacklist =
     "CUP_arifle_AK15_GP34_snowtiger",
     "CUP_arifle_AK15_GP34_tiger",
     "CUP_arifle_AK15_snowtiger",
-    "CUP_arifle_AK15_tiger"
+    "CUP_arifle_AK15_tiger",
+	"V_CarrierRigKBT_01_EAF_F",
+	"V_CarrierRigKBT_01_light_EAF_F",
+	"V_CarrierRigKBT_01_heavy_Olive_F",
+	"V_CarrierRigKBT_01_heavy_EAF_F",
+	"U_I_E_Uniform_01_officer_F",
+	"U_I_E_Uniform_01_shortsleeve_F",
+	"U_I_E_Uniform_01_sweater_F",
+	"U_I_E_Uniform_01_tanktop_F",
+	"U_I_E_Uniform_01_F",
+	"dvk_csat_plamc",
+	"U_O_T_Soldier_F",
+	"dvk_csat_inm_u",
+	"U_O_CombatUniform_ocamo",
+	"U_O_CombatUniform_oucamo",
+	"U_I_E_Uniform_01_coveralls_F",
+	"U_O_PilotCoveralls",
+	"dvk_iran_hpilot",
+	"dvk_china_hpilot",
+	"dvk_csat_iransf",
+	"dvk_csat_plasf",
+	"H_HelmetHBK_headset_F",
+	"H_HelmetHBK_chops_F",
+	"H_HelmetHBK_ear_F",
+	"H_HelmetHBK_F",
+	"DTS_Helmet_IA",
+	"B_Bergen_dgtl_F",
+	"B_Bergen_hex_F",
+	"B_Bergen_mcamo_F",
+	"B_Bergen_tna_F",
+	"UK3CB_BAF_B_Bergen_MTP_Rifleman_XL_A"
 ];
 
