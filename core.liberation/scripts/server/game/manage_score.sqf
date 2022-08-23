@@ -1,4 +1,4 @@
-private [ "_cur", "_last", "_msg", "_msg2", "_rank", "_uid", "_newrank", "_firework" ];
+private [ "_cur", "_last", "_msg", "_msg2", "_rank", "_new_rank", "_uid", "_firework" ];
 
 waitUntil { !isNil "GRLIB_player_scores" };
 waitUntil { !isNil "save_is_loaded" };
@@ -21,36 +21,28 @@ while { true } do {
 			_last = _x getVariable["GREUH_score_last",0];
 			if (_cur != _last) then {
 				// score has changed for player _x
-				_newrank = false;
 
-				if (_cur < GRLIB_perm_ban || !([] call F_getValid)) then {
-					_uid = getPlayerUID _x;
+				_uid = getPlayerUID _x;
+				_new_rank = [_cur] call get_rank;
+
+				if (_cur <= GRLIB_perm_ban || !([] call F_getValid)) exitWith {
 					BTC_logic setVariable [_uid, 99, true];
 					[_x] remoteExec ["LRX_tk_actions", owner _x];
 					diag_log format ["--- LRX TK: BAN for player %1 - UID: %2", name _x,  _uid];
 				};
-				if ((_cur >= GRLIB_perm_ban) && (_cur < GRLIB_perm_min) && (_cur < _last)) then {_rank = "None"; _newrank = true};
-				if ((_cur >= GRLIB_perm_min) && (_cur < GRLIB_perm_inf) && (_rank != "Private")) then {_rank = "Private"; _newrank = true};
-				if ((_cur >= GRLIB_perm_inf) && (_cur < GRLIB_perm_log) && (_rank != "Corporal")) then {_rank = "Corporal"; _newrank = true};
-				if ((_cur >= GRLIB_perm_log) && (_cur < GRLIB_perm_tank) && (_rank != "Sergeant")) then {_rank = "Sergeant"; _newrank = true};
-				if ((_cur >= GRLIB_perm_tank) && (_cur < GRLIB_perm_air) && (_rank != "Captain")) then {_rank = "Captain"; _newrank = true};
-				if ((_cur >= GRLIB_perm_air) && (_cur < GRLIB_perm_max) && (_rank != "Major")) then {_rank = "Major"; _newrank = true};
-				if ((_cur >= GRLIB_perm_max) && (_rank != "Colonel")) then {_rank = "Colonel"; _newrank = true};
 
-				if (_newrank) then {
-					_uid = getPlayerUID _x;
-					_msg = format ["Congratulation <t color='#00ff00'>%1</t> !!<br />You have been promoted to : <t color='#ff0000'>%2</t>.<br /><br />",name _x, _rank];
+				if (_new_rank == "None" && _cur < _last) exitWith {
+					_msg = format ["Warning <t color='#00ff00'>%1</t> !!<br />You Play Wrong !! <t color='#ff0000'>Read the Manual</t>.<br /><br />%2", name _x, localize "STR_RANK_LVL0"];
+					[_msg, 0, 0, 5, 0, 0, 90] remoteExec ["BIS_fnc_dynamicText", owner _x];
+					[_uid, [false,false,false,false,false,false]] call CHG_Perm;
+				};
 
-					// change player permisions
+				if (_cur >= 0 && _new_rank != _rank) then {
+					// new rank for player _x
+
 					_firework = true;
-					switch (_rank) do {
-						case "None" : {
-							_msg2 = localize "STR_RANK_LVL0";
-							[_uid, [false,false,false,false,false,false]] call CHG_Perm;
-							_msg = format ["Warning <t color='#00ff00'>%1</t> !!<br />You Play Wrong !! <t color='#ff0000'>Read the Manual</t>.<br /><br />",name _x];
-							_firework = false;
-						};
-						case "Private" : {
+					switch (_new_rank) do {
+							case "Private" : {
 							_msg2 = localize "STR_RANK_LVL1";
 							[_uid, [true,false,false,true,false,true]] call CHG_Perm;
 						};
@@ -74,17 +66,23 @@ while { true } do {
 							_msg2 = localize "STR_RANK_LVL6";
 							[_uid, [true,true,true,true,true,true]] call CHG_Perm;
 						};
+						case "Super Colonel" : {
+							_msg2 = localize "STR_RANK_LVL7";
+							[_uid, [true,true,true,true,true,true]] call CHG_Perm;
+							_firework = false;
+						};
 					};
 
-					_msg = format ["%1%2", _msg, _msg2];
+					_msg = format ["Congratulation <t color='#00ff00'>%1</t> !!<br />You have been promoted to : <t color='#ff0000'>%2</t>.<br /><br />%3", name _x,  _new_rank, _msg2];
 					[_msg, 0, 0, 5, 0, 0, 90] remoteExec ["BIS_fnc_dynamicText", owner _x];
 					["FD_Finish_F"] remoteExec ["playSound", owner _x];
 
 					// set player rank
-					[_x] remoteExec ["set_rank", owner _x];
+					[] remoteExec ["set_rank", owner _x];
+					_x setVariable ["GRLIB_Rank", _new_rank, true];
 
 					// if rank colonel global greet
-					if (_rank == "Colonel") then {
+					if (_new_rank == "Colonel") then {
 						["FD_Finish_F"] remoteExec ["playSound", 0];
 						_text = "Good news soldiers...";
 						[gamelogic, _text] remoteExec ["globalChat", 0];
@@ -107,10 +105,10 @@ while { true } do {
 					if (_firework) then {
 						[getPosATL _x, 'normal','red'] spawn GRAD_fireworks_fnc_prepareFireworks;
 					};
-				};
+				};			
 			};
 			_x setVariable ["GREUH_score_last", _cur];
 		};
-	} forEach allPlayers;
+	} forEach (AllPlayers - (entities "HeadlessClient_F"));
 	sleep 5;
 };

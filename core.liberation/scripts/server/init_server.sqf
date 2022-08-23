@@ -1,11 +1,6 @@
 diag_log "--- Server Init start ---";
 
-// lock user placed objects 
-{
-	if (getObjectType _x >= 8) then { _x setVariable ["GRLIB_vehicle_owner", "server"] };
-} forEach (allMissionObjects "");
-
-// Init on map vehicles
+// Init owner on map vehicles
 {
 	if (_x isKindOf "AllVehicles") then {
 		_x removeAllMPEventHandlers "MPKilled";
@@ -15,6 +10,15 @@ diag_log "--- Server Init start ---";
 		};
 	};
 } foreach vehicles;
+
+// Init owner on user placed objects 
+{
+	if (getObjectType _x >= 8) then {
+		if (isNil {_x getVariable "GRLIB_vehicle_owner"} ) then {
+			_x setVariable ["GRLIB_vehicle_owner", "server", true];
+		};
+	};
+} forEach (allMissionObjects "");
 
 // Cleanup
 cleanup_player = compileFinal preprocessFileLineNumbers "scripts\server\game\cleanup_player.sqf";
@@ -40,6 +44,7 @@ save_game_mp  = compileFinal preprocessFileLineNumbers "scripts\server\game\save
 check_victory_conditions = compileFinal preprocessFileLineNumbers "scripts\server\game\check_victory_conditions.sqf";
 attach_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\attach_object_direct.sqf";
 load_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\load_object_direct.sqf";
+get_rank = compileFinal preprocessFileLineNumbers "scripts\server\game\get_rank.sqf";
 
 // Patrol
 reinforcements_manager = compileFinal preprocessFileLineNumbers "scripts\server\patrols\reinforcements_manager.sqf";

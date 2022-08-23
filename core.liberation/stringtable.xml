@@ -4399,6 +4399,10 @@
 			<Chinese>您可以構建和重新打包 FOB。 &lt;br/&gt;您可以使用特種重型車輛。 &lt;br/&gt;您可以建立一支支援小隊。</Chinese>
 			<Japanese>あなたはFOBをビルド・畳むことが出来ます。&lt;br/&gt;あなたは特殊な乗り物にアクセスすることが出来ます。&lt;br/&gt;あなたはサポートチームをビルド出来ます。</Japanese>
 		</Key>
+		<Key ID="STR_RANK_LVL7">
+			<Original>You have more ManPower.&lt;br/&gt;The Trader's shop is cheaper.&lt;br/&gt;The Air Support is cheaper.</Original>
+			<French>Vous avez plus de ManPower.&lt;br/&gt;Le Trader's shop est moins cher.&lt;br/&gt;L'Air Support est moins cher.</French>
+		</Key>
 
 		<!-- Added in v0.928 -->
 		<Key ID="STR_FANCY">
