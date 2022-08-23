@@ -5185,60 +5185,60 @@
 			<Chinese>-- 空中支援菜單 --</Chinese>
 		</Key>
 		<Key ID="STR_CALL_HELITAXI">
-			<Original>&lt;t size='0.8'&gt;Call Heli Taxi.&lt;br/&gt;Cost: 100 Ammo&lt;/t&gt;</Original>
-			<French>&lt;t size='0.8'&gt;Appeler aéroTaxi.&lt;br/&gt;Prix: 100 Mun&lt;/t&gt;</French>
-			<Japanese>&lt;t size='0.8'&gt;ヘリタクシーを呼ぶ&lt;br/&gt;コスト: 100 弾薬&lt;/t&gt;</Japanese>
-			<Chinesesimp>&lt;t size='0.8'&gt;呼叫直升机接送.&lt;br/&gt;花费: 100 弹药&lt;/t&gt;</Chinesesimp>
-			<Chinese>&lt;t size='0.8'&gt;呼叫直升機接送.&lt;br/&gt;花費: 100 彈藥&lt;/t&gt;</Chinese>
+			<Original>Call Heli Taxi.\nCost: %1 Ammo</Original>
+			<French>Appeler un aéro Taxi.\nPrix: %1 Mun</French>
+			<Japanese>ヘリタクシーを呼ぶ\nコスト: %1 弾薬</Japanese>
+			<Chinesesimp>呼叫直升机接送.\n花费: %1 弹药</Chinesesimp>
+			<Chinese>呼叫直升機接送.\n花費: %1 彈藥</Chinese>
 		</Key>
 		<Key ID="STR_QUAD_OFFLOAD">
-			<Original>&lt;t size='0.8'&gt;Quad, Unarmed Offroad.&lt;br/&gt;Cost:  50 Ammo&lt;/t&gt;</Original>
-			<French>&lt;t size='0.8'&gt;Quad, Tout-terrain désarmé.&lt;br/&gt;Prix: 50 Mun&lt;/t&gt;</French>
-			<Japanese>&lt;t size='0.8'&gt;ATV、非武装ピックアップ&lt;br/&gt;コスト: 50 弾薬&lt;/t&gt;</Japanese>
-			<Chinesesimp>&lt;t size='0.8'&gt;四轮摩托，越野车.&lt;br/&gt;花费:  50 弹药&lt;/t&gt;</Chinesesimp>
-			<Chinese>&lt;t size='0.8'&gt;四輪摩托，越野車.&lt;br/&gt;花費:  50 彈藥&lt;/t&gt;</Chinese>
+			<Original>Quad, Unarmed Offroad.\nCost:  %1 Ammo</Original>
+			<French>Quad, Tout-terrain désarmé.\nPrix:  %1 Mun</French>
+			<Japanese>ATV、非武装ピックアップ\nコスト:  %1 弾薬</Japanese>
+			<Chinesesimp>四轮摩托，越野车.\n花费:  %1 弹药</Chinesesimp>
+			<Chinese>四輪摩托，越野車.\n花費:  %1 彈藥</Chinese>
 		</Key>
 		<Key ID="STR_ARMED_OFFLOAD">
-			<Original>&lt;t size='0.8'&gt;Armed Offroad.&lt;br/&gt;Cost: 100 Ammo&lt;/t&gt;</Original>
-			<French>&lt;t size='0.8'&gt;Tout-terrain armé.&lt;br/&gt;Prix: 100 Mun&lt;/t&gt;</French>
-			<Japanese>&lt;t size='0.8'&gt;武装ピックアップ&lt;br/&gt;コスト: 100 弾薬&lt;/t&gt;</Japanese>
-			<Chinesesimp>&lt;t size='0.8'&gt;武装越野车.&lt;br/&gt;花费: 100 弹药&lt;/t&gt;</Chinesesimp>
-			<Chinese>&lt;t size='0.8'&gt;武裝越野車.&lt;br/&gt;花費: 100 彈藥&lt;/t&gt;</Chinese>
+			<Original>Armed Offroad.\nCost: %1 Ammo</Original>
+			<French>Tout-terrain armé.\nPrix: %1 Mun</French>
+			<Japanese>武装ピックアップ\nコスト: %1 弾薬</Japanese>
+			<Chinesesimp>武装越野车.\n花费: %1 弹药</Chinesesimp>
+			<Chinese>武裝越野車.\n花費: %1 彈藥</Chinese>
 		</Key>
 		<Key ID="STR_MRAP">
-			<Original>&lt;t size='0.8'&gt;MRAPs.&lt;br/&gt;Cost: 200 Ammo&lt;/t&gt;</Original>
-			<French>&lt;t size='0.8'&gt;MRAPs.&lt;br/&gt;Prix: 200 Mun&lt;/t&gt;</French>
-			<Japanese>&lt;t size='0.8'&gt;MRAP&lt;br/&gt;コスト: 200 弾薬&lt;/t&gt;</Japanese>
-			<Chinesesimp>&lt;t size='0.8'&gt;武装MRAP.&lt;br/&gt;花费: 200 弹药&lt;/t&gt;</Chinesesimp>
-			<Chinese>&lt;t size='0.8'&gt;武裝MRAP.&lt;br/&gt;花費: 200 彈藥&lt;/t&gt;</Chinese>
+			<Original>MRAPs.\nCost: %1 Ammo</Original>
+			<French>MRAPs.\nPrix: %1 Mun</French>
+			<Japanese>MRAP\nコスト: %1 弾薬</Japanese>
+			<Chinesesimp>武装MRAP.\n花费: %1 弹药</Chinesesimp>
+			<Chinese>武裝MRAP.\n花費: %1 彈藥</Chinese>
 		</Key>
 		<Key ID="STR_TRUCK">
-			<Original>&lt;t size='0.8'&gt;Large Trucks.&lt;br/&gt;Cost: 300 Ammo&lt;/t&gt;</Original>
-			<French>&lt;t size='0.8'&gt;Gros Camions.&lt;br/&gt;Prix: 300 Mun&lt;/t&gt;</French>
-			<Japanese>&lt;t size='0.8'&gt;大型トラック&lt;br/&gt;コスト: 300 弾薬&lt;/t&gt;</Japanese>
-			<Chinesesimp>&lt;t size='0.8'&gt;运兵卡车.&lt;br/&gt;花费: 300 弹药&lt;/t&gt;</Chinesesimp>
-			<Chinese>&lt;t size='0.8'&gt;運兵卡車.&lt;br/&gt;花費: 300 彈藥&lt;/t&gt;</Chinese>
+			<Original>Large Trucks.\nCost: %1 Ammo</Original>
+			<French>Gros Camions.\nPrix: %1 Mun</French>
+			<Japanese>大型トラック\nコスト: %1 弾薬</Japanese>
+			<Chinesesimp>运兵卡车.\n花费: %1 弹药</Chinesesimp>
+			<Chinese>運兵卡車.\n花費: %1 彈藥</Chinese>
 		</Key>
 		<Key ID="STR_APC">
-			<Original>&lt;t size='0.8'&gt;APC.&lt;br/&gt;Cost: 750 Ammo&lt;/t&gt;</Original>
-			<French>&lt;t size='0.8'&gt;APC.&lt;br/&gt;Prix: 750 Mun&lt;/t&gt;</French>
-			<Japanese>&lt;t size='0.8'&gt;APC&lt;br/&gt;コスト: 750 弾薬&lt;/t&gt;</Japanese>
-			<Chinesesimp>&lt;t size='0.8'&gt;APC.&lt;br/&gt;花费: 750 弹药&lt;/t&gt;</Chinesesimp>
-			<Chinese>&lt;t size='0.8'&gt;APC.&lt;br/&gt;花費: 750 彈藥&lt;/t&gt;</Chinese>
+			<Original>APC.\nCost: %1 Ammo</Original>
+			<French>APC.\nPrix: %1 Mun</French>
+			<Japanese>APC\nコスト: %1 弾薬</Japanese>
+			<Chinesesimp>APC.\n花费: %1 弹药</Chinesesimp>
+			<Chinese>APC.\n花費: %1 彈藥</Chinese>
 		</Key>
 		<Key ID="STR_BOAT">
-			<Original>&lt;t size='0.8'&gt;Transport Boats.&lt;br/&gt;Cost: 250 Ammo&lt;/t&gt;</Original>
-			<French>&lt;t size='0.8'&gt;Bâteaux de Transport.&lt;br/&gt;Prix: 250 Mun&lt;/t&gt;</French>
-			<Japanese>&lt;t size='0.8'&gt;ボート&lt;br/&gt;コスト: 250 弾薬&lt;/t&gt;</Japanese>
-			<Chinesesimp>&lt;t size='0.8'&gt;运输船只.&lt;br/&gt;花费: 250 弹药&lt;/t&gt;</Chinesesimp>
-			<Chinese>&lt;t size='0.8'&gt;運輸船隻.&lt;br/&gt;花費: 250 彈藥&lt;/t&gt;</Chinese>
+			<Original>Transport Boats.\nCost: %1 Ammo</Original>
+			<French>Bâteaux de Transport.\nPrix: %1 Mun</French>
+			<Japanese>ボート\nコスト: %1 弾薬</Japanese>
+			<Chinesesimp>运输船只.\n花费: %1 弹药</Chinesesimp>
+			<Chinese>運輸船隻.\n花費: %1 彈藥</Chinese>
 		</Key>
 		<Key ID="STR_AIRSUPREMACY">
-			<Original>&lt;t size='0.8'&gt;Air Superiority.&lt;br/&gt;Cost: 2000 Ammo&lt;/t&gt;</Original>
-			<French>&lt;t size='0.8'&gt;Suprématie Aéro.&lt;br/&gt;Prix: 2000 Mun&lt;/t&gt;</French>
-			<Japanese>&lt;t size='0.8'&gt;制空権&lt;br/&gt;コスト: 2000 弾薬&lt;/t&gt;</Japanese>
-			<Chinesesimp>&lt;t size='0.8'&gt;制空权&lt;br/&gt;花费: 2000 弹药&lt;/t&gt;</Chinesesimp>
-			<Chinese>&lt;t size='0.8'&gt;制空權&lt;br/&gt;花費: 2000 彈藥&lt;/t&gt;</Chinese>
+			<Original>Call Air Superiority.\nCost: %1 Ammo</Original>
+			<French>Appeler la Suprématie Aérienne.\nPrix: %1 Mun</French>
+			<Japanese>制空権\nコスト: %1 弾薬</Japanese>
+			<Chinesesimp>制空权\n花费: %1 弹药</Chinesesimp>
+			<Chinese>制空權\n花費: %1 彈藥</Chinese>
 		</Key>
 
 		<!-- liberation_sendammo.hpp -->

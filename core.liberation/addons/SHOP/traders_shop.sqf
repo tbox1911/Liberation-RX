@@ -23,7 +23,7 @@ private _getPrice = {
 private _buy_list_static = [
 	[Arsenal_typename, 0, 67],
 	[medicalbox_typename, 0, 60],
-	[waterbarrel_typename, 0, 70],	
+	[waterbarrel_typename, 0, 70],
 	[foodbarrel_typename, 0, 72],
 	[fuelbarrel_typename, 0, 74]
 	//["Box_NATO_WpsLaunch_F", 0, 140]
@@ -35,9 +35,11 @@ private _buy_list = [opfor_recyclable, {
 	!((_x select 0) in _buy_blacklist)
 }] call BIS_fnc_conditionalSelect;
 
+private _rank = player getVariable ["GRLIB_Rank", "Private"];
 private _buy_list_dlg = [];
 {
 	private _price = round ((_x select 2) * (1 + _ratio));
+	if (_rank == "Super Colonel") then { _price = round (_price / 2)};
 	_buy_list_dlg pushBack [_x select 0, _price];
 } forEach _buy_list_static + _buy_list;
 

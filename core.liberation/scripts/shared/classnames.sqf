@@ -28,6 +28,7 @@ if (isServer) then {
 [] call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_civ.sqf", GRLIB_mod_west];
 
 // *** SUPPORT ***
+// [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 support_vehicles = [
 	[Arsenal_typename,0,25,0,0],
 	[medicalbox_typename,5,25,0,0],
@@ -402,6 +403,11 @@ GRLIB_player_grave = [
 	"Land_Grave_dirt_F"
 ];
 
+// Air Drop Support
+if ( isNil "GRLIB_AirDrop_Taxi_cost" ) then {
+	GRLIB_AirDrop_Taxi_cost = 100;
+};
+
 if ( isNil "GRLIB_AirDrop_1" ) then {
 	GRLIB_AirDrop_1 = [
 		"I_Quadbike_01_F",
@@ -410,6 +416,9 @@ if ( isNil "GRLIB_AirDrop_1" ) then {
 		"C_Offroad_01_F",
 		"B_G_Offroad_01_F"
 	];
+};
+if ( isNil "GRLIB_AirDrop_1_cost" ) then {
+	GRLIB_AirDrop_1_cost = 50;
 };
 
 if ( isNil "GRLIB_AirDrop_2" ) then {
@@ -420,6 +429,9 @@ if ( isNil "GRLIB_AirDrop_2" ) then {
 		"I_C_Offroad_02_LMG_F"
 	];
 };
+if ( isNil "GRLIB_AirDrop_2_cost" ) then {
+	GRLIB_AirDrop_2_cost = 100;
+};
 
 if ( isNil "GRLIB_AirDrop_3" ) then {
 	GRLIB_AirDrop_3 = [
@@ -428,6 +440,9 @@ if ( isNil "GRLIB_AirDrop_3" ) then {
 		"B_T_MRAP_01_hmg_F",
 		"B_T_MRAP_01_gmg_F"
 	];
+};
+if ( isNil "GRLIB_AirDrop_3_cost" ) then {
+	GRLIB_AirDrop_3_cost = 200;
 };
 
 if ( isNil "GRLIB_AirDrop_4" ) then {
@@ -438,6 +453,9 @@ if ( isNil "GRLIB_AirDrop_4" ) then {
 		"I_Truck_02_transport_F"
 	];
 };
+if ( isNil "GRLIB_AirDrop_4_cost" ) then {
+	GRLIB_AirDrop_4_cost = 300;
+};
 
 if ( isNil "GRLIB_AirDrop_5" ) then {
 	GRLIB_AirDrop_5 = [
@@ -445,6 +463,9 @@ if ( isNil "GRLIB_AirDrop_5" ) then {
 		"B_APC_Wheeled_03_cannon_F",
 		"B_APC_Wheeled_01_cannon_F"
 	];
+};
+if ( isNil "GRLIB_AirDrop_5_cost" ) then {
+	GRLIB_AirDrop_5_cost = 750;
 };
 
 if ( isNil "GRLIB_AirDrop_6" ) then {
@@ -454,4 +475,10 @@ if ( isNil "GRLIB_AirDrop_6" ) then {
 		"B_Boat_Transport_01_F",
 		"I_C_Boat_Transport_02_F"
 	];
+};
+if ( isNil "GRLIB_AirDrop_6_cost" ) then {
+	GRLIB_AirDrop_6_cost = 250;
+};
+if ( isNil "GRLIB_AirDrop_7_cost" ) then {
+	GRLIB_AirDrop_7_cost = 2000;
 };

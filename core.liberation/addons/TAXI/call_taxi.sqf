@@ -14,8 +14,7 @@ private _dest = getPosATL _helipad;
 if (surfaceIsWater _dest || _degree > 8) exitWith {deleteVehicle _helipad; hintSilent localize "STR_TAXI_WRONG_PLACE"};
 
 // Pay
-_cost = 100;
-if (!([_cost] call F_pay)) exitWith {deleteVehicle _helipad};
+if (!([GRLIB_AirDrop_Taxi_cost] call F_pay)) exitWith {deleteVehicle _helipad};
 
 private _nb_unit = count (units player);
 private _taxi_type = "";
