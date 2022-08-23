@@ -105,7 +105,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 		};
 		if(floor(random 100) > 66) then { _vehtospawn pushback ( [] call F_getAdaptiveVehicle ); };
 		if(floor(random 100) > 33) then { _vehtospawn pushback (selectRandom militia_vehicles); };
-		_spawncivs = false;
+		_spawncivs = true;
 		_building_ai_max = round ((floor (10 + (round (combat_readiness / 10 )))) * _popfactor);
 		_building_range = 100;
 		_iedcount = (floor (random 3)) * GRLIB_difficulty_modifier;
@@ -175,7 +175,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 	};
 
 	if ( _spawncivs && GRLIB_civilian_activity > 0) then {
-		private _nbcivs = round ((2 + (floor (random 5))) * GRLIB_civilian_activity);
+		private _nbcivs = round ((5 + (floor (random 5))) * GRLIB_civilian_activity);
 		if ( _sector in sectors_bigtown ) then { _nbcivs = _nbcivs + 10 };
 		for "_i" from 1 to _nbcivs do {
 			private _civ_unit = [_sector] call F_spawnCivilians;
