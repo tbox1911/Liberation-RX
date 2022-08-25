@@ -32,10 +32,9 @@ while { GRLIB_endgame == 0 } do {
 		if ( count _spawnpos == 0 ) then { sleep 30 };
 	};
 
-	diag_log format [ "Spawn Patrol type %1 on sector %2 at %3", _patrol_type, _spawn_marker, time ];
-
 	if (_patrol_type == 1) then {
 		_grp = [_spawnpos, ([] call F_getAdaptiveSquadComp), GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
+		diag_log format [ "Spawn Infantry Patrol on sector %1 at %2", _spawn_marker, time ];
 	};
 
 	if (_patrol_type == 2) then {
@@ -46,20 +45,23 @@ while { GRLIB_endgame == 0 } do {
 		};
 		sleep 0.5;
 		_grp = group ((crew _vehicle_object) select 0);
+		diag_log format [ "Spawn Armored Patrol on sector %1 at %2", _spawn_marker, time ];
 	};
 
 	if (_patrol_type == 3) then {
-		_opfor_spawn = [sectors_tower + sectors_military, {!( _x in blufor_sectors)}] call BIS_fnc_conditionalSelect;
+		_opfor_spawn = [sectors_tower + sectors_military, {!( _x in blufor_sectors) && ([GRLIB_spawn_max, markerPos _x, blufor_sectors] call F_getNearestSector != "")}] call BIS_fnc_conditionalSelect;
 		if ( count _opfor_spawn > 0) then {
 			_grp = createGroup [GRLIB_side_enemy, true];
-			_tower_spawn_pos = [ getMarkerPos (selectRandom _opfor_spawn), floor(random 50), random 360 ] call BIS_fnc_relPos;
-			_vehicle_object = [ _tower_spawn_pos, selectRandom opfor_statics ] call F_libSpawnVehicle;
+			_spawn_sector = selectRandom _opfor_spawn;
+			_spawn_pos = [ getMarkerPos _spawn_sector, floor(random 50), random 360 ] call BIS_fnc_relPos;
+			_vehicle_object = [ _spawn_pos, selectRandom opfor_statics ] call F_libSpawnVehicle;
 			_grp_veh = group _vehicle_object;
 			[_vehicle_object] spawn protect_static;
 			opfor_spotter createUnit [ getposATL _vehicle_object, _grp, 'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.5, "PRIVATE"];
 			opfor_spotter createUnit [ getposATL _vehicle_object, _grp, 'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.5, "PRIVATE"];
  			(units _grp_veh) joinSilent _grp;
 			{ _x setVariable ["OPFor_vehicle", _vehicle_object] } forEach units _grp;
+			diag_log format [ "Spawn Static Patrol on sector %1 at %2", _spawn_sector, time ];
 		};
 	};
 
