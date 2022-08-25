@@ -95,7 +95,7 @@ if ( !_civilian ) then {
 };
 
 _newvehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
-_newvehicle allowCrewInImmobile true;
+_newvehicle allowCrewInImmobile [true, false];
 _newvehicle setUnloadInCombat [true, false];
 
 clearWeaponCargoGlobal _newvehicle;
