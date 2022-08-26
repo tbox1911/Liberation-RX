@@ -49,7 +49,11 @@ while { GRLIB_endgame == 0 } do {
 	};
 
 	if (_patrol_type == 3) then {
-		_opfor_spawn = [sectors_tower + sectors_military, {!( _x in blufor_sectors) && ([GRLIB_spawn_max, markerPos _x, blufor_sectors] call F_getNearestSector != "")}] call BIS_fnc_conditionalSelect;
+		_opfor_spawn = [sectors_tower + sectors_military, {
+			!( _x in blufor_sectors + active_sectors) &&
+			([GRLIB_spawn_max, markerPos _x, blufor_sectors] call F_getNearestSector != "")
+		}] call BIS_fnc_conditionalSelect;
+
 		if ( count _opfor_spawn > 0) then {
 			_grp = createGroup [GRLIB_side_enemy, true];
 			_spawn_sector = selectRandom _opfor_spawn;
