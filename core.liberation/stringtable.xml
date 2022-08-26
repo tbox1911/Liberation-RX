@@ -13,6 +13,10 @@
 			<Chinese>0.927版本</Chinese>
 			<Japanese>バージョン0.927</Japanese>
 		</Key>
+		<Key ID="STR_MISSION_MOTD">
+			<Original>It should not be too easy...</Original>
+			<French>Ca ne doit pas être trop facile...</French>
+		</Key>
 		<Key ID="STR_MISSION_DESCRIPTION">
 			<Original>With the power of Freedom and Democracy you shall liberate this country from the OPFOR oppression.</Original>
 			<French>Avec le pouvoir de la Liberté et de la Démocratie votre mission est de libérer ce pays de l'oppression de l'OPFOR.</French>

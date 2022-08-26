@@ -93,7 +93,7 @@ class RscTitles
       idd = -1;
       movingEnable = false;
       controls[] = {
-         VersionLabelShadow, Splash, VersionLabel
+         VersionLabelShadow, Splash, VersionLabel, MOTDLabel, MOTDLabelShadow
       };
 	  	class Splash {
 		idc = -1;
@@ -125,6 +125,25 @@ class RscTitles
 		text = $STR_MISSION_VERSION;
 	  };
 	  class VersionLabelShadow : VersionLabel {
+		shadow = 2;
+		font = FONTM;
+	  };
+	  class MOTDLabel {
+		idc = -1;
+		type =  CT_STATIC ;
+		style = ST_CENTER;
+		shadow = 1;
+		colorText[] = COLOR_WHITE;
+		colorBackground[] = COLOR_NOALPHA;
+		font = FONTM;
+		sizeEx = 0.025 * safezoneH;
+		x = 0.3 * safezoneW + safezoneX;
+		w = 0.4 * safezoneW;
+		y = 0.70 * safezoneH + safezoneY;
+		h = 0.1 * safezoneH;
+		text = $STR_MISSION_MOTD;
+	  };
+	  class MOTDLabelShadow : MOTDLabel {
 		shadow = 2;
 		font = FONTM;
 	  };
