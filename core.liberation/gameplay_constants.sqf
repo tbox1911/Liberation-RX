@@ -1,4 +1,4 @@
-GRLIB_save_key = "GREUH_LIBERATION_gulfcoast_saveGame_PSK";
+GRLIB_save_key = "GREUH_LIBERATION_Takistan0_saveGame_PSK";
 // change this value if you want different saveGames on different map
 GRLIB_side_resistance = resistance;
 GRLIB_side_civilian = civilian;
