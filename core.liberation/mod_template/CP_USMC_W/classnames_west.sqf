@@ -355,6 +355,7 @@ strong_heavy_vehicles = [
     ["CUP_B_M1A2SEP_RACS",0,strong_heavy_vehicle_price_tier_3,0,GRLIB_perm_inf],
     ["CUP_B_Challenger2_Desert_BAF",0,strong_heavy_vehicle_price_tier_4,0,GRLIB_perm_inf],
     ["CUP_B_Leopard2A6DST_GER",0,strong_heavy_vehicle_price_tier_4,0,GRLIB_perm_inf],
+    ["CUP_B_T72_CZ",0,strong_heavy_vehicle_price_tier_4,0,GRLIB_perm_inf],
     ["CUP_B_M270_HE_USMC",0,strong_heavy_vehicle_price_tier_6,0,GRLIB_perm_inf],
     ["CUP_B_RM70_CZ",0,strong_heavy_vehicle_price_tier_7,0,GRLIB_perm_inf],
     //RHS
@@ -414,6 +415,7 @@ air_vehicles = [
       ["CUP_B_412_dynamicLoadout_HIL",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],
       ["O_Heli_Light_02_unarmed_F",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf],
       ["CUP_B_AW159_Unarmed_GER",0,air_vehicle_price_tier_3,0,GRLIB_perm_inf],
+      ["CUP_B_Mi171Sh_Unarmed_ACR",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],
       ["CUP_B_AW159_GERdd",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],
 
       	//RHS
