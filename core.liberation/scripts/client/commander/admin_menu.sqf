@@ -191,6 +191,7 @@ while { alive player && dialog } do {
 	if (do_export == 1) then {
 		do_export = 0;
 		if (isServer) then {
+			{if (score _x > 20) then { [_x, getPlayerUID _x] call save_context }} foreach (AllPlayers - (entities "HeadlessClient_F"));
 			[] call save_game_mp;
 			copyToClipboard str (profileNamespace getVariable GRLIB_save_key);
 			_msg = format ["Savegame %1 Exported to clipboard.", GRLIB_save_key];
@@ -200,6 +201,7 @@ while { alive player && dialog } do {
 			{ ctrlShow [_x, true] } foreach _output_controls;
 			output_save = [];
 			[player, {
+				{if (score _x > 20) then { [_x, getPlayerUID _x] call save_context }} foreach (AllPlayers - (entities "HeadlessClient_F"));
 				[] call save_game_mp;
 				[missionNamespace, ["output_save", greuh_liberation_savegame]] remoteExec ["setVariable", owner _this];
 				["Copy the Savegame from Text Field."] remoteExec ["hint", owner _this];
