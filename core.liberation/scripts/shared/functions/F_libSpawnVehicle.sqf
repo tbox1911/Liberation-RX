@@ -44,7 +44,6 @@ if ( _classname isKindOf "Air" ) then {
 };
 waitUntil {!isNull _newvehicle};
 _newvehicle allowDamage false;
-diag_log format [ "Spawn vehicle %1 pos %2", _classname , _spawnpos ];
 
 if ( _newvehicle isKindOf "Air" ) then {
 	_newvehicle engineOn true;
