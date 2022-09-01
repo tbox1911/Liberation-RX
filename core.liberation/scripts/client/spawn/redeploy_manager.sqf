@@ -59,7 +59,7 @@ if ( GRLIB_player_spawned ) then {
 
 	if ( GRLIB_enable_arsenal && !isNil "_saved_loadouts" ) then {
 		{
-			if ( _counter % 2 == 0 ) then {
+			if ( _counter % 2 == 0 && _counter < 40) then {
 				_loadouts_data pushback _x;
 			};
 			_counter = _counter + 1;
