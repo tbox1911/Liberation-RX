@@ -16,6 +16,8 @@
 		<Key ID="STR_MISSION_MOTD">
 			<Original>It should not be too easy...</Original>
 			<French>Ca ne doit pas être trop facile...</French>
+			<Chinesesimp>经历漫漫的战斗历程才终能获得解放</Chinesesimp>
+			<Chinese>經歷漫漫的戰鬥歷程才終能獲得解放</Chinese>
 		</Key>
 		<Key ID="STR_MISSION_DESCRIPTION">
 			<Original>With the power of Freedom and Democracy you shall liberate this country from the OPFOR oppression.</Original>
@@ -4406,6 +4408,8 @@
 		<Key ID="STR_RANK_LVL7">
 			<Original>You have more ManPower.&lt;br/&gt;The Trader's shop is cheaper.&lt;br/&gt;The Air Support is cheaper.</Original>
 			<French>Vous avez plus de ManPower.&lt;br/&gt;Le Trader's shop est moins cher.&lt;br/&gt;L'Air Support est moins cher.</French>
+			<Chinesesimp>你有更多的人力资源。&lt;br/&gt;贸易技能提高，商店价格更便宜。&lt;br/&gt;空中支援的价格更便宜。</Chinesesimp>
+			<Chinese>你有更多的人力資源。 &lt;br/&gt;貿易技能提高，商店價格更便宜。 &lt;br/&gt;空中支援的價格更便宜。</Chinese>
 		</Key>
 
 		<!-- Added in v0.928 -->
