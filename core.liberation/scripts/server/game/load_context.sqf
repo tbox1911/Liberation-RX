@@ -49,9 +49,9 @@ if (count (_context select 2) >= 1 ) then {
         deleteGroup _grp;
         sleep 0.5;
     } foreach (_context select 2);
-
-    if (isNull _player) exitWith {};
-    _player setVariable ["GRLIB_squad_context_loaded", true];
 };
+
+if (isNull _player) exitWith {};
+_player setVariable ["GRLIB_squad_context_loaded", true];
 
 diag_log format ["--- LRX Loading %1 unit(s) for %2 Squad.", count (_context select 2), name _player];

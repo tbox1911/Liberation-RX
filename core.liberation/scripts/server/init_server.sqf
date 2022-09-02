@@ -13,7 +13,7 @@ diag_log "--- Server Init start ---";
 
 // Init owner on user placed objects 
 {
-	if (getObjectType _x >= 8) then {
+	if (getObjectType _x >= 8 && !(_x iskindof "Man")) then {
 		if (isNil {_x getVariable "GRLIB_vehicle_owner"} ) then {
 			_x setVariable ["GRLIB_vehicle_owner", "server", true];
 		};
