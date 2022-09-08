@@ -34,6 +34,7 @@ if (floor(random combat_readiness) > (15 + (30 / GRLIB_csat_aggressivity))) then
 				stats_reinforcements_called = stats_reinforcements_called + 1;
 				
 				if ( combat_readiness >= 90 ) then { 
+					sleep 15;
 					[ markerPos _targetsector ] spawn send_paratroopers;
 					stats_reinforcements_called = stats_reinforcements_called + 1;
 				};
