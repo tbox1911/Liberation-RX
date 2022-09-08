@@ -1,5 +1,6 @@
 params ["_vehicle"];
 if (isNil "_vehicle") exitWith {};
+diag_log format [ "Cleanup vehicle %1 at %2", typeOf _vehicle, time ];
 
 // Detach
 detach _vehicle;
