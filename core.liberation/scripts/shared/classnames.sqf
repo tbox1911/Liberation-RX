@@ -459,6 +459,7 @@ if ( isNil "GRLIB_AirDrop_4_cost" ) then {
 
 if ( isNil "GRLIB_AirDrop_5" ) then {
 	GRLIB_AirDrop_5 = [
+		"I_APC_Wheeled_03_cannon_F",
 		"I_APC_tracked_03_cannon_F",
 		"B_APC_Wheeled_03_cannon_F",
 		"B_APC_Wheeled_01_cannon_F"
