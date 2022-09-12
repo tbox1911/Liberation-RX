@@ -209,5 +209,5 @@ opfor_recyclable = [
 	["CUP_O_M113_TKA",1,round (400 / GRLIB_recycling_percentage),20],
 	["CUP_O_T55_TK",1,round (1040 / GRLIB_recycling_percentage),25],
 	["CUP_O_T72_TKA",1,round (1040 / GRLIB_recycling_percentage),30],
-	["CUP_O_T90_RU",1,round (800 / GRLIB_recycling_percentage),35]
+	["CUP_O_T90_RU",1,round (1800 / GRLIB_recycling_percentage),35]
 ];
