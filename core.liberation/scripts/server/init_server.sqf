@@ -124,7 +124,11 @@ resistance setFriend [GRLIB_side_enemy, 0];
 GRLIB_side_enemy setFriend [resistance, 0];
 
 addMissionEventHandler ['HandleDisconnect', cleanup_player];
-addMissionEventHandler ["MPEnded", {diag_log "--- LRX Mission End"}];
+addMissionEventHandler ["MPEnded", {
+	diag_log "--- LRX Mission End";
+	// Cleanup game objects 
+	{ if (getObjectType _x >= 8 ) then { deleteVehicle _x } } forEach (allMissionObjects "");	
+}];
 
 // AI Skill
 [ 
