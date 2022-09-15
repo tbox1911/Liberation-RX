@@ -103,7 +103,7 @@ heavy_vehicles = [
 	["CUP_B_M2Bradley_USA_D",35,1500,35,GRLIB_perm_air],
 	["CUP_B_M2A3Bradley_USA_D",50,2000,35,GRLIB_perm_max],
 	["CUP_B_M1A1SA_Desert_US_Army",40,3000,40,GRLIB_perm_air],
-	["CUP_B_M1A2SEP_TUSK_II_Desert_US_Army",50,4000,50,GRLIB_perm_max]
+	["CUP_B_M1A2SEP_TUSK_II_Desert_US_Army",50,3500,50,GRLIB_perm_max]
 ];
 
 air_vehicles = [
