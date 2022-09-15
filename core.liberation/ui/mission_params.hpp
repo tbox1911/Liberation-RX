@@ -70,13 +70,13 @@ class Params
 		title = "MOD Preset - Friendly";
 		values[] = { 0,1,2,3,4,5,6,7,8,9,10 };
 		texts[] = { "A3 NATO", "A3 CSAT", "A3 AAF", "CUP BAF Desert", "CUP USMC", "RHS USAF", "RHS AFRF", "GM WEST", "GM WEST Winter", "OPTRE West", "WS UNA" };
-		default = 4;
+		default = 5;
 	};
 	class ModPresetEast {
 		title = "MOD Preset - Enemy";
 		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11 };
 		texts[] = { "A3 CSAT", "A3 NATO", "A3 AAF", "A3 CSAT Urban", "CUP Takistan", "EJW Taliban", "RHS AFRF", "RHS USAF", "GM EAST", "GM EAST Winter", "OPTRE East", "WS FIA"};
-		default = 4;
+		default = 6;
 	};
 	class ForcedLoadout {
 		title = $STR_FORCE_LOADOUT;

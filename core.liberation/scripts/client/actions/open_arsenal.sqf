@@ -42,11 +42,13 @@ if (FAC_MSU_ACTIVE) then {
         _glob_box = missionnamespace getVariable ["myLARsBox", objNull];
 		[_glob_box, player, false] call ace_arsenal_fnc_openBox;
 	} else {
-		_box = missionnamespace getVariable ["myLARsBox", objNull];
-		[_box, true, false] call ace_arsenal_fnc_removeVirtualitems;
-		[_box, true] call ace_arsenal_fnc_initBox;
-		[_box, item_blacklist] call ace_arsenal_fnc_removeVirtualitems;
-		[_box, player, false] call ace_arsenal_fnc_openBox;
+		if(!isNil "MSU_whitelisted_from_arsenal") then {
+			// [myLARsBox, blacklisted_weapon] call ace_arsenal_fnc_removeVirtualItems;
+			[myLARsBox, MSU_whitelisted_from_arsenal] call ace_arsenal_fnc_addVirtualItems;
+			[myLARsBox, player] call ace_arsenal_fnc_openBox;
+		} else {
+			[myLARsBox, player, true] call ace_arsenal_fnc_openBox;
+		};
 	};
 
 

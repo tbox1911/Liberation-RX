@@ -84,7 +84,7 @@ briefing = 1;
 
 class CfgFunctions {
 	#include "Vcom\cfgFunctions.hpp"
-	#include "MilSimUnited\functions.hpp"
+	// #include "MilSimUnited\functions.hpp" // trait restrictions
 	
 	class KP { 
 		#include "KP\KPCF\functions.hpp" 
@@ -106,8 +106,8 @@ class cfgSounds {
 
 class Header {
 	gameType = "CTI";
-	minPlayers = 0;
-	maxPlayers = 32;
+	minPlayers = 1;
+	maxPlayers = 64;
 };
 
 class CfgDebriefing {

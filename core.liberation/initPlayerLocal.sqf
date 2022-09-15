@@ -182,10 +182,23 @@ hint format['
 	TeamSpeak Server: 193.111.198.84 \n
 '];
 
-//with init set no medical, or engineer, or EOD
-Player setVariable ["ace_medical_medicclass", 0, true];
-Player setVariable ["ACE_isEngineer", 0, true];
-Player setVariable ["ACE_isEOD", 0, true];
+
+
+
+if (isNil "trait_restrictions") then {
+	trait_restrictions = false
+};
+
+if (trait_restrictions) then {
+	//with init set no medical, or engineer, or EOD
+	Player setVariable ["ace_medical_medicclass", 0, true];
+	Player setVariable ["ACE_isEngineer", 0, true];
+	Player setVariable ["ACE_isEOD", 0, true];
+};
+
+
+
+
 
 while { true } do {
 	sleep 300;

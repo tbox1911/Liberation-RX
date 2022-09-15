@@ -4,6 +4,111 @@
 
 
 
+
+
+MSU Remastered
+------------------------------------------------------------------------------------------
+
+\mod_template\mod_init.sqf: 
+add custom factions additional to the ones in ui/mission_params.hpp
+
+
+\scripts\client\actions\open_arsenal.sqf: 
+disable ACE arsenal
+OR
+[_box, ["ItemMap"]] call ace_arsenal_fnc_initBox;
+// [_box, blacklisted_weapon] call ace_arsenal_fnc_removeVirtualItems;
+[_box, MSU_whitelisted_from_arsenal] call ace_arsenal_fnc_addVirtualItems;
+[_box, player] call ace_arsenal_fnc_openBox;
+AND
+\addons\LARs\liberationArsenal.sqf
+[myLARsBox, FALSE, false] call ace_arsenal_fnc_initBox; // make second parameter false
+
+
+\mod_template\...
+MSU_whitelisted_from_arsenal
+
+
+\mod_template\RHS_USAF\loadout\player_set1.sqf:
+only uniform to avoid selling spawngear
+
+
+\addons\SELL\do_sell.sqf: 
+add selling player arsenal minus 13 (uniform)
+
+
+\fixed_position.sqf: possible use
+GRLIB_Marker_SRV pushBack (getPos chimera_sign);
+// [9314.82,10943.4,0],
+
+
+\scripts\client\build\do_build.sqf:
+\scripts\client\actions\recycle_manager.sqf:
+\scripts\shared\functions\F_isRecyclable.sqf
+recycling in base
+
+
+\scripts\server\game\save_game_mp.sqf: 
+save from the beginning
+
+
+\scripts\server\game\manage_score.sqf:
+ca. 44: //change perms ranks to permissions
+
+
+\scripts\server\init_server.sqf
+ca. 76: comment hall of fame
+
+
+\scripts\server\ai\bomber_ai.sqf
+ca. 14: change GRLIB_side_civilian to GRLIB_side_enemy
+ca. 42: _unit addVest "V_TacChestrig_cbr_F";
+
+
+init.sqf:
+_vehicle addAction	["Bereichsheilung",{ params ["_target", "_caller", "_actionId", "_arguments"]; [_caller,true] execVM "MilSimUnited\heal_aoe.sqf";},nil,1.5,false,true,"","true",5,false,"",""];
+
+
+\scripts\server\a3w\init_missions.sqf
+disable loop
+
+\scripts\client\actions\action_manager.sqf: 
+player addAction ["<t color='#FFFF00'>" + "-- RX side missions" + "</t>",'[1, false] execVM "scripts\server\a3w\missions\sideMissionController.sqf";',"",-995,false,true,"","build_confirmed == 0"];
+
+
+\addons\PAR\PAR_EventHandler.sqf
+disable pay loadout
+
+
+\scripts\client\spawn\redeploy_manager.sqf
+disable group teleporting
+
+
+disable scripted skill change in enemies
+\scripts\server\a3w\scripts\F_createCustomGroup.sqf
+\scripts\server\a3w\scripts\F_createOutpost.sqf
+\scripts\server\patrols\send_paratroopers.sqf
+\scripts\server\secondary\convoy_hijack.sqf
+\scripts\server\sector\attack_in_progress_fob.sqf
+\scripts\server\sector\attack_in_progress_sector.sqf
+\scripts\shared\functions\F_forceOpforCrew.sqf
+\scripts\shared\functions\F_libSpawnMilitiaCrew.sqf
+\scripts\server\init_server.sqf // BIS_fnc_EXP_camp_dynamicAISkill ?????
+
+
+\scripts\client\commander\enforce_whitelist.sqf
+admin not a criterium
+
+\onPlayerRespawn.sqf
+comment player allowDamage false;
+
+
+
+
+
+
+
+
 Anpassungen für eine neue Liberation RX
 ------------------------------------------------------------------------------------------
 

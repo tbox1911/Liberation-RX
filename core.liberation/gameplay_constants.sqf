@@ -1,4 +1,4 @@
-GRLIB_save_key = "GREUH_LIBERATION_Takistan0_saveGame_PSK";
+GRLIB_save_key = "MilSim_United";
 // change this value if you want different saveGames on different map
 GRLIB_side_resistance = resistance;
 GRLIB_side_civilian = civilian;
@@ -79,15 +79,6 @@ prisoner_ammo = 100;
 // Building Penalty
 building_penalty_isActive = false;
 
-// Global arsenal
-global_arsenal = true;
-
-// true to activate factions selection
-FAC_MSU_ACTIVE = false;
-
-MSU_Med_Div = 4;
-MSU_Eng_Div = 6;
-
 // Do not allow air vehicles to trigger zones. 
 air_cannot_trigger_on = true;
 
@@ -144,8 +135,21 @@ ai_limiter_on = true;
 ai_skill = 9;
 ai_value = 35; // buildable ai price
 
-//Medic restrictions
-support_medic_restriction = false;
+
+
+
+moderators = [
+    "76561198019854511", // Voltaren
+    "76561198094301584", // Devin
+    "76561198132964589", // Sound_wave
+    "76561198057808323", // Johannes
+    "76561197993044168", // Huber Sepp
+    "76561197991090099", // Jenkins
+    "76561198052098426", // Fave
+    "76561198203314980" // Bobi
+];
+
+
 
 
 // Prices for blufor vehicle tiers
@@ -156,7 +160,6 @@ heavy_vehicle_price_tank_light = 1000;
 heavy_vehicle_price_tank_heavy = 1500;
 logistic_air_vehicle_price = 250;
 logistic_ground_vehicle_price = 200;
-
 light_vehicle_price_tier_1 = 50;
 light_vehicle_price_tier_2 = 75;
 light_vehicle_price_tier_3 = 100;
@@ -240,16 +243,31 @@ logistic_ground_vehicle_price_tier_4 = 450;
 logistic_ground_vehicle_price_tier_5 = 500;
 logistic_ground_vehicle_price_tier_6 = 550;
 
-moderators = [
-    "76561198019854511", // Voltaren
-    "76561198094301584", // Devin
-    "76561198132964589", // Sound_wave
-    "76561198057808323", // Johannes
-    "76561197993044168" // Huber Sepp
-];
 
 
-items_allFac = [
+
+// trait restrictions
+trait_restrictions = false;
+support_medic_restriction = false;
+MSU_Med_Div = 4;
+MSU_Eng_Div = 6;
+
+
+
+/*
+If we need a specific whitelist someday the following array needs to be set: 
+MSU_whitelisted_from_arsenal = [];
+
+An example with only VSM gear and RHS weapons but including all ACE items is located in: 
+\mod_template\RHS_USAF\arsenal_vsm_whitelist.sqf
+*/
+
+
+
+// true to activate factions selection
+FAC_MSU_ACTIVE = false;
+
+items_allFac = [/*
     "U_B_FullGhillie_lsh",
     "U_B_FullGhillie_sard",
     "U_B_GhillieSuit",
@@ -259,12 +277,17 @@ items_allFac = [
     "U_B_pilotCoveralls",
     "H_pilotHelmetFighter_B",
     "H_pilotHelmetHeli_B",
-    "V_RebreatherB"
+    "V_RebreatherB"*/
 ];
 
 
+
+
+// Global arsenal
+global_arsenal = false;
+
 item_whitelist = [
-    "ACE_HuntIR_M203",
+    /*"ACE_HuntIR_M203",
     "CUP_Stinger_M",
     "greenmag_ammo_300win_basic_60Rnd",
     "greenmag_ammo_300win_basic_30Rnd",
@@ -363,13 +386,12 @@ item_whitelist = [
     "CUP_StarClusterYellow_265_M",
     "CUP_FlareGreen_265_M",
     "CUP_FlareRed_265_M",
-    "KKiv_Mag_APFSDS"
+    "KKiv_Mag_APFSDS"*/
 ];
 
 
-item_blacklist =
-[
-    "CUP_arifle_ACRC_snw_556",
+item_blacklist = [
+	/*"CUP_arifle_ACRC_snw_556",
     "CUP_arifle_ACRC_snw_68",
     "CUP_arifle_ACRC_tan_556",
     "CUP_arifle_ACRC_tan_68",
@@ -1539,6 +1561,8 @@ item_blacklist =
 	"B_Bergen_hex_F",
 	"B_Bergen_mcamo_F",
 	"B_Bergen_tna_F",
-	"UK3CB_BAF_B_Bergen_MTP_Rifleman_XL_A"
+	"UK3CB_BAF_B_Bergen_MTP_Rifleman_XL_A"*/
 ];
+
+
 
