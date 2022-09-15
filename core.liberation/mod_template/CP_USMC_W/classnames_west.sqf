@@ -259,7 +259,8 @@ vehicle_rearm_sources_west = [
 ];
 
 vehicle_big_units_west = [
-
+	"CUP_B_C130J_Cargo_USMC",
+	"CUP_B_LCU1600_USMC"
 ];
 
 GRLIB_vehicle_whitelist_west = [
