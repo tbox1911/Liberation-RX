@@ -61,9 +61,6 @@ if (_doeject) then {
 	hintSilent _msg;
 	moveOut _unit;
 } else {
-	if (isPlayer _unit) then {
-		[_vehicle] spawn vehicle_defense;
-	};
+	[_vehicle] spawn vehicle_defense;
+	[_unit, _vehicle] spawn vehicle_fuel;	
 };
-
-!(_doeject);
