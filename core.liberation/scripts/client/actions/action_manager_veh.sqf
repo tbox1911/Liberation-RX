@@ -40,8 +40,9 @@ while { true } do {
 		if (typeOf _vehicle in vehicle_big_units) then {
 			_distvehclose = _distvehclose * 3;
 		};
-		_vehicle addAction ["<t color='#00F000'>" + localize "STR_RE_FUEL" + "</t> <img size='1' image='R3F_LOG\icons\r3f_fuel.paa'/>", "scripts\client\actions\do_refuel.sqf","",-900,false,true,"","[_target] call is_menuok && [_target] call F_check_nearFuel", _distvehclose];
-		_vehicle addAction ["<t color='#FFFF00'>" + localize "STR_UN_FLIP" + "</t> <img size='1' image='res\ui_flipveh.paa'/>","scripts\client\actions\do_unflip.sqf","",-900,false,true,"","[_target] call is_menuok && !(typeOf _target in uavs) && (locked _target == 0 || locked _target == 1)", _distveh];
+		_vehicle addAction ["<t color='#FFFF00'>" + localize "STR_UN_FLIP" + "</t> <img size='1' image='res\ui_flipveh.paa'/>","scripts\client\actions\do_unflip.sqf","",-940,false,true,"","[_target] call is_menuok && !(typeOf _target in uavs) && (locked _target == 0 || locked _target == 1)", _distveh];
+		_vehicle addAction ["<t color='#900000'>" + localize "STR_DE_FUEL" + "</t> <img size='1' image='R3F_LOG\icons\r3f_fuel.paa'/>", "scripts\client\actions\do_defuel.sqf","",-941,false,true,"","[_target] call is_menuok && !([_target, 'FOB', GRLIB_fob_range] call F_check_near || [_target, 'LHD', 500] call F_check_near) && fuel _target >= 0.25", _distvehclose];
+		_vehicle addAction ["<t color='#009000'>" + localize "STR_RE_FUEL" + "</t> <img size='1' image='R3F_LOG\icons\r3f_fuel.paa'/>", "scripts\client\actions\do_refuel.sqf","",-942,false,true,"","[_target] call is_menuok && [_target] call F_check_nearFuel && fuel _target <= 0.75", _distvehclose];
 
 		if (!([typeOf _vehicle, GRLIB_vehicle_blacklist] call F_itemIsInClass) && !([_vehicle] call is_public)) then {
 			_vehicle addAction ["<t color='#00FF00'>" + localize "STR_LOCK" + "</t> <img size='1' image='R3F_LOG\icons\r3f_lock.paa'/>","scripts\client\actions\do_lock.sqf","",-901,false,true,"","[_target] call is_menuok && (count (crew _target) == 0 || typeOf _target in uavs) && [_this, _target] call is_owner && (locked _target == 0 || locked _target == 1)", _distvehclose];

@@ -4666,9 +4666,13 @@
 			<Chinesesimp>-- 出售库存 --</Chinesesimp>
 			<Chinese>-- 出售庫存 --</Chinese>
 		</Key>
+		<Key ID="STR_DE_FUEL">
+			<Original>-- TAKE FUEL</Original>
+			<French>-- PRENDRE CARBURANT</French>
+		</Key>
 		<Key ID="STR_RE_FUEL">
-			<Original>-- REFUEL</Original>
-			<French>-- PLEIN CARBURANT</French>
+			<Original>-- PUT FUEL</Original>
+			<French>-- METTRE CARBURANT</French>
 			<Japanese>-- 給油</Japanese>
 			<Chinesesimp>-- 加油 --</Chinesesimp>
 			<Chinese>-- 加油 --</Chinese>
@@ -4891,6 +4895,13 @@
 			<Japanese>燃料補充完了</Japanese>
 			<Chinesesimp>燃料添加完毕。</Chinesesimp>
 			<Chinese>燃料添加完畢。</Chinese>
+		</Key>
+
+		<!-- do_defuel.sqf -->
+
+		<Key ID="STR_DO_DEFUEL">
+			<Original>&lt;t align='center'&gt;Take fuel form this vehicle: %1&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
+			<French>&lt;t align='center'&gt;Prendre l'essence de ce vehicule: %1&lt;br/&gt;Es tu sûr ?&lt;/t&gt;</French>
 		</Key>
 
 		<!-- do_squad.sqf -->
