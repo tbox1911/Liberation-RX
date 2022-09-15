@@ -11,7 +11,7 @@ if (count (_context select 2) >= 1 ) then {
     // AIs loadout
     waitUntil {
         sleep 3;
-        if ([_player, "FOB", GRLIB_fob_range] call F_check_near) exitWith { true };
+        if ([_player, "FOB", GRLIB_fob_range] call F_check_near && isTouchingGround _player) exitWith { true };
         [localize "$STR_SQUAD_WAIT"] remoteExec ["hintSilent", owner _player];
         false;
     };
