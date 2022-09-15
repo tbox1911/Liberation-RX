@@ -57,8 +57,8 @@ _grp_sell = createGroup [GRLIB_side_civilian, true];
 {
     _manPos = _x;
     _man = _grp_sell createUnit [SELL_Man, _manPos, [], 0, "NONE"];
-    _man allowDamage false;  
-    _man setPosATL _manPos;
+    _man allowDamage false;
+    _man setPosATL (_manPos vectorAdd [0, 0, 0.1]);
     [_man, "LHD_krajPaluby"] spawn F_startAnimMP;
     sleep 0.1;
 } forEach GRLIB_Marker_SRV;
@@ -67,8 +67,8 @@ _grp_sell = createGroup [GRLIB_side_civilian, true];
 private ["_grp_shop", "_shop", "_deskDir", "_deskPos", "_desk", "_man", "_offset", "_str"];
 _grp_shop = createGroup [GRLIB_side_civilian, true];
 {
-    _shop = nearestObjects [_x, ["House"], 10] select 0; 
-    _deskDir = getdir _shop; 
+    _shop = nearestObjects [_x, ["House"], 10] select 0;
+    _deskDir = getdir _shop;
     _offset = [-0.7, 1, 0.25];  // Default shop_01_v1_f
     _str =  toLower str _shop;
     if (_str find "warehouse_03" > 0) then { _offset = [-2, 0, 0]};             // Tanoa
@@ -79,20 +79,20 @@ _grp_shop = createGroup [GRLIB_side_civilian, true];
     if (_str find "sara_domek_sedy" > 0) then { _offset = [2.5, 1.8, 0.6]};     // Sarahni
     if (_str find "dum_istan3_hromada" > 0) then { _deskDir = (90 + _deskDir); _offset = [2.6, -0.6, -0.1]};  // Sarahni
     if (_str find "house_c_1_v2_ep1" > 0) then { _offset = [5.5, 1, 0.10]};     // Takistan
-    if (_str find "vn_shop_town_03" > 0) then { _offset = [1.5, -1, 0.10]};     // Cam Lao 
+    if (_str find "vn_shop_town_03" > 0) then { _offset = [1.5, -1, 0.10]};     // Cam Lao
     if (_str find "house_big_02" > 0) then { _deskDir = (180 + _deskDir); _offset = [-0.7, -2, 0.25]};
 
-    _deskPos = (getposASL _shop) vectorAdd ([_offset, -_deskDir] call BIS_fnc_rotateVector2D);   
-    _desk = createSimpleObject ["Land_CashDesk_F", _deskPos];  
-    _desk allowDamage false;  
-    _desk setDir _deskDir;  
-    _deskDir = (180 + _deskDir); 
-    _manPos = _deskPos vectorAdd ([[0, -0.7, 0], -_deskDir] call BIS_fnc_rotateVector2D);  
+    _deskPos = (getposASL _shop) vectorAdd ([_offset, -_deskDir] call BIS_fnc_rotateVector2D);
+    _desk = createSimpleObject ["Land_CashDesk_F", _deskPos];
+    _desk allowDamage false;
+    _desk setDir _deskDir;
+    _deskDir = (180 + _deskDir);
+    _manPos = _deskPos vectorAdd ([[0, -0.7, 0.1], -_deskDir] call BIS_fnc_rotateVector2D);
     _man = _grp_shop createUnit [SHOP_Man, _manPos, [], 0, "NONE"];
-    _man allowDamage false;  
-    _man disableCollisionWith _desk;  
+    _man allowDamage false;
+    _man disableCollisionWith _desk;   
     _man setPosASL _manPos;
-    _man setDir _deskDir; 
+    _man setDir _deskDir;
     [_man, "AidlPercMstpSnonWnonDnon_AI"] spawn F_startAnimMP;
     [_man, _manPos] spawn {
         params ["_unit", "_pos"];
