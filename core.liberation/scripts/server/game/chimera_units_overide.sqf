@@ -1,8 +1,9 @@
 if (!isServer) exitWith {};
+if (GRLIB_mod_west == "A3_BLU") exitWith {};
 
-private [ "_unit_model", "_cloth", "_items", "_weapon", "_mag",  "_src_class", "_dst_class", "_veh_lst", "_veh", "_src_pos", "_src_dir" ];
+private [ "_unit_model", "_cloth", "_items", "_weapon", "_mag", "_src_class", "_dst_class", "_veh_lst", "_veh", "_src_pos", "_src_dir" ];
 
-// repaint man units 
+// repaint man units
 private _chimera_soldiers = [];
 allUnits apply { if ([_x, "LHD", GRLIB_sector_size] call F_check_near && !isPlayer _x) then {_chimera_soldiers pushback _x} };
 {
@@ -14,15 +15,15 @@ allUnits apply { if ([_x, "LHD", GRLIB_sector_size] call F_check_near && !isPlay
     //diag_log format ["DBG: %1 %2 %3 %4", _unit_model, _items, _weapon, _mag];
     _unit = _x;
     _unit forceAddUniform _cloth;
+    removeVest _unit;
     removeAllWeapons _unit;
     removeAllAssignedItems _unit;
-    {_unit linkItem _x} forEach _items;
+    { if (_x select [0,2] == "V_") then { _unit addVest _x} else {_unit linkItem _x }} forEach _items;
     for "_i" from 1 to 3 do {_unit addItem _mag};
     for "_i" from 1 to 3 do {_unit addItemToVest _mag};
     _unit addWeapon _weapon;
     for "_i" from 1 to 3 do {_unit addItemToVest _mag};
 } forEach _chimera_soldiers;
-
 
 // repaint vehicle
 if (!isNil "chimera_vehicle_overide") then {
@@ -59,17 +60,17 @@ if (!isNil "chimera_vehicle_overide") then {
 
 // Optre bonus
 if (GRLIB_OPTRE_enabled) then {
-    _src_pos = (getPosATL lhd) vectorAdd [0,-300,250]; 
-    _veh = createVehicle ["OPTRE_Frigate_UNSC", _src_pos, [], 0, "CAN_COLLIDE"]; 
-    _veh allowDamage false; 
-    _veh setDir 90; 
-    _veh setVehicleLock "LOCKED"; 
-    _veh enableSimulation false; 
-     
-    _src_pos = _src_pos vectorAdd [-200,-500,0]; 
-    _veh = createVehicle ["OPTRE_Frigate_In", _src_pos, [], 0, "CAN_COLLIDE"]; 
-    _veh allowDamage false; 
-    _veh setDir 90; 
-    _veh setVehicleLock "LOCKED"; 
+    _src_pos = (getPosATL lhd) vectorAdd [0,-300,250];
+    _veh = createVehicle ["OPTRE_Frigate_UNSC", _src_pos, [], 0, "CAN_COLLIDE"];
+    _veh allowDamage false;
+    _veh setDir 90;
+    _veh setVehicleLock "LOCKED";
+    _veh enableSimulation false;
+
+    _src_pos = _src_pos vectorAdd [-200,-500,0];
+    _veh = createVehicle ["OPTRE_Frigate_In", _src_pos, [], 0, "CAN_COLLIDE"];
+    _veh allowDamage false;
+    _veh setDir 90;
+    _veh setVehicleLock "LOCKED";
     _veh enableSimulation false;
 };
