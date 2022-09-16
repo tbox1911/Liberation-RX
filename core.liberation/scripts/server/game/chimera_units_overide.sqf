@@ -18,7 +18,7 @@ allUnits apply { if ([_x, "LHD", GRLIB_sector_size] call F_check_near && !isPlay
     removeVest _unit;
     removeAllWeapons _unit;
     removeAllAssignedItems _unit;
-    { if (_x select [0,2] == "V_") then { _unit addVest _x} else {_unit linkItem _x }} forEach _items;
+    {if ("Vest" in (_x call BIS_fnc_itemType)) then { _unit addVest _x} else {_unit linkItem _x }} forEach _items;
     for "_i" from 1 to 3 do {_unit addItem _mag};
     for "_i" from 1 to 3 do {_unit addItemToVest _mag};
     _unit addWeapon _weapon;
