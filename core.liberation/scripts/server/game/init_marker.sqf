@@ -87,17 +87,17 @@ _grp_shop = createGroup [GRLIB_side_civilian, true];
     _desk allowDamage false;
     _desk setDir _deskDir;
     _deskDir = (180 + _deskDir);
-    _manPos = _deskPos vectorAdd ([[0, -0.7, 0.1], -_deskDir] call BIS_fnc_rotateVector2D);
+    _manPos = (ASLToATL _deskPos) vectorAdd ([[0, -0.7, 0.1], -_deskDir] call BIS_fnc_rotateVector2D);
     _man = _grp_shop createUnit [SHOP_Man, _manPos, [], 0, "NONE"];
     _man allowDamage false;
     _man disableCollisionWith _desk;   
-    _man setPosASL _manPos;
+    _man setPosATL _manPos;
     _man setDir _deskDir;
     [_man, "AidlPercMstpSnonWnonDnon_AI"] spawn F_startAnimMP;
     [_man, _manPos] spawn {
         params ["_unit", "_pos"];
         while {true} do {
-          if ((getPosATL _unit) distance2D _pos >= 2) then { _unit setPosASL _pos};
+          if ((getPosATL _unit) distance2D _pos >= 2) then { _unit setPosATL _pos};
           sleep 5;
         };
     };
