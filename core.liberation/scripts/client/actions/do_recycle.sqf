@@ -38,7 +38,7 @@ if (!isNil "_objectinfo_loot") then {
 
 _objectinfo = ( [ (light_vehicles + strong_light_vehicles  + heavy_vehicles + strong_heavy_vehicles + air_vehicles + fast_air_vehicle + static_vehicles + support_vehicles + support_crates + buildings + opfor_recyclable + ind_recyclable + loot_crates), { typeof _vehicle == _x select 0 } ] call BIS_fnc_conditionalSelect ) select 0;
 if (isNil "_objectinfo") then {
-	_objectinfo = [typeOf _vehicle, 0, 0, 0];
+	_objectinfo = [typeOf _vehicle, 0, 50, 0];
 };
 dorecycle = 0;
 
