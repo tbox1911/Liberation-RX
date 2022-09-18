@@ -133,7 +133,7 @@ ai_limit = 3;
 ai_limiter_on = true;
 // ai skill
 ai_skill = 9;
-ai_value = 35; // buildable ai price
+ai_value = 100; // buildable ai price
 
 
 
