@@ -1,6 +1,6 @@
 params ["_unit", "_vehicle"];
 
-private _role = "";
+private ["_role", "_fuel_veh", "_fuel_collected"];
 private _conso = 0.003;  // fuel capacity = (((1/_conso) * 5) / 60) in sec
 
 if (_vehicle isKindOf "APC") then { _conso = 0.004 };
@@ -13,7 +13,16 @@ while {true} do {
     if (_role != "driver" || isNull objectParent _unit) exitWith {};
 
     if (speed _vehicle > 1) then {
-        _vehicle setFuel ((fuel _vehicle) - _conso) max 0;
+        _fuel_veh = fuel _vehicle;
+        if (_fuel_veh < 0.010) then {
+            _fuel_collected = _unit getVariable ["GREUH_fuel_count", 0];
+            if (_fuel_collected > 1) then {
+                _fuel_veh = 0.06;
+                _unit setVariable ["GREUH_fuel_count", _fuel_collected - 1];
+                systemchat "Resource Fuel used...";
+            };
+        };
+        _vehicle setFuel (_fuel_veh - _conso) max 0;
     };
     sleep 5;
 };
