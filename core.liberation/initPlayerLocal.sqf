@@ -89,7 +89,7 @@ if (global_arsenal) then {
 };
 
 if (isNil "limit_hc_gr") then {
-	limit_hc_gr = true;
+	limit_hc_gr = false;
 };
 
 if (!hasInterface && !isDedicated) then {

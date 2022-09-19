@@ -27,13 +27,13 @@ if (!abort_loading) then {
 		[] execVM "scripts\server\init_server.sqf";
 
 		//Tkill with diag.
-		if (isNil 'tk_init_allowed') then {tk_init_allowed = false};
+		if (isNil 'tk_init_allowed') then { tk_init_allowed = false; };
 		
 		if (tk_init_allowed) then {
 		["ace_unconscious", {
 		params ["_unit", "_state"];
 		
-		if (isNil 'tk_active') then {tk_active = false};
+		if (isNil 'tk_active') then { tk_active = false; };
 		if ((tk_active) && (_state) && (isPlayer _unit)) then {[_state,_unit]execVM "MilSimUnited\tkill.sqf"}}] call CBA_fnc_addEventHandler;
 		}
 	};
@@ -62,14 +62,16 @@ if (!isDedicated && hasInterface) then {
 SNC_VehRestriction= true;
 
 // MilSim United ===========================================================================
-if (isNil "tkill_script") then {tkill_script = false};
 
-if (tkill_script) then {
+sleep 5;
+
+if (isNil "tkill_script") then { tkill_script = true; };
+
 ["B_Soldier_F", "InitPost", {
 	params ["_vehicle"];
 	_vehicle addEventHandler ["Dammaged", {
 		params ["_unit", "_selection", "_damage", "_hitIndex", "_hitPoint", "_shooter", "_projectile"];
-		if ( (isPlayer _shooter) && (_shooter != _unit) && (alive _unit) && (!isNull _projectile) ) then {
+		if ( (tkill_script) && (isPlayer _shooter) && (_shooter != _unit) && (alive _unit) && (!isNull _projectile) ) then {
 			_msg = format ["Friendly fire from %1 to %2. Penalty: %3 rank and %4 ammo", name _shooter, name _unit, tkill_score, tkill_ammo];
 			[gamelogic, _msg] remoteExec ["globalChat", 0];
 			[getPlayerUID _shooter, tkill_score] remoteExec ["F_addPlayerScore", 2];
@@ -83,7 +85,7 @@ if (tkill_script) then {
 	params ["_vehicle"];
 	_vehicle addEventHandler ["Dammaged", {
 		params ["_unit", "_selection", "_damage", "_hitIndex", "_hitPoint", "_shooter", "_projectile"];
-		if ( (isPlayer _shooter) && (_shooter != _unit) && (alive _unit) && (!isNull _projectile) ) then {
+		if ( (tkill_script) && (isPlayer _shooter) && (_shooter != _unit) && (alive _unit) && (!isNull _projectile) ) then {
 			_msg = format ["Friendly fire from %1 to %2. Penalty: %3 rank and %4 ammo", name _shooter, name _unit, tkill_score, tkill_ammo];
 			[gamelogic, _msg] remoteExec ["globalChat", 0];
 			[getPlayerUID _shooter, tkill_score] remoteExec ["F_addPlayerScore", 2];
@@ -92,11 +94,11 @@ if (tkill_script) then {
 	}];
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
-["CUP_B_GER_Operator_Medic", "InitPost", {
+["B_engineer_F", "InitPost", {
 	params ["_vehicle"];
 	_vehicle addEventHandler ["Dammaged", {
 		params ["_unit", "_selection", "_damage", "_hitIndex", "_hitPoint", "_shooter", "_projectile"];
-		if ( (isPlayer _shooter) && (_shooter != _unit) && (alive _unit) && (!isNull _projectile) ) then {
+		if ( (tkill_script) && (isPlayer _shooter) && (_shooter != _unit) && (alive _unit) && (!isNull _projectile) ) then {
 			_msg = format ["Friendly fire from %1 to %2. Penalty: %3 rank and %4 ammo", name _shooter, name _unit, tkill_score, tkill_ammo];
 			[gamelogic, _msg] remoteExec ["globalChat", 0];
 			[getPlayerUID _shooter, tkill_score] remoteExec ["F_addPlayerScore", 2];
@@ -104,7 +106,35 @@ if (tkill_script) then {
 		};
 	}];
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
-};
+
+["B_soldier_exp_F", "InitPost", {
+	params ["_vehicle"];
+	_vehicle addEventHandler ["Dammaged", {
+		params ["_unit", "_selection", "_damage", "_hitIndex", "_hitPoint", "_shooter", "_projectile"];
+		if ( (tkill_script) && (isPlayer _shooter) && (_shooter != _unit) && (alive _unit) && (!isNull _projectile) ) then {
+			_msg = format ["Friendly fire from %1 to %2. Penalty: %3 rank and %4 ammo", name _shooter, name _unit, tkill_score, tkill_ammo];
+			[gamelogic, _msg] remoteExec ["globalChat", 0];
+			[getPlayerUID _shooter, tkill_score] remoteExec ["F_addPlayerScore", 2];
+			[getPlayerUID _shooter, tkill_ammo] remoteExec ["F_addPlayerAmmo", 2];
+		};
+	}];
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["BWA3_Medic_Fleck", "InitPost", {
+	params ["_vehicle"];
+	_vehicle addEventHandler ["Dammaged", {
+		params ["_unit", "_selection", "_damage", "_hitIndex", "_hitPoint", "_shooter", "_projectile"];
+		if ( (tkill_script) && (isPlayer _shooter) && (_shooter != _unit) && (alive _unit) && (!isNull _projectile) ) then {
+			_msg = format ["Friendly fire from %1 to %2. Penalty: %3 rank and %4 ammo", name _shooter, name _unit, tkill_score, tkill_ammo];
+			[gamelogic, _msg] remoteExec ["globalChat", 0];
+			[getPlayerUID _shooter, tkill_score] remoteExec ["F_addPlayerScore", 2];
+			[getPlayerUID _shooter, tkill_ammo] remoteExec ["F_addPlayerAmmo", 2];
+		};
+	}];
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+
+
 
 ["CargoNet_01_box_F", "InitPost", {
     params ["_vehicle"];
@@ -378,10 +408,196 @@ if (tkill_script) then {
 	_vehicle setVariable ["ace_medical_medicClass", 1];
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
+["rhsusf_M1078A1P2_WD_flatbed_fmtv_usarmy", "InitPost", {
+    params ["_vehicle"];
+	[_vehicle,12] call ace_cargo_fnc_setSpace;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["rhs_kamaz5350_open_msv", "InitPost", {
+    params ["_vehicle"];
+	[_vehicle,12] call ace_cargo_fnc_setSpace;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["UK3CB_BAF_Husky_Passenger_HMG_Green_DPMW", "InitPost", {
+    params ["_vehicle"];
+	[_vehicle,4] call ace_cargo_fnc_setSpace;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["rhsusf_CH53e_USMC_D_cargo", "InitPost", {
+    params ["_vehicle"];
+	[_vehicle,30] call ace_cargo_fnc_setSpace;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["rhsusf_CH53e_USMC_D", "InitPost", {
+    params ["_vehicle"];
+	[_vehicle,30] call ace_cargo_fnc_setSpace;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["rhsusf_CH53E_USMC_GAU21_D", "InitPost", {
+    params ["_vehicle"];
+	[_vehicle,30] call ace_cargo_fnc_setSpace;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["RHS_MELB_AH6M", "InitPost", {
+    params ["_vehicle"];
+	[_vehicle,4] call ace_cargo_fnc_setSpace;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["rhsusf_M977A4_BKIT_M2_usarmy_wd", "InitPost", {
+    params ["_vehicle"];
+	[_vehicle,12] call ace_cargo_fnc_setSpace;
+	_vehicle setVariable ["ACE_isRepairVehicle",1];
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["B_Heli_Transport_03_unarmed_F", "InitPost", {
+    params ["_vehicle"];
+	[_vehicle,12] call ace_cargo_fnc_setSpace;
+	[
+		_vehicle,
+		["Green",1], 
+		true
+	] call BIS_fnc_initVehicle;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["RHS_CH_47F", "InitPost", {
+    params ["_vehicle"];
+	[_vehicle,24] call ace_cargo_fnc_setSpace;
+	[
+		_vehicle,
+		["Green",1], 
+		true
+	] call BIS_fnc_initVehicle;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["RHS_Mi8mt_vdv", "InitPost", {
+    params ["_vehicle"];
+	[_vehicle,12] call ace_cargo_fnc_setSpace;
+	[
+		_vehicle,
+		["Green",1], 
+		true
+	] call BIS_fnc_initVehicle;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["RHS_UH60M", "InitPost", {
+    params ["_vehicle"];
+	[_vehicle,4] call ace_cargo_fnc_setSpace;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["RHS_Mi8MTV3_heavy_vdv", "InitPost", {
+    params ["_vehicle"];
+	[_vehicle,4] call ace_cargo_fnc_setSpace;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["UK3CB_BAF_Merlin_HC3_CSAR_DPMW_RM", "InitPost", {
+    params ["_vehicle"];
+	[_vehicle,12] call ace_cargo_fnc_setSpace;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["UK3CB_BAF_MAN_HX58_Cargo_Green_A_DPMW_RM", "InitPost", {
+    params ["_vehicle"];
+	[_vehicle,12] call ace_cargo_fnc_setSpace;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["B_Boat_Transport_01_F", "InitPost", {
+    params ["_vehicle"];
+	[_vehicle,3] call ace_cargo_fnc_setSize;
+	[_vehicle,3] call ace_cargo_fnc_setSpace;
+	[_vehicle, true, [0, 3, 0], 0] call ace_dragging_fnc_setCarryable;
+	[_vehicle, true, [0, 3, 0], 0] call ace_dragging_fnc_setDraggable;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["I_C_Boat_Transport_02_F", "InitPost", {
+    params ["_vehicle"];
+	[_vehicle,4] call ace_cargo_fnc_setSpace;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["B_Boat_Armed_01_minigun_F", "InitPost", {
+    params ["_vehicle"];
+	[_vehicle,4] call ace_cargo_fnc_setSpace;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["rhsusf_mkvsoc", "InitPost", {
+    params ["_vehicle"];
+	[_vehicle,12] call ace_cargo_fnc_setSpace;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["O_T_MBT_04_command_F", "InitPost", {
+    params ["_vehicle"];
+	[
+	_vehicle,
+		["Jungle",1], 
+		["showCamonetHull",0,"showCamonetTurret",0]
+	] call BIS_fnc_initVehicle;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["rhs_btr80a_msv", "InitPost", {
+    params ["_vehicle"];
+	_vehicle addEventHandler ["HandleDamage", {  
+		private _unit = _this select 0;
+		private _hitSelection = _this select 1;
+		private _damage = _this select 2;
+		if (_hitSelection isEqualTo "") then {(damage _unit) + (_damage * 0.04)} else {(_unit getHit _hitSelection) + (_damage * 0.04)};
+	}];
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["O_T_APC_Tracked_02_cannon_ghex_F", "InitPost", {
+    params ["_vehicle"];
+	_vehicle addEventHandler ["HandleDamage", {  
+		private _damage = _this select 2;
+		_damage = _damage * 1.25;
+		_damage;
+	}];
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["I_LT_01_cannon_F", "InitPost", {
+    params ["_vehicle"];
+	_vehicle setObjectTextureGlobal [0,"A3\armor_f_tank\lt_01\data\lt_01_main_olive_co.paa"];
+	_vehicle setObjectTextureGlobal [1,"A3\armor_f_tank\lt_01\data\lt_01_cannon_olive_co.paa"];
+	_vehicle setObjectTextureGlobal [2,"A3\Armor_F\Data\camonet_aaf_digi_green_co.paa"];
+	_vehicle setObjectTextureGlobal [3,"A3\armor_f\data\cage_olive_co.paa"];
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["I_LT_01_AT_F", "InitPost", {
+    params ["_vehicle"];
+	_vehicle setObjectTextureGlobal [0,"A3\armor_f_tank\lt_01\data\lt_01_main_olive_co.paa"];
+	_vehicle setObjectTextureGlobal [1,"A3\armor_f_tank\lt_01\data\lt_01_at_olive_co.paa"];
+	_vehicle setObjectTextureGlobal [2,"A3\Armor_F\Data\camonet_aaf_digi_green_co.paa"];
+	_vehicle setObjectTextureGlobal [3,"A3\armor_f\data\cage_olive_co.paa"];
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["I_LT_01_AA_F", "InitPost", {
+    params ["_vehicle"];
+	_vehicle setObjectTextureGlobal [0,"A3\armor_f_tank\lt_01\data\lt_01_main_olive_co.paa"];
+	_vehicle setObjectTextureGlobal [1,"A3\armor_f_tank\lt_01\data\lt_01_at_olive_co.paa"];
+	_vehicle setObjectTextureGlobal [2,"A3\Armor_F\Data\camonet_aaf_digi_green_co.paa"];
+	_vehicle setObjectTextureGlobal [3,"A3\armor_f\data\cage_olive_co.paa"];
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["I_LT_01_scout_F", "InitPost", {
+    params ["_vehicle"];
+	[
+		_vehicle,
+		["Indep_Olive",1], 
+		["showTools",1,"showCamonetHull",0,"showBags",0,"showSLATHull",0]
+	] call BIS_fnc_initVehicle;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["I_Plane_Fighter_04_F", "InitPost", {
+    params ["_vehicle"];
+	[
+		_vehicle,
+		["CamoGrey",1], 
+		true
+	] call BIS_fnc_initVehicle;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
 
 
 
+if (isNil "pylon_restrictions") then { pylon_restrictions = false; };
+
+if (pylon_restrictions) then {
 ["O_Plane_Fighter_02_F", "initPost", {
    	params ["_vehicle"];
    	[
@@ -1108,279 +1324,9 @@ CUP_B_F35B_USMC = CUP_B_F35B_BAF;
 
 	_vehicle setVariable ["ace_pylons_magazineWhitelist", CUP_B_F35B_USMC, true]}, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
+};
 
 
-
-["rhsusf_M1078A1P2_WD_flatbed_fmtv_usarmy", "InitPost", {
-    params ["_vehicle"];
-	[_vehicle,12] call ace_cargo_fnc_setSpace;
-}, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
-["rhs_kamaz5350_open_msv", "InitPost", {
-    params ["_vehicle"];
-	[_vehicle,12] call ace_cargo_fnc_setSpace;
-}, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
-["UK3CB_BAF_Husky_Passenger_HMG_Green_DPMW", "InitPost", {
-    params ["_vehicle"];
-	[_vehicle,4] call ace_cargo_fnc_setSpace;
-}, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
-["rhsusf_CH53e_USMC_D_cargo", "InitPost", {
-    params ["_vehicle"];
-	[_vehicle,30] call ace_cargo_fnc_setSpace;
-}, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
-["rhsusf_CH53e_USMC_D", "InitPost", {
-    params ["_vehicle"];
-	[_vehicle,30] call ace_cargo_fnc_setSpace;
-}, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
-["rhsusf_CH53E_USMC_GAU21_D", "InitPost", {
-    params ["_vehicle"];
-	[_vehicle,30] call ace_cargo_fnc_setSpace;
-}, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
-["RHS_MELB_AH6M", "InitPost", {
-    params ["_vehicle"];
-	[_vehicle,4] call ace_cargo_fnc_setSpace;
-}, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
-["rhsusf_M977A4_BKIT_M2_usarmy_wd", "InitPost", {
-    params ["_vehicle"];
-	[_vehicle,12] call ace_cargo_fnc_setSpace;
-	_vehicle setVariable ["ACE_isRepairVehicle",1];
-}, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
-["B_Heli_Transport_03_unarmed_F", "InitPost", {
-    params ["_vehicle"];
-	[_vehicle,12] call ace_cargo_fnc_setSpace;
-	[
-		_vehicle,
-		["Green",1], 
-		true
-	] call BIS_fnc_initVehicle;
-}, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
-["RHS_CH_47F", "InitPost", {
-    params ["_vehicle"];
-	[_vehicle,24] call ace_cargo_fnc_setSpace;
-	[
-		_vehicle,
-		["Green",1], 
-		true
-	] call BIS_fnc_initVehicle;
-}, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
-["RHS_Mi8mt_vdv", "InitPost", {
-    params ["_vehicle"];
-	[_vehicle,12] call ace_cargo_fnc_setSpace;
-	[
-		_vehicle,
-		["Green",1], 
-		true
-	] call BIS_fnc_initVehicle;
-}, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
-["RHS_UH60M", "InitPost", {
-    params ["_vehicle"];
-	[_vehicle,4] call ace_cargo_fnc_setSpace;
-}, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
-["RHS_Mi8MTV3_heavy_vdv", "InitPost", {
-    params ["_vehicle"];
-	[_vehicle,4] call ace_cargo_fnc_setSpace;
-}, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
-["UK3CB_BAF_Merlin_HC3_CSAR_DPMW_RM", "InitPost", {
-    params ["_vehicle"];
-	[_vehicle,12] call ace_cargo_fnc_setSpace;
-}, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
-["UK3CB_BAF_MAN_HX58_Cargo_Green_A_DPMW_RM", "InitPost", {
-    params ["_vehicle"];
-	[_vehicle,12] call ace_cargo_fnc_setSpace;
-}, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
-["B_Boat_Transport_01_F", "InitPost", {
-    params ["_vehicle"];
-	[_vehicle,3] call ace_cargo_fnc_setSize;
-	[_vehicle,3] call ace_cargo_fnc_setSpace;
-	[_vehicle, true, [0, 3, 0], 0] call ace_dragging_fnc_setCarryable;
-	[_vehicle, true, [0, 3, 0], 0] call ace_dragging_fnc_setDraggable;
-}, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
-["I_C_Boat_Transport_02_F", "InitPost", {
-    params ["_vehicle"];
-	[_vehicle,4] call ace_cargo_fnc_setSpace;
-}, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
-["B_Boat_Armed_01_minigun_F", "InitPost", {
-    params ["_vehicle"];
-	[_vehicle,4] call ace_cargo_fnc_setSpace;
-}, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
-["rhsusf_mkvsoc", "InitPost", {
-    params ["_vehicle"];
-	[_vehicle,12] call ace_cargo_fnc_setSpace;
-}, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
-["O_T_MBT_04_command_F", "InitPost", {
-    params ["_vehicle"];
-	[
-	_vehicle,
-		["Jungle",1], 
-		["showCamonetHull",0,"showCamonetTurret",0]
-	] call BIS_fnc_initVehicle;
-}, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
-["rhs_btr80a_msv", "InitPost", {
-    params ["_vehicle"];
-	_vehicle addEventHandler ["HandleDamage", {  
-		private _unit = _this select 0;
-		private _hitSelection = _this select 1;
-		private _damage = _this select 2;
-		if (_hitSelection isEqualTo "") then {(damage _unit) + (_damage * 0.04)} else {(_unit getHit _hitSelection) + (_damage * 0.04)};
-	}];
-}, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
-["O_T_APC_Tracked_02_cannon_ghex_F", "InitPost", {
-    params ["_vehicle"];
-	_vehicle addEventHandler ["HandleDamage", {  
-		private _damage = _this select 2;
-		_damage = _damage * 1.25;
-		_damage;
-	}];
-}, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
-["I_LT_01_cannon_F", "InitPost", {
-    params ["_vehicle"];
-	_vehicle setObjectTextureGlobal [0,"A3\armor_f_tank\lt_01\data\lt_01_main_olive_co.paa"];
-	_vehicle setObjectTextureGlobal [1,"A3\armor_f_tank\lt_01\data\lt_01_cannon_olive_co.paa"];
-	_vehicle setObjectTextureGlobal [2,"A3\Armor_F\Data\camonet_aaf_digi_green_co.paa"];
-	_vehicle setObjectTextureGlobal [3,"A3\armor_f\data\cage_olive_co.paa"];
-}, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
-["I_LT_01_AT_F", "InitPost", {
-    params ["_vehicle"];
-	_vehicle setObjectTextureGlobal [0,"A3\armor_f_tank\lt_01\data\lt_01_main_olive_co.paa"];
-	_vehicle setObjectTextureGlobal [1,"A3\armor_f_tank\lt_01\data\lt_01_at_olive_co.paa"];
-	_vehicle setObjectTextureGlobal [2,"A3\Armor_F\Data\camonet_aaf_digi_green_co.paa"];
-	_vehicle setObjectTextureGlobal [3,"A3\armor_f\data\cage_olive_co.paa"];
-}, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
-["I_LT_01_AA_F", "InitPost", {
-    params ["_vehicle"];
-	_vehicle setObjectTextureGlobal [0,"A3\armor_f_tank\lt_01\data\lt_01_main_olive_co.paa"];
-	_vehicle setObjectTextureGlobal [1,"A3\armor_f_tank\lt_01\data\lt_01_at_olive_co.paa"];
-	_vehicle setObjectTextureGlobal [2,"A3\Armor_F\Data\camonet_aaf_digi_green_co.paa"];
-	_vehicle setObjectTextureGlobal [3,"A3\armor_f\data\cage_olive_co.paa"];
-}, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
-["I_LT_01_scout_F", "InitPost", {
-    params ["_vehicle"];
-	[
-		_vehicle,
-		["Indep_Olive",1], 
-		["showTools",1,"showCamonetHull",0,"showBags",0,"showSLATHull",0]
-	] call BIS_fnc_initVehicle;
-}, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
-["I_Plane_Fighter_04_F", "InitPost", {
-    params ["_vehicle"];
-	[
-		_vehicle,
-		["CamoGrey",1], 
-		true
-	] call BIS_fnc_initVehicle;
-}, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
-["rhsusf_socom_marsoc_sarc", "InitPost", {
-	params ["_vehicle"];
-	if (!local _vehicle) exitWith {};
-	
-	_vehicle setSpeaker "NoVoice";
-	_vehicle setUnitTrait ["Medic",true];
-	_vehicle setUnitTrait ["Engineer",true];
-	_vehicle setUnitTrait ["explosiveSpecialist",true];
-	_vehicle setVariable ["ACE_medical_medicClass", 1];
-	_vehicle setVariable ["ACE_isEngineer", 1];
-	_vehicle setUnitAbility 2;
-	_vehicle setVariable ["ACE_CanSwitchUnits", true];
-	
-	removeHeadgear _vehicle;
-	removeBackpack _vehicle;
-	
-	_vehicle addPrimaryWeaponItem "rhsusf_acc_rotex5_grey";
-
-	_vehicle addBackpack "B_Kitbag_cbr";
-	for "_i" from 1 to 4 do {_vehicle addItemToBackpack "ACE_tourniquet";};
-	for "_i" from 1 to 2 do {_vehicle addItemToBackpack "ACE_splint";};
-	for "_i" from 1 to 20 do {_vehicle addItemToBackpack "ACE_packingBandage";};
-	for "_i" from 1 to 10 do {_vehicle addItemToBackpack "ACE_salineIV";};
-	for "_i" from 1 to 10 do {_vehicle addItemToBackpack "ACE_epinephrine";};
-	_vehicle addItemToBackpack "ACE_surgicalKit";
-	_vehicle addHeadgear "rhsusf_mich_bare_norotos_arc_alt_headset";
-	
-	_vehicle linkItem "NVGoggles_OPFOR";
-}, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
-["BWA3_Medic_Fleck", "InitPost", {
-	params ["_vehicle"];
-	if (!local _vehicle) exitWith {};
-	
-	_vehicle setSpeaker "NoVoice";
-	_vehicle setUnitTrait ["Medic",true];
-	_vehicle setUnitTrait ["Engineer",true];
-	_vehicle setUnitTrait ["explosiveSpecialist",true];
-	_vehicle setVariable ["ACE_medical_medicClass", 1];
-	_vehicle setVariable ["ACE_isEngineer", 1];
-	_vehicle setUnitAbility 2;
-	_vehicle setVariable ["ACE_CanSwitchUnits", true];
-	
-	_vehicle addPrimaryWeaponItem "rhsusf_acc_rotex5_grey";
-	
-	removeHeadgear _vehicle;
-	for "_i" from 1 to 4 do {_vehicle addItemToBackpack "ACE_tourniquet";};
-	for "_i" from 1 to 2 do {_vehicle addItemToBackpack "ACE_splint";};
-	for "_i" from 1 to 20 do {_vehicle addItemToBackpack "ACE_packingBandage";};
-	for "_i" from 1 to 10 do {_vehicle addItemToBackpack "ACE_salineIV";};
-	for "_i" from 1 to 10 do {_vehicle addItemToBackpack "ACE_epinephrine";};
-	_vehicle addItemToBackpack "ACE_surgicalKit";
-	_vehicle addHeadgear "Helmet_SF_flecktarn";
-}, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
-
-["rhs_msv_emr_medic", "InitPost", {
-	params ["_vehicle"];
-	if (!local _vehicle) exitWith {};
-	
-	_vehicle setSpeaker "NoVoice";
-	_vehicle setUnitTrait ["Medic",true];
-	_vehicle setUnitTrait ["Engineer",true];
-	_vehicle setUnitTrait ["explosiveSpecialist",true];
-	_vehicle setVariable ["ACE_medical_medicClass", 1];
-	_vehicle setVariable ["ACE_isEngineer", 1];
-	_vehicle setUnitAbility 2;
-	_vehicle setVariable ["ACE_CanSwitchUnits", true];
-	
-	_vehicle addPrimaryWeaponItem "rhs_acc_dtk4short";
-	
-	_vehicle addVest "rhs_6b45_rifleman";
-	for "_i" from 1 to 5 do {_vehicle addItemToVest "rhs_30Rnd_545x39_7N10_AK";};
-	_vehicle addItemToVest "rhs_mag_rgn";
-	
-	removeBackpack _vehicle;
-	_vehicle addBackpack "rhs_rk_sht_30_emr_medic";
-	for "_i" from 1 to 4 do {_vehicle addItemToBackpack "ACE_tourniquet";};
-	for "_i" from 1 to 2 do {_vehicle addItemToBackpack "ACE_splint";};
-	for "_i" from 1 to 20 do {_vehicle addItemToBackpack "ACE_packingBandage";};
-	for "_i" from 1 to 10 do {_vehicle addItemToBackpack "ACE_salineIV";};
-	for "_i" from 1 to 10 do {_vehicle addItemToBackpack "ACE_epinephrine";};
-	_vehicle addItemToBackpack "ACE_surgicalKit";
-	
-	_vehicle linkItem "NVGoggles_OPFOR";
-}, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
 
 // Advanced Singloading

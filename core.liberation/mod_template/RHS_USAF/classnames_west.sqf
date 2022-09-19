@@ -25,9 +25,7 @@ A3W_BoxWps = "rhs_weapon_crate";
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 infantry_units = [
-	["rhsusf_socom_marsoc_sarc",0,ai_value,0,GRLIB_perm_inf],
-	["BWA3_Medic_Fleck",0,ai_value,0,GRLIB_perm_inf],
-	["rhs_msv_emr_medic",0,ai_value,0,GRLIB_perm_inf]
+	["BWA3_Medic_Fleck",0,ai_value,0,GRLIB_perm_inf]
 ];
 
 units_loadout_overide = [];

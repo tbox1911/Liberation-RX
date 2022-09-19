@@ -3,7 +3,7 @@ GRLIB_save_key = "MilSim_United";
 GRLIB_side_resistance = resistance;
 GRLIB_side_civilian = civilian;
 GRLIB_respawn_marker = "respawn_west";
-GRLIB_sector_size = 600;
+GRLIB_sector_size = 500;
 GRLIB_capture_size = 300;
 GRLIB_radiotower_size = 3000;
 GRLIB_spawn_min = 2000;
@@ -37,7 +37,7 @@ GRLIB_date_month = 7;
 GRLIB_date_day = 30;
 GRLIB_nights_start = 21;
 GRLIB_nights_stop = 4;
-GREUH_start_ammo = 200;
+GREUH_start_ammo = 100;
 
 GRLIB_blufor_cap = 64;
 // defines if everyone gets ammo from sector liberations
@@ -60,12 +60,16 @@ opfor_kill_score_infantry = 1;
 opfor_kill_ammo_infantry = 5;
 kamikaze_kill_score = 5;
 kamikaze_kill_ammo = 25;
-civkill_score = 0;
+civkill_score = -10;
 civkill_ammo = -100;
-tkill_score = -5;
-tkill_ammo = -50;
-tkill_script = true;
+tkill_score = -10;
+tkill_ammo = -100;
 tk_active = false; //NEW Tkillscript with dialog
+
+// tkill_script in init.sqf
+// pylon_restrictions in init.sqf
+// SNC_VehRestriction in init.sqf
+
 
 // Only use by 2 dividable numbers
 box_recycle_value = 40;
@@ -94,7 +98,7 @@ income_sectors_tower = 50;
 AI_leader_radio = false;
 
 // HC
-hc_battlegroup_on = false;
+hc_battlegroup_on = true;
 
 skill_scan = false;
 skill_parachuters = 1;
@@ -102,7 +106,7 @@ skill_air_vehicles_planes = 1;
 skill_air_vehicles_helicopters = 1;
 skill_ground_vehicles = 1;
 
-limit_hc_gr = true;
+limit_hc_gr = false;
 // Readiness Increase from towns
 readiness_calc_bg_town = true;
 readiness_calc_sm_town = true;
@@ -119,7 +123,7 @@ unload_distance = 400;
 // Deactivate HC spawning
 hc_spawn_off = false;
 hc_spawn_towns = true;
-hc_spawn_patrol = false;
+hc_spawn_patrol = true;
 
 //Datalink Options
 force_datalink = true;
