@@ -1,7 +1,6 @@
 // LRX Trader Shop - init
 
-waituntil {sleep 1; !isNil "GRLIB_marker_init"};
-private ["_man"];
+waituntil {sleep 1; !isNil "GRLIB_SHOP_Group"};
 
 SHOP_list = light_vehicles + heavy_vehicles + air_vehicles + support_vehicles + opfor_recyclable + ind_recyclable;
 SHOP_ratio = [
@@ -12,10 +11,9 @@ SHOP_ratio = [
 ];
 
 {
-    _man = _x nearEntities [SHOP_Man, 10] select 0;
-    _man setVariable ["SHOP_ratio", (SHOP_ratio select (_forEachIndex % count SHOP_ratio))];
-    _man addAction ["<t color='#00F080'>" + localize "STR_SHOP_ENTER" + "</t> <img size='1' image='res\ui_recycle.paa'/>", "addons\SHOP\traders_shop.sqf","",-900,true,true,"","", 5];
-} forEach GRLIB_Marker_SHOP;
+    _x setVariable ["SHOP_ratio", (SHOP_ratio select (_forEachIndex % count SHOP_ratio))];
+    _x addAction ["<t color='#00F080'>" + localize "STR_SHOP_ENTER" + "</t> <img size='1' image='res\ui_recycle.paa'/>", "addons\SHOP\traders_shop.sqf","",-900,true,true,"","", 5];
+} forEach (units GRLIB_SHOP_Group);
 
 waitUntil {!(isNull (findDisplay 46))};
 systemChat "-------- Traders Shop Initialized --------";

@@ -52,11 +52,11 @@ GRLIB_Marker_REPAIR = _marker_REPAIR;
 publicVariable "GRLIB_Marker_REPAIR";
 
 // SELL
-private ["_grp_sell", "_man", "_manPos"];
-_grp_sell = createGroup [GRLIB_side_civilian, true];
+private ["_man", "_manPos"];
+GRLIB_SELL_Group = createGroup [GRLIB_side_civilian, true];
 {
     _manPos = _x;
-    _man = _grp_sell createUnit [SELL_Man, _manPos, [], 0, "NONE"];
+    _man = GRLIB_SELL_Group createUnit [SELL_Man, _manPos, [], 0, "NONE"];
     _man allowDamage false;
     _man setPosATL (_manPos vectorAdd [0, 0, 0.1]);
     [_man, "LHD_krajPaluby"] spawn F_startAnimMP;
@@ -64,8 +64,8 @@ _grp_sell = createGroup [GRLIB_side_civilian, true];
 } forEach GRLIB_Marker_SRV;
 
 // SHOP
-private ["_grp_shop", "_shop", "_deskDir", "_deskPos", "_desk", "_man", "_offset", "_str"];
-_grp_shop = createGroup [GRLIB_side_civilian, true];
+private ["_shop", "_deskDir", "_deskPos", "_desk", "_man", "_offset", "_str"];
+GRLIB_SHOP_Group = createGroup [GRLIB_side_civilian, true];
 {
     _shop = nearestObjects [_x, ["House"], 10] select 0;
     _deskDir = getdir _shop;
@@ -88,7 +88,7 @@ _grp_shop = createGroup [GRLIB_side_civilian, true];
     _desk setDir _deskDir;
     _deskDir = (180 + _deskDir);
     _manPos = (ASLToATL _deskPos) vectorAdd ([[0, -0.7, 0.1], -_deskDir] call BIS_fnc_rotateVector2D);
-    _man = _grp_shop createUnit [SHOP_Man, _manPos, [], 0, "NONE"];
+    _man = GRLIB_SHOP_Group createUnit [SHOP_Man, _manPos, [], 0, "NONE"];
     _man allowDamage false;
     _man disableCollisionWith _desk;   
     _man setPosATL _manPos;
@@ -107,3 +107,5 @@ _grp_shop = createGroup [GRLIB_side_civilian, true];
 sleep 4;
 GRLIB_marker_init = true;
 publicVariable "GRLIB_marker_init";
+publicVariable "GRLIB_SHOP_Group";
+publicVariable "GRLIB_SELL_Group";
