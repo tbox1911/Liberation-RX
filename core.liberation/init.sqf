@@ -1331,18 +1331,17 @@ CUP_B_F35B_USMC = CUP_B_F35B_BAF;
 
 // Advanced Singloading
 ASL_SLING_RULES_OVERRIDE = [ 
-	["Helicopter", "CAN_SLING", "All"]
+	["Air", "CAN_SLING", "All"]
 ];
 // ["Air", "CANT_SLING", "Tank"],
 
- //Tow
+// Advanced Towing
 SA_MAX_TOWED_CARGO = 1;
 SA_TOW_RULES_OVERRIDE =[
-	["All", "CAN_TOW", "All"],
-	["All", "CANT_TOW", "ReammoBox_F"],
-	["Car", "CANT_TOW", "Tank"],
-	["Air", "CANT_TOW", "Air"]
+	["All", "CAN_TOW", "All"]
 ];
+// ["Car", "CANT_TOW", "Tank"],
+// ["Air", "CANT_TOW", "Air"]
 
 //[AiCacheDistance(players),TargetFPS(-1 for Auto),Debug,CarCacheDistance,AirCacheDistance,BoatCacheDistance]execvm "zbe_cache\main.sqf";
 // if (isServer) then {[2000,-1,false,100,1000,100]execvm "zbe_cache\main.sqf"};
