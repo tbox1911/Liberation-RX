@@ -161,7 +161,7 @@ chimera_sign addAction ["<t color='#FFFFFF'>" + localize "STR_TIPS" + "</t>",{cr
 if (isServer && hasInterface) then {
 	(findDisplay 46) displayAddEventHandler ["Unload",{
 		diag_log "--- LRX Local MP support";
-		[player,  (getPlayerUID player)] call save_context;
+		[player] call save_context;
 		[] call save_game_mp;
 	 }];
 };

@@ -52,7 +52,7 @@ if !(isNull _unit) then {
 	// Save Player Context
 	private _score = 0; 
 	{if ((_x select 0) == _uid) exitWith {_score = (_x select 1)}} forEach GRLIB_player_scores; 
-	if (_score > 20) then { [_unit, _uid] call save_context };
+	if (_score > 20) then { [_unit] call save_context };
 
 	// Remove AI
 	private _bros = allUnits select {(_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1", _uid]};
@@ -70,4 +70,4 @@ if !(isNull _unit) then {
 };
 
 private _player_left = count (AllPlayers - (entities "HeadlessClient_F"));
-if (_player_left == 0) then {if (serverTime > 300) then {[] call save_game_mp}};
+if (_player_left == 0 && time > 300) then { [] call save_game_mp };
