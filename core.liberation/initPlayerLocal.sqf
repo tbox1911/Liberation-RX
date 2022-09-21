@@ -184,7 +184,7 @@ hint format['
 
 
 
-
+/*
 if (isNil "trait_restrictions") then {
 	trait_restrictions = false
 };
@@ -195,7 +195,7 @@ if (trait_restrictions) then {
 	Player setVariable ["ACE_isEngineer", 0, true];
 	Player setVariable ["ACE_isEOD", 0, true];
 };
-
+*/
 
 
 

@@ -15,11 +15,11 @@ GRLIB_defended_buildingPos_part = 0.5;
 GRLIB_sector_military_value = 3;
 GRLIB_secondary_objective_impact = 0.4;
 GRLIB_blufor_cap = 10 * GRLIB_unitcap;
-GRLIB_sector_cap = 120 * GRLIB_unitcap;
-GRLIB_battlegroup_cap = 50 * GRLIB_unitcap;
+GRLIB_sector_cap = 80 * GRLIB_unitcap;
+GRLIB_battlegroup_cap = 40 * GRLIB_unitcap;
 GRLIB_patrol_cap = 18 * GRLIB_unitcap;
 GRLIB_battlegroup_size = 9;
-GRLIB_civilians_amount = 2 * GRLIB_civilian_activity;
+GRLIB_civilians_amount = 1 * GRLIB_civilian_activity;
 GRLIB_fob_range = 450;
 GRLIB_surrender_chance = 80;
 GRLIB_secondary_missions_costs = [ 50,5 ];
@@ -253,8 +253,8 @@ logistic_ground_vehicle_price_tier_6 = 550;
 // trait restrictions
 trait_restrictions = false;
 support_medic_restriction = false;
-MSU_Med_Div = 4;
-MSU_Eng_Div = 6;
+MSU_Med_Div = 1;
+MSU_Eng_Div = 1;
 
 
 

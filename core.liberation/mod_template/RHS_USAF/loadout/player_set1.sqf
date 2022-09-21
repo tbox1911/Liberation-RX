@@ -11,9 +11,9 @@ removeBackpack _unit;
 // removeGoggles _unit;
 
 //  "Add containers";
-// _unit forceAddUniform "rhs_uniform_acu_ucp";
-_unit addVest "V_CarrierRigKBT_01_Olive_F";
-_unit addHeadgear "rhsusf_opscore_fg";
+// _unit forceAddUniform "";
+//_unit addVest "";
+//_unit addHeadgear "";
 
 //  "Add items";
 _unit linkItem "ItemMap";

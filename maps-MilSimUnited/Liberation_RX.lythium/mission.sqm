@@ -8,18 +8,18 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=2276;
+		nextID=2278;
 	};
 	class LayerIndexProvider
 	{
-		nextID=127;
+		nextID=223;
 	};
 	class Camera
 	{
-		pos[]={19032.156,43.811172,-2756.9189};
-		dir[]={-1.2363448e-007,-0.70710671,0.70710683};
-		up[]={-1.2363445e-007,0.70710683,0.70710659};
-		aside[]={0.99999988,7.1054274e-015,1.7484552e-007};
+		pos[]={22354.6,35.358021,-1621.5223};
+		dir[]={0.40040788,-0.21495166,-0.89082235};
+		up[]={0.088142924,0.97660899,-0.19609977};
+		aside[]={-0.91213864,1.7881393e-007,-0.40998933};
 	};
 };
 binarizationWanted=0;
@@ -116,10 +116,9 @@ addons[]=
 	"A3_Weapons_F_Ammoboxes",
 	"ace_rearm",
 	"A3_Weapons_F",
-	"rhsusf_c_troops",
+	"bwa3_headgear",
 	"bwa3_uniforms",
-	"A3_Characters_F_Enoch_Vests",
-	"Ldf_Protective_Gear_Upgrade_Vests",
+	"bwa3_vests",
 	"ace_explosives",
 	"A3_Modules_F_Curator_Curator"
 };
@@ -127,7 +126,7 @@ class AddonsMetaData
 {
 	class List
 	{
-		items=57;
+		items=56;
 		class Item0
 		{
 			className="A3_Structures_F_Ind";
@@ -455,10 +454,10 @@ class AddonsMetaData
 		};
 		class Item51
 		{
-			className="rhsusf_c_troops";
-			name="RHSUSF Infantry & Equipment";
-			author="Red Hammer Studios";
-			url="http://www.rhsmods.org/";
+			className="bwa3_headgear";
+			name="Bundeswehr - Hats and Helmets";
+			author="BW-Mod";
+			url="http://www.bwmod.de/index.php/download";
 		};
 		class Item52
 		{
@@ -469,25 +468,19 @@ class AddonsMetaData
 		};
 		class Item53
 		{
-			className="A3_Characters_F_Enoch";
-			name="Arma 3 Contact Platform - Characters and Clothing";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
+			className="bwa3_vests";
+			name="Bundeswehr - Vests";
+			author="BW-Mod";
+			url="http://www.bwmod.de/index.php/download";
 		};
 		class Item54
-		{
-			className="Ldf_Protective_Gear_Upgrade_Vests";
-			name="LDF Protective Gear Upgrade";
-			author="Clasless";
-		};
-		class Item55
 		{
 			className="ace_explosives";
 			name="ACE3 - Explosives";
 			author="ACE-Team";
 			url="https://ace3.acemod.org/";
 		};
-		class Item56
+		class Item55
 		{
 			className="A3_Modules_F_Curator";
 			name="Arma 3 Zeus Update - Scripted Modules";
@@ -502,9 +495,7 @@ dlcs[]=
 	"Argo",
 	"ORANGE",
 	"Tank",
-	"Heli",
-	"RHS_USAF",
-	"Enoch"
+	"Heli"
 };
 randomSeed=9894064;
 class ScenarioData
@@ -513,7 +504,7 @@ class ScenarioData
 };
 class CustomAttributes
 {
-	class Category0
+	class Category1
 	{
 		name="Scenario";
 		class Attribute0
@@ -29345,7 +29336,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={22315.145,13.66,-1482.0959};
-						angles[]={-0,4.747972,0};
+						angles[]={0,4.747972,0};
 					};
 					name="BTC_logic";
 					id=2130;
@@ -29357,7 +29348,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={22309.834,13.66,-1481.8831};
-						angles[]={-0,4.7479663,0};
+						angles[]={0,4.7479663,0};
 					};
 					name="gamelogic";
 					id=2131;
@@ -29369,7 +29360,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={22300.533,13.66,-1481.3147};
-						angles[]={-0,4.747932,0};
+						angles[]={0,4.747932,0};
 					};
 					name="HC1";
 					isPlayable=1;
@@ -29382,7 +29373,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={22302.068,13.66,-1481.3987};
-						angles[]={-0,4.747932,0};
+						angles[]={0,4.747932,0};
 					};
 					name="HC2";
 					isPlayable=1;
@@ -29395,7 +29386,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={22303.637,13.66,-1481.4534};
-						angles[]={-0,4.7479339,0};
+						angles[]={0,4.7479339,0};
 					};
 					name="HC3";
 					isPlayable=1;
@@ -29408,7 +29399,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={22290.695,13.66,-1505.3557};
-						angles[]={-0,3.2469263,0};
+						angles[]={0,3.2469263,0};
 					};
 					id=2135;
 					type="HighCommand";
@@ -29485,7 +29476,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={22291.029,14.449444,-1481.4026};
-						angles[]={-0,4.7074995,0};
+						angles[]={0,4.7074995,0};
 					};
 					side="Empty";
 					flags=4;
@@ -29543,7 +29534,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22282.785,13.661434,-1499.6663};
-								angles[]={-0,3.2669864,0};
+								angles[]={0,3.2669864,0};
 							};
 							side="West";
 							flags=6;
@@ -29562,13 +29553,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2143;
@@ -29690,7 +29681,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22284.523,13.661434,-1499.8752};
-								angles[]={-0,3.2669883,0};
+								angles[]={0,3.2669883,0};
 							};
 							side="West";
 							flags=6;
@@ -29709,13 +29700,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2145;
@@ -29837,7 +29828,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22286.498,13.661434,-1499.9377};
-								angles[]={-0,3.2682912,0};
+								angles[]={0,3.2682912,0};
 							};
 							side="West";
 							flags=6;
@@ -29856,13 +29847,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2147;
@@ -29984,7 +29975,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22288.52,13.661434,-1500.0979};
-								angles[]={-0,3.2690499,0};
+								angles[]={0,3.2690499,0};
 							};
 							side="West";
 							flags=6;
@@ -30003,13 +29994,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2149;
@@ -30131,7 +30122,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22290.34,13.661434,-1500.1819};
-								angles[]={-0,3.2700863,0};
+								angles[]={0,3.2700863,0};
 							};
 							side="West";
 							flags=6;
@@ -30150,13 +30141,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2151;
@@ -30278,7 +30269,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22292.287,13.661434,-1500.4104};
-								angles[]={-0,3.2700882,0};
+								angles[]={0,3.2700882,0};
 							};
 							side="West";
 							flags=6;
@@ -30297,13 +30288,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2153;
@@ -30425,7 +30416,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22294.029,13.661434,-1500.6213};
-								angles[]={-0,3.270586,0};
+								angles[]={0,3.270586,0};
 							};
 							side="West";
 							flags=6;
@@ -30444,13 +30435,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2155;
@@ -30572,7 +30563,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22296.002,13.661434,-1500.6858};
-								angles[]={-0,3.2706964,0};
+								angles[]={0,3.2706964,0};
 							};
 							side="West";
 							flags=6;
@@ -30591,13 +30582,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2157;
@@ -30719,7 +30710,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22298.023,13.661434,-1500.844};
-								angles[]={-0,3.2711546,0};
+								angles[]={0,3.2711546,0};
 							};
 							side="West";
 							flags=6;
@@ -30738,13 +30729,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2159;
@@ -30866,7 +30857,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22299.842,13.661434,-1500.926};
-								angles[]={-0,3.2691014,0};
+								angles[]={0,3.2691014,0};
 							};
 							side="West";
 							flags=6;
@@ -30885,13 +30876,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2161;
@@ -31013,7 +31004,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22282.793,13.661434,-1497.885};
-								angles[]={-0,3.266628,0};
+								angles[]={0,3.266628,0};
 							};
 							side="West";
 							flags=6;
@@ -31032,13 +31023,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2163;
@@ -31160,7 +31151,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22284.531,13.661434,-1498.094};
-								angles[]={-0,3.2669883,0};
+								angles[]={0,3.2669883,0};
 							};
 							side="West";
 							flags=6;
@@ -31179,13 +31170,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2165;
@@ -31307,7 +31298,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22286.508,13.661434,-1498.1584};
-								angles[]={-0,3.2673981,0};
+								angles[]={0,3.2673981,0};
 							};
 							side="West";
 							flags=6;
@@ -31326,13 +31317,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2167;
@@ -31454,7 +31445,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22288.531,13.661434,-1498.3167};
-								angles[]={-0,3.2690499,0};
+								angles[]={0,3.2690499,0};
 							};
 							side="West";
 							flags=6;
@@ -31473,13 +31464,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2169;
@@ -31601,7 +31592,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22290.348,13.661434,-1498.3967};
-								angles[]={-0,3.2695351,0};
+								angles[]={0,3.2695351,0};
 							};
 							side="West";
 							flags=6;
@@ -31620,13 +31611,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2171;
@@ -31748,7 +31739,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22292.297,13.661434,-1498.6292};
-								angles[]={-0,3.2700882,0};
+								angles[]={0,3.2700882,0};
 							};
 							side="West";
 							flags=6;
@@ -31767,13 +31758,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2173;
@@ -31895,7 +31886,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22294.037,13.661434,-1498.8381};
-								angles[]={-0,3.270586,0};
+								angles[]={0,3.270586,0};
 							};
 							side="West";
 							flags=6;
@@ -31914,13 +31905,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2175;
@@ -32042,7 +32033,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22296.01,13.661434,-1498.9026};
-								angles[]={-0,3.2719855,0};
+								angles[]={0,3.2719855,0};
 							};
 							side="West";
 							flags=6;
@@ -32061,13 +32052,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2177;
@@ -32189,7 +32180,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22298.031,13.661434,-1499.0608};
-								angles[]={-0,3.2733133,0};
+								angles[]={0,3.2733133,0};
 							};
 							side="West";
 							flags=6;
@@ -32208,13 +32199,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2179;
@@ -32336,7 +32327,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22299.854,13.661434,-1499.1448};
-								angles[]={-0,3.2728467,0};
+								angles[]={0,3.2728467,0};
 							};
 							side="West";
 							flags=6;
@@ -32355,13 +32346,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2181;
@@ -32483,7 +32474,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22283.037,13.661434,-1496.2131};
-								angles[]={-0,3.2676742,0};
+								angles[]={0,3.2676742,0};
 							};
 							side="West";
 							flags=6;
@@ -32502,13 +32493,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2183;
@@ -32630,7 +32621,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22284.775,13.661434,-1496.4241};
-								angles[]={-0,3.2677345,0};
+								angles[]={0,3.2677345,0};
 							};
 							side="West";
 							flags=6;
@@ -32649,13 +32640,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2185;
@@ -32777,7 +32768,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22286.75,13.661434,-1496.4866};
-								angles[]={-0,3.2686319,0};
+								angles[]={0,3.2686319,0};
 							};
 							side="West";
 							flags=6;
@@ -32796,13 +32787,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2187;
@@ -32924,7 +32915,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22288.773,13.661434,-1496.6448};
-								angles[]={-0,3.2703078,0};
+								angles[]={0,3.2703078,0};
 							};
 							side="West";
 							flags=6;
@@ -32943,13 +32934,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2189;
@@ -33071,7 +33062,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22290.59,13.661434,-1496.7288};
-								angles[]={-0,3.271595,0};
+								angles[]={0,3.271595,0};
 							};
 							side="West";
 							flags=6;
@@ -33090,13 +33081,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2191;
@@ -33218,7 +33209,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22292.541,13.661434,-1496.9573};
-								angles[]={-0,3.2717874,0};
+								angles[]={0,3.2717874,0};
 							};
 							side="West";
 							flags=6;
@@ -33237,13 +33228,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2193;
@@ -33365,7 +33356,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22294.279,13.661434,-1497.1663};
-								angles[]={-0,3.270586,0};
+								angles[]={0,3.270586,0};
 							};
 							side="West";
 							flags=6;
@@ -33384,13 +33375,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2195;
@@ -33512,7 +33503,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22296.252,13.661434,-1497.2288};
-								angles[]={-0,3.2711983,0};
+								angles[]={0,3.2711983,0};
 							};
 							side="West";
 							flags=6;
@@ -33531,13 +33522,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2197;
@@ -33659,7 +33650,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22298.277,13.661434,-1497.3909};
-								angles[]={-0,3.2733133,0};
+								angles[]={0,3.2733133,0};
 							};
 							side="West";
 							flags=6;
@@ -33678,13 +33669,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2199;
@@ -33806,7 +33797,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22300.096,13.661434,-1497.4729};
-								angles[]={-0,3.2756715,0};
+								angles[]={0,3.2756715,0};
 							};
 							side="West";
 							flags=6;
@@ -33825,13 +33816,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2201;
@@ -33953,7 +33944,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22283.055,13.661434,-1494.385};
-								angles[]={-0,3.2705479,0};
+								angles[]={0,3.2705479,0};
 							};
 							side="West";
 							flags=6;
@@ -33972,13 +33963,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2203;
@@ -34100,7 +34091,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22284.795,13.661434,-1494.594};
-								angles[]={-0,3.2683237,0};
+								angles[]={0,3.2683237,0};
 							};
 							side="West";
 							flags=6;
@@ -34119,13 +34110,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2205;
@@ -34247,7 +34238,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22286.928,13.661434,-1494.3049};
-								angles[]={-0,3.2697835,0};
+								angles[]={0,3.2697835,0};
 							};
 							side="West";
 							flags=6;
@@ -34266,13 +34257,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2207;
@@ -34394,7 +34385,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22288.951,13.661434,-1494.4651};
-								angles[]={-0,3.2699473,0};
+								angles[]={0,3.2699473,0};
 							};
 							side="West";
 							flags=6;
@@ -34413,13 +34404,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2209;
@@ -34541,7 +34532,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22290.77,13.661434,-1494.5452};
-								angles[]={-0,3.2715535,0};
+								angles[]={0,3.2715535,0};
 							};
 							side="West";
 							flags=6;
@@ -34560,13 +34551,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2211;
@@ -34688,7 +34679,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22292.719,13.661434,-1494.7776};
-								angles[]={-0,3.2730532,0};
+								angles[]={0,3.2730532,0};
 							};
 							side="West";
 							flags=6;
@@ -34707,13 +34698,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2213;
@@ -34835,7 +34826,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22294.457,13.661434,-1494.9846};
-								angles[]={-0,3.2711513,0};
+								angles[]={0,3.2711513,0};
 							};
 							side="West";
 							flags=6;
@@ -34854,13 +34845,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2215;
@@ -34982,7 +34973,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22296.43,13.661434,-1495.0491};
-								angles[]={-0,3.2720816,0};
+								angles[]={0,3.2720816,0};
 							};
 							side="West";
 							flags=6;
@@ -35001,13 +34992,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2217;
@@ -35129,7 +35120,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22298.453,13.661434,-1495.2112};
-								angles[]={-0,3.2712245,0};
+								angles[]={0,3.2712245,0};
 							};
 							side="West";
 							flags=6;
@@ -35148,13 +35139,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2219;
@@ -35276,7 +35267,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22300.273,13.661434,-1495.2893};
-								angles[]={-0,3.2740419,0};
+								angles[]={0,3.2740419,0};
 							};
 							side="West";
 							flags=6;
@@ -35295,13 +35286,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2221;
@@ -35423,7 +35414,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22283.285,13.661434,-1492.3518};
-								angles[]={-0,3.2713046,0};
+								angles[]={0,3.2713046,0};
 							};
 							side="West";
 							flags=6;
@@ -35442,13 +35433,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2223;
@@ -35570,7 +35561,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22285.023,13.661434,-1492.5627};
-								angles[]={-0,3.2713032,0};
+								angles[]={0,3.2713032,0};
 							};
 							side="West";
 							flags=6;
@@ -35589,13 +35580,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2225;
@@ -35717,7 +35708,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22287.156,13.661434,-1492.2737};
-								angles[]={-0,3.2689953,0};
+								angles[]={0,3.2689953,0};
 							};
 							side="West";
 							flags=6;
@@ -35736,13 +35727,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2227;
@@ -35864,7 +35855,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22289.18,13.661434,-1492.4299};
-								angles[]={-0,3.2727866,0};
+								angles[]={0,3.2727866,0};
 							};
 							side="West";
 							flags=6;
@@ -35883,13 +35874,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2229;
@@ -36011,7 +36002,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22290.998,13.661434,-1492.5139};
-								angles[]={-0,3.2715535,0};
+								angles[]={0,3.2715535,0};
 							};
 							side="West";
 							flags=6;
@@ -36030,13 +36021,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2231;
@@ -36158,7 +36149,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22292.947,13.661434,-1492.7444};
-								angles[]={-0,3.2747014,0};
+								angles[]={0,3.2747014,0};
 							};
 							side="West";
 							flags=6;
@@ -36177,13 +36168,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2233;
@@ -36305,7 +36296,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22294.688,13.661434,-1492.9514};
-								angles[]={-0,3.2706506,0};
+								angles[]={0,3.2706506,0};
 							};
 							side="West";
 							flags=6;
@@ -36324,13 +36315,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2235;
@@ -36452,7 +36443,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22296.66,13.661434,-1493.0159};
-								angles[]={-0,3.2707736,0};
+								angles[]={0,3.2707736,0};
 							};
 							side="West";
 							flags=6;
@@ -36471,13 +36462,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2237;
@@ -36599,7 +36590,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22298.684,13.661434,-1493.178};
-								angles[]={-0,3.2692287,0};
+								angles[]={0,3.2692287,0};
 							};
 							side="West";
 							flags=6;
@@ -36618,13 +36609,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2239;
@@ -36746,7 +36737,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22300.504,13.661434,-1493.2581};
-								angles[]={-0,3.270741,0};
+								angles[]={0,3.270741,0};
 							};
 							side="West";
 							flags=6;
@@ -36765,13 +36756,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2241;
@@ -36893,7 +36884,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22283.615,13.661434,-1490.4045};
-								angles[]={-0,3.2713032,0};
+								angles[]={0,3.2713032,0};
 							};
 							side="West";
 							flags=6;
@@ -36912,13 +36903,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2243;
@@ -37040,7 +37031,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22285.355,13.661434,-1490.6135};
-								angles[]={-0,3.2732668,0};
+								angles[]={0,3.2732668,0};
 							};
 							side="West";
 							flags=6;
@@ -37059,13 +37050,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2245;
@@ -37187,7 +37178,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22287.488,13.661434,-1490.3245};
-								angles[]={-0,3.2728901,0};
+								angles[]={0,3.2728901,0};
 							};
 							side="West";
 							flags=6;
@@ -37206,13 +37197,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2247;
@@ -37334,7 +37325,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22289.512,13.661434,-1490.4807};
-								angles[]={-0,3.2734942,0};
+								angles[]={0,3.2734942,0};
 							};
 							side="West";
 							flags=6;
@@ -37353,13 +37344,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2249;
@@ -37481,7 +37472,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22291.328,13.661434,-1490.5647};
-								angles[]={-0,3.2743413,0};
+								angles[]={0,3.2743413,0};
 							};
 							side="West";
 							flags=6;
@@ -37500,13 +37491,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2251;
@@ -37628,7 +37619,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22293.279,13.661434,-1490.7952};
-								angles[]={-0,3.2747014,0};
+								angles[]={0,3.2747014,0};
 							};
 							side="West";
 							flags=6;
@@ -37647,13 +37638,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2253;
@@ -37775,7 +37766,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22295.018,13.661434,-1491.0022};
-								angles[]={-0,3.2741075,0};
+								angles[]={0,3.2741075,0};
 							};
 							side="West";
 							flags=6;
@@ -37794,13 +37785,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2255;
@@ -37922,7 +37913,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22296.99,13.661434,-1491.0667};
-								angles[]={-0,3.272929,0};
+								angles[]={0,3.272929,0};
 							};
 							side="West";
 							flags=6;
@@ -37941,13 +37932,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2257;
@@ -38069,7 +38060,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22299.014,13.661434,-1491.2288};
-								angles[]={-0,3.2741091,0};
+								angles[]={0,3.2741091,0};
 							};
 							side="West";
 							flags=6;
@@ -38088,13 +38079,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2259;
@@ -38216,7 +38207,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22300.834,13.661434,-1491.3088};
-								angles[]={-0,3.270741,0};
+								angles[]={0,3.270741,0};
 							};
 							side="West";
 							flags=6;
@@ -38235,13 +38226,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2261;
@@ -38363,7 +38354,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22295.137,13.661434,-1488.7639};
-								angles[]={-0,3.2719271,0};
+								angles[]={0,3.2719271,0};
 							};
 							side="West";
 							flags=6;
@@ -38382,13 +38373,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2263;
@@ -38510,7 +38501,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22297.109,13.661434,-1488.8284};
-								angles[]={-0,3.2747719,0};
+								angles[]={0,3.2747719,0};
 							};
 							side="West";
 							flags=6;
@@ -38529,13 +38520,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2265;
@@ -38657,7 +38648,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22299.133,13.661434,-1488.9905};
-								angles[]={-0,3.2718475,0};
+								angles[]={0,3.2718475,0};
 							};
 							side="West";
 							flags=6;
@@ -38676,13 +38667,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2267;
@@ -38804,7 +38795,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={22300.953,13.661434,-1489.0686};
-								angles[]={-0,3.2706823,0};
+								angles[]={0,3.2706823,0};
 							};
 							side="West";
 							flags=6;
@@ -38823,13 +38814,13 @@ class Mission
 									};
 									class vest
 									{
-										typeName="V_CarrierRigKBT_01_Olive_F";
+										typeName="BWA3_Vest_Tropen";
 										isBackpack=0;
 									};
 									map="ItemMap";
 									compass="ItemCompass";
 									watch="ItemWatch";
-									headgear="rhsusf_opscore_fg";
+									headgear="BWA3_Booniehat_Tropen";
 								};
 							};
 							id=2269;
@@ -38955,7 +38946,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={22289.328,13.66,-1473.3264};
-						angles[]={-0,0.42901936,0};
+						angles[]={0,0.42901936,0};
 					};
 					name="zm1";
 					id=2271;
@@ -39036,7 +39027,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={22292.953,13.66,-1473.3264};
-						angles[]={-0,0.42898449,0};
+						angles[]={0,0.42898449,0};
 					};
 					name="zm2";
 					id=2272;
@@ -39117,7 +39108,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={22296.699,13.66,-1473.4065};
-						angles[]={-0,0.428967,0};
+						angles[]={0,0.428967,0};
 					};
 					name="zm3";
 					id=2273;
@@ -39198,7 +39189,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={22300.432,13.66,-1473.4456};
-						angles[]={-0,0.428967,0};
+						angles[]={0,0.428967,0};
 					};
 					name="zm4";
 					id=2274;
@@ -39279,7 +39270,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={22304.328,13.66,-1473.4514};
-						angles[]={-0,0.428967,0};
+						angles[]={0,0.428967,0};
 					};
 					name="zm5";
 					id=2275;
