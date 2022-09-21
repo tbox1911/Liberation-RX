@@ -16,7 +16,7 @@ private _force_marker_classnames = [
 	ammobox_o_typename,
 	ammobox_i_typename,
 	A3W_BoxWps,
-	canisterFuel,
+	canister_fuel_typename,
 	waterbarrel_typename,
 	fuelbarrel_typename,
 	foodbarrel_typename

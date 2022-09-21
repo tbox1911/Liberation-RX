@@ -198,7 +198,7 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 	[ammo_sling_typename, 25],
 	[medic_sling_typename, 25],
 	[A3W_BoxWps, 7],
-	[canisterFuel, 1],
+	[canister_fuel_typename, 1],
 	["Land_TentLamp_01_suspended_F", 1],
     ["Land_TentLamp_01_suspended_red_F", 1]
 ];
@@ -222,7 +222,7 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	ammo_sling_typename,
 	medic_sling_typename,
 	A3W_BoxWps,
-	canisterFuel,
+	canister_fuel_typename,
 	"Land_RepairDepot_01_civ_F",
 	"Land_TentLamp_01_suspended_F",
     "Land_TentLamp_01_suspended_red_F",
