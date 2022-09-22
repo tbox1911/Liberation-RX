@@ -18,7 +18,7 @@ while {true} do {
             _fuel_collected = _unit getVariable ["GREUH_fuel_count", 0];
             if (_fuel_collected > 1) then {
                 _fuel_veh = 0.06;
-                _unit setVariable ["GREUH_fuel_count", _fuel_collected - 1];
+                _unit setVariable ["GREUH_fuel_count", (_fuel_collected - 1), true];
                 systemchat "Resource Fuel used...";
             };
         };
