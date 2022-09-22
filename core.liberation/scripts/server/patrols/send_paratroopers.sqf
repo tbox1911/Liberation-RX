@@ -1,6 +1,6 @@
 params [ "_targetpos" ];
 
-private _spawnsector = ( [ sectors_airspawn , [ _targetpos ] , { (markerpos _x) distance _input0 }, "ASCEND"] call BIS_fnc_sortBy ) select 0;
+private _spawnsector = ( [ sectors_airspawn , [ _targetpos ] , { (markerpos _x) distance2D _input0 }, "ASCEND"] call BIS_fnc_sortBy ) select 0;
 private _para_group = createGroup [GRLIB_side_enemy, true];
 private _pilot_group = createGroup [GRLIB_side_enemy, true];
 
