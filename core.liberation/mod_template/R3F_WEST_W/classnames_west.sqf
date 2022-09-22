@@ -86,10 +86,7 @@ air_vehicles = [
 	["AMF_gazelle_afte_f",1,50,5,GRLIB_perm_log],
 	["AMF_gazelle_minigun_f",5,100,10,GRLIB_perm_log],
 	["AMF_panther_FRA",5,200,10,GRLIB_perm_tank],
-	["ffaa_nh90_tth_transport",10,400,20,GRLIB_perm_tank],
-	["ffaa_nh90_tth_cargo",15,600,30,GRLIB_perm_air],
 	["B_AMF_Heli_Transport_4RHFS_01_F",20,1000,30,GRLIB_perm_air],
-	["ffaa_famet_cougar",20,800,25,GRLIB_perm_air],
 	["AMF_TIGRE_01",35,2250,35,GRLIB_perm_max],
 	["B_FR_Greyhawk_01",15,1000,15,GRLIB_perm_air],
 	["B_UAV_05_F",25,1500,25,GRLIB_perm_max],
@@ -100,8 +97,7 @@ air_vehicles = [
 blufor_air = [
 	"AMF_TIGRE_01",
 	"B_FR_Rafale_M_01",
-	"B_FR_Mirage_2000_5F_01",
-	"ffaa_nh90_tth_transport"
+	"B_FR_Mirage_2000_5F_01"
 ];
 
 boats_west = [

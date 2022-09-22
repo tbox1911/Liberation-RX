@@ -9,15 +9,12 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 	"AMF_gazelle_afte_f",
 	"AMF_gazelle_minigun_f",
 	"AMF_panther_FRA",
-	"ffaa_famet_cougar",
-	"ffaa_nh90_tth_transport",
 	"B_AMF_Heli_Transport_4RHFS_01_F",
 	"AMF_TIGRE_01",
 	"B_FR_Rafale_M_01",
 	"B_FR_Mirage_2000_5F_01",
 	"B_UAV_05_F",
 	"C_Heli_Light_01_civil_F",
-	"ffaa_nh90_tth_cargo",
 	"C_Plane_Civil_01_F",
 	"C_IDAP_Heli_Transport_02_F",
 	"B_FR_AS565_Panther_Marine_Nationale_01"
@@ -25,10 +22,7 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 
 R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
 [
-	"ffaa_nh90_tth_transport",
-	"ffaa_nh90_tth_cargo",
 	"B_AMF_Heli_Transport_4RHFS_01_F",
-	"ffaa_famet_cougar",
 	"AMF_TIGRE_01",
 	"AMF_panther_FRA",
 	"C_IDAP_Heli_Transport_02_F",
@@ -48,9 +42,6 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["C_Heli_Light_01_civil_F", 15],
 	["AMF_TIGRE_01", 25],
 	["AMF_panther_FRA", 45],
-	["ffaa_famet_cougar", 60],
-	["ffaa_nh90_tth_transport", 50],
-	["ffaa_nh90_tth_cargo", 100],
 	["B_AMF_Heli_Transport_4RHFS_01_F", 75],
 	["C_IDAP_Heli_Transport_02_F", 50],
 	["B_FR_Greyhawk_01", 0],

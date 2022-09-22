@@ -100,7 +100,6 @@ blufor_air = [
 	"AMF_TIGRE_01",
 	"B_FR_Rafale_M_01",
 	"B_FR_Mirage_2000_5F_01"
-	//"ffaa_nh90_tth_transport"
 ];
 
 boats_west = [

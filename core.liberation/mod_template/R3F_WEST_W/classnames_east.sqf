@@ -149,13 +149,10 @@ opfor_troup_transports_truck = [
 
 opfor_troup_transports_heli = [
 	"B_AMF_PLANE_TRANSPORT_01_F",
-	"B_AMF_Heli_Transport_4RHFS_01_F",
-	"ffaa_nh90_tth_transport",
-	"ffaa_famet_cougar"
+	"B_AMF_Heli_Transport_4RHFS_01_F"
 ];
 
 opfor_air = [
-	"ffaa_famet_cougar",
 	"AMF_gazelle_minigun_f",
 	"AMF_RAFALE_M_01_F",
 	"B_AMF_PLANE_FIGHTER_02_F"
@@ -205,8 +202,6 @@ opfor_recyclable = [
 	["AMF_VBMR_HMG_CE",4,round (150 / GRLIB_recycling_percentage),8],
 	["B_AMF_VAB_ULTIMA_X8_F",3,round (50 / GRLIB_recycling_percentage),8],
 	["B_AMF_VAB_ULTIMA_TOP_X8_F",3,round (100 / GRLIB_recycling_percentage),8],
-	["ffaa_nh90_tth_transport",4,round (175 / GRLIB_recycling_percentage),8],
-	["ffaa_famet_cougar",4,round (150 / GRLIB_recycling_percentage),8],
 	["AMF_gazelle_minigun_f",2,round (25 / GRLIB_recycling_percentage),5],
 	["B_AMF_PLANE_TRANSPORT_01_F",5,round (750 / GRLIB_recycling_percentage),12],
 	["AMF_RAFALE_M_01_F",6,round (1750 / GRLIB_recycling_percentage),20],
