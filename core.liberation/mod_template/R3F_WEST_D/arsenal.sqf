@@ -10,6 +10,22 @@ blacklisted_bag = [
 ];
 
 blacklisted_weapon = [
+	"arifle_Katiba_GL_Nstalker_pointer_F",
+	"srifle_DMR_04_NS_LP_F",
+	"optic_Nightstalker",
+	"optic_tws",
+	"optic_tws_mg",
+	"H_HelmetO_ViperSP_hex_F",
+	"H_HelmetO_ViperSP_ghex_F",
+	"U_O_V_Soldier_Viper_hex_F",
+	"U_O_V_Soldier_Viper_F",
+	"O_V_Soldier_Viper_F",
+	"O_V_Soldier_Viper_hex_F",
+	"Pylon",
+	"Vorona",
+	"_missiles",
+	"_Leaflets",
+	"_esd_",
 	"R3F_LGI_DEM",
 	"R3F_securite_mag",
 	"R3F_securite_fn_mag"
@@ -22,6 +38,10 @@ whitelisted_from_arsenal = [
 	"MineDetector",
 	"Binocular",
 	"Rangefinder",
+	"NVGoggles_tna_F",
+	"NVGoggles_blk_F",
+	"NVGoggles_grn_F",
+	"NVGoggles_gry_F",
 	"ItemCompass",
 	"ItemGPS",
 	"ItemMap",

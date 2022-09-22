@@ -19,10 +19,6 @@ _unit addHandgunItem "R3F_15Rnd_9x19_HKUSP";
 _unit forceAddUniform "R3F_uniform_f1_DA";
 _unit addVest "V_Rangemaster_belt";
 
-//  "Add binoculars";
-_unit addMagazine "Laserbatteries";
-_unit addWeapon "R3F_JIM_LR_DES";
-
 //  "Add items to containers";
 for "_i" from 1 to 2 do {_unit addItemToUniform "FirstAidKit";};
 for "_i" from 1 to 2 do {_unit addItemToVest "SmokeShell";};

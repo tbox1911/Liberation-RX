@@ -22,8 +22,6 @@ _unit addHandgunItem "R3F_15Rnd_9x19_PAMAS";
 _unit forceAddUniform "R3F_uniform_f1";
 _unit addVest "R3F_veste_ce300";
 _unit addBackpack "B_Parachute";
-//  "Add binoculars";
-_unit addWeapon "Binocular";
 
 //  "Add items to containers";
 _unit addItemToUniform "FirstAidKit";

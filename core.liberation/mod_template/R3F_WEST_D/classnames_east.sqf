@@ -23,10 +23,10 @@ opfor_paratrooper = "B_soldier_PG_F";
 opfor_mrap = "R3F_PVP_DA";
 opfor_mrap_hmg = "R3F_PVP_FN_DA";
 opfor_mrap_gmg = "R3F_PVP_WASP_DA";
-opfor_transport_helo = "AMF_panther_FRA";
-opfor_transport_truck = "AMF_GBC180_PERS_01";
+opfor_transport_helo = "R3F_LYNX_DA";
+opfor_transport_truck = "R3F_KAMAZ_DA_trans";
 opfor_fuel_truck = "R3F_KAMAZ_DA_fuel";
-opfor_ammo_truck = "AMF_GBC180_AmmoTruck";
+opfor_ammo_truck = "I_E_Truck_02_Ammo_F";
 opfor_fuel_container = "B_Slingload_01_Fuel_F";
 opfor_ammo_container = "B_Slingload_01_Ammo_F";
 opfor_flag = "Flag_NATO_F";
@@ -43,19 +43,12 @@ units_loadout_overide = [
 militia_squad = [
 	"R3F_CQB_O",
 	"R3F_CQB_MEDIC",
-	"R3F_CQB_MEDIC",
-	"R3F_CQB_1",	
-	"R3F_CQB_1",
 	"R3F_CQB_1",
 	"R3F_CQB_1",
 	"R3F_CQB_2",
 	"R3F_CQB_2",
-	"R3F_CQB_2",
-	"R3F_CQB_3",
-	"R3F_CQB_3",	
 	"R3F_CQB_3",
 	"R3F_CQB_3",
-	"R3F_CQB_4",
 	"R3F_CQB_4",
 	"R3F_CQB_4"
 ];
@@ -82,128 +75,134 @@ divers_squad = [
 ];
 
 militia_vehicles = [
-	"R3F_PVP_UN",
-	"R3F_PVP_GENDARMERIE",
+	"R3F_PVP_FN_DA",
+	"R3F_PVP_FN_DA",
+	"R3F_PVP_WASP_DA_COMMANDEMENT",
 	"R3F_PLFS_A",
 	"R3F_PLFS_A",
-	"R3F_PVP_WASP_DA_COMMANDEMENT"
+	"R3F_FENNEC_DA_HMG",
+	"R3F_FENNEC_DA_GMG"
 ];
 
 boats_east = [
-	"B_FR_Hors_bord_01",
-	"B_FR_Hors_bord_01"
+	"B_Boat_Armed_01_minigun_F"
 ];
 
 opfor_vehicles = [
-	"AMF_VBCI_TDF_01_F",
-	"AMF_EBRC_TDF_01",
-	"B_AMF_AMX10_RCR_02_F",
-	"B_AMF_AMX10_RCR_SEPAR_02_F",
-	"B_AMF_TANK_TDF_01_F",
-	"B_AMF_TANK_TDF_02_F",
-	"AMF_VBMR_HMG_TDF",
-	"B_AMF_VAB_ULTIMA_TOP_X8_TDF_F",
-	"B_AMF_VAB_ULTIMA_TOP_X8_TDF_F",
-	"AMF_VBMR_HMG_TDF"
+	"R3F_TIGRE",
+	"R3F_LYNX_DA_ARMED",
+	"R3F_KAMAZ_DA_VPC",
+	"R3F_MATV_DA_HMG",
+	"R3F_MATV_DA_HMG",
+	"R3F_MATV_DA_GMG",
+	"R3F_VBMR_TOP_127",
+	"R3F_VBMR_TOP_127",
+	"R3F_VBMR_TOP_LG40",
+	"R3F_VBMR_TOP_LG40",
+	"R3F_PANDUR_DA",
+	"R3F_PANDUR_DA",
+	"R3F_MBT52_DA",
+	"R3F_MBT52_DA",	
+	"R3F_ALCA_ADLA",
+	"R3F_GRIPEN"
 ];
 
 opfor_vehicles_low_intensity = [
-	"AMF_VBCI_TDF_01_F",
-	"AMF_EBRC_TDF_01",
-	"AMF_VBMR_HMG_TDF",
-	"B_AMF_VAB_ULTIMA_TOP_X8_TDF_F",
-	"R3F_PVP_FN_DA",
-	"R3F_PVP_WASP_DA"
+	"R3F_AH6_DA_ARMED",
+	"R3F_TIGRE",
+	"R3F_KAMAZ_DA_trans",
+	"R3F_FENNEC_DA_HMG"
+	"R3F_FENNEC_DA_GMG"
+	"R3F_MATV_DA_HMG",
+	"R3F_MATV_DA_HMG",
+	"R3F_MATV_DA_GMG",
+	"R3F_VBMR_TOP_127",
+	"R3F_VBMR_TOP_127",
+	"R3F_VBMR_TOP_LG40"
 ];
 
 opfor_battlegroup_vehicles = [
-	"AMF_VBMR_HMG_TDF",
-	"B_AMF_VAB_ULTIMA_TOP_X8_TDF_F",
-	"AMF_VBCI_TDF_01_F",
-	"AMF_EBRC_TDF_01",
-	"B_AMF_AMX10_RCR_02_F",
-	"B_AMF_AMX10_RCR_SEPAR_02_F",
-	"AMF_EBRC_TDF_01",
-	"AMF_TIGRE_01",
-	"B_AMF_VAB_ULTIMA_X8_TDF_F",
-	"B_AMF_TANK_TDF_01_F",
-	"B_AMF_TANK_TDF_02_F"
+	"R3F_TIGRE",
+	"R3F_LYNX_DA_ARMED",
+	"R3F_KAMAZ_DA_VPC",
+	"R3F_MATV_DA_HMG",
+	"R3F_MATV_DA_HMG",
+	"R3F_MATV_DA_GMG",
+	"R3F_VBMR_TOP_127",
+	"R3F_VBMR_TOP_127",
+	"R3F_VBMR_TOP_LG40",
+	"R3F_VBMR_TOP_LG40",
+	"R3F_PANDUR_DA",
+	"R3F_PANDUR_DA",
+	"R3F_MBT52_DA",
+	"R3F_MBT52_DA",
+	"R3F_ALCA_ADLA",
+	"R3F_GRIPEN"
 ];
 
 opfor_battlegroup_vehicles_low_intensity = [
-	"AMF_VBCI_TDF_01_F",
-	"AMF_EBRC_TDF_01",
-	"AMF_VBMR_HMG_TDF",
-	"B_AMF_VAB_ULTIMA_TOP_X8_TDF_F",
-	"B_AMF_Heli_Transport_4RHFS_01_F",
-	"AMF_GBC180_PERS_01",
-	"R3F_PVP_FN_DA",
-	"R3F_PVP_WASP_DA"
+	"R3F_AH6_DA_ARMED",
+	"R3F_LYNX_DA_ARMED",
+	"R3F_KAMAZ_DA_trans",
+	"R3F_FENNEC_DA_HMG"
+	"R3F_FENNEC_DA_GMG"
+	"R3F_MATV_DA_HMG",
+	"R3F_MATV_DA_HMG",
+	"R3F_MATV_DA_GMG",
+	"R3F_VBMR_TOP_127",
+	"R3F_VBMR_TOP_127",
+	"R3F_VBMR_TOP_LG40"
 ];
 
 opfor_troup_transports_truck = [
-	"AMF_GBC180_PERS_01",
-	"B_AMF_VAB_ULTIMA_X8_TDF_F"
+	"R3F_KAMAZ_DA_trans",
+	"R3F_KAMAZ_DA_VPC"
 ];
 
 opfor_troup_transports_heli = [
-	"B_AMF_PLANE_TRANSPORT_01_F",
-	"B_AMF_Heli_Transport_4RHFS_01_F"
+	"R3F_AH6_DA_ARMED",
+	"R3F_LYNX_DA_ARMED"
 ];
 
 opfor_air = [
-	"AMF_gazelle_minigun_f",
-	"AMF_RAFALE_M_01_F",
-	"B_AMF_PLANE_FIGHTER_02_F"
+    "R3F_AH6_DA_ARMED",
+	"R3F_TIGRE",
+	"R3F_LYNX_DA_ARMED",
+	"R3F_ALCA_ADLA",
+	"R3F_GRIPEN"
 ];
 
 opfor_statics = [
 	"R3F_FN_MAG58_fixe",
-	"R3F_FN_MAG58_fixe",
-	"R3F_MO81_LLR",
-	"R3F_MO81_LLR",
-	"R3F_MO81_LLR",
-	"R3F_MO81_LLR",
 	"R3F_MMP_STATIC",
-	"B_FR_M2_affut_M1_01",
-	"B_FR_M2_affut_M3_01",
-	"B_FR_M2_affut_M1_01",
-	"B_FR_M2_affut_M3_01",
-	"B_FR_Poste_de_Tir_AA_01"
+	"B_static_AA_F",
+	"R3F_MO81_LLR"
 ];
 
-
 opfor_recyclable = [
-	["R3F_FN_MAG58_fixe",0,round (20 / GRLIB_recycling_percentage),0],
-	["B_FR_M2_affut_M3_01",0,round (20 / GRLIB_recycling_percentage),0],
-	["B_FR_M2_affut_M1_01",0,round (30 / GRLIB_recycling_percentage),0],
-	["R3F_MMP_STATIC",0,round (100 / GRLIB_recycling_percentage),0],
-	["B_FR_Poste_de_Tir_AA_01",0,round (100 / GRLIB_recycling_percentage),0],
+	["R3F_FN_MAG58_fixe",0,round (10 / GRLIB_recycling_percentage),0],
+	["B_GMG_01_high_F",0,round (20 / GRLIB_recycling_percentage),0],
+	["R3F_MMP_STATIC",0,round (80 / GRLIB_recycling_percentage),0],
+	["B_static_AA_F",0,round (80 / GRLIB_recycling_percentage),0],
 	["R3F_MO81_LLR",0,round (300 / GRLIB_recycling_percentage),0],
-	["R3F_PVP_DA",1,round (20 / GRLIB_recycling_percentage),2],
-	["R3F_PVP_FN_DA",1,round (30 / GRLIB_recycling_percentage),3],
-	["R3F_PVP_WASP_DA",1,round (40 / GRLIB_recycling_percentage),3],
-	["B_AMF_Heli_Transport_4RHFS_01_F",4,round (200 / GRLIB_recycling_percentage),8],
-	["AMF_GBC180_PERS_01",2,round (60 / GRLIB_recycling_percentage),4],
-	["R3F_KAMAZ_DA_fuel",2,round (40 / GRLIB_recycling_percentage),3],
-	["AMF_GBC180_AmmoTruck",2,round (40 / GRLIB_recycling_percentage),3],
-	["R3F_PVP_UN",1,round (20 / GRLIB_recycling_percentage),2],
-	["R3F_PVP_GENDARMERIE",1,round (20 / GRLIB_recycling_percentage),2],
-	["R3F_PLFS_A",2,round (75 / GRLIB_recycling_percentage),5],
-	["R3F_PVP_WASP_DA_COMMANDEMENT",2,round (40 / GRLIB_recycling_percentage),5],
-	["B_FR_Hors_bord_01",2,round (50 / GRLIB_recycling_percentage),5],
-	["AMF_VBCI_TDF_01_F",4,round (300 / GRLIB_recycling_percentage),8],
-	["AMF_EBRC_TDF_01",4,round (400 / GRLIB_recycling_percentage),8],
-	["B_AMF_AMX10_RCR_02_F",6,round (750 / GRLIB_recycling_percentage),12],
-	["B_AMF_AMX10_RCR_SEPAR_02_F",7,round (1000 / GRLIB_recycling_percentage),14],
-	["B_AMF_TANK_TDF_01_F",8,round (1500 / GRLIB_recycling_percentage),16],
-	["B_AMF_TANK_TDF_02_F",10,round (1750 / GRLIB_recycling_percentage),20],
-	["AMF_VBMR_HMG_TDF",4,round (150 / GRLIB_recycling_percentage),8],
-	["B_AMF_VAB_ULTIMA_X8_TDF_F",3,round (50 / GRLIB_recycling_percentage),8],
-	["B_AMF_VAB_ULTIMA_TOP_X8_TDF_F",3,round (100 / GRLIB_recycling_percentage),8],
-	["AMF_gazelle_minigun_f",2,round (25 / GRLIB_recycling_percentage),5],
-	["B_AMF_PLANE_TRANSPORT_01_F",5,round (750 / GRLIB_recycling_percentage),12],
-	["AMF_RAFALE_M_01_F",6,round (1750 / GRLIB_recycling_percentage),20],
-	["B_AMF_PLANE_FIGHTER_02_F",8,round (1500 / GRLIB_recycling_percentage),20],
-	["AMF_TIGRE_01",7,round (1250 / GRLIB_recycling_percentage),20]
+	["R3F_KAMAZ_DA_trans",1,round (25 / GRLIB_recycling_percentage),7],
+	["R3F_KAMAZ_DA_VPC",1,round (25 / GRLIB_recycling_percentage),8],
+	["R3F_PLFS_A",5,round (120 / GRLIB_recycling_percentage),12],
+	["R3F_PVP_FN_DA",2,round (65 / GRLIB_recycling_percentage),12],
+	["R3F_PVP_WASP_DA_COMMANDEMENT",2,round (75 / GRLIB_recycling_percentage),12],
+	["R3F_FENNEC_DA_HMG",5,round (100 / GRLIB_recycling_percentage),12],
+	["R3F_FENNEC_DA_GMG",5,round (125 / GRLIB_recycling_percentage),12],
+	["R3F_MATV_DA_HMG",5,round (120 / GRLIB_recycling_percentage),12],
+	["R3F_MATV_DA_GMG",5,round (145 / GRLIB_recycling_percentage),12]
+	["R3F_VBMR_TOP_127",10,round (450 / GRLIB_recycling_percentage),25],
+	["R3F_VBMR_TOP_LG40",10,round (500 / GRLIB_recycling_percentage),25],
+	["R3F_PANDUR_DA",12,round (650 / GRLIB_recycling_percentage),25],
+	["R3F_MBT52_DA",15,round (1500 / GRLIB_recycling_percentage),35],
+	["R3F_AH6_DA_ARMED",5,round (100 / GRLIB_recycling_percentage),10],
+	["R3F_LYNX_DA_ARMED",20,round (1000 / GRLIB_recycling_percentage),30],
+	["R3F_LYNX_DA_EVASAN",20,round (1000 / GRLIB_recycling_percentage),30],
+	["R3F_MERLIN_DA",15,round (1000 / GRLIB_recycling_percentage),15],
+	["R3F_TIGRE",35,round (2250 / GRLIB_recycling_percentage),35],
+	["R3F_ALCA_ADLA",35,round (3000 / GRLIB_recycling_percentage),40],
+	["R3F_GRIPEN",40,round (4000 / GRLIB_recycling_percentage),40]
 ];
