@@ -252,10 +252,6 @@ GRLIB_vehicle_blacklist = [
 	fuelbarrel_typename,
 	foodbarrel_typename,
 	medicalbox_typename,
-	repair_sling_typename,
-	fuel_sling_typename,
-	ammo_sling_typename,
-	medic_sling_typename,
 	fireworks_typename,
   	"Box_NATO_WpsLaunch_F",
 	"Land_RepairDepot_01_civ_F"
