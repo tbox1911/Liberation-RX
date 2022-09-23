@@ -111,8 +111,8 @@ opfor_vehicles_low_intensity = [
 	"R3F_AH6_DA_ARMED",
 	"R3F_TIGRE",
 	"R3F_KAMAZ_DA_trans",
-	"R3F_FENNEC_DA_HMG"
-	"R3F_FENNEC_DA_GMG"
+	"R3F_FENNEC_DA_HMG",
+	"R3F_FENNEC_DA_GMG",
 	"R3F_MATV_DA_HMG",
 	"R3F_MATV_DA_HMG",
 	"R3F_MATV_DA_GMG",
@@ -144,8 +144,8 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"R3F_AH6_DA_ARMED",
 	"R3F_LYNX_DA_ARMED",
 	"R3F_KAMAZ_DA_trans",
-	"R3F_FENNEC_DA_HMG"
-	"R3F_FENNEC_DA_GMG"
+	"R3F_FENNEC_DA_HMG",
+	"R3F_FENNEC_DA_GMG",
 	"R3F_MATV_DA_HMG",
 	"R3F_MATV_DA_HMG",
 	"R3F_MATV_DA_GMG",
@@ -193,7 +193,7 @@ opfor_recyclable = [
 	["R3F_FENNEC_DA_HMG",5,round (100 / GRLIB_recycling_percentage),12],
 	["R3F_FENNEC_DA_GMG",5,round (125 / GRLIB_recycling_percentage),12],
 	["R3F_MATV_DA_HMG",5,round (120 / GRLIB_recycling_percentage),12],
-	["R3F_MATV_DA_GMG",5,round (145 / GRLIB_recycling_percentage),12]
+	["R3F_MATV_DA_GMG",5,round (145 / GRLIB_recycling_percentage),12],
 	["R3F_VBMR_TOP_127",10,round (450 / GRLIB_recycling_percentage),25],
 	["R3F_VBMR_TOP_LG40",10,round (500 / GRLIB_recycling_percentage),25],
 	["R3F_PANDUR_DA",12,round (650 / GRLIB_recycling_percentage),25],
