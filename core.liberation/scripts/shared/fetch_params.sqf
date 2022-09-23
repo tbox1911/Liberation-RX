@@ -87,12 +87,14 @@ GRLIB_ACE_enabled = isClass(configFile >> "cfgPatches" >> "ace_main"); // Return
 GRLIB_ACE_medical_enabled = isClass(configFile >> "cfgPatches" >> "ace_medical"); // Returns true if ACE Medical is enabled
 GRLIB_ACRE_enabled = isClass(configFile >> "cfgPatches" >> "acre_main"); // Returns true if ACRE is enabled
 GRLIB_OPTRE_enabled = isClass(configFile >> "cfgPatches" >> "OPTRE_Core"); // Returns true if OPTRE is enabled
+GRLIB_WS_enabled = isClass(configFile >> "CfgPatches" >> "data_f_lxWS"); // Returns true if WS is enabled
 GRLIB_GM_enabled = isClass(configFile >> "cfgPatches" >> "gm_Core"); // Returns true if GlobMob is enabled
 GRLIB_CUPW_enabled = isClass(configFile >> "CfgPatches" >> "CUP_Weapons_AK"); // Returns true if CUP Weapons is enabled
 GRLIB_CUPU_enabled = isClass(configFile >> "CfgPatches" >> "CUP_Creatures_Extra"); // Returns true if CUP Units is enabled
 GRLIB_CUPV_enabled = isClass(configFile >> "CfgPatches" >> "CUP_AirVehciles_AH1Z"); // Returns true if CUP Vehicles is enabled
 GRLIB_EJW_enabled = isClass(configFile >> "CfgPatches" >> "Ej_u100"); // Returns true if EricJ Weapons is enabled
 GRLIB_RHS_enabled = isClass(configFile >> "CfgPatches" >> "rhs_main"); // Returns true if RHS is enabled
+GRLIB_LOP_enabled = isClass(configFile >> "CfgPatches" >> "lop_main"); // Returns true if LOP is enabled
 GRLIB_R3F_enabled = isClass(configFile >> "CfgPatches" >> "r3f_armes"); // Returns true if R3F is enabled
 GRLIB_SOG_enabled = isClass(configFile >> "CfgPatches" >> "vn_misc"); // Returns true if SOG is enabled
 GRLIB_3CB_enabled = isClass(configFile >> "CfgMods" >> "UK3CB_BAF_Weapons"); // Returns true if UK3 CB is enabled
@@ -115,6 +117,7 @@ if ( !GRLIB_SOG_enabled && "SOG_USA" in [GRLIB_mod_west, GRLIB_mod_east]) then {
 if ( !GRLIB_SOG_enabled && "SOG_VIETCONG" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
 if ( (!GRLIB_CWR_enabled || !GRLIB_CUPW_enabled) && "CWR3_US" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
 if ( (!GRLIB_CWR_enabled || !GRLIB_CUPW_enabled) && "CWR3_SOV" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
+// + ws check 
 // + 3cb check
 
 if (abort_loading) exitWith { abort_loading_msg = format [

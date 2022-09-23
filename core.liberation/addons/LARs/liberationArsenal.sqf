@@ -59,14 +59,17 @@ if (GRLIB_filter_arsenal == 0) exitWith { diag_log "--- LRX Arsenal *Unfiltered*
 GRLIB_MOD_signature = [];
 
 // Add Mod Items (Weapons,Uniform,etc.)
-[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_init.sqf";
+[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_init_west.sqf";
+[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_init_east.sqf";
 
 // Dedup list
+GRLIB_MOD_signature = GRLIB_MOD_signature arrayIntersect GRLIB_MOD_signature;
 GRLIB_whitelisted_from_arsenal = GRLIB_whitelisted_from_arsenal arrayIntersect GRLIB_whitelisted_from_arsenal;
 GRLIB_blacklisted_from_arsenal = GRLIB_blacklisted_from_arsenal arrayIntersect GRLIB_blacklisted_from_arsenal;
 
 [myLARsBox, ["GRLIB_whitelisted_from_arsenal", "GRLIB_blacklisted_from_arsenal"], false, "Liberation", { false }] call LARs_fnc_blacklistArsenal;
 
 diag_log format ["--- LRX Arsenal initialized. blacklist: %1 - whitelist: %2", count GRLIB_blacklisted_from_arsenal, count GRLIB_whitelisted_from_arsenal];
+diag_log format ["--- LRX Arsenal MOD signature in use: %1", GRLIB_MOD_signature];
 
 LRX_arsenal_init_done = true; 
