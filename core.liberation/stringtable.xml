@@ -4532,28 +4532,28 @@
 		<!-- action_manager.sqf -->
 		<Key ID="STR_DOG_FIND">
 			<Original>-- DOG FIND</Original>
-			<French>-- LACHER LE CHIEN</French>
+			<French>-- CHIEN CHERCHE</French>
 			<Japanese>-- 犬に敵を探させる</Japanese>
 			<Chinesesimp>-- 军犬搜寻 --</Chinesesimp>
 			<Chinese>-- 軍犬搜尋 --</Chinese>
 		</Key>
 		<Key ID="STR_DOG_RECALL">
 			<Original>-- DOG RECALL</Original>
-			<French>-- RAPPELER LE CHIEN</French>
+			<French>-- CHIEN REVIENS</French>
 			<Japanese>-- 犬を呼び戻す</Japanese>
 			<Chinesesimp>-- 召回军犬 --</Chinesesimp>
 			<Chinese>-- 召回軍犬 --</Chinese>
 		</Key>
 		<Key ID="STR_DOG_STOP">
 			<Original>-- DOG STOP</Original>
-			<French>-- LE CHIEN STOP</French>
+			<French>-- CHIEN STOP</French>
 			<Japanese>-- 犬を止める</Japanese>
 			<Chinesesimp>-- 军犬停下 --</Chinesesimp>
 			<Chinese>-- 軍犬停下 --</Chinese>
 		</Key>
 		<Key ID="STR_DOG_DISMISS">
 			<Original>-- DOG DISMISS</Original>
-			<French>-- RENVOYER LE CHIEN</French>
+			<French>-- CHIEN RENVOYER</French>
 			<Japanese>-- 犬とバイバイする</Japanese>
 			<Chinesesimp>-- 解雇军犬 --</Chinesesimp>
 			<Chinese>-- 解僱軍犬 --</Chinese>

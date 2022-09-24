@@ -71,7 +71,7 @@ while { true } do {
 				_id_actions set [_idact_id+1, _idact];
 				_idact = player addAction ["<t color='#80FF80'>" + localize "STR_DOG_STOP" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","stop",-641,false,true,"","!call is_DogOnDuty"];
 				_id_actions set [_idact_id+2, _idact];
-				_idact = player addAction ["<t color='#FF8080'>" + localize "STR_DOG_DISMISS" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","del",-641,false,true,"",""];
+				_idact = player addAction ["<t color='#FF8080'>" + localize "STR_DOG_DISMISS" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","del",-642,false,true,"",""];
 				_id_actions set [_idact_id+3, _idact];
 			};
 		} else {

@@ -13,9 +13,9 @@ while { true } do {
 		private _onfoot = isNull objectParent player;
 
 		// Reset Dog
-		private _dog_pos = getPos _my_dog;
+		private _dog_pos = getPosATL _my_dog;
 		if ( _onfoot && _dog_pos distance2D player > 300 ) then {
-			_my_dog setPos (getPos player);
+			_my_dog setPosATL (getPos player);
 			_my_dog setVariable ["do_find", nil];
 			sleep 1;
 		};
