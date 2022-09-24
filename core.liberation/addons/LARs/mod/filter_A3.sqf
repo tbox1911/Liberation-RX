@@ -42,7 +42,7 @@ GRLIB_MOD_signature = GRLIB_MOD_signature + _A3_Items + ["B_","O_","I_","U_"];
 
 // Magazines
 private _A3_Items = [
-	"Vorona_","Titan_","SPG9_","RPG32_","NLAW_F","MRAWS_","Chemlight_","SmokeShell"
+	"Vorona_","Titan_","RPG32_","NLAW_F","MRAWS_","Chemlight_","SmokeShell"
 ];
 
 (
