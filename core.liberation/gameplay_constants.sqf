@@ -60,10 +60,10 @@ opfor_kill_score_infantry = 1;
 opfor_kill_ammo_infantry = 5;
 kamikaze_kill_score = 5;
 kamikaze_kill_ammo = 25;
-civkill_score = -10;
-civkill_ammo = -100;
-tkill_score = -10;
-tkill_ammo = -100;
+civkill_score = -15;
+civkill_ammo = -150;
+tkill_score = -3;
+tkill_ammo = -7;
 tk_active = false; //NEW Tkillscript with dialog
 
 // tkill_script in init.sqf
@@ -87,12 +87,12 @@ building_penalty_isActive = false;
 air_cannot_trigger_on = true;
 
 //Differenced Ammo income 
-fallback_income = 50;
-income_sectors_bigtown = 50;
-income_sectors_capture = 50;
-income_sectors_military = 50;
-income_sectors_factory = 50;
-income_sectors_tower = 50;
+fallback_income = 120;
+income_sectors_bigtown = 120;
+income_sectors_capture = 120;
+income_sectors_military = 120;
+income_sectors_factory = 120;
+income_sectors_tower = 120;
 
 // AI Leaders have automaticly radios
 AI_leader_radio = false;
