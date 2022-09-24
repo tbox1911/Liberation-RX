@@ -70,9 +70,9 @@ light_vehicles = [
 ];
 
 heavy_vehicles = [
-	["R3F_VBMR",5,300,15,GRLIB_perm_log],
-	["R3F_VBMR_TOP_127",10,450,25,GRLIB_perm_tank],
-	["R3F_VBMR_TOP_LG40",10,500,25,GRLIB_perm_tank],
+	["R3F_VBMR_DA",5,300,15,GRLIB_perm_log],
+	["R3F_VBMR_DA_TOP_127",10,450,25,GRLIB_perm_tank],
+	["R3F_VBMR_DA_TOP_LG40",10,500,25,GRLIB_perm_tank],
 	["R3F_PANDUR_DA",12,650,25,GRLIB_perm_log],
 	["B_APC_Tracked_01_AA_F",10,500,20,GRLIB_perm_tank],
 	["R3F_MBT52_DA",15,1500,35,GRLIB_perm_tank],
