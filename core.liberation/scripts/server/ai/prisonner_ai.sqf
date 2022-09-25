@@ -29,6 +29,28 @@ sleep 2;
 _unit setCaptive true;
 _unit setVariable ["GRLIB_is_prisonner", true, true];
 
+
+
+_unitPos = getPosVisual _unit; // gets the units visual position.
+
+_liveMarkerName = format ["pow_%1", prisoner_i];
+_liveMarker = createMarker [_liveMarkerName,_unitPos];
+_liveMarker setMarkerShape "ICON";
+_liveMarker setMarkerType "mil_dot";
+_liveMarker setMarkerColor "colorIndependent"; // ColorKhaki
+_liveMarker setMarkerSizeLocal [ 0.75, 0.75 ];
+_liveMarker setMarkerText  format["POW"];
+prisoner_i = prisoner_i + 1;
+
+/*
+while {sleep 3; alive _unit} do // sleeps for 5 seconds each loop, and continues to loop whilst the unit is alive.
+{
+	_liveMarker setMarkerPos (getPosVisual _unit); // update the map marker location to where the unit is.
+};
+*/
+
+
+
 // Wait
 waitUntil { sleep 1;!alive _unit || side group _unit == GRLIB_side_friendly	};
 if (!alive _unit) exitWith {};

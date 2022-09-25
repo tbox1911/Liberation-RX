@@ -77,8 +77,10 @@ box_recycle_value = 40;
 logistics_ammo_increase = true;
 
 prisoner_intel = 15;
-prisoner_score = 25;
-prisoner_ammo = 100;
+prisoner_score = 5;
+prisoner_ammo = 50;
+prisoner_combat_readiness = 8;
+prisoner_i = 0;
 
 // Building Penalty
 building_penalty_isActive = false;
