@@ -67,7 +67,7 @@ player createDiaryRecord ['Diary', ['Situation', _situation], taskNull, '', fals
 
 sleep 10;
 
-execVM "scripts\client\misc\vehicle_restriction.sqf";
+// execVM "scripts\client\misc\vehicle_restriction.sqf";
 execVM "MilSimUnited\create_arsenal_Itemlist.sqf";
 
 if (isNil "global_arsenal") then {
@@ -89,7 +89,7 @@ if (global_arsenal) then {
 };
 
 if (isNil "limit_hc_gr") then {
-	limit_hc_gr = true;
+	limit_hc_gr = false;
 };
 
 if (!hasInterface && !isDedicated) then {
@@ -184,7 +184,7 @@ hint format['
 
 
 
-
+/*
 if (isNil "trait_restrictions") then {
 	trait_restrictions = false
 };
@@ -195,7 +195,7 @@ if (trait_restrictions) then {
 	Player setVariable ["ACE_isEngineer", 0, true];
 	Player setVariable ["ACE_isEOD", 0, true];
 };
-
+*/
 
 
 

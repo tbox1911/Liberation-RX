@@ -3,7 +3,7 @@ GRLIB_save_key = "MilSim_United";
 GRLIB_side_resistance = resistance;
 GRLIB_side_civilian = civilian;
 GRLIB_respawn_marker = "respawn_west";
-GRLIB_sector_size = 600;
+GRLIB_sector_size = 500;
 GRLIB_capture_size = 300;
 GRLIB_radiotower_size = 3000;
 GRLIB_spawn_min = 2000;
@@ -15,11 +15,11 @@ GRLIB_defended_buildingPos_part = 0.5;
 GRLIB_sector_military_value = 3;
 GRLIB_secondary_objective_impact = 0.4;
 GRLIB_blufor_cap = 10 * GRLIB_unitcap;
-GRLIB_sector_cap = 120 * GRLIB_unitcap;
-GRLIB_battlegroup_cap = 50 * GRLIB_unitcap;
+GRLIB_sector_cap = 80 * GRLIB_unitcap;
+GRLIB_battlegroup_cap = 40 * GRLIB_unitcap;
 GRLIB_patrol_cap = 18 * GRLIB_unitcap;
 GRLIB_battlegroup_size = 9;
-GRLIB_civilians_amount = 2 * GRLIB_civilian_activity;
+GRLIB_civilians_amount = 1 * GRLIB_civilian_activity;
 GRLIB_fob_range = 450;
 GRLIB_surrender_chance = 80;
 GRLIB_secondary_missions_costs = [ 50,5 ];
@@ -37,7 +37,7 @@ GRLIB_date_month = 7;
 GRLIB_date_day = 30;
 GRLIB_nights_start = 21;
 GRLIB_nights_stop = 4;
-GREUH_start_ammo = 200;
+GREUH_start_ammo = 100;
 
 GRLIB_blufor_cap = 64;
 // defines if everyone gets ammo from sector liberations
@@ -60,12 +60,16 @@ opfor_kill_score_infantry = 1;
 opfor_kill_ammo_infantry = 5;
 kamikaze_kill_score = 5;
 kamikaze_kill_ammo = 25;
-civkill_score = 0;
-civkill_ammo = -100;
-tkill_score = -5;
-tkill_ammo = -50;
-tkill_script = true;
+civkill_score = -15;
+civkill_ammo = -150;
+tkill_score = -3;
+tkill_ammo = -7;
 tk_active = false; //NEW Tkillscript with dialog
+
+// tkill_script in init.sqf
+// pylon_restrictions in init.sqf
+// SNC_VehRestriction in init.sqf
+
 
 // Only use by 2 dividable numbers
 box_recycle_value = 40;
@@ -73,8 +77,10 @@ box_recycle_value = 40;
 logistics_ammo_increase = true;
 
 prisoner_intel = 15;
-prisoner_score = 25;
-prisoner_ammo = 100;
+prisoner_score = 5;
+prisoner_ammo = 50;
+prisoner_combat_readiness = 8;
+prisoner_i = 0;
 
 // Building Penalty
 building_penalty_isActive = false;
@@ -83,18 +89,18 @@ building_penalty_isActive = false;
 air_cannot_trigger_on = true;
 
 //Differenced Ammo income 
-fallback_income = 50;
-income_sectors_bigtown = 50;
-income_sectors_capture = 50;
-income_sectors_military = 50;
-income_sectors_factory = 50;
-income_sectors_tower = 50;
+fallback_income = 120;
+income_sectors_bigtown = 120;
+income_sectors_capture = 120;
+income_sectors_military = 120;
+income_sectors_factory = 120;
+income_sectors_tower = 120;
 
 // AI Leaders have automaticly radios
 AI_leader_radio = false;
 
 // HC
-hc_battlegroup_on = false;
+hc_battlegroup_on = true;
 
 skill_scan = false;
 skill_parachuters = 1;
@@ -102,7 +108,7 @@ skill_air_vehicles_planes = 1;
 skill_air_vehicles_helicopters = 1;
 skill_ground_vehicles = 1;
 
-limit_hc_gr = true;
+limit_hc_gr = false;
 // Readiness Increase from towns
 readiness_calc_bg_town = true;
 readiness_calc_sm_town = true;
@@ -119,7 +125,7 @@ unload_distance = 400;
 // Deactivate HC spawning
 hc_spawn_off = false;
 hc_spawn_towns = true;
-hc_spawn_patrol = false;
+hc_spawn_patrol = true;
 
 //Datalink Options
 force_datalink = true;
@@ -133,7 +139,7 @@ ai_limit = 3;
 ai_limiter_on = true;
 // ai skill
 ai_skill = 9;
-ai_value = 35; // buildable ai price
+ai_value = 100; // buildable ai price
 
 
 
@@ -249,8 +255,8 @@ logistic_ground_vehicle_price_tier_6 = 550;
 // trait restrictions
 trait_restrictions = false;
 support_medic_restriction = false;
-MSU_Med_Div = 4;
-MSU_Eng_Div = 6;
+MSU_Med_Div = 1;
+MSU_Eng_Div = 1;
 
 
 

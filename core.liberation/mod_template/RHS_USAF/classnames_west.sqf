@@ -25,9 +25,7 @@ A3W_BoxWps = "rhs_weapon_crate";
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 infantry_units = [
-	["rhsusf_socom_marsoc_sarc",0,25,0,GRLIB_perm_inf],
-	["BWA3_Medic_Fleck",0,25,0,GRLIB_perm_inf],
-	["rhs_msv_emr_medic",0,25,0,GRLIB_perm_inf]
+	["BWA3_Medic_Fleck",0,ai_value,0,GRLIB_perm_inf]
 ];
 
 units_loadout_overide = [];
@@ -366,10 +364,10 @@ strong_heavy_vehicles = [
     ["ffaa_ar_m109",0,strong_heavy_vehicle_price_tier_5,0,GRLIB_perm_inf],
     ["ffaa_et_m109",0,strong_heavy_vehicle_price_tier_5,0,GRLIB_perm_inf],
   // Vanilla
-    ["B_APC_Tracked_01_AA_F",0,strong_heavy_vehicle_price_tier_1,0,GRLIB_perm_inf],
-    ["B_MBT_01_cannon_F",0,strong_heavy_vehicle_price_tier_3,0,GRLIB_perm_inf],
-    ["B_MBT_01_TUSK_F",0,strong_heavy_vehicle_price_tier_4,0,GRLIB_perm_inf],
-    ["I_MBT_03_cannon_F",0,strong_heavy_vehicle_price_tier_5,0,GRLIB_perm_inf]
+    ["B_APC_Tracked_01_AA_F",0,strong_heavy_vehicle_price_tier_1,0,9999],
+    ["B_MBT_01_cannon_F",0,strong_heavy_vehicle_price_tier_3,0,9999],
+    ["B_MBT_01_TUSK_F",0,strong_heavy_vehicle_price_tier_4,0,9999],
+    ["I_MBT_03_cannon_F",0,strong_heavy_vehicle_price_tier_5,0,9999]
 ];
 
 air_vehicles = [
@@ -404,15 +402,15 @@ air_vehicles = [
       ["CUP_B_UH60S_USN",0,air_vehicle_price_tier_6,0,GRLIB_perm_inf],                                        //Seahawk
 	  
 	 
-	["vtx_UH60M_SLICK",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf],
-	["vtx_UH60M_MEDEVAC",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf],
-	["vtx_UH60M",0,air_vehicle_price_tier_6,0,GRLIB_perm_inf],
-	["vtx_HH60",0,air_vehicle_price_tier_6,0,GRLIB_perm_inf],
-	["vtx_MH60M",0,air_vehicle_price_tier_6,0,GRLIB_perm_inf],
-	["vtx_MH60S",0,air_vehicle_price_tier_6,0,GRLIB_perm_inf],
-	["vtx_MH60S_GAU21L",0,air_vehicle_price_tier_6,0,GRLIB_perm_inf],
-	["vtx_MH60M_DAP",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],
-	["vtx_MH60S_Pylons",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],
+	["vtx_UH60M_SLICK",0,air_vehicle_price_tier_4,0,9999],
+	["vtx_UH60M_MEDEVAC",0,air_vehicle_price_tier_4,0,9999],
+	["vtx_UH60M",0,air_vehicle_price_tier_6,0,9999],
+	["vtx_HH60",0,air_vehicle_price_tier_6,0,9999],
+	["vtx_MH60M",0,air_vehicle_price_tier_6,0,9999],
+	["vtx_MH60S",0,air_vehicle_price_tier_6,0,9999],
+	["vtx_MH60S_GAU21L",0,air_vehicle_price_tier_6,0,9999],
+	["vtx_MH60M_DAP",0,air_vehicle_price_tier_7,0,9999],
+	["vtx_MH60S_Pylons",0,air_vehicle_price_tier_7,0,9999],
 	  
 	  
       ["B_Heli_Transport_01_F",0,air_vehicle_price_tier_6,0,GRLIB_perm_inf],
@@ -519,7 +517,7 @@ fast_air_vehicle = [
 
     //RHS 
     ["RHS_A10",0,fast_air_vehicle_price_tier_2,0,GRLIB_perm_inf],
-	["Peral_A10C",0,fast_air_vehicle_price_tier_2,0,GRLIB_perm_inf], 
+	["Peral_A10C",0,fast_air_vehicle_price_tier_2,0,9999], 
     
     // CUP BAF
       ["CUP_B_GR9_DYN_GB", 0, fast_air_vehicle_price_tier_4, 0, GRLIB_perm_inf],

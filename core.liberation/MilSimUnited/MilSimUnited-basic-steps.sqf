@@ -3,6 +3,16 @@
 
 
 
+MSU Redux
+------------------------------------------------------------------------------------------
+
+\initPlayerLocal.sqf: 
+vehicle_restriction
+
+\scripts\server\remotecall\sector_liberated_remote_call.sqf
+ammo when in sector 
+
+
 
 
 

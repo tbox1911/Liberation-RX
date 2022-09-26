@@ -15,7 +15,7 @@ while { GRLIB_endgame == 0 } do {
 			if ( ( [ getmarkerpos _nextsector , [ _opforcount ] call F_getCorrectedSectorRange , GRLIB_side_friendly ] call F_getUnitsCount > 0 ) && !( _nextsector in active_sectors ) ) then {
 				_hc = [] call F_lessLoadedHC;
 				
-				if (isNil "hc_spawn_towns") then {hc_spawn_towns = false};
+				if (isNil "hc_spawn_towns") then {hc_spawn_towns = true};
 				
 				if (!( isNull _hc ) && (hc_spawn_towns)) then {
 					diag_log format [ "Sector: %1 spawned on %2", _nextsector, _hc ];

@@ -67,12 +67,12 @@ if (_liberated_sector in sectors_tower) then {
 
 {
 	if (!Sector_ammo_for_all) then {
-		if (_x distance2D (markerPos _liberated_sector) < GRLIB_sector_size * 2) then {
+		if (_x distance2D (markerPos _liberated_sector) < GRLIB_sector_size) then {
 			private _ammo_collected = _x getVariable ["GREUH_ammo_count", 0];
 
 			_x setVariable ["GREUH_ammo_count", _ammo_collected + _income, true];
 
-			[_x, 5] remoteExec ["addscore", 2];
+			[_x, 15] remoteExec ["addscore", 2];
 		};
 	} else {
 		private _ammo_collected = _x getVariable ["GREUH_ammo_count", 0];
@@ -81,7 +81,7 @@ if (_liberated_sector in sectors_tower) then {
 
 		diag_log format ["[Ammo] %1 hat Sektor eingenommen: +%2 ", _x, _income];		
 
-		[_x, 5] remoteExec ["addscore", 2];
+		[_x, 15] remoteExec ["addscore", 2];
 	};
 } forEach allPlayers;
 [markerPos _liberated_sector] call showlandmines;

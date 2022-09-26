@@ -77,7 +77,7 @@ while { GRLIB_endgame == 0 } do {
 		_started_time = time;
 		_patrol_continue = true;
 
-		if (isNil "hc_spawn_patrol") then {hc_spawn_patrol = false};
+		if (isNil "hc_spawn_patrol") then {hc_spawn_patrol = true};
 		if (( local _grp ) && ( hc_spawn_patrol )) then {
 			_headless_client = [] call F_lessLoadedHC;
 			if ( !isNull _headless_client ) then {

@@ -14,7 +14,9 @@ if (isPlayer _unit_owner) then {
 		[getPlayerUID _x, prisoner_ammo] remoteExec ["F_addPlayerAmmo", 2];
 	} forEach allPlayers;
 	
-	_msg = format ["%1 brought in a prisoner. %2 rank and %3 ammo for everybody.", name _unit_owner, prisoner_score, prisoner_ammo];
+	combat_readiness = combat_readiness - prisoner_combat_readiness;
+	
+	_msg = format ["%1 brought in a prisoner. %2 rank and %3 ammo for everybody and -%4 aggression.", name _unit_owner, prisoner_score, prisoner_ammo, prisoner_combat_readiness];
 	[gamelogic, _msg] remoteExec ["globalChat", 0];
 	diag_log format ["[Ammo] %1", _msg];
 		
