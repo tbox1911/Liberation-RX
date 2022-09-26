@@ -19,7 +19,7 @@ private _squad4 = [];
 private _minimum_building_positions = 5;
 private _max_prisonners = 5;
 private _sector_despawn_tickets = 24;
-private _popfactor = 2.5;
+private _popfactor = GRLIB_sector_spawn_factor;
 
 if ( GRLIB_unitcap < 1 ) then { _popfactor = GRLIB_unitcap; };
 
