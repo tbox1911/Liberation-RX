@@ -78,13 +78,15 @@ divers_squad = [
 ];
 
 militia_vehicles = [
-	"LOP_AM_OPF_Landrover",
 	"LOP_AM_OPF_Landrover_M2",
 	"LOP_AM_OPF_Landrover_SPG9",
 	"LOP_AM_OPF_Nissan_PKM",
 	"LOP_AM_OPF_UAZ_DshKM",
 	"LOP_AM_OPF_UAZ_SPG",
-	"LOP_AM_OPF_BTR60"
+	"LOP_TKA_BTR70",
+	"LOP_TKA_BTR60",
+	"LOP_TKA_BTR70",
+	"LOP_TKA_BTR60"
 ];
 
 boats_east = [
@@ -113,13 +115,9 @@ opfor_vehicles = [
 ];
 
 opfor_vehicles_low_intensity = [
-	"LOP_TKA_UAZ",
 	"LOP_TKA_UAZ_AGS",
 	"LOP_TKA_UAZ_DshKM",
-	"LOP_TKA_UAZ_Open",
 	"LOP_TKA_UAZ_SPG",
-	"LOP_TKA_Ural",
-	"LOP_TKA_Ural_open",
 	"LOP_TKA_BTR70",
 	"LOP_TKA_BTR60",
 	"LOP_TKA_BMP1"
@@ -137,10 +135,15 @@ opfor_battlegroup_vehicles = [
 	"LOP_TKA_Mi8MT_Cargo",
 	"LOP_TKA_Mi8MTV3_FAB",
 	"LOP_TKA_Mi8MTV3_UPK23",
-	"RHS_Ka52_vvsc",
 	"RHS_Ka52_UPK23_vvsc",
 	"rhs_mi28n_s13_vvsc",
-	"rhs_mi28n_vvsc"
+	"rhs_mi28n_vvsc",
+	"rhs_mig29sm_vvs",
+	"RHS_T50_vvs_generic_ext",
+	"rhs_mig29sm_vvs",
+	"RHS_T50_vvs_generic_ext",
+	"rhs_mig29sm_vvs",
+	"RHS_T50_vvs_generic_ext"
 ];
 
 opfor_battlegroup_vehicles_low_intensity = [
@@ -153,33 +156,38 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"LOP_TKA_Ural_open",
 	"LOP_TKA_BTR70",
 	"LOP_TKA_BTR60",
+	"LOP_TKA_BTR70",
+	"LOP_TKA_BTR60",
+	"LOP_TKA_BTR70",
+	"LOP_TKA_BTR60",
 	"LOP_TKA_BMP1",
-	"LOP_TKA_Mi8MT_Cargo",
+	"LOP_TKA_BMP1",
+	"LOP_TKA_BMP1",
 	"LOP_TKA_Mi8MTV3_FAB",
 	"LOP_TKA_Mi8MTV3_UPK23"
 ];
 
 opfor_reinforcement_vehicles = [
-	"LOP_TKA_UAZ",
 	"LOP_TKA_UAZ_AGS",
 	"LOP_TKA_UAZ_DshKM",
-	"LOP_TKA_UAZ_Open",
 	"LOP_TKA_UAZ_SPG",
-	"LOP_TKA_Ural",
-	"LOP_TKA_Ural_open",
 	"LOP_TKA_BTR70",
 	"LOP_TKA_BTR60",
-	"LOP_TKA_BMP1",
-	"LOP_TKA_Mi8MT_Cargo",
-	"LOP_TKA_Mi8MTV3_FAB",
-	"LOP_TKA_Mi8MTV3_UPK23"
+	"LOP_TKA_BTR70",
+	"LOP_TKA_BTR60",
+	"LOP_TKA_BTR70",
+	"LOP_TKA_BTR60",
+	"LOP_TKA_BMP1"
 	];
 
 opfor_troup_transports = [
 	"LOP_TKA_Ural_open",
 	"LOP_TKA_BTR60",
 	"LOP_TKA_BTR70",
-	"LOP_TKA_Mi8MT_Cargo",
+	"LOP_TKA_BTR70",
+	"LOP_TKA_BTR60",
+	"LOP_TKA_BTR70",
+	"LOP_TKA_BTR60",
 	"LOP_TKA_Mi8MTV3_FAB",
 	"LOP_TKA_Mi8MTV3_UPK23"
 ];
@@ -200,12 +208,15 @@ opfor_air = [
 	"LOP_TKA_Mi24V_UPK23",
 	"LOP_TKA_Mi8MTV3_FAB",
 	"LOP_TKA_Mi8MTV3_UPK23",
-	"RHS_Ka52_vvsc",
 	"RHS_Ka52_UPK23_vvsc",
 	"rhs_mi28n_s13_vvsc",
 	"rhs_mi28n_vvsc",
-	"RHS_T50_vvs_052",
-	"RHS_Su25SM_KH29_vvsc",
+	"rhs_mig29sm_vvs",
+	"RHS_T50_vvs_generic_ext",
+	"rhs_mig29sm_vvs",
+	"RHS_T50_vvs_generic_ext",
+	"rhs_mig29sm_vvs",
+	"RHS_T50_vvs_generic_ext",
 	"RHS_TU95MS_vvs_irkutsk"
 ];
 
