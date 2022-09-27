@@ -541,7 +541,7 @@ fast_air_vehicle = [
 
 //RHS
 ["RHS_A10",0,fast_air_vehicle_price_tier_2,0,GRLIB_perm_inf],
-["Peral_A10C",0,fast_air_vehicle_price_tier_2,0,9999],
+["Peral_A10C",0,fast_air_vehicle_price_tier_2,0,GRLIB_perm_inf],
 
 ["RHS_Su25SM_vvs",0,fast_air_vehicle_price_tier_3,0,GRLIB_perm_inf],
 ["rhs_mig29sm_vmf",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
@@ -556,6 +556,8 @@ fast_air_vehicle = [
 
 // FIR F-14
 ["FIR_F14A_HBK1",0,fast_air_vehicle_price_tier_4,0,GRLIB_perm_inf],
+//FIR AV-8B Harrier
+["FIR_AV8B_NA_Blank",0,fast_air_vehicle_price_tier_4,0,GRLIB_perm_inf],
 // FIR F-15
 ["FIR_F15C",0,fast_air_vehicle_price_tier_4,0,GRLIB_perm_inf],
 ["FIR_F15E",0,fast_air_vehicle_price_tier_6 ,0,GRLIB_perm_inf],
@@ -570,7 +572,11 @@ fast_air_vehicle = [
 ["FIR_F22",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
 // F-18 super hornet
 ["FIR_F18C",0,fast_air_vehicle_price_tier_6 ,0,GRLIB_perm_inf],
+["FIR_F18C_SPAF",0,fast_air_vehicle_price_tier_6 ,0,GRLIB_perm_inf],
 ["FIR_F18D",0,fast_air_vehicle_price_tier_6 ,0,GRLIB_perm_inf],
+["FIR_FA18E_VFA106",0,fast_air_vehicle_price_tier_6 ,0,GRLIB_perm_inf],
+// Tornado
+["Tornado_AWS_ADV_blu",0,fast_air_vehicle_price_tier_6 ,0,GRLIB_perm_inf],
 // Eurofighter
 ["EAWS_EF2000_GER_CAP",0,fast_air_vehicle_price_tier_7,0,GRLIB_perm_inf],
 // Vanilla
