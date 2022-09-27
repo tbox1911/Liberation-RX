@@ -5,12 +5,13 @@ if (isNil "_vehicle") exitWith {};
 if ((_vehicle getVariable ["recycle_in_use", false])) exitWith {};
 _vehicle setVariable ["recycle_in_use", true, true];
 
+/*
  // loads classname list with all factions
  _handle = player execVM "mod_template\CP_USMC_W\classnames_west.sqf";
 	waitUntil {
     	scriptDone _handle
  }; 
-
+*/
 
 private [ "_objectinfo", "_objectinfo_loot", "_loot", "_cfg", "_msg" ];
 // XP AmmoBox
