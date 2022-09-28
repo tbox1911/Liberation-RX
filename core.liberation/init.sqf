@@ -1335,7 +1335,7 @@ ASL_SLING_RULES_OVERRIDE = [
 // ["Air", "CANT_SLING", "Tank"],
 
 // Advanced Towing
-SA_MAX_TOWED_CARGO = 1;
+SA_MAX_TOWED_CARGO = 4;
 SA_TOW_RULES_OVERRIDE =[
 	["All", "CAN_TOW", "All"]
 ];
