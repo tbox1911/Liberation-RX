@@ -113,7 +113,7 @@ if (_unit == player) then {
 		};
 		[_unit] spawn {
 			params ["_unit"];
-			waitUntil {sleep 1; isTouchingGround _unit};
+			waitUntil {sleep 1; isTouchingGround (vehicle _unit)};
 			if (primaryWeapon _unit != "") then { _unit selectWeapon primaryWeapon _unit };
 			[_unit, "show"] remoteExec ["dog_action_remote_call", 2];
 		};
