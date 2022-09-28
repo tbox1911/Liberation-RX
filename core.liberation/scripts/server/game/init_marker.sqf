@@ -90,17 +90,11 @@ GRLIB_SHOP_Group = createGroup [GRLIB_side_civilian, true];
     _manPos = (ASLToATL _deskPos) vectorAdd ([[0, -0.7, 0.1], -_deskDir] call BIS_fnc_rotateVector2D);
     _man = GRLIB_SHOP_Group createUnit [SHOP_Man, _manPos, [], 0, "NONE"];
     _man allowDamage false;
-    _man disableCollisionWith _desk;   
-    _man setPosATL _manPos;
+    _man disableCollisionWith _desk;
     _man setDir _deskDir;
+    _man setPosATL _manPos;
     [_man, "AidlPercMstpSnonWnonDnon_AI"] spawn F_startAnimMP;
-    [_man, _manPos] spawn {
-        params ["_unit", "_pos"];
-        while {true} do {
-          if ((getPosATL _unit) distance2D _pos >= 2) then { _unit setPosATL _pos};
-          sleep 5;
-        };
-    };
+    _man  enableSimulationGlobal false;
     sleep 0.1;
 } forEach GRLIB_Marker_SHOP;
 
