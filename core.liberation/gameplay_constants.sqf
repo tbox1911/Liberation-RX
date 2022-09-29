@@ -63,6 +63,7 @@ kamikaze_kill_score = 5;
 kamikaze_kill_ammo = 25;
 civkill_score = -18;
 civkill_ammo = -175;
+civkill_combat_readiness = 8;
 tkill_score = -3;
 tkill_ammo = -7;
 tk_active = false; //NEW Tkillscript with dialog
@@ -73,7 +74,7 @@ tk_active = false; //NEW Tkillscript with dialog
 
 
 // Only use by 2 dividable numbers
-box_recycle_value = 30;
+box_recycle_value = 40;
 // Increases the ammo for logistics and decreasese the ammo for everyone
 logistics_ammo_increase = true;
 
