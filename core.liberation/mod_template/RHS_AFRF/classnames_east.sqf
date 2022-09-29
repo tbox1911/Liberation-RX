@@ -39,18 +39,21 @@ opfor_patrol = "Land_Cargo_Patrol_V3_F";
 opfor_hq = "Land_Cargo_HQ_V3_F";
 
 militia_squad = [
-	"LOP_AM_OPF_Infantry_Engineer",
-	"LOP_AM_OPF_Infantry_Corpsman",
 	"LOP_AM_OPF_Infantry_GL",
 	"LOP_AM_OPF_Infantry_Rifleman_6",
 	"LOP_AM_OPF_Infantry_Rifleman",
 	"LOP_AM_OPF_Infantry_Rifleman_2",
-	"LOP_AM_OPF_Infantry_Rifleman_4",
 	"LOP_AM_OPF_Infantry_Rifleman_5",
-	"LOP_AM_OPF_Infantry_Rifleman_7",
-	"LOP_AM_OPF_Infantry_Rifleman_8",
-	"LOP_AM_OPF_Infantry_AT",
 	"LOP_AM_OPF_Infantry_Marksman",
+	"LOP_AM_OPF_Infantry_AT",
+	"LOP_AM_OPF_Infantry_AT",
+	"LOP_AM_OPF_Infantry_AT",
+	"LOP_TKA_Infantry_AA",
+	"LOP_TKA_Infantry_AA",
+	"LOP_TKA_Infantry_AA",
+	"LOP_TKA_Infantry_AA",
+	"LOP_TKA_Infantry_AA",
+	"LOP_TKA_Infantry_AA",
 	"LOP_AM_OPF_Infantry_Rifleman_9",
 	"LOP_AM_OPF_Infantry_AR",
 	"LOP_AM_OPF_Infantry_AR_Asst",
@@ -86,7 +89,13 @@ militia_vehicles = [
 	"LOP_TKA_BTR70",
 	"LOP_TKA_BTR60",
 	"LOP_TKA_BTR70",
-	"LOP_TKA_BTR60"
+	"LOP_TKA_BTR60",
+	"rhsgref_nat_ural_Zu23",
+	"rhsgref_nat_ural_Zu23",
+	"rhsgref_nat_ural_Zu23",
+	"rhsgref_nat_ural_Zu23",
+	"rhsgref_nat_ural_Zu23",
+	"rhsgref_nat_ural_Zu23"
 ];
 
 boats_east = [
@@ -111,7 +120,17 @@ opfor_vehicles = [
 	"LOP_TKA_T34",
 	"LOP_TKA_T55",
 	"LOP_TKA_T72BA",
-	"LOP_TKA_T72BB"
+	"LOP_TKA_T72BB",
+	"LOP_ISTS_OPF_ZSU234",
+	"LOP_ISTS_OPF_ZSU234",
+	"LOP_ISTS_OPF_ZSU234",
+	"LOP_ISTS_OPF_ZSU234",
+	"LOP_ISTS_OPF_ZSU234",
+	"rhsgref_nat_ural_Zu23",
+	"rhsgref_nat_ural_Zu23",
+	"rhsgref_nat_ural_Zu23",
+	"rhsgref_nat_ural_Zu23",
+	"rhsgref_nat_ural_Zu23"
 ];
 
 opfor_vehicles_low_intensity = [
@@ -120,7 +139,14 @@ opfor_vehicles_low_intensity = [
 	"LOP_TKA_UAZ_SPG",
 	"LOP_TKA_BTR70",
 	"LOP_TKA_BTR60",
-	"LOP_TKA_BMP1"
+	"LOP_TKA_BMP1",
+	"LOP_ISTS_OPF_ZSU234",
+	"LOP_ISTS_OPF_ZSU234",
+	"rhsgref_nat_ural_Zu23",
+	"rhsgref_nat_ural_Zu23",
+	"rhsgref_nat_ural_Zu23",
+	"rhsgref_nat_ural_Zu23",
+	"rhsgref_nat_ural_Zu23"
 ];
 
 opfor_battlegroup_vehicles = [
@@ -131,7 +157,13 @@ opfor_battlegroup_vehicles = [
 	"LOP_TKA_T34",
 	"LOP_TKA_T55",
 	"LOP_TKA_T72BA",
-	"LOP_TKA_T72BB"
+	"LOP_TKA_T72BB",
+	"LOP_ISTS_OPF_ZSU234",
+	"LOP_ISTS_OPF_ZSU234",
+	"LOP_ISTS_OPF_ZSU234",
+	"rhsgref_nat_ural_Zu23",
+	"rhsgref_nat_ural_Zu23",
+	"rhsgref_nat_ural_Zu23"
 ];
 
 opfor_battlegroup_vehicles_low_intensity = [
@@ -150,7 +182,14 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"LOP_TKA_BTR60",
 	"LOP_TKA_BMP1",
 	"LOP_TKA_BMP1",
-	"LOP_TKA_BMP1"
+	"LOP_TKA_BMP1",
+	"LOP_ISTS_OPF_ZSU234",
+	"LOP_ISTS_OPF_ZSU234",
+	"rhsgref_nat_ural_Zu23",
+	"rhsgref_nat_ural_Zu23",
+	"rhsgref_nat_ural_Zu23",
+	"rhsgref_nat_ural_Zu23",
+	"rhsgref_nat_ural_Zu23"
 ];
 
 opfor_reinforcement_vehicles = [
@@ -163,7 +202,17 @@ opfor_reinforcement_vehicles = [
 	"LOP_TKA_BTR60",
 	"LOP_TKA_BTR70",
 	"LOP_TKA_BTR60",
-	"LOP_TKA_BMP1"
+	"LOP_TKA_BMP1",
+	"LOP_ISTS_OPF_ZSU234",
+	"LOP_ISTS_OPF_ZSU234",
+	"LOP_ISTS_OPF_ZSU234",
+	"LOP_ISTS_OPF_ZSU234",
+	"LOP_ISTS_OPF_ZSU234",
+	"rhsgref_nat_ural_Zu23",
+	"rhsgref_nat_ural_Zu23",
+	"rhsgref_nat_ural_Zu23",
+	"rhsgref_nat_ural_Zu23",
+	"rhsgref_nat_ural_Zu23"
 	];
 
 opfor_troup_transports = [
@@ -224,7 +273,11 @@ opfor_statics = [
 	"LOP_TKA_Static_DSHKM",
 	"LOP_TKA_NSV_TriPod",
 	"LOP_TKA_Static_SPG9",
-	"LOP_TKA_ZU23"
+	"LOP_AM_OPF_Static_ZU23",
+	"LOP_AM_OPF_Static_ZU23",
+	"LOP_AM_OPF_Static_ZU23",
+	"LOP_AM_OPF_Static_ZU23",
+	"LOP_AM_OPF_Static_ZU23"
 ];
 
 opfor_recyclable = [];
