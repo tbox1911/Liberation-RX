@@ -66,7 +66,7 @@ SNC_VehRestriction= true;
 sleep 5;
 
 if (isNil "tkill_script") then { tkill_script = true; };
-if (isNil "frdl_fire_dmg_threshold") then { frdl_fire_dmg_threshold = 0.5; };
+if (isNil "frdl_fire_dmg_threshold") then { frdl_fire_dmg_threshold = 0.1; };
 
 ["B_Soldier_F", "InitPost", {
 	params ["_vehicle"];
