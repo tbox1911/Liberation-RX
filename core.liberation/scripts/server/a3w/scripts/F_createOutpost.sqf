@@ -58,6 +58,7 @@ if (_enable_objectives) then {
     _x setDamage 0;
     _x setVariable ["R3F_LOG_disabled", true, true];
     if (typeOf _x isKindof "AllVehicles") then {
+        _x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
         _x setVariable ["GRLIB_vehicle_owner", "server", true];
         _x lock 2;
     };
