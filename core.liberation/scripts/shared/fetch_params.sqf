@@ -28,7 +28,6 @@ GRLIB_day_factor = ["DayDuration",1] call bis_fnc_getParamValue;
 GRLIB_night_factor = ["NightDuration",1] call bis_fnc_getParamValue;
 GRLIB_weather_param = ["Weather",4] call bis_fnc_getParamValue;
 GRLIB_resources_multiplier = ["ResourcesMultiplier",1] call bis_fnc_getParamValue;
-GRLIB_max_spawn_point = ["MaxSpawnPoint",2] call bis_fnc_getParamValue;
 //------------------------------------------------------------------------
 GRLIB_fatigue = ["Fatigue",0] call bis_fnc_getParamValue;
 GRLIB_revive = ["Revive",3] call bis_fnc_getParamValue;
@@ -36,6 +35,7 @@ GRLIB_tk_mode = ["TK_mode",1] call bis_fnc_getParamValue;
 GRLIB_tk_count = ["TK_count",4] call bis_fnc_getParamValue;
 GRLIB_squad_size = ["SquadSize",3] call bis_fnc_getParamValue;
 GRLIB_max_squad_size = ["MaxSquadSize",7] call bis_fnc_getParamValue;
+GRLIB_max_spawn_point = ["MaxSpawnPoint",2] call bis_fnc_getParamValue;
 GRLIB_permissions_param = ["Permissions",1] call bis_fnc_getParamValue;
 GRLIB_permission_vehicles = ["EnableLock",1] call bis_fnc_getParamValue;
 //------------------------------------------------------------------------
