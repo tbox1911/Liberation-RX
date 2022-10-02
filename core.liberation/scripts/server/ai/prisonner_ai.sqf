@@ -31,7 +31,7 @@ _unit setVariable ["GRLIB_is_prisonner", true, true];
 
 
 
-_unitPos = getPosVisual _unit; // gets the units visual position.
+_unitPos = position _unit; // gets the units visual position.
 
 _liveMarkerName = format ["pow_%1", prisoner_i];
 _liveMarker = createMarker [_liveMarkerName,_unitPos];

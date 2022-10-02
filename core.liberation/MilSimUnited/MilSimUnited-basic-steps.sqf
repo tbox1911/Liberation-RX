@@ -12,6 +12,8 @@ vehicle_restriction
 \scripts\server\remotecall\sector_liberated_remote_call.sqf
 ammo when in sector 
 
+\scripts\server\ai\prisonner_ai.sqf
+POW marker
 
 
 

@@ -149,7 +149,8 @@ if (dialog && deploy == 1) then {
 			_destpos = ((_choiceslist select _idxchoice) select 1);
 			player setpos [((_destpos select 0) + 5) - floor(random 10),((_destpos select 1) + 5) - floor(random 10),0.3];
 		};
-
+		
+		/*
 		_unit_list = units group player;
 		_my_squad = player getVariable ["my_squad", nil];
 		if (!isNil "_my_squad") then {
@@ -164,6 +165,7 @@ if (dialog && deploy == 1) then {
 				_x doFollow leader player;
 			} forEach _list;
 		};
+		*/
 		GRLIB_player_spawned = ([] call F_getValid);
 		cinematic_camera_started = false;
 	};
