@@ -13,7 +13,7 @@ if (["A3_", GRLIB_mod_east, true] call F_startsWith) then {
 if (["WS_", GRLIB_mod_east, true] call F_startsWith) then {
 	private _A3_Items = [
 		"bipod_","launch_","optic_","muzzle_","arifle_RPK12_lush",
-		"Titan_AA","RPG32_","Chemlight_","SmokeShell"
+		"Titan_","RPG32_","MRAWS_","Chemlight_","SmokeShell"
 	];
 	GRLIB_MOD_signature = GRLIB_MOD_signature + _A3_Items;
 };
