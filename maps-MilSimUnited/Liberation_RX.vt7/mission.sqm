@@ -8,7 +8,7 @@ class EditorData
 	toggles=517;
 	class ItemIDProvider
 	{
-		nextID=2356;
+		nextID=2379;
 	};
 	class LayerIndexProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={12980.597,28.53067,2734.5327};
-		dir[]={0.010132793,-0.33636755,-0.94169617};
-		up[]={0.0036195221,0.94172961,-0.33635744};
-		aside[]={-0.99995947,2.334491e-008,-0.010758982};
+		pos[]={12993.307,30.63748,2739.0525};
+		dir[]={0.035553899,-0.48349568,-0.87462908};
+		up[]={0.019637877,0.87534559,-0.48309833};
+		aside[]={-0.9991774,6.3892003e-010,-0.040616818};
 	};
 };
 binarizationWanted=0;
@@ -424,7 +424,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=568;
+		items=567;
 		class Item0
 		{
 			dataType="Marker";
@@ -23165,7 +23165,7 @@ class Mission
 				{
 					dataType="Trigger";
 					position[]={7585.3228,15.911871,633.3952};
-					angle=4.4740977;
+					angle=4.4740968;
 					class Attributes
 					{
 						condition="true";
@@ -23181,7 +23181,7 @@ class Mission
 				{
 					dataType="Trigger";
 					position[]={7583.6362,16.18446,640.3219};
-					angle=4.474102;
+					angle=4.4741011;
 					class Attributes
 					{
 						condition="!(player in thislist)";
@@ -23200,7 +23200,7 @@ class Mission
 				{
 					dataType="Trigger";
 					position[]={7581.4351,16.466846,647.23395};
-					angle=4.4740977;
+					angle=4.4740968;
 					class Attributes
 					{
 						condition="GRLIB_endgame == 1";
@@ -32906,16 +32906,6 @@ class Mission
 			};
 			id=2157;
 			type="Flag_Blue_F";
-		};
-		class Item567
-		{
-			dataType="Group";
-			side="East";
-			class Attributes
-			{
-			};
-			id=2346;
-			atlOffset=21.999266;
 		};
 	};
 	class Connections
