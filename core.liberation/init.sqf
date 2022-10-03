@@ -136,6 +136,19 @@ if (isNil "frdl_fire_dmg_threshold") then { frdl_fire_dmg_threshold = 0.1; };
 
 
 
+// SAM
+["B_SAM_System_02_F", "InitPost", {
+    params ["_vehicle"];
+	[
+		_vehicle,
+		["Green",1], 
+		true
+	] call BIS_fnc_initVehicle;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+
+
+
 ["CargoNet_01_box_F", "InitPost", {
     params ["_vehicle"];
 	[_vehicle,8] call ace_cargo_fnc_setSize;
@@ -212,6 +225,7 @@ if (isNil "frdl_fire_dmg_threshold") then { frdl_fire_dmg_threshold = 0.1; };
 	[_vehicle, true, [0, 1.5, 0], 0] call ace_dragging_fnc_setCarryable;
 	[_vehicle, true, [0, 1.5, 0], 0] call ace_dragging_fnc_setDraggable;
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
 ["B_Slingload_01_Medevac_F", "InitPost", {
     params ["_vehicle"];
 	clearItemCargoGlobal _vehicle;
@@ -223,6 +237,8 @@ if (isNil "frdl_fire_dmg_threshold") then { frdl_fire_dmg_threshold = 0.1; };
     params ["_vehicle"];
 	[_vehicle, 1000000] call ace_rearm_fnc_makeSource;
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+
 
 ["rhsusf_M977A4_AMMO_BKIT_usarmy_wd", "InitPost", {
     params ["_vehicle"];
@@ -269,6 +285,8 @@ if (isNil "frdl_fire_dmg_threshold") then { frdl_fire_dmg_threshold = 0.1; };
 	[_vehicle,12] call ace_cargo_fnc_setSpace;
 	_vehicle setVariable ["ACE_isRepairVehicle",1];
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+
 
 
 // ACE Cargo definition
@@ -350,8 +368,9 @@ if (isNil "frdl_fire_dmg_threshold") then { frdl_fire_dmg_threshold = 0.1; };
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
 
-// ACE Medical Vehicles
 
+
+// ACE Medical Vehicles
 
 ["CUP_B_FV432_GB_Ambulance", "InitPost", {
     params ["_vehicle"];

@@ -87,7 +87,11 @@ militia_vehicles = [
 	"rhsgref_ins_btr60",
 	"rhsgref_ins_btr60",
 	"rhsgref_ins_ural_Zu23",
-	"rhsgref_ins_ural_Zu23"
+	"rhsgref_ins_ural_Zu23",
+	"B_SAM_System_02_F",
+	"B_SAM_System_02_F",
+	"B_SAM_System_02_F",
+	"B_SAM_System_02_F"
 ];
 
 boats_east = [
@@ -109,9 +113,15 @@ opfor_vehicles = [
 	"rhsgref_ins_t72bb",
 	"rhsgref_ins_t72bb",
 	"rhsgref_ins_zsu234",
-	"rhsgref_ins_zsu234",
 	"rhsgref_ins_ural_Zu23",
-	"rhsgref_ins_ural_Zu23"
+	"rhsgref_ins_ural_Zu23",
+	"B_SAM_System_02_F",
+	"B_SAM_System_02_F",
+	"B_SAM_System_02_F",
+	"B_SAM_System_02_F",
+	"B_SAM_System_02_F",
+	"B_SAM_System_02_F",
+	"B_SAM_System_02_F"
 ];
 
 opfor_vehicles_low_intensity = [
@@ -120,7 +130,11 @@ opfor_vehicles_low_intensity = [
 	"rhsgref_ins_btr60",
 	"rhsgref_ins_btr70",
 	"rhsgref_ins_ural_Zu23",
-	"rhsgref_ins_ural_Zu23"
+	"rhsgref_ins_ural_Zu23",
+	"B_SAM_System_02_F",
+	"B_SAM_System_02_F",
+	"B_SAM_System_02_F",
+	"B_SAM_System_02_F"
 ];
 
 opfor_battlegroup_vehicles = [
@@ -132,12 +146,20 @@ opfor_battlegroup_vehicles = [
 	"rhsgref_ins_bmp2ds",
 	"rhsgref_ins_t72bb",
 	"rhsgref_ins_t72bb",
-	"rhsgref_ins_zsu234",
+	"rhsgref_ins_t72bb",
+	"rhsgref_ins_t72bb",
 	"rhsgref_ins_zsu234",
 	"rhsgref_ins_zsu234",
 	"rhsgref_ins_ural_Zu23",
 	"rhsgref_ins_ural_Zu23",
-	"rhsgref_ins_ural_Zu23"
+	"rhsgref_ins_ural_Zu23",
+	"B_SAM_System_02_F",
+	"B_SAM_System_02_F",
+	"B_SAM_System_02_F",
+	"B_SAM_System_02_F",
+	"B_SAM_System_02_F",
+	"B_SAM_System_02_F",
+	"B_SAM_System_02_F"
 ];
 
 opfor_battlegroup_vehicles_low_intensity = [
@@ -148,9 +170,17 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"rhsgref_ins_bmd2",
 	"rhsgref_ins_bmp2ds",
 	"rhsgref_ins_t72bb",
+	"rhsgref_ins_t72bb",
 	"rhsgref_ins_ural_Zu23",
 	"rhsgref_ins_ural_Zu23",
-	"rhsgref_ins_ural_Zu23"
+	"rhsgref_ins_ural_Zu23",
+	"B_SAM_System_02_F",
+	"B_SAM_System_02_F",
+	"B_SAM_System_02_F",
+	"B_SAM_System_02_F",
+	"B_SAM_System_02_F",
+	"B_SAM_System_02_F",
+	"B_SAM_System_02_F"
 ];
 
 opfor_reinforcement_vehicles = [
@@ -163,10 +193,17 @@ opfor_reinforcement_vehicles = [
 	"rhsgref_ins_t72bb",
 	"rhsgref_ins_t72bb",
 	"rhsgref_ins_t72bb",
-	"rhsgref_ins_zsu234",
+	"rhsgref_ins_t72bb",
 	"rhsgref_ins_zsu234",
 	"rhsgref_ins_ural_Zu23",
-	"rhsgref_ins_ural_Zu23"
+	"rhsgref_ins_ural_Zu23",
+	"B_SAM_System_02_F",
+	"B_SAM_System_02_F",
+	"B_SAM_System_02_F",
+	"B_SAM_System_02_F",
+	"B_SAM_System_02_F",
+	"B_SAM_System_02_F",
+	"B_SAM_System_02_F"
 	];
 
 opfor_troup_transports = [
@@ -216,7 +253,11 @@ opfor_air = [
 
 opfor_statics = [
 	"LOP_ChDKZ_Igla_AA_pod",
-	"LOP_ChDKZ_ZU23"
+	"LOP_ChDKZ_ZU23",
+	"B_SAM_System_02_F",
+	"B_SAM_System_02_F",
+	"B_SAM_System_02_F",
+	"B_SAM_System_02_F"
 ];
 
 opfor_recyclable = [];
