@@ -90,7 +90,7 @@ boats_east = [
 
 opfor_vehicles = [
 	//"O_APC_Tracked_02_cannon_F",
-	//"O_APC_Wheeled_02_rcws_F",
+	//"O_APC_Wheeled_02_rcws_v2_F",
 	//"O_APC_Tracked_02_AA_F",
 	"OPTRE_M808B_INS",
 	"OPTRE_M494_INS",
@@ -105,7 +105,7 @@ opfor_vehicles = [
 
 opfor_vehicles_low_intensity = [
 	//"O_APC_Tracked_02_cannon_F",
-	//"O_APC_Wheeled_02_rcws_F",
+	//"O_APC_Wheeled_02_rcws_v2_F",
 	"OPTRE_m1015_mule_ins",
 	"OPTRE_M12_FAV_APC",
 	"OPTRE_M12_LRV_ins",
@@ -118,7 +118,7 @@ opfor_vehicles_low_intensity = [
 
 opfor_battlegroup_vehicles = [
 	//"O_APC_Tracked_02_cannon_F",
-	//"O_APC_Wheeled_02_rcws_F",
+	//"O_APC_Wheeled_02_rcws_v2_F",
 	//"O_APC_Tracked_02_AA_F",
 	"OPTRE_M12_LRV_ins",
 	"OPTRE_M12A1_LRV_ins",
@@ -132,7 +132,7 @@ opfor_battlegroup_vehicles = [
 
 opfor_battlegroup_vehicles_low_intensity = [
 	//"O_APC_Tracked_02_cannon_F",
-	//"O_APC_Wheeled_02_rcws_F",
+	//"O_APC_Wheeled_02_rcws_v2_F",
 	"OPTRE_m1015_mule_ins",
 	"OPTRE_M12_LRV_ins",
 	"OPTRE_M12_LRV_ins",
@@ -191,7 +191,7 @@ opfor_recyclable = [
 	["OPTRE_M12_LRV_ins",0,round (50 / GRLIB_recycling_percentage),0],
 	["OPTRE_M12A1_LRV_ins",0,round (50 / GRLIB_recycling_percentage),0],
 	["optre_catfish_ins_mg_f",0,round (100 / GRLIB_recycling_percentage),0],
-	["O_APC_Wheeled_02_rcws_F",10,round (150 / GRLIB_recycling_percentage),10],
+	["O_APC_Wheeled_02_rcws_v2_F",10,round (150 / GRLIB_recycling_percentage),10],
 	["O_APC_Tracked_02_cannon_F",10,round (200 / GRLIB_recycling_percentage),10],
 	["O_APC_Tracked_02_AA_F",10,round (300 / GRLIB_recycling_percentage),10],
 	["OPTRE_M808B_INS",15,round (4500 / GRLIB_recycling_percentage),15],

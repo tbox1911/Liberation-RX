@@ -94,9 +94,9 @@ opfor_vehicles = [
 	"O_MRAP_02_hmg_F",
 	"O_MRAP_02_gmg_F",
 	"O_APC_Tracked_02_cannon_F",
-	"O_APC_Wheeled_02_rcws_F",
+	"O_APC_Wheeled_02_rcws_v2_F",
 	"O_APC_Tracked_02_cannon_F",
-	"O_APC_Wheeled_02_rcws_F",
+	"O_APC_Wheeled_02_rcws_v2_F",
 	"O_Truck_03_transport_F",
 	"O_MBT_02_cannon_F",
 	"O_MBT_02_cannon_F",
@@ -107,7 +107,7 @@ opfor_vehicles = [
 
 opfor_vehicles_low_intensity = [
 	"O_APC_Tracked_02_cannon_F",
-	"O_APC_Wheeled_02_rcws_F",
+	"O_APC_Wheeled_02_rcws_v2_F",
 	"O_Truck_02_transport_F",
 	"O_MRAP_02_hmg_F",
 	"O_MRAP_02_hmg_F",
@@ -122,7 +122,7 @@ opfor_battlegroup_vehicles = [
 	"O_MRAP_02_hmg_F",
 	"O_MRAP_02_gmg_F",
 	"O_APC_Tracked_02_cannon_F",
-	"O_APC_Wheeled_02_rcws_F",
+	"O_APC_Wheeled_02_rcws_v2_F",
 	"O_Truck_03_covered_F",
 	"O_MBT_02_cannon_F",
 	"O_APC_Tracked_02_AA_F",
@@ -134,7 +134,7 @@ opfor_battlegroup_vehicles = [
 
 opfor_battlegroup_vehicles_low_intensity = [
 	"O_APC_Tracked_02_cannon_F",
-	"O_APC_Wheeled_02_rcws_F",
+	"O_APC_Wheeled_02_rcws_v2_F",
 	"O_MRAP_02_hmg_F",
 	"O_MRAP_02_hmg_F",
 	"O_MRAP_02_gmg_F",
@@ -201,7 +201,7 @@ opfor_recyclable = [
 	["O_MRAP_02_hmg_F",5,round (150 / GRLIB_recycling_percentage),3],
 	["O_MRAP_02_gmg_F",5,round (150 / GRLIB_recycling_percentage),3],
 	["O_Boat_Armed_01_hmg_F",2,round (200 / GRLIB_recycling_percentage),2],
-	["O_APC_Wheeled_02_rcws_F",10,round (450 / GRLIB_recycling_percentage),10],
+	["O_APC_Wheeled_02_rcws_v2_F",10,round (450 / GRLIB_recycling_percentage),10],
 	["O_APC_Tracked_02_cannon_F",10,round (1200 / GRLIB_recycling_percentage),10],
 	["O_APC_Tracked_02_AA_F",10,round (1300 / GRLIB_recycling_percentage),10],
 	["O_MBT_02_cannon_F",15,round (1400 / GRLIB_recycling_percentage),15],
