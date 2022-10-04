@@ -52,7 +52,7 @@ while { true } do {
 			if (_veh_player == player) then {
 				{
 					//group leaveVehicle vehicle
-					if ( vehicle _x != _x && (getPosATL _x select 2) <= 5) then {
+					if (vehicle _x != _x && getPos _x select 2 <= 5) then {
 						_x action ["getOut", vehicle _x];
 						unassignVehicle _x;
 						commandGetOut _x;

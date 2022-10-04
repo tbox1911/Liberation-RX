@@ -96,7 +96,7 @@ PAR_unit_eject = {
 	_unit allowDamage false;
 	moveOut _unit;
 	_unit setPos (getPosATL _veh vectorAdd [([[-15,0,15], 2] call F_getRND), ([[-15,0,15], 2] call F_getRND), 0]);
-	if (round(getPosATL _unit select 2) > 20) then {
+	if (getPos _unit select 2 > 20) then {
 		_para = createVehicle ['Steerable_Parachute_F', (getPosATL _unit),[],0,'none'];
 		_unit moveInDriver _para;
 		sleep 1;
