@@ -560,6 +560,16 @@ if (isNil "frdl_fire_dmg_threshold") then { frdl_fire_dmg_threshold = 0.1; };
 	}];
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
+["rhsusf_m1a2sep1tuskiiwd_usarmy", "InitPost", {
+    params ["_vehicle"];
+	_vehicle addEventHandler ["HandleDamage", {  
+		private _unit = _this select 0;
+		private _hitSelection = _this select 1;
+		private _damage = _this select 2;
+		if (_hitSelection isEqualTo "") then {(damage _unit) + (_damage * 0.04)} else {(_unit getHit _hitSelection) + (_damage * 0.04)};
+	}];
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
 ["O_T_APC_Tracked_02_cannon_ghex_F", "InitPost", {
     params ["_vehicle"];
 	_vehicle addEventHandler ["HandleDamage", {  
