@@ -6,8 +6,8 @@ private _loaded = _player getVariable ["GRLIB_squad_context_loaded", false];
 private _ai_group = [];
 private _loadout = [];
 
-if (alive _player && lifeState _player != "INCAPACITATED" ) then {
-	private _bros = allUnits select { alive _x && lifeState _x != "INCAPACITATED" && !(_x getVariable ["GRLIB_score_set", 0] == 1) && (_x getVariable ["PAR_Grp_ID","0"]) == _puid};
+if (alive _player && lifeState _player != "INCAPACITATED") then {
+	private _bros = allUnits select { alive _x && lifeState _x != "INCAPACITATED" && !(isPlayer _x) && (_x getVariable ["PAR_Grp_ID","0"]) == _puid};
 	{ _ai_group pushback [typeOf _x, rank _x, [_x, ["repetitive"]] call F_getLoadout] } forEach _bros;
 	_loadout = [_player, ["repetitive"]] call F_getLoadout;
 };
