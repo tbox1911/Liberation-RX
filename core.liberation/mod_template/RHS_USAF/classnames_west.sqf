@@ -33,14 +33,19 @@ units_loadout_overide = [];
 light_vehicles = [
 
 // Light vehicles
+
 // Bike
 ["CUP_B_M1030_USMC",0,20,0,GRLIB_perm_inf],
+
 // Vanilla
+
 ["C_Offroad_02_unarmed_F",0,light_vehicle_price_tier_1,0,GRLIB_perm_inf],
 ["C_Van_01_transport_F",0,light_vehicle_price_tier_2,0,GRLIB_perm_inf],
 ["B_LSV_01_unarmed_F",0,light_vehicle_price_tier_6,0,GRLIB_perm_inf],
 ["B_LSV_01_AT_F",0,light_vehicle_price_tier_9,0,GRLIB_perm_inf],
+
 // CUP
+
 ["CUP_I_SUV_ION",0,light_vehicle_price_tier_3,0,GRLIB_perm_inf],
 ["CUP_I_SUV_Armored_ION",0,light_vehicle_price_tier_9,0,GRLIB_perm_inf],
 ["CUP_B_nM1025_Unarmed_USA_DES",0,light_vehicle_price_tier_3,0,GRLIB_perm_inf],
@@ -57,7 +62,9 @@ light_vehicles = [
 ["CUP_B_nM1036_TOW_USA_DES",0,light_vehicle_price_tier_7,0,GRLIB_perm_inf],
 ["CUP_B_nM1097_AVENGER_USA_DES",0,light_vehicle_price_tier_9,0,GRLIB_perm_inf],
 ["CUP_B_MTVR_BAF_DES",0,light_vehicle_price_tier_5,0,GRLIB_perm_inf],
+
 //RHS
+
 ["rhsusf_mrzr4_d",0,light_vehicle_price_tier_1,0,GRLIB_perm_inf],
 ["rhsusf_m1025_w",0,light_vehicle_price_tier_3,0,GRLIB_perm_inf],
 ["rhsusf_m1043_w",0,light_vehicle_price_tier_3,0,GRLIB_perm_inf],
@@ -90,9 +97,13 @@ light_vehicles = [
 ["rhsusf_m966_w",0,light_vehicle_price_tier_5,0,GRLIB_perm_inf],
 ["rhs_tigr_msv",0,light_vehicle_price_tier_5,0,GRLIB_perm_inf],
 ["rhs_tigr_m_msv",0,light_vehicle_price_tier_5,0,GRLIB_perm_inf],
+
 // CUP BAF
+
 ["CUP_I_LR_AA_AAF",0,light_vehicle_price_tier_7,0,GRLIB_perm_inf],
+
 // BAF
+
 ["UK3CB_BAF_Jackal2_L111A1_W",0,light_vehicle_price_tier_6,0,GRLIB_perm_inf],
 ["UK3CB_BAF_Jackal2_L134A1_W",0,light_vehicle_price_tier_7,0,GRLIB_perm_inf],
 ["UK3CB_BAF_Coyote_Passenger_L111A1_W",0,light_vehicle_price_tier_6,0,GRLIB_perm_inf],
@@ -108,7 +119,9 @@ light_vehicles = [
 ["UK3CB_BAF_LandRover_WMIK_Milan_FFR_Green_A",0,light_vehicle_price_tier_7,0,GRLIB_perm_inf],
 ["UK3CB_BAF_MAN_HX60_Transport_Green",0,light_vehicle_price_tier_5,0,GRLIB_perm_inf],
 ["UK3CB_BAF_MAN_HX58_Transport_Green",0,light_vehicle_price_tier_5,0,GRLIB_perm_inf],
+
 // FFAA
+
 ["ffaa_et_anibal",0,light_vehicle_price_tier_2,0,GRLIB_perm_inf],
 ["ffaa_et_neton_mk2",0,light_vehicle_price_tier_1,0,GRLIB_perm_inf],
 ["ffaa_et_vamtac_trans",0,light_vehicle_price_tier_3,0,GRLIB_perm_inf],
@@ -120,39 +133,54 @@ light_vehicles = [
 ["ffaa_et_pegaso_carga_lona",0,light_vehicle_price_tier_3,0,GRLIB_perm_inf],
 ["ffaa_et_m250_carga_blin",0,light_vehicle_price_tier_5,0,GRLIB_perm_inf],
 ["ffaa_et_m250_carga_lona_blin",0,light_vehicle_price_tier_5,0,GRLIB_perm_inf],
+
 // BW
+
 ["BWA3_Eagle_Fleck",0,light_vehicle_price_tier_3,0,GRLIB_perm_inf],
 ["BWA3_Eagle_FLW100_Fleck",0,light_vehicle_price_tier_5,0,GRLIB_perm_inf],
 ["Redd_Tank_LKW_leicht_gl_Wolf_Flecktarn_San",0,light_vehicle_price_tier_2,0,GRLIB_perm_inf],
 ["Redd_Tank_LKW_leicht_gl_Wolf_Flecktarn_FJg",0,light_vehicle_price_tier_2,0,GRLIB_perm_inf],
 ["Redd_Tank_LKW_leicht_gl_Wolf_Flecktarn_Moerser",0,light_vehicle_price_tier_2,0,GRLIB_perm_inf],
 ["rnt_lkw_5t_mil_gl_kat_i_transport_fleck",0,light_vehicle_price_tier_3,0,GRLIB_perm_inf],
+
 // Vanilla Truck
+
 ["B_Truck_01_transport_F",0,light_vehicle_price_tier_4,0,GRLIB_perm_inf],
 ["B_Truck_01_covered_F",0,light_vehicle_price_tier_4,0,GRLIB_perm_inf],
 ["B_Truck_01_medical_F",0,light_vehicle_price_tier_4,0,GRLIB_perm_inf],
 ["B_GEN_Van_02_transport_F",0,light_vehicle_price_tier_2,0,GRLIB_perm_inf],
 ["B_GEN_Offroad_01_comms_F",0,light_vehicle_price_tier_2,0,GRLIB_perm_inf],
 ["B_GEN_Offroad_01_gen_F",0,light_vehicle_price_tier_2,0,GRLIB_perm_inf],
+
 // Boats
+
 // CUP
+
 ["CUP_B_LCU1600_USMC",0,light_vehicle_price_tier_1,0,GRLIB_perm_inf],
 ["CUP_B_RHIB_USMC",0,light_vehicle_price_tier_2,0,GRLIB_perm_inf],
 ["CUP_B_RHIB2Turret_USMC",0,light_vehicle_price_tier_2,0,GRLIB_perm_inf],
+
 // Vanilla Boat
+
 ["C_Scooter_Transport_01_F",0,15,0,GRLIB_perm_inf],
 ["B_SDV_01_F",0,light_vehicle_price_tier_1,0,GRLIB_perm_inf],
 ["B_Boat_Transport_01_F",0,light_vehicle_price_tier_1,0,GRLIB_perm_inf],
 ["B_Lifeboat",0,light_vehicle_price_tier_1,0,GRLIB_perm_inf],
 ["B_Boat_Armed_01_minigun_F",0,light_vehicle_price_tier_4,0,GRLIB_perm_inf],
+
 // FFAA
+
 ["ffaa_ar_zodiac_hurricane",0,light_vehicle_price_tier_1,0,GRLIB_perm_inf],
 ["ffaa_ar_lcm",0,light_vehicle_price_tier_1,0,GRLIB_perm_inf],
 ["ffaa_ar_zodiac_hurricane_long",0,light_vehicle_price_tier_2,0,GRLIB_perm_inf],
 ["ffaa_ar_supercat",0,light_vehicle_price_tier_2,0,GRLIB_perm_inf],
+
 // RHS
+
 ["rhsusf_mkvsoc",0,light_vehicle_price_tier_2,0,GRLIB_perm_inf],
+
 // BAF
+
 ["UK3CB_BAF_RHIB_HMG",0,light_vehicle_price_tier_1,0,GRLIB_perm_inf],
 ["UK3CB_BAF_RHIB_GPMG",0,light_vehicle_price_tier_2,0,GRLIB_perm_inf]
 ];
@@ -160,7 +188,9 @@ light_vehicles = [
 strong_light_vehicles = [
 
 // Strong light vehicles
+
 // CUP
+
 ["CUP_B_M1151_USA",0,strong_light_vehicle_price_tier_2,0,GRLIB_perm_inf],
 ["CUP_B_M1152_USA",0,strong_light_vehicle_price_tier_2,0,GRLIB_perm_inf],
 ["CUP_B_M1151_M2_USA",0,strong_light_vehicle_price_tier_3,0,GRLIB_perm_inf],
@@ -171,7 +201,9 @@ strong_light_vehicles = [
 ["CUP_B_HMMWV_Crows_MK19_USA",0,strong_light_vehicle_price_tier_7,0,GRLIB_perm_inf],
 ["CUP_B_RG31E_M2_USA",0,strong_light_vehicle_price_tier_7,0,GRLIB_perm_inf],
 ["CUP_B_RG31_Mk19_USA",0,strong_light_vehicle_price_tier_8,0,GRLIB_perm_inf],
+
 // CUP BAF
+
 ["CUP_B_Ridgback_LMG_GB_D",0,strong_light_vehicle_price_tier_8,0,GRLIB_perm_inf],
 ["CUP_B_Ridgback_HMG_GB_D",0,strong_light_vehicle_price_tier_9,0,GRLIB_perm_inf],
 ["CUP_B_Ridgback_GMG_GB_D",0,strong_light_vehicle_price_tier_10,0,GRLIB_perm_inf],
@@ -181,12 +213,16 @@ strong_light_vehicles = [
 ["CUP_B_Wolfhound_LMG_GB_D",0,strong_light_vehicle_price_tier_8,0,GRLIB_perm_inf],
 ["CUP_B_Wolfhound_HMG_GB_D",0,strong_light_vehicle_price_tier_9,0,GRLIB_perm_inf],
 ["CUP_B_Wolfhound_GMG_GB_D",0,strong_light_vehicle_price_tier_10,0,GRLIB_perm_inf],
+
 // BAF
+
 ["UK3CB_BAF_Husky_Passenger_GPMG_Green",0,strong_light_vehicle_price_tier_8,0,GRLIB_perm_inf],
 ["UK3CB_BAF_Husky_Passenger_HMG_Green",0,strong_light_vehicle_price_tier_9,0,GRLIB_perm_inf],
 ["UK3CB_BAF_Husky_Passenger_GMG_Green",0,strong_light_vehicle_price_tier_10,0,GRLIB_perm_inf],
 ["UK3CB_BAF_Panther_GPMG_Green_A",0,strong_light_vehicle_price_tier_8,0,GRLIB_perm_inf],
+
 // RHS
+
 ["rhsusf_m1165a1_gmv_m134d_m240_socom_d",0,strong_light_vehicle_price_tier_2,0,GRLIB_perm_inf],
 ["rhsusf_m1165a1_gmv_m2_m240_socom_d",0,strong_light_vehicle_price_tier_2,0,GRLIB_perm_inf],
 ["rhsusf_m1165a1_gmv_mk19_m240_socom_d",0,strong_light_vehicle_price_tier_3,0,GRLIB_perm_inf],
@@ -230,10 +266,11 @@ strong_light_vehicles = [
 ["rhsusf_M1239_M2_socom_d",0,strong_light_vehicle_price_tier_7,0,GRLIB_perm_inf],
 ["rhsusf_m1240a1_mk19_usarmy_wd",0,strong_light_vehicle_price_tier_8,0,GRLIB_perm_inf],
 ["rhs_tigr_sts_msv",0,strong_light_vehicle_price_tier_11,0,GRLIB_perm_inf],
-
 ["rhs_gaz66_zu23_msv",0,strong_light_vehicle_price_tier_9,0,GRLIB_perm_inf],
 
+
 // FFAA
+
 ["ffaa_et_vamtac_trans_blind",0,strong_light_vehicle_price_tier_2,0,GRLIB_perm_inf],
 ["ffaa_et_vamtac_ume",0,strong_light_vehicle_price_tier_2,0,GRLIB_perm_inf],
 ["ffaa_et_vamtac_m2",0,strong_light_vehicle_price_tier_3,0,GRLIB_perm_inf],
@@ -248,13 +285,19 @@ strong_light_vehicles = [
 ["ffaa_et_rg31_samson",0,strong_light_vehicle_price_tier_6,0,GRLIB_perm_inf],
 ["ffaa_et_rg31_rollers",0,strong_light_vehicle_price_tier_5,0,GRLIB_perm_inf],
 ["ffaa_et_husky2g_detector",0,strong_light_vehicle_price_tier_1,0,GRLIB_perm_inf],
+
 // BW
+
 ["BWA3_Dingo2_FLW100_MG3_CG13_Fleck",0,strong_light_vehicle_price_tier_6,0,GRLIB_perm_inf],
 ["BWA3_Dingo2_FLW200_M2_CG13_Fleck",0,strong_light_vehicle_price_tier_7,0,GRLIB_perm_inf],
 ["BWA3_Dingo2_FLW200_GMW_CG13_Fleck",0,strong_light_vehicle_price_tier_8,0,GRLIB_perm_inf],
+
 // CUP BW
+
 ["CUP_B_FENNEK_GER_Wdl",0,strong_light_vehicle_price_tier_5,0,GRLIB_perm_inf],
+
 // Vanilla
+
 ["I_MRAP_03_F",0,strong_light_vehicle_price_tier_5,0,GRLIB_perm_inf],
 ["B_MRAP_01_F",0,strong_light_vehicle_price_tier_4,0,GRLIB_perm_inf],
 ["B_MRAP_01_HMG_F",0,strong_light_vehicle_price_tier_6,0,GRLIB_perm_inf],
@@ -264,14 +307,19 @@ strong_light_vehicles = [
 
 heavy_vehicles = [
 
+
 // Heavy vehicles
+
 // BAF
+
 ["UK3CB_BAF_FV432_Mk3_GPMG_Green",0,heavy_vehicle_price_tier_7,0,GRLIB_perm_inf],
 ["UK3CB_BAF_FV432_Mk3_RWS_Green",0,heavy_vehicle_price_tier_8,0,GRLIB_perm_inf],
 ["UK3CB_BAF_Warrior_A3_W",0,heavy_vehicle_price_tier_10,0,GRLIB_perm_inf],
 ["UK3CB_BAF_Warrior_A3_W_Camo",0,heavy_vehicle_price_tier_11,0,GRLIB_perm_inf],
 ["UK3CB_BAF_Warrior_A3_W_Cage",0,heavy_vehicle_price_tier_11,0,GRLIB_perm_inf],
+
 // CUP
+
 ["CUP_B_M1133_MEV_Desert",0,heavy_vehicle_price_tier_1,0,GRLIB_perm_inf],
 ["CUP_B_M1126_ICV_M2_Desert",0,heavy_vehicle_price_tier_2,0,GRLIB_perm_inf],
 ["CUP_B_M1126_ICV_MK19_Desert",0,heavy_vehicle_price_tier_3,0,GRLIB_perm_inf],
@@ -292,6 +340,7 @@ heavy_vehicles = [
 ["CUP_I_BTR80A_UN",0,heavy_vehicle_price_tier_13,0,GRLIB_perm_inf],
 
 // RHS
+
 ["rhsusf_stryker_m1126_m2_wd",0,heavy_vehicle_price_tier_2,0,GRLIB_perm_inf],
 ["rhsusf_stryker_m1127_m2_wd",0,heavy_vehicle_price_tier_2,0,GRLIB_perm_inf],
 ["rhsusf_stryker_m1126_mk19_wd",0,heavy_vehicle_price_tier_3,0,GRLIB_perm_inf],
@@ -308,15 +357,18 @@ heavy_vehicles = [
 ["RHS_M2A2_BUSKI_WD",0,heavy_vehicle_price_tier_15,0,GRLIB_perm_inf],
 ["RHS_M2A3_BUSKI_wd",0,heavy_vehicle_price_tier_15,0,GRLIB_perm_inf],
 ["RHS_M2A3_BUSKIII_wd",0,heavy_vehicle_price_tier_15,0,GRLIB_perm_inf],
-
 ["rhs_btr80a_msv",0,heavy_vehicle_price_tier_4,0,GRLIB_perm_inf],
 ["rhs_bmp2k_msv",0,heavy_vehicle_price_tier_10,0,GRLIB_perm_inf],
 ["rhs_bmd4ma_vdv",0,heavy_vehicle_price_tier_13,0,GRLIB_perm_inf],
 
+
 // BW CUP
+
 ["CUP_B_Boxer_HMG_GER_WDL",0,heavy_vehicle_price_tier_2,0,GRLIB_perm_inf],
 ["CUP_B_Boxer_GMG_GER_WDL",0,heavy_vehicle_price_tier_3,0,GRLIB_perm_inf],
+
 // BW
+
 ["Redd_Tank_Fuchs_1A4_San_Tropentarn",0,heavy_vehicle_price_tier_3,0,GRLIB_perm_inf],
 ["Redd_Tank_Fuchs_1A4_Jg_Tropentarn",0,heavy_vehicle_price_tier_6,0,GRLIB_perm_inf],
 ["Redd_Tank_Fuchs_1A4_Jg_Milan_Tropentarn",0,heavy_vehicle_price_tier_7,0,GRLIB_perm_inf],
@@ -325,7 +377,9 @@ heavy_vehicles = [
 ["BWA3_Puma_Fleck",0,heavy_vehicle_price_tier_12,0,GRLIB_perm_inf],
 ["Redd_Tank_Wiesel_1A2_TOW_Tropentarn",0,heavy_vehicle_price_tier_9,0,GRLIB_perm_inf],
 ["Redd_Tank_Wiesel_1A4_MK20_Tropentarn",0,heavy_vehicle_price_tier_11,0,GRLIB_perm_inf],
+
 // Vanilla
+
 ["I_LT_01_scout_F",0,heavy_vehicle_price_tier_7,0,GRLIB_perm_inf],
 ["I_LT_01_AA_F",0,heavy_vehicle_price_tier_8,0,GRLIB_perm_inf],
 ["B_T_APC_Wheeled_01_cannon_F",0,heavy_vehicle_price_tier_8,0,GRLIB_perm_inf],
@@ -334,7 +388,9 @@ heavy_vehicles = [
 ["I_APC_Wheeled_03_cannon_F",0,heavy_vehicle_price_tier_9,0,GRLIB_perm_inf],
 ["B_AFV_Wheeled_01_cannon_F",0,heavy_vehicle_price_tier_11,0,GRLIB_perm_inf],
 ["B_AFV_Wheeled_01_up_cannon_F",0,heavy_vehicle_price_tier_12,0,GRLIB_perm_inf],
+
 // Spain
+
 ["ffaa_et_toa_ambulancia",0,heavy_vehicle_price_tier_3,0,GRLIB_perm_inf],
 ["ffaa_et_toa_mando",0,heavy_vehicle_price_tier_3,0,GRLIB_perm_inf],
 ["ffaa_et_toa_m2",0,heavy_vehicle_price_tier_4,0,GRLIB_perm_inf],
@@ -348,7 +404,9 @@ heavy_vehicles = [
 strong_heavy_vehicles = [
 
 // Strong heavy vehicles
+
 // CUP
+
 ["CUP_B_M60A3_USMC",0,strong_heavy_vehicle_price_tier_1,0,GRLIB_perm_inf],
 ["CUP_B_M60A3_TTS_USMC",0,strong_heavy_vehicle_price_tier_1,0,GRLIB_perm_inf],
 ["CUP_B_M1A2C_Desert_US_Army",0,strong_heavy_vehicle_price_tier_2,0,GRLIB_perm_inf],
@@ -363,19 +421,27 @@ strong_heavy_vehicles = [
 ["CUP_B_Leopard2A6DST_GER",0,strong_heavy_vehicle_price_tier_4,0,GRLIB_perm_inf],
 ["CUP_B_M270_HE_USMC",0,strong_heavy_vehicle_price_tier_6,0,GRLIB_perm_inf],
 ["CUP_B_RM70_CZ",0,strong_heavy_vehicle_price_tier_7,0,GRLIB_perm_inf],
+
 //RHS
+
 ["rhsusf_m109_usarmy",0,strong_heavy_vehicle_price_tier_4,0,GRLIB_perm_inf],
 ["rhsusf_m1a2sep1tuskiiwd_usarmy",0,strong_heavy_vehicle_price_tier_5,0,GRLIB_perm_inf],
-["rhs_t90_tv",0,strong_heavy_vehicle_price_tier_5,0,GRLIB_perm_inf],
+["rhs_t90sab_tv",0,strong_heavy_vehicle_price_tier_5,0,GRLIB_perm_inf],
+
 // BW
+
 ["Redd_Tank_Gepard_1A2_Flecktarn",0,heavy_vehicle_price_tier_9 ,0,GRLIB_perm_inf],
 ["BWA3_Panzerhaubitze2000_Fleck",0,strong_heavy_vehicle_price_tier_4,0,GRLIB_perm_inf],
 ["BWA3_Leopard2_Fleck",0,strong_heavy_vehicle_price_tier_5,0,GRLIB_perm_inf],
+
 // Spain
+
 ["ffaa_et_leopardo",0,strong_heavy_vehicle_price_tier_4,0,GRLIB_perm_inf],
 ["ffaa_ar_m109",0,strong_heavy_vehicle_price_tier_5,0,GRLIB_perm_inf],
 ["ffaa_et_m109",0,strong_heavy_vehicle_price_tier_5,0,GRLIB_perm_inf],
+
 // Vanilla
+
 ["B_APC_Tracked_01_AA_F",0,strong_heavy_vehicle_price_tier_1,0,9999],
 ["B_MBT_01_cannon_F",0,strong_heavy_vehicle_price_tier_3,0,9999],
 ["B_MBT_01_TUSK_F",0,strong_heavy_vehicle_price_tier_4,0,9999],
@@ -385,10 +451,15 @@ strong_heavy_vehicles = [
 air_vehicles = [
 
 // Air vehicles
+
 // Light Transport
+
 // FFAA
+
 ["ffaa_famet_ec135",0,air_vehicle_price_tier_1,0,GRLIB_perm_inf],
+
 // CUP
+
 ["CUP_B_MH6J_USA",0,air_vehicle_price_tier_1,0,GRLIB_perm_inf],
 ["CUP_B_MH6M_USA",0,air_vehicle_price_tier_2,0,GRLIB_perm_inf],
 ["CUP_B_AH6M_USA",0,air_vehicle_price_tier_8,0,GRLIB_perm_inf],
@@ -396,12 +467,15 @@ air_vehicles = [
 ["CUP_B_UH1D_gunship_GER_KSK",0,air_vehicle_price_tier_10,0,GRLIB_perm_inf], //verursacht script fehler
 
 //RHS
+
 ["RHS_MELB_H6M",0,air_vehicle_price_tier_1,0,GRLIB_perm_inf],
 ["RHS_MELB_MH6M",0,air_vehicle_price_tier_1,0,GRLIB_perm_inf],
 ["RHS_MELB_AH6M",0,air_vehicle_price_tier_8,0,GRLIB_perm_inf],
 
 // Medium Transport
+
 // CUP
+
 ["CUP_B_UH60M_Unarmed_FFV_MEV_US",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf],
 ["CUP_B_UH60M_Unarmed_US",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf],
 ["CUP_B_UH60M_Unarmed_FFV_US",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf],
@@ -413,17 +487,15 @@ air_vehicles = [
 ["CUP_B_MH60L_DAP_4x_USN",0,air_vehicle_price_tier_10,0,GRLIB_perm_inf],                                //Knighthawk
 ["CUP_B_UH60S_USN",0,air_vehicle_price_tier_6,0,GRLIB_perm_inf],                                        //Seahawk
 
-
-["vtx_UH60M_SLICK",0,air_vehicle_price_tier_4,0,9999],
-["vtx_UH60M_MEDEVAC",0,air_vehicle_price_tier_4,0,9999],
-["vtx_UH60M",0,air_vehicle_price_tier_6,0,9999],
-["vtx_HH60",0,air_vehicle_price_tier_6,0,9999],
-["vtx_MH60M",0,air_vehicle_price_tier_6,0,9999],
-["vtx_MH60S",0,air_vehicle_price_tier_6,0,9999],
-["vtx_MH60S_GAU21L",0,air_vehicle_price_tier_6,0,9999],
-["vtx_MH60M_DAP",0,air_vehicle_price_tier_7,0,9999],
-["vtx_MH60S_Pylons",0,air_vehicle_price_tier_7,0,9999],
-
+["vtx_UH60M_SLICK",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf],
+["vtx_UH60M_MEDEVAC",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf],
+["vtx_UH60M",0,air_vehicle_price_tier_6,0,GRLIB_perm_inf],
+["vtx_HH60",0,air_vehicle_price_tier_6,0,GRLIB_perm_inf],
+["vtx_MH60M",0,air_vehicle_price_tier_6,0,GRLIB_perm_inf],
+["vtx_MH60S",0,air_vehicle_price_tier_6,0,GRLIB_perm_inf],
+["vtx_MH60S_GAU21L",0,air_vehicle_price_tier_6,0,GRLIB_perm_inf],
+["vtx_MH60M_DAP",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],
+["vtx_MH60S_Pylons",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],
 
 ["B_Heli_Transport_01_F",0,air_vehicle_price_tier_6,0,GRLIB_perm_inf],
 ["CUP_B_UH1Y_MEV_USMC",0,air_vehicle_price_tier_3,0,GRLIB_perm_inf],
@@ -438,6 +510,7 @@ air_vehicles = [
 ["CUP_B_AW159_GERdd",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],
 
 //RHS
+
 ["RHS_UH60M2_d",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf],
 ["RHS_UH60M_MEV2_d",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf],
 ["RHS_UH60M_d",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf],
@@ -449,6 +522,7 @@ air_vehicles = [
 ["RHS_UH1Y_d",0,air_vehicle_price_tier_8,0,GRLIB_perm_inf],
 
 //Vanilla
+
 ["O_Heli_Transport_04_F",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],
 ["O_Heli_Transport_04_bench_F",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],
 ["O_Heli_Transport_04_box_F",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],
@@ -460,48 +534,68 @@ air_vehicles = [
 
 
 // FFAA
+
 ["ffaa_famet_cougar",0,air_vehicle_price_tier_3,0,GRLIB_perm_inf],
 ["ffaa_nh90_tth_armed",0,air_vehicle_price_tier_5,0,GRLIB_perm_inf],                                 //NH-90
 ["ffaa_nh90_tth_cargo",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf],
 ["ffaa_nh90_tth_transport",0,air_vehicle_price_tier_3,0,GRLIB_perm_inf],
 ["ffaa_nh90_nfh_transport",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf],
+
 // BAF
+
 ["UK3CB_BAF_Wildcat_Transport_RN_ZZ396",0,air_vehicle_price_tier_3,0,GRLIB_perm_inf],
 ["UK3CB_BAF_Wildcat_AH1_CAS_6A",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],
+
 //Vanilla
+
 ["B_Heli_Attack_01_dynamicLoadout_F",0,air_vehicle_price_tier_11,0,GRLIB_perm_inf],   //RAH-66 Comanche
+
 // Heavy Transport
+
 //CUP
+
 ["CUP_B_MH47E_USA",0,air_vehicle_price_tier_5,0,GRLIB_perm_inf],
+
 //RHS
+
 ["RHS_CH_47F_10",0,air_vehicle_price_tier_6,0,GRLIB_perm_inf],
 ["RHS_CH_47F_10_cargo",0,air_vehicle_price_tier_6,0,GRLIB_perm_inf],
 ["rhsusf_CH53E_USMC_D",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],
 ["rhsusf_CH53e_USMC_D_cargo",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],
 ["rhsusf_CH53E_USMC_GAU21_D",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],
+
 //BAF
+
 ["UK3CB_BAF_Merlin_HC3_24",0,air_vehicle_price_tier_6,0,GRLIB_perm_inf],
 ["UK3CB_BAF_Merlin_HC3_Cargo",0,air_vehicle_price_tier_6,0,GRLIB_perm_inf],
 ["UK3CB_BAF_Merlin_HC3_18_GPMG",0,air_vehicle_price_tier_6,0,GRLIB_perm_inf],
 ["UK3CB_BAF_Merlin_HC4_32",0,air_vehicle_price_tier_6,0,GRLIB_perm_inf],
 ["UK3CB_BAF_Merlin_HC4_Cargo",0,air_vehicle_price_tier_6,0,GRLIB_perm_inf],
 ["UK3CB_BAF_Merlin_HC4_18_GPMG",0,air_vehicle_price_tier_6,0,GRLIB_perm_inf],
+
 // Attack helicopter
 
 //RHS
+
 ["RHS_AH1Z",0,air_vehicle_price_tier_11,0,GRLIB_perm_inf],
 ["RHS_AH64D",0,air_vehicle_price_tier_11,0,GRLIB_perm_inf],
 ["RHS_Ka52_vvsc",0,air_vehicle_price_tier_11,0,GRLIB_perm_inf],
 ["rhs_mi28n_vvs",0,air_vehicle_price_tier_11,0,GRLIB_perm_inf],
+
 // CUP
+
 ["CUP_B_AH1Z_Dynamic_USMC",0,air_vehicle_price_tier_11,0,GRLIB_perm_inf],
 ["CUP_B_AH64_DL_USA",0,air_vehicle_price_tier_11,0,GRLIB_perm_inf],
 ["CUP_B_AH64D_DL_USA",0,air_vehicle_price_tier_14,0,GRLIB_perm_inf],
 ["CUP_I_Mi24_Mk3_UN",0,air_vehicle_price_tier_14,0,GRLIB_perm_inf],
 ["CUP_B_Mi35_Dynamic_CZ_Ram",0,air_vehicle_price_tier_14,0,GRLIB_perm_inf],
+
 // BAF
+
 ["UK3CB_BAF_Apache_AH1_Generic",0,air_vehicle_price_tier_14,0,GRLIB_perm_inf],
+
 // BW
+
 ["BWA3_Tiger_Gunpod_FZ",0,air_vehicle_price_tier_10,0,GRLIB_perm_inf],
 ["BWA3_Tiger_Gunpod_PARS",0,air_vehicle_price_tier_10,0,GRLIB_perm_inf],
 ["BWA3_Tiger_Gunpod_Heavy",0,air_vehicle_price_tier_10,0,GRLIB_perm_inf],
@@ -509,14 +603,21 @@ air_vehicles = [
 ["BWA3_Tiger_RMK_PARS",0,air_vehicle_price_tier_13,0,GRLIB_perm_inf],
 ["BWA3_Tiger_RMK_Heavy",0,air_vehicle_price_tier_13,0,GRLIB_perm_inf],
 ["BWA3_Tiger_RMK_Universal",0,air_vehicle_price_tier_14,0,GRLIB_perm_inf],
+
 // FFAA
+
 ["ffaa_famet_tigre",0,air_vehicle_price_tier_14,0,GRLIB_perm_inf],
+
 // VTOL
+
 // CUP
+
 ["CUP_B_MV22_USMC",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf], // Osprey
 ["CUP_B_MV22_VIV_USMC",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf], // Osprey
 ["CUP_B_MV22_USMC_RAMPGUN",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf], // Osprey
+
 // Vanilla
+
 ["B_T_VTOL_01_infantry_F",0,air_vehicle_price_tier_5,0,GRLIB_perm_inf],  //Blackfish
 ["B_T_VTOL_01_vehicle_F",0,air_vehicle_price_tier_5,0,GRLIB_perm_inf],   //Blackfish
 ["B_W_VTOL_01_armed_F",0,air_vehicle_price_tier_15,0,GRLIB_perm_inf]     //Blackfish
@@ -525,76 +626,122 @@ air_vehicles = [
 fast_air_vehicle = [
 
 // Fast air vehicle
+
 // Cargo
+
 // USAF
+
 ["USAF_C130J_Cargo",0,fast_air_vehicle_price_tier_1,0,GRLIB_perm_inf],
 ["USAF_C130J",0,fast_air_vehicle_price_tier_1,0,GRLIB_perm_inf],
 ["USAF_AC130U",0,air_vehicle_price_tier_15,0,GRLIB_perm_inf],
 ["USAF_C17",0,fast_air_vehicle_price_tier_1,0,GRLIB_perm_inf],
+
 //RHS
+
 ["RHS_C130J_Cargo",0,fast_air_vehicle_price_tier_1,0,GRLIB_perm_inf],
+
 // Jets
+
 // CUP
+
 ["CUP_B_AV8B_DYN_USMC",0,fast_air_vehicle_price_tier_5,0,GRLIB_perm_inf],
-["CUP_B_CESSNA_T41_UNARMED_USA",0,air_vehicle_price_tier_1 ,0,GRLIB_perm_inf],
+["CUP_B_CESSNA_T41_UNARMED_USA",0,air_vehicle_price_tier_1,0,GRLIB_perm_inf],
 ["CUP_B_CESSNA_T41_ARMED_USA",0,fast_air_vehicle_price_tier_2,0,GRLIB_perm_inf],
 
 //RHS
+
 ["RHS_A10",0,fast_air_vehicle_price_tier_2,0,GRLIB_perm_inf],
 // ["Peral_A10C",0,fast_air_vehicle_price_tier_2,0,GRLIB_perm_inf],
 // ["RHS_Su25SM_vvs",0,fast_air_vehicle_price_tier_3,0,GRLIB_perm_inf],
 ["rhs_mig29sm_vmf",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
 
 // CUP BAF
-["CUP_B_GR9_DYN_GB", 0, fast_air_vehicle_price_tier_4, 0, GRLIB_perm_inf],
+
+["CUP_B_GR9_DYN_GB", 0, fast_air_vehicle_price_tier_4,0,GRLIB_perm_inf],
+
 // FFAA
+
 ["ffaa_ar_harrier",0,fast_air_vehicle_price_tier_5,0,GRLIB_perm_inf],
 ["ffaa_ea_ef18m",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
+
 // USAF
+
 ["USAF_A10",0,fast_air_vehicle_price_tier_4,0,GRLIB_perm_inf],
 
 // FIR F-14
+
 ["FIR_F14A_HBK1",0,fast_air_vehicle_price_tier_4,0,GRLIB_perm_inf],
+
 //FIR AV-8B Harrier
+
 ["FIR_AV8B_NA_Blank",0,fast_air_vehicle_price_tier_4,0,GRLIB_perm_inf],
+
 // FIR F-15
+
 ["FIR_F15C",0,fast_air_vehicle_price_tier_4,0,GRLIB_perm_inf],
-["FIR_F15E",0,fast_air_vehicle_price_tier_6 ,0,GRLIB_perm_inf],
+["FIR_F15E",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
 ["FIR_F15E_Demo",0,fast_air_vehicle_price_tier_10,0,GRLIB_perm_inf],
 // ["FIR_F15SE_LA",0,fast_air_vehicle_price_tier_10,0,GRLIB_perm_inf],
+
 // FIR F-16
-["FIR_F16C",0,fast_air_vehicle_price_tier_6 ,0,GRLIB_perm_inf],
-["FIR_F16D",0,fast_air_vehicle_price_tier_6 ,0,GRLIB_perm_inf],
+
+["FIR_F16C",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
+["FIR_F16D",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
+
 // F-35
+
 ["FIR_F35B_Standard",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
+
 // F-22
+
 ["FIR_F22",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
+
 // F-18 super hornet
-["FIR_F18C",0,fast_air_vehicle_price_tier_6 ,0,GRLIB_perm_inf],
-["FIR_F18C_SPAF",0,fast_air_vehicle_price_tier_6 ,0,GRLIB_perm_inf],
-["FIR_F18D",0,fast_air_vehicle_price_tier_6 ,0,GRLIB_perm_inf],
-["FIR_FA18E_VFA106",0,fast_air_vehicle_price_tier_6 ,0,GRLIB_perm_inf],
+
+["FIR_F18C",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
+["FIR_F18C_SPAF",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
+["FIR_F18D",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
+["FIR_FA18E_VFA106",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
+
 // FIR A-10C
-["FIR_A10C",0,fast_air_vehicle_price_tier_6 ,0,GRLIB_perm_inf],
+
+["FIR_A10C",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
+
 // FIR SU-25SM3
-["FIR_Su25SM3",0,fast_air_vehicle_price_tier_6 ,0,GRLIB_perm_inf],
+
+["FIR_Su25SM3",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
+
 // Tornado
-["Tornado_AWS_blu",0,fast_air_vehicle_price_tier_6 ,0,GRLIB_perm_inf],
+
+["Tornado_AWS_blu",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
+
 // Eurofighter
+
 ["EAWS_EF2000_GER_CAP",0,fast_air_vehicle_price_tier_7,0,GRLIB_perm_inf],
+
 // Vanilla
+
 ["I_Plane_Fighter_04_F",0,fast_air_vehicle_price_tier_5,0,GRLIB_perm_inf],
 ["B_Plane_Fighter_01_F",0,fast_air_vehicle_price_tier_7,0,GRLIB_perm_inf],
 ["B_Plane_Fighter_01_Stealth_F",0,fast_air_vehicle_price_tier_8,0,GRLIB_perm_inf],
+
 // UAVs
+
 // USAF
+
 ["USAF_RQ4A",0,fast_air_vehicle_price_tier_1,0,GRLIB_perm_inf],     //Global hawk
 ["USAF_MQ9",0,fast_air_vehicle_price_tier_2,0,GRLIB_perm_inf],  //Reaper
+
 // BAF
+
 ["UK3CB_BAF_MQ9_Reaper_DPMW",0,fast_air_vehicle_price_tier_2,0,GRLIB_perm_inf],    //Reaper
+
 // FFAA
+
 ["ffaa_ea_reaper",0,fast_air_vehicle_price_tier_3,0,GRLIB_perm_inf],    //Reaper
+
 // Vanilla
+
 ["B_UAV_05_F",0,fast_air_vehicle_price_tier_5,0,GRLIB_perm_inf]     //Sentinel
 ];
 
