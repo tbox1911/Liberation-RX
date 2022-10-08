@@ -261,11 +261,26 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 [
-	["StaticMGWeapon", 10],
+	//["StaticMGWeapon", 10],
+	["B_Static_Designator_01_F",3],
+	["B_HMG_01_F",5],
+	["B_HMG_01_high_F",5],
+	["B_GMG_01_F",5],
+	["B_GMG_01_high_F",5],
+	["B_static_AA_F",10],
+	["B_static_AT_F",10],
+	["B_Mortar_01_F",10],
+	["O_Static_Designator_01_F",3],
+	["O_HMG_01_F",5],
+	["O_HMG_01_high_F",5],
+	["O_GMG_01_F",5],
+	["O_GMG_01_high_F",5],
+	["O_static_AA_F",10],
+	["O_static_AT_F",10],
+	["O_Mortar_01_F",10],	
 	["Land_CzechHedgehog_01_new_F", 5],
 	["StaticGrenadeLauncher", 10],
-	["StaticMortar", 15],
-	["Land_CzechHedgehog_01_new_F", 10]
+	["StaticMortar", 15]
 ];
 //--------------- Camping ---------------
 
