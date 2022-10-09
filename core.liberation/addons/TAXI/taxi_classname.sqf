@@ -13,10 +13,13 @@ if ( isNil "taxi_helipad_type" ) then { taxi_helipad_type = "Land_HelipadCivil_F
 default_taxi_type_2 = [
 	"C_Heli_light_01_blue_F",
 	"C_Heli_light_01_red_F",
+	"C_Heli_light_01_ion_F",
+    "C_Heli_light_01_blueLine_F",
 	"C_Heli_light_01_digital_F",
 	"C_Heli_light_01_elliptical_F",
 	"C_Heli_light_01_furious_F",
 	"C_Heli_light_01_graywatcher_F",
+	"C_Heli_light_01_jeans_F",
 	"C_Heli_light_01_light_F",
 	"C_Heli_light_01_sheriff_F",
 	"C_Heli_light_01_speedy_F",
