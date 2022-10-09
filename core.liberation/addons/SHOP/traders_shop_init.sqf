@@ -1,6 +1,6 @@
 // LRX Trader Shop - init
 
-waituntil {sleep 1; !isNil "GRLIB_SHOP_Group"};
+waituntil { sleep 1; !isNil "GRLIB_marker_init" };
 
 SHOP_list = light_vehicles + heavy_vehicles + air_vehicles + support_vehicles + opfor_recyclable + ind_recyclable;
 SHOP_ratio = [
