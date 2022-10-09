@@ -110,15 +110,15 @@ class Params
 	};
 	class Difficulty {
 		title = $STR_PARAMS_DIFFICULTY;
-		values[] = { 0.5, 0.75, 1, 1.25, 1.5, 2, 4, 10 };
+		values[] = { 0.5, 0.75, 1, 1.25, 1.5, 2, 4, 6 };
 		texts[] = { $STR_PARAMS_DIFFICULTY1, $STR_PARAMS_DIFFICULTY2, $STR_PARAMS_DIFFICULTY3, $STR_PARAMS_DIFFICULTY4, $STR_PARAMS_DIFFICULTY5, $STR_PARAMS_DIFFICULTY6, $STR_PARAMS_DIFFICULTY7, $STR_PARAMS_DIFFICULTY8 };
-		default = 4;
+		default = 6;
 	};
 	class Aggressivity{
 		title = $STR_AGGRESSIVITY_PARAM;
 		values[] = {0.25,0.5,1,2,4};
 		texts[] = {$STR_AGGRESSIVITY_PARAM0, $STR_AGGRESSIVITY_PARAM1,$STR_AGGRESSIVITY_PARAM2,$STR_AGGRESSIVITY_PARAM3,$STR_AGGRESSIVITY_PARAM4};
-		default = 2;
+		default = 4;
 	};
 	class AdaptToPlayercount{
 		title = $STR_PARAM_ADAPT_TO_PLAYERCOUNT;
@@ -130,7 +130,7 @@ class Params
 		title = $STR_PARAM_SECTOR_RADIUS;
 		values[] = {0,300,400,500,600,700,800,900,1000,1200,1500};
 		texts[] = {$STR_PARAMS_DISABLED,300,400,500,600,700,800,900,1000,1200,1500};
-		default = 600;
+		default = 500;
 	};
 	class DayDuration {
 		title = $STR_PARAMS_DAYDURATION;
