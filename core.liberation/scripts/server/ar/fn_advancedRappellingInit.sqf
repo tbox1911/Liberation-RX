@@ -687,7 +687,8 @@ AR_Advanced_Rappelling_Install = {
 		_isSupported = false;
 		if(not isNull _vehicle) then {
 			{
-				if(_vehicle isKindOf _x) then {
+				_isServer = (_vehicle getVariable ["GRLIB_vehicle_owner", ""] == "server");
+				if(_vehicle isKindOf _x && !(_isServer)) then {
 					_isSupported = true;
 				};
 			} forEach (missionNamespace getVariable ["AR_SUPPORTED_VEHICLES_OVERRIDE",AR_SUPPORTED_VEHICLES]);
