@@ -40,6 +40,7 @@ R3F_LOG_CFG_can_tow = R3F_LOG_CFG_can_tow +
 	"Tank_F",
 	"Truck_F",
 	"Hatchback_01_base_F",
+	"SUV_01_base_F",
 	"Offroad_01_base_F",
 	"Offroad_02_base_F",
 	"MRAP_01_base_F",
