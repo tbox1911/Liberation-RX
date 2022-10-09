@@ -749,4 +749,65 @@ _x set [2, (_cur_ammo + _ammo)];
 
 
 
+damage handler: 
+
+["B_Soldier_F", "InitPost", {
+	params ["_vehicle"];
+	_vehicle addEventHandler ["HandleDamage", {
+		params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_shooter", "_hitPoint"];
+		if ( (tkill_script) && (_damage > frdl_fire_dmg_threshold) &&  (isPlayer _shooter) && (side group _shooter == blufor) && (_shooter != _unit) && (alive _unit) ) then {
+			_msg = format ["Friendly fire from %1 to %2. Penalty: %3 rank and %4 ammo (damage %5)", name _shooter, name _unit, tkill_score, tkill_ammo, _damage];
+			[gamelogic, _msg] remoteExec ["globalChat", 0];
+			/*_msg = format ["_unit: %1, _selection: %2, _damage: %3, _source: %4, _projectile: %5, _hitIndex: %6, _shooter: %7, _hitPoint: %8", _unit, _selection, _damage, _source, _projectile, _hitIndex, _shooter, _hitPoint];
+			[gamelogic, _msg] remoteExec ["globalChat", 0];*/
+			[getPlayerUID _shooter, tkill_score] remoteExec ["F_addPlayerScore", 2];
+			[getPlayerUID _shooter, tkill_ammo] remoteExec ["F_addPlayerAmmo", 2];
+		};
+	}];
+	_vehicle addEventHandler ["Dammaged", {
+		params ["_unit", "_selection", "_damage", "_hitIndex", "_hitPoint", "_shooter", "_projectile"];
+		if ( (tkill_script) && (isPlayer _shooter) && (side group _shooter == blufor) && (_shooter != _unit) && (alive _unit) ) then {
+			_msg = format ["Friendly fire from %1 to %2. Penalty: %3 rank and %4 ammo (damage %5)", name _shooter, name _unit, tkill_score, tkill_ammo, _damage];
+			[gamelogic, _msg] remoteExec ["globalChat", 0];
+			[getPlayerUID _shooter, tkill_score] remoteExec ["F_addPlayerScore", 2];
+			[getPlayerUID _shooter, tkill_ammo] remoteExec ["F_addPlayerAmmo", 2];
+		};
+	}];
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+
+
+
+
+CDLC
+
+https://forum.nitrado.net/thread/15491-creator-dlc-auf-nitrado-server-installieren/
+
+Öffne nun die Steam-Konsole, indem du diesen Code in Adressleiste deines Browsers kopierst
+steam://nav/console
+
+Die Downloadlinks setzen sich für die Steam-Console nun folgendermaßen zusammen:
+App-ID = 233780 ( Arma 3 Server )
+Depot-ID = 233790 ( Arma 3 Server Creator DLC - SOGPF )
+Manifest = 375631663548038900 ( Update 18 May 2021 – 14:14:13 UTC )
+
+download_depot <App-ID> <Depot-ID> <Manifrest>
+
+Die jeweils aktuellen Depot-Manifests kannst du hier einsehen
+Für Global Mobilization
+Arma 3 Server Creator DLC - GM · DepotID: 233787 · SteamDB
+Für S.O.G. Prairie Fire
+Arma 3 Server Creator DLC - SOGPF · DepotID: 233790 · SteamDB
+
+
+Gebe nun in die Console folgendes ein
+Für Global Mobilization
+download_depot 233780 233787 6029727064336415567
+Für S.O.G. Prairie Fire
+download_depot 233780 233790 375631663548038900
+
+
+
+
+
 

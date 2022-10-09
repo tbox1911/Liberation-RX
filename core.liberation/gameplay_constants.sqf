@@ -23,7 +23,7 @@ GRLIB_battlegroup_size = 9;
 GRLIB_civilians_amount = 1.2 * GRLIB_civilian_activity;
 GRLIB_fob_range = 450;
 GRLIB_surrender_chance = 80;
-GRLIB_secondary_missions_costs = [ 70,14 ];
+GRLIB_secondary_missions_costs = [ 100,20 ];
 GRLIB_halo_altitude = 2000;
 GRLIB_civ_killing_penalty = 0;
 GRLIB_squad_size_bonus = 0;
@@ -63,7 +63,7 @@ kamikaze_kill_score = 5;
 kamikaze_kill_ammo = 25;
 civkill_score = -18;
 civkill_ammo = -175;
-civkill_combat_readiness = 8;
+civkill_combat_readiness = 10;
 tkill_score = -3;
 tkill_ammo = -7;
 tk_active = false; //NEW Tkillscript with dialog
@@ -81,7 +81,7 @@ logistics_ammo_increase = true;
 prisoner_intel = 7;
 prisoner_score = 5;
 prisoner_ammo = 50;
-prisoner_combat_readiness = 8;
+prisoner_combat_readiness = 5;
 prisoner_i = 0;
 
 // Building Penalty
