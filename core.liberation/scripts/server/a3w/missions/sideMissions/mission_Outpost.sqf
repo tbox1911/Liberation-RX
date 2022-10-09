@@ -50,7 +50,7 @@ _successExec = {
 		};
 	} foreach _objects;
 
-	[_objects, _missionPos] spawn { 
+	[_objects, _missionPos, _aiGroup] spawn { 
 		sleep 300;
 		{
 			if (count (crew _x) == 0 && (_x getVariable ["GRLIB_vehicle_owner", ""] == "")) then {
@@ -58,8 +58,8 @@ _successExec = {
 			};
 		} forEach (_this select 0);
 
-		_nearruins = [nearestObjects [(_this select 1), ["Ruins_F"], 100], { getObjectType _x == 8 }] call BIS_fnc_conditionalSelect;
-		{ deleteVehicle _x } forEach  _nearruins;
+		{ deleteVehicle _x } forEach ([nearestObjects [(_this select 1), ["Ruins_F"], 100], { getObjectType _x == 8 }] call BIS_fnc_conditionalSelect);
+		{ deleteVehicle _x } forEach units (_this select 2);		
 	};
 };
 
