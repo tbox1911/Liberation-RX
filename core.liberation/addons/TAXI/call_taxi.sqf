@@ -8,6 +8,8 @@ build_unit = [taxi_helipad_type,[],1,[],[]];
 dobuild = 1;
 
 waitUntil { sleep 1; dobuild == 0};
+if (build_confirmed == 3) exitWith {};
+
 private _helipad = nearestObjects [player, [taxi_helipad_type], 50] select 0;
 private _degree = aCos ([0,0,1] vectorCos (surfaceNormal getPos _helipad));
 private _dest = getPosATL _helipad;
