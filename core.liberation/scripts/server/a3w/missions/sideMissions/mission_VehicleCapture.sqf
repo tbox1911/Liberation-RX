@@ -19,7 +19,7 @@ _setupObjects =
 {
 	_missionPos = markerPos _missionLocation;
 	_vehiclePos = _missionPos findEmptyPosition [1, 60, "B_Heli_Transport_03_unarmed_F"];
-	_vehicle = [_vehiclePos, (selectRandom opfor_vehicles), true] call F_libSpawnVehicle;
+	_vehicle = [_vehiclePos, selectRandom opfor_vehicles, true, false, true] call F_libSpawnVehicle;
 	_vehicle setVariable ["R3F_LOG_disabled", true, true];
 	_vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
 	_vehicle setVehicleLock "LOCKED";
