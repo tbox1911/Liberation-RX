@@ -66,6 +66,8 @@ _marker setMarkerTextlocal "Taxi PickUp";
 // Goto Pickup Point
 [_air_grp, _dest] call taxi_dest;
 private _stop = time + (5 * 60); // wait 5min max
+private _cargo = [];
+
 waitUntil {
   sleep 5;
   hintSilent format [localize "STR_TAXI_MOVE", round (_vehicle distance2D _dest)];
@@ -96,7 +98,8 @@ if (time < _stop) then {
 		if ( (markerPos "taxi_dz") distance2D zeropos > 100 ) then {
 			hintSilent "Ok, let's go...";
 			_vehicle lock 2;
-			{ _x allowDamage false } forEach ([_vehicle, _pilots] call taxi_cargo);
+			_cargo = [_vehicle, _pilots] call taxi_cargo;
+			{ _x allowDamage false } forEach (_cargo);
 
 			_dest = markerPos "taxi_dz";
 			_helipad = taxi_helipad_type createVehicle _dest;
@@ -117,7 +120,6 @@ if (time < _stop) then {
 			};
 
 			[_vehicle] call taxi_land;
-			{ _x allowDamage true } forEach ([_vehicle, _pilots] call taxi_cargo);
 
 			deleteVehicle _helipad;
 			deleteMarkerLocal "taxi_dz";
@@ -125,7 +127,8 @@ if (time < _stop) then {
 
 		// Board Out
 		_vehicle lock 3;
-		waitUntil {[_vehicle] call taxi_outboard};
+		[_cargo] call taxi_outboard;
+		{ _x allowDamage true } forEach (_cargo);
 		sleep 5;
 
 		// Go back
