@@ -20,6 +20,12 @@ if !(isNull _unit) then {
 	}] call BIS_fnc_conditionalSelect;
 
 	{
+		private _towed = _x getVariable ["R3F_LOG_est_transporte_par", objNull];
+		if (!isNull _towed) then {
+			_towed setVariable ["R3F_LOG_remorque", objNull, true];
+			_x setVariable ["R3F_LOG_est_transporte_par", objNull, true];
+			detach _towed;
+		};
 		_x setVariable ["GRLIB_vehicle_owner", "", true];
 		_x setVariable ["R3F_LOG_disabled", false, true];
 		_x setVehicleLock "UNLOCKED";
