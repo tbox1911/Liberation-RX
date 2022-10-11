@@ -12,7 +12,8 @@ _vehicle setVariable ["R3F_LOG_objets_charges", [], true];
 sleep 0.2;
 
 // Delete GRLIB Cargo
-if ( _vehicle getVariable ["GRLIB_ammo_truck_load", 0] >= 1 ) then {
+private _truck_load = _vehicle getVariable ["GRLIB_ammo_truck_load", []];
+if ( count _truck_load >= 1 ) then {
 	{
 		if (typeOf _x in [ammobox_b_typename, ammobox_o_typename, ammobox_i_typename, fuelbarrel_typename]) then {
 			detach _x;
@@ -23,7 +24,7 @@ if ( _vehicle getVariable ["GRLIB_ammo_truck_load", 0] >= 1 ) then {
 		} else {
 			deleteVehicle _x;
 		};
-	} foreach (attachedObjects _vehicle);
+	} foreach _truck_load;
 };
 sleep 0.2;
 

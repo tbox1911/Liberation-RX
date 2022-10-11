@@ -111,7 +111,7 @@ if ( GRLIB_endgame == 1 ) then {
                     _color_name = _x getVariable ["GRLIB_vehicle_color_name", ""];
                     _lst_a3 = weaponsItemsCargo _x;
                     {_lst_r3f pushback (typeOf _x)} forEach (_x getVariable ["R3F_LOG_objets_charges", []]);
-                    {_lst_grl pushback (typeOf _x)} forEach (attachedObjects _x);
+                    {_lst_grl pushback (typeOf _x)} forEach (_x getVariable ["GRLIB_ammo_truck_load", []]);
                     buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner, _color, _color_name, _lst_a3, _lst_r3f, _lst_grl];
                 };
             };

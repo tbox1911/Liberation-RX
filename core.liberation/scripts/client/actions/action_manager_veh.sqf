@@ -53,7 +53,7 @@ while { true } do {
 		};
 
 		if (typeOf _vehicle in transport_vehicles) then {
-			_vehicle addAction ["<t color='#FFFF00'>" + localize "STR_ACTION_UNLOAD_BOX" + "</t>","scripts\client\ammoboxes\do_unload_truck.sqf","",-500,false,true,"","[_target] call is_menuok && (locked _target == 0 || locked _target == 1) && isNull (_target getVariable ['R3F_LOG_remorque', objNull]) && _target getVariable ['GRLIB_ammo_truck_load', 0] > 0", _distveh];
+			_vehicle addAction ["<t color='#FFFF00'>" + localize "STR_ACTION_UNLOAD_BOX" + "</t>","scripts\client\ammoboxes\do_unload_truck.sqf","",-500,false,true,"","[_target] call is_menuok && (locked _target == 0 || locked _target == 1) && isNull (_target getVariable ['R3F_LOG_remorque', objNull]) && count (_target getVariable ['GRLIB_ammo_truck_load', []]) > 0", _distveh];
 		};
 
 		_vehicle setVariable ["GRLIB_vehicle_action", true];

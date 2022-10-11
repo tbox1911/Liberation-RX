@@ -12,11 +12,11 @@ private _offsets = [];
 private _box_offset = { if (_object_type == (_x select 0)) exitWith {_x select 1} } foreach box_transport_offset;
 if (isNil "_box_offset") then {_box_offset = [0, 0, 0]};
 
-private _truck_load = _truck getVariable ["GRLIB_ammo_truck_load", 0];
+private _truck_load = _truck getVariable ["GRLIB_ammo_truck_load", []];
 
-if (  _truck_load < _maxload ) then {
+if ( count _truck_load < _maxload ) then {
 	_truck_to_load = _truck;
-	_truck_offset = (_offsets select _truck_load) vectorAdd _box_offset;
+	_truck_offset = (_offsets select (count _truck_load)) vectorAdd _box_offset;
 	private _object = _object_type createVehicle zeropos;
 
 	// Clear Cargo
@@ -30,5 +30,6 @@ if (  _truck_load < _maxload ) then {
 	_object attachTo [ _truck_to_load, _truck_offset ];
 	_object setVariable ["R3F_LOG_disabled", true, true];
 	_object allowDamage false;
-	_truck_to_load setVariable ["GRLIB_ammo_truck_load", _truck_load + 1, true];
+	_truck_load pushback _object;
+	_truck_to_load setVariable ["GRLIB_ammo_truck_load", _truck_load, true];
 };

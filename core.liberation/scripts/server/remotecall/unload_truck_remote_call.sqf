@@ -9,7 +9,7 @@ _offset = 0;
 
 _truck_to_unload allowDamage false;
 _truck_to_unload enableSimulationGlobal false;
-_all_objects = attachedObjects _truck_to_unload;
+_all_objects = _truck_to_unload getVariable ["GRLIB_ammo_truck_load", []];
 {
 	_truck_to_unload disableCollisionWith _x;
 	_x allowDamage false;
@@ -38,3 +38,4 @@ sleep 0.5;
 
 _truck_to_unload enableSimulationGlobal true;
 _truck_to_unload allowDamage true;
+_truck_to_unload setVariable ["GRLIB_ammo_truck_load", [], true];

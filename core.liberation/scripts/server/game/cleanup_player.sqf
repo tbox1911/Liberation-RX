@@ -1,13 +1,18 @@
-if (!isServer) exitWith {};
 params ["_unit", "_id", "_uid", "_name"];
 if (_name in ["HC1","HC2","HC3" ]) exitWith {
 	deleteMarker "fpsmarkerHC1";
 	deleteMarker "fpsmarkerHC2";
 	deleteMarker "fpsmarkerHC3";
+	false;
 };
 
 if !(isNull _unit) then {
 	diag_log format ["--- LRX Cleanup player %1 (%2)", name _unit, _uid];
+
+	// Save Player Context
+	private _score = 0; 
+	{if ((_x select 0) == _uid) exitWith {_score = (_x select 1)}} forEach GRLIB_player_scores; 
+	if (_score > 20) then { [_unit, _uid] call save_context };
 
 	// Remove Dog
 	private _my_dog = _unit getVariable ["my_dog", nil];
@@ -20,16 +25,40 @@ if !(isNull _unit) then {
 	}] call BIS_fnc_conditionalSelect;
 
 	{
-		private _towed = _x getVariable ["R3F_LOG_est_transporte_par", objNull];
-		if (!isNull _towed) then {
-			_towed setVariable ["R3F_LOG_remorque", objNull, true];
-			_x setVariable ["R3F_LOG_est_transporte_par", objNull, true];
-			detach _towed;
-		};
 		_x setVariable ["GRLIB_vehicle_owner", "", true];
 		_x setVariable ["R3F_LOG_disabled", false, true];
 		_x setVehicleLock "UNLOCKED";
 	} forEach _cleanveh;
+
+	// Untow vehicle near FOB
+	private _towveh = [vehicles, {
+		_x getVariable ["GRLIB_vehicle_owner", ""] == _uid &&
+		!isNull (_x getVariable ["R3F_LOG_remorque", objNull]) &&
+		([_x, "FOB", GRLIB_sector_size] call F_check_near)
+	}] call BIS_fnc_conditionalSelect;
+
+	{
+		_towed = _x getVariable ["R3F_LOG_remorque", objNull];
+		_towed setVariable ["R3F_LOG_est_transporte_par", objNull, true];
+		_x setVariable ["R3F_LOG_remorque", objNull, true];
+		detach _towed;
+		_towed setVelocity [0, 0, 0.1];
+	} forEach _towveh;
+
+	// Remove Marker
+	deletemarker format ["PAR_marker_%1", _name];
+
+	// Remove Squad
+	private _my_squad = _unit getVariable ["my_squad", nil];
+	if (!isNil "_my_squad") then { {deleteVehicle _x} forEach units _my_squad };
+
+	// Remove AI
+	private _bros = allUnits select {(_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1", _uid]};
+	{ deleteVehicle _x } forEach _bros;
+
+	// Remove Grave Box
+	private _grave_box = _unit getVariable ["GRLIB_grave_box", nil];
+	if (!isNil "_grave_box") then { deleteVehicle _grave_box };
 
 	// Remove Taxi
 	private _taxi = _unit getVariable ["GRLIB_taxi_called", nil];
@@ -42,31 +71,9 @@ if !(isNull _unit) then {
 			deleteVehicle (nearestObjects [markerPos "taxi_dz", [taxi_helipad_type], 50] select 0);
 			deleteMarkerLocal "taxi_dz";
 		};
-		{
-			if (!isNil {_x getVariable ["GRLIB_counter_TTL", nil]}) then { deletevehicle _x };
-		} forEach (crew _taxi);
+		{ deletevehicle _x } forEach (crew _taxi);
 		deleteVehicle _taxi;
 	};
-
-	// Remove Marker
-	deletemarker format ["PAR_marker_%1", _name];
-
-	// Remove Squad
-	private _my_squad = _unit getVariable ["my_squad", nil];
-	if (!isNil "_my_squad") then { {deleteVehicle _x} forEach units _my_squad };
-
-	// Save Player Context
-	private _score = 0; 
-	{if ((_x select 0) == _uid) exitWith {_score = (_x select 1)}} forEach GRLIB_player_scores; 
-	if (_score > 20) then { [_unit, _uid] call save_context };
-
-	// Remove AI
-	private _bros = allUnits select {(_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1", _uid]};
-	{ deleteVehicle _x } forEach _bros;
-
-	// Remove Grave Box
-	private _grave_box = _unit getVariable ["GRLIB_grave_box", nil];
-	if (!isNil "_grave_box") then { deleteVehicle _grave_box };
 
 	// Delete Body
 	deleteVehicle _unit;
@@ -74,3 +81,4 @@ if !(isNull _unit) then {
 	private _text = format ["Bye bye %1, see you soon...", _name];
 	[gamelogic, _text] remoteExec ["globalChat", -2];		
 };
+false;
