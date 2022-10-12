@@ -81,7 +81,7 @@ logistics_ammo_increase = true;
 prisoner_intel = 7;
 prisoner_score = 5;
 prisoner_ammo = 50;
-prisoner_combat_readiness = 5;
+prisoner_combat_readiness = 8;
 prisoner_i = 0;
 
 // Building Penalty
