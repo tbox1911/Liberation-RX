@@ -1,6 +1,7 @@
 //--- LRX Savegame
-diag_log format [ "--- LRX Save start at %1", time ];
+if (!isServer) exitWith {};
 if (!isNil "GRLIB_server_stopped") exitWith {};
+diag_log format [ "--- LRX Save start at %1", time ];
 
 private _classnames_to_save = [];
 {

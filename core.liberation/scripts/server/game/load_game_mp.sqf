@@ -1,4 +1,5 @@
 //--- LRX Load Savegame
+if (!isServer) exitWith {};
 private [ "_buildings_created", "_nextbuilding"];
 
 date_year = date select 0;

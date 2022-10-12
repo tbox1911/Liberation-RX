@@ -1,3 +1,5 @@
+//--- LRX Save player context (Stuff + Ais)
+if (!isServer) exitWith {};
 params ["_player","_uid"];
 
 if (isNil "_uid") then { _uid = getPlayerUID _player };
@@ -7,7 +9,7 @@ private _ai_group = [];
 private _loadout = [];
 
 if (alive _player && lifeState _player != "INCAPACITATED") then {
-	private _bros = allUnits select { alive _x && lifeState _x != "INCAPACITATED" && !(isPlayer _x) && (_x getVariable ["PAR_Grp_ID","0"]) == _puid};
+	private _bros = allUnits select { _x != _player && alive _x && lifeState _x != "INCAPACITATED" && _x getVariable ["PAR_Grp_ID","0"] == _puid };
 	{ _ai_group pushback [typeOf _x, rank _x, [_x, ["repetitive"]] call F_getLoadout] } forEach _bros;
 	_loadout = [_player, ["repetitive"]] call F_getLoadout;
 };
@@ -25,4 +27,4 @@ if (_new) then {
 	GRLIB_player_context pushback [ _uid, _loadout, _ai_group ];
 };
 
-diag_log format ["--- LRX Player %1 (%2) Context Saved at %3", name _player, _uid, time];
+diag_log format ["--- LRX saving %1 unit(s) for %2 Squad.", count _ai_group, name _player];
