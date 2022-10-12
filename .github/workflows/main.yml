@@ -27,14 +27,14 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3.1.0
 
       # Runs a single command using the runners shell
       - name: Build LRX PBOs
         run: |
           echo Install Libs
           sudo apt-get install liblzo2-2 libvorbis0a libvorbisfile3 libvorbisenc2 libogg0 libuchardet0 tar
-         
+
           echo Install Pbo tools
           #wget https://mikero.bytex.digital/api/download?filename=depbo-tools-0.8.78-linux-x86_64.tgz -O depbo-tools-0.8.tgz
           tar -xf build/bin/depbo-tools-0.8.tgz
@@ -45,7 +45,7 @@ jobs:
           echo $PATH
 
           echo Check Pbo Tool ready
-          which makepbo 
+          which makepbo
 
           echo Build LRX PBOs
           chmod +x ./build/build.sh
@@ -55,22 +55,23 @@ jobs:
       - name: Check Build LRX PBOs
         run: ls -al build/
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v3.1.0
         with:
           name: latest-build
           path: build/*.pbo
 
       - name: Create a Release
-        uses: softprops/action-gh-release@v1
+        uses: ncipollo/release-action@v1.11.1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: build/*.pbo
+          artifacts: "build/*.pbo"
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Delete Older Releases
-        uses: dev-drprasad/delete-older-releases@v0.2.0
+        uses: Varrkan82/delete-older-releases@v0.2.1
         with:
           # repo: <owner>/<repoName> # defaults to current repo
           keep_latest: 5
-          delete_tag_pattern: v* # defaults to ""
+          delete_tags: true
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}          
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
