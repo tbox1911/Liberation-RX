@@ -305,6 +305,12 @@ if (isNil "frdl_fire_dmg_threshold") then { frdl_fire_dmg_threshold = 0.1; };
 	_vehicle setVariable ["ACE_isRepairVehicle",1];
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
+["rhsusf_m1152_rsv_usarmy_wd", "InitPost", {
+    params ["_vehicle"];
+	[_vehicle,8] call ace_cargo_fnc_setSpace;
+	_vehicle setVariable ["ACE_isRepairVehicle",1];
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
 
 
 ["BWA3_Multi_Fleck", "InitPost", {
@@ -611,7 +617,27 @@ if (isNil "frdl_fire_dmg_threshold") then { frdl_fire_dmg_threshold = 0.1; };
 		private _unit = _this select 0;
 		private _hitSelection = _this select 1;
 		private _damage = _this select 2;
-		if (_hitSelection isEqualTo "") then {(damage _unit) + (_damage * 0.04)} else {(_unit getHit _hitSelection) + (_damage * 0.04)};
+		if (_hitSelection isEqualTo "") then {(damage _unit) + (_damage * 0.4)} else {(_unit getHit _hitSelection) + (_damage * 0.4)};
+	}];
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["BWA3_Leopard2_Fleck", "InitPost", {
+    params ["_vehicle"];
+	_vehicle addEventHandler ["HandleDamage", {  
+		private _unit = _this select 0;
+		private _hitSelection = _this select 1;
+		private _damage = _this select 2;
+		if (_hitSelection isEqualTo "") then {(damage _unit) + (_damage * 0.4)} else {(_unit getHit _hitSelection) + (_damage * 0.4)};
+	}];
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["rhs_t90sab_tv", "InitPost", {
+    params ["_vehicle"];
+	_vehicle addEventHandler ["HandleDamage", {  
+		private _unit = _this select 0;
+		private _hitSelection = _this select 1;
+		private _damage = _this select 2;
+		if (_hitSelection isEqualTo "") then {(damage _unit) + (_damage * 0.1)} else {(_unit getHit _hitSelection) + (_damage * 0.1)};
 	}];
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
