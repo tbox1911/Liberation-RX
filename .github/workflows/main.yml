@@ -65,3 +65,12 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: build/*.pbo
+
+      - name: Delete Older Releases
+        uses: dev-drprasad/delete-older-releases@v0.2.0
+        with:
+          # repo: <owner>/<repoName> # defaults to current repo
+          keep_latest: 5
+          delete_tag_pattern: v* # defaults to ""
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}          
