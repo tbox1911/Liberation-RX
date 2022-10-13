@@ -157,7 +157,7 @@ if (dialog && deploy == 1) then {
 	if ( !GRLIB_player_spawned ) then {	
 		// respawn loadout
 		if ( !isNil "GRLIB_respawn_loadout" ) then {
-			[player, GRLIB_respawn_loadout] call F_setLoadout;
+			player setUnitLoadout GRLIB_respawn_loadout;
 		} else {
 			// init loadout
 			if ( GRLIB_forced_loadout > 0) then {
@@ -171,7 +171,7 @@ if (dialog && deploy == 1) then {
 				};
 			};
 			player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
-			GRLIB_backup_loadout = [player, ["repetitive"]] call F_getLoadout;
+			GRLIB_backup_loadout = getUnitLoadout player;
 		};
 		[player] call F_filterLoadout;
 		[player] call F_payLoadout;
@@ -179,7 +179,7 @@ if (dialog && deploy == 1) then {
 	// choosen loadout
 	if ( (lbCurSel 203) > 0 ) then {
 		player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
-		GRLIB_backup_loadout = [player, ["repetitive"]] call F_getLoadout;
+		GRLIB_backup_loadout = getUnitLoadout player;
 		[player, [ profileNamespace, _loadouts_data select ((lbCurSel 203) - 1) ] ] call bis_fnc_loadInventory;
 		[player] call F_filterLoadout;
 		[player] call F_payLoadout;

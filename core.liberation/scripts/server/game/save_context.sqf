@@ -8,8 +8,9 @@ private _loadout = [];
 
 if (alive _player && lifeState _player != "INCAPACITATED") then {
 	private _bros = allUnits select { alive _x && lifeState _x != "INCAPACITATED" && !(isPlayer _x) && (_x getVariable ["PAR_Grp_ID","0"]) == _puid};
-	{ _ai_group pushback [typeOf _x, rank _x, [_x, ["repetitive"]] call F_getLoadout] } forEach _bros;
-	_loadout = [_player, ["repetitive"]] call F_getLoadout;
+	{ _ai_group pushback [typeOf _x, rank _x, getUnitLoadout _x] } forEach _bros;
+	GRLIB_backup_loadout = getUnitLoadout player;
+	_loadout = getUnitLoadout _player;
 };
 
 private _new = true;

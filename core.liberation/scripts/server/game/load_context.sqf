@@ -5,7 +5,7 @@ if (count _context == 0 ) exitWith {};
 if (isNull _player) exitWith {};
 
 // Player loadout
-[_player, _context select 1] remoteExec ["F_setLoadout", owner _player];
+[_player, _context select 1] remoteExec ["setUnitLoadout", owner _player];
 
 if (count (_context select 2) >= 1 ) then {
     // AIs loadout
@@ -42,7 +42,7 @@ if (count (_context select 2) >= 1 ) then {
             _unit setSkill (0.6 + (GRLIB_rank_level find _rank) * 0.05);
             _unit enableIRLasers true;
             _unit enableGunLights "Auto";
-            [_unit, _loadout] call F_setLoadout;
+            _unit setUnitLoadout _loadout;
             //(group player) selectLeader player;
         }] remoteExec ["bis_fnc_call", owner _player];
 
