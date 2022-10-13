@@ -4,7 +4,7 @@ respawn_loadout = 0;
 load_from_player = -1;
 exit_on_load = 0;
 
-GRLIB_backup_loadout = [player, ["repetitive"]] call F_getLoadout;
+GRLIB_backup_loadout = getUnitLoadout player;
 player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
 
 private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
@@ -96,7 +96,7 @@ while { dialog && (alive player) && edit_loadout == 0 } do {
 	};
 
 	if ( respawn_loadout > 0 ) then {
-		GRLIB_respawn_loadout = [ player, ["repetitive"] ] call F_getLoadout;
+		GRLIB_backup_loadout = getUnitLoadout player;
 		hint localize "STR_MAKE_RESPAWN_LOADOUT_HINT";
 		respawn_loadout = 0;
 	};
@@ -104,7 +104,7 @@ while { dialog && (alive player) && edit_loadout == 0 } do {
 	if ( load_from_player >= 0 ) then {
 		private _playerselected = ( _loadplayers select load_from_player ) select 1;
 		if ( alive _playerselected ) then {
-      		[player, [_playerselected, ["repetitive"]] call F_getLoadout] call F_setLoadout;
+    		player setUnitLoadout (getUnitLoadout _playerselected);
 			hint format [ localize "STR_LOAD_PLAYER_LOADOUT_HINT", name _playerselected ];
 		};
 		load_from_player = -1;
