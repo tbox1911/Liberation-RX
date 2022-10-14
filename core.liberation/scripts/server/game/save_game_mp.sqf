@@ -63,7 +63,7 @@ if ( GRLIB_endgame == 1 ) then {
             !(isSimpleObject _x) &&
             ((typeof _x) in _classnames_to_save ) &&
             ( alive _x) &&
-            ( speed _x < 5 ) &&
+            ( speed vehicle _x < 5 ) &&
             ( isNull attachedTo _x ) &&
             (((getPosATL _x) select 2) < 10 ) &&
             !(_x getVariable ["GRLIB_vehicle_owner", ""] == "server")

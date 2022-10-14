@@ -12,7 +12,7 @@ while {true} do {
     if (isNil "_role") exitWith {};
     if (_role != "driver" || isNull objectParent _unit) exitWith {};
 
-    if (speed _vehicle > 1) then {
+    if (speed vehicle _vehicle > 1) then {
         _fuel_veh = fuel _vehicle;
         if (_fuel_veh < 0.010) then {
             _fuel_collected = _unit getVariable ["GREUH_fuel_count", 0];

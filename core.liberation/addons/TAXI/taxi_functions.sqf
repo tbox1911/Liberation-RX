@@ -7,7 +7,7 @@ taxi_land = {
 	waitUntil {
 		sleep 10;
 		_alt = getPos _vehicle select 2;
-		if (abs speed _vehicle < 1 && _alt > 3) then {
+		if (abs speed vehicle _vehicle < 1 && _alt > 3) then {
 			_vehicle setPos (getPos _vehicle vectorAdd [0, 0, -2]);
 			_vehicle land "LAND";
 			hintSilent localize "STR_TAXI_LANDING";
@@ -48,7 +48,7 @@ taxi_dest = {
 			_vehicle setVectorUp surfaceNormal position _vehicle;
 			sleep 0.2;
 		};
-		if (round (abs speed _vehicle) == 0) then {
+		if (round (abs speed vehicle _vehicle) == 0) then {
 			_vehicle setpos (getPos _vehicle vectorAdd [0, 0, 3]);
 			sleep 0.2;
 		};

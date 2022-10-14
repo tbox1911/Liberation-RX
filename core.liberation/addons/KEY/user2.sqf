@@ -19,7 +19,7 @@ AR_animation = switch (true) do {
 player addEventHandler ["AnimDone", {
 	if ((!AR_active) || dialog || {!((currentWeapon player) isEqualTo AR_weapon)} ||
 		{!isNull objectParent player} || {surfaceIsWater (getPos player)} ||
-		(_this select 1 == AR_animation && speed (vehicle player) <= 0) ||
+		(_this select 1 == AR_animation && speed vehicle player <= 0) ||
 		(lifeState player == 'INCAPACITATED')) exitWith {
 			player removeEventHandler ["AnimDone", _thisEventHandler];
 			AR_active = false;

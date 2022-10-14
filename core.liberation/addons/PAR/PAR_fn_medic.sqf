@@ -3,7 +3,7 @@ params ["_wnded"];
 private _bros = allunits select {(_x getVariable ["PAR_Grp_ID","0"]) == (_wnded getVariable ["PAR_Grp_ID","1"])};
 private _medics = _bros select {
   !isPlayer _x && _x != _wnded &&
-  alive _x && speed (vehicle _x) <= 20 &&
+  alive _x && speed vehicle _x <= 20 &&
   round (_x distance2D _wnded) <= 600 &&
   getPos _x select 2 <= 20 &&
   (!(objectParent _x iskindof "Steerable_Parachute_F")) &&

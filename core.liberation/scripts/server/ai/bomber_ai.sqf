@@ -36,7 +36,7 @@ while {alive _unit} do {
 	if (count _targets > 0) then {
 		_target = _targets select 0;
 		_unit doMove (getPos _target);
-		if (round (speed _unit) == 0) then { 
+		if (round (speed vehicle _unit) == 0) then { 
 			_unit switchMove "amovpknlmstpsraswrfldnon";
 			_unit playMoveNow "amovpknlmstpsraswrfldnon";
 		};

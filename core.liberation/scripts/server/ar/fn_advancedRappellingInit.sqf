@@ -370,7 +370,7 @@ AR_Advanced_Rappelling_Install = {
 			_this spawn {
 				params ["_player","_heli"];	
 				while {_player getVariable ["AR_Is_Rappelling", false]} do {
-					if(speed _heli > 150) then {
+					if(speed vehicle _heli > 150) then {
 						if(isPlayer _player) then {
 							hintSilent "Moving too fast! You've lost grip of the rope.";
 						};
@@ -624,7 +624,7 @@ AR_Advanced_Rappelling_Install = {
 		if(((getPos _vehicle) select 2) < 5 ) exitWith {false};
 		if(((getPos _vehicle) select 2) > 150 ) exitWith {false};
 		if(driver _vehicle == _player && isEngineOn _vehicle) exitWith {false};
-		if(speed _vehicle > 100) exitWith {false};
+		if(speed vehicle _vehicle > 100) exitWith {false};
 		true;
 	};
 
