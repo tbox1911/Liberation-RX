@@ -109,13 +109,18 @@ if (_spawn_marker != "") then {
 	} forEach _bg_groups;
 };
 
-if (isNil "combat_readiness_reduction") then {
-	combat_readiness_reduction = 1.10
-};
-if !(_attackInProgress) then {
-	combat_readiness = round(combat_readiness / combat_readiness_reduction)
-};
 
-if (combat_readiness < 0) then {
-	combat_readiness = 0
+if (isNil "bg_readiness_cooldown") then { bg_readiness_cooldown = false; };
+
+if (bg_readiness_cooldown) then {
+	if (isNil "combat_readiness_reduction") then {
+		combat_readiness_reduction = 1.10
+	};
+	if !(_attackInProgress) then {
+		combat_readiness = round(combat_readiness / combat_readiness_reduction)
+	};
+
+	if (combat_readiness < 0) then {
+		combat_readiness = 0
+	};
 };

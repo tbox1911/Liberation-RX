@@ -57,15 +57,15 @@ tfar_channel = "╠-● Ingame [TFAR]";
 respawn_ammo = 100; // +/- is conditional
 opfor_kill_score = 1;
 opfor_kill_ammo = 1;
-opfor_kill_score_infantry = 2;
-opfor_kill_ammo_infantry = 7;
+opfor_kill_score_infantry = 4;
+opfor_kill_ammo_infantry = 8;
 kamikaze_kill_score = 5;
 kamikaze_kill_ammo = 25;
-civkill_score = -18;
-civkill_ammo = -175;
-civkill_combat_readiness = 10;
-tkill_score = -3;
-tkill_ammo = -7;
+civkill_score = -200;
+civkill_ammo = -200;
+civkill_combat_readiness = 3;
+tkill_score = -5;
+tkill_ammo = -8;
 tk_active = false; //NEW Tkillscript with dialog
 
 // tkill_script in init.sqf
@@ -79,9 +79,9 @@ box_recycle_value = 40;
 logistics_ammo_increase = true;
 
 prisoner_intel = 7;
-prisoner_score = 5;
+prisoner_score = 25;
 prisoner_ammo = 50;
-prisoner_combat_readiness = 8;
+prisoner_combat_readiness = 7;
 prisoner_i = 0;
 
 // Building Penalty
@@ -90,13 +90,18 @@ building_penalty_isActive = false;
 // Do not allow air vehicles to trigger zones. 
 air_cannot_trigger_on = true;
 
-//Differenced Ammo income 
+// Sector config
 fallback_income = 120;
 income_sectors_bigtown = 120;
 income_sectors_capture = 120;
 income_sectors_military = 120;
 income_sectors_factory = 120;
 income_sectors_tower = 120;
+readiness_increase_bigtown = 10;
+readiness_increase_capture = 10;
+readiness_increase_military = 10;
+readiness_increase_factory = 10;
+readiness_increase_tower = 10;
 
 // AI Leaders have automaticly radios
 AI_leader_radio = false;
@@ -117,7 +122,10 @@ readiness_calc_sm_town = true;
 limit_readiness = true;
 fob_hunting_readiness = 40;
 
-//Battlegroup sleeping (divided with csat aggressivity)
+// Battlegroup readiness cooldown
+bg_readiness_cooldown = false;
+
+// Battlegroup sleeping (divided with csat aggressivity)
 bg_sleeptimer = 1000; 
 sector_reinforcement = true;
 limit_bg_dist = 4000; 
@@ -134,7 +142,7 @@ force_datalink = true;
 force_sensorTarget_opfor = false;
 
 //Enemy IEDs
-ied_enemy_sector = ["rhsusf_mine_m49a1_3m_module","ModuleMine_SLAMDirectionalMine_F","rhsusf_mine_m14_module","rhsusf_mine_m19_module"];
+ied_enemy_sector = ["ATMine", "APERSMine", "APERSBoundingMine", "SLAMDirectionalMine", "APERSTripMine"];
 
 // AI Limit
 ai_limit = 3;

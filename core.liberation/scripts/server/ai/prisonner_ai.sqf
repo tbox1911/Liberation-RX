@@ -23,7 +23,7 @@ _unit disableAI "ANIM";
 _unit disableAI "MOVE";
 _unit playmove "AmovPercMstpSnonWnonDnon_AmovPercMstpSsurWnonDnon" ;
 sleep 2;
-_grp = createGroup [GRLIB_side_enemy, true];
+_grp = createGroup [GRLIB_side_civilian, true];
 [_unit] joinSilent _grp;
 sleep 2;
 _unit setCaptive true;
