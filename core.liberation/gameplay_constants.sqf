@@ -22,7 +22,7 @@ GRLIB_blufor_cap = 10 * GRLIB_unitcap;
 GRLIB_battlegroup_size = 9;
 GRLIB_civilians_amount = 1.3 * GRLIB_civilian_activity;
 GRLIB_fob_range = 450;
-GRLIB_surrender_chance = 70;
+GRLIB_surrender_chance = 75;
 GRLIB_secondary_missions_costs = [ 100,20 ];
 GRLIB_halo_altitude = 2000;
 GRLIB_civ_killing_penalty = 0;
@@ -80,8 +80,8 @@ logistics_ammo_increase = true;
 
 prisoner_intel = 7;
 prisoner_score = 25;
-prisoner_ammo = 50;
-prisoner_combat_readiness = 7;
+prisoner_ammo = 60;
+prisoner_combat_readiness = 10;
 prisoner_i = 0;
 
 // Building Penalty
@@ -91,17 +91,18 @@ building_penalty_isActive = false;
 air_cannot_trigger_on = true;
 
 // Sector config
+sector_rank_gain = 15;
 fallback_income = 120;
 income_sectors_bigtown = 120;
 income_sectors_capture = 120;
 income_sectors_military = 120;
 income_sectors_factory = 120;
 income_sectors_tower = 120;
-readiness_increase_bigtown = 10;
-readiness_increase_capture = 10;
-readiness_increase_military = 10;
-readiness_increase_factory = 10;
-readiness_increase_tower = 10;
+readiness_increase_bigtown = 3;
+readiness_increase_capture = 3;
+readiness_increase_military = 3;
+readiness_increase_factory = 3;
+readiness_increase_tower = 3;
 
 // AI Leaders have automaticly radios
 AI_leader_radio = false;

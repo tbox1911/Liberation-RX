@@ -89,8 +89,6 @@ militia_vehicles = [
 	"rhsgref_ins_ural_Zu23",
 	"B_SAM_System_02_F",
 	"B_SAM_System_02_F",
-	"B_SAM_System_02_F",
-	"B_SAM_System_02_F",
 	"B_SAM_System_02_F"
 ];
 
@@ -112,8 +110,6 @@ opfor_vehicles = [
 	"rhsgref_ins_ural_Zu23",
 	"B_SAM_System_02_F",
 	"B_SAM_System_02_F",
-	"B_SAM_System_02_F",
-	"B_SAM_System_02_F",
 	"B_SAM_System_02_F"
 ];
 
@@ -124,7 +120,6 @@ opfor_vehicles_low_intensity = [
 	"rhsgref_ins_btr70",
 	"rhsgref_ins_ural_Zu23",
 	"rhsgref_ins_ural_Zu23",
-	"B_SAM_System_02_F",
 	"B_SAM_System_02_F",
 	"B_SAM_System_02_F",
 	"B_SAM_System_02_F"
@@ -216,8 +211,6 @@ opfor_air = [
 opfor_statics = [
 	"LOP_ChDKZ_Igla_AA_pod",
 	"LOP_ChDKZ_ZU23",
-	"B_SAM_System_02_F",
-	"B_SAM_System_02_F",
 	"B_SAM_System_02_F",
 	"B_SAM_System_02_F",
 	"B_SAM_System_02_F"

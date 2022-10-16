@@ -4,7 +4,7 @@ diag_log format ["Sector %1 liberated", _liberated_sector];
 _combat_readiness_increase = 0;
 
 if (isNil "fallback_income") then {
-	fallback_income = 50
+	fallback_income = 120
 };
 
 private _income = fallback_income;// default
@@ -73,7 +73,7 @@ if (_liberated_sector in sectors_tower) then {
 
 			_x setVariable ["GREUH_ammo_count", _ammo_collected + _income, true];
 
-			[_x, 15] remoteExec ["addscore", 2];
+			[_x, sector_rank_gain] remoteExec ["addscore", 2];
 		};
 	} else {
 		private _ammo_collected = _x getVariable ["GREUH_ammo_count", 0];
@@ -82,7 +82,7 @@ if (_liberated_sector in sectors_tower) then {
 
 		diag_log format ["[Ammo] %1 hat Sektor eingenommen: +%2 ", _x, _income];		
 
-		[_x, 15] remoteExec ["addscore", 2];
+		[_x, sector_rank_gain] remoteExec ["addscore", 2];
 	};
 } forEach allPlayers;
 [markerPos _liberated_sector] call showlandmines;
