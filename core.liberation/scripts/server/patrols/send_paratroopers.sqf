@@ -1,9 +1,8 @@
 params [ "_targetpos" ];
 
 private _spawnsector = ( [ sectors_airspawn , [ _targetpos ] , { (markerpos _x) distance2D _input0 }, "ASCEND"] call BIS_fnc_sortBy ) select 0;
-private _para_group = createGroup [GRLIB_side_enemy, true];
-private _pilot_group = createGroup [GRLIB_side_enemy, true];
 
+private _pilot_group = createGroup [GRLIB_side_enemy, true];
 private _newvehicle = [markerpos _spawnsector, selectRandom opfor_troup_transports_heli] call F_libSpawnVehicle;
 (crew _newvehicle) joinSilent _pilot_group;
 
@@ -19,18 +18,17 @@ diag_log format ["Spawn (%1) ParaTroopers on sector %2 at %3", _cargo_seat_free,
 
 private _unitclass = [];
 while { (count _unitclass) < _cargo_seat_free } do { _unitclass pushback opfor_paratrooper };
-private _para_group_tmp = [markerpos _spawnsector, _unitclass, GRLIB_side_enemy, "para"] call F_libSpawnUnits;
+private _para_group = [markerpos _spawnsector, _unitclass, GRLIB_side_enemy, "para"] call F_libSpawnUnits;
 {
-	[_x] joinSilent _para_group;
-	_x assignAsCargo _newvehicle;
+	_x assignAsCargoIndex [_newvehicle, _forEachIndex + 1];
 	_x moveInCargo _newvehicle;
+	[_x] orderGetIn true;
 	_x setSkill 0.65;
 	_x setSkill ["courage", 1];
 	_x allowFleeing 0;
 	_x setVariable ["GRLIB_counter_TTL", round(time + 3600)];
 	_x setVariable ["GRLIB_mission_AI", true];
-	sleep 0.1;
-} foreach (units _para_group_tmp);
+} foreach (units _para_group);
 
 [_newvehicle, _targetpos, _pilot_group, _para_group] spawn {
 	params [ "_newvehicle", "_targetpos", "_pilot_group", "_para_group"];

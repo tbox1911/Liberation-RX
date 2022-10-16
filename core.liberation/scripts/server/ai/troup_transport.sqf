@@ -14,8 +14,9 @@ waitUntil { sleep 0.2; !(alive _troup_transport) || !(alive (driver _troup_trans
 if ((alive _troup_transport) && (alive (driver _troup_transport))) then {
 	private _troupgrp = [_start_pos, ([] call F_getAdaptiveSquadComp), GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
 	{
-		_x assignAsCargo _troup_transport;
+		_x assignAsCargoIndex [_troup_transport, _forEachIndex + 1];
 		_x moveInCargo _troup_transport;
+		[_x] orderGetIn true;
 		_x allowFleeing 0;
 		_x setVariable ["GRLIB_counter_TTL", round(time + 1800)];
 	} foreach (units _troupgrp);
