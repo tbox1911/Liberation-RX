@@ -21,7 +21,7 @@ while { true } do {
 						_cargo_idx = _cargo_seat_free select 0 select 2;
 						_x action ["getInCargo", _veh_player, _cargo_idx];
 						_x assignAsCargo _veh_player;
-						[_x] orderGetIn true ;
+						[_x] orderGetIn true;
 					};
 
 					if (_cargo_seat_free select 0 select 1 == "Turret" ) then {
