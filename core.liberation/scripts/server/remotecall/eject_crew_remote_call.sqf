@@ -32,7 +32,7 @@ if (side _grp == GRLIB_side_civilian && !([_player, _vehicle] call is_owner)) th
 		_waypoint = _grp addWaypoint [markerPos _nearest_sector, 0];
 		_waypoint setWaypointType "MOVE";
 		_waypoint setWaypointSpeed "FULL";
-		_waypoint setWaypointBehaviour "AWARE";
+		_waypoint setWaypointBehaviour "SAFE";
 		_waypoint setWaypointCombatMode "GREEN";
 		_waypoint setWaypointCompletionRadius 50;
 

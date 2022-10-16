@@ -64,7 +64,7 @@ while {alive _unit} do {
 			_waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];
 			_waypoint setWaypointType "MOVE";
 			_waypoint setWaypointSpeed "FULL";
-			_waypoint setWaypointBehaviour "AWARE";
+			_waypoint setWaypointBehaviour "SAFE";
 			_waypoint setWaypointCombatMode "GREEN";
 			_waypoint setWaypointCompletionRadius 50;
 
