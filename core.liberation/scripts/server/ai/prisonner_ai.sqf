@@ -73,6 +73,9 @@ while {alive _unit} do {
 			_waypoint setWaypointCompletionRadius 50;
 			_waypoint setWaypointStatements ["true", "deleteVehicle this"];
 			sleep 10;
+		} else {
+			sleep 60;
+			{ deleteVehicle _x } forEach _flee_grp;
 		};
 	};
 

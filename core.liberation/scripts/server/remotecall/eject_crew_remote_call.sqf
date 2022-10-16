@@ -26,7 +26,6 @@ if (side _grp == GRLIB_side_civilian && !([_player, _vehicle] call is_owner)) th
 	private _nearest_sector = [sectors_allSectors, _vehicle] call F_nearestPosition;
 
 	if (typeName _nearest_sector == "STRING") then {
-
 		while {(count (waypoints _grp)) != 0} do {deleteWaypoint ((waypoints _grp) select 0);};
 		{_x doFollow leader _grp} foreach units _grp;
 
@@ -42,5 +41,9 @@ if (side _grp == GRLIB_side_civilian && !([_player, _vehicle] call is_owner)) th
 		_waypoint setWaypointCompletionRadius 50;
 		_waypoint setWaypointStatements ["true", "deleteVehicle this"];
 		sleep 10;
+	} else {
+		sleep 60;
+		{ deleteVehicle _x } forEach _crew;
 	};
 };
+_crew allowGetIn true;

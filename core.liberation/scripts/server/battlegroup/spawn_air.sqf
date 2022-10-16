@@ -78,6 +78,9 @@ while {	sleep 5; {( alive _x )} count (units _air_grp) > 0 } do {
 				_waypoint setWaypointCompletionRadius 50;
 				_waypoint setWaypointStatements ["true", "deleteVehicle this"];
 				sleep 10;
+			} else {
+				sleep 60;
+				{ deleteVehicle _x } forEach _flee_grp;
 			};
 		};
 	} foreach units _air_grp;
