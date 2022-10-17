@@ -39,7 +39,6 @@ while { count (units _grp) > 0 } do {
 
 					_vehicle setDir (_vehicle getDir _next_target);
 					_grp setBehaviour "COMBAT";
-					_gunner reveal [_next_target, 2];
 					_gunner doTarget _next_target;
 					if (_veh_class isKindOf "StaticMortar") then {
 						_vehicle fireAtTarget [_next_target];
