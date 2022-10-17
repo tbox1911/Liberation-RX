@@ -46,4 +46,6 @@ if (side _grp == GRLIB_side_civilian && !([_player, _vehicle] call is_owner)) th
 		{ deleteVehicle _x } forEach _crew;
 	};
 };
+
+sleep 3;
 _crew allowGetIn true;
