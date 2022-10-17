@@ -1,4 +1,4 @@
-private [ "_sourcestr", "_position", "_myfpsmarker", "_myfps", "_units_blu", "_units_opf", "_units_civ", "_vehicles_blu", "_vehicles_opf", "_vehicles_civ" ];
+private [ "_sourcestr", "_position", "_myfpsmarker", "_myfps", "_units_blu", "_units_opf", "_units_civ"];
 
 if ( isServer ) then {
 	_sourcestr = "Server";
@@ -40,23 +40,19 @@ while { true } do {
 
 	_myfps = diag_fps;
 
-	_units_blu = { alive _x && isNull objectparent _x && (_x distance2D lhd) >= 500 } count units GRLIB_side_friendly;
-	_units_opf = { alive _x && isNull objectparent _x} count units GRLIB_side_enemy;
-	_units_civ = { alive _x && isNull objectparent _x && !(typeOf _x in [SHOP_Man, SELL_Man])} count units GRLIB_side_civilian;
-
-	_vehicles_blu = { alive _x && side _x == GRLIB_side_friendly && count (crew _x) > 0 && (_x distance2D lhd) >= 500 } count vehicles;
-	_vehicles_opf = { alive _x && side _x == GRLIB_side_enemy && count (crew _x) > 0} count vehicles;
-	_vehicles_civ = { alive _x && side _x == GRLIB_side_civilian && count (crew _x) > 0} count vehicles;
+	_units_blu = { alive _x && (_x distance2D lhd) >= 500 } count units GRLIB_side_friendly;
+	_units_opf = { alive _x } count units GRLIB_side_enemy;
+	_units_civ = { alive _x && !(typeOf _x in [SHOP_Man, SELL_Man])} count units GRLIB_side_civilian;
 
 	_myfpsmarker setMarkerColor "ColorGREEN";
 	if ( _myfps < 30 ) then { _myfpsmarker setMarkerColor "ColorYELLOW"; };
 	if ( _myfps < 20 ) then { _myfpsmarker setMarkerColor "ColorORANGE"; };
 	if ( _myfps < 10 ) then { _myfpsmarker setMarkerColor "ColorRED"; };
 
-	_myfpsmarker setMarkerText format [ "%1: %2 fps - Up: %9 - Inf: civ:%3 blu:%4 red:%5 - Veh:civ:%6 blu:%7 red:%8",
+	_myfpsmarker setMarkerText format [ "%1: %2 fps - Up: %9 - civ:%3 blu:%4 red:%5",
 		_sourcestr, ( round ( _myfps * 100.0 ) ) / 100.0 ,
 		_units_civ,_units_blu,_units_opf,
-		_vehicles_civ,_vehicles_blu,_vehicles_opf,[time/3600,"HH:MM:SS"] call BIS_fnc_timeToString];
+		[time/3600,"HH:MM:SS"] call BIS_fnc_timeToString];
 
 	sleep 15;
 };

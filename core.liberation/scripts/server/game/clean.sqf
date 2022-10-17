@@ -58,7 +58,7 @@ private _force_cleanup_classnames = [
 	"Plane_Fighter_01_Canopy_F",
 	"Plane_Fighter_02_Canopy_F",
 	"Plane_Fighter_03_Canopy_F",
-	"Plane_Fighter_04_Canopy_F" ,
+	"Plane_Fighter_04_Canopy_F",
 	"rhs_k36d5_seat",
 	"rhs_ka52_blade",
 	"rhs_ka52_ejection_vest",
