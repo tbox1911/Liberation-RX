@@ -86,6 +86,7 @@ militia_vehicles = [
 	"rhsgref_ins_btr60",
 	"rhsgref_ins_btr60",
 	"rhsgref_ins_btr60",
+	"rhsgref_ins_t72bb",
 	"rhsgref_ins_ural_Zu23",
 	"B_SAM_System_02_F",
 	"B_SAM_System_02_F",
@@ -105,8 +106,9 @@ opfor_vehicles = [
 	"rhsgref_ins_btr70",
 	"rhsgref_ins_bmd2",
 	"rhsgref_ins_bmp2ds",
+	"rhsgref_ins_t72bb",
+	"rhsgref_ins_t72bb",
 	"rhsgref_ins_zsu234",
-	"rhsgref_ins_ural_Zu23",
 	"rhsgref_ins_ural_Zu23",
 	"B_SAM_System_02_F",
 	"B_SAM_System_02_F",
@@ -118,7 +120,7 @@ opfor_vehicles_low_intensity = [
 	"rhsgref_ins_uaz_spg9",
 	"rhsgref_ins_btr60",
 	"rhsgref_ins_btr70",
-	"rhsgref_ins_ural_Zu23",
+	"rhsgref_ins_t72bb",
 	"rhsgref_ins_ural_Zu23",
 	"B_SAM_System_02_F",
 	"B_SAM_System_02_F",
@@ -127,39 +129,41 @@ opfor_vehicles_low_intensity = [
 
 opfor_battlegroup_vehicles = [
 	"rhsgref_ins_btr60",
-	"rhsgref_ins_btr70",
+	"rhsgref_ins_btr60",
 	"rhsgref_ins_btr60",
 	"rhsgref_ins_btr70",
+	"rhsgref_ins_t72bb",
+	"rhsgref_ins_t72bb",
 	"rhsgref_ins_bmd2",
 	"rhsgref_ins_bmp2ds",
 	"rhsgref_ins_zsu234",
 	"rhsgref_ins_zsu234",
-	"rhsgref_ins_ural_Zu23",
 	"rhsgref_ins_ural_Zu23",
 	"rhsgref_ins_ural_Zu23"
 ];
 
 opfor_battlegroup_vehicles_low_intensity = [
 	"rhsgref_ins_btr60",
-	"rhsgref_ins_btr70",
+	"rhsgref_ins_btr60",
 	"rhsgref_ins_btr60",
 	"rhsgref_ins_btr70",
+	"rhsgref_ins_t72bb",
 	"rhsgref_ins_bmd2",
 	"rhsgref_ins_bmp2ds",
-	"rhsgref_ins_ural_Zu23",
-	"rhsgref_ins_ural_Zu23",
 	"rhsgref_ins_ural_Zu23"
 ];
 
 opfor_reinforcement_vehicles = [
 	"rhsgref_ins_btr60",
-	"rhsgref_ins_btr70",
+	"rhsgref_ins_btr60",
 	"rhsgref_ins_btr60",
 	"rhsgref_ins_btr70",
+	"rhsgref_ins_t72bb",
+	"rhsgref_ins_t72bb",
+	"rhsgref_ins_t72bb",
 	"rhsgref_ins_bmd2",
 	"rhsgref_ins_bmp2ds",
 	"rhsgref_ins_zsu234",
-	"rhsgref_ins_ural_Zu23",
 	"rhsgref_ins_ural_Zu23"
 	];
 
@@ -216,7 +220,41 @@ opfor_statics = [
 	"B_SAM_System_02_F"
 ];
 
-opfor_recyclable = [];
+opfor_recyclable = [
+	["B_UAV_06_F",0,0,0],
+	["B_UAV_06_medical_F",0,0,0],
+	["B_UAV_01_F",0,0,0],
+	["ITC_Land_B_UAV_AR2e",0,0,0],
+	["ITC_Land_B_UAV_AR2i",0,0,0],
+	["B_UGV_02_Demining_F",0,0,0],
+	["B_UGV_02_Science_F",0,0,0],
+	["O_UGV_02_Demining_F",0,0,0],
+	["ITC_Land_O_UAV_AR2e",0,0,0],
+	["ITC_Land_O_UAV_AR2i",0,0,0],
+	["O_UAV_06_F",0,0,0],
+	["O_UAV_06_medical_F",0,0,0],
+	["O_UGV_02_Science_F",0,0,0],
+	["O_UAV_01_F",0,0,0],
+	["I_UAV_06_F",0,0,0],
+	["I_UAV_06_medical_F",0,0,0],
+	["I_UAV_01_F",0,0,0],
+	["ITC_Land_I_UAV_AR2e",0,0,0],
+	["ITC_Land_I_UAV_AR2i",0,0,0],
+	["I_UGV_02_Demining_F",0,0,0],
+	["I_UGV_02_Science_F",0,0,0],
+	["I_E_UAV_06_F",0,0,0],
+	["I_E_UAV_06_medical_F",0,0,0],
+	["I_E_UAV_01_F",0,0,0],
+	["I_E_UGV_02_Demining_F",0,0,0],
+	["I_E_UGV_02_Science_F",0,0,0],
+	["C_UAV_06_F",0,0,0],
+	["C_UAV_06_medical_F",0,0,0],
+	["C_IDAP_UAV_06_antimine_F",0,0,0],
+	["C_IDAP_UGV_02_Demining_F",0,0,0],
+	["C_IDAP_UAV_01_F",0,0,0],
+	["C_IDAP_UAV_06_F",0,0,0],
+	["C_IDAP_UAV_06_medical_F",0,0,0]
+];
 
 
 

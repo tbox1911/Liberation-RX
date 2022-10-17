@@ -224,7 +224,7 @@ while { true } do {
 
 		// Arsenal
 		_idact_arsenal = _id_actions select 16;
-		if (GRLIB_enable_arsenal && (_near_arsenal || (player distance2D lhd) <= 200) && (score player >= GRLIB_perm_inf) ) then {
+		if (GRLIB_enable_arsenal && (_near_arsenal || (player distance2D lhd) <= 200) ) then { // && (score player >= GRLIB_perm_inf) 
 			if (_idact_arsenal == -1) then {
 				_idact = player addAction ["<t color='#FFFF00'>" + localize "STR_ARSENAL_ACTION" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\open_arsenal.sqf","",-500,true,true,"","build_confirmed == 0"];
 				_id_actions set [16, _idact];
