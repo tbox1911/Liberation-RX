@@ -427,6 +427,7 @@ strong_heavy_vehicles = [
 ["rhsusf_m109_usarmy",0,strong_heavy_vehicle_price_tier_4,0,GRLIB_perm_inf],
 ["rhsusf_m1a2sep1tuskiiwd_usarmy",0,strong_heavy_vehicle_price_tier_5,0,GRLIB_perm_inf],
 ["rhs_t90sab_tv",0,strong_heavy_vehicle_price_tier_5,0,GRLIB_perm_inf],
+["rhsusf_m1a1aim_tuski_d",0,strong_heavy_vehicle_price_tier_5,0,GRLIB_perm_inf],
 
 // BW
 
@@ -935,6 +936,11 @@ support_crates = [
 // Taru Container
 ["Land_Pod_Heli_Transport_04_medevac_F",0,0,0,GRLIB_perm_inf],
 ["Land_Pod_Heli_Transport_04_covered_F",0,0,0,GRLIB_perm_inf],
+["Land_Pod_Heli_Transport_04_repair_F",0,0,0,GRLIB_perm_inf],
+["Land_Pod_Heli_Transport_04_fuel_F",0,0,0,GRLIB_perm_inf],
+["Land_Pod_Heli_Transport_04_ammo_F",0,0,0,GRLIB_perm_inf],
+["Land_Pod_Heli_Transport_04_box_F",0,0,0,GRLIB_perm_inf],
+
 // BAF Container
 ["UK3CB_BAF_MAN_HX60_Container_Blue",0,0,0,GRLIB_perm_inf],     //Cargo
 ["UK3CB_BAF_MAN_HX60_Container_Green",0,0,0,GRLIB_perm_inf],    //Cargo
