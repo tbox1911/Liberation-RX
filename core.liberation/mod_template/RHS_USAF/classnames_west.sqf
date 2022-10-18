@@ -574,6 +574,11 @@ air_vehicles = [
 ["UK3CB_BAF_Merlin_HC4_Cargo",0,air_vehicle_price_tier_6,0,GRLIB_perm_inf],
 ["UK3CB_BAF_Merlin_HC4_18_GPMG",0,air_vehicle_price_tier_6,0,GRLIB_perm_inf],
 
+//BWMod
+["BWA3_NH90_TTH_M3M_Fleck",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf],
+["BWA3_NH90_TTH_Fleck",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf],
+
+
 // Attack helicopter
 
 //RHS
