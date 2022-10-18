@@ -351,6 +351,10 @@ if (isNil "tkill_script") then { tkill_script = true; };
 
 // ACE Medical Vehicles
 
+["Land_Pod_Heli_Transport_04_medevac_F", "InitPost", {
+    params ["_vehicle"];
+	_vehicle setVariable ["ace_medical_medicClass", 1];
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
 ["CUP_B_FV432_GB_Ambulance", "InitPost", {
     params ["_vehicle"];
