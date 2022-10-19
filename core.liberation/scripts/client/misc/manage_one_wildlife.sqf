@@ -5,7 +5,7 @@ while { GRLIB_endgame == 0 } do {
 	sleep (30 + floor(random 30));
 
 	private _spawn_life = (
-		alive player && vehicle player == player &&
+		diag_fps > 35 && alive player && vehicle player == player &&
 		!([player, "LHD", GRLIB_sector_size] call F_check_near) &&
 		!([player, "FOB", GRLIB_sector_size] call F_check_near) &&
 		(player distance2D (getmarkerpos GRLIB_respawn_marker)) > GRLIB_sector_size &&
@@ -18,7 +18,7 @@ while { GRLIB_endgame == 0 } do {
 
 		waitUntil {
 			sleep 20;
-			( (!alive _unit) || ({alive _x} count _managed_units) == 0 || ({_unit distance2D _x > GRLIB_sector_size || surfaceIsWater (getPos _x)} count _managed_units) > 0 )
+			( (diag_fps < 20) || (!alive _unit) || ({alive _x} count _managed_units) == 0 || ({_unit distance2D _x > GRLIB_sector_size || surfaceIsWater (getPos _x)} count _managed_units) > 0 )
 		};
 
 		{ deleteVehicle _x } forEach _managed_units;
