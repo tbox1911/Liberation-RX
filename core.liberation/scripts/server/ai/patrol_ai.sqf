@@ -39,15 +39,13 @@ while { count (units _grp) > 0 } do {
 
 					_vehicle setDir (_vehicle getDir _next_target);
 					_grp setBehaviour "COMBAT";
+					_gunner reveal [_next_target, 2];
 					_gunner doTarget _next_target;
 					if (_veh_class isKindOf "StaticMortar") then {
 						_vehicle fireAtTarget [_next_target];
 						sleep 15;
 					};
 					diag_log format ["--- LRX: OPFor defender %1 spot unit %2 (%3) dist %4m", _veh_class, _next_target, typeOf _next_target, round (_gunner distance2D _next_target)];
-				} else {
-					_grp setBehaviour "CARELESS";
-					_gunner doTarget objNull;
 				};
 			};
 		};

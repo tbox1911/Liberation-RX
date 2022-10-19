@@ -418,10 +418,4 @@ class Params
 		texts[] = { $STR_NO,$STR_YES };
 		default = 0;
 	};
-	class DisableRemoteSensors{
-		title = "Disable Remote Sensors (experimental!)";
-		values[] = {0,1,2};
-		texts[] = {"No","Disable for clients without local AIs","Disable for all clients"};
-		default = 1;
-	};
 };

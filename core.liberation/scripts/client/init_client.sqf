@@ -82,7 +82,6 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 [] execVM "scripts\client\markers\huron_marker.sqf";
 [] execVM "scripts\client\markers\spot_timer.sqf";
 [] execVM "scripts\client\misc\broadcast_squad_colors.sqf";
-[] execVM "scripts\client\misc\disable_remote_sensors.sqf";
 [] execVM "scripts\client\misc\permissions_warning.sqf";
 [] execVM "scripts\client\misc\secondary_jip.sqf";
 [] execVM "scripts\client\misc\stop_renegade.sqf";
