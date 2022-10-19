@@ -56,9 +56,12 @@ if !(isNull _unit) then {
 	private _bros = allUnits select {(_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1", _uid]};
 	{ deleteVehicle _x } forEach _bros;
 
-	// Remove Grave Box
-	private _grave_box = _unit getVariable ["GRLIB_grave_box", nil];
-	if (!isNil "_grave_box") then { deleteVehicle _grave_box };
+	// remove old grave and box
+	private _old_grave = _unit getVariable "GRLIB_grave";
+	if (!isNil "_old_grave") then { 
+		{ deleteVehicle _x } forEach (attachedObjects _old_grave);
+		deleteVehicle _old_grave;
+	};
 
 	// Remove Taxi
 	private _taxi = _unit getVariable ["GRLIB_taxi_called", nil];
