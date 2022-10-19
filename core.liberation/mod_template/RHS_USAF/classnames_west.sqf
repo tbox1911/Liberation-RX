@@ -629,6 +629,7 @@ air_vehicles = [
 ["B_W_VTOL_01_armed_F",0,air_vehicle_price_tier_15,0,GRLIB_perm_inf]     //Blackfish
 ];
 
+
 fast_air_vehicle = [
 
 // Fast air vehicle
@@ -643,113 +644,95 @@ fast_air_vehicle = [
 ["USAF_C17",0,fast_air_vehicle_price_tier_1,0,GRLIB_perm_inf],
 
 //RHS
-
 ["RHS_C130J_Cargo",0,fast_air_vehicle_price_tier_1,0,GRLIB_perm_inf],
+
 
 // Jets
 
 // CUP
-
 ["CUP_B_AV8B_DYN_USMC",0,fast_air_vehicle_price_tier_5,0,GRLIB_perm_inf],
 ["CUP_B_CESSNA_T41_UNARMED_USA",0,air_vehicle_price_tier_1,0,GRLIB_perm_inf],
 ["CUP_B_CESSNA_T41_ARMED_USA",0,fast_air_vehicle_price_tier_2,0,GRLIB_perm_inf],
 
 //RHS
-
 ["RHS_A10",0,fast_air_vehicle_price_tier_2,0,GRLIB_perm_inf],
 // ["Peral_A10C",0,fast_air_vehicle_price_tier_2,0,GRLIB_perm_inf],
 // ["RHS_Su25SM_vvs",0,fast_air_vehicle_price_tier_3,0,GRLIB_perm_inf],
 ["rhs_mig29sm_vmf",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
 
 // CUP BAF
-
 ["CUP_B_GR9_DYN_GB", 0, fast_air_vehicle_price_tier_4,0,GRLIB_perm_inf],
 
 // FFAA
-
 ["ffaa_ar_harrier",0,fast_air_vehicle_price_tier_5,0,GRLIB_perm_inf],
 ["ffaa_ea_ef18m",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
 
 // USAF
-
 ["USAF_A10",0,fast_air_vehicle_price_tier_4,0,GRLIB_perm_inf],
 
 // FIR F-14
-
-["FIR_F14A_HBK1",0,fast_air_vehicle_price_tier_4,0,GRLIB_perm_inf],
+// ["FIR_F14A_HBK1",0,fast_air_vehicle_price_tier_4,0,GRLIB_perm_inf],
 
 //FIR AV-8B Harrier
-
 ["FIR_AV8B_NA_Blank",0,fast_air_vehicle_price_tier_4,0,GRLIB_perm_inf],
 
 // FIR F-15
-
 ["FIR_F15C",0,fast_air_vehicle_price_tier_4,0,GRLIB_perm_inf],
 ["FIR_F15E",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
 ["FIR_F15E_Demo",0,fast_air_vehicle_price_tier_10,0,GRLIB_perm_inf],
 // ["FIR_F15SE_LA",0,fast_air_vehicle_price_tier_10,0,GRLIB_perm_inf],
 
 // FIR F-16
-
 ["FIR_F16C",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
 ["FIR_F16D",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
 
 // F-35
-
 ["FIR_F35B_Standard",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
 
 // F-22
-
-["FIR_F22",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
+// ["FIR_F22",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
 
 // F-18 super hornet
-
 ["FIR_F18C",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
 ["FIR_F18C_SPAF",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
 ["FIR_F18D",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
 ["FIR_FA18E_VFA106",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
 
 // FIR A-10C
-
 ["FIR_A10C",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
 
 // FIR SU-25SM3
-
 ["FIR_Su25SM3",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
 
 // Tornado
-
 ["Tornado_AWS_blu",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
 
 // Eurofighter
-
-["EAWS_EF2000_GER_CAP",0,fast_air_vehicle_price_tier_7,0,GRLIB_perm_inf],
+// ["EAWS_EF2000_GER_CAP",0,fast_air_vehicle_price_tier_7,0,GRLIB_perm_inf],
 
 // Vanilla
-
 ["I_Plane_Fighter_04_F",0,fast_air_vehicle_price_tier_5,0,GRLIB_perm_inf],
 ["B_Plane_Fighter_01_F",0,fast_air_vehicle_price_tier_7,0,GRLIB_perm_inf],
 ["B_Plane_Fighter_01_Stealth_F",0,fast_air_vehicle_price_tier_8,0,GRLIB_perm_inf],
 
+
 // UAVs
 
 // USAF
-
 ["USAF_RQ4A",0,fast_air_vehicle_price_tier_1,0,GRLIB_perm_inf],     //Global hawk
 ["USAF_MQ9",0,fast_air_vehicle_price_tier_2,0,GRLIB_perm_inf],  //Reaper
 
 // BAF
-
 ["UK3CB_BAF_MQ9_Reaper_DPMW",0,fast_air_vehicle_price_tier_2,0,GRLIB_perm_inf],    //Reaper
 
 // FFAA
-
 ["ffaa_ea_reaper",0,fast_air_vehicle_price_tier_3,0,GRLIB_perm_inf],    //Reaper
 
 // Vanilla
-
 ["B_UAV_05_F",0,fast_air_vehicle_price_tier_5,0,GRLIB_perm_inf]     //Sentinel
 ];
+
+
 
 blufor_air = [
 "RHS_AH1Z_wd",
