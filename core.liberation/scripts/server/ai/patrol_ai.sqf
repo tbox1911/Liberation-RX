@@ -61,13 +61,15 @@ while { count (units _grp) > 0 } do {
 			_waypoint setWaypointSpeed "FULL";
 			_waypoint setWaypointBehaviour "AWARE";
 			_waypoint setWaypointCombatMode "GREEN";
-			_waypoint setWaypointCompletionRadius 30;
+			_waypoint setWaypointCompletionRadius 100;
 			_waypoint = _grp addWaypoint [markerpos reinforcements_sector_under_attack, 50];
 			_waypoint setWaypointSpeed "LIMITED";
 			_waypoint setWaypointType "SAD";
+			_waypoint setWaypointCompletionRadius 100;
 			_waypoint = _grp addWaypoint [markerpos reinforcements_sector_under_attack, 50];
 			_waypoint setWaypointSpeed "LIMITED";
 			_waypoint setWaypointType "SAD";
+			_waypoint setWaypointCompletionRadius 100;
 			_waypoint = _grp addWaypoint [markerpos reinforcements_sector_under_attack, 50];
 			_waypoint setWaypointSpeed "LIMITED";
 			_waypoint setWaypointType "CYCLE";
@@ -102,12 +104,9 @@ while { count (units _grp) > 0 } do {
 				_waypoint setWaypointSpeed "NORMAL";
 				_waypoint setWaypointBehaviour "AWARE";
 				_waypoint setWaypointCombatMode "GREEN";
-				_waypoint setWaypointCompletionRadius 30;
+				_waypoint setWaypointCompletionRadius 100;
 			} foreach _sectors_patrol;
 
-			_waypoint = _grp addWaypoint [_patrol_startpos, 300];
-			_waypoint setWaypointType "MOVE";
-			_waypoint setWaypointCompletionRadius 100;
 			_waypoint = _grp addWaypoint [_patrol_startpos , 300];
 			_waypoint setWaypointType "CYCLE";
 		};
