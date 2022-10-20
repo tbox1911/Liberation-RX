@@ -86,6 +86,7 @@ while {alive _unit} do {
 		doStop _unit;
 		unassignVehicle _unit;
 		[_unit] orderGetIn false;
+		[_unit] allowGetIn false;
 		if (!isnull objectParent _unit) then {
 			doGetOut _unit;
 			sleep 3;

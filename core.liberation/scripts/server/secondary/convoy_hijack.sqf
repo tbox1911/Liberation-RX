@@ -94,7 +94,6 @@ private _troops_group = [_spawnpos, ([] call F_getAdaptiveSquadComp), GRLIB_side
 {
 	_x assignAsCargoIndex [_troop_vehicle, _forEachIndex + 1];
 	_x moveInCargo _troop_vehicle;
-	[_x] orderGetIn true;
 	_x setSkill 0.65;
 	_x setSkill ["courage", 1];
 	_x allowFleeing 0;
@@ -149,6 +148,8 @@ while { _mission_in_progress } do {
 			unAssignVehicle _x;
 			_x action ["eject", vehicle _x];
 			_x action ["getout", vehicle _x];
+			[_x] orderGetIn false;
+			[_x] allowGetIn false;
 			sleep 0.2;
 		} foreach ( crew _troop_vehicle );
 
@@ -165,10 +166,10 @@ while { _mission_in_progress } do {
 	_veh_leader = vehicle (leader _convoy_group);
 	{
 		if (speed vehicle _x < 5 && (speed vehicle _veh_leader > 5 || vehicle _x == vehicle _veh_leader) && behaviour _x != "COMBAT") then {
+			(vehicle _x) setFuel 1;
 			[vehicle _x] execVM "scripts\client\actions\do_unflip.sqf";
 			if (vehicle _x != _veh_leader) then { _x doFollow (leader _convoy_group) };
 		};
-		(vehicle _x) setFuel 1;
 	} forEach (units _convoy_group);
 };
 
