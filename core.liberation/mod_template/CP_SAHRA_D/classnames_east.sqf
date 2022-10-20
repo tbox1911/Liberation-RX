@@ -73,8 +73,6 @@ divers_squad = [
 	"I_diver_F",
 	"I_diver_F",
 	"I_diver_F",
-	"I_diver_F",
-	"I_diver_F",
 	"I_diver_F"
 ];
 
@@ -87,7 +85,7 @@ militia_vehicles = [
 	"CUP_I_BMP_HQ_NAPA"
 ];
 
-boats_east = [
+opfor_boats = [
 	"CUP_I_RHIB_RACS",
 	"CUP_I_RHIB2Turret_RACS"
 ];

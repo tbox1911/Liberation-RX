@@ -72,8 +72,6 @@ divers_squad = [
 	"B_diver_F",
 	"B_diver_F",
 	"B_diver_F",
-	"B_diver_F",
-	"B_diver_F",
 	"B_diver_F"
 ];
 
@@ -85,7 +83,7 @@ militia_vehicles = [
 	"ffaa_et_vamtac_lag40"
 ];
 
-boats_east = [
+opfor_boats = [
 	"B_Boat_Armed_01_minigun_F",
 	"B_T_Boat_Armed_01_minigun_F"
 ];

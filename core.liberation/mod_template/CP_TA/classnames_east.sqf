@@ -69,8 +69,6 @@ divers_squad = [
 	"I_diver_F",
 	"I_diver_F",
 	"I_diver_F",
-	"I_diver_F",
-	"I_diver_F",
 	"I_diver_F"
 ];
 
@@ -81,7 +79,7 @@ militia_vehicles = [
 	"CUP_O_BTR40_MG_TKA"
 ];
 
-boats_east = [
+opfor_boats = [
 	"I_Boat_Armed_01_minigun_F"
 ];
 

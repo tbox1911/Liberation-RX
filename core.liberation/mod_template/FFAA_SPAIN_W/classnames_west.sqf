@@ -122,7 +122,7 @@ blufor_air = [
 	"ffaa_nh90_tth_armed"
 ];
 
-boats_east = [
+opfor_boats = [
 	"ffaa_ar_zodiac_hurricane_long",
 	"ffaa_ar_lcm"
 ];

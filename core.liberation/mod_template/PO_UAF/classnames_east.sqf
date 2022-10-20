@@ -39,15 +39,15 @@ opfor_patrol = "Land_Cargo_Patrol_V1_F";
 opfor_hq = "Land_Cargo_HQ_V1_F";
 
 militia_squad = [
-"LOP_UKR_Infantry_engineer",
-"LOP_UKR_Infantry_officer_armored",
-"LOP_UKR_Infantry_Rifleman",
-"LOP_UKR_Infantry_LAT",
-"LOP_UKR_Infantry_Light",
-"LOP_UKR_Infantry_sergeant",
-"LOP_UKR_Infantry_RPG_Asst",
-"LOP_UKR_Infantry_medic",
-"LOP_UKR_Infantry_AA"
+	"LOP_UKR_Infantry_engineer",
+	"LOP_UKR_Infantry_officer_armored",
+	"LOP_UKR_Infantry_Rifleman",
+	"LOP_UKR_Infantry_LAT",
+	"LOP_UKR_Infantry_Light",
+	"LOP_UKR_Infantry_sergeant",
+	"LOP_UKR_Infantry_RPG_Asst",
+	"LOP_UKR_Infantry_medic",
+	"LOP_UKR_Infantry_AA"
 ];
 
 militia_loadout_overide = [
@@ -66,135 +66,133 @@ divers_squad = [
 	"B_diver_F",
 	"B_diver_F",
 	"B_diver_F",
-	"B_diver_F",
-	"B_diver_F",
 	"B_diver_F"
 ];
 
 militia_vehicles = [
-"LOP_UKR_UAZ_AGS",
-"LOP_UKR_UAZ_DshKM",
-"LOP_UKR_UAZ_SPG",
-"LOP_UKR_BTR60"
+	"LOP_UKR_UAZ_AGS",
+	"LOP_UKR_UAZ_DshKM",
+	"LOP_UKR_UAZ_SPG",
+	"LOP_UKR_BTR60"
 ];
 
-boats_east = [
+opfor_boats = [
 	"B_Boat_Armed_01_minigun_F",
 	"B_T_Boat_Armed_01_minigun_F"
 ];
 
 opfor_vehicles = [
-// Cars
-"LOP_UKR_UAZ",
-"LOP_UKR_UAZ_AGS",
-"LOP_UKR_UAZ_DshKM",
-"LOP_UKR_UAZ_Open",
-"LOP_UKR_UAZ_SPG",
-// Troop Transporter
-"LOP_UKR_BTR60",
-"LOP_UKR_BTR70",
-"LOP_UKR_BTR80",
-// Ari & Air defense
-"LOP_UKR_2S1",
-"LOP_UKR_BM21",
-"LOP_UKR_ZSU234",
-// Armored personnel carrier
-"LOP_UKR_BMD1",
-"LOP_UKR_BMD2",
-"LOP_UKR_BMP1",
-"LOP_UKR_BMP1D",
-"LOP_UKR_BMP2",
-"LOP_UKR_BMP2D",
-// Tank
-"LOP_UKR_T72BA",
-"LOP_UKR_T72BB",
-"LOP_UKR_T72BC"
+	// Cars
+	"LOP_UKR_UAZ",
+	"LOP_UKR_UAZ_AGS",
+	"LOP_UKR_UAZ_DshKM",
+	"LOP_UKR_UAZ_Open",
+	"LOP_UKR_UAZ_SPG",
+	// Troop Transporter
+	"LOP_UKR_BTR60",
+	"LOP_UKR_BTR70",
+	"LOP_UKR_BTR80",
+	// Ari & Air defense
+	"LOP_UKR_2S1",
+	"LOP_UKR_BM21",
+	"LOP_UKR_ZSU234",
+	// Armored personnel carrier
+	"LOP_UKR_BMD1",
+	"LOP_UKR_BMD2",
+	"LOP_UKR_BMP1",
+	"LOP_UKR_BMP1D",
+	"LOP_UKR_BMP2",
+	"LOP_UKR_BMP2D",
+	// Tank
+	"LOP_UKR_T72BA",
+	"LOP_UKR_T72BB",
+	"LOP_UKR_T72BC"
 ];
 
 opfor_vehicles_low_intensity = [
-// Cars
-"LOP_UKR_UAZ",
-"LOP_UKR_UAZ_AGS",
-"LOP_UKR_UAZ_DshKM",
-"LOP_UKR_UAZ_Open",
-"LOP_UKR_UAZ_SPG",
-// Troop Transporter
-"LOP_UKR_BTR60",
-"LOP_UKR_BTR70",
-"LOP_UKR_BTR80"
+	// Cars
+	"LOP_UKR_UAZ",
+	"LOP_UKR_UAZ_AGS",
+	"LOP_UKR_UAZ_DshKM",
+	"LOP_UKR_UAZ_Open",
+	"LOP_UKR_UAZ_SPG",
+	// Troop Transporter
+	"LOP_UKR_BTR60",
+	"LOP_UKR_BTR70",
+	"LOP_UKR_BTR80"
 ];
 
 opfor_battlegroup_vehicles = [
-// Cars
-"LOP_UKR_UAZ",
-"LOP_UKR_UAZ_AGS",
-"LOP_UKR_UAZ_DshKM",
-"LOP_UKR_UAZ_Open",
-"LOP_UKR_UAZ_SPG",
-// Troop Transporter
-"LOP_UKR_BTR60",
-"LOP_UKR_BTR70",
-"LOP_UKR_BTR80",
-// Ari & Air defense
-"LOP_UKR_2S1",
-"LOP_UKR_BM21",
-"LOP_UKR_ZSU234",
-// Armored personnel carrier
-"LOP_UKR_BMD1",
-"LOP_UKR_BMD2",
-"LOP_UKR_BMP1",
-"LOP_UKR_BMP1D",
-"LOP_UKR_BMP2",
-"LOP_UKR_BMP2D",
-// Tank
-"LOP_UKR_T72BA",
-"LOP_UKR_T72BB",
-"LOP_UKR_T72BC"
+	// Cars
+	"LOP_UKR_UAZ",
+	"LOP_UKR_UAZ_AGS",
+	"LOP_UKR_UAZ_DshKM",
+	"LOP_UKR_UAZ_Open",
+	"LOP_UKR_UAZ_SPG",
+	// Troop Transporter
+	"LOP_UKR_BTR60",
+	"LOP_UKR_BTR70",
+	"LOP_UKR_BTR80",
+	// Ari & Air defense
+	"LOP_UKR_2S1",
+	"LOP_UKR_BM21",
+	"LOP_UKR_ZSU234",
+	// Armored personnel carrier
+	"LOP_UKR_BMD1",
+	"LOP_UKR_BMD2",
+	"LOP_UKR_BMP1",
+	"LOP_UKR_BMP1D",
+	"LOP_UKR_BMP2",
+	"LOP_UKR_BMP2D",
+	// Tank
+	"LOP_UKR_T72BA",
+	"LOP_UKR_T72BB",
+	"LOP_UKR_T72BC"
 ];
 
 opfor_battlegroup_vehicles_low_intensity = [
-// Cars
-"LOP_UKR_UAZ",
-"LOP_UKR_UAZ_AGS",
-"LOP_UKR_UAZ_DshKM",
-"LOP_UKR_UAZ_Open",
-"LOP_UKR_UAZ_SPG",
-// Troop Transporter
-"LOP_UKR_BTR60",
-"LOP_UKR_BTR70",
-"LOP_UKR_BTR80"
+	// Cars
+	"LOP_UKR_UAZ",
+	"LOP_UKR_UAZ_AGS",
+	"LOP_UKR_UAZ_DshKM",
+	"LOP_UKR_UAZ_Open",
+	"LOP_UKR_UAZ_SPG",
+	// Troop Transporter
+	"LOP_UKR_BTR60",
+	"LOP_UKR_BTR70",
+	"LOP_UKR_BTR80"
 ];
 
 opfor_troup_transports_truck = [
-"LOP_UKR_Ural",
-"LOP_UKR_Ural_open"
+	"LOP_UKR_Ural",
+	"LOP_UKR_Ural_open"
 ];
 
 opfor_troup_transports_heli = [
-"LOP_UKR_Mi8MT_Cargo",
-"LOP_UKR_Mi8MTV3_FAB"
+	"LOP_UKR_Mi8MT_Cargo",
+	"LOP_UKR_Mi8MTV3_FAB"
 ];
 
 opfor_air = [
-"LOP_UKR_Mi8MT_Cargo",
-"LOP_UKR_Mi8MTV3_FAB",
-"LOP_UKR_Mi8MTV3_UPK23",
-"LOP_UKR_Mi24V_AT",
-"LOP_UKR_Mi24V_FAB",
-"LOP_UKR_Mi24V_UPK23"
+	"LOP_UKR_Mi8MT_Cargo",
+	"LOP_UKR_Mi8MTV3_FAB",
+	"LOP_UKR_Mi8MTV3_UPK23",
+	"LOP_UKR_Mi24V_AT",
+	"LOP_UKR_Mi24V_FAB",
+	"LOP_UKR_Mi24V_UPK23"
 ];
 
 opfor_statics = [
-"LOP_UKR_Static_D30",
-"LOP_UKR_Static_AT4",
-"LOP_UKR_Igla_AA_pod",
-"LOP_UKR_AGS30_TriPod",
-"LOP_UKR_Static_DSHKM",
-"LOP_UKR_Kord",
-"LOP_UKR_Kord_High",
-"LOP_UKR_NSV_TriPod",
-"LOP_UKR_Static_SPG9",
-"LOP_UKR_ZU23"
+	"LOP_UKR_Static_D30",
+	"LOP_UKR_Static_AT4",
+	"LOP_UKR_Igla_AA_pod",
+	"LOP_UKR_AGS30_TriPod",
+	"LOP_UKR_Static_DSHKM",
+	"LOP_UKR_Kord",
+	"LOP_UKR_Kord_High",
+	"LOP_UKR_NSV_TriPod",
+	"LOP_UKR_Static_SPG9",
+	"LOP_UKR_ZU23"
 ];
 
 

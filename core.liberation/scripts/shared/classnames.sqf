@@ -27,6 +27,59 @@ if (isServer) then {
 // *** CIVILIAN ***
 [] call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_civ.sqf", GRLIB_mod_west];
 
+// *** INDEPENDENT ***
+ind_recyclable = [
+	["I_HMG_01_high_F",0,round (80 / GRLIB_recycling_percentage),0],
+	["I_GMG_01_high_F",0,round (80 / GRLIB_recycling_percentage),0],
+	["I_static_AA_F",0,round (80 / GRLIB_recycling_percentage),0],
+	["I_static_AT_F",0,round (80 / GRLIB_recycling_percentage),0],
+	["I_Mortar_01_F",0,round (300 / GRLIB_recycling_percentage),0],
+	["I_Truck_02_covered_F",0,round (20 / GRLIB_recycling_percentage),0],
+	["I_Truck_02_transport_F",0,round (20 / GRLIB_recycling_percentage),0],
+	["I_Heli_light_03_dynamicLoadout_F",0,round (20 / GRLIB_recycling_percentage),0]
+];
+
+// *** MILITIA ***
+if ( isNil "militia_squad" ) then {
+	militia_squad = [
+		"O_G_Soldier_SL_F",
+		"O_G_Soldier_A_F",
+		"O_G_Soldier_AR_F",
+		"O_G_Soldier_AR_F",	
+		"O_G_medic_F",
+		"O_G_engineer_F",
+		"O_G_Soldier_exp_F",
+		"O_G_Soldier_GL_F",
+		"O_G_Soldier_M_F",
+		"O_G_Soldier_F",
+		"O_G_Soldier_LAT_F",
+		"O_G_Soldier_LAT_F",	
+		"O_G_Soldier_lite_F",
+		"O_G_Sharpshooter_F",
+		"O_G_Soldier_TL_F",
+		"O_Soldier_AA_F",
+		"O_Soldier_AT_F"
+	];
+};
+
+if ( isNil "militia_loadout_overide" ) then {
+	militia_loadout_overide = [
+		"O_Soldier_AA_F",
+		"O_Soldier_AT_F"
+	];
+};
+
+if ( isNil "militia_vehicles" ) then {
+	militia_vehicles = [
+		"O_G_Offroad_01_armed_F",
+		"O_G_Offroad_01_armed_F",
+		"O_G_Offroad_01_AT_F",
+		"I_C_Offroad_02_LMG_F",
+		"O_LSV_02_armed_F",
+		"O_LSV_02_AT_F"
+	];
+};
+
 // *** SUPPORT ***
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 support_vehicles = [
@@ -122,7 +175,7 @@ boats_names = [
 	"C_Boat_Transport_02_F",
 	"B_Boat_Transport_01_F",
 	"B_Boat_Armed_01_minigun_F"
-] + boats_east + boats_west;
+] + opfor_boats + boats_west;
 
 boats_names_civ = [
 	"C_Scooter_Transport_01_F",
@@ -132,7 +185,37 @@ boats_names_civ = [
 	"C_Boat_Civil_01_rescue_F"
 ];
 
-// *** RESISTANCE ***
+// *** LRX - A3W ***
+if ( isNil "guard_squad" ) then {
+	guard_squad = [
+		"O_GEN_Commander_F",
+		"O_GEN_Soldier_F",
+		"O_GEN_Soldier_F",
+		"O_GEN_Soldier_F",
+		"O_GEN_Soldier_F"
+	];
+};
+if ( isNil "guard_loadout_overide" ) then {
+	guard_loadout_overide = [
+		"O_GEN_Commander_F"
+	];
+};
+
+if ( isNil "divers_squad" ) then {
+	divers_squad = [
+		"O_diver_TL_F",
+		"O_diver_TL_F",
+		"O_diver_exp_F",
+		"O_diver_exp_F",
+		"O_diver_exp_F",
+		"O_diver_F",
+		"O_diver_F",
+		"O_diver_F",
+		"O_diver_F",
+		"O_diver_F"
+	];
+};
+
 if ( isNil "resistance_squad" ) then {
 	resistance_squad = [
 		"I_G_Soldier_SL_F",
@@ -149,17 +232,6 @@ if ( isNil "resistance_squad" ) then {
 		"I_G_Soldier_TL_F"
 	];
 };
-
-ind_recyclable = [
-	["I_HMG_01_high_F",0,round (80 / GRLIB_recycling_percentage),0],
-	["I_GMG_01_high_F",0,round (80 / GRLIB_recycling_percentage),0],
-	["I_static_AA_F",0,round (80 / GRLIB_recycling_percentage),0],
-	["I_static_AT_F",0,round (80 / GRLIB_recycling_percentage),0],
-	["I_Mortar_01_F",0,round (300 / GRLIB_recycling_percentage),0],
-	["I_Truck_02_covered_F",0,round (20 / GRLIB_recycling_percentage),0],
-	["I_Truck_02_transport_F",0,round (20 / GRLIB_recycling_percentage),0],
-	["I_Heli_light_03_dynamicLoadout_F",0,round (20 / GRLIB_recycling_percentage),0]
-];
 
 // *** TRANSPORT CONFIG ***
 box_transport_config = [];
@@ -338,7 +410,7 @@ opfor_squad_8_airkillers = [
 	opfor_aa
 ];
 all_resistance_troops = [] + militia_squad;
-all_hostile_classnames = (land_vehicles_classnames + opfor_air + opfor_troup_transports_heli + opfor_troup_transports_truck + opfor_vehicles_low_intensity + opfor_statics + boats_east);
+all_hostile_classnames = (land_vehicles_classnames + opfor_air + opfor_troup_transports_heli + opfor_troup_transports_truck + opfor_vehicles_low_intensity + opfor_statics + opfor_boats);
 { land_vehicles_classnames pushback (_x select 0); } foreach (heavy_vehicles + light_vehicles);
 air_vehicles_classnames = [] + opfor_troup_transports_heli;
 { air_vehicles_classnames pushback (_x select 0); } foreach air_vehicles;

@@ -127,8 +127,9 @@ blufor_air = [
 
 
 boats_west = [
-	"B_Boat_Transport_01_F",
-	"B_Boat_Armed_01_minigun_F"
+  	"B_Boat_Transport_01_F",
+	"B_Boat_Armed_01_minigun_F",
+	"B_T_Boat_Armed_01_minigun_F"
 ];
 
 static_vehicles = [
