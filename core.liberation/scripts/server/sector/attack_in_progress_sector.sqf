@@ -1,8 +1,8 @@
 params [ "_sector" ];
 diag_log format ["Spawn Attack Sector %1 at %2", _sector, time];
 private _max_prisonners = 4;
-sleep 10;
 
+sleep 60;
 private _ownership = [ markerpos _sector ] call F_sectorOwnership;
 if ( _ownership != GRLIB_side_enemy ) exitWith {};
 
