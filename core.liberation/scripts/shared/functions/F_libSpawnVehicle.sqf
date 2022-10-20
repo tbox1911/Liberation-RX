@@ -37,7 +37,7 @@ if ( _classname isKindOf "Air" ) then {
 		if ( _civilian ) then {
 			_classname = selectRandom boats_names_civ;
 		} else {
-			_classname = selectRandom boats_east;
+			_classname = selectRandom opfor_boats;
 		};
 	};
 	_newvehicle = createVehicle [_classname, _spawnpos, [], 0, "NONE"];
