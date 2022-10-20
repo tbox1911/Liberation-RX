@@ -1,28 +1,26 @@
-params [ "_unit", ["_force_surrender", false] ];
-
-if ( (!_force_surrender) && (typeof _unit == pilot_classname) ) exitWith {};
+params [ "_unit", ["_friendly", false], ["_canmove", false] ];
 
 sleep 3;
 if (!alive _unit) exitWith {};
 
-// Init priso
-removeAllWeapons _unit;
-if (typeof _unit != pilot_classname) then {
-	removeHeadgear _unit;
+if (!_canmove) then {
+	// Init priso
+	removeAllWeapons _unit;
+	//removeHeadgear _unit;
+	removeBackpack _unit;
+	removeVest _unit;
+	_hmd = (hmd _unit);
+	_unit unassignItem _hmd;
+	_unit removeItem _hmd;
+	_unit setUnitPos "UP";
+	sleep 1;
+	_unit disableAI "ANIM";
+	_unit disableAI "MOVE";
+	_unit playmove "AmovPercMstpSnonWnonDnon_AmovPercMstpSsurWnonDnon" ;
+	sleep 2;
+	_unit setCaptive true;
 };
-removeBackpack _unit;
-removeVest _unit;
-_unit unassignItem "NVGoggles_OPFOR";
-_unit removeItem "NVGoggles_OPFOR";
-_unit unassignItem "NVGoggles_INDEP";
-_unit removeItem "NVGoggles_INDEP";
-_unit setUnitPos "UP";
-sleep 1;
-_unit disableAI "ANIM";
-_unit disableAI "MOVE";
-_unit playmove "AmovPercMstpSnonWnonDnon_AmovPercMstpSsurWnonDnon" ;
-sleep 2;
-_unit setCaptive true;
+
 _unit setVariable ["GRLIB_is_prisonner", true, true];
 _unit setVariable ["GRLIB_can_speak", true, true];
 
@@ -41,8 +39,9 @@ sleep 1;
 while {alive _unit} do {
 
 	// Flee
-	private _is_near_blufor = count ([allUnits, { side _x == GRLIB_side_friendly && (_x distance2D _unit) < 100 }] call BIS_fnc_conditionalSelect);
-	if ( _is_near_blufor == 0 && side group _unit == GRLIB_side_friendly && typeof _unit != pilot_classname ) then {
+	private _is_near_blufor = count ([units GRLIB_side_friendly, { (isNil {_x getVariable "GRLIB_is_prisonner"}) && (_x distance2D _unit) < 100 }] call BIS_fnc_conditionalSelect);
+	if ( _is_near_blufor == 0 && side group _unit == GRLIB_side_friendly && !_friendly ) then {
+		gamelogic globalChat format ["Alert! prisonner %1 is escaping!", name _unit];
 		_unit setUnitPos "AUTO";
 		_unit setVariable ["GRLIB_is_prisonner", true, true];
 		unAssignVehicle _unit;
