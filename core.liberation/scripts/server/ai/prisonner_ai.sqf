@@ -25,7 +25,9 @@ _unit setVariable ["GRLIB_is_prisonner", true, true];
 _unit setVariable ["GRLIB_can_speak", true, true];
 
 // Wait
-waitUntil { sleep 1;!alive _unit || side group _unit == GRLIB_side_friendly	};
+private _timeout = time + (15 * 60);
+waitUntil { sleep 1;!alive _unit || side group _unit == GRLIB_side_friendly	|| time > _timeout};
+
 if (!alive _unit) exitWith {};
 
 // Follow
@@ -37,19 +39,22 @@ sleep 1;
 [_unit, ""] remoteExec ["switchmove", 0];
 
 while {alive _unit} do {
-
 	// Flee
 	private _is_near_blufor = count ([units GRLIB_side_friendly, { (isNil {_x getVariable "GRLIB_is_prisonner"}) && (_x distance2D _unit) < 100 }] call BIS_fnc_conditionalSelect);
-	if ( _is_near_blufor == 0 && side group _unit == GRLIB_side_friendly && !_friendly ) then {
-		gamelogic globalChat format ["Alert! prisonner %1 is escaping!", name _unit];
+	if ( _is_near_blufor == 0 && !_friendly ) then {
+		if (side group _unit == GRLIB_side_friendly) then {
+			[gamelogic, _text] remoteExec ["globalChat", (owner group _unit)];
+		};
 		_unit setUnitPos "AUTO";
 		_unit setVariable ["GRLIB_is_prisonner", true, true];
 		unAssignVehicle _unit;
-
-		if ((vehicle _unit != _unit) && !(_unit isEqualTo (driver vehicle _unit))) then {
+		if (!isNull objectParent _unit) then {
 			_unit action ["eject", vehicle _unit];
 			_unit action ["getout", vehicle _unit];
+			[_unit] orderGetIn false;
+			[_unit] allowGetIn false;
 		};
+		sleep 2;
 
 		private _nearest_sector = [(sectors_allSectors - blufor_sectors), _unit] call F_nearestPosition;
 
@@ -71,11 +76,10 @@ while {alive _unit} do {
 			_waypoint setWaypointType "MOVE";
 			_waypoint setWaypointCompletionRadius 50;
 			_waypoint setWaypointStatements ["true", "deleteVehicle this"];
-			sleep 10;
+			sleep 300;
 		} else {
-			sleep 60;
 			{ deleteVehicle _x } forEach _flee_grp;
-		};
+		};	
 	};
 
 	// Captured
