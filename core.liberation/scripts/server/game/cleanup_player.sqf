@@ -56,11 +56,10 @@ if !(isNull _unit) then {
 	private _bros = allUnits select {(_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1", _uid]};
 	{ deleteVehicle _x } forEach _bros;
 
-	// remove old grave and box
-	private _old_grave = _unit getVariable "GRLIB_grave";
-	if (!isNil "_old_grave") then { 
-		{ deleteVehicle _x } forEach (attachedObjects _old_grave);
-		deleteVehicle _old_grave;
+	// remove last grave box
+	private _old_graves = _unit getVariable ["GRLIB_grave", []];
+	if (count _old_graves > 0) then {
+		{ deleteVehicle _x } forEach (attachedObjects (_old_graves select (count _old_graves)-1));
 	};
 
 	// Remove Taxi

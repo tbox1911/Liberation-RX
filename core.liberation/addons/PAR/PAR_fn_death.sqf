@@ -1,5 +1,5 @@
 params ["_unit"];
-private ["_pos", "_grave", "_grave_box", "_old_grave", "_uniform", "_vest", "_backpack" ];
+private ["_pos", "_grave", "_grave_box", "_old_graves", "_uniform", "_vest", "_backpack" ];
 
 _unit connectTerminalToUAV objNull;
 [(_unit getVariable ['PAR_myMedic', objNull]), _unit] call PAR_fn_medicRelease;
@@ -20,13 +20,6 @@ if (_unit == player) then {
 		_grave setvariable ["GRLIB_grave_message", format ["%1 - R.I.P -", name player], true];
 		_grave_dir = getDir _grave;
 
-		// remove old grave and box
-		_old_grave = _unit getVariable "GRLIB_grave";
-		if (!isNil "_old_grave") then { 
-			{ deleteVehicle _x } forEach (attachedObjects _old_grave);
-			deleteVehicle _old_grave;
-		};
-
 		// create grave box
 		_grave_box_pos = (getposATL _grave) vectorAdd ([[-1.75, 0, 0], -_grave_dir] call BIS_fnc_rotateVector2D);
 		_grave_box = "Land_PlasticCase_01_small_black_F" createVehicle _grave_box_pos;
@@ -34,7 +27,19 @@ if (_unit == player) then {
 		_grave_box attachto [_grave];
 		_grave_box setVariable ["R3F_LOG_disabled", true, true];
 		_grave_box setVariable ["GRLIB_vehicle_owner", getPlayerUID player, true];
-		_unit setvariable ["GRLIB_grave", _grave, true];
+
+		// remove old grave and box
+		_old_graves_max = 5;
+		_old_graves = _unit getVariable ["GRLIB_grave", []];
+		if (count _old_graves > 0) then {
+			{ deleteVehicle _x } forEach (attachedObjects (_old_graves select (count _old_graves)-1));
+			if (count _old_graves >= _old_graves_max) then { 
+				deleteVehicle (_old_graves select 0);
+				_old_graves deleteAt 0;
+			};
+		};
+		_old_graves pushback _grave;
+		_unit setvariable ["GRLIB_grave", _old_graves, true];
 
 		// clear box
 		clearWeaponCargo _grave_box;
