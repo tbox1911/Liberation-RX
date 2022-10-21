@@ -8,7 +8,7 @@ params [
 private ["_unit", "_nb_unit", "_validpos", "_max_try"];
 if (count _classname == 0) exitWith {diag_log ["DBG: Error libunit ", _this]};
 
-if (_type in ["divers", "para", "defender"]) then {
+if (_type in ["divers", "para", "defender", "guard"]) then {
 	_nb_unit = count _classname;
 } else {
 	_nb_unit = round ((count _classname) * ([] call F_adaptiveOpforFactor));
@@ -38,7 +38,7 @@ private _grp = createGroup [_side, true];
 			_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 			[_unit] joinSilent _grp;
 			if (_type == "para") then {_unit addBackpack "B_Parachute"};
-			if (_type == "militia") then {[ _unit ] call loadout_militia};
+			if (_type in ["militia", "guard"]) then {[ _unit ] call loadout_militia};
 			[ _unit ] call reammo_ai;
             _unit switchMove "amovpknlmstpsraswrfldnon";
 			_unit playMoveNow "amovpknlmstpsraswrfldnon"; 
