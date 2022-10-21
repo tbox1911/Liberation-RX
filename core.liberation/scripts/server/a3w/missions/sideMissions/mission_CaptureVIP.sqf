@@ -71,7 +71,6 @@ _setupObjects =
 		_waypoint setWaypointBehaviour "SAFE";
 		_waypoint setWaypointFormation "COLUMN";
 	} forEach (_citylist call BIS_fnc_arrayShuffle);
-	//{_x doFollow leader _aiGroup} foreach units _aiGroup;
 
 	sleep 15;
 	_missionPos = getPosATL leader _aiGroup;
@@ -88,7 +87,7 @@ _waitUntilCondition = {
 	if (combatMode _aiGroup != "GREEN") then {
 		{ 
 			_veh = objectParent _x;
-			if (_x == driver _veh) then { doStop _x; sleep 2 };
+			if (driver _veh == _x) then { doStop _x };
 			if (!(isNull _veh) && speed vehicle _veh < 5) then {
 				unAssignVehicle _x;
 				_x action ["eject", vehicle _x];
@@ -97,6 +96,7 @@ _waitUntilCondition = {
 				[_x] allowGetIn false;
 				sleep 0.2;
 			};
+			if (driver _veh == _x) then { _x doFollow (leader _aiGroup) };
 		} forEach (units _aiGroup);
 		_aiGroup setBehaviour "COMBAT";
 		_aiGroup setCombatMode "RED";
