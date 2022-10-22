@@ -1,46 +1,91 @@
 params [ "_targetsector" ];
 
-if (floor(random combat_readiness) > (15 + (30 / GRLIB_csat_aggressivity))) then {
+if (combat_readiness < 35 || GRLIB_csat_aggressivity < 1 || diag_fps < 35) exitWith {};
 
-	_init_units_count = ( ([ getmarkerpos _targetsector , GRLIB_capture_size , GRLIB_side_enemy ] call F_getUnitsCount) );
+diag_log format ["Spawn Reinforcement on Sector %1 at %2", _targetsector, time];
 
-	if ( !(_targetsector in sectors_bigtown)) then {
-		while { (_init_units_count * 0.75) <=  ( [ getmarkerpos _targetsector , GRLIB_capture_size , GRLIB_side_enemy ] call F_getUnitsCount ) } do {
-			sleep 5;
+if ( _targetsector in active_sectors ) then {
+	// before attack
+	_nearestower = [markerpos _targetsector, GRLIB_side_enemy, GRLIB_radiotower_size * 1.4] call F_getNearestTower;
+	if ( _nearestower != "" ) then {
+		sleep (60 + floor(random 60));
+		if (_targetsector in active_sectors) then {
+			diag_log format ["Spawn Paratroopers on Sector %1 at %2", _targetsector, time];
+			["lib_reinforcements", [markertext _targetsector]] remoteExec ["bis_fnc_shownotification", 0];
+			[ markerPos _targetsector ] spawn send_paratroopers;
+			stats_reinforcements_called = stats_reinforcements_called + 1;
 		};
 	};
 
-	if ( _targetsector in active_sectors ) then {
+	// if ( combat_readiness >= 65 ) then {
+	// 	_vehicle = [_pos, "O_Truck_03_transport_F"] call F_libSpawnVehicle;
+  	// 	[group (driver _vehicle), false] spawn battlegroup_ai;
+	// };
 
-		_nearestower = [markerpos _targetsector, GRLIB_side_enemy, GRLIB_radiotower_size * 1.4] call F_getNearestTower;
-
-		if ( _nearestower != "" ) then {
-			_reinforcements_time = (((((markerpos _nearestower) distance (markerpos _targetsector)) / 1000) ^ 1.66 ) * 120) / (GRLIB_difficulty_modifier * GRLIB_csat_aggressivity);
-			if (_targetsector in sectors_bigtown) then {
-				_reinforcements_time = _reinforcements_time * 0.35;
-			};
-			_current_timer = time;
-
-			waitUntil { sleep 0.3; (_current_timer + _reinforcements_time < time) || (_targetsector in blufor_sectors) || (_nearestower in blufor_sectors) };
-
-			sleep 15;
-
-			if ( (_targetsector in active_sectors) && !(_targetsector in blufor_sectors) && !(_nearestower in blufor_sectors) && (!([] call F_isBigtownActive) || _targetsector in sectors_bigtown)  ) then {
-				reinforcements_sector_under_attack = _targetsector;
-				reinforcements_set = true;
-				diag_log format ["Spawn Reinforcement on Sector %1 at %2", _targetsector, time];
-				["lib_reinforcements", [markertext _targetsector]] remoteExec ["bis_fnc_shownotification", 0];
-				[ markerPos _targetsector ] spawn send_paratroopers;
-				stats_reinforcements_called = stats_reinforcements_called + 1;
-				
-				if ( combat_readiness >= 90 ) then { 
-					sleep 15;
-					[ markerPos _targetsector ] spawn send_paratroopers;
-					stats_reinforcements_called = stats_reinforcements_called + 1;
-				};
-
-				publicVariable "stats_reinforcements_called";
-			};
+	if ( combat_readiness >= 80 ) then {
+		sleep (60 + floor(random 60));
+		if (_targetsector in active_sectors) then {
+			diag_log format ["Spawn Paratroopers on Sector %1 at %2", _targetsector, time];
+			["lib_reinforcements", [markertext _targetsector]] remoteExec ["bis_fnc_shownotification", 0];
+			[ markerPos _targetsector ] spawn send_paratroopers;
+			stats_reinforcements_called = stats_reinforcements_called + 1;
 		};
 	};
+} else {
+	// after attack
+	if !(_targetsector in blufor_sectors) exitWith {};
+	
+	private _defensecount = 2;
+	private _sector1 = [GRLIB_sector_size * 2, markerpos _targetsector, (sectors_allSectors - blufor_sectors)] call F_getNearestSector;
+	if (_sector1 != "") then {
+		diag_log format ["Spawn Defense on Sector %1 at %2", _sector1, time];
+		if ( _sector1 in sectors_tower) then {
+			[ _sector1, _defensecount ] spawn static_manager;
+		} else {
+			[_sector1, (1 + floor (random 2))] spawn patrol_manager;
+		};
+		sleep 3;
+		if ( _sector1 in sectors_military) then {
+			[_sector1, 2] spawn patrol_manager;
+		};
+		stats_reinforcements_called = stats_reinforcements_called + 1;
+	};
+	sleep 5;
+
+	if ( combat_readiness > 65 ) then {
+		private _sector2 = [GRLIB_sector_size * 3, markerpos _targetsector, (sectors_allSectors - blufor_sectors - [_sector1])] call F_getNearestSector;
+		if (_sector2 != "") then {
+			diag_log format ["Spawn Defense on Sector %1 at %2", _sector2, time];
+			if ( _sector2 in sectors_tower) then {
+				[ _sector2, _defensecount ] spawn static_manager;
+			} else {
+				[_sector2, (1 + floor (random 2))] spawn patrol_manager;
+			};
+			sleep 3;
+			if ( _sector2 in sectors_military) then {
+				[_sector2, 2] spawn patrol_manager;
+			};
+			stats_reinforcements_called = stats_reinforcements_called + 1;
+		};
+	 };
+	 sleep 5;
+
+	if ( combat_readiness > 90 ) then {
+		private _sector3 = [GRLIB_sector_size * 4, markerpos _targetsector, (sectors_allSectors - blufor_sectors - [_sector1, _sector2])] call F_getNearestSector;
+		if (_sector3 != "") then {
+			diag_log format ["Spawn Defense on Sector %1 at %2", _sector3, time];
+			if ( _sector3 in sectors_tower) then {
+				[ _sector3, _defensecount ] spawn static_manager;
+			} else {
+				[_sector3, (1 + floor (random 2))] spawn patrol_manager;
+			};
+			sleep 3;
+			if ( _sector3 in sectors_military) then {
+				[_sector3, 2] spawn patrol_manager;
+			};
+			stats_reinforcements_called = stats_reinforcements_called + 1;
+		};
+	 };
 };
+
+publicVariable "stats_reinforcements_called";

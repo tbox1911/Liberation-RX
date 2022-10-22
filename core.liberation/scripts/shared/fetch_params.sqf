@@ -41,7 +41,6 @@ GRLIB_permission_vehicles = ["EnableLock",1] call bis_fnc_getParamValue;
 //------------------------------------------------------------------------
 GRLIB_civilian_activity = ["Civilians",1] call bis_fnc_getParamValue;
 GRLIB_wildlife_manager = ["Wildlife",1] call bis_fnc_getParamValue;
-GRLIB_Patrol_manager = ["Patrol",1] call bis_fnc_getParamValue;
 GRLIB_ammo_bounties = [ "AmmoBounties",0] call bis_fnc_getParamValue;
 GRLIB_civ_penalties = [ "CivPenalties",0] call bis_fnc_getParamValue;
 GRLIB_halo_param = ["HaloJump",1] call bis_fnc_getParamValue;

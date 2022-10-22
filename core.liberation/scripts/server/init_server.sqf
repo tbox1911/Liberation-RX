@@ -28,7 +28,6 @@ add_civ_waypoints = compileFinal preprocessFileLineNumbers "scripts\server\ai\ad
 add_defense_waypoints = compileFinal preprocessFileLineNumbers "scripts\server\ai\add_defense_waypoints.sqf";
 battlegroup_ai = compileFinal preprocessFileLineNumbers "scripts\server\ai\battlegroup_ai.sqf";
 building_defence_ai = compileFinal preprocessFileLineNumbers "scripts\server\ai\building_defence_ai.sqf";
-patrol_ai = compileFinal preprocessFileLineNumbers "scripts\server\ai\patrol_ai.sqf";
 prisonner_ai = compileFinal preprocessFileLineNumbers "scripts\server\ai\prisonner_ai.sqf";
 bomber_ai = compileFinal preprocessFileLineNumbers "scripts\server\ai\bomber_ai.sqf";
 troup_transport = compileFinal preprocessFileLineNumbers "scripts\server\ai\troup_transport.sqf";
@@ -61,6 +60,8 @@ attack_in_progress_fob = compileFinal preprocessFileLineNumbers "scripts\server\
 attack_in_progress_sector = compileFinal preprocessFileLineNumbers "scripts\server\sector\attack_in_progress_sector.sqf";
 destroy_fob = compileFinal preprocessFileLineNumbers "scripts\server\sector\destroy_fob.sqf";
 ied_manager = compileFinal preprocessFileLineNumbers "scripts\server\sector\ied_manager.sqf";
+static_manager = compileFinal preprocessFileLineNumbers "scripts\server\sector\static_manager.sqf";
+patrol_manager = compileFinal preprocessFileLineNumbers "scripts\server\sector\patrol_manager.sqf";
 manage_ammoboxes = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_ammoboxes.sqf";
 manage_one_sector = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_one_sector.sqf";
 
@@ -90,11 +91,9 @@ if (abort_loading) exitWith {
 [] execVM "scripts\server\battlegroup\counter_battlegroup.sqf";
 [] execVM "scripts\server\battlegroup\random_battlegroups.sqf";
 [] execVM "scripts\server\battlegroup\readiness_increase.sqf";
-[] execVM "scripts\server\patrols\reinforcements_resetter.sqf";
 [] execVM "scripts\server\resources\unit_cap.sqf";
 [] execVM "scripts\server\resources\manage_resources.sqf";
 [] execVM "scripts\server\patrols\civilian_patrols.sqf";
-[] execVM "scripts\server\patrols\manage_patrols.sqf";
 [] execVM "scripts\server\sector\manage_sectors.sqf";
 [] execVM "scripts\server\sector\lose_sectors.sqf";
 [] execVM "scripts\server\game\manage_score.sqf";

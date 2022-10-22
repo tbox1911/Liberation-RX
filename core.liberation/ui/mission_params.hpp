@@ -322,12 +322,6 @@ class Params
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 1;
 	};
-	class Patrol{
-		title = $STR_PARAM_PATROL;
-		values[] = {1,0};
-		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 1;
-	};
 	class AmmoBounties{
 		title = $STR_AMMO_BOUNTIES;
 		values[] = {1,0};
