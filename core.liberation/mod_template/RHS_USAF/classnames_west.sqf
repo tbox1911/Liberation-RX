@@ -928,7 +928,7 @@ support_crates = [
 ["Land_Pod_Heli_Transport_04_fuel_F",0,0,0,GRLIB_perm_inf],
 ["Land_Pod_Heli_Transport_04_ammo_F",0,0,0,GRLIB_perm_inf],
 ["Land_Pod_Heli_Transport_04_box_F",0,0,0,GRLIB_perm_inf],
-
+["Land_Pod_Heli_Transport_04_bench_F",0,0,0,GRLIB_perm_inf],
 // BAF Container
 ["UK3CB_BAF_MAN_HX60_Container_Blue",0,0,0,GRLIB_perm_inf],     //Cargo
 ["UK3CB_BAF_MAN_HX60_Container_Green",0,0,0,GRLIB_perm_inf],    //Cargo

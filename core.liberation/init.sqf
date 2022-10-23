@@ -420,6 +420,10 @@ if (isNil "frdl_fire_dmg_threshold") then { frdl_fire_dmg_threshold = 0.1; };
 
 
 
+["Land_Pod_Heli_Transport_04_medevac_F", "InitPost", {
+    params ["_vehicle"];
+	_vehicle setVariable ["ace_medical_medicClass", 1];
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
 // ACE Medical Vehicles
 
