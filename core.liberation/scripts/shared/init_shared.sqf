@@ -1,6 +1,5 @@
 kill_manager = compileFinal preprocessFileLineNumbers "scripts\shared\kill_manager.sqf";
 clean_vehicle = compileFinal preprocessFileLineNumbers "scripts\shared\clean_vehicle.sqf";
-protect_static = compileFinal preprocessFileLineNumbers "scripts\shared\protect_static.sqf";
 damage_manager_EH = compileFinal preprocessFileLineNumbers "scripts\shared\damage_manager.sqf";
 prisonner_captured = compileFinal preprocessFileLineNumbers "scripts\server\ai\prisonner_captured.sqf";
 

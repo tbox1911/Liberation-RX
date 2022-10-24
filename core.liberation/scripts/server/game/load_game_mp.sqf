@@ -225,7 +225,6 @@ if ( !isNil "greuh_liberation_savegame" ) then {
         };
 
         if ( _nextclass in list_static_weapons ) then {
-            [_nextbuilding] spawn protect_static;
             _nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
             _nextbuilding setVariable ["R3F_LOG_disabled", false, true];
             if (_nextclass in static_vehicles_AI) then {

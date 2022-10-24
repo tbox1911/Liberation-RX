@@ -415,16 +415,13 @@ while { true } do {
 					};
 
 					// Static Weapon
-					if ( _classname in list_static_weapons ) then {
-						[_vehicle] spawn protect_static;
-						if (_classname in static_vehicles_AI) then {
-							_vehicle setMass 5000;
-							[ _vehicle ] call F_forceBluforCrew;
-							_vehicle setVariable ["GRLIB_vehicle_manned", true, true];
-							_vehicle setVehicleLock "LOCKEDPLAYER";
-							_vehicle addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1}];
-							_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_EH }];
-						};
+					if (_classname in static_vehicles_AI) then {
+						_vehicle setMass 5000;
+						[ _vehicle ] call F_forceBluforCrew;
+						_vehicle setVariable ["GRLIB_vehicle_manned", true, true];
+						_vehicle setVehicleLock "LOCKEDPLAYER";
+						_vehicle addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1}];
+						_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_EH }];
 					};
 					
 					//Make objects movable with ACE3.

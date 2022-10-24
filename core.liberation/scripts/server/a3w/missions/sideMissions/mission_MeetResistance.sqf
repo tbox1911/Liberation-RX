@@ -68,7 +68,6 @@ _setupObjects =
 
 	// create static weapons + crew
 	_veh1 = createVehicle ["I_static_AA_F", _missionPos, [], 50, "None"];
-	[_veh1] spawn protect_static;
 	_veh1 setDir random 360;
 	sleep 0.5;
 	_gunner = (units _aiGroupRes) select ((count (units _aiGroupRes)) -1);
@@ -77,7 +76,6 @@ _setupObjects =
 	sleep 1;
 
 	_veh2 = createVehicle ["I_static_AA_F", _missionPos, [], 50, "None"];
-	[_veh2] spawn protect_static;
 	_veh2 setDir random 360;
 	sleep 0.5;
 	_gunner = (units _aiGroupRes) select ((count (units _aiGroupRes)) -2);
