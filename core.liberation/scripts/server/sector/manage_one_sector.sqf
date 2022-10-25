@@ -7,7 +7,7 @@ private _stopit = false;
 private _spawncivs = false;
 private _building_ai_max = 0;
 private _infsquad = "militia";
-private _building_range = 200;
+private _building_range = GRLIB_capture_size;
 private _local_capture_size = GRLIB_capture_size;
 private _iedcount = 0;
 private _vehtospawn = [];
@@ -53,7 +53,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 		_spawncivs = true;
 
 		_building_ai_max = round (15 * _popfactor) ;
-		_building_range = 300;
+		_building_range = GRLIB_capture_size * 1.5;
 		_local_capture_size = _local_capture_size * 1.4;
 		_iedcount = (2 + (floor (random 4))) * GRLIB_difficulty_modifier;
 		if ( _iedcount > 10 ) then { _iedcount = 10 };
@@ -67,7 +67,6 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 		if(floor(random 100) > (33 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback (selectRandom militia_vehicles); };
 		_spawncivs = true;
 		_building_ai_max = round ((floor (10 + (round (combat_readiness / 10 )))) * _popfactor);
-		_building_range = 200;
 		_iedcount = (floor (random 4)) * GRLIB_difficulty_modifier;
 		if ( _iedcount > 7 ) then { _iedcount = 7 };
 	};
@@ -87,7 +86,6 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 		if(floor(random 100) > (66 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback ( [] call F_getAdaptiveVehicle ); };
 		_spawncivs = true;
 		_building_ai_max = round ((floor (8 + (round (combat_readiness / 10 )))) * _popfactor);
-		_building_range = 110;
 	};
 
 	if ( _sector in sectors_factory ) then {
@@ -102,7 +100,6 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 		if(floor(random 100) > 33) then { _vehtospawn pushback (selectRandom militia_vehicles); };
 		_spawncivs = true;
 		_building_ai_max = round ((floor (10 + (round (combat_readiness / 10 )))) * _popfactor);
-		_building_range = 100;
 		_iedcount = (floor (random 3)) * GRLIB_difficulty_modifier;
 		if ( _iedcount > 5 ) then { _iedcount = 5 };
 	};
@@ -175,7 +172,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 		_managed_units = _managed_units + ([ _sector, _nbcivs ] call F_spawnCivilians);
 	};
 
-	[ _sector, _building_range, _iedcount ] spawn ied_manager;
+	[ _sector, _building_range * 2, _iedcount ] spawn ied_manager;
 
 	sleep 10;
 

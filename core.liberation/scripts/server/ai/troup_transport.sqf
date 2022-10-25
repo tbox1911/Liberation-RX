@@ -10,7 +10,7 @@ if (isNil "_attackedSector") then {
 	_dat_objective = _attackedSector;
 };
 if (isNil "unload_distance") then {
-	unload_distance = 700
+	unload_distance = 100
 };
 sleep 5;
 _initial_crewcount = count crew _troup_transport;
@@ -33,6 +33,7 @@ waitUntil {
 
 if ((alive _troup_transport) && (alive (driver _troup_transport))) then {
 	_troupgrp = createGroup [GRLIB_side_enemy, true];
+	_troupgrp_units = ([] call F_getAdaptiveSquadComp);
 	{
 		_unit = _troupgrp createUnit [_x, _start_pos, [], 0, "NONE"];
 		_unit addMPEventHandler ["MPKilled", {
@@ -43,7 +44,7 @@ if ((alive _troup_transport) && (alive (driver _troup_transport))) then {
 		_unit allowFleeing 0;
 		_unit setVariable ["GRLIB_counter_TTL", round(time + 1800)];
 		sleep 0.1;
-	} forEach ([] call F_getAdaptiveSquadComp);
+	} forEach (_troupgrp_units);
 
 	while { (count (waypoints _troupgrp)) != 0 } do {
 		deleteWaypoint ((waypoints _troupgrp) select 0);

@@ -1,6 +1,7 @@
-params ["_grp", "_flagpos", ["_radius", 150]];
+params ["_grp", "_flagpos"]; // params ["_grp", "_flagpos", ["_radius", 150]];
 if (isNil "_grp") exitWith {};
 
+_radius = GRLIB_capture_size * 3;
 _basepos = getpos (leader _grp);
 _is_infantry = false;
 if ( vehicle (leader _grp) == (leader _grp) ) then { _is_infantry = true };

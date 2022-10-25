@@ -103,6 +103,7 @@ opfor_vehicles = [
 	"rhsgref_ins_btr60",
 	"rhsgref_ins_btr60",
 	"rhsgref_ins_btr60",
+	"rhsgref_ins_btr60",
 	"rhsgref_ins_btr70",
 	"rhsgref_ins_bmd2",
 	"rhsgref_ins_bmp2ds",
@@ -119,8 +120,6 @@ opfor_vehicles_low_intensity = [
 	"rhsgref_ins_uaz_spg9",
 	"rhsgref_ins_btr60",
 	"rhsgref_ins_btr70",
-	"rhsgref_ins_t72bb",
-	"rhsgref_ins_ural_Zu23",
 	"B_SAM_System_02_F",
 	"B_SAM_System_02_F",
 	"B_SAM_System_02_F"
@@ -131,9 +130,9 @@ opfor_battlegroup_vehicles = [
 	"rhsgref_ins_btr60",
 	"rhsgref_ins_btr60",
 	"rhsgref_ins_btr70",
-	"rhsgref_ins_t72bb",
 	"rhsgref_ins_bmd2",
 	"rhsgref_ins_bmp2ds",
+	"rhsgref_ins_t72bb",
 	"rhsgref_ins_zsu234",
 	"rhsgref_ins_ural_Zu23"
 ];
@@ -151,10 +150,11 @@ opfor_reinforcement_vehicles = [
 	"rhsgref_ins_btr60",
 	"rhsgref_ins_btr60",
 	"rhsgref_ins_btr60",
+	"rhsgref_ins_btr60",
 	"rhsgref_ins_btr70",
-	"rhsgref_ins_t72bb",
 	"rhsgref_ins_bmd2",
 	"rhsgref_ins_bmp2ds",
+	"rhsgref_ins_t72bb",
 	"rhsgref_ins_zsu234",
 	"rhsgref_ins_ural_Zu23"
 	];
@@ -162,10 +162,8 @@ opfor_reinforcement_vehicles = [
 opfor_troup_transports = [
 	"rhsgref_ins_btr60",
 	"rhsgref_ins_btr70",
-	"rhsgref_ins_btr60",
-	"rhsgref_ins_btr70",
-	"rhsgref_ins_btr60",
-	"rhsgref_ins_btr70",
+	"rhsgref_ins_bmd2",
+	"rhsgref_ins_bmp2ds",
 	"LOP_ChDKZ_Mi8MTV3_FAB"
 ];
 
@@ -184,12 +182,6 @@ opfor_air = [
 	"RHS_Ka52_UPK23_vvsc",
 	"rhs_mi28n_s13_vvsc",
 	"rhs_mi28n_vvsc",
-	"rhs_mig29sm_vvs",
-	"RHS_T50_vvs_generic_ext",
-	"rhs_mig29sm_vvs",
-	"RHS_T50_vvs_generic_ext",
-	"rhs_mig29sm_vvs",
-	"RHS_T50_vvs_generic_ext",
 	"rhs_mig29sm_vvs",
 	"RHS_T50_vvs_generic_ext",
 	"rhs_mig29sm_vvs",
