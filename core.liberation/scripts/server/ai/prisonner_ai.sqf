@@ -43,8 +43,13 @@ while {alive _unit} do {
 	private _is_near_blufor = count ([units GRLIB_side_friendly, { (isNil {_x getVariable "GRLIB_is_prisonner"}) && (_x distance2D _unit) < 100 }] call BIS_fnc_conditionalSelect);
 	if ( _is_near_blufor == 0 && !_friendly ) then {
 		if (side group _unit == GRLIB_side_friendly) then {
-			[gamelogic, _text] remoteExec ["globalChat", (owner group _unit)];
+			private _text = format ["Alert! prisonner %1 is escaping!", name _unit];
+			[gamelogic, _text] remoteExec ["globalChat", (owner _unit)];
 		};
+
+		private _flee_grp = createGroup [GRLIB_side_enemy, true];
+		[_unit] joinSilent _flee_grp;
+
 		_unit setUnitPos "AUTO";
 		_unit setVariable ["GRLIB_is_prisonner", true, true];
 		unAssignVehicle _unit;
@@ -54,14 +59,11 @@ while {alive _unit} do {
 			[_unit] orderGetIn false;
 			[_unit] allowGetIn false;
 		};
+		_unit setCaptive true;
 		sleep 2;
 
 		private _nearest_sector = [(sectors_allSectors - blufor_sectors), _unit] call F_nearestPosition;
-
 		if (typeName _nearest_sector == "STRING") then {
-			private _flee_grp = createGroup [GRLIB_side_civilian, true];
-			[_unit] joinSilent _flee_grp;
-
 			while {(count (waypoints _flee_grp)) != 0} do {deleteWaypoint ((waypoints _flee_grp) select 0);};
 			{_x doFollow leader _flee_grp} foreach units _flee_grp;
 
