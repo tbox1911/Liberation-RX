@@ -18,6 +18,7 @@ removeBackpack player;
 removeHeadgear player;
 removeGoggles player;
 player setVariable ["GREUH_stuff_price", 0];
+player setVariable ["GRLIB_action_inuse", false];
 GRLIB_backup_loadout = getUnitLoadout player;
 waitUntil {sleep 1; !isNil "GRLIB_init_server" };
 player allowDamage true;
