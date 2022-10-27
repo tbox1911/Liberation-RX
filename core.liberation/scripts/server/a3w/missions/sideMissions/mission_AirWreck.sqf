@@ -21,6 +21,7 @@ _setupObjects =
 	_missionPos = markerPos _missionLocation;
 	_wreckPos = _missionPos vectorAdd ([[5 + floor(random 20), 0, 0], random 360] call BIS_fnc_rotateVector2D);
 	_wreck = createVehicle [GRLIB_sar_wreck, _wreckPos, [], 0, "NONE"];
+	_wreck setpos (getpos _wreck);
 	_box1 = [ammobox_b_typename, _missionPos, true] call boxSetup;
 	_box2 = [ammobox_b_typename, _missionPos, true] call boxSetup;
 	_box3 = [A3W_BoxWps, _missionPos, true] call boxSetup;

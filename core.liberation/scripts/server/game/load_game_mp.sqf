@@ -175,10 +175,13 @@ if ( !isNil "greuh_liberation_savegame" ) then {
         } else {
 			_nextbuilding = createVehicle [_nextclass, _nextpos, [], 0, "CAN_COLLIDE"];
             _nextbuilding allowDamage false;
-            _nextbuilding setVectorUp [0,0,1];
-            _nextbuilding setPosATL _nextpos;
-            _nextbuilding setdir _nextdir;
+			//diag_log format ["DBG: %1 %2", _nextclass, _nextpos];
+            _nextbuilding setDir _nextdir;
+			//_nextbuilding setPosATL _nextpos;
+			_nextbuilding setPosATL (_nextpos vectoradd [0,0,-0.04]);
+			_nextbuilding setVectorUp surfaceNormal _nextpos;
             _nextbuilding setdamage 0;
+			//diag_log format ["DBG: %1 %2", _nextclass, getposatl _nextbuilding];
         };
         _buildings_created pushback _nextbuilding;
 

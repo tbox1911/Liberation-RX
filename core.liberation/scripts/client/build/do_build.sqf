@@ -58,7 +58,6 @@ while { true } do {
 		_lst_a3 = build_unit select 3;
 		_lst_r3f = build_unit select 4;
 	};
-	
 
 	if ( buildtype in [1,2,3,4,5,6,7,8] ) then {
 		_score = score player;
@@ -233,8 +232,6 @@ while { true } do {
 					_sphere_idx = _sphere_idx + 1;
 				} foreach GRLIB_preview_spheres;
 
-				_vehicle setdir _actualdir;
-
 				_near_objects = (_truepos nearobjects ["AllVehicles", _dist]) ;
 				_near_objects = _near_objects + (_truepos nearobjects [FOB_box_typename, _dist]);
 				_near_objects = _near_objects + (_truepos nearobjects [FOB_box_outpost, _dist]);
@@ -287,7 +284,8 @@ while { true } do {
 					} else {
 						_vehicle setposATL _truepos;
 					};
-					
+					_vehicle setVectorDirAndUp [[-cos _actualdir, sin _actualdir, 0] vectorCrossProduct surfaceNormal _truepos, surfaceNormal _truepos];
+
 					if ( build_invalid == 1 ) then {
 						GRLIB_ui_notif = "";
 						{ _x setObjectTexture [0, "#(rgb,8,8,3)color(0,1,0,1)"]; } foreach GRLIB_preview_spheres;
@@ -343,12 +341,12 @@ while { true } do {
 				} else {
 					_vehicle = _classname createVehicle _truepos;
 					_vehicle allowDamage false;
-					_vehicle setdir _vehdir;
 					if ( _classname isKindOf "Ship" && surfaceIsWater _truepos ) then {
 						_vehicle setposASL _truepos;
 					} else {
 						_vehicle setposATL _truepos;
 					};
+					_vehicle setVectorDirAndUp [[-cos _vehdir, sin _vehdir, 0] vectorCrossProduct surfaceNormal _truepos, surfaceNormal _truepos];
 
 					// Ammo Box clean inventory
 					if ( !(_classname in GRLIB_Ammobox_keep) ) then {
