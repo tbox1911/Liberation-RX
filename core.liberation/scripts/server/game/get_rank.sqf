@@ -1,8 +1,8 @@
 params [["_score",0]];
 private _rank = "None";
+GRLIB_perm_zero = 0;
 
-if ((_score >= GRLIB_perm_ban) && (_score < GRLIB_perm_min)) then {_rank = "None"};
-if ((_score >= GRLIB_perm_min) && (_score < GRLIB_perm_inf)) then {_rank = "Private"};
+if ((_score >= GRLIB_perm_zero) && (_score < GRLIB_perm_inf)) then {_rank = "Private"};
 if ((_score >= GRLIB_perm_inf) && (_score < GRLIB_perm_log)) then {_rank = "Corporal"};
 if ((_score >= GRLIB_perm_log) && (_score < GRLIB_perm_tank)) then {_rank = "Sergeant"};
 if ((_score >= GRLIB_perm_tank) && (_score < GRLIB_perm_air)) then {_rank = "Captain"};

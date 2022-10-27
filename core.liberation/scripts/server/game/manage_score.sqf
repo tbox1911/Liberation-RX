@@ -35,6 +35,7 @@ while { true } do {
 					_msg = format ["Warning <t color='#00ff00'>%1</t> !!<br />You Play Wrong !! <t color='#ff0000'>Read the Manual</t>.<br /><br />%2", name _x, localize "STR_RANK_LVL0"];
 					[_msg, 0, 0, 5, 0, 0, 90] remoteExec ["BIS_fnc_dynamicText", owner _x];
 					[_uid, [false,false,false,false,false,false]] call CHG_Perm;
+					_x setVariable ["GRLIB_Rank", "None", true];
 				};
 
 				if (_cur >= 0 && _new_rank != _rank) then {
@@ -42,7 +43,7 @@ while { true } do {
 
 					_firework = true;
 					switch (_new_rank) do {
-							case "Private" : {
+						case "Private" : {
 							_msg2 = localize "STR_RANK_LVL1";
 							[_uid, [true,false,false,true,false,true]] call CHG_Perm;
 						};
