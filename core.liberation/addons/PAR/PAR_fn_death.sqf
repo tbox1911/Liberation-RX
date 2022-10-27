@@ -62,7 +62,9 @@ if (_unit == player) then {
 			{_vest addItemCargo [_x, 1]} forEach (vestItems _unit);
 		};
 
+		// headgear and hmd
 		_grave_box addItemCargo [(headgear _unit), 1];
+		_grave_box addItemCargo [(hmd _unit), 1];
 
 		// weapons + attachment
 		{_grave_box addWeaponWithAttachmentsCargo [_x, 1]} forEach weaponsItems _unit;
