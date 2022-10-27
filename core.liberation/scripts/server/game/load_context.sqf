@@ -1,8 +1,16 @@
 //--- LRX Load player context (Stuff + Ais)
 if (!isServer) exitWith {};
-params [ "_player", "_uid", "_context" ];
+params [ "_player", "_uid"];
 private ["_grp", "_pos", "_unit", "_class", "_rank", "_loadout"];
 
+if (isNull _player) exitWith {};
+
+private _score = 0; 
+{if ((_x select 0) == _uid) exitWith {_score = (_x select 1)}} forEach GRLIB_player_scores; 
+if (_score < 20)  exitWith {};
+
+private _context = [];
+{if (_x select 0 == _uid) exitWith {_context = _x}} foreach GRLIB_player_context;
 if (count _context == 0) exitWith {};
 
 // Player loadout

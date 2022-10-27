@@ -10,9 +10,7 @@ if !(isNull _unit) then {
 	diag_log format ["--- LRX Cleanup player %1 (%2)", name _unit, _uid];
 
 	// Save Player Context
-	private _score = 0; 
-	{if ((_x select 0) == _uid) exitWith {_score = (_x select 1)}} forEach GRLIB_player_scores; 
-	if (_score > 20) then { [_unit, _uid] call save_context };
+	[_unit, _uid] call save_context;
 
 	// Remove Dog
 	private _my_dog = _unit getVariable ["my_dog", nil];
