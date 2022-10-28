@@ -58,9 +58,11 @@ _successExec = {
 				deleteVehicle _x;
 			};
 		} forEach _list;
-
 		{ deleteVehicle _x } forEach ([nearestObjects [_pos, ["Ruins_F"], 100], { getObjectType _x == 8 }] call BIS_fnc_conditionalSelect);
-		{ _x setPos (getPos _x) } forEach ([allDeadMen, { _x distance2D _pos < GRLIB_sector_size }] call BIS_fnc_conditionalSelect);
+		sleep 3;
+		{ _x setPos (getPos _x) } forEach ([allDeadMen, { _x distance2D _pos <= 100 }] call BIS_fnc_conditionalSelect);
+		{ _x setPos (getPos _x) } forEach ([nearestObjects [_pos, ["WeaponHolder"], 100], { getObjectType _x == 8 }] call BIS_fnc_conditionalSelect);
+
 	};
 };
 
