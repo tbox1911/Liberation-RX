@@ -173,15 +173,9 @@ if ( !isNil "greuh_liberation_savegame" ) then {
         if ([_nextclass, simple_objects] call F_itemIsInClass) then {
             _nextbuilding = createSimpleObject [_nextclass, AGLtoASL _nextpos];
         } else {
-			_nextbuilding = createVehicle [_nextclass, _nextpos, [], 0, "CAN_COLLIDE"];
-            _nextbuilding allowDamage false;
-			//diag_log format ["DBG: %1 %2", _nextclass, _nextpos];
-            _nextbuilding setDir _nextdir;
-			//_nextbuilding setPosATL _nextpos;
-			_nextbuilding setPosATL (_nextpos vectoradd [0,0,-0.04]);
-			_nextbuilding setVectorUp surfaceNormal _nextpos;
-            _nextbuilding setdamage 0;
-			//diag_log format ["DBG: %1 %2", _nextclass, getposatl _nextbuilding];
+			_nextbuilding = createVehicle [_nextclass, zeropos, [], 0, "CAN_COLLIDE"];
+			_nextbuilding setVectorDirAndUp [[-cos _nextdir, sin _nextdir, 0] vectorCrossProduct surfaceNormal _nextpos, surfaceNormal _nextpos];
+			_nextbuilding setPosWorld _nextpos;
         };
         _buildings_created pushback _nextbuilding;
 

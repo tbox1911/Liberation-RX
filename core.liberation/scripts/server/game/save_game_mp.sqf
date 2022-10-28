@@ -86,7 +86,7 @@ if ( GRLIB_endgame == 1 ) then {
 
     // Save objects
     {
-        private _savedpos = getposATL _x;
+        private _savedpos = getPosWorld _x;
         private _nextclass = typeof _x;
         private _nextdir = getdir _x;
         private _hascrew = false;
