@@ -20,8 +20,8 @@ if (GRLIB_ACE_enabled) then {
 		{
 			if ( _counter % 1 == 0 && _counter < 40) then {
 				[_unit,_x select 1] call CBA_fnc_setLoadout;
-				private _loadout_loaded = _x select 1;
-				_x = _x select 0;
+				private _loadout_loaded = _x select 1; // Pushes the loadouts array to _loadouts_data for CBA_fnc_setLoadout
+				_x = _x select 0; // Pushes the name of the loadout into _x 
 				_price = [_unit] call F_loadoutPrice;
 				_loadouts_data pushback [_x, _price , _loadout_loaded];
 			};
