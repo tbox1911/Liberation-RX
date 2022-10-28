@@ -9,23 +9,41 @@ player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
 
 private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
 private _saved_loadouts = profileNamespace getVariable "bis_fnc_saveInventory_data";
+private _saved_loadouts_ace = +(profileNamespace getVariable ["ace_arsenal_saved_loadouts",[]]);
 private _loadouts_data = [];
 private _counter = 0;
-
-if ( !isNil "_saved_loadouts" ) then {
-	private _unit = "B_Soldier_VR_F" createVehicleLocal zeropos;
-	_unit allowDamage false;
-	{
-		if ( _counter % 2 == 0 && _counter < 40) then {
-			[_unit, [profileNamespace, _x]] call bis_fnc_loadInventory;
-			_price = [_unit] call F_loadoutPrice;
-			_loadouts_data pushback [_x, _price];
-		};
-		_counter = _counter + 1;
-	} foreach _saved_loadouts;
-	deleteVehicle _unit;
+private ["_loadouts_data"];
+if (GRLIB_ACE_enabled) then {
+	if ( !isNil "_saved_loadouts_ace" ) then {
+		private _unit = "B_Soldier_VR_F" createVehicleLocal zeropos;
+		_unit allowDamage false;
+		{
+			if ( _counter % 1 == 0 && _counter < 40) then {
+				[_unit,_x select 1] call CBA_fnc_setLoadout;
+				private _loadout_loaded = _x select 1;
+				_x = _x select 0;
+				_price = [_unit] call F_loadoutPrice;
+				_loadouts_data pushback [_x, _price , _loadout_loaded];
+			};
+			_counter = _counter + 1;
+		} foreach _saved_loadouts_ace;
+		deleteVehicle _unit;
+	};
+} else {
+	if ( !isNil "_saved_loadouts" ) then {
+		private _unit = "B_Soldier_VR_F" createVehicleLocal zeropos;
+		_unit allowDamage false;
+		{
+			if ( _counter % 2 == 0 && _counter < 40) then {
+				[_unit, [profileNamespace, _x]] call bis_fnc_loadInventory;
+				_price = [_unit] call F_loadoutPrice;
+				_loadouts_data pushback [_x, _price];
+			};
+			_counter = _counter + 1;
+		} foreach _saved_loadouts;
+		deleteVehicle _unit;
+	};
 };
-
 createDialog "liberation_arsenal";
 waitUntil { dialog };
 ctrlEnable [ 202, false ];
@@ -87,7 +105,12 @@ while { dialog && (alive player) && edit_loadout == 0 } do {
 	if ( load_loadout > 0 ) then {
 		private _selected_loadout = _loadouts_data select _cur_sel;
 		private _loaded_loadout = (_selected_loadout select 0);
-		[player, [profileNamespace, _loaded_loadout]] call bis_fnc_loadInventory;
+		private _ace_loaded_loadout = (_selected_loadout select 2);
+		if (GRLIB_ACE_enabled) then {
+			[player, _ace_loaded_loadout] call CBA_fnc_setLoadout;
+		} else {
+			[player, [profileNamespace, _loaded_loadout]] call bis_fnc_loadInventory;
+		};
 		hint format [ localize "STR_HINT_LOADOUT_LOADED", _loaded_loadout];
 		if ( exit_on_load == 1 ) then {
 			closeDialog 0;
