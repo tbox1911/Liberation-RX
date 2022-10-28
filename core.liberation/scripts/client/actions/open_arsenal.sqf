@@ -96,7 +96,7 @@ while { dialog && (alive player) && edit_loadout == 0 } do {
 	};
 
 	if ( respawn_loadout > 0 ) then {
-		GRLIB_backup_loadout = getUnitLoadout player;
+		GRLIB_respawn_loadout = getUnitLoadout player;
 		hint localize "STR_MAKE_RESPAWN_LOADOUT_HINT";
 		respawn_loadout = 0;
 	};

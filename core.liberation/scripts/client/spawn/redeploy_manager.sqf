@@ -160,22 +160,21 @@ if (dialog && deploy == 1) then {
 			player setUnitLoadout GRLIB_respawn_loadout;
 		} else {
 			// init loadout
-			if ( GRLIB_forced_loadout > 0) then {
-				[player] call compile preprocessFileLineNumbers (format ["mod_template\%1\loadout\player_set%2.sqf", GRLIB_mod_west, GRLIB_forced_loadout]);
-			} else {
+			if ( GRLIB_forced_loadout == 0) then {
 				if ( typeOf player in units_loadout_overide ) then {
 					_loadouts_folder = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, toLower (typeOf player)];
 					[player] call compileFinal preprocessFileLineNUmbers _loadouts_folder;
 				} else {
 					[player, configOf player] call BIS_fnc_loadInventory;
 				};
+				player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
+				GRLIB_backup_loadout = getUnitLoadout player;
 			};
-			player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
-			GRLIB_backup_loadout = getUnitLoadout player;
 		};
 		[player] call F_filterLoadout;
 		[player] call F_payLoadout;
 	};
+
 	// choosen loadout
 	if ( (lbCurSel 203) > 0 ) then {
 		player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
