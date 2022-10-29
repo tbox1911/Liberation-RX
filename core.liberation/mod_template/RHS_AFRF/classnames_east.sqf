@@ -5,26 +5,26 @@ GRLIB_color_enemy_bright = "ColorRED";
 
 // All class MUST be defined !
 
-opfor_sentry = "LOP_AM_OPF_Infantry_Rifleman";
-opfor_rifleman = "LOP_AM_OPF_Infantry_Rifleman";
-opfor_grenadier = "LOP_AM_OPF_Infantry_GL";
-opfor_squad_leader = "LOP_AM_OPF_Infantry_GL";
-opfor_team_leader = "LOP_AM_OPF_Infantry_GL";
-opfor_marksman = "LOP_AM_OPF_Infantry_Marksman";
-opfor_machinegunner = "LOP_AM_OPF_Infantry_Rifleman";
-opfor_heavygunner = "LOP_AM_OPF_Infantry_Rifleman";
-opfor_medic = "rhsgref_ins_medic";
-opfor_rpg = "LOP_AM_OPF_Infantry_GL_rpg";
-opfor_at = "LOP_AM_OPF_Infantry_GL_rpg";
-opfor_aa = "LOP_TKA_Infantry_AA";
-opfor_officer = "LOP_AM_OPF_Infantry_GL";
-opfor_sharpshooter = "LOP_AM_OPF_Infantry_Marksman";
-opfor_sniper = "LOP_AM_OPF_Infantry_Marksman";
-opfor_spotter = "LOP_AM_OPF_Infantry_Rifleman";
-opfor_engineer = "LOP_AM_OPF_Infantry_Rifleman";
+opfor_sentry = "RyanZombie27mediumOpfor";
+opfor_rifleman = "rhsgref_ins_rifleman";
+opfor_grenadier = "rhsgref_ins_grenadier";
+opfor_squad_leader = "rhsgref_ins_grenadier";
+opfor_team_leader = "rhsgref_ins_grenadier";
+opfor_marksman = "rhsgref_ins_sniper";
+opfor_machinegunner = "rhsgref_ins_rifleman";
+opfor_heavygunner = "RyanZombie32mediumOpfor";
+opfor_medic = "RyanZombie27mediumOpfor";
+opfor_rpg = "rhsgref_ins_grenadier_rpg";
+opfor_at = "rhsgref_ins_grenadier_rpg";
+opfor_aa = "rhsgref_ins_specialist_aa";
+opfor_officer = "rhsgref_ins_grenadier";
+opfor_sharpshooter = "rhsgref_ins_sniper";
+opfor_sniper = "rhsgref_ins_sniper";
+opfor_spotter = "RyanZombie32mediumOpfor";
+opfor_engineer = "rhsgref_ins_rifleman";
 opfor_pilot = "rhsgref_ins_pilot";
 opfor_crew = "rhsgref_ins_crew";
-opfor_paratrooper = "LOP_AM_OPF_Infantry_GL_rpg";
+opfor_paratrooper = "rhsgref_ins_grenadier_rpg";
 opfor_mrap = "rhsgref_ins_btr60";
 opfor_mrap_hmg = "rhsgref_ins_btr60";
 opfor_mrap_gmg = "rhsgref_ins_btr60";
@@ -39,25 +39,26 @@ opfor_patrol = "Land_Cargo_Patrol_V3_F";
 opfor_hq = "Land_Cargo_HQ_V3_F";
 
 militia_squad = [
-	"LOP_AM_OPF_Infantry_GL",
-	"LOP_AM_OPF_Infantry_Rifleman_6",
-	"LOP_AM_OPF_Infantry_Rifleman",
-	"LOP_AM_OPF_Infantry_Rifleman_2",
-	"LOP_AM_OPF_Infantry_Rifleman_5",
-	"LOP_AM_OPF_Infantry_Marksman",
-	"LOP_AM_OPF_Infantry_AT",
-	"LOP_AM_OPF_Infantry_AT",
-	"LOP_AM_OPF_Infantry_AT",
-	"LOP_TKA_Infantry_AA",
-	"LOP_TKA_Infantry_AA",
-	"LOP_TKA_Infantry_AA",
-	"LOP_TKA_Infantry_AA",
-	"LOP_TKA_Infantry_AA",
-	"LOP_TKA_Infantry_AA",
-	"LOP_AM_OPF_Infantry_Rifleman_9",
-	"LOP_AM_OPF_Infantry_AR",
-	"LOP_AM_OPF_Infantry_AR_Asst",
-	"LOP_AM_OPF_Infantry_SL"
+	"rhsgref_ins_grenadier",
+	"rhsgref_ins_rifleman",
+	"rhsgref_ins_rifleman",
+	"rhsgref_ins_rifleman",
+	"rhsgref_ins_rifleman",
+	"rhsgref_ins_rifleman",
+	"rhsgref_ins_rifleman",
+	"rhsgref_ins_grenadier",
+	"rhsgref_ins_grenadier_rpg",
+	"rhsgref_ins_grenadier_rpg",
+	"rhsgref_ins_grenadier_rpg",
+	"rhsgref_ins_grenadier_rpg",
+	"rhsgref_ins_specialist_aa",
+	"rhsgref_ins_specialist_aa",
+	"RyanZombie27mediumOpfor",
+	"RyanZombie32mediumOpfor",
+	"RyanZombie27mediumOpfor",
+	"RyanZombie32mediumOpfor",
+	"RyanZombie27mediumOpfor",
+	"RyanZombie32mediumOpfor"
 ];
 
 militia_loadout_overide = [

@@ -5,26 +5,26 @@ GRLIB_color_enemy_bright = "ColorRED";
 
 // All class MUST be defined !
 
-opfor_sentry = "rhsgref_ins_rifleman";
-opfor_rifleman = "rhsgref_ins_rifleman";
-opfor_grenadier = "rhsgref_ins_grenadier";
-opfor_squad_leader = "rhsgref_ins_grenadier";
-opfor_team_leader = "rhsgref_ins_grenadier";
-opfor_marksman = "rhsgref_ins_sniper";
-opfor_machinegunner = "rhsgref_ins_rifleman";
-opfor_heavygunner = "rhsgref_ins_rifleman";
+opfor_sentry = "LOP_AM_OPF_Infantry_Rifleman";
+opfor_rifleman = "LOP_AM_OPF_Infantry_Rifleman";
+opfor_grenadier = "LOP_AM_OPF_Infantry_GL";
+opfor_squad_leader = "LOP_AM_OPF_Infantry_GL";
+opfor_team_leader = "LOP_AM_OPF_Infantry_GL";
+opfor_marksman = "LOP_AM_OPF_Infantry_Marksman";
+opfor_machinegunner = "LOP_AM_OPF_Infantry_Rifleman";
+opfor_heavygunner = "LOP_AM_OPF_Infantry_Rifleman";
 opfor_medic = "rhsgref_ins_medic";
-opfor_rpg = "rhsgref_ins_grenadier_rpg";
-opfor_at = "rhsgref_ins_grenadier_rpg";
-opfor_aa = "rhsgref_ins_specialist_aa";
-opfor_officer = "rhsgref_ins_grenadier";
-opfor_sharpshooter = "rhsgref_ins_sniper";
-opfor_sniper = "rhsgref_ins_sniper";
-opfor_spotter = "rhsgref_ins_rifleman";
-opfor_engineer = "rhsgref_ins_rifleman";
+opfor_rpg = "LOP_AM_OPF_Infantry_GL_rpg";
+opfor_at = "LOP_AM_OPF_Infantry_GL_rpg";
+opfor_aa = "LOP_TKA_Infantry_AA";
+opfor_officer = "LOP_AM_OPF_Infantry_GL";
+opfor_sharpshooter = "LOP_AM_OPF_Infantry_Marksman";
+opfor_sniper = "LOP_AM_OPF_Infantry_Marksman";
+opfor_spotter = "LOP_AM_OPF_Infantry_Rifleman";
+opfor_engineer = "LOP_AM_OPF_Infantry_Rifleman";
 opfor_pilot = "rhsgref_ins_pilot";
 opfor_crew = "rhsgref_ins_crew";
-opfor_paratrooper = "rhsgref_ins_grenadier_rpg";
+opfor_paratrooper = "LOP_AM_OPF_Infantry_GL_rpg";
 opfor_mrap = "rhsgref_ins_btr60";
 opfor_mrap_hmg = "rhsgref_ins_btr60";
 opfor_mrap_gmg = "rhsgref_ins_btr60";
@@ -39,25 +39,25 @@ opfor_patrol = "Land_Cargo_Patrol_V3_F";
 opfor_hq = "Land_Cargo_HQ_V3_F";
 
 militia_squad = [
-	"rhsgref_ins_grenadier",
-	"rhsgref_ins_rifleman",
-	"rhsgref_ins_rifleman",
-	"rhsgref_ins_rifleman",
-	"rhsgref_ins_rifleman",
-	"rhsgref_ins_grenadier",
-	"rhsgref_ins_grenadier_rpg",
-	"rhsgref_ins_grenadier_rpg",
-	"rhsgref_ins_grenadier_rpg",
-	"rhsgref_ins_grenadier_rpg",
-	"rhsgref_ins_grenadier_rpg",
-	"rhsgref_ins_grenadier_rpg",
-	"rhsgref_ins_specialist_aa",
-	"rhsgref_ins_specialist_aa",
-	"rhsgref_ins_specialist_aa",
-	"rhsgref_ins_rifleman",
-	"rhsgref_ins_rifleman",
-	"rhsgref_ins_rifleman",
-	"rhsgref_ins_rifleman"
+	"LOP_AM_OPF_Infantry_GL",
+	"LOP_AM_OPF_Infantry_Rifleman_6",
+	"LOP_AM_OPF_Infantry_Rifleman",
+	"LOP_AM_OPF_Infantry_Rifleman_2",
+	"LOP_AM_OPF_Infantry_Rifleman_5",
+	"LOP_AM_OPF_Infantry_Marksman",
+	"LOP_AM_OPF_Infantry_AT",
+	"LOP_AM_OPF_Infantry_AT",
+	"LOP_AM_OPF_Infantry_AT",
+	"LOP_TKA_Infantry_AA",
+	"LOP_TKA_Infantry_AA",
+	"LOP_TKA_Infantry_AA",
+	"LOP_TKA_Infantry_AA",
+	"LOP_TKA_Infantry_AA",
+	"LOP_TKA_Infantry_AA",
+	"LOP_AM_OPF_Infantry_Rifleman_9",
+	"LOP_AM_OPF_Infantry_AR",
+	"LOP_AM_OPF_Infantry_AR_Asst",
+	"LOP_AM_OPF_Infantry_SL"
 ];
 
 militia_loadout_overide = [
@@ -86,9 +86,8 @@ militia_vehicles = [
 	"rhsgref_ins_btr60",
 	"rhsgref_ins_btr60",
 	"rhsgref_ins_btr60",
+	"rhsgref_ins_t72bb",
 	"rhsgref_ins_ural_Zu23",
-	"B_SAM_System_02_F",
-	"B_SAM_System_02_F",
 	"B_SAM_System_02_F",
 	"B_SAM_System_02_F",
 	"B_SAM_System_02_F"
@@ -104,17 +103,13 @@ opfor_vehicles = [
 	"rhsgref_ins_btr60",
 	"rhsgref_ins_btr60",
 	"rhsgref_ins_btr60",
+	"rhsgref_ins_btr60",
 	"rhsgref_ins_btr70",
 	"rhsgref_ins_bmd2",
 	"rhsgref_ins_bmp2ds",
 	"rhsgref_ins_t72bb",
-	"rhsgref_ins_t72bb",
-	"rhsgref_ins_t72bb",
 	"rhsgref_ins_zsu234",
 	"rhsgref_ins_ural_Zu23",
-	"rhsgref_ins_ural_Zu23",
-	"B_SAM_System_02_F",
-	"B_SAM_System_02_F",
 	"B_SAM_System_02_F",
 	"B_SAM_System_02_F",
 	"B_SAM_System_02_F"
@@ -125,9 +120,6 @@ opfor_vehicles_low_intensity = [
 	"rhsgref_ins_uaz_spg9",
 	"rhsgref_ins_btr60",
 	"rhsgref_ins_btr70",
-	"rhsgref_ins_ural_Zu23",
-	"rhsgref_ins_ural_Zu23",
-	"B_SAM_System_02_F",
 	"B_SAM_System_02_F",
 	"B_SAM_System_02_F",
 	"B_SAM_System_02_F"
@@ -135,59 +127,43 @@ opfor_vehicles_low_intensity = [
 
 opfor_battlegroup_vehicles = [
 	"rhsgref_ins_btr60",
-	"rhsgref_ins_btr70",
+	"rhsgref_ins_btr60",
 	"rhsgref_ins_btr60",
 	"rhsgref_ins_btr70",
 	"rhsgref_ins_bmd2",
 	"rhsgref_ins_bmp2ds",
 	"rhsgref_ins_t72bb",
-	"rhsgref_ins_t72bb",
-	"rhsgref_ins_t72bb",
-	"rhsgref_ins_t72bb",
 	"rhsgref_ins_zsu234",
-	"rhsgref_ins_zsu234",
-	"rhsgref_ins_ural_Zu23",
-	"rhsgref_ins_ural_Zu23",
 	"rhsgref_ins_ural_Zu23"
 ];
 
 opfor_battlegroup_vehicles_low_intensity = [
 	"rhsgref_ins_btr60",
-	"rhsgref_ins_btr70",
+	"rhsgref_ins_btr60",
 	"rhsgref_ins_btr60",
 	"rhsgref_ins_btr70",
 	"rhsgref_ins_bmd2",
-	"rhsgref_ins_bmp2ds",
-	"rhsgref_ins_t72bb",
-	"rhsgref_ins_t72bb",
-	"rhsgref_ins_ural_Zu23",
-	"rhsgref_ins_ural_Zu23",
-	"rhsgref_ins_ural_Zu23"
+	"rhsgref_ins_bmp2ds"
 ];
 
 opfor_reinforcement_vehicles = [
 	"rhsgref_ins_btr60",
-	"rhsgref_ins_btr70",
+	"rhsgref_ins_btr60",
+	"rhsgref_ins_btr60",
 	"rhsgref_ins_btr60",
 	"rhsgref_ins_btr70",
 	"rhsgref_ins_bmd2",
 	"rhsgref_ins_bmp2ds",
 	"rhsgref_ins_t72bb",
-	"rhsgref_ins_t72bb",
-	"rhsgref_ins_t72bb",
-	"rhsgref_ins_t72bb",
 	"rhsgref_ins_zsu234",
-	"rhsgref_ins_ural_Zu23",
 	"rhsgref_ins_ural_Zu23"
 	];
 
 opfor_troup_transports = [
 	"rhsgref_ins_btr60",
 	"rhsgref_ins_btr70",
-	"rhsgref_ins_btr60",
-	"rhsgref_ins_btr70",
-	"rhsgref_ins_btr60",
-	"rhsgref_ins_btr70",
+	"rhsgref_ins_bmd2",
+	"rhsgref_ins_bmp2ds",
 	"LOP_ChDKZ_Mi8MTV3_FAB"
 ];
 
@@ -217,12 +193,6 @@ opfor_air = [
 	"rhs_mig29sm_vvs",
 	"RHS_T50_vvs_generic_ext",
 	"rhs_mig29sm_vvs",
-	"RHS_T50_vvs_generic_ext",
-	"rhs_mig29sm_vvs",
-	"RHS_T50_vvs_generic_ext",
-	"rhs_mig29sm_vvs",
-	"RHS_T50_vvs_generic_ext",
-	"rhs_mig29sm_vvs",
 	"RHS_T50_vvs_generic_ext"
 ];
 
@@ -231,12 +201,44 @@ opfor_statics = [
 	"LOP_ChDKZ_ZU23",
 	"B_SAM_System_02_F",
 	"B_SAM_System_02_F",
-	"B_SAM_System_02_F",
-	"B_SAM_System_02_F",
 	"B_SAM_System_02_F"
 ];
 
-opfor_recyclable = [];
+opfor_recyclable = [
+	["B_UAV_06_F",0,0,0],
+	["B_UAV_06_medical_F",0,0,0],
+	["B_UAV_01_F",0,0,0],
+	["ITC_Land_B_UAV_AR2e",0,0,0],
+	["ITC_Land_B_UAV_AR2i",0,0,0],
+	["B_UGV_02_Demining_F",0,0,0],
+	["B_UGV_02_Science_F",0,0,0],
+	["O_UGV_02_Demining_F",0,0,0],
+	["ITC_Land_O_UAV_AR2e",0,0,0],
+	["ITC_Land_O_UAV_AR2i",0,0,0],
+	["O_UAV_06_F",0,0,0],
+	["O_UAV_06_medical_F",0,0,0],
+	["O_UGV_02_Science_F",0,0,0],
+	["O_UAV_01_F",0,0,0],
+	["I_UAV_06_F",0,0,0],
+	["I_UAV_06_medical_F",0,0,0],
+	["I_UAV_01_F",0,0,0],
+	["ITC_Land_I_UAV_AR2e",0,0,0],
+	["ITC_Land_I_UAV_AR2i",0,0,0],
+	["I_UGV_02_Demining_F",0,0,0],
+	["I_UGV_02_Science_F",0,0,0],
+	["I_E_UAV_06_F",0,0,0],
+	["I_E_UAV_06_medical_F",0,0,0],
+	["I_E_UAV_01_F",0,0,0],
+	["I_E_UGV_02_Demining_F",0,0,0],
+	["I_E_UGV_02_Science_F",0,0,0],
+	["C_UAV_06_F",0,0,0],
+	["C_UAV_06_medical_F",0,0,0],
+	["C_IDAP_UAV_06_antimine_F",0,0,0],
+	["C_IDAP_UGV_02_Demining_F",0,0,0],
+	["C_IDAP_UAV_01_F",0,0,0],
+	["C_IDAP_UAV_06_F",0,0,0],
+	["C_IDAP_UAV_06_medical_F",0,0,0]
+];
 
 
 
