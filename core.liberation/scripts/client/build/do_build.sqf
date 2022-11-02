@@ -422,28 +422,6 @@ while { true } do {
 						_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_EH }];
 					};
 					
-					//Make objects movable with ACE3.
-					if (GRLIB_ACE_enabled) then {
-						//Set the inventory space of object/vehicle.
-						if ( _classname in (GRLIB_cargoSpace select 0)) then {
-							_cargoSpace = ((GRLIB_cargoSpace select 1) select ((GRLIB_cargoSpace select 0) find _classname));
-							[_vehicle, _cargoSpace] call ace_cargo_fnc_setSpace;				
-						};
-						if (_classname in GRLIB_movableObjects) then {
-							//Set the size of cargo
-							if ( _classname in (GRLIB_cargoSize select 0)) then {
-								_cargoSize = ((GRLIB_cargoSize select 1) select ((GRLIB_cargoSize select 0) find _classname));
-								if (_cargoSize <= GRLIB_maxLiftWeight) then {
-									[_vehicle, true, [0, 3, 1], 0] call ace_dragging_fnc_setCarryable;
-								};
-								[_vehicle, _cargoSize] call ace_cargo_fnc_setSize;						
-							};
-							// Set object movable with ACE. [_object, _enabled, [_offsetSide,_offsetForward,_offsetUp],_rotation] call ace_dragging_fnc_setCarryable;		
-							
-							[_vehicle, true, [0, 3, 0], 0] call ace_dragging_fnc_setDraggable;
-						};
-					};
-
 					// FOB
 					if(buildtype == 99) then {
 						_vehicle addEventHandler ["HandleDamage", {0}];

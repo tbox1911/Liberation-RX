@@ -13,3 +13,7 @@ force ace_medical_statemachine_fatalInjuriesPlayer = 0; // Disabled fatal injuri
 force ace_medical_treatment_advancedBandages = 0; // Disabled advanced bandages
 force ace_medical_treatment_advancedDiagnose = 0; // Disabled advanced diagnose
 force ace_medical_treatment_advancedMedication = false; // Disabled advanced medication
+
+// ACE Logistique
+force ace_cargo_loadTimeCoefficient = 1;
+force ace_cargo_paradropTimeCoefficent = 1;

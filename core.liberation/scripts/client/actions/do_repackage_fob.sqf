@@ -42,14 +42,6 @@ if ( dorepackage > 0 ) then {
 		clearItemCargoGlobal _fobbox;
 		clearBackpackCargoGlobal _fobbox;
 		_fobbox addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
-		if (GRLIB_ACE_enabled) then {
-			if (_fobbox == FOB_box_typename) then {
-				[_fobbox, 50] call ace_cargo_fnc_setSize;
-				[_fobbox, true, [0, 3, 0], 0] call ace_dragging_fnc_setDraggable;
-			};
-			[_fobbox, -1] call ace_cargo_fnc_setSpace;
-		};
-
 		GRLIB_all_fobs = GRLIB_all_fobs - [ _fob_pos ];
 		publicVariable "GRLIB_all_fobs";
 		deleteVehicle _fob_hq;

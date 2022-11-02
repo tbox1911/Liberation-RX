@@ -264,27 +264,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
             _nextbuilding setObjectTextureGlobal [0, getMissionPath "res\splash_libe2.paa"];
             _nextbuilding allowDamage false;
         };
-
-		if (GRLIB_ACE_enabled) then {
-			//Set the inventory space of object/vehicle.
-			if ( _nextclass in (GRLIB_cargoSpace select 0)) then {
-				_cargoSpace = ((GRLIB_cargoSpace select 1) select ((GRLIB_cargoSpace select 0) find _nextclass));
-				[_nextbuilding, _cargoSpace] call ace_cargo_fnc_setSpace;
-			};
-			if (_nextclass in GRLIB_movableObjects) then {
-				//Set the size of cargo
-				if ( _nextclass in (GRLIB_cargoSize select 0)) then {
-					_cargoSize = ((GRLIB_cargoSize select 1) select ((GRLIB_cargoSize select 0) find _nextclass));
-					if (_cargoSize <= GRLIB_maxLiftWeight) then {
-						[_nextbuilding, true, [0, 3, 1], 0] call ace_dragging_fnc_setCarryable;
-					};
-					[_nextbuilding, _cargoSize] call ace_cargo_fnc_setSize;
-				};		
-				// Set object movable with ACE. [_object, _enabled, [_offsetSide,_offsetForward,_offsetUp],_rotation] call ace_dragging_fnc_setCarryable;
-				[_nextbuilding, true, [0, 3, 0], 0] call ace_dragging_fnc_setDraggable;
-			};
-		};
-        
+      
         //diag_log format [ "--- LRX Load Game %1 loaded at %2.", typeOf _nextbuilding, time];
 		
 	} foreach buildings_to_save;
