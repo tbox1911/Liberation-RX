@@ -7,6 +7,7 @@ if ( rank _unit == "COLONEL") then { _yield = 50 };
 _yield = _yield + (round (random _yield));
 
 resources_intel = resources_intel + _yield;
+publicVariable "resources_intel";
 stats_prisonners_captured = stats_prisonners_captured + 1;
 publicVariable "stats_prisonners_captured";
 
