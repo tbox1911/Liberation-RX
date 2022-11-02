@@ -8,22 +8,25 @@ GRLIB_backup_loadout = getUnitLoadout player;
 player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
 
 private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
-private _saved_loadouts = profileNamespace getVariable "bis_fnc_saveInventory_data";
-private _saved_loadouts_ace = +(profileNamespace getVariable ["ace_arsenal_saved_loadouts",[]]);
+private _saved_loadouts = profileNamespace getVariable ["bis_fnc_saveInventory_data", []];
+private _saved_loadouts_ace = profileNamespace getVariable ["ace_arsenal_saved_loadouts", []];
 private _loadouts_data = [];
+private _loadout_loaded = [];
 private _counter = 0;
-private ["_loadouts_data"];
+private _price = 0;
+private _name = "";
+
 if (GRLIB_ACE_enabled) then {
 	if ( !isNil "_saved_loadouts_ace" ) then {
 		private _unit = "B_Soldier_VR_F" createVehicleLocal zeropos;
 		_unit allowDamage false;
 		{
 			if ( _counter % 1 == 0 && _counter < 40) then {
-				[_unit,_x select 1] call CBA_fnc_setLoadout;
-				private _loadout_loaded = _x select 1; // Pushes the loadouts array to _loadouts_data for CBA_fnc_setLoadout
-				_x = _x select 0; // Pushes the name of the loadout into _x 
+				_name = _x select 0;
+				_loadout_loaded = _x select 1; 			// Pushes the loadouts array to _loadouts_data for CBA_fnc_setLoadout
+				[_unit, _loadout_loaded] call CBA_fnc_setLoadout;
 				_price = [_unit] call F_loadoutPrice;
-				_loadouts_data pushback [_x, _price , _loadout_loaded];
+				_loadouts_data pushback [_name, _price, _loadout_loaded];
 			};
 			_counter = _counter + 1;
 		} foreach _saved_loadouts_ace;
