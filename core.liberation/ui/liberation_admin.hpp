@@ -69,6 +69,7 @@ class liberation_admin {
   };
   class ArsenalButton: StdButton {
     idc = 1600;
+    //action = "closeDialog 0;buildtype=9;build_unit=[Arsenal_typename,[],1,[],[]];dobuild=1;hint 'Arsenal spawned !'";
     action = "Arsenal_typename createVehicle (player getRelPos[3, 0]);hint 'Arsenal spawned !'";
     text = $STR_ADMIN_ARSENAL;
     x = 0.2275 * safezoneW + safezoneX;
@@ -79,7 +80,6 @@ class liberation_admin {
   class AmmoButton: StdButton {
     idc = 1601;
     action = "[ammobox_b_typename, player getRelPos[3, 0], false] remoteExec ['boxSetup', 2]; hint 'AmmoBox spawned !'";
-
     text = $STR_ADMIN_AMMOBOX;
     x = 0.2275 * safezoneW + safezoneX;
     y = 0.26 * safezoneH + safezoneY;
@@ -89,7 +89,6 @@ class liberation_admin {
   class BuildButton: StdButton {
     idc = 1617;
     action = "do_spawn=1";
-
     text = $STR_ADMIN_BUILD;
     x = 0.2275 * safezoneW + safezoneX;
     y = 0.312 * safezoneH + safezoneY;
@@ -103,7 +102,6 @@ class liberation_admin {
     w = 0.09 * safezoneW;
     h = 0.033 * safezoneH;
   };
-
   class GREUH_RscStructuredText{
     type = 13;
     idc = -1;
