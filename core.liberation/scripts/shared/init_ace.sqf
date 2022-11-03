@@ -37,26 +37,22 @@ GRLIB_movableObjects = [] + boats_names + R3F_LOG_CFG_can_be_moved_by_player;
 
 // Set object movable with ACE.
 {
-    [_x, "init", { [(_this select 0), true, [0, 3, 1], 0] call ace_dragging_fnc_setDraggable}, true, [], true] call CBA_fnc_addClassEventHandler;
+    [_x, "init", { [(_this select 0), true, [0, 3, 1], 0] call ace_dragging_fnc_setDraggable }, true, [], true] call CBA_fnc_addClassEventHandler;
 } forEach GRLIB_movableObjects;
 
 // Set object carryable with ACE.
 {
-    [_x, "init", { [(_this select 0), true, [0, 3, 1], 0] call ace_dragging_fnc_setCarryable}, true, [], true] call CBA_fnc_addClassEventHandler;
+    [_x, "init", { [(_this select 0), true, [0, 3, 1], 0] call ace_dragging_fnc_setCarryable }, true, [], true] call CBA_fnc_addClassEventHandler;
 } forEach (GRLIB_cargoSize select 0);
 
 //Set the cargo space of vehicles.
 {
-     [_x, "init", {
-        [(_this select 0), ([(_this select 0), GRLIB_cargoSpace] call ACE_getSize)] call ace_cargo_fnc_setSpace;
-    }, true, [], true] call CBA_fnc_addClassEventHandler;
+     [_x, "init", { [(_this select 0), ([(_this select 0), GRLIB_cargoSpace] call ACE_getSize)] call ace_cargo_fnc_setSpace }, true, [], true] call CBA_fnc_addClassEventHandler;
 } forEach (GRLIB_cargoSpace select 0);
 
 //Set the cargo size of objects.
 {
-     [_x, "init", {
-        [(_this select 0), ([(_this select 0), GRLIB_cargoSize] call ACE_getSize)] call ace_cargo_fnc_setSize;
-    }, true, [], true] call CBA_fnc_addClassEventHandler;
+     [_x, "init", { [(_this select 0), ([(_this select 0), GRLIB_cargoSize] call ACE_getSize)] call ace_cargo_fnc_setSize }, true, [], true] call CBA_fnc_addClassEventHandler;
 } forEach (GRLIB_cargoSize select 0);
 
 // R3F functions
