@@ -205,22 +205,13 @@ blufor_squad_mix = [
 	"ffaa_brilat_soldado",
 	"ffaa_brilat_soldado"
 ];
-blufor_squad_recon = [
-	"ffaa_et_moe_lider",
-	"ffaa_ar_fgne_medico_bk",
-	"ffaa_ar_fgne_tirador_bk",
-	"ffaa_ar_fgne_at_bk",
-	"ffaa_ar_fgne_sabot_bk",
-	"ffaa_et_moe_fusilero_mochila"
-];
 
 squads = [
 	[blufor_squad_inf_light,10,400,0,GRLIB_perm_max],
 	[blufor_squad_inf,20,500,0,GRLIB_perm_max],
 	[blufor_squad_at,30,700,0,GRLIB_perm_max],
 	[blufor_squad_aa,30,700,0,GRLIB_perm_max],
-	[blufor_squad_mix,30,800,0,GRLIB_perm_max],
-	[blufor_squad_recon,25,600,0,GRLIB_perm_max]
+	[blufor_squad_mix,30,800,0,GRLIB_perm_max]
 ];
 
 // All the UAVs must be declared here

@@ -417,7 +417,6 @@ air_vehicles_classnames = [] + opfor_troup_transports_heli;
 squads_names = [
 	localize "STR_LIGHT_RIFLE_SQUAD",
 	localize "STR_RIFLE_SQUAD",
-	localize "STR_RECON_SQUAD",
 	localize "STR_AT_SQUAD",
 	localize "STR_AA_SQUAD",
 	localize "STR_MIXED_SQUAD"

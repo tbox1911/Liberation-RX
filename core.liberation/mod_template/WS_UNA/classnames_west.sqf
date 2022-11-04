@@ -176,19 +176,10 @@ blufor_squad_mix = [
 	"B_Soldier_F",
 	"B_Soldier_F"
 ];
-blufor_squad_recon = [
-	"B_recon_TL_F",
-	"B_recon_medic_F",
-	"B_Recon_Sharpshooter_F",
-	"B_recon_LAT_F",
-	"B_recon_M_F",
-	"B_recon_F"
-];
 
 squads = [
 	[blufor_squad_inf_light,10,300,0,GRLIB_perm_max],
 	[blufor_squad_inf,20,400,0,GRLIB_perm_max],
-	[blufor_squad_recon,25,500,0,GRLIB_perm_max],
 	[blufor_squad_at,25,600,0,GRLIB_perm_max],
 	[blufor_squad_aa,25,600,0,GRLIB_perm_max],
 	[blufor_squad_mix,25,600,0,GRLIB_perm_max]
