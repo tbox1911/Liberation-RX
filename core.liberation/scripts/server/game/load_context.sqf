@@ -34,9 +34,10 @@ if (count (_context select 2) >= 1 ) then {
                         [_class, _rank, _loadout],
                     {
                         params ["_class", "_rank", "_loadout"];
-                        _pos = getPosATL player;
-                        _grp = group player;
-                        _unit = _grp createUnit [_class, _pos, [], 10, "NONE"];
+                        private _pos = getPosATL player;
+                        private _grp = group player;
+                        private _uid = getPlayerUID player;
+                        private _unit = _grp createUnit [_class, _pos, [], 10, "NONE"];
                         [_unit] joinSilent _grp;
                         _unit setVariable ["PAR_Grp_ID", format["Bros_%1", _uid], true];
                         _unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
