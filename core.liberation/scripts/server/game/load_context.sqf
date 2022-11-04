@@ -30,20 +30,16 @@ if (count (_context select 2) >= 1 ) then {
                     _class = _x select 0;
                     _rank = _x select 1;
                     _loadout = _x select 2;
-
-                    _grp = createGroup [GRLIB_side_friendly, true];
-                    _pos = getPosATL _player;
-                    _unit = _grp createUnit [_class, _pos, [], 10, "NONE"];
-                    waitUntil {!isNull _unit};
-                    _unit setVariable ["PAR_Grp_ID", format["Bros_%1", _uid], true];
-
                     [
-                        [_unit, _rank, _loadout],
+                        [_class, _rank, _loadout],
                     {
-                        if (isDedicated) exitWith {};
-                        params ["_unit", "_rank", "_loadout"];
-                        [_unit] joinSilent (group player);
-                        waituntil {sleep 0.5; local _unit};
+                        params ["_class", "_rank", "_loadout"];
+                        _pos = getPosATL player;
+                        _grp = group player;
+                        _unit = _grp createUnit [_class, _pos, [], 10, "NONE"];
+                        [_unit] joinSilent _grp;
+                        _unit setVariable ["PAR_Grp_ID", format["Bros_%1", _uid], true];
+                        _unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
                         gamelogic globalChat format ["Adds %1 (%2) to your squad.", name _unit, _rank];
                         _unit setMass 10;
                         _unit setUnitRank _rank;
@@ -53,10 +49,8 @@ if (count (_context select 2) >= 1 ) then {
                         _unit setUnitLoadout _loadout;
                         //(group player) selectLeader player;
                     }] remoteExec ["bis_fnc_call", owner _player];
-
-                    deleteGroup _grp;
                     sleep 0.5;
-                } foreach (_context select 2);
+                } foreach (_context select 2);       
                 _wait = false;
             };
         };
