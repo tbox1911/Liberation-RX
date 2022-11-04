@@ -23,7 +23,7 @@ _unit addItemToUniform "FirstAidKit";
 for "_i" from 1 to 2 do {_unit addItemToUniform "SmokeShell";};
 for "_i" from 1 to 2 do {_unit addItemToUniform "CUP_8Rnd_762x25_TT";};
 for "_i" from 1 to 2 do {_unit addItemToVest "CUP_8Rnd_762x25_TT";};
-_unit addHeadgear "H_Booniehat_oli";
+_unit addHeadgear "CUP_H_CZ_Hat02";
 
 //  "Add items";
 _unit linkItem "ItemMap";
