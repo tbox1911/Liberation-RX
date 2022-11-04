@@ -42,3 +42,6 @@ remote_call_tunnel_success = compileFinal preprocessFileLineNumbers "scripts\cli
 // Vehicle Color
 [] execVM "addons\RPT\RPT_init.sqf";
 RPT_fnc_TextureVehicle = compileFinal preprocessFileLineNumbers "addons\RPT\fn_textureVehicle.sqf";
+
+// Units Awareness
+[] execVM "scripts\shared\active_awareness.sqf";
