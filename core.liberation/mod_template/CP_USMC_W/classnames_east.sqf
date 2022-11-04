@@ -182,6 +182,12 @@ opfor_recyclable = [
 	// Boat
 	["CUP_B_RHIB_USMC",3,round (100 / GRLIB_recycling_percentage),6],
 	["CUP_B_RHIB2Turret_USMC",4,round (125 / GRLIB_recycling_percentage),8],
+	// Militia
+	["CUP_I_nM1025_M2_ION",3,round (50 / GRLIB_recycling_percentage),4],
+	["CUP_I_nM1025_M240_ION",3,round (60 / GRLIB_recycling_percentage),4],
+	["CUP_I_nM1025_Mk19_ION",3,round (60 / GRLIB_recycling_percentage),4],
+	["CUP_I_nM1036_TOW_ION",3,round (50 / GRLIB_recycling_percentage),4],
+	["CUP_B_nM1025_SOV_M2_ION",3,round (60 / GRLIB_recycling_percentage),4],
 	// Light
 	["CUP_B_M1151_WDL_USA",2,round (15 / GRLIB_recycling_percentage),4],
 	["CUP_B_M1151_Deploy_WDL_USA",2,round (40 / GRLIB_recycling_percentage),5],
