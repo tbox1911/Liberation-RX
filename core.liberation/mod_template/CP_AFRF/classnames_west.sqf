@@ -17,6 +17,7 @@ ammo_sling_typename = "Land_Pod_Heli_Transport_04_ammo_F";
 medic_sling_typename = "Land_Pod_Heli_Transport_04_medevac_F";
 pilot_classname = "CUP_O_RU_Pilot";
 crewman_classname = "CUP_O_RU_Soldier_Crew_M_EMR_V2";
+A3W_BoxWps = "CUP_BOX_RU_Wps_F";
 chimera_vehicle_overide = [
   ["B_Heli_Light_01_F", "CUP_O_UH1H_SLA"],
   ["B_Heli_Transport_01_F", "CUP_O_Mi8_VIV_RU"]
@@ -256,4 +257,23 @@ GRLIB_vehicle_whitelist_west = [
 
 GRLIB_vehicle_blacklist_west = [
 
+];
+
+GRLIB_AirDrop_1 = [        // cost = 50 Unarmed Offroad
+    "CUP_O_UAZ_Unarmed_RU"
+];
+GRLIB_AirDrop_2 = [        // cost 100 Armed Offroader
+    "CUP_O_GAZ_Vodnik_PK_RU"
+];
+GRLIB_AirDrop_3 = [        // cost 200 MRAPs (Mine Resistant Ambush Protected Vehicle)
+    "CUP_O_BRDM2_RUS"
+];
+GRLIB_AirDrop_4 = [        // cost 300 Large Truck
+    "CUP_O_Kamaz_RU"
+];
+GRLIB_AirDrop_5 = [        // cost 750 APC (Armoured personnel carrier)
+    "CUP_O_BTR60_Green_RU"
+];
+GRLIB_AirDrop_6 = [        // cost 250 Boat
+    "CUP_O_PBX_RU"
 ];

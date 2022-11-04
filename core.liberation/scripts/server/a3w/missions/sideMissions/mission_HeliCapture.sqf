@@ -21,7 +21,8 @@ _setupObjects =
 	_vehiclePos = _missionPos findEmptyPosition [1, 60, "B_Heli_Transport_03_unarmed_F"];
 	_chopper_only = []; 
 	{if !(_x isKindOf "Plane") then {_chopper_only pushBack _x};true} count opfor_air;
-	_vehicle = [_vehiclePos, selectRandom _chopper_only, true, false, true] call F_libSpawnVehicle;
+	_vehicle = createVehicle [ (selectRandom _chopper_only), _vehiclePos, [], 0, "NONE"];
+	_vehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	_vehicle setPos (getPos _vehicle);
 	_vehicle setVariable ["R3F_LOG_disabled", true, true];
 	_vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
