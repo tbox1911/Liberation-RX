@@ -5,22 +5,22 @@ GRLIB_color_enemy_bright = "ColorRED";
 
 // All class MUST be defined !
 
-opfor_sentry = "rhsgref_ins_rifleman";
+opfor_sentry = "RyanZombie27mediumOpfor";
 opfor_rifleman = "rhsgref_ins_rifleman";
 opfor_grenadier = "rhsgref_ins_grenadier";
 opfor_squad_leader = "rhsgref_ins_grenadier";
 opfor_team_leader = "rhsgref_ins_grenadier";
 opfor_marksman = "rhsgref_ins_sniper";
 opfor_machinegunner = "rhsgref_ins_rifleman";
-opfor_heavygunner = "rhsgref_ins_rifleman";
-opfor_medic = "rhsgref_ins_rifleman";
+opfor_heavygunner = "RyanZombie32mediumOpfor";
+opfor_medic = "RyanZombie27mediumOpfor";
 opfor_rpg = "rhsgref_ins_grenadier_rpg";
 opfor_at = "rhsgref_ins_grenadier_rpg";
 opfor_aa = "rhsgref_ins_specialist_aa";
 opfor_officer = "rhsgref_ins_grenadier";
 opfor_sharpshooter = "rhsgref_ins_sniper";
 opfor_sniper = "rhsgref_ins_sniper";
-opfor_spotter = "rhsgref_ins_rifleman";
+opfor_spotter = "RyanZombie32mediumOpfor";
 opfor_engineer = "rhsgref_ins_rifleman";
 opfor_pilot = "rhsgref_ins_pilot";
 opfor_crew = "rhsgref_ins_crew";
@@ -53,12 +53,12 @@ militia_squad = [
 	"rhsgref_ins_grenadier_rpg",
 	"rhsgref_ins_specialist_aa",
 	"rhsgref_ins_specialist_aa",
-	"rhsgref_ins_rifleman",
-	"rhsgref_ins_rifleman",
-	"rhsgref_ins_rifleman",
-	"rhsgref_ins_rifleman",
-	"rhsgref_ins_rifleman",
-	"rhsgref_ins_rifleman"
+	"RyanZombie27mediumOpfor",
+	"RyanZombie32mediumOpfor",
+	"RyanZombie27mediumOpfor",
+	"RyanZombie32mediumOpfor",
+	"RyanZombie27mediumOpfor",
+	"RyanZombie32mediumOpfor"
 ];
 
 militia_loadout_overide = [
