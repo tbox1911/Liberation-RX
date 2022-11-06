@@ -6,7 +6,7 @@ params [
 ];
 
 private ["_unit", "_nb_unit", "_validpos", "_max_try"];
-if (count _classname == 0) exitWith {diag_log ["DBG: Error libunit ", _this]};
+if (count _classname == 0) exitWith {diag_log ["DBG: Error libunit ", _this]; grpNull};
 
 if (_type in ["divers", "para", "defender", "guard"]) then {
 	_nb_unit = count _classname;
