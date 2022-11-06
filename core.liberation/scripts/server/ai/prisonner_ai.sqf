@@ -25,8 +25,12 @@ _unit setVariable ["GRLIB_is_prisonner", true, true];
 _unit setVariable ["GRLIB_can_speak", true, true];
 
 // Wait
-private _timeout = time + (15 * 60);
-waitUntil { sleep 1;!alive _unit || side group _unit == GRLIB_side_friendly	|| time > _timeout};
+if (_friendly) then {
+	waitUntil { sleep 1; !alive _unit || side group _unit == GRLIB_side_friendly};
+} else {
+	private _timeout = time + (15 * 60);
+	waitUntil { sleep 1; !alive _unit || side group _unit == GRLIB_side_friendly	|| time > _timeout};
+};
 
 if (!alive _unit) exitWith {};
 
