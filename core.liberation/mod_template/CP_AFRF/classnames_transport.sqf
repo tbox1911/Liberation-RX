@@ -6,7 +6,9 @@
 box_transport_config = box_transport_config + [
     // the 'opfor_transport_truck' MUST be declared here
 	[ "CUP_O_Kamaz_RU", -5.5, [0, 0.3, 0], [0, -1.25, 0] ],
-	[ "CUP_O_Kamaz_Open_RU", -5.5, [0, 0.3, 0], [0, -1.25, 0] ]	
+	[ "CUP_O_Kamaz_Open_RU", -5.5, [0, 0.3, 0], [0, -1.25, 0] ],
+    [ "O_Truck_02_transport_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
+	[ "O_Truck_02_covered_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ]
 ];
 
 // Additional offset per object
