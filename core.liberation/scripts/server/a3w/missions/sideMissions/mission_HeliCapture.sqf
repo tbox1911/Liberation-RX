@@ -37,9 +37,7 @@ _setupObjects =
 	sleep 2;
 	_vehicle allowDamage true;
 
-	[_missionPos] call clearlandmines;
-	sleep 2;
-	[_missionPos, 25] call createlandmines;
+	[_missionPos, 30] call createlandmines;
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	[_aiGroup, _missionPos, _nbUnits, "infantry"] call createCustomGroup;
 

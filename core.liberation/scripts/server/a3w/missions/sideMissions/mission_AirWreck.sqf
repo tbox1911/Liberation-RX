@@ -26,9 +26,7 @@ _setupObjects =
 	_box2 = [ammobox_b_typename, _missionPos, true] call boxSetup;
 	_box3 = [A3W_BoxWps, _missionPos, true] call boxSetup;
 
-	[_missionPos] call clearlandmines;
-	sleep 2;
-	[_missionPos, 25] call createlandmines;
+	[_missionPos, 30] call createlandmines;
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	[_aiGroup, _missionPos, _nbUnits, "infantry"] call createCustomGroup;
 
