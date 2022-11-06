@@ -8,10 +8,7 @@ resources_intel = resources_intel - _mission_cost;
 private _helopos = [ getmarkerpos _spawn_marker, random 200, random 360 ] call BIS_fnc_relPos;
 private _helowreck = GRLIB_sar_wreck createVehicle _helopos;
 _helowreck allowDamage false;
-_helowreck setPos _helopos;
-_helowreck setPos _helopos;
-private _helowreckDir = (random 360);
-_helowreck setDir _helowreckDir;
+_helowreck setpos (getpos _helowreck);
 
 private _helofire = GRLIB_sar_fire createVehicle (getpos _helowreck);
 
