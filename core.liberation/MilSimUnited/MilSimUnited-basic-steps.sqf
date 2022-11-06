@@ -811,3 +811,23 @@ download_depot 233780 233790 375631663548038900
 
 
 
+
+
+GRLIB_endgame = 1;
+[publicstats] remoteExec ["remote_call_endgame", allPlayers];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
