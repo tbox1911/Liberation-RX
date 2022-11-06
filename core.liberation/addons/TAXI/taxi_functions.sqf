@@ -41,7 +41,7 @@ taxi_dest = {
 	_stop = time + (5 * 60); // wait 5min max
 	
 	waitUntil {
-		if (_dest != zeropos) then {
+		if (_dest distance2D zeropos > 100) then {
 			hintSilent format [localize _msg, round (_vehicle distance2D _dest)];
 		};
 		sleep 5;
