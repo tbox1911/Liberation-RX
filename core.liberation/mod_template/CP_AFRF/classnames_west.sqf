@@ -54,7 +54,6 @@ light_vehicles = [
 	["B_SDV_01_F",5,30,5,GRLIB_perm_log],
 	["C_Scooter_Transport_01_F",1,5,1,0],
 	["O_G_Offroad_01_F",1,10,1,0],
-
 	["CUP_O_UAZ_Unarmed_RU",1,10,7,0],
 	["CUP_O_UAZ_MG_RU",1,150,5,GRLIB_perm_inf],
 	["CUP_O_UAZ_SPG9_RU",1,180,5,GRLIB_perm_inf],
@@ -62,18 +61,12 @@ light_vehicles = [
 	["CUP_O_UAZ_AA_RU",1,250,5,GRLIB_perm_log],
 	["CUP_O_UAZ_AGS30_RU",1,250,5,GRLIB_perm_log],
 	["C_Van_01_transport_F",1,15,1,0],
-
 	["CUP_O_GAZ_Vodnik_Unarmed_RU",1,10,7,0],
 	["CUP_O_GAZ_Vodnik_PK_RU",1,50,7,0],
 	["CUP_O_GAZ_Vodnik_AGS_RU",1,80,7,GRLIB_perm_inf],
 	["CUP_O_GAZ_Vodnik_BPPU_RU",1,80,7,GRLIB_perm_inf],
 	["CUP_O_GAZ_Vodnik_KPVT_RU",1,80,7,GRLIB_perm_inf],
-
 	["CUP_O_BM21_RU",5,100,2,GRLIB_perm_inf],
-	["O_MRAP_02_F",2,25,2,0],
-	["O_MRAP_02_hmg_F",5,100,2,GRLIB_perm_inf],
-	["O_MRAP_02_gmg_F",5,125,2,GRLIB_perm_log],
-
 	["CUP_O_Kamaz_Open_RU",5,10,10,GRLIB_perm_inf],
 	["CUP_O_Kamaz_RU",5,50,10,GRLIB_perm_log],
 	["O_Truck_02_covered_F",5,10,5,GRLIB_perm_inf],
@@ -131,15 +124,11 @@ static_vehicles = [
 	["CUP_O_ZU23_RU_M_MSV",0,450,0,GRLIB_perm_max],
 	["O_Mortar_01_F",0,500,0,GRLIB_perm_max],
 	["CUP_O_2b14_82mm_RU_M_MSV",0,500,0,GRLIB_perm_tank],
-	["B_SAM_System_01_F",10,1500,0,GRLIB_perm_tank],
-	["B_AAA_System_01_F",10,1500,0,GRLIB_perm_air],
 	["O_SAM_System_04_F",10,1500,0,GRLIB_perm_max]
 ];
 
 // *** Static Weapon with AI ***
 static_vehicles_AI = [
-	"B_SAM_System_01_F",
-	"B_AAA_System_01_F",
 	"O_SAM_System_04_F"
 ];
 

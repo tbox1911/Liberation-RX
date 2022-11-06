@@ -5,22 +5,6 @@ R3F_LOG_CFG_can_tow = R3F_LOG_CFG_can_tow +
 
 R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 [
-	"CUP_B_USMC_DYN_MQ9",
-	"CUP_B_CESSNA_T41_UNARMED_USA",
-	"CUP_B_CESSNA_T41_ARMED_USA",
-	"CUP_B_MH6M_USA",
-	"CUP_B_AH6M_USA",
-	"CUP_B_UH60M_US",
-	"CUP_B_MH60L_DAP_2x_US",
-	"CUP_B_UH60M_Unarmed_US",
-	"CUP_B_MH47E_USA",
-	"CUP_B_CH53E_USMC",
-	"CUP_B_MV22_USMC_RAMPGUN",
-	"CUP_B_AH1Z_Dynamic_USMC",
-	"CUP_B_AH64D_DL_USA",
-	"CUP_B_A10_DYN_USA",
-	"CUP_B_AV8B_DYN_USMC",
-	"CUP_B_F35B_USMC"
 ];
 
 R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
@@ -158,9 +142,7 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 	"CUP_B_MTVR_Refuel_USMC",
 	"CUP_B_MTVR_Repair_USMC",
 	"CUP_B_nM1038_Repair_USA_WDL",
-	"CUP_B_nM1038_Ammo_USA_WDL",
-	"B_UGV_01_F",
-	"B_UGV_01_rcws_F"
+	"CUP_B_nM1038_Ammo_USA_WDL"
 ];
 
 R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
@@ -210,9 +192,7 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 	"CUP_B_MTVR_Refuel_USMC",
 	"CUP_B_MTVR_Repair_USMC",
 	"CUP_B_nM1038_Repair_USA_WDL",
-	"CUP_B_nM1038_Ammo_USA_WDL",
-	"B_UGV_01_F",
-	"B_UGV_01_rcws_F"
+	"CUP_B_nM1038_Ammo_USA_WDL"
 ];
 
 R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
@@ -246,14 +226,12 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["CUP_B_M1126_ICV_MK19_Woodland", 30],
 	["CUP_B_M1128_MGS_Woodland", 30],
 	["CUP_B_M1135_ATGMV_Woodland", 30],
-	["CUP_B_LAV25M240_USMC", 20],
-	["CUP_B_M7Bradley_USA_W", 20],
-	["CUP_B_M2Bradley_USA_W", 20],
-	["CUP_B_M2A3Bradley_USA_W", 20],
-	["CUP_B_M1A1SA_Woodland_US_Army", 20],
-	["CUP_B_M1A2SEP_TUSK_II_Woodland_US_Army", 20],
-	["B_UGV_01_F", 15],
-	["B_UGV_01_rcws_F", 15],
+	["CUP_B_LAV25M240_USMC", 40],
+	["CUP_B_M7Bradley_USA_W", 40],
+	["CUP_B_M2Bradley_USA_W", 50],
+	["CUP_B_M2A3Bradley_USA_W", 50],
+	["CUP_B_M1A1SA_Woodland_US_Army", 50],
+	["CUP_B_M1A2SEP_TUSK_II_Woodland_US_Army", 50],
 	["CUP_B_MTVR_Ammo_BAF_WOOD", 20],
 	["CUP_B_M113A3_Med_USA", 50],
 	["CUP_B_MTVR_Ammo_USMC", 20],
