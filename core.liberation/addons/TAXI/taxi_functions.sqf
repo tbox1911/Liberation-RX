@@ -41,7 +41,9 @@ taxi_dest = {
 	_stop = time + (5 * 60); // wait 5min max
 	
 	waitUntil {
-		hintSilent format [localize _msg, round (_vehicle distance2D _dest)];
+		if (_dest != zeropos) then {
+			hintSilent format [localize _msg, round (_vehicle distance2D _dest)];
+		};
 		sleep 5;
 		if ((vectorUp _vehicle) select 2 < 0.60) then {
 			_vehicle setpos [(getposATL _vehicle) select 0,(getposATL _vehicle) select 1, 0.5];
