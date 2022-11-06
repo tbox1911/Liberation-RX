@@ -14,6 +14,7 @@ sleep 1;
 
 private _cargo_seat_free = count (fullCrew [_newvehicle, "cargo", true] - fullCrew [_newvehicle, "cargo", false]);
 if (_cargo_seat_free > 8) then {_cargo_seat_free = 8};
+if (typeOf _newvehicle == "CUP_B_MH6M_USA") then {_cargo_seat_free = 6};
 diag_log format ["Spawn (%1) ParaTroopers on sector %2 at %3", _cargo_seat_free, _spawnsector, time];
 
 private _unitclass = [];
