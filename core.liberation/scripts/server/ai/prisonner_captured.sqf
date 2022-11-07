@@ -15,7 +15,7 @@ publicVariable "stats_prisonners_captured";
 
 if (isPlayer _unit_owner) then {
 	private _bonus = 10;
-	if ( score _unit_owner > GRLIB_perm_log) then { _bonus = 5 };
+	if ( [_unit_owner] call F_getScore > GRLIB_perm_log) then { _bonus = 5 };
 	if ( (typeof _unit) == pilot_classname ) then { _bonus = 20 };
 	if ( rank _unit == "COLONEL") then { _bonus = 50 };
 	_bonus = _bonus + (round (random _bonus));

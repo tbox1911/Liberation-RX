@@ -73,7 +73,7 @@ if ( isServer ) then {
 			if ( _isKamikaz ) then { 
 				_msg = format ["%1 kill a Kamikaze !!", name _killer] ;
 				[gamelogic, _msg] remoteExec ["globalChat", 0];
-				[_killer, 11] remoteExec ["F_addScore", 2];
+				[_killer, 11] call F_addScore;
 			};
 
 			if ( !_isKamikaz && side (group _unit) == GRLIB_side_civilian || _isPrisonner ) then {
@@ -82,12 +82,12 @@ if ( isServer ) then {
 					stats_civilians_killed_by_players = stats_civilians_killed_by_players + 1;
 					if ( GRLIB_civ_penalties ) then {
 						private _penalty = GRLIB_civ_killing_penalty;
-						private _score = score _killer;
+						private _score = [_killer] call F_getScore;
 						if ( _score < GRLIB_perm_inf ) then { _penalty = 5 };
 						if ( _score > GRLIB_perm_inf ) then { _penalty = 10 };
 						if ( _score > GRLIB_perm_air ) then { _penalty = 20 };
 						if ( _score > GRLIB_perm_max ) then { _penalty = 60 };
-						[_killer, -_penalty] remoteExec ["F_addScore", 2];
+						[_killer, -_penalty] call F_addScore;
 						[name _unit, _penalty, _killer] remoteExec ["remote_call_civ_penalty", 0];
 					};
 				};
@@ -101,7 +101,7 @@ if ( isServer ) then {
 
 					if (_owner_id != "0") then {
 						_owner_player = _owner_id call BIS_fnc_getUnitByUID;
-						[_owner_player, -GRLIB_civ_killing_penalty] remoteExec ["F_addScore", 2];
+						[_owner_player, -GRLIB_civ_killing_penalty] call F_addScore;
 						_msg = format ["%1, Your AI kill Civilian !!", name _owner_player] ;
 						[gamelogic, _msg] remoteExec ["globalChat", 0];
 						[name _unit, GRLIB_civ_killing_penalty, _owner_player] remoteExec ["remote_call_civ_penalty", 0];
@@ -114,7 +114,7 @@ if ( isServer ) then {
 					stats_opfor_soldiers_killed = stats_opfor_soldiers_killed + 1;
 					if ( isplayer _killer ) then {
 						stats_opfor_killed_by_players = stats_opfor_killed_by_players + 1;
-						if (GRLIB_ACE_enabled) then { [_killer, 1] remoteExec ["F_addScore", 2] };
+						[_killer, 1] call F_addScore;
 					};
 
 					private _ai_score = _killer getVariable ["PAR_AI_score", nil];
@@ -124,7 +124,7 @@ if ( isServer ) then {
 				};
 				if ( side (group _unit) == GRLIB_side_friendly ) then {
 					stats_blufor_teamkills = stats_blufor_teamkills + 1;
-					[_killer, -10] remoteExec ["F_addScore", 2];
+					[_killer, -10] call F_addScore;
 					_msg = localize "STR_FRIENDLY_FIRE";
 					[gamelogic, _msg] remoteExec ["globalChat", 0];
 				};
@@ -178,7 +178,7 @@ if ( isServer ) then {
 				_penalty = 50;
 				_msg = format ["Penalty of %1 to %2 for killing a Friendly vehicle !!", _penalty, name _killer] ;
 				[gamelogic, _msg] remoteExec ["globalChat", 0];
-				[_killer, -_penalty] remoteExec ["F_addScore", 2];
+				[_killer, -_penalty] call F_addScore;
 			};
 		};
 		

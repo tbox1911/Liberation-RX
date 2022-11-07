@@ -83,7 +83,7 @@ if (_unit == player) then {
 	};
 
 	// respawn penalty
-	if ( score _unit > GRLIB_perm_log + 20 ) then { [_unit, -10] remoteExec ["F_addScore", 2] };
+	if ( [_unit] call F_getScore > GRLIB_perm_log + 20 ) then { [_unit, -10] remoteExec ["F_addScore", 2] };
 	titleText ["" ,"BLACK FADED", 100];
 };
 

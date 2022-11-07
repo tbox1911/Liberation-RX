@@ -60,7 +60,7 @@ while { true } do {
 	};
 
 	if ( buildtype in [1,2,3,4,5,6,7,8] ) then {
-		_score = score player;
+		_score = [player] call F_getScore;
 		_build_list = [];
 		{
 			if ( _score >= (_x select 4) ) then {_build_list pushback _x};

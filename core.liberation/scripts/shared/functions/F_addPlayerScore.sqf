@@ -2,7 +2,7 @@ params ["_uid", "_score"];
 
 private _p1 = _uid call BIS_fnc_getUnitByUID;
 if (!isNull _p1) exitWith {
-    [_p1, _score] remoteExec ["F_addScore", 2];
+    [_p1, _score] call F_addScore;
 };
 
 {

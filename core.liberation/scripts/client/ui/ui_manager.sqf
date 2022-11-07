@@ -57,7 +57,7 @@ while { true } do {
 
 		if ( _uiticks % 5 == 0 ) then {
 
-			((uiNamespace getVariable 'GUI_OVERLAY') displayCtrl (107)) ctrlSetText format [ "%1", round(score player) ];
+			((uiNamespace getVariable 'GUI_OVERLAY') displayCtrl (107)) ctrlSetText format [ "%1", (player getVariable ["GREUH_score_count",0]) ];
 			((uiNamespace getVariable 'GUI_OVERLAY') displayCtrl (102)) ctrlSetText format [ "%1", (player getVariable ["GREUH_ammo_count",0]) ];
 			((uiNamespace getVariable 'GUI_OVERLAY') displayCtrl (103)) ctrlSetText format [ "%1", (player getVariable ["GREUH_fuel_count",0]) ];
 			((uiNamespace getVariable 'GUI_OVERLAY') displayCtrl (101)) ctrlSetText format [ "%1/%2", resources_infantry,infantry_cap ];

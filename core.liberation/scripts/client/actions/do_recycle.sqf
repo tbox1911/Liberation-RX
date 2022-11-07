@@ -7,7 +7,7 @@ _vehicle setVariable ["recycle_in_use", true, true];
 
 // XP AmmoBox
 private _result = false;
-if (typeOf _vehicle == ammobox_i_typename && score player <= GRLIB_perm_log) then {
+if (typeOf _vehicle == ammobox_i_typename && [player] call F_getScore <= GRLIB_perm_log) then {
 	private _msg = format [localize "STR_DO_RECYCLE"];
 	_result = [_msg, localize "STR_SP_BOX", localize "STR_PTS", localize "STR_AMMORWD"] call BIS_fnc_guiMessage;
 	if (_result && !(isNull _vehicle) && alive _vehicle) then {
@@ -43,7 +43,7 @@ if ( dialog ) then { closeDialog 0 };
 
 if ( dorecycle == 1 && !(isNull _vehicle) && alive _vehicle) exitWith {
 
-	if (typeOf _vehicle in [ammobox_b_typename, ammobox_o_typename, ammobox_i_typename] && score player <= GRLIB_perm_log) then {
+	if (typeOf _vehicle in [ammobox_b_typename, ammobox_o_typename, ammobox_i_typename] && [player] call F_getScore <= GRLIB_perm_log) then {
 		[player, 10] remoteExec ["F_addScore", 2];
 		hint format [localize "STR_AMMO_SELL2", name player];
 		playSound "taskSucceeded";

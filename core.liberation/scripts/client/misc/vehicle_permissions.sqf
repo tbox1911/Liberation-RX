@@ -27,7 +27,7 @@ if (!(_role == "cargo" || _vehicle isKindOf "Steerable_Parachute_F" || typeOf _v
 			};
 		};
 
-		_score = score player;
+		_score = [player] call F_getScore;
 		if ((typeOf _vehicle) in elite_vehicles && _score < GRLIB_perm_max) then {
 			_doeject = true;
 			_msg = localize "STR_PERMISSION_NO_VIP";

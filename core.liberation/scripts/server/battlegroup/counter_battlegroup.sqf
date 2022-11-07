@@ -21,7 +21,7 @@ while { GRLIB_endgame == 0 } do {
 	 	combat_readiness >= 70 && (armor_weight >= 70 || air_weight >= 70);
 	};
 
-	_target_lst = [allPlayers, {score _x >= GRLIB_perm_tank}] call BIS_fnc_conditionalSelect;
+	_target_lst = [allPlayers, {[_x] call F_getScore >= GRLIB_perm_tank}] call BIS_fnc_conditionalSelect;
 
 	if ( count _target_lst > 1 ) then {
 		_target_player = selectRandom _target_lst;

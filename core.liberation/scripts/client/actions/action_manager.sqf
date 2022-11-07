@@ -243,7 +243,7 @@ while { true } do {
 		// Virtual Garage
 		_idact_id = _idact_id + 1;
 		_idact_num = _id_actions select _idact_id;
-		if (_fobdistance > 15 && _fobdistance < _distfob && !_near_outpost && !_near_lhd && score player >= GRLIB_perm_inf ) then {
+		if (_fobdistance > 15 && _fobdistance < _distfob && !_near_outpost && !_near_lhd && [player] call F_getScore >= GRLIB_perm_inf ) then {
 			if ( _idact_num == -1 ) then {
 				_idact = player addAction ["<t color='#0080FF'>" + localize "STR_VIRTUAL_GARAGE" + "</t> <img size='1' image='res\ui_veh.paa'/>","addons\VIRT\virtual_garage.sqf","",-984,false,true,"","build_confirmed == 0"];
 				_id_actions set [_idact_id, _idact];
@@ -303,7 +303,7 @@ while { true } do {
 		// Secondary Objectives
 		_idact_id = _idact_id + 1;
 		_idact_num = _id_actions select _idact_id;
-		if (count GRLIB_all_fobs > 0 && ( GRLIB_endgame == 0 ) && (_fobdistance < _distredeploy || _near_lhd) && (!_near_outpost) && (score player >= GRLIB_perm_air ||  player == ( [] call F_getCommander ) || [] call is_admin) ) then {
+		if (count GRLIB_all_fobs > 0 && ( GRLIB_endgame == 0 ) && (_fobdistance < _distredeploy || _near_lhd) && (!_near_outpost) && ([player] call F_getScore >= GRLIB_perm_air ||  player == ( [] call F_getCommander ) || [] call is_admin) ) then {
 			if ( _idact_num == -1 ) then {
 				_idact = player addAction ["<t color='#FFFF00'>" + localize "STR_SECONDARY_OBJECTIVES" + "</t>","scripts\client\ui\secondary_ui.sqf","",-995,false,true,"","build_confirmed == 0"];
 				_id_actions set [_idact_id, _idact];
@@ -318,7 +318,7 @@ while { true } do {
 		// Pack FOB
 		_idact_id = _idact_id + 1;
 		_idact_num = _id_actions select _idact_id;
-		if ((_fobdistance < _distarsenal && !_near_lhd) && (!_near_outpost) && ( (score player >= GRLIB_perm_max) || (player == ( [] call F_getCommander ) || [] call is_admin) )) then {
+		if ((_fobdistance < _distarsenal && !_near_lhd) && (!_near_outpost) && ( ([player] call F_getScore >= GRLIB_perm_max) || (player == ( [] call F_getCommander ) || [] call is_admin) )) then {
 			if ( _idact_num == -1 ) then {
 				_idact = player addAction ["<t color='#FF6F00'>" + localize "STR_FOB_REPACKAGE" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_repackage_fob.sqf",([] call F_getNearestFob),-981,false,true,"","build_confirmed == 0 && !(cursorObject getVariable ['fob_in_use', false])"];
 				_id_actions set [_idact_id, _idact];
@@ -411,7 +411,7 @@ while { true } do {
 		// Destroy Outpost
 		_idact_id = _idact_id + 1;
 		_idact_num = _id_actions select _idact_id;
-		if ((_fobdistance < _distarsenal && !_near_lhd) && (_near_outpost) && ( (score player >= GRLIB_perm_log) || (player == ( [] call F_getCommander ) || [] call is_admin) )) then {
+		if ((_fobdistance < _distarsenal && !_near_lhd) && (_near_outpost) && ( ([player] call F_getScore >= GRLIB_perm_log) || (player == ( [] call F_getCommander ) || [] call is_admin) )) then {
 			if ( _idact_num == -1 ) then {
 				_idact = player addAction ["<t color='#FF6F00'>" + localize "STR_DESTROY_OUTPOST" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_destroy_fob.sqf",([] call F_getNearestFob),-981,false,true,"","build_confirmed == 0 && !(cursorObject getVariable ['fob_in_use', false])"];
 				_id_actions set [_idact_id, _idact];
