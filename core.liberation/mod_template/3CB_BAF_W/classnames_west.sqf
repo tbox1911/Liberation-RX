@@ -1,4 +1,5 @@
 // *** FRIENDLIES ***
+GRLIB_side_friendly = WEST;
 
 // 3CB BAF Woodland
 

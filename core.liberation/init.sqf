@@ -14,9 +14,9 @@ GRLIB_ACE_enabled = false;
 [] call compileFinal preprocessFileLineNUmbers "whitelist.sqf";
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\liberation_functions.sqf";
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\fetch_params.sqf";
+[] call compileFinal preprocessFileLineNUmbers "scripts\shared\classnames.sqf";
 
 if (!abort_loading) then {
-	[] call compileFinal preprocessFileLineNUmbers "scripts\shared\classnames.sqf";
 	[] call compileFinal preprocessfilelinenumbers "scripts\shared\init_shared.sqf";
 	[] call compileFinal preprocessFileLineNUmbers "scripts\shared\init_sectors.sqf";
 	if (!GRLIB_ACE_enabled) then {

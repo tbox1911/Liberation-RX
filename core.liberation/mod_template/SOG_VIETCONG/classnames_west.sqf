@@ -1,5 +1,5 @@
 // *** FRIENDLIES ***
-
+GRLIB_side_friendly = EAST;
 
 // Default classname: scripts\shared\default_classnames.sqf
 // Advanced definition: scripts\shared\classnames.sqf

@@ -1,4 +1,5 @@
 // *** FRIENDLIES ***
+GRLIB_side_friendly = WEST;
 
 // United States Army - Cold War Rearmed III
 

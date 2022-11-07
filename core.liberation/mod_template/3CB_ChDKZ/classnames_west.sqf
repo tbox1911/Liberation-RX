@@ -1,4 +1,5 @@
 // *** FRIENDLIES ***
+GRLIB_side_friendly = EAST;
 
 // 3CB ChDKZ (Chernarussian Movement of the Red Star)
 // Requ. Mods: RHS,3CB

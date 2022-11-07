@@ -5,6 +5,7 @@ private [ "_unit_model", "_cloth", "_items", "_weapon", "_mag", "_src_class", "_
 
 // repaint man units
 private _chimera_soldiers = [];
+private _grp = createGroup [GRLIB_side_friendly, true];
 allUnits apply { if ([_x, "LHD", GRLIB_sector_size] call F_check_near && !isPlayer _x) then {_chimera_soldiers pushback _x} };
 {
     _unit_model = selectRandom blufor_squad_inf;
@@ -23,6 +24,7 @@ allUnits apply { if ([_x, "LHD", GRLIB_sector_size] call F_check_near && !isPlay
     for "_i" from 1 to 3 do {_unit addItemToVest _mag};
     _unit addWeapon _weapon;
     for "_i" from 1 to 3 do {_unit addItemToVest _mag};
+    [_unit] joinSilent _grp;
 } forEach _chimera_soldiers;
 
 // repaint vehicle
