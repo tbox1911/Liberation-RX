@@ -8,4 +8,4 @@ private _msg = format [localize "STR_REMOTE_PENALTY", name player, _fobname, _pe
 [_msg, 0, 0, 10, 0, 0, 90] spawn BIS_fnc_dynamicText;
 
 playSound "taskfailed";
-[player, -_penalty] remoteExec ["addScore", 2];
+[player, -_penalty] remoteExec ["F_addScore", 2];

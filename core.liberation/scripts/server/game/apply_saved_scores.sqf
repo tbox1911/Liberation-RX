@@ -15,8 +15,8 @@ while { true } do {
 			// player saved score/ammo/fuel
 			{
 				if ( (getPlayerUID _nextplayer) == (_x select 0) ) then {
-					_nextplayer addScore ((_x select 1) - (score _nextplayer));
-					_nextplayer setVariable ["GREUH_score_last", score _nextplayer, true];
+					_nextplayer setVariable ["GREUH_score_count", (_x select 1), true];
+					_nextplayer setVariable ["GREUH_score_last", (_x select 1), true];
 					_nextplayer setVariable ["GREUH_ammo_count", (_x select 2), true];
 					//compat fix
 					if ( typeName (_x select 3) == "STRING") then {
@@ -30,6 +30,7 @@ while { true } do {
 			// new player
 			if (isNil {_nextplayer getVariable ["GREUH_score_last", nil]}) then {
 				_nextplayer setVariable ["GREUH_score_last", 0, true];
+				_nextplayer setVariable ["GREUH_score_count", 0, true];
 				_nextplayer setVariable ["GREUH_ammo_count", GREUH_start_ammo, true];
 				_nextplayer setVariable ["GREUH_fuel_count", GREUH_start_fuel, true];
 				GRLIB_player_scores pushback [getPlayerUID _nextplayer, 0, GREUH_start_ammo, GREUH_start_fuel, name _nextplayer];

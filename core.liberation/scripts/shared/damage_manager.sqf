@@ -21,7 +21,7 @@ if (!isNull _killer && _unit != _killer) then {
 		if ( _unit getVariable ["GRLIB_isProtected", 0] < time ) then {
 			private _msg = format ["%1 - %2 Watch your fire !! ", localize "STR_FRIENDLY_FIRE", name _killer];
 			[gamelogic, _msg] remoteExec ["globalChat", 0];
-			[_killer, -5] remoteExec ["addScore", 2];
+			[_killer, -5] remoteExec ["F_addScore", 2];
 			_unit setVariable ["GRLIB_isProtected", round(time + 3), true];
 		};
 		if (GRLIB_revive != 0) then { _ret = _amountOfDamage min 0.86 };
