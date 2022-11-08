@@ -4379,7 +4379,7 @@
 		</Key>
 		<Key ID="STR_RANK_LVL3">
 			<Original>You have Full Acces to Static Weapons&lt;br/&gt;You can use Aircraft.&lt;br/&gt;You can build Outpost.&lt;br/&gt;You have an extra AI.</Original>
-			<French>Vous avez un accès complet aux Défense Statique.&lt;br/&gt;Vous pouvez utiliser les Avions.&lt;br/&gt;Vous pouvez construire des Outposts.&lt;br/&gt;Vous avez une unité en plus.</French>
+			<French>Vous avez un accès complet aux Défense Statique.&lt;br/&gt;Vous pouvez utiliser les unitées Aerienne.&lt;br/&gt;Vous pouvez construire des Outposts.&lt;br/&gt;Vous avez une unité en plus.</French>
 			<Chinesesimp>您可以使用所有静态武器&lt;br/&gt;您可以驾驶飞行器。&lt;br/&gt;您可以建造前哨。&lt;br/&gt;您可以额外招募一个AI。</Chinesesimp>
 			<Chinese>您可以使用所有靜態武器&lt;br/&gt;您可以駕駛飛行器。 &lt;br/&gt;您可以建造前哨。 &lt;br/&gt;您可以額外招募一個AI。</Chinese>
 			<Japanese>あなたはすべての固定武器にアクセス出来ます。&lt;br/&gt;あなたは航空機を使用出来ます。&lt;br/&gt;あなたは前哨基地をビルド出来ます。&lt;br/&gt;あなたはより多くの分隊AIを使えます。</Japanese>
@@ -4393,7 +4393,7 @@
 		</Key>
 		<Key ID="STR_RANK_LVL5">
 			<Original>You can build Air unit&lt;br/&gt;You can start Special Side Missions at HQ.&lt;br/&gt;You have an extra AI.</Original>
-			<French>Vous pouvez construire des Avions.&lt;br/&gt;Vous pouvez démarrer des Missions Spéciales à la FOB.&lt;br/&gt;Vous avez une unité en plus.</French>
+			<French>Vous pouvez construire des unitées Aerienne.&lt;br/&gt;Vous pouvez démarrer des Missions Spéciales à la FOB.&lt;br/&gt;Vous avez une unité en plus.</French>
 			<Chinesesimp>您可以建造空军单位&lt;br/&gt;您可以在总部开始特殊支线任务。&lt;br/&gt;您还可以额外招募一个AI。</Chinesesimp>
 			<Chinese>您可以建造空軍單位&lt;br/&gt;您可以在總部開始特殊支線任務。 &lt;br/&gt;您還可以額外招募一個AI。</Chinese>
 			<Japanese>あなたは航空機をビルドできます。&lt;br/&gt;あなたはセカンダリーミッションを開始することができます。&lt;br/&gt;あなたはより多くの分隊AIを使えます。</Japanese>

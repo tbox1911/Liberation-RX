@@ -97,14 +97,14 @@ air_vehicles = [
 	//["O_T_UAV_04_CAS_F",5,1500,10,GRLIB_perm_max],
 	["C_Plane_Civil_01_F",1,50,5,GRLIB_perm_air],
 	["CUP_O_Mi8_RU",1,350,5,GRLIB_perm_tank],
-	["CUP_O_Ka50_DL_RU",1,350,5,GRLIB_perm_tank],
-	["CUP_O_Mi24_V_Dynamic_RU",20,4500,40,GRLIB_perm_air],
-	["CUP_O_MI6T_RU",3,750,10,GRLIB_perm_air],
+	["CUP_O_Ka50_DL_RU",1,1850,5,GRLIB_perm_tank],
+	["CUP_O_Mi24_V_Dynamic_RU",20,3000,40,GRLIB_perm_air],
+	["CUP_O_MI6T_RU",3,1500,10,GRLIB_perm_air],
 	["CUP_O_Ka52_RU", 10,2500,20,GRLIB_perm_air],
-	["CUP_O_Ka60_Grey_RU",20,3000,40,GRLIB_perm_max],
-	["CUP_O_SU34_RU",20,3500,40,GRLIB_perm_max],
+	["CUP_O_Ka60_Grey_RU",20,600,40,GRLIB_perm_max],
+	["CUP_O_SU34_RU",20,4200,40,GRLIB_perm_max],
 	["CUP_O_Su25_Dyn_RU",20,3800,40,GRLIB_perm_max],
-	["CUP_O_Mi8AMT_RU",3,1450,10,GRLIB_perm_air]
+	["CUP_O_Mi8AMT_RU",3,1300,10,GRLIB_perm_air]
 ];
 
 blufor_air = [

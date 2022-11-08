@@ -9,13 +9,16 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 
 R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
 [
-	"CUP_B_UH60M_US",
-	"CUP_B_MH60L_DAP_2x_US",
-	"CUP_B_UH60M_Unarmed_US",
-	"CUP_B_MH47E_USA",
-	"CUP_B_CH53E_USMC",
-	"CUP_B_AH1Z_Dynamic_USMC",
-	"CUP_B_AH64D_DL_USA"
+	"CUP_MQ9_Base",
+	"CUP_AH6_BASE",
+	"CUP_AH64_base",
+	"CUP_AH64D_Base",
+	"CUP_CH53E_Base",
+	"CUP_B_UH1Y_Base",
+	"CUP_AH1Z_Base",
+	"CUP_Uh60_Base",
+	"CUP_Uh60L_Base",
+	"CUP_MH47E_base"
 ];
 
 R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
@@ -24,20 +27,16 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 
 R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 [
-	["CUP_B_USMC_DYN_MQ9", 0],
-	["CUP_B_CESSNA_T41_UNARMED_USA", 15],
-	["CUP_B_CESSNA_T41_ARMED_USA", 15],
-	["CUP_B_AC47_Spooky_USA", 30],
-	["CUP_B_MH6M_USA", 15],
-	["CUP_B_AH6M_USA", 15],
-	["CUP_B_UH60M_US", 30],
-	["CUP_B_MH60L_DAP_2x_US", 30],
-	["CUP_B_UH60M_Unarmed_US", 75],
-	["CUP_B_MH47E_USA", 75],
-	["CUP_B_CH53E_USMC", 100],
-	["CUP_B_MV22_USMC_RAMPGUN", 60],
-	["CUP_B_AH1Z_Dynamic_USMC", 15],
-	["CUP_B_AH64D_DL_USA", 15],
+	["CUP_MQ9_Base", 30],
+	["CUP_AH6_BASE", 30],
+	["CUP_AH64_base", 30],
+	["CUP_AH64D_Base", 30],
+	["CUP_CH53E_Base", 70],
+	["CUP_B_UH1Y_Base", 30],
+	["CUP_AH1Z_Base", 30],
+	["CUP_Uh60_Base", 30],
+	["CUP_Uh60L_Base", 30],
+	["CUP_MH47E_base" 100],
 	["CUP_B_C130J_Cargo_USMC", 200],
 	["CUP_B_A10_DYN_USA", 15],
 	["CUP_B_AV8B_DYN_USMC", 15],
