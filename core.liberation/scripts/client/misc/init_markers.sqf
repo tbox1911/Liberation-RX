@@ -1,6 +1,7 @@
 private ["_marker"];
 _marker_debug = false;
 
+// Game markers
 _marker = createMarkerLocal ["zone_capture", markers_reset];
 _marker setMarkerColorLocal "ColorUNKNOWN";
 _marker setMarkerShapeLocal "Ellipse";
@@ -10,6 +11,10 @@ _marker setMarkerSizeLocal [ GRLIB_capture_size, GRLIB_capture_size ];
 _marker = createMarkerLocal ["spawn_marker", markers_reset];
 _marker setMarkerColorLocal "ColorGreen";
 _marker setMarkerTypeLocal "Select";
+
+// Base markers color
+"huronmarker" setMarkerColorLocal GRLIB_color_friendly;
+"base_chimera" setMarkerColorLocal GRLIB_color_friendly;
 
 // LRX Markers
 GRLIB_Marker_SRV = [];
