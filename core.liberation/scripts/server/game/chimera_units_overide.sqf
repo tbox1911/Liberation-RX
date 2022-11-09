@@ -38,15 +38,14 @@ if (!isNil "chimera_vehicle_overide") then {
             _src_pos = (getPosATL _x) vectorAdd [0, 0, 0.2];
             _src_dir = getDir _x;
             deleteVehicle _x;
-            sleep 0.1;
+            sleep 0.2;
             _veh = _dst_class createVehicle _src_pos;
             _veh allowDamage false;
-            _veh setPosATL _src_pos;
             _veh setDir _src_dir;
+            _veh setPosATL _src_pos;
             _veh setVariable ["GRLIB_vehicle_owner", "public", true];
             _veh addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-            sleep 0.1;
-            _veh allowDamage true;
+
             if (GRLIB_ACE_enabled) then {
                 if (_src_class == "B_Heli_Light_01_F") then {
                     [_veh, 15] call ace_cargo_fnc_setSpace;
@@ -55,6 +54,9 @@ if (!isNil "chimera_vehicle_overide") then {
                     [_veh, 30] call ace_cargo_fnc_setSpace;
                 };
             };
+
+             sleep 0.2;
+            _veh allowDamage true;
         } forEach _veh_lst;
 
     } forEach chimera_vehicle_overide;
