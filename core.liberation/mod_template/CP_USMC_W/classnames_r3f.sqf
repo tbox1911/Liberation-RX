@@ -36,7 +36,7 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["CUP_AH1Z_Base", 30],
 	["CUP_Uh60_Base", 30],
 	["CUP_Uh60L_Base", 30],
-	["CUP_MH47E_base" 100],
+	["CUP_MH47E_base", 100],
 	["CUP_B_C130J_Cargo_USMC", 200],
 	["CUP_B_A10_DYN_USA", 15],
 	["CUP_B_AV8B_DYN_USMC", 15],

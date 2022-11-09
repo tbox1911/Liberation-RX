@@ -220,7 +220,7 @@ opfor_recyclable = [
 	["CUP_B_UH60M_FFV_US",6,round (125 / GRLIB_recycling_percentage),14],
 	["CUP_B_UH60M_US",6,round (125 / GRLIB_recycling_percentage),14],
 	["CUP_B_MH6M_USA",4,round (70 / GRLIB_recycling_percentage),10],
-	["CUP_B_C130J_USMC",16,round (500 / GRLIB_recycling_percentage),40],
+	["CUP_B_C130J_USMC",16,round (2500 / GRLIB_recycling_percentage),40],
 	["CUP_B_MV22_USMC_RAMPGUN",10,round (350 / GRLIB_recycling_percentage),24],
 	["CUP_B_UH1Y_UNA_USMC",4,round (125 / GRLIB_recycling_percentage),10],
 	["CUP_B_AH1Z_Dynamic_USMC",10,round (1750 / GRLIB_recycling_percentage),24],
