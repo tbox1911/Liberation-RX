@@ -21,11 +21,11 @@ if (isServer) then {
 if (GRLIB_side_friendly == GRLIB_side_enemy) exitWith {
 abort_loading_msg = format [
 	"********************************\n
-	FATAL! - Invalid Side selection !\n\n
-	side West (%1) conflict with side East (%2)\n\n
+	FATAL! - Invalid Faction selection !\n\n
+	Both faction use the same side (%1)\n\n
 	Loading Aborted to protect data integrity.\n
 	Correct the Side selection.\n
-	*********************************", GRLIB_mod_west, GRLIB_mod_east];
+	*********************************", GRLIB_side_friendly];
 	abort_loading = true;
 };
 
