@@ -203,6 +203,11 @@ if ( !isNil "greuh_liberation_savegame" ) then {
             _nextbuilding setVariable ["R3F_LOG_disabled", true, true];
 
             [_nextbuilding, _color, _color_name, []] call RPT_fnc_TextureVehicle;
+
+			if (GRLIB_CUPV_enabled && _nextclass isKindOf "Tank") then {
+				[_nextbuilding, false, ["hide_front_ti_panels",1,"hide_cip_panel_rear",1,"hide_cip_panel_bustle",1]] call BIS_fnc_initVehicle;
+			};
+
             if (count _lst_a3 > 0) then {
                 {_nextbuilding addWeaponWithAttachmentsCargoGlobal [ _x, 1]} forEach _lst_a3;
             };

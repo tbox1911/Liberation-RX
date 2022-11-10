@@ -377,6 +377,11 @@ while { true } do {
 						[_vehicle, ["EAF",1], true ] call BIS_fnc_initVehicle;
 					};
 
+					// CUP remove tank panel
+					if (GRLIB_CUPV_enabled && _classname isKindOf "Tank") then {
+						[_vehicle, false, ["hide_front_ti_panels",1,"hide_cip_panel_rear",1,"hide_cip_panel_bustle",1]] call BIS_fnc_initVehicle;
+					};
+
 					// Color
 					if ( count _color > 0 ) then {
 						[_vehicle, _color, "N/A", []] call RPT_fnc_TextureVehicle;
