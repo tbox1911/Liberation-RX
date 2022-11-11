@@ -28,7 +28,7 @@ _unit setVariable ["GRLIB_can_speak", true, true];
 if (_friendly) then {
 	waitUntil { sleep 1; !alive _unit || side group _unit == GRLIB_side_friendly};
 } else {
-	private _timeout = time + (15 * 60);
+	private _timeout = time + (20 * 60);
 	waitUntil { sleep 1; !alive _unit || side group _unit == GRLIB_side_friendly	|| time > _timeout};
 };
 
@@ -43,6 +43,33 @@ sleep 1;
 [_unit, ""] remoteExec ["switchmove", 0];
 
 while {alive _unit} do {
+	// Captured
+	private _nearfob = [_unit, "FOB", 30] call F_check_near;
+	if (_nearfob) then {
+		private _unit_owner = leader group _unit;
+		sleep (3 + floor(random 5));
+		doStop _unit;
+		unassignVehicle _unit;
+		[_unit] orderGetIn false;
+		[_unit] allowGetIn false;
+		if (!isnull objectParent _unit) then {
+			doGetOut _unit;
+			sleep 3;
+		};
+		sleep 3;
+		_grp = createGroup [GRLIB_side_friendly, true];
+		[_unit] joinSilent _grp;
+		_unit playmove "AmovPercMstpSnonWnonDnon_AmovPsitMstpSnonWnonDnon_ground";
+		_unit disableAI "ANIM";
+		_unit disableAI "MOVE";
+		doStop _unit;
+		sleep 5;
+		[_unit, "AidlPsitMstpSnonWnonDnon_ground00"] remoteExec ["switchmove", 0];
+		[_unit, _unit_owner] call prisonner_captured;
+		sleep 300;
+		deleteVehicle _unit;
+	};
+
 	// Flee
 	private _is_near_blufor = count ([units GRLIB_side_friendly, { (isNil {_x getVariable "GRLIB_is_prisonner"}) && (_x distance2D _unit) < 100 }] call BIS_fnc_conditionalSelect);
 	if ( _is_near_blufor == 0 && !_friendly ) then {
@@ -86,33 +113,6 @@ while {alive _unit} do {
 		} else {
 			{ deleteVehicle _x } forEach _flee_grp;
 		};	
-	};
-
-	// Captured
-	private _nearfob = [_unit, "FOB", 30] call F_check_near;
-	if (_nearfob) then {
-		private _unit_owner = leader group _unit;
-		sleep (3 + floor(random 5));
-		doStop _unit;
-		unassignVehicle _unit;
-		[_unit] orderGetIn false;
-		[_unit] allowGetIn false;
-		if (!isnull objectParent _unit) then {
-			doGetOut _unit;
-			sleep 3;
-		};
-		sleep 3;
-		_grp = createGroup [GRLIB_side_friendly, true];
-		[_unit] joinSilent _grp;
-		_unit playmove "AmovPercMstpSnonWnonDnon_AmovPsitMstpSnonWnonDnon_ground";
-		_unit disableAI "ANIM";
-		_unit disableAI "MOVE";
-		doStop _unit;
-		sleep 5;
-		[_unit, "AidlPsitMstpSnonWnonDnon_ground00"] remoteExec ["switchmove", 0];
-		[_unit, _unit_owner] call prisonner_captured;
-		sleep 300;
-		deleteVehicle _unit;
 	};
 
 	sleep 5;
