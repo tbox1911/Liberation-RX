@@ -61,8 +61,8 @@ player addEventHandler ["Respawn", { [] spawn PAR_Player_Init }];
 [player] call PAR_EventHandler;
 
 // Handle Damage EH
-player removeAllEventHandlers "HandleDamage";
 if (GRLIB_revive != 0) then {
+  player removeAllEventHandlers "HandleDamage";
   player addEventHandler ["HandleDamage", { _this call PAR_HandleDamage_EH }];
   [] spawn PAR_AI_Manager;
 } else {

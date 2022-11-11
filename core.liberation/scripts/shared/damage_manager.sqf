@@ -51,20 +51,4 @@ if (!isNull _killer && _unit != _killer) then {
 	};
 };
 
-if (isPlayer _unit && GRLIB_ACE_medical_enabled) then {
-	if !(_unit getVariable ["ACE_isUnconscious", false]) then {
-		_unit setVariable ["GREUH_isUnconscious", 1, true];
-		_unit setVariable ["PAR_isUnconscious", 1, true];
-		_unit switchMove "AinjPpneMstpSnonWrflDnon";  // lay down
-		_unit playMoveNow "AinjPpneMstpSnonWrflDnon";
-	};
-	//  else {
-	// 	_unit setVariable ["GREUH_isUnconscious", 0, true];
-	// 	_unit setVariable ["PAR_isUnconscious", 0, true];
-	// 	_unit playMove "amovppnemstpsraswrfldnon";
-	// 	_unit playMove "";
-	// };
-	_ret = _amountOfDamage min 0.86 
-};
-
 _ret;
