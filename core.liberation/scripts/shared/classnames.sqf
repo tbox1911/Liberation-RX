@@ -30,14 +30,27 @@ abort_loading_msg = format [
 };
 
 // *** COLORS ***
+// Default WEST
 GRLIB_color_friendly = "ColorBLUFOR";
-GRLIB_color_enemy = "ColorOPFOR";
-GRLIB_color_enemy_bright = "ColorRED";
 
 if (GRLIB_side_friendly == EAST) then {
 	GRLIB_color_friendly = "ColorOPFOR";
+};
+if (GRLIB_side_friendly == INDEPENDENT) then {
+	GRLIB_color_friendly = "colorIndependent";
+};
+
+// Default EAST
+GRLIB_color_enemy = "ColorOPFOR";
+GRLIB_color_enemy_bright = "ColorRED";
+
+if (GRLIB_side_enemy == WEST) then {
 	GRLIB_color_enemy = "ColorBLUFOR";
 	GRLIB_color_enemy_bright = "ColorBlue";
+};
+if (GRLIB_side_enemy == INDEPENDENT) then {
+	GRLIB_color_enemy = "colorIndependent";
+	GRLIB_color_enemy_bright = "ColorGreen";
 };
 
 // *** CIVILIAN ***
