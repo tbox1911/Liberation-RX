@@ -84,19 +84,19 @@ _setupObjects =
 _waitUntilMarkerPos = {getPosATL _vip};
 _waitUntilExec = nil;
 _waitUntilCondition = {
-	if (combatMode _aiGroup != "GREEN") then {
+	if (combatMode _aiGroup != "GREEN" && (count ([getPosATL _vip, 800] call F_getNearbyPlayers) > 0)) then {
 		{ 
 			_veh = objectParent _x;
-			if (driver _veh == _x) then { doStop _x };
-			if (!(isNull _veh) && speed vehicle _veh < 5) then {
+			if (driver _veh == _x) then { doStop _x; sleep 0.5 };
+			if (!(isNull _veh) && speed vehicle _veh < 2) then {
 				unAssignVehicle _x;
 				_x action ["eject", vehicle _x];
 				_x action ["getout", vehicle _x];
 				[_x] orderGetIn false;
 				[_x] allowGetIn false;
+				_x doFollow (leader _aiGroup);
 				sleep 0.2;
 			};
-			if (driver _veh == _x) then { _x doFollow (leader _aiGroup) };
 		} forEach (units _aiGroup);
 		_aiGroup setBehaviour "COMBAT";
 		_aiGroup setCombatMode "RED";
