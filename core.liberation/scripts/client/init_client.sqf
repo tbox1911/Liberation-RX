@@ -56,7 +56,12 @@ get_lrx_name = compileFinal preprocessFileLineNumbers "scripts\client\misc\get_l
 get_player_name = compileFinal preprocessFileLineNumbers "scripts\client\misc\get_player_name.sqf";
 
 private _grp = createGroup [GRLIB_side_friendly, true];
-[player] joinSilent _grp;
+waitUntil {
+	[player] joinSilent _grp;
+	sleep 1;
+	(side group player == GRLIB_side_friendly);
+};
+
 [_grp, "add"] remoteExec ["addel_group_remote_call", 2];
 
 if (!([] call F_getValid)) exitWith {endMission "LOSER"};
