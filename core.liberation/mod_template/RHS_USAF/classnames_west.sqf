@@ -321,8 +321,11 @@ heavy_vehicles = [
 // CUP
 
 ["CUP_B_M1133_MEV_Desert",0,heavy_vehicle_price_tier_1,0,GRLIB_perm_inf],
+["CUP_B_FV432_GB_Ambulance",0,heavy_vehicle_price_tier_1,0,GRLIB_perm_inf],
 ["CUP_B_M1126_ICV_M2_Desert",0,heavy_vehicle_price_tier_2,0,GRLIB_perm_inf],
 ["CUP_B_M1126_ICV_MK19_Desert",0,heavy_vehicle_price_tier_3,0,GRLIB_perm_inf],
+["CUP_B_FV510_GB_D",0,heavy_vehicle_price_tier_2,0,GRLIB_perm_inf],
+["CUP_B_MCV80_GB_D",0,heavy_vehicle_price_tier_3,0,GRLIB_perm_inf],
 ["CUP_B_LAV25_USMC",0,heavy_vehicle_price_tier_8,0,GRLIB_perm_inf],
 ["CUP_B_LAV25M240_USMC",0,heavy_vehicle_price_tier_8,0,GRLIB_perm_inf],
 ["CUP_B_AAV_USMC",0,heavy_vehicle_price_tier_8,0,GRLIB_perm_inf],
@@ -556,6 +559,8 @@ air_vehicles = [
 //CUP
 
 ["CUP_B_MH47E_USA",0,air_vehicle_price_tier_5,0,GRLIB_perm_inf],
+["CUP_B_Mi17_CDF",0,air_vehicle_price_tier_5,0,GRLIB_perm_inf],
+["CUP_B_Mi17_VIV_CDF",0,air_vehicle_price_tier_5,0,GRLIB_perm_inf],
 
 //RHS
 
@@ -594,6 +599,7 @@ air_vehicles = [
 ["CUP_B_AH64_DL_USA",0,air_vehicle_price_tier_11,0,GRLIB_perm_inf],
 ["CUP_B_AH64D_DL_USA",0,air_vehicle_price_tier_14,0,GRLIB_perm_inf],
 ["CUP_I_Mi24_Mk3_UN",0,air_vehicle_price_tier_14,0,GRLIB_perm_inf],
+["CUP_B_Mi171Sh_ACR",0,air_vehicle_price_tier_14,0,GRLIB_perm_inf],
 ["CUP_B_Mi35_Dynamic_CZ_Ram",0,air_vehicle_price_tier_14,0,GRLIB_perm_inf],
 
 // BAF
