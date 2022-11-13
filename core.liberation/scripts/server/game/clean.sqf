@@ -41,24 +41,12 @@ if (GRLIB_cleanup_vehicles == 0) exitWith {};
 
 //==================== FORCE DELETE
 private _force_cleanup_classnames = [
-	"BloodSpray_01_New_F",
-	"BloodPool_01_Large_New_F",
-	"BloodPool_01_Medium_New_F",
-	"BloodSplatter_01_Large_New_F",
-	"BloodSplatter_01_Medium_New_F",
-	"BloodSplatter_01_Small_New_F",
-	"MedicalGarbage_01_3x3_v1_F",
-	"MedicalGarbage_01_3x3_v2_F",
-	"B_Ejection_Seat_Plane_CAS_01_F",
-	"O_Ejection_Seat_Plane_CAS_02_F",
-	"B_Ejection_Seat_Plane_Fighter_01_F",
-	"O_Ejection_Seat_Plane_Fighter_02_F",
-	"I_Ejection_Seat_Plane_Fighter_03_F",
-	"I_Ejection_Seat_Plane_Fighter_04_F",
-	"Plane_Fighter_01_Canopy_F",
-	"Plane_Fighter_02_Canopy_F",
-	"Plane_Fighter_03_Canopy_F",
-	"Plane_Fighter_04_Canopy_F",
+	"Blood_01_Base_F",
+	"MedicalGarbage_01_Base_F",
+	"Plane_Canopy_Base_F",
+	"Ejection_Seat_Base_F",
+	"CUP_A10_Ejection_Seat",
+	"CUP_A10_Canopy",
 	"rhs_k36d5_seat",
 	"rhs_ka52_blade",
 	"rhs_ka52_ejection_vest",
@@ -146,7 +134,7 @@ while {deleteManagerPublic} do {
 		sleep _checkFrequencyDefault;
 	};
 	//================================= FORCE DELETE
-	{ if (typeOf _x in _force_cleanup_classnames) then { deleteVehicle _x; _stats = _stats + 1 } } forEach (allMissionObjects "All");
+	{ if ([typeOf _x, _force_cleanup_classnames] call F_itemIsInClass) then { deleteVehicle _x; _stats = _stats + 1 } } forEach (allMissionObjects "All");
 	sleep 1;
 	//================================= LRX TTL UNITS
 	private _units_ttl = [] call _getTTLunits;
@@ -190,15 +178,14 @@ while {deleteManagerPublic} do {
 	sleep 1;
 	//================================= VEHICLES
 	if (!(_vehiclesLimit isEqualTo -1)) then {
-		private _nbVehicles = [vehicles,
-			{ alive _x &&
-			 [_x] call is_abandoned &&
-			 isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) &&
-			 !(_x getVariable ['R3F_LOG_disabled', true]) &&
-			 count (crew _x) == 0 &&
-			 !([_x, "LHD", GRLIB_sector_size] call F_check_near) &&
-			 !([typeOf _x, _no_cleanup_classnames] call F_itemIsInClass)
-			}] call BIS_fnc_conditionalSelect;
+		private _nbVehicles = [vehicles, {
+			alive _x &&
+			[_x] call is_abandoned &&
+			isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) &&
+			!(_x getVariable ['R3F_LOG_disabled', true]) &&
+			!([_x, "LHD", GRLIB_sector_size] call F_check_near) &&
+			!([typeOf _x, _no_cleanup_classnames] call F_itemIsInClass)
+		}] call BIS_fnc_conditionalSelect;
 
 		if ((count (_nbVehicles)) > _vehiclesLimit) then {
 			if (_vehicleDistCheck) then {
