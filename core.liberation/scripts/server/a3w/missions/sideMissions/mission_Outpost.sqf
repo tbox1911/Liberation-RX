@@ -7,8 +7,6 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_objects"];
-
 _setupVars = {
 	_missionType = "Enemy Outpost";
 	_locationsArray = [SpawnMissionMarkers] call checkSpawn;
@@ -17,7 +15,7 @@ _setupVars = {
 _setupObjects = {
 	_missionPos = markerPos _missionLocation;
 	private _base_output = [_missionPos, false, true] call createOutpost;
-	_objects = _base_output select 0;
+	_vehicles = _base_output select 0;
 	//_objectives = _base_output select 1;
 	_aiGroup = _base_output select 2;
 
@@ -29,11 +27,7 @@ _waitUntilMarkerPos = nil;
 _waitUntilExec = nil;
 _waitUntilCondition = nil;
 
-_failedExec = {
-	// Mission failed
-	{ deleteVehicle _x } forEach _objects;
-	{ moveOut _x; deleteVehicle _x } forEach units _aiGroup;
-};
+_failedExec = nil;
 
 _successExec = {
 	// Mission complete
@@ -45,24 +39,18 @@ _successExec = {
 
 	{
 		if (typeOf _x isKindof "AllVehicles") then {
-			_x setVariable ["GRLIB_vehicle_owner", "", true];
+			_x setVariable ["GRLIB_vehicle_owner", nil, true];
 			_x lock 0;
 		};
-	} foreach _objects;
+	} foreach _vehicles;
 
-	[_objects, _missionPos] spawn {
-		params ["_list", "_pos"];
+	[_missionPos] spawn {
+		params ["_pos"];
 		sleep 300;
-		{
-			if (count (crew _x) == 0 && (_x getVariable ["GRLIB_vehicle_owner", ""] == "")) then {
-				deleteVehicle _x;
-			};
-		} forEach _list;
 		{ deleteVehicle _x } forEach ([nearestObjects [_pos, ["Ruins_F"], 100], { getObjectType _x == 8 }] call BIS_fnc_conditionalSelect);
 		sleep 3;
 		{ _x setPos (getPos _x) } forEach ([allDeadMen, { _x distance2D _pos <= 100 }] call BIS_fnc_conditionalSelect);
 		{ _x setPos (getPos _x) } forEach ([nearestObjects [_pos, ["WeaponHolder"], 100], { getObjectType _x == 8 }] call BIS_fnc_conditionalSelect);
-
 	};
 };
 
