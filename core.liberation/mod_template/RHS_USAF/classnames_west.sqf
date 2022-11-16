@@ -338,7 +338,9 @@ heavy_vehicles = [
 ["CUP_B_M163_Vulcan_USA",0,heavy_vehicle_price_tier_9,0,GRLIB_perm_inf],
 ["CUP_I_BRDM2_UN",0,heavy_vehicle_price_tier_8,0,GRLIB_perm_inf],
 ["CUP_I_BMP2_UN",0,heavy_vehicle_price_tier_11,0,GRLIB_perm_inf],
-["CUP_I_BMP2_AMB_UN",0,heavy_vehicle_price_tier_1,0,GRLIB_perm_inf],
+["CUP_I_BMP2_AMB_UN",0,heavy_vehicle_price_tier_11,0,GRLIB_perm_inf],
+["CUP_B_BMP2_CZ",0,heavy_vehicle_price_tier_11,0,GRLIB_perm_inf],
+["CUP_B_BMP2_AMB_CZ",0,heavy_vehicle_price_tier_11,0,GRLIB_perm_inf],
 ["CUP_I_BTR80_UN",0,heavy_vehicle_price_tier_12,0,GRLIB_perm_inf],
 ["CUP_I_BTR80A_UN",0,heavy_vehicle_price_tier_13,0,GRLIB_perm_inf],
 
@@ -354,6 +356,7 @@ heavy_vehicles = [
 ["rhsusf_m113_usarmy_supply",0,heavy_vehicle_price_tier_2,0,GRLIB_perm_inf],
 ["rhsusf_m113_usarmy",0,heavy_vehicle_price_tier_2,0,GRLIB_perm_inf],
 ["rhsusf_m113_usarmy_MK19",0,heavy_vehicle_price_tier_3,0,GRLIB_perm_inf],
+["rhs_t15_tv",0,heavy_vehicle_price_tier_11,0,0,GRLIB_perm_inf],
 ["RHS_M2A2_wd",0,heavy_vehicle_price_tier_13,0,GRLIB_perm_inf],
 ["RHS_M2A3_wd",0,heavy_vehicle_price_tier_13,0,GRLIB_perm_inf],
 ["RHS_M6_wd",0,heavy_vehicle_price_tier_13,0,GRLIB_perm_inf],
@@ -420,9 +423,11 @@ strong_heavy_vehicles = [
 ["CUP_B_M1A1FEP_Woodland_USMC",0,strong_heavy_vehicle_price_tier_3,0,GRLIB_perm_inf],
 ["CUP_B_M1A1EP_TUSK_Woodland_USMC",0,strong_heavy_vehicle_price_tier_3,0,GRLIB_perm_inf],
 ["CUP_B_M1A2SEP_RACS",0,strong_heavy_vehicle_price_tier_3,0,GRLIB_perm_inf],
+["CUP_B_T72_CZ",0,strong_heavy_vehicle_price_tier_4,0,GRLIB_perm_inf],
 ["CUP_B_Challenger2_Desert_BAF",0,strong_heavy_vehicle_price_tier_4,0,GRLIB_perm_inf],
 ["CUP_B_Leopard2A6DST_GER",0,strong_heavy_vehicle_price_tier_4,0,GRLIB_perm_inf],
 ["CUP_B_M270_HE_USMC",0,strong_heavy_vehicle_price_tier_6,0,GRLIB_perm_inf],
+["CUP_B_M270_DPICM_BAF_WOOD",0,strong_heavy_vehicle_price_tier_6,0,GRLIB_perm_inf],
 ["CUP_B_RM70_CZ",0,strong_heavy_vehicle_price_tier_7,0,GRLIB_perm_inf],
 
 //RHS
@@ -431,6 +436,7 @@ strong_heavy_vehicles = [
 ["rhsusf_m1a2sep1tuskiiwd_usarmy",0,strong_heavy_vehicle_price_tier_5,0,GRLIB_perm_inf],
 ["rhs_t90sab_tv",0,strong_heavy_vehicle_price_tier_5,0,GRLIB_perm_inf],
 ["rhsusf_m1a1aim_tuski_d",0,strong_heavy_vehicle_price_tier_5,0,GRLIB_perm_inf],
+["rhsusf_M142_usarmy_WD",0,strong_heavy_vehicle_price_tier_6,0,GRLIB_perm_inf],
 
 // BW
 
@@ -558,6 +564,7 @@ air_vehicles = [
 
 //CUP
 
+["CUP_B_Mi171Sh_Unarmed_ACR",0,air_vehicle_price_tier_5,0,GRLIB_perm_inf],
 ["CUP_B_MH47E_USA",0,air_vehicle_price_tier_5,0,GRLIB_perm_inf],
 ["CUP_B_Mi17_CDF",0,air_vehicle_price_tier_5,0,GRLIB_perm_inf],
 ["CUP_B_Mi17_VIV_CDF",0,air_vehicle_price_tier_5,0,GRLIB_perm_inf],
@@ -600,7 +607,9 @@ air_vehicles = [
 ["CUP_B_AH64D_DL_USA",0,air_vehicle_price_tier_14,0,GRLIB_perm_inf],
 ["CUP_I_Mi24_Mk3_UN",0,air_vehicle_price_tier_14,0,GRLIB_perm_inf],
 ["CUP_B_Mi171Sh_ACR",0,air_vehicle_price_tier_14,0,GRLIB_perm_inf],
+["CUP_B_Mi35_Dynamic_CZ_Dark",0,air_vehicle_price_tier_14,0,GRLIB_perm_inf],
 ["CUP_B_Mi35_Dynamic_CZ_Ram",0,air_vehicle_price_tier_14,0,GRLIB_perm_inf],
+
 
 // BAF
 
@@ -656,6 +665,7 @@ fast_air_vehicle = [
 // Jets
 
 // CUP
+["CUP_B_L39_CZ",0,fast_air_vehicle_price_tier_5,0,GRLIB_perm_inf],
 ["CUP_B_AV8B_DYN_USMC",0,fast_air_vehicle_price_tier_5,0,GRLIB_perm_inf],
 ["CUP_B_CESSNA_T41_UNARMED_USA",0,air_vehicle_price_tier_1,0,GRLIB_perm_inf],
 ["CUP_B_CESSNA_T41_ARMED_USA",0,fast_air_vehicle_price_tier_2,0,GRLIB_perm_inf],
@@ -960,16 +970,6 @@ support_crates = [
 ];
 
 buildings_west = [
-// event specific CZ stuff
-["CUP_B_BMP2_CZ",0,0,0,9999],
-["CUP_B_BMP2_AMB_CZ",0,0,0,9999],
-["CUP_B_T72_CZ",0,0,0,9999],
-["CUP_B_Mi171Sh_Unarmed_ACR",0,0,0,9999],
-["CUP_B_Mi171Sh_ACR",0,0,0,9999],
-["CUP_B_Mi35_Dynamic_CZ_Dark",0,0,0,9999],
-["CUP_B_L39_CZ",0,0,0,9999],
-
-
 ["US_WarfareBArtilleryRadar_Base_EP1",0,0,0,GRLIB_perm_inf],
 ["Land_fort_artillery_nest_EP1",0,0,0,GRLIB_perm_inf],
 ["Land_Mil_Barracks_EP1",0,0,0,GRLIB_perm_inf],
