@@ -3344,7 +3344,7 @@
 			<French>&lt;br/&gt;
 					Pendant le jeu, ces icônes vous informent de la situation : &lt;br/&gt; &lt;br/&gt;
 					- &lt;t size='1'&gt;&lt;img image='res\ui_arsenal.paa'/&gt;&lt;/t&gt; SCORE: (Personnel) Votre Score dépend de vos actions. Vous permet de monter en grade. (voir Ranking) &lt;br/&gt; &lt;br/&gt;
-					- &lt;t size='1'&gt;&lt;img image='res\ui_ammo.paa'/&gt;&lt;/t&gt; MUN: (Personnel) Vos Munitions. Les munitions sont utilisées comme monnaie dans le jeu. Elles servent pour acheter des armes ou des véhicules. &lt;br/&gt; &lt;br/&gt;
+					- &lt;t size='1'&gt;&lt;img image='res\ui_ammo.paa'/&gt;&lt;/t&gt; AMMO: (Personnel) Vos Munitions. Les munitions sont utilisées comme monnaie dans le jeu. Elles servent pour acheter des armes ou des véhicules. &lt;br/&gt; &lt;br/&gt;
 					- &lt;t size='1'&gt;&lt;img image='res\ui_manpo.paa'/&gt;&lt;/t&gt; PUISSANCE HUMAINE: (Global) Vos ressources en Personnel dépendent du nombre de villes sous votre contrôle. Cela inclus les membres d'équipages comme de l'infanterie.  Les véhicules verrouillés ne consomment pas de personnel. &lt;br/&gt; &lt;br/&gt;
 					- &lt;t size='1'&gt;&lt;img image='res\ui_fuel.paa'/&gt;&lt;/t&gt; FUEL: (Global) Vos ressources en Carburant dépendent du nombre d'usines sous votre contrôle. Les véhicules verrouillés ne consomment pas de carburant. &lt;br/&gt; &lt;br/&gt;
 					- &lt;t size='1'&gt;&lt;img image='\a3\ui_f_curator\data\displays\rscdisplaycurator\modegroups_ca.paa'/&gt;&lt;/t&gt; UNITS: (Global) Vos ressources en Infanterie dépendent du nombre de villes sous votre contrôle. Cela concerne uniquement les joueurs et leurs unités. &lt;br/&gt; &lt;br/&gt;
@@ -4515,14 +4515,14 @@
 		<!-- Pay -->
 		<Key ID="STR_GRLIB_NOAMMO">
 			<Original>"You don't have enough Ammo !!</Original>
-			<French>Vous n'avez pas assez de MUN !!</French>
+			<French>Vous n'avez pas assez d'Ammo !!</French>
 			<Chinesesimp>你的弹药不够支付！！</Chinesesimp>
 			<Chinese>你的彈藥不夠支付！ ！</Chinese>
 			<Japanese>弾薬が足りません！！</Japanese>
 		</Key>
 		<Key ID="STR_GRLIB_PAY">
 			<Original>You paid: %1 Ammo</Original>
-			<French>Vous avez payé: %1 MUN</French>
+			<French>Vous avez payé: %1 Ammo</French>
 			<Chinesesimp>你为一身装备支付: %1 弹药</Chinesesimp>
 			<Chinese>你為一身裝備支付: %1 彈藥</Chinese>
 			<Japanese>支払い: %1 弾薬</Japanese>
@@ -4588,7 +4588,7 @@
 		</Key>
 		<Key ID="STR_SEND_AMMO">
 			<Original>-- SEND AMMO</Original>
-			<French>-- DONNER MUN</French>
+			<French>-- DONNER AMMO</French>
 			<Japanese>-- 弾薬を送る</Japanese>
 			<Chinesesimp>-- 发送弹药 --</Chinesesimp>
 			<Chinese>-- 發送彈藥 --</Chinese>
@@ -4775,7 +4775,7 @@
 
 		<Key ID="STR_DO_BUYFUEL">
 			<Original>&lt;t align='center'&gt;Fuel Jerrican cost: %1 Ammo&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
-			<French>&lt;t align='center'&gt;Un jerrican d'essence coûte: %1 Mun&lt;br/&gt;Es tu sûr ?&lt;/t&gt;</French>
+			<French>&lt;t align='center'&gt;Un jerrican d'essence coûte: %1 Ammo&lt;br/&gt;Es tu sûr ?&lt;/t&gt;</French>
 			<Japanese>&lt;t align='center'&gt;燃料缶コスト: %1 弾薬&lt;br/&gt;よろしいですか？&lt;/t&gt;</Japanese>
 			<Chinesesimp>&lt;t align='center'&gt;燃油费用: %1 弹药&lt;br/&gt;你确定吗？&lt;/t&gt;</Chinesesimp>
 			<Chinese>&lt;t align='center'&gt;燃油費用: %1 彈藥&lt;br/&gt;你確定嗎？ &lt;/t&gt;</Chinese>
@@ -4846,7 +4846,7 @@
 
 		<Key ID="STR_DO_RECYCLE">
 			<Original>&lt;t align='center'&gt;Select Reward:&lt;br/&gt;50 XP or 300 AMMO&lt;/t&gt;</Original>
-			<French>&lt;t align='center'&gt;Choisir Récompense:&lt;br/&gt;50 XP or 300 MUN&lt;/t&gt;</French>
+			<French>&lt;t align='center'&gt;Choisir Récompense:&lt;br/&gt;50 XP or 300 AMMO&lt;/t&gt;</French>
 			<Japanese>&lt;t align='center'&gt;報酬を選んで下さい:&lt;br/&gt;50 ポイント か 300 弾薬&lt;/t&gt;</Japanese>
 			<Chinesesimp>&lt;t align='center'&gt;选择奖励:&lt;br/&gt;50 军功点或者 300 弹药&lt;/t&gt;</Chinesesimp>
 			<Chinese>&lt;t align='center'&gt;選擇獎勵:&lt;br/&gt;50 軍功點或者 300 彈藥&lt;/t&gt;</Chinese>
@@ -4867,7 +4867,7 @@
 		</Key>
 		<Key ID="STR_AMMORWD">
 			<Original>AMMO</Original>
-			<French>MUN</French>
+			<French>AMMO</French>
 			<Japanese>弾薬</Japanese>
 			<Chinesesimp>弹药</Chinesesimp>
 			<Chinese>彈藥</Chinese>
@@ -4928,7 +4928,7 @@
 
 		<Key ID="STR_DO_WRECK">
 			<Original>%1\nBonus Score + %2 Pts\nBonus Ammo + %3 !!</Original>
-			<French>%1\nBonus Score + %2 Pts\nBonus Mun + %3 !!</French>
+			<French>%1\nBonus Score + %2 Pts\nBonus Ammo + %3 !!</French>
 			<Japanese>%1\nボーナススコア + %2 ポイント\nボーナス弾薬 + %3 ！！</Japanese>
 			<Chinesesimp>%1\n奖励 + %2 军功点\n弹药 + %3！！</Chinesesimp>
 			<Chinese>%1\n獎勵 + %2 軍功點\n彈藥 + %3！ ！</Chinese>
@@ -4955,7 +4955,7 @@
 		</Key>
 		<Key ID="STR_CARGO_SOLD">
 			<Original>%1 Cargo Sold.\n%2 +%3 AMMO !</Original>
-			<French>%1 Vente Cargo.\n%2 +%3 MUN !</French>
+			<French>%1 Vente Cargo.\n%2 +%3 AMMO !</French>
 			<Japanese>%1 の荷物は売られました。\n%2 +%3 弾薬！</Japanese>
 			<Chinesesimp>%1 库存已出售。\n%2 +%3 弹药！</Chinesesimp>
 			<Chinese>%1 庫存已出售。 \n%2 +%3 彈藥！</Chinese>
@@ -4969,7 +4969,7 @@
 		</Key>
 		<Key ID="STR_SELL_CONFIRM">
 			<Original>&lt;t align='center'&gt;Sell the cargo of %1&lt;br/&gt;for %2 AMMO.&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
-			<French>&lt;t align='center'&gt;Vendre la cargaison de %1&lt;br/&gt;pour %2 MUN.&lt;br/&gt;Es tu sûr ?&lt;/t&gt;</French>
+			<French>&lt;t align='center'&gt;Vendre la cargaison de %1&lt;br/&gt;pour %2 AMMO.&lt;br/&gt;Es tu sûr ?&lt;/t&gt;</French>
 			<Japanese>&lt;t align='center'&gt;%1 の荷物を全て売ります。&lt;br/&gt;取得： %2 弾薬&lt;br/&gt;よろしいですか？&lt;/t&gt;</Japanese>
 			<Chinesesimp>&lt;t align='center'&gt;出售所有 %1 库存&lt;br/&gt;获得 %2 弹药。&lt;br/&gt;你确定吗？&lt;/t&gt;</Chinesesimp>
 			<Chinese>&lt;t align='center'&gt;出售所有 %1 庫存&lt;br/&gt;獲得 %2 彈藥。 &lt;br/&gt;你確定嗎？ &lt;/t&gt;</Chinese>
@@ -5205,56 +5205,56 @@
 		</Key>
 		<Key ID="STR_CALL_HELITAXI">
 			<Original>Call Heli Taxi.\nCost: %1 Ammo</Original>
-			<French>Appeler un aéro Taxi.\nPrix: %1 Mun</French>
+			<French>Appeler un aéro Taxi.\nPrix: %1 Ammo</French>
 			<Japanese>ヘリタクシーを呼ぶ\nコスト: %1 弾薬</Japanese>
 			<Chinesesimp>呼叫直升机接送.\n花费: %1 弹药</Chinesesimp>
 			<Chinese>呼叫直升機接送.\n花費: %1 彈藥</Chinese>
 		</Key>
 		<Key ID="STR_QUAD_OFFLOAD">
 			<Original>Quad, Unarmed Offroad.\nCost:  %1 Ammo</Original>
-			<French>Quad, Tout-terrain désarmé.\nPrix:  %1 Mun</French>
+			<French>Quad, Tout-terrain désarmé.\nPrix:  %1 Ammo</French>
 			<Japanese>ATV、非武装ピックアップ\nコスト:  %1 弾薬</Japanese>
 			<Chinesesimp>四轮摩托，越野车.\n花费:  %1 弹药</Chinesesimp>
 			<Chinese>四輪摩托，越野車.\n花費:  %1 彈藥</Chinese>
 		</Key>
 		<Key ID="STR_ARMED_OFFLOAD">
 			<Original>Armed Offroad.\nCost: %1 Ammo</Original>
-			<French>Tout-terrain armé.\nPrix: %1 Mun</French>
+			<French>Tout-terrain armé.\nPrix: %1 Ammo</French>
 			<Japanese>武装ピックアップ\nコスト: %1 弾薬</Japanese>
 			<Chinesesimp>武装越野车.\n花费: %1 弹药</Chinesesimp>
 			<Chinese>武裝越野車.\n花費: %1 彈藥</Chinese>
 		</Key>
 		<Key ID="STR_MRAP">
 			<Original>MRAPs.\nCost: %1 Ammo</Original>
-			<French>MRAPs.\nPrix: %1 Mun</French>
+			<French>MRAPs.\nPrix: %1 Ammo</French>
 			<Japanese>MRAP\nコスト: %1 弾薬</Japanese>
 			<Chinesesimp>武装MRAP.\n花费: %1 弹药</Chinesesimp>
 			<Chinese>武裝MRAP.\n花費: %1 彈藥</Chinese>
 		</Key>
 		<Key ID="STR_TRUCK">
 			<Original>Large Trucks.\nCost: %1 Ammo</Original>
-			<French>Gros Camions.\nPrix: %1 Mun</French>
+			<French>Gros Camions.\nPrix: %1 Ammo</French>
 			<Japanese>大型トラック\nコスト: %1 弾薬</Japanese>
 			<Chinesesimp>运兵卡车.\n花费: %1 弹药</Chinesesimp>
 			<Chinese>運兵卡車.\n花費: %1 彈藥</Chinese>
 		</Key>
 		<Key ID="STR_APC">
 			<Original>APC.\nCost: %1 Ammo</Original>
-			<French>APC.\nPrix: %1 Mun</French>
+			<French>APC.\nPrix: %1 Ammo</French>
 			<Japanese>APC\nコスト: %1 弾薬</Japanese>
 			<Chinesesimp>APC.\n花费: %1 弹药</Chinesesimp>
 			<Chinese>APC.\n花費: %1 彈藥</Chinese>
 		</Key>
 		<Key ID="STR_BOAT">
 			<Original>Transport Boats.\nCost: %1 Ammo</Original>
-			<French>Bâteaux de Transport.\nPrix: %1 Mun</French>
+			<French>Bâteaux de Transport.\nPrix: %1 Ammo</French>
 			<Japanese>ボート\nコスト: %1 弾薬</Japanese>
 			<Chinesesimp>运输船只.\n花费: %1 弹药</Chinesesimp>
 			<Chinese>運輸船隻.\n花費: %1 彈藥</Chinese>
 		</Key>
 		<Key ID="STR_AIRSUPREMACY">
 			<Original>Call Air Superiority.\nCost: %1 Ammo</Original>
-			<French>Appeler la Suprématie Aérienne.\nPrix: %1 Mun</French>
+			<French>Appeler la Suprématie Aérienne.\nPrix: %1 Ammo</French>
 			<Japanese>制空権\nコスト: %1 弾薬</Japanese>
 			<Chinesesimp>制空权\n花费: %1 弹药</Chinesesimp>
 			<Chinese>制空權\n花費: %1 彈藥</Chinese>
@@ -5264,7 +5264,7 @@
 
 		<Key ID="STR_SENDAMMO_MENU">
 			<Original>-- Send Ammo Menu --</Original>
-			<French>-- Menu Envoyer Mun --</French>
+			<French>-- Menu Envoyer Ammo --</French>
 			<Japanese>-- 弾薬譲渡メニュー --</Japanese>
 			<Chinesesimp>-- 发送弹药菜单 --</Chinesesimp>
 			<Chinese>-- 發送彈藥菜單 --</Chinese>
@@ -5278,7 +5278,7 @@
 		</Key>
 		<Key ID="STR_SENDAMMO_AMMO">
 			<Original>Ammo:</Original>
-			<French>Mun:</French>
+			<French>Ammo:</French>
 			<Japanese>弾薬:</Japanese>
 			<Chinesesimp>弹药:</Chinesesimp>
 			<Chinese>弾薬:</Chinese>
