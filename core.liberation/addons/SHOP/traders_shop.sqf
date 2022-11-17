@@ -144,6 +144,11 @@ while { dialog && alive player } do {
 				build_unit = [_veh_class,[],1,[],[]];
 				dobuild = 1;
 				closeDialog 0;
+				waitUntil { sleep 1; dobuild == 0};
+				if (build_confirmed == 3) then {
+					[player, _price, 0] remoteExec ["ammo_add_remote_call", 2];
+					gamelogic globalChat format ["Trader Shop refund you %1 Ammo", _price];
+				};
 			};
 		};
 		shop_action = 0;
