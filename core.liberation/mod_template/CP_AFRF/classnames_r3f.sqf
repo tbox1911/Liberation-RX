@@ -192,26 +192,25 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 [
-	["CUP_O_ZU23_RU_M_MSV", 15],
-	["CUP_O_Metis_RU_M_MSV", 15],
-	["CUP_O_KORD_RU_M_MSV", 15],
-	["CUP_O_Igla_AA_pod_RU_M_MSV", 20],
-	["CUP_O_D30_RU_M_MSV", 20],
-	["CUP_O_D30_AT_RU_M_MSV", 20],
-	["CUP_O_AGS_RU_M_MSV", 25],
-	["CUP_O_2b14_82mm_RU_M_MSV", 25]	
+	["CUP_O_KORD_high_RU", 10],
+	["CUP_O_Igla_AA_pod_RU", 20],
+	["CUP_O_Metis_RU_M_MSV", 20],
+	["CUP_O_Kornet_RU", 20],
+	["CUP_O_ZU23_RU_M_MSV", 25],
+	["O_Mortar_01_F", 20],
+	["CUP_O_D30_AT_RU", 50]
 ];
 
 R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 [
-	"CUP_O_ZU23_RU_M_MSV",
+	"CUP_O_KORD_high_RU",
+	"CUP_O_Igla_AA_pod_RU",
 	"CUP_O_Metis_RU_M_MSV",
-	"CUP_O_KORD_RU_M_MSV",
-	"CUP_O_Igla_AA_pod_RU_M_MSV",
-	"CUP_O_D30_RU_M_MSV",
-	"CUP_O_D30_AT_RU_M_MSV",
-	"CUP_O_AGS_RU_M_MSV",
-	"CUP_O_2b14_82mm_RU_M_MSV"	
+	"CUP_O_Kornet_RU",
+	"CUP_O_ZU23_RU_M_MSV",
+	"O_Mortar_01_F",
+	"CUP_O_D30_AT_RU",
+	"O_SAM_System_04_F"
 ];
 
 //--------------- Camping ---------------

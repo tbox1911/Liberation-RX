@@ -166,11 +166,9 @@ opfor_air = [
 opfor_statics = [
 	"CUP_O_ZU23_RU_M_MSV",
 	"CUP_O_Metis_RU_M_MSV",
-	"CUP_O_KORD_RU_M_MSV",
-	"CUP_O_Igla_AA_pod_RU_M_MSV",
-	"CUP_O_D30_RU_M_MSV",
-	"CUP_O_D30_AT_RU_M_MSV",
-	"CUP_O_AGS_RU_M_MSV",
+	"CUP_O_Kornet_RU",
+	"CUP_O_KORD_high_RU",
+	"CUP_O_Igla_AA_pod_RU",
 	"CUP_O_2b14_82mm_RU_M_MSV"
 ];
 
@@ -178,11 +176,9 @@ opfor_recyclable = [
 	// Static
 	["CUP_O_ZU23_RU_M_MSV",0,round (75 / GRLIB_recycling_percentage),0],
 	["CUP_O_Metis_RU_M_MSV",0,round (75 / GRLIB_recycling_percentage),0],
-	["CUP_O_KORD_RU_M_MSV",0,round (75 / GRLIB_recycling_percentage),0],
-	["CUP_O_Igla_AA_pod_RU_M_MSV",0,round (75 / GRLIB_recycling_percentage),0],
-	["CUP_O_D30_RU_M_MSV",0,round (75 / GRLIB_recycling_percentage),0],
-	["CUP_O_D30_AT_RU_M_MSV",0,round (75 / GRLIB_recycling_percentage),0],
-	["CUP_O_AGS_RU_M_MSV",0,round (75 / GRLIB_recycling_percentage),0],
+	["CUP_O_Kornet_RU",0,round (75 / GRLIB_recycling_percentage),0],
+	["CUP_O_KORD_high_RU",0,round (75 / GRLIB_recycling_percentage),0],
+	["CUP_O_Igla_AA_pod_RU",0,round (75 / GRLIB_recycling_percentage),0],
 	["CUP_O_2b14_82mm_RU_M_MSV",0,round (75 / GRLIB_recycling_percentage),0],
 
 	// opfor_troup_transports_truck

@@ -117,15 +117,13 @@ blufor_air = [
 ];
 
 static_vehicles = [
-	["CUP_O_AGS_RU_M_MSV",0,10,0,GRLIB_perm_log],
-	["CUP_O_KORD_RU_M_MSV",0,10,0,GRLIB_perm_log],
-	["CUP_O_D30_RU_M_MSV",0,20,0,GRLIB_perm_log],
-	["CUP_O_D30_AT_RU_M_MSV",0,20,0,GRLIB_perm_tank],
-	["CUP_O_Igla_AA_pod_RU_M_MSV",0,50,0,GRLIB_perm_air],
-	["CUP_O_Metis_RU_M_MSV",0,50,0,GRLIB_perm_air],
+	["CUP_O_KORD_high_RU",0,10,0,GRLIB_perm_log],
+	["CUP_O_Igla_AA_pod_RU",0,150,0,GRLIB_perm_tank],
+	["CUP_O_Metis_RU_M_MSV",0,150,0,GRLIB_perm_air],
+	["CUP_O_Kornet_RU",0,150,0,GRLIB_perm_tank],
 	["CUP_O_ZU23_RU_M_MSV",0,450,0,GRLIB_perm_max],
 	["O_Mortar_01_F",0,500,0,GRLIB_perm_max],
-	["CUP_O_2b14_82mm_RU_M_MSV",0,500,0,GRLIB_perm_tank],
+	["CUP_O_D30_AT_RU",0,500,0,GRLIB_perm_tank],
 	["O_SAM_System_04_F",10,1500,0,GRLIB_perm_max]
 ];
 
