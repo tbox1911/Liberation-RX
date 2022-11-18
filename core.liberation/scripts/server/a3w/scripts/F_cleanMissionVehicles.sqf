@@ -9,9 +9,12 @@ params [["_vehicles",[]], ["_wait", 5]];
         params ["_vehicle", "_wait"];
         if (isNil "_vehicle") exitWith {};
         sleep _wait;
-
-        if ([_vehicle] call is_abandoned) then {
-            [_vehicle] call clean_vehicle;
+        if (typeOf _vehicle isKindOf "AllVehicles") then {
+            if ([_vehicle] call is_abandoned) then {
+                [_vehicle] call clean_vehicle;
+                deleteVehicle _vehicle;
+            };
+        } else {
             deleteVehicle _vehicle;
         };
     };   
