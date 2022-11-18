@@ -100,6 +100,14 @@ while {lifeState _wnded == "INCAPACITATED" || lifeState _medic != "INCAPACITATED
   } else {
     _cnt = _cnt - 1;
   };
+
+  private _new_medic = [_wnded] call PAR_fn_nearestMedic;
+  if (!isNil "_new_medic") then {
+    if ((_new_medic distance2D _wnded) + 20 < (_medic distance2D _wnded)) then {
+      _wnded setVariable ["PAR_myMedic", nil];
+    };
+  };
+
   sleep 3;
 };
 
