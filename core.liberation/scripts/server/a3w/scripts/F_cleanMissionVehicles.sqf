@@ -10,7 +10,7 @@ params [["_vehicles",[]], ["_wait", 5]];
         if (isNil "_vehicle") exitWith {};
         sleep _wait;
         if (typeOf _vehicle isKindOf "AllVehicles") then {
-            if ([_vehicle] call is_abandoned) then {
+            if (count (crew _vehicle) == 0 && (_vehicle getVariable ["GRLIB_vehicle_owner", ""]) in ["", "server"]) then {
                 [_vehicle] call clean_vehicle;
                 deleteVehicle _vehicle;
             };
