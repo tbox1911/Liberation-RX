@@ -356,7 +356,6 @@ heavy_vehicles = [
 ["rhsusf_m113_usarmy_supply",0,heavy_vehicle_price_tier_2,0,GRLIB_perm_inf],
 ["rhsusf_m113_usarmy",0,heavy_vehicle_price_tier_2,0,GRLIB_perm_inf],
 ["rhsusf_m113_usarmy_MK19",0,heavy_vehicle_price_tier_3,0,GRLIB_perm_inf],
-["rhs_t15_tv",0,heavy_vehicle_price_tier_11,0,0,GRLIB_perm_inf],
 ["RHS_M2A2_wd",0,heavy_vehicle_price_tier_13,0,GRLIB_perm_inf],
 ["RHS_M2A3_wd",0,heavy_vehicle_price_tier_13,0,GRLIB_perm_inf],
 ["RHS_M6_wd",0,heavy_vehicle_price_tier_13,0,GRLIB_perm_inf],
