@@ -138,16 +138,17 @@ while { dialog && alive player } do {
 			private _msg = format [localize "STR_SHOP_BUY_MSG", _vehicle_name, _price];
 			private _result = [_msg, localize "STR_SHOP_BUY", true, true] call BIS_fnc_guiMessage;
 			if (_result) then {
-				[_price] call F_pay;
 				private _veh_class = _buy_list_dlg select _selected_item select 0;
 				buildtype = 9;
 				build_unit = [_veh_class,[],1,[],[]];
 				dobuild = 1;
 				closeDialog 0;
 				waitUntil { sleep 1; dobuild == 0};
-				if (build_confirmed == 3) then {
-					[player, _price, 0] remoteExec ["ammo_add_remote_call", 2];
-					gamelogic globalChat format ["Trader Shop refund you %1 Ammo", _price];
+
+				if (build_confirmed == 0) then {
+					if (!([_price] call F_pay)) then {
+						deleteVehicle (getPosATL player nearEntities [_veh_class, 20] select 0);
+					};
 				};
 			};
 		};
