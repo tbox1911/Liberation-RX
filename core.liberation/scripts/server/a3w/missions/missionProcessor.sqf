@@ -117,9 +117,9 @@ if (_failed) then {
 
 	if (!isNil "_failedExec") then { call _failedExec };
 
-	if (!isNil "_vehicle") then	{ [_vehicle] spawn cleanMissionVehicles };
+	if (!isNil "_vehicle") then	{ [_vehicle] call cleanMissionVehicles };
 
-	if (!isNil "_vehicles") then { [_vehicles] spawn cleanMissionVehicles };
+	if (!isNil "_vehicles") then { [_vehicles] call cleanMissionVehicles };
 
 	[
 		"Objective Failed",
@@ -146,13 +146,13 @@ if (_failed) then {
 
 	if (!isNil "_vehicle") then {
 		_vehicle setVariable ["R3F_LOG_disabled", false, true];
-		[_vehicle, 300] spawn cleanMissionVehicles;
+		[_vehicle, 300] call cleanMissionVehicles;
 	};
 
 	if (!isNil "_vehicles") then {
 		{
 			_x setVariable ["R3F_LOG_disabled", false, true];
-			[_vehicles, 300] spawn cleanMissionVehicles;
+			[_vehicles, 300] call cleanMissionVehicles;
 		} forEach _vehicles;
 	};
 
