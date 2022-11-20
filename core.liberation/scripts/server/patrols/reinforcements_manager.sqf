@@ -7,7 +7,7 @@ private _nb_player = count (AllPlayers - (entities "HeadlessClient_F"));
 
 if ( _targetsector in active_sectors ) then {
 	// before attack
-	_nearestower = [markerpos _targetsector, GRLIB_side_enemy, GRLIB_radiotower_size * 1.4] call F_getNearestTower;
+	private _nearestower = [markerpos _targetsector, GRLIB_side_enemy, GRLIB_radiotower_size * 1.4] call F_getNearestTower;
 	if ( _nearestower != "" ) then {
 		sleep (60 + floor(random 60));
 		if (_targetsector in active_sectors) then {
