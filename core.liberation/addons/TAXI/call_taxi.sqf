@@ -18,6 +18,9 @@ if (surfaceIsWater _dest || _degree > 8) exitWith {deleteVehicle _helipad; hintS
 // Pay
 if (!([GRLIB_AirDrop_Taxi_cost] call F_pay)) exitWith {deleteVehicle _helipad};
 
+deleteMarkerLocal "taxi_lz";
+deleteMarkerLocal "taxi_dz";
+
 private _nb_unit = count (units player);
 private _taxi_type = "";
 private _cargo = [];
@@ -60,6 +63,10 @@ private _pilots = crew _vehicle;
 	_x allowFleeing 0;
  } foreach _pilots;
 _pilots joinSilent _air_grp;
+
+_air_grp setBehaviour "CARELESS";
+_air_grp setCombatMode "GREEN";
+_air_grp setSpeedMode "FULL";
 
 // Pickup Marker
 _marker = createMarkerLocal ["taxi_lz", _dest];
