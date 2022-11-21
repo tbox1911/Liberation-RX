@@ -30,8 +30,10 @@ else
 			_x != _heliporteur && !(_x getVariable "R3F_LOG_disabled") &&
 			((getPosASL _heliporteur select 2) - (getPosASL _x select 2) > 2 && (getPosASL _heliporteur select 2) - (getPosASL _x select 2) < 15)
 		) exitWith {_objet = _x;};
-	} forEach (getPosATL _heliporteur nearEntities [["All"], 20]);
+	} forEach (getPos _heliporteur nearEntities [["All"], 20]);
 	
+	systemChat format ["%1 (%2)", STR_R3F_LOG_action_heliporter, getText (configOf _objet >> "displayName")];
+
 	if (!isNull _objet) then
 	{
 		if !(_objet getVariable "R3F_LOG_disabled") then
@@ -98,7 +100,7 @@ else
 							// Pour valider l'h�liportage, il faut rester en stationnaire au dessus de l'objet pendant le compte-�-rebours
 							if !(
 								alive player && vehicle player == _heliporteur && !(_heliporteur getVariable "R3F_LOG_disabled") && _pas_de_hook &&
-								isNull (_heliporteur getVariable "R3F_LOG_heliporte") && (vectorMagnitude velocity _heliporteur < 6) && (_heliporteur distance _objet < 15) &&
+								isNull (_heliporteur getVariable "R3F_LOG_heliporte") && (vectorMagnitude velocity _heliporteur < 6) && (_heliporteur distance2D _objet < 15) &&
 								!(_objet getVariable "R3F_LOG_disabled") && isNull (_objet getVariable "R3F_LOG_est_transporte_par") &&
 								(isNull (_objet getVariable "R3F_LOG_est_deplace_par") || (!alive (_objet getVariable "R3F_LOG_est_deplace_par")) || (!isPlayer (_objet getVariable "R3F_LOG_est_deplace_par"))) &&
 								((getPosASL _heliporteur select 2) - (getPosASL _objet select 2) > 2 && (getPosASL _heliporteur select 2) - (getPosASL _objet select 2) < 15)
