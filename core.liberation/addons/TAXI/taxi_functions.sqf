@@ -33,7 +33,7 @@ taxi_dest = {
 	(driver _vehicle) doMove _dest;
 
 	hintSilent format [localize _msg, round (_vehicle distance2D _dest)];
-	sleep 10;
+	sleep 20;
 	_landing_range = 150;
 	_stop = time + (5 * 60); // wait 5min max
 	
