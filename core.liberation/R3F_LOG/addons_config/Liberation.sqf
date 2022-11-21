@@ -248,7 +248,10 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 [
 	Arsenal_typename,
 	FOB_box_typename,
-	FOB_box_outpost
+	FOB_box_outpost,
+	ammobox_b_typename,
+	ammobox_o_typename,
+	ammobox_i_typename
 ];
 //--------------- Static ---------------
 
