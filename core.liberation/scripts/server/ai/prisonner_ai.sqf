@@ -45,7 +45,7 @@ sleep 1;
 while {alive _unit} do {
 	// Captured
 	private _nearfob = [_unit, "FOB", 30] call F_check_near;
-	if (_nearfob) then {
+	if (_nearfob) exitWith {
 		private _unit_owner = leader group _unit;
 		sleep (3 + floor(random 5));
 		doStop _unit;
