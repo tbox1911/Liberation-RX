@@ -29,7 +29,7 @@ if (_friendly) then {
 	waitUntil { sleep 1; !alive _unit || side group _unit == GRLIB_side_friendly};
 } else {
 	private _timeout = time + (20 * 60);
-	waitUntil { sleep 1; !alive _unit || side group _unit == GRLIB_side_friendly	|| time > _timeout};
+	waitUntil { sleep 1; !alive _unit || side group _unit == GRLIB_side_friendly || time > _timeout };
 };
 
 if (!alive _unit) exitWith {};
@@ -44,8 +44,7 @@ sleep 1;
 
 while {alive _unit} do {
 	// Captured
-	private _nearfob = [_unit, "FOB", 30] call F_check_near;
-	if (_nearfob) exitWith {
+	if ([_unit, "FOB", 30] call F_check_near && isTouchingGround (vehicle _unit)) exitWith {
 		private _unit_owner = leader group _unit;
 		sleep (3 + floor(random 5));
 		doStop _unit;
