@@ -19,5 +19,5 @@ params [["_vehicles",[]], ["_wait", 5]];
         };
     };   
 
-    sleep 1;
+    sleep 0.3;
 } forEach _vehicles;
