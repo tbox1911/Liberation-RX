@@ -450,11 +450,12 @@ strong_heavy_vehicles = [
 ["ffaa_et_m109",0,strong_heavy_vehicle_price_tier_5,0,GRLIB_perm_inf],
 
 // Vanilla
-
-["B_APC_Tracked_01_AA_F",0,strong_heavy_vehicle_price_tier_1,0,9999],
-["B_MBT_01_cannon_F",0,strong_heavy_vehicle_price_tier_3,0,9999],
-["B_MBT_01_TUSK_F",0,strong_heavy_vehicle_price_tier_4,0,9999],
-["I_MBT_03_cannon_F",0,strong_heavy_vehicle_price_tier_5,0,9999]
+["O_MBT_02_cannon_F",0,strong_heavy_vehicle_price_tier_3 ,0,GRLIB_perm_inf],
+["O_MBT_04_command_F",0,air_vehicle_price_tier_14 ,0,0,GRLIB_perm_inf],
+["O_MBT_04_cannon_F",0,air_vehicle_price_tier_13 ,0,GRLIB_perm_inf],
+["B_MBT_01_cannon_F",0,fast_air_vehicle_price_tier_4  ,0,GRLIB_perm_inf],
+["B_MBT_01_TUSK_F",0,fast_air_vehicle_price_tier_4  ,0,0,GRLIB_perm_inf],
+["I_MBT_03_cannon_F",0,strong_heavy_vehicle_price_tier_4  ,0,0,GRLIB_perm_inf]
 ];
 
 air_vehicles = [
