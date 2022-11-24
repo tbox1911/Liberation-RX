@@ -27,7 +27,7 @@ if ( local _grp ) then {
 // Cleanup
 private _timeout = time + (5 * 60);
 while { count (units _grp) > 0 } do {
-    if ( [getpos (leader _grp), 3000, GRLIB_side_friendly] call F_getUnitsCount == 0 && time > _timeout ) then {
+    if ( [getpos (leader _grp), GRLIB_spawn_min, GRLIB_side_friendly] call F_getUnitsCount == 0 && time > _timeout ) then {
         {
             if ( vehicle _x != _x ) then {
                 deleteVehicle (vehicle _x);
