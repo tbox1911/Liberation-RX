@@ -5,7 +5,7 @@ if ( _spawn_marker == "" ) exitWith { [gamelogic, "Could not find position for s
 used_positions pushbackUnique _spawn_marker;
 resources_intel = resources_intel - _mission_cost;
 
-private _helopos = [ getmarkerpos _spawn_marker, random 200, random 360 ] call BIS_fnc_relPos;
+private _helopos = markerpos _spawn_marker;
 private _helowreck = GRLIB_sar_wreck createVehicle _helopos;
 _helowreck allowDamage false;
 _helowreck setpos (getpos _helowreck);

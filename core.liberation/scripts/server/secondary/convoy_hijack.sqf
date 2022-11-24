@@ -111,7 +111,7 @@ _convoy_marker setMarkerText (localize "STR_SECONDARY_CSAT_CONVOY");
 _convoy_marker setMarkerType "o_armor";
 _convoy_marker setMarkerColor GRLIB_color_enemy_bright;
 
-private _convoy_marker_list = [];
+private _convoy_marker_list = [_convoy_marker];
 for "_i" from 0 to ((count _convoy_destinations) -1) do {
 	_convoy_marker_wp = createMarkerLocal [ format [ "convoymarkerwp%1", _i], _convoy_destinations select _i];
 	_convoy_marker_wp setMarkerText (localize "STR_SECONDARY_CSAT_CONVOY_WP");
@@ -173,11 +173,10 @@ while { _mission_in_progress } do {
 	} forEach (units _convoy_group);
 };
 
-sleep 20;
+sleep 5;
 
 //-----------------------------------------
 // Mission cleanup
-deleteMarker _convoy_marker;
 { deleteMarker _x } foreach _convoy_marker_list;
 { moveOut _x; deleteVehicle _x } forEach units _troops_group;
 
