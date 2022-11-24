@@ -10,6 +10,7 @@ private _base_output = [_base_position, true, true] call createOutpost;
 private _base_objects = _base_output select 0;
 private _base_objectives = _base_output select 1;
 private _grpdefenders = _base_output select 2;
+private _grpsentry = _base_output select 3;
 
 secondary_objective_position = _base_position;
 secondary_objective_position_marker = [(((secondary_objective_position select 0) + 800) - random 1600),(((secondary_objective_position select 1) + 800) - random 1600),0];
@@ -37,7 +38,7 @@ stats_secondary_objectives = stats_secondary_objectives + 1;
 	};
 } foreach _base_objects;
 
-[_base_objectives + _base_objects, _base_position, _grpdefenders] spawn { 
+[_base_objectives + _base_objects, _base_position, _grpdefenders, _grpsentry] spawn { 
 	sleep 300; 
 	{
 		if (count (crew _x) == 0 && (_x getVariable ["GRLIB_vehicle_owner", ""] == "")) then {
@@ -47,6 +48,7 @@ stats_secondary_objectives = stats_secondary_objectives + 1;
 
 	{ deleteVehicle _x } forEach ([nearestObjects [(_this select 1), ["Ruins_F"], 100], { getObjectType _x == 8 }] call BIS_fnc_conditionalSelect);
 	{ deleteVehicle _x } forEach units (_this select 2);
+	{ deleteVehicle _x } forEach units (_this select 3);
 
 	GRLIB_secondary_in_progress = -1; publicVariable "GRLIB_secondary_in_progress";
 	used_positions = [];

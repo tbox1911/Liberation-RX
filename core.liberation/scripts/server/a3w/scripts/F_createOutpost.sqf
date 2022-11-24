@@ -67,6 +67,8 @@ if (_enable_objectives) then {
 
 // Add Defenders
 private _grpdefenders = grpNull;
+private _grpsentry = grpNull;
+
 if (_enable_defenders) then {
     private _defenders_amount = 15 * ( sqrt ( GRLIB_unitcap ) );
     if ( _defenders_amount > 15 ) then { _defenders_amount = 15 };
@@ -100,7 +102,7 @@ if (_enable_defenders) then {
 
     private _sentry = ceil ((5 + (floor (random 4))) * (sqrt (GRLIB_unitcap)) );
     private _base_sentry_pos = [(_base_position select 0) + ((_base_corners select 0) select 0), (_base_position select 1) + ((_base_corners select 0) select 1),0];
-    private _grpsentry = [_base_sentry_pos, ([] call F_getAdaptiveSquadComp), GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
+    _grpsentry = [_base_sentry_pos, ([] call F_getAdaptiveSquadComp), GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
 
     while {(count (waypoints _grpsentry)) != 0} do {deleteWaypoint ((waypoints _grpsentry) select 0);};
     {
@@ -115,4 +117,4 @@ if (_enable_defenders) then {
     _waypoint setWaypointType "CYCLE";
 };
 
-[ _base_objects, _base_objectives, _grpdefenders ];
+[ _base_objects, _base_objectives, _grpdefenders, _grpsentry ];
