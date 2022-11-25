@@ -56,6 +56,7 @@ private _para_group = [markerpos _spawnsector, _unitclass, GRLIB_side_enemy, "pa
 	};
 
 	_newvehicle flyInHeight 200;
+	sleep 2;
 	{
 		unassignVehicle _x;
 		moveout _x;
@@ -64,7 +65,7 @@ private _para_group = [markerpos _spawnsector, _unitclass, GRLIB_side_enemy, "pa
 
 	while {(count (waypoints _pilot_group)) != 0} do {deleteWaypoint ((waypoints _pilot_group) select 0);};
 	while {(count (waypoints _para_group)) != 0} do {deleteWaypoint ((waypoints _para_group) select 0);};
-	sleep 0.2;
+	sleep 1;
 
 	_waypoint = _pilot_group addWaypoint [ _targetpos, 200];
 	_waypoint setWaypointBehaviour "COMBAT";

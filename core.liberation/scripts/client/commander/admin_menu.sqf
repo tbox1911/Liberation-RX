@@ -252,8 +252,9 @@ while { alive player && dialog } do {
 			_player = _this call BIS_fnc_getUnitByUID;
 			if (isPlayer _player) then {
 				["LOSER"] remoteExec ["endMission", owner _player];
-				_msg = format ["Admin kick player %1.", name _player];
+				_msg = format ["Admin kick player %1.", name _player];				
 				[_msg] remoteExec ["systemchat", -2];
+				serverCommand format ["#kick %1", name _player];
 			};
 		}] remoteExec ["bis_fnc_call", 2];
 		sleep 1;

@@ -49,7 +49,7 @@ if (_enable_objectives) then {
         _nextobject setpos _nextpos;
         _nextobject setdir _nextdir;
 
-        _base_objectives = _base_objectives + [_nextobject];
+        _base_objectives pushBack _nextobject;
     } foreach _objectives_to_build;
     sleep 1;
 };

@@ -23,7 +23,7 @@ publicVariable "GRLIB_secondary_in_progress";
 
 waitUntil {
 	sleep 5;
-	 ( { alive _x } count _base_objectives ) <= 1
+	( { alive _x } count _base_objectives == 0 )
 };
 
 [3] remoteExec ["remote_call_intel", 0];
