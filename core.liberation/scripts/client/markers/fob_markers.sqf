@@ -3,9 +3,9 @@ private [ "_markers", "_markers_mobilespawns", "_marker", "_idx", "_respawn_truc
 _markers = [];
 _markers_mobilespawns = [];
 
-waitUntil { !isNil "GRLIB_all_fobs" };
+waitUntil { sleep 1; !isNil "GRLIB_all_fobs" };
 
-uiSleep 3;
+sleep 10;
 
 while { true } do {
 	if ( count _markers != count GRLIB_all_fobs ) then {
