@@ -1,16 +1,17 @@
-params [["_vehicles",[]], ["_wait", 5]];
+params [["_vehicles",[]], ["_wait", 5], ["_force", false]];
 
  if (typeName _vehicles != "ARRAY") then {
     _vehicles = [_vehicles];
  };
 
 {
-    [_x, _wait] spawn {
-        params ["_vehicle", "_wait"];
+    [_x, _wait, _force] spawn {
+        params ["_vehicle", "_wait", "_force"];
         if (isNil "_vehicle") exitWith {};
         sleep _wait;
         if (typeOf _vehicle isKindOf "AllVehicles") then {
-            if (count (crew _vehicle) == 0 && (_vehicle getVariable ["GRLIB_vehicle_owner", ""]) in ["", "server"]) then {
+            if ( (count (crew _vehicle) == 0 || _force) && (_vehicle getVariable ["GRLIB_vehicle_owner", ""]) in ["", "server"]) then {
+                { moveOut _x; deleteVehicle _x } forEach (crew _vehicle);
                 [_vehicle] call clean_vehicle;
                 deleteVehicle _vehicle;
             };

@@ -117,9 +117,9 @@ if (_failed) then {
 
 	if (!isNil "_failedExec") then { call _failedExec };
 
-	if (!isNil "_vehicle") then	{ [_vehicle] spawn cleanMissionVehicles };
+	if (!isNil "_vehicle") then	{ [_vehicle, 5, true] spawn cleanMissionVehicles };
 
-	if (!isNil "_vehicles") then { [_vehicles] spawn cleanMissionVehicles };
+	if (!isNil "_vehicles") then { [_vehicles, 5, true] spawn cleanMissionVehicles };
 
 	[
 		"Objective Failed",
