@@ -59,7 +59,13 @@ private _vehtospawn = [];
 private _spawnchances = [75,50,15];
 { if (random 100 < _x ) then { _vehtospawn pushBack (selectRandom _vehicle_pool); }; } foreach _spawnchances;
 
-{ ( [ [ getpos _helowreck, 30 + (random 30), random 360 ] call BIS_fnc_relPos , _x, true ] call F_libSpawnVehicle ) addMPEventHandler ['MPKilled', {_this spawn kill_manager}]; } foreach _vehtospawn;
+private _vehicle_list = [];
+{ 
+	_vehicle = [[getpos _helowreck, 30 + (random 30), random 360] call BIS_fnc_relPos, _x, true] call F_libSpawnVehicle;
+	_vehicle setVariable ["GRLIB_vehicle_owner", "server"];
+	_vehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}]; 
+	_vehicle_list pushBack _vehicle;
+} foreach _vehtospawn;
 
 secondary_objective_position = getpos _helowreck;
 secondary_objective_position_marker = [ secondary_objective_position, 800, random 360 ] call BIS_fnc_relPos;
@@ -70,24 +76,29 @@ GRLIB_secondary_in_progress = 2; publicVariable "GRLIB_secondary_in_progress";
 
 waitUntil {
 	sleep 5;
-	{ ( alive _x ) && !([_x, "FOB", 50] call F_check_near)} count _pilotUnits == 0
+	({(alive _x) && !([_x, "FOB", 50] call F_check_near)} count _pilotUnits == 0)
 };
 
 sleep 5;
 
 private _alive_crew_count = { alive _x } count _pilotUnits;
 if ( _alive_crew_count == 0 ) then {
+	// failed
 	[ 7 ] remoteExec ["remote_call_intel", 0];
+	[_vehicle_list, 10, true] spawn cleanMissionVehicles;
 } else {
+	// success
 	[ 8 ] remoteExec ["remote_call_intel", 0];
+	{ _x setVariable ["GRLIB_vehicle_owner", ""] } foreach _vehicle_list;
+	[_vehicle_list, 300] spawn cleanMissionVehicles;
+	resources_intel = resources_intel + (25 * _alive_crew_count);
+	combat_readiness = combat_readiness - 10;
+	stats_secondary_objectives = stats_secondary_objectives + 1;
 };
 
-resources_intel = resources_intel + (25 * _alive_crew_count);
-combat_readiness = combat_readiness - 10;
-stats_secondary_objectives = stats_secondary_objectives + 1;
-
-sleep 3;
+sleep 5;
 { moveOut _x; deleteVehicle _x } forEach units _grppatrol;
+{ moveOut _x; deleteVehicle _x } forEach units _grpsentry;
 deleteVehicle _helowreck;
 deleteVehicle _helofire;
 
