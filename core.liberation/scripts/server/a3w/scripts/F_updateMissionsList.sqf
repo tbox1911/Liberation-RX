@@ -4,6 +4,8 @@ private ["_mission_name"];
 if (!isServer) exitWith {};
 if (count _missionsList == 0) exitWith {};
 private _spawn_place = count ([SpawnMissionMarkers] call checkSpawn);
+private _spawn_place_forest = count ([ForestMissionMarkers] call checkSpawn);
+private _spawn_place_water = count ([SunkenMissionMarkers] call checkSpawn);
 private _opfor_sectors = (count sectors_allSectors) - (count blufor_sectors);
 private _opfor_factor = round ((_opfor_sectors / (count sectors_allSectors)) * 100);
 
@@ -20,7 +22,17 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 // Weapon Cache
 _mission_name = "mission_WepCache";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
-	if (_spawn_place >= 1) then {
+	if (_spawn_place_forest >= 1) then {
+		[_missionsList, _mission_name, false] call setMissionState;
+	} else {
+		[_missionsList, _mission_name, true] call setMissionState;
+	};
+};
+
+//Sunken Supply
+_mission_name = "mission_SunkenSupplies";
+if (!([_missionsList, _mission_name] call getMissionState)) then {
+	if (_spawn_place_water >= 1) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;
@@ -40,7 +52,7 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 // Vehicle Capture
 _mission_name = "mission_VehicleCapture";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
-	if (_opfor_factor > 40) then {
+	if (_spawn_place >= 1 && _opfor_factor > 40) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;
@@ -50,7 +62,7 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 // Helicopter Capture
 _mission_name = "mission_HeliCapture";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
-	if (_opfor_factor > 60) then {
+	if (_spawn_place >= 1 && _opfor_factor > 60) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;
@@ -133,7 +145,7 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 // Enemy Outpost
 _mission_name = "mission_Outpost";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
-	if (count blufor_sectors >= 7 && _opfor_factor >= 50) then {
+	if (_spawn_place >= 1 && count blufor_sectors >= 7 && _opfor_factor >= 50) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;
