@@ -1,10 +1,7 @@
+GRLIB_secondary_starting = false; publicVariable "GRLIB_secondary_starting";
+GRLIB_secondary_in_progress = -1; publicVariable "GRLIB_secondary_in_progress";
+GRLIB_secondary_used_positions = [];
 
-waitUntil {
-	sleep 1;
-	time > 20;
-};
-
-if ( isNil "GRLIB_secondary_starting" ) then { GRLIB_secondary_starting = false; };
 private _delay = (60 * 60) * 1.5;
 
 while {true} do {

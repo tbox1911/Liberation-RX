@@ -136,6 +136,7 @@ addMissionEventHandler ["MPEnded", { diag_log "--- LRX Mission End"; [] call sav
  ]
 ] call BIS_fnc_EXP_camp_dynamicAISkill;
 
+sleep 3;
 GRLIB_init_server = true;
 publicVariable "GRLIB_init_server";
 diag_log "--- Server Init stop ---";

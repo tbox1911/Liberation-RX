@@ -1,3 +1,7 @@
+params [ ["_mission_cost", 0] ];
+
+diag_log format ["--- LRX call static mission: Fob Convoy Hijack at %1", time];
+
 if ( count (sectors_allSectors - blufor_sectors - sectors_tower) < 4) exitWith { [gamelogic, "Could not find enough free sectors for convoy hijack mission"] remoteExec ["globalChat", 0] };
 
 private _convoy_destinations_markers = [];
@@ -19,7 +23,6 @@ private _boxes_amount = 0;
 } foreach box_transport_config;
 if ( _boxes_amount == 0 ) exitWith { diag_log "Opfor ammobox truck classname doesn't allow for ammobox transport, correct your classnames.sqf"; };
 
-params [ ["_mission_cost", 0] ];
 resources_intel = resources_intel - _mission_cost;
 GRLIB_secondary_in_progress = 1; publicVariable "GRLIB_secondary_in_progress";
 

@@ -1,5 +1,5 @@
-if ( isNil "GRLIB_secondary_starting" ) then { GRLIB_secondary_starting = false; };
-if ( isNil "GRLIB_secondary_in_progress" ) then { GRLIB_secondary_in_progress = -1; };
+waitUntil {	sleep 0.1; !isNil "GRLIB_secondary_starting"};
+waitUntil {	sleep 0.1; !isNil "GRLIB_secondary_in_progress"};
 
 createDialog "liberation_secondary";
 dostartsecondary = 0;
