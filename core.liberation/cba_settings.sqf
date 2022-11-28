@@ -14,12 +14,12 @@ force force ace_medical_treatment_advancedDiagnose = 0; // Disabled advanced dia
 force force ace_medical_treatment_advancedMedication = false; // Disabled advanced medication
 
 // Injuries can be fatal
-force force ace_medical_statemachine_fatalInjuriesPlayer = 0; // fatalInjuries Player
-force force ace_medical_statemachine_fatalInjuriesAI = 0; // fatalInjuries AI
+force force ace_medical_statemachine_fatalInjuriesPlayer = 0; // fatalInjuries Player: Always
+force force ace_medical_statemachine_fatalInjuriesAI = 0; // fatalInjuries AI: Always
 
 // Injuries can NOT be fatal
-//force force ace_medical_statemachine_fatalInjuriesPlayer = 2; // fatalInjuries Player
-//force force ace_medical_statemachine_fatalInjuriesAI = 2; // fatalInjuries AI
+//force force ace_medical_statemachine_fatalInjuriesPlayer = 2; // fatalInjuries Player: Never
+//force force ace_medical_statemachine_fatalInjuriesAI = 2; // fatalInjuries AI: Never
 
 // ACE Logistique
 force force ace_cargo_loadTimeCoefficient = 1;
