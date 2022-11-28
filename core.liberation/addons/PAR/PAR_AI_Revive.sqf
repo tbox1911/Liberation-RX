@@ -65,8 +65,6 @@ if (GRLIB_revive != 0) then {
   player removeAllEventHandlers "HandleDamage";
   player addEventHandler ["HandleDamage", { _this call PAR_HandleDamage_EH }];
   [] spawn PAR_AI_Manager;
-} else {
-  player addEventHandler ["HandleDamage", { _this call damage_manager_EH }];
 };
 
 waitUntil {!(isNull (findDisplay 46))};
