@@ -120,7 +120,7 @@ PAR_del_marker = {
 PAR_fn_AI_Damage_EH = {
 	params ["_unit"];
 	_unit removeAllEventHandlers "HandleDamage";
-	_unit addEventHandler ["HandleDamage", { _this call damage_manager_EH }];
+	_unit addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
 
 	if (GRLIB_revive != 0) then {
 		_unit addEventHandler ["HandleDamage", {

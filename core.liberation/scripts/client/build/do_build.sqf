@@ -423,8 +423,8 @@ while { true } do {
 						[ _vehicle ] call F_forceBluforCrew;
 						_vehicle setVariable ["GRLIB_vehicle_manned", true, true];
 						_vehicle setVehicleLock "LOCKEDPLAYER";
-						_vehicle addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1}];
-						_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_EH }];
+						_vehicle addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1 }];
+						_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_static }];
 					};
 					
 					// FOB
