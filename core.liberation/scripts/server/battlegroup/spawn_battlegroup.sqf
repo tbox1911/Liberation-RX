@@ -5,14 +5,12 @@ diag_log format ["Spawn BattlegGroup at %1", time];
 private [ "_bg_groups", "_target_size", "_vehicle_pool", "_selected_opfor_battlegroup" ];
 _bg_groups = [];
 
-last_battlegroup_size = 0;
 _spawn_marker = "";
 if ( isNil "_liberated_sector" ) then {
 	_spawn_marker = [ GRLIB_spawn_min, GRLIB_spawn_max, false ] call F_findOpforSpawnPoint;
 } else {
 	_spawn_marker = [ GRLIB_spawn_min, GRLIB_spawn_max, false, _liberated_sector ] call F_findOpforSpawnPoint;
 };
-
 
 _vehicle_pool = opfor_battlegroup_vehicles;
 if ( combat_readiness < 50 ) then {
@@ -24,10 +22,10 @@ if ( _spawn_marker != "" ) then {
 	GRLIB_last_battlegroup_time = time;
 
 	_selected_opfor_battlegroup = [];
-	_target_size = round (GRLIB_battlegroup_size * ([] call F_adaptiveOpforFactor) * (sqrt GRLIB_csat_aggressivity));
-	if ( _target_size >= 16 ) then { _target_size = 16; };
-	if ( combat_readiness < 60 ) then { _target_size = round (_target_size * 0.65) };
+	_target_size = GRLIB_battlegroup_size * (combat_readiness /100);
 	if ( count (AllPlayers - (entities "HeadlessClient_F")) <= 2 ) then { _target_size = round (_target_size * 0.65) };
+	if ( _target_size > 8 ) then { _target_size = 8; };
+	if ( _target_size < 3 ) then { _target_size = 3; };
 	diag_log format ["Spawn BattlegGroup (%1) on sector %2 at %3", _target_size, _spawn_marker, time];
 
 	for "_i" from 1 to _target_size do {
@@ -47,7 +45,6 @@ if ( _spawn_marker != "" ) then {
 		if ( ( _x in opfor_troup_transports_truck + opfor_troup_transports_heli) &&  ( [] call F_opforCap < GRLIB_battlegroup_cap ) ) then {
 			[_vehicle] spawn troup_transport;
 		};
-		last_battlegroup_size = last_battlegroup_size + 1.3;
 		sleep 2;
 	} foreach _selected_opfor_battlegroup;
 	diag_log format ["Done Spawning BattlegGroup at %1", time];
@@ -64,7 +61,7 @@ if ( _spawn_marker != "" ) then {
 
 	sleep 5;
 
-	combat_readiness = combat_readiness - (round ((last_battlegroup_size / 2) + floor(random (last_battlegroup_size / 2))));
+	combat_readiness = combat_readiness - (_target_size * 2);
 	if ( combat_readiness < 0 ) then { combat_readiness = 0 };
 
 	stats_hostile_battlegroups = stats_hostile_battlegroups + 1;
@@ -80,5 +77,3 @@ if ( _spawn_marker != "" ) then {
 
 	} foreach _bg_groups;
 };
-
-

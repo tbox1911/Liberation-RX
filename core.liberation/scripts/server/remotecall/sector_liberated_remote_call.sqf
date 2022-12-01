@@ -71,7 +71,7 @@ sleep 45;
 if ( GRLIB_endgame == 0 ) then {
 	if ( 
 	   (!( _liberated_sector in sectors_tower )) &&
-	   ((floor(random (200.0 / (GRLIB_difficulty_modifier * GRLIB_csat_aggressivity) )) < (combat_readiness - 20)) || ( _liberated_sector in sectors_bigtown )) &&
+	   ((combat_readiness > 70) || (_liberated_sector in sectors_bigtown)) &&
 	   ([] call F_opforCap < GRLIB_battlegroup_cap) &&
 	   (diag_fps > 30.0)
 	) then {
