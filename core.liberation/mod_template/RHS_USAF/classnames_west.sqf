@@ -32,43 +32,7 @@ units_loadout_overide = [];
 
 light_vehicles = [
 
-// S.O.G
-["vn_c_bicycle_01",1,1,1,GRLIB_perm_inf],
-// Boat
-["vn_o_boat_01_02",1,10,1,GRLIB_perm_inf],
-["vn_o_boat_01_mg_02",1,25,1,GRLIB_perm_inf],
-["vn_b_boat_06_01",20,400,20,GRLIB_perm_inf],
-["vn_b_boat_05_01",20,400,20,GRLIB_perm_inf],
-// Land
-["vn_b_wheeled_m151_01",1,5,1,GRLIB_perm_inf],
-["vn_b_wheeled_m151_02",2,40,2,GRLIB_perm_inf],
-["vn_o_car_04_01",1,25,2,GRLIB_perm_inf],
-["vn_o_car_04_mg_01",2,40,2,GRLIB_perm_inf],
-["vn_b_wheeled_m151_mg_04",3,75,2,GRLIB_perm_inf],
-["vn_b_wheeled_m151_mg_02",3,100,2,GRLIB_perm_inf],
-["vn_b_wheeled_m151_mg_03",3,125,2,GRLIB_perm_inf],
-["vn_b_wheeled_m54_01",3,100,3,GRLIB_perm_inf],
-["vn_b_wheeled_m54_02",4,150,4,GRLIB_perm_inf],
-
-// GM
-["gm_gc_army_bicycle_01_oli",1,5,1,GRLIB_perm_inf],
-["gm_ge_army_k125",1,10,1,GRLIB_perm_inf],
-["gm_ge_army_u1300l_container",1,25,1,GRLIB_perm_inf],
-["gm_ge_army_iltis_cargo",1,5,1,GRLIB_perm_inf],
-["gm_ge_army_iltis_milan",5,100,2,GRLIB_perm_inf],
-["gm_ge_army_iltis_mg3",5,125,2,GRLIB_perm_inf],
-["gm_ge_army_m113a1g_apc",2,25,2,GRLIB_perm_inf],
-["gm_ge_army_m113a1g_apc_milan",5,100,2,GRLIB_perm_inf],
-["gm_ge_army_m113a1g_medic",5,125,2,GRLIB_perm_inf],
-["gm_ge_army_kat1_451_container",5,30,5,GRLIB_perm_inf],
-["gm_dk_army_m113a1dk_apc",2,25,2,GRLIB_perm_inf],
-["gm_dk_army_m113a1dk_medic",5,10,5,GRLIB_perm_inf],
-["gm_dk_army_m113a2dk",5,200,2,GRLIB_perm_inf],
-["gm_ge_army_fuchsa0_engineer",10,250,10,GRLIB_perm_inf],
-["gm_ge_army_fuchsa0_command",10,500,10,GRLIB_perm_inf],
-["gm_ge_army_fuchsa0_reconnaissance",10,500,10,GRLIB_perm_inf],
-
-
+// Light vehicles
 
 // Bike
 ["CUP_B_M1030_USMC",0,20,0,GRLIB_perm_inf],
@@ -342,34 +306,12 @@ strong_light_vehicles = [
 ];
 
 heavy_vehicles = [
+
+
 // Heavy vehicles
 
-
-// S.O.G
-["vn_b_wheeled_m54_mg_01",5,250,5,GRLIB_perm_inf],
-["vn_b_wheeled_m54_mg_02",10,500,6,GRLIB_perm_inf],
-["vn_b_wheeled_m54_mg_03",5,250,5,GRLIB_perm_inf],
-["vn_b_wheeled_m151_mg_05",6,300,6,GRLIB_perm_inf],
-["vn_b_armor_m41_01_01",20,1500,25,GRLIB_perm_inf],
-
-// GM
-["gm_ge_army_luchsa1",10,500,10,GRLIB_perm_inf],
-["gm_ge_army_luchsa2",10,500,10,GRLIB_perm_inf],
-["gm_ge_army_Leopard1a1",10,500,10,GRLIB_perm_inf],
-["gm_ge_army_Leopard1a1a1",10,500,10,GRLIB_perm_inf],
-["gm_ge_army_Leopard1a1a2",15,1000,15,GRLIB_perm_inf],
-["gm_ge_army_Leopard1a1a3",15,1000,15,GRLIB_perm_inf],
-["gm_ge_army_Leopard1a1a4",15,1000,15,GRLIB_perm_inf],
-["gm_ge_army_gepard1a1",15,1500,15,GRLIB_perm_inf],
-["gm_ge_army_Leopard1a3",15,1500,15,GRLIB_perm_inf],
-["gm_ge_army_Leopard1a3a1",15,1500,15,GRLIB_perm_inf],
-["gm_ge_army_Leopard1a3a2",15,1500,15,GRLIB_perm_inf],
-["gm_ge_army_Leopard1a3a3",15,1500,15,GRLIB_perm_inf],
-["gm_ge_army_Leopard1a5",15,2500,15,GRLIB_perm_inf],
-["gm_ge_army_bpz2a0",15,2000,15,GRLIB_perm_inf],
-
-
 // BAF
+
 ["UK3CB_BAF_FV432_Mk3_GPMG_Green",0,heavy_vehicle_price_tier_7,0,GRLIB_perm_inf],
 ["UK3CB_BAF_FV432_Mk3_RWS_Green",0,heavy_vehicle_price_tier_8,0,GRLIB_perm_inf],
 ["UK3CB_BAF_Warrior_A3_W",0,heavy_vehicle_price_tier_10,0,GRLIB_perm_inf],
@@ -377,6 +319,7 @@ heavy_vehicles = [
 ["UK3CB_BAF_Warrior_A3_W_Cage",0,heavy_vehicle_price_tier_11,0,GRLIB_perm_inf],
 
 // CUP
+
 ["CUP_B_M1133_MEV_Desert",0,heavy_vehicle_price_tier_1,0,GRLIB_perm_inf],
 ["CUP_B_FV432_GB_Ambulance",0,heavy_vehicle_price_tier_1,0,GRLIB_perm_inf],
 ["CUP_B_M1126_ICV_M2_Desert",0,heavy_vehicle_price_tier_2,0,GRLIB_perm_inf],
@@ -517,33 +460,7 @@ strong_heavy_vehicles = [
 
 air_vehicles = [
 
-
-// S.O.G
-["vn_b_air_oh6a_01",4,200,6,GRLIB_perm_inf],
-["vn_b_air_oh6a_03",5,400,10,GRLIB_perm_inf],
-["vn_b_air_oh6a_02",5,550,10,GRLIB_perm_inf],
-["vn_b_air_oh6a_05",6,700,10,GRLIB_perm_inf],
-["vn_b_air_ch34_03_01",6,800,10,GRLIB_perm_inf],
-["vn_b_air_ch34_04_03",15,1000,15,GRLIB_perm_inf],
-["vn_b_air_uh1d_02_02",6,750,10,GRLIB_perm_inf],
-["vn_b_air_uh1c_04_02",15,1500,15,GRLIB_perm_inf],
-["vn_b_air_uh1c_02_02",25,2000,25,GRLIB_perm_inf],
-["vn_b_air_ah1g_10_usmc",30,2250,30,GRLIB_perm_inf],
-["vn_b_air_f4c_chico",50,3000,50,GRLIB_perm_inf],
-
-// GM
-["gm_ge_army_bo105m_vbh",1,100,5,GRLIB_perm_inf],
-["gm_ge_army_bo105p1m_vbh",5,120,10,GRLIB_perm_inf],
-["gm_gc_civ_mi2p",1,100,5,GRLIB_perm_inf],
-["gm_gc_civ_mi2sr",10,130,20,GRLIB_perm_inf],
-["gm_ge_army_bo105p1m_vbh_swooper",1,250,5,GRLIB_perm_inf],
-["gm_ge_army_bo105p_pah1",10,500,15,GRLIB_perm_inf],
-["gm_ge_army_bo105p_pah1a1",10,500,15,GRLIB_perm_inf],
-["gm_ge_army_ch53g",10,500,15,GRLIB_perm_inf],
-["gm_ge_army_ch53gs",20,800,40,GRLIB_perm_inf],
-["gm_ge_airforce_do28d2",5,200,10,GRLIB_perm_inf],
-["gm_gc_civ_l410s_passenger",5,220,10,GRLIB_perm_inf],
-
+// Air vehicles
 
 // Light Transport
 
