@@ -48,7 +48,7 @@ private _text = format ["Reward Received: %1 Ammo and %2 Fuel", _rwd_ammo, _rwd_
 		[_x, _rwd_ammo, _rwd_fuel] call ammo_add_remote_call;
 		[gamelogic, _text] remoteExec ["globalChat", owner _x];
 	};
-} forEach allPlayers;
+} forEach (AllPlayers - (entities "HeadlessClient_F"));
 [markerPos _liberated_sector] call showlandmines;
 
 combat_readiness = combat_readiness + _combat_readiness_increase;
