@@ -2,7 +2,7 @@ params [ "_fobpos" ];
 diag_log format ["Spawn Attack FOB %1 at %2", _fobpos, time];
 private _max_prisonners = 4;
 
-sleep 60;
+sleep 30;
 private _ownership = [ _fobpos ] call F_sectorOwnership;
 if ( _ownership != GRLIB_side_enemy ) exitWith {};
 
@@ -21,7 +21,7 @@ if ( GRLIB_blufor_defenders ) then {
 	[_grp, _fobpos] spawn add_defense_waypoints;
 
 	private _defenders_timer = round (time + 120);
-	while { time < _defenders_timer && count (units _grp) > 0 && _ownership == GRLIB_side_enemy } do {
+	while { time < _defenders_timer && ({alive _x} count (units _grp) > 0) && _ownership == GRLIB_side_enemy } do {
 		_ownership = [ _fobpos ] call F_sectorOwnership;
 		sleep 3;
 	};

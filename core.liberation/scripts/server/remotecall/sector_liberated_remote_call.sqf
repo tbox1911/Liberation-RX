@@ -75,7 +75,7 @@ if ( GRLIB_endgame == 0 ) then {
 	   ([] call F_opforCap < GRLIB_battlegroup_cap) &&
 	   (diag_fps > 30.0)
 	) then {
-		[ _liberated_sector ] spawn spawn_battlegroup;
+		[_liberated_sector] spawn spawn_battlegroup;
 	};
 };
 
