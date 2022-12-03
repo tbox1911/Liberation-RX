@@ -33,7 +33,7 @@ sleep 2;
 	};
 } forEach (units _troupgrp);
 sleep 2;
-[_troupgrp, true] spawn battlegroup_ai;
+[_troupgrp] spawn battlegroup_ai;
 
 // transport vehicle
 if ((alive _troup_transport) && (alive (driver _troup_transport))) then {

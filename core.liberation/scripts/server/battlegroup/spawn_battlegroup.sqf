@@ -39,7 +39,7 @@ if ( _spawn_marker != "" ) then {
 		_vehicle = [markerpos _spawn_marker, _x] call F_libSpawnVehicle;
 		_vehicle setVariable ["GRLIB_counter_TTL", round(time + 3600)];  // 60 minutes TTL
 		(crew _vehicle) joinSilent _nextgrp;
-		[_nextgrp, false] spawn battlegroup_ai;
+		[_nextgrp] spawn battlegroup_ai;
 		{ _x setVariable ["GRLIB_counter_TTL", round(time + 3600)] } forEach (units _nextgrp);
 		_bg_groups pushback _nextgrp;
 		if ( ( _x in opfor_troup_transports_truck + opfor_troup_transports_heli) &&  ( [] call F_opforCap < GRLIB_battlegroup_cap ) ) then {

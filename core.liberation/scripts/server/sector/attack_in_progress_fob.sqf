@@ -39,6 +39,7 @@ private _near_outpost = (count (_fobpos nearObjects [FOB_outpost, 100]) > 0);
 private _activeplayers = 0;
 
 [_fobpos, 1, _sector_timer] remoteExec ["remote_call_fob", 0];
+sleep 10;
 _sector_timer = round (time + _sector_timer);
 
 while { (time < _sector_timer || _activeplayers > 0) && _ownership == GRLIB_side_enemy } do {

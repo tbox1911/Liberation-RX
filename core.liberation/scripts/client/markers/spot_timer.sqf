@@ -15,9 +15,6 @@ while { true } do {
 		sector_timer = sector_timer - 1;
 	} else {
 		"opfor_capture_marker" setMarkerTextLocal "VULNERABLE";
-		waitUntil{
-			sleep 1;
-			sector_timer > 0
-		};
+		waitUntil{ sleep 1;	sector_timer > 0 };
 	};
 };

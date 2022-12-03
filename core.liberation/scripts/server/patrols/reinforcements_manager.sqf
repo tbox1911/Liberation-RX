@@ -18,11 +18,6 @@ if ( _targetsector in active_sectors ) then {
 		};
 	};
 
-	// if ( combat_readiness >= 65 ) then {
-	// 	_vehicle = [_pos, "O_Truck_03_transport_F"] call F_libSpawnVehicle;
-  	// 	[group (driver _vehicle), false] spawn battlegroup_ai;
-	// };
-
 	if ( combat_readiness >= 80 && _nb_player > 1 ) then {
 		sleep (60 + floor(random 60));
 		if (_targetsector in active_sectors) then {

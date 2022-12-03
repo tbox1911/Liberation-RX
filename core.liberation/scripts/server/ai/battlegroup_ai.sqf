@@ -1,4 +1,4 @@
-params ["_grp", "_infantry"];
+params ["_grp"];
 private ["_waypoint", "_objective_pos", "_objective_dist", "_objective_sector"];
 
 while { ({alive _x} count (units _grp) > 0) && ( GRLIB_endgame == 0 ) } do {

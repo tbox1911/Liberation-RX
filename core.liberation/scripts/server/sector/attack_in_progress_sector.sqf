@@ -52,6 +52,7 @@ if (_sector in sectors_bigtown) then {
 };
 
 [ _sector, 1, _sector_timer ] remoteExec ["remote_call_sector", 0];
+sleep 10;
 _sector_timer = round (time + _sector_timer);
 
 private _activeplayers = 0;
