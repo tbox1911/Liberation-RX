@@ -44,17 +44,19 @@ if ( _ownership == GRLIB_side_friendly ) exitWith {
 	};
 };
 
-[ _sector, 1 ] remoteExec ["remote_call_sector", 0];
 private _arsenal_box = createVehicle [Arsenal_typename, markerPos _sector, [], 20, "NONE"];
 
-private _sector_timer = round (time + GRLIB_vulnerability_timer);
+private _sector_timer = GRLIB_vulnerability_timer;
 if (_sector in sectors_bigtown) then {
 	_sector_timer = _sector_timer + (10 * 60);
 };
 
+[ _sector, 1, _sector_timer ] remoteExec ["remote_call_sector", 0];
+_sector_timer = round (time + _sector_timer);
+
 private _activeplayers = 0;
 while { (time < _sector_timer || _activeplayers > 0) && _ownership == GRLIB_side_enemy } do {
-	_ownership = [markerPos _sector] call F_sectorOwnership;
+	_ownership = [markerPos _sector, (GRLIB_capture_size * 2)] call F_sectorOwnership;
 	_activeplayers = count ([allPlayers, {alive _x && (_x distance2D (markerPos _sector)) < GRLIB_sector_size}] call BIS_fnc_conditionalSelect);
 	sleep 3;
 };

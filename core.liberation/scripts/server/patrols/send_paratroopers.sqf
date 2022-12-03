@@ -28,7 +28,6 @@ private _para_group = [markerpos _spawnsector, _unitclass, GRLIB_side_enemy, "pa
 	_x setSkill ["courage", 1];
 	_x allowFleeing 0;
 	_x setVariable ["GRLIB_counter_TTL", round(time + 3600)];
-	_x setVariable ["GRLIB_mission_AI", true];
 } foreach (units _para_group);
 
 [_newvehicle, _targetpos, _pilot_group, _para_group] spawn {

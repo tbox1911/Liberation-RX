@@ -34,11 +34,13 @@ if ( _ownership == GRLIB_side_friendly ) exitWith {
 	};
 };
 
-[ _fobpos , 1 ] remoteExec ["remote_call_fob", 0];
-
-private _sector_timer = round (time + GRLIB_vulnerability_timer + (5 * 60));
+private _sector_timer = GRLIB_vulnerability_timer + (5 * 60);
 private _near_outpost = (count (_fobpos nearObjects [FOB_outpost, 100]) > 0);
 private _activeplayers = 0;
+
+[_fobpos, 1, _sector_timer] remoteExec ["remote_call_fob", 0];
+_sector_timer = round (time + _sector_timer);
+
 while { (time < _sector_timer || _activeplayers > 0) && _ownership == GRLIB_side_enemy } do {
 	_ownership = [_fobpos] call F_sectorOwnership;
 	_activeplayers = count ([allPlayers, {alive _x && (_x distance2D (_fobpos)) < GRLIB_sector_size}] call BIS_fnc_conditionalSelect);
