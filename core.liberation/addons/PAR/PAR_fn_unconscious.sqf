@@ -107,10 +107,29 @@ while {lifeState _unit == "INCAPACITATED" && time <= _unit getVariable ["PAR_Ble
 };
 _bld spawn {sleep (30 + floor(random 30)); deleteVehicle _this};
 
+[
+  [_unit],
+{
+  if (isDedicated) exitWith {};
+  params ["_wnded"];
+  {
+    if ([localize "STR_PAR_AC_01",(_wnded actionParams _x) select 0] call bis_fnc_inString) then {
+      [_wnded, _x] call BIS_fnc_holdActionRemove;
+    };
+    if ([localize "STR_PAR_AC_02",(_wnded actionParams _x) select 0] call bis_fnc_inString) then {
+      _wnded removeAction _x;
+    };
+    if ([localize "STR_PAR_AC_03",(_wnded actionParams _x) select 0] call bis_fnc_inString) then {
+      _wnded removeAction _x;
+    };
+  } count (actionIDs _wnded);
+}] remoteExec ["bis_fnc_call", 0];
+
 [(_unit getVariable ["PAR_myMedic", objNull]), _unit] call PAR_fn_medicRelease;
 _unit setCaptive false;
 
 if (isPlayer _unit) then {
+  if (primaryWeapon _unit != "") then { _unit selectWeapon primaryWeapon _unit };
   [] call PAR_del_marker;
   if (GRLIB_disable_death_chat) then {
     0 enableChannel true;

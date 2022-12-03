@@ -34,27 +34,6 @@ if ([_medic] call PAR_is_medic) then {
   _wnded setDamage 0.25;
 };
 
-[
-  [_wnded],
-{
-  if (isDedicated) exitWith {};
-  params ["_wnded"];
-  {
-    if ([localize "STR_PAR_AC_01",(_wnded actionParams _x) select 0] call bis_fnc_inString) then {
-      [_wnded, _x] call BIS_fnc_holdActionRemove;
-    };
-    if ([localize "STR_PAR_AC_02",(_wnded actionParams _x) select 0] call bis_fnc_inString) then {
-      _wnded removeAction _x;
-    };
-    if ([localize "STR_PAR_AC_03",(_wnded actionParams _x) select 0] call bis_fnc_inString) then {
-      _wnded removeAction _x;
-    };
-  } count (actionIDs _wnded);
-}] remoteExec ["bis_fnc_call", 0];
-
-if (primaryWeapon _wnded != "") then { _wnded selectWeapon primaryWeapon _wnded };
-sleep 0.5;
-
 if (isPlayer _wnded) then {
   player setVariable ["PAR_isUnconscious", 0, true];
   player setVariable ["PAR_isDragged", 0, true];
