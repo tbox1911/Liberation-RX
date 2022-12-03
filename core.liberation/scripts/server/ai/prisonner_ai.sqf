@@ -46,23 +46,23 @@ while {alive _unit} do {
 	// Captured
 	if ([_unit, "FOB", 30] call F_check_near && isTouchingGround (vehicle _unit)) exitWith {
 		private _unit_owner = leader group _unit;
-		sleep (3 + floor(random 5));
-		doStop _unit;
-		unassignVehicle _unit;
-		[_unit] orderGetIn false;
-		[_unit] allowGetIn false;
+
 		if (!isnull objectParent _unit) then {
+			unassignVehicle _unit;
+			[_unit] orderGetIn false;
+			[_unit] allowGetIn false;
 			doGetOut _unit;
 			sleep 3;
 		};
-		sleep 3;
+		doStop _unit;
+		sleep 2;
+
 		_grp = createGroup [GRLIB_side_friendly, true];
 		[_unit] joinSilent _grp;
 		_unit playmove "AmovPercMstpSnonWnonDnon_AmovPsitMstpSnonWnonDnon_ground";
 		_unit disableAI "ANIM";
 		_unit disableAI "MOVE";
-		doStop _unit;
-		sleep 5;
+		sleep 3;
 		[_unit, "AidlPsitMstpSnonWnonDnon_ground00"] remoteExec ["switchmove", 0];
 		[_unit, _unit_owner] call prisonner_captured;
 		sleep 300;
@@ -108,7 +108,7 @@ while {alive _unit} do {
 			_waypoint setWaypointType "MOVE";
 			_waypoint setWaypointCompletionRadius 50;
 			_waypoint setWaypointStatements ["true", "deleteVehicle this"];
-			sleep 300;
+			sleep 5;
 		} else {
 			{ deleteVehicle _x } forEach _flee_grp;
 		};	
