@@ -29,12 +29,14 @@ if ( GRLIB_blufor_defenders && !_defenders_cooldown) then {
 	} foreach (units _grp);
 	[_grp, markerpos _sector] spawn add_defense_waypoints;
 	attack_in_progress = [_sector, round (time + 900)];
-	sleep 120;
+	
+	private _defenders_timer = round (time + 120);
+	while { time < _defenders_timer && count (units _grp) > 0 && _ownership == GRLIB_side_enemy } do {
+		_ownership = [ markerpos _sector ] call F_sectorOwnership;
+		sleep 3;
+	};
 };
 
-sleep 30;
-
-_ownership = [ markerpos _sector ] call F_sectorOwnership;
 if ( _ownership == GRLIB_side_friendly ) exitWith {
 	if ( count (units _grp) > 0 ) then {
 		{ if ( alive _x ) then { deleteVehicle _x } } foreach units _grp;
@@ -43,18 +45,18 @@ if ( _ownership == GRLIB_side_friendly ) exitWith {
 };
 
 [ _sector, 1 ] remoteExec ["remote_call_sector", 0];
+private _arsenal_box = createVehicle [Arsenal_typename, markerPos _sector, [], 20, "NONE"];
 
-private _sector_timer = GRLIB_vulnerability_timer;
+private _sector_timer = round (time + GRLIB_vulnerability_timer);
 if (_sector in sectors_bigtown) then {
 	_sector_timer = _sector_timer + (10 * 60);
 };
 
 private _activeplayers = 0;
-while { (_sector_timer > 0 || _activeplayers > 0) && _ownership == GRLIB_side_enemy } do {
+while { (time < _sector_timer || _activeplayers > 0) && _ownership == GRLIB_side_enemy } do {
 	_ownership = [markerPos _sector] call F_sectorOwnership;
 	_activeplayers = count ([allPlayers, {alive _x && (_x distance2D (markerPos _sector)) < GRLIB_sector_size}] call BIS_fnc_conditionalSelect);
-	_sector_timer = _sector_timer - 1;
-	sleep 1;
+	sleep 3;
 };
 
 if ( GRLIB_endgame == 0 ) then {
@@ -74,11 +76,19 @@ if ( GRLIB_endgame == 0 ) then {
 				if ( ((random 100) <= 50) ) then { [_x] spawn bomber_ai };
 			};
 		} foreach _enemy_left;
+
+		private _rwd_xp = round (15 + random 10);
+		private _text = format ["Glory to the Defendes! +%1 XP", _rwd_xp];
+		{
+			if (_x distance2D (markerpos _sector) < GRLIB_sector_size ) then {
+				[_x, _rwd_xp] call F_addScore;
+				[gamelogic, _text] remoteExec ["globalChat", owner _x];
+			};
+		} forEach (AllPlayers - (entities "HeadlessClient_F"));
 	};
 };
 
-sleep 60;
-
+_arsenal_box spawn {sleep 120; deleteVehicle _this};
 if ( count (units _grp) > 0 ) then {
 	[_grp] spawn {
 		params ["_grp"];

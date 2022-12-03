@@ -19,12 +19,14 @@ if ( GRLIB_blufor_defenders ) then {
 	_grp setCombatMode "GREEN";
 	_grp setBehaviour "COMBAT";
 	[_grp, _fobpos] spawn add_defense_waypoints;
-	sleep 120;
+
+	private _defenders_timer = round (time + 120);
+	while { time < _defenders_timer && count (units _grp) > 0 && _ownership == GRLIB_side_enemy } do {
+		_ownership = [ _fobpos ] call F_sectorOwnership;
+		sleep 3;
+	};
 };
 
-sleep 30;
-
-_ownership = [ _fobpos ] call F_sectorOwnership;
 if ( _ownership == GRLIB_side_friendly ) exitWith {
 	if ( count (units _grp) > 0 ) then {
 		{ if ( alive _x ) then { deleteVehicle _x } } foreach units _grp;
@@ -34,17 +36,16 @@ if ( _ownership == GRLIB_side_friendly ) exitWith {
 
 [ _fobpos , 1 ] remoteExec ["remote_call_fob", 0];
 
-private _sector_timer = GRLIB_vulnerability_timer + (5 * 60);
+private _sector_timer = round (time + GRLIB_vulnerability_timer + (5 * 60));
 private _near_outpost = (count (_fobpos nearObjects [FOB_outpost, 100]) > 0);
 private _activeplayers = 0;
-while { (_sector_timer > 0 || _activeplayers > 0) && _ownership == GRLIB_side_enemy } do {
+while { (time < _sector_timer || _activeplayers > 0) && _ownership == GRLIB_side_enemy } do {
 	_ownership = [_fobpos] call F_sectorOwnership;
 	_activeplayers = count ([allPlayers, {alive _x && (_x distance2D (_fobpos)) < GRLIB_sector_size}] call BIS_fnc_conditionalSelect);
-	_sector_timer = _sector_timer - 1;
 	if (_sector_timer mod 60 == 0 && !_near_outpost) then {
 		[ _fobpos , 4 ] remoteExec ["remote_call_fob", 0];
 	};	
-	sleep 1;
+	sleep 3;
 };
 
 if ( GRLIB_endgame == 0 ) then {
@@ -68,10 +69,17 @@ if ( GRLIB_endgame == 0 ) then {
 				_max_prisonners = _max_prisonners - 1;
 			};
 		} foreach _enemy_left;
+
+		private _rwd_xp = round (15 + random 10);
+		private _text = format ["Glory to the Defendes! +%1 XP", _rwd_xp];
+		{
+			if (_x distance2D _fobpos < GRLIB_sector_size ) then {
+				[_x, _rwd_xp] call F_addScore;
+				[gamelogic, _text] remoteExec ["globalChat", owner _x];
+			};
+		} forEach (AllPlayers - (entities "HeadlessClient_F"));
 	};
 };
-
-sleep 60;
 
 if ( count (units _grp) > 0 ) then {
 	[_grp] spawn {
