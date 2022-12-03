@@ -6,10 +6,15 @@ sleep 60;
 private _ownership = [ markerpos _sector ] call F_sectorOwnership;
 if ( _ownership != GRLIB_side_enemy ) exitWith {};
 
-private _grp = grpNull;
-private	_is_side_sector = (count (allMapMarkers select {_x select [0,12] == "side_mission" && markerPos _x distance2D markerPos _sector <= GRLIB_capture_size}) > 0);
+private _defenders_cooldown = false;
+if ( _sector == attack_in_progress select 0 ) then {
+	if (time < attack_in_progress select 1) then {
+		_defenders_cooldown = true;
+	};
+};
 
-if ( GRLIB_blufor_defenders && !_is_side_sector) then {
+private _grp = grpNull;
+if ( GRLIB_blufor_defenders && !_defenders_cooldown) then {
 	private _squad_type = blufor_squad_inf_light;
 	if ( _sector in sectors_military ) then {
 		_squad_type = blufor_squad_mix;
@@ -23,16 +28,17 @@ if ( GRLIB_blufor_defenders && !_is_side_sector) then {
 		_x allowFleeing 0;
 	} foreach (units _grp);
 	[_grp, markerpos _sector] spawn add_defense_waypoints;
+	attack_in_progress = [_sector, round (time + 900)];
+	sleep 120;
 };
 
-sleep 60;
+sleep 30;
 
 _ownership = [ markerpos _sector ] call F_sectorOwnership;
 if ( _ownership == GRLIB_side_friendly ) exitWith {
-	if ( GRLIB_blufor_defenders ) then {
-		{
-			if ( alive _x ) then { deleteVehicle _x };
-		} foreach units _grp;
+	if ( count (units _grp) > 0 ) then {
+		{ if ( alive _x ) then { deleteVehicle _x } } foreach units _grp;
+		deleteGroup _grp;
 	};
 };
 
@@ -73,10 +79,11 @@ if ( GRLIB_endgame == 0 ) then {
 
 sleep 60;
 
-if ( GRLIB_blufor_defenders ) then {
-	{
-		if ( alive _x ) then { deleteVehicle _x };
-	} foreach units _grp;
+if ( count (units _grp) > 0 ) then {
+	[_grp] spawn {
+		params ["_grp"];
+		sleep 60;
+		{ if ( alive _x ) then { deleteVehicle _x } } foreach units _grp;
+		deleteGroup _grp;
+	};
 };
-
-deleteGroup _grp;

@@ -19,16 +19,16 @@ if ( GRLIB_blufor_defenders ) then {
 	_grp setCombatMode "GREEN";
 	_grp setBehaviour "COMBAT";
 	[_grp, _fobpos] spawn add_defense_waypoints;
+	sleep 120;
 };
 
-sleep 60;
+sleep 30;
 
 _ownership = [ _fobpos ] call F_sectorOwnership;
 if ( _ownership == GRLIB_side_friendly ) exitWith {
-	if ( GRLIB_blufor_defenders ) then {
-		{
-			if ( alive _x ) then { deleteVehicle _x };
-		} foreach units _grp;
+	if ( count (units _grp) > 0 ) then {
+		{ if ( alive _x ) then { deleteVehicle _x } } foreach units _grp;
+		deleteGroup _grp;
 	};
 };
 
@@ -73,8 +73,11 @@ if ( GRLIB_endgame == 0 ) then {
 
 sleep 60;
 
-if ( GRLIB_blufor_defenders ) then {
-	{
-		if ( alive _x ) then { deleteVehicle _x };
-	} foreach units _grp;
+if ( count (units _grp) > 0 ) then {
+	[_grp] spawn {
+		params ["_grp"];
+		sleep 60;
+		{ if ( alive _x ) then { deleteVehicle _x } } foreach units _grp;
+		deleteGroup _grp;
+	};
 };

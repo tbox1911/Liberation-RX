@@ -1,12 +1,10 @@
-waitUntil { !isNil "GRLIB_all_fobs" };
-waitUntil { !isNil "blufor_sectors" };
+waitUntil {sleep 1; !isNil "GRLIB_all_fobs" };
+waitUntil {sleep 1; !isNil "blufor_sectors" };
+waitUntil {sleep 1; (count (blufor_sectors) > 0 || count (GRLIB_all_fobs) > 0)};
 
-sleep 5;
-
-attack_in_progress = false;
+attack_in_progress = [];
 
 while { GRLIB_endgame == 0 } do {
-
 	{
 		_ownership = [ markerpos _x ] call F_sectorOwnership;
 		if ( _ownership == GRLIB_side_enemy ) then {
@@ -23,6 +21,5 @@ while { GRLIB_endgame == 0 } do {
 		sleep 0.5;
 	} foreach GRLIB_all_fobs;
 
-	sleep 2;
-
+	sleep 5;
 };
