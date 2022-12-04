@@ -1451,6 +1451,29 @@ SA_TOW_RULES_OVERRIDE =[
 // if (isServer) then {[2000,-1,false,100,1000,100]execvm "zbe_cache\main.sqf"};
 
 
+
+
+// Zeus can use all addons
+private _addons = "true" configClasses (configFile >> "CfgPatches") apply {toLower configName _x};
+
+// manually activate all addons
+activateAddons _addons;
+
+// manually add our addons to all curators
+if (isServer) then {
+    {
+        _x addCuratorAddons _addons;
+    } forEach allCurators;
+};
+
+
+
+
+
+
+
+
+
 // MilSim United ===========================================================================
 
 
