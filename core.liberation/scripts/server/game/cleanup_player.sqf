@@ -81,9 +81,3 @@ if !(isNull _unit) then {
 	private _text = format ["Bye bye %1, see you soon...", _name];
 	[gamelogic, _text] remoteExec ["globalChat", -2];
 };
-
-if (count (AllPlayers - (entities "HeadlessClient_F")) == 0) then {
-	[] call save_game_mp;
-};
-
-false;
