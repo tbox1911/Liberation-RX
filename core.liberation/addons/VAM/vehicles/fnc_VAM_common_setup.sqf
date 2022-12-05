@@ -7,7 +7,7 @@ private _reset = _VAM_display displayCtrl 4940;
 
 private _vehicleclass = typeof VAM_targetvehicle;
 
-//Get all camouflages (texture sets)
+//Get A3 camouflages (texture sets)
 private _camo_path = "true" configClasses (configfile >> "CfgVehicles" >> _vehicleclass >> "TextureSources");
 camo_class_names = [];
 camo_display_names = [];
@@ -19,7 +19,7 @@ camo_display_names = [];
 	};
 } forEach camo_display_names;
 
-//Get LRX Textures set
+//Get LRX camouflages (static, custom textures set)
 {
 	camo_display_names pushBack (_x select 0);
 	camo_class_names pushBack (_x select 1);

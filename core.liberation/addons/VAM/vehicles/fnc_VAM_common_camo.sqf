@@ -12,13 +12,12 @@ private _selected_camo_class_name = camo_class_names select _list_selection;
 private _selected_camo_display_names = camo_display_names select _list_selection;
 private _vehicle = VAM_targetvehicle;
 
-diag_log format ["DBG: %1 %2 %3", typeof _vehicle, _selected_camo_class_name, _selected_camo_display_names];
+//diag_log format ["DBG: %1 %2 %3", typeof _vehicle, _selected_camo_class_name, _selected_camo_display_names];
 
 [_vehicle,[_selected_camo_class_name,1],nil,nil] call BIS_fnc_initVehicle;
 
 if ( ["#(rgb", _selected_camo_class_name] call F_startsWith || ["addons\RPT\textures\", _selected_camo_class_name] call F_startsWith ) then {
     // Apply texture to all appropriate parts
-
     private _selections = switch (true) do {
         case (_vehicle isKindOf "Van_01_base_F"):                 { [0,1] };
         case (_vehicle isKindOf "Van_02_base_F"):                 { [0] };
