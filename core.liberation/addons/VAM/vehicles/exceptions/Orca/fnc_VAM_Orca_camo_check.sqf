@@ -1,6 +1,6 @@
 //VAM Orca Vehicle Camouflage Check
 disableSerialization;
-waitUntil {!(VAM_check_fnc_delay)};
+waitUntil {sleep 0.1; !(VAM_check_fnc_delay)};
 private _VAM_display = findDisplay 4900;
 private _list_camo = _VAM_display displayCtrl 4910;
 
