@@ -4,9 +4,7 @@
 RPT_color = "#(rgb,1,1,1)color";
 RPT_texDir = "addons\RPT\textures\";
 
-fnc_getVIP = compileFinal preprocessFileLineNumbers "addons\RPT\RPT_vip_textures.sqf";
-
-RPT_colorList =[
+RPT_colorList = [
 	["Black", RPT_color + "(0.01,0.01,0.01,1)"], // #(argb,8,8,3)color(0.1,0.1,0.1,0.1)
 	["Gray", RPT_color + "(0.15,0.151,0.152,1)"], // #(argb,8,8,3)color(0.5,0.51,0.512,0.3)
 	["White", RPT_color + "(0.75,0.75,0.75,1)"], // #(argb,8,8,3)color(1,1,1,0.5)
@@ -40,6 +38,8 @@ RPT_colorList =[
 	["Woodland", RPT_texDir + "woodland.paa"],
 	["Woodland Tiger", RPT_texDir + "woodtiger.paa"]
 ];
+
+[] call compileFinal preprocessFileLineNumbers "addons\RPT\RPT_vip_textures.sqf";
 
 if ( hasInterface ) then {
 	waitUntil {!(isNull (findDisplay 46))};
