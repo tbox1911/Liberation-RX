@@ -10,7 +10,7 @@ if (!isServer) exitwith {};
 private ["_grpdefenders", "_grpsentry"];
 
 _setupVars = {
-	_missionType = "Enemy Outpost";
+	_missionType = localize "STR_OUTPOST";
 	_locationsArray = [SpawnMissionMarkers] call checkSpawn;
 };
 
@@ -23,7 +23,7 @@ _setupObjects = {
 	_grpsentry = _base_output select 3;
 	_aiGroup = _grpdefenders;
 
-	_missionHintText = format ["An armed <t color='%1'>Outpost</t> containing weapon crates has been spotted near the marker, Go capture it!", sideMissionColor];
+	_missionHintText = format [localize "STR_OUTPOST_MESSAGE1", sideMissionColor];
 	true;
 };
 
@@ -38,7 +38,7 @@ _failedExec = {
 
 _successExec = {
 	// Mission complete
-	_successHintMessage = "The outpost has been Captured!, Good Work.";
+	_successHintMessage = localize "STR_OUTPOST_MESSAGE2";
 	for "_i" from 1 to 3 do {
 		_box = selectRandom [ammobox_b_typename, ammobox_o_typename, ammobox_i_typename, fuelbarrel_typename];
 		[_box, _missionPos, false] call boxSetup;

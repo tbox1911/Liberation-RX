@@ -10,7 +10,7 @@ private ["_nbUnits", "_box1", "_box2", "_townName", "_buildingpositions", "_tent
 
 _setupVars =
 {
-	_missionType = "Town Invasion";
+	_missionType = localize "STR_INVASION";
 	_nbUnits = [] call getNbUnits;
 
 	// settings for this mission
@@ -55,7 +55,7 @@ _setupObjects =
 
 	[_aiGroup, _missionPos, (_nbUnits - (count _managed_units)) , "militia"] call createCustomGroup;
 
-	_missionHintText = format ["Hostiles have taken over <br/><t size='1.25' color='%1'>%2</t><br/><br/>There seem to be <t color='%1'>%3 enemies</t> hiding inside or on top of buildings. Get rid of them all, and take their supplies!<br/>Watch out for those windows!", sideMissionColor, _townName, _nbUnits];
+	_missionHintText = format [localize "STR_INVASION_MESSAGE1", sideMissionColor, _townName, _nbUnits];
 	true;
 };
 
@@ -87,7 +87,7 @@ _successExec = {
 		};
 	} forEach (AllPlayers - (entities "HeadlessClient_F"));
 
-	_successHintMessage = format ["Nice work!<br/><br/><t color='%1'>%2</t><br/>is a safe place again!<br/>Their belongings are now yours to take!", sideMissionColor, _townName];
+	_successHintMessage = format [localize "STR_INVASION_MESSAGE2", sideMissionColor, _townName];
 	{ deleteVehicle _x } forEach [_tent1, _chair1, _chair2, _fire1];
 	[_missionPos] call showlandmines;
 };

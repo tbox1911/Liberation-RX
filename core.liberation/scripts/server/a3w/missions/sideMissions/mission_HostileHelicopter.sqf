@@ -10,7 +10,7 @@ private [ "_citylist", "_vehicleClass", "_leader", "_speedMode", "_waypoint", "_
 
 _setupVars =
 {
-	_missionType = "Hostile Helicopter";
+	_missionType = localize "STR_HOSSTILE_HELI";
 	_citylist = [] call cityList;
 	_locationsArray = nil; // locations are generated on the fly from towns
 };
@@ -47,7 +47,7 @@ _setupObjects =
 	_missionPos = getPosATL leader _aiGroup;
 	_missionPicture = getText (configFile >> "CfgVehicles" >> (_vehicleClass param [0,""]) >> "picture");
 	_vehicleName = getText (configFile >> "CfgVehicles" >> (_vehicleClass param [0,""]) >> "displayName");
-	_missionHintText = format ["An armed <t color='%2'>%1</t> is patrolling the island. Intercept it and recover its cargo!", _vehicleName, sideMissionColor];
+	_missionHintText = format [localize "STR_HOSSTILE_HELI_MESSAGE1", _vehicleName, sideMissionColor];
 	_numWaypoints = count waypoints _aiGroup;
 	true;
 };
@@ -81,7 +81,7 @@ _successExec =
 		_box2 = [ammobox_o_typename, _wreckPos, false] call boxSetup;
 	};
 
-	_successHintMessage = "The sky is clear again, the enemy patrol was taken out! Ammo crates have fallen near the wreck.";
+	_successHintMessage = localize "STR_HOSSTILE_HELI_MESSAGE2";
 };
 
 _this call sideMissionProcessor;

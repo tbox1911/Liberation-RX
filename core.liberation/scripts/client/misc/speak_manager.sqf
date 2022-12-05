@@ -4,14 +4,14 @@ if (!isNil "GRLIB_speaking") exitWith {};
 
 speak_civil_AI = {
 	params ["_unit"];
-	player globalChat "Hello, you see somes enemies around here ?";
+	player globalChat localize "STR_SPEAKMANAGER1";
 	uIsleep 2;
 	private _opfor_list = allUnits select {alive _x && _x distance2D getPos _unit < 500 && side _x == GRLIB_side_enemy};
 	if (count _opfor_list > 0) then {
 		_opfor = _opfor_list select 0;
-		_unit globalChat (format ["Hi, Yes, I see someone at %1 meters, Azimut %2, Hurry up!", round(_unit distance2D _opfor), round(_unit getDir _opfor)]);
+		_unit globalChat (format [localize "STR_SPEAKMANAGER2", round(_unit distance2D _opfor), round(_unit getDir _opfor)]);
 	} else {
-		_msg = selectRandom ["Hi, Sorry No.","I dont care, Go away !","Hello, I have no fucking idea of who are your enemies...", "Anerríphthô kúbos ?"];
+		_msg = selectRandom [localize "STR_SPEAKMANAGER3",localize "STR_SPEAKMANAGER4",localize "STR_SPEAKMANAGER5", "Anerríphthô kúbos ?"];
 		_unit globalChat _msg;
 	};
 };
@@ -19,9 +19,9 @@ speak_civil_AI = {
 speak_unit_AI = {
 	params ["_unit"];
 	private _leader = leader group _unit;
-	player globalChat "Hello, Where is your leader ?";
+	player globalChat localize "STR_SPEAKMANAGER6";
 	uIsleep 2;
-	gamelogic globalChat format ["Hi, he's at %1 meters, Azimut %2, Hurry up!", round(_unit distance2D _leader), round(_unit getDir _leader)];
+	gamelogic globalChat format [localize "STR_SPEAKMANAGER7", round(_unit distance2D _leader), round(_unit getDir _leader)];
 };
 
 speak_leader_AI = {
@@ -31,30 +31,30 @@ speak_leader_AI = {
 	private _sector = [200, _pos] call F_getNearestSector;
 
 	{_x setVariable ["GRLIB_can_speak", false, true]} foreach units _grp;
-	gamelogic globalChat "Hello, I Need to speak with you, listen to me.";
+	gamelogic globalChat localize "STR_SPEAKMANAGER8";
 	uIsleep 3;
-	gamelogic globalChat "We have informations, Opfor will attack this place soon.";
+	gamelogic globalChat localize "STR_SPEAKMANAGER9";
 	uIsleep 3;
-	gamelogic globalChat "Big Air assault is expected, help us to defend the city...";
+	gamelogic globalChat localize "STR_SPEAKMANAGER10";
 	uIsleep 3;
-	gamelogic globalChat "...the Resistance must survive!";
+	gamelogic globalChat localize "STR_SPEAKMANAGER11";
 	[_sector] remoteExec ["send_para_remote_call", 2];
 };
 
 // Nikos
 speak_mission_delivery_1 = {
 	params ["_unit"];
-	if (!(_unit getVariable ["GRLIB_A3W_Mission_SD", false])) exitWith {gamelogic globalChat "Maybe another time..."};
+	if (!(_unit getVariable ["GRLIB_A3W_Mission_SD", false])) exitWith {gamelogic globalChat localize "STR_SPEAKMANAGER12"};
 	private _next_indx = (GRLIB_A3W_Mission_SD find _unit) + 1;
 	private _next_unit = GRLIB_A3W_Mission_SD select _next_indx;
 
-	gamelogic globalChat "Hello, I Need to speak with you, listen to me.";
+	gamelogic globalChat localize "STR_SPEAKMANAGER13";
 	uIsleep 3;
-	gamelogic globalChat "You have to deliver this precious information to my father.";
+	gamelogic globalChat localize "STR_SPEAKMANAGER14";
 	uIsleep 3;
-	gamelogic globalChat format ["Go to see my friend %1 for more infos.", name _next_unit];
+	gamelogic globalChat format [localize "STR_SPEAKMANAGER15", name _next_unit];
 	uIsleep 3;
-	gamelogic globalChat "Look at the marker on your Map.";
+	gamelogic globalChat localize "STR_SPEAKMANAGER16";
 
 	_quest_item = player getVariable ["GRLIB_A3W_Mission_Item", objNull];
 	if (isNull _quest_item) then {
@@ -72,24 +72,24 @@ speak_mission_delivery_1 = {
 // Orestes
 speak_mission_delivery_2 = {
 	params ["_unit"];
-	if (isNil "GRLIB_A3W_Mission_Marker") exitWith {gamelogic globalChat "Maybe another time..."};
+	if (isNil "GRLIB_A3W_Mission_Marker") exitWith {gamelogic globalChat localize "STR_SPEAKMANAGER12"};
 	if (!(_unit getVariable ["GRLIB_A3W_Mission_SD", false]) || _unit != GRLIB_A3W_Mission_Marker) exitWith {gamelogic globalChat "Maybe another time..."};
 	private _next_indx = (GRLIB_A3W_Mission_SD find _unit) + 1;
 	private _next_unit = GRLIB_A3W_Mission_SD select _next_indx;
 	private _last_man = GRLIB_A3W_Mission_SD select (count GRLIB_A3W_Mission_SD) - 1;
 	if (_next_unit == _last_man) then {
-		gamelogic globalChat "Yes, I know him !";
+		gamelogic globalChat localize "STR_SPEAKMANAGER17";
 		uIsleep 3;
-		gamelogic globalChat "he's hidding in a small house, enemy forces try to catch him!";
+		gamelogic globalChat localize "STR_SPEAKMANAGER18";
 		uIsleep 3;
-		gamelogic globalChat "Look at the marker on your Map, Hurry hup!";
+		gamelogic globalChat localize "STR_SPEAKMANAGER19";
 		[getPos _next_unit, "militia"] remoteExec ["a3w_create_enemy", 2];
 	} else {
-		gamelogic globalChat "Oh, I dont knows,";
+		gamelogic globalChat localize "STR_SPEAKMANAGER20";
 		uIsleep 3;
-		gamelogic globalChat format ["Go to see my friend %1 for more infos.", name _next_unit];
+		gamelogic globalChat format [localize "STR_SPEAKMANAGER21", name _next_unit];
 		uIsleep 3;
-		gamelogic globalChat "Look at the marker on your Map.";
+		gamelogic globalChat localize "STR_SPEAKMANAGER22";
 	};
 	GRLIB_A3W_Mission_Marker = _next_unit;
 	uIsleep 3;
@@ -97,18 +97,18 @@ speak_mission_delivery_2 = {
 // Nikos Old
 speak_mission_delivery_3 = {
 	params ["_unit"];
-	if (isNil "GRLIB_A3W_Mission_Marker") exitWith {gamelogic globalChat "Maybe another time..."};
+	if (isNil "GRLIB_A3W_Mission_Marker") exitWith {gamelogic globalChat localize "STR_SPEAKMANAGER12"};
 	if (!(_unit getVariable ["GRLIB_A3W_Mission_SD", false]) || _unit != GRLIB_A3W_Mission_Marker) exitWith {gamelogic globalChat "Maybe another time..."};
 	private _near_case = getPosATL _unit nearEntities [["Land_Suitcase_F"], 10];
 	if (count _near_case > 0) then {
 		deleteVehicle (_near_case select 0);
 		_unit switchMove "AmovPercMstpSrasWrflDnon_Salute";
-		gamelogic globalChat "Thank you very much, Please take your reward.";
+		gamelogic globalChat localize "STR_SPEAKMANAGER23";
 		{_x setVariable ['GRLIB_can_speak', false, true]} foreach GRLIB_A3W_Mission_SD;
 		_unit setVariable ["GRLIB_A3W_Mission_SD_END", true, true];
 		GRLIB_A3W_Mission_Marker = nil;
 	} else {
-		gamelogic globalChat "Sorry, I wait for something special...";
+		gamelogic globalChat localize "STR_SPEAKMANAGER24";
 	};
 	uIsleep 3;
 };
@@ -117,7 +117,7 @@ speak_mission_delivery_4 = {
 	params ["_unit"];
 	if (!(_unit getVariable ["GRLIB_A3W_Mission_DW", false]) &&
 	    !(_unit getVariable ["GRLIB_A3W_Mission_DF", false]) &&
-		!(_unit getVariable ["GRLIB_A3W_Mission_DN", false]) ) exitWith {gamelogic globalChat "Maybe another time..."};
+		!(_unit getVariable ["GRLIB_A3W_Mission_DN", false]) ) exitWith {gamelogic globalChat localize "STR_SPEAKMANAGER12"};
 
 	private _txt1 = "Water";
 	private _txt2 = "barrels";
@@ -125,13 +125,13 @@ speak_mission_delivery_4 = {
 	if (_unit getVariable ["GRLIB_A3W_Mission_DN", false]) then { _txt1 = "Food"; _txt2 = "pallets" };
 
 	_unit playMoveNow "AmovPercMstpSrasWrflDnon_Salute";
-	player globalChat "Hello, What do you need ?";
+	player globalChat localize "STR_SPEAKMANAGER25";
 	uIsleep 2;
-	gamelogic globalChat format ["Hi, We running out of %1 !", _txt1];
+	gamelogic globalChat format [localize "STR_SPEAKMANAGER26", _txt1];
 	uIsleep 2;
-	gamelogic globalChat format ["Please bring us back 3 %1 of %2", _txt2, _txt1];
+	gamelogic globalChat format [localize "STR_SPEAKMANAGER27", _txt2, _txt1];
 	uIsleep 2;
-	gamelogic globalChat format ["I will wait here for you to come back with the %1, Please hurry up!", _txt2];
+	gamelogic globalChat format [localize "STR_SPEAKMANAGER28", _txt2];
 	sleep 3;
 	_unit switchMove "LHD_krajPaluby";
 	_unit playMoveNow "LHD_krajPaluby";
