@@ -131,7 +131,7 @@ PAR_fn_AI_Damage_EH = {
 
 			private _isNotWounded = !(_unit getVariable ["PAR_wounded", false]);
 			if (_isNotWounded && _dam >= 0.86) then {
-				if (!(isNull _veh)) then {[_veh, _unit] spawn PAR_fn_eject};
+				if (!isNull _veh) then {[_veh, _unit] spawn PAR_fn_eject};
 				_unit allowDamage false;
 				_unit setVariable ["PAR_wounded", true];
 				_unit setUnconscious true;
@@ -186,7 +186,7 @@ PAR_Player_Init = {
 PAR_HandleDamage_EH = {
 	params ["_unit", "_selectionName", "_amountOfDamage", "_killer", "_projectile", "_hitPartIndex", "_instigator"];
 	if (isNull _unit) exitWith {0};
-	if (!(isNull _instigator)) then {
+	if (!isNull _instigator) then {
 		if (isNull (getAssignedCuratorLogic _instigator)) then {
 	    	_killer = _instigator;
 		};

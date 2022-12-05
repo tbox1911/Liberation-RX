@@ -2,7 +2,7 @@ params [ "_unit", "_killer", "_instigator"];
 private [ "_nearby_bigtown","_msg" ];
 
 if ( isServer ) then {
-	if (!(isNull _instigator)) then {
+	if (!isNull _instigator) then {
 		if (isNull (getAssignedCuratorLogic _instigator)) then {
 	    	_killer = _instigator;
 		};
