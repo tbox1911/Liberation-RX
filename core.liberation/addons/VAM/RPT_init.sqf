@@ -1,4 +1,4 @@
-// Vehicle Paint v1.07
+// Vehicle Paint v1.10 merged with VAM
 // by pSiKO
 
 RPT_color = "#(rgb,1,1,1)color";
