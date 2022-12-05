@@ -54,20 +54,12 @@ class CfgDebriefing {
 	};
 };
 
-class Repaint {
-	file = "addons\RPT";
-	class repaintMenu {};
-	class repaintColor {};
-	class repaintVehicle {};
-};
-
 #include "GREUH\UI\GREUH_interface.hpp"
 #include "ui\liberation_interface.hpp"
 #include "ui\liberation_notifications.hpp"
 #include "ui\mission_params.hpp"
 #include "R3F_LOG\desc_include.h"
 #include "addons\MGR\MagRepack_Config.hpp"
-#include "addons\RPT\veh_repaint.hpp"
 #include "addons\VIRT\virtual_garage.hpp"
 #include "addons\SHOP\traders_shop.hpp"
 #include "addons\SELL\sell_shop.hpp"

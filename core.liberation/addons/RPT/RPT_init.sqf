@@ -40,8 +40,3 @@ RPT_colorList = [
 ];
 
 [] call compileFinal preprocessFileLineNumbers "addons\RPT\RPT_vip_textures.sqf";
-
-if ( hasInterface ) then {
-	waitUntil {!(isNull (findDisplay 46))};
-	systemChat "-------- Paint Shop Initialized --------";
-};
