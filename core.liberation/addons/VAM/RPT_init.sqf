@@ -2,7 +2,7 @@
 // by pSiKO
 
 RPT_color = "#(rgb,1,1,1)color";
-RPT_texDir = "addons\RPT\textures\";
+RPT_texDir = "addons\VAM\textures\";
 
 RPT_colorList = [
 	["Black", RPT_color + "(0.01,0.01,0.01,1)"], // #(argb,8,8,3)color(0.1,0.1,0.1,0.1)
@@ -39,4 +39,4 @@ RPT_colorList = [
 	["Woodland Tiger", RPT_texDir + "woodtiger.paa"]
 ];
 
-[] call compileFinal preprocessFileLineNumbers "addons\RPT\RPT_vip_textures.sqf";
+[] call compileFinal preprocessFileLineNumbers "addons\VAM\RPT_vip_textures.sqf";
