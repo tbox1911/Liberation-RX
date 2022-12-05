@@ -302,26 +302,26 @@
 			<Portuguese>-- DESCARREGAR</Portuguese>
 		</Key>
 		<Key ID="STR_BOX_LOADED">
-			<Original>Ammo box successfully loaded on the transport vehicle.</Original>
-			<French>La caisse de munitions a été chargée dans le véhicule de transport.</French>
-			<German>Munitionskiste erfolgreich auf das Transportfahrzeug aufgeladen.</German>
-			<Spanish>Caja de munición cargada correctamente en el vehículo de transporte</Spanish>
+			<Original>%1 successfully loaded on the transport vehicle.</Original>
+			<French>%1 a été chargée dans le véhicule de transport.</French>
+			<German>%1 erfolgreich auf das Transportfahrzeug aufgeladen.</German>
+			<Spanish>%1 cargada correctamente en el vehículo de transporte</Spanish>
 			<Russian>Ящик с боеприпасами загружен в транспортное средство</Russian>
 			<Chinesesimp>弹药箱成功装上运输车辆。</Chinesesimp>
 			<Chinese>彈藥箱成功裝上運輸車輛。</Chinese>
 			<Japanese>弾薬箱は輸送車両に積み込まれました。</Japanese>
-			<Portuguese>Caixa de munições carregada com sucesso no veículo de transporte.</Portuguese>			
+			<Portuguese>%1 carregada com sucesso no veículo de transporte.</Portuguese>			
 		</Key>
 		<Key ID="STR_BOX_UNLOADED">
-			<Original>Ammo box successfully unloaded from the transport vehicle.</Original>
-			<French>La caisse de munitions a été déchargée du véhicule de transport.</French>
-			<German>Munitionskiste erfolgreich vom Transportfahrzeug abgeladen.</German>
-			<Spanish>Caja de munición descargada correctamente del vehículo de transporte</Spanish>
+			<Original>%1 successfully unloaded from the transport vehicle.</Original>
+			<French>%1 a été déchargée du véhicule de transport.</French>
+			<German>%1 erfolgreich vom Transportfahrzeug abgeladen.</German>
+			<Spanish>%1 descargada correctamente del vehículo de transporte</Spanish>
 			<Russian>Ящик с боеприпасами выгружен из транспортного средства</Russian>
 			<Chinesesimp>弹药箱成功从运输车辆上卸下。</Chinesesimp>
 			<Chinese>彈藥箱成功從運輸車輛上卸下。</Chinese>
 			<Japanese>弾薬箱は輸送車両から積み下ろされました。</Japanese>
-			<Portuguese>Caixa de munições descarregada com sucesso do veículo de transporte.</Portuguese>
+			<Portuguese>%1 descarregada com sucesso do veículo de transporte.</Portuguese>
 		</Key>
 		<Key ID="STR_BOX_CANTLOAD">
 			<Original>There is no nearby vehicle capable of carrying the ammo box.</Original>
