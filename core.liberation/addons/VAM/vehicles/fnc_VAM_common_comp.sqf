@@ -8,8 +8,6 @@ if (!(isNull _VAM_display)) then {
     _list_selection = lbSelection _list_comp select 0;
 };
 
-diag_log _list_selection;
-
 private _comp_array_total = [];
 if (_list_selection >= 0) then {
 	private _comp_array = current_comp;
@@ -26,13 +24,11 @@ if (_list_selection >= 0) then {
 	_comp_array_total = comp_class_names;
 };
 
-//diag_log format ["DBG: %1", _comp_array_total];
-
 private _vehicle = VAM_targetvehicle;
 [_vehicle,nil,_comp_array_total,nil] call BIS_fnc_initVehicle;
 
 _vehicle setVariable ["GRLIB_vehicle_composant", _comp_array_total, true];
 
-if (_list_selection > 0) then {
+if (_list_selection >= 0) then {
 	[] spawn fnc_VAM_common_comp_check;
 };
