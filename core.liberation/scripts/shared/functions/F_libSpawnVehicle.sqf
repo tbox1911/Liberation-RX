@@ -86,7 +86,7 @@ if ( !_civilian ) then {
 	if (count opfor_texture_overide > 0) then {
 		_texture_name = selectRandom opfor_texture_overide;
 		_texture = [ RPT_colorList, { _x select 0 == _texture_name } ] call BIS_fnc_conditionalSelect select 0 select 1;
-		[_vehicle, _texture, _texture_name,[]] call RPT_fnc_TextureVehicle;
+		[_vehicle, _texture, _texture_name] call RPT_fnc_TextureVehicle;
 	};
 
 	[_vehicle, _vehcrew] spawn {

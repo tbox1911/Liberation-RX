@@ -48,7 +48,7 @@ if(!isNull (findDisplay 2300)) then {
 			_texture = lbData[231, _color];
 
 			if (_texture == "" ) then {_texture = [_name]};
-			[_vehicle, _texture, _name, []] call RPT_fnc_TextureVehicle;
+			[_vehicle, _texture, _name] call RPT_fnc_TextureVehicle;
 			ctrlSetText [230, format ["%1 - (%2)", _text, _name]];
 			paint_veh = 0;
 			sleep 0.5;
