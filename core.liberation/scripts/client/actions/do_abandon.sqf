@@ -9,6 +9,7 @@ _texture = (configOf _vehicle >> "TextureSources") call Bis_fnc_getCfgSubClasses
 if (!isNil "_texture") then {
     [_vehicle, _texture, ""] call RPT_fnc_TextureVehicle;
 };
+[_vehicle] call RPT_fnc_CompoVehicle;
 
 _text = getText (configOf _vehicle >> "displayName");
 hintSilent format [localize "STR_DO_ABANDON", _text];

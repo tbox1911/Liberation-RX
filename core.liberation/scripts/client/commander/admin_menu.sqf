@@ -163,7 +163,7 @@ while { alive player && dialog } do {
 		hint _msg;
 		systemchat _msg;
 		buildtype = 9;
-		build_unit = [_veh_class,[],1,[],[]];
+		build_unit = [_veh_class,[],1,[],[],[]];
 		dobuild = 1;
 		last_build = (lbCurSel _build_combo);
 		closeDialog 0;

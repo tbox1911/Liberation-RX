@@ -7,4 +7,3 @@ camo_display_names = [_name];
 VAM_targetvehicle = _vehicle;
 
 [] call fnc_VAM_common_camo;
-//[] call fnc_VAM_common_comp;

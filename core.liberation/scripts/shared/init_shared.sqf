@@ -44,6 +44,7 @@ remote_call_tunnel_success = compileFinal preprocessFileLineNumbers "scripts\cli
 // Vehicle Color
 [] execVM "addons\RPT\RPT_init.sqf";
 RPT_fnc_TextureVehicle = compileFinal preprocessFileLineNumbers "addons\VAM\fn_textureVehicle.sqf";
+RPT_fnc_CompoVehicle = compileFinal preprocessFileLineNumbers "addons\VAM\fn_compVehicle.sqf";
 fnc_VAM_common_camo = compileFinal preprocessFileLineNumbers "addons\VAM\vehicles\fnc_VAM_common_camo.sqf";
 fnc_VAM_common_comp = compileFinal preprocessFileLineNumbers "addons\VAM\vehicles\fnc_VAM_common_comp.sqf";
 

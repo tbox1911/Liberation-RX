@@ -1,16 +1,18 @@
-private [ "_maxdist", "_truepos", "_built_object_remote", "_unit", "_pos", "_grp", "_classname", "_idx", "_unitrank", "_posfob", "_ghost_spot", "_vehicle", "_dist", "_actualdir", "_near_objects", "_near_objects_25", "_debug_colisions"];
+private [  "_built_object_remote", "_unit", "_pos", "_grp", "_classname", "_idx", "_unitrank", "_posfob", "_ghost_spot", "_vehicle", "_dist", "_actualdir", "_near_objects", "_near_objects_25"];
 
 build_confirmed = 0;
-_maxdist = GRLIB_fob_range;
-_truepos = [];
-_debug_colisions = false;
-_price = 0;
-_price_fuel = 0;
-_color = [];
-_ammo = 0;
-_lst_a3 = [];
-_lst_r3f = [];
 build_unit = [];
+
+private _maxdist = GRLIB_fob_range;
+private _truepos = [];
+private _debug_colisions = false;
+private _price = 0;
+private _price_fuel = 0;
+private _color = [];
+private _compo = [];
+private _ammo = 0;
+private _lst_a3 = [];
+private _lst_r3f = [];
 
 GRLIB_preview_spheres = [];
 while { count GRLIB_preview_spheres < 36 } do {
@@ -57,6 +59,7 @@ while { true } do {
 		_ammo = build_unit select 2;
 		_lst_a3 = build_unit select 3;
 		_lst_r3f = build_unit select 4;
+		_compo = build_unit select 5;
 	};
 
 	if ( buildtype in [1,2,3,4,5,6,7,8] ) then {
@@ -70,6 +73,7 @@ while { true } do {
 		_price = (_build_list select buildindex) select 2;
 		_price_fuel = (_build_list select buildindex) select 3;
 		_color = [];
+		_compo = [];
 		_ammo = 0;
 	};
 
@@ -385,6 +389,11 @@ while { true } do {
 					// Color
 					if ( count _color > 0 ) then {
 						[_vehicle, _color, "N/A"] call RPT_fnc_TextureVehicle;
+					};
+
+					// Composant
+					if ( count _compo > 0 ) then {
+						[_vehicle, _compo] call RPT_fnc_CompoVehicle;
 					};
 
 					// Remaining Ammo

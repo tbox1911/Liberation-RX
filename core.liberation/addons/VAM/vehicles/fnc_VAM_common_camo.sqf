@@ -12,10 +12,6 @@ private _selected_camo_class_name = camo_class_names select _list_selection;
 private _selected_camo_display_names = camo_display_names select _list_selection;
 private _vehicle = VAM_targetvehicle;
 
-//diag_log format ["DBG: %1 %2 %3", typeof _vehicle, _selected_camo_class_name, _selected_camo_display_names];
-
-[_vehicle,[_selected_camo_class_name,1],nil,nil] call BIS_fnc_initVehicle;
-
 if ( ["#(rgb", _selected_camo_class_name] call F_startsWith || ["addons\RPT\textures\", _selected_camo_class_name] call F_startsWith ) then {
     // Apply texture to all appropriate parts
     private _selections = switch (true) do {
@@ -63,6 +59,8 @@ if ( ["#(rgb", _selected_camo_class_name] call F_startsWith || ["addons\RPT\text
     };
 
     { _vehicle setObjectTextureGlobal [_x, _selected_camo_class_name] } forEach _selections;
+} else {
+    [_vehicle,[_selected_camo_class_name,1],nil,nil] call BIS_fnc_initVehicle;
 };
 
 _vehicle setVariable ["GRLIB_vehicle_color", _selected_camo_class_name, true];
