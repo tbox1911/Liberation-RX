@@ -31,7 +31,7 @@ detach _smoke1;
 detach _smoke2;
 sleep 4;
 
-if ((vectorUp _objet) select 2 < 0.70 || (getPosATL _objet) select 2 < 0) then {
+if ((vectorUp _objet) select 2 < 0.70) then {
 	_objet setpos [(getPosATL _objet) select 0,(getPosATL _objet) select 1, 0.5];
 	_objet setVectorUp surfaceNormal position _objet;
 	sleep 3;
