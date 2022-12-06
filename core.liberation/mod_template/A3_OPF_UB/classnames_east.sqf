@@ -144,7 +144,7 @@ opfor_troup_transports_heli = [
 opfor_air = [
 	"O_Heli_Light_02_dynamicLoadout_F",
 	"O_Heli_Light_02_v2_F",	
-	"O_Heli_Attack_02_black_F",
+	"O_Heli_Attack_02_dynamicLoadout_black_F",
 	"O_Heli_Attack_02_dynamicLoadout_F",
 	"O_T_VTOL_02_vehicle_F",
 	"O_Plane_CAS_02_F",
@@ -192,7 +192,7 @@ opfor_recyclable = [
 	["O_MBT_04_cannon_F",15,round (2300 / GRLIB_recycling_percentage),15],
 	["O_MBT_04_command_F",15,round (2300 / GRLIB_recycling_percentage),15],
 	["O_Heli_Attack_02_F",10,round (1700 / GRLIB_recycling_percentage),20],
-	["O_Heli_Attack_02_black_F",10,round (1700 / GRLIB_recycling_percentage),20],
+	["O_Heli_Attack_02_dynamicLoadout_black_F",10,round (1700 / GRLIB_recycling_percentage),20],
 	["O_Heli_Attack_02_dynamicLoadout_F",10,round (1700 / GRLIB_recycling_percentage),20],
 	["O_Heli_Light_02_F",10,round (1600 / GRLIB_recycling_percentage),20],
 	["O_Heli_Light_02_dynamicLoadout_F",10,round (1600 / GRLIB_recycling_percentage),20],
