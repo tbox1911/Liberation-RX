@@ -14,7 +14,7 @@ if ( _sector == attack_in_progress select 0 ) then {
 };
 
 {
-	if ((markerPos _x) distance2D (markerPos _sector) < GRLIB_capture_size && _x find "Town Invasion" > 0) exitWith { _defenders_cooldown = true };
+	if ((markerPos _x) distance2D (markerPos _sector) < GRLIB_capture_size && _x find (localize "STR_INVASION") > 0) exitWith { _defenders_cooldown = true };
 } forEach allMapMarkers;
 
 private _grp = grpNull;
