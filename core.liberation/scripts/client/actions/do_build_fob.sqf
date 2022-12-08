@@ -1,5 +1,5 @@
 _box = _this select 3;
-if (isNull _box) exitWith {};
+if (isNil "_box") exitWith {};
 
 private [ "_minfobdist", "_minsectordist", "_distfob", "_clearedtobuildfob", "_distsector", "_clearedtobuildsector", "_idx" ];
 

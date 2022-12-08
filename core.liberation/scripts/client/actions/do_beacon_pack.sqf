@@ -1,5 +1,5 @@
 _tent = _this select 3;
-if (isNull _tent) exitWith {};
+if (isNil "_tent") exitWith {};
 
 //only one at time
 if ((_tent getVariable ["tent_in_use", false])) exitWith {};
