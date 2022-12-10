@@ -171,7 +171,7 @@ PAR_Player_Init = {
 	player setCustomAimCoef 0.35;
 	player setUnitRecoilCoefficient 0.6;
 	player setCaptive false;
-	player setMass 10;
+
 	PAR_isDragging = false;
 	[player] call AR_Add_Player_Actions;
 	player addAction ["<t color='#FF8000'>" + localize "STR_EXTENDED_OPTIONS" + "</t>","GREUH\scripts\GREUH_dialog.sqf","",-997,false,true];

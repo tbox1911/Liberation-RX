@@ -98,24 +98,23 @@ while { true } do {
 			_grp = group player;
 			_unit = _grp createUnit [_classname, _pos, [], 5, "NONE"];
 			[_unit] joinSilent _grp;
-			_unit setMass 10;
 			_unit setUnitRank "PRIVATE";
 			_unit setSkill 0.6;
-			_unit setVariable ["PAR_Grp_ID", format["Bros_%1",PAR_Grp_ID], true];
+			_unit setVariable ["PAR_Grp_ID", format["Bros_%1", PAR_Grp_ID], true];
 			_unit enableIRLasers true;
 			_unit enableGunLights "Auto";
+
 			if (GRLIB_opfor_english) then {
 				//[_unit, _spk] remoteExec ["setSpeaker", 0];
 				_unit setSpeaker (format ["Male0%1ENG",selectRandom [2,3,4,5,6,7,8,9]]);
 			};
+
 			[_unit, configOf _unit] call BIS_fnc_loadInventory;
 			if (_classname in units_loadout_overide) then {
 				_loadouts_folder = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, toLower _classname];
 				[_unit] call compileFinal preprocessFileLineNUmbers _loadouts_folder;
 			};
-			// if (!(GRLIB_OPTRE_enabled && "Diver" in (_unit call BIS_fnc_objectType))) then {
-			// 	_unit forceAddUniform (uniform player);
-			// };
+
 			if (GRLIB_ACE_enabled) then { 
 				_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 			};
