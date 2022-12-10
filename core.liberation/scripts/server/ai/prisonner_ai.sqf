@@ -1,5 +1,5 @@
 params [ "_unit", ["_friendly", false], ["_canmove", false] ];
-
+if (_unit skill "courage" == 1) exitWith {};
 sleep 3;
 if (!alive _unit) exitWith {};
 
