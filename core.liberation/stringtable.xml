@@ -4895,16 +4895,16 @@
 			<Portuguese>Você pode construir uma unidade aérea&lt;br/&gt;Você pode iniciar missões secundárias especiais no QG.&lt;br/&gt;Você tem uma IA extra.</Portuguese>
 		</Key>
 		<Key ID="STR_RANK_LVL6">
-			<Original>You can build and Repack FOB.&lt;br/&gt;You have acces to Special Heavy Vehicles.&lt;br/&gt;You can build a Support Team.</Original>
-			<French>Vous pouvez replier les FOB.&lt;br/&gt;Vous avez accès aux Vehicules Speciaux.&lt;br/&gt;Vous pouvez construire une Equipe de soutien.</French>
+			<Original>You can build and Repack FOB.&lt;br/&gt;You have acces to Special Heavy Vehicles.&lt;br/&gt;You can build a Support Team.&lt;br/&gt;You have the Medical ability.</Original>
+			<French>Vous pouvez replier les FOB.&lt;br/&gt;Vous avez accès aux Vehicules Speciaux.&lt;br/&gt;Vous pouvez construire une Equipe de soutien.&lt;br/&gt;Vous avez la compétence Médecin.</French>
 			<Chinesesimp>您可以构建和重新打包 FOB。&lt;br/&gt;您可以使用特种重型车辆。&lt;br/&gt;您可以建立一支支援小队。</Chinesesimp>
 			<Chinese>您可以構建和重新打包 FOB。 &lt;br/&gt;您可以使用特種重型車輛。 &lt;br/&gt;您可以建立一支支援小隊。</Chinese>
 			<Japanese>あなたはFOBをビルド・畳むことが出来ます。&lt;br/&gt;あなたは特殊な乗り物にアクセスすることが出来ます。&lt;br/&gt;あなたはサポートチームをビルド出来ます。</Japanese>
 			<Portuguese>Você pode construir e Reembalar FOB.&lt;br/&gt;Você tem acesso a Veículos Pesados ​​Especiais.&lt;br/&gt;Você pode construir uma Equipe de Suporte.</Portuguese>
 		</Key>
 		<Key ID="STR_RANK_LVL7">
-			<Original>You have more ManPower.&lt;br/&gt;The Trader's shop is cheaper.&lt;br/&gt;The Air Support is cheaper.</Original>
-			<French>Vous avez plus de ManPower.&lt;br/&gt;Le Trader's shop est moins cher.&lt;br/&gt;L'Air Support est moins cher.</French>
+			<Original>You have more ManPower.&lt;br/&gt;The Trader's shop is cheaper.&lt;br/&gt;The Air Support is cheaper.&lt;br/&gt;You have the Engineer ability.</Original>
+			<French>Vous avez plus de ManPower.&lt;br/&gt;Le Trader's shop est moins cher.&lt;br/&gt;L'Air Support est moins cher.&lt;br/&gt;Vous avez la compétence Ingénieur.</French>
 			<Chinesesimp>你有更多的人力资源。&lt;br/&gt;贸易技能提高，商店价格更便宜。&lt;br/&gt;空中支援的价格更便宜。</Chinesesimp>
 			<Chinese>你有更多的人力資源。 &lt;br/&gt;貿易技能提高，商店價格更便宜。 &lt;br/&gt;空中支援的價格更便宜。</Chinese>
 			<Portuguese>Você tem mais Mão de Obra.&lt;br/&gt;A Loja do Comerciante é mais barata.&lt;br/&gt;O Apoio Aéreo é mais barato.</Portuguese>
