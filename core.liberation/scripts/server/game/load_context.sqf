@@ -21,32 +21,41 @@ if (count _context >= 1) then {
             } else {
                 [localize "$STR_SQUAD_WAIT"] remoteExec ["hintSilent", owner _player];
                 if ([_player, "FOB", GRLIB_fob_range] call F_check_near && isTouchingGround (vehicle _player)) then {
+                    private ["_grp", "_pos", "_uid", "_unit"];
+                    _grp = createGroup [GRLIB_side_friendly, true];
                     {
                         _class = _x select 0;
                         _rank = _x select 1;
                         _loadout = _x select 2;
 
-                        private _pos = getPosATL _player;
-                        private _grp = group _player;
-                        private _uid = getPlayerUID _player;
-                        private _unit = _grp createUnit [_class, _pos, [], 10, "NONE"];
-                        sleep 0.1;
-                        [_unit] joinSilent _grp;
+                        _pos = getPosATL _player;
+                        _uid = getPlayerUID _player;
+                        _unit = _grp createUnit [_class, _pos, [], 10, "NONE"];
+                        sleep 0.2;
                         _unit setVariable ["PAR_Grp_ID", format["Bros_%1", _uid], true];
                         _unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-                        _unit setMass 10;
+                        _unit setUnitLoadout _loadout;
                         _unit setUnitRank _rank;
                         _unit setSkill (0.6 + (GRLIB_rank_level find _rank) * 0.05);
-                        _unit enableIRLasers true;
-                        _unit enableGunLights "Auto";
-                        _unit setUnitLoadout _loadout;
-                        
-                        private _msg = format ["Adds %1 (%2) to your squad.", name _unit, _rank];
-                        [gamelogic, _msg] remoteExec ["globalChat", owner _player];  
-                        sleep 0.3;
                     } foreach (_context select 2);
 
-                    (group _player) selectLeader _player;
+                    if (count units _grp > 0) then {
+                        [
+                            [ _grp ],
+                            {
+                                params ["_grp"];
+                                {
+                                    _x enableIRLasers true;
+                                    _x enableGunLights "Auto";
+                                    [_x] joinSilent (group player);
+                                    gamelogic globalChat format ["Adds %1 (%2) to your squad.", name _x, rank _x];
+                                    sleep 0.5;
+                                } forEach (units _grp);
+                                (group player) selectLeader player;
+                            }
+                        ] remoteExec ["bis_fnc_call", owner _player];
+                    };
+
                     _wait = false;
                     diag_log format ["--- LRX Loading %1 unit(s) for %2 Squad.", count (_context select 2), name _player];
                 };
