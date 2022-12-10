@@ -5,7 +5,7 @@ if (isNil "_attack_destination" ) exitWith {};
 
 if ( isNil "GRLIB_last_incoming_notif_time" ) then { GRLIB_last_incoming_notif_time = -9999 };
 
-if ( time > GRLIB_last_incoming_notif_time + 60 ) then {
+if ( time > GRLIB_last_incoming_notif_time + (15 * 60) ) then {
 
 	GRLIB_last_incoming_notif_time = time;
 
