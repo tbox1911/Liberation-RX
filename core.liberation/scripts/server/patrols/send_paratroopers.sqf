@@ -18,7 +18,8 @@ if ((typeOf _newvehicle) isKindOf "CUP_MH6_TRANSPORT") then {_cargo_seat_free = 
 diag_log format ["Spawn (%1) ParaTroopers on sector %2 at %3", _cargo_seat_free, _spawnsector, time];
 
 private _unitclass = [];
-while { (count _unitclass) < _cargo_seat_free } do { _unitclass pushback opfor_paratrooper };
+private _para_squad = [opfor_paratrooper,opfor_paratrooper,opfor_paratrooper,opfor_paratrooper,opfor_paratrooper,opfor_paratrooper,opfor_paratrooper,opfor_rpg];
+while { (count _unitclass) < _cargo_seat_free } do { _unitclass pushback (selectRandom _para_squad) };
 private _para_group = [markerpos _spawnsector, _unitclass, GRLIB_side_enemy, "para"] call F_libSpawnUnits;
 {
 	_x assignAsCargoIndex [_newvehicle, _forEachIndex + 1];
@@ -57,10 +58,24 @@ private _para_group = [markerpos _spawnsector, _unitclass, GRLIB_side_enemy, "pa
 	_newvehicle flyInHeight 200;
 	sleep 2;
 	{
+		_x allowDamage false;
 		unassignVehicle _x;
 		moveout _x;
+		if (_x getVariable ["GRLIB_para_backpack", ""] != "") then {
+			[_x] spawn {
+				params ["_unit"];
+				waituntil {sleep 0.2; !(alive _unit) || (isTouchingGround _unit)};
+				if (!(alive _unit)) exitWith {};
+				_unit addBackpack (_unit getVariable ["GRLIB_para_backpack", ""]);
+				clearAllItemsFromBackpack _unit;
+				{_unit addItemToBackpack _x} foreach (_unit getVariable ["GRLIB_para_backpack_contents", []]);
+			};
+		};
 		sleep 0.5;
 	} foreach (units _para_group);
+
+	sleep 3;
+	{ _x allowDamage true } foreach (units _para_group);
 
 	while {(count (waypoints _pilot_group)) != 0} do {deleteWaypoint ((waypoints _pilot_group) select 0);};
 	while {(count (waypoints _para_group)) != 0} do {deleteWaypoint ((waypoints _para_group) select 0);};
