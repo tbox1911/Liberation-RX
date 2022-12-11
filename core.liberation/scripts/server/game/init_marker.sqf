@@ -56,9 +56,10 @@ private ["_man", "_manPos"];
 GRLIB_SELL_Group = createGroup [GRLIB_side_civilian, true];
 {
     _manPos = _x;
-    _man = GRLIB_SELL_Group createUnit [SELL_Man, _manPos, [], 0, "NONE"];
+    _man = GRLIB_SELL_Group createUnit [SELL_Man, _manPos, [], 5, "NONE"];
     _man allowDamage false;
     _man setPosATL (_manPos vectorAdd [0, 0, 0.1]);
+    doStop _man;
     [_man, "LHD_krajPaluby"] spawn F_startAnimMP;
     sleep 0.1;
 } forEach GRLIB_Marker_SRV;
@@ -93,6 +94,7 @@ GRLIB_SHOP_Group = createGroup [GRLIB_side_civilian, true];
     _man disableCollisionWith _desk;
     _man setDir _deskDir;
     _man setPosATL _manPos;
+    doStop _man;
     [_man, "AidlPercMstpSnonWnonDnon_AI"] spawn F_startAnimMP;
     //_man enableSimulationGlobal false; // disabled to keep animation
     sleep 0.1;
