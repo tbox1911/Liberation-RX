@@ -1,6 +1,10 @@
 // LRX Diag Tools - pSiKO
-// Dump process  : [0] execVM "scripts\shared\diag_debug.sqf";
-// Add Save dump : [1] execVM "scripts\shared\diag_debug.sqf";
+// [0] execVM "scripts\shared\diag_debug.sqf";
+//
+// [0] : Dump process 
+// [1] : Dump GameSave dump
+// [2] : Dump Profile Variables
+
 params [["_save", 0]];
 diag_log "--------------------- LRX Diag -----------------------";
 diag_log "LRX version:";
@@ -35,5 +39,16 @@ if (_save == 1) then {
       diag_log format ["player AI stuff: %1", _x];
     } forEach (_x select 2);
   } forEach GRLIB_player_context;
+};
+diag_log "-----------------------------------------------------";
+
+if (_save == 2) then {
+  diag_log "--- LRX Profile Variables ---------------------------";
+  {
+    diag_log  format ["  %1", _x];
+
+  } foreach (allVariables profileNamespace);
+
+  diag_log "-----------------------------------------------------";
 };
 diag_log "------------------- LRX Diag End ----------------------";
