@@ -23,11 +23,7 @@ while { dialog && alive player && dojump == 0 } do {
 	"spawn_marker" setMarkerPosLocal halo_position;
 	sleep 0.1;
 };
-
-if ( dialog ) then {
-	closeDialog 0;
-	sleep 0.1;
-};
+closeDialog 0;
 
 "spawn_marker" setMarkerPosLocal markers_reset;
 "spawn_marker" setMarkerTextLocal "";
@@ -36,26 +32,28 @@ if ( dialog ) then {
 
 if ( dojump > 0 ) then {
 	GRLIB_last_halo_jump = time;
-
 	halojumping = true;
 	cutRsc ["fasttravel", "PLAIN", 1];
 	playSound "parasound";
 	[player, "hide"] remoteExec ["dog_action_remote_call", 2];
 	sleep 2;
-	halo_position = [ halo_position, floor(random 250), floor(random 360) ] call BIS_fnc_relPos;
-	halo_position = [ halo_position select 0, halo_position select 1, GRLIB_halo_altitude + floor(random 200) ];
-	_player_pos = getPos player;
-	_UnitList = units group player;
+
+	_player_pos = getPosATL player;
+	_units = units group player;
 	_my_squad = player getVariable ["my_squad", nil];
 	if (!isNil "_my_squad") then {
-		{ _UnitList pushBack _x } forEach units _my_squad;
+		{ _units pushBack _x } forEach units _my_squad;
 	};
-	
-	[player,  halo_position] spawn paraDrop;
+
+	halo_position = [ halo_position, floor(random 250), floor(random 360) ] call BIS_fnc_relPos;
+	halo_position = [ halo_position select 0, halo_position select 1, GRLIB_halo_altitude ];
+
+	[player, halo_position] spawn paraDrop;
+	sleep 1;
 	{
 		if ( round (_x distance2D _player_pos) <= 30 && lifestate _x != 'INCAPACITATED' && vehicle _x == _x && !(isPlayer _x) ) then {
-			[_x,  halo_position] spawn paraDrop;
+			[_x, halo_position] spawn paraDrop;
 			sleep (1 + floor(random 3));
 		};
-	} forEach _UnitList;
+	} forEach _units;
 };

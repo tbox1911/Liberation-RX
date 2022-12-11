@@ -2,8 +2,8 @@ params [ "_targetpos" ];
 
 private _spawnsector = ( [ sectors_airspawn , [ _targetpos ] , { (markerpos _x) distance2D _input0 }, "ASCEND"] call BIS_fnc_sortBy ) select 0;
 
-private _pilot_group = createGroup [GRLIB_side_enemy, true];
 private _newvehicle = [markerpos _spawnsector, selectRandom opfor_troup_transports_heli] call F_libSpawnVehicle;
+private _pilot_group = createGroup [GRLIB_side_enemy, true];
 (crew _newvehicle) joinSilent _pilot_group;
 
 _newvehicle setVariable ["GRLIB_counter_TTL", round(time + 3600)];
@@ -64,7 +64,7 @@ private _para_group = [markerpos _spawnsector, _unitclass, GRLIB_side_enemy, "pa
 		if (_x getVariable ["GRLIB_para_backpack", ""] != "") then {
 			[_x] spawn {
 				params ["_unit"];
-				waituntil {sleep 0.2; !(alive _unit) || (isTouchingGround _unit)};
+				waituntil {sleep 1; !(alive _unit) || (isTouchingGround _unit)};
 				if (!(alive _unit)) exitWith {};
 				_unit addBackpack (_unit getVariable ["GRLIB_para_backpack", ""]);
 				clearAllItemsFromBackpack _unit;

@@ -11,7 +11,7 @@ diag_log format [ "Spawn vehicle %1 at %2", _classname , time ];
 private _vehicle = objNull;
 private _spawnpos = [];
 private _vehcrew = [];
-private _airveh_alt = 300;
+private _airveh_alt = 350;
 private _radius = GRLIB_capture_size;
 private _max_try = 10;
 
@@ -28,7 +28,7 @@ if ( _precise_position ) then {
 if ( count _spawnpos == 0 ) exitWith { diag_log format ["--- LRX Error: No place to build vehicle %1 at position %2", _classname, _sectorpos]; objNull };
 
 if ( _classname isKindOf "Air" ) then {
-	if ( _civilian ) then { _airveh_alt = 250 };
+	if ( _civilian ) then { _airveh_alt = 200 };
 	_spawnpos set [2, _airveh_alt];
 	_vehicle = createVehicle [_classname, _spawnpos, [], 0, "FLY"];
 } else {
