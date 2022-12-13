@@ -413,4 +413,10 @@ class Params
 		texts[] = { $STR_NO,$STR_YES };
 		default = 0;
 	};
+	class Space99 {
+		title = "";
+		values[] = { "" };
+		texts[] = { "" };
+		default = "";
+	};
 };
