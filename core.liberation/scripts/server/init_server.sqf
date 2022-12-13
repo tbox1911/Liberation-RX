@@ -119,10 +119,17 @@ if (abort_loading) exitWith {
 global_locked_group = [];
 publicVariable "global_locked_group";
 
-resistance setFriend [GRLIB_side_friendly, 1];
-GRLIB_side_friendly setFriend [resistance, 1];
-resistance setFriend [GRLIB_side_enemy, 0];
-GRLIB_side_enemy setFriend [resistance, 0];
+if (GRLIB_side_enemy == INDEPENDENT) then {
+	resistance setFriend [GRLIB_side_enemy, 1];
+	GRLIB_side_enemy setFriend [resistance, 1];
+	resistance setFriend [GRLIB_side_friendly, 0];
+	GRLIB_side_friendly setFriend [resistance, 0];
+} else {
+	resistance setFriend [GRLIB_side_friendly, 1];
+	GRLIB_side_friendly setFriend [resistance, 1];
+	resistance setFriend [GRLIB_side_enemy, 0];
+	GRLIB_side_enemy setFriend [resistance, 0];
+};
 
 addMissionEventHandler ["MPEnded", { diag_log "--- LRX Mission End!" }];
 addMissionEventHandler ['HandleDisconnect', {
