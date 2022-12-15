@@ -55,7 +55,7 @@ while { true } do {
 			};
 
 			_score = _nextplayer getVariable ["GREUH_score_count", 0];
-			_nextplayer addScore (-(score _nextplayer) + _score);
+			_nextplayer addScore (_score - score _nextplayer);
 		};
 	} foreach (AllPlayers - (entities "HeadlessClient_F"));
 	GRLIB_player_scores = _newscores;

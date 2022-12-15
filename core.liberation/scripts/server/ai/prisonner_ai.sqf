@@ -45,6 +45,7 @@ sleep 1;
 while {alive _unit} do {
 	// Captured
 	if ([_unit, "FOB", 30] call F_check_near && isTouchingGround (vehicle _unit)) exitWith {
+		sleep (2 + floor(random 4));
 		private _unit_owner = leader group _unit;
 
 		if (!isnull objectParent _unit) then {
@@ -68,6 +69,8 @@ while {alive _unit} do {
 		sleep 300;
 		deleteVehicle _unit;
 	};
+
+	sleep 3;
 
 	// Flee
 	private _is_near_blufor = count ([units GRLIB_side_friendly, { (isNil {_x getVariable "GRLIB_is_prisonner"}) && (_x distance2D _unit) < 100 }] call BIS_fnc_conditionalSelect);
@@ -114,5 +117,5 @@ while {alive _unit} do {
 		};	
 	};
 
-	sleep 5;
+	sleep 3;
 };
