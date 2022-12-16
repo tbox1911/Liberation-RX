@@ -153,8 +153,7 @@ opfor_troup_transports_heli = [
 opfor_air = [
 	"I_Plane_Fighter_03_CAS_F",
 	"I_Plane_Fighter_04_F",
-	"I_Heli_light_03_F",
-	"I_Heli_light_03_F"			
+	"I_Heli_light_03_dynamicLoadout_F"			
 ];
 
 opfor_statics = [
@@ -187,7 +186,7 @@ opfor_recyclable = [
 	["I_APC_Wheeled_03_cannon_F",15,round (400 / GRLIB_recycling_percentage),15],
 	["I_APC_tracked_03_cannon_F",15,round (500 / GRLIB_recycling_percentage),15],
 	["I_MBT_03_cannon_F",15,round (800 / GRLIB_recycling_percentage),15],
-	["I_Heli_light_03_F",10,round (700 / GRLIB_recycling_percentage),15],
+	["I_Heli_light_03_dynamicLoadout_F",10,round (150 / GRLIB_recycling_percentage),15],
 	["I_Heli_Transport_02_F",10,round (500 / GRLIB_recycling_percentage),10],
 	["I_Plane_Fighter_03_CAS_F",20,round (1000 / GRLIB_recycling_percentage),30],
 	["I_Plane_Fighter_04_F",20,round (1000 / GRLIB_recycling_percentage),30]
