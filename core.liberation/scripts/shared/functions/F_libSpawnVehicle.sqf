@@ -25,6 +25,11 @@ if ( _precise_position ) then {
 		sleep 0.5;
 	};
 };
+
+if ( count _spawnpos == 0 ) then {
+	_spawnpos = _sectorpos findEmptyPosition [0, _radius, _classname];
+};
+
 if ( count _spawnpos == 0 ) exitWith { diag_log format ["--- LRX Error: No place to build vehicle %1 at position %2", _classname, _sectorpos]; objNull };
 
 if ( _classname isKindOf "Air" ) then {
