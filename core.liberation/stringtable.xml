@@ -6051,7 +6051,10 @@
 			<Chinese>你的小隊正在下一個FOB等著你！</Chinese>
 			<Portuguese>Seu esquadrão está esperando por você\na próxima FOB!</Portuguese>
 		</Key>
+	</Package>
 
+	<!-- LRX Side Missions -->
+	<Package name="LRX_SIDE_MISSIONS">
 		<!-- mission_AirWreck.sqf  -->
 		<Key ID="STR_AIRWRECK">
 			<Original>Aircraft Wreck</Original>
@@ -6086,7 +6089,7 @@
 			<Chinese>送外賣：在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt; 與 &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; &lt;t color='#00F000'&gt;交談&lt;/t> 獲取任務信息。</Chinese>
 		</Key>
 		<Key ID="STR_FOODDELI_MESSAGE2">
-			<Original>Food Delivery has...&lt;br/&gt;&lt;t color='%1'&gt;FAILED&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;Better luck next time!</Original>
+			<Original>Food Delivery has...&lt;br/&gt;&lt;t color='%1'&gt;FAILED&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;The local Population is unhappy...</Original>
 			<Japanese>食料配達は...&lt;br/&gt;&lt;t color='%1'&gt;失敗しました&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;次回は頑張ってください！</Japanese>
 			<Chinesesimp>送外卖...&lt;br/&gt;&lt;t color='%1'&gt;失败&lt;/t&gt;！！&lt;br/&gt;&lt;br/&gt;祝你下次好运！</Chinesesimp>
 			<Chinese>送外賣...&lt;br/&gt;&lt;t color='%1'&gt;失敗&lt;/t&gt;！ ！ &lt;br/&gt;&lt;br/&gt;祝你下次好運！</Chinese>
@@ -6120,7 +6123,7 @@
 			<Chinese>運送燃料：在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt; 與 &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; &lt;t color='#00F000'&gt;交談</t&gt; 獲取任務信息。</Chinese>
 		</Key>
 		<Key ID="STR_FUELDELI_MESSAGE2">
-			<Original>Fuel Delivery has...&lt;br/&gt;&lt;t color='%1'&gt;FAILED&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;Better luck next time!</Original>
+			<Original>Fuel Delivery has...&lt;br/&gt;&lt;t color='%1'&gt;FAILED&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;The local Population is unhappy...</Original>
 			<Japanese>燃料配達は...&lt;br/&gt;&lt;t color='%1'&gt;失敗しました&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;次回は頑張ってください！</Japanese>
 			<Chinesesimp>燃料运送...&lt;br/&gt;&lt;t color='%1'&gt;失败&lt;/t&gt;！！&lt;br/&gt;&lt;br/&gt;祝你下次好运！</Chinesesimp>
 			<Chinese>燃料運送...&lt;br/&gt;&lt;t color='%1'&gt;失敗&lt;/t&gt;！ ！ &lt;br/&gt;&lt;br/&gt;祝你下次好運！</Chinese>
@@ -6130,6 +6133,47 @@
 			<Japanese>燃料配達は...&lt;br/&gt;&lt;t color='%1'&gt;成功しました&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;燃料は配達されました！ありがとうございます。</Japanese>
 			<Chinesesimp>燃料运送&lt;br/&gt;&lt;t color='%1'&gt;成功&lt;/t&gt;！！&lt;br/&gt;&lt;br/&gt;燃料已交付，干得好！</Chinesesimp>
 			<Chinese>燃料運送&lt;br/&gt;&lt;t color='%1'&gt;成功&lt;/t&gt;！ ！ &lt;br/&gt;&lt;br/&gt;燃料已交付，幹得好！</Chinese>
+		</Key>
+
+		<!-- mission_WaterDelivery.sqf -->
+		<Key ID="STR_WATERDELI">
+			<Original>Water Delivery</Original>
+			<Japanese>水の配達</Japanese>
+			<Chinesesimp>送水</Chinesesimp>
+			<Chinese>送水</Chinese>
+		</Key>
+		<Key ID="STR_WATERDELI_MESSAGE1">
+			<Original>Water Delivery at &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Talk&lt;/t&gt; to the &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; to get information.</Original>
+			<Japanese>水の配達：&lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;係の者&lt;/t&gt;と&lt;t color='#0000F0'&gt;話して&lt;/t&gt;情報を得てください。</Japanese>
+			<Chinesesimp>送水：在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;交谈&lt;/t&gt; 与 &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; 来获取任务信息。</Chinesesimp>
+			<Chinese>送水：在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;交談&lt;/t&gt; 與 &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; 來獲取任務信息。</Chinese>
+		</Key>
+		<Key ID="STR_WATERDELI_MESSAGE2">
+			<Original>Water Delivery has...&lt;br/&gt;&lt;t color='%1'&gt;FAILED&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;The local Population is unhappy...</Original>
+			<Japanese>水の配達は...&lt;br/&gt;&lt;t color='%1'&gt;失敗しました。&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;次回頑張ってください！</Japanese>
+			<Chinesesimp>送水...&lt;br/&gt;&lt;t color='%1'&gt;失败&lt;/t&gt;！&lt;br/&gt;&lt;br/&gt;下次好运！</Chinesesimp>
+			<Chinese>送水...&lt;br/&gt;&lt;t color='%1'&gt;失敗&lt;/t&gt;！ &lt;br/&gt;&lt;br/&gt;下次好運！</Chinese>
+		</Key>
+		<Key ID="STR_WATERDELI_MESSAGE3">
+			<Original>Water Delivery&lt;br/&gt;&lt;t color='%1'&gt;SUCCESS&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;The Barrels of Water have been delivered, Well done.</Original>
+			<Japanese>水の配達は&lt;br/&gt;&lt;t color='%1'&gt;成功しました。&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;水の樽は届けられました。ありがとうございます。</Japanese>
+			<Chinesesimp>送水&lt;br/&gt;&lt;t color='%1'&gt;送达&lt;/t&gt;！&lt;br/&gt;&lt;br/&gt;水已经交付，做得很好！</Chinesesimp>
+			<Chinese>送水&lt;br/&gt;&lt;t color='%1'&gt;送達&lt;/t&gt;！ &lt;br/&gt;&lt;br/&gt;水已經交付，做得很好！</Chinese>
+		</Key>
+
+		<!-- mission_AmmoDelivery.sqf -->
+		<Key ID="STR_AMMODELI">
+			<Original>Ammo Delivery</Original>
+
+		</Key>
+		<Key ID="STR_AMMODELI_MESSAGE1">
+			<Original>Ammo Delivery at &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Talk&lt;/t&gt; to the &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; to get information.</Original>
+		</Key>
+		<Key ID="STR_AMMODELI_MESSAGE2">
+			<Original>Ammo Delivery has...&lt;br/&gt;&lt;t color='%1'&gt;FAILED&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;The local Population is unhappy...</Original>
+		</Key>
+		<Key ID="STR_AMMODELI_MESSAGE3">
+			<Original>Ammo Delivery&lt;br/&gt;&lt;t color='%1'&gt;SUCCESS&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;The boxes of Ammo have been delivered, Well done.</Original>
 		</Key>
 
 		<!-- mission_HostileHelicopter.sqf -->
@@ -6186,7 +6230,7 @@
 			<Chinese>敵軍前哨</Chinese>
 		</Key>
 		<Key ID="STR_OUTPOST_MESSAGE1">
-			<Original>An armed &lt;t color='%1'&gt;outpost&lt;/t&gt; containing weapon crates has been spotted near the marker, go capture it!</Original>
+			<Original>An armed &lt;t color='%1'&gt;Outpost&lt;/t&gt; containing weapon crates has been spotted near the marker, go capture it!</Original>
 			<Japanese>武装した &lt;t color='%1'&gt;敵の前哨基地&lt;/t&gt; がマップのマーカー近くで発見されました、行って物資を略奪してください！</Japanese>
 			<Chinesesimp>在标记附近发现了一个装有武器箱的&lt;t color='%1'&gt;武装前哨站&lt;/t&gt;，去夺取它吧！</Chinesesimp>
 			<Chinese>在標記附近發現了一個裝有武器箱的&lt;t color='%1'&gt;武裝前哨站&lt;/t&gt;，去奪取它吧！</Chinese>
@@ -6263,31 +6307,16 @@
 			<Chinesesimp>干得漂亮！&lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;又是个安全的地方了！&lt;br/&gt;他们的武器现在是你的了！</Chinesesimp>
 			<Chinese>幹得漂亮！ &lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;又是個安全的地方了！ &lt;br/&gt;他們的武器現在是你的了！</Chinese>
 		</Key>
-			
-		<!-- mission_WaterDelivery.sqf -->
-		<Key ID="STR_WATERDELI">
-			<Original>Water Delivery</Original>
-			<Japanese>水の配達</Japanese>
-			<Chinesesimp>送水</Chinesesimp>
-			<Chinese>送水</Chinese>
+
+		<!-- mission_TownInsurgency.sqf -->
+		<Key ID="STR_INSURGENCY">
+			<Original>Town Insurgency</Original>
 		</Key>
-		<Key ID="STR_WATERDELI_MESSAGE1">
-			<Original>Water Delivery at &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Talk&lt;/t&gt; to the &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; to get information.</Original>
-			<Japanese>水の配達：&lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;係の者&lt;/t&gt;と&lt;t color='#0000F0'&gt;話して&lt;/t&gt;情報を得てください。</Japanese>
-			<Chinesesimp>送水：在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;交谈&lt;/t&gt; 与 &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; 来获取任务信息。</Chinesesimp>
-			<Chinese>送水：在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;交談&lt;/t&gt; 與 &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; 來獲取任務信息。</Chinese>
+		<Key ID="STR_INSURGENCY_MESSAGE1">
+			<Original>The local population of &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt; is Furious about your lake of Consideration!&lt;br/&gt;They take Weapons and refuse your &lt;t color='%1'&gt;Autorithy&lt;/t&gt;.&lt;br/&gt;Try to calm down the situation and bring the Peace back!</Original>
 		</Key>
-		<Key ID="STR_WATERDELI_MESSAGE2">
-			<Original>Water Delivery has...&lt;br/&gt;&lt;t color='%1'&gt;FAILED&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;Better luck next time!</Original>
-			<Japanese>水の配達は...&lt;br/&gt;&lt;t color='%1'&gt;失敗しました。&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;次回頑張ってください！</Japanese>
-			<Chinesesimp>送水...&lt;br/&gt;&lt;t color='%1'&gt;失败&lt;/t&gt;！&lt;br/&gt;&lt;br/&gt;下次好运！</Chinesesimp>
-			<Chinese>送水...&lt;br/&gt;&lt;t color='%1'&gt;失敗&lt;/t&gt;！ &lt;br/&gt;&lt;br/&gt;下次好運！</Chinese>
-		</Key>
-		<Key ID="STR_WATERDELI_MESSAGE3">
-			<Original>Water Delivery&lt;br/&gt;&lt;t color='%1'&gt;SUCCESS&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;The Barrels of Water have been delivered, Well done.</Original>
-			<Japanese>水の配達は&lt;br/&gt;&lt;t color='%1'&gt;成功しました。&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;水の樽は届けられました。ありがとうございます。</Japanese>
-			<Chinesesimp>送水&lt;br/&gt;&lt;t color='%1'&gt;送达&lt;/t&gt;！&lt;br/&gt;&lt;br/&gt;水已经交付，做得很好！</Chinesesimp>
-			<Chinese>送水&lt;br/&gt;&lt;t color='%1'&gt;送達&lt;/t&gt;！ &lt;br/&gt;&lt;br/&gt;水已經交付，做得很好！</Chinese>
+		<Key ID="STR_INSURGENCY_MESSAGE2">
+			<Original>Nice work!&lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;is a safe place again!&lt;br/&gt;Their belongings are now yours to take!</Original>
 		</Key>
 
 		<!-- mission_VehicleCapture.sqf -->

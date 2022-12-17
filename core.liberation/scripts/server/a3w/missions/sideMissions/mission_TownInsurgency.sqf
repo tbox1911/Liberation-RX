@@ -1,16 +1,16 @@
 // ******************************************************************************************
 // * This project is licensed under the GNU Affero GPL v3. Copyright © 2014 A3Wasteland.com *
 // ******************************************************************************************
-//	@file Name: mission_TownInvasion.sqf
+//	@file Name: mission_TownInsurgency.sqf
 
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_nbUnits", "_box1", "_box2", "_townName", "_buildingpositions", "_tent1", "_chair1", "_chair2", "_fire1"];
+private ["_nbUnits", "_townName", "_buildingpositions"];
 
 _setupVars =
 {
-	_missionType = localize "STR_INVASION";
+	_missionType = localize "STR_INSURGENCY";
 	_nbUnits = [] call getNbUnits;
 
 	// settings for this mission
@@ -23,21 +23,6 @@ _setupVars =
 _setupObjects =
 {
 	_missionPos = (markerPos _missionLocation vectorAdd [([[-50,0,50], 20] call F_getRND), ([[-50,0,50], 20] call F_getRND), 0]);
-
-	// spawn some crates in the middle of town (Town marker position)
-	_box1 = [A3W_BoxWps, _missionPos, true] call boxSetup;
-	_box2 = [A3W_BoxWps, _missionPos, true] call boxSetup;
-
-	// create some atmosphere around the crates 8)
-	_tent1 = createVehicle ["Land_cargo_addon02_V2_F", _missionPos, [], 3, "None"];
-	_tent1 setDir random 360;
-	_chair1 = createVehicle ["Land_CampingChair_V1_F", _missionPos, [], 2, "None"];
-	_chair1 setDir random 90;
-	_chair2 = createVehicle ["Land_CampingChair_V2_F", _missionPos, [], 2, "None"];
-	_chair2 setDir random 180;
-	_fire1	= createVehicle ["Campfire_burning_F", _missionPos, [], 2, "None"];
-
-	{ _x setVariable ["R3F_LOG_disabled", true, true] } forEach [_tent1, _chair1, _chair2, _fire1];
 
 	// get Houses nearbby
 	_allbuildings = [ nearestObjects [_missionPos, ["House"], 100 ], { alive _x } ] call BIS_fnc_conditionalSelect;
@@ -57,7 +42,7 @@ _setupObjects =
 	{ _x setVariable ["GRLIB_mission_AI", nil] } forEach (units _aiGroup);
 
 	A3W_sectors_in_use = A3W_sectors_in_use + [_missionLocation];
-	_missionHintText = format [localize "STR_INVASION_MESSAGE1", sideMissionColor, _townName, _nbUnits];
+	_missionHintText = format [localize "STR_INSURGENCY_MESSAGE1", sideMissionColor, _townName];
 	true;
 };
 
@@ -68,18 +53,12 @@ _waitUntilCondition = { _missionLocation in (sectors_allSectors - blufor_sectors
 
 _failedExec = {
 	// Mission failed
-	{ deleteVehicle _x } forEach [_box1, _box2, _tent1, _chair1, _chair2, _fire1];
 	[_missionPos] call clearlandmines;
 	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
 
 _successExec = {
 	// Mission completed
-	{
-		_x setVariable ["R3F_LOG_disabled", false, true];
-		_x setVariable ["GRLIB_vehicle_owner", nil, true];
-	} forEach [_box1, _box2];
-
 	private _rwd_ammo = (100 + floor(random 100));
 	private _rwd_fuel = (10 + floor(random 10));
 	private _text = format ["Reward Received: %1 Ammo and %2 Fuel", _rwd_ammo, _rwd_fuel];
@@ -90,10 +69,10 @@ _successExec = {
 		};
 	} forEach (AllPlayers - (entities "HeadlessClient_F"));
 
-	_successHintMessage = format [localize "STR_INVASION_MESSAGE2", sideMissionColor, _townName];
-	{ deleteVehicle _x } forEach [_tent1, _chair1, _chair2, _fire1];
+	_successHintMessage = format [localize "STR_INSURGENCY_MESSAGE2", sideMissionColor, _townName];
 	[_missionPos] call showlandmines;
 	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
+	A3W_delivery_failed = 0;
 };
 
 _this call sideMissionProcessor;

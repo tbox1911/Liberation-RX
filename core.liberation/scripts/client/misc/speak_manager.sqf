@@ -102,7 +102,8 @@ speak_mission_delivery_3 = {
 	private _near_case = getPosATL _unit nearEntities [["Land_Suitcase_F"], 10];
 	if (count _near_case > 0) then {
 		deleteVehicle (_near_case select 0);
-		_unit switchMove "AmovPercMstpSrasWrflDnon_Salute";
+		_unit switchMove "AmovPercMstpSnonWnonDnon_Salute";
+		_unit playMoveNow "AmovPercMstpSnonWnonDnon_Salute";
 		gamelogic globalChat localize "STR_SPEAKMANAGER23";
 		{_x setVariable ['GRLIB_can_speak', false, true]} foreach GRLIB_A3W_Mission_SD;
 		_unit setVariable ["GRLIB_A3W_Mission_SD_END", true, true];
@@ -117,14 +118,17 @@ speak_mission_delivery_4 = {
 	params ["_unit"];
 	if (!(_unit getVariable ["GRLIB_A3W_Mission_DW", false]) &&
 	    !(_unit getVariable ["GRLIB_A3W_Mission_DF", false]) &&
+		!(_unit getVariable ["GRLIB_A3W_Mission_DA", false]) &&
 		!(_unit getVariable ["GRLIB_A3W_Mission_DN", false]) ) exitWith {gamelogic globalChat localize "STR_SPEAKMANAGER12"};
 
 	private _txt1 = "Water";
 	private _txt2 = "barrels";
 	if (_unit getVariable ["GRLIB_A3W_Mission_DF", false]) then { _txt1 = "Fuel" };
 	if (_unit getVariable ["GRLIB_A3W_Mission_DN", false]) then { _txt1 = "Food"; _txt2 = "pallets" };
+	if (_unit getVariable ["GRLIB_A3W_Mission_DA", false]) then { _txt1 = "Ammo"; _txt2 = "small boxes" };
 
-	_unit playMoveNow "AmovPercMstpSrasWrflDnon_Salute";
+	_unit switchMove "AmovPercMstpSnonWnonDnon_Salute";
+	_unit playMoveNow "AmovPercMstpSnonWnonDnon_Salute";
 	player globalChat localize "STR_SPEAKMANAGER25";
 	uIsleep 2;
 	gamelogic globalChat format [localize "STR_SPEAKMANAGER26", _txt1];

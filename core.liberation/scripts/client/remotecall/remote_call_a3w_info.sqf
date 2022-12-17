@@ -6,7 +6,7 @@ if (player distance2D (getPosATL _source) <= 20) then {
 	playSound "taskSucceeded";
 	gamelogic globalChat format [localize "STR_REMOTE_A3W", name player];
 
-	private _bonus = 15;
-	hintSilent format ["%1\nBonus Score + %2 Pts!", name player, _bonus];
+	private _bonus = round (10 + random 10);
+	gamelogic globalChat format ["Mission Completed Bonus +%1 Pts!", _bonus];
 	[player, _bonus] remoteExec ["F_addScore", 2];
 };
