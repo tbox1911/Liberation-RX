@@ -6102,11 +6102,14 @@
 		</Key>
 
 		<!-- remote_call_a3w_info.sqf -->
-		<Key ID="STR_REMOTE_A3W">
+		<Key ID="STR_REMOTE_A3W_DELI1">
 			<Original>Thank you %1, The whole village is grateful for your help!, good luck.</Original>
 			<Japanese>ありがとう %1 村中があなたの活躍に感謝しています。幸運を！</Japanese>
 			<Chinesesimp>%1, 全村人都十分感谢你的帮助！祝你好运！</Chinesesimp>
 			<Chinese>%1, 全村人都十分感謝你的幫助！祝你好運！</Chinese>
+		</Key>
+		<Key ID="STR_REMOTE_A3W_DELI2">
+			<Original>Mission Completed Bonus +%1 Pts!</Original>
 		</Key>
 
 		<!-- mission_FuelDelivery.sqf -->
