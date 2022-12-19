@@ -13,6 +13,7 @@ sideMissionProcessor = compileFinal preprocessFileLineNumbers "scripts\server\a3
 generateMissionWeights = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_generateMissionWeights.sqf";
 setMissionState = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_setMissionState.sqf";
 getMissionState = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_getMissionState.sqf";
+getMissionLocation = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_getMissionLocation.sqf";
 setLocationState = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_setLocationState.sqf";
 attemptCompileMissions = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_attemptCompileMissions.sqf";
 cleanMissionVehicles = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_cleanMissionVehicles.sqf";

@@ -19,7 +19,7 @@ _setupVars =
 	_nbUnits = 10;
 
 	// settings for this mission
-	_missionLocation = selectRandom (blufor_sectors select {_x in sectors_capture});
+	_missionLocation = [sectors_capture] call getMissionLocation;
 	_townName = markerText _missionLocation;
 	_ignoreAiDeaths = true;
 
@@ -89,6 +89,7 @@ _setupObjects =
 	GRLIB_A3W_Mission_MRR = _aiGroupRes;
 	publicVariable "GRLIB_A3W_Mission_MRR";
 	_missionHintText = format [localize "STR_RESISTANCE_MESSAGE1", sideMissionColor, _townName];
+	A3W_sectors_in_use = A3W_sectors_in_use + [_missionLocation];
 	true;
 };
 
@@ -116,6 +117,7 @@ _failedExec = {
 	GRLIB_A3W_Mission_MRR = nil;
 	publicVariable "GRLIB_A3W_Mission_MRR";
 	_failedHintMessage = format [localize "STR_RESISTANCE_MESSAGE2", sideMissionColor, _townName];
+	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
 
 _successExec = {
@@ -135,6 +137,7 @@ _successExec = {
 		_pos = _missionPos vectorAdd [([[-50,0,50], 20] call F_getRND), ([[-50,0,50], 20] call F_getRND), 0];
 		[ammobox_i_typename, _pos, false] call boxSetup;
 	};
+	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
 
 _this call sideMissionProcessor;

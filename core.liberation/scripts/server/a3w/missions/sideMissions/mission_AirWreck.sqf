@@ -32,6 +32,7 @@ _setupObjects =
 
 	_missionPicture = "\A3\Air_F\Heli_Light_02\Data\UI\Heli_Light_02_CA.paa";
 	_missionHintText = localize "STR_AIRWRECK_MESSAGE1";
+	A3W_sectors_in_use = A3W_sectors_in_use + [_missionLocation];
 	true;
 };
 
@@ -43,6 +44,7 @@ _failedExec = {
 	// Mission failed
 	{ deleteVehicle _x } forEach [_box1, _box2, _box3];
 	[_missionPos] call clearlandmines;
+	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
 
 _successExec = {
@@ -54,7 +56,7 @@ _successExec = {
 
 	_successHintMessage = localize "STR_AIRWRECK_MESSAGE2";
 	[_missionPos] call showlandmines;
-
+	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
 
 _this call sideMissionProcessor;

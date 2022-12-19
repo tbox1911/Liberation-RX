@@ -14,7 +14,7 @@ _setupVars =
 	_nbUnits = [] call getNbUnits;
 
 	// settings for this mission
-	_missionLocation = selectRandom (blufor_sectors select {_x in sectors_capture});
+	_missionLocation = [sectors_capture] call getMissionLocation;
 	_townName = markerText _missionLocation;
 
 	_locationsArray = nil;
@@ -41,8 +41,8 @@ _setupObjects =
 
 	{ _x setVariable ["GRLIB_mission_AI", nil] } forEach (units _aiGroup);
 
-	A3W_sectors_in_use = A3W_sectors_in_use + [_missionLocation];
 	_missionHintText = format [localize "STR_INSURGENCY_MESSAGE1", sideMissionColor, _townName];
+	A3W_sectors_in_use = A3W_sectors_in_use + [_missionLocation];
 	true;
 };
 

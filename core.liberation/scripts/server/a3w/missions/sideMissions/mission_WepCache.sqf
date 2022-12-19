@@ -28,6 +28,7 @@ _setupObjects =
 
 	_missionPicture = "\A3\Static_f_gamma\data\ui\gear_StaticTurret_GMG_CA.paa";
 	_missionHintText = localize "STR_WEAPCACHE_MESSAGE1";
+	A3W_sectors_in_use = A3W_sectors_in_use + [_missionLocation];
 	true;
 };
 
@@ -39,6 +40,7 @@ _failedExec = {
 	// Mission failed
 	{ deleteVehicle _x } forEach [_box1, _box2, _box3];
 	[_missionPos] call clearlandmines;
+	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
 
 _successExec = {
@@ -49,6 +51,7 @@ _successExec = {
 	} forEach [_box1, _box2, _box3];
 	_successHintMessage = localize "STR_WEAPCACHE_MESSAGE2";
 	[_missionPos] call showlandmines;
+	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
 
 _this call sideMissionProcessor;
