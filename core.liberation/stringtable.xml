@@ -3,19 +3,15 @@
 	<Package name="Liberation">
 		<Key ID="STR_MISSION_TITLE">
 			<Original>-= Liberation RX =-</Original>
-			<Czech>-= Liberation RX =-</Czech>
 		</Key>
 		<Key ID="STR_MISSION_AUTHOR">
 			<Original>[AKH] pSiKO</Original>
-			<Czech>[AKH] pSiKO</Czech>
 		</Key>
 		<Key ID="STR_MISSION_VERSION">
 			<Original>v0.927</Original>
 			<Chinesesimp>0.927版本</Chinesesimp>
 			<Chinese>0.927版本</Chinese>
 			<Japanese>バージョン0.927</Japanese>
-			<Portuguese>v0.927</Portuguese>
-			<Czech>v0.927</Czech>
 		</Key>
 		<Key ID="STR_MISSION_MOTD">
 			<Original>It should not be too easy...</Original>
