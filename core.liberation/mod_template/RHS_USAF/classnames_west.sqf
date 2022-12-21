@@ -203,6 +203,18 @@ strong_light_vehicles = [
 
 // Strong light vehicles
 
+// CZ
+["CUP_B_Dingo_GL_CZ_Wdl",0,light_vehicle_price_tier_5,0,GRLIB_perm_inf],
+["CUP_B_Dingo_CZ_Wdl",0,light_vehicle_price_tier_5,0,GRLIB_perm_inf],
+["CUP_B_HMMWV_DSHKM_GPK_ACR",0,light_vehicle_price_tier_5,0,GRLIB_perm_inf],
+["CUP_B_HMMWV_M2_GPK_ACR",0,light_vehicle_price_tier_5,0,GRLIB_perm_inf],
+["CUP_B_HMMWV_AGS_GPK_ACR",0,light_vehicle_price_tier_5,0,GRLIB_perm_inf],
+["CUP_B_LR_Ambulance_CZ_D",0,light_vehicle_price_tier_5,0,GRLIB_perm_inf],
+["CUP_B_LR_MG_CZ_W",0,light_vehicle_price_tier_5,0,GRLIB_perm_inf],
+["CUP_B_LR_Special_Des_CZ_D",0,light_vehicle_price_tier_5,0,GRLIB_perm_inf],
+["CUP_B_LR_Special_CZ_W",0,light_vehicle_price_tier_5,0,GRLIB_perm_inf],
+
+
 // SOG 
 
 ["vn_b_air_uh1c_02_02",0,air_vehicle_price_tier_8,0,GRLIB_perm_inf],
@@ -886,7 +898,14 @@ static_vehicles_AI = [
 
 support_vehicles_west = [
 
-// support_vehicles_west
+// CZ
+["CUP_B_T810_Reammo_CZ_WDL",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+["CUP_B_T810_Unarmed_CZ_DES",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+["CUP_B_T810_Refuel_CZ_DES",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+["CUP_B_T810_Armed_CZ_DES",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+["CUP_B_T810_Repair_CZ_WDL",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+["CUP_B_LR_Transport_CZ_D",0,logistic_ground_vehicle_price_tier_3,0,GRLIB_perm_inf],
+
 // Quadbike
 ["B_Quadbike_01_F",0,10,0,-100],
 // Bundeswehr
