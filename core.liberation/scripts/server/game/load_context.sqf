@@ -49,6 +49,8 @@ if (count _context >= 1) then {
                                     _x enableGunLights "Auto";
                                     [_x] joinSilent (group player);
                                     gamelogic globalChat format ["Adds %1 (%2) to your squad.", name _x, rank _x];
+                                    _x switchMove "amovpknlmstpsraswrfldnon";
+				                    _x playMoveNow "amovpknlmstpsraswrfldnon";
                                     sleep 0.5;
                                 } forEach (units _grp);
                                 (group player) selectLeader player;
