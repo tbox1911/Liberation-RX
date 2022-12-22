@@ -6261,7 +6261,7 @@
 			<Chinesesimp>-- 涂装 --</Chinesesimp>
 			<Chinese>-- 塗裝 --</Chinese>
 			<Portuguese>-- Oficina de pintura --</Portuguese>
-			<Czech>-- Obchod s barvami --</Czech
+			<Czech>-- Obchod s barvami --</Czech>
 		</Key>
 		<Key ID="STR_SHOP_PAINT">
 			<Original>Paint</Original>
@@ -7045,7 +7045,7 @@
 			<Japanese>敵物資は確保されました。おめでとうございます。</Japanese>
 			<Chinesesimp>物资已摧毁，做得很好！</Chinesesimp>
 			<Chinese>物資已摧毀，做得很好！</Chinese>
-			<Czech>Zásoby byly shromážděny, dobře provedeno.</Czech
+			<Czech>Zásoby byly shromážděny, dobře provedeno.</Czech>
 		</Key>
 
 		<!-- speak_manager.sqf -->
@@ -7138,7 +7138,7 @@
 			<Japanese>やぁ、ちょっと話があるんだ。聞いてくれ。</Japanese>
 			<Chinesesimp>你好，我需要和你谈谈，听我说。</Chinesesimp>
 			<Chinese>你好，我需要和你談談，聽我說。</Chinese>
-			<Czech>Dobrý den, potřebuji s vámi mluvit, poslouchejte mě.</Czech
+			<Czech>Dobrý den, potřebuji s vámi mluvit, poslouchejte mě.</Czech>
 		</Key>
 		<Key ID="STR_SPEAKMANAGER14">
 			<Original>You have to deliver this precious information to my father.</Original>
@@ -7335,7 +7335,7 @@
 			<Chinese>爺倒了！庸醫救我！</Chinese>
 			<Japanese>ダウンした！衛生兵！！</Japanese>
 			<Portuguese>Estou em baixo! Médico!</Portuguese>
-			<Czech>Jsem dole! Medik!</Czech
+			<Czech>Jsem dole! Medik!</Czech>
 		</Key>
 		<Key ID="STR_PAR_AC_01">
 			<Original>Revive</Original>
@@ -7657,7 +7657,7 @@
 			<Chinese>-- 懲罰或原諒他 --</Chinese>
 			<Japanese>-- 処遇 --</Japanese>
 			<Portuguese>-- Punir ou Perdoar</Portuguese>
-			<Czech>-- Potrestat nebo odpustit</Czech
+			<Czech>-- Potrestat nebo odpustit</Czech>
 		</Key>
 		<Key ID="STR_TK_MSG1">
 			<Original>TK: %1 punish %2.</Original>
@@ -7838,7 +7838,7 @@
 				<Chinese>齊射</Chinese>
 				<Japanese>バースト</Japanese>
 				<Portuguese>Explodir</Portuguese>
-				<Czech>Výbuch</Czech
+				<Czech>Výbuch</Czech>
 			</Key>
 		</Container>
 	</Package>
@@ -7925,7 +7925,7 @@
 		<Key ID="STR_VAM_AAF_CAMO">
 			<Original>AAF</Original>
 			<Korean>AAF</Korean>
-			<Czech>AAF</Czech
+			<Czech>AAF</Czech>
 		</Key>
 		<Key ID="STR_VAM_DARK_GREEN_CAMO">
 			<Original>Dark Green</Original>
