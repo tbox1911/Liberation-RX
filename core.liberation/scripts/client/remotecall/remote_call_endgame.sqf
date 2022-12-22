@@ -1,4 +1,5 @@
-if ( isDedicated ) exitWith {};
+if (isDedicated || (!hasInterface && !isServer)) exitWith {};
+
 publicstats = _this select 0;
 
 stats_opfor_soldiers_killed = publicstats select 0;

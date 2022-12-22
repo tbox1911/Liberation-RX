@@ -1,6 +1,6 @@
-if ( isDedicated ) exitWith {};
-
 params [ "_sector", "_status", ["_sector_timer", 0] ];
+
+if (isDedicated || (!hasInterface && !isServer)) exitWith {};
 
 if ( _status == 0 ) then {
 	private _lst_player = "Thanks to: - ";

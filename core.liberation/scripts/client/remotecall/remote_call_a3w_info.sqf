@@ -1,6 +1,6 @@
-if ( isDedicated ) exitWith {};
-
 params [ "_type", "_source" ];
+
+if (isDedicated || (!hasInterface && !isServer)) exitWith {};
 
 if (player distance2D (getPosATL _source) <= 20) then {
 	playSound "taskSucceeded";
