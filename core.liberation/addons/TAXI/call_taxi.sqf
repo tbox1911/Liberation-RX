@@ -21,7 +21,7 @@ if (!([GRLIB_AirDrop_Taxi_cost] call F_pay)) exitWith {deleteVehicle _helipad};
 deleteMarkerLocal "taxi_lz";
 deleteMarkerLocal "taxi_dz";
 
-private _nb_unit = count (units player);
+private _nb_unit = count (units group player);
 private _taxi_type = "";
 private _cargo = [];
 
