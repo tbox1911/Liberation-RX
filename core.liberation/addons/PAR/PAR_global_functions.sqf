@@ -15,6 +15,7 @@ PAR_fn_checkWounded = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_
 PAR_unblock_AI = {
 	// Unblock unit(s) 0-8-1
 	params ["_unit_array"];
+	if (player getVariable ["SOG_player_in_tunnel", false]) exitWith {};
 	if ( count _unit_array == 0 ) then {
 		player setPosATL (getPosATL player vectorAdd [([] call F_getRND), ([] call F_getRND), 0.5]);
 	} else {
@@ -109,8 +110,8 @@ PAR_unit_eject = {
 };
 PAR_show_marker = {
 	_mk1 = createMarker [format ["PAR_marker_%1", name player], position player];
-	_mk1 setMarkerType "loc_Hospital"; 
-	_mk1 setMarkerColor "ColorRed"; 
+	_mk1 setMarkerType "loc_Hospital";
+	_mk1 setMarkerColor "ColorRed";
 	_mk1 setMarkerText format ["%1 Injured", name player];
 };
 PAR_del_marker = {
@@ -142,7 +143,7 @@ PAR_fn_AI_Damage_EH = {
 		}];
 	};
 	_unit removeAllMPEventHandlers "MPKilled";
-	_unit addMPEventHandler ["MPKilled", {_this spawn PAR_fn_death}]; 
+	_unit addMPEventHandler ["MPKilled", {_this spawn PAR_fn_death}];
 	_unit setVariable ["PAR_wounded", false];
 	_unit setVariable ["PAR_myMedic", nil];
 	_unit setVariable ["PAR_busy", nil];
@@ -166,7 +167,7 @@ PAR_Player_Init = {
 	player setVariable ["PAR_busy", nil];
 	player setVariable ["PAR_heal", nil];
 	player setVariable ["PAR_healed", nil];
-	if (!GRLIB_fatigue ) then { player enableFatigue false; player enableStamina false };
+	if (!GRLIB_fatigue) then { player enableFatigue false; player enableStamina false };
 	if (GRLIB_opfor_english) then {player setSpeaker "Male01ENG"};
 	player setCustomAimCoef 0.35;
 	player setUnitRecoilCoefficient 0.6;

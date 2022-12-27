@@ -36,4 +36,4 @@ You are on your own....", _position];
 
 showMap false;
 [player, _tunnel_name] remoteExec [ "sog_tunnel_enter_remotecall", 2 ];
-
+player setVariable ["SOG_player_in_tunnel", true];
