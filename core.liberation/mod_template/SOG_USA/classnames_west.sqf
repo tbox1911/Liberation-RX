@@ -316,12 +316,17 @@ GRLIB_AirDrop_1 = [
 ];
 
 GRLIB_AirDrop_2 = [
-	"vn_b_wheeled_m151_mg_04",
-	"vn_b_wheeled_m151_mg_02"
+	"vn_b_wheeled_m151_mg_02",
+	"vn_b_wheeled_m151_mg_03",
+	"vn_b_wheeled_m151_mg_04"
 ];
 
 GRLIB_AirDrop_3 = [
-	"vn_b_wheeled_m151_mg_03"
+	"vn_b_armor_m113_01",
+	"vn_b_armor_m113_acav_01",
+	"vn_b_armor_m113_acav_02",
+	"vn_b_armor_m113_acav_04",
+	"vn_b_armor_m113_acav_06"
 ];
 
 GRLIB_AirDrop_4 = [

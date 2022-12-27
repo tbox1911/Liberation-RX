@@ -74,18 +74,20 @@ opfor_vehicles = [
 	"vn_o_wheeled_btr40_mg_02_nva65",
 	"vn_o_wheeled_btr40_mg_01_nva65",
 	"vn_o_wheeled_btr40_mg_03_nva65",
+	"vn_o_wheeled_btr40_mg_02_nva65",
+	"vn_o_wheeled_btr40_mg_01_nva65",
 	"vn_o_wheeled_btr40_mg_03_nva65",
 	"vn_o_wheeled_z157_mg_01_nva65",
-	"vn_o_wheeled_z157_mg_01_nva65",
 	"vn_o_wheeled_z157_mg_02_nva65",
-	"vn_o_wheeled_z157_mg_02_nva65"
+	"vn_o_air_mi2_01_03"
 ];
 
 opfor_vehicles_low_intensity = [
 	"vn_o_wheeled_btr40_mg_02_nva65",
 	"vn_o_wheeled_btr40_mg_01_nva65",
 	"vn_o_wheeled_z157_mg_01_nva65",
-	"vn_o_wheeled_z157_mg_02_nva65"
+	"vn_o_wheeled_z157_mg_02_nva65",
+	"vn_o_wheeled_z157_01_nva65"
 ];
 
 opfor_battlegroup_vehicles = [
@@ -106,9 +108,7 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"vn_o_wheeled_btr40_mg_01_nva65",
 	"vn_o_wheeled_z157_mg_01_nva65",
 	"vn_o_wheeled_btr40_mg_03_nva65",
-	"vn_o_air_mi2_01_03",
-	"vn_o_wheeled_z157_01_nva65",
-	"vn_o_wheeled_z157_02_nva65"
+	"vn_o_wheeled_z157_01_nva65"
 ];
 
 opfor_troup_transports_truck = [
