@@ -15,7 +15,7 @@ while {true} do {
     if (speed vehicle _vehicle > 1) then {
         _fuel_veh = fuel _vehicle;
         if (_fuel_veh < 0.010) then {
-            _fuel_collected = _unit getVariable ["GREUH_fuel_count", 0];
+            _fuel_collected = player getVariable ["GREUH_fuel_count", 0];
             if (_fuel_collected > 1) then {
                 _fuel_veh = 0.06;
                 _unit setVariable ["GREUH_fuel_count", (_fuel_collected - 1), true];
