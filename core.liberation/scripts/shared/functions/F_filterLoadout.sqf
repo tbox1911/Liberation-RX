@@ -14,6 +14,7 @@ if !([binocular _unit] call is_allowed_item) then {_unit removeWeapon (binocular
 if !([hmd _unit] call is_allowed_item) then {_unit unassignItem (hmd _unit); _unit removeItem (hmd _unit)};
 { if !([_x] call is_allowed_item) then {_unit removePrimaryWeaponItem _x} } forEach primaryWeaponItems _unit;
 { if !([_x] call is_allowed_item) then {_unit removeItem _x} } forEach ((vestItems _unit)+(uniformItems _unit)+(backpackItems _unit)+(items _unit));
+{ if !([_x] call is_allowed_item) then {_unit removeItem _x} } foreach assignedItems _unit;
 
 [_unit] call F_correctLaserBatteries;
 [_unit] call F_correctHEGL;
