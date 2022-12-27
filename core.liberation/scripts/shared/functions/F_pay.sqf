@@ -21,7 +21,7 @@ waitUntil {sleep 0.1; (player getVariable ["trx_complete", 1] > 1 || time > _tim
 private _res = player getVariable ["trx_complete", 3];
 
 if (_res == 2) then {
-	playSound "taskSucceeded";
+	playSound "FD_Finish_F";
 	_msg = format [localize "STR_GRLIB_PAY", _price];
 	_ret = true;
 };

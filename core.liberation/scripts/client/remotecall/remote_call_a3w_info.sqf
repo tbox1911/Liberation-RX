@@ -3,7 +3,7 @@ params [ "_type", "_source" ];
 if (isDedicated || (!hasInterface && !isServer)) exitWith {};
 
 if (player distance2D (getPosATL _source) <= 20) then {
-	playSound "taskSucceeded";
+	playSound "FD_Finish_F";
 	gamelogic globalChat format [localize "STR_REMOTE_A3W_DELI1", name player];
 
 	private _bonus = round (10 + random 10);
