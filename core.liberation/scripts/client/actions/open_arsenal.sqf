@@ -169,7 +169,7 @@ if ( edit_loadout > 0 ) then {
 		};
 	};
 } else {
-	//filter and pay loadout
+	// Filter and Pay loadout
 	[player] call F_filterLoadout;
 	[player] call F_payLoadout;
 };
