@@ -70,3 +70,4 @@ is_public = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_i
 is_abandoned = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_isAbandoned.sqf";
 F_invertArray = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_invertArray.sqf";
 F_startAnimMP = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_startAnimMP.sqf";
+F_deathSound = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_deathSound.sqf";
