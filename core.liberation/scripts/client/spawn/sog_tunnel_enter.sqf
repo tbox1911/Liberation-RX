@@ -5,7 +5,7 @@ private _tunnel_name = format ["LRX%1", (_tunnel_marker select [12, 11])];
 private _tunnel = missionNameSpace getVariable [_tunnel_name, objNull];
 
 // AI follow
-private _ai_follow = true;
+private _ai_follow = false;
 private _ai_follow_max = 2;
 private _unit_list_redep = [];
 
@@ -25,6 +25,7 @@ if (_ai_follow) then {
         player setVariable ["SOG_unit_list", _unit_list_redep];
     };
 };
+{ doStop _x } foreach (units group player);
 
 private _position = (_tunnel getVariable ["tunnel_position", 0]) + 1;
 private _msg = format ["You enter in the <t color='#008f00'>Guerrilla</t> tunnel no <t color='#008f00'>%1</t> !<br/><br/>
