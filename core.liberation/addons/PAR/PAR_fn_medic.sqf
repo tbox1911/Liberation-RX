@@ -1,6 +1,6 @@
 params ["_wnded"];
 
-if (_wnded == player && player getVariable ["SOG_player_in_tunnel", false]) exitWith {[]};
+if (_wnded == player && player getVariable ["SOG_player_in_tunnel", false]) exitWith {};
 private _medic = [_wnded] call PAR_fn_nearestMedic;
 
 if (isNil "_medic") exitWith {
