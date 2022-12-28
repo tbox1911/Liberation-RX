@@ -13,7 +13,7 @@ if (typeOf _vehicle == ammobox_i_typename && [player] call F_getScore <= GRLIB_p
 	if (_result && !(isNull _vehicle) && alive _vehicle) then {
 		[_vehicle] remoteExec ["deleteVehicle", 2];
 		[player, 50] remoteExec ["F_addScore", 2];
-		playSound "FD_Finish_F";
+		playSound "taskSucceeded";
 		hint format [localize "STR_AMMO_SELL", name player];
 		sleep 0.5;
 	};
@@ -46,7 +46,7 @@ if ( dorecycle == 1 && !(isNull _vehicle) && alive _vehicle) exitWith {
 	if (typeOf _vehicle in [ammobox_b_typename, ammobox_o_typename, ammobox_i_typename] && [player] call F_getScore <= GRLIB_perm_log) then {
 		[player, 10] remoteExec ["F_addScore", 2];
 		hint format [localize "STR_AMMO_SELL2", name player];
-		playSound "FD_Finish_F";
+		playSound "taskSucceeded";
 	};
 	[player, _ammount_ammo, _ammount_fuel] remoteExec ["ammo_add_remote_call", 2];
 	player addRating 500;

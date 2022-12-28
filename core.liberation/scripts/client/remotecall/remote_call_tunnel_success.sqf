@@ -7,4 +7,4 @@ Has been successfully <t color='#00008f'>CLEANED</t> !!<br/>
 Please take you reward: <t color='#8f0000'>%2 XP</t>.<br/><br/>Thanks for your help.", _position, _bonus];
 [_msg, 0, 0, 10, 0, 0, 90] spawn BIS_fnc_dynamicText;
 
-playSound "FD_Finish_F";
+playSound "taskSucceeded";

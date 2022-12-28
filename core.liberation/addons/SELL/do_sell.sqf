@@ -70,7 +70,7 @@ while { dialog && alive player } do {
 					clearBackpackCargoGlobal _vehicle;
 					[player, _price, 0] remoteExec ["ammo_add_remote_call", 2];
 					hintSilent format [localize "STR_CARGO_SOLD", _vehicle_name, name player, _price];
-					playSound "FD_Finish_F";
+					playSound "taskSucceeded";
 					if (typeOf _vehicle == A3W_BoxWps) then {deleteVehicle _vehicle};
 				};
 			_refresh = true;

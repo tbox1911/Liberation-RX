@@ -126,7 +126,7 @@ while { dialog && alive player } do {
 				[player, _price, 0] remoteExec ["ammo_add_remote_call", 2];
 				hintSilent format ["%1 Sold for %2 AMMO !", _vehicle_name, _price];
 				ctrlEnable [120, false];
-				playSound "FD_Finish_F";
+				playSound "taskSucceeded";
 			};
 			_refresh = true;
 		};
