@@ -32,7 +32,6 @@ if ( _liberated_sector in sectors_military ) then {
 
 if ( _liberated_sector in sectors_factory ) then {
 	_combat_readiness_increase = (3 + (floor (random 7))) * GRLIB_difficulty_modifier;
-	_rwd_fuel = _rwd_fuel * 2;
 };
 
 if ( _liberated_sector in sectors_tower ) then {
