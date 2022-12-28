@@ -11,7 +11,7 @@ overide_taxi_type_6 = [
 ];
 
 overide_taxi_type_8 = [
-	"vn_b_air_oh6a_01",
+    "vn_b_air_uh1d_02_07",
     "vn_b_air_ch34_01_01",
 	"vn_b_air_ch34_03_01"
 ];
