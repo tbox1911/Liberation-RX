@@ -10,13 +10,13 @@ dobuild = 1;
 waitUntil { sleep 1; dobuild == 0};
 if (build_confirmed == 3) exitWith {};
 
-private _helipad = nearestObjects [player, [taxi_helipad_type], 20] select 0;
-private _degree = aCos ([0,0,1] vectorCos (surfaceNormal getPos _helipad));
-private _dest = getPosATL _helipad;
-if (surfaceIsWater _dest || _degree > 8) exitWith {deleteVehicle _helipad; hintSilent localize "STR_TAXI_WRONG_PLACE"};
+GRLIB_taxi_helipad = nearestObjects [player, [taxi_helipad_type], 20] select 0;
+private _degree = aCos ([0,0,1] vectorCos (surfaceNormal getPos GRLIB_taxi_helipad));
+private _dest = getPosATL GRLIB_taxi_helipad;
+if (surfaceIsWater _dest || _degree > 8) exitWith {deleteVehicle GRLIB_taxi_helipad; hintSilent localize "STR_TAXI_WRONG_PLACE"};
 
 // Pay
-if (!([GRLIB_AirDrop_Taxi_cost] call F_pay)) exitWith {deleteVehicle _helipad};
+if (!([GRLIB_AirDrop_Taxi_cost] call F_pay)) exitWith {deleteVehicle GRLIB_taxi_helipad};
 
 deleteMarkerLocal "taxi_lz";
 deleteMarkerLocal "taxi_dz";
@@ -50,8 +50,10 @@ _vehicle setVariable ["R3F_LOG_disabled", true, true];
 _vehicle allowDamage false;
 _vehicle allowCrewInImmobile [true, false];
 _vehicle setUnloadInCombat [true, false];
-_vehicle addAction [format ["<t color='#8000FF'>%1</t>", localize "STR_TAXI_ACTION1"], "addons\TAXI\taxi_pickdest.sqf","",999,true,true,"","vehicle _this == _target"];
-_vehicle addAction [format ["<t color='#FF0080'>%1</t>", localize "STR_TAXI_ACTION2"], {player setVariable ["GRLIB_taxi_called", nil, true]},"",998,true,true,"","vehicle _this == _target"];
+
+GRLIB_taxi_cooldown = 0;
+private _idact_dest = _vehicle addAction [format ["<t color='#8000FF'>%1</t>", localize "STR_TAXI_ACTION1"], "addons\TAXI\taxi_pickdest.sqf","",999,true,true,"","vehicle _this == _target && (getPosATL _target) distance2D GRLIB_taxi_helipad > 300"];
+private _idact_cancel = _vehicle addAction [format ["<t color='#FF0080'>%1</t>", localize "STR_TAXI_ACTION2"], {player setVariable ["GRLIB_taxi_called", nil, true]},"",998,true,true,"","vehicle _this == _target"];
 player setVariable ["GRLIB_taxi_called", _vehicle, true];
 
 createVehicleCrew _vehicle;
@@ -94,7 +96,7 @@ if (time < _stop) then {
 		( (markerPos "taxi_dz") distance2D zeropos > 100 || isNil {player getVariable ["GRLIB_taxi_called", nil]} || time > _stop )
 	};
 
-	removeAllActions _vehicle;
+	_vehicle removeAction _idact_cancel;
 	deleteMarkerLocal "taxi_lz";
 
 	if ( (markerPos "taxi_dz") distance2D zeropos > 100 ) then {
@@ -104,12 +106,8 @@ if (time < _stop) then {
 		{ _x allowDamage false } forEach (_cargo);
 
 		_dest = markerPos "taxi_dz";
-		_helipad = taxi_helipad_type createVehicle _dest;
 		[_vehicle, _air_grp, _dest, "STR_TAXI_PROGRESS"] call taxi_dest;
 		[_vehicle] call taxi_land;
-
-		deleteVehicle _helipad;
-		deleteMarkerLocal "taxi_dz";
 	};
 };
 
@@ -122,13 +120,11 @@ sleep 5;
 
 // Go back
 deleteMarkerLocal "taxi_lz";
+deleteMarkerLocal "taxi_dz";
 [_vehicle, _air_grp, zeropos, "STR_TAXI_RETURN"] call taxi_dest;
 
 // Cleanup
 hintSilent "";
-deleteMarkerLocal "taxi_lz";
-deleteMarkerLocal "taxi_dz";
-deleteVehicle _helipad;
 {deletevehicle _x} forEach _pilots;
 deleteVehicle _vehicle;
 player setVariable ["GRLIB_taxi_called", nil, true];
