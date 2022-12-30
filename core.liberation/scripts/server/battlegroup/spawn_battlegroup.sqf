@@ -4,7 +4,7 @@ if (isNil "hc_battlegroup_on") then {
 	hc_battlegroup_on = true
 };
 
-if ((GRLIB_endgame == 1) || ((combat_readiness < 30) && !(_attackInProgress))) exitWith {};
+if ((GRLIB_endgame == 1) || ((combat_readiness < bg_readiness_min) && !(_attackInProgress))) exitWith {};
 diag_log format ["Spawn BattlegGroup at %1", time];
 
 private [ "_bg_groups", "_target_size", "_vehicle_pool", "_selected_opfor_battlegroup" ];
@@ -29,7 +29,7 @@ if (isNil "_attackedSector") then {
 	};
 };
 _vehicle_pool = opfor_battlegroup_vehicles;
-if (combat_readiness < 60) then {
+if (combat_readiness < bg_readiness_min*2) then {
 	_vehicle_pool = opfor_battlegroup_vehicles_low_intensity
 };
 
@@ -45,7 +45,7 @@ if (_spawn_marker != "") then {
 	if (_target_size >= GRLIB_battlegroup_size * 2) then {
 		_target_size = GRLIB_battlegroup_size * 2;
 	};
-	if (combat_readiness < 60) then {
+	if (combat_readiness < bg_readiness_min*2) then {
 		_target_size = round (_target_size * 0.75)
 	};
 	if (count allPlayers <= 9) then {
@@ -87,7 +87,7 @@ if (_spawn_marker != "") then {
 	} forEach _selected_opfor_battlegroup;
 
 	sleep 5;
-	if ((combat_readiness >= 30) && !(_attackInProgress)) then {
+	if ((combat_readiness >= bg_readiness_min) && !(_attackInProgress)) then {
 		private _objectivepos = ([markerPos _spawn_marker] call F_getNearestBluforObjective) select 0;
 
 		[_objectivepos, GRLIB_side_enemy] spawn spawn_air;

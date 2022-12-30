@@ -4,7 +4,7 @@ GRLIB_side_resistance = resistance;
 GRLIB_side_civilian = civilian;
 GRLIB_respawn_marker = "respawn_west";
 GRLIB_sector_size = 500;
-GRLIB_capture_size = 200;
+GRLIB_capture_size = 150;
 GRLIB_radiotower_size = 3000;
 GRLIB_spawn_min = 1000;
 GRLIB_spawn_max = 2500;
@@ -13,10 +13,10 @@ GRLIB_endgame = 0;
 GRLIB_vulnerability_timer = 1000;
 GRLIB_defended_buildingPos_part = 0.2;
 GRLIB_sector_military_value = 2;
-GRLIB_secondary_objective_impact = 0.6;
-GRLIB_sector_spawn_factor = 2;
-GRLIB_sector_cap = 80 * GRLIB_unitcap;
-GRLIB_battlegroup_cap = 120 * GRLIB_unitcap;
+GRLIB_secondary_objective_impact = 0.4;
+GRLIB_sector_spawn_factor = 2.5;
+GRLIB_sector_cap = 90 * GRLIB_unitcap;
+GRLIB_battlegroup_cap = 130 * GRLIB_unitcap;
 GRLIB_patrol_cap = 10 * GRLIB_unitcap;
 GRLIB_blufor_cap = 10 * GRLIB_unitcap;
 GRLIB_battlegroup_size = 5;
@@ -33,14 +33,14 @@ GRLIB_perm_log = 300;
 GRLIB_perm_tank = 1200;
 GRLIB_perm_air = 2400;
 GRLIB_perm_max = 3600;
-GRLIB_date_year = 2022;
+GRLIB_date_year = 2023;
 GRLIB_date_month = 7;
 GRLIB_date_day = 30;
 GRLIB_nights_start = 21;
 GRLIB_nights_stop = 4;
 GREUH_start_ammo = 100;
 
-GRLIB_blufor_cap = 64;
+GRLIB_blufor_cap = 32;
 // defines if everyone gets ammo from sector liberations
 Sector_ammo_for_all = false;
 
@@ -55,18 +55,18 @@ tfar_checker = false;
 tfar_channel = "╠-● Ingame [TFAR]";
 
 // gain and punishment
-respawn_ammo = 100; // +/- is conditional
+respawn_ammo = 120; // +/- is conditional
 opfor_kill_score = 1;
 opfor_kill_ammo = 1;
-opfor_kill_score_infantry = 4;
-opfor_kill_ammo_infantry = 8;
-kamikaze_kill_score = 5;
-kamikaze_kill_ammo = 25;
-civkill_score = -50;
-civkill_ammo = -250;
-civkill_combat_readiness = 3;
-tkill_score = -5;
-tkill_ammo = -8;
+opfor_kill_score_infantry = 3;
+opfor_kill_ammo_infantry = 6;
+kamikaze_kill_score = 6;
+kamikaze_kill_ammo = 12;
+civkill_score = -55;
+civkill_ammo = -275;
+civkill_combat_readiness = 4;
+tkill_score = -6;
+tkill_ammo = -9;
 tk_active = false; //NEW Tkillscript with dialog
 
 // tkill_script in init.sqf
@@ -75,13 +75,13 @@ tk_active = false; //NEW Tkillscript with dialog
 
 
 // Only use by 2 dividable numbers
-box_recycle_value = 40;
+box_recycle_value = 35;
 // Increases the ammo for logistics and decreasese the ammo for everyone
 logistics_ammo_increase = true;
 
 prisoner_intel = 7;
 prisoner_score = 25;
-prisoner_ammo = 60;
+prisoner_ammo = 50;
 prisoner_combat_readiness = 10;
 prisoner_i = 0;
 
@@ -92,18 +92,18 @@ building_penalty_isActive = false;
 air_cannot_trigger_on = true;
 
 // Sector config
-sector_rank_gain = 15;
-fallback_income = 120;
-income_sectors_bigtown = 120;
-income_sectors_capture = 120;
-income_sectors_military = 120;
-income_sectors_factory = 120;
-income_sectors_tower = 120;
-readiness_increase_bigtown = 3;
-readiness_increase_capture = 3;
-readiness_increase_military = 3;
-readiness_increase_factory = 3;
-readiness_increase_tower = 3;
+sector_rank_gain = 10;
+fallback_income = 100;
+income_sectors_bigtown = 100;
+income_sectors_capture = 100;
+income_sectors_military = 100;
+income_sectors_factory = 100;
+income_sectors_tower = 100;
+readiness_increase_bigtown = 4;
+readiness_increase_capture = 4;
+readiness_increase_military = 4;
+readiness_increase_factory = 4;
+readiness_increase_tower = 4;
 
 // AI Leaders have automaticly radios
 AI_leader_radio = false;
@@ -124,8 +124,9 @@ readiness_calc_sm_town = true;
 limit_readiness = true;
 fob_hunting_readiness = 40;
 
-// Battlegroup readiness cooldown
+// Battlegroup readiness
 bg_readiness_cooldown = false;
+bg_readiness_min = 30;
 
 // Battlegroup sleeping (divided with csat aggressivity)
 bg_sleeptimer = 1000; 
