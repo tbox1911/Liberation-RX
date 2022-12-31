@@ -71,6 +71,7 @@ opfor_boats = [
 
 opfor_vehicles = [
 	"vn_o_armor_type63_01_nva65",
+	"vn_o_armor_type63_01_nva65",
 	"vn_o_wheeled_btr40_mg_01_nva65",
 	"vn_o_wheeled_btr40_mg_02_nva65",
 	"vn_o_wheeled_btr40_mg_03_nva65",
@@ -92,6 +93,7 @@ opfor_vehicles_low_intensity = [
 ];
 
 opfor_battlegroup_vehicles = [
+	"vn_o_armor_type63_01_nva65",
 	"vn_o_armor_type63_01_nva65",
 	"vn_o_wheeled_btr40_mg_01_nva65",
 	"vn_o_wheeled_btr40_mg_02_nva65",
