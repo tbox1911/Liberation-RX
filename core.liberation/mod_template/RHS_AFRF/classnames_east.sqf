@@ -76,7 +76,7 @@ opfor_vehicles = [
 	"rhs_t80a",
 	"rhs_bmp3mera_msv",
 	"rhs_bmd4_vdv",
-	"rhs_bmd4_vdv",
+	"rhs_bmd4_vdv"
 ];
 
 opfor_vehicles_low_intensity = [
@@ -86,13 +86,13 @@ opfor_vehicles_low_intensity = [
 	"rhs_tigr_sts_msv",
 	"rhs_btr80a_msv",
 	"rhs_tigr_sts_msv",
-	"rhs_bmd4_vdv"
+	"rhs_bmd4_vdv",
 	"rhs_bmd4_vdv"
 ];
 
 opfor_battlegroup_vehicles = [
 	"rhs_btr70_msv",
-	"rhs_btr80_msv"
+	"rhs_btr80_msv",
 	"rhs_zsu234_aa",
 	"RHS_Ural_Zu23_MSV_01",
 	"rhs_btr80a_msv",
