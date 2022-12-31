@@ -106,6 +106,8 @@ opfor_vehicles_low_intensity = [
 ];
 
 opfor_battlegroup_vehicles = [
+	"CUP_B_AH1Z_Dynamic_USMC",
+	"CUP_B_UH1Y_Gunship_Dynamic_USMC",
 	"CUP_B_RG31_M2_USA",
 	"CUP_B_RG31_Mk19_USA",
 	"CUP_B_M2Bradley_USA_D",
@@ -115,16 +117,19 @@ opfor_battlegroup_vehicles = [
 	"CUP_B_M6LineBacker_USA_D",
 	"CUP_B_AH64D_DL_USA",
 	"CUP_B_UH60M_FFV_US",
-	"CUP_B_MTVR_USA",
+	"CUP_B_M113A3_desert_USA",
 	"CUP_B_M1A2SEP_TUSK_II_Desert_US_Army",
 	"CUP_B_M2A3Bradley_USA_D",
+	"CUP_B_M1126_ICV_M2_Desert",
 	"CUP_B_M1165_GMV_USA",
 	"CUP_B_M1151_Deploy_USA",
 	"CUP_B_M1151_Mk19_USA",
-	"CUP_B_C130J_USMC"
+	"CUP_B_C130J_USMC",
+	"CUP_B_MH47E_USA"
 ];
 
 opfor_battlegroup_vehicles_low_intensity = [
+	"CUP_B_UH1Y_Gunship_Dynamic_USMC",
 	"CUP_B_RG31_M2_USA",
 	"CUP_B_RG31_Mk19_USA",
 	"CUP_B_M2Bradley_USA_D",
@@ -133,7 +138,10 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"CUP_B_MTVR_USA",
 	"CUP_B_M1165_GMV_USA",
 	"CUP_B_M1151_Deploy_USA",
-	"CUP_B_M1151_Mk19_USA"
+	"CUP_B_M1151_Mk19_USA",
+	"CUP_B_MV22_USMC_RAMPGUN",
+	"CUP_B_MH6M_USA",
+	"CUP_B_UH1Y_UNA_USMC"
 ];
 
 opfor_troup_transports_truck = [
@@ -146,7 +154,6 @@ opfor_troup_transports_truck = [
 opfor_troup_transports_heli = [
 	"CUP_B_C130J_USMC",
 	"CUP_B_MH47E_USA",
-	"CUP_B_UH60M_US",
 	"CUP_B_MH6M_USA",
 	"CUP_B_UH1Y_UNA_USMC"
 ];
@@ -188,7 +195,7 @@ opfor_recyclable = [
 	["CUP_I_nM1025_M240_ION",3,round (60 / GRLIB_recycling_percentage),4],
 	["CUP_I_nM1025_Mk19_ION",3,round (60 / GRLIB_recycling_percentage),4],
 	["CUP_I_nM1036_TOW_ION",3,round (50 / GRLIB_recycling_percentage),4],
-	["CUP_B_nM1025_SOV_M2_ION",3,round (60 / GRLIB_recycling_percentage),4],	
+	["CUP_B_nM1025_SOV_M2_ION",3,round (60 / GRLIB_recycling_percentage),4],
 	// Light
 	["CUP_B_M1151_USA",2,round (15 / GRLIB_recycling_percentage),4],
 	["CUP_B_M1151_Deploy_USA",2,round (40 / GRLIB_recycling_percentage),5],

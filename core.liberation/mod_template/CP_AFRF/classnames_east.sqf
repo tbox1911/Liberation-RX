@@ -102,7 +102,6 @@ opfor_vehicles_low_intensity = [
 	"CUP_O_UAZ_METIS_RU",
 	"CUP_O_UAZ_AA_RU",
 	"CUP_O_Ural_ZU23_RU",
-	"CUP_O_GAZ_Vodnik_Unarmed_RU",
 	"CUP_O_GAZ_Vodnik_PK_RU",
 	"CUP_O_GAZ_Vodnik_AGS_RU",
 	"CUP_O_GAZ_Vodnik_BPPU_RU",
@@ -123,7 +122,11 @@ opfor_battlegroup_vehicles = [
 	"CUP_O_BTR90_HQ_RU",
 	"CUP_O_T72_RU",
 	"CUP_O_T90_RU",
-	"CUP_O_2S6_RU"
+	"CUP_O_2S6_RU",
+	"CUP_O_Kamaz_RU",
+	"CUP_O_Mi8AMT_RU",
+	"CUP_O_Ka60_Grey_RU",
+	"CUP_O_Ka52_RU"
 ];
 
 opfor_battlegroup_vehicles_low_intensity = [
@@ -132,20 +135,22 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"CUP_O_UAZ_SPG9_RU",
 	"CUP_O_UAZ_METIS_RU",
 	"CUP_O_UAZ_AA_RU",
+	"CUP_O_UAZ_Unarmed_RU",
 	"CUP_O_Ural_ZU23_RU",
 	"CUP_O_GAZ_Vodnik_Unarmed_RU",
 	"CUP_O_GAZ_Vodnik_PK_RU",
 	"CUP_O_GAZ_Vodnik_AGS_RU",
 	"CUP_O_GAZ_Vodnik_BPPU_RU",
 	"CUP_O_GAZ_Vodnik_KPVT_RU",
-	"CUP_O_UAZ_AGS30_RU"
+	"CUP_O_UAZ_AGS30_RU",
+	"CUP_O_Ka60_Grey_RU",
+	"CUP_O_MI6T_RU"
 ];
 
 opfor_troup_transports_truck = [
 	"CUP_O_GAZ_Vodnik_Unarmed_RU",
 	"CUP_O_UAZ_Unarmed_RU",
-	"CUP_O_Kamaz_RU",
-	"CUP_O_Kamaz_Open_RU"
+	"CUP_O_Kamaz_RU"
 ];
 
 opfor_troup_transports_heli = [

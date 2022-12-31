@@ -41,7 +41,7 @@ militia_squad = [
 	"I_G_Soldier_SL_F",
 	"I_G_Soldier_A_F",
 	"I_G_Soldier_AR_F",
-	"I_G_Soldier_AR_F",	
+	"I_G_Soldier_AR_F",
 	"I_G_medic_F",
 	"I_G_engineer_F",
 	"I_G_Soldier_exp_F",
@@ -49,7 +49,7 @@ militia_squad = [
 	"I_G_Soldier_M_F",
 	"I_G_Soldier_F",
 	"I_G_Soldier_LAT_F",
-	"I_G_Soldier_LAT_F",	
+	"I_G_Soldier_LAT_F",
 	"I_G_Soldier_lite_F",
 	"I_G_Sharpshooter_F",
 	"I_G_Soldier_TL_F",
@@ -135,12 +135,11 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"I_APC_Wheeled_03_cannon_F",
 	"I_MRAP_03_hmg_F",
 	"I_MRAP_03_gmg_F",
-	"I_Heli_Transport_02_F",
-	"I_Truck_02_covered_F"
+	"I_Heli_light_03_unarmed_F",
+	"I_Truck_02_transport_F"
 ];
 
 opfor_troup_transports_truck = [
-	"I_Heli_Transport_02_F",
 	"I_Truck_02_covered_F",
 	"I_Truck_02_transport_F"
 ];
@@ -153,7 +152,7 @@ opfor_troup_transports_heli = [
 opfor_air = [
 	"I_Plane_Fighter_03_CAS_F",
 	"I_Plane_Fighter_04_F",
-	"I_Heli_light_03_dynamicLoadout_F"			
+	"I_Heli_light_03_dynamicLoadout_F"
 ];
 
 opfor_statics = [

@@ -39,7 +39,7 @@ militia_squad = [
 	"vn_o_men_vc_03",
 	"vn_o_men_vc_04",
 	"vn_o_men_vc_05",
-	"vn_o_men_vc_06",	
+	"vn_o_men_vc_06",
 	"vn_o_men_vc_07",
 	"vn_o_men_vc_08",
 	"vn_o_men_vc_11",
@@ -76,20 +76,14 @@ opfor_vehicles = [
 	"vn_o_wheeled_btr40_mg_02_nva65",
 	"vn_o_wheeled_btr40_mg_03_nva65",
 	"vn_o_wheeled_z157_mg_01_nva65",
-	"vn_o_wheeled_z157_mg_02_nva65",
-	"vn_o_wheeled_z157_02_nva65",
-	"vn_o_wheeled_z157_02_nva65",
-	"vn_o_air_mi2_01_03",	
-	"vn_o_air_mi2_01_03"
+	"vn_o_wheeled_z157_mg_02_nva65"
 ];
 
 opfor_vehicles_low_intensity = [
 	"vn_o_wheeled_btr40_mg_02_nva65",
 	"vn_o_wheeled_btr40_mg_01_nva65",
 	"vn_o_wheeled_z157_mg_01_nva65",
-	"vn_o_wheeled_z157_mg_02_nva65",
-	"vn_o_wheeled_z157_01_nva65",
-	"vn_o_air_mi2_01_03"
+	"vn_o_wheeled_z157_mg_02_nva65"
 ];
 
 opfor_battlegroup_vehicles = [

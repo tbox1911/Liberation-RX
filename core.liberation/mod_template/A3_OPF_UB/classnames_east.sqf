@@ -39,7 +39,7 @@ militia_squad = [
 	"O_G_Soldier_SL_F",
 	"O_G_Soldier_A_F",
 	"O_G_Soldier_AR_F",
-	"O_G_Soldier_AR_F",	
+	"O_G_Soldier_AR_F",
 	"O_G_medic_F",
 	"O_G_engineer_F",
 	"O_G_Soldier_exp_F",
@@ -47,7 +47,7 @@ militia_squad = [
 	"O_G_Soldier_M_F",
 	"O_G_Soldier_F",
 	"O_G_Soldier_LAT_F",
-	"O_G_Soldier_LAT_F",	
+	"O_G_Soldier_LAT_F",
 	"O_G_Soldier_lite_F",
 	"O_G_Sharpshooter_F",
 	"O_G_Soldier_TL_F",
@@ -81,7 +81,6 @@ opfor_vehicles = [
 	"O_APC_Wheeled_02_rcws_v2_F",
 	"O_APC_Tracked_02_cannon_F",
 	"O_APC_Wheeled_02_rcws_v2_F",
-	"O_Truck_03_transport_F",
 	"O_MBT_02_cannon_F",
 	"O_MBT_02_cannon_F",
 	"O_APC_Tracked_02_AA_F",
@@ -92,7 +91,6 @@ opfor_vehicles = [
 opfor_vehicles_low_intensity = [
 	"O_APC_Tracked_02_cannon_F",
 	"O_APC_Wheeled_02_rcws_v2_F",
-	"O_Truck_02_transport_F",
 	"O_MRAP_02_hmg_F",
 	"O_MRAP_02_hmg_F",
 	"O_MRAP_02_gmg_F",
@@ -111,7 +109,7 @@ opfor_battlegroup_vehicles = [
 	"O_MBT_02_cannon_F",
 	"O_APC_Tracked_02_AA_F",
 	"O_Heli_Attack_02_dynamicLoadout_F",
-	"O_T_VTOL_02_vehicle_F",
+	"O_T_VTOL_02_infantry_F",
 	"O_MBT_04_cannon_F",
 	"O_MBT_04_command_F"
 ];
@@ -124,15 +122,14 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"O_MRAP_02_gmg_F",
 	"O_Truck_02_covered_F",
 	"O_Heli_Light_02_dynamicLoadout_F",
+	"O_Heli_Transport_04_covered_F",
 	"O_LSV_02_armed_F",
 	"O_LSV_02_AT_F"
 ];
 
 opfor_troup_transports_truck = [
-	"O_Truck_03_transport_F",
 	"O_Truck_03_covered_F",
-	"O_Truck_02_covered_F",
-	"O_Truck_02_transport_F"
+	"O_Truck_02_covered_F"
 ];
 
 opfor_troup_transports_heli = [
@@ -143,7 +140,7 @@ opfor_troup_transports_heli = [
 
 opfor_air = [
 	"O_Heli_Light_02_dynamicLoadout_F",
-	"O_Heli_Light_02_v2_F",	
+	"O_Heli_Light_02_v2_F",
 	"O_Heli_Attack_02_dynamicLoadout_black_F",
 	"O_Heli_Attack_02_dynamicLoadout_F",
 	"O_T_VTOL_02_vehicle_F",

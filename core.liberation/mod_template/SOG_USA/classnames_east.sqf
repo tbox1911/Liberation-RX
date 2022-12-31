@@ -39,7 +39,7 @@ militia_squad = [
 	"vn_b_men_seal_01",
 	"vn_b_men_seal_10",
 	"vn_b_men_seal_11",
-	"vn_b_men_seal_02",	
+	"vn_b_men_seal_02",
 	"vn_b_men_seal_06",
 	"vn_b_men_seal_08",
 	"vn_b_men_seal_03",
@@ -62,12 +62,12 @@ divers_squad = [
 ];
 
 militia_vehicles = [
-	"vn_b_wheeled_m151_mg_04_mp",
-	"vn_b_wheeled_m151_mg_04_mp",
 	"vn_b_wheeled_m151_mg_02_mp",
 	"vn_b_wheeled_m151_mg_03_mp",
-	"vn_b_wheeled_m151_02_mp",
-	"vn_b_wheeled_m151_01_mp"
+	"vn_b_wheeled_m151_mg_04_mp",
+	"vn_b_wheeled_m151_mg_04_mp",
+	"vn_b_wheeled_m151_01_mp",
+	"vn_b_wheeled_m151_02_mp"
 ];
 
 opfor_boats = [
@@ -78,54 +78,61 @@ opfor_boats = [
 ];
 
 opfor_vehicles = [
-	"vn_b_wheeled_m151_mg_04",
 	"vn_b_wheeled_m151_mg_02",
 	"vn_b_wheeled_m151_mg_03",
+	"vn_b_wheeled_m151_mg_04",
 	"vn_b_wheeled_m54_mg_01",
-	"vn_b_wheeled_m54_mg_03",
 	"vn_b_wheeled_m54_mg_02",
+	"vn_b_wheeled_m54_mg_03",
+	"vn_b_armor_m41_01_01",
 	"vn_b_armor_m41_01_01",
 	"vn_b_wheeled_m151_mg_05"
 ];
 
 opfor_vehicles_low_intensity = [
+	"vn_b_wheeled_m151_mg_02_mp",
+	"vn_b_wheeled_m151_mg_03_mp",
+	"vn_b_wheeled_m151_02_mp",
 	"vn_b_wheeled_m151_mg_04",
 	"vn_b_wheeled_m151_mg_02",
 	"vn_b_wheeled_m151_mg_03"
 ];
 
 opfor_battlegroup_vehicles = [
-	"vn_b_wheeled_m151_mg_04",
 	"vn_b_wheeled_m151_mg_02",
 	"vn_b_wheeled_m151_mg_03",
+	"vn_b_wheeled_m151_mg_04",
 	"vn_b_wheeled_m54_mg_01",
-	"vn_b_wheeled_m54_mg_03",
 	"vn_b_wheeled_m54_mg_02",
+	"vn_b_wheeled_m54_mg_03",
+	"vn_b_armor_m41_01_01",
 	"vn_b_armor_m41_01_01",
 	"vn_b_wheeled_m151_mg_05",
-	"vn_b_air_ch34_04_03",
+	"vn_b_air_ch34_03_01",
 	"vn_b_air_uh1d_02_02",
-	"vn_b_wheeled_m54_01",
 	"vn_b_wheeled_m54_02"
 ];
 
 opfor_battlegroup_vehicles_low_intensity = [
-	"vn_b_wheeled_m151_mg_04",
+	"vn_b_wheeled_m151_mg_02_mp",
+	"vn_b_wheeled_m151_mg_03_mp",
+	"vn_b_wheeled_m151_mg_04_mp",
 	"vn_b_wheeled_m151_mg_02",
 	"vn_b_wheeled_m151_mg_03",
+	"vn_b_wheeled_m151_mg_04",
 	"vn_b_wheeled_m54_01",
-	"vn_b_wheeled_m54_02",
+	"vn_b_air_oh6a_01",
 	"vn_b_air_uh1d_02_02"
 ];
 
 opfor_troup_transports_truck = [
-	"vn_b_wheeled_m54_02",
-	"vn_b_wheeled_m54_01"
+	"vn_b_wheeled_m54_01",
+	"vn_b_wheeled_m54_02"
 ];
 
 opfor_troup_transports_heli = [
-	"vn_b_air_oh6a_01",
 	"vn_b_air_ch34_03_01",
+	"vn_b_air_oh6a_01",
 	"vn_b_air_uh1d_02_02"
 ];
 
