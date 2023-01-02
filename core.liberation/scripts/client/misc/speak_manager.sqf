@@ -142,8 +142,8 @@ speak_mission_delivery_4 = {
 };
 
 GRLIB_speaking = true;
+[_unit, (_unit getDir player)] remoteExec ["setDir", 2];
 switch (side _unit) do {
-	[_unit, (_unit getDir player)] remoteExec ["setDir", 2];
 	case (GRLIB_side_civilian) : {
 		switch (typeOf _unit) do {
 			case "C_Nikos" : {[_unit] call speak_mission_delivery_1};
