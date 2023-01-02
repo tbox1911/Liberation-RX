@@ -2,6 +2,37 @@
 
 
 
+something to blow up in every sector
+------------------------------------------------------------------------------------------
+
+search for "Land_Communication_F"
+\scripts\server\game\spawn_radio_towers.sqf
+\scripts\server\remotecall\sector_liberated_remote_call.sqf
+\scripts\shared\functions\F_sectorOwnership.sqf
+
+
+
+
+
+MSU CDLC special
+------------------------------------------------------------------------------------------
+
+new modsets:
+mission_params.hpp
+mod_template\mod_init.sqf
+\scripts\shared\classnames.sqf
+
+seperate categories for cdlcs
+Armored light vehicles
+Heavy Armored vehicles
+Planes and Jets
+\ui\liberation_build.hpp
+
+restrict paint menu
+
+
+
+
 
 MSU Redux
 ------------------------------------------------------------------------------------------
@@ -14,6 +45,7 @@ ammo when in sector
 
 \scripts\server\ai\prisonner_ai.sqf
 POW marker
+
 
 
 
