@@ -779,6 +779,9 @@ fast_air_vehicle = [
 
 // UAVs
 
+// CUP
+["CUP_B_USMC_DYN_MQ9",0,1250,0,GRLIB_perm_inf],
+
 // USAF
 ["USAF_RQ4A",0,fast_air_vehicle_price_tier_1,0,GRLIB_perm_inf],     //Global hawk
 ["USAF_MQ9",0,fast_air_vehicle_price_tier_2,0,GRLIB_perm_inf],  //Reaper
@@ -811,12 +814,13 @@ boats_west = [
 
 static_vehicles = [
 
-// static_vehicles
 // Light
 // BW
 ["rnt_gmw_static_ai",0,0,0,GRLIB_perm_inf],
 ["Redd_Milan_Static",0,0,0,GRLIB_perm_inf],
 ["rnt_mg3_static_ai",0,0,0,GRLIB_perm_inf],
+["BWA3_MRS120_Fleck",0,0,0,GRLIB_perm_inf],
+
 // CUP
 ["CUP_B_SearchLight_static_USMC",0,0,0,GRLIB_perm_inf],
 ["CUP_B_M2StaticMG_USMC",0,0,0,GRLIB_perm_inf],
@@ -824,12 +828,14 @@ static_vehicles = [
 ["CUP_B_MK19_TriPod_USMC",0,0,0,GRLIB_perm_inf],
 ["RHS_TOW_TriPod_D",0,0,0,GRLIB_perm_inf,0,0,0,GRLIB_perm_inf],
 ["CUP_B_M252_USMC",0,0,0,GRLIB_perm_inf],
+
 // Medium
 // CUP
 ["CUP_B_Stinger_AA_pod_Base_USMC",0,0,0,GRLIB_perm_inf],
 ["CUP_WV_B_CRAM",50,0,0,GRLIB_perm_inf],
 // Vanilla
 ["B_Radar_System_01_F",0,0,40,GRLIB_perm_inf],
+
 // Heavy
 // CUP
 ["CUP_WV_B_RAM_Launcher",150,0,0,GRLIB_perm_inf],
@@ -841,11 +847,11 @@ static_vehicles = [
 // Mantis
 ["rnt_mantis_base",60,0,0,GRLIB_perm_inf],
 ["rnt_mantis_radar",0,0,40,GRLIB_perm_inf],
-
 // FFAA
 ["ffaa_lanzador_nasams",25,0,0,GRLIB_perm_inf],
 // CUP
 ["CUP_B_M119_USMC",0,600,0,GRLIB_perm_inf],
+
 // Super heavy
 ["B_Ship_MRLS_01_F",0,20000,0,GRLIB_perm_inf]
 ];
@@ -1219,6 +1225,7 @@ squads = [
 
 // All the UAVs must be declared here
 uavs = [
+"CUP_B_USMC_DYN_MQ9",
 "B_UAV_01_F",
 "B_UAV_02_dynamicLoadout_F",
 "B_T_UAV_03_dynamicLoadout_F",
