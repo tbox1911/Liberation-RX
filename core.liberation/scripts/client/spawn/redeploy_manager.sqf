@@ -216,8 +216,7 @@ if (dialog && deploy == 1) then {
 		};
 		GRLIB_player_spawned = ([] call F_getValid);
 		cinematic_camera_started = false;
-		playMusic "";
-	};	
+	};
 };
 
 respawn_camera cameraEffect ["Terminate","back"];
@@ -235,3 +234,6 @@ if (alive player && deploy == 1) then {
 	if (isNil "_spawn_str") then {_spawn_str = "Somewhere."};
 	[_spawn_str] spawn spawn_camera;
 };
+
+sleep 3;
+playMusic "";
