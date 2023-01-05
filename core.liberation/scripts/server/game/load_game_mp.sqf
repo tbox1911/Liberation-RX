@@ -142,19 +142,9 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 	if (typeName GRLIB_player_context != "ARRAY") then {GRLIB_player_context = []};
 	setDate [ GRLIB_date_year, GRLIB_date_month, GRLIB_date_day, time_of_day, 0];
 
-	_correct_fobs = [];
-	{
-		_next_fob = _x;
-		_keep_fob = true;
-		{
-			if ( _next_fob distance (markerpos _x) < 50 ) exitWith { _keep_fob = false };
-		} foreach sectors_allSectors;
-		if ( _keep_fob ) then { _correct_fobs pushback _next_fob };
-	} foreach GRLIB_all_fobs;
-	GRLIB_all_fobs = _correct_fobs;
 	stats_saves_loaded = stats_saves_loaded + 1;
 
-	diag_log format [ "--- LRX Load Game %1 objects to load...", count(buildings_to_load)];
+	diag_log format ["--- LRX Load Game %1 objects to load...", count(buildings_to_load)];
 	{
 		_nextclass = _x select 0;
         _nextpos = _x select 1;
