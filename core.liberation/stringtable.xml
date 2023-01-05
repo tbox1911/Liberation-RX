@@ -2854,16 +2854,16 @@
 			<Czech>Opravdu chcete rozebrat FOB?</Czech>
 		</Key>
 		<Key ID="STR_FOB_REPACKAGE_HINT">
-			<Original>FOB repackaged.</Original>
-			<French>FOB repliée.</French>
-			<German>FOB eingepackt.</German>
-			<Spanish>FOB reempaquetada</Spanish>
-			<Russian>FOB свёрнута</Russian>
-			<Chinesesimp>FOB已重新包装</Chinesesimp>
-			<Chinese>FOB已重新包裝</Chinese>
-			<Japanese>FOBは畳まれました</Japanese>
-			<Portuguese>FOB reembalado.</Portuguese>
-			<Czech>FOB Rozebráno</Czech>
+			<Original>repackaged.</Original>
+			<French>repliée.</French>
+			<German>eingepackt.</German>
+			<Spanish>reempaquetada</Spanish>
+			<Russian>свёрнута</Russian>
+			<Chinesesimp>已重新包装</Chinesesimp>
+			<Chinese>已重新包裝</Chinese>
+			<Japanese>は畳まれました</Japanese>
+			<Portuguese>reembalado.</Portuguese>
+			<Czech>Rozebráno</Czech>
 		</Key>
 		<Key ID="STR_HALO_PARAM">
 			<Original>HALO jump</Original>

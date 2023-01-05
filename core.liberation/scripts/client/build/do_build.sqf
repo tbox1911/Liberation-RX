@@ -35,7 +35,7 @@ while { true } do {
 	build_confirmed = 1;
 	build_invalid = 0;
 	_classname = "";
-	
+
 	if ( buildtype == 6 ) then { build_altitude = building_altitude } else { build_altitude = 0.2 };
 
 	if ( buildtype == 99 ) then {
@@ -43,7 +43,7 @@ while { true } do {
 		_price = 0;
 		_price_fuel = 0;
 	};
-	
+
 	if ( buildtype == 98 ) then {
 		_classname = FOB_outpost;
 		_price = 0;
@@ -115,7 +115,7 @@ while { true } do {
 				[_unit] call compileFinal preprocessFileLineNUmbers _loadouts_folder;
 			};
 
-			if (GRLIB_ACE_enabled) then { 
+			if (GRLIB_ACE_enabled) then {
 				_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 			};
 
@@ -143,7 +143,7 @@ while { true } do {
 					_unit enableGunLights "Auto";
 					_unit setVariable ["PAR_Grp_ID", format["AI_%1",PAR_Grp_ID], true];
 					//_unit forceAddUniform (uniform player);
-					if (GRLIB_ACE_enabled) then { 
+					if (GRLIB_ACE_enabled) then {
 						_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 					} else {
 						[_unit] call PAR_fn_AI_Damage_EH;
@@ -339,7 +339,7 @@ while { true } do {
 				deleteVehicle _vehicle;
 				sleep 0.1;
 
-				if ([_classname, simple_objects] call F_itemIsInClass) then {					
+				if ([_classname, simple_objects] call F_itemIsInClass) then {
 					 createSimpleObject [_classname, AGLtoASL _truepos];
 				} else {
 					_vehicle = _classname createVehicle _truepos;
@@ -434,7 +434,7 @@ while { true } do {
 						_vehicle addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1 }];
 						_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_static }];
 					};
-					
+
 					// FOB
 					if(buildtype == 99) then {
 						_vehicle addEventHandler ["HandleDamage", {0}];
@@ -442,11 +442,17 @@ while { true } do {
 						[(getpos _vehicle), false] remoteExec ["build_fob_remote_call", 0];
 
 						// Add owner sign
-						_fobdir = (getdir _vehicle);
-						_sign_pos = (getposATL _vehicle) vectorAdd ([[-6, -5, -0.2], -_fobdir] call BIS_fnc_rotateVector2D);    
-						_sign = createVehicle [FOB_sign, _sign_pos, [], 0, "CAN_COLLIDE"];
-						_sign setDir _fobdir + 90;
+						private _fobdir = (getdir _vehicle);
+						private _offset = [[-6, -5, -0.2], -_fobdir];
+						if (_classname == FOB_outpost ) then { _offset = [[5, -3, -0.2], -_fobdir] };
+						private _sign_pos = (getposATL _vehicle) vectorAdd (_offset call BIS_fnc_rotateVector2D);
+						private _sign = createVehicle [FOB_sign, _sign_pos, [], 0, "CAN_COLLIDE"];
 						_sign allowDamage false;
+						if (_classname == FOB_outpost ) then {
+							_sign setDir (_fobdir - 90);
+						} else {
+							_sign setDir (_fobdir + 90);
+						};
 						_sign setObjectTextureGlobal [0, getMissionPath "res\splash_libe2.paa"];
 						if (count GRLIB_all_fobs == 0) then {
 							_sign setVariable ["GRLIB_vehicle_owner", "public", true];
@@ -475,7 +481,7 @@ while { true } do {
 			};
 			if ( _idactview != -1 ) then {
 				player removeAction _idactview;
-			};			
+			};
 			if ( _idactplacebis != -1 ) then {
 				player removeAction _idactplacebis;
 			};

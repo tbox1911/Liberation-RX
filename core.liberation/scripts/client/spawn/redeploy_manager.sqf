@@ -79,7 +79,7 @@ while { dialog && alive player && deploy == 0} do {
 
 	for [{_idx=0},{_idx < count GRLIB_all_fobs},{_idx=_idx+1}] do {
 		_fobpos = GRLIB_all_fobs select _idx;
-		_near_outpost = (count (_fobpos nearObjects [FOB_outpost, 100]) > 0);
+		_near_outpost = (count (_fobpos nearObjects [FOB_outpost, 50]) > 0);
 		if (_near_outpost) then {
 			_choiceslist = _choiceslist + [[format [ "Outpost %1 - %2", (military_alphabet select _idx),mapGridPosition (GRLIB_all_fobs select _idx) ],GRLIB_all_fobs select _idx]];
 		} else {
@@ -163,7 +163,7 @@ if (dialog && deploy == 1) then {
 			if ( GRLIB_forced_loadout == 0) then {
 				if ( typeOf player in units_loadout_overide ) then {
 					_loadouts_folder = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, toLower (typeOf player)];
-					[player] call compileFinal preprocessFileLineNUmbers _loadouts_folder;
+					[player] call compileFinal preprocessFileLineNumbers _loadouts_folder;
 				} else {
 					[player, configOf player] call BIS_fnc_loadInventory;
 				};
@@ -216,6 +216,7 @@ if (dialog && deploy == 1) then {
 		};
 		GRLIB_player_spawned = ([] call F_getValid);
 		cinematic_camera_started = false;
+		playMusic "";
 	};	
 };
 

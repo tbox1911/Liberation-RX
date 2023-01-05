@@ -14,8 +14,8 @@ private _id_actions = [
 ];
 
 private [
-	"_fobdistance",	"_near_outpost", "_near_arsenal", "_near_spawn", "_near_fobbox",
-	"_near_fuel", "_near_repair", "_near_atm", "_near_lhd", "_my_dog", "_my_squad",
+	"_fobdistance",	"_near_outpost", "_outpost_owner", "_near_arsenal", "_near_spawn",
+	"_near_fobbox",	"_near_fuel", "_near_repair", "_near_atm", "_near_lhd", "_my_dog", "_my_squad",
 	"_idact_id", "_idact_num"
 ];
 
@@ -33,7 +33,8 @@ if (!(player diarySubjectExists str(parseText GRLIB_r3))) exitWith {};
 while { true } do {
 	if ([] call is_menuok) then {
 		_fobdistance = round (player distance2D ([] call F_getNearestFob));
-		_near_outpost = (count (player nearObjects [FOB_outpost, _distfob+5]) > 0);
+		_near_outpost = (count (player nearObjects [FOB_outpost, _distfob]) > 0);
+		_outpost_owner = [getPosATL player] call F_getFobOwner;
 		_near_arsenal = [player, "ARSENAL", _distarsenal, true] call F_check_near;
 		_near_spawn = ([player, "SPAWNT", _distvehclose, true] call F_check_near || [player, "SPAWNV", _distvehclose, true] call F_check_near);
 		_near_fobbox = player nearEntities [[FOB_box_typename, FOB_truck_typename, FOB_box_outpost], _distvehclose];
@@ -320,7 +321,7 @@ while { true } do {
 		_idact_num = _id_actions select _idact_id;
 		if ((_fobdistance < _distarsenal && !_near_lhd) && (!_near_outpost) && ( ([player] call F_getScore >= GRLIB_perm_max) || (player == ( [] call F_getCommander ) || [] call is_admin) )) then {
 			if ( _idact_num == -1 ) then {
-				_idact = player addAction ["<t color='#FF6F00'>" + localize "STR_FOB_REPACKAGE" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_repackage_fob.sqf",([] call F_getNearestFob),-981,false,true,"","build_confirmed == 0 && !(cursorObject getVariable ['fob_in_use', false])"];
+				_idact = player addAction ["<t color='#FF6F00'>" + localize "STR_FOB_REPACKAGE" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_repackage_fob.sqf",([] call F_getNearestFob),-981,false,true,"","build_confirmed == 0"];
 				_id_actions set [_idact_id, _idact];
 			};
 		} else {
@@ -411,9 +412,9 @@ while { true } do {
 		// Destroy Outpost
 		_idact_id = _idact_id + 1;
 		_idact_num = _id_actions select _idact_id;
-		if ((_fobdistance < _distarsenal && !_near_lhd) && (_near_outpost) && ( ([player] call F_getScore >= GRLIB_perm_log) || (player == ( [] call F_getCommander ) || [] call is_admin) )) then {
+		if ((_fobdistance < _distarsenal && !_near_lhd) && _near_outpost && ( (getPlayerUID player == _outpost_owner) || (player == ( [] call F_getCommander ) || [] call is_admin) )) then {
 			if ( _idact_num == -1 ) then {
-				_idact = player addAction ["<t color='#FF6F00'>" + localize "STR_DESTROY_OUTPOST" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_destroy_fob.sqf",([] call F_getNearestFob),-981,false,true,"","build_confirmed == 0 && !(cursorObject getVariable ['fob_in_use', false])"];
+				_idact = player addAction ["<t color='#FF6F00'>" + localize "STR_DESTROY_OUTPOST" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_destroy_fob.sqf",([] call F_getNearestFob),-981,false,true,"","build_confirmed == 0"];
 				_id_actions set [_idact_id, _idact];
 			};
 		} else {

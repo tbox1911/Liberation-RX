@@ -1,18 +1,16 @@
 _fob_pos = _this select 3;
 if (isNil "_fob_pos") exitWith {};
-private ["_fob_hq", "_fobbox", "_near_sign" ];
+private ["_fobbox"];
 
 //only one at time
-_fob_hq = player nearobjects [FOB_typename, GRLIB_fob_range] select 0;
+private _fob_hq = player nearobjects [FOB_typename, GRLIB_fob_range] select 0;
 if (isNil "_fob_hq") exitWith {};
-_fob_sign = (getPosATL _fob_hq) nearobjects [FOB_sign, 10] select 0;
-if ((_fob_hq getVariable ["fob_in_use", false])) exitWith {};
-_fob_hq setVariable ["fob_in_use", true, true];
 
-//check owner
-if (isNil "_fob_sign") then { _fob_sign = objNull};
-if (getPlayerUID player != _fob_sign getVariable ["GRLIB_vehicle_owner", ""]) exitWith {hintSilent "Error!\nYour are NOT the owner of the FOB!"};
+private _fob_name = [_fob_pos] call F_getFobName;
+private _fob_owner = [_fob_pos] call F_getFobOwner;
+if (getPlayerUID player != _fob_owner) exitWith { hintSilent "Error!\nYour are NOT the owner of the FOB!" };
 
+build_confirmed = 1;
 dorepackage = 0;
 createDialog "liberation_repackage_fob";
 waitUntil { dialog };
@@ -42,12 +40,12 @@ if ( dorepackage > 0 ) then {
 		clearItemCargoGlobal _fobbox;
 		clearBackpackCargoGlobal _fobbox;
 		_fobbox addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
-		GRLIB_all_fobs = GRLIB_all_fobs - [ _fob_pos ];
-		publicVariable "GRLIB_all_fobs";
-		deleteVehicle _fob_hq;
-		deleteVehicle _fob_sign;
+		_fobbox setVariable ["GRLIB_vehicle_owner", getPlayerUID player, true];
 	};
-	hint localize "STR_FOB_REPACKAGE_HINT";
+
+	[_fob_pos] remoteExec ["destroy_fob_remote_call", 2];
+	hintSilent format ["%1 %2 "+ localize "STR_FOB_REPACKAGE_HINT", "FOB", _fob_name];
+	sleep 10;
 };
 sleep 0.5;
-_fob_hq setVariable ["fob_in_use", false, true];
+build_confirmed = 0;

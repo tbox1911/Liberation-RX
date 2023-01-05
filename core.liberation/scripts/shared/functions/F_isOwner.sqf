@@ -1,4 +1,5 @@
 params ["_unit", "_vehicle"];
+if (isNull _vehicle) exitWith { false };
 
 private _ret = false;
 if (side _vehicle != GRLIB_side_enemy) then {
