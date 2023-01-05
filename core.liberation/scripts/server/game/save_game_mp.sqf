@@ -15,6 +15,9 @@ private _classnames_to_save_blu = [FOB_typename, FOB_outpost, FOB_sign, huron_ty
 
 _classnames_to_save = _classnames_to_save + _classnames_to_save_blu + all_hostile_classnames;
 
+private _vehicles_light = GRLIB_vehicle_blacklist + list_static_weapons + uavs + [mobile_respawn];
+{ _vehicles_light pushback (_x select 0) } foreach support_vehicles;
+
 if ( GRLIB_endgame == 1 ) then {
     if (GRLIB_param_wipe_keepscore == 1) then {
         GRLIB_permissions = profileNamespace getVariable GRLIB_save_key select 12;
@@ -105,15 +108,20 @@ if ( GRLIB_endgame == 1 ) then {
                 };
                 if (_owner == "public") then {
                     buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner ];
-                };					
-                if (_owner in _keep_score_id && !([_nextclass, GRLIB_vehicle_blacklist] call F_itemIsInClass)) then {
-                    _color = _x getVariable ["GRLIB_vehicle_color", ""];
-                    _color_name = _x getVariable ["GRLIB_vehicle_color_name", ""];
-                    _compo = _x getVariable ["GRLIB_vehicle_composant", []];
-                    _lst_a3 = weaponsItemsCargo _x;
-                    {_lst_r3f pushback (typeOf _x)} forEach (_x getVariable ["R3F_LOG_objets_charges", []]);
-                    {_lst_grl pushback (typeOf _x)} forEach (_x getVariable ["GRLIB_ammo_truck_load", []]);
-                    buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner, _color, _color_name, _lst_a3, _lst_r3f, _lst_grl, _compo];
+                };
+
+                if (_owner in _keep_score_id) then {
+                    if (_nextclass in _vehicles_light) then {
+                        buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner ];
+                    } else {
+                        _color = _x getVariable ["GRLIB_vehicle_color", ""];
+                        _color_name = _x getVariable ["GRLIB_vehicle_color_name", ""];
+                        _compo = _x getVariable ["GRLIB_vehicle_composant", []];
+                        _lst_a3 = weaponsItemsCargo _x;
+                        {_lst_r3f pushback (typeOf _x)} forEach (_x getVariable ["R3F_LOG_objets_charges", []]);
+                        {_lst_grl pushback (typeOf _x)} forEach (_x getVariable ["GRLIB_ammo_truck_load", []]);
+                        buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner, _color, _color_name, _lst_a3, _lst_r3f, _lst_grl, _compo];
+                    };
                 };
             };
         } else {

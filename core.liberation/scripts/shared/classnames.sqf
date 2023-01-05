@@ -342,21 +342,18 @@ GRLIB_vehicle_whitelist = [
 
 // Blacklist Vehicle (lock, paint, delete)
 GRLIB_vehicle_blacklist = [
+	FOB_sign,
 	Arsenal_typename,
 	ammobox_b_typename,
 	ammobox_o_typename,
 	ammobox_i_typename,
-	FOB_truck_typename,
-	FOB_box_typename,
-	FOB_box_outpost,
 	canister_fuel_typename,
 	waterbarrel_typename,
 	fuelbarrel_typename,
 	foodbarrel_typename,
 	medicalbox_typename,
 	fireworks_typename,
-  	"Box_NATO_WpsLaunch_F",
-	"Land_RepairDepot_01_civ_F"
+  	"Box_NATO_WpsLaunch_F"
 ] + GRLIB_vehicle_blacklist_west;
 
 // Recycleable objects

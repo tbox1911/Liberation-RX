@@ -48,13 +48,11 @@ resources_intel = 0;
 GRLIB_player_scores = [];
 GRLIB_garage = [];
 
-no_kill_handler_classnames = [FOB_typename, FOB_outpost];
-{
-	no_kill_handler_classnames pushback (_x select 0);
-} foreach buildings;
+private _no_kill_handler_classnames = [FOB_typename, FOB_outpost];
+{ _no_kill_handler_classnames pushback (_x select 0) } foreach buildings;
 
-private _vehicles_blacklist = list_static_weapons + uavs + support_vehicles + [mobile_respawn];
-_buildings_created = [];
+private _vehicles_light = GRLIB_vehicle_blacklist + list_static_weapons + uavs + [mobile_respawn];
+{ _vehicles_light pushback (_x select 0) } foreach support_vehicles;
 
 // Wipe Savegame
 if ( GRLIB_param_wipe_savegame_1 == 1 && GRLIB_param_wipe_savegame_2 == 1 ) then {
@@ -79,6 +77,7 @@ if ( GRLIB_param_wipe_savegame_1 == 1 && GRLIB_param_wipe_savegame_2 == 1 ) then
 greuh_liberation_savegame = profileNamespace getVariable GRLIB_save_key;
 private _side_west = "";
 private _side_east = "";
+private _buildings_created = [];
 
 if ( !isNil "greuh_liberation_savegame" ) then {
 	diag_log format [ "--- LRX Load Game start at %1", time ];
@@ -164,10 +163,14 @@ if ( !isNil "greuh_liberation_savegame" ) then {
             _nextbuilding = createSimpleObject [_nextclass, AGLtoASL _nextpos];
         } else {
 			_nextbuilding = createVehicle [_nextclass, zeropos, [], 0, "CAN_COLLIDE"];
+			_nextbuilding allowDamage false;
 			_nextbuilding setVectorDirAndUp [[-cos _nextdir, sin _nextdir, 0] vectorCrossProduct surfaceNormal _nextpos, surfaceNormal _nextpos];
 			_nextbuilding setPosWorld _nextpos;
         };
-        _buildings_created pushback _nextbuilding;
+
+		if (!(_nextclass in [FOB_typename, FOB_sign])) then {
+			_buildings_created pushback _nextbuilding;
+		};
 
         // Clear Cargo
         clearWeaponCargoGlobal _nextbuilding;
@@ -179,7 +182,14 @@ if ( !isNil "greuh_liberation_savegame" ) then {
             _nextbuilding setAmmoCargo 0;
         };
 
-        if ( _owner != "" && _owner != "public" && !(_nextclass in _vehicles_blacklist) ) then {
+        if ( _owner != "" ) then {
+            _nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
+			if ( _nextclass == huron_typename ) then {
+            	_nextbuilding setVariable ["GRLIB_vehicle_ishuron", true, true];
+			};
+        };
+
+        if ( _owner != "" && _owner != "public" && !(_nextclass in _vehicles_light) ) then {
             [_x select 5] params [["_color", ""]];
             [_x select 6] params [["_color_name", ""]];
             [_x select 7] params [["_lst_a3", []]];
@@ -190,7 +200,6 @@ if ( !isNil "greuh_liberation_savegame" ) then {
             _nextbuilding setVehicleLock "LOCKED";
             _nextbuilding allowCrewInImmobile [true, false];
             _nextbuilding setUnloadInCombat [true, false];
-            _nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
 			_nextbuilding setVariable ["R3F_LOG_disabled", true, true];
 
 			// temp workaround
@@ -216,15 +225,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
             };
         };
 
-        if ( _owner == "public" ) then {
-            _nextbuilding setVariable ["GRLIB_vehicle_owner", "public", true];
-			if ( _nextclass == huron_typename ) then {
-            	_nextbuilding setVariable ["GRLIB_vehicle_ishuron", true, true];
-			};
-        };
-
         if ( _nextclass in (list_static_weapons + support_vehicles)) then {
-            _nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
             _nextbuilding setVariable ["R3F_LOG_disabled", false, true];
             if (_nextclass in static_vehicles_AI) then {
                 _nextbuilding setVehicleLock "LOCKEDPLAYER";
@@ -236,7 +237,6 @@ if ( !isNil "greuh_liberation_savegame" ) then {
         };
 
         if ( _nextclass in uavs ) then {
-            _nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
             _nextbuilding setVehicleLock "LOCKED";
             _nextbuilding setVariable ["R3F_LOG_disabled", true, true];
         };
@@ -247,31 +247,22 @@ if ( !isNil "greuh_liberation_savegame" ) then {
         };
 
         if ( _nextclass == mobile_respawn ) then {
-            _nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
             GRLIB_mobile_respawn pushback _nextbuilding;
         };
 
         if ( _nextclass == FOB_sign ) then {
-            _nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
             _nextbuilding setObjectTextureGlobal [0, getMissionPath "res\splash_libe2.paa"];
-            _nextbuilding allowDamage false;
         };
       
-        if ( _nextclass in no_kill_handler_classnames ) then {
-            _nextbuilding allowDamage false;
-            //_nextbuilding addEventHandler ["HandleDamage", { 0 }];
-        } else {
-			_nextbuilding addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+        if ( !(_nextclass in _no_kill_handler_classnames) ) then {
+            _nextbuilding addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		};
 
-        //diag_log format [ "--- LRX Load Game %1 loaded at %2.", typeOf _nextbuilding, time];
-		
+        //diag_log format [ "--- LRX Load Game %1 loaded at %2.", typeOf _nextbuilding, time];		
 	} foreach buildings_to_load;
 
-	sleep 1;
-	{
-		if (! (typeOf _x in [FOB_typename, FOB_sign])) then { _x allowDamage true };
-	} foreach _buildings_created;
+	sleep 3;
+	{ _x allowDamage true } foreach _buildings_created;
 
 	diag_log format [ "--- LRX Load Game finish at %1", time ];
 };
