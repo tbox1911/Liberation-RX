@@ -174,7 +174,6 @@ if (isServer && hasInterface) then {
 	 }];
 };
 
-waitUntil { time > 5 };
 initAmbientLife;
 enableEnvironment [true, true];
 setTerrainGrid 25;  //High = 12.5, Very High = 6.25, Ultra = 3.125
