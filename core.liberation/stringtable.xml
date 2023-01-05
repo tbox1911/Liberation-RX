@@ -4971,12 +4971,12 @@
 			<Czech>Maximální povolený počet FOB</Czech>
 		</Key>
 		<Key ID="STR_PARAM_FOB_TYPE">
-			<Original>Startup Fob Vehicle</Original>
+			<Original>Startup FOB Vehicle</Original>
 			<French>Type du vehicle de FOB</French>
 			<Chinesesimp>启动FOB车辆</Chinesesimp>
 			<Chinese>啟動FOB車輛</Chinese>
 			<Japanese>ミッション開始時のFOBタイプ</Japanese>
-			<Portuguese>Veículo Fob de Inicialização</Portuguese>
+			<Portuguese>Veículo FOBS de Inicialização</Portuguese>
 			<Czech>FOB Vozidlo</Czech>
 		</Key>
 		<Key ID="STR_PARAM_HURON_TYPE">
