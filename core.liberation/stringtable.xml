@@ -5597,7 +5597,7 @@
 		</Key>
 		<Key ID="STR_SQUAD_MOVE">
 			<Original>-- SQUAD MOVE</Original>
-			<French>-- ESQUADE BOUGE</French>
+			<French>-- ESCOUADE BOUGE</French>
 			<Japanese>-- 分隊移動</Japanese>
 			<Chinesesimp>-- 小队移动 --</Chinesesimp>
 			<Chinese>-- 小隊移動 --</Chinese>
@@ -5606,7 +5606,7 @@
 		</Key>
 		<Key ID="STR_SQUAD_FOLLOW">
 			<Original>-- SQUAD FOLLOW</Original>
-			<French>-- ESQUADE SUIT</French>
+			<French>-- ESCOUADE SUIT</French>
 			<Japanese>-- 分隊追随</Japanese>
 			<Chinesesimp>-- 小队跟随 --</Chinesesimp>
 			<Chinese>-- 小隊跟隨 --</Chinese>
@@ -5615,7 +5615,7 @@
 		</Key>
 		<Key ID="STR_SQUAD_STOP">
 			<Original>-- SQUAD STOP</Original>
-			<French>-- ESQUADE STOP</French>
+			<French>-- ESCOUADE STOP</French>
 			<Japanese>-- 分隊停止</Japanese>
 			<Chinesesimp>-- 小队停下 --</Chinesesimp>
 			<Chinese>-- 小隊停下 --</Chinese>
@@ -5624,7 +5624,7 @@
 		</Key>
 		<Key ID="STR_SQUAD_DISMISS">
 			<Original>-- SQUAD DISMISS</Original>
-			<French>-- ESQUADE AU FOYER</French>
+			<French>-- ESCOUADE AU FOYER</French>
 			<Japanese>-- 分隊解散</Japanese>
 			<Chinesesimp>-- 小队解散 --</Chinesesimp>
 			<Chinese>-- 小隊解散 --</Chinese>
