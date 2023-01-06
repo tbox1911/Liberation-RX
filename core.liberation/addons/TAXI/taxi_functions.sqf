@@ -32,6 +32,7 @@ taxi_dest = {
 
 	hintSilent format [localize _msg, round (_vehicle distance2D _dest)];
 	sleep 20;
+	if (GRLIB_RHS_enabled) then { sleep 40 };
 	_landing_range = 150;
 	_stop = time + (5 * 60); // wait 5min max
 	
