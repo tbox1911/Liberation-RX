@@ -51,7 +51,7 @@ GRLIB_garage = [];
 private _no_kill_handler_classnames = [FOB_typename, FOB_outpost];
 { _no_kill_handler_classnames pushback (_x select 0) } foreach buildings;
 
-private _vehicles_light = GRLIB_vehicle_blacklist + list_static_weapons + uavs + [mobile_respawn];
+private _vehicles_light = list_static_weapons + uavs + [mobile_respawn];
 { _vehicles_light pushback (_x select 0) } foreach support_vehicles;
 
 // Wipe Savegame
@@ -168,7 +168,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 			_nextbuilding setPosWorld _nextpos;
         };
 
-		if (!(_nextclass in [FOB_typename, FOB_sign])) then {
+		if (!(_nextclass in [FOB_typename, FOB_outpost, FOB_sign])) then {
 			_buildings_created pushback _nextbuilding;
 		};
 
@@ -189,52 +189,53 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 			};
         };
 
-        if ( _owner != "" && _owner != "public" && !(_nextclass in _vehicles_light) ) then {
-            [_x select 5] params [["_color", ""]];
-            [_x select 6] params [["_color_name", ""]];
-            [_x select 7] params [["_lst_a3", []]];
-            [_x select 8] params [["_lst_r3f", []]];
-            [_x select 9] params [["_lst_grl", []]];
-			[_x select 10] params [["_compo", []]];
-
-            _nextbuilding setVehicleLock "LOCKED";
-            _nextbuilding allowCrewInImmobile [true, false];
-            _nextbuilding setUnloadInCombat [true, false];
-			_nextbuilding setVariable ["R3F_LOG_disabled", true, true];
-
-			// temp workaround
-			if (typeName _color != "ARRAY") then {
-				if (_color != "") then {
-					[_nextbuilding, _color, _color_name] call RPT_fnc_TextureVehicle;
-				};
-			};
-			if (count _compo > 0) then {
-				[_nextbuilding, _compo]  call RPT_fnc_CompoVehicle;
-			};
-			if (GRLIB_CUPV_enabled && _nextclass isKindOf "Tank") then {
-				[_nextbuilding, false, ["hide_front_ti_panels",1,"hide_cip_panel_rear",1,"hide_cip_panel_bustle",1]] call BIS_fnc_initVehicle;
-			};
-            if (count _lst_a3 > 0) then {
-                {_nextbuilding addWeaponWithAttachmentsCargoGlobal [ _x, 1]} forEach _lst_a3;
-            };
-            if (count _lst_r3f > 0) then {
-                [_nextbuilding, _lst_r3f] call load_object_direct;
-            };
-            if (count _lst_grl > 0) then {
-                {[_nextbuilding, _x] call attach_object_direct} forEach _lst_grl;
-            };
-        };
-
-        if ( _nextclass in (list_static_weapons + support_vehicles)) then {
+        if ( _nextclass in _vehicles_light) then {
             _nextbuilding setVariable ["R3F_LOG_disabled", false, true];
+			_nextbuilding setVehicleLock "LOCKED";
             if (_nextclass in static_vehicles_AI) then {
                 _nextbuilding setVehicleLock "LOCKEDPLAYER";
                 _nextbuilding addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1 }];
                 _nextbuilding addEventHandler ["HandleDamage", { _this call damage_manager_static }];
                 _nextbuilding allowCrewInImmobile [true, false];
-                _nextbuilding setUnloadInCombat [true, false];			
+                _nextbuilding setUnloadInCombat [true, false];
             };
-        };
+        } else {
+			if ( _owner != "" && _owner != "public" && count _x > 5 ) then {
+				[_x select 5] params [["_color", ""]];
+				[_x select 6] params [["_color_name", ""]];
+				[_x select 7] params [["_lst_a3", []]];
+				[_x select 8] params [["_lst_r3f", []]];
+				[_x select 9] params [["_lst_grl", []]];
+				[_x select 10] params [["_compo", []]];
+
+				_nextbuilding setVehicleLock "LOCKED";
+				_nextbuilding allowCrewInImmobile [true, false];
+				_nextbuilding setUnloadInCombat [true, false];
+				_nextbuilding setVariable ["R3F_LOG_disabled", true, true];
+
+				// temp workaround
+				if (typeName _color != "ARRAY") then {
+					if (_color != "") then {
+						[_nextbuilding, _color, _color_name] call RPT_fnc_TextureVehicle;
+					};
+				};
+				if (count _compo > 0) then {
+					[_nextbuilding, _compo]  call RPT_fnc_CompoVehicle;
+				};
+				if (GRLIB_CUPV_enabled && _nextclass isKindOf "Tank") then {
+					[_nextbuilding, false, ["hide_front_ti_panels",1,"hide_cip_panel_rear",1,"hide_cip_panel_bustle",1]] call BIS_fnc_initVehicle;
+				};
+				if (count _lst_a3 > 0) then {
+					{_nextbuilding addWeaponWithAttachmentsCargoGlobal [ _x, 1]} forEach _lst_a3;
+				};
+				if (count _lst_r3f > 0) then {
+					[_nextbuilding, _lst_r3f] call load_object_direct;
+				};
+				if (count _lst_grl > 0) then {
+					{[_nextbuilding, _x] call attach_object_direct} forEach _lst_grl;
+				};
+			};
+		};
 
         if ( _nextclass in uavs ) then {
             _nextbuilding setVehicleLock "LOCKED";
@@ -253,12 +254,12 @@ if ( !isNil "greuh_liberation_savegame" ) then {
         if ( _nextclass == FOB_sign ) then {
             _nextbuilding setObjectTextureGlobal [0, getMissionPath "res\splash_libe2.paa"];
         };
-      
+
         if ( !(_nextclass in _no_kill_handler_classnames) ) then {
             _nextbuilding addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		};
 
-        //diag_log format [ "--- LRX Load Game %1 loaded at %2.", typeOf _nextbuilding, time];		
+        //diag_log format [ "--- LRX Load Game %1 loaded at %2.", typeOf _nextbuilding, time];
 	} foreach buildings_to_load;
 
 	sleep 3;
