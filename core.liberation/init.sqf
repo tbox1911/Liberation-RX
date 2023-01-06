@@ -181,6 +181,46 @@ if (isNil "frdl_fire_dmg_threshold") then { frdl_fire_dmg_threshold = 0.1; };
 
 
 
+
+
+log_on_server = compileFinal "
+		params ['_msg'];
+		diag_log _msg;
+";
+
+{
+	_x addEventHandler ["CuratorObjectPlaced", {
+		params ["_curator", "_entity"];
+		_unit = getassignedcuratorunit _curator;
+		
+		_msg = format ["[CuratorAction] %1 placed %2", name _unit, typeOf _entity];
+		[_msg] remoteExec ["log_on_server", 2];
+	}];
+
+	_x addEventHandler ["CuratorObjectEdited", {
+		params ["_curator", "_entity"];
+		_unit = getassignedcuratorunit _curator;
+		
+		_msg = format ["[CuratorAction] %1 moved %2", name _unit, typeOf _entity];
+		[_msg] remoteExec ["log_on_server", 2];
+	}];
+
+	_x addEventHandler ["CuratorObjectDoubleClicked", {
+		params ["_curator", "_entity"];
+		_unit = getassignedcuratorunit _curator;
+		
+		_msg = format ["[CuratorAction] %1 edited %2", name _unit, typeOf _entity];
+		[_msg] remoteExec ["log_on_server", 2];
+	}];
+} foreach allcurators;
+
+
+
+
+
+
+
+
 // SAM
 ["B_SAM_System_02_F", "InitPost", {
     params ["_vehicle"];
