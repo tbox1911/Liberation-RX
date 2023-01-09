@@ -158,46 +158,6 @@ simple_objects = [
 elite_vehicles = [];
 { if (_x select 4 == GRLIB_perm_max) then { elite_vehicles pushback (_x select 0)} } foreach light_vehicles + heavy_vehicles + air_vehicles + static_vehicles;
 
-// Static Weapons
-list_static_weapons = ["I_static_AA_F"] + opfor_statics;
-{
-	private _veh = _x select 0;
-	if (!(_veh in uavs)) then { list_static_weapons pushback _veh };
-} foreach static_vehicles;
-
-// Everything the AI troups should be able to resupply from
-ai_resupply_sources = [
-	Arsenal_typename,
-	ammo_truck_typename,
-	ammo_sling_typename
-] + ai_resupply_sources_west;
-
-// Everything the AI troups should be able to healing from
-ai_healing_sources = [
-	Respawn_truck_typename,
-	medicalbox_typename,
-	medic_sling_typename
-] + ai_healing_sources_west;
-
-// Everything the AI vehicle should be able to reammo from
-vehicle_rearm_sources = [
-	ammo_truck_typename,
-	ammo_sling_typename,
-	ammobox_b_typename,
-	ammobox_o_typename,
-	ammobox_i_typename
-] + vehicle_rearm_sources_west;
-
-// Everything the AI vehicle should be able to repair from
-vehicle_repair_sources = [
-	repair_sling_typename,
-	repair_truck_typename,
-	"B_APC_Tracked_01_CRV_F",
-	"C_Offroad_01_repair_F",
-	"B_G_Offroad_01_repair_F",
-	"Land_RepairDepot_01_civ_F"
-];
-
 // *** Boats ***
 boats_names = [
 	"C_Scooter_Transport_01_F",
@@ -262,6 +222,52 @@ if ( isNil "resistance_squad" ) then {
 		"I_G_Soldier_TL_F"
 	];
 };
+
+if ( isNil "resistance_squad_static" ) then {
+	resistance_squad_static = "I_static_AA_F";
+};
+
+// *** SOURCES ***
+
+// Static Weapons
+list_static_weapons = [resistance_squad_static] + opfor_statics;
+{
+	private _veh = _x select 0;
+	if (!(_veh in uavs)) then { list_static_weapons pushback _veh };
+} foreach static_vehicles;
+
+// Everything the AI troups should be able to resupply from
+ai_resupply_sources = [
+	Arsenal_typename,
+	ammo_truck_typename,
+	ammo_sling_typename
+] + ai_resupply_sources_west;
+
+// Everything the AI troups should be able to healing from
+ai_healing_sources = [
+	Respawn_truck_typename,
+	medicalbox_typename,
+	medic_sling_typename
+] + ai_healing_sources_west;
+
+// Everything the AI vehicle should be able to reammo from
+vehicle_rearm_sources = [
+	ammo_truck_typename,
+	ammo_sling_typename,
+	ammobox_b_typename,
+	ammobox_o_typename,
+	ammobox_i_typename
+] + vehicle_rearm_sources_west;
+
+// Everything the AI vehicle should be able to repair from
+vehicle_repair_sources = [
+	repair_sling_typename,
+	repair_truck_typename,
+	"B_APC_Tracked_01_CRV_F",
+	"C_Offroad_01_repair_F",
+	"B_G_Offroad_01_repair_F",
+	"Land_RepairDepot_01_civ_F"
+];
 
 // *** TRANSPORT CONFIG ***
 box_transport_config = [];
