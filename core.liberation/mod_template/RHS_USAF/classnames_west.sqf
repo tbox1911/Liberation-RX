@@ -991,10 +991,10 @@ support_crates = [
 ["USAF_SlingLoad_Repair",0,0,0,GRLIB_perm_inf],
 ["USAF_SlingLoad_Fuel",0,0,0,GRLIB_perm_inf],
 // Huron Container
-[ammo_sling_typename,0,0,0,9999],
-[repair_sling_typename,0,0,0,9999],
-[fuel_sling_typename,0,0,0,9999],
-[medic_sling_typename,0,0,0,9999],
+[ammo_sling_typename,0,0,0,GRLIB_perm_inf],
+[repair_sling_typename,0,0,0,GRLIB_perm_inf],
+[fuel_sling_typename,0,0,0,GRLIB_perm_inf],
+[medic_sling_typename,0,0,0,GRLIB_perm_inf],
 // Taru Container
 ["Land_Pod_Heli_Transport_04_medevac_F",0,0,0,GRLIB_perm_inf],
 ["Land_Pod_Heli_Transport_04_covered_F",0,0,0,GRLIB_perm_inf],
