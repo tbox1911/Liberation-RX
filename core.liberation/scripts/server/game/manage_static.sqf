@@ -45,5 +45,5 @@ while { true } do {
         sleep 1;
     } forEach _all_static;
 
-	sleep 10;
+	sleep 30;
 };
