@@ -15,14 +15,14 @@ GRLIB_defended_buildingPos_part = 0.2;
 GRLIB_sector_military_value = 2;
 GRLIB_secondary_objective_impact = 0.4;
 GRLIB_sector_spawn_factor = 2.5;
-GRLIB_sector_cap = 90 * GRLIB_unitcap;
-GRLIB_battlegroup_cap = 130 * GRLIB_unitcap;
+GRLIB_sector_cap = 95 * GRLIB_unitcap;
+GRLIB_battlegroup_cap = 110 * GRLIB_unitcap;
 GRLIB_patrol_cap = 10 * GRLIB_unitcap;
 GRLIB_blufor_cap = 10 * GRLIB_unitcap;
-GRLIB_battlegroup_size = 5;
-GRLIB_civilians_amount = 1.3 * GRLIB_civilian_activity;
+GRLIB_battlegroup_size = 6;
+GRLIB_civilians_amount = 1.1 * GRLIB_civilian_activity;
 GRLIB_fob_range = 450;
-GRLIB_surrender_chance = 82;
+GRLIB_surrender_chance = 85;
 GRLIB_secondary_missions_costs = [ 50,20 ];
 GRLIB_halo_altitude = 2000;
 GRLIB_civ_killing_penalty = 0;
@@ -75,14 +75,14 @@ tk_active = false; //NEW Tkillscript with dialog
 
 
 // Only use by 2 dividable numbers
-box_recycle_value = 35;
+box_recycle_value = 36;
 // Increases the ammo for logistics and decreasese the ammo for everyone
 logistics_ammo_increase = true;
 
-prisoner_intel = 7;
+prisoner_intel = 8;
 prisoner_score = 25;
 prisoner_ammo = 50;
-prisoner_combat_readiness = 10;
+prisoner_combat_readiness = 15;
 prisoner_i = 0;
 
 // Building Penalty
@@ -126,10 +126,10 @@ fob_hunting_readiness = 40;
 
 // Battlegroup readiness
 bg_readiness_cooldown = false;
-bg_readiness_min = 30;
+bg_readiness_min = 40;
 
 // Battlegroup sleeping (divided with csat aggressivity)
-bg_sleeptimer = 1000; 
+bg_sleeptimer = 1800; 
 sector_reinforcement = true;
 limit_bg_dist = GRLIB_spawn_max; 
 reinforce_spawn_min = GRLIB_spawn_min;
