@@ -19,6 +19,18 @@ while { true } do {
         if ((vectorUp _static) select 2 < 0.60) then {
             _static setpos [(getposATL _static) select 0,(getposATL _static) select 1, 0.5];
             _static setVectorUp surfaceNormal position _static;
+            sleep 1;
+        };
+
+        if (getPosATL _static select 2 < -0.02) then {
+            _static setpos (getpos _static);
+            sleep 1;
+        };
+
+        // Nearest enemy
+        private _gunner = gunner _static;
+        if (!isNull _gunner) then {
+            [_gunner] call F_getNearestEnemy;
         };
 
     } forEach _all_static;

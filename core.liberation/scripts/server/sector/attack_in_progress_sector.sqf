@@ -45,8 +45,8 @@ if ( GRLIB_blufor_defenders && !_defenders_cooldown) then {
 		sleep 0.5;
 		private _gunner = (units _grp) select ((count (units _grp)) -1);
 		_gunner assignAsGunner _veh1;
-		[_gunner] orderGetIn true;
 		_gunner moveInGunner _veh1;
+		[_gunner] orderGetIn true;
 		sleep 1;
 
 		// add static def
@@ -55,8 +55,8 @@ if ( GRLIB_blufor_defenders && !_defenders_cooldown) then {
 		sleep 0.5;
 		private _gunner = (units _grp) select ((count (units _grp)) -2);
 		_gunner assignAsGunner _veh2;
-		[_gunner] orderGetIn true;
 		_gunner moveInGunner _veh2;
+		[_gunner] orderGetIn true;
 		sleep 1;
 	};
 
@@ -128,8 +128,8 @@ if ( GRLIB_endgame == 0 ) then {
 };
 
 if (!isNull _arsenal_box) then { _arsenal_box spawn {sleep 120; deleteVehicle _this} };
-if (!isNull _veh1) then { _veh1 spawn {sleep 120; deleteVehicle _this} };
-if (!isNull _veh2) then { _veh2 spawn {sleep 120; deleteVehicle _this} };
+if (!isNull _veh1) then { _veh1 spawn {sleep 60; deleteVehicle _this} };
+if (!isNull _veh2) then { _veh2 spawn {sleep 60; deleteVehicle _this} };
 
 if ( count (units _grp) > 0 ) then {
 	[_grp] spawn {
