@@ -1,8 +1,7 @@
 params ["_unit"];
 
-private _side = side _unit;
 private _enemy_side = GRLIB_side_enemy;
-if (_side == GRLIB_side_enemy) then {
+if (side group _unit == GRLIB_side_enemy) then {
     _enemy_side = GRLIB_side_friendly;
 };
 
