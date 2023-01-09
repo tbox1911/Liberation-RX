@@ -11,7 +11,7 @@ private ["_nbUnits", "_townName",
 		 "_aiGroupRes", "_buildingpositions",
 		 "_tent1", "_chair1", "_chair2", "_fire1",
 		 "_box1", "_box2",
-		 "_veh1", "_veh2"];
+		 "_veh1", "_veh2", "_gunner"];
 
 _setupVars =
 {
@@ -67,20 +67,22 @@ _setupObjects =
 	[_aiGroupRes, _missionPos, (_nbUnits - (count _managed_units)), "resistance"] call createCustomGroup;
 
 	// create static weapons + crew
-	_veh1 = createVehicle ["I_static_AA_F", _missionPos, [], 50, "None"];
+	_veh1 = createVehicle [resistance_squad_static, _missionPos, [], 100, "None"];
 	_veh1 setDir random 360;
 	sleep 0.5;
 	_gunner = (units _aiGroupRes) select ((count (units _aiGroupRes)) -1);
 	_gunner assignAsGunner _veh1;
 	[_gunner] orderGetIn true;
+	_gunner moveInGunner _veh1;
 	sleep 1;
 
-	_veh2 = createVehicle ["I_static_AA_F", _missionPos, [], 50, "None"];
+	_veh2 = createVehicle [resistance_squad_static, _missionPos, [], 100, "None"];
 	_veh2 setDir random 360;
 	sleep 0.5;
 	_gunner = (units _aiGroupRes) select ((count (units _aiGroupRes)) -2);
 	_gunner assignAsGunner _veh2;
 	[_gunner] orderGetIn true;
+	_gunner moveInGunner _veh2;
 
 	// remove dead body to let the leader change
 	//{_x addEventHandler ["Killed", {_this spawn {sleep 20;hidebody (_this select 0);sleep 5;deleteVehicle (_this select 0)}}]} forEach units _aiGroupRes;
