@@ -2,7 +2,7 @@ params ["_unit", "_vehicle"];
 if (isNull _vehicle) exitWith { false };
 
 private _ret = false;
-if (side _vehicle != GRLIB_side_enemy) then {
+if (side group _vehicle != GRLIB_side_enemy) then {
 	private _unit_id = getPlayerUID (leader _unit);
 	private _owner_id = _vehicle getVariable ["GRLIB_vehicle_owner", ""];
 
