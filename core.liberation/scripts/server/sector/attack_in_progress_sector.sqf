@@ -15,9 +15,11 @@ if ( _sector == attack_in_progress select 0 ) then {
 
 if (_sector in A3W_sectors_in_use) then { _defenders_cooldown = true };
 
+private _blufor_static = [];
+{_blufor_static pushBack ( _x select 0 )} foreach (static_vehicles);
 private _grp = grpNull;
 if ( GRLIB_blufor_defenders && !_defenders_cooldown) then {
-	private _squad_type = blufor_squad_inf_light;
+	private _squad_type = blufor_squad_inf_light + [crewman_classname,crewman_classname];
 	if ( _sector in sectors_military ) then {
 		_squad_type = blufor_squad_mix;
 	};
@@ -49,6 +51,28 @@ if ( _ownership == GRLIB_side_friendly ) exitWith {
 private _arsenal_box = objNull;
 if (!(_sector in sectors_tower) && !_defenders_cooldown) then {
 	_arsenal_box = createVehicle [Arsenal_typename, markerPos _sector, [], 20, "NONE"];
+};
+
+private _veh1 = objNull;
+private _veh2 = objNull;
+if ((_sector in sectors_military) && !_defenders_cooldown) then {
+	//add static def
+	_veh1 = createVehicle [selectRandom _blufor_static, markerpos _sector, [], 150, "None"];
+	_veh1 setDir random 360;
+	sleep 0.5;
+	_gunner = (units _grp) select ((count (units _grp)) -1);
+	_gunner assignAsGunner _veh1;
+	[_gunner] orderGetIn true;
+	sleep 1;
+
+	//add static def
+	_veh2 = createVehicle [selectRandom _blufor_static, markerpos _sector, [], 150, "None"];
+	_veh2 setDir random 360;
+	sleep 0.5;
+	_gunner = (units _grp) select ((count (units _grp)) -1);
+	_gunner assignAsGunner _veh2;
+	[_gunner] orderGetIn true;
+	sleep 1;
 };
 
 private _sector_timer = GRLIB_vulnerability_timer;
@@ -97,6 +121,8 @@ if ( GRLIB_endgame == 0 ) then {
 };
 
 if (!isNull _arsenal_box) then { _arsenal_box spawn {sleep 120; deleteVehicle _this} };
+if (!isNull _veh1) then { _veh1 spawn {sleep 120; deleteVehicle _this} };
+if (!isNull _veh2) then { _veh2 spawn {sleep 120; deleteVehicle _this} };
 
 if ( count (units _grp) > 0 ) then {
 	[_grp] spawn {
