@@ -345,7 +345,7 @@ outlw_MR_repack =
 		UIsleep 0.05;
 	};
 
-	while { _keepRepacking } do
+	while { call _keepRepacking } do
 	{
 		call _magCode;
 
@@ -382,7 +382,7 @@ outlw_MR_repackingText =
 
 	_repacking = "Repacking...";
 
-	while { outlw_MR_isRepacking } do
+	while { call outlw_MR_isRepacking } do
 	{
 		_repacking = _repacking + ".";
 
