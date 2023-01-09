@@ -1,6 +1,5 @@
 
-outlw_MR_createDialog =
-{
+outlw_MR_createDialog = {
 	private ["_stance", "_raised", "_weapon"];
 
 	outlw_MR_sourceType = "";
@@ -115,8 +114,7 @@ outlw_MR_createDialog =
 	};
 };
 
-outlw_MR_populateMagComboBox =
-{
+outlw_MR_populateMagComboBox = {
 	private ["_this", "_magTypes", "_ammoTypes", "_n", "_a"];
 
 	_magTypes = (call outlw_MR_magInfo) select 0;
@@ -136,8 +134,7 @@ outlw_MR_populateMagComboBox =
 	};
 };
 
-outlw_MR_populateMagListBox =
-{
+outlw_MR_populateMagListBox = {
 	private ["_this", "_args", "_magListTitle", "_magTypes", "_magAmmoCounts", "_magAmmoCaps", "_magCounts", "_bgrndPos", "_n", "_a"];
 
 	_args = call outlw_MR_magInfo;
@@ -219,8 +216,7 @@ outlw_MR_populateMagListBox =
 	};
 };
 
-outlw_MR_filter =
-{
+outlw_MR_filter = {
 	// Added additional tracer check to avoid repacks between some tracer and non-tracer variants - GiPPO
 	
 	private ["_this", "_magTypes", "_magAmmoCounts", "_magAmmoCaps", "_ammoType", "_returnTypes", "_returnCounts", "_returnCaps", "_ammoTracer","_userFilter"];
@@ -263,8 +259,7 @@ outlw_MR_filter =
 	[_returnTypes, _returnCounts, _returnCaps];
 };
 
-outlw_MR_hideFull =
-{
+outlw_MR_hideFull = {
 	private ["_this", "_magTypes", "_magAmmoCounts", "_magAmmoCaps", "_magCounts", "_returnMagTypes", "_returnAmmoCaps", "_returnAmmoCaps", "_returnMagCounts", "_n", "_a"];
 
 	_magTypes = _this select 0;
@@ -295,8 +290,7 @@ outlw_MR_hideFull =
 	[_returnMagTypes, _returnMagAmmoCounts, _returnMagAmmoCaps, _returnMagCounts];
 };
 
-outlw_MR_repack =
-{
+outlw_MR_repack = {
 	private ["_sourceCap", "_targetCap", "_refreshRate", "_refreshCount", "_magCode", "_keepRepacking", "_sleepTime", "_n"];
 
 	outlw_MR_isRepacking = true;
@@ -376,13 +370,12 @@ outlw_MR_repack =
 	["outlw_MR_Dialog_Main", 10002, [-0.325,0], 0] call outlw_MR_ctrlSetPos;
 };
 
-outlw_MR_repackingText =
-{
+outlw_MR_repackingText = {
 	private ["_repacking"];
 
 	_repacking = "Repacking...";
 
-	while { call outlw_MR_isRepacking } do
+	while { outlw_MR_isRepacking } do
 	{
 		_repacking = _repacking + ".";
 
@@ -399,8 +392,7 @@ outlw_MR_repackingText =
 	((uiNamespace getVariable "outlw_MR_Dialog_Main") displayCtrl 1008) ctrlSetText "";
 };
 
-outlw_MR_debugInfo =
-{
+outlw_MR_debugInfo = {
 	private ["_magsAmmo", "_totalMagCount", "_totalAmmo", "_typeCountAmmo", "_magType", "_magAmmo", "_index", "_inArray", "_n", "_a"];
 
 	_magsAmmo = magazinesAmmo player;
@@ -445,8 +437,7 @@ outlw_MR_debugInfo =
 	[[_totalMagCount, _totalAmmo], _typeCountAmmo];
 };
 
-outlw_MR_block =
-{
+outlw_MR_block = {
 	private ["_doBlockSource", "_doBlockTarget"];
 
 	_doBlockSource = true;
@@ -515,8 +506,7 @@ outlw_MR_block =
 	((uiNamespace getVariable "outlw_MR_Dialog_Main") displayCtrl 2217) ctrlSetBackgroundColor [1,1,1,0.3];
 };
 
-outlw_MR_onDrag =
-{
+outlw_MR_onDrag = {
 	private ["_this", "_magInfo"];
 
 	outlw_MR_listDragging = false;
@@ -537,8 +527,7 @@ outlw_MR_onDrag =
 	call outlw_MR_block;
 };
 
-outlw_MR_onMouseButtonUp =
-{
+outlw_MR_onMouseButtonUp = {
 	outlw_MR_dragType = "";
 	outlw_MR_dragCount = 0;
 	outlw_MR_dragCap = 0;
@@ -564,8 +553,7 @@ outlw_MR_onMouseButtonUp =
 	((uiNamespace getVariable "outlw_MR_Dialog_Main") displayCtrl 2217) ctrlEnable false;
 };
 
-outlw_MR_sourceEnabled =
-{
+outlw_MR_sourceEnabled = {
 	private ["_this"];
 
 	if (_this select 0) then
@@ -596,8 +584,7 @@ outlw_MR_sourceEnabled =
 	};
 };
 
-outlw_MR_targetEnabled =
-{
+outlw_MR_targetEnabled = {
 	private ["_this"];
 
 	if (_this select 0) then
@@ -628,8 +615,7 @@ outlw_MR_targetEnabled =
 	};
 };
 
-outlw_MR_addSource =
-{
+outlw_MR_addSource = {
 	private ["_this", "_doExit", "_magInfo"];
 
 	_doExit = false;
@@ -684,8 +670,7 @@ outlw_MR_addSource =
 	};
 };
 
-outlw_MR_clearSource =
-{
+outlw_MR_clearSource = {
 	private ["_doPopulate"];
 
 	_doPopulate = false;
@@ -715,8 +700,7 @@ outlw_MR_clearSource =
 	["outlw_MR_Dialog_Main", 22180, [0,0.12], 0] call outlw_MR_ctrlSetPos;
 };
 
-outlw_MR_addTarget =
-{
+outlw_MR_addTarget = {
 	private ["_this", "_doExit", "_magInfo"];
 
 	_doExit = false;
@@ -780,8 +764,7 @@ outlw_MR_addTarget =
 	};
 };
 
-outlw_MR_clearTarget =
-{
+outlw_MR_clearTarget = {
 	if (outlw_MR_doAddToMagazines) then
 	{
 			player addMagazine [outlw_MR_targetType, outlw_MR_targetCount];
@@ -800,8 +783,7 @@ outlw_MR_clearTarget =
 	["outlw_MR_Dialog_Main", 22190, [0,0.12], 0] call outlw_MR_ctrlSetPos;
 };
 
-outlw_MR_moveToList =
-{
+outlw_MR_moveToList = {
 	switch (true) do
 	{
 		case (outlw_MR_sourceDragging): {call outlw_MR_clearSource;};
@@ -809,8 +791,7 @@ outlw_MR_moveToList =
 	};
 };
 
-outlw_MR_optionsMenu =
-{
+outlw_MR_optionsMenu = {
 	_posGroup = ctrlPosition ((uiNamespace getVariable "outlw_MR_Dialog_Main") displayCtrl 9000);
 	_posBottom = ctrlPosition ((uiNamespace getVariable "outlw_MR_Dialog_Main") displayCtrl 8998);
 	_posTop = ctrlPosition ((uiNamespace getVariable "outlw_MR_Dialog_Main") displayCtrl 8997);
@@ -855,8 +836,7 @@ outlw_MR_optionsMenu =
 	};
 };
 
-outlw_MR_debugSwitch =
-{
+outlw_MR_debugSwitch = {
 	if (outlw_MR_debugMode) then
 	{
 		outlw_MR_debugMode = false;
@@ -871,8 +851,7 @@ outlw_MR_debugSwitch =
 	};
 };
 
-outlw_MR_showFullSwitch =
-{
+outlw_MR_showFullSwitch = {
 	if (outlw_MR_doHideFull) then
 	{
 		outlw_MR_doHideFull = false;
@@ -889,8 +868,7 @@ outlw_MR_showFullSwitch =
 	call outlw_MR_populateMagListBox;
 };
 
-outlw_MR_onDialogDestroy =
-{
+outlw_MR_onDialogDestroy = {
 	private ["_endingInfo", "_sTCA", "_eTCA", "_snTCA", "_enTCA", "_output", "_toAdd", "_dif", "_difStr", "_n", "_a"];
 
 	ppEffectDestroy outlw_MR_blur;
@@ -978,7 +956,3 @@ outlw_MR_onDialogDestroy =
 		outlw_MR_canCreateDialog = true;
 	};
 };
-
-
-
-
