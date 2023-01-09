@@ -1,6 +1,8 @@
 params [ "_sector", "_patrol_type" ];
 if (_sector in active_sectors) exitWith {};
 private _grp = grpNull;
+private _vehicle = objNull;
+private _duration = 15 * 60;
 
 // Create Infantry
 if (_patrol_type == 1) then {
@@ -11,8 +13,8 @@ if (_patrol_type == 1) then {
 
 // Create Armored
 if (_patrol_type == 2) then {
-    _vehicle_object = [ markerpos _sector, [] call F_getAdaptiveVehicle ] call F_libSpawnVehicle;
-    _grp = group ((crew _vehicle_object) select 0);
+    _vehicle = [ markerpos _sector, [] call F_getAdaptiveVehicle ] call F_libSpawnVehicle;
+    _grp = group ((crew _vehicle) select 0);
     [_grp, markerpos _sector, 250] spawn add_defense_waypoints;
     diag_log format [ "Spawn Armored Patrol on sector %1 at %2", _sector, time ];
 };
@@ -24,17 +26,15 @@ if ( local _grp ) then {
     };
 };
 
+// Wait
+private _timeout = round (time + _duration);
+while { count (units _grp) > 0 && time < _timeout } do {
+    sleep 60;
+};
+
 // Cleanup
-private _timeout = time + (5 * 60);
-while { count (units _grp) > 0 } do {
-    if ( [getpos (leader _grp), GRLIB_spawn_min, GRLIB_side_friendly] call F_getUnitsCount == 0 && time > _timeout ) then {
-        {
-            if ( vehicle _x != _x ) then {
-                deleteVehicle (vehicle _x);
-            };
-            deleteVehicle _x;
-        } foreach (units _grp);
-        deleteGroup _grp;
-    };
-    sleep 10;
+if ( [markerpos _sector, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0 ) then {
+    { deleteVehicle _x } foreach (units _grp);
+    deleteGroup _grp;
+    deleteVehicle _vehicle;
 };
