@@ -64,6 +64,8 @@ resistance_squad = [
 	"rhsgref_nat_pmil_hunter"
 ];
 
+resistance_squad_static = "rhs_Igla_AA_pod_msv";
+
 light_vehicles = [
 	["O_Boat_Transport_01_F",1,25,1,GRLIB_perm_inf],
 	["O_Boat_Armed_01_hmg_F",5,30,5,GRLIB_perm_log],

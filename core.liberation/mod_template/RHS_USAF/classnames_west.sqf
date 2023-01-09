@@ -42,6 +42,8 @@ units_loadout_overide = [
 	"rhsusf_army_ucp_aa"		// add backpack
 ];
 
+resistance_squad_static = "RHS_Stinger_AA_pod_WD";
+
 light_vehicles = [
 	["B_Boat_Transport_01_F",1,25,1,GRLIB_perm_inf],
 	["B_Boat_Armed_01_minigun_F",5,30,5,GRLIB_perm_log],
@@ -215,11 +217,9 @@ vehicle_rearm_sources_west = [
 ];
 
 vehicle_big_units_west = [
-
 ];
 
 GRLIB_vehicle_whitelist_west = [
-
 ];
 
 GRLIB_vehicle_blacklist_west = [
