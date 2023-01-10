@@ -31,33 +31,25 @@ if (count _context >= 1) then {
                         _pos = getPosATL _player;
                         _uid = getPlayerUID _player;
                         _unit = _grp createUnit [_class, _pos, [], 10, "NONE"];
-                        sleep 0.2;
                         _unit setVariable ["PAR_Grp_ID", format["Bros_%1", _uid], true];
                         _unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
                         _unit setUnitLoadout _loadout;
                         _unit setUnitRank _rank;
                         _unit setSkill (0.6 + (GRLIB_rank_level find _rank) * 0.05);
-                    } foreach (_context select 2);
-
-                    if (count units _grp > 0) then {
+                        _unit setpos (getpos _unit);
+                        sleep 0.5;
                         [
-                            [ _grp ],
+                            [ _unit ],
                             {
-                                params ["_grp"];
-                                {
-                                    _x enableIRLasers true;
-                                    _x enableGunLights "Auto";
-                                    [_x] joinSilent (group player);
-                                    gamelogic globalChat format ["Adds %1 (%2) to your squad.", name _x, rank _x];
-                                    _x switchMove "amovpknlmstpsraswrfldnon";
-				                    _x playMoveNow "amovpknlmstpsraswrfldnon";
-                                    sleep 0.5;
-                                } forEach (units _grp);
-                                (group player) selectLeader player;
+                                params ["_unit"];
+                                _unit enableIRLasers true;
+                                _unit enableGunLights "Auto";
+                                [_unit] joinSilent (group player);
+                                gamelogic globalChat format ["Adds %1 (%2) to your squad.", name _unit, rank _unit];
                             }
                         ] remoteExec ["bis_fnc_call", owner _player];
-                    };
-
+                    } foreach (_context select 2);
+                    deleteGroup _grp;
                     _wait = false;
                     diag_log format ["--- LRX Loading %1 unit(s) for %2 Squad.", count (_context select 2), name _player];
                 };
