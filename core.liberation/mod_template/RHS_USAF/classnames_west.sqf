@@ -52,7 +52,7 @@ light_vehicles = [
 	["rhsusf_m1025_w_mk19",1,50,5,GRLIB_perm_log],
 	["rhsusf_M1078A1P2_WD_fmtv_usarmy",1,15,7,0],
 	["rhsusf_M1083A1P2_B_WD_fmtv_usarmy",5,30,10,GRLIB_perm_inf],
-	["rhsusf_M1078A1P2_B_M2_WD_fmtv_usarmy",5,30,10,GRLIB_perm_log],
+	["rhsusf_M1078A1P2_B_M2_WD_fmtv_usarmy",5,80,10,GRLIB_perm_log],
 	["rhsusf_M977A4_usarmy_wd",5,150,12,GRLIB_perm_log],
 	["rhsusf_m1151_usarmy_wd",2,25,12,0],
 	["rhsusf_m1151_m240_v2_usarmy_wd",5,100,12,GRLIB_perm_inf],
@@ -127,9 +127,9 @@ static_vehicles_AI = [
 ];
 
 support_vehicles_west = [
-	["rhsusf_M977A4_REPAIR_usarmy_wd",5,15,5,GRLIB_perm_inf],
-	["rhsusf_M978A4_usarmy_wd",5,15,20,GRLIB_perm_inf],
-	["rhsusf_M977A4_AMMO_usarmy_wd",5,15,20,GRLIB_perm_tank],
+	["rhsusf_M977A4_REPAIR_usarmy_wd",5,250,20,GRLIB_perm_inf],
+	["rhsusf_M978A4_usarmy_wd",5,150,20,GRLIB_perm_inf],
+	["rhsusf_M977A4_AMMO_usarmy_wd",5,300,20,GRLIB_perm_tank],
 	["rhsusf_launcher_crate",0,150,0,GRLIB_perm_tank]
 ];
 

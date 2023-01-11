@@ -7,7 +7,10 @@ while { true } do {
         _static = _x;
   
         // No damage
-        _static allowDamage false;
+        if (isDamageAllowed _static) then {
+            _static allowDamage false;
+            _static addEventHandler ["HandleDamage", {0}];
+        };
 
         // OPFor infinite Ammo
         if (side _static == GRLIB_side_enemy) then {
