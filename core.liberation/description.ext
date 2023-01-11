@@ -83,7 +83,7 @@ showMap = 1;
 briefing = 1;
 
 class CfgFunctions {
-	#include "Vcom\cfgFunctions.hpp"
+	// #include "Vcom\cfgFunctions.hpp"
 	// #include "MilSimUnited\functions.hpp" // trait restrictions
 	
 	class KP { 
@@ -147,9 +147,11 @@ class CfgRemoteExec
 	
 };
 
+/*
 class Extended_PreInit_EventHandlers {
 	VCM_CBASettings = call compile preprocessFileLineNumbers "Vcom\Functions\VCM_Functions\fn_CBASettings.sqf";
 };
+*/
 
 #include "GREUH\UI\GREUH_interface.hpp"
 #include "ui\liberation_interface.hpp"
