@@ -517,12 +517,11 @@ air_vehicles = [
 // Medium Transport
 
 // GM
-
 ["gm_ge_army_ch53g",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf],
 ["gm_ge_army_ch53gs",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf],
 
-// CUP
 
+// CUP
 ["CUP_B_Merlin_HC4_GB",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf],
 ["CUP_MH60S_Unarmed_FFV_USN",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf],
 ["CUP_B_UH60S_USN",0,air_vehicle_price_tier_6,0,GRLIB_perm_inf],
@@ -550,8 +549,11 @@ air_vehicles = [
 ["CUP_B_AW159_Unarmed_GER",0,air_vehicle_price_tier_3,0,GRLIB_perm_inf],
 ["CUP_B_AW159_GER",0,air_vehicle_price_tier_8,0,GRLIB_perm_inf],
 
-//RHS
+["I_Heli_light_03_unarmed_F",0,air_vehicle_price_tier_3,0,GRLIB_perm_inf],
+["I_Heli_light_03_dynamicLoadout_F",0,air_vehicle_price_tier_8,0,GRLIB_perm_inf],
 
+
+// RHS
 ["RHS_UH60M2_d",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf],
 ["RHS_UH60M_MEV2_d",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf],
 ["RHS_UH60M_d",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf],
@@ -562,8 +564,8 @@ air_vehicles = [
 ["RHS_UH1Y_FFAR_d",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],
 ["RHS_UH1Y_d",0,air_vehicle_price_tier_8,0,GRLIB_perm_inf],
 
-//Vanilla
 
+// Vanilla
 ["O_Heli_Transport_04_F",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],
 ["O_Heli_Transport_04_bench_F",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],
 ["O_Heli_Transport_04_box_F",0,air_vehicle_price_tier_7,0,GRLIB_perm_inf],
