@@ -971,7 +971,7 @@ support_crates = [
 // Waffen
 // ["SNC_Javelin",0,400,0,GRLIB_perm_inf],
 // Kistenf�ller & Container
-["Land_RepairDepot_01_green_F",1900,0,0,GRLIB_perm_inf],
+["Land_RepairDepot_01_green_F",0,0,0,GRLIB_perm_inf],
 ["ffaa_UAVStation",0,0,0,GRLIB_perm_inf],
 // Bundeswehr	Fleck
 ["BWA3_WLP14_Ammo_Fleck",0,0,0,GRLIB_perm_inf],
