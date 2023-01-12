@@ -17,7 +17,8 @@ while { true } do {
 	};
 	if(limit_readiness) then {
 
-		if ( combat_readiness >= 100.0) then { combat_readiness = 100.0 };
+		if ( combat_readiness > 100) then { combat_readiness = 100; };
+		if ( combat_readiness < 0) then { combat_readiness = 0; };
 
 	} else {
 		if ( combat_readiness >= 100.0 && GRLIB_difficulty_modifier < 2 ) then { combat_readiness = 100.0 };
