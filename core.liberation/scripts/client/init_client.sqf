@@ -29,7 +29,7 @@ if (!isMultiplayer) exitWith {
 };
 
 private _exclusive_check = [player] call compileFinal preprocessFileLineNUmbers "scripts\client\commander\exclusive_whitelist.sqf";
-if (!_exclusive_check) then {
+if (!_exclusive_check) exitWith {
 	private _msg = format ["Sorry, Invalid SteamID!\nDue to server configuration, you MUST be authorized to connect.\nPlease contact the server owner. "];
 	titleText [_msg, "BLACK FADED", 100];
 	uisleep 10;
