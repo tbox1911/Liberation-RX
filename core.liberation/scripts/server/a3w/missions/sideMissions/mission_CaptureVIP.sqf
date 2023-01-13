@@ -40,11 +40,15 @@ _setupObjects =
 	_vehicle2 setConvoySeparation 30;
 	_grp = createGroup [GRLIB_side_enemy, true];
 	[_grp, _missionPos, 4, "guard"] call createCustomGroup;
-	_vip = _grp createUnit ["O_Officer_Parade_Veteran_F", _missionPos, [], 0, "NONE"];
+	{ _x moveInAny _vehicle2; [_x] joinSilent _aiGroup } forEach (units _grp);
+	
+	// VIP
+	_grp_vip = createGroup [GRLIB_side_civilian, true];
+	_vip = _grp_vip createUnit ["O_Officer_Parade_Veteran_F", _missionPos, [], 0, "NONE"];
 	_vip addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	[_vip, false, true] spawn prisonner_ai;
 	_vip setrank "COLONEL";
-	{ _x moveInAny _vehicle2; [_x] joinSilent _aiGroup } forEach (units _grp);
+	_vip moveInAny _vehicle2;
 	sleep 2;
 
 	// veh3 + squad
@@ -140,6 +144,7 @@ _waitUntilSuccessCondition = { side group _vip == GRLIB_side_friendly };
 _failedExec = {
 	// Mission failed
 	_failedHintMessage = format ["The V.I.P is <br/><t color='%1'>DEAD</t>!!.<br/>We have lost a valuable source of information.<br/><br/>Better luck next time!", sideMissionColor];
+	deleteVehicle _vip;
 };
 
 _successExec =
