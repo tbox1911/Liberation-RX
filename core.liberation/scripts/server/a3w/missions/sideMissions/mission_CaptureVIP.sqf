@@ -41,11 +41,12 @@ _setupObjects =
 	_grp = createGroup [GRLIB_side_enemy, true];
 	[_grp, _missionPos, 4, "guard"] call createCustomGroup;
 	{ _x moveInAny _vehicle2; [_x] joinSilent _aiGroup } forEach (units _grp);
-	
+
 	// VIP
 	_grp_vip = createGroup [GRLIB_side_civilian, true];
 	_vip = _grp_vip createUnit ["O_Officer_Parade_Veteran_F", _missionPos, [], 0, "NONE"];
 	_vip addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+	[_vip] joinSilent _grp_vip;
 	[_vip, false, true] spawn prisonner_ai;
 	_vip setrank "COLONEL";
 	_vip moveInAny _vehicle2;
@@ -59,7 +60,7 @@ _setupObjects =
 	_grp = createGroup [GRLIB_side_enemy, true];
 	[_grp, _missionPos, 5, "guard"] call createCustomGroup;
 	{ _x moveInAny _vehicle3; [_x] joinSilent _aiGroup } forEach (units _grp);
-	sleep 2;	
+	sleep 2;
 
 	_aiGroup setFormation "COLUMN";
 	_aiGroup setBehaviour "SAFE";
@@ -95,7 +96,7 @@ _waitUntilCondition = {
 	if ( !_convoy_attacked ) then {
 		{
 			// Attacked ?
-			if ( !(alive _x) || (damage _x > 0.3) || !(alive driver _x) && (count ([getPosATL _x, 1000] call F_getNearbyPlayers) > 0) ) exitWith { _convoy_attacked = true; };	
+			if ( !(alive _x) || (damage _x > 0.3) || !(alive driver _x) && (count ([getPosATL _x, 1000] call F_getNearbyPlayers) > 0) ) exitWith { _convoy_attacked = true; };
 
 			// Unflip ?
 			if ((vectorUp _x) select 2 < 0.60) then {
@@ -117,7 +118,7 @@ _waitUntilCondition = {
 
 	if (_convoy_attacked && !_disembark_troops) then {
 		_disembark_troops = true;
-		{ 
+		{
 			[_x] spawn {
 				params ["_vehicle"];
 				doStop (driver _vehicle); sleep 0.3;
