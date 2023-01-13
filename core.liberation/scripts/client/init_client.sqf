@@ -28,6 +28,14 @@ if (!isMultiplayer) exitWith {
 	endMission "LOSER";
 };
 
+private _exclusive_check = [player] call compileFinal preprocessFileLineNUmbers "scripts\client\commander\exclusive_whitelist.sqf";
+if (!_exclusive_check) then {
+	private _msg = format ["Sorry, Invalid SteamID!\nDue to server configuration, you MUST be authorized to connect.\nPlease contact the server owner. "];
+	titleText [_msg, "BLACK FADED", 100];
+	uisleep 10;
+	endMission "LOSER";
+};
+
 private _commander_check = [player] call compileFinal preprocessFileLineNUmbers "scripts\client\commander\enforce_whitelist.sqf";
 if (!_commander_check) exitWith { endMission "END1" };
 

@@ -380,8 +380,14 @@ class Params
 	class Whitelist {
 		title = $STR_WHITELIST_PARAM;
 		values[] = { 1, 0 };
-		texts[] = { $STR_WHITELIST_ENABLED, $STR_PARAMS_DISABLED };
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 1;
+	};
+	class Exclusive {
+		title = $STR_EXCLUSIVE_PARAM;
+		values[] = { 1, 0 };
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
+		default = 0;
 	};
 	class Space4 {
 		title = "";

@@ -3009,16 +3009,9 @@
 			<Portuguese>Use a lista de permissões do comandante</Portuguese>
 			<Czech>Použijte commander whitelist</Czech>
 		</Key>
-		<Key ID="STR_WHITELIST_ENABLED">
-			<Original>Enabled</Original>
-			<French>Activé</French>
-			<Spanish>Activado</Spanish>
-			<Russian>Вкл</Russian>
-			<Chinesesimp>启用</Chinesesimp>
-			<Chinese>啟用</Chinese>
-			<Japanese>有効</Japanese>
-			<Portuguese>Habilitado</Portuguese>
-			<Czech>Zapnuto</Czech>
+		<Key ID="STR_EXCLUSIVE_PARAM">
+			<Original>Use the exclusive join whitelist</Original>
+			<French>Utiliser la Whitelist pour se connecter</French>
 		</Key>
 		<Key ID="STR_BUILD_ENEMIES_NEARBY">
 			<Original>Cannot build: hostile forces nearby.</Original>

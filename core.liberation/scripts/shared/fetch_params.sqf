@@ -50,6 +50,7 @@ GRLIB_admin_menu = ["AdminMenu",1] call bis_fnc_getParamValue;
 GRLIB_cleanup_vehicles = ["CleanupVehicles",1800] call bis_fnc_getParamValue;
 GRLIB_autosave_timer = ["AutoSave",3600] call bis_fnc_getParamValue;
 GRLIB_use_whitelist = ["Whitelist",1] call bis_fnc_getParamValue;
+GRLIB_use_exclusive = ["Exclusive",0] call bis_fnc_getParamValue;
 //------------------------------------------------------------------------
 GRLIB_param_wipe_savegame_1 = ["WipeSave1",0] call bis_fnc_getParamValue;
 GRLIB_param_wipe_savegame_2 = ["WipeSave2",0] call bis_fnc_getParamValue;
@@ -142,6 +143,7 @@ if ( GRLIB_adaptive_opfor == 1 ) then { GRLIB_adaptive_opfor = true } else { GRL
 if ( GRLIB_passive_income == 1 ) then { GRLIB_passive_income = true } else { GRLIB_passive_income = false };
 if ( GRLIB_permissions_param == 1 ) then { GRLIB_permissions_param = true } else { GRLIB_permissions_param = false };
 if ( GRLIB_use_whitelist == 1 ) then { GRLIB_use_whitelist = true } else { GRLIB_use_whitelist = false };
+if ( GRLIB_use_exclusive == 1 ) then { GRLIB_use_exclusive = true } else { GRLIB_use_exclusive = false };
 if ( GRLIB_ammo_bounties == 1 ) then { GRLIB_ammo_bounties = true } else { GRLIB_ammo_bounties = false };
 if ( GRLIB_civ_penalties == 1 ) then { GRLIB_civ_penalties = true } else { GRLIB_civ_penalties = false };
 if ( GRLIB_blufor_defenders == 1 ) then { GRLIB_blufor_defenders = true } else { GRLIB_blufor_defenders = false };
