@@ -756,8 +756,8 @@ fast_air_vehicle = [
 ["FIR_F22",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
 
 // F-18 super hornet
-["FIR_F18C",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
-["FIR_F18D",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
+// ["FIR_F18C",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf], // F18 Legacy
+// ["FIR_F18D",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf], // F18 Legacy
 ["FIR_FA18E_VFA106",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
 
 // FIR A-10C

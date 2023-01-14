@@ -111,11 +111,11 @@ AI_leader_radio = false;
 // HC
 hc_battlegroup_on = true;
 
-skill_scan = false;
-skill_parachuters = 1;
-skill_air_vehicles_planes = 1;
-skill_air_vehicles_helicopters = 1;
-skill_ground_vehicles = 1;
+skill_scan = true;
+skill_parachuters = 0.9;
+skill_air_vehicles_planes = 0.9;
+skill_air_vehicles_helicopters = 0.9;
+skill_ground_vehicles = 0.9;
 
 limit_hc_gr = false;
 // Readiness Increase from towns
@@ -151,7 +151,7 @@ ied_enemy_sector = ["ATMine", "APERSMine", "APERSBoundingMine", "SLAMDirectional
 ai_limit = 3;
 ai_limiter_on = true;
 // ai skill
-ai_skill = 9;
+ai_skill = 1;
 ai_value = 100; // buildable ai price
 
 

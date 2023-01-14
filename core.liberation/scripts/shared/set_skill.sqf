@@ -16,35 +16,33 @@ if ( !(GRLIB_autodanger) && (_side == GRLIB_side_friendly)) then {
 };
 
 if ( _wounded ) then {
-	_unit setSkill ["aimingspeed", [ 0.15 * _skillmodifier ] call limit_skill ];
-	if ( !_inVehicle ) then {
-		_unit setSkill ["aimingaccuracy", [ 0.03 * _skillmodifier ] call limit_skill ];
-	};
-	_unit setSkill ["aimingshake", 0];
-	_unit setSkill ["spottime", 0.5];
-	_unit setSkill ["spotdistance", 0.25];
-	_unit setSkill ["commanding", 0.1];
-	_unit setSkill ["reloadSpeed", 0.1];
-} else {
+		_unit setSkill ["general", [ 0.9 * _skillmodifier ] call limit_skill];
+		_unit setSkill ["aimingaccuracy", [ 0.1 * _skillmodifier ] call limit_skill];
+		_unit setSkill ["aimingspeed", [ 0.8 * _skillmodifier ] call limit_skill];
+		_unit setSkill ["aimingshake", [ 0.8 * _skillmodifier ] call limit_skill];
+		_unit setSkill ["commanding", 0.9];
+		_unit setSkill ["spotdistance", [ 0.9 * _skillmodifier ] call limit_skill];
+		_unit setSkill ["spottime", [ 0.9 * _skillmodifier ] call limit_skill];
+		_unit setSkill ["reloadSpeed", 0.9];
+} else { // if ( _inVehicle ) then {};
 	if ( _side == GRLIB_side_friendly || _side == GRLIB_side_enemy ) then {
-		_unit setSkill ["aimingspeed", [ 0.35 * _skillmodifier ] call limit_skill];
-		if ( _inVehicle ) then {
-			_unit setSkill ["aimingaccuracy", [ 0.65 * _skillmodifier ] call limit_skill];
-		} else {
-			_unit setSkill ["aimingshake", [ 0.35 * _skillmodifier ] call limit_skill];
-		};
-		_unit setSkill ["spottime", [ 0.5 * _skillmodifier ] call limit_skill];
-		_unit setSkill ["spotdistance", [ 0.5 * _skillmodifier ] call limit_skill];
-		_unit setSkill ["commanding", 0.5];
-		_unit setSkill ["reloadSpeed", 0.7];
+		_unit setSkill ["general", [ 0.9 * _skillmodifier ] call limit_skill];
+		_unit setSkill ["aimingaccuracy", [ 0.1 * _skillmodifier ] call limit_skill];
+		_unit setSkill ["aimingspeed", [ 0.8 * _skillmodifier ] call limit_skill];
+		_unit setSkill ["aimingshake", [ 0.8 * _skillmodifier ] call limit_skill];
+		_unit setSkill ["commanding", 0.9];
+		_unit setSkill ["spotdistance", [ 0.9 * _skillmodifier ] call limit_skill];
+		_unit setSkill ["spottime", [ 0.9 * _skillmodifier ] call limit_skill];
+		_unit setSkill ["reloadSpeed", 0.9];
 	} else {
-		_unit setSkill ["aimingspeed", [ 0.35 * _skillmodifier ] call limit_skill];
-		_unit setSkill ["aimingaccuracy", [ 0.25 * _skillmodifier ] call limit_skill];
-		_unit setSkill ["aimingshake", [ 0.35 * _skillmodifier ] call limit_skill];
-		_unit setSkill ["spottime", [ 0.5 * _skillmodifier ] call limit_skill];
-		_unit setSkill ["spotdistance", [ 0.5 * _skillmodifier ] call limit_skill];
-		_unit setSkill ["commanding", 0.5];
-		_unit setSkill ["reloadSpeed", 0.5];
+		_unit setSkill ["general", [ 0.9 * _skillmodifier ] call limit_skill];
+		_unit setSkill ["aimingaccuracy", [ 0.1 * _skillmodifier ] call limit_skill];
+		_unit setSkill ["aimingspeed", [ 0.8 * _skillmodifier ] call limit_skill];
+		_unit setSkill ["aimingshake", [ 0.8 * _skillmodifier ] call limit_skill];
+		_unit setSkill ["commanding", 0.9];
+		_unit setSkill ["spotdistance", [ 0.9 * _skillmodifier ] call limit_skill];
+		_unit setSkill ["spottime", [ 0.9 * _skillmodifier ] call limit_skill];
+		_unit setSkill ["reloadSpeed", 0.9];
 	};
 	
 	if (isNil 'AI_leader_radio') then {
