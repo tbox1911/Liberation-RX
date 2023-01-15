@@ -136,6 +136,7 @@ addMissionEventHandler ['HandleDisconnect', {
 	_this call cleanup_player;
 	if (count (AllPlayers - (entities "HeadlessClient_F")) == 0) then {
 		[] call save_game_mp;
+		{ deleteVehicle _x } forEach (allUnits);
 	};
 	false;
 }];
