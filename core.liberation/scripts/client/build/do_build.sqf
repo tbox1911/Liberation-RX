@@ -442,7 +442,7 @@ while { true } do {
 						[(getpos _vehicle), false] remoteExec ["build_fob_remote_call", 0];
 
 						// Add owner sign
-						private _fobdir = (getdir _vehicle);
+						private _fobdir = getDir _vehicle;
 						private _offset = [[-6, -5, -0.2], -_fobdir];
 						if (_classname == FOB_outpost ) then { _offset = [[5, -3, -0.2], -_fobdir] };
 						private _sign_pos = (getposATL _vehicle) vectorAdd (_offset call BIS_fnc_rotateVector2D);
@@ -458,6 +458,17 @@ while { true } do {
 							_sign setVariable ["GRLIB_vehicle_owner", "public", true];
 						} else {
 							_sign setVariable ["GRLIB_vehicle_owner", getPlayerUID player, true];
+						};
+						if (!GRLIB_enable_arsenal) then {
+							sleep 1;
+							private _ammo_pos = (getposATL _vehicle) vectorAdd ([[-12, 0, 0], -_fobdir] call BIS_fnc_rotateVector2D);
+							{
+								_ammo1 = createVehicle [_x, _ammo_pos, [], 0.5, "NONE"];
+								_ammo1 allowDamage false;
+								_ammo1 setVariable ["GRLIB_vehicle_owner", "public", true];
+								_ammo1 setVariable ["R3F_LOG_disabled", true, true];
+								sleep 0.5;
+							} forEach [Arsenal_typename, "Box_NATO_Ammo_F"];			
 						};
 					} else {
 						sleep 0.3;

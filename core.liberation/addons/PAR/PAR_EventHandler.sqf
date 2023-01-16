@@ -38,11 +38,11 @@ _unit addEventHandler ["InventoryClosed", {
 _unit addEventHandler ["InventoryOpened", {
 	params ["_unit", "_container"];
 	_ret = false;
+	playsound "ZoomIn";
+	if (typeOf _container in GRLIB_Ammobox_keep && [_container] call is_public) exitWith { _ret };
 	if (!([_unit, _container] call is_owner) || locked _container > 1) then {
 		closeDialog 106;
 		_ret = true;
-	} else {
-		playsound "ZoomIn";
 	};
 	_ret;
 }];

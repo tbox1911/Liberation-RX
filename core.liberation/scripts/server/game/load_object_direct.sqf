@@ -8,10 +8,12 @@ private _object_created = [];
 	private _object = _x createVehicle zeropos;
 
 	// Clear Cargo
-	clearWeaponCargoGlobal _object;
-	clearMagazineCargoGlobal _object;
-	clearItemCargoGlobal _object;
-	clearBackpackCargoGlobal _object;
+	if (!(_x in GRLIB_Ammobox_keep)) then {
+		clearWeaponCargoGlobal _object;
+		clearMagazineCargoGlobal _object;
+		clearItemCargoGlobal _object;
+		clearBackpackCargoGlobal _object;
+	};
 
 	// Mobile respawn
 	if (_x == mobile_respawn) then {

@@ -20,10 +20,12 @@ if ( count _truck_load < _maxload ) then {
 	private _object = _object_type createVehicle zeropos;
 
 	// Clear Cargo
-	clearWeaponCargoGlobal _object;
-	clearMagazineCargoGlobal _object;
-	clearItemCargoGlobal _object;
-	clearBackpackCargoGlobal _object;
+	if (!(_object_type in GRLIB_Ammobox_keep)) then {
+		clearWeaponCargoGlobal _object;
+		clearMagazineCargoGlobal _object;
+		clearItemCargoGlobal _object;
+		clearBackpackCargoGlobal _object;
+	};
 
 	// MPKilled
 	_object addMPEventHandler ["MPKilled", {_this spawn kill_manager}];

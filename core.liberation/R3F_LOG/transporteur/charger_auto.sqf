@@ -125,10 +125,12 @@ _vehicle_owner = _transporteur getVariable ["GRLIB_vehicle_owner", ""];
 				};
 
 				// Clear Cargo
-				clearWeaponCargoGlobal _objet;
-				clearMagazineCargoGlobal _objet;
-				clearItemCargoGlobal _objet;
-				clearBackpackCargoGlobal _objet;
+				if (!(_classe in GRLIB_Ammobox_keep)) then {
+					clearWeaponCargoGlobal _objet;
+					clearMagazineCargoGlobal _objet;
+					clearItemCargoGlobal _objet;
+					clearBackpackCargoGlobal _objet;
+				};
 
 				// MPKilled
 				_objet addMPEventHandler ["MPKilled", {_this spawn kill_manager}];

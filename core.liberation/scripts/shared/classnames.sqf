@@ -113,7 +113,21 @@ if ( isNil "militia_vehicles" ) then {
 // *** SUPPORT ***
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 support_vehicles = [
-	[Arsenal_typename,0,25,0,0],
+	[Arsenal_typename,0,35,0,0]
+];
+
+if (!GRLIB_enable_arsenal) then {
+	Arsenal_typename = "Box_NATO_Wps_F";
+	support_vehicles = [
+		[Arsenal_typename,0,180,0,0],
+		["Box_NATO_Ammo_F",0,0,0,0],
+		["Box_NATO_Support_F",0,250,0,GRLIB_perm_inf],
+		["Box_NATO_WpsSpecial_F",0,200,0,GRLIB_perm_log],
+		["Box_NATO_WpsLaunch_F",0,225,0,GRLIB_perm_tank]
+	];
+};
+
+support_vehicles = support_vehicles + [
 	[medicalbox_typename,5,25,0,0],
 	[mobile_respawn,10,50,0,0],
 	[canister_fuel_typename,0,25,10,0],
@@ -240,14 +254,16 @@ list_static_weapons = [resistance_squad_static] + opfor_statics;
 ai_resupply_sources = [
 	Arsenal_typename,
 	ammo_truck_typename,
-	ammo_sling_typename
+	ammo_sling_typename,
+	"Box_NATO_Ammo_F"
 ] + ai_resupply_sources_west;
 
 // Everything the AI troups should be able to healing from
 ai_healing_sources = [
 	Respawn_truck_typename,
 	medicalbox_typename,
-	medic_sling_typename
+	medic_sling_typename,
+	"Land_MedicalTent_01_MTP_closed_F"
 ] + ai_healing_sources_west;
 
 // Everything the AI vehicle should be able to reammo from
@@ -306,6 +322,11 @@ transport_vehicles = [];
 // objects in this list can be loaded on vehicle position defined above
 box_transport_offset = [
 	["B_supplyCrate_F", [0, 0, 0] ],
+	["Box_NATO_Wps_F", [0, 0, -0.6] ],
+	["Box_NATO_Ammo_F", [0, 0, -0.6] ],
+	["Box_NATO_Support_F", [0, 0, -0.6] ],
+	["Box_NATO_WpsSpecial_F", [0, 0, -0.6] ],
+	["Box_NATO_WpsLaunch_F", [0, 0, -0.6] ],
 	["Box_NATO_AmmoVeh_F", [0, 0, 0] ],
 	["Box_East_AmmoVeh_F", [0, 0, 0] ],
 	["Box_IND_AmmoVeh_F", [0, 0, 0] ],
@@ -332,7 +353,6 @@ vehicle_big_units = [
 
 // Whitelist Vehicle (recycle)
 GRLIB_vehicle_whitelist = [
-	Arsenal_typename,
 	ammobox_b_typename,
 	ammobox_o_typename,
 	ammobox_i_typename,
@@ -342,14 +362,12 @@ GRLIB_vehicle_whitelist = [
 	waterbarrel_typename,
 	fuelbarrel_typename,
 	foodbarrel_typename,
-	medicalbox_typename,
-	"Box_NATO_WpsLaunch_F"
+	medicalbox_typename
 ] + GRLIB_vehicle_whitelist_west + opfor_statics;
 
 // Blacklist Vehicle (lock, paint, delete)
 GRLIB_vehicle_blacklist = [
 	FOB_sign,
-	Arsenal_typename,
 	ammobox_b_typename,
 	ammobox_o_typename,
 	ammobox_i_typename,
@@ -358,8 +376,7 @@ GRLIB_vehicle_blacklist = [
 	fuelbarrel_typename,
 	foodbarrel_typename,
 	medicalbox_typename,
-	fireworks_typename,
-  	"Box_NATO_WpsLaunch_F"
+	fireworks_typename
 ] + GRLIB_vehicle_blacklist_west;
 
 // Recycleable objects
@@ -469,7 +486,9 @@ GRLIB_ignore_colisions = [
 	medicalbox_typename,
 	fireworks_typename,
 	"Helper_Base_F",
-  	"Box_NATO_WpsLaunch_F",
+	"Blood_01_Base_F",
+	"MedicalGarbage_01_Base_F",
+  	"ReammoBox_F",
 	"StaticMGWeapon",
 	"StaticGrenadeLauncher",
 	"StaticMortar",
@@ -492,7 +511,11 @@ GRLIB_ignore_colisions = [
 GRLIB_Ammobox_keep = [
 	A3W_BoxWps,
 	medicalbox_typename,
+	"Box_NATO_Wps_F",
+	"Box_NATO_Ammo_F",
+	"Box_NATO_Support_F",
 	"Box_NATO_WpsLaunch_F",
+	"Box_NATO_WpsSpecial_F",
 	"mission_USLaunchers",
 	"CUP_LocalBasicWeaponsBox",
 	"gm_AmmoBox_1000Rnd_762x51mm_ap_DM151_g3"

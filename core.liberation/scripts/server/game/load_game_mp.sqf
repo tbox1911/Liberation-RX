@@ -168,15 +168,14 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 			_nextbuilding setPosWorld _nextpos;
         };
 
-		if (!(_nextclass in [FOB_typename, FOB_outpost, FOB_sign])) then {
-			_buildings_created pushback _nextbuilding;
-		};
+		_buildings_created pushback _nextbuilding;
 
-        // Clear Cargo
-        clearWeaponCargoGlobal _nextbuilding;
-        clearMagazineCargoGlobal _nextbuilding;
-        clearItemCargoGlobal _nextbuilding;
-        clearBackpackCargoGlobal _nextbuilding;
+		if (!(_nextclass in GRLIB_Ammobox_keep)) then {
+			clearWeaponCargoGlobal _nextbuilding;
+			clearMagazineCargoGlobal _nextbuilding;
+			clearItemCargoGlobal _nextbuilding;
+			clearBackpackCargoGlobal _nextbuilding;
+		};
 
         if ( _nextclass in vehicle_rearm_sources ) then {
             _nextbuilding setAmmoCargo 0;
@@ -188,6 +187,10 @@ if ( !isNil "greuh_liberation_savegame" ) then {
             	_nextbuilding setVariable ["GRLIB_vehicle_ishuron", true, true];
 			};
         };
+
+		if ( _owner == "public" && _nextclass in GRLIB_Ammobox_keep ) then {
+			_nextbuilding setVariable ["R3F_LOG_disabled", true, true];
+		};
 
         if ( _nextclass in _vehicles_light ) then {
 			if (_nextclass iskindof "LandVehicle") then {
@@ -207,7 +210,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 				};
 			};
         } else {
-			if ( _owner != "" && _owner != "public" && count _x > 5 ) then {
+			if ( !(_owner in ["", "public"]) && count _x > 5 ) then {
 				[_x select 5] params [["_color", ""]];
 				[_x select 6] params [["_color_name", ""]];
 				[_x select 7] params [["_lst_a3", []]];
@@ -270,7 +273,16 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 	} foreach buildings_to_load;
 
 	sleep 3;
-	{ _x allowDamage true } foreach _buildings_created;
+	{ 
+		_allow_damage = true;
+		if ( (typeOf _x) in [FOB_typename, FOB_outpost, FOB_sign] ) then {
+			 _allow_damage = false;
+		};
+		if ( (typeOf _x) in GRLIB_Ammobox_keep && [_x] call is_public ) then {
+			 _allow_damage = false;
+		};
+		if ( _allow_damage ) then { _x allowDamage true };
+	} foreach _buildings_created;
 
 	diag_log format [ "--- LRX Load Game finish at %1", time ];
 };
