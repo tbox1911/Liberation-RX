@@ -204,8 +204,8 @@ while { true } do {
 	sleep 300;
 	_hs_time = systemTime;
 
-	if (((_hs_time select 3) == 18) && ((_hs_time select 4) >= 30)) then {
-		hint format['Server restart 19:00 \nFahrzeuge zurück zur FOB! \nReturn vehicles to FOB!'];
+	if (((_hs_time select 3) == 16) && ((_hs_time select 4) >= 30)) then {
+		hint format['Server restart 17:00 \nFahrzeuge zurück zur FOB! \nReturn vehicles to FOB!'];
 	};
 	if (((_hs_time select 3) == 2) && ((_hs_time select 4) >= 30)) then {
 		hint format['Server restart 03:00 \nFahrzeuge zurück zur FOB! \nReturn vehicles to FOB!'];
