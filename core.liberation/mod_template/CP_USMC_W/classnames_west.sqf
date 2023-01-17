@@ -164,7 +164,6 @@ static_vehicles_AI = [
 support_vehicles_west = [
 	["CUP_B_nM1038_Repair_USA_WDL",5,30,5,GRLIB_perm_inf],
 	["CUP_B_nM1038_Ammo_USA_WDL",10,30,5,GRLIB_perm_inf],
-	["Box_NATO_WpsLaunch_F",0,200,0,GRLIB_perm_tank],
 	["CUP_B_UH60M_Unarmed_FFV_MEV_US",5,600,15,GRLIB_perm_tank],
 	["B_APC_Tracked_01_CRV_F",15,2000,50,GRLIB_perm_max]
 ];

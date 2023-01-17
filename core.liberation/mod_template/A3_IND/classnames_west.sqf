@@ -124,8 +124,7 @@ static_vehicles_AI = [
 
 support_vehicles_west = [
 	["I_G_Offroad_01_repair_F",5,15,5,GRLIB_perm_inf],
-	["I_G_Van_01_fuel_F",5,15,20,GRLIB_perm_inf],
-	["Box_NATO_WpsLaunch_F",0,150,0,GRLIB_perm_tank]
+	["I_G_Van_01_fuel_F",5,15,20,GRLIB_perm_inf]
 ];
 
 buildings_west = [
