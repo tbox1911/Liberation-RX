@@ -7,7 +7,8 @@ params ["_unit"];
 	"InventoryOpened",
 	"InventoryClosed",
 	"FiredMan",
-	"WeaponAssembled"
+	"WeaponAssembled",
+	"Take"
 ];
 
 // For all
@@ -54,7 +55,11 @@ _unit addEventHandler ["WeaponAssembled", {
 
 _unit addEventHandler ["Take", {
 	params ["_unit", "_container", "_item"];
-	if !([_item] call is_allowed_item) then { _unit removeWeapon _item };
+	if !([_item] call is_allowed_item) then {
+		_unit removeWeapon _item;
+		_unit removeItem _item;
+		_unit unlinkItem _item;
+	};
 }];
 
 // No mines in the base zone + pay artillery fire
@@ -84,8 +89,13 @@ if (_unit == player) then {
 		["Unblock unit.", [2], "", -5, [["expression", "[groupSelectedUnits player] spawn PAR_unblock_AI"]], "1", "1"]
 	]];
 
-	// Cannot DisAssemble
-	inGameUISetEventHandler ["Action", "if (_this select 3 == 'DisAssemble') then { hintSilent 'You are not allowed to do this';true}"];
+	// UI actions
+	inGameUISetEventHandler ["Action", "
+		private _ret = false;
+		if (_this select 3 == 'DisAssemble') then { hintSilent 'You are not allowed to do this'; _ret = true };
+		if (_this select 3 == 'Rearm' && !([_this select 1, _this select 0] call is_owner || [_this select 0] call is_public)) then { hintSilent 'You are not allowed to do this'; _ret = true };
+		_ret;
+	"];
 
 	// Get in Vehicle
 	_unit removeAllEventHandlers "GetInMan";
