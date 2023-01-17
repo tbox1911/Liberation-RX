@@ -26,10 +26,8 @@ private _buy_list_static = [
 	[waterbarrel_typename, 0, 70],
 	[foodbarrel_typename, 0, 72],
 	[fuelbarrel_typename, 0, 74]
-	//["Box_NATO_WpsLaunch_F", 0, 140]
 ];
 private _buy_blacklist = [];
-
 private _buy_list = [opfor_recyclable, {
 	!((_x select 0) isKindOf "Air") &&
 	!((_x select 0) in _buy_blacklist)
