@@ -461,9 +461,9 @@ while { true } do {
 						};
 						if (!GRLIB_enable_arsenal) then {
 							sleep 1;
-							private _ammo_pos = (getposATL _vehicle) vectorAdd ([[-12, 0, 0], -_fobdir] call BIS_fnc_rotateVector2D);
+							private _ammo_pos = (getposATL _sign) vectorAdd ([[10, 0, 0], -(getDir _sign) - 90] call BIS_fnc_rotateVector2D);
 							{
-								_ammo1 = createVehicle [_x, _ammo_pos, [], 0.5, "NONE"];
+								_ammo1 = createVehicle [_x, _ammo_pos, [], 1, "NONE"];
 								_ammo1 allowDamage false;
 								_ammo1 setVariable ["GRLIB_vehicle_owner", "public", true];
 								_ammo1 setVariable ["R3F_LOG_disabled", true, true];
