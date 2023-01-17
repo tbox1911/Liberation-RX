@@ -4941,17 +4941,6 @@
 			<Portuguese>Defensores do BLUFOR em setores próprios</Portuguese>
 			<Czech>Obránci ve vlastněných sektorech</Czech>
 		</Key>
-		<Key ID="STR_PARAM_AUTODANGER">
-			<Original>Auto-danger behaviour on BLUFOR forces</Original>
-			<French>Comportement 'danger' automatique sur les forces BLUFOR</French>
-			<German>Auto-Gefahr Verhalten bei BLUFOR Kräften</German>
-			<Russian>Авто-опасность для сил BLUFOR</Russian>
-			<Chinesesimp>BLUFOR 部队的自动危险行为</Chinesesimp>
-			<Chinese>BLUFOR 部隊的自動危險行為</Chinese>
-			<Japanese>友軍が自働的に戦闘態勢へ移行する</Japanese>
-			<Portuguese>Comportamento de perigo automático nas forças BLUFOR</Portuguese>
-			<Czech>Chování auto-nebezpečí v sektorech</Czech>
-		</Key>
 		<Key ID="STR_PARAM_FOBS_COUNT">
 			<Original>Maximum number of FOBs allowed</Original>
 			<French>Nombre maximal de FOBs autorisées</French>

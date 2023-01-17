@@ -179,12 +179,6 @@ class Params
 		texts[] = {3,5,7,10,15,20,26};
 		default = 5;
 	};
-	class Autodanger{
-		title = $STR_PARAM_AUTODANGER;
-		values[] = {1,0};
-		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
-		default = 1;
-	};
 	class PassiveIncome{
 		title = $STR_PARAM_PASSIVE_INCOME;
 		values[] = {1,0};
