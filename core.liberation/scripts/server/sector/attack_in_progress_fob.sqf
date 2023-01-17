@@ -47,16 +47,12 @@ if ( _ownership == GRLIB_side_enemy ) then {
 
 	if ( GRLIB_endgame == 0 ) then {
 		if ( _ownership == GRLIB_side_enemy ) then {
-			[ _fobpos , 2 ] remoteExec ["remote_call_fob", 0];
-			sleep 3;
 			if (!_near_outpost) then {
 				[_fobpos, 250] remoteExec ["remote_call_penalty", 0];
 				sleep 3;
 			};
-			GRLIB_all_fobs = GRLIB_all_fobs - [_fobpos];
-			publicVariable "GRLIB_all_fobs";
 			[_fobpos] call destroy_fob;
-			stats_fobs_lost = stats_fobs_lost + 1;
+			[_fobpos , 2] remoteExec ["remote_call_fob", 0];
 		} else {
 			[ _fobpos , 3 ] remoteExec ["remote_call_fob", 0];
 			_enemy_left = [allUnits, {(alive _x) && (vehicle _x == _x) && (side group _x == GRLIB_side_enemy) && ((_fobpos distance2D _x) < GRLIB_capture_size * 0.8)}] call BIS_fnc_conditionalSelect;
