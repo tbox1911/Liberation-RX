@@ -5,7 +5,8 @@
 
 box_transport_config = box_transport_config + [
     // the 'opfor_transport_truck' MUST be declared here
-	[ "CUP_I_MTVR_RACS", -5.5, [0, 0.3, 0], [0, -1.25, 0] ]
+    [ "CUP_I_MTVR_RACS", -6.5, [0, -0.4, 0.3], [0, -2.1, 0.3] ]
+    //[ "CUP_B_MTVR_USMC", -8, [0, -0.3, 0.4], [0, -1.9, 0.4] ]
 ];
 
 // Additional offset per object

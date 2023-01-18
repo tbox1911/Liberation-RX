@@ -135,7 +135,7 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"CUP_B_M2Bradley_USA_W",
 	"CUP_B_LAV25M240_USMC",
 	"CUP_B_UH60M_FFV_US",
-	"CUP_I_MTVR_RACS",
+	"CUP_B_MTVR_USMC",
 	"CUP_B_M1165_GMV_WDL_USA",
 	"CUP_B_M1151_Deploy_WDL_USA",
 	"CUP_B_M1151_Mk19_WDL_USA",
@@ -145,7 +145,7 @@ opfor_battlegroup_vehicles_low_intensity = [
 ];
 
 opfor_troup_transports_truck = [
-	"CUP_I_MTVR_RACS",
+	"CUP_B_MTVR_USMC",
 	"CUP_B_M113A3_USA",
 	"CUP_B_M1126_ICV_M2_Woodland",
 	"CUP_B_MV22_USMC_RAMPGUN"
