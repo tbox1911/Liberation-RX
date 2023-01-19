@@ -165,9 +165,17 @@ addMissionEventHandler ["Draw3D",{
 		if (_near_outpost) then { _type = "Outpost" };
 		private _name = "- LRX";
 		if (_gid != "public") then {
-			_name = GRLIB_player_scores select { _x select 0 == _gid} select 0 select 4;
+			_name = GRLIB_player_scores select { _x select 0 == _gid } select 0 select 4;
 		};
 		drawIcon3D ["", [1,1,1,1], (ASLToAGL getPosASL _sign) vectorAdd [0, 0, 2.5], 0, 0, 0, format ["- %1 %2 -", _type, _name], 2, 0.07, "RobotoCondensed", "center"];
+	};
+	private _near_box = nearestObjects [player, [playerbox_typename], 2];
+	if (count (_near_box) > 0) then {
+		private _box = _near_box select 0;
+		private _box_pos = ASLToAGL getPosASL _box;
+		private _gid = _box getVariable ["GRLIB_vehicle_owner", ""];
+		private _name = GRLIB_player_scores select { _x select 0 == _gid } select 0 select 4;
+		drawIcon3D ["", [1,1,1,1], _box_pos vectorAdd [0, 0, 1], 2, 2, 0, format ["- %1 Personal Box -", _name], 2, 0.05, "RobotoCondensed", "center"];
 	};
 }];
 

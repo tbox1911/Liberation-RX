@@ -188,7 +188,6 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 	[Arsenal_typename, 5],
 	[FOB_box_typename, 50],
 	[FOB_box_outpost, 25],
-	[playerbox_typename, 50],
 	[ammobox_b_typename, 15],
 	[ammobox_o_typename, 15],
 	[ammobox_i_typename, 15],
