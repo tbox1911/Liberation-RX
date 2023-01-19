@@ -5996,6 +5996,8 @@
 		<!-- do_defuel.sqf -->
 		<Key ID="STR_DO_DEFUEL">
 			<Original>&lt;t align='center'&gt;Take fuel form this vehicle: %1&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
+			<Chinesesimp>&lt;t align='center'&gt;从这辆车上取油： %1&lt;br/&gt;你确定吗?&lt;/t&gt;</Chinesesimp>
+			<Chinese>&lt;t align='center'&gt;從這輛車上取油： %1&lt;br/&gt;你確定嗎？&lt;/t&gt;</Chinese>
 			<French>&lt;t align='center'&gt;Prendre l'essence de ce vehicule: %1&lt;br/&gt;Es tu sûr ?&lt;/t&gt;</French>
 			<Portuguese>&lt;t align='center'&gt;Pegue o combustível deste veículo: %1&lt;br/&gt;Tem certeza ?&lt;/t&gt;</Portuguese>
 			<Czech>&lt;t align='center'&gt;Vezměte palivo z tohoto vozidla: %1&lt;br/&gt;Jsi si jistý ?&lt;/t&gt;</Czech>
@@ -6546,15 +6548,15 @@
 		</Key>
 		<Key ID="STR_ADMIN_EXPORT">
 			<Original>Export Game</Original>
-			<Chinesesimp>导入游戏存档</Chinesesimp>
-			<Chinese>导入游戏存档</Chinese>
+			<Chinesesimp>导出游戏存档</Chinesesimp>
+			<Chinese>导出游戏存档</Chinese>
 			<Portuguese>Exportar jogo</Portuguese>
 			<Czech>Export Game</Czech>
 		</Key>
 		<Key ID="STR_ADMIN_IMPORT">
 			<Original>Import Game</Original>
-			<Chinesesimp>导出游戏存档</Chinesesimp>
-			<Chinese>导出游戏存档</Chinese>
+			<Chinesesimp>导入游戏存档</Chinesesimp>
+			<Chinese>导入游戏存档</Chinese>
 			<Portuguese>Importar jogo</Portuguese>
 			<Czech>Import Game</Czech>
 		</Key>
@@ -6701,15 +6703,15 @@
 		<Key ID="STR_FOODDELI">
 			<Original>Food Delivery</Original>
 			<Japanese>食料の配達</Japanese>
-			<Chinesesimp>送外卖</Chinesesimp>
-			<Chinese>送外賣</Chinese>
+			<Chinesesimp>食物配送</Chinesesimp>
+			<Chinese>食物配送</Chinese>
 			<Czech>Donáška jídla</Czech>
 		</Key>
 		<Key ID="STR_FOODDELI_MESSAGE1">
 			<Original>Food Delivery at &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Talk&lt;/t&gt; to the &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; to get information.</Original>
 			<Japanese>食料調達: &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;係の者&lt;/t&gt;に&lt;t color='#0000F0'&gt;聞いて&lt;/t&gt;情報を得てください。</Japanese>
-			<Chinesesimp>送外卖：在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt; 与 &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; &lt;t color='#00F000'&gt;交谈&lt;/t> 获取任务信息。</Chinesesimp>
-			<Chinese>送外賣：在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt; 與 &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; &lt;t color='#00F000'&gt;交談&lt;/t> 獲取任務信息。</Chinese>
+			<Chinesesimp>食物配送：在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt; 与 &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; &lt;t color='#00F000'&gt;交谈&lt;/t> 来获取任务信息。</Chinesesimp>
+			<Chinese>食物配送：在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt; 與 &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; &lt;t color='#00F000'&gt;交談&lt;/t> 來獲取任務信息。</Chinese>
 			<Czech>Donážka jídla &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Mluvit&lt;/t&gt; k &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; získat informace.</Czech>
 		</Key>
 		<Key ID="STR_FOODDELI_MESSAGE2">
@@ -6751,8 +6753,8 @@
 		<Key ID="STR_FUELDELI_MESSAGE1">
 			<Original>Fuel Delivery at &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Talk&lt;/t&gt; to the &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; to get information.</Original>
 			<Japanese>燃料配達: &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;係の者&lt;/t&gt;に&lt;t color='#0000F0'&gt;聞いて&lt;/t&gt;情報を得てください。</Japanese>
-			<Chinesesimp>运送燃料：在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt; 与 &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; &lt;t color='#00F000'&gt;交谈</t&gt; 获取任务信息。</Chinesesimp>
-			<Chinese>運送燃料：在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt; 與 &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; &lt;t color='#00F000'&gt;交談</t&gt; 獲取任務信息。</Chinese>
+			<Chinesesimp>运送燃料：在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt; 与 &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; &lt;t color='#00F000'&gt;交谈/t&gt; 来获取任务信息。</Chinesesimp>
+			<Chinese>運送燃料：在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt; 與 &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; &lt;t color='#00F000'&gt;交談/t&gt; 來獲取任務信息。</Chinese>
 			<Czech>Donážka paliva &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Mluvit&lt;/t&gt; k &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; získat informace.</Czech>
 		</Key>
 		<Key ID="STR_FUELDELI_MESSAGE2">
@@ -6803,18 +6805,26 @@
 		<!-- mission_AmmoDelivery.sqf -->
 		<Key ID="STR_AMMODELI">
 			<Original>Ammo Delivery</Original>
+			<Chinesesimp>运送弹药</Chinesesimp>
+			<Chinese>運送彈藥</Chinese>
 			<Czech>Dodávka munice</Czech>
 		</Key>
 		<Key ID="STR_AMMODELI_MESSAGE1">
 			<Original>Ammo Delivery at &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Talk&lt;/t&gt; to the &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; to get information.</Original>
+			<Chinesesimp>弹药运输： &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;通过&lt;/t&gt; 对话 &lt;t color='#0000F0'&gt;将军&lt;/t&gt; 来获得信息.</Chinesesimp>
+			<Chinese>彈藥運輸： &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;通過&lt;/t&gt; 對話 &lt;t color='#0000F0'&gt;將軍&lt;/t&gt; 來獲得資訊.</Chinese>
 			<Czech>Dodávka munice v &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Talk&lt;/t&gt; k &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; získat informace.</Czech>
 		</Key>
 		<Key ID="STR_AMMODELI_MESSAGE2">
 			<Original>Ammo Delivery has...&lt;br/&gt;&lt;t color='%1'&gt;FAILED&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;The local Population is unhappy...</Original>
+			<Chinesesimp>弹药运输...&lt;br/&gt;&lt;t color='%1'&gt;失败了&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;当地居民很不高兴......</Chinesesimp>
+			<Chinese>彈藥運輸...&lt;br/&gt;&lt;t color='%1'&gt;失敗了&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;當地居民很不高興......</Chinese>
 			<Czech>Dodávka munice je...&lt;br/&gt;&lt;t color='%1'&gt;FAILED&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;Místní obyvatelstvo je nešťastné...</Czech>
 		</Key>
 		<Key ID="STR_AMMODELI_MESSAGE3">
 			<Original>Ammo Delivery&lt;br/&gt;&lt;t color='%1'&gt;SUCCESS&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;The boxes of Ammo have been delivered, Well done.</Original>
+			<Chinesesimp>弹药运输&lt;br/&gt;&lt;t color='%1'&gt;成功&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;弹药箱已经交付，干得好。</Chinesesimp>
+			<Chinese>彈藥運輸&lt;br/&gt;&lt;t color='%1'&gt;成功&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;彈藥箱已經交付，幹得好。</Chinese>
 			<Czech>Dodávka munice&lt;br/&gt;&lt;t color='%1'&gt;ÚSPĚCH&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;Krabice munice byly doručeny, výborně.</Czech>
 		</Key>
 
@@ -6864,11 +6874,11 @@
 			<Czech>Všichni členové Odboje jsou...&lt;br/&gt;&lt;t color='%1'&gt;MRTVÝ&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;Příště víc štěstí!</Czech>
 		</Key>
 		<Key ID="STR_RESISTANCE_MESSAGE3">
-			<Original>Nice work!&lt;br/&gt;&lt;br/&gt;&LT;t color='%1'&gt;%2&LT;/t&gt;&lt;br/&gt;is a safe place again!&lt;br/&gt;Take your reward!</Original>
-			<Japanese>よくやった！&lt;br/&gt;&lt;br/&gt;&LT;t color='%1'&gt;%2&LT;/t&gt;&lt;br/&gt;は再び安全な場所になった！&lt;br/&gt;報酬を受け取ってくれ！</Japanese>
+			<Original>Nice work!&lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;is a safe place again!&lt;br/&gt;Take your reward!</Original>
+			<Japanese>よくやった！&lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;は再び安全な場所になった！&lt;br/&gt;報酬を受け取ってくれ！</Japanese>
 			<Chinesesimp>干得好！&lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;又是个安全的地方了！&lt;br/&gt;接受你的奖励吧！</Chinesesimp>
 			<Chinese>幹得好！ &lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;又是個安全的地方了！ &lt;br/&gt;接受你的獎勵吧！</Chinese>
-			<Czech>Pěkná práce!&lt;br/&gt;&lt;br/&gt;&LT;t color='%1'&gt;%2&LT;/t&gt;&lt;br/&gt;je opět bezpečné místo!&lt;br/&gt;Vezměte si odměnu!</Czech>
+			<Czech>Pěkná práce!&lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;je opět bezpečné místo!&lt;br/&gt;Vezměte si odměnu!</Czech>
 		</Key>
 
 		<!-- mission_Outpost.sqf -->
@@ -6973,14 +6983,20 @@
 		<!-- mission_TownInsurgency.sqf -->
 		<Key ID="STR_INSURGENCY">
 			<Original>Town Insurgency</Original>
+			<Chinesesimp>城镇叛乱</Chinesesimp>
+			<Chinese>城鎮叛亂</Chinese>
 			<Czech>Městské povstání</Czech>
 		</Key>
 		<Key ID="STR_INSURGENCY_MESSAGE1">
 			<Original>The local population of &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt; is Furious about your lake of Consideration!&lt;br/&gt;They take Weapons and refuse your &lt;t color='%1'&gt;Autorithy&lt;/t&gt;.&lt;br/&gt;Try to calm down the situation and bring the Peace back!</Original>
+			<Chinesesimp>当地居民位于： &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt; 对你的考虑的疏忽感到愤怒！!&lt;br/&gt;他们拿起武器并拒绝你的 &lt;t color='%1'&gt;权威&lt;/t&gt;.&lt;br/&gt;试着平息局势，恢复和平！</Chinesesimp>
+			<Chinese>當地居民位於： &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt; 對你的考慮的疏忽感到憤怒！!&lt;br/&gt;他們拿起武器並拒絕你的 &lt;t color='%1'&gt;權威&lt;/t&gt;.&lt;br/&gt;試著平息局勢，恢復和平！</Chinese>
 			<Czech>Místní obyvatelstvo &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt; zuří a nemají ohleduplnost!&lt;br/&gt;Vezmou zbraně a odmítnou vaši &lt;t color='%1'&gt;Autoritu.&lt;/t&gt;.&lt;br/&gt;Pokuste se uklidnit situaci a vrátit mír!</Czech>
 		</Key>
 		<Key ID="STR_INSURGENCY_MESSAGE2">
 			<Original>Nice work!&lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;is a safe place again!&lt;br/&gt;Their belongings are now yours to take!</Original>
+			<Chinesesimp>干得好！&lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;恢复了安全！&lt;br/&gt;他们的财产现在由你拿走！</Chinesesimp>
+			<Chinese>幹得好！&lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;恢復了安全！&lt;br/&gt;他們的財產現在由你拿走！</Chinese>
 			<Czech>Pěkná práce!&lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;je opět bezpečné místo!&lt;br/&gt;Jejich věci jsou nyní vaše!</Czech>
 		</Key>
 
@@ -7301,8 +7317,8 @@
 			<German>Wurde getroffen! Sanitäter!</German>
 			<Spanish>Herido! Médico!</Spanish>
 			<Russian>Меня подстрелили! Медик!</Russian>
-			<Chinesesimp>庸医！我中弹了</Chinesesimp>
-			<Chinese>庸醫！我中彈了</Chinese>
+			<Chinesesimp>医疗兵！我中弹了</Chinesesimp>
+			<Chinese>醫療兵！我中彈了</Chinese>
 			<Japanese>負傷した！衛生兵！！</Japanese>
 			<Portuguese>Eu fui atingido! Médico!</Portuguese>
 			<Czech>Jsem zasažen! Medik!</Czech>
@@ -7313,8 +7329,8 @@
 			<German>Ich bin gefallen! Sanitäter!</German>
 			<Spanish>Estoy abatido! Médico!</Spanish>
 			<Russian>Я ранен! Медик!</Russian>
-			<Chinesesimp>爷倒了！庸医救我！</Chinesesimp>
-			<Chinese>爺倒了！庸醫救我！</Chinese>
+			<Chinesesimp>我重伤倒地！医疗兵！</Chinesesimp>
+			<Chinese>我重傷倒地！醫療兵！</Chinese>
 			<Japanese>ダウンした！衛生兵！！</Japanese>
 			<Portuguese>Estou em baixo! Médico!</Portuguese>
 			<Czech>Jsem dole! Medik!</Czech>
@@ -7460,8 +7476,8 @@
 		<Key ID="STR_TAXI_ONLY_ONE">
 			<Original>Sorry, only one Taxi at time.</Original>
 			<French>Désolé, un seul Taxi à la fois.</French>
-			<Chinesesimp>对不起，一次只有一辆出租鸟</Chinesesimp>
-			<Chinese>對不起，一次只有一輛出租鳥</Chinese>
+			<Chinesesimp>对不起，一次只能呼叫一辆空中出租车</Chinesesimp>
+			<Chinese>對不起，一次只能呼叫一輛空中計程車</Chinese>
 			<Japanese>一度に一機のタクシーしか呼べません。</Japanese>
 			<Portuguese>Desculpe, apenas um táxi por vez.</Portuguese>
 			<Czech>Pardon, vždy jen jedno taxi.</Czech>
@@ -7469,8 +7485,8 @@
 		<Key ID="STR_TAXI_WRONG_PLACE">
 			<Original>Sorry, the Taxi cannot land on this place.</Original>
 			<French>Désolé, le Taxi ne peut pas atterrir à cet endroit.</French>
-			<Chinesesimp>对不起，出租鸟不能在这个地方降落</Chinesesimp>
-			<Chinese>對不起，出租鳥不能在這個地方降落</Chinese>
+			<Chinesesimp>对不起，空中出租车不能在这个地方降落</Chinesesimp>
+			<Chinese>對不起，空中計程車不能在這個地方降落</Chinese>
 			<Japanese>その場所にはタクシーが降りられません。</Japanese>
 			<Portuguese>Desculpe, o táxi não pode pousar neste local.</Portuguese>
 			<Czech>Je nám líto, ale taxi nemůže na tomto místě přistát.</Czech>
@@ -7487,8 +7503,8 @@
 		<Key ID="STR_TAXI_LANDING">
 			<Original>The Taxi lands...</Original>
 			<French>Le Taxi atterrit...</French>
-			<Chinesesimp>小鸟降落中...</Chinesesimp>
-			<Chinese>小鳥降落中...</Chinese>
+			<Chinesesimp>空中出租车降落中...</Chinesesimp>
+			<Chinese>空中計程車降落中...</Chinese>
 			<Japanese>タクシー着陸...</Japanese>
 			<Portuguese>O táxi pousa...</Portuguese>
 			<Czech>Taxi přistává...</Czech>
@@ -7496,8 +7512,8 @@
 		<Key ID="STR_TAXI_LANDED">
 			<Original>The Taxi landed.</Original>
 			<French>Le Taxi a atterri.</French>
-			<Chinesesimp>小鸟已降落.</Chinesesimp>
-			<Chinese>小鳥已降落.</Chinese>
+			<Chinesesimp>空中出租车已降落.</Chinesesimp>
+			<Chinese>空中計程車已降落.</Chinese>
 			<Japanese>タクシーは着陸しました</Japanese>
 			<Portuguese>O táxi pousou.</Portuguese>
 			<Czech>Taxi přistálo.</Czech>
@@ -7523,8 +7539,8 @@
 		<Key ID="STR_TAXI_ARRIVED">
 			<Original>The Taxi has arrived.\nWaiting for passengers.\nYou have %1 seconds to board !</Original>
 			<French>Le Taxi est arrivé.\nEn attente de passagers.\nVous avez %1 secondes pour embarquer !</French>
-			<Chinesesimp>小鸟已降落.\n等候乘客.\n你有 %1 秒时间登机!</Chinesesimp>
-			<Chinese>小鳥已降落.\n等候乘客.\n你有 %1 秒時間登機!</Chinese>
+			<Chinesesimp>空中出租车已降落.\n等候乘客.\n你有 %1 秒时间登机!</Chinesesimp>
+			<Chinese>空中計程車已降落.\n等候乘客.\n你有 %1 秒時間登機!</Chinese>
 			<Japanese>タクシーが到着しました。\n乗客を待っています。\n %1 秒以内に搭乗してください！</Japanese>
 			<Portuguese>O Táxi chegou.\nAguardando passageiros.\nVocê tem %1 segundos para embarcar!</Portuguese>
 			<Czech>Taxi dorazilo.\nČeká na cestující.\nNa nástup máte %1 sekund!</Czech>
@@ -7532,8 +7548,8 @@
 		<Key ID="STR_TAXI_PROGRESS">
 			<Original>Transport in progress...\nDestination: %1m</Original>
 			<French>Transport en cours...\nDestination: %1m</French>
-			<Chinesesimp>小鸟运输中...\n目的地: %1 米</Chinesesimp>
-			<Chinese>小鳥運輸中...\n目的地: %1 米</Chinese>
+			<Chinesesimp>空中出租车运输中...\n目的地: %1 米</Chinesesimp>
+			<Chinese>空中計程車運輸中...\n目的地: %1 米</Chinese>
 			<Japanese>輸送してします...\n目的地: %1m</Japanese>
 			<Portuguese>Transporte em andamento...\nDestino: %1m</Portuguese>
 			<Czech>Probíhá přeprava...\nCíl: %1m</Czech>
@@ -7806,8 +7822,8 @@
 				<Original>Double</Original>
 				<Dutch>Dubbel</Dutch>
 				<German>Doppelt</German>
-				<Chinesesimp>对称</Chinesesimp>
-				<Chinese>對稱</Chinese>
+				<Chinesesimp>镜像</Chinesesimp>
+				<Chinese>鏡像</Chinese>
 				<Japanese>ダブル</Japanese>
 				<Portuguese>Duplo</Portuguese>
 				<Czech>Dvojnásobek</Czech>
@@ -7829,61 +7845,85 @@
 	<Package name="Vehicle Appearance Manager">
 		<Key ID="STR_VAM_INITIALIZED">
 			<Original>-------- Vehicle Appearance Manager Initialized --------</Original>
+			<Chinesesimp>-------- 车辆外观管理器初始化--------</Chinesesimp>
+			<Chinese>-------- 車輛外觀管理器初始化--------</Chinese>
 			<Korean>차량 형상 관리자 불러오기 및 초기화 완료</Korean>
 			<Czech>--------Správce vzhledu vozidla inicializován--------</Czech>
 		</Key>
 		<Key ID="STR_VAM_MAIN_MENU_NAME">
 			<Original>Vehicle Appearance Manager</Original>
+			<Chinesesimp>车辆外观管理</Chinesesimp>
+			<Chinese>車輛外觀管理</Chinese>
 			<Korean>차량 형상 관리자</Korean>
 			<Czech>Vzhled vozidla</Czech>
 		</Key>
 		<Key ID="STR_VAM_RESET_VEHICLE">
 			<Original>Reset</Original>
+			<Chinesesimp>重置</Chinesesimp>
+			<Chinese>重置</Chinese>
 			<Korean>초기화</Korean>
 			<Czech>Reset</Czech>
 		</Key>
 		<Key ID="STR_VAM_CONFIRM_MENU">
 			<Original>Confirm</Original>
+			<Chinesesimp>确认</Chinesesimp>
+			<Chinese>確認</Chinese>
 			<Korean>확인</Korean>
 			<Czech>Potvrdit</Czech>
 		</Key>
 		<Key ID="STR_VAM_CURRENT_VEHICLE">
 			<Original>Current Vehicle :</Original>
+			<Chinesesimp>当前载具 ：</Chinesesimp>
+			<Chinese>目前載具 ：</Chinese>
 			<Korean>현  재    차  량 :</Korean>
 			<Czech>Stávájící Vozidlo</Czech>
 		</Key>
 		<Key ID="STR_VAM_FOB_CONDITION_CHECK_FAILED">
 			<Original>You should be in %1m from FOB.)</Original>
+			<Chinesesimp>您应该在距离FOB %1m 处。</Chinesesimp>
+			<Chinese>您應該在距離FOB %1m 處。</Chinese>
 			<Korean>FOB에서 %1m 안에 있어야 합니다.</Korean>
 			<Czech>Měli byste být %1m od FOB.</Czech>
 		</Key>
 		<Key ID="STR_VAM_COMPLETE_RESET">
 			<Original>Reset complete</Original>
+			<Chinesesimp>重置完成</Chinesesimp>
+			<Chinese>重置完成</Chinese>
 			<Korean>초기화 완료</Korean>
 			<Czech>Reset complete</Czech>
 		</Key>
 		<Key ID="STR_VAM_CAMOUFLAGE">
 			<Original>Camouflage</Original>
+			<Chinesesimp>伪装</Chinesesimp>
+			<Chinese>偽裝</Chinese>
 			<Korean>위장</Korean>
 			<Czech>Maskovat</Czech>
 		</Key>
 		<Key ID="STR_VAM_COMPONENT">
 			<Original>Component</Original>
+			<Chinesesimp>附件</Chinesesimp>
+			<Chinese>附件</Chinese>
 			<Korean>구성품</Korean>
 			<Czech>Komponent</Czech>
 		</Key>
 		<Key ID="STR_VAM_NO_CAMOUFLAGE">
 			<Original>There is no camouflage.</Original>
+			<Chinesesimp>没有伪装</Chinesesimp>
+			<Chinese>沒有偽裝</Chinese>
 			<Korean>위장이 없습니다.</Korean>
 			<Czech>Neexistuje žádná kamufláž.</Czech>
 		</Key>
 		<Key ID="STR_VAM_NO_COMPONENT">
 			<Original>There is no component.</Original>
+			<Chinesesimp>没有附件</Chinesesimp>
+			<Chinese>没有附件</Chinese>
 			<Korean>구성품이 없습니다.</Korean>
 			<Czech>Neexistuje žádná Komponent.</Czech>
 		</Key>
 		<Key ID="STR_VAM_MARID_V1_NOTICE">
 			<Original>Your Marid is outdated one.\nVehicle component setup may not be loaded next time.\nPlease contact with your server admin.</Original>
+			<Chinesesimp>你的Marid已经过时了.\n车辆组件设置下次可能无法加载.\n请联系您的服务器管理员.</Chinesesimp>
+			<Chinese>你的Marid已經過時了.\n車輛元件設置下次可能無法載入.\n請聯繫您的伺服器管理員.</Chinese>
 			<Korean>당신의 마리드는 오래된 것입니다.\n다음 번에 차량 구성품 설정을 불러올 수 없을 것입니다.\n해당 서버 관리자와 연락을 취해보십시오.</Korean>
 			<Czech>Váš Marid je zastaralý.\nNastavení Komponent vozidla se nemusí příště načíst.\nKontaktujte prosím svého správce serveru.</Czech>
 		</Key>
@@ -7891,26 +7931,36 @@
 		<!-- Camouflage/위장 -->
 		<Key ID="STR_VAM_BLUFOR_CAMO">
 			<Original>BLUFOR</Original>
+			<Chinesesimp>蓝色</Chinesesimp>
+			<Chinese>藍色</Chinese>
 			<Korean>청군</Korean>
 			<Czech>Modrý</Czech>
 		</Key>
 		<Key ID="STR_VAM_GREEN_CAMO">
 			<Original>Green</Original>
+			<Chinesesimp>绿色</Chinesesimp>
+			<Chinese>綠色</Chinese>
 			<Korean>녹색</Korean>
 			<Czech>Zelený</Czech>
 		</Key>
 		<Key ID="STR_VAM_BLACK_CAMO">
 			<Original>Black</Original>
+			<Chinesesimp>黑色</Chinesesimp>
+			<Chinese>黑色</Chinese>
 			<Korean>검정색</Korean>
 			<Czech>Černý</Czech>
 		</Key>
 		<Key ID="STR_VAM_AAF_CAMO">
 			<Original>AAF</Original>
+			<Chinesesimp>AAF</Chinesesimp>
+			<Chinese>AAF</Chinese>
 			<Korean>AAF</Korean>
 			<Czech>AAF</Czech>
 		</Key>
 		<Key ID="STR_VAM_DARK_GREEN_CAMO">
 			<Original>Dark Green</Original>
+			<Chinesesimp>深绿色</Chinesesimp>
+			<Chinese>深綠色</Chinese>
 			<Korean>어두운 녹색</Korean>
 			<Czech>Tmavozelený</Czech>
 		</Key>
