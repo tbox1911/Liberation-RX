@@ -425,6 +425,12 @@ while { true } do {
 						};
 					};
 
+					// Personal Box
+					if ( _classname == playerbox_typename ) then {
+						_vehicle allowDamage false;
+						_vehicle setMaxLoad playerbox_cargospace;
+					};
+
 					// Static Weapon
 					if (_classname in static_vehicles_AI) then {
 						_vehicle setMass 5000;
@@ -438,7 +444,7 @@ while { true } do {
 					// FOB
 					if(buildtype == 99) then {
 						_vehicle addEventHandler ["HandleDamage", {0}];
-						[_vehicle, false] remoteExec ["allowDamage", 0];
+						_vehicle allowDamage false;
 						[(getpos _vehicle), false] remoteExec ["build_fob_remote_call", 0];
 
 						// Add owner sign
