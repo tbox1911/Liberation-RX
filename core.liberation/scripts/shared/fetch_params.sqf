@@ -59,6 +59,8 @@ GRLIB_force_load = ["ForceLoading", 0] call bis_fnc_getParamValue;
 
 // Define constant
 [] call compileFinal preprocessFileLineNUmbers "gameplay_constants.sqf";
+
+// Minimal player score to be saved
 GRLIB_min_score_player = 20;
 
 // Classename MOD source
