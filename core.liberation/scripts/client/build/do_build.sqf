@@ -81,18 +81,13 @@ while { true } do {
 		_pos = [(getpos player select 0) + 1,(getpos player select 1) + 1, 0];
 
 		if (_classname isKindOf "Dog_Base_F") then {
-			if (isNil {player getVariable ["my_dog", nil]} ) then {
-				_unit = createAgent [_classname, _pos, [], 5, "CAN_COLLIDE"];
-				_unit setVariable ["BIS_fnc_animalBehaviour_disable", true];
-				_unit allowDamage false;
-				player setVariable ["my_dog", _unit, true];
-				playSound3D ["a3\sounds_f\ambient\animals\dog1.wss", _unit, false, getPosASL _unit, 2, 0.8, 0];
-				_unit setDir (_unit getDir player);
-				_unit playMoveNow "Dog_Idle_Bark";
-			} else {
-				hint "Only One Dog Allowed !!";
-				sleep 3;
-			};
+			_unit = createAgent [_classname, _pos, [], 5, "CAN_COLLIDE"];
+			_unit setVariable ["BIS_fnc_animalBehaviour_disable", true];
+			_unit allowDamage false;
+			player setVariable ["my_dog", _unit, true];
+			playSound3D ["a3\sounds_f\ambient\animals\dog1.wss", _unit, false, getPosASL _unit, 2, 0.8, 0];
+			_unit setDir (_unit getDir player);
+			_unit playMoveNow "Dog_Idle_Bark";
 		} else {
 			if (!([_price] call F_pay)) exitWith {};
 			_grp = group player;
@@ -124,42 +119,37 @@ while { true } do {
 		build_confirmed = 0;
 	} else {
 		if ( buildtype == 8 ) then {
-			if (isNil {player getVariable ["my_squad", nil]} ) then {
-				if (!([_price] call F_pay)) exitWith {};
-				_pos = [(getpos player select 0) + 1,(getpos player select 1) + 1, 0];
-				_grp = createGroup [GRLIB_side_friendly, true];
-				player setVariable ["my_squad", _grp, true];
-				_grp setGroupId [format ["%1 %2",squads_names select buildindex, groupId _grp]];
-				_idx = 0;
-				{
-					_unitrank = "PRIVATE";
-					if(_idx == 0) then { _unitrank = "SERGEANT"; };
-					if(_idx == 1) then { _unitrank = "CORPORAL"; };
-					_unit = _grp createUnit [_x, _pos, [], 5, "NONE"];
-					[_unit] joinSilent _grp;
-					_unit setUnitRank _unitrank;
-					_unit setSkill 0.6;
-					_unit enableIRLasers true;
-					_unit enableGunLights "Auto";
-					_unit setVariable ["PAR_Grp_ID", format["AI_%1",PAR_Grp_ID], true];
-					//_unit forceAddUniform (uniform player);
-					if (GRLIB_ACE_enabled) then {
-						_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-					} else {
-						[_unit] call PAR_fn_AI_Damage_EH;
-					};
-					_idx = _idx + 1;
-					sleep 0.1;
-				} foreach _classname;
-				_grp setCombatMode "GREEN";
-				_grp setBehaviour "AWARE";
+			if (!([_price] call F_pay)) exitWith {};
+			_pos = [(getpos player select 0) + 1,(getpos player select 1) + 1, 0];
+			_grp = createGroup [GRLIB_side_friendly, true];
+			player setVariable ["my_squad", _grp, true];
+			_grp setGroupId [format ["%1 %2",squads_names select buildindex, groupId _grp]];
+			_idx = 0;
+			{
+				_unitrank = "PRIVATE";
+				if(_idx == 0) then { _unitrank = "SERGEANT"; };
+				if(_idx == 1) then { _unitrank = "CORPORAL"; };
+				_unit = _grp createUnit [_x, _pos, [], 5, "NONE"];
+				[_unit] joinSilent _grp;
+				_unit setUnitRank _unitrank;
+				_unit setSkill 0.6;
+				_unit enableIRLasers true;
+				_unit enableGunLights "Auto";
+				_unit setVariable ["PAR_Grp_ID", format["AI_%1",PAR_Grp_ID], true];
+				//_unit forceAddUniform (uniform player);
+				if (GRLIB_ACE_enabled) then {
+					_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+				} else {
+					[_unit] call PAR_fn_AI_Damage_EH;
+				};
+				_idx = _idx + 1;
+				sleep 0.1;
+			} foreach _classname;
+			_grp setCombatMode "GREEN";
+			_grp setBehaviour "AWARE";
 
-				stats_blufor_soldiers_recruited = stats_blufor_soldiers_recruited + count (units _grp); publicVariable "stats_blufor_soldiers_recruited";
-				player hcSetGroup [_grp];
-			} else {
-				hint "Only One Squad Allowed !!";
-				sleep 3;
-			};
+			stats_blufor_soldiers_recruited = stats_blufor_soldiers_recruited + count (units _grp); publicVariable "stats_blufor_soldiers_recruited";
+			player hcSetGroup [_grp];
 			build_confirmed = 0;
 		} else {
 			_posfob = getpos player;
@@ -419,10 +409,16 @@ while { true } do {
 
 					// A3 / R3F Inventory
 					if ( buildtype == 10 && !(_classname in GRLIB_vehicle_whitelist) ) then {
-						{_vehicle addWeaponWithAttachmentsCargoGlobal [ _x, 1] } forEach _lst_a3;
+						[_vehicle, _lst_a3] call F_setCargo;
 						if (!GRLIB_ACE_enabled) then {
 							[_vehicle, _lst_r3f] call R3F_LOG_FNCT_transporteur_charger_auto;
 						};
+					};
+
+					// Personal Box
+					if ( _classname == playerbox_typename ) then {
+						_vehicle allowDamage false;
+						_vehicle setMaxLoad playerbox_cargospace;
 					};
 
 					// Static Weapon
@@ -438,7 +434,7 @@ while { true } do {
 					// FOB
 					if(buildtype == 99) then {
 						_vehicle addEventHandler ["HandleDamage", {0}];
-						[_vehicle, false] remoteExec ["allowDamage", 0];
+						_vehicle allowDamage false;
 						[(getpos _vehicle), false] remoteExec ["build_fob_remote_call", 0];
 
 						// Add owner sign
@@ -468,7 +464,7 @@ while { true } do {
 								_ammo1 setVariable ["GRLIB_vehicle_owner", "public", true];
 								_ammo1 setVariable ["R3F_LOG_disabled", true, true];
 								sleep 0.5;
-							} forEach [Arsenal_typename, "Box_NATO_Ammo_F"];			
+							} forEach [Arsenal_typename, "Box_NATO_Ammo_F"];
 						};
 					} else {
 						sleep 0.3;

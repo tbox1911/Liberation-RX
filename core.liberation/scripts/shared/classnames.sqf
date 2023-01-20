@@ -131,6 +131,7 @@ support_vehicles = support_vehicles + [
 	[medicalbox_typename,5,25,0,0],
 	[mobile_respawn,10,50,0,0],
 	[canister_fuel_typename,0,25,10,0],
+	[playerbox_typename,0,0,0,20],
 	[Respawn_truck_typename,15,150,5,GRLIB_perm_log],
 	["Land_RepairDepot_01_civ_F",10,300,0,GRLIB_perm_log],
 	["Land_MedicalTent_01_MTP_closed_F",5,150,0,GRLIB_perm_log],
@@ -509,6 +510,7 @@ GRLIB_ignore_colisions = [
 
 // Ammobox you want keep contents
 GRLIB_Ammobox_keep = [
+	playerbox_typename,
 	A3W_BoxWps,
 	medicalbox_typename,
 	"Box_NATO_Wps_F",

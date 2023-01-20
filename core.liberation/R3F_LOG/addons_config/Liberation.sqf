@@ -175,6 +175,7 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 [
 	[FOB_box_typename, 0],
 	[FOB_box_outpost, 0],
+	[playerbox_typename, 0],
  	[FOB_truck_typename, 0],
 	[ammo_truck_typename, 0],
 	[fuel_truck_typename, 0],
@@ -214,6 +215,7 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	Arsenal_typename,
 	FOB_box_typename,
 	FOB_box_outpost,
+	playerbox_typename,
 	ammobox_b_typename,
 	ammobox_o_typename,
 	ammobox_i_typename,

@@ -53,6 +53,7 @@ private _no_kill_handler_classnames = [FOB_typename, FOB_outpost];
 
 private _vehicles_light = list_static_weapons + [mobile_respawn];
 { _vehicles_light pushback (_x select 0) } foreach support_vehicles;
+_vehicles_light = _vehicles_light arrayIntersect _vehicles_light;
 
 // Wipe Savegame
 if ( GRLIB_param_wipe_savegame_1 == 1 && GRLIB_param_wipe_savegame_2 == 1 ) then {
@@ -210,6 +211,12 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 					_nextbuilding setUnloadInCombat [true, false];
 				};
 			};
+			if ( _nextclass == playerbox_typename ) then {
+				_nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
+				_nextbuilding setVariable ["R3F_LOG_disabled", false, true];
+				_nextbuilding setVehicleLock "DEFAULT";
+				[_nextbuilding, _x select 5] call F_setCargo;
+			};	
         } else {
 			if ( !(_owner in ["", "public"]) && count _x > 5 ) then {
 				[_x select 5] params [["_color", ""]];
@@ -237,7 +244,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 					[_nextbuilding, false, ["hide_front_ti_panels",1,"hide_cip_panel_rear",1,"hide_cip_panel_bustle",1]] call BIS_fnc_initVehicle;
 				};
 				if (count _lst_a3 > 0) then {
-					{_nextbuilding addWeaponWithAttachmentsCargoGlobal [ _x, 1]} forEach _lst_a3;
+					[_nextbuilding, _lst_a3] call F_setCargo;
 				};
 				if (count _lst_r3f > 0) then {
 					[_nextbuilding, _lst_r3f] call load_object_direct;
@@ -276,11 +283,11 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 	sleep 3;
 	{ 
 		_allow_damage = true;
-		if ( (typeOf _x) in [FOB_typename, FOB_outpost, FOB_sign] ) then {
-			 _allow_damage = false;
+		if ( (typeOf _x) in [FOB_typename, FOB_outpost, FOB_sign, playerbox_typename] ) then {
+			_allow_damage = false;
 		};
 		if ( (typeOf _x) in GRLIB_Ammobox_keep && [_x] call is_public ) then {
-			 _allow_damage = false;
+			_allow_damage = false;
 		};
 		if ( _allow_damage ) then { _x allowDamage true };
 	} foreach _buildings_created;

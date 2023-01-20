@@ -41,4 +41,7 @@ if ( _class == fireworks_typename ) then {
 if ( _class == FOB_box_outpost ) then {
 	_text = localize "STR_OUTPOSTBOX";
 };
+if ( _class == playerbox_typename ) then {
+	_text = "Personal Player Box";
+};
 _text;

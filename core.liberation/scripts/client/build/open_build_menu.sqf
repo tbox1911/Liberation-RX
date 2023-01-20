@@ -1,4 +1,4 @@
-private [ "_oldbuildtype", "_cfg", "_initindex", "_iscommandant", "_squadname", "_buildpages", "_build_list", "_classnamevar", "_entrytext", "_icon", "_affordable", "_affordable_crew", "_selected_item", "_linked", "_linked_unlocked", "_base_link", "_link_color", "_link_str" ];
+private ["_build_list", "_entrytext", "_icon", "_affordable", "_affordable_crew", "_selected_item", "_linked", "_linked_unlocked", "_base_link", "_link_color", "_link_str" ];
 
 if ( ( [ getpos player , 500 , GRLIB_side_enemy ] call F_getUnitsCount ) > 4 ) exitWith { hint localize "STR_BUILD_ENEMIES_NEARBY"; };
 
@@ -6,14 +6,15 @@ if ( isNil "buildtype" ) then { buildtype = 1 };
 if ( buildtype > 8 ) then { buildtype = 1 };
 if ( isNil "buildindex" ) then { buildindex = -1 };
 dobuild = 0;
-_oldbuildtype = -1;
-_cfg = configFile >> "cfgVehicles";
-_initindex = buildindex;
+private _oldbuildtype = -1;
+private _refresh = true;
+private _cfg = configFile >> "cfgVehicles";
+private _initindex = buildindex;
 
 createDialog "liberation_build";
 waitUntil { dialog };
 
-_title = localize "STR_BUILD_TITLE";
+private _title = localize "STR_BUILD_TITLE";
 private _msg = "";
 private _score = [player] call F_getScore;
 private _rank = player getVariable ["GRLIB_Rank", "Private"];
@@ -21,21 +22,25 @@ private _iscommandant = false;
 if ( _rank in ["Colonel", "Super Colonel"] ) then {	_iscommandant = true };
 private _iscommander = false;
 if ( player == ([] call F_getCommander) ) then { _iscommander = true };
-private _near_outpost = (count (player nearObjects [FOB_outpost, 100]) > 0);
 ctrlSetText [1011, format ["%1 - %2", _title, _rank]];
 ctrlShow [ 108, _iscommandant ];
 ctrlShow [ 1085, _iscommandant ];
 
-_squadname = "";
-_buildpages = [
-localize "STR_BUILD1",
-localize "STR_BUILD2",
-localize "STR_BUILD3",
-localize "STR_BUILD4",
-localize "STR_BUILD5",
-localize "STR_BUILD6",
-localize "STR_BUILD7",
-localize "STR_BUILD8"
+private _near_outpost = (count (player nearObjects [FOB_outpost, 100]) > 0);
+private _has_box = false;
+{ if ((_x select 0) == playerbox_typename) exitWith {_has_box = true} } foreach GRLIB_garage;
+if (count ([entities playerbox_typename, {[player, _x] call is_owner}] call BIS_fnc_conditionalSelect) > 0) then {_has_box = true};
+
+private _squadname = "";
+private _buildpages = [
+	localize "STR_BUILD1",
+	localize "STR_BUILD2",
+	localize "STR_BUILD3",
+	localize "STR_BUILD4",
+	localize "STR_BUILD5",
+	localize "STR_BUILD6",
+	localize "STR_BUILD7",
+	localize "STR_BUILD8"
 ];
 
 while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
@@ -49,7 +54,8 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 		};
 	} forEach (build_lists select buildtype);
 
-	if (_oldbuildtype != buildtype) then {
+	if (_oldbuildtype != buildtype || _refresh) then {
+		_refresh = false;
 		_oldbuildtype = buildtype;
 
 		lbClear 110;
@@ -78,7 +84,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 			_affordable = true;
 			_ammo_collected = player getVariable ["GREUH_ammo_count",0];
 			_fuel_collected = player getVariable ["GREUH_fuel_count",0];
-			if(
+			if (
 				((_x select 1 > 0) && ((_x select 1) > (infantry_cap - resources_infantry))) ||
 				((_x select 2 > 0) && ((_x select 2) > _ammo_collected)) ||
 				((_x select 3 > 0) && ((_x select 3) > _fuel_collected))
@@ -86,11 +92,30 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 				_affordable = false;
 			};
 
+			if ( buildtype == 1 ) then {
+				if (_x select 0 in ["Alsatian_Random_F","Fin_random_F"] ) then {
+					if (!(isNil {player getVariable ["my_dog", nil]})) then {
+						_affordable = false;
+					};
+				};
+			};
+
 			if ( buildtype == 7 ) then {
 				if (_x select 0 == mobile_respawn) then {
 					if (([getPlayerUID player] call F_getMobileRespawnsPlayer) select 1) then {
 						_affordable = false;
 					};
+				};
+				if (_x select 0 == playerbox_typename) then {
+					if (_has_box) then {
+						_affordable = false;
+					};
+				};
+			};
+
+			if ( buildtype == 8 ) then {
+				if (!(isNil {player getVariable ["my_squad", nil]})) then {
+					_affordable = false;
 				};
 			};
 
@@ -137,11 +162,34 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 			_affordable = true;
 		};
 
+		if ( buildtype == 1 ) then {
+			if (_build_item select 0 in ["Alsatian_Random_F","Fin_random_F"] ) then {
+				if (!(isNil {player getVariable ["my_dog", nil]})) then {
+					_affordable = false;
+					_refresh = true;
+				};
+			};
+		};
+
 		if ( buildtype == 7 ) then {
 			if (_build_item select 0 == mobile_respawn) then {
 				if (([getPlayerUID player] call F_getMobileRespawnsPlayer) select 1) then {
 					_affordable = false;
+					_refresh = true;
 				};
+			};
+			if (_build_item select 0 == playerbox_typename) then {
+				if (_has_box) then {
+					_affordable = false;
+					_refresh = true;
+				};
+			};
+		};
+
+		if ( buildtype == 8 ) then {
+			if (!(isNil {player getVariable ["my_squad", nil]})) then {
+				_affordable = false;
+				_refresh = true;
 			};
 		};
 
@@ -155,7 +203,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 
 		if (buildtype == 1 && _build_item select 1 >= 1 && (count (_bros) >= GRLIB_squad_size + GRLIB_squad_size_bonus)) then {
 			_squad_full = true;
-		};		
+		};
 	};
 
 	_affordable_crew = _affordable;
@@ -189,8 +237,8 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 	if(buildtype == 1 && dobuild != 0) then {
 		ctrlEnable [120, false];
 		ctrlEnable [121, false];
-		sleep 1;
-		dobuild = 0;
+		waitUntil {sleep 0.3; dobuild == 0};
+		_refresh = true;
 	};
 
 	sleep 0.1;
