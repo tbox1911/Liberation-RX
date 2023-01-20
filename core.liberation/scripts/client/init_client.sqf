@@ -1,5 +1,6 @@
 diag_log "--- Client Init start ---";
 
+titleText ["","BLACK FADED", 100];
 waitUntil {sleep 0.1;!isNull findDisplay 46};
 R3F_LOG_joueur_deplace_objet = objNull;
 GRLIB_player_spawned = false;
@@ -122,13 +123,13 @@ if (!GRLIB_ACE_enabled) then {
 
 [] execVM "addons\PAR\PAR_AI_Revive.sqf";
 [] execVM "addons\LARs\liberationArsenal.sqf";
+[] execVM "addons\VAM\VAM_GUI_init.sqf";
+[] execVM "addons\TARU\taru_init.sqf";
 [] execVM "addons\VIRT\virtual_garage_init.sqf";
 [] execVM "addons\SELL\sell_shop_init.sqf";
 [] execVM "addons\SHOP\traders_shop_init.sqf";
 [] execVM "addons\TAXI\taxi_init.sqf";
-[] execVM "addons\TARU\taru_init.sqf";
 [] execVM "addons\JKB\JKB_init.sqf";
-[] execVM "addons\VAM\VAM_GUI_init.sqf";
 
 // Init Tips Tables from XML
 GREUH_TipsText = [];
