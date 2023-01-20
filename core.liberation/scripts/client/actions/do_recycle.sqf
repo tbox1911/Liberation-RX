@@ -39,7 +39,7 @@ if (!isNil "_objectinfo_loot") then {
 
 _objectinfo = ( [ (light_vehicles + strong_light_vehicles  + heavy_vehicles + strong_heavy_vehicles + air_vehicles + fast_air_vehicle + static_vehicles + support_vehicles + support_crates + buildings + opfor_recyclable + ind_recyclable + loot_crates), { typeof _vehicle == _x select 0 } ] call BIS_fnc_conditionalSelect ) select 0;
 if (isNil "_objectinfo") then {
-	if !(_vehicle isKindOf "StaticWeapon") then {
+	if (!(_vehicle isKindOf "StaticWeapon") && !(typeOf _vehicle == "ACE_bodyBagObject")) then {
 		_objectinfo = [typeOf _vehicle, 0, 50, 0];
 	}else {
 		_objectinfo = [typeOf _vehicle, 0, 0, 0];
@@ -150,5 +150,8 @@ if (dorecycle == 1 && !(isNull _vehicle) && alive _vehicle) exitwith {
     [_vehicle] remoteExec ["deletevehicle", 2];
     stats_vehicles_recycled = stats_vehicles_recycled + 1;
     publicVariable "stats_vehicles_recycled";
+	
+	_msg = format ["%1 recycled %2", name player, typeOf _vehicle];
+	[_msg] remoteExec ["log_on_server", 2];
 };
 _vehicle setVariable ["recycle_in_use", false, true];

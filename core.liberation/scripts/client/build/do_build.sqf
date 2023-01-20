@@ -456,6 +456,10 @@ while { true } do {
 				};
 
 				stats_blufor_vehicles_built = stats_blufor_vehicles_built + 1; publicVariable "stats_blufor_vehicles_built";
+				
+				_msg = format ["%1 built %2", name player, typeOf _vehicle];
+				[_msg] remoteExec ["log_on_server", 2];
+	
 			};
 
 			if ( _idactcancel != -1 ) then {
