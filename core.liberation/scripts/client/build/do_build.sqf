@@ -98,6 +98,7 @@ while { true } do {
 			_unit setVariable ["PAR_Grp_ID", format["Bros_%1", PAR_Grp_ID], true];
 			_unit enableIRLasers true;
 			_unit enableGunLights "Auto";
+			[_unit] spawn PAR_fn_AI_Damage_EH;
 
 			if (GRLIB_opfor_english) then {
 				//[_unit, _spk] remoteExec ["setSpeaker", 0];
@@ -108,10 +109,6 @@ while { true } do {
 			if (_classname in units_loadout_overide) then {
 				_loadouts_folder = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, toLower _classname];
 				[_unit] call compileFinal preprocessFileLineNUmbers _loadouts_folder;
-			};
-
-			if (GRLIB_ACE_enabled) then {
-				_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 			};
 
 			stats_blufor_soldiers_recruited = stats_blufor_soldiers_recruited + 1; publicVariable "stats_blufor_soldiers_recruited";
@@ -137,11 +134,7 @@ while { true } do {
 				_unit enableGunLights "Auto";
 				_unit setVariable ["PAR_Grp_ID", format["AI_%1",PAR_Grp_ID], true];
 				//_unit forceAddUniform (uniform player);
-				if (GRLIB_ACE_enabled) then {
-					_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-				} else {
-					[_unit] call PAR_fn_AI_Damage_EH;
-				};
+				[_unit] spawn PAR_fn_AI_Damage_EH;
 				_idx = _idx + 1;
 				sleep 0.1;
 			} foreach _classname;
