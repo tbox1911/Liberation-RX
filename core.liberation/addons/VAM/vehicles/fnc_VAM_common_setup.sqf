@@ -39,7 +39,11 @@ comp_class_names = [];
 	};
 } forEach _check_comp;
 comp_display_names = [];
-{_name = getText (configfile >> "CfgVehicles" >> _vehicleclass >> "AnimationSources" >> _x >> "DisplayName"); comp_display_names pushBack _name;} forEach comp_class_names;
+{
+	_name = getText (configfile >> "CfgVehicles" >> _vehicleclass >> "AnimationSources" >> _x >> "DisplayName");
+	comp_display_names pushBack _name;
+} forEach comp_class_names;
+
 {
 	if (_x isEqualTo "") then {
 		comp_display_names set [_forEachIndex, comp_class_names select _forEachIndex];
