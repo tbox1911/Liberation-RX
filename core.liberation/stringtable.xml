@@ -8171,9 +8171,9 @@
 	<!-- Vehicle Appearance Manager -->
 	<Package name="Vehicle Appearance Manager">
 		<Key ID="STR_VAM_INITIALIZED">
-			<Original>-------- Vehicle Appearance Manager Initialized --------</Original>
+			<Original>-------- VAM Initialized --------</Original>
 			<Korean>차량 형상 관리자 불러오기 및 초기화 완료</Korean>
-			<Czech>--------Správce vzhledu vozidla inicializován--------</Czech>
+			<Czech>--------SVV inicializován--------</Czech>
 		</Key>
 		<Key ID="STR_VAM_MAIN_MENU_NAME">
 			<Original>Vehicle Appearance Manager</Original>
