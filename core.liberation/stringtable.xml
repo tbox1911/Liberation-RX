@@ -15,6 +15,7 @@
 		</Key>
 		<Key ID="STR_MISSION_MOTD">
 			<Original>It should not be too easy...</Original>
+			<Russian>Это не должно быть слишком просто...</Russian>
 			<French>Ca dois pas être trop facile...</French>
 			<Chinesesimp>经历漫漫的战斗历程才终能获得解放</Chinesesimp>
 			<Chinese>經歷漫漫的戰鬥歷程才終能獲得解放</Chinese>
@@ -1573,6 +1574,7 @@
 		</Key>
 		<Key ID="STR_PARAMS_DAYDURATION">
 			<Original>Day duration (multiplier)</Original>
+			<Russian>Продолжительность дня (множитель)</Russian>
 			<French>Durée du jour (multiplicateur)</French>
 			<Chinesesimp>日间时长（倍数，数值越大，游戏中时间越短）</Chinesesimp>
 			<Chinese>日間時長（倍數，數值越大，遊戲中時間越短）</Chinese>
@@ -1581,6 +1583,7 @@
 		</Key>
 		<Key ID="STR_PARAMS_NIGHTDURATION">
 			<Original>Night duration (multiplier)</Original>
+			<Russian>Продолжительность ночи (множитель)</Russian>
 			<French>Durée de la nuit (multiplicateur)</French>
 			<Chinesesimp>夜间时长（倍数，数值越大，游戏中时间越短）</Chinesesimp>
 			<Chinese>夜間時長（倍數，數值越大，遊戲中時間越短）</Chinese>
@@ -1793,6 +1796,7 @@
 		</Key>
 		<Key ID="STR_PARAMS_REVIVE2">
 			<Original>Enabled - Everyone can revive using a MedKit or FAK</Original>
+			<Russian>Включено - Каждый может возрождать использую Аптечку или FAK</Russian>
 			<French>Activé - Tout le monde peut ressusciter avec un kit médical ou un kit soins</French>
 			<Chinesesimp>启用——每个人都可以使用医疗包或急救包进行复活</Chinesesimp>
 			<Chinese>启用——每个人都可以使用医疗包或急救包进行复活</Chinese>
@@ -1801,6 +1805,7 @@
 		</Key>
 		<Key ID="STR_PARAMS_REVIVE3">
 			<Original>Enabled - Everyone can revive</Original>
+			<Russian>Включено - Каждый может возрождать</Russian>
 			<French>Activé - Tout le monde peut ressusciter</French>
 			<Chinesesimp>启用——每个人都可以随意复活</Chinesesimp>
 			<Chinese>启用——每个人都可以随意复活</Chinese>
@@ -2037,6 +2042,7 @@
 		</Key>
 		<Key ID="STR_PARAM_WILDLIFE">
 			<Original>Enable the Wildlife Manager</Original>
+			<Russian>Включить менеджер животных</Russian>
 			<French>Activer le Gestionnaire de Vie Sauvage</French>
 			<Chinesesimp>野生动物管理</Chinesesimp>
 			<Chinese>野生動物管理</Chinese>
@@ -2046,6 +2052,7 @@
 		</Key>
 		<Key ID="STR_PARAM_PATROL">
 			<Original>Enable the Patrol Manager</Original>
+			<Russian>Включить менеджер патрулей</Russian>
 			<French>Activer le Gestionnaire de Patrouilles</French>
 			<Chinesesimp>巡逻管理</Chinesesimp>
 			<Chinese>巡邏管理</Chinese>
@@ -2079,6 +2086,7 @@
 		</Key>
 		<Key ID="STR_PARAM_SECTOR_RADIUS">
 			<Original>The size of a sector (radius)</Original>
+			<Russian>Размер сектора (радиус)</Russian>
 			<French>La taille d'un secteur (rayon)</French>
 			<Chinesesimp>一个战区的规模（半径）</Chinesesimp>
 			<Chinese>一個戰區的規模（半徑）</Chinese>
@@ -2316,6 +2324,7 @@
 		</Key>
 		<Key ID="STR_PROMOTE_TOOLTIP">
 			<Original>Promotes the unit to the next rank in exchange for Ammo. It cannot be higher than the player's rank.</Original>
+			<Russian>Повышает отряд до следующего ранга в обмен на боеприпасы. Он не может быть выше ранга игрока.</Russian>
 			<French>Promeut l'unité au rang suivant en échange d'Ammo. Il ne peut pas être supérieur au rang du joueur.</French>
 			<Chinesesimp>提升单位到下一个等级以换取弹药。不能高于玩家的等级。</Chinesesimp>
 			<Chinese>提升單位到下一個等級以換取彈藥。不能高於玩家的等級。</Chinese>
@@ -2469,6 +2478,7 @@
 		</Key>
 		<Key ID="STR_PROMOTE_OK">
 			<Original>The unit has been successfully promoted.</Original>
+			<Russian>Юнит был успешно повышен.</Russian>
 			<French>L'unité a été promue avec succès.</French>
 			<Chinesesimp>该单位已成功晋升。</Chinesesimp>
 			<Chinese>該單位已成功晉升。</Chinese>
@@ -2478,6 +2488,7 @@
 		</Key>
 		<Key ID="STR_PROMOTE_KO">
 			<Original>The unit cannot be promoted, maximum rank has been reached.</Original>
+			<Russian>Юнит не может быть повышен, достигнут максимальный ранг.</Russian>
 			<French>L'unité ne peut pas être promue, le rang maximum a été atteint.</French>
 			<Chinesesimp>无法晋升该单位，已达到最高等级。</Chinesesimp>
 			<Chinese>無法晉升該單位，已達到最高等級。</Chinese>
@@ -2763,6 +2774,7 @@
 		</Key>
 		<Key ID="STR_PERMISSION_WARNING">
 			<Original>Automatic creation of default permissions.</Original>
+			<Russian>Автоматическое создание разрешений по умолчанию.</Russian>
 			<French>Création automatique des permissions par defaut.</French>
 			<Chinesesimp>自动创建默认权限。</Chinesesimp>
 			<Chinese>自动创建默认权限。</Chinese>
@@ -2870,7 +2882,7 @@
 			<French>Saut HALO</French>
 			<German>HALO-Sprung</German>
 			<Spanish>Salto HALO</Spanish>
-			<Russian>HALO прыжок</Russian>
+			<Russian>Десантирование</Russian>
 			<Chinesesimp>高空跳伞</Chinesesimp>
 			<Chinese>高空跳傘</Chinese>
 			<Japanese>HALO降下</Japanese>
@@ -2954,7 +2966,7 @@
 			<French>Impossible d'effectuer un saut Opérationnel, vous êtes en attente pour encore %1 minute(s).</French>
 			<German>HALO Sprung noch nicht möglich. Verbleibende Abklingzeit von %1 Minuten.</German>
 			<Spanish>No puedes saltar en HALO, te quedan %1 minuto(s) de espera.</Spanish>
-			<Russian>HALO прыжок недоступен, подождите %1 минут</Russian>
+			<Russian>Десантирование недоступно, подождите %1 минут</Russian>
 			<Chinesesimp>无法高空跳伞，你仍需要间隔 %1 分钟冷却时间。</Chinesesimp>
 			<Chinese>無法高空跳傘，你仍需要間隔 %1 分鐘冷卻時間。</Chinese>
 			<Japanese>HALO降下出来ません。残りクールタイム %1 分。</Japanese>
@@ -2966,7 +2978,7 @@
 			<French>-- SAUT HALO</French>
 			<German>-- HALO-SPRUNG</German>
 			<Spanish>-- SALTO HALO</Spanish>
-			<Russian>-- HALO прыжок</Russian>
+			<Russian>-- ДЕСАНТИРОВАНИЕ</Russian>
 			<Chinesesimp>-- 高空跳伞</Chinesesimp>
 			<Chinese>-- 高空跳傘</Chinese>
 			<Japanese>-- HALO降下</Japanese>
@@ -2978,7 +2990,7 @@
 			<French>SAUT HALO</French>
 			<German>HALO-SPRUNG</German>
 			<Spanish>SALTO HALO</Spanish>
-			<Russian>HALO ПРЫЖОК</Russian>
+			<Russian>ДЕСАНТИРОВАНИЕ</Russian>
 			<Chinesesimp>高空跳伞</Chinesesimp>
 			<Chinese>高空跳傘</Chinese>
 			<Japanese>HALO降下</Japanese>
@@ -3092,7 +3104,7 @@
 		<Key ID="STR_NAME_PROHIBITED">
 			<Original>Sorry, this nickname (%1) is prohibited on this server!\n\nChange your nickname, lazy ass, and join the game again!</Original>
 			<French>Désolé, ce pseudo (%1) est interdit sur ce serveur !\n\nChangez de pseudo, paresseux, et rejoignez le jeu à nouveau !</French>
-			<Russian>Використання ніку %1 ЗАБОРОНЕНО!\n\n Зміни нік, срака ти лінива, та заходь знову.</Russian>
+			<Russian>Использование ника %1 ЗАПРЕЩЕНО!\n\n Измени ник, ленивая жопа, и заходи снова.</Russian>
 			<Chinesesimp>对不起，这个游戏名(%1)在这个服务器上是被禁止的！\n\n更改名字，懒虫，然后再加入服务器吧！</Chinesesimp>
 			<Chinese>對不起，這個遊戲名(%1)在這個服務器上是被禁止的！\n\n更改名字，懶蟲，然後再加入服務器吧！</Chinese>
 			<Portuguese>Desculpe, este apelido (%1) é proibido neste servidor!\n\nMude seu apelido, preguiçoso, e entre no jogo novamente!</Portuguese>
@@ -3379,7 +3391,7 @@
 			<French>Primes de munitions</French>
 			<German>Munition als Kopfgelder</German>
 			<Spanish>Recompensas de munición</Spanish>
-			<Russian>Вознаграждение за уничтожение техники ВООРУЖЕНИЕ</Russian>
+			<Russian>Вознаграждать за уничтожение техники</Russian>
 			<Chinesesimp>弹药奖励</Chinesesimp>
 			<Chinese>彈藥獎勵</Chinese>
 			<Japanese>弾薬バウンティ</Japanese>
@@ -3391,7 +3403,7 @@
 			<French>Prime de %1 Munitions pour un %2 détruit par %3</French>
 			<German>Kopfgeld von %1 Munition für die Zerstörung von %2 durch %3</German>
 			<Spanish>Premio de %1 Munición por un %2 destruido por %3</Spanish>
-			<Russian>+%1 едениц ВООРУЖЕНИЯ за %2 уничтоженный игроком %3</Russian>
+			<Russian>+%1 едениц Ammo за %2 уничтоженный игроком %3</Russian>
 			<Chinesesimp>%3 摧毁 %2 ，获得 %1 弹药奖励</Chinesesimp>
 			<Chinese>%3 摧毀 %2 ，獲得 %1 彈藥獎勵</Chinese>
 			<Japanese>%3 が %2 を破壊したので %1 弾薬バウンティを手に入れました。 </Japanese>
@@ -4005,6 +4017,7 @@
 		</Key>
 		<Key ID="STR_TUTO_TITLE6">
 			<Original>6. Game Icons</Original>
+			<Russian>6. Игровые иконки</Russian>
 			<French>6. Icônes du Jeu</French>
 			<Chinesesimp>6. 游戏图标 </Chinesesimp>
 			<Chinese>6. 遊戲圖標</Chinese>
@@ -4023,6 +4036,16 @@
 					- &lt;t size='1' color='#f80000'&gt;&lt;img image='\a3\ui_f\data\map\markers\handdrawn\warning_ca.paa'/&gt;&lt;/t&gt; DANGER: (Global) The enemy's global Alert level. The higher the alert level, the more violent the reactions of the enemy will be. Can be reduced by Special Operations. &lt;br/&gt; &lt;br/&gt;
 					- &lt;t size='1' color='#0000f8'&gt;&lt;img image='\a3\ui_f\data\gui\cfg\ranks\general_gs.paa'/&gt;&lt;/t&gt; INTEL: (Global) Your Information resources. Depends on the number of prisoners captured or information found at bases. Used to launch Special Operations. &lt;br/&gt; &lt;br/&gt;
 			</Original>
+			<Russian>&lt;br/&gt;
+					Во время игры эти значки информируют вас о ситуации : &lt;br/&gt; &lt;br/&gt;
+					- &lt;t size='1'&gt;&lt;img image='res\ui_arsenal.paa'/&gt;&lt;/t&gt; СЧЕТ: (Личный) Ваш Счет зависит от ваших действий. Позволяет подняться в ранге. (см. Рейтинг)&lt;br/&gt; &lt;br/&gt;
+					- &lt;t size='1'&gt;&lt;img image='res\ui_ammo.paa'/&gt;&lt;/t&gt; БОЕПРИПАСЫ: (Личное) Ваши боеприпасы. Боеприпасы используются в качестве валюты в игре. Он используется для покупки оружия или транспортных средств. &lt;br/&gt; &lt;br/&gt;
+					- &lt;t size='1'&gt;&lt;img image='res\ui_manpo.paa'/&gt;&lt;/t&gt; ЖИВАЯ СИЛА: (Глобальный) Ресурсы вашей живой силы. Зависит от количества городов под вашим контролем. Сюда входят экипажи транспортных средств, такие как пехота. Запертые машины не потребляют персонал. &lt;br/&gt; &lt;br/&gt;
+					- &lt;t size='1'&gt;&lt;img image='res\ui_fuel.paa'/&gt;&lt;/t&gt; ТОПЛИВО: (Глобальный) Ваши топливные ресурсы. Зависит от количества заводов под вашим контролем. Запертые автомобили не потребляют топливо. &lt;br/&gt; &lt;br/&gt;
+					- &lt;t size='1'&gt;&lt;img image='\a3\ui_f_curator\data\displays\rscdisplaycurator\modegroups_ca.paa'/&gt;&lt;/t&gt; ПОДРАЗДЕЛЕНИЯ: (Глобальные) Ваши ресурсы в пехоте. Зависит от количества городов под вашим контролем. Это касается только игроков и их юнитов. &lt;br/&gt; &lt;br/&gt;
+					- &lt;t size='1' color='#f80000'&gt;&lt;img image='\a3\ui_f\data\map\markers\handdrawn\warning_ca.paa'/&gt;&lt;/t&gt; ОПАСНОСТЬ: (Глобальный) Общий уровень тревоги врага. Чем выше уровень тревоги, тем более яростной будет реакция противника. Можно уменьшить с помощью спецопераций. &lt;br/&gt; &lt;br/&gt;
+					- &lt;t size='1' color='#0000f8'&gt;&lt;img image='\a3\ui_f\data\gui\cfg\ranks\general_gs.paa'/&gt;&lt;/t&gt; РАЗВЕДДАННЫЕ: (Глобальный) Ваши информационные ресурсы. Зависит от количества захваченных пленных или информации, найденной на базах. Используется для запуска специальных операций. &lt;br/&gt; &lt;br/&gt;
+			</Russian>
 			<French>&lt;br/&gt;
 					Pendant le jeu, ces icônes vous informent de la situation : &lt;br/&gt; &lt;br/&gt;
 					- &lt;t size='1'&gt;&lt;img image='res\ui_arsenal.paa'/&gt;&lt;/t&gt; SCORE: (Personnel) Votre Score dépend de vos actions. Vous permet de monter en grade. (voir Ranking) &lt;br/&gt; &lt;br/&gt;
@@ -4379,7 +4402,7 @@
 		</Key>
 		<Key ID="STR_TUTO_TITLE12">
 			<Original>12. Tips and Tricks</Original>
-			<Russian>12. Підказки</Russian>
+			<Russian>12. Cоветы и подсказки</Russian>
 			<Chinesesimp>12. 技巧和窍门</Chinesesimp>
 			<Chinese>12. 技巧和竅門</Chinese>
 			<Japanese>12. 前提知識</Japanese>
@@ -4444,31 +4467,31 @@
 				- Vous pouvez copier votre équipement sur une IA avec le bouton (Like Me) dans Gestion Equipe.&lt;/t&gt;
 			</French>
 			<Russian>&lt;br/&gt;
-				- На мапі ви можете переглянути Рангування&lt;br/&gt;
-				- На мапі ви можете переглянути Клавіатурні скорочення&lt;br/&gt;
-				- На мапі ви можете переглянути Таблицю&lt;br/&gt;
-				- Покладіть коробку з арсеналом до транспорту щоб перезаряджатися будь де&lt;br/&gt;
-				- Покладіть Палатку до вашого транспорту щоб розгорнути будь де&lt;br/&gt;
-				- Рытування транспорту у випадку аварії гарний спосід заробити Амуніцію&lt;br/&gt;
-				- Переробка Коробки з Амуніцією дасть вам Амуніцію та XP&lt;br/&gt;
-				- Поранені АІ або полонені не можуть бути видалені або переспоряджені&lt;br/&gt;
-				- Полонені не можуть використовувати транспорт (командиром/водієм/стрілком) або брати зброю&lt;br/&gt;
-				- Коли купляєте транспорт - він замкнений для гравця за замочування&lt;br/&gt;
-				- Коли скидуєте з парашутом транспорт - він НЕ замкнений за замовчуванням&lt;br/&gt;
-				- всі юніти (AI) можуть оживлючати (без аптечки чи медичного пакету)&lt;br/&gt;
-				- гравці повинні мати пакет первичної допомоги або аптечку щоб оживлючвати інших гравців&lt;br/&gt;
-				- коли IA поряд з Ящиком Арсеналу вони перезаряджаються автоматично&lt;br/&gt;
-				- коли стаціонарна зброя поряд з Ящиком Підтримки - вона перезаряджаеється автоматично&lt;br/&gt;
-				- Ви можете використовувати Halo Jump щоб врятувати померлу команду.&lt;br/&gt;
-				- Ви можете розблокумати AI чи самого себе клавішами [0] [8] [1]&lt;br/&gt;
-				- Коли використовуєте Розміщення ваші АІ слідують за вами&lt;br/&gt;
-				- Коли використовуєте Halo Jump ваші IA слідують за вами&lt;br/&gt;
-				- AI слідують за вами якщо вони в радіусі 20м та не в транспорті&lt;br/&gt;
-				- Тент відродження може бути запаковано замість рюкзака та споряджено&lt;br/&gt;
-				- ви можете продавати вантаж з автомобілів біля Гаража&lt;br/&gt;
-				- ви можете купляти каністри в будь якому Пункті дозаправки&lt;br/&gt;
-				- ви можете відправляти Амуніцію біля банкоматів АТМ в будь якому місті&lt;br/&gt;
-				- ви можете копіювати ваше спорядження  на своїх ботів за одпомогою дії "Як у мене" у меню Керування Загоном&lt;br/&gt;
+				- На карте вы можете просмотреть Ранги&lt;br/&gt;
+				- На карте вы можете просмотреть Клавиатурные сокращения&lt;br/&gt;
+				- На карте вы можете просмотреть Таблицу&lt;br/&gt;
+				- Положите коробку с арсеналом в транспорт, чтобы перезаряжаться где угодно&lt;br/&gt;
+				- Положите Палатку в ваш транспорт чтобы возрождаться где угодно&lt;br/&gt;
+				- Переработка уничтоженного транспорта - хороший способ заработать Амуницию&lt;br/&gt;
+				- Переработка Коробки с Амуницией даст вам Амуницию и XP&lt;br/&gt;
+				- Раненые ИИ или пленные не могут быть удалены или переснаряжены&lt;br/&gt;
+				- Пленные не могут использовать транспорт (командиром/водителем/стрелком) или брать оружие&lt;br/&gt;
+				- Когда покупаете транспорт – он заперт для игрока до разблокировки&lt;br/&gt;
+				- Когда сбрасываете с парашютом транспорт – он не заперт по умолчанию&lt;br/&gt;
+				- Все юниты (ИИ) могут оживлять (без аптечки или медицинского пакета)&lt;br/&gt;
+				- Игроки должны иметь пакет первичной помощи или аптечку, чтобы оживлять других игроков&lt;br/&gt;
+				- Когда ИИ рядом с Ящиком Арсенала они перезаряжаются автоматически&lt;br/&gt;
+				- Когда стационарное оружие рядом с Ящиком Поддержки - оно перезаряжается автоматически&lt;br/&gt;
+				- Вы можете использовать прыжок HALO, чтобы спасти мертвую команду&lt;br/&gt;
+				- Вы можете разблокировать ИИ или самого себя клавишами [0] [8] [1]&lt;br/&gt;
+				- Когда вы используете Передислокацию, ваши ИИ следуют за вами&lt;br/&gt;
+				- Когда используете прыжок HALO, ваши ИИ следуют за вами&lt;br/&gt;
+				- ИИ следуют за вами в Halo Jump, если они в радиусе 20м и не в транспорте&lt;br/&gt;
+				- Палатка возрождения может быть упакована вместо рюкзака и снаряжена&lt;br/&gt;
+				- Вы можете продавать груз из автомобилей возле Гаража&lt;br/&gt;
+				- Вы можете покупать канистры в любом Пункте дозаправки&lt;br/&gt;
+				- Вы можете отправлять Аммуницию возле банкоматов АТМ в любом городе&lt;br/&gt;
+				- Вы можете копировать ваше снаряжение на своих ботов с помощью действия "Как у меня" в меню Управление Отрядом&lt;br/&gt;
 			</Russian>
 			<Chinesesimp>&lt;br/&gt;
 				- 在主地图左上角，阅读军衔信息。&lt;br/&gt;
@@ -4994,6 +5017,7 @@
 		</Key>
 		<Key ID="STR_SECONDARY_MISSION2">
 			<Original>Search and Rescue</Original>
+			<Russian>Поиск и спасение</Russian>
 			<French>Recherche et Sauvetage</French>
 			<German>Suchen und Zerstören</German>
 			<Chinesesimp>搜索救援</Chinesesimp>
@@ -5018,6 +5042,21 @@
 					&lt;br/&gt;&lt;br/&gt;
 					&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
 			</Original>
+			<Russian>
+					&lt;t size='1.3' color='#ffa000'&gt;SEARCH AND RESCUE&lt;/t&gt;
+					&lt;br/&gt;&lt;br/&gt;
+					&lt;t size='1'&gt;
+					Мы потеряли связь с разведывательным вертолетом, выполнявшим задание в тылу врага. Мы считаем, что вертолет был сбит враждебными силами.&lt;/t&gt;
+					&lt;br/&gt;&lt;br/&gt;
+					&lt;t size='1'&gt;
+					Вертолет мог совершить аварийную посадку где-нибудь в большой зоне вокруг своего последнего известного местоположения. Ваша миссия состоит в том, чтобы вернуть команду вертолета и их драгоценную информацию. Враждебные силы могли обнаружить их первыми, поэтому вы должны быть быстрыми, осторожными и готовыми вступить в бой.&lt;/t&gt;
+					&lt;br/&gt;&lt;br/&gt;
+					&lt;t size='1.15' color='#00a0ff'&gt;Cost: 10&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
+					&lt;br/&gt;
+					&lt;t size='1.15' color='#ffa000'&gt;Reward: 20 intel points (10 for each crew alive).&lt;/t&gt;
+					&lt;br/&gt;&lt;br/&gt;
+					&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
+			</Russian>
 			<French>
 					&lt;t size='1.3' color='#ffa000'&gt;RECHERCHE ET SAUVETAGE&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
@@ -5127,6 +5166,7 @@
 		<!-- Added in v0.924 -->
 		<Key ID="STR_CIV_PENALTIES">
 			<Original>Penalty for killing civilians</Original>
+			<Russian>Штраф за убийство гражданских</Russian>
 			<French>Pénalité pour les pertes civiles</French>
 			<German>Strafe für zivile Verluste</German>
 			<Chinesesimp>屠杀平民的惩罚</Chinesesimp>
@@ -5137,6 +5177,7 @@
 		</Key>
 		<Key ID="STR_CIV_PENALTY_MESSAGE">
 			<Original>Penalty of %1 for killing of civilian named %2 by %3</Original>
+			<Russian>Штраф %1 за убийство гражданского по имени %2 %3</Russian>
 			<French>Pénalité de %1 pour avoir tué le civil %2 par %3</French>
 			<German>Strafe von %1 für die Ermordung des Zivilisten %2 durch %3</German>
 			<Chinesesimp> %3 因杀死 %2 扣除 %1 军功点的惩罚</Chinesesimp>
@@ -5147,6 +5188,7 @@
 		</Key>
 		<Key ID="STR_PARAM_SQUAD_SIZE_START">
 			<Original>AI per squad at startup.</Original>
+			<Russian>Количество ИИ в отряде на старте.</Russian>
 			<French>IA par escouade au début.</French>
 			<Chinesesimp>启动时每个小队的AI</Chinesesimp>
 			<Chinese>啟動時每個小隊的AI</Chinese>
@@ -5156,6 +5198,7 @@
 		</Key>
 		<Key ID="STR_PARAM_SQUAD_SIZE">
 			<Original>AI recruitment limit per squad.</Original>
+			<Russian>Максимальное количество ИИ в отряде.</Russian>
 			<French>Limite de recrutement d'IA par escouade.</French>
 			<Chinesesimp>每个小队AI招募限制。</Chinesesimp>
 			<Chinese>每個小隊AI招募限制。</Chinese>
@@ -5165,6 +5208,7 @@
 		</Key>
 		<Key ID="STR_PARAM_SPAWN_MAX">
 			<Original>Spawn Point limit per player.</Original>
+			<Russian>Максимальное количество точек спавна на игрока.</Russian>
 			<French>Limite de point de respawn par joueur.</French>
 			<Chinesesimp>每个玩家的重生点限制。</Chinesesimp>
 			<Chinese>每個玩家的重生點限制。</Chinese>
@@ -5173,6 +5217,7 @@
 		</Key>
 		<Key ID="STR_NOTIFICATION_SAR_STARTED">
 			<Original>Crashed helicopter near %1.</Original>
+			<Russian>Вертолет разбился рядом с %1.</Russian>
 			<French>Helicoptère crashé près de %1.</French>
 			<Chinesesimp>在 %1 附近坠毁的直升机。</Chinesesimp>
 			<Chinese>在 %1 附近墜毀的直升機。</Chinese>
@@ -5182,6 +5227,7 @@
 		</Key>
 		<Key ID="STR_NOTIFICATION_SAR_FAILED">
 			<Original>SAR mission failed, both crew are KIA.</Original>
+			<Russian>Миссия SAR не удалась, оба экипажа погибли.</Russian>
 			<French>Mission SAR échouée, les deux équipages sont morts.</French>
 			<Chinesesimp>搜救任务失败，机组乘员均阵亡。</Chinesesimp>
 			<Chinese>搜救任務失敗，機組乘員均陣亡。</Chinese>
@@ -5191,6 +5237,7 @@
 		</Key>
 		<Key ID="STR_NOTIFICATION_SAR_SUCCESS">
 			<Original>SAR mission succeeded.</Original>
+			<Russian>Миссия SAR успешно выполнена.</Russian>
 			<French>Mission SAR réussie.</French>
 			<Chinesesimp>搜救任务成功。</Chinesesimp>
 			<Chinese>搜救任務成功。</Chinese>
@@ -5216,6 +5263,21 @@
 					And join us on TeamSpeak: &lt;t color='#0080ff'&gt;ts3.liberation-rx.fr&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;
 					Good game !!
 			</Original>
+			<Russian>&lt;br/&gt;
+					Добро пожаловать в &lt;t color='#0000ff'&gt;Liberation-RX&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;
+					Вы на кооперативном сервере, вы играете вместе против ИИ.&lt;br/&gt;&lt;br/&gt;
+					Экономика очень важна в этой игре, перерабатывайте обломки или выполняйте&lt;br/&gt;
+					второстепенные миссии, чтобы заработать боеприпасы.&lt;br/&gt;&lt;br/&gt;
+					Союзные юниты ИИ — ваши лучшие друзья, они вам нужны!&lt;br/&gt;
+					Создайте как минимум двух ИИ, которые будут сопровождать вас.&lt;br/&gt;&lt;br/&gt;
+					В зависимости от вашего ранга у вас больше или меньше прав (транспортные средства,&lt;br/&gt;
+					строительство и т. д.). Когда станете &lt;t color='#ff0000'&gt;Командующим&lt;/t&gt; вы сможете все!&lt;br/&gt;&lt;br/&gt;
+					Вы вольны играть так, как хотите, но уважайте других игроков.&lt;br/&gt;
+					Нет воровству/оскорблениям/плохому поведению.&lt;br/&gt;&lt;br/&gt;
+					Чтобы узнать больше, прочтите записи журнала. (Рейтинг, Таблица, Ярлыки)&lt;br/&gt;&lt;br/&gt;
+					И присоединяйтесь к нам в TeamSpeak: &lt;t color='#0080ff'&gt;ts3.liberation-rx.fr&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;
+					Хорошей игры !!
+			</Russian>
 			<French>&lt;br/&gt;
 					Bienvenue sur &lt;t color='#0000ff'&gt;Liberation-RX&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;
 					Vous êtes sur un serveur coopératif, vous jouez ensembles contre l'IA.&lt;br/&gt;&lt;br/&gt;
@@ -5309,6 +5371,7 @@
 		</Key>
 		<Key ID="STR_RANK_LVLBAN">
 			<Original>You will be Kicked off the server !&lt;br/&gt;Your SID is logged and you could be bannish permanantly.</Original>
+			<Russian>Вас выгнали с сервера !&lt;br/&gt;Ваш идентификатор зарегистрирован, и вы можете быть забанены навсегда.</Russian>
 			<French>Vous serez ejecté du serveur !&lt;br/&gt;Votre ID est enregistré et vous pouvez être bannis définitivement.</French>
 			<Chinesesimp>你将被踢出服务器！&lt;br/&gt;你的UID已被记录，并且可能会被永久ban！！！</Chinesesimp>
 			<Chinese>你將被踢出服務器！ &lt;br/&gt;你的UID已被記錄，並且可能會被永久ban！！！</Chinese>
@@ -5318,6 +5381,7 @@
 		</Key>
 		<Key ID="STR_RANK_LVL0">
 			<Original>You have NO permissions !&lt;br/&gt;You have NOT access to any Support !</Original>
+			<Russian>Вы НЕ имеете разрешений !&lt;br/&gt;Вы НЕ имеете доступа к Поддержке !</Russian>
 			<French>Vous n'avez AUCUNES permissions.&lt;br/&gt;Vous n'avez PAS accès au Support !</French>
 			<Chinesesimp>你没有取得任何权限！&lt;br/&gt;您无权获得任何支援！</Chinesesimp>
 			<Chinese>你沒有取得任何權限！ &lt;br/&gt;您無權獲得任何支援！</Chinese>
@@ -5327,6 +5391,7 @@
 		</Key>
 		<Key ID="STR_RANK_LVL1">
 			<Original>You can build Infantry.&lt;br/&gt;You can build light vehicles&lt;br/&gt;You have a Limited access to the Infantry and Logistics.</Original>
+			<Russian>Вы можете нанять Пехоту.&lt;br/&gt;Вы можете создавать легкий транспорт&lt;br/&gt;Вы Ограничены в доступе к Пехоте и Логистике.</Russian>
 			<French>Vous pouvez construire de l'Infanterie.&lt;br/&gt;Vous pouvez construire des véhicules légers.&lt;br/&gt;Vous avez un accès limité à l'Infanterie et au Support.</French>
 			<Chinesesimp>您可以雇佣步兵。&lt;br/&gt;您可以制造轻型车辆&lt;br/&gt;您具有对步兵和后勤的有限访问权限。</Chinesesimp>
 			<Chinese>您可以僱傭步兵。 &lt;br/&gt;您可以製造輕型車輛&lt;br/&gt;您具有對步兵和後勤的有限訪問權限。</Chinese>
@@ -5336,6 +5401,7 @@
 		</Key>
 		<Key ID="STR_RANK_LVL2">
 			<Original>You have Full Acces to Infantry.&lt;br/&gt;You can use Tanks.&lt;br/&gt;You have an extra AI.&lt;br/&gt;You have access to the Virtual Garage.</Original>
+			<Russian>Вы имеете полный доступ к Пехоте.&lt;br/&gt;Вы можете использовать Танки.&lt;br/&gt;У вас есть дополнительные ИИ.&lt;br/&gt;Вы имеете доступ к Виртуальному Гаражу.</Russian>
 			<French>Vous avez un accès complet à l'Infanterie.&lt;br/&gt;Vous pouvez utiliser les Tanks.&lt;br/&gt;Vous avez une unité en plus.&lt;br/&gt;Vous avez accès au Garage Virtuel.</French>
 			<Chinesesimp>您可以雇佣所有步兵。&lt;br/&gt;您可以驾驶坦克。&lt;br/&gt;您可以额外招募一个AI。&lt;br/&gt;您可以使用虚拟车库。</Chinesesimp>
 			<Chinese>您可以僱傭所有步兵。 &lt;br/&gt;您可以駕駛坦克。 &lt;br/&gt;您可以額外招募一個AI。 &lt;br/&gt;您可以使用虛擬車庫。</Chinese>
@@ -5345,6 +5411,7 @@
 		</Key>
 		<Key ID="STR_RANK_LVL3">
 			<Original>You have Full Acces to Static Weapons&lt;br/&gt;You can use Aircraft.&lt;br/&gt;You can build Outpost.&lt;br/&gt;You have an extra AI.</Original>
+			<Russian>У вас есть полный доступ к Стаковому Оружию&lt;br/&gt;Вы можете использовать Авиацию.&lt;br/&gt;Вы можете построить Аванпост.&lt;br/&gt;У вас есть дополнительные ИИ.</Russian>
 			<French>Vous avez un accès complet aux Défense Statique.&lt;br/&gt;Vous pouvez utiliser les unitées Aerienne.&lt;br/&gt;Vous pouvez construire des Outposts.&lt;br/&gt;Vous avez une unité en plus.</French>
 			<Chinesesimp>您可以使用所有静态武器&lt;br/&gt;您可以驾驶飞行器。&lt;br/&gt;您可以建造前哨。&lt;br/&gt;您可以额外招募一个AI。</Chinesesimp>
 			<Chinese>您可以使用所有靜態武器&lt;br/&gt;您可以駕駛飛行器。 &lt;br/&gt;您可以建造前哨。 &lt;br/&gt;您可以額外招募一個AI。</Chinese>
@@ -5354,6 +5421,7 @@
 		</Key>
 		<Key ID="STR_RANK_LVL4">
 			<Original>You can build Tank unit&lt;br/&gt;You have Full Acces to Building and Logistic&lt;br/&gt;You can Recycle unit.&lt;br/&gt;You have an extra AI.</Original>
+			<Russian>Вы можете построить Танковый юнит&lt;br/&gt;У вас есть Полный Доступ к Строительству и Логистике&lt;br/&gt;Вы можете Перерабатывать юниты.&lt;br/&gt;У вас есть дополнительные ИИ.</Russian>
 			<French>Vous pouvez construire des Tanks.&lt;br/&gt;Vous avez un accès complet aux Batiments et au Support.&lt;br/&gt;Vous pouvez recycler les objets.&lt;br/&gt;Vous avez une unité en plus.</French>
 			<Chinesesimp>你可以建造坦克单位&lt;br/&gt;您拥有对建筑和物流的完全访问权限&lt;br/&gt;您可以回收单位。&lt;br/&gt;您还可以额外招募一个AI。</Chinesesimp>
 			<Chinese>你可以建造坦克單位&lt;br/&gt;您擁有對建築和物流的完全訪問權限&lt;br/&gt;您可以回收單位。 &lt;br/&gt;您還可以額外招募一個AI。</Chinese>
@@ -5363,6 +5431,7 @@
 		</Key>
 		<Key ID="STR_RANK_LVL5">
 			<Original>You can build Air unit&lt;br/&gt;You can start Special Side Missions at HQ.&lt;br/&gt;You have an extra AI.</Original>
+			<Russian>Вы можете построить Воздушный юнит&lt;br/&gt;Вы можете начать Специальные Побочные Миссии в штабе.&lt;br/&gt;У вас есть дополнительные ИИ.</Russian>
 			<French>Vous pouvez construire des unitées Aerienne.&lt;br/&gt;Vous pouvez démarrer des Missions Spéciales à la FOB.&lt;br/&gt;Vous avez une unité en plus.</French>
 			<Chinesesimp>您可以建造空军单位&lt;br/&gt;您可以在总部开始特殊支线任务。&lt;br/&gt;您还可以额外招募一个AI。</Chinesesimp>
 			<Chinese>您可以建造空軍單位&lt;br/&gt;您可以在總部開始特殊支線任務。 &lt;br/&gt;您還可以額外招募一個AI。</Chinese>
@@ -5372,6 +5441,7 @@
 		</Key>
 		<Key ID="STR_RANK_LVL6">
 			<Original>You can build and Repack FOB.&lt;br/&gt;You have acces to Special Heavy Vehicles.&lt;br/&gt;You can build a Support Team.&lt;br/&gt;You have the Medical ability.</Original>
+			<Russian>Вы можете построить и Переупаковать FOB.&lt;br/&gt;У вас есть доступ к Специальной Тяжелой Технике.&lt;br/&gt;Вы можете создать Группу Поддержки.&lt;br/&gt;У вас есть способность "Медицина".</Russian>
 			<French>Vous pouvez replier les FOB.&lt;br/&gt;Vous avez accès aux Vehicules Speciaux.&lt;br/&gt;Vous pouvez construire une Equipe de soutien.&lt;br/&gt;Vous avez la compétence Médecin.</French>
 			<Chinesesimp>您可以构建和重新打包 FOB。&lt;br/&gt;您可以使用特种重型车辆。&lt;br/&gt;您可以建立一支支援小队。</Chinesesimp>
 			<Chinese>您可以構建和重新打包 FOB。 &lt;br/&gt;您可以使用特種重型車輛。 &lt;br/&gt;您可以建立一支支援小隊。</Chinese>
@@ -5381,6 +5451,7 @@
 		</Key>
 		<Key ID="STR_RANK_LVL7">
 			<Original>You have more ManPower.&lt;br/&gt;The Trader's shop is cheaper.&lt;br/&gt;The Air Support is cheaper.&lt;br/&gt;You have the Engineer ability.</Original>
+			<Russian>У вас больше Живой Силы.&lt;br/&gt;Магазин торговца дешевле.&lt;br/&gt;Поддержка с воздуха дешевле.&lt;br/&gt;У вас есть способность инженера.</Russian>
 			<French>Vous avez plus de ManPower.&lt;br/&gt;Le Trader's shop est moins cher.&lt;br/&gt;L'Air Support est moins cher.&lt;br/&gt;Vous avez la compétence Ingénieur.</French>
 			<Chinesesimp>你有更多的人力资源。&lt;br/&gt;贸易技能提高，商店价格更便宜。&lt;br/&gt;空中支援的价格更便宜。</Chinesesimp>
 			<Chinese>你有更多的人力資源。 &lt;br/&gt;貿易技能提高，商店價格更便宜。 &lt;br/&gt;空中支援的價格更便宜。</Chinese>
@@ -5391,6 +5462,7 @@
 		<!-- Added in v0.928 -->
 		<Key ID="STR_FANCY">
 			<Original>Fancy Information</Original>
+			<Russian>Всплывающая информация</Russian>
 			<French>Information Colorée</French>
 			<Chinesesimp>花式信息</Chinesesimp>
 			<Chinese>花式信息</Chinese>
@@ -5400,6 +5472,7 @@
 		</Key>
 		<Key ID="STR_OPFORMARK">
 			<Original>Hide Opfor sector markers</Original>
+			<Russian>Скрыть маркеры секторов противника</Russian>
 			<French>Masquer les marqueurs de secteur OPFOR</French>
 			<Chinesesimp>隐藏Opfor地区标记</Chinesesimp>
 			<Chinese>隱藏Opfor地區標記</Chinese>
@@ -5409,6 +5482,7 @@
 		</Key>
 		<Key ID="STR_ARSENAL">
 			<Original>Enable Virtual Arsenal</Original>
+			<Russian>Включить Виртуальный Арсенал</Russian>
 			<French>Activer l'Arsenal Virtuel</French>
 			<Chinesesimp>虚拟武器库</Chinesesimp>
 			<Chinese>虛擬武器庫</Chinese>
@@ -5418,6 +5492,7 @@
 		</Key>
 		<Key ID="STR_LIMIT_ARSENAL">
 			<Original>Arsenal Filter Mode</Original>
+			<Russian>Ограничение Арсенала</Russian>
 			<French>Mode de Filtrage de l'Arsenal</French>
 			<Chinesesimp>武器库过滤模式</Chinesesimp>
 			<Chinese>武器庫過濾模式</Chinese>
@@ -5426,6 +5501,7 @@
 		</Key>
 		<Key ID="STR_LIMIT_ARSENAL_PARAM1">
 			<Original>Soft: The Arsenal only show your side gears, but the player can use other objects.</Original>
+			<Russian>Легкое: В Арсенале снаряжение только вашей фракции, но можно использовать другие предметы.</Russian>
 			<Chinesesimp>松懈：武器库只显示玩家一方的装备，但是可以使用其他物品。</Chinesesimp>
 			<Chinese>鬆懈：武器庫只顯示玩家一方的裝備，但是可以使用其他物品。</Chinese>
 			<Portuguese>Soft: O Arsenal mostra apenas suas engrenagens laterais, mas o jogador pode usar outros objetos.</Portuguese>
@@ -5433,6 +5509,7 @@
 		</Key>
 		<Key ID="STR_LIMIT_ARSENAL_PARAM2">
 			<Original>Strict: The player can ONLY use items present in the Arsenal.</Original>
+			<Russian>Строгое: Игрок может использовать предметы ТОЛЬКО представленные в Арсенале.</Russian>
 			<Chinesesimp>严谨：玩家只能使用当前武器库中的装备。</Chinesesimp>
 			<Chinese>嚴謹：玩家只能使用當前武器庫中的裝備。</Chinese>
 			<Portuguese>Rígido: O jogador SÓ pode usar itens presentes no Arsenal.</Portuguese>
@@ -5440,6 +5517,7 @@
 		</Key>
 		<Key ID="STR_LIMIT_ARSENAL_PARAM3">
 			<Original>Strict + MOD: The player can ONLY use items present in the Arsenal + items from the current Mod</Original>
+			<Russian>Строгое + МОД: Игрок может использовать предметы ТОЛЬКО представленные в Арсенале + из текущего Мода</Russian>
 			<Chinesesimp>严谨+MOD：玩家只能使用当前武器库和MOD中的装备。</Chinesesimp>
 			<Chinese>嚴謹+MOD：玩家只能使用當前武器庫和MOD中的裝備。</Chinese>
 			<Portuguese>Strict + MOD: O jogador SÓ pode usar itens presentes no Arsenal + itens do Mod atual</Portuguese>
@@ -5447,6 +5525,7 @@
 		</Key>
 		<Key ID="STR_VEH_LOCK">
 			<Original>Enable Vehicles Ownership</Original>
+			<Russian>Включить Владение Транспортом</Russian>
 			<French>Activer la Propriété des Véhicules </French>
 			<Chinesesimp>车辆所有权</Chinesesimp>
 			<Chinese>車輛所有權</Chinese>
@@ -5456,6 +5535,7 @@
 		</Key>
 		<Key ID="STR_FORCE_LOADOUT">
 			<Original>Force default equipment</Original>
+			<Russian>Принудительное стандартное снаряжение</Russian>
 			<French>Forcer l'équipement par défaut</French>
 			<Chinesesimp>强制默认装备</Chinesesimp>
 			<Chinese>強制默認裝備</Chinese>
@@ -5465,6 +5545,7 @@
 		</Key>
 		<Key ID="STR_THERMAL">
 			<Original>Enable Thermal equipments</Original>
+			<Russian>Использовать Термальное снаряжение</Russian>
 			<French>Activer les équipements Thermiques</French>
 			<Chinesesimp>热成像装备</Chinesesimp>
 			<Chinese>熱成像裝備</Chinese>
@@ -5474,6 +5555,7 @@
 		</Key>
 		<Key ID="STR_DEATHCHAT">
 			<Original>Disable chat/voice if Wounded</Original>
+			<Russian>Отключить чат/голос если Ранен</Russian>
 			<French>Désactiver le tchat/voie si Blessé</French>
 			<Chinesesimp>受伤时禁止聊天/语音</Chinesesimp>
 			<Chinese>受傷時禁止聊天/語音</Chinese>
@@ -5484,6 +5566,7 @@
 		<!-- Permissions -->
 		<Key ID="STR_PERMISSION_NO_VIP">
 			<Original>You are NOT allowed to use Special Vehicles.</Original>
+			<Russian>Вам НЕ разрешено использовать Специальные Транспортные средства.</Russian>
 			<French>Vous n'êtes PAS autorisé à utiliser des véhicules Spéciaux.</French>
 			<Chinesesimp>您无权使用特种车辆。</Chinesesimp>
 			<Chinese>您無權使用特種車輛。</Chinese>
@@ -5493,6 +5576,7 @@
 		</Key>
 		<Key ID="STR_PERMISSION_NO_SUP">
 			<Original>You are NOT allowed to use Support Vehicles.</Original>
+			<Russian>Вам НЕ разрешено использовать транспортные средства поддержки.</Russian>
 			<French>Vous n'êtes PAS autorisé à utiliser des véhicules d'Assistance.</French>
 			<Chinesesimp>您无权使用支援车辆。</Chinesesimp>
 			<Chinese>您無權使用支援車輛。</Chinese>
@@ -5502,6 +5586,7 @@
 		</Key>
 		<Key ID="STR_PERMISSION_NO_OWN">
 			<Original>Wrong Vehicle Owner.\nAccess is Denied !!</Original>
+			<Russian>Неверный владелец транспортного средства.\nВ доступе отказано !!</Russian>
 			<French>Mauvais Propriétaire.\nAccès Refusé !!</French>
 			<Chinesesimp>错误的车主。\n拒绝访问 !!</Chinesesimp>
 			<Chinese>錯誤的車主。 \n拒絕訪問 !!</Chinese>
@@ -5511,6 +5596,7 @@
 		</Key>
 		<Key ID="STR_PERMISSION_NO_PRI">
 			<Original>Prisoners are NOT allowed to use vehicles !!</Original>
+			<Russian>Заключенным НЕ разрешается пользоваться транспортными средствами !!</Russian>
 			<French>Les prisonniers ne sont PAS autorisés à utiliser les véhicules !!</French>
 			<Chinesesimp>囚犯无权使用车辆 ！！！</Chinesesimp>
 			<Chinese>囚犯無權使用車輛 ！！！</Chinese>
@@ -5522,6 +5608,7 @@
 		<!-- Pay -->
 		<Key ID="STR_GRLIB_NOAMMO">
 			<Original>You don't have enough Ammo !!</Original>
+			<Russian>У вас недостаточно Ammo !!</Russian>
 			<French>Vous n'avez pas assez d'Ammo !!</French>
 			<Chinesesimp>你的弹药不够支付！！</Chinesesimp>
 			<Chinese>你的彈藥不夠支付！ ！</Chinese>
@@ -5531,6 +5618,7 @@
 		</Key>
 		<Key ID="STR_GRLIB_PAY">
 			<Original>You paid: %1 Ammo</Original>
+			<Russian>Вы заплатили: %1 Ammo</Russian>
 			<French>Vous avez payé: %1 Ammo</French>
 			<Chinesesimp>你为一身装备支付: %1 弹药</Chinesesimp>
 			<Chinese>你為一身裝備支付: %1 彈藥</Chinese>
@@ -5543,6 +5631,7 @@
 		<!-- action_manager.sqf -->
 		<Key ID="STR_DOG_FIND">
 			<Original>-- DOG FIND</Original>
+			<Russian>-- СОБАКА, ИСКАТЬ</Russian>
 			<French>-- CHIEN CHERCHE</French>
 			<Japanese>-- 犬に敵を探させる</Japanese>
 			<Chinesesimp>-- 军犬搜寻 --</Chinesesimp>
@@ -5552,6 +5641,7 @@
 		</Key>
 		<Key ID="STR_DOG_RECALL">
 			<Original>-- DOG RECALL</Original>
+			<Russian>-- СОБАКА, ЗА МНОЙ</Russian>
 			<French>-- CHIEN REVIENS</French>
 			<Japanese>-- 犬を呼び戻す</Japanese>
 			<Chinesesimp>-- 召回军犬 --</Chinesesimp>
@@ -5561,6 +5651,7 @@
 		</Key>
 		<Key ID="STR_DOG_STOP">
 			<Original>-- DOG STOP</Original>
+			<Russian>-- СОБАКА, СИДЕТЬ</Russian>
 			<French>-- CHIEN STOP</French>
 			<Japanese>-- 犬を止める</Japanese>
 			<Chinesesimp>-- 军犬停下 --</Chinesesimp>
@@ -5570,6 +5661,7 @@
 		</Key>
 		<Key ID="STR_DOG_DISMISS">
 			<Original>-- DOG DISMISS</Original>
+			<Russian>-- ВОЗВРАТ СОБАКИ</Russian>
 			<French>-- CHIEN RENVOYER</French>
 			<Japanese>-- 犬とバイバイする</Japanese>
 			<Chinesesimp>-- 解雇军犬 --</Chinesesimp>
@@ -5579,6 +5671,7 @@
 		</Key>
 		<Key ID="STR_SQUAD_MOVE">
 			<Original>-- SQUAD MOVE</Original>
+			<Russian>-- ОТРЯД, ДВИЖЕНИЕ</Russian>
 			<French>-- ESCOUADE BOUGE</French>
 			<Japanese>-- 分隊移動</Japanese>
 			<Chinesesimp>-- 小队移动 --</Chinesesimp>
@@ -5588,6 +5681,7 @@
 		</Key>
 		<Key ID="STR_SQUAD_FOLLOW">
 			<Original>-- SQUAD FOLLOW</Original>
+			<Russian>-- ОТРЯД, СЛЕДОВАТЬ</Russian>
 			<French>-- ESCOUADE SUIT</French>
 			<Japanese>-- 分隊追随</Japanese>
 			<Chinesesimp>-- 小队跟随 --</Chinesesimp>
@@ -5597,6 +5691,7 @@
 		</Key>
 		<Key ID="STR_SQUAD_STOP">
 			<Original>-- SQUAD STOP</Original>
+			<Russian>-- ОТРЯД, СТОЙ</Russian>
 			<French>-- ESCOUADE STOP</French>
 			<Japanese>-- 分隊停止</Japanese>
 			<Chinesesimp>-- 小队停下 --</Chinesesimp>
@@ -5606,6 +5701,7 @@
 		</Key>
 		<Key ID="STR_SQUAD_DISMISS">
 			<Original>-- SQUAD DISMISS</Original>
+			<Russian>-- ОТОЗВАТЬ ОТРЯД</Russian>
 			<French>-- ESCOUADE AU FOYER</French>
 			<Japanese>-- 分隊解散</Japanese>
 			<Chinesesimp>-- 小队解散 --</Chinesesimp>
@@ -5615,6 +5711,7 @@
 		</Key>
 		<Key ID="STR_SEND_AMMO">
 			<Original>-- SEND AMMO</Original>
+			<Russian>-- ОТПРАВИТЬ AMMO</Russian>
 			<French>-- DONNER AMMO</French>
 			<Japanese>-- 弾薬を送る</Japanese>
 			<Chinesesimp>-- 发送弹药 --</Chinesesimp>
@@ -5624,6 +5721,7 @@
 		</Key>
 		<Key ID="STR_BUY_FUEL">
 			<Original>-- BUY FUEL</Original>
+			<Russian>-- КУПИТЬ ТОПЛИВО</Russian>
 			<French>-- ACHETER CARBURANT</French>
 			<Japanese>-- 燃料を買う</Japanese>
 			<Chinesesimp>-- 购买燃料 --</Chinesesimp>
@@ -5633,6 +5731,7 @@
 		</Key>
 		<Key ID="STR_TAKE_LEADRSHIP">
 			<Original>-- TAKE LEADRSHIP</Original>
+			<Russian>-- ВЗЯТЬ ЛИДЕРСТВО</Russian>
 			<French>-- PRENDRE COMMANDEMANT</French>
 			<Japanese>-- 指揮権を執る</Japanese>
 			<Chinesesimp>-- 带队 --</Chinesesimp>
@@ -5642,6 +5741,7 @@
 		</Key>
 		<Key ID="STR_AIR_SUPPORT">
 			<Original>-- AIR SUPPORT</Original>
+			<Russian>-- ПОДДЕРЖКА С ВОЗДУХА</Russian>
 			<French>-- AIR SUPPORT</French>
 			<Japanese>-- エアサポート</Japanese>
 			<Chinesesimp>-- 空中支援 --</Chinesesimp>
@@ -5651,6 +5751,7 @@
 		</Key>
 		<Key ID="STR_VIRTUAL_GARAGE">
 			<Original>-- VIRTUAL GARAGE</Original>
+			<Russian>-- ВИРТУАЛЬНЫЙ ГАРАЖ</Russian>
 			<French>-- GARAGE VIRTUEL</French>
 			<Japanese>-- バーチャルガレージ</Japanese>
 			<Chinesesimp>-- 虚拟车库 --</Chinesesimp>
@@ -5660,6 +5761,7 @@
 		</Key>
 		<Key ID="STR_PACK_BEACON">
 			<Original>-- PACK BEACON</Original>
+			<Russian>-- СВЕРНУТЬ МАЯК</Russian>
 			<French>-- PLIER TENTE</French>
 			<Japanese>-- モバイルリスポーンを畳む</Japanese>
 			<Chinesesimp>-- 打包帐篷 --</Chinesesimp>
@@ -5669,6 +5771,7 @@
 		</Key>
 		<Key ID="STR_UNPACK_BEACON">
 			<Original>-- UNPACK BEACON</Original>
+			<Russian>-- РАЗВЕРНУТЬ МАЯК</Russian>
 			<French>-- DEPLIER TENTE</French>
 			<Japanese>-- モバイルリスポーンを展開する</Japanese>
 			<Chinesesimp>-- 撑起帐篷 --</Chinesesimp>
@@ -5678,6 +5781,7 @@
 		</Key>
 		<Key ID="STR_EXTENDED_OPTIONS">
 			<Original>-- Extended Options</Original>
+			<Russian>-- НАСТРОЙКИ</Russian>
 			<French>-- Options étendues</French>
 			<Japanese>-- 拡張設定</Japanese>
 			<Chinesesimp>-- 扩展选项 --</Chinesesimp>
@@ -5687,6 +5791,7 @@
 		</Key>
 		<Key ID="STR_ADMIN_MENU">
 			<Original>-- ADMIN MENU</Original>
+			<Russian>-- АДМИН МЕНЮ</Russian>
 			<French>-- MENU ADMIN</French>
 			<Japanese>-- 管理者メニュー</Japanese>
 			<Chinesesimp>-- 管理员菜单 --</Chinesesimp>
@@ -5696,6 +5801,7 @@
 		</Key>
 		<Key ID="STR_DESTROY_OUTPOST">
 			<Original>-- DESTROY OUTPOST</Original>
+			<Russian>-- УНИЧТОЖИТЬ АВАНПОСТ</Russian>
 			<French>-- DETRUIRE AVANT-POSTE </French>
 			<Japanese>-- 前哨基地を破壊</Japanese>
 			<Chinesesimp>-- 摧毁前哨站 --</Chinesesimp>
@@ -5707,6 +5813,7 @@
 		<!-- action_manager_veh.sqf -->
 		<Key ID="STR_SELL_CARGO">
 			<Original>-- SELL CARGO</Original>
+			<Russian>-- ПРОДАТЬ ГРУЗ</Russian>
 			<French>-- VENDRE CARGO</French>
 			<Japanese>-- 積んだ武器を売る</Japanese>
 			<Chinesesimp>-- 出售库存 --</Chinesesimp>
@@ -5716,12 +5823,14 @@
 		</Key>
 		<Key ID="STR_DE_FUEL">
 			<Original>-- TAKE FUEL</Original>
+			<Russian>-- ВЗЯТЬ ТОПЛИВО</Russian>
 			<French>-- PRENDRE CARBURANT</French>
 			<Portuguese>-- PEGAR COMBUSTÍVEL</Portuguese>
 			<Czech>-- ODČERPAT PALIVO</Czech>
 		</Key>
 		<Key ID="STR_RE_FUEL">
 			<Original>-- PUT FUEL</Original>
+			<Russian>-- ЗАПРАВИТЬ</Russian>
 			<French>-- METTRE CARBURANT</French>
 			<Japanese>-- 給油</Japanese>
 			<Chinesesimp>-- 加油 --</Chinesesimp>
@@ -5731,6 +5840,7 @@
 		</Key>
 		<Key ID="STR_SALVAGE">
 			<Original>-- SALVAGE</Original>
+			<Russian>-- ДЕМОНТАЖ</Russian>
 			<French>-- SALVAGE</French>
 			<Japanese>-- 解体</Japanese>
 			<Chinesesimp>-- 回收 --</Chinesesimp>
@@ -5740,6 +5850,7 @@
 		</Key>
 		<Key ID="STR_UN_FLIP">
 			<Original>-- UNFLIP</Original>
+			<Russian>-- ПЕРЕВЕРНУТЬ</Russian>
 			<French>-- RETOURNER</French>
 			<Japanese>-- ひっくり返す</Japanese>
 			<Chinesesimp>-- 翻正 --</Chinesesimp>
@@ -5749,6 +5860,7 @@
 		</Key>
 		<Key ID="STR_LOCK">
 			<Original>-- LOCK</Original>
+			<Russian>-- ЗАКРЫТЬ</Russian>
 			<French>-- LOCK</French>
 			<Japanese>-- 鍵をかける</Japanese>
 			<Chinesesimp>-- 锁车 --</Chinesesimp>
@@ -5758,6 +5870,7 @@
 		</Key>
 		<Key ID="STR_UNLOCK">
 			<Original>-- UNLOCK</Original>
+			<Russian>-- ОТКРЫТЬ</Russian>
 			<French>-- UNLOCK</French>
 			<Japanese>-- 鍵をあける</Japanese>
 			<Chinesesimp>-- 解锁 --</Chinesesimp>
@@ -5767,6 +5880,7 @@
 		</Key>
 		<Key ID="STR_ABANDON">
 			<Original>-- ABANDON</Original>
+			<Russian>-- ОСТАВИТЬ</Russian>
 			<French>-- ABANDON</French>
 			<Japanese>-- 所有権を放棄する</Japanese>
 			<Chinesesimp>-- 丢弃 --</Chinesesimp>
@@ -5776,6 +5890,7 @@
 		</Key>
 		<Key ID="STR_PAINT">
 			<Original>-- PAINT</Original>
+			<Russian>-- ПОКРАСИТЬ</Russian>
 			<French>-- PEINTURE</French>
 			<Japanese>-- ペイントする</Japanese>
 			<Chinesesimp>-- 喷漆 --</Chinesesimp>
@@ -5785,6 +5900,7 @@
 		</Key>
 		<Key ID="STR_EJECT_CREW">
 			<Original>-- EJECT CREW</Original>
+			<Russian>-- ВЫСАДИТЬ ЭКИПАЖ</Russian>
 			<French>-- EJECTION EQUIPAGE</French>
 			<Japanese>-- 乗員を降ろす</Japanese>
 			<Chinesesimp>-- 弹射乘员 --</Chinesesimp>
@@ -5794,6 +5910,7 @@
 		</Key>
 		<Key ID="STR_REMOVE_BODY">
 			<Original>-- REMOVE BODY</Original>
+			<Russian>-- УНИЧТОЖИТЬ ТЕЛО</Russian>
 			<French>-- ENLEVER CORPS</French>
 			<Japanese>-- 死体を消す</Japanese>
 			<Chinesesimp>-- 移除尸体 --</Chinesesimp>
@@ -5805,6 +5922,7 @@
 		<!-- recycle_manager.sqf -->
 		<Key ID="STR_RECYCLE_MANAGER">
 			<Original>-- RECYCLE</Original>
+			<Russian>-- ПЕРЕРАБОТАТЬ</Russian>
 			<French>-- RECYCLER</French>
 			<Japanese>-- リサイクル</Japanese>
 			<Chinesesimp>-- 回收 --</Chinesesimp>
@@ -5814,6 +5932,7 @@
 		</Key>
 		<Key ID="STR_RECYCLE_FIREWORKS">
 			<Original>-- FIREWORKS !</Original>
+			<Russian>-- ФЕЙЕРВЕРК !</Russian>			
 			<French>-- ARTIFICE !</French>
 			<Japanese>-- 花火！</Japanese>
 			<Chinesesimp>-- 烟花！</Chinesesimp>
@@ -5825,6 +5944,7 @@
 		<!-- do_abondon.sqf -->
 		<Key ID="STR_DO_ABANDON">
 			<Original>%1 is now public !</Original>
+			<Russian>%1 сейчас публичный !</Russian>
 			<French>%1 est à tous !</French>
 			<Japanese>%1 の所有権は放棄されました！</Japanese>
 			<Chinesesimp>%1 现在被丢弃了！</Chinesesimp>
@@ -5836,6 +5956,7 @@
 		<!-- do_beacon_unpack.sqf -->
 		<Key ID="STR_BEACON_UNPACK">
 			<Original>No Enough ManPower: %1</Original>
+			<Russian>Не достаточно Живой Силы: %1</Russian>
 			<French>Pas assez de puissance: %1</French>
 			<Japanese>マンパワーが足りません: %1</Japanese>
 			<Chinesesimp>没有足够的兵力资源: %1</Chinesesimp>
@@ -5847,6 +5968,7 @@
 		<!-- do_buyfuel.sqf -->
 		<Key ID="STR_DO_BUYFUEL">
 			<Original>&lt;t align='center'&gt;Fuel Jerrican cost: %1 Ammo&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
+			<Russian>&lt;t align='center'&gt;Топливная Канистра стоит: %1 Ammo&lt;br/&gt;Вы уверены ?</Russian>
 			<French>&lt;t align='center'&gt;Un jerrican d'essence coûte: %1 Ammo&lt;br/&gt;Es tu sûr ?&lt;/t&gt;</French>
 			<Japanese>&lt;t align='center'&gt;燃料缶コスト: %1 弾薬&lt;br/&gt;よろしいですか？&lt;/t&gt;</Japanese>
 			<Chinesesimp>&lt;t align='center'&gt;燃油费用: %1 弹药&lt;br/&gt;你确定吗？&lt;/t&gt;</Chinesesimp>
@@ -5856,6 +5978,7 @@
 		</Key>
 		<Key ID="STR_FUEL_READY">
 			<Original>Jerrican Fuel ready.\nThank you !</Original>
+			<Russian>Топливная канистра готова .\nСпасибо !</Russian>
 			<French>Jerricane d'essence prêt.\nMerci !</French>
 			<Japanese>燃料缶は用意されました。</Japanese>
 			<Chinesesimp>加油完毕.\n感谢光临！</Chinesesimp>
@@ -5867,6 +5990,7 @@
 		<!-- do_destroy_fob.sqf -->
 		<Key ID="STR_DO_DESTROYFOB">
 			<Original>&lt;t align='center'&gt;Destroy the Outpost&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
+			<Russian>&lt;t align='center'&gt;Уничтожить Аванпост&lt;br/&gt;Вы уверены ?&lt;/t&gt;</Russian>
 			<French>&lt;t align='center'&gt;Détruire l'Avant-poste&lt;br/&gt;Es tu sûr ?&lt;/t&gt;</French>
 			<Japanese>&lt;t align='center'&gt;前哨基地を破壊します&lt;br/&gt;よろしいですか？&lt;/t&gt;</Japanese>
 			<Chinesesimp>&lt;t align='center'&gt;摧毁前哨站&lt;br/&gt;你确定吗？&lt;/t&gt;</Chinesesimp>
@@ -5878,6 +6002,7 @@
 		<!-- do_dog.sqf -->
 		<Key ID="STR_DISMISS_DOG">
 			<Original>&lt;t align='center'&gt;Dismiss the Dog&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
+			<Russian>&lt;t align='center'&gt;Отозвать Собаку&lt;br/&gt;Вы уверены ?&lt;/t&gt;</Russian>
 			<French>&lt;t align='center'&gt;Renvoyer le chien&lt;br/&gt;Es tu sûr ?&lt;/t&gt;</French>
 			<Japanese>&lt;t align='center'&gt;犬とバイバイします&lt;br/&gt;よろしいですか？&lt;/t&gt;</Japanese>
 			<Chinesesimp>&lt;t align='center'&gt;即将解雇军犬&lt;br/&gt;你确定吗？&lt;/t&gt;</Chinesesimp>
@@ -5887,6 +6012,7 @@
 		</Key>
 		<Key ID="STR_DOG_FOUND_NOTHING">
 			<Original>The dog found nothing...</Original>
+			<Russian>Собака ничего не нашла...</Russian>
 			<French>Le chien ne flaire rien ...</French>
 			<Japanese>犬は何も見つけられませんでした...</Japanese>
 			<Chinesesimp>军犬什么也没发现...</Chinesesimp>
@@ -5896,6 +6022,7 @@
 		</Key>
 		<Key ID="STR_DOG_FOUND">
 			<Original>The dog found something %1m away !!</Original>
+			<Russian>Собака нашла что-то %1m !!</Russian>
 			<French>Le chien a flairé quelque chose à %1m !! </French>
 			<Japanese>犬は %1m離れたところに何か見つけました！！</Japanese>
 			<Chinesesimp>军犬在 %1米外发现了什么！！！</Chinesesimp>
@@ -5907,6 +6034,7 @@
 		<!-- do_eject.sqf -->
 		<Key ID="STR_DO_EJECT">
 			<Original>Warning !!\n -5 pts Malus for Ejecting Civilian.</Original>
+			<Russian>Внимание !!\n -5 очков за Убийство Гражданского.</Russian>
 			<French>ATTENTION !!\n -5 pts Malus pour Civil Ejecté.</French>
 			<Japanese>警告！！ \n 民間人を引きずり出したので -5 ポイント</Japanese>
 			<Chinesesimp>警告！\n 驱逐平民 -5 军功点。</Chinesesimp>
@@ -5918,6 +6046,7 @@
 		<!-- do_lock.sqf -->
 		<Key ID="STR_DO_LOCK">
 			<Original>%1 is Locked !</Original>
+			<Russian>%1 закрыт !</Russian>
 			<French>%1 est vérouillé !</French>
 			<Japanese>%1 に鍵をかけました！</Japanese>
 			<Chinesesimp>%1 已锁上！</Chinesesimp>
@@ -5929,6 +6058,7 @@
 		<!-- do_recycle.sqf -->
 		<Key ID="STR_DO_RECYCLE">
 			<Original>&lt;t align='center'&gt;Select Reward:&lt;br/&gt;50 XP or 300 AMMO&lt;/t&gt;</Original>
+			<Russian>&lt;t align='center'&gt;Выберите награду:&lt;br/&gt;50 XP или 300 AMMO&lt;/t&gt;</Russian>
 			<French>&lt;t align='center'&gt;Choisir Récompense:&lt;br/&gt;50 XP or 300 AMMO&lt;/t&gt;</French>
 			<Japanese>&lt;t align='center'&gt;報酬を選んで下さい:&lt;br/&gt;50 ポイント か 300 弾薬&lt;/t&gt;</Japanese>
 			<Chinesesimp>&lt;t align='center'&gt;选择奖励:&lt;br/&gt;50 军功点或者 300 弹药&lt;/t&gt;</Chinesesimp>
@@ -5938,6 +6068,7 @@
 		</Key>
 		<Key ID="STR_SP_BOX">
 			<Original>Special Box !</Original>
+			<Russian>Специальный Box !</Russian>
 			<French>Boite Espéciale !</French>
 			<Japanese>スペシャルボックス！</Japanese>
 			<Chinesesimp>特种箱！</Chinesesimp>
@@ -5947,6 +6078,7 @@
 		</Key>
 		<Key ID="STR_PTS">
 			<Original>XP</Original>
+			<Russian>XP</Russian>
 			<French>XP</French>
 			<Japanese>ポイント</Japanese>
 			<Chinesesimp>军功点</Chinesesimp>
@@ -5956,6 +6088,7 @@
 		</Key>
 		<Key ID="STR_AMMORWD">
 			<Original>AMMO</Original>
+			<Russian>AMMO</Russian>
 			<French>AMMO</French>
 			<Japanese>弾薬</Japanese>
 			<Chinesesimp>弹药</Chinesesimp>
@@ -5965,6 +6098,7 @@
 		</Key>
 		<Key ID="STR_AMMO_SELL">
 			<Original>%1\nScore + 50 Pts!</Original>
+			<Russian>%1\nScore + 50 Pts!</Russian>
 			<French>%1\nScore + 50 Pts!</French>
 			<Japanese>%1\nスコア + 50 ポイント！</Japanese>
 			<Chinesesimp>%1\n奖励 + 50 军功点！</Chinesesimp>
@@ -5974,6 +6108,7 @@
 		</Key>
 		<Key ID="STR_AMMO_SELL2">
 			<Original>%1\nBonus Score + 10 Pts!</Original>
+			<Russian>%1\nBonus Score + 10 Pts!</Russian>
 			<French>%1\nScore + 10 Pts!</French>
 			<Japanese>%1\nボーナススコア + 10 ポイント！</Japanese>
 			<Chinesesimp>%1\n奖励 + 10 军功点！</Chinesesimp>
@@ -5985,6 +6120,7 @@
 		<!-- do_refuel.sqf -->
 		<Key ID="STR_DO_REFUEL">
 			<Original>Fuel refilling Done.</Original>
+			<Russian>Заправка топливом выполнена.</Russian>
 			<French>Plein carburant fait.</French>
 			<Japanese>燃料補充完了</Japanese>
 			<Chinesesimp>燃料添加完毕。</Chinesesimp>
@@ -5996,6 +6132,7 @@
 		<!-- do_defuel.sqf -->
 		<Key ID="STR_DO_DEFUEL">
 			<Original>&lt;t align='center'&gt;Take fuel form this vehicle: %1&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
+			<Russian>&lt;t align='center &gt;Заправиться топливом из этого автомобиля: %1 &lt;br/&gt;Вы уверены?</Russian>
 			<French>&lt;t align='center'&gt;Prendre l'essence de ce vehicule: %1&lt;br/&gt;Es tu sûr ?&lt;/t&gt;</French>
 			<Portuguese>&lt;t align='center'&gt;Pegue o combustível deste veículo: %1&lt;br/&gt;Tem certeza ?&lt;/t&gt;</Portuguese>
 			<Czech>&lt;t align='center'&gt;Vezměte palivo z tohoto vozidla: %1&lt;br/&gt;Jsi si jistý ?&lt;/t&gt;</Czech>
@@ -6003,7 +6140,8 @@
 
 		<!-- do_squad.sqf -->
 		<Key ID="STR_DO_SQUAD">
-			<Original>&lt;t align='center'&gt;Dismiss the Squad&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
+			<Original>&lt;t align='center'&gt;Dismiss Squad&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
+			<Russian>&lt;t align='center'&gt;Распустить команду&lt;br/&gt;Вы уверены?&lt;/t&gt;</Russian>
 			<French>&lt;t align='center'&gt;Démanteler l'Escouade&lt;br/&gt;Es tu sûr ?&lt;/t&gt;</French>
 			<Japanese>&lt;t align='center'&gt;分隊を解散します&lt;br/&gt;よろしいですか？&lt;/t&gt;</Japanese>
 			<Chinesesimp>&lt;t align='center'&gt;解散小队&lt;br/&gt;你确定吗？&lt;/t&gt;</Chinesesimp>
@@ -6015,6 +6153,7 @@
 		<!-- do_unlock.sqf -->
 		<Key ID="STR_DO_UNLOCK">
 			<Original>%1 is Unlocked !</Original>
+			<Russian>%1 открыт !</Russian>
 			<French>%1 est Déverrouillé !</French>
 			<Japanese>%1 の鍵をあけました！</Japanese>
 			<Chinesesimp>%1 已解锁！</Chinesesimp>
@@ -6026,6 +6165,7 @@
 		<!-- do_wreck.sqf -->
 		<Key ID="STR_DO_WRECK">
 			<Original>%1\nBonus Score + %2 Pts\nBonus Ammo + %3 !!</Original>
+			<Russian>%1\nBonus Score + %2 Pts\nBonus Ammo + %3 !!</Russian>
 			<French>%1\nBonus Score + %2 Pts\nBonus Ammo + %3 !!</French>
 			<Japanese>%1\nボーナススコア + %2 ポイント\nボーナス弾薬 + %3 ！！</Japanese>
 			<Chinesesimp>%1\n奖励 + %2 军功点\n弹药 + %3！！</Chinesesimp>
@@ -6037,6 +6177,7 @@
 		<!-- do_sell.sqf -->
 		<Key ID="STR_SELL_WELCOME">
 			<Original>Hello stranger, I buy your vehicle's cargo for a good price!</Original>
+			<Russian>Привет незнакомец, я куплю груз из вашего транспорта по хорошей цене!</Russian>
 			<French>Bonjour étranger, j'achète la cargaison de votre véhicule à un bon prix !</French>
 			<Chinesesimp>陌生人你好，我会以一个合适的价格购买你的车辆里的东西！</Chinesesimp>
 			<Chinese>陌生人你好，我会以一个合适的价格购买你的车辆里的东西！</Chinese>
@@ -6045,6 +6186,7 @@
 		</Key>
 		<Key ID="STR_SELL_NO_VEH">
 			<Original>There is no vehicle nearby.</Original>
+			<Russian>Транспортного средства поблизости нет.</Russian>
 			<French>Il n'y a pas de véhicule à proximité.</French>
 			<Chinesesimp>附件没有车辆。</Chinesesimp>
 			<Chinese>附件没有车辆。</Chinese>
@@ -6053,6 +6195,7 @@
 		</Key>
 		<Key ID="STR_NOTHING_TO_SELL">
 			<Original>There's nothing I can buy in the cargo of your vehicle</Original>
+			<Russian>Я ничего не могу купить из багажника вашего транспорта</Russian>
 			<French>Il n'y a rien que je puisse acheter dans la cargaison de votre véhicule</French>
 			<Chinesesimp>你车上的货物我什么也不需要</Chinesesimp>
 			<Chinese>你车上的货物我什么也不需要</Chinese>
@@ -6061,6 +6204,7 @@
 		</Key>
 		<Key ID="STR_CARGO_SOLD">
 			<Original>%1 Cargo Sold.\n%2 +%3 AMMO !</Original>
+			<Russian>%1 Груз продан.\n%2 +%3 AMMO !</Russian>
 			<French>%1 Vente Cargo.\n%2 +%3 AMMO !</French>
 			<Japanese>%1 の荷物は売られました。\n%2 +%3 弾薬！</Japanese>
 			<Chinesesimp>%1 库存已出售。\n%2 +%3 弹药！</Chinesesimp>
@@ -6070,6 +6214,7 @@
 		</Key>
 		<Key ID="STR_SELL_BUTTON">
 			<Original>SELL CARGO</Original>
+			<Russian>ПРОДАТЬ ГРУЗ</Russian>
 			<French>VENDRE CARGO</French>
 			<Japanese>荷物を売る</Japanese>
 			<Chinesesimp>出售库存</Chinesesimp>
@@ -6079,6 +6224,7 @@
 		</Key>
 		<Key ID="STR_SELL_CONFIRM">
 			<Original>&lt;t align='center'&gt;Sell the cargo of %1&lt;br/&gt;for %2 AMMO.&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
+			<Russian>&lt;t align='center'&gt;Продать груз %1&lt;br/&gt;for %2 AMMO.&lt;br/&gt;Вы уверены ?&lt;/t&gt;</Russian>
 			<French>&lt;t align='center'&gt;Vendre la cargaison de %1&lt;br/&gt;pour %2 AMMO.&lt;br/&gt;Es tu sûr ?&lt;/t&gt;</French>
 			<Japanese>&lt;t align='center'&gt;%1 の荷物を全て売ります。&lt;br/&gt;取得： %2 弾薬&lt;br/&gt;よろしいですか？&lt;/t&gt;</Japanese>
 			<Chinesesimp>&lt;t align='center'&gt;出售所有 %1 库存&lt;br/&gt;获得 %2 弹药。&lt;br/&gt;你确定吗？&lt;/t&gt;</Chinesesimp>
@@ -6090,6 +6236,7 @@
 		<!-- man_manager.sqf -->
 		<Key ID="STR_MAN_MANAGER">
 			<Original>-- SPEAK</Original>
+			<Russian>-- ГОВОРИТЬ</Russian>
 			<French>-- DISCUTER</French>
 			<Japanese>-- 話す</Japanese>
 			<Chinesesimp>-- 打探情报 --</Chinesesimp>
@@ -6104,6 +6251,10 @@
 				You failed to defend FOB: &lt;t color='#0000F0'&gt;%2&lt;/t&gt;...&lt;br/&gt;&lt;br/&gt;
 				The HQ order a score penalty of: &lt;t color='#A00000'&gt;%3&lt;/t&gt;.&lt;br/&gt;
 			</Original>
+			<Russian>Внимание &lt;t color='#00008f'&gt;%1&lt;/t&gt; !&lt;br/&gt;&lt;br/&gt;
+				Вы не смогли защитить FOB: &lt;t color='#0000F0'&gt;%2&lt;/t&gt;...&lt;br/&gt;&lt;br/&gt;
+				Штабом назначен штраф в размере: &lt;t color='#A00000'&gt;%3&lt;/t&gt;.&lt;br/&gt;
+			</Russian>
 			<French>Attention &lt;t color='#00008f'&gt;%1&lt;/t&gt; !&lt;br/&gt;&lt;br/&gt;
 				Tu as échoué à défendre la FOB &lt;t color='#0000F0'&gt;%2&lt;/t&gt;...&lt;br/&gt;&lt;br/&gt;
 				Le Commandement ordonne une pénalitée de : &lt;t color='#A00000'&gt;%3&lt;/t&gt;.&lt;br/&gt;
@@ -6133,6 +6284,7 @@
 		<!-- init_client.sqf -->
 		<Key ID="STR_READ_ME">
 			<Original>-= READ  ME =-</Original>
+			<Russian>-= ПРОЧТИ МЕНЯ</Russian>
 			<French>-= A LIRE =-</French>
 			<Japanese>-= 読んでください =-</Japanese>
 			<Chinesesimp>-= 萌新教学 =-</Chinesesimp>
@@ -6142,6 +6294,7 @@
 		</Key>
 		<Key ID="STR_TIPS">
 			<Original>-=   TIPS   =-</Original>
+			<Russian>-= СОВЕТЫ</Russian>
 			<French>-= ASTUCES =-</French>
 			<Japanese>-=   前提知識   =-</Japanese>
 			<Chinesesimp>-=   小贴士   =-</Chinesesimp>
@@ -6153,6 +6306,7 @@
 		<!-- virtual_garage.hpp -->
 		<Key ID="STR_VIRT_GARAGE">
 			<Original>-- Virtual Garage --</Original>
+			<Russian>-- ВИРТУАЛЬНЫЙ ГАРАЖ</Russian>
 			<French>-= Garage Virtuel =-</French>
 			<Japanese>-- バーチャルガレージ --</Japanese>
 			<Chinesesimp>-- 虚拟车库 --</Chinesesimp>
@@ -6162,6 +6316,7 @@
 		</Key>
 		<Key ID="STR_GARAGE_LOAD">
 			<Original>-- LOAD --</Original>
+			<Russian>-- ЗАГРУЗКА</Russian>
 			<French>-- RANGER --</French>
 			<Japanese>-- 入庫 --</Japanese>
 			<Chinesesimp>-- 存放 --</Chinesesimp>
@@ -6171,6 +6326,7 @@
 		</Key>
 		<Key ID="STR_GARAGE_UNLOAD">
 			<Original>-- UNLOAD --</Original>
+			<Russian>-- ВЫГРУЗИТЬ</Russian>
 			<French>-- SORTIR --</French>
 			<Japanese>-- 出庫 --</Japanese>
 			<Chinesesimp>-- 取出 --</Chinesesimp>
@@ -6182,6 +6338,7 @@
 		<!-- virtual_garage.sqf -->
 		<Key ID="STR_FULL_GARAGE">
 			<Original>Garage is Full !!\nMax %1 vehicles.</Original>
+			<Russian>Гараж полон !!\nМаксимум %1 транспортных средств.</Russian>
 			<French>Garage Virt. plein!!\n %1 véhicules</French>
 			<Japanese>ガレージは満杯です！！\n最大 %1 台。</Japanese>
 			<Chinesesimp>车库已满！\n最多 %1 辆载具。</Chinesesimp>
@@ -6191,6 +6348,7 @@
 		</Key>
 		<Key ID="STR_CANT_PARK">
 			<Original>Loaded Vehicles cannot be Parked !</Original>
+			<Russian>Загруженные автомобили нельзя парковать!</Russian>
 			<French>Les Véhicules Chargés ne peuvent pas rentrer dans le Garage Virt. !</French>
 			<Japanese>その乗り物はガレージに入れられません！</Japanese>
 			<Chinesesimp>不能停放已装载的车辆！</Chinesesimp>
@@ -6200,6 +6358,7 @@
 		</Key>
 		<Key ID="STR_CANT_PARKUAV">
 			<Original>Vehicles with crew cannot be Parked !</Original>
+			<Russian>Машины с экипажем парковать нельзя!</Russian>
 			<French>Les véhicules avec Equipage ne peuvent rentrer dans le Garage Virt. !</French>
 			<Japanese>乗員が乗っている乗り物はガレージに入れられません！</Japanese>
 			<Chinesesimp>不能停放有乘员的载具！</Chinesesimp>
@@ -6209,6 +6368,7 @@
 		</Key>
 		<Key ID="STR_ONLY_WEAPONS">
 			<Original>&lt;t align='center'&gt;Only Weapons and Cargo is Saved !!&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
+			<Russian>&lt;t align='center'&gt;Сохраняется только оружие и груз !!&lt;br/&gt;Вы уверены ?&lt;/t&gt;</Russian>
 			<French>&lt;t align='center'&gt;Uniquement Armes et Cargo sont sauvegardés !!&lt;br/&gt;Es tu sûr ?&lt;/t&gt;</French>
 			<Japanese>&lt;t align='center'&gt;武器と荷物だけが保存されます！！&lt;br/&gt;よろしいですか？&lt;/t&gt;</Japanese>
 			<Chinesesimp>&lt;t align='center'&gt;只保存武器和库存！&lt;br/&gt;你确定吗？&lt;/t&gt;</Chinesesimp>
@@ -6218,6 +6378,7 @@
 		</Key>
 		<Key ID="STR_WARNING">
 			<Original>Warning !</Original>
+			<Russian>Внимание !</Russian>
 			<French>Alerte !</French>
 			<Japanese>警告！</Japanese>
 			<Chinesesimp>警告！</Chinesesimp>
@@ -6227,6 +6388,7 @@
 		</Key>
 		<Key ID="STR_LOADED">
 			<Original>Vehicle %1\nLoaded in Garage.</Original>
+			<Russian>Машина %1\nLoaded в Гараже.</Russian>
 			<French>Véhicule %1\nRangé dans le Garage Virt.</French>
 			<Japanese>乗り物 %1\nはガレージに入りました。</Japanese>
 			<Chinesesimp>载具 %1\n已存入车库！</Chinesesimp>
@@ -6238,6 +6400,7 @@
 		<!-- veh_repaint -->
 		<Key ID="STR_PAINT_SHOP">
 			<Original>-- Paint Shop --</Original>
+			<Russian>-- Покрасочная</Russian>
 			<French>-- Choix Peinture --</French>
 			<Japanese>-- ペイントショップ --</Japanese>
 			<Chinesesimp>-- 涂装 --</Chinesesimp>
@@ -6247,6 +6410,7 @@
 		</Key>
 		<Key ID="STR_SHOP_PAINT">
 			<Original>Paint</Original>
+			<Russian>Красить</Russian>
 			<French>Peindre</French>
 			<Japanese>ペイント</Japanese>
 			<Chinesesimp>喷漆</Chinesesimp>
@@ -6258,6 +6422,7 @@
 		<!-- JKB_dialog -->
 		<Key ID="STR_JKB_MENU">
 			<Original>-- Juke Box --</Original>
+			<Russian>-- Музыка</Russian>
 			<Chinesesimp>-- 音乐播放器 --</Chinesesimp>
 			<Chinese>-- 音樂播放器 --</Chinese>
 			<Portuguese>-- Juke Box --</Portuguese>
@@ -6265,6 +6430,7 @@
 		</Key>
 		<Key ID="STR_JKB_ACTION">
 			<Original>Open JukeBox</Original>
+			<Russian>Открыть Музыку</Russian>
 			<Chinesesimp>打开音乐播放器</Chinesesimp>
 			<Chinese>打開音樂播放器</Chinese>
 			<Portuguese>Abrir Juke Box</Portuguese>
@@ -6272,6 +6438,7 @@
 		</Key>
 		<Key ID="STR_JKB_START">
 			<Original>Play</Original>
+			<Russian>Play</Russian>
 			<Chinesesimp>播放</Chinesesimp>
 			<Chinese>播放</Chinese>
 			<Portuguese>Jogar</Portuguese>
@@ -6279,6 +6446,7 @@
 		</Key>
 		<Key ID="STR_JKB_STOP">
 			<Original>Stop</Original>
+			<Russian>Stop</Russian>
 			<Chinesesimp>暂停</Chinesesimp>
 			<Chinese>暫停</Chinese>
 			<Portuguese>Pare</Portuguese>
@@ -6288,6 +6456,7 @@
 		<!-- liberation_airdrop.hpp -->
 		<Key ID="STR_AIRDROP_CANCEL">
 			<Original>Cancel</Original>
+			<Russian>Отмена</Russian>
 			<French>Annuler</French>
 			<Japanese>キャンセル</Japanese>
 			<Chinesesimp>取消</Chinesesimp>
@@ -6297,6 +6466,7 @@
 		</Key>
 		<Key ID="STR_AIRDROP_TAXI">
 			<Original>Taxi</Original>
+			<Russian>Такси</Russian>
 			<French>Taxi</French>
 			<Japanese>タクシー</Japanese>
 			<Chinesesimp>空投/接送</Chinesesimp>
@@ -6306,6 +6476,7 @@
 		</Key>
 		<Key ID="STR_AIRDROP_LIGHT">
 			<Original>Light</Original>
+			<Russian>Легкий</Russian>
 			<French>Light</French>
 			<Japanese>軽車両</Japanese>
 			<Chinesesimp>越野</Chinesesimp>
@@ -6315,6 +6486,7 @@
 		</Key>
 		<Key ID="STR_AIRDROP_LIGHTPLUS">
 			<Original>Light+</Original>
+			<Russian>Легкий+</Russian>
 			<French>Light+</French>
 			<Japanese>軽車両+</Japanese>
 			<Chinesesimp>越野+</Chinesesimp>
@@ -6324,6 +6496,7 @@
 		</Key>
 		<Key ID="STR_AIRDROP_ARMORED">
 			<Original>Armored</Original>
+			<Russian>Броня</Russian>
 			<French>Blindé</French>
 			<Japanese>装甲車</Japanese>
 			<Chinesesimp>装甲车</Chinesesimp>
@@ -6333,6 +6506,7 @@
 		</Key>
 		<Key ID="STR_AIRDROP_TRUCK">
 			<Original>Truck</Original>
+			<Russian>Грузовик</Russian>
 			<French>Camion</French>
 			<Japanese>トラック</Japanese>
 			<Chinesesimp>卡车</Chinesesimp>
@@ -6342,6 +6516,7 @@
 		</Key>
 		<Key ID="STR_AIRDROP_APC">
 			<Original>APC</Original>
+			<Russian>APC</Russian>
 			<French>Blindé Lourd</French>
 			<Japanese>APC</Japanese>
 			<Chinesesimp>APC</Chinesesimp>
@@ -6351,6 +6526,7 @@
 		</Key>
 		<Key ID="STR_AIRDROP_BOAT">
 			<Original>Boat</Original>
+			<Russian>Лодка</Russian>
 			<French>Bâteau</French>
 			<Japanese>ボート</Japanese>
 			<Chinesesimp>船只</Chinesesimp>
@@ -6360,6 +6536,7 @@
 		</Key>
 		<Key ID="STR_AIRDROP_AIRSUPREMACY">
 			<Original>Air Superiority</Original>
+			<Russian>Воздух</Russian>
 			<French>Suprématie Aéro</French>
 			<Japanese>制空権</Japanese>
 			<Chinesesimp>夺取制空</Chinesesimp>
@@ -6369,6 +6546,7 @@
 		</Key>
 		<Key ID="STR_AIRDROP_MENU">
 			<Original>-- Air Support Menu --</Original>
+			<Russian>-- Меню Поддержки с воздуха</Russian>
 			<French>-- MENU Support Aéro --</French>
 			<Japanese>-- エアサポートメニュー --</Japanese>
 			<Chinesesimp>-- 空中支援菜单 --</Chinesesimp>
@@ -6378,6 +6556,7 @@
 		</Key>
 		<Key ID="STR_CALL_HELITAXI">
 			<Original>Call Heli Taxi.\nCost: %1 Ammo</Original>
+			<Russian>Вызвать Вертолет.\nСтоимость: %1 Ammo</Russian>
 			<French>Appeler un aéro Taxi.\nPrix: %1 Ammo</French>
 			<Japanese>ヘリタクシーを呼ぶ\nコスト: %1 弾薬</Japanese>
 			<Chinesesimp>呼叫直升机接送.\n花费: %1 弹药</Chinesesimp>
@@ -6387,6 +6566,7 @@
 		</Key>
 		<Key ID="STR_QUAD_OFFLOAD">
 			<Original>Quad, Unarmed Offroad.\nCost:  %1 Ammo</Original>
+			<Russian>Квадроцикл, безоружный. \nСтоимость:  %1 Ammo</Russian>
 			<French>Quad, Tout-terrain désarmé.\nPrix:  %1 Ammo</French>
 			<Japanese>ATV、非武装ピックアップ\nコスト:  %1 弾薬</Japanese>
 			<Chinesesimp>四轮摩托，越野车.\n花费:  %1 弹药</Chinesesimp>
@@ -6396,6 +6576,7 @@
 		</Key>
 		<Key ID="STR_ARMED_OFFLOAD">
 			<Original>Armed Offroad.\nCost: %1 Ammo</Original>
+			<Russian>Внедорожник, вооруженный. \nСтоимость: %1 Ammo</Russian>
 			<French>Tout-terrain armé.\nPrix: %1 Ammo</French>
 			<Japanese>武装ピックアップ\nコスト: %1 弾薬</Japanese>
 			<Chinesesimp>武装越野车.\n花费: %1 弹药</Chinesesimp>
@@ -6405,6 +6586,7 @@
 		</Key>
 		<Key ID="STR_MRAP">
 			<Original>MRAPs.\nCost: %1 Ammo</Original>
+			<Russian>MRAPs.\nСтоимость: %1 Ammo</Russian>
 			<French>MRAPs.\nPrix: %1 Ammo</French>
 			<Japanese>MRAP\nコスト: %1 弾薬</Japanese>
 			<Chinesesimp>武装MRAP.\n花费: %1 弹药</Chinesesimp>
@@ -6414,6 +6596,7 @@
 		</Key>
 		<Key ID="STR_TRUCK">
 			<Original>Large Trucks.\nCost: %1 Ammo</Original>
+			<Russian>Большой Грузовик.\nСтоимость: %1 Ammo</Russian>
 			<French>Gros Camions.\nPrix: %1 Ammo</French>
 			<Japanese>大型トラック\nコスト: %1 弾薬</Japanese>
 			<Chinesesimp>运兵卡车.\n花费: %1 弹药</Chinesesimp>
@@ -6423,6 +6606,7 @@
 		</Key>
 		<Key ID="STR_APC">
 			<Original>APC.\nCost: %1 Ammo</Original>
+			<Russian>APC.\nСтоимость: %1 Ammo</Russian>
 			<French>APC.\nPrix: %1 Ammo</French>
 			<Japanese>APC\nコスト: %1 弾薬</Japanese>
 			<Chinesesimp>APC.\n花费: %1 弹药</Chinesesimp>
@@ -6432,6 +6616,7 @@
 		</Key>
 		<Key ID="STR_BOAT">
 			<Original>Transport Boats.\nCost: %1 Ammo</Original>
+			<Russian>Транспортное Судно.\nСтоимость: %1 Ammo </Russian>
 			<French>Bâteaux de Transport.\nPrix: %1 Ammo</French>
 			<Japanese>ボート\nコスト: %1 弾薬</Japanese>
 			<Chinesesimp>运输船只.\n花费: %1 弹药</Chinesesimp>
@@ -6441,6 +6626,7 @@
 		</Key>
 		<Key ID="STR_AIRSUPREMACY">
 			<Original>Call Air Superiority.\nCost: %1 Ammo</Original>
+			<Russian>Вызвать Истребитель.\nСтоимость: %1 Ammo </Russian>
 			<French>Appeler la Suprématie Aérienne.\nPrix: %1 Ammo</French>
 			<Japanese>制空権\nコスト: %1 弾薬</Japanese>
 			<Chinesesimp>制空权\n花费: %1 弹药</Chinesesimp>
@@ -6452,6 +6638,7 @@
 		<!-- liberation_sendammo.hpp -->
 		<Key ID="STR_SENDAMMO_MENU">
 			<Original>-- Send Ammo Menu --</Original>
+			<Russian>-- Меню отправки Ammo</Russian>
 			<French>-- Menu Envoyer Ammo --</French>
 			<Japanese>-- 弾薬譲渡メニュー --</Japanese>
 			<Chinesesimp>-- 发送弹药菜单 --</Chinesesimp>
@@ -6461,6 +6648,7 @@
 		</Key>
 		<Key ID="STR_SENDAMMO_PLAYER">
 			<Original>Player:</Original>
+			<Russian>Игрок:</Russian>
 			<French>Joueur:</French>
 			<Japanese>プレイヤー:</Japanese>
 			<Chinesesimp>玩家:</Chinesesimp>
@@ -6470,6 +6658,7 @@
 		</Key>
 		<Key ID="STR_SENDAMMO_AMMO">
 			<Original>Ammo:</Original>
+			<Russian>Ammo:</Russian>
 			<French>Ammo:</French>
 			<Japanese>弾薬:</Japanese>
 			<Chinesesimp>弹药:</Chinesesimp>
@@ -6479,6 +6668,7 @@
 		</Key>
 		<Key ID="STR_SENDAMMO_SEND">
 			<Original>Send</Original>
+			<Russian>Отправить</Russian>
 			<French>Donner</French>
 			<Japanese>送る</Japanese>
 			<Chinesesimp>发送</Chinesesimp>
@@ -6490,6 +6680,7 @@
 		<!-- liberation_admin.hpp -->
 		<Key ID="STR_ADMIN_ARSENAL">
 			<Original>Spawn Arsenal</Original>
+			<Russian>Разместить Арсенал</Russian>
 			<Japanese>アーセナルを出す</Japanese>
 			<Chinesesimp>生成武器库</Chinesesimp>
 			<Chinese>生成武器庫</Chinese>
@@ -6498,6 +6689,7 @@
 		</Key>
 		<Key ID="STR_ADMIN_AMMOBOX">
 			<Original>Spawn Ammobox</Original>
+			<Russian>Ящик патронов</Russian>
 			<Japanese>弾薬箱を出す</Japanese>
 			<Chinesesimp>生成弹药箱</Chinesesimp>
 			<Chinese>生成彈藥箱</Chinese>
@@ -6506,6 +6698,7 @@
 		</Key>
 		<Key ID="STR_ADMIN_BUILD">
 			<Original>Build</Original>
+			<Russian>Построить</Russian>
 			<Japanese>ビルド</Japanese>
 			<Chinesesimp>建造</Chinesesimp>
 			<Chinese>建造</Chinese>
@@ -6514,6 +6707,7 @@
 		</Key>
 		<Key ID="STR_ADMIN_UNBAN">
 			<Original>Unban Player</Original>
+			<Russian>Разбанить Игрока</Russian>
 			<Japanese>プレイヤーのBANを解除</Japanese>
 			<Chinesesimp>UnBAN玩家</Chinesesimp>
 			<Chinese>UnBAN玩家</Chinese>
@@ -6522,6 +6716,7 @@
 		</Key>
 		<Key ID="STR_ADMIN_SKIPTIME">
 			<Original>SkipTime 10hrs</Original>
+			<Russian>Пропустить 10 часов</Russian>
 			<Japanese>10時間進める</Japanese>
 			<Chinesesimp>跳过时间 +10H</Chinesesimp>
 			<Chinese>跳過時間 +10H</Chinese>
@@ -6530,6 +6725,7 @@
 		</Key>
 		<Key ID="STR_ADMIN_UNLOCK">
 			<Original>Unlock Vehicle</Original>
+			<Russian>Открыть машину</Russian>
 			<Japanese>乗り物を開錠する</Japanese>
 			<Chinesesimp>解锁车辆</Chinesesimp>
 			<Chinese>解鎖車輛</Chinese>
@@ -6538,6 +6734,7 @@
 		</Key>
 		<Key ID="STR_ADMIN_DELETEOBJ">
 			<Original>Delete Object</Original>
+			<Russian>Удалить Объект</Russian>
 			<Japanese>オブジェクトを消す</Japanese>
 			<Chinesesimp>删除物体</Chinesesimp>
 			<Chinese>刪除物體</Chinese>
@@ -6546,6 +6743,7 @@
 		</Key>
 		<Key ID="STR_ADMIN_EXPORT">
 			<Original>Export Game</Original>
+			<Russian>Сохранить Игру</Russian>
 			<Chinesesimp>导入游戏存档</Chinesesimp>
 			<Chinese>导入游戏存档</Chinese>
 			<Portuguese>Exportar jogo</Portuguese>
@@ -6553,6 +6751,7 @@
 		</Key>
 		<Key ID="STR_ADMIN_IMPORT">
 			<Original>Import Game</Original>
+			<Russian>Загрузить Игру</Russian>
 			<Chinesesimp>导出游戏存档</Chinesesimp>
 			<Chinese>导出游戏存档</Chinese>
 			<Portuguese>Importar jogo</Portuguese>
@@ -6560,6 +6759,7 @@
 		</Key>
 		<Key ID="STR_ADMIN_GODMODE">
 			<Original>God Mode</Original>
+			<Russian>Режим Бога</Russian>
 			<Japanese>ゴッドモード</Japanese>
 			<Chinesesimp>无敌模式</Chinesesimp>
 			<Chinese>無敵模式</Chinese>
@@ -6568,6 +6768,7 @@
 		</Key>
 		<Key ID="STR_ADMIN_MENUMENU">
 			<Original>-- Admin Menu --</Original>
+			<Russian>-- Админ Меню --</Russian>
 			<Japanese>-- 管理者メニュー --</Japanese>
 			<Chinesesimp>-- 管理员菜单 --</Chinesesimp>
 			<Chinese>-- 管理員菜單 --</Chinese>
@@ -6578,6 +6779,7 @@
 		<!-- liberation_notification.hpp -->
 		<Key ID="STR_SIDE_START">
 			<Original>Side Mission %1 Started.</Original>
+			<Russian>Доп. миссия %1 началась.</Russian>
 			<French>Mission secondaire %1 a commencé</French>
 			<Japanese>サイドミッション: %1 がスタートしました。</Japanese>
 			<Chinesesimp>支线任务 %1 已开始</Chinesesimp>
@@ -6587,6 +6789,7 @@
 		</Key>
 		<Key ID="STR_SIDE_SUCCESS">
 			<Original>Side Mission %1 Success.</Original>
+			<Russian>Доп. миссия %1 выполнена.</Russian>
 			<French>Mission secondaire %1 réussie</French>
 			<Japanese>サイドミッション: %1 が成功しました。</Japanese>
 			<Chinesesimp>支线任务 %1 成功</Chinesesimp>
@@ -6596,6 +6799,7 @@
 		</Key>
 		<Key ID="STR_SIDE_FAILED">
 			<Original>Side Mission %1 Fail.</Original>
+			<Russian>Доп. миссия %1 провалена.</Russian>
 			<French>Mission secondaire %1 échouée</French>
 			<Japanese>サイドミッション: %1 が失敗しました。</Japanese>
 			<Chinesesimp>支线任务 %1 失败</Chinesesimp>
@@ -6605,6 +6809,7 @@
 		</Key>
 		<Key ID="STR_NOTIFICATION_REINFORCEMENTS_TITLE2">
 			<Original>Air Supremacy is Incoming...</Original>
+			<Russian>Воздух на подходе...</Russian>
 			<French>Suprématie aérienne est en approche ...</French>
 			<Japanese>敵航空部隊が向かっています...</Japanese>
 			<Chinesesimp>制空权即将夺取...</Chinesesimp>
@@ -6616,6 +6821,7 @@
 		<!-- liberation_squad.hpp -->
 		<Key ID="STR_LIKEME">
 			<Original>Like Me</Original>
+			<Russian>Как у меня</Russian>
 			<French>Like Me</French>
 			<Japanese>自装備をユニットに反映</Japanese>
 			<Chinesesimp>复制装备</Chinesesimp>
@@ -6625,6 +6831,7 @@
 		</Key>
 		<Key ID="STR_PROMOTE">
 			<Original>Level UP!</Original>
+			<Russian>Повысить</Russian>
 			<French>Grade Sup!</French>
 			<Chinesesimp>升级！</Chinesesimp>
 			<Chinese>升級！</Chinese>
@@ -6634,6 +6841,7 @@
 		</Key>
 		<Key ID="STR_RENAME_BUTTON">
 			<Original>Rename</Original>
+			<Russian>Имя</Russian>
 			<French>Renomer</French>
 			<Japanese>リネーム</Japanese>
 			<Chinesesimp>重命名</Chinesesimp>
@@ -6643,6 +6851,7 @@
 		</Key>
 		<Key ID="STR_CANCEL_BUTTON">
 			<Original>Cancel</Original>
+			<Russian>Отмена</Russian>
 			<French>Annuler</French>
 			<Japanese>キャンセル</Japanese>
 			<Chinesesimp>取消</Chinesesimp>
@@ -6654,6 +6863,7 @@
 		<!-- F_getMobileRespawnsPlayer.sqf -->
 		<Key ID="STR_TOO_MANY_SPAWN">
 			<Original>You have too many respawn point!</Original>
+			<Russian>Максимальное кол-во точек респауна!</Russian>
 			<French>Vous avez trop de point de respawn !</French>
 			<Chinesesimp>你的重生点太多了！</Chinesesimp>
 			<Chinese>你的重生點太多了！</Chinese>
@@ -6664,6 +6874,7 @@
 		<!-- intro.sqf -->
 		<Key ID="STR_SQUAD_WAIT">
 			<Original>Your Squad is waiting for you\nat the next FOB!</Original>
+			<Russian>Ваш отряд ждет вас\nна следующем FOB!</Russian>
 			<French>Votre Squad vous attend\nà la prochaine FOB!</French>
 			<Chinesesimp>你的小队正在下一个FOB等着你！</Chinesesimp>
 			<Chinese>你的小隊正在下一個FOB等著你！</Chinese>
@@ -6677,6 +6888,7 @@
 		<!-- mission_AirWreck.sqf  -->
 		<Key ID="STR_AIRWRECK">
 			<Original>Aircraft Wreck</Original>
+			<Russian>Обломки</Russian>
 			<Japanese>航空機の残骸</Japanese>
 			<Chinesesimp>飞机残骸</Chinesesimp>
 			<Chinese>飛機殘骸</Chinese>
@@ -6684,6 +6896,7 @@
 		</Key>
 		<Key ID="STR_AIRWRECK_MESSAGE1">
 			<Original>A helicopter has come down under enemy fire!</Original>
+			<Russian>Вертолет попал под обстрел противника!</Russian>
 			<Japanese>ヘリが敵の攻撃で墜落した！</Japanese>
 			<Chinesesimp>一架直升机在敌人的炮火下坠毁了！</Chinesesimp>
 			<Chinese>一架直升機在敵人的砲火下墜毀了！</Chinese>
@@ -6691,6 +6904,7 @@
 		</Key>
 		<Key ID="STR_AIRWRECK_MESSAGE2">
 			<Original>The airwreck supplies have been collected, well done.</Original>
+			<Russian>Припасы из обломком успешно собраны.</Russian>
 			<Japanese>ヘリの残骸は回収された。よくやった！</Japanese>
 			<Chinesesimp>空难物资已收集，干得好！</Chinesesimp>
 			<Chinese>空難物資已收集，幹得好！</Chinese>
@@ -6700,6 +6914,7 @@
 		<!-- mission_FoodDelivery.sqf -->
 		<Key ID="STR_FOODDELI">
 			<Original>Food Delivery</Original>
+			<Russian>Доставка еды</Russian>
 			<Japanese>食料の配達</Japanese>
 			<Chinesesimp>送外卖</Chinesesimp>
 			<Chinese>送外賣</Chinese>
@@ -6707,6 +6922,7 @@
 		</Key>
 		<Key ID="STR_FOODDELI_MESSAGE1">
 			<Original>Food Delivery at &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Talk&lt;/t&gt; to the &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; to get information.</Original>
+			<Russian>Доставка еды в &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Поговорите&lt;/t&gt; с &lt;t color='#0000F0'&gt;Маршалом&lt;/t&gt; чтобы получить информацию.</Russian>
 			<Japanese>食料調達: &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;係の者&lt;/t&gt;に&lt;t color='#0000F0'&gt;聞いて&lt;/t&gt;情報を得てください。</Japanese>
 			<Chinesesimp>送外卖：在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt; 与 &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; &lt;t color='#00F000'&gt;交谈&lt;/t> 获取任务信息。</Chinesesimp>
 			<Chinese>送外賣：在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt; 與 &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; &lt;t color='#00F000'&gt;交談&lt;/t> 獲取任務信息。</Chinese>
@@ -6714,6 +6930,7 @@
 		</Key>
 		<Key ID="STR_FOODDELI_MESSAGE2">
 			<Original>Food Delivery has...&lt;br/&gt;&lt;t color='%1'&gt;FAILED&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;The local Population is unhappy...</Original>
+			<Russian>Доставка еды...&lt;br/&gt;&lt;t color='%1'&gt;ПРОВАЛЕНА&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;Местное население недовольно...</Russian>
 			<Japanese>食料配達は...&lt;br/&gt;&lt;t color='%1'&gt;失敗しました&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;次回は頑張ってください！</Japanese>
 			<Chinesesimp>送外卖...&lt;br/&gt;&lt;t color='%1'&gt;失败&lt;/t&gt;！！&lt;br/&gt;&lt;br/&gt;祝你下次好运！</Chinesesimp>
 			<Chinese>送外賣...&lt;br/&gt;&lt;t color='%1'&gt;失敗&lt;/t&gt;！ ！ &lt;br/&gt;&lt;br/&gt;祝你下次好運！</Chinese>
@@ -6721,6 +6938,7 @@
 		</Key>
 		<Key ID="STR_FOODDELI_MESSAGE3">
 			<Original>Food Delivery&lt;br/&gt;&lt;t color='%1'&gt;SUCCESS&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;The Food Pallets have been delivered, Well done.</Original>
+			<Russian>Доставка еды&lt;br/&gt;&lt;t color='%1'&gt;УСПЕШНО&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;Поддоны с едой доставлены.</Russian>
 			<Japanese>食料配達は...&lt;br/&gt;&lt;t color='%1'&gt;成功しました&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;食料は配達されました！ありがとうございます。</Japanese>
 			<Chinesesimp>外卖&lt;br/&gt;&lt;t color='%1'&gt;送达&lt;/t&gt;！！&lt;br/&gt;&lt;br/&gt;外卖已交付，干得好。</Chinesesimp>
 			<Chinese>外賣&lt;br/&gt;&lt;t color='%1'&gt;送達&lt;/t&gt;！ ！ &lt;br/&gt;&lt;br/&gt;外賣已交付，幹得好。</Chinese>
@@ -6730,6 +6948,7 @@
 		<!-- remote_call_a3w_info.sqf -->
 		<Key ID="STR_REMOTE_A3W_DELI1">
 			<Original>Thank you %1, The whole village is grateful for your help!, good luck.</Original>
+			<Russian>Спасибо %1, Вся деревня благодарна вам за помощь!, удачи.</Russian>
 			<Japanese>ありがとう %1 村中があなたの活躍に感謝しています。幸運を！</Japanese>
 			<Chinesesimp>%1, 全村人都十分感谢你的帮助！祝你好运！</Chinesesimp>
 			<Chinese>%1, 全村人都十分感謝你的幫助！祝你好運！</Chinese>
@@ -6737,12 +6956,14 @@
 		</Key>
 		<Key ID="STR_REMOTE_A3W_DELI2">
 			<Original>Mission Completed Bonus +%1 Pts!</Original>
+			<Russian>Бонус за завершение миссии +%1 Pts!</Russian>
 			<Czech>Mission Splněn Bonus +%1 Pts!</Czech>
 		</Key>
 
 		<!-- mission_FuelDelivery.sqf -->
 		<Key ID="STR_FUELDELI">
 			<Original>Fuel Delivery</Original>
+			<Russian>Доставка топлива</Russian>
 			<Japanese>燃料配達</Japanese>
 			<Chinesesimp>燃料运送</Chinesesimp>
 			<Chinese>燃料運送</Chinese>
@@ -6750,6 +6971,7 @@
 		</Key>
 		<Key ID="STR_FUELDELI_MESSAGE1">
 			<Original>Fuel Delivery at &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Talk&lt;/t&gt; to the &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; to get information.</Original>
+			<Russian>Доставка топлива в &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Поговори&lt;/t&gt; с &lt;t color='#0000F0'&gt;Маршалом&lt;/t&gt; чтобы получить информацию.</Russian>
 			<Japanese>燃料配達: &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;係の者&lt;/t&gt;に&lt;t color='#0000F0'&gt;聞いて&lt;/t&gt;情報を得てください。</Japanese>
 			<Chinesesimp>运送燃料：在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt; 与 &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; &lt;t color='#00F000'&gt;交谈</t&gt; 获取任务信息。</Chinesesimp>
 			<Chinese>運送燃料：在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt; 與 &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; &lt;t color='#00F000'&gt;交談</t&gt; 獲取任務信息。</Chinese>
@@ -6757,6 +6979,7 @@
 		</Key>
 		<Key ID="STR_FUELDELI_MESSAGE2">
 			<Original>Fuel Delivery has...&lt;br/&gt;&lt;t color='%1'&gt;FAILED&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;The local Population is unhappy...</Original>
+			<Russian>Доставка топлива...&lt;br/&gt;&lt;t color='%1'&gt;ПРОВАЛЕНА&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;Местное население недовольно...</Russian>
 			<Japanese>燃料配達は...&lt;br/&gt;&lt;t color='%1'&gt;失敗しました&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;次回は頑張ってください！</Japanese>
 			<Chinesesimp>燃料运送...&lt;br/&gt;&lt;t color='%1'&gt;失败&lt;/t&gt;！！&lt;br/&gt;&lt;br/&gt;祝你下次好运！</Chinesesimp>
 			<Chinese>燃料運送...&lt;br/&gt;&lt;t color='%1'&gt;失敗&lt;/t&gt;！ ！ &lt;br/&gt;&lt;br/&gt;祝你下次好運！</Chinese>
@@ -6764,6 +6987,7 @@
 		</Key>
 		<Key ID="STR_FUELDELI_MESSAGE3">
 			<Original>Fuel Delivery&lt;br/&gt;&lt;t color='%1'&gt;SUCCESS&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;The Barrels of Fuel have been delivered, Well done.</Original>
+			<Russian>Доставка топлива&lt;br/&gt;&lt;t color='%1'&gt;УСПЕШНО&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;Бочки с топливом успешно доставлены.</Russian>
 			<Japanese>燃料配達は...&lt;br/&gt;&lt;t color='%1'&gt;成功しました&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;燃料は配達されました！ありがとうございます。</Japanese>
 			<Chinesesimp>燃料运送&lt;br/&gt;&lt;t color='%1'&gt;成功&lt;/t&gt;！！&lt;br/&gt;&lt;br/&gt;燃料已交付，干得好！</Chinesesimp>
 			<Chinese>燃料運送&lt;br/&gt;&lt;t color='%1'&gt;成功&lt;/t&gt;！ ！ &lt;br/&gt;&lt;br/&gt;燃料已交付，幹得好！</Chinese>
@@ -6773,6 +6997,7 @@
 		<!-- mission_WaterDelivery.sqf -->
 		<Key ID="STR_WATERDELI">
 			<Original>Water Delivery</Original>
+			<Russian>Доставка воды</Russian>
 			<Japanese>水の配達</Japanese>
 			<Chinesesimp>送水</Chinesesimp>
 			<Chinese>送水</Chinese>
@@ -6780,6 +7005,7 @@
 		</Key>
 		<Key ID="STR_WATERDELI_MESSAGE1">
 			<Original>Water Delivery at &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Talk&lt;/t&gt; to the &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; to get information.</Original>
+			<Russian>Доставка воды в &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Поговорите&lt;/t&gt; с &lt;t color='#0000F0'&gt;Маршалом&lt;/t&gt; чтобы получить информацию.</Russian>
 			<Japanese>水の配達：&lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;係の者&lt;/t&gt;と&lt;t color='#0000F0'&gt;話して&lt;/t&gt;情報を得てください。</Japanese>
 			<Chinesesimp>送水：在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;交谈&lt;/t&gt; 与 &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; 来获取任务信息。</Chinesesimp>
 			<Chinese>送水：在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;交談&lt;/t&gt; 與 &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; 來獲取任務信息。</Chinese>
@@ -6787,6 +7013,7 @@
 		</Key>
 		<Key ID="STR_WATERDELI_MESSAGE2">
 			<Original>Water Delivery has...&lt;br/&gt;&lt;t color='%1'&gt;FAILED&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;The local Population is unhappy...</Original>
+			<Russian>Доставка воды ...&lt;br/&gt;&lt;t color='%1'&gt;ПРОВАЛЕНА&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;Местное население недовольно...</Russian>
 			<Japanese>水の配達は...&lt;br/&gt;&lt;t color='%1'&gt;失敗しました。&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;次回頑張ってください！</Japanese>
 			<Chinesesimp>送水...&lt;br/&gt;&lt;t color='%1'&gt;失败&lt;/t&gt;！&lt;br/&gt;&lt;br/&gt;下次好运！</Chinesesimp>
 			<Chinese>送水...&lt;br/&gt;&lt;t color='%1'&gt;失敗&lt;/t&gt;！ &lt;br/&gt;&lt;br/&gt;下次好運！</Chinese>
@@ -6794,6 +7021,7 @@
 		</Key>
 		<Key ID="STR_WATERDELI_MESSAGE3">
 			<Original>Water Delivery&lt;br/&gt;&lt;t color='%1'&gt;SUCCESS&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;The Barrels of Water have been delivered, Well done.</Original>
+			<Russian>Доставка воды&lt;br/&gt;&lt;t color='%1'&gt;SUCCESS&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;Бутылки с водой успешно доставлены.</Russian>
 			<Japanese>水の配達は&lt;br/&gt;&lt;t color='%1'&gt;成功しました。&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;水の樽は届けられました。ありがとうございます。</Japanese>
 			<Chinesesimp>送水&lt;br/&gt;&lt;t color='%1'&gt;送达&lt;/t&gt;！&lt;br/&gt;&lt;br/&gt;水已经交付，做得很好！</Chinesesimp>
 			<Chinese>送水&lt;br/&gt;&lt;t color='%1'&gt;送達&lt;/t&gt;！ &lt;br/&gt;&lt;br/&gt;水已經交付，做得很好！</Chinese>
@@ -6803,24 +7031,29 @@
 		<!-- mission_AmmoDelivery.sqf -->
 		<Key ID="STR_AMMODELI">
 			<Original>Ammo Delivery</Original>
+			<Russian>Доставка патронов</Russian>
 			<Czech>Dodávka munice</Czech>
 		</Key>
 		<Key ID="STR_AMMODELI_MESSAGE1">
 			<Original>Ammo Delivery at &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Talk&lt;/t&gt; to the &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; to get information.</Original>
+			<Russian>Доставка патронов в &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Поговорите&lt;/t&gt; с &lt;t color='#0000F0'&gt;Маршалом&lt;/t&gt; чтобы получить информацию.</Russian>
 			<Czech>Dodávka munice v &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Talk&lt;/t&gt; k &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; získat informace.</Czech>
 		</Key>
 		<Key ID="STR_AMMODELI_MESSAGE2">
 			<Original>Ammo Delivery has...&lt;br/&gt;&lt;t color='%1'&gt;FAILED&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;The local Population is unhappy...</Original>
+			<Russian>Доставка патронов ...&lt;br/&gt;&lt;t color='%1'&gt;ПРОВАЛЕНА&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;Местное население недовольно...</Russian>
 			<Czech>Dodávka munice je...&lt;br/&gt;&lt;t color='%1'&gt;FAILED&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;Místní obyvatelstvo je nešťastné...</Czech>
 		</Key>
 		<Key ID="STR_AMMODELI_MESSAGE3">
 			<Original>Ammo Delivery&lt;br/&gt;&lt;t color='%1'&gt;SUCCESS&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;The boxes of Ammo have been delivered, Well done.</Original>
+			<Russian>Доставка патронов&lt;br/&gt;&lt;t color='%1'&gt;SUCCESS&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;Ящики с патронами успешно доставлены.</Russian>
 			<Czech>Dodávka munice&lt;br/&gt;&lt;t color='%1'&gt;ÚSPĚCH&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;Krabice munice byly doručeny, výborně.</Czech>
 		</Key>
 
 		<!-- mission_HostileHelicopter.sqf -->
 		<Key ID="STR_HOSSTILE_HELI">
 			<Original>Hostile Helicopter</Original>
+			<Russian>Вертолет противника</Russian>
 			<Japanese>敵のヘリ</Japanese>
 			<Chinesesimp>敌军直升机</Chinesesimp>
 			<Chinese>敵軍直升機</Chinese>
@@ -6828,6 +7061,7 @@
 		</Key>
 		<Key ID="STR_HOSSTILE_HELI_MESSAGE1">
 			<Original>An armed &lt;t color='%2'&gt;%1&lt;/t&gt; is patrolling the island. Intercept it and recover its cargo!</Original>
+			<Russian>Вооруженный &lt;t color='%2'&gt;%1&lt;/t&gt; патрулирует остров. Перехватите его и заберите груз!</Russian>
 			<Japanese>武装した &lt;t color='%2'&gt;%1&lt;/t&gt; が飛行している。迎撃して貨物を回収せよ！</Japanese>
 			<Chinesesimp>一架武装直升机 &lt;t color='%2'&gt;%1&lt;/t&gt; 正在岛上巡逻，拦截并收回货物！</Chinesesimp>
 			<Chinese>一架武裝直升機 &lt;t color='%2'&gt;%1&lt;/t&gt; 正在島上巡邏，攔截並收回貨物！</Chinese>
@@ -6835,6 +7069,7 @@
 		</Key>
 		<Key ID="STR_HOSSTILE_HELI_MESSAGE2">
 			<Original>The sky is clear again, the enemy patrol was taken out! Ammo crates have fallen near the wreck.</Original>
+			<Russian>Небо снова чистое, вражеский патруль уничтожен! Рядом с обломками упали ящики с боеприпасами.</Russian>
 			<Japanese>ヘリは撃墜された、残骸の近くの弾薬箱を回収せよ。</Japanese>
 			<Chinesesimp>天又放晴了，敌军巡逻机被干掉了！弹药箱掉在了残骸附近。</Chinesesimp>
 			<Chinese>天又放晴了，敵軍巡邏機被幹掉了！彈藥箱掉在了殘骸附近。</Chinese>
@@ -6844,6 +7079,7 @@
 		<!-- mission_MeetResistance.sqf -->
 		<Key ID="STR_RESISTANCE">
 			<Original>The Resistance</Original>
+			<Russian>Сопротивление</Russian>
 			<Japanese>レジスタンス</Japanese>
 			<Chinesesimp>抵抗组织</Chinesesimp>
 			<Chinese>抵抗組織</Chinese>
@@ -6851,6 +7087,7 @@
 		</Key>
 		<Key ID="STR_RESISTANCE_MESSAGE1">
 			<Original>Meet the Resistance at &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Talk&lt;/t&gt; to the &lt;t color='#0000F0'&gt;Leader&lt;/t&gt; to get information.&lt;br/&gt;Be ready for any situation!</Original>
+			<Russian>Встреча с Сопротивлением в &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Поговорите&lt;/t&gt; с &lt;t color='#0000F0'&gt;Лидером&lt;/t&gt; чтобы получить информацию.&lt;br/&gt;Будьте готовы к любой ситуации!</Russian>
 			<Japanese>&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;でレジスタンスと合流し、&lt;t color='#00F000'&gt;リーダー&lt;/t&gt;と&lt;t color='#0000F0'&gt;話して&lt;/t&gt;情報を得てください。&lt;br/&gt;あらゆる状況に対応できるよう準備を。</Japanese>
 			<Chinesesimp>与抵抗组织 &lt;t color='#0000F0'&gt;领导人&lt;/t&gt; 在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;交谈&lt;/t&gt; 获取任务信息。&lt;br/&gt;为任何情况做好准备！</Chinesesimp>
 			<Chinese>與抵抗組織 &lt;t color='#0000F0'&gt;領導人&lt;/t&gt; 在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;交談&lt;/t&gt; 獲取任務信息。 &lt;br/&gt;為任何情況做好準備！</Chinese>
@@ -6858,6 +7095,7 @@
 		</Key>
 		<Key ID="STR_RESISTANCE_MESSAGE2">
 			<Original>All members of the Resistance are...&lt;br/&gt;&lt;t color='%1'&gt;DEAD&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;Better luck next time!</Original>
+			<Russian>Все члены Сопротивления...&lt;br/&gt;&lt;t color='%1'&gt;МЕРТВЫ&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;Удачи в следующий раз!</Russian>
 			<Japanese>レジスタンスのメンバーは皆...&lt;br/&gt;&lt;t color='%1'&gt;死亡しました。&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;次回頑張ってください！</Japanese>
 			<Chinesesimp>所有抵抗组织的成员...&lt;br/&gt;&lt;t color='%1'&gt;都牺牲&lt;/t&gt;了！&lt;br/&gt;&lt;br/&gt;悼念他们！</Chinesesimp>
 			<Chinese>所有抵抗組織的成員...&lt;br/&gt;&lt;t color='%1'&gt;都犧牲&lt;/t&gt;了！ &lt;br/&gt;&lt;br/&gt;悼念他們！</Chinese>
@@ -6865,6 +7103,7 @@
 		</Key>
 		<Key ID="STR_RESISTANCE_MESSAGE3">
 			<Original>Nice work!&lt;br/&gt;&lt;br/&gt;&LT;t color='%1'&gt;%2&LT;/t&gt;&lt;br/&gt;is a safe place again!&lt;br/&gt;Take your reward!</Original>
+			<Russian>Отличная работа!&lt;br/&gt;&lt;br/&gt;&LT;t color='%1'&gt;%2&LT;/t&gt;&lt;br/&gt;безопасно снова!&lt;br/&gt;Получите свою награду!</Russian>
 			<Japanese>よくやった！&lt;br/&gt;&lt;br/&gt;&LT;t color='%1'&gt;%2&LT;/t&gt;&lt;br/&gt;は再び安全な場所になった！&lt;br/&gt;報酬を受け取ってくれ！</Japanese>
 			<Chinesesimp>干得好！&lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;又是个安全的地方了！&lt;br/&gt;接受你的奖励吧！</Chinesesimp>
 			<Chinese>幹得好！ &lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;又是個安全的地方了！ &lt;br/&gt;接受你的獎勵吧！</Chinese>
@@ -6874,6 +7113,7 @@
 		<!-- mission_Outpost.sqf -->
 		<Key ID="STR_OUTPOST">
 			<Original>Enemy Outpost</Original>
+			<Russian>Аванпост противника</Russian>
 			<Japanese>敵前哨基地</Japanese>
 			<Chinesesimp>敌军前哨</Chinesesimp>
 			<Chinese>敵軍前哨</Chinese>
@@ -6881,6 +7121,7 @@
 		</Key>
 		<Key ID="STR_OUTPOST_MESSAGE1">
 			<Original>An armed &lt;t color='%1'&gt;Outpost&lt;/t&gt; containing weapon crates has been spotted near the marker, go capture it!</Original>
+			<Russian>Вооруженный &lt;t color='%1'&gt;Аванпост&lt;/t&gt; рядом с маркером были замечены ящики с оружием, захватите их!</Russian>
 			<Japanese>武装した &lt;t color='%1'&gt;敵の前哨基地&lt;/t&gt; がマップのマーカー近くで発見されました、行って物資を略奪してください！</Japanese>
 			<Chinesesimp>在标记附近发现了一个装有武器箱的&lt;t color='%1'&gt;武装前哨站&lt;/t&gt;，去夺取它吧！</Chinesesimp>
 			<Chinese>在標記附近發現了一個裝有武器箱的&lt;t color='%1'&gt;武裝前哨站&lt;/t&gt;，去奪取它吧！</Chinese>
@@ -6888,6 +7129,7 @@
 		</Key>
 		<Key ID="STR_OUTPOST_MESSAGE2">
 			<Original>The outpost has been captured, good work.</Original>
+			<Russian>Аванпост захвачен, отличная работа</Russian>
 			<Japanese>敵の前哨基地は我々の手に落ちました！おめでとうございます。</Japanese>
 			<Chinesesimp>前哨站已被占领，干得好。</Chinesesimp>
 			<Chinese>前哨站已被佔領，幹得好。</Chinese>
@@ -6897,6 +7139,7 @@
 		<!-- mission_SpecialDelivery.sqf -->
 		<Key ID="STR_SPECIALDELI">
 			<Original>Special Delivery</Original>
+			<Russian>Специальная доставка</Russian>
 			<Japanese>特別配送</Japanese>
 			<Chinesesimp>特快专递</Chinesesimp>
 			<Chinese>特快專遞</Chinese>
@@ -6904,6 +7147,7 @@
 		</Key>
 		<Key ID="STR_SPECIALDELI_MESSAGE1">
 			<Original>Special Delivery at &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Talk&lt;/t&gt; to &lt;t color='#0000F0'&gt;Nikos&lt;/t&gt; to get information.&lt;br/&gt;Be ready for any situation!</Original>
+			<Russian>Специальная доставка в &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Поговорите&lt;/t&gt; с &lt;t color='#0000F0'&gt;Никосом&lt;/t&gt; чтобы получить информацию.&lt;br/&gt;Будьте готовы к любой ситуации!</Russian>
 			<Japanese>特別配送： &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Nikos&lt;/t&gt; と &lt;t color='#0000F0'&gt;話して&lt;/t&gt; 情報を得てください。&lt;br/&gt;あらゆる状況に対応できるよう準備を。</Japanese>
 			<Chinesesimp>特快专递：在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;与 &lt;t color='#0000F0'&gt;Nikos&lt;/t&gt; &lt;t color='#00F000'&gt;交谈&lt;/t&gt; 来获取任务信息.&lt;br/&gt;做好应对任何突发情况的准备！</Chinesesimp>
 			<Chinese>特快專遞：在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;與 &lt;t color='#0000F0'&gt;Nikos&lt;/t&gt; &lt;t color='#00F000'&gt;交談&lt;/t&gt; 來獲取任務信息.&lt;br/&gt;做好應對任何突發情況的準備！</Chinese>
@@ -6911,6 +7155,7 @@
 		</Key>
 		<Key ID="STR_SPECIALDELI_MESSAGE2">
 			<Original>Special Delivery&lt;br/&gt;&lt;t color='%1'&gt;FAILED&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;Better luck next time!</Original>
+			<Russian>Специальная Доставка&lt;br/&gt;&lt;t color='%1'&gt;ПРОВАЛЕНА&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;Удачи в следующий раз!</Russian>
 			<Japanese>特別配送は&lt;br/&gt;&lt;t color='%1'&gt;失敗しました。&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;次回頑張ってください！</Japanese>
 			<Chinesesimp>特快专递&lt;br/&gt;&lt;t color='%1'&gt;失败&lt;/t&gt;！&lt;br/&gt;&lt;br/&gt;再接再厉！</Chinesesimp>
 			<Chinese>特快專遞&lt;br/&gt;&lt;t color='%1'&gt;失敗&lt;/t&gt;！ &lt;br/&gt;&lt;br/&gt;再接再厲！</Chinese>
@@ -6918,6 +7163,7 @@
 		</Key>
 		<Key ID="STR_SPECIALDELI_MESSAGE3">
 			<Original>Special Delivery&lt;br/&gt;&lt;t color='%1'&gt;SUCCESS&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;The information have been collected, Well done.</Original>
+			<Russian>Специальная Доставка&lt;br/&gt;&lt;t color='%1'&gt;УСПЕШНО&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;Информация собрана, отличная работа.</Russian>
 			<Japanese>特別配送は&lt;br/&gt;&lt;t color='%1'&gt;成功しました。&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;情報は確保されました。ありがとうございます。</Japanese>
 			<Chinesesimp>特快专递&lt;br/&gt;&lt;t color='%1'&gt;成功&lt;/t&gt;！&lt;br/&gt;&lt;br/&gt;信息已经收集，干得好！</Chinesesimp>
 			<Chinese>特快專遞&lt;br/&gt;&lt;t color='%1'&gt;成功&lt;/t&gt;！ &lt;br/&gt;&lt;br/&gt;信息已經收集，幹得好！</Chinese>
@@ -6927,6 +7173,7 @@
 		<!-- mission_SunkenSupplies.sqf -->
 		<Key ID="STR_SUNKEN">
 			<Original>Sunken Supplies</Original>
+			<Russian>Затонувшие припасы</Russian>
 			<Japanese>水没した物資</Japanese>
 			<Chinesesimp>沉船物资</Chinesesimp>
 			<Chinese>沉船物資</Chinese>
@@ -6934,6 +7181,7 @@
 		</Key>
 		<Key ID="STR_SUNKEN_MESSAGE1">
 			<Original>Sunken supplies have been spotted in the ocean near the marker, and are heavily guarded. Diving gear and an underwater weapon are recommended.</Original>
+			<Russian>Затонувшие припасы были замечены в океане рядом с маркером и тщательно охраняются. Рекомендуется водолазное снаряжение и подводное оружие.</Russian>
 			<Japanese>水没した物資がマップのマーカー付近で発見されました。また、付近では敵が活動中の為、潜水具の他に水中でも使用可能な武器を持っていて下さい。</Japanese>
 			<Chinesesimp>沉没的补给在标记附近的大海中被发现，并有重兵把守。建议装备潜水用具和水下武器。</Chinesesimp>
 			<Chinese>沉沒的補給在標記附近的大海中被發現，並有重兵把守。建議裝備潛水用具和水下武器。</Chinese>
@@ -6941,6 +7189,7 @@
 		</Key>
 		<Key ID="STR_SUNKEN_MESSAGE2">
 			<Original>The sunken supplies have been collected, well done.</Original>
+			<Russian>Затонувшие припасы собраны, отличная раборта.</Russian>
 			<Japanese>水没した物資は確保されました。おめでとうございます。</Japanese>
 			<Chinesesimp>沉船物资已打捞上岸，做得很好！</Chinesesimp>
 			<Chinese>沉船物資已打撈上岸，做得很好！</Chinese>
@@ -6950,6 +7199,7 @@
 		<!-- mission_TownInvasion.sqf -->
 		<Key ID="STR_INVASION">
 			<Original>Town Invasion</Original>
+			<Russian>Вторжение в город</Russian>
 			<Japanese>占拠された街</Japanese>
 			<Chinesesimp>城镇入侵</Chinesesimp>
 			<Chinese>城鎮入侵</Chinese>
@@ -6957,6 +7207,7 @@
 		</Key>
 		<Key ID="STR_INVASION_MESSAGE1">
 			<Original>Hostiles have taken over &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;There seem to be &lt;t color='%1'&gt;%3 enemies&lt;/t&gt; hiding inside or on top of buildings. Get rid of them all, and take their supplies!&lt;br/&gt;Watch out for those windows!</Original>
+			<Russian>Враг захватил &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;Около &lt;t color='%1'&gt;%3 врагов&lt;/t&gt; прячутся внутри или на крышах зданий. Избавьтесь от них всех и заберите их припасы!&lt;br/&gt;Остерегайтесь окон!</Russian>
 			<Japanese>敵が&lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;を占拠しました。 &lt;t color='%1'&gt;%3 人の敵&lt;/t&gt; が建物の中や外に居ます。敵勢力を排除し物資を確保してください。&lt;br/&gt;窓に警戒を！</Japanese>
 			<Chinesesimp>敌人已经占领了 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;似乎有 &lt;t color='%1'&gt;%3 名敌人&lt;/t&gt; 躲在建筑物内部或顶部。 把他们全部干掉，拿走他们补给!&lt;br/&gt;小心那些窗户后面！</Chinesesimp>
 			<Chinese>敵人已經佔領了 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;似乎有 &lt;t color='%1'&gt;%3 名敵人&lt;/t&gt; 躲在建築物內部或頂部。把他們全部幹掉，拿走他們補給!&lt;br/&gt;小心那些窗戶後面！</Chinese>
@@ -6964,6 +7215,7 @@
 		</Key>
 		<Key ID="STR_INVASION_MESSAGE2">
 			<Original>Nice work!&lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;is a safe place again!&lt;br/&gt;Their belongings are now yours to take!</Original>
+			<Russian>Отличная работа!&lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;безопасно снова!&lt;br/&gt;Их вещи теперь ваши!</Russian>
 			<Japanese>おめでとうございます！&lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;は再び安全な場所に戻りました&lt;br/&gt;敵の所有物はあなたのものです。</Japanese>
 			<Chinesesimp>干得漂亮！&lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;又是个安全的地方了！&lt;br/&gt;他们的武器现在是你的了！</Chinesesimp>
 			<Chinese>幹得漂亮！ &lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;又是個安全的地方了！ &lt;br/&gt;他們的武器現在是你的了！</Chinese>
@@ -6973,20 +7225,24 @@
 		<!-- mission_TownInsurgency.sqf -->
 		<Key ID="STR_INSURGENCY">
 			<Original>Town Insurgency</Original>
+			<Russian>Городское восстание</Russian>
 			<Czech>Městské povstání</Czech>
 		</Key>
 		<Key ID="STR_INSURGENCY_MESSAGE1">
 			<Original>The local population of &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt; is Furious about your lake of Consideration!&lt;br/&gt;They take Weapons and refuse your &lt;t color='%1'&gt;Autorithy&lt;/t&gt;.&lt;br/&gt;Try to calm down the situation and bring the Peace back!</Original>
+			<Russian>Местное население &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt; в ярости из-за ваших действий!&lt;br/&gt;Они берут оружие и отказываются от вашего &lt;t color='%1'&gt;влияния&lt;/t&gt;.&lt;br/&gt;Постарайтесь успокоить ситуацию и вернуть Мир!</Russian>
 			<Czech>Místní obyvatelstvo &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt; zuří a nemají ohleduplnost!&lt;br/&gt;Vezmou zbraně a odmítnou vaši &lt;t color='%1'&gt;Autoritu.&lt;/t&gt;.&lt;br/&gt;Pokuste se uklidnit situaci a vrátit mír!</Czech>
 		</Key>
 		<Key ID="STR_INSURGENCY_MESSAGE2">
 			<Original>Nice work!&lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;is a safe place again!&lt;br/&gt;Their belongings are now yours to take!</Original>
+			<Russian>Отличная работа!&lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;безопасно снова!&lt;br/&gt;Их вещи теперь ваши!</Russian>
 			<Czech>Pěkná práce!&lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;je opět bezpečné místo!&lt;br/&gt;Jejich věci jsou nyní vaše!</Czech>
 		</Key>
 
 		<!-- mission_VehicleCapture.sqf -->
 		<Key ID="STR_VEHICLECAP">
 			<Original>Vehicle Capture</Original>
+			<Russian>Захват машины</Russian>
 			<Japanese>車両鹵獲</Japanese>
 			<Chinesesimp>车辆抢夺</Chinesesimp>
 			<Chinese>車輛搶奪</Chinese>
@@ -6994,6 +7250,7 @@
 		</Key>
 		<Key ID="STR_VEHICLECAP_MESSAGE1">
 			<Original>A &lt;t color='%2'&gt;%1&lt;/t&gt; has been immobilized, go get it for your team!</Original>
+			<Russian>Этот &lt;t color='%2'&gt;%1&lt;/t&gt; был обездвижен, иди и захвати его!</Russian>
 			<Japanese>&lt;t color='%2'&gt;%1&lt;/t&gt;が無力化されました、マップのマーカー付近に行って車両を奪取してください！</Japanese>
 			<Chinesesimp>一辆&lt;t color='%2'&gt;%1&lt;/t&gt; 瘫痪在那，为你的队伍去把它抢回来！</Chinesesimp>
 			<Chinese>一輛&lt;t color='%2'&gt;%1&lt;/t&gt; 癱瘓在那，為你的隊伍去把它搶回來！</Chinese>
@@ -7001,6 +7258,7 @@
 		</Key>
 		<Key ID="STR_VEHICLECAP_MESSAGE2">
 			<Original>The %1 has been captured, well done.</Original>
+			<Russian>Этот %1 захвачен, отличная работа.</Russian>
 			<Japanese>%1 は鹵獲されました。おめでとうございます。</Japanese>
 			<Chinesesimp>%1 已经被夺取, 干得好！</Chinesesimp>
 			<Chinese>%1 已經被奪取, 幹得好！</Chinese>
@@ -7010,6 +7268,7 @@
 		<!-- mission_WepCache.sqf -->
 		<Key ID="STR_WEAPCACHE">
 			<Original>Weapon Cache</Original>
+			<Russian>Ящик с оружием</Russian>
 			<Japanese>敵物資</Japanese>
 			<Chinesesimp>武器藏匿点</Chinesesimp>
 			<Chinese>武器藏匿點</Chinese>
@@ -7017,6 +7276,7 @@
 		</Key>
 		<Key ID="STR_WEAPCACHE_MESSAGE1">
 			<Original>A weapon cache has been spotted near the marker.</Original>
+			<Russian>Рядом с маркером был замечен тайник с оружием.</Russian>
 			<Japanese>敵物資がマップのマーカー付近で確認されました。</Japanese>
 			<Chinesesimp>在标记附近发现了一个武器藏匿点。</Chinesesimp>
 			<Chinese>在標記附近發現了一個武器藏匿點。</Chinese>
@@ -7024,6 +7284,7 @@
 		</Key>
 		<Key ID="STR_WEAPCACHE_MESSAGE2">
 			<Original>The supplies have been collected, well done.</Original>
+			<Russian>Материалы собраны, отличная работа.</Russian>
 			<Japanese>敵物資は確保されました。おめでとうございます。</Japanese>
 			<Chinesesimp>物资已摧毁，做得很好！</Chinesesimp>
 			<Chinese>物資已摧毀，做得很好！</Chinese>
@@ -7033,6 +7294,7 @@
 		<!-- speak_manager.sqf -->
 		<Key ID="STR_SPEAKMANAGER1">
 			<Original>Hello, you see somes enemies around here ?</Original>
+			<Russian>Привет, ты видишь здесь врагов?</Russian>
 			<Japanese>こんにちは、この辺りで敵兵を見ませんでしたか？</Japanese>
 			<Chinesesimp>你好，你在这附近看到敌人了吗？</Chinesesimp>
 			<Chinese>你好，你在這附近看到敵人了嗎？</Chinese>
@@ -7040,6 +7302,7 @@
 		</Key>
 		<Key ID="STR_SPEAKMANAGER2">
 			<Original>Hi, Yes, I see someone at %1 meters, Azimut %2, Hurry up!</Original>
+			<Russian>Привет, Да, я вижу кого-то на %1 метрах, Азимут %2, Поторопись!</Russian>
 			<Japanese>はい、%2方向、%1mに敵兵を見ました。急いでください。</Japanese>
 			<Chinesesimp>嗨，是的，我看到有人在 %1米处，方位角 %2，快去！</Chinesesimp>
 			<Chinese>嗨，是的，我看到有人在 %1米處，方位角 %2，快去！</Chinese>
@@ -7047,6 +7310,7 @@
 		</Key>
 		<Key ID="STR_SPEAKMANAGER3">
 			<Original>Hi, Sorry No.</Original>
+			<Russian>Привет, извините нет.</Russian>
 			<Japanese>すいません、見ていません。</Japanese>
 			<Chinesesimp>嗨。对不起，没有。</Chinesesimp>
 			<Chinese>嗨。對不起，沒有。</Chinese>
@@ -7054,6 +7318,7 @@
 		</Key>
 		<Key ID="STR_SPEAKMANAGER4">
 			<Original>I dont care, Go away !</Original>
+			<Russian>Мне все равно, уходи!</Russian>
 			<Japanese>知るか！どっか行け！</Japanese>
 			<Chinesesimp>我不关注这个，走开！</Chinesesimp>
 			<Chinese>我不關注這個，走開！</Chinese>
@@ -7061,6 +7326,7 @@
 		</Key>
 		<Key ID="STR_SPEAKMANAGER5">
 			<Original>Hello, I have no fucking idea of who are your enemies...</Original>
+			<Russian>Привет, я понятия не имею, кто ваши враги...</Russian>
 			<Japanese>やぁ、すまねぇが敵がどこにいるかは全く分からねぇ...</Japanese>
 			<Chinesesimp>我他妈的不知道谁是你的敌人...</Chinesesimp>
 			<Chinese>我他媽的不知道誰是你的敵人...</Chinese>
@@ -7068,6 +7334,7 @@
 		</Key>
 		<Key ID="STR_SPEAKMANAGER6">
 			<Original>Hello, Where is your leader ?</Original>
+			<Russian>Здравствуйте, где ваш лидер?</Russian>
 			<Japanese>やぁ、指揮官はどこだい？</Japanese>
 			<Chinesesimp>你好，你们的指挥官在哪里？</Chinesesimp>
 			<Chinese>你好，你們的指揮官在哪裡？</Chinese>
@@ -7075,6 +7342,7 @@
 		</Key>
 		<Key ID="STR_SPEAKMANAGER7">
 			<Original>Hi, he's at %1 meters, Azimut %2, Hurry up!</Original>
+			<Russian>Привет, он на %1 метрах, Азимут %2, Спешите!</Russian>
 			<Japanese>彼は%2方向、%1m先にいます、急いで！</Japanese>
 			<Chinesesimp>嗨，他在 %1米处，方位角 %2，快去！</Chinesesimp>
 			<Chinese>嗨，他在 %1米處，方位角 %2，快去！</Chinese>
@@ -7082,6 +7350,7 @@
 		</Key>
 		<Key ID="STR_SPEAKMANAGER8">
 			<Original>Hello, I Need to speak with you, listen to me.</Original>
+			<Russian>Здравствуйте, мне нужно поговорить с вами, послушайте меня.</Russian>
 			<Japanese>やぁ、どうか話を聞いてくれ。</Japanese>
 			<Chinesesimp>你好，我需要和你谈谈，听我说。</Chinesesimp>
 			<Chinese>你好，我需要和你談談，聽我說。</Chinese>
@@ -7089,6 +7358,7 @@
 		</Key>
 		<Key ID="STR_SPEAKMANAGER9">
 			<Original>We have informations, Opfor will attack this place soon.</Original>
+			<Russian>У нас есть информация, скоро сюда нападет противник.</Russian>
 			<Japanese>どうやら敵がもうすぐこの場所を攻撃してくるらしい。</Japanese>
 			<Chinesesimp>我们得到消息，Opfor很快就会攻击这个地方。</Chinesesimp>
 			<Chinese>我們得到消息，Opfor很快就會攻擊這個地方。</Chinese>
@@ -7096,6 +7366,7 @@
 		</Key>
 		<Key ID="STR_SPEAKMANAGER10">
 			<Original>Big Air assault is expected, help us to defend the city...</Original>
+			<Russian>Ожидается большой воздушный штурм, помогите нам защитить город...</Russian>
 			<Japanese>航空部隊の飛来が予想される。どうか私たちを助けてくれ...</Japanese>
 			<Chinesesimp>预计将发起大空袭，请帮助我们保卫城市...</Chinesesimp>
 			<Chinese>預計將發起大空襲，請幫助我們保衛城市...</Chinese>
@@ -7103,6 +7374,7 @@
 		</Key>
 		<Key ID="STR_SPEAKMANAGER11">
 			<Original>...the Resistance must survive!</Original>
+			<Russian>...Сопротивление должно выжить!</Russian>
 			<Japanese>レジスタンスは生き延びねばならないのだ！</Japanese>
 			<Chinesesimp>...抵抗组织必须幸存下来！</Chinesesimp>
 			<Chinese>...抵抗組織必須倖存下來！</Chinese>
@@ -7110,6 +7382,7 @@
 		</Key>
 		<Key ID="STR_SPEAKMANAGER12">
 			<Original>Maybe another time...</Original>
+			<Russian>Возможно, в другой раз...</Russian>
 			<Japanese>また別の時に...</Japanese>
 			<Chinesesimp>也许下次吧...</Chinesesimp>
 			<Chinese>也許下次吧...</Chinese>
@@ -7117,6 +7390,7 @@
 		</Key>
 		<Key ID="STR_SPEAKMANAGER13">
 			<Original>Hello, I Need to speak with you, listen to me.</Original>
+			<Russian>Здравствуйте, мне нужно поговорить с вами, послушайте меня.</Russian>
 			<Japanese>やぁ、ちょっと話があるんだ。聞いてくれ。</Japanese>
 			<Chinesesimp>你好，我需要和你谈谈，听我说。</Chinesesimp>
 			<Chinese>你好，我需要和你談談，聽我說。</Chinese>
@@ -7124,6 +7398,7 @@
 		</Key>
 		<Key ID="STR_SPEAKMANAGER14">
 			<Original>You have to deliver this precious information to my father.</Original>
+			<Russian>Ты должен передать эту драгоценную информацию моему отцу.</Russian>
 			<Japanese>この重要情報を父に届けてほしいんだ。</Japanese>
 			<Chinesesimp>你必须把这个宝贵的消息告诉我父亲。</Chinesesimp>
 			<Chinese>你必須把這個寶貴的消息告訴我父親。</Chinese>
@@ -7131,6 +7406,7 @@
 		</Key>
 		<Key ID="STR_SPEAKMANAGER15">
 			<Original>Go to see my friend %1 for more infos.</Original>
+			<Russian>Посетите моего друга %1 для получения дополнительной информации.</Russian>
 			<Japanese>%1 に会って更なる情報を得てくれ。</Japanese>
 			<Chinesesimp>去找我的朋友 %1 了解更多信息。</Chinesesimp>
 			<Chinese>去找我的朋友 %1 了解更多信息。</Chinese>
@@ -7138,6 +7414,7 @@
 		</Key>
 		<Key ID="STR_SPEAKMANAGER16">
 			<Original>Look at the marker on your Map.</Original>
+			<Russian>Посмотрите на маркер на карте.</Russian>
 			<Japanese>マップのマーカーを見てくれ。</Japanese>
 			<Chinesesimp>查看地图上的标记。</Chinesesimp>
 			<Chinese>查看地圖上的標記。</Chinese>
@@ -7145,6 +7422,7 @@
 		</Key>
 		<Key ID="STR_SPEAKMANAGER17">
 			<Original>Yes, I know him !</Original>
+			<Russian>Да, я знаю его !</Russian>
 			<Japanese>ああ、彼のことなら知っている！</Japanese>
 			<Chinesesimp>是的，我认识他！</Chinesesimp>
 			<Chinese>是的，我認識他！</Chinese>
@@ -7152,6 +7430,7 @@
 		</Key>
 		<Key ID="STR_SPEAKMANAGER18">
 			<Original>he's hidding in a small house, enemy forces try to catch him!</Original>
+			<Russian>он прячется в маленьком доме, вражеские силы пытаются его поймать!</Russian>
 			<Japanese>彼は小さな家の中で隠れている。敵が彼を捕まえようとしている！</Japanese>
 			<Chinesesimp>他躲在一个小房子里，敌军想要抓住他！</Chinesesimp>
 			<Chinese>他躲在一個小房子裡，敵軍想要抓住他！</Chinese>
@@ -7159,6 +7438,7 @@
 		</Key>
 		<Key ID="STR_SPEAKMANAGER19">
 			<Original>Look at the marker on your Map, Hurry hup!</Original>
+			<Russian>Посмотрите на маркер на карте, поторопитесь!</Russian>
 			<Japanese>マップのマーカーを確認してくれ。早く！</Japanese>
 			<Chinesesimp>看你地图上的标记，快去！</Chinesesimp>
 			<Chinese>看你地圖上的標記，快去！</Chinese>
@@ -7166,6 +7446,7 @@
 		</Key>
 		<Key ID="STR_SPEAKMANAGER20">
 			<Original>Oh, I dont knows,</Original>
+			<Russian>Ох, я не знаю,</Russian>
 			<Japanese>あー、知らんな。</Japanese>
 			<Chinesesimp>哦，我不知道,</Chinesesimp>
 			<Chinese>哦，我不知道,</Chinese>
@@ -7173,6 +7454,7 @@
 		</Key>
 		<Key ID="STR_SPEAKMANAGER21">
 			<Original>Go to see my friend %1 for more infos.</Original>
+			<Russian>Посетите моего друга %1 для получения дополнительной информации.</Russian>
 			<Japanese>%1 に会ってもっと情報を得てくれ。</Japanese>
 			<Chinesesimp>去找我的朋友 %1 了解更多信息。</Chinesesimp>
 			<Chinese>去找我的朋友 %1 了解更多信息。</Chinese>
@@ -7180,6 +7462,7 @@
 		</Key>
 		<Key ID="STR_SPEAKMANAGER22">
 			<Original>Look at the marker on your Map.</Original>
+			<Russian>Посмотрите на маркер на карте.</Russian>
 			<Japanese>マップのマーカーを見てくれ。</Japanese>
 			<Chinesesimp>查看地图上的标记。</Chinesesimp>
 			<Chinese>查看地圖上的標記。</Chinese>
@@ -7187,6 +7470,7 @@
 		</Key>
 		<Key ID="STR_SPEAKMANAGER23">
 			<Original>Thank you very much, Please take your reward.</Original>
+			<Russian>Большое спасибо, пожалуйста, примите свою награду.</Russian>
 			<Japanese>感謝する。褒美を受け取ってくれ。</Japanese>
 			<Chinesesimp>非常感谢，请收下奖励。</Chinesesimp>
 			<Chinese>非常感謝，請收下獎勵。</Chinese>
@@ -7194,6 +7478,7 @@
 		</Key>
 		<Key ID="STR_SPEAKMANAGER24">
 			<Original>Sorry, I wait for something special...</Original>
+			<Russian>Извините, я жду чего-то особенного...</Russian>
 			<Japanese>すまない、特別な何かを待っているんだ...</Japanese>
 			<Chinesesimp>抱歉，我在等一些特别的东西...</Chinesesimp>
 			<Chinese>抱歉，我在等一些特別的東西...</Chinese>
@@ -7201,6 +7486,7 @@
 		</Key>
 		<Key ID="STR_SPEAKMANAGER25">
 			<Original>Hello, What do you need ?</Original>
+			<Russian>Здравствуйте, что вам нужно?</Russian>
 			<Japanese>やぁ、何が必要だ？</Japanese>
 			<Chinesesimp>你好，你需要什么？</Chinesesimp>
 			<Chinese>你好，你需要什麼？</Chinese>
@@ -7208,6 +7494,7 @@
 		</Key>
 		<Key ID="STR_SPEAKMANAGER26">
 			<Original>Hi, We running out of %1 !</Original>
+			<Russian>Привет, у нас заканчивается %1!</Russian>
 			<Japanese>やぁ、私たちは %1 が不足している！</Japanese>
 			<Chinesesimp>嗨，我们用光了 %1！</Chinesesimp>
 			<Chinese>嗨，我們用光了 %1！</Chinese>
@@ -7215,6 +7502,7 @@
 		</Key>
 		<Key ID="STR_SPEAKMANAGER27">
 			<Original>Please bring us back 3 %1 of %2</Original>
+			<Russian>Пожалуйста, верните нам 3 %1 из %2</Russian>
 			<Japanese>どうか私たちに3 %1 の %2 を持ってきてくれ。</Japanese>
 			<Chinesesimp>请帮我们带回一些%3 %2的 %1</Chinesesimp>
 			<Chinese>請幫我們帶回一些%3 %2的 %1</Chinese>
@@ -7222,6 +7510,7 @@
 		</Key>
 		<Key ID="STR_SPEAKMANAGER28">
 			<Original>I will wait here for you to come back with the %1, Please hurry up!</Original>
+			<Russian>Я подожду здесь, пока вы вернетесь с %1. Пожалуйста, поторопитесь!</Russian>
 			<Japanese>私はここで君が %1 を持ってきてくれるのを待っているよ。どうか急いでくれ！</Japanese>
 			<Chinesesimp>我会在这里等你带着 %1 回来，请快点！</Chinesesimp>
 			<Chinese>我會在這裡等你帶著 %1 回來，請快點！</Chinese>
@@ -7321,6 +7610,7 @@
 		</Key>
 		<Key ID="STR_PAR_AC_01">
 			<Original>Revive</Original>
+			<Russian>Возрождение</Russian>
 			<French>Soigner</French>
 			<Chinesesimp>复活</Chinesesimp>
 			<Chinese>復活</Chinese>
@@ -7330,6 +7620,7 @@
 		</Key>
 		<Key ID="STR_PAR_AC_02">
 			<Original>Drag</Original>
+			<Russian>Тащить</Russian>
 			<French>Tirer</French>
 			<Chinesesimp>拖拉</Chinesesimp>
 			<Chinese>拖拉</Chinese>
@@ -7339,6 +7630,7 @@
 		</Key>
 		<Key ID="STR_PAR_AC_03">
 			<Original>Release</Original>
+			<Russian>Отпустить</Russian>
 			<French>Lacher</French>
 			<Chinesesimp>释放</Chinesesimp>
 			<Chinese>釋放</Chinese>
@@ -7348,6 +7640,7 @@
 		</Key>
 		<Key ID="STR_PAR_CM_01">
 			<Original>Bad news %1, your medic (%2) is blocked somewhere... (dist: %3m / try: %4)</Original>
+			<Russian>Плохие новости %1, ваш медик (%2) где-то заблокирован... (расстояние: %3m / попытка: %4)</Russian>
 			<French>Mauvaise nouvelle %1, votre médecin (%2) est bloqué quelque part... (dist: %3m / try: %4)</French>
 			<Chinesesimp>坏消息 %1, 你的医生(%2)被堵在了某个地方... (距离: %3米 / 方位角: %4)</Chinesesimp>
 			<Chinese>壞消息 %1, 你的醫生(%2)被堵在了某個地方... (距離: %3米 / 方位角: %4)</Chinese>
@@ -7357,6 +7650,7 @@
 		</Key>
 		<Key ID="STR_PAR_CM_02">
 			<Original>Please wait %1, %2 (dist: %3m/%4), is on the way...</Original>
+			<Russian>Подождите, %1, %2 (расстояние: %3m/%4), уже в пути...</Russian>
 			<French>Patience %1, %2 (dist: %3m/%4), est en chemin...</French>
 			<Chinesesimp>请等待 %1, %2 (距离: %3米/%4)，正在路上...</Chinesesimp>
 			<Chinese>請等待 %1, %2 (距離: %3米/%4)，正在路上...</Chinese>
@@ -7366,6 +7660,7 @@
 		</Key>
 		<Key ID="STR_PAR_CW_01">
 			<Original>I'm going to heal %1 !</Original>
+			<Russian>Я собираюсь вылечить %1!</Russian>
 			<French>Je vais guérir %1 !</French>
 			<Chinesesimp>我前去救 %1 ！</Chinesesimp>
 			<Chinese>我前去救 %1 ！</Chinese>
@@ -7375,6 +7670,7 @@
 		</Key>
 		<Key ID="STR_PAR_MD_01">
 			<Original>Sorry %1, but there is no medic nearby...</Original>
+			<Russian>Извините %1, но рядом нет медика...</Russian>
 			<French>Désolé %1, mais il n'y a pas de médecin à proximité...</French>
 			<Chinesesimp>抱歉 %1，附近并没有医疗兵...</Chinesesimp>
 			<Chinese>抱歉 %1，附近並沒有醫療兵...</Chinese>
@@ -7384,6 +7680,7 @@
 		</Key>
 		<Key ID="STR_PAR_MD_02">
 			<Original>Units alive in your squad: %1</Original>
+			<Russian>Живых юнитов в вашем отряде: %1</Russian>
 			<French>Unités vivantes dans votre escouade: %1</French>
 			<Chinesesimp>你的小队里还活着的单位: %1</Chinesesimp>
 			<Chinese>你的小隊裡還活著的單位: %1</Chinese>
@@ -7393,6 +7690,7 @@
 		</Key>
 		<Key ID="STR_PAR_MD_03">
 			<Original>Hold on %1 !, %2 (dist: %3m), is coming to save you !</Original>
+			<Russian>Держись %1 !, %2 (расстояние: %3m), идет, чтобы спасти тебя!</Russian>
 			<French>Tenez bon %1!, %2 (dist: %3m), vient vous sauver !</French>
 			<Chinesesimp>坚持住 %1 ！ %2 (距离: %3 米)，正在来救你！</Chinesesimp>
 			<Chinese>堅持住 %1 ！ %2 (距離: %3 米)，正在來救你！</Chinese>
@@ -7402,6 +7700,7 @@
 		</Key>
 		<Key ID="STR_PAR_MD_04">
 			<Original>Maybe no more Medic or insuficient Medkit ?</Original>
+			<Russian>Может быть, больше нет медика или недостаточно аптечек?</Russian>
 			<French>Peut etre plus de Médecin ou plus de kit de soins ?</French>
 			<Chinesesimp>也许没有更多的医疗人员，或者医疗包不足？</Chinesesimp>
 			<Chinese>也许没有更多的医疗人员，或者医疗包不足？</Chinese>
@@ -7410,6 +7709,7 @@
 		</Key>
 		<Key ID="STR_PAR_ST_01">
 			<Original>%1 is healing %2 now...</Original>
+			<Russian>%1 лечит %2 сейчас...</Russian>
 			<French>%1 soigne %2 maintenant...</French>
 			<Chinesesimp>%1 正在治疗 %2 ...</Chinesesimp>
 			<Chinese>%1 正在治療 %2 ...</Chinese>
@@ -7419,6 +7719,7 @@
 		</Key>
 		<Key ID="STR_PAR_UC_01">
 			<Original>I need a Medic !!</Original>
+			<Russian>Мне нужен Медик!!</Russian>
 			<French>J'ai besoin d'un médecin !!</French>
 			<Chinesesimp>我需要医疗兵！！</Chinesesimp>
 			<Chinese>我需要醫療兵！ ！</Chinese>
@@ -7428,6 +7729,7 @@
 		</Key>
 		<Key ID="STR_PAR_UC_02">
 			<Original>Sorry %1, you no longer have units to revive you...</Original>
+			<Russian>Извините, %1, у вас больше нет юнитов, чтобы оживить вас...</Russian>
 			<French>Désolé %1, vous n'avez plus d'unités pour vous sauver...</French>
 			<Chinesesimp>抱歉 %1，附近没有单位能来救你...</Chinesesimp>
 			<Chinese>抱歉 %1，附近沒有單位能來救你...</Chinese>
@@ -7441,6 +7743,7 @@
 	<Package name="LRX_TAXI">
 		<Key ID="STR_TAXI_ACTION1">
 			<Original>-- TAXI Destination</Original>
+			<Russian>Вертолет, назначение</Russian>
 			<French>-- TAXI Destination</French>
 			<Chinesesimp>-- 目的地</Chinesesimp>
 			<Chinese>-- 目的地</Chinese>
@@ -7450,6 +7753,7 @@
 		</Key>
 		<Key ID="STR_TAXI_ACTION2">
 			<Original>-- TAXI Cancel</Original>
+			<Russian>Вертолет, отмена</Russian>
 			<French>-- TAXI Annulation</French>
 			<Chinesesimp>-- 取消</Chinesesimp>
 			<Chinese>-- 取消</Chinese>
@@ -7459,6 +7763,7 @@
 		</Key>
 		<Key ID="STR_TAXI_ONLY_ONE">
 			<Original>Sorry, only one Taxi at time.</Original>
+			<Russian>Извините, только один вертолет за раз.</Russian>
 			<French>Désolé, un seul Taxi à la fois.</French>
 			<Chinesesimp>对不起，一次只有一辆出租鸟</Chinesesimp>
 			<Chinese>對不起，一次只有一輛出租鳥</Chinese>
@@ -7468,6 +7773,7 @@
 		</Key>
 		<Key ID="STR_TAXI_WRONG_PLACE">
 			<Original>Sorry, the Taxi cannot land on this place.</Original>
+			<Russian>Извините, вертолет не может приземлиться здесь.</Russian>
 			<French>Désolé, le Taxi ne peut pas atterrir à cet endroit.</French>
 			<Chinesesimp>对不起，出租鸟不能在这个地方降落</Chinesesimp>
 			<Chinese>對不起，出租鳥不能在這個地方降落</Chinese>
@@ -7477,6 +7783,7 @@
 		</Key>
 		<Key ID="STR_TAXI_SELECT">
 			<Original>Select your destination.</Original>
+			<Russian>Выберите точку назначения.</Russian>
 			<French>Choisissez votre destination.</French>
 			<Chinesesimp>选择目的地.</Chinesesimp>
 			<Chinese>選擇目的地.</Chinese>
@@ -7486,6 +7793,7 @@
 		</Key>
 		<Key ID="STR_TAXI_LANDING">
 			<Original>The Taxi lands...</Original>
+			<Russian>Вертолет приземляется</Russian>
 			<French>Le Taxi atterrit...</French>
 			<Chinesesimp>小鸟降落中...</Chinesesimp>
 			<Chinese>小鳥降落中...</Chinese>
@@ -7495,6 +7803,7 @@
 		</Key>
 		<Key ID="STR_TAXI_LANDED">
 			<Original>The Taxi landed.</Original>
+			<Russian>Вертолет приземлился.</Russian>
 			<French>Le Taxi a atterri.</French>
 			<Chinesesimp>小鸟已降落.</Chinesesimp>
 			<Chinese>小鳥已降落.</Chinese>
@@ -7504,6 +7813,7 @@
 		</Key>
 		<Key ID="STR_TAXI_CALLED">
 			<Original>Air Taxi called.\nType: %1</Original>
+			<Russian>Вертолет вызван.\nType: %1</Russian>
 			<French>Taxi aérien appelé.\nType: %1</French>
 			<Chinesesimp>空中出租车已呼叫!\n机型: %1</Chinesesimp>
 			<Chinese>空中出租車已呼叫!\n機型: %1</Chinese>
@@ -7513,6 +7823,7 @@
 		</Key>
 		<Key ID="STR_TAXI_MOVE">
 			<Original>Taxi on the way...\nDistance: %1m</Original>
+			<Russian>Вертолет в пути...\nDistance: %1m</Russian>
 			<French>Taxi en route...\nDistance: %1m</French>
 			<Chinesesimp>在路上了!\n距离: %1 米</Chinesesimp>
 			<Chinese>在路上了!\n距離: %1 米</Chinese>
@@ -7522,6 +7833,7 @@
 		</Key>
 		<Key ID="STR_TAXI_ARRIVED">
 			<Original>The Taxi has arrived.\nWaiting for passengers.\nYou have %1 seconds to board !</Original>
+			<Russian>Вертолет прибыл..\nОжидает пассажиров.\nУ вас есть %1 секунд на посадку !</Russian>
 			<French>Le Taxi est arrivé.\nEn attente de passagers.\nVous avez %1 secondes pour embarquer !</French>
 			<Chinesesimp>小鸟已降落.\n等候乘客.\n你有 %1 秒时间登机!</Chinesesimp>
 			<Chinese>小鳥已降落.\n等候乘客.\n你有 %1 秒時間登機!</Chinese>
@@ -7531,6 +7843,7 @@
 		</Key>
 		<Key ID="STR_TAXI_PROGRESS">
 			<Original>Transport in progress...\nDestination: %1m</Original>
+			<Russian>Транспортировка в процессе...\nНазначение: %1m</Russian>
 			<French>Transport en cours...\nDestination: %1m</French>
 			<Chinesesimp>小鸟运输中...\n目的地: %1 米</Chinesesimp>
 			<Chinese>小鳥運輸中...\n目的地: %1 米</Chinese>
@@ -7540,6 +7853,7 @@
 		</Key>
 		<Key ID="STR_TAXI_RETURN">
 			<Original>Back to the base.\nGoodbye...</Original>
+			<Russian>Возвращаюсь на базу.\nДо встречи...</Russian>
 			<French>Retour à la base.\nAu revoir...</French>
 			<Chinesesimp>返回空军基地。\n下次见...</Chinesesimp>
 			<Chinese>返回空軍基地。 \n下次見...</Chinese>
@@ -7553,6 +7867,7 @@
 	<Package name="LRX_TK">
 		<Key ID="STR_TK_MODE">
 			<Original>TeamKill Mode</Original>
+			<Russian>Дружественный огонь - Режим</Russian>
 			<French>TeamKill Mode</French>
 			<Chinesesimp>TK友伤模式</Chinesesimp>
 			<Chinese>TK友傷模式</Chinese>
@@ -7562,6 +7877,7 @@
 		</Key>
 		<Key ID="STR_TK_MODE_STRICT">
 			<Original>Strict - Warning + Autoban</Original>
+			<Russian>Строгий - Предупреждение + АвтоБан</Russian>
 			<French>Strict - Warning + Autoban</French>
 			<Chinesesimp>严厉 - 警告 + 自动ban</Chinesesimp>
 			<Chinese>嚴厲 - 警告 + 自動ban</Chinese>
@@ -7571,6 +7887,7 @@
 		</Key>
 		<Key ID="STR_TK_MODE_RELAX">
 			<Original>Relax - The Player decide</Original>
+			<Russian>Легкий - Решение игрока</Russian>
 			<French>Relax - Le Joueur choisit</French>
 			<Chinesesimp>放松 - 由玩家决定</Chinesesimp>
 			<Chinese>放鬆 - 由玩家決定</Chinese>
@@ -7580,6 +7897,7 @@
 		</Key>
 		<Key ID="STR_TK_COUNT">
 			<Original>TeamKill Warning</Original>
+			<Russian>Дружественный огонь - Предупреждение</Russian>
 			<French>TeamKill Avertissement</French>
 			<Chinesesimp>TK友伤警告</Chinesesimp>
 			<Chinese>TK友傷警告</Chinese>
@@ -7589,6 +7907,7 @@
 		</Key>
 		<Key ID="STR_TK_INFO1">
 			<Original>You have been TK by %1\nUse the action menu to react !</Original>
+			<Russian>Вы были убиты игроком %1\Используйте меню действий, чтобы отреагировать !</Russian>
 			<French>Vous avez été TK par %1\nUtilisez le menu d'action pour réagir !</French>
 			<Chinesesimp>你被 %1 TK了\n使用动作菜单进行举报！</Chinesesimp>
 			<Chinese>你被 %1 TK了\n使用動作菜單進行舉報！</Chinese>
@@ -7598,6 +7917,7 @@
 		</Key>
 		<Key ID="STR_TK_INFO2">
 			<Original>You have been &lt;t color='#e00000'&gt;Punished&lt;/t&gt; by &lt;t color='#0000e0'&gt;%1&lt;/t&gt;.</Original>
+			<Russian>Вы были &lt;t color='#e00000'&gt;наказаны&lt;/t&gt; &lt;t color='#0000e0'&gt;%1&lt;/t&gt;.</Russian>
 			<French>Vous avez été &lt;t color='#e00000'&gt;Punis&lt;/t&gt; par &lt;t color='#0000e0'&gt;%1&lt;/t&gt;.</French>
 			<Chinesesimp>你由于TK了&lt;t color='#0000e0'&gt;%1&lt;/t&gt; &lt;t color='#e00000'&gt;受到了惩罚&lt;/t&gt; .</Chinesesimp>
 			<Chinese>你由於TK了&lt;t color='#0000e0'&gt;%1&lt;/t&gt; &lt;t color='#e00000'&gt;受到了懲罰&lt;/t&gt; .</Chinese>
@@ -7607,6 +7927,7 @@
 		</Key>
 		<Key ID="STR_TK_ASK1">
 			<Original>Do you want to &lt;t color='#e00000'&gt;Punish&lt;/t&gt; or &lt;t color='#00e000'&gt;Forgive&lt;/t&gt; %1 ?</Original>
+			<Russian>Вы хотите &lt;t color='#e00000'&gt;наказать&lt;/t&gt; или &lt;t color='#00e000'&gt;простить&lt;/t&gt; %1 ?</Russian>
 			<French>Voulez-vous &lt;t color='#e00000'&gt;Punir&lt;/t&gt; or &lt;t color='#00e000'&gt;Pardonner&lt;/t&gt; %1 ?</French>
 			<Chinesesimp>你是否想要 &lt;t color='#e00000'&gt;举报惩罚&lt;/t&gt; 或者 &lt;t color='#00e000'&gt;原谅饶恕&lt;/t&gt; %1 ?</Chinesesimp>
 			<Chinese>你是否想要 &lt;t color='#e00000'&gt;舉報懲罰&lt;/t&gt; 或者 &lt;t color='#00e000'&gt;原諒饒恕&lt;/t&gt; %1 ?</Chinese>
@@ -7616,6 +7937,7 @@
 		</Key>
 		<Key ID="STR_TK_PUNISH">
 			<Original>Punish</Original>
+			<Russian>Наказать</Russian>
 			<French>Punir</French>
 			<Chinesesimp>惩罚</Chinesesimp>
 			<Chinese>懲罰</Chinese>
@@ -7625,6 +7947,7 @@
 		</Key>
 		<Key ID="STR_TK_FORGIVE">
 			<Original>Forgive</Original>
+			<Russian>Простить</Russian>
 			<French>Pardonner</French>
 			<Chinesesimp>原谅</Chinesesimp>
 			<Chinese>原諒</Chinese>
@@ -7634,6 +7957,7 @@
 		</Key>
 		<Key ID="STR_TK_ACTION1">
 			<Original>-- Punish or Forgive</Original>
+			<Russian>-- Наказать или простить</Russian>
 			<French>-- Punir ou Pardonner</French>
 			<Chinesesimp>-- 惩罚或原谅他 --</Chinesesimp>
 			<Chinese>-- 懲罰或原諒他 --</Chinese>
@@ -7643,6 +7967,7 @@
 		</Key>
 		<Key ID="STR_TK_MSG1">
 			<Original>TK: %1 punish %2.</Original>
+			<Russian>TK: %1 наказал %2.</Russian>
 			<French>TK: %1 punit %2.</French>
 			<Chinesesimp>TK: %1 惩罚了 %2.</Chinesesimp>
 			<Chinese>TK: %1 懲罰了 %2.</Chinese>
@@ -7652,6 +7977,7 @@
 		</Key>
 		<Key ID="STR_TK_MSG2">
 			<Original>TK: %1 forgive %2.</Original>
+			<Russian>TK: %1 простил %2.</Russian>
 			<French>TK: %1 pardonne %2.</French>
 			<Chinesesimp>TK: %1 原谅了 %2.</Chinesesimp>
 			<Chinese>TK: %1 原諒了 %2.</Chinese>
@@ -7664,6 +7990,7 @@
 	<Package name="LRX_SELL">
 		<Key ID="STR_SELL_NAME">
 			<Original>-- Sell Shop --</Original>
+			<Russian>-- Продавец --</Russian>
 			<Chinesesimp>-- 当铺 --</Chinesesimp>
 			<Chinese>-- 当铺 --</Chinese>
 			<Portuguese>-- Loja de Venda --</Portuguese>
@@ -7675,6 +8002,7 @@
 	<Package name="LRX_SHOP">
 		<Key ID="STR_SHOP_NAME">
 			<Original>-- Traders Shop --</Original>
+			<Russian>-- Торговец --</Russian>
 			<Chinesesimp>-- 贸易商店 --</Chinesesimp>
 			<Chinese>-- 貿易商店 --</Chinese>
 			<Portuguese>-- Loja de Comerciantes --</Portuguese>
@@ -7682,6 +8010,7 @@
 		</Key>
 		<Key ID="STR_SHOP_ENTER">
 			<Original>-- ENTER SHOP</Original>
+			<Russian>-- ВОЙТИ В МАГАЗИН</Russian>
 			<Chinesesimp>-- 进入店铺 --</Chinesesimp>
 			<Chinese>-- 進入店鋪 --</Chinese>
 			<Portuguese>-- ENTRAR LOJA</Portuguese>
@@ -7689,6 +8018,7 @@
 		</Key>
 		<Key ID="STR_SHOP_ACTION1">
 			<Original>SELL</Original>
+			<Russian>ПРОДАТЬ</Russian>
 			<French>VENDRE</French>
 			<Chinesesimp>出售</Chinesesimp>
 			<Chinese>出售</Chinese>
@@ -7697,6 +8027,7 @@
 		</Key>
 		<Key ID="STR_SHOP_ACTION2">
 			<Original>BUY</Original>
+			<Russian>КУПИТЬ</Russian>
 			<French>ACHETER</French>
 			<Chinesesimp>购买</Chinesesimp>
 			<Chinese>購買</Chinese>
@@ -7705,6 +8036,7 @@
 		</Key>
 		<Key ID="STR_SHOP_SELL">
 			<Original>SELL VEHICLE</Original>
+			<Russian>ПРОДАТЬ МАШИНУ</Russian>
 			<French>VENDRE VEHICULE</French>
 			<Chinesesimp>出售载具</Chinesesimp>
 			<Chinese>出售載具</Chinese>
@@ -7713,6 +8045,7 @@
 		</Key>
 		<Key ID="STR_SHOP_SELL_MSG">
 			<Original>&lt;t align='center'&gt;Sell %1&lt;br/&gt;for %2 AMMO.&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
+			<Russian>&lt;t align='center'&gt;Продать %1&lt;br/&gt;за %2 AMMO.&lt;br/&gt;Вы уверены ?&lt;/t&gt;</Russian>
 			<French>&lt;t align='center'&gt;Vendre %1&lt;br/&gt;pour %2 AMMO.&lt;br/&gt;Êtes-vous sûr ?&lt;/t&gt;</French>
 			<Chinesesimp>&lt;t align='center'&gt;出售 %1&lt;br/&gt;以获得 %2 弹药。&lt;br/&gt;你确定吗？&lt;/t&gt;</Chinesesimp>
 			<Chinese>&lt;t align='center'&gt;出售 %1&lt;br/&gt;以獲得 %2 彈藥。 &lt;br/&gt;你確定嗎？ &lt;/t&gt;</Chinese>
@@ -7721,6 +8054,7 @@
 		</Key>
 		<Key ID="STR_SHOP_BUY">
 			<Original>BUY VEHICLE</Original>
+			<Russian>КУПИТЬ МАШИНУ</Russian>
 			<French>ACHETER VEHICULE</French>
 			<Chinesesimp>购买载具</Chinesesimp>
 			<Chinese>購買載具</Chinese>
@@ -7729,6 +8063,7 @@
 		</Key>
 		<Key ID="STR_SHOP_BUY_MSG">
 			<Original>&lt;t align='center'&gt;Sell %1&lt;br/&gt;for %2 AMMO.&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
+			<Russian>&lt;t align='center'&gt;Продать %1&lt;br/&gt;за %2 AMMO.&lt;br/&gt;Вы уверены ?&lt;/t&gt;</Russian>
 			<French>&lt;t align='center'&gt;Acheter %1&lt;br/&gt;pour %2 AMMO.&lt;br/&gt;Êtes-vous sûr ?&lt;/t&gt;</French>
 			<Chinesesimp>&lt;t align='center'&gt;出售 %1&lt;br/&gt;以获得 %2 弹药。&lt;br/&gt;你确定吗？&lt;/t&gt;</Chinesesimp>
 			<Chinese>&lt;t align='center'&gt;出售 %1&lt;br/&gt;以獲得 %2 彈藥。 &lt;br/&gt;你確定嗎？ &lt;/t&gt;</Chinese>
@@ -7742,6 +8077,7 @@
 		<Container name="Actions">
 			<Key ID="STR_DALE_Actions_Loadout">
 				<Original>Loadout Editor</Original>
+				<Russian>Редактор снаряжения</Russian>
 				<Dutch>Bewapening Aanpassen</Dutch>
 				<German>Ausrüstung Anpassen</German>
 				<Chinesesimp>挂架编辑</Chinesesimp>
@@ -7754,6 +8090,7 @@
 		<Container name="Dialogs">
 			<Key ID="STR_DALE_Dialogs_Apply">
 				<Original>APPLY</Original>
+				<Russian>ПРИМЕНИТЬ</Russian>
 				<Dutch>TOEPASSEN</Dutch>
 				<German>ANWENDEN</German>
 				<Chinesesimp>应用</Chinesesimp>
@@ -7764,6 +8101,7 @@
 			</Key>
 			<Key ID="STR_DALE_Dialogs_Cancel">
 				<Original>CANCEL</Original>
+				<Russian>ОТМЕНА</Russian>
 				<Dutch>ANNULEREN</Dutch>
 				<German>ABBRECHEN</German>
 				<Chinesesimp>取消</Chinesesimp>
@@ -7774,6 +8112,7 @@
 			</Key>
 			<Key ID="STR_DALE_Dialogs_Custom">
 				<Original>Custom</Original>
+				<Russian>Custom</Russian>
 				<Dutch>Aangepast</Dutch>
 				<German>Eigene</German>
 				<Chinesesimp>常规</Chinesesimp>
@@ -7784,6 +8123,7 @@
 			</Key>
 			<Key ID="STR_DALE_Dialogs_Empty">
 				<Original>empty</Original>
+				<Russian>пусто</Russian>
 				<Dutch>leeg</Dutch>
 				<German>leer</German>
 				<Chinesesimp>空</Chinesesimp>
@@ -7794,6 +8134,7 @@
 			</Key>
 			<Key ID="STR_DALE_Dialogs_Single">
 				<Original>Single</Original>
+				<Russian>Одиночный</Russian>
 				<Dutch>Enkel</Dutch>
 				<German>Einzel</German>
 				<Chinesesimp>单边</Chinesesimp>
@@ -7804,6 +8145,7 @@
 			</Key>
 			<Key ID="STR_DALE_Dialogs_Double">
 				<Original>Double</Original>
+				<Russian>Двойной</Russian>
 				<Dutch>Dubbel</Dutch>
 				<German>Doppelt</German>
 				<Chinesesimp>对称</Chinesesimp>
@@ -7814,6 +8156,7 @@
 			</Key>
 			<Key ID="STR_DALE_Dialogs_Burst">
 				<Original>Burst</Original>
+				<Russian>Очередь</Russian>
 				<Dutch>Salvo</Dutch>
 				<German>Salve</German>
 				<Chinesesimp>齐射</Chinesesimp>
@@ -7834,56 +8177,67 @@
 		</Key>
 		<Key ID="STR_VAM_MAIN_MENU_NAME">
 			<Original>Vehicle Appearance Manager</Original>
+			<Russian>Менеджер внешнего вида машины</Russian>
 			<Korean>차량 형상 관리자</Korean>
 			<Czech>Vzhled vozidla</Czech>
 		</Key>
 		<Key ID="STR_VAM_RESET_VEHICLE">
 			<Original>Reset</Original>
+			<Russian>Сбросить</Russian>
 			<Korean>초기화</Korean>
 			<Czech>Reset</Czech>
 		</Key>
 		<Key ID="STR_VAM_CONFIRM_MENU">
 			<Original>Confirm</Original>
+			<Russian>Подтвердить</Russian>
 			<Korean>확인</Korean>
 			<Czech>Potvrdit</Czech>
 		</Key>
 		<Key ID="STR_VAM_CURRENT_VEHICLE">
 			<Original>Current Vehicle :</Original>
+			<Russian>Текущая машина :</Russian>
 			<Korean>현  재    차  량 :</Korean>
 			<Czech>Stávájící Vozidlo</Czech>
 		</Key>
 		<Key ID="STR_VAM_FOB_CONDITION_CHECK_FAILED">
 			<Original>You should be in %1m from FOB.)</Original>
+			<Russian>Вы должны быть в %1м от FOB.)</Russian>
 			<Korean>FOB에서 %1m 안에 있어야 합니다.</Korean>
 			<Czech>Měli byste být %1m od FOB.</Czech>
 		</Key>
 		<Key ID="STR_VAM_COMPLETE_RESET">
 			<Original>Reset complete</Original>
+			<Russian>Сброс выполнен</Russian>
 			<Korean>초기화 완료</Korean>
 			<Czech>Reset complete</Czech>
 		</Key>
 		<Key ID="STR_VAM_CAMOUFLAGE">
 			<Original>Camouflage</Original>
+			<Russian>Камуфляж</Russian>
 			<Korean>위장</Korean>
 			<Czech>Maskovat</Czech>
 		</Key>
 		<Key ID="STR_VAM_COMPONENT">
 			<Original>Component</Original>
+			<Russian>Компонент</Russian>
 			<Korean>구성품</Korean>
 			<Czech>Komponent</Czech>
 		</Key>
 		<Key ID="STR_VAM_NO_CAMOUFLAGE">
 			<Original>There is no camouflage.</Original>
+			<Russian>Это не камуфляж.</Russian>
 			<Korean>위장이 없습니다.</Korean>
 			<Czech>Neexistuje žádná kamufláž.</Czech>
 		</Key>
 		<Key ID="STR_VAM_NO_COMPONENT">
 			<Original>There is no component.</Original>
+			<Russian>Это не компонент.</Russian>
 			<Korean>구성품이 없습니다.</Korean>
 			<Czech>Neexistuje žádná Komponent.</Czech>
 		</Key>
 		<Key ID="STR_VAM_MARID_V1_NOTICE">
 			<Original>Your Marid is outdated one.\nVehicle component setup may not be loaded next time.\nPlease contact with your server admin.</Original>
+			<Russian>Ваш Marid устарел.\nНастройка компонентов автомобиля может не загрузиться в следующий раз.\nПожалуйста, свяжитесь с администратором вашего сервера.</Russian>
 			<Korean>당신의 마리드는 오래된 것입니다.\n다음 번에 차량 구성품 설정을 불러올 수 없을 것입니다.\n해당 서버 관리자와 연락을 취해보십시오.</Korean>
 			<Czech>Váš Marid je zastaralý.\nNastavení Komponent vozidla se nemusí příště načíst.\nKontaktujte prosím svého správce serveru.</Czech>
 		</Key>
@@ -7891,26 +8245,31 @@
 		<!-- Camouflage/위장 -->
 		<Key ID="STR_VAM_BLUFOR_CAMO">
 			<Original>BLUFOR</Original>
+			<Russian>Синий</Russian>
 			<Korean>청군</Korean>
 			<Czech>Modrý</Czech>
 		</Key>
 		<Key ID="STR_VAM_GREEN_CAMO">
 			<Original>Green</Original>
+			<Russian>Зеленый</Russian>
 			<Korean>녹색</Korean>
 			<Czech>Zelený</Czech>
 		</Key>
 		<Key ID="STR_VAM_BLACK_CAMO">
 			<Original>Black</Original>
+			<Russian>Черный</Russian>
 			<Korean>검정색</Korean>
 			<Czech>Černý</Czech>
 		</Key>
 		<Key ID="STR_VAM_AAF_CAMO">
 			<Original>AAF</Original>
+			<Russian>AAF</Russian>
 			<Korean>AAF</Korean>
 			<Czech>AAF</Czech>
 		</Key>
 		<Key ID="STR_VAM_DARK_GREEN_CAMO">
 			<Original>Dark Green</Original>
+			<Russian>Темно зеленый</Russian>
 			<Korean>어두운 녹색</Korean>
 			<Czech>Tmavozelený</Czech>
 		</Key>
