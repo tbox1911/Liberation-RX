@@ -27,10 +27,10 @@
 + 还有很多很多 !!
 
 + 等级系统
-    基于玩家行为的等级系统
-    自动授予许可（build/tank/air）
-    根据等级解锁武器库/单位
-    赠送或接收玩家的弹药
+- 基于玩家行为的等级系统
+- 自动授予许可（build/tank/air）
+- 根据等级解锁武器库/单位
+- 赠送或接收玩家的弹药
 
 + 动态支线任务
 + 特殊任务
@@ -91,15 +91,15 @@ Operation Trebuchet 地图：
 ## 安装
 
 + 直接游玩：
-      将pbo文件复制到“Steam\SteamApps\common\Arm3\MPMMissions\”目录
-      启动Arma 3，主机MP游戏，选择岛屿和解放RX任务，开始
+- 将pbo文件复制到“Steam\SteamApps\common\Arm3\MPMMissions\”目录
+- 启动Arma 3，主机MP游戏，选择岛屿和解放RX任务，开始
 
-+ 从源代码构建：:
-      在构建目录中启动“build.bat”以构建PBO
-      或者将"core.liberation"文件夹与"island"任务文件夹合并来自己构建pbo
++ 从源代码构建：
+- 在构建目录中启动“build.bat”以构建PBO
+- 或者将"core.liberation"文件夹与"island"任务文件夹合并来自己构建pbo
 
 + 专用服务器
-      将pbo文件复制到“Steam\SteamApps\common\Arma3 Server\MPMMissions\”目录
+- 将pbo文件复制到“Steam\SteamApps\common\Arma3 Server\MPMMissions\”目录
 
       编辑/创建服务器配置文件（查看：<https://community.bistudio.com/wiki/server.cfg>)
 
@@ -129,5 +129,5 @@ Operation Trebuchet 地图：
             arma3server -high -name=server -nosound -port=2302 -config=server.cfg
 
 ## 感谢
-      我要感谢：Zbug，他做得很好，AgentRev和Larrow以及[波希米亚互动论坛]的所有撰稿人(https://forums.bohemia.net/). 
-      感谢我从他们那里读到的无数信息，并给我上了一堂真正的代码课！
+- 我要感谢：Zbug，他做得很好，AgentRev和Larrow以及[波希米亚互动论坛]的所有撰稿人(https://forums.bohemia.net/). 
+- 感谢我从他们那里读到的无数信息，并给我上了一堂真正的代码课！
