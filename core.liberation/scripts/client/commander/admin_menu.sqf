@@ -106,9 +106,9 @@ private _list = [];
 // Build Vehicles list
 _i = 0;
 {
-	_strname = getText(configFile >> "cfgVehicles" >> ( _x select 0 ) >> "DisplayName");
-	if (isNil "_strname" ||_strname == "") then {
-		diag_log format ["--- LRX Error: Classname not found: %1", ( _x select 0 )];
+	_strname = [(_x select 0)] call get_lrx_name;
+	if (_strname == "") then {
+		diag_log format ["--- LRX Error: Classname not found: %1", (_x select 0)];
 	} else {
 		_build_combo lbAdd format["%1", _strname];
 		_build_combo lbSetData [_i, ( _x select 0 )];
