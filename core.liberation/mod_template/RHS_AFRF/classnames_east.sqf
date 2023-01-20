@@ -84,12 +84,15 @@ militia_vehicles = [
 	"CUP_O_Hilux_armored_igla_OPF_G_F",
 	"CUP_O_Hilux_armored_M2_OPF_G_F",
 	"CUP_O_Hilux_armored_metis_OPF_G_F",
-	"CUP_O_BTR60_CHDKZ",
 	"CUP_O_Hilux_armored_metis_TK_INS",
-        "CUP_O_BTR80A_CHDKZ",
-        "CUP_O_Hilux_armored_SPG9_OPF_G_F",
-        "CUP_O_Hilux_armored_podnos_TK_INS",
+	"CUP_O_Hilux_armored_SPG9_OPF_G_F",
+	"CUP_O_Hilux_armored_podnos_TK_INS",
     "CUP_O_Hilux_armored_zu23_OPF_G_F",
+	"CUP_O_BTR60_CHDKZ",
+	"CUP_O_BTR60_CHDKZ",
+	"CUP_O_BTR80A_CHDKZ",
+	"CUP_O_BTR80A_CHDKZ",
+	"CUP_O_T72_CHDKZ",
 	"CUP_O_T72_CHDKZ"
 ];
 
@@ -114,6 +117,8 @@ opfor_vehicles = [
 	"CUP_O_T55_CHDKZ",
 	"CUP_O_T55_CHDKZ",
 	"CUP_O_T72_CHDKZ",
+	"CUP_O_T72_CHDKZ",
+	"CUP_O_T72_CHDKZ",
 	"CUP_O_2S6_RU",
 	"B_SAM_System_02_F"
 ];
@@ -125,14 +130,15 @@ opfor_vehicles_low_intensity = [
 	"CUP_O_Hilux_armored_metis_TK_INS",
 	"CUP_O_Hilux_armored_BTR60_OPF_G_F",
 	"CUP_O_BRDM2_ATGM_TKA",
+	"CUP_O_BTR60_CHDKZ",
+	"CUP_O_BTR80_CHDKZ",
 	"CUP_O_T34_TKA",
 	"CUP_O_T55_CHDKZ",
-	"CUP_O_BTR60_CHDKZ"
+	"CUP_O_T72_CHDKZ"
 ];
 
 opfor_battlegroup_vehicles = [
 	"CUP_O_BRDM2_ATGM_TKA",
-	"CUP_O_T34_TKA",
 	"CUP_O_T34_TKA",
 	"CUP_O_T55_CHDKZ",
 	"CUP_O_BTR80A_CHDKZ",
@@ -142,20 +148,22 @@ opfor_battlegroup_vehicles = [
 	"CUP_O_BMP2_ZU_TKA",
 	"CUP_O_BMP2_ZU_TKA",
 	"CUP_O_T72_CHDKZ",
+	"CUP_O_T72_CHDKZ",
+	"CUP_O_T72_CHDKZ",
 	"CUP_O_2S6_RU"
 ];
 
 opfor_battlegroup_vehicles_low_intensity = [
 	"CUP_O_BTR60_CHDKZ",
-	"CUP_O_BTR60_CHDKZ",
-	"CUP_O_BTR60_CHDKZ",
-	"CUP_O_BTR60_CHDKZ",
+	"CUP_O_BTR80A_CHDKZ",
 	"CUP_O_BMP2_ZU_TKA",
-	"CUP_O_BMP2_ZU_TKA"
+	"CUP_O_T72_CHDKZ"
 ];
 
 opfor_reinforcement_vehicles = [
 	"CUP_O_BTR80A_CHDKZ",
+	"CUP_O_T72_CHDKZ",
+	"CUP_O_T72_CHDKZ",
 	"CUP_O_T72_CHDKZ",
 	"CUP_O_BTR60_CHDKZ",
 	"CUP_O_BTR80A_CHDKZ",
@@ -181,29 +189,26 @@ opfor_choppers = [
 	"CUP_O_UH1H_gunship_TKA",
 	"CUP_O_Ka52_RU",
 	"CUP_O_Ka50_DL_RU",
-	
 	"rhs_mi28n_vvsc"
 ];
 
 opfor_air = [
 	"CUP_O_Ka52_RU",
 	"rhs_mi28n_vvsc",
-	"rhs_mig29sm_vvs",
-	"RHS_T50_vvs_generic_ext",
-	"rhs_mig29sm_vvs",
+	"CUP_O_SU34_RU",
 	"CUP_O_SU34_RU",
 	"rhs_mig29sm_vvs",
-	"RHS_T50_vvs_generic_ext",
 	"rhs_mig29sm_vvs",
-	"CUP_O_SU34_RU",
 	"rhs_mig29sm_vvs",
 	"RHS_T50_vvs_generic_ext",
-	"rhs_mig29sm_vvs",
-	"RHS_T50_vvs_generic_ext"
+	"RHS_T50_vvs_generic_ext",
+	"RHS_T50_vvs_generic_ext",
+	"RHS_T50_vvs_generic_ext",
+	"O_Plane_Fighter_02_F",
+	"O_Plane_Fighter_02_F"
 ];
 
 opfor_statics = [
-	"CUP_O_Igla_AA_pod_ChDKZ",
 	"CUP_O_Igla_AA_pod_ChDKZ",
 	"B_SAM_System_02_F"
 ];

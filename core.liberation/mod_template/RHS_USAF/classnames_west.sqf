@@ -833,7 +833,7 @@ static_vehicles = [
 // Medium
 // CUP
 ["CUP_B_Stinger_AA_pod_Base_USMC",0,0,0,GRLIB_perm_inf],
-["CUP_WV_B_CRAM",50,0,0,GRLIB_perm_inf],
+["CUP_WV_B_CRAM",40,0,0,GRLIB_perm_inf],
 // Vanilla
 ["B_Radar_System_01_F",0,0,40,GRLIB_perm_inf],
 
@@ -842,12 +842,13 @@ static_vehicles = [
 ["CUP_WV_B_RAM_Launcher",150,0,0,GRLIB_perm_inf],
 ["CUP_WV_B_SS_Launcher",250,0,0,GRLIB_perm_inf],
 // Vanilla
-["B_SAM_System_03_F",100,0,0,GRLIB_perm_inf],
-["B_AAA_System_01_F",50,0,0,GRLIB_perm_inf],
-["B_SAM_System_01_F",150,0,0,GRLIB_perm_inf],
+["B_SAM_System_02_F",120,0,0,GRLIB_perm_inf],
+["B_SAM_System_03_F",80,0,0,GRLIB_perm_inf],
+["B_AAA_System_01_F",40,0,0,GRLIB_perm_inf],
+["B_SAM_System_01_F",80,0,0,GRLIB_perm_inf],
 // Mantis
-["rnt_mantis_base",50,0,0,GRLIB_perm_inf],
-["rnt_mantis_radar",0,0,20,GRLIB_perm_inf],
+["rnt_mantis_base",40,0,0,GRLIB_perm_inf],
+["rnt_mantis_radar",0,0,0,GRLIB_perm_inf],
 // FFAA
 ["ffaa_lanzador_nasams",25,0,0,GRLIB_perm_inf],
 // CUP
