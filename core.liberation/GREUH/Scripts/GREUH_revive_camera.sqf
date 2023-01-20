@@ -1,10 +1,5 @@
-revive_ui = compile preprocessFileLineNumbers "GREUH\scripts\GREUH_revive_ui.sqf";
-
-closeDialog 0;
-closeDialog 0;
-closeDialog 0;
-
-sleep 1;
+waitUntil {sleep 1;GRLIB_player_spawned};
+revive_ui = compileFinal preprocessFileLineNumbers "GREUH\scripts\GREUH_revive_ui.sqf";
 
 while { true } do {
 	waitUntil {sleep 0.5; ( player getVariable ["GREUH_isUnconscious",0]) == 1 };
