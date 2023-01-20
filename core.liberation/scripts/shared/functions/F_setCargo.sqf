@@ -37,6 +37,4 @@ if ( (typeOf _vehicle) == playerbox_typename) then {
 
     _magazine_list = (_lst_a3 select 2);
     {_vehicle addMagazineCargoGlobal [_x, (_magazine_list select 1) select _forEachIndex] } forEach (_magazine_list select 0);
-
 };
-

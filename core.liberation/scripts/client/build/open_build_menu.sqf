@@ -189,7 +189,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 		if ( buildtype == 8 ) then {
 			if (!(isNil {player getVariable ["my_squad", nil]})) then {
 				_affordable = false;
-				_refresh = true;				
+				_refresh = true;
 			};
 		};
 
@@ -203,7 +203,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 
 		if (buildtype == 1 && _build_item select 1 >= 1 && (count (_bros) >= GRLIB_squad_size + GRLIB_squad_size_bonus)) then {
 			_squad_full = true;
-		};		
+		};
 	};
 
 	_affordable_crew = _affordable;

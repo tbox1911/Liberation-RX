@@ -464,7 +464,7 @@ while { true } do {
 								_ammo1 setVariable ["GRLIB_vehicle_owner", "public", true];
 								_ammo1 setVariable ["R3F_LOG_disabled", true, true];
 								sleep 0.5;
-							} forEach [Arsenal_typename, "Box_NATO_Ammo_F"];			
+							} forEach [Arsenal_typename, "Box_NATO_Ammo_F"];
 						};
 					} else {
 						sleep 0.3;
