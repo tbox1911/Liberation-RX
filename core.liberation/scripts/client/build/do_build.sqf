@@ -414,6 +414,11 @@ while { true } do {
 						_vehicle setMaxLoad playerbox_cargospace;
 					};
 
+					// Ammobox (add Charge)
+					if ( _classname == Arsenal_typename && !GRLIB_enable_arsenal ) then {
+						_vehicle addItemCargoGlobal ["SatchelCharge_Remote_Mag", 2];
+					};
+
 					// Static Weapon
 					if (_classname in static_vehicles_AI) then {
 						_vehicle setMass 5000;
@@ -456,6 +461,7 @@ while { true } do {
 								_ammo1 allowDamage false;
 								_ammo1 setVariable ["GRLIB_vehicle_owner", "public", true];
 								_ammo1 setVariable ["R3F_LOG_disabled", true, true];
+								if (_x == Arsenal_typename) then { _ammo1 addItemCargoGlobal ["SatchelCharge_Remote_Mag", 2] };
 								sleep 0.5;
 							} forEach [Arsenal_typename, "Box_NATO_Ammo_F"];
 						};
