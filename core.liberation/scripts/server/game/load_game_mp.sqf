@@ -145,6 +145,23 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 	stats_saves_loaded = stats_saves_loaded + 1;
 
 	diag_log format ["--- LRX Load Game %1 objects to load...", count(buildings_to_load)];
+
+	private _s1 = [];
+	private _s2 = [];
+	private _s3 = [];
+	{
+		_nextclass = _x select 0;
+		if (_nextclass in _no_kill_handler_classnames) then {
+			_s1 pushBack _x;
+		} else {
+			if (_nextclass iskindOf "AllVehicles") then {
+				_s2 pushBack _x;
+			} else {
+				_s3 pushBack _x;
+			};
+		};
+	} foreach buildings_to_load;
+ 
 	{
 		_nextclass = _x select 0;
         _nextpos = _x select 1;
@@ -281,7 +298,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 		};
 
         //diag_log format [ "--- LRX Load Game %1 loaded at %2.", typeOf _nextbuilding, time];
-	} foreach buildings_to_load;
+	} foreach (_s1 + _s2 + _s3);
 
 	sleep 3;
 	{ 
