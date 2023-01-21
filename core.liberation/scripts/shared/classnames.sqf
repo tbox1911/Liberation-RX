@@ -112,6 +112,13 @@ if ( isNil "militia_vehicles" ) then {
 
 // *** SUPPORT ***
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
+support_box_noArsenal = [
+	Box_Weapon_typename,
+	Box_Ammo_typename,
+	Box_Support_typename,
+	Box_Launcher_typename,
+	Box_Special_typename
+];
 support_vehicles = [
 	[Arsenal_typename,0,35,0,0]
 ];
