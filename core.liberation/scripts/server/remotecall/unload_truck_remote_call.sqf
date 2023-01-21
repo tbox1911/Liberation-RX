@@ -23,7 +23,7 @@ _all_objects = _truck_to_unload getVariable ["GRLIB_ammo_truck_load", []];
 		_next_box setdir (getdir _truck_to_unload);
 		_next_box setVelocity [ 0,0,0 ];
 		_offset = _offset - 2.2;
-		[format [localize "STR_BOX_UNLOADED", [typeOf _next_box] call get_lrx_name]] remoteExec ["hintSilent", owner _truck_to_unload];
+		[format [localize "STR_BOX_UNLOADED", [typeOf _next_box] call F_getLRXName]] remoteExec ["hintSilent", owner _truck_to_unload];
 		sleep 0.5;
 
 		_next_box enableSimulationGlobal true;

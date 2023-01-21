@@ -60,7 +60,7 @@ while { true } do {
 	{
 		_marker = _vehmarkers select (_markedveh find _x);
 		_marker setMarkerPosLocal getpos _x;
-		_text = [(typeOf _x)] call get_lrx_name;
+		_text = [(typeOf _x)] call F_getLRXName;
 		_marker setMarkerTextLocal _text;
 		_marker setMarkerColorLocal "ColorKhaki";
 		if (typeOf _x in [waterbarrel_typename,fuelbarrel_typename,foodbarrel_typename]) then {

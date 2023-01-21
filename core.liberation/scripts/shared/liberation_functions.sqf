@@ -12,6 +12,7 @@ F_getUnitsCount = compileFinal preprocessFileLineNumbers "scripts\shared\functio
 F_getGroupType = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getGroupType.sqf";
 F_getForceRatio = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getForceRatio.sqf";
 F_opforCap = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_opforCap.sqf";
+F_getLRXName = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getLRXName.sqf";
 F_getNearbyPlayers = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getNearbyPlayers.sqf";
 F_getNearestFob = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getNearestFob.sqf";
 F_getNearestSector = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getNearestSector.sqf";

@@ -88,7 +88,7 @@ while { true } do {
 				_unit = _x;
 				_vehicle = vehicle _unit;
 				_vehicle_class = typeOf _vehicle;
-				_vehicle_class_text = [_vehicle_class] call get_lrx_name;
+				_vehicle_class_text = [_vehicle_class] call F_getLRXName;
 				
 				// REAMMO
 				_near_arsenal = [_vehicle, "REAMMO", _distarsenal, true] call F_check_near;

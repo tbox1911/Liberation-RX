@@ -62,7 +62,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 		{
 			ctrlSetText [ 151, _buildpages select ( buildtype - 1) ];
 			if ( buildtype != 8 ) then {
-				_entrytext = [(_x select 0)] call get_lrx_name;
+				_entrytext = [(_x select 0)] call F_getLRXName;
 				((findDisplay 5501) displayCtrl (110)) lnbAddRow [ _entrytext, format [ "%1" ,_x select 1], format [ "%1" ,_x select 2], format [ "%1" ,_x select 3]];
 
 				_icon = getText ( _cfg >> (_x select 0) >> "icon");
