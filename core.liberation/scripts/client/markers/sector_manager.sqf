@@ -36,7 +36,13 @@ while { true } do {
 	waitUntil {sleep 1;count blufor_sectors != _sector_count};
 
 	if (GRLIB_hide_opfor) then {
-		{ _x setMarkerTypeLocal "Empty" } foreach (sectors_allSectors - blufor_sectors);
+		{ 
+			if (([markerPos _x] call F_getNearestBluforObjective select 1) < GRLIB_sector_size * 2.5) then {
+				_x setMarkerColorLocal GRLIB_color_enemy;
+			} else {
+				_x setMarkerTypeLocal "Empty";
+			};
+		} foreach (sectors_allSectors - blufor_sectors);
 		{
 			_x setMarkerColorLocal GRLIB_color_friendly;
 			_x setMarkerTypeLocal ([_x] call _getMarkerType);
