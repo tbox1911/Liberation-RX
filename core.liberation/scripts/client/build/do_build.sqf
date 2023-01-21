@@ -93,12 +93,12 @@ while { true } do {
 			_grp = group player;
 			_unit = _grp createUnit [_classname, _pos, [], 5, "NONE"];
 			[_unit] joinSilent _grp;
-			_unit setUnitRank "PRIVATE";
-			_unit setSkill 0.6;
 			_unit setVariable ["PAR_Grp_ID", format["Bros_%1", PAR_Grp_ID], true];
+			[_unit] call PAR_fn_AI_Damage_EH;
 			_unit enableIRLasers true;
 			_unit enableGunLights "Auto";
-			[_unit] spawn PAR_fn_AI_Damage_EH;
+			_unit setUnitRank "PRIVATE";
+			_unit setSkill 0.6;
 
 			if (GRLIB_opfor_english) then {
 				//[_unit, _spk] remoteExec ["setSpeaker", 0];
@@ -134,7 +134,7 @@ while { true } do {
 				_unit enableGunLights "Auto";
 				_unit setVariable ["PAR_Grp_ID", format["AI_%1",PAR_Grp_ID], true];
 				//_unit forceAddUniform (uniform player);
-				[_unit] spawn PAR_fn_AI_Damage_EH;
+				[_unit] call PAR_fn_AI_Damage_EH;
 				_idx = _idx + 1;
 				sleep 0.1;
 			} foreach _classname;
