@@ -117,13 +117,13 @@ support_vehicles = [
 ];
 
 if (!GRLIB_enable_arsenal) then {
-	Arsenal_typename = Box_Weapon;
+	Arsenal_typename = Box_Weapon_typename;
 	support_vehicles = [
 		[Arsenal_typename,0,180,0,0],
-		[Box_Ammo,0,0,0,0],
-		[Box_Support,0,250,0,GRLIB_perm_inf],
-		[Box_Launcher,0,200,0,GRLIB_perm_log],
-		[Box_Special,0,225,0,GRLIB_perm_tank]
+		[Box_Ammo_typename,0,0,0,0],
+		[Box_Support_typename,0,250,0,GRLIB_perm_inf],
+		[Box_Launcher_typename,0,200,0,GRLIB_perm_log],
+		[Box_Special_typename,0,225,0,GRLIB_perm_tank]
 	];
 };
 
@@ -256,7 +256,7 @@ ai_resupply_sources = [
 	Arsenal_typename,
 	ammo_truck_typename,
 	ammo_sling_typename,
-	Box_Ammo
+	Box_Ammo_typename
 ] + ai_resupply_sources_west;
 
 // Everything the AI troups should be able to healing from
@@ -513,11 +513,11 @@ GRLIB_Ammobox_keep = [
 	playerbox_typename,
 	A3W_BoxWps,
 	medicalbox_typename,
-	Box_Weapon,
-	Box_Ammo,
-	Box_Support,
-	Box_Launcher,
-	Box_Special,
+	Box_Weapon_typename,
+	Box_Ammo_typename,
+	Box_Support_typename,
+	Box_Launcher_typename,
+	Box_Special_typename,
 	"mission_USLaunchers",
 	"CUP_LocalBasicWeaponsBox",
 	"gm_AmmoBox_1000Rnd_762x51mm_ap_DM151_g3"

@@ -415,7 +415,7 @@ while { true } do {
 					};
 
 					// Ammobox (add Charge)
-					if ( _classname == Arsenal_typename && !GRLIB_enable_arsenal ) then {
+					if ( _classname == Box_Ammo_typename && !GRLIB_enable_arsenal ) then {
 						_vehicle addItemCargoGlobal ["SatchelCharge_Remote_Mag", 2];
 					};
 
