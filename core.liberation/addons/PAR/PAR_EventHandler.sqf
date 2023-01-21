@@ -40,7 +40,7 @@ _unit addEventHandler ["InventoryOpened", {
 	params ["_unit", "_container"];
 	_ret = false;
 	playsound "ZoomIn";
-	if (typeOf _container in GRLIB_Ammobox_keep && [_container] call is_public) exitWith { _ret };
+	if (typeOf _container in [Box_Weapon,Box_Ammo,Box_Support,Box_Launcher,Box_Special]) exitWith { _ret };
 	if (!([_unit, _container] call is_owner) || locked _container > 1) then {
 		closeDialog 106;
 		_ret = true;
