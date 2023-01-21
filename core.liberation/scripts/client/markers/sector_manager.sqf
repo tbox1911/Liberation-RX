@@ -37,7 +37,7 @@ while { true } do {
 
 	if (GRLIB_hide_opfor) then {
 		{ 
-			if (([markerPos _x] call F_getNearestBluforObjective select 1) < GRLIB_sector_size * 2.5) then {
+			if (([markerPos _x] call F_getNearestBluforObjective select 1) < (GRLIB_sector_size * 3)) then {
 				_x setMarkerColorLocal GRLIB_color_enemy;
 			} else {
 				_x setMarkerTypeLocal "Empty";
