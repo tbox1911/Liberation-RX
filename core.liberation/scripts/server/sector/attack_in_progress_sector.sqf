@@ -8,7 +8,7 @@ private _max_prisonners = 4;
 
 private _defenders_cooldown = false;
 if ( _sector == attack_in_progress select 0 ) then {
-	if (time < attack_in_progress select 1) then {
+	if (time < ((attack_in_progress select 1) + 900)) then {
 		_defenders_cooldown = true;
 	};
 };
@@ -65,13 +65,14 @@ if ( GRLIB_blufor_defenders && !_defenders_cooldown) then {
 
 	[_grp, markerpos _sector] spawn add_defense_waypoints;
 
-	attack_in_progress = [_sector, round (time + 900)];
 	private _defenders_timer = round (time + 120);
 	while { time < _defenders_timer && ({alive _x} count (units _grp) > 0) && _ownership == GRLIB_side_enemy } do {
 		_ownership = [ markerpos _sector ] call F_sectorOwnership;
 		sleep 3;
 	};
 };
+
+attack_in_progress = [_sector, round (time)];
 
 if ( _ownership == GRLIB_side_enemy ) then {
 	if (!(_sector in sectors_tower) && !_defenders_cooldown) then {
@@ -112,14 +113,16 @@ if ( _ownership == GRLIB_side_enemy ) then {
 				};
 			} foreach _enemy_left;
 
-			private _rwd_xp = round (15 + random 10);
-			private _text = format ["Glory to the Defendes! +%1 XP", _rwd_xp];
-			{
-				if (_x distance2D (markerpos _sector) < GRLIB_sector_size ) then {
-					[_x, _rwd_xp] call F_addScore;
-					[gamelogic, _text] remoteExec ["globalChat", owner _x];
-				};
-			} forEach (AllPlayers - (entities "HeadlessClient_F"));
+			if (time > ((attack_in_progress select 1) + 300)) then {
+				private _rwd_xp = round (15 + random 10);
+				private _text = format ["Glory to the Defendes! +%1 XP", _rwd_xp];
+				{
+					if (_x distance2D (markerpos _sector) < GRLIB_sector_size ) then {
+						[_x, _rwd_xp] call F_addScore;
+						[gamelogic, _text] remoteExec ["globalChat", owner _x];
+					};
+				} forEach (AllPlayers - (entities "HeadlessClient_F"));
+			};
 		};
 	};
 };
