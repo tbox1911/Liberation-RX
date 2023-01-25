@@ -31,7 +31,8 @@ waituntil { sleep 1; !isNil "GRLIB_marker_init" };
 if (!(player diarySubjectExists str(parseText GRLIB_r3))) exitWith {};
 
 while { true } do {
-	if ([] call is_menuok) then {
+	GRLIB_player_is_menuok = [] call is_menuok;
+	if (GRLIB_player_is_menuok) then {
 		_fobdistance = round (player distance2D ([] call F_getNearestFob));
 		_near_outpost = (count (player nearObjects [FOB_outpost, _distfob]) > 0);
 		_outpost_owner = [getPosATL player] call F_getFobOwner;
@@ -442,9 +443,9 @@ while { true } do {
 		// FOB Sign Actions
 		if (!_near_lhd && _fobdistance < _distfob && cursorObject isKindof FOB_sign) then {
 			if (count (actionIDs cursorObject) == 0) then {
-				cursorObject addAction ["<t color='#FFFFFF'>" + "-= Hall of Fame =-" + "</t>",{([] call F_hof_msg) spawn BIS_fnc_dynamicText},"",999,true,true,"","[] call is_menuok",5];
-				cursorObject addAction ["<t color='#FFFFFF'>" + localize "STR_READ_ME" + "</t>",{createDialog "liberation_notice"},"",998,true,true,"","[] call is_menuok",5];
-				cursorObject addAction ["<t color='#FFFFFF'>" + localize "STR_TIPS" + "</t>",{createDialog "liberation_tips"},"",997,true,true,"","[] call is_menuok",5];
+				cursorObject addAction ["<t color='#FFFFFF'>" + "-= Hall of Fame =-" + "</t>",{([] call F_hof_msg) spawn BIS_fnc_dynamicText},"",999,true,true,"","GRLIB_player_is_menuok",5];
+				cursorObject addAction ["<t color='#FFFFFF'>" + localize "STR_READ_ME" + "</t>",{createDialog "liberation_notice"},"",998,true,true,"","GRLIB_player_is_menuok",5];
+				cursorObject addAction ["<t color='#FFFFFF'>" + localize "STR_TIPS" + "</t>",{createDialog "liberation_tips"},"",997,true,true,"","GRLIB_player_is_menuok",5];
 			};
 		};
 	} else {

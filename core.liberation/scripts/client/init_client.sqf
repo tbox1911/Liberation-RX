@@ -4,6 +4,7 @@ titleText ["","BLACK FADED", 100];
 waitUntil {sleep 0.1;!isNull findDisplay 46};
 R3F_LOG_joueur_deplace_objet = objNull;
 GRLIB_player_spawned = false;
+GRLIB_player_is_menuok = false;
 
 waitUntil {!isNil "abort_loading" };
 if (abort_loading) exitWith {
@@ -58,6 +59,7 @@ vehicle_fuel = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehic
 vehicle_defense = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_defense.sqf";
 fetch_permission = compileFinal preprocessFileLineNumbers "scripts\client\misc\fetch_permission.sqf";
 is_menuok = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_menuok.sqf";
+is_menuok_veh = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_menuok_veh.sqf";
 is_neartransport = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_neartransport.sqf";
 is_allowed_item = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_allowed_item.sqf";
 paraDrop = compileFinal preprocessFileLineNumbers "scripts\client\spawn\paraDrop.sqf";
@@ -179,8 +181,8 @@ addMissionEventHandler ["Draw3D",{
 	};
 }];
 
-chimera_sign addAction ["<t color='#FFFFFF'>" + localize "STR_READ_ME" + "</t>",{createDialog "liberation_notice"},"",999,true,true,"","[] call is_menuok",5];
-chimera_sign addAction ["<t color='#FFFFFF'>" + localize "STR_TIPS" + "</t>",{createDialog "liberation_tips"},"",998,true,true,"","[] call is_menuok",5];
+chimera_sign addAction ["<t color='#FFFFFF'>" + localize "STR_READ_ME" + "</t>",{createDialog "liberation_notice"},"",999,true,true,"","GRLIB_player_is_menuok",5];
+chimera_sign addAction ["<t color='#FFFFFF'>" + localize "STR_TIPS" + "</t>",{createDialog "liberation_tips"},"",998,true,true,"","GRLIB_player_is_menuok",5];
 
 if (isServer && hasInterface) then {
 	(findDisplay 46) displayAddEventHandler ["Unload",{
