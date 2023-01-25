@@ -542,7 +542,7 @@ if ( isNil "GRLIB_AirDrop_Taxi_cost" ) then {
 };
 
 if ( isNil "GRLIB_AirDrop_Vehicle_cost" ) then {
-	GRLIB_AirDrop_Vehicle_cost = 300;
+	GRLIB_AirDrop_Vehicle_cost = 200;
 };
 
 if ( isNil "GRLIB_AirDrop_1" ) then {

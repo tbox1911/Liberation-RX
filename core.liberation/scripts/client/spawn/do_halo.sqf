@@ -5,11 +5,16 @@ if (count (attachedObjects _unit) > 0) exitWith {};
 if (_unit getVariable ["GRLIB_action_inuse", false]) exitWith {};
 
 private _result = true;
+private _cost = GRLIB_AirDrop_Vehicle_cost;
 if (_unit isKindOf "LandVehicle") then {
-	_result = [format [localize "STR_HALO_VEH_ASK", GRLIB_AirDrop_Vehicle_cost], localize "STR_WARNING", true, true] call BIS_fnc_guiMessage;
+	if ( _unit isKindOf "Truck_F" ) then { _cost = _cost * 1.3 };
+	if ( _unit isKindOf "Wheeled_APC_F" ) then { _cost = _cost * 1.7 };
+	if ( _unit isKindOf "Tank_F" ) then { _cost = _cost * 2 };
+
+	_result = [format [localize "STR_HALO_VEH_ASK", _cost], localize "STR_WARNING", true, true] call BIS_fnc_guiMessage;
 	if (_result) then {
 		private _ammo_collected = player getVariable ["GREUH_ammo_count", 0];
-		if (GRLIB_AirDrop_Vehicle_cost > _ammo_collected) then {
+		if (_cost > _ammo_collected) then {
 			hintSilent localize "STR_GRLIB_NOAMMO";
 			_result = false;
 		};
@@ -43,7 +48,7 @@ closeDialog 0;
 if ( dojump > 0 ) then {
 	halo_position = [ halo_position, floor(random 250), floor(random 360) ] call BIS_fnc_relPos;
 	if (_unit isKindOf "LandVehicle") then {
-		if ([GRLIB_AirDrop_Vehicle_cost] call F_pay) then {
+		if ([_cost] call F_pay) then {
 			playSound "parasound";
 			halo_position set [2, 400];
 			_unit setPos halo_position; 
