@@ -541,6 +541,10 @@ if ( isNil "GRLIB_AirDrop_Taxi_cost" ) then {
 	GRLIB_AirDrop_Taxi_cost = 100;
 };
 
+if ( isNil "GRLIB_AirDrop_Vehicle_cost" ) then {
+	GRLIB_AirDrop_Vehicle_cost = 300;
+};
+
 if ( isNil "GRLIB_AirDrop_1" ) then {
 	GRLIB_AirDrop_1 = [
 		"I_Quadbike_01_F",

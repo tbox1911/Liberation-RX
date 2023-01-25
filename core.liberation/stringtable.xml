@@ -5838,6 +5838,12 @@
 			<Portuguese>-- COLOCAR COMBUSTÍVEL</Portuguese>
 			<Czech>-- NATANKOVAT PALIVO</Czech>
 		</Key>
+		<Key ID="STR_HALO_VEH">
+			<Original>-- HALO DROP VEHICLE</Original>
+		</Key>
+		<Key ID="STR_HALO_VEH_ASK">
+			<Original>&lt;t align='center'&gt;HALO for vehicle cost: %1 Ammo&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
+		</Key>
 		<Key ID="STR_SALVAGE">
 			<Original>-- SALVAGE</Original>
 			<Russian>-- ДЕМОНТАЖ</Russian>
