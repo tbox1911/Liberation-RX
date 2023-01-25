@@ -59,7 +59,7 @@ if ( _random_rotate ) then {
 	_vehicle setdir (random 360);
 };
 
-if ( _vehicle isKindOf "Land" ) then {
+if ( _vehicle isKindOf "LandVehicle" ) then {
 	sleep 1;
 	if ((vectorUp _vehicle) select 2 < 0.70 || (getPosATL _vehicle) select 2 < 0) then {
 		_vehicle setpos [(getPosATL _vehicle) select 0, (getPosATL _vehicle) select 1, 0.5];

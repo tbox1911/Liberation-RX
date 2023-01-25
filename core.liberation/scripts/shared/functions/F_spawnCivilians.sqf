@@ -24,7 +24,7 @@ if (!isNil "_civ_unit") then {
 		};
 		_dam;
 	}];
-};
 
-//diag_log format [ "Done Spawning civilian %1 at %2", typeOf _civ_unit, time ];
-_civ_unit;
+	//diag_log format [ "Done Spawning civilian %1 at %2", typeOf _civ_unit, time ];
+	_civ_unit;
+};
