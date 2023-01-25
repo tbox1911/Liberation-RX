@@ -2337,7 +2337,7 @@
 			<French>Confirmer</French>
 			<German>Bestätigen</German>
 			<Spanish>Confirmar</Spanish>
-			<Russian>Подтвердить</Russian>
+			<Russian>Ок</Russian>
 			<Chinesesimp>确认</Chinesesimp>
 			<Chinese>確認</Chinese>
 			<Japanese>確定</Japanese>
@@ -3403,7 +3403,7 @@
 			<French>Prime de %1 Munitions pour un %2 détruit par %3</French>
 			<German>Kopfgeld von %1 Munition für die Zerstörung von %2 durch %3</German>
 			<Spanish>Premio de %1 Munición por un %2 destruido por %3</Spanish>
-			<Russian>+%1 едениц Ammo за %2 уничтоженный игроком %3</Russian>
+			<Russian>+%1 Ammo за %2 уничтоженный игроком %3</Russian>
 			<Chinesesimp>%3 摧毁 %2 ，获得 %1 弹药奖励</Chinesesimp>
 			<Chinese>%3 摧毀 %2 ，獲得 %1 彈藥獎勵</Chinese>
 			<Japanese>%3 が %2 を破壊したので %1 弾薬バウンティを手に入れました。 </Japanese>
@@ -4859,7 +4859,7 @@
 					&lt;t size='1'&gt;
 					Ваша задача состоит в том, чтобы остановить конвой OPFOR любой ценой. Вы можете уничтожить его, или захватить его для получения ресурса вооружения. Цель будет отмечена на вашей карте.&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
-					&lt;t size='1.15' color='#00a0ff'&gt;Стоимость: 50&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
+					&lt;t size='1.15' color='#00a0ff'&gt;Требуется: 50&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 					&lt;br/&gt;
 					&lt;t size='1.15' color='#ffa000'&gt;Награда: уровень тревоги OPFOR уменьшится на 15%&lt;/t&gt;
 					&lt;br/&gt;
@@ -5043,7 +5043,7 @@
 					&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
 			</Original>
 			<Russian>
-					&lt;t size='1.3' color='#ffa000'&gt;SEARCH AND RESCUE&lt;/t&gt;
+					&lt;t size='1.3' color='#ffa000'&gt;Поиск и спасение&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
 					&lt;t size='1'&gt;
 					Мы потеряли связь с разведывательным вертолетом, выполнявшим задание в тылу врага. Мы считаем, что вертолет был сбит враждебными силами.&lt;/t&gt;
@@ -5051,9 +5051,9 @@
 					&lt;t size='1'&gt;
 					Вертолет мог совершить аварийную посадку где-нибудь в большой зоне вокруг своего последнего известного местоположения. Ваша миссия состоит в том, чтобы вернуть команду вертолета и их драгоценную информацию. Враждебные силы могли обнаружить их первыми, поэтому вы должны быть быстрыми, осторожными и готовыми вступить в бой.&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
-					&lt;t size='1.15' color='#00a0ff'&gt;Cost: 10&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
+					&lt;t size='1.15' color='#00a0ff'&gt;Требуется: 10&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
 					&lt;br/&gt;
-					&lt;t size='1.15' color='#ffa000'&gt;Reward: 20 intel points (10 for each crew alive).&lt;/t&gt;
+					&lt;t size='1.15' color='#ffa000'&gt;Награда: 20 разведданных (10 за каждого спасенного).&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
 					&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
 			</Russian>
@@ -6821,7 +6821,7 @@
 		<!-- liberation_squad.hpp -->
 		<Key ID="STR_LIKEME">
 			<Original>Like Me</Original>
-			<Russian>Как у меня</Russian>
+			<Russian>Как я</Russian>
 			<French>Like Me</French>
 			<Japanese>自装備をユニットに反映</Japanese>
 			<Chinesesimp>复制装备</Chinesesimp>
@@ -6888,7 +6888,7 @@
 		<!-- mission_AirWreck.sqf  -->
 		<Key ID="STR_AIRWRECK">
 			<Original>Aircraft Wreck</Original>
-			<Russian>Обломки</Russian>
+			<Russian>Упавший вертолет</Russian>
 			<Japanese>航空機の残骸</Japanese>
 			<Chinesesimp>飞机残骸</Chinesesimp>
 			<Chinese>飛機殘骸</Chinese>
@@ -6904,7 +6904,7 @@
 		</Key>
 		<Key ID="STR_AIRWRECK_MESSAGE2">
 			<Original>The airwreck supplies have been collected, well done.</Original>
-			<Russian>Припасы из обломком успешно собраны.</Russian>
+			<Russian>Припасы из обломков успешно собраны.</Russian>
 			<Japanese>ヘリの残骸は回収された。よくやった！</Japanese>
 			<Chinesesimp>空难物资已收集，干得好！</Chinesesimp>
 			<Chinese>空難物資已收集，幹得好！</Chinese>
@@ -7069,7 +7069,7 @@
 		</Key>
 		<Key ID="STR_HOSSTILE_HELI_MESSAGE2">
 			<Original>The sky is clear again, the enemy patrol was taken out! Ammo crates have fallen near the wreck.</Original>
-			<Russian>Небо снова чистое, вражеский патруль уничтожен! Рядом с обломками упали ящики с боеприпасами.</Russian>
+			<Russian>Небо снова чистое, вражеский патруль уничтожен! Ящики с боеприпасами упали рядом с обломками.</Russian>
 			<Japanese>ヘリは撃墜された、残骸の近くの弾薬箱を回収せよ。</Japanese>
 			<Chinesesimp>天又放晴了，敌军巡逻机被干掉了！弹药箱掉在了残骸附近。</Chinesesimp>
 			<Chinese>天又放晴了，敵軍巡邏機被幹掉了！彈藥箱掉在了殘骸附近。</Chinese>
@@ -8172,6 +8172,7 @@
 	<Package name="Vehicle Appearance Manager">
 		<Key ID="STR_VAM_INITIALIZED">
 			<Original>-------- VAM Initialized --------</Original>
+			<Russian>-------- VAM Initialized --------</Russian>
 			<Korean>차량 형상 관리자 불러오기 및 초기화 완료</Korean>
 			<Czech>--------SVV inicializován--------</Czech>
 		</Key>
@@ -8189,7 +8190,7 @@
 		</Key>
 		<Key ID="STR_VAM_CONFIRM_MENU">
 			<Original>Confirm</Original>
-			<Russian>Подтвердить</Russian>
+			<Russian>Ок</Russian>
 			<Korean>확인</Korean>
 			<Czech>Potvrdit</Czech>
 		</Key>
