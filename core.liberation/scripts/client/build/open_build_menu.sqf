@@ -28,7 +28,7 @@ ctrlShow [ 1085, _iscommandant ];
 
 private _near_outpost = (count (player nearObjects [FOB_outpost, 100]) > 0);
 private _has_box = false;
-{ if ((_x select 0) == playerbox_typename) exitWith {_has_box = true} } foreach GRLIB_garage;
+{ if ((_x select 0) == playerbox_typename && (_x select 3) == getPlayerUID player) exitWith {_has_box = true} } foreach GRLIB_garage;
 if (count ([entities playerbox_typename, {[player, _x] call is_owner}] call BIS_fnc_conditionalSelect) > 0) then {_has_box = true};
 
 private _squadname = "";
