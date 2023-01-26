@@ -356,6 +356,7 @@ while { true } do {
 						[ _vehicle ] call F_forceBluforCrew;
 						_vehicle setVariable ["GRLIB_vehicle_manned", true, true];
 						player hcSetGroup [group _vehicle];
+						player linkItem "B_UavTerminal";
 					};
 
 					// Default Paint
