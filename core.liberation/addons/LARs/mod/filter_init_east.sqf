@@ -1,12 +1,14 @@
+if (GRLIB_filter_arsenal == 2) exitWith {};
+
 // Add ArmA3 Weapons
 if (["A3_", GRLIB_mod_east, true] call F_startsWith) then {
+	private _A3_exclude = ["O_","U_O_","U_OG_"];
+	if (["A3_OPF", GRLIB_mod_east, true] call F_startsWith) then { _A3_exclude = ["B_","U_B_","U_BG_"] };
 	private _A3_Items = [
-		"B_","O_","I_","U_",
-		"acc_","hgun_","arifle_","srifle_","MMG_","LMG_","SMG_","bipod_","launch_","optic_","muzzle_",
+		"B_","O_","I_","U_I","U_C","acc_","hgun_","arifle_","srifle_","MMG_","LMG_","SMG_","bipod_","launch_","optic_","muzzle_",
 		"Laserdesignator_","H_Bandanna_","H_Beret_","H_Booniehat_","H_Cap_","H_Hat_","H_Helmet","H_MilCap_",
-		"H_PASGT_","U_B_","U_BG_","U_C_","U_I_","U_O_","V_","NVGoggles",
-		"Vorona_","Titan_","RPG32_","NLAW_F","MRAWS_","Chemlight_","SmokeShell"
-	];
+		"H_PASGT_","U_B_","U_BG_","U_OG_","U_C_","U_I_","U_O_","V_","NVGoggles"
+	] - _A3_exclude;
 	GRLIB_MOD_signature = GRLIB_MOD_signature + _A3_Items;
 };
 // Add WS Weapons
