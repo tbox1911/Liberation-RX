@@ -1,10 +1,10 @@
-private [ "_sector_count", "_vehicle_unlock_markers", "_marker", "_nextbase", "_nextvehicle", "_cfg", "_nextmarker" ];
+private [ "_marker", "_nextbase", "_nextvehicle", "_nextmarker" ];
 
 waitUntil {sleep 1; !isNil "sectors_allSectors" };
 waitUntil {sleep 1; !isNil "save_is_loaded" };
 waitUntil {sleep 1; !isNil "blufor_sectors" };
 
-_getMarkerType = {
+private _getMarkerType = {
 	params ["_marker"];
 	private _type = "n_art";
 	if (_marker in sectors_bigtown) then { _type = "n_service"};
@@ -14,8 +14,8 @@ _getMarkerType = {
 	_type;
 };
 
-_vehicle_unlock_markers = [];
-_cfg = configFile >> "cfgVehicles";
+private _vehicle_unlock_markers = [];
+private _cfg = configFile >> "cfgVehicles";
 if (!GRLIB_hide_opfor) then {
 	{
 		_nextvehicle = _x select 0;
@@ -28,7 +28,7 @@ if (!GRLIB_hide_opfor) then {
 	} foreach GRLIB_vehicle_to_military_base_links;
 };
 
-_sector_count = -1;
+private _sector_count = -1;
 
 uiSleep 1;
 
@@ -37,7 +37,7 @@ while { true } do {
 
 	if (GRLIB_hide_opfor) then {
 		{ 
-			if (([markerPos _x] call F_getNearestBluforObjective select 1) < (GRLIB_sector_size * 3)) then {
+			if ( ([(GRLIB_sector_size * 3), markerPos _x, blufor_sectors] call F_getNearestSector) != "" ) then {
 				_x setMarkerColorLocal GRLIB_color_enemy;
 				_x setMarkerTypeLocal ([_x] call _getMarkerType);
 			} else {
@@ -60,5 +60,6 @@ while { true } do {
 			if ( _x == (_nextmarker select 1) ) exitWith { (_nextmarker select 0) setMarkerColorLocal GRLIB_color_friendly; };
 		} foreach blufor_sectors;
 	} foreach _vehicle_unlock_markers;
+
 	_sector_count = count blufor_sectors;
 };
