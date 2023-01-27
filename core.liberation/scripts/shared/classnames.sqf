@@ -113,8 +113,8 @@ if ( isNil "militia_vehicles" ) then {
 // *** SUPPORT ***
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 support_box_noArsenal = [
-	Box_Weapon_typename,
 	Box_Ammo_typename,
+	Box_Weapon_typename,
 	Box_Support_typename,
 	Box_Launcher_typename,
 	Box_Special_typename
@@ -124,13 +124,13 @@ support_vehicles = [
 ];
 
 if (!GRLIB_enable_arsenal) then {
-	Arsenal_typename = Box_Weapon_typename;
+	Arsenal_typename = Box_Ammo_typename;
 	support_vehicles = [
-		[Arsenal_typename,0,180,0,0],
 		[Box_Ammo_typename,0,0,0,0],
+		[Box_Weapon_typename,0,180,0,0],
 		[Box_Support_typename,0,250,0,GRLIB_perm_inf],
-		[Box_Launcher_typename,0,200,0,GRLIB_perm_log],
-		[Box_Special_typename,0,225,0,GRLIB_perm_tank]
+		[Box_Launcher_typename,0,300,0,GRLIB_perm_log],
+		[Box_Special_typename,0,325,0,GRLIB_perm_tank]
 	];
 };
 
