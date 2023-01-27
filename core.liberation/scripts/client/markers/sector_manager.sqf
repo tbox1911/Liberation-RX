@@ -1,4 +1,4 @@
-private [ "_marker", "_nextbase", "_nextvehicle", "_nextmarker" ];
+private [ "_marker", "_nextbase", "_nextvehicle", "_nextmarker", "_sector_pos", "_nearest_sector", "_near_fob" ];
 
 waitUntil {sleep 1; !isNil "sectors_allSectors" };
 waitUntil {sleep 1; !isNil "save_is_loaded" };
@@ -37,7 +37,10 @@ while { true } do {
 
 	if (GRLIB_hide_opfor) then {
 		{ 
-			if ( ([(GRLIB_sector_size * 3), markerPos _x, blufor_sectors] call F_getNearestSector) != "" ) then {
+			_sector_pos = markerPos _x;
+			_nearest_sector = [(GRLIB_sector_size * 3), _sector_pos, blufor_sectors] call F_getNearestSector;
+			_near_fob = (([_sector_pos] call F_getNearestFob) distance2D _sector_pos < (GRLIB_sector_size * 3));
+			if ( _nearest_sector != "" || _near_fob ) then {
 				_x setMarkerColorLocal GRLIB_color_enemy;
 				_x setMarkerTypeLocal ([_x] call _getMarkerType);
 			} else {
