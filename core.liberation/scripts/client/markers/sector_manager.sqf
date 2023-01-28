@@ -33,7 +33,7 @@ private _sector_count = -1;
 uiSleep 1;
 
 while { true } do {
-	waitUntil {sleep 1;count blufor_sectors != _sector_count};
+	waitUntil {sleep 1; (count blufor_sectors + count GRLIB_all_fobs) != _sector_count};
 
 	if (GRLIB_hide_opfor) then {
 		{ 
@@ -64,5 +64,5 @@ while { true } do {
 		} foreach blufor_sectors;
 	} foreach _vehicle_unlock_markers;
 
-	_sector_count = count blufor_sectors;
+	_sector_count = (count blufor_sectors + count GRLIB_all_fobs);
 };
