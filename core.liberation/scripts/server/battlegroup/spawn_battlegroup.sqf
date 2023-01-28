@@ -2,7 +2,7 @@ if ( GRLIB_endgame == 1 ) exitWith {};
 params ["_liberated_sector"];
 diag_log format ["Spawn BattlegGroup at %1", time];
 
-private ["_target_size", "_selected_opfor_battlegroup"];
+private ["_target_size", "_selected_opfor_battlegroup", "_para_pos"];
 private _bg_groups = [];
 private _spawn_marker = "";
 if ( isNil "_liberated_sector" ) then {
@@ -73,6 +73,17 @@ if ( _spawn_marker != "" ) then {
 			};
 		};
 		sleep 3;
-
 	} foreach _bg_groups;
+} else {
+	if (count blufor_sectors > 5) then {
+		if (isNil "_liberated_sector" ) then {
+			_para_pos = markerPos (selectRandom blufor_sectors);
+		} else {
+			_para_pos = markerPos _liberated_sector;
+		};
+		[_para_pos] spawn send_paratroopers;
+		sleep 15;
+		[_para_pos] spawn send_paratroopers;	
+		diag_log format ["Done Spawning Default BattlegGroup at %1", time];
+	};
 };
