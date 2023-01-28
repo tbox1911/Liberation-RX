@@ -25,7 +25,7 @@ GRLIB_checkAction_Eject = {
 
 GRLIB_checkAction_Unload = { 
 	params ["_target", "_unit"];
-	([_target] call is_menuok_veh && [_unit, _target] call is_owner && (locked _target == 0 || locked _target == 1) && isNull (_target getVariable ['R3F_LOG_remorque', objNull]) && count (_target getVariable ['GRLIB_ammo_truck_load', []]) > 0)
+	([_target] call is_menuok_veh && ([_unit, _target] call is_owner || [_target] call is_public) && (locked _target == 0 || locked _target == 1) && isNull (_target getVariable ['R3F_LOG_remorque', objNull]) && count (_target getVariable ['GRLIB_ammo_truck_load', []]) > 0)
 };
 
 GRLIB_checkAction_Flip = { 
