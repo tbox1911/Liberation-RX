@@ -1,7 +1,7 @@
 params ["_unit"];
 
 if (isNil "_unit") exitWith {};
-if (count (attachedObjects _unit) > 0) exitWith {};
+if (count (attachedObjects _unit) > 0 && _unit isKindOf "Man") exitWith {};
 if (_unit getVariable ["GRLIB_action_inuse", false]) exitWith {};
 
 private _result = true;
