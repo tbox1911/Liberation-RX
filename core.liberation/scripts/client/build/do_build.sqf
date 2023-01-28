@@ -464,7 +464,7 @@ while { true } do {
 								_ammo1 setVariable ["R3F_LOG_disabled", true, true];
 								if (_x == Arsenal_typename) then { _ammo1 addItemCargoGlobal ["SatchelCharge_Remote_Mag", 2] };
 								sleep 0.5;
-							} forEach [Arsenal_typename, "Box_NATO_Ammo_F"];
+							} forEach [Arsenal_typename, Box_Weapon_typename];
 						};
 					} else {
 						sleep 0.3;
