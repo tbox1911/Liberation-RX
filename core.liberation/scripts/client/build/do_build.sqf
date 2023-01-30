@@ -381,7 +381,7 @@ while { true } do {
 
 					// Remaining Ammo
 					if ( _ammo > 0 ) then {
-						_vehicle setVehicleAmmoDef _ammo;
+						_vehicle setVehicleAmmo _ammo;
 					};
 
 					// Automatic ReAmmo
