@@ -5471,9 +5471,9 @@
 			<Czech>Zajímavé informace</Czech>
 		</Key>
 		<Key ID="STR_OPFORMARK">
-			<Original>Hide Opfor sector markers</Original>
+			<Original>Dynamic Opfor sector markers</Original>
 			<Russian>Скрыть маркеры секторов противника</Russian>
-			<French>Masquer les marqueurs de secteur OPFOR</French>
+			<French>Marqueurs OPFOR dynamiques</French>
 			<Chinesesimp>隐藏Opfor地区标记</Chinesesimp>
 			<Chinese>隱藏Opfor地區標記</Chinese>
 			<Japanese>敵占領区域のマーカーを表示する</Japanese>

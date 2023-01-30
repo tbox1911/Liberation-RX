@@ -111,13 +111,13 @@ if ( isNil "militia_vehicles" ) then {
 };
 
 // *** SUPPORT ***
-// [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 support_box_noArsenal = [
 	Box_Ammo_typename,
 	Box_Weapon_typename,
 	Box_Support_typename,
 	Box_Launcher_typename,
-	Box_Special_typename
+	Box_Special_typename,
+	A3W_BoxWps
 ];
 support_vehicles = [
 	[Arsenal_typename,0,35,0,0]
@@ -134,6 +134,7 @@ if (!GRLIB_enable_arsenal) then {
 	];
 };
 
+// [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 support_vehicles = support_vehicles + [
 	[medicalbox_typename,5,25,0,0],
 	[mobile_respawn,10,50,0,0],
