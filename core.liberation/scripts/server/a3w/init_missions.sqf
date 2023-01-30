@@ -35,7 +35,6 @@ waitUntil {sleep 1; !isNil "sectors_allSectors" };
 waitUntil {sleep 1; !isNil "save_is_loaded" };
 
 [] call compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionArrays.sqf";
-diag_log "--- LRX A3W Missions Initialized";
 
 for "_i" from 1 to 4 do {
 	// Start Permanent controller
@@ -43,3 +42,5 @@ for "_i" from 1 to 4 do {
 	diag_log format ["--- LRX A3W Starting Mission Controller #%1 at %2", _i, time];
 	[_i, false] execVM "scripts\server\a3w\missions\sideMissionController.sqf";
 };
+
+diag_log "--- LRX A3W Missions Initialized";
