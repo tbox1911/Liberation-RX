@@ -28,7 +28,7 @@ switch ( _list ) do {
 	case "REAMMO" : { _classlist = vehicle_rearm_sources};
 	case "REAMMO_AI" : { _classlist = ai_resupply_sources};
 	case "REPAIR_AI" : { _classlist = vehicle_repair_sources};
-	case "REPAINT" : { _classlist = [repair_offroad, "Land_RepairDepot_01_civ_F", "Land_CashDesk_F"]};
+	case "REPAINT" : { _classlist = [repair_offroad, "Land_RepairDepot_01_civ_F"]};
 };
 
 // Include FOB
@@ -43,12 +43,12 @@ if (typeName (_classlist select 0) == "STRING") then {
 	// From Objects classname
 	_near = [ _vehpos nearEntities [_classlist, _dist], {
 	//_near = [ nearestObjects [_vehpos, _classlist, _dist], {
-			alive _x &&
-			( 
-			  isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) || 
-			  !(_x getVariable ['R3F_LOG_disabled', true])
-			)
-			}] call BIS_fnc_conditionalSelect;
+		alive _x &&
+		( 
+			isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) || 
+			!(_x getVariable ['R3F_LOG_disabled', true])
+		)
+	}] call BIS_fnc_conditionalSelect;
 } else {
 	// From Position
 	_near = _classlist select { (_vehpos distance2D _x) <= _dist };

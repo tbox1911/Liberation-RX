@@ -40,7 +40,7 @@ GRLIB_checkAction_DeFuel = {
 
 GRLIB_checkAction_ReFuel = { 
 	params ["_target", "_unit"];
-	([_target] call is_menuok_veh && [_target, 'REFUEL'] call F_check_near && fuel _target <= 0.75)
+	([_target] call is_menuok_veh && [_target, 'REFUEL', 15, false] call F_check_near && fuel _target <= 0.75)
 };
 
 GRLIB_checkAction_Halo = { 
