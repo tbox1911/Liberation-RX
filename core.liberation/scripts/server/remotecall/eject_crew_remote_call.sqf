@@ -5,15 +5,17 @@ private _crew = crew _vehicle;
 if (count _crew == 0) exitWith {};
 _crew allowGetIn false;
 {
-	[_x] spawn {
+	[
+		[_x],
+	{
 		params ["_unit"];
-        if (local _unit) then {
-		    unassignVehicle _unit;
-		    doGetOut _unit;
-		    sleep 2;
-        };
-		if !(isNull objectParent  _unit) then { moveOut _unit };
-	};
+		unassignVehicle _unit;
+		doGetOut _unit;
+		sleep 2;
+		if (!isNull (objectParent _unit)) then { 
+			moveOut _unit
+		};
+	}] remoteExec ["bis_fnc_call", owner _x];
 	sleep 0.2;
 } forEach _crew;
 
