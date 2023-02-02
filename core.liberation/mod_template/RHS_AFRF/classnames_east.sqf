@@ -15,7 +15,7 @@ opfor_machinegunner = "CUP_O_TK_SpecOps";
 opfor_heavygunner = "CUP_O_INS_Soldier_MG";
 opfor_medic = "CUP_O_INS_Soldier_GL";
 opfor_rpg = "CUP_O_INS_Soldier_AT";
-opfor_at = "CUP_O_RU_Soldier_HAT_MSV_VSR93";
+opfor_at = "CUP_O_INS_Soldier_LAT";
 opfor_aa = "CUP_O_INS_Soldier_AA";
 opfor_officer = "CUP_O_INS_Story_Lopotev";
 opfor_sharpshooter = "CUP_O_INS_Sniper";
@@ -24,7 +24,7 @@ opfor_spotter = "CUP_O_INS_Soldier_AA";
 opfor_engineer = "CUP_O_INS_Soldier_AA";
 opfor_pilot = "CUP_O_INS_Pilot";
 opfor_crew = "CUP_O_INS_Crew";
-opfor_paratrooper = "CUP_O_INS_Soldier_AT";
+opfor_paratrooper = "CUP_O_TK_SpecOps_TL";
 opfor_mrap = "CUP_O_BTR80A_CHDKZ";
 opfor_mrap_hmg = "CUP_O_Hilux_armored_BTR60_OPF_G_F";
 opfor_mrap_gmg = "CUP_O_Hilux_armored_BMP1_OPF_G_F";
@@ -118,7 +118,7 @@ opfor_vehicles = [
 	"CUP_O_T55_CHDKZ",
 	"CUP_O_T55_CHDKZ",
 	"CUP_O_T55_CHDKZ",
-	"CUP_O_T55_CHDKZ",
+	"CUP_O_BTR90_RU",
 	"CUP_O_2S6_RU",
 	"B_SAM_System_02_F"
 ];
