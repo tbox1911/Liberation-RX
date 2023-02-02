@@ -1,3 +1,5 @@
+waitUntil {sleep 1; !isNil "GRLIB_init_server"};
+
 while { true } do {
 	if (!isnil "GRLIB_A3W_Mission_SD") then {
 		if (!isNil "GRLIB_A3W_Mission_Marker") then {
