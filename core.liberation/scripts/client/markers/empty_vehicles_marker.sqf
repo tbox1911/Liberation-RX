@@ -1,45 +1,27 @@
-private [ "_vehmarkers", "_markedveh", "_vehtomark", "_supporttomark", "_marker", "_loaded" ];
-
-_vehmarkers = [];
-_beacmarkers = [];
-_markedveh = [];
-_markedbeac = [];
-_enemy_faction = "OPF_F";
-if (GRLIB_side_friendly == east) then { _enemy_faction = "BLU_F" };
+private [ "_marker" ];
+private _veh_list = [];
+private _vehmarkers = [];
+private _markedveh = [];
 
 private _no_marker_classnames = [ Respawn_truck_typename, huron_typename, playerbox_typename ];
 { _no_marker_classnames pushback (_x select 0) } foreach buildings;
 
-private _force_marker_classnames = [
-	Arsenal_typename,
-	ammobox_b_typename,
-	ammobox_o_typename,
-	ammobox_i_typename,
-	A3W_BoxWps,
-	canister_fuel_typename,
-	waterbarrel_typename,
-	fuelbarrel_typename,
-	foodbarrel_typename
-];
-
 waitUntil { !isNil "GRLIB_mobile_respawn" };
 
 while { true } do {
-
-	private _veh_list = [ vehicles, {
+	_veh_list = [vehicles, {
 		alive _x &&
 		!([_x, "LHD", GRLIB_sector_size] call F_check_near) &&
 		locked _x != 2 &&
 		!(typeOf _x in _no_marker_classnames) &&
 		!(_x getVariable ['R3F_LOG_disabled', true]) &&
-		isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) &&
+		(isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull])) &&
+		(_x getVariable ["GRLIB_vehicle_owner", ""] != "server") &&
 		(
-		 side _x == GRLIB_side_friendly ||
-		 (side _x == GRLIB_side_civilian && count (crew _x) == 0 && faction _x != _enemy_faction) ||
-		 !((_x getVariable ["GRLIB_vehicle_owner", ""]) in ["server",""]) ||
-		 typeOf _x in _force_marker_classnames
+			(side _x == GRLIB_side_friendly) ||
+			(side _x == GRLIB_side_civilian && count (crew _x) == 0)
 		)
-	} ] call BIS_fnc_conditionalSelect;
+	}] call BIS_fnc_conditionalSelect;
 
 	private _markedveh = [];
 	{ _markedveh pushback _x } foreach _veh_list;
@@ -60,8 +42,7 @@ while { true } do {
 	{
 		_marker = _vehmarkers select (_markedveh find _x);
 		_marker setMarkerPosLocal getpos _x;
-		_text = [(typeOf _x)] call F_getLRXName;
-		_marker setMarkerTextLocal _text;
+		_marker setMarkerTextLocal ([(typeOf _x)] call F_getLRXName);
 		_marker setMarkerColorLocal "ColorKhaki";
 		if (typeOf _x in [waterbarrel_typename,fuelbarrel_typename,foodbarrel_typename]) then {
 			_marker setMarkerColorLocal "ColorGrey";
