@@ -546,11 +546,11 @@ air_vehicles = [
 ["CUP_B_UH1Y_UNA_USMC",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf],
 ["CUP_B_UH1Y_Gunship_Dynamic_USMC",0,air_vehicle_price_tier_8,0,GRLIB_perm_inf],
 ["O_Heli_Light_02_unarmed_F",0,air_vehicle_price_tier_4,0,GRLIB_perm_inf],
+["CUP_O_Ka50_DL_SLA",0,air_vehicle_price_tier_10,0,GRLIB_perm_inf],
 ["CUP_B_AW159_Unarmed_GER",0,air_vehicle_price_tier_3,0,GRLIB_perm_inf],
 ["CUP_B_AW159_GER",0,air_vehicle_price_tier_8,0,GRLIB_perm_inf],
 
-["I_Heli_light_03_unarmed_F",0,air_vehicle_price_tier_3,0,GRLIB_perm_inf],
-["I_Heli_light_03_dynamicLoadout_F",0,air_vehicle_price_tier_8,0,GRLIB_perm_inf],
+
 
 
 // RHS
