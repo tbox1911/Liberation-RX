@@ -71,11 +71,13 @@ if ( dojump > 0 ) then {
 		private _my_squad = _unit getVariable ["my_squad", nil];
 		if (!isNil "_my_squad") then { { _units pushBack _x } forEach units _my_squad };
 
+		_unit setVariable ["GRLIB_action_inuse", true, true];
 		{
 			if ( round (_x distance2D _player_pos) <= 30 && lifestate _x != 'INCAPACITATED' && vehicle _x == _x ) then {
 				[_x, halo_position] spawn paraDrop;
 				sleep (1 + floor(random 3));
 			};
 		} forEach _units;
+		_unit setVariable ["GRLIB_action_inuse", false, true];
 	};
 };

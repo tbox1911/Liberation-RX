@@ -70,52 +70,51 @@ while {alive _unit} do {
 		deleteVehicle _unit;
 	};
 
-	sleep 3;
-
 	// Flee
-	private _is_near_blufor = count ([units GRLIB_side_friendly, { (isNil {_x getVariable "GRLIB_is_prisonner"}) && (_x distance2D _unit) < 100 }] call BIS_fnc_conditionalSelect);
-	if ( _is_near_blufor == 0 && !_friendly ) then {
-		if (side group _unit == GRLIB_side_friendly) then {
-			private _text = format ["Alert! prisonner %1 is escaping!", name _unit];
-			[gamelogic, _text] remoteExec ["globalChat", (owner _unit)];
+	if (!((leader group _unit) getVariable ["GRLIB_action_inuse", false])) then {
+		private _is_near_blufor = count ([units GRLIB_side_friendly, { (isNil {_x getVariable "GRLIB_is_prisonner"}) && (_x distance2D _unit) < 100 }] call BIS_fnc_conditionalSelect);
+		if ( _is_near_blufor == 0 && !_friendly ) then {
+			if (side group _unit == GRLIB_side_friendly) then {
+				private _text = format ["Alert! prisonner %1 is escaping!", name _unit];
+				[gamelogic, _text] remoteExec ["globalChat", (owner _unit)];
+			};
+
+			private _flee_grp = createGroup [GRLIB_side_enemy, true];
+			[_unit] joinSilent _flee_grp;
+
+			_unit setUnitPos "AUTO";
+			_unit setVariable ["GRLIB_is_prisonner", true, true];
+			unAssignVehicle _unit;
+			if (!isNull objectParent _unit) then {
+				_unit action ["eject", vehicle _unit];
+				_unit action ["getout", vehicle _unit];
+				[_unit] orderGetIn false;
+				[_unit] allowGetIn false;
+			};
+			_unit setCaptive true;
+			sleep 2;
+
+			private _nearest_sector = [(sectors_allSectors - blufor_sectors), _unit] call F_nearestPosition;
+			if (typeName _nearest_sector == "STRING") then {
+				while {(count (waypoints _flee_grp)) != 0} do {deleteWaypoint ((waypoints _flee_grp) select 0);};
+				{_x doFollow leader _flee_grp} foreach units _flee_grp;
+
+				_waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];
+				_waypoint setWaypointType "MOVE";
+				_waypoint setWaypointSpeed "FULL";
+				_waypoint setWaypointBehaviour "SAFE";
+				_waypoint setWaypointCombatMode "GREEN";
+				_waypoint setWaypointCompletionRadius 50;
+
+				_waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];
+				_waypoint setWaypointType "MOVE";
+				_waypoint setWaypointCompletionRadius 50;
+				_waypoint setWaypointStatements ["true", "deleteVehicle this"];
+				sleep 5;
+			} else {
+				{ deleteVehicle _x } forEach _flee_grp;
+			};	
 		};
-
-		private _flee_grp = createGroup [GRLIB_side_enemy, true];
-		[_unit] joinSilent _flee_grp;
-
-		_unit setUnitPos "AUTO";
-		_unit setVariable ["GRLIB_is_prisonner", true, true];
-		unAssignVehicle _unit;
-		if (!isNull objectParent _unit) then {
-			_unit action ["eject", vehicle _unit];
-			_unit action ["getout", vehicle _unit];
-			[_unit] orderGetIn false;
-			[_unit] allowGetIn false;
-		};
-		_unit setCaptive true;
-		sleep 2;
-
-		private _nearest_sector = [(sectors_allSectors - blufor_sectors), _unit] call F_nearestPosition;
-		if (typeName _nearest_sector == "STRING") then {
-			while {(count (waypoints _flee_grp)) != 0} do {deleteWaypoint ((waypoints _flee_grp) select 0);};
-			{_x doFollow leader _flee_grp} foreach units _flee_grp;
-
-			_waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];
-			_waypoint setWaypointType "MOVE";
-			_waypoint setWaypointSpeed "FULL";
-			_waypoint setWaypointBehaviour "SAFE";
-			_waypoint setWaypointCombatMode "GREEN";
-			_waypoint setWaypointCompletionRadius 50;
-
-			_waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];
-			_waypoint setWaypointType "MOVE";
-			_waypoint setWaypointCompletionRadius 50;
-			_waypoint setWaypointStatements ["true", "deleteVehicle this"];
-			sleep 5;
-		} else {
-			{ deleteVehicle _x } forEach _flee_grp;
-		};	
 	};
-
-	sleep 3;
+	sleep 5;
 };

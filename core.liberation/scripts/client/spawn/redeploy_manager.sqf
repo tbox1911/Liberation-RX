@@ -189,6 +189,7 @@ if (dialog && deploy == 1) then {
 	_idxchoice = lbCurSel 201;
 	_spawn_str = (_choiceslist select _idxchoice) select 0;
 
+	player setVariable ["GRLIB_action_inuse", true, true];
 	if (((_choiceslist select _idxchoice) select 0) == _basenamestr) then {
 		call respawn_lhd;
 	} else {
@@ -218,6 +219,7 @@ if (dialog && deploy == 1) then {
 		GRLIB_player_spawned = ([] call F_getValid);
 		cinematic_camera_started = false;
 	};
+	player setVariable ["GRLIB_action_inuse", false, true];
 };
 
 respawn_camera cameraEffect ["Terminate","back"];
