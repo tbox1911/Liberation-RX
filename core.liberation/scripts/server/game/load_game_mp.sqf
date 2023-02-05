@@ -313,6 +313,8 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 	} foreach _buildings_created;
 
 	diag_log format [ "--- LRX Load Game finish at %1", time ];
+} else {
+	greuh_liberation_savegame = [];
 };
 
 if ( count GRLIB_vehicle_to_military_base_links == 0 ) then {
