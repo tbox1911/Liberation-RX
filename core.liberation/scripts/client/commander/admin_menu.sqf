@@ -228,10 +228,7 @@ while { alive player && dialog } do {
 		input_save = "";
 		waitUntil {uiSleep 0.3; ((input_save != "") || !(dialog) || !(alive player))};
 		if ( input_save select [0,1] == "[" && input_save select [(count input_save)-1,(count input_save)] == "]") then {
-			private _save = parseSimpleArray input_save;
-			[_save, {
-				params ["_save"];
-				if (count _save == count greuh_liberation_savegame) exitWith {};
+			[(parseSimpleArray input_save), {
 				GRLIB_server_stopped = true;
 				profileNamespace setVariable [GRLIB_save_key, _this];
 				saveProfileNamespace;
