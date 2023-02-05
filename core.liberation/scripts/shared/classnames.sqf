@@ -536,6 +536,7 @@ GRLIB_player_grave = [
 	"Land_Grave_forest_F",
 	"Land_Grave_dirt_F"
 ];
+GRLIB_player_gravebox = "Land_PlasticCase_01_small_black_F";
 
 // Air Drop Support
 if ( isNil "GRLIB_AirDrop_Taxi_cost" ) then {
