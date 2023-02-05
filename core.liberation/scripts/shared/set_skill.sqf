@@ -17,7 +17,7 @@ if ( !(GRLIB_autodanger) && (_side == GRLIB_side_friendly)) then {
 
 if ( _wounded ) then {
 		_unit setSkill ["general", [ 0.9 * _skillmodifier ] call limit_skill];
-		_unit setSkill ["aimingaccuracy", [ 0.1 * _skillmodifier ] call limit_skill];
+		_unit setSkill ["aimingaccuracy", [ 0.2 * _skillmodifier ] call limit_skill];
 		_unit setSkill ["aimingspeed", [ 0.8 * _skillmodifier ] call limit_skill];
 		_unit setSkill ["aimingshake", [ 0.8 * _skillmodifier ] call limit_skill];
 		_unit setSkill ["commanding", 0.9];
@@ -27,7 +27,7 @@ if ( _wounded ) then {
 } else { // if ( _inVehicle ) then {};
 	if ( _side == GRLIB_side_friendly || _side == GRLIB_side_enemy ) then {
 		_unit setSkill ["general", [ 0.9 * _skillmodifier ] call limit_skill];
-		_unit setSkill ["aimingaccuracy", [ 0.1 * _skillmodifier ] call limit_skill];
+		_unit setSkill ["aimingaccuracy", [ 0.2 * _skillmodifier ] call limit_skill];
 		_unit setSkill ["aimingspeed", [ 0.8 * _skillmodifier ] call limit_skill];
 		_unit setSkill ["aimingshake", [ 0.8 * _skillmodifier ] call limit_skill];
 		_unit setSkill ["commanding", 0.9];
@@ -36,7 +36,7 @@ if ( _wounded ) then {
 		_unit setSkill ["reloadSpeed", 0.9];
 	} else {
 		_unit setSkill ["general", [ 0.9 * _skillmodifier ] call limit_skill];
-		_unit setSkill ["aimingaccuracy", [ 0.1 * _skillmodifier ] call limit_skill];
+		_unit setSkill ["aimingaccuracy", [ 0.2 * _skillmodifier ] call limit_skill];
 		_unit setSkill ["aimingspeed", [ 0.8 * _skillmodifier ] call limit_skill];
 		_unit setSkill ["aimingshake", [ 0.8 * _skillmodifier ] call limit_skill];
 		_unit setSkill ["commanding", 0.9];

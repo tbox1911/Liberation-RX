@@ -118,7 +118,7 @@ class Params
 		title = $STR_AGGRESSIVITY_PARAM;
 		values[] = {0.25,0.5,1,2,3};
 		texts[] = {$STR_AGGRESSIVITY_PARAM0, $STR_AGGRESSIVITY_PARAM1,$STR_AGGRESSIVITY_PARAM2,$STR_AGGRESSIVITY_PARAM3,$STR_AGGRESSIVITY_PARAM4};
-		default = 1;
+		default = 2;
 	};
 	class AdaptToPlayercount{
 		title = $STR_PARAM_ADAPT_TO_PLAYERCOUNT;
@@ -250,7 +250,7 @@ class Params
 		title = $STR_PARAM_FOBS_COUNT;
 		values[] = {1,2,3,5,7,10,15,20,26};
 		texts[] = {1,2,3,5,7,10,15,20,26};
-		default = 2;
+		default = 1;
 	};
 	class SquadSize{
 		title = $STR_PARAM_SQUAD_SIZE_START;
