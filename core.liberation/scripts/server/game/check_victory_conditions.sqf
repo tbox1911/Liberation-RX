@@ -3,11 +3,6 @@ diag_log format ["Check Victory condition at %1", time];
 _blufor_bigtowns = [ blufor_sectors, { _x in sectors_bigtown } ] call BIS_fnc_conditionalSelect;
 
 if ( (count _blufor_bigtowns == count sectors_bigtown) && (count (sectors_allSectors - blufor_sectors) == 0) ) then {
-	sleep 30;
-	GRLIB_endgame = 1;
-	publicVariable "GRLIB_endgame";
-	[] call save_game_mp;
-	
 	{ _x allowDamage false; (vehicle _x) allowDamage false; } foreach allPlayers;
 
 	publicstats = [];
@@ -40,10 +35,11 @@ if ( (count _blufor_bigtowns == count sectors_bigtown) && (count (sectors_allSec
 	publicstats pushback stats_fobs_lost;
 	publicstats pushback (round stats_readiness_earned);
 
-	[publicstats] remoteExec ["remote_call_endgame", allPlayers];
+	sleep 5;
+	[publicstats] remoteExec ["remote_call_endgame", 0];
 
-	sleep 20;
-
+	GRLIB_endgame = 1;
+	publicVariable "GRLIB_endgame";
+	[] call save_game_mp;
 	{ if ( !(isPlayer _x) && !([_x, "LHD", GRLIB_sector_size] call F_check_near) ) then { deleteVehicle _x } } foreach allUnits;
-
 };

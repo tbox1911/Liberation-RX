@@ -1,5 +1,9 @@
 private [ "_line_delay", "_page_delay", "_playtime_days", "_playtime_hours", "_playtime_minutes", "_playtime_seconds", "_comma", "_playtime_str" ];
 if (isDedicated) exitWith {};
+
+[localize "STR_VICTORY_TITLE", 0, 0, 5, 0, 0, 90] spawn BIS_fnc_dynamicText;
+sleep 20;
+
 if ( isNil "cinematic_camera_started" ) then { cinematic_camera_started = false };
 _line_delay = 0.75;
 _page_delay = 5;
