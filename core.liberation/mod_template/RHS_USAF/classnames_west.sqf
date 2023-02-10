@@ -465,6 +465,11 @@ strong_heavy_vehicles = [
 ["rhsusf_m1a1aim_tuski_d",0,strong_heavy_vehicle_price_tier_5,0,GRLIB_perm_inf],
 ["rhsusf_M142_usarmy_WD",0,strong_heavy_vehicle_price_tier_6,0,GRLIB_perm_inf],
 
+//ITC
+["itc_land_rhsusf_m109d_usarmy",0,strong_heavy_vehicle_price_tier_4,0,GRLIB_perm_inf],
+["itc_land_b_SPH_Sholef2",0,strong_heavy_vehicle_price_tier_4,0,GRLIB_perm_inf],
+["itc_land_b_mlrs_seara2",0,strong_heavy_vehicle_price_tier_6,0,GRLIB_perm_inf],
+
 // BW
 
 ["Redd_Tank_Gepard_1A2_Flecktarn",0,heavy_vehicle_price_tier_9 ,0,GRLIB_perm_inf],
@@ -759,6 +764,7 @@ fast_air_vehicle = [
 // ["FIR_F18C",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf], // F18 Legacy
 // ["FIR_F18D",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf], // F18 Legacy
 ["FIR_FA18E_VFA106",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
+["FIR_FA18F_VFA163",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
 
 // FIR A-10C
 ["FIR_A10C",0,fast_air_vehicle_price_tier_6,0,GRLIB_perm_inf],
@@ -869,7 +875,8 @@ static_vehicles_AI = [
 "CUP_WV_B_SS_Launcher",
 "rnt_mantis_base",
 "rnt_mantis_radar",
-"B_SAM_System_01_F"
+"B_SAM_System_01_F",
+"itc_land_COBRA01"
 ];
 
 support_vehicles_west = [
