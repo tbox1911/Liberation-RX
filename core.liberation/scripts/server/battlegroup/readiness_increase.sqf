@@ -1,7 +1,5 @@
 waitUntil {sleep 1; !isNil "blufor_sectors" };
 waitUntil {sleep 1; !isNil "combat_readiness" };
-waitUntil {sleep 1; !isNil "sectors_bigtown" };
-waitUntil {sleep 1; !isNil "active_sectors" };
 
 while { true } do {
 	if ( (count blufor_sectors) >= ((count sectors_allSectors) * 0.9)) then {

@@ -47,6 +47,7 @@ while { true } do {
 		_marker setMarkerColorLocal "ColorKhaki";
 		if (typeOf _x in [waterbarrel_typename,fuelbarrel_typename,foodbarrel_typename]) then {
 			_marker setMarkerColorLocal "ColorGrey";
+			_marker setMarkerTypeLocal "mil_triangle";
 		};
 		if (typeOf _x in [ammobox_b_typename,ammobox_o_typename,ammobox_i_typename]) then {
 			_marker setMarkerColorLocal "ColorGUER";

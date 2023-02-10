@@ -1,5 +1,9 @@
 params [ "_sector" ];
 
+if (_sector in active_sectors) exitWith {};
+active_sectors pushback _sector;
+publicVariable "active_sectors";
+
 private _sectorpos = getmarkerpos _sector;
 private _stopit = false;
 private _spawncivs = false;
@@ -19,10 +23,6 @@ private _minimum_building_positions = 5;
 private _max_prisonners = 5;
 private _sector_despawn_tickets = 24;
 private _popfactor = 1;
-
-if ( isNil "active_sectors" ) then { active_sectors = [] };
-if ( _sector in active_sectors ) exitWith {};
-active_sectors pushback _sector; publicVariable "active_sectors";
 
 diag_log format ["Spawn Defend Sector %1 at %2", _sector, time];
 
@@ -213,7 +213,8 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 			} foreach _enemy_left;
 			sleep 60;
 
-			active_sectors = active_sectors - [ _sector ]; publicVariable "active_sectors";
+			active_sectors = active_sectors - [ _sector ];
+			publicVariable "active_sectors";
 			{ _x setVariable ["GRLIB_counter_TTL", 0] } foreach _managed_units;
 			[ _sector ] spawn reinforcements_manager;
 		} else {
@@ -233,14 +234,16 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 					};
 				} foreach _managed_units;
 				_stopit = true;
-				active_sectors = active_sectors - [ _sector ]; publicVariable "active_sectors";
+				active_sectors = active_sectors - [ _sector ];
+				publicVariable "active_sectors";
 			};
 		};
 		sleep 5;
 	};
 } else {
 	sleep 40;
-	active_sectors = active_sectors - [ _sector ]; publicVariable "active_sectors";
+	active_sectors = active_sectors - [ _sector ];
+	publicVariable "active_sectors";
 };
 
 diag_log format ["End Defend Sector %1 at %2", _sector, time];

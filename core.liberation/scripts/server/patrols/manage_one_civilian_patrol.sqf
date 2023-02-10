@@ -17,10 +17,11 @@ while { GRLIB_endgame == 0 } do {
 	_civ_veh = objNull;
 	_usable_sectors = [];
 	{
-		if ( ( ( [ getmarkerpos _x , 1000 , GRLIB_side_friendly ] call F_getUnitsCount ) == 0 ) && ( count ( [ getmarkerpos _x , 3500 ] call F_getNearbyPlayers ) > 0 ) ) then {
+		//(([getmarkerpos _x, 1000, GRLIB_side_friendly] call F_getUnitsCount) == 0) &&
+		if ( (count ([getmarkerpos _x, 3500] call F_getNearbyPlayers) > 0) ) then {
 			_usable_sectors pushback _x;
 		}
-	} foreach ((sectors_bigtown + sectors_capture + sectors_factory) - (active_sectors));
+	} foreach (sectors_bigtown + sectors_capture + sectors_factory - active_sectors);
 
 	if ( count _usable_sectors > 0 ) then {
 		_spawnsector = selectRandom _usable_sectors;
@@ -70,7 +71,7 @@ while { GRLIB_endgame == 0 } do {
 
 			_civ_unit_ttl = round(time + 1800);
 			waitUntil {
-				sleep 60;
+				sleep 30;
 				( (diag_fps < 20) || (!alive _civ_unit) || round (speed vehicle _civ_unit) == 0 || (count ([getPosATL _civ_unit , 4000] call F_getNearbyPlayers) == 0) || time > _civ_unit_ttl )
 			};
 
