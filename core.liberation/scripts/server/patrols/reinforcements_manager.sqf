@@ -2,8 +2,10 @@ params [ "_targetsector" ];
 
 if (combat_readiness < 35 || GRLIB_csat_aggressivity < 1 || diag_fps < 35) exitWith {};
 
+private _nb_players = count ([getmarkerpos _targetsector, GRLIB_sector_size] call F_getNearbyPlayers);
+if (_nb_players == 0) exitWith {};
+
 diag_log format ["Spawn Reinforcement on Sector %1 at %2", _targetsector, time];
-private _nb_player = count (AllPlayers - (entities "HeadlessClient_F"));
 
 if ( _targetsector in active_sectors ) then {
 	// before attack

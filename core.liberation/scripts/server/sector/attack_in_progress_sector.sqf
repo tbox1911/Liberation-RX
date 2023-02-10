@@ -1,5 +1,6 @@
 params [ "_sector" ];
-sleep 30;
+
+sleep 20;
 private _ownership = [ markerpos _sector ] call F_sectorOwnership;
 if ( _ownership != GRLIB_side_enemy ) exitWith {};
 
@@ -26,7 +27,7 @@ private _arsenal_box = objNull;
 
 if ( GRLIB_blufor_defenders && !_defenders_cooldown) then {
 	private _squad_type = blufor_squad_inf_light;
-	if (_sector in sectors_military) then {
+	if (_sector in (sectors_military + sectors_bigtown)) then {
 		_squad_type = blufor_squad_mix + [crewman_classname, crewman_classname];
 	};
 

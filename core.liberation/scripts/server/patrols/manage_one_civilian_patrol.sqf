@@ -72,7 +72,7 @@ while { GRLIB_endgame == 0 } do {
 			_civ_unit_ttl = round(time + 1800);
 			waitUntil {
 				sleep 30;
-				( (diag_fps < 20) || (!alive _civ_unit) || round (speed vehicle _civ_unit) == 0 || (count ([getPosATL _civ_unit , 4000] call F_getNearbyPlayers) == 0) || time > _civ_unit_ttl )
+				( (diag_fps < 30) || (!alive _civ_unit) || (round (speed vehicle _civ_unit) == 0) || (count ([getPosATL _civ_unit , 4000] call F_getNearbyPlayers) == 0) || (time > _civ_unit_ttl) )
 			};
 
 			// Cleanup
