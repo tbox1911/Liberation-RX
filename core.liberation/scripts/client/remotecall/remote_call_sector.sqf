@@ -2,6 +2,7 @@ params [ "_sector", "_status", ["_sector_timer", 0] ];
 
 if (isDedicated || (!hasInterface && !isServer)) exitWith {};
 
+sector_timer = _sector_timer;
 if ( _status == 0 ) then {
 	private _lst_player = "Thanks to: - ";
 	{
@@ -16,19 +17,16 @@ if ( _status == 0 ) then {
 if ( _status == 1 ) then {
 	[ "lib_sector_attacked", [ markerText _sector ] ] call BIS_fnc_showNotification;
 	"opfor_capture_marker" setMarkerPosLocal ( markerpos _sector );
-	sector_timer = _sector_timer;
 };
 
 if ( _status == 2 ) then {
 	[ "lib_sector_lost", [ markerText _sector ] ] call BIS_fnc_showNotification;
 	"opfor_capture_marker" setMarkerPosLocal markers_reset;
-	sector_timer = _sector_timer;
 };
 
 if ( _status == 3 ) then {
 	[ "lib_sector_safe", [ markerText _sector ] ] call BIS_fnc_showNotification;
 	"opfor_capture_marker" setMarkerPosLocal markers_reset;
-	sector_timer = _sector_timer;
 };
 
 { _x setMarkerColorLocal GRLIB_color_enemy; } foreach (sectors_allSectors - blufor_sectors);
