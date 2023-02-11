@@ -2,8 +2,8 @@ params [ "_targetsector" ];
 
 if (combat_readiness < 35 || GRLIB_csat_aggressivity < 1 || diag_fps < 35) exitWith {};
 
-private _nb_players = count ([getmarkerpos _targetsector, GRLIB_sector_size] call F_getNearbyPlayers);
-if (_nb_players == 0) exitWith {};
+private _active_players = count ([getmarkerpos _targetsector, GRLIB_sector_size] call F_getNearbyPlayers);
+if (_active_players == 0) exitWith {};
 
 diag_log format ["Spawn Reinforcement on Sector %1 at %2", _targetsector, time];
 
@@ -20,7 +20,7 @@ if ( _targetsector in active_sectors ) then {
 		};
 	};
 
-	if ( combat_readiness >= 80 && _nb_player > 1 ) then {
+	if ( combat_readiness >= 80 && _active_players > 1 ) then {
 		sleep (60 + floor(random 60));
 		if (_targetsector in active_sectors) then {
 			diag_log format ["Spawn Paratroopers on Sector %1 at %2", _targetsector, time];
@@ -55,7 +55,7 @@ if ( _targetsector in active_sectors ) then {
 
 	if ( combat_readiness > 65 ) then {
 		_sector2 = [GRLIB_sector_size * 3, markerpos _targetsector, (sectors_allSectors - blufor_sectors - [_sector1])] call F_getNearestSector;
-		if (_sector2 != "" && !(_sector2 in active_sectors) && _nb_player > 1) then {
+		if (_sector2 != "" && !(_sector2 in active_sectors) && _active_players > 1) then {
 			diag_log format ["Spawn Defense on Sector %1 at %2", _sector2, time];
 			if ( _sector2 in sectors_tower) then {
 				[_sector2, _defensecount] spawn static_manager;
@@ -73,7 +73,7 @@ if ( _targetsector in active_sectors ) then {
 
 	if ( combat_readiness > 90 ) then {
 		_sector3 = [GRLIB_sector_size * 4, markerpos _targetsector, (sectors_allSectors - blufor_sectors - [_sector1, _sector2])] call F_getNearestSector;
-		if (_sector3 != "" && !(_sector3 in active_sectors) && _nb_player > 2) then {
+		if (_sector3 != "" && !(_sector3 in active_sectors) && _active_players > 2) then {
 			diag_log format ["Spawn Defense on Sector %1 at %2", _sector3, time];
 			if ( _sector3 in sectors_tower) then {
 				[_sector3, _defensecount] spawn static_manager;

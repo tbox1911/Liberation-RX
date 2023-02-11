@@ -34,13 +34,13 @@ _countSectorBox = {
 while { GRLIB_endgame == 0 } do {
 	sleep 1200;
 
-	_nb_players = count (AllPlayers - (entities "HeadlessClient_F"));
-	if ( _nb_players > 0 ) then {
+	_active_players = count (AllPlayers - (entities "HeadlessClient_F"));
+	if ( _active_players > 0 ) then {
 
-		private _AmmoBox_cap = (_nb_players * 3) min GRLIB_AmmoBox_cap;
-		private _FuelBarrel_cap = (_nb_players * 3) min GRLIB_FuelBarrel_cap;
-		private _WaterBarrel_cap = (_nb_players * 3) min GRLIB_WaterBarrel_cap;
-		private _FoodBarrel_cap = (_nb_players * 3) min GRLIB_FoodBarrel_cap;
+		private _AmmoBox_cap = (_active_players * 3) min GRLIB_AmmoBox_cap;
+		private _FuelBarrel_cap = (_active_players * 3) min GRLIB_FuelBarrel_cap;
+		private _WaterBarrel_cap = (_active_players * 3) min GRLIB_WaterBarrel_cap;
+		private _FoodBarrel_cap = (_active_players * 3) min GRLIB_FoodBarrel_cap;
 
 		// AmmoBox
 		private _blufor_mil_sectors = [];

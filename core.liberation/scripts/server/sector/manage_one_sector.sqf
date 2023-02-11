@@ -1,7 +1,7 @@
 params [ "_sector" ];
 
-private _nb_players = count ([getmarkerpos _sector, GRLIB_sector_size] call F_getNearbyPlayers);
-if (_nb_players == 0) exitWith {};
+private _active_players = count ([getmarkerpos _sector, GRLIB_sector_size] call F_getNearbyPlayers);
+if (_active_players == 0) exitWith {};
 
 active_sectors pushback _sector;
 publicVariable "active_sectors";
@@ -30,10 +30,10 @@ diag_log format ["Spawn Defend Sector %1 at %2", _sector, time];
 
 if ( GRLIB_adaptive_opfor ) then {
 	switch (true) do {
-		case (_nb_players > 6) : { _popfactor = 1.4 };
-		case (_nb_players > 4) : { _popfactor = 1.3 };
-		case (_nb_players > 2) : { _popfactor = 1.2 };
-		case (_nb_players > 1) : { _popfactor = 1.1 };
+		case (_active_players > 6) : { _popfactor = 1.4 };
+		case (_active_players > 4) : { _popfactor = 1.3 };
+		case (_active_players > 2) : { _popfactor = 1.2 };
+		case (_active_players > 1) : { _popfactor = 1.1 };
 		default { _popfactor = GRLIB_unitcap };
 	};
 };
