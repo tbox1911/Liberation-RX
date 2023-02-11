@@ -23,6 +23,8 @@ if (_result) exitWith {};
 // Classic Recycle
 private _objectinfo = ( [ (light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles + buildings + opfor_recyclable + ind_recyclable), { typeof _vehicle == _x select 0 } ] call BIS_fnc_conditionalSelect ) select 0;
 if (isNil "_objectinfo") then { _objectinfo = [typeOf _vehicle, 0, 0, 0] };
+private _buildings = [];
+{ _buildings pushBack (_x select 0) } foreach buildings;
 dorecycle = 0;
 
 createDialog "liberation_recycle";
@@ -35,13 +37,11 @@ ctrlSetText [ 131, format [ "%1", _objectinfo select 1 ] ];
 ctrlSetText [ 132, format [ "%1", _ammount_ammo ] ];
 ctrlSetText [ 133, format [ "%1", _ammount_fuel ] ];
 
-while { dialog && (alive player) && dorecycle == 0 } do {
-	sleep 0.5;
-};
+while { dialog && (alive player) && dorecycle == 0 } do { sleep 0.5 };
 
 if ( dialog ) then { closeDialog 0 };
 
-if ( dorecycle == 1 && !(isNull _vehicle) && alive _vehicle) exitWith {
+if ( dorecycle == 1 && !(isNull _vehicle) && (alive _vehicle || typeOf _vehicle in _buildings) ) exitWith {
 
 	if (typeOf _vehicle in [ammobox_b_typename, ammobox_o_typename, ammobox_i_typename] && [player] call F_getScore <= GRLIB_perm_log) then {
 		[player, 10] remoteExec ["F_addScore", 2];
@@ -55,6 +55,7 @@ if ( dorecycle == 1 && !(isNull _vehicle) && alive _vehicle) exitWith {
 		[_vehicle, "del"] remoteExec ["addel_beacon_remote_call", 2];
 	};
 	[_vehicle] remoteExec ["deleteVehicle", 2];
-	stats_vehicles_recycled = stats_vehicles_recycled + 1; publicVariable "stats_vehicles_recycled";
+	stats_vehicles_recycled = stats_vehicles_recycled + 1;
+	publicVariable "stats_vehicles_recycled";
 };
 _vehicle setVariable ["recycle_in_use", false, true];
