@@ -3,7 +3,13 @@ private _veh_list = [];
 private _vehmarkers = [];
 private _markedveh = [];
 
-private _no_marker_classnames = [ Respawn_truck_typename, huron_typename, playerbox_typename, GRLIB_player_gravebox ];
+private _no_marker_classnames = [
+	"Kart_01_Base_F",
+	Respawn_truck_typename,
+	huron_typename,
+	playerbox_typename,
+	GRLIB_player_gravebox
+];
 { _no_marker_classnames pushback (_x select 0) } foreach buildings;
 
 waitUntil {sleep 1; !isNil "GRLIB_init_server"};
