@@ -1,7 +1,7 @@
-private [ "_marker" ];
+private [ "_marker", "_nextvehicle", "_nextmarker" ];
 private _veh_list = [];
 private _vehmarkers = [];
-private _markedveh = [];
+private _vehmarkers_bak = [];
 
 private _no_marker_classnames = [
 	"Kart_01_Base_F",
@@ -17,9 +17,8 @@ waitUntil {sleep 1; !isNil "GRLIB_mobile_respawn"};
 
 while { true } do {
 	_veh_list = [vehicles, {
-		alive _x &&
+		alive _x &&	locked _x != 2 &&
 		!([_x, "LHD", GRLIB_sector_size] call F_check_near) &&
-		locked _x != 2 &&
 		!([typeOf _x, _no_marker_classnames] call F_itemIsInClass) &&
 		!(_x getVariable ['R3F_LOG_disabled', true]) &&
 		(isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull])) &&
@@ -30,39 +29,37 @@ while { true } do {
 		)
 	}] call BIS_fnc_conditionalSelect;
 
-	private _markedveh = [];
-	{ _markedveh pushback _x } foreach _veh_list;
-
-	if ( count _markedveh != count _vehmarkers ) then {
-		{ deleteMarkerLocal _x; } foreach _vehmarkers;
-		_vehmarkers = [];
-
-		{
-			_marker = createMarkerLocal [ format [ "markedveh%1" ,_x], markers_reset ];
+	_vehmarkers_bak = [];
+	{
+		_nextvehicle = _x;
+		_nextmarker = format ["markedveh%1" ,_nextvehicle];
+		if (_vehmarkers find _nextmarker < 0) then {
+			_marker = createMarkerLocal [format ["markedveh%1", _nextvehicle], markers_reset];
 			_marker setMarkerColorLocal "ColorKhaki";
 			_marker setMarkerTypeLocal "mil_dot";
 			_marker setMarkerSizeLocal [ 0.75, 0.75 ];
-			_vehmarkers pushback _marker;
-		} foreach _markedveh;
-	};
+			_marker setMarkerPosLocal (getPosATL _nextvehicle);
+			_marker setMarkerTextLocal ([(typeOf _nextvehicle)] call F_getLRXName);
+			_vehmarkers_bak pushback _marker;
 
-	{
-		_marker = _vehmarkers select (_markedveh find _x);
-		_marker setMarkerPosLocal getpos _x;
-		_marker setMarkerTextLocal ([(typeOf _x)] call F_getLRXName);
-		_marker setMarkerColorLocal "ColorKhaki";
-		if (typeOf _x in [waterbarrel_typename,fuelbarrel_typename,foodbarrel_typename]) then {
-			_marker setMarkerColorLocal "ColorGrey";
-			_marker setMarkerTypeLocal "mil_triangle";
+			if (typeOf _nextvehicle in [ammobox_b_typename,ammobox_o_typename,ammobox_i_typename]) then {
+				_marker setMarkerColorLocal "ColorGUER";
+			};
+			if (typeOf _nextvehicle in [waterbarrel_typename,fuelbarrel_typename,foodbarrel_typename]) then {
+				_marker setMarkerColorLocal "ColorGrey";
+				_marker setMarkerTypeLocal "mil_triangle";
+			};
+		} else {
+			_nextmarker setMarkerPosLocal (getPosATL _nextvehicle);
+			_vehmarkers_bak pushback _nextmarker;
 		};
-		if (typeOf _x in [ammobox_b_typename,ammobox_o_typename,ammobox_i_typename]) then {
-			_marker setMarkerColorLocal "ColorGUER";
+		if (!((_nextvehicle getVariable ["GRLIB_vehicle_owner", ""]) in ["server",""])) then {
+			_nextmarker setMarkerColorLocal GRLIB_color_friendly;
 		};
-		if (!((_x getVariable ["GRLIB_vehicle_owner", ""]) in ["server",""])) then {
-			_marker setMarkerColorLocal GRLIB_color_friendly;
-		};
-		_marker setMarkerSizeLocal [ 0.75, 0.75 ];
-	} foreach _markedveh;
+	} foreach _veh_list;
+	
+	{ deleteMarkerLocal _x} foreach (_vehmarkers - _vehmarkers_bak);
+	_vehmarkers = _vehmarkers_bak;
 
 	sleep 5;
 };
