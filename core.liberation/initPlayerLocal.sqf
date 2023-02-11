@@ -9,7 +9,7 @@ DE:<br />
 Regelwerk MiSim United<br />
 <br />
 1.    Allgemeines<br />
-1.1    Trolling, Beleidigung, Rassismus, Sexuelle Belästigung so wie alles, was strafrechtlich verfolgt wirds ist verboten und führt zum Ausschluss.<br />
+1.1    Trolling, Beleidigung, Rassismus, sexuelle Belästigung so wie alles, was strafrechtlich verfolgt wird ist verboten und führt zum Ausschluss.<br />
 1.2    Das Recycling, Stehlen oder Zerstören von Fahrzeugen anderer Spieler ist untersagt.<br />
 1.3    Schießen innerhalb der FOBs ist nur zu deren Verteidigung erlaubt.<br />
 1.4    Den Anweisungen von Moderatoren ist Folge zu leisten.<br />
@@ -58,7 +58,7 @@ Rules MiSim United<br />
 1.3 Shooting within the FOBs is only permitted for defense of said FOB.<br />
 1.4 The instructions of moderators must be followed without discussion.<br />
 1.5 If vehicles are lost due to bugs etc..., it is at the discretion of the moderators to grant a refund. (Video proof helps with this.)<br />
-1.6 Stay calm in the event of disputes with moderators, bring in another player in and, if necessary, make a video.<br />
+1.6 Stay calm in the event of disputes with moderators, bring in another player and, if necessary, make a video.<br />
 1.7 Using program errors, bugs, exploits, etc. is prohibited.<br />
 <br />
 <br />

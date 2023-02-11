@@ -82,7 +82,7 @@ logistics_ammo_increase = true;
 prisoner_intel = 5;
 prisoner_score = 25;
 prisoner_ammo = 50;
-prisoner_combat_readiness = 10;
+prisoner_combat_readiness = 9;
 prisoner_i = 0;
 
 // Building Penalty
@@ -126,7 +126,7 @@ fob_hunting_readiness = 40;
 
 // Battlegroup readiness
 bg_readiness_cooldown = false;
-bg_readiness_min = 35;
+bg_readiness_min = 33;
 
 // Battlegroup sleeping (divided with csat aggressivity)
 bg_sleeptimer = 1800; 
