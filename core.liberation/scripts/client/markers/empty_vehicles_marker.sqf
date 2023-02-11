@@ -20,7 +20,7 @@ while { true } do {
 		alive _x &&
 		!([_x, "LHD", GRLIB_sector_size] call F_check_near) &&
 		locked _x != 2 &&
-		!(typeOf _x in _no_marker_classnames) &&
+		!([typeOf _x, _no_marker_classnames] call F_itemIsInClass) &&
 		!(_x getVariable ['R3F_LOG_disabled', true]) &&
 		(isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull])) &&
 		(_x getVariable ["GRLIB_vehicle_owner", ""] != "server") &&
