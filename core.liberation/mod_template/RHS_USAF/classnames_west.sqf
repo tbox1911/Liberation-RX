@@ -604,6 +604,7 @@ fast_air_vehicle = [
 
 //RHS
 ["RHS_A10",0,fast_air_vehicle_price_tier_2,0,GRLIB_perm_inf],
+["rhsusf_f22",0,air_vehicle_price_tier_9,0,GRLIB_perm_inf],
 // ["Peral_A10C",0,fast_air_vehicle_price_tier_2,0,GRLIB_perm_inf],
 
 // CUP BAF
