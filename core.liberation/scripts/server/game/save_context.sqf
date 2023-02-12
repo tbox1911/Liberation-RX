@@ -21,17 +21,5 @@ if (alive _player && lifeState _player != "INCAPACITATED") then {
 	diag_log format ["--- LRX saving player %1 Loadout.", name _player];
 };
 
-private _new = true;
-{
-	if (_x select 0 == _uid) exitWith {
-		_x set [1, _loadout];
-		if (_loaded) then {	_x set [2, _ai_group ] };
-		_new = false;
-	};
-} foreach GRLIB_player_context;
-
-if (_new) then {
-	GRLIB_player_context pushback [ _uid, _loadout, _ai_group ];
-};
-
+localNamespace setVariable [format ["player_context_%1", _uid], [_uid, _loadout, _ai_group]];
 diag_log format ["--- LRX saving %1 unit(s) for %2 Squad.", count _ai_group, name _player];

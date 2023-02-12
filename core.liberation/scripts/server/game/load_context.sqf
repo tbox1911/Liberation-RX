@@ -5,11 +5,13 @@ private ["_grp", "_pos", "_unit", "_class", "_rank", "_loadout"];
 
 if (isNull _player) exitWith {};
 
-private _context = [];
-{if (_x select 0 == _uid) exitWith {_context = _x}} foreach GRLIB_player_context;
+private _context = localNamespace getVariable [format ["player_context_%1", _uid], []];
+if (count _context == 0) then {
+    {if (_x select 0 == _uid) exitWith {_context = _x}} foreach GRLIB_player_context;
+};
 if (count _context >= 1) then {
     // Player loadout
-    [_player, _context select 1] remoteExec ["setUnitLoadout", owner _player];
+    _player setUnitLoadout (_context select 1);
 
     // AIs loadout
     if (count (_context select 2) >= 1 ) then {

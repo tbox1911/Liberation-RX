@@ -80,10 +80,10 @@ if ( GRLIB_endgame == 1 ) then {
     private _player_scores = [];
     private _keep_score_id = ["Default"];
     {
-        _id = _x select 0;
+        _uid = _x select 0;
         _score = _x select 1;
         if (_score >= GRLIB_min_score_player) then {
-            _keep_score_id pushback _id;
+            _keep_score_id pushback _uid;
             _player_scores pushback _x;
         };
     } forEach GRLIB_player_scores;
@@ -139,13 +139,30 @@ if ( GRLIB_endgame == 1 ) then {
     // Save scores
     private _permissions = [];
     {
-        _id = _x select 0;
-        if (_id in _keep_score_id) then {_permissions pushback _x};
+        _uid = _x select 0;
+        if (_uid in _keep_score_id) then {_permissions pushback _x};
     } forEach GRLIB_permissions;
 
-    time_of_day = date select 3;
-    stats_saves_performed = stats_saves_performed + 1;
+    // Save Context
+    private _player_context = [];
+    private _buffer = [];
+    {
+        _uid = _x;
+        _unit = _uid call BIS_fnc_getUnitByUID;
+        if (!isNull _unit) then { [_unit, _uid] call save_context };
+        _buffer = localNamespace getVariable [format ["player_context_%1", _uid], []];
+        if (count _buffer > 0) then {
+            _player_context pushBack _buffer;
+        } else {
+            {if (_x select 0 == _uid) exitWith {_player_context pushBack _x}} foreach GRLIB_player_context;
+        }
+    } forEach _keep_score_id;
 
+    // Time
+    time_of_day = date select 3;
+
+    // Stats
+    stats_saves_performed = stats_saves_performed + 1;
     _stats = [];
     _stats pushback stats_opfor_soldiers_killed;
     _stats pushback stats_opfor_killed_by_players;
@@ -176,6 +193,7 @@ if ( GRLIB_endgame == 1 ) then {
     _stats pushback stats_fobs_lost;
     _stats pushback stats_readiness_earned;
 
+    // Save Blob
     greuh_liberation_savegame = [
         blufor_sectors,
         GRLIB_all_fobs,
@@ -190,7 +208,7 @@ if ( GRLIB_endgame == 1 ) then {
         [ round infantry_weight max 33, round armor_weight max 33, round air_weight max 33 ],
         GRLIB_vehicle_to_military_base_links,
         _permissions,
-        GRLIB_player_context,
+        _player_context,
         resources_intel,
         _player_scores
     ];
