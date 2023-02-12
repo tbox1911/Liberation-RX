@@ -226,18 +226,16 @@ while { alive player && dialog } do {
 		input_save = "";
 		waitUntil {uiSleep 0.3; ((input_save != "") || !(dialog) || !(alive player))};
 		if ( input_save select [0,1] == "[" && input_save select [(count input_save)-1,(count input_save)] == "]") then {
-			titleText ["Restarting..." ,"BLACK FADED", 100];
+			closeDialog 0;
+			titleText ["Restarting now..." ,"BLACK FADED", 100];
 			disableUserInput true;
 			[(parseSimpleArray input_save), {
 				GRLIB_server_stopped = true;
 				profileNamespace setVariable [GRLIB_save_key, _this];
 				saveProfileNamespace;
-				sleep 3;
 				["END"] remoteExec ["endMission", 0];
-				disableUserInput false;
 			}] remoteExec ["bis_fnc_call", 2];
-			hint format ["Import Savegame in %1, Exiting now!", GRLIB_save_key];
-			closeDialog 0;
+			disableUserInput false;
 		} else { systemchat "Error: Invalid data!" };
 		{ ctrlShow [_x, false] } foreach _input_controls;
 		{ ctrlEnable  [_x, true] } foreach _button_controls;
