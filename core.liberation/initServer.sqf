@@ -45,7 +45,7 @@ addMissionEventHandler ['EntityKilled', {
 				
 				_score = opfor_kill_score;
 				_ammo = opfor_kill_ammo;
-				if  (typeOf _killer == "B_Soldier_F") then {
+				if  ((typeOf _killer == "B_Soldier_F") || (typeOf _killer == "B_medic_F") || (typeOf _killer == "B_engineer_F") || (typeOf _killer == "B_soldier_exp_F")) then {
 					_score = opfor_kill_score_infantry;
 					_ammo = opfor_kill_ammo_infantry;
 				};
