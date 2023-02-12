@@ -149,7 +149,7 @@ if ( GRLIB_endgame == 1 ) then {
     {
         _uid = _x;
         _unit = _uid call BIS_fnc_getUnitByUID;
-        if (!isNull _unit) then { [_unit, _uid] call save_context };
+        [_unit, _uid] call save_context;
         _buffer = localNamespace getVariable [format ["player_context_%1", _uid], []];
         if (count _buffer > 0) then {
             _player_context pushBack _buffer;
