@@ -75,7 +75,7 @@ if ( isNil "militia_squad" ) then {
 		"O_G_Soldier_SL_F",
 		"O_G_Soldier_A_F",
 		"O_G_Soldier_AR_F",
-		"O_G_Soldier_AR_F",	
+		"O_G_Soldier_AR_F",
 		"O_G_medic_F",
 		"O_G_engineer_F",
 		"O_G_Soldier_exp_F",
@@ -83,7 +83,7 @@ if ( isNil "militia_squad" ) then {
 		"O_G_Soldier_M_F",
 		"O_G_Soldier_F",
 		"O_G_Soldier_LAT_F",
-		"O_G_Soldier_LAT_F",	
+		"O_G_Soldier_LAT_F",
 		"O_G_Soldier_lite_F",
 		"O_G_Sharpshooter_F",
 		"O_G_Soldier_TL_F",
@@ -307,21 +307,18 @@ box_transport_offset = [];
 // Following entries: attachTo position for each box, the number of boxes that can be loaded is derived from the number of entries
 box_transport_config = [
 	[ "C_Offroad_01_F", -5, [0, -1.55, 0.2] ],
-	[ "B_G_Offroad_01_F", -5, [0, -1.55, 0.2] ],
-	[ "I_G_Offroad_01_F", -5, [0, -1.55, 0.2] ],
-	[ "O_G_Offroad_01_F", -5, [0, -1.55, 0.2] ],
-	[ "O_Truck_03_transport_F", -6.5, [0, -0.8, 0.4], [0, -2.4, 0.4], [0, -4.0, 0.4] ],
-	[ "B_Truck_01_transport_F", -6.5, [0, -0.4, 0.4], [0, -2.1, 0.4], [0, -3.8, 0.4] ],
-	[ "B_Truck_01_covered_F", -6.5, [0, -0.4, 0.4], [0, -2.1, 0.4], [0, -3.8, 0.4] ],
-	[ "B_Truck_01_medical_F", -6.5, [0, -0.4, 0.4], [0, -2.1, 0.4], [0, -3.8, 0.4] ],
-	[ "B_Heli_Transport_03_F", -7.5, [0, 2.2, -1], [0, 0.8, -1], [0, -1.0, -1] ],
-	[ "B_Heli_Transport_03_unarmed_F", -7.5, [0, 2.2, -1], [0, 0.8, -1], [0, -1.0, -1] ],
-	[ "I_Truck_02_transport_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
-	[ "I_Truck_02_covered_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
+	[ "C_IDAP_Offroad_01_F", -5, [0, -1.55, 0.2] ],
+	[ "C_Van_01_box_F", -5.3, [0, -1.05, 0.2], [0, -2.6, 0.2] ],
+	[ "C_Van_01_transport_F", -5.3, [0, -1.05, 0.2], [0, -2.6, 0.2] ],
+	[ "C_Van_02_transport_F", -5, [0,-1.75,0]],
+	[ "C_Van_02_vehicle_F", -5, [0,0.5,0], [0,-1.75,0]],
+    [ "C_IDAP_Van_02_vehicle_F", -5, [0,0.5,0], [0,-1.75,0]],
+	[ "C_IDAP_Van_02_transport_F", -5, [0,-1.75,0]],
 	[ "C_Truck_02_transport_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
 	[ "C_Truck_02_covered_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
-	[ "C_Van_01_box_F", -5.3, [0, -1.05, 0.2], [0, -2.6, 0.2] ],
-	[ "C_Van_01_transport_F", -5.3, [0, -1.05, 0.2], [0, -2.6, 0.2] ]
+	[ "C_IDAP_Truck_02_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
+	[ "C_IDAP_Truck_02_transport_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
+	[ "C_IDAP_Heli_Transport_02_F", -6.5, [0, 4.2, -1.45], [0, 2.5, -1.45], [0, 0.8, -1.45], [0, -0.9, -1.45] ]
 ] + box_transport_config;
 
 transport_vehicles = [];
