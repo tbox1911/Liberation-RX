@@ -256,12 +256,12 @@ fast_air_vehicle_price_tier_7 = 2450;
 fast_air_vehicle_price_tier_8 = 2700;
 fast_air_vehicle_price_tier_9 = 2950;
 fast_air_vehicle_price_tier_10 = 3200;
-logistic_ground_vehicle_price_tier_1 = 250;
-logistic_ground_vehicle_price_tier_2 = 300;
-logistic_ground_vehicle_price_tier_3 = 400;
-logistic_ground_vehicle_price_tier_4 = 450;
-logistic_ground_vehicle_price_tier_5 = 500;
-logistic_ground_vehicle_price_tier_6 = 550;
+logistic_ground_vehicle_price_tier_1 = 100;
+logistic_ground_vehicle_price_tier_1 = 125;
+logistic_ground_vehicle_price_tier_1 = 150;
+logistic_ground_vehicle_price_tier_4 = 200;
+logistic_ground_vehicle_price_tier_5 = 250;
+logistic_ground_vehicle_price_tier_6 = 300;
 
 
 
