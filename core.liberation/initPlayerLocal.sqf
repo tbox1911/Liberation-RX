@@ -26,7 +26,8 @@ Regelwerk MiSim United<br />
 <br />
 3.    Ausrüstung und Slots<br />
 3.1    Wer einen Slot belegt, muss ausreichend qualifiziert sein und die jeweilige Dienstleistung auch tatsächlich für andere zur Verfügung stellen. Kampfpiloten müssen CAS durchführen, Engineers müssen reparieren, Medics müssen heilen, etc. und HQ muss ein möglichst angenehmes Spielerlebnis für seine Truppen organisieren.<br />
-3.2    Die Ausrüstung der dargestellten Klasse muss in den Bereich Milsim passen. (beispielsweise; keine Ghilli-Medic-Javelin-Sniper oder Panzerbesatzungen mit Javelin auf dem Rücken)<br />
+3.2    Piloten-Slots stehen für die maximale Anzahl der jeweiligen Luftfahrzeuge. Co-Pilot, Gunner oder Crew sind beliebig zu besetzen, sofern dadurch nicht 3.1 verletzt wird.<br />
+3.3    Die Ausrüstung der dargestellten Klasse muss in den Bereich Milsim passen. (beispielsweise; keine Ghilli-Medic-Javelin-Sniper oder Panzerbesatzungen mit Javelin auf dem Rücken)<br />
 <br />
 <br />
 4.     Fahrzeuge<br />
@@ -70,7 +71,8 @@ Rules MiSim United<br />
 <br />
 3. Gear and Slots<br />
 3.1 If you occupy a slot, you have to be qualified and actually provide the said service for others. Combat pilots have to do CAS, engineers have to repair, medics have to heal, etc. and HQ has to organize an enjoyable gameplay experience for his troops.<br />
-3.2 Equipment of the class that was selected in the server lobby must fit within the Milsim area. (e.g.; no Ghilli Medic javelin snipers or tank crews with javelin on their backs)<br />
+3.2    Pilot slots stand for the max amount of air assets. Co-pilots, gunners or crew can be manned as you please as long as it is no violation of 3.1.<br />
+3.3    Equipment of the class that was selected in the server lobby must fit within the Milsim area. (e.g.; no Ghilli Medic javelin snipers or tank crews with javelin on their backs)<br />
 <br />
 <br />
 4. Vehicles<br />
