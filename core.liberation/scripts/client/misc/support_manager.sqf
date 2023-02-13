@@ -93,7 +93,7 @@ while { true } do {
 				// REAMMO
 				_near_arsenal = [_vehicle, "REAMMO", _distarsenal, true] call F_check_near;
 				_is_enabled = !(_vehicle getVariable ["R3F_LOG_disabled", false]);
-				_vehicle_need_ammo = (([_vehicle] call F_getVehicleAmmoDef) <= 0.80);
+				_vehicle_need_ammo = (([_vehicle] call F_getVehicleAmmoDef) <= 0.85);
 				if (((_vehicle_class iskindof "LandVehicle") || (_vehicle_class iskindof "Air") || (_vehicle_class iskindof "Ship")) && _near_arsenal && _is_enabled && _vehicle_need_ammo) then {
 					_timer = _vehicle getVariable ["GREUH_rearm_timer", 0];
 					if (_timer <= time) then {
@@ -114,7 +114,7 @@ while { true } do {
 				// REPAIR
 				_near_repair = [_vehicle, "REPAIR_AI", _distarsenal, true] call F_check_near;
 				_is_enabled = !(_vehicle getVariable ["R3F_LOG_disabled", false]);
-				_vehicle_need_repair = (damage _vehicle >= 0.50);
+				_vehicle_need_repair = (damage _vehicle >= 0.10);
 
 				if (((_vehicle_class iskindof "LandVehicle") || (_vehicle_class iskindof "Air") || (_vehicle_class iskindof "Ship")) && _near_repair && _is_enabled && _vehicle_need_repair) then {
 					_timer = _vehicle getVariable ["GREUH_repair_timer", 0];
