@@ -29,6 +29,9 @@ createOutpost = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scrip
 
 A3W_sectors_in_use = [];
 A3W_delivery_failed = 0;
+A3W_mission_success = 0;
+A3W_mission_failed = 0;
+//GRLIB_A3W_debug = true;
 
 waitUntil {sleep 1; !isNil "blufor_sectors" };
 waitUntil {sleep 1; !isNil "sectors_allSectors" };

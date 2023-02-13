@@ -3,6 +3,7 @@ params ["_missionsList"];
 private ["_mission_name"];
 if (!isServer) exitWith {};
 if (count _missionsList == 0) exitWith {};
+
 private _spawn_place = count ([SpawnMissionMarkers] call checkSpawn);
 private _spawn_place_forest = count ([ForestMissionMarkers] call checkSpawn);
 private _spawn_place_water = count ([SunkenMissionMarkers] call checkSpawn);
@@ -42,7 +43,7 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 // Town capture
 _mission_name = "mission_TownInvasion";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
-	if (_opfor_factor <= 40) then {
+	if (count blufor_sectors >= 10 && (_opfor_factor <= 40 || A3W_mission_failed > 8)) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;
@@ -52,7 +53,7 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 // Town Insurgency
 _mission_name = "mission_TownInsurgency";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
-	if (_spawn_place >= 1 && A3W_delivery_failed > 2) then {
+	if (count blufor_sectors >= 10 && (A3W_mission_failed > 8 || A3W_delivery_failed > 2)) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;
@@ -105,7 +106,7 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 // Meet Resistance
 _mission_name = "mission_MeetResistance";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
-	if (count blufor_sectors >= 7 && _opfor_factor >= 50 && GRLIB_side_enemy != INDEPENDENT) then {
+	if (count blufor_sectors >= 7 && _opfor_factor <= 60 && GRLIB_side_enemy != INDEPENDENT && A3W_delivery_failed < 3) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;
@@ -115,7 +116,7 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 // Special Delivery
 _mission_name = "mission_SpecialDelivery";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
-	if (count blufor_sectors >= 10) then {
+	if (count blufor_sectors >= 10 && A3W_delivery_failed < 3) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;

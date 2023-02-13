@@ -131,6 +131,7 @@ if (_failed) then {
 
 	["lib_secondary_a3w_mission_fail", [_missionType]] remoteExec ["bis_fnc_shownotification", 0];
 	diag_log format ["%1 Mission%2 failed: %3", MISSION_PROC_TYPE_NAME, _controllerSuffix, _missionType];
+	A3W_mission_failed = A3W_mission_failed + 1;
 } else {
 	// Mission completed
 
@@ -164,6 +165,7 @@ if (_failed) then {
 
 	["lib_secondary_a3w_mission_success", [_missionType]] remoteExec ["bis_fnc_shownotification", 0];
 	diag_log format ["%1 Mission%2 complete: %3", MISSION_PROC_TYPE_NAME, _controllerSuffix, _missionType];
+	A3W_mission_success = A3W_mission_success + 1;
 };
 
 deleteGroup _aiGroup;

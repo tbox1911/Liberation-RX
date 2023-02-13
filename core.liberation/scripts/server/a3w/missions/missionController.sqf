@@ -32,6 +32,12 @@ while {true} do {
 		} else {
 			sleep 30;
 		};
+		if (!isNil "GRLIB_A3W_debug") then {
+			diag_log "DBG: A3W missions:";
+			{ diag_log format ["    %1", _x] } foreach MISSION_CTRL_PVAR_LIST;
+			diag_log format ["DBG: A3W mission selected: %1", _nextMission];
+			diag_log format ["DBG: A3W mission success: %1 / failed: %2", A3W_mission_success, A3W_mission_failed];
+		};
 	};
 
 	// Mission start + lock
