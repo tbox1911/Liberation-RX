@@ -51,7 +51,7 @@ GRLIB_offload_diag = false;
 MGR_Key = 19;
 
 // TFAR checker
-tfar_checker = false;
+tfar_checker = true;
 tfar_channel = "╠-● Ingame [TFAR]";
 
 // gain and punishment
