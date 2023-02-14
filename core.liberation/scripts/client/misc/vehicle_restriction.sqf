@@ -18,11 +18,10 @@ player addEventHandler [
 		if ((typeOf _vehicle in opfor_battlegroup_vehicles) || (typeOf _vehicle in opfor_vehicles)) then {
 			_vehicle setVehicleAmmo 0; 
 			hint "keine Ahnung wie man das Ding abfeuert...";
-			};
+		};
 
 		
 		if (_vehicle isKindof "Helicopter") then { 
-		
 			if (!(_GrpRol in HeliUnits) || !([player,2] call fetch_permission)) then{ 
 				_unit action ["getOut", _vehicle]; 
 				hint format ["Wrong Group Role or missing Permission", name player];
