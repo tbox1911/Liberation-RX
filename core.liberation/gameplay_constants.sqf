@@ -51,7 +51,7 @@ GRLIB_offload_diag = false;
 MGR_Key = 19;
 
 // TFAR checker
-tfar_checker = true;
+tfar_checker = false;
 ts_server_name = "77th Airborne Division";
 tfar_channel = "╠-● Ingame [TFAR]";
 
