@@ -106,7 +106,7 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 // Meet Resistance
 _mission_name = "mission_MeetResistance";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
-	if (count blufor_sectors >= 7 && _opfor_factor <= 60 && GRLIB_side_enemy != INDEPENDENT && A3W_delivery_failed < 3) then {
+	if (count blufor_sectors >= 7 && _opfor_factor > 50 && GRLIB_side_enemy != INDEPENDENT && A3W_delivery_failed < 3) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;
