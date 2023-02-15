@@ -52,6 +52,7 @@ MGR_Key = 19;
 
 // TFAR checker
 tfar_checker = true;
+ts_server_name = "77th Airborne Division";
 tfar_channel = "╠-● Ingame [TFAR]";
 
 // gain and punishment

@@ -46,8 +46,8 @@ if(tfar_checker) then {
 	waitUntil {!isNull player };
 
 	private _tfarEnabled = call TFAR_fnc_isTeamSpeakPluginEnabled;
-	private _debug = ((isServer && hasInterface) || (is_commander));
-	// private _debug = false;
+	// private _debug = ((isServer && hasInterface) || (is_commander));
+	private _debug = false;
 
 	if(!_tfarEnabled) then {
 		while {!_tfarEnabled && !_debug} do {
@@ -61,7 +61,7 @@ if(tfar_checker) then {
 
 	if(_tfarenabled) then {
 		_correctServer = call TFAR_fnc_getTeamSpeakServerName;
-		while { !(_correctServer == "77th Airborne Division - Teamspeak [www.77thairborne.com]") && !(_correctServer == "MilSim United") && !_debug} do {
+		while { !(_correctServer == ts_server_name) && !(_correctServer == "MilSim United") && !_debug} do {
 			private _msg = format ["Please connect to our teamspeak at 193.111.198.84"];
 			titleText [_msg, "BLACK FADED", 100];
 			20 cutFadeOut 0.1;
