@@ -43,7 +43,7 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 // Town capture
 _mission_name = "mission_TownInvasion";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
-	if (count blufor_sectors >= 10 && (_opfor_factor <= 40 || A3W_mission_failed > 8)) then {
+	if (count blufor_sectors >= 10 && (_opfor_factor <= 40 || A3W_mission_failed >= 8)) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;
@@ -53,7 +53,7 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 // Town Insurgency
 _mission_name = "mission_TownInsurgency";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
-	if (count blufor_sectors >= 10 && (A3W_mission_failed > 8 || A3W_delivery_failed > 2)) then {
+	if (count blufor_sectors >= 10 && (A3W_mission_failed > 8 || A3W_delivery_failed >= 3)) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;
