@@ -27,7 +27,7 @@ while { true } do {
 
 		{
 			// Out vehicle
-			if (_x != player && lifeState _x != 'INCAPACITATED' && vehicle _x == _x) then {
+			if ( isNull objectParent _x && _x != player && lifeState _x != 'INCAPACITATED' ) then {
 				_needammo1 = false;
 				_needammo2 = false;
 				_needmedic = false;
@@ -84,7 +84,7 @@ while { true } do {
 			};
 
 			// In vehicle
-			if (lifeState _x != 'INCAPACITATED' && ( ((gunner vehicle _x) == _x) || ((driver vehicle _x) == _x) || ((commander vehicle _x) == _x) )) then {
+			if ( !(isNull objectParent _x) && lifeState _x != 'INCAPACITATED' && ( ((gunner vehicle _x) == _x) || ((driver vehicle _x) == _x) || ((commander vehicle _x) == _x) )) then {
 				_unit = _x;
 				_vehicle = vehicle _unit;
 				_vehicle_class = typeOf _vehicle;
@@ -94,7 +94,8 @@ while { true } do {
 				_near_arsenal = [_vehicle, "REAMMO", _distarsenal, true] call F_check_near;
 				_is_enabled = !(_vehicle getVariable ["R3F_LOG_disabled", false]);
 				_vehicle_need_ammo = (([_vehicle] call F_getVehicleAmmoDef) <= 0.85);
-				if (((_vehicle_class iskindof "LandVehicle") || (_vehicle_class iskindof "Air") || (_vehicle_class iskindof "Ship")) && _near_arsenal && _is_enabled && _vehicle_need_ammo) then {
+
+				if (_near_arsenal && _is_enabled && _vehicle_need_ammo) then {
 					_timer = _vehicle getVariable ["GREUH_rearm_timer", 0];
 					if (_timer <= time) then {
 						_max_ammo = 3;
@@ -116,7 +117,7 @@ while { true } do {
 				_is_enabled = !(_vehicle getVariable ["R3F_LOG_disabled", false]);
 				_vehicle_need_repair = (damage _vehicle >= 0.10);
 
-				if (((_vehicle_class iskindof "LandVehicle") || (_vehicle_class iskindof "Air") || (_vehicle_class iskindof "Ship")) && _near_repair && _is_enabled && _vehicle_need_repair) then {
+				if (_near_repair && _is_enabled && _vehicle_need_repair) then {
 					_timer = _vehicle getVariable ["GREUH_repair_timer", 0];
 					if (_timer <= time) then {
 						_vehicle setDamage 0;
