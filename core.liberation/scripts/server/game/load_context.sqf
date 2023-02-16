@@ -51,6 +51,7 @@ if (count _context >= 1) then {
                                 gamelogic globalChat format ["Adds %1 (%2) to your squad.", name _unit, rank _unit];
                             }
                         ] remoteExec ["bis_fnc_call", owner _player];
+                        sleep 0.5;
                     } foreach (_context select 2);
                     deleteGroup _grp;
                     _wait = false;
