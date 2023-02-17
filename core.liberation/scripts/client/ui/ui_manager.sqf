@@ -17,11 +17,6 @@ while { true } do {
 	_hide_HUD = !(shownHUD select 0);
 	_overlay = uiNamespace getVariable ['GUI_OVERLAY', objNull];
 
-	if ( isNull (_overlay displayCtrl (101)) && _overlayshown ) then {
-		_overlayshown = false;
-		_first_iteration = true;
-
-	};
 	if ( alive player && !dialog && !_overlayshown && !cinematic_camera_started && !halojumping && !_hide_HUD) then {
 		"LibUI" cutRsc ["statusoverlay", "PLAIN", 1];
 		_overlayshown = true;
