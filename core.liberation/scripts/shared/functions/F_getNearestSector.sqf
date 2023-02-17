@@ -1,4 +1,4 @@
-params [ "_limit", [ "_postosearch", getpos player ], [ "_sector_list", sectors_allSectors ] ];
+params [ "_limit", [ "_postosearch", getPosATL player ], [ "_sector_list", sectors_allSectors ] ];
 private [ "_sector_to_return", "_close_sectors", "_close_sectors_sorted" ];
 
 _sector_to_return = "";
