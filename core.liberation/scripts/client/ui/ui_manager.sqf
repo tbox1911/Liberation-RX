@@ -36,7 +36,6 @@ while { true } do {
 
 	if ( _overlayshown ) then {
 		_overlay = uiNamespace getVariable ['GUI_OVERLAY', objNull];
-
 		(_overlay displayCtrl (266)) ctrlSetText format [ "%1", GRLIB_ui_notif ];
 		(_overlay displayCtrl (267)) ctrlSetText format [ "%1", GRLIB_ui_notif ];
 
@@ -52,7 +51,6 @@ while { true } do {
 		};
 
 		if ( _uiticks % 5 == 0 ) then {
-
 			(_overlay displayCtrl (107)) ctrlSetText format [ "%1", (player getVariable ["GREUH_score_count",0]) ];
 			(_overlay displayCtrl (102)) ctrlSetText format [ "%1", (player getVariable ["GREUH_ammo_count",0]) ];
 			(_overlay displayCtrl (103)) ctrlSetText format [ "%1", (player getVariable ["GREUH_fuel_count",0]) ];
@@ -73,9 +71,7 @@ while { true } do {
 		};
 
 		if ( _uiticks % 25 == 0 ) then {
-
 			if (!isNil "active_sectors" && ( [] call F_opforCap >= GRLIB_sector_cap)) then {
-
 				(_overlay displayCtrl (517)) ctrlShow true;
 
 				if ( !_active_sectors_hint ) then {
