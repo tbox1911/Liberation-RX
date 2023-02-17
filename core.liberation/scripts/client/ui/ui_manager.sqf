@@ -1,14 +1,14 @@
 disableSerialization;
 
-private [ "_overlayshown", "_sectorcontrols", "_active_sectors_hint", "_uiticks", "_attacked_string", "_active_sectors_string", "_color_readiness", "_nearest_active_sector", "_zone_size", "_colorzone", "_bar", "_barwidth", "_first_iteration" ];
+private [ "_overlay", "_hide_HUD", "_attacked_string", "_active_sectors_string", "_color_readiness", "_nearest_active_sector", "_zone_size", "_colorzone", "_bar", "_barwidth", "_first_iteration" ];
 
-_overlayshown = false;
-_sectorcontrols = [201,202,203,244,205];
-_active_sectors_hint = false;
-_first_iteration = true;
+private _overlayshown = false;
+private _sectorcontrols = [201,202,203,244,205];
+private _active_sectors_hint = false;
+private _first_iteration = true;
 GRLIB_ui_notif = "";
 
-_uiticks = 0;
+private _uiticks = 0;
 
 waituntil {sleep 1; GRLIB_player_spawned};
 sleep 2;
@@ -42,10 +42,7 @@ while { true } do {
 		(_overlay displayCtrl (267)) ctrlSetText format [ "%1", GRLIB_ui_notif ];
 
 		if ((getmarkerpos "opfor_capture_marker") distance markers_reset > 100 ) then {
-
-			private [ "_attacked_string" ];
 			_attacked_string = [ markerpos "opfor_capture_marker" ] call F_getLocationName;
-
 			(_overlay displayCtrl (401)) ctrlShow true;
 			(_overlay displayCtrl (402)) ctrlSetText _attacked_string;
 			(_overlay displayCtrl (403)) ctrlSetText (markerText "opfor_capture_marker");
@@ -54,7 +51,6 @@ while { true } do {
 			(_overlay displayCtrl (402)) ctrlSetText "";
 			(_overlay displayCtrl (403)) ctrlSetText "";
 		};
-
 
 		if ( _uiticks % 5 == 0 ) then {
 
