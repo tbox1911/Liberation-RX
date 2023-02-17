@@ -1,51 +1,47 @@
 disableSerialization;
-
-private [ "_overlayshown", "_sectorcontrols", "_active_sectors_hint", "_uiticks", "_attacked_string", "_active_sectors_string", "_color_readiness", "_nearest_active_sector", "_zone_size", "_colorzone", "_bar", "_barwidth", "_first_iteration" ];
-
-_overlayshown = false;
-_sectorcontrols = [201,202,203,244,205];
-_active_sectors_hint = false;
-_first_iteration = true;
+private [ "_overlay", "_hide_HUD", "_attacked_string", "_active_sectors_string", "_color_readiness", "_nearest_active_sector", "_zone_size", "_colorzone", "_bar", "_barwidth" ];
+private _overlayshown = false;
+private _sectorcontrols = [201,202,203,244,205];
+private _active_sectors_hint = false;
+private _first_iteration = true;
+private _uiticks = 0;
 GRLIB_ui_notif = "";
 
-_uiticks = 0;
-
 waituntil {sleep 1; GRLIB_player_spawned};
-sleep 2;
+waituntil {sleep 1; !isNil "resources_infantry"};
 
 if ( isNil "cinematic_camera_started" ) then { cinematic_camera_started = false };
 if ( isNil "halojumping" ) then { halojumping = false };
 
 while { true } do {
 	_hide_HUD = !(shownHUD select 0);
-	_overlay = uiNamespace getVariable 'GUI_OVERLAY';
+	_overlay = uiNamespace getVariable ['GUI_OVERLAY', objNull];
+
 	if ( isNull (_overlay displayCtrl (101)) && _overlayshown ) then {
 		_overlayshown = false;
 		_first_iteration = true;
 
 	};
 	if ( alive player && !dialog && !_overlayshown && !cinematic_camera_started && !halojumping && !_hide_HUD) then {
-		"LibUI" cutRsc["statusoverlay", "PLAIN", 1];
+		"LibUI" cutRsc ["statusoverlay", "PLAIN", 1];
 		_overlayshown = true;
 		_first_iteration = true;
 		_uiticks = 0;
 	};
 	if ( ( !alive player || dialog || cinematic_camera_started || _hide_HUD) && _overlayshown) then {
-		"LibUI" cutRsc["blank", "PLAIN", 0];
+		"LibUI" cutRsc ["blank", "PLAIN", 0];
 		_overlayshown = false;
 		_first_iteration = true;
 	};
 
 	if ( _overlayshown ) then {
+		_overlay = uiNamespace getVariable ['GUI_OVERLAY', objNull];
 
 		(_overlay displayCtrl (266)) ctrlSetText format [ "%1", GRLIB_ui_notif ];
 		(_overlay displayCtrl (267)) ctrlSetText format [ "%1", GRLIB_ui_notif ];
 
-		if ((getmarkerpos "opfor_capture_marker") distance markers_reset > 100 ) then {
-
-			private [ "_attacked_string" ];
+		if ((markerPos "opfor_capture_marker") distance markers_reset > 100 ) then {
 			_attacked_string = [ markerpos "opfor_capture_marker" ] call F_getLocationName;
-
 			(_overlay displayCtrl (401)) ctrlShow true;
 			(_overlay displayCtrl (402)) ctrlSetText _attacked_string;
 			(_overlay displayCtrl (403)) ctrlSetText (markerText "opfor_capture_marker");
@@ -136,11 +132,11 @@ while { true } do {
 					_bar ctrlCommit 2;
 				};
 				(_overlay displayCtrl (205)) ctrlSetText (markerText _nearest_active_sector);
-				{ (_overlay displayCtrl (_x)) ctrlShow true; } foreach  _sectorcontrols;
+				{ (_overlay displayCtrl (_x)) ctrlShow true; } foreach _sectorcontrols;
 
 				"zone_capture" setMarkerSizeLocal [ _zone_size,_zone_size ];
 			} else {
-				{ (_overlay displayCtrl (_x)) ctrlShow false; } foreach  _sectorcontrols;
+				{ (_overlay displayCtrl (_x)) ctrlShow false; } foreach _sectorcontrols;
 				"zone_capture" setmarkerposlocal markers_reset;
 			};
 		};
