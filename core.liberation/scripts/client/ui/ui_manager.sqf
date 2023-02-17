@@ -51,7 +51,6 @@ while { true } do {
 			(_overlay displayCtrl (403)) ctrlSetText "";
 		};
 
-
 		if ( _uiticks % 5 == 0 ) then {
 
 			(_overlay displayCtrl (107)) ctrlSetText format [ "%1", (player getVariable ["GREUH_score_count",0]) ];
