@@ -23,6 +23,7 @@ while { true } do {
 		_first_iteration = true;
 		_uiticks = 0;
 	};
+
 	if ( ( !alive player || dialog || cinematic_camera_started || _hide_HUD) && _overlayshown) then {
 		"LibUI" cutRsc ["blank", "PLAIN", 0];
 		_overlayshown = false;
