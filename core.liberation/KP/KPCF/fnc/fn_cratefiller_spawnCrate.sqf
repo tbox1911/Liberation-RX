@@ -43,9 +43,14 @@ private _checkSpawn = false;
 if (!((((getPos _object) nearEntities 5) select {!(typeOf _x == "Land_RepairDepot_01_green_F")}) isEqualTo [])) exitWith {
     [localize "STR_KP_CRATEFILLER_HINTZONE"] call CBA_fnc_notify;
 };
-*/
+
 // Spawn crate
 private _crate = createVehicle [_crateType, ((getPos _object) findEmptyPosition [0, KP_param_cratefiller_usageRadius, _crateType]), [], 0, "NONE"];
+*/
+
+// Spawn crate
+_pos = [[[position _object, 10]], []] call BIS_fnc_randomPos;
+private _crate = createVehicle [_crateType, _pos, [], 0, "NONE"];
 
 // Clear the storage
 clearWeaponCargoGlobal _crate;

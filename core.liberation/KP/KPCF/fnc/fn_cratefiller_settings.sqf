@@ -64,7 +64,7 @@
     "EDITBOX",
     [localize "STR_KP_CRATEFILLER_CRATES", localize "STR_KP_CRATEFILLER_CRATES_TT"],
     localize "STR_KP_CRATEFILLER_SETTINGS",
-    "[""Box_NATO_equip_F"",""ACE_medicalSupplyCrate_advanced""]",
+    "[""Box_IED_Exp_F""]",
     1,
     {}
 ] call CBA_Settings_fnc_init;

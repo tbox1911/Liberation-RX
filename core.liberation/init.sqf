@@ -341,6 +341,43 @@ log_on_server = compileFinal "
 
 
 
+// Invulnerable crates
+["Box_IED_Exp_F", "InitPost", {
+    params ["_vehicle"];
+	_vehicle allowDamage false;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["Box_NATO_AmmoVeh_F", "InitPost", {
+    params ["_vehicle"];
+	_vehicle allowDamage false;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["Box_East_AmmoVeh_F", "InitPost", {
+    params ["_vehicle"];
+	_vehicle allowDamage false;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["Box_IND_AmmoVeh_F", "InitPost", {
+    params ["_vehicle"];
+	_vehicle allowDamage false;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["Land_BarrelWater_F", "InitPost", {
+    params ["_vehicle"];
+	_vehicle allowDamage false;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["Land_FoodSacks_01_large_brown_idap_F", "InitPost", {
+    params ["_vehicle"];
+	_vehicle allowDamage false;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+["Land_MetalBarrel_F", "InitPost", {
+    params ["_vehicle"];
+	_vehicle allowDamage false;
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+
 
 
 // SAM
