@@ -28,7 +28,9 @@ GRLIB_mod_list_west = [
     "3CB_BAF_D",	// Z@Warrior British Armed Forces Desert
     "3CB_ChDKZ",	// Z@Warrior Chernarussian Movement of the Red Star
     "BW_MOD",		// Z@Warrior Bundenswehr Tropentarn
-    "CWR3_US"		// Z@Warrior Cold War Rearmed III - US
+    "CWR3_US",		// Z@Warrior Cold War Rearmed III - US
+    "UNS_US",		// Z@Warrior Unsung
+    "UNS_NVA"		// Z@Warrior Unsung
 ];
 
 GRLIB_mod_list_east = [
@@ -61,5 +63,7 @@ GRLIB_mod_list_east = [
     "3CB_BAF_W",	// Z@Warrior British Armed Forces Woodland
     "3CB_BAF_D",	// Z@Warrior British Armed Forces Desert
     "3CB_ChDKZ",	// Z@Warrior Chernarussian Movement of the Red Star
-    "CWR3_SOV"		// Z@Warrior Cold War Rearmed III - SOVIET
+    "CWR3_SOV",		// Z@Warrior Cold War Rearmed III - SOVIET
+    "UNS_US",		// Z@Warrior Unsung
+    "UNS_NVA"		// Z@Warrior Unsung
 ];

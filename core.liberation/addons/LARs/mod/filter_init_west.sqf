@@ -56,3 +56,7 @@ if (["PO_", GRLIB_mod_west, true] call F_startsWith) then {
 	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_RHS.sqf";
 	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_PO.sqf";
 };
+// Add Unsung Weapons
+if (["UNS_", GRLIB_mod_west, true] call F_startsWith) then {
+	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_UNS.sqf";
+};

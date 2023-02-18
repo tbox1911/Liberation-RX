@@ -102,7 +102,9 @@ class Params
 					"3CB British Army Desert",
 					"3CB Chernarussian Red Star",
 					"Bundenswehr Tropentarn",
-					"CWR Cold War Rearmed III - US"
+					"CWR Cold War Rearmed III - US",
+					"Unsung USA",
+					"Unsung NVA"
 				};
 		default = 0;
 	};
@@ -139,7 +141,9 @@ class Params
 					"3CB British Army Woodland",
 					"3CB British Army desert",
 					"3CB Chernarussian Red Star",
-					"CWR Cold War Rearmed III - SOVIET"
+					"CWR Cold War Rearmed III - SOVIET",
+					"Unsung USA",
+					"Unsung NVA"					
 				};
 		default = 0;
 	};

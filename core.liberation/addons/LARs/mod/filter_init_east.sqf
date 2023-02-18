@@ -63,3 +63,7 @@ if (["FFAA_", GRLIB_mod_east, true] call F_startsWith) then {
 if (["PO_", GRLIB_mod_east, true] call F_startsWith) then {
 	GRLIB_MOD_signature = GRLIB_MOD_signature + ["LOP_"];
 };
+// Add Unsung Weapons
+if (["UNS_", GRLIB_mod_east, true] call F_startsWith) then {
+	GRLIB_MOD_signature = GRLIB_MOD_signature + ["uns_"];
+};
