@@ -37,7 +37,8 @@ if (FAC_MSU_ACTIVE) then {
 	if (isNil "global_arsenal") then {
 		global_arsenal = false
 	};
-
+	
+	/*
 	if (global_arsenal) then {
         _glob_box = missionnamespace getVariable ["myLARsBox", objNull];
 		[_glob_box, player, false] call ace_arsenal_fnc_openBox;
@@ -50,9 +51,24 @@ if (FAC_MSU_ACTIVE) then {
 			[myLARsBox, player, true] call ace_arsenal_fnc_openBox;
 		};
 	};
+	*/
+	
+	
+	[myLARsBox, true] call ace_arsenal_fnc_initBox; 
+	
+	if(!isNil "MSU_blacklisted_from_arsenal") then {
+		[myLARsBox, MSU_blacklisted_from_arsenal] call ace_arsenal_fnc_removeVirtualItems;
+	};
+	
+	if(!isNil "MSU_whitelisted_from_arsenal") then {
+		[myLARsBox, MSU_whitelisted_from_arsenal] call ace_arsenal_fnc_addVirtualItems;
+	};
+	
+	[myLARsBox, player] call ace_arsenal_fnc_openBox;
 
 
-	    // filter and pay loadout
+
+	// filter and pay loadout
 	[player] call F_filterloadout;
 	[player] call F_payloadout;
 };
