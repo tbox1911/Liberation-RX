@@ -33,7 +33,7 @@ player createDiaryRecord ["LRX Info", ["Modders", format ["<font color='%1'>C0br
 player createDiaryRecord ["LRX Info", ["Modders", "Thanks to the Mod Template Master:"]];
 
 player createDiarySubject ["LRX Info", "Support LRX !"];
-player createDiaryRecord ["LRX Info", ["Support LRX !", "<img image='res\mail.paa' height='32' width='25'/>  <img image='res\paypal.paa' height='32' width='32'/>     <font color='#0080ff'>tbox1911@gmail.com</font><br/><br/>Thank you !"]];
+player createDiaryRecord ["LRX Info", ["Support LRX !", "<img image='res\mail.paa' height='32' width='25'/>  <img image='res\paypal.paa' height='32' width='32'/>     <font color='#0080ff'>https://paypal.me/LiberationRX</font><br/><br/> Thank you !"]];
 player createDiaryRecord ["LRX Info", ["Support LRX !", "or just buy me a beer !!<br/><br/>You can use my payPal account:<br/>"]];
 player createDiaryRecord ["LRX Info", ["Support LRX !", "You want to participate to the mission dev ?<br/><br/>or contribute to the server hosting ?"]];
 player createDiaryRecord ["LRX Info", ["Support LRX !", "<br/>You like Liberation RX ?<br/>"]];
