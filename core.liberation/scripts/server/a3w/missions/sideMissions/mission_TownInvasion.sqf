@@ -6,7 +6,7 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_nbUnits", "_box1", "_box2", "_townName", "_buildingpositions", "_tent1", "_chair1", "_chair2", "_fire1"];
+private ["_nbUnits", "_townName", "_buildingpositions", "_tent1", "_chair1", "_chair2", "_fire1"];
 
 _setupVars =
 {
@@ -23,10 +23,6 @@ _setupVars =
 _setupObjects =
 {
 	_missionPos = (markerPos _missionLocation vectorAdd [([[-50,0,50], 20] call F_getRND), ([[-50,0,50], 20] call F_getRND), 0]);
-
-	// spawn some crates in the middle of town (Town marker position)
-	_box1 = [A3W_BoxWps, _missionPos, true] call boxSetup;
-	_box2 = [A3W_BoxWps, _missionPos, true] call boxSetup;
 
 	// create some atmosphere around the crates 8)
 	_tent1 = createVehicle ["Land_cargo_addon02_V2_F", _missionPos, [], 3, "None"];
@@ -70,17 +66,14 @@ _waitUntilCondition = { !(_missionLocation in blufor_sectors) };
 
 _failedExec = {
 	// Mission failed
-	{ deleteVehicle _x } forEach [_box1, _box2, _tent1, _chair1, _chair2, _fire1];
+	{ deleteVehicle _x } forEach [_tent1, _chair1, _chair2, _fire1];
 	[_missionPos] call clearlandmines;
 	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
 
 _successExec = {
-	// Mission completed
-	{
-		_x setVariable ["R3F_LOG_disabled", false, true];
-		_x setVariable ["GRLIB_vehicle_owner", nil, true];
-	} forEach [_box1, _box2];
+	// spawn some crates in the middle of town (Town marker position)
+	[A3W_BoxWps, _missionPos, false] call boxSetup;
 
 	private _rwd_ammo = (100 + floor(random 100));
 	private _rwd_fuel = (10 + floor(random 10));
