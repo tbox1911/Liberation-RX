@@ -67,5 +67,11 @@ if (GRLIB_revive != 0) then {
   [] spawn PAR_AI_Manager;
 };
 
+// Grave Marker
+_marker = createMarkerLocal ["player_grave_box", markers_reset];
+_marker setMarkerShapeLocal "ICON";
+_marker setMarkerTypeLocal "KIA";
+_marker setMarkerTextlocal format ["%1's Grave.", name player];
+
 waitUntil {!(isNull (findDisplay 46))};
 systemChat "-------- pSiKo AI Revive Initialized --------";

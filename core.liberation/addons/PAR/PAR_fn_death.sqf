@@ -29,7 +29,7 @@ if (_unit == player) then {
 		_grave_box setVariable ["GRLIB_vehicle_owner", getPlayerUID player, true];
 
 		// remove old grave and box
-		_old_graves_max = 5;
+		_old_graves_max = 3;
 		_old_graves = _unit getVariable ["GRLIB_grave", []];
 		if (count _old_graves > 0) then {
 			{ deleteVehicle _x } forEach (attachedObjects (_old_graves select (count _old_graves)-1));
@@ -40,6 +40,7 @@ if (_unit == player) then {
 		};
 		_old_graves pushback _grave;
 		_unit setvariable ["GRLIB_grave", _old_graves, true];
+		"player_grave_box" setMarkerPosLocal _grave_box;
 
 		// clear box
 		clearWeaponCargo _grave_box;
@@ -83,7 +84,7 @@ if (_unit == player) then {
 	};
 
 	// respawn penalty
-	if ( [_unit] call F_getScore > GRLIB_perm_log + 20 ) then { [_unit, -10] remoteExec ["F_addScore", 2] };
+	if ( [_unit] call F_getScore > (GRLIB_perm_log + 20) ) then { [_unit, -10] remoteExec ["F_addScore", 2] };
 	titleText ["" ,"BLACK FADED", 100];
 };
 
