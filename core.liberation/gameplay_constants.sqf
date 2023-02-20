@@ -717,7 +717,26 @@ MSU_blacklisted_from_arsenal = [
 "I_UavTerminal",
 "C_UavTerminal",
 "O_UavTerminal",
-"I_E_UavTerminal"
+"I_E_UavTerminal",
+
+
+"hlc_rifle_BAB",
+"rhs_weap_SCARH_USA_CQC",
+"rhs_weap_SCARH_USA_LB",
+"rhs_weap_SCARH_USA_STD",
+"HLC_wp_M134Painless",
+"hlc_wp_SCARL_STD_300AAC_SRX_muddy",
+"hlc_wp_SCARH_CQC_SRX_tranoflage",
+"CUP_arifle_M16A1GL_FS",
+"hgun_esd_01_F",
+"hlc_pistol_DL44",
+"VSM_CSAT_AOR2_Camo",
+"VSM_CSAT_MulticamTropic_Camo",
+"rhs_uniform_cossack",
+"RUFlagS",
+"RUFlag",
+"RUFlagW",
+"RUFlagWS"
 ];
 
 // MSU_whitelisted_from_arsenal = [];

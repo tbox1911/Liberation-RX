@@ -801,7 +801,7 @@ support_crates = [
 ["ACE_Wheel",0,0,0,GRLIB_perm_inf],
 ["Land_CanisterFuel_F",0,0,0,GRLIB_perm_inf],
 // Kisten
-["Box_NATO_Equip_F",0,0,0,GRLIB_perm_inf],
+["Box_IED_Exp_F",0,0,0,GRLIB_perm_inf],
 ["B_CargoNet_01_ammo_F",0,0,0,GRLIB_perm_inf],
 ["CargoNet_01_box_F",0,0,0,GRLIB_perm_inf],
 ["CargoNet_01_barrels_F",0,0,0,GRLIB_perm_inf],
