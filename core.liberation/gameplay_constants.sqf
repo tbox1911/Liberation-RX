@@ -719,7 +719,6 @@ MSU_blacklisted_from_arsenal = [
 "O_UavTerminal",
 "I_E_UavTerminal",
 
-
 "hlc_rifle_BAB",
 "rhs_weap_SCARH_USA_CQC",
 "rhs_weap_SCARH_USA_LB",
@@ -736,7 +735,25 @@ MSU_blacklisted_from_arsenal = [
 "RUFlagS",
 "RUFlag",
 "RUFlagW",
-"RUFlagWS"
+"RUFlagWS",
+"U_C_man_sport_2_F",
+"U_C_ArtTShirt_01_v6_F",
+"U_C_ArtTShirt_01_v2_F",
+"U_I_C_Soldier_Para_5_F",
+"U_C_Uniform_Farmer_01_F",
+"U_C_IDAP_Man_Jeans_F",
+"U_C_Mechanic_01_F",
+"U_C_IDAP_Man_TeeShorts_F",
+"U_C_IDAP_Man_Tee_F",
+"U_C_IDAP_Man_shorts_F",
+"U_C_IDAP_Man_casual_F",
+"ITC_Land_O_AL6_Packed",
+"ITC_Land_O_AL6m_Packed",
+"ITC_Land_O_UAV_Packed",
+"ITC_Land_O_AR2e_Packed",
+"ITC_Land_O_AR2i_Packed",
+"ITC_Land_O_AL6m_Packed",
+"ITC_Land_O_AL6m_Packed"
 ];
 
 // MSU_whitelisted_from_arsenal = [];
