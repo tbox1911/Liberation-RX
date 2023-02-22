@@ -101,8 +101,11 @@ light_vehicles = [
 		["rhsusf_m966_w",0,light_vehicle_price_tier_5,0,GRLIB_perm_inf],
 		["rhs_tigr_msv",0,light_vehicle_price_tier_5,0,GRLIB_perm_inf],
 		["rhs_tigr_m_msv",0,light_vehicle_price_tier_5,0,GRLIB_perm_inf],
+		["rhs_tigr_sts_msv",0,light_vehicle_price_tier_6,0,GRLIB_perm_inf],
 	//CUP BAF
 		["CUP_I_LR_AA_AAF",0,light_vehicle_price_tier_7,0,GRLIB_perm_inf],
+		["CUP_B_BAF_Coyote_L2A1_W",0,light_vehicle_price_tier_7,0,GRLIB_perm_inf],
+		["CUP_B_BAF_Coyote_GMG_W",0,light_vehicle_price_tier_7,0,GRLIB_perm_inf],
 	//BAF
 		["UK3CB_BAF_Jackal2_L111A1_W",0,light_vehicle_price_tier_6,0,GRLIB_perm_inf],
 		["UK3CB_BAF_Jackal2_L134A1_W",0,light_vehicle_price_tier_7,0,GRLIB_perm_inf],
@@ -274,7 +277,10 @@ strong_light_vehicles = [
 	//CUP BW
 		//["CUP_B_FENNEK_GER_Wdl",0,strong_light_vehicle_price_tier_5,0,GRLIB_perm_inf],
 	//Vanilla
-		["I_MRAP_03_F",0,strong_light_vehicle_price_tier_5,0,GRLIB_perm_inf],
+		["CUP_B_FENNEK_GER_Wdl",0,strong_light_vehicle_price_tier_5,0,GRLIB_perm_inf],
+		["CUP_I_FENNEK_HMG_ION",0,strong_light_vehicle_price_tier_6,0,GRLIB_perm_inf],
+		["CUP_I_FENNEK_GMG_ION",0,strong_light_vehicle_price_tier_6,0,GRLIB_perm_inf],
+		
 		["B_MRAP_01_F",0,strong_light_vehicle_price_tier_4,0,GRLIB_perm_inf],
 		["B_MRAP_01_HMG_F",0,strong_light_vehicle_price_tier_6,0,GRLIB_perm_inf],
 		["B_MRAP_01_GMG_F",0,strong_light_vehicle_price_tier_7,0,GRLIB_perm_inf],
