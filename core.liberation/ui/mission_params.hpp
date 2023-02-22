@@ -148,7 +148,7 @@ class Params
 		title = $STR_WEATHER_PARAM;
 		values[] = { 1,2,3,4 };
 		texts[] = { $STR_WEATHER_PARAM1, $STR_WEATHER_PARAM2, $STR_WEATHER_PARAM3, $STR_WEATHER_PARAM4 };
-		default = 2;
+		default = 1;
 	};
 	class ResourcesMultiplier {
 		title = $STR_PARAMS_RESOURCESMULTIPLIER;
