@@ -55,7 +55,7 @@ GRLIB_checkAction_Wreck = {
 
 GRLIB_checkAction_Box = { 
 	params ["_target", "_unit"];
-	([_target] call is_menuok_veh && [] call is_neartransport && (!(_target getVariable ['R3F_LOG_disabled', false])))
+	([_target] call is_menuok_veh && [] call is_neartransport && [_unit, _target] call is_owner && !(_target getVariable ['R3F_LOG_disabled', false]))
 };
 
 // GRLIB_checkAction_X = { 
