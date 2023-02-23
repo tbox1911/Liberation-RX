@@ -6,7 +6,7 @@ private _uid = getPlayerUID player;
 _vehicle setVariable ["GRLIB_vehicle_owner", _uid, true];
 _vehicle setVariable ["R3F_LOG_disabled", true, true];
 _vehicle setVariable ["GRLIB_counter_TTL", nil, true];
-_vehicle engineOn false;
+[_vehicle, false] remoteExec ["engineOn", 0];
 
 {
     if !(_x getVariable ["GRLIB_vehicle_owner", ""] in ["", "public", "server"]) then {
