@@ -812,7 +812,7 @@ support_crates = [
 ["CargoNet_01_box_F",0,0,0,GRLIB_perm_inf],
 ["CargoNet_01_barrels_F",0,0,0,GRLIB_perm_inf],
 // Waffen
-["Item_rhs_weap_fgm148",0,50,0,GRLIB_perm_inf],
+["SNC_Javelin",0,450,0,GRLIB_perm_inf],
 // Kistenf�ller & Container
 ["Land_RepairDepot_01_green_F",0,0,0,GRLIB_perm_inf],
 ["ffaa_UAVStation",0,0,0,GRLIB_perm_inf],
