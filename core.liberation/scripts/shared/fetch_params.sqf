@@ -156,3 +156,8 @@ if ( GRLIB_disable_death_chat == 1 ) then { GRLIB_disable_death_chat = true } el
 
 // Overide sector radius
 if (GRLIB_sector_radius != 0) then { GRLIB_sector_size = GRLIB_sector_radius };
+
+// Map - Template Creators
+GRLIB_map_modder = "Unknow";
+GRLIB_west_modder = "Unknow";
+GRLIB_east_modder = "Unknow";

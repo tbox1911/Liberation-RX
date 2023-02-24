@@ -1,5 +1,6 @@
 // *** FRIENDLIES ***
 GRLIB_side_friendly = EAST;
+GRLIB_west_modder = "Z@Warrior";
 
 // Project OPFOR Ukrainian Armed Forces
 

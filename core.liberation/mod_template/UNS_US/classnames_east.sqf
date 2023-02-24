@@ -1,5 +1,6 @@
 // *** BADDIES ***
 GRLIB_side_enemy = WEST;
+GRLIB_east_modder = "Z@Warrior";
 
 // All class MUST be defined !
 // Unsung Men (US 1st Infantery Division'65)

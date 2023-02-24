@@ -5682,7 +5682,7 @@
 		<Key ID="STR_SQUAD_FOLLOW">
 			<Original>-- SQUAD FOLLOW</Original>
 			<Russian>-- ОТРЯД, СЛЕДОВАТЬ</Russian>
-			<French>-- ESCOUADE SUIT</French>
+			<French>-- ESCOUADE REGROUP</French>
 			<Japanese>-- 分隊追随</Japanese>
 			<Chinesesimp>-- 小队跟随 --</Chinesesimp>
 			<Chinese>-- 小隊跟隨 --</Chinese>
@@ -5702,7 +5702,7 @@
 		<Key ID="STR_SQUAD_DISMISS">
 			<Original>-- SQUAD DISMISS</Original>
 			<Russian>-- ОТОЗВАТЬ ОТРЯД</Russian>
-			<French>-- ESCOUADE AU FOYER</French>
+			<French>-- RENVOYER ESCOUADE</French>
 			<Japanese>-- 分隊解散</Japanese>
 			<Chinesesimp>-- 小队解散 --</Chinesesimp>
 			<Chinese>-- 小隊解散 --</Chinese>

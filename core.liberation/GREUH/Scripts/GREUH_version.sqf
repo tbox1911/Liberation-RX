@@ -100,3 +100,9 @@ player createDiaryRecord ["Shortcut", ["Shortcut", format ["Open MagRepack Utili
 player createDiaryRecord ["Shortcut", ["Shortcut", format ["Tactical Ping : Key <font color='#ff8000'>%1</font>", ["TacticalPing"] call _getkeyName]]];
 player createDiaryRecord ["Shortcut", ["Shortcut", format ["Show the Score Table : Key <font color='#ff8000'>%1</font>", ["NetworkStats"] call _getkeyName]]];
 player createDiaryRecord ["Shortcut", ["Shortcut", format ["-= Key Shortcut =-"]]];
+
+player createDiarySubject ["MapInfo","MapInfo"];
+player createDiaryRecord ["MapInfo", ["MapInfo", format ["This Map: %1<br/>was made by: <font color='%3'>%2</font>.", worldname, GRLIB_map_modder, call _getRandomColor]]];
+player createDiaryRecord ["MapInfo", ["MapInfo", format ["The East faction <font color='#f80000'>%1</font><br/>was made by: <font color='%3'>%2</font>.", GRLIB_mod_east, GRLIB_east_modder, call _getRandomColor]]];
+player createDiaryRecord ["MapInfo", ["MapInfo", format ["The West faction <font color='#0000f8'>%1</font><br/>was made by: <font color='%3'>%2</font>.", GRLIB_mod_west, GRLIB_west_modder, call _getRandomColor]]];
+player createDiaryRecord ["MapInfo", ["MapInfo", format ["-= Map Information =-"]]];

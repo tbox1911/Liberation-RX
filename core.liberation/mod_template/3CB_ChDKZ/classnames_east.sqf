@@ -1,11 +1,10 @@
 // *** BADDIES ***
 GRLIB_side_enemy = EAST;
+GRLIB_east_modder = "Z@Warrior";
 
 // All class MUST be defined !
 
 // 3CB ChDKZ (Chernarussian Movement of the Red Star)
-// Requ. Mods: 
-
 
 opfor_sentry = "UK3CB_CHD_O_RIF_2";
 opfor_rifleman = "UK3CB_CHD_O_RIF_1";

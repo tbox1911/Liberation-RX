@@ -1,5 +1,6 @@
 // *** FRIENDLIES ***
 GRLIB_side_enemy = EAST;
+GRLIB_east_modder = "Z@Warrior";
 
 // All class MUST be defined !
 // Unsung Men NVA (8th Battalion PAWN '65)
