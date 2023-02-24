@@ -3,6 +3,7 @@ diag_log format ["Check Victory condition at %1", time];
 _blufor_bigtowns = [ blufor_sectors, { _x in sectors_bigtown } ] call BIS_fnc_conditionalSelect;
 
 if ( (count _blufor_bigtowns == count sectors_bigtown) && (count (sectors_allSectors - blufor_sectors) == 0) ) then {
+	diag_log format ["Blufor Victory at %1 !!", time];
 	{ _x allowDamage false; (vehicle _x) allowDamage false; } foreach allPlayers;
 
 	publicstats = [];
