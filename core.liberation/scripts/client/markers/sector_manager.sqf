@@ -28,13 +28,15 @@ if (!GRLIB_hide_opfor) then {
 };
 
 private _sector_count = -1;
+private _sector_left = 0;
 
-uiSleep 1;
+sleep 1;
 
 while { true } do {
 	waitUntil {sleep 1; (count blufor_sectors + count GRLIB_all_fobs) != _sector_count};
+	_sector_left = count (sectors_allSectors - blufor_sectors);
 
-	if (GRLIB_hide_opfor) then {
+	if (GRLIB_hide_opfor && _sector_left > 3) then {
 		{ 
 			_sector_pos = markerPos _x;
 			_nearest_sector = [(GRLIB_sector_size * 3), _sector_pos, blufor_sectors] call F_getNearestSector;
