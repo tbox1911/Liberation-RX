@@ -39,3 +39,14 @@ civilian_vehicles = [
     "uns_M35A2_fuel",
     "uns_M35A2_repair"
 ];
+
+civilian_boats = [
+    "UNS_skiff2_C",
+    "UNS_skiff_C",
+    "UNS_skiff_cargo_C",
+    "UNS_sampan_fish1",
+    "UNS_sampan_cargo",
+    "UNS_sampan_supply",
+    "UNS_Sampan_Transport",
+    "UNS_sampan_village"
+];

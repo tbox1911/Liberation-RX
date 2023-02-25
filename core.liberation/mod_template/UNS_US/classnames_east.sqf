@@ -93,11 +93,10 @@ militia_vehicles = [
 	"uns_M113A1_M2"
 ];
 
-boats_east = [
+opfor_boats = [
 	"uns_PBR_M10",
 	"uns_pbr",
-	"uns_pbr_mk18",
-	"UNS_Zodiac_W"
+	"uns_pbr_mk18"
 ];
 
 opfor_vehicles = [

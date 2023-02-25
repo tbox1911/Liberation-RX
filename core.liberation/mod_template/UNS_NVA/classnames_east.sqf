@@ -101,10 +101,9 @@ militia_vehicles = [
 	"uns_ot34_85_nva"
 ];
 
-boats_east = [
+opfor_boats = [
 	"UNS_ASSAULT_BOAT_NVA",
 	"UNS_ASSAULT_BOAT_VC",
-	"UNS_Zodiac_NVA",
 	"UNS_PATROL_BOAT_NVA"
 ];
 
@@ -120,7 +119,7 @@ opfor_vehicles = [
 	"uns_zil157",
 	"uns_Type55",
 	"uns_Type55_ZU",
-	"uns_nvatruck_s60",
+	"uns_nvatruck_mg",
 	"uns_BTR152_ZPU",
 	"uns_Type63_mg",
 	"uns_ot34_85_nva",
@@ -128,7 +127,8 @@ opfor_vehicles = [
 	"uns_t34_85_nva",
 	"uns_t54_nva",
 	"uns_t55_nva",
-	"uns_to55_nva"
+	"uns_to55_nva",
+	"uns_Mi8T_VPAF"
 ];
 
 opfor_vehicles_low_intensity = [
@@ -143,7 +143,7 @@ opfor_vehicles_low_intensity = [
 	"uns_zil157",
 	"uns_Type55",
 	"uns_Type55_ZU",
-	"uns_nvatruck_s60",
+	"uns_nvatruck_camo",
 	"uns_BTR152_ZPU",
 	"uns_Type63_mg"
 ];
@@ -166,7 +166,9 @@ opfor_battlegroup_vehicles = [
 	"uns_to55_nva",
 	"uns_an2_bmb",
 	"uns_Mig21_CAS",
-	"uns_Mig21_BMB"
+	"uns_Mig21_BMB",
+	"uns_Mi8TV_VPAF_MG",
+	"uns_nvatruck_mg"
 ];
 
 opfor_battlegroup_vehicles_low_intensity = [
@@ -180,7 +182,7 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"uns_zil157",
 	"uns_Type55",
 	"uns_Type55_ZU",
-	"uns_nvatruck_s60",
+	"uns_nvatruck",
 	"uns_BTR152_ZPU",
 	"uns_Type63_mg",
 	"uns_ot34_85_nva",
@@ -206,7 +208,8 @@ opfor_air = [
 	"uns_an2_cas",
 	"uns_an2_bmb",
 	"uns_Mig21_CAS",
-	"uns_Mig21_BMB"
+	"uns_Mig21_BMB",
+	"uns_Mi8TV_VPAF_MG"
 ];
 
 opfor_statics = [
