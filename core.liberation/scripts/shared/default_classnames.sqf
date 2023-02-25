@@ -61,6 +61,8 @@ GRLIB_vehicle_blacklist = [];
 opfor_texture_overide = [];
 opfor_statics = [];
 units_loadout_overide = [];
+
+// see https://community.bistudio.com/wiki/nearestTerrainObjects for list
 GRLIB_clutter_cutter = ["Tree","Bush","Hide","House","Fence","Ruins","Rock","Rocks","Building"];
 
 // *** LRX DEFAULT BUILDINGS CLASSNAMES ***

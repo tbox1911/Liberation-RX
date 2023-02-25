@@ -432,7 +432,7 @@ while { true } do {
 
 					// ClutterCutter
 					if (_classname == "Land_ClutterCutter_large_F") then {
-						{_x hideObject true} forEach (nearestTerrainObjects [_truepos, GRLIB_clutter_cutter, 20]);
+						{_x hideObjectGlobal true} forEach (nearestTerrainObjects [_truepos, GRLIB_clutter_cutter, 20]);
 					};
 					
 					// FOB
