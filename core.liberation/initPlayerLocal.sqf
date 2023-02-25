@@ -11,11 +11,12 @@ Regelwerk MiSim United<br />
 1.    Allgemeines<br />
 1.1    Trolling, Beleidigung, Rassismus, sexuelle Belästigung so wie alles, was strafrechtlich verfolgt wird ist verboten und führt zum Ausschluss.<br />
 1.2    Das Recycling, Stehlen oder Zerstören von Fahrzeugen anderer Spieler ist untersagt.<br />
-1.3    Schießen innerhalb der FOBs ist nur zu deren Verteidigung erlaubt.<br />
-1.4    Den Anweisungen von Moderatoren ist Folge zu leisten.<br />
-1.5    Bei Verlust von Fahrzeugen durch Bugs etc. liegt es im Ermessen der Moderatoren, eine Erstattung zu gewähren. (Videobeweis hilft hierbei.)<br />
-1.6    Bei Streitigkeiten mit Moderatoren ruhig bleiben, einen weiteren hinzuholen und ggf. ein Video machen.<br />
-1.7    Ausnutzen von Programmfehlern, Bugs, Exploits etc. ist verboten.<br />
+1.3    Wer unseren Server betritt, erklärt sich damit einverstanden, dass jede Form von Bild und Ton hier für die Öffentlichkeit bestimmt sind und jederzeit ohne weitere Ankündigung aufgezeichnet werden können.<br />
+1.4    Schießen innerhalb der FOBs ist nur zu deren Verteidigung erlaubt.<br />
+1.5    Den Anweisungen von Moderatoren ist Folge zu leisten.<br />
+1.6    Bei Verlust von Fahrzeugen durch Bugs etc. liegt es im Ermessen der Moderatoren, eine Erstattung zu gewähren. (Videobeweis hilft hierbei.)<br />
+1.7    Bei Streitigkeiten mit Moderatoren ruhig bleiben, einen weiteren hinzuholen und ggf. ein Video machen.<br />
+1.8    Ausnutzen von Programmfehlern, Bugs, Exploits etc. ist verboten.<br />
 <br />
 <br />
 2.    Gruppen<br />
@@ -55,12 +56,13 @@ Rules MiSim United<br />
 <br />
 1. General<br />
 1.1 Trolling, insults, racism, sexual harassment as well as anything that will be prosecuted is prohibited and will result in a serverban.<br />
-1.2 Recycling, stealing or destroying other players' vehicles is prohibited.<br />
-1.3 Shooting within the FOBs is only permitted for defense of said FOB.<br />
-1.4 The instructions of moderators must be followed without discussion.<br />
-1.5 If vehicles are lost due to bugs etc..., it is at the discretion of the moderators to grant a refund. (Video proof helps with this.)<br />
-1.6 Stay calm in the event of disputes with moderators, bring in another player and, if necessary, make a video.<br />
-1.7 Using program errors, bugs, exploits, etc. is prohibited.<br />
+1.2 Who enters our server, agrees that any form of image and sound here are intended for the public and can be recorded at any time without further notice.<br />
+1.3 Recycling, stealing or destroying other players' vehicles is prohibited.<br />
+1.4 Shooting within the FOBs is only permitted for defense of said FOB.<br />
+1.5 The instructions of moderators must be followed without discussion.<br />
+1.6 If vehicles are lost due to bugs etc..., it is at the discretion of the moderators to grant a refund. (Video proof helps with this.)<br />
+1.7 Stay calm in the event of disputes with moderators, bring in another player and, if necessary, make a video.<br />
+1.8 Using program errors, bugs, exploits, etc. is prohibited.<br />
 <br />
 <br />
 2. Groups<br />
