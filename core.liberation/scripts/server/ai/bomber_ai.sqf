@@ -31,6 +31,7 @@ _unit setSpeedMode "FULL";
 _unit allowFleeing 0;
 sleep 1;
 
+private ["_expl1","_expl2","_expl3"];
 while {alive _unit} do {
 	_targets = [getpos _unit , 100] call F_getNearbyPlayers;
 	if (count _targets > 0) then {
