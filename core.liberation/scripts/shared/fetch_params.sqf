@@ -3,7 +3,7 @@ GRLIB_introduction = ["Introduction",1] call bis_fnc_getParamValue;
 GRLIB_deployment_cinematic = ["DeploymentCinematic",1] call bis_fnc_getParamValue;
 GRLIB_unitcap = ["Unitcap",1] call bis_fnc_getParamValue;
 GRLIB_fancy_info = ["FancyInfo",1] call bis_fnc_getParamValue;
-GRLIB_hide_opfor = ["HideOpfor",0] call bis_fnc_getParamValue;
+GRLIB_hide_opfor = ["HideOpfor",1] call bis_fnc_getParamValue;
 GRLIB_thermic = ["Thermic",1] call bis_fnc_getParamValue;
 GRLIB_disable_death_chat = ["DeathChat", 1] call bis_fnc_getParamValue;
 //------------------------------------------------------------------------
