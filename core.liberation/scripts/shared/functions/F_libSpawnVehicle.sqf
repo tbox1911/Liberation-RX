@@ -40,7 +40,7 @@ if ( _classname isKindOf "Air" ) then {
 	_spawnpos set [2, 0.5];
 	if (surfaceIsWater _spawnpos && !(_classname isKindOf "Ship")) then {
 		if ( _civilian ) then {
-			_classname = selectRandom boats_names_civ;
+			_classname = selectRandom civilian_boats;
 		} else {
 			_classname = selectRandom opfor_boats;
 		};

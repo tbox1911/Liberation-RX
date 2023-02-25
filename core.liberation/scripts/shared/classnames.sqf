@@ -188,13 +188,15 @@ boats_names = [
 	"B_Boat_Armed_01_minigun_F"
 ] + opfor_boats + boats_west;
 
-boats_names_civ = [
-	"C_Scooter_Transport_01_F",
-	"C_Boat_Civil_01_F",
-	"C_Boat_Transport_02_F",
-	"C_Boat_Civil_01_police_F",
-	"C_Boat_Civil_01_rescue_F"
-];
+if ( isNil "civilian_boats" ) then {
+	civilian_boats = [
+		"C_Scooter_Transport_01_F",
+		"C_Boat_Civil_01_F",
+		"C_Boat_Transport_02_F",
+		"C_Boat_Civil_01_police_F",
+		"C_Boat_Civil_01_rescue_F"
+	];
+};
 
 // *** LRX - A3W ***
 if ( isNil "guard_squad" ) then {
