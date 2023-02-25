@@ -38,25 +38,25 @@ opfor_patrol = "Land_Cargo_Patrol_V1_F";
 opfor_hq = "Land_Cargo_HQ_V1_F";
 
 militia_squad = [
-"uns_men_ROK_C65_AT",
-"uns_men_ROK_C65_AR",
-"uns_men_ROK_C65_ENG",
-"uns_men_ROK_C65_DEM",
-"uns_men_ROK_C65_GL",
-"uns_men_ROK_C65_MG",
-"uns_men_ROK_C65_MRK2",
-"uns_men_ROK_C65_MRK",
-"uns_men_ROK_C65_MED",
-"uns_men_ROK_C65_MGAASG",
-"uns_men_ROK_C65_MTSG",
-"uns_men_ROK_C65_RF1",
-"uns_men_ROK_C65_RF2",
-"uns_men_ROK_C65_RF3",
-"uns_men_ROK_C65_SAP",
-"uns_men_ROK_C65_SAP",
-"uns_men_ROK_C65_STY",
-"uns_men_ROK_C65_STY3",
-"uns_men_ROK_C65_STY2"
+	"uns_men_ROK_C65_AT",
+	"uns_men_ROK_C65_AR",
+	"uns_men_ROK_C65_ENG",
+	"uns_men_ROK_C65_DEM",
+	"uns_men_ROK_C65_GL",
+	"uns_men_ROK_C65_MG",
+	"uns_men_ROK_C65_MRK2",
+	"uns_men_ROK_C65_MRK",
+	"uns_men_ROK_C65_MED",
+	"uns_men_ROK_C65_MGAASG",
+	"uns_men_ROK_C65_MTSG",
+	"uns_men_ROK_C65_RF1",
+	"uns_men_ROK_C65_RF2",
+	"uns_men_ROK_C65_RF3",
+	"uns_men_ROK_C65_SAP",
+	"uns_men_ROK_C65_SAP",
+	"uns_men_ROK_C65_STY",
+	"uns_men_ROK_C65_STY3",
+	"uns_men_ROK_C65_STY2"
 ];
 
 militia_loadout_overide = [
@@ -81,133 +81,132 @@ divers_squad = [
 ];
 
 militia_vehicles = [
-"uns_willys",
-"uns_willysmg50",
-"uns_willysm40",
-"uns_willysmg",
-"uns_m37b1",
-"uns_xm706e1",
-"uns_xm706e2",
-"uns_M113_M2",
-"uns_M113A1_M60",
-"uns_M113A1_M2"];
+	"uns_willys",
+	"uns_willysmg50",
+	"uns_willysm40",
+	"uns_willysmg",
+	"uns_m37b1",
+	"uns_xm706e1",
+	"uns_xm706e2",
+	"uns_M113_M2",
+	"uns_M113A1_M60",
+	"uns_M113A1_M2"
+];
 
 boats_east = [
-"uns_PBR_M10",
-"uns_pbr",
-"uns_pbr_mk18",
-"UNS_Zodiac_W"];
+	"uns_PBR_M10",
+	"uns_pbr",
+	"uns_pbr_mk18",
+	"UNS_Zodiac_W"
+];
 
 opfor_vehicles = [
-"uns_willysmg50",
-"uns_willys",
-"uns_willysm40",
-"uns_willysmg",
-"uns_m37b1",
-"uns_M35A2_Open",
-"uns_xm706e1",
-"uns_xm706e2",
-"uns_M113_30cal",
-"uns_M113_M134",
-"uns_M113_M2",
-"uns_M113_M60",
-"uns_M113_transport",
-"uns_M113A1_M134",
-"uns_M113A1_M2",
-"uns_M113A1_M40",
-"uns_M113A1_M60",
-"uns_M113A1_XM182",
-"uns_M132",
-"uns_m48a3",
-"uns_m551",
-"uns_M67A"
+	"uns_willysmg50",
+	"uns_willys",
+	"uns_willysm40",
+	"uns_willysmg",
+	"uns_m37b1",
+	"uns_M35A2_Open",
+	"uns_xm706e1",
+	"uns_xm706e2",
+	"uns_M113_30cal",
+	"uns_M113_M134",
+	"uns_M113_M2",
+	"uns_M113_M60",
+	"uns_M113_transport",
+	"uns_M113A1_M134",
+	"uns_M113A1_M2",
+	"uns_M113A1_M40",
+	"uns_M113A1_M60",
+	"uns_M113A1_XM182",
+	"uns_M132",
+	"uns_m48a3",
+	"uns_m551",
+	"uns_M67A"
 ];
 
 opfor_vehicles_low_intensity = [
-"uns_willysmg50",
-"uns_willys",
-"uns_willysm40",
-"uns_willysmg",
-"uns_m37b1",
-"uns_M35A2_Open",
-"uns_xm706e1",
-"uns_xm706e2",
-"uns_M113_M134",
-"uns_M113_M60",
-"uns_M113_transport",
-"uns_M113A1_M40",
-"uns_M113A1_XM182"
+	"uns_willysmg50",
+	"uns_willys",
+	"uns_willysm40",
+	"uns_willysmg",
+	"uns_m37b1",
+	"uns_M35A2_Open",
+	"uns_xm706e1",
+	"uns_xm706e2",
+	"uns_M113_M134",
+	"uns_M113_M60",
+	"uns_M113_transport",
+	"uns_M113A1_M40",
+	"uns_M113A1_XM182"
 ];
 
 opfor_battlegroup_vehicles = [
-"uns_M113_30cal",
-"uns_M113_M2",
-"uns_M113A1_M134",
-"uns_M113A1_M2",
-"uns_M113A1_M60",
-"uns_M132",
-"uns_m48a3",
-"uns_m551",
-"uns_M67A",
-"uns_M113_M60",
-"uns_willysm40",
-"uns_willysmg",
-"uns_xm706e2",
-"uns_AH1G",
-"uns_A1J_HCAS",
-"uns_ov10_usaf_CAS",
-"uns_UH1F_M21_M158_Hornet"
+	"uns_M113_30cal",
+	"uns_M113_M2",
+	"uns_M113A1_M134",
+	"uns_M113A1_M2",
+	"uns_M113A1_M60",
+	"uns_M132",
+	"uns_m48a3",
+	"uns_m551",
+	"uns_M67A",
+	"uns_M113_M60",
+	"uns_willysm40",
+	"uns_willysmg",
+	"uns_xm706e2",
+	"uns_AH1G",
+	"uns_A1J_HCAS",
+	"uns_ov10_usaf_CAS",
+	"uns_UH1F_M21_M158_Hornet"
 ];
 
 opfor_battlegroup_vehicles_low_intensity = [
-"uns_willysmg50",
-"uns_willys",
-"uns_willysm40",
-"uns_willysmg",
-"uns_m37b1",
-"uns_M35A2_Open",
-"uns_xm706e1",
-"uns_xm706e2",
-"uns_M113_M134",
-"uns_M113_M60",
-"uns_M113_transport",
-"uns_M113A1_M40",
-"uns_M113A1_XM182",
-"uns_oh6_m27r",
-"uns_oh6_xm8"
+	"uns_willysmg50",
+	"uns_willys",
+	"uns_willysm40",
+	"uns_willysmg",
+	"uns_m37b1",
+	"uns_M35A2_Open",
+	"uns_xm706e1",
+	"uns_xm706e2",
+	"uns_M113_M134",
+	"uns_M113_M60",
+	"uns_M113_transport",
+	"uns_M113A1_M40",
+	"uns_M113A1_XM182",
+	"uns_oh6_m27r",
+	"uns_oh6_xm8"
 ];
 
 opfor_troup_transports_truck = [
-"uns_M35A2_Open",
-"uns_M35A2"
+	"uns_M35A2_Open",
+	"uns_M35A2"
 ];
 
 opfor_troup_transports_heli = [
-"uns_ch34_army",
-"uns_ch47_m60_army",
-"uns_h21c"
+	"uns_ch34_army",
+	"uns_ch47_m60_army",
+	"uns_h21c"
 ];
 
 opfor_air = [
-"uns_oh6_m27r",
-"uns_oh6_xm8",
-"uns_AH1G",
-"uns_A1J_HCAS",
-"uns_ov10_usaf_CAS",
-"uns_UH1F_M21_M158_Hornet"
+	"uns_oh6_m27r",
+	"uns_oh6_xm8",
+	"uns_AH1G",
+	"uns_A1J_HCAS",
+	"uns_ov10_usaf_CAS",
+	"uns_UH1F_M21_M158_Hornet"
 ];
 
 opfor_statics = [
-"uns_M2_60mm_mortar",
-"uns_M30_107mm_mortar",
-"uns_M40_106mm_US",
-"uns_m2_high",
-"uns_M1_81mm_mortar",
-"uns_m60_high",
-"uns_US_MK18_low"];
+	"uns_m2_high",
+	"uns_M1_81mm_mortar",
+	"uns_m60_high",
+	"uns_US_MK18_low"
+];
 
 opfor_recyclable = [
-
 	// Opf Boat
 	["uns_PBR_M10",2,round (40 / GRLIB_recycling_percentage),2],
 	["uns_pbr",2,round (40 / GRLIB_recycling_percentage),2],

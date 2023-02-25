@@ -210,20 +210,15 @@ opfor_air = [
 ];
 
 opfor_statics = [
-	"uns_m1941_82mm_mortarNVA_arty",
-	"uns_m1941_82mm_mortarNVA",
-	"Uns_D30_artillery",
 	"uns_dshk_armoured_NVA",
 	"uns_dshk_high_NVA",
+	"uns_pk_high_NVA",
 	"uns_dshk_bunker_open_NVA",
 	"uns_dshk_bunker_closed_NVA",
-	"uns_M40_106mm_NVA",
-	"uns_spiderhole_leanto_NVA",
 	"uns_Type36_57mm_NVA",
-	"uns_KS12_NVA",
-	"uns_Type74_NVA",
-	"uns_ZU23_NVA",
-	"uns_sa2_static_NVA"
+	"uns_SPG9_73mm_NVA",
+	"uns_M40_106mm_NVA",
+	"uns_ZU23_NVA"
 ];
 
 opfor_recyclable = [
@@ -233,20 +228,15 @@ opfor_recyclable = [
 	["UNS_PATROL_BOAT_NVA",2,round (60 / GRLIB_recycling_percentage),3],
 	["UNS_Zodiac_NVA",0,round (30 / GRLIB_recycling_percentage),2],
 	// Static
-	["uns_m1941_82mm_mortarNVA_arty",0,round (50 / GRLIB_recycling_percentage),2],
-	["uns_m1941_82mm_mortarNVA",0,round (50 / GRLIB_recycling_percentage),2],
-	["Uns_D30_artillery",0,round (80 / GRLIB_recycling_percentage),2],
 	["uns_dshk_armoured_NVA",0,round (50 / GRLIB_recycling_percentage),2],
 	["uns_dshk_high_NVA",0,round (50 / GRLIB_recycling_percentage),2],
+	["uns_pk_high_NVA",0,round (50 / GRLIB_recycling_percentage),2],
 	["uns_dshk_bunker_open_NVA",0,round (60 / GRLIB_recycling_percentage),2],
 	["uns_dshk_bunker_closed_NVA",0,round (60 / GRLIB_recycling_percentage),2],
 	["uns_M40_106mm_NVA",0,round (100 / GRLIB_recycling_percentage),2],
-	["uns_spiderhole_leanto_NVA",0,round (80 / GRLIB_recycling_percentage),2],
 	["uns_Type36_57mm_NVA",0,round (100 / GRLIB_recycling_percentage),2],
-	["uns_KS12_NVA",0,round (100 / GRLIB_recycling_percentage),2],
-	["uns_Type74_NVA",0,round (100 / GRLIB_recycling_percentage),2],
+	["uns_SPG9_73mm_NVA",0,round (100 / GRLIB_recycling_percentage),2],
 	["uns_ZU23_NVA",0,round (100 / GRLIB_recycling_percentage),2],
-	["uns_sa2_static_NVA",0,round (100 / GRLIB_recycling_percentage),2],
 	// Vehicle
 	["uns_BTR152_DSHK",1,round (175 / GRLIB_recycling_percentage),2],
 	["uns_Type55_RR57",1,round (150 / GRLIB_recycling_percentage),2],

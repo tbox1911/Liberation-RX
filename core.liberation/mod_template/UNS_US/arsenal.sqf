@@ -16,6 +16,6 @@ whitelisted_from_arsenal = [
     "U_B_Wetsuit",
     "V_RebreatherB",
     "FirstAidKit",
-    "toolkit",
+    "ToolKit",
     "Medikit"
 ];

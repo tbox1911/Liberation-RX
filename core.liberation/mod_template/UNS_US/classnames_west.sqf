@@ -13,24 +13,17 @@ FOB_truck_typename = "uns_m37b1_m1919";
 FOB_typename = "Land_Cargo_HQ_V1_F";
 FOB_outpost = "Land_BagBunker_Tower_F";
 FOB_box_outpost = "Land_Cargo10_grey_F";
-
 Respawn_truck_typename = "uns_M577_amb";
 ammo_truck_typename = "uns_M35A2_ammo";
 fuel_truck_typename = "uns_M35A2_fuel";
 repair_truck_typename = "uns_M35A2_repair";
-
 pilot_classname = "uns_pilot14";
 crewman_classname = "uns_US_2MI_DRV";
-
 //Arsenal_typename = "Land_vn_us_weapons_stack2";
-
 A3W_BoxWps = "uns_AmmoBoxUS_army";
-
 repair_offroad = "C_Offroad_01_repair_F";
-
 SHOP_Man = "uns_civilian4";	//"C_Man_formal_1_F";
 SELL_Man = "uns_civilian3_b1";	//"C_Story_Mechanic_01_F";
-
 Radio_tower = "Antenna";  // Unsung Antenna - default Antenna will not explode ???
 
 //repair_sling_typename = "B_Slingload_01_repair_F";

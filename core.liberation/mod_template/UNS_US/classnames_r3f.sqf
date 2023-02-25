@@ -30,7 +30,7 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 
 R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 [
-	["uns_ch47_m60_army",350],
+	["uns_ch47_m60_army",300],
 	["uns_H13_transport_Army",350],
 	["uns_oh6_transport",350],
 	["uns_ch34_army",250],
@@ -62,6 +62,7 @@ R3F_LOG_CFG_can_tow = R3F_LOG_CFG_can_tow +
 	"uns_pbr_mk18",
 	"uns_PBR_M10",
 	"uns_willys",
+	"uns_willys_2",
 	"uns_willysmg50",
 	"uns_willysm40",
 	"uns_M577_amb",
@@ -93,6 +94,7 @@ R3F_LOG_CFG_can_tow = R3F_LOG_CFG_can_tow +
 R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 [
 	"uns_willys",
+	"uns_willys_2",
 	"uns_willysmg50",
 	"uns_willysm40",
 	"uns_m37b1",
@@ -128,6 +130,7 @@ R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
 R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 [
 	"uns_willys",
+	"uns_willys_2",
 	"uns_willysmg50",
 	"uns_willysm40",
 	"uns_m37b1",
@@ -161,40 +164,38 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 
 R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 [
-	["uns_willys", 50],
-	["uns_willysmg50", 50],
-	["uns_willysm40", 50],
-	["uns_m37b1", 100],
-	["uns_M35A2", 100],
-	["uns_xm706e1", 150],
-	["uns_xm706e2", 150],
-	["uns_M577_amb", 150],
-	["uns_m163", 150],
-	["Uns_M55_Quad", 150],
-	["uns_M113_M30", 150],
-	["uns_m110sp", 150],
-	["uns_M35A2_ammo", 250],
-	["uns_M35A2_fueltanker", 250],
-	["uns_M35A2_repair", 250],
+	["uns_willys", 20],
+	["uns_willys_2", 20],
+	["uns_willysmg50", 15],
+	["uns_willysm40", 15],
+	["uns_m37b1", 30],
+	["uns_M35A2", 30],
+	["uns_xm706e1", 50],
+	["uns_xm706e2", 50],
+	["uns_M577_amb", 50],
+	["uns_m163", 50],
+	["uns_M113_M30", 50],
+	["uns_m110sp", 50],
+	["uns_M35A2_ammo", 50],
+	["uns_M35A2_fueltanker", 50],
+	["uns_M35A2_repair", 50],
 	// heavy Veh.
-	["uns_M113_transport", 200],
-	["uns_M113_30cal", 200],
-	["uns_M113_M134", 200],
-	["uns_M113_M2", 200],
-	["uns_M113A1_M134",200],
-	["uns_M113A1_M2", 200],
-	["uns_M113A1_M40", 200],
-	["uns_M132", 200],
-	["uns_m48a3", 300],
-	["uns_m551", 300],
-	["uns_M67A", 300]
+	["uns_M113_transport", 60],
+	["uns_M113_30cal", 60],
+	["uns_M113_M134", 60],
+	["uns_M113_M2", 60],
+	["uns_M113A1_M134", 60],
+	["uns_M113A1_M2", 50],
+	["uns_M113A1_M40", 50],
+	["uns_M132", 80],
+	["uns_m48a3", 80],
+	["uns_m551", 70],
+	["uns_M67A", 70]
 ];
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 [
-	["uns_willys",50],
-	["uns_willysmg50",50],
-	["uns_willysm40",50]
+	["UNS_Zodiac_W",10]
 ];
 
 R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
