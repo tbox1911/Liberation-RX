@@ -292,6 +292,10 @@ if ( !isNil "greuh_liberation_savegame" ) then {
             _nextbuilding setObjectTextureGlobal [0, getMissionPath "res\splash_libe2.paa"];
         };
 
+		if (_nextclass == "Land_ClutterCutter_large_F") then {
+			{_x hideObject true} forEach (nearestTerrainObjects [_nextpos, GRLIB_clutter_cutter, 20]);
+		};
+
         if ( !(_nextclass in _no_kill_handler_classnames) ) then {
             _nextbuilding addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		};

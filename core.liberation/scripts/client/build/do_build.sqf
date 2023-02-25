@@ -323,7 +323,7 @@ while { true } do {
 				sleep 0.1;
 
 				if ([_classname, simple_objects] call F_itemIsInClass) then {
-					 createSimpleObject [_classname, AGLtoASL _truepos];
+					createSimpleObject [_classname, AGLtoASL _truepos];
 				} else {
 					_vehicle = _classname createVehicle _truepos;
 					_vehicle allowDamage false;
@@ -430,6 +430,11 @@ while { true } do {
 						_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_static }];
 					};
 
+					// ClutterCutter
+					if (_classname == "Land_ClutterCutter_large_F") then {
+						{_x hideObject true} forEach (nearestTerrainObjects [_truepos, GRLIB_clutter_cutter, 20]);
+					};
+					
 					// FOB
 					if(buildtype == 99) then {
 						_vehicle addEventHandler ["HandleDamage", {0}];

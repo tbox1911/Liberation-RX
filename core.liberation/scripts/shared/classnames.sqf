@@ -172,7 +172,6 @@ if (isNil "buildings_west_overide") then {
 
 // *** SIMPLE OBJECTS ***
 simple_objects = [
-	"Land_ClutterCutter_large_F",
 	"Land_PortableHelipadLight_01_F"
 ];
 
