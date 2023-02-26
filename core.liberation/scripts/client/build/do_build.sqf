@@ -34,6 +34,7 @@ while { true } do {
 
 	build_confirmed = 1;
 	build_invalid = 0;
+	build_vehicle = objNull;
 	_classname = "";
 
 	if ( buildtype == 6 ) then { build_altitude = building_altitude } else { build_altitude = 0.2 };
@@ -476,6 +477,8 @@ while { true } do {
 						_vehicle allowDamage true;
 						_vehicle setDamage 0;
 					};
+
+					build_vehicle = _vehicle;
 				};
 
 				if(buildtype != 6) then {

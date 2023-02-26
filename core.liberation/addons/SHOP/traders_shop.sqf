@@ -143,7 +143,7 @@ while { dialog && alive player } do {
 
 				if (build_confirmed == 0) then {
 					if (!([_price] call F_pay)) then {
-						deleteVehicle (getPosATL player nearEntities [_veh_class, 20] select 0);
+						deleteVehicle build_vehicle;
 					};
 				};
 			};

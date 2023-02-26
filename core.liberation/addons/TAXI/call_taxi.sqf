@@ -10,7 +10,9 @@ dobuild = 1;
 waitUntil { sleep 1; dobuild == 0};
 if (build_confirmed == 3) exitWith {};
 
-GRLIB_taxi_helipad = nearestObjects [player, [taxi_helipad_type], 20] select 0;
+GRLIB_taxi_helipad = build_vehicle;
+GRLIB_taxi_helipad_created = true;
+
 private _degree = aCos ([0,0,1] vectorCos (surfaceNormal getPos GRLIB_taxi_helipad));
 private _dest = getPosATL GRLIB_taxi_helipad;
 if (surfaceIsWater _dest || _degree > 8) exitWith {deleteVehicle GRLIB_taxi_helipad; hintSilent localize "STR_TAXI_WRONG_PLACE"};
