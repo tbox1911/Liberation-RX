@@ -10,8 +10,8 @@ Regelwerk MiSim United<br />
 <br />
 1.    Allgemeines<br />
 1.1    Trolling, Beleidigung, Rassismus, sexuelle Belästigung so wie alles, was strafrechtlich verfolgt wird ist verboten und führt zum Ausschluss.<br />
-1.2    Das Recycling, Stehlen oder Zerstören von Fahrzeugen anderer Spieler ist untersagt.<br />
-1.3    Wer unseren Server betritt, erklärt sich damit einverstanden, dass jede Form von Bild und Ton hier für die Öffentlichkeit bestimmt sind und jederzeit ohne weitere Ankündigung aufgezeichnet werden können.<br />
+1.2    Wer unseren Server betritt, erklärt sich damit einverstanden, dass jede Form von Bild und Ton hier für die Öffentlichkeit bestimmt sind und jederzeit ohne weitere Ankündigung aufgezeichnet werden können.<br />
+1.3    Das Recycling, Stehlen oder Zerstören von Fahrzeugen anderer Spieler ist untersagt.<br />
 1.4    Schießen innerhalb der FOBs ist nur zu deren Verteidigung erlaubt.<br />
 1.5    Den Anweisungen von Moderatoren ist Folge zu leisten.<br />
 1.6    Bei Verlust von Fahrzeugen durch Bugs etc. liegt es im Ermessen der Moderatoren, eine Erstattung zu gewähren. (Videobeweis hilft hierbei.)<br />
