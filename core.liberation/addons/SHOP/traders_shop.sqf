@@ -139,7 +139,7 @@ while { dialog && alive player } do {
 				build_unit = [_veh_class,[],1,[],[],[]];
 				dobuild = 1;
 				closeDialog 0;
-				waitUntil { sleep 1; dobuild == 0};
+				waitUntil { sleep 0.5; dobuild == 0};
 
 				if (build_confirmed == 0) then {
 					if (!([_price] call F_pay)) then {
