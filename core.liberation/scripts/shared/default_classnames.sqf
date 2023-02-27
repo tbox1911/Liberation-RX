@@ -99,6 +99,7 @@ buildings_default = [
 	["Land_TentLamp_01_suspended_F",0,0,0,GRLIB_perm_log],
     ["Land_TentLamp_01_suspended_red_F",0,0,0,GRLIB_perm_log],
 	["Land_LampHalogen_F",0,0,0,GRLIB_perm_tank],
+	["Land_LampStreet_02_triple_F",0,0,0,GRLIB_perm_inf],
 	["Land_HelipadSquare_F",0,0,0,GRLIB_perm_log],
 	["Land_Razorwire_F",0,0,0,GRLIB_perm_tank],
 	["Land_ToolTrolley_02_F",0,0,0,GRLIB_perm_tank],
