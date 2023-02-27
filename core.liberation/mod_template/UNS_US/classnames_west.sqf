@@ -6,6 +6,8 @@ GRLIB_west_modder = "Z@Warrior";
 
 // Unsung Men (US 1st Infantery Division'65)
 
+Arsenal_typename = "uns_AmmoBox_ANZAC";
+A3W_BoxWps = "uns_AmmoBoxUS_army";
 huron_typename = "uns_ch47_m60_army";
 FOB_typename = "Land_Cargo_HQ_V1_F";
 FOB_box_typename = "B_Slingload_01_Cargo_F";
@@ -19,12 +21,15 @@ fuel_truck_typename = "uns_M35A2_fuel";
 repair_truck_typename = "uns_M35A2_repair";
 pilot_classname = "uns_pilot14";
 crewman_classname = "uns_US_2MI_DRV";
-//Arsenal_typename = "Land_vn_us_weapons_stack2";
-A3W_BoxWps = "uns_AmmoBoxUS_army";
-repair_offroad = "C_Offroad_01_repair_F";
-SHOP_Man = "uns_civilian4";	//"C_Man_formal_1_F";
+repair_offroad = "uns_zil157_repair";
+SHOP_Man = "uns_civilian4";	    //"C_Man_formal_1_F";
 SELL_Man = "uns_civilian3_b1";	//"C_Story_Mechanic_01_F";
-Radio_tower = "Antenna";  // Unsung Antenna - default Antenna will not explode ???
+Radio_tower = "Antenna";
+waterbarrel_typename = "Land_WaterBottle_01_stack_F";
+fuelbarrel_typename = "Land_vn_metalbarrel_f";
+foodbarrel_typename = "Land_FoodSacks_01_large_brown_idap_F";
+GRLIB_sar_wreck = "vn_air_uh1d_med_wreck";
+canisterFuel = "Land_CanisterFuel_Red_F";
 
 //repair_sling_typename = "B_Slingload_01_repair_F";
 //fuel_sling_typename = "B_Slingload_01_Fuel_F";
@@ -32,11 +37,6 @@ Radio_tower = "Antenna";  // Unsung Antenna - default Antenna will not explode ?
 //medic_sling_typename = "B_Slingload_01_Medevac_F";
 //PAR_Medikit = "Medikit";
 //PAR_AidKit = "FirstAidKit";
-//waterbarrel_typename = "Land_WaterBottle_01_stack_F";
-//fuelbarrel_typename = "Land_vn_metalbarrel_f";
-//foodbarrel_typename = "Land_FoodSacks_01_large_brown_idap_F";
-//GRLIB_sar_wreck = "vn_air_uh1d_med_wreck";
-//canisterFuel = "Land_CanisterFuel_Red_F";
 
 // *********************************************************************
 
@@ -176,6 +176,7 @@ buildings_west = [
 	["Land_Cargo_Patrol_V1_F",0,0,0,GRLIB_perm_log],
 	["pook_Land_fort_artillery_nest_MUD",0,0,0,0],
 	["Land_Illum_Tower",0,0,0,0],
+	["Land_LampStreet_02_triple_F",0,0,0,0],
 	["Land_fortified_nest_small_ep1",0,0,0,0],
 	["LAND_uns_bunker_troop2",0,0,0,0],
 	["Land_Wood_Tower",0,0,0,0],
@@ -268,22 +269,18 @@ uavs = [
 ai_resupply_sources_west = [
 	"uns_ch47_m60_army",
 	"uns_M35A2_ammo",
-	"uns_M577_amb",
-	"Land_TentDome_F",
-	Arsenal_typename
+	"uns_M577_amb"
 ];
 
 // Everything the AI troups should be able to healing from
 ai_healing_sources_west = [
 	"uns_ch47_m60_army",
-	"uns_M577_amb",
-	"Land_TentDome_F"
+	"uns_M577_amb"
 ];
 
 vehicle_rearm_sources_west = [
 	"uns_ch47_m60_army",
-	"uns_M35A2_ammo",
-	Arsenal_typename
+	"uns_M35A2_ammo"
 ];
 
 vehicle_big_units_west = [
