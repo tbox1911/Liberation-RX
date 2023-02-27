@@ -8,7 +8,7 @@ GRLIB_west_modder = "Z@Warrior";
 // Unsung Men NVA (8th Battalion PAWN '65)
 
 Arsenal_typename = "uns_AmmoBox_ANZAC";
-A3W_BoxWps = "uns_resupply_crate_NVA";
+A3W_BoxWps = "uns_AmmoBoxUS_army";
 huron_typename = "uns_Mi8T_VPAF";
 FOB_typename = "Land_Cargo_HQ_V1_F";
 FOB_box_typename = "B_Slingload_01_Cargo_F";

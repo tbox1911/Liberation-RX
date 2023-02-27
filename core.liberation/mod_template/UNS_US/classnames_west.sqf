@@ -7,7 +7,7 @@ GRLIB_west_modder = "Z@Warrior";
 // Unsung Men (US 1st Infantery Division'65)
 
 Arsenal_typename = "uns_AmmoBox_ANZAC";
-A3W_BoxWps = "uns_AmmoBoxUS_army";
+A3W_BoxWps = "uns_resupply_crate_NVA"; 
 huron_typename = "uns_ch47_m60_army";
 FOB_typename = "Land_Cargo_HQ_V1_F";
 FOB_box_typename = "B_Slingload_01_Cargo_F";
