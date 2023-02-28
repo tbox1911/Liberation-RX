@@ -1,5 +1,3 @@
-taxi_helipad_type = "Land_Heli_H2";		//"Land_HelipadCivil_F";		// use default from addons\TAXI\taxi_classname.sqf
-
 // if not defined, use the default from addons\TAXI\taxi_classname.sqf
 overide_taxi_type_2 = ["B_Heli_Light_01_F"];
 
