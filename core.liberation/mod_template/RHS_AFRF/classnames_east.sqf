@@ -5,31 +5,31 @@ GRLIB_color_enemy_bright = "ColorRED";
 
 // All class MUST be defined !
 
-opfor_sentry = "CUP_O_INS_Soldier_GL";
-opfor_rifleman = "CUP_O_INS_Soldier_Ammo";
-opfor_grenadier = "CUP_O_INS_Soldier_GLs";
-opfor_squad_leader = "CUP_O_INS_Story_Lopotev";
-opfor_team_leader = "CUP_O_INS_Soldier_MG";
-opfor_marksman = "CUP_O_INS_Sniper";
-opfor_machinegunner = "CUP_O_TK_SpecOps";
-opfor_heavygunner = "CUP_O_INS_Soldier_MG";
-opfor_medic = "CUP_O_INS_Soldier_GL";
-opfor_rpg = "CUP_O_INS_Soldier_AT";
-opfor_at = "CUP_O_INS_Soldier_LAT";
-opfor_aa = "CUP_O_INS_Soldier_AA";
-opfor_officer = "CUP_O_INS_Story_Lopotev";
+opfor_sentry = "CUP_O_sla_Soldier_urban";
+opfor_rifleman = "CUP_O_sla_Soldier_urban";
+opfor_grenadier = "CUP_O_sla_Soldier_GL_urban";
+opfor_squad_leader = "CUP_O_sla_SpecOps";
+opfor_team_leader = "CUP_O_sla_SpecOps";
+opfor_marksman = "CUP_O_sla_Sniper_urban";
+opfor_machinegunner = "CUP_O_sla_Soldier_AR_urban";
+opfor_heavygunner = "CUP_O_sla_Soldier_MG_urban";
+opfor_medic = "CUP_O_SLA_Soldier_Backpack_urban";
+opfor_rpg = "CUP_O_sla_Soldier_AT_urban";
+opfor_at = "CUP_O_sla_Soldier_AT_urban";
+opfor_aa = "CUP_O_sla_Soldier_AA_urban";
+opfor_officer = "CUP_O_Partisans_Soldier_AT";
 opfor_sharpshooter = "CUP_O_INS_Sniper";
-opfor_sniper = "CUP_O_INS_Sniper";
-opfor_spotter = "CUP_O_INS_Soldier_AA";
-opfor_engineer = "CUP_O_INS_Soldier_AA";
-opfor_pilot = "CUP_O_INS_Pilot";
-opfor_crew = "CUP_O_INS_Crew";
-opfor_paratrooper = "CUP_O_TK_SpecOps_TL";
-opfor_mrap = "CUP_O_BTR80A_CHDKZ";
-opfor_mrap_hmg = "CUP_O_Hilux_armored_BTR60_OPF_G_F";
-opfor_mrap_gmg = "CUP_O_Hilux_armored_BMP1_OPF_G_F";
-opfor_transport_helo = "RHS_Mi24P_vdv";
-opfor_transport_truck = "CUP_O_BTR60_CHDKZ";
+opfor_sniper = "CUP_O_sla_Soldier_AKS_74_GOSHAWK_urban";
+opfor_spotter = "CUP_O_SLA_Spotter_urban";
+opfor_engineer = "CUP_O_sla_Engineer_urban";
+opfor_pilot = "rhs_vdv_mflora_armoredcrew";
+opfor_crew = "rhs_vdv_mflora_armoredcrew";
+opfor_paratrooper = "rhs_vdv_mflora_rifleman";
+opfor_mrap = "CUP_O_BMP2_SLA";
+opfor_mrap_hmg = "CUP_O_BRDM2_SLA";
+opfor_mrap_gmg = "CUP_O_GAZ_Vodnik_AGS_RU";
+opfor_transport_helo = "CUP_O_Mi24_D_Dynamic_SLA";
+opfor_transport_truck = "CUP_O_Ural_Open_SLA";
 opfor_fuel_truck = "CUP_O_Ural_Refuel_CHDKZ";
 opfor_ammo_truck = "CUP_O_Ural_Reammo_CHDKZ";
 opfor_fuel_container = "Land_Pod_Heli_Transport_04_fuel_F";
@@ -39,20 +39,20 @@ opfor_patrol = "Land_Cargo_Patrol_V3_F";
 opfor_hq = "Land_Cargo_HQ_V3_F";
 
 militia_squad = [
-	"CUP_O_INS_Story_Lopotev",
-	"CUP_O_INS_Sniper",
-	"CUP_O_INS_Soldier_MG",
-	"CUP_O_INS_Soldier_MG",
-	"CUP_O_INS_Soldier_AT",
-	"CUP_O_TK_SpecOps",
-	"CUP_O_INS_Soldier_AA",
-	"CUP_O_INS_Soldier_AA",
-	"CUP_O_INS_Soldier_GL",
-	"CUP_O_INS_Soldier_GL",
-	"CUP_O_INS_Soldier_Ammo",
-	"CUP_O_TK_Spotter",
-	"CUP_O_TK_Spotter",
-	"CUP_O_TK_Sniper_KSVK"
+    "CUP_O_Partisans_Soldier_MG",
+    "CUP_O_Partisans_Medic",
+    "CUP_O_Partisans_Soldier_AT",
+    "CUP_O_Partisans_soldier_SL",
+    "CUP_O_Partisans_Engineer",
+    "CUP_O_Partisans_soldier_TTsKO",
+	"CUP_O_sla_Soldier_LAT",
+	"CUP_O_sla_Sniper",
+	"CUP_O_SLA_Sniper_SVD_Night",
+	"CUP_O_SLA_Sniper_SVD_Night",
+	"CUP_O_sla_Soldier_AKS_Night",
+	"CUP_O_sla_Soldier_AKS_Night",
+	"CUP_O_sla_Soldier_GL",
+	"CUP_O_sla_Soldier_GL"
 ];
 
 militia_loadout_overide = [
@@ -76,21 +76,21 @@ divers_squad = [
 ];
 
 militia_vehicles = [
-	"CUP_O_BTR60_CHDKZ",
-	"CUP_O_Hilux_armored_AGS30_OPF_G_F",
-	"CUP_O_Hilux_armored_BMP1_OPF_G_F",
-	"CUP_O_Hilux_armored_BTR60_OPF_G_F",
-	"CUP_O_Hilux_armored_DSHKM_OPF_G_F",
-	"CUP_O_Hilux_armored_igla_OPF_G_F",
-	"CUP_O_Hilux_armored_M2_OPF_G_F",
-	"CUP_O_Hilux_armored_metis_OPF_G_F",
-	"CUP_O_Hilux_armored_metis_TK_INS",
-	"CUP_O_Hilux_armored_SPG9_OPF_G_F",
-	"CUP_O_Hilux_armored_podnos_TK_INS",
-    "CUP_O_Hilux_armored_zu23_OPF_G_F",
-	"CUP_O_BTR60_CHDKZ",
-	"CUP_O_BTR60_CHDKZ",
-	"CUP_O_BTR80A_CHDKZ",
+    "CUP_O_UAZ_AGS30_SLA",
+	"CUP_O_UAZ_MG_SLA",
+	"CUP_O_UAZ_SPG9_SLA",
+	"CUP_O_UAZ_Militia_SLA",
+	"CUP_O_UAZ_SPG9_SLA",
+	"CUP_O_BRDM2_SLA",
+	"CUP_O_Ural_ZU23_SLA",
+	"CUP_O_ZSU23_SLA",
+	"CUP_O_UAZ_AA_SLA",
+	"CUP_O_MTLB_pk_SLA",
+	"CUP_O_BTR80_SLA",
+    "CUP_O_BMP2_SLA",
+	"CUP_O_T34_TKA",
+	"CUP_O_T34_TKA",
+	"CUP_O_T34_TKA",
 	"CUP_O_BTR80A_CHDKZ",
 	"CUP_O_T55_CHDKZ",
 	"CUP_O_T55_CHDKZ"
@@ -101,77 +101,88 @@ boats_east = [
 ];
 
 opfor_vehicles = [
+    "CUP_O_UAZ_AGS30_SLA",
+	"CUP_O_UAZ_MG_SLA",
+	"CUP_O_UAZ_SPG9_SLA",
+	"CUP_O_UAZ_Militia_SLA",
+	"CUP_O_UAZ_SPG9_SLA",
+	"CUP_O_BRDM2_SLA",
+	"CUP_O_Ural_ZU23_SLA",
+	"CUP_O_ZSU23_SLA",
+	"CUP_O_UAZ_AA_SLA",
+	"CUP_O_MTLB_pk_SLA",
+	"CUP_O_BTR80_SLA",
+    "CUP_O_BMP2_SLA",
+	"CUP_O_T34_TKA",
+	"CUP_O_T34_TKA",
+	"CUP_O_T34_TKA",
 	"CUP_O_BTR80A_CHDKZ",
-	"CUP_O_Hilux_armored_metis_TK_INS",
-	"CUP_O_Hilux_armored_BMP1_OPF_G_F",
-	"CUP_O_Hilux_igla_CHDKZ",
-	"CUP_O_Hilux_armored_BTR60_OPF_G_F",
-	"CUP_O_Hilux_armored_SPG9_OPF_G_F",
-	"CUP_O_BMP2_ZU_TKA",
-	"CUP_O_BTR80_CHDKZ",
-	"CUP_O_BRDM2_ATGM_CHDKZ",
-	"CUP_O_BTR60_CHDKZ",
-	"CUP_O_BTR60_CHDKZ",
-	"CUP_O_T34_TKA",
-	"CUP_O_T34_TKA",
 	"CUP_O_T55_CHDKZ",
 	"CUP_O_T55_CHDKZ",
-	"CUP_O_T55_CHDKZ",
-	"CUP_O_T55_CHDKZ",
-	"CUP_O_BTR90_RU",
-	"CUP_O_2S6_RU",
 	"B_SAM_System_02_F"
 ];
 
 opfor_vehicles_low_intensity = [
-	"CUP_O_Hilux_armored_podnos_OPF_G_F",
-	"CUP_O_Hilux_armored_podnos_OPF_G_F",
-	"CUP_O_Hilux_armored_M2_OPF_G_F",
-	"CUP_O_Hilux_armored_metis_TK_INS",
-	"CUP_O_Hilux_armored_BTR60_OPF_G_F",
-	"CUP_O_BRDM2_ATGM_TKA",
-	"CUP_O_BTR60_CHDKZ",
-	"CUP_O_BTR80_CHDKZ",
+    "CUP_O_UAZ_AGS30_SLA",
+	"CUP_O_UAZ_MG_SLA",
+	"CUP_O_UAZ_SPG9_SLA",
+	"CUP_O_UAZ_Militia_SLA",
+	"CUP_O_UAZ_SPG9_SLA",
+	"CUP_O_BRDM2_SLA",
+	"CUP_O_Ural_ZU23_SLA",
+	"CUP_O_ZSU23_SLA",
+	"CUP_O_UAZ_AA_SLA",
+	"CUP_O_MTLB_pk_SLA",
+	"CUP_O_BTR80_SLA",
+    "CUP_O_BMP2_SLA",
 	"CUP_O_T34_TKA",
-	"CUP_O_T55_CHDKZ",
+	"CUP_O_T34_TKA",
+	"CUP_O_T34_TKA",
+	"CUP_O_BTR80A_CHDKZ",
 	"CUP_O_T55_CHDKZ"
 ];
 
 opfor_battlegroup_vehicles = [
-	"CUP_O_BRDM2_ATGM_TKA",
+    "CUP_O_UAZ_AGS30_SLA",
+	"CUP_O_UAZ_MG_SLA",
+	"CUP_O_UAZ_SPG9_SLA",
+	"CUP_O_UAZ_Militia_SLA",
+	"CUP_O_UAZ_SPG9_SLA",
+	"CUP_O_BRDM2_SLA",
+	"CUP_O_Ural_ZU23_SLA",
+	"CUP_O_ZSU23_SLA",
+	"CUP_O_UAZ_AA_SLA",
+	"CUP_O_MTLB_pk_SLA",
+	"CUP_O_BTR80_SLA",
+    "CUP_O_BMP2_SLA",
 	"CUP_O_T34_TKA",
-	"CUP_O_T55_CHDKZ",
+	"CUP_O_T34_TKA",
+	"CUP_O_T34_TKA",
 	"CUP_O_BTR80A_CHDKZ",
-	"CUP_O_BTR60_CHDKZ",
-	"CUP_O_BRDM2_ATGM_TKA",
-	"CUP_O_BTR60_CHDKZ",
-	"CUP_O_BMP3_RU",
-	"CUP_O_BMP2_ZU_TKA",
-	"CUP_O_T55_CHDKZ",
-	"CUP_O_T55_CHDKZ",
 	"CUP_O_T55_CHDKZ",
 	"CUP_O_2S6_RU"
 ];
 
 opfor_battlegroup_vehicles_low_intensity = [
-	"CUP_O_BTR60_CHDKZ",
-	"CUP_O_BTR80A_CHDKZ",
-	"CUP_O_BMP3_RU",
-	"CUP_O_T55_CHDKZ"
+	"CUP_O_UAZ_AGS30_SLA",
+	"CUP_O_UAZ_MG_SLA",
+	"CUP_O_UAZ_AGS30_SLA",
+	"CUP_O_UAZ_AGS30_SLA"
 ];
 
 opfor_reinforcement_vehicles = [
-	"CUP_O_BTR80A_CHDKZ",
-	"CUP_O_T55_CHDKZ",
-	"CUP_O_T55_CHDKZ",
-	"CUP_O_T55_CHDKZ",
-	"CUP_O_BTR60_CHDKZ",
-	"CUP_O_BTR80A_CHDKZ",
-	"CUP_O_BTR60_CHDKZ",
-	"CUP_O_BMP2_ZU_TKA",
+	"CUP_O_GAZ_Vodnik_AGS_RU",
+	"CUP_O_GAZ_Vodnik_AGS_RU",
+	"CUP_O_UAZ_AGS30_SLA",
+	"CUP_O_UAZ_MG_SLA",
+	"CUP_O_T34_TKA",
+	"CUP_O_T55_TK",
+	"CUP_O_BRDM2_SLA",
+	"CUP_O_Ural_ZU23_SLA",
+	"CUP_O_BMP2_SLA",
 	"CUP_O_BMP3_RU",
-	"CUP_O_BMP3_RU",
-	"CUP_O_2S6_RU"
+	"CUP_O_2S6_RU",
+	"CUP_O_ZSU23_SLA"
 	];
 
 opfor_troup_transports = [
@@ -183,13 +194,13 @@ opfor_troup_transports = [
 ];
 
 opfor_choppers = [
-	"CUP_O_Mi24_Mk4_CSAT_T",
+	"CUP_O_UH1H_gunship_SLA",
 	"CUP_O_Mi24_P_Dynamic_RU",
-	"CUP_O_Mi8_RU",
-	"CUP_O_UH1H_gunship_TKA",
-	"CUP_O_UH1H_gunship_TKA",
-	"CUP_O_Ka50_DL_RU",
-	"rhs_mi28n_vvsc"
+	"CUP_O_Ka50_DL_SLA",
+	"CUP_O_UH1H_gunship_SLA",
+	"CUP_O_UH1H_gunship_SLA",
+	"CUP_O_Ka50_DL_SLA",
+	"CUP_O_Mi24_D_Dynamic_SLA"
 ];
 
 opfor_air = [
