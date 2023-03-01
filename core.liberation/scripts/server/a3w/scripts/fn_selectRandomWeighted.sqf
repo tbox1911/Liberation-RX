@@ -8,23 +8,16 @@
 
 // Because BIS_fnc_selectRandomWeighted is really badly coded.
 
-private ["_array", "_weights", "_arrayCount", "_weightsTotal", "_forEachIndex"];
+params ["_array", "_weights"];
+private _arrayCount = count _array;
+private _weightsTotal = 0;
 
-_array = param [0,[],[[]]];
-_weights = param [1,[],[[]]];
-_arrayCount = count _array;
-_weightsTotal = 0;
-
-if (_arrayCount == 0) exitWith
-{
+if (_arrayCount == 0) exitWith {
 	"The Array (0) must not be empty!" call BIS_fnc_error;
-	nil
 };
 
-if (_arrayCount > count _weights) exitWith
-{
+if (_arrayCount > count _weights) exitWith {
 	"There must be at least as many elements in Weights (1) as there are in Array (0)!" call BIS_fnc_error;
-	nil
 };
 
 {
@@ -33,8 +26,7 @@ if (_arrayCount > count _weights) exitWith
 	_weightsTotal = _weightsTotal + _x;
 } forEach _weights;
 
-if (_weightsTotal > 0) then
-{
+if (_weightsTotal > 0) then {
 	private ["_random", "_index"];
 
 	_random = floor(random _weightsTotal);
@@ -48,18 +40,11 @@ if (_weightsTotal > 0) then
 		};
 	} forEach _weights;
 
-	if (!isNil "_index") then
-	{
+	if (!isNil "_index") then {
 		_array select _index
-	}
-	else
-	{
+	} else {
 		["Your computer is broken."] call BIS_fnc_error;
-		nil
 	};
-}
-else
-{
+} else {
 	["The sum of weights must be larger than 0"] call BIS_fnc_error;
-	nil
 };
