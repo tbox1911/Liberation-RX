@@ -19,5 +19,5 @@ box_transport_offset = box_transport_offset + [
 	["uns_AmmoBox_ANZAC", [0, 0, -0.9] ],
 	["uns_AmmoBoxUS_army", [0, 0, -0.9] ],
 	["Land_WaterBottle_01_stack_F", [0, 0, -0.25] ],
-	["Land_vn_metalbarrel_f", [0, 0, -0.4] ]
+	["LAND_barel7", [0, 0, -0.4] ]
 ];
