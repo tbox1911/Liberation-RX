@@ -43,31 +43,28 @@ while {alive _unit} do {
 		};
 
 		if (_unit distance2D _target < 20) then {
-			_expl1 = "DemoCharge_Remote_Ammo" createVehicle getPos _unit;
+			_expl1 = "DemoCharge_Remote_Ammo" createVehicle (getPosATL _unit);
 			_expl1 attachTo [_unit, [-0.1, 0.1, 0.15], "Pelvis"];
 			_expl1 setVectorDirAndUp [[0.5, 0.5, 0], [-0.5, 0.5, 0]];
-			_expl2 = "DemoCharge_Remote_Ammo" createVehicle getPos _unit;
+			_expl2 = "DemoCharge_Remote_Ammo" createVehicle (getPosATL _unit);
 			_expl2 attachTo [_unit, [0, 0.15, 0.15], "Pelvis"];
 			_expl2 setVectorDirAndUp [[1, 0, 0], [0, 1, 0]];
-			_expl3 = "DemoCharge_Remote_Ammo" createVehicle getPos _unit;
+			_expl3 = "DemoCharge_Remote_Ammo" createVehicle (getPosATL _unit);
 			_expl3 attachTo [_unit, [0.1, 0.1, 0.15], "Pelvis"];
 			_expl3 setVectorDirAndUp [[0.5, -0.5, 0], [0.5, 0.5, 0]];
 
-			sleep 3;
+			sleep 2.5;
 			{
 				if ((_x distance2D _unit) <= 200) then {
-					[[getMissionPath "res\shout.ogg", _unit, false, getPosASL _unit, 4, 1, 250]] remoteExec ["playSound3D", owner _x];
+					[[getMissionPath "res\shout.ogg", _unit, false, getPosASL _unit, 5, 1, 250]] remoteExec ["playSound3D", owner _x];
 				};
 			} forEach (AllPlayers - (entities "HeadlessClient_F"));
 
 			sleep 0.5;
+			{ deleteVehicle _x } forEach [_expl1,_expl2,_expl3];
 			if (alive _unit) then {
-				_expl1 setDamage 1;
-				_expl2 setDamage 1;
-				_expl3 setDamage 1;
+				"Rocket_04_HE_F" createVehicle (getPosATL _unit);
 				deleteVehicle _unit;
-			} else {
-				{ deleteVehicle _x } forEach [_expl1,_expl2,_expl3];
 			};
 		};
 	} else {
