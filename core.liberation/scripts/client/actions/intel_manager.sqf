@@ -1,13 +1,13 @@
 private  ["_vehicle"];
 private _distvehclose = 5;
-private _searchradius = 100;
+private _searchradius = 50;
 
 waitUntil {sleep 1; !isNil "build_confirmed" };
 
 while { true } do {
 
 	// Intel
-	private _near_intel = player nearEntities [[GRLIB_intel_laptop, GRLIB_intel_file], _searchradius];
+	private _near_intel = player nearEntities [GRLIB_intel_items, _searchradius];
 	{
 		_vehicle = _x;
 		if (! (_vehicle getVariable ["GRLIB_intel_action", false]) ) then {

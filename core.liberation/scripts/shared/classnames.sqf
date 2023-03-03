@@ -482,8 +482,15 @@ opfor_infantry = [opfor_sentry,opfor_rifleman,opfor_grenadier,opfor_squad_leader
 GRLIB_rank_level = ["PRIVATE", "CORPORAL", "SERGEANT", "LIEUTENANT", "CAPTAIN", "MAJOR", "COLONEL"];
 GRLIB_intel_table = "Land_CampingTable_small_F";
 GRLIB_intel_chair = "Land_CampingChair_V2_F";
-GRLIB_intel_file = "Land_File1_F";
-GRLIB_intel_laptop = "Land_Laptop_device_F";
+GRLIB_intel_items = [
+	"Land_File1_F",
+	"Item_FileTopSecret",
+	"Item_SecretFiles",
+	"Item_NetworkStructure",
+	"Land_Laptop_device_F",
+	"Item_Laptop_Unfolded",
+	"Land_SatellitePhone_F"
+];
 GRLIB_ignore_colisions = [
 	huron_typename,
 	Arsenal_typename,
