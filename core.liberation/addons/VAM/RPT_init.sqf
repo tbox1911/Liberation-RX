@@ -10,13 +10,13 @@ RPT_colorList = [
 	["White", RPT_color + "(0.75,0.75,0.75,1)"], // #(argb,8,8,3)color(1,1,1,0.5)
 	["Dark Blue", RPT_color + "(0,0.05,0.15,1)"], // #(argb,8,8,3)color(0,0.3,0.6,0.05)
 	["Blue", RPT_color + "(0,0.03,0.5,1)"], // #(argb,8,8,3)color(0,0.2,1,0.75)
-	//["Teal", RPT_color + "(0,0.3,0.3,1)"], // #(argb,8,8,3)color(0,1,1,0.15)
+	["Teal", RPT_color + "(0,0.3,0.3,1)"], // #(argb,8,8,3)color(0,1,1,0.15)
 	["Green", RPT_color + "(0,0.5,0,1)"], // #(argb,8,8,3)color(0,1,0,0.15)
 	["Yellow", RPT_color + "(0.5,0.4,0,1)"], // #(argb,8,8,3)color(1,0.8,0,0.4)
 	["Orange", RPT_color + "(0.4,0.09,0,1)"], // #(argb,8,8,3)color(1,0.5,0,0.4)
 	["Red", RPT_color + "(0.45,0.005,0,1)"], // #(argb,8,8,3)color(1,0.1,0,0.3)
 	["Pink", RPT_color + "(0.5,0.03,0.3,1)"], // #(argb,8,8,3)color(1,0.06,0.6,0.5)
-	//["Purple", RPT_color + "(0.1,0,0.3,1)"], // #(argb,8,8,3)color(0.8,0,1,0.1)
+	["Purple", RPT_color + "(0.1,0,0.3,1)"], // #(argb,8,8,3)color(0.8,0,1,0.1)
 	["ARPA Navy", RPT_texDir + "arpa_navy.paa"],
 	["ARPA Woodland", RPT_texDir + "arpa_woodland.paa"],
 	["Abstract Red", RPT_texDir + "abstraitrouge.paa"],
@@ -29,7 +29,6 @@ RPT_colorList = [
 	["Digital Desert", RPT_texDir + "digi_desert.paa"],
 	["Digital Desert 2", RPT_texDir + "digi_desert2.paa"],
 	["Digital Woodland", RPT_texDir + "digi_wood.paa"],
-	["Digital Ukraine Land", RPT_texDir + "DigitalUALand.paa"],
 	["Forest 1", RPT_texDir + "foret1.paa"],
 	["Forest 2", RPT_texDir + "raven.paa"],
 	["Jungle", RPT_texDir + "jungle.paa"],

@@ -28,16 +28,18 @@ JKB_stopMusic = {
 };
 
 // add SoG Music
-(
-	"
-	( (configName _x) find 'vn_drmm_song_os_' >= 0) &&
-	!((configName _x) in JKB_music_blacklist)
-	"
-	configClasses (configfile >> "CfgSounds")
-) apply {
-	private _title = getText (_x >> "name");
-	if (_title == "") then {_title = (configName _x)};
-	JKB_music_list pushback [_title, (configName _x), getNumber (_x >> "duration")];
+if (GRLIB_SOG_enabled) then {
+	(
+		"
+		( (configName _x) find 'vn_drmm_song_os_' >= 0) &&
+		!((configName _x) in JKB_music_blacklist)
+		"
+		configClasses (configfile >> "CfgSounds")
+	) apply {
+		private _title = getText (_x >> "name");
+		if (_title == "") then {_title = (configName _x)};
+		JKB_music_list pushback [_title, (configName _x), getNumber (_x >> "duration")];
+	};
 };
 
 // add Arma3 Music
