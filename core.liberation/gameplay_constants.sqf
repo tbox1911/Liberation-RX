@@ -109,6 +109,12 @@ readiness_increase_tower = 4;
 // resources
 msu_resource_min_players = 10;
 msu_fuel_min = 10;
+msu_fuel_plane = 6;
+msu_fuel_heli = 5;
+msu_fuel_mbt = 4;
+msu_fuel_ifv = 3;
+msu_fuel_apc = 2;
+msu_fuel_armed = 1;
 
 // AI Leaders have automaticly radios
 AI_leader_radio = false;
@@ -725,6 +731,12 @@ MSU_blacklisted_from_arsenal = [
 "C_UavTerminal",
 "O_UavTerminal",
 "I_E_UavTerminal",
+
+"DTS_Helmet_IA",
+"H_Construction_earprot_orange_F",
+"H_Hat_Tinfoil_F",
+"CUP_PMC_G_thug",
+"CUP_hgun_Browning_HP",
 
 "hlc_rifle_BAB",
 "rhs_weap_SCARH_USA_CQC",
