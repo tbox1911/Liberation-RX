@@ -2,6 +2,19 @@
 
 
 
+
+
+
+ressources
+------------------------------------------------------------------------------------------
+scripts\server\resources\recalculate_caps.sqf
+scripts\server\resources\recalculate_resources.sqf
+
+
+
+
+
+
 something to blow up in every sector
 ------------------------------------------------------------------------------------------
 
@@ -9,6 +22,7 @@ search for "Land_Communication_F"
 \scripts\server\game\spawn_radio_towers.sqf
 \scripts\server\remotecall\sector_liberated_remote_call.sqf
 \scripts\shared\functions\F_sectorOwnership.sqf
+
 
 
 

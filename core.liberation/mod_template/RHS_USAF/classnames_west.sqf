@@ -720,7 +720,7 @@ static_vehicles_AI = [
 support_vehicles_west = [
 
 	//Quadbike
-		["B_Quadbike_01_F",0,10,0,-100],
+		["B_Quadbike_01_F",0,10,2,-100],
 	//BW
 		["rnt_lkw_10t_mil_gl_kat_i_repair_fleck",0,logistic_ground_vehicle_price_tier_1,0,GRLIB_perm_inf],
 		["rnt_lkw_5t_mil_gl_kat_i_fuel_fleck",0,logistic_ground_vehicle_price_tier_1,0,GRLIB_perm_inf],

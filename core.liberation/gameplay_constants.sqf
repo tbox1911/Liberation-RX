@@ -38,9 +38,9 @@ GRLIB_date_month = 7;
 GRLIB_date_day = 30;
 GRLIB_nights_start = 21;
 GRLIB_nights_stop = 4;
+GRLIB_blufor_cap = 32;
 GREUH_start_ammo = 100;
 
-GRLIB_blufor_cap = 32;
 // defines if everyone gets ammo from sector liberations
 Sector_ammo_for_all = false;
 
@@ -106,19 +106,32 @@ readiness_increase_military = 4;
 readiness_increase_factory = 4;
 readiness_increase_tower = 4;
 
+// resources
+msu_resource_min_players = 10;
+msu_fuel_min = 10;
+
 // AI Leaders have automaticly radios
 AI_leader_radio = false;
 
-// HC
-hc_battlegroup_on = true;
-
+// AI skill
 skill_scan = true;
 skill_parachuters = 0.9;
 skill_air_vehicles_planes = 0.9;
 skill_air_vehicles_helicopters = 0.9;
 skill_ground_vehicles = 0.9;
 
+// AI Limit
+ai_limit = 3;
+ai_limiter_on = true;
+
+// AI buildable
+ai_skill = 1;
+ai_value = 100; // price
+
+// HC
+hc_battlegroup_on = true;
 limit_hc_gr = false;
+
 // Readiness Increase from towns
 readiness_calc_bg_town = true;
 readiness_calc_sm_town = true;
@@ -148,12 +161,6 @@ force_sensorTarget_opfor = false;
 //Enemy IEDs
 ied_enemy_sector = ["ATMine", "APERSMine", "APERSBoundingMine", "SLAMDirectionalMine", "APERSTripMine"];
 
-// AI Limit
-ai_limit = 3;
-ai_limiter_on = true;
-// ai skill
-ai_skill = 1;
-ai_value = 100; // buildable ai price
 
 
 
