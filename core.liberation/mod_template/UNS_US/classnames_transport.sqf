@@ -16,8 +16,8 @@ box_transport_config = box_transport_config + [
 // objects in this list can be loaded on vehicle position defined above
 
 box_transport_offset = box_transport_offset + [
-	["uns_AmmoBox_ANZAC", [0, 0, -0.9] ],
-	["uns_resupply_crate_NVA", [0, 0, -0.9] ],
-	["Land_WaterBottle_01_stack_F", [0, 0, -0.25] ],
-	["LAND_barel7", [0, 0, -0.4] ]
+	["uns_AmmoBox_ANZAC", [0, 0, 0.6] ],
+	["uns_HiddenAmmoBox", [0, 0, 0.2] ],
+	 ["Land_WaterBottle_01_stack_F", [0, 0, -0.2] ],
+ 	["Land_FoodSacks_01_large_brown_idap_F", [0, 0, -0.3] ] 
 ];

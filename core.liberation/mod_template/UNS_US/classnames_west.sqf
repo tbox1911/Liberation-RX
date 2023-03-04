@@ -7,7 +7,6 @@ GRLIB_west_modder = "Z@Warrior / pSiKO";
 // Unsung Men (US 1st Infantery Division'65)
 
 Arsenal_typename = "uns_AmmoBox_ANZAC";
-A3W_BoxWps = "uns_resupply_crate_NVA"; 
 huron_typename = "uns_ch47_m60_army";
 FOB_typename = "Land_Cargo_HQ_V1_F";
 FOB_box_typename = "B_Slingload_01_Cargo_F";
@@ -26,10 +25,10 @@ SHOP_Man = "uns_civilian4";	    //"C_Man_formal_1_F";
 SELL_Man = "uns_civilian3_b1";	//"C_Story_Mechanic_01_F";
 Radio_tower = "Antenna";
 waterbarrel_typename = "Land_WaterBottle_01_stack_F";
-fuelbarrel_typename = "LAND_barel7";
 foodbarrel_typename = "Land_FoodSacks_01_large_brown_idap_F";
 GRLIB_sar_wreck = "vn_air_uh1d_med_wreck";
 canisterFuel = "Land_CanisterFuel_Red_F";
+A3W_BoxWps = "uns_HiddenAmmoBox";
 
 //repair_sling_typename = "B_Slingload_01_repair_F";
 //fuel_sling_typename = "B_Slingload_01_Fuel_F";
@@ -91,7 +90,6 @@ light_vehicles = [
 	["uns_willysm40",1,80,5,GRLIB_perm_inf],
 	["uns_PBR_M10",2,130,5,GRLIB_perm_log],
 	["uns_m37b1",1,60,5,0],
-	["uns_m37b1_m1919",1,60,5,GRLIB_perm_log],
 	["uns_M35A2",1,80,5,GRLIB_perm_inf],
 	["uns_M35A2_Open",1,80,5,GRLIB_perm_log],
 	["uns_xm706e1",1,100,5,GRLIB_perm_log],
