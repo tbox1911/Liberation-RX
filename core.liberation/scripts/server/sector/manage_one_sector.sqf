@@ -187,7 +187,8 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 	};
 
 	[ _sector, _defensecount ] spawn static_manager;
-	[ _sector, _building_range, round (_iedcount) ] spawn ied_manager;
+	[ markerPos _sector, _building_range, round (_iedcount) ] spawn ied_manager;
+	[ markerPos _sector, _building_range, round (_iedcount) ] spawn ied_trap_manager;
 
 	sleep 10;
 

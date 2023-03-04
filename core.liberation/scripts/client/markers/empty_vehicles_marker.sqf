@@ -9,7 +9,7 @@ private _no_marker_classnames = [
 	huron_typename,
 	playerbox_typename,
 	GRLIB_player_gravebox
-];
+] + GRLIB_ide_traps;
 { _no_marker_classnames pushback (_x select 0) } foreach buildings;
 
 waitUntil {sleep 1; !isNil "GRLIB_init_server"};

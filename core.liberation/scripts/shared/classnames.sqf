@@ -491,6 +491,28 @@ GRLIB_intel_items = [
 	"Item_Laptop_Unfolded",
 	"Land_SatellitePhone_F"
 ];
+GRLIB_ide_traps = [
+	"Item_Sleeping_bag_folded_01",
+	"Land_LuggageHeap_01_F",
+	"Land_LuggageHeap_02_F",
+	"Land_GarbageBags_F",
+	"Land_GarbageHeap_04_F",
+	"Land_GarbageWashingMachine_F",
+	"Land_GarbageBarrel_01_F",
+	"Land_Sacks_heap_F",
+	"Land_CanisterFuel_White_F",
+	"Land_CanisterFuel_Blue_F",
+	"Land_CanisterFuel_Red_F",	
+	"Land_GasTank_01_khaki_F",
+	"Land_FirstAidKit_01_closed_F",
+	"Box_C_UAV_06_Swifd_F",
+	"Box_C_IDAP_UAV_06_F",
+	"Land_PlasticCase_01_small_idap_F",
+	"Land_Suitcase_F",
+	"Box_Syndicate_Ammo_F",
+	"Box_Syndicate_WpsLaunch_F",
+	"VirtualReammoBox_camonet_F"
+];
 GRLIB_ignore_colisions = [
 	huron_typename,
 	Arsenal_typename,

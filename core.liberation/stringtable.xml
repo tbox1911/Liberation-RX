@@ -3363,16 +3363,24 @@
 			<Czech>Tankování paliva</Czech>
 		</Key>
 		<Key ID="STR_INTEL">
-			<Original>-- TAKE INTEL</Original>
-			<French>-- PRENDRE INTEL</French>
-			<German>-- GEHEIMDIENSTINFORMATIONEN AUFNEHMEN</German>
-			<Spanish>-- COGER INTELIGENCIA</Spanish>
-			<Russian>-- ПОЛУЧИТЬ РАЗВЕДДАННЫЕ</Russian>
-			<Chinesesimp>-- 获取情报</Chinesesimp>
-			<Chinese>-- 獲取情報</Chinese>
-			<Japanese>-- 情報を確保</Japanese>
-			<Portuguese>-- TOME INTEL</Portuguese>
-			<Czech>-- Vezmi INTEL</Czech>
+			<Original>SEARCH</Original>
+			<French>CHERCHER</French>
+			<German>AUFNEHMEN</German>
+			<Spanish>COGER</Spanish>
+			<Portuguese>TOME</Portuguese>
+			<Czech>Vezmi</Czech>
+		</Key>
+		<Key ID="STR_INTEL_NOTHING">
+			<Original>You can't find anything...</Original>
+			<French>Vous ne trouvez rien...</French>
+		</Key>
+		<Key ID="STR_INTEL_FOUND">
+			<Original>%1 find Intels!\nBonus Score +%2 XP\n+%3 Intels</Original>
+			<French>%1 à trouvé des Informations !\nBonus Score +%2 XP\n+%3 Intels</French>
+		</Key>
+		<Key ID="STR_INTEL_GOODS">
+			<Original>%1 find Goods!\nBonus Score +%2 XP\n+%3 Ammo\n+%4 Fuel</Original>
+			<French>%1 à trouvé des Resources !\nBonus Score +%2 XP\n+%3 Ammo\n+%4 Fuel</French>
 		</Key>
 		<Key ID="STR_SECONDARY_OBJECTIVES">
 			<Original>-- SECONDARY OBJECTIVES</Original>
