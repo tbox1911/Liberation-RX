@@ -38,4 +38,19 @@ RPT_colorList = [
 	["Woodland Tiger", RPT_texDir + "woodtiger.paa"]
 ];
 
+private ["_name", "_texture"];
+if (GRLIB_LRX_Texture_enabled) then {
+	(
+		"
+		true
+		"
+		configClasses (configfile >> "LRX_TextureSources")
+	) apply {
+		_name = getText (_x >> "name");
+		if (_name == "") then {_name = (configName _x)};
+		_texture = getText (_x >> "texture");
+		RPT_colorList pushback [_name, _texture];
+	};
+};
+
 [] call compileFinal preprocessFileLineNumbers "addons\VAM\RPT_vip_textures.sqf";
