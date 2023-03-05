@@ -66,7 +66,9 @@ infantry_units_west = [
 ];
 
 units_loadout_overide = [
-	"uns_US_25ID_MGAASG"		// AA-Soldier
+	"uns_US_25ID_MGAASG",		// AA-Soldier
+	"uns_US_1ID_MED",			// Add Medikit
+	"uns_US_1ID_ENG"			// Add Toolkit
 ];
 
 
