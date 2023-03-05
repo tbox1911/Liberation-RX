@@ -109,9 +109,9 @@ readiness_increase_tower = 4;
 // resources
 msu_resource_min_players = 10;
 msu_fuel_min = 10;
-msu_fuel_plane = 6;
-msu_fuel_heli = 5;
-msu_fuel_mbt = 4;
+msu_fuel_plane = 8;
+msu_fuel_heli = 7;
+msu_fuel_mbt = 5;
 msu_fuel_ifv = 3;
 msu_fuel_apc = 2;
 msu_fuel_armed = 1;
