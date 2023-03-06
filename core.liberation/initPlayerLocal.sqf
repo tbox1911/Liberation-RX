@@ -12,7 +12,7 @@ Regelwerk MiSim United<br />
 1.1    Trolling, Beleidigung, Rassismus, sexuelle Belästigung so wie alles, was strafrechtlich verfolgt wird ist verboten und führt zum Ausschluss.<br />
 1.2    Wer unseren Server betritt, erklärt sich damit einverstanden, dass jede Form von Bild und Ton hier für die Öffentlichkeit bestimmt sind und jederzeit ohne weitere Ankündigung aufgezeichnet werden können.<br />
 1.3    Das Recycling, Stehlen oder Zerstören von Fahrzeugen anderer Spieler ist untersagt.<br />
-1.4    Schießen innerhalb der FOBs ist nur zu deren Verteidigung erlaubt.<br />
+1.4    Schießen innerhalb der FOBs ist nur zu deren Verteidigung erlaubt. Waffen testen ist in der “Operationszentrale” erlaubt, sofern es die erste FOB gibt.<br />
 1.5    Den Anweisungen von Moderatoren ist Folge zu leisten.<br />
 1.6    Bei Verlust von Fahrzeugen durch Bugs etc. liegt es im Ermessen der Moderatoren, eine Erstattung zu gewähren. (Videobeweis hilft hierbei.)<br />
 1.7    Bei Streitigkeiten mit Moderatoren ruhig bleiben, einen weiteren hinzuholen und ggf. ein Video machen.<br />
@@ -21,20 +21,20 @@ Regelwerk MiSim United<br />
 <br />
 2.    Gruppen<br />
 2.1    Gruppen haben sich im Gruppenmanager ordentlich einzutragen. (Rufname, Kurzfunk Freq., Funktion)<br />
-2.2    Benennung der Gruppen ist militärisch zu halten. (kein Einhorn, Biertrinker etc. Rufnamen)<br />
-2.3    Innerhalb der Gruppe hat der Gruppenführer das sagen.<br />
+2.2    Funkrufnamen sind im Bereich Milsim, kurz, international und gut aussprechbar zu halten.<br />
+2.3    Innerhalb der Gruppe hat der Gruppenführer das Sagen.<br />
+2.4    Gruppen müssen uniform auftreten.<br />
 <br />
 <br />
 3.    Ausrüstung und Slots<br />
 3.1    Wer einen Slot belegt, muss ausreichend qualifiziert sein und die jeweilige Dienstleistung auch tatsächlich für andere zur Verfügung stellen. Kampfpiloten müssen CAS durchführen, Engineers müssen reparieren, Medics müssen heilen, etc. und HQ muss ein möglichst angenehmes Spielerlebnis für seine Truppen organisieren.<br />
-3.2    Piloten-Slots stehen für die maximale Anzahl der jeweiligen Luftfahrzeuge. Co-Pilot, Gunner oder Crew sind beliebig zu besetzen, sofern dadurch nicht 3.1 verletzt wird.<br />
-3.3    Die Ausrüstung der dargestellten Klasse muss in den Bereich Milsim passen. (beispielsweise; keine Ghilli-Medic-Javelin-Sniper oder Panzerbesatzungen mit Javelin auf dem Rücken)<br />
+3.2    Die Ausrüstung der dargestellten Klasse muss in den Bereich Milsim passen. (beispielsweise keine Ghilli-Medic-Javelin-Sniper oder Panzerbesatzungen mit Javelin auf dem Rücken)<br />
 <br />
 <br />
 4.     Fahrzeuge<br />
-4.1     Boden- und Luftfahrzeuge sind Unterstützungselemente, sie dürfen den Feuerkampf ausschließlich zur Selbstverteidigung selbständig aufnehmen, wenn kein Auftrag von Infanterieeinheiten vorliegt.<br />
+4.1    Boden- und Luftfahrzeuge sind Unterstützungselemente. Sie dürfen den Feuerkampf ausschließlich zur Selbstverteidigung selbständig aufnehmen, wenn kein Auftrag von Infanterieeinheiten vorliegt.<br />
 4.2    Regel der Selbstverteidigung trifft nicht zu, wenn ein Fahrzeug sich fahrlässig und ohne Auftrag der Infanterie zu nah an eine Zone begibt!<br />
-4.3    Zum Besetzen der Fahrzeuge darf man als Engineer slotten. (Entsprechende ausnahme zu 3.1)<br />
+4.3    Zum Besetzen der Land- und Lufteinheiten ist der entsprechende Slot zu nutzen, sollte dieser nicht frei sein, muss gewartet werden, bis er es wird.<br />
 <br />
 <br />
 5.    Funk und Funkfrequenzen <br />
@@ -58,7 +58,7 @@ Rules MiSim United<br />
 1.1 Trolling, insults, racism, sexual harassment as well as anything that will be prosecuted is prohibited and will result in a serverban.<br />
 1.2 Who enters our server, agrees that any form of image and sound here are intended for the public and can be recorded at any time without further notice.<br />
 1.3 Recycling, stealing or destroying other players' vehicles is prohibited.<br />
-1.4 Shooting within the FOBs is only permitted for defense of said FOB.<br />
+1.4 Shooting within the FOBs is only permitted for defense of said FOB. Weapon testing is allowed in the operation base when the first FOB exists.<br />
 1.5 The instructions of moderators must be followed without discussion.<br />
 1.6 If vehicles are lost due to bugs etc..., it is at the discretion of the moderators to grant a refund. (Video proof helps with this.)<br />
 1.7 Stay calm in the event of disputes with moderators, bring in another player and, if necessary, make a video.<br />
@@ -67,8 +67,9 @@ Rules MiSim United<br />
 <br />
 2. Groups<br />
 2.1 Groups have to register properly in the group manager. (ACE-selfinteraction -> Teammanagement)<br />
-2.2 Naming of the groups is to be kept militarily. (no unicorn, beer drinker etc. first name or any other conflict with rule 1.1)<br />
+2.2 Naming of the groups is to be kept militarily, short, international and well pronouncable.<br />
 2.3 Within the group, the group leader has the say.<br />
+2.4 Groups must have uniform appearance.<br />
 <br />
 <br />
 3. Gear and Slots<br />
@@ -80,7 +81,7 @@ Rules MiSim United<br />
 4. Vehicles<br />
 4.1 Ground and air vehicles are support elements, they may only engage in firefightings independently for self-defense if there is no order from infantry units.<br />
 4.2 Rule of self-defense does not apply if a vehicle negligently and without order of the infantry goes too close to a zone!<br />
-4.3 To occupy the vehicles, you may slot as an engineer. (Corresponding exception to 3.1)<br />
+4.3 To use the vehicles, you must use the according slots. If the slots are occupied, you have to wait until they become available again.<br />
 <br />
 <br />
 5. Radio and Radio Frequencies <br />
