@@ -246,7 +246,8 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 	["uns_m1941_82mm_mortarNVA_arty",20],
 	["uns_M40_106mm_NVA",20],
 	["uns_KS19_NVA",25],
-	["uns_ZPU4_NVA",25]
+	["uns_ZPU4_NVA",25],
+	["uns_pk_high_NVA", 15]
 ];
 
 R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +

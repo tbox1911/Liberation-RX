@@ -135,17 +135,10 @@ static_vehicles = [
 	["uns_Type36_57mm_NVA",1,40,0,GRLIB_perm_log],
 	["uns_Type74_NVA",1,40,0,GRLIB_perm_log],
 	["uns_ZU23_NVA",1,40,0,GRLIB_perm_log]
-
 ];
 
 // *** Static Weapon with AI ***
 static_vehicles_AI = [
-	"uns_dshk_armoured_NVA",
-	"uns_dshk_twin_NVA",
-	"uns_pk_high_NVA",
-	"uns_Type36_57mm_NVA",
-	"uns_Type74_NVA",
-	"uns_ZU23_NVA"
 ];
 
 support_vehicles_west = [

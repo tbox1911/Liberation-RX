@@ -279,19 +279,21 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 	["uns_M30_107mm_mortar",25],
 	["uns_M40_106mm_US",30],
 	["uns_US_MK18_low",30],
-	["Uns_M102_artillery",40]
+	["Uns_M55_Quad,",40]
 ];
 
 R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 [
 	"uns_m60_high",
+	"uns_m60_bunker_large",
 	"uns_M2_60mm_mortar",
 	"uns_M1_81mm_mortar",
 	"uns_m2_high",
 	"uns_M30_107mm_mortar",
 	"uns_M40_106mm_US",
+	"Uns_M55_Quad",
 	"uns_US_MK18_low",
-	"Uns_M102_artillery"
+	"Uns_M114_artillery"
 ];
 
 //--------------- Camping ---------------
