@@ -65,7 +65,7 @@ kamikaze_kill_score = 6;
 kamikaze_kill_ammo = 12;
 civkill_score = -55;
 civkill_ammo = -275;
-civkill_combat_readiness = 4;
+civkill_combat_readiness = 5;
 tkill_score = -6;
 tkill_ammo = -9;
 tk_active = false; //NEW Tkillscript with dialog
@@ -76,14 +76,14 @@ tk_active = false; //NEW Tkillscript with dialog
 
 
 // Only use by 2 dividable numbers
-box_recycle_value = 36;
+box_recycle_value = 40;
 // Increases the ammo for logistics and decreasese the ammo for everyone
 logistics_ammo_increase = true;
 
 prisoner_intel = 5;
 prisoner_score = 25;
 prisoner_ammo = 50;
-prisoner_combat_readiness = 9;
+prisoner_combat_readiness = 7;
 prisoner_i = 0;
 
 // Building Penalty
@@ -109,12 +109,12 @@ readiness_increase_tower = 4;
 // resources
 msu_resource_min_players = 10;
 msu_fuel_min = 10;
-msu_fuel_plane = 8;
-msu_fuel_heli = 7;
-msu_fuel_mbt = 5;
-msu_fuel_ifv = 3;
-msu_fuel_apc = 2;
-msu_fuel_armed = 1;
+msu_fuel_plane = 0;
+msu_fuel_heli = 0;
+msu_fuel_mbt = 0;
+msu_fuel_ifv = 0;
+msu_fuel_apc = 0;
+msu_fuel_armed = 0;
 
 // AI Leaders have automaticly radios
 AI_leader_radio = false;
