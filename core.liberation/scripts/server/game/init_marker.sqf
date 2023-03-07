@@ -31,16 +31,11 @@ private _marker_REPAIR = [];
   //diag_log format ["DBG: sector:%4 - pos:%1 try:%2 rad:%3", _spawnpos, _max_try, _radius, _x];
 
   if (count _spawnpos > 0) then {
-    _vehicle = repair_offroad createVehicle _spawnpos;
-    waitUntil {!isNull _vehicle};
+    _vehicle = [_spawnpos, repair_offroad, false, false, true] call F_libSpawnVehicle;
     _vehicle allowDamage false;
     _vehicle setVehicleLock "LOCKED";
     _vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
     _vehicle setVariable ["R3F_LOG_disabled", true, true];
-    clearWeaponCargoGlobal _vehicle;
-    clearMagazineCargoGlobal _vehicle;
-    clearItemCargoGlobal _vehicle;
-    clearBackpackCargoGlobal _vehicle;
     _marker_REPAIR pushback _spawnpos;
   } else {
     diag_log format ["--- LRX Error: No place to build %1 at sector %2", repair_offroad, _x];
