@@ -29,7 +29,7 @@ if (GRLIB_disable_death_chat && isPlayer _unit) then {
 _unit switchMove "AinjPpneMstpSnonWrflDnon";  // lay down
 _unit playMoveNow "AinjPpneMstpSnonWrflDnon";
  
-sleep 8;
+sleep 7;
 
 [
   [_unit],
@@ -46,12 +46,11 @@ sleep 8;
     ( [_this] call PAR_has_medikit || [_this] call PAR_is_medic )",
   "round(_caller distance2D _target) < 3",
   {
-    if (_caller == player) then {
-      _msg = format [localize "STR_PAR_ST_01", name _caller, name _target];
-      [_target, _msg] remoteExec ["PAR_fn_globalchat", 0];
-      _bleedOut = _target getVariable ["PAR_BleedOutTimer", 0];
-      _target setVariable ["PAR_BleedOutTimer", _bleedOut + PAR_BleedOutExtra, true];
-    };
+    _target setVariable ["PAR_myMedic", _caller];
+    _msg = format [localize "STR_PAR_ST_01", name _caller, name _target];
+    [_target, _msg] remoteExec ["PAR_fn_globalchat", 0];
+    _bleedOut = _target getVariable ["PAR_BleedOutTimer", 0];
+    _target setVariable ["PAR_BleedOutTimer", _bleedOut + PAR_BleedOutExtra, true];
     _grbg = createVehicle [(selectRandom PAR_MedGarbage), getPos _target, [], 0, "CAN_COLLIDE"];
     _grbg spawn {sleep (60 + floor(random 30)); deleteVehicle _this};
     if (stance _caller == 'PRONE') then {
@@ -77,11 +76,14 @@ sleep 8;
   },
   {
     _caller switchMove "";
+    _target setVariable ["PAR_myMedic", nil];
   },
   [time],6,12] call BIS_fnc_holdActionAdd;
   _wnded addAction ["<t color='#C90000'>" + localize "STR_PAR_AC_02" + "</t>", "addons\PAR\PAR_fn_drag.sqf", ["action_drag"], 9, false, true, "", "!PAR_isDragging", 3];
   _wnded addAction ["<t color='#C90000'>" + localize "STR_PAR_AC_03" + "</t>", { PAR_isDragging = false }, ["action_release"], 10, true, true, "", "PAR_isDragging"];
 }] remoteExec ["bis_fnc_call", 0];
+
+sleep 3;
 
 private _bld = createVehicle [(selectRandom PAR_BloodSplat), getPos _unit, [], 0, "CAN_COLLIDE"];
 private _cnt = 0;
