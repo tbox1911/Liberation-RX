@@ -686,7 +686,6 @@ static_vehicles = [
 	["CUP_WV_B_RAM_Launcher",150,0,0,GRLIB_perm_inf],
 	["CUP_WV_B_SS_Launcher",250,0,0,GRLIB_perm_inf],
 	//Vanilla
-	["B_SAM_System_02_F",120,0,0,GRLIB_perm_inf],
 	["B_SAM_System_03_F",80,0,0,GRLIB_perm_inf],
 	["B_AAA_System_01_F",40,0,0,GRLIB_perm_inf],
 	["B_SAM_System_01_F",80,0,0,GRLIB_perm_inf],
