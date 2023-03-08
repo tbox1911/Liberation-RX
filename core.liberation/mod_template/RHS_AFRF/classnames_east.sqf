@@ -72,7 +72,7 @@ divers_squad = [
 ];
 
 militia_vehicles = [
-        "CUP_O_LR_MG_TKA",
+    "CUP_O_LR_MG_TKA",
 	"CUP_O_LR_SPG9_TKA",
 	"CUP_O_UAZ_AGS30_TKA",
 	"CUP_O_UAZ_MG_TKA",
@@ -82,7 +82,7 @@ militia_vehicles = [
 	"CUP_O_BRDM2_ATGM_TKA",
 	"CUP_O_BMP2_ZU_TKA",
 	"CUP_O_MTLB_pk_TKA",
-        "CUP_O_M113A3_TKA",
+    "CUP_O_M113A3_TKA",
 	"CUP_O_BTR40_MG_TKA",
 	"CUP_O_BMP2_TKA",
 	"CUP_O_T34_TKA",
@@ -97,7 +97,7 @@ boats_east = [
 ];
 
 opfor_vehicles = [
-        "CUP_O_LR_MG_TKA",
+    "CUP_O_LR_MG_TKA",
 	"CUP_O_LR_SPG9_TKA",
 	"CUP_O_UAZ_AGS30_TKA",
 	"CUP_O_UAZ_MG_TKA",
@@ -107,7 +107,7 @@ opfor_vehicles = [
 	"CUP_O_BRDM2_ATGM_TKA",
 	"CUP_O_BMP2_ZU_TKA",
 	"CUP_O_MTLB_pk_TKA",
-        "CUP_O_M113A3_TKA",
+    "CUP_O_M113A3_TKA",
 	"CUP_O_Ural_ZU23_TKA",
 	"CUP_O_BTR40_MG_TKA",
 	"CUP_O_BMP2_TKA",
@@ -119,7 +119,7 @@ opfor_vehicles = [
 ];
 
 opfor_vehicles_low_intensity = [
-        "CUP_O_LR_MG_TKA",
+    "CUP_O_LR_MG_TKA",
 	"CUP_O_LR_SPG9_TKA",
 	"CUP_O_UAZ_AGS30_TKA",
 	"CUP_O_UAZ_MG_TKA",
@@ -129,7 +129,7 @@ opfor_vehicles_low_intensity = [
 	"CUP_O_BRDM2_ATGM_TKA",
 	"CUP_O_BMP2_ZU_TKA",
 	"CUP_O_MTLB_pk_TKA",
-        "CUP_O_M113A3_TKA",
+    "CUP_O_M113A3_TKA",
 	"CUP_O_BTR40_MG_TKA",
 	"CUP_O_BMP2_TKA",
 	"CUP_O_T34_TKA",
@@ -140,7 +140,7 @@ opfor_vehicles_low_intensity = [
 ];
 
 opfor_battlegroup_vehicles = [
-        "CUP_O_LR_MG_TKA",
+    "CUP_O_LR_MG_TKA",
 	"CUP_O_LR_SPG9_TKA",
 	"CUP_O_UAZ_AGS30_TKA",
 	"CUP_O_UAZ_MG_TKA",
@@ -150,14 +150,14 @@ opfor_battlegroup_vehicles = [
 	"CUP_O_BRDM2_ATGM_TKA",
 	"CUP_O_BMP2_ZU_TKA",
 	"CUP_O_MTLB_pk_TKA",
-        "CUP_O_M113A3_TKA",
+    "CUP_O_M113A3_TKA",
 	"CUP_O_BTR40_MG_TKA",
 	"CUP_O_BMP2_TKA",
 	"CUP_O_T34_TKA",
 	"CUP_O_BTR80A_TK",
 	"CUP_O_BMP1P_TKA",
 	"CUP_O_T55_TK",
-	"CUP_O_T55_TK"
+	"CUP_O_T55_TK",
 	"CUP_O_2S6_RU"
 ];
 
@@ -169,7 +169,7 @@ opfor_battlegroup_vehicles_low_intensity = [
 ];
 
 opfor_reinforcement_vehicles = [
-        "CUP_O_LR_MG_TKA",
+    "CUP_O_LR_MG_TKA",
 	"CUP_O_LR_SPG9_TKA",
 	"CUP_O_UAZ_AGS30_TKA",
 	"CUP_O_UAZ_MG_TKA",
@@ -179,14 +179,14 @@ opfor_reinforcement_vehicles = [
 	"CUP_O_BRDM2_ATGM_TKA",
 	"CUP_O_BMP2_ZU_TKA",
 	"CUP_O_MTLB_pk_TKA",
-        "CUP_O_M113A3_TKA",
+    "CUP_O_M113A3_TKA",
 	"CUP_O_BTR40_MG_TKA",
 	"CUP_O_BMP2_TKA",
 	"CUP_O_T34_TKA",
 	"CUP_O_BTR80A_TK",
 	"CUP_O_BMP1P_TKA",
 	"CUP_O_T55_TK",
-	"CUP_O_T55_TK"
+	"CUP_O_T55_TK",
 	"CUP_O_2S6_RU",
 	"CUP_O_ZSU23_SLA"
 	];
@@ -280,7 +280,6 @@ opfor_recyclable = [
 // loot crates for logistics 
 
 loot_crates = [
-
 	["Box_NATO_AmmoVeh_F", 0, round(box_recycle_value / GRLIB_recycling_percentage), 0],
 	["Box_East_AmmoVeh_F", 0, round(box_recycle_value / GRLIB_recycling_percentage), 0],
 	["Box_IND_AmmoVeh_F", 0, round(box_recycle_value / GRLIB_recycling_percentage), 0],
