@@ -93,7 +93,7 @@ militia_vehicles = [
 ];
 
 boats_east = [
-	"O_Boat_Armed_01_hmg_F"
+	"I_Boat_Armed_01_minigun_F"
 ];
 
 opfor_vehicles = [

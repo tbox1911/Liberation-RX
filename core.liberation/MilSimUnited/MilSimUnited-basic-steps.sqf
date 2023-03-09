@@ -3,6 +3,17 @@
 
 
 
+loadout override
+------------------------------------------------------------------------------------------
+scripts\shared\functions\F_spawnRegularSquad.sqf
+scripts\shared\functions\F_spawnBuildingSquad.sqf
+scripts\loadouts\init_loadouts.sqf
+scripts\loadouts\default.sqf
+mod_template\RHS_AFRF\loadout\crewman.sqf
+
+
+
+
 
 
 ressources

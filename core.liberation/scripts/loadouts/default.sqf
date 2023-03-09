@@ -1,5 +1,13 @@
 _unit = _this select 0;
 
+_unit forceAddUniform "U_I_CombatUniform";
+_unit addHeadgear "H_HelmetIA";
+
+if ( floor(random 100) < 60 ) then {
+    _unit addPrimaryWeaponItem "acc_flashlight";
+};
+
+/*
 if ( (typeOf _unit) in militia_loadout_overide ) then {
     [_unit] call compile preprocessFileLineNumbers format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_east, toLower (typeOf _unit)];
 } else {
@@ -19,7 +27,4 @@ if ( (typeOf _unit) in militia_loadout_overide ) then {
     _unit linkItem "ItemMap";
     _unit linkItem "ItemCompass";
 };
-
-if ( floor(random 100) < 40 ) then {
-    _unit addPrimaryWeaponItem "acc_flashlight";
-};
+*/

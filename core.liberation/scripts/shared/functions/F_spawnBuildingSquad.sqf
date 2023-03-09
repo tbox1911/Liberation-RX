@@ -35,9 +35,10 @@ _idxposit = 0;
 	_nextunit setpos (_buildingpositions select (_position_indexes select _idxposit));
 	_nextunit setdir (random 360);
 	[ _nextunit, _sector ] spawn building_defence_ai;
-	if ( _infsquad == "militia" ) then {
-		[ _nextunit ] call loadout_militia;
-	};
+	
+	// if ( _infsquad == "militia" ) then {};
+	[ _nextunit ] call loadout_militia;
+	
 
 	_idxposit = _idxposit + 1;
 
