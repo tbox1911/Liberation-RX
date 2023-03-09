@@ -5,7 +5,6 @@ class VAM_RscText
 {
 	deletable = 0;
 	fade = 0;
-	access = 0;
 	type = 0;
 	idc = -1;
 	colorBackground[] =  {
@@ -60,7 +59,6 @@ class VAM_RscListBox
 {
 	deletable = 0;
 	fade = 0;
-	access = 0;
 	type = 5;
 	rowHeight = 0;
 	colorText[] = {
@@ -225,7 +223,6 @@ class VAM_RscButton
 {
 	deletable = 0;
 	fade = 0;
-	access = 0;
 	type = 1;
 	text = "";
 	colorText[] = {
