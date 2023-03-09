@@ -1,6 +1,5 @@
-//[ box, arsenalName, [ white, black ], _targets ] call LARs_fnc_updateArsenal
-
 params[ "_box", "_arsenalName", [ "_lists", [] ], [ "_target", false, [ 0, objNull, sideUnknown, grpNull, [], false ] ] ];
+//[ box, arsenalName, [ white, black ], _targets ] call LARs_fnc_updateArsenal;
 
 if ( isNil "_box" || { isNull _box } ) exitWith {
 	"Object not found for call to LARs_fnc_updateArsenal" call BIS_fnc_error;

@@ -114,6 +114,7 @@ while { dialog && (alive player) && edit_loadout == 0 } do {
 		} else {
 			[player, [profileNamespace, _loaded_loadout]] call bis_fnc_loadInventory;
 		};
+		[player] call F_filterLoadout;
 		hint format [ localize "STR_HINT_LOADOUT_LOADED", _loaded_loadout];
 		if ( exit_on_load == 1 ) then {
 			closeDialog 0;

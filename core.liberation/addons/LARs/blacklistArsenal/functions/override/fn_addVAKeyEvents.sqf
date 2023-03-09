@@ -1,5 +1,4 @@
 #include "\A3\Ui_f\hpp\defineResinclDesign.inc"
-#include "macros.hpp"
 
 params[ "_display" ];
 
@@ -28,11 +27,11 @@ _display displayAddEventHandler ["keydown","with (uinamespace) do {_this call LA
 
 _ctrlButtonLoad = _display displayctrl IDC_RSCDISPLAYARSENAL_CONTROLSBAR_BUTTONLOAD;
 _ctrlButtonLoad ctrlRemoveAllEventHandlers "buttonclick";
-_ctrlButtonLoad ctrlAddEventHandler ["buttonclick","with uinamespace do {['buttonLoad',[ctrlparent (_this select 0)]] call bis_fnc_arsenal;[ctrlparent (_this select 0)] call LARs_fnc_applyLBColors;};"];
+_ctrlButtonLoad ctrlAddEventHandler ["buttonclick","with uinamespace do {['buttonLoad',[ctrlparent (_this select 0)]] call bis_fnc_arsenal;};"];
 
 _ctrlTemplateButtonDelete = _display displayctrl IDC_RSCDISPLAYARSENAL_TEMPLATE_BUTTONDELETE;
 _ctrlTemplateButtonDelete ctrlRemoveAllEventHandlers "buttonclick";
-_ctrlTemplateButtonDelete ctrladdeventhandler ["buttonclick","with uinamespace do {['buttonTemplateDelete',[ctrlparent (_this select 0)]] call bis_fnc_arsenal; [ctrlparent (_this select 0)] call LARs_fnc_applyLBColors;};"];
+_ctrlTemplateButtonDelete ctrladdeventhandler ["buttonclick","with uinamespace do {['buttonTemplateDelete',[ctrlparent (_this select 0)]] call bis_fnc_arsenal;};"];
 
 if ( getMissionConfigValue[ "LARs_overrideVA_random", 0 ] > 0 ) then {
 	_display displayCtrl IDC_RSCDISPLAYARSENAL_CONTROLSBAR_BUTTONRANDOM ctrlEnable false;

@@ -1,5 +1,6 @@
 params ["_item"];
 if (isNil "_item") exitWith { false };
+if (_item == "") exitWith { true };
 
 private _ret = true; 
 

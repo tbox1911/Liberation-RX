@@ -1,6 +1,5 @@
 #include "\A3\ui_f\hpp\defineDIKCodes.inc"
 #include "\A3\Ui_f\hpp\defineResinclDesign.inc"
-#include "macros.hpp"
 
 #define IDCS_LEFT\
 	IDC_RSCDISPLAYARSENAL_TAB_PRIMARYWEAPON,\
@@ -34,8 +33,6 @@
 	IDC_RSCDISPLAYARSENAL_TAB_CARGOMISC\
 
 #define IDCS	[IDCS_LEFT,IDCS_RIGHT]
-
-//diag_log "Override Button Down";
 
 _display = _this select 0;
 _key = _this select 1;
@@ -120,7 +117,7 @@ switch true do {
 	};
 	//--- Open
 	case (_key == DIK_O): {
-		if (_ctrl) then {['buttonLoad',[_display]] call bis_fnc_arsenal;[_display] call LARs_fnc_applyLBColors;};
+		if (_ctrl) then {['buttonLoad',[_display]] call bis_fnc_arsenal;};
 	};
 	//--- Randomize
 	case (_key == DIK_R && getMissionConfigValue[ "LARs_overrideVA_random", 0 ] isEqualTo 0 ): {
@@ -131,7 +128,6 @@ switch true do {
 					{
 						_soldiers set [count _soldiers,configName _x];
 					} forEach ("isclass _x && getnumber (_x >> 'scope') > 1 && gettext (_x >> 'simulation') == 'soldier'" configClasses (configFile >> "cfgvehicles"));
-					//[_center,_soldiers call BIS_fnc_selectRandom] call BIS_fnc_loadInventory;
 					[_center, selectRandom _soldiers] call BIS_fnc_loadInventory;
 					["ListSelectCurrent",[_display]] call BIS_fnc_arsenal;
 				}else {

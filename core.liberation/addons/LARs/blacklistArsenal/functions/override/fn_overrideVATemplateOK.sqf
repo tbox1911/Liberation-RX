@@ -1,19 +1,13 @@
-
 #include "\A3\Ui_f\hpp\defineResinclDesign.inc"
-#include "macros.hpp"
 
-diag_log  "Override OK";
+private _display = _this select 0;
+private _center = (missionNamespace getVariable ["BIS_fnc_arsenal_center",player]);
+private _hideTemplate = true;
+private _ctrlTemplateName = _display displayCtrl IDC_RSCDISPLAYARSENAL_TEMPLATE_EDITNAME;
 
-private[ "_notification" ];
-
-_display = _this select 0;
-_center = (missionNamespace getVariable ["BIS_fnc_arsenal_center",player]);
-_hideTemplate = true;
-
-_ctrlTemplateName = _display displayCtrl IDC_RSCDISPLAYARSENAL_TEMPLATE_EDITNAME;
 if (ctrlEnabled _ctrlTemplateName) then {
 	//--- Save
-	diag_log "Override OK: Save";
+	//diag_log "Override OK: Save";
 	[
 		_center,
 		[profileNamespace,ctrlText _ctrlTemplateName],
@@ -29,8 +23,8 @@ if (ctrlEnabled _ctrlTemplateName) then {
 	_ctrlTemplateValue = _display displayCtrl IDC_RSCDISPLAYARSENAL_TEMPLATE_VALUENAME;
 	if ((_ctrlTemplateValue lbValue lnbCurSelRow _ctrlTemplateValue) >= 0) then {
 		_inventory = _ctrlTemplateValue lnbText [lnbCurSelRow _ctrlTemplateValue,0];
-		_notification = [_center,[profileNamespace,_inventory], LARs_override_virtualCargo] call LARs_fnc_loadInventory_whiteList;
-
+		[_center, [profileNamespace, _inventory]] call bis_fnc_loadInventory;
+		
 		//--- Load custom data
 		_ctrlTemplateValue = _display displayCtrl IDC_RSCDISPLAYARSENAL_TEMPLATE_VALUENAME;
 		_data = profileNamespace getVariable ["bis_fnc_saveInventory_data",[]];
@@ -50,20 +44,5 @@ if (ctrlEnabled _ctrlTemplateName) then {
 		["ListSelectCurrent",[_display]] call BIS_fnc_arsenal;
 	} else {
 		_hideTemplate = false;
-	};
-};
-
-
-
-if (_hideTemplate) then {
-	
-	if ( !isNil "_notification" ) then {
-		if !( _notification isEqualTo "" ) then {
-			[ _display, _notification, true ] call LARs_fnc_showRestrictedItems;
-		}else{
-			[ _display, "", false ] call LARs_fnc_showRestrictedItems;
-		};
-	}else{
-		[ _display, "", false ] call LARs_fnc_showRestrictedItems;
 	};
 };

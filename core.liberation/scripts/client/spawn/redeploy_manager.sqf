@@ -54,7 +54,7 @@ _loadouts_data = [];
 _loadout_controls = [101,203,205];
 
 if ( GRLIB_player_spawned ) then {	
-	_saved_loadouts = profileNamespace getVariable "bis_fnc_saveInventory_data";
+	_saved_loadouts = profileNamespace getVariable ["bis_fnc_saveInventory_data", []];
 	_counter = 0;
 
 	if ( GRLIB_enable_arsenal && !isNil "_saved_loadouts" ) then {
