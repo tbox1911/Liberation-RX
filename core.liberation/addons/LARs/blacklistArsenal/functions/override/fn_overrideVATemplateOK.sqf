@@ -19,12 +19,13 @@ if (ctrlEnabled _ctrlTemplateName) then {
 	] call BIS_fnc_saveInventory;
 } else {
 	//--- Load
-	diag_log "Override OK: Load";
+	//diag_log "Override OK: Load";
 	_ctrlTemplateValue = _display displayCtrl IDC_RSCDISPLAYARSENAL_TEMPLATE_VALUENAME;
 	if ((_ctrlTemplateValue lbValue lnbCurSelRow _ctrlTemplateValue) >= 0) then {
 		_inventory = _ctrlTemplateValue lnbText [lnbCurSelRow _ctrlTemplateValue,0];
 		[_center, [profileNamespace, _inventory]] call bis_fnc_loadInventory;
-		
+		[_center] call LARs_fnc_filterArsenal;
+
 		//--- Load custom data
 		_ctrlTemplateValue = _display displayCtrl IDC_RSCDISPLAYARSENAL_TEMPLATE_VALUENAME;
 		_data = profileNamespace getVariable ["bis_fnc_saveInventory_data",[]];

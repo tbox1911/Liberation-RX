@@ -11,6 +11,5 @@
 		class sideGear {};
 		class updateArsenal {};
 	};
-
 	#include "override\override_templates.fncs"
 };

@@ -9,6 +9,7 @@ if ( hasInterface ) then {
 	}forEach [
 		"LARs_fnc_overrideVAButtonDown", 
 		"LARs_fnc_overrideVATemplateOK",
+		"LARs_fnc_filterArsenal",
 		"LARs_fnc_addVAKeyEvents"
 	];
 
