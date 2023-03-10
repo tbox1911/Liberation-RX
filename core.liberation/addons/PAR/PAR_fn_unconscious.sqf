@@ -46,6 +46,7 @@ sleep 7;
     ( [_this] call PAR_has_medikit || [_this] call PAR_is_medic )",
   "round(_caller distance2D _target) < 3",
   {
+    [(_target getVariable ["PAR_myMedic", objNull]), _target] call PAR_fn_medicRelease;
     _target setVariable ["PAR_myMedic", _caller];
     _msg = format [localize "STR_PAR_ST_01", name _caller, name _target];
     [_target, _msg] remoteExec ["PAR_fn_globalchat", 0];
