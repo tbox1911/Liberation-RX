@@ -40,19 +40,14 @@ if ( !( _sector in GRLIB_military_sectors_already_activated )) then {
 			clearBackpackCargoGlobal _newbox;
 		};
 	};
-	_nearbuildings = [ nearestObjects [ markerpos _sector , _compatible_classnames, _intel_range ], { alive _x } ] call BIS_fnc_conditionalSelect;
+	_nearbuildings = [ nearestObjects [ markerpos _sector, _compatible_classnames, _intel_range ], { alive _x } ] call BIS_fnc_conditionalSelect;
 
 	if ( count _nearbuildings > 0 ) then {
 		_building_positions = [];
-
 		{ _building_positions = _building_positions + ( [_x] call BIS_fnc_buildingPositions ); } foreach _nearbuildings;
-
 		_building_positions = [ _building_positions, { _x select 2 < 2 } ] call BIS_fnc_conditionalSelect;
-
-		if ( count _building_positions >= (_nbintel * 4) ) then {
-
+		if ( count _building_positions >= 4 ) then {
 			_used_positions = [];
-
 			while { _nbintel > 0 } do {
 				_buildingposition = selectRandom _building_positions;
 				while { _buildingposition in _used_positions } do {
@@ -62,17 +57,16 @@ if ( !( _sector in GRLIB_military_sectors_already_activated )) then {
 
 				_intelclassname = selectRandom GRLIB_intel_items;
 				_intelobject = _intelclassname createVehicle _buildingposition;
+				_intelobject setVariable ["GRLIB_intel_search", true, true];
 				_intelobject setPosATL [_buildingposition select 0, _buildingposition select 1, (_buildingposition select 2) - 0.15];
-				_intelobject enableSimulationGlobal false;
 				_intelobject allowDamage false;
 				_intelobject setdir (random 360);
 
 				if ( _debug ) then {
-					_marker = createMarkerLocal [ format [ "markedveh%1" ,(getpos _intelobject) select 0 ], getpos _intelobject ];
+					_marker = createMarkerLocal [ format ["markedveh%1", (getpos _intelobject) select 0], getpos _intelobject ];
 					_marker setMarkerColorLocal GRLIB_color_enemy_bright;
 					_marker setMarkerTypeLocal "mil_dot";
 				};
-
 				_nbintel = _nbintel - 1;
 			};
 		};
