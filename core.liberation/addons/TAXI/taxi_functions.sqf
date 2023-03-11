@@ -1,7 +1,9 @@
 // Taxi functions
 taxi_land = {
 	params ["_vehicle"];
+	private ["_alt", "_speed", "_vspeed"];
 	private _stop = time + (3 * 60); // wait 2min max
+	private _alt_old = 999;
 	_vehicle land "LAND";
 	hintSilent localize "STR_TAXI_LANDING";
 	sleep 5;
@@ -9,7 +11,9 @@ taxi_land = {
 		sleep 5;
 		_alt = getPos _vehicle select 2;
 		_speed = round (abs speed vehicle _vehicle);
-		if (_speed == 0 && _alt > 3) then {
+		_vspeed = round (abs (_alt - _alt_old));
+		_alt_old = _alt;
+		if (_speed == 0 && _vspeed == 0 &&_alt > 3) then {
 			_vehicle setPos (getPosATL _vehicle vectorAdd [0, 0, -2]);
 			_vehicle land "LAND";
 			hintSilent localize "STR_TAXI_LANDING";
@@ -33,9 +37,10 @@ taxi_dest = {
 	hintSilent format [localize _msg, round (_vehicle distance2D _dest)];
 	sleep 20;
 	if (GRLIB_RHS_enabled) then { sleep 40 };
-	_landing_range = 150;
-	_stop = time + (5 * 60); // wait 5min max
-	
+	private _landing_range = 150;
+	private _stop = time + (5 * 60); // wait 5min max
+	private _alt_old = 999;
+
 	waitUntil {
 		sleep 1;
 		if (!isNil "GRLIB_taxi_helipad") then {
@@ -49,8 +54,11 @@ taxi_dest = {
 			hintSilent format [localize _msg, round (_vehicle distance2D _dest)];
 		};
 
+		_alt = getPos _vehicle select 2;
 		_speed = round (abs speed vehicle _vehicle);
-		if (_speed == 0) then {
+		_vspeed = round (abs (_alt - _alt_old));
+		_alt_old = _alt;
+		if (_speed == 0 && _vspeed == 0 && _alt < 30 ) then {
 			if ((vectorUp _vehicle) select 2 < 0.70) then {
 				_vehicle setPos [(getposATL _vehicle) select 0, (getposATL _vehicle) select 1, ((getposATL _vehicle) select 2) + 2];
 				_vehicle setVectorUp surfaceNormal position _vehicle;
