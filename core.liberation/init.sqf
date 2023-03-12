@@ -42,8 +42,8 @@ if (!abort_loading) then {
 	diag_log abort_loading_msg;
 };
 
-titleText ["Loading...","BLACK FADED", 100];
 if (!isDedicated && hasInterface) then {
+	titleText ["Loading...","BLACK FADED", 100];
 	waitUntil { sleep 1; !isNil "GRLIB_init_server" };
 	[] execVM "scripts\client\init_client.sqf";
 } else {
