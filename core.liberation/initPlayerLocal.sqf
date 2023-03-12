@@ -254,7 +254,7 @@ if (trait_restrictions) then {
 
 
 
-
+/*
 while { true } do {
 	sleep 300;
 	_hs_time = systemTime;
@@ -269,5 +269,6 @@ while { true } do {
 		hint format['Server restart 11:00 \nFahrzeuge zurück zur FOB! \nReturn vehicles to FOB!'];
 	};
 };
+*/
 
 // hint format['%1:%2', (_hs_time select 3), (_hs_time select 4)];
