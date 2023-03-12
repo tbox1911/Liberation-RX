@@ -18,6 +18,8 @@ if (!GRLIB_player_spawned) then {
 	waitUntil {sleep 0.2; cinematic_camera_stop };
 	waitUntil {sleep 0.2; !(isNil "dostartgame")};
 	waitUntil {sleep 0.2; dostartgame == 1};
+	waitUntil {sleep 0.2; !(isNil "LRX_arsenal_init_done")};
+	waitUntil {sleep 0.2; LRX_arsenal_init_done };	
 };
 
 fullmap = 0;

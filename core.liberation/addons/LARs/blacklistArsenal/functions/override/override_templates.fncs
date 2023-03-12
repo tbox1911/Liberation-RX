@@ -1,8 +1,0 @@
-class Loadouts {
-	file = "addons\LARs\blacklistArsenal\functions\override";
-	class initOverride { postInit = 1; };
-	class overrideVAButtonDown {};
-	class overrideVATemplateOK {};
-	class addVAKeyEvents {};
-	class filterArsenal {};
-};

@@ -1,35 +1,14 @@
 #include "\A3\Ui_f\hpp\defineResinclDesign.inc"
 
 if ( hasInterface ) then {
-	waitUntil { sleep 1; !isNil "GRLIB_filter_arsenal" };
-	if (GRLIB_filter_arsenal == 0) exitWith {};
-
-	{
-		uiNamespace setVariable[ _x, missionNamespace getVariable _x ];
-	}forEach [
-		"LARs_fnc_overrideVAButtonDown", 
-		"LARs_fnc_overrideVATemplateOK",
-		"LARs_fnc_filterArsenal",
-		"LARs_fnc_addVAKeyEvents"
-	];
-
-	//diag_log "Adding arsenalOpened SEH";
-
 	[ missionNamespace, "arsenalOpened", {
 	    disableSerialization;
 	    _display = _this select 0;
 		
 		//diag_log "arsenalOpened SEH called";
 		
-		waitUntil { !isNil "BIS_fnc_arsenal_target" };
-
-		//diag_log "SEH target done";
-
 		_center = BIS_fnc_arsenal_center;
 		_cargo = BIS_fnc_arsenal_cargo;
-		
-		//_msg = format[ "SEH: Center: %1, Cargo: %2", _center, _cargo ];
-		//diag_log _msg;
 
 		_virtualItemCargo =
 			(missionNamespace call BIS_fnc_getVirtualItemCargo) +
@@ -80,10 +59,7 @@ if ( hasInterface ) then {
 			_virtualMagazineCargo,
 			_virtualBackpackCargo
 		];
-
-		uiNamespace setVariable [ "LARs_override_virtualCargo", _virtualCargo ];
 		
-		[ _display ] call LARs_fnc_addVAKeyEvents;
-		
+		[_display] call LARs_fnc_addVAKeyEvents;
 	} ] call BIS_fnc_addScriptedEventHandler;
 };

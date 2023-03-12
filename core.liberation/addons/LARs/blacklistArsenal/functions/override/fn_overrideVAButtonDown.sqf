@@ -120,7 +120,7 @@ switch true do {
 		if (_ctrl) then {['buttonLoad',[_display]] call bis_fnc_arsenal;};
 	};
 	//--- Randomize
-	case (_key == DIK_R && getMissionConfigValue[ "LARs_overrideVA_random", 0 ] isEqualTo 0 ): {
+	case (_key == DIK_R && LARs_overrideVA_random == 0 ): {
 		if (_ctrl) then {
 			if (BIS_fnc_arsenal_type == 0) then {
 				if (_shift) then {

@@ -35,7 +35,27 @@ if (isDedicated) exitWith {};
 LRX_arsenal_init_done = false; 
 
 // Filters disabled 
-if (GRLIB_filter_arsenal == 0) exitWith { diag_log "--- LRX Arsenal disabled." };
+waitUntil { sleep 1; !isNil "GRLIB_filter_arsenal" };
+if (GRLIB_filter_arsenal == 0) exitWith {
+    LRX_arsenal_init_done = true; 
+    diag_log "--- LRX Arsenal filters disabled.";
+};
+
+// Init functions
+LARs_fnc_createList = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\fn_createList.sqf";
+LARs_fnc_removeBlack = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\fn_removeBlack.sqf";
+LARs_fnc_updateArsenal = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\fn_updateArsenal.sqf";
+LARs_fnc_blacklistArsenal = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\fn_blacklistArsenal.sqf";
+LARs_fnc_addVAKeyEvents = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\override\fn_addVAKeyEvents.sqf";
+LARs_fnc_overrideVAButtonDown = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\override\fn_overrideVAButtonDown.sqf";
+LARs_fnc_overrideVATemplateOK = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\override\fn_overrideVATemplateOK.sqf";
+LARs_fnc_initOverride = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\override\fn_initOverride.sqf";
+
+//Disable random - will disable random button and shortcut keys
+LARs_overrideVA_random = 1;
+
+// LARs Init
+[] call LARs_fnc_initOverride;
 
 // Initalize Blacklist
 GRLIB_blacklisted_from_arsenal = [];			// Global blacklist (All objects will be removed from Arsenal)

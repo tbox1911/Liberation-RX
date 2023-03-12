@@ -70,31 +70,16 @@ _thread = _this spawn {
 		[ "_condition", {true} , [ {} ] ]
 	];
 
-	waitUntil { !isNil "LARs_allGearInit" };
-
-	//Get whiteList or default to BIS whitelist
-	_whiteList = _lists param[ 0, LARs_allGear, [ [], "", sideUnknown ] ];
+	//Get whiteList or default to []
+	_whiteList = _lists param[ 0, [], [ [], "", sideUnknown ] ];
 	if !( _whiteList isEqualType [] ) then {
 		_whiteList = [ _whiteList ];
 	};
+
 	//Get blackList or default to []
 	_blackList = _lists param[ 1, [], [ [], "", sideUnknown ] ];
 	if !( _blackList isEqualType [] ) then {
 		_blackList = [ _blackList ];
-	};
-
-	//If a list requires a side and calculateSideGear is not in use exit with error
-	if ( {
-		{
-			if !( isNil "_x" ) then {
-				typeName _x isEqualTo typeName sideUnknown
-			}else{
-				false
-			};
-		}count _x > 0
-	}count[ _whiteList, _blackList ] > 0 && { isNil "LARs_sideGear" } ) exitWith {
-		[ "LARs_blacklist" ] call BIS_fnc_endLoadingScreen;
-		"SIDE used in white/blacklist - currently no side data, switch on LARs_calculateSideGear in description" call BIS_fnc_error;
 	};
 
 	//Create lists
