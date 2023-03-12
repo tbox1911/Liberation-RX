@@ -1,4 +1,6 @@
 #include "\A3\Ui_f\hpp\defineResinclDesign.inc"
+LARs_fnc_overrideVAButtonDown = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\override\fn_overrideVAButtonDown.sqf";
+LARs_fnc_overrideVATemplateOK = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\override\fn_overrideVATemplateOK.sqf";
 
 params[ "_display" ];
 

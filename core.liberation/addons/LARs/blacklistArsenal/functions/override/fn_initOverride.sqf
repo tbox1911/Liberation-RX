@@ -1,4 +1,5 @@
 #include "\A3\Ui_f\hpp\defineResinclDesign.inc"
+LARs_fnc_addVAKeyEvents = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\override\fn_addVAKeyEvents.sqf";
 
 if ( hasInterface ) then {
 	[ missionNamespace, "arsenalOpened", {

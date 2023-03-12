@@ -46,9 +46,6 @@ LARs_fnc_createList = compileFinal preprocessFileLineNumbers "addons\LARs\blackl
 LARs_fnc_removeBlack = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\fn_removeBlack.sqf";
 LARs_fnc_updateArsenal = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\fn_updateArsenal.sqf";
 LARs_fnc_blacklistArsenal = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\fn_blacklistArsenal.sqf";
-LARs_fnc_addVAKeyEvents = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\override\fn_addVAKeyEvents.sqf";
-LARs_fnc_overrideVAButtonDown = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\override\fn_overrideVAButtonDown.sqf";
-LARs_fnc_overrideVATemplateOK = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\override\fn_overrideVATemplateOK.sqf";
 LARs_fnc_initOverride = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\override\fn_initOverride.sqf";
 
 //Disable random - will disable random button and shortcut keys
