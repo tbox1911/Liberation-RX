@@ -146,27 +146,15 @@ if ( edit_loadout > 0 ) then {
 		// Open Arsenal
 		[myLARsBox, player] call ace_arsenal_fnc_openBox;
 	} else {
-		// Filters disabled 
 		if (GRLIB_filter_arsenal == 0) then {
+			// Filters disabled 
 			["Open", [true]] call BIS_fnc_arsenal;
 		} else {
-			_savedCargo = myLARsBox getVariable [ "bis_addVirtualWeaponCargo_cargo", [] ];
-			_savedMissionCargo = missionNamespace getVariable [ "bis_addVirtualWeaponCargo_cargo", [] ];
-			waitUntil {!isNil {myLARsBox getVariable "LARs_arsenal_Liberation_cargo"} };
-			_cargo = myLARsBox getVariable "LARs_arsenal_Liberation_cargo";
-			myLARsBox setVariable [ "bis_addVirtualWeaponCargo_cargo", _cargo ];
-			missionNamespace setVariable [ "bis_addVirtualWeaponCargo_cargo", _cargo ];
-
-			['Open',[nil,myLARsBox]] call BIS_fnc_arsenal;
-
-			myLARsBox setVariable [ "LARs_arsenalClosedID", [ missionNamespace, "arsenalClosed", compile format ["
-				%1 setVariable [ 'bis_addvirtualWeaponCargo_cargo', %2 ];
-				missionNamespace setVariable [ 'bis_addvirtualWeaponCargo_cargo', %3 ];
-				[ missionNamespace, 'arsenalClosed', %1 getVariable 'LARs_arsenalClosedID' ] call BIS_fnc_removeScriptedEventHandler;
-				%1 setVariable [ 'LARs_arsenalClosedID', nil ];
-				[player] call F_filterLoadout;
-				[player] spawn F_payLoadout;
-			", myLARsBox, _savedCargo, _savedMissionCargo ] ] call BIS_fnc_addScriptedEventHandler ];
+			// Filters enabled 
+			waitUntil {sleep 0.1; !isNil {myLARsBox getVariable "LARs_arsenal_Liberation_cargo"}};
+			private _cargo = myLARsBox getVariable ["LARs_arsenal_Liberation_cargo", []];
+			myLARsBox setVariable ["bis_addVirtualWeaponCargo_cargo", _cargo];
+			['Open',[nil, myLARsBox]] call BIS_fnc_arsenal;
 		};
 	};
 } else {

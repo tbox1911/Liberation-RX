@@ -48,9 +48,6 @@ LARs_fnc_updateArsenal = compileFinal preprocessFileLineNumbers "addons\LARs\bla
 LARs_fnc_blacklistArsenal = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\fn_blacklistArsenal.sqf";
 LARs_fnc_initOverride = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\override\fn_initOverride.sqf";
 
-//Disable random - will disable random button and shortcut keys
-LARs_overrideVA_random = 1;
-
 // LARs Init
 [] call LARs_fnc_initOverride;
 

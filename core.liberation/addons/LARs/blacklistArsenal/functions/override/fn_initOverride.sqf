@@ -1,5 +1,4 @@
 #include "\A3\Ui_f\hpp\defineResinclDesign.inc"
-LARs_fnc_addVAKeyEvents = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\override\fn_addVAKeyEvents.sqf";
 
 if ( hasInterface ) then {
 	[ missionNamespace, "arsenalOpened", {
@@ -7,7 +6,6 @@ if ( hasInterface ) then {
 	    _display = _this select 0;
 		
 		//diag_log "arsenalOpened SEH called";
-		
 		_center = BIS_fnc_arsenal_center;
 		_cargo = BIS_fnc_arsenal_cargo;
 
@@ -62,5 +60,10 @@ if ( hasInterface ) then {
 		];
 		
 		[_display] call LARs_fnc_addVAKeyEvents;
+	} ] call BIS_fnc_addScriptedEventHandler;
+
+	[ missionNamespace, "arsenalClosed", {
+		[player] call F_filterLoadout;
+		[player] spawn F_payLoadout;
 	} ] call BIS_fnc_addScriptedEventHandler;
 };
