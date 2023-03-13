@@ -1,4 +1,3 @@
-titleText ["","BLACK FADED", 100];
 diag_log "--- Liberation RX by pSiKO ---";
 [] call compileFinal preprocessFileLineNUmbers "build_info.sqf";
 diag_log "--- Init start ---";
@@ -43,7 +42,7 @@ if (!abort_loading) then {
 };
 
 if (!isDedicated && hasInterface) then {
-	titleText ["Loading...","BLACK FADED", 100];
+	titleText ["-- Liberation RX --","BLACK FADED", 100];
 	waitUntil { sleep 1; !isNil "GRLIB_init_server" };
 	[] execVM "scripts\client\init_client.sqf";
 } else {

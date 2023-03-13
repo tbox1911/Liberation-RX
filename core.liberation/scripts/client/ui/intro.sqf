@@ -1,4 +1,3 @@
-titleText ["", "BLACK FADED", 100];
 waitUntil {sleep 2; !isNil "LRX_arsenal_init_done"};
 while {	!LRX_arsenal_init_done } do {
 	titleText ["... Building the Arsenal ...", "BLACK FADED", 100];
@@ -6,7 +5,6 @@ while {	!LRX_arsenal_init_done } do {
 	titleText ["... Please Wait ...", "BLACK FADED", 100];
 	uIsleep 2;
 };
-titleText ["", "BLACK FADED", 100];
 
 while {	(player getVariable ["GRLIB_score_set", 0] == 0) } do {
 	titleText ["... Loading Player Data ...", "BLACK FADED", 100];
