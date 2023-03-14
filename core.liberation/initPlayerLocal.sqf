@@ -2,7 +2,7 @@ waitUntil {
 	!isNull player
 };
 
-["InitializePlayer", [player, true]] call BIS_fnc_dynamicGroups;
+["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
 
 _rules = "
 DE:<br />

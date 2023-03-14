@@ -98,6 +98,10 @@ addMissionEventHandler ['EntityKilled', {
 
 
 
+["Initialize", [true]] call BIS_fnc_dynamicGroups;
+
+
+
 
 while { true } do {
 	sleep 300;
@@ -125,8 +129,6 @@ while { true } do {
 
 
 
-
-["Initialize", [true]] call BIS_fnc_dynamicGroups;
 
 
 

@@ -14,32 +14,39 @@ player addEventHandler [
 		if (_vehicle isKindof "ParachuteBase") exitwith {}; 
 		private _GrpRol = group _unit getVariable ["BIS_dg_rol","b_unknown"];  
 		
- 
-		/* if ((typeOf _vehicle in opfor_battlegroup_vehicles) || (typeOf _vehicle in opfor_vehicles)) then {
+
+		/*if ((typeOf _vehicle in opfor_battlegroup_vehicles) || (typeOf _vehicle in opfor_vehicles)) then {
 			_vehicle setVehicleAmmo 0; 
 			hint "keine Ahnung wie man das Ding abfeuert...";
-		}; */
+		};*/
 
 		
 		if (_vehicle isKindof "Helicopter") then { 
-			if (/*!(_GrpRol in HeliUnits) ||*/ !([player,2] call fetch_permission)) then{ 
+			if ( (SNC_VehRestriction && !(_GrpRol in HeliUnits)) || !([player,2] call fetch_permission) ) then{ 
 				_unit action ["getOut", _vehicle]; 
 				hint format ["Wrong Group Role or missing Permission", name player];
 			}; 
 		}; 
 
 		if (_vehicle isKindof "Plane") then { 
-			if (/*!(_GrpRol in PlaneUnits) ||*/ !([player,2] call fetch_permission)) then{ 
+			if ( (SNC_VehRestriction && !(_GrpRol in PlaneUnits)) || !([player,2] call fetch_permission)) then{ 
 				_unit action ["getOut", _vehicle]; 
 				hint format ["Wrong Group Role or missing Permission", name player];
 			}; 
 		}; 
 
 		if (_vehicle isKindof "Tank") then { 
-			if (/*!(_GrpRol in TankUnits) ||*/ !([player,1] call fetch_permission)) then{ 
+			if ( (SNC_VehRestriction && !(_GrpRol in TankUnits)) || !([player,1] call fetch_permission)) then{ 
 				_unit action ["getOut", _vehicle]; 
 				hint format ["Wrong Group Role or missing Permission", name player];
 			}; 
 		}; 
+
+		if (_vehicle isKindof "Car") then { 
+			if (!([player,0] call fetch_permission)) then{ 
+				_unit action ["getOut", _vehicle]; 
+				hint format ["Wrong Group Role or missing Permission", name player];
+			}; 
+		};
 	}  
 ];
