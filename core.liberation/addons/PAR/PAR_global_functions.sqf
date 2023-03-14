@@ -17,6 +17,8 @@ PAR_unblock_AI = {
 	params ["_unit_array"];
 	if (player getVariable ["SOG_player_in_tunnel", false]) exitWith {};
 	if ( isNull (objectParent player) && count _unit_array == 0 ) then {
+		private _grp = group player;
+		while {(count (waypoints _grp)) != 0} do {deleteWaypoint ((waypoints _grp) select 0);};
 		player setPosATL (getPosATL player vectorAdd [([] call F_getRND), ([] call F_getRND), 0.5]);
 	} else {
 		{
@@ -30,6 +32,9 @@ PAR_unblock_AI = {
 				_grp = createGroup [GRLIB_side_friendly, true];
 				[_unit] joinSilent _grp;
 				doStop _unit;
+				unAssignVehicle _unit;
+				[_unit] orderGetIn false;
+				[_unit] allowGetIn false;
 				sleep 1;
 				_unit setPosATL (getPosATL player vectorAdd [([] call F_getRND), ([] call F_getRND), 0.5]);
 				[_unit] joinSilent (group player);

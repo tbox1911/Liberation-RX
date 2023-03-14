@@ -16,8 +16,8 @@ private _loadout = [];
 
 if (alive _player && lifeState _player != "INCAPACITATED") then {
 	private _bros = allUnits select { alive _x && _x != _player && lifeState _x != "INCAPACITATED" && (_x getVariable ["PAR_Grp_ID","0"]) == _puid};
-	{ _ai_group pushback [typeOf _x, rank _x, getUnitLoadout _x] } forEach _bros;
-	_loadout = getUnitLoadout _player;
+	{ _ai_group pushback [typeOf _x, rank _x, getUnitLoadout [_x, true]]} forEach _bros;
+	_loadout = getUnitLoadout [_player, true];
 	diag_log format ["--- LRX saving player %1 Loadout.", name _player];
 };
 
