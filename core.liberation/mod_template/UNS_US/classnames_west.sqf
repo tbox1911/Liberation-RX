@@ -86,6 +86,8 @@ GRLIB_perm_max*2	Super Colonel 	2000
 
 light_vehicles = [
 	["UNS_Zodiac_W",1,25,1,0],
+	["uns_pbr",2,100,5,GRLIB_perm_inf],
+	["uns_pbr_mk18",2,120,5,GRLIB_perm_log],
 	["uns_willys",1,25,5,0],
 	["uns_willys_2",1,50,5,0],
 	["uns_willysmg50",1,65,5,GRLIB_perm_inf],
@@ -94,11 +96,9 @@ light_vehicles = [
 	["uns_m37b1",1,60,5,0],
 	["uns_M35A2",1,80,5,GRLIB_perm_inf],
 	["uns_M35A2_Open",1,80,5,GRLIB_perm_log],
-	["uns_xm706e1",1,100,5,GRLIB_perm_log],
-	["uns_xm706e2",1,125,5,GRLIB_perm_log],
-	["uns_m163",1,100,5,GRLIB_perm_tank],
-	["uns_pbr",2,100,5,GRLIB_perm_inf],
-	["uns_pbr_mk18",2,120,5,GRLIB_perm_log]	
+	["uns_xm706e1",1,200,15,GRLIB_perm_log],
+	["uns_xm706e2",1,225,15,GRLIB_perm_log],
+	["uns_m163",1,300,25,GRLIB_perm_tank]
 ];
 
 heavy_vehicles = [
@@ -148,15 +148,15 @@ blufor_air = [
 ];
 
 static_vehicles = [
+	["uns_US_MK18_low",1,30,0,0],
 	["uns_m60_high",1,40,0,GRLIB_perm_inf],
 	["uns_m60_bunker_large",1,140,0,GRLIB_perm_log],
-	["uns_m2_high",1,40,0,GRLIB_perm_log],
-	["uns_M40_106mm_US",0,40,0,GRLIB_perm_log],
-	["uns_M2_60mm_mortar",0,340,0,GRLIB_perm_log],
+	["uns_m2_high",1,80,0,GRLIB_perm_log],
+	["uns_M40_106mm_US",0,240,0,GRLIB_perm_log],
+	["uns_M2_60mm_mortar",0,300,0,GRLIB_perm_log],
 	["uns_M1_81mm_mortar",1,360,0,GRLIB_perm_tank],
-	["uns_M30_107mm_mortar",0,380,0,GRLIB_perm_air],
+	["uns_M30_107mm_mortar",0,470,0,GRLIB_perm_air],
 	["Uns_M55_Quad",1,400,8,GRLIB_perm_tank],
-	["uns_US_MK18_low",1,540,0,GRLIB_perm_tank],
 	["Uns_M114_artillery",1,600,0,GRLIB_perm_tank]
 ];
 
