@@ -8,7 +8,7 @@ player addEventHandler [
 
 		params ["_unit", "_role", "_vehicle", "_turret"]; 
 //		systemChat format ["%1 - %2 ",_role, _turret];   Debug
-		if !(SNC_VehRestriction) exitwith{};	
+		// if !(SNC_VehRestriction) exitwith{};	
 		
 		if (_role == "Cargo") exitwith {}; 
 		if (_vehicle isKindof "ParachuteBase") exitwith {}; 

@@ -61,7 +61,7 @@ if (!isDedicated && hasInterface) then {
 };
 
 
-SNC_VehRestriction= true;
+SNC_VehRestriction = false;
 
 // MilSim United ===========================================================================
 
