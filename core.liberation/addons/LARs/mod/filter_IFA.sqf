@@ -1,10 +1,10 @@
 // Add IFA3 Weapons
-GRLIB_MOD_signature = GRLIB_MOD_signature + ["ifa_"];
+GRLIB_MOD_signature = GRLIB_MOD_signature + ["LIB_","B_LIB_","G_LIB_","H_LIB_","U_LIB_","V_LIB_"];
 
 // Weapons + Equipements (uniforms, etc..)
 (
 	"
-	tolower (getText (_x >> 'DLC')) == 'ifa' &&
+	([(configName _x), GRLIB_MOD_signature] call F_startsWithMultiple) &&
 	getNumber (_x >> 'scope') > 1 &&
 	([(configName _x)] call is_allowed_item)
 	"
@@ -14,7 +14,7 @@ GRLIB_MOD_signature = GRLIB_MOD_signature + ["ifa_"];
 // Others object (backpack, etc..)
 (
 	"
-	tolower (getText (_x >> 'DLC')) == 'ifa' &&
+	([(configName _x), GRLIB_MOD_signature] call F_startsWithMultiple) &&
 	([(configName _x)] call is_allowed_item) &&
 	((configName _x) iskindof 'Bag_Base') 
 	"
@@ -24,7 +24,7 @@ GRLIB_MOD_signature = GRLIB_MOD_signature + ["ifa_"];
 // Glasses
 (
 	"
-	tolower (getText (_x >> 'DLC')) == 'ifa' &&
+	([(configName _x), GRLIB_MOD_signature] call F_startsWithMultiple) &&
 	([(configName _x)] call is_allowed_item)
 	"
 	configClasses (configfile >> "CfgGlasses" )
@@ -33,8 +33,7 @@ GRLIB_MOD_signature = GRLIB_MOD_signature + ["ifa_"];
 // Magazines
 (
 	"
-	tolower ((configName _x) select [0,3]) == 'ifa_' &&
-	toLower (configName _x) find 'money' < 0 &&
+	([(configName _x), GRLIB_MOD_signature] call F_startsWithMultiple) &&
 	([(configName _x)] call is_allowed_item)
 	"
 	configClasses (configfile >> "CfgMagazines")

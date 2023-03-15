@@ -117,7 +117,7 @@ if ( !GRLIB_SOG_enabled && ["SOG_", [GRLIB_mod_west, GRLIB_mod_east]] call F_sta
 if ( !GRLIB_CWR_enabled && ["CWR3_", [GRLIB_mod_west, GRLIB_mod_east]] call F_startsWithMultiple) then { abort_loading = true };
 if ( !GRLIB_3CB_enabled && ["3CB", [GRLIB_mod_west, GRLIB_mod_east]] call F_startsWithMultiple) then { abort_loading = true };
 if ( !GRLIB_UNS_enabled && ["UNS_", [GRLIB_mod_west, GRLIB_mod_east]] call F_startsWithMultiple) then { abort_loading = true };
-if ( !GRLIB_IFA_enabled && ["IFA", [GRLIB_mod_west, GRLIB_mod_east]] call F_startsWithMultiple) then { abort_loading = true };
+if ( !GRLIB_IFA_enabled && ["IFA_", [GRLIB_mod_west, GRLIB_mod_east]] call F_startsWithMultiple) then { abort_loading = true };
 
 if (abort_loading) exitWith { abort_loading_msg = format [
 	"********************************\n
