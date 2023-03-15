@@ -60,7 +60,6 @@ F_addParachute = compileFinal preprocessFileLineNumbers "scripts\shared\function
 F_itemIsInClass = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_itemIsInClass.sqf";
 F_startsWith = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_startsWith.sqf";
 F_startsWithMultiple = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_startsWithMultiple.sqf";
-F_belongToMod = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_belongToMod.sqf";
 F_hof_msg = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_hof_msg.sqf";
 F_UnitNeedAmmo = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_UnitNeedAmmo.sqf";
 F_UnitAddAmmo = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_UnitAddAmmo.sqf";
