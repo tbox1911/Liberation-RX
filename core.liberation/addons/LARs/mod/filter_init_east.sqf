@@ -67,3 +67,7 @@ if (["PO_", GRLIB_mod_east, true] call F_startsWith) then {
 if (["UNS_", GRLIB_mod_east, true] call F_startsWith) then {
 	GRLIB_MOD_signature = GRLIB_MOD_signature + ["uns_"];
 };
+// Add IFA3 Weapons
+if (["IFA", GRLIB_mod_east, true] call F_startsWith) then {
+    GRLIB_MOD_signature = GRLIB_MODsignature + ["ifa_"];
+};
