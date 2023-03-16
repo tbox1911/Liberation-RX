@@ -1,7 +1,8 @@
-closeDialog 0;
 titleText ["" ,"BLACK FADED", 100];
 player allowDamage false;
 disableUserInput true;
+waitUntil {sleep 0.5; !isNil "GRLIB_init_server"};
+
 if (GRLIB_ACE_medical_enabled) then {
 	[player] call ACE_medical_treatment_fnc_fullHealLocal;
 	[player] call ACE_medical_statemachine_fnc_resetStateDefault;
@@ -20,8 +21,6 @@ removeHeadgear player;
 removeGoggles player;
 player setVariable ["GRLIB_action_inuse", false];
 player setVariable ["SOG_player_in_tunnel", nil];
-
-waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 
 if (GRLIB_forced_loadout > 0) then {
 	[player] call compile preprocessFileLineNumbers (format ["mod_template\%1\loadout\player_set%2.sqf", GRLIB_mod_west, GRLIB_forced_loadout]);

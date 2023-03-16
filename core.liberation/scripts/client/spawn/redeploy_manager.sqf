@@ -204,16 +204,16 @@ if (dialog && deploy == 1) then {
 			player setpos [((_destpos select 0) + 5) - floor(random 10),((_destpos select 1) + 5) - floor(random 10),0.3];
 		};
 
-		_unit_list = units group player;
-		_my_squad = player getVariable ["my_squad", nil];
+		private _unit_list = units group player;
+		private _my_squad = player getVariable ["my_squad", nil];
 		if (!isNil "_my_squad") then {
 			{ _unit_list pushBack _x } forEach units _my_squad;
 		};
-		_unit_list_redep = [_unit_list, { !(isPlayer _x) && (isNull objectParent _x) && (_x distance2D _player_pos) < 40 && lifestate _x != 'INCAPACITATED' }] call BIS_fnc_conditionalSelect;
+		private _unit_list_redep = [_unit_list, { !(isPlayer _x) && (isNull objectParent _x) && (_x distance2D _player_pos) < 40 && lifestate _x != 'INCAPACITATED' }] call BIS_fnc_conditionalSelect;
 		[_unit_list_redep] spawn {
 			params ["_list"];
 			{
-				sleep 0.3;
+				sleep 1;
 				_x setpos ([position player, 10, random 360] call BIS_fnc_relPos);
 				_x doFollow leader player;
 			} forEach _list;
