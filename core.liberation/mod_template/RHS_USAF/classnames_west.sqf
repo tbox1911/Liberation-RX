@@ -363,6 +363,7 @@ heavy_vehicles = [
 		["I_LT_01_cannon_F",0,heavy_vehicle_price_tier_8,msu_fuel_ifv,GRLIB_perm_inf],
 		["I_APC_Wheeled_03_cannon_F",0,heavy_vehicle_price_tier_9,msu_fuel_ifv,GRLIB_perm_inf],
 		["B_AFV_Wheeled_01_cannon_F",0,heavy_vehicle_price_tier_11,msu_fuel_ifv,GRLIB_perm_inf],
+		["B_APC_Tracked_01_CRV_F",0,heavy_vehicle_price_tier_11,msu_fuel_ifv,GRLIB_perm_inf],
 		["B_AFV_Wheeled_01_up_cannon_F",0,heavy_vehicle_price_tier_12,msu_fuel_ifv,GRLIB_perm_inf],
 	//Spain
 		["ffaa_et_toa_ambulancia",0,heavy_vehicle_price_tier_3,msu_fuel_ifv,GRLIB_perm_inf],
@@ -393,6 +394,9 @@ strong_heavy_vehicles = [
 		["CUP_B_M270_HE_USMC",0,strong_heavy_vehicle_price_tier_3,msu_fuel_mbt,GRLIB_perm_inf],
 		["CUP_B_M270_DPICM_BAF_WOOD",0,strong_heavy_vehicle_price_tier_5,msu_fuel_mbt,GRLIB_perm_inf],
 		["CUP_B_RM70_CZ",0,strong_heavy_vehicle_price_tier_5,msu_fuel_mbt,GRLIB_perm_inf],
+		["CUP_O_2S6M_RU",0,heavy_vehicle_price_tier_13,msu_fuel_mbt,GRLIB_perm_inf],
+		["CUP_O_2S6_RU",0,heavy_vehicle_price_tier_12,msu_fuel_mbt,GRLIB_perm_inf],
+		["CUP_B_ZSU23_CDF",0,heavy_vehicle_price_tier_10,msu_fuel_mbt,GRLIB_perm_inf],
 	//RHS
 		["rhsusf_m109_usarmy",0,strong_heavy_vehicle_price_tier_1,msu_fuel_mbt,GRLIB_perm_inf],
 		["rhsusf_m1a1aim_tuski_d",0,strong_heavy_vehicle_price_tier_2,msu_fuel_mbt,GRLIB_perm_inf],
@@ -412,6 +416,7 @@ strong_heavy_vehicles = [
 		["ffaa_et_m109",0,strong_heavy_vehicle_price_tier_1,msu_fuel_mbt,GRLIB_perm_inf],
 	//Vanilla
 		["O_MBT_02_cannon_F",0,strong_heavy_vehicle_price_tier_2,msu_fuel_mbt,GRLIB_perm_inf],
+		["B_APC_Tracked_01_AA_F",0,heavy_vehicle_price_tier_7,msu_fuel_mbt,GRLIB_perm_inf],
 		["O_MBT_04_command_F",0,strong_heavy_vehicle_price_tier_3,0,msu_fuel_mbt,GRLIB_perm_inf],
 		["O_MBT_04_cannon_F",0,strong_heavy_vehicle_price_tier_3,msu_fuel_mbt,GRLIB_perm_inf],
 		["B_MBT_01_cannon_F",0,strong_heavy_vehicle_price_tier_2,msu_fuel_mbt,GRLIB_perm_inf],
