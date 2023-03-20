@@ -27,6 +27,7 @@ LRX_tk_player_action = 0;
 
 LRX_tk_check = {
 	params ["_unit", "_killer"];
+	if (LRX_tk_vip find (name _killer) > -1) exitWith {};
 
 	if (player == _killer) then {
 		if (GRLIB_tk_mode == 0) then {

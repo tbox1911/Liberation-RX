@@ -10,7 +10,7 @@ if (_unit == player) then {
 	_pos = getPosATL _unit;
 	if ( isNull objectParent player &&
 			!([_unit, "LHD", GRLIB_sector_size] call F_check_near) &&
-			!([_unit, "FOB", GRLIB_sector_size] call F_check_near) &&
+			!([_unit, "FOB", GRLIB_capture_size] call F_check_near) &&
 			round (_pos select 2) == 0 && !(surfaceIsWater _pos)
 	) then {
 		_unit setPos zeropos;

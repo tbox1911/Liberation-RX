@@ -99,18 +99,20 @@ PAR_public_EH = {
 };
 PAR_unit_eject = {
 	params ["_veh", "_unit"];
-	if (isNull _unit || !alive _unit) exitWith {};
-	unAssignVehicle _unit;
+	if (isNull _unit) exitWith {};
 	_unit allowDamage false;
+	unAssignVehicle _unit;
 	moveOut _unit;
 	_unit setPos (getPosATL _veh vectorAdd [([[-15,0,15], 2] call F_getRND), ([[-15,0,15], 2] call F_getRND), 0]);
-	if (getPos _unit select 2 > 20) then {
-		_para = createVehicle ['Steerable_Parachute_F', (getPosATL _unit),[],0,'none'];
-		_unit moveInDriver _para;
-		sleep 1;
-		if (isnull driver (_para)) then {deleteVehicle _para};
+	if (alive _unit) then {
+		if (getPos _unit select 2 > 20) then {
+			_para = createVehicle ['Steerable_Parachute_F', (getPosATL _unit),[],0,'none'];
+			_unit moveInDriver _para;
+			sleep 1;
+			if (isnull driver (_para)) then {deleteVehicle _para};
+		};
+		sleep 3;
 	};
-	sleep 3;
 	_unit allowDamage true;
 };
 PAR_show_marker = {
@@ -136,7 +138,7 @@ PAR_fn_AI_Damage_EH = {
 		_unit addEventHandler ["HandleDamage", {
 			params ["_unit","","_dam"];
 			_veh = objectParent _unit;
-			if (!(isNull _veh) && damage _veh > 0.8) then {[_veh, _unit, true] spawn PAR_fn_eject};
+			if (!(isNull _veh) && !(player in (crew _veh)) && damage _veh > 0.8) then {[_veh, _unit, true] spawn PAR_fn_eject};
 
 			private _isNotWounded = !(_unit getVariable ["PAR_wounded", false]);
 			if (_isNotWounded && _dam >= 0.86) then {
@@ -228,6 +230,7 @@ PAR_HandleDamage_EH = {
 	if (!(isNull _veh_unit) && damage _veh_unit > 0.8) then {[_veh_unit, _unit, true] spawn PAR_fn_eject};
 
 	if ( _isNotWounded && _amountOfDamage >= 0.86) then {
+		if (!(isNull _veh_unit)) then {[_veh_unit, _unit] spawn PAR_fn_eject};		
 		_unit setVariable ["PAR_wounded", true];
 		_unit setVariable ["PAR_isUnconscious", 1, true];
 		_unit setCaptive true;
@@ -249,10 +252,6 @@ PAR_Player_Unconscious = {
 	if (PAR_EnableDeathMessages && !isNil "_killer" && _killer != _unit) then {
 		["PAR_deathMessage", [_unit, _killer]] remoteExec ["PAR_public_EH", 0];
 	};
-
-	// Eject unit if inside vehicle
-	private _veh_unit = vehicle _unit;
-	if (_veh_unit != _unit) then {[_veh_unit, _unit] spawn PAR_fn_eject};
 
 	_random_medic_message = floor (random 3);
 	_medic_message = "";
