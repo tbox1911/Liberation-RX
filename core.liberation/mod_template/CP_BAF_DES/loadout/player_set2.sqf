@@ -45,5 +45,5 @@ _unit linkItem "ItemWatch";
 _unit linkItem "ItemRadio";
 _unit linkItem "ItemGPS";
 
-//  "Set identity";
-[_unit,"WhiteHead_15","male04engb"] call BIS_fnc_setIdentity;
+// "Set identity";
+[_unit,"GreekHead_A3_02","male03eng"] call BIS_fnc_setIdentity;

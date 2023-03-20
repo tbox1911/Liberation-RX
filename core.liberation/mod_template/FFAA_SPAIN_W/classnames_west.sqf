@@ -5,7 +5,7 @@ GRLIB_west_modder = "C0br4";
 // Default classname: scripts\shared\default_classnames.sqf
 // Advanced definition: scripts\shared\classnames.sqf
 
-huron_typename = "ffaa_nh90_nfh_transport";  // comment to use value from lobby/server.cfg
+huron_typename = "ffaa_nh90_nfh_transport";  // // to use value from lobby/server.cfg
 FOB_typename = "Land_Cargo_HQ_V4_F";
 FOB_box_typename = "B_Slingload_01_Cargo_F";
 FOB_truck_typename = "ffaa_et_m250_repara_municion_blin" ;

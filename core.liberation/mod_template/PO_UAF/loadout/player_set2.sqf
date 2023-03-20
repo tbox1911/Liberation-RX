@@ -10,7 +10,7 @@ removeBackpack _unit;
 removeHeadgear _unit;
 removeGoggles _unit;
 
-comment "Add weapons";
+// "Add weapons";
 _unit addWeapon "rhs_weap_ak74m";
 _unit addPrimaryWeaponItem "rhs_acc_dtk";
 _unit addPrimaryWeaponItem "rhs_acc_perst1ik";
@@ -20,15 +20,15 @@ _unit addSecondaryWeaponItem "rhs_rpg26_mag";
 _unit addWeapon "rhs_weap_6p53";
 _unit addHandgunItem "rhs_18rnd_9x21mm_7N28";
 
-comment "Add containers";
+// "Add containers";
 _unit forceAddUniform "LOP_U_UKR_Fatigue_IzlomTTsKO";
 _unit addVest "LOP_V_6B23_6Sh92_TTKO_OLV";
 _unit addBackpack "LOP_B_FP_MG42_tub";
 
-comment "Add binoculars";
+// "Add binoculars";
 _unit addWeapon "Binocular";
 
-comment "Add items to containers";
+// "Add items to containers";
 for "_i" from 1 to 2 do {_unit addItemToUniform "FirstAidKit";};
 _unit addItemToUniform "rhs_18rnd_9x21mm_7N28";
 for "_i" from 1 to 2 do {_unit addItemToUniform "rhs_mag_rgd5";};
@@ -45,7 +45,7 @@ for "_i" from 1 to 2 do {_unit addItemToBackpack "rhs_mag_rgd5";};
 for "_i" from 1 to 2 do {_unit addItemToBackpack "rhs_mag_an_m14_th3";};
 _unit addHeadgear "PO_H_SSh68Helmet_wz93";
 
-comment "Add items";
+// "Add items";
 _unit linkItem "ItemMap";
 _unit linkItem "ItemCompass";
 _unit linkItem "ItemWatch";
@@ -53,3 +53,5 @@ _unit linkItem "rhs_radio_R169P1";
 _unit linkItem "ItemGPS";
 _unit linkItem "rhs_1PN138";
 
+// "Set identity";
+[_unit,"GreekHead_A3_02","male03eng"] call BIS_fnc_setIdentity;

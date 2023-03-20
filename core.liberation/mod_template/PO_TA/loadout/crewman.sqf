@@ -9,7 +9,7 @@ removeBackpack _unit;
 removeHeadgear _unit;
 removeGoggles _unit;
 
-comment "Add containers";
+// "Add containers";
 _unit forceAddUniform "LOP_U_TKA_Fatigue_02";
 _unit addVest "LOP_V_6Sh92_WDL";
 

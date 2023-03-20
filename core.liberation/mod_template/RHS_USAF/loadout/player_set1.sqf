@@ -31,3 +31,6 @@ _unit linkItem "ItemCompass";
 _unit linkItem "ItemWatch";
 _unit linkItem "ItemRadio";
 _unit linkItem "ItemGPS";
+
+// "Set identity";
+[_unit,"GreekHead_A3_02","male03eng"] call BIS_fnc_setIdentity;

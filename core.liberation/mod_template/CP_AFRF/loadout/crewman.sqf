@@ -9,7 +9,7 @@ removeBackpack _unit;
 removeHeadgear _unit;
 removeGoggles _unit;
 
-comment "Add containers";
+// "Add containers";
 _unit forceAddUniform "CUP_U_O_RUS_Flora_1";
 _unit addVest "CUP_V_RUS_6B3_1";
 
