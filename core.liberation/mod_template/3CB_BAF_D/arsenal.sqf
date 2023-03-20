@@ -71,8 +71,11 @@ whitelisted_from_arsenal = [
 	"MiniGrenade",
 	"Laserbatteries",
 	"APERSMine_Range_Mag",
+	"APERSTripMine_Wire_Mag",
 	"APERSBoundingMine_Range_Mag",
 	"ATMine_Range_Mag",
 	"SatchelCharge_Remote_Mag",
-	"SLAMDirectionalMine_Wire_Mag"
+	"DemoCharge_Remote_Mag",
+	"SLAMDirectionalMine_Wire_Mag",
+	"ClaymoreDirectionalMine_Remote_Mag"
 ];
