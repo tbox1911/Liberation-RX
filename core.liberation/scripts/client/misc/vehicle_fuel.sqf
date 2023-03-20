@@ -17,8 +17,11 @@ while {true} do {
         if (_fuel_veh < 0.010) then {
             _fuel_collected = player getVariable ["GREUH_fuel_count", 0];
             if (_fuel_collected > 1) then {
-                _fuel_veh = 0.06;
-                _unit setVariable ["GREUH_fuel_count", (_fuel_collected - 1), true];
+                _fuel_veh = 0.10;
+                if (typeOf _vehicle isKindOf "Air") then {
+                    _fuel_veh = 0.20;
+                };
+                player setVariable ["GREUH_fuel_count", (_fuel_collected - 1), true];
                 gamelogic globalChat "Resource Fuel used...";
             };
         };
