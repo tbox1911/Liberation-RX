@@ -209,14 +209,11 @@ PAR_HandleDamage_EH = {
 		};
 	};
 
-	_veh = objectParent _unit;
-	if (!(isNull _veh) && damage _veh > 0.8) then {[_veh, _unit, true] spawn PAR_fn_eject};
-
 	private _isNotWounded = !(_unit getVariable ["PAR_wounded", false]);
+	private _veh_unit = objectParent _unit;
 
 	if (GRLIB_tk_mode != 2) then {
 		// TK Protect
-		private _veh_unit = vehicle _unit;
 		private _veh_killer = vehicle _killer;
 		if (_isNotWounded && isPlayer _killer && _killer != _unit && _veh_unit != _veh_killer && _amountOfDamage > 0.15 && LRX_tk_vip find (name _killer) == -1) then {
 			if ( _unit getVariable ["GRLIB_isProtected", 0] < time ) then {
@@ -227,6 +224,8 @@ PAR_HandleDamage_EH = {
 			_amountOfDamage = 0;
 		};
 	};
+
+	if (!(isNull _veh_unit) && damage _veh_unit > 0.8) then {[_veh_unit, _unit, true] spawn PAR_fn_eject};
 
 	if ( _isNotWounded && _amountOfDamage >= 0.86) then {
 		_unit setVariable ["PAR_wounded", true];
