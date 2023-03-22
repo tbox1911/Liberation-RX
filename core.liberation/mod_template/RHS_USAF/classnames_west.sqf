@@ -594,6 +594,8 @@ fast_air_vehicle = [
 
 	// CUP BAF
 		["CUP_B_GR9_DYN_GB", 0, fast_air_vehicle_price_tier_4,msu_fuel_plane,GRLIB_perm_inf],
+		["CUP_B_F35B_Stealth_BAF",0,fast_air_vehicle_price_tier_3,msu_fuel_plane,GRLIB_perm_inf],
+		["CUP_B_F35B_BAF",0,fast_air_vehicle_price_tier_4,msu_fuel_plane,GRLIB_perm_inf],
 	// FFAA
 		["ffaa_ar_harrier",0,fast_air_vehicle_price_tier_5,msu_fuel_plane,GRLIB_perm_inf],
 		["ffaa_ea_ef18m",0,fast_air_vehicle_price_tier_6,msu_fuel_plane,GRLIB_perm_inf],
@@ -609,10 +611,10 @@ fast_air_vehicle = [
 		["FIR_F15E_Demo",0,fast_air_vehicle_price_tier_10,msu_fuel_plane,GRLIB_perm_inf],
 		//["FIR_F15SE_LA",0,fast_air_vehicle_price_tier_10,msu_fuel_plane,GRLIB_perm_inf],
 	// FIR F-16
-		["FIR_F16C",0,fast_air_vehicle_price_tier_6,msu_fuel_plane,GRLIB_perm_inf],
-		["FIR_F16D",0,fast_air_vehicle_price_tier_6,msu_fuel_plane,GRLIB_perm_inf],
+		// ["FIR_F16C",0,fast_air_vehicle_price_tier_6,msu_fuel_plane,GRLIB_perm_inf],
+		// ["FIR_F16D",0,fast_air_vehicle_price_tier_6,msu_fuel_plane,GRLIB_perm_inf],
 	// F-35
-		["FIR_F35B_Standard",0,fast_air_vehicle_price_tier_6,msu_fuel_plane,GRLIB_perm_inf],
+		// ["FIR_F35B_Standard",0,fast_air_vehicle_price_tier_6,msu_fuel_plane,GRLIB_perm_inf],
 	// F-22
 		// ["FIR_F22",0,fast_air_vehicle_price_tier_6,msu_fuel_plane,GRLIB_perm_inf],
 	// F-18 super hornet
@@ -623,15 +625,16 @@ fast_air_vehicle = [
 	// FIR A-10C
 		["FIR_A10C",0,fast_air_vehicle_price_tier_6,msu_fuel_plane,GRLIB_perm_inf],
 	// FIR SU-25SM3
-		["FIR_Su25SM3",0,fast_air_vehicle_price_tier_6,msu_fuel_plane,GRLIB_perm_inf],
+		// ["FIR_Su25SM3",0,fast_air_vehicle_price_tier_6,msu_fuel_plane,GRLIB_perm_inf],
 	// Tornado
-		["Tornado_AWS_blu",0,fast_air_vehicle_price_tier_6,msu_fuel_plane,GRLIB_perm_inf],
+		// ["Tornado_AWS_blu",0,fast_air_vehicle_price_tier_6,msu_fuel_plane,GRLIB_perm_inf],
 	// Eurofighter
 		// ["EAWS_EF2000_GER_CAP",0,fast_air_vehicle_price_tier_7,msu_fuel_plane,GRLIB_perm_inf],
 	// Vanilla
 		["I_Plane_Fighter_04_F",0,fast_air_vehicle_price_tier_5,msu_fuel_plane,GRLIB_perm_inf],
 		["B_Plane_Fighter_01_F",0,fast_air_vehicle_price_tier_7,msu_fuel_plane,GRLIB_perm_inf],
-		["B_Plane_Fighter_01_Stealth_F",0,fast_air_vehicle_price_tier_8,msu_fuel_plane,GRLIB_perm_inf],
+		["O_Plane_CAS_02_dynamicLoadout_F",0,fast_air_vehicle_price_tier_6,msu_fuel_plane,GRLIB_perm_inf],
+		["B_Plane_Fighter_01_Stealth_F",0,fast_air_vehicle_price_tier_4,msu_fuel_plane,GRLIB_perm_inf],
 // UAVs
 	// CUP
 		["CUP_B_USMC_DYN_MQ9",0,1250,msu_fuel_plane,GRLIB_perm_inf],
