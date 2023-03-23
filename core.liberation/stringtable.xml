@@ -1620,18 +1620,18 @@
 					<Japanese>装甲車両</Japanese>
 			</Key>
 			<Key ID="STR_BUILD6">
-					<Original>Air vehicles</Original>
+					<Original>Transport air vehicles</Original>
 					<French>Véhicules aériens</French>
-					<German>Luftfahrzeuge</German>
+					<German>Transport Luftfahrzeuge</German>
 					<Spanish>Vehículos aéreos</Spanish>
 					<Russian>Авиационная техника</Russian>
 					<Chinesesimp>飞行器</Chinesesimp>
 					<Japanese>航空機</Japanese>
 			</Key>
 			<Key ID="STR_BUILD7">
-					<Original>Planes and Jets</Original>
+					<Original>Armed air vehicles</Original>
 					<French>Véhicules aériens</French>
-					<German>Flugzeuge und Jets</German>
+					<German>Bewaffnete Luftfahrzeuge</German>
 					<Spanish>Vehículos aéreos</Spanish>
 					<Russian>Авиационная техника</Russian>
 					<Chinesesimp>飞行器</Chinesesimp>
