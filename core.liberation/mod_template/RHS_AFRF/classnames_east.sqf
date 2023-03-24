@@ -216,18 +216,11 @@ opfor_air = [
 	"CUP_O_Mi24_D_Dynamic_TK",
 	"CUP_O_UH1H_gunship_TKA",
 	"CUP_O_UH1H_gunship_TKA",
-	"O_Plane_Fighter_02_F",
-	"O_Plane_Fighter_02_Stealth_F",
 	"RHS_T50_vvs_blueonblue",
 	"RHS_T50_vvs_blueonblue",
 	"O_Plane_CAS_02_dynamicLoadout_F",
 	"CUP_O_UH1H_gunship_TKA",
-	"CUP_O_UH1H_gunship_TKA",
-	"RHS_Su25SM_vvsc",
-	"CUP_O_Ka50_DL_SLA",
-	"CUP_O_Su25_Dyn_RU",
-	"CUP_O_Su25_Dyn_TKA",
-	"CUP_O_Su25_Dyn_TKA"
+	"CUP_O_UH1H_gunship_TKA"
 ];
 
 opfor_statics = [
