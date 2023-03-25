@@ -312,7 +312,6 @@ while { true } do {
 
 			if ( !alive player || build_confirmed == 3 ) then {
 				deleteVehicle _vehicle;
-				buildtype = 1;
 				dobuild = 0;
 				sleep 2;	// time to trap build canceled
 			};
@@ -433,14 +432,14 @@ while { true } do {
 
 					// ClutterCutter
 					if (_classname == "Land_ClutterCutter_large_F") then {
-						{_x hideObjectGlobal true} forEach (nearestTerrainObjects [_truepos, GRLIB_clutter_cutter, 20]);
+						[_truepos] remoteExec ["build_cutter_remote_call", 2];
 					};
 					
 					// FOB
 					if(buildtype == 99) then {
 						_vehicle addEventHandler ["HandleDamage", {0}];
 						_vehicle allowDamage false;
-						[(getpos _vehicle), false] remoteExec ["build_fob_remote_call", 0];
+						[(getpos _vehicle), false] remoteExec ["build_fob_remote_call", 2];
 
 						// Add owner sign
 						private _fobdir = getDir _vehicle;
