@@ -224,6 +224,9 @@ all_arsenals = [];
 	all_arsenals = all_arsenals + arsenal;
 } forEach ['USMC', 'USARMY', 'BW', 'BAF', 'FFAA', 'PMC'];
 */
+
+missionNamespace setVariable ["Reim_Var_Trinken",-1,false];
+
 hint format['
 	Karte öffnen, Regeln lesen! \n
 	Open map, read rules! \n
