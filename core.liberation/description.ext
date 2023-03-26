@@ -89,10 +89,6 @@ class CfgFunctions {
 	class KP { 
 		#include "KP\KPCF\functions.hpp" 
 	};
-	
-	// Excellent party equipment by [TTT]Reimchen
-	// He said, I may use it. Thank you very much, Reimchen :) 
-	#include "reim_trinken\CfgFunctions.hpp"
 };
 
 class cfgSounds {

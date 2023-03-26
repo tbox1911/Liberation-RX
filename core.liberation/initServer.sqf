@@ -97,16 +97,8 @@ addMissionEventHandler ['EntityKilled', {
 
 
 
+
 ["Initialize", [true]] call BIS_fnc_dynamicGroups;
-
-
-
-
-
-[] spawn reim_trinken_fnc_addAction;
-[] spawn reim_trinken_fnc_lower;
-[] spawn reim_trinken_fnc_effect;
-
 
 
 
