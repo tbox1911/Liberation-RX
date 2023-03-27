@@ -857,7 +857,7 @@ MSU_blacklisted_from_arsenal = [
 "CUP_U_C_racketeer_04",
 "CUP_U_C_racketeer_02",
 "CUP_U_C_racketeer_03",
-"CUP_U_C_Rocker_01",4
+"CUP_U_C_Rocker_01",
 "CUP_U_C_Rocker_03",
 "CUP_U_C_Rocker_02",
 "CUP_U_C_Rocker_04",
