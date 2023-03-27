@@ -885,7 +885,12 @@ MSU_blacklisted_from_arsenal = [
 "CUP_U_C_Worker_02",
 "CUP_U_C_Worker_01",
 "FIR_CWU45_dayoff",
-"rhs_uniform_omon"
+"rhs_uniform_omon",
+"launch_O_Titan_short_F",
+"launch_I_Titan_short_F",
+"launch_B_Titan_short_F",
+"launch_O_Titan_short_ghex_F",
+"launch_B_Titan_short_tna_F"
 ];
 
 // MSU_whitelisted_from_arsenal = [];
