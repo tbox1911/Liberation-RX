@@ -12,7 +12,7 @@ if (!isNull _instigator) then {
 };
 
 private _ret = _amountOfDamage;
-if ( (isPlayer _killer) && !(isPlayer _unit) && (side group _unit == GRLIB_side_friendly) && (lifeState _unit != "INCAPACITATED") ) then {
+if ( (isPlayer _killer) && !(isPlayer _unit) && (lifeState _unit != "INCAPACITATED") ) then {
 	private _veh_unit = vehicle _unit;
 	private _veh_killer = vehicle _killer;
 
