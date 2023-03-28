@@ -74,17 +74,15 @@ _unit addEventHandler ["FiredMan",	{
 	};
 
 	// Pay artillery fire
-	// if (typeOf _vehicle in vehicle_artillery) then {
-	// 	private _cost = 5;
-	// 	private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
-	// 	if (_ammo_collected >= 5) then {
-    // 		player setVariable ["GREUH_ammo_count", (_ammo_collected - _cost), true];
-	// 		gamelogic globalChat (format ["Artillery fire cost %1 Ammo.", _cost]);
-	// 	} else {
-	// 		gamelogic globalChat "Not enough Ammo, Artillery fire canceled.";
-	// 		deleteVehicle _projectile;
-	// 	};
-	// };
+	if (_vehicle isKindOf "StaticMortar") then {
+		private _price = 5;
+		if (!([_price] call F_pay)) then {
+			gamelogic globalChat "Not enough Ammo, Artillery fire canceled.";
+			deleteVehicle _projectile;
+		} else {
+			gamelogic globalChat (format ["Artillery fire cost %1 Ammo.", _price]);
+		};
+	};
 }];
 
 // Player
