@@ -54,6 +54,7 @@ spawn_camera = compileFinal preprocessFileLineNumbers "scripts\client\spawn\spaw
 cinematic_camera = compileFinal preprocessFileLineNumbers "scripts\client\ui\cinematic_camera.sqf";
 write_credit_line = compileFinal preprocessFileLineNumbers "scripts\client\ui\write_credit_line.sqf";
 set_rank = compileFinal preprocessFileLineNumbers "scripts\client\misc\set_rank.sqf";
+set_sitcky_bomb = compileFinal preprocessFileLineNumbers "scripts\client\misc\set_sitcky_bomb.sqf";
 vehicle_permissions = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_permissions.sqf";
 vehicle_fuel = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_fuel.sqf";
 vehicle_defense = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_defense.sqf";
@@ -159,7 +160,7 @@ addMissionEventHandler ["Draw3D",{
 	};
 
 	private _near_sign = nearestObjects [player, [FOB_sign], 5];
-	if (count (_near_sign) > 0 && !([player, "LHD", GRLIB_sector_size] call F_check_near)) then {  
+	if (count (_near_sign) > 0 && !([player, "LHD", GRLIB_sector_size] call F_check_near)) then {
 		private _sign = _near_sign select 0;
 		private _gid = _sign getVariable ["GRLIB_vehicle_owner", "public"];
 		private _type = "FOB";

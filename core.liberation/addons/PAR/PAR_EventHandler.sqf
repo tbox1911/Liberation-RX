@@ -62,20 +62,36 @@ _unit addEventHandler ["Take", {
 	};
 }];
 
-// No mines in the base zone + pay artillery fire
 _unit addEventHandler ["FiredMan",	{
 	params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_vehicle"];
 
-	if (count GRLIB_all_fobs >= 0) then {
-		if (([_unit, "FOB", GRLIB_fob_range] call F_check_near || [_unit, "LHD", 500] call F_check_near) && _weapon == "Put") then { deleteVehicle _projectile };
+	// No mines in the base zone (Chimera + FOB)
+	if (([_unit, "FOB", GRLIB_fob_range] call F_check_near || [_unit, "LHD", 500] call F_check_near) && _weapon == "Put") then { deleteVehicle _projectile };
+
+	// Sticky bomb
+	if (_ammo in sticky_bombs_typename && _weapon == "Put") then {
+		[_projectile] spawn set_sitcky_bomb;
 	};
+
+	// Pay artillery fire
+	// if (typeOf _vehicle in vehicle_artillery) then {
+	// 	private _cost = 5;
+	// 	private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
+	// 	if (_ammo_collected >= 5) then {
+    // 		player setVariable ["GREUH_ammo_count", (_ammo_collected - _cost), true];
+	// 		gamelogic globalChat (format ["Artillery fire cost %1 Ammo.", _cost]);
+	// 	} else {
+	// 		gamelogic globalChat "Not enough Ammo, Artillery fire canceled.";
+	// 		deleteVehicle _projectile;
+	// 	};
+	// };
 }];
 
 // Player
 if (_unit == player) then {
 
 	// ACE specific
-	if (GRLIB_ACE_enabled) then {		
+	if (GRLIB_ACE_enabled) then {
 		["ace_arsenal_displayClosed", {
 			[player] call F_filterLoadout;
 			[player] spawn F_payLoadout;
