@@ -38,8 +38,8 @@ while {alive _unit} do {
 		_target = _targets select 0;
 		_unit doMove (getPos _target);
 		if (round (speed vehicle _unit) == 0) then { 
-			_unit switchMove "amovpknlmstpsraswrfldnon";
-			_unit playMoveNow "amovpknlmstpsraswrfldnon";
+			_unit switchMove "AmovPercMwlkSrasWrflDf";
+			_unit playMoveNow "AmovPercMwlkSrasWrflDf";
 		};
 
 		if (_unit distance2D _target < 20) then {

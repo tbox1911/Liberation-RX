@@ -40,8 +40,8 @@ PAR_unblock_AI = {
 				[_unit] joinSilent (group player);
 				_unit enableAI "ALL";
 				_unit doFollow leader player;
-				_unit switchMove "amovpknlmstpsraswrfldnon";
-				_unit playMoveNow "amovpknlmstpsraswrfldnon";
+				_unit switchMove "AmovPercMwlkSrasWrflDf";
+				_unit playMoveNow "AmovPercMwlkSrasWrflDf";
 			} else {
 				hintSilent "Unit is in a vehicle or is unconscious,\n or is too far. (max 50m)";
 			};
@@ -290,8 +290,8 @@ PAR_Player_Unconscious = {
 
 	if (alive _unit && _unit getVariable ["PAR_isUnconscious", 0] == 0) then {
 		// Player got revived
-		_unit playMove "amovppnemstpsraswrfldnon";
-		_unit playMove "";
+		_unit switchMove "amovppnemstpsraswrfldnon";
+		_unit playMoveNow "amovppnemstpsraswrfldnon";
 
 		// Clear the "medic nearby" hint
 		hintSilent "";
