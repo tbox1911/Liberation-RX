@@ -70,7 +70,7 @@ _unit addEventHandler ["FiredMan",	{
 
 	// Sticky bomb
 	if (_ammo in sticky_bombs_typename && _weapon == "Put") then {
-		[_projectile] spawn set_sitcky_bomb;
+		[_projectile] spawn set_sticky_bomb;
 	};
 
 	// Pay artillery fire
