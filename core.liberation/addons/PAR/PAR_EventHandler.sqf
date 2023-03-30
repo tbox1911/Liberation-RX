@@ -64,6 +64,7 @@ _unit addEventHandler ["Take", {
 
 _unit addEventHandler ["FiredMan",	{
 	params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_vehicle"];
+	//diag_log format ["DBG: %1", _this];
 
 	// No mines in the base zone (Chimera + FOB)
 	if (([_unit, "FOB", GRLIB_fob_range] call F_check_near || [_unit, "LHD", 500] call F_check_near) && _weapon == "Put") then { deleteVehicle _projectile };
@@ -74,15 +75,18 @@ _unit addEventHandler ["FiredMan",	{
 	};
 
 	// Pay artillery fire
-	if (_vehicle isKindOf "StaticMortar") then {
-		private _price = 5;
-		if (!([_price] call F_pay)) then {
-			gamelogic globalChat "Not enough Ammo, Artillery fire canceled.";
-			deleteVehicle _projectile;
-		} else {
-			gamelogic globalChat (format ["Artillery fire cost %1 Ammo.", _price]);
-		};
-	};
+	// if (_vehicle isKindOf "StaticMortar") then {
+	// 	[_projectile] spawn {
+	// 		params ["_projectile"];
+	// 		private _price = 5;
+	// 		if (!([_price] call F_pay)) then {
+	// 			gamelogic globalChat "Not enough Ammo, Artillery fire canceled.";
+	// 			deleteVehicle _projectile;
+	// 		} else {
+	// 			gamelogic globalChat (format ["Artillery fire cost %1 Ammo.", _price]);
+	// 		};
+	// 	};
+	// };
 }];
 
 // Player
