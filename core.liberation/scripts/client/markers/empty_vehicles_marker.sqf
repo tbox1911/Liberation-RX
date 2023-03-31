@@ -42,8 +42,13 @@ while { true } do {
 			_marker setMarkerTextLocal ([(typeOf _nextvehicle)] call F_getLRXName);
 			_vehmarkers_bak pushback _marker;
 
+			if (typeOf _nextvehicle in [Arsenal_typename] + support_box_noArsenal) then {
+				_marker setMarkerColorLocal "ColorOrange";
+				_marker setMarkerTypeLocal "loc_Rifle";
+			};
 			if (typeOf _nextvehicle in [ammobox_b_typename,ammobox_o_typename,ammobox_i_typename]) then {
 				_marker setMarkerColorLocal "ColorGUER";
+				_marker setMarkerTypeLocal "mil_box";
 			};
 			if (typeOf _nextvehicle in [waterbarrel_typename,fuelbarrel_typename,foodbarrel_typename]) then {
 				_marker setMarkerColorLocal "ColorGrey";
@@ -53,7 +58,7 @@ while { true } do {
 			_nextmarker setMarkerPosLocal (getPosATL _nextvehicle);
 			_vehmarkers_bak pushback _nextmarker;
 		};
-		if (!((_nextvehicle getVariable ["GRLIB_vehicle_owner", ""]) in ["server",""])) then {
+		if (_nextvehicle isKindOf "AllVehicles" && !((_nextvehicle getVariable ["GRLIB_vehicle_owner", ""]) in ["server",""])) then {
 			_nextmarker setMarkerColorLocal GRLIB_color_friendly;
 		};
 	} foreach _veh_list;
