@@ -16,7 +16,7 @@ if (!_canmove) then {
 	sleep 1;
 	_unit disableAI "ANIM";
 	_unit disableAI "MOVE";
-	_unit playmove "AmovPercMstpSnonWnonDnon_AmovPercMstpSsurWnonDnon" ;
+	_unit playMoveNow "AmovPercMstpSnonWnonDnon_AmovPercMstpSsurWnonDnon" ;
 	sleep 2;
 	_unit setCaptive true;
 };
@@ -35,7 +35,7 @@ if (_friendly) then {
 if (!alive _unit) exitWith {};
 
 // Follow
-_unit playmove "AmovPercMstpSsurWnonDnon_AmovPercMstpSnonWnonDnon";
+_unit playMoveNow "AmovPercMstpSsurWnonDnon_AmovPercMstpSnonWnonDnon";
 sleep 2;
 _unit enableAI "ANIM";
 _unit enableAI "MOVE";
@@ -60,7 +60,7 @@ while {alive _unit} do {
 
 		_grp = createGroup [GRLIB_side_friendly, true];
 		[_unit] joinSilent _grp;
-		_unit playmove "AmovPercMstpSnonWnonDnon_AmovPsitMstpSnonWnonDnon_ground";
+		_unit playMoveNow "AmovPercMstpSnonWnonDnon_AmovPsitMstpSnonWnonDnon_ground";
 		_unit disableAI "ANIM";
 		_unit disableAI "MOVE";
 		sleep 3;
@@ -93,7 +93,9 @@ while {alive _unit} do {
 			};
 			_unit setCaptive true;
 			sleep 2;
-
+			_unit switchMove "AmovPercMwlkSrasWrflDf";
+			_unit playMoveNow "AmovPercMwlkSrasWrflDf";
+			
 			private _nearest_sector = [(sectors_allSectors - blufor_sectors), _unit] call F_nearestPosition;
 			if (typeName _nearest_sector == "STRING") then {
 				while {(count (waypoints _flee_grp)) != 0} do {deleteWaypoint ((waypoints _flee_grp) select 0);};
