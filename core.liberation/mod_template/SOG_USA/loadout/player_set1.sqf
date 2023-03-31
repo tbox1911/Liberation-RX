@@ -38,4 +38,4 @@ _unit linkItem "vn_b_item_watch";
 _unit linkItem "vn_b_item_radio_urc10";
 
 // "Set identity";
-[_unit,"GreekHead_A3_02","male03eng"] call BIS_fnc_setIdentity;
+[_unit,"GreekHead_A3_02","male01eng"] call BIS_fnc_setIdentity;

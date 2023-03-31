@@ -45,4 +45,4 @@ _unit linkItem "ItemGPS";
 _unit linkItem "UK3CB_BAF_HMNVS";
 
 // "Set identity";
-[_unit,"GreekHead_A3_02","male03eng"] call BIS_fnc_setIdentity;
+[_unit,"GreekHead_A3_02","male01eng"] call BIS_fnc_setIdentity;
