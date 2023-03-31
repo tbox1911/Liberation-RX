@@ -4,6 +4,7 @@
 addMissionEventHandler ["MarkerCreated",{
 	params ["_marker", "_channelNumber", "_owner", "_local"];
 	if (!(_local)) exitWith {};
+	if (_channelNumber == -1) exitWith {};
 	private _text = markerText _marker;
 	if (count _text == 0) exitWith {};
 	private _channel = "None";
@@ -24,6 +25,7 @@ addMissionEventHandler ["MarkerCreated",{
 addMissionEventHandler ["MarkerDeleted",{
 	params ["_marker", "_local"];
 	if (!(_local)) exitWith {};
+	if (markerChannel _marker == -1) exitWith {};
 	private _text = markerText _marker;
 	if (count _text == 0) exitWith {};
 	private _msg = format ["%1, Delete marker <%2> at position %3.", name player, _text, markerPos _marker];
