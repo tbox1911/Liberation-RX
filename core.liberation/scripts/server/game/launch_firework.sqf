@@ -1,45 +1,69 @@
 params ["_unit"];
-private _pos = getPosATL _unit vectorAdd [0,0, 30];
-private _colors = [[1,0,0],[1,0,1],[1,1,0],[0,1,0],[0,1,1],[0,0,1],[1,1,1]];
 
-{
-	if ((_x distance2D _unit) <= 200) then {
-		[[getMissionPath "res\launch01.ogg", _unit, false, getPosASL _unit, 5, 1, 250]] remoteExec ["playSound3D", owner _x];
-	};
-} forEach (AllPlayers - (entities "HeadlessClient_F"));
+private _pos = getPosATL _unit vectorAdd [0,0, 30]; 
+private _colors = [
+	[1,0,0],[1,0,1],[1,1,0],
+	[0,1,0],[0,1,1],[1,0.5,0],
+	[0,0,1],[0,0.5,1],[0.5,0,1],
+	[1,1,1]
+]; 
 
-
-for "_i" from 0 to 4 do {
-	[_pos, selectRandom _colors ] spawn {
-		params ["_pos", "_color"];
-		_flare = createVehicle ["CMflare_Chaff_Ammo", _pos, [], 20, "FLY"];
-		_light = "#lightpoint" createVehicleLocal [0,0,0];
-		_light setLightBrightness 1;
-		_light setLightAmbient [1,1,1];
-		_light setLightColor [1,1,1];
-		_light setLightUseFlare true;
-		_light setLightFlareMaxDistance 500;
-		_light setLightFlareSize 2;
-		_light lightAttachObject [_flare, [0,0,0]];
-		_velocity = [(random 20) -10, (random 20) -10, 100];
-		_flare setVelocity _velocity;
-
-		sleep 4;
-		{
-			if ((_x distance2D _flare) <= 1000) then {
-				[[getMissionPath "res\bang01.ogg", _flare, false, getPosASL _flare, 5, 1, 1000]] remoteExec ["playSound3D", owner _x];
-			};
-		} forEach (AllPlayers - (entities "HeadlessClient_F"));
-		sleep 0.5;
-
-		_light setLightBrightness 2;
-		_light setLightAmbient _color;
-		_light setLightColor _color;
-		_light setLightFlareSize 5;
-		_light setLightFlareMaxDistance 1000;
-
-		sleep (5 + (random 2));
-		deleteVehicle _light;
-	};
-	sleep 0.2;
+private _rounds = 0;
+switch (_unit getVariable ["GRLIB_Rank", ""]) do {
+	case "Private" : { _rounds = 1 };
+	case "Corporal" : { _rounds = 2 };
+	case "Sergeant" : { _rounds = 3 };
+	case "Captain" : { _rounds = 4 };
+	case "Major" : { _rounds = 5 };
+	case "Colonel" : { _rounds = 8 };
+	case "Super Colonel" : { _rounds = 10 };
 };
+if (_rounds == 0) exitWith {};
+
+{ 
+	if ((_x distance2D _unit) <= 200) then { 
+		[[getMissionPath "res\launch01.ogg", _unit, false, getPosASL _unit, 5, 1, 250]] remoteExec ["playSound3D", owner _x]; 
+	}; 
+} forEach (AllPlayers - (entities "HeadlessClient_F")); 
+ 
+private _launcher = createVehicle ["CMflare_Chaff_Ammo", _pos, [], 0, "FLY"]; 
+private _light = "#lightpoint" createVehicleLocal [0,0,0]; 
+_light setLightBrightness 1; 
+_light setLightAmbient [1,1,1]; 
+_light setLightColor [1,1,1]; 
+_light setLightUseFlare true; 
+_light setLightFlareMaxDistance 500; 
+_light setLightFlareSize 2; 
+_light lightAttachObject [_launcher, [0,0,0]]; 
+_launcher setVelocity [(random 20) -10, (random 20) -10, 100]; 
+sleep 4; 
+
+private _laucher_pos = getPosATL _launcher;
+for "_i" from 1 to _rounds do { 
+	[_laucher_pos, selectRandom _colors] spawn { 
+		params ["_pos", "_color"]; 
+		{ 
+			if ((_x distance2D _pos) <= 500) then { 
+				[[getMissionPath "res\bang01.ogg", _pos, false, ATLToASL _pos, 5, 1, 1000]] remoteExec ["playSound3D", owner _x]; 
+			}; 
+		} forEach (AllPlayers - (entities "HeadlessClient_F")); 
+		sleep 0.5; 
+
+		private _flare = createVehicle ["CMflare_Chaff_Ammo", _pos, [], 2, "FLY"]; 
+		private _light = "#lightpoint" createVehicleLocal [0,0,0]; 
+		_light setLightBrightness 2; 
+		_light setLightAmbient _color; 
+		_light setLightColor _color; 
+		_light setLightFlareSize 5; 
+		_light setLightFlareMaxDistance 500; 
+		_light setLightUseFlare true; 
+		_light lightAttachObject [_flare, [0,0,0]]; 
+		_flare setVelocity [(random 20) -10, (random 20) -10, 10]; 
+		sleep (5 + (random 2)); 
+		deleteVehicle _light; 
+	}; 
+	sleep (0.2 + (random 0.2)); 
+}; 
+deleteVehicle _light; 
+deleteVehicle _launcher; 
+ 
