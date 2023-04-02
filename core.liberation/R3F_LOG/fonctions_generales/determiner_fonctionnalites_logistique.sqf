@@ -97,6 +97,11 @@ _can_transport_cargo_cout = 0;
 // Cargo de capacité nulle
 if (_can_transport_cargo_cout <= 0) then {_can_transport_cargo = false;};
 
+// UAV cannot be towed
+if (_classe in uavs) then {
+	_can_be_towed = false;
+};
+
 // Retour des fonctionnalités
 [
 	_can_be_depl_heli_remorq_transp,
