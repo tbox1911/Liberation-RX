@@ -82,13 +82,3 @@ waituntil {sleep 1; !isNil "GRLIB_marker_init"};
   };
   _marker setMarkerSizeLocal [ 0.75, 0.75 ];
 } forEach GRLIB_Marker_SHOP;
-
-// Repair Marker (computed on server side)
-waitUntil {sleep 2; !isNil "GRLIB_Marker_REPAIR"};
-{
-  _marker = createMarkerLocal [format ["marked_repair%1", _forEachIndex], _x];
-  _marker setMarkerColorLocal "ColorOrange";
-  _marker setMarkerTypeLocal "mil_dot";
-  _marker setMarkerTextLocal "Repair";
-  _marker setMarkerSizeLocal [ 0.75, 0.75 ];
-} forEach GRLIB_Marker_REPAIR;
