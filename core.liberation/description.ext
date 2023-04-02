@@ -11,7 +11,7 @@ respawn = 3;
 respawndelay = 5;
 respawnButton = 0;
 respawnOnStart = 0;
-reviveMode = 0; 
+reviveMode = 0;
 disabledAI = true;
 enableDebugConsole = 1;
 allowFunctionsLog = 0;
@@ -24,7 +24,6 @@ LARs_calculateSideGear = 1;
 cba_settings_hasSettingsFile = 1;
 
 class CfgFunctions {
-	#include "addons\GRAD\cfgFunctions.hpp"
 	#include "addons\SDB_DALE\CfgFunctions.hpp"
 };
 
@@ -34,7 +33,6 @@ class cfgSounds {
  		sound[] = {"res\c130.ogg", 1, 1};
  		titles[] = {};
  	};
-	#include "addons\GRAD\cfgSounds.hpp"
 };
 
 class Header {

@@ -5944,16 +5944,6 @@
 			<Portuguese>-- RECICLAR</Portuguese>
 			<Czech>-- RECYKLUJTE</Czech>
 		</Key>
-		<Key ID="STR_RECYCLE_FIREWORKS">
-			<Original>-- FIREWORKS !</Original>
-			<Russian>-- ФЕЙЕРВЕРК !</Russian>			
-			<French>-- ARTIFICE !</French>
-			<Japanese>-- 花火！</Japanese>
-			<Chinesesimp>-- 烟花！</Chinesesimp>
-			<Chinese>-- 煙花！</Chinese>
-			<Portuguese>-- FOGOS !</Portuguese>
-			<Czech>-- OHŇOSTROJ!</Czech>
-		</Key>
 
 		<!-- do_abondon.sqf -->
 		<Key ID="STR_DO_ABANDON">

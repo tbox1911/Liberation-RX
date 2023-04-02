@@ -44,7 +44,6 @@ player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["All the rest and
 player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["Advanced Rappelling v1.00<br/>by <font color='%1'>-Seth Duda-</font>", call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["Vehicle Appearance Manager v1.41<br/>by <font color='%1'>-UNIT_normal-</font>", call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["DALE Pylons v1.00<br/>by <font color='%1'>-Sgt. Dennenboom-</font>", call _getRandomColor]]];
-player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["GRAD Fireworks v.1.20<br/>by <font color='%1'>-Nomisum-</font>", call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["Dynamic Animal v.1.00<br/>by <font color='%1'>-Vandeanson-</font>", call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["Mag Repack v3.13<br/>by <font color='%1'>-Outlawled-</font>", call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["A3W Missions and so much!!<br/>by <font color='%1'>-AgentRev-</font>", call _getRandomColor]]];
@@ -79,6 +78,7 @@ player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'>-20<
 player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'>-20</font> pts  :  Killing Civilians"]]];
 player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'>-10</font> pts  :  Team Kill"]]];
 player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'> -5</font> pts  :  Firendly Fires"]]];
+player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'> -5</font> pts  :  Respawn when Major and above"]]];
 player createDiaryRecord ["Table", ["Table", format ["<font color='#00ff40'>+10</font> pts  :  Recycle AmmoBox<br/>"]]];
 player createDiaryRecord ["Table", ["Table", format ["<font color='#00ff40'>+10</font> pts  :  Bring Prisoners at HQ"]]];
 player createDiaryRecord ["Table", ["Table", format ["<font color='#00ff40'>+20</font> pts  :  Defend Attacked Sector"]]];
