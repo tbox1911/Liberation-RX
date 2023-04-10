@@ -5215,9 +5215,9 @@
 			<Czech>Limit náboru AI na tým.</Czech>
 		</Key>
 		<Key ID="STR_PARAM_SPAWN_MAX">
-			<Original>Spawn Point limit per player.</Original>
+			<Original>Maximum Spawn Point per player.</Original>
 			<Russian>Максимальное количество точек спавна на игрока.</Russian>
-			<French>Limite de point de respawn par joueur.</French>
+			<French>Point de Respawn maximum par joueur.</French>
 			<Chinesesimp>每个玩家的重生点限制。</Chinesesimp>
 			<Chinese>每個玩家的重生點限制。</Chinese>
 			<Portuguese>Ponto de renascimento limite por jogadores</Portuguese>

@@ -287,9 +287,9 @@ class Params
 	};
 	class MaxSpawnPoint{
 		title = $STR_PARAM_SPAWN_MAX;
-		values[] = {1,2,3,4};
-		texts[] = {1,2,3,4};
-		default = 2;
+		values[] = {1,2,3,4,5,6};
+		texts[] = {1,2,3,4,5,6};
+		default = 3;
 	};	
 	class Permissions{
 		title = $STR_PERMISSIONS_PARAM;
