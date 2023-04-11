@@ -9,7 +9,7 @@ private _minsec_def = 1;             // minimal magazines before unit need to re
 private _guid = getPlayerUID player;
 
 while { true } do {
-	waitUntil {sleep 1;GRLIB_player_spawned};
+	waitUntil {sleep 1; GRLIB_player_spawned};
 
 	if (count(units group player) >= 1) then {
 		_needammo1 = false;
