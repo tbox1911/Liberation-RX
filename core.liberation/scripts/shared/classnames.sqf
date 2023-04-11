@@ -410,12 +410,14 @@ opfor_air = [ opfor_air , { [ _x ] call F_checkClass } ]  call BIS_fnc_condition
 civilians = [ civilians , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
 civilian_vehicles = [ civilian_vehicles , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
 military_alphabet = ["Alpha","Bravo","Charlie","Delta","Echo","Foxtrot","Golf","Hotel","India","Juliet","Kilo","Lima","Mike","November","Oscar","Papa","Quebec","Romeo","Sierra","Tango","Uniform","Victor","Whiskey","X-Ray","Yankee","Zulu"];
-land_vehicles_classnames = (opfor_vehicles + militia_vehicles);
+
+// Enemies adaptative squad definition
 opfor_squad_low_intensity = [
 	opfor_squad_leader,
 	opfor_medic,
 	opfor_rpg,
 	opfor_marksman,
+	opfor_rifleman,	
 	opfor_sentry,
 	opfor_sentry,
 	opfor_sentry
@@ -462,9 +464,10 @@ opfor_squad_8_airkillers = [
 	opfor_aa,
 	opfor_aa
 ];
-all_resistance_troops = [] + militia_squad;
-all_hostile_classnames = (land_vehicles_classnames + opfor_air + opfor_troup_transports_heli + opfor_troup_transports_truck + opfor_vehicles_low_intensity + opfor_statics + opfor_boats);
-{ land_vehicles_classnames pushback (_x select 0); } foreach (heavy_vehicles + light_vehicles);
+
+all_hostile_classnames = [];
+{ all_hostile_classnames pushback (_x select 0) } foreach opfor_recyclable;
+
 air_vehicles_classnames = [] + opfor_troup_transports_heli;
 { air_vehicles_classnames pushback (_x select 0); } foreach air_vehicles;
 squads_names = [
