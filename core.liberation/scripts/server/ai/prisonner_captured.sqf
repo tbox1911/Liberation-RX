@@ -1,10 +1,10 @@
 params [ "_unit", "_unit_owner" ];
 
 private _yield = 6;
-if ( (typeof _unit) in all_resistance_troops ) then { _yield = 3 };
+if ( (typeof _unit) in militia_squad ) then { _yield = 3 };
 if ( (typeof _unit) == pilot_classname ) then { _yield = 30 };
-if ( rank _unit == "COLONEL") then { _yield = 50 };
 _yield = _yield + (round (random _yield));
+if ( rank _unit == "COLONEL") then { _yield = 50 };
 
 resources_intel = resources_intel + _yield;
 publicVariable "resources_intel";
