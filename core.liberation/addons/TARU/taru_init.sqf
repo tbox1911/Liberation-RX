@@ -117,13 +117,15 @@ _lastvehicle = objNull;
 _lastpod = objNull;
 _changed = false;
 
-while {true} do {
-	waituntil {sleep 1;!isNull player && GRLIB_player_spawned};
+waituntil {sleep 1; GRLIB_player_spawned};
 
-	if !(player isEqualTo vehicle player) then {
+while {true} do {
+	if !(isNull objectParent player) then {
 		_vehicle = vehicle player;
 		_isTaru = _vehicle isKindOf "O_Heli_Transport_04_F";
-		if (_isTaru) then {
+		_isOwner = [player, _vehicle] call is_owner;
+
+		if (_isTaru && _isOwner) then {
 			_currentpod = _vehicle call HALV_fnc_checkattachedpods;
 			_R3F_LOG_heliporte = _vehicle getVariable ["R3F_LOG_heliporte",objNull];
 			// Attach
