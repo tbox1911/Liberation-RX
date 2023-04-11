@@ -1,6 +1,7 @@
 #include "\A3\Ui_f\hpp\defineResinclDesign.inc"
 
 if ( hasInterface ) then {
+	LARs_fnc_addVAKeyEvents = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\override\fn_addVAKeyEvents.sqf";
 	[ missionNamespace, "arsenalOpened", {
 	    disableSerialization;
 	    _display = _this select 0;
