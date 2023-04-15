@@ -9,7 +9,7 @@ onLoadIntro = "Welcome on the Liberaton RX planet.";
 
 respawn = 3;
 respawndelay = 5;
-respawnButton = 0;
+respawnButton = 1;
 respawnOnStart = 0;
 reviveMode = 0;
 disabledAI = true;
