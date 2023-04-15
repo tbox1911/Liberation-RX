@@ -24,6 +24,13 @@ if (!_canmove) then {
 _unit setVariable ["GRLIB_is_prisonner", true, true];
 _unit setVariable ["GRLIB_can_speak", true, true];
 
+//Create a marker to make them easier to locate.
+_mPos = position _unit;
+_mName = "CaptiveMarker" + str _mPos;
+_captiveMarker = createMarker [_mName,_mPos];
+_mName setMarkerTypeLocal "hd_objective";
+_mName setMarkerText "Surrendering Unit";
+
 // Wait
 if (_friendly) then {
 	waitUntil { sleep 1; !alive _unit || side group _unit == GRLIB_side_friendly};
@@ -31,6 +38,9 @@ if (_friendly) then {
 	private _timeout = time + (20 * 60);
 	waitUntil { sleep 1; !alive _unit || side group _unit == GRLIB_side_friendly || time > _timeout };
 };
+
+//Remove the previous marker. Either they're dead, or have been captured.
+deleteMarker _mName;
 
 if (!alive _unit) exitWith {};
 
