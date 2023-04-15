@@ -1,7 +1,6 @@
 #include "\A3\Ui_f\hpp\defineResinclDesign.inc"
 
 if ( hasInterface ) then {
-	LARs_fnc_addVAKeyEvents = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\override\fn_addVAKeyEvents.sqf";
 	[ missionNamespace, "arsenalOpened", {
 	    disableSerialization;
 	    _display = _this select 0;
@@ -60,7 +59,7 @@ if ( hasInterface ) then {
 			_virtualBackpackCargo
 		];
 		
-		[_display] call LARs_fnc_addVAKeyEvents;
+		[_display] call compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\override\fn_addVAKeyEvents.sqf";
 	} ] call BIS_fnc_addScriptedEventHandler;
 
 	[ missionNamespace, "arsenalClosed", {

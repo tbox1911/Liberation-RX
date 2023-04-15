@@ -33,7 +33,7 @@ _all_objects = _truck_to_unload getVariable ["GRLIB_ammo_truck_load", []];
 	};
 } foreach _all_objects;
 
-sleep 1;
+sleep 2;
 { 
 	_x enableCollisionWith _truck_to_unload;
 	_x allowDamage true;
