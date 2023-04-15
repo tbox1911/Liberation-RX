@@ -18,13 +18,15 @@ player createDiarySubject ["LRX Info", "Thanks"];
 private _all_friends = "";
 {
 	_all_friends = _all_friends + format ["- <font color='%1'>%2</font><br/>", call _getRandomColor, _x];
-} foreach ["Barbare","TaZ","Christophe","Thorguy","Komaros","Alex","Nono","HaZ","Deus eole","damsous","Keyser Jogo","Napoleon","l0gan","AgentRev","Quiksilver","KillZoneKid","Eva.Exe","Zeus39","and you !" ];
-player createDiaryRecord ["LRX Info", ["Thanks", format ["<br/>And to all the good friends:<br/> %1", _all_friends]]];
+} foreach (loadFile "GREUH\LRX_friends.txt" splitString toString [13,10]);
+
+player createDiaryRecord ["LRX Info", ["Thanks", format ["... And You !!"]]];
+player createDiaryRecord ["LRX Info", ["Thanks", format ["And to all the good friends:<br/> %1", _all_friends]]];
 player createDiaryRecord ["LRX Info", ["Thanks", format ["<font color='%1'>Bohemia's Forum Community</font> for all the support and code tricks.", call _getRandomColor, call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["Thanks", format ["<font color='%1'>Arturo</font> for additional work.", call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["Thanks", format ["<font color='%1'>Mihuan</font>, <font color='%2'>O360_A1AD</font> for langage translation.", call _getRandomColor, call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["Thanks", format ["<font color='%1'>Varrkan</font>, <font color='%2'>Polox</font> for MP testing and much more.", call _getRandomColor, call _getRandomColor]]];
-player createDiaryRecord ["LRX Info", ["Thanks", format ["<font color='%1'>v1ct0r</font> for code scripting.", call _getRandomColor]]];
+player createDiaryRecord ["LRX Info", ["Thanks", format ["<font color='%1'>AgentRev</font>, <font color='%2'>Larrow Zurb</font>, <font color='%3'>KillZoneKid</font>, <font color='%4'>Quiksilver</font> for code scripting.", call _getRandomColor,call _getRandomColor,call _getRandomColor,call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["Thanks", format ["<font color='%1'>Isa</font> for all the love.", call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["Thanks", "Thanks to all the people who contribute to the mission:"]];
 
