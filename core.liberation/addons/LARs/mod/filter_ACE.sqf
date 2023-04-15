@@ -1,5 +1,5 @@
 // Add ACE Weapons
-GRLIB_MOD_signature = GRLIB_MOD_signature + ["ACE_"];
+GRLIB_MOD_signature = GRLIB_MOD_signature + ["ace_"];
 GRLIB_blacklisted_from_arsenal append [
 	"ace_intelitems_base",
 	"ACE_ropeBase",
