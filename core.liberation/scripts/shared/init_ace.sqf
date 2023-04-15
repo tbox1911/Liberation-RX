@@ -60,7 +60,7 @@ call compile preprocessFile "R3F_LOG\fonctions_generales\lib_geometrie_3D.sqf";
 R3F_LOG_FNCT_objet_deplacer = compile preprocessFile "R3F_LOG\objet_deplacable\deplacer.sqf";
 
 // Force Arsenal Filter Strict mode 3
-if (GRLIB_filter_arsenal == 2) then {GRLIB_filter_arsenal = 3};
+//if (GRLIB_filter_arsenal == 2) then {GRLIB_filter_arsenal = 3};
 
 // Add missing objects
 support_vehicles append [["ACE_Wheel",0,0,1,0]];

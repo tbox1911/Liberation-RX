@@ -27,6 +27,9 @@ blacklisted_bag = [
 ];
 
 blacklisted_weapon = [
+	"rhs_mag_fakeMuzzle1",
+	"rhs_fakemag",
+	"rhs_mag_fold_stock"
 ];
 
 whitelisted_from_arsenal = [

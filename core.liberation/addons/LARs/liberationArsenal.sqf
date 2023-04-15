@@ -38,6 +38,8 @@ LRX_arsenal_init_done = false;
 waitUntil { sleep 1; !isNil "GRLIB_filter_arsenal" };
 if (GRLIB_filter_arsenal == 0) exitWith {
     LRX_arsenal_init_done = true; 
+	//Enable ACE Arsenal for no filter cases
+	if (GRLIB_ACE_enabled) then { [myLARsBox, true, false] call ace_arsenal_fnc_initBox };
     diag_log "--- LRX Arsenal filters disabled.";
 };
 
@@ -68,9 +70,6 @@ GRLIB_blacklisted_from_arsenal = blacklisted_bag + blacklisted_weapon;
 // Default LRX whitelist
 GRLIB_whitelisted_from_arsenal = [mobile_respawn_bag, "B_Parachute"] + whitelisted_from_arsenal;
 
-// Ace compat.
-if (GRLIB_ACE_enabled) then { [myLARsBox, true, false] call ace_arsenal_fnc_initBox };
-
 // Mod signature
 GRLIB_MOD_signature = [];
 
@@ -83,7 +82,13 @@ GRLIB_MOD_signature = GRLIB_MOD_signature arrayIntersect GRLIB_MOD_signature;
 GRLIB_whitelisted_from_arsenal = GRLIB_whitelisted_from_arsenal arrayIntersect GRLIB_whitelisted_from_arsenal;
 GRLIB_blacklisted_from_arsenal = GRLIB_blacklisted_from_arsenal arrayIntersect GRLIB_blacklisted_from_arsenal;
 
-[myLARsBox, ["GRLIB_whitelisted_from_arsenal", "GRLIB_blacklisted_from_arsenal"], false, "Liberation", { false }] call LARs_fnc_blacklistArsenal;
+// Initialize Arsenal
+if (GRLIB_ACE_enabled) then {
+	// Ace compat.
+	[myLARsBox, GRLIB_whitelisted_from_arsenal, false] call ace_arsenal_fnc_initBox;
+} else {
+	[myLARsBox, ["GRLIB_whitelisted_from_arsenal", "GRLIB_blacklisted_from_arsenal"], false, "Liberation", { false }] call LARs_fnc_blacklistArsenal;
+};
 
 diag_log format ["--- LRX Arsenal initialized. blacklist: %1 - whitelist: %2", count GRLIB_blacklisted_from_arsenal, count GRLIB_whitelisted_from_arsenal];
 diag_log format ["--- LRX Arsenal MOD signature in use: %1", GRLIB_MOD_signature];
