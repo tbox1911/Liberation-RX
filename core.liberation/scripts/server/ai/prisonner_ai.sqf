@@ -26,7 +26,7 @@ _unit setVariable ["GRLIB_can_speak", true, true];
 
 //Create a marker to make them easier to locate.
 _mPos = position _unit;
-_mName = "CaptiveMarker" + str _mPos;
+_mName = "CaptiveMarker" + (str _mPos);
 _captiveMarker = createMarker [_mName,_mPos];
 _mName setMarkerTypeLocal "hd_objective";
 _mName setMarkerText "Surrendering Unit";
