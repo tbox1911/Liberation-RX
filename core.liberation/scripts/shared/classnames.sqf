@@ -362,7 +362,6 @@ GRLIB_vehicle_whitelist = [
 	ammobox_i_typename,
 	mobile_respawn,
 	A3W_BoxWps,
-	canister_fuel_typename,
 	waterbarrel_typename,
 	fuelbarrel_typename,
 	foodbarrel_typename,
@@ -383,7 +382,7 @@ GRLIB_vehicle_blacklist = [
 ] + GRLIB_vehicle_blacklist_west;
 
 // Recycleable objects
-GRLIB_recycleable_blacklist = [FOB_sign];
+GRLIB_recycleable_blacklist = [FOB_sign, canister_fuel_typename];
 GRLIB_recycleable_classnames = ["LandVehicle","Air","Ship","StaticWeapon","Slingload_01_Base_F","Pod_Heli_Transport_04_base_F"];
 {
 	if (!((_x select 0) in GRLIB_recycleable_blacklist)) then {GRLIB_recycleable_classnames pushBack (_x select 0)};
