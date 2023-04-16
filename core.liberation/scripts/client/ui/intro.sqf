@@ -65,5 +65,5 @@ introDone = true;
 dostartgame = 1;
 
 // Load Player Context
-waitUntil {sleep 1; GRLIB_player_spawned};
+waitUntil {sleep 0.5; GRLIB_player_spawned};
 [player] remoteExec ["load_context_remote_call", 2];
