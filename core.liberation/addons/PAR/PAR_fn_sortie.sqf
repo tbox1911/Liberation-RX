@@ -24,7 +24,7 @@ if (lifeState _medic == "INCAPACITATED" || (!alive _wnded)) exitWith { [_medic, 
 
 // Revived
 _wnded setUnconscious false;
-_wnded doFollow player;
+
 if (GRLIB_revive == 2) then { 
   _medic removeItem "FirstAidKit";
 };
@@ -34,10 +34,10 @@ if ([_medic] call PAR_is_medic) then {
   _wnded setDamage 0.25;
 };
 
-if (isPlayer _wnded) then {
-  player setVariable ["PAR_isUnconscious", 0, true];
-  player setVariable ["PAR_isDragged", 0, true];
-  group _wnded selectLeader player;
+if (_wnded == player) then {
+  _wnded setVariable ["PAR_isUnconscious", 0, true];
+  _wnded setVariable ["PAR_isDragged", 0, true];
+  group _wnded selectLeader _wnded;
   private _bounty_ok = (([(GRLIB_capture_size * 2), getPosATL _medic] call F_getNearestSector) in (sectors_allSectors - blufor_sectors) && _medic getVariable ["PAR_lastRevive",0] < time);
   if (isPlayer _medic && _bounty_ok) then {
     private _bonus = 5;
@@ -48,10 +48,13 @@ if (isPlayer _wnded) then {
       if (player == (_this select 0)) then { hintSilent (_this select 1) };
     }] remoteExec ["bis_fnc_call", -2];
   };
+  private _grp = group _wnded;
+	while {(count (waypoints _grp)) != 0} do {deleteWaypoint ((waypoints _grp) select 0);};
 } else {
   _wnded switchMove "amovpknlmstpsraswrfldnon"; //go up
   _wnded playMoveNow "amovpknlmstpsraswrfldnon";
   _wnded setSpeedMode (speedMode group player);
+  _wnded doFollow player;
 };
 [_medic, _wnded] call PAR_fn_medicRelease;
 
