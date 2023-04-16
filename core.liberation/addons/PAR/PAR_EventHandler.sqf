@@ -124,7 +124,7 @@ if (_unit == player) then {
 		1 fadeSound ( round desired_vehvolume / 100.0 );
 		NRE_EarplugsActive = 1;
 		[player, "hide"] remoteExec ["dog_action_remote_call", 2];
-		if (GRLIB_thermic == 0 || (GRLIB_thermic == 1 && !(daytime > GRLIB_nights_start || daytime < GRLIB_nights_stop))) then {
+		if (GRLIB_thermic == 0 || (GRLIB_thermic == 1 && !(call is_night))) then {
 			_vehicle disableTIEquipment true;
 		} else {
 			_vehicle disableTIEquipment false;

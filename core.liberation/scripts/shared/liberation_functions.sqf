@@ -68,6 +68,7 @@ is_admin = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_is
 is_recyclable = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_isRecyclable.sqf";
 is_owner = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_isOwner.sqf";
 is_public = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_isPublic.sqf";
+is_night = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_isNight.sqf";
 is_abandoned = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_isAbandoned.sqf";
 F_invertArray = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_invertArray.sqf";
 F_startAnimMP = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_startAnimMP.sqf";
