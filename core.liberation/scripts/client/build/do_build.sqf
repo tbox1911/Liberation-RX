@@ -249,6 +249,10 @@ while { true } do {
 				_near_objects = _near_objects - _remove_objects;
 				_near_objects_25 = _near_objects_25 - _remove_objects_25;
 
+				if (_classname == land_cutter_typename) then {
+					_near_objects = _near_objects + ([(_truepos nearobjects [land_cutter_typename, 20]), {(_x != _vehicle)}] call BIS_fnc_conditionalSelect);
+				};
+
 				if ( count _near_objects == 0 ) then {
 					{
 						_dist22 = 0.5 * (sizeOf (typeof _x));
@@ -430,11 +434,11 @@ while { true } do {
 						_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_static }];
 					};
 
-					// ClutterCutter
-					if (_classname == "Land_ClutterCutter_large_F") then {
+					// Magic ClutterCutter
+					if (_classname == land_cutter_typename) then {
 						[_truepos] remoteExec ["build_cutter_remote_call", 2];
 					};
-					
+
 					// FOB
 					if(buildtype == 99) then {
 						_vehicle addEventHandler ["HandleDamage", {0}];

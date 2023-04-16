@@ -41,7 +41,7 @@ if ( _class == FOB_box_outpost ) then {
 if ( _class == playerbox_typename ) then {
 	_text = "Personal Player Box";
 };
-if ( _class == "Land_ClutterCutter_large_F" ) then {
+if ( _class == land_cutter_typename ) then {
 	_text = "Magic Mower Cutter (Hide Terrain Objects)";
 };
 _text;

@@ -41,6 +41,7 @@ pilot_classname = "B_Helipilot_F";
 PAR_Medikit = "Medikit";
 PAR_AidKit = "FirstAidKit";
 A3W_BoxWps = "Box_East_Wps_F";
+land_cutter_typename = "Land_ClutterCutter_large_F";
 canister_fuel_typename = "Land_CanisterFuel_Red_F";
 GRLIB_sar_wreck = "Land_Wreck_Heli_Attack_01_F";
 GRLIB_sar_fire = "test_EmptyObjectForFireBig";
@@ -129,5 +130,5 @@ buildings_default = [
 	["Land_CzechHedgehog_01_new_F",0,0,0,GRLIB_perm_inf],
 	["Land_ConcreteHedgehog_01_F",0,0,0,GRLIB_perm_log],
 	["Land_DragonsTeeth_01_4x2_old_redwhite_F",0,0,0,GRLIB_perm_tank],
-	["Land_ClutterCutter_large_F",0,0,0,GRLIB_perm_inf]
+	[land_cutter_typename,0,0,0,GRLIB_perm_inf]
 ];
