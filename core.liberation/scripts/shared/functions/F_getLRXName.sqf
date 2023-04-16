@@ -42,6 +42,6 @@ if ( _class == playerbox_typename ) then {
 	_text = "Personal Player Box";
 };
 if ( _class == "Land_ClutterCutter_large_F" ) then {
-	_text = "Hide Terrain Objects";
+	_text = "Magic Mower Cutter (Hide Terrain Objects)";
 };
 _text;
