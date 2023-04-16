@@ -1,4 +1,4 @@
-private [ "_cur", "_last", "_msg", "_msg2", "_rank", "_new_rank", "_uid", "_firework" ];
+private [ "_cur", "_last", "_msg", "_msg2", "_rank", "_new_rank", "_uid", "_firework", "_rounds" ];
 
 waitUntil { !isNil "GRLIB_player_scores" };
 waitUntil { !isNil "save_is_loaded" };
@@ -42,30 +42,37 @@ while { true } do {
 					// new rank for player _x
 
 					_firework = true;
+					_rounds = 1;
 					switch (_new_rank) do {
 						case "Private" : {
 							_msg2 = localize "STR_RANK_LVL1";
 							[_uid, [true,false,false,true,false,true]] call CHG_Perm;
+							_rounds = 1;
 						};
 						case "Corporal" : {
 							_msg2 = localize "STR_RANK_LVL2";
 							[_uid, [true,true,false,true,false,true]] call CHG_Perm;
+							_rounds = 2;
 						};
 						case "Sergeant" : {
 							_msg2 = localize "STR_RANK_LVL3";
 							[_uid, [true,true,true,true,false,true]] call CHG_Perm;
+							_rounds = 3;
 						};
 						case "Captain" : {
 							_msg2 = localize "STR_RANK_LVL4";
 							[_uid, [true,true,true,true,true,true]] call CHG_Perm;
+							_rounds = 4;
 						};
 						case "Major" : {
 							_msg2 = localize "STR_RANK_LVL5";
 							[_uid, [true,true,true,true,true,true]] call CHG_Perm;
+							_rounds = 5;
 						};
 						case "Colonel" : {
 							_msg2 = localize "STR_RANK_LVL6";
 							[_uid, [true,true,true,true,true,true]] call CHG_Perm;
+							_rounds = 8;
 						};
 						case "Super Colonel" : {
 							_msg2 = localize "STR_RANK_LVL7";
@@ -103,8 +110,8 @@ while { true } do {
 					};
 
 					// fireworks !!
-					if (_firework) then { [_x] spawn launch_firework };
-				};			
+					if (_firework) then { [getPosATL _x, _rounds] spawn launch_firework };
+				};
 			};
 			_x setVariable ["GREUH_score_last", _cur];
 		};
