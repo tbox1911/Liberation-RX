@@ -203,7 +203,7 @@ if ( GRLIB_endgame == 1 ) then {
         GRLIB_garage,
         GRLIB_mod_west,
         GRLIB_mod_east,
-        0,		// free for future use
+        GRLIB_warehouse,
         _stats,
         [ round infantry_weight max 33, round armor_weight max 33, round air_weight max 33 ],
         GRLIB_vehicle_to_military_base_links,

@@ -47,6 +47,7 @@ GRLIB_player_context = [];
 resources_intel = 0;
 GRLIB_player_scores = [];
 GRLIB_garage = [];
+GRLIB_warehouse = [];
 
 private _no_kill_handler_classnames = [FOB_typename, FOB_outpost];
 { _no_kill_handler_classnames pushback (_x select 0) } foreach buildings;
@@ -89,8 +90,6 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 	time_of_day = greuh_liberation_savegame select 3;
 	combat_readiness = greuh_liberation_savegame select 4;
 	GRLIB_garage = greuh_liberation_savegame select 5;
-	if (typeName GRLIB_garage != "ARRAY") then {GRLIB_garage = []};
-
 	_side_west = greuh_liberation_savegame select 6;
 	_side_east = greuh_liberation_savegame select 7;
 	if ( GRLIB_force_load == 0 && typeName _side_west == "STRING" && typeName _side_east == "STRING" ) then {
@@ -98,6 +97,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 			abort_loading = true;
 		};
 	};
+	GRLIB_warehouse = greuh_liberation_savegame select 8;
 	_stats = greuh_liberation_savegame select 9;
 	stats_opfor_soldiers_killed = _stats select 0;
 	stats_opfor_killed_by_players = _stats select 1;
