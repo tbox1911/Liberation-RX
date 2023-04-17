@@ -232,6 +232,10 @@
 			<Portuguese>-- Descer</Portuguese>
 			<Czech>-- Posunout dolů</Czech>
 		</Key>
+		<Key ID="STR_MODE">
+			<Original>-- Follow terrain</Original>
+			<French>-- Suivre relief</French>		
+		</Key>
 		<Key ID="STR_CANCEL">
 			<Original>-- Cancel</Original>
 			<French>-- Annuler</French>

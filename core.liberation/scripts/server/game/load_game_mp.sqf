@@ -180,8 +180,8 @@ if ( !isNil "greuh_liberation_savegame" ) then {
             _nextbuilding = createSimpleObject [_nextclass, AGLtoASL _nextpos];
         } else {
 			_nextbuilding = createVehicle [_nextclass, zeropos, [], 0, "CAN_COLLIDE"];
-			_nextbuilding allowDamage false;
-			_nextbuilding setVectorDirAndUp [[-cos _nextdir, sin _nextdir, 0] vectorCrossProduct surfaceNormal _nextpos, surfaceNormal _nextpos];
+			_nextbuilding allowDamage false;		
+			_nextbuilding setVectorDirAndUp [_nextdir select 0, _nextdir select 1];
 			_nextbuilding setPosWorld _nextpos;
         };
 

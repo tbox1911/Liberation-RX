@@ -2,6 +2,7 @@ private [  "_built_object_remote", "_unit", "_pos", "_grp", "_classname", "_idx"
 
 build_confirmed = 0;
 build_unit = [];
+build_mode = 1;
 
 private _maxdist = GRLIB_fob_range;
 private _truepos = [];
@@ -156,6 +157,7 @@ while { true } do {
 			_idactsnap = -1;
 			_idactupper = -1;
 			_idactlower = -1;
+			_idactmode = -1;
 			_idactplacebis = -1;
 
 			if (buildtype == 6 ) then {
@@ -166,6 +168,7 @@ while { true } do {
 				_idactsnap = player addAction ["<t color='#B0FF00'>" + localize "STR_GRID" + "</t>","scripts\client\build\do_grid.sqf","",-755,false,false,"","build_confirmed == 1"];
 				_idactupper = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEUP" + "</t> <img size='1' image='R3F_LOG\icons\r3f_lift.paa'/>","scripts\client\build\build_up.sqf","",-755,false,false,"","build_confirmed == 1"];
 				_idactlower = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEDOWN" + "</t> <img size='1' image='R3F_LOG\icons\r3f_release.paa'/>","scripts\client\build\build_down.sqf","",-755,false,false,"","build_confirmed == 1"];
+				_idactmode = player addAction ["<t color='#B0FF00'>" + localize "STR_MODE" + "</t> <img size='1' image='R3F_LOG\icons\r3f_drop.paa'/>","scripts\client\build\build_mode.sqf","",-755,false,false,"","build_confirmed == 1"];
 			};
 			_idactplace = player addAction ["<t color='#B0FF00'>" + localize "STR_PLACEMENT" + "</t> <img size='1' image='res\ui_confirm.paa'/>","scripts\client\build\build_place.sqf","",-750,false,true,"","build_invalid == 0 && build_confirmed == 1"];
 			_idactrotate = player addAction ["<t color='#B0FF00'>" + localize "STR_ROTATION" + "</t> <img size='1' image='res\ui_rotation.paa'/>","scripts\client\build\build_rotate.sqf","",-756,false,false,"","build_confirmed == 1"];
@@ -275,7 +278,12 @@ while { true } do {
 					} else {
 						_vehicle setposATL _truepos;
 					};
-					_vehicle setVectorDirAndUp [[-cos _actualdir, sin _actualdir, 0] vectorCrossProduct surfaceNormal _truepos, surfaceNormal _truepos];
+
+					if (build_mode == 1) then {
+						_vehicle setVectorDirAndUp [[-cos _actualdir, sin _actualdir, 0] vectorCrossProduct surfaceNormal _truepos, surfaceNormal _truepos];
+					} else {
+						_vehicle setVectorDirAndUp [[sin _actualdir, cos _actualdir, 0], [0, 0, 1]];
+					};
 
 					if ( build_invalid == 1 ) then {
 						GRLIB_ui_notif = "";
@@ -336,7 +344,12 @@ while { true } do {
 					} else {
 						_vehicle setposATL _truepos;
 					};
-					_vehicle setVectorDirAndUp [[-cos _vehdir, sin _vehdir, 0] vectorCrossProduct surfaceNormal _truepos, surfaceNormal _truepos];
+
+					if (build_mode == 1) then {
+						_vehicle setVectorDirAndUp [[-cos _vehdir, sin _vehdir, 0] vectorCrossProduct surfaceNormal _truepos, surfaceNormal _truepos];
+					} else {
+						_vehicle setVectorDirAndUp [[sin _vehdir, cos _vehdir, 0], [0, 0, 1]];
+					};
 
 					// Ammo Box clean inventory
 					if ( !(_classname in GRLIB_Ammobox_keep) ) then {
@@ -507,6 +520,9 @@ while { true } do {
 				player removeAction _idactupper;
 				player removeAction _idactlower;
 			};
+			if ( _idactmode != -1 ) then {
+				player removeAction _idactmode;
+			};			
 			player removeAction _idactrotate;
 			player removeAction _idactplace;
 

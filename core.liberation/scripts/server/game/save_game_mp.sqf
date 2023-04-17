@@ -92,7 +92,7 @@ if ( GRLIB_endgame == 1 ) then {
     {
         private _savedpos = getPosWorld _x;
         private _nextclass = typeof _x;
-        private _nextdir = getdir _x;
+        private _nextdir = [vectorDir _x, vectorUp _x];
         private _hascrew = false;
         private _owner = "";
         private _color = "";
@@ -107,7 +107,7 @@ if ( GRLIB_endgame == 1 ) then {
                 _owner = _x getVariable ["GRLIB_vehicle_owner", ""];
                 _hascrew = _x getVariable ["GRLIB_vehicle_manned", false];
                 if (_owner == "") then {
-                    buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew ];
+                    buildings_to_save pushback [ _nextclass, _savedpos, _nextdir ];
                 };
                 if (_owner == "public") then {
                     buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner ];
