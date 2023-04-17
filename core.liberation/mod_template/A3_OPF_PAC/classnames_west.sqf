@@ -97,7 +97,7 @@ air_vehicles = [
 	["O_T_Heli_Transport_04_F",3,500,10,GRLIB_perm_air],
 	["O_T_Heli_Light_02_dynamicLoadout_F",5,1000,10,GRLIB_perm_air],
 	["O_T_Heli_Attack_02_dynamicLoadout_F",10,2000,20,GRLIB_perm_air],
-	["O_T_T_VTOL_02_infantry_dynamicLoadout_F", 10,2500,20,GRLIB_perm_max],
+	["O_T_VTOL_02_infantry_dynamicLoadout_F", 10,2500,20,GRLIB_perm_max],
 	["O_T_Plane_CAS_02_dynamicLoadout_F",20,4000,40,GRLIB_perm_max],
 	["O_T_Plane_Fighter_02_F",20,4500,40,GRLIB_perm_max],
 	["O_T_Plane_Fighter_02_Stealth_F",20,4500,40,GRLIB_perm_max]
@@ -106,7 +106,7 @@ air_vehicles = [
 blufor_air = [
 	"O_T_Heli_Light_02_dynamicLoadout_F",
 	"O_T_Heli_Attack_02_dynamicLoadout_F",
-	"O_T_T_VTOL_02_infantry_dynamicLoadout_F",
+	"O_T_VTOL_02_infantry_dynamicLoadout_F",
 	"O_T_Plane_CAS_02_dynamicLoadout_F",
 	"O_T_Plane_Fighter_02_F",
 	"O_T_Plane_Fighter_02_Stealth_F"
