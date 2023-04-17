@@ -424,21 +424,6 @@ while { true } do {
 			};
 		};
 
-		// Recycle PortableHelipadLight (simple objects)
-		_idact_id = _idact_id + 1;
-		_idact_num = _id_actions select _idact_id;
-		if (!_near_lhd && _fobdistance < _distfob && cursorObject isKindof "Land_PortableHelipadLight_01_F") then {
-			if ( _idact_num == -1 ) then {
-				_idact = player addAction ["<t color='#FFFF00'>" + localize "STR_RECYCLE_MANAGER" + "</t> <img size='1' image='res\ui_recycle.paa'/>",{deleteVehicle cursorObject},"",-950,false,true,"","[cursorObject] call is_recyclable",_distvehclose];
-				_id_actions set [_idact_id, _idact];
-			};
-		} else {
-			if ( _idact_num != -1 ) then {
-				player removeAction _idact_num;
-				_id_actions set [_idact_id, -1];
-			};
-		};
-
 		// FOB Sign Actions
 		if (!_near_lhd && _fobdistance < _distfob && cursorObject isKindof FOB_sign) then {
 			if (count (actionIDs cursorObject) == 0) then {

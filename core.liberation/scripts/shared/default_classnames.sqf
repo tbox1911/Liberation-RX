@@ -8,6 +8,7 @@ FOB_outpost = "Land_BagBunker_Tower_F";
 FOB_box_outpost = "Land_Cargo10_grey_F";
 FOB_sign = "SignAd_Sponsor_F";
 Radio_tower = "Land_Communication_F";
+Warehouse_typename = "Land_Warehouse_03_F";
 Arsenal_typename = "B_supplyCrate_F";
 Box_Weapon_typename = "Box_NATO_Wps_F";
 Box_Ammo_typename = "Box_NATO_Ammo_F";
@@ -93,6 +94,7 @@ buildings_default = [
 	["Land_SandbagBarricade_01_hole_F",0,0,0,GRLIB_perm_log],
 	["Land_SandbagBarricade_01_half_F",0,0,0,GRLIB_perm_log],
 	["Land_SM_01_shed_F",0,0,0,GRLIB_perm_max],
+	[Warehouse_typename,0,0,0,GRLIB_perm_tank],
 	["Land_Hangar_F",0,0,0,GRLIB_perm_max],
 	["Land_Medevac_house_V1_F",0,0,0,GRLIB_perm_tank],
 	["Land_Medevac_HQ_V1_F",0,0,0,GRLIB_perm_air],
@@ -119,11 +121,6 @@ buildings_default = [
 	["Land_CampingTable_F",0,0,0,GRLIB_perm_tank],
 	["MapBoard_altis_F",0,0,0,GRLIB_perm_tank],
 	["Land_Metal_rack_Tall_F",0,0,0,GRLIB_perm_tank],
-	["PortableHelipadLight_01_blue_F",0,0,0,GRLIB_perm_tank],
-	["PortableHelipadLight_01_red_F",0,0,0,GRLIB_perm_tank],
-	["PortableHelipadLight_01_white_F",0,0,0,GRLIB_perm_tank],
-	["PortableHelipadLight_01_green_F",0,0,0,GRLIB_perm_tank],
-	["PortableHelipadLight_01_yellow_F",0,0,0,GRLIB_perm_tank],
 	["Land_DieselGroundPowerUnit_01_F",0,0,0,GRLIB_perm_tank],
 	["Land_Pallet_MilBoxes_F",0,0,0,GRLIB_perm_tank],
 	["Land_PaperBox_open_full_F",0,0,0,GRLIB_perm_tank],

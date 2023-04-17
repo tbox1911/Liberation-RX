@@ -168,11 +168,6 @@ if (isNil "buildings_west_overide") then {
 	buildings append buildings_west;
 };
 
-// *** SIMPLE OBJECTS ***
-simple_objects = [
-	"Land_PortableHelipadLight_01_F"
-];
-
 // *** ELITES ***
 elite_vehicles = [];
 { if (_x select 4 == GRLIB_perm_max) then { elite_vehicles pushback (_x select 0)} } foreach light_vehicles + heavy_vehicles + air_vehicles + static_vehicles;
@@ -382,7 +377,7 @@ GRLIB_vehicle_blacklist = [
 ] + GRLIB_vehicle_blacklist_west;
 
 // Recycleable objects
-GRLIB_recycleable_blacklist = [FOB_sign, canister_fuel_typename];
+GRLIB_recycleable_blacklist = [FOB_sign,Warehouse_typename,canister_fuel_typename];
 GRLIB_recycleable_classnames = ["LandVehicle","Air","Ship","StaticWeapon","Slingload_01_Base_F","Pod_Heli_Transport_04_base_F"];
 {
 	if (!((_x select 0) in GRLIB_recycleable_blacklist)) then {GRLIB_recycleable_classnames pushBack (_x select 0)};

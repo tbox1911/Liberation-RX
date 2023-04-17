@@ -176,15 +176,10 @@ if ( !isNil "greuh_liberation_savegame" ) then {
             _owner = _x select 4;
         };
 
-        if ([_nextclass, simple_objects] call F_itemIsInClass) then {
-            _nextbuilding = createSimpleObject [_nextclass, AGLtoASL _nextpos];
-        } else {
-			_nextbuilding = createVehicle [_nextclass, zeropos, [], 0, "CAN_COLLIDE"];
-			_nextbuilding allowDamage false;		
-			_nextbuilding setVectorDirAndUp [_nextdir select 0, _nextdir select 1];
-			_nextbuilding setPosWorld _nextpos;
-        };
-
+		_nextbuilding = createVehicle [_nextclass, zeropos, [], 0, "CAN_COLLIDE"];
+		_nextbuilding allowDamage false;		
+		_nextbuilding setVectorDirAndUp [_nextdir select 0, _nextdir select 1];
+		_nextbuilding setPosWorld _nextpos;
 		_buildings_created pushback _nextbuilding;
 
 		if (!(_nextclass in GRLIB_Ammobox_keep)) then {
@@ -304,13 +299,16 @@ if ( !isNil "greuh_liberation_savegame" ) then {
             _nextbuilding addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		};
 
+		if (_nextclass == Warehouse_typename) then {
+			[_nextbuilding] call warehouse_init_remote_call;
+		};
         //diag_log format [ "--- LRX Load Game %1 loaded at %2.", typeOf _nextbuilding, time];
 	} foreach (_s1 + _s2 + _s3);
 
 	sleep 3;
 	{ 
 		_allow_damage = true;
-		if ( (typeOf _x) in [FOB_typename, FOB_outpost, FOB_sign, playerbox_typename] ) then {
+		if ( (typeOf _x) in [FOB_typename,FOB_outpost,FOB_sign,Warehouse_typename,playerbox_typename] ) then {
 			_x addEventHandler ["HandleDamage", { 0 }];
 			_allow_damage = false;
 		};
