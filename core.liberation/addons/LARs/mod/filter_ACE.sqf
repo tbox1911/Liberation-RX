@@ -8,7 +8,18 @@ GRLIB_blacklisted_from_arsenal append [
 	"ACE_ItemCore",
 	"ACE_FakeMagazine",
 	"ACE_FakePrimaryWeapon",
+	"ACE_DebugPotato",
 	"ace_marker",
+	"ACE_key",
+	"ACE_NVG",
+	"ace_dragon_sight",
+	"ACE_Vector",
+	"ACE_Yardage450",
+	"ace_gunbag",
+	"ACE_launch_NLAW_used_F",
+	"ace_csw",
+	"ace_compat",
+	"ace_dragon_super",
 	"ACE_key",
 	"ACE_dogtag"
 ];
