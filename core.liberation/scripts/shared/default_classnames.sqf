@@ -50,6 +50,7 @@ civilians = ["C_man_1"];
 civilian_vehicles = ["C_SUV_01_F"];
 SHOP_Man = "C_Man_formal_1_F";
 SELL_Man = "C_Story_Mechanic_01_F";
+WRHS_Man = "B_RangeMaster_F";
 uavs = [];
 boats_west = [];
 opfor_boats = [];

@@ -40,7 +40,7 @@ _desk setDir _deskDir;
 _deskDir = (180 + _deskDir);
 private _manPos = (ASLToATL _deskPos) vectorAdd ([[0, -0.7, 0.1], -_deskDir] call BIS_fnc_rotateVector2D);
 private _grp = group chimeraofficer;
-private _man = _grp createUnit ["B_RangeMaster_F", _manPos, [], 0, "NONE"];
+private _man = _grp createUnit [WRHS_Man, _manPos, [], 0, "NONE"];
 _man allowDamage false;
 _man disableCollisionWith _desk;
 _man setDir _deskDir;

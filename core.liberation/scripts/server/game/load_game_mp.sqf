@@ -304,8 +304,8 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 		};
         //diag_log format [ "--- LRX Load Game %1 loaded at %2.", typeOf _nextbuilding, time];
 	} foreach (_s1 + _s2 + _s3);
+	sleep 1;
 
-	sleep 3;
 	{ 
 		_allow_damage = true;
 		if ( (typeOf _x) in [FOB_typename,FOB_outpost,FOB_sign,Warehouse_typename,playerbox_typename] ) then {
@@ -317,6 +317,16 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 		};
 		if ( _allow_damage ) then { _x allowDamage true };
 	} foreach _buildings_created;
+	sleep 2;
+
+	{
+		if (typeOf _x == WRHS_Man) then {
+			if (!isNull (_x getVariable ["GRLIB_Warehouse", objNull])) then {
+				[_x] call warehouse_update_remote_call;
+			};
+		};
+	} forEach (units (group chimeraofficer));
+	sleep 1;
 
 	diag_log format [ "--- LRX Load Game finish at %1", time ];
 } else {
