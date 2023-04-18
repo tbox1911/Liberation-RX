@@ -12,6 +12,24 @@ if (count GRLIB_warehouse == 0) then {
 	];
 };
 
+private _warehouse_offset = [
+	// row 1 (Water)
+	[
+		[[-4,5,0.1], 90],   
+  		[[0,0,0],[0.6,0,0],[1.5,0,0],[2.1,0,0],[3,0,0],[3.6,0,0],[4.5,0,0],[5.1,0,0],[0.3,0,0.8],[1.8,0,0.8],[3.3,0,0.8]]
+	],
+	// row 2 (Fuel)
+	[
+		[[-10.5,-3,0], 230],
+  		[[0,0,0.05],[0,1,0.05],[0,2,0.05],[0,3,0.05],[0,4,0.05],[0,5,0.05],[0,0.5,0.9],[0,1.5,0.9],[0,2.5,0.9],[0,3.5,0.9]] 
+	],
+	// row 3 (Food)
+	[
+		[[-6,1,0], 0],
+  		[[0,0,0],[2,0,0],[3,-1.5,0],[1,-1.5,0],[4,0,0],[1,-0.5,0.9],[2.5,-1.3,0.9]] 
+	]
+];
+
 // build desk + man
 private _deskDir = (_warehouse_dir + 90);
 private _offset = [1, 2, 0];
@@ -32,24 +50,6 @@ doStop _man;
 _man setVariable ["GRLIB_Warehouse", _warehouse];
 
 // build box
-private _warehouse_offset = [
-	// row 1 (Water)
-	[
-		[[-2,5,0.1,0], 0], 
-  		[[0,0,0],[0.6,0,0],[1.5,0,0],[2.1,0,0],[3,0,0],[3.6,0,0],[0.3,0,0.8],[1.8,0,0.8],[3.3,0,0.8]] 
-	],
-	// row 2 (Fuel)
-	[
-		[[-10.5,-1,0], 220],
-  		[[0,0,0.05],[0,1,0.05],[0,2,0.05],[0,3,0.05],[0,4,0.05],[0,5,0.05],[0,0.5,0.9],[0,1.5,0.9],[0,2.5,0.9],[0,3.5,0.9]] 
-	],
-	// row 3 (Food)
-	[
-		[[-6,1,0], 0],
-  		[[0,0,0],[2,0,0],[3,-1.5,0],[1,-1.5,0],[4,0,0],[1,-0.5,0.9],[2.5,-1.3,0.9]] 
-	]
-];
-
 {
 	_typename = _x select 0;
 	_offset_conf = _warehouse_offset select _foreachIndex;
@@ -61,8 +61,9 @@ private _warehouse_offset = [
 		_offset = _box_offset select (_i-1);
 		_box_pos_final = _box_pos vectorAdd ([_offset, -_warehouse_dir] call BIS_fnc_rotateVector2D);
 		_box = createSimpleObject [_typename, _box_pos_final];
-		_box setDir (_box_dir + ((random 60) -30));
-		//systemchat format ["box:%1 %2", _typename,  _offset];
+		if (_box_dir > 0) then {
+			_box setDir (_box_dir + ((random 60) -30));
+		};
 	};
 } foreach GRLIB_warehouse;
 
