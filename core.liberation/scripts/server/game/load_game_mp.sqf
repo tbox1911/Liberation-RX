@@ -92,11 +92,6 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 	GRLIB_garage = greuh_liberation_savegame select 5;
 	_side_west = greuh_liberation_savegame select 6;
 	_side_east = greuh_liberation_savegame select 7;
-	if ( GRLIB_force_load == 0 && typeName _side_west == "STRING" && typeName _side_east == "STRING" ) then {
-		if ( _side_west != GRLIB_mod_west || _side_east != GRLIB_mod_east ) exitWith {
-			abort_loading = true;
-		};
-	};
 	GRLIB_warehouse = greuh_liberation_savegame select 8;
 	_stats = greuh_liberation_savegame select 9;
 	stats_opfor_soldiers_killed = _stats select 0;
@@ -138,6 +133,30 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 	GRLIB_player_context = greuh_liberation_savegame select 13;
 	resources_intel = greuh_liberation_savegame select 14;
 	GRLIB_player_scores = greuh_liberation_savegame select 15;
+
+	if ( GRLIB_force_load == 0 && typeName _side_west == "STRING" && typeName _side_east == "STRING" ) then {
+		if ( _side_west != GRLIB_mod_west || _side_east != GRLIB_mod_east ) exitWith {
+			abort_loading_msg = format [
+			"********************************\n
+			FATAL! - The savegame was made with a differents Modset (%1 / %2)\n\n
+			Loading Aborted to protect data integrity.\n
+			Correct the Modset or Wipe the savegame...\n
+			Current Modset: (%3 / %4)\n
+			*********************************", _side_west, _side_east, GRLIB_mod_west, GRLIB_mod_east];			
+			abort_loading = true;
+		};
+	};
+
+	if (typeName GRLIB_warehouse != "ARRAY") exitWith {
+		abort_loading_msg = format [
+		"********************************\n
+		FATAL! - The savegame is incompatible with this version of LRX\n\n
+		Loading Aborted to protect data integrity.\n
+		Wipe the savegame...\n
+		*********************************"];			
+		abort_loading = true;
+	};
+	if (abort_loading) exitWith {};
 
 	setDate [ GRLIB_date_year, GRLIB_date_month, GRLIB_date_day, time_of_day, 0];
 
@@ -317,15 +336,6 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 		};
 		if ( _allow_damage ) then { _x allowDamage true };
 	} foreach _buildings_created;
-	sleep 2;
-
-	{
-		if (typeOf _x == WRHS_Man) then {
-			if (!isNull (_x getVariable ["GRLIB_Warehouse", objNull])) then {
-				[_x] call warehouse_update_remote_call;
-			};
-		};
-	} forEach (units (group chimeraofficer));
 	sleep 1;
 
 	diag_log format [ "--- LRX Load Game finish at %1", time ];
@@ -354,6 +364,7 @@ if ( count GRLIB_vehicle_to_military_base_links == 0 ) then {
 	} foreach _classnames_to_check;
 };
 publicVariable "GRLIB_garage";
+publicVariable "GRLIB_warehouse";
 publicVariable "blufor_sectors";
 publicVariable "GRLIB_all_fobs";
 publicVariable "GRLIB_mobile_respawn";
@@ -361,11 +372,3 @@ publicVariable "GRLIB_vehicle_to_military_base_links";
 publicVariable "GRLIB_permissions";
 publicVariable "GRLIB_player_scores";
 save_is_loaded = ([] call F_getValid); publicVariable "save_is_loaded";
-if (abort_loading) exitWith { abort_loading_msg = format [
-	"********************************\n
-	FATAL! - This Savegame was made with a differents Modset (%1 / %2)\n\n
-	Loading Aborted to protect data integrity.\n
-	Correct the Modset or Wipe the savegame..\n
-	Current Modset: (%3 / %4)\n
-	*********************************", _side_west, _side_east, GRLIB_mod_west, GRLIB_mod_east];
-};

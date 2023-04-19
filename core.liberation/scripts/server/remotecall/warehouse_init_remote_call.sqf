@@ -68,4 +68,4 @@ _man setVariable ["GRLIB_Warehouse", _warehouse];
 } foreach GRLIB_warehouse;
 
 // update warehouse
-[_man] call warehouse_update_remote_call;
+[_man] call warehouse_update;

@@ -18,13 +18,3 @@ private _warehouse_pos = getPosATL _warehouse;
 		};
 	} foreach allSimpleObjects [_typename];
 } foreach GRLIB_warehouse;
-
-// update others warehouse
-if (isNil "GRLIB_init_server") exitWith {};
-{
-	if (typeOf _x == WRHS_Man && _x != _owner) then {
-		if (!isNull (_x getVariable ["GRLIB_Warehouse", objNull])) then {
-			[_x] call warehouse_update_remote_call;
-		};
-	};
-} forEach (units (group chimeraofficer));

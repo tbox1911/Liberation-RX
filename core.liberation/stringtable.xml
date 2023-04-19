@@ -6405,6 +6405,12 @@
 			<Czech>Vozidlo %1\nVloženo do Garáže.</Czech>
 		</Key>
 
+		<!-- virtual_garage.hpp -->
+		<Key ID="STR_WAREHOUSE_SHOP">
+			<Original>-- WareHouse --</Original>
+			<French>-- Entrepôt --</French>
+		</Key>
+
 		<!-- veh_repaint -->
 		<Key ID="STR_PAINT_SHOP">
 			<Original>-- Paint Shop --</Original>

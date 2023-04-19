@@ -74,6 +74,9 @@ createlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scr
 showlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_showLandMines.sqf";
 clearlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_clearLandMines.sqf";
 
+// Warehouse
+warehouse_update = compileFinal preprocessFileLineNumbers "scripts\server\game\warehouse_update.sqf";
+
 if (!([] call F_getValid)) exitWith {};
 
 [] call load_game_mp;
