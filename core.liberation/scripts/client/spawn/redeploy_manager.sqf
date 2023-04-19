@@ -240,5 +240,5 @@ if (alive player && deploy == 1) then {
 	[_spawn_str] spawn spawn_camera;
 };
 
-sleep 6;
+sleep 7;
 playMusic "";
