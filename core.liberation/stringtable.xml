@@ -6105,24 +6105,14 @@
 			<Czech>AMMO</Czech>
 		</Key>
 		<Key ID="STR_AMMO_SELL">
-			<Original>%1\nScore + 50 Pts!</Original>
-			<Russian>%1\nScore + 50 Pts!</Russian>
-			<French>%1\nScore + 50 Pts!</French>
-			<Japanese>%1\nスコア + 50 ポイント！</Japanese>
-			<Chinesesimp>%1\n奖励 + 50 军功点！</Chinesesimp>
-			<Chinese>%1\n獎勵 + 50 軍功點！</Chinese>
-			<Portuguese>%1\nPontuação + 50 Pts!</Portuguese>
-			<Czech>%1\nSkóre + 50 bodů!</Czech>
-		</Key>
-		<Key ID="STR_AMMO_SELL2">
-			<Original>%1\nBonus Score + 10 Pts!</Original>
-			<Russian>%1\nBonus Score + 10 Pts!</Russian>
-			<French>%1\nScore + 10 Pts!</French>
-			<Japanese>%1\nボーナススコア + 10 ポイント！</Japanese>
-			<Chinesesimp>%1\n奖励 + 10 军功点！</Chinesesimp>
-			<Chinese>%1\n獎勵 + 10 軍功點！</Chinese>
-			<Portuguese>%1\nPontuação Bônus + 10 Pts!</Portuguese>
-			<Czech>%1\nBonusové skóre + 10 bodů!</Czech>
+			<Original>%1\nScore + %2 Pts!</Original>
+			<Russian>%1\nScore + %2 Pts!</Russian>
+			<French>%1\nScore + %2 Pts!</French>
+			<Japanese>%1\nスコア + %2 ポイント！</Japanese>
+			<Chinesesimp>%1\n奖励 + %2 军功点！</Chinesesimp>
+			<Chinese>%1\n獎勵 + %2 軍功點！</Chinese>
+			<Portuguese>%1\nPontuação + %2 Pts!</Portuguese>
+			<Czech>%1\nSkóre + %2 bodů!</Czech>
 		</Key>
 
 		<!-- do_refuel.sqf -->
