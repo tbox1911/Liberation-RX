@@ -105,7 +105,7 @@ while { GRLIB_endgame == 0 } do {
 		};
 	};
 	if ( !([] call F_isBigtownActive) ) then {
-		sleep (600.0 / GRLIB_difficulty_modifier);
+		sleep (300.0 / GRLIB_difficulty_modifier);
 	};
 
 };

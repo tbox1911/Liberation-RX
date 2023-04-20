@@ -9,10 +9,17 @@ _sendPara = {
 	_newvehicle setPos (getPosATL _newvehicle vectorAdd [0, 0, 400]);
 	createVehicleCrew _newvehicle;
 	_newvehicle flyInHeight 400;
+	_newvehicle setVariable ["GRLIB_counter_TTL", round(time + 3600)];
 
 	private _pilot_group = group ((crew _newvehicle) select 0);
 	_newvehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-	{ _x addMPEventHandler ["MPKilled", {_this spawn kill_manager}]; } foreach (crew _newvehicle);
+	{
+		_x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+		_x setSkill 0.65;
+		_x setSkill ["courage", 1];
+		_x allowFleeing 0;
+		_x setVariable ["GRLIB_counter_TTL", round(time + 3600)];
+	} foreach (crew _newvehicle);
 	sleep 0.2;
 
 	while { count units _para_group < 8 } do {
@@ -20,6 +27,8 @@ _sendPara = {
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		_unit assignAsCargo _newvehicle;
 		_unit moveInCargo _newvehicle;
+		_unit setSkill 0.65;
+		_unit setSkill ["courage", 1];
 		_unit allowFleeing 0;
 		_unit setVariable ["GRLIB_counter_TTL", round(time + 3600)];
 		sleep 0.1;
@@ -108,7 +117,7 @@ _sendPara = {
 	_waypoint = _pilot_group addWaypoint [ _targetpos, 200];
 	_waypoint setWaypointType "SAD";
 	_waypoint = _pilot_group addWaypoint [ _targetpos, 200];
-	_waypoint setWaypointType "SAD";
+	_waypoint setWaypointType "CYCLE";
 	_pilot_group setCurrentWaypoint [ _pilot_group, 1];
 	_waypoint = _para_group addWaypoint [ _targetpos, 100];
 	_waypoint setWaypointType "SAD";
@@ -119,7 +128,7 @@ _sendPara = {
 	_waypoint = _para_group addWaypoint [ _targetpos, 100];
 	_waypoint setWaypointType "SAD";
 	_waypoint = _para_group addWaypoint [ _targetpos, 100];
-	_waypoint setWaypointType "SAD";
+	_waypoint setWaypointType "CYCLE";
 	_pilot_group setCurrentWaypoint [ _para_group, 1];
 };
 

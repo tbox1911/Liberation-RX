@@ -12,6 +12,7 @@ if ( isMultiplayer ) then {
 	GRLIB_adaptive_opfor = ["AdaptToPlayercount",1] call bis_fnc_getParamValue;
 	GRLIB_civilian_activity = ["Civilians",1] call bis_fnc_getParamValue;
 	GRLIB_wildlife_manager = ["Wildlife",1] call bis_fnc_getParamValue;
+	GRLIB_Patrol_manager = ["Patrol",1] call bis_fnc_getParamValue;
 	GRLIB_admin_menu = ["AdminMenu",1] call bis_fnc_getParamValue;
 	GRLIB_param_wipe_savegame_1 = ["WipeSave1",0] call bis_fnc_getParamValue;
 	GRLIB_param_wipe_savegame_2 = ["WipeSave2",0] call bis_fnc_getParamValue;
@@ -52,6 +53,7 @@ if ( isMultiplayer ) then {
 	GRLIB_unitcap = 1;
 	GRLIB_civilian_activity = 1;
 	GRLIB_wildlife_manager = 1;
+	GRLIB_Patrol_manager = 1;
 	GRLIB_admin_menu = 1;
 	GRLIB_param_wipe_savegame_1 = 0;
 	GRLIB_param_wipe_savegame_2 = 0;
