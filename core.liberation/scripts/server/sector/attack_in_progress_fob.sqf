@@ -32,7 +32,7 @@ if ( _ownership == GRLIB_side_friendly ) exitWith {
 
 _attacktime = GRLIB_vulnerability_timer;
 
-while { _attacktime > 0 && ( _ownership == GRLIB_side_enemy || _ownership == GRLIB_side_resistance ) } do {
+while { _attacktime > 0 && ( _ownership == GRLIB_side_enemy || _ownership == GRLIB_side_civilian ) } do {
 	_ownership = [ _thispos ] call F_sectorOwnership;
 	_attacktime = _attacktime - 1;
 	if (_attacktime mod 60 == 0) then {
@@ -43,7 +43,7 @@ while { _attacktime > 0 && ( _ownership == GRLIB_side_enemy || _ownership == GRL
 
 waitUntil {
 	sleep 1;
-	[ _thispos ] call F_sectorOwnership != GRLIB_side_resistance;
+	[ _thispos ] call F_sectorOwnership != GRLIB_side_civilian;
 };
 
 if ( GRLIB_endgame == 0 ) then {

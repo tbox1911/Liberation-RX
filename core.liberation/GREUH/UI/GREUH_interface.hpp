@@ -748,26 +748,26 @@ class GREUH_Menu {
 	class GREUH_ButtonWorldVeryLow : GREUH_ButtonWorld {
 		idc = 812;
 		x = 0.15 * safezoneW + safezoneX;
-		text = "Very Low";
-		action = "setTerrainGrid 50; hint 'Terrain details set to Very Low'";
+		text = "Low";
+		action = "setTerrainGrid 25; hint 'Terrain details set to Low'";
 	};
 	class GREUH_ButtonWorldLow : GREUH_ButtonWorld {
 		idc = 813;
 		x = (0.15 * safezoneW + safezoneX) + (((0.2 * safezoneW) / 4) * 1);
-		text = "Low";
-		action = "setTerrainGrid 25; hint 'Terrain details set to Low'";
+		text = "Normal";
+		action = "setTerrainGrid 12.5; hint 'Terrain details set to Normal'";
 	};
 	class GREUH_ButtonWorldNormal : GREUH_ButtonWorld {
 		idc = 814;
 		x = (0.15 * safezoneW + safezoneX) + (((0.2 * safezoneW) / 4) * 2);
-		text = "Normal";
-		action = "setTerrainGrid 12.5; hint 'Terrain details set to Normal'";
+		text = "High";
+		action = "setTerrainGrid 6.5; hint 'Terrain details set to High'";
 	};
 	class GREUH_ButtonWorldHigh : GREUH_ButtonWorld {
 		idc = 815;
 		x = (0.15 * safezoneW + safezoneX) + (((0.2 * safezoneW) / 4) * 3);
-		text = "High";
-		action = "setTerrainGrid 3.125; hint 'Terrain details set to High'";
+		text = "Ultra";
+		action = "setTerrainGrid 3.125; hint 'Terrain details set to Ultra'";
 	};
 	class GREUH_MarkersZone : GREUH_DefaultZone {
 		idc = 901;
