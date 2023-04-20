@@ -30,7 +30,7 @@ stats_fobs_built = publicstats select 25;
 stats_fobs_lost = publicstats select 26;
 stats_readiness_earned = publicstats select 27;
 
-{ _x allowDamage false; (objectParent _x) allowDamage false; } foreach allPlayers;
+{ _x allowDamage false; (vehicle _x) allowDamage false; } foreach allPlayers;
 GRLIB_endgame = 1;
 sleep 10;
 

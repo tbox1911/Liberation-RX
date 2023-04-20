@@ -26,7 +26,7 @@ disableUserInput true;
 disableUserInput false;
 if (round (getPosASL player select 2) <= -1) then {player switchmove ""};
 
-if (lifeState player == 'INCAPACITATED' || objectParent player != player) exitWith {
+if (lifeState player == 'INCAPACITATED' || vehicle player != player) exitWith {
 	_vehicle setVariable ["wreck_in_use", false, true];
 	player setVariable ["salvage_wreck", false, true];
 };

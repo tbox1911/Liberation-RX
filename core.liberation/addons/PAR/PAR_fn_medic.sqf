@@ -5,7 +5,7 @@ private _medics = _bros select {
   round (_x distance2D _wnded) <= 300 &&
   (!(objectParent _x iskindof "Steerable_Parachute_F")) &&
   !isPlayer _x && _x != _wnded &&
-  alive _x && speed (objectParent _x) <= 20 &&
+  alive _x && speed (vehicle _x) <= 20 &&
   lifeState _x != "INCAPACITATED" &&
   isNil {_x getVariable "PAR_busy"}
 };

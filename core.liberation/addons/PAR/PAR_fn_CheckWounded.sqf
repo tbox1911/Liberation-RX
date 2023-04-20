@@ -5,7 +5,7 @@ _search_radius = 30;
 private _bros = (units player) select {(_x getVariable ["PAR_Grp_ID","0"]) == (_medic getVariable ["PAR_Grp_ID","1"])};
 private _wounded_list = _bros select {
   round (_x distance2D _medic) < _search_radius &&
-  objectParent _x == _x &&
+  vehicle _x == _x &&
   alive _x &&
   damage _x >= 0.1 &&
   behaviour _x != "COMBAT" &&
