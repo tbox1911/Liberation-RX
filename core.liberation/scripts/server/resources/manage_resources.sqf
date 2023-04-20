@@ -27,7 +27,7 @@ while { GRLIB_endgame == 0 } do {
 			} else {
 				if ( ( { typeof _x == ammobox_b_typename } count vehicles ) <= ( ceil ( ( count _blufor_mil_sectors ) * 1.1 ) ) ) then {
 
-					_spawnsector = ( _blufor_mil_sectors call BIS_fnc_selectRandom );
+					_spawnsector = ( selectRandom _blufor_mil_sectors );
 					_newbox = [ammobox_b_typename,  markerpos _spawnsector, false] call boxSetup;
 
 					clearWeaponCargoGlobal _newbox;
@@ -49,7 +49,7 @@ while { GRLIB_endgame == 0 } do {
 		if ( count _blufor_fuel_sectors > 0 ) then {
 			if ( ( { typeof _x == fuelbarrel_typename } count vehicles ) <= ( ceil ( ( count _blufor_fuel_sectors ) * 0.95 ) ) ) then {
 
-				_spawnsector = ( _blufor_fuel_sectors call BIS_fnc_selectRandom );
+				_spawnsector = ( selectRandom _blufor_fuel_sectors );
 				_newbox = [fuelbarrel_typename, markerpos _spawnsector, false] call boxSetup;
 			};
 		};
@@ -65,7 +65,7 @@ while { GRLIB_endgame == 0 } do {
 		if ( count _blufor_water_sectors > 0 ) then {
 			if ( ( { typeof _x == waterbarrel_typename } count vehicles ) <= ( ceil ( ( count _blufor_water_sectors ) * 0.95 ) ) ) then {
 
-				_spawnsector = ( _blufor_water_sectors call BIS_fnc_selectRandom );
+				_spawnsector = ( selectRandom _blufor_water_sectors );
 				_newbox = [waterbarrel_typename, markerpos _spawnsector, false] call boxSetup;
 			};
 		};
@@ -81,7 +81,7 @@ while { GRLIB_endgame == 0 } do {
 		if ( count _blufor_food_sectors > 0 ) then {
 			if ( ( { typeof _x == foodbarrel_typename } count vehicles ) <= ( ceil ( ( count _blufor_food_sectors ) * 3 ) ) ) then {
 
-				_spawnsector = ( _blufor_food_sectors call BIS_fnc_selectRandom );
+				_spawnsector = ( selectRandom _blufor_food_sectors );
 				_newbox = [foodbarrel_typename, markerpos _spawnsector, false] call boxSetup;
 			};
 		};

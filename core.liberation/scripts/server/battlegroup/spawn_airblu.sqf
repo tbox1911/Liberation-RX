@@ -5,7 +5,7 @@ _air_spawnpoint = ( [ sectors_airspawn , [ _first_objective ] , { (markerpos _x)
 _air_grp = createGroup [GRLIB_side_friendly, true];
 
 for [ {_idx=0},{_idx < _planes_number},{_idx=_idx+1}] do {
-	_plane_type = blufor_air call BIS_fnc_selectRandom;
+	_plane_type = selectRandom blufor_air;
 	_air_spawnpos = markerpos _air_spawnpoint;
 	_air_spawnpos = [(((_air_spawnpos select 0) + 500) - random 1000),(((_air_spawnpos select 1) + 500) - random 1000),0];
 	_newvehicle = createVehicle [_plane_type, _air_spawnpos, [], 0, "FLY"];

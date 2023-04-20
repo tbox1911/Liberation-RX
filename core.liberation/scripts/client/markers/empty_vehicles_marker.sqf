@@ -4,6 +4,8 @@ _vehmarkers = [];
 _beacmarkers = [];
 _markedveh = [];
 _markedbeac = [];
+_enemy_faction = "OPF_F";
+if (GRLIB_side_friendly == east) then { _enemy_faction = "BLU_F" };
 
 private _no_marker_classnames = [];
 { _no_marker_classnames pushback (_x select 0) } foreach buildings;
@@ -33,7 +35,7 @@ while { true } do {
 		isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) &&
 		(
 		 side _x == GRLIB_side_friendly ||
-		 (side _x == GRLIB_side_civilian && count (crew _x) == 0 && faction _x != "OPF_F") ||
+		 (side _x == GRLIB_side_civilian && count (crew _x) == 0 && faction _x != _enemy_faction) ||
 		 !((_x getVariable ["GRLIB_vehicle_owner", ""]) in ["server",""]) ||
 		 typeOf _x in _force_marker_classnames
 		)

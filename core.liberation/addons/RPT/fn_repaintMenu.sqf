@@ -5,8 +5,6 @@ if (!([player, _vehicle] call is_owner)) exitWith { hintSilent "Wrong Vehicle Ow
 if ((damage _vehicle) != 0) exitWith { hintSilent "Damaged Vehicles cannot be Painted !" };
 if (typeOf _vehicle in GRLIB_vehicle_blacklist) exitWith { hintSilent "This Vehicle cannot be Painted !" };
 
-fnc_getVIP = compileFinal preprocessFileLineNumbers "addons\RPT\RPT_vip_textures.sqf";
-
 paint_veh = 0;
 createDialog "RPT_vehicle_repaint";
 waitUntil { dialog };

@@ -11,7 +11,7 @@ speak_civil_AI = {
 		_opfor = _opfor_list select 0;
 		_unit globalChat (format ["Hi, Yes, I see someone at %1 meters, Azimut %2, Hurry up!", round(_unit distance2D _opfor), round(_unit getDir _opfor)]);
 	} else {
-		_msg = ["Hi, Sorry No.","I dont care, Go away !","Hello, I have no fucking idea of who are your enemies...", "Anerríphthô kúbos ?"] call BIS_fnc_selectRandom;
+		_msg = selectRandom ["Hi, Sorry No.","I dont care, Go away !","Hello, I have no fucking idea of who are your enemies...", "Anerríphthô kúbos ?"];
 		_unit globalChat _msg;
 	};
 };

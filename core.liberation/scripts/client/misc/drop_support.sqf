@@ -30,12 +30,12 @@ if (do_action == 1) then {
 	if ( _timer >= 1 && !(air_type in [7, 8])) exitWith {hint format ["Air Support not ready !\nNew call in %1 min\n\nPlease wait...", _timer]};
 	_cost = 0;
 	switch (air_type) do {
-		case 1 : {_class=GRLIB_AirDrop_1 call BIS_fnc_selectRandom;_cost=50};
-		case 2 : {_class=GRLIB_AirDrop_2 call BIS_fnc_selectRandom;_cost=100};
-		case 3 : {_class=GRLIB_AirDrop_3 call BIS_fnc_selectRandom;_cost=200};
-		case 4 : {_class=GRLIB_AirDrop_4 call BIS_fnc_selectRandom;_cost=300};
-		case 5 : {_class=GRLIB_AirDrop_5 call BIS_fnc_selectRandom;_cost=750};
-		case 6 : {_class=GRLIB_AirDrop_6 call BIS_fnc_selectRandom;_cost=250};
+		case 1 : {_class=selectRandom GRLIB_AirDrop_1;_cost=50};
+		case 2 : {_class=selectRandom GRLIB_AirDrop_2;_cost=100};
+		case 3 : {_class=selectRandom GRLIB_AirDrop_3;_cost=200};
+		case 4 : {_class=selectRandom GRLIB_AirDrop_4;_cost=300};
+		case 5 : {_class=selectRandom GRLIB_AirDrop_5;_cost=750};
+		case 6 : {_class=selectRandom GRLIB_AirDrop_6;_cost=250};
 		case 7 : {_cost=2000};
 		case 8 : {_cost=0};
 	};

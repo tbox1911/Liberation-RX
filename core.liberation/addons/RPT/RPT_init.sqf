@@ -1,6 +1,8 @@
 RPT_color = "#(rgb,1,1,1)color";
 RPT_texDir = "addons\RPT\textures\";
 
+fnc_getVIP = compileFinal preprocessFileLineNumbers "addons\RPT\RPT_vip_textures.sqf";
+
 RPT_colorList =[
 	["Black", RPT_color + "(0.01,0.01,0.01,1)"], // #(argb,8,8,3)color(0.1,0.1,0.1,0.1)
 	["Gray", RPT_color + "(0.15,0.151,0.152,1)"], // #(argb,8,8,3)color(0.5,0.51,0.512,0.3)

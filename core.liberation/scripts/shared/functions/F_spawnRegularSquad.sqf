@@ -26,11 +26,9 @@ _grp = createGroup [GRLIB_side_enemy, true];
 if ( _sector in sectors_capture ) then {
 	_unitidx = 0;
 	{
-		if ( (typeof _x) in original_resistance ) then {
-			[ _x ] spawn ( militia_standard_squad select _unitidx );
-			if ( random 100 < 40 ) then {
-				_x addPrimaryWeaponItem "acc_flashlight";
-			};
+		[ _x ] spawn ( militia_standard_squad select _unitidx );
+		if ( random 100 < 40 ) then {
+			_x addPrimaryWeaponItem "acc_flashlight";
 		};
 		_unitidx = _unitidx + 1;
 		if ( _unitidx > 9 ) then { _unitidx = 0 };

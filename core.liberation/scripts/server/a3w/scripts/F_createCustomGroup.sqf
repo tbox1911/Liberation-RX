@@ -35,7 +35,7 @@ for "_i" from 1 to _nbUnits do {
 	} else {
 		_uPos = _pos vectorAdd ([[random _radius, 0, 0], random 360] call BIS_fnc_rotateVector2D);
 	};
-	_unit = _grp createUnit [_unitTypes call BIS_fnc_selectRandom, _uPos, [], 0, "NONE"];
+	_unit = _grp createUnit [selectRandom _unitTypes, _uPos, [], 0, "NONE"];
 	[_unit] call _unitSetSkill;
 };
 

@@ -27,7 +27,7 @@ if ( _spawn_marker != "" ) then {
 	if ( combat_readiness < 60 ) then { _target_size = round (_target_size * 0.65) };
 	if ( count allPlayers <= 3 ) then { _target_size = round (_target_size * 0.65) };
 	while { count _selected_opfor_battlegroup < _target_size } do {
-		_selected_opfor_battlegroup pushback (_vehicle_pool call BIS_fnc_selectRandom);
+		_selected_opfor_battlegroup pushback (selectRandom _vehicle_pool);
 	};
 
 	[ _spawn_marker ] remoteExec ["remote_call_battlegroup", 0];

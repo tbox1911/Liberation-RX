@@ -6,7 +6,7 @@ _sendPara = {
 	private _targetpos = getMarkerPos _targetsector;
 	private _spawnsector = ( [ sectors_airspawn , [ _targetpos ] , { (markerpos _x) distance _input0 }, "ASCEND"] call BIS_fnc_sortBy ) select 0;
 
-	private _chopper_type = opfor_choppers call BIS_fnc_selectRandom;
+	private _chopper_type = selectRandom opfor_choppers;
 	_air_spawnpos = markerPos _spawnsector;
 	//private _newvehicle = createVehicle [ _chopper_type, markerpos _spawnsector, [], 0, "FLY"];
 

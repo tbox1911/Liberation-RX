@@ -6,7 +6,7 @@ private _max_waypoints = 4;
 _sector_list = (sectors_allSectors - blufor_sectors - sectors_tower);
 
 while { count _convoy_destinations_markers != _max_waypoints && _max_try > 0} do {
-	_start_pos = _sector_list call BIS_fnc_selectRandom;
+	_start_pos = selectRandom _sector_list;
 	_convoy_destinations_markers = [_start_pos, 2000, _sector_list, _max_waypoints] call F_getSectorPath;
     _max_try = _max_try - 1;
 };
@@ -23,7 +23,7 @@ private _spawnpos = _convoy_destinations select 0;
 [ 4, _spawnpos ] remoteExec ["remote_call_intel", 0];
 
 private _scout_vehicle = [ [ _spawnpos, 30, 0 ] call BIS_fnc_relPos, opfor_mrap, false, false ] call F_libSpawnVehicle;
-private _escort_vehicle = [ [ _spawnpos, 10, 0 ] call BIS_fnc_relPos, opfor_vehicles_low_intensity call BIS_fnc_selectRandom, false, false ] call F_libSpawnVehicle;
+private _escort_vehicle = [ [ _spawnpos, 10, 0 ] call BIS_fnc_relPos, selectRandom opfor_vehicles_low_intensity, false, false ] call F_libSpawnVehicle;
 private _transport_vehicle = [ [ _spawnpos, 10, 180 ] call BIS_fnc_relPos, opfor_ammobox_transport, false, true] call F_libSpawnVehicle;
 
 private _boxes_amount = 0;

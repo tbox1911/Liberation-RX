@@ -20,10 +20,10 @@ if (!([_cost] call F_pay)) exitWith {deleteVehicle _helipad};
 private _nb_unit = count (units player);
 private _taxi_type = "";
 
-if (_nb_unit <= 2) then {_taxi_type = taxi_type_2 call BIS_fnc_selectRandom};
-if (_nb_unit > 2 && _nb_unit <= 6) then {_taxi_type = taxi_type_6 call BIS_fnc_selectRandom};
-if (_nb_unit > 6 && _nb_unit <= 8) then {_taxi_type = taxi_type_8 call BIS_fnc_selectRandom};
-if (_nb_unit > 8) then {_taxi_type = taxi_type_14 call BIS_fnc_selectRandom};
+if (_nb_unit <= 2) then {_taxi_type = selectRandom taxi_type_2};
+if (_nb_unit > 2 && _nb_unit <= 6) then {_taxi_type = selectRandom taxi_type_6};
+if (_nb_unit > 6 && _nb_unit <= 8) then {_taxi_type = selectRandom taxi_type_8};
+if (_nb_unit > 8) then {_taxi_type = selectRandom taxi_type_14};
 
 hintSilent format [localize "STR_TAXI_CALLED", getText(configFile >> "cfgVehicles" >> _taxi_type >> "DisplayName")];
 
