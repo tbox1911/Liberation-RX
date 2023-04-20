@@ -1,5 +1,5 @@
 
-private _spawn_marker = [ 3000, 999999, false ] call F_findOpforSpawnPoint;
+private _spawn_marker = [ GRLIB_spawn_min, 99999, false ] call F_findOpforSpawnPoint;
 if ( _spawn_marker == "" ) exitWith { [gamelogic,"Could not find position for search and rescue mission"] remoteExec ["globalChat", 0] };
 used_positions pushbackUnique _spawn_marker;
 

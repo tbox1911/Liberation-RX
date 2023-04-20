@@ -9,7 +9,7 @@ _fob_templates = [
 "scripts\fob_templates\template1.sqf"
 ];
 
-_spawn_marker = [2000,999999,false] call F_findOpforSpawnPoint;
+_spawn_marker = [GRLIB_spawn_min, 99999, false] call F_findOpforSpawnPoint;
 if ( _spawn_marker == "" ) exitWith { [gamelogic, "Could not find position for fob hunting mission"] remoteExec ["globalChat", 0] };
 
 params [ ["_mission_cost", 0] ];

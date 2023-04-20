@@ -6,9 +6,9 @@ _bg_groups = [];
 last_battlegroup_size = 0;
 _spawn_marker = "";
 if ( count _this == 1 ) then {
-	_spawn_marker = [ 2000, 10000, false, _this select 0 ] call F_findOpforSpawnPoint;
+	_spawn_marker = [ GRLIB_spawn_min, GRLIB_spawn_max, false, _this select 0 ] call F_findOpforSpawnPoint;
 } else {
-	_spawn_marker = [ 2000, 10000, false ] call F_findOpforSpawnPoint;
+	_spawn_marker = [ GRLIB_spawn_min, GRLIB_spawn_max, false ] call F_findOpforSpawnPoint;
 };
 
 

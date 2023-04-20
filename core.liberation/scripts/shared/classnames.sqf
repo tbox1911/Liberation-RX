@@ -546,6 +546,13 @@ opfor_air = [
 	"O_Plane_CAS_02_Cluster_F"
 ];
 
+opfor_statics = [
+	"O_HMG_01_high_F",
+	"O_static_AA_F",
+	"O_static_AT_F",
+	"O_Mortar_01_F"
+];
+
 ind_recyclable = [
 	["I_Truck_02_covered_F",0,round (20 / GRLIB_recycling_percentage),0],
 	["I_Truck_02_transport_F",0,round (20 / GRLIB_recycling_percentage),0]

@@ -283,6 +283,10 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 	["B_static_AA_F",10],
 	["B_static_AT_F",10],
 	["B_Mortar_01_F",10],
+	["O_GMG_01_high_F",5],
+	["O_static_AA_F",10],
+	["O_static_AT_F",10],
+	["O_Mortar_01_F",10],
 	["Land_CzechHedgehog_01_new_F", 5]
 ];
 
@@ -296,6 +300,10 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	"B_static_AA_F",
 	"B_static_AT_F",
 	"B_Mortar_01_F",
+	"O_GMG_01_high_F",
+	"O_static_AA_F",
+	"O_static_AT_F",
+	"O_Mortar_01_F",
 	"B_AAA_System_01_F",
 	"B_Ship_Gun_01_F",
 	"Land_CzechHedgehog_01_new_F"
