@@ -23,6 +23,7 @@ LARs_calculateSideGear = 1;
 class CfgFunctions {
 	#include "addons\LARs\blacklistArsenal\functions\blacklistArsenal.fncs"
 	#include "addons\GRAD\cfgFunctions.hpp"
+	#include "addons\SDB_DALE\CfgFunctions.hpp"
 };
 
 class cfgSounds {
@@ -65,3 +66,4 @@ class Repaint {
 #include "addons\MGR\MagRepack_Config.hpp"
 #include "addons\RPT\veh_repaint.hpp"
 #include "addons\VIRT\virtual_garage.hpp"
+#include "addons\SDB_DALE\RscLoadout.hpp"

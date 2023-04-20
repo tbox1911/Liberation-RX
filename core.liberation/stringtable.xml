@@ -3680,3 +3680,58 @@
 		</Key>
 	</Package>
 </Project>
+
+<Project name="SDB_DALE">
+	<Package name="Actions">
+		<Key ID="STR_DALE_Actions_Loadout">
+			<Original>Loadout Editor</Original>
+			<English>Loadout Editor</English>
+			<Dutch>Bewapening Aanpassen</Dutch>
+			<German>Ausrüstung Anpassen</German>
+		</Key>
+	</Package>
+	<Package name="Dialogs">
+		<Key ID="STR_DALE_Dialogs_Apply">
+			<Original>APPLY</Original>
+			<English>APPLY</English>
+			<Dutch>TOEPASSEN</Dutch>
+			<German>ANWENDEN</German>
+		</Key>
+		<Key ID="STR_DALE_Dialogs_Cancel">
+			<Original>CANCEL</Original>
+			<English>CANCEL</English>
+			<Dutch>ANNULEREN</Dutch>
+			<German>ABBRECHEN</German>
+		</Key>
+		<Key ID="STR_DALE_Dialogs_Custom">
+			<Original>Custom</Original>
+			<English>Custom</English>
+			<Dutch>Aangepast</Dutch>
+			<German>Eigene</German>
+		</Key>
+		<Key ID="STR_DALE_Dialogs_Empty">
+			<Original>empty</Original>
+			<English>empty</English>
+			<Dutch>leeg</Dutch>
+			<German>leer</German>
+		</Key>
+		<Key ID="STR_DALE_Dialogs_Single">
+			<Original>Single</Original>
+			<English>Single</English>
+			<Dutch>Enkel</Dutch>
+			<German>Einzel</German>
+		</Key>
+		<Key ID="STR_DALE_Dialogs_Double">
+			<Original>Double</Original>
+			<English>Double</English>
+			<Dutch>Dubbel</Dutch>
+			<German>Doppelt</German>
+		</Key>
+		<Key ID="STR_DALE_Dialogs_Burst">
+			<Original>Burst</Original>
+			<English>Burst</English>
+			<Dutch>Salvo</Dutch>
+			<German>Salve</German>
+		</Key>
+	</Package>
+</Project>

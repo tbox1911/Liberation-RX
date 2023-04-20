@@ -105,6 +105,7 @@ air_vehicles = [
 	["B_UAV_06_F",1,30,5,GRLIB_perm_tank],
 	["B_UAV_02_F",5,1000,5,GRLIB_perm_air],
 	["B_T_UAV_03_F",5,1500,10,GRLIB_perm_max],
+	["B_UAV_05_F",5,2000,15,GRLIB_perm_max],
 	["C_Plane_Civil_01_F",1,50,5,GRLIB_perm_air],
 	["B_Heli_Light_01_F",1,50,5,GRLIB_perm_tank],
 	["I_Heli_light_03_unarmed_F",1,50,5,GRLIB_perm_tank],
@@ -117,8 +118,9 @@ air_vehicles = [
 	["B_T_VTOL_01_armed_F",20,4000,40,GRLIB_perm_max],
 	["B_Heli_Attack_01_F",10,3000,20,GRLIB_perm_air],
 	["I_Plane_Fighter_04_F", 10,2500,20,GRLIB_perm_max],
-	["B_Plane_CAS_01_F",20,4000,40,GRLIB_perm_max],
-	["B_Plane_Fighter_01_F",20,4500,40,GRLIB_perm_max]
+	["B_Plane_CAS_01_dynamicLoadout_F",20,4000,40,GRLIB_perm_max],
+	["B_Plane_Fighter_01_F",20,4500,40,GRLIB_perm_max],
+	["B_Plane_Fighter_01_Stealth_F",20,4500,40,GRLIB_perm_max]
 ];
 
 blufor_air = [
@@ -304,6 +306,7 @@ uavs = [
 	"B_UAV_01_F",
 	"B_UAV_02_F",
 	"B_T_UAV_03_F",
+	"B_UAV_05_F",
 	"B_UAV_06_F",
 	"C_UAV_06_F",
 	"B_UGV_01_F",
