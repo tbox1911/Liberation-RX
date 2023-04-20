@@ -25,6 +25,7 @@ _unit playmove "AmovPercMstpSnonWnonDnon_AmovPercMstpSsurWnonDnon" ;
 sleep 2;
 _unit setCaptive true;
 _unit setVariable ["GRLIB_is_prisonner", true, true];
+_unit setVariable ["GRLIB_can_speak", true, true];
 
 // Wait
 waitUntil { sleep 1;!alive _unit || side group _unit == GRLIB_side_friendly	};
