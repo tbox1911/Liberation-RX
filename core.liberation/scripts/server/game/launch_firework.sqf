@@ -1,5 +1,6 @@
 params ["_pos", ["_rounds", 1]];
 
+if (!(call is_night)) exitWith {};
 private _colors = [
 	[1,1,1],[1,0,0],[1,0,1],[1,1,0],
 	[0,1,0],[0,1,1],[1,0.5,0],

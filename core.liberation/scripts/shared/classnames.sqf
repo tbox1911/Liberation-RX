@@ -148,7 +148,6 @@ support_vehicles = support_vehicles + [
 	[ammo_truck_typename,5,400,10,GRLIB_perm_tank],
 	[repair_truck_typename,5,200,30,GRLIB_perm_tank],
 	[fuel_truck_typename,5,150,70,GRLIB_perm_tank],
-	[Warehouse_typename,0,0,0,GRLIB_perm_log],
 	[FOB_box_outpost,5,500,20,GRLIB_perm_log],
 	[FOB_box_typename,5,1500,80,GRLIB_perm_max],
 	[FOB_truck_typename,5,1500,150,GRLIB_perm_max],

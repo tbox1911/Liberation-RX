@@ -78,12 +78,13 @@ GRLIB_SHOP_Group = createGroup [GRLIB_side_civilian, true];
     if (_str find "house_big_02" > 0) then { _deskDir = (180 + _deskDir); _offset = [-0.7, -2, 0.25]};
 
     _deskPos = (getposASL _shop) vectorAdd ([_offset, -_deskDir] call BIS_fnc_rotateVector2D);
-    _desk = createSimpleObject ["Land_CashDesk_F", _deskPos];
+    _desk = createSimpleObject ["Land_CashDesk_F", zeropos];
     _desk allowDamage false;
     _desk setDir _deskDir;
+    _desk setPosASL _deskPos;
     _deskDir = (180 + _deskDir);
     _manPos = (ASLToATL _deskPos) vectorAdd ([[0, -0.7, 0.1], -_deskDir] call BIS_fnc_rotateVector2D);
-    _man = GRLIB_SHOP_Group createUnit [SHOP_Man, _manPos, [], 0, "NONE"];
+    _man = GRLIB_SHOP_Group createUnit [SHOP_Man, zeropos, [], 0, "NONE"];
     _man allowDamage false;
     _man disableCollisionWith _desk;
     _man setDir _deskDir;

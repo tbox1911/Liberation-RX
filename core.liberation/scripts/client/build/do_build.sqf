@@ -2,7 +2,7 @@ private [  "_built_object_remote", "_unit", "_pos", "_grp", "_classname", "_idx"
 
 build_confirmed = 0;
 build_unit = [];
-build_mode = 1;
+build_mode = 0;
 
 private _maxdist = GRLIB_fob_range;
 private _truepos = [];
@@ -160,7 +160,7 @@ while { true } do {
 			_idactmode = -1;
 			_idactplacebis = -1;
 
-			if (buildtype == 6 ) then {
+			if (buildtype == 6 && !(_classname in [Warehouse_typename])) then {
 				_idactview = player addAction ["<t color='#B0FF00'>" + "-- Build view" + "</t>","scripts\client\build\build_view.sqf","",-755,false,false,"","build_confirmed == 1"];
 				_idactplacebis = player addAction ["<t color='#B0FF00'>" + localize "STR_PLACEMENT_BIS" + "</t> <img size='1' image='res\ui_confirm.paa'/>","scripts\client\build\build_place_bis.sqf","",-752,false,false,"","build_invalid == 0 && build_confirmed == 1"];
 			};
@@ -279,7 +279,7 @@ while { true } do {
 						_vehicle setposATL _truepos;
 					};
 
-					if (build_mode == 1) then {
+					if (build_mode == 0) then {
 						_vehicle setVectorDirAndUp [[-cos _actualdir, sin _actualdir, 0] vectorCrossProduct surfaceNormal _truepos, surfaceNormal _truepos];
 					} else {
 						_vehicle setVectorDirAndUp [[sin _actualdir, cos _actualdir, 0], [0, 0, 1]];
@@ -342,7 +342,7 @@ while { true } do {
 					_vehicle setposATL _truepos;
 				};
 
-				if (build_mode == 1) then {
+				if (build_mode == 0) then {
 					_vehicle setVectorDirAndUp [[-cos _vehdir, sin _vehdir, 0] vectorCrossProduct surfaceNormal _truepos, surfaceNormal _truepos];
 				} else {
 					_vehicle setVectorDirAndUp [[sin _vehdir, cos _vehdir, 0], [0, 0, 1]];
@@ -539,6 +539,7 @@ while { true } do {
 		dobuild = 0;
 		build_rotation = 0;
 		building_altitude = 0;
+		build_mode = 0;
 	};
 	manned = false;
 };

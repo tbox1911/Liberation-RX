@@ -104,6 +104,14 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 				};
 			};
 
+			if ( buildtype == 6 ) then {
+				if (_x select 0 == Warehouse_typename) then {
+					if (count (player nearObjects [Warehouse_typename, GRLIB_fob_range]) > 0) then {
+						_affordable = false;
+					};
+				};	
+			};
+
 			if ( buildtype == 7 ) then {
 				if (_x select 0 == mobile_respawn) then {
 					if (([getPlayerUID player] call F_getMobileRespawnsPlayer) select 1) then {
@@ -114,12 +122,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 					if (_has_box) then {
 						_affordable = false;
 					};
-				};
-				if (_x select 0 == Warehouse_typename) then {
-					if (count (player nearObjects [Warehouse_typename, GRLIB_fob_range]) > 0) then {
-						_affordable = false;
-					};
-				};				
+				};			
 			};
 
 			if ( buildtype == 8 ) then {
@@ -180,6 +183,13 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 			};
 		};
 
+		if ( buildtype == 6 ) then {
+			if (_build_item select 0 == Warehouse_typename) then {
+				if (count (player nearObjects [Warehouse_typename, GRLIB_fob_range]) > 0) then {
+					_affordable = false;
+				};
+			};	
+		};
 		if ( buildtype == 7 ) then {
 			if (_build_item select 0 == mobile_respawn) then {
 				if (([getPlayerUID player] call F_getMobileRespawnsPlayer) select 1) then {
@@ -192,12 +202,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 					_affordable = false;
 					_refresh = true;
 				};
-			};
-			if (_build_item select 0 == Warehouse_typename) then {
-				if (count (player nearObjects [Warehouse_typename, GRLIB_fob_range]) > 0) then {
-					_affordable = false;
-				};
-			};			
+			};		
 		};
 
 		if ( buildtype == 8 ) then {
