@@ -152,7 +152,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 	_squad_full = false;
 	_ammo_collected = player getVariable ["GREUH_ammo_count",0];
 	_fuel_collected = player getVariable ["GREUH_fuel_count",0];
-	_bros = allUnits select {(_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1",PAR_Grp_ID]};
+	_bros = allUnits select {!isPlayer _x && (_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1",PAR_Grp_ID]};
 	_linked = false;
 	_linked_unlocked = true;
 	_base_link = "";

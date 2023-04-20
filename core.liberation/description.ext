@@ -24,7 +24,6 @@ LARs_calculateSideGear = 1;
 cba_settings_hasSettingsFile = 1;
 
 class CfgFunctions {
-	#include "addons\LARs\blacklistArsenal\functions\blacklistArsenal.fncs"
 	#include "addons\GRAD\cfgFunctions.hpp"
 	#include "addons\SDB_DALE\CfgFunctions.hpp"
 };

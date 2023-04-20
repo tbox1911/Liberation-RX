@@ -7,8 +7,7 @@ GRLIB_west_modder = "Z@Warrior / pSiKO";
 
 // Unsung Men NVA (8th Battalion PAWN '65)
 
-Arsenal_typename = "uns_AmmoBox_ANZAC";
-A3W_BoxWps = "uns_AmmoBoxUS_army";
+Arsenal_typename = "uns_AmmoBoxVC";
 huron_typename = "uns_Mi8T_VPAF";
 FOB_typename = "Land_Cargo_HQ_V1_F";
 FOB_box_typename = "B_Slingload_01_Cargo_F";
@@ -27,10 +26,10 @@ SHOP_Man = "uns_civilian4";
 SELL_Man = "uns_civilian3_b1";
 Radio_tower = "Antenna";
 waterbarrel_typename = "Land_WaterBottle_01_stack_F";
-fuelbarrel_typename = "LAND_barel7";
 foodbarrel_typename = "Land_FoodSacks_01_large_brown_idap_F";
 GRLIB_sar_wreck = "vn_air_uh1d_med_wreck";
 canisterFuel = "Land_CanisterFuel_Red_F";
+A3W_BoxWps = "uns_HiddenAmmoBox";
 
 //repair_sling_typename = "B_Slingload_01_repair_F";
 //fuel_sling_typename = "B_Slingload_01_Fuel_F";
@@ -136,17 +135,10 @@ static_vehicles = [
 	["uns_Type36_57mm_NVA",1,40,0,GRLIB_perm_log],
 	["uns_Type74_NVA",1,40,0,GRLIB_perm_log],
 	["uns_ZU23_NVA",1,40,0,GRLIB_perm_log]
-
 ];
 
 // *** Static Weapon with AI ***
 static_vehicles_AI = [
-	"uns_dshk_armoured_NVA",
-	"uns_dshk_twin_NVA",
-	"uns_pk_high_NVA",
-	"uns_Type36_57mm_NVA",
-	"uns_Type74_NVA",
-	"uns_ZU23_NVA"
 ];
 
 support_vehicles_west = [

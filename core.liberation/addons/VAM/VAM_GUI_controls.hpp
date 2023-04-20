@@ -5,18 +5,15 @@ class VAM_RscText
 {
 	deletable = 0;
 	fade = 0;
-	access = 0;
 	type = 0;
 	idc = -1;
-	colorBackground[] = 
-	{
+	colorBackground[] =  {
 		0,
 		0,
 		0,
 		0
 	};
-	colorText[] = 
-	{
+	colorText[] =  {
 		1,
 		1,
 		1,
@@ -30,8 +27,7 @@ class VAM_RscText
 	w = 0.3;
 	style = 0;
 	shadow = 1;
-	colorShadow[] = 
-	{
+	colorShadow[] =	{
 		0,
 		0,
 		0,
@@ -40,22 +36,19 @@ class VAM_RscText
 	font = "RobotoCondensed";
 	SizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 	linespacing = 1;
-	tooltipColorText[] = 
-	{
+	tooltipColorText[] = {
 		1,
 		1,
 		1,
 		1
 	};
-	tooltipColorBox[] = 
-	{
+	tooltipColorBox[] = {
 		1,
 		1,
 		1,
 		1
 	};
-	tooltipColorShade[] = 
-	{
+	tooltipColorShade[] = {
 		0,
 		0,
 		0,
@@ -66,67 +59,57 @@ class VAM_RscListBox
 {
 	deletable = 0;
 	fade = 0;
-	access = 0;
 	type = 5;
 	rowHeight = 0;
-	colorText[] = 
-	{
+	colorText[] = {
 		1,
 		1,
 		1,
 		1
 	};
-	colorDisabled[] = 
-	{
+	colorDisabled[] = {
 		1,
 		1,
 		1,
 		0.25
 	};
-	colorScrollbar[] = 
-	{
+	colorScrollbar[] = {
 		1,
 		0,
 		0,
 		0
 	};
-	colorSelect[] = 
-	{
+	colorSelect[] = {
 		0,
 		0,
 		0,
 		1
 	};
-	colorSelect2[] = 
-	{
+	colorSelect2[] = {
 		0,
 		0,
 		0,
 		1
 	};
-	colorSelectBackground[] = 
-	{
+	colorSelectBackground[] = {
 		0.95,
 		0.95,
 		0.95,
 		1
 	};
-	colorSelectBackground2[] = 
-	{
+	colorSelectBackground2[] = {
 		1,
 		1,
 		1,
 		0.5
 	};
-	colorBackground[] = 
-	{
+	colorBackground[] = {
 		0,
 		0,
 		0,
 		0.3
 	};
-	soundSelect[] = 
-	{
+	soundSelect[] = {
 		"\A3\ui_f\data\sound\RscListbox\soundSelect",
 		0.09,
 		1
@@ -136,85 +119,73 @@ class VAM_RscListBox
 	autoScrollRewind = 0;
 	arrowEmpty = "#(argb,8,8,3)color(1,1,1,1)";
 	arrowFull = "#(argb,8,8,3)color(1,1,1,1)";
-	colorPicture[] = 
-	{
+	colorPicture[] = {
 		1,
 		1,
 		1,
 		1
 	};
-	colorPictureSelected[] = 
-	{
+	colorPictureSelected[] = {
 		1,
 		1,
 		1,
 		1
 	};
-	colorPictureDisabled[] = 
-	{
+	colorPictureDisabled[] = {
 		1,
 		1,
 		1,
 		0.25
 	};
-	colorPictureRight[] = 
-	{
+	colorPictureRight[] = {
 		1,
 		1,
 		1,
 		1
 	};
-	colorPictureRightSelected[] = 
-	{
+	colorPictureRightSelected[] = {
 		1,
 		1,
 		1,
 		1
 	};
-	colorPictureRightDisabled[] = 
-	{
+	colorPictureRightDisabled[] = {
 		1,
 		1,
 		1,
 		0.25
 	};
-	colorTextRight[] = 
-	{
+	colorTextRight[] = {
 		1,
 		1,
 		1,
 		1
 	};
-	colorSelectRight[] = 
-	{
+	colorSelectRight[] = {
 		0,
 		0,
 		0,
 		1
 	};
-	colorSelect2Right[] = 
-	{
+	colorSelect2Right[] = {
 		0,
 		0,
 		0,
 		1
 	};
-	tooltipColorText[] = 
-	{
+	tooltipColorText[] = {
 		1,
 		1,
 		1,
 		1
 	};
-	tooltipColorBox[] = 
-	{
+	tooltipColorBox[] = {
 		1,
 		1,
 		1,
 		1
 	};
-	tooltipColorShade[] = 
-	{
+	tooltipColorShade[] = {
 		0,
 		0,
 		0,
@@ -239,8 +210,7 @@ class VAM_RscListBox
 	font = "RobotoCondensed";
 	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 	shadow = 0;
-	colorShadow[] = 
-	{
+	colorShadow[] = {
 		0,
 		0,
 		0,
@@ -253,85 +223,72 @@ class VAM_RscButton
 {
 	deletable = 0;
 	fade = 0;
-	access = 0;
 	type = 1;
 	text = "";
-	colorText[] = 
-	{
+	colorText[] = {
 		1,
 		1,
 		1,
 		1
 	};
-	colorDisabled[] = 
-	{
+	colorDisabled[] = {
 		1,
 		1,
 		1,
 		0.25
 	};
-	colorBackground[] = 
-	{
+	colorBackground[] = {
 		0,
 		0,
 		0,
 		0.5
 	};
-	colorBackgroundDisabled[] = 
-	{
+	colorBackgroundDisabled[] = {
 		0,
 		0,
 		0,
 		0.5
 	};
-	colorBackgroundActive[] = 
-	{
+	colorBackgroundActive[] = {
 		0,
 		0,
 		0,
 		1
 	};
-	colorFocused[] = 
-	{
+	colorFocused[] = {
 		0,
 		0,
 		0,
 		1
 	};
-	colorShadow[] = 
-	{
+	colorShadow[] = {
 		0,
 		0,
 		0,
 		0
 	};
-	colorBorder[] = 
-	{
+	colorBorder[] = {
 		0,
 		0,
 		0,
 		1
 	};
-	soundEnter[] = 
-	{
+	soundEnter[] = {
 		"\A3\ui_f\data\sound\RscButton\soundEnter",
 		0.09,
 		1
 	};
-	soundPush[] = 
-	{
+	soundPush[] = {
 		"\A3\ui_f\data\sound\RscButton\soundPush",
 		0.09,
 		1
 	};
-	soundClick[] = 
-	{
+	soundClick[] = {
 		"\A3\ui_f\data\sound\RscButton\soundClick",
 		0.09,
 		1
 	};
-	soundEscape[] = 
-	{
+	soundEscape[] = {
 		"\A3\ui_f\data\sound\RscButton\soundEscape",
 		0.09,
 		1
@@ -358,8 +315,7 @@ class VAM_IGUIBack
 	idc = 124;
 	style = 128;
 	text = "";
-	colorText[] = 
-	{
+	colorText[] = {
 		0,
 		0,
 		0,
@@ -372,8 +328,7 @@ class VAM_IGUIBack
 	y = 0.1;
 	w = 0.1;
 	h = 0.1;
-	colorbackground[] = 
-	{
+	colorbackground[] = {
 		"(profilenamespace getvariable ['IGUI_BCG_RGB_R',0])",
 		"(profilenamespace getvariable ['IGUI_BCG_RGB_G',1])",
 		"(profilenamespace getvariable ['IGUI_BCG_RGB_B',1])",

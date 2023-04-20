@@ -1,37 +1,13 @@
-
 #include "\A3\Ui_f\hpp\defineResinclDesign.inc"
-#include "macros.hpp"
 
 if ( hasInterface ) then {
-	
-	{
-		uiNamespace setVariable[ _x, missionNamespace getVariable _x ];
-	}forEach [
-		"LARs_fnc_overrideVAButtonDown", 
-		"LARs_fnc_overrideVATemplateOK",
-		"LARs_fnc_loadInventory_whiteList",
-		"LARs_fnc_applyLBColors",
-		"LARs_fnc_showRestrictedItems",
-		"LARs_fnc_addVAKeyEvents"
-	];
-
-	//diag_log "Adding arsenalOpened SEH";
-
 	[ missionNamespace, "arsenalOpened", {
 	    disableSerialization;
 	    _display = _this select 0;
 		
 		//diag_log "arsenalOpened SEH called";
-		
-		waitUntil { !isNil "BIS_fnc_arsenal_target" };
-
-		//diag_log "SEH target done";
-
 		_center = BIS_fnc_arsenal_center;
 		_cargo = BIS_fnc_arsenal_cargo;
-		
-		_msg = format[ "SEH: Center: %1, Cargo: %2", _center, _cargo ];
-		diag_log _msg;
 
 		_virtualItemCargo =
 			(missionNamespace call BIS_fnc_getVirtualItemCargo) +
@@ -82,10 +58,12 @@ if ( hasInterface ) then {
 			_virtualMagazineCargo,
 			_virtualBackpackCargo
 		];
+		
+		[_display] call LARs_fnc_addVAKeyEvents;
+	} ] call BIS_fnc_addScriptedEventHandler;
 
-		uiNamespace setVariable [ "LARs_override_virtualCargo", _virtualCargo ];
-		
-		[ _display ] call LARs_fnc_addVAKeyEvents;
-		
+	[ missionNamespace, "arsenalClosed", {
+		[player] call F_filterLoadout;
+		[player] spawn F_payLoadout;
 	} ] call BIS_fnc_addScriptedEventHandler;
 };

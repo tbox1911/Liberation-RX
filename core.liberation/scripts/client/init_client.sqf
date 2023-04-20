@@ -1,7 +1,7 @@
 diag_log "--- Client Init start ---";
 
-titleText ["","BLACK FADED", 100];
-waitUntil {sleep 0.1;!isNull findDisplay 46};
+titleText ["Loading...","BLACK FADED", 100];
+
 R3F_LOG_joueur_deplace_objet = objNull;
 GRLIB_player_spawned = false;
 GRLIB_player_is_menuok = false;

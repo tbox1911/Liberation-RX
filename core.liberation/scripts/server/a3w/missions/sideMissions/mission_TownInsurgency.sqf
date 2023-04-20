@@ -33,6 +33,7 @@ _setupObjects =
 
 	// spawn some enemies
 	[_missionPos, 30] call createlandmines;
+	[_missionPos, 150, floor (random 6)] spawn ied_trap_manager;
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	_managed_units = (["militia", (_nbUnits - 4), _buildingpositions, _missionPos] call F_spawnBuildingSquad);
 	_managed_units joinSilent _aiGroup;

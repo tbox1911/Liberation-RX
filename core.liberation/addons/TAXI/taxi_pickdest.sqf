@@ -19,7 +19,7 @@ _target onMapSingleClick {
 		_marker setMarkerTextlocal "Taxi DZ";
 
 		GRLIB_taxi_helipad_created = false;
-		GRLIB_taxi_helipad = selectRandom (nearestObjects [_freepos, ["Helipad_base_F"], 30]);
+		GRLIB_taxi_helipad = selectRandom (nearestObjects [_freepos, ["Helipad_base_F"], 150]);
 		if (isNil "GRLIB_taxi_helipad") then {
 			GRLIB_taxi_helipad = taxi_helipad_type createVehicle _freepos;
 			GRLIB_taxi_helipad_created = true;	

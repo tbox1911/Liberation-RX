@@ -34,6 +34,23 @@ if (isDedicated) exitWith {};
 // Init flag
 LRX_arsenal_init_done = false; 
 
+// Filters disabled 
+waitUntil { sleep 1; !isNil "GRLIB_filter_arsenal" };
+if (GRLIB_filter_arsenal == 0) exitWith {
+    LRX_arsenal_init_done = true; 
+    diag_log "--- LRX Arsenal filters disabled.";
+};
+
+// Init functions
+LARs_fnc_createList = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\fn_createList.sqf";
+LARs_fnc_removeBlack = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\fn_removeBlack.sqf";
+LARs_fnc_updateArsenal = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\fn_updateArsenal.sqf";
+LARs_fnc_blacklistArsenal = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\fn_blacklistArsenal.sqf";
+LARs_fnc_initOverride = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\override\fn_initOverride.sqf";
+
+// LARs Init
+[] call LARs_fnc_initOverride;
+
 // Initalize Blacklist
 GRLIB_blacklisted_from_arsenal = [];			// Global blacklist (All objects will be removed from Arsenal)
 
@@ -59,9 +76,6 @@ GRLIB_whitelisted_from_arsenal = [mobile_respawn_bag, "B_Parachute"] + whitelist
 
 // Ace compat.
 if (GRLIB_ACE_enabled) then { [myLARsBox, true, false] call ace_arsenal_fnc_initBox };
-
-// Filters disabled 
-if (GRLIB_filter_arsenal == 0) exitWith { diag_log "--- LRX Arsenal *Unfiltered* initialized." };
 
 // Mod signature
 GRLIB_MOD_signature = [];

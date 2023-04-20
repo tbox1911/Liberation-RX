@@ -75,3 +75,8 @@ F_startAnimMP = compileFinal preprocessFileLineNumbers "scripts\shared\functions
 F_deathSound = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_deathSound.sqf";
 F_getCargo = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getCargo.sqf";
 F_setCargo = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_setCargo.sqf";
+
+// LARs
+LARs_fnc_addVAKeyEvents = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\override\fn_addVAKeyEvents.sqf";
+LARs_fnc_overrideVAButtonDown = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\override\fn_overrideVAButtonDown.sqf";
+LARs_fnc_overrideVATemplateOK = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\override\fn_overrideVATemplateOK.sqf";

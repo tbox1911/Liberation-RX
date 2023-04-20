@@ -18,6 +18,8 @@ if (!GRLIB_player_spawned) then {
 	waitUntil {sleep 0.2; cinematic_camera_stop };
 	waitUntil {sleep 0.2; !(isNil "dostartgame")};
 	waitUntil {sleep 0.2; dostartgame == 1};
+	waitUntil {sleep 0.2; !(isNil "LRX_arsenal_init_done")};
+	waitUntil {sleep 0.2; LRX_arsenal_init_done };	
 };
 
 <<<<<<< HEAD
@@ -71,7 +73,7 @@ _loadouts_data = [];
 _loadout_controls = [101,203,205];
 
 if ( GRLIB_player_spawned ) then {	
-	_saved_loadouts = profileNamespace getVariable "bis_fnc_saveInventory_data";
+	_saved_loadouts = profileNamespace getVariable ["bis_fnc_saveInventory_data", []];
 	_counter = 0;
 
 	if ( GRLIB_enable_arsenal && !isNil "_saved_loadouts" ) then {

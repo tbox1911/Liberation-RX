@@ -32,8 +32,8 @@ GRLIB_fatigue = ["Fatigue",0] call bis_fnc_getParamValue;
 GRLIB_revive = ["Revive",3] call bis_fnc_getParamValue;
 GRLIB_tk_mode = ["TK_mode",1] call bis_fnc_getParamValue;
 GRLIB_tk_count = ["TK_count",4] call bis_fnc_getParamValue;
-GRLIB_squad_size = ["SquadSize",3] call bis_fnc_getParamValue;
-GRLIB_max_squad_size = ["MaxSquadSize",7] call bis_fnc_getParamValue;
+GRLIB_squad_size = ["SquadSize",2] call bis_fnc_getParamValue;
+GRLIB_max_squad_size = ["MaxSquadSize",6] call bis_fnc_getParamValue;
 GRLIB_max_spawn_point = ["MaxSpawnPoint",2] call bis_fnc_getParamValue;
 GRLIB_permissions_param = ["Permissions",1] call bis_fnc_getParamValue;
 GRLIB_permission_vehicles = ["EnableLock",1] call bis_fnc_getParamValue;
@@ -84,6 +84,8 @@ if (abort_loading) exitWith { abort_loading_msg = format [
 diag_log format ["--- LRX Mod Detection: %1 vs %2", GRLIB_mod_west, GRLIB_mod_east];
 
 // Detect Addons
+GRLIB_LRX_Music_enabled = isClass(configFile >> "cfgPatches" >> "LRX_Music"); // Returns true if LRX Music Pack is enabled
+GRLIB_LRX_Texture_enabled = isClass(configFile >> "cfgPatches" >> "LRX_Texture"); // Returns true if LRX Textture Pack is enabled
 GRLIB_ACE_enabled = isClass(configFile >> "cfgPatches" >> "ace_main"); // Returns true if ACE is enabled
 GRLIB_ACE_medical_enabled = isClass(configFile >> "cfgPatches" >> "ace_medical"); // Returns true if ACE Medical is enabled
 GRLIB_ACRE_enabled = isClass(configFile >> "cfgPatches" >> "acre_main"); // Returns true if ACRE is enabled
