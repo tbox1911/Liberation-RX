@@ -46,7 +46,17 @@ while { GRLIB_endgame == 0 } do {
 					_civ moveInDriver _civveh;
 
 					_civveh addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
-					_civveh addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) == GRLIB_side_friendly ) then { _damage = _this select 2 } else { _damage = 0 }; _damage }];
+					_civveh addEventHandler ["HandleDamage", { 
+						params ["_unit", "_selection", "_damage", "_source"];
+						private _dam = 0; 
+						if ( side _source in [ GRLIB_side_west, GRLIB_side_east ] ) then {
+							_dam = _damage;
+						};
+						if ( side(driver _unit) in [ GRLIB_side_west, GRLIB_side_east ] ) then {
+							_dam = _damage;
+						};
+					 _dam;
+					}];
 					_civveh addEventHandler ["Fuel", { if (!(_this select 1)) then {(_this select 0) setFuel 1}}];
 					[_grp] call add_civ_waypoints;
 				};
