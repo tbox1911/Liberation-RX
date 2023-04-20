@@ -119,7 +119,6 @@ hintSilent "";
 deleteMarkerLocal "taxi_lz";
 deleteMarkerLocal "taxi_dz";
 deleteVehicle _helipad;
-sleep 60;
 {deletevehicle _x} forEach _pilots;
 deleteVehicle _vehicle;
 player setVariable ["GRLIB_taxi_called", nil, true];

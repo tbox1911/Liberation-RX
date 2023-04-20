@@ -71,19 +71,18 @@ while { GRLIB_endgame == 0 } do {
 			_civ_unit_ttl = round(time + 1800);
 			waitUntil {
 				sleep 60;
-				( (!alive _civ_unit) || round (speed _civ_unit) == 0 || (count ([getPosATL _civ_unit , 4000] call F_getNearbyPlayers) == 0) || time > _civ_unit_ttl )
+				( (!alive _civ_unit) || round (speed (vehicle _civ_unit)) == 0 || (count ([getPosATL _civ_unit , 4000] call F_getNearbyPlayers) == 0) || time > _civ_unit_ttl )
 			};
 
-			if ( alive _civ_unit ) then {
-				if ( !(isNull _civ_veh) ) then {
-					if ( {(alive _x) && (side group _x == GRLIB_side_friendly)} count (crew _civ_veh) == 0 && [_civ_veh] call is_abandoned) then {
-						[_civ_veh] call clean_vehicle;
-						deleteVehicle _civ_veh;
-					};
+			// Cleanup
+			if (!(isNull _civ_veh)) then {
+				if ( ({(alive _x) && (side group _x == GRLIB_side_friendly)} count (crew _civ_veh) == 0) || [_civ_veh] call is_abandoned ) then {
+					[_civ_veh] call clean_vehicle;
+					deleteVehicle _civ_veh;
 				};
-				deletevehicle _civ_unit;
-				deleteGroup _grp;
 			};
+			deletevehicle _civ_unit;
+			deleteGroup _grp;
 		};
 	};
 };
