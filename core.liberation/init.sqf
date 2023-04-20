@@ -15,6 +15,7 @@ setGroupIconsVisible [false,false];
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\init_sectors.sqf";
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 if (!GRLIB_ACE_enabled) then {[] execVM "R3F_LOG\init.sqf"};
 <<<<<<< HEAD
 if (GRLIB_revive != 0) then {[] execVM "addons\FAR\FAR_revive_init.sqf"};
@@ -24,6 +25,8 @@ if (!GRLIB_ACE_enabled) then {[] call compileFinal preprocessFileLineNumbers "R3
 >>>>>>> 91906a5c (save veh inv)
 if (GRLIB_revive != 0) then {[] execVM "addons\FAR\FAR_init.sqf"};
 >>>>>>> 0cf69991 (rename addon)
+=======
+>>>>>>> eaee8edb (init)
 [] execVM "GREUH\scripts\GREUH_activate.sqf";
 
 [] call compileFinal preprocessfilelinenumbers "scripts\shared\init_shared.sqf";
@@ -34,6 +37,11 @@ if (isServer) then {
 
 if (!isDedicated && !hasInterface && isMultiplayer) then {
 	[] execVM "scripts\server\offloading\hc_manager.sqf";
+};
+
+if (isServer || hasInterface) then {
+	if (!GRLIB_ACE_enabled) then {[] execVM "R3F_LOG\init.sqf"};
+	if (GRLIB_revive != 0) then {[] execVM "addons\FAR\FAR_init.sqf"};
 };
 
 if (!isDedicated && hasInterface) then {
