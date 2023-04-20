@@ -76,7 +76,10 @@ GRLIB_whitelisted_from_arsenal = GRLIB_whitelisted_from_arsenal + [mobile_respaw
 >>>>>>> f917bca7 (case)
 =======
 GRLIB_whitelisted_from_arsenal = [mobile_respawn_bag, "B_Parachute"] + whitelisted_from_arsenal;
+<<<<<<< HEAD
 >>>>>>> 1990fece (whitelist parachute)
+=======
+>>>>>>> a6cec779 (Update Arsenal ace support)
 
 // Mod signature
 GRLIB_MOD_signature = [];
@@ -90,7 +93,13 @@ GRLIB_MOD_signature = GRLIB_MOD_signature arrayIntersect GRLIB_MOD_signature;
 GRLIB_whitelisted_from_arsenal = GRLIB_whitelisted_from_arsenal arrayIntersect GRLIB_whitelisted_from_arsenal;
 GRLIB_blacklisted_from_arsenal = GRLIB_blacklisted_from_arsenal arrayIntersect GRLIB_blacklisted_from_arsenal;
 
-[myLARsBox, ["GRLIB_whitelisted_from_arsenal", "GRLIB_blacklisted_from_arsenal"], false, "Liberation", { false }] call LARs_fnc_blacklistArsenal;
+// Initialize Arsenal
+if (GRLIB_ACE_enabled) then {
+	// Ace compat.
+	[myLARsBox, GRLIB_whitelisted_from_arsenal, false] call ace_arsenal_fnc_initBox;
+} else {
+	[myLARsBox, ["GRLIB_whitelisted_from_arsenal", "GRLIB_blacklisted_from_arsenal"], false, "Liberation", { false }] call LARs_fnc_blacklistArsenal;
+};
 
 // Ace compat.
 if (GRLIB_ACE_enabled) then { [myLARsBox, GRLIB_whitelisted_from_arsenal, false] call ace_arsenal_fnc_initBox };

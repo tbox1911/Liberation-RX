@@ -84,8 +84,11 @@ while { true } do {
 >>>>>>> 45a1ba1d (add action respawn)
 =======
 
+<<<<<<< HEAD
 >>>>>>> a1cae88c (new design)
 
+=======
+>>>>>>> a6cec779 (Update Arsenal ace support)
 		// Dog - Actions
 		_idact_id = _idact_id + 1;
 		_idact_num = _id_actions select _idact_id;
@@ -298,7 +301,7 @@ while { true } do {
 		// Arsenal
 		_idact_id = _idact_id + 1;
 		_idact_num = _id_actions select _idact_id;
-		if (GRLIB_enable_arsenal && (_near_arsenal || _near_lhd) ) then {
+		if (GRLIB_enable_arsenal && (_near_arsenal || _near_lhd) && LRX_arsenal_init_done) then {
 			if (_idact_num == -1) then {
 				_idact = player addAction ["<t color='#FFFF00'>" + localize "STR_ARSENAL_ACTION" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\open_arsenal.sqf","",-500,true,true,"","build_confirmed == 0"];
 				_id_actions set [_idact_id, _idact];

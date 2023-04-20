@@ -207,6 +207,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (buildtype == 1 && _build_item select 1 >= 1 && (count (_bros) >= GRLIB_squad_size + GRLIB_squad_size_bonus)) then {
 =======
 		if ((_build_item select 1 >= 1 ) && (count (_bros) >= GRLIB_squad_size + GRLIB_squad_size_bonus)) then {
@@ -214,6 +215,9 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 =======
 		if (buildtype == 1 && _build_item select 1 >= 1 && (count (_bros) >= GRLIB_squad_size + GRLIB_squad_size_bonus || !(player getVariable ["GRLIB_squad_context_loaded", false])) ) then {
 >>>>>>> eb2d932e (fix extra unit build exploit)
+=======
+		if (buildtype == 1 && _build_item select 1 >= 1 && (count (_bros) >= GRLIB_squad_size + GRLIB_squad_size_bonus)) then {
+>>>>>>> a6cec779 (Update Arsenal ace support)
 			_squad_full = true;
 		};
 	};
