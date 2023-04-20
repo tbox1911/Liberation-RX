@@ -20,7 +20,7 @@ _setupObjects =
 {
 	private _missionEnd = selectRandom ([SpawnMissionMarkers, { ([markerpos _x] call F_getNearestBluforObjective) select 1 > GRLIB_sector_size }] call BIS_fnc_conditionalSelect) select 0;
 	if (!isNil "_missionEnd") then {	
-		private _missionLocationList = [blufor_sectors, {(_x select [0,8]) == "capture_" && (markerpos _x) distance2D (markerpos _missionEnd) < 5000 }] call BIS_fnc_conditionalSelect;
+		private _missionLocationList = [blufor_sectors, {_x in sectors_capture && (markerpos _x) distance2D (markerpos _missionEnd) < 5000 }] call BIS_fnc_conditionalSelect;
 		if (count _missionLocationList >= 3) then {
 			_m1 = selectRandom _missionLocationList;
 			_missionPicture = getText (configFile >> "CfgVehicles" >> "C_Hatchback_01_F" >> "picture");

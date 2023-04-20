@@ -49,6 +49,16 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 	};
 };
 
+// Town Insurgency
+_mission_name = "mission_TownInsurgency";
+if (!([_missionsList, _mission_name] call getMissionState)) then {
+	if (_spawn_place >= 1 && A3W_delivery_failed > 2) then {
+		[_missionsList, _mission_name, false] call setMissionState;
+	} else {
+		[_missionsList, _mission_name, true] call setMissionState;
+	};
+};
+
 // Vehicle Capture
 _mission_name = "mission_VehicleCapture";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
@@ -136,6 +146,16 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 _mission_name = "mission_FuelDelivery";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
 	if (count blufor_sectors >= 5 && {_x in sectors_factory} count blufor_sectors >= 3) then {
+		[_missionsList, _mission_name, false] call setMissionState;
+	} else {
+		[_missionsList, _mission_name, true] call setMissionState;
+	};
+};
+
+// Ammo Delivery
+_mission_name = "mission_AmmoDelivery";
+if (!([_missionsList, _mission_name] call getMissionState)) then {
+	if (count blufor_sectors >= 5 && {_x in sectors_military} count blufor_sectors >= 3) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;

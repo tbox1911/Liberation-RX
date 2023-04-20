@@ -27,6 +27,7 @@ getNbUnits = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\
 createOutpost = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_createOutpost.sqf";
 
 A3W_sectors_in_use = [];
+A3W_delivery_failed = 0;
 
 waitUntil {sleep 1; !isNil "blufor_sectors" };
 waitUntil {sleep 1; !isNil "sectors_allSectors" };

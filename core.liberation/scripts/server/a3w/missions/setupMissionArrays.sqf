@@ -11,10 +11,12 @@ SideMissions = [
 	// Mission filename, weight
 	["mission_CaptureVIP", 1],
 	["mission_SpecialDelivery", 1],
+	["mission_AmmoDelivery", 1],
 	["mission_WaterDelivery", 1],
 	["mission_FoodDelivery", 1],
 	["mission_FuelDelivery", 1],
 	["mission_TownInvasion", 1],
+	["mission_TownInsurgency", 1],
 	["mission_HostileHelicopter", 1],
 	["mission_MeetResistance", 1],
 	["mission_VehicleCapture", 1],
@@ -22,8 +24,8 @@ SideMissions = [
 	["mission_Outpost", 1]
 ];
 
-SpawnMissionMarkers = ((allMapMarkers select {["Mission_", _x] call F_startsWith}) + sectors_opfor) apply {[_x, false]};
-ForestMissionMarkers = ((allMapMarkers select {["ForestMission_", _x] call F_startsWith}) + sectors_opfor) apply {[_x, false]};
+SpawnMissionMarkers = ((allMapMarkers select {["Mission_", _x] call F_startsWith}) + sectors_allSectors) apply {[_x, false]};
+ForestMissionMarkers = ((allMapMarkers select {["ForestMission_", _x] call F_startsWith})) apply {[_x, false]};
 SunkenMissionMarkers = (allMapMarkers select {["SunkenMission_", _x] call F_startsWith}) apply {[_x, false]};
 
 if !(ForestMissionMarkers isEqualTo []) then {

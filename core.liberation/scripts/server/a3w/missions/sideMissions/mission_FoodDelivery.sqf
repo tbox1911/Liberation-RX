@@ -12,7 +12,7 @@ private ["_nbUnits", "_townName","_buildingpositions", "_man1", "_marker_zone"];
 _setupVars =
 {
 	_missionType = localize "STR_FOODDELI";
-	_missionLocation = selectRandom ((blufor_sectors select {["capture_", _x] call F_startsWith;}) apply {[_x, false]}) select 0;
+	_missionLocation = selectRandom (blufor_sectors select {_x in sectors_capture});
 	_townName = markerText _missionLocation;
 	_ignoreAiDeaths = true;
 	_locationsArray = nil;
@@ -58,6 +58,7 @@ _failedExec = {
 	deleteVehicle _man1;
 	deleteMarker _marker_zone;
 	_failedHintMessage = format [localize "STR_FOODDELI_MESSAGE2", sideMissionColor, _townName];
+	A3W_delivery_failed = A3W_delivery_failed + 1;
 };
 
 _successExec = {
@@ -67,6 +68,7 @@ _successExec = {
 	[ammobox_i_typename, _missionPos, false] call boxSetup;
 	deleteVehicle _man1;
 	deleteMarker _marker_zone;
+	A3W_delivery_failed = 0;
 };
 
 _this call sideMissionProcessor;
