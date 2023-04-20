@@ -62,7 +62,6 @@ if (!([] call F_getValid)) exitWith {};
 [] execVM "scripts\server\battlegroup\readiness_increase.sqf";
 [] execVM "scripts\server\game\apply_default_permissions.sqf";
 [] execVM "scripts\server\game\apply_saved_scores.sqf";
-[] execVM "scripts\server\game\capture_vehicles.sqf";
 [] execVM "scripts\server\game\clean.sqf";
 [] execVM "scripts\server\game\manage_time.sqf";
 [] execVM "scripts\server\game\manage_weather.sqf";
