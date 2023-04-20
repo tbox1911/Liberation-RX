@@ -3,6 +3,17 @@
 // Advanced definition: scripts\shared\classnames.sqf
 
 //huron_typename = "B_Heli_Transport_03_unarmed_F";  // comment to use value from lobby/server.cfg
+FOB_typename = "Land_Cargo_HQ_V1_F";
+FOB_box_typename = "B_Slingload_01_Cargo_F";
+FOB_truck_typename = "B_Truck_01_box_F" ;
+Respawn_truck_typename = "B_Truck_01_medical_F";
+ammo_truck_typename = "B_Truck_01_ammo_F";
+fuel_truck_typename = "B_Truck_01_fuel_F";
+repair_truck_typename = "B_Truck_01_Repair_F";
+repair_sling_typename = "B_Slingload_01_Repair_F";
+fuel_sling_typename = "B_Slingload_01_Fuel_F";
+ammo_sling_typename = "B_Slingload_01_Ammo_F";
+medic_sling_typename = "B_Slingload_01_Medevac_F";
 commander_classname = "B_officer_F";
 pilot_classname = "B_Helipilot_F";
 crewman_classname = "B_crew_F";
@@ -235,13 +246,6 @@ ai_healing_sources_west = [
 
 vehicle_rearm_sources_west = [
 	"B_APC_Tracked_01_CRV_F"
-];
-
-vehicle_artillery_west = [
-	"B_Mortar_01_F",
-	"B_Ship_Gun_01_F",
-	"I_E_Truck_02_MRL_F",
-	"B_MBT_01_arty_F"
 ];
 
 vehicle_big_units_west = [

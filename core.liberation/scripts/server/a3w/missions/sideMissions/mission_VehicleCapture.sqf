@@ -37,7 +37,7 @@ _setupObjects =
 
 	_missionPicture = getText (configFile >> "CfgVehicles" >>  (typeOf _vehicle) >> "picture");
 	_vehicleName = getText (configFile >> "CfgVehicles" >>  (typeOf _vehicle) >> "displayName");
-	_missionHintText = format ["A <t color='%2'>%1</t> has been immobilized, go get it for your team!", _vehicleName, mainMissionColor];
+	_missionHintText = format ["A <t color='%2'>%1</t> has been immobilized, go get it for your team!", _vehicleName, sideMissionColor];
 };
 
 _waitUntilMarkerPos = nil;
