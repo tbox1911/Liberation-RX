@@ -248,7 +248,7 @@ while { true } do {
 					if( ((surfaceIsWater _truepos) || (surfaceIsWater getpos player)) && !(_classname in boats_names)) then {
 						GRLIB_ui_notif = localize "STR_BUILD_ERROR_WATER";
 					};
-					if( (truepos distance _posfob) > _maxdist && buildtype != 9) then {
+					if( (_truepos distance _posfob) > _maxdist && buildtype != 9) then {
 						GRLIB_ui_notif = format [localize "STR_BUILD_ERROR_DISTANCE",_maxdist];
 					};
 
