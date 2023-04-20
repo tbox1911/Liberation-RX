@@ -9,7 +9,7 @@ if (!GRLIB_enable_arsenal) exitWith { removeAllActions myLARsBox };
 [] call compileFinal preprocessFileLineNUmbers "addons\LARs\liberationBlacklist.sqf";
 
 //[ myBox, [ whitelist, blacklist ], targets, name, condition ] call LARs_fnc_blacklistArsenal;
-[_this, [west, GRLIB_blacklisted_from_arsenal], false, "Liberation", { true }] call LARs_fnc_blacklistArsenal;
+[_this, [west, GRLIB_blacklisted_from_arsenal], false, "Liberation", { false }] call LARs_fnc_blacklistArsenal;
 waitUntil {sleep 0.5; !(isNil "LARs_initBlacklist")};
 
 //[ box, arsenalName, [ white, black ], _targets ] call LARs_fnc_updateArsenal
