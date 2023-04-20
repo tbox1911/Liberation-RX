@@ -32,6 +32,7 @@ for "_i" from 1 to _nbUnits do {
 	_x setSkill ["courage", 1];
 	_x allowFleeing 0;
 	_x setVariable ["mission_AI", true];
+	_x switchMove "amovpknlmstpsraswrfldnon";
 } forEach (units _grp);
 
 if (_patrol) then {
