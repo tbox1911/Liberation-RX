@@ -45,7 +45,11 @@ manage_ammoboxes = compileFinal preprocessFileLineNumbers "scripts\server\sector
 manage_one_sector = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_one_sector.sqf";
 wait_to_spawn_sector = compileFinal preprocessFileLineNumbers "scripts\server\sector\wait_to_spawn_sector.sqf";
 
-[] execVM "scripts\server\a3w\init_missions.sqf";
+// A3W
+createlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_createLandMines.sqf";
+showlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_showLandMines.sqf";
+clearlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_clearLandMines.sqf";
+
 [] execVM "scripts\server\base\fobbox_manager.sqf";
 [] execVM "scripts\server\base\huron_manager.sqf";
 [] execVM "scripts\server\battlegroup\counter_battlegroup.sqf";
@@ -80,6 +84,7 @@ wait_to_spawn_sector = compileFinal preprocessFileLineNumbers "scripts\server\se
 [] execVM "scripts\server\sector\manage_sectors.sqf";
 [] execVM "scripts\server\offloading\show_fps.sqf";
 [] execVM "scripts\server\secondary\autostart.sqf";
+[] execVM "scripts\server\a3w\init_missions.sqf";
 
 {
 	if ( (_x != player) && (_x distance (getmarkerpos GRLIB_respawn_marker) < 200 ) ) then {deleteVehicle _x};
