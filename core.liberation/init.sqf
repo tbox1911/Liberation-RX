@@ -76,8 +76,18 @@ if (!abort_loading) then {
 	[] call compileFinal preprocessFileLineNUmbers "scripts\shared\classnames.sqf";
 	[] call compileFinal preprocessfilelinenumbers "scripts\shared\init_shared.sqf";
 	[] call compileFinal preprocessFileLineNUmbers "scripts\shared\init_sectors.sqf";
+<<<<<<< HEAD
 	if (!GRLIB_ACE_enabled) then {[] execVM "R3F_LOG\init.sqf"};
 >>>>>>> f014e5c9 (startup protect)
+=======
+	if (!GRLIB_ACE_enabled) then {
+		[] execVM "R3F_LOG\init.sqf";
+	} else {
+		call compileFinal preprocessFileLineNUmbers format ["R3F_LOG\addons_config\Liberation.sqf"];
+		call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_r3f.sqf", GRLIB_mod_west];
+		call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_r3f.sqf", GRLIB_mod_east];
+	}};
+>>>>>>> 66945ed9 (update ace support)
 
 	if (isServer) then {
 		[] execVM "scripts\server\init_server.sqf";
