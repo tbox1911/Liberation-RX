@@ -46,7 +46,7 @@ if ( _classname in ["I_E_Truck_02_MRL_F"] ) then {
 // LRX textures
 if (count opfor_texture_overide > 0) then {
 	_texture_name = opfor_texture_overide call BIS_fnc_selectRandom;
-	_texture = [ colorList, { _x select 0 == _texture_name } ] call BIS_fnc_conditionalSelect select 0 select 1;
+	_texture = [ RPT_colorList, { _x select 0 == _texture_name } ] call BIS_fnc_conditionalSelect select 0 select 1;
 	[_newvehicle, _texture, _texture_name,[]] call RPT_fnc_TextureVehicle;
 };
 

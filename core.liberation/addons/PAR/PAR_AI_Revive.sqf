@@ -46,14 +46,8 @@ PAR_BloodSplat = [
 ];
 
 PAR_MedGarbage = [
-  "MedicalGarbage_01_Bandage_F",
-  "MedicalGarbage_01_Injector_F",
-  "MedicalGarbage_01_Packaging_F",
-  "MedicalGarbage_01_Gloves_F",
-  "MedicalGarbage_01_FirstAidKit_F",
-  "MedicalGarbage_01_1x1_v1_F",
-  "MedicalGarbage_01_1x1_v2_F",
-  "MedicalGarbage_01_1x1_v3_F"
+  "MedicalGarbage_01_3x3_v1_F",
+  "MedicalGarbage_01_3x3_v2_F"
 ];
 
 PAR_fn_EHDamage = {
