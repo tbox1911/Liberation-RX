@@ -8,9 +8,9 @@ class LARs_blacklistArsenal {
 		class blacklistArsenal {};
 		class createList {};
 		class fixWeaponNames {};
-		class removeBlack {};		
+		class removeBlack {};
 		class sideGear {};
-		class tolower {};		
+		class tolower {};
 		class updateArsenal {};
 	};
 };

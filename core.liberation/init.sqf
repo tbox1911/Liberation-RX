@@ -13,7 +13,11 @@ enableSaving [ false, false ];
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\classnames.sqf";
 
 if (!GRLIB_ACE_enabled) then {[] execVM "R3F_LOG\init.sqf"};
+<<<<<<< HEAD
 if (GRLIB_revive != 0) then {[] execVM "addons\FAR\FAR_revive_init.sqf"};
+=======
+if (GRLIB_revive != 0) then {[] execVM "addons\FAR\FAR_init.sqf"};
+>>>>>>> 0cf69991 (rename addon)
 [] execVM "GREUH\scripts\GREUH_activate.sqf";
 
 [] call compileFinal preprocessfilelinenumbers "scripts\shared\init_shared.sqf";
