@@ -112,10 +112,13 @@ if (GRLIB_sector_radius != 0) then { GRLIB_sector_size = GRLIB_sector_radius };
 // ACE
 if ( GRLIB_ACE_enabled ) then {	GRLIB_revive = 0; GRLIB_fatigue = 1; GRLIB_fancy_info = 0; GRLIB_limited_arsenal = 0 };  // Disable PAR/Fatigue/Fancy if ACE present
 
+// Check MOD
+GRLIB_mod_enabled = false;
+
 // Arsenal MOD filters
 if ( GRLIB_filter_arsenal ) then {
-	if ( GRLIB_OPTRE_enabled ) then { GRLIB_MOD_signature = "OPTRE_" };
-	if ( GRLIB_GM_enabled ) then { GRLIB_MOD_signature = "gm_" };
-	if ( GRLIB_CUPW_enabled ) then { GRLIB_MOD_signature = "CUP_" };
-	if ( GRLIB_RHS_enabled ) then { GRLIB_MOD_signature = "rhs" };
+	if ( GRLIB_OPTRE_enabled ) then { GRLIB_MOD_signature = "OPTRE_"; GRLIB_mod_enabled = true };
+	if ( GRLIB_GM_enabled ) then { GRLIB_MOD_signature = "gm_"; GRLIB_mod_enabled = true };
+	if ( GRLIB_CUPW_enabled ) then { GRLIB_MOD_signature = "CUP_"; GRLIB_mod_enabled = true };
+	if ( GRLIB_RHS_enabled ) then { GRLIB_MOD_signature = "rhs"; GRLIB_mod_enabled = true };
 };

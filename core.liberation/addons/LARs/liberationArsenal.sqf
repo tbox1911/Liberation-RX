@@ -2,6 +2,7 @@
 // from: https://github.com/LarrowZurb/BlacklistArsenal
 if (isDedicated) exitWith {};
 waitUntil {sleep 1; !isNil "GRLIB_limited_arsenal"};
+waitUntil {sleep 1; !isNil "GRLIB_mod_enabled"};
 
 // Initalize Blacklist
 GRLIB_whitelisted_from_arsenal = [];
@@ -18,9 +19,6 @@ if (GRLIB_limited_arsenal) then {
 } else {
 	GRLIB_blacklisted_from_arsenal = blacklisted_bag;
 };
-
-// Check MOD
-GRLIB_mod_enabled = false;
 
 // Add CUP Weapons
 [] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_CUP.sqf";
