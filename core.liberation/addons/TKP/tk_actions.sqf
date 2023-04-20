@@ -27,12 +27,13 @@ switch (true) do {
 		GRLIB_introduction = false;
 		cinematic_camera_started = false;
 		sleep 1;
-		player enableSimulationGlobal false;
-		player setpos [0,0,0];
 		waitUntil {!(isNull (findDisplay 46))};
+		player enableSimulationGlobal false;
+		disableUserInput true;
 		createDialog "deathscreen";
 		waitUntil { dialog };
-		disableUserInput true;
+		player setpos [0,0,0];
+		_noesckey = (findDisplay 5651) displayAddEventHandler ["KeyDown", "if ((_this select 1) == 1) then { true }"];
 		ctrlSetText [4867, "YOU HAVE BEEN BANNED"];
 		sleep 3;
 		ctrlSetText [4867, "FOR BAD GAMING..."];
@@ -46,6 +47,7 @@ switch (true) do {
 		disableUserInput false;
 		disableUserInput true;
 		disableUserInput false;
+		(findDisplay 5651) displayRemoveEventHandler ["KeyDown", _noesckey];
 		endMission "LOSER";
 		sleep 300;
 	};

@@ -16,3 +16,4 @@ if (_result) then {
 [gamelogic, _msg] remoteExec ["globalChat", 0];
 player removeAction _actionId;
 LRX_tk_player_action = LRX_tk_player_action - 1;
+hintSilent "";
