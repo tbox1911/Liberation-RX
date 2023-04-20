@@ -1347,6 +1347,10 @@
 						<Russian>Увеличенная</Russian>
 						<Chinesesimp>增多</Chinesesimp>
 				</Key>
+				<Key ID="STR_PARAM_WILDLIFE">
+						<Original>Enable the Wildlife Manager</Original>
+						<French>Activer le gestionnaire de vie sauvage</French>
+				</Key>
 				<Key ID="STR_FRIENDLY_FIRE">
 						<Original>Warning: friendly fire</Original>
 						<French>Attention: tirs alliés</French>
