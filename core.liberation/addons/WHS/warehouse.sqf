@@ -15,8 +15,7 @@ private _display = findDisplay 2302;
 ctrlEnable [ 120, false ];
 ctrlEnable [ 121, false ];
 
-//gamelogic globalChat localize "STR_SELL_WELCOME";
-gamelogic globalChat "Welcome to the WareHouse";
+gamelogic globalChat "Welcome to the WareHouse!";
 
 while { dialog && alive player } do {
 
@@ -26,7 +25,7 @@ while { dialog && alive player } do {
         // Box outside
         _control = _display displayCtrl (110);
         lbClear 110;
-        _mybox = getPosATL player nearEntities [[waterbarrel_typename,fuelbarrel_typename,foodbarrel_typename], 20];
+        _mybox = getPosATL player nearEntities [[waterbarrel_typename,fuelbarrel_typename,foodbarrel_typename,basic_weapon_typename], 20];
         {
             _entrytext = [typeOf _x] call F_getLRXName;
             _control lnbAddRow [_entrytext];
@@ -90,32 +89,46 @@ while { dialog && alive player } do {
         if (load_box != 0) then {
             // load
             if (load_box == 1) then {
-                _selected_item = lbCurSel 110;
-                _box = _mybox select _selected_item;
-                //systemchat format ["store box to warehouse:%1 %2", _box, typeof _box]; 
-                [_box, load_box, player] remoteExec ["warehouse_remote_call", 2];
-                //[player, _bounty, 0] remoteExec ["ammo_add_remote_call", 2];
-	            //[player, _bonus] remoteExec ["F_addScore", 2];
+                _box = _mybox select (lbCurSel 110);
+                _box_name = [typeOf _box] call F_getLRXName;
+                _price = support_vehicles select {(_x select 0) == (typeOf _box)} select 0 select 2;
+                _msg = format [localize "STR_WAREHOUSE_LOAD_MSG", _box_name, _price];
+			    _result = [_msg, localize "STR_WAREHOUSE_LOAD", true, true] call BIS_fnc_guiMessage;
+			    if (_result && !(isNull _box) && alive _box) then {
+                    hintSilent format ["%1 Stored to Warehouse,\n for %2 AMMO.", _box_name, _price];
+                    [_box, load_box, player] remoteExec ["warehouse_remote_call", 2];
+                    playSound "taskSucceeded";
+                };
             };
 
             // unload
             if (load_box == 2) then {
-                _price = 0;
-                // private _vehicle_name = (_display displayCtrl (111)) lnbText [_selected_item, 0];
-                // private _price = parseNumber ((_display displayCtrl (111)) lnbText [_selected_item, 1]);
-                // private _msg = format [localize "STR_SHOP_BUY_MSG", _vehicle_name, _price];
-                // private _result = [_msg, localize "STR_SHOP_BUY", true, true] call BIS_fnc_guiMessage;
-                // if (_result) then {};
+                _box = GRLIB_warehouse select (lbCurSel 111) select 0;
+                _box_name = [_box] call F_getLRXName;
+                _price = support_vehicles select {(_x select 0) == (_box)} select 0 select 2;
+                _msg = format [localize "STR_WAREHOUSE_UNLOAD_MSG", _box_name, _price];
+                _result = [_msg, localize "STR_WAREHOUSE_UNLOAD", true, true] call BIS_fnc_guiMessage;
 
-                if ([_price] call F_pay) then {
-                    _selected_item = lbCurSel 111;
-                    _box = GRLIB_warehouse select _selected_item select 0;
-                    //systemchat format ["load box from warehouse:%1 %2", _box, 0]; 
-                    [_box, load_box, player] remoteExec ["warehouse_remote_call", 2];
-				};
+                if (_result) then {
+                    if ((GRLIB_warehouse select (lbCurSel 111) select 1) <= 0) exitWith {};
+                    buildtype = 9;
+                    build_unit = [_box,[],1,[],[],[]];
+                    dobuild = 1;
+                    closeDialog 0;
+                    waitUntil { sleep 0.5; dobuild == 0};
+
+                    if (build_confirmed == 0) then {
+                        if (!([_price] call F_pay)) then {
+                            deleteVehicle build_vehicle;
+                        } else {
+                            [_box, load_box, player] remoteExec ["warehouse_remote_call", 2];
+                            hintSilent format ["%1 Taken from Warehouse,\n for %2 AMMO.", _box_name, _price];
+                            playSound "taskSucceeded";
+                        };                        
+                    };
+                };
             };
 
-            sleep 2;
             _refresh = true;
             load_box = 0;
         };

@@ -154,10 +154,10 @@ support_vehicles = support_vehicles + [
 	[ammobox_b_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
 	[ammobox_o_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
 	[ammobox_i_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
-	[A3W_BoxWps,0,round(150 / GRLIB_recycling_percentage),0,99999],
-	[waterbarrel_typename,0,round(100 / GRLIB_recycling_percentage),0,99999],
-	[fuelbarrel_typename,0,round(60 / GRLIB_recycling_percentage),30,99999],
-	[foodbarrel_typename,0,round(100 / GRLIB_recycling_percentage),0,99999]
+	[basic_weapon_typename,0,round(150 / GRLIB_recycling_percentage),0,99999],
+	[waterbarrel_typename,0,110,0,99999],
+	[fuelbarrel_typename,0,120,0,99999],
+	[foodbarrel_typename,0,130,0,99999]
 ] + support_vehicles_west;
 
 <<<<<<< HEAD
@@ -574,10 +574,7 @@ GRLIB_vehicle_whitelist = [
 	ammobox_o_typename,
 	ammobox_i_typename,
 	mobile_respawn,
-	A3W_BoxWps,
-	waterbarrel_typename,
-	fuelbarrel_typename,
-	foodbarrel_typename,
+	basic_weapon_typename,
 	medicalbox_typename
 ] + GRLIB_vehicle_whitelist_west + opfor_statics;
 
@@ -591,11 +588,20 @@ GRLIB_vehicle_blacklist = [
 	waterbarrel_typename,
 	fuelbarrel_typename,
 	foodbarrel_typename,
-	medicalbox_typename
+	medicalbox_typename,
+	basic_weapon_typename
 ] + GRLIB_vehicle_blacklist_west;
 
 // Recycleable objects
-GRLIB_recycleable_blacklist = [FOB_sign,Warehouse_typename,canister_fuel_typename];
+GRLIB_recycleable_blacklist = [
+	FOB_sign,
+	Warehouse_typename,
+	canister_fuel_typename,
+	waterbarrel_typename,
+	fuelbarrel_typename,
+	foodbarrel_typename,
+	basic_weapon_typename
+];
 GRLIB_recycleable_classnames = ["LandVehicle","Air","Ship","StaticWeapon","Slingload_01_Base_F","Pod_Heli_Transport_04_base_F"];
 {
 	if (!((_x select 0) in GRLIB_recycleable_blacklist)) then {GRLIB_recycleable_classnames pushBack (_x select 0)};
@@ -756,7 +762,7 @@ GRLIB_ignore_colisions = [
 // Ammobox you want keep contents
 GRLIB_Ammobox_keep = [
 	playerbox_typename,
-	A3W_BoxWps,
+	basic_weapon_typename,
 	medicalbox_typename,
 	Box_Weapon_typename,
 	Box_Ammo_typename,

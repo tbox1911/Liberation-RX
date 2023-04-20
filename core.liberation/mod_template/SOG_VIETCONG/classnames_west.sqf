@@ -29,7 +29,7 @@ repair_offroad = "vn_b_wheeled_m54_repair_airport";
 waterbarrel_typename = "Land_WaterBottle_01_stack_F";
 fuelbarrel_typename = "Land_vn_metalbarrel_f";
 foodbarrel_typename = "Land_FoodSacks_01_large_brown_idap_F";
-A3W_BoxWps = "Land_vn_us_weapons_stack2";
+basic_weapon_typename = "Land_vn_us_weapons_stack2";
 chimera_vehicle_overide = [
   ["B_Heli_Light_01_F",  "vn_b_air_oh6a_01"],
   ["B_Heli_Transport_01_F", "vn_b_air_uh1d_02_04"]

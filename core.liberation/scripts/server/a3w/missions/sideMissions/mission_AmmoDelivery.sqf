@@ -44,7 +44,7 @@ _waitUntilCondition = nil;
 
 _waitUntilSuccessCondition = {
 	_ret = false;
-	private _barrels = [_man1 nearEntities [A3W_BoxWps, 20], {isNil {_x getVariable "R3F_LOG_objets_charges"} && !(_x getVariable ['R3F_LOG_disabled', false])}] call BIS_fnc_conditionalSelect;
+	private _barrels = [_man1 nearEntities [basic_weapon_typename, 20], {isNil {_x getVariable "R3F_LOG_objets_charges"} && !(_x getVariable ['R3F_LOG_disabled', false])}] call BIS_fnc_conditionalSelect;
 	if (count _barrels == 3) then {
 		sleep 1;
 		[_missionType, _man1] remoteExec ["remote_call_a3w_info", 0];
@@ -67,7 +67,6 @@ _successExec = {
 	sleep 3;
 	// Mission completed
 	_successHintMessage = format [localize "STR_AMMODELI_MESSAGE3", sideMissionColor];
-	[ammobox_i_typename, _missionPos, false] call boxSetup;
 	deleteVehicle _man1;
 	deleteMarker _marker_zone;
 	A3W_delivery_failed = 0;

@@ -19,7 +19,7 @@ while { dialog && alive player } do {
 		private _sell_classnames = ["LandVehicle","Air","Ship"] + GRLIB_Ammobox_keep;
 		_sell_list = [getPosATL player nearEntities [_sell_classnames, 50], {
 			alive _x &&
-			!([_x, "LHD", GRLIB_sector_size] call F_check_near) &&
+			(_x distance2D lhd > GRLIB_fob_range) &&
 			!(typeOf _x in list_static_weapons) &&
 			[player, _x] call is_owner && locked _x != 2
 		}] call BIS_fnc_conditionalSelect;

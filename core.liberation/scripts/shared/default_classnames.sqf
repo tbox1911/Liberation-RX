@@ -41,7 +41,7 @@ crewman_classname = "B_crew_F";
 pilot_classname = "B_Helipilot_F";
 PAR_Medikit = "Medikit";
 PAR_AidKit = "FirstAidKit";
-A3W_BoxWps = "Box_East_Wps_F";
+basic_weapon_typename = "Box_East_Wps_F";
 land_cutter_typename = "Land_ClutterCutter_large_F";
 canister_fuel_typename = "Land_CanisterFuel_Red_F";
 GRLIB_sar_wreck = "Land_Wreck_Heli_Attack_01_F";
@@ -95,7 +95,7 @@ buildings_default = [
 	["Land_SandbagBarricade_01_hole_F",0,0,0,GRLIB_perm_log],
 	["Land_SandbagBarricade_01_half_F",0,0,0,GRLIB_perm_log],
 	["Land_SM_01_shed_F",0,0,0,GRLIB_perm_max],
-	[Warehouse_typename,0,0,0,GRLIB_perm_tank],
+	[Warehouse_typename,0,0,0,GRLIB_perm_log],
 	["Land_Hangar_F",0,0,0,GRLIB_perm_max],
 	["Land_Medevac_house_V1_F",0,0,0,GRLIB_perm_tank],
 	["Land_Medevac_HQ_V1_F",0,0,0,GRLIB_perm_air],

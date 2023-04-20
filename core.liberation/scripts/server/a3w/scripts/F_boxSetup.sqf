@@ -38,7 +38,7 @@ if (_locked) then {
 	_box setVariable ["GRLIB_vehicle_owner", "", true];
 };
 
-if (["A3_", GRLIB_mod_west, true] call F_startsWith && _type == A3W_BoxWps) then {
+if (["A3_", GRLIB_mod_west, true] call F_startsWith && _type == basic_weapon_typename) then {
 	private _box_refill = selectRandom ["mission_Ammo","mission_USLaunchers","mission_USSpecial","mission_Main_A3snipers","mission_Ammo"];
 	[_box, _box_refill] call fn_refillbox;
 };

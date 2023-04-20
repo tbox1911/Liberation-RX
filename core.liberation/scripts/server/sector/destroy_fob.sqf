@@ -20,7 +20,16 @@ _all_buildings_to_destroy = _all_buildings_to_destroy + ([(_fobpos nearobjects 2
 
 {
 	sleep 0.2;
-	deleteVehicle _x;
+	_building = _x;
+	if (typeOf _building == Warehouse_typename) then {
+		{
+			if ((getPosATL _x) distance2D (getPosATL _building) < GRLIB_fob_range) then { deleteVehicle _x };
+		} foreach allSimpleObjects ["Land_PortableDesk_01_black_F",waterbarrel_typename,fuelbarrel_typename,foodbarrel_typename,basic_weapon_typename];
+
+		_owner = _building getVariable ["GRLIB_WarehouseOwner", objNull];
+		deleteVehicle _owner;
+	};
+	deleteVehicle _building;
 } foreach _all_buildings_to_destroy;
 
 stats_fobs_lost = stats_fobs_lost + 1;

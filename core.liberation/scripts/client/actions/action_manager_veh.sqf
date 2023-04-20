@@ -31,7 +31,7 @@ if (!(player diarySubjectExists str(parseText GRLIB_r3))) exitWith {};
 while { true } do {
 	// Vehicles actions
 	_nearveh = [player nearEntities [["LandVehicle","Air","Ship"], _searchradius], {
-		!([_x, "LHD", GRLIB_sector_size] call F_check_near) &&
+		(_x distance2D lhd > GRLIB_fob_range) &&
 		!(typeOf _x in list_static_weapons) &&
 		isNil {_x getVariable "GRLIB_vehicle_action"}
 	}] call BIS_fnc_conditionalSelect;
@@ -64,7 +64,7 @@ while { true } do {
 
 	// Salvage Wreck & Ruins
 	_nearruins = [nearestObjects [player, ["Ruins_F"], _searchradius], {([_x, "FOB", GRLIB_sector_size] call F_check_near) && isNil {_x getVariable "GRLIB_salvage_action"}}] call BIS_fnc_conditionalSelect;
-	_nearwreck = [nearestObjects [player, _wreck_class, _searchradius], {!([_x, "LHD", GRLIB_sector_size] call F_check_near) && !(alive _x) && isNil {_x getVariable "GRLIB_salvage_action"}}] call BIS_fnc_conditionalSelect;
+	_nearwreck = [nearestObjects [player, _wreck_class, _searchradius], {!([_x, "LHD", GRLIB_sector_size, false] call F_check_near) && !(alive _x) && isNil {_x getVariable "GRLIB_salvage_action"}}] call BIS_fnc_conditionalSelect;
 	{
 		_vehicle = _x;
 		_vehicle addAction ["<t color='#FFFF00'>" + localize "STR_SALVAGE" + "</t> <img size='1' image='res\ui_recycle.paa'/>","scripts\client\actions\do_wreck.sqf","",-900,true,true,"","[_target, _this] call GRLIB_checkAction_Wreck", (_distveh + 5)];
@@ -80,7 +80,7 @@ while { true } do {
 	} forEach _nearboxes;
 
 	// Dead Men
-	_neardead = [allDeadMen, {!([_x, "LHD", GRLIB_sector_size] call F_check_near) && (_x distance2D player < _searchradius) && isNil {_x getVariable "GRLIB_dead_action"}}] call BIS_fnc_conditionalSelect;
+	_neardead = [allDeadMen, {!([_x, "LHD", GRLIB_sector_size, false] call F_check_near) && (_x distance2D player < _searchradius) && isNil {_x getVariable "GRLIB_dead_action"}}] call BIS_fnc_conditionalSelect;
 	{
 		_unit = _x;
 		_unit addAction ["<t color='#0080F0'>" + localize "STR_REMOVE_BODY" + "</t>",{ [_this select 0] remoteExec ["hidebody", 0]},"",1.5,false,true,"","_this distance2D _target < 3" ];

@@ -14,7 +14,6 @@ if (!isNil "GRLIB_mobile_respawn") then {
 	_respawn_tent_unsorted = [ GRLIB_mobile_respawn, {
 		_x getVariable ["GRLIB_vehicle_owner", ""] == _playerId &&
 		!([_x, "LHD", GRLIB_sector_size] call F_check_near) &&
-		!([_x, "FOB", GRLIB_sector_size] call F_check_near) &&
 		!surfaceIsWater (getpos _x) &&
 		isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull])
 	}] call BIS_fnc_conditionalSelect;

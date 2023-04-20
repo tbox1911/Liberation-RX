@@ -13,8 +13,7 @@ private _vehpos = getPosATL _vehicle;
 if (isNil "_list") exitWith {_ret};
 
 switch ( _list ) do {
-	case "LHD" : { _classlist = [lhd]; _includeFOB = false};	
-	case "FOB" : { _classlist = GRLIB_all_fobs; _includeFOB = false};
+	case "LHD" : { _classlist = [lhd]};	
 	case "SRV" : { _classlist = GRLIB_Marker_SRV};
 	case "ATM" : { _classlist = GRLIB_Marker_ATM};
 	case "FUEL" : { _classlist = GRLIB_Marker_FUEL};
@@ -37,6 +36,7 @@ switch ( _list ) do {
 	case "REAMMO_AI" : { _classlist = ai_resupply_sources};
 	case "REPAIR_AI" : { _classlist = vehicle_repair_sources};
 	case "REPAINT" : { _classlist = [repair_offroad, "Land_RepairDepot_01_civ_F"]};
+	default { _classlist = [] };
 };
 
 // Include FOB
@@ -45,6 +45,7 @@ if (_includeFOB) then {
 };
 
 if (_ret) exitWith {true};
+if (_list == "FOB") exitWith {_ret};
 if (count(_classlist) == 0) exitWith {false};
 
 if (typeName (_classlist select 0) == "STRING") then {

@@ -12,7 +12,7 @@ Respawn_truck_typename = "UK3CB_CHD_O_Ural";
 //FOB_truck_typename = "B_Truck_01_box_F";
 pilot_classname = "UK3CB_CHD_O_HELI_PILOT";
 crewman_classname = "UK3CB_CHD_O_CREW";
-A3W_BoxWps = "UK3CB_RPK_Equipbox_Opfor";  	 //"rhs_weapon_crate";
+basic_weapon_typename = "UK3CB_RPK_Equipbox_Opfor";  	 //"rhs_weapon_crate";
 
 
 chimera_vehicle_overide = [

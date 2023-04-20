@@ -14,7 +14,7 @@ Respawn_truck_typename = "UK3CB_BAF_LandRover_Amb_FFR_Green_A_DPMW";
 //FOB_truck_typename = "B_Truck_01_box_F";
 pilot_classname = "UK3CB_BAF_HeliPilot_Army_DPMW";
 crewman_classname = "UK3CB_BAF_Crewman_RTR_DPMW";
-A3W_BoxWps = "rhsgref_weapons_crate";  	 //"rhs_weapon_crate";
+basic_weapon_typename = "rhsgref_weapons_crate";  	 //"rhs_weapon_crate";
 chimera_vehicle_overide = [
   ["B_Heli_Light_01_F", "RHS_MELB_MH6M"],
   ["B_Heli_Transport_01_F", "UK3CB_BAF_Wildcat_AH1_TRN_8A_DPMW"]

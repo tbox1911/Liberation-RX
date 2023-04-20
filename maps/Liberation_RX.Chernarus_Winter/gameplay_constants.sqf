@@ -11,7 +11,6 @@ GRLIB_spawn_max = 3000;
 GRLIB_recycling_percentage = 0.75;
 GRLIB_vulnerability_timer = 900;
 GRLIB_defended_buildingpos_part = 0.4;
-GRLIB_sector_military_value = 3;
 GRLIB_secondary_objective_impact = 0.7;
 GRLIB_blufor_cap = 100 * GRLIB_unitcap;
 GRLIB_sector_cap = 180 * GRLIB_unitcap;

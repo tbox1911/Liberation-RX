@@ -29,7 +29,7 @@ waterbarrel_typename = "Land_WaterBottle_01_stack_F";
 foodbarrel_typename = "Land_FoodSacks_01_large_brown_idap_F";
 GRLIB_sar_wreck = "vn_air_uh1d_med_wreck";
 canisterFuel = "Land_CanisterFuel_Red_F";
-A3W_BoxWps = "uns_HiddenAmmoBox";
+basic_weapon_typename = "uns_HiddenAmmoBox";
 
 //repair_sling_typename = "B_Slingload_01_repair_F";
 //fuel_sling_typename = "B_Slingload_01_Fuel_F";

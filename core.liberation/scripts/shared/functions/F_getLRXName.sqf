@@ -42,9 +42,13 @@ if ( _class == playerbox_typename ) then {
 	_text = "Personal Player Box";
 };
 if ( _class == land_cutter_typename ) then {
-	_text = "Magic Mower Cutter (Hide Terrain Objects)";
+	_text = "Magic Mower (Hide Terrain Objects)";
 };
 if ( _class == Warehouse_typename ) then {
-	_text = "LRX Warehouse";
+	_text = "Global Warehouse";
 };
+if ( _class == basic_weapon_typename ) then {
+	_text = "Basic Weapons";
+};
+
 _text;

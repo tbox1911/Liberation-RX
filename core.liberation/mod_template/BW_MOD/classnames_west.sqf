@@ -21,7 +21,7 @@ ammo_sling_typename = "B_Slingload_01_Ammo_F";
 medic_sling_typename = "B_Slingload_01_Medevac_F";
 pilot_classname = "B_Helipilot_F";
 crewman_classname = "B_crew_F";
-A3W_BoxWps = "CUP_BOX_RACS_Wps_F";
+basic_weapon_typename = "CUP_BOX_RACS_Wps_F";
 
 chimera_vehicle_overide = [
   ["B_LSV_01_unarmed_F", "BWA3_Eagle_Fleck"],

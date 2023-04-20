@@ -20,7 +20,7 @@ _setupObjects =
 	_missionPos = markerPos _missionLocation;
 	_box1 = [ammobox_o_typename, _missionPos, true] call boxSetup;
 	_box2 = [ammobox_o_typename, _missionPos, true] call boxSetup;
-	_box3 = [A3W_BoxWps, _missionPos, true] call boxSetup;
+	_box3 = [basic_weapon_typename, _missionPos, true] call boxSetup;
 
 	[_missionPos, 30] call createlandmines;	
 	_aiGroup = createGroup [GRLIB_side_enemy, true];

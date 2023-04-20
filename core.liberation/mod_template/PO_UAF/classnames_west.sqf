@@ -14,7 +14,7 @@ Respawn_truck_typename = "LOP_UKR_KAMAZ_Medical";  //"rhsusf_m113_usarmy_medical
 //FOB_truck_typename = "B_Truck_01_box_F";
 pilot_classname = "LOP_UKR_Infantry_crew";
 crewman_classname = "LOP_UKR_Infantry_crew";
-A3W_BoxWps = "rhsgref_weapons_crate";  	 //"rhs_weapon_crate";
+basic_weapon_typename = "rhsgref_weapons_crate";  	 //"rhs_weapon_crate";
 chimera_vehicle_overide = [
   ["B_Heli_Light_01_F", "RHS_MELB_MH6M"],
   ["B_Heli_Transport_01_F", "RHS_UH60M_d"]
