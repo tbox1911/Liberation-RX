@@ -8,8 +8,12 @@ while { true } do {
   
         // No damage
         if (isDamageAllowed _static) then {
-            _static allowDamage false;
-            _static addEventHandler ["HandleDamage", {0}];
+            private _owner = owner _static;
+            if (_owner == 0) then {
+                _static allowDamage false;
+            } else {
+                [_static, false] remoteExec ["allowDamage", _owner];
+            };
         };
 
         // OPFor infinite Ammo
@@ -48,5 +52,5 @@ while { true } do {
         sleep 1;
     } forEach _all_static;
 
-	sleep 30;
+	sleep 20;
 };

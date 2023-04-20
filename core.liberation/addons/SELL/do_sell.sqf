@@ -16,7 +16,7 @@ while { dialog && alive player } do {
 	if (_refresh) then {
 		// Init SELL list
 
-		private _sell_classnames = ["LandVehicle","Air","Ship", A3W_BoxWps];
+		private _sell_classnames = ["LandVehicle","Air","Ship"] + GRLIB_Ammobox_keep;
 		_sell_list = [getPosATL player nearEntities [_sell_classnames, 50], {
 			alive _x &&
 			!([_x, "LHD", GRLIB_sector_size] call F_check_near) &&
@@ -71,12 +71,11 @@ while { dialog && alive player } do {
 					[player, _price, 0] remoteExec ["ammo_add_remote_call", 2];
 					hintSilent format [localize "STR_CARGO_SOLD", _vehicle_name, name player, _price];
 					playSound "taskSucceeded";
-					if (typeOf _vehicle == A3W_BoxWps) then {deleteVehicle _vehicle};
+					if (typeOf _vehicle in GRLIB_Ammobox_keep) then {deleteVehicle _vehicle};
 				};
 			_refresh = true;
 			};
-		};
-		
+		};	
 		sell_action = 0;
 	};
 	sleep 0.3;

@@ -45,6 +45,7 @@ else
 				_transporteur setVariable ["R3F_LOG_objets_charges", _objets_charges, true];
 				
 				_objet setVariable ["R3F_LOG_est_transporte_par", _transporteur, true];
+				_objet setVariable ["GRLIB_counter_TTL", nil, true];
 				
 				systemChat STR_R3F_LOG_action_charger_en_cours;
 							

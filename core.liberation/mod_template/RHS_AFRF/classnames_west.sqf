@@ -129,14 +129,14 @@ blufor_air = [
 ];
 
 static_vehicles = [
-	["rhs_KORD_MSV",0,15,0,GRLIB_perm_inf],
+	["rhs_KORD_MSV",0,15,0,0],
 	["RHS_AGS30_TriPod_MSV",0,15,0,GRLIB_perm_inf],
 	["rhs_KORD_high_MSV",0,25,0,GRLIB_perm_log],
-	["rhs_SPG9M_MSV",0,15,0,GRLIB_perm_inf],
+	["rhs_SPG9M_MSV",0,15,0,GRLIB_perm_log],
 	["rhs_Igla_AA_pod_msv",0,50,0,GRLIB_perm_air],
-	["rhs_Metis_9k115_2_msv",0,50,0,GRLIB_perm_log],
+	["rhs_Metis_9k115_2_msv",0,50,0,GRLIB_perm_tank],
 	["rhs_Kornet_9M133_2_msv",0,50,0,GRLIB_perm_tank],
-	["RHS_ZU23_MSV",0,500,0,GRLIB_perm_tank],
+	["RHS_ZU23_MSV",0,500,0,GRLIB_perm_air],
 	["RHS_M119_WD",10,600,0,GRLIB_perm_air],
 	["RHS_BM21_MSV_01",10,2600,0,GRLIB_perm_max]
 ];

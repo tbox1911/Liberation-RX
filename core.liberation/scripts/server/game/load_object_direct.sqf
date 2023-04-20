@@ -8,10 +8,12 @@ private _object_created = [];
 	private _object = _x createVehicle zeropos;
 
 	// Clear Cargo
-	clearWeaponCargoGlobal _object;
-	clearMagazineCargoGlobal _object;
-	clearItemCargoGlobal _object;
-	clearBackpackCargoGlobal _object;
+	if (!(_x in GRLIB_Ammobox_keep)) then {
+		clearWeaponCargoGlobal _object;
+		clearMagazineCargoGlobal _object;
+		clearItemCargoGlobal _object;
+		clearBackpackCargoGlobal _object;
+	};
 
 	// Mobile respawn
 	if (_x == mobile_respawn) then {
@@ -25,11 +27,9 @@ private _object_created = [];
 	if (!(_x in GRLIB_vehicle_blacklist)) then {
 		_object setVariable ["GRLIB_vehicle_owner", _vehicle_owner, true];
 	};
-	
 
 	_object attachTo [R3F_LOG_PUBVAR_point_attache, [] call R3F_LOG_FNCT_3D_tirer_position_degagee_ciel];
 	_object setVariable ["R3F_LOG_est_transporte_par", _vehicle, true];
-	
 	_object_created pushback _object;
 } forEach _objects;
 

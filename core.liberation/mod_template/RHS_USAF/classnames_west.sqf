@@ -113,12 +113,12 @@ blufor_air = [
 ];
 
 static_vehicles = [
-	["RHS_M2StaticMG_MiniTripod_WD",0,40,0,GRLIB_perm_log],
-	["RHS_M2StaticMG_WD",0,70,0,GRLIB_perm_tank],
+	["RHS_M2StaticMG_MiniTripod_WD",0,40,0,0],
+	["RHS_M2StaticMG_WD",0,70,0,GRLIB_perm_inf],
 	["RHS_MK19_TriPod_WD",0,140,0,GRLIB_perm_log],
 	["RHS_TOW_TriPod_WD",0,180,0,GRLIB_perm_tank],
 	["RHS_Stinger_AA_pod_WD",0,350,0,GRLIB_perm_tank],
-	["RHS_M252_WD",0,500,0,GRLIB_perm_tank],
+	["RHS_M252_WD",0,500,0,GRLIB_perm_air],
 	["RHS_M119_WD",0,600,0,GRLIB_perm_air]
 ];
 

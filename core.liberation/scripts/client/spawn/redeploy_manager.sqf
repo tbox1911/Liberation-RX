@@ -53,7 +53,7 @@ disableUserInput false;
 disableUserInput true;
 disableUserInput false;
 deploy = 0;
-_oldsel = -999;
+_oldsel = -1;
 
 showCinemaBorder false;
 camUseNVG false;
@@ -92,6 +92,7 @@ if ( GRLIB_player_spawned ) then {
 };
 
 while { dialog && alive player && deploy == 0} do {
+	if (!alive player) exitWith {};
 	_choiceslist = [ [ _basenamestr, getpos lhd ] ];
 
 	for [{_idx=0},{_idx < count GRLIB_all_fobs},{_idx=_idx+1}] do {
@@ -252,5 +253,5 @@ if (alive player && deploy == 1) then {
 	[_spawn_str] spawn spawn_camera;
 };
 
-sleep 3;
+sleep 6;
 playMusic "";

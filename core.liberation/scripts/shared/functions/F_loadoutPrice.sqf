@@ -1,5 +1,6 @@
 params [ "_unit" ];
 if (isNull _unit) exitWith {0};
+if (isNil "GRLIB_Ammobox_keep") then {GRLIB_Ammobox_keep = []};
 
 // item name MUST be lowercase
 private _fixed_price = [
@@ -139,21 +140,21 @@ if (_unit isKindOf "Man") then {
 
 	// Player items (map,compass,..)
 	_val = _val + (2 * count(assignedItems _unit));
-};
+} else {
+	if (_unit iskindof "LandVehicle" || typeOf _unit in GRLIB_Ammobox_keep) then {
+		_weap_cargo = weaponCargo _unit;
+		if (count _weap_cargo > 0) then {
+			{
+				_val = _val + ([_x] call _fn_getprice);
+			} forEach _weap_cargo;
+		};
 
-if (_unit iskindof "LandVehicle" || typeOf _unit == A3W_BoxWps) then {
-	_weap_cargo = weaponCargo _unit;
-	if (count _weap_cargo > 0) then {
-		{
-			_val = _val + ([_x] call _fn_getprice);
-		} forEach _weap_cargo;
-	};
-
-	_item_cargo = itemCargo _unit;
-	if (count _item_cargo > 0) then {
-		{
-			_val = _val + ([_x] call _fn_getprice);
-		} forEach _item_cargo;
+		_item_cargo = itemCargo _unit;
+		if (count _item_cargo > 0) then {
+			{
+				_val = _val + ([_x] call _fn_getprice);
+			} forEach _item_cargo;
+		};
 	};
 };
 _val;
