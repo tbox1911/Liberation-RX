@@ -33,5 +33,3 @@ if !(isNull _player) then {
 	_text = format ["Bye bye %1, see you soon...", name _player];
 	[gamelogic, _text] remoteExec ["globalChat", -2];
 };
-
-
