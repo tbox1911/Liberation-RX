@@ -92,7 +92,7 @@ if (_unit == player) then {
 	_unit removeAllEventHandlers "GetInMan";
 	_unit addEventHandler ["GetInMan", {
 		params ["_unit", "_role", "_vehicle"];
-		1 fadeSound ( NRE_vehvolume / 100.0 );
+		1 fadeSound ( round desired_vehvolume / 100.0 );
 		NRE_EarplugsActive = 1;
 		[player, "hide"] remoteExec ["dog_action_remote_call", 2];
 		if (!GRLIB_thermic && !(daytime > GRLIB_nights_start || daytime < GRLIB_nights_stop)) then { _vehicle disableTIEquipment true };

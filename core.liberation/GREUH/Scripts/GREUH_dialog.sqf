@@ -101,7 +101,7 @@ while { dialog && alive player } do {
 		ctrlSetText [733, format [ '%1m' ,round ((desiredviewdistance_obj / 100.0) * desiredviewdistance_inf) ]];
 	};
 
-	//ctrlSetText [ 1103, format [ "%1%2", round (desired_vehvolume), "%" ] ];
+	ctrlSetText [ 1103, format [ "%1%2", round (desired_vehvolume), "%" ] ];
 	desired_fps = parseNumber (ctrlText 960);
 
 	uiSleep 0.2;

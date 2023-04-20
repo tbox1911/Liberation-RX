@@ -14,12 +14,12 @@ while { count (units _grp) > 0 } do {
 				[_gunner] orderGetIn true;
 			} else {
 				// Default for HMG, GMG
-				private _radius = 1000;
+				private _radius = 800;
 				private _kind = "Man";
 				private _veh_class = typeOf _vehicle;
 
+				if (_veh_class isKindOf "StaticMortar") then {_radius = 1000; _kind = "Man"};
 				if (_veh_class isKindOf "AT_01_base_F") then {_radius = 2000; _kind = "LandVehicle"};
-				if (_veh_class isKindOf "StaticMortar") then {_radius = 1500; _kind = "Man"};
 				if (_veh_class isKindOf "AA_01_base_F") then {_radius = 3000; _kind = "Air"};
 
 				private _scan_target = [units GRLIB_side_friendly, {
@@ -39,9 +39,12 @@ while { count (units _grp) > 0 } do {
 
 					_vehicle setDir (_vehicle getDir _next_target);
 					_grp setBehaviour "COMBAT";
-					_gunner reveal [_next_target, 1.5];
+					_gunner reveal [_next_target, 2];
 					_gunner doTarget _next_target;
-					//_vehicle fireAtTarget [_next_target];
+					if (_veh_class isKindOf "StaticMortar") then {
+						_vehicle fireAtTarget [_next_target];
+						sleep 15;
+					};
 					diag_log format ["--- LRX: OPFor defender %1 spot unit %2 (%3) dist %4m", _veh_class, _next_target, typeOf _next_target, round (_gunner distance2D _next_target)];
 				} else {
 					_grp setBehaviour "CARELESS";
@@ -49,7 +52,7 @@ while { count (units _grp) > 0 } do {
 				};
 			};
 		};
-		sleep 30;
+		sleep 10;
 	} else {
 		if ( reinforcements_sector_under_attack != "" && (markerpos reinforcements_sector_under_attack) distance2D (getPos (leader _grp)) < 4000 ) then {
 

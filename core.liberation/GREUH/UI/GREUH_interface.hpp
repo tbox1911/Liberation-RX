@@ -254,7 +254,7 @@ class GREUH_Menu {
 	"GREUH_Leader_OuterBG", "GREUH_Leader_InnerBG", "GREUH_Leader_OuterBG_F", "GREUH_Leader_InnerBG_F",
 	"GREUH_ButtonLeader_Choose", "GREUH_ButtonLeader_Abort", "GREUH_Squad_Combo","GREUH_ButtonLock",
 	"GREUH_LabelNametags","GREUH_NametagsActive","GREUH_NametagsYes","GREUH_NametagsNo",
-	"GREUH_FPSLabel","GREUH_FPSEdit","GREUH_Keybind"};
+	"GREUH_FPSLabel","GREUH_FPSEdit","GREUH_earplug","GREUH_Slider2","GREUH_SliderEP","GREUH_LabelEP"};
 
 	objects[] = {};
 
@@ -834,15 +834,44 @@ class GREUH_Menu {
 		text = "No";
 		action = "show_teammates = false";
 	};
-
-  class GREUH_Keybind: GREUH_RscStructuredText {
-    idc = 1100;
-    text = "Keybinding : <br /><t size='0.7'>           ""CTRL+R"" : Repack Ammo<br />           ""HOME""    : Earplug on/off<br /></t>";
-    x = 0.149896 * safezoneW + safezoneX;
-    y = 0.80997 * safezoneH + safezoneY;
-    w = 0.157778 * safezoneW;
-    h = 0.077 * safezoneH;
-  };
+	class GREUH_earplug : GREUH_Label {
+		idc = 1101;
+		y = ((BASE_Y + 0.742) * safezoneH) + safezoneY;
+		text = "Adjust Ear Plug Volume";
+	};
+	class GREUH_Slider2 {
+		idc = 1102;
+		type = CT_SLIDER;
+		style = SL_HORZ;
+		x = 0.19 * safezoneW + safezoneX;
+		w = 0.12 * safezoneW;
+		y = ((BASE_Y + 0.782) * safezoneH) + safezoneY;
+		h = 0.025 * safezoneH;
+		text = "Volume";
+		color[] = { 1, 1, 1, 1 };
+		coloractive[] = { 1, 1, 1, 1 };
+		onSliderPosChanged = "desired_vehvolume = (sliderPosition 1102)";
+	};
+	class GREUH_SliderEP : GREUH_Label {
+		idc = 1103;
+		style = ST_LEFT;
+		x = 0.31 * safezoneW + safezoneX;
+		w = 0.05 * safezoneW;
+		y = ((BASE_Y + 0.772) * safezoneH) + safezoneY;
+		h = 0.03 * safezoneH;
+		colorBackground[] = COLOR_NOALPHA;
+		text = "";
+	};
+	class GREUH_LabelEP : GREUH_Label {
+		idc = 1104;
+		style = ST_LEFT;
+		x = 0.15 * safezoneW + safezoneX;
+		w = 0.05 * safezoneW;
+		y = ((BASE_Y + 0.772) * safezoneH) + safezoneY;
+		h = 0.03 * safezoneH;
+		colorBackground[] = COLOR_NOALPHA;
+		text = "Volume";
+	};
 };
 
 class GreuhButton {

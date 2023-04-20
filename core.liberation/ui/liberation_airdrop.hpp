@@ -57,7 +57,7 @@ class liberation_airdrop {
     h = 0.035;
     w = 0.1;
     text = "";
-    size = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+    size = "(((((safezoneW / safezoneH) min 1) / 1) / 30) * 1)";
     shadow = 2;
   };
   class ButtonTaxi: StdButton
@@ -72,12 +72,11 @@ class liberation_airdrop {
   };
   class LabelTaxi: GREUH_RscStructuredText
   {
-    text = $STR_CALL_HELITAXI;
+    idc = 1628;
     x = 0.283437 * safezoneW + safezoneX;
-    y = 0.2186 * safezoneH + safezoneY;
+    y = 0.2176 * safezoneH + safezoneY;
     w = 0.149531 * safezoneW;
     h = 0.044 * safezoneH;
-    sizeEx = 0.018 * safezoneH * GUI_GRID_H * GUI_GRID_H;
   };
   class ButtonLight: StdButton
   {
@@ -91,12 +90,11 @@ class liberation_airdrop {
   };
   class LabelLight: GREUH_RscStructuredText
   {
-    text = $STR_QUAD_OFFLOAD;
+    idc = 1621;    
     x = 0.283437 * safezoneW + safezoneX;
-    y = 0.2786 * safezoneH + safezoneY;
+    y = 0.2776 * safezoneH + safezoneY;
     w = 0.149531 * safezoneW;
     h = 0.044 * safezoneH;
-    sizeEx = 0.018 * safezoneH * GUI_GRID_H * GUI_GRID_H;
   };
   class ButtonLight2: StdButton
   {
@@ -110,12 +108,11 @@ class liberation_airdrop {
   };
   class LabelLight2: GREUH_RscStructuredText
   {
-    text = $STR_ARMED_OFFLOAD;
+    idc = 1622;
     x = 0.283437 * safezoneW + safezoneX;
-    y = 0.3386 * safezoneH + safezoneY;
+    y = 0.3376 * safezoneH + safezoneY;
     w = 0.149531 * safezoneW;
     h = 0.044 * safezoneH;
-    sizeEx = 0.018 * safezoneH * GUI_GRID_H * GUI_GRID_H;
   };
   class ButtonMed: StdButton
   {
@@ -129,12 +126,11 @@ class liberation_airdrop {
   };
   class LabelMed: GREUH_RscStructuredText
   {
-    text = $STR_MRAP;
+    idc = 1623;
     x = 0.283437 * safezoneW + safezoneX;
-    y = 0.3986 * safezoneH + safezoneY;
+    y = 0.3976 * safezoneH + safezoneY;
     w = 0.149531 * safezoneW;
     h = 0.044 * safezoneH;
-    sizeEx = 0.018 * safezoneH * GUI_GRID_H * GUI_GRID_H;
   };
   class ButtonSup: StdButton
   {
@@ -148,12 +144,11 @@ class liberation_airdrop {
   };
   class LabelSup: GREUH_RscStructuredText
   {
-    text = $STR_TRUCK;
+    idc = 1624;
     x = 0.283437 * safezoneW + safezoneX;
-    y = 0.4586 * safezoneH + safezoneY;
+    y = 0.4576 * safezoneH + safezoneY;
     w = 0.149531 * safezoneW;
     h = 0.044 * safezoneH;
-    sizeEx = 0.018 * safezoneH * GUI_GRID_H * GUI_GRID_H;
   };
   class ButtonHeavy: StdButton
   {
@@ -167,14 +162,12 @@ class liberation_airdrop {
   };
   class LabelHeavy: GREUH_RscStructuredText
   {
-    text = $STR_APC;
+    idc = 1625;
     x = 0.283437 * safezoneW + safezoneX;
-    y = 0.5186 * safezoneH + safezoneY;
+    y = 0.5176 * safezoneH + safezoneY;
     w = 0.149531 * safezoneW;
     h = 0.044 * safezoneH;
-    sizeEx = 0.018 * safezoneH * GUI_GRID_H * GUI_GRID_H;
   };
-
   class ButtonBoat: StdButton
   {
     idc = 1606;
@@ -187,12 +180,11 @@ class liberation_airdrop {
   };
   class LabelBoat: GREUH_RscStructuredText
   {
-    text = $STR_BOAT;
+    idc = 1626;
     x = 0.283437 * safezoneW + safezoneX;
-    y = 0.5786 * safezoneH + safezoneY;
+    y = 0.5776 * safezoneH + safezoneY;
     w = 0.149531 * safezoneW;
     h = 0.044 * safezoneH;
-    sizeEx = 0.018 * safezoneH * GUI_GRID_H * GUI_GRID_H;
   };
   class ButtonAir: StdButton
   {
@@ -206,12 +198,11 @@ class liberation_airdrop {
   };
   class LabelAir: GREUH_RscStructuredText
   {
-    text = $STR_AIRSUPREMACY;
+    idc = 1627;
     x = 0.283437 * safezoneW + safezoneX;
-    y = 0.6386 * safezoneH + safezoneY;
+    y = 0.6376 * safezoneH + safezoneY;
     w = 0.149531 * safezoneW;
     h = 0.044 * safezoneH;
-    sizeEx = 0.018 * safezoneH * GUI_GRID_H * GUI_GRID_H;
   };
   class OuterBG1: StdBG
   {

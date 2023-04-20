@@ -9,7 +9,7 @@ if (!(isNil "NRE_EarplugsActive")) then {
     hint localize "STR_NREEP_OUT_HINT";
   } else {
     NRE_EarplugsActive = 1;
-    1 fadeSound ( NRE_vehvolume / 100.0 );
+    1 fadeSound ( round desired_vehvolume / 100.0 );
     hint localize "STR_NREEP_IN_HINT";
   };
   sleep 2;

@@ -14,8 +14,7 @@ private _dest = getPosATL _helipad;
 if (surfaceIsWater _dest || _degree > 8) exitWith {deleteVehicle _helipad; hintSilent localize "STR_TAXI_WRONG_PLACE"};
 
 // Pay
-_cost = 100;
-if (!([_cost] call F_pay)) exitWith {deleteVehicle _helipad};
+if (!([GRLIB_AirDrop_Taxi_cost] call F_pay)) exitWith {deleteVehicle _helipad};
 
 private _nb_unit = count (units player);
 private _taxi_type = "";
@@ -41,7 +40,7 @@ _vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
 _vehicle setVariable ["GRLIB_counter_TTL", round(time + 1800), true];  // 30 minutes TTL
 _vehicle setVariable ["R3F_LOG_disabled", true, true];
 _vehicle allowDamage false;
-_vehicle allowCrewInImmobile true;
+_vehicle allowCrewInImmobile [true, false];
 _vehicle setUnloadInCombat [true, false];
 _vehicle addAction [format ["<t color='#8000FF'>%1</t>", localize "STR_TAXI_ACTION1"], "addons\TAXI\taxi_pickdest.sqf","",999,true,true,"","vehicle _this == _target"];
 _vehicle addAction [format ["<t color='#FF0080'>%1</t>", localize "STR_TAXI_ACTION2"], {player setVariable ["GRLIB_taxi_called", nil, true]},"",998,true,true,"","vehicle _this == _target"];

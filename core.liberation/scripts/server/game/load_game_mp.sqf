@@ -198,7 +198,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
             [_x select 9] params [["_lst_grl", []]];
 
             _nextbuilding setVehicleLock "LOCKED";
-            _nextbuilding allowCrewInImmobile true;
+            _nextbuilding allowCrewInImmobile [true, false];
             _nextbuilding setUnloadInCombat [true, false];
             _nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
             _nextbuilding setVariable ["R3F_LOG_disabled", true, true];
@@ -228,7 +228,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
                 _nextbuilding setVehicleLock "LOCKEDPLAYER";
                 _nextbuilding addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1}];
                 _nextbuilding addEventHandler ["HandleDamage", { _this call damage_manager_EH }];
-                _nextbuilding allowCrewInImmobile true;
+                _nextbuilding allowCrewInImmobile [true, false];
                 _nextbuilding setUnloadInCombat [true, false];			
             };
         };
