@@ -31,7 +31,14 @@ while { true } do {
 =======
 fullmap = 0;
 _old_fullmap = 0;
+<<<<<<< HEAD
 >>>>>>> 2e321817 (no wait for redeploy)
+=======
+waitUntil {
+	sleep 0.1;
+	( vehicle player == player && alive player && !dialog )
+};
+>>>>>>> 375b9ea7 (wait for dialog is closed)
 
 createDialog "liberation_deploy";
 waitUntil { dialog };
