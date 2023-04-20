@@ -17,6 +17,7 @@ while { GRLIB_endgame == 0 } do {
 				if ( isNull _hc ) then {
 					[ _nextsector ] spawn manage_one_sector;
 				} else {
+					diag_log format [ "Sector: %1 spawned on %2", _nextsector, _hc ];
 					[_nextsector] remoteExec ["manage_one_sector", _hc];
 				};
 				if ( _nextsector in sectors_military ) then {

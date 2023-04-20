@@ -1,4 +1,4 @@
-if (!isServer) exitWith {};
+if (!isServer && hasInterface) exitWith {};
 params [ "_unit", "_veh", "_cmd" ];
 
 if (!isNil "garage_in_use") exitWith {["Garage is busy !!\nPlease wait..."] remoteExec ["hintSilent", owner _unit]};

@@ -27,9 +27,9 @@ if ( isNil "active_sectors" ) then { active_sectors = [] };
 if ( _sector in active_sectors ) exitWith {};
 active_sectors pushback _sector; publicVariable "active_sectors";
 
-
+diag_log format ["Spawn Defend Sector %1 at %2", _sector, time];
 private _opforcount = [] call F_opforCap;
-[ _sector, _opforcount ] call wait_to_spawn_sector;
+sleep 10;
 
 if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcount ] call F_getCorrectedSectorRange , GRLIB_side_friendly ] call F_getUnitsCount ) > 0 ) ) then {
 
@@ -178,10 +178,11 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 
 	sleep 10;
 
-	if ( ( _sector in sectors_factory ) || (_sector in sectors_capture ) || (_sector in sectors_bigtown ) || (_sector in sectors_military ) ) then {
+	if ( _sector in [ sectors_factory, sectors_capture, sectors_bigtown, sectors_military ] ) then {
 		[ _sector ] remoteExec ["reinforcements_remote_call", 2];
 	};
 
+	diag_log format ["Sector %1 wait attack to finish", _sector];
 	while { !_stopit } do {
 
 		if ( ([_sectorpos, _local_capture_size] call F_sectorOwnership == GRLIB_side_friendly) && (GRLIB_endgame == 0) ) then {
@@ -226,3 +227,5 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 	sleep 40;
 	active_sectors = active_sectors - [ _sector ]; publicVariable "active_sectors";
 };
+
+diag_log format ["End Defend Sector %1 at %2", _sector, time];

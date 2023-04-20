@@ -31,7 +31,15 @@ while { true } do {
 		|| _resources_intel_old != resources_intel
 	};
 	sleep 0.25;
-	sync_vars = [resources_infantry, resources_fuel,infantry_cap,fuel_cap, unitcap, combat_readiness, resources_intel];
+	sync_vars = [ 
+		resources_infantry,
+		resources_fuel,
+		infantry_cap,
+		fuel_cap,
+		unitcap,
+		combat_readiness,
+		resources_intel
+	];
 	publicVariable "sync_vars";
 
 	_infantry_cap_old = infantry_cap;

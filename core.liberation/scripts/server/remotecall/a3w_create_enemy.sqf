@@ -1,6 +1,6 @@
+if (!isServer && hasInterface) exitWith {};
 params ["_pos", "_type"];
 
-if (!isServer) exitWith {};
 if (isNil "_pos") exitWith {};
 
 private _nbUnits = [] call getNbUnits;

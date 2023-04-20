@@ -40,14 +40,14 @@ if ( isServer ) then {
 			air_weight = air_weight - 0.1;
 		} else {
 			if ( (typeof (vehicle _killer) ) in land_vehicles_classnames ) then  {
-				infantry_weight = infantry_weight - 0.66;
-				armor_weight = armor_weight + 3;
-				air_weight = air_weight - 0.33;
+				infantry_weight = infantry_weight - 0.50;
+				armor_weight = armor_weight + 6;
+				air_weight = air_weight - 0.20;
 			};
 			if ( (typeof (vehicle _killer) ) in air_vehicles_classnames ) then  {
-				infantry_weight = infantry_weight - 0.66;
-				armor_weight = armor_weight - 0.33;
-				air_weight = air_weight + 4;
+				infantry_weight = infantry_weight - 0.50;
+				armor_weight = armor_weight - 0.20;
+				air_weight = air_weight + 6;
 			};
 		};
 

@@ -1,6 +1,6 @@
+if (!isServer && hasInterface) exitWith {};
 params ["_group", "_action"];
 
-if (!isServer) exitWith {};
 if (isNull _group) exitWith {};
 if (isNil "global_locked_group") then { global_locked_group = [] };
 

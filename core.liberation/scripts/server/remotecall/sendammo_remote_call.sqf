@@ -1,4 +1,4 @@
-if (!isServer) exitWith {};
+if (!isServer && hasInterface) exitWith {};
 params ["_src", "_dst_id", "_ammo"];
 private ["_dst", "_src_ammo", "_dst_ammo"];
 

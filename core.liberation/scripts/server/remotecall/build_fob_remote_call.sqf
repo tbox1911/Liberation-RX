@@ -1,4 +1,4 @@
-if (!isServer) exitWith {};
+if (!isServer && hasInterface) exitWith {};
 
 params [ "_new_fob", "_create_fob_building" ];
 private [ "_fob_building", "_fob_pos", "_fob_box_list", "_ruin_list" ];
