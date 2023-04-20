@@ -19,10 +19,14 @@ RPT_colorList =[
 	["ARPA Navy", RPT_texDir + "arpa_navy.paa"],
 	["ARPA Woodland", RPT_texDir + "arpa_woodland.paa"],
 <<<<<<< HEAD
+<<<<<<< HEAD
 	["Abstract Red", RPT_texDir + "abstraitrouge.paa"],
 =======
 	["Abstract Red", _texDir + "abstraitrouge.paa"],
 >>>>>>> 2afd7aff (return of Abstract Red fix #17)
+=======
+	//["Abstract Red", RPT_texDir + "abstraitrouge.paa"],
+>>>>>>> e8d532b2 (taz vip)
 	["Abstract Green", RPT_texDir + "abstraitvert.paa"],
 	["Abstract Modern", RPT_texDir + "abstraitmoderne.paa"],
 	["Camo Green 1", RPT_texDir + "camovert1.paa"],
