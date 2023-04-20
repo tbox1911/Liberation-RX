@@ -342,8 +342,7 @@ vehicle_rearm_sources = [
 	"B_APC_Tracked_01_CRV_F",
 	"B_Truck_01_ammo_F",
 	"B_Slingload_01_Ammo_F",
-	"Box_NATO_Ammo_F",
-	"Box_NATO_WpsLaunch_F"
+	"Box_NATO_Ammo_F"
 ];
 
 vehicle_refuel_sources = [

@@ -11,14 +11,20 @@ if ( _class == FOB_box_typename ) then {
 if ( _class == Arsenal_typename ) then {
 	_text = localize "STR_ARSENAL_BOX";
 };
-if ( _class == Respawn_truck_typename ) then {
-	_text = localize "STR_RESPAWN_TRUCK";
-};
 if ( _class == FOB_truck_typename ) then {
 	_text = localize "STR_FOBTRUCK";
 };
+if ( _class == Respawn_truck_typename ) then {
+	_text = format ["%1 %2", localize "STR_RESPAWN_TRUCK", "(Truck)"];
+};
 if ( _class == mobile_respawn ) then {
-	_text = "Mobile Respawn";
+	_text = format ["%1 %2", localize "STR_RESPAWN_TRUCK", "(Tent)"];
+};
+if ( _class == huron_typename ) then {
+	_text = format ["%1 %2", localize "STR_RESPAWN_TRUCK", "(Huron)"];
+};
+if ( _class == "Box_NATO_Ammo_F" ) then {
+	_text = "Static Ammo";
 };
 if ( _class == canisterFuel ) then {
 	_text = "Fuel Jerican";
