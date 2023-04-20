@@ -25,7 +25,7 @@ while { dialog && alive player } do {
         // Box outside
         _control = _display displayCtrl (110);
         lbClear 110;
-        _mybox = getPosATL player nearEntities [[waterbarrel_typename,fuelbarrel_typename,foodbarrel_typename], 20];
+        _mybox = getPosATL player nearEntities [[waterbarrel_typename,fuelbarrel_typename,foodbarrel_typename,basic_weapon_typename], 20];
         {
             _entrytext = [typeOf _x] call F_getLRXName;
             _control lnbAddRow [_entrytext];

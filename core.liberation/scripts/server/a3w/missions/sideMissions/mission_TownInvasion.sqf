@@ -74,7 +74,7 @@ _failedExec = {
 
 _successExec = {
 	// spawn some crates in the middle of town (Town marker position)
-	[A3W_BoxWps, _missionPos, false] call boxSetup;
+	[basic_weapon_typename, _missionPos, false] call boxSetup;
 
 	private _rwd_ammo = (100 + floor(random 100));
 	private _rwd_fuel = (10 + floor(random 10));

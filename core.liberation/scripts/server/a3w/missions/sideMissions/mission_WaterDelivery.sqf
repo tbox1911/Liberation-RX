@@ -67,7 +67,6 @@ _successExec = {
 	sleep 3;
 	// Mission completed
 	_successHintMessage = format [localize "STR_WATERDELI_MESSAGE3", sideMissionColor];
-	[ammobox_i_typename, _missionPos, false] call boxSetup;
 	deleteVehicle _man1;
 	deleteMarker _marker_zone;
 	A3W_delivery_failed = 0;

@@ -47,4 +47,8 @@ if ( _class == land_cutter_typename ) then {
 if ( _class == Warehouse_typename ) then {
 	_text = "Global Warehouse";
 };
+if ( _class == basic_weapon_typename ) then {
+	_text = "Basic Weapons";
+};
+
 _text;
