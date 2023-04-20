@@ -50,15 +50,14 @@ else
 			};
 		} forEach _objets_charges;
 
+		// On m�morise sur le r�seau le nouveau contenu du transporteur (c�d avec cet objet en moins)
+		_objets_charges = _transporteur getVariable ["R3F_LOG_objets_charges", []];
+		_objets_charges = _objets_charges - [_objet_a_decharger];
+		_transporteur setVariable ["R3F_LOG_objets_charges", _objets_charges, true];
+		
 		if !(isNull _objet_a_decharger) then
 		{
 			[_objet_a_decharger, player] call R3F_LOG_FNCT_definir_proprietaire_verrou;
-
-			// On m�morise sur le r�seau le nouveau contenu du transporteur (c�d avec cet objet en moins)
-			_objets_charges = _transporteur getVariable ["R3F_LOG_objets_charges", []];
-			_objets_charges = _objets_charges - [_objet_a_decharger];
-			_transporteur setVariable ["R3F_LOG_objets_charges", _objets_charges, true];
-
 			_objet_a_decharger setVariable ["R3F_LOG_est_transporte_par", objNull, true];
 
 			// Prise en compte de l'objet dans l'environnement du joueur (acc�l�rer le retour des addActions)

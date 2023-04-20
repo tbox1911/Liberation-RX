@@ -42,7 +42,7 @@ if (_score >= GRLIB_perm_max) then {
 	GRLIB_squad_size_bonus = 5;
 	infantry_cap = 70 * GRLIB_resources_multiplier;
 	player setUnitTrait ["Medic", true];
-	player setUnitTrait ["Engineer ", true];
+	player setUnitTrait ["Engineer", true];
 };
 
 if (_score >= GRLIB_perm_max*2) then {

@@ -3,7 +3,7 @@ disableSerialization;
 private _VAM_display = findDisplay 4900;
 
 private _list_selection = 0;
-if (!(isNull _VAM_display)) then {
+if (!isNull _VAM_display) then {
     _list_camo = _VAM_display displayCtrl 4910;
     _list_selection = lbCurSel _list_camo;
 };

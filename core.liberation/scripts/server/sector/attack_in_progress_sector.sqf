@@ -13,6 +13,10 @@ if ( _sector == attack_in_progress select 0 ) then {
 	};
 };
 
+{
+	if ((markerPos _x) distance2D (markerPos _sector) < GRLIB_capture_size && _x find "Town Invasion" > 0) exitWith { _defenders_cooldown = true };
+} forEach allMapMarkers;
+
 private _grp = grpNull;
 if ( GRLIB_blufor_defenders && !_defenders_cooldown) then {
 	private _squad_type = blufor_squad_inf_light;

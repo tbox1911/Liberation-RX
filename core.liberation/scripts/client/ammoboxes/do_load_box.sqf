@@ -27,6 +27,7 @@ if (isNil "_box_offset") then {_box_offset = [0, 0, 0]};
 	if ( isNull _truck_to_load ) then {
 		_truck_load = _next_truck getVariable ["GRLIB_ammo_truck_load", []];
 		if ( count _truck_load < _maxload ) then {
+			hintSilent format [localize "STR_BOX_LOADED", getText (configOf _ammobox >> "displayName")];
 			_truck_to_load = _next_truck;
 			_truck_offset = (_offsets select (count _truck_load)) vectorAdd _box_offset;
 			_ammobox attachTo [ _next_truck, _truck_offset ];
@@ -35,7 +36,6 @@ if (isNil "_box_offset") then {_box_offset = [0, 0, 0]};
 			[_ammobox, false] remoteExec ["enableSimulationGlobal", 2];
 			_truck_load pushback _ammobox;
 			_next_truck setVariable ["GRLIB_ammo_truck_load", _truck_load, true];
-			hint localize "STR_BOX_LOADED";
 		};
 	};
 } foreach _neartransporttrucks;

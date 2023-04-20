@@ -180,7 +180,7 @@ opfor_recyclable = [
 	["O_MBT_04_command_F",15,round (2300 / GRLIB_recycling_percentage),15],
 	["O_SFIA_Heli_Attack_02_dynamicLoadout_lxWS",10,round (1700 / GRLIB_recycling_percentage),20],
 	["O_Heli_Attack_02_F",10,round (1700 / GRLIB_recycling_percentage),20],
-	["O_Heli_Attack_02_black_F",10,round (1700 / GRLIB_recycling_percentage),20],
+	["O_Heli_Attack_02_dynamicLoadout_black_F",10,round (1700 / GRLIB_recycling_percentage),20],
 	["O_Heli_Attack_02_dynamicLoadout_F",10,round (1700 / GRLIB_recycling_percentage),20],
 	["O_Heli_Attack_02_dynamicLoadout_F",10,round (1700 / GRLIB_recycling_percentage),20],
 	["O_Heli_Light_02_dynamicLoadout_F",10,round (1600 / GRLIB_recycling_percentage),20],
