@@ -26,6 +26,7 @@ if (isDedicated) exitWith {};
 
 FAR_Player_MPKilled = {
 	params ["_unit"];
+	_unit connectTerminalToUAV objNull;
 	removeAllWeapons _unit;
 	hidebody _unit;
 
@@ -79,6 +80,9 @@ waitUntil {sleep 1;GRLIB_player_spawned};
 [] spawn FAR_Player_Init;
 
 if (FAR_MuteACRE) then {[] spawn FAR_Mute_ACRE};
+
+// UI Event Handler
+inGameUISetEventHandler ["Action", "if (_this select 3 == 'DisAssemble') then { hintSilent 'You are not allowed to do this';true}"];
 
 // Event Handlers
 player addEventHandler ["Respawn", {[] spawn FAR_Player_Init}];

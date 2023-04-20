@@ -15,7 +15,7 @@ _sendPara = {
 
 	_newvehicle flyInHeight (100 + (random 60));
 	createVehicleCrew _newvehicle;
-	sleep 0.1;
+	sleep 1;
 
 	private _pilot_group = group ((crew _newvehicle) select 0);
 	_newvehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];

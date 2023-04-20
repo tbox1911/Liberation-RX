@@ -1,6 +1,14 @@
 params ["_unit"];
 // Cleanup
-{_unit removeAllEventHandlers _x} count ["GetInMan","GetOutMan","SeatSwitchedMan","InventoryOpened","InventoryClosed","FiredMan"];
+{_unit removeAllEventHandlers _x} count [
+	"GetInMan",
+	"GetOutMan",
+	"SeatSwitchedMan",
+	"InventoryOpened",
+	"InventoryClosed",
+	"FiredMan",
+	"WeaponAssembled"
+];
 
 // For all
 // Check Veh perms
@@ -32,6 +40,11 @@ _unit addEventHandler ["InventoryOpened", {
 		playsound "ZoomIn";
 	};
 	_ret;
+}];
+
+_unit addEventHandler ["WeaponAssembled", {
+	params ["_unit", "_staticWeapon"];
+	if ((typeOf _staticWeapon) in uavs) then { [_staticWeapon] spawn F_forceBluforCrew };
 }];
 
 // No mines in the base zone + pay artillery fire

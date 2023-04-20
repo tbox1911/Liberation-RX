@@ -95,6 +95,7 @@ _vehicle allowDamage false;
 _vehicle flyInHeight (100 + (random 60));
 
 createVehicleCrew _vehicle;
+sleep 1;
 _pilots = crew _vehicle;
 { _x addMPEventHandler ["MPKilled", {_this spawn kill_manager}] } foreach _pilots;
 _pilots joinSilent _air_grp;

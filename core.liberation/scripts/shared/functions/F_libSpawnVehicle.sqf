@@ -46,7 +46,7 @@ if ( _classname in militia_vehicles ) then {
 	[ _newvehicle ] call F_libSpawnMilitiaCrew;
 } else {
 	createVehicleCrew _newvehicle;
-	sleep 0.1;
+	sleep 1;
 	{ _x addMPEventHandler ['MPKilled', {_this spawn kill_manager}]; } foreach (crew _newvehicle);
 };
 
