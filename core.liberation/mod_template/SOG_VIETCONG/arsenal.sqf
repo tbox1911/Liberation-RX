@@ -24,7 +24,7 @@ blacklisted_weapon = [
 >>>>>>> f2f07e03 (sog missing scope)
 ];
 
-GRLIB_whitelisted_from_arsenal = [
+whitelisted_from_arsenal = [
 	"MineDetector",
 	"Binocular",
 	"ItemCompass",

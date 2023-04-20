@@ -148,7 +148,7 @@ blacklisted_weapon = [
 	"O_V_Soldier_Viper_hex_F"
 ];
 
-GRLIB_whitelisted_from_arsenal = [
+whitelisted_from_arsenal = [
 	"FirstAidKit",
 	"Medikit",
 	"ToolKit",

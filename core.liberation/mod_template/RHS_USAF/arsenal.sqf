@@ -29,7 +29,7 @@ blacklisted_bag = [
 blacklisted_weapon = [
 ];
 
-GRLIB_whitelisted_from_arsenal = [
+whitelisted_from_arsenal = [
 	"FirstAidKit",
 	"Medikit",
 	"ToolKit",

@@ -2,7 +2,7 @@
  * MAIN CONFIGURATION FILE
  *
  * English and French comments
- * Commentaires anglais et franéais
+ * Commentaires anglais et français
  *
  * (EN)
  * This file contains the configuration variables of the logistics system.
