@@ -1,6 +1,6 @@
 /**
- * Recherche p�riodiquement les nouveaux objets pour leur ajouter les fonctionnalit�s de logistique si besoin
- * Script � faire tourner dans un fil d'ex�cution d�di�
+ * Recherche périodiquement les nouveaux objets pour leur ajouter les fonctionnalités de logistique si besoin
+ * Script é faire tourner dans un fil d'exécution dédié
  * 
  * Copyright (C) 2014 Team ~R3F~
  * 
@@ -18,14 +18,14 @@ private
 	"_liste_purge", "_seuil_nb_statiques_avant_purge", "_seuil_nb_vehicules_avant_purge"
 ];
 
-// Contiendra la liste des objets d�j� parcourus r�cup�r�s avec la commande "vehicles"
+// Contiendra la liste des objets déjé parcourus récupérés avec la commande "vehicles"
 _liste_vehicules_connus = [];
-// Contiendra la liste des objets d�rivant de "Static" (caisse de mun, drapeau, ...) d�j� parcourus r�cup�r�s avec la commande "nearestObjects"
+// Contiendra la liste des objets dérivant de "Static" (caisse de mun, drapeau, ...) déjé parcourus récupérés avec la commande "nearestObjects"
 _liste_statiques_connus = [];
-// Contiendra la liste des objets "Static" r�cup�r�s lors du tour de boucle pr�c�cent (optimisation des op�rations sur les tableaux)
+// Contiendra la liste des objets "Static" récupérés lors du tour de boucle précécent (optimisation des opérations sur les tableaux)
 _liste_statiques_cycle_precedent = [];
 
-// Indices du tableau des fonctionnalit�s retourn� par R3F_LOG_FNCT_determiner_fonctionnalites_logistique
+// Indices du tableau des fonctionnalités retourné par R3F_LOG_FNCT_determiner_fonctionnalites_logistique
 #define __can_be_depl_heli_remorq_transp 0
 #define __can_be_moved_by_player 1
 #define __can_lift 2
@@ -37,9 +37,9 @@ _liste_statiques_cycle_precedent = [];
 #define __can_be_transported_cargo 8
 #define __can_be_transported_cargo_cout 9
 
-// P�riode de recherche des objets d�rivant de "Static"
+// Période de recherche des objets dérivant de "Static"
 #define __tempo 3
-// Utiliser la commande vehicles une fois tout les X cycles de p�riode __tempo
+// Utiliser la commande vehicles une fois tout les X cycles de période __tempo
 #define __nb_cycles_commande_vehicles 4
 
 _compteur_cyclique = 0;
@@ -50,12 +50,12 @@ while {true} do
 {
 	if (!isNull player) then
 	{
-		// Tout les __nb_cycles_commande_vehicles ou sur ordre, on r�cup�re les nouveaux v�hicules du jeu
+		// Tout les __nb_cycles_commande_vehicles ou sur ordre, on récupére les nouveaux véhicules du jeu
 		if (_compteur_cyclique == 0 || R3F_LOG_PUBVAR_nouvel_objet_a_initialiser) then
 		{
 			R3F_LOG_PUBVAR_nouvel_objet_a_initialiser = false; // Acquittement local
 			
-			// Purge de _liste_vehicules_connus quand n�cessaire
+			// Purge de _liste_vehicules_connus quand nécessaire
 			if (count _liste_vehicules_connus > _seuil_nb_vehicules_avant_purge) then
 			{
 				_liste_purge = [];
@@ -70,7 +70,7 @@ while {true} do
 				_seuil_nb_vehicules_avant_purge = count _liste_vehicules_connus + 75;
 			};
 			
-			// Purge de _liste_statiques_connus quand n�cessaire
+			// Purge de _liste_statiques_connus quand nécessaire
 			if (count _liste_statiques_connus > _seuil_nb_statiques_avant_purge) then
 			{
 				_liste_purge = [];
@@ -90,7 +90,7 @@ while {true} do
 				_seuil_nb_statiques_avant_purge = count _liste_statiques_connus + 150;
 			};
 			
-			// R�cup�ration des nouveaux v�hicules
+			// Récupération des nouveaux véhicules
 			_liste_nouveaux_objets = vehicles - _liste_vehicules_connus;
 			_liste_vehicules_connus = _liste_vehicules_connus + _liste_nouveaux_objets;
 		}
@@ -100,8 +100,8 @@ while {true} do
 		};
 		_compteur_cyclique = (_compteur_cyclique + 1) mod __nb_cycles_commande_vehicles;
 		
-		// En plus des nouveaux v�hicules, on r�cup�re les statiques (caisse de mun, drapeau, ...) proches du joueur non connus
-		// Optimisation "_liste_statiques_cycle_precedent" : et qui n'�taient pas proches du joueur au cycle pr�c�dent
+		// En plus des nouveaux véhicules, on récupére les statiques (caisse de mun, drapeau, ...) proches du joueur non connus
+		// Optimisation "_liste_statiques_cycle_precedent" : et qui n'étaient pas proches du joueur au cycle précédent
 		_liste_statiques = nearestObjects [player, ["Static"], 25];
 		if (count _liste_statiques != 0) then
 		{
@@ -126,7 +126,7 @@ while {true} do
 				_objet = _liste_nouveaux_objets select _i;
 				_fonctionnalites = [typeOf _objet] call R3F_LOG_FNCT_determiner_fonctionnalites_logistique;
 				
-				// Si au moins une fonctionnalit�
+				// Si au moins une fonctionnalité
 				if (
 					_fonctionnalites select __can_be_depl_heli_remorq_transp ||
 					_fonctionnalites select __can_lift ||
@@ -141,32 +141,32 @@ while {true} do
 						_objet setVariable ["R3F_LOG_disabled", R3F_LOG_CFG_disabled_by_default, false];
 					};
 					
-					// Si l'objet est un objet d�pla�able/h�liportable/remorquable/transportable
+					// Si l'objet est un objet déplaéable/héliportable/remorquable/transportable
 					if (_fonctionnalites select __can_be_depl_heli_remorq_transp) then
 					{
 						[_objet] call R3F_LOG_FNCT_objet_init;
 					};
 					
-					// Si l'objet est un v�hicule h�liporteur
+					// Si l'objet est un véhicule héliporteur
 					if (_fonctionnalites select __can_lift) then
 					{
 						[_objet] call R3F_LOG_FNCT_heliporteur_init;
 					};
 					
-					// Si l'objet est un v�hicule remorqueur
+					// Si l'objet est un véhicule remorqueur
 					if (_fonctionnalites select __can_tow) then
 					{
 						[_objet] call R3F_LOG_FNCT_remorqueur_init;
 					};
 					
-					// Si l'objet est un v�hicule transporteur
+					// Si l'objet est un véhicule transporteur
 					if (_fonctionnalites select __can_transport_cargo) then
 					{
 						[_objet] call R3F_LOG_FNCT_transporteur_init;
 					};
 				};
 				
-				// Si l'objet a �t� cr�� depuis une usine, on ajoute la possibilit� de revendre � l'usine, quelque soit ses fonctionnalit�s logistiques
+				// Si l'objet a été créé depuis une usine, on ajoute la possibilité de revendre é l'usine, quelque soit ses fonctionnalités logistiques
 				if (_objet getVariable ["R3F_LOG_CF_depuis_usine", false]) then
 				{
 					_objet addAction [("<t color=""#ff9600"">" + format [STR_R3F_LOG_action_revendre_usine_direct, getText (configOf _objet >> "displayName")] + "</t>"), {_this call R3F_LOG_FNCT_usine_revendre_direct}, nil, 5, false, true, "", "!R3F_LOG_mutex_local_verrou && R3F_LOG_objet_addAction == _target && R3F_LOG_action_revendre_usine_direct_valide"];

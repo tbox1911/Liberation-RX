@@ -35,6 +35,8 @@ class liberation_admin {
     "Item03Button",
     "Item04Button",
     "Item05Input",
+    "Item06Button",
+    "Item07Button",    
 	  "CancelButton",
     "teleport_cb_text",
     "godmod_cb_text",
@@ -194,6 +196,24 @@ class liberation_admin {
 		colorSelection[] = COLOR_BRIGHTGREEN;
 		autocomplete = "";
 	};
+  class Item06Button: RscActiveText {
+    idc = 1621;
+    action = "do_kick=1";
+    text = "";
+    x = 0.2275 * safezoneW + safezoneX;
+    y = 0.466 * safezoneH + safezoneY;
+    w = 0.0290 * safezoneW;
+    h = 0.04 * safezoneH;
+  };
+  class Item07Button: RscActiveText {
+    idc = 1622;
+    action = "do_ban=1";
+    text = "";
+    x = 0.2567 * safezoneW + safezoneX;
+    y = 0.466 * safezoneH + safezoneY;
+    w = 0.0290 * safezoneW;
+    h = 0.04 * safezoneH;
+  };
   class PlayerList: StdCombo {
     idc = 1612;
     x = 0.3275 * safezoneW + safezoneX;

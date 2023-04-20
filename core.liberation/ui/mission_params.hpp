@@ -17,7 +17,7 @@ class Params
 		values[] = { 1, 0 };
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 0;
-	};	
+	};
 	class Unitcap{
 		title = $STR_PARAMS_UNITCAP;
 		values[] = {0.5,0.75,1,1.25,1.5,2};
@@ -63,15 +63,15 @@ class Params
 	class FilterArsenal {
 		title = $STR_LIMIT_ARSENAL;
 		values[] = { 0,1,2 };
-		texts[] = {$STR_PARAMS_DISABLED, $STR_PARAMS_ENABLED, "Strict" };
+		texts[] = {$STR_PARAMS_DISABLED, $STR_LIMIT_ARSENAL_PARAM1, $STR_LIMIT_ARSENAL_PARAM2 };
 		default = 1;
-	};	
+	};
 	class Space8 {
 		title = "";
 		values[] = { "" };
 		texts[] = { "" };
 		default = "";
-	};	
+	};
 	class ModPresetWest {
 		title = "MOD Preset - Friendly";
 		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25 };
@@ -141,7 +141,7 @@ class Params
 					"CWR Cold War Rearmed III - SOVIET"
 				};
 		default = 0;
-	};	
+	};
 	class Space5 {
 		title = "";
 		values[] = { "" };

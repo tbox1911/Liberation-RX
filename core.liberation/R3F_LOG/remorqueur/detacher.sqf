@@ -1,7 +1,7 @@
 /**
- * D�tacher un objet d'un v�hicule
+ * Détacher un objet d'un véhicule
  *
- * @param 0 l'objet � d�tacher
+ * @param 0 l'objet é détacher
  *
  * Copyright (C) 2014 Team ~R3F~
  *
@@ -23,7 +23,7 @@ else
 	_objet = _this select 0;
 	_remorqueur = _objet getVariable "R3F_LOG_est_transporte_par";
 
-	// Ne pas permettre de d�crocher un objet s'il est en fait h�liport�
+	// Ne pas permettre de décrocher un objet s'il est en fait héliporté
 	if (_remorqueur getVariable "R3F_LOG_fonctionnalites" select R3F_LOG_IDX_can_tow) then
 	{
 		[_objet, player] call R3F_LOG_FNCT_definir_proprietaire_verrou;
@@ -31,7 +31,7 @@ else
 		_remorqueur setVariable ["R3F_LOG_remorque", objNull, true];
 		_objet setVariable ["R3F_LOG_est_transporte_par", objNull, true];
 
-		// Le l�ger setVelocity vers le haut sert � defreezer les objets qui pourraient flotter.
+		// Le léger setVelocity vers le haut sert é defreezer les objets qui pourraient flotter.
 		[_objet, "detachSetVelocity", [0, 0, 0.1]] call R3F_LOG_FNCT_exec_commande_MP;
 
 		player playMove format ["AinvPknlMstpSlay%1Dnon_medic", switch (currentWeapon player) do
