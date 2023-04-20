@@ -342,5 +342,5 @@ while {deleteManagerPublic} do {
 	};
     sleep 1;
 
-	diag_log format ["--- LRX Garbage Collector --- run at %1 delete %2 objects", round(time), _stats];
+	diag_log format ["--- LRX Garbage Collector --- Run at: %1 - Delete: %2 objects - FPS: %3)", round(time), _stats, diag_fps];
 };

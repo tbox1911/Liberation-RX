@@ -127,6 +127,21 @@ class CfgNotifications
     {
 		description = $STR_NOTIFICATION_CONVOY_DESTROYED_TEXT;
     };
+	class lib_secondary_a3w_mission : lib_secondary_fob_destroyed
+	{
+		description = "<br/>Side Mission %1 Started.";
+		color[] = {0,0,1,1};
+	};
+	class lib_secondary_a3w_mission_success : lib_secondary_a3w_mission
+	{
+		description = "<br/>Side Mission %1 Success.";
+		color[] = {0,1,0,1};
+	};
+	class lib_secondary_a3w_mission_fail : lib_secondary_a3w_mission
+	{
+		description = "<br/>Side Mission %1 Fail.";
+		color[] = {1,0,0,1};
+	};
 	class lib_reinforcements : lib_default_notification
     {
 		title = $STR_NOTIFICATION_REINFORCEMENTS_TITLE;
