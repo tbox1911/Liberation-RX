@@ -1,6 +1,5 @@
 diag_log "--- Client Init start ---";
 titleText ["Loading...","BLACK FADED", 1000];
-disableUserInput true;
 
 respawn_lhd = compileFinal preprocessFileLineNumbers "scripts\client\spawn\respawn_lhd.sqf";
 spawn_camera = compileFinal preprocessFileLineNumbers "scripts\client\spawn\spawn_camera.sqf";

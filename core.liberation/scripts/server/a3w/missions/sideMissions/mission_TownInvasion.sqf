@@ -6,14 +6,13 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_nbUnits", "_box1", "_box2", "_townName", "_putOnRoof", "_fillEvenly", "_tent1", "_chair1", "_chair2", "_fire1"];
+private ["_nbUnits", "_box1", "_box2", "_townName", "_buildingpositions", "_tent1", "_chair1", "_chair2", "_fire1"];
 
 _setupVars =
 {
 	_missionType = "Town Invasion";
-	_nbUnits = if (count AllPlayers > 2) then { AI_GROUP_LARGE } else { AI_GROUP_MEDIUM };
-	//randomize amount of units
-	_nbUnits = _nbUnits + 5 + round(random (_nbUnits*0.5));
+	_nbUnits = 10;
+	_nbUnits = _nbUnits + round(random (_nbUnits*0.4));
 
 	// settings for this mission
 	_missionLocation = selectRandom ((blufor_sectors select {["capture_", _x] call fn_startsWith;}) apply {[_x, false]}) select 0;
@@ -24,7 +23,7 @@ _setupVars =
 
 _setupObjects =
 {
-	_missionPos = (markerPos _missionLocation vectorAdd [([[-100,0,100], 20] call F_getRND), ([[-100,0,100], 20] call F_getRND), 0]);
+	_missionPos = (markerPos _missionLocation vectorAdd [([[-50,0,50], 20] call F_getRND), ([[-50,0,50], 20] call F_getRND), 0]);
 
 	// spawn some crates in the middle of town (Town marker position)
 	_box1 = [A3W_BoxWps, _missionPos, true] call boxSetup;
@@ -41,15 +40,22 @@ _setupObjects =
 
 	{ _x setVariable ["R3F_LOG_disabled", true, true] } forEach [_tent1, _chair1, _chair2, _fire1];
 
-	_aiGroup = createGroup [GRLIB_side_enemy, true];
-	[_aiGroup, _missionPos, _nbUnits, "infantry", false] call createCustomGroup;
+	// get Houses nearbby
+	_allbuildings = [ nearestObjects [_missionPos, ["House"], 100 ], { alive _x } ] call BIS_fnc_conditionalSelect;
+	_buildingpositions = [];
+	{
+		_buildingpositions = _buildingpositions + ( [_x] call BIS_fnc_buildingPositions );
+	} foreach _allbuildings;
 
-	// 25% change on AI not going on rooftops
-	if (random 1 < 0.75) then { _putOnRoof = true } else { _putOnRoof = false };
-	// 25% chance on AI trying to fit into a single building instead of spreading out
-	if (random 1 < 0.75) then { _fillEvenly = true } else { _fillEvenly = false };
+	// spawn some enemies
+	_managed_units = (["infantry", (_nbUnits - 3), _buildingpositions, _missionPos] call F_spawnBuildingSquad);
+	if (count _managed_units > 0) then {
+		_aiGroup = group leader (_managed_units select 0);
+	} else {
+		_aiGroup = createGroup [GRLIB_side_enemy, true];
+	};
+	[_aiGroup, _missionPos, (_nbUnits - (count _managed_units)) , "infantry"] call createCustomGroup;
 
-	[_aiGroup, _missionPos, 200, _fillEvenly, _putOnRoof] call moveIntoBuildings;
 	[_missionPos, 25] call createlandmines;
 
 	_missionHintText = format ["Hostiles have taken over <br/><t size='1.25' color='%1'>%2</t><br/><br/>There seem to be <t color='%1'>%3 enemies</t> hiding inside or on top of buildings. Get rid of them all, and take their supplies!<br/>Watch out for those windows!", sideMissionColor, _townName, _nbUnits];

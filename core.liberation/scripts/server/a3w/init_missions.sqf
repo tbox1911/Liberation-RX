@@ -19,11 +19,11 @@ cleanlocationobjects = compileFinal preprocessFileLineNumbers "scripts\server\a3
 createMissionMarker = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_createMissionMarker.sqf";
 processItems = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_processItems.sqf";
 createCustomGroup = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_createCustomGroup.sqf";
-moveIntoBuildings = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_moveIntoBuildings.sqf";
 getBallMagazine = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_getBallMagazine.sqf";
 missionHint = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_missionHint.sqf";
 checkSpawn = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_checkSpawn.sqf";
 updateMissionsList = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_updateMissionsList.sqf";
+getNbUnits = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_getNbUnits.sqf";
 
 waitUntil {sleep 1; !isNil "blufor_sectors" };
 waitUntil {sleep 1; !isNil "sectors_allSectors" };
@@ -31,4 +31,4 @@ waitUntil {sleep 1; !isNil "save_is_loaded" };
 
 diag_log "- A3W Initializing Missions-";
 [] call compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionArrays.sqf";
-[] execVM "scripts\server\a3w\missions\masterController.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\masterController.sqf";

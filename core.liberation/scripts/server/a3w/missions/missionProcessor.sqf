@@ -29,7 +29,7 @@ if (!isNil "_locationsArray") then {
 		_availableLocations = [_locationsArray, { !(_x select 1) && diag_tickTime - (_x param [2, -1e11]) >= MISSION_LOCATION_COOLDOWN}] call BIS_fnc_conditionalSelect;
 
 		if (count _availableLocations > 0) exitWith {};
-		uiSleep 60;
+		sleep 60;
 	};
 
 	_missionLocation = (_availableLocations call BIS_fnc_selectRandom) select 0;
@@ -63,7 +63,7 @@ _oldAiCount = 0;
 if (isNil "_ignoreAiDeaths") then { _ignoreAiDeaths = false };
 
 waitUntil {
-	uiSleep 1;
+	sleep 1;
 
 	_leaderTemp = leader _aiGroup;
 

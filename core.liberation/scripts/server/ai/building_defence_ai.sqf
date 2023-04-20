@@ -1,30 +1,28 @@
 params [ "_unit", [ "_sector", "" ] ];
-private [ "_move_is_disabled", "_hostilecount", "_targett", "_resume_movement" ];
+private [ "_move_is_disabled", "_hostilecount", "_targett", "_resume_movement", "_hostile_side" ];
 
-if (GRLIB_AI_toggle) then {
-	GRLIB_AI_toggle = false;
-	_unit setUnitPos "UP";
-	_unit disableAI "MOVE";
-	_move_is_disabled = true;
-	_resume_movement = false;
-} else {
-	GRLIB_AI_toggle = true;
-	_unit setUnitPos "AUTO";
-	_unit enableAI "MOVE";
-	_move_is_disabled = false;
-	_resume_movement = true;
+_unit setUnitPos "UP";
+_unit disableAI "MOVE";
+_move_is_disabled = true;
+_resume_movement = false;
+_hostile_side = GRLIB_side_friendly;
+if (side _unit != GRLIB_side_enemy) then {
+	_hostile_side = GRLIB_side_enemy;
 };
 
 while { _move_is_disabled && local _unit && alive _unit && !(captive _unit) } do {
-	_hostilecount = { alive _x && side _x == GRLIB_side_friendly } count ( (getpos _unit) nearEntities [ ["Man"], 20 ] );
-
+	_hostilecount = { alive _x && side _x == _hostile_side } count ( (getpos _unit) nearEntities [ ["Man"], 50 ] );
 
 	if ( _hostilecount > 0 || ( damage _unit > 0.25 ) ) then {
 		_resume_movement = true;
 	};
 
 	if ( _sector != "" ) then {
-		if ( _sector in blufor_sectors ) then {
+		_hostile_sectors = blufor_sectors;
+		if (side _unit != GRLIB_side_enemy) then {
+			_hostile_sectors = sectors_allSectors - blufor_sectors;
+		};
+		if ( _sector in _hostile_sectors ) then {
 			_resume_movement = true;
 		};
 	};

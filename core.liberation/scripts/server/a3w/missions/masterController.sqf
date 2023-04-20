@@ -10,5 +10,5 @@ missionNamespace setVariable ["sideMissionProcessor",  compileFinal preprocessFi
 for "_i" from 1 to 4 do {
 	// Start Permanent controller
 	sleep (floor random [5,10,15] * 60);
-	[_i, false] execVM "scripts\server\a3w\missions\sideMissionController.sqf";
+	[_i, false] spawn compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\sideMissionController.sqf";
 };

@@ -8,7 +8,7 @@ if (!isNil "GRLIB_A3W_Mission_MR") exitWith {};
 #include "sideMissionDefines.sqf"
 
 private ["_nbUnits", "_townName",
-		 "_aiGroupRes", "_putOnRoof", "_fillEvenly",
+		 "_aiGroupRes", "_buildingpositions",
 		 "_tent1", "_chair1", "_chair2", "_fire1",
 		 "_box1", "_box2",
 		 "_veh1", "_veh2"];
@@ -16,20 +16,20 @@ private ["_nbUnits", "_townName",
 _setupVars =
 {
 	_missionType = "The Resistance";
+	_nbUnits = 6;
+	_nbUnits = _nbUnits + round(random (_nbUnits*0.5));
+
 	// settings for this mission
 	_missionLocation = selectRandom ((blufor_sectors select {["capture_", _x] call fn_startsWith;}) apply {[_x, false]}) select 0 ;
 	_townName = markerText _missionLocation;
 	_ignoreAiDeaths = true;
 
-	//randomize amount of Resistance units
-	_nbUnits = 6;
-	_nbUnits = _nbUnits + round(random (_nbUnits*0.5));
 	_locationsArray = nil;
 };
 
 _setupObjects =
 {
-	_missionPos = (markerPos _missionLocation vectorAdd [([[-150,0,150], 20] call F_getRND), ([[-150,0,150], 20] call F_getRND), 0]);
+	_missionPos = (markerPos _missionLocation vectorAdd [([[-50,0,50], 20] call F_getRND), ([[-50,0,50], 20] call F_getRND), 0]);
 
 	// spawn some crates in the middle of town (Town marker position)
 	_box1 = [A3W_BoxWps, _missionPos, true] call boxSetup;
@@ -43,31 +43,41 @@ _setupObjects =
 	_chair2 = createVehicle ["Land_CampingChair_V2_F", _missionPos, [], 2, "None"];
 	_chair2 setDir random 180;
 	_fire1	= createVehicle ["Campfire_burning_F", _missionPos, [], 2, "None"];
-	// create static weapons
-	_veh1 = createVehicle ["B_static_AA_F", _missionPos, [], 50, "None"];
-	_veh1 setDir random 360;
-	_veh2 = createVehicle ["B_static_AA_F", _missionPos, [], 50, "None"];
-	_veh2 setDir random 360;
+
 	// R3F disable
 	{ _x setVariable ["R3F_LOG_disabled", true, true] } forEach [_tent1, _chair1, _chair2, _fire1];
 
+	// get Houses nearbby
+	_allbuildings = [ nearestObjects [_missionPos, ["House"], 100 ], { alive _x } ] call BIS_fnc_conditionalSelect;
+	_buildingpositions = [];
+	{
+		_buildingpositions = _buildingpositions + ( [_x] call BIS_fnc_buildingPositions );
+	} foreach _allbuildings;
+
 	// spawn some resistance
-	_aiGroupRes = createGroup [GRLIB_side_friendly, true];
-	[_aiGroupRes, _missionPos, _nbUnits, "resistance", false] call createCustomGroup;
+	_managed_units = (["resistance", (_nbUnits - 3), _buildingpositions, _missionPos] call F_spawnBuildingSquad);
+	if (count _managed_units > 0) then {
+		_aiGroupRes = group leader (_managed_units select 0);
+	} else {
+		_aiGroupRes = createGroup [GRLIB_side_resistance, true];
+	};
+	[_aiGroupRes, _missionPos, (_nbUnits - (count _managed_units)), "resistance"] call createCustomGroup;
+
+	// create static weapons
+	_veh1 = createVehicle ["I_static_AA_F", _missionPos, [], 50, "None"];
+	_veh1 setDir random 360;
+	createVehicleCrew _veh1;
+	(crew _veh1) joinSilent _aiGroupRes;
+
+	_veh2 = createVehicle ["I_static_AA_F", _missionPos, [], 50, "None"];
+	_veh2 setDir random 360;
+	createVehicleCrew _veh2;
+	(crew _veh2) joinSilent _aiGroupRes;
+
 	// remove dead body to let the leader change
-	{_x addEventHandler ["Killed", {_this spawn {sleep 20;hidebody (_this select 0);sleep 5;deleteVehicle (_this select 0)}}]} forEach units _aiGroupRes;
-
-	(units _aiGroupRes select 2) assignAsGunner _veh1;
-	(units _aiGroupRes select 3) assignAsGunner _veh2;
-
-	// 25% change on AI not going on rooftops
-	if (random 1 < 0.75) then { _putOnRoof = true } else { _putOnRoof = false };
-	// 25% chance on AI trying to fit into a single building instead of spreading out
-	if (random 1 < 0.75) then { _fillEvenly = true } else { _fillEvenly = false };
-	// move them into buildings
-	[_aiGroupRes, _missionPos, 200, _fillEvenly, _putOnRoof] call moveIntoBuildings;
-
+	//{_x addEventHandler ["Killed", {_this spawn {sleep 20;hidebody (_this select 0);sleep 5;deleteVehicle (_this select 0)}}]} forEach units _aiGroupRes;
 	{_x setVariable ['GRLIB_can_speak', true, true]} foreach units _aiGroupRes;
+
 	GRLIB_A3W_Mission_MRR = _aiGroupRes;
 	publicVariable "GRLIB_A3W_Mission_MRR";
 	_missionHintText = format ["Meet the Resistance at <br/><t size='1.25' color='%1'>%2</t><br/><br/><t color='#00F000'>Talk</t> to the <t color='#0000F0'>Leader</t> to get information.<br/>Be ready for any situation!", sideMissionColor, _townName];

@@ -166,6 +166,8 @@ GRLIB_whitelisted_from_arsenal = [
 	"optic_KHS_old",
 	"optic_ico_01_f",
 	"optic_ico_01_black_f",
+	"muzzle_snds_B",
+	"muzzle_snds_B_snd_F",
 	"muzzle_snds_M",
 	"muzzle_snds_H_MG",
 	"muzzle_snds_H_MG_blk_F",

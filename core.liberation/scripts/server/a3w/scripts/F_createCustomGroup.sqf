@@ -16,7 +16,7 @@ switch (_type) do {
 	case ("resistance"): { _unitTypes = resistance_squad };
 };
 
-unitSetSkill = {
+_unitSetSkill = {
     params ["_unit"];
 	_unit setSkill 0.65;
 	_unit setSkill ["courage", 1];
@@ -36,7 +36,7 @@ for "_i" from 1 to _nbUnits do {
 		_uPos = _pos vectorAdd ([[random _radius, 0, 0], random 360] call BIS_fnc_rotateVector2D);
 	};
 	_unit = _grp createUnit [_unitTypes call BIS_fnc_selectRandom, _uPos, [], 0, "NONE"];
-	[_unit] call unitSetSkill;
+	[_unit] call _unitSetSkill;
 };
 
 if (_patrol) then {
