@@ -10,7 +10,7 @@ while { GRLIB_endgame == 0 } do {
 		if ( _ownership == GRLIB_side_enemy ) then {
 			[ _x ] call attack_in_progress_sector;
 		};
-		sleep 0.5;
+		sleep 0.1;
 	} foreach blufor_sectors;
 
 	{
@@ -18,7 +18,7 @@ while { GRLIB_endgame == 0 } do {
 		if ( _ownership == GRLIB_side_enemy ) then {
 			[ _x ] call attack_in_progress_fob;
 		};
-		sleep 0.5;
+		sleep 0.1;
 	} foreach GRLIB_all_fobs;
 
 	sleep 5;

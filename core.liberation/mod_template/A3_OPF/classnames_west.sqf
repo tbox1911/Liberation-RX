@@ -19,7 +19,7 @@ medic_sling_typename = "Land_Pod_Heli_Transport_04_medevac_F";
 pilot_classname = "O_Helipilot_F";
 crewman_classname = "O_crew_F";
 chimera_vehicle_overide = [
-  ["B_Heli_Transport_01_F", "O_Heli_Light_02_F"]
+  ["B_Heli_Transport_01_F", "O_Heli_Light_02_dynamicLoadout_F"]
 ];
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]

@@ -139,7 +139,6 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 	resources_intel = greuh_liberation_savegame select 14;
 	GRLIB_player_scores = greuh_liberation_savegame select 15;
 
-	if (typeName GRLIB_player_context != "ARRAY") then {GRLIB_player_context = []};
 	setDate [ GRLIB_date_year, GRLIB_date_month, GRLIB_date_day, time_of_day, 0];
 
 	stats_saves_loaded = stats_saves_loaded + 1;
@@ -304,6 +303,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 	{ 
 		_allow_damage = true;
 		if ( (typeOf _x) in [FOB_typename, FOB_outpost, FOB_sign, playerbox_typename] ) then {
+			_x addEventHandler ["HandleDamage", { 0 }];
 			_allow_damage = false;
 		};
 		if ( (typeOf _x) in GRLIB_Ammobox_keep && [_x] call is_public ) then {

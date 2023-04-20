@@ -22,7 +22,7 @@ if (_unit == player) then {
 
 		// create grave box
 		_grave_box_pos = (getposATL _grave) vectorAdd ([[-1.75, 0, 0], -_grave_dir] call BIS_fnc_rotateVector2D);
-		_grave_box = "Land_PlasticCase_01_small_black_F" createVehicle _grave_box_pos;
+		_grave_box = GRLIB_player_gravebox createVehicle _grave_box_pos;
 		_grave_box setPosATL _grave_box_pos;
 		_grave_box attachto [_grave];
 		_grave_box setVariable ["R3F_LOG_disabled", true, true];

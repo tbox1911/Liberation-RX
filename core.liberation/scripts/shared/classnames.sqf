@@ -75,7 +75,7 @@ if ( isNil "militia_squad" ) then {
 		"O_G_Soldier_SL_F",
 		"O_G_Soldier_A_F",
 		"O_G_Soldier_AR_F",
-		"O_G_Soldier_AR_F",	
+		"O_G_Soldier_AR_F",
 		"O_G_medic_F",
 		"O_G_engineer_F",
 		"O_G_Soldier_exp_F",
@@ -83,7 +83,7 @@ if ( isNil "militia_squad" ) then {
 		"O_G_Soldier_M_F",
 		"O_G_Soldier_F",
 		"O_G_Soldier_LAT_F",
-		"O_G_Soldier_LAT_F",	
+		"O_G_Soldier_LAT_F",
 		"O_G_Soldier_lite_F",
 		"O_G_Sharpshooter_F",
 		"O_G_Soldier_TL_F",
@@ -143,16 +143,16 @@ support_vehicles = support_vehicles + [
 	[Respawn_truck_typename,15,150,5,GRLIB_perm_log],
 	["Land_RepairDepot_01_civ_F",10,300,0,GRLIB_perm_log],
 	["Land_MedicalTent_01_MTP_closed_F",5,150,0,GRLIB_perm_log],
-	[repair_sling_typename,10,300,0,GRLIB_perm_log],
+	[repair_sling_typename,0,200,0,GRLIB_perm_log],
 	[fuel_sling_typename,0,150,60,GRLIB_perm_log],
-	[ammo_sling_typename,0,600,0,GRLIB_perm_log],
+	[ammo_sling_typename,0,400,0,GRLIB_perm_log],
 	[medic_sling_typename,0,150,0,GRLIB_perm_log],
-	[ammo_truck_typename,5,600,10,GRLIB_perm_tank],
-	[repair_truck_typename,0,300,30,GRLIB_perm_tank],
+	[ammo_truck_typename,5,400,10,GRLIB_perm_tank],
+	[repair_truck_typename,5,200,30,GRLIB_perm_tank],
 	[fuel_truck_typename,5,150,70,GRLIB_perm_tank],
 	[FOB_box_outpost,5,500,20,GRLIB_perm_log],
-	[FOB_box_typename,10,1500,40,GRLIB_perm_max],
-	[FOB_truck_typename,50,1500,50,GRLIB_perm_max],
+	[FOB_box_typename,5,1500,80,GRLIB_perm_max],
+	[FOB_truck_typename,5,1500,150,GRLIB_perm_max],
 	[fireworks_typename,0,500,0,GRLIB_perm_max],
 	[ammobox_b_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
 	[ammobox_o_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
@@ -525,21 +525,18 @@ box_transport_offset = [];
 // Following entries: attachTo position for each box, the number of boxes that can be loaded is derived from the number of entries
 box_transport_config = [
 	[ "C_Offroad_01_F", -5, [0, -1.55, 0.2] ],
-	[ "B_G_Offroad_01_F", -5, [0, -1.55, 0.2] ],
-	[ "I_G_Offroad_01_F", -5, [0, -1.55, 0.2] ],
-	[ "O_G_Offroad_01_F", -5, [0, -1.55, 0.2] ],
-	[ "O_Truck_03_transport_F", -6.5, [0, -0.8, 0.4], [0, -2.4, 0.4], [0, -4.0, 0.4] ],
-	[ "B_Truck_01_transport_F", -6.5, [0, -0.4, 0.4], [0, -2.1, 0.4], [0, -3.8, 0.4] ],
-	[ "B_Truck_01_covered_F", -6.5, [0, -0.4, 0.4], [0, -2.1, 0.4], [0, -3.8, 0.4] ],
-	[ "B_Truck_01_medical_F", -6.5, [0, -0.4, 0.4], [0, -2.1, 0.4], [0, -3.8, 0.4] ],
-	[ "B_Heli_Transport_03_F", -7.5, [0, 2.2, -1], [0, 0.8, -1], [0, -1.0, -1] ],
-	[ "B_Heli_Transport_03_unarmed_F", -7.5, [0, 2.2, -1], [0, 0.8, -1], [0, -1.0, -1] ],
-	[ "I_Truck_02_transport_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
-	[ "I_Truck_02_covered_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
+	[ "C_IDAP_Offroad_01_F", -5, [0, -1.55, 0.2] ],
+	[ "C_Van_01_box_F", -5.3, [0, -1.05, 0.2], [0, -2.6, 0.2] ],
+	[ "C_Van_01_transport_F", -5.3, [0, -1.05, 0.2], [0, -2.6, 0.2] ],
+	[ "C_Van_02_transport_F", -5, [0,-1.75,0]],
+	[ "C_Van_02_vehicle_F", -5, [0,0.5,0], [0,-1.75,0]],
+    [ "C_IDAP_Van_02_vehicle_F", -5, [0,0.5,0], [0,-1.75,0]],
+	[ "C_IDAP_Van_02_transport_F", -5, [0,-1.75,0]],
 	[ "C_Truck_02_transport_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
 	[ "C_Truck_02_covered_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
-	[ "C_Van_01_box_F", -5.3, [0, -1.05, 0.2], [0, -2.6, 0.2] ],
-	[ "C_Van_01_transport_F", -5.3, [0, -1.05, 0.2], [0, -2.6, 0.2] ]
+	[ "C_IDAP_Truck_02_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
+	[ "C_IDAP_Truck_02_transport_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
+	[ "C_IDAP_Heli_Transport_02_F", -6.5, [0, 4.2, -1.45], [0, 2.5, -1.45], [0, 0.8, -1.45], [0, -0.9, -1.45] ]
 ] + box_transport_config;
 
 transport_vehicles = [];
@@ -754,6 +751,7 @@ GRLIB_player_grave = [
 	"Land_Grave_forest_F",
 	"Land_Grave_dirt_F"
 ];
+GRLIB_player_gravebox = "Land_PlasticCase_01_small_black_F";
 
 // Air Drop Support
 if ( isNil "GRLIB_AirDrop_Taxi_cost" ) then {

@@ -142,8 +142,8 @@ static_vehicles_AI = [
 ];
 
 support_vehicles_west = [
-	["B_G_Offroad_01_repair_F",5,15,5,GRLIB_perm_inf],
-	["B_G_Van_01_fuel_F",5,15,20,GRLIB_perm_inf],
+	["B_G_Offroad_01_repair_F",5,150,5,GRLIB_perm_inf],
+	["B_G_Van_01_fuel_F",5,130,40,GRLIB_perm_inf],
 	["B_APC_Tracked_01_CRV_F",15,2000,50,GRLIB_perm_max]
 ];
 

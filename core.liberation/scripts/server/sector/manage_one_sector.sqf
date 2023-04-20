@@ -1,5 +1,8 @@
 params [ "_sector" ];
 
+active_sectors pushback _sector;
+publicVariable "active_sectors";
+
 private _sectorpos = getmarkerpos _sector;
 private _stopit = false;
 private _spawncivs = false;
@@ -20,19 +23,15 @@ private _max_prisonners = 5;
 private _sector_despawn_tickets = 24;
 private _popfactor = 1;
 
-if ( isNil "active_sectors" ) then { active_sectors = [] };
-if ( _sector in active_sectors ) exitWith {};
-active_sectors pushback _sector; publicVariable "active_sectors";
-
 diag_log format ["Spawn Defend Sector %1 at %2", _sector, time];
 
 if ( GRLIB_adaptive_opfor ) then {
-	private _activeplayers = count ([allPlayers, {alive _x && (_x distance2D (getmarkerpos _sector)) < GRLIB_sector_size}] call BIS_fnc_conditionalSelect);
+	private _active_players = count ([getmarkerpos _sector, GRLIB_sector_size] call F_getNearbyPlayers);
 	switch (true) do {
-		case (_activeplayers > 6) : { _popfactor = 1.4 };
-		case (_activeplayers > 4) : { _popfactor = 1.3 };
-		case (_activeplayers > 2) : { _popfactor = 1.2 };
-		case (_activeplayers > 1) : { _popfactor = 1.1 };
+		case (_active_players > 6) : { _popfactor = 1.4 };
+		case (_active_players > 4) : { _popfactor = 1.3 };
+		case (_active_players > 2) : { _popfactor = 1.2 };
+		case (_active_players > 1) : { _popfactor = 1.1 };
 		default { _popfactor = GRLIB_unitcap };
 	};
 };
@@ -213,7 +212,8 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 			} foreach _enemy_left;
 			sleep 60;
 
-			active_sectors = active_sectors - [ _sector ]; publicVariable "active_sectors";
+			active_sectors = active_sectors - [ _sector ];
+			publicVariable "active_sectors";
 			{ _x setVariable ["GRLIB_counter_TTL", 0] } foreach _managed_units;
 			[ _sector ] spawn reinforcements_manager;
 		} else {
@@ -233,14 +233,16 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 					};
 				} foreach _managed_units;
 				_stopit = true;
-				active_sectors = active_sectors - [ _sector ]; publicVariable "active_sectors";
+				active_sectors = active_sectors - [ _sector ];
+				publicVariable "active_sectors";
 			};
 		};
 		sleep 5;
 	};
 } else {
 	sleep 40;
-	active_sectors = active_sectors - [ _sector ]; publicVariable "active_sectors";
+	active_sectors = active_sectors - [ _sector ];
+	publicVariable "active_sectors";
 };
 
 diag_log format ["End Defend Sector %1 at %2", _sector, time];

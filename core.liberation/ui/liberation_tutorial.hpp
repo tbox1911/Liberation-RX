@@ -88,7 +88,7 @@ class liberation_tutorial {
 	 	style = 0;
 		x = (0.35 * safezoneW + safezoneX) + (4 * BORDERSIZE);
 		y = 0.25 * safezoneH + safezoneY - (1.5 * BORDERSIZE);
-		w = (0.45 * safezoneW) - (2 * BORDERSIZE ) ;
+		w = (0.45 * safezoneW) - (2 * BORDERSIZE);
 		h = 0.55 * safezoneH  + (3 * BORDERSIZE);
 		colorScrollbar[] = COLOR_WHITE;
 
@@ -129,8 +129,8 @@ class liberation_tutorial {
 	 			x = 0;
 	 			y = 0;
 	 			w = (0.45 * safezoneW) - (2 * BORDERSIZE);
-	 			h = 0.5 * safezoneH;
-	 			text= "AAA";
+	 			h = (0.8 * safezoneH);
+	 			text = "AAA";
 	 			size = 0.02 * safezoneH;
 	 			sizeEx = 0.02 * safezoneH;
 	 			shadow = 2;
