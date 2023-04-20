@@ -1,6 +1,5 @@
 private ["_pos", "_class", "_veh", "_para", "_text", "_rank", "_cost", "_dist", "_ammo_collected"];
 
-_unit = player;
 do_action = 0;
 air_type = 0;
 air_perm = 0;
@@ -8,7 +7,7 @@ hintSilent "";
 createDialog "liberation_airdrop";
 _list_perm=[];
 
-_rank = _unit getVariable ["GRLIB_Rank", "Private"];
+_rank = player getVariable ["GRLIB_Rank", "Private"];
 if (_rank in ["Private"]) then {_list_perm = [1601,1602,1603,1604,1605,1606]};
 if (_rank in ["Corporal"]) then {_list_perm = [1602,1603,1604,1605,1606]};
 if (_rank in ["Sergeant"]) then {_list_perm = [1603,1604,1605]};
@@ -26,8 +25,8 @@ while { dialog && (alive player) && do_action == 0 } do {
 closeDialog 0;
 
 if (do_action == 1) then {
-	_timer = _unit getVariable ["AirCoolDown", 0];
-	if ( _timer >= 1 && !(air_type in [7, 8])) exitWith {hint format ["Air Support not ready !\nNew call in %1 min\n\nPlease wait...", _timer]};
+	_timer = player getVariable ["AirCoolDown", 0];
+	if (_timer > time) exitWith {hint format ["Air Support not ready !\nNext call in %1 min\n\nPlease wait...", round ((_timer - time)/60)]};
 	_cost = 0;
 	switch (air_type) do {
 		case 1 : {_class=selectRandom GRLIB_AirDrop_1;_cost=50};
@@ -42,8 +41,8 @@ if (do_action == 1) then {
 
 	if (!([_cost] call F_pay)) exitWith {};
 
-	//_unit setVariable ["AirCoolDown", 15, true];
 	if (air_type == 7) exitWith {[player] remoteExec ["send_aircraft_remote_call", 2]};
 	if (air_type == 8) exitWith {[] execVM "addons\TAXI\call_taxi.sqf"};
 	[player, _class] remoteExec ["airdrop_remote_call", 2];
+	player setVariable ["AirCoolDown", round(time + 15*60)];
 };

@@ -61,7 +61,6 @@ if ( isServer ) then {
 
 	if (_unit isKindOf "Man") then {
 		if ( vehicle _unit != _unit ) then {
-			sleep 3;
 			_unit action ["Eject", vehicle _unit];
 			//moveOut _unit;
 		};

@@ -11,5 +11,5 @@ _veh addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
 _veh setdir (random 360);
 _text = format ["Player %1 call Air Support.  Dropping: %2 !", name _unit, getText (configFile >> "CfgVehicles" >> typeOf _veh >> "displayName")];
 [gamelogic, _text] remoteExec ["globalChat", 0];
-[_unit] remoteExec ["remote_call_airdrop", owner _unit];
 [_veh, objNull] spawn F_addParachute;
+diag_log format [ "Done Airdrop vehicle %1 at %2", _class , time ];
