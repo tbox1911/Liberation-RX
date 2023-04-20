@@ -33,7 +33,7 @@ GRLIB_MOD_signature = GRLIB_MOD_signature + ["rhs"];
 // Magazines
 (
 	"
-	((configName _x) select [0,4]) == 'rhs_' &&
+	((configName _x) select [0,3]) == 'rhs' &&
 	(configName _x) find '_Tracer' < 0 &&
 	([(configName _x)] call is_allowed_item)
 	"

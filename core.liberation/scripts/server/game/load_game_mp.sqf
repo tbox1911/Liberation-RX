@@ -296,7 +296,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
             _nextbuilding setObjectTextureGlobal [0, getMissionPath "res\splash_libe2.paa"];
         };
 
-		if (_nextclass == "Land_ClutterCutter_large_F") then {
+		if (_nextclass == land_cutter_typename) then {
 			{_x hideObjectGlobal true} forEach (nearestTerrainObjects [_nextpos, GRLIB_clutter_cutter, 20]);
 		};
 

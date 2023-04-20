@@ -7,6 +7,8 @@ GRLIB_MOD_signature = GRLIB_MOD_signature + ["ace_"];
 >>>>>>> bfd9d463 (1)
 GRLIB_blacklisted_from_arsenal append [
 	"ace_intelitems_base",
+	"ACE_DebugPotato",
+	"ACE_Vector",
 	"ACE_ropeBase",
 	"ACE_ItemCore",
 	"ACE_FakeMagazine",

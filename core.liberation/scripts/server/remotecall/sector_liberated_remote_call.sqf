@@ -2,6 +2,17 @@ params [ "_liberated_sector" ];
 diag_log format ["Sector %1 liberated", _liberated_sector];
 private _combat_readiness_increase = 0;
 
+if (_liberated_sector in (sectors_capture + sectors_bigtown) && (call is_night)) then {
+	for "_i" from 1 to 10 do {
+		_fire_pos = (markerPos _liberated_sector) findEmptyPosition [0, GRLIB_capture_size, "B_Quadbike_01_F"];
+		_fire_pos = [_fire_pos, random 50, random 360] call BIS_fnc_relPos;
+		[_fire_pos] spawn {
+			sleep (1 + random 3);
+			[_this select 0, 10] spawn launch_firework;
+		};
+	};
+};
+
 if ( _liberated_sector in sectors_bigtown ) then {
 	_combat_readiness_increase = (5 + (floor (random 10))) * GRLIB_difficulty_modifier;
 };
@@ -38,8 +49,8 @@ if ( _liberated_sector in sectors_tower ) then {
 	_combat_readiness_increase = (2 + (floor (random 4)));
 };
 
-[ 
-	[_liberated_sector], 
+[
+	[_liberated_sector],
 {
 	params ["_sector"];
 	private _rwd_ammo = (100 + floor(random 100)) * GRLIB_resources_multiplier;
@@ -74,7 +85,7 @@ if (isServer) then {
 sleep 45;
 
 if ( GRLIB_endgame == 0 ) then {
-	if ( 
+	if (
 	   (!( _liberated_sector in sectors_tower )) &&
 	   ((combat_readiness > 70) || (_liberated_sector in sectors_bigtown)) &&
 	   ([] call F_opforCap < GRLIB_battlegroup_cap) &&

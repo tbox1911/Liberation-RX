@@ -580,7 +580,6 @@ GRLIB_vehicle_whitelist = [
 	ammobox_i_typename,
 	mobile_respawn,
 	A3W_BoxWps,
-	canister_fuel_typename,
 	waterbarrel_typename,
 	fuelbarrel_typename,
 	foodbarrel_typename,
@@ -601,7 +600,7 @@ GRLIB_vehicle_blacklist = [
 ] + GRLIB_vehicle_blacklist_west;
 
 // Recycleable objects
-GRLIB_recycleable_blacklist = [FOB_sign];
+GRLIB_recycleable_blacklist = [FOB_sign, canister_fuel_typename];
 GRLIB_recycleable_classnames = ["LandVehicle","Air","Ship","StaticWeapon","Slingload_01_Base_F","Pod_Heli_Transport_04_base_F"];
 {
 	if (!((_x select 0) in GRLIB_recycleable_blacklist)) then {GRLIB_recycleable_classnames pushBack (_x select 0)};
@@ -737,6 +736,7 @@ GRLIB_ignore_colisions = [
 	mobile_respawn,
 	canister_fuel_typename,
 	medicalbox_typename,
+	land_cutter_typename,
 	"Helper_Base_F",
 	"Blood_01_Base_F",
 	"MedicalGarbage_01_Base_F",
@@ -752,7 +752,6 @@ GRLIB_ignore_colisions = [
 	"PowerLines_base_F",
 	"PowerLines_Small_base_F",
 	"PowerLines_Wires_base_F",
-	"Land_ClutterCutter_large_F",
  	"Land_PowLine_wire_BB_EP1",
  	"Land_PowLine_wire_AB_EP1",
  	"Land_PowLine_wire_A_left_EP1",

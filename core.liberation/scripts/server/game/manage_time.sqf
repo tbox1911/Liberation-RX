@@ -1,13 +1,14 @@
-private [ "_accelerated_time" ];
+private _state = (call is_night);
+private _old_state = !_state;
 
 while { true } do {
-	_accelerated_time = GRLIB_day_factor;
-
-	if (daytime > GRLIB_nights_start || daytime < GRLIB_nights_stop) then {
-		_accelerated_time = GRLIB_night_factor;
+	if (_state != _old_state) then {
+		setTimeMultiplier (switch (_state) do {
+			case (true):  {GRLIB_night_factor};
+			case (false): {GRLIB_day_factor};
+		});	
+		_old_state = _state;
 	};
-
-	setTimeMultiplier _accelerated_time;
-
-	sleep 10;
+	sleep 60;
+	_state = (call is_night);
 };

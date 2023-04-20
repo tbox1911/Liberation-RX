@@ -61,6 +61,9 @@ GRLIB_force_load = ["ForceLoading", 0] call bis_fnc_getParamValue;
 [] call compileFinal preprocessFileLineNUmbers "gameplay_constants.sqf";
 GRLIB_endgame = 0;
 
+// User Defined Parameters
+[] call compileFinal preprocessFileLineNUmbers "mission_param.sqf";
+
 // Minimal player score to be saved
 GRLIB_min_score_player = 20;
 

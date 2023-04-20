@@ -41,8 +41,8 @@ if (isNil "GRLIB_all_fobs" || count GRLIB_all_fobs == 0) then {
 	_air_spawnpos = getPos lhd;
 };
 
-_air_spawnpos = [(((_air_spawnpos select 0) + 125) - floor(random 250)),(((_air_spawnpos select 1) + 125) - floor(random 250)), 120];
-_vehicle = createVehicle [_taxi_type, _air_spawnpos, [], 0, "FLY"];
+private _air_spawnpos = [(((_air_spawnpos select 0) + 125) - floor(random 250)),(((_air_spawnpos select 1) + 125) - floor(random 250)), 120];
+private _vehicle = createVehicle [_taxi_type, _air_spawnpos, [], 0, "FLY"];
 if (_taxi_type isKindOf "Heli_Light_01_civil_base_F") then {
 	[_vehicle, false, ["AddDoors",1,"AddBackseats",1,"AddTread",1,"AddTread_Short",0]] call BIS_fnc_initVehicle;
 };
@@ -52,6 +52,11 @@ _vehicle setVariable ["R3F_LOG_disabled", true, true];
 _vehicle allowDamage false;
 _vehicle allowCrewInImmobile [true, false];
 _vehicle setUnloadInCombat [true, false];
+_vehicle setVehicleLock "LOCKED";
+_vehicle lockCargo true;
+_vehicle lockDriver true;
+_vehicle lockTurret [[0], true];
+_vehicle lockTurret [[0,0], true];
 
 GRLIB_taxi_cooldown = 0;
 private _idact_dest = _vehicle addAction [format ["<t color='#8000FF'>%1</t>", localize "STR_TAXI_ACTION1"], "addons\TAXI\taxi_pickdest.sqf","",999,true,true,"","vehicle _this == _target && (getPosATL _target) distance2D GRLIB_taxi_helipad > 300"];
@@ -81,6 +86,8 @@ _marker setMarkerTextlocal "Taxi PickUp";
 // Goto Pickup Point
 [_vehicle, _air_grp, _dest, "STR_TAXI_MOVE"] call taxi_dest;
 [_vehicle] call taxi_land;
+_vehicle setVehicleLock "UNLOCKED";
+_vehicle lockCargo false;
 
 private _stop = time + (5 * 60); // wait 5min max
 waitUntil {
@@ -105,9 +112,6 @@ if (time < _stop) then {
 		hintSilent "Ok, let's go...";
 		_vehicle setVehicleLock "LOCKED";
 		_vehicle lockCargo true;
-		_vehicle lockDriver true;
-		_vehicle lockTurret [[0], true];
-    	_vehicle lockTurret [[0,0], true];
 		_cargo = [_vehicle, _pilots] call taxi_cargo;
 		{ _x allowDamage false } forEach (_cargo);
 
@@ -116,11 +120,13 @@ if (time < _stop) then {
 		_vehicle removeAction _idact_dest;
 		[_vehicle] call taxi_land;
 	};
+} else {
+	_vehicle setVehicleLock "LOCKED";
+	_vehicle lockCargo true;	
 };
 
 // Board Out
 _cargo = [_vehicle, _pilots] call taxi_cargo;
-_vehicle setVehicleLock "LOCKEDPLAYER";
 [_cargo] call taxi_outboard;
 { _x allowDamage true } forEach (_cargo);
 sleep 5;
