@@ -35,7 +35,7 @@ if ( isMultiplayer ) then {
 	GRLIB_enable_arsenal = ["EnableArsenal",1] call bis_fnc_getParamValue;
 	GRLIB_limited_arsenal = ["LimitedArsenal",1] call bis_fnc_getParamValue;
 	GRLIB_forced_loadout = ["ForcedLoadout",0] call bis_fnc_getParamValue;
-	GRLIB_fancy_info = ["FancyInfo",2] call bis_fnc_getParamValue;
+	GRLIB_fancy_info = ["FancyInfo",1] call bis_fnc_getParamValue;
 	GRLIB_hide_opfor = ["HideOpfor",0] call bis_fnc_getParamValue;
 	GRLIB_thermic = ["Thermic",1] call bis_fnc_getParamValue;
 } else {

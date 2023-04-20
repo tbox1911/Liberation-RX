@@ -16,7 +16,7 @@ class Params
 		title = $STR_FANCY;
 		values[] = { 2, 1, 0 };
 		texts[] = { $STR_PARAMS_ENABLED, "Info", $STR_PARAMS_DISABLED };
-		default = 2;
+		default = 1;
 	};
 	class HideOpfor {
 		title = $STR_OPFORMARK;

@@ -1,3 +1,4 @@
+if ( isDedicated ) exitWith {};
 params [ "_unit" ];
 private [ "_nearestfob", "_is_near_fob", "_is_near_blufor", "_grp", "_waypoint", "_nearblufor" ];
 
@@ -15,7 +16,7 @@ sleep 2;
 _unit enableAI "ANIM";
 _unit enableAI "MOVE";
 sleep 2;
-[ [ _unit ], "remote_call_switchmove" ] call bis_fnc_mp;
+[_unit, ""] remoteExec ["switchmove", 0];
 
 if ( typeof _unit == pilot_classname ) exitWith {};
 
@@ -53,8 +54,8 @@ if (alive _unit) then {
 		_unit disableAI "MOVE";
 		doStop _unit;
 		sleep 5;
-		[ [ _unit, "AidlPsitMstpSnonWnonDnon_ground00" ], "remote_call_switchmove" ] call bis_fnc_mp;
-		[ [_unit] , "prisonner_remote_call" ] call BIS_fnc_MP;
+		[_unit, "AidlPsitMstpSnonWnonDnon_ground00"] remoteExec ["switchmove", 0];
+		[_unit] remoteExec ["prisonner_remote_call", 2];
 		[player, 10] remoteExec ["addScore", 2];
 		hint format ["%1\nBonus Score + 10 Pts!", name player];
 		sleep 600;

@@ -32,7 +32,7 @@ _sector_count = -1;
 uiSleep 1;
 
 while { true } do {
-	waitUntil {uiSleep 1;count blufor_sectors != _sector_count};
+	waitUntil {sleep 1;count blufor_sectors != _sector_count};
 
 	if (GRLIB_hide_opfor) then {
 		{
