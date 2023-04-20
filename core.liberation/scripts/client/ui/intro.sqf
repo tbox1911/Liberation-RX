@@ -4,6 +4,7 @@ if ( isNil "cinematic_camera_started" ) then { cinematic_camera_started = false 
 if (isMultiplayer) then {
 	waituntil {(time > 2) && (getClientStateNumber >= 10) && (getClientState == "BRIEFING READ")};
 } else {
+	GRLIB_introduction = true;
 	uiSleep 2;
 };
 
@@ -40,4 +41,4 @@ if ( howtoplay == 0 ) then {
 };
 introDone = true;
 (findDisplay 5651) displayRemoveEventHandler ["KeyDown", _noesckey];
-disableUserInput true;
+//disableUserInput true;
