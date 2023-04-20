@@ -1,8 +1,8 @@
 if (!isServer) exitWith {};
-params ["_pos", "_nb"];
+params ["_pos", "_nbMines"];
 
-while { _nb >= 1} do {
-	_mine = createMine ["ATMine", _pos, [], GRLIB_sector_size / 3];
+private _minesTypes =  ["ATMine", "APERSMine", "APERSBoundingMine", "SLAMDirectionalMine", "APERSTripMine"];
+for "_i" from 1 to _nbMines do {
+	_mine = createMine [(selectRandom _minesTypes), _pos, [], GRLIB_sector_size / 3];
 	GRLIB_side_enemy revealMine _mine;
-	_nb =_nb - 1;
 };
