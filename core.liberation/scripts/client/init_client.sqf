@@ -8,6 +8,7 @@ write_credit_line = compileFinal preprocessFileLineNumbers "scripts\client\ui\wr
 do_load_box = compileFinal preprocessFileLineNumbers "scripts\client\ammoboxes\do_load_box.sqf";
 set_rank = compileFinal preprocessFileLineNumbers "scripts\client\misc\set_rank.sqf";
 vehicle_permissions = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_permissions.sqf";
+vehicle_defense = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_defense.sqf";
 fetch_permission = compileFinal preprocessFileLineNumbers "scripts\client\misc\fetch_permission.sqf";
 is_owner = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_owner.sqf";
 is_menuok = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_menuok.sqf";
