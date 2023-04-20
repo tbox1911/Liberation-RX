@@ -22,7 +22,7 @@ if (_locPos isEqualTo [0,0,0]) exitWith {};
 		_locObjects = _x param [3, [], [[]]];
 
 		{
-			if (_x distance _locPos <= CLEANUP_RADIUS && _x getVariable ["ownerUID", ""] == "") then
+			if (_x distance _locPos <= CLEANUP_RADIUS && _x getVariable ["GRLIB_vehicle_owner", ""] == "") then
 			{
 				deleteVehicle _x;
 			};

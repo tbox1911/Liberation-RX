@@ -1,31 +1,32 @@
 diag_log format [ "Spawning civilians at %1", time ];
 
-params [ "_sector" ];
-private [ "_sectorpos", "_idx", "_nbcivs", "_spread", "_spawnpos", "_grp", "_createdcivs", "_nextciv" ];
-_createdcivs = [];
-_sectorpos = getMarkerPos _sector;
+params [ "_sector", "_nbcivs" ];
+private [ "_spread", "_spawnpos", "_grp", "_nextciv" ];
+private _createdcivs = [];
+private _sectorpos = getMarkerPos _sector;
 
-_idx = 0;
-_nbcivs = round ((4 + (floor (random 5))) * GRLIB_civilian_activity);
+if (isNil "_nbcivs") then {	_nbcivs = 1 };
+if ((GRLIB_side_civilian countSide allUnits) >= (GRLIB_civilians_amount * 3)) exitWith {_createdcivs};
+
 _spread = 1;
 if ( _sector in sectors_bigtown ) then {
-	_nbcivs = _nbcivs + 10;
 	_spread = 2.5;
 };
 
-_nbcivs = _nbcivs * ( sqrt ( GRLIB_unitcap ) );
-
-while { _idx < _nbcivs } do {
-	_spawnpos = [(((_sectorpos select 0) + (75 * _spread)) - (random (150 * _spread))),(((_sectorpos select 1) + (75 * _spread)) - (random (150 * _spread))),0];
+for "_i" from 1 to _nbcivs do {
 	_grp = createGroup [GRLIB_side_civilian, true];
-	(civilians select (floor (random (count civilians)))) createUnit [_spawnpos, _grp, "this addMPEventHandler [""MPKilled"", {_this spawn kill_manager}]", 0.5, "PRIVATE"];
+	sleep 0.5;
+	_spawnpos = [(((_sectorpos select 0) + (75 * _spread)) - (random (150 * _spread))),(((_sectorpos select 1) + (75 * _spread)) - (random (150 * _spread))),0];
+	( selectRandom civilians ) createUnit [_spawnpos, _grp, "this addMPEventHandler [""MPKilled"", {_this spawn kill_manager}]", 0.5, "PRIVATE"];
 	_nextciv = ((units _grp) select 0);
+	_nextciv addEventHandler ["HandleDamage", { private [ "_damage" ]; if (( side (_this select 3) != GRLIB_side_friendly ) && ( side (_this select 3) != GRLIB_side_enemy )) then { _damage = 0 } else { _damage = _this select 2 }; _damage } ];
 	_nextciv setVariable ['GRLIB_can_speak', true, true];
+	_nextciv disableAI "FSM";
+	_nextciv disableAI "AUTOCOMBAT";
 	_createdcivs pushBack _nextciv;
 	[_grp] call add_civ_waypoints;
-	_idx = _idx + 1;
 };
 
-diag_log format [ "Done Spawning civilians at %1", time ];
+diag_log format [ "Done Spawning %1 civilians at %2", count (_createdcivs), time ];
 
 _createdcivs

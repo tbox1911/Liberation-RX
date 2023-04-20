@@ -168,7 +168,9 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 	};
 
 	if ( _spawncivs && GRLIB_civilian_activity > 0) then {
-		_managed_units = _managed_units + ( [ _sector ] call F_spawnCivilians );
+		private _nbcivs = round ((4 + (floor (random 5))) * GRLIB_civilian_activity);
+		if ( _sector in sectors_bigtown ) then { _nbcivs = _nbcivs + 10 };
+		_managed_units = _managed_units + ([ _sector, _nbcivs ] call F_spawnCivilians);
 	};
 
 	[ _sector, _building_range, _iedcount ] spawn ied_manager;
@@ -183,11 +185,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 
 		if ( ( [_sectorpos, _local_capture_size] call F_sectorOwnership == GRLIB_side_friendly ) && ( GRLIB_endgame == 0 ) ) then {
 
-			if (isServer) then {
-				[ _sector ] spawn sector_liberated_remote_call;
-			} else {
-				[ [ _sector ] , "sector_liberated_remote_call" ] call BIS_fnc_MP;
-			};
+			[ _sector ] spawn sector_liberated_remote_call;
 
 			_stopit = true;
 

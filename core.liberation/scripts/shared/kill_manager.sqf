@@ -26,6 +26,7 @@ if ( isServer ) then {
 		_unit setVariable ["R3F_LOG_remorque", objNull, true];
 		_tow setVariable ["R3F_LOG_est_transporte_par", objNull, true];
 		[_tow, "detachSetVelocity", [0, 0, 0.1]] call R3F_LOG_FNCT_exec_commande_MP;
+		waitUntil { sleep 0.3; (isNull attachedTo _tow) };
 	};
 
 	private _towed = _unit getVariable ["R3F_LOG_est_transporte_par", objNull];
@@ -33,9 +34,8 @@ if ( isServer ) then {
 		_towed setVariable ["R3F_LOG_remorque", objNull, true];
 		_unit setVariable ["R3F_LOG_est_transporte_par", objNull, true];
 		[_unit, "detachSetVelocity", [0, 0, 0.1]] call R3F_LOG_FNCT_exec_commande_MP;
+		waitUntil { sleep 0.3; (isNull attachedTo _unit) };
 	};
-
-	waitUntil { sleep 0.3; (isNull attachedTo _unit) };
 
 	if ( (typeof _unit) in [FOB_box_typename, FOB_truck_typename, foodbarrel_typename, waterbarrel_typename] ) exitWith {
 		sleep 30;
@@ -51,7 +51,7 @@ if ( isServer ) then {
 	};
 
 	if ((_unit iskindof "LandVehicle") || (_unit iskindof "Air") || (_unit iskindof "Ship") ) then {
-		[_unit] spawn clean_vehicle;
+		[_unit] call clean_vehicle;
 	};
 
 	if ( _unit isKindOf "Man" && vehicle _unit != _unit ) then {
