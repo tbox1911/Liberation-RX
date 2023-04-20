@@ -1,29 +1,10 @@
 // Add CUP Weapons
 if ( GRLIB_CUPW_enabled ) then {
-	// CUPS blacklisted
-	GRLIB_CUPW_Blacklist = [
-		"CUP_optic_AN_PAS_13c1",
-		"CUP_optic_AN_PAS_13c2",
-		"CUP_optic_GOSHAWK",
-		"CUP_optic_GOSHAWK_RIS"
-	];
-	// CUP whitelisted
-	GRLIB_whitelisted_from_arsenal = GRLIB_whitelisted_from_arsenal + [
-		"Medikit",
-		"FirstAidKit",
-		"ToolKit",
-		"ItemGPS",
-		"Laserdesignator",
-		"Binocular",
-		"MineDetector",
-		"Rangefinder"
-	];
-
 	// Weapons + Equipements (uniforme, etc..)
 	(
 		"
 		(getText (_x >> 'DLC') == 'CUP_Weapons' || getText (_x >> 'DLC') == 'CUP_Units') &&
-		!((configName _x) in GRLIB_CUPW_Blacklist)
+		!((configName _x) in GRLIB_blacklisted_from_arsenal)
 		"
 		configClasses (configfile >> "CfgWeapons" )
 	) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
@@ -32,7 +13,7 @@ if ( GRLIB_CUPW_enabled ) then {
 	(
 		"
 		(getText (_x >> 'DLC') == 'CUP_Weapons' || getText (_x >> 'DLC') == 'CUP_Units') &&
-		!((configName _x) in GRLIB_CUPW_Blacklist) &&
+		!((configName _x) in GRLIB_blacklisted_from_arsenal) &&
 		( (configName _x) find '_Bag' == -1 )
 		"
 		configClasses (configfile >> "CfgVehicles" )
@@ -42,7 +23,7 @@ if ( GRLIB_CUPW_enabled ) then {
 	(
 		"
 		(getText (_x >> 'DLC') == 'CUP_Weapons' || getText (_x >> 'DLC') == 'CUP_Units') &&
-		!((configName _x) in GRLIB_CUPW_Blacklist)
+		!((configName _x) in GRLIB_blacklisted_from_arsenal)
 		"
 		configClasses (configfile >> "CfgGlasses" )
 	) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
@@ -52,7 +33,7 @@ if ( GRLIB_CUPW_enabled ) then {
 		"
 		((configName _x) select [0,4]) == 'CUP_' &&
 		(configName _x) find '_Tracer' < 0 &&
-		!((configName _x) in GRLIB_CUPW_Blacklist)
+		!((configName _x) in GRLIB_blacklisted_from_arsenal)
 		"
     	configClasses (configfile >> "CfgMagazines")
 	) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x)} ;
