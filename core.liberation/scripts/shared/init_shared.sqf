@@ -3,6 +3,7 @@ clean_vehicle = compileFinal preprocessFileLineNumbers "scripts\shared\clean_veh
 protect_static = compileFinal preprocessFileLineNumbers "scripts\shared\protect_static.sqf";
 damage_manager_EH = compileFinal preprocessFileLineNumbers "scripts\shared\damage_manager.sqf";
 prisonner_captured = compileFinal preprocessFileLineNumbers "scripts\server\ai\prisonner_captured.sqf";
+save_context = compileFinal preprocessFileLineNumbers "scripts\shared\save_context.sqf";
 
 // Remote Call
 // Server Side
@@ -21,7 +22,7 @@ dog_action_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\
 vehicle_garage_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\vehicle_garage_remote_call.sqf";
 a3w_create_enemy = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\a3w_create_enemy.sqf";
 unload_truck_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\unload_truck_remote_call.sqf";
-recover_ai_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\recover_ai_remote_call.sqf";
+load_context_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\load_context_remote_call.sqf";
 ammo_add_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\ammo_add_remote_call.sqf";
 ammo_del_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\ammo_del_remote_call.sqf";
 sog_tunnel_enter_remotecall = compileFinal preprocessFileLineNumbers "scripts\server\sog\sog_tunnel_enter_remotecall.sqf";
@@ -39,6 +40,7 @@ remote_call_incoming = compileFinal preprocessFileLineNumbers "scripts\client\re
 remote_call_showinfo = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_showinfo.sqf";
 remote_call_a3w_info = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_a3w_info.sqf";
 remote_call_tunnel_success = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_tunnel_success.sqf";
+remote_call_load_context = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_load_context.sqf";
 
 // Vehicle Color
 [] execVM "addons\RPT\RPT_init.sqf";

@@ -25,12 +25,6 @@ if !(isNull _unit) then {
 		_x setVehicleLock "UNLOCKED";
 	} forEach _cleanveh;
 
-	// Remove Injured AI
-	private _bros = allUnits select {(_x getVariable ["PAR_Grp_ID","0"]) == (_unit getVariable ["PAR_Grp_ID","1"])};
-	{
-		if (lifeState _x == "INCAPACITATED") then { deleteVehicle _x };
-	} forEach _bros;
-
 	// Remove Taxi
 	private _taxi = _unit getVariable ["GRLIB_taxi_called", nil];
 	if (!isNil "_taxi") then {
@@ -44,16 +38,19 @@ if !(isNull _unit) then {
 		deleteVehicle _taxi;
 	};
 
+	// Remove Marker
+	deletemarker format ["PAR_marker_%1", _name];
+
 	// Remove Squad
 	private _my_squad = _unit getVariable ["my_squad", nil];
 	if (!isNil "_my_squad") then { {deleteVehicle _x} forEach units _my_squad };
 
+	// Save Player Context
+	[_unit] call save_context;
+
 	private _text = format ["Bye bye %1, see you soon...", _name];
 	[gamelogic, _text] remoteExec ["globalChat", -2];
 
-	//remove marker
-	deletemarker format ["PAR_marker_%1", _name];
-	
 	// Delete body
 	deleteVehicle _unit;
 

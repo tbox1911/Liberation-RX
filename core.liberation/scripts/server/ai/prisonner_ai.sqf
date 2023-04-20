@@ -46,6 +46,7 @@ while {alive _unit} do {
 	if ( _is_near_blufor == 0 && side group _unit == GRLIB_side_friendly && typeof _unit != pilot_classname ) then {
 		_unit setUnitPos "AUTO";
 		_unit setVariable ["GRLIB_is_prisonner", true, true];
+		unAssignVehicle _unit;
 
 <<<<<<< HEAD
 			if ((vehicle _unit != _unit) && !(_unit isEqualTo (driver vehicle _unit))) then {
@@ -106,11 +107,13 @@ while {alive _unit} do {
 >>>>>>> d6162942 (fix pisonners)
 =======
 		if ((vehicle _unit != _unit) && !(_unit isEqualTo (driver vehicle _unit))) then {
-			unAssignVehicle _unit;
 			_unit action ["eject", vehicle _unit];
 			_unit action ["getout", vehicle _unit];
+<<<<<<< HEAD
 			unAssignVehicle _unit;
 >>>>>>> 07541a9d (bomber)
+=======
+>>>>>>> e8317e68 (priso unAssign Vehicle)
 		};
 
 		private _nearest_sector = [(sectors_allSectors - blufor_sectors), _unit] call F_nearestPosition;

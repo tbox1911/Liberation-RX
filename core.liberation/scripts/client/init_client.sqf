@@ -1,5 +1,7 @@
 diag_log "--- Client Init start ---";
 titleText ["" ,"BLACK FADED", 100];
+
+waitUntil {sleep 0.1;!isNull findDisplay 46};
 R3F_LOG_joueur_deplace_objet = objNull;
 GRLIB_player_spawned = false;
 
@@ -142,11 +144,9 @@ addMissionEventHandler ["Draw3D",{
 chimera_sign addAction ["<t color='#FFFFFF'>" + localize "STR_READ_ME" + "</t>",{createDialog "liberation_notice"},"",999,true,true,"","[] call is_menuok",5];
 chimera_sign addAction ["<t color='#FFFFFF'>" + localize "STR_TIPS" + "</t>",{createDialog "liberation_tips"},"",998,true,true,"","[] call is_menuok",5];
 
-waitUntil {!isNull findDisplay 46};
-(findDisplay 46) displayAddEventHandler ["Unload",{	
-	// code here gets executed on the client at end of mission, whether due to player abort, loss of connection, or mission ended by server;
-	// might not work on headless clients
-}];
+if (isServer && hasInterface) then {
+	(findDisplay 46) displayAddEventHandler ["Unload",{	[player] call save_context }];
+};
 
 waitUntil { time > 5 };
 initAmbientLife;

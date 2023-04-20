@@ -45,6 +45,7 @@ armor_weight = 33;
 air_weight = 33;
 GRLIB_vehicle_to_military_base_links = [];
 GRLIB_permissions = [];
+GRLIB_player_context = [];
 resources_intel = 0;
 GRLIB_player_scores = [];
 GRLIB_garage = [];
@@ -148,7 +149,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 
 	GRLIB_vehicle_to_military_base_links = greuh_liberation_savegame select 11;
 	GRLIB_permissions = greuh_liberation_savegame select 12;
-	GRLIB_player_units = greuh_liberation_savegame select 13;
+	GRLIB_player_context = greuh_liberation_savegame select 13;
 	resources_intel = greuh_liberation_savegame select 14;
 	GRLIB_player_scores = greuh_liberation_savegame select 15;
 
@@ -333,6 +334,7 @@ if (abort_loading) exitWith { abort_loading_msg = format [
 sleep 60;
 
 // Savegame Loop
+diag_log format [ "--- LRX Save Loop start at %1", time ];
 GRLIB_server_stopped = false;
 while { true } do {
 	waitUntil {sleep 10; trigger_server_save || GRLIB_endgame == 1};
@@ -403,7 +405,7 @@ while { true } do {
 		{
 			_id = _x select 0;
 			_score = _x select 1;
-			if (_score >= 20 ) then {
+			if (_score >= 20) then {
 				_keep_score_id pushback _id;
 				_player_scores pushback _x;
 			};
@@ -500,7 +502,7 @@ while { true } do {
 			[ round infantry_weight max 33, round armor_weight max 33, round air_weight max 33 ],
 			GRLIB_vehicle_to_military_base_links,
 			_permissions,
-			[],  	// GRLIB_player_units
+			GRLIB_player_context,
 			resources_intel,
 			_player_scores
 		];
