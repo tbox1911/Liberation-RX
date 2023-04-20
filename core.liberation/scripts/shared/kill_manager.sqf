@@ -126,7 +126,7 @@ if ( isServer ) then {
 
 				private _ai_score = _killer getVariable ["PAR_AI_score", nil];
 				if (!isNil "_ai_score") then {
-					_killer setVariable ["PAR_AI_score", (_ai_score + 1), true];
+					_killer setVariable ["PAR_AI_score", (_ai_score - 1), true];
 				};
 			};
 			if ( side (group _unit) == GRLIB_side_friendly ) then {
