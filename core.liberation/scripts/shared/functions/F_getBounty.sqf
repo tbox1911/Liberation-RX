@@ -1,12 +1,8 @@
 params ["_vehicle"];
 
-private _extra_bounty = [
-	"O_T_VTOL_02_infantry_F",
-	"O_T_VTOL_02_vehicle_F",
+private _extra_bounty = opfor_air + [
 	"O_MBT_04_cannon_F",
-	"O_MBT_04_command_F",
-	"O_Plane_CAS_02_F",
-	"O_Plane_Fighter_02_F"
+	"O_MBT_04_command_F"
 ];
 
 _bounty = 10;
