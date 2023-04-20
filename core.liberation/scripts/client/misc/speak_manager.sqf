@@ -72,6 +72,7 @@ speak_mission_delivery_1 = {
 // Orestes
 speak_mission_delivery_2 = {
 	params ["_unit"];
+	if (isNil "GRLIB_A3W_Mission_Marker") exitWith {gamelogic globalChat "Maybe another time..."};
 	if (!(_unit getVariable ["GRLIB_A3W_Mission_SD", false]) || _unit != GRLIB_A3W_Mission_Marker) exitWith {gamelogic globalChat "Maybe another time..."};
 	private _next_indx = (GRLIB_A3W_Mission_SD find _unit) + 1;
 	private _next_unit = GRLIB_A3W_Mission_SD select _next_indx;
@@ -96,6 +97,7 @@ speak_mission_delivery_2 = {
 // Nikos Old
 speak_mission_delivery_3 = {
 	params ["_unit"];
+	if (isNil "GRLIB_A3W_Mission_Marker") exitWith {gamelogic globalChat "Maybe another time..."};
 	if (!(_unit getVariable ["GRLIB_A3W_Mission_SD", false]) || _unit != GRLIB_A3W_Mission_Marker) exitWith {gamelogic globalChat "Maybe another time..."};
 	private _near_case = getPosATL _unit nearEntities [["Land_Suitcase_F"], 10];
 	if (count _near_case > 0) then {

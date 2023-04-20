@@ -80,6 +80,7 @@ if (abort_loading) exitWith { abort_loading_msg = format [
 	Correct the Side selection.\n
 	*********************************", GRLIB_mod_west, GRLIB_mod_east];
 };
+diag_log format ["--- LRX Mod Detection: %1 vs %2", GRLIB_mod_west, GRLIB_mod_east];
 
 // Detect Addons
 GRLIB_ACE_enabled = isClass(configFile >> "cfgPatches" >> "ace_main"); // Returns true if ACE is enabled
@@ -99,6 +100,7 @@ GRLIB_3CB_enabled = isClass(configFile >> "CfgMods" >> "UK3CB_BAF_Weapons"); // 
 GRLIB_CWR_enabled = isClass(configFile >> "CfgMods" >> "cwr3_dlc"); // Returns true if CWR3 is enabled
 
 // Check side Addon
+if ( !GRLIB_OPTRE_enabled && "OPTRE" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
 if ( !GRLIB_EJW_enabled && "EJW" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
 if ( (!GRLIB_CUPU_enabled || !GRLIB_CUPV_enabled) && "CP_BAF_DES" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
 if ( (!GRLIB_CUPU_enabled || !GRLIB_CUPV_enabled) && "CP_TA" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
