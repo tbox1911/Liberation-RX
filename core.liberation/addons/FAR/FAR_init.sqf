@@ -91,13 +91,8 @@ player addEventHandler ["Respawn", {[] spawn FAR_Player_Init}];
 FAR_PlayerSide = side player;
 
 private _uid = getPlayerUID player;
-if (isNil {BTC_logic getVariable _uid}) then {
-	BTC_logic setVariable [_uid,0,true];
-	BTC_teamkiller = 0;
-} else {
-	BTC_teamkiller = BTC_logic getVariable _uid;
-	if (BTC_teamkiller > BTC_tk_last_warning) then {[] spawn BTC_Teamkill;}
-};
+BTC_teamkiller = BTC_logic getVariable [_uid, 0];
+if (BTC_teamkiller > BTC_tk_last_warning) exitWith {[] spawn BTC_Teamkill};
 
 // Drag & Carry animation fix
 [] spawn {
