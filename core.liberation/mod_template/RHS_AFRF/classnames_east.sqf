@@ -181,6 +181,8 @@ opfor_statics = [
 ];
 
 opfor_recyclable = [
+	["O_Boat_Armed_01_hmg_F",2,round (100 / GRLIB_recycling_percentage),2],
+	["O_T_Boat_Armed_01_hmg_F",2,round (100 / GRLIB_recycling_percentage),2],
 	["O_HMG_01_high_F",0,round (20 / GRLIB_recycling_percentage),0],
 	["O_GMG_01_high_F",0,round (40 / GRLIB_recycling_percentage),0],
 	["O_static_AA_F",0,round (80 / GRLIB_recycling_percentage),0],
@@ -201,9 +203,6 @@ opfor_recyclable = [
 	["rhs_t72bd_tv",5,round (50 / GRLIB_recycling_percentage),5],
 	["rhs_zsu234_aa",5,round (50 / GRLIB_recycling_percentage),5],
 	["LOP_ChDKZ_BMP1",5,round (50 / GRLIB_recycling_percentage),3],
-	["LOP_ChDKZ_BMP2",5,round (50 / GRLIB_recycling_percentage),3],
-	["O_Boat_Armed_01_hmg_F",2,round (100 / GRLIB_recycling_percentage),2],
-	["O_T_Boat_Armed_01_hmg_F",2,round (100 / GRLIB_recycling_percentage),2],
 	["RHS_Ural_Zu23_MSV_01",10,round (150 / GRLIB_recycling_percentage),10],
 	["rhs_bmd4_vdv",10,round (150 / GRLIB_recycling_percentage),10],
 	["rhs_bmd2",10,round (150 / GRLIB_recycling_percentage),10],
@@ -225,18 +224,5 @@ opfor_recyclable = [
 	["LOP_ChDKZ_BTR60",10,round (150 / GRLIB_recycling_percentage),10],
 	["LOP_ChDKZ_BTR70",10,round (200 / GRLIB_recycling_percentage),10],
 	["LOP_ChDKZ_T72BB",10,round (300 / GRLIB_recycling_percentage),10],
-	["LOP_ChDKZ_ZSU234",15,round (400 / GRLIB_recycling_percentage),15],
-	["O_MBT_04_cannon_F",15,round (500 / GRLIB_recycling_percentage),15],
-	["O_MBT_04_command_F",15,round (500 / GRLIB_recycling_percentage),15],
-	["O_Heli_Attack_02_dynamicLoadout_F",10,round (700 / GRLIB_recycling_percentage),15],
-	["O_Heli_Attack_02_black_F",10,round (700 / GRLIB_recycling_percentage),15],
-	["O_Heli_Light_02_F",10,round (600 / GRLIB_recycling_percentage),10],
-	["O_Heli_Light_02_dynamicLoadout_F",10,round (600 / GRLIB_recycling_percentage),10],
-	["O_Heli_Light_02_v2_F",10,round (600 / GRLIB_recycling_percentage),10],
-	["O_Heli_Transport_04_bench_F",10,round (500 / GRLIB_recycling_percentage),10],
-	["O_Plane_CAS_02_F",20,round (1000 / GRLIB_recycling_percentage),30],
-	["O_Plane_Fighter_02_F",20,round (1000 / GRLIB_recycling_percentage),30],
-	["O_Plane_Fighter_02_Stealth_F",20,round (1000 / GRLIB_recycling_percentage),30],
-	["O_T_VTOL_02_vehicle_F",20,round (1000 / GRLIB_recycling_percentage),20],
-	["O_T_VTOL_02_infantry_F",20,round (1000 / GRLIB_recycling_percentage),20]
+	["LOP_ChDKZ_ZSU234",15,round (400 / GRLIB_recycling_percentage),15]
 ];

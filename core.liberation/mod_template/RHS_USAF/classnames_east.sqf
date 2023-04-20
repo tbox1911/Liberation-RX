@@ -92,9 +92,9 @@ militia_vehicles = [
 
 opfor_boat = [
 	"B_Boat_Armed_01_hmg_F",
-	"B_T_Boat_Armed_01_hmg_F",
+	"B_T_Boat_Armed_01_minigun_F",
 	"B_Boat_Armed_01_hmg_F",
-	"B_T_Boat_Armed_01_hmg_F"
+	"B_T_Boat_Armed_01_minigun_F"
 ];
 
 opfor_vehicles = [
@@ -194,6 +194,8 @@ opfor_statics = [
 ];
 
 opfor_recyclable = [
+	["B_Boat_Armed_01_hmg_F",2,round (30 / GRLIB_recycling_percentage),2],
+	["B_T_Boat_Armed_01_minigun_F",2,round (30 / GRLIB_recycling_percentage),2],
 	["B_HMG_01_high_F",0,round (20 / GRLIB_recycling_percentage),0],
 	["B_GMG_01_high_F",0,round (40 / GRLIB_recycling_percentage),0],
 	["B_static_AA_F",0,round (80 / GRLIB_recycling_percentage),0],
@@ -226,17 +228,6 @@ opfor_recyclable = [
 	["rhsusf_M1083A1P2_B_M2_WD_fmtv_usarmy",1,round (40 / GRLIB_recycling_percentage),2],
 	["rhsusf_M1083A1P2_B_WD_fmtv_usarmy",1,round (40 / GRLIB_recycling_percentage),2],
 	["rhsusf_M977A4_BKIT_M2_usarmy_wd",1,round (40 / GRLIB_recycling_percentage),2],
-	["B_Boat_Armed_01_hmg_F",2,round (30 / GRLIB_recycling_percentage),2],
-	["B_T_Boat_Armed_01_hmg_F",2,round (30 / GRLIB_recycling_percentage),2],
-	["B_Boat_Armed_01_hmg_F",2,round (30 / GRLIB_recycling_percentage),2],
-	["B_T_Boat_Armed_01_hmg_F",2,round (30 / GRLIB_recycling_percentage),2],
-	["rhsusf_M1220_M2_usarmy_wd",10,round (450 / GRLIB_recycling_percentage),15],
-	["rhsusf_M1220_MK19_usarmy_wd",10,round (450 / GRLIB_recycling_percentage),15],
-	["rhsusf_M1230_M2_usarmy_wd",10,round (450 / GRLIB_recycling_percentage),15],
-	["rhsusf_M1237_M2_usarmy_wd",10,round (450 / GRLIB_recycling_percentage),15],
-	["rhsusf_m1240a1_m2_usarmy_wd",10,round (450 / GRLIB_recycling_percentage),15],
-	["rhsusf_m1240a1_m240_usarmy_wd",10,round (450 / GRLIB_recycling_percentage),15],
-	["rhsusf_m1240a1_mk19_usarmy_wd",10,round (450 / GRLIB_recycling_percentage),15],
 	["rhsusf_m1a1aimwd_usarmy",10,round (600 / GRLIB_recycling_percentage),10],
 	["rhsusf_m1a1aim_tuski_wd",10,round (600 / GRLIB_recycling_percentage),10],
 	["rhsusf_m1a2sep1wd_usarmy",10,round (600 / GRLIB_recycling_percentage),10],
