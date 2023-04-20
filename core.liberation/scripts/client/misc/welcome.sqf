@@ -12,7 +12,7 @@ while {	(player getVariable "GRLIB_score_set" == 0) } do {
 	uIsleep 2;
 };
 
-private _score = score player;
+private _score = [player] call F_getScore;
 private _rank = [player] call set_rank;
 private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
 
