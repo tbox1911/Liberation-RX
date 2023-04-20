@@ -3,6 +3,7 @@ private [ "_last_transition", "_last_position", "_cinematic_camera", "_cinematic
 if ( isNil "active_sectors" ) then { active_sectors = [] };
 if ( isNil "GRLIB_all_fobs" ) then { GRLIB_all_fobs = [] };
 
+titleText ["" ,"BLACK IN", 3];
 cinematic_camera_started = true;
 _last_transition = -1;
 _last_position = [ -1, -1, -1 ];
@@ -275,3 +276,4 @@ _cinematic_camera cameraEffect ["Terminate", "BACK"];
 camDestroy _cinematic_camera;
 camUseNVG false;
 cinematic_camera_stop = true;
+titleText ["","BLACK FADED"];

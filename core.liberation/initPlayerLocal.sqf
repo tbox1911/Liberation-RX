@@ -1,1 +1,1 @@
-cutText ["Loading...","BLACK FADED", 0];
+titleText ["Loading...","BLACK FADED"];

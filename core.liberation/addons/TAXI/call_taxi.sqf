@@ -24,15 +24,54 @@ taxi_dest = {
 	_waypoint setWaypointCombatMode "GREEN" ;
 };
 
-// Heli Taxi
-_taxi_type = [
+// Heli Taxi Type
+_taxi_type_2 = [
+	"C_Heli_light_01_blue_F",
+	"C_Heli_light_01_red_F",
+	"C_Heli_light_01_ion_F",
+	"C_Heli_light_01_blueLine_F",
+	"C_Heli_light_01_digital_F",
+	"C_Heli_light_01_elliptical_F",
+	"C_Heli_light_01_furious_F",
+	"C_Heli_light_01_graywatcher_F",
+	"C_Heli_light_01_jeans_F",
+	"C_Heli_light_01_light_F",
+	"C_Heli_light_01_shadow_F",
+	"C_Heli_light_01_sheriff_F",
+	"C_Heli_light_01_speedy_F",
+	"C_Heli_light_01_sunset_F",
+	"C_Heli_light_01_vrana_F",
+	"C_Heli_light_01_wasp_F",
+	"C_Heli_light_01_wave_F",
+	"C_Heli_light_01_stripped_F",
+	"C_Heli_light_01_luxe_F"
+];
+
+_taxi_type_6 = [
+	"I_Heli_light_03_unarmed_F",
+	"I_E_Heli_light_03_unarmed_F"
+];
+
+_taxi_type_8 = [
 	"O_Heli_Light_02_unarmed_F",
+	"O_Heli_Light_02_v2_F",
 	"B_Heli_Transport_01_F",
+	"B_Heli_Transport_01_camo_F"
+];
+
+_taxi_type_14 = [
 	"B_Heli_Transport_03_unarmed_green_F",
 	"B_Heli_Transport_03_black_F",
-	"I_Heli_light_03_unarmed_F",
 	"I_Heli_Transport_02_F"
-] call BIS_fnc_selectRandom;
+];
+
+private _nb_unit = count (units player);
+private _taxi_type = "";
+
+if (_nb_unit <= 2) then {_taxi_type = _taxi_type_2 call BIS_fnc_selectRandom};
+if (_nb_unit > 2 && _nb_unit <= 6) then {_taxi_type = _taxi_type_6 call BIS_fnc_selectRandom};
+if (_nb_unit > 6 && _nb_unit <= 8) then {_taxi_type = _taxi_type_8 call BIS_fnc_selectRandom};
+if (_nb_unit > 8) then {_taxi_type = _taxi_type_14 call BIS_fnc_selectRandom};
 
 // Create Taxi
 _air_grp = createGroup [GRLIB_side_civilian, true];

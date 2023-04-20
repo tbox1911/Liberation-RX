@@ -74,7 +74,9 @@ while { true } do {
 		_screenmsg = format [ "%1%2", _screenmsg, format [ "%1 : %2%3", localize "STR_REFUELING", round ( (fuel _veh) * 100 ), "%" ] ];
 	};
 
-	titleText [ _screenmsg, "PLAIN DOWN" ];
+	if (_screenmsg != "") then {
+		titleText [ _screenmsg, "PLAIN DOWN" ];
+	};
 
 	sleep 1;
 };
