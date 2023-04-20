@@ -37,4 +37,3 @@ if ( combat_readiness > 15 ) then {
 		};
 	};
 };
-

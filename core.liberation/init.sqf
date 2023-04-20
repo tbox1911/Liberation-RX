@@ -101,9 +101,9 @@ if (!abort_loading) then {
 
 if (!isDedicated && hasInterface) then {
 	titleText ["","BLACK FADED", 1000];
-	waitUntil { sleep 1; !isNil "GRLIB_init_server" };
-	[] execVM "scripts\client\init_client.sqf";
+	waitUntil {!isNil "GRLIB_init_server" };
 	[] execVM "GREUH\scripts\GREUH_activate.sqf";
+	[] execVM "scripts\client\init_client.sqf";
 } else {
 	setViewDistance 1600;
 };
