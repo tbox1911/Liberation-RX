@@ -1,4 +1,4 @@
-params [ [ "_source_position", (getpos player) ] ];
+params [["_source_position", (getPosATL player)]];
 
 private _retvalue = [0,0,0];
 if ( count GRLIB_all_fobs > 0 ) then {

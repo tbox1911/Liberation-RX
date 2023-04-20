@@ -13,7 +13,7 @@ while { true } do {
 		_markers = [];
 		for [ {_idx=0},{_idx < count GRLIB_all_fobs},{_idx=_idx+1}] do {
 			_fobpos = GRLIB_all_fobs select _idx;
-			_near_outpost = (count (_fobpos nearObjects [FOB_outpost, 100]) > 0);
+			_near_outpost = (count (_fobpos nearObjects [FOB_outpost, 50]) > 0);
 
 			_marker = createMarkerLocal [format ["fobmarker%1",_idx], markers_reset];			
 			if (_near_outpost) then {

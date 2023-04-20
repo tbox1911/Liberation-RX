@@ -126,7 +126,7 @@ if ( isServer ) then {
 							[_leader, 1] call F_addScore;
 						};
 					};
-					if (floor random 2 == 0) then { [_unit] remoteExec ["F_deathSound", -2] };
+					if (floor random 2 == 0) then { [_unit] remoteExec ["F_deathSound", 0] };
 				};
 				if ( side (group _unit) == GRLIB_side_friendly ) then {
 					stats_blufor_teamkills = stats_blufor_teamkills + 1;
