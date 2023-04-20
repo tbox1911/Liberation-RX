@@ -15,5 +15,6 @@ gamelogic globalChat (format [localize "STR_BOUNTY_MESSAGE"+".  Bonus Score %4pt
 if (player == _killer) then {
 	_ammo_collected = _killer getVariable ["GREUH_ammo_count",0];
 	_killer setVariable ["GREUH_ammo_count", (_ammo_collected + _bounty), true];
+	_killer addScore (_bonus);
 	_killer addRating 500;
 };
