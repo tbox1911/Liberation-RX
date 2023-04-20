@@ -49,6 +49,7 @@ vehicle_defense = compileFinal preprocessFileLineNumbers "scripts\client\misc\ve
 fetch_permission = compileFinal preprocessFileLineNumbers "scripts\client\misc\fetch_permission.sqf";
 is_menuok = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_menuok.sqf";
 is_neartransport = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_neartransport.sqf";
+is_allowed_item = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_allowed_item.sqf";
 paraDrop = compileFinal preprocessFileLineNumbers "scripts\client\spawn\paraDrop.sqf";
 get_lrx_name = compileFinal preprocessFileLineNumbers "scripts\client\misc\get_lrx_name.sqf";
 get_player_name = compileFinal preprocessFileLineNumbers "scripts\client\misc\get_player_name.sqf";

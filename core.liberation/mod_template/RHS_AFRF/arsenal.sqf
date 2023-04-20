@@ -1,6 +1,3 @@
-// Initalize Side
-GRLIB_arsenal_side = EAST;
-
 //Blacklist Items
 blacklisted_bag = [
 	"RHS_Podnos_Bipod_Bag",
@@ -30,39 +27,28 @@ blacklisted_bag = [
 ];
 
 blacklisted_weapon = [
-	"optic_Nightstalker",
-	"optic_tws",
-	"optic_tws_mg",
-	"NVGoggles_tna_F",
-	"NVGogglesB_blk_F",
-	"NVGogglesB_grn_F",
-	"NVGogglesB_gry_F",
-	"H_HelmetO_ViperSP_hex_F",
-	"H_HelmetO_ViperSP_ghex_F",
-	"U_O_V_Soldier_Viper_hex_F",
-	"U_O_V_Soldier_Viper_F",
-	"O_V_Soldier_Viper_F",
-	"O_V_Soldier_Viper_hex_F"
 ];
 
 GRLIB_whitelisted_from_arsenal = [
-	"Medikit",
 	"FirstAidKit",
-	"ToolKit",
-	"ItemGPS",
-	"Laserdesignator",
-	"Binocular",
-	"MineDetector",
-	"Rangefinder"
-];
-
-GRLIB_whitelisted_from_arsenal_limited = [
 	"Medikit",
-	"FirstAidKit",
 	"ToolKit",
-	"ItemGPS",
-	"Laserdesignator",
-	"Binocular",
 	"MineDetector",
-	"Rangefinder"
+	"Binocular",
+	"Rangefinder",
+	"ItemCompass",
+	"ItemGPS",
+	"ItemMap",
+	"ItemRadio",
+	"ItemWatch",
+	"Bandage",
+	"HandGrenade",
+	"MiniGrenade",
+	"Laserbatteries",
+	"B_UavTerminal",
+	"APERSMine_Range_Mag",
+	"APERSBoundingMine_Range_Mag",
+	"ATMine_Range_Mag",
+	"SatchelCharge_Remote_Mag",
+	"SLAMDirectionalMine_Wire_Mag"
 ];

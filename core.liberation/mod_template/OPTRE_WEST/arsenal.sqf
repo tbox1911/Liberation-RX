@@ -1,26 +1,39 @@
 //Blacklist Items
 
 blacklisted_bag = [
-	"B_Static_Designator_01_weapon_F",
-	"B_W_Static_Designator_01_weapon_F",
-  "O_Static_Designator_02_weapon_F"
+	"_Spartan"
 ];
 
 blacklisted_weapon = [
-	"SMG_03_black",
-	"SMG_03C_black",
-	"optic_Nightstalker"
 ];
 
 GRLIB_whitelisted_from_arsenal = [
-	"Medikit",
-	"FirstAidKit",
+	//"FirstAidKit",
+	//"Medikit",
+  	"OPTRE_MedKit",
+  	"OPTRE_Medigel",
 	"ToolKit",
-	"ItemGPS",
-	"Laserdesignator",
-	"Binocular",
 	"MineDetector",
-	"Rangefinder",
-	"UNSCMine_Range_Mag",
+	//"Binocular",
+	"OPTRE_Binoculars",
+	//"Rangefinder",
+	"OPTRE_Smartfinder",
+	"ItemCompass",
+	"ItemGPS",
+	"ItemMap",
+	"ItemRadio",
+	"ItemWatch",
+	"Bandage",
+	"HandGrenade",
+	"MiniGrenade",
+	"Laserbatteries",
+	"B_UavTerminal",
+	"APERSMine_Range_Mag",
+	"APERSBoundingMine_Range_Mag",
+	"ATMine_Range_Mag",
+	"SatchelCharge_Remote_Mag",
+	"SLAMDirectionalMine_Wire_Mag",
+	"OPTRE_NVG",
+	"C7_Remote_Mag",
 	"C12_Remote_Mag"
 ];

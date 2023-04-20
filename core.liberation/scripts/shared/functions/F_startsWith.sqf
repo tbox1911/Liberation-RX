@@ -1,9 +1,3 @@
-// ******************************************************************************************
-// * This project is licensed under the GNU Affero GPL v3. Copyright © 2014 A3Wasteland.com *
-// ******************************************************************************************
-//	@file Name: F_startsWith.sqf
-//	@file Author: AgentRev, Killzone_Kid
-
 /*
 	Parameters:
 	_this select 0: String or Array - string(s) to search for
@@ -11,37 +5,25 @@
 	_this select 2: Boolean - case sensitive search (optional, default: false)
 
 	Returns: Boolean - test result
+	thx: AgentRev, Killzone_Kid
 */
 
-private ["_needles", "_haystack", "_caseSensitive", "_found"];
+params [
+	["_needles", []],
+	["_haystack", ""],
+	["_caseSensitive", false]
+];
+private _found = false;
 
-_needles = param [0, [], ["",[]]];
-_haystack = param [1, "", [""]];
-_caseSensitive = param [2, false, [false]];
+if (typeName _needles != "ARRAY") then { _needles = [_needles] };
 
-if (typeName _needles != "ARRAY") then
-{
-	_needles = [_needles];
-};
-
-_found = false;
-
-if (_caseSensitive) then
-{
+if (_caseSensitive) then {
 	{
-		if (_x != "" && _x isEqualTo (_haystack select [0, count _x])) exitWith
-		{
-			_found = true;
-		};
+		if (_x != "" && _x isEqualTo (_haystack select [0, count _x])) exitWith { _found = true };
 	} forEach _needles;
-}
-else
-{
+} else {
 	{
-		if (_x != "" && _x == (_haystack select [0, count _x])) exitWith
-		{
-			_found = true;
-		};
+		if (_x != "" && _x == (_haystack select [0, count _x])) exitWith { _found = true };
 	} forEach _needles;
 };
 

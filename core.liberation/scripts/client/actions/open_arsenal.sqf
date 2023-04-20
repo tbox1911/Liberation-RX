@@ -120,27 +120,23 @@ if ( edit_loadout > 0 ) then {
 		// Open Arsenal
 		[_box, player] call ace_arsenal_fnc_openBox;
 	} else {
-		if (GRLIB_limited_arsenal) then {
-			_savedCargo = _box getVariable [ "bis_addVirtualWeaponCargo_cargo", [] ];
-			_savedMissionCargo = missionNamespace getVariable [ "bis_addVirtualWeaponCargo_cargo", [] ];
-			waitUntil {!isNil {_box getVariable "LARs_arsenal_Liberation_cargo"} };
-			_cargo = _box getVariable "LARs_arsenal_Liberation_cargo";
-			_box setVariable [ "bis_addVirtualWeaponCargo_cargo", _cargo ];
-			missionNamespace setVariable [ "bis_addVirtualWeaponCargo_cargo", _cargo ];
+		_savedCargo = _box getVariable [ "bis_addVirtualWeaponCargo_cargo", [] ];
+		_savedMissionCargo = missionNamespace getVariable [ "bis_addVirtualWeaponCargo_cargo", [] ];
+		waitUntil {!isNil {_box getVariable "LARs_arsenal_Liberation_cargo"} };
+		_cargo = _box getVariable "LARs_arsenal_Liberation_cargo";
+		_box setVariable [ "bis_addVirtualWeaponCargo_cargo", _cargo ];
+		missionNamespace setVariable [ "bis_addVirtualWeaponCargo_cargo", _cargo ];
 
-			['Open',[nil,_box]] call BIS_fnc_arsenal;
+		['Open',[nil,_box]] call BIS_fnc_arsenal;
 
-			_box setVariable [ "LARs_arsenalClosedID", [ missionNamespace, "arsenalClosed", compile format ["
-				%1 setVariable [ 'bis_addvirtualWeaponCargo_cargo', %2 ];
-				missionNamespace setVariable [ 'bis_addvirtualWeaponCargo_cargo', %3 ];
-				[ missionNamespace, 'arsenalClosed', %1 getVariable 'LARs_arsenalClosedID' ] call BIS_fnc_removeScriptedEventHandler;
-				%1 setVariable [ 'LARs_arsenalClosedID', nil ];
-				[player] call F_filterLoadout;
-				[player] spawn F_payLoadout;
-			", _box, _savedCargo, _savedMissionCargo ] ] call BIS_fnc_addScriptedEventHandler ];
-		} else {
-			["Open", [true]] call BIS_fnc_arsenal;
-		};
+		_box setVariable [ "LARs_arsenalClosedID", [ missionNamespace, "arsenalClosed", compile format ["
+			%1 setVariable [ 'bis_addvirtualWeaponCargo_cargo', %2 ];
+			missionNamespace setVariable [ 'bis_addvirtualWeaponCargo_cargo', %3 ];
+			[ missionNamespace, 'arsenalClosed', %1 getVariable 'LARs_arsenalClosedID' ] call BIS_fnc_removeScriptedEventHandler;
+			%1 setVariable [ 'LARs_arsenalClosedID', nil ];
+			[player] call F_filterLoadout;
+			[player] spawn F_payLoadout;
+		", _box, _savedCargo, _savedMissionCargo ] ] call BIS_fnc_addScriptedEventHandler ];
 	};
 } else {
 	//filter and pay loadout
