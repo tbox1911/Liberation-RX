@@ -32,19 +32,17 @@ opfor_ammo_container = "Land_Pod_Heli_Transport_04_ammo_F";
 opfor_flag = "Flag_CSAT_F";
 
 militia_squad = [
-	"LOP_ChDKZ_Infantry_Bardak",
-	"LOP_ChDKZ_Infantry_Corpsman",
-	"LOP_ChDKZ_Infantry_Commander",
-	"LOP_ChDKZ_Infantry_Engineer",
-	"LOP_ChDKZ_Infantry_GL",
-	"LOP_ChDKZ_Infantry_AT",
-	"LOP_ChDKZ_Infantry_MG",
-	"LOP_ChDKZ_Infantry_Marksman",
-	"LOP_ChDKZ_Infantry_Rifleman",
-	"LOP_ChDKZ_Infantry_Rifleman_2",
-	"LOP_ChDKZ_Infantry_Rifleman_3",
-	"LOP_ChDKZ_Infantry_SL",
-	"LOP_ChDKZ_Infantry_TL"
+	"rhs_vdv_mflora_junior_sergeant",
+	"rhs_vdv_mflora_marksman",
+	"rhs_vdv_mflora_rifleman_lite",
+	"rhs_vdv_mflora_rifleman_lite",
+	"rhs_vdv_mflora_medic",
+	"rhs_vdv_mflora_grenadier_rpg",
+	"rhs_vdv_mflora_rifleman",
+	"rhs_vdv_mflora_rifleman",
+	"rhs_vdv_mflora_at",
+	"rhs_vdv_mflora_grenadier",
+	"rhs_vdv_mflora_arifleman_rpk"
 ];
 
 militia_loadout_overide = [
