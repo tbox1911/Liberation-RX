@@ -3,6 +3,7 @@ if ( isNil "FOB_box_typename" ) then { FOB_box_typename = "B_Slingload_01_Cargo_
 if ( isNil "FOB_truck_typename" ) then { FOB_truck_typename = "B_Truck_01_box_F" };
 if ( isNil "FOB_outpost" ) then { FOB_outpost = "Land_BagBunker_Tower_F" };
 if ( isNil "FOB_box_outpost" ) then { FOB_box_outpost = "Land_Cargo10_grey_F" };
+if ( isNil "FOB_sign" ) then { FOB_sign = "SignAd_Sponsor_F" };
 if ( isNil "Arsenal_typename" ) then { Arsenal_typename = "B_supplyCrate_F" };
 if ( isNil "Respawn_truck_typename" ) then { Respawn_truck_typename = "B_Truck_01_medical_F" };
 if ( isNil "ammo_truck_typename" ) then { ammo_truck_typename = "B_Truck_01_ammo_F" };
