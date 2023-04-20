@@ -62,7 +62,7 @@ if (isPlayer _wnded) then {
   private _bounty_ok = (([(GRLIB_capture_size * 2), getPosATL _medic] call F_getNearestSector) in (sectors_allSectors - blufor_sectors) && _medic getVariable ["PAR_lastRevive",0] < time);
   if (isPlayer _medic && _bounty_ok) then {
     private _bonus = 5;
-    [_medic, _bonus] remoteExec ["addScore", 2];
+    [_medic, _bonus] remoteExec ["F_addScore", 2];
     _medic setVariable ["PAR_lastRevive", round(time + 5*60), true];
     private _text = format [localize "STR_PAR_ST_02", name _wnded, _bonus];
     [[_medic, _text], {

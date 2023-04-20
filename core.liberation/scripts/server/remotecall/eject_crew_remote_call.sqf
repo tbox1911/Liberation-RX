@@ -21,7 +21,7 @@ private _grp = group (_crew select 0);
 if (side _grp == GRLIB_side_civilian && !([_player, _vehicle] call is_owner)) then {
     [localize "STR_DO_EJECT"] remoteExec ["hintSilent", owner _player];
     ["vtolAlarm"] remoteExec ["playSound", owner _player];
-    _player addScore -5;
+	[_player, -5] call F_addScore;
 
 	private _nearest_sector = [sectors_allSectors, _vehicle] call F_nearestPosition;
 

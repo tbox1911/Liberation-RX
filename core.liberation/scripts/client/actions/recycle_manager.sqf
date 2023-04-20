@@ -21,7 +21,7 @@ while { true } do {
 
 			// Fireworks
 			if (typeOf _vehicle == fireworks_typename) then {
-				_vehicle addAction ["<t color='#60FF00'>" + localize "STR_RECYCLE_FIREWORKS" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\do_fireworks.sqf","",-951,false,true,"","[_target] call is_menuok && score player >= GRLIB_perm_max",_distvehclose];
+				_vehicle addAction ["<t color='#60FF00'>" + localize "STR_RECYCLE_FIREWORKS" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\do_fireworks.sqf","",-951,false,true,"","[_target] call is_menuok && [player] call F_getScore >= GRLIB_perm_max",_distvehclose];
 			};
 			_vehicle setVariable ["GRLIB_recycle_action", true];
 		} forEach _nearrecycl;

@@ -18,6 +18,7 @@ GRLIB_ACE_enabled = false;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\classnames.sqf";
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -72,9 +73,11 @@ if (isServer) then {
 		};
 	} foreach vehicles;
 =======
+=======
+[] call compileFinal preprocessFileLineNUmbers "scripts\shared\classnames.sqf";
+>>>>>>> 7a148d00 (use REAL side)
 
 if (!abort_loading) then {
-	[] call compileFinal preprocessFileLineNUmbers "scripts\shared\classnames.sqf";
 	[] call compileFinal preprocessfilelinenumbers "scripts\shared\init_shared.sqf";
 	[] call compileFinal preprocessFileLineNUmbers "scripts\shared\init_sectors.sqf";
 <<<<<<< HEAD

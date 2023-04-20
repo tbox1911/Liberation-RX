@@ -1,4 +1,6 @@
 // *** FRIENDLIES ***
+GRLIB_side_friendly = EAST;
+
 // Project OPFOR Ukrainian Armed Forces
 
 // Default classname: scripts\shared\default_classnames.sqf

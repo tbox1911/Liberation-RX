@@ -9,6 +9,6 @@ gamelogic globalChat format [localize "STR_BOUNTY_MESSAGE"+".  Bonus Score %4pts
 
 if (player == _killer) then {
 	[_killer, _bounty, 0] remoteExec ["ammo_add_remote_call", 2];
-	[_killer, _bonus] remoteExec ["addScore", 2];
+	[_killer, _bonus] remoteExec ["F_addScore", 2];
 	_killer addRating 500;
 };

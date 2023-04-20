@@ -17,8 +17,8 @@ while { true } do {
 	{
 		_rank = _x getVariable ["GRLIB_Rank", ""];
 		if (isPlayer _x && _rank != "") then {
-			_cur = score _x;
-			_last = _x getVariable["GREUH_score_last",0];
+			_cur = [_x] call F_getScore;
+			_last = _x getVariable["GREUH_score_last", _cur];
 			if (_cur != _last) then {
 				// score has changed for player _x
 

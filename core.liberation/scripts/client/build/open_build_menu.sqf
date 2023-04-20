@@ -15,7 +15,7 @@ waitUntil { dialog };
 
 _title = localize "STR_BUILD_TITLE";
 private _msg = "";
-private _score = score player;
+private _score = [player] call F_getScore;
 private _rank = player getVariable ["GRLIB_Rank", "Private"];
 private _iscommandant = false;
 if ( _rank in ["Colonel", "Super Colonel"] ) then {	_iscommandant = true };

@@ -7,7 +7,7 @@ if (GRLIB_ACE_medical_enabled) then {
 	player setvariable ["ace_medical_causeofdeath", nil];
 };
 player setPosATL ((getmarkerpos GRLIB_respawn_marker) findEmptyPosition [0,50]);
-{if (_x distance2D player < 200) then { deleteVehicle _x }} foreach units GRLIB_side_enemy;
+
 GRLIB_player_spawned = false;
 removeAllWeapons player;
 removeAllItems player;

@@ -1,9 +1,4 @@
 // *** GLOBAL DEFINITIOON ***
-GRLIB_side_friendly = WEST;
-GRLIB_color_friendly = "ColorBLUFOR";
-GRLIB_side_enemy = EAST;
-GRLIB_color_enemy = "ColorOPFOR";
-GRLIB_color_enemy_bright = "ColorRED";
 
 markers_reset = [99999,99999,0];
 zeropos = [0,0,0];
@@ -22,7 +17,28 @@ if (isServer) then {
 
 // *** BADDIES ***
 [] call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_east.sqf", GRLIB_mod_east];
-[] call compileFinal preprocessFileLineNumbers "scripts\loadouts\init_loadouts.sqf";
+
+if (GRLIB_side_friendly == GRLIB_side_enemy) exitWith {
+abort_loading_msg = format [
+	"********************************\n
+	FATAL! - Invalid Side selection !\n\n
+	side West (%1) conflict with side East (%2)\n\n
+	Loading Aborted to protect data integrity.\n
+	Correct the Side selection.\n
+	*********************************", GRLIB_mod_west, GRLIB_mod_east];
+	abort_loading = true;
+};
+
+// *** COLORS ***
+GRLIB_color_friendly = "ColorBLUFOR";
+GRLIB_color_enemy = "ColorOPFOR";
+GRLIB_color_enemy_bright = "ColorRED";
+
+if (GRLIB_side_friendly == EAST) then {
+	GRLIB_color_friendly = "ColorOPFOR";
+	GRLIB_color_enemy = "ColorBLUFOR";
+	GRLIB_color_enemy_bright = "ColorBlue";
+};
 
 // *** CIVILIAN ***
 [] call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_civ.sqf", GRLIB_mod_west];
@@ -40,6 +56,7 @@ ind_recyclable = [
 ];
 
 // *** MILITIA ***
+[] call compileFinal preprocessFileLineNumbers "scripts\loadouts\init_loadouts.sqf";
 if ( isNil "militia_squad" ) then {
 	militia_squad = [
 		"O_G_Soldier_SL_F",
