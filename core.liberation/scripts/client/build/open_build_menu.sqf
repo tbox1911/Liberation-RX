@@ -136,7 +136,11 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 			};
 		};
 
+<<<<<<< HEAD
 		if (buildtype == 1 && _build_item select 1 >= 1 && (count (_bros) >= GRLIB_squad_size + GRLIB_squad_size_bonus)) then {
+=======
+		if ((_build_item select 1 >= 1 ) && (count (_bros) >= GRLIB_squad_size + GRLIB_squad_size_bonus)) then {
+>>>>>>> e173ea30 (build 0 cost units (dog))
 			_squad_full = true;
 		};		
 	};
