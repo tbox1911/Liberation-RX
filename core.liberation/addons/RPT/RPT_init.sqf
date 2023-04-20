@@ -4,21 +4,18 @@ _texDir = "addons\RPT\textures\";
 colorList =[
 	["Black", _color + "(0.01,0.01,0.01,1)"], // #(argb,8,8,3)color(0.1,0.1,0.1,0.1)
 	["Gray", _color + "(0.15,0.151,0.152,1)"], // #(argb,8,8,3)color(0.5,0.51,0.512,0.3)
-	//["White", _color + "(0.75,0.75,0.75,1)"], // #(argb,8,8,3)color(1,1,1,0.5)
+	["White", _color + "(0.75,0.75,0.75,1)"], // #(argb,8,8,3)color(1,1,1,0.5)
 	["Dark Blue", _color + "(0,0.05,0.15,1)"], // #(argb,8,8,3)color(0,0.3,0.6,0.05)
-	//["Blue", _color + "(0,0.03,0.5,1)"], // #(argb,8,8,3)color(0,0.2,1,0.75)
+	["Blue", _color + "(0,0.03,0.5,1)"], // #(argb,8,8,3)color(0,0.2,1,0.75)
 	//["Teal", _color + "(0,0.3,0.3,1)"], // #(argb,8,8,3)color(0,1,1,0.15)
-	//["Green", _color + "(0,0.5,0,1)"], // #(argb,8,8,3)color(0,1,0,0.15)
-	//["Yellow", _color + "(0.5,0.4,0,1)"], // #(argb,8,8,3)color(1,0.8,0,0.4)
-	//["Orange", _color + "(0.4,0.09,0,1)"], // #(argb,8,8,3)color(1,0.5,0,0.4)
-	//["Red", _color + "(0.45,0.005,0,1)"], // #(argb,8,8,3)color(1,0.1,0,0.3)
-	//["Pink", _color + "(0.5,0.03,0.3,1)"], // #(argb,8,8,3)color(1,0.06,0.6,0.5)
+	["Green", _color + "(0,0.5,0,1)"], // #(argb,8,8,3)color(0,1,0,0.15)
+	["Yellow", _color + "(0.5,0.4,0,1)"], // #(argb,8,8,3)color(1,0.8,0,0.4)
+	["Orange", _color + "(0.4,0.09,0,1)"], // #(argb,8,8,3)color(1,0.5,0,0.4)
+	["Red", _color + "(0.45,0.005,0,1)"], // #(argb,8,8,3)color(1,0.1,0,0.3)
+	["Pink", _color + "(0.5,0.03,0.3,1)"], // #(argb,8,8,3)color(1,0.06,0.6,0.5)
 	//["Purple", _color + "(0.1,0,0.3,1)"], // #(argb,8,8,3)color(0.8,0,1,0.1)
 	["ARPA Navy", _texDir + "arpa_navy.paa"],
 	["ARPA Woodland", _texDir + "arpa_woodland.paa"],
-	["Abstract Back", _texDir + "abstraitblack.paa"],
-	["Abstract Mod", _texDir + "abstraitmoderne.paa"],
-	["Abstract Red", _texDir + "abstraitrouge.paa"],
 	["Abstract Green", _texDir + "abstraitvert.paa"],
 	["Camo Green 1", _texDir + "camovert1.paa"],
 	["Camo Green 2", _texDir + "camovert2.paa"],
@@ -51,10 +48,7 @@ if (getPlayerUID player in ["76561198085724439", "76561198017505587"]) then {
 if (getPlayerUID player in ["76561198085724439", "76561198299706821"]) then {
 	colorList = colorList +	[["Christophe", _texDir + "camo_chris.paa"]];
 };
-// Zeus
-if (getPlayerUID player in ["76561198085724439", "76561198040060442"]) then {
-	colorList = colorList +	[["Zeus39", _texDir + "modernzig.paa"]];
-};
+
 
 //moved to ./shared/ for server use
 //RPT_fnc_TextureVehicle = compileFinal preprocessFileLineNumbers "addons\RPT\fn_textureVehicle.sqf";
