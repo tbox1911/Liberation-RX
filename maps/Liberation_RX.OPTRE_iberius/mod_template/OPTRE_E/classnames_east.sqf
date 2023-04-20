@@ -146,7 +146,7 @@ opfor_troup_transports = [
 	"O_Truck_03_covered_F",
 	"O_Truck_02_covered_F",
 	"O_Truck_02_transport_F",
-	"O_Heli_Transport_04_bench_F",
+	"O_Heli_Transport_04_covered_F",
 	"O_Heli_Attack_02_F",
 	"O_Heli_Light_02_F",
 	"O_T_VTOL_02_infantry_F"
@@ -159,7 +159,7 @@ opfor_choppers = [
 	"O_Heli_Light_02_v2_F",
 	"O_Heli_Attack_02_F",
 	"O_Heli_Attack_02_black_F",
-	"O_Heli_Transport_04_bench_F",
+	"O_Heli_Transport_04_covered_F",
 	"O_T_VTOL_02_infantry_F"
 ];
 
@@ -216,7 +216,7 @@ opfor_recyclable = [
 	["O_Heli_Light_02_F",10,round (600 / GRLIB_recycling_percentage),10],
 	["O_Heli_Light_02_dynamicLoadout_F",10,round (600 / GRLIB_recycling_percentage),10],
 	["O_Heli_Light_02_v2_F",10,round (600 / GRLIB_recycling_percentage),10],
-	["O_Heli_Transport_04_bench_F",10,round (500 / GRLIB_recycling_percentage),10],
+	["O_Heli_Transport_04_covered_F",10,round (400 / GRLIB_recycling_percentage),10],
 	["O_Plane_CAS_02_F",20,round (1000 / GRLIB_recycling_percentage),30],
 	["O_Plane_Fighter_02_F",20,round (1000 / GRLIB_recycling_percentage),30],
 	["O_Plane_Fighter_02_Stealth_F",20,round (1000 / GRLIB_recycling_percentage),30],
