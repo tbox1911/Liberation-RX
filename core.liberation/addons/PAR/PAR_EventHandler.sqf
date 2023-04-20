@@ -75,7 +75,7 @@ if (_unit == player) then {
 		PAR_unblock_AI = {
 			params ["_unit_array"];
 			if ( count _unit_array == 0 ) then {
-				player setPos (getPos player vectorAdd [([] call F_getRND), ([] call F_getRND), 1]);
+				player setPosATL (getPosATL player vectorAdd [([] call F_getRND), ([] call F_getRND), 0.5]);
 			} else {
 				{
 					_unit = _x;
@@ -89,7 +89,7 @@ if (_unit == player) then {
 						[_unit] joinSilent _grp;
 						doStop _unit;
 						sleep 1;
-						_unit setPos (getPos player vectorAdd [([] call F_getRND), ([] call F_getRND), 1]);
+						_unit setPosATL (getPosATL player vectorAdd [([] call F_getRND), ([] call F_getRND), 0.5]);
 						[_unit] joinSilent (group player);
 						_unit enableAI "ALL";
 						_unit doFollow leader player;

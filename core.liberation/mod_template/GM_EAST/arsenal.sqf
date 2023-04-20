@@ -113,11 +113,11 @@ blacklisted_weapon = [
 	"U_O_V_Soldier_Viper_F",
 	"O_V_Soldier_Viper_F",
 	"O_V_Soldier_Viper_hex_F",
-	"gm_gc_army_medbox",
-	"gm_gc_army_medkit",
-	"gm_ge_army_gauzeCompress",
+	"gm_ge_army_burnBandage",
+	"gm_gc_army_gauzeBandage",
 	"gm_ge_army_gauzeBandage",
-	"gm_gc_army_gauzeBandage"
+	"gm_ge_army_gauzeCompress",
+	"gm_ge_army_medkit_80"
 ];
 
 GRLIB_whitelisted_from_arsenal = [
@@ -210,5 +210,7 @@ GRLIB_whitelisted_from_arsenal_limited = [
     "gm_backpack_t10_parachute",
 	"ItemMap",
 	"ItemRadio",
-	"ItemGPS"
+	"ItemGPS",
+	"launch_I_Titan_F",
+	"Titan_AA"
 ];

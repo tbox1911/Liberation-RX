@@ -1,7 +1,7 @@
 if (GRLIB_Patrol_manager == 0) exitWith {};
 waitUntil {sleep 1; !isNil "GRLIB_A3W_Init"};
 sleep (3*60);
-diag_log "-- LRX Starting Patrol Manager";
+diag_log "--- LRX Starting Patrol Manager";
 
 // Infantry Patrol
 _combat_triggers_infantry = [15,35,55];

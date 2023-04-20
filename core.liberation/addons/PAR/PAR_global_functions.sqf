@@ -285,6 +285,7 @@ PAR_Player_Init = {
 	1 fadeRadio 1;
 	NRE_EarplugsActive = 0;
 	hintSilent "";
+	showMap true;
 };
 
 PAR_HandleDamage_EH = {

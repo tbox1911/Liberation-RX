@@ -13,8 +13,7 @@ private _loadouts_data = [];
 private _counter = 0;
 
 if ( !isNil "_saved_loadouts" ) then {
-	private _grp = createGroup [GRLIB_side_friendly, true];
-	private _unit = _grp createUnit ["B_Survivor_F", [0,0,0], [], 0, "NONE"];
+	_unit = "B_Survivor_F" createVehicleLocal zeropos;
 	private _max_loadout = 24;
 	{
 		if ( _counter % 2 == 0 && _max_loadout > 0) then {
