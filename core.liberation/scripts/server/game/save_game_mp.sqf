@@ -1,7 +1,7 @@
 //--- LRX Savegame
 if (!isServer) exitWith {};
 if (!isNil "GRLIB_server_stopped") exitWith {};
-if (time <= 600) exitWith {};
+if (time <= 600 && !hasInterface) exitWith {};
 diag_log format [ "--- LRX Save start at %1", time ];
 
 private _classnames_to_save = [];
@@ -15,7 +15,8 @@ private _classnames_to_save_blu = [FOB_typename, FOB_outpost, FOB_sign, huron_ty
 } foreach (air_vehicles + heavy_vehicles + light_vehicles + support_vehicles + static_vehicles + ind_recyclable);
 _classnames_to_save_blu = _classnames_to_save_blu arrayIntersect _classnames_to_save_blu;
 
-_classnames_to_save = _classnames_to_save + _classnames_to_save_blu + all_hostile_classnames;
+_classnames_to_save append (_classnames_to_save_blu + all_hostile_classnames);
+_classnames_to_save = _classnames_to_save arrayIntersect _classnames_to_save;
 
 private _vehicles_light = GRLIB_vehicle_blacklist + list_static_weapons + uavs + [mobile_respawn];
 { _vehicles_light pushback (_x select 0) } foreach support_vehicles;

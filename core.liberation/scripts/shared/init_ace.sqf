@@ -61,3 +61,7 @@ R3F_LOG_FNCT_objet_deplacer = compile preprocessFile "R3F_LOG\objet_deplacable\d
 
 // Force Arsenal Filter Strict mode 3
 if (GRLIB_filter_arsenal == 2) then {GRLIB_filter_arsenal = 3};
+
+// Add missing objects
+support_vehicles append [["ACE_Wheel",0,0,1,0]];
+support_vehicles append [["ACE_Track",0,0,1,0]];

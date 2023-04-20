@@ -1,4 +1,4 @@
-waitUntil {sleep 1;GRLIB_player_spawned};
+waitUntil {sleep 1; GRLIB_player_spawned};
 revive_ui = compileFinal preprocessFileLineNumbers "GREUH\scripts\GREUH_revive_ui.sqf";
 
 while { true } do {

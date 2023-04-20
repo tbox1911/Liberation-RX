@@ -246,6 +246,10 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 				[_x select 10] params [["_compo", []]];
 
 				_nextbuilding setVehicleLock "LOCKED";
+				_nextbuilding lockCargo true;
+				_nextbuilding lockDriver true;
+				_nextbuilding lockTurret [[0], true];
+				_nextbuilding lockTurret [[0,0], true];
 				_nextbuilding allowCrewInImmobile [true, false];
 				_nextbuilding setUnloadInCombat [true, false];
 				_nextbuilding setVariable ["R3F_LOG_disabled", true, true];

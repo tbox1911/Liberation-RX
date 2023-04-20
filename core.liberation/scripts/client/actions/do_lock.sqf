@@ -1,12 +1,12 @@
 params ["_vehicle"];
 if (isNil "_vehicle") exitWith {};
 
+[_vehicle] remoteExec ["lock_vehicle_remote_call", 2];
+
 private _uid = getPlayerUID player;
-[_vehicle, "LOCKED"] remoteExec ["setVehicleLock", 0];
 _vehicle setVariable ["GRLIB_vehicle_owner", _uid, true];
 _vehicle setVariable ["R3F_LOG_disabled", true, true];
 _vehicle setVariable ["GRLIB_counter_TTL", nil, true];
-[_vehicle, false] remoteExec ["engineOn", 0];
 
 {
     if !(_x getVariable ["GRLIB_vehicle_owner", ""] in ["", "public", "server"]) then {

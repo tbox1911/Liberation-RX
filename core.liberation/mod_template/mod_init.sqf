@@ -4,6 +4,7 @@
 GRLIB_mod_list_west = [
     "A3_BLU",
     "A3_OPF",
+    "A3_OPF_PAC",
     "A3_IND",
     "CP_BAF_DES",
     "CP_USMC_W",    // C0br4
@@ -37,6 +38,7 @@ GRLIB_mod_list_east = [
     "A3_OPF",
     "A3_BLU",
     "A3_IND",
+    "A3_OPF_PAC",
     "A3_OPF_UB",
     "CP_TA",
     "CP_USMC_W",    // C0br4

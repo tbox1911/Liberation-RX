@@ -103,7 +103,11 @@ if (time < _stop) then {
 
 	if ( (markerPos "taxi_dz") distance2D zeropos > 100 ) then {
 		hintSilent "Ok, let's go...";
-		_vehicle lock 2;
+		_vehicle setVehicleLock "LOCKED";
+		_vehicle lockCargo true;
+		_vehicle lockDriver true;
+		_vehicle lockTurret [[0], true];
+    	_vehicle lockTurret [[0,0], true];
 		_cargo = [_vehicle, _pilots] call taxi_cargo;
 		{ _x allowDamage false } forEach (_cargo);
 
@@ -116,7 +120,7 @@ if (time < _stop) then {
 
 // Board Out
 _cargo = [_vehicle, _pilots] call taxi_cargo;
-_vehicle lock 3;
+_vehicle setVehicleLock "LOCKEDPLAYER";
 [_cargo] call taxi_outboard;
 { _x allowDamage true } forEach (_cargo);
 sleep 5;
