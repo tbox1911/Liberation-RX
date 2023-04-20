@@ -97,7 +97,6 @@ while { true } do {
 			_unit setVariable ["PAR_Grp_ID", format["Bros_%1",PAR_Grp_ID], true];
 			_unit enableIRLasers true;
 			_unit enableGunLights "Auto";
-			[_unit] call player_EVH;
 			if (GRLIB_opfor_english) then {
 				//[_unit, _spk] remoteExec ["setSpeaker", 0];
 				_unit setSpeaker (format ["Male0%1ENG",selectRandom [2,3,4,5,6,7,8,9]]);
