@@ -1,9 +1,11 @@
 // Add AMF Weapons
+GRLIB_MOD_signature = GRLIB_MOD_signature + ["amf_"];
 
 // Weapons + Equipements (uniforme, etc..)
 (
 	"
 	tolower ((configName _x) select [0,4]) == 'amf_' &&
+	getNumber (_x >> 'scope') > 1 &&
 	([(configName _x)] call is_allowed_item)
 	"
 	configClasses (configfile >> "CfgWeapons" )

@@ -1,4 +1,6 @@
 // Add SOG Weapons
+GRLIB_MOD_signature = GRLIB_MOD_signature + ["vn_"];
+
 private _exclude = "vn_o";
 if (GRLIB_mod_west == "SOG_VIETCONG") then { _exclude = "vn_b" };
 
@@ -6,6 +8,7 @@ if (GRLIB_mod_west == "SOG_VIETCONG") then { _exclude = "vn_b" };
 (
 	"
 	tolower ((configName _x) select [0,3]) == 'vn_' &&
+	getNumber (_x >> 'scope') > 1 &&
 	!([_exclude, (configName _x), true] call F_startsWith) &&
 	([(configName _x)] call is_allowed_item)
 	"

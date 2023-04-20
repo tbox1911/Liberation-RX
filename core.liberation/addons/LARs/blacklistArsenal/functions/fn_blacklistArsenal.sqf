@@ -166,10 +166,7 @@ _thread = _this spawn {
 
 	// Ace Arsenal Filter thing.
 	if (GRLIB_ACE_enabled) then {
-		[_box, false, false] call ace_arsenal_fnc_initBox;
-		{
-			[_box, _x] call ace_arsenal_fnc_addVirtualItems;
-		} forEach _cargo;
+		[_box, _blackList] call ace_arsenal_fnc_removeVirtualItems;
 	};
 
 	LARs_initBlacklist = true;

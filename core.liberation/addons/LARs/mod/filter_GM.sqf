@@ -1,4 +1,5 @@
 // Add Gobal Mobilization Weapons
+GRLIB_MOD_signature = GRLIB_MOD_signature + ["gm_"];
 
 // Weapons + Equipements (uniforms, etc..)
 (

@@ -29,3 +29,6 @@ GRLIB_movableObjects = [] + boats_names + R3F_LOG_CFG_can_be_moved_by_player;
 // R3F functions
 call compile preprocessFile "R3F_LOG\fonctions_generales\lib_geometrie_3D.sqf";
 R3F_LOG_FNCT_objet_deplacer = compile preprocessFile "R3F_LOG\objet_deplacable\deplacer.sqf";
+
+// Force Arsenal Filter Strict mode 3
+if (GRLIB_filter_arsenal == 2) then {GRLIB_filter_arsenal = 3};

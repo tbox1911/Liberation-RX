@@ -39,8 +39,14 @@ GRLIB_whitelisted_from_arsenal = [];			// whitelist when Arsenal is enabled
 // Default LRX blacklist
 GRLIB_blacklisted_from_arsenal = blacklisted_bag + blacklisted_weapon;
 
+// Ace compat.
+if (GRLIB_ACE_enabled) then { [myLARsBox, true, false] call ace_arsenal_fnc_initBox };
+
 // Filters disabled 
 if (GRLIB_filter_arsenal == 0) exitWith { diag_log "--- LRX Arsenal *Unfiltered* initialized." };
+
+// Mod signature
+GRLIB_MOD_signature = [];
 
 // Add Mod Items (Weapons,Uniform,etc.)
 [] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_init.sqf";

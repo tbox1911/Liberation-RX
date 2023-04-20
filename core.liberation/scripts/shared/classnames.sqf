@@ -15,7 +15,10 @@ zeropos = [0,0,0];
 
 // *** FRIENDLIES ***
 [] call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_west.sqf", GRLIB_mod_west];
-[] call F_calcUnitsCost;
+if (isServer) then {
+	[] call F_calcUnitsCost;
+	publicVariable "infantry_units";
+} else { waitUntil {sleep 0.1; !isNil "infantry_units"} };
 
 // *** BADDIES ***
 [] call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_east.sqf", GRLIB_mod_east];

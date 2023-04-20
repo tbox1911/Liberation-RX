@@ -1,9 +1,11 @@
 // Add RHS Weapons
+GRLIB_MOD_signature = GRLIB_MOD_signature + ["LOP_"];
 
 // Weapons + Equipements (uniforme, etc..)
 (
 	"
 	(getText (_x >> 'DLC') == GRLIB_mod_west || (['LOP_', (configName _x), true] call F_startsWith)) &&
+	getNumber (_x >> 'scope') > 1 &&
 	([(configName _x)] call is_allowed_item)
 	"
 	configClasses (configfile >> "CfgWeapons" )

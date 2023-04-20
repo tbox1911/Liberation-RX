@@ -1,3 +1,7 @@
+// Add ACE Weapons
+if (GRLIB_ACE_enabled) then {
+	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_ACE.sqf";
+};
 // Add ArmA3 Weapons
 if (["A3_", GRLIB_mod_west, true] call F_startsWith) then {
 	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_A3.sqf";
