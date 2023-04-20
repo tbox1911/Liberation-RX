@@ -2710,7 +2710,8 @@
 						Система строительство будет доступна, когда вы находитесь в 100 метров от штаба FOB. Тогда у вас появится контекстное меню строительства.&lt;br/&gt; &lt;br/&gt;</Russian>
 						<Chinesesimp>&lt;br/&gt;
 						为了帮助你取得解放成功，你有一个建设能力，可让你部署部队，车辆，防御，防御工事等。当然，这取决于你的资源。&lt;br/&gt; &lt;br/&gt;
-						当你在FOB总部100米以内时，建筑系统就可以使用了。然后会出现一个鼠标滑轮动作选项。&lt;br/&gt; &lt;br/&gt;</Chinesesimp>
+						当你在FOB总部100米以内时，建筑系统就可以使用了。然后会出现一个鼠标滑轮动作选项。&lt;br/&gt; &lt;br/&gt;
+						</Chinesesimp>
 				</Key>
 				<Key ID="STR_TUTO_TITLE8">
 						<Original>8. Deploying another FOB</Original>
@@ -2742,7 +2743,8 @@
 						Затем вы можете переместить этот контейнер или грузовик туда, где вы хотите развернуть новую FOB. Однако следует знать, что вы не можете построить FOB внутри зон, и дальше чем в 2 км от любой другой FOB.&lt;br/&gt; &lt;br/&gt;</Russian>
 						<Chinesesimp>&lt;br/&gt;
 						要建立一个全新的FOB，去建设菜单，在物流标签，建立一个FOB集装箱或FOB卡车(同样的东西，只是有轮子)。&lt;br/&gt; &lt;br/&gt;
-						然后，你可以将 FOB 集装箱移动到你想要部署新 FOB 的位置。但是要注意，你不能在控制区内建立FOB，或者在离任何其他FOB 2公里之内的范围。&lt;br/&gt; &lt;br/&gt;</Chinesesimp>
+						然后，你可以将 FOB 集装箱移动到你想要部署新 FOB 的位置。但是要注意，你不能在控制区内建立FOB，或者在离任何其他FOB 2公里之内的范围。&lt;br/&gt; &lt;br/&gt;
+						</Chinesesimp>
 				</Key>
 				<Key ID="STR_TUTO_TITLE9">
 						<Original>9. Secondary objectives</Original>
@@ -2780,7 +2782,8 @@
 						<Chinesesimp>&lt;br/&gt;
 						当你占领了几个防区，剩下的几个敌军有时会投降。然后，你可以抓捕那些囚犯，然后带到附近的FOB接受审问。&lt;br/&gt; &lt;br/&gt;
 						在日内瓦公约的最大程度上严格审讯下，将使你或多或少地获得关于 OPFOR 后勤基地位置的准确信息。&lt;br/&gt; &lt;br/&gt;
-						在那附近，你将需要寻找目标的确切位置，然后使用任何可用手段摧毁目标内的所有供应资产(卡车，集装箱)，扰乱OPFOR部队的供应线。成功完成这项任务将降低敌军警戒级别，从而降低所有敌军效率。&lt;br/&gt; &lt;br/&gt;</Chinesesimp>
+						在那附近，你将需要寻找目标的确切位置，然后使用任何可用手段摧毁目标内的所有供应资产(卡车，集装箱)，扰乱OPFOR部队的供应线。成功完成这项任务将降低敌军警戒级别，从而降低所有敌军效率。&lt;br/&gt; &lt;br/&gt;
+						</Chinesesimp>
 				</Key>
 				<Key ID="STR_TUTO_TITLE10">
 						<Original>10. Commanding</Original>
@@ -2824,7 +2827,124 @@
 						当玩家选择指挥官插槽(角色列表的最后一个插槽)时，他们通过按下相应的键(默认情况下是U)来访问宙斯。&lt;br/&gt; &lt;br/&gt;
 						这个界面允许在3D视图或地图视图指挥北约部队。&lt;br/&gt; &lt;br/&gt;
 						此外，指挥官还可以获得额外的建造选项，使他们可以获得载人车辆或整个预设的小队。&lt;br/&gt; &lt;br/&gt;
-						此角色不是强制性的，但强烈建议小众玩家使用。&lt;br/&gt; &lt;br/&gt;</Chinesesimp>
+						此角色不是强制性的，但强烈建议小众玩家使用。&lt;br/&gt; &lt;br/&gt;
+						</Chinesesimp>
+				</Key>
+				<Key ID="STR_TUTO_TITLE11">
+						<Original>11. Tips and Tricks</Original>
+						<Russian>11. Підказки</Russian>
+				</Key>
+				<Key ID="STR_TUTO_TEXT11">
+					<Original>&lt;br/&gt;
+					- On the main map, read the Ranking tab.&lt;br/&gt;
+					- On the main map, read the Shortcut tab.&lt;br/&gt;
+					- On the main map, read the Table tab.&lt;br/&gt;
+					- Put an Arsenal box in your vehicle to rearm you anywhere.&lt;br/&gt;
+					- Put a tent in your vehicle to redeploy anywhere.&lt;br/&gt;
+					- The recovery of a vehicle wreck is a good way to get ammunition.&lt;br/&gt;
+					- Recycle AmmoBox brings ammunition and XP.&lt;br/&gt;
+					- AIs or wounded prisoners can not be deleted or rearmed.&lt;br/&gt;
+					- Prisoners can not use a vehicle (driver, commander, gunner) or take weapons.&lt;br/&gt;
+					- When buying a vehicle, it belongs to the player by default .&lt;br/&gt;
+					- when airdropping a vehicle, it does NOT belong to the player by default.&lt;br/&gt;
+					- Your AI can revive you without medikit.&lt;br/&gt;
+					- The player must have a helpkit or a medikit to revive another player.&lt;br/&gt;
+					- When the AIs are near an Arsenal box, they are automatically rearmed.&lt;br/&gt;
+					- When static weapons are near a support crate, they are automatically rearmed.&lt;br/&gt;
+					- You can use the Halo jump to save a dead team.&lt;br/&gt;
+					- You can unlock AIs or yourself with 0-8-1 keys.&lt;br/&gt;
+					- When you use Redeployment, your AIs follow you.&lt;br/&gt;
+					- When you use the Halo jump, your AIs follow you.&lt;br/&gt;
+					- Your AIs follow you if they are within 20m and not in a vehicle.&lt;br/&gt;
+					- The repawn tent can be folded like a backpack and then equipped.&lt;br/&gt;
+					- You can sell the contents of vehicles near garages.&lt;br/&gt;
+					- You can buy gas jerry cans at any fuel depot.&lt;br/&gt;
+					- You can send ammo to other players near an ATM or an FOB.&lt;br/&gt;
+					- You can copy your equipment to an AI with the (Like Me) button in Squad Management.&lt;/t&gt;
+					</Original>
+					<French>&lt;br/&gt;
+					- Utilisez la roue de la souris, pour acceder aux actions disponibles.&lt;br/&gt;
+					- Utilisez l'action Redeploiement pour changer de Base.&lt;br/&gt;
+					- Sur sur la carte principale, lisez l'onglet Ranking.&lt;br/&gt;
+					- Sur la carte principale, lisez l'onglet Shortcut.&lt;br/&gt;
+					- Sur la carte principale, lisez l'onglet Table&lt;br/&gt;
+					- Mettez une caisse d'Arsenal dans votre véhicule pour vous réarmer n'importe où&lt;br/&gt;
+					- Mettez une tente dans votre véhicule pour vous redéployer n'importe où&lt;br/&gt;
+					- La récupération d'un épave de véhicule est un bon moyen d'obtenir des munitions&lt;br/&gt;
+					- Recycler des AmmoBox vous apporte munitions et XP&lt;br/&gt;
+					- Les IAs ou les prisonniers blessés ne peuvent être ni effacés ni réarmés&lt;br/&gt;
+					- Les prisonniers ne peuvent pas utiliser de véhicule (chauffeur, commandant, artilleur) ni prendre d'armes&lt;br/&gt;
+					- Lors de l'achat d'un véhicule, il appartient au joueur, personne d'autre ne peut l'utiliser&lt;br/&gt;
+					- Un véhicule parachuté n'appartient PAS au joueur, tout le monde peut l'utiliser&lt;br/&gt;
+					- Vos IA peuvent vous faire revivre sans medikit&lt;br/&gt;
+					- Le joueur doit avoir un aidkit ou un medikit pour revivre un autre joueur&lt;br/&gt;
+					- Quand les IAs sont près d'une caisse d'Arsenal, elles sont automatiquement réarmés&lt;br/&gt;
+					- Quand les armes statiques sont près d'une caisse de soutien, elles sont automatiquement réarmés&lt;br/&gt;
+					- Vous pouvez utiliser le saut HALO pour sauver une équipe morte&lt;br/&gt;
+					- Vous pouvez débloquer des IAs ou vous-même avec les touche 0-8-1&lt;br/&gt;
+					- Lorsque vous utilisez le Redeploiement, vos IAs vous suivent&lt;br/&gt;
+					- Lorsque vous utilisez le saut HALO, vos IAs vous suivent&lt;br/&gt;
+					- Redeployment et saut HALO, vos IAs vous suivent si elles sont dans un rayon de 20m et pas dans un véhicule&lt;br/&gt;
+					- La tente de repawn peut être replié comme un sac à dos et ensuite équipée&lt;br/&gt;
+					- Vous pouvez vendre le contenu des véhicules près des garages&lt;br/&gt;
+					- Vous pouvez acheter des jerrican d'essence dans n’importe quelle station service&lt;br/&gt;
+					- Vous pouvez envoyer des munitions à d'autres joueurs à proximité d'un ATM ou d'une FOB&lt;br/&gt;
+					- Vous pouvez copier votre équipement sur une IA avec le bouton (Like Me) dans Squad Management.&lt;/t&gt;
+					</French>
+					<Russian>&lt;br/&gt;
+					- На мапі ви можете переглянути Рангування&lt;br/&gt;
+					- На мапі ви можете переглянути Клавіатурні скорочення&lt;br/&gt;
+					- На мапі ви можете переглянути Таблицю&lt;br/&gt;
+					- Покладіть коробку з арсеналом до транспорту щоб перезаряджатися будь де&lt;br/&gt;
+					- Покладіть Палатку до вашого транспорту щоб розгорнути будь де&lt;br/&gt;
+					- Рытування транспорту у випадку аварії гарний спосід заробити Амуніцію&lt;br/&gt;
+					- Переробка Коробки з Амуніцією дасть вам Амуніцію та XP&lt;br/&gt;
+					- Поранені АІ або полонені не можуть бути видалені або переспоряджені&lt;br/&gt;
+					- Полонені не можуть використовувати транспорт (командиром/водієм/стрілком) або брати зброю&lt;br/&gt;
+					- Коли купляєте транспорт - він замкнений для гравця за замочування&lt;br/&gt;
+					- Коли скидуєте з парашутом транспорт - він НЕ замкнений за замовчуванням&lt;br/&gt;
+					- всі юніти (AI) можуть оживлючати (без аптечки чи медичного пакету)&lt;br/&gt;
+					- гравці повинні мати пакет первичної допомоги або аптечку щоб оживлючвати інших гравців&lt;br/&gt;
+					- коли IA поряд з Ящиком Арсеналу вони перезаряджаються автоматично&lt;br/&gt;
+					- коли стаціонарна зброя поряд з Ящиком Підтримки - вона перезаряджаеється автоматично&lt;br/&gt;
+					- Ви можете використовувати Halo Jump щоб врятувати померлу команду.&lt;br/&gt;
+					- Ви можете розблокумати AI чи самого себе клавішами [0] [8] [1]&lt;br/&gt;
+					- Коли використовуєте Розміщення ваші АІ слідують за вами&lt;br/&gt;
+					- Коли використовуєте Halo Jump ваші IA слідують за вами&lt;br/&gt;
+					- AI слідують за вами якщо вони в радіусі 20м та не в транспорті&lt;br/&gt;
+					- Тент відродження може бути запаковано замість рюкзака та споряджено&lt;br/&gt;
+					- ви можете продавати вантаж з автомобілів біля Гаража&lt;br/&gt;
+					- ви можете купляти каністри в будь якому Пункті дозаправки&lt;br/&gt;
+					- ви можете відправляти Амуніцію біля банкоматів АТМ в будь якому місті&lt;br/&gt;
+					- ви можете копіювати ваше спорядження  на своїх ботів за одпомогою дії "Як у мене" у меню Керування Загоном&lt;br/&gt;
+					</Russian>
+					<Chinesesimp>&lt;br/&gt;
+					- 在主地图左上，阅读军衔选项。&lt;br/&gt;
+					- 在主地图左上，阅读快捷键选项。&lt;br/&gt;
+					- 在主地图左上，阅读表格选项。&lt;br/&gt;
+					- 在车辆上放置一个军火库，以在任何地方重新武装自己。&lt;br/&gt;
+					- 在车辆上放置一个帐篷，以在任何地方重新部署。&lt;br/&gt;
+					- 回收车辆残骸是获得弹药资源的好方法。&lt;br/&gt;
+					- 回收弹药箱可以获得弹药和经验。&lt;br/&gt;
+					- AI或受伤的囚犯不能被删除或重新补给弹药。&lt;br/&gt;
+					- 囚犯不能使用车辆(司机、指挥官、炮手)或携带武器。&lt;br/&gt;
+					- 购买车辆时，默认情况下它属于玩家。&lt;br/&gt;
+					- 空投车辆时，默认情况下它不属于玩家。&lt;br/&gt;
+					- 你的AI无需医疗箱就能让你复活。&lt;br/&gt;
+					- 玩家必须有一个医疗箱或医疗包才能复活另一个玩家。&lt;br/&gt;
+					- 当人AI靠近一个军火库时，它们会自动重新武装。&lt;br/&gt;
+					- 当静态武器靠近弹药集装箱时，它们会自动补给弹药。&lt;br/&gt;
+					- 你可以使用高空跳伞来拯救一支阵亡的小队。&lt;br/&gt;
+					- 你可以用0-8-1键解锁AI或你自己。&lt;br/&gt;
+					- 重新部署时，AI自动会跟随你。&lt;br/&gt;
+					- 高空跳伞时，AI自动会跟随你。&lt;br/&gt;
+					- 如果AI位于你的20米以内且不在车辆中，则它们会跟随你。&lt;br/&gt;
+					- 重生帐篷可以像背包一样折叠，然后装备。&lt;br/&gt;
+					- 你可以在车库附近出售车辆库存。&lt;br/&gt;
+					- 你可以在任何一个加油站购买汽油桶。&lt;br/&gt;
+					- 你可以在自动取款机或FOB附近给其他玩家发送弹药。&lt;br/&gt;
+					- 你可以在班组管理中用(喜欢我)按钮，复制你的装备配置给一个AI。&lt;/t&gt;
+					</Chinesesimp>
 				</Key>
 				<Key ID="STR_SECONDARY_MISSION0">
 						<Original>FOB Hunting</Original>
@@ -2918,7 +3038,8 @@
 						&lt;br/&gt;
 						&lt;t size='1.15' color='#ffa000'&gt;奖励: OPFOR 警戒级别降低30% &lt;/t&gt;
 						&lt;br/&gt;&lt;br/&gt;
-						&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;</Chinesesimp>
+						&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
+						</Chinesesimp>
 				</Key>
 				<Key ID="STR_SECONDARY_MISSION1">
 						<Original>Convoy Hijack</Original>
@@ -3009,7 +3130,8 @@
 						&lt;br/&gt;
 						&lt;t size='1.15' color='#ffa000'&gt;支线奖励: 所有你能找到的弹药资源。&lt;/t&gt;
 						&lt;br/&gt;&lt;br/&gt;
-						&lt;t size='10'&gt;&lt;img image='res\secondary\convoy_obj.jpg'/&gt;&lt;/t&gt;</Chinesesimp>
+						&lt;t size='10'&gt;&lt;img image='res\secondary\convoy_obj.jpg'/&gt;&lt;/t&gt;
+						</Chinesesimp>
 				</Key>
 
 				<!-- Added in v0.922 -->
@@ -3208,89 +3330,6 @@
 						加入作者的TeamSpeak: &lt;t color='#0080ff'&gt;ts3.liberation-rx.fr&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;
 						玩的开心！！
 						</Chinesesimp>
-				</Key>
-
-				<Key ID="STR_TIPS_TEXT1">
-					<Original>&lt;t size='0.8'&gt;
-					- On the main map, read the Ranking tab.&lt;br/&gt;
-					- On the main map, read the Shortcut tab.&lt;br/&gt;
-					- On the main map, read the Table tab.&lt;br/&gt;
-					- Put an Arsenal box in your vehicle to rearm you anywhere.&lt;br/&gt;
-					- Put a tent in your vehicle to redeploy anywhere.&lt;br/&gt;
-					- The recovery of a vehicle wreck is a good way to get ammunition.&lt;br/&gt;
-					- Recycle AmmoBox brings ammunition and XP.&lt;br/&gt;
-					- AIs or wounded prisoners can not be deleted or rearmed.&lt;br/&gt;
-					- Prisoners can not use a vehicle (driver, commander, gunner) or take weapons.&lt;br/&gt;
-					- When buying a vehicle, it belongs to the player by default .&lt;br/&gt;
-					- when airdropping a vehicle, it does NOT belong to the player by default.&lt;br/&gt;
-					- Your AI can revive you without medikit.&lt;br/&gt;
-					- The player must have a helpkit or a medikit to revive another player.&lt;br/&gt;
-					- When the AIs are near an Arsenal box, they are automatically rearmed.&lt;br/&gt;
-					- When static weapons are near a support crate, they are automatically rearmed.&lt;br/&gt;
-					- You can use the Halo jump to save a dead team.&lt;br/&gt;
-					- You can unlock AIs or yourself with 0-8-1 keys.&lt;br/&gt;
-					- When you use Redeployment, your AIs follow you.&lt;br/&gt;
-					- When you use the Halo jump, your AIs follow you.&lt;br/&gt;
-					- Your AIs follow you if they are within 20m and not in a vehicle.&lt;br/&gt;
-					- The repawn tent can be folded like a backpack and then equipped.&lt;br/&gt;
-					- You can sell the contents of vehicles near garages.&lt;br/&gt;
-					- You can buy gas jerry cans at any fuel depot.&lt;br/&gt;
-					- You can send ammo to other players near an ATM or an FOB.&lt;br/&gt;
-					- You can copy your equipment to an AI with the (Like Me) button in Squad Management.&lt;/t&gt;</Original>
-					<French>&lt;t size='0.8'&gt;
-					- Utilisez la roue de la souris, pour acceder aux actions disponibles.&lt;br/&gt;
-					- Utilisez l'action Redeploiement pour changer de Base.&lt;br/&gt;
-					- Sur sur la carte principale, lisez l'onglet Ranking.&lt;br/&gt;
-					- Sur la carte principale, lisez l'onglet Shortcut.&lt;br/&gt;
-					- Sur la carte principale, lisez l'onglet Table&lt;br/&gt;
-					- Mettez une caisse d'Arsenal dans votre véhicule pour vous réarmer n'importe où&lt;br/&gt;
-					- Mettez une tente dans votre véhicule pour vous redéployer n'importe où&lt;br/&gt;
-					- La récupération d'un épave de véhicule est un bon moyen d'obtenir des munitions&lt;br/&gt;
-					- Recycler des AmmoBox vous apporte munitions et XP&lt;br/&gt;
-					- Les IAs ou les prisonniers blessés ne peuvent être ni effacés ni réarmés&lt;br/&gt;
-					- Les prisonniers ne peuvent pas utiliser de véhicule (chauffeur, commandant, artilleur) ni prendre d'armes&lt;br/&gt;
-					- Lors de l'achat d'un véhicule, il appartient au joueur, personne d'autre ne peut l'utiliser&lt;br/&gt;
-					- Un véhicule parachuté n'appartient PAS au joueur, tout le monde peut l'utiliser&lt;br/&gt;
-					- Vos IA peuvent vous faire revivre sans medikit&lt;br/&gt;
-					- Le joueur doit avoir un aidkit ou un medikit pour revivre un autre joueur&lt;br/&gt;
-					- Quand les IAs sont près d'une caisse d'Arsenal, elles sont automatiquement réarmés&lt;br/&gt;
-					- Quand les armes statiques sont près d'une caisse de soutien, elles sont automatiquement réarmés&lt;br/&gt;
-					- Vous pouvez utiliser le saut HALO pour sauver une équipe morte&lt;br/&gt;
-					- Vous pouvez débloquer des IAs ou vous-même avec les touche 0-8-1&lt;br/&gt;
-					- Lorsque vous utilisez le Redeploiement, vos IAs vous suivent&lt;br/&gt;
-					- Lorsque vous utilisez le saut HALO, vos IAs vous suivent&lt;br/&gt;
-					- Redeployment et saut HALO, vos IAs vous suivent si elles sont dans un rayon de 20m et pas dans un véhicule&lt;br/&gt;
-					- La tente de repawn peut être replié comme un sac à dos et ensuite équipée&lt;br/&gt;
-					- Vous pouvez vendre le contenu des véhicules près des garages&lt;br/&gt;
-					- Vous pouvez acheter des jerrican d'essence dans n’importe quelle station service&lt;br/&gt;
-					- Vous pouvez envoyer des munitions à d'autres joueurs à proximité d'un ATM ou d'une FOB&lt;br/&gt;
-					- Vous pouvez copier votre équipement sur une IA avec le bouton (Like Me) dans Squad Management.&lt;/t&gt;</French>
-					<Chinesesimp>&lt;t size='0.8'&gt;
-					- 在主地图左上，阅读军衔选项。&lt;br/&gt;
-					- 在主地图左上，阅读快捷键选项。&lt;br/&gt;
-					- 在主地图左上，阅读表格选项。&lt;br/&gt;
-					- 在车辆上放置一个军火库，以在任何地方重新武装自己。&lt;br/&gt;
-					- 在车辆上放置一个帐篷，以在任何地方重新部署。&lt;br/&gt;
-					- 回收车辆残骸是获得弹药资源的好方法。&lt;br/&gt;
-					- 回收弹药箱可以获得弹药和经验。&lt;br/&gt;
-					- AI或受伤的囚犯不能被删除或重新补给弹药。&lt;br/&gt;
-					- 囚犯不能使用车辆(司机、指挥官、炮手)或携带武器。&lt;br/&gt;
-					- 购买车辆时，默认情况下它属于玩家。&lt;br/&gt;
-					- 空投车辆时，默认情况下它不属于玩家。&lt;br/&gt;
-					- 你的AI无需医疗箱就能让你复活。&lt;br/&gt;
-					- 玩家必须有一个医疗箱或医疗包才能复活另一个玩家。&lt;br/&gt;
-					- 当人AI靠近一个军火库时，它们会自动重新武装。&lt;br/&gt;
-					- 当静态武器靠近弹药集装箱时，它们会自动补给弹药。&lt;br/&gt;
-					- 你可以使用高空跳伞来拯救一支阵亡的小队。&lt;br/&gt;
-					- 你可以用0-8-1键解锁AI或你自己。&lt;br/&gt;
-					- 重新部署时，AI自动会跟随你。&lt;br/&gt;
-					- 高空跳伞时，AI自动会跟随你。&lt;br/&gt;
-					- 如果AI位于你的20米以内且不在车辆中，则它们会跟随你。&lt;br/&gt;
-					- 重生帐篷可以像背包一样折叠，然后装备。&lt;br/&gt;
-					- 你可以在车库附近出售车辆库存。&lt;br/&gt;
-					- 你可以在任何一个加油站购买汽油桶。&lt;br/&gt;
-					- 你可以在自动取款机或FOB附近给其他玩家发送弹药。&lt;br/&gt;
-					- 你可以在班组管理中用(喜欢我)按钮，复制你的装备配置给一个AI。&lt;/t&gt;</Chinesesimp>
 				</Key>
 
 				<Key ID="STR_RANK_LVLBAN">

@@ -12,7 +12,8 @@ _tutorial_titles = [
 	localize "STR_TUTO_TITLE7",
 	localize "STR_TUTO_TITLE8",
 	localize "STR_TUTO_TITLE9",
-	localize "STR_TUTO_TITLE10"
+	localize "STR_TUTO_TITLE10",
+	localize "STR_TUTO_TITLE11"
 ];
 
 _tutorial_pages = [
@@ -25,7 +26,8 @@ _tutorial_pages = [
 	"STR_TUTO_TEXT7",
 	"STR_TUTO_TEXT8",
 	"STR_TUTO_TEXT9",
-	"STR_TUTO_TEXT10"
+	"STR_TUTO_TEXT10",
+	"STR_TUTO_TEXT11"
 ];
 
 while { true } do {
@@ -64,4 +66,8 @@ while { true } do {
 
 	cinematic_camera_started = false;
 	howtoplay = 0;
-}
+	if (GRLIB_player_spawned) then {
+		sleep 0.5;
+		titleText ["" ,"BLACK IN", 3];
+	};
+};
