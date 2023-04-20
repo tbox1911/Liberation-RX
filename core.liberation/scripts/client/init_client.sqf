@@ -1,4 +1,5 @@
 diag_log "--- Client Init start ---";
+titleText ["" ,"BLACK FADED", 100];
 
 waitUntil {!isNil "abort_loading" };
 waitUntil {!isNil "GRLIB_init_server" };
@@ -9,6 +10,14 @@ if (!GRLIB_init_server || abort_loading) exitWith {
 	uisleep 10;
 	endMission "LOSER";
 };
+
+PAR_Grp_ID = getPlayerUID player;
+if (PAR_Grp_ID == "" || !(isPlayer player)) exitWith {
+	titleText ["ARMA3 Multiplayer Initialization Error!\nPlease reconnect to the server." ,"BLACK FADED", 100];
+	uisleep 10;
+	endMission "LOSER"
+};
+
 respawn_lhd = compileFinal preprocessFileLineNumbers "scripts\client\spawn\respawn_lhd.sqf";
 spawn_camera = compileFinal preprocessFileLineNumbers "scripts\client\spawn\spawn_camera.sqf";
 cinematic_camera = compileFinal preprocessFileLineNumbers "scripts\client\ui\cinematic_camera.sqf";
@@ -27,12 +36,6 @@ get_lrx_name = compileFinal preprocessFileLineNumbers "scripts\client\misc\get_l
 R3F_LOG_joueur_deplace_objet = objNull;
 GRLIB_player_spawned = false;
 
-PAR_Grp_ID = getPlayerUID player;
-if (PAR_Grp_ID == "" || !(isPlayer player)) exitWith {
-	titleText ["ARMA3 Multiplayer Initialization Error!\nPlease reconnect to the server." ,"BLACK FADED", 100];
-	uisleep 10;
-	endMission "LOSER"
-};
 [group player, "add"] remoteExec ["addel_group_remote_call", 2];
 
 if (!([] call F_getValid)) exitWith {endMission "LOSER"};

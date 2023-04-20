@@ -40,6 +40,9 @@ if ( _ownership == GRLIB_side_friendly ) exitWith {
 
 [ _sector, 1 ] remoteExec ["remote_call_sector", 0];
 private _attacktime = GRLIB_vulnerability_timer;
+if (_sector in sectors_bigtown) then {
+	_attacktime = _attacktime + (10 * 60);
+};
 
 while { _attacktime > 0 && _ownership == GRLIB_side_enemy } do {
 	_ownership = [markerpos _sector] call F_sectorOwnership;
