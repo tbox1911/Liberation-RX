@@ -24,7 +24,7 @@ _setupObjects =
 	_wreckPos = _missionPos vectorAdd ([[25 + random 20, 0, 0], random 360] call BIS_fnc_rotateVector2D);
 
 	// Class, Position, Fuel, Ammo, Damage, Special
-	_wreck = createVehicle ["Land_Wreck_Heli_Attack_01_F", _wreckPos, [], 0, "NONE"];
+	_wreck = createVehicle [GRLIB_sar_wreck, _wreckPos, [], 0, "NONE"];
 	_box1 = [ammobox_b_typename, _missionPos, true] call boxSetup;
 	_box2 = [A3W_BoxWps, _missionPos, true] call boxSetup;
 	_box3 = [ammobox_b_typename, _missionPos, true] call boxSetup;
