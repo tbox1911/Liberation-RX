@@ -20,6 +20,8 @@ civilians = [
 ];
 
 civilian_vehicles = [
+	"gm_ge_army_k125",
+	"gm_ge_bgs_k125",
 	"gm_gc_civ_p601",
 	"gm_gc_ff_p601",
 	"gm_gc_pol_p601",
@@ -35,7 +37,11 @@ civilian_vehicles = [
 	"gm_gc_civ_mi2sr",
 	"gm_ge_adak_bo105m_vbh",
 	"gm_ge_pol_bo105m_vbh",
+	"C_Plane_Civil_01_F",
 	"gm_gc_civ_l410s_passenger",
+	"gm_xx_civ_bicycle_01",
+	"gm_ge_pol_bicycle_01_grn",
+	"gm_ge_dbp_bicycle_01_ylw",
 	"gm_xx_civ_bicycle_01",
 	"gm_ge_pol_bicycle_01_grn",
 	"gm_ge_dbp_bicycle_01_ylw"

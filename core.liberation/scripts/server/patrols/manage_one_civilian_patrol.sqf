@@ -25,9 +25,10 @@ while { GRLIB_endgame == 0 } do {
 			if ( floor(random 100) > 60 ) then {
 				_civ_veh = [markerPos _spawnsector, (selectRandom civilian_vehicles), false, true, true] call F_libSpawnVehicle;
 				_civ_unit moveInDriver _civ_veh;
-				_civ_veh addEventHandler ["HandleDamage", { 
+				_civ_unit assignAsDriver _civ_veh;
+				_civ_veh addEventHandler ["HandleDamage", {
 					params ["_unit", "_selection", "_damage", "_source"];
-					private _dam = 0; 
+					private _dam = 0;
 					if ( side _source == GRLIB_side_friendly ) then {
 						_dam = _damage;
 					};
@@ -40,6 +41,7 @@ while { GRLIB_endgame == 0 } do {
 				_civ_veh allowCrewInImmobile true;
 				[_civ_veh] spawn {
 					params ["_vehicle"];
+					if (typeOf _vehicle isKindOf "Air") exitWith {};
 					while { alive _vehicle } do {
 						// Correct static position
 						if ((vectorUp _vehicle) select 2 < 0.70) then {
@@ -51,7 +53,7 @@ while { GRLIB_endgame == 0 } do {
 				};
 				[_grp] call add_civ_waypoints;
 			};
-			
+
 			if ( local _grp ) then {
 				_headless_client = [] call F_lessLoadedHC;
 				if ( !isNull _headless_client ) then {
@@ -59,9 +61,10 @@ while { GRLIB_endgame == 0 } do {
 				};
 			};
 
+			private _civ_unit_ttl = round(time + 1800);
 			waitUntil {
 				sleep 10;
-				( (!alive _civ_unit) || ( count ([getpos _civ_unit , 4000] call F_getNearbyPlayers) == 0 ) )
+				( (!alive _civ_unit) || (count ([getpos _civ_unit , 4000] call F_getNearbyPlayers) == 0) || time > _civ_unit_ttl )
 			};
 
 			if ( alive _civ_unit ) then {
