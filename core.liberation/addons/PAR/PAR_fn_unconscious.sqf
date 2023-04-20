@@ -1,16 +1,16 @@
-params ['_unit'];
+params ["_unit"];
 
 if (rating _unit < -2000) exitWith {_unit call PAR_fn_death};
-waituntil {sleep (0.5 + random 2); lifeState _unit == 'incapacitated' && (isTouchingGround _unit || (round (getPos _unit select 2) <= 1))};
+waituntil {sleep (0.5 + random 2); lifeState _unit == "incapacitated" && (isTouchingGround _unit || (round (getPos _unit select 2) <= 1))};
 
-if (!isNil {_unit getVariable 'PAR_busy'} || !isNil {_unit getVariable 'PAR_heal'}) then {
-  _unit setVariable ['PAR_busy', nil];
-  _unit setVariable ['PAR_heal', nil];
+if (!isNil {_unit getVariable "PAR_busy"} || !isNil {_unit getVariable "PAR_heal"}) then {
+  _unit setVariable ["PAR_busy", nil];
+  _unit setVariable ["PAR_heal", nil];
   _unit switchMove "";
 };
 
-_unit setVariable ['PAR_healed', nil];
-[(_unit getVariable ['PAR_myMedic', objNull]), _unit] call PAR_fn_medicRelease;
+_unit setVariable ["PAR_healed", nil];
+[(_unit getVariable ["PAR_myMedic", objNull]), _unit] call PAR_fn_medicRelease;
 _unit setCaptive true;
 _unit switchMove "AinjPpneMstpSnonWrflDnon";  // lay down
 
@@ -30,7 +30,8 @@ _unit switchMove "AinjPpneMstpSnonWrflDnon";  // lay down
     if (_caller == player) then {
       _msg = format ["%1 is healing %2 now...", name _caller, name _target];
       [_target, _msg] remoteExec ["PAR_fn_globalchat", [0,-2] select isDedicated,true];
-      _target setVariable ['PAR_extratime', 20, true];
+      _bleedOut = _target getVariable ["PAR_BleedOutTimer", 0];
+      _target setVariable ["PAR_BleedOutTimer", _bleedOut + PAR_BleedOutExtra, true];
     };
     if (stance _caller == 'PRONE') then {
       _caller playMoveNow 'ainvppnemstpslaywrfldnon_medicother';
@@ -38,12 +39,7 @@ _unit switchMove "AinjPpneMstpSnonWrflDnon";  // lay down
       _caller playMoveNow 'ainvpknlmstpslaywrfldnon_medicother';
     };
   },
-  {
-    _extra_time = _target getVariable ['PAR_extratime', 0];
-    if ((time > (_this select 3 select 0) + PAR_BleedOut + _extra_time) && lifeState _target == 'incapacitated') then {
-      _target call PAR_fn_death;
-    };
-  },
+  {},
   {
     if (local _target) then {
       [_target, _caller] call PAR_fn_sortie;
@@ -58,25 +54,26 @@ _unit switchMove "AinjPpneMstpSnonWrflDnon";  // lay down
 }] remoteExec ["bis_fnc_call", [0,-2] select isDedicated,true];
 sleep 6;
 
-_bleedOut = time + PAR_BleedOut;
-_extra_time = 0;
-while {lifeState _unit == 'incapacitated' && time <= _bleedOut + _extra_time} do {
+while {lifeState _unit == "incapacitated" && time <= _unit getVariable ["PAR_BleedOutTimer", 0]} do {
   _unit setOxygenRemaining 1;
-  if ( count units player > 1 ) then {
-    _medic = _unit getVariable ['PAR_myMedic', nil];
+  _bros = [ units player, { alive _x && lifeState _x != "incapacitated" } ] call BIS_fnc_conditionalSelect;
+
+  if ( count _bros > 0 ) then {
+    _medic = _unit getVariable ["PAR_myMedic", nil];
     if (isNil "_medic") then {
       _unit groupchat "I need a Medic !!";
       _medic = _unit call PAR_fn_medic;
       if (!isNil "_medic") then { [_unit, _medic] call PAR_fn_911 };
+      sleep 10;
     };
-    _extra_time = _unit getVariable ['PAR_extratime', 0];
   };
-  sleep 10;
+  //systemchat str ((_unit getVariable ["PAR_BleedOutTimer", 0]) - time);
+  sleep 1;
 };
 
-[(_unit getVariable ['PAR_myMedic', objNull]), _unit] call PAR_fn_medicRelease;
+[(_unit getVariable ["PAR_myMedic", objNull]), _unit] call PAR_fn_medicRelease;
 _unit setCaptive false;
 
-if (lifeState _unit == 'incapacitated' && time > _bleedOut + _extra_time) then {
+if (lifeState _unit == "incapacitated" && time > _unit getVariable ["PAR_BleedOutTimer", 0]) then {
   _unit call PAR_fn_death;
 };

@@ -57,6 +57,7 @@ FAR_HandleDamage_EH = {
 		_unit setVariable ["FAR_isUnconscious", 1, true];
 		_unit setCaptive true;
 		_unit allowDamage false;
+		_unit setVariable ["PAR_BleedOutTimer", round(time + PAR_BleedOut), true];
 		[_unit, _killer] spawn FAR_Player_Unconscious;
 	};
 	_amountOfDamage min 0.86;
@@ -129,9 +130,8 @@ FAR_Player_Unconscious = {
 	_unit switchMove "";
 	[_unit] spawn PAR_fn_unconscious;
 
-	_bleedOut = time + FAR_BleedOut;
+	_bleedOut = player getVariable ["PAR_BleedOutTimer", 0];
 	while { !isNull _unit && alive _unit && _unit getVariable "FAR_isUnconscious" == 1 } do {
-
 		hintSilent format[localize "STR_BLEEDOUT_MESSAGE" + "\n", round (_bleedOut - time)];
 		public_bleedout_message = format [localize "STR_BLEEDOUT_MESSAGE", round (_bleedOut - time)];
 		public_bleedout_timer = round (_bleedOut - time);

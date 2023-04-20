@@ -21,6 +21,10 @@ Based on: AI REVIVE HEAL SCRIPT SP/MP by Pierre MGI
 _________________________________________________________________________*/
 
 if (isDedicated) exitWith {};
+// Seconds until unconscious unit bleeds out and dies.
+if (isNil "PAR_BleedOut") then {PAR_BleedOut = 300};
+// Extra time when Revive
+if (isNil "PAR_BleedOutExtra") then {PAR_BleedOutExtra = 60};
 
 PAR_fn_medic = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_medic.sqf";
 PAR_fn_medicRelease = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_medicRelease.sqf";
@@ -45,6 +49,7 @@ PAR_fn_EHDamage = {
         _unit allowDamage false;
         _unit setVariable ["PAR_isUnconscious", true];
         _unit setUnconscious true;
+        _unit setVariable ["PAR_BleedOutTimer", round(time + PAR_BleedOut), true];
         [_unit] spawn PAR_fn_unconscious;
       };
       _dam min 0.86;
@@ -57,11 +62,9 @@ PAR_fn_EHDamage = {
   _unit setVariable ["PAR_busy", nil];
   _unit setVariable ["PAR_heal", nil];
   _unit setVariable ["PAR_healed", nil];
-  _unit setVariable ['PAR_extratime', nil, true];
 };
 
 PAR_fn_Revive = {
-  PAR_BleedOut = 300;
   while {true} do {
     private _bros = (units player) select {!isplayer _x && (_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1",PAR_Grp_ID]};
     if (count _bros > 0 ) then {
@@ -116,6 +119,7 @@ PAR_fn_globalchat = {
     gamelogic globalChat _msg;
   };
 };
+
 waituntil {!isNull player && GRLIB_player_spawned};
 waituntil {!isNil {player getVariable ["GRLIB_Rank", nil]}};
 

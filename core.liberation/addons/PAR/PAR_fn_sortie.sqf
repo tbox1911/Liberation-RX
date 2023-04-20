@@ -7,7 +7,8 @@ if (lifeState _wnded != "incapacitated") exitWith { [_medic, _wnded] call PAR_fn
 if (!isPlayer _medic) then {
   _msg = format ["%1 is healing %2 now...", name _medic, name _wnded];
   [_wnded, _msg] call PAR_fn_globalchat;
-  _wnded setVariable ['PAR_extratime', 20];
+  _bleedOut = _wnded getVariable ["PAR_BleedOutTimer", 0];
+  _wnded setVariable ["PAR_BleedOutTimer", _bleedOut + PAR_BleedOutExtra, true];
   _medic setDir (_medic getDir _wnded);
   //_medic removeitem "FirstAidKit";
   if (stance _medic == "PRONE") then {

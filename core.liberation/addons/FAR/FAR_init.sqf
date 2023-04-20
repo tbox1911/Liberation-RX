@@ -1,7 +1,7 @@
 // Farooq's Revive 1.5
 
-// Seconds until unconscious unit bleeds out and dies. Set to 0 to disable.
-FAR_BleedOut = 300;
+// Seconds until unconscious unit bleeds out and dies.
+PAR_BleedOut = 300;
 // Enable teamkill notifications
 FAR_EnableDeathMessages = true;
 // If enabled, unconscious units will not be able to use ACRE radio, hear other people or use proximity chat
