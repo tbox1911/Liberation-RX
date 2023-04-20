@@ -49,15 +49,6 @@ createlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scr
 showlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_showLandMines.sqf";
 clearlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_clearLandMines.sqf";
 
-// on map vehicles set handler and owner
-{
-	_x removeAllMPEventHandlers "MPKilled";
-	_x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-	if (isNil {_x getVariable "GRLIB_vehicle_owner"} ) then {
-		_x setVariable ["GRLIB_vehicle_owner", "public", true];
-	};
-} foreach vehicles;
-
 if (!([] call F_getValid)) exitWith {};
 
 [] execVM "scripts\server\game\save_manager.sqf";
@@ -98,6 +89,7 @@ if (abort_loading) exitWith {
 [] execVM "scripts\server\game\playtime.sqf";
 [] execVM "scripts\server\game\clean.sqf";
 [] execVM "scripts\server\a3w\init_missions.sqf";
+[] execVM "scripts\server\ar\fn_advancedRappellingInit.sqf";
 
 // Offloading
 [] execVM "scripts\server\offloading\offload_calculation.sqf";
