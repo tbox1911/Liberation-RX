@@ -72,3 +72,12 @@ if ( GRLIB_endgame == 0 ) then {
 		[ _liberated_sector ] spawn spawn_battlegroup;
 	};
 };
+
+sleep 45;
+
+if ( _liberated_sector in sectors_tower ) then {
+	_pos = markerPos _liberated_sector;
+	_nextower = "Land_Communication_F" createVehicle _pos;
+	_nextower setpos _pos;
+	_nextower setVectorUp [0,0,1];
+};

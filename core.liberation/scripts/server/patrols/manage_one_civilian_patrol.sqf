@@ -2,7 +2,9 @@ if ( isNil "active_sectors" ) then { active_sectors = [] };
 
 while { GRLIB_endgame == 0 } do {
 	sleep (30 + floor(random 30));
-	waitUntil {sleep 10; (GRLIB_side_civilian countSide allUnits) < (GRLIB_civilians_amount * 3) };
+	while { [] call F_opforCap > GRLIB_patrol_cap || (diag_fps < 25.0) } do {
+		sleep (30 + floor(random 30));
+	};
 
 	private _civveh = objNull;
 	private _spawnsector = "";
