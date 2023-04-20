@@ -76,3 +76,5 @@ sectors_airspawn = [];
 		_marker setMarkerText _marker_text;
   };
 } forEach sectors_capture + sectors_bigtown + sectors_factory + sectors_military;
+GRLIB_sectors_init = true;
+publicVariable "GRLIB_sectors_init";
