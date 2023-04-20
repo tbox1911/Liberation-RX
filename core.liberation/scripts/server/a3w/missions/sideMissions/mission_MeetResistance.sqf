@@ -15,7 +15,7 @@ private ["_nbUnits", "_townName",
 
 _setupVars =
 {
-	_missionType = "The Resistance";
+	_missionType = localize "STR_RESISTANCE";
 	_nbUnits = 10;
 
 	// settings for this mission
@@ -88,7 +88,7 @@ _setupObjects =
 
 	GRLIB_A3W_Mission_MRR = _aiGroupRes;
 	publicVariable "GRLIB_A3W_Mission_MRR";
-	_missionHintText = format ["Meet the Resistance at <br/><t size='1.25' color='%1'>%2</t><br/><br/><t color='#00F000'>Talk</t> to the <t color='#0000F0'>Leader</t> to get information.<br/>Be ready for any situation!", sideMissionColor, _townName];
+	_missionHintText = format [localize "STR_RESISTANCE_MESSAGE1", sideMissionColor, _townName];
 	true;
 };
 
@@ -115,7 +115,7 @@ _failedExec = {
 	publicVariable "GRLIB_A3W_Mission_MR";
 	GRLIB_A3W_Mission_MRR = nil;
 	publicVariable "GRLIB_A3W_Mission_MRR";
-	_failedHintMessage = format ["All members of the Resistance are...<br/><t color='%1'>DEAD</t> !!<br/><br/>Better luck next time!", sideMissionColor, _townName];
+	_failedHintMessage = format [localize "STR_RESISTANCE_MESSAGE2", sideMissionColor, _townName];
 };
 
 _successExec = {
@@ -123,7 +123,7 @@ _successExec = {
 	{ 	_x setVariable ["R3F_LOG_disabled", false, true];
 		_x setVariable ["GRLIB_vehicle_owner", nil, true];
 	} forEach [_box1, _box2];
-	_successHintMessage = format ["Nice work!<br/><br/><t color='%1'>%2</t><br/>is a safe place again!<br/>Take your reward!", sideMissionColor, _townName];
+	_successHintMessage = format [localize "STR_RESISTANCE_MESSAGE3", sideMissionColor, _townName];
 	{ deleteVehicle _x } forEach [_tent1, _chair1, _chair2, _fire1, _veh1, _veh2];
 	{ deleteVehicle _x } forEach units _aiGroupRes;
 	GRLIB_A3W_Mission_MR = nil;

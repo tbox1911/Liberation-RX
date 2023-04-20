@@ -11,7 +11,7 @@ private ["_missionPos", "_missionPos2", "_missionPos3", "_missionPosEnd", "_miss
 
 _setupVars =
 {
-	_missionType = "Special Delivery";
+	_missionType = localize "STR_SPECIALDELI";
 	_ignoreAiDeaths = true;
 	_locationsArray = nil;
 };
@@ -24,7 +24,7 @@ _setupObjects =
 		if (count _missionLocationList >= 3) then {
 			_m1 = selectRandom _missionLocationList;
 			_missionPicture = getText (configFile >> "CfgVehicles" >> "C_Hatchback_01_F" >> "picture");
-			_missionHintText = format ["Special Delivery at <br/><t size='1.25' color='%1'>%2</t><br/><br/><t color='#00F000'>Talk</t> to <t color='#0000F0'>Nikos</t> to get information.<br/>Be ready for any situation!", sideMissionColor, markerText _m1];
+			_missionHintText = format [localize "STR_SPECIALDELI_MESSAGE1", sideMissionColor, markerText _m1];
 			_missionPos = (markerPos _m1 vectorAdd [([[-100,0,100], 20] call F_getRND), ([[-100,0,100], 20] call F_getRND), 0]);
 			_missionLocationList = _missionLocationList - [ _m1 ];
 
@@ -95,7 +95,7 @@ _failedExec = {
 	GRLIB_A3W_Mission_SD_Spawn = nil;
 	publicVariable "GRLIB_A3W_Mission_SD";
 	[missionNamespace, ["GRLIB_A3W_Mission_Marker", nil]] remoteExec ["setVariable", -2];
-	_failedHintMessage = format ["Special Delivery<br/><t color='%1'>FAILED</t> !!<br/><br/>Better luck next time!", sideMissionColor];
+	_failedHintMessage = format [localize "STR_SPECIALDELI_MESSAGE2", sideMissionColor];
 };
 
 _successExec = {
@@ -111,7 +111,7 @@ _successExec = {
 		sleep 60;
 		deleteVehicle _house;
 	};
-	_successHintMessage = format ["Special Delivery<br/><t color='%1'>SUCCESS</t> !!<br/><br/>The information have been collected, Well done.", sideMissionColor];
+	_successHintMessage = format [localize "STR_SPECIALDELI_MESSAGE3", sideMissionColor];
 
 	for "_i" from 1 to (selectRandom [1,2]) do {
 		[ammobox_i_typename, _missionPosEnd, false] call boxSetup;

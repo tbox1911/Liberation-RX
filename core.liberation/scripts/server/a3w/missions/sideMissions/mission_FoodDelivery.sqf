@@ -11,7 +11,7 @@ private ["_nbUnits", "_townName","_buildingpositions", "_man1", "_marker_zone"];
 
 _setupVars =
 {
-	_missionType = "Food Delivery";
+	_missionType = localize "STR_FOODDELI";
 	_missionLocation = selectRandom ((blufor_sectors select {["capture_", _x] call F_startsWith;}) apply {[_x, false]}) select 0;
 	_townName = markerText _missionLocation;
 	_ignoreAiDeaths = true;
@@ -33,7 +33,7 @@ _setupObjects =
 	_marker_zone setMarkerBrush "FDiagonal";
 	_marker_zone setMarkerSize [20,20];
 
-	_missionHintText = format ["Food Delivery at <br/><t size='1.25' color='%1'>%2</t><br/><br/><t color='#00F000'>Talk</t> to the <t color='#0000F0'>Marshal</t> to get information.", sideMissionColor, _townName];
+	_missionHintText = format [localize "STR_FOODDELI_MESSAGE1", sideMissionColor, _townName];
 	true;
 };
 
@@ -57,13 +57,13 @@ _failedExec = {
 	// Mission failed
 	deleteVehicle _man1;
 	deleteMarker _marker_zone;
-	_failedHintMessage = format ["Food Delivery has...<br/><t color='%1'>FAILED</t> !!<br/><br/>Better luck next time!", sideMissionColor, _townName];
+	_failedHintMessage = format [localize "STR_FOODDELI_MESSAGE2", sideMissionColor, _townName];
 };
 
 _successExec = {
 	sleep 3;
 	// Mission completed
-	_successHintMessage = format ["Food Delivery<br/><t color='%1'>SUCCESS</t> !!<br/><br/>The Food Pallets have been delivered, Well done.", sideMissionColor];
+	_successHintMessage = format [localize "STR_FOODDELI_MESSAGE3", sideMissionColor];
 	[ammobox_i_typename, _missionPos, false] call boxSetup;
 	deleteVehicle _man1;
 	deleteMarker _marker_zone;
