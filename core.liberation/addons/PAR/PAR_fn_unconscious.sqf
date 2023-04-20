@@ -1,7 +1,7 @@
 params ['_unit'];
 
 if (rating _unit < -2000) exitWith {_unit call PAR_fn_death};
-waituntil {sleep 0.5; lifeState _unit == 'incapacitated' && (isTouchingGround _unit || (round (getPos _unit select 2) <= 1))};
+waituntil {sleep (0.5 + random 2); lifeState _unit == 'incapacitated' && (isTouchingGround _unit || (round (getPos _unit select 2) <= 1))};
 
 if (!isNil {_unit getVariable 'PAR_busy'} || !isNil {_unit getVariable 'PAR_heal'}) then {
   _unit setVariable ['PAR_busy', nil];
