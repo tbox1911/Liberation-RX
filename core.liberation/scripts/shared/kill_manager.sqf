@@ -17,6 +17,11 @@ if ( isServer ) then {
 		deleteVehicle _unit;
 	};
 
+	if ( (typeof _unit) in [FOB_box_typename, FOB_truck_typename] ) exitWith {
+		sleep 30;
+		deleteVehicle _unit;
+	};
+
 	if ( typeof _unit == mobile_respawn ) exitWith { [_unit, "del"] remoteExec ["addel_beacon_remote_call", 2] };
 
 	please_recalculate = true;

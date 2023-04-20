@@ -11,7 +11,7 @@ if ( GRLIB_fob_type == 1 ) then {
 while { true } do {
 	_fobbox = entities [[FOB_box_typename, FOB_truck_typename], [], false, false];
 
-	if ( count GRLIB_all_fobs == 0 && count (_fobbox) == 0) then {
+	if ( count GRLIB_all_fobs == 0 && count _fobbox == 0) then {
 		_fobbox = _fob_type createVehicle (getpos base_boxspawn);
 		_fobbox setposasl (getposasl base_boxspawn vectorAdd [0,0,GRLIB_spawn_altitude]);
 		_fobbox setdir (getdir base_boxspawn);
@@ -27,7 +27,7 @@ while { true } do {
 			sleep 1;
 			!(alive _fobbox) || count GRLIB_all_fobs > 0
 		};
-		sleep 15;
+		sleep 30;
 		deleteVehicle _fobbox;
 	};
 	sleep 10;
