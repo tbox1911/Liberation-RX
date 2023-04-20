@@ -537,17 +537,6 @@ opfor_statics = [
 	"B_Mortar_01_F"
 ];
 
-ind_recyclable = [
-	["I_Truck_02_covered_F",0,round (20 / GRLIB_recycling_percentage),0],
-	["I_Truck_02_transport_F",0,round (20 / GRLIB_recycling_percentage),0],
-	["I_Heli_light_03_unarmed_F",10,round (50 / GRLIB_recycling_percentage),10],
-	["I_Heli_light_03_F",10,round (600 / GRLIB_recycling_percentage),10],
-	["I_Heli_light_03_dynamicLoadout_F",0,round (800 / GRLIB_recycling_percentage),0],
-	["I_C_Offroad_02_LMG_F",1,round (30 / GRLIB_recycling_percentage),2],
-	["I_MBT_03_cannon_F",15,round (3000 / GRLIB_recycling_percentage),15],
-	["I_Plane_Fighter_04_F",20,round (3000 / GRLIB_recycling_percentage),20]
-];
-
 opfor_texture_overide = [
 	//"Urban",
 	//"Digital"
@@ -589,6 +578,16 @@ opfor_recyclable = [
 	["B_Plane_CAS_01_dynamicLoadout_F",20,round (1000 / GRLIB_recycling_percentage),30],
 	["B_Plane_CAS_01_F",20,round (1500 / GRLIB_recycling_percentage),30],
 	["B_Plane_Fighter_01_F",20,round (2000 / GRLIB_recycling_percentage),30]
+];
+
+// Indep
+ind_recyclable = [
+	["I_static_AA_F",0,round (80 / GRLIB_recycling_percentage),0],
+	["I_static_AT_F",0,round (80 / GRLIB_recycling_percentage),0],
+	["I_Mortar_01_F",0,round (300 / GRLIB_recycling_percentage),0],
+	["I_Truck_02_covered_F",0,round (20 / GRLIB_recycling_percentage),0],
+	["I_Truck_02_transport_F",0,round (20 / GRLIB_recycling_percentage),0],
+	["I_Heli_light_03_dynamicLoadout_F",0,round (20 / GRLIB_recycling_percentage),0]
 ];
 
 // Other stuff
@@ -702,7 +701,9 @@ GRLIB_vehicle_whitelist = [
 	"Land_HBarrier_5_F",
 	"Land_BagBunker_Small_F",
 	"Land_BagFence_Long_F"
-];
+] + opfor_statics;
+//{GRLIB_vehicle_whitelist pushBack ( _x select 0 )} foreach (support_vehicles);
+
 
 // Blacklist Vehicle (lock and paint)
 GRLIB_vehicle_blacklist = [

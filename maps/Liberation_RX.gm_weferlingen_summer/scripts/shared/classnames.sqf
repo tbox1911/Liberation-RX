@@ -275,7 +275,6 @@ if ( count blufor_squad_mix == 0 ) then { blufor_squad_mix = [
 	"gm_ge_army_sf_rifleman_g3a4_80_wdl"
 	];
 };
-
 if ( isNil "blufor_squad_recon" ) then { blufor_squad_recon = [] };
 if ( count blufor_squad_recon == 0 ) then { blufor_squad_recon = [
 	"gm_ge_army_sf_squadleader_mp5sd3_p2a1_80_wdl",
@@ -555,12 +554,6 @@ opfor_statics = [
 	"O_Mortar_01_F"
 ];
 
-ind_recyclable = [
-	["I_Truck_02_covered_F",0,round (20 / GRLIB_recycling_percentage),0],
-	["I_Truck_02_transport_F",0,round (20 / GRLIB_recycling_percentage),0],
-	["I_Heli_light_03_dynamicLoadout_F",0,round (20 / GRLIB_recycling_percentage),0]
-];
-
 opfor_texture_overide = [
 	//"Urban",
 	//"Digital"
@@ -599,6 +592,16 @@ opfor_recyclable = [
 	["gm_pl_airforce_mi2urp",0,round (500 / GRLIB_recycling_percentage),0],
 	["gm_gc_airforce_l410t",0,round (500 / GRLIB_recycling_percentage),0],
 	["gm_gc_airforce_l410s_salon",0,round (500 / GRLIB_recycling_percentage),0]
+];
+
+// Indep
+ind_recyclable = [
+	["I_static_AA_F",0,round (80 / GRLIB_recycling_percentage),0],
+	["I_static_AT_F",0,round (80 / GRLIB_recycling_percentage),0],
+	["I_Mortar_01_F",0,round (300 / GRLIB_recycling_percentage),0],
+	["I_Truck_02_covered_F",0,round (20 / GRLIB_recycling_percentage),0],
+	["I_Truck_02_transport_F",0,round (20 / GRLIB_recycling_percentage),0],
+	["I_Heli_light_03_dynamicLoadout_F",0,round (20 / GRLIB_recycling_percentage),0]
 ];
 
 // Other stuff

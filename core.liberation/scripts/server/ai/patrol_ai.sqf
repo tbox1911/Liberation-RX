@@ -37,6 +37,7 @@ while { count (units _grp) > 0 } do {
 				_target_list sort true;
 				_next_target = _target_list select 0 select 1;
 
+				_vehicle setDir (_vehicle getDir _next_target);
 				_grp setBehaviour "COMBAT";
 				_grp reveal _next_target;
 				_gunner doTarget _next_target;
