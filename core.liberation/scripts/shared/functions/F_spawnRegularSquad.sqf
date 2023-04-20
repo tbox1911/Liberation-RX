@@ -6,9 +6,9 @@ private [ "_sectorpos", "_spawnpos", "_grp", "_unitidx", "_corrected_amount" ];
 _sectorpos = [ getMarkerPos _sector, random 100, random 360 ] call BIS_fnc_relPos;
 
 _spawnpos = zeropos;
-while { _spawnpos distance zeropos < 1000 } do {
-	_spawnpos = ( [ _sectorpos, random 50, random 360 ] call BIS_fnc_relPos ) findEmptyPosition [5, 100, "B_Heli_Light_01_F"];
-	if ( count _spawnpos == 0 ) then { _spawnpos = zeropos; };
+while { _spawnpos distance zeropos < 100 } do {
+	_spawnpos = ( [ _sectorpos, random 50, random 360 ] call BIS_fnc_relPos ) findEmptyPosition [1, 200, "B_Heli_Light_01_F"];
+	if ( count _spawnpos == 0 || surfaceIsWater _spawnpos ) then { _spawnpos = zeropos; };
 };
 
 _corrected_amount = round ( (count _squadies_to_spawn) * ([] call F_adaptiveOpforFactor) );

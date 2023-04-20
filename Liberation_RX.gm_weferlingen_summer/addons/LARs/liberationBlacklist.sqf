@@ -1,6 +1,7 @@
 //Blacklist Items
 
 blacklisted_bag = [
+	mobile_respawn_bag,
 	"B_Static_Designator_01_weapon_F",
 	"B_W_Static_Designator_01_weapon_F",
     "O_Static_Designator_02_weapon_F",
