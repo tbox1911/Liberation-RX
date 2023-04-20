@@ -61,7 +61,7 @@ if ( _spawn_marker != "" ) then {
 
 	sleep 5;
 
-	combat_readiness = combat_readiness - (_target_size * 2);
+	combat_readiness = combat_readiness - (_target_size * 1.75);
 	if ( combat_readiness < 0 ) then { combat_readiness = 0 };
 
 	stats_hostile_battlegroups = stats_hostile_battlegroups + 1;

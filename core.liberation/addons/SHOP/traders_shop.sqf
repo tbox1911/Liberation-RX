@@ -140,7 +140,7 @@ while { dialog && alive player } do {
 			if (_result) then {
 				private _veh_class = _buy_list_dlg select _selected_item select 0;
 				buildtype = 9;
-				build_unit = [_veh_class,[],1,[],[]];
+				build_unit = [_veh_class,[],1,[],[],[]];
 				dobuild = 1;
 				closeDialog 0;
 				waitUntil { sleep 1; dobuild == 0};

@@ -8,12 +8,13 @@ publicVariable "GRLIB_garage_in_use";
 
 // Load
 if (_cmd == 1) then {
-	_color = _veh getVariable ["GRLIB_vehicle_color", ""];
-	_ammo = [_veh] call F_getVehicleAmmoDef;
-	_lst_a3 = weaponsItemsCargo _veh;
-	_lst_r3f = [];
+	private _color = _veh getVariable ["GRLIB_vehicle_color", ""];
+	private _compo = _veh getVariable ["GRLIB_vehicle_composant", []];
+	private _ammo = [_veh] call F_getVehicleAmmoDef;
+	private _lst_a3 = weaponsItemsCargo _veh;
+	private _lst_r3f = [];
 	{ _lst_r3f pushback (typeOf _x)} forEach (_veh getVariable ["R3F_LOG_objets_charges", []]);
-	GRLIB_garage append [[typeOf _veh, _color, _ammo, _owner, _lst_a3, _lst_r3f]];
+	GRLIB_garage append [[typeOf _veh, _color, _ammo, _owner, _lst_a3, _lst_r3f, _compo]];
 	[_veh] call clean_vehicle;
 	deleteVehicle _veh;
 };

@@ -4,22 +4,26 @@ private _VAM_display = findDisplay 4900;
 private _list_camo = _VAM_display displayCtrl 4910;
 private _list_comp = _VAM_display displayCtrl 4920;
 private _reset = _VAM_display displayCtrl 4940;
+private _confirm = _VAM_display displayCtrl 4930;
 
 private _vehicleclass = typeof VAM_targetvehicle;
 
-//Get all camouflages (texture sets)
+//Get A3 camouflages (texture sets)
 private _camo_path = "true" configClasses (configfile >> "CfgVehicles" >> _vehicleclass >> "TextureSources");
 camo_class_names = [];
 camo_display_names = [];
-{_class = configName _x; camo_class_names pushBack _class;} forEach _camo_path;
-{_name = getText (_x >> "DisplayName"); camo_display_names pushBack _name;} forEach _camo_path;
+{
+	camo_class_names pushBack (configName _x);
+	camo_display_names pushBack (getText (_x >> "DisplayName"));
+} forEach _camo_path;
+
 {
 	if (_x isEqualTo "") then {
 		camo_display_names set [_forEachIndex, camo_class_names select _forEachIndex];
 	};
 } forEach camo_display_names;
 
-//Get LRX Textures set
+//Get LRX camouflages (static, custom textures set)
 {
 	camo_display_names pushBack (_x select 0);
 	camo_class_names pushBack (_x select 1);
@@ -77,3 +81,4 @@ if !(comp_class_names isEqualTo []) then {
 	_list_comp ctrlAddEventHandler ["LBSelChanged", {[] spawn fnc_VAM_common_comp;}];
 };
 _reset ctrlAddEventHandler ["ButtonClick", {VAM_check_fnc_delay = true; [] spawn fnc_VAM_common_camo_check; [] spawn fnc_VAM_common_comp_check;}];
+//_confirm ctrlAddEventHandler ["ButtonClick", {[] spawn fnc_VAM_variable_cleaner;}];
