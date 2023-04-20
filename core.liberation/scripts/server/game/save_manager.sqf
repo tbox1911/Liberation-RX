@@ -81,11 +81,6 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 	GRLIB_garage = greuh_liberation_savegame select 5;
 	if (typeName GRLIB_garage != "ARRAY") then {GRLIB_garage = []};
 
-	if ( "capture_13_1_2_26_25" in blufor_sectors ) then { // Patching Molos Airfield which was a town instead of a factory
-		blufor_sectors = blufor_sectors - [ "capture_13_1_2_26_25" ];
-		blufor_sectors = blufor_sectors + [ "factory666" ];
-	};
-
 	_stats = greuh_liberation_savegame select 9;
 	stats_opfor_soldiers_killed = _stats select 0;
 	stats_opfor_killed_by_players = _stats select 1;
