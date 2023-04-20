@@ -96,6 +96,7 @@ if (!GRLIB_ACE_enabled) then {
 };
 [] execVM "addons\VIRT\virtual_garage_init.sqf";
 [] execVM "addons\TAXI\taxi_init.sqf";
+[] execVM "addons\TARU\taru_init.sqf";
 
 // Init Tips Tables from XML
 GREUH_TipsText = [];

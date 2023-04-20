@@ -296,7 +296,7 @@ if ( isNil "blufor_squad_recon" ) then { blufor_squad_recon = [] };
 if ( count blufor_squad_recon == 0 ) then { blufor_squad_recon = [
 	"O_recon_TL_F",
 	"O_recon_medic_F",
-	"O_Recon_Sharpshooter_F",
+	"O_recon_F",
 	"O_recon_LAT_F",
 	"O_recon_M_F",
 	"O_recon_F"
@@ -710,6 +710,8 @@ GRLIB_vehicle_blacklist = [
 	fuel_sling_typename,
 	ammo_sling_typename,
 	medic_sling_typename,
+	"Land_Pod_Heli_Transport_04_bench_F",
+	"Land_Pod_Heli_Transport_04_covered_F",
 	"Box_NATO_Ammo_F",
   	"Box_NATO_WpsLaunch_F",
 	"O_Heli_Light_02_v2_F",
