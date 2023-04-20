@@ -1,9 +1,9 @@
 /*
-     pSiKO AI Revive - full
+     pSiKO AI Revive - v2.04 - SP/MP - AI
 
 Author:
 
-	pSiKO
+	[AKH] pSiKO
 
 Description:
 
@@ -14,9 +14,12 @@ Instructions:
 
 	ExecVM from initclient.sqf or init.sqf in your mission directory.
 
+Based on: AI REVIVE HEAL SCRIPT SP/MP by Pierre MGI
+
+  at : https://forums.bohemia.net/forums/topic/207522-ai-revive-heal-script-spmp/
+
 _________________________________________________________________________*/
-//original at : https://forums.bohemia.net/forums/topic/207522-ai-revive-heal-script-spmp/
-//heavily modified by pSiKO
+
 if (isDedicated) exitWith {};
 
 PAR_fn_medic = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_medic.sqf";
@@ -119,11 +122,4 @@ waituntil {!isNil {player getVariable ["GRLIB_Rank", nil]}};
 [] spawn PAR_fn_Revive;
 
 waitUntil {!(isNull (findDisplay 46))};
-systemChat "-------- AI Revive Initialized --------";
-
-/*
-react = 20;
-bleedOut = 300;
-ReviveForAI = true;
-bros = "";
-*/
+systemChat "-------- PAR Revive Initialized --------";
