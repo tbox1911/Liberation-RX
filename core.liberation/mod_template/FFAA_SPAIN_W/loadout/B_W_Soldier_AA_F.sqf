@@ -31,7 +31,7 @@ _unit addItemToVest "SmokeShellGreen";
 for "_i" from 1 to 2 do {_unit addItemToVest "Chemlight_green";};
 _unit addItemToVest "SmokeShell";
 _unit addItemToVest "SmokeShellRed";
-for "_i" from 1 to 2 do {_unit addBackpack "Titan_AA";};
+for "_i" from 1 to 2 do {_unit addItemToBackpack "Titan_AA";};
 _unit addHeadgear "ffaa_brilat_casco_b";
 _unit addGoggles "ffaa_glasses";
 

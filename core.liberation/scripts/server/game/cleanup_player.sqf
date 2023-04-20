@@ -48,7 +48,11 @@ if !(isNull _unit) then {
 	// Save Player Context
 	private _score = 0; 
 	{if ((_x select 0) == _uid) exitWith {_score = (_x select 1)}} forEach GRLIB_player_scores; 
+<<<<<<< HEAD
 	if (_score > 20) then { [_unit, _uid] call save_context };
+=======
+	if (_score > 20) then { [_unit] call save_context };
+>>>>>>> df6a7d0c (context mp fix)
 
 	private _text = format ["Bye bye %1, see you soon...", _name];
 	[gamelogic, _text] remoteExec ["globalChat", -2];
