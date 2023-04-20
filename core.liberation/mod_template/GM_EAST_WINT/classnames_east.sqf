@@ -29,6 +29,7 @@ opfor_mrap = "gm_gc_army_brdm2um";
 opfor_mrap_armed = "gm_gc_army_brdm2";
 opfor_transport_helo = "gm_gc_airforce_mi2p";
 opfor_transport_truck = "gm_gc_army_ural4320_cargo";
+opfor_ammobox_transport = "gm_gc_army_ural4320_cargo";
 opfor_fuel_truck = "gm_gc_army_ural375d_refuel";
 opfor_ammo_truck = "gm_gc_army_ural4320_reammo";
 opfor_fuel_container = "Land_Pod_Heli_Transport_04_fuel_F";
@@ -229,4 +230,8 @@ opfor_recyclable = [
 	["gm_pl_airforce_mi2urp",0,round (500 / GRLIB_recycling_percentage),0],
 	["gm_gc_airforce_l410t",0,round (500 / GRLIB_recycling_percentage),0],
 	["gm_gc_airforce_l410s_salon",0,round (500 / GRLIB_recycling_percentage),0]
+];
+
+box_transport_config_east = [
+	[ "gm_gc_army_ural4320_cargo", -5.5, [0, -0.7, 0.04], [0, -2.4, 0.04] ]
 ];

@@ -8,7 +8,6 @@ FOB_truck_typename = "gm_ge_army_kat1_454_cargo";
 Respawn_truck_typename = "gm_gc_army_ural375d_medic";
 huron_typename = "gm_ge_army_ch53g";
 
-opfor_ammobox_transport = "gm_gc_army_ural4320_cargo";
 commander_classname = "gm_ge_army_officer_p1_80_oli";
 crewman_classname = "gm_ge_army_crew_mp2a1_80_oli";
 pilot_classname = "gm_ge_army_pilot_p1_80_oli";
@@ -48,11 +47,10 @@ light_vehicles = [
 	["gm_ge_army_iltis_cargo",1,5,1,0],
 	["gm_ge_army_iltis_milan",5,100,2,GRLIB_perm_inf],
 	["gm_ge_army_iltis_mg3",5,125,2,GRLIB_perm_log],
-	["gm_ge_army_m113a1g_apc",2,25,2,0],
+	["gm_ge_army_m113a1g_apc",2,25,2,GRLIB_perm_log],
 	["gm_ge_army_m113a1g_apc_milan",5,100,2,GRLIB_perm_inf],
 	["gm_ge_army_m113a1g_medic",5,125,2,GRLIB_perm_log],
 	["gm_ge_army_kat1_451_container",5,30,5,GRLIB_perm_log],
-	["gm_ge_army_kat1_451_cargo",5,30,5,GRLIB_perm_log],
 	["gm_dk_army_m113a1dk_apc",2,25,2,GRLIB_perm_inf],
 	["gm_dk_army_m113a1dk_medic",5,10,5,GRLIB_perm_inf],
 	["gm_dk_army_m113a2dk",5,200,2,GRLIB_perm_log],
@@ -135,7 +133,7 @@ buildings_west = [
 	["Land_Cargo_Tower_V1_F",0,0,0,GRLIB_perm_tank],
 	["Land_Cargo_House_V1_F",0,0,0,GRLIB_perm_inf],
 	["Land_Cargo_Patrol_V1_F",0,0,0,GRLIB_perm_log],
-	["Flag_NATO_F",0,0,0,0]
+	["gm_flag_GE",0,0,0,0]
 ];
 
 if ( isNil "blufor_squad_inf_light" ) then { blufor_squad_inf_light = [] };
@@ -216,7 +214,7 @@ uavs = [
 
 // Everything the AI troups should be able to resupply from
 ai_resupply_sources_west = [
-  "gm_ge_army_bpz2a0"
+	"gm_ge_army_bpz2a0"
 ];
 
 // Everything the AI troups should be able to healing from
@@ -243,11 +241,13 @@ GRLIB_vehicle_whitelist_west = [
 ];
 
 GRLIB_vehicle_blacklist_west = [
+	"gm_ge_army_mg3_aatripod",
+	"gm_ge_army_milan_launcher_tripod",
 	"gm_AmmoBox_wood_02_empty",
-  "gm_AmmoBox_wood_03_empty"
-
+	"gm_AmmoBox_wood_03_empty"
 ];
 
 box_transport_config_west = [
-
+	[ "gm_ge_army_u1300l_container", -4.5, [0, -0.5, -0.4], [0, -2.1, -0.4] ],
+	[ "gm_ge_army_kat1_451_container", -5.5, [0, 0.21, -0.01], [0, -1.34, -0.01], [0, -2.9, -0.01]]
 ];
