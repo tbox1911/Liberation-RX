@@ -19,7 +19,7 @@ while { GRLIB_endgame == 0 } do {
 		private _civs = [_spawnsector, 1] call F_spawnCivilians;
 		private _grp = group (_civs select 0);
 
-		if ( random 100 > 35 ) then {
+		if ( random 100 > 60 ) then {
 			private _nearestroad = objNull;
 			private _max_try = 10;
 			while { isNull _nearestroad && _max_try > 0} do {
@@ -60,17 +60,14 @@ while { GRLIB_endgame == 0 } do {
 
 		waitUntil {
 			sleep (30 + (random 30));
-			( ( ( { alive _x } count ( units _grp ) ) == 0 ) || ( count ( [ getpos leader _grp , 4000 ] call F_getNearbyPlayers ) == 0 ) )
+			( ( ({alive _x} count (units _grp)) == 0 ) || ( count ([getpos leader _grp , 4000] call F_getNearbyPlayers) == 0 ) )
 		};
 
-		if ( count (units _grp) > 0 ) then {
-			if ( count ( [ getpos leader _grp , 4000 ] call F_getNearbyPlayers ) == 0 ) then {
-				if ( !(isNull _civveh) ) then {
-					 if ( {(alive _x) && (side group _x == GRLIB_side_friendly)} count (crew _civveh) == 0 && _civveh getVariable ["GRLIB_vehicle_owner", ""] == "") then { [_civveh] call clean_vehicle; deleteVehicle _civveh };
-				};
-				{ deletevehicle _x } foreach units _grp;
+		if ( ({alive _x} count (units _grp)) > 0 ) then {
+			if ( !(isNull _civveh) ) then {
+					if ( {(alive _x) && (side group _x == GRLIB_side_friendly)} count (crew _civveh) == 0 && _civveh getVariable ["GRLIB_vehicle_owner", ""] == "") then { [_civveh] call clean_vehicle; deleteVehicle _civveh };
 			};
+			{ deletevehicle _x } foreach units _grp;
 		};
 	};
-
 };
