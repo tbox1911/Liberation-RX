@@ -235,3 +235,23 @@ box_transport_config_west = [
 	[ "CUP_B_T810_Unarmed_CZ_DES", -5.5, [0, 0.3, 0], [0, -1.25, 0] ],
 	[ "CUP_B_T810_Armed_CZ_DES", -5.5, [0, 0.3, -0.3], [0, -1.25, -0.3] ]
 ];
+
+//GRLIB_AirDrop_1 = [];
+//GRLIB_AirDrop_2 = [];
+GRLIB_AirDrop_3 = [
+	"CUP_B_T810_Armed_CZ_DES",
+	"CUP_B_LR_Special_M2_GB_D",
+	"CUP_B_Jackal2_L2A1_GB_D",
+	"CUP_B_Ridgback_HMG_GB_D"	
+];
+GRLIB_AirDrop_4 = [
+	"CUP_B_T810_Unarmed_CZ_DES",
+	"CUP_B_T810_Armed_CZ_DES",
+	"CUP_B_MTVR_BAF_DES"
+];
+GRLIB_AirDrop_5 = [
+	"CUP_B_Mastiff_HMG_GB_D",
+	"CUP_B_BAF_Coyote_L2A1_D",
+	"CUP_B_Wolfhound_LMG_GB_D"
+];
+//GRLIB_AirDrop_6 = [];
