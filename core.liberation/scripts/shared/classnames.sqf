@@ -18,8 +18,8 @@ if ( isNil "opfor_ammobox_transport" ) then { opfor_ammobox_transport = "O_Truck
 if ( isNil "commander_classname" ) then { commander_classname = "B_officer_F" };
 if ( isNil "crewman_classname" ) then { crewman_classname = "B_crew_F" };
 if ( isNil "pilot_classname" ) then { pilot_classname = "B_Helipilot_F" };
-if ( isNil "FAR_Medikit" ) then { FAR_Medikit = "Medikit" };
-if ( isNil "FAR_AidKit" ) then { FAR_AidKit = "FirstAidKit" };
+if ( isNil "PAR_Medikit" ) then { PAR_Medikit = "Medikit" };
+if ( isNil "PAR_AidKit" ) then { PAR_AidKit = "FirstAidKit" };
 if ( isNil "A3W_BoxWps" ) then { A3W_BoxWps = "Box_East_Wps_F" };
 if ( isNil "canisterFuel" ) then { canisterFuel = "Land_CanisterFuel_Red_F" };
 

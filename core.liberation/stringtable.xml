@@ -35,21 +35,21 @@
 						<Spanish>Cerca</Spanish>
 						<Russian>Закрыть</Russian>
 				</Key>
-				<Key ID="STR_FAR_Need_Medic1">
+				<Key ID="STR_PAR_Need_Medic1">
 						<Original>I need a medic!</Original>
 						<French>J'ai besoin d'un medic!</French>
 						<German>Ich brauche einen Sanitäter!</German>
 						<Spanish>¡Necesito un médico!</Spanish>
 						<Russian>Мне нужен медик!</Russian>
 				</Key>
-				<Key ID="STR_FAR_Need_Medic2">
+				<Key ID="STR_PAR_Need_Medic2">
 						<Original>I'm hit! Medic!</Original>
 						<French>Je suis touché! Medic!</French>
 						<German>Wurde getroffen! Sanitäter!</German>
 						<Spanish>Herido! Médico!</Spanish>
 						<Russian>Меня подстрелили! Медик!</Russian>
 				</Key>
-				<Key ID="STR_FAR_Need_Medic3">
+				<Key ID="STR_PAR_Need_Medic3">
 						<Original>I'm down! Medic!</Original>
 						<French>Je suis à terre! Medic!</French>
 						<German>Ich bin gefallen! Sanitäter!</German>
@@ -1020,10 +1020,10 @@
 						<Russian>Понизить - в 1.5 раза усталость</Russian>
 				</Key>
 				<Key ID="STR_PARAMS_REVIVE">
-						<Original>FAR Revive</Original>
-						<German>FAR Revive (Wiederbelebungen)</German>
-						<Spanish>FAR Revive</Spanish>
-						<Russian>FAR Возрождение</Russian>
+						<Original>PsiKO AI Revive</Original>
+						<German>PAR Revive (Wiederbelebungen)</German>
+						<Spanish>PAR Revive</Spanish>
+						<Russian>PAR Возрождение</Russian>
 				</Key>
 				<Key ID="STR_PARAMS_REVIVE1">
 						<Original>Enabled - Only medics can revive</Original>

@@ -4,7 +4,7 @@ if (player getVariable ["GRLIB_action_inuse", false])  exitWith {};
 if (isNil "AR_active") then {AR_active = false};
 if (AR_active) exitWith {AR_active = false};
 if ((!isNull objectParent player) || (surfaceIsWater (getPos player)) ||
-	(lifeState player == 'INCAPACITATED') || (!isNull R3F_LOG_joueur_deplace_objet) || FAR_isDragging ) exitWith {};
+	(lifeState player == 'INCAPACITATED') || (!isNull R3F_LOG_joueur_deplace_objet) || PAR_isDragging ) exitWith {};
 
 AR_active = true;
 AR_weapon = currentWeapon player;

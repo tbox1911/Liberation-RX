@@ -12,7 +12,7 @@ while { true } do {
 	if (!isNil "_my_dog") then {
 
 		// Hide Dog
-		// go to ..\addons\FAR\FAR_EventHandler.sqf
+		// go to ..\addons\PAR\PAR_EventHandler.sqf
 		private _onfoot = vehicle player == player;
 
 		// Reset Dog

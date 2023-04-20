@@ -44,14 +44,14 @@ while { true } do {
 
 	_cam camCommit 900;
 
-	waitUntil {sleep 0.5; ((player getVariable ["GREUH_isUnconscious",0]) == 0) || ((player getVariable ["FAR_isUnconscious", 0]) == 1) };
+	waitUntil {sleep 0.5; ((player getVariable ["GREUH_isUnconscious",0]) == 0) || ((player getVariable ["PAR_isUnconscious", 0]) == 1) };
 	closeDialog 0;
 	waitUntil {!dialog};
 	if ((player getVariable "GREUH_isUnconscious") != 0) then {
 		[] spawn revive_ui;
 		waitUntil {dialog};
 	};
-	waitUntil {sleep 0.5; ( player getVariable "FAR_isUnconscious"  ) == 0 || !alive player || !dialog };
+	waitUntil {sleep 0.5; ( player getVariable ["PAR_isUnconscious", 0] ) == 0 || !alive player || !dialog };
 	player setVariable ["GREUH_isUnconscious", 0, true];
 	closeDialog 5566;
 	"colorCorrections" ppEffectEnable FALSE;
