@@ -14,7 +14,7 @@ _crew allowGetIn false;
 	};
 } forEach _crew;
 
-if (side _grp == GRLIB_side_civilian) then {
+if (side _grp == GRLIB_side_civilian && !([player, _vehicle] call is_owner)) then {
 	hintSilent localize "STR_DO_EJECT";
 	playSound "vtolAlarm";
 	[player, -5] remoteExec ["addScore", 2];
