@@ -38,6 +38,7 @@ if ( GRLIB_blufor_defenders && !_defenders_cooldown) then {
 		_x setSkill 0.65;
 		_x setSkill ["courage", 1];
 		_x allowFleeing 0;
+		_x addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
 	} foreach (units _grp);
 
 	if (_sector in sectors_military) then {

@@ -65,6 +65,7 @@ if ( dojump > 0 ) then {
 		cutRsc ["fasttravel", "PLAIN", 1];
 		[_unit, "hide"] remoteExec ["dog_action_remote_call", 2];
 		sleep 2;
+		[_unit, halo_position] spawn paraDrop;
 
 		private _player_pos = getPosATL _unit;
 		private _units = units group _unit;
@@ -72,12 +73,14 @@ if ( dojump > 0 ) then {
 		if (!isNil "_my_squad") then { { _units pushBack _x } forEach units _my_squad };
 
 		_unit setVariable ["GRLIB_action_inuse", true, true];
-		{
-			if ( round (_x distance2D _player_pos) <= 30 && lifestate _x != 'INCAPACITATED' && vehicle _x == _x ) then {
+		private _unit_list_halo = [_units, { !(isPlayer _x) && (isNull objectParent _x) && (_x distance2D _player_pos) < 40 && lifestate _x != 'INCAPACITATED' }] call BIS_fnc_conditionalSelect;
+		[_unit_list_halo] spawn {
+			params ["_list"];
+			{
+				sleep 1;
 				[_x, halo_position] spawn paraDrop;
-				sleep (1 + floor(random 3));
-			};
-		} forEach _units;
+			} forEach _list;
+		};
 		_unit setVariable ["GRLIB_action_inuse", false, true];
 	};
 };

@@ -62,6 +62,7 @@ spawn_camera = compileFinal preprocessFileLineNumbers "scripts\client\spawn\spaw
 cinematic_camera = compileFinal preprocessFileLineNumbers "scripts\client\ui\cinematic_camera.sqf";
 write_credit_line = compileFinal preprocessFileLineNumbers "scripts\client\ui\write_credit_line.sqf";
 set_rank = compileFinal preprocessFileLineNumbers "scripts\client\misc\set_rank.sqf";
+set_sticky_bomb = compileFinal preprocessFileLineNumbers "scripts\client\misc\set_sticky_bomb.sqf";
 vehicle_permissions = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_permissions.sqf";
 vehicle_fuel = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_fuel.sqf";
 vehicle_defense = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_defense.sqf";
@@ -114,6 +115,7 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 [] execVM "scripts\client\misc\manage_manpower.sqf";
 [] execVM "scripts\client\misc\no_thermic.sqf";
 [] execVM "scripts\client\misc\init_markers.sqf";
+//[] execVM "scripts\client\misc\logs_markers.sqf";
 [] execVM "scripts\client\actions\action_manager.sqf";
 [] execVM "scripts\client\actions\action_manager_veh.sqf";
 [] execVM "scripts\client\actions\recycle_manager.sqf";
@@ -167,7 +169,7 @@ addMissionEventHandler ["Draw3D",{
 	};
 
 	private _near_sign = nearestObjects [player, [FOB_sign], 5];
-	if (count (_near_sign) > 0 && !([player, "LHD", GRLIB_sector_size] call F_check_near)) then {  
+	if (count (_near_sign) > 0 && !([player, "LHD", GRLIB_sector_size] call F_check_near)) then {
 		private _sign = _near_sign select 0;
 		private _gid = _sign getVariable ["GRLIB_vehicle_owner", "public"];
 		private _type = "FOB";

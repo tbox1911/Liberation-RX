@@ -5,7 +5,7 @@ GRLIB_west_modder = "pSiKO";
 // Default classname: scripts\shared\default_classnames.sqf
 // Advanced definition: scripts\shared\classnames.sqf
 
-huron_typename = "I_Heli_Transport_02_F";  // comment to use value from lobby/server.cfg
+huron_typename = "I_Heli_Transport_02_F";  // // to use value from lobby/server.cfg
 FOB_typename = "Land_Cargo_HQ_V2_F";
 FOB_box_typename = "B_Slingload_01_Cargo_F";
 FOB_truck_typename = "B_Truck_01_box_F";
@@ -68,7 +68,7 @@ light_vehicles = [
 ];
 
 heavy_vehicles = [
-  ["I_E_APC_tracked_03_cannon_F",10,500,20,GRLIB_perm_log],
+	["I_E_APC_tracked_03_cannon_F",10,500,20,GRLIB_perm_log],
 	["I_APC_Wheeled_03_cannon_F",10,500,20,GRLIB_perm_tank],
 	["I_APC_tracked_03_cannon_F",10,500,20,GRLIB_perm_tank],
 	["I_MBT_01_cannon_F",15,1000,25,GRLIB_perm_tank],

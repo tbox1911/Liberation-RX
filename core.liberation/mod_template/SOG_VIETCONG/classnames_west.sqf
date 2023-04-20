@@ -5,7 +5,7 @@ GRLIB_west_modder = "pSiKO";
 // Default classname: scripts\shared\default_classnames.sqf
 // Advanced definition: scripts\shared\classnames.sqf
 
-huron_typename = "vn_o_air_mi2_01_01";  // comment to use value from lobby/server.cfg
+huron_typename = "vn_o_air_mi2_01_01";  // // to use value from lobby/server.cfg
 FOB_typename = "Land_vn_b_trench_bunker_04_01";
 FOB_box_typename = "Land_Pod_Heli_Transport_04_box_black_F";
 FOB_truck_typename = "vn_o_wheeled_z157_repair";

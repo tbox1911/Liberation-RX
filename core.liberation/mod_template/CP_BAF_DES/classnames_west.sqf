@@ -5,7 +5,7 @@ GRLIB_west_modder = "pSiKO";
 // Default classname: scripts\shared\default_classnames.sqf
 // Advanced definition: scripts\shared\classnames.sqf
 
-huron_typename = "CUP_B_Merlin_HC3_GB";  // comment to use value from lobby/server.cfg
+huron_typename = "CUP_B_Merlin_HC3_GB";  // // to use value from lobby/server.cfg
 Respawn_truck_typename = "CUP_B_LR_Ambulance_GB_D";
 ammo_truck_typename = "CUP_B_MTVR_Ammo_BAF_DES";
 fuel_truck_typename = "CUP_B_MTVR_Refuel_BAF_DES";

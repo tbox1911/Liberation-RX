@@ -17,12 +17,12 @@ waitUntil {sleep 1; !isNil "GRLIB_mobile_respawn"};
 
 while { true } do {
 	_veh_list = [vehicles, {
-		alive _x &&	locked _x != 2 &&
+		alive _x &&
+		!(_x isKindOf "CAManBase") &&
+		!(_x isKindOf "WeaponHolderSimulated") &&
 		!([_x, "LHD", GRLIB_sector_size] call F_check_near) &&
 		!([typeOf _x, _no_marker_classnames] call F_itemIsInClass) &&
-		!(_x getVariable ['R3F_LOG_disabled', true]) &&
 		(isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull])) &&
-		(_x getVariable ["GRLIB_vehicle_owner", ""] != "server") &&
 		(
 			(side _x == GRLIB_side_friendly) ||
 			(side _x == GRLIB_side_civilian && count (crew _x) == 0)
@@ -42,8 +42,13 @@ while { true } do {
 			_marker setMarkerTextLocal ([(typeOf _nextvehicle)] call F_getLRXName);
 			_vehmarkers_bak pushback _marker;
 
+			if (typeOf _nextvehicle in [Arsenal_typename] + support_box_noArsenal) then {
+				_marker setMarkerColorLocal "ColorOrange";
+				_marker setMarkerTypeLocal "loc_Rifle";
+			};
 			if (typeOf _nextvehicle in [ammobox_b_typename,ammobox_o_typename,ammobox_i_typename]) then {
 				_marker setMarkerColorLocal "ColorGUER";
+				_marker setMarkerTypeLocal "mil_box";
 			};
 			if (typeOf _nextvehicle in [waterbarrel_typename,fuelbarrel_typename,foodbarrel_typename]) then {
 				_marker setMarkerColorLocal "ColorGrey";
@@ -53,8 +58,25 @@ while { true } do {
 			_nextmarker setMarkerPosLocal (getPosATL _nextvehicle);
 			_vehmarkers_bak pushback _nextmarker;
 		};
-		if (!((_nextvehicle getVariable ["GRLIB_vehicle_owner", ""]) in ["server",""])) then {
-			_nextmarker setMarkerColorLocal GRLIB_color_friendly;
+
+		if (_nextvehicle isKindOf "AllVehicles") then {
+			if ((_nextvehicle getVariable ["GRLIB_vehicle_owner", ""]) in ["server","public",""]) then {
+				_nextmarker setMarkerColorLocal "ColorKhaki";
+			} else {
+				_nextmarker setMarkerColorLocal GRLIB_color_friendly;
+			};
+		};
+
+		if (_nextvehicle getVariable ['R3F_LOG_disabled', false] || (_nextvehicle getVariable ["GRLIB_vehicle_owner", ""] == "server")) then {
+			_nextmarker setMarkerAlphaLocal 0;
+		} else {
+			_nextmarker setMarkerAlphaLocal 1;
+		};
+
+		if (_nextvehicle isKindOf repair_offroad) then {
+			_nextmarker setMarkerColorLocal "ColorOrange";
+			_nextmarker setMarkerTextLocal "Repair";
+			_nextmarker setMarkerAlphaLocal 1;
 		};
 	} foreach _veh_list;
 	

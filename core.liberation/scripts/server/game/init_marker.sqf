@@ -7,8 +7,6 @@ waituntil {sleep 1; !isNil "GRLIB_sectors_init"};
 
 // REPAIR
 private ["_vehicle", "_spawnpos", "_startpos", "_radius", "_max_try"];
-private _marker_REPAIR = [];
-
 {
   // Add repair pickup
   _spawnpos = [];
@@ -32,7 +30,7 @@ private _marker_REPAIR = [];
   //diag_log format ["DBG: sector:%4 - pos:%1 try:%2 rad:%3", _spawnpos, _max_try, _radius, _x];
 
   if (count _spawnpos > 0) then {
-    _vehicle = createVehicle [repair_offroad, _spawnpos, [], 20, "NONE"];
+    _vehicle = createVehicle [repair_offroad, _spawnpos, [], 10, "NONE"];
     _vehicle allowDamage false;
     _vehicle setVehicleLock "LOCKED";
     _vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
@@ -41,20 +39,11 @@ private _marker_REPAIR = [];
     clearMagazineCargoGlobal _vehicle;
     clearItemCargoGlobal _vehicle;
     clearBackpackCargoGlobal _vehicle;
-    // sleep 1;
-    // if ((vectorUp _vehicle) select 2 < 0.70 || (getPosATL _vehicle) select 2 < 0) then {
-    //   _vehicle setpos [(getPosATL _vehicle) select 0, (getPosATL _vehicle) select 1, 0.5];
-    //   _vehicle setVectorUp surfaceNormal position _vehicle;
-    // };    
-    _marker_REPAIR pushback (getposATL _vehicle);
   } else {
     diag_log format ["--- LRX Error: No place to build %1 at sector %2", repair_offroad, _x];
   };
   sleep 0.1;
 } forEach sectors_factory;
-
-GRLIB_Marker_REPAIR = _marker_REPAIR;
-publicVariable "GRLIB_Marker_REPAIR";
 
 // SELL
 private ["_man", "_manPos"];

@@ -115,7 +115,6 @@ support_box_noArsenal = [
 	Box_Ammo_typename,
 	Box_Weapon_typename,
 	Box_Support_typename,
-	Box_Launcher_typename,
 	Box_Special_typename
 ];
 support_vehicles = [
@@ -128,7 +127,6 @@ if (!GRLIB_enable_arsenal) then {
 		[Box_Ammo_typename,0,0,0,0],
 		[Box_Weapon_typename,0,180,0,0],
 		[Box_Support_typename,0,250,0,GRLIB_perm_inf],
-		[Box_Launcher_typename,0,300,0,GRLIB_perm_log],
 		[Box_Special_typename,0,325,0,GRLIB_perm_tank]
 	];
 };
@@ -139,6 +137,7 @@ support_vehicles = support_vehicles + [
 	[mobile_respawn,10,50,0,0],
 	[canister_fuel_typename,0,25,10,0],
 	[playerbox_typename,0,0,0,20],
+	[Box_Launcher_typename,0,300,0,GRLIB_perm_log],
 	[Respawn_truck_typename,15,150,5,GRLIB_perm_log],
 	["Land_RepairDepot_01_civ_F",10,300,0,GRLIB_perm_log],
 	["Land_MedicalTent_01_MTP_closed_F",5,150,0,GRLIB_perm_log],
@@ -152,7 +151,6 @@ support_vehicles = support_vehicles + [
 	[FOB_box_outpost,5,500,20,GRLIB_perm_log],
 	[FOB_box_typename,5,1500,80,GRLIB_perm_max],
 	[FOB_truck_typename,5,1500,150,GRLIB_perm_max],
-	[fireworks_typename,0,500,0,GRLIB_perm_max],
 	[ammobox_b_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
 	[ammobox_o_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
 	[ammobox_i_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
@@ -599,8 +597,7 @@ GRLIB_vehicle_blacklist = [
 	waterbarrel_typename,
 	fuelbarrel_typename,
 	foodbarrel_typename,
-	medicalbox_typename,
-	fireworks_typename
+	medicalbox_typename
 ] + GRLIB_vehicle_blacklist_west;
 
 // Recycleable objects
@@ -737,7 +734,6 @@ GRLIB_ignore_colisions = [
 	mobile_respawn,
 	canister_fuel_typename,
 	medicalbox_typename,
-	fireworks_typename,
 	"Helper_Base_F",
 	"Blood_01_Base_F",
 	"MedicalGarbage_01_Base_F",

@@ -293,7 +293,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
         };
 
 		if (_nextclass == "Land_ClutterCutter_large_F") then {
-			{_x hideObject true} forEach (nearestTerrainObjects [_nextpos, GRLIB_clutter_cutter, 20]);
+			{_x hideObjectGlobal true} forEach (nearestTerrainObjects [_nextpos, GRLIB_clutter_cutter, 20]);
 		};
 
         if ( !(_nextclass in _no_kill_handler_classnames) ) then {

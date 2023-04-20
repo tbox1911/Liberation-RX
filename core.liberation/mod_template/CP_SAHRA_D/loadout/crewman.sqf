@@ -9,7 +9,7 @@ removeBackpack _unit;
 removeHeadgear _unit;
 removeGoggles _unit;
 
-comment "Add containers";
+// "Add containers";
 _unit forceAddUniform "CUP_U_I_RACS_Desert_2";
 _unit addVest "CUP_V_B_Interceptor_Rifleman_Coyote";
 

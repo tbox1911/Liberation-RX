@@ -6,6 +6,7 @@ private _defTotalAmmo = 0;
 private _getVehicleAmmoDef = 1;
 private _ignore_ammotype = [
 	"Laserbatteries",
+	"200Rnd_762",
 	"8Rnd_82mm_Mo_Flare_white",
 	"8Rnd_82mm_Mo_Smoke_white",
 	"CUP_2800Rnd_"

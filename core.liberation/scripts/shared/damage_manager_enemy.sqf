@@ -12,12 +12,12 @@ if (!isNull _instigator) then {
 };
 
 private _ret = _amountOfDamage;
-if (!isNull _killer && _unit != _killer) then {
+if (isPlayer _killer && _unit != _killer) then {
 	private _veh_unit = vehicle _unit;
 	private _veh_killer = vehicle _killer;
 
 	// OpFor in vehicle
-	if (isPlayer _killer && side group _unit == GRLIB_side_enemy && _unit != _killer && _veh_unit != _unit && _veh_killer == _killer && round (_killer distance2D _unit) <= 2) then {
+	if (_veh_unit != _unit && _veh_killer == _killer && round (_killer distance2D _unit) <= 2) then {
 		if ( _unit getVariable ["GRLIB_isProtected", 0] < time ) then {
 			private _msg = format ["%1 Stop Cheating !!", name _killer];
 			[gamelogic, _msg] remoteExec ["globalChat", owner _killer];

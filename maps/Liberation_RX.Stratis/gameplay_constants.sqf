@@ -9,7 +9,6 @@ GRLIB_radiotower_size = 2000;
 GRLIB_spawn_min = 500;
 GRLIB_spawn_max = 1500;
 GRLIB_recycling_percentage = 0.75;
-GRLIB_endgame = 0;
 GRLIB_vulnerability_timer = 900;
 GRLIB_defended_buildingpos_part = 0.4;
 GRLIB_sector_military_value = 3;
