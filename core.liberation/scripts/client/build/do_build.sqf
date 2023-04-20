@@ -10,6 +10,8 @@ _ammo = 0;
 _lst_a3 = [];
 _lst_r3f = [];
 build_unit = [];
+_list_static = [] + opfor_statics;
+{_list_static pushBack ( _x select 0 )} foreach (static_vehicles);
 
 GRLIB_preview_spheres = [];
 while { count GRLIB_preview_spheres < 36 } do {
@@ -356,6 +358,12 @@ while { true } do {
 				if (buildtype == 9 && !(_classname in GRLIB_vehicle_whitelist) ) then {
 					{_vehicle addWeaponWithAttachmentsCargoGlobal [ _x, 1] } forEach _lst_a3;
 					[_vehicle, _lst_r3f] call R3F_LOG_FNCT_transporteur_charger_auto;
+				};
+
+				// Static Weapon
+				if (_classname in _list_static) then {
+					_vehicle allowDamage false;
+					[_vehicle] spawn protect_static;
 				};
 
 				sleep 0.3;
