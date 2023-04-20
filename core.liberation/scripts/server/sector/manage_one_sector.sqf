@@ -18,7 +18,7 @@ _squad2 = [];
 _squad3 = [];
 _squad4 = [];
 _minimum_building_positions = 5;
-_sector_despawn_tickets = 12;
+_sector_despawn_tickets = 24;
 
 _popfactor = 1;
 if ( GRLIB_unitcap < 1 ) then { _popfactor = GRLIB_unitcap; };

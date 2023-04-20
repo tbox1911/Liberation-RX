@@ -891,7 +891,7 @@ class GREUH_respawn {
 		w = 0.1 * safezoneW;
 		h = 0.04 * safezoneH;
 		text = "Respawn";
-		action = "player spawn PAR_fn_death";
+		action = "player call PAR_fn_death";
 		colorDisabled[] = { 1, 1, 1, 1 };
 	};
 
@@ -902,7 +902,7 @@ class GREUH_respawn {
 		w = 0.1 * safezoneW;
 		h = 0.04 * safezoneH;
 		text = "Recall Medic";
-		action = "[] spawn PAR_fn_medicRecall";
+		action = "[] call PAR_fn_medicRecall";
 		colorDisabled[] = { 1, 1, 1, 1 };
 	};
 

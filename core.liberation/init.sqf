@@ -8,8 +8,10 @@ enableSaving [false, false];
 disableMapIndicators [false,true,false,false];
 setGroupIconsVisible [false,false];
 
+[] call compileFinal preprocessFileLineNUmbers "whitelist.sqf";
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\liberation_functions.sqf";
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\fetch_params.sqf";
+<<<<<<< HEAD
 <<<<<<< HEAD
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\classnames.sqf";
 <<<<<<< HEAD
@@ -39,6 +41,12 @@ if (GRLIB_revive != 0) then {[] execVM "addons\FAR\FAR_init.sqf"};
 [] call compileFinal preprocessfilelinenumbers "scripts\shared\init_shared.sqf";
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\init_sectors.sqf";
 >>>>>>> eefcff68 (add radius / huron type to parameters)
+=======
+[] call compileFinal preprocessFileLineNUmbers "scripts\shared\classnames.sqf";
+[] call compileFinal preprocessfilelinenumbers "scripts\shared\init_shared.sqf";
+[] call compileFinal preprocessFileLineNUmbers "scripts\shared\init_sectors.sqf";
+if (!GRLIB_ACE_enabled) then {[] execVM "R3F_LOG\init.sqf"};
+>>>>>>> cf95696e (1)
 
 <<<<<<< HEAD
 waitUntil { sleep 1; !isNil "GRLIB_ACE_enabled" };

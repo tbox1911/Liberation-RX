@@ -5,7 +5,7 @@ _cap_thresold_count = 3;
 _cap_thresold_ratio = 0.85;
 _cap_min_ratio = 0.51;
 
-_sectorside = GRLIB_side_resistance;
+_sectorside = GRLIB_side_civilian;
 _countblufor_ownership = [_thatpos, _localsize, GRLIB_side_friendly ] call F_getUnitsCount;
 _countopfor_ownership = [_thatpos, _localsize, GRLIB_side_enemy ] call F_getUnitsCount;
 
