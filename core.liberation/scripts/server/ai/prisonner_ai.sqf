@@ -2,7 +2,7 @@ params [ "_unit", ["_force_surrender", false] ];
 
 if ( (!_force_surrender) && (( random 100 ) > GRLIB_surrender_chance) ) exitWith {};
 
-if ( (_unit isKindOf "Man") && ( alive _unit ) && (side group _unit == GRLIB_side_enemy) && (!(_unit getVariable ['mission_AI', false])) ) then {
+if ( (_unit isKindOf "Man") && ( alive _unit ) && (side group _unit == GRLIB_side_enemy) && (!(_unit getVariable ["mission_AI", false])) ) then {
 
 	if ( vehicle _unit != _unit ) then { deleteVehicle _unit };
 

@@ -542,15 +542,15 @@
 						<Russian>FOB %1 больше не находится под угрозой.</Russian>
 				</Key>
 				<Key ID="STR_NOTIFICATION_FOBATTACKED_TITLE">
-						<Original>FOB ATTACKED</Original>
-						<French>FOB ATTAQUEE</French>
-						<German>FOB ANGEGRIFFEN</German>
-						<Spanish>FOB ATACADA</Spanish>
-						<Russian>FOB АТАКОВАНА</Russian>
+						<Original>High Priority - FOB ATTACKED</Original>
+						<French>Haute Priorité - FOB ATTAQUEE</French>
+						<German>Hohe Priorität - FOB ANGEGRIFFEN</German>
+						<Spanish>Alta Prioridad - FOB ATACADA</Spanish>
+						<Russian>Высокий Приоритет - FOB АТАКОВАНА</Russian>
 				</Key>
 				<Key ID="STR_NOTIFICATION_FOBATTACKED_TEXT">
-						<Original>FOB %1 is under attack!</Original>
-						<French>La FOB %1 est attaquée !</French>
+						<Original>FOB %1 is under attack!&lt;br/&gt;You &lt;t color='#ff0000'&gt;MUST&lt;/t&gt; defend the FOB!</Original>
+						<French>La FOB %1 est attaquée !&lt;br/&gt;Vous &lt;t color='#ff0000'&gt;DEVEZ&lt;/t&gt; defendre la FOB !</French>
 						<German>FOB %1 wird angegriffen !</German>
 						<Spanish>FOB %1 está bajo ataque!</Spanish>
 						<Russian>FOB %1 атакована!</Russian>

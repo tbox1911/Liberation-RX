@@ -1,4 +1,4 @@
-private _distveh = 15;
+private _distveh = 10;
 private _distvehclose = 5;
 private _searchradius = 100;
 
@@ -58,7 +58,7 @@ while { true } do {
 	_nearwreck = [nearestObjects [player, ["Slingload_01_Base_F"], _searchradius], {(_x distance lhd) >= 1000 && !(alive _x) && isNil {_x getVariable "GRLIB_salvage_action"}}] call BIS_fnc_conditionalSelect;
 	{
 		_vehicle = _x;
-		_vehicle addAction ["<t color='#FFFF00'>-- SALVAGE</t> <img size='1' image='res\ui_recycle.paa'/>","scripts\client\actions\do_wreck.sqf","",-900,true,true,"","[] call is_menuok && !(_target getVariable ['wreck_in_use', false]) && !(player getVariable ['salvage_wreck', false])", _distveh];
+		_vehicle addAction ["<t color='#FFFF00'>-- SALVAGE</t> <img size='1' image='res\ui_recycle.paa'/>","scripts\client\actions\do_wreck.sqf","",-900,true,true,"","[] call is_menuok && !(_target getVariable ['wreck_in_use', false]) && !(player getVariable ['salvage_wreck', false])", (_distveh + 5)];
 		_vehicle setVariable ["GRLIB_salvage_action", true];
 	} forEach _nearwreck+_nearruins;
 	sleep 2;

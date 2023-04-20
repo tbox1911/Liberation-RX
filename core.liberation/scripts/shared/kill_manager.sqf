@@ -126,6 +126,7 @@ if ( isServer ) then {
 				stats_blufor_soldiers_killed = stats_blufor_soldiers_killed + 1;
 			};
 		};
+		_unit addAction ["<t color='#0080F0'>-- REMOVE BODY</t>",{hidebody (_this select 0)},"",1.5,false,true,"","_this distance2D _target < 3" ];
 	} else {
 		if ( typeof _unit in all_hostile_classnames ) then {
 			stats_opfor_vehicles_killed = stats_opfor_vehicles_killed + 1;

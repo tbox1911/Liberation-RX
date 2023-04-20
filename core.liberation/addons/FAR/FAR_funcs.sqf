@@ -8,7 +8,7 @@ FAR_unblock_AI = {
 	} else {
 		{
 			_unit = _x;
-			if (round (player distance2D _unit) < 50 && (lifeState _unit != 'INCAPACITATED') ) then {
+			if (round (player distance2D _unit) < 50 && (lifeState _unit != 'INCAPACITATED') && vehicle _unit == _unit) then {
 				doStop _unit;
 				sleep 1;
 				_unit doWatch objNull;
@@ -48,10 +48,24 @@ FAR_Player_Actions = {
 ////////////////////////////////////////////////
 FAR_HandleDamage_EH = {
 	params [ "_unit", "_selectionName", "_amountOfDamage", "_killer", "_projectile", "_hitPartIndex" ];
-	private [ "_isUnconscious", "_olddamage", "_damageincrease", "_vestarmor", "_vest_passthrough", "_vestobject", "_helmetarmor",  "_helmet_passthrough", "_helmetobject" ];
 
-	_isUnconscious = _unit getVariable "FAR_isUnconscious";
+	private _veh_unit = vehicle _unit;
+	private _veh_killer = vehicle _killer;
 
+	// TK Protect
+	private _isProtected = _unit getVariable "FAR_isProtected";
+	if (_isProtected == 0 && isPlayer _killer && _killer != _unit && _veh_unit != _veh_killer && BTC_vip find (name _killer) == -1) then {
+		_unit setVariable ["FAR_isProtected", 1, true];
+		FAR_tkMessage = [_unit, _killer];
+		publicVariable "FAR_tkMessage";
+		["FAR_tkMessage", [_unit, _killer]] call FAR_public_EH;
+		BTC_tk_PVEH = [name _killer];
+		publicVariable "BTC_tk_PVEH";
+		_amountOfDamage = 0;
+		[_unit] spawn { sleep 3;(_this select 0) setVariable ["FAR_isProtected", 0, true] };
+	};
+
+	private _isUnconscious = _unit getVariable "FAR_isUnconscious";
     if (_isUnconscious == 0 && (_amountOfDamage >= 0.86)) then {
 		closedialog 0;
 		_unit setVariable ["FAR_isUnconscious", 1, true];
@@ -75,25 +89,6 @@ FAR_Player_Unconscious = {
 		FAR_deathMessage = [_unit, _killer];
 		publicVariable "FAR_deathMessage";
 		["FAR_deathMessage", [_unit, _killer]] call FAR_public_EH;
-	};
-
-    // TK Protect
-	BTC_vip = [];
-	_veh_unit = vehicle _unit;
-	_veh_killer = vehicle _killer;
-	if (isPlayer _killer && _killer != _unit && _veh_unit != _veh_killer && BTC_vip find (name _killer) == -1) exitWith	{
-		FAR_tkMessage = [_unit, _killer];
-		publicVariable "FAR_tkMessage";
-		["FAR_tkMessage", [_unit, _killer]] call FAR_public_EH;
-
-		BTC_tk_PVEH = [name _killer];
-		publicVariable "BTC_tk_PVEH";
-		_unit setDamage 0;
-		_unit setVariable ["FAR_isUnconscious", 0, true];
-		_unit setVariable ["GREUH_isUnconscious", 0, true];
-		_unit setUnconscious false;
-		sleep 3;
-		_unit allowDamage true;
 	};
 
 	// Eject unit if inside vehicle
