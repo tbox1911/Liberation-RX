@@ -392,7 +392,30 @@ class StdButton {
 	text = "";
 	action = "";
 	shadow = 1;
-  };
+};
+
+class RscActiveText {
+	idc = -1;
+	type = CT_ACTIVETEXT;
+	style = ST_PICTURE;
+	x = 0.75; 
+	y = 0.5;
+	w = 0.2; 
+	h = 0.035;
+	font = PuristaMedium;
+	sizeEx = 0.024;
+	color[] = { 1, 1, 1, 1 };
+	colorActive[] = { 1, 0.2, 0.2, 1 };
+	colorDisabled[] = {1,1,1,1};
+	soundEnter[] = { "", 0, 1 };   // no sound
+	soundPush[] = { "", 0, 1 };
+	soundClick[] = { "", 0, 1 };
+	soundEscape[] = { "", 0, 1 };
+	action = "";
+	tooltip = "";
+	text = "";
+	//default = true;
+};
 
 class StdBG {
 		idc = -1;

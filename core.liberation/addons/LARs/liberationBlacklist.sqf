@@ -3,7 +3,7 @@
 blacklisted_bag = [
 	"B_Static_Designator_01_weapon_F",
 	"B_W_Static_Designator_01_weapon_F",
-    "O_Static_Designator_02_weapon_F",
+	"O_Static_Designator_02_weapon_F",
 	"B_UAV_06_backpack_F",
 	"O_UAV_06_backpack_F",
 	"I_UAV_06_backpack_F",
@@ -95,8 +95,6 @@ blacklisted_bag = [
 ];
 
 blacklisted_weapon = [
-	"SMG_03_black",
-	"SMG_03C_black",
 	"optic_Nightstalker",
 	"optic_tws",
 	"optic_tws_mg",
