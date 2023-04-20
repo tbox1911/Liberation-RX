@@ -98,6 +98,7 @@ GRLIB_ACRE_enabled = isClass(configFile >> "cfgPatches" >> "acre_main"); // Retu
 GRLIB_OPTRE_enabled = isClass(configFile >> "cfgPatches" >> "OPTRE_Core"); // Returns true if OPTRE is enabled
 GRLIB_GM_enabled = isClass(configFile >> "cfgPatches" >> "gm_Core"); // Returns true if GlobMob is enabled
 GRLIB_CUPW_enabled = isClass(configFile >> "CfgPatches" >> "CUP_Weapons_AK"); // Returns true if CUP Weapons is enabled
+GRLIB_EJW_enabled = isClass(configFile >> "CfgPatches" >> "Ej_u100"); // Returns true if EricJ Weapons is enabled 
 GRLIB_Red_Edition = (missionName find "RX_Red" > 0);
 
 if ( !GRLIB_OPTRE_enabled && !GRLIB_GM_enabled && !GRLIB_Red_Edition) then {
