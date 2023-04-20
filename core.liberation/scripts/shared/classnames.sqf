@@ -370,7 +370,9 @@ vehicle_repair_sources = [
 vehicle_rearm_sources = [
 	"B_APC_Tracked_01_CRV_F",
 	"B_Truck_01_ammo_F",
-	"B_Slingload_01_Ammo_F"
+	"B_Slingload_01_Ammo_F",
+	"Box_NATO_Ammo_F",
+	"Box_NATO_WpsLaunch_F"
 ];
 vehicle_refuel_sources = [
 	"B_APC_Tracked_01_CRV_F",
@@ -802,7 +804,13 @@ GRLIB_ignore_colisions_when_building = [
 	"Land_HelipadSquare_F",
 	"Sign_Sphere100cm_F",
 	"TMR_Autorest_Georef",
-	"Land_ClutterCutter_large_F"
+	"Land_ClutterCutter_large_F",
+	"Land_HighVoltageColumn_F",
+	"Land_HighVoltageColumnWire_F",
+	"Land_PowerLine_01_pole_small_F",
+	"Land_PowerLine_01_pole_tall_F",
+	"Land_PowerLine_01_wire_50m_F",
+	"Land_PowerLine_01_wire_50m_main_F"
 ];
 GRLIB_sar_wreck = "Land_Wreck_Heli_Attack_01_F";
 GRLIB_sar_fire = "test_EmptyObjectForFireBig";
@@ -850,4 +858,10 @@ GRLIB_AirDrop_6 = [
 	"C_Boat_Transport_02_F",
 	"B_Boat_Transport_01_F",
 	"I_C_Boat_Transport_02_F"
+];
+
+GRLIB_player_grave = [
+	"Land_Grave_rocks_F",
+	"Land_Grave_forest_F",
+	"Land_Grave_dirt_F"
 ];

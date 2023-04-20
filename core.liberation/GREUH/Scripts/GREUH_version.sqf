@@ -28,7 +28,7 @@ player createDiaryRecord ["Info", ["pSiKO Tweaks", format ["MGI AI Revive v2.04<
 player createDiaryRecord ["Info", ["pSiKO Tweaks", format ["LARs Arsenal v1.00<br/>by <font color='%1'>-Sir Larrow-</font>", call _getRandomColor]]];
 
 player createDiarySubject ["Info", "Server"];
-player createDiaryRecord ["Info", ["Server", format ["Join us on the Official Server !<br/><br/>- ARMA III - Liberation RX<br/><img image='res\liberation.jpg' height='128' width='256'/><br/><font color='#0080ff'>arma.liberation-rx.fr</font><br/><br/>Team Speak 3<br/><font color='#0080ff'>ts3.liberation-rx.fr</font>"]]];
+player createDiaryRecord ["Info", ["Server", format ["Join us on the Official Server !<br/><br/>- ARMA III - Liberation RX<br/><img image='res\liberation.paa' height='128' width='256'/><br/><font color='#0080ff'>arma.liberation-rx.fr</font><br/><br/>Team Speak 3<br/><font color='#0080ff'>ts3.liberation-rx.fr</font>"]]];
 
 player createDiarySubject ["Info","Original"];
 player createDiaryRecord ["Info", ["Original", format ["<font color='#ff8000'>Extended Options</font><br/>arma.greuh.org<br/><br/><font color='#ff8000'>Scripted by [GREUH] Zbug</font><br/>Version 924"]]];
@@ -42,7 +42,6 @@ player createDiaryRecord ["Ranking", ["Ranking", format ["<font color='#8ff000'>
 player createDiaryRecord ["Ranking", ["Ranking", format ["<font color='#00ffff'>%1</font>  :  CAPTAIN<br/>%2", GRLIB_perm_tank, localize "STR_RANK_LVL4"]]];
 player createDiaryRecord ["Ranking", ["Ranking", format ["<font color='#0080ff'>%1</font>  :  MAJOR<br/>%2", GRLIB_perm_air, localize "STR_RANK_LVL5"]]];
 player createDiaryRecord ["Ranking", ["Ranking", format ["<font color='#0000ff'>%1</font>  :  COLONEL<br/>%2", GRLIB_perm_max, localize "STR_RANK_LVL6"]]];
-player createDiaryRecord ["Ranking", ["Ranking", format ["<font color='#990000'>x</font><font color='#0000ff'>%1</font>  : COLONEL Bonus<br/>%2", GRLIB_perm_max, localize "STR_RANK_LVL7"]]];
 player createDiaryRecord ["Ranking", ["Ranking", format ["-- How Work the Ranking System --"]]];
 
 player createDiarySubject["Table","Table"];

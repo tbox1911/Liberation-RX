@@ -70,7 +70,7 @@ if (!isNull _unit) then {
 			_isexpensive = [_item] call _fn_isexpensive;
 			if (_isexpensive) then {_val = _val + 14} else {_val = _val + 5};
 		};
-	} forEach (backpackItems _unit + vestItems _unit + uniformItems _unit);
+	} forEach (backpackItems _unit + vestItems _unit + uniformItems _unit) + (secondaryWeaponMagazine _unit) select 0;
 
 	{
 		if (_x != "") then {_val = _val + 5};

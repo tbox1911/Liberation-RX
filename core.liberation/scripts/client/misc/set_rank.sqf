@@ -25,9 +25,9 @@ if (_score >= GRLIB_perm_max) then {
 	_rank = "Colonel";
 	GRLIB_squad_size_bonus = 5;
 };
-if (_score >= 2 * GRLIB_perm_max) then {
-	GRLIB_squad_size_bonus = 6;
-};
+// if (_score >= 2 * GRLIB_perm_max) then {
+// 	GRLIB_squad_size_bonus = 6;
+// };
 
 if ( (GRLIB_squad_size + GRLIB_squad_size_bonus) > GRLIB_max_squad_size) then {
 	GRLIB_squad_size_bonus = (GRLIB_max_squad_size - GRLIB_squad_size);

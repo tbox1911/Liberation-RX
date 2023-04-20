@@ -79,7 +79,6 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 	};
 	if ( _sector in sectors_military ) then {
 		_infsquad = "csat";
-		_squadies_to_spawn = ([] call F_getAdaptiveSquadComp);
 		_squad1 = ([] call F_getAdaptiveSquadComp);
 		_squad2 = ([] call F_getAdaptiveSquadComp);
 		if ( GRLIB_unitcap >= 1.5) then {
@@ -117,7 +116,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 			_squad2 = ([] call F_getAdaptiveSquadComp);
 		};
 		_building_ai_max = 0;
-		if((random 100) > 90) then { _vehtospawn pushback ( [] call F_getAdaptiveVehicle ); };
+		if((random 100) > 85) then { _vehtospawn pushback ( [] call F_getAdaptiveVehicle ); };
 	};
 
 	//diag_log format [ "Sector %2 checkpoint E at %1", time, _sector ];
