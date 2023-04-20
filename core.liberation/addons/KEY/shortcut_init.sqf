@@ -1,5 +1,5 @@
 // Additional Key Shortcut
-waitUntil {!(isNull (findDisplay 46))};
+waitUntil {sleep 0.5;!(isNull (findDisplay 46))};
 
 // Weapon to the back
 (findDisplay 46) displayAddEventHandler ["KeyDown", {

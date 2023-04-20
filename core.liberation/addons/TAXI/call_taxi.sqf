@@ -8,10 +8,14 @@ build_unit = ["Land_HelipadSquare_F",[],1,[],[]];
 dobuild = 1;
 
 waitUntil { sleep 1; dobuild == 0};
-private _helipad = nearestObjects [player, ["Land_HelipadSquare_F"], 200] select 0;
+private _helipad = nearestObjects [player, ["Land_HelipadSquare_F"], 100] select 0;
 private _degree = aCos ([0,0,1] vectorCos (surfaceNormal getPos _helipad));
 private _dest = getPosATL _helipad;
 if (surfaceIsWater _dest || _degree > 8) exitWith {deleteVehicle _helipad; hintSilent "Sorry, Taxi cannot Land on this place."};
+
+// Pay
+_cost = 100;
+if (!([_cost] call F_pay)) exitWith {deleteVehicle _helipad};
 
 // Taxi functions
 taxi_land = {

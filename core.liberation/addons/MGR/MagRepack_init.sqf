@@ -49,11 +49,11 @@ outlw_MR_keybinding = outlw_MR_keyList select 3;
 [] execVM "addons\MGR\Scripts\MagRepack_Keybindings.sqf";
 [] execVM "addons\MGR\Scripts\MagRepack_Misc.sqf";
 
-waitUntil {!(isNil "outlw_MR_getIDCs")};
+waitUntil {sleep 0.5;!(isNil "outlw_MR_getIDCs")};
 
 outlw_MR_listIDCs = [(missionConfigFile >> "MR_Dialog" >> "Controls")] call outlw_MR_getIDCs;
 
-waitUntil {!(isNull (findDisplay 46))};
+waitUntil {sleep 0.5;!(isNull (findDisplay 46))};
 (findDisplay 46) displayAddEventHandler ["KeyDown", "_this call outlw_MR_keyDown;"];
 systemChat "-------- Mag Repack Initialized --------";
 systemChat format ["Keybinding: %1", call outlw_MR_keyListToString];

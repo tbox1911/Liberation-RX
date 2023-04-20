@@ -1,4 +1,3 @@
-waitUntil { !isNil "GRLIB_all_fobs" };
 params [ [ "_source_position", (getpos player) ] ];
 private [ "_retvalue" ];
 

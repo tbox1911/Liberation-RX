@@ -194,5 +194,5 @@ while { dialog && alive player } do {
 		closeDialog 0;
 	};
 
-	waitUntil { !dialog || !(alive player) || permission_playerid != -1 || permission_toset != -1 || save_changes != 0 };
+	waitUntil {sleep 0.5; !dialog || !(alive player) || permission_playerid != -1 || permission_toset != -1 || save_changes != 0 };
 };

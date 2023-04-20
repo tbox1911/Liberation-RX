@@ -246,21 +246,13 @@ while { dialog && alive player } do {
 
 		if (GRLIB_squadaction == 4) then {
 			if ((player distance _selectedmember) < 20) then {
-				private _msg = "";
 				private _price = [player] call F_loadoutPrice;
 				private _price_ai = [_selectedmember] call F_loadoutPrice;
-				private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
 				private _cost = (_price -_price_ai);
-				if (_cost < 0) then {_cost = 0};
-				if (_ammo_collected > _cost || _cost == 0) then {
-					player setVariable ["GREUH_ammo_count", (_ammo_collected - _cost), true];
+				if ([_cost] call F_pay) then {
 					_selectedmember setUnitLoadout (getUnitLoadout player);
-					playSound "rearm";
-					_msg = format ["Loadout copied, Price: %1\nThank you !", _cost];
-				} else {
-					_msg = format ["No Enought Ammo !!\nLoadout Price: %1\nYour Ammo: %2", _cost, _ammo_collected];
+					hintSilent format ["Loadout copied, Price: %1\nThank you !", _cost];
 				};
-				hintSilent _msg;
 			} else {
 				hintSilent "Unit too far from you.";
 			};

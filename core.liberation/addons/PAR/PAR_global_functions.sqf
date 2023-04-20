@@ -29,7 +29,6 @@ PAR_fn_AI_Damage_EH = {
   }];
   _unit removeAllMPEventHandlers "MPKilled";
   _unit addMPEventHandler ["MPKilled", PAR_Player_MPKilled];
-  _unit setVariable ["PAR_soliders",true,true];
   _unit setVariable ["PAR_wounded",false];
   _unit setVariable ["PAR_myMedic", nil];
   _unit setVariable ["PAR_busy", nil];
@@ -125,7 +124,6 @@ PAR_Player_Init = {
 	player setVariable ["PAR_isDragged", 0, true];
 	player setVariable ["ace_sys_wounds_uncon", false];
 	player setVariable ["PAR_Grp_ID",format["Bros_%1", PAR_Grp_ID], true];
-	player setVariable ["PAR_soliders", true, true];
 	player setVariable ["PAR_myMedic", nil];
 	player setVariable ["PAR_busy", nil];
 	player setVariable ["AirCoolDown", 0, true];
@@ -213,13 +211,13 @@ PAR_Player_Unconscious = {
 	[] call R3F_LOG_FNCT_objet_relacher;
 
 	_random_medic_message = floor (random 3);
-	_medic_message = localize "STR_PAR_Need_Medic1";
+	_medic_message = "";
 	switch (_random_medic_message) do {
 		case 0 : { _medic_message = localize "STR_PAR_Need_Medic1"; };
 		case 1 : { _medic_message = localize "STR_PAR_Need_Medic2"; };
 		case 2 : { _medic_message = localize "STR_PAR_Need_Medic3"; };
 	};
-	public_medic_message = [_unit,_medic_message]; publicVariable "public_medic_message";
+	[_medic_message] remoteExec ["sidechat", -2];
 
 	disableUserInput false;
 	disableUserInput true;
