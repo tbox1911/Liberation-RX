@@ -330,8 +330,8 @@ while { true } do {
 					_vehicle setAmmoCargo 0;
 				};
 
-				// Give real truck horn to APC
-				if ( _classname in ["B_APC_Tracked_01_rcws_F","I_APC_Wheeled_03_cannon_F","B_APC_Tracked_01_AA_F","B_APC_Wheeled_01_cannon_F","I_APC_tracked_03_cannon_F"] ) then {
+				// Give real truck horn to APC,Truck,Tank
+				if ( _vehicle isKindOf "Wheeled_APC_F" || _vehicle isKindOf "Tank_F" || _vehicle isKindOf "Truck_F" ) then {
 					_vehicle removeWeaponTurret ["TruckHorn", [-1]];
 					_vehicle removeWeaponTurret ["TruckHorn2", [-1]];
 					_vehicle addWeaponTurret ["TruckHorn3", [-1]];
