@@ -1,14 +1,16 @@
 if ( GRLIB_endgame == 1 ) exitWith {};
+params ["_liberated_sector"];
+diag_log format ["Spawn BattlegGroup at %1", time];
 
 private [ "_bg_groups", "_target_size", "_vehicle_pool", "_selected_opfor_battlegroup" ];
 _bg_groups = [];
 
 last_battlegroup_size = 0;
 _spawn_marker = "";
-if ( count _this == 1 ) then {
-	_spawn_marker = [ GRLIB_spawn_min, GRLIB_spawn_max, false, _this select 0 ] call F_findOpforSpawnPoint;
-} else {
+if ( isNil "_liberated_sector" ) then {
 	_spawn_marker = [ GRLIB_spawn_min, GRLIB_spawn_max, false ] call F_findOpforSpawnPoint;
+} else {
+	_spawn_marker = [ GRLIB_spawn_min, GRLIB_spawn_max, false, _liberated_sector ] call F_findOpforSpawnPoint;
 };
 
 
@@ -48,8 +50,13 @@ if ( _spawn_marker != "" ) then {
 	} foreach _selected_opfor_battlegroup;
 
 	sleep 5;
-	if ( GRLIB_csat_aggressivity > 0.9 ) then {
-		[([markerpos _spawn_marker] call F_getNearestBluforObjective) select 0, GRLIB_side_enemy] spawn spawn_air;
+	if ( GRLIB_csat_aggressivity > 0.7 ) then {
+		private _objectivepos = ([markerpos _spawn_marker] call F_getNearestBluforObjective) select 0;
+		if (floor random 2 == 0) then {
+			[_objectivepos, GRLIB_side_enemy] spawn spawn_air;
+		} else {
+			[_objectivepos] spawn send_paratroopers;
+		};
 	};
 
 	sleep 5;

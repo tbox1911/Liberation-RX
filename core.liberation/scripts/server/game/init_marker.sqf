@@ -1,6 +1,6 @@
 if (!isServer) exitWith {};
 
-waituntil {sleep 0.5; !isNil "GRLIB_sectors_init"};
+waituntil {sleep 1; !isNil "GRLIB_sectors_init"};
 
 {
   // Add repair pickup

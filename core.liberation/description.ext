@@ -11,9 +11,10 @@ respawn = 3;
 respawndelay = 5;
 respawnButton = 0;
 respawnOnStart = 0;
+reviveMode = 0; 
 disabledAI = true;
 enableDebugConsole = 1;
-allowFunctionsLog = 0;
+allowFunctionsLog = 1;
 forceRotorLibSimulation = 2;
 
 briefing = 0;

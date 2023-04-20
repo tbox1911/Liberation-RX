@@ -11,7 +11,11 @@ removeHeadgear player;
 removeGoggles player;
 player setVariable ["GREUH_stuff_price", 0];
 GRLIB_backup_loadout = [player] call F_getLoadout;
-waitUntil {!(isNil "dostartgame")};
-waitUntil {dostartgame == 1};
+if (isNil "dostartgame") then {
+    waitUntil {sleep 1; !(isNil "dostartgame")};
+};
+if (dostartgame != 1) then {
+    waitUntil {sleep 1; dostartgame == 1};
+};
 [] execVM "scripts\client\spawn\redeploy_manager.sqf";
 [] execVM "scripts\client\misc\welcome.sqf";
