@@ -15,6 +15,7 @@ setGroupIconsVisible [false,false];
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\init_sectors.sqf";
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\classnames.sqf";
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -32,6 +33,10 @@ if (GRLIB_revive != 0) then {[] execVM "addons\FAR\FAR_init.sqf"};
 [] execVM "GREUH\scripts\GREUH_activate.sqf";
 =======
 >>>>>>> ad744a03 (init mission)
+=======
+
+waitUntil { sleep 1; !isNil "GRLIB_ACE_enabled" };
+>>>>>>> 8fd700ef (public veh concept)
 if (!GRLIB_ACE_enabled) then {[] execVM "R3F_LOG\init.sqf"};
 
 if (isServer) then {
@@ -41,6 +46,7 @@ if (isServer) then {
 	{
 		_x removeAllMPEventHandlers "MPKilled";
 		_x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+		_x setVariable ["GRLIB_vehicle_owner", "public", true];
 	} foreach vehicles;
 
 	[] execVM "scripts\server\init_server.sqf";
