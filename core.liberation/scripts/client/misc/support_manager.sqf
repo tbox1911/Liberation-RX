@@ -62,7 +62,7 @@ while { true } do {
 				if (_near_medic) then {
 					if (damage _x > 0.1 && (behaviour _x) != "COMBAT") then {
 						_needmedic = true;
-						_x groupchat format ["Healing myself."];						
+						_x groupchat format ["Healing myself."];
 					};
 				};
 
@@ -87,13 +87,16 @@ while { true } do {
 			if ( !(isNull objectParent _x) && lifeState _x != 'INCAPACITATED' && ( ((gunner vehicle _x) == _x) || ((driver vehicle _x) == _x) || ((commander vehicle _x) == _x) )) then {
 				_unit = _x;
 				_vehicle = vehicle _unit;
-				_vehicle_class = typeOf _vehicle;
-				_vehicle_class_text = [_vehicle_class] call F_getLRXName;
-				
+				_vehicle_name = [typeOf _vehicle] call F_getLRXName;
+
 				// REAMMO
 				_near_arsenal = [_vehicle, "REAMMO", _distarsenal, true] call F_check_near;
 				_is_enabled = !(_vehicle getVariable ["R3F_LOG_disabled", false]);
 				_vehicle_need_ammo = (([_vehicle] call F_getVehicleAmmoDef) <= 0.85);
+
+				if (!isNil "GRLIB_LRX_debug") then {
+					diag_log format ["DBG: %1: need Ammo:%2 - near Ammo source:%3", typeOf _vehicle, _vehicle_need_ammo, _near_arsenal];
+				};
 
 				if (_near_arsenal && _is_enabled && _vehicle_need_ammo) then {
 					_timer = _vehicle getVariable ["GREUH_rearm_timer", 0];
@@ -101,12 +104,12 @@ while { true } do {
 						_max_ammo = 3;
 						_vehicle setVehicleAmmo 1;
 						_vehicle setVariable ["GREUH_rearm_timer", round (time + (5*60))];  // min cooldown
-						_screenmsg = format [ "%1\n%2 - %3", _vehicle_class_text, localize "STR_REARMING", "100%" ];
+						_screenmsg = format [ "%1\n%2 - %3", _vehicle_name, localize "STR_REARMING", "100%" ];
 						titleText [ _screenmsg, "PLAIN DOWN" ];
 						hintSilent _screenmsg;
 					} else {
 						if ( _unit == player || ((uavControl _vehicle select 0) == player) ) then {
-							_screenmsg = format [ "%1\nRearming Cooldown (%2 sec), Please Wait...", _vehicle_class_text, round (_timer - time) ];
+							_screenmsg = format [ "%1\nRearming Cooldown (%2 sec), Please Wait...", _vehicle_name, round (_timer - time) ];
 							titleText [ _screenmsg, "PLAIN DOWN" ];
 						};
 					};
@@ -117,22 +120,25 @@ while { true } do {
 				_is_enabled = !(_vehicle getVariable ["R3F_LOG_disabled", false]);
 				_vehicle_need_repair = (damage _vehicle >= 0.10);
 
+				if (!isNil "GRLIB_LRX_debug") then {
+					diag_log format ["DBG: %1: need Repair:%2 - near Repair source:%3", typeOf _vehicle, _vehicle_need_repair, _near_repair];
+				};
+
 				if (_near_repair && _is_enabled && _vehicle_need_repair) then {
 					_timer = _vehicle getVariable ["GREUH_repair_timer", 0];
 					if (_timer <= time) then {
 						_vehicle setDamage 0;
 						_vehicle setVariable ["GREUH_repair_timer", round (time + (5*60))];  // min cooldown
-						_screenmsg = format [ "%1\n%2 - %3", _vehicle_class_text, localize "STR_REPAIRING", "100%" ];
+						_screenmsg = format [ "%1\n%2 - %3", _vehicle_name, localize "STR_REPAIRING", "100%" ];
 						titleText [ _screenmsg, "PLAIN DOWN" ];
 						hintSilent _screenmsg;
 					} else {
 						if ( _unit == player || ((uavControl _vehicle select 0) == player) ) then {
-							_screenmsg = format [ "%1\nRepairing Cooldown (%2 sec), Please Wait...", _vehicle_class_text, round (_timer - time) ];
+							_screenmsg = format [ "%1\nRepairing Cooldown (%2 sec), Please Wait...", _vehicle_name, round (_timer - time) ];
 							titleText [ _screenmsg, "PLAIN DOWN" ];
 						};
 					};
-				};				
-
+				};
 			};
 		} forEach _unitList;
 	};

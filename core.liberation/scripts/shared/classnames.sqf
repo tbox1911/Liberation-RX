@@ -116,8 +116,7 @@ support_box_noArsenal = [
 	Box_Weapon_typename,
 	Box_Support_typename,
 	Box_Launcher_typename,
-	Box_Special_typename,
-	A3W_BoxWps
+	Box_Special_typename
 ];
 support_vehicles = [
 	[Arsenal_typename,0,35,0,0]

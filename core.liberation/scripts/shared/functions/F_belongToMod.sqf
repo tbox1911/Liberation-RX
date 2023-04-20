@@ -52,4 +52,12 @@ if (GRLIB_LOP_enabled) then {
     if (["PO_", (getText (configfile >> "CfgMagazines" >> _item >> 'DLC'))] call F_startsWith) then { _ret = true };
 };
 
+// Unsung
+if (GRLIB_UNS_enabled) then {
+    if (["uns_", (getText (configfile >> "CfgWeapons" >> _item >> 'DLC'))] call F_startsWith) then { _ret = true };
+    if (["uns_", (getText (configfile >> "CfgGlasses" >> _item >> 'DLC'))] call F_startsWith) then { _ret = true };
+    if (["uns_", (getText (configfile >> "CfgVehicles" >> _item >> 'DLC'))] call F_startsWith) then { _ret = true };
+    if (["uns_", (getText (configfile >> "CfgMagazines" >> _item >> 'DLC'))] call F_startsWith) then { _ret = true };
+};
+
 _ret;

@@ -1,12 +1,25 @@
 disableSerialization;
+<<<<<<< HEAD
 private [ "_overlay", "_hide_HUD", "_attacked_string", "_active_sectors_string", "_color_readiness", "_nearest_active_sector", "_zone_size", "_colorzone", "_bar", "_barwidth" ];
+=======
+
+private [ "_overlay", "_hide_HUD", "_attacked_string", "_active_sectors_string", "_color_readiness", "_nearest_active_sector", "_zone_size", "_colorzone", "_bar", "_barwidth", "_first_iteration" ];
+
+>>>>>>> 30071321 (add private)
 private _overlayshown = false;
 private _sectorcontrols = [201,202,203,244,205];
 private _active_sectors_hint = false;
 private _first_iteration = true;
+<<<<<<< HEAD
 private _uiticks = 0;
 GRLIB_ui_notif = "";
 
+=======
+GRLIB_ui_notif = "";
+
+private _uiticks = 0;
+
+>>>>>>> 30071321 (add private)
 waituntil {sleep 1; GRLIB_player_spawned};
 waituntil {sleep 1; !isNil "resources_infantry"};
 
@@ -15,19 +28,14 @@ if ( isNil "halojumping" ) then { halojumping = false };
 
 while { true } do {
 	_hide_HUD = !(shownHUD select 0);
-	_overlay = uiNamespace getVariable ['GUI_OVERLAY', objNull];
 
-	if ( isNull (_overlay displayCtrl (101)) && _overlayshown ) then {
-		_overlayshown = false;
-		_first_iteration = true;
-
-	};
 	if ( alive player && !dialog && !_overlayshown && !cinematic_camera_started && !halojumping && !_hide_HUD) then {
 		"LibUI" cutRsc ["statusoverlay", "PLAIN", 1];
 		_overlayshown = true;
 		_first_iteration = true;
 		_uiticks = 0;
 	};
+
 	if ( ( !alive player || dialog || cinematic_camera_started || _hide_HUD) && _overlayshown) then {
 		"LibUI" cutRsc ["blank", "PLAIN", 0];
 		_overlayshown = false;
@@ -36,11 +44,14 @@ while { true } do {
 
 	if ( _overlayshown ) then {
 		_overlay = uiNamespace getVariable ['GUI_OVERLAY', objNull];
-
 		(_overlay displayCtrl (266)) ctrlSetText format [ "%1", GRLIB_ui_notif ];
 		(_overlay displayCtrl (267)) ctrlSetText format [ "%1", GRLIB_ui_notif ];
 
+<<<<<<< HEAD
 		if ((markerPos "opfor_capture_marker") distance markers_reset > 100 ) then {
+=======
+		if ((getmarkerpos "opfor_capture_marker") distance markers_reset > 100 ) then {
+>>>>>>> 30071321 (add private)
 			_attacked_string = [ markerpos "opfor_capture_marker" ] call F_getLocationName;
 			(_overlay displayCtrl (401)) ctrlShow true;
 			(_overlay displayCtrl (402)) ctrlSetText _attacked_string;
@@ -51,9 +62,7 @@ while { true } do {
 			(_overlay displayCtrl (403)) ctrlSetText "";
 		};
 
-
 		if ( _uiticks % 5 == 0 ) then {
-
 			(_overlay displayCtrl (107)) ctrlSetText format [ "%1", (player getVariable ["GREUH_score_count",0]) ];
 			(_overlay displayCtrl (102)) ctrlSetText format [ "%1", (player getVariable ["GREUH_ammo_count",0]) ];
 			(_overlay displayCtrl (103)) ctrlSetText format [ "%1", (player getVariable ["GREUH_fuel_count",0]) ];
@@ -74,9 +83,7 @@ while { true } do {
 		};
 
 		if ( _uiticks % 25 == 0 ) then {
-
 			if (!isNil "active_sectors" && ( [] call F_opforCap >= GRLIB_sector_cap)) then {
-
 				(_overlay displayCtrl (517)) ctrlShow true;
 
 				if ( !_active_sectors_hint ) then {

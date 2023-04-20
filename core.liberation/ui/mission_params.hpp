@@ -74,7 +74,7 @@ class Params
 	};
 	class ModPresetWest {
 		title = "MOD Preset - Friendly";
-		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26 };
+		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28 };
 		texts[] = {
 					"ArmA3 NATO",
 					"ArmA3 CSAT",
@@ -102,13 +102,15 @@ class Params
 					"3CB British Army Desert",
 					"3CB Chernarussian Red Star",
 					"Bundenswehr Tropentarn",
-					"CWR Cold War Rearmed III - US"
+					"CWR Cold War Rearmed III - US",
+					"Unsung USA",
+					"Unsung NVA"
 				};
 		default = 0;
 	};
 	class ModPresetEast {
 		title = "MOD Preset - Enemy";
-		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29 };
+		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31 };
 		texts[] = {
 					"ArmA3 CSAT",
 					"ArmA3 NATO",
@@ -139,7 +141,9 @@ class Params
 					"3CB British Army Woodland",
 					"3CB British Army desert",
 					"3CB Chernarussian Red Star",
-					"CWR Cold War Rearmed III - SOVIET"
+					"CWR Cold War Rearmed III - SOVIET",
+					"Unsung USA",
+					"Unsung NVA"					
 				};
 		default = 0;
 	};
