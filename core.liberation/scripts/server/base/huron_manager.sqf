@@ -19,7 +19,7 @@ while { true } do {
 		huron setVariable ["GRLIB_vehicle_owner", "public", true];
 		huron setVariable ["GRLIB_vehicle_ishuron", true, true];
 		huron setposasl (getposasl huronspawn vectorAdd [0,0,GRLIB_spawn_altitude]);
-		huron setDir 0;
+		huron setDir (getDir huronspawn);
 		sleep 0.5;
 		huron AnimateDoor ["Door_rear_source", 1, true];
 		publicVariable "huron";

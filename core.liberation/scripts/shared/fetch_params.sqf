@@ -86,12 +86,6 @@ if ( isMultiplayer ) then {
 	GRLIB_thermic = 1;
 };
 
-// Huron type
-switch (GRLIB_huron_type) do {
-	case 0: {huron_typename = "B_Heli_Transport_03_unarmed_F" };
-	case 1: {huron_typename = "B_Heli_Transport_01_F" };
-};
-
 GRLIB_r1 = "&#108;&#105;&#98;&#101;&#114;&#97;&#116;&#105;&#111;&#110;";
 GRLIB_r2 = "&#114;&#120;";
 GRLIB_r3 = "&#76;&#82;&#88;&#32;&#73;&#110;&#102;&#111;";
@@ -102,6 +96,14 @@ GRLIB_ACRE_enabled = isClass(configFile >> "cfgPatches" >> "acre_main"); // Retu
 GRLIB_OPTRE_enabled = isClass(configFile >> "cfgPatches" >> "OPTRE_Core"); // Returns true if OPTRE is enabled
 GRLIB_GM_enabled = isClass(configFile >> "cfgPatches" >> "gm_Core"); // Returns true if GlobMob is enabled
 GRLIB_CUPW_enabled = isClass(configFile >> "CfgPatches" >> "CUP_Weapons_AK"); // Returns true if CUP Weapons is enabled
+
+if ( !GRLIB_OPTRE_enabled && !GRLIB_GM_enabled) then {
+	// Huron type
+	switch (GRLIB_huron_type) do {
+		case 0: {huron_typename = "B_Heli_Transport_03_unarmed_F" };
+		case 1: {huron_typename = "B_Heli_Transport_01_F" };
+	};
+};
 
 if ( GRLIB_ACE_enabled ) then {	GRLIB_revive = 0; GRLIB_fatigue = 1; GRLIB_fancy_info = 0; GRLIB_limited_arsenal = 0 };  // Disable PAR/Fatigue/Fancy if ACE present
 if ( GRLIB_OPTRE_enabled ) then { GRLIB_MOD_signature = "OPTRE_" };
