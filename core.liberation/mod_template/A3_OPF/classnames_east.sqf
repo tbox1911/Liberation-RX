@@ -1,4 +1,5 @@
 // *** BADDIES ***
+GRLIB_side_enemy = EAST;
 // All class MUST be defined !
 
 opfor_sentry = "O_Soldier_lite_F";

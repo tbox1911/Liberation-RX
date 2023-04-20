@@ -57,6 +57,7 @@ if (isNil "GRLIB_mod_east") then { GRLIB_mod_east = GRLIB_mod_list_east select G
 GRLIB_r1 = "&#108;&#105;&#98;&#101;&#114;&#97;&#116;&#105;&#111;&#110;";
 GRLIB_r2 = "&#114;&#120;";
 GRLIB_r3 = "&#76;&#82;&#88;&#32;&#73;&#110;&#102;&#111;";
+
 // Check wrong sides
 if (GRLIB_force_load == 0 && GRLIB_mod_west == GRLIB_mod_east) then { abort_loading = true };
 if (abort_loading) exitWith {

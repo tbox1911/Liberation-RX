@@ -15,7 +15,8 @@ if (abort_loading) exitWith {
 };
 
 waitUntil {sleep 1; alive player};
-player setPos ((getmarkerpos GRLIB_respawn_marker) findEmptyPosition [0,20, "B_soldier_F"]);
+_spawn_pos = (getmarkerpos GRLIB_respawn_marker) findEmptyPosition [0,20, "B_soldier_F"];
+player setPos _spawn_pos;
 
 GRLIB_player_spawned = false;
 waitUntil {sleep 0.1; !isNil "GRLIB_revive"};

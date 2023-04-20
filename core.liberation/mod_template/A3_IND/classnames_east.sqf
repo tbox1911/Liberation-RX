@@ -1,4 +1,5 @@
 // *** BADDIES ***
+GRLIB_side_enemy = RESISTANCE;
 // All class MUST be defined !
 
 opfor_sentry = "I_Soldier_lite_F";

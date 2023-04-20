@@ -1,4 +1,5 @@
 // *** BADDIES ***
+GRLIB_side_enemy = EAST;
 // All class MUST be defined !
 
 //gm_gc_army_rifleman_mpiak74n_80_str
