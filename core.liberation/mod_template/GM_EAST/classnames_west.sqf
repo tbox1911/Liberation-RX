@@ -235,11 +235,6 @@ GRLIB_vehicle_blacklist_west = [
 
 ];
 
-box_transport_config_west = [
-    [ "gm_gc_airforce_l410t", -8, [0, 2.7, -1.1], [0, 1.1, -1.1], [0, -0.5, -1.1] ],
-	[ "gm_gc_army_ural4320_cargo", -5.5, [0, -0.7, 0.04], [0, -2.4, 0.04] ]
-];
-
 GRLIB_AirDrop_1 = [
 	"gm_gc_army_p601",
 	"gm_gc_army_uaz469_cargo"
@@ -265,4 +260,10 @@ GRLIB_AirDrop_5 = [
 
 GRLIB_AirDrop_6 = [
 	"O_Boat_Armed_01_hmg_F"
+];
+
+box_transport_config_west = [
+	[ "gm_ge_civ_u1300l", -4.5, [0, -0.5, -0.4], [0, -2.1, -0.4] ],
+    [ "gm_gc_airforce_l410t", -8, [0, 2.7, -1.1], [0, 1.1, -1.1], [0, -0.5, -1.1] ],
+	[ "gm_gc_army_ural4320_cargo", -5.5, [0, -0.7, 0.04], [0, -2.4, 0.04] ]
 ];
