@@ -31,6 +31,14 @@ if ( isNil "PAR_AidKit" ) then { PAR_AidKit = "OPTRE_Biofoam" };
 if ( isNil "A3W_BoxWps" ) then { A3W_BoxWps = "OPTRE_Ammo_Rack_Ammo" };
 if ( isNil "canisterFuel" ) then { canisterFuel = "Land_CanisterFuel_Red_F" };
 
+// *** DLC ***
+_hasKart = (288520 in (getDLCs 1));
+_hasHeli = (304380 in (getDLCs 1));
+if (!_hasHeli) then {
+	// Change Huron if no Heli DLC
+	//huron_typename = "B_Heli_Transport_01_F";
+};
+
 // *** FRIENDLIES ***
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 infantry_units = [
@@ -724,7 +732,6 @@ GRLIB_vehicle_whitelist = [
 GRLIB_vehicle_blacklist = [
 	Arsenal_typename,
 	mobile_respawn,
-	huron_typename,
 	opfor_ammobox_transport,
 	FOB_box_typename,
 	FOB_truck_typename,
@@ -739,7 +746,6 @@ GRLIB_vehicle_blacklist = [
 	medic_sling_typename,
 	"Box_NATO_Ammo_F",
   	"Box_NATO_WpsLaunch_F",
-	"B_Heli_Transport_01_F",
 	"O_Heli_Light_02_unarmed_F",
 	"O_Truck_03_transport_F",
 	"O_Truck_03_covered_F",

@@ -31,6 +31,14 @@ if ( isNil "PAR_AidKit" ) then { PAR_AidKit = "FirstAidKit" };
 if ( isNil "A3W_BoxWps" ) then { A3W_BoxWps = "Box_East_Wps_F" };
 if ( isNil "canisterFuel" ) then { canisterFuel = "Land_CanisterFuel_Red_F" };
 
+// *** DLC ***
+_hasKart = (288520 in (getDLCs 1));
+_hasHeli = (304380 in (getDLCs 1));
+if (!_hasHeli) then {
+	// Change Huron if no Heli DLC
+	huron_typename = "B_Heli_Transport_01_F";
+};
+
 // *** FRIENDLIES ***
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 infantry_units = [
@@ -125,8 +133,9 @@ air_vehicles = [
 	["I_Heli_light_03_unarmed_F",1,50,5,GRLIB_perm_tank],
 	["I_Heli_light_03_dynamicLoadout_F",10,1500,20,GRLIB_perm_air],
 	["B_Heli_Light_01_dynamicLoadout_F",5,200,10,GRLIB_perm_air],
-	["B_Heli_Transport_03_F",10,1000,15,GRLIB_perm_air],
-	["B_Heli_Transport_01_camo_F",10,2000,15,GRLIB_perm_air],
+	["B_Heli_Transport_03_unarmed_F",10,500,15,GRLIB_perm_tank],
+	["B_Heli_Transport_03_F",10,1500,15,GRLIB_perm_air],
+	["B_Heli_Transport_01_F",10,1500,15,GRLIB_perm_tank],
 	["B_T_VTOL_01_infantry_F",10,1300,15,GRLIB_perm_air],
 	["B_T_VTOL_01_vehicle_F",10,1400,15,GRLIB_perm_air],
 	["B_T_VTOL_01_armed_F",20,2500,40,GRLIB_perm_max],
@@ -328,7 +337,7 @@ uavs = [
 ];
 if ( isNil "uavs" ) then { uavs = [] };
 
-elite_vehicles = ["B_APC_Tracked_01_CRV_F", "B_MBT_01_TUSK_F" ];
+elite_vehicles = [];
 { if (_x select 4 == GRLIB_perm_max) then { elite_vehicles pushback (_x select 0)} } foreach light_vehicles + heavy_vehicles + air_vehicles + static_vehicles;
 
 // Everything the AI troups should be able to resupply from
@@ -649,8 +658,10 @@ civilians = [
 ];
 
 civilian_vehicles = [
+	"C_Heli_light_01_sheriff_F",
 	"C_Heli_Light_01_civil_F",
 	"C_Heli_light_01_furious_F",
+	"C_Heli_light_01_graywatcher_F",
 	"C_Hatchback_01_F",
 	"C_Hatchback_01_sport_F",
 	"C_Offroad_01_F",
@@ -731,7 +742,6 @@ GRLIB_vehicle_whitelist = [
 GRLIB_vehicle_blacklist = [
 	Arsenal_typename,
 	mobile_respawn,
-	huron_typename,
 	opfor_ammobox_transport,
 	FOB_box_typename,
 	FOB_truck_typename,
@@ -746,7 +756,6 @@ GRLIB_vehicle_blacklist = [
 	medic_sling_typename,
 	"Box_NATO_Ammo_F",
   	"Box_NATO_WpsLaunch_F",
-	"B_Heli_Transport_01_F",
 	"O_Heli_Light_02_unarmed_F",
 	"O_Truck_03_transport_F",
 	"O_Truck_03_covered_F",

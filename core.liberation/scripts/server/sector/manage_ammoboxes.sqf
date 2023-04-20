@@ -40,7 +40,7 @@ if ( !( _sector in GRLIB_military_sectors_already_activated )) then {
 				_spawnclass = opfor_ammobox_transport;
 			};
 
-			_newbox = [_spawnclass, markerpos _sector, false] call boxSetup;
+			_newbox = [_spawnclass, markerpos _sector, true] call boxSetup;
 			clearWeaponCargoGlobal _newbox;
 			clearMagazineCargoGlobal _newbox;
 			clearItemCargoGlobal _newbox;
