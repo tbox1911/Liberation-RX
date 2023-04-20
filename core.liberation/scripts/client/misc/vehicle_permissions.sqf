@@ -29,18 +29,18 @@ if (!((_role == "cargo") || (_vehicle isKindOf "Steerable_Parachute_F"))) then {
 	_score = score player;
 	if ((typeOf _vehicle) in elite_vehicles && _score < GRLIB_perm_max) then {
 		_doeject = true;
-		_msg = "You are NOT allowed to use Special Vehicles.";
+		_msg = localize "STR_PERMISSION_NO_VIP";
 	};
 
 	_support_vehicles = [];
 	{_support_vehicles pushBack ( _x select 0 )} foreach (support_vehicles);
 	if ((typeOf _vehicle) in _support_vehicles && _score < GRLIB_perm_inf) then {
 		_doeject = true;
-		_msg = "You are NOT allowed to use Support Vehicles.";
+		_msg = localize "STR_PERMISSION_NO_SUP";
 	};
 
 	if (!([_unit, _vehicle] call is_owner)) then {
-		_msg = "Wrong Vehicle Owner.\nAccess is Denied !!";
+		_msg = localize "STR_PERMISSION_NO_OWN";
 		if (isPlayer _unit) then {
 			{
 				if ((_x distance2D _vehicle) <= 500) then {
@@ -52,8 +52,8 @@ if (!((_role == "cargo") || (_vehicle isKindOf "Steerable_Parachute_F"))) then {
 	};
 
 	if ( side _unit != GRLIB_side_friendly ) then {
-		_msg = "Prisoners are NOT allowed to use vehicles !!";
 		_doeject = true;
+		_msg = localize "STR_PERMISSION_NO_PRI";
 	};
 };
 

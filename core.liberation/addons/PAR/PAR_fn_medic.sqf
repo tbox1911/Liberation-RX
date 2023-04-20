@@ -13,11 +13,11 @@ private _medics = _bros select {
 
 if (count _medics == 0) exitWith {
   _wnded setVariable ["PAR_myMedic", nil];
-  _msg = format ["Sorry %1, but there is no medic nearby...", name _wnded];
+  _msg = format [localize "STR_PAR_MD_01", name _wnded];
   [_wnded, _msg] call PAR_fn_globalchat;
 
   _lst = _bros select {!isPlayer _x && alive _x && lifeState _x != "INCAPACITATED"};
-  _msg = format ["Units alive in your squad : %1", count (_lst)];
+  _msg = format [localize "STR_PAR_MD_02", count (_lst)];
   [_wnded, _msg] call PAR_fn_globalchat;
 };
 
@@ -25,7 +25,7 @@ _medics = _medics apply {[_x distance2D _wnded, _x]};
 _medics sort true;
 
 private _medic = _medics select 0 select 1;
-_msg = format ["Hold on %1 !, Brother %2 (dist: %3m), come to save you !", name _wnded, name _medic, round (_medics select 0 select 0)];
+_msg = format [localize "STR_PAR_MD_03", name _wnded, name _medic, round (_medics select 0 select 0)];
 [_wnded, _msg] call PAR_fn_globalchat;
 
 _medic setVariable ["PAR_busy", true];

@@ -2619,7 +2619,6 @@
 						&lt;t size='10'&gt;&lt;img image='res\secondary\convoy_obj.jpg'/&gt;&lt;/t&gt;</Russian>
 				</Key>
 
-
 				<!-- Added in v0.922 -->
 				<Key ID="STR_PARAM_BLUFOR_DEFENDERS">
 						<Original>BLUFOR defenders in owned sectors</Original>
@@ -2740,7 +2739,7 @@
 						<French>Mission SAR réussie.</French>
 				</Key>
 
-			<!--  Added in 0.927 -->
+				<!--  Added in 0.927 -->
 				<Key ID="STR_NOTICE_TEXT1">
 						<Original>&lt;br/&gt;
 						Welcome to &lt;t color='#0000ff'&gt;Liberation-RX&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;
@@ -2864,7 +2863,7 @@
 					<French>Vous pouvez replier les FOB.&lt;br/&gt;Vous avez acces aux Vehicules Speciaux.&lt;br/&gt;Vous pouvez construire une Equipe de soutien.</French>
 				</Key>
 
-				<!-- Added in v0.927 -->
+				<!-- Added in v0.928 -->
 				<Key ID="STR_FANCY">
 					<Original>Fancy Information</Original>
 					<French>Informations Fantaisie</French>
@@ -2890,6 +2889,61 @@
 					<French>Activer les équipements Thermiques</French>
 				</Key>
 
+				<!-- pSiKO Revive -->
+				<Key ID="STR_PAR_CM_01">
+					<Original>Bad news %1, your medic (%2) is blocked somewhere... (dist: %3m / try: %4)</Original>
+					<French>Mauvaise nouvelle %1, votre médecin (%2) est bloqué quelque part... (dist: %3m / try: %4)</French>
+				</Key>
+				<Key ID="STR_PAR_CM_02">
+					<Original>Please wait %1, %2 (dist: %3m/%4), is on the way...</Original>
+					<French>Patience %1, %2 (dist: %3m/%4), est en chemin...</French>
+				</Key>
+				<Key ID="STR_PAR_CW_01">
+					<Original>I'm going to heal %1 !</Original>
+					<French>Je vais guérir %1 !</French>
+				</Key>
+				<Key ID="STR_PAR_MD_01">
+					<Original>Sorry %1, but there is no medic nearby...</Original>
+					<French>Désolé %1, mais il n'y a pas de médecin à proximité...</French>
+				</Key>
+				<Key ID="STR_PAR_MD_02">
+					<Original>Units alive in your squad: %1</Original>
+					<French>Unités vivantes dans votre escouade: %1</French>
+				</Key>
+				<Key ID="STR_PAR_MD_03">
+					<Original>Hold on %1 !, %2 (dist: %3m), is coming to save you !</Original>
+					<French>Tenez bon %1!, %2 (dist:% 3m), vient vous sauver !</French>
+				</Key>
+				<Key ID="STR_PAR_ST_01">
+					<Original>%1 is healing %2 now...</Original>
+					<French>%1 soigne %2 maintenant...</French>
+				</Key>
+				<Key ID="STR_PAR_UC_01">
+					<Original>I need a Medic !!</Original>
+					<French>J'ai besoin d'un médecin !!</French>
+				</Key>
+				<Key ID="STR_PAR_UC_02">
+					<Original>Sorry %1, you no longer have units to revive you...</Original>
+					<French>Désolé %1, vous n'avez plus d'unités pour vous sauver...</French>
+				</Key>
+
+				<!-- Permissions -->
+				<Key ID="STR_PERMISSION_NO_VIP">
+					<Original>You are NOT allowed to use Special Vehicles.</Original>
+					<French>Vous n'êtes PAS autorisé à utiliser des véhicules Spéciaux.</French>
+				</Key>
+				<Key ID="STR_PERMISSION_NO_SUP">
+					<Original>You are NOT allowed to use Support Vehicles.</Original>
+					<French>Vous n'êtes PAS autorisé à utiliser des véhicules d'Assistance.</French>
+				</Key>
+				<Key ID="STR_PERMISSION_NO_OWN">
+					<Original>Wrong Vehicle Owner.\nAccess is Denied !!</Original>
+					<French>Mauvais Propriétaire.\nL'accès est Refusé !!</French>
+				</Key>
+				<Key ID="STR_PERMISSION_NO_PRI">
+					<Original>Prisoners are NOT allowed to use vehicles !!</Original>
+					<French>Les prisonniers ne sont PAS autorisés à utiliser les véhicules !!</French>
+				</Key>
 		</Package>
 </Project>
 <Project name="NRE Earplugs">

@@ -28,7 +28,7 @@ _unit switchMove "AinjPpneMstpSnonWrflDnon";  // lay down
   "round(_caller distance2D _target) < 3",
   {
     if (_caller == player) then {
-      _msg = format ["%1 is healing %2 now...", name _caller, name _target];
+      _msg = format [localize "STR_PAR_ST_01", name _caller, name _target];
       [_target, _msg] remoteExec ["PAR_fn_globalchat", [0,-2] select isDedicated,true];
       _bleedOut = _target getVariable ["PAR_BleedOutTimer", 0];
       _target setVariable ["PAR_BleedOutTimer", _bleedOut + PAR_BleedOutExtra, true];
@@ -69,14 +69,14 @@ while {lifeState _unit == "INCAPACITATED" && time <= _unit getVariable ["PAR_Ble
   if ( count _bros > 0 ) then {
     _medic = _unit getVariable ["PAR_myMedic", nil];
     if (isNil "_medic") then {
-      _unit groupchat "I need a Medic !!";
+      _unit groupchat localize "STR_PAR_UC_01";
       _medic = _unit call PAR_fn_medic;
       if (!isNil "_medic") then { [_unit, _medic] call PAR_fn_911 };
       sleep 10;
     };
   } else {
       if (isPlayer _unit) then {
-        _msg = format ["Sorry %1, you no longer have units to revive you...", name _unit];
+        _msg = format [localize "STR_PAR_UC_02", name _unit];
         [_unit, _msg] call PAR_fn_globalchat;
         sleep 10;
       };

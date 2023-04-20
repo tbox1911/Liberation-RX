@@ -84,7 +84,7 @@ while {lifeState _wnded == "INCAPACITATED" || lifeState _medic != "INCAPACITATED
       _medic doMove _relpos;
     };
 
-    _msg = format ["Bad news %1, your medic (%2) is blocked somewhere... (dist: %3m / try: %4)", name _wnded, name _medic, _dist, _fail];
+    _msg = format [localize "STR_PAR_CM_01", name _wnded, name _medic, _dist, _fail];
   } else {
     _fail = 0;
   };
@@ -92,7 +92,7 @@ while {lifeState _wnded == "INCAPACITATED" || lifeState _medic != "INCAPACITATED
 
   if (_cnt == 0 && !isNull _wnded) then {
     if (_fail == 0) then {
-      _msg = format ["Please wait %1, %2 (dist: %3m/%4), is on the way...", name _wnded, name _medic, _dist, round (speed _medic)];
+      _msg = format [localize "STR_PAR_CM_02", name _wnded, name _medic, _dist, round (speed _medic)];
     };
     [_wnded, _msg] call PAR_fn_globalchat;
     _cnt = 3;
