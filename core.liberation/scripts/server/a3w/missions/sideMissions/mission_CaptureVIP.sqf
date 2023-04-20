@@ -6,7 +6,8 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private [ "_citylist", "_vehicleClass", "_vip", "_vehicle1", "_vehicle2", "_vehicle3", "_waypoint", "_vehicleName", "_numWaypoints"];
+private [ "_citylist", "_vehicleClass", "_vip", "_vehicle1", "_vehicle2", "_vehicle3",
+          "_waypoint", "_vehicleName", "_numWaypoints", "_convoy_attacked", "_disembark_troops"];
 
 _setupVars =
 {
@@ -78,43 +79,60 @@ _setupObjects =
 	_vehicleName = getText (configFile >> "CfgVehicles" >> (_vehicleClass param [0,""]) >> "displayName");
 	_missionHintText = format ["An important <t color='%1'>V.I.P</t> is travelling the island. Intercept his convoy and capture him <t color='%1'>ALIVE</t>!", sideMissionColor];
 	_numWaypoints = count waypoints _aiGroup;
+	_convoy_attacked = false;
+	_disembark_troops = false;
+	_vehicles = [_vehicle1, _vehicle2, _vehicle3];
 	true;
 };
 
 _waitUntilMarkerPos = {getPosATL _vip};
 _waitUntilExec = nil;
 _waitUntilCondition = {
-	if (combatMode _aiGroup != "GREEN" && (count ([getPosATL _vip, 800] call F_getNearbyPlayers) > 0)) then {
-		{ 
-			_veh = objectParent _x;
-			if (driver _veh == _x) then { doStop _x; sleep 0.5 };
-			if (!(isNull _veh) && speed vehicle _veh < 2) then {
-				unAssignVehicle _x;
-				_x action ["eject", vehicle _x];
-				_x action ["getout", vehicle _x];
-				[_x] orderGetIn false;
-				[_x] allowGetIn false;
-				_x doFollow (leader _aiGroup);
-				sleep 0.2;
+	if ( !_convoy_attacked ) then {
+		{
+			// Attacked ?
+			if ( !(alive _x) || (damage _x > 0.3) || !(alive driver _x) && (count ([getPosATL _x, 1000] call F_getNearbyPlayers) > 0) ) exitWith { _convoy_attacked = true; };	
+
+			// Unflip ?
+			if ((vectorUp _x) select 2 < 0.60) then {
+				_x setpos [(getposATL _x) select 0,(getposATL _x) select 1, 0.5];
+				_x setVectorUp surfaceNormal position _x;
+				sleep 3;
 			};
-		} forEach (units _aiGroup);
+
+			// Follow
+			_veh_leader = vehicle (leader _aiGroup);
+			if  (speed _x < 5 && (speed _veh_leader > 5 || _x == _veh_leader) && !_convoy_attacked) then {
+				_x setFuel 1;
+				[_x] execVM "scripts\client\actions\do_unflip.sqf";
+				if (_x != _veh_leader) then { (driver _x) doFollow (leader _aiGroup) };
+				sleep 10;
+			};
+		} foreach [_vehicle1, _vehicle2, _vehicle3];
+	};
+
+	if (_convoy_attacked && !_disembark_troops) then {
+		_disembark_troops = true;
+		{ 
+			[_x] spawn {
+				params ["_vehicle"];
+				doStop (driver _vehicle); sleep 0.3;
+				{
+					sleep 0.2;
+					unAssignVehicle _x;
+					_x action ["eject", vehicle _x];
+					_x action ["getout", vehicle _x];
+					[_x] orderGetIn false;
+					[_x] allowGetIn false;
+				} foreach (crew _vehicle);
+			};
+			sleep 0.2;
+		} foreach [_vehicle1, _vehicle2, _vehicle3];
+
 		_aiGroup setBehaviour "COMBAT";
 		_aiGroup setCombatMode "RED";
 	};
-	{
-		if ((vectorUp _x) select 2 < 0.60) then {
-			_x setpos [(getposATL _x) select 0,(getposATL _x) select 1, 0.5];
-			_x setVectorUp surfaceNormal position _x;
-			sleep 3;
-		};
-		_veh_leader = vehicle (leader _aiGroup);
-		if  (speed _x < 5 && (speed _veh_leader > 5 || _x == _veh_leader) && combatMode _aiGroup != "RED") then {
-			_x setFuel 1;
-			[_x] execVM "scripts\client\actions\do_unflip.sqf";
-			if (_x != _veh_leader) then { (driver _x) doFollow (leader _aiGroup) };
-			sleep 10;
-		};
-	} foreach [_vehicle1, _vehicle2, _vehicle3];
+
 	!(alive _vip) || currentWaypoint _aiGroup >= _numWaypoints;
 };
 _waitUntilSuccessCondition = { side group _vip == GRLIB_side_friendly };
@@ -122,7 +140,6 @@ _waitUntilSuccessCondition = { side group _vip == GRLIB_side_friendly };
 _failedExec = {
 	// Mission failed
 	_failedHintMessage = format ["The V.I.P is <br/><t color='%1'>DEAD</t>!!.<br/>We have lost a valuable source of information.<br/><br/>Better luck next time!", sideMissionColor];
-	{ deleteVehicle _x } forEach [_vehicle1, _vehicle2, _vehicle3] + (units _aiGroup);
 };
 
 _successExec =

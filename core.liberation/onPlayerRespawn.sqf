@@ -1,3 +1,4 @@
+closeDialog 0;
 titleText ["" ,"BLACK FADED", 100];
 player allowDamage false;
 disableUserInput true;

@@ -13,7 +13,7 @@ if (!isServer) exitwith {};
 private ["_controllerSuffix", "_missionTimeout", "_availableLocations", "_missionLocation", "_leader", "_marker", "_failed", "_complete", "_startTime", "_oldAiCount", "_leaderTemp", "_newAiCount", "_adjustTime", "_lastPos", "_floorHeight"];
 
 // Variables that can be defined in the mission script :
-private ["_missionType", "_locationsArray", "_aiGroup", "_missionPos", "_missionPicture", "_missionHintText", "_successHintMessage", "_failedHintMessage"];
+private ["_missionType", "_locationsArray", "_aiGroup", "_vehicle", "_vehicles", "_missionPos", "_missionPicture", "_missionHintText", "_successHintMessage", "_failedHintMessage"];
 
 _controllerSuffix = param [0, "", [""]];
 _aiGroup = grpNull;
@@ -117,20 +117,9 @@ if (_failed) then {
 
 	if (!isNil "_failedExec") then { call _failedExec };
 
-	if (!isNil "_vehicle" && {typeName _vehicle == "OBJECT"}) then
-	{
-		deleteVehicle _vehicle;
-	};
+	if (!isNil "_vehicle") then	{ [_vehicle] spawn cleanMissionVehicles };
 
-	if (!isNil "_vehicles" && {typeName _vehicles == "ARRAY"}) then
-	{
-		{
-			if (!isNil "_x" && {typeName _x == "OBJECT"}) then
-			{
-				deleteVehicle _x;
-			};
-		} forEach _vehicles;
-	};
+	if (!isNil "_vehicles") then { [_vehicles] spawn cleanMissionVehicles };
 
 	[
 		"Objective Failed",
@@ -155,17 +144,15 @@ if (_failed) then {
 
 	if (!isNil "_successExec") then { call _successExec };
 
-	if (!isNil "_vehicle" && {typeName _vehicle == "OBJECT"}) then {
+	if (!isNil "_vehicle") then {
 		_vehicle setVariable ["R3F_LOG_disabled", false, true];
-		_vehicle setVariable ["A3W_missionVehicle", true, true];
+		[_vehicle, 300] spawn cleanMissionVehicles;
 	};
 
-	if (!isNil "_vehicles" && {typeName _vehicles == "ARRAY"}) then	{
+	if (!isNil "_vehicles") then {
 		{
-			if (!isNil "_x" && {typeName _x == "OBJECT"}) then {
-				_x setVariable ["R3F_LOG_disabled", false, true];
-				_x setVariable ["A3W_missionVehicle", true, true];
-			};
+			_x setVariable ["R3F_LOG_disabled", false, true];
+			[_vehicles, 300] spawn cleanMissionVehicles;
 		} forEach _vehicles;
 	};
 

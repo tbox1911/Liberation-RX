@@ -6,7 +6,7 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_nbUnits", "_vehicle", "_vehicleName", "_vehiclePos", "_smoke", "_chopper_only"];
+private ["_nbUnits", "_vehicleName", "_vehiclePos", "_smoke", "_chopper_only"];
 
 _setupVars =
 {
@@ -49,18 +49,16 @@ _setupObjects =
 
 _waitUntilMarkerPos = nil;
 _waitUntilExec = nil;
-_waitUntilCondition = nil;
+_waitUntilCondition = {!(alive _vehicle)};
 
 _failedExec = {
 	// Mission failed
-	deleteVehicle _vehicle;
 	deleteVehicle _smoke;
 	[_missionPos] call clearlandmines;
 };
 
 _successExec = {
 	// Mission completed
-	_vehicle setVariable ["R3F_LOG_disabled", false, true];
 	_vehicle setVariable ["GRLIB_vehicle_owner", nil, true];
 	_vehicle setVehicleLock "UNLOCKED";
 	deleteVehicle _smoke;

@@ -6,7 +6,7 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_nbUnits", "_box1", "_box2", "_vehicle", "_boxPos"];
+private ["_nbUnits", "_box1", "_box2", "_boxPos"];
 
 _setupVars =
 {
@@ -55,7 +55,7 @@ _waitUntilCondition = nil;
 
 _failedExec = {
 	// Mission failed
-	{ deleteVehicle _x } forEach [_box1, _box2, _vehicle];
+	{ deleteVehicle _x } forEach [_box1, _box2];
 };
 
 _successExec = {

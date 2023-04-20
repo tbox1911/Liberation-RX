@@ -7,7 +7,7 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_nbUnits", "_wreckPos", "_wreck", "_box1", "_box2", "_box3"];
+private ["_nbUnits", "_wreckPos", "_box1", "_box2", "_box3"];
 
 _setupVars =
 {
@@ -20,6 +20,7 @@ _setupObjects =
 {
 	_missionPos = markerPos _missionLocation;
 	_wreckPos = _missionPos vectorAdd ([[5 + floor(random 20), 0, 0], random 360] call BIS_fnc_rotateVector2D);
+<<<<<<< HEAD
 	_wreck = createVehicle [GRLIB_sar_wreck, _wreckPos, [], 0, "NONE"];
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -30,6 +31,10 @@ _setupObjects =
 =======
 	_wreck setpos (getpos _wreck);
 >>>>>>> 61d5a192 (adapt to terrain)
+=======
+	_vehicle = createVehicle [GRLIB_sar_wreck, _wreckPos, [], 0, "NONE"];
+	_vehicle setpos (getpos _vehicle);
+>>>>>>> 7db76814 (a3w update)
 	_box1 = [ammobox_b_typename, _missionPos, true] call boxSetup;
 	_box2 = [ammobox_b_typename, _missionPos, true] call boxSetup;
 	_box3 = [A3W_BoxWps, _missionPos, true] call boxSetup;
@@ -49,7 +54,7 @@ _waitUntilCondition = nil;
 
 _failedExec = {
 	// Mission failed
-	{ deleteVehicle _x } forEach [_box1, _box2, _box3, _wreck];
+	{ deleteVehicle _x } forEach [_box1, _box2, _box3];
 	[_missionPos] call clearlandmines;
 };
 
@@ -63,10 +68,6 @@ _successExec = {
 	_successHintMessage = "The airwreck supplies have been collected, well done.";
 	[_missionPos] call showlandmines;
 
-	[_wreck] spawn { 
-		sleep 300;
-		deleteVehicle (_this select 0);
-	};
 };
 
 _this call sideMissionProcessor;

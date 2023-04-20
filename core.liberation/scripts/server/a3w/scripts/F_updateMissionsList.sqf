@@ -82,7 +82,7 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 // Meet Resistance
 _mission_name = "mission_MeetResistance";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
-	if (count blufor_sectors >= 7 && _opfor_factor >= 50) then {
+	if (count blufor_sectors >= 7 && _opfor_factor >= 50 && GRLIB_side_enemy != INDEPENDENT) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;
@@ -123,6 +123,16 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 _mission_name = "mission_FuelDelivery";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
 	if (count blufor_sectors >= 5 && {_x in sectors_factory} count blufor_sectors >= 3) then {
+		[_missionsList, _mission_name, false] call setMissionState;
+	} else {
+		[_missionsList, _mission_name, true] call setMissionState;
+	};
+};
+
+// Enemy Outpost
+_mission_name = "mission_Outpost";
+if (!([_missionsList, _mission_name] call getMissionState)) then {
+	if (count blufor_sectors >= 7 && _opfor_factor <= 70) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;

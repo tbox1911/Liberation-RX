@@ -14,7 +14,9 @@ if (_type in ["divers", "para", "defender", "guard"]) then {
 	_nb_unit = round ((count _classname) * ([] call F_adaptiveOpforFactor));
 };
 
-diag_log format [ "Spawn (%1) %2 Units (%3) at %4", _nb_unit, _type, _side, time ];
+if (_type != "civilian") then {
+	diag_log format [ "Spawn (%1) %2 Units (%3) at %4", _nb_unit, _type, _side, time ];
+};
 
 private _grp = createGroup [_side, true];
 {
