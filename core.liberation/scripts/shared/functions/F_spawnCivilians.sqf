@@ -6,7 +6,7 @@ _createdcivs = [];
 _sectorpos = getMarkerPos _sector;
 
 _idx = 0;
-_nbcivs = round ((3 + (floor (random 3))) * GRLIB_civilian_activity);
+_nbcivs = round ((4 + (floor (random 5))) * GRLIB_civilian_activity);
 _spread = 1;
 if ( _sector in sectors_bigtown ) then {
 	_nbcivs = _nbcivs + 10;
