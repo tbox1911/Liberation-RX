@@ -1,5 +1,8 @@
 // *** BADDIES ***
 GRLIB_side_enemy = EAST;
+GRLIB_color_enemy = "ColorOPFOR";
+GRLIB_color_enemy_bright = "ColorRED";
+
 // All class MUST be defined !
 
 //gm_gc_army_rifleman_mpiak74n_80_str

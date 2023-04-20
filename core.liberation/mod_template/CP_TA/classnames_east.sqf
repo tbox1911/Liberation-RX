@@ -1,5 +1,8 @@
 // *** BADDIES ***
 GRLIB_side_enemy = EAST;
+GRLIB_color_enemy = "ColorBrown";
+GRLIB_color_enemy_bright = "ColorKhaki";
+
 // All class MUST be defined !
 
 opfor_sentry = "CUP_O_TK_Soldier_AR";
