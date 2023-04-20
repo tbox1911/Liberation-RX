@@ -99,24 +99,16 @@ GRLIB_3CB_enabled = isClass(configFile >> "CfgMods" >> "UK3CB_BAF_Weapons"); // 
 GRLIB_CWR_enabled = isClass(configFile >> "CfgMods" >> "cwr3_dlc"); // Returns true if CWR3 is enabled
 
 // Check side Addon
-if ( !GRLIB_OPTRE_enabled && "OPTRE" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
-if ( !GRLIB_EJW_enabled && "EJW" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
-if ( (!GRLIB_CUPU_enabled || !GRLIB_CUPV_enabled) && "CP_BAF_DES" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
-if ( (!GRLIB_CUPU_enabled || !GRLIB_CUPV_enabled) && "CP_TA" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
-if ( !GRLIB_RHS_enabled && "RHS_AFRF" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
-if ( !GRLIB_RHS_enabled && "RHS_USAF" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
-if ( !GRLIB_GM_enabled && "GM_WEST" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
-if ( !GRLIB_GM_enabled && "GM_WEST_WINT" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
-if ( !GRLIB_GM_enabled && "GM_EAST" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
-if ( !GRLIB_GM_enabled && "GM_EAST_WINT" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
-if ( !GRLIB_R3F_enabled && "R3F_WEST_D" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
-if ( !GRLIB_R3F_enabled && "R3F_WEST_W" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
-if ( !GRLIB_SOG_enabled && "SOG_USA" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
-if ( !GRLIB_SOG_enabled && "SOG_VIETCONG" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
-if ( (!GRLIB_CWR_enabled || !GRLIB_CUPW_enabled) && "CWR3_US" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
-if ( (!GRLIB_CWR_enabled || !GRLIB_CUPW_enabled) && "CWR3_SOV" in [GRLIB_mod_west, GRLIB_mod_east]) then { abort_loading = true };
-// + ws check 
-// + 3cb check
+if ( (!GRLIB_CUPU_enabled || !GRLIB_CUPV_enabled) && ["CP_", [GRLIB_mod_west, GRLIB_mod_east]] call F_startsWithMultiple) then { abort_loading = true };
+if ( !GRLIB_EJW_enabled && ["EJW_", [GRLIB_mod_west, GRLIB_mod_east]] call F_startsWithMultiple) then { abort_loading = true };
+if ( !GRLIB_R3F_enabled && ["R3F_", [GRLIB_mod_west, GRLIB_mod_east]] call F_startsWithMultiple) then { abort_loading = true };
+if ( !GRLIB_RHS_enabled && ["RHS_", [GRLIB_mod_west, GRLIB_mod_east]] call F_startsWithMultiple) then { abort_loading = true };
+if ( !GRLIB_GM_enabled && ["GM_", [GRLIB_mod_west, GRLIB_mod_east]] call F_startsWithMultiple) then { abort_loading = true };
+if ( !GRLIB_OPTRE_enabled && ["OPTRE", [GRLIB_mod_west, GRLIB_mod_east]] call F_startsWithMultiple) then { abort_loading = true };
+if ( !GRLIB_WS_enabled && ["WS_", [GRLIB_mod_west, GRLIB_mod_east]] call F_startsWithMultiple) then { abort_loading = true };
+if ( !GRLIB_SOG_enabled && ["SOG_", [GRLIB_mod_west, GRLIB_mod_east]] call F_startsWithMultiple) then { abort_loading = true };
+if ( !GRLIB_CWR_enabled && ["CWR3_", [GRLIB_mod_west, GRLIB_mod_east]] call F_startsWithMultiple) then { abort_loading = true };
+if ( !GRLIB_3CB_enabled && ["3CB", [GRLIB_mod_west, GRLIB_mod_east]] call F_startsWithMultiple) then { abort_loading = true };
 
 if (abort_loading) exitWith { abort_loading_msg = format [
 	"********************************\n

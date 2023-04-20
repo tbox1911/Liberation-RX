@@ -3,6 +3,7 @@ diag_log format ["Check Victory condition at %1", time];
 _blufor_bigtowns = [ blufor_sectors, { _x in sectors_bigtown } ] call BIS_fnc_conditionalSelect;
 
 if ( (count _blufor_bigtowns == count sectors_bigtown) && (count (sectors_allSectors - blufor_sectors) == 0) ) then {
+	sleep 30;
 	GRLIB_endgame = 1;
 	publicVariable "GRLIB_endgame";
 	[] call save_game_mp;

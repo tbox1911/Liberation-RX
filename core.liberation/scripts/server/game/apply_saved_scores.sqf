@@ -53,6 +53,9 @@ while { true } do {
 					_newscores pushback [_nextplayer_uid, _score, _ammo, _fuel, name _nextplayer];
 				};
 			};
+
+			_score = _nextplayer getVariable ["GREUH_score_count", 0];
+			_nextplayer addScore (_score - score _nextplayer);
 		};
 	} foreach (AllPlayers - (entities "HeadlessClient_F"));
 	GRLIB_player_scores = _newscores;
