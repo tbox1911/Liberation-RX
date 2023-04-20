@@ -5,15 +5,25 @@ _line_delay = 0.75;
 _page_delay = 5;
 
 disableUserInput true;
-if (vehicle player == player && lifestate player != "incapacitated") then {
+closeDialog 0;
+if (lifestate player == "incapacitated") then {
+	player setDamage 1;
+	sleep 4;
+};
+
+if (alive player && vehicle player == player && lifestate player != "incapacitated") then {
 	player switchCamera "EXTERNAL";
 	player switchMove "";
 	player playMoveNow "acts_briefing_sb_in";
+<<<<<<< HEAD
 <<<<<<< HEAD
 	sleep 10;
 =======
 	sleep 8;
 >>>>>>> 84ad6463 (endgame)
+=======
+	sleep 12;
+>>>>>>> 371d672d (endgame + sb)
 };
 
 [] spawn cinematic_camera;
@@ -38,8 +48,10 @@ if ( dialog ) then {
 
 	[ 690, format [ "%1 %2", localize "STR_STATS_PLAYTIME", _playtime_str ] ] call write_credit_line;
 };
-
 if ( dialog ) then { sleep 3 };
+disableUserInput false;
+disableUserInput true;
+disableUserInput false;
 if ( dialog ) then {  [ 691, format [ "%1 %2", localize "STR_STATS_1", stats_opfor_soldiers_killed ] ] call write_credit_line; };
 if ( dialog ) then { sleep _line_delay };
 if ( dialog ) then {  [ 692, format [ "%1 %2", localize "STR_STATS_2", stats_opfor_killed_by_players ] ] call write_credit_line; };
@@ -145,9 +157,6 @@ if ( dialog ) then { sleep _line_delay };
 if ( dialog ) then {  [ 694, localize "STR_STATS_28" ] call write_credit_line; };
 if ( dialog ) then { sleep _line_delay };
 if ( dialog ) then {  [ 695, localize "STR_STATS_29" ] call write_credit_line; };
-disableUserInput false;
-disableUserInput true;
-disableUserInput false;
 waitUntil { !dialog };
 cinematic_camera_started = false;
 endMission "END";

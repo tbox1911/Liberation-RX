@@ -118,7 +118,6 @@ while {true} do {
 
 	[MISSION_CTRL_PVAR_LIST, _nextMission, false] call setMissionState;
 
-	if (_tempController) exitWith {};
-	if (count allPlayers == 0 ) exitWith {};
+	if (_tempController || count allPlayers == 0 || GRLIB_endgame == 1 ) exitWith {};
 	sleep 10;
 };

@@ -100,7 +100,7 @@ waitUntil {
 		_complete = true;
 	};
 
-	(_failed || _complete || (!_ignoreAiDeaths && {alive _x} count units _aiGroup == 0))
+	(GRLIB_endgame == 1 || _failed || _complete || (!_ignoreAiDeaths && {alive _x} count units _aiGroup == 0))
 };
 
 if (_failed) then {
