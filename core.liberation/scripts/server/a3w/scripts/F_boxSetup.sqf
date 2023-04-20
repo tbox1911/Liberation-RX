@@ -29,7 +29,7 @@ if (_locked) then {
 	//_box allowDamage true;
 };
 
-if (!GRLIB_OPTRE_enabled && !GRLIB_GM_enabled && _type == A3W_BoxWps) then {
+if (!GRLIB_OPTRE_enabled && !GRLIB_GM_enabled && !GRLIB_CUPW_enabled && !GRLIB_RHS_enabled &&_type == A3W_BoxWps) then {
 	private _box_refill = selectRandom ["mission_Ammo","mission_USLaunchers","mission_USSpecial","mission_Main_A3snipers","mission_Ammo"];
 	[_box, _box_refill] call fn_refillbox;
 };

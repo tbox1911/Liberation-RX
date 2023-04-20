@@ -3,7 +3,7 @@ private["_display","_vehicles","_detected_vehicles","_color","_pic","_text"];
 if (isNil "_vehicle") exitWith {};
 if (!([player, _vehicle] call is_owner)) exitWith { hintSilent "Wrong Vehicle Owner.\nAccess is Denied !" };
 if ((damage _vehicle) != 0) exitWith { hintSilent "Damaged Vehicles cannot be Painted !" };
-if (typeOf _vehicle in GRLIB_vehicle_blacklist) exitWith { hintSilent "This Vehicle cannot be Painted !" };
+if ([typeOf _vehicle, GRLIB_vehicle_blacklist] call F_itemIsInClass) exitWith { hintSilent "This Vehicle cannot be Painted !" };
 
 paint_veh = 0;
 createDialog "RPT_vehicle_repaint";
