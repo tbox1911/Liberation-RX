@@ -67,21 +67,15 @@ divers_squad = [
 ];
 
 militia_vehicles = [
-	"LOP_ChDKZ_BM21",
-	"LOP_ChDKZ_UAZ_AGS",
-	"LOP_ChDKZ_UAZ_DshKM",
-	"LOP_ChDKZ_UAZ_SPG",
-	"LOP_ChDKZ_BMP2",
-	"LOP_ChDKZ_BMP1",
-	"LOP_ChDKZ_BTR60",
-	"LOP_ChDKZ_BTR70",
-	"LOP_ChDKZ_T72BB",
-	"LOP_ChDKZ_ZSU234"
+	"O_G_Offroad_01_armed_F",
+	"O_G_Offroad_01_armed_F",
+	"O_G_Offroad_01_AT_F",
+	"rhs_btr60_msv",
+	"rhs_btr70_msv",
+	"rhs_btr80_msv"
 ];
 
 opfor_boat = [
-	"O_Boat_Armed_01_hmg_F",
-	"O_T_Boat_Armed_01_hmg_F",
 	"O_Boat_Armed_01_hmg_F",
 	"O_T_Boat_Armed_01_hmg_F"
 ];
@@ -158,15 +152,15 @@ opfor_choppers = [
 	"RHS_Mi24V_UPK23_vdv",
 	"RHS_Mi8AMT_vdv",
 	"RHS_Mi8AMTSh_vvsc",
-	"RHS_Mi8AMTSh_UPK23_vvsc",
+	"RHS_Mi8AMTSh_UPK23_vvsc"
+];
+
+opfor_air = [
 	"rhs_pchela1t_vvsc",
 	"RHS_Ka52_vvsc",
 	"RHS_Ka52_UPK23_vvsc",
 	"rhs_mi28n_s13_vvsc",
-	"rhs_mi28n_vvsc"
-];
-
-opfor_air = [
+	"rhs_mi28n_vvsc",
 	"RHS_T50_vvs_052",
 	"RHS_Su25SM_KH29_vvsc",
 	"RHS_TU95MS_vvs_irkutsk"

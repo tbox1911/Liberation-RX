@@ -91,9 +91,7 @@ militia_vehicles = [
 ];
 
 opfor_boat = [
-	"B_Boat_Armed_01_hmg_F",
-	"B_T_Boat_Armed_01_minigun_F",
-	"B_Boat_Armed_01_hmg_F",
+	"B_Boat_Armed_01_minigun_F",
 	"B_T_Boat_Armed_01_minigun_F"
 ];
 
@@ -172,12 +170,14 @@ opfor_troup_transports = [
 ];
 
 opfor_choppers = [
-	"RHS_AH64D_wd",
-	"RHS_AH1Z",
-	"RHS_UH1Y"
+	"RHS_UH60M",
+	"RHS_UH1Y",
+	"RHS_CH_47F"
 ];
 
 opfor_air = [
+	"RHS_AH64D_wd",
+	"RHS_AH1Z",
 	"B_Plane_CAS_01_dynamicLoadout_F",
 	"RHS_A10",
 	"rhsusf_f22"
@@ -194,7 +194,7 @@ opfor_statics = [
 ];
 
 opfor_recyclable = [
-	["B_Boat_Armed_01_hmg_F",2,round (30 / GRLIB_recycling_percentage),2],
+	["B_Boat_Armed_01_minigun_F",2,round (30 / GRLIB_recycling_percentage),2],
 	["B_T_Boat_Armed_01_minigun_F",2,round (30 / GRLIB_recycling_percentage),2],
 	["B_HMG_01_high_F",0,round (20 / GRLIB_recycling_percentage),0],
 	["B_GMG_01_high_F",0,round (40 / GRLIB_recycling_percentage),0],
