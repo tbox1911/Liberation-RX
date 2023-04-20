@@ -1,3 +1,5 @@
+//--- LRX Load player context (Stuff + Ais)
+if (!isServer) exitWith {};
 params [ "_player", "_uid", "_context" ];
 private ["_grp", "_pos", "_unit", "_class", "_rank", "_loadout"];
 

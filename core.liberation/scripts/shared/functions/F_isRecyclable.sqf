@@ -6,7 +6,7 @@ private _onfoot = isNull objectParent player;
 private _R3F_move = isNull R3F_LOG_joueur_deplace_objet;
 private _noflight = getPos player select 2 <= 5;
 private _r3f_enabled = !(_vehicle getVariable ['R3F_LOG_disabled', false]);
-private _grl_isempty = (_vehicle getVariable ["GRLIB_ammo_truck_load", 0] == 0);
+private _grl_isempty = (count (_vehicle getVariable ["GRLIB_ammo_truck_load", []]) == 0);
 private _r3f_isempty = (count (_vehicle getVariable ["R3F_LOG_objets_charges", []]) == 0);
 private _nearfob = [player, "FOB", GRLIB_fob_range] call F_check_near;
 private _far_lhd = !([player, "LHD", GRLIB_sector_size] call F_check_near);

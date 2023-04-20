@@ -98,7 +98,7 @@ while { dialog && alive player } do {
 
 					if (count ([_myveh_info, {(_guid == _x select 3)}] call BIS_fnc_conditionalSelect) >= _max_vehicle) exitWith { hintSilent (format [localize "STR_FULL_GARAGE", _max_vehicle]); sleep 2 };
 					if (damage _vehicle != 0) exitWith { hintSilent "Damaged Vehicles cannot be Parked !"; sleep 2 };
-					if (_vehicle getVariable ["GRLIB_ammo_truck_load", 0] > 0) exitWith { hintSilent localize "STR_CANT_PARK"; sleep 2 };
+					if (count (_vehicle getVariable ["GRLIB_ammo_truck_load", []]) > 0) exitWith { hintSilent localize "STR_CANT_PARK"; sleep 2 };
 					if (count (crew _vehicle) > 0 && !(typeOf _vehicle in uavs)) exitWith { hintSilent localize "STR_CANT_PARKUAV"; sleep 2 };
 					if (_timer >= time) exitWith { hintSilent _msg; sleep 2 };
 

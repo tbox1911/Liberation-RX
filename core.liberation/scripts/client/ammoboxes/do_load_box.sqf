@@ -25,15 +25,16 @@ if (isNil "_box_offset") then {_box_offset = [0, 0, 0]};
 	} foreach box_transport_config;
 
 	if ( isNull _truck_to_load ) then {
-		_truck_load = _next_truck getVariable ["GRLIB_ammo_truck_load", 0];
-		if (  _truck_load < _maxload ) then {
+		_truck_load = _next_truck getVariable ["GRLIB_ammo_truck_load", []];
+		if ( count _truck_load < _maxload ) then {
 			_truck_to_load = _next_truck;
-			_truck_offset = (_offsets select _truck_load) vectorAdd _box_offset;
+			_truck_offset = (_offsets select (count _truck_load)) vectorAdd _box_offset;
 			_ammobox attachTo [ _next_truck, _truck_offset ];
 			_ammobox setVariable ["R3F_LOG_disabled", true, true];
 			_ammobox allowDamage false;
 			[_ammobox, false] remoteExec ["enableSimulationGlobal", 2];
-			_next_truck setVariable ["GRLIB_ammo_truck_load", _truck_load + 1, true];
+			_truck_load pushback _ammobox;
+			_next_truck setVariable ["GRLIB_ammo_truck_load", _truck_load, true];
 			hint localize "STR_BOX_LOADED";
 		};
 	};
