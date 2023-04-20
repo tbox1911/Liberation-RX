@@ -56,10 +56,10 @@ player createDiaryRecord ["Table", ["Table", format ["<font color='#00ff40'> +5<
 player createDiaryRecord ["Table", ["Table", format ["-- Killing Table --"]]];
 
 player createDiarySubject ["Shortcut","Shortcut"];
-player createDiaryRecord ["Shortcut", ["Shortcut", format ["Key  <font color='#ff8000'>%1</font>  :  (UserAction n°13) Take Screenshot.", ["User4"] call _getkeyName]]];
-player createDiaryRecord ["Shortcut", ["Shortcut", format ["Key  <font color='#ff8000'>%1</font>  :  (UserAction n°12) Toggle earplugs on/off.", ["User3"] call _getkeyName]]];
-player createDiaryRecord ["Shortcut", ["Shortcut", format ["Key  <font color='#ff8000'>%1</font>  :  (UserAction n°11) Always run.", ["User2"] call _getkeyName]]];
-player createDiaryRecord ["Shortcut", ["Shortcut", format ["Key  <font color='#ff8000'>%1</font>  :  (UserAction n°10) Weapon to the back.", ["User1"] call _getkeyName]]];
+player createDiaryRecord ["Shortcut", ["Shortcut", format ["Key  <font color='#ff8000'>%1</font>  :  (UserAction n°13) Take Screenshot.", ["User13"] call _getkeyName]]];
+player createDiaryRecord ["Shortcut", ["Shortcut", format ["Key  <font color='#ff8000'>%1</font>  :  (UserAction n°12) Toggle earplugs on/off.", ["User12"] call _getkeyName]]];
+player createDiaryRecord ["Shortcut", ["Shortcut", format ["Key  <font color='#ff8000'>%1</font>  :  (UserAction n°11) Always run.", ["User11"] call _getkeyName]]];
+player createDiaryRecord ["Shortcut", ["Shortcut", format ["Key  <font color='#ff8000'>%1</font>  :  (UserAction n°10) Weapon to the back.", ["User10"] call _getkeyName]]];
 player createDiaryRecord ["Shortcut", ["Shortcut", format ["Key  <font color='#ff8000'>[0 + 8 + 1]</font>  :  Unblock / Move unit."]]];
 player createDiaryRecord ["Shortcut", ["Shortcut", format ["Key  <font color='#ff8000'>Alt + LMB</font>  :  Teleport on Map. (Admin)"]]];
 player createDiaryRecord ["Shortcut", ["Shortcut", format ["Key  <font color='#ff8000'>Ctrl + %1</font>  :  Open MagRepack Utility.", keyName (MGR_Key)]]];

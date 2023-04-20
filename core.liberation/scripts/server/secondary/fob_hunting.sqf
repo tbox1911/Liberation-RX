@@ -117,7 +117,7 @@ secondary_objective_position_marker = [(((secondary_objective_position select 0)
 publicVariable "secondary_objective_position_marker";
 sleep 1;
 GRLIB_secondary_in_progress = 0; publicVariable "GRLIB_secondary_in_progress";
-[[ 2 ]] remoteExec ["remote_call_intel", 0];
+[ 2 ] remoteExec ["remote_call_intel", 0];
 
 waitUntil {
 	sleep 5;
@@ -127,7 +127,7 @@ waitUntil {
 combat_readiness = round (combat_readiness * GRLIB_secondary_objective_impact);
 stats_secondary_objectives = stats_secondary_objectives + 1;
 
-[[ 3 ]] remoteExec ["remote_call_intel", 0];
+[ 3 ] remoteExec ["remote_call_intel", 0];
 
 GRLIB_secondary_in_progress = -1; publicVariable "GRLIB_secondary_in_progress";
 sleep 1;
