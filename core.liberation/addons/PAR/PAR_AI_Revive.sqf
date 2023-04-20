@@ -55,7 +55,7 @@ PAR_fn_EHDamage = {
   _unit addEventHandler ["handleDamage", {
       params ["_unit","","_dam"];
       _veh = objectParent _unit;
-      if (!(isNull _veh) && round(damage _veh) > 0.8) then {[_veh, _unit] spawn PAR_fn_eject};
+      if (!(isNull _veh) && round(damage _veh) > 0.8) then {[_veh, _unit, true] spawn PAR_fn_eject};
 
       if (!(_unit getVariable ["PAR_isUnconscious",false]) && (_dam >= 0.86)) then {
         if (!(isNull _veh)) then {[_veh, _unit] spawn PAR_fn_eject};

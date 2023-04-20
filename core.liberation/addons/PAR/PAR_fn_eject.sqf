@@ -1,7 +1,7 @@
-params ['_veh', '_unit'];
+params ["_veh", "_unit", ["_all",false]];
 
-PAR_unit_eject = {
-	params ['_veh', '_unit'];
+_unit_eject = {
+	params ["_veh", "_unit"];
 	unAssignVehicle _unit;
 	_unit allowDamage false;
 	//_unit action ["eject", _veh];
@@ -20,15 +20,14 @@ PAR_unit_eject = {
 if (_veh getVariable ["evacVeh", false]) exitWith {};
 if (_veh iskindof "Steerable_Parachute_F") exitWith {};
 
-waitUntil {sleep 1; (round (speed _veh) == 0 && (round(getPosATL _veh select 2) < 10)) || round (damage _veh) > 0.8};  // No eject when driving
+waitUntil {sleep 1; (round (speed _veh) == 0 && (round(getPosATL _veh select 2) < 5)) || round (damage _veh) > 0.8};  // No eject when driving
 
-if (round(damage _veh) > 0.8 || (!alive _veh) || (!canMove _veh && !canFire _veh )) then {
+if (_all) then {
 	_veh setVariable ["evacVeh", true];
-	{[_veh, _x] spawn PAR_unit_eject} forEach crew _veh;
+	{[_veh, _x] spawn _unit_eject} forEach crew _veh;
 	//lock
 	sleep 5;
 	_veh setVariable ['evacVeh', nil];
 } else {
-	_unit action ["eject", _veh];
-	_unit action ["getout", _veh];
+	[_veh, _unit] spawn _unit_eject;
 };
