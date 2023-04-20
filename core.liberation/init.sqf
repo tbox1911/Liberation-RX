@@ -3,6 +3,7 @@ diag_log "--- Liberation RX by pSiKO ---";
 [] call compileFinal preprocessFileLineNUmbers "build_info.sqf";
 diag_log "--- Init start ---";
 
+profileNamespace setVariable ["BIS_SupportDevelopment", nil];
 enableSaving [false, false];
 disableMapIndicators [false,true,false,false];
 setGroupIconsVisible [false,false];

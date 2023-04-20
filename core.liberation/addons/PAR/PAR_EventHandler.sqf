@@ -40,7 +40,7 @@ _unit addEventHandler ["InventoryOpened", {
 	params ["_unit", "_container"];
 	_ret = false;
 	playsound "ZoomIn";
-	if (typeOf _container in support_box_noArsenal) exitWith { _ret };
+	if ((typeOf _container in support_box_noArsenal) || (!alive _container)) exitWith { _ret };
 	if (!([_unit, _container] call is_owner) || locked _container > 1) then {
 		closeDialog 106;
 		_ret = true;
@@ -94,6 +94,7 @@ if (_unit == player) then {
 		private _ret = false;
 		if (_this select 3 == 'DisAssemble') then { _ret = true };
 		if (_this select 3 == 'Rearm' && !([_this select 1, _this select 0] call is_owner || [_this select 0] call is_public)) then { _ret = true };
+		if ((['GetIn', _this select 3, true] call F_startsWith) && !isNull R3F_LOG_joueur_deplace_objet) then { _ret = true };
 		if (_ret) then { hintSilent 'You are not allowed to do this' };
 		_ret;
 	"];

@@ -22,8 +22,9 @@ _unit setVariable ["PAR_healed", nil];
 _unit setCaptive true;
 
 if (GRLIB_disable_death_chat && isPlayer _unit) then {
-  0 enableChannel false;
-  1 enableChannel false;
+  for "_channel" from 0 to 4 do {
+    _channel enableChannel false;
+  };
 };
 _unit switchMove "AinjPpneMstpSnonWrflDnon";  // lay down
 _unit playMoveNow "AinjPpneMstpSnonWrflDnon";
@@ -133,9 +134,8 @@ _unit setCaptive false;
 if (isPlayer _unit) then {
   if (primaryWeapon _unit != "") then { _unit selectWeapon primaryWeapon _unit };
   [] call PAR_del_marker;
-  if (GRLIB_disable_death_chat) then {
-    0 enableChannel true;
-    1 enableChannel true;
+  for "_channel" from 0 to 4 do {
+    _channel enableChannel true;
   };
 };
 
