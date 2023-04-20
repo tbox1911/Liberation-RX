@@ -18,7 +18,7 @@ _unit addEventHandler ["InventoryClosed", {
 	params ["_unit"];
 	[_unit] call F_filterLoadout;
 	if (_unit == player) then {
-		hintSilent format ["Your Loadout Price: %1.", ([_unit] call F_loadoutPrice)];
+		hintSilent format ["Inventory value:\n%1 AMMO.", ([_unit] call F_loadoutPrice)];
 	};
 }];
 

@@ -22,7 +22,6 @@ F_squadRespawn = compileFinal preprocessFileLineNumbers "scripts\shared\function
 F_checkClass = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_checkClass.sqf";
 F_filterMods = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_filterMods.sqf";
 F_loadoutPrice = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_loadoutPrice.sqf";
-F_loadoutPriceCargo = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_loadoutPriceCargo.sqf";
 F_payLoadout = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_payLoadout.sqf";
 F_swapInventory = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_swapInventory.sqf";
 F_spawnRegularSquad = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_spawnRegularSquad.sqf";
