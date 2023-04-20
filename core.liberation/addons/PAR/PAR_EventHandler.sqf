@@ -57,7 +57,7 @@ _unit addEventHandler ["FiredMan",	{
 	params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_vehicle"];
 
 	if (count GRLIB_all_fobs >= 0) then {
-		if (([_unit, "FOB", GRLIB_fob_range] call F_check_near || [player, "LHD", 500] call F_check_near) && _weapon == "Put") then {deleteVehicle _projectile};
+		if (([_unit, "FOB", GRLIB_fob_range] call F_check_near || [_unit, "LHD", 500] call F_check_near) && _weapon == "Put") then {deleteVehicle _projectile};
 	};
 }];
 

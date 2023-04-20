@@ -138,6 +138,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 	resources_intel = greuh_liberation_savegame select 14;
 	GRLIB_player_scores = greuh_liberation_savegame select 15;
 
+	if (typeName GRLIB_player_context != "ARRAY") then {GRLIB_player_context = []};
 	setDate [ GRLIB_date_year, GRLIB_date_month, GRLIB_date_day, time_of_day, 0];
 
 	_correct_fobs = [];
@@ -215,9 +216,11 @@ if ( !isNil "greuh_liberation_savegame" ) then {
             };
         };
 
-        if ( _owner == "public" && _nextclass == huron_typename ) then {
+        if ( _owner == "public" ) then {
             _nextbuilding setVariable ["GRLIB_vehicle_owner", "public", true];
-            _nextbuilding setVariable ["GRLIB_vehicle_ishuron", true, true];
+			if ( _nextclass == huron_typename ) then {
+            	_nextbuilding setVariable ["GRLIB_vehicle_ishuron", true, true];
+			};
         };
 
         if ( _nextclass in list_static_weapons ) then {
