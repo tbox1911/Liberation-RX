@@ -1,7 +1,7 @@
 // Mission spawn trop proche d'un secteur capture
 params ['_markers'];
 private _list=[];
-private _radius = (GRLIB_sector_size * 0.80);
+private _radius = (GRLIB_sector_size * 0.85);
 
 {
 	private _item = true;

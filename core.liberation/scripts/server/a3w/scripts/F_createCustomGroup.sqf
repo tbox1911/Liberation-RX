@@ -1,13 +1,12 @@
 if (!isServer) exitWith {};
 
-private ["_grp", "_pos", "_nbUnits", "_type", "_unitTypes", "_uPos", "_unit"];
-
-_grp = _this select 0;
-_pos = _this select 1;
-_nbUnits = param [2, 7, [0]];
-_type =  param [3, "infantry"];
-_patrol = param [4, true];
-_radius = 10;
+private _grp = _this select 0;
+private _pos = _this select 1;
+private _nbUnits = param [2, 7, [0]];
+private _type =  param [3, "infantry"];
+private _patrol = param [4, true];
+private _radius = 10;
+private _uPos = zeropos;
 
 switch (_type) do {
 	case ("infantry"): { _unitTypes = opfor_infantry };
@@ -16,29 +15,25 @@ switch (_type) do {
 	case ("resistance"): { _unitTypes = resistance_squad };
 };
 
-_unitSetSkill = {
-    params ["_unit"];
-	_unit setSkill 0.65;
-	_unit setSkill ["courage", 1];
-	_unit allowFleeing 0;
-	_unit setVariable ["mission_AI", true];
-	_unit addRating 9999999;
-	//_accuracy = 1; // Relative multiplier; absolute default accuracy for ARMA3 is 0.25
-	//_unit setSkill ["aimingAccuracy", (_unit skill "aimingAccuracy") * _accuracy];
-	_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-};
-
+sleep 0.5;
 for "_i" from 1 to _nbUnits do {
 	if (_type == "divers") then {
 		 _seadepth = getTerrainHeightASL _pos;
 		_uPos = _pos vectorAdd ([[random _radius, 0, _seadepth + 3], random 360] call BIS_fnc_rotateVector2D);
 	} else {
-		_uPos = _pos vectorAdd ([[random _radius, 0, 0], random 360] call BIS_fnc_rotateVector2D);
+		_uPos = _pos vectorAdd ([[random _radius, 0, 1], random 360] call BIS_fnc_rotateVector2D);
 	};
-	_unit = _grp createUnit [selectRandom _unitTypes, _uPos, [], 0, "NONE"];
-	[_unit] call _unitSetSkill;
+	(selectRandom _unitTypes) createUnit [_uPos, _grp, "this addMPEventHandler [""MPKilled"", {_this spawn kill_manager}]", 0.5, "PRIVATE"];
 };
 
+{
+	_x setSkill 0.65;
+	_x setSkill ["courage", 1];
+	_x allowFleeing 0;
+	_x setVariable ["mission_AI", true];
+} forEach (units _grp);
+
+sleep 0.5;
 if (_patrol) then {
 	[ _grp, _pos, 200] spawn add_defense_waypoints;
 };
