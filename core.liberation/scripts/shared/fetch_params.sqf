@@ -17,7 +17,6 @@ GRLIB_opfor_english = ["EnglishOpfor", 0] call bis_fnc_getParamValue;
 GRLIB_fob_type = [ "FobType",0] call bis_fnc_getParamValue;
 GRLIB_huron_type = [ "HuronType", 0] call bis_fnc_getParamValue;
 GRLIB_maximum_fobs = [ "MaximumFobs",5] call bis_fnc_getParamValue;
-GRLIB_autodanger = [ "Autodanger",0] call bis_fnc_getParamValue;
 GRLIB_passive_income = ["PassiveIncome",0] call bis_fnc_getParamValue;
 //------------------------------------------------------------------------
 GRLIB_difficulty_modifier = ["Difficulty",1] call bis_fnc_getParamValue;
@@ -147,7 +146,6 @@ if ( GRLIB_use_exclusive == 1 ) then { GRLIB_use_exclusive = true } else { GRLIB
 if ( GRLIB_ammo_bounties == 1 ) then { GRLIB_ammo_bounties = true } else { GRLIB_ammo_bounties = false };
 if ( GRLIB_civ_penalties == 1 ) then { GRLIB_civ_penalties = true } else { GRLIB_civ_penalties = false };
 if ( GRLIB_blufor_defenders == 1 ) then { GRLIB_blufor_defenders = true } else { GRLIB_blufor_defenders = false };
-if ( GRLIB_autodanger == 1 ) then { GRLIB_autodanger = true } else { GRLIB_autodanger = false };
 if ( GRLIB_opfor_english == 1 ) then { GRLIB_opfor_english = true } else { GRLIB_opfor_english = false };
 if ( GRLIB_disable_death_chat == 1 ) then { GRLIB_disable_death_chat = true } else { GRLIB_disable_death_chat = false };
 

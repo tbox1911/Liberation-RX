@@ -92,8 +92,9 @@ if (_unit == player) then {
 	// UI actions
 	inGameUISetEventHandler ["Action", "
 		private _ret = false;
-		if (_this select 3 == 'DisAssemble') then { hintSilent 'You are not allowed to do this'; _ret = true };
-		if (_this select 3 == 'Rearm' && !([_this select 1, _this select 0] call is_owner || [_this select 0] call is_public)) then { hintSilent 'You are not allowed to do this'; _ret = true };
+		if (_this select 3 == 'DisAssemble') then { _ret = true };
+		if (_this select 3 == 'Rearm' && !([_this select 1, _this select 0] call is_owner || [_this select 0] call is_public)) then { _ret = true };
+		if (_ret) then { hintSilent 'You are not allowed to do this' };
 		_ret;
 	"];
 
