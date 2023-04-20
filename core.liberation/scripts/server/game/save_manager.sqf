@@ -1,6 +1,6 @@
 if ( !(isNil "GRLIB_param_wipe_savegame_1") && !(isNil "GRLIB_param_wipe_savegame_2") ) then {
 	if ( GRLIB_param_wipe_savegame_1 == 1 && GRLIB_param_wipe_savegame_2 == 1 ) then {
-		profileNamespace setVariable [ GRLIB_save_key,nil ];
+		profileNamespace setVariable [ GRLIB_save_key, nil ];
 		saveProfileNamespace;
 	};
 };
@@ -249,15 +249,15 @@ save_is_loaded = true; publicVariable "save_is_loaded";
 
 // Manager Save Loop
 while { true } do {
-	waitUntil {trigger_server_save || GRLIB_endgame == 1};
+	waitUntil {sleep 1; trigger_server_save || GRLIB_endgame == 1};
 
 	if ( GRLIB_endgame == 1 ) then {
 		profileNamespace setVariable [ GRLIB_save_key, nil ];
 		saveProfileNamespace;
 		while { true } do { sleep 300; };
 	} else {
-
 		trigger_server_save = false;
+<<<<<<< HEAD
 		buildings_to_save = [];
 
 		_all_buildings = [];
@@ -375,5 +375,8 @@ while { true } do {
 		profileNamespace setVariable [ GRLIB_save_key, greuh_liberation_savegame ];
 		saveProfileNamespace;
 		diag_server_save = true;
+=======
+		[] call save_game;
+>>>>>>> a18fdb9a (save state at server stop)
 	};
 };
