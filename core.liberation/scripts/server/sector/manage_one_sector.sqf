@@ -105,11 +105,12 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 	if ( _sector in sectors_tower ) then {
 		_spawncivs = false;
 		_squad1 = ([] call F_getAdaptiveSquadComp);
+		_squad2 = ([] call F_getAdaptiveSquadComp);
 		if ( GRLIB_unitcap >= 1.5) then {
 			_squad2 = ([] call F_getAdaptiveSquadComp);
 		};
 		_building_ai_max = 0;
-		if((random 100) > 85) then { _vehtospawn pushback ( [] call F_getAdaptiveVehicle ); };
+		if((random 100) > 75) then { _vehtospawn pushback ( [] call F_getAdaptiveVehicle ); };
 		[markerPos _sector, 50] call createlandmines;
 	};
 
