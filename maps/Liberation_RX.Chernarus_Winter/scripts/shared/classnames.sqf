@@ -211,7 +211,6 @@ support_vehicles = [
 	["B_Slingload_01_Fuel_F",0,100,30,GRLIB_perm_log],
 	["B_Slingload_01_Ammo_F",0,150,0,GRLIB_perm_log],
 	["B_Slingload_01_Medevac_F",10,100,0,GRLIB_perm_log],
-	["B_Truck_01_cargo_F",5,50,10,GRLIB_perm_log],
 	["B_Truck_01_ammo_F",5,150,10,GRLIB_perm_tank],
 	["B_Truck_01_Repair_F",10,130,10,GRLIB_perm_tank],
 	["B_Truck_01_fuel_F",5,120,40,GRLIB_perm_tank],
