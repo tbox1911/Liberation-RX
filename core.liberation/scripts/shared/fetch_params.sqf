@@ -4,6 +4,8 @@ if ( isMultiplayer ) then {
 	GRLIB_resources_multiplier = ["ResourcesMultiplier",1] call bis_fnc_getParamValue;
 	GRLIB_fatigue = ["Fatigue",0] call bis_fnc_getParamValue;
 	GRLIB_revive = ["Revive",2] call bis_fnc_getParamValue;
+	GRLIB_tk_mode = ["TK_mode",0] call bis_fnc_getParamValue;
+	GRLIB_tk_count = ["TK_count",4] call bis_fnc_getParamValue;
 	GRLIB_introduction = ["Introduction",1] call bis_fnc_getParamValue;
 	GRLIB_deployment_cinematic = ["DeploymentCinematic",1] call bis_fnc_getParamValue;
 	GRLIB_unitcap = ["Unitcap",1] call bis_fnc_getParamValue;
@@ -42,6 +44,8 @@ if ( isMultiplayer ) then {
 	GRLIB_resources_multiplier = 1;
 	GRLIB_fatigue = 0;
 	GRLIB_revive = 2;
+	GRLIB_tk_mode = 0;
+	GRLIB_tk_count = 4;
 	GRLIB_introduction = 0;
 	GRLIB_deployment_cinematic = 0;
 	GRLIB_adaptive_opfor = 1;
