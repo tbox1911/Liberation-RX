@@ -18,7 +18,7 @@ else
 {
 	R3F_LOG_mutex_local_verrou = true;
 	
-	private ["_objet", "_remorqueur", "_offset_attach_y"];
+	private ["_objet", "_remorqueur", "_offset_attach_x", "_offset_attach_y", "_offset_attach_z", "_pos_x", "_pos_y", "_pos_z"];
 	
 	_objet = _this select 0;
 	
@@ -98,16 +98,19 @@ else
 			sleep 2;
 			
 			// Quelques corrections visuelles pour des classes sp�cifiques
-			if (typeOf _remorqueur == "B_Truck_01_mover_F") then {_offset_attach_y = 1.0;}
-			else {_offset_attach_y = 0.2;};
-			
+			_offset_attach_x = 0;
+			_offset_attach_y = 0.2;
+			_offset_attach_z = 0;
+			if (typeOf _remorqueur == "B_Truck_01_mover_F") then {_offset_attach_y = 1.0};
+			if (typeOf _remorqueur isKindOf "CUP_UAZ_Base") then {_offset_attach_z = 2.6};
+			if (typeOf _objet isKindOf "CUP_UAZ_Base") then {_offset_attach_z = _offset_attach_z - 2.4};
+						
 			// Attacher � l'arri�re du v�hicule au ras du sol
-			_objet attachTo [_remorqueur, [
-				(boundingCenter _objet select 0),
-				(boundingBoxReal _remorqueur select 0 select 1) + (boundingBoxReal _objet select 0 select 1) + _offset_attach_y,
-				(boundingBoxReal _remorqueur select 0 select 2) - (boundingBoxReal _objet select 0 select 2)
-			]];
-			
+			_pos_x = (boundingCenter _objet select 0) + _offset_attach_x;
+			_pos_y = (boundingBoxReal _remorqueur select 0 select 1) + (boundingBoxReal _objet select 0 select 1) + _offset_attach_y;
+			_pos_z = (boundingBoxReal _remorqueur select 0 select 2) - (boundingBoxReal _objet select 0 select 2) + _offset_attach_z;
+			_objet attachTo [_remorqueur, [_pos_x, _pos_y, _pos_z]];
+
 			R3F_LOG_objet_selectionne = objNull;
 			
 			detach player;

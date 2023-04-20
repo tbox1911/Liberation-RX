@@ -41,6 +41,7 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 
 R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 [
+	["B_FR_AS565_Panther_Marine_Nationale_01", 50],
 	["C_Plane_Civil_01_F", 15],
 	["AMF_gazelle_afte_f", 15],
 	["AMF_gazelle_minigun_f", 15],
@@ -56,7 +57,6 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["B_UAV_05_F", 0],
 	["B_FR_Rafale_M_01", 0],
 	["B_FR_Mirage_2000_5F_01", 0],
-	["B_FR_AS565_Panther_Marine_Nationale_01", 15]
 ];
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +

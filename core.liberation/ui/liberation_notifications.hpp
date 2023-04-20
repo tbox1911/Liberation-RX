@@ -43,7 +43,7 @@ class CfgNotifications
         title = $STR_NOTIFICATION_SECTORSAFE_TITLE;
 		description = $STR_NOTIFICATION_SECTORSAFE_TEXT;
         iconPicture = "res\notif\ui_notif_sec_saf.paa";
-		color[] = {0,0.35,1,1};
+		color[] = {0,1,1,1};
 		sound = "taskUpdated";
 		priority = 3;
     };
@@ -52,7 +52,7 @@ class CfgNotifications
 		title = $STR_NOTIFICATION_FOBBUILT_TITLE;
 		description = $STR_NOTIFICATION_FOBBUILT_TEXT;
         iconPicture = "res\notif\ui_notif_fob_new.paa";
-		color[] = {0,0.35,1,1};
+		color[] = {0,1,1,1};
 		sound = "taskUpdated";
     };
 	class lib_fob_safe : lib_default_notification
@@ -60,7 +60,7 @@ class CfgNotifications
 		title = $STR_NOTIFICATION_FOBSAFE_TITLE;
 		description = $STR_NOTIFICATION_FOBSAFE_TEXT;
         iconPicture = "res\notif\ui_notif_fob_sec.paa";
-		color[] = {0,0.35,1,1};
+		color[] = {0,1,1,1};
 		sound = "taskUpdated";
 		priority = 3;
     };
@@ -96,7 +96,7 @@ class CfgNotifications
     {
 		title = $STR_NOTIFICATION_INTEL_TITLE;
         iconPicture = "res\notif\ui_notif_int.paa";
-		color[] = {0,0.35,1,1};
+		color[] = {0,1,1,1};
 		sound = "taskUpdated";
     };
 	class lib_intel_prisoner : lib_intel
@@ -155,7 +155,7 @@ class CfgNotifications
 		title = $STR_NOTIFICATION_REINFORCEMENTS_TITLE;
 		description = $STR_NOTIFICATION_REINFORCEMENTS_TITLE2;
         iconPicture = "res\notif\ui_notif_ref.paa";
-		color[] = {0,0.35,1,1};
+		color[] = {0,1,1,1};
 		sound = "taskUpdated";
     };
     class lib_intel_sar : lib_intel
