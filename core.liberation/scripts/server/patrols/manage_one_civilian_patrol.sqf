@@ -52,7 +52,7 @@ while { GRLIB_endgame == 0 } do {
 						if ( side _source == GRLIB_side_friendly ) then {
 							_dam = _damage;
 						};
-						if ( side(driver _unit) == GRLIB_side_friendly] ) then {
+						if ( side(driver _unit) == GRLIB_side_friendly ) then {
 							_dam = _damage;
 						};
 					 _dam;
