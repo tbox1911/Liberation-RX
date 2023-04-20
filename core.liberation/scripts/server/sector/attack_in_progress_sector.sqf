@@ -14,7 +14,7 @@ if ( GRLIB_blufor_defenders && !_is_side_sector) then {
 	if ( _sector in sectors_military ) then {
 		_squad_type = blufor_squad_mix;
 	};
-	_grp = [markerpos _sector, _squad_type, GRLIB_side_friendly, "infantry"] call F_libSpawnUnits;
+	_grp = [markerpos _sector, _squad_type, GRLIB_side_friendly, "defender"] call F_libSpawnUnits;
 	_grp setCombatMode "RED";
 	_grp setBehaviourStrong "COMBAT";
 	{
