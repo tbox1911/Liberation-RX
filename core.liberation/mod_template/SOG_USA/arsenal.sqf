@@ -13,8 +13,15 @@ blacklisted_bag = [
 ];
 
 blacklisted_weapon = [
+<<<<<<< HEAD
     "_nvg",
     "_anpvs2"
+=======
+    "vn_anpvs2_binoc",
+    "vn_o_anpvs2_m40a1",
+    "vn_o_anpvs2_m16",
+    "vn_o_anpvs2_m14"
+>>>>>>> f2f07e03 (sog missing scope)
 ];
 
 GRLIB_whitelisted_from_arsenal = [

@@ -420,7 +420,7 @@ while { true } do {
 		// Pack Beacon
 		_idact_id = _idact_id + 1;
 		_idact_num = _id_actions select _idact_id;
-		if (!_near_lhd && typeOf cursorObject == mobile_respawn ) then {
+		if (!_near_lhd && typeOf cursorObject == mobile_respawn && ([player, cursorObject] call is_owner) ) then {
 			if ( _idact_num == -1 ) then {
 				_idact = player addAction ["<t color='#FFFF00'>" + localize "STR_PACK_BEACON" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_beacon_pack.sqf",cursorObject,-950,true,true,"","!(cursorObject getVariable ['tent_in_use', false])"];
 				_id_actions set [_idact_id, _idact];
@@ -464,7 +464,7 @@ while { true } do {
 		// Admin Menu
 		_idact_id = _idact_id + 1;
 		_idact_num = _id_actions select _idact_id;
-		if (([] call is_admin) && GRLIB_admin_menu ) then {
+		if (([] call is_admin || getPlayerUID player in GRLIB_whitelisted_moderators) && GRLIB_admin_menu ) then {
 			if ( _idact_num == -1 ) then {
 				_idact = player addAction ["<t color='#0000F8'>" + localize "STR_ADMIN_MENU" + "</t>","scripts\client\commander\admin_menu.sqf","",999,false,true,"",""];
 				_id_actions set [_idact_id, _idact];

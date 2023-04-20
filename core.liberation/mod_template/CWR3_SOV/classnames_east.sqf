@@ -84,7 +84,7 @@ militia_vehicles = [
 	"cwr3_o_bmp1"
 ];
 
-opfor_boat = [
+boats_east = [
 	"cwr3_o_zodiac",
 	"cwr3_o_boat"
 ];

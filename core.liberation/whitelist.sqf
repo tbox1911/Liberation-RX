@@ -17,6 +17,10 @@ GRLIB_whitelisted_steamids = [
 GRLIB_whitelisted_names = [
 ];
 
+// Allow player to use the Light Admin Menu (aka Moderators)
+GRLIB_whitelisted_moderators = [
+];
+
 // Forbiden player names.
 GRLIB_blacklisted_names = [
     "admin",

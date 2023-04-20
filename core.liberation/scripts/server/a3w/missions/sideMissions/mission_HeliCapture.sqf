@@ -1,7 +1,7 @@
 // ******************************************************************************************
 // * This project is licensed under the GNU Affero GPL v3. Copyright © 2014 A3Wasteland.com *
 // ******************************************************************************************
-//	@file Name: mission_VehicleCapture.sqf
+//	@file Name: mission_HeliCapture.sqf
 
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
@@ -10,7 +10,7 @@ private ["_nbUnits", "_vehicle", "_vehicleName", "_vehiclePos", "_smoke"];
 
 _setupVars =
 {
-	_missionType = "Vehicle Capture";
+	_missionType = "Helicopter Capture";
 	_locationsArray = [SpawnMissionMarkers] call checkSpawn;
 	_nbUnits = [] call getNbUnits;
 };
@@ -19,7 +19,7 @@ _setupObjects =
 {
 	_missionPos = markerPos _missionLocation;
 	_vehiclePos = _missionPos findEmptyPosition [1, 60, "B_Heli_Transport_03_unarmed_F"];
-	_vehicle = createVehicle [ (selectRandom opfor_vehicles), _vehiclePos, [], 0, "NONE"];
+	_vehicle = createVehicle [ (selectRandom opfor_air), _vehiclePos, [], 0, "NONE"];
 	_vehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	_vehicle setVariable ["R3F_LOG_disabled", true, true];
 	_vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
@@ -38,7 +38,7 @@ _setupObjects =
 
 	_missionPicture = getText (configOf _vehicle >> "picture");
 	_vehicleName = getText (configOf _vehicle >> "displayName");
-	_missionHintText = format ["A <t color='%2'>%1</t> has been immobilized, go get it for your team!", _vehicleName, sideMissionColor];
+	_missionHintText = format ["A <t color='%2'>%1</t> has been immobilized, go repair it and take it for your team!", _vehicleName, sideMissionColor];
 	true;
 };
 

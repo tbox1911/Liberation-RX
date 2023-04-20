@@ -10,7 +10,7 @@ GRLIB_disable_death_chat = ["DeathChat", 1] call bis_fnc_getParamValue;
 GRLIB_mod_preset_west = ["ModPresetWest", 0] call bis_fnc_getParamValue;
 GRLIB_mod_preset_east = ["ModPresetEast", 0] call bis_fnc_getParamValue;
 GRLIB_enable_arsenal = ["EnableArsenal",1] call bis_fnc_getParamValue;
-GRLIB_filter_arsenal = ["FilterArsenal",0] call bis_fnc_getParamValue;
+GRLIB_filter_arsenal = ["FilterArsenal",1] call bis_fnc_getParamValue;
 //------------------------------------------------------------------------
 GRLIB_forced_loadout = ["ForcedLoadout",1] call bis_fnc_getParamValue;
 GRLIB_opfor_english = ["EnglishOpfor", 0] call bis_fnc_getParamValue;
@@ -145,7 +145,6 @@ if ( GRLIB_deployment_cinematic == 1 ) then { GRLIB_deployment_cinematic = true 
 if ( GRLIB_admin_menu == 1 ) then { GRLIB_admin_menu = true } else { GRLIB_admin_menu = false };
 if ( GRLIB_hide_opfor == 1 ) then { GRLIB_hide_opfor = true } else { GRLIB_hide_opfor = false };
 if ( GRLIB_enable_arsenal == 1 ) then { GRLIB_enable_arsenal = true } else { GRLIB_enable_arsenal = false };
-if ( GRLIB_filter_arsenal == 1 ) then { GRLIB_filter_arsenal = true } else { GRLIB_filter_arsenal = false };
 if ( GRLIB_permission_vehicles == 1 ) then { GRLIB_permission_vehicles = true } else { GRLIB_permission_vehicles = false };
 if ( GRLIB_adaptive_opfor == 1 ) then { GRLIB_adaptive_opfor = true } else { GRLIB_adaptive_opfor = false };
 if ( GRLIB_passive_income == 1 ) then { GRLIB_passive_income = true } else { GRLIB_passive_income = false };

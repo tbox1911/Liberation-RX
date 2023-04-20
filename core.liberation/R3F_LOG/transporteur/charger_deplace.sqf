@@ -46,9 +46,11 @@ else
 				
 				_objet setVariable ["R3F_LOG_est_transporte_par", _transporteur, true];
 				
+				systemChat STR_R3F_LOG_action_charger_en_cours;
+							
 				// Faire relacher l'objet au joueur
 				R3F_LOG_joueur_deplace_objet = objNull;
-				waitUntil {_objet getVariable "R3F_LOG_est_deplace_par" != player};
+				waitUntil {sleep 1; _objet getVariable "R3F_LOG_est_deplace_par" != player};
 				
 				_objet attachTo [R3F_LOG_PUBVAR_point_attache, [] call R3F_LOG_FNCT_3D_tirer_position_degagee_ciel];
 				

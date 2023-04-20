@@ -51,8 +51,7 @@ blacklisted_weapon = [
 	// Googles:
 	"rhsusf_ANPVS_14",
 	"rhsusf_ANPVS_15",
-	"rhsusf_Rhino",
-
+	"rhsusf_Rhino"
 ];
 
 GRLIB_whitelisted_from_arsenal = [

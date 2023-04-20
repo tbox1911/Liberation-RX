@@ -340,8 +340,49 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 
 R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 [
+	"Land_vn_object_ladder_01",
+	"Land_vn_b_trench_firing_04",
+	"Land_vn_b_trench_firing_05",
+	"Land_vn_b_trench_bunker_04_01",
+	"Land_vn_b_trench_revetment_tall_09",
+	"Land_vn_usaf_revetment_2",
+	"Land_vn_usaf_revetment_low_2",
+	"Land_vn_usaf_revetment_8",
+	"Land_vn_usaf_revetment_low_8",
+	"Land_vn_b_trench_20_01",
+	"Land_vn_b_trench_05_01",
+	"Land_vn_b_trench_tee_01",
+	"Land_vn_b_trench_cross_01",
+	"Land_vn_b_trench_90_01",
+	"Land_vn_b_trench_45_01",
+	"Land_vn_tent_mash_01_03",
+	"Land_vn_bagfence_01_long_green_f",
+	"Land_vn_bagfence_01_round_green_f",
+	"Land_vn_lampshabby_f_4xdir_far",
+	"Land_vn_b_trench_stair_02",
+	"vn_flag_usarmy"
 ];
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 [
+	["Land_vn_object_ladder_01",5],
+	["Land_vn_b_trench_firing_04",5],
+	["Land_vn_b_trench_firing_05",5],
+	["Land_vn_b_trench_revetment_tall_09",5],
+	// ["Land_vn_usaf_revetment_2",5],
+	// ["Land_vn_usaf_revetment_low_2",5],
+	// ["Land_vn_usaf_revetment_8",5],
+	// ["Land_vn_usaf_revetment_low_8",5],
+	["Land_vn_b_trench_20_01",5],
+	["Land_vn_b_trench_05_01",5],
+	["Land_vn_b_trench_tee_01",5],
+	["Land_vn_b_trench_cross_01",5],
+	["Land_vn_b_trench_90_01",5],
+	["Land_vn_b_trench_45_01",5],
+	["Land_vn_tent_mash_01_03",5],
+	["Land_vn_bagfence_01_long_green_f",5],
+	["Land_vn_bagfence_01_round_green_f",5],
+	["Land_vn_lampshabby_f_4xdir_far",5],
+	["Land_vn_b_trench_stair_02",5],
+	["vn_flag_usarmy",1]
 ];

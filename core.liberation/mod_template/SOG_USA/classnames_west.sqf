@@ -93,21 +93,17 @@ LOADOUT_free_items = [
 ];
 
 light_vehicles = [
+	["vn_c_bicycle_01",1,1,1,0],
 	// Boat
 	["vn_o_boat_01_02",1,10,1,0],
 	["vn_o_boat_01_mg_02",1,25,1,GRLIB_perm_inf],
-	["vn_o_boat_02_02",1,20,1,GRLIB_perm_inf],
-	["vn_o_boat_02_mg_02",1,45,1,GRLIB_perm_log],
 	["vn_b_boat_06_01",20,400,20,GRLIB_perm_tank],
 	["vn_b_boat_05_01",20,400,20,GRLIB_perm_tank],
 	// Land
-	["vn_o_car_01_01",1,5,1,0],
-	["vn_o_car_03_01",1,10,1,0],
-	["vn_o_car_02_01",1,15,1,0],
+	["vn_b_wheeled_m151_01",1,5,1,0],
+	["vn_b_wheeled_m151_02",2,40,2,GRLIB_perm_inf],
 	["vn_o_car_04_01",1,25,2,0],
 	["vn_o_car_04_mg_01",2,40,2,GRLIB_perm_inf],
-	["vn_b_wheeled_m151_01",2,50,2,GRLIB_perm_inf],
-	["vn_b_wheeled_m151_02",2,65,2,GRLIB_perm_inf],
 	["vn_b_wheeled_m151_mg_04",3,75,2,GRLIB_perm_log],
 	["vn_b_wheeled_m151_mg_02",3,100,2,GRLIB_perm_log],
 	["vn_b_wheeled_m151_mg_03",3,125,2,GRLIB_perm_log],
@@ -184,15 +180,16 @@ support_vehicles_west = [
 
 buildings_west_overide = true;
 buildings_west = [
-	["Land_vn_usaf_revetment_helipad_01",0,0,0,GRLIB_perm_tank],
+	["Land_vn_object_ladder_01",0,0,0,0],
+	["Land_vn_b_trench_firing_04",0,0,0,GRLIB_perm_inf],
 	["Land_vn_b_trench_firing_05",0,0,0,GRLIB_perm_inf],
 	["Land_vn_b_trench_bunker_04_01",0,0,0,GRLIB_perm_log],
-	["Land_vn_b_trench_firing_04",0,0,0,GRLIB_perm_inf],
 	["Land_vn_b_trench_revetment_tall_09",0,0,0,0],
 	["Land_vn_b_tower_01",0,0,0,GRLIB_perm_tank],
+	["Land_vn_usaf_revetment_2",0,0,0,GRLIB_perm_tank],
+	["Land_vn_usaf_revetment_low_2",0,0,0,GRLIB_perm_tank],
+	["Land_vn_usaf_revetment_8",0,0,0,GRLIB_perm_air],
 	["Land_vn_usaf_revetment_low_8",0,0,0,GRLIB_perm_air],
-	["Land_vn_usaf_revetment_low_2",0,0,0,GRLIB_perm_air],
-	["Land_vn_object_ladder_01",0,0,0,0],
 	["Land_vn_b_trench_20_01",0,0,0,0],
 	["Land_vn_b_trench_05_01",0,0,0,0],
 	["Land_vn_b_trench_tee_01",0,0,0,0],
@@ -202,12 +199,11 @@ buildings_west = [
 	["Land_vn_tent_mash_01_03",0,0,0,GRLIB_perm_inf],
 	["Land_vn_bagfence_01_long_green_f",0,0,0,GRLIB_perm_inf],
 	["Land_vn_bagfence_01_round_green_f",0,0,0,GRLIB_perm_inf],
-	["vn_banner_usarmy",0,0,0,0],
-	["vn_flag_usarmy",0,0,0,0],
 	["Land_vn_lampshabby_f_4xdir_far",0,0,0,0],
 	["Land_vn_b_trench_stair_02",0,0,0,0],
-	["Land_vn_usaf_revetment_2",0,0,0,GRLIB_perm_max],
-	["Land_vn_usaf_revetment_8",0,0,0,GRLIB_perm_max]
+	["Land_vn_b_helipad_01",0,0,0,GRLIB_perm_inf],
+	["Land_vn_usaf_revetment_helipad_01",0,0,0,GRLIB_perm_tank],
+	["vn_flag_usarmy",0,0,0,0]
 ];
 
 blufor_squad_inf_light = [

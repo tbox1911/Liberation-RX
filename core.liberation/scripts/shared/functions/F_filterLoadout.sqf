@@ -4,7 +4,7 @@ private _checkItem = {
     params ["_item"];
     private _ret = false;
     if (!([_item] call is_allowed_item)) exitWith { true };
-    if (GRLIB_filter_arsenal) then {
+    if (GRLIB_filter_arsenal == 2) then {
         if (!(_item in GRLIB_whitelisted_from_arsenal)) then { _ret = true };
     };
     _ret;

@@ -1,7 +1,9 @@
 createDialog "liberation_admin";
 waitUntil { dialog };
 disableSerialization;
+if (isNil "do_admin") then { do_admin = 0 };
 if (isNil "last_build") then { last_build = 0 };
+if (isNil "do_teleport") then { do_teleport = 0 };
 do_unban = 0;
 do_score = 0;
 do_spawn = 0;
@@ -26,10 +28,10 @@ private _color = getArray (configFile >> "CfgMarkerColors" >> GRLIB_color_friend
 private _display = findDisplay 5204;
 
 // GodMode ?
-if (!isDamageAllowed player) then {	(_display displayCtrl 1607) ctrlSetChecked true; };
+if (do_admin == 1) then { (_display displayCtrl 1607) ctrlSetChecked true; };
 
-// Teleport on map
-player onMapSingleClick "if (_alt) then {player setPosATL _pos}";
+// Teleport ?
+if (do_teleport == 1) then { (_display displayCtrl 1620) ctrlSetChecked true; };
 
 // Clear listbox
 _ban_combo = _display displayCtrl 1611;
@@ -38,6 +40,10 @@ _score_combo = _display displayCtrl 1612;
 lbClear _score_combo;
 _build_combo = _display displayCtrl 1618;
 lbClear _build_combo;
+
+// Input for XP / Ammo
+_ammount_edit = _display displayCtrl 1619;
+_ammount_edit ctrlSetText "50";
 
 // Clear input
 private _input_controls = [521,522,523,524,525,526,527];
@@ -48,14 +54,16 @@ private _output_controls = [531,532,533,534,535,536];
 { ctrlShow [_x, false] } foreach _output_controls;
 
 // Action buttons
-private _button_controls = [1600,1601,1602,1603,1604,1609,1610,1611,1612,1613,1614,1615,1616,1617,1618];
+private _button_controls = [1600,1601,1602,1603,1604,1609,1610,1611,1612,1613,1614,1615,1616,1617,1618,1619];
+private _disabled_controls = [1606,1607,1608,1609,1610,1613,1614,1620];
 
 (_display displayCtrl 1603) ctrlSetText getMissionPath "res\ui_confirm.paa";
-(_display displayCtrl 1603) ctrlSetToolTip "Add 50 XP Score";
+(_display displayCtrl 1603) ctrlSetToolTip "Add XP Score";
 (_display displayCtrl 1615) ctrlSetText getMissionPath "res\ui_arsenal.paa";
-(_display displayCtrl 1615) ctrlSetToolTip "Add 300 Ammo";
+(_display displayCtrl 1615) ctrlSetToolTip "Add Ammo credit";
 (_display displayCtrl 1616) ctrlSetText getMissionPath "res\ui_rotation.paa";
 (_display displayCtrl 1616) ctrlSetToolTip "Rejoin player";
+(_display displayCtrl 1619) ctrlSetToolTip "Amount of Ammo or Experience Points to add";
 
 // Build Banned
 [_ban_combo] call _getBannedUID;
@@ -99,6 +107,15 @@ _ban_combo lbSetCurSel 0;
 _score_combo lbSetCurSel 0;
 _build_combo lbSetCurSel last_build;
 
+// Limit Moderators Menu
+if (getPlayerUID player in GRLIB_whitelisted_moderators) then {
+	{
+		ctrlEnable  [_x, false];
+		ctrlShow [_x, false];
+	} forEach _disabled_controls;
+	_button_controls = _disabled_controls;
+};
+
 while { alive player && dialog } do {
 	if (do_unban == 1) then {
 		do_unban = 0;
@@ -117,8 +134,9 @@ while { alive player && dialog } do {
 		do_score = 0;
 		_name = _score_combo lbText (lbCurSel _score_combo);
 		_uid = _score_combo lbData (lbCurSel _score_combo);
-		[_uid, 50] remoteExec ["F_addPlayerScore", 2];
-		_msg = format ["Add 50 XP to player: %1.", _name];
+		_amount = parseNumber (ctrlText _ammount_edit);
+		[_uid, _amount] remoteExec ["F_addPlayerScore", 2];
+		_msg = format ["Add %1 XP to player: %2.", _amount, _name];
 		hint _msg;
 		systemchat _msg;
 		sleep 1;
@@ -142,8 +160,9 @@ while { alive player && dialog } do {
 		do_ammo = 0;
 		_name = _score_combo lbText (lbCurSel _score_combo);
 		_uid = _score_combo lbData (lbCurSel _score_combo);
-		[_uid, 300] remoteExec ["F_addPlayerAmmo", 2];
-		_msg = format ["Add 300 Ammo to player: %1.", _name];
+		_amount = parseNumber (ctrlText _ammount_edit);
+		[_uid, _amount] remoteExec ["F_addPlayerAmmo", 2];
+		_msg = format ["Add %1 Ammo to player: %2.", _amount, _name];
 		hint _msg;
 		systemchat _msg;
 		sleep 1;
@@ -156,7 +175,7 @@ while { alive player && dialog } do {
 		_player = _uid call BIS_fnc_getUnitByUID;
 		if (!isNull _player) then {
 			hint format ["Teleport to player: %1.", _name];
-			player setPos (getPos _player);
+			player setPos (_player getRelPos [3, 0]);
 			closeDialog 0;
 		} else {
 			hint "Player must be online!";
