@@ -11,7 +11,7 @@ private ["_nbUnits", "_box1", "_box2", "_box3"];
 _setupVars =
 {
 	_missionType = "Weapon Cache";
-	_locationsArray = ForestMissionMarkers;
+	_locationsArray = [ForestMissionMarkers] call checkSpawn;
 	_nbUnits = [] call getNbUnits;
 };
 

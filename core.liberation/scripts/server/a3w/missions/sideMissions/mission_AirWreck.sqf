@@ -12,7 +12,7 @@ private ["_nbUnits", "_wreckPos", "_wreck", "_box1", "_box2", "_box3"];
 _setupVars =
 {
 	_missionType = "Aircraft Wreck";
-	_locationsArray = SpawnMissionMarkers;
+	_locationsArray = [SpawnMissionMarkers] call checkSpawn;
 	_nbUnits = [] call getNbUnits;
 };
 

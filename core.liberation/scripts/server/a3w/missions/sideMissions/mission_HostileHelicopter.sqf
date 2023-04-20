@@ -6,14 +6,12 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_vehicleClass", "_vehicle", "_createVehicle", "_vehicles", "_leader", "_speedMode", "_waypoint", "_vehicleName", "_numWaypoints", "_box1", "_box2"];
-_citylist = [(call cityList)] call checkSpawn;
-
-if (count (_citylist) <= 1) exitWith {};
+private [ "_citylist", "_vehicleClass", "_vehicle", "_leader", "_speedMode", "_waypoint", "_vehicleName", "_numWaypoints", "_box1", "_box2"];
 
 _setupVars =
 {
 	_missionType = "Hostile Helicopter";
+	_citylist = [] call cityList;
 	_locationsArray = nil; // locations are generated on the fly from towns
 };
 

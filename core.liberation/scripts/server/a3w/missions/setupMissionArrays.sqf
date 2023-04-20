@@ -23,11 +23,6 @@ SpawnMissionMarkers = (allMapMarkers select {["Mission_", _x] call F_startsWith;
 ForestMissionMarkers = (allMapMarkers select {["ForestMission_", _x] call F_startsWith;}) apply {[_x, false]};
 SunkenMissionMarkers = (allMapMarkers select {["SunkenMission_", _x] call F_startsWith}) apply {[_x, false]};
 
-// Filters BLU sectors
-SpawnMissionMarkers = [SpawnMissionMarkers] call checkSpawn;
-ForestMissionMarkers = [ForestMissionMarkers] call checkSpawn;
-SunkenMissionMarkers = [SunkenMissionMarkers] call checkSpawn;
-
 if !(ForestMissionMarkers isEqualTo []) then {
 	SideMissions append
 	[

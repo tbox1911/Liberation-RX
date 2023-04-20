@@ -3,6 +3,31 @@ params ["_missionsList"];
 if (!isServer) exitWith {};
 if (count _missionsList == 0) exitWith {};
 
+
+// Air Wreck
+_mission_name = "mission_AirWreck";
+if (!([_missionsList, _mission_name] call getMissionState)) then {
+	_spawn_place = count ([SpawnMissionMarkers] call checkSpawn);
+	if (_spawn_place >= 1) then {
+		[_missionsList, _mission_name, false] call setMissionState;
+	} else {
+		[_missionsList, _mission_name, true] call setMissionState;
+	};
+};
+
+// Weapon Cache
+_mission_name = "mission_WepCache";
+if (!([_missionsList, _mission_name] call getMissionState)) then {
+	_spawn_place = count ([SpawnMissionMarkers] call checkSpawn);
+	if (_spawn_place >= 1) then {
+		[_missionsList, _mission_name, false] call setMissionState;
+	} else {
+		[_missionsList, _mission_name, true] call setMissionState;
+	};
+};
+
+// Sunken Supply
+
 // Limit Town capture
 _mission_name = "mission_TownInvasion";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
@@ -18,7 +43,7 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 // Disable HostileHelicopter if no more bigcity
 _mission_name = "mission_HostileHelicopter";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
-	_opfor_city = count ([(call cityList)] call checkSpawn);
+	_opfor_city = count ([] call cityList);
 	if (_opfor_city <= 1) then {
 		[_missionsList, _mission_name, true] call setMissionState;
 	} else {

@@ -74,7 +74,7 @@ _fn_getprice = {
 	private _ret = 0;
 
 	if (isNil "_item") exitWith {0};
-	_price = [_item] call _fn_isfixed;
+	private _price = [_item] call _fn_isfixed;
 	if (_price < 0) then {
 		_isfree = [_item] call _fn_isfree;
 		if (!_isfree) then {

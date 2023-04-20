@@ -11,7 +11,7 @@ private ["_nbUnits", "_box1", "_box2", "_vehicle", "_boxPos", "_aiGroup", "_unit
 _setupVars =
 {
 	_missionType = "Sunken Supplies";
-	_locationsArray = SunkenMissionMarkers;
+	_locationsArray = [SunkenMissionMarkers] call checkSpawn;
 	_nbUnits = [] call getNbUnits;
 };
 

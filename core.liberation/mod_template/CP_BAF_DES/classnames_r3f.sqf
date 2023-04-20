@@ -60,9 +60,7 @@ R3F_LOG_CFG_can_tow = R3F_LOG_CFG_can_tow +
 	"CUP_LR_Base",
 	"CUP_BAF_Jackal2_BASE_D",
 	"CUP_BAF_Coyote_BASE_D",
-	"CUP_Wolfhound_Base",
-	"CUP_T90_Base",
-	"CUP_T72_Base"
+	"CUP_Wolfhound_Base"
 ];
 
 R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
@@ -72,9 +70,7 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 	"CUP_LR_Base",
 	"CUP_BAF_Jackal2_BASE_D",
 	"CUP_BAF_Coyote_BASE_D",
-	"CUP_Wolfhound_Base",
-	"CUP_T90_Base",
-	"CUP_T72_Base"
+	"CUP_Wolfhound_Base"
 ];
 
 R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
@@ -88,9 +84,7 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 	"CUP_LR_Base",
 	"CUP_BAF_Jackal2_BASE_D",
 	"CUP_BAF_Coyote_BASE_D",
-	"CUP_Wolfhound_Base",
-	"CUP_T90_Base",
-	"CUP_T72_Base"
+	"CUP_Wolfhound_Base"
 ];
 
 R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
@@ -100,9 +94,7 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["CUP_LR_Base", 20],
 	["CUP_BAF_Jackal2_BASE_D", 30],
 	["CUP_BAF_Coyote_BASE_D", 30],
-	["CUP_Wolfhound_Base", 25],
-	["CUP_T90_Base", 50],
-	["CUP_T72_Base", 50]
+	["CUP_Wolfhound_Base", 25]
 ];
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
