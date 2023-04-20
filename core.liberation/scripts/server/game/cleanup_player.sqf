@@ -6,8 +6,8 @@ if (_name in ["HC1","HC2","HC3" ]) exitWith {
 	deleteMarker "fpsmarkerHC3";
 };
 
-diag_log format ["--- LRX: Cleanup player %1 (%2)", name _unit, _uid];
 if !(isNull _unit) then {
+	diag_log format ["--- LRX: Cleanup player %1 (%2)", name _unit, _uid];
 
 	// Remove Dog
 	private _my_dog = _unit getVariable ["my_dog", nil];
@@ -46,15 +46,20 @@ if !(isNull _unit) then {
 	if (!isNil "_my_squad") then { {deleteVehicle _x} forEach units _my_squad };
 
 	// Save Player Context
-	[_unit] call save_context;
+	private _score = 0; 
+	{if ((_x select 0) == _uid) exitWith {_score = (_x select 1)}} forEach GRLIB_player_scores; 
+	if (_score > 20) then { [_unit, _uid] call save_context };
 
 	private _text = format ["Bye bye %1, see you soon...", _name];
 	[gamelogic, _text] remoteExec ["globalChat", -2];
 
-	// Delete body
+	// Delete Body
 	deleteVehicle _unit;
 
-	// remove grave box
+	// Remove Grave Box
 	private _grave_box = _unit getVariable ["GRLIB_grave_box", nil];
 	if (!isNil "_grave_box") then { deleteVehicle _grave_box };
 };
+
+private _player_left = count (AllPlayers - (entities "HeadlessClient_F"));
+if (_player_left == 0) then {[] call save_game_mp};

@@ -74,4 +74,5 @@ class Repaint {
 #include "addons\RPT\veh_repaint.hpp"
 #include "addons\VIRT\virtual_garage.hpp"
 #include "addons\SHOP\traders_shop.hpp"
+#include "addons\SELL\sell_shop.hpp"
 #include "addons\SDB_DALE\RscLoadout.hpp"

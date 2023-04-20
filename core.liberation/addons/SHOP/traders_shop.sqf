@@ -35,10 +35,10 @@ private _buy_list = [opfor_recyclable, {
 	!((_x select 0) in _buy_blacklist)
 }] call BIS_fnc_conditionalSelect;
 
-private _buy_list_dlg1 = [];
+private _buy_list_dlg = [];
 {
 	private _price = round ((_x select 2) * (1 + _ratio));
-	_buy_list_dlg1 pushBack [_x select 0, _price];
+	_buy_list_dlg pushBack [_x select 0, _price];
 } forEach _buy_list_static + _buy_list;
 
 lbClear 111;
@@ -61,17 +61,18 @@ lbClear 111;
 		(_display displayCtrl (111)) lnbSetColor [[((lnbSize 111) select 0) - 1, 0], [0.4,0.4,0.4,1]];
 		(_display displayCtrl (111)) lnbSetColor [[((lnbSize 111) select 0) - 1, 1], [0.4,0.4,0.4,1]];
 	};
-} foreach _buy_list_dlg1;
+} foreach _buy_list_dlg;
 
-shop_action = 0;
-_refresh = true;
 gamelogic globalChat "Welcome to my shop, stranger";
+shop_action = 0;
+private _refresh = true;
+
 while { dialog && alive player } do {
 	if (_refresh) then {
 		// Init SELL list
 
 		private _sell_classnames = ["LandVehicle","Air","Ship","ReammoBox_F","Items_base_F"];
-		_sell_list = [getPosATL player nearEntities [_sell_classnames, 100], {
+		_sell_list = [getPosATL player nearEntities [_sell_classnames, 50], {
 			alive _x && (count (crew _x) == 0 || typeOf _x in uavs) &&
 			locked _x != 2 &&
 			!(_x getVariable ["R3F_LOG_disabled", false]) &&
@@ -79,12 +80,9 @@ while { dialog && alive player } do {
 			!(typeOf _x in _sell_blacklist)
 		}] call BIS_fnc_conditionalSelect;
 
-		private _sell_list_dlg1 = [];
+		private _sell_list_dlg = [];
 		{
-			private _classname = typeOf _x;
-			private _price = [_classname] call _getPrice;
-			_price = round ((_price * GRLIB_recycling_percentage) * _ratio);
-			_sell_list_dlg1 pushBack [_classname, _price];
+			_sell_list_dlg pushBack [(typeOf _x), round ((([typeOf _x] call _getPrice) * GRLIB_recycling_percentage) * _ratio)];			
 		} forEach _sell_list;
 
 		lbClear 110;
@@ -99,13 +97,13 @@ while { dialog && alive player } do {
 				_icon = (getText (configFile >> "CfgVehicleIcons" >> _icon));
 			};
 			lnbSetPicture  [110, [((lnbSize 110) select 0) - 1, 0],_icon];
-		} foreach _sell_list_dlg1;
+		} foreach _sell_list_dlg;
 
 		lbSetCurSel [110, -1];
 		_refresh = false;
 	};
 
-	_selected_item = lbCurSel 110;
+	private _selected_item = lbCurSel 110;
 	if (_selected_item != -1) then { ctrlEnable [120, true] } else { ctrlEnable [120, false] };
 	_selected_item = lbCurSel 111;
 	private _price = parseNumber ((_display displayCtrl (111)) lnbText [_selected_item, 1]);
@@ -138,7 +136,7 @@ while { dialog && alive player } do {
 			private _result = [_msg, localize "STR_SHOP_BUY", true, true] call BIS_fnc_guiMessage;
 			if (_result) then {
 				[_price] call F_pay;
-				private _veh_class = _buy_list_dlg1 select _selected_item select 0;
+				private _veh_class = _buy_list_dlg select _selected_item select 0;
 				buildtype = 9;
 				build_unit = [_veh_class,[],1,[],[]];
 				dobuild = 1;

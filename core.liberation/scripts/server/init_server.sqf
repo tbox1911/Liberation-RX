@@ -13,6 +13,7 @@ diag_log "--- Server Init start ---";
 
 // Cleanup
 cleanup_player = compileFinal preprocessFileLineNumbers "scripts\server\game\cleanup_player.sqf";
+save_context = compileFinal preprocessFileLineNumbers "scripts\server\game\save_context.sqf";
 
 // AI
 GRLIB_AI_toggle = true;
@@ -112,7 +113,7 @@ resistance setFriend [GRLIB_side_enemy, 0];
 GRLIB_side_enemy setFriend [resistance, 0];
 
 addMissionEventHandler ['HandleDisconnect', cleanup_player];
-addMissionEventHandler ["MPEnded", {[] call save_game_mp;diag_log "--- LRX Mission End"}];
+addMissionEventHandler ["MPEnded", {diag_log "--- LRX Mission End"}];
 
 GRLIB_init_server = true;
 publicVariable "GRLIB_init_server";

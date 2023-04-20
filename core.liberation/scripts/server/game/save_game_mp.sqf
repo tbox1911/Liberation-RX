@@ -1,5 +1,5 @@
 //--- LRX Savegame
-if (time < 60 || !([] call F_getValid)) exitWith {};
+if (time < 300 || !([] call F_getValid)) exitWith {};
 diag_log format [ "--- LRX Save start at %1", time ];
 if (!isNil "GRLIB_server_stopped") exitWith {};
 
@@ -182,4 +182,4 @@ if ( GRLIB_endgame == 1 ) then {
     saveProfileNamespace;
 };
 
-diag_log format [ "--- LRX Save Manager finish at %1", time ];
+diag_log format [ "--- LRX Save finish at %1", time ];

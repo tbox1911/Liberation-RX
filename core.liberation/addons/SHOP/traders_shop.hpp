@@ -81,8 +81,8 @@ class Traders_Shop {
 			idc = -1;
 			action = "closeDialog 0";
 			text = "X";
-			x = 0.4990 * safezoneW + safezoneX;
-			y = 0.1430 * safezoneH + safezoneY;
+			x = 0.4950 * safezoneW + safezoneX;
+			y = 0.1414 * safezoneH + safezoneY;
 			w = 0.015 * safezoneW;
 			h = 0.02 * safezoneH;
 			default = true;
