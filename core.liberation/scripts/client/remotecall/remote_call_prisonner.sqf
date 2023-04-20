@@ -56,8 +56,11 @@ if (alive _unit) then {
 		sleep 5;
 		[_unit, "AidlPsitMstpSnonWnonDnon_ground00"] remoteExec ["switchmove", 0];
 		[_unit] remoteExec ["prisonner_remote_call", 2];
-		[player, 10] remoteExec ["addScore", 2];
-		hint format ["%1\nBonus Score + 10 Pts!", name player];
+		_bonus = 5;
+		if (score player <= GRLIB_perm_log) then { _bonus = 10 };
+		[player, _bonus] remoteExec ["addScore", 2];
+
+		hint format ["%1\nBonus Score + %2 Pts!", name player, _bonus];
 		sleep 600;
 		deleteVehicle _unit;
 

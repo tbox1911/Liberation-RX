@@ -13,7 +13,7 @@ private _pylonMagsCompatible = _veh getCompatiblePylonMagazines (1+_index);
 private _pylonMagsCurrent = getPylonMagazines _veh;
 
 // Fill combobox with compatible magazines
-_ctrl lbSetData [_ctrl lbAdd format ["<%1>","STR_DALE_Dialogs_Empty" call BIS_fnc_localize],""];
+_ctrl lbSetData [_ctrl lbAdd format ["<%1>",localize "STR_DALE_Dialogs_Empty"],""];
 {
 	_ctrl lbSetData [_ctrl lbAdd getText (_cfgMagazines >> _x >> "displayName"),_x];
 } forEach _pylonMagsCompatible;

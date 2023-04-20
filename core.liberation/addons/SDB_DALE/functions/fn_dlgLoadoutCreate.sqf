@@ -26,7 +26,7 @@ _ctrlText ctrlSetStructuredText _text;
 _ctrlImg ctrlSetText _img;
 
 // Fill preset combobox
-_ctrlPreset lbSetData [_ctrlPreset lbAdd ("STR_DALE_Dialogs_Custom" call BIS_fnc_localize),""];
+_ctrlPreset lbSetData [_ctrlPreset lbAdd (localize "STR_DALE_Dialogs_Custom"),""];
 {
 	_ctrlPreset lbSetData [_ctrlPreset lbAdd getText (_x >> "displayName"),configName _x];
 } forEach ("isClass _x" configClasses (_cfgComponent >> "Presets"));
@@ -34,7 +34,7 @@ _ctrlPreset lbSetCurSel _selectedPreset;
 _ctrlPreset ctrlAddEventHandler ["LBSelChanged",DALE_fnc_dlgLoadoutChangePreset];
 
 // Fill priority combobox
-{_ctrlPriority lbAdd (_x call BIS_fnc_localize);} forEach ["STR_DALE_Dialogs_Single","STR_DALE_Dialogs_Double","STR_DALE_Dialogs_Burst"];
+{_ctrlPriority lbAdd (localize _x );} forEach ["STR_DALE_Dialogs_Single","STR_DALE_Dialogs_Double","STR_DALE_Dialogs_Burst"];
 _ctrlPriority lbSetCurSel _selectedPriority;
 _ctrlPriority ctrlAddEventHandler ["LBSelChanged",DALE_fnc_dlgLoadoutChangePriority];
 
