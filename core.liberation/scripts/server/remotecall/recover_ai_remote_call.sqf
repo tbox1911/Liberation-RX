@@ -32,5 +32,7 @@ if (count _squad > 1) then {
             };
         };
     } forEach _squad;
+    private _msg = format ["Server recover %1 AI in %2 Team", count _squad, name _player];
+    [gamelogic, _msg] remoteExec ["globalChat",  owner _player];
 };
 [group _player, _player] remoteExec ["selectLeader", owner _player];
