@@ -13,20 +13,8 @@ _vehicle setVariable ["wreck_in_use", true, true];
 // Stop running
 AR_active = false;
 
-_free_vehicles = [] + civilian_vehicles;
-{
-	_free_vehicles pushBack ( _x select 0 );
-} foreach (light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles + buildings);
-
-_free_vehicles = _free_vehicles + [
-	huron_typename,
-	"C_UAV_06_F",
-	"B_Heli_Transport_01_F",
-	"Land_Cargo_HQ_V1_ruins_F",
-	"Land_Cargo_Tower_V1_ruins_F",
-	"Land_Cargo_House_V1_ruins_F",
-	"Land_Cargo_Patrol_V1_ruins_F"
-];
+private _valuable_veh = [];
+{ _valuable_veh pushBack ( _x select 0 ) } foreach (heavy_vehicles + opfor_recyclable + ind_recyclable);
 
 disableUserInput true;
 player playMove 'ainvpknlmstpslaywrfldnon_medic';
@@ -47,9 +35,7 @@ if (lifeState player == 'incapacitated' || vehicle player != player) exitWith {
 [_vehicle] remoteExec ["deleteVehicle", 2];
 
 private _msg = "";
-if (typeOf _vehicle in _free_vehicles) then {
-		hintSilent "Thank You !!";
-} else {
+if (typeOf _vehicle in _valuable_veh) then {
 	_res = [_vehicle] call F_getBounty;
 	_bounty = _res select 0;
 	_bonus = _res select 1;
@@ -58,6 +44,8 @@ if (typeOf _vehicle in _free_vehicles) then {
 	hintSilent format ["%1\nBonus Score + %2 Pts\nBonus Ammo + %3 !!", name player, _bonus, _bounty];
 	[player, _bonus] remoteExec ["addScore", 2];
 	player addRating 100;
+} else {
+	hintSilent "Thank You !!";
 };
 sleep 0.5;
 player setVariable ["salvage_wreck", false, true];

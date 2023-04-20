@@ -30,6 +30,7 @@ while { true } do {
 
 	_dialog = createDialog "liberation_deploy";
 	_noesckey = (findDisplay 5201) displayAddEventHandler ["KeyDown", "if ((_this select 1) == 1) then { true }"];
+	disableUserInput false;
 	deploy = 0;
 	_oldsel = -999;
 

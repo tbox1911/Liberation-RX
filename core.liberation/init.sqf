@@ -33,7 +33,7 @@ if (!GRLIB_ACE_enabled) then {[] execVM "R3F_LOG\init.sqf"};
 if (GRLIB_revive != 0) then {[] execVM "addons\FAR\FAR_init.sqf"};
 
 if (isServer) then {
-	[] call compileFinal preprocessFileLineNumbers "scripts\server\init_server.sqf";
+	[] execVM "scripts\server\init_server.sqf";
 };
 
 if (!isDedicated && !hasInterface && isMultiplayer) then {
@@ -42,7 +42,7 @@ if (!isDedicated && !hasInterface && isMultiplayer) then {
 
 if (!isDedicated && hasInterface) then {
 	waitUntil { alive player };
-	[] call compileFinal preprocessFileLineNumbers "scripts\client\init_client.sqf";
+	[] execVM "scripts\client\init_client.sqf";
 } else {
 	setViewDistance 1600;
 };
