@@ -119,6 +119,7 @@ while { true } do {
 	} else {
 		if ( buildtype == 8 ) then {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (isNil {player getVariable ["my_squad", nil]} ) then {
 				if (!([_price] call F_pay)) exitWith {};
 				_pos = [(getpos player select 0) + 1,(getpos player select 1) + 1, 0];
@@ -188,6 +189,8 @@ while { true } do {
 				_grp setCombatMode "GREEN";
 				_grp setBehaviour "AWARE";
 =======
+=======
+>>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 			if (!([_price] call F_pay)) exitWith {};
 			_pos = [(getpos player select 0) + 1,(getpos player select 1) + 1, 0];
 			_grp = createGroup [GRLIB_side_friendly, true];
@@ -212,7 +215,10 @@ while { true } do {
 			} foreach _classname;
 			_grp setCombatMode "GREEN";
 			_grp setBehaviour "AWARE";
+<<<<<<< HEAD
 >>>>>>> 51244372 (1)
+=======
+>>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 
 			stats_blufor_soldiers_recruited = stats_blufor_soldiers_recruited + count (units _grp); publicVariable "stats_blufor_soldiers_recruited";
 			player hcSetGroup [_grp];

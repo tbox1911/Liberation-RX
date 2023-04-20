@@ -348,6 +348,7 @@ class Params
 		default = 1;
 	};
 <<<<<<< HEAD
+<<<<<<< HEAD
 	class Autodanger{
 		title = $STR_PARAM_AUTODANGER;
 		values[] = {1,0};
@@ -395,6 +396,8 @@ class Params
 	};
 =======
 >>>>>>> 799874d1 (reorg params)
+=======
+>>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 	class Space3 {
 		title = "";
 		values[] = { "" };

@@ -23,6 +23,7 @@ Based on:
 _________________________________________________________________________*/
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 PAR_Player_MPKilled = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_MPKilled.sqf";
 
 =======
@@ -30,6 +31,8 @@ PAR_Player_MPKilled = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_pla
 >>>>>>> d49e44e5 (global PAR_Player_MPKilled)
 =======
 >>>>>>> 7ff48884 (mpkill)
+=======
+>>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 if (isDedicated) exitWith {};
 
 call compile preprocessFile "addons\TKP\tk_init.sqf";

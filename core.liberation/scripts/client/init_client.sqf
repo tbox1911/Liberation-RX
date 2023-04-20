@@ -43,18 +43,24 @@ if (!_commander_check) exitWith { endMission "END1" };
 
 private _name = name player;
 <<<<<<< HEAD
+<<<<<<< HEAD
 if (toLower _name in GRLIB_blacklisted_names || (_name == str parseNumber _name) || (count trim _name <= 2) || ("admin" in toLower _name)) exitWith {
         private _msg = format [localize "STR_NAME_PROHIBITED", _name];
         titleText [_msg, "BLACK FADED", 100];
         uisleep 10;
         endMission "LOSER";
 =======
+=======
+>>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 if (toLower _name in GRLIB_blacklisted_names || (_name == str parseNumber _name) || (count trim _name <= 2)) exitWith {
 	private _msg = format [localize "STR_NAME_PROHIBITED", _name];
 	titleText [_msg, "BLACK FADED", 100];
 	uisleep 10;
 	endMission "LOSER";
+<<<<<<< HEAD
 >>>>>>> 5f0f4c75 (1)
+=======
+>>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 };
 
 respawn_lhd = compileFinal preprocessFileLineNumbers "scripts\client\spawn\respawn_lhd.sqf";

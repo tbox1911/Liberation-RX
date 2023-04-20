@@ -13,6 +13,7 @@ blacklisted_bag = [
 
 blacklisted_weapon = [
 <<<<<<< HEAD
+<<<<<<< HEAD
     "_nvg",
     "_anpvs2"
 =======
@@ -21,6 +22,10 @@ blacklisted_weapon = [
     "vn_o_anpvs2_m16",
     "vn_o_anpvs2_m14"    
 >>>>>>> f2f07e03 (sog missing scope)
+=======
+    "_nvg",
+    "_anpvs2"
+>>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 ];
 
 whitelisted_from_arsenal = [

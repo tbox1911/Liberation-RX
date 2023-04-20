@@ -26,6 +26,7 @@ if (alive player && isNull objectParent player && lifestate player != "INCAPACIT
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	sleep 10;
 =======
 	sleep 8;
@@ -39,6 +40,9 @@ if (alive player && isNull objectParent player && lifestate player != "INCAPACIT
 =======
 	uiSleep 12;
 >>>>>>> d718e45e (uisleep)
+=======
+	uiSleep 12;
+>>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 };
 
 [] spawn cinematic_camera;

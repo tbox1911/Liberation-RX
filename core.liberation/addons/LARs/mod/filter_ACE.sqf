@@ -1,10 +1,14 @@
 // Add ACE Weapons
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 GRLIB_MOD_signature = GRLIB_MOD_signature + ["ACE_"];
 =======
 GRLIB_MOD_signature = GRLIB_MOD_signature + ["ace_"];
 >>>>>>> bfd9d463 (1)
+=======
+GRLIB_MOD_signature = GRLIB_MOD_signature + ["ace_"];
+>>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 GRLIB_blacklisted_from_arsenal append [
 	"ace_intelitems_base",
 	"ACE_DebugPotato",
@@ -32,6 +36,7 @@ GRLIB_blacklisted_from_arsenal append [
 	"
 	tolower ((configName _x) select [0,4]) == 'ace_' &&
 	([(configName _x)] call is_allowed_item)
+<<<<<<< HEAD
 =======
 GRLIB_MOD_signature = GRLIB_MOD_signature + ["ace_"];
 
@@ -39,6 +44,8 @@ GRLIB_MOD_signature = GRLIB_MOD_signature + ["ace_"];
 	"
 	tolower ((configName _x) select [0,3]) == 'ACE'
 >>>>>>> f456b13b (ACE Arsenal filtering + ACE Item filter logic)
+=======
+>>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 	"
 	configClasses (configfile >> "CfgVehicles")
 ) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x)} ;
@@ -47,6 +54,7 @@ GRLIB_MOD_signature = GRLIB_MOD_signature + ["ace_"];
 	"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	tolower ((configName _x) select [0,4]) == 'ACE_' &&
 =======
 	tolower ((configName _x) select [0,4]) == 'ace_' &&
@@ -55,6 +63,10 @@ GRLIB_MOD_signature = GRLIB_MOD_signature + ["ace_"];
 =======
 	tolower ((configName _x) select [0,3]) == 'ACE'
 >>>>>>> f456b13b (ACE Arsenal filtering + ACE Item filter logic)
+=======
+	tolower ((configName _x) select [0,4]) == 'ace_' &&
+	([(configName _x)] call is_allowed_item)
+>>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 	"
 	configClasses (configfile >> "CfgGlasses")
 ) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x)} ;
@@ -63,6 +75,7 @@ GRLIB_MOD_signature = GRLIB_MOD_signature + ["ace_"];
 	"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	tolower ((configName _x) select [0,4]) == 'ACE_' &&
 =======
 	tolower ((configName _x) select [0,4]) == 'ace_' &&
@@ -71,6 +84,10 @@ GRLIB_MOD_signature = GRLIB_MOD_signature + ["ace_"];
 =======
 	tolower ((configName _x) select [0,3]) == 'ACE'
 >>>>>>> f456b13b (ACE Arsenal filtering + ACE Item filter logic)
+=======
+	tolower ((configName _x) select [0,4]) == 'ace_' &&
+	([(configName _x)] call is_allowed_item)
+>>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 	"
 	configClasses (configfile >> "CfgMagazines")
 ) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x)} ;
@@ -79,6 +96,7 @@ GRLIB_MOD_signature = GRLIB_MOD_signature + ["ace_"];
 	"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	tolower ((configName _x) select [0,4]) == 'ACE_' &&
 =======
 	tolower ((configName _x) select [0,4]) == 'ace_' &&
@@ -87,6 +105,10 @@ GRLIB_MOD_signature = GRLIB_MOD_signature + ["ace_"];
 =======
 	tolower ((configName _x) select [0,3]) == 'ACE'
 >>>>>>> f456b13b (ACE Arsenal filtering + ACE Item filter logic)
+=======
+	tolower ((configName _x) select [0,4]) == 'ace_' &&
+	([(configName _x)] call is_allowed_item)
+>>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 	"
 	configClasses (configfile >> "CfgWeapons")
 ) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x)} ;

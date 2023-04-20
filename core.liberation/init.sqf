@@ -19,11 +19,15 @@ GRLIB_ACE_enabled = false;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\classnames.sqf";
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 if (!GRLIB_ACE_enabled) then {[] execVM "R3F_LOG\init.sqf"};
@@ -105,6 +109,21 @@ if (!abort_loading) then {
 		[] execVM "scripts\server\init_server.sqf";
 	};
 
+=======
+if (!abort_loading) then {
+	[] call compileFinal preprocessfilelinenumbers "scripts\shared\init_shared.sqf";
+	[] call compileFinal preprocessFileLineNUmbers "scripts\shared\init_sectors.sqf";
+	if (!GRLIB_ACE_enabled) then {
+		[] execVM "R3F_LOG\init.sqf";
+	} else {
+		[] call compileFinal preprocessFileLineNUmbers "scripts\shared\init_ace.sqf";
+	};
+
+	if (isServer) then {
+		[] execVM "scripts\server\init_server.sqf";
+	};
+
+>>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 	if (!isDedicated && !hasInterface && isMultiplayer) then {
 		[] execVM "scripts\server\offloading\hc_manager.sqf";
 	};

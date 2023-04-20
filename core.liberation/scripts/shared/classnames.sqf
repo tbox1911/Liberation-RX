@@ -98,6 +98,7 @@ if ( isNil "militia_loadout_overide" ) then {
 		"O_Soldier_AT_F"
 	];
 };
+<<<<<<< HEAD
 
 if ( isNil "militia_vehicles" ) then {
 	militia_vehicles = [
@@ -425,6 +426,117 @@ if ( isNil "guard_loadout_overide" ) then {
 	];
 };
 
+=======
+
+if ( isNil "militia_vehicles" ) then {
+	militia_vehicles = [
+		"O_G_Offroad_01_armed_F",
+		"O_G_Offroad_01_armed_F",
+		"O_G_Offroad_01_AT_F",
+		"I_C_Offroad_02_LMG_F",
+		"O_LSV_02_armed_F",
+		"O_LSV_02_AT_F"
+	];
+};
+
+// *** SUPPORT ***
+support_box_noArsenal = [
+	Box_Ammo_typename,
+	Box_Weapon_typename,
+	Box_Support_typename,
+	Box_Special_typename
+];
+support_vehicles = [
+	[Arsenal_typename,0,35,0,0]
+];
+
+if (!GRLIB_enable_arsenal) then {
+	Arsenal_typename = Box_Ammo_typename;
+	support_vehicles = [
+		[Box_Ammo_typename,0,0,0,0],
+		[Box_Weapon_typename,0,180,0,0],
+		[Box_Support_typename,0,250,0,GRLIB_perm_inf],
+		[Box_Special_typename,0,325,0,GRLIB_perm_tank]
+	];
+};
+
+// [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
+support_vehicles = support_vehicles + [
+	[medicalbox_typename,5,25,0,0],
+	[mobile_respawn,10,50,0,0],
+	[canister_fuel_typename,0,25,10,0],
+	[playerbox_typename,0,0,0,20],
+	[Box_Launcher_typename,0,300,0,GRLIB_perm_log],
+	[Respawn_truck_typename,15,150,5,GRLIB_perm_log],
+	["Land_RepairDepot_01_civ_F",10,300,0,GRLIB_perm_log],
+	["Land_MedicalTent_01_MTP_closed_F",5,150,0,GRLIB_perm_log],
+	[repair_sling_typename,0,200,0,GRLIB_perm_log],
+	[fuel_sling_typename,0,150,60,GRLIB_perm_log],
+	[ammo_sling_typename,0,400,0,GRLIB_perm_log],
+	[medic_sling_typename,0,150,0,GRLIB_perm_log],
+	[ammo_truck_typename,5,400,10,GRLIB_perm_tank],
+	[repair_truck_typename,5,200,30,GRLIB_perm_tank],
+	[fuel_truck_typename,5,150,70,GRLIB_perm_tank],
+	[FOB_box_outpost,5,500,20,GRLIB_perm_log],
+	[FOB_box_typename,5,1500,80,GRLIB_perm_max],
+	[FOB_truck_typename,5,1500,150,GRLIB_perm_max],
+	[ammobox_b_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
+	[ammobox_o_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
+	[ammobox_i_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
+	[basic_weapon_typename,0,round(150 / GRLIB_recycling_percentage),0,99999],
+	[waterbarrel_typename,0,110,0,99999],
+	[fuelbarrel_typename,0,120,0,99999],
+	[foodbarrel_typename,0,130,0,99999]
+] + support_vehicles_west;
+
+// *** BUILDINGS ***
+buildings = [[FOB_sign,0,0,0,99999]];
+if (isNil "buildings_west_overide") then {
+	buildings append buildings_default + buildings_west;
+} else {
+	buildings append buildings_west;
+};
+
+// *** ELITES ***
+elite_vehicles = [];
+{ if (_x select 4 == GRLIB_perm_max) then { elite_vehicles pushback (_x select 0)} } foreach light_vehicles + heavy_vehicles + air_vehicles + static_vehicles;
+
+// *** Boats ***
+boats_names = [
+	"C_Scooter_Transport_01_F",
+	"C_Boat_Civil_01_F",
+	"C_Boat_Transport_02_F",
+	"B_Boat_Transport_01_F",
+	"B_Boat_Armed_01_minigun_F"
+] + opfor_boats + boats_west;
+
+if ( isNil "civilian_boats" ) then {
+	civilian_boats = [
+		"C_Scooter_Transport_01_F",
+		"C_Boat_Civil_01_F",
+		"C_Boat_Transport_02_F",
+		"C_Boat_Civil_01_police_F",
+		"C_Boat_Civil_01_rescue_F"
+	];
+};
+
+// *** LRX - A3W ***
+if ( isNil "guard_squad" ) then {
+	guard_squad = [
+		"O_GEN_Commander_F",
+		"O_GEN_Soldier_F",
+		"O_GEN_Soldier_F",
+		"O_GEN_Soldier_F",
+		"O_GEN_Soldier_F"
+	];
+};
+if ( isNil "guard_loadout_overide" ) then {
+	guard_loadout_overide = [
+		"O_GEN_Commander_F"
+	];
+};
+
+>>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 if ( isNil "divers_squad" ) then {
 	divers_squad = [
 		"O_diver_TL_F",

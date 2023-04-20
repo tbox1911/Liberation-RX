@@ -14,6 +14,7 @@ if (!isNull _instigator) then {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 private _ret = _damage;
 <<<<<<< HEAD
 private _veh_unit = vehicle _unit;
@@ -46,6 +47,8 @@ if (_veh_unit != _unit && damage _veh_unit > 0.8) then {[_veh_unit, _unit, true]
 >>>>>>> d14c2092 (fix eject)
 =======
 >>>>>>> d8a0a01f (1)
+=======
+>>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 private _ret = _amountOfDamage;
 if ( (isPlayer _killer) && !(isPlayer _unit) && (lifeState _unit != "INCAPACITATED") ) then {
 	private _veh_unit = vehicle _unit;
@@ -61,6 +64,7 @@ if ( (isPlayer _killer) && !(isPlayer _unit) && (lifeState _unit != "INCAPACITAT
 		};
 		if (GRLIB_revive != 0) then { _ret = _amountOfDamage min 0.86 };
 	};
+<<<<<<< HEAD
 <<<<<<< HEAD:core.liberation/scripts/shared/damage_manager.sqf
 
 	// OpFor in vehicle
@@ -91,6 +95,8 @@ if ( (isPlayer _killer) && !(isPlayer _unit) && (lifeState _unit != "INCAPACITAT
 >>>>>>> 23851faa (static ai damage manager)
 =======
 >>>>>>> 81561949 (new damage EH):core.liberation/scripts/shared/damage_manager_firendly.sqf
+=======
+>>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 };
 
 _ret;

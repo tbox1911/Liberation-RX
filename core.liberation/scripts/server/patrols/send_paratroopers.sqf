@@ -7,6 +7,9 @@ private _pilot_group = createGroup [GRLIB_side_enemy, true];
 (crew _newvehicle) joinSilent _pilot_group;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 _newvehicle setVariable ["GRLIB_counter_TTL", round(time + 3600)];
 {
 	_x setVariable ["GRLIB_counter_TTL", round(time + 3600)];
@@ -31,6 +34,7 @@ private _para_group = [markerpos _spawnsector, _unitclass, GRLIB_side_enemy, "pa
 	_x allowFleeing 0;
 	_x setVariable ["GRLIB_counter_TTL", round(time + 3600)];
 } foreach (units _para_group);
+<<<<<<< HEAD
 
 
 [_newvehicle, _targetpos, _pilot_group, _para_group] spawn {
@@ -57,6 +61,12 @@ private _para_group = [markerpos _spawnsector, _unitclass, GRLIB_side_enemy, "pa
 =======
 	private ["_waypoint"];
 >>>>>>> 30b7c180 (1)
+=======
+
+[_newvehicle, _targetpos, _pilot_group, _para_group] spawn {
+	params [ "_newvehicle", "_targetpos", "_pilot_group", "_para_group"];
+	private ["_waypoint"];
+>>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 	while {(count (waypoints _pilot_group)) != 0} do {deleteWaypoint ((waypoints _pilot_group) select 0);};
 	while {(count (waypoints _para_group)) != 0} do {deleteWaypoint ((waypoints _para_group) select 0);};
 	sleep 1;
@@ -125,9 +135,12 @@ private _para_group = [markerpos _spawnsector, _unitclass, GRLIB_side_enemy, "pa
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 private _para_group = createGroup [GRLIB_side_enemy, true];
 [_targetpos, _para_group] spawn _sendPara;
 waituntil {sleep 3; count (units _para_group) > 0};
 >>>>>>> 99e6f595 (meet resistance)
+=======
+>>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 _para_group;

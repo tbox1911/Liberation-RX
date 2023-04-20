@@ -76,6 +76,7 @@ if !(isNull _unit) then {
 	};
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	// Remove Marker
 	deletemarker format ["PAR_marker_%1", _name];
 
@@ -110,6 +111,8 @@ if !(isNull _unit) then {
 
 =======
 >>>>>>> 04dab3c1 (auto untow + new GRLIB_ammo_truck_load)
+=======
+>>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 	// Delete Body
 	deleteVehicle _unit;
 

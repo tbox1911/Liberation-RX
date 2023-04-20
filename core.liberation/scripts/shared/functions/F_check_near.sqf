@@ -20,6 +20,7 @@ switch ( _list ) do {
 	case "REPAIR" : { _classlist = [repair_offroad]};
 	case "SHOP" : { _classlist = GRLIB_Marker_SHOP};
 <<<<<<< HEAD
+<<<<<<< HEAD
 	case "SPAWNT" : { _classlist = GRLIB_mobile_respawn};
 <<<<<<< HEAD
 	case "SPAWNV" : { _classlist =  [Respawn_truck_typename, huron_typename]};
@@ -29,6 +30,10 @@ switch ( _list ) do {
 =======
 	case "SPAWNV" : { _classlist = [Respawn_truck_typename, huron_typename]};
 >>>>>>> 1654507b (check near)
+=======
+	case "SPAWNT" : { _classlist = GRLIB_mobile_respawn};
+	case "SPAWNV" : { _classlist = [Respawn_truck_typename, huron_typename]};
+>>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 	case "MEDIC" : { _classlist = ai_healing_sources};
 	case "ARSENAL" : { _classlist = [Arsenal_typename]};
 	case "REFUEL" : { _classlist = [canister_fuel_typename, fuelbarrel_typename]};

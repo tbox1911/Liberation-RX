@@ -23,6 +23,7 @@ _setupObjects =
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 	{
 		_boxPos = getPosASL _x;
@@ -40,6 +41,9 @@ _setupObjects =
 =======
 	_vehicle = [_missionPos, selectRandom opfor_boats, true] call F_libSpawnVehicle;
 >>>>>>> 21c28667 (boat name)
+=======
+	_vehicle = [_missionPos, selectRandom opfor_boats, true] call F_libSpawnVehicle;
+>>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	[_aiGroup, _missionPos, _nbUnits, "divers", true] call createCustomGroup;
 	(crew _vehicle) joinSilent _aiGroup;

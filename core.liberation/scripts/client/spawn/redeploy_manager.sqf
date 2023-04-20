@@ -1,6 +1,7 @@
 if (player getVariable ["GRLIB_action_inuse", false]) exitWith {};
 if (count (attachedObjects player) > 0) then {{detach _x} forEach attachedObjects player};
 R3F_LOG_joueur_deplace_objet = objNull;
+<<<<<<< HEAD
 
 private _choiceslist = [];
 private _standard_map_pos = [];
@@ -57,6 +58,47 @@ disableUserInput false;
 deploy = 0;
 _oldsel = -1;
 
+=======
+
+private _choiceslist = [];
+private _standard_map_pos = [];
+private _frame_pos = [];
+private _spawn_str = "";
+private _basenamestr = "BASE CHIMERA";
+
+if (!GRLIB_player_spawned) then {
+	waitUntil {sleep 0.2; !isNil "GRLIB_all_fobs" };
+	waitUntil {sleep 0.2; !isNil "blufor_sectors" };
+	waitUntil {sleep 0.2; !isNil "save_is_loaded" };
+	waitUntil {sleep 0.2; !isNil "introDone" };
+	waitUntil {sleep 0.2; introDone };
+	waitUntil {sleep 0.2; !isNil "cinematic_camera_stop" };
+	waitUntil {sleep 0.2; cinematic_camera_stop };
+	waitUntil {sleep 0.2; !(isNil "dostartgame")};
+	waitUntil {sleep 0.2; dostartgame == 1};
+	waitUntil {sleep 0.2; !(isNil "LRX_arsenal_init_done")};
+	waitUntil {sleep 0.2; LRX_arsenal_init_done };	
+};
+
+fullmap = 0;
+_old_fullmap = 0;
+waitUntil {
+	sleep 0.1;
+	( vehicle player == player && alive player && !dialog )
+};
+
+createDialog "liberation_deploy";
+waitUntil { dialog };
+titleText ["","BLACK IN", 5];
+((findDisplay 5201) displayCtrl 201) ctrlAddEventHandler [ "mouseButtonDblClick" , { deploy = 1; } ];
+_noesckey = (findDisplay 5201) displayAddEventHandler ["KeyDown", "if ((_this select 1) == 1) then { true }"];
+disableUserInput false;
+disableUserInput true;
+disableUserInput false;
+deploy = 0;
+_oldsel = -1;
+
+>>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 showCinemaBorder false;
 camUseNVG false;
 respawn_camera = "camera" camCreate (getposASLW lhd);

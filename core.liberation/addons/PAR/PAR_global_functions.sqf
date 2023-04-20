@@ -133,6 +133,7 @@ PAR_fn_AI_Damage_EH = {
 	_unit setVariable ["PAR_EH_Installed", true];
 	_unit removeAllEventHandlers "HandleDamage";
 <<<<<<< HEAD
+<<<<<<< HEAD
 	_unit addEventHandler ["HandleDamage", { _this call damage_manager_EH }];
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -191,6 +192,10 @@ PAR_fn_AI_Damage_EH = {
 =======
 
 >>>>>>> d8a0a01f (1)
+=======
+	_unit addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
+
+>>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 	if (GRLIB_revive != 0) then {
 		_unit addEventHandler ["HandleDamage", {
 			params ["_unit","","_dam"];
@@ -211,6 +216,7 @@ PAR_fn_AI_Damage_EH = {
 	};
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> dfbe228e (fix disable ai revive)
 	_unit removeAllEventHandlers "Killed";
 	_unit addEventHandler ["Killed", {_this spawn PAR_fn_Killed}];
@@ -219,18 +225,24 @@ PAR_fn_AI_Damage_EH = {
 	_unit removeAllMPEventHandlers "MPKilled";
 	_unit addMPEventHandler ["MPKilled", {_this spawn PAR_fn_death}];
 =======
+=======
+>>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 	if (GRLIB_ACE_enabled) then {
 		_unit addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
 	} else {
 		_unit removeAllMPEventHandlers "MPKilled";
 		_unit addMPEventHandler ["MPKilled", { _this spawn PAR_fn_death }];
 	};
+<<<<<<< HEAD
 >>>>>>> f2284768 (fix insta kill and typo)
+=======
+>>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 	_unit setVariable ["PAR_wounded", false];
 	_unit setVariable ["PAR_myMedic", nil];
 	_unit setVariable ["PAR_busy", nil];
 	_unit setVariable ["PAR_heal", nil];
 	_unit setVariable ["PAR_healed", nil];
+<<<<<<< HEAD
 <<<<<<< HEAD
 	_unit setVariable ["PAR_AI_score", 0, true];
 >>>>>>> dff4f14c (manage rank AI)
@@ -253,6 +265,10 @@ PAR_fn_AI_Damage_EH = {
 =======
 	[_unit] call PAR_EventHandler;
 >>>>>>> e4c60d98 (fix PAR)
+=======
+	_unit setVariable ["PAR_AI_score", 5, true];
+	[_unit] call PAR_EventHandler;
+>>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 };
 
 // Player Section

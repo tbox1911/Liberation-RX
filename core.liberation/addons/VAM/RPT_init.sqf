@@ -22,6 +22,7 @@ RPT_colorList = [
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	["Abstract Red", RPT_texDir + "abstraitrouge.paa"],
 =======
 	["Abstract Red", _texDir + "abstraitrouge.paa"],
@@ -32,6 +33,9 @@ RPT_colorList = [
 =======
 	["Abstract Red", RPT_texDir + "abstraitrouge.paa"],
 >>>>>>> f8164b3e (rpt vip)
+=======
+	["Abstract Red", RPT_texDir + "abstraitrouge.paa"],
+>>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 	["Abstract Green", RPT_texDir + "abstraitvert.paa"],
 	["Abstract Modern", RPT_texDir + "abstraitmoderne.paa"],
 	["Camo Green 1", RPT_texDir + "camovert1.paa"],

@@ -1,15 +1,20 @@
 disableSerialization;
 <<<<<<< HEAD
+<<<<<<< HEAD
 private [ "_overlay", "_hide_HUD", "_attacked_string", "_active_sectors_string", "_color_readiness", "_nearest_active_sector", "_zone_size", "_colorzone", "_bar", "_barwidth" ];
 =======
 
 private [ "_overlay", "_hide_HUD", "_attacked_string", "_active_sectors_string", "_color_readiness", "_nearest_active_sector", "_zone_size", "_colorzone", "_bar", "_barwidth", "_first_iteration" ];
 
 >>>>>>> 30071321 (add private)
+=======
+private [ "_overlay", "_hide_HUD", "_attacked_string", "_active_sectors_string", "_color_readiness", "_nearest_active_sector", "_zone_size", "_colorzone", "_bar", "_barwidth" ];
+>>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 private _overlayshown = false;
 private _sectorcontrols = [201,202,203,244,205];
 private _active_sectors_hint = false;
 private _first_iteration = true;
+<<<<<<< HEAD
 <<<<<<< HEAD
 private _uiticks = 0;
 GRLIB_ui_notif = "";
@@ -20,6 +25,11 @@ GRLIB_ui_notif = "";
 private _uiticks = 0;
 
 >>>>>>> 30071321 (add private)
+=======
+private _uiticks = 0;
+GRLIB_ui_notif = "";
+
+>>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 waituntil {sleep 1; GRLIB_player_spawned};
 waituntil {sleep 1; !isNil "resources_infantry"};
 
@@ -48,10 +58,14 @@ while { true } do {
 		(_overlay displayCtrl (267)) ctrlSetText format [ "%1", GRLIB_ui_notif ];
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if ((markerPos "opfor_capture_marker") distance markers_reset > 100 ) then {
 =======
 		if ((getmarkerpos "opfor_capture_marker") distance markers_reset > 100 ) then {
 >>>>>>> 30071321 (add private)
+=======
+		if ((markerPos "opfor_capture_marker") distance markers_reset > 100 ) then {
+>>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 			_attacked_string = [ markerpos "opfor_capture_marker" ] call F_getLocationName;
 			(_overlay displayCtrl (401)) ctrlShow true;
 			(_overlay displayCtrl (402)) ctrlSetText _attacked_string;

@@ -224,6 +224,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (buildtype == 1 && _build_item select 1 >= 1 && (count (_bros) >= GRLIB_squad_size + GRLIB_squad_size_bonus)) then {
 =======
 		if ((_build_item select 1 >= 1 ) && (count (_bros) >= GRLIB_squad_size + GRLIB_squad_size_bonus)) then {
@@ -237,6 +238,9 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 =======
 		if (buildtype == 1 && _build_item select 1 >= 1 && (count (_bros) >= GRLIB_squad_size + GRLIB_squad_size_bonus || !(player getVariable ["GRLIB_squad_context_loaded", false])) ) then {
 >>>>>>> adac27c6 (1)
+=======
+		if (buildtype == 1 && _build_item select 1 >= 1 && (count (_bros) >= GRLIB_squad_size + GRLIB_squad_size_bonus || !(player getVariable ["GRLIB_squad_context_loaded", false])) ) then {
+>>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 			_squad_full = true;
 		};
 	};
