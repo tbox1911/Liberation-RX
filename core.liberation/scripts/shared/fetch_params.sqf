@@ -1,40 +1,10 @@
-GRLIB_difficulty_modifier = ["Difficulty",1] call bis_fnc_getParamValue;
-GRLIB_day_factor = ["DayDuration",1] call bis_fnc_getParamValue;
-GRLIB_night_factor = ["NightDuration",1] call bis_fnc_getParamValue;
-GRLIB_resources_multiplier = ["ResourcesMultiplier",1] call bis_fnc_getParamValue;
-GRLIB_fatigue = ["Fatigue",0] call bis_fnc_getParamValue;
-GRLIB_revive = ["Revive",2] call bis_fnc_getParamValue;
-GRLIB_tk_mode = ["TK_mode",1] call bis_fnc_getParamValue;
-GRLIB_tk_count = ["TK_count",4] call bis_fnc_getParamValue;
-GRLIB_introduction = ["Introduction",1] call bis_fnc_getParamValue;
-GRLIB_deployment_cinematic = ["DeploymentCinematic",1] call bis_fnc_getParamValue;
+//--- LRX Fetch Misson Parameters ----------------------------------------
 GRLIB_unitcap = ["Unitcap",1] call bis_fnc_getParamValue;
-GRLIB_adaptive_opfor = ["AdaptToPlayercount",1] call bis_fnc_getParamValue;
-GRLIB_civilian_activity = ["Civilians",1] call bis_fnc_getParamValue;
-GRLIB_wildlife_manager = ["Wildlife",1] call bis_fnc_getParamValue;
-GRLIB_Patrol_manager = ["Patrol",1] call bis_fnc_getParamValue;
-GRLIB_sector_radius = ["SectorRadius",0] call bis_fnc_getParamValue;
-GRLIB_admin_menu = ["AdminMenu",1] call bis_fnc_getParamValue;
-GRLIB_param_wipe_savegame_1 = ["WipeSave1",0] call bis_fnc_getParamValue;
-GRLIB_param_wipe_savegame_2 = ["WipeSave2",0] call bis_fnc_getParamValue;
-GRLIB_param_wipe_keepscore = ["KeepScore",0] call bis_fnc_getParamValue;
-GRLIB_passive_income = ["PassiveIncome",0] call bis_fnc_getParamValue;
-GRLIB_halo_param = ["HaloJump",1] call bis_fnc_getParamValue;
-GRLIB_use_whitelist = ["Whitelist",1] call bis_fnc_getParamValue;
-GRLIB_cleanup_vehicles = ["CleanupVehicles",2] call bis_fnc_getParamValue;
-GRLIB_csat_aggressivity = ["Aggressivity",1] call bis_fnc_getParamValue;
-GRLIB_weather_param = ["Weather",4] call bis_fnc_getParamValue;
-GRLIB_ammo_bounties = [ "AmmoBounties",0] call bis_fnc_getParamValue;
-GRLIB_civ_penalties = [ "CivPenalties",0] call bis_fnc_getParamValue;
-GRLIB_remote_sensors = [ "DisableRemoteSensors",0] call bis_fnc_getParamValue;
-GRLIB_blufor_defenders = [ "BluforDefenders",1] call bis_fnc_getParamValue;
-GRLIB_autodanger = [ "Autodanger",0] call bis_fnc_getParamValue;
-GRLIB_maximum_fobs = [ "MaximumFobs",5] call bis_fnc_getParamValue;
-GRLIB_fob_type = [ "FobType",0] call bis_fnc_getParamValue;
-GRLIB_huron_type = [ "HuronType", 0] call bis_fnc_getParamValue;
-GRLIB_squad_size = ["SquadSize",3] call bis_fnc_getParamValue;
-GRLIB_max_squad_size = ["MaxSquadSize",7] call bis_fnc_getParamValue;
-GRLIB_max_spawn_point = ["MaxSpawnPoint",2] call bis_fnc_getParamValue;
+GRLIB_fancy_info = ["FancyInfo",1] call bis_fnc_getParamValue;
+GRLIB_hide_opfor = ["HideOpfor",0] call bis_fnc_getParamValue;
+GRLIB_thermic = ["Thermic",1] call bis_fnc_getParamValue;
+GRLIB_disable_death_chat = ["DeathChat", 1] call bis_fnc_getParamValue;
+//------------------------------------------------------------------------
 GRLIB_enable_arsenal = ["EnableArsenal",1] call bis_fnc_getParamValue;
 GRLIB_limited_arsenal = ["LimitedArsenal",1] call bis_fnc_getParamValue;
 GRLIB_filter_arsenalCUP = ["EnableFilterCUP",0] call bis_fnc_getParamValue;
@@ -44,17 +14,57 @@ GRLIB_filter_arsenalEJW = ["EnableFilterEJW",0] call bis_fnc_getParamValue;
 GRLIB_filter_arsenalGM = ["EnableFilterGM",0] call bis_fnc_getParamValue;
 GRLIB_filter_arsenalOPTRE = ["EnableFilterOPTRE",0] call bis_fnc_getParamValue;
 GRLIB_filter_arsenalSOG = ["EnableFilterSOG",0] call bis_fnc_getParamValue;
-GRLIB_permissions_param = ["Permissions",1] call bis_fnc_getParamValue;
-GRLIB_permission_vehicles = ["EnableLock",1] call bis_fnc_getParamValue;
-GRLIB_forced_loadout = ["ForcedLoadout",1] call bis_fnc_getParamValue;
-GRLIB_fancy_info = ["FancyInfo",1] call bis_fnc_getParamValue;
-GRLIB_hide_opfor = ["HideOpfor",0] call bis_fnc_getParamValue;
-GRLIB_thermic = ["Thermic",1] call bis_fnc_getParamValue;
+//------------------------------------------------------------------------
 GRLIB_mod_preset_west = ["ModPresetWest", 0] call bis_fnc_getParamValue;
 GRLIB_mod_preset_east = ["ModPresetEast", 0] call bis_fnc_getParamValue;
-GRLIB_force_load = ["ForceLoading", 0] call bis_fnc_getParamValue;
+GRLIB_forced_loadout = ["ForcedLoadout",1] call bis_fnc_getParamValue;
 GRLIB_opfor_english = ["EnglishOpfor", 0] call bis_fnc_getParamValue;
-GRLIB_disable_death_chat = ["DeathChat", 1] call bis_fnc_getParamValue;
+GRLIB_fob_type = [ "FobType",0] call bis_fnc_getParamValue;
+GRLIB_huron_type = [ "HuronType", 0] call bis_fnc_getParamValue;
+GRLIB_maximum_fobs = [ "MaximumFobs",5] call bis_fnc_getParamValue;
+GRLIB_autodanger = [ "Autodanger",0] call bis_fnc_getParamValue;
+GRLIB_passive_income = ["PassiveIncome",0] call bis_fnc_getParamValue;
+GRLIB_introduction = ["Introduction",1] call bis_fnc_getParamValue;
+GRLIB_deployment_cinematic = ["DeploymentCinematic",1] call bis_fnc_getParamValue;
+//------------------------------------------------------------------------
+GRLIB_difficulty_modifier = ["Difficulty",1] call bis_fnc_getParamValue;
+GRLIB_csat_aggressivity = ["Aggressivity",1] call bis_fnc_getParamValue;
+GRLIB_adaptive_opfor = ["AdaptToPlayercount",1] call bis_fnc_getParamValue;
+GRLIB_sector_radius = ["SectorRadius",0] call bis_fnc_getParamValue;
+GRLIB_day_factor = ["DayDuration",1] call bis_fnc_getParamValue;
+GRLIB_night_factor = ["NightDuration",1] call bis_fnc_getParamValue;
+GRLIB_weather_param = ["Weather",4] call bis_fnc_getParamValue;
+GRLIB_resources_multiplier = ["ResourcesMultiplier",1] call bis_fnc_getParamValue;
+GRLIB_max_spawn_point = ["MaxSpawnPoint",2] call bis_fnc_getParamValue;
+//------------------------------------------------------------------------
+GRLIB_fatigue = ["Fatigue",0] call bis_fnc_getParamValue;
+GRLIB_revive = ["Revive",3] call bis_fnc_getParamValue;
+GRLIB_tk_mode = ["TK_mode",1] call bis_fnc_getParamValue;
+GRLIB_tk_count = ["TK_count",4] call bis_fnc_getParamValue;
+GRLIB_squad_size = ["SquadSize",3] call bis_fnc_getParamValue;
+GRLIB_max_squad_size = ["MaxSquadSize",7] call bis_fnc_getParamValue;
+GRLIB_permissions_param = ["Permissions",1] call bis_fnc_getParamValue;
+GRLIB_permission_vehicles = ["EnableLock",1] call bis_fnc_getParamValue;
+//------------------------------------------------------------------------
+GRLIB_civilian_activity = ["Civilians",1] call bis_fnc_getParamValue;
+GRLIB_wildlife_manager = ["Wildlife",1] call bis_fnc_getParamValue;
+GRLIB_Patrol_manager = ["Patrol",1] call bis_fnc_getParamValue;
+GRLIB_ammo_bounties = [ "AmmoBounties",0] call bis_fnc_getParamValue;
+GRLIB_civ_penalties = [ "CivPenalties",0] call bis_fnc_getParamValue;
+GRLIB_halo_param = ["HaloJump",1] call bis_fnc_getParamValue;
+GRLIB_blufor_defenders = [ "BluforDefenders",1] call bis_fnc_getParamValue;
+//------------------------------------------------------------------------
+GRLIB_admin_menu = ["AdminMenu",1] call bis_fnc_getParamValue;
+GRLIB_cleanup_vehicles = ["CleanupVehicles",2] call bis_fnc_getParamValue;
+GRLIB_use_whitelist = ["Whitelist",1] call bis_fnc_getParamValue;
+GRLIB_autosave_timer = ["AutoSave",0] call bis_fnc_getParamValue;
+//------------------------------------------------------------------------
+GRLIB_param_wipe_savegame_1 = ["WipeSave1",0] call bis_fnc_getParamValue;
+GRLIB_param_wipe_savegame_2 = ["WipeSave2",0] call bis_fnc_getParamValue;
+GRLIB_param_wipe_keepscore = ["KeepScore",0] call bis_fnc_getParamValue;
+GRLIB_force_load = ["ForceLoading", 0] call bis_fnc_getParamValue;
+GRLIB_remote_sensors = [ "DisableRemoteSensors",0] call bis_fnc_getParamValue;
+//------------------------------------------------------------------------
 
 // Define constant
 [] call compileFinal preprocessFileLineNUmbers "gameplay_constants.sqf";
