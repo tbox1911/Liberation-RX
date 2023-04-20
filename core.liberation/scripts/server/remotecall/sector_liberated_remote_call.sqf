@@ -86,5 +86,5 @@ if ( _liberated_sector in sectors_tower ) then {
 	_nextower = Radio_tower createVehicle _pos;
 	_nextower setpos _pos;
 	_nextower setVectorUp [0,0,1];
-	_nextower setVariable ["GRLIB_Radio_Tower", true];
+	_nextower setVariable ["GRLIB_Radio_Tower", true, true];
 };

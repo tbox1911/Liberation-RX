@@ -120,6 +120,11 @@ if ( isServer ) then {
 					private _ai_score = _killer getVariable ["PAR_AI_score", nil];
 					if (!isNil "_ai_score") then {
 						_killer setVariable ["PAR_AI_score", (_ai_score - 1), true];
+						_leader = leader group _killer;
+						_vehicle = objectParent _killer;
+						if (!isNull _vehicle && objectParent _leader == _vehicle && isPlayer _leader && (driver _vehicle == _leader || commander _vehicle == _leader)) then {
+							[_leader, 1] call F_addScore;
+						};
 					};
 				};
 				if ( side (group _unit) == GRLIB_side_friendly ) then {

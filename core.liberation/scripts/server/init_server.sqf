@@ -125,7 +125,7 @@ resistance setFriend [GRLIB_side_enemy, 0];
 GRLIB_side_enemy setFriend [resistance, 0];
 
 addMissionEventHandler ['HandleDisconnect', cleanup_player];
-addMissionEventHandler ["MPEnded", { diag_log "--- LRX Mission End"; [] call save_game_mp }];
+addMissionEventHandler ["MPEnded", { diag_log "--- LRX Mission End!" }];
 
 // AI Skill
 [ 
@@ -136,6 +136,7 @@ addMissionEventHandler ["MPEnded", { diag_log "--- LRX Mission End"; [] call sav
  ]
 ] call BIS_fnc_EXP_camp_dynamicAISkill;
 
+sleep 3;
 GRLIB_init_server = true;
 publicVariable "GRLIB_init_server";
 diag_log "--- Server Init stop ---";

@@ -1,3 +1,7 @@
+params [ ["_mission_cost", 0] ];
+
+diag_log format ["--- LRX call static mission: Fob Convoy Hijack at %1", time];
+
 if ( count (sectors_allSectors - blufor_sectors - sectors_tower) < 4) exitWith { [gamelogic, "Could not find enough free sectors for convoy hijack mission"] remoteExec ["globalChat", 0] };
 
 private _convoy_destinations_markers = [];
@@ -19,7 +23,6 @@ private _boxes_amount = 0;
 } foreach box_transport_config;
 if ( _boxes_amount == 0 ) exitWith { diag_log "Opfor ammobox truck classname doesn't allow for ammobox transport, correct your classnames.sqf"; };
 
-params [ ["_mission_cost", 0] ];
 resources_intel = resources_intel - _mission_cost;
 GRLIB_secondary_in_progress = 1; publicVariable "GRLIB_secondary_in_progress";
 
@@ -111,7 +114,7 @@ _convoy_marker setMarkerText (localize "STR_SECONDARY_CSAT_CONVOY");
 _convoy_marker setMarkerType "o_armor";
 _convoy_marker setMarkerColor GRLIB_color_enemy_bright;
 
-private _convoy_marker_list = [];
+private _convoy_marker_list = [_convoy_marker];
 for "_i" from 0 to ((count _convoy_destinations) -1) do {
 	_convoy_marker_wp = createMarkerLocal [ format [ "convoymarkerwp%1", _i], _convoy_destinations select _i];
 	_convoy_marker_wp setMarkerText (localize "STR_SECONDARY_CSAT_CONVOY_WP");
@@ -173,11 +176,10 @@ while { _mission_in_progress } do {
 	} forEach (units _convoy_group);
 };
 
-sleep 20;
+sleep 5;
 
 //-----------------------------------------
 // Mission cleanup
-deleteMarker _convoy_marker;
 { deleteMarker _x } foreach _convoy_marker_list;
 { moveOut _x; deleteVehicle _x } forEach units _troops_group;
 

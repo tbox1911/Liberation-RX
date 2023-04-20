@@ -620,6 +620,7 @@ AR_Advanced_Rappelling_Install = {
 
 	AR_Rappel_From_Heli_Action_Check = {
 		params ["_player","_vehicle"];
+		if(lifeState _player == 'INCAPACITATED') exitWith {false};
 		if!([_vehicle] call AR_Is_Supported_Vehicle) exitWith {false};
 		if(((getPos _vehicle) select 2) < 5 ) exitWith {false};
 		if(((getPos _vehicle) select 2) > 150 ) exitWith {false};

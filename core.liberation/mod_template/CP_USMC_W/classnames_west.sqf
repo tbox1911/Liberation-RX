@@ -35,10 +35,9 @@ infantry_units_west = [
 	["CUP_B_USMC_Soldier_AR",1,0,0,GRLIB_perm_inf],
 	["CUP_B_USMC_Soldier_AT",1,0,0,GRLIB_perm_inf],
 	["CUP_B_USMC_Soldier_Marksman",1,0,0,GRLIB_perm_inf],
-	["CUP_B_USMC_SpecOps_des",1,0,0,GRLIB_perm_log],
 	["CUP_B_HIL_Diver_MP5_SF",1,0,0,GRLIB_perm_log],
 	["CUP_B_USMC_Soldier_MG",1,0,0,GRLIB_perm_log],
-	["CUP_B_USMC_Soldier_AA_des",1,0,0,GRLIB_perm_log],
+	["CUP_B_USMC_Soldier_AA",1,0,0,GRLIB_perm_log],
 	["CUP_B_USMC_Soldier_HAT",1,0,0,GRLIB_perm_tank],
 	["CUP_B_USMC_Sniper_M40A3",1,0,0,GRLIB_perm_tank],
 	["CUP_B_USMC_Sniper_M107",1,0,0,GRLIB_perm_air],
@@ -47,7 +46,8 @@ infantry_units_west = [
 ];
 
 units_loadout_overide = [
-	"CUP_B_USMC_SpecOps_des"
+	"CUP_B_USMC_Soldier_AA",
+	"CUP_B_USMC_Soldier_HAT"
 ];
 
 light_vehicles = [

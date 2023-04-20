@@ -58,6 +58,8 @@ light_vehicles = [
 	["I_Truck_02_transport_F",5,30,15,GRLIB_perm_log],
 	["I_Truck_02_covered_F",5,30,15,GRLIB_perm_log],
 	["I_LT_01_cannon_F",2,200,12,GRLIB_perm_log],
+	["I_LT_01_AT_F",2,200,12,GRLIB_perm_tank],
+	["I_LT_01_AA_F",2,200,12,GRLIB_perm_air],
 	["I_LSV_01_unarmed_F",2,25,10,GRLIB_perm_inf],
 	["I_LSV_01_armed_F",5,100,10,GRLIB_perm_log],
 	["I_UGV_01_F",5,10,5,GRLIB_perm_inf],

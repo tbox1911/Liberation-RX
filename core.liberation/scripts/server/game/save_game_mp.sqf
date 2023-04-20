@@ -66,7 +66,7 @@ if ( GRLIB_endgame == 1 ) then {
             ( speed vehicle _x < 5 ) &&
             ( isNull attachedTo _x ) &&
             (((getPosATL _x) select 2) < 10 ) &&
-            !(_x getVariable ["GRLIB_vehicle_owner", ""] == "server")
+            (_x getVariable ["GRLIB_vehicle_owner", ""] != "server")
             } ] call BIS_fnc_conditionalSelect;
 
         _all_buildings = _all_buildings + _nextbuildings;
@@ -182,6 +182,7 @@ if ( GRLIB_endgame == 1 ) then {
 
     profileNamespace setVariable [ GRLIB_save_key, greuh_liberation_savegame ];
     saveProfileNamespace;
+    diag_log format [ "--- LRX Save %1 in Profile at %2", GRLIB_save_key, time ];
 };
 
 diag_log format [ "--- LRX Save finish at %1", time ];

@@ -19,8 +19,8 @@ _filtered_possible_sectors = [];
 		};
 	};
 
-	if ( !isNil 'used_positions' ) then {
-		if ( _current_sector in used_positions ) then {
+	if ( !isNil 'GRLIB_secondary_used_positions' ) then {
+		if ( _current_sector in GRLIB_secondary_used_positions ) then {
 			_accept_current_sector = false;
 		};
 	};

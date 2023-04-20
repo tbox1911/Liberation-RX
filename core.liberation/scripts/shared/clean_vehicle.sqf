@@ -1,5 +1,7 @@
 params ["_vehicle"];
 if (isNull _vehicle) exitWith {};
+if (!isNull (_vehicle getVariable ["R3F_LOG_est_transporte_par", objNull])) exitWith {};
+
 diag_log format [ "Cleanup vehicle %1 at %2", typeOf _vehicle, time ];
 
 // Detach

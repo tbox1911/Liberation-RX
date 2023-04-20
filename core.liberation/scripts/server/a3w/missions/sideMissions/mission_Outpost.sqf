@@ -7,6 +7,8 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
+private ["_grpdefenders", "_grpsentry"];
+
 _setupVars = {
 	_missionType = "Enemy Outpost";
 	_locationsArray = [SpawnMissionMarkers] call checkSpawn;
@@ -17,7 +19,9 @@ _setupObjects = {
 	private _base_output = [_missionPos, false, true] call createOutpost;
 	_vehicles = _base_output select 0;
 	//_objectives = _base_output select 1;
-	_aiGroup = _base_output select 2;
+	_grpdefenders = _base_output select 2;
+	_grpsentry = _base_output select 3;
+	_aiGroup = _grpdefenders;
 
 	_missionHintText = format ["An armed <t color='%1'>Outpost</t> containing weapon crates has been spotted near the marker, Go capture it!", sideMissionColor];
 	true;
@@ -27,7 +31,10 @@ _waitUntilMarkerPos = nil;
 _waitUntilExec = nil;
 _waitUntilCondition = nil;
 
-_failedExec = nil;
+_failedExec = {
+	{ deleteVehicle _x } forEach units _grpdefenders;
+	{ deleteVehicle _x } forEach units _grpsentry;
+};
 
 _successExec = {
 	// Mission complete

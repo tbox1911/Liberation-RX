@@ -90,7 +90,7 @@ while {lifeState _unit == "INCAPACITATED" && time <= _unit getVariable ["PAR_Ble
       _medic = _unit getVariable ["PAR_myMedic", nil];
       if (isNil "_medic") then {
         _unit groupchat localize "STR_PAR_UC_01";
-        _medic = _unit call PAR_fn_medic;
+        _medic = [_unit] call PAR_fn_medic;
         if (!isNil "_medic") then { [_unit, _medic] call PAR_fn_911 };
       };
     } else {
