@@ -10,7 +10,8 @@ private _tunnel_building = nearestObjects [_start_pos, ["Land_vn_tunnel_01_build
 private _tunnel = missionNameSpace getVariable [_tunnel_name, "error_no_tunnel"];
 
 // count players
-_active_players = count ([(units GRLIB_side_friendly), { alive _x && (_x distance2D _start_pos) < 200}] call BIS_fnc_conditionalSelect);
+_active_players = { alive _x && (_x distance2D _start_pos) < 200} count (units GRLIB_side_friendly);
+
 if (_active_players > 1) exitWith {
     private _first_grp = _tunnel getVariable ["SOG_enemy_group", grpNull];
     private _new_grp = [_tunnel_building, GRLIB_side_enemy, 5, ['vn_o_men_vc_regional_05','vn_o_men_vc_regional_07']] call vn_fnc_tunnel_spawn_units;
@@ -28,8 +29,8 @@ if (_active_players == 1) then {
 // loop
 private _mission_continue = true;
 while { _mission_continue } do {
-    _active_players = count ([(units GRLIB_side_friendly), { alive _x && (_x distance2D _start_pos) < 200}] call BIS_fnc_conditionalSelect);
-    _active_enemy = count ([(units _grp), { alive _x && (_x distance2D _start_pos) < 200}] call BIS_fnc_conditionalSelect);
+    _active_players = { alive _x && (_x distance2D _start_pos) < 200} count (units GRLIB_side_friendly);
+    _active_enemy = { alive _x && (_x distance2D _start_pos) < 200} count (units _grp);
     if (_active_players == 0 || _active_enemy == 0) then { _mission_continue = false };
     sleep 2;
 };

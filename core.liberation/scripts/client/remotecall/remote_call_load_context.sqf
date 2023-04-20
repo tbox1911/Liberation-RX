@@ -18,7 +18,7 @@ if (count (_context select 2) >= 1 ) then {
 
     {
         _unit = _grp createUnit [(_x select 0), getPosATL player, [], 10, "NONE"];
-        sleep 0.1;
+        waitUntil {!isNull _unit};
         [_unit] joinSilent _grp;
         _unit setMass 10;
         _unit setUnitRank (_x select 1);
@@ -27,7 +27,7 @@ if (count (_context select 2) >= 1 ) then {
         _unit enableIRLasers true;
         _unit enableGunLights "Auto";
         [_unit, _x select 2] call F_setLoadout;
-        sleep 0.1;
+        sleep 0.2;
     } foreach (_context select 2);
 
     _grp selectLeader player;
