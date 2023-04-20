@@ -13,7 +13,8 @@ _tutorial_titles = [
 	localize "STR_TUTO_TITLE8",
 	localize "STR_TUTO_TITLE9",
 	localize "STR_TUTO_TITLE10",
-	localize "STR_TUTO_TITLE11"
+	localize "STR_TUTO_TITLE11",
+	localize "STR_TUTO_TITLE12"
 ];
 
 _tutorial_pages = [
@@ -27,7 +28,8 @@ _tutorial_pages = [
 	"STR_TUTO_TEXT8",
 	"STR_TUTO_TEXT9",
 	"STR_TUTO_TEXT10",
-	"STR_TUTO_TEXT11"
+	"STR_TUTO_TEXT11",
+	"STR_TUTO_TEXT12"
 ];
 
 while { true } do {
