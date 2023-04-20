@@ -4,9 +4,9 @@ private [ "_grouptype", "_vehicletype" ];
 _grouptype = 'infantry';
 _vehicletype = '';
 {
-	if ( vehicle _x != _x && _vehicletype == '' ) then {
-		if ( ((gunner vehicle _x) == _x) || ((driver  vehicle _x) == _x) || ((commander vehicle _x) == _x) ) then {
-			_vehicletype = typeof vehicle _x;
+	if ( objectParent _x != _x && _vehicletype == '' ) then {
+		if ( ((gunner objectParent _x) == _x) || ((driver  objectParent _x) == _x) || ((commander objectParent _x) == _x) ) then {
+			_vehicletype = typeof objectParent _x;
 		};
 	};
 } foreach units _grp;

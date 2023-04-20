@@ -120,8 +120,8 @@ _changed = false;
 while {true} do {
 	waituntil {sleep 1;!isNull player && GRLIB_player_spawned};
 
-	if !(player isEqualTo vehicle player) then {
-		_vehicle = vehicle player;
+	if !(player isEqualTo objectParent player) then {
+		_vehicle = objectParent player;
 		_isTaru = _vehicle isKindOf "O_Heli_Transport_04_F";
 		if (_isTaru) then {
 			_currentpod = _vehicle call HALV_fnc_checkattachedpods;

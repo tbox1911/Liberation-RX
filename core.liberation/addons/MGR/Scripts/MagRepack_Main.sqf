@@ -35,7 +35,7 @@ outlw_MR_createDialog =
 	outlw_MR_blur ppEffectAdjust [1.5];
 	outlw_MR_blur ppEffectCommit 0;
 
-	if (vehicle player == player) then
+	if (objectParent player == player) then
 	{
 		_stance = "Pknl";
 		_raised = "Sras";
@@ -201,7 +201,7 @@ outlw_MR_populateMagListBox =
 		{
 			_magCountStr = " " + _magCountStr;
 		};
-		
+
 		//Added: ListBox version for 1.48 - GiPPO
 		private ["_magname","_text"];
 		_magName = ([(getText(configFile >> "cfgMagazines" >> _magTypes select _n >> "DisplayName")), 25] call outlw_MR_shortString);
@@ -222,7 +222,7 @@ outlw_MR_populateMagListBox =
 outlw_MR_filter =
 {
 	// Added additional tracer check to avoid repacks between some tracer and non-tracer variants - GiPPO
-	
+
 	private ["_this", "_magTypes", "_magAmmoCounts", "_magAmmoCaps", "_ammoType", "_returnTypes", "_returnCounts", "_returnCaps", "_ammoTracer","_userFilter"];
 
 	_magTypes = _this select 0;
@@ -233,7 +233,7 @@ outlw_MR_filter =
 	_ammoTracer = 0;
 	_ammoTracer = (getNumber(configFile >> "cfgMagazines" >> outlw_MR_sourceType >> "tracersEvery"));
 	_userfilter = false;
-	
+
 	if (_ammoType == "") then
 	{
 		_ammoType = (getText(configFile >> "cfgMagazines" >> outlw_MR_targetType >> "ammo"));
@@ -894,7 +894,7 @@ outlw_MR_onDialogDestroy =
 	private ["_endingInfo", "_sTCA", "_eTCA", "_snTCA", "_enTCA", "_output", "_toAdd", "_dif", "_difStr", "_n", "_a"];
 
 	ppEffectDestroy outlw_MR_blur;
-	
+
 		if (outlw_MR_sourceType != "") then
 		{
 			call outlw_MR_clearSource;
@@ -904,7 +904,7 @@ outlw_MR_onDialogDestroy =
 		{
 			call outlw_MR_clearTarget;
 		};
-		
+
 	if (outlw_MR_debugMode) then
 	{
 		_endingInfo = call outlw_MR_debugInfo;

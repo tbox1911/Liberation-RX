@@ -5,7 +5,7 @@ hidebody _unit;
 
 if (_unit == player) then {
 	_pos = getPosATL _unit;
-	if ( vehicle player == player && _pos distance2D lhd >= 1000 && _pos distance2D ([] call F_getNearestFob) >= GRLIB_sector_size ) then {
+	if ( objectParent player == player && _pos distance2D lhd >= 1000 && _pos distance2D ([] call F_getNearestFob) >= GRLIB_sector_size ) then {
 		_unit setPos zeropos;
 		_grave = createVehicle [(selectRandom GRLIB_player_grave), _pos, [], 0, "CAN_COLLIDE"];
 		_grave setvariable ["GRLIB_grave_message", format ["%1 - R.I.P -", name player], true];

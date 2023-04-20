@@ -10,7 +10,7 @@ while { true } do {
 
 	// Man
 	_near_man = [player nearEntities [["Man"], _searchradius], {
- 		(alive _x) && vehicle _x == _x &&
+ 		(alive _x) && objectParent _x == _x &&
 		!(_x in [playableUnits + switchableUnits]) &&
 		(side _x == GRLIB_side_civilian || side _x == GRLIB_side_resistance) &&
 		isNil {_x getVariable "GRLIB_speak_action"}

@@ -72,11 +72,11 @@ if (alive player) then {
 	waitUntil {
 		hintSilent format [localize "STR_TAXI_ARRIVED", round (_stop - time)];
 		sleep 1;
-		(vehicle player == _vehicle || time > _stop)
+		(objectParent player == _vehicle || time > _stop)
 	};
 	hintSilent "";
 
-	if (vehicle player == _vehicle) then {
+	if (objectParent player == _vehicle) then {
 		_idact_dest = _vehicle addAction [format ["<t color='#8000FF'>%1</t>", localize "STR_TAXI_ACTION1"], "addons\TAXI\taxi_pickdest.sqf","",999,true,true,"","vehicle _this == _target"];
 		_idact_retr = _vehicle addAction [format ["<t color='#FF0080'>%1</t>", localize "STR_TAXI_ACTION2"], {player setVariable ["GRLIB_taxi_called", nil, true]},"",998,true,true,"","vehicle _this == _target"];
 		waitUntil {
