@@ -22,7 +22,7 @@ _medic allowFleeing 0;
 _medic allowDamage true;
 
 _dist = round (_wnded distance2D _medic);
-if ( _dist < 6 ) then {
+if ( _dist <= 6 ) then {
   [_wnded,_medic,_timer] spawn MGI_fn_checkMedic;
 } else {
   if (_dist < 25) then {
