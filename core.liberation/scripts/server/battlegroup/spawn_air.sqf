@@ -22,11 +22,10 @@ for "_i" from 1 to _planes_number do {
 	_newvehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	{ _x addMPEventHandler ["MPKilled", {_this spawn kill_manager}]; } foreach (crew _newvehicle);
 	(crew _newvehicle) joinSilent _air_grp;
-	sleep 1;
+	sleep 5;
 };
 
 while {(count (waypoints _air_grp)) != 0} do {deleteWaypoint ((waypoints _air_grp) select 0);};
-sleep 0.2;
 {_x doFollow leader _air_grp} foreach units _air_grp;
 sleep 0.2;
 
@@ -61,3 +60,36 @@ _waypoint = _air_grp addWaypoint [ _first_objective, 500];
 _waypoint setWaypointType "CYCLE";
 
 _air_grp setCurrentWaypoint [ _air_grp, 2];
+sleep 60;
+
+while {
+	sleep 5;
+	{( alive _x )} count (units _air_grp) > 0
+ } do {
+
+	{
+		private _unit = _x;
+		if ( alive _unit && vehicle _unit == _unit ) then {
+			private _sectors = (sectors_allSectors - blufor_sectors);
+			if (_side == GRLIB_side_friendly) then {_sectors = blufor_sectors};
+			private _nearest_sector = [ 10000, getPos _unit, _sectors ] call F_getNearestSector;
+
+			if (_nearest_sector != "") then {
+				private _flee_grp = createGroup [_side, true];
+				[_unit] joinSilent _flee_grp;
+
+				while {(count (waypoints _flee_grp)) != 0} do {deleteWaypoint ((waypoints _flee_grp) select 0);};
+				{_x doFollow leader _flee_grp} foreach units _flee_grp;
+				sleep 0.2;
+
+				_waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 50];
+				_waypoint setWaypointType "MOVE";
+				_waypoint setWaypointSpeed "FULL";
+				_waypoint setWaypointBehaviour "AWARE";
+				_waypoint setWaypointCombatMode "GREEN";
+				_waypoint setWaypointStatements ["true", "deleteVehicle this"];
+			};
+		};
+	} foreach units _air_grp;
+
+};

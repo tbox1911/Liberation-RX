@@ -15,7 +15,6 @@ if ( _sector in sectors_bigtown ) then {
 
 for "_i" from 1 to _nbcivs do {
 	_grp = createGroup [GRLIB_side_civilian, true];
-	sleep 0.5;
 	_spawnpos = [(((_sectorpos select 0) + (75 * _spread)) - (random (150 * _spread))),(((_sectorpos select 1) + (75 * _spread)) - (random (150 * _spread))),0];
 	( selectRandom civilians ) createUnit [_spawnpos, _grp, "this addMPEventHandler [""MPKilled"", {_this spawn kill_manager}]", 0.5, "PRIVATE"];
 	_nextciv = ((units _grp) select 0);

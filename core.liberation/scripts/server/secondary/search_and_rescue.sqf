@@ -59,10 +59,7 @@ private _nbsentry = 2 + (floor (random 3));
 for [ {_idx=0},{_idx < _nbsentry},{_idx=_idx+1} ] do {
 	opfor_sentry createUnit [ [ _pilotsPos, 1, random 360 ] call BIS_fnc_relPos, _grpsentry,"this addMPEventHandler [""MPKilled"", {_this spawn kill_manager}]", 0.5, "private"];
 };
-
 (leader _grpsentry) setDir (random 360);
-
-(opfor_transport_truck createVehicle ([ getpos _helowreck, 25, random 360 ] call BIS_fnc_relPos)) setDir random 360;
 
 private _vehicle_pool = opfor_vehicles;
 if ( combat_readiness < 50 ) then {
@@ -72,6 +69,7 @@ if ( combat_readiness < 50 ) then {
 private _vehtospawn = [];
 private _spawnchances = [75,50,15];
 { if (random 100 < _x ) then { _vehtospawn pushBack (selectRandom _vehicle_pool); }; } foreach _spawnchances;
+
 { ( [ [ getpos _helowreck, 30 + (random 30), random 360 ] call BIS_fnc_relPos , _x, true ] call F_libSpawnVehicle ) addMPEventHandler ['MPKilled', {_this spawn kill_manager}]; } foreach _vehtospawn;
 
 secondary_objective_position = getpos _helowreck;
