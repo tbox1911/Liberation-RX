@@ -115,6 +115,7 @@ GRLIB_side_enemy setFriend [resistance, 0];
 //allUnits apply { if ((getPos _x) distance2D lhd < 500 && side _x != GRLIB_side_friendly) then {[_x] joinSilent _group} };
 
 addMissionEventHandler ['HandleDisconnect', cleanup_player];
-addMissionEventHandler ["MPEnded", {diag_log "LRX - MP End."}];
+addMissionEventHandler ["MPEnded", {diag_log "--- LRX MP Mission End"}];
+addMissionEventHandler ["Ended", {diag_log "--- LRX Mission End"}];
 GRLIB_init_server = true; publicVariable "GRLIB_init_server";
 diag_log "--- Server Init stop ---";
