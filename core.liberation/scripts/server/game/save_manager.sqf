@@ -167,12 +167,11 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 			_nextbuilding setdamage 0;
 			_buildings_created pushback _nextbuilding;
 
-			if (!(_nextclass in GRLIB_Ammobox)) then {
-				clearWeaponCargoGlobal _nextbuilding;
-				clearMagazineCargoGlobal _nextbuilding;
-				clearItemCargoGlobal _nextbuilding;
-				clearBackpackCargoGlobal _nextbuilding;
-			};
+			// Clear Cargo
+			clearWeaponCargoGlobal _nextbuilding;
+			clearMagazineCargoGlobal _nextbuilding;
+			clearItemCargoGlobal _nextbuilding;
+			clearBackpackCargoGlobal _nextbuilding;
 
 			if ( _nextclass in vehicle_rearm_sources ) then {
 				_nextbuilding setAmmoCargo 0;
