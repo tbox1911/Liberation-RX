@@ -143,7 +143,11 @@ while { true } do {
 				_vehiclename = _vehiclename + " ";
 			} foreach  _datcrew;
 
+<<<<<<< HEAD
 			_vehiclename = _vehiclename + "(" + ([typeOf _nextvehicle] call get_lrx_name) + ")";
+=======
+			_vehiclename = _vehiclename + "(" + [typeOf _nextvehicle] call get_lrx_name + ")";
+>>>>>>> d31a9995 (fix)
 			_marker setMarkerTextLocal _vehiclename;
 		} foreach _marked_vehicles;
 
