@@ -86,8 +86,12 @@ if (!abort_loading) then {
 		call compileFinal preprocessFileLineNUmbers format ["R3F_LOG\addons_config\Liberation.sqf"];
 		call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_r3f.sqf", GRLIB_mod_west];
 		call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_r3f.sqf", GRLIB_mod_east];
+<<<<<<< HEAD
 	}};
 >>>>>>> 66945ed9 (update ace support)
+=======
+	};
+>>>>>>> be8cb08a (Update init.sqf)
 
 	if (isServer) then {
 		[] execVM "scripts\server\init_server.sqf";
