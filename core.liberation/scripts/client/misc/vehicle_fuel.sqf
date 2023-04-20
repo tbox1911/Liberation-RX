@@ -1,7 +1,7 @@
 params ["_unit", "_vehicle"];
 
 private ["_role", "_fuel_veh", "_fuel_collected"];
-private _conso = 0.003;  // fuel capacity = (((1/_conso) * 5) / 60) in sec
+private _conso = 0.003;  // fuel capacity = (((1/_conso) * 5) / 60) in minutes
 
 if (_vehicle isKindOf "APC") then { _conso = 0.004 };
 if (_vehicle isKindOf "Tank") then { _conso = 0.005 };
@@ -18,7 +18,7 @@ while {true} do {
             _fuel_collected = _unit getVariable ["GREUH_fuel_count", 0];
             if (_fuel_collected > 1) then {
                 _fuel_veh = 0.06;
-                _unit setVariable ["GREUH_fuel_count", _fuel_collected - 1];
+                _unit setVariable ["GREUH_fuel_count", (_fuel_collected - 1), true];
                 systemchat "Resource Fuel used...";
             };
         };

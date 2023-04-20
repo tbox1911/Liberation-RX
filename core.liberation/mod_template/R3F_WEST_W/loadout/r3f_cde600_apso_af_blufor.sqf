@@ -20,7 +20,7 @@ _unit addWeapon "R3F_PAMAS";
 _unit addHandgunItem "R3F_15Rnd_9x19_PAMAS";
 
 //  "Add containers";
-_unit forceAddUniform "R3F_uniform_f1_DA";
+_unit forceAddUniform "R3F_uniform_f1";
 _unit addVest "R3F_veste_TAN";
 _unit addBackpack "R3F_sac_lourd_TAN";
 

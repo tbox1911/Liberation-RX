@@ -1,5 +1,6 @@
-params ["_player", "_uid"];
+params ["_player"];
 
+private _uid = getPlayerUID _player;
 private _puid = _player getVariable ["PAR_Grp_ID","1"];
 private _loaded = _player getVariable ["GRLIB_squad_context_loaded", false];
 private _ai_group = [];

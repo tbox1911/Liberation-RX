@@ -30,10 +30,9 @@ if (["EJW_", GRLIB_mod_west, true] call F_startsWith) then {
 if (["RHS_", GRLIB_mod_west, true] call F_startsWith) then {
 	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_RHS.sqf";
 };
-// Add R3F/AMF Weapons
+// Add R3F Weapons
 if (["R3F_", GRLIB_mod_west, true] call F_startsWith) then {
 	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_R3F.sqf";
-	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_AMF.sqf";
 };
 // Add SOG Weapons
 if (["SOG_", GRLIB_mod_west, true] call F_startsWith) then {

@@ -20,7 +20,7 @@ crewman_classname = "gm_pl_army_crew_pm63_80_moro";
 PAR_Medikit = "gm_gc_army_medbox";
 PAR_AidKit = "gm_gc_army_medkit";
 A3W_BoxWps = "gm_pl_army_ammobox_allmagazines_80";
-canisterFuel = "gm_jerrycan";
+canister_fuel_typename = "gm_jerrycan";
 chimera_vehicle_overide = [
   ["B_Heli_Light_01_F",  "gm_pl_airforce_mi2p"],
   ["B_Heli_Transport_01_F", "gm_pl_airforce_mi2t"]

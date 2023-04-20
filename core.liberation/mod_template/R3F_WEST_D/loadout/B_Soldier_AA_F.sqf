@@ -24,9 +24,6 @@ _unit forceAddUniform "R3F_uniform_f1_DA";
 _unit addVest "R3F_veste_TAN";
 _unit addBackpack "R3F_sac_lourd_TAN";
 
-//  "Add binoculars";
-_unit addWeapon "Binocular";
-
 //  "Add items to containers";
 _unit addItemToUniform "FirstAidKit";
 _unit addItemToUniform "R3F_25Rnd_556x45_FAMAS";

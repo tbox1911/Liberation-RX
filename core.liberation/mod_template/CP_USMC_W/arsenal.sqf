@@ -136,7 +136,7 @@ blacklisted_weapon = [
 	"optic_Nightstalker",
 	"optic_tws",
 	"optic_tws_mg",
-	"NVGoggles_tna_F",
+	"NVGogglesB_tna_F",
 	"NVGogglesB_blk_F",
 	"NVGogglesB_grn_F",
 	"NVGogglesB_gry_F",

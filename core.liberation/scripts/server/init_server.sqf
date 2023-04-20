@@ -126,6 +126,7 @@ GRLIB_side_enemy setFriend [resistance, 0];
 addMissionEventHandler ['HandleDisconnect', cleanup_player];
 addMissionEventHandler ["MPEnded", {
 	diag_log "--- LRX Mission End";
+	[] call save_game_mp;
 	// Cleanup game objects 
 	{ if (getObjectType _x >= 8 ) then { deleteVehicle _x } } forEach (allMissionObjects "");	
 }];

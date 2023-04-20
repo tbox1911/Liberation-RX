@@ -53,10 +53,14 @@ if !(isNull _unit) then {
 	private _score = 0; 
 	{if ((_x select 0) == _uid) exitWith {_score = (_x select 1)}} forEach GRLIB_player_scores; 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (_score > 20) then { [_unit, _uid] call save_context };
 =======
 	if (_score > 20) then { [_unit] call save_context };
 >>>>>>> df6a7d0c (context mp fix)
+=======
+	if (_score > 20) then { [_unit] call save_context };
+>>>>>>> 2731dc1c (context call)
 
 	// Remove AI
 	private _bros = allUnits select {(_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1", _uid]};
@@ -72,6 +76,3 @@ if !(isNull _unit) then {
 	private _text = format ["Bye bye %1, see you soon...", _name];
 	[gamelogic, _text] remoteExec ["globalChat", -2];		
 };
-
-private _player_left = count (AllPlayers - (entities "HeadlessClient_F"));
-if (_player_left == 0) then {if (serverTime > 300) then {[] call save_game_mp}};

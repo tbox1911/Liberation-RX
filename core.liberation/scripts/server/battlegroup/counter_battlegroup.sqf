@@ -29,7 +29,9 @@ while { GRLIB_endgame == 0 } do {
 		[_msg, 0, 0, 10, 0, 0, 90] remoteExec ["BIS_fnc_dynamicText", 0];
 
 		waitUntil {sleep 2; isNull objectParent _target_player};
+		diag_log format [ "Spawn Attack on player %1 at %2", name _target_player, time ];
 		[getPosATL _target_player, GRLIB_side_enemy] spawn spawn_air;
+		sleep 10;
 		[getPosATL _target_player] spawn send_paratroopers;
 	};
 };
