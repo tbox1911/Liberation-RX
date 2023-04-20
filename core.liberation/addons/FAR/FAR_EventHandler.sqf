@@ -74,13 +74,14 @@ if (_unit == player && alive player && player isKindOf "Man") then {
 		}];
 		// Filter and Pay Loadout
 		[missionNamespace, "arsenalClosed", {[player] call F_filterLoadout;[player] call F_payLoadout}] call BIS_fnc_addScriptedEventHandler;
-	};
 
-	missionNamespace setVariable [
-	"BIS_fnc_addCommMenuItem_menu", [
-		["Do it !", true],
-		["Unblock unit.", [2], "", -5, [["expression", "[groupSelectedUnits player] spawn FAR_unblock_AI"]], "1", "1"]
-	]];
+		// Unblock units
+		missionNamespace setVariable [
+		"BIS_fnc_addCommMenuItem_menu", [
+			["Do it !", true],
+			["Unblock unit.", [2], "", -5, [["expression", "[groupSelectedUnits player] spawn FAR_unblock_AI"]], "1", "1"]
+		]];
+	};
 
 	_unit removeAllEventHandlers "GetInMan";
 	_unit addEventHandler ["GetInMan", {

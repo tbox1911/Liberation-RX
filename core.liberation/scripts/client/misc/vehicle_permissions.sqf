@@ -52,7 +52,7 @@ if (!((_role == "cargo") || (_vehicle isKindOf "Steerable_Parachute_F"))) then {
 	};
 
 	if ( side _unit != GRLIB_side_friendly ) then {
-		_msg = "Prisoners NOT allowed to use vehicles !!";
+		_msg = "Prisoners are NOT allowed to use vehicles !!";
 		_doeject = true;
 	};
 };
