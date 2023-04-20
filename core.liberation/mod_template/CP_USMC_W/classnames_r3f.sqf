@@ -216,7 +216,7 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 [
 	"CUP_B_Zodiac_USMC",
 	"CUP_B_RHIB_USMC",
-	"CUP_B_Frigate_ANZAC"
+	"CUP_B_LCU1600_USMC"
 ];
 
 R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +

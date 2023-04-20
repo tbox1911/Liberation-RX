@@ -2,8 +2,7 @@ diag_log "--- Client Init start ---";
 titleText ["" ,"BLACK FADED", 100];
 
 waitUntil {!isNil "abort_loading" };
-waitUntil {!isNil "GRLIB_init_server" };
-if (!GRLIB_init_server || abort_loading) exitWith {
+if (abort_loading) exitWith {
 	private _msg = format ["Sorry, An error occured on Server startup.\nPlease check the error logs.\n\n%1", abort_loading_msg];
 	titleText [_msg, "BLACK FADED", 100];
 	uisleep 10;

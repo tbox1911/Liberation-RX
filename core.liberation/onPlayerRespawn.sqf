@@ -1,6 +1,4 @@
 titleText ["" ,"BLACK FADED", 100];
-waitUntil {sleep 0.2; !(isNil "GRLIB_init_server")};
-waitUntil {sleep 0.2; GRLIB_init_server};
 player allowDamage false;
 disableUserInput true;
 player setPosATL ((getmarkerpos GRLIB_respawn_marker) findEmptyPosition [0,50]);

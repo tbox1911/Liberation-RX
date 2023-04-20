@@ -30,7 +30,6 @@ opfor_mrap_hmg = "CUP_O_UAZ_MG_TKA";
 opfor_mrap_gmg = "CUP_O_UAZ_SPG9_TKA";
 opfor_transport_helo = "CUP_O_MI6T_TKA";
 opfor_transport_truck = "CUP_O_V3S_Covered_TKA";
-opfor_ammobox_transport = "CUP_O_V3S_Covered_TKA";
 opfor_fuel_truck = "CUP_O_V3S_Refuel_TKA";
 opfor_ammo_truck = "CUP_O_V3S_Rearm_TKA";
 opfor_fuel_container = "Land_Pod_Heli_Transport_04_fuel_F";

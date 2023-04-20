@@ -15,7 +15,7 @@ if ( count _convoy_destinations_markers < 3) exitWith { [gamelogic, "Could not f
 
 private _boxes_amount = 0;
 {
-	if ( _x select 0 == opfor_ammobox_transport ) exitWith { _boxes_amount = (count _x) - 2 };
+	if ( _x select 0 == opfor_transport_truck ) exitWith { _boxes_amount = (count _x) - 2 };
 } foreach box_transport_config;
 if ( _boxes_amount == 0 ) exitWith { diag_log "Opfor ammobox truck classname doesn't allow for ammobox transport, correct your classnames.sqf"; };
 
@@ -78,7 +78,7 @@ _waypoint setWaypointCompletionRadius 100;
 sleep 10;
 waitUntil {sleep 2; speed _scout_vehicle > 2 || !(alive _scout_vehicle)};
 
-private _transport_vehicle = [ _spawnpos, opfor_ammobox_transport, true, false ] call F_libSpawnVehicle;
+private _transport_vehicle = [ _spawnpos, opfor_transport_truck, true, false ] call F_libSpawnVehicle;
 _transport_vehicle addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage } ];
 for "_n" from 1 to _boxes_amount do { [_transport_vehicle, ammobox_o_typename] call attach_object_direct };
 ( crew _transport_vehicle ) joinSilent _convoy_group;
