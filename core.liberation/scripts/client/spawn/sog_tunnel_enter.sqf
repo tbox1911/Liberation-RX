@@ -20,7 +20,7 @@ if (_ai_follow) then {
     };
 };
 
-private _position = (_tunnel getVariable ["tunnel_position", 0]);
+private _position = _tunnel getVariable ["tunnel_position", 0];
 private _msg = format ["You enter in the <t color='#008f00'>Guerrilla</t> tunnel no <t color='#008f00'>%1</t> !<br/><br/>
 Expect NO <t color='#00008f'>Support</t>, NO <t color='#00008f'>Help</t>. <br/>
 Expect NO <t color='#8f0000'>Mercy</t> !<br/><br/>
@@ -31,3 +31,5 @@ player setVariable ["SOG_enter_tunnel", round (time)];
 player setVariable ["SOG_unit_list", _unit_list_redep];
 showMap false;
 [player, _tunnelName] remoteExec [ "sog_tunnel_enter_remotecall", 2 ];
+
+//diag_log format ["DBG: enter tunnel %1 %2", _tunnelName, allVariables _tunnel];
