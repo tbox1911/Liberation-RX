@@ -55,3 +55,4 @@ F_is_recyclable = compileFinal preprocessFileLineNumbers "scripts\shared\functio
 F_getVehicleAmmoDef = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getVehicleAmmoDef.sqf";
 F_getSectorPath = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getSectorPath.sqf";
 F_getNextSector = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getNextSector.sqf";
+F_addParachute = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_addParachute.sqf";

@@ -139,19 +139,14 @@
 				case "setVelocity": {_argument setVelocity _parametre;};
 				case "detachSetVelocity": {detach _argument; _argument setVelocity _parametre;};
 				case "paraDrop": {
-					detach _argument;
-					_argument setVelocity _parametre;
-					sleep 1;
-					_pos = getPosATL _argument;
-					_chute = createVehicle ["B_Parachute_02_F", _pos, [], 0, "CAN_COLLIDE"];
-					_chute disableCollisionWith _argument;
-					_argument attachTo [_chute,[0,0,0.6]];
-
-					_dt = time + 150;
-					waitUntil{sleep 1;(isTouchingGround _argument || time > _dt)};
-					if !(isNull _chute) then {
-						detach _chute;
-						deleteVehicle _chute;
+					[_argument, _parametre] spawn {
+						params ["_objet", "_heli"];
+						_objet disableCollisionWith _heli;
+						detach _objet;
+						_objet setVelocity (velocity _heli);
+						sleep 2;
+						_objet enableCollisionWith _heli;
+						[_objet, _heli] spawn F_addParachute;
 					};
 				};
 			};
