@@ -119,8 +119,12 @@ air_vehicles = [
 	["B_Heli_Attack_01_F",10,3000,20,GRLIB_perm_air],
 	["I_Plane_Fighter_04_F", 10,2500,20,GRLIB_perm_max],
 	["B_Plane_CAS_01_dynamicLoadout_F",20,4000,40,GRLIB_perm_max],
+<<<<<<< HEAD
 	["B_Plane_Fighter_01_F",20,4500,40,GRLIB_perm_max],
 	["B_Plane_Fighter_01_Stealth_F",20,4500,40,GRLIB_perm_max]
+=======
+	["B_Plane_Fighter_01_F",20,4500,40,GRLIB_perm_max]
+>>>>>>> d7d8e42c (fix a-164)
 ];
 
 blufor_air = [
