@@ -13,7 +13,7 @@ if !(isNull _player) then {
 	if (!isNil "_my_dog") then { deleteVehicle _my_dog };
 
 	// Unlock Car too Far
-	_cleanveh = [vehicles, {
+	private _cleanveh = [vehicles, {
 		_x getVariable ["GRLIB_vehicle_owner", ""] == _uid &&
 		((getPos _x) distance2D ([_x] call F_getNearestFob)) >= 500
 	}] call BIS_fnc_conditionalSelect;
@@ -30,6 +30,10 @@ if !(isNull _player) then {
 		if (!(lifeState _x in ["HEALTHY", "INJURED"])) then { deleteVehicle _x };
 	} forEach units group _player;
 
-	_text = format ["Bye bye %1, see you soon...", name _player];
+	// Remove Taxi
+	private _taxi = _player getVariable ["GRLIB_taxi_called", nil];
+	if (!isNil "_taxi") then { deleteVehicle _taxi };
+
+	private _text = format ["Bye bye %1, see you soon...", name _player];
 	[gamelogic, _text] remoteExec ["globalChat", -2];
 };

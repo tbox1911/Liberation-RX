@@ -175,7 +175,7 @@ for [{_i=0},{_i < count _explosion_fragments_array},{_i=_i+1}] do
 						sleep (random 0.1);
 					};
 
-					_fadeOutTime = 5 + random 5;
+					_fadeOutTime = 5 + random 2;
 					for "_i" from 0 to _fadeOutTime do {
 						_light setLightFlareSize _fadeOutTime - _i;
 						sleep 0.2;

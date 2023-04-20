@@ -159,30 +159,6 @@ class fizz_single_type1_4
   sound[]={"addons\GRAD\audio\fizzes\fizz_single_type1_4.ogg", 20, 1};
   titles[]={};
 };
-class fizz_single_type2_1
-{
-  name="fizz_single_type2_1";
-  sound[]={"addons\GRAD\audio\fizzes\fizz_single_type2_1.ogg", 20, 1};
-  titles[]={};
-};
-class fizz_single_type2_2
-{
-  name="fizz_single_type2_2";
-  sound[]={"addons\GRAD\audio\fizzes\fizz_single_type2_2.ogg", 20, 1};
-  titles[]={};
-};
-class fizz_single_type2_3
-{
-  name="fizz_single_type2_3";
-  sound[]={"addons\GRAD\audio\fizzes\fizz_single_type2_3.ogg", 20, 1};
-  titles[]={};
-};
-  class fizz_single_type2_4
-{
-  name="fizz_single_type2_4";
-  sound[]={"addons\GRAD\audio\fizzes\fizz_single_type2_4.ogg", 20, 1};
-  titles[]={};
-};
 class fizz_group1
 {
   name="fizz_group1";

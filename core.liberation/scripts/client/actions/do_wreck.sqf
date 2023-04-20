@@ -31,7 +31,7 @@ for "_i" from 1 to 3 do {
 disableUserInput false;
 disableUserInput true;
 disableUserInput false;
-if (underwater vehicle player) then {player switchmove ""};
+if (round (getPosASL player select 2) <= -1) then {player switchmove ""};
 
 if (lifeState player == 'incapacitated' || vehicle player != player) exitWith {_vehicle setVariable ["wreck_in_use", false, true]};
 {[[_x], "deleteVehicle"] call BIS_fnc_MP} forEach (_vehicle getVariable ["R3F_LOG_objets_charges", []]);
