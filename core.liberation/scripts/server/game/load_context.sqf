@@ -53,6 +53,7 @@ if (count (_context select 2) >= 1 ) then {
                     sleep 0.5;
                 } foreach (_context select 2);       
                 _wait = false;
+                diag_log format ["--- LRX Loading %1 unit(s) for %2 Squad.", count (_context select 2), name _player];
             };
         };
 
@@ -62,4 +63,3 @@ if (count (_context select 2) >= 1 ) then {
 };
 
 _player setVariable ["GRLIB_squad_context_loaded", true];
-diag_log format ["--- LRX Loading %1 unit(s) for %2 Squad.", count (_context select 2), name _player];

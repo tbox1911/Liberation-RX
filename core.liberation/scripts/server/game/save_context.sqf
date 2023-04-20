@@ -27,7 +27,11 @@ if (alive _player && lifeState _player != "INCAPACITATED") then {
 >>>>>>> ff1a958a (1)
 	{ _ai_group pushback [typeOf _x, rank _x, getUnitLoadout _x] } forEach _bros;
 	_loadout = getUnitLoadout _player;
+<<<<<<< HEAD
 >>>>>>> eb759921 (new load/save loadout (BIS fnc))
+=======
+	diag_log format ["--- LRX saving player %1 Loadout.", name _player];
+>>>>>>> a885f7e9 (fix log msg)
 };
 
 private _new = true;

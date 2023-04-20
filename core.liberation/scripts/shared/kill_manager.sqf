@@ -199,6 +199,10 @@ if ( isServer ) then {
 	};
 
 	_unit setVariable ["R3F_LOG_disabled", true, true];
+
+	// ACE Cleanup
+	if (GRLIB_ACE_medical_enabled && isPlayer _unit) then { [_unit] spawn PAR_fn_death };
+
 	//sleep 3;
 	//_unit enableSimulationGlobal false;
 };

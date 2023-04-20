@@ -1,5 +1,5 @@
 // *** BADDIES ***
-GRLIB_side_enemy = WEST;
+GRLIB_side_enemy = INDEPENDENT;
 
 // All class MUST be defined !
 
