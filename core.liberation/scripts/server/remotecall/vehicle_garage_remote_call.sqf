@@ -23,5 +23,6 @@ if (_cmd == 2) then {
 };
 
 publicVariable "GRLIB_garage";
-sleep 1;
+trigger_server_save = true;
+sleep 3;
 garage_in_use = nil;
