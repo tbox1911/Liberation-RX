@@ -240,8 +240,6 @@ if ( count blufor_squad_inf == 0 ) then { blufor_squad_inf = [
 	"B_soldier_M_F",
 	"B_Soldier_AR_F",
 	"B_HeavyGunner_F",
-	"B_Soldier_GL_F",
-	"B_Soldier_LAT_F",
 	"B_Sharpshooter_F"
 	];
 };
@@ -334,6 +332,7 @@ vehicle_repair_sources = [
 	"B_Truck_01_Repair_F",
 	"B_Slingload_01_Repair_F"
 ];
+
 vehicle_rearm_sources = [
 	"B_APC_Tracked_01_CRV_F",
 	"B_Truck_01_ammo_F",
@@ -341,11 +340,13 @@ vehicle_rearm_sources = [
 	"Box_NATO_Ammo_F",
 	"Box_NATO_WpsLaunch_F"
 ];
+
 vehicle_refuel_sources = [
 	"B_APC_Tracked_01_CRV_F",
 	"B_Truck_01_fuel_F",
 	"B_Slingload_01_Fuel_F"
 ];
+
 vehicle_artillery = [
 	"B_Mortar_01_F",
 	"B_Ship_Gun_01_F",

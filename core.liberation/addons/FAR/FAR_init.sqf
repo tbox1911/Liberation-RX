@@ -56,9 +56,7 @@ FAR_Player_Init = {
 	player setVariable ["MGI_myMedic", nil];
 	player setVariable ["MGI_busy", nil];
 	player setVariable ["AirCoolDown", 0, true];
-	if ( !GRLIB_fatigue ) then {
-		player enableStamina false;
-	};
+	if (!GRLIB_fatigue ) then { player enableStamina false };
 	player setCustomAimCoef 0.35;
 	player setUnitRecoilCoefficient 0.6;
 	player setCaptive false;
