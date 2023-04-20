@@ -68,6 +68,9 @@ patrol_manager = compileFinal preprocessFileLineNumbers "scripts\server\sector\p
 manage_ammoboxes = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_ammoboxes.sqf";
 manage_one_sector = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_one_sector.sqf";
 
+// Ressources
+count_box = compileFinal preprocessFileLineNumbers "scripts\server\resources\count_box.sqf";
+
 // A3W
 boxSetup = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_boxSetup.sqf";
 createlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_createLandMines.sqf";
