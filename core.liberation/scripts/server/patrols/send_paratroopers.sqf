@@ -19,6 +19,7 @@ private _sendPara = {
 	diag_log format ["Spawn (%1) ParaTroopers on sector %2 at %3", _cargo_seat_free, _spawnsector, time];
 	for "_i" from 1 to _cargo_seat_free do {
 		_unit = _para_group createUnit [opfor_paratrooper, markerpos _spawnsector, [], 5, "NONE"];
+		sleep 0.1;
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		[_unit] joinSilent _para_group;
 		_unit assignAsCargo _newvehicle;

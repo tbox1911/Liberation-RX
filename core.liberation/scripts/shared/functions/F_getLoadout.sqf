@@ -21,7 +21,9 @@
 	0 : target unit
 	1 : (optional) array of options, default [] :
 		"ammo" will save ammo count of partially emptied magazines
-		"repetitive" intended for repetitive use, will not use selectWeapon, means no visible effect on solder, but will not save magazines of assigned items such as laser designator batteries
+		"repetitive" intended for repetitive use, will not use selectWeapon,
+		means no visible effect on solder, but will not save magazines of assigned items
+		such as laser designator batteries
 
 	RETURNS:
 	Array : array of strings/arrays containing target unit's loadout, to be used by fnc_set_loadout.sqf

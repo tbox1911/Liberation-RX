@@ -29,6 +29,7 @@ for "_i" from 1 to _nbUnits do {
 	};
 	if (!(_spawnpos isEqualTo zeropos)) then {
 		_unit = _grp createUnit [(selectRandom _unitTypes), _spawnpos, [], 5, "NONE"];
+		sleep 0.1;
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		[_unit] joinSilent _grp;
 		_unit allowDamage false;
@@ -36,7 +37,7 @@ for "_i" from 1 to _nbUnits do {
 		_unit setSkill ["courage", 1];
 		_unit allowFleeing 0;
 		_unit setVariable ["GRLIB_mission_AI", true];
-		_unit switchMove "amovpknlmstpsraswrfldnon";
+		//_unit switchMove "amovpknlmstpsraswrfldnon";
 		if (_type == "militia") then { 
 			[ _unit ] call loadout_militia;
 		};	

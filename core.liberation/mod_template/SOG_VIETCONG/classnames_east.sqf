@@ -167,8 +167,8 @@ opfor_recyclable = [
 	//
 	["vn_o_boat_01_mg_02",1,round (12 / GRLIB_recycling_percentage),3],
 	["vn_o_boat_02_mg_02",1,round (22 / GRLIB_recycling_percentage),3],
-	["vn_o_boat_03_02",10,round (200 / GRLIB_recycling_percentage),20],
-	["vn_o_boat_04_02",10,round (200 / GRLIB_recycling_percentage),20],
+	["vn_o_boat_03_02",20,round (800 / GRLIB_recycling_percentage),40],
+	["vn_o_boat_04_02",20,round (800 / GRLIB_recycling_percentage),40],
 	//
 	["vn_o_air_mi2_01_03",4,round (100 / GRLIB_recycling_percentage),8],
 	["vn_o_wheeled_z157_02_nva65",2,round (100 / GRLIB_recycling_percentage),4],
@@ -191,7 +191,7 @@ opfor_recyclable = [
 
 box_transport_config_east = [
     [ "vn_o_wheeled_z157_01_nva65", -6.5, [0, -0.8, 0.4], [0, -2.5, 0.4] ],
-    [ "vn_o_wheeled_z157_02_nva65", -6.5, [0, -0.8, 0.4], [0, -2.5, 0.4] ],
-    [ "vn_o_boat_03_02", 25, [1, -10.7, -0.9], [-1, -10.7, -0.9] ],
-    [ "vn_o_boat_04_02", 25, [1, -10.7, -0.9], [-1, -10.7, -0.9] ]
+    [ "vn_o_wheeled_z157_02_nva65", -6.5, [0, -0.8, 0.4], [0, -2.5, 0.4] ]
+    //[ "vn_o_boat_03_02", 25, [1, -10.7, -0.9], [-1, -10.7, -0.9] ],
+    //[ "vn_o_boat_04_02", 25, [1, -10.7, -0.9], [-1, -10.7, -0.9] ]
 ];

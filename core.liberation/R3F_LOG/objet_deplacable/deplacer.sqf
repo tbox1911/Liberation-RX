@@ -12,6 +12,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+if (GRLIB_ACE_enabled) exitWith { [_this select 0, true] call ace_dragging_fnc_setCarryable };
+
 if (R3F_LOG_mutex_local_verrou) then
 {
 	hintC STR_R3F_LOG_mutex_action_en_cours;

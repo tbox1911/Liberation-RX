@@ -17,6 +17,7 @@ for "_i" from 1 to _nbcivs do {
 	_grp = createGroup [GRLIB_side_civilian, true];
 	_spawnpos = [(((_sectorpos select 0) + (75 * _spread)) - (random (150 * _spread))),(((_sectorpos select 1) + (75 * _spread)) - (random (150 * _spread))),0.3];
 	_nextciv = _grp createUnit [(selectRandom civilians), _spawnpos, [], 5, "NONE"];
+	sleep 0.1;
 	_nextciv addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	_nextciv addEventHandler ["HandleDamage", {
 		params ["_unit", "_selection", "_damage", "_source"];
@@ -33,7 +34,7 @@ for "_i" from 1 to _nbcivs do {
 	_nextciv setVariable ['GRLIB_can_speak', true, true];
 	//_nextciv disableAI "FSM";
 	//_nextciv disableAI "AUTOCOMBAT";
-	_nextciv switchMove "amovpknlmstpsraswrfldnon";
+	//_nextciv switchMove "amovpknlmstpsraswrfldnon";
 	_createdcivs pushBack _nextciv;
 	[_grp] call add_civ_waypoints;
 	sleep 0.1;

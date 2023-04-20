@@ -232,8 +232,8 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 
 R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 [
-	["vn_o_boat_03_02", 15],
-	["vn_o_boat_04_02", 15],
+	["vn_o_boat_03_02", 500],
+	["vn_o_boat_04_02", 500],
 	["vn_o_boat_02_02", 30],
 	["vn_o_boat_01_02", 30],
 	["vn_b_boat_06_01", 60],

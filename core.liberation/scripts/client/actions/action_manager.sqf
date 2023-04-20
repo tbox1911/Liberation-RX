@@ -468,5 +468,5 @@ while { true } do {
 		} forEach _id_actions;
 	};
 
-	sleep 2;
+	sleep 1;
 };

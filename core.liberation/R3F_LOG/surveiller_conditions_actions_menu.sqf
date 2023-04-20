@@ -205,35 +205,6 @@ while {true} do
 			};
 		};
 
-		// Condition action ouvrir_usine
-		// R3F_LOG_action_ouvrir_usine_valide = _usine_autorisee_client && isNull R3F_LOG_joueur_deplace_objet &&
-		// 	!(_objet_pointe getVariable "R3F_LOG_CF_disabled") && alive _objet_pointe &&
-		// 	_objet_pointe getVariable ["R3F_LOG_CF_side_addAction", side group _joueur] == side group _joueur;
-
-		// Condition action revendre_usine_deplace
-		// R3F_LOG_action_revendre_usine_deplace_valide = _usine_autorisee_client && R3F_LOG_CFG_CF_sell_back_bargain_rate != -1 && alive _objet_pointe &&
-		// 	(!isNull R3F_LOG_joueur_deplace_objet) && R3F_LOG_joueur_deplace_objet getVariable ["R3F_LOG_CF_depuis_usine", false] &&
-		// 	!(R3F_LOG_joueur_deplace_objet getVariable "R3F_LOG_disabled") && (R3F_LOG_joueur_deplace_objet != _objet_pointe) &&
-		// 	(vectorMagnitude velocity _objet_pointe < 6) && !(_objet_pointe getVariable "R3F_LOG_CF_disabled") &&
-		// 	_objet_pointe getVariable ["R3F_LOG_CF_side_addAction", side group _joueur] == side group _joueur;
-
-		// Condition action revendre_usine_selection
-		// R3F_LOG_action_revendre_usine_selection_valide = _usine_autorisee_client && R3F_LOG_CFG_CF_sell_back_bargain_rate != -1 && alive _objet_pointe &&
-		// 	(isNull R3F_LOG_joueur_deplace_objet) && R3F_LOG_objet_selectionne getVariable ["R3F_LOG_CF_depuis_usine", false] &&
-		// 	(!isNull R3F_LOG_objet_selectionne) && (R3F_LOG_objet_selectionne != _objet_pointe) && !(R3F_LOG_objet_selectionne getVariable "R3F_LOG_disabled") &&
-		// 	(vectorMagnitude velocity _objet_pointe < 6) && !(_objet_pointe getVariable "R3F_LOG_CF_disabled") &&
-		// 	_objet_pointe getVariable ["R3F_LOG_CF_side_addAction", side group _joueur] == side group _joueur;
-
-		// Condition action revendre_usine_direct
-		// R3F_LOG_action_revendre_usine_direct_valide = _usine_autorisee_client && R3F_LOG_CFG_CF_sell_back_bargain_rate != -1 &&
-		// 	_objet_pointe getVariable ["R3F_LOG_CF_depuis_usine", false] && (count crew _objet_pointe == 0 || _isUav) &&
-		// 	isNull R3F_LOG_joueur_deplace_objet && isNull (_objet_pointe getVariable ["R3F_LOG_est_transporte_par", objNull]) &&
-		// 	_objet_pas_en_cours_de_deplacement &&
-		// 	{
-		// 		_objet_pointe distance _x < 20 && !(_x getVariable "R3F_LOG_CF_disabled") &&
-		// 		_x getVariable ["R3F_LOG_CF_side_addAction", side group _joueur] == side group _joueur
-		// 	} count R3F_LOG_CF_liste_usines != 0;
-
 		// Condition d�verrouiller objet
 		R3F_LOG_action_deverrouiller_valide = _objet_pas_en_cours_de_deplacement && !_objet_deverrouille && !(_objet_pointe getVariable "R3F_LOG_disabled");
 	}
@@ -301,5 +272,5 @@ while {true} do
 		R3F_LOG_action_heliport_paradrop_valide = false;
 	};
 
-	sleep 0.4;
+	sleep 0.5;
 };

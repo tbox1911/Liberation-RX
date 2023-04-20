@@ -6,6 +6,6 @@ if (_result) then {
 	if (!([_cost] call F_pay)) exitWith {};
 	private _pos = player modelToWorld [0,1,1];
 	private _can = createVehicle [canisterFuel, _pos, [], 0, "CAN_COLLIDE"];
-	[_can] spawn R3F_LOG_FNCT_objet_deplacer;
+	[_can, player, 0, true] spawn R3F_LOG_FNCT_objet_deplacer;
 	hintSilent localize "STR_FUEL_READY";
 };

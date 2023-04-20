@@ -102,8 +102,8 @@ light_vehicles = [
 	["vn_o_boat_01_mg_02",1,25,1,GRLIB_perm_inf],
 	["vn_o_boat_02_02",1,20,1,GRLIB_perm_inf],
 	["vn_o_boat_02_mg_02",1,45,1,GRLIB_perm_log],
-	["vn_o_boat_03_02",20,400,20,GRLIB_perm_tank],
-	["vn_o_boat_04_02",20,400,20,GRLIB_perm_tank],
+	["vn_o_boat_03_02",20,800,40,GRLIB_perm_tank],
+	["vn_o_boat_04_02",20,800,40,GRLIB_perm_air],
 	// Land
 	["vn_o_car_01_01",1,5,1,0],
 	["vn_o_car_03_01",1,10,1,0],
@@ -295,7 +295,7 @@ GRLIB_vehicle_blacklist_west = [
 box_transport_config_west = [
     [ "vn_o_wheeled_z157_01_nva65", -6.5, [0, -0.8, 0.4], [0, -2.5, 0.4] ],
     [ "vn_o_wheeled_z157_02_nva65", -6.5, [0, -0.8, 0.4], [0, -2.5, 0.4] ],
-    [ "vn_o_boat_03_02", 25, [1, -10.7, -0.9], [-1, -10.7, -0.9] ],
+    //[ "vn_o_boat_03_02", 25, [1, -10.7, -0.9], [-1, -10.7, -0.9] ],
     [ "vn_o_boat_04_02", 25, [1, -10.7, -0.9], [-1, -10.7, -0.9] ]
 ];
 

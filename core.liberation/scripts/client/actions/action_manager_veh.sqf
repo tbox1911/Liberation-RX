@@ -1,7 +1,7 @@
 private  ["_vehicle", "_unit"];
 private _distveh = 10;
 private _distvehclose = 5;
-private _searchradius = 30;
+private _searchradius = 20;
 private _nearveh = [];
 private _nearruins = [];
 private _nearwreck = [];
@@ -104,8 +104,5 @@ while { true } do {
 		_unit setVariable ["GRLIB_dead_action", true];
 	} forEach _neardead;
 
-	// Object WeaponHolderSimulated can't have zero or negative mass!
-	{ if (round (getMass _x) <= 0) then { _x setMass 1 } } forEach (entities "WeaponHolderSimulated");
-
-	sleep 5;
+	sleep 3;
 };

@@ -7,6 +7,9 @@ private _spawnpos = zeropos;
 private _max_try = 10;
 private _radius = 30;
 
+
+
+
 while { (_spawnpos isEqualTo zeropos) && _max_try > 0 } do {
 	_spawnpos = [_pos, 0, _radius, 3, 1, 0.25, 0, [], [zeropos, zeropos]] call BIS_fnc_findSafePos;
 	_radius = _radius + 10;
@@ -31,6 +34,20 @@ if (_locked) then {
 	_box setVariable ["R3F_LOG_disabled", false, true];
 	_box setVariable ["GRLIB_vehicle_owner", "", true];
 };
+
+//ACE
+if (GRLIB_ace_enabled) then {
+ if (_type in GRLIB_movableObjects) then {
+	 	//Set the size of cargo
+		if ( _type in (GRLIB_cargoSize select 0)) then {
+			_cargoSize = ((GRLIB_cargoSize select 1) select ((GRLIB_cargoSize select 0) find _type));
+			[_box, _cargoSize] call ace_cargo_fnc_setSize;
+		};	
+		// Set object movable with ACE. [_object, _enabled, [_offsetSide,_offsetForward,_offsetUp],_rotation] call ace_dragging_fnc_setCarryable;		
+		[_box, true, [0, 3, 1], 0] call ace_dragging_fnc_setCarryable;
+	};
+};
+
 
 if (!GRLIB_mod_enabled && _type == A3W_BoxWps) then {
 	private _box_refill = selectRandom ["mission_Ammo","mission_USLaunchers","mission_USSpecial","mission_Main_A3snipers","mission_Ammo"];

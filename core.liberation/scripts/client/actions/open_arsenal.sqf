@@ -4,7 +4,7 @@ respawn_loadout = 0;
 load_from_player = -1;
 exit_on_load = 0;
 
-GRLIB_backup_loadout = [player] call F_getLoadout;
+GRLIB_backup_loadout = [player, ["repetitive"]] call F_getLoadout;
 player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
 
 private _ammo_collected = player getVariable ["GREUH_ammo_count",0];

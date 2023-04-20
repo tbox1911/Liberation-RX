@@ -13,7 +13,7 @@ private _spawnpos = zeropos;
 private _vehcrew = [];
 private _max_try = 10;
 private _radius = GRLIB_capture_size;
-private _airveh_alt = 400;
+private _airveh_alt = 300;
 
 if ( _precise_position ) then {
 	_spawnpos = _sectorpos;
@@ -56,23 +56,25 @@ if ( _classname isKindOf "Air" ) then {
 	};
 	_newvehicle = createVehicle [_classname, _spawnpos, [], 0, "NONE"];
 };
-waitUntil {!isNull _newvehicle};
+waitUntil {sleep 0.1; !isNull _newvehicle};
 _newvehicle allowDamage false;
+diag_log format [ "Spawn vehicle %1 pos %2", _classname , _spawnpos ];
 
 if ( _newvehicle isKindOf "Air" ) then {
 	_newvehicle engineOn true;
 	_newvehicle flyInHeight _airveh_alt;
 };
 
-if ( _newvehicle isKindOf "Land" ) then {
-	if ((vectorUp _newvehicle) select 2 < 0.70 || (getPosATL _newvehicle) select 2 < 0) then {
-		_newvehicle setpos [(getPosATL _newvehicle) select 0,(getPosATL _newvehicle) select 1, 0.5];
-		_newvehicle setVectorUp surfaceNormal position _newvehicle;
-	};
-};
-
 if ( _random_rotate ) then {
 	_newvehicle setdir (random 360);
+};
+
+if ( _newvehicle isKindOf "Land" ) then {
+	sleep 1;
+	if ((vectorUp _newvehicle) select 2 < 0.70 || (getPosATL _newvehicle) select 2 < 0) then {
+		_newvehicle setpos [(getPosATL _newvehicle) select 0, (getPosATL _newvehicle) select 1, 0.5];
+		_newvehicle setVectorUp surfaceNormal position _newvehicle;
+	};
 };
 
 if ( !_civilian ) then {
@@ -84,10 +86,6 @@ if ( !_civilian ) then {
 
 	_vehcrew = crew _newvehicle;
 	{ _x allowDamage false } forEach _vehcrew;
-
-	if ( _random_rotate ) then {
-		_newvehicle setdir (random 360);
-	};
 
 	// A3 textures
 	if ( _classname in ["I_E_Truck_02_MRL_F"] ) then {

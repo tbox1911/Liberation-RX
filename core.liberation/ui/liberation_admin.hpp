@@ -43,32 +43,27 @@ class liberation_admin {
 	};
 
 	objects[] = {};
-  class OuterBG: StdBG
-  {
+  class OuterBG: StdBG {
     colorBackground[] = COLOR_BROWN;
     x = 0.19175 * safezoneW + safezoneX;
     y = 0.1324 * safezoneH + safezoneY;
     w = 0.25 * safezoneW;
     h = 0.62 * safezoneH;
   };
-  class OuterBG_F: OuterBG
-  {
+  class OuterBG_F: OuterBG {
 		style = ST_FRAME;
   };
-  class InnerBG: OuterBG
-  {
+  class InnerBG: OuterBG {
     colorBackground[] = COLOR_GREEN;
     x = 0.1985 * safezoneW + safezoneX;
     y = 0.1916 * safezoneH + safezoneY;
     w = 0.2375 * safezoneW;
     h = 0.512 * safezoneH;
   };
-  class InnerBG_F: InnerBG
-  {
+  class InnerBG_F: InnerBG {
   	style = ST_FRAME;
   };
-  class ArsenalButton: StdButton
-  {
+  class ArsenalButton: StdButton {
     idc = 1600;
     action = "Arsenal_typename createVehicle (player getRelPos[3, 0]);hint 'Arsenal spawned !'";
     text = $STR_ADMIN_ARSENAL;
@@ -77,8 +72,7 @@ class liberation_admin {
     w = 0.0875 * safezoneW;
     h = 0.04 * safezoneH;
   };
-  class AmmoButton: StdButton
-  {
+  class AmmoButton: StdButton {
     idc = 1601;
     action = "[ammobox_b_typename, player getRelPos[3, 0], false] remoteExec ['boxSetup', 2]; hint 'AmmoBox spawned !'";
 
@@ -88,8 +82,7 @@ class liberation_admin {
     w = 0.0875 * safezoneW;
     h = 0.04 * safezoneH;
   };
-  class BuildButton: StdButton
-  {
+  class BuildButton: StdButton {
     idc = 1617;
     action = "do_spawn=1";
 
@@ -127,8 +120,7 @@ class liberation_admin {
     size = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
     shadow = 1;
   };
-  class RscCheckBox
-  {
+  class RscCheckBox {
     idc = -1;
     type = 7; // CT_CHECKBOXES
     style = 2; // ST_CENTER
@@ -143,8 +135,7 @@ class liberation_admin {
     font = "RobotoCondensed";
     sizeEx = 0.04;
   };
-  class Item01Button: StdButton
-  {
+  class Item01Button: StdButton {
     idc = 1602;
     action = "do_unban=1";
     text = $STR_ADMIN_UNBAN;
@@ -194,8 +185,7 @@ class liberation_admin {
     w = 0.09 * safezoneW;
     h = 0.033 * safezoneH;
   };
-  class SkipTimeButton: StdButton
-  {
+  class SkipTimeButton: StdButton {
     idc = 1604;
     action = "10 remoteExec ['SkipTime', 2];hint 'Time Forward...'";
     text = $STR_ADMIN_SKIPTIME;
@@ -204,8 +194,7 @@ class liberation_admin {
     w = 0.0875 * safezoneW;
     h = 0.04 * safezoneH;
   };
-  class UnlockButton: StdButton
-  {
+  class UnlockButton: StdButton {
     idc = 1609;
     action = "_x = cursorobject;if (isNull _x) exitWith {};_x setvariable ['R3F_LOG_disabled', false, true];_x setvariable ['GRLIB_vehicle_owner', '', true];hint format ['%1 Unlocked.',typeOf _x]";
     text = $STR_ADMIN_UNLOCK;
@@ -214,8 +203,7 @@ class liberation_admin {
     w = 0.0875 * safezoneW;
     h = 0.04 * safezoneH;
   };
-  class DeleteButton: StdButton
-  {
+  class DeleteButton: StdButton {
     idc = 1610;
     action = "deleteVehicle (cursorObject);closeDialog 0;";
     text = $STR_ADMIN_DELETEOBJ;
@@ -224,8 +212,7 @@ class liberation_admin {
     w = 0.0875 * safezoneW;
     h = 0.04 * safezoneH;
   };
-  class ExportButton: StdButton
-  {
+  class ExportButton: StdButton {
     idc = 1613;
     action = "do_export=1";
     text = $STR_ADMIN_EXPORT;
@@ -234,8 +221,7 @@ class liberation_admin {
     w = 0.0875 * safezoneW;
     h = 0.04 * safezoneH;
   };
-  class ImportButton: StdButton
-  {
+  class ImportButton: StdButton {
     idc = 1614;
     action = "do_import=1";
     text = $STR_ADMIN_IMPORT;
@@ -348,8 +334,7 @@ class liberation_admin {
     canModify = 0;
 	};
   //------------------------
-  class adminInfo01: GREUH_RscStructuredText
-  {
+  class adminInfo01: GREUH_RscStructuredText {
     idc = 1606;
     text = "<t size='0.7'>[ ALT + LMB ] on Map = Teleport</t>";
     x = 0.2 * safezoneW + safezoneX;
@@ -358,8 +343,7 @@ class liberation_admin {
     h = 0.02 * safezoneH;
     sizeEx = -2 * GUI_GRID_H;
   };
-  class admin_cb_1607: RscCheckbox
-  {
+  class admin_cb_1607: RscCheckbox {
     idc = 1607;
     text = $STR_ADMIN_GODMODE;
     x = 0.4125 * safezoneW + safezoneX;
@@ -372,8 +356,7 @@ class liberation_admin {
     checked_strings[] = {"X"};
     onCheckBoxesSelChanged = "[_this] execVM 'scripts\client\misc\godmode.sqf';";
   };
-  class admin_cb_text: GREUH_RscStructuredText
-  {
+  class admin_cb_text: GREUH_RscStructuredText {
     idc = 1608;
     text = "<t size='0.7'>GodMode :</t>";
     x = 0.3625 * safezoneW + safezoneX;
@@ -381,8 +364,7 @@ class liberation_admin {
     w = 0.05 * safezoneW;
     h = 0.02 * safezoneH;
   };
-  class CancelButton: StdButton
-  {
+  class CancelButton: StdButton {
     idc = 1605;
     action = "closeDialog 0";
     text = "EXIT";
@@ -391,8 +373,7 @@ class liberation_admin {
     w = 0.09 * safezoneW;
     h = 0.035 * safezoneH;
   };
-  class Header: StdHeader
-  {
+  class Header: StdHeader {
     text = $STR_ADMIN_MENUMENU;
     x = 0.1985 * safezoneW + safezoneX;
     y = 0.1444 * safezoneH + safezoneY;
