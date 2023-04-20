@@ -104,6 +104,7 @@ GRLIB_whitelisted_from_arsenal = [
 	"2Rnd_12Gauge_Pellets",
 	"15Rnd_12Gauge_Slug",
 	"15Rnd_12Gauge_Pellets",
+	"75rnd_762x39_AK12_Mag_F",
 	"arifle_AK12_F",
 	"arifle_AK12_GL_F",
 	"arifle_AK12_lush_F",
