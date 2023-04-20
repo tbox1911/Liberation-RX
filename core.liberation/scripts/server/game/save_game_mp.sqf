@@ -81,7 +81,7 @@ if ( GRLIB_endgame == 1 ) then {
     {
         _id = _x select 0;
         _score = _x select 1;
-        if (_score >= 20) then {
+        if (_score >= GRLIB_min_score_player) then {
             _keep_score_id pushback _id;
             _player_scores pushback _x;
         };

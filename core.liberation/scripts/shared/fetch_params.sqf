@@ -60,6 +60,9 @@ GRLIB_force_load = ["ForceLoading", 0] call bis_fnc_getParamValue;
 // Define constant
 [] call compileFinal preprocessFileLineNUmbers "gameplay_constants.sqf";
 
+// Minimal player score to be saved
+GRLIB_min_score_player = 20;
+
 // Classename MOD source
 [] call compileFinal preprocessFileLineNUmbers "mod_template\mod_init.sqf";
 if (isNil "GRLIB_mod_west") then { GRLIB_mod_west = GRLIB_mod_list_west select GRLIB_mod_preset_west };

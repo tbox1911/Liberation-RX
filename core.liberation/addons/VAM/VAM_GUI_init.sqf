@@ -14,9 +14,10 @@ fnc_VAM_variable_cleaner = compileFinal preprocessFileLineNumbers "addons\VAM\fu
 
 //Vehicle Function
 fnc_VAM_common_setup = compileFinal preprocessFileLineNumbers "addons\VAM\vehicles\fnc_VAM_common_setup.sqf";
-fnc_VAM_common_camo = compileFinal preprocessFileLineNumbers "addons\VAM\vehicles\fnc_VAM_common_camo.sqf";
-fnc_VAM_common_comp = compileFinal preprocessFileLineNumbers "addons\VAM\vehicles\fnc_VAM_common_comp.sqf";
 fnc_VAM_common_camo_check = compileFinal preprocessFileLineNumbers "addons\VAM\vehicles\fnc_VAM_common_camo_check.sqf";
 fnc_VAM_common_comp_check = compileFinal preprocessFileLineNumbers "addons\VAM\vehicles\fnc_VAM_common_comp_check.sqf";
+// declared in init_shared.sqf
+//fnc_VAM_common_camo = compileFinal preprocessFileLineNumbers "addons\VAM\vehicles\fnc_VAM_common_camo.sqf";
+//fnc_VAM_common_comp = compileFinal preprocessFileLineNumbers "addons\VAM\vehicles\fnc_VAM_common_comp.sqf";
 
 systemchat localize "STR_VAM_INITIALIZED";

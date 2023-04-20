@@ -106,9 +106,9 @@ private _list = [];
 // Build Vehicles list
 _i = 0;
 {
-	_strname = getText(configFile >> "cfgVehicles" >> ( _x select 0 ) >> "DisplayName");
-	if (isNil "_strname" ||_strname == "") then {
-		diag_log format ["--- LRX Error: Classname not found: %1", ( _x select 0 )];
+	_strname = [(_x select 0)] call get_lrx_name;
+	if (_strname == "") then {
+		diag_log format ["--- LRX Error: Classname not found: %1", (_x select 0)];
 	} else {
 		_build_combo lbAdd format["%1", _strname];
 		_build_combo lbSetData [_i, ( _x select 0 )];
@@ -198,7 +198,7 @@ while { alive player && dialog } do {
 	if (do_export == 1) then {
 		do_export = 0;
 		if (isServer) then {
-			{if ([_x] call F_getScore > 20) then { [_x] call save_context }} foreach (AllPlayers - (entities "HeadlessClient_F"));
+			{if ([_x] call F_getScore >= GRLIB_min_score_player) then { [_x] call save_context }} foreach (AllPlayers - (entities "HeadlessClient_F"));
 			[] call save_game_mp;
 			copyToClipboard str (profileNamespace getVariable GRLIB_save_key);
 			_msg = format ["Savegame %1 Exported to clipboard.", GRLIB_save_key];
@@ -208,7 +208,7 @@ while { alive player && dialog } do {
 			{ ctrlShow [_x, true] } foreach _output_controls;
 			output_save = [];
 			[player, {
-				{if ([_x] call F_getScore > 20) then { [_x] call save_context }} foreach (AllPlayers - (entities "HeadlessClient_F"));
+				{if ([_x] call F_getScore >= GRLIB_min_score_player) then { [_x] call save_context }} foreach (AllPlayers - (entities "HeadlessClient_F"));
 				[] call save_game_mp;
 				[missionNamespace, ["output_save", greuh_liberation_savegame]] remoteExec ["setVariable", owner _this];
 				["Copy the Savegame from Text Field."] remoteExec ["hint", owner _this];

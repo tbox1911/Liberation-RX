@@ -1,7 +1,6 @@
-private [ "_markers", "_markers_mobilespawns", "_marker", "_idx", "_respawn_trucks", "_markers_mobilespawns" ];
-
-_markers = [];
-_markers_mobilespawns = [];
+private [ "_marker", "_idx", "_respawn_trucks", "_markers_mobilespawns" ];
+private _markers = [];
+private _markers_mobilespawns = [];
 
 waitUntil { sleep 1; !isNil "GRLIB_all_fobs" };
 

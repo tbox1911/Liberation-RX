@@ -24,7 +24,7 @@ while { dialog && alive player } do {
 	if ( _refresh ) then {
 		_refresh = false;
 
-		_myveh_lst = [getPosATL player nearEntities [["LandVehicle","Air","Ship",playerbox_typename], 150], {			
+		_myveh_lst = [getPosATL player nearEntities [["LandVehicle","Air","Ship",playerbox_typename], 150], {
 			alive _x && (count (crew _x) == 0 || typeOf _x in uavs) &&
 			!([_x, "LHD", GRLIB_sector_size] call F_check_near) &&
 			_x getVariable ["GRLIB_vehicle_owner", ""] == _guid &&
@@ -40,7 +40,7 @@ while { dialog && alive player } do {
 			if (_guid == _x select 3) then {
 				_myveh pushBack [(_x select 0), 1, _i];
 				_myveh_info pushBack _x;
-				_i = _i + 1;			
+				_i = _i + 1;
 			};
 		} forEach GRLIB_garage;  // veh list inside
 
@@ -67,7 +67,7 @@ while { dialog && alive player } do {
 		} foreach _myveh;
 	};
 
-	if ( !isNil "GRLIB_garage_in_use" ) then { 
+	if ( !isNil "GRLIB_garage_in_use" ) then {
 		hintSilent "Garage is busy !!\nPlease wait...";
 		_refresh = true;
 	} else {

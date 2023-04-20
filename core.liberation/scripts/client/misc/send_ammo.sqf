@@ -1,6 +1,6 @@
 private ["_src", "_src_ammo", "_dst_id", "_ammo", "_display", "_player_combo", "_ammo_combo" ];
 
-if ([player] call F_getScore <= 20) exitWith { hintSilent "The ATM is closed!\nYour score is too LOW..." };
+if ([player] call F_getScore < GRLIB_min_score_player) exitWith { hintSilent "The ATM is closed!\nYour score is too LOW..." };
 _src = player;
 _src_ammo = _src getVariable ["GREUH_ammo_count",0];
 send_ammo = 0;

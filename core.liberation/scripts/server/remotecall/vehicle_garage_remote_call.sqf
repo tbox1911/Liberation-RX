@@ -11,7 +11,7 @@ if (_cmd == 1) then {
 	private _color = _veh getVariable ["GRLIB_vehicle_color", ""];
 	private _compo = _veh getVariable ["GRLIB_vehicle_composant", []];
 	private _ammo = [_veh] call F_getVehicleAmmoDef;
-	private _lst_a3 = weaponsItemsCargo _veh;
+	private _lst_a3 = [_veh] call F_getCargo;
 	private _lst_r3f = [];
 	{ _lst_r3f pushback (typeOf _x)} forEach (_veh getVariable ["R3F_LOG_objets_charges", []]);
 	GRLIB_garage append [[typeOf _veh, _color, _ammo, _owner, _lst_a3, _lst_r3f, _compo]];
