@@ -12,7 +12,7 @@ private ["_nbUnits", "_townName","_buildingpositions", "_man1", "_marker_zone"];
 _setupVars =
 {
 	_missionType = "Water Delivery";
-	_missionLocation = selectRandom ((blufor_sectors select {["capture_", _x] call fn_startsWith;}) apply {[_x, false]}) select 0 ;
+	_missionLocation = selectRandom ((blufor_sectors select {["capture_", _x] call F_startsWith;}) apply {[_x, false]}) select 0 ;
 	_townName = markerText _missionLocation;
 	_ignoreAiDeaths = true;
 	_locationsArray = nil;

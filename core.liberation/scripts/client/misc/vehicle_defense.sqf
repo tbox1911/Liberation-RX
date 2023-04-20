@@ -1,6 +1,4 @@
-params ["_unit", "_role", "_vehicle"];
-if (!([_unit, _vehicle] call is_owner)) exitWith {};
-
+params ["_vehicle"];
 _vehicle removeAllEventHandlers "IncomingMissile";
 _vehicle addEventHandler ["IncomingMissile", {
 	params ["_target", "_ammo", "_vehicle", "_instigator"];

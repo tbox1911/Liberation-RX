@@ -5,7 +5,7 @@ taxi_land = {
 	waitUntil {
 		hintSilent localize "STR_TAXI_LANDING";
 		_vehicle land "LAND";
-		sleep 30;
+		sleep 5;
 		_alt = getPosATL _vehicle select 2;
 		if (speed _vehicle < 1 && _alt > 3) then {
 			_vehicle setPosATL (getPosATL _vehicle vectorAdd [0, 0, -2]);

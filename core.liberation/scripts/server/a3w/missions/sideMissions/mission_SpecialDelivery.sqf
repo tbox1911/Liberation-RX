@@ -21,16 +21,16 @@ _setupVars =
 _setupObjects =
 {
 	// settings for this mission
-	_missionLocation  = selectRandom ((blufor_sectors select {["capture_", _x] call fn_startsWith}) apply {[_x, false]}) select 0;
+	_missionLocation  = selectRandom ((blufor_sectors select {["capture_", _x] call F_startsWith}) apply {[_x, false]}) select 0;
 	if (!isNil "_missionLocation") then {
 		_missionPos  = (markerPos _missionLocation vectorAdd [([[-100,0,100], 20] call F_getRND), ([[-100,0,100], 20] call F_getRND), 0]);
 		_townName = markerText _missionLocation;
 		_missionPicture = getText (configFile >> "CfgVehicles" >> "C_Hatchback_01_F" >> "picture");
 		_missionHintText = format ["Special Delivery at <br/><t size='1.25' color='%1'>%2</t><br/><br/><t color='#00F000'>Talk</t> to <t color='#0000F0'>Nikos</t> to get information.<br/>Be ready for any situation!", sideMissionColor, _townName];
-		_missionLocation2 = selectRandom ((blufor_sectors select {["capture_", _x] call fn_startsWith && (markerPos _x) distance2D (markerPos _missionLocation) > 500 && (markerPos _x) distance2D (markerPos _missionLocation) < 3000 }) apply {[_x, false]}) select 0;
+		_missionLocation2 = selectRandom ((blufor_sectors select {["capture_", _x] call F_startsWith && (markerPos _x) distance2D (markerPos _missionLocation) > 500 && (markerPos _x) distance2D (markerPos _missionLocation) < 3000 }) apply {[_x, false]}) select 0;
 		if (!isNil "_missionLocation2") then {
 			_missionPos2 = (markerPos _missionLocation2 vectorAdd [([[-100,0,100], 20] call F_getRND), ([[-100,0,100], 20] call F_getRND), 0]);
-			_missionLocation3 = selectRandom ((blufor_sectors select {["capture_", _x] call fn_startsWith && (markerPos _x) distance2D (markerPos _missionLocation2) > 500 && (markerPos _x) distance2D (markerPos _missionLocation2) < 3000}) apply {[_x, false]}) select 0;
+			_missionLocation3 = selectRandom ((blufor_sectors select {["capture_", _x] call F_startsWith && (markerPos _x) distance2D (markerPos _missionLocation2) > 500 && (markerPos _x) distance2D (markerPos _missionLocation2) < 3000}) apply {[_x, false]}) select 0;
 			if (!isNil "_missionLocation3") then {
 				_missionPos3 = (markerPos _missionLocation3 vectorAdd [([[-100,0,100], 20] call F_getRND), ([[-100,0,100], 20] call F_getRND), 0]);
 				_missionLocationEnd = (selectRandom ((SpawnMissionMarkers select {(markerPos (_x select 0)) distance2D (markerPos _missionLocation3) > 500 && (markerPos (_x select 0)) distance2D (markerPos _missionLocation3) < 4000}) apply {[_x, false]}) select 0) select 0;
