@@ -5,11 +5,15 @@ _line_delay = 0.75;
 _page_delay = 5;
 
 disableUserInput true;
-if (vehicle player == player && lifestate player != "incapacitated" ) then {
+if (vehicle player == player && lifestate player != "incapacitated") then {
 	player switchCamera "EXTERNAL";
 	player switchMove "";
 	player playMoveNow "acts_briefing_sb_in";
+<<<<<<< HEAD
 	sleep 10;
+=======
+	sleep 8;
+>>>>>>> 84ad6463 (endgame)
 };
 
 [] spawn cinematic_camera;
