@@ -20,12 +20,6 @@ if ( isServer ) then {
 		};
 	};
 
-	if ( ((typeof _unit) in [ammobox_o_typename, ammobox_b_typename, fuelbarrel_typename]) && ((getPosATL _unit) select 2 < 10) ) exitWith {
-		sleep random 2;
-		( "R_80mm_HE" createVehicle (getPosATL _unit) ) setVelocity [0, 0, -200];
-		deleteVehicle _unit;
-	};
-
 	if ( (typeof _unit) in [FOB_box_typename, FOB_truck_typename, foodbarrel_typename, waterbarrel_typename] ) exitWith {
 		sleep 30;
 		deleteVehicle _unit;
@@ -33,11 +27,27 @@ if ( isServer ) then {
 
 	if ( typeof _unit == mobile_respawn ) exitWith { [_unit, "del"] remoteExec ["addel_beacon_remote_call", 2] };
 
-	please_recalculate = true;
+	if ( ((typeof _unit) in [ammobox_o_typename, ammobox_b_typename, ammobox_i_typename, fuelbarrel_typename]) && ((getPosATL _unit) select 2 < 10) ) exitWith {
+		waitUntil { sleep 0.5; (isNull attachedTo _unit) };
+		( "R_80mm_HE" createVehicle (getPosATL _unit) ) setVelocity [0, 0, -200];
+		deleteVehicle _unit;
+	};
+
+	if ((_unit iskindof "LandVehicle") || (_unit iskindof "Air") || (_unit iskindof "Ship") ) then {
+		[_unit] call clean_vehicle;
+	};
+
+	if ( _unit isKindOf "Man" && vehicle _unit != _unit ) then {
+		sleep 3;
+		_unit action ["Eject", vehicle _unit];
+		//moveOut _unit;
+	};
 
 	if (isNil "infantry_weight") then { infantry_weight = 33 };
 	if (isNil "armor_weight") then { armor_weight = 33 };
 	if (isNil "air_weight") then { air_weight = 33 };
+
+	if ( isPlayer _unit ) then { stats_player_deaths = stats_player_deaths + 1 };
 
 	if ( side _killer == GRLIB_side_friendly ) then {
 
@@ -71,18 +81,6 @@ if ( isServer ) then {
 		if ( infantry_weight < 0 ) then { infantry_weight = 0 };
 		if ( armor_weight < 0 ) then { armor_weight = 0 };
 		if ( air_weight < 0 ) then { air_weight = 0 };
-	};
-
-	if ( isPlayer _unit ) then { stats_player_deaths = stats_player_deaths + 1 };
-
-	if ((_unit iskindof "LandVehicle") || (_unit iskindof "Air") || (_unit iskindof "Ship") ) then {
-		[_unit] call clean_vehicle;
-	};
-
-	if ( _unit isKindOf "Man" && vehicle _unit != _unit ) then {
-		sleep 3;
-		_unit action ["Eject", vehicle _unit];
-		//moveOut _unit;
 	};
 
 	if ( _unit isKindOf "Man" && _unit != _killer ) then {
@@ -153,6 +151,7 @@ if ( isServer ) then {
 	};
 
 	_unit setVariable ["R3F_LOG_disabled", true, true];
+	please_recalculate = true;
 	//sleep 3;
 	//_unit enableSimulationGlobal false;
 };
