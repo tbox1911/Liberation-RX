@@ -22,6 +22,7 @@ while { GRLIB_endgame == 0 } do {
 		_spawnsector = _usable_sectors call BIS_fnc_selectRandom;
 
 		_grp = createGroup [GRLIB_side_civilian, true];
+		sleep 0.5;
 		if ( random 100 < 33) then {
 			_civnumber = 1 + (floor (random 2));
 			while { count units _grp < _civnumber } do {

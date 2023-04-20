@@ -41,7 +41,6 @@ while { count (units _grp) > 0 } do {
 				_grp reveal _next_target;
 				_gunner doTarget _next_target;
 				//_vehicle fireAtTarget [_next_target];
-				diag_log format ["DBG: %1 detect enemy %2", _gunner, _next_target];
 			} else {
 				_grp setBehaviour "CARELESS";
 				_gunner doTarget objNull;
