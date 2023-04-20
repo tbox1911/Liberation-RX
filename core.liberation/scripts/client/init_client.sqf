@@ -28,9 +28,9 @@ if (GRLIB_forced_loadout > 0) then {
  	[player, configfile >> "CfgVehicles" >> typeOf player] call BIS_fnc_loadInventory;
 };
 if (isMultiplayer) then {
-	MGI_Grp_ID = getPlayerUID player;
+	PAR_Grp_ID = getPlayerUID player;
 } else {
-	MGI_Grp_ID = str round(random 4096);
+	PAR_Grp_ID = str round(random 4096);
 };
 my_group = group player;
 [my_group, "add"] remoteExec ["addel_group_remote_call", 2];
@@ -85,7 +85,7 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 [] execVM "scripts\client\misc\wildlife_manager.sqf";
 
 if (!GRLIB_ACE_enabled) then {
-	[] execVM "addons\MGI\MGI_AI_Revive.sqf";
+	[] execVM "addons\PAR\PAR_AI_Revive.sqf";
 	[] execVM "addons\MGR\MagRepack_init.sqf";
 	[] execVM "addons\NRE\NRE_init.sqf";
 	[] execVM "addons\KEY\shortcut_init.sqf";

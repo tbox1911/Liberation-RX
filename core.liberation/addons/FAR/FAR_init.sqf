@@ -49,11 +49,11 @@ FAR_Player_Init = {
 	player setVariable ["FAR_isUnconscious", 0, true];
 	player setVariable ["FAR_isDragged", 0, true];
 	player setVariable ["ace_sys_wounds_uncon", false];
-	player setVariable ["MGI_Grp_ID",format["Bros_%1", MGI_Grp_ID], true];
-	player setVariable ["MGI_soliders",true,true];
-	player setVariable ["MGI_isUnconscious", false];
-	player setVariable ["MGI_myMedic", nil];
-	player setVariable ["MGI_busy", nil];
+	player setVariable ["PAR_Grp_ID",format["Bros_%1", PAR_Grp_ID], true];
+	player setVariable ["PAR_soliders",true,true];
+	player setVariable ["PAR_isUnconscious", false];
+	player setVariable ["PAR_myMedic", nil];
+	player setVariable ["PAR_busy", nil];
 	player setVariable ["AirCoolDown", 0, true];
 	if (!GRLIB_fatigue ) then { player enableStamina false };
 	player setCustomAimCoef 0.35;

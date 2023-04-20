@@ -51,7 +51,7 @@ if (!isNil "_grp") then { player hcSetGroup [_grp] };
 
 // IA Recall
 private _grp = group player;
-private _squad = allUnits select {side _x == GRLIB_side_friendly && (_x getVariable ["MGI_Grp_ID","0"]) == format["Bros_%1",MGI_Grp_ID]};
+private _squad = allUnits select {side _x == GRLIB_side_friendly && (_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1",PAR_Grp_ID]};
 {
 	if ( !(_x in units _grp) && lifeState _x != 'incapacitated' ) then {
 		if ( count (units _grp) < (GRLIB_squad_size + GRLIB_squad_size_bonus) ) then { [_x] joinSilent _grp};

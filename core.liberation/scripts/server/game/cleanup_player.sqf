@@ -20,8 +20,8 @@ if !(isNull _unit) then {
 	} forEach _cleanveh;
 
 	// Remove Injured AI
-	private _gid = _unit getVariable ["MGI_Grp_ID","1"];
-	private _bros = allUnits select {side _x == GRLIB_side_friendly && (_x getVariable ["MGI_Grp_ID","0"]) == _gid};
+	private _gid = _unit getVariable ["PAR_Grp_ID","1"];
+	private _bros = allUnits select {side _x == GRLIB_side_friendly && (_x getVariable ["PAR_Grp_ID","0"]) == _gid};
 	{
 		if (!(lifeState _x in ["HEALTHY", "INJURED"])) then { deleteVehicle _x };
 	} forEach _bros;

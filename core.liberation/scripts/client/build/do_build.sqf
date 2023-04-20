@@ -89,7 +89,7 @@ while { true } do {
 			_unit setSkill 0.6;
 			_unit setRank "PRIVATE";
 			_grp = group player;
-			_unit setVariable ["MGI_Grp_ID", format["Bros_%1",MGI_Grp_ID], true];
+			_unit setVariable ["PAR_Grp_ID", format["Bros_%1",PAR_Grp_ID], true];
 			_unit addMPEventHandler ["MPKilled", FAR_Player_MPKilled];
 			_unit enableIRLasers true;
 			_unit enableGunLights "Auto";
@@ -115,9 +115,9 @@ while { true } do {
 				_grp setCombatMode "GREEN";
 				_grp setBehaviour "AWARE";
 				{
-					_x setVariable ["MGI_Grp_ID", format["AI_%1",MGI_Grp_ID], true];
+					_x setVariable ["PAR_Grp_ID", format["AI_%1",PAR_Grp_ID], true];
 					_x addUniform uniform player;
-					[_x] call MGI_fn_EHDamage;
+					[_x] call PAR_fn_EHDamage;
 				} forEach units _grp;
 				[_price] call do_pay_build;
 				player hcSetGroup [_grp];

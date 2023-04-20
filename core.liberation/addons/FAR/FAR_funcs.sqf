@@ -97,7 +97,7 @@ FAR_Player_Unconscious = {
 
 	// Eject unit if inside vehicle
 	_veh = objectParent _unit;
-	if (!(isNull _veh)) then {[_veh, _unit] spawn MGI_fn_eject};
+	if (!(isNull _veh)) then {[_veh, _unit] spawn PAR_fn_eject};
 
 	[] call R3F_LOG_FNCT_objet_relacher;
 
@@ -114,10 +114,10 @@ FAR_Player_Unconscious = {
 	disableUserInput true;
 	disableUserInput false;
 
-	// MGI AI Revive Call
+	// PAR AI Revive Call
 	_unit setVariable ["GREUH_isUnconscious", 1, true];
 	_unit setUnconscious true;
-	_unit setVariable ["MGI_isUnconscious", true];
+	_unit setVariable ["PAR_isUnconscious", true];
 
 	// Mute Radio
 	5 fadeRadio 0;
@@ -127,7 +127,7 @@ FAR_Player_Unconscious = {
 	if (!isNil "_my_dog") then { _my_dog setVariable ["do_find", player] };
 
 	_unit switchMove "";
-	[_unit] spawn MGI_fn_unconscious;
+	[_unit] spawn PAR_fn_unconscious;
 
 	_bleedOut = time + FAR_BleedOut;
 	while { !isNull _unit && alive _unit && _unit getVariable "FAR_isUnconscious" == 1 && (FAR_BleedOut <= 0 || time < _bleedOut) } do {

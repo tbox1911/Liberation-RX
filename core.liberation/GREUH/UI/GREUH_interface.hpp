@@ -843,7 +843,7 @@ class GREUH_respawn {
 		w = 0.1 * safezoneW;
 		h = 0.04 * safezoneH;
 		text = "Recall Medic";
-		action = "[] spawn MGI_fn_medicRecall";
+		action = "[] spawn PAR_fn_medicRecall";
 		colorDisabled[] = { 1, 1, 1, 1 };
 	};
 

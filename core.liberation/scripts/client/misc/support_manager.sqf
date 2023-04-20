@@ -94,14 +94,14 @@ while { true } do {
 			if (_needammo1 || _needammo2 || _needmedic ) then {
 				[_x] spawn {
 					params ["_target"];
-					_target setVariable ['MGI_heal', true];
+					_target setVariable ['PAR_heal', true];
 					_target playMove "AinvPknlMstpSlayWrflDnon_medic";
 					sleep 6;
 					if (lifeState _target != 'incapacitated') then {
 						_target setDamage 0;
 					};
 					sleep 4;
-					_target setVariable ['MGI_heal', nil];
+					_target setVariable ['PAR_heal', nil];
 				};
 			};
 

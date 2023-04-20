@@ -24,7 +24,7 @@ player createDiaryRecord ["Info", ["pSiKO Tweaks", format ["Mag Repack v3.13<br/
 player createDiaryRecord ["Info", ["pSiKO Tweaks", format ["A3W Missions v1.30<br/>by <font color='%1'>-AgentRev-</font>", call _getRandomColor]]];
 player createDiaryRecord ["Info", ["pSiKO Tweaks", format ["R3F Logistics v3.10<br/>by <font color='%1'>-Team-R3F.org-</font>", call _getRandomColor]]];
 player createDiaryRecord ["Info", ["pSiKO Tweaks", format ["FAR Revive v1.50<br/>by <font color='%1'>-Farooq-</font>", call _getRandomColor]]];
-player createDiaryRecord ["Info", ["pSiKO Tweaks", format ["MGI AI Revive v2.04<br/>by <font color='%1'>-PierreMGI-</font>", call _getRandomColor]]];
+player createDiaryRecord ["Info", ["pSiKO Tweaks", format ["AI Revive v2.04<br/>by <font color='%1'>-pSiKO-</font>", call _getRandomColor]]];
 player createDiaryRecord ["Info", ["pSiKO Tweaks", format ["LARs Arsenal v1.00<br/>by <font color='%1'>-Sir Larrow-</font>", call _getRandomColor]]];
 
 player createDiarySubject ["Info", "Server"];
