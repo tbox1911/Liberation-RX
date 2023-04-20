@@ -8,7 +8,7 @@ while { GRLIB_endgame == 0 } do {
 	waitUntil { sleep 0.3; count blufor_sectors >= 3; };
 	waitUntil { sleep 0.3; combat_readiness >= (_minimum_readiness / GRLIB_difficulty_modifier); };
 
-	sleep 15 + (random 5 * 60);
+	sleep ((random 5) * 60);
 
 	while {  [] call F_opforCap > GRLIB_patrol_cap } do {
 			sleep (random 30);
@@ -52,7 +52,7 @@ while { GRLIB_endgame == 0 } do {
 
 	sleep 1;
 	if (!isNil "_grp") then {
-		[_grp] spawn patrol_ai;
+		[_grp, _is_infantry] spawn patrol_ai;
 
 		_started_time = time;
 		_patrol_continue = true;

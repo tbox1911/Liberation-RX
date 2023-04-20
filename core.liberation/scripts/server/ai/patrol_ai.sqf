@@ -1,4 +1,5 @@
-_grp = _this select 0;
+params ["_grp", "_is_infantry"];
+
 if ( isNil "reinforcements_sector_under_attack" ) then { reinforcements_sector_under_attack = "" };
 
 while { count (units _grp) > 0 } do {
@@ -30,9 +31,18 @@ while { count (units _grp) > 0 } do {
 	if ( reinforcements_sector_under_attack == "" ) then {
 		_sectors_patrol = [];
 		_patrol_startpos = getpos (leader _grp);
+		_sector_radius = 1500;
+		_max_waypoints = 3;  // + back to startpos and cycle
+
+		if (_is_infantry) then {
+			_sector_radius = 400;
+			_max_waypoints = 4;
+		};
+
 		{
-			if ( _patrol_startpos distance (markerpos _x) < 2500) then {
+			if ( _patrol_startpos distance2D (markerpos _x) < _sector_radius && _max_waypoints > 0) then {
 				_sectors_patrol pushBack _x;
+				_max_waypoints = _max_waypoints - 1;
 			};
 		} foreach (sectors_allSectors - blufor_sectors);
 

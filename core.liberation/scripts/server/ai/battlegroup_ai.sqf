@@ -19,7 +19,7 @@ while { ( count units _grp != 0 ) && ( GRLIB_endgame == 0 ) } do {
 
 	private _startpos = getpos (leader _grp);
 
-	while { ((getpos (leader _grp)) distance _startpos) < 100 } do {
+	while { ((getpos (leader _grp)) distance2D _startpos) < 100 } do {
 
 		while {(count (waypoints _grp)) != 0} do {deleteWaypoint ((waypoints _grp) select 0);};
 		{_x doFollow leader _grp} foreach units _grp;
