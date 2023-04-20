@@ -23,11 +23,12 @@ _sendPara = {
 	} foreach (crew _newvehicle);
 	sleep 0.2;
 
-	while { count units _para_group < 8 } do {
+	for "_i" from 1 to 8 do {
 		_unit = _para_group createUnit [opfor_paratrooper, getmarkerpos _spawnsector, [], 0, "NONE"];
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		_unit assignAsCargo _newvehicle;
 		_unit moveInCargo _newvehicle;
+		_unit addBackpack "B_Parachute";
 		_unit setSkill 0.65;
 		_unit setSkill ["courage", 1];
 		_unit allowFleeing 0;

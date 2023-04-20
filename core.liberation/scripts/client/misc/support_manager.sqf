@@ -45,15 +45,15 @@ _AddAmmo = {
 while { true } do {
 	waitUntil {sleep 1;GRLIB_player_spawned};
 
-	if (count(units group player) > 1) then {
+	if (count(units group player) >= 1) then {
 		_maxpri = 10;
 		_needammo1 = false;
 		_needammo2 = false;
 		_needmedic = false;
-		_UnitList = units group player;
+		_unitList = units group player;
 		_my_squad = player getVariable ["my_squad", nil];
-		if (!isNil "_my_squad") then { { _UnitList pushBack _x } forEach units _my_squad };
-		{_UnitList append units _x} foreach hcAllGroups player;
+		if (!isNil "_my_squad") then { { _unitList pushBack _x } forEach units _my_squad };
+		{_unitList append units _x} foreach hcAllGroups player;
 		{
 			// Out vehicle
 			if (_x != player && lifeState _x != 'INCAPACITATED' && vehicle _x == _x) then {
@@ -148,7 +148,7 @@ while { true } do {
 					};
 				};
 			};
-		} forEach _UnitList;
+		} forEach _unitList;
 	};
 
 	// Show Hint

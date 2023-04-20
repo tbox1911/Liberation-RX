@@ -23,9 +23,6 @@ if ( _class == mobile_respawn ) then {
 if ( _class == huron_typename ) then {
 	_text = format ["%1 %2", localize "STR_RESPAWN_TRUCK", "(Heli)"];
 };
-if ( _class == "Box_NATO_Ammo_F" ) then {
-	_text = "Static Ammo";
-};
 if ( _class == canisterFuel ) then {
 	_text = "Fuel Jerican";
 };
