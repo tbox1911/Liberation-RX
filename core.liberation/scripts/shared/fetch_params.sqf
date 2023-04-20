@@ -1,6 +1,6 @@
 if ( isMultiplayer ) then {
 	GRLIB_difficulty_modifier = ["Difficulty",1] call bis_fnc_getParamValue;
-	GRLIB_time_factor = ["DayDuration",12] call bis_fnc_getParamValue;
+	GRLIB_time_factor = ["DayDuration",1] call bis_fnc_getParamValue;
 	GRLIB_resources_multiplier = ["ResourcesMultiplier",1] call bis_fnc_getParamValue;
 	GRLIB_fatigue = ["Fatigue",0] call bis_fnc_getParamValue;
 	GRLIB_revive = ["Revive",2] call bis_fnc_getParamValue;
@@ -73,12 +73,17 @@ if ( isMultiplayer ) then {
 	GRLIB_hide_opfor = 0;
 	GRLIB_thermic = 1;
 };
-//ACE ACRE
+
+//Detect Addons ACE ACRE OPTRE GM
 GRLIB_ACE_enabled = isClass(configFile >> "cfgPatches" >> "ace_main"); // Returns true if ACE is enabled
 GRLIB_ACRE_enabled = isClass(configFile >> "cfgPatches" >> "acre_main"); // Returns true if ACRE is enabled
 GRLIB_OPTRE_enabled = isClass(configFile >> "cfgPatches" >> "OPTRE_Core"); // Returns true if OPTRE is enabled
+GRLIB_GM_enabled = isClass(configFile >> "cfgPatches" >> "gm_Core"); // Returns true if GlobMob is enabled
 
 if ( GRLIB_ACE_enabled ) then {	GRLIB_revive = 0; GRLIB_fatigue = 1; GRLIB_fancy_info = 0; GRLIB_limited_arsenal = 0 };  // Disable FAR/Fatigue/Fancy if ACE present
+if ( GRLIB_OPTRE_enabled ) then { GRLIB_MOD_signature = "OPTRE_" };
+if ( GRLIB_GM_enabled ) then { GRLIB_MOD_signature = "gm_" };
+
 if ( GRLIB_fatigue == 1 ) then { GRLIB_fatigue = true } else { GRLIB_fatigue = false };
 if ( GRLIB_introduction == 1 ) then { GRLIB_introduction = true } else { GRLIB_introduction = false };
 if ( GRLIB_deployment_cinematic == 1 ) then { GRLIB_deployment_cinematic = true } else { GRLIB_deployment_cinematic = false };

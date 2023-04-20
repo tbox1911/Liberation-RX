@@ -5,6 +5,7 @@ onLoadMission = $STR_MISSION_DESCRIPTION;
 overviewText = $STR_MISSION_DESCRIPTION;
 overviewPicture = "res\liberation.paa";
 loadScreen = "res\liberation.paa";
+onLoadIntro = "Welcome on the Liberaton RX planet.";
 
 respawn = 3;
 respawndelay = 5;

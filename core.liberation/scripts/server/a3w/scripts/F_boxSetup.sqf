@@ -18,7 +18,7 @@ if (_locked) then {
 	//_box allowDamage true;
 };
 
-if (!GRLIB_OPTRE_enabled && _type == A3W_BoxWps) then {
+if (!GRLIB_OPTRE_enabled && !GRLIB_GM_enabled && _type == A3W_BoxWps) then {
 	[_box, selectRandom _box_refill] call fn_refillbox;
 };
 _box;
