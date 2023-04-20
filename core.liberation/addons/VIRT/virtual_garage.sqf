@@ -95,7 +95,6 @@ while { dialog && alive player } do {
 			private _vehicle = (_myveh select _selected_item) select 2;
 			ctrlEnable [ 121, false ];
 			[player, _vehicle, load_veh] remoteExec ["vehicle_garage_remote_call", 2];
-			hintSilent (format ["Vehicle %1\nUnloaded from Garage.", _vehicle_name]);
 			closeDialog 0;
 		};
 

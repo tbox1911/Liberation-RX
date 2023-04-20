@@ -38,6 +38,7 @@ waitUntil { one_synchro_done };
 waitUntil { !isNil "GRLIB_player_spawned" };
 waituntil { GRLIB_player_spawned; (player getVariable ["GRLIB_score_set", 0] == 1)};
 waitUntil { !isNil "GRLIB_mobile_respawn" };
+waituntil { !isNil "GRLIB_marker_init" };
 
 while { true } do {
 

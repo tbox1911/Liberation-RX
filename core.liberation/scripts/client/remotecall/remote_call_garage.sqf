@@ -11,3 +11,6 @@ _lst_r3f = _veh_info select 5;
 buildtype = 9;
 build_unit = [_veh_class,_color,_ammo,_lst_a3,_lst_r3f];
 dobuild = 1;
+
+waitUntil { sleep 1; dobuild == 0};
+hintSilent (format ["Vehicle %1\nUnloaded from Garage.", getText (configFile >> "cfgVehicles" >> _veh_class >> "displayName")]);

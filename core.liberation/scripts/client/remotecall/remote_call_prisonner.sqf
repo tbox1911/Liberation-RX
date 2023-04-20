@@ -40,7 +40,7 @@ waitUntil {
 if (alive _unit) then {
 
 	if ( _is_near_fob ) then {
-		sleep 1;
+		sleep (1 + random 3);
 		if (vehicle _unit != _unit) then {
 			unassignVehicle _unit;
 		 	doGetOut _unit;
