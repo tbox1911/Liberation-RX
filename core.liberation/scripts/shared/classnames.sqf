@@ -548,6 +548,7 @@ opfor_air = [
 
 opfor_statics = [
 	"O_HMG_01_high_F",
+	"O_GMG_01_high_F",
 	"O_static_AA_F",
 	"O_static_AT_F",
 	"O_Mortar_01_F"
@@ -564,6 +565,11 @@ opfor_texture_overide = [
 ];
 
 opfor_recyclable = [
+	["O_HMG_01_high_F",0,round (10 / GRLIB_recycling_percentage),0],
+	["O_GMG_01_high_F",0,round (20 / GRLIB_recycling_percentage),0],
+	["O_static_AA_F",0,round (50 / GRLIB_recycling_percentage),0],
+	["O_static_AT_F",0,round (50 / GRLIB_recycling_percentage),0],
+	["O_Mortar_01_F",0,round (300 / GRLIB_recycling_percentage),0],
 	["O_LSV_02_armed_F",0,round (20 / GRLIB_recycling_percentage),0],
 	["O_LSV_02_AT_F",0,round (40 / GRLIB_recycling_percentage),0],
 	["O_G_Offroad_01_armed_F",0,round (30 / GRLIB_recycling_percentage),0],
