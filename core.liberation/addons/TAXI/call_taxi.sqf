@@ -52,7 +52,7 @@ createVehicleCrew _vehicle;
 _pilots = crew _vehicle;
 { _x addMPEventHandler ["MPKilled", {_this spawn kill_manager}] } foreach _pilots;
 _pilots joinSilent _air_grp;
-player setVariable ["GRLIB_taxi_called", _vehicle];
+player setVariable ["GRLIB_taxi_called", _vehicle, true];
 hintSilent "Air Taxi Called !";
 
 // Goto Pickup Point
@@ -133,4 +133,4 @@ deleteMarkerLocal "taxi_dz";
 sleep 60;
 {deletevehicle _x} forEach _pilots;
 deleteVehicle _vehicle;
-player setVariable ["GRLIB_taxi_called", nil];
+player setVariable ["GRLIB_taxi_called", nil, true];

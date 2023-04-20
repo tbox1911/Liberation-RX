@@ -21,7 +21,7 @@ if !(isNull _player) then {
 	{
 		_x setVariable ["GRLIB_vehicle_owner", "", true];
 		_x setVariable ["R3F_LOG_disabled", false, true];
-		[_x, "UNLOCKED"] remoteExec ["setVehicleLock", 0];
+		_x setVehicleLock "UNLOCKED";
 	} forEach _cleanveh;
 
 	// Remove Injured AI
