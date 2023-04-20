@@ -17,6 +17,7 @@ private _loadout = [];
 if (alive _player && lifeState _player != "INCAPACITATED") then {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	private _bros = allUnits select { _x != _player && alive _x && lifeState _x != "INCAPACITATED" && _x getVariable ["PAR_Grp_ID","0"] == _puid };
 	{ _ai_group pushback [typeOf _x, rank _x, [_x, ["repetitive"]] call F_getLoadout] } forEach _bros;
 	_loadout = [_player, ["repetitive"]] call F_getLoadout;
@@ -37,7 +38,21 @@ if (alive _player && lifeState _player != "INCAPACITATED") then {
 >>>>>>> d8e82394 (1)
 	diag_log format ["--- LRX saving player %1 Loadout.", name _player];
 >>>>>>> a885f7e9 (fix log msg)
+=======
+	_loadout = getUnitLoadout [_player, true];
+	if (_loaded) then {
+		private _bros = allUnits select { alive _x && _x != _player && lifeState _x != "INCAPACITATED" && (_x getVariable ["PAR_Grp_ID","0"]) == _puid};
+		{ _ai_group pushback [typeOf _x, rank _x, getUnitLoadout [_x, true]]} forEach _bros;
+	} else {
+		private _context = localNamespace getVariable [format ["player_context_%1", _uid], []];
+		if (count _context == 0) then {
+    		{if (_x select 0 == _uid) exitWith {_context = _x}} foreach GRLIB_player_context;
+		};
+		_ai_group = _context select 2;
+	};
+	diag_log format ["--- LRX Saving %1 unit(s) for %2 Squad.", count _ai_group, name _player];
+>>>>>>> 39eeab7c (fix load ai)
 };
 
 localNamespace setVariable [format ["player_context_%1", _uid], [_uid, _loadout, _ai_group]];
-diag_log format ["--- LRX saving %1 unit(s) for %2 Squad.", count _ai_group, name _player];
+diag_log format ["--- LRX player %1 profile Saved.", name _player];

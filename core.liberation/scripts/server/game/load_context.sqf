@@ -12,6 +12,7 @@ if (count _context == 0) then {
 if (count _context >= 1) then {
     // Player loadout
     _player setUnitLoadout (_context select 1);
+    diag_log format ["--- LRX player %1 loadout Loaded.", name _player];
 
     // AIs loadout
     if (count (_context select 2) >= 1 ) then {
@@ -56,3 +57,4 @@ if (count _context >= 1) then {
     };
 };
 _player setVariable ["GRLIB_squad_context_loaded", true, true];
+diag_log format ["--- LRX player %1 profile Loaded.", name _player];
