@@ -47,7 +47,7 @@ if ( _ownership == GRLIB_side_friendly ) exitWith {
 };
 
 private _arsenal_box = objNull;
-if (!(_sector in sectors_tower)) then {
+if (!(_sector in sectors_tower) && !_defenders_cooldown) then {
 	_arsenal_box = createVehicle [Arsenal_typename, markerPos _sector, [], 20, "NONE"];
 };
 
