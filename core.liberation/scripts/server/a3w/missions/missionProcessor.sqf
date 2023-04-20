@@ -45,6 +45,7 @@ if (!_continue_mission) exitWith {
 	diag_log format ["%1 Mission%2 failed to setup: %3", MISSION_PROC_TYPE_NAME, _controllerSuffix, _missionType];
 };
 
+sleep 5;
 _leader = leader _aiGroup;
 _marker = [_missionType, _missionPos] call createMissionMarker;
 _aiGroup setVariable ["A3W_missionMarkerName", _marker, true];
@@ -99,7 +100,7 @@ waitUntil {
 	_marker setMarkerText format ["%1 - %2 min left", _missionType, round ((_missionTimeout - (diag_tickTime - _startTime)) /60)];
 
 	_expired = (diag_tickTime - _startTime >= _missionTimeout && ([_missionPos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount) == 0);
-	_failed = ((!isNil "_waitUntilCondition" && {call _waitUntilCondition}) || _expired || count allPlayers == 0);
+	_failed = ((!isNil "_waitUntilCondition" && {call _waitUntilCondition}) || _expired);
 
 	if (!isNil "_waitUntilSuccessCondition" && {call _waitUntilSuccessCondition}) then {
 		_failed = false;
@@ -141,8 +142,7 @@ if (_failed) then {
 
 	["lib_secondary_a3w_mission_fail", [_missionType]] remoteExec ["bis_fnc_shownotification", 0];
 	diag_log format ["%1 Mission%2 failed: %3", MISSION_PROC_TYPE_NAME, _controllerSuffix, _missionType];
-}
-else {
+} else {
 	// Mission completed
 
 	if (isNull _leader) then {
@@ -155,17 +155,14 @@ else {
 
 	if (!isNil "_successExec") then { call _successExec };
 
-	if (!isNil "_vehicle" && {typeName _vehicle == "OBJECT"}) then
-	{
+	if (!isNil "_vehicle" && {typeName _vehicle == "OBJECT"}) then {
 		_vehicle setVariable ["R3F_LOG_disabled", false, true];
 		_vehicle setVariable ["A3W_missionVehicle", true, true];
 	};
 
-	if (!isNil "_vehicles" && {typeName _vehicles == "ARRAY"}) then
-	{
+	if (!isNil "_vehicles" && {typeName _vehicles == "ARRAY"}) then	{
 		{
-			if (!isNil "_x" && {typeName _x == "OBJECT"}) then
-			{
+			if (!isNil "_x" && {typeName _x == "OBJECT"}) then {
 				_x setVariable ["R3F_LOG_disabled", false, true];
 				_x setVariable ["A3W_missionVehicle", true, true];
 			};
@@ -187,7 +184,6 @@ else {
 deleteGroup _aiGroup;
 deleteMarker _marker;
 
-if (!isNil "_locationsArray") then
-{
+if (!isNil "_locationsArray") then {
 	[_locationsArray, _missionLocation, false] call setLocationState;
 };

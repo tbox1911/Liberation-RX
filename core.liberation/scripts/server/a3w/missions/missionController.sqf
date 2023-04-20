@@ -17,7 +17,7 @@ _missionsFolder = MISSION_CTRL_FOLDER;
 [MISSION_CTRL_PVAR_LIST, MISSION_CTRL_FOLDER] call attemptCompileMissions;
 
 while {true} do {
-	if (count allPlayers == 0 || GRLIB_endgame == 1) exitWith {};
+	if (GRLIB_endgame == 1) exitWith {};
 
 	// Select Mission
 	_nextMission = nil;
@@ -62,7 +62,7 @@ while {true} do {
 	[_info] remoteExec ["remote_call_showinfo", 0];
 
 	_timer = round (time + _missionDelay);
-	waitUntil {sleep 5; (time > _timer || count allPlayers == 0)};
+	waitUntil {sleep 5; (time > _timer)};
 
 	// Mission unlock
 	[MISSION_CTRL_PVAR_LIST, _nextMission, false] call setMissionState;
