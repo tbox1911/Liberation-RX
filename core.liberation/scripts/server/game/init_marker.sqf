@@ -7,7 +7,7 @@ GRLIB_Marker_ATM = [];
 GRLIB_Marker_FUEL = [];
 GRLIB_Marker_REPAIR = [];
 
-marker_dist = {
+private _marker_dist = {
   params ["_type", "_pos"];
   private _list = [];
   {
@@ -30,14 +30,13 @@ marker_dist = {
 private _tmp_marker = GRLIB_Marker_ATM;
 GRLIB_Marker_ATM = [];
 {
-  _dist = ["ATM", _x] call marker_dist;
+  _dist = ["ATM", _x] call _marker_dist;
   if (_dist > 100) then {
-    _marker = createMarker [format ["marked_atm%1" ,_x], markers_reset];
-    _marker setMarkerPos _x;
+    _marker = createMarker [format ["marked_atm%1", _forEachIndex], _x];
     _marker setMarkerColor "ColorGreen";
     _marker setMarkerType "mil_dot";
     _marker setMarkerText "ATM";
-    _marker setMarkerSize [ 1, 1 ];
+    _marker setMarkerSize [ 0.75, 0.75 ];
     GRLIB_Marker_ATM pushback _x;
   };
 } forEach _tmp_marker;
@@ -46,14 +45,13 @@ publicVariable "GRLIB_Marker_ATM";
 private _tmp_marker = GRLIB_Marker_SRV;
 GRLIB_Marker_SRV = [];
 {
-  _dist = ["SELL", _x] call marker_dist;
+  _dist = ["SELL", _x] call _marker_dist;
   if (_dist > 100) then {
-    _marker = createMarker [format ["marked_car%1" ,_x], markers_reset];
-    _marker setMarkerPos _x;
+    _marker = createMarker [format ["marked_car%1", _forEachIndex], _x];
     _marker setMarkerColor "ColorBlue";
     _marker setMarkerType "mil_dot";
     _marker setMarkerText "SELL";
-    _marker setMarkerSize [ 1, 1 ];
+    _marker setMarkerSize [ 0.75, 0.75 ];
     GRLIB_Marker_SRV pushback _x;
   };
 } forEach _tmp_marker;
@@ -62,14 +60,13 @@ publicVariable "GRLIB_Marker_SRV";
 private _tmp_marker = GRLIB_Marker_FUEL;
 GRLIB_Marker_FUEL = [];
 {
-  _dist = ["FUEL", _x] call marker_dist;
+  _dist = ["FUEL", _x] call _marker_dist;
   if (_dist > 100) then {
-    _marker = createMarker [format ["marked_fuel%1" ,_x], markers_reset];
-    _marker setMarkerPos _x;
+    _marker = createMarker [format ["marked_fuel%1", _forEachIndex], _x];
     _marker setMarkerColor "ColorYellow";
     _marker setMarkerType "mil_dot";
     _marker setMarkerText "FUEL";
-    _marker setMarkerSize [ 1, 1 ];
+    _marker setMarkerSize [ 0.75, 0.75 ];
     GRLIB_Marker_FUEL pushback _x;
   };
 } forEach _tmp_marker;
@@ -78,7 +75,7 @@ publicVariable "GRLIB_Marker_FUEL";
 private _tmp_marker = [];
 { _tmp_marker pushback (markerpos _x) } forEach sectors_factory;
 {
-  _dist = ["Repair", _x] call marker_dist;
+  _dist = ["Repair", _x] call _marker_dist;
   if (_dist > 300) then {
     //add repair pickup
     private _pos = [];
@@ -97,7 +94,7 @@ private _tmp_marker = [];
     if (_find_pos) then {
       _vehicle = "C_Offroad_01_repair_F" createVehicle _pos;
       _vehicle allowDamage false;
-      _vehicle lock 2;
+      _vehicle setVehicleLock "LOCKED";
       _vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
       _vehicle setVariable ["R3F_LOG_disabled", true, true];
       clearWeaponCargoGlobal _vehicle;
@@ -105,12 +102,11 @@ private _tmp_marker = [];
       clearItemCargoGlobal _vehicle;
       clearBackpackCargoGlobal _vehicle;
 
-      _marker = createMarker [format ["marked_repair%1" ,_pos], markers_reset];
-      _marker setMarkerPos _pos;
+      _marker = createMarker [format ["marked_repair%1", _forEachIndex], _pos];
       _marker setMarkerColor "ColorOrange";
       _marker setMarkerType "mil_dot";
       _marker setMarkerText "Repair";
-      _marker setMarkerSize [ 1, 1 ];
+      _marker setMarkerSize [ 0.75, 0.75 ];
       GRLIB_Marker_REPAIR pushback _pos;
     };
   };
