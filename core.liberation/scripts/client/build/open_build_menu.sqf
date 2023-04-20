@@ -115,9 +115,6 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 	_squad_full = false;
 	_ammo_collected = player getVariable ["GREUH_ammo_count",0];
 	_bros = allUnits select {(_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1",PAR_Grp_ID]};
-	if ((buildtype == 1) && (count (_bros) >= GRLIB_squad_size + GRLIB_squad_size_bonus)) then {
-		_squad_full = true;
-	};
 	_linked = false;
 	_linked_unlocked = true;
 	_base_link = "";
@@ -138,6 +135,10 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 				if ( !(_base_link in blufor_sectors) ) then { _linked_unlocked = false };
 			};
 		};
+
+		if (buildtype == 1 && _build_item select 1 >= 1 && (count (_bros) >= GRLIB_squad_size + GRLIB_squad_size_bonus)) then {
+			_squad_full = true;
+		};		
 	};
 
 	_affordable_crew = _affordable;

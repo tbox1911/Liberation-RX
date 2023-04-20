@@ -43,5 +43,4 @@ if !(SunkenMissionMarkers isEqualTo []) then {
 
 { _x set [2, false] } forEach SideMissions;
 
-GRLIB_A3W_ExtendTimer = "";
 GRLIB_A3W_Init = true;
