@@ -1,7 +1,7 @@
 params ["_unit", ["_side", west]];
 
 if (typeof _unit == pilot_classname) exitWith {};
-if ((_unit getVariable ["mission_AI", false]) exitWith {};
+if (_unit getVariable ["mission_AI", false]) exitWith {};
 
 sleep 3;
 if (!alive _unit) exitWith {};
@@ -49,12 +49,12 @@ while {alive _unit} do {
 				if ((_unit distance2D _x) <= 100) then { ["bombershout"] remoteExec ["playSound", owner _x] };
 			} forEach allPlayers;
 
-			sleep 1;
+			sleep 0.5;
 			_explosive setDamage 1;
 		} else {
 			_unit doMove (getPos _target);
-			sleep 4;
 		};
+		sleep 4;
 	};
 	sleep 1;
 };
