@@ -146,7 +146,7 @@ class liberation_squad {
 		w = (0.055 * safezoneW);
 		h = (0.04 * safezoneH);
 		sizeEx = 0.025 * safezoneH;
-		text = "Like Me";
+		text = $STR_LIKEME;
 		action = "GRLIB_squadaction = 4";
 	};
 
@@ -168,7 +168,7 @@ class liberation_squad {
 		w = (0.055 * safezoneW);
 		h = (0.04 * safezoneH);
 		sizeEx = 0.025 * safezoneH;
-		text = "Rename";
+		text = $STR_RENAME;
 		tooltip = "Rename unit.";
 		action = "GRLIB_squadaction = 5";
 	};
@@ -310,13 +310,13 @@ class liberation_squad {
 	class GREUH_ButtonName_Rename : GREUH_ButtonName {
 		idc = 525;
 		x = 0.4375 * safezoneW + safezoneX;
-		text = "Rename";
+		text = $STR_RENAME_BUTTON;
 		action = "unitname = ctrlText 527;";
 	};
 	class GREUH_ButtonName_Abort : GREUH_ButtonName {
 		idc = 526;
 		x = (0.4375 * safezoneW + safezoneX) + ((0.2 * safezoneW) / 5);
-		text = "Cancel";
+		text = $STR_CANCEL_BUTTON;
 		action = "GRLIB_squadaction = -1;";
 	};
 	class GREUH_Squad_TextField : GREUH_ButtonName {

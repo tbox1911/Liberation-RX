@@ -9,4 +9,4 @@ _texture = (configfile >> "CfgVehicles" >> typeOf _vehicle >> "TextureSources") 
 [_vehicle, [_texture], "",[]] call RPT_fnc_TextureVehicle;
 
 _text = getText (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "displayName");
-hintSilent format ["%1 is now public !", _text];
+hintSilent format [localize "STR_DO_ABANDON", _text];

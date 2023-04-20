@@ -40,7 +40,7 @@ if (typeOf _vehicle in _valuable_veh) then {
 	_bonus = _res select 1;
 	private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
 	player setVariable ["GREUH_ammo_count", (_ammo_collected + _bounty), true];
-	hintSilent format ["%1\nBonus Score + %2 Pts\nBonus Ammo + %3 !!", name player, _bonus, _bounty];
+	hintSilent format [localize "STR_DO_WRECK", name player, _bonus, _bounty];
 	[player, _bonus] remoteExec ["addScore", 2];
 	player addRating 100;
 } else {

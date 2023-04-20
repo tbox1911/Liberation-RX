@@ -8,13 +8,13 @@ _vehicle setVariable ["recycle_in_use", true, true];
 private [ "_objectinfo", "_cfg", "_msg" ];
 // XP AmmoBox
 if (typeOf _vehicle == ammobox_i_typename && score player <= GRLIB_perm_log) then {
-	_msg = format ["<t align='center'>Select Reward:<br/>50 XP or 300 AMMO</t>"];
-	_result = [_msg, "Special Box !", "XP", "AMMO"] call BIS_fnc_guiMessage;
+	_msg = format [localize "STR_DO_RECYCLE"];
+	_result = [_msg, localize "STR_SP_BOX", localize "STR_PTS", localize "STR_AMMORWD"] call BIS_fnc_guiMessage;
 	if (_result && !(isNull _vehicle) && alive _vehicle) then {
 		[_vehicle] remoteExec ["deleteVehicle", 2];
 		[player, 50] remoteExec ["addScore", 2];
 		playSound "taskSucceeded";
-		hint format ["%1\nScore + 50 Pts!", name player];
+		hint format [localize "STR_AMMO_SELL", name player];
 		sleep 0.5;
 	};
 };
@@ -46,7 +46,7 @@ if ( dorecycle == 1 && !(isNull _vehicle) && alive _vehicle) exitWith {
 
 	if (typeOf _vehicle in [ammobox_b_typename, ammobox_o_typename, ammobox_i_typename] && score player <= GRLIB_perm_log) then {
 		[player, 10] remoteExec ["addScore", 2];
-		hint format ["%1\nBonus Score + 10 Pts!", name player];
+		hint format [localize "STR_AMMO_SELL2", name player];
 		playSound "taskSucceeded";
 	};
 	private _ammo_collected = player getVariable ["GREUH_ammo_count",0];

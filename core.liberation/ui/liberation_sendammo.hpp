@@ -28,7 +28,7 @@ class liberation_sendammo_menu {
 
 	class controls {
 		class Header: StdHeader {
-			text = "-- Send Ammo Menu --";
+			text = $STR_SENDAMMO_MENU;
 			x = 0.1985 * safezoneW + safezoneX;
 			y = 0.1444 * safezoneH + safezoneY;
 			w = 0.2375 * safezoneW;
@@ -93,7 +93,7 @@ class liberation_sendammo_menu {
 		};
 		class PlayerText: GREUH_RscStructuredText {
 			idc = -1;
-			text = "Player:";
+			text = $STR_SENDAMMO_PLAYER;
 			x = 0.206094 * safezoneW + safezoneX;
 			y = 0.2976 * safezoneH + safezoneY;
 			w = 0.061875 * safezoneW;
@@ -110,7 +110,7 @@ class liberation_sendammo_menu {
 		};
 		class AmmoText: GREUH_RscStructuredText {
 			idc = -1;
-			text = "Ammo:";
+			text = $STR_SENDAMMO_AMMO;
 			x = 0.206094 * safezoneW + safezoneX;
 			y = 0.3658 * safezoneH + safezoneY;
 			w = 0.061875 * safezoneW;
@@ -135,7 +135,7 @@ class liberation_sendammo_menu {
 		};
 		class SendAmmo : StdButton {
 			idc = -1;
-			text = "Send";
+			text = $STR_SENDAMMO_SEND;
 			onButtonClick = "send_ammo = 1";
 			x = 0.3300 * safezoneW + safezoneX;
 			y = 0.71 * safezoneH + safezoneY;

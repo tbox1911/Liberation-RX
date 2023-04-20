@@ -28,7 +28,7 @@ class VIRT_vehicle_garage {
 
 	class controls {
 		class Header: StdHeader {
-			text = "-- Virtual Garage --";
+			text = $STR_VIRT_GARAGE;
 			x = 0.1985 * safezoneW + safezoneX;
 			y = 0.1444 * safezoneH + safezoneY;
 			w = 0.2375 * safezoneW;
@@ -63,7 +63,7 @@ class VIRT_vehicle_garage {
 
 		class LoadButton : StdButton {
 			idc = 120;
-			text = "Load";
+			text = $STR_GARAGE_LOAD;
 			action = "load_veh = 1";
 			x = 0.33 * safezoneW + safezoneX;
 			y = 0.71 * safezoneH + safezoneY;
@@ -72,7 +72,7 @@ class VIRT_vehicle_garage {
 		};
 		class UnloadButton : StdButton {
 			idc = 121;
-			text = "Unload";
+			text = $STR_GARAGE_UNLOAD;
 			action = "load_veh = 2";
 			x = 0.21 * safezoneW + safezoneX;
 			y = 0.71 * safezoneH + safezoneY;

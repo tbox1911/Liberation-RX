@@ -129,17 +129,17 @@ class CfgNotifications
     };
 	class lib_secondary_a3w_mission : lib_secondary_fob_destroyed
 	{
-		description = "Side Mission %1 Started.";
+		description = $STR_SIDE_START;
 		color[] = {0,0,1,1};
 	};
 	class lib_secondary_a3w_mission_success : lib_secondary_a3w_mission
 	{
-		description = "Side Mission %1 Success.";
+		description = $STR_SIDE_SUCCESS;
 		color[] = {0,1,0,1};
 	};
 	class lib_secondary_a3w_mission_fail : lib_secondary_a3w_mission
 	{
-		description = "Side Mission %1 Fail.";
+		description = $STR_SIDE_FAILED;
 		color[] = {1,0,0,1};
 	};
 	class lib_reinforcements : lib_default_notification
@@ -153,7 +153,7 @@ class CfgNotifications
 	class lib_reinforcementsblu : lib_default_notification
     {
 		title = $STR_NOTIFICATION_REINFORCEMENTS_TITLE;
-		description = "Air Supremacy is Incoming...";
+		description = $STR_NOTIFICATION_REINFORCEMENTS_TITLE2;
         iconPicture = "res\notif\ui_notif_ref.paa";
 		color[] = {0,0.35,1,1};
 		sound = "taskUpdated";

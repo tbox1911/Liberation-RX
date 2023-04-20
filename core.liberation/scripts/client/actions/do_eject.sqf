@@ -15,7 +15,7 @@ _crew allowGetIn false;
 } forEach _crew;
 
 if (side _grp == GRLIB_side_civilian) then {
-	hintSilent "Warning !!\n -5 pts Malus for Ejecting Civilian.";
+	hintSilent localize "STR_DO_EJECT";
 	playSound "vtolAlarm";
 	[player, -5] remoteExec ["addScore", 2];
 

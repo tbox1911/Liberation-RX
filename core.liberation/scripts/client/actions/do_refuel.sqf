@@ -9,5 +9,5 @@ if (!isNil "_jerycan") then {
 	[_vehicle, (fuel _vehicle) + _max_fuel] remoteExec ["setFuel", 0];
 	[_jerycan] remoteExec ["deleteVehicle", 2];
 	playSound3D ["a3\sounds_f\sfx\ui\vehicles\vehicle_refuel.wss", _vehicle];
-	hintSilent "Fuel refilling Done.";
+	hintSilent localize "STR_DO_REFUEL";
 };
