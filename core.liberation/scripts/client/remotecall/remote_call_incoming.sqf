@@ -1,6 +1,7 @@
-if ( isDedicated ) exitWith {};
 
 params [ "_attack_destination" ];
+
+if (isDedicated || (!hasInterface && !isServer)) exitWith {};
 if (isNil "_attack_destination" ) exitWith {};
 
 if ( isNil "GRLIB_last_incoming_notif_time" ) then { GRLIB_last_incoming_notif_time = -9999 };

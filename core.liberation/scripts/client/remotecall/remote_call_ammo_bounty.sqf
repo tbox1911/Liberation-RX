@@ -1,7 +1,7 @@
-if (isDedicated) exitWith {};
-if (!GRLIB_player_spawned) exitWith {};
-
 params [ "_classname", "_bounty", "_bonus", "_killer" ];
+
+if (isDedicated || (!hasInterface && !isServer)) exitWith {};
+if (!GRLIB_player_spawned) exitWith {};
 
 private _vehiclename =  getText ( configFile >> "cfgVehicles" >> _classname >> "displayName" );
 private _playername = [_killer] call get_player_name;

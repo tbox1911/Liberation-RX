@@ -12,7 +12,7 @@ while { true } do {
 					if ( ( _x select 0 ) == typeof _unit ) then { _new_manpower_used = _new_manpower_used + (_x select 1) };
 				} foreach infantry_units;				
 			};
-		} foreach (units player);
+		} foreach (units group player);
 
 		{
 			if ( (alive _x) &&

@@ -735,7 +735,7 @@ AR_Advanced_Rappelling_Install = {
 					sleep 1;
 					[_x, vehicle _x] call AR_Rappel_From_Heli_Action;
 				};
-			} forEach (units player);
+			} forEach (units group player);
 		}, nil, 0, false, true, "", "[player] call AR_Rappel_AI_Units_From_Heli_Action_Check"];
 		
 		_player addAction ["Detach Rappel Device", { 

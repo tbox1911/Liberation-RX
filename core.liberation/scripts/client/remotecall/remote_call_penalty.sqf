@@ -1,5 +1,6 @@
-if ( isDedicated ) exitWith {};
 params [ "_location", "_penalty"];
+
+if (isDedicated || (!hasInterface && !isServer)) exitWith {};
 if ([player] call F_getScore < GRLIB_perm_tank || (player distance2D _location < GRLIB_sector_size) || time < (15 * 60) ) exitWith {};
 
 _fobname = [ _location ] call F_getFobName;

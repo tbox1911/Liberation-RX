@@ -54,7 +54,10 @@ _setupObjects =
 
 	[_aiGroup, _missionPos, (_nbUnits - (count _managed_units)) , "militia"] call createCustomGroup;
 
-	{ _x setVariable ["GRLIB_mission_AI", nil] } forEach (units _aiGroup);
+	{
+		_x setSkill ["courage", 1];
+		_x setVariable ["GRLIB_mission_AI", nil];
+	} forEach (units _aiGroup);
 
 	_missionHintText = format [localize "STR_INVASION_MESSAGE1", sideMissionColor, _townName, _nbUnits];
 	A3W_sectors_in_use = A3W_sectors_in_use + [_missionLocation];

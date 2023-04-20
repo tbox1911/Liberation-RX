@@ -71,7 +71,7 @@ if ( isServer ) then {
 			_isPrisonner = _unit getVariable ["GRLIB_is_prisonner", false];
 			_isKamikaz = _unit getVariable ["GRLIB_is_kamikaze", false];
 			if ( _isKamikaz ) then { 
-				_msg = format ["%1 kill a Kamikaze !!", name _killer] ;
+				_msg = format ["%1 kill a Kamikaze !! +10 XP", name _killer] ;
 				[gamelogic, _msg] remoteExec ["globalChat", 0];
 				[_killer, 11] call F_addScore;
 			};
@@ -126,6 +126,7 @@ if ( isServer ) then {
 							[_leader, 1] call F_addScore;
 						};
 					};
+					if (floor random 2 == 0) then { [_unit] spawn F_deathSound };
 				};
 				if ( side (group _unit) == GRLIB_side_friendly ) then {
 					stats_blufor_teamkills = stats_blufor_teamkills + 1;
@@ -168,7 +169,7 @@ if ( isServer ) then {
 		if ( typeof _unit == mobile_respawn ) exitWith { [_unit, "del"] remoteExec ["addel_beacon_remote_call", 2] };
 
 		if ( ((typeof _unit) in [ammobox_o_typename, ammobox_b_typename, ammobox_i_typename, fuelbarrel_typename]) && ((getPosATL _unit) select 2 < 10) ) exitWith {
-			sleep random 1;
+			sleep random 2;
 			( "R_80mm_HE" createVehicle (getPosATL _unit) ) setVelocity [0, 0, -200];
 			deleteVehicle _unit;
 		};

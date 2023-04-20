@@ -1,5 +1,6 @@
-if ( isDedicated ) exitWith {};
 params [ "_info" ];
+
+if (isDedicated || (!hasInterface && !isServer)) exitWith {};
 
 if (count _info == 7 && (!((behaviour player) in [ "COMBAT", "STEALTH"]) || (_info select 0) find "Objective Complete" >= 0) ) then {
  _info spawn BIS_fnc_dynamicText;

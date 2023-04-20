@@ -1,10 +1,10 @@
 /**
  * Remorque l'objet point� au v�hicule remorqueur valide le plus proche
- * 
+ *
  * @param 0 l'objet � remorquer
- * 
+ *
  * Copyright (C) 2014 Team ~R3F~
- * 
+ *
  * This program is free software under the terms of the GNU General Public License version 3.
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
@@ -17,11 +17,11 @@ if (R3F_LOG_mutex_local_verrou) then
 else
 {
 	R3F_LOG_mutex_local_verrou = true;
-	
+
 	private ["_objet", "_remorqueur", "_offset_attach_x", "_offset_attach_y", "_offset_attach_z", "_pos_x", "_pos_y", "_pos_z"];
-	
+
 	_objet = _this select 0;
-	
+
 	// Recherche du remorqueur valide le plus proche
 	_remorqueur = objNull;
 	{
@@ -32,7 +32,7 @@ else
 			!([_x, player] call R3F_LOG_FNCT_objet_est_verrouille) && !(_x getVariable "R3F_LOG_disabled") &&
 			{
 				private ["_delta_pos"];
-				
+
 				_delta_pos =
 				(
 					_objet modelToWorld
@@ -49,22 +49,22 @@ else
 						boundingBoxReal _x select 0 select 2
 					]
 				);
-				
+
 				// L'arri�re du remorqueur est proche de l'avant de l'objet point�
 				abs (_delta_pos select 0) < 3 && abs (_delta_pos select 1) < 5
 			}
 		) exitWith {_remorqueur = _x;};
 	} forEach (nearestObjects [_objet, ["All"], 30]);
-	
+
 	if (!isNull _remorqueur) then
 	{
 		if (isNull (_objet getVariable "R3F_LOG_est_transporte_par") && (isNull (_objet getVariable "R3F_LOG_est_deplace_par") || (!alive (_objet getVariable "R3F_LOG_est_deplace_par")) || (!isPlayer (_objet getVariable "R3F_LOG_est_deplace_par")))) then
 		{
 			[_remorqueur, player] call R3F_LOG_FNCT_definir_proprietaire_verrou;
-			
+
 			_remorqueur setVariable ["R3F_LOG_remorque", _objet, true];
 			_objet setVariable ["R3F_LOG_est_transporte_par", _remorqueur, true];
-			
+
 			// On place le joueur sur le c�t� du v�hicule en fonction qu'il se trouve � sa gauche ou droite
 			if ((_remorqueur worldToModel (player modelToWorld [0,0,0])) select 0 > 0) then
 			{
@@ -73,7 +73,7 @@ else
 					(boundingBoxReal _remorqueur select 0 select 1),
 					(boundingBoxReal _remorqueur select 0 select 2) - (boundingBoxReal player select 0 select 2)
 				]];
-				
+
 				player setDir 270;
 			}
 			else
@@ -83,10 +83,10 @@ else
 					(boundingBoxReal _remorqueur select 0 select 1),
 					(boundingBoxReal _remorqueur select 0 select 2) - (boundingBoxReal player select 0 select 2)
 				]];
-				
+
 				player setDir 90;
 			};
-			
+
 			player playMove format ["AinvPknlMstpSlay%1Dnon_medic", switch (currentWeapon player) do
 			{
 				case "": {"Wnon"};
@@ -96,15 +96,15 @@ else
 				default {"Wrfl"};
 			}];
 			sleep 2;
-			
+
 			// Quelques corrections visuelles pour des classes sp�cifiques
 			_offset_attach_x = 0;
 			_offset_attach_y = 0.2;
 			_offset_attach_z = 0.1;
 			if (typeOf _remorqueur == "B_Truck_01_mover_F") then {_offset_attach_y = 1.0};
-		
-			if (typeOf _remorqueur isKindOf "Truck_02_base_F") then {_offset_attach_y = 5.0};
-			if (typeOf _objet isKindOf "Truck_02_base_F") then {_offset_attach_y = 3.0};
+
+			// if (typeOf _remorqueur isKindOf "Truck_02_base_F") then {_offset_attach_y = 5.0};
+			// if (typeOf _objet isKindOf "Truck_02_base_F") then {_offset_attach_y = 3.0};
 
 			if (typeOf _remorqueur isKindOf "CUP_UAZ_Base") then {_offset_attach_z = 2.6};
 			if (typeOf _objet isKindOf "CUP_UAZ_Base") then {_offset_attach_z = _offset_attach_z - 2.4};
@@ -113,8 +113,8 @@ else
 			if (typeOf _objet isKindOf "rhs_btr_base") then {_offset_attach_z = _offset_attach_z - 1.1};
 
 		    if (typeOf _remorqueur isKindOf "rhs_bmp_base") then {_offset_attach_z = 1.0};
-		    if (typeOf _objet isKindOf "rhs_bmp_base") then {_offset_attach_z = _offset_attach_z - 1.0};			
-			
+		    if (typeOf _objet isKindOf "rhs_bmp_base") then {_offset_attach_z = _offset_attach_z - 1.0};
+
 			// Attacher � l'arri�re du v�hicule au ras du sol
 			_pos_x = (boundingCenter _objet select 0) + _offset_attach_x;
 			_pos_y = (boundingBoxReal _remorqueur select 0 select 1) + (boundingBoxReal _objet select 0 select 1) + _offset_attach_y;
@@ -122,25 +122,25 @@ else
 			_objet attachTo [_remorqueur, [_pos_x, _pos_y, _pos_z]];
 
 			R3F_LOG_objet_selectionne = objNull;
-			
+
 			detach player;
-			
+
 			// Si l'objet est une arme statique, on corrige l'orientation en fonction de la direction du canon
 			if (_objet isKindOf "StaticWeapon") then
 			{
 				private ["_azimut_canon"];
-				
+
 				_azimut_canon = ((_objet weaponDirection (weapons _objet select 0)) select 0) atan2 ((_objet weaponDirection (weapons _objet select 0)) select 1);
-				
+
 				// Seul le D30 a le canon pointant vers le v�hicule
 				if !(_objet isKindOf "D30_Base") then // All in Arma
 				{
 					_azimut_canon = _azimut_canon + 180;
 				};
-				
+
 				[_objet, "setDir", (getDir _objet)-_azimut_canon] call R3F_LOG_FNCT_exec_commande_MP;
 			};
-			
+
 			sleep 7;
 		}
 		else
@@ -148,6 +148,6 @@ else
 			hintC format [STR_R3F_LOG_objet_en_cours_transport, getText (configOf _objet >> "displayName")];
 		};
 	};
-	
+
 	R3F_LOG_mutex_local_verrou = false;
 };

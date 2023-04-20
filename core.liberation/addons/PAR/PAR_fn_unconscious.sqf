@@ -7,6 +7,8 @@ waituntil {sleep (0.5 + random 2); lifeState _unit == "INCAPACITATED" && (isTouc
 if (isPlayer _unit) then {
   [] call PAR_show_marker;
   if ( [_unit] call F_getScore > GRLIB_perm_log + 5) then { [_unit, -1] remoteExec ["F_addScore", 2] };
+} else {
+  [_unit] call F_deathSound;
 };
 
 if (!isNil {_unit getVariable "PAR_busy"} || !isNil {_unit getVariable "PAR_heal"}) then {

@@ -1,7 +1,7 @@
 // JukeBox v1.02
 // by pSiKO
 
-private["_title","_time","_selected","_classname"];
+private ["_title","_time","_selected","_classname"];
 play_music = 0;
 
 createDialog "JKB_dialog";
@@ -28,16 +28,21 @@ if(!isNull (findDisplay 2306)) then {
 			};
 			_title = lbText [231, _selected];
 			_classname = lbData[231, _selected];
-			playMusic _classname;
+
+			[JKB_current_sound] call JKB_stopMusic;
+			if (_classname find 'vn_drmm_song_' >= 0) then {
+				JKB_current_sound = playSound _classname;
+			} else {
+				playMusic _classname;
+			};
 			JKB_current_music = _title;
 			JKB_last_music = _selected;
+			hintSilent format ["Now Playing:\n%1", JKB_current_music splitString "-" select 0];
 			play_music = 0;
 		};
 
 		if (play_music == 2) then {
-			playMusic "";
-			JKB_current_music = "";
-			play_music = 0;
+			[JKB_current_sound] call JKB_stopMusic;
 		};
 
 		_title = "- - -";

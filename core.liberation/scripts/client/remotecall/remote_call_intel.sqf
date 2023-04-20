@@ -1,6 +1,6 @@
-if ( isDedicated ) exitWith {};
-
 params [ "_notiftype", [ "_obj_position", getpos player ] ];
+
+if (isDedicated || (!hasInterface && !isServer)) exitWith {};
 
 if ( _notiftype == 0 ) then {
 	[ "lib_intel_prisoner" ] call BIS_fnc_showNotification;

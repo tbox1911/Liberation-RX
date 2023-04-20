@@ -1,6 +1,6 @@
 private _bros = [];
 while {true} do {
-    _bros = (units player) select {!isplayer _x && (_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1",PAR_Grp_ID]};
+    _bros = (units group player) select {!isplayer _x && (_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1",PAR_Grp_ID]};
     if (count _bros > 0 ) then {
         {
             // Set EH

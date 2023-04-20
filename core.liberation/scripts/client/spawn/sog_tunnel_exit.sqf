@@ -18,4 +18,5 @@ private _unit_list = player getVariable ["SOG_unit_list", []];
 
 showMap true;
 player setVariable ["SOG_exit_tunnel", round (time + 300)];
+player setVariable ["SOG_player_in_tunnel", nil];
 player setVariable ["SOG_unit_list", []];

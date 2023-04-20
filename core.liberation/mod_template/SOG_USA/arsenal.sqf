@@ -8,8 +8,7 @@ blacklisted_bag = [
     "vn_fuel",
     "vn_bomb",
     "vn_o_pack_08",
-    "vn_b_pack_static",
-    "vn_o_item_map"
+    "vn_b_pack_static"
 ];
 
 blacklisted_weapon = [

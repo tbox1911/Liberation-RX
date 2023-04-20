@@ -27,3 +27,5 @@ civilian_vehicles = [
 	"vn_c_wheeled_m151_02",
 	"vn_c_car_04_01"
 ];
+
+SHOP_Man = "I_C_Soldier_base_unarmed_F";
