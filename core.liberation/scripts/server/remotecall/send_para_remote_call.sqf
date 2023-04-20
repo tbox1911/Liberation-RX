@@ -3,7 +3,7 @@ if ( isServer ) then {
 
 	_grp1 = [_targetsector] call send_paratroopers;
 	sleep 5;
-	[["lib_reinforcements", [ markertext _targetsector ]], "bis_fnc_shownotification"] call BIS_fnc_MP;
+	["lib_reinforcements", [markertext _targetsector]] remoteExec ["bis_fnc_shownotification", 0];
 	_grp2 = [_targetsector] call send_paratroopers;
 	sleep 5;
 	GRLIB_A3W_Mission_MR = [_grp1, _grp2];
