@@ -115,7 +115,6 @@ while { true } do {
 					_x setVariable ["MGI_Grp_ID", format["AI_%1",MGI_Grp_ID], true];
 					[_x] call MGI_fn_EHDamage;
 				} forEach units _grp;
-				[_grp] spawn squad_manager;
 				[_price] call do_pay_build;
 			} else {
 				hint "Only One Squad Allowed !!";

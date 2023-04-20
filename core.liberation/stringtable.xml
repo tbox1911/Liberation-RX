@@ -2881,6 +2881,10 @@
 					<Original>Enable limited Virtual Arsenal</Original>
 					<French>Activer l'Arsenal Virtuel limité</French>
 				</Key>
+				<Key ID="STR_FORCE_LOADOUT">
+					<Original>Force default equipment</Original>
+					<French>Forcer l'équipement par défaut</French>
+				</Key>
 				<Key ID="STR_THERMAL">
 					<Original>Enable Thermal equipments</Original>
 					<French>Activer les équipements Thermiques</French>

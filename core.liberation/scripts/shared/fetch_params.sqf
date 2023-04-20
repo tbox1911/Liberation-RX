@@ -31,6 +31,7 @@ if ( isMultiplayer ) then {
 	GRLIB_max_squad_size = ["MaxSquadSize",8] call bis_fnc_getParamValue;
 	GRLIB_enable_arsenal = ["EnableArsenal",1] call bis_fnc_getParamValue;
 	GRLIB_limited_arsenal = ["LimitedArsenal",1] call bis_fnc_getParamValue;
+	GRLIB_forced_loadout = ["ForcedLoadout",0] call bis_fnc_getParamValue;
 	GRLIB_fancy_info = ["FancyInfo",2] call bis_fnc_getParamValue;
 	GRLIB_hide_opfor = ["HideOpfor",0] call bis_fnc_getParamValue;
 	GRLIB_thermic = ["Thermic",1] call bis_fnc_getParamValue;
@@ -67,6 +68,7 @@ if ( isMultiplayer ) then {
 	GRLIB_max_squad_size = 10;
 	GRLIB_enable_arsenal = 1;
 	GRLIB_limited_arsenal = 1;
+	GRLIB_forced_loadout = 0;
 	GRLIB_fancy_info = 2;
 	GRLIB_hide_opfor = 0;
 	GRLIB_thermic = 1;
