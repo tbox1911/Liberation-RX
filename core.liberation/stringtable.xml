@@ -142,10 +142,12 @@
 			<Key ID="STR_MOVEUP">
 					<Original>-- Move up</Original>
 					<French>-- Monter</French>
+					<Chinesesimp>-- 向上移</Chinesesimp>
 			</Key>
 			<Key ID="STR_MOVEDOWN">
 					<Original>-- Move down</Original>
 					<French>-- Descendre</French>
+					<Chinesesimp>-- 向下移</Chinesesimp>
 			</Key>
 			<Key ID="STR_CANCEL">
 					<Original>-- Cancel</Original>
@@ -3369,22 +3371,22 @@
 			<Key ID="STR_RANK_LVL2">
 				<Original>You have Full Acces to Infantry.&lt;br/&gt;You can use Tanks.&lt;br/&gt;You have an extra AI.</Original>
 				<French>Vous avez un acces complet à l'Infanterie.&lt;br/&gt;Vous pouvez utiliser les Tanks.&lt;br/&gt;Vous avez une unitée en plus.</French>
-				<Chinesesimp>您可以完全控制步兵。&lt;br/&gt;您可以使用坦克。&lt;br/&gt;您还有一个额外的AI。</Chinesesimp>
+				<Chinesesimp>您可以完全控制步兵。&lt;br/&gt;您可以使用坦克。&lt;br/&gt;您还可以招募一个额外的AI。</Chinesesimp>
 			</Key>
 			<Key ID="STR_RANK_LVL3">
 				<Original>You have Full Acces to Static Weapons&lt;br/&gt;You can use Aircraft.&lt;br/&gt;You have an extra AI.</Original>
 				<French>Vous avez un acces complet aux Défense Statique.&lt;br/&gt;Vous pouvez utiliser les Avions.&lt;br/&gt;Vous avez une unitée en plus.</French>
-				<Chinesesimp>您可以完全使用静态武器&lt;br/&gt;您可以使用飞机。&lt;br/&gt;您还有一个额外的AI。</Chinesesimp>
+				<Chinesesimp>您可以完全使用静态武器&lt;br/&gt;您可以使用飞机。&lt;br/&gt;您还可以招募一个额外的AI。</Chinesesimp>
 			</Key>
 			<Key ID="STR_RANK_LVL4">
 				<Original>You can build Tank unit&lt;br/&gt;You have Full Acces to Building and Logistic&lt;br/&gt;You can Recycle unit.&lt;br/&gt;You have an extra AI.</Original>
 				<French>Vous pouvez construire des Tanks.&lt;br/&gt;Vous avez un acces complet aux Batiments et au Support.&lt;br/&gt;Vous pouvez recycler les objets.&lt;br/&gt;Vous avez une unitée en plus.</French>
-				<Chinesesimp>你可以建造坦克单位&lt;br/&gt;您拥有对建筑和物流的完全访问权限&lt;br/&gt;您可以回收单位。&lt;br/&gt;您还有一个额外的AI。</Chinesesimp>
+				<Chinesesimp>你可以建造坦克单位&lt;br/&gt;您拥有对建筑和物流的完全访问权限&lt;br/&gt;您可以回收单位。&lt;br/&gt;您还可以招募一个额外的AI。</Chinesesimp>
 			</Key>
 			<Key ID="STR_RANK_LVL5">
 				<Original>You can build Air unit&lt;br/&gt;You can start Special Side Missions at HQ.&lt;br/&gt;You have an extra AI.</Original>
 				<French>Vous pouvez construire des Avions.&lt;br/&gt;Vous pouvez démarrer des Missions Spécial à la FOB.&lt;br/&gt;Vous avez une unitée en plus.</French>
-				<Chinesesimp>您可以建造空军单队&lt;br/&gt;您可以在总部开始特殊支线任务。&lt;br/&gt;您还有一个额外的AI。</Chinesesimp>
+				<Chinesesimp>您可以建造空军单队&lt;br/&gt;您可以在总部开始特殊支线任务。&lt;br/&gt;您还可以招募一个额外的AI。</Chinesesimp>
 			</Key>
 			<Key ID="STR_RANK_LVL6">
 				<Original>You can build and Repack FOB.&lt;br/&gt;You have acces to Special Heavy Vehicles.&lt;br/&gt;You can build a Support Team.</Original>
@@ -3522,14 +3524,17 @@
 		<Key ID="STR_PAR_AC_01">
 			<Original>Revive</Original>
 			<French>Revivre</French>
+			<Chinesesimp>复活</Chinesesimp>
 		</Key>
 		<Key ID="STR_PAR_AC_02">
 			<Original>Drag</Original>
 			<French>Tirer</French>
+			<Chinesesimp>拖拉</Chinesesimp>
 		</Key>
 		<Key ID="STR_PAR_AC_03">
 			<Original>Release</Original>
 			<French>Lacher</French>
+			<Chinesesimp>释放</Chinesesimp>
 		</Key>
 		<Key ID="STR_PAR_CM_01">
 			<Original>Bad news %1, your medic (%2) is blocked somewhere... (dist: %3m / try: %4)</Original>
