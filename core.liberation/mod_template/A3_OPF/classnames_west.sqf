@@ -51,7 +51,7 @@ light_vehicles = [
 	["O_Quadbike_01_F",1,5,1,0],
 	["O_Boat_Transport_01_F",1,25,1,GRLIB_perm_inf],
 	["C_Boat_Transport_02_F",2,25,2,GRLIB_perm_log],
-	["O_T_Boat_Armed_01_hmg_F",5,30,5,GRLIB_perm_log],
+	["O_Boat_Armed_01_hmg_F",5,30,5,GRLIB_perm_log],
 	["B_SDV_01_F",5,30,5,GRLIB_perm_log],
 	["C_Scooter_Transport_01_F",1,5,1,0],
 	["SUV_01_base_black_F",1,10,1,0],

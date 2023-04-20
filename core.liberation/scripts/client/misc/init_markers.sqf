@@ -13,6 +13,7 @@ GRLIB_Marker_SRV = [];
 GRLIB_Marker_ATM = [];
 GRLIB_Marker_FUEL = [];
 GRLIB_Marker_REPAIR = [];
+GRLIB_Marker_SHOP = [];
 
 waituntil {sleep 1; !isNil "GRLIB_sectors_init"};
 sleep 5;
@@ -41,7 +42,7 @@ private _tmp_marker = GRLIB_Marker_ATM;
 GRLIB_Marker_ATM = [];
 {
   _dist = ["ATM", _x] call _marker_dist;
-  if (_dist > 100) then {
+  if (_dist > 500) then {
     _marker = createMarkerLocal [format ["marked_atm%1", _forEachIndex], _x];
     _marker setMarkerColorLocal "ColorGreen";
     _marker setMarkerTypeLocal "mil_dot";
@@ -50,13 +51,12 @@ GRLIB_Marker_ATM = [];
     GRLIB_Marker_ATM pushback _x;
   };
 } forEach _tmp_marker;
-//diag_log format ["Done GRLIB_Marker_ATM: %1 at %2", count GRLIB_Marker_ATM, round time];
 
 private _tmp_marker = GRLIB_Marker_SRV;
 GRLIB_Marker_SRV = [];
 {
   _dist = ["SELL", _x] call _marker_dist;
-  if (_dist > 100) then {
+  if (_dist > 800) then {
     _marker = createMarkerLocal [format ["marked_car%1", _forEachIndex], _x];
     _marker setMarkerColorLocal "ColorBlue";
     _marker setMarkerTypeLocal "mil_dot";
@@ -65,13 +65,12 @@ GRLIB_Marker_SRV = [];
     GRLIB_Marker_SRV pushback _x;
   };
 } forEach _tmp_marker;
-//diag_log format ["Done GRLIB_Marker_SRV: %1 at %2", count GRLIB_Marker_SRV, round time];
 
 private _tmp_marker = GRLIB_Marker_FUEL;
 GRLIB_Marker_FUEL = [];
 {
   _dist = ["FUEL", _x] call _marker_dist;
-  if (_dist > 100) then {
+  if (_dist > 300) then {
     _marker = createMarkerLocal [format ["marked_fuel%1", _forEachIndex], _x];
     _marker setMarkerColorLocal "ColorYellow";
     _marker setMarkerTypeLocal "mil_dot";
@@ -80,7 +79,6 @@ GRLIB_Marker_FUEL = [];
     GRLIB_Marker_FUEL pushback _x;
   };
 } forEach _tmp_marker;
-//diag_log format ["Done GRLIB_Marker_FUEL: %1 at %2", count GRLIB_Marker_FUEL, round time];
 
 private _tmp_marker = [];
 _tmp_marker = [vehicles, {(alive _x) && typeOf _x == "C_Offroad_01_repair_F" && (_x getVariable ["GRLIB_vehicle_owner", ""] == "server")}] call BIS_fnc_conditionalSelect;
@@ -92,6 +90,19 @@ _tmp_marker = [vehicles, {(alive _x) && typeOf _x == "C_Offroad_01_repair_F" && 
     _marker setMarkerSizeLocal [ 0.75, 0.75 ];
     GRLIB_Marker_REPAIR pushback getPos _x;
 } forEach _tmp_marker;
-//diag_log format ["Done GRLIB_Marker_REPAIR: %1 at %2", count GRLIB_Marker_REPAIR, round time];
+
+private _tmp_marker = GRLIB_Marker_SHOP;
+GRLIB_Marker_SHOP = [];
+{
+  _dist = ["SHOP", _x] call _marker_dist;
+  if (_dist > 1000) then {
+    _marker = createMarkerLocal [format ["marked_shop%1", _forEachIndex], _x];
+    _marker setMarkerColorLocal "ColorPink";
+    _marker setMarkerTypeLocal "mil_dot";
+    _marker setMarkerTextLocal "SHOP";
+    _marker setMarkerSizeLocal [ 0.75, 0.75 ];
+    GRLIB_Marker_SHOP pushback _x;
+  };
+} forEach _tmp_marker;
 
 GRLIB_marker_init = true;

@@ -40,7 +40,7 @@ class Traders_Shop {
 
 	class controls {
 		class Header: StdHeader {
-			text = "-- Traders Shop --";
+			text = "$STR_SHOP_NAME";
 			x = 0.198875 * safezoneW + safezoneX;
 			y = 0.1414 * safezoneH + safezoneY;
 			w = 0.314531 * safezoneW;
@@ -49,7 +49,7 @@ class Traders_Shop {
 
 		class VehList1 : StdListNBox {
 			idc = 110;
-			columns[] = {0,0.80};
+			columns[] = {0,0.78};
 			onLBSelChanged = "";
 			shadow = 2;
 			rowHeight = "1.25 * 0.018 * safezoneH";
@@ -64,7 +64,7 @@ class Traders_Shop {
 
 		class VehList2: StdListNBox {
 			idc = 111;
-			columns[] = {0,0.80};
+			columns[] = {0,0.78};
 			onLBSelChanged = "";
 			shadow = 2;
 			rowHeight = "1.25 * 0.018 * safezoneH";
@@ -90,7 +90,7 @@ class Traders_Shop {
 
 		class SellButton : StdButton {
 			idc = 120;
-			text = "SELL";
+			text = $STR_SHOP_ACTION1;
 			action = "shop_action = 1";
 			x = 0.23 * safezoneW + safezoneX;
 			y = 0.71 * safezoneH + safezoneY;
@@ -99,7 +99,7 @@ class Traders_Shop {
 		};
 		class BuyButton : StdButton {
 			idc = 121;
-			text = "BUY";
+			text = "$STR_SHOP_ACTION2";
 			action = "shop_action = 2";
 			x = 0.40 * safezoneW + safezoneX;
 			y = 0.71 * safezoneH + safezoneY;

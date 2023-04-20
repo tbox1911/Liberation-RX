@@ -86,8 +86,7 @@ militia_vehicles = [
 ];
 
 boats_east = [
-	"O_Boat_Armed_01_hmg_F",
-	"O_T_Boat_Armed_01_hmg_F"
+	"O_Boat_Armed_01_hmg_F"
 ];
 
 opfor_vehicles = [
@@ -186,8 +185,8 @@ opfor_recyclable = [
 	["O_static_AA_F",0,round (80 / GRLIB_recycling_percentage),0],
 	["O_static_AT_F",0,round (80 / GRLIB_recycling_percentage),0],
 	["O_Mortar_01_F",0,round (300 / GRLIB_recycling_percentage),0],
-	["O_LSV_02_armed_F",1,round (20 / GRLIB_recycling_percentage),2],
-	["O_LSV_02_AT_F",1,round (40 / GRLIB_recycling_percentage),2],
+	["O_LSV_02_armed_F",1,round (35 / GRLIB_recycling_percentage),2],
+	["O_LSV_02_AT_F",1,round (45 / GRLIB_recycling_percentage),2],
 	["O_G_Offroad_01_armed_F",1,round (30 / GRLIB_recycling_percentage),2],
 	["O_G_Offroad_01_AT_F",1,round (40 / GRLIB_recycling_percentage),2],
 	["I_C_Offroad_02_LMG_F",1,round (30 / GRLIB_recycling_percentage),2],
@@ -198,7 +197,6 @@ opfor_recyclable = [
 	["O_MRAP_02_hmg_F",5,round (50 / GRLIB_recycling_percentage),3],
 	["O_MRAP_02_gmg_F",5,round (50 / GRLIB_recycling_percentage),3],
 	["O_Boat_Armed_01_hmg_F",2,round (100 / GRLIB_recycling_percentage),2],
-	["O_T_Boat_Armed_01_hmg_F",2,round (100 / GRLIB_recycling_percentage),2],
 	["O_APC_Wheeled_02_rcws_F",10,round (150 / GRLIB_recycling_percentage),10],
 	["O_APC_Tracked_02_cannon_F",10,round (200 / GRLIB_recycling_percentage),10],
 	["O_APC_Tracked_02_AA_F",10,round (300 / GRLIB_recycling_percentage),10],

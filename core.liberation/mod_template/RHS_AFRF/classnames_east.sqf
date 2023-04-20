@@ -78,8 +78,7 @@ militia_vehicles = [
 ];
 
 boats_east = [
-	"O_Boat_Armed_01_hmg_F",
-	"O_T_Boat_Armed_01_hmg_F"
+	"O_Boat_Armed_01_hmg_F"
 ];
 
 opfor_vehicles = [
@@ -178,7 +177,6 @@ opfor_statics = [
 
 opfor_recyclable = [
 	["O_Boat_Armed_01_hmg_F",2,round (100 / GRLIB_recycling_percentage),2],
-	["O_T_Boat_Armed_01_hmg_F",2,round (100 / GRLIB_recycling_percentage),2],
 	["O_HMG_01_high_F",0,round (20 / GRLIB_recycling_percentage),0],
 	["O_GMG_01_high_F",0,round (40 / GRLIB_recycling_percentage),0],
 	["O_static_AA_F",0,round (80 / GRLIB_recycling_percentage),0],

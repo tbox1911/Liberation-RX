@@ -11,6 +11,8 @@ _center = [_size,_size,0];
     if (_str find "fuelstation_shed_f" > 0) then { GRLIB_Marker_FUEL pushback (getpos _x) };
     if (_str find "atm_01_f" > 0) then { GRLIB_Marker_ATM pushback (getpos _x) };
     if (_str find "fuelstation_feed" > 0) then { GRLIB_Marker_FUEL pushback (getpos _x) };
+    if (_str find "i_shop_01_v1_f." > 0) then { GRLIB_Marker_SHOP pushback (getpos _x) };
+    if (_str find "i_shop_01_v2_f." > 0) then { GRLIB_Marker_SHOP pushback (getpos _x) };    
   };
 } forEach (_center nearObjects ["All", (_size * 2^0.50)]);  // cover corner
 

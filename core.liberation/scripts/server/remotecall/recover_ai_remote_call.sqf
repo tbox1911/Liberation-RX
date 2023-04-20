@@ -3,7 +3,7 @@ params ["_player", "_extra_units"];
 if (isNil "_player") exitWith {};
 private ["_grp", "_pid", "_squad", "_myveh"];
 
-// HCI Command IA
+ // HCI Command IA
 hcRemoveAllGroups _player;
 if ( _player == [] call F_getCommander ) then {
 	_myveh = [vehicles, {
@@ -23,8 +23,7 @@ if (!isNil "_grp") then { _player hcSetGroup [_grp] };
 _grp = group _player;
 _pid = _player getVariable ["PAR_Grp_ID","1"];
 _squad = allUnits select {(_x getVariable ["PAR_Grp_ID","0"]) == _pid};
-if (count _squad > 2) then {
-    diag_log format ["--- LRX Recover Player %1 AIs (%2)", name _player, count _squad];
+if (count _squad > 1) then {
     {
         if ( !(_x in units _grp) ) then {
             if ( count (units _grp) < (GRLIB_squad_size + _extra_units) ) then { 
