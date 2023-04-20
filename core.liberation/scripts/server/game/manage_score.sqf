@@ -38,7 +38,6 @@ while { true } do {
 				if ((_cur >= GRLIB_perm_max) && (_rank != "Colonel")) then {_rank = "Colonel"; _newrank = true};
 
 				if (_newrank) then {
-					_fw = 0;
 					_uid = getPlayerUID _x;
 					_msg = format ["Congratulation <t color='#00ff00'>%1</t> !!<br />You have been promoted to : <t color='#ff0000'>%2</t>.<br /><br />",name _x, _rank];
 
@@ -52,30 +51,24 @@ while { true } do {
 						case "Private" : {
 							_msg2 = localize "STR_RANK_LVL1";
 							[_uid, [true,false,false,true,false,true]] call CHG_Perm;
-							_fw = 1;
 						};
 						case "Corporal" : {
 							_msg2 = localize "STR_RANK_LVL2";
 							[_uid, [true,true,false,true,false,true]] call CHG_Perm;
-							_fw = 2;
 						};
 						case "Sergeant" : {
 							_msg2 = localize "STR_RANK_LVL3";
 							[_uid, [true,true,true,true,false,true]] call CHG_Perm;
-							_fw = 3;
 						};
 						case "Captain" : {
 							_msg2 = localize "STR_RANK_LVL4";
 							[_uid, [true,true,true,true,true,true]] call CHG_Perm;
-							_fw = 4;
 						};
 						case "Major" : {
 							_msg2 = localize "STR_RANK_LVL5";
-							_fw = 5;
 						};
 						case "Colonel" : {
 							_msg2 = localize "STR_RANK_LVL6";
-							_fw = 6;
 						};
 					};
 
@@ -98,17 +91,14 @@ while { true } do {
 						[gamelogic, _text] remoteExec ["globalChat", 0];
 						_text = "Over.";
 						[gamelogic, _text] remoteExec ["globalChat", 0];
+						[getPosATL _x, 'rain','blue'] spawn GRAD_fireworks_fnc_prepareFireworks;
+						sleep 2;
+						[getPosATL _x, 'rain','white'] spawn GRAD_fireworks_fnc_prepareFireworks;
+						sleep 2;
 					};
 
 					// Fireworks
-					if ( (daytime > GRLIB_nights_start || daytime < GRLIB_nights_stop ) && _fw >= 1 ) then {
-						for "_i" from 1 to _fw do {
-							[getPosATL _x, 'random','random'] spawn GRAD_fireworks_fnc_prepareFireworks;
-							sleep 1;
-						};
-					} else {
-						[getPosATL _x, 'normal','random'] spawn GRAD_fireworks_fnc_prepareFireworks;
-					};
+					[getPosATL _x, 'rain','red'] spawn GRAD_fireworks_fnc_prepareFireworks;
 				};
 			};
 			_x setVariable ["score_last",_cur];

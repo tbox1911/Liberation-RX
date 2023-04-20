@@ -13,13 +13,9 @@ switch (_infsquad) do {
 	default {_infsquad_classnames = ([] call F_getAdaptiveSquadComp)};
 };
 
-diag_log format [ "Spawning building squad Checkpoint A at %1", time ];
-
 if ( _building_ai_max > floor ((count _buildingpositions) * GRLIB_defended_buildingpos_part)) then { _building_ai_max = floor ((count _buildingpositions) * GRLIB_defended_buildingpos_part)};
 _squadtospawnnn = [];
 while { (count _squadtospawnnn) < _building_ai_max } do { _squadtospawnnn pushback ( selectRandom _infsquad_classnames ); };
-
-diag_log format [ "Spawning building squad Checkpoint B at %1", time ];
 
 _position_indexes = [];
 _position_count = count _buildingpositions;
@@ -29,8 +25,6 @@ while { count _position_indexes < count _squadtospawnnn } do {
 		_position_indexes pushback _nextposit;
 	}
 };
-
-diag_log format [ "Spawning building squad Checkpoint C at %1", time ];
 
 _grp = createGroup [_default_side, true];
 _idxposit = 0;
@@ -56,8 +50,6 @@ _idxposit = 0;
 		_grp = createGroup [_default_side, true];
 	};
 } foreach _squadtospawnnn;
-
-diag_log format [ "Spawning building squad Checkpoint D at %1", time ];
 
 if ( !(isNull _grp)) then {
 	_everythingspawned = _everythingspawned + (units _grp);

@@ -8,6 +8,7 @@ _sendPara = {
 	private _newvehicle = createVehicle [ (selectRandom opfor_choppers), (markerPos _spawnsector), [], 50, "FLY"];
 	_newvehicle setPos (getPosATL _newvehicle vectorAdd [0, 0, 400]);
 	createVehicleCrew _newvehicle;
+	sleep 1;
 	_newvehicle flyInHeight 400;
 	_newvehicle setVariable ["GRLIB_counter_TTL", round(time + 3600)];
 

@@ -58,9 +58,9 @@ if ( (_unit isKindOf "Man") && ( alive _unit ) && (vehicle _unit == _unit) && (s
 			{_x doFollow leader _grp} foreach units _grp;
 
 			private _sectors = (sectors_allSectors - blufor_sectors);
-			private _nearest_sector = [ 10000, getPos _unit, _sectors ] call F_getNearestSector;
+			private _nearest_sector = [_sectors, _unit] call BIS_fnc_nearestPosition;
 
-			if (_nearest_sector != "") then {
+			if (!isNil "_nearest_sector") then {
 				_waypoint = _grp addWaypoint [markerPos _nearest_sector, 0];
 				_waypoint setWaypointType "MOVE";
 				_waypoint setWaypointSpeed "FULL";

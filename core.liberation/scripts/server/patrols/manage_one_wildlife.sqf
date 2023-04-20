@@ -1,40 +1,27 @@
-params [ "_unit" ];
-
-GRLIB_wildlife_max = 4;
 waitUntil {sleep 1; !isNil "sectors_allSectors" };
 
-while {alive _unit} do {
-	sleep (30 + random 60);
-	private _fobdistance = round (_unit distance2D ([] call F_getNearestFob));
-	private _wildlife = _unit getVariable ["GRLIB_Wildlife", 0];
-	private _sector = [ GRLIB_sector_size, getPos _unit ] call F_getNearestSector;
-	private _nbplayer = { _x distance _unit < GRLIB_sector_size} count allPlayers;
-	private _wildlife_max = GRLIB_wildlife_max;
+while { GRLIB_endgame == 0 } do {
+	sleep round (30 + random 30);
 
-	switch (true) do
-	{
-		case (_nbplayer > 1): {_wildlife_max = 3};
-		case (_nbplayer > 2): {_wildlife_max = 2};
-		case (_nbplayer > 3): {_wildlife_max = 1};
-	};
+	private _unit_lst = [(allPlayers - (entities "HeadlessClient_F")), {
+		alive _x && vehicle _x == _x &&
+		(_x distance2D lhd) > GRLIB_sector_size &&
+		(_x distance2D (getmarkerpos 'respawn_west')) > GRLIB_sector_size &&
+		(_x distance2D ([] call F_getNearestFob)) > GRLIB_sector_size &&
+		!(([ GRLIB_sector_size, getPos _x ] call F_getNearestSector) in sectors_bigtown)
+	}] call BIS_fnc_conditionalSelect;
 
-	if (_wildlife < _wildlife_max && _unit distance2D lhd >= GRLIB_sector_size && _fobdistance > GRLIB_sector_size && vehicle _unit == _unit && !(_sector in sectors_bigtown)) then {
-		private _managed_units = ( [ getPos _unit ] call F_spawnWildLife );
-		_wildlife = _wildlife + 1;
-		_unit setVariable ["GRLIB_Wildlife", _wildlife, true];
-		sleep 0.2;
+	if (count _unit_lst > 0) then {
+		private _unit = selectRandom _unit_lst;
+		private _managed_units = ([getPos _unit] call F_spawnWildLife);
+		sleep 1;
 
-		[_unit, _managed_units] spawn {
-			params ["_unit", "_managed_units"];
-			while { ({alive _x} count _managed_units) > 0 && alive _unit} do {
-				{
-					if (_unit distance2D _x > GRLIB_sector_size) then { deleteVehicle _x };
-				} forEach _managed_units;
-				sleep 10;
-			};
-			_wildlife = _unit getVariable ["GRLIB_Wildlife", 0];
-			_wildlife = _wildlife - 1;
-			_unit setVariable ["GRLIB_Wildlife", _wildlife, true];
+		waitUntil {
+			sleep (30 + (random 30));
+			( (!alive _unit) || ({alive _x} count _managed_units) == 0 || ({_unit distance2D _x > GRLIB_sector_size} count _managed_units) > 0 )
 		};
+
+		{ deleteVehicle _x } forEach _managed_units;
+		diag_log format [ "Done Delete wildlife at %1", time ];
 	};
 };
