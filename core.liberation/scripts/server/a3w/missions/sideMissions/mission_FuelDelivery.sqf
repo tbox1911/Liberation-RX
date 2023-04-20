@@ -30,7 +30,7 @@ _setupObjects =
 	_man1 disableAI "ANIM";
 	_man1 removeAllEventHandlers "AnimDone";
 	_man1 addEventHandler [ "AnimDone", {
-	params[ "_unit", "_anim" ];
+		params[ "_unit", "_anim" ];
 		if ( _anim == "LHD_krajPaluby" ) then { _unit switchMove "LHD_krajPaluby" };
 	}];
  	sleep 1;
