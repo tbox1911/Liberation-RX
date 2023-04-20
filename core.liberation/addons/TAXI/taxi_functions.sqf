@@ -5,7 +5,7 @@ taxi_land = {
 	waitUntil {
 		hintSilent localize "STR_TAXI_LANDING";
 		_vehicle land "LAND";
-		sleep 20;
+		sleep 30;
 		_alt = getPosATL _vehicle select 2;
 		if (round (speed _vehicle) == 0 && _alt > 3) then {
 			_vehicle setPosATL (getPosATL _vehicle vectorAdd [0, 0, -2]);
@@ -38,11 +38,10 @@ taxi_outboard = {
 	{
 		if ( vehicle _x == _vehicle) then {
 			unassignVehicle _x;
-			commandGetOut _x;
 			doGetOut _x;
+			sleep 0.5;
 			_ret = false
 		};
 	} forEach ([_vehicle, _pilots] call taxi_cargo);
-	sleep 2;
 	_ret;
 };
