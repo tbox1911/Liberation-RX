@@ -14,11 +14,10 @@ while { GRLIB_endgame == 0 } do {
 	if (count _unit_lst > 0) then {
 		private _unit = selectRandom _unit_lst;
 		private _managed_units = ([getPos _unit] call F_spawnWildLife);
-		sleep 1;
 
 		waitUntil {
-			sleep (30 + floor(random 30));
-			( (!alive _unit) || ({alive _x} count _managed_units) == 0 || ({_unit distance2D _x > GRLIB_sector_size} count _managed_units) > 0 )
+			sleep 20;
+			( (!alive _unit) || ({alive _x} count _managed_units) == 0 || ({_unit distance2D _x > GRLIB_sector_size || surfaceIsWater (getPos _x)} count _managed_units) > 0 )
 		};
 
 		{ deleteVehicle _x } forEach _managed_units;

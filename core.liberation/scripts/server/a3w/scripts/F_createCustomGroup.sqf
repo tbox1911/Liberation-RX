@@ -26,14 +26,15 @@ for "_i" from 1 to _nbUnits do {
 		_uPos = _pos vectorAdd ([[floor(random _radius), floor(random _radius), 0.5], random 360] call BIS_fnc_rotateVector2D);
 	};
 
-	_unit = _grp createUnit [(selectRandom _unitTypes), _uPos, [], 5, "NONE"];
+	(selectRandom _unitTypes) createUnit [_uPos, _grp, 'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]'];
+	_unit = (units _grp) select ((count (units _grp)) -1);
 	_unit allowDamage false;
-	_unit addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
 	_unit setSkill 0.6;
 	_unit setSkill ["courage", 1];
 	_unit allowFleeing 0;
 	_unit setVariable ["mission_AI", true];
 	_unit switchMove "amovpknlmstpsraswrfldnon";
+	sleep 0.1;
 };
 
 if (_patrol) then { [ _grp, _pos, 200] spawn add_defense_waypoints };

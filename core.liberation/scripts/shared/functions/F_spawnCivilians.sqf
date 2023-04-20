@@ -25,6 +25,7 @@ for "_i" from 1 to _nbcivs do {
 	_nextciv switchMove "amovpknlmstpsraswrfldnon";
 	_createdcivs pushBack _nextciv;
 	[_grp] call add_civ_waypoints;
+	sleep 0.1;
 };
 
 diag_log format [ "Done Spawning %1 civilians at %2", count (_createdcivs), time ];

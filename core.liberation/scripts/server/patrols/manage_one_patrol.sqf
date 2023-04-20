@@ -40,6 +40,7 @@ while { GRLIB_endgame == 0 } do {
 		sleep 0.5;
 		{
 			_x createUnit [_sector_spawn_pos, _grp, 'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.5, "PRIVATE"];
+			sleep 0.1;
 		} foreach _squad;
 	};
 

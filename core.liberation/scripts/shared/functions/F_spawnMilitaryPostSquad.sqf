@@ -19,7 +19,7 @@ if ( count _allposts > 0 ) then {
 		_unitclasspost createUnit [ _squadpos, _grp2, 'nextunit_post = this; this addMPEventHandler [''MPKilled'', {_this spawn kill_manager}]', 0.5, 'private'];
 		nextunit_post setpos (_building_positions select 1);
 		nextunit_post setdir (180 + (getdir _x ));
-
+		sleep 0.1;
 	} foreach _allposts;
 
 	_totalx2 = 0;

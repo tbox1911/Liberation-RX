@@ -54,7 +54,6 @@ _waypoint setWaypointType "SAD";
 _waypoint = _air_grp addWaypoint [ _first_objective, 500];
 _waypoint setWaypointType "CYCLE";
 
-_air_grp setCurrentWaypoint [ _air_grp, 2];
 sleep 60;
 
 while {

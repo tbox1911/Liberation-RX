@@ -35,6 +35,3 @@ Your Rank : <t color='#000080'>%2</t><br/>
 Your Score : <t color='#008000'>%3</t><br/>
 Your Credit : <t color='#800000'>%4</t>", name player, _rank, _score, _ammo_collected];
 [_msg, 0, 0, 10, 0, 0, 90] spawn BIS_fnc_dynamicText;
-
-// Recover AI
-[player, GRLIB_squad_size_bonus] remoteExec ["recover_ai_remote_call", 2];

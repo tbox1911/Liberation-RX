@@ -1,6 +1,4 @@
 // *** FRIENDLIES ***
-GRLIB_side_friendly = WEST;
-GRLIB_color_friendly = "ColorKhaki";
 
 // Default classname: scripts\shared\default_classnames.sqf
 // Advanced definition: scripts\shared\classnames.sqf

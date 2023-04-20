@@ -1,7 +1,4 @@
 // *** BADDIES ***
-GRLIB_side_enemy = RESISTANCE;
-GRLIB_color_enemy = "ColorGUER";
-GRLIB_color_enemy_bright = "ColorGreen";
 
 // All class MUST be defined !
 
