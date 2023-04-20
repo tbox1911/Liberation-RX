@@ -16,7 +16,6 @@ cleanup_player = compileFinal preprocessFileLineNumbers "scripts\server\game\cle
 save_context = compileFinal preprocessFileLineNumbers "scripts\server\game\save_context.sqf";
 
 // AI
-GRLIB_AI_toggle = true;
 add_civ_waypoints = compileFinal preprocessFileLineNumbers "scripts\server\ai\add_civ_waypoints.sqf";
 add_defense_waypoints = compileFinal preprocessFileLineNumbers "scripts\server\ai\add_defense_waypoints.sqf";
 battlegroup_ai = compileFinal preprocessFileLineNumbers "scripts\server\ai\battlegroup_ai.sqf";

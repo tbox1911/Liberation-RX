@@ -1,9 +1,8 @@
-
-private _spawn_marker = [ GRLIB_spawn_min, 99999, false ] call F_findOpforSpawnPoint;
-if ( _spawn_marker == "" ) exitWith { [gamelogic,"Could not find position for search and rescue mission"] remoteExec ["globalChat", 0] };
-used_positions pushbackUnique _spawn_marker;
-
 params [ ["_mission_cost", 0] ];
+
+private _spawn_marker = [GRLIB_spawn_min, 99999, false] call F_findOpforSpawnPoint;
+if ( _spawn_marker == "" ) exitWith { [gamelogic, "Could not find position for search and rescue mission"] remoteExec ["globalChat", 0] };
+used_positions pushbackUnique _spawn_marker;
 resources_intel = resources_intel - _mission_cost;
 
 private _helopos = [ getmarkerpos _spawn_marker, random 200, random 360 ] call BIS_fnc_relPos;
@@ -106,9 +105,12 @@ if ( _alive_crew_count == 0 ) then {
 resources_intel = resources_intel + (25 * _alive_crew_count);
 combat_readiness = combat_readiness - 10;
 stats_secondary_objectives = stats_secondary_objectives + 1;
-GRLIB_secondary_in_progress = -1; publicVariable "GRLIB_secondary_in_progress";
 
 sleep 3;
 { moveOut _x; deleteVehicle _x } forEach units _grppatrol;
 deleteVehicle _helowreck;
 deleteVehicle _helofire;
+
+sleep 60;
+GRLIB_secondary_in_progress = -1; publicVariable "GRLIB_secondary_in_progress";
+used_positions = [];

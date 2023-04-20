@@ -13,18 +13,18 @@ private _loadouts_data = [];
 private _counter = 0;
 
 if ( !isNil "_saved_loadouts" ) then {
-	_unit = "B_Survivor_F" createVehicleLocal zeropos;
-	private _max_loadout = 24;
+	private _grp = createGroup [GRLIB_side_friendly, true];
+	private _unit = _grp createUnit ["B_Survivor_F", zeropos, [], 5, "NONE"];
 	{
-		if ( _counter % 2 == 0 && _max_loadout > 0) then {
+		if ( _counter % 2 == 0 && _counter < 40) then {
 			[_unit, [profileNamespace, _x]] call bis_fnc_loadInventory;
 			_price = [_unit] call F_loadoutPrice;
 			_loadouts_data pushback [_x, _price];
-			_max_loadout = _max_loadout - 1;
 		};
 		_counter = _counter + 1;
 	} foreach _saved_loadouts;
 	deleteVehicle _unit;
+	deleteGroup _grp;
 };
 
 createDialog "liberation_arsenal";
@@ -118,8 +118,15 @@ if ( edit_loadout > 0 ) then {
 	waitUntil {!dialog};
 	_box = missionNamespace getVariable ["myLARsBox", objNull];
 	if (GRLIB_ACE_enabled) then {
-		[_box, true] call ace_arsenal_fnc_initBox;
-		[_box, player, true] call ace_arsenal_fnc_openBox;
+		// Open Arsenal
+		[_box, player] call ace_arsenal_fnc_openBox;
+		// Event handler 
+		["ace_arsenal_displayClosed", {				
+			player spawn F_payLoadout;
+			player call F_filterLoadout;
+
+			[_thisType, _thisId] call CBA_fnc_removeEventHandler
+		}, "Closed Arsenal"] call CBA_fnc_addEventHandlerArgs;
 	} else {
 		if (GRLIB_limited_arsenal) then {
 			_savedCargo = _box getVariable [ "bis_addVirtualWeaponCargo_cargo", [] ];

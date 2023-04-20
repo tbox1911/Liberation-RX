@@ -74,9 +74,9 @@ if (_unit == player) then {
 	_unit addEventHandler ["Respawn", {[] spawn PAR_Player_Init}];
 	
 	// ACE specific
-	if (GRLIB_ACE_enabled) then {
-		["ace_arsenal_displayClosed", {[player] spawn F_payLoadout}] call CBA_fnc_addEventHandler;
-	};
+	//if (GRLIB_ACE_enabled) then {
+	//	["ace_arsenal_displayClosed", {[player] spawn F_payLoadout}] call CBA_fnc_addEventHandler;
+	//};
 
 	// Unblock units
 	missionNamespace setVariable [

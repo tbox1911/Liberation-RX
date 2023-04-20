@@ -22,6 +22,7 @@ while { GRLIB_endgame == 0 } do {
 	while { _spawn_marker == "" } do {
 		_spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max, true] call F_findOpforSpawnPoint;
 		if ( _spawn_marker == "" ) then { sleep (150 + floor(random 150)) };
+		sleep 0.5;
 	};
 
 	private _grp = grpNull;
@@ -29,7 +30,8 @@ while { GRLIB_endgame == 0 } do {
 	private _sector_spawn_pos = zeropos;
 	while { _sector_spawn_pos distance zeropos < 100 } do {
 		_sector_spawn_pos = ( [ _sectorpos, floor(random 50), random 360 ] call BIS_fnc_relPos ) findEmptyPosition [1, 200, "B_Heli_Light_01_F"];
-		if ( count _sector_spawn_pos == 0 || surfaceIsWater _sector_spawn_pos ) then { _sector_spawn_pos = zeropos; sleep 30};	
+		if ( count _sector_spawn_pos == 0 || surfaceIsWater _sector_spawn_pos ) then { _sector_spawn_pos = zeropos; sleep 30};
+		sleep 0.5;
 	};
 
 	diag_log format [ "Spawn Patrol type %1 on sector %2 at %3", _patrol_type, _spawn_marker, time ];
@@ -39,8 +41,8 @@ while { GRLIB_endgame == 0 } do {
 		_squad = [] call F_getAdaptiveSquadComp;
 		sleep 0.5;
 		{
-			_x createUnit [_sector_spawn_pos, _grp, 'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.5, "PRIVATE"];
-			_unit = (units _grp) select ((count (units _grp)) -1);
+			_unit = _grp createUnit [_x, _sector_spawn_pos, [], 5, "NONE"];
+			_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 			[ _unit ] call reammo_ai;
 			sleep 0.1;
 		} foreach _squad;

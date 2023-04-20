@@ -14,7 +14,7 @@ if ( isServer ) then {
 	//diag_log format ["DBG: Killed: %1 %2", name _unit, side (group _unit)];
 
 	// ACE
-	if (GRLIB_ACE_enabled && local _unit) then {
+	if (GRLIB_ACE_medical_enabled && local _unit) then {
 		if (isNull _killer || _killer == _unit) then {
 			_killer = _unit getVariable ["ace_medical_lastDamageSource", objNull];
 		};

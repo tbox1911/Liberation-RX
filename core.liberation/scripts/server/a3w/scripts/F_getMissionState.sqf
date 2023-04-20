@@ -15,4 +15,5 @@ _mType = param [1, "", [""]];
 	if (_x select 0 == _mType) exitWith	{ _mState = _x select 2 };
 } forEach _mArray;
 
+if (isNil "_mState") then { _mState = true };
 _mState

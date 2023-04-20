@@ -8,7 +8,7 @@ GRLIB_mod_list_west = [
     "CP_BAF_DES",
     "CP_USMC_W",
     "CP_USMC_D",
-    "EJW",
+    "EJW_TF",
     "R3F_WEST_D",
     "R3F_WEST_W",
     "RHS_USAF",
@@ -40,7 +40,7 @@ GRLIB_mod_list_east = [
     "CP_USMC_D",    
     "CP_AFRF",		// Z@warrior CUP AFRF
     "CP_SAHRA_D",	// Z@Warrior CUP Sahrani Desert
-    "EJW",
+    "EJW_TA",
     "R3F_WEST_D",
     "R3F_WEST_W",
     "RHS_USAF",

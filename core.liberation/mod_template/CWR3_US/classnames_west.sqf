@@ -20,30 +20,20 @@ chimera_vehicle_overide = [
 ];
 
 
-/* RANK
-PRIVATE<br/>%2", "000", localize "STR_RANK_LVL1"]]];
-CORPORAL<br/>%2", GRLIB_perm_inf, localize "STR_RANK_LVL2"]]];
-SERGEANT<br/>%2", GRLIB_perm_log, localize "STR_RANK_LVL3"]]];
-CAPTAIN<br/>%2", GRLIB_perm_tank, localize "STR_RANK_LVL4"]]];
-MAJOR<br/>%2", GRLIB_perm_air, localize "STR_RANK_LVL5"]]];
-COLONEL<br/>%2", GRLIB_perm_max, localize "STR_RANK_LVL6"]]];
-*/
-
-
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 
 infantry_units = [						// Men '82
 	["Alsatian_Random_F",0,0,0,GRLIB_perm_max],
 	["Fin_random_F",0,0,0,0],
-	["cwr3_b_soldier82",1,10,0,0],
-	["cwr3_b_soldier82_medic",1,20,0,0],
-	["cwr3_b_soldier82_sapper",1,25,0,0],
-	["cwr3_b_soldier82_gl",1,25,0,GRLIB_perm_inf],
-	["cwr3_b_soldier82_marksman",1,25,0,GRLIB_perm_inf],
-	["cwr3_b_soldier82_sniper",1,30,0,GRLIB_perm_inf],
-	["cwr3_b_soldier82_mg",1,40,0,GRLIB_perm_log],
-	["cwr3_b_soldier82_at_carlgustaf",1,45,0,GRLIB_perm_log],
-	["cwr3_b_soldier82_aa_redeye",1,55,0,GRLIB_perm_log],
+	["cwr3_b_soldier82",1,0,0,0],
+	["cwr3_b_soldier82_medic",1,0,0,0],
+	["cwr3_b_soldier82_sapper",1,0,0,0],
+	["cwr3_b_soldier82_gl",1,0,0,GRLIB_perm_inf],
+	["cwr3_b_soldier82_marksman",1,0,0,GRLIB_perm_inf],
+	["cwr3_b_soldier82_sniper",1,0,0,GRLIB_perm_inf],
+	["cwr3_b_soldier82_mg",1,0,0,GRLIB_perm_log],
+	["cwr3_b_soldier82_at_carlgustaf",1,0,0,GRLIB_perm_log],
+	["cwr3_b_soldier82_aa_redeye",1,0,0,GRLIB_perm_log],
 	[crewman_classname,1,0,0,GRLIB_perm_inf],
 	[pilot_classname,1,0,0,GRLIB_perm_log]
 ];
@@ -52,40 +42,40 @@ units_loadout_overide = [];
 
 // *** FIA (CWR III) ***
 resistance_squad = [
-"cwr3_i_soldier_aa_strela",
-"cwr3_i_soldier_aaa_strela",
-"cwr3_i_soldier_aat_at4",
-"cwr3_i_soldier_aat_rpg7",
-"cwr3_i_soldier_aar",
-"cwr3_i_soldier_amg",
-"cwr3_i_soldier_at_at4",
-"cwr3_i_soldier_at_rpg7",
-"cwr3_i_soldier_ar",
-"cwr3_i_commander",
-"cwr3_i_soldier_sapper",
-"cwr3_i_soldier_engineer",
-"cwr3_i_soldier_gl",
-"cwr3_i_soldier_hg",
-"cwr3_i_soldier_hunter",
-"cwr3_i_soldier_mg",
-"cwr3_i_soldier_marksman",
-"cwr3_i_soldier_medic",
-"cwr3_i_officer",
-"cwr3_i_officer_night",
-"cwr3_i_soldier_radio",
-"cwr3_i_soldier",
-"cwr3_i_soldier_backpack",
-"cwr3_i_soldier_fal",
-"cwr3_i_soldier_g3",
-"cwr3_i_soldier_at_rpg75",
-"cwr3_i_soldier_sks",
-"cwr3_i_soldier_vz58",
-"cwr3_i_soldier_saboteur",
-"cwr3_i_soldier_scout",
-"cwr3_i_soldier_sniper",
-"cwr3_i_soldier_spotter",
-"cwr3_i_soldier_sl",
-"cwr3_i_soldier_tl"
+	"cwr3_i_soldier_aa_strela",
+	"cwr3_i_soldier_aaa_strela",
+	"cwr3_i_soldier_aat_at4",
+	"cwr3_i_soldier_aat_rpg7",
+	"cwr3_i_soldier_aar",
+	"cwr3_i_soldier_amg",
+	"cwr3_i_soldier_at_at4",
+	"cwr3_i_soldier_at_rpg7",
+	"cwr3_i_soldier_ar",
+	"cwr3_i_commander",
+	"cwr3_i_soldier_sapper",
+	"cwr3_i_soldier_engineer",
+	"cwr3_i_soldier_gl",
+	"cwr3_i_soldier_hg",
+	"cwr3_i_soldier_hunter",
+	"cwr3_i_soldier_mg",
+	"cwr3_i_soldier_marksman",
+	"cwr3_i_soldier_medic",
+	"cwr3_i_officer",
+	"cwr3_i_officer_night",
+	"cwr3_i_soldier_radio",
+	"cwr3_i_soldier",
+	"cwr3_i_soldier_backpack",
+	"cwr3_i_soldier_fal",
+	"cwr3_i_soldier_g3",
+	"cwr3_i_soldier_at_rpg75",
+	"cwr3_i_soldier_sks",
+	"cwr3_i_soldier_vz58",
+	"cwr3_i_soldier_saboteur",
+	"cwr3_i_soldier_scout",
+	"cwr3_i_soldier_sniper",
+	"cwr3_i_soldier_spotter",
+	"cwr3_i_soldier_sl",
+	"cwr3_i_soldier_tl"
 ];
 
 light_vehicles = [
@@ -134,17 +124,17 @@ air_vehicles = [
 ];
 
 blufor_air = [
-"cwr3_b_kiowa_dyn",
-"cwr3_b_ah64",
-"cwr3_b_uh1_gunship",
-"cwr3_b_uh60_x4_esss",
-"cwr3_b_a10"
+	"cwr3_b_kiowa_dyn",
+	"cwr3_b_ah64",
+	"cwr3_b_uh1_gunship",
+	"cwr3_b_uh60_x4_esss",
+	"cwr3_b_a10"
 ];
 
 
 boats_west = [
-"cwr3_b_zodiac",
-"cwr3_b_boat"
+	"cwr3_b_zodiac",
+	"cwr3_b_boat"
 ];
 
 static_vehicles = [
@@ -176,49 +166,49 @@ buildings_west = [
 ];
 
 blufor_squad_inf_light = [
-"cwr3_b_soldier82_tl",
-"cwr3_b_soldier82_m14",
-"cwr3_b_soldier82",
-"cwr3_b_soldier82_medic"
+	"cwr3_b_soldier82_tl",
+	"cwr3_b_soldier82_m14",
+	"cwr3_b_soldier82",
+	"cwr3_b_soldier82_medic"
 ];
 
 blufor_squad_inf = [
-"cwr3_b_soldier82_tl",
-"cwr3_b_soldier82_m14",
-"cwr3_b_soldier82",
-"cwr3_b_soldier82_medic",
-"cwr3_b_soldier82_at_law",
-"cwr3_b_soldier82_mg"
+	"cwr3_b_soldier82_tl",
+	"cwr3_b_soldier82_m14",
+	"cwr3_b_soldier82",
+	"cwr3_b_soldier82_medic",
+	"cwr3_b_soldier82_at_law",
+	"cwr3_b_soldier82_mg"
 ];
 
 blufor_squad_at = [
-"cwr3_b_soldier82_tl",
-"cwr3_b_soldier82_at_law",
-"cwr3_b_soldier82_medic",
-"cwr3_b_soldier82_gl",
-"cwr3_b_soldier82_at_carlgustaf",
-"cwr3_b_soldier82_at_m47",
-"cwr3_b_soldier82_medic"
+	"cwr3_b_soldier82_tl",
+	"cwr3_b_soldier82_at_law",
+	"cwr3_b_soldier82_medic",
+	"cwr3_b_soldier82_gl",
+	"cwr3_b_soldier82_at_carlgustaf",
+	"cwr3_b_soldier82_at_m47",
+	"cwr3_b_soldier82_medic"
 ];
 
 blufor_squad_aa = [	
-"cwr3_b_soldier82_tl",
-"cwr3_b_soldier82_aa_stinger",
-"cwr3_b_soldier82_m14",
-"cwr3_b_soldier82_medic",
-"cwr3_b_soldier82_mg",
-"cwr3_b_soldier82_aa_redeye"
+	"cwr3_b_soldier82_tl",
+	"cwr3_b_soldier82_aa_stinger",
+	"cwr3_b_soldier82_m14",
+	"cwr3_b_soldier82_medic",
+	"cwr3_b_soldier82_mg",
+	"cwr3_b_soldier82_aa_redeye"
 ];
 
 blufor_squad_mix = [
-"cwr3_b_soldier82_sl",
-"cwr3_b_soldier82_m14",
-"cwr3_b_soldier82_marksman",
-"cwr3_b_soldier82_mg",
-"cwr3_b_soldier82_sapper",
-"cwr3_b_soldier82_medic",
-"cwr3_b_soldier82_at_carlgustaf",
-"cwr3_b_soldier82_aa_stinger"
+	"cwr3_b_soldier82_sl",
+	"cwr3_b_soldier82_m14",
+	"cwr3_b_soldier82_marksman",
+	"cwr3_b_soldier82_mg",
+	"cwr3_b_soldier82_sapper",
+	"cwr3_b_soldier82_medic",
+	"cwr3_b_soldier82_at_carlgustaf",
+	"cwr3_b_soldier82_aa_stinger"
 ];
 
 squads = [

@@ -22,3 +22,13 @@ _unit addItemToUniform "HandGrenade";
 _unit addItemToUniform "SmokeShell";
 
 _unit addVest "V_PlateCarrierL_McamUS";
+_unit addBackpack "B_Parachute";
+_unit addHeadgear "H_HelmetB_light_TFB";
+_unit addGoggles "ej_Oakleys";
+
+_unit linkItem "ItemMap";
+_unit linkItem "ItemCompass";
+_unit linkItem "ItemWatch";
+_unit linkItem "ItemRadio";
+_unit linkItem "ItemGPS";
+_unit linkItem "ej_PVS15D";

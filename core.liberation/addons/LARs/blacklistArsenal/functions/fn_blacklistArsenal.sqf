@@ -163,6 +163,18 @@ _thread = _this spawn {
 			alive _target && {_target distance _this < 5} && {call _condition}
 		", _arsenalName ]
 	]];
+	// Ace Arsenal Filter thing.
+	if (GRLIB_ACE_enabled) then {
+		if (GRLIB_limited_arsenal) then {	
+			[_box, false, false] call ace_arsenal_fnc_initBox;
+		
+			{			 
+				[_box, _x] call ace_arsenal_fnc_addVirtualItems; 
+			} forEach _cargo;
+		} else {
+			[_box, true] call ace_arsenal_fnc_initBox;
+		};
+	};
 
 	LARs_initBlacklist = true;
 

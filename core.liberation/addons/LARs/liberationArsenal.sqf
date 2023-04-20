@@ -55,6 +55,15 @@ if (GRLIB_filter_arsenalR3F) then {
 if (GRLIB_filter_arsenalSOG) then {	
 	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_SOG.sqf";
 };
+// Add 3CB Weapons
+if (GRLIB_filter_arsenal3CB) then {	
+	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_3CB.sqf";
+};
+// Add CWR Weapons
+if (GRLIB_filter_arsenalCWR) then {	
+	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_CWR.sqf";
+};
+
 
 // Dedup list
 GRLIB_whitelisted_from_arsenal = GRLIB_whitelisted_from_arsenal arrayIntersect GRLIB_whitelisted_from_arsenal;

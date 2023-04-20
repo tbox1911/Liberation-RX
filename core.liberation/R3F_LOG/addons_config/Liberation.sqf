@@ -240,8 +240,7 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	"Land_BagBunker_Small_F",
 	//"Land_BagBunker_Tower_F",
 	"CamoNet_BLUFOR_open_F",
-	"CamoNet_BLUFOR_big_F",
-	"Land_CncShelter_F"	
+	"CamoNet_BLUFOR_big_F"
 ];
 
 R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
@@ -279,6 +278,7 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	"Land_BagFence_Short_F",
 	"Land_BagFence_Corner_F",
 	"Land_CncShelter_F",
+	"HBarrier_base_F",
 	"Land_Cargo_House_V1_F",
 	"Land_Cargo_Patrol_V1_F",
 	"Land_Cargo_House_V2_F",
@@ -319,6 +319,7 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 	["Land_BagFence_Short_F", 5],
 	["Land_BagFence_Corner_F", 5],
 	["Land_CncShelter_F", 5],
+	["HBarrier_base_F", 5],
 	["Land_Cargo_House_V1_F", 5],
 	["Land_Cargo_Patrol_V1_F", 5],
 	["Land_Cargo_House_V2_F", 5],

@@ -28,8 +28,7 @@ while { count _position_indexes < count _squadtospawnnn } do {
 _grp = createGroup [_default_side, true];
 _idxposit = 0;
 {
-	_x createUnit [_sectorpos, _grp,'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]'];
-	_nextunit = (units _grp) select ((count (units _grp)) -1);
+	_nextunit = _grp createUnit [_x, _sectorpos, [], 5, "NONE"];
 	_nextunit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	_nextunit setpos (_buildingpositions select (_position_indexes select _idxposit));
 	_nextunit setdir (random 360);

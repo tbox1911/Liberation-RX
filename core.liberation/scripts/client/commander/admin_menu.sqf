@@ -9,6 +9,7 @@ do_change = 0;
 do_export = 0;
 do_import = 0;
 
+private _msg = "";
 private _getBannedUID = {
 	params ["_ban_combo"];
 	lbClear _ban_combo;
@@ -56,21 +57,25 @@ private _input_controls = [521,522,523,524,525,526,527];
 [_ban_combo] call _getBannedUID;
 
 // Build Players list
-_i = 0;
+private _i = 0;
+private _list = [];
 {
-	_score_combo lbAdd format["%1", name _x];
 	_uid = getPlayerUID _x;
+	_list pushBack _uid;
+	_score_combo lbAdd format["%1", name _x];
 	_score_combo lbSetData [_i, _uid];
 	_score_combo lbSetColor [_i, _color];
 	_i = _i + 1;
 } foreach (AllPlayers - (entities "HeadlessClient_F"));
 
 {
-	_score_combo lbAdd format["%1", _x select 4];
 	_uid = _x  select 0;
-	_score_combo lbSetData [_i, _uid];
-	_score_combo lbSetColor [_i, _color];
-	_i = _i + 1;
+	if !(_uid in _list) then {
+		_score_combo lbAdd format["%1", _x select 4];
+		_score_combo lbSetData [_i, _uid];
+		_score_combo lbSetColor [_i, _color];
+		_i = _i + 1;
+	};
 } foreach GRLIB_player_scores;
 
 // Build Vehicles list
@@ -155,8 +160,17 @@ while { alive player && dialog } do {
 
 	if (do_export == 1) then {
 		do_export = 0;
-		copyToClipboard str (profileNamespace getVariable GRLIB_save_key);
-		_msg = format ['Savegame %1 Exported to clipboard.', GRLIB_save_key];
+		if (isServer) then {
+			copyToClipboard str (profileNamespace getVariable GRLIB_save_key);
+			_msg = format ['Savegame %1 Exported to clipboard.', GRLIB_save_key];
+		} else {
+			// [player, {
+			// 	diag_log "--- LRX Savegame Start ----------------------------------";
+			// 	{ diag_log _x } foreach (profileNamespace getVariable GRLIB_save_key);
+			// 	diag_log "--- LRX Savegame End ------------------------------------";
+			// }] remoteExec ["bis_fnc_call", 2];
+			_msg = format ['Savegame %1 Exported to server log.', GRLIB_save_key];
+		};
 		hint _msg;
 	};
 
@@ -166,22 +180,20 @@ while { alive player && dialog } do {
 		
 		input_save = "";
 		waitUntil {uiSleep 0.1; ((input_save != "") || !(dialog) || !(alive player)) };
-
-		if ( input_save select [0,1] == "[" ) then {
+		if ( input_save select [0,1] == "[" && input_save select [(count input_save)-1,(count input_save)] == "]") then {
 			private _save = parseSimpleArray input_save;
-			if (count _save == count greuh_liberation_savegame) then {
-				[_save, {
-					GRLIB_server_stopped = true;	
-					profileNamespace setVariable [GRLIB_save_key, _this];
-					saveProfileNamespace;
-					sleep 3;
-					["END"] remoteExec ["endMission", 0];
-				}] remoteExec ["bis_fnc_call", 2];
-
-				systemchat format ['Import Savegame in %1, Exiting now!', GRLIB_save_key];
-				closeDialog 0;
-			};
-		};
+			[_save, {
+				params ["_save"];
+				if (count _save == count greuh_liberation_savegame) exitWith {};
+				GRLIB_server_stopped = true;
+				profileNamespace setVariable [GRLIB_save_key, _this];
+				saveProfileNamespace;
+				sleep 3;
+				["END"] remoteExec ["endMission", 0];
+			}] remoteExec ["bis_fnc_call", 2];
+			systemchat format ['Import Savegame in %1, Exiting now!', GRLIB_save_key];
+			closeDialog 0;
+		} else { systemchat "Error: Invalid data!" };
 		{ ctrlShow [_x, false] } foreach _input_controls;
 	};
 	sleep 0.5;

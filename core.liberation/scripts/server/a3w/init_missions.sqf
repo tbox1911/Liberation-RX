@@ -23,6 +23,7 @@ missionHint = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts
 processItems = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_processItems.sqf";
 updateMissionsList = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_updateMissionsList.sqf";
 getNbUnits = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_getNbUnits.sqf";
+createOutpost = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_createOutpost.sqf";
 
 waitUntil {sleep 1; !isNil "blufor_sectors" };
 waitUntil {sleep 1; !isNil "sectors_allSectors" };
