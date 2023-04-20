@@ -19,7 +19,7 @@ if ( isNil "first_camera_round" ) then { first_camera_round = true; };
 
 while { cinematic_camera_started } do {
 
-	waitUntil { sleep 0.5; !cinematic_camera_started || camCommitted _cinematic_camera };
+	waitUntil { !cinematic_camera_started || camCommitted _cinematic_camera };
 
 	if ( cinematic_camera_started ) then {
 		camUseNVG false;

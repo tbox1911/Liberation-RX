@@ -1,88 +1,32 @@
 // Heli Taxi Script
 private _taxi = player getVariable ["GRLIB_taxi_called", nil];
-if (!isNil "_taxi") exitWith {hintSilent "Sorry, Only one Taxi at time."};
+if (!isNil "_taxi") exitWith {hintSilent localize "STR_TAXI_ONLY_ONE"};
 
 //check dest place
 buildtype = 9;
-build_unit = ["Land_HelipadSquare_F",[],1,[],[]];
+build_unit = [taxi_helipad_type,[],1,[],[]];
 dobuild = 1;
 
 waitUntil { sleep 1; dobuild == 0};
-private _helipad = nearestObjects [player, ["Land_HelipadSquare_F"], 100] select 0;
+private _helipad = nearestObjects [player, [taxi_helipad_type], 50] select 0;
 private _degree = aCos ([0,0,1] vectorCos (surfaceNormal getPos _helipad));
 private _dest = getPosATL _helipad;
-if (surfaceIsWater _dest || _degree > 8) exitWith {deleteVehicle _helipad; hintSilent "Sorry, Taxi cannot Land on this place."};
+if (surfaceIsWater _dest || _degree > 8) exitWith {deleteVehicle _helipad; hintSilent localize "STR_TAXI_WRONG_PLACE"};
 
 // Pay
 _cost = 100;
 if (!([_cost] call F_pay)) exitWith {deleteVehicle _helipad};
 
-// Taxi functions
-taxi_land = {
-	params ["_vehicle"];
-	hintSilent "Taxi Landing...";
-	waitUntil {_vehicle land "LAND"; sleep 10; isTouchingGround _vehicle};
-	hintSilent "Taxi Landed.";
-	deleteVehicle _helipad;
-};
-
-taxi_dest = {
-	params ["_air_grp", "_dest"];
-	_waypoint = _air_grp addWaypoint [ _dest, 1];
-	_waypoint setWaypointType "MOVE";
-	_waypoint setWaypointSpeed "FULL";
-	_waypoint setWaypointBehaviour "AWARE";
-	_waypoint setWaypointCombatMode "GREEN" ;
-};
-
-// Heli Taxi Type
-_taxi_type_2 = [
-	"C_Heli_light_01_blue_F",
-	"C_Heli_light_01_red_F",
-	"C_Heli_light_01_ion_F",
-	"C_Heli_light_01_blueLine_F",
-	"C_Heli_light_01_digital_F",
-	"C_Heli_light_01_elliptical_F",
-	"C_Heli_light_01_furious_F",
-	"C_Heli_light_01_graywatcher_F",
-	"C_Heli_light_01_jeans_F",
-	"C_Heli_light_01_light_F",
-	"C_Heli_light_01_shadow_F",
-	"C_Heli_light_01_sheriff_F",
-	"C_Heli_light_01_speedy_F",
-	"C_Heli_light_01_sunset_F",
-	"C_Heli_light_01_vrana_F",
-	"C_Heli_light_01_wasp_F",
-	"C_Heli_light_01_wave_F",
-	"C_Heli_light_01_stripped_F",
-	"C_Heli_light_01_luxe_F"
-];
-
-_taxi_type_6 = [
-	"I_Heli_light_03_unarmed_F",
-	"I_E_Heli_light_03_unarmed_F"
-];
-
-_taxi_type_8 = [
-	"O_Heli_Light_02_unarmed_F",
-	"O_Heli_Light_02_v2_F",
-	"B_Heli_Transport_01_F",
-	"B_Heli_Transport_01_camo_F"
-];
-
-_taxi_type_14 = [
-	"B_Heli_Transport_03_unarmed_green_F",
-	"B_Heli_Transport_03_black_F",
-	"I_Heli_Transport_02_F"
-];
-
 private _nb_unit = count (units player);
 private _taxi_type = "";
 
-if (_nb_unit <= 2) then {_taxi_type = _taxi_type_2 call BIS_fnc_selectRandom};
-if (_nb_unit > 2 && _nb_unit <= 6) then {_taxi_type = _taxi_type_6 call BIS_fnc_selectRandom};
-if (_nb_unit > 6 && _nb_unit <= 8) then {_taxi_type = _taxi_type_8 call BIS_fnc_selectRandom};
-if (_nb_unit > 8) then {_taxi_type = _taxi_type_14 call BIS_fnc_selectRandom};
+if (_nb_unit <= 2) then {_taxi_type = taxi_type_2 call BIS_fnc_selectRandom};
+if (_nb_unit > 2 && _nb_unit <= 6) then {_taxi_type = taxi_type_6 call BIS_fnc_selectRandom};
+if (_nb_unit > 6 && _nb_unit <= 8) then {_taxi_type = taxi_type_8 call BIS_fnc_selectRandom};
+if (_nb_unit > 8) then {_taxi_type = taxi_type_14 call BIS_fnc_selectRandom};
+
+hintSilent format [localize "STR_TAXI_CALLED", getText(configFile >> "cfgVehicles" >> _taxi_type >> "DisplayName")];
+player setVariable ["GRLIB_taxi_called", _vehicle, true];
 
 // Create Taxi
 _air_grp = createGroup [GRLIB_side_civilian, true];
@@ -95,28 +39,28 @@ _air_spawnpos = [(((_air_spawnpos select 0) + 500) - random 1000),(((_air_spawnp
 _vehicle = createVehicle [_taxi_type, _air_spawnpos, [], 0, "FLY"];
 _vehicle setVariable ["GRLIB_vehicle_owner", "server"];
 _vehicle setVariable ["R3F_LOG_disabled", true];
-_vehicle allowDamage false;
+[_vehicle] spawn protect_static;
 _vehicle flyInHeight (100 + (random 60));
 
 createVehicleCrew _vehicle;
 sleep 1;
 _pilots = crew _vehicle;
-{ _x addMPEventHandler ["MPKilled", {_this spawn kill_manager}] } foreach _pilots;
+{
+	_x allowDamage false;
+	_x  allowFleeing 0;
+ } foreach _pilots;
 _pilots joinSilent _air_grp;
-player setVariable ["GRLIB_taxi_called", _vehicle, true];
-hintSilent "Air Taxi Called !";
 
 // Goto Pickup Point
 [_air_grp, _dest] call taxi_dest;
 waitUntil {
   sleep 5;
-  isNil{hintSilent format ["Taxi on the way!\nDistance: %1m", round (_vehicle distance2D _dest)]};
+  isNil{hintSilent format [localize "STR_TAXI_MOVE", round (_vehicle distance2D _dest)]};
   (!alive _vehicle || _vehicle distance2D _dest < 200)
 };
 
 if (alive _vehicle && alive player) then {
 	[_vehicle] call taxi_land;
-	hintSilent "Taxi Landed.\nWaiting for passengers.\nYou have 5 minutes!";
 
 	// Pickup Marker
 	_marker = createMarkerLocal ["taxi_lz", getPos _vehicle];
@@ -126,13 +70,14 @@ if (alive _vehicle && alive player) then {
 
 	_stop = time + (5 * 60); // wait 5min max
 	waitUntil {
+		hintSilent format [localize "STR_TAXI_ARRIVED", round (_stop - time)];
 		sleep 1;
 		(!alive _vehicle || vehicle player == _vehicle || time > _stop)
 	};
+	hintSilent "";
 
-	if (time < _stop && alive _vehicle) then {
-
-		_idact_dest = _vehicle addAction ["<t color='#8000FF'>-- TAXI Destination</t>","addons\TAXI\taxi_dest.sqf","",999,true,true,"","vehicle _this == _target"];
+	if (alive _vehicle && vehicle player == _vehicle) then {
+		_idact_dest = _vehicle addAction ["<t color='#8000FF'>-- TAXI Destination</t>","addons\TAXI\taxi_pickdest.sqf","",999,true,true,"","vehicle _this == _target"];
 		waitUntil {
 			sleep 1;
 			(!alive _vehicle || !alive player || (markerPos "taxi_dz") distance2D zeropos > 100)
@@ -140,38 +85,47 @@ if (alive _vehicle && alive player) then {
 		_vehicle removeAction _idact_dest;
 		deleteMarkerLocal "taxi_lz";
 
-		if (alive _vehicle && alive player && vehicle player == _vehicle) then {
+		if (alive _vehicle && count ([_vehicle, _pilots] call taxi_cargo) > 0) then {
 			hintSilent "Ok, let's go...";
 			_dest = markerPos "taxi_dz";
+			_helipad = taxi_helipad_type createVehicle _dest;
 			[_air_grp, _dest] call taxi_dest;
-
+			(driver _vehicle) doMove _dest;
+			sleep 15;
 			waitUntil {
+				hintSilent format [localize "STR_TAXI_PROGRESS", round (_vehicle distance2D _dest)];
 				sleep 5;
-				isNil{hintSilent format ["Taxi transport...\nDestination: %1m", round (_vehicle distance2D _dest)]};
-				(!alive _vehicle || vehicle player != _vehicle || _vehicle distance2D _dest < 100)
+				if (round (speed _vehicle) == 0) then {
+					{ _x allowDamage false } forEach ([_vehicle, _pilots] call taxi_cargo);
+					_vehicle setpos (getPos _vehicle vectorAdd [0, 0, 2]);
+					sleep 3;
+					{ _x allowDamage true } forEach ([_vehicle, _pilots] call taxi_cargo);
+				};
+				(!alive _vehicle || count ([_vehicle, _pilots] call taxi_cargo) == 0 || _vehicle distance2D _dest < 150)
 			};
 
-			if (alive _vehicle && vehicle player == _vehicle) then {
+			if (alive _vehicle && count ([_vehicle, _pilots] call taxi_cargo) > 0) then {
 				[_vehicle] call taxi_land;
-				_outboarded = {
-					params ["_vehicle"];
-					_ret = true;
-					{
-						if ( vehicle _x == _vehicle) then {
-							unassignVehicle _x;
-							commandGetOut _x;
-							doGetOut _x;
-							_ret = false
-						};
-					} forEach units player;
-					_ret;
-				};
-				waitUntil {sleep 1; [_vehicle] call _outboarded};
+				sleep 1;
+				deleteVehicle _helipad;
+				deleteMarkerLocal "taxi_dz";
+				waitUntil {[_vehicle] call taxi_outboard};
 				_vehicle lock 2;
 
-				hintSilent "Return to Airbase.\nBye, bye...";
 				// Go back
+				sleep 5;
+				hintSilent localize "STR_TAXI_RETURN";
 				[_air_grp, zeropos] call taxi_dest;
+				(driver _vehicle) doMove zeropos;
+				sleep 10;
+				waitUntil {
+					sleep 3;
+					_speed = round (speed _vehicle);
+					if (_speed == 0) then {
+						_vehicle setpos (getPos _vehicle vectorAdd [0, 0, 2]);
+					};
+					_speed >= 10
+				};
 			};
 		};
 	};
@@ -181,8 +135,8 @@ if (alive _vehicle && alive player) then {
 hintSilent "";
 deleteMarkerLocal "taxi_lz";
 deleteMarkerLocal "taxi_dz";
+deleteVehicle _helipad;
 sleep 60;
 {deletevehicle _x} forEach _pilots;
 deleteVehicle _vehicle;
-deleteVehicle _helipad;
 player setVariable ["GRLIB_taxi_called", nil, true];

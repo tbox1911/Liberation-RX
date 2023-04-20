@@ -9,7 +9,7 @@ GRLIB_color_friendly = "ColorBLUFOR";
 GRLIB_color_enemy = "ColorOPFOR";
 GRLIB_color_enemy_bright = "ColorRED";
 
-GRLIB_sector_size = 500;
+GRLIB_sector_size = 400;
 GRLIB_capture_size = 175;
 GRLIB_radiotower_size = 2500;
 GRLIB_spawn_min = 500;

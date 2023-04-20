@@ -2944,6 +2944,59 @@
 					<Original>Prisoners are NOT allowed to use vehicles !!</Original>
 					<French>Les prisonniers ne sont PAS autorisés à utiliser les véhicules !!</French>
 				</Key>
+
+				<!-- Taxi -->
+				<Key ID="STR_TAXI_ONLY_ONE">
+					<Original>Sorry, only one Taxi at time.</Original>
+					<French>Désolé, un seul Taxi à la fois.</French>
+				</Key>
+				<Key ID="STR_TAXI_WRONG_PLACE">
+					<Original>Sorry, the Taxi cannot land on this place.</Original>
+					<French>Désolé, le Taxi ne peut pas atterrir à cet endroit.</French>
+				</Key>
+				<Key ID="STR_TAXI_SELECT">
+					<Original>Select your destination.</Original>
+					<French>Choisissez votre destination.</French>
+				</Key>
+				<Key ID="STR_TAXI_LANDING">
+					<Original>The Taxi lands...</Original>
+					<French>Le Taxi atterrit...</French>
+				</Key>
+				<Key ID="STR_TAXI_LANDED">
+					<Original>The Taxi landed.</Original>
+					<French>Le Taxi a atterri.</French>
+				</Key>
+				<Key ID="STR_TAXI_CALLED">
+					<Original>Air Taxi called.\nType: %1</Original>
+					<French>Taxi aérien appelé.\nType: %1</French>
+				</Key>
+				<Key ID="STR_TAXI_MOVE">
+					<Original>Taxi on the way...\nDistance: %1m</Original>
+					<French>Taxi en route...\nDistance: %1m</French>
+				</Key>
+				<Key ID="STR_TAXI_ARRIVED">
+					<Original>The Taxi has arrived.\nWaiting for passengers.\nYou have %1 seconds to board !</Original>
+					<French>Le Taxi est arrivé.\nEn attente de passagers.\nVous avez %1 secondes pour embarquer !</French>
+				</Key>
+				<Key ID="STR_TAXI_PROGRESS">
+					<Original>Transport in progress...\nDestination: %1m</Original>
+					<French>Transport en cours...\nDestination: %1m</French>
+				</Key>
+				<Key ID="STR_TAXI_RETURN">
+					<Original>Back to the base.\nGoodbye...</Original>
+					<French>Retour à la base.\nAu revoir...</French>
+				</Key>
+
+				<!-- Pay -->
+				<Key ID="STR_GRLIB_NOAMMO">
+					<Original>"You don't have enough Ammo !!</Original>
+					<French>Vous n'avez pas assez d'Ammo !!</French>
+				</Key>
+				<Key ID="STR_GRLIB_PAY">
+					<Original>You paid: %1 Ammo</Original>
+					<French>Vous avez payé: %1 Ammo</French>
+				</Key>
+
 		</Package>
 </Project>
 <Project name="NRE Earplugs">

@@ -5,7 +5,8 @@ _target attachTo [player, [0, 1.1, 0.092]];
 _target setDir 180;
 _target setVariable ["PAR_isDragged", 1, true];
 
-player playMoveNow "AcinPknlMstpSrasWrflDnon";
+player switchMove "AcinPknlMstpSrasWrflDnon";
+sleep 1;
 
 // Wait until release action is used
 waitUntil {
@@ -24,8 +25,8 @@ if (!isNull _target && alive _target) then
 };
 
 // Switch back to default animation
-player playMove "amovpknlmstpsraswrfldnon";
-sleep 2;
+player switchMove "amovpknlmstpsraswrfldnon";
+sleep 1;
 
 // Handle release action
 PAR_isDragging = false;
