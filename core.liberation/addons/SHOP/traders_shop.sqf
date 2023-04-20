@@ -43,7 +43,7 @@ private _buy_list_dlg = [];
 
 lbClear 111;
 {
-	_entrytext = [(_x select 0)] call get_lrx_name;
+	_entrytext = [(_x select 0)] call F_getLRXName;
 	if (count _entrytext > 25) then { _entrytext = _entrytext select [0,25] };
 	(_display displayCtrl (111)) lnbAddRow [_entrytext, str(_x select 1)];
 
@@ -87,7 +87,7 @@ while { dialog && alive player } do {
 
 		lbClear 110;
 		{
-			_entrytext = [(_x select 0)] call get_lrx_name;
+			_entrytext = [(_x select 0)] call F_getLRXName;
 			if (count _entrytext > 25) then { _entrytext = _entrytext select [0,25] };	
 			(_display displayCtrl (110)) lnbAddRow [_entrytext, str(_x select 1)];
 

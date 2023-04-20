@@ -27,7 +27,7 @@ if (isNil "_box_offset") then {_box_offset = [0, 0, 0]};
 	if ( isNull _truck_to_load ) then {
 		_truck_load = _next_truck getVariable ["GRLIB_ammo_truck_load", []];
 		if ( count _truck_load < _maxload ) then {
-			hintSilent format [localize "STR_BOX_LOADED", [typeOf _ammobox] call get_lrx_name];
+			hintSilent format [localize "STR_BOX_LOADED", [typeOf _ammobox] call F_getLRXName];
 			_truck_to_load = _next_truck;
 			_truck_offset = (_offsets select (count _truck_load)) vectorAdd _box_offset;
 			_ammobox attachTo [ _next_truck, _truck_offset ];

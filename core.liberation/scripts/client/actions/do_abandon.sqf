@@ -11,4 +11,4 @@ if (!isNil "_texture") then {
 };
 [_vehicle] call RPT_fnc_CompoVehicle;
 
-hintSilent format [localize "STR_DO_ABANDON", [typeOf _vehicle] call get_lrx_name];
+hintSilent format [localize "STR_DO_ABANDON", [typeOf _vehicle] call F_getLRXName];

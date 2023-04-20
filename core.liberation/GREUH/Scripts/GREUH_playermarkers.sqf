@@ -144,10 +144,14 @@ while { true } do {
 			} foreach  _datcrew;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 			_vehiclename = _vehiclename + "(" + ([typeOf _nextvehicle] call get_lrx_name) + ")";
 =======
 			_vehiclename = _vehiclename + "(" + [typeOf _nextvehicle] call get_lrx_name + ")";
 >>>>>>> d31a9995 (fix)
+=======
+			_vehiclename = _vehiclename + "(" + ([typeOf _nextvehicle] call F_getLRXName) + ")";
+>>>>>>> 1c483a89 (get name shared)
 			_marker setMarkerTextLocal _vehiclename;
 		} foreach _marked_vehicles;
 

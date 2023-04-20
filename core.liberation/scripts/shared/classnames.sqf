@@ -112,18 +112,25 @@ if ( isNil "militia_vehicles" ) then {
 
 // *** SUPPORT ***
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
+support_box_noArsenal = [
+	Box_Weapon_typename,
+	Box_Ammo_typename,
+	Box_Support_typename,
+	Box_Launcher_typename,
+	Box_Special_typename
+];
 support_vehicles = [
 	[Arsenal_typename,0,35,0,0]
 ];
 
 if (!GRLIB_enable_arsenal) then {
-	Arsenal_typename = "Box_NATO_Wps_F";
+	Arsenal_typename = Box_Weapon_typename;
 	support_vehicles = [
 		[Arsenal_typename,0,180,0,0],
-		["Box_NATO_Ammo_F",0,0,0,0],
-		["Box_NATO_Support_F",0,250,0,GRLIB_perm_inf],
-		["Box_NATO_WpsSpecial_F",0,200,0,GRLIB_perm_log],
-		["Box_NATO_WpsLaunch_F",0,225,0,GRLIB_perm_tank]
+		[Box_Ammo_typename,0,0,0,0],
+		[Box_Support_typename,0,250,0,GRLIB_perm_inf],
+		[Box_Launcher_typename,0,200,0,GRLIB_perm_log],
+		[Box_Special_typename,0,225,0,GRLIB_perm_tank]
 	];
 };
 
@@ -474,7 +481,7 @@ ai_resupply_sources = [
 	Arsenal_typename,
 	ammo_truck_typename,
 	ammo_sling_typename,
-	"Box_NATO_Ammo_F"
+	Box_Ammo_typename
 ] + ai_resupply_sources_west;
 
 // Everything the AI troups should be able to healing from
@@ -731,11 +738,11 @@ GRLIB_Ammobox_keep = [
 	playerbox_typename,
 	A3W_BoxWps,
 	medicalbox_typename,
-	"Box_NATO_Wps_F",
-	"Box_NATO_Ammo_F",
-	"Box_NATO_Support_F",
-	"Box_NATO_WpsLaunch_F",
-	"Box_NATO_WpsSpecial_F",
+	Box_Weapon_typename,
+	Box_Ammo_typename,
+	Box_Support_typename,
+	Box_Launcher_typename,
+	Box_Special_typename,
 	"mission_USLaunchers",
 	"CUP_LocalBasicWeaponsBox",
 	"gm_AmmoBox_1000Rnd_762x51mm_ap_DM151_g3"
