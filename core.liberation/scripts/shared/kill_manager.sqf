@@ -1,9 +1,18 @@
-params [ "_unit", "_killer" ];
-private [ "_nearby_bigtown", "_bounty", "_bonus", "_msg" ];
-
+params [ "_unit", "_killer", "_instigator"];
+private [ "_nearby_bigtown","_msg" ];
 
 if ( isServer ) then {
-	//diag_log format ["DBG: %1 %2 %3", name _unit, side _unit, captive _unit];
+	if (!(isNull _instigator)) then {
+		_killer = _instigator;
+	} else {
+		if (!(_killer isKindOf "CAManBase")) then {
+			_killer = effectiveCommander _killer;
+		};
+	};
+
+	//diag_log format ["DBG: %1 %2 %3", name _killer, side (group _killer), _r1];
+	//diag_log format ["DBG: %1 %2", name _unit, side (group _unit)];
+
 	// ACE
 	if (GRLIB_ACE_enabled && local _unit) then {
 		if (isNull _killer) then {
@@ -91,17 +100,18 @@ if ( isServer ) then {
 					[name _unit, _penalty, _killer] remoteExec ["remote_call_civ_penalty", 0];
 				};
 			};
+			_isDriver = (driver (vehicle _killer) == _killer);
 
-			if ( side (group _killer) == GRLIB_side_friendly && (!isPlayer _killer) && ((driver vehicle _killer) != _killer) ) then {
-				_owner_id = (vehicle _killer) getVariable ["GRLIB_vehicle_owner", nil];
-				if (isNil "_owner_id") then {
-					_owner_id = (_killer getVariable ["PAR_Grp_ID", "_0"]) splitString "_" select 1;
+			if ( side (group _killer) == GRLIB_side_friendly && (!isPlayer _killer) && (!_isDriver) ) then {
+				_owner_id = (vehicle _killer) getVariable ["GRLIB_vehicle_owner", ""];
+				if (_owner_id == "") then {
+					_owner_id = (_killer getVariable ["PAR_Grp_ID", "0_0"]) splitString "_" select 1;
 				};
 
-				if (!isNil "_owner_id") then {
+				if (_owner_id != "0") then {
 					_owner_player = (allPlayers select {getPlayerUID _x == _owner_id}) select 0;
 					_owner_player addScore - GRLIB_civ_killing_penalty;
-					_msg = format ["%1, Your AI kill civilian !!", name _owner_player] ;
+					_msg = format ["%1, Your AI kill Civilian !!", name _owner_player] ;
 					[gamelogic, _msg] remoteExec ["globalChat", 0];
 					[name _unit, GRLIB_civ_killing_penalty, _owner_player] remoteExec ["remote_call_civ_penalty", 0];
 				};
@@ -134,9 +144,7 @@ if ( isServer ) then {
 
 				if ( GRLIB_ammo_bounties ) then {
 					_res = [_unit] call F_getBounty;
-					[typeOf _unit, _res select 0,  _res select 1, _killer] remoteExec ["remote_call_ammo_bounty", 0];
-					_killer addScore (_bonus);
-					_killer addRating 100;
+					[typeOf _unit, (_res select 0), (_res select 1), _killer] remoteExec ["remote_call_ammo_bounty", 0];
 				};
 			};
 		} else {
