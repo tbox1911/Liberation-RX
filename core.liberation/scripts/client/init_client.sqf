@@ -18,6 +18,13 @@ if (PAR_Grp_ID == "" || !(isPlayer player)) exitWith {
 	endMission "LOSER"
 };
 
+if (!isMultiplayer) exitWith {
+	private _msg = format ["Sorry, Liberation RX is a Multiplayer Mission Only..."];
+	titleText [_msg, "BLACK FADED", 100];
+	uisleep 10;
+	endMission "LOSER";
+};
+
 respawn_lhd = compileFinal preprocessFileLineNumbers "scripts\client\spawn\respawn_lhd.sqf";
 spawn_camera = compileFinal preprocessFileLineNumbers "scripts\client\spawn\spawn_camera.sqf";
 cinematic_camera = compileFinal preprocessFileLineNumbers "scripts\client\ui\cinematic_camera.sqf";

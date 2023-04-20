@@ -19,15 +19,7 @@ if (side _grp == GRLIB_side_civilian) then {
 	playSound "vtolAlarm";
 	[player, -5] remoteExec ["addScore", 2];
 
-	_sectors_patrol = [];
-	_patrol_startpos = getpos (leader _grp);
-	{
-		if ( _patrol_startpos distance (markerpos _x) < 2500) then {
-			_sectors_patrol pushBack _x;
-		};
-	} foreach (sectors_allSectors);
-
-	private _nearest_sector = [sectors_allSectors, _unit] call F_nearestPosition;
+	private _nearest_sector = [sectors_allSectors, _vehicle] call F_nearestPosition;
 
 	if (typeName _nearest_sector == "STRING") then {
 

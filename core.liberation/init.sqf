@@ -1,10 +1,5 @@
 diag_log "--- Liberation RX by pSiKO ---";
 [] call compileFinal preprocessFileLineNUmbers "build_info.sqf";
-if (!isMultiplayer) exitWith {
-	titleText ["Sorry, Liberation RX is a Multiplayer Mission Only...","BLACK FADED", 100];
-	uisleep 10;
-	endMission "LOSER";
-};
 diag_log "--- Init start ---";
 titleText ["Loading...","BLACK FADED", 100];
 
@@ -85,14 +80,6 @@ if (!abort_loading) then {
 >>>>>>> f014e5c9 (startup protect)
 
 	if (isServer) then {
-		{
-			_x removeAllMPEventHandlers "MPKilled";
-			_x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-			if (isNil {_x getVariable "GRLIB_vehicle_owner"} ) then {
-				_x setVariable ["GRLIB_vehicle_owner", "public", true];
-			};
-		} foreach vehicles;
-
 		[] execVM "scripts\server\init_server.sqf";
 	};
 
