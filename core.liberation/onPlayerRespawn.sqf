@@ -1,3 +1,5 @@
+titleText ["Loading...","BLACK FADED", 1000];
+
 // Welcome trigger
 if (!isMultiplayer) exitWith {
 	titleText ["Sorry, Liberation RX is a Multiplayer Mission Only...","BLACK FADED", 1000];
@@ -12,7 +14,6 @@ if (abort_loading) exitWith {
 	endMission "LOSER";
 };
 
-titleText ["Loading...","BLACK FADED", 1000];
 waitUntil {sleep 1; alive player};
 player setPos ((getmarkerpos GRLIB_respawn_marker) findEmptyPosition [0,20, "B_soldier_F"]);
 GRLIB_player_spawned = false;

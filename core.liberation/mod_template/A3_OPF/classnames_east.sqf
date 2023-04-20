@@ -98,6 +98,7 @@ opfor_vehicles = [
 	"O_APC_Tracked_02_AA_F",
 	"O_MRAP_02_gmg_F",
 	"O_MRAP_02_hmg_F",
+	"O_MRAP_02_gmg_F",
 	"O_MRAP_02_hmg_F",
 	"O_MBT_04_cannon_F",
 	"O_MBT_04_command_F"

@@ -456,5 +456,5 @@ while { true } do {
 		[] call save_game;
 >>>>>>> a18fdb9a (save state at server stop)
 	};
-	diag_log format ["DBG: Weight %1 %2 %3", infantry_weight,armor_weight,air_weight];
+
 };

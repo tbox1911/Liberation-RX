@@ -11,9 +11,8 @@ removeHeadgear _unit;
 removeGoggles _unit;
 
 //  "Add weapons";
-_unit addWeapon "hgun_Pistol_heavy_01_green_F";
-_unit addHandgunItem "optic_MRD_black";
-_unit addHandgunItem "11Rnd_45ACP_Mag";
+_unit addWeapon "CUP_hgun_CZ75";
+_unit addHandgunItem "CUP_16Rnd_9x19_cz75";
 
 //  "Add containers";
 _unit forceAddUniform "CUP_U_B_BAF_DDPM_UBACSLONG";

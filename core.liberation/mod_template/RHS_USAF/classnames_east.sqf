@@ -1,0 +1,294 @@
+// *** BADDIES ***
+// All class MUST be defined !
+
+opfor_sentry = "rhsusf_army_ucp_rifleman";
+opfor_rifleman = "rhsusf_army_ucp_rifleman_m590";
+opfor_grenadier = "rhsusf_army_ucp_grenadier";
+opfor_squad_leader = "rhsusf_army_ucp_squadleader";
+opfor_team_leader = "rhsusf_army_ucp_teamleader";
+opfor_marksman = "rhsusf_army_ucp_marksman";
+opfor_machinegunner = "rhsusf_army_ucp_machinegunner";
+opfor_heavygunner = "rhsusf_army_ucp_machinegunnera";
+opfor_medic = "rhsusf_army_ucp_medic";
+opfor_rpg = "rhsusf_army_ucp_riflemanat";
+opfor_at = "rhsusf_army_ucp_javelin";
+opfor_aa = "rhsusf_army_ucp_aa";
+opfor_officer = "rhsusf_army_ucp_officer";
+opfor_sharpshooter = "rhsusf_army_ucp_rifleman_m590";
+opfor_sniper = "rhsusf_army_ucp_sniper";
+opfor_spotter = "rhsusf_army_ucp_riflemanl";
+opfor_engineer = "rhsusf_army_ucp_engineer";
+opfor_paratrooper = "rhsusf_army_ucp_combatcrewman";
+opfor_mrap = "rhsusf_m1151_usmc_wd";
+opfor_mrap_hmg = "rhsusf_m1151_m2crows_usmc_wd";
+opfor_mrap_gmg = "rhsusf_m1151_mk19crows_usmc_wd";
+opfor_transport_helo = "RHS_CH_47F";
+opfor_transport_truck = "rhsusf_M1084A1P2_WD_fmtv_usarmy";
+opfor_fuel_truck = "rhsusf_M978A4_usarmy_wd";
+opfor_ammo_truck = "rhsusf_M977A4_AMMO_usarmy_wd";
+opfor_fuel_container = "B_Slingload_01_Fuel_F";
+opfor_ammo_container = "B_Slingload_01_Ammo_F";
+opfor_flag = "Flag_US_F";
+
+militia_squad = [
+	"B_G_Soldier_SL_F",
+	"B_G_Soldier_A_F",
+	"B_G_Soldier_AR_F",
+	"B_G_Soldier_AR_F",	
+	"B_G_medic_F",
+	"B_G_engineer_F",
+	"B_G_Soldier_exp_F",
+	"B_G_Soldier_GL_F",
+	"B_G_Soldier_M_F",
+	"B_G_Soldier_F",
+	"B_G_Soldier_LAT_F",
+	"B_G_Soldier_LAT_F",	
+	"B_G_Soldier_lite_F",
+	"B_G_Sharpshooter_F",
+	"B_G_Soldier_TL_F",
+	"B_Soldier_AA_F",
+	"B_Soldier_AT_F"
+];
+
+militia_loadout_overide = [
+	"B_Soldier_AA_F",
+	"B_Soldier_AT_F"
+];
+
+divers_squad = [
+	"B_diver_TL_F",
+	"B_diver_TL_F",
+	"B_diver_exp_F",
+	"B_diver_exp_F",
+	"B_diver_exp_F",
+	"B_diver_exp_F",
+	"B_diver_F",
+	"B_diver_F",
+	"B_diver_F",
+	"B_diver_F",
+	"B_diver_F",
+	"B_diver_F",
+	"B_diver_F",
+	"B_diver_F"
+];
+
+militia_vehicles = [
+	"rhsusf_m1151_m2crows_usarmy_wd",
+	"rhsusf_m1151_mk19crows_usarmy_wd",
+	"rhsusf_m1151_m2_v1_usarmy_wd",
+	"rhsusf_m1151_m2_lras3_v1_usarmy_wd",
+	"rhsusf_m1151_m240_v1_usarmy_wd",
+	"rhsusf_m1151_mk19_v2_usarmy_wd",
+	"rhsusf_M1083A1P2_B_M2_WD_fmtv_usarmy",
+	"rhsusf_M1117_W",
+	"rhsusf_M1220_M153_M2_usarmy_wd",
+	"rhsusf_M1220_M2_usarmy_wd",
+	"rhsusf_M1220_MK19_usarmy_wd",
+	"rhsusf_M1230_M2_usarmy_wd",
+	"rhsusf_M1237_M2_usarmy_wd",
+	"rhsusf_m1240a1_m2_usarmy_wd",
+	"rhsusf_m1240a1_m240_usarmy_wd",
+	"rhsusf_m1240a1_mk19_usarmy_wd",
+	"rhsusf_m1240a1_m2_uik_usarmy_wd",
+	"rhsusf_m1165a1_gmv_mk19_m240_socom_d",
+	"rhsusf_m1165a1_gmv_m2_m240_socom_d"
+];
+
+opfor_boat = [
+	"B_Boat_Armed_01_hmg_F",
+	"B_T_Boat_Armed_01_hmg_F",
+	"B_Boat_Armed_01_hmg_F",
+	"B_T_Boat_Armed_01_hmg_F"
+];
+
+opfor_vehicles = [
+	"rhsusf_M1220_M2_usarmy_wd",
+	"rhsusf_M1220_MK19_usarmy_wd",
+	"rhsusf_M1230_M2_usarmy_wd",
+	"rhsusf_M1237_M2_usarmy_wd",
+	"rhsusf_m1240a1_m2_usarmy_wd",
+	"rhsusf_m1240a1_m240_usarmy_wd",
+	"rhsusf_m1240a1_mk19_usarmy_wd",
+	"RHS_M2A2_wd",
+	"RHS_M2A2_BUSKI_WD",
+	"RHS_M2A3_wd",
+	"RHS_M2A3_BUSKI_wd",
+	"RHS_M2A3_BUSKIII_wd",
+	"RHS_M6_wd",
+	"rhsusf_m1a1aimwd_usarmy",
+	"rhsusf_m1a1aim_tuski_wd",
+	"rhsusf_m1a2sep1wd_usarmy",
+	"rhsusf_m1a2sep1tuskiwd_usarmy",
+	"rhsusf_m1a2sep2wd_usarmy",
+	"rhsusf_m1a1fep_wd",
+	"rhsusf_m1a1fep_od",
+	"rhsusf_m1a1hc_wd",
+	"rhsusf_M142_usmc_WD"	
+];
+
+opfor_vehicles_low_intensity = [
+	"RHS_M2A2_wd",
+	"RHS_M2A2_BUSKI_WD",
+	"RHS_M2A3_wd",
+	"RHS_M2A3_BUSKI_wd",
+	"RHS_M2A3_BUSKIII_wd",
+	"rhsusf_M1220_M153_M2_usarmy_wd",
+	"rhsusf_M1220_M2_usarmy_wd",
+	"rhsusf_M1220_MK19_usarmy_wd",
+	"rhsusf_M1230_M2_usarmy_wd",
+	"rhsusf_M1237_M2_usarmy_wd",
+	"rhsusf_m1240a1_m2_usarmy_wd",
+	"rhsusf_m1240a1_m240_usarmy_wd",
+	"rhsusf_m1240a1_mk19_usarmy_wd",
+	"rhsusf_m1165a1_gmv_mk19_m240_socom_d",
+	"rhsusf_m1165a1_gmv_m2_m240_socom_d"
+];
+
+opfor_battlegroup_vehicles = [
+	"rhsusf_m1240a1_m2_usarmy_wd",
+	"rhsusf_m1240a1_m240_usarmy_wd",
+	"rhsusf_m1240a1_mk19_usarmy_wd",
+	"rhsusf_m1240a1_m2_uik_usarmy_wd",
+	"rhsusf_m1165a1_gmv_mk19_m240_socom_d",
+	"rhsusf_m1165a1_gmv_m2_m240_socom_d",
+	"RHS_M2A2_wd",
+	"RHS_M2A2_BUSKI_WD",
+	"RHS_M2A3_wd",
+	"RHS_M2A3_BUSKI_wd",
+	"RHS_M2A3_BUSKIII_wd",
+	"RHS_M6_wd",
+	"rhsusf_m1a1aimwd_usarmy",
+	"rhsusf_m1a1aim_tuski_wd",
+	"rhsusf_m1a2sep1wd_usarmy",
+	"rhsusf_m1a2sep1tuskiwd_usarmy",
+	"rhsusf_m1a2sep2wd_usarmy",
+	"rhsusf_m1a1fep_wd",
+	"rhsusf_m1a1fep_od",
+	"RHS_UH60M2",
+	"RHS_CH_47F",
+	"rhsusf_M1083A1P2_B_M2_WD_fmtv_usarmy",
+	"rhsusf_M977A4_BKIT_M2_usarmy_wd"
+];
+
+opfor_battlegroup_vehicles_low_intensity = [
+	"rhsusf_m1240a1_m2_usarmy_wd",
+	"rhsusf_m1240a1_mk19_usarmy_wd",
+	"rhsusf_m1165a1_gmv_mk19_m240_socom_d",
+	"rhsusf_m1165a1_gmv_m2_m240_socom_d",
+	"rhsusf_m1151_m2crows_usarmy_wd",
+	"rhsusf_m1151_mk19crows_usarmy_wd",
+	"rhsusf_m1151_m2_v1_usarmy_wd",
+	"rhsusf_m1151_m2_lras3_v1_usarmy_wd",
+	"rhsusf_m1151_m240_v1_usarmy_wd",
+	"rhsusf_m1151_mk19_v2_usarmy_wd",
+	"rhsusf_M1083A1P2_B_WD_fmtv_usarmy",
+	"RHS_UH60M2"
+];
+
+opfor_troup_transports = [
+	"rhsusf_M1083A1P2_B_M2_WD_fmtv_usarmy",
+	"rhsusf_M1083A1P2_B_WD_fmtv_usarmy",
+	"rhsusf_M977A4_BKIT_M2_usarmy_wd",
+	"RHS_UH60M2",
+	"RHS_CH_47F"
+];
+
+opfor_choppers = [
+	"RHS_AH64D_wd",
+	"RHS_UH60M_ESSS",
+	"RHS_UH60M2",
+	"RHS_UH60M_ESSS2",
+	"RHS_AH1Z_wd",
+	"rhsusf_CH53E_USMC",
+	"RHS_UH1Y_FFAR",
+	"RHS_UH1Y"
+];
+
+opfor_air = [
+	"B_Plane_CAS_01_dynamicLoadout_F",
+	"RHS_A10",
+	"rhsusf_f22"
+];
+
+opfor_statics = [
+	"B_GMG_01_high_F",
+	"B_Mortar_01_F",
+	"RHS_M2StaticMG_WD",
+	"RHS_M2StaticMG_MiniTripod_WD",
+	"RHS_TOW_TriPod_WD",
+	"RHS_Stinger_AA_pod_WD",
+	"RHS_MK19_TriPod_WD"
+];
+
+opfor_recyclable = [
+	["B_HMG_01_high_F",0,round (20 / GRLIB_recycling_percentage),0],
+	["B_GMG_01_high_F",0,round (40 / GRLIB_recycling_percentage),0],
+	["B_static_AA_F",0,round (80 / GRLIB_recycling_percentage),0],
+	["B_static_AT_F",0,round (80 / GRLIB_recycling_percentage),0],
+	["RHS_M2StaticMG_WD",0,round (80 / GRLIB_recycling_percentage),0],
+	["RHS_M2StaticMG_MiniTripod_WD",0,round (80 / GRLIB_recycling_percentage),0],
+	["RHS_TOW_TriPod_WD",0,round (80 / GRLIB_recycling_percentage),0],
+	["RHS_Stinger_AA_pod_WD",0,round (80 / GRLIB_recycling_percentage),0],
+	["RHS_MK19_TriPod_WD",0,round (80 / GRLIB_recycling_percentage),0],
+	["B_Mortar_01_F",0,round (200 / GRLIB_recycling_percentage),0],
+	["rhsusf_m1151_m2crows_usarmy_wd",1,round (20 / GRLIB_recycling_percentage),2],
+	["rhsusf_m1151_mk19crows_usarmy_wd",1,round (20 / GRLIB_recycling_percentage),2],
+	["rhsusf_m1151_m2_v1_usarmy_wd",1,round (20 / GRLIB_recycling_percentage),2],
+	["rhsusf_m1151_m2_lras3_v1_usarmy_wd",1,round (20 / GRLIB_recycling_percentage),2],
+	["rhsusf_m1151_m240_v1_usarmy_wd",1,round (20 / GRLIB_recycling_percentage),2],
+	["rhsusf_m1151_mk19_v2_usarmy_wd",1,round (20 / GRLIB_recycling_percentage),2],
+	["rhsusf_M1117_W",1,round (20 / GRLIB_recycling_percentage),2],
+	["rhsusf_M1220_M153_M2_usarmy_wd",1,round (20 / GRLIB_recycling_percentage),2],
+	["rhsusf_M1220_M2_usarmy_wd",1,round (20 / GRLIB_recycling_percentage),2],
+	["rhsusf_M1220_MK19_usarmy_wd",1,round (20 / GRLIB_recycling_percentage),2],
+	["rhsusf_M1230_M2_usarmy_wd",1,round (20 / GRLIB_recycling_percentage),2],
+	["rhsusf_M1237_M2_usarmy_wd",1,round (20 / GRLIB_recycling_percentage),2],
+	["rhsusf_m1240a1_m2_usarmy_wd",1,round (20 / GRLIB_recycling_percentage),2],
+	["rhsusf_m1240a1_m240_usarmy_wd",1,round (20 / GRLIB_recycling_percentage),2],
+	["rhsusf_m1240a1_mk19_usarmy_wd",1,round (20 / GRLIB_recycling_percentage),2],
+	["rhsusf_m1240a1_m2_uik_usarmy_wd",1,round (20 / GRLIB_recycling_percentage),2],
+	["rhsusf_m1165a1_gmv_mk19_m240_socom_d",1,round (20 / GRLIB_recycling_percentage),2],
+	["rhsusf_m1165a1_gmv_m2_m240_socom_d",1,round (20 / GRLIB_recycling_percentage),2],
+	["rhs_btr80a_msv",5,round (50 / GRLIB_recycling_percentage),5],
+	["rhsusf_M1083A1P2_B_M2_WD_fmtv_usarmy",1,round (40 / GRLIB_recycling_percentage),2],
+	["rhsusf_M1083A1P2_B_WD_fmtv_usarmy",1,round (40 / GRLIB_recycling_percentage),2],
+	["rhsusf_M977A4_BKIT_M2_usarmy_wd",1,round (40 / GRLIB_recycling_percentage),2],
+	["B_Boat_Armed_01_hmg_F",2,round (30 / GRLIB_recycling_percentage),2],
+	["B_T_Boat_Armed_01_hmg_F",2,round (30 / GRLIB_recycling_percentage),2],
+	["B_Boat_Armed_01_hmg_F",2,round (30 / GRLIB_recycling_percentage),2],
+	["B_T_Boat_Armed_01_hmg_F",2,round (30 / GRLIB_recycling_percentage),2],
+	["rhsusf_M1220_M2_usarmy_wd",10,round (450 / GRLIB_recycling_percentage),15],
+	["rhsusf_M1220_MK19_usarmy_wd",10,round (450 / GRLIB_recycling_percentage),15],
+	["rhsusf_M1230_M2_usarmy_wd",10,round (450 / GRLIB_recycling_percentage),15],
+	["rhsusf_M1237_M2_usarmy_wd",10,round (450 / GRLIB_recycling_percentage),15],
+	["rhsusf_m1240a1_m2_usarmy_wd",10,round (450 / GRLIB_recycling_percentage),15],
+	["rhsusf_m1240a1_m240_usarmy_wd",10,round (450 / GRLIB_recycling_percentage),15],
+	["rhsusf_m1240a1_mk19_usarmy_wd",10,round (450 / GRLIB_recycling_percentage),15],
+	["rhsusf_m1a1aimwd_usarmy",10,round (600 / GRLIB_recycling_percentage),10],
+	["rhsusf_m1a1aim_tuski_wd",10,round (600 / GRLIB_recycling_percentage),10],
+	["rhsusf_m1a2sep1wd_usarmy",10,round (600 / GRLIB_recycling_percentage),10],
+	["rhsusf_m1a2sep1tuskiwd_usarmy",10,round (600 / GRLIB_recycling_percentage),10],
+	["rhsusf_m1a2sep2wd_usarmy",10,round (600 / GRLIB_recycling_percentage),10],
+	["rhsusf_m1a1fep_wd",10,round (600 / GRLIB_recycling_percentage),10],
+	["rhsusf_m1a1fep_od",10,round (600 / GRLIB_recycling_percentage),10],
+	["rhsusf_m1a1hc_wd",10,round (600 / GRLIB_recycling_percentage),10],
+	["rhsusf_M142_usmc_WD",10,round (600 / GRLIB_recycling_percentage),10],
+	["RHS_M2A2_wd",10,round (800 / GRLIB_recycling_percentage),15],
+	["RHS_M2A2_BUSKI_WD",10,round (800 / GRLIB_recycling_percentage),15],
+	["RHS_M2A3_wd",10,round (800 / GRLIB_recycling_percentage),15],
+	["RHS_M2A3_BUSKI_wd",10,round (800 / GRLIB_recycling_percentage),15],
+	["RHS_M2A3_BUSKIII_wd",10,round (800 / GRLIB_recycling_percentage),15],
+	["RHS_M6_wd",10,round (800 / GRLIB_recycling_percentage),15],
+	["RHS_CH_47F",10,round (600 / GRLIB_recycling_percentage),15],
+	["RHS_AH64D_wd",10,round (700 / GRLIB_recycling_percentage),15],
+	["RHS_UH60M_ESSS",10,round (700 / GRLIB_recycling_percentage),15],
+	["RHS_UH60M2",10,round (700 / GRLIB_recycling_percentage),15],
+	["RHS_UH60M_ESSS2",10,round (700 / GRLIB_recycling_percentage),15],
+	["RHS_AH1Z_wd",10,round (700 / GRLIB_recycling_percentage),15],
+	["rhsusf_CH53E_USMC",10,round (700 / GRLIB_recycling_percentage),15],
+	["RHS_UH1Y_FFAR",10,round (700 / GRLIB_recycling_percentage),15],
+	["RHS_UH1Y",10,round (700 / GRLIB_recycling_percentage),15],
+	["B_Plane_CAS_01_dynamicLoadout_F",20,round (1000 / GRLIB_recycling_percentage),30],
+	["RHS_A10",20,round (1000 / GRLIB_recycling_percentage),30],
+	["rhsusf_f22",20,round (1000 / GRLIB_recycling_percentage),30]
+];

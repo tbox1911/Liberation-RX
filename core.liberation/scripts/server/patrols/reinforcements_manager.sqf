@@ -1,4 +1,5 @@
 params [ "_targetsector" ];
+diag_log format ["Spawn Reinforcement Sector %1 at %2", _targetsector, time];
 if ( combat_readiness > 15 ) then {
 
 	_init_units_count = ( ([ getmarkerpos _targetsector , GRLIB_capture_size , GRLIB_side_enemy ] call F_getUnitsCount) );

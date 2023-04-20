@@ -1,4 +1,5 @@
 params [ "_sector" ];
+diag_log format ["Spawn Attack Sector %1 at %2", _sector, time];
 private _max_prisonners = 4;
 
 sleep 5;
