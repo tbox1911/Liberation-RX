@@ -37,7 +37,7 @@ if(!isNull (findDisplay 2300)) then {
 		lbSetValue [231, (lbSize 231)-1, _i];
 		lbSetData [231, (lbSize 231)-1, _x select 1];
 		_i = _i + 1;
-	} foreach (RPT_colorList + ([] call fnc_getVIP));
+	} foreach RPT_colorList;
 	lbSetCurSel [231,0];
 
 	while { dialog && alive player } do {
