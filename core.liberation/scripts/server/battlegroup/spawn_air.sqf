@@ -69,7 +69,11 @@ while {
 			private _nearest_sector = [_sectors, _unit] call BIS_fnc_nearestPosition;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 			if (!isNil "_nearest_sector") then {
+=======
+			if (typeName _nearest_sector == "STRING") then {
+>>>>>>> 239b83af (fix flee priso)
 				private _flee_grp = createGroup [_side, true];
 				[_unit] joinSilent _flee_grp;
 =======

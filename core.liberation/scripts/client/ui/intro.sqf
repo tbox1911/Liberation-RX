@@ -37,7 +37,7 @@ disableUserInput false;
 disableUserInput true;
 disableUserInput false;
 
-waitUntil { dostartgame == 1 || howtoplay == 1 };
+waitUntil { dostartgame == 1 || howtoplay == 1 || !dialog };
 //disableUserInput true;
 (findDisplay 5651) displayRemoveEventHandler ["KeyDown", _noesckey];
 closeDialog 0;
