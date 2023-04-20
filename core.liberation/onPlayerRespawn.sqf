@@ -1,14 +1,14 @@
 // Welcome trigger
 if (!isMultiplayer) exitWith {
 	titleText ["Sorry, Liberation RX is a Multiplayer Mission Only...","BLACK FADED", 1000];
-	sleep 5;
+	uisleep 10;
 	endMission "LOSER";
 };
 
 waitUntil {!isNil "abort_loading" };
 if (abort_loading) exitWith {
 	titleText ["Sorry, An error occured on savegame loading.\nPlease check the error logs.","BLACK FADED", 1000];
-	sleep 5;
+	uisleep 10;
 	endMission "LOSER";
 };
 

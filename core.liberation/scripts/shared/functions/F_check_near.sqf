@@ -28,7 +28,7 @@ if (count(_classlist) == 0 ) then {
 	_near = [ nearestObjects [_vehpos, _object, _dist], {
 			alive _x &&
 			!(_x getVariable ['R3F_LOG_disabled', true]) &&
-			isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull])
+			(isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) || typeOf _x == Arsenal_typename)
 			}] call BIS_fnc_conditionalSelect;
 } else {
 	// From GRLIB_Marker

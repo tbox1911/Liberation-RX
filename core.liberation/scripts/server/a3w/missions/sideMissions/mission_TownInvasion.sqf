@@ -47,14 +47,11 @@ _setupObjects =
 	} foreach _allbuildings;
 
 	// spawn some enemies
-	_managed_units = (["militia", (_nbUnits - 3), _buildingpositions, _missionPos] call F_spawnBuildingSquad);
+	_aiGroup = createGroup [GRLIB_side_enemy, true];
+	_managed_units = (["militia", (_nbUnits - 4), _buildingpositions, _missionPos] call F_spawnBuildingSquad);
 	{ _x setVariable ["mission_AI", true] } forEach _managed_units;
+	_managed_units joinSilent _aiGroup;
 
-	if (count _managed_units > 0) then {
-		_aiGroup = group leader (_managed_units select 0);
-	} else {
-		_aiGroup = createGroup [GRLIB_side_enemy, true];
-	};
 	[_aiGroup, _missionPos, (_nbUnits - (count _managed_units)) , "militia"] call createCustomGroup;
 
 	[_missionPos, 25] call createlandmines;
