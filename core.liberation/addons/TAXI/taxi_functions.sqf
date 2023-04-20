@@ -31,7 +31,7 @@ taxi_dest = {
 	_waypoint = _air_grp addWaypoint [ _dest, 1];
 	_waypoint setWaypointType "MOVE";
 	_waypoint setWaypointSpeed "FULL";
-	_waypoint setWaypointBehaviour "AWARE";
+	_waypoint setWaypointBehaviour "SAFE";
 	_waypoint setWaypointCombatMode "GREEN";
 	_waypoint setWaypointCompletionRadius 0;
 

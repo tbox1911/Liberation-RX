@@ -6,6 +6,7 @@ diag_log "--- Init start ---";
 enableSaving [false, false];
 disableMapIndicators [false,true,false,false];
 setGroupIconsVisible [false,false];
+disableRemoteSensors false;
 
 abort_loading = false;
 abort_loading_msg = "Unkwon Error";

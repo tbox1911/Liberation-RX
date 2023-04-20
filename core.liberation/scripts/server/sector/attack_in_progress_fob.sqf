@@ -57,7 +57,6 @@ if ( GRLIB_endgame == 0 ) then {
 		};
 		GRLIB_all_fobs = GRLIB_all_fobs - [_fobpos];
 		publicVariable "GRLIB_all_fobs";
-		reset_battlegroups_ai = true;
 		[_fobpos] call destroy_fob;
 		stats_fobs_lost = stats_fobs_lost + 1;
 	} else {

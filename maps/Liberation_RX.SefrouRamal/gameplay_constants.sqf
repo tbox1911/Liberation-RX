@@ -26,7 +26,6 @@ GRLIB_halo_altitude = 2000;
 GRLIB_civ_killing_penalty = 20;
 GRLIB_squad_size_bonus = 0;
 GRLIB_perm_ban = -30;
-GRLIB_perm_min = -10;
 GRLIB_perm_inf = 150;
 GRLIB_perm_log = 300;
 GRLIB_perm_tank = 450;

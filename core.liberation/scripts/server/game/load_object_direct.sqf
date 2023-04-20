@@ -26,10 +26,6 @@ private _object_created = [];
 		_object setVariable ["GRLIB_vehicle_owner", _vehicle_owner, true];
 	};
 	
-	// Protect Static
-	if (_x in list_static_weapons) then {
-		[_object] spawn protect_static;
-	};
 
 	_object attachTo [R3F_LOG_PUBVAR_point_attache, [] call R3F_LOG_FNCT_3D_tirer_position_degagee_ciel];
 	_object setVariable ["R3F_LOG_est_transporte_par", _vehicle, true];

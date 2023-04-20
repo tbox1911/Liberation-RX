@@ -8,6 +8,7 @@ private _infsquad = "militia";
 private _building_range = 200;
 private _local_capture_size = GRLIB_capture_size;
 private _iedcount = 0;
+private _defensecount = 0;
 private _vehtospawn = [];
 private _managed_units = [];
 private _squad1 = [];
@@ -60,7 +61,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 		_building_ai_max = round (15 * _popfactor) ;
 		_building_range = 300;
 		_local_capture_size = _local_capture_size * 1.4;
-		_iedcount = (2 + (floor (random 4))) * GRLIB_difficulty_modifier;
+		_iedcount = (3 + (floor (random 4))) * GRLIB_difficulty_modifier;
 		if ( _iedcount > 10 ) then { _iedcount = 10 };
 	};
 
@@ -73,7 +74,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 		_spawncivs = true;
 		_building_ai_max = round ((floor (10 + (round (combat_readiness / 10 )))) * _popfactor);
 		_building_range = 200;
-		_iedcount = (floor (random 4)) * GRLIB_difficulty_modifier;
+		_iedcount = (floor (random 5)) * GRLIB_difficulty_modifier;
 		if ( _iedcount > 7 ) then { _iedcount = 7 };
 	};
 
@@ -93,6 +94,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 		_spawncivs = false;
 		_building_ai_max = round ((floor (8 + (round (combat_readiness / 10 )))) * _popfactor);
 		_building_range = 110;
+		_defensecount = 3;
 	};
 
 	if ( _sector in sectors_factory ) then {
@@ -108,7 +110,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 		_spawncivs = true;
 		_building_ai_max = round ((floor (10 + (round (combat_readiness / 10 )))) * _popfactor);
 		_building_range = 100;
-		_iedcount = (floor (random 3)) * GRLIB_difficulty_modifier;
+		_iedcount = (floor (random 4)) * GRLIB_difficulty_modifier;
 		if ( _iedcount > 5 ) then { _iedcount = 5 };
 	};
 
@@ -124,6 +126,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 		[markerPos _sector] call clearlandmines;
 		sleep 2;
 		[markerPos _sector, 50] call createlandmines;
+		_defensecount = 4;
 	};
 
 	if ( _building_ai_max > 0 && GRLIB_adaptive_opfor ) then {
@@ -186,7 +189,8 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 		};
 	};
 
-	[ _sector, _building_range, _iedcount ] spawn ied_manager;
+	[ _sector, _defensecount ] spawn static_manager;
+	[ _sector, _building_range, round (_iedcount) ] spawn ied_manager;
 
 	sleep 10;
 
@@ -201,7 +205,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 			[ _sector ] spawn sector_liberated_remote_call;
 			_stopit = true;
 			_enemy_left = [allUnits, {(alive _x) && (vehicle _x == _x) && (side group _x == GRLIB_side_enemy) && !(_x getVariable ["GRLIB_mission_AI", false]) && (((getmarkerpos _sector) distance2D _x) < _local_capture_size * 1.2)}] call BIS_fnc_conditionalSelect;
-			{ 
+			{
 				if ( _max_prisonners > 0 && ((random 100) < GRLIB_surrender_chance) ) then {
 					[_x] spawn prisonner_ai;
 					_max_prisonners = _max_prisonners - 1;
@@ -213,6 +217,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 
 			active_sectors = active_sectors - [ _sector ]; publicVariable "active_sectors";
 			{ _x setVariable ["GRLIB_counter_TTL", 0] } foreach _managed_units;
+			[ _sector ] spawn reinforcements_manager;
 		} else {
 			if ( ([_sectorpos, (GRLIB_sector_size + 300), GRLIB_side_friendly] call F_getUnitsCount) == 0 ) then {
 				_sector_despawn_tickets = _sector_despawn_tickets - 1;

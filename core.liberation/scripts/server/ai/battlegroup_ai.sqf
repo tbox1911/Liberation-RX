@@ -1,8 +1,6 @@
 params ["_grp", "_infantry"];
 private ["_waypoint", "_objectivepos", "_startpos"];
 
-if (isNil "reset_battlegroups_ai" ) then { reset_battlegroups_ai = false };
-
 while { ( count units _grp != 0 ) && ( GRLIB_endgame == 0 ) } do {
 
 	sleep (3 + floor(random 5));
@@ -41,8 +39,6 @@ while { ( count units _grp != 0 ) && ( GRLIB_endgame == 0 ) } do {
 
 	waitUntil {
 		sleep 5;
-		( { alive _x } count (units _grp) == 0) || reset_battlegroups_ai;
+		( { alive _x } count (units _grp) == 0 );
 	};
-	sleep (3 + floor(random 5));
-	reset_battlegroups_ai = false;
 };

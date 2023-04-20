@@ -21,5 +21,4 @@ if (!isNil "_grp") then { _player hcSetGroup [_grp] };
 {_player hcSetGroup [group _x]} forEach ([vehicles, {(typeOf _x) in uavs && [_player, _x] call is_owner}] call BIS_fnc_conditionalSelect);
 
 // Recover Squad
-private _uid = getPlayerUID _player;
-{if (_x select 0 == _uid) exitWith {[_player, _uid, _x ] spawn load_context}} foreach GRLIB_player_context;
+[_player, getPlayerUID _player] spawn load_context;
