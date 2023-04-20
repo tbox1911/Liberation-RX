@@ -18,7 +18,8 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 	"ffaa_famet_tigre",
 	"ffaa_ar_harrier",
 	"ffaa_ea_ef18m",
-	"ffaa_famet_ec135"
+	"ffaa_famet_ec135",
+	"ffaa_nh90_nfh_transport"
 ];
 
 R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
@@ -31,7 +32,8 @@ R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
 	"ffaa_famet_ch47_mg",
 	"ffaa_famet_ch47_mg_cargo",
 	"ffaa_famet_tigre",
-	"ffaa_famet_ec135"
+	"ffaa_famet_ec135",
+	"ffaa_nh90_nfh_transport"
 ];
 
 R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
@@ -56,7 +58,8 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["ffaa_ea_hercules_cargo",300],
 	["ffaa_ar_harrier",10],
 	["ffaa_ea_ef18m",10],
-	["ffaa_famet_ec135",25]
+	["ffaa_famet_ec135",50],
+	["ffaa_nh90_nfh_transport",75]
 ];
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +

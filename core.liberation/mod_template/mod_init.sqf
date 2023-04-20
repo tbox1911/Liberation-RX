@@ -12,13 +12,12 @@ GRLIB_mod_list_west = [
     "R3F_WEST_W",
     "RHS_USAF",
     "RHS_AFRF",
-    "FFAA_SPAIN_D",
 	"FFAA_SPAIN_W",
     "GM_WEST",
     "GM_WEST_WINT",
     "OPTRE_WEST",
     "WS_UNA",
-    "SOG_US",
+    "SOG_USA",
     "SOG_VIETCONG"
 ];
 
@@ -35,12 +34,11 @@ GRLIB_mod_list_east = [
     "R3F_WEST_W",
     "RHS_USAF",
     "RHS_AFRF",
-    "FFAA_SPAIN_D",
 	"FFAA_SPAIN_W",
     "GM_EAST",
     "GM_EAST_WINT",
     "OPTRE_EAST",
     "WS_FIA",
-    "SOG_US",
+    "SOG_USA",
     "SOG_VIETCONG"
 ];

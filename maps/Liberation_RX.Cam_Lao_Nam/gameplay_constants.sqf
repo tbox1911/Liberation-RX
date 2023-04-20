@@ -42,5 +42,5 @@ if ( GRLIB_blufor_cap > 100 ) then { GRLIB_blufor_cap = 100 }; // Don't forget t
 GRLIB_offload_diag = false;
 //NRE_Key = 199;
 MGR_Key = 19;
-GRLIB_mod_west = "SOG_US";
+GRLIB_mod_west = "SOG_USA";
 GRLIB_mod_east = "SOG_VIETCONG";

@@ -19,6 +19,10 @@ medic_sling_typename = "B_Slingload_01_Medevac_F";
 commander_classname = "CUP_B_FR_Commander_DES";
 pilot_classname = "CUP_B_USMC_Pilot_des";
 crewman_classname = "CUP_B_USMC_Crew_des";
+chimera_vehicle_overide = [
+  ["B_Heli_Light_01_F",  "CUP_B_MH6M_USA"],
+  ["B_Heli_Transport_01_F", "CUP_B_UH60M_US"]
+];
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 infantry_units = [
@@ -167,13 +171,10 @@ support_vehicles_west = [
 ];
 
 buildings_west = [
-	["Land_Ind_IlluminantTower",0,0,0,GRLIB_perm_tank],
-	["Land_Barrack2_EP1",0,0,0,GRLIB_perm_inf],
-	["Land_Hlaska",0,0,0,GRLIB_perm_log],
-	["Land_Posed",0,0,0,GRLIB_perm_log],
-	["Wire",0,0,0,GRLIB_perm_tank],
-	["Flag_US_F",0,0,0,0],
-	["SignM_FOB_Revolve_EP1",0,0,0,0]
+	["Land_Cargo_Tower_V3_F",0,0,0,GRLIB_perm_tank],
+	["Land_Cargo_House_V3_F",0,0,0,GRLIB_perm_inf],
+	["Land_Cargo_Patrol_V3_F",0,0,0,GRLIB_perm_log],
+	["Flag_US_F",0,0,0,0]
 ];
 
 blufor_squad_inf_light = [
@@ -271,5 +272,35 @@ GRLIB_vehicle_blacklist_west = [
 ];
 
 box_transport_config_west = [
+    [ "CUP_C_Fishing_Boat_Chernarus", 15, [-0.2, -3.6, -2.7], [-0.2, -5.3, -2.7] ],
+    [ "CUP_B_MTVR_USA", -8, [0, -0.3, 0.3], [0, -1.9, 0.3] ],
+    [ "CUP_B_M6LineBacker_USA_D", -8, [0, 0, -0.9] ],
+    [ "CUP_B_CH53E_USMC", -10, [0, 4.8, -3.2], [0, 3.2, -3.2], [0, 1.6, -3.2], [0, 0, -3.2] ],
+    [ "CUP_B_MV22_USMC_RAMPGUN", -14, [0, 1.1, -1.6], [0, -0.5, -1.6], [0, -2.1, -1.6] ],
+    [ "CUP_B_C130J_Cargo_USMC", -15, [0, 5, -3.7], [0, 3.4, -3.7], [0, 1.8, -3.7], [0, 0.2, -3.7], [0, -1.4, -3.7], [0, -3, -3.7] ],
+    [ "CUP_B_CH47F_USA", -10, [0, 1.1, -1.9], [0, -0.5, -1.9], [0, -2.1, -1.9] ]
+];
 
+GRLIB_AirDrop_1 = [
+	"CUP_C_Octavia_CIV"
+];
+
+GRLIB_AirDrop_2 = [
+	"CUP_B_nM1025_SOV_M2_USA_DES"
+];
+
+GRLIB_AirDrop_3 = [
+	"CUP_B_M1151_Deploy_USA"
+];
+
+GRLIB_AirDrop_4 = [
+	"CUP_B_MTVR_USA"
+];
+
+GRLIB_AirDrop_5 = [
+	"CUP_B_M1126_ICV_M2_Desert"
+];
+
+GRLIB_AirDrop_6 = [
+	"CUP_B_RHIB_USMC"
 ];
