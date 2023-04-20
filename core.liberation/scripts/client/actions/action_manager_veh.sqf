@@ -8,17 +8,6 @@ private _nearwreck = [];
 private _nearboxes = [];
 private _neardead = [];
 
-private _recycleable_classnames_exp = [
-	"Land_Cargo_HQ_V1_ruins_F",
-	"Land_Cargo_Tower_V1_ruins_F",
-	"Land_Cargo_House_V1_ruins_F",
-	"Land_Cargo_Patrol_V1_ruins_F",
-	"Land_Cargo_HQ_V3_ruins_F",
-	"Land_Cargo_Tower_V3_ruins_F",
-	"Land_Cargo_House_V3_ruins_F",
-	"Land_Cargo_Patrol_V3_ruins_F"
-];
-
 private _wreck_class = [
 	"Air",
 	"Ship",
@@ -70,7 +59,7 @@ while { true } do {
 	} forEach _nearveh;
 
 	// Salvage Wreck & Ruins
-	_nearruins = [nearestObjects [player, ["Ruins_F"], _searchradius], {!([_x, "LHD", GRLIB_sector_size] call F_check_near) && (typeof _x in _recycleable_classnames_exp) && getObjectType _x == 8 && isNil {_x getVariable "GRLIB_salvage_action"}}] call BIS_fnc_conditionalSelect;
+	_nearruins = [nearestObjects [player, ["Ruins_F"], _searchradius], {([_x, "FOB", GRLIB_sector_size] call F_check_near) && isNil {_x getVariable "GRLIB_salvage_action"}}] call BIS_fnc_conditionalSelect;
 	_nearwreck = [nearestObjects [player, _wreck_class, _searchradius], {!([_x, "LHD", GRLIB_sector_size] call F_check_near) && !(alive _x) && isNil {_x getVariable "GRLIB_salvage_action"}}] call BIS_fnc_conditionalSelect;
 	{
 		_vehicle = _x;

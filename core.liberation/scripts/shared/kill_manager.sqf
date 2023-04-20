@@ -170,6 +170,16 @@ if ( isServer ) then {
 			[_unit] spawn clean_vehicle;
 		};
 
+		if ( isPlayer _killer ) then {
+			_owner_id = getPlayerUID _killer;
+			if ( !(_unit getVariable ["GRLIB_vehicle_owner", ""] in ["", "public", "server", _owner_id]) ) then {
+				_penalty = 50;
+				_msg = format ["Penalty of %1 to %2 for killing a Friendly vehicle !!", _penalty, name _killer] ;
+				[gamelogic, _msg] remoteExec ["globalChat", 0];
+				[_killer, -_penalty] remoteExec ["addScore", 2];
+			};
+		};
+		
 		if ( typeof _unit in all_hostile_classnames ) then {
 			stats_opfor_vehicles_killed = stats_opfor_vehicles_killed + 1;
 			if ( isplayer _killer ) then {
