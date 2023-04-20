@@ -17,9 +17,7 @@ if (! isNil "GRLIB_respawn_loadout" && isNil "GRLIB_loadout_overide") then {
 	GRLIB_backup_loadout = [player] call F_getLoadout;
 	player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
 	[player, GRLIB_respawn_loadout] call F_setLoadout;
-	if (!([player] call F_payLoadout)) then {
-		[player, GRLIB_backup_loadout] call F_setLoadout;
-	};
+	[player] call F_payLoadout;
 };
 
 private _score = score player;

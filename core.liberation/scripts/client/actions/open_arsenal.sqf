@@ -30,7 +30,7 @@ if ( count _loadouts_data > 0 ) then {
 	lbClear 201;
 	{
 		[_unit, [profileNamespace, _x]] call bis_fnc_loadInventory;
-		_price = [_unit, true] call F_loadoutPrice;
+		_price = [_unit] call F_loadoutPrice;
 		((findDisplay 5251) displayCtrl (201)) lnbAddRow [format [ "%1" ,_x], format [ "%1" ,_price]];
 	} foreach _loadouts_data ;
 	deleteVehicle _unit;
@@ -103,12 +103,6 @@ while { dialog && (alive player) && edit_loadout == 0 } do {
 	sleep 0.1;
 };
 
-//filter and pay loadout
-[player] call F_filterLoadout;
-if (!([player] call F_payLoadout)) then {
-	[player, GRLIB_backup_loadout] call F_setLoadout;
-};
-
 if ( edit_loadout > 0 ) then {
 	closeDialog 0;
 	waitUntil {!dialog};
@@ -126,8 +120,8 @@ if ( edit_loadout > 0 ) then {
 
 		_nul = [ _box, _savedD, _savedC ] spawn {
 			_box = _this select 0;
-			waituntil{ !isNull ( uiNamespace getvariable ['RscDisplayArsenal', displayNull] ) };
-			waitUntil { isNull ( uinamespace getvariable ['BIS_fnc_arsenal_cam',objnull] ) };
+			waituntil { !isNull ( uiNamespace getvariable ['RscDisplayArsenal', displayNull] ) };
+			waitUntil {  isNull ( uinamespace getvariable ['BIS_fnc_arsenal_cam', objnull] ) };
 			BIS_fnc_arsenal_data = _this select 1;
 			_box setVariable [ 'bis_addvirtualWeaponCargo_cargo', _this select 2 ];
 		};
@@ -135,3 +129,7 @@ if ( edit_loadout > 0 ) then {
 		["Open", [true]] call BIS_fnc_arsenal;
 	};
 };
+
+//filter and pay loadout
+[player] call F_filterLoadout;
+[player] call F_payLoadout;

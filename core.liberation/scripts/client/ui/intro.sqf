@@ -1,7 +1,7 @@
 private [ "_dialog" ];
 
 if ( isNil "cinematic_camera_started" ) then { cinematic_camera_started = false };
-
+titleText ["","BLACK FADED", 0];
 [] spawn cinematic_camera;
 waituntil {(time > 2) && (getClientStateNumber >= 10) && (getClientState == "BRIEFING READ")};
 
@@ -36,4 +36,3 @@ if ( howtoplay == 0 ) then {
 };
 introDone = true;
 (findDisplay 5651) displayRemoveEventHandler ["KeyDown", _noesckey];
-cutText ["","BLACK FADED", 0];

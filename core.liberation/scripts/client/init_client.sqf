@@ -1,33 +1,5 @@
 diag_log "--- Client Init start ---";
-
-R3F_LOG_joueur_deplace_objet = objNull;
-GRLIB_player_spawned = false;
-disableMapIndicators [false,true,false,false];
-setTerrainGrid 12.5;  //Very High = 6.25, Ultra = 3.125
-player setVariable ["GRLIB_score_set", 0, true];
-player setVariable ["GREUH_ammo_count", GREUH_start_ammo, true];
-
-[player, configfile >> "CfgVehicles" >> typeOf player] call BIS_fnc_loadInventory;
-if (isMultiplayer) then {
-	MGI_Grp_ID = getPlayerUID player;
-} else {
-	MGI_Grp_ID = str round(random 4096);
-};
-
-[] execVM "scripts\client\commander\enforce_whitelist.sqf";
-[] execVM "scripts\client\misc\init_markers.sqf";
-
-if ( typeOf player == "VirtualSpectator_F" ) exitWith {
-	[] execVM "scripts\client\markers\empty_vehicles_marker.sqf";
-	[] execVM "scripts\client\markers\fob_markers.sqf";
-	[] execVM "scripts\client\markers\group_icons.sqf";
-	[] execVM "scripts\client\markers\hostile_groups.sqf";
-	[] execVM "scripts\client\markers\huron_marker.sqf";
-	[] execVM "scripts\client\markers\sector_manager.sqf";
-	[] execVM "scripts\client\markers\spot_timer.sqf";
-	[] execVM "scripts\client\misc\synchronise_vars.sqf";
-	[] execVM "scripts\client\ui\ui_manager.sqf";
-};
+titleText ["Loading...","BLACK FADED"];
 
 respawn_lhd = compileFinal preprocessFileLineNumbers "scripts\client\spawn\respawn_lhd.sqf";
 spawn_camera = compileFinal preprocessFileLineNumbers "scripts\client\spawn\spawn_camera.sqf";
@@ -45,6 +17,36 @@ is_local = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_local.
 player_EVH = compileFinal preprocessFileLineNumbers "addons\FAR\FAR_EventHandler.sqf";
 get_group = compileFinal preprocessFileLineNumbers "scripts\client\misc\get_group.sqf";
 paraDrop = compileFinal preprocessFileLineNumbers "scripts\client\spawn\paraDrop.sqf";
+
+R3F_LOG_joueur_deplace_objet = objNull;
+GRLIB_player_spawned = false;
+disableMapIndicators [false,true,false,false];
+setTerrainGrid 12.5;  //Very High = 6.25, Ultra = 3.125
+player setVariable ["GRLIB_score_set", 0, true];
+player setVariable ["GREUH_ammo_count", GREUH_start_ammo, true];
+
+[player, configfile >> "CfgVehicles" >> typeOf player] call BIS_fnc_loadInventory;
+if (isMultiplayer) then {
+	MGI_Grp_ID = getPlayerUID player;
+} else {
+	MGI_Grp_ID = str round(random 4096);
+};
+[] call get_group;
+
+[] execVM "scripts\client\commander\enforce_whitelist.sqf";
+[] execVM "scripts\client\misc\init_markers.sqf";
+
+if ( typeOf player == "VirtualSpectator_F" ) exitWith {
+	[] execVM "scripts\client\markers\empty_vehicles_marker.sqf";
+	[] execVM "scripts\client\markers\fob_markers.sqf";
+	[] execVM "scripts\client\markers\group_icons.sqf";
+	[] execVM "scripts\client\markers\hostile_groups.sqf";
+	[] execVM "scripts\client\markers\huron_marker.sqf";
+	[] execVM "scripts\client\markers\sector_manager.sqf";
+	[] execVM "scripts\client\markers\spot_timer.sqf";
+	[] execVM "scripts\client\misc\synchronise_vars.sqf";
+	[] execVM "scripts\client\ui\ui_manager.sqf";
+};
 
 [] execVM "scripts\client\ui\intro.sqf";
 [] execVM "scripts\client\spawn\redeploy_manager.sqf";
@@ -111,5 +113,4 @@ addMissionEventHandler["draw3D",{
 chimera_sign addAction ["<t color='#FFFFFF'>-= READ  ME =-</t>",{createDialog "liberation_notice"},"",999,true,true,"","[] call is_menuok",5];
 chimera_sign addAction ["<t color='#FFFFFF'>-=   TIPS   =-</t>",{createDialog "liberation_tips"},"",998,true,true,"","[] call is_menuok",5];
 
-[] call get_group;
 diag_log "--- Client Init stop ---";

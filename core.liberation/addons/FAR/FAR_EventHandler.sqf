@@ -75,9 +75,7 @@ if (_unit == player && alive player && player isKindOf "Man") then {
 	[missionNamespace, "arsenalClosed", {
 		[] spawn {
 			[player] call F_filterLoadout;
-			if (!([player] call F_payLoadout)) then {
-				[player, GRLIB_backup_loadout] call F_setLoadout;
-			};
+			[player] call F_payLoadout;
 		};
 	}] call BIS_fnc_addScriptedEventHandler;
 

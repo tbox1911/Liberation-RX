@@ -98,7 +98,9 @@ MGI_bros = allUnits select {(_x getVariable [format["Bros_%1",MGI_Grp_ID],nil])}
   if ( count (units group player) < (GRLIB_max_squad_size + GRLIB_squad_size_bonus) ) then { [_x] joinSilent my_group };
 } foreach MGI_bros;
 sleep 1;
-(group player) selectLeader player;
+if (!(isPlayer (leader (my_group)))) then {
+  (my_group) selectLeader player;
+};
 
 [20,300,true] spawn MGI_fn_Revive;
 

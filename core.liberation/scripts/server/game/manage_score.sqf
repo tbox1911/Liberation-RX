@@ -102,6 +102,8 @@ while { true } do {
 							[getPosATL _x, 'random','random'] spawn GRAD_fireworks_fnc_prepareFireworks;
 							sleep 1;
 						};
+					} else {
+						[getPosATL _x, 'normal','random'] spawn GRAD_fireworks_fnc_prepareFireworks;
 					};
 				};
 			};

@@ -43,7 +43,7 @@ while { true } do {
 	respawn_camera cameraEffect ["internal","back"];
 	respawn_camera camcommit 0;
 
-	if (!GRLIB_player_spawned) then { cutText ["","BLACK IN", 5] };
+	if (!GRLIB_player_spawned) then { titleText ["","BLACK IN", 5] };
 	waitUntil { dialog };
 
 	((findDisplay 5201) displayCtrl 201) ctrlAddEventHandler [ "mouseButtonDblClick" , { deploy = 1; } ];
@@ -176,9 +176,7 @@ while { true } do {
 			player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
 			[player, [ profileNamespace, _loadouts_data select ((lbCurSel 203) - 1) ] ] call bis_fnc_loadInventory;
 			[player] call F_filterLoadout;
-			if (!([player] call F_payLoadout)) then {
-				[player, GRLIB_backup_loadout] call F_setLoadout;
-			};
+			[player] call F_payLoadout;
 			GRLIB_loadout_overide = true;
 		};
 	};
