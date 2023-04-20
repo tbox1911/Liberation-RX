@@ -12,19 +12,34 @@ while {	(player getVariable "GRLIB_score_set" == 0) } do {
 	uIsleep 2;
 };
 
-// Load Loadout
-if (! isNil "GRLIB_respawn_loadout" && isNil "GRLIB_loadout_overide") then {
-	GRLIB_backup_loadout = [player] call F_getLoadout;
-	player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
-	[player, GRLIB_respawn_loadout] call F_setLoadout;
-	[player] call F_payLoadout;
-};
-
 private _score = score player;
 private _rank = [player] call set_rank;
 private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
 
-// notice
+// Load Loadout
+if (isNil "GRLIB_loadout_overide") then { GRLIB_loadout_overide = false };
+if (!GRLIB_loadout_overide) then {
+	if (GRLIB_forced_loadout > 0) then {
+		[player] call compile preprocessFileLineNumbers (format ["scripts\loadouts\vanilla\player_set%1.sqf", GRLIB_forced_loadout]);
+	} else {
+		[player, configfile >> "CfgVehicles" >> typeOf player] call BIS_fnc_loadInventory;
+
+		if (typeOf player in units_loadout_overide) then {
+			_loadouts_folder = format ["scripts\loadouts\%1\%2.sqf", GRLIB_side_friendly, typeOf player];
+			[player] call compileFinal preprocessFileLineNUmbers _loadouts_folder;
+		};
+
+		if (!(isNil "GRLIB_respawn_loadout")) then {
+			[player, GRLIB_respawn_loadout] call F_setLoadout;
+		};
+
+		gamelogic globalChat "You pay your Startup Equipments";
+		[player] call F_filterLoadout;
+		[player] call F_payLoadout;
+	};
+};
+
+// first time notice
 if (_score == 0) then {	_dialog = createDialog "liberation_notice" };
 
 private _msg = format ["Welcome <t color='#00008f'>%1</t> !<br/><br/>

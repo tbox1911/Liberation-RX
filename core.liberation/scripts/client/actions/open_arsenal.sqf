@@ -95,7 +95,7 @@ while { dialog && (alive player) && edit_loadout == 0 } do {
 	if ( load_from_player >= 0 ) then {
 		_playerselected = ( _loadplayers select load_from_player ) select 1;
 		if ( alive _playerselected ) then {
-      [ player,  [ _playerselected, ["repetitive"] ] call F_getLoadout ] call F_setLoadout;
+      		[player, [_playerselected, ["repetitive"]] call F_getLoadout] call F_setLoadout;
 			hint format [ localize "STR_LOAD_PLAYER_LOADOUT_HINT", name _playerselected ];
 		};
 		load_from_player = -1;
