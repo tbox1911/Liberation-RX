@@ -86,15 +86,15 @@ private _playerThreshold = 4;							// How many players before accelerated cycle
 private _checkFrequencyDefault = GRLIB_cleanup_vehicles;	        // sleep default
 private _checkFrequencyAccelerated = (_checkFrequencyDefault/2);	// sleep accelerated
 
-private _vehiclesLimit = 30;							// Vehicles Set -1 to disable.
+private _vehiclesLimit = 20;							// Vehicles Set -1 to disable.
 private _vehicleDistCheck = TRUE;						// TRUE to delete any vehicles that are far from players.
 private _vehicleDist = (GRLIB_sector_size * 2);			// Distance (meters) from players that vehicles are not deleted if below max.
 
-private _deadMenLimit = 50;								// Bodies. Set -1 to disable.
+private _deadMenLimit = 30;								// Bodies. Set -1 to disable.
 private _deadMenDistCheck = TRUE;						// TRUE to delete any bodies that are far from players.
 private _deadMenDist = (GRLIB_sector_size * 2);			// Distance (meters) from players that bodies are not deleted if below max.
 
-private _deadVehiclesLimit = 30;						// Wrecks. Set -1 to disable.
+private _deadVehiclesLimit = 20;						// Wrecks. Set -1 to disable.
 private _deadVehicleDistCheck = TRUE;					// TRUE to delete any destroyed vehicles that are far from players.
 private _deadVehicleDist = (GRLIB_sector_size * 2);		// Distance (meters) from players that destroyed vehicles are not deleted if below max.
 
@@ -102,11 +102,11 @@ private _craterLimit = -1;								// Craters. Set -1 to disable.
 private _craterDistCheck = TRUE;						// TRUE to delete any craters that are far from players.
 private _craterDist = (GRLIB_sector_size * 2);			// Distance (meters) from players that craters are not deleted if below max.
 
-private _weaponHolderLimit = 50;						// Weapon Holders. Set -1 to disable.
+private _weaponHolderLimit = 30;						// Weapon Holders. Set -1 to disable.
 private _weaponHolderDistCheck = TRUE;					// TRUE to delete any weapon holders that are far from players.
 private _weaponHolderDist = (GRLIB_sector_size * 2);	// Distance (meters) from players that ground garbage is not deleted if below max.
 
-private _minesLimit = 40;								// Land mines. Set -1 to disable.
+private _minesLimit = 30;								// Land mines. Set -1 to disable.
 private _minesDistCheck = TRUE;							// TRUE to delete any mines that are far from ANY UNIT (not just players).
 private _minesDist = (GRLIB_sector_size * 2);			// Distance (meters) from players that land mines are not deleted if below max.
 

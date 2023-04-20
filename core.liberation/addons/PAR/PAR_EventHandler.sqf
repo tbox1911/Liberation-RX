@@ -52,12 +52,17 @@ _unit addEventHandler ["WeaponAssembled", {
 	if ((typeOf _staticWeapon) in uavs) then { [_staticWeapon] spawn F_forceBluforCrew };
 }];
 
+_unit addEventHandler ["Take", {
+	params ["_unit", "_container", "_item"];
+	if !([_item] call is_allowed_item) then { _unit removeWeapon _item };
+}];
+
 // No mines in the base zone + pay artillery fire
 _unit addEventHandler ["FiredMan",	{
 	params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_vehicle"];
 
 	if (count GRLIB_all_fobs >= 0) then {
-		if (([_unit, "FOB", GRLIB_fob_range] call F_check_near || [_unit, "LHD", 500] call F_check_near) && _weapon == "Put") then {deleteVehicle _projectile};
+		if (([_unit, "FOB", GRLIB_fob_range] call F_check_near || [_unit, "LHD", 500] call F_check_near) && _weapon == "Put") then { deleteVehicle _projectile };
 	};
 }];
 
@@ -108,7 +113,7 @@ if (_unit == player) then {
 		};
 		[_unit] spawn {
 			params ["_unit"];
-			waitUntil {sleep 1; isTouchingGround _unit};
+			waitUntil {sleep 1; isTouchingGround (vehicle _unit)};
 			if (primaryWeapon _unit != "") then { _unit selectWeapon primaryWeapon _unit };
 			[_unit, "show"] remoteExec ["dog_action_remote_call", 2];
 		};

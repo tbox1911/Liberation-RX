@@ -19,7 +19,7 @@ while {true} do {
             if (_fuel_collected > 1) then {
                 _fuel_veh = 0.06;
                 _unit setVariable ["GREUH_fuel_count", (_fuel_collected - 1), true];
-                systemchat "Resource Fuel used...";
+                gamelogic globalChat "Resource Fuel used...";
             };
         };
         _vehicle setFuel (_fuel_veh - _conso) max 0;

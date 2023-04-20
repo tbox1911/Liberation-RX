@@ -76,8 +76,8 @@ if (isPlayer _wnded) then {
 };
 [_medic, _wnded] call PAR_fn_medicRelease;
 
-if (round (getPosASL _wnded select 2) <= -1) then {_wnded switchmove ""};
-if (round (getPosASL _medic select 2) <= -1) then {_medic switchmove ""};
+if (underwater vehicle _medic) then {_medic switchMove "";_medic playMoveNow ""};
+if (underwater vehicle _wnded) then {_wnded switchMove "";_wnded playMoveNow ""};
 
 [_wnded] spawn {
     params ["_unit"];

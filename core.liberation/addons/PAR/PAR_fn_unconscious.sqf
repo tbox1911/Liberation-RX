@@ -2,7 +2,7 @@ params ["_unit"];
 
 if (rating _unit < -2000) exitWith {[_unit] spawn PAR_fn_death};
 if (!([] call F_getValid)) exitWith {[_unit] spawn PAR_fn_death};
-waituntil {sleep (0.5 + random 2); lifeState _unit == "INCAPACITATED" && (isTouchingGround _unit || (round (getPos _unit select 2) <= 1))};
+waituntil {sleep (0.5 + random 2); lifeState _unit == "INCAPACITATED" && (isTouchingGround (vehicle _unit) || (round (getPos _unit select 2) <= 1))};
 
 if (isPlayer _unit) then {
   [] call PAR_show_marker;

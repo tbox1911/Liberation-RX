@@ -4,12 +4,10 @@
 // How it's supposed to work:
 //
 // - EnableArsenal = 0    The Arsenal is completely disabled.
-// - EnableArsenal = 1    The Arsenal is enabled and filled according to FilterArsenal value.
-//                          - minus the blacklist (which still applies)
-//                          + plus the whitelist (these items are still available)
+// - EnableArsenal = 1    The Arsenal is enabled and filled according to FilterArsenal value below:
 //
-// - FilterArsenal = 0    The Arsenal filter is completely disabled. 
-//                        
+// - FilterArsenal = 0    The Arsenal filter is completely disabled.  (no white/black list)
+//
 // - FilterArsenal = 1    Soft Mode: The Arsenal only show your side gears.
 //                        but the player can use other objects,
 //                        from enemy equipment or anything else. (from saved loadout).
@@ -19,6 +17,8 @@
 //                        
 // - FilterArsenal = 3    Strict Mode + MOD: The player can ONLY use items present in the Arsenal.
 //                        plus items from the current MOD.
+//
+// The Whitelist and Blacklist apply from FilterArsenal = 1 and up
 //
 // customize Arsenal:
 // in the "mod_template\TEMPLATE\arsenal.sqf" file

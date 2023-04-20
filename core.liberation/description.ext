@@ -17,6 +17,7 @@ enableDebugConsole = 1;
 allowFunctionsLog = 0;
 forceRotorLibSimulation = 2;
 
+saving = 0;
 briefing = 0;
 joinUnassigned = 0;
 LARs_calculateSideGear = 1;
