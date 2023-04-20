@@ -64,7 +64,6 @@ clearlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scri
 [] execVM "scripts\server\game\apply_saved_scores.sqf";
 [] execVM "scripts\server\game\capture_vehicles.sqf";
 [] execVM "scripts\server\game\clean.sqf";
-[] execVM "scripts\server\game\fucking_set_fog.sqf";
 [] execVM "scripts\server\game\manage_time.sqf";
 [] execVM "scripts\server\game\manage_weather.sqf";
 [] execVM "scripts\server\game\periodic_save.sqf";

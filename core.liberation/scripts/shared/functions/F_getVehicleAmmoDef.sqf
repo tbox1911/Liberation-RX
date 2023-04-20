@@ -1,7 +1,6 @@
 params ["_vehicle"];
 if (isNil "_vehicle") exitWith { 0 };
 
-_magCount = 0;
 _totalCurAmmo = 0;
 _getVehicleAmmoDef = 0;
 _VehAmmoArray = [];
@@ -18,7 +17,6 @@ _defTotalAmmo = 0;
 
 if (typeOf _vehicle ==  "B_G_Offroad_01_armed_F") then {_defTotalAmmo = 400};   // cheat as it's not defined in CfgVehicles // need to update this for O_G_Offroad_01_armed_F
 
-_magCount = count (magazines (_vehicle));
 _totalCurAmmo = 0;
 {
 	_totalCurAmmo = _totalCurAmmo + (_x select 1);

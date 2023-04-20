@@ -48,11 +48,12 @@ player createDiaryRecord ["Ranking", ["Ranking", format ["-- How Work the Rankin
 player createDiarySubject["Table","Table"];
 player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'>-20</font> pts  :  Killing Prisoners"]]];
 player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'>-20</font> pts  :  Killing Civilians"]]];
-player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'>-10</font> pts  :  Firendly Fires"]]];
+player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'>-10</font> pts  :  Team Kill"]]];
+player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'> -5</font> pts  :  Firendly Fires"]]];
 player createDiaryRecord ["Table", ["Table", format ["<font color='#00ff40'>+10</font> pts  :  Recycle AmmoBox<br/>"]]];
 player createDiaryRecord ["Table", ["Table", format ["<font color='#00ff40'>+10</font> pts  :  Bring Prisoners at HQ"]]];
-player createDiaryRecord ["Table", ["Table", format ["<font color='#00ff40'>+5  </font> pts  :  Salvage Wrecks"]]];
-player createDiaryRecord ["Table", ["Table", format ["<font color='#00ff40'>+5  </font> pts  :  Revive other players"]]];
+player createDiaryRecord ["Table", ["Table", format ["<font color='#00ff40'> +5</font> pts  :  Salvage Wrecks"]]];
+player createDiaryRecord ["Table", ["Table", format ["<font color='#00ff40'> +5</font> pts  :  Revive other players"]]];
 player createDiaryRecord ["Table", ["Table", format ["-- Killing Table --"]]];
 
 player createDiarySubject ["Shortcut","Shortcut"];

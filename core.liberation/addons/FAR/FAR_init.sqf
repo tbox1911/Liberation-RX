@@ -62,7 +62,6 @@ FAR_Player_Init = {
 	player setCaptive false;
 	player setMass 10;
 	FAR_isDragging = false;
-	[] spawn FAR_Player_Actions;
 	[player] spawn player_EVH;
 };
 
@@ -90,25 +89,9 @@ player addEventHandler ["Respawn", {[] spawn FAR_Player_Init}];
 // Cache player's side
 FAR_PlayerSide = side player;
 
-private _uid = getPlayerUID player;
-BTC_teamkiller = BTC_logic getVariable [_uid, 0];
+BTC_teamkiller = BTC_logic getVariable [getPlayerUID player, 0];
 if (BTC_teamkiller > BTC_tk_last_warning) exitWith {[] spawn BTC_Teamkill};
 
-// Drag & Carry animation fix
-[] spawn {
-	while {true} do
-	{
-		if (animationState player == "acinpknlmstpsraswrfldnon_acinpercmrunsraswrfldnon" || animationState player == "helper_switchtocarryrfl" || animationState player == "AcinPknlMstpSrasWrflDnon") then
-		{
-			if (FAR_isDragging) then {
-				player switchMove "AcinPknlMstpSrasWrflDnon";
-			} else {
-				player switchMove "amovpknlmstpsraswrfldnon";
-			};
-		};
-		sleep 3;
-	}
-};
 
 FAR_Mute_ACRE = {
 	waitUntil {

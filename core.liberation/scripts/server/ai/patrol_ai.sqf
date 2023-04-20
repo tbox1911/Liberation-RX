@@ -32,22 +32,31 @@ while { count (units _grp) > 0 } do {
 		_sectors_patrol = [];
 		_patrol_startpos = getpos (leader _grp);
 		_sector_radius = 2000;
+		_sector_radius_ext = 300;
 		_sector_list = (sectors_allSectors - blufor_sectors - sectors_tower);
 		_max_waypoints = 4;  // + back to startpos and cycle
 
 		if (_patrol_type == 1) then {
 			_sector_radius = 600;
+			_sector_radius_ext = 100;
 			_a3w_missions = [];
 			{_a3w_missions pushBack ( _x select 0 )} foreach (SpawnMissionMarkers + ForestMissionMarkers);
 			_sector_list = (sectors_allSectors + _a3w_missions - blufor_sectors );
 			_max_waypoints = 5;
 		};
 
+		if (_patrol_type == 3) then {
+			_sector_radius = 60;
+			_sector_radius_ext = 5;
+			_sector_list = [[GRLIB_sector_size, (getPos (units _grp select 0))] call F_getNearestSector];
+			_max_waypoints = 2;
+		};
+
 		private _max_try = 5;
 		while { count _sectors_patrol != _max_waypoints && _max_try > 0} do {
 			_start_pos =  [_sector_list, _patrol_startpos] call BIS_fnc_nearestPosition;
 			_sectors_patrol = [_start_pos, _sector_radius, _sector_list, _max_waypoints] call F_getSectorPath;
-			_sector_radius = _sector_radius + 150;
+			_sector_radius = _sector_radius + _sector_radius_ext;
 			_max_try = _max_try - 1;
 		};
 

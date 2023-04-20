@@ -33,17 +33,6 @@ FAR_unblock_AI = {
 };
 
 ////////////////////////////////////////////////
-// Player Actions
-////////////////////////////////////////////////
-FAR_Player_Actions = {
-	if (alive player && player isKindOf "Man") then
-	{
-		// addAction args: title, filename, (arguments, priority, showWindow, hideOnUse, shortcut, condition, positionInModel, radius, radiusView, showIn3D, available, textDefault, textToolTip)
-		player addAction ["<t color='#C90000'>" + "Drag" + "</t>", "addons\FAR\FAR_handleAction.sqf", ["action_drag"], 9, false, true, "", "call FAR_Check_Dragging"];
-	};
-};
-
-////////////////////////////////////////////////
 // Handle Death
 ////////////////////////////////////////////////
 FAR_HandleDamage_EH = {
@@ -161,14 +150,11 @@ FAR_Player_Unconscious = {
 };
 
 ////////////////////////////////////////////////
-// Drag Injured Player
+// Drag Injured Unit
 ////////////////////////////////////////////////
 FAR_Drag = {
-	private ["_target", "_id"];
-
+	params ["_target", "_caller", "_actionId", "_arguments"];
 	FAR_isDragging = true;
-
-	_target = _this select 0;
 
 	_target attachTo [player, [0, 1.1, 0.092]];
 	_target setDir 180;
@@ -180,20 +166,15 @@ FAR_Drag = {
 	FAR_isDragging_EH = _target;
 	publicVariable "FAR_isDragging_EH";
 
-	// Add release action and save its id so it can be removed
-	_id = player addAction ["<t color='#C90000'>" + "Release" + "</t>", "addons\FAR\FAR_handleAction.sqf", ["action_release"], 10, true, true, "", "true"];
-
 	// Wait until release action is used
 	waitUntil
 	{
 		!alive player || player getVariable ["FAR_isUnconscious", 1] == 1 ||
 		!alive _target || _target getVariable ["FAR_isUnconscious", 1] == 0 ||
-		_target getVariable "FAR_isDragged" == 0 || lifeState _target != 'INCAPACITATED' ||
+		_target getVariable ["FAR_isDragged", 0] == 0 || lifeState _target != 'INCAPACITATED' ||
 		!FAR_isDragging
 	};
 
-	// Handle release action
-	FAR_isDragging = false;
 
 	if (!isNull _target && alive _target) then
 	{
@@ -203,7 +184,10 @@ FAR_Drag = {
 	};
 	// Switch back to default animation
 	player playMove "amovpknlmstpsraswrfldnon";
-	player removeAction _id;
+	sleep 2;
+
+	// Handle release action
+	FAR_isDragging = false;
 };
 
 FAR_Release = {
@@ -252,29 +236,6 @@ FAR_public_EH = {
 			gamelogic globalChat (format ["%1 has committed TK and has been punished by %2",name _killer, name _killed]);
 		};
 	};
-};
-
-////////////////////////////////////////////////
-// Dragging Action Check
-////////////////////////////////////////////////
-FAR_Check_Dragging = {
-	private ["_target", "_isPlayerUnconscious", "_isDragged"];
-
-	_return = false;
-	_target = cursorObject;
-	_isPlayerUnconscious = player getVariable "FAR_isUnconscious";
-
-	if( !alive player || _isPlayerUnconscious == 1 || FAR_isDragging || !isNull R3F_LOG_joueur_deplace_objet || isNull _target || !alive _target || (_target distance player) > 4 ) exitWith
-	{
-		_return;
-	};
-
-	_isDragged = _target getVariable ["FAR_isDragged", 0];
-	if( lifeState _target == 'INCAPACITATED' && _isDragged == 0) then {
-		_return = true;
-	};
-
-	_return
 };
 
 ////////////////////////////////////////////////

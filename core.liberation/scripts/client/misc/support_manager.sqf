@@ -156,7 +156,5 @@ while { true } do {
 		[_msg, 0, 0, 5, 0, 0, 90] spawn BIS_fnc_dynamicText;
 	};
 
-	// Object WeaponHolderSimulated can't have zero or negative mass!
-	{ if (round (getMass _x) <= 0) then { _x setMass 1 } } forEach (entities "WeaponHolderSimulated");
 	sleep 15;
 };
