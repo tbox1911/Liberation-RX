@@ -6,6 +6,7 @@ _grp = _this select 0;
 _pos = _this select 1;
 _nbUnits = param [2, 7, [0]];
 _type =  param [3, "infantry"];
+_patrol = param [4, true];
 _radius = 10;
 
 switch (_type) do {
@@ -38,7 +39,9 @@ for "_i" from 1 to _nbUnits do {
 	[_unit] call unitSetSkill;
 };
 
-[ _grp, _pos, 100] spawn add_defense_waypoints;
+if (_patrol) then {
+	[ _grp, _pos, 200] spawn add_defense_waypoints;
+};
 
 //Unit Skill;
 //  Novice < 0.25
