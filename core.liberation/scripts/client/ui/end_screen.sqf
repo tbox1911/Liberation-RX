@@ -1,10 +1,17 @@
 private [ "_line_delay", "_page_delay", "_dialog", "_playtime_days", "_playtime_hours", "_playtime_minutes", "_playtime_seconds", "_comma", "_playtime_str" ];
-if (isServer) exitWith {};
+if (isDedicated) exitWith {};
 if ( isNil "cinematic_camera_started" ) then { cinematic_camera_started = false };
 _line_delay = 0.75;
 _page_delay = 5;
 
 disableUserInput true;
+if (vehicle player == player && lifestate player != "incapacitated" ) then {
+	player switchCamera "EXTERNAL";
+	player switchMove "";
+	player playMoveNow "acts_briefing_sb_in";
+	sleep 10;
+};
+
 [] spawn cinematic_camera;
 
 _dialog = createDialog "liberation_endscreen";
