@@ -4,10 +4,70 @@ class liberation_squad {
 	controlsBackground[] = {};
 
 	controls[] = {"OuterBG", "RecycleBG","OuterBG_F", "InnerBG", "InnerBG_F", "OuterCenterPanel","Header","SquadList","DeployMap", "ButtonClose",
-		"NameLabel", "ClassLabel", "HealthLabel", "DistanceLabel", "PrimaryLabel", "PrimaryMagsLabel", "SecondaryLabel", "SecondaryMagsLabel", "LoadoutLabel",
-		 "VehicleLabel","ResupplyButton", "LikeMeButton", "RemoveButton", "ReplaceButton", "ConfirmButton", "CancelButton", "PiPZone"};
+	"NameLabel", "ClassLabel", "HealthLabel", "DistanceLabel", "PrimaryLabel", "PrimaryMagsLabel", "SecondaryLabel", "SecondaryMagsLabel", "LoadoutLabel",
+	"VehicleLabel","ResupplyButton", "LikeMeButton", "ReplaceButton", "RenameButton", "RemoveButton", "ConfirmButton", "CancelButton", "PiPZone",
+	 "GREUH_Squad_OuterBG","GREUH_Squad_InnerBG","GREUH_Squad_OuterBG_F","GREUH_Squad_InnerBG_F","GREUH_ButtonName_Rename","GREUH_ButtonName_Abort","GREUH_Squad_TextField"};
 
 	objects[] = {};
+
+	class GREUH_OuterBG {
+		idc = -1;
+		type =  CT_STATIC;
+		style = ST_SINGLE;
+		colorText[] = COLOR_BLACK;
+		colorBackground[] = COLOR_BROWN;
+		font = FontM;
+		sizeEx = 0.023;
+		x = (0.15 * safezoneW + safezoneX) - ( 2 * BORDERSIZE);
+		y = ((BASE_Y + 0.02) * safezoneH) + safezoneY - (3 * BORDERSIZE);
+		w = (0.2 * safezoneW) + (4 * BORDERSIZE);
+		h = (0.79 * safezoneH) + (6 * BORDERSIZE);
+		text = "";
+	};
+	class GREUH_OuterBG_F : GREUH_OuterBG {
+		style = ST_FRAME;
+	};
+	class GREUH_InnerBG : GREUH_OuterBG {
+		colorBackground[] = COLOR_GREEN;
+		x = (0.15 * safezoneW + safezoneX)  - ( BORDERSIZE);
+		y = ((BASE_Y + 0.07) * safezoneH) + safezoneY - (1.5 * BORDERSIZE);
+		w = 0.2 * safezoneW +  (2 * BORDERSIZE);
+		h = 0.74 * safezoneH  + (3 * BORDERSIZE);
+	};
+	class GREUH_InnerBG_F : GREUH_InnerBG {
+		style = ST_FRAME;
+	};
+
+	class GREUH_ButtonGeneric {
+		idc = -1;
+		type = CT_BUTTON;
+		style = ST_CENTER;
+		default = false;
+		font = FontM;
+		sizeEx = 0.018 * safezoneH;
+		colorText[] = { 0, 0, 0, 1 };
+		colorFocused[] = { 1, 1, 1, 1 };
+		colorDisabled[] = { 0.2, 0.2, 0.2, 0.7 };
+		colorBackground[] = { 0.8, 0.8, 0.8, 0.8 };
+		colorBackgroundDisabled[] = { 0.5, 0.5, 0.5, 0.5 };
+		colorBackgroundActive[] = { 1, 1, 1, 1 };
+		offsetX = 0.003;
+		offsetY = 0.003;
+		offsetPressedX = 0.002;
+		offsetPressedY = 0.002;
+		colorShadow[] = { 0, 0, 0, 0.5 };
+		colorBorder[] = { 0, 0, 0, 1 };
+		borderSize = 0;
+		soundEnter[] = { "", 0, 1 };          // no sound
+		soundPush[] = {"\a3\Ui_f\data\Sound\CfgIngameUI\hintExpand", 0.891251, 1};
+		soundClick[] = { "", 0, 1 };          // no sound
+		soundEscape[] = { "", 0, 1 };          // no sound
+		x = 0.15 * safezoneW + safezoneX;
+		w = 0.2 * safezoneW; h = 0.03 * safezoneH;
+		text = "";
+		action = "";
+		shadow = 1;
+	};
 
 	class RecycleBG : BgPicture {
 		x = (0.2 * safezoneW + safezoneX) - (2 * BORDERSIZE);
@@ -67,44 +127,56 @@ class liberation_squad {
 		shadow = 2;
 		onLBSelChanged="";
 	};
-/*
+
 	class ResupplyButton : StdButton{
 		idc = 210;
 		x = (0.2 * safezoneW + safezoneX);
 		y = (0.6 * safezoneH + safezoneY);
-		w = (0.12 * safezoneW);
-		h = (0.04 * safezoneH);
-		sizeEx = 0.025 * safezoneH;
-		text = $STR_RESUPPLY;
-		tooltip = $STR_RESUPPLY_TOOLTIP;
-		action = "GRLIB_squadaction = 1";
-	};
-*/
-	class ResupplyButton : StdButton{
-		idc = 210;
-		x = (0.2 * safezoneW + safezoneX);
-		y = (0.6 * safezoneH + safezoneY) ;
 		w = (0.055 * safezoneW);
 		h = (0.04 * safezoneH);
 		sizeEx = 0.025 * safezoneH;
-		text = "Re Ammo";
+		text = "Re Ammo";		// $STR_RESUPPLY;
+		tooltip = $STR_RESUPPLY_TOOLTIP;
 		action = "GRLIB_squadaction = 1";
 	};
 	class LikeMeButton : StdButton{
 		idc = 215;
 		x = (0.265 * safezoneW + safezoneX);
-		y = (0.6 * safezoneH + safezoneY) ;
+		y = (0.6 * safezoneH + safezoneY);
 		w = (0.055 * safezoneW);
 		h = (0.04 * safezoneH);
 		sizeEx = 0.025 * safezoneH;
 		text = "Like Me";
 		action = "GRLIB_squadaction = 4";
 	};
-//---------------------------------------------------------
+
+	class ReplaceButton : StdButton{
+		idc = 212;
+		x = (0.2 * safezoneW + safezoneX);
+		y = (0.65 * safezoneH + safezoneY);
+		w = (0.055 * safezoneW);
+		h = (0.04 * safezoneH);
+		sizeEx = 0.025 * safezoneH;
+		text = $STR_DEPLOY_ON_MEMBER;
+		tooltip = $STR_DEPLOY_ON_MEMBER_TOOLTIP;
+		action = "GRLIB_squadaction = 3";
+	};
+	class RenameButton : StdButton{
+		idc = 217;
+		x = (0.265 * safezoneW + safezoneX);
+		y = (0.65 * safezoneH + safezoneY);
+		w = (0.055 * safezoneW);
+		h = (0.04 * safezoneH);
+		sizeEx = 0.025 * safezoneH;
+		text = "Rename";
+		tooltip = "Rename unit.";
+		action = "GRLIB_squadaction = 5";
+	};
+
 	class RemoveButton : StdButton{
 		idc = 211;
 		x = (0.2 * safezoneW + safezoneX);
-		y = (0.65 * safezoneH + safezoneY);
+		y = (0.7 * safezoneH + safezoneY);
 		w = (0.12 * safezoneW);
 		h = (0.04 * safezoneH);
 		sizeEx = 0.025 * safezoneH;
@@ -112,21 +184,10 @@ class liberation_squad {
 		tooltip = $STR_REMOVE_MEMBER_TOOLTIP;
 		action = "GRLIB_squadaction = 2";
 	};
-	class ReplaceButton : StdButton{
-		idc = 212;
-		x = (0.2 * safezoneW + safezoneX);
-		y = (0.7 * safezoneH + safezoneY) ;
-		w = (0.12 * safezoneW);
-		h = (0.04 * safezoneH);
-		sizeEx = 0.025 * safezoneH;
-		text = $STR_DEPLOY_ON_MEMBER;
-		tooltip = $STR_DEPLOY_ON_MEMBER_TOOLTIP;
-		action = "GRLIB_squadaction = 3";
-	};
 	class ConfirmButton : StdButton{
 		idc = 213;
 		x = (0.2 * safezoneW + safezoneX);
-		y = (0.75 * safezoneH + safezoneY) ;
+		y = (0.75 * safezoneH + safezoneY);
 		w = (0.055 * safezoneW);
 		h = (0.04 * safezoneH);
 		sizeEx = 0.025 * safezoneH;
@@ -136,7 +197,7 @@ class liberation_squad {
 	class CancelButton : StdButton{
 		idc = 214;
 		x = (0.265 * safezoneW + safezoneX);
-		y = (0.75 * safezoneH + safezoneY) ;
+		y = (0.75 * safezoneH + safezoneY);
 		w = (0.055 * safezoneW);
 		h = (0.04 * safezoneH);
 		sizeEx = 0.025 * safezoneH;
@@ -216,4 +277,59 @@ class liberation_squad {
 		text = "#(argb,512,512,1)r2t(rtt,1.333)";
 		moving = false;
 	};
+
+//Rename
+	class GREUH_Squad_OuterBG : GREUH_OuterBG {
+		idc = 521;
+		style = ST_SINGLE;
+		x = (0.32 * safezoneW + safezoneX) - (BORDERSIZE);
+		y = ((BASE_Y + 0.18) * safezoneH) + safezoneY - (1.5 * BORDERSIZE);
+		w = 0.2 * safezoneW +  (2 * BORDERSIZE);
+		h = 0.05 * safezoneH  + (3 * BORDERSIZE);
+	};
+	class GREUH_Squad_InnerBG : GREUH_OuterBG {
+		idc = 522;
+		colorBackground[] = COLOR_GREEN;
+		x = (0.32 * safezoneW + safezoneX);
+		y = ((BASE_Y + 0.18) * safezoneH) + safezoneY;
+		w = 0.2 * safezoneW;
+		h = 0.05 * safezoneH;
+	};
+	class GREUH_Squad_OuterBG_F : GREUH_Squad_OuterBG {
+		idc = 523;
+		style = ST_FRAME;
+	};
+	class GREUH_Squad_InnerBG_F : GREUH_Squad_InnerBG {
+		idc = 524;
+		style = ST_FRAME;
+	};
+	class GREUH_ButtonName : GREUH_ButtonGeneric {
+		w = ((0.2 * safezoneW) / 5) - BORDERSIZE;
+		y = ((BASE_Y + 0.19) * safezoneH) + safezoneY;
+	};
+	class GREUH_ButtonName_Rename : GREUH_ButtonName {
+		idc = 525;
+		x = 0.4375 * safezoneW + safezoneX;
+		text = "Rename";
+		action = "unitname = ctrlText 527;";
+	};
+	class GREUH_ButtonName_Abort : GREUH_ButtonName {
+		idc = 526;
+		x = (0.4375 * safezoneW + safezoneX) + ((0.2 * safezoneW) / 5);
+		text = "Cancel";
+		action = "GRLIB_squadaction = -1;";
+	};
+	class GREUH_Squad_TextField : GREUH_ButtonName {
+		idc = 527;
+		type = CT_EDIT;
+		style = ST_LEFT;
+		x = (0.32 * safezoneW + safezoneX) + BORDERSIZE;
+		w = 0.11 * safezoneW;
+		text = "";
+		action = "";
+		colorText[] = COLOR_WHITE;
+		colorSelection[] = COLOR_BRIGHTGREEN;
+		autocomplete = "";
+	};
+
 };

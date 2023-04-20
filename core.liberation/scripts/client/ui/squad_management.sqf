@@ -3,7 +3,6 @@ private [ "_dialog", "_bros", "_membercount", "_memberselection", "_unitname", "
 GRLIB_squadaction = -1;
 GRLIB_squadconfirm = -1;
 _membercount = -1;
-_resupplied = false;
 _memberselection = -1;
 _selectedmember = objNull;
 _dialog = createDialog "liberation_squad";
@@ -11,10 +10,13 @@ _cfgVehicles = configFile >> "cfgVehicles";
 _cfgWeapons = configFile >> "cfgWeapons";
 _firstloop = true;
 _isvehicle = false;
+_rename_controls = [521,522,523,524,525,526,527];
+_resupplied = false;
+_renamed = false;
 
 waitUntil { dialog };
 
-
+{ ctrlShow [_x, false] } foreach _rename_controls;
 _targetobject = "Sign_Sphere100cm_F" createVehicleLocal [ 0, 0, 0 ];
 hideObject _targetobject;
 
@@ -26,7 +28,7 @@ _squad_camera camcommit 0;
 
 while { dialog && alive player } do {
 	_bros = allUnits select {(_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1",PAR_Grp_ID]};
-	if (  { alive _x } count (_bros) != _membercount ) then {
+	if (  { alive _x } count (_bros) != _membercount || _renamed ) then {
 
 		_membercount = { alive _x } count (_bros);
 
@@ -63,7 +65,7 @@ while { dialog && alive player } do {
 	};
 
 	if ( !(isNull _selectedmember) ) then {
-		if ( _memberselection != lbCurSel 101 || _resupplied || ( ( vehicle _selectedmember == _selectedmember && _isvehicle ) || ( vehicle _selectedmember != _selectedmember && !_isvehicle ) ) ) then {
+		if ( _memberselection != lbCurSel 101 || _resupplied || _renamed || ( ( vehicle _selectedmember == _selectedmember && _isvehicle ) || ( vehicle _selectedmember != _selectedmember && !_isvehicle ) ) ) then {
 			_memberselection = lbCurSel 101;
 			_resupplied = false;
 
@@ -155,17 +157,20 @@ while { dialog && alive player } do {
 				ctrlEnable [ 211, true ];
 			};
 			ctrlEnable [ 212, true ];
+			ctrlEnable [ 217, true ];
 		} else {
 			ctrlEnable [ 210, false ];
 			ctrlEnable [ 215, false ];
 			ctrlEnable [ 211, false ];
 			ctrlEnable [ 212, false ];
+			ctrlEnable [ 217, false ];
 		};
 	} else {
 		ctrlEnable [ 210, false ];
 		ctrlEnable [ 215, false ];
 		ctrlEnable [ 211, false ];
 		ctrlEnable [ 212, false ];
+		ctrlEnable [ 217, false ];
 		ctrlEnable [ 213, true ];
 		ctrlEnable [ 214, true ];
 	};
@@ -257,6 +262,25 @@ while { dialog && alive player } do {
 				hintSilent "Unit too far from you.";
 			};
 		};
+
+		if (GRLIB_squadaction == 5) then {
+			unitname = "";
+			_name = name _selectedmember;
+			{ ctrlShow [_x, true] } foreach _rename_controls;
+			ctrlSetText [527, _name];
+			waitUntil {sleep 0.1; ((GRLIB_squadaction == -1) || (unitname != "") || !(dialog) || !(alive player)) };
+
+			if (unitname != "") then {
+				_p2 = (unitname splitString " ") select 0;
+				_p1 = (unitname splitString " ") select 1;
+				if (isNil "_p1") then {_p1 = ""};
+				_selectedmember setName [unitname, _p1, _p2];
+				gamelogic globalChat format ["Renaming %1 to %2", _name, unitname];
+				_renamed = true;
+			};
+			{ ctrlShow [_x, false] } foreach _rename_controls;
+		};
+
 		GRLIB_squadaction = -1;
 	};
 	sleep 0.1;
