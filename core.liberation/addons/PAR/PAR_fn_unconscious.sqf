@@ -65,8 +65,7 @@ sleep 6;
 _bld = createVehicle [(PAR_BloodSplat call BIS_fnc_selectRandom), getPos _unit, [], 0, "CAN_COLLIDE"];
 while {lifeState _unit == "incapacitated" && time <= _unit getVariable ["PAR_BleedOutTimer", 0]} do {
   _unit setOxygenRemaining 1;
-  _bros = [ units player, { alive _x && lifeState _x != "incapacitated" } ] call BIS_fnc_conditionalSelect;
-
+  _bros = allunits select {(_x getVariable ["PAR_Grp_ID","0"]) == (_unit getVariable ["PAR_Grp_ID","1"]) && alive _x && lifeState _x != "incapacitated"};
   if ( count _bros > 0 ) then {
     _medic = _unit getVariable ["PAR_myMedic", nil];
     if (isNil "_medic") then {

@@ -98,7 +98,7 @@ _sendPara = {
 	{_x doFollow leader _para_group} foreach units _para_group;
 	sleep 0.2;
 
-	//_newvehicle flyInHeight 300;
+	_newvehicle flyInHeight 300;
 
 	_waypoint = _pilot_group addWaypoint [ _targetpos, 200];
 	_waypoint setWaypointBehaviour "COMBAT";

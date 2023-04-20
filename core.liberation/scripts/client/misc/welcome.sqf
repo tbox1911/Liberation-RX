@@ -48,6 +48,7 @@ if ( player == [] call F_getCommander ) then {
 };
 private _grp = player getVariable ["my_squad", nil];
 if (!isNil "_grp") then { player hcSetGroup [_grp] };
+{player hcSetGroup [group _x]} forEach ([vehicles, {(typeOf _x) in uavs && [player, _x] call is_owner}] call BIS_fnc_conditionalSelect);
 
 // IA Recall
 private _grp = group player;
