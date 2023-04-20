@@ -96,7 +96,9 @@ _failedExec = {
 
 _successExec = {
 	// Mission completed
-	{ _x setVariable ["R3F_LOG_disabled", false, true] } forEach [_box1, _box2];
+	{ 	_x setVariable ["R3F_LOG_disabled", false, true];
+		_x setVariable ["GRLIB_vehicle_owner", "", true];
+	} forEach [_box1, _box2];
 	_successHintMessage = format ["Nice work!<br/><br/><t color='%1'>%2</t><br/>is a safe place again!<br/>Take your reward!", sideMissionColor, _townName];
 	{ deleteVehicle _x } forEach [_tent1, _chair1, _chair2, _fire1, _veh1, _veh2];
 	{ deleteVehicle _x } forEach units _aiGroupRes;

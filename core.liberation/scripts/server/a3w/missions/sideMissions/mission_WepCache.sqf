@@ -47,7 +47,10 @@ _failedExec = {
 
 _successExec = {
 	// Mission completed
-	{ _x setVariable ["R3F_LOG_disabled", false, true] } forEach [_box1, _box2, _box3];
+	{
+		_x setVariable ["R3F_LOG_disabled", false, true];
+		_x setVariable ["GRLIB_vehicle_owner", "", true];
+	} forEach [_box1, _box2, _box3];
 	_successHintMessage = "The supplies have been collected, well done.";
 	[_missionPos] call showlandmines;
 };
