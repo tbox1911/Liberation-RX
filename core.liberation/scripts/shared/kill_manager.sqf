@@ -134,21 +134,23 @@ if ( isServer ) then {
 		};
 
 	} else {
-		// unTow
-		private _tow = _unit getVariable ["R3F_LOG_remorque", objNull];
-		if (!isNull _tow) then {
-			_unit setVariable ["R3F_LOG_remorque", objNull, true];
-			_tow setVariable ["R3F_LOG_est_transporte_par", objNull, true];
-			[_tow, "detachSetVelocity", [0, 0, 0.1]] call R3F_LOG_FNCT_exec_commande_MP;
-			waitUntil { sleep 0.3; (isNull attachedTo _tow) };
-		};
+		if (!GRLIB_ACE_enabled) then {
+			// unTow
+			private _tow = _unit getVariable ["R3F_LOG_remorque", objNull];
+			if (!isNull _tow) then {
+				_unit setVariable ["R3F_LOG_remorque", objNull, true];
+				_tow setVariable ["R3F_LOG_est_transporte_par", objNull, true];
+				[_tow, "detachSetVelocity", [0, 0, 0.1]] call R3F_LOG_FNCT_exec_commande_MP;
+				waitUntil { sleep 0.3; (isNull attachedTo _tow) };
+			};
 
-		private _towed = _unit getVariable ["R3F_LOG_est_transporte_par", objNull];
-		if (!isNull _towed) then {
-			_towed setVariable ["R3F_LOG_remorque", objNull, true];
-			_unit setVariable ["R3F_LOG_est_transporte_par", objNull, true];
-			[_unit, "detachSetVelocity", [0, 0, 0.1]] call R3F_LOG_FNCT_exec_commande_MP;
-			waitUntil { sleep 0.3; (isNull attachedTo _unit) };
+			private _towed = _unit getVariable ["R3F_LOG_est_transporte_par", objNull];
+			if (!isNull _towed) then {
+				_towed setVariable ["R3F_LOG_remorque", objNull, true];
+				_unit setVariable ["R3F_LOG_est_transporte_par", objNull, true];
+				[_unit, "detachSetVelocity", [0, 0, 0.1]] call R3F_LOG_FNCT_exec_commande_MP;
+				waitUntil { sleep 0.3; (isNull attachedTo _unit) };
+			};
 		};
 
 		if ( (typeof _unit) in [Arsenal_typename, FOB_box_typename, FOB_truck_typename, foodbarrel_typename, waterbarrel_typename] ) exitWith {

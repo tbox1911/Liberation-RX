@@ -25,3 +25,7 @@ GRLIB_cargoSize = [R3F_LOG_CFG_can_be_transported_cargo, 2] call F_invertArray;
 GRLIB_movableObjects = [] + boats_names + R3F_LOG_CFG_can_be_moved_by_player;
 // Adding each buildings to movableObjects	
 {GRLIB_movableObjects pushback (_x select 0);} foreach buildings;
+
+// R3F functions
+call compile preprocessFile "R3F_LOG\fonctions_generales\lib_geometrie_3D.sqf";
+R3F_LOG_FNCT_objet_deplacer = compile preprocessFile "R3F_LOG\objet_deplacable\deplacer.sqf";

@@ -9,15 +9,14 @@ params [
 diag_log format [ "Spawn vehicle %1 at %2", _classname , time ];
 
 private _newvehicle = objNull;
-private _spawnpos = zeropos;
+private _spawnpos = [];
 private _vehcrew = [];
-private _max_try = 10;
-private _radius = GRLIB_capture_size;
 private _airveh_alt = 300;
 
 if ( _precise_position ) then {
 	_spawnpos = _sectorpos;
 } else {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	while { _spawnpos isEqualTo zeropos } do {
 		_safepos = [_sectorpos, 5, 300, 1, 1, 0.25, 0, [], [zeropos, zeropos]] call BIS_fnc_findSafePos;
@@ -38,8 +37,11 @@ if ( _precise_position ) then {
 		_max_try = _max_try - 1;
 >>>>>>> 43844fd7 (better find position)
 	};
+=======
+	_spawnpos = [4, _sectorpos, GRLIB_capture_size, 30, true] call R3F_LOG_FNCT_3D_tirer_position_degagee_sol;
+>>>>>>> 70410843 (use r3f findPos)
 };
-if ( _spawnpos distance2D zeropos < 300 ) exitWith { diag_log format ["--- LRX Error: No place to build %1 from position %2", _classname, _sectorpos]; objNull };
+if ( count _spawnpos == 0 ) exitWith { diag_log format ["--- LRX Error: No place to build %1 from position %2", _classname, _sectorpos]; objNull };
 
 if ( _classname isKindOf "Air" ) then {
 	if ( _civilian ) then { _airveh_alt = 250 };

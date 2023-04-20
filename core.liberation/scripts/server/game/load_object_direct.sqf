@@ -1,5 +1,6 @@
 params [ "_vehicle", "_objects" ];
 
+if (GRLIB_ACE_enabled) exitWith {};
 private _vehicle_owner = _vehicle getVariable ["GRLIB_vehicle_owner", ""];
 private _object_created = [];
 

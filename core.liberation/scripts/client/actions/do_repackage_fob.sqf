@@ -19,23 +19,13 @@ waitUntil { dialog };
 while { dialog && alive player && dorepackage == 0 } do {
 	sleep 0.5;
 };
-_fob_hq setVariable ["fob_in_use", false, true];
 
 if ( dorepackage > 0 ) then {
 	closeDialog 0;
 	waitUntil { !dialog };
 
-	GRLIB_all_fobs = GRLIB_all_fobs - [ _fob_pos ];
-	publicVariable "GRLIB_all_fobs";
-	deleteVehicle _fob_hq;
-	deleteVehicle _fob_sign;
-	sleep 0.5;
-
-	_spawnpos = zeropos;
-	while { _spawnpos distance zeropos < 100 } do {
-		_spawnpos = ( getpos player ) findEmptyPosition [0, 100, 'B_Heli_Transport_01_F'];
-		if ( count _spawnpos == 0 ) then { _spawnpos = zeropos; };
-	};
+	private _spawnpos = [4, (getPosATL player), 50, 30, false] call R3F_LOG_FNCT_3D_tirer_position_degagee_sol;
+	if ( count _spawnpos == 0 ) exitWith { hint "Cannot find enough place to repack FOB!" };
 
 	if ( dorepackage == 1 ) then {
 		_fobbox = FOB_box_typename createVehicle _spawnpos;
@@ -44,13 +34,13 @@ if ( dorepackage > 0 ) then {
 	if ( dorepackage == 2 ) then {
 		_fobbox = FOB_truck_typename createVehicle _spawnpos;
 	};
+	sleep 0.5;
 
-	if (! isNil "_fobbox" ) then {
+	if ( !isNil "_fobbox" ) then {
 		clearWeaponCargoGlobal _fobbox;
 		clearMagazineCargoGlobal _fobbox;
 		clearItemCargoGlobal _fobbox;
 		clearBackpackCargoGlobal _fobbox;
-		_fobbox setVariable ["fob_in_use", false, true];
 		_fobbox addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
 		if (GRLIB_ACE_enabled) then {
 			if (_fobbox == FOB_box_typename) then {
@@ -59,6 +49,13 @@ if ( dorepackage > 0 ) then {
 			};
 			[_fobbox, -1] call ace_cargo_fnc_setSpace;
 		};
+
+		GRLIB_all_fobs = GRLIB_all_fobs - [ _fob_pos ];
+		publicVariable "GRLIB_all_fobs";
+		deleteVehicle _fob_hq;
+		deleteVehicle _fob_sign;
 	};
 	hint localize "STR_FOB_REPACKAGE_HINT";
 };
+sleep 0.5;
+_fob_hq setVariable ["fob_in_use", false, true];

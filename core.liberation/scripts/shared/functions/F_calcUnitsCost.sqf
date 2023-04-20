@@ -1,21 +1,21 @@
-private ["_unit", "_grp", "_unit_class", "_unit_mp", "_unit_cost", "_unit_rank"];
+private ["_unit", "_unit_class", "_unit_mp", "_unit_cost", "_unit_rank"];
 
-_grp = createGroup [GRLIB_side_friendly, true];
 {
 	_unit_class = _x select 0;
 	_unit_mp = _x select 1;
 	_unit_cost = _x select 2;
 	_unit_rank = _x select 4;
 	if (_unit_cost == 0) then {
-		_unit = _grp createUnit [_unit_class, zeropos, [], 5, "NONE"];
+		_unit = _unit_class createVehicleLocal zeropos;
 		_unit allowDamage false;
-		if (typeOf _unit in units_loadout_overide) then {
-			_loadouts_folder = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, toLower (typeOf _unit)];
+		[_unit, configOf _unit] call BIS_fnc_loadInventory;
+		if (_unit_class in units_loadout_overide) then {
+			_loadouts_folder = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, toLower _unit_class];
 			[_unit] call compileFinal preprocessFileLineNUmbers _loadouts_folder;
 		};
 		_unit_cost = [_unit] call F_loadoutPrice;
 		deleteVehicle _unit;
+		sleep 0.1;
 	};
-	infantry_units set [_forEachIndex, [_unit_class, _unit_mp, _unit_cost, 0,_unit_rank]];
+	infantry_units set [_forEachIndex, [_unit_class, _unit_mp, _unit_cost, 0, _unit_rank]];
 } foreach infantry_units;
-deleteGroup _grp;
