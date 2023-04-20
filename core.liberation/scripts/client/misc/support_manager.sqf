@@ -1,5 +1,5 @@
 waitUntil { sleep 1; !isNil "blufor_sectors" };
-private ["_near_arsenal", "_near_medic", "_needammo1", "_needammo2", "_maxpri", "_minpri", "_needmedic", "_magType", "_list_vehicles", "_guid", "_static_ai"];
+private ["_near_arsenal", "_primary_weapon", "_near_medic", "_needammo1", "_needammo2", "_maxpri", "_minpri", "_needmedic", "_magType", "_list_vehicles", "_guid", "_static_ai"];
 
 private _distarsenal = 30;           // minimal distance from source (ammo/repair)
 private _maxpri_def = 10;            // maximum magazines unit can take (primary weapon)
@@ -32,16 +32,17 @@ while { true } do {
 				_needammo2 = false;
 				_needmedic = false;
 				_near_arsenal = [_x, "REAMMO_AI", _distarsenal, true] call F_check_near;
-
-				if (_near_arsenal)  then {
+				_primary_weapon = primaryWeapon _x;
+				if (_near_arsenal && _primary_weapon != "")  then {
 					_maxpri = _maxpri_def;
 					_minpri = _minpri_def;
+
 					// check primary Weapon
-					if ( (primaryWeapon _x) find "LMG" >= 0 || (primaryWeapon _x) find "MMG" >= 0 || (primaryWeapon _x) find "RPK12" >= 0 ) then { _minpri = 1; _maxpri = 3 };
-					_needammo1 = [_x, primaryWeapon _x, _minpri] call F_UnitNeedAmmo;
+					if ( _primary_weapon find "LMG" >= 0 || _primary_weapon find "MMG" >= 0 || _primary_weapon find "RPK12" >= 0 ) then { _minpri = 1; _maxpri = 3 };
+					_needammo1 = [_x, _primary_weapon, _minpri] call F_UnitNeedAmmo;
 					if (_needammo1) then {
 						_x groupchat "Rearming Primary Weapon.";
-						_needammo1 = [_x, primaryWeapon _x, _maxpri] call F_UnitAddAmmo;
+						_needammo1 = [_x, _primary_weapon, _maxpri] call F_UnitAddAmmo;
 					};
 
 					// check secondary Weapon if backpack present
@@ -67,12 +68,12 @@ while { true } do {
 
 				// Animation
 				if (_needammo1 || _needammo2 || _needmedic ) then {
-					[_x] spawn {
-						params ["_target"];
+					[_x, _needmedic] spawn {
+						params ["_target", "_needmedic"];
 						_target setVariable ['PAR_heal', true];
 						_target playMove "AinvPknlMstpSlayWrflDnon_medic";
 						sleep 6;
-						if (lifeState _target != 'INCAPACITATED') then {
+						if (_needmedic && lifeState _target != 'INCAPACITATED') then {
 							_target setDamage 0;
 						};
 						sleep 4;
