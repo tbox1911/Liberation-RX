@@ -39,8 +39,4 @@ remote_call_garage = compileFinal preprocessFileLineNumbers "scripts\client\remo
 RPT_fnc_TextureVehicle = compileFinal preprocessFileLineNumbers "addons\RPT\fn_textureVehicle.sqf";
 
 [] execVM "scripts\shared\scan_skill.sqf";
-//[] execVM "scripts\shared\manage_weather.sqf";
 //[] execVM "scripts\shared\diagnostics.sqf";
-
-disableMapIndicators [false,true,false,false];
-setGroupIconsVisible [false,false];

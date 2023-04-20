@@ -50,7 +50,7 @@ private ["_isHidden","_checkPlayerCount","_checkFrequencyDefault","_checkFrequen
 _isHidden = {
 	params ["_unit", "_dist", "_list"];
 	private _c = false;
-	if ( ({(( _unit distance2D _x) < _dist)} count _list) isEqualTo 0 ) then { _c = true };
+	if ( ({(( _unit distance2D _x) < _dist)} count _list) == 0 ) then { _c = true };
 	_c;
 };
 
