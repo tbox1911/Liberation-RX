@@ -13,7 +13,7 @@ crewman_classname = "gm_ge_army_crew_mp2a1_80_oli";
 pilot_classname = "gm_ge_army_pilot_p1_80_oli";
 PAR_Medikit = "gm_ge_army_medkit_80";
 PAR_AidKit = "gm_ge_army_burnBandage";
-A3W_BoxWps = "Box_East_Wps_F";
+A3W_BoxWps = "gm_AmmoBox_1000Rnd_762x51mm_ap_DM151_g3";
 canisterFuel = "gm_jerrycan";
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
@@ -41,8 +41,6 @@ infantry_units = [
 light_vehicles = [
 	["gm_gc_army_bicycle_01_oli",1,5,1,0],
 	["gm_ge_army_k125",1,10,1,0],
-	["gm_gc_civ_p601",1,15,1,0],
-	["gm_ge_civ_typ1200",1,15,1,GRLIB_perm_inf],
 	["gm_ge_army_u1300l_container",1,25,1,0],
 	["gm_ge_army_iltis_cargo",1,5,1,0],
 	["gm_ge_army_iltis_milan",5,100,2,GRLIB_perm_inf],
