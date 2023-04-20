@@ -11,3 +11,6 @@ if (_unit == player) then {
 		_grave setvariable ["GRLIB_grave_message", format ["%1 - R.I.P -", name player], true];
 	};
 };
+
+sleep 10;
+deleteVehicle _unit;

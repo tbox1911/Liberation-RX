@@ -51,7 +51,6 @@ createVehicleCrew _vehicle;
 sleep 1;
 private _pilots = crew _vehicle;
 {
-	_x assignAsDriver _vehicle;
     [_x] orderGetIn true;
 	_x allowDamage false;
 	_x allowFleeing 0;
