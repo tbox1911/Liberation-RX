@@ -17,6 +17,7 @@ if ( count _allposts > 0 ) then {
 		};
 		_unit = _grp createUnit [_unitclasspost, _squadpos, [], 5, "NONE"];
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+		[_unit] joinSilent _grp;
 		_unit setpos (_building_positions select 1);
 		_unit setdir (180 + (getdir _x ));
 		[ _unit ] call reammo_ai;

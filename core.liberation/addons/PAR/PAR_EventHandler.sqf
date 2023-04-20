@@ -69,14 +69,14 @@ _unit addEventHandler ["FiredMan",	{
 
 // Player
 if (_unit == player) then {
-	// Player respawn
-	_unit removeAllEventHandlers "Respawn";
-	_unit addEventHandler ["Respawn", {[] spawn PAR_Player_Init}];
-	
+
 	// ACE specific
-	//if (GRLIB_ACE_enabled) then {
-	//	["ace_arsenal_displayClosed", {[player] spawn F_payLoadout}] call CBA_fnc_addEventHandler;
-	//};
+	if (GRLIB_ACE_enabled) then {		
+		["ace_arsenal_displayClosed", {
+			[player] call F_filterLoadout;
+			[player] spawn F_payLoadout;
+		}] call CBA_fnc_addEventHandler;
+	};
 
 	// Unblock units
 	missionNamespace setVariable [
@@ -95,7 +95,7 @@ if (_unit == player) then {
 		1 fadeSound ( NRE_vehvolume / 100.0 );
 		NRE_EarplugsActive = 1;
 		[player, "hide"] remoteExec ["dog_action_remote_call", 2];
-		if (!GRLIB_thermic) then { _vehicle disableTIEquipment true };
+		if (!GRLIB_thermic && !(daytime > GRLIB_nights_start || daytime < GRLIB_nights_stop)) then { _vehicle disableTIEquipment true };
 		if (_this call vehicle_permissions) then {
 			_vehicle spawn vehicle_defense;
 		};

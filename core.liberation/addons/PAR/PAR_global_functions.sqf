@@ -1,3 +1,4 @@
+PAR_EventHandler = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_EventHandler.sqf";
 PAR_fn_medic = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_medic.sqf";
 PAR_fn_medicRelease = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_medicRelease.sqf";
 PAR_fn_medicRecall = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_medicRecall.sqf";
@@ -209,10 +210,14 @@ PAR_fn_AI_Damage_EH = {
 =======
 	_unit setVariable ["PAR_AI_score", 5, true];
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 94a03f47 (progressive level up)
 =======
 	[_unit] spawn player_EVH;
 >>>>>>> dfbe228e (fix disable ai revive)
+=======
+	[_unit] spawn PAR_EventHandler;
+>>>>>>> 8ba18716 (split respawn EH)
 };
 
 PAR_AI_Manager = {
@@ -286,16 +291,16 @@ PAR_AI_Manager = {
 
 // Player Section
 PAR_Player_Init = {
-	// Clear event handler before adding it
-	player removeAllEventHandlers "HandleDamage";
-	player addEventHandler ["HandleDamage", { _this call damage_manager_EH }];
-	if (GRLIB_revive != 0) then {
-		player addEventHandler ["HandleDamage", { _this call PAR_HandleDamage_EH }];
-	};
 	player removeAllMPEventHandlers "MPKilled";
-	if (GRLIB_ACE_medical_enabled)
-	then { player addMPEventHandler ["MPKilled", {_this spawn PAR_fn_death}] }
-	else { player addMPEventHandler ["MPKilled", {_this spawn kill_manager}] };
+	player addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+	if (!GRLIB_ACE_medical_enabled) then { 
+		player removeAllEventHandlers "HandleDamage";
+		if (GRLIB_revive != 0) then {
+			player addEventHandler ["HandleDamage", { _this call PAR_HandleDamage_EH }];
+		} else {
+			player addEventHandler ["HandleDamage", { _this call damage_manager_EH }];
+		};
+	};
 	player setVariable ["GREUH_isUnconscious", 0, true];
 	player setVariable ["PAR_isUnconscious", 0, true];
 	player setVariable ["PAR_wounded", false];
@@ -304,6 +309,8 @@ PAR_Player_Init = {
 	player setVariable ["PAR_Grp_ID",format["Bros_%1", PAR_Grp_ID], true];
 	player setVariable ["PAR_myMedic", nil];
 	player setVariable ["PAR_busy", nil];
+	player setVariable ["PAR_heal", nil];
+	player setVariable ["PAR_healed", nil];
 	if (!GRLIB_fatigue ) then { player enableFatigue false; player enableStamina false };
 	if (GRLIB_opfor_english) then {player setSpeaker "Male01ENG"};
 	player setCustomAimCoef 0.35;
@@ -311,7 +318,6 @@ PAR_Player_Init = {
 	player setCaptive false;
 	player setMass 10;
 	PAR_isDragging = false;
-	[player] spawn player_EVH;
 	[player] call AR_Add_Player_Actions;
 	1 fadeSound 1;
 	1 fadeRadio 1;

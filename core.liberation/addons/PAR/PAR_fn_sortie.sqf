@@ -59,9 +59,11 @@ if (isPlayer _wnded) then {
   player setVariable ["PAR_isUnconscious", 0, true];
   player setVariable ["PAR_isDragged", 0, true];
   group _wnded selectLeader player;
-  if (isPlayer _medic) then {
+  private _bounty_ok = (([GRLIB_capture_size, getPosATL _medic] call F_getNearestSector) in (sectors_allSectors - blufor_sectors) && _medic getVariable ["PAR_lastRevive",0] < time);
+  if (isPlayer _medic && _bounty_ok) then {
     private _bonus = 5;
     [_medic, _bonus] remoteExec ["addScore", 2];
+    _medic setVariable ["PAR_lastRevive", round(time + 5*60), true];
     private _text = format [localize "STR_PAR_ST_02", name _wnded, _bonus];
     [[_medic, _text], {
       if (player == (_this select 0)) then { hintSilent (_this select 1) };

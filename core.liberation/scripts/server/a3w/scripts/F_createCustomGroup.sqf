@@ -30,6 +30,7 @@ for "_i" from 1 to _nbUnits do {
 	if (!(_spawnpos isEqualTo zeropos)) then {
 		_unit = _grp createUnit [(selectRandom _unitTypes), _spawnpos, [], 5, "NONE"];
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+		[_unit] joinSilent _grp;
 		_unit allowDamage false;
 		_unit setSkill 0.6;
 		_unit setSkill ["courage", 1];

@@ -10,7 +10,7 @@ while { GRLIB_endgame == 0 } do {
 
 	sleep ((1 + random 5) * 60);
 
-	while { [] call F_opforCap > GRLIB_patrol_cap || (diag_fps < 25.0) } do {
+	while { [] call F_opforCap > GRLIB_patrol_cap || diag_fps < 25.0 } do {
 		sleep (30 + floor(random 30));
 	};
 
@@ -43,6 +43,7 @@ while { GRLIB_endgame == 0 } do {
 		{
 			_unit = _grp createUnit [_x, _sector_spawn_pos, [], 5, "NONE"];
 			_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+			[_unit] joinSilent _grp;
 			[ _unit ] call reammo_ai;
 			sleep 0.1;
 		} foreach _squad;
