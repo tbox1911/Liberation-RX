@@ -307,14 +307,12 @@ vehicle_refuel_sources = [
 	"B_Truck_01_fuel_F",
 	"B_Slingload_01_Fuel_F"
 ];
-
 vehicle_artillery = [
 	"B_Mortar_01_F",
 	"B_Ship_Gun_01_F",
 	"I_E_Truck_02_MRL_F",
 	"B_MBT_01_arty_F"
 ];
-
 squads = [
 	[blufor_squad_inf_light,20,0,0],
 	[blufor_squad_inf,30,0,0],
@@ -326,32 +324,32 @@ squads = [
 
 // *** BADDIES ***
 
-if ( isNil "opfor_sentry") then { opfor_sentry = "O_Soldier_lite_F"; };
-if ( isNil "opfor_rifleman") then { opfor_rifleman = "O_Soldier_F"; };
-if ( isNil "opfor_grenadier") then { opfor_grenadier = "O_Soldier_GL_F"; };
-if ( isNil "opfor_squad_leader") then { opfor_squad_leader = "O_Soldier_SL_F"; };
-if ( isNil "opfor_team_leader") then { opfor_team_leader = "O_Soldier_TL_F"; };
-if ( isNil "opfor_marksman") then { opfor_marksman = "O_soldier_M_F"; };
-if ( isNil "opfor_machinegunner") then { opfor_machinegunner = "O_Soldier_AR_F"; };
-if ( isNil "opfor_heavygunner") then { opfor_heavygunner = "O_HeavyGunner_F"; };
-if ( isNil "opfor_medic") then { opfor_medic = "O_medic_F"; };
-if ( isNil "opfor_rpg") then { opfor_rpg = "O_Soldier_LAT_F"; };
-if ( isNil "opfor_at") then { opfor_at = "O_Soldier_AT_F"; };
-if ( isNil "opfor_aa") then { opfor_aa = "O_Soldier_AA_F"; };
-if ( isNil "opfor_officer") then { opfor_officer = "O_officer_F"; };
-if ( isNil "opfor_sharpshooter") then { opfor_sharpshooter = "O_Sharpshooter_F"; };
-if ( isNil "opfor_sniper") then { opfor_sniper = "O_sniper_F"; };
-if ( isNil "opfor_engineer") then { opfor_engineer = "O_engineer_F"; };
-if ( isNil "opfor_paratrooper") then { opfor_paratrooper = "O_soldier_PG_F"; };
-if ( isNil "opfor_mrap") then { opfor_mrap = "O_MRAP_02_F"; };
-if ( isNil "opfor_mrap_armed") then { opfor_mrap_armed = "O_MRAP_02_gmg_F"; };
-if ( isNil "opfor_transport_helo") then { opfor_transport_helo = "O_Heli_Transport_04_bench_F"; };
-if ( isNil "opfor_transport_truck") then { opfor_transport_truck = "O_Truck_03_covered_F"; };
-if ( isNil "opfor_fuel_truck") then { opfor_fuel_truck = "O_Truck_03_fuel_F"; };
-if ( isNil "opfor_ammo_truck") then { opfor_ammo_truck = "O_Truck_03_ammo_F"; };
-if ( isNil "opfor_fuel_container") then { opfor_fuel_container = "Land_Pod_Heli_Transport_04_fuel_F"; };
-if ( isNil "opfor_ammo_container") then { opfor_ammo_container = "Land_Pod_Heli_Transport_04_ammo_F"; };
-if ( isNil "opfor_flag") then { opfor_flag = "Flag_CSAT_F"; };
+if ( isNil "opfor_sentry") then { opfor_sentry = "O_Soldier_lite_F" };
+if ( isNil "opfor_rifleman") then { opfor_rifleman = "O_Soldier_F" };
+if ( isNil "opfor_grenadier") then { opfor_grenadier = "O_Soldier_GL_F" };
+if ( isNil "opfor_squad_leader") then { opfor_squad_leader = "O_Soldier_SL_F" };
+if ( isNil "opfor_team_leader") then { opfor_team_leader = "O_Soldier_TL_F" };
+if ( isNil "opfor_marksman") then { opfor_marksman = "O_soldier_M_F" };
+if ( isNil "opfor_machinegunner") then { opfor_machinegunner = "O_Soldier_AR_F" };
+if ( isNil "opfor_heavygunner") then { opfor_heavygunner = "O_HeavyGunner_F" };
+if ( isNil "opfor_medic") then { opfor_medic = "O_medic_F" };
+if ( isNil "opfor_rpg") then { opfor_rpg = "O_Soldier_LAT_F" };
+if ( isNil "opfor_at") then { opfor_at = "O_Soldier_AT_F" };
+if ( isNil "opfor_aa") then { opfor_aa = "O_Soldier_AA_F" };
+if ( isNil "opfor_officer") then { opfor_officer = "O_officer_F" };
+if ( isNil "opfor_sharpshooter") then { opfor_sharpshooter = "O_Sharpshooter_F" };
+if ( isNil "opfor_sniper") then { opfor_sniper = "O_sniper_F" };
+if ( isNil "opfor_engineer") then { opfor_engineer = "O_engineer_F" };
+if ( isNil "opfor_paratrooper") then { opfor_paratrooper = "O_soldier_PG_F" };
+if ( isNil "opfor_mrap") then { opfor_mrap = "O_MRAP_02_F" };
+if ( isNil "opfor_mrap_armed") then { opfor_mrap_armed = "O_MRAP_02_gmg_F" };
+if ( isNil "opfor_transport_helo") then { opfor_transport_helo = "O_Heli_Transport_04_bench_F" };
+if ( isNil "opfor_transport_truck") then { opfor_transport_truck = "O_Truck_03_covered_F" };
+if ( isNil "opfor_fuel_truck") then { opfor_fuel_truck = "O_Truck_03_fuel_F" };
+if ( isNil "opfor_ammo_truck") then { opfor_ammo_truck = "O_Truck_03_ammo_F" };
+if ( isNil "opfor_fuel_container") then { opfor_fuel_container = "Land_Pod_Heli_Transport_04_fuel_F" };
+if ( isNil "opfor_ammo_container") then { opfor_ammo_container = "Land_Pod_Heli_Transport_04_ammo_F" };
+if ( isNil "opfor_flag") then { opfor_flag = "Flag_CSAT_F" };
 
 militia_squad = [
 	"O_G_Soldier_SL_F",
@@ -765,7 +763,6 @@ GRLIB_Ammobox = [
 	"Box_East_Wps_F",
 	"mission_USLaunchers"
 ];
-
 GRLIB_AirDrop_1 = [
 	"I_Quadbike_01_F",
 	"I_G_Offroad_01_F",
