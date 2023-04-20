@@ -20,7 +20,6 @@ GRLIB_blacklisted_from_arsenal append [
 	"ace_csw",
 	"ace_compat",
 	"ace_dragon_super",
-	"ACE_key",
 	"ACE_dogtag"
 ];
 
