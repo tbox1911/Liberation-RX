@@ -145,7 +145,7 @@ class liberation_cheat {
   {
     idc = 1615;
     action = "do_ammo=1";
-    text = "Add 200 Ammo";
+    text = "Add 300 Ammo";
     x = 0.2275 * safezoneW + safezoneX;
     y = 0.468 * safezoneH + safezoneY;
     w = 0.0875 * safezoneW;

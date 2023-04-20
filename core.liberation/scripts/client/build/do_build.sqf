@@ -85,7 +85,7 @@ while { true } do {
 			_unit setMass 10;
 			_unit setSkill 0.6;
 			_unit setRank "PRIVATE";
-			_unit setVariable [format["Bros_%1",MGI_Grp_ID], true, true];
+			_unit setVariable ["MGI_Grp_ID", format["Bros_%1",MGI_Grp_ID], true];
 			_unit addMPEventHandler ["MPKilled", FAR_Player_MPKilled];
 			_unit enableIRLasers true;
 			_unit enableGunLights "Auto";
@@ -95,21 +95,31 @@ while { true } do {
 		build_confirmed = 0;
 	} else {
 		if ( buildtype == 8 ) then {
-			_pos = [(getpos player select 0) + 1,(getpos player select 1) + 1, 0];
-			_grp = createGroup [GRLIB_side_friendly, true];
-			_grp setGroupId [format ["%1 %2",squads_names select buildindex, groupId _grp]];
-			_idx = 0;
-			{
-				_unitrank = "Private";
-				if(_idx == 0) then { _unitrank = "Sergeant"; };
-				if(_idx == 1) then { _unitrank = "Corporal"; };
-				_x createUnit [_pos, _grp,"this addMPEventHandler [""MPKilled"", {_this spawn kill_manager}]", 0.5, _unitrank];
-				_idx = _idx + 1;
-			} foreach _classname;
-			_grp setCombatMode "GREEN";
-			_grp setBehaviour "AWARE";
-			_grp spawn squad_manager;
-			[_price] call do_pay_build;
+			if (isNil {player getVariable ["my_squad", nil]} ) then {
+				_pos = [(getpos player select 0) + 1,(getpos player select 1) + 1, 0];
+				_grp = createGroup [GRLIB_side_friendly, true];
+				player setVariable ["my_squad", _grp, true];
+				_grp setGroupId [format ["%1 %2",squads_names select buildindex, groupId _grp]];
+				_idx = 0;
+				{
+					_unitrank = "Private";
+					if(_idx == 0) then { _unitrank = "Sergeant"; };
+					if(_idx == 1) then { _unitrank = "Corporal"; };
+					_x createUnit [_pos, _grp,"this addMPEventHandler [""MPKilled"", {_this spawn kill_manager}]", 0.5, _unitrank];
+					_idx = _idx + 1;
+				} foreach _classname;
+				_grp setCombatMode "GREEN";
+				_grp setBehaviour "AWARE";
+				{
+					_x setVariable ["MGI_Grp_ID", format["AI_%1",MGI_Grp_ID], true];
+					[_x] call MGI_fn_EHDamage;
+				} forEach units _grp;
+				[_grp] spawn squad_manager;
+				[_price] call do_pay_build;
+			} else {
+				hint "Only One Squad Allowed !!";
+				sleep 3;
+			};
 			build_confirmed = 0;
 		} else {
 			_posfob = getpos player;

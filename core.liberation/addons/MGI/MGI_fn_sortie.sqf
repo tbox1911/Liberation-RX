@@ -4,7 +4,8 @@ if (_wnded == _medic) exitWith {};
 if (lifeState _wnded == 'incapacitated' && diag_tickTime < _timer + MGI_BleedOut) then {
 
 if (!isPlayer _medic) then {
-    gamelogic globalChat format["%1, %2 is healing you now...", name _wnded, name _medic];
+    _msg = format ["%1, %2 is healing you now...", name _wnded, name _medic];
+    [_wnded, _msg] call MGI_fn_globalchat;
     _medic setDir (_medic getDir _wnded);
     //_medic removeitem 'FirstAidKit';
     if (stance _medic == 'PRONE') then {

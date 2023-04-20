@@ -1,15 +1,10 @@
 if (!isServer) exitWith {};
-params [ "_uid" ];
+params ["_unit", "_id", "_uid", "_name"];
 
-_player = objNull;
-{
-	if (getPlayerUID _x == _uid) exitWith { _player = _x; };
-} forEach allPlayers;
-
-if !(isNull _player) then {
+if !(isNull _unit) then {
 
 	// Remove Dog
-	private _my_dog = _player getVariable ["my_dog", nil];
+	private _my_dog = _unit getVariable ["my_dog", nil];
 	if (!isNil "_my_dog") then { deleteVehicle _my_dog };
 
 	// Unlock Car too Far
@@ -25,15 +20,23 @@ if !(isNull _player) then {
 	} forEach _cleanveh;
 
 	// Remove Injured AI
+	private _bros = allUnits select {(_x getVariable ["MGI_Grp_ID","0"]) == (player getVariable ["MGI_Grp_ID","1"])};
 	{
 		_x setVariable ["MGI_busy", nil];
 		if (!(lifeState _x in ["HEALTHY", "INJURED"])) then { deleteVehicle _x };
-	} forEach MGI_bros;
+	} forEach _bros;
 
 	// Remove Taxi
-	private _taxi = _player getVariable ["GRLIB_taxi_called", nil];
+	private _taxi = _unit getVariable ["GRLIB_taxi_called", nil];
 	if (!isNil "_taxi") then { deleteVehicle _taxi };
 
-	private _text = format ["Bye bye %1, see you soon...", name _player];
+	// Remove Squad
+	private _my_squad = _unit getVariable ["my_squad", nil];
+	if (!isNil "_my_squad") then { {deleteVehicle _x} forEach units _my_squad };
+
+	private _text = format ["Bye bye %1, see you soon...", _name];
 	[gamelogic, _text] remoteExec ["globalChat", -2];
+
+	// Delete body
+	deleteVehicle _unit;
 };

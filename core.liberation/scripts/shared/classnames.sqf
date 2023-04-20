@@ -282,6 +282,18 @@ if ( count blufor_squad_aa == 0 ) then { blufor_squad_aa = [
 	"B_soldier_F"
 	];
 };
+if ( isNil "blufor_squad_mix" ) then { blufor_squad_mix = [] };
+if ( count blufor_squad_mix == 0 ) then { blufor_squad_mix = [
+	"B_Soldier_SL_F",
+	"B_soldier_AA_F",
+	"B_soldier_AA_F",
+	"B_soldier_AT_F",
+	"B_soldier_AT_F",
+	"B_soldier_F",
+	"B_medic_F",
+	"B_soldier_F"
+	];
+};
 if ( isNil "blufor_squad_recon" ) then { blufor_squad_recon = [] };
 if ( count blufor_squad_recon == 0 ) then { blufor_squad_recon = [
 	"B_Soldier_SL_F",
@@ -302,6 +314,7 @@ squads = [
 	[blufor_squad_inf,20,700,0,GRLIB_perm_max],
 	[blufor_squad_at,25,600,0,GRLIB_perm_max],
 	[blufor_squad_aa,25,600,0,GRLIB_perm_max],
+	[blufor_squad_mix,25,800,0,GRLIB_perm_max],
 	[blufor_squad_recon,25,500,0,GRLIB_perm_max]
 ];
 
@@ -752,7 +765,7 @@ air_vehicles_classnames = [] + opfor_choppers;
 { air_vehicles_classnames pushback (_x select 0); } foreach air_vehicles;
 markers_reset = [99999,99999,0];
 zeropos = [0,0,0];
-squads_names = [ localize "STR_LIGHT_RIFLE_SQUAD", localize "STR_RIFLE_SQUAD", localize "STR_AT_SQUAD", localize "STR_AA_SQUAD",  localize "STR_RECON_SQUAD", localize "STR_PARA_SQUAD" ];
+squads_names = [ localize "STR_LIGHT_RIFLE_SQUAD", localize "STR_RIFLE_SQUAD", localize "STR_AT_SQUAD", localize "STR_AA_SQUAD", localize "STR_MIXED_SQUAD", localize "STR_RECON_SQUAD" ];
 boats_names = [ "B_Boat_Transport_01_F", "B_Boat_Armed_01_minigun_F" ];
 ammobox_transports_typenames = [];
 { ammobox_transports_typenames pushback (_x select 0) } foreach box_transport_config;

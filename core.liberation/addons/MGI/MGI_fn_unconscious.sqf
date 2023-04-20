@@ -42,7 +42,6 @@ sleep 10;
 
 _timer = diag_tickTime;
 while {lifeState _unit == 'incapacitated' && diag_tickTime <= _timer + MGI_react + MGI_BleedOut} do {
-  //if (round (getPos _unit select 2) < -5) exitWith {_unit call MGI_fn_death}; //underwater
   _medic = _unit getVariable ['MGI_myMedic',objNull];
   if (isNull _medic) then {
     _unit groupchat "I need a Medic !!";

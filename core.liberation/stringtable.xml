@@ -344,12 +344,12 @@
 						<Spanish>Escuadra de reconocimiento</Spanish>
 						<Russian>Отряд Разведчиков</Russian>
 				</Key>
-				<Key ID="STR_PARA_SQUAD">
-						<Original>Paratroopers Squad</Original>
-						<French>Escouade Parachutistes</French>
-						<German>Fallschirmjaegertrupp</German>
-						<Spanish>Escuadra de paracaidistas</Spanish>
-						<Russian>Отряд Десантников</Russian>
+				<Key ID="STR_MIXED_SQUAD">
+						<Original>AA/AC Mixed Squad</Original>
+						<French>Escouade Mixte AA/AC</French>
+						<German>AA/AC Mixed Squad</German>
+						<Spanish>Escuadrón mixto AA/AC</Spanish>
+						<Russian>AA/AC Смешанный отряд</Russian>
 				</Key>
 				<Key ID="STR_UNITCAP">
 						<Original>Unit cap</Original>

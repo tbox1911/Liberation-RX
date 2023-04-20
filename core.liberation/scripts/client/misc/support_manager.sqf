@@ -1,6 +1,6 @@
 private ["_neararsenal", "_nearmedic", "_needammo1", "_needammo2", "_needmedic", "_magType", "_list_static", "_min"];
 
-_distarsenal = 20;
+_distarsenal = 30;
 _maxsec = 3;
 _list_static = [];
 {_list_static pushBack ( _x select 0 )} foreach (static_vehicles);
@@ -43,7 +43,10 @@ while { true } do {
 	_needammo2 = false;
 	_needmedic = false;
 	_UnitList = units group player;
-
+	_my_squad = player getVariable ["my_squad", nil];
+	if (!isNil "_my_squad") then {
+		{ _UnitList pushBack _x } forEach units _my_squad;
+	};
 	{
 		// Out vehicle
 		if (_x != player && lifeState _x != 'incapacitated' && vehicle _x == _x) then {
