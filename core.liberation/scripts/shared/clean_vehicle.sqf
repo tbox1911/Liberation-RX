@@ -13,7 +13,7 @@ if ( _vehicle getVariable ["GRLIB_ammo_truck_load", 0] >= 1 ) then {
 			detach _x;
 			sleep 0.2;
 			_x setVelocity [([] call F_getRND), ([] call F_getRND), 10];
-			sleep (0.5 + random 1);
+			sleep (0.5 + floor(random 3));
 			_x setDamage 1;
 		} else {
 			deleteVehicle _x;

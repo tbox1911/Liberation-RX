@@ -135,8 +135,8 @@ class liberation_squad {
 		w = (0.055 * safezoneW);
 		h = (0.04 * safezoneH);
 		sizeEx = 0.025 * safezoneH;
-		text = "Re Ammo";		// $STR_RESUPPLY;
-		tooltip = $STR_RESUPPLY_TOOLTIP;
+		text = $STR_PROMOTE;
+		tooltip = $STR_PROMOTE_TOOLTIP;
 		action = "GRLIB_squadaction = 1";
 	};
 	class LikeMeButton : StdButton{

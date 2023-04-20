@@ -11,8 +11,6 @@ params ["_unit"];
 ];
 
 // For all
-// UI Event Handler
-inGameUISetEventHandler ["Action", "if (_this select 3 == 'DisAssemble') then { hintSilent 'You are not allowed to do this';true}"];
 
 // Check Veh perms
 _unit addEventHandler ["GetInMan", {_this spawn vehicle_permissions}];
@@ -129,6 +127,9 @@ if (_unit == player && alive player && player isKindOf "Man") then {
 			["Do it !", true],
 			["Unblock unit.", [2], "", -5, [["expression", "[groupSelectedUnits player] spawn PAR_unblock_AI"]], "1", "1"]
 		]];
+
+		// Cannot DisAssemble
+		inGameUISetEventHandler ["Action", "if (_this select 3 == 'DisAssemble') then { hintSilent 'You are not allowed to do this';true}"];
 	};
 
 	_unit removeAllEventHandlers "GetInMan";

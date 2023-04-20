@@ -9,8 +9,8 @@ if ( _backpack != "" && _backpack != "B_Parachute" ) then {
 	sleep 0.1;
 };
 _unit addBackpack "B_Parachute";
-_unit setpos _pos vectorAdd [random [10,15,20], 0, 0];
-sleep 4;
+_unit setpos _pos vectorAdd [floor(random 20), floor(random 20), 0];
+sleep 3;
 _unit allowDamage true;
 halojumping = false;
 

@@ -1526,21 +1526,13 @@
 					<Russian>Выбранный член группы будет удалён.</Russian>
 					<Chinesesimp>选定的班组成员将被删除。</Chinesesimp>
 			</Key>
-			<Key ID="STR_RESUPPLY">
-					<Original>Resupply</Original>
-					<French>Réapprovisionner</French>
-					<German>Versorgen</German>
-					<Spanish>Reabastecer</Spanish>
-					<Russian>Переснарядить</Russian>
-					<Chinesesimp>重新补给</Chinesesimp>
+			<Key ID="STR_PROMOTE">
+					<Original>Level UP!</Original>
+					<French>Level UP!</French>
 			</Key>
-			<Key ID="STR_RESUPPLY_TOOLTIP">
-					<Original>If the selected squad member is close enough from a resupply point (mobile spawn or FOB) they will get a brand new, full loadout.</Original>
-					<French>Si le membre d'escouade sélectionné est assez près d'un point d'approvisionnement (spawn mobile ou FOB) il recevra un nouvel équipement complet.</French>
-					<German>Wenn das gewählte Gruppenmitglied nahe genug bei einem Versorgungspunkt (mobiler Spawn oder FOB), erhalten sie eine brandneue, vollständige Ausrüstung</German>
-					<Spanish>Si el miembro de la escuadra se encuentra cerca de un punto de abastecimiento (spawn móvil o FOB) obtendrá el equipamiento completo nuevo</Spanish>
-					<Russian>Если выбранный член группы находится достаточно близко от точки пополнения запасов (мобильный КШМ или FOB), он будет заменён новым, полностью снаряжённым.</Russian>
-					<Chinesesimp>如果被选中的小队成员离补给点足够近(移动重生点或FOB) ，他们将得到一个全新的，满载装备配置。</Chinesesimp>
+			<Key ID="STR_PROMOTE_TOOLTIP">
+					<Original>Promotes the unit to the next rank in exchange for Ammo. It cannot be higher than the player's rank.</Original>
+					<French>Promeut l'unité au rang suivant en échange d'Ammo. Il ne peut pas être supérieur au rang du joueur.</French>
 			</Key>
 			<Key ID="STR_CONFIRM">
 					<Original>Confirm</Original>
@@ -1638,21 +1630,13 @@
 					<Russian>Вы демобилизовали выбранного члена группы.</Russian>
 					<Chinesesimp>您已删除选定的班组成员。</Chinesesimp>
 			</Key>
-			<Key ID="STR_RESUPPLY_OK">
-					<Original>The selected squad member has been resupplied.</Original>
-					<French>Le membre de l'escouade sélectionné a été réapprovisionné.</French>
-					<German>Das ausgewählte Gruppenmitglied wurde versorgt.</German>
-					<Spanish>El miembro seleccionado de la escuadra ha sido reamunicionado</Spanish>
-					<Russian>Выбранный член группы был переснаряжён</Russian>
-					<Chinesesimp>所选班组成员已重新补给。</Chinesesimp>
+			<Key ID="STR_PROMOTE_OK">
+					<Original>The unit has been successfully promoted.</Original>
+					<French>L'unité a été promue avec succès.</French>
 			</Key>
-			<Key ID="STR_RESUPPLY_KO">
-					<Original>The selected squad member isn't close enough from a FOB or an Arsenal.</Original>
-					<French>Le membre de l'escouade sélectionné n'est pas assez proche d'une FOB ou d'un Arsenal.</French>
-					<German>Das ausgewählte Gruppenmitglied ist nicht nahe genug an einer FOB oder an einem Arsenal.</German>
-					<Spanish>El miembro seleccionado de la escuadra no está suficientemente cerca de una FOB o Arsenal.</Spanish>
-					<Russian>Выбранный член группы находится далеко от КШМ и FOB</Russian>
-					<Chinesesimp>所选小队成员离FOB或军火库的距离较远。</Chinesesimp>
+			<Key ID="STR_PROMOTE_KO">
+					<Original>The unit cannot be promoted, maximum rank has been reached.</Original>
+					<French>L'unité ne peut pas être promue, le rang maximum a été atteint.</French>
 			</Key>
 			<Key ID="STR_PERMISSIONS_TITLE">
 					<Original>PERMISSIONS MANAGEMENT</Original>

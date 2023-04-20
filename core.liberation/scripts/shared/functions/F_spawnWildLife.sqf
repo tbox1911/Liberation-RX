@@ -2,7 +2,7 @@ params [ "_pos" ];
 
 private _createdcivs = [];
 private _type = selectRandom ["Cock_random_F","Hen_random_F","Alsatian_Random_F","Fin_random_F","Goat_random_F","Sheep_random_F"];
-private _nbcivs = round (3 + (floor (random 5)));
+private _nbcivs = (3 + floor(random 4));
 
 if (_type in ["Alsatian_Random_F","Fin_random_F"]) then {_nbcivs = 2};
 if (_type in ["Cock_random_F","Hen_random_F"]) then {_nbcivs = _nbcivs + 2};

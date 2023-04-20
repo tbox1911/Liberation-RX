@@ -37,7 +37,7 @@ if (_weightsTotal > 0) then
 {
 	private ["_random", "_index"];
 
-	_random = random _weightsTotal;
+	_random = floor(random _weightsTotal);
 	_weightsTotal = 0;
 
 	{

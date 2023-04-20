@@ -2,11 +2,11 @@ params ["_grp", "_infantry"];
 
 if (isNil "reset_battlegroups_ai" ) then { reset_battlegroups_ai = false };
 
-sleep (3 + (random 3));
+sleep (3 + floor(random 5));
 
 while { ( count units _grp != 0 ) && ( GRLIB_endgame == 0 ) } do {
 
-	sleep (5 + (random 5));
+	sleep (3 + floor(random 5));
 
 	private _objectivepos = ([getpos (leader _grp)] call F_getNearestBluforObjective) select 0;
 
@@ -44,6 +44,6 @@ while { ( count units _grp != 0 ) && ( GRLIB_endgame == 0 ) } do {
 		sleep 5;
 		( { alive _x } count (units _grp) == 0) || reset_battlegroups_ai;
 	};
-	sleep (5 + (random 5));
+	sleep (3 + floor(random 5));
 	reset_battlegroups_ai = false;
 };

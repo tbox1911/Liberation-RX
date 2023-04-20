@@ -36,7 +36,7 @@ LRX_tk_check = {
 		[player] spawn LRX_tk_actions;
 	};
 
-	if (player == _unit) then {
+	if (player == _unit && isPlayer _killer) then {
 		if (GRLIB_tk_mode == 1 && LRX_tk_player_action <= GRLIB_tk_count) then {
 			player addAction [format ["<t color='#FF0080'>%1</t>: %2", localize "STR_TK_ACTION1",name _killer],"addons\TKP\tk_punish.sqf",_killer,999,false,true,"",""];
 			hintSilent format [localize "STR_TK_INFO1", name _killer];

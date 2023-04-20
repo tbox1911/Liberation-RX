@@ -15,5 +15,5 @@ _all_buildings_to_destroy = [];
 
 {
 	_x setdamage 1;
-	sleep (random 3);
+	sleep floor(random 4);
 } foreach _all_buildings_to_destroy

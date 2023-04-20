@@ -17,7 +17,7 @@ _setupVars =
 {
 	_missionType = "The Resistance";
 	_nbUnits = 6;
-	_nbUnits = _nbUnits + round(random (_nbUnits*0.5));
+	_nbUnits = _nbUnits + floor(random (_nbUnits/2));
 
 	// settings for this mission
 	_missionLocation = selectRandom ((blufor_sectors select {["capture_", _x] call fn_startsWith;}) apply {[_x, false]}) select 0 ;
@@ -128,7 +128,7 @@ _successExec = {
 	GRLIB_A3W_Mission_MRR = nil;
 	publicVariable "GRLIB_A3W_Mission_MRR";
 
-	private _nb = round(random [1,1.5,3]);
+	private _nb = floor(random 3);
 	for "_i" from 1 to _nb do {
 		_pos = _missionPos vectorAdd [([[-50,0,50], 20] call F_getRND), ([[-50,0,50], 20] call F_getRND), 0];
 		[ammobox_i_typename, _pos, false] call boxSetup;

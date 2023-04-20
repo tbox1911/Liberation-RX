@@ -45,6 +45,7 @@ GRLIB_date_day = 6;
 GRLIB_nights_start = 20;
 GRLIB_nights_stop = 4;
 GREUH_start_ammo = 400;
+GREUH_rank_level = ["PRIVATE", "CORPORAL", "SERGEANT", "LIEUTENANT", "CAPTAIN", "MAJOR", "COLONEL"];
 
 if ( GRLIB_blufor_cap > 100 ) then { GRLIB_blufor_cap = 100 }; // Don't forget that the human commander manages those, not the server
 GRLIB_offload_diag = false;

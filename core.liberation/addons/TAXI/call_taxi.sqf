@@ -34,7 +34,7 @@ if (isNil "GRLIB_all_fobs" || count GRLIB_all_fobs == 0) then {
 	_air_spawnpos = markerPos "base_chimera";
 };
 
-_air_spawnpos = [(((_air_spawnpos select 0) + 500) - random 1000),(((_air_spawnpos select 1) + 500) - random 1000), 120];
+_air_spawnpos = [(((_air_spawnpos select 0) + 500) - floor(random 1000)),(((_air_spawnpos select 1) + 500) - floor(random 1000)), 120];
 _vehicle = createVehicle [_taxi_type, _air_spawnpos, [], 0, "FLY"];
 _vehicle flyInHeight 150;
 _vehicle setVariable ["GRLIB_vehicle_owner", "server", true];

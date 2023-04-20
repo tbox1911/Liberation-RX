@@ -11,13 +11,13 @@ _activation_radius_vehicles = 12;
 _spread = 7;
 _infantry_trigger = 2 + (floor (random 3));
 _ultra_strong = false;
-if ( random 100 < 30 ) then {
+if ( floor(random 100) < 30 ) then {
 	_ultra_strong = true;
 };
 _vehicle_trigger = 1;
 _ied_type = selectRandom [ "IEDLandBig_F","IEDLandSmall_F","IEDUrbanBig_F","IEDUrbanSmall_F" ];
 _ied_obj = objNull;
-_roadobj = [ [  getmarkerpos (_sector), random(_radius), random(360)  ] call BIS_fnc_relPos, _radius, [] ] call BIS_fnc_nearestRoad;
+_roadobj = [ [  getmarkerpos (_sector), floor(random _radius), random(360)  ] call BIS_fnc_relPos, _radius, [] ] call BIS_fnc_nearestRoad;
 _goes_boom = false;
 
 

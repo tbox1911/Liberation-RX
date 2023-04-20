@@ -181,23 +181,20 @@ PAR_AI_Manager = {
         // Blood trail
         if (damage _x > 0.6 && vehicle _x == _x) then {
           private _spray = createVehicle ["BloodSpray_01_New_F", getPos _x, [], 0, "CAN_COLLIDE"];
-          _spray spawn {sleep (10 + random 5); deleteVehicle _this};
+          _spray spawn {sleep (10 + floor(random 5));; deleteVehicle _this};
         };
 
 		// AI level UP
-		_ai_score = _x getVariable ["PAR_AI_score", nil];
+		private _ai_score = _x getVariable ["PAR_AI_score", nil];
+		private _ai_skill = skill _x;
 		if (!isNil "_ai_score") then {
-			if (_ai_score <= 0 ) then {
-				_rank_lvl = ["PRIVATE", "CORPORAL", "SERGEANT", "LIEUTENANT", "CAPTAIN", "MAJOR", "COLONEL"];
-				_ai_skill = skill _x;
-				if (_ai_skill < 0.80) then {
-					_ai_rank = _rank_lvl select (_rank_lvl find (rank _x)) + 1;
-					_x setSkill (_ai_skill + 0.05);
-					_x setUnitRank _ai_rank;
-					_msg = format ["%1 was promoted to the rank of %2 !", name _x, _ai_rank];
-					[_x, _msg] call PAR_fn_globalchat;
-				};
-				_x setVariable ["PAR_AI_score", ((_rank_lvl find (rank _x)) + 1) * 5, true];
+			if (_ai_score <= 0 && _ai_skill < 0.85) then {
+				private _ai_rank = GREUH_rank_level select (GREUH_rank_level find (rank _x)) + 1;
+				_x setSkill (_ai_skill + 0.05);
+				_x setUnitRank _ai_rank;
+				_msg = format ["%1 was promoted to the rank of %2 !", name _x, _ai_rank];
+				[_x, _msg] call PAR_fn_globalchat;
+				_x setVariable ["PAR_AI_score", ((GREUH_rank_level find (rank _x)) + 1) * 5, true];
 			};
 		};
         sleep 0.3;

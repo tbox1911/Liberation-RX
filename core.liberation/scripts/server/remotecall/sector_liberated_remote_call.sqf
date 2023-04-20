@@ -40,7 +40,7 @@ if (isServer) then {
 		_combat_readiness_increase = (floor (random 4));
 	};
 
-	private _income =  (round (75 + (random 100)));
+	private _income = (75 + floor(random 100));
 	private _text = format ["Reward Received: + %1 Ammo.", _income];
 	{
 		if (_x distance2D (markerpos _liberated_sector) < GRLIB_sector_size ) then {
@@ -70,7 +70,7 @@ if (isServer) then {
 	sleep 45;
 
 	if ( GRLIB_endgame == 0 ) then {
-		if ( (!( _liberated_sector in sectors_tower )) && (((random (200.0 / (GRLIB_difficulty_modifier * GRLIB_csat_aggressivity) )) < (combat_readiness - 20)) || ( _liberated_sector in sectors_bigtown )) && ([] call F_opforCap < GRLIB_battlegroup_cap) ) then {
+		if ( (!( _liberated_sector in sectors_tower )) && ((floor(random (200.0 / (GRLIB_difficulty_modifier * GRLIB_csat_aggressivity) )) < (combat_readiness - 20)) || ( _liberated_sector in sectors_bigtown )) && ([] call F_opforCap < GRLIB_battlegroup_cap) ) then {
 			[ _liberated_sector ] spawn spawn_battlegroup;
 		};
 	};
