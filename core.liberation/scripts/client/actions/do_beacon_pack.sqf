@@ -11,7 +11,7 @@ _pos = getPosATL _tent;
 disableUserInput true;
 player playMove "AinvPknlMstpSlayWnonDnon_medic";
 sleep 7;
-[_tent] remoteExec ["deleteVehicle", 2];
+[_tent, "del"] remoteExec ["addel_beacon_remote_call", 2];
 sleep 1;
 if (backpack player == "") then {
 	player addBackpack mobile_respawn_bag;

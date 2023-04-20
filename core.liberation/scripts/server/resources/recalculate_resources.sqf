@@ -30,6 +30,7 @@ while { true } do {
 				(side _x == GRLIB_side_friendly || ({side _x == GRLIB_side_civilian} count (crew vehicle _x) == 0)) &&
 				(_x distance lhd > 250) &&
 				!(_x getVariable ['R3F_LOG_disabled', false]) &&
+				isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) &&
 				(alive _x)
 				) then {
 		  		_unit = _x;
@@ -40,7 +41,7 @@ while { true } do {
 					};
 				} foreach ( light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles );
 			};
-		} foreach vehicles;
+		} foreach vehicles + GRLIB_mobile_respawn;
 
 		resources_infantry = _new_manpower_used;
 		resources_fuel = _new_fuel_used;

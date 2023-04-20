@@ -16,6 +16,7 @@ _support_to_skip = [
 } foreach light_vehicles + heavy_vehicles + air_vehicles + support_vehicles;
 
 _vehtomark = _vehtomark - _support_to_skip;
+waitUntil { !isNil "GRLIB_mobile_respawn" };
 
 while { true } do {
 
@@ -48,8 +49,8 @@ while { true } do {
 
 	} foreach _markedveh;
 
-	// Radio Markers Update
-	_markedbeac = [ entities mobile_respawn, { alive _x && _x distance2D lhd > 1000 && _x distance2D ([_x] call F_getNearestFob) > GRLIB_sector_size &&  !surfaceIsWater (getpos _x) && isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull])}] call BIS_fnc_conditionalSelect;
+	// Mobile Markers Update
+	_markedbeac = [ GRLIB_mobile_respawn, { alive _x && _x distance2D lhd > 1000 && _x distance2D ([_x] call F_getNearestFob) > GRLIB_sector_size && !surfaceIsWater (getpos _x) && isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull])}] call BIS_fnc_conditionalSelect;
 
 	if ( count _markedbeac != count _beacmarkers ) then {
 		{ deleteMarkerLocal _x; } foreach _beacmarkers;

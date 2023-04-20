@@ -11,6 +11,14 @@ if ( isServer ) then {
 		};
 	};
 
+	if ( ((typeof _unit) in [ammobox_o_typename, ammobox_b_typename]) && ((getPosATL _unit) select 2 < 10) ) exitWith {
+		sleep random 2;
+		( "R_80mm_HE" createVehicle (getPosATL _unit) ) setVelocity [0, 0, -200];
+		deleteVehicle _unit;
+	};
+
+	if ( typeof _unit == mobile_respawn ) exitWith { sleep 10; [_unit, "del"] remoteExec ["addel_beacon_remote_call", 2] };
+
 	please_recalculate = true;
 
 	if (isNil "infantry_weight") then { infantry_weight = 33 };
@@ -108,12 +116,6 @@ if ( isServer ) then {
 		} else {
 			stats_blufor_vehicles_killed = stats_blufor_vehicles_killed + 1;
 		};
-	};
-
-	if ( ((typeof _unit) in [ammobox_o_typename, ammobox_b_typename]) && ((getPosATL _unit) select 2 < 10) ) exitWith {
-		sleep random 2;
-		( "R_80mm_HE" createVehicle (getPosATL _unit) ) setVelocity [0, 0, -200];
-		deleteVehicle _unit;
 	};
 
 	_unit setVariable ["R3F_LOG_disabled", true, true];
