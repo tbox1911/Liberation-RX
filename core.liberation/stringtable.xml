@@ -3383,8 +3383,8 @@
 				<Chinesesimp>您可以雇佣步兵。&lt;br/&gt;您可以制造轻型车辆&lt;br/&gt;您具有对步兵和后勤的有限访问权限。</Chinesesimp>
 			</Key>
 			<Key ID="STR_RANK_LVL2">
-				<Original>You have Full Acces to Infantry.&lt;br/&gt;You can use Tanks.&lt;br/&gt;You have an extra AI.</Original>
-				<French>Vous avez un acces complet à l'Infanterie.&lt;br/&gt;Vous pouvez utiliser les Tanks.&lt;br/&gt;Vous avez une unitée en plus.</French>
+				<Original>You have Full Acces to Infantry.&lt;br/&gt;You can use Tanks.&lt;br/&gt;You have an extra AI.&lt;br/&gt;You have access to the Virtual Garage.</Original>
+				<French>Vous avez un acces complet à l'Infanterie.&lt;br/&gt;Vous pouvez utiliser les Tanks.&lt;br/&gt;Vous avez une unitée en plus.&lt;br/&gt;Vous avez acces au Garage Virtuel.</French>
 				<Chinesesimp>您可以完全控制步兵。&lt;br/&gt;您可以使用坦克。&lt;br/&gt;您还可以招募一个额外的AI。</Chinesesimp>
 			</Key>
 			<Key ID="STR_RANK_LVL3">
