@@ -104,7 +104,8 @@ if ( !GRLIB_OPTRE_enabled && !GRLIB_GM_enabled && !GRLIB_Red_Edition) then {
 	// Huron type
 	switch (GRLIB_huron_type) do {
 		case 0: {huron_typename = "B_Heli_Transport_03_unarmed_F" };
-		case 1: {huron_typename = "B_Heli_Transport_01_F" };
+		case 1: {huron_typename = "I_Heli_Transport_02_F" };
+		case 2: {huron_typename = "B_Heli_Transport_01_F" };
 	};
 };
 
