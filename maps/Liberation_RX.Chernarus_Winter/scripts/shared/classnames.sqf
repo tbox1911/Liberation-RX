@@ -66,8 +66,8 @@ light_vehicles = [
 	["B_SDV_01_F",5,30,5,GRLIB_perm_log],
 	["C_Scooter_Transport_01_F",1,5,1,0],
 	["SUV_01_base_black_F",1,10,1,0],
-	["C_Offroad_01_F",1,10,1,0],
-	["C_Offroad_02_unarmed_black_F",1,10,1,GRLIB_perm_inf],
+	["B_G_Offroad_01_F",1,10,1,0],
+	["B_G_Offroad_01_armed_F",1,50,1,GRLIB_perm_inf],
 	["C_SUV_01_F",1,10,1,GRLIB_perm_inf],
 	["C_Van_01_transport_F",1,15,1,0],
 	["B_MRAP_01_F",2,25,2,0],
@@ -546,6 +546,14 @@ opfor_air = [
 	"O_Plane_CAS_02_Cluster_F"
 ];
 
+opfor_statics = [
+	"O_HMG_01_high_F",
+	"O_GMG_01_high_F",
+	"O_static_AA_F",
+	"O_static_AT_F",
+	"O_Mortar_01_F"
+];
+
 ind_recyclable = [
 	["I_Truck_02_covered_F",0,round (20 / GRLIB_recycling_percentage),0],
 	["I_Truck_02_transport_F",0,round (20 / GRLIB_recycling_percentage),0]
@@ -557,6 +565,11 @@ opfor_texture_overide = [
 ];
 
 opfor_recyclable = [
+	["O_HMG_01_high_F",0,round (10 / GRLIB_recycling_percentage),0],
+	["O_GMG_01_high_F",0,round (20 / GRLIB_recycling_percentage),0],
+	["O_static_AA_F",0,round (50 / GRLIB_recycling_percentage),0],
+	["O_static_AT_F",0,round (50 / GRLIB_recycling_percentage),0],
+	["O_Mortar_01_F",0,round (300 / GRLIB_recycling_percentage),0],
 	["O_LSV_02_armed_F",0,round (20 / GRLIB_recycling_percentage),0],
 	["O_LSV_02_AT_F",0,round (40 / GRLIB_recycling_percentage),0],
 	["O_G_Offroad_01_armed_F",0,round (30 / GRLIB_recycling_percentage),0],
@@ -642,6 +655,7 @@ civilian_vehicles = [
 	"C_Van_02_medevac_F",
 	"C_Van_02_service_F",
 	"B_GEN_Van_02_transport_F",
+	"C_Truck_02_covered_F",
 	"C_Truck_02_transport_F",
 	"C_Tractor_01_F"
 ];
@@ -656,6 +670,8 @@ box_transport_config = [
 	[ "I_G_Offroad_01_F", -5, [0, -1.55, 0.2] ],
 	[ "B_Truck_01_transport_F", -6.5, [0, -0.4, 0.4], [0, -2.1, 0.4], [0, -3.8, 0.4] ],
 	[ "B_Truck_01_covered_F", -6.5, [0, -0.4, 0.4], [0, -2.1, 0.4], [0, -3.8, 0.4] ],
+	[ "C_Truck_02_transport_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
+	[ "C_Truck_02_covered_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
 	[ "I_Truck_02_transport_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
 	[ "I_Truck_02_covered_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
 	[ "O_Truck_03_transport_F", -6.5, [0, -0.8, 0.4], [0, -2.4, 0.4], [0, -4.0, 0.4] ],
