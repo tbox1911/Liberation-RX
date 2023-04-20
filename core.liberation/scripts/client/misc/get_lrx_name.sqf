@@ -38,5 +38,7 @@ if ( _class == foodbarrel_typename ) then {
 if ( _class == "Land_CargoBox_V1_F" ) then {
 	_text = "Fireworks Box";
 };
-
+if ( _class == FOB_box_outpost ) then {
+	_text = localize "STR_OUTPOSTBOX";
+};
 _text;

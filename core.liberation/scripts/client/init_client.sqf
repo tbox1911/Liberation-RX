@@ -1,6 +1,11 @@
 diag_log "--- Client Init start ---";
 titleText ["Loading...","BLACK FADED", 1000];
-
+waitUntil {!isNil "abort_loading" };
+if (abort_loading) exitWith {
+	titleText ["Sorry, An error occured on savegame loading.\nPlease check the error logs.","BLACK FADED", 1000];
+	uisleep 10;
+	endMission "LOSER";
+};
 respawn_lhd = compileFinal preprocessFileLineNumbers "scripts\client\spawn\respawn_lhd.sqf";
 spawn_camera = compileFinal preprocessFileLineNumbers "scripts\client\spawn\spawn_camera.sqf";
 cinematic_camera = compileFinal preprocessFileLineNumbers "scripts\client\ui\cinematic_camera.sqf";

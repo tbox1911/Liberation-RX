@@ -8,9 +8,11 @@ enableSaving [false, false];
 disableMapIndicators [false,true,false,false];
 setGroupIconsVisible [false,false];
 
+abort_loading = false;
 [] call compileFinal preprocessFileLineNUmbers "whitelist.sqf";
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\liberation_functions.sqf";
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\fetch_params.sqf";
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -67,12 +69,33 @@ if (isServer) then {
 			_x setVariable ["GRLIB_vehicle_owner", "public", true];
 		};
 	} foreach vehicles;
+=======
 
-	[] execVM "scripts\server\init_server.sqf";
-};
+if (!abort_loading) then {
+	[] call compileFinal preprocessFileLineNUmbers "scripts\shared\classnames.sqf";
+	[] call compileFinal preprocessfilelinenumbers "scripts\shared\init_shared.sqf";
+	[] call compileFinal preprocessFileLineNUmbers "scripts\shared\init_sectors.sqf";
+	if (!GRLIB_ACE_enabled) then {[] execVM "R3F_LOG\init.sqf"};
+>>>>>>> f014e5c9 (startup protect)
 
-if (!isDedicated && !hasInterface && isMultiplayer) then {
-	[] execVM "scripts\server\offloading\hc_manager.sqf";
+	if (isServer) then {
+		{
+			_x removeAllMPEventHandlers "MPKilled";
+			_x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+			if (isNil {_x getVariable "GRLIB_vehicle_owner"} ) then {
+				_x setVariable ["GRLIB_vehicle_owner", "public", true];
+			};
+		} foreach vehicles;
+
+		[] execVM "scripts\server\init_server.sqf";
+	};
+
+	if (!isDedicated && !hasInterface && isMultiplayer) then {
+		[] execVM "scripts\server\offloading\hc_manager.sqf";
+	};
+} else {
+	GRLIB_init_server = false;
+	publicVariable "abort_loading";
 };
 
 if (!isDedicated && hasInterface) then {

@@ -245,6 +245,14 @@
 					<Russian>-- РАЗВЕРНУТЬ FOB</Russian>
 					<Chinesesimp>-- 部署 FOB --</Chinesesimp>
 			</Key>
+			<Key ID="STR_OUTPOST_ACTION">
+					<Original>-- DEPLOY OUTPOST</Original>
+					<French>-- DEPLOYER OUTPOST</French>
+					<German>-- OUTPOST Bereitstellen</German>
+					<Spanish>-- DESPLEGAR OUTPOST</Spanish>
+					<Russian>-- РАЗВЕРНУТЬ OUTPOST</Russian>
+					<Chinesesimp>-- 部署 OUTPOST --</Chinesesimp>
+			</Key>			
 			<Key ID="STR_FOB_BUILDING_IMPOSSIBLE">
 					<Original>Can't deploy a new FOB here, you must be at least %1 meters away from every other FOB. Nearest FOB is %2 meters away.</Original>
 					<French>Impossible de déployer une nouvelle FOB ici, vous devez être à au moins %1 mètres de toutes les autres FOB. La FOB la plus proche est à %2 mètres d'ici.</French>
@@ -284,6 +292,14 @@
 					<Spanish>Contenedor de FOB</Spanish>
 					<Russian>FOB контейнер</Russian>
 					<Chinesesimp>FOB 集装箱</Chinesesimp>
+			</Key>
+			<Key ID="STR_OUTPOSTBOX">
+					<Original>Outpost Container</Original>
+					<French>Container Outpost</French>
+					<German>Outpost Container</German>
+					<Spanish>Contenedor de Outpost</Spanish>
+					<Russian>Outpost контейнер</Russian>
+					<Chinesesimp>Outpost 集装箱</Chinesesimp>
 			</Key>
 			<Key ID="STR_FOBTRUCK">
 					<Original>FOB Truck</Original>
@@ -576,44 +592,44 @@
 					<Chinesesimp>%1 不再受到威胁。</Chinesesimp>
 			</Key>
 			<Key ID="STR_NOTIFICATION_FOBBUILT_TITLE">
-					<Original>NEW FOB BUILT</Original>
-					<French>NOUVELLE FOB</French>
-					<German>NEUE FOB GEBAUT</German>
-					<Spanish>NUEVA FOB CONSTRUIDA</Spanish>
-					<Russian>НОВАЯ FOB ПОСТРОЕНА</Russian>
-					<Chinesesimp>新建 FOB</Chinesesimp>
+					<Original>NEW %1 BUILT</Original>
+					<French>NOUVEAU %1 CONSTRUIT</French>
+					<German>NEUE %1 GEBAUT</German>
+					<Spanish>NUEVA %1 CONSTRUIDA</Spanish>
+					<Russian>НОВАЯ %1 ПОСТРОЕНА</Russian>
+					<Chinesesimp>新建 %1</Chinesesimp>
 			</Key>
 			<Key ID="STR_NOTIFICATION_FOBBUILT_TEXT">
-					<Original>FOB %1 is now operational.</Original>
-					<French>La FOB %1 est opérationnelle.</French>
-					<German>FOB %1 nun funktionsfähig.</German>
-					<Spanish>La FOB %1 es operacional</Spanish>
-					<Russian>FOB %1 сейчас действует.</Russian>
-					<Chinesesimp>FOB %1 现在可以运作了。</Chinesesimp>
+					<Original>%1 %2 is now operational.</Original>
+					<French>%1 %2 est opérationnel.</French>
+					<German>%1 %2 nun funktionsfähig.</German>
+					<Spanish>La %1 %2 es operacional</Spanish>
+					<Russian>%1 %2 сейчас действует.</Russian>
+					<Chinesesimp>%1 %2 现在可以运作了。</Chinesesimp>
 			</Key>
 			<Key ID="STR_NOTIFICATION_FOBSAFE_TITLE">
-					<Original>FOB SAFE</Original>
-					<French>FOB SECURISEE</French>
-					<German>FOB SICHER</German>
-					<Spanish>FOB SEGURA</Spanish>
-					<Russian>FOB В БЕЗОПАСНОСТИ</Russian>
-					<Chinesesimp>FOB 安全</Chinesesimp>
+					<Original>%1 SAFE</Original>
+					<French>%1 SECURISE</French>
+					<German>%1 SICHER</German>
+					<Spanish>%1 SEGURA</Spanish>
+					<Russian>%1 В БЕЗОПАСНОСТИ</Russian>
+					<Chinesesimp>%1 安全</Chinesesimp>
 			</Key>
 			<Key ID="STR_NOTIFICATION_FOBSAFE_TEXT">
-					<Original>FOB %1 is no longer under threat.</Original>
-					<French>La FOB %1 n'est plus menacée.</French>
-					<German>FOB %1 ist ausser Gefahr.</German>
-					<Spanish>FOB %1 ya no está bajo amenaza</Spanish>
-					<Russian>FOB %1 больше не находится под угрозой.</Russian>
-					<Chinesesimp>FOB %1 不再受到敌军威胁。</Chinesesimp>
+					<Original>%1 %2 is no longer under threat.</Original>
+					<French>%1 %2 n'est plus menacé.</French>
+					<German>%1 %2 ist ausser Gefahr.</German>
+					<Spanish>%1 %2 ya no está bajo amenaza</Spanish>
+					<Russian>%1 %2 больше не находится под угрозой.</Russian>
+					<Chinesesimp>%1 %2 不再受到敌军威胁。</Chinesesimp>
 			</Key>
 			<Key ID="STR_NOTIFICATION_FOBATTACKED_TITLE">
-					<Original>High Priority - FOB ATTACKED</Original>
-					<French>Haute Priorité - FOB ATTAQUEE</French>
-					<German>Hohe Priorität - FOB ANGEGRIFFEN</German>
-					<Spanish>Alta Prioridad - FOB ATACADA</Spanish>
-					<Russian>Высокий Приоритет - FOB АТАКОВАНА</Russian>
-					<Chinesesimp>高优先级 - FOB受到攻击</Chinesesimp>
+					<Original>High Priority - %1 ATTACKED</Original>
+					<French>Haute Priorité - %1 ATTAQUE</French>
+					<German>Hohe Priorität - %1 ANGEGRIFFEN</German>
+					<Spanish>Alta Prioridad - %1 ATACADA</Spanish>
+					<Russian>Высокий Приоритет - %1 АТАКОВАНА</Russian>
+					<Chinesesimp>高优先级 - %1受到攻击</Chinesesimp>
 			</Key>
 			<Key ID="STR_NOTIFICATION_FOBATTACKED_TEXT">
 					<Original>FOB %1 is under attack!&lt;br/&gt;You &lt;t color='#ff0000'&gt;MUST&lt;/t&gt; defend the FOB!</Original>
@@ -624,20 +640,20 @@
 					<Chinesesimp>FOB %1 受到了攻击!&lt;br/&gt;你 &lt;t color='#ff0000'&gt;必须&lt;/t&gt; 保卫这个 FOB!</Chinesesimp>
 			</Key>
 			<Key ID="STR_NOTIFICATION_FOBLOST_TITLE">
-					<Original>FOB DESTROYED</Original>
-					<French>FOB DETRUITE</French>
-					<German>FOB ZERSTOERT</German>
-					<Spanish>FOB DESTRUIDA</Spanish>
-					<Russian>FOB УНИЧТОЖЕНА</Russian>
-					<Chinesesimp>FOB被摧毁</Chinesesimp>
+					<Original>%1 DESTROYED</Original>
+					<French>%1 DETRUIT</French>
+					<German>%1 ZERSTOERT</German>
+					<Spanish>%1 DESTRUIDA</Spanish>
+					<Russian>%1 УНИЧТОЖЕНА</Russian>
+					<Chinesesimp>%1被摧毁</Chinesesimp>
 			</Key>
 			<Key ID="STR_NOTIFICATION_FOBLOST_TEXT">
-					<Original>FOB %1 has been destroyed!</Original>
-					<French>La FOB %1 a été détruite !</French>
-					<German>FOB %1 wurde zerstoert!</German>
-					<Spanish>La FOB %1 ha sido destruida!</Spanish>
-					<Russian>FOB %1 была уничтожена!</Russian>
-					<Chinesesimp>FOB %1 已被摧毁!</Chinesesimp>
+					<Original>%1 %2 has been destroyed!</Original>
+					<French>%1 %2 a été détruit !</French>
+					<German>%1 %2 wurde zerstoert!</German>
+					<Spanish>%1 %2 ha sido destruida!</Spanish>
+					<Russian>%1 %2 была уничтожена!</Russian>
+					<Chinesesimp>%1 %2 已被摧毁!</Chinesesimp>
 			</Key>
 			<Key ID="STR_NOTIFICATION_BATTLEGROUP_TITLE">
 					<Original>HOSTILE FORCES INCOMING</Original>
@@ -3388,8 +3404,8 @@
 				<Chinesesimp>您可以完全控制步兵。&lt;br/&gt;您可以使用坦克。&lt;br/&gt;您还可以招募一个额外的AI。</Chinesesimp>
 			</Key>
 			<Key ID="STR_RANK_LVL3">
-				<Original>You have Full Acces to Static Weapons&lt;br/&gt;You can use Aircraft.&lt;br/&gt;You have an extra AI.</Original>
-				<French>Vous avez un acces complet aux Défense Statique.&lt;br/&gt;Vous pouvez utiliser les Avions.&lt;br/&gt;Vous avez une unitée en plus.</French>
+				<Original>You have Full Acces to Static Weapons&lt;br/&gt;You can use Aircraft.&lt;br/&gt;You can build Outpost.&lt;br/&gt;You have an extra AI.</Original>
+				<French>Vous avez un acces complet aux Défense Statique.&lt;br/&gt;Vous pouvez utiliser les Avions.&lt;br/&gt;Vous pouvez construire des Outpost.&lt;br/&gt;Vous avez une unitée en plus.</French>
 				<Chinesesimp>您可以完全使用静态武器&lt;br/&gt;您可以使用飞机。&lt;br/&gt;您还可以招募一个额外的AI。</Chinesesimp>
 			</Key>
 			<Key ID="STR_RANK_LVL4">

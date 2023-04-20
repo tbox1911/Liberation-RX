@@ -172,6 +172,7 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 [
 	[FOB_box_typename, 0],
+	[FOB_box_outpost, 0],
  	[FOB_truck_typename, 0],
 	[ammo_truck_typename, 0],
 	[fuel_truck_typename, 0],
@@ -183,6 +184,7 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 	[mobile_respawn, 2],
 	[Arsenal_typename, 5],
 	[FOB_box_typename, 50],
+	[FOB_box_outpost, 25],
 	[ammobox_b_typename, 15],
 	[ammobox_o_typename, 15],
 	[ammobox_i_typename, 15],
@@ -203,6 +205,7 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	mobile_respawn,
 	Arsenal_typename,
 	FOB_box_typename,
+	FOB_box_outpost,
 	ammobox_b_typename,
 	ammobox_o_typename,
 	ammobox_i_typename,
@@ -229,7 +232,7 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	"Land_Cargo_Patrol_V3_F",
 	"Land_BagBunker_Large_F",
 	"Land_BagBunker_Small_F",
-	"Land_BagBunker_Tower_F",
+	//"Land_BagBunker_Tower_F",
 	"CamoNet_BLUFOR_open_F",
 	"CamoNet_BLUFOR_big_F",
 	"Land_CncShelter_F"	

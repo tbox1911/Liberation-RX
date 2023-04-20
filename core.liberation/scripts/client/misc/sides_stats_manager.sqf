@@ -22,7 +22,7 @@ while { true } do {
 		};
 
 		_default = false;
-		_side_name = ["Invasion", "Cache", "Wreck"];
+		_side_name = ["Invasion", "Cache", "Wreck", "Capture"];
 		{if ( (_sector find _x) > 0 ) exitwith {_default = true}} forEach _side_name;
 		if ( _default ) then {
 			_opf = [(getMarkerPos _sector) nearEntities ["Man", (GRLIB_sector_size/2)], {(alive _x) && (side _x == GRLIB_side_enemy)}] call BIS_fnc_conditionalSelect;

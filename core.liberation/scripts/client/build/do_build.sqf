@@ -43,26 +43,34 @@ while { true } do {
 	if ( buildtype == 99 ) then {
 		_classname = FOB_typename;
 		_price = 0;
-	} else {
-		if (buildtype == 9) then {
-			_price = 0;
-			_classname = build_unit select 0;
-			_color = build_unit select 1;
-			_ammo = build_unit select 2;
-			_lst_a3 = build_unit select 3;
-			_lst_r3f = build_unit select 4;
-		} else {
-			_score = score player;
-			_build_list = [];
-			{
-				if ( _score >= (_x select 4) ) then {_build_list pushback _x};
-			} forEach (build_lists select buildtype);
+	};
+	
+	if ( buildtype == 98 ) then {
+		_classname = FOB_outpost;
+		_price = 0;
+		buildtype = 99;
+	};
 
-			_classname = (_build_list select buildindex) select 0;
-			_price = (_build_list select buildindex) select 2;
-			_color = [];
-			_ammo = 0;
-		};
+	if (buildtype == 9 ) then {
+		_price = 0;
+		_classname = build_unit select 0;
+		_color = build_unit select 1;
+		_ammo = build_unit select 2;
+		_lst_a3 = build_unit select 3;
+		_lst_r3f = build_unit select 4;
+	};
+	
+	if (buildtype in [1,2,3,4,5,6,7,8]) then {
+		_score = score player;
+		_build_list = [];
+		{
+			if ( _score >= (_x select 4) ) then {_build_list pushback _x};
+		} forEach (build_lists select buildtype);
+
+		_classname = (_build_list select buildindex) select 0;
+		_price = (_build_list select buildindex) select 2;
+		_color = [];
+		_ammo = 0;
 	};
 
 	if(buildtype == 1) then {
