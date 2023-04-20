@@ -179,7 +179,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 	sleep 10;
 
 	if ( ( _sector in sectors_factory ) || (_sector in sectors_capture ) || (_sector in sectors_bigtown ) || (_sector in sectors_military ) ) then {
-		[ [ _sector ] , "reinforcements_remote_call" ] call BIS_fnc_MP;
+		[ _sector ] remoteExec ["reinforcements_remote_call", 2];
 	};
 
 	while { !_stopit } do {
@@ -187,12 +187,15 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 		if ( ([_sectorpos, _local_capture_size] call F_sectorOwnership == GRLIB_side_friendly) && (GRLIB_endgame == 0) ) then {
 			[ _sector ] spawn sector_liberated_remote_call;
 			_stopit = true;
+			_enemy_left = [allUnits, {(alive _x) && (vehicle _x == _x) && (side group _x == GRLIB_side_enemy) && (((getmarkerpos _sector) distance2D _x) < _local_capture_size * 1.2)}] call BIS_fnc_conditionalSelect;
 			{ 
 				if ( _max_prisonners > 0 && ((random 100) < GRLIB_surrender_chance) ) then {
 					[_x] spawn prisonner_ai;
 					_max_prisonners = _max_prisonners - 1;
+				} else {
+					if ( ((random 100) <= 50) ) then { [_x] spawn bomber_ai };
 				};
-			} foreach ( (getmarkerpos _sector) nearEntities [ ["Man"], _local_capture_size * 1.2 ] );
+			} foreach _enemy_left;
 			sleep 60;
 
 			active_sectors = active_sectors - [ _sector ]; publicVariable "active_sectors";
