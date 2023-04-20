@@ -36,9 +36,9 @@ while { true } do {
 	_current_page = 0;
 	_old_page = -99;
 
-	waitUntil { sleep 0.3; howtoplay == 1 };
+	waitUntil { uiSleep 0.3; howtoplay == 1 };
 	waitUntil { !dialog };
-	sleep 0.1;
+	uiSleep 0.1;
 
 	disableUserInput false;
 	_dialog = createDialog "liberation_tutorial";
@@ -62,14 +62,14 @@ while { true } do {
 			((findDisplay 5353) displayCtrl (515)) ctrlSetStructuredText parseText _text;
 			_old_page = _current_page;
 		};
-		sleep 0.2;
+		uiSleep 0.2;
 	};
 	if ( dialog ) then { closeDialog 0 };
 
 	cinematic_camera_started = false;
 	howtoplay = 0;
 	if (GRLIB_player_spawned) then {
-		sleep 0.5;
+		uiSleep 0.5;
 		titleText ["" ,"BLACK IN", 3];
 	};
 };

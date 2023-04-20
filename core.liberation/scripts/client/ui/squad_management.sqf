@@ -238,12 +238,12 @@ while { dialog && alive player } do {
 			};
 
 			deleteVehicle _selectedmember;
-			sleep 0.01;
+			uiSleep 0.01;
 
 			player setPosATL _destpos;
 			player setDir _destdir;
 
-			sleep 0.01;
+			uiSleep 0.01;
 
 			[ localize 'STR_SQUAD_DEPLOY' ] spawn spawn_camera;
 
@@ -268,7 +268,7 @@ while { dialog && alive player } do {
 			_name = name _selectedmember;
 			{ ctrlShow [_x, true] } foreach _rename_controls;
 			ctrlSetText [527, _name];
-			waitUntil {sleep 0.1; ((GRLIB_squadaction == -1) || (unitname != "") || !(dialog) || !(alive player)) };
+			waitUntil {uiSleep 0.1; ((GRLIB_squadaction == -1) || (unitname != "") || !(dialog) || !(alive player)) };
 
 			if (unitname != "") then {
 				_p2 = (unitname splitString " ") select 0;
@@ -283,12 +283,12 @@ while { dialog && alive player } do {
 
 		GRLIB_squadaction = -1;
 	};
-	sleep 0.1;
+	uiSleep 0.1;
 };
 
 "spawn_marker" setMarkerPosLocal markers_reset;
 _squad_camera cameraEffect ["terminate","back"];
 camDestroy _squad_camera;
 deleteVehicle _targetobject;
-sleep 3;
+uiSleep 3;
 hintSilent "";
