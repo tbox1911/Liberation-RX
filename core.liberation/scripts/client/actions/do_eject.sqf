@@ -5,9 +5,13 @@ _crew = crew _vehicle;
 _grp = group (_crew select 0);
 _crew allowGetIn false;
 {
-	unassignVehicle _x;
-	commandGetOut _x;
-	doGetOut _x;
+	if (alive _x ) then {
+		unassignVehicle _x;
+		commandGetOut _x;
+		doGetOut _x;
+	} else {
+		moveOut _x;
+	};
 } forEach _crew;
 
 if (side _grp == GRLIB_side_civilian) then {
