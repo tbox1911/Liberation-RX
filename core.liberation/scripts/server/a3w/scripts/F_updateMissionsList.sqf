@@ -33,7 +33,7 @@ _mission_name = "mission_TownInvasion";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
 	private _opfor_sectors = (count sectors_allSectors) - (count blufor_sectors);
 	private _opfor_factor = round ((_opfor_sectors / (count sectors_allSectors)) * 100);
-	if (_opfor_factor <= 40 && count allPlayers > 1) then {
+	if (_opfor_factor <= 40) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;

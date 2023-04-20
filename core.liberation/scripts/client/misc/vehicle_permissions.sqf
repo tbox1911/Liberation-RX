@@ -1,8 +1,8 @@
 params ["_unit", "_role", "_vehicle"];
 
-if (isNil "_role") exitWith {moveOut _unit;};  // Eject unit
 private _doeject = false;
 private _role = (assignedVehicleRole _unit) select 0;
+if (isNil "_role") exitWith {moveOut _unit;};  // Eject unit
 if (count GRLIB_all_fobs == 0 && typeOf _vehicle in [FOB_truck_typename,huron_typename]) exitWith {true}; // Allowed at start
 
 private _msg = "";
