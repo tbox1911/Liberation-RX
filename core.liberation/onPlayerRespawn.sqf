@@ -1,4 +1,9 @@
 // Welcome trigger
+if (!isMultiplayer) exitWith {
+	titleText ["Sorry, Liberation RX is a Multiplayer Mission Only...","BLACK FADED", 1000];
+	sleep 5;
+	endMission "LOSER";
+};
 titleText ["Loading...","BLACK FADED", 1000];
 GRLIB_player_spawned = false;
 waitUntil {sleep 0.1; !isNil "GRLIB_revive"};
