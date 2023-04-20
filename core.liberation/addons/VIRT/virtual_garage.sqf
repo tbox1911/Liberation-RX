@@ -82,6 +82,7 @@ while { dialog && alive player } do {
 			if (count ([GRLIB_garage, {(getPlayerUID player == _x select 3)}] call BIS_fnc_conditionalSelect) >= _max_vehicle) exitWith { hintSilent (format ["Garage is Full !!\nMax %1 vehicles.", _max_vehicle]) };
 			if (damage _vehicle != 0) exitWith { hintSilent "Damaged Vehicles cannot be Parked !" };
 			if ( _vehicle getVariable ["GRLIB_ammo_truck_load", 0] > 0) exitWith { hintSilent "Loaded Vehicles cannot be Parked !" };
+			if ( _vehicle getVariable ["GREUH_rearm_timer", 0] > 0) exitWith { hintSilent "Vehicle is rearming..." };
 
 			private _result = ["<t align='center'>Only Weapons and Cargo is Saved !!<br/>Are you sure ?</t>", "Warning !", true, true] call BIS_fnc_guiMessage;
 			if (_result) then {

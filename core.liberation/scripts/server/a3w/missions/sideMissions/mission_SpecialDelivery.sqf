@@ -119,8 +119,8 @@ _successExec = {
 
 	private _nb = round(random [1,1.5,3]);
 	for "_i" from 1 to _nb do {
-		_pos = _missionPosEnd vectorAdd [([[-50,0,50], 20] call F_getRND), ([[-50,0,50], 20] call F_getRND), 0];
-		[ammobox_i_typename, _pos, false] call boxSetup;
+		[ammobox_i_typename, _missionPosEnd, false] call boxSetup;
+		sleep 0.2;
 	};
 };
 
