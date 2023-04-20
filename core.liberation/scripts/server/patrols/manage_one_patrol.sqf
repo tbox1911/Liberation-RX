@@ -39,7 +39,7 @@ while { GRLIB_endgame == 0 } do {
 		_grp = createGroup [GRLIB_side_enemy, true];
 		_squad = [] call F_getAdaptiveSquadComp;
 		{
-			_x createUnit [_sector_spawn_pos, _grp,"this addMPEventHandler [""MPKilled"", {_this spawn kill_manager}]", 0.5, "private"];
+			_x createUnit [_sector_spawn_pos, _grp,"this addMPEventHandler [""MPKilled"", {_this spawn kill_manager}]", 0.5, "PRIVATE"];
 		} foreach _squad;
 	};
 
@@ -62,7 +62,7 @@ while { GRLIB_endgame == 0 } do {
 			_vehicle_object = [ _tower_spawn_pos, opfor_statics call BIS_fnc_selectRandom ] call F_libSpawnVehicle;
 			sleep 0.5;
 			_grp = group ((crew _vehicle_object) select 0);
-			"O_spotter_F" createUnit [ getpos _vehicle_object, _grp,'this addMPEventHandler [''MPKilled'', {_this spawn kill_manager}]', 0.5, 'private'];
+			"O_spotter_F" createUnit [ getpos _vehicle_object, _grp,'this addMPEventHandler [''MPKilled'', {_this spawn kill_manager}]', 0.5, 'PRIVATE'];
 		};
 		_need_patrol = false;
 	};
