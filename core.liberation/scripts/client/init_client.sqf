@@ -74,6 +74,7 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 [] execVM "scripts\client\misc\synchronise_vars.sqf";
 [] execVM "scripts\client\misc\protect_static.sqf";
 [] execVM "scripts\client\misc\manage_weather.sqf";
+[] execVM "scripts\client\misc\no_thermic.sqf";
 [] execVM "scripts\client\actions\action_manager.sqf";
 [] execVM "scripts\client\actions\action_manager_veh.sqf";
 [] execVM "scripts\client\actions\recycle_manager.sqf";

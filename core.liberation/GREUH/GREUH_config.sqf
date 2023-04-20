@@ -2,7 +2,7 @@
 GREUH_allow_viewdistance = true;
 
 // Permettre aux joueurs de modifier la qualit� de l environnement
-GREUH_allow_worldquality = false;
+GREUH_allow_worldquality = true;
 
 // Permettre aux joueurs de modifier leurs escouades
 GREUH_allow_customsquads = true;
