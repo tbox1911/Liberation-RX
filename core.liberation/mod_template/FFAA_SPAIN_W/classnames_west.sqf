@@ -118,6 +118,11 @@ blufor_air = [
 	"ffaa_nh90_tth_armed"
 ];
 
+boats_east = [
+	"ffaa_ar_zodiac_hurricane_long",
+	"ffaa_ar_lcm"
+];
+
 static_vehicles = [
 	["ffaa_mochila_raven",0,50,0,GRLIB_perm_inf],
 	["B_Static_Designator_01_F",0,20,0,GRLIB_perm_inf],

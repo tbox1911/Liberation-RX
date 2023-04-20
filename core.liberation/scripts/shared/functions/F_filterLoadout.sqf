@@ -5,13 +5,9 @@ if (!GRLIB_limited_arsenal) exitWith {};
 private _checkItem = {
     params ["_item"];
     private _ret = true;
-    if (typeName GRLIB_MOD_signature == "STRING") then {
-        if ( [GRLIB_MOD_signature, _item] call F_startsWith || (_item in GRLIB_whitelisted_from_arsenal)) then { _ret = false };
-    } else {
-        {
-            if ( [_x, _item] call F_startsWith || (_item in GRLIB_whitelisted_from_arsenal)) exitWith { _ret = false };
-        } forEach GRLIB_MOD_signature;
-    };
+    {
+        if ( [_x, _item] call F_startsWith || (_item in GRLIB_whitelisted_from_arsenal)) exitWith { _ret = false };
+    } forEach GRLIB_MOD_signature;
     _ret;
 };
 
