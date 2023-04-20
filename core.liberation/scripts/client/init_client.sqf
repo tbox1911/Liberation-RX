@@ -26,8 +26,10 @@ GRLIB_player_spawned = false;
 
 if (isMultiplayer) then {
 	PAR_Grp_ID = getPlayerUID player;
+	setTerrainGrid 25;
 } else {
 	PAR_Grp_ID = str floor(random 4096);
+	setTerrainGrid 12.5;  //Very High = 6.25, Ultra = 3.125
 };
 ((units player) - [player]) joinSilent grpNull;
 my_group = group player;
@@ -123,7 +125,6 @@ chimera_sign addAction ["<t color='#FFFFFF'>-=   TIPS   =-</t>",{createDialog "l
 waitUntil { time > 2 };
 initAmbientLife;
 enableEnvironment [true, true];
-setTerrainGrid 12.5;  //Very High = 6.25, Ultra = 3.125
 
 [] execVM "scripts\client\ui\intro.sqf";
 diag_log "--- Client Init stop ---";

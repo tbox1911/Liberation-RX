@@ -91,7 +91,7 @@ blufor_air = [
 	"CUP_B_F35B_BAF"
 ];
 
-boats = [
+boats_west = [
   "CUP_B_MK10_GB"
 ];
 

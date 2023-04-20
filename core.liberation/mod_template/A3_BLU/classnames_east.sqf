@@ -81,7 +81,7 @@ militia_vehicles = [
 	"B_T_LSV_01_AT_F"
 ];
 
-opfor_boat = [
+boats_east = [
 	"B_Boat_Armed_01_minigun_F",
 	"B_T_Boat_Armed_01_minigun_F"
 ];
