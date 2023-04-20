@@ -31,9 +31,9 @@ _setupObjects =
 	_smoke = "test_EmptyObjectForSmoke" createVehicle _vehiclePos;
 	_smoke attachTo [_vehicle, [0, 1.5, 0]];
 
+	[_missionPos, 25] call createlandmines;
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	[_aiGroup, _missionPos, _nbUnits, "infantry"] call createCustomGroup;
-	[_missionPos, 25] call createlandmines;
 
 	_missionPicture = getText (configFile >> "CfgVehicles" >>  (typeOf _vehicle) >> "picture");
 	_vehicleName = getText (configFile >> "CfgVehicles" >>  (typeOf _vehicle) >> "displayName");
