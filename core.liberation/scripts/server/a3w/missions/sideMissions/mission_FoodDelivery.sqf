@@ -43,6 +43,7 @@ _setupObjects =
 	_marker_zone setMarkerSize [20,20];
 
 	_missionHintText = format ["Food Delivery at <br/><t size='1.25' color='%1'>%2</t><br/><br/><t color='#00F000'>Talk</t> to the <t color='#0000F0'>Marshal</t> to get information.", sideMissionColor, _townName];
+	true;
 };
 
 _waitUntilMarkerPos = nil;

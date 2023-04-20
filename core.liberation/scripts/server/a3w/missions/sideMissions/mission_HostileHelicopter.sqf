@@ -49,6 +49,7 @@ _setupObjects =
 	_vehicleName = getText (configFile >> "CfgVehicles" >> (_vehicleClass param [0,""]) >> "displayName");
 	_missionHintText = format ["An armed <t color='%2'>%1</t> is patrolling the island. Intercept it and recover its cargo!", _vehicleName, sideMissionColor];
 	_numWaypoints = count waypoints _aiGroup;
+	true;
 };
 
 _waitUntilMarkerPos = {getPosATL _leader};

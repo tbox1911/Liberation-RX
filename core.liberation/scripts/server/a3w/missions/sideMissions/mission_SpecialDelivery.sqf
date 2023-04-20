@@ -43,6 +43,7 @@ _setupObjects =
 		diag_log format ["--- LRX Error: side mission SD, cannot find location from marker %1", _missionEnd];
 		GRLIB_A3W_Mission_SD = [];
 		publicVariable "GRLIB_A3W_Mission_SD";
+		false;
 	};
 
 	// create Nikos units
@@ -77,7 +78,7 @@ _setupObjects =
 	private _marker = createMarker ["side_mission_A3W_Mission_SD", _missionPosEnd];
 	_marker setMarkerShape "ICON";
 	_marker setMarkerType "Empty";
-
+	true;
 };
 
 _waitUntilMarkerPos = nil;
