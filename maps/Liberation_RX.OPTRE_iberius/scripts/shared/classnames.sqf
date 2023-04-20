@@ -60,20 +60,20 @@ infantry_units = [
 
 // calc units price
 [] call compileFinal preprocessFileLineNumbers "scripts\loadouts\init_loadouts.sqf";
-_grp = createGroup [GRLIB_side_friendly, true];
+private _grp = createGroup [GRLIB_side_friendly, true];
 {
 	_unit_class = _x select 0;
 	_unit_mp = _x select 1;
 	_unit_rank = _x select 4;
 	_unit = _grp createUnit [_unit_class, [0,0,0], [], 0, "NONE"];
 	if (typeOf _unit in units_loadout_overide) then {
-		_loadouts_folder = format ["scripts\loadouts\%1\%2.sqf", GRLIB_side_friendly, typeOf _unit];
+		private _loadouts_folder = format ["scripts\loadouts\%1\%2.sqf", GRLIB_side_friendly, typeOf _unit];
 		[_unit] call compileFinal preprocessFileLineNUmbers _loadouts_folder;
 	};
 	_price = [_unit] call F_loadoutPrice;
-	infantry_units set [_forEachIndex, [_unit_class, _unit_mp, _price, 0,_unit_rank] ];
+	infantry_units set [_forEachIndex, [_unit_class, _unit_mp, _price, 0,_unit_rank]];
 	deleteVehicle _unit;
-} foreach infantry_units ;
+} foreach infantry_units;
 
 light_vehicles = [
 	["OPTRE_M274_ATV",1,5,1,0],
@@ -211,7 +211,6 @@ support_vehicles = [
 	[ammo_truck_typename,5,200,10,GRLIB_perm_tank],
 	[repair_truck_typename,10,130,10,GRLIB_perm_tank],
 	[fuel_truck_typename,5,120,40,GRLIB_perm_tank],
-	["Box_NATO_Ammo_F",0,80,0,GRLIB_perm_log],
 	["Box_NATO_WpsLaunch_F",0,150,0,GRLIB_perm_tank],
 	["Land_CargoBox_V1_F",0,500,0,GRLIB_perm_max],
 	[FOB_box_typename,50,1500,50,GRLIB_perm_max],
@@ -311,12 +310,7 @@ uavs = [
 ];
 if ( isNil "uavs" ) then { uavs = [] };
 
-elite_vehicles = [
-	"OPTRE_M313_UNSC",
-	"OPTRE_Pelican_armed",
-	"OPTRE_UNSC_falcon",
-	"OPTRE_M12G1_LRV"
-];
+elite_vehicles = [];
 { if (_x select 4 == GRLIB_perm_max) then { elite_vehicles pushback (_x select 0)} } foreach light_vehicles + heavy_vehicles + air_vehicles + static_vehicles;
 
 // Everything the AI troups should be able to resupply from
@@ -748,7 +742,6 @@ GRLIB_vehicle_blacklist = [
 	fuel_sling_typename,
 	ammo_sling_typename,
 	medic_sling_typename,
-	"Box_NATO_Ammo_F",
   	"Box_NATO_WpsLaunch_F",
 	"Land_CargoBox_V1_F"
 ];
@@ -847,7 +840,6 @@ GRLIB_ignore_colisions_objects = [
 	mobile_respawn,
 	canisterFuel,
 	medicalbox_typename,
-	"Box_NATO_Ammo_F",
   	"Box_NATO_WpsLaunch_F",
 	"Land_CargoBox_V1_F",
 	"B_HMG_01_F",
@@ -880,10 +872,10 @@ GRLIB_ignore_colisions_classes = [
 
 GRLIB_sar_wreck = "Land_Wreck_Heli_Attack_01_F";
 GRLIB_sar_fire = "test_EmptyObjectForFireBig";
-GRLIB_Ammobox = [
+// Ammobox you want keep contents
+GRLIB_Ammobox_keep = [
 	A3W_BoxWps,
 	medicalbox_typename,
-	"Box_NATO_Ammo_F",
 	"Box_NATO_WpsLaunch_F",
 	"mission_USLaunchers",
 	"Land_CargoBox_V1_F"
