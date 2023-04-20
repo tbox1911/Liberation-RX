@@ -54,6 +54,12 @@ class Params
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 1;
 	};
+	class DeathChat {
+		title = $STR_DEATHCHAT;
+		values[] = { 1, 0 };
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
+		default = 0;
+	};
 	class Space5 {
 		title = "";
 		values[] = { "" };
