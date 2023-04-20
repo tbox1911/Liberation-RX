@@ -7,7 +7,7 @@
 if (!isServer) exitwith {};
 
 #define MISSION_LOCATION_COOLDOWN (10*60)
-#define MISSION_TIMER_EXTENSION (15*60)
+#define MISSION_TIMER_EXTENSION (20*60)
 
 private ["_controllerSuffix", "_missionTimeout", "_availableLocations", "_missionLocation", "_leader", "_marker", "_failed", "_complete", "_startTime", "_oldAiCount", "_leaderTemp", "_newAiCount", "_adjustTime", "_lastPos", "_floorHeight"];
 
@@ -23,8 +23,7 @@ diag_log format ["%1 Mission%2 started: %3", MISSION_PROC_TYPE_NAME, _controller
 
 _missionTimeout = MISSION_PROC_TIMEOUT;
 
-if (!isNil "_locationsArray") then
-{
+if (!isNil "_locationsArray") then {
 	while {true} do
 	{
 		_availableLocations = [_locationsArray, { !(_x select 1) && diag_tickTime - (_x param [2, -1e11]) >= MISSION_LOCATION_COOLDOWN}] call BIS_fnc_conditionalSelect;
@@ -63,18 +62,15 @@ _oldAiCount = 0;
 
 if (isNil "_ignoreAiDeaths") then { _ignoreAiDeaths = false };
 
-waitUntil
-{
+waitUntil {
 	uiSleep 1;
 
 	_leaderTemp = leader _aiGroup;
 
 	// Force immediate leader change if current one is dead
-	if (!alive _leaderTemp) then
-	{
+	if (!alive _leaderTemp) then {
 		{
-			if (alive _x) exitWith
-			{
+			if (alive _x) exitWith {
 				_aiGroup selectLeader _x;
 				_leaderTemp = _x;
 			};
@@ -83,12 +79,11 @@ waitUntil
 
 	_newAiCount = count units _aiGroup;
 
-//	if (_newAiCount < _oldAiCount || (!isNil "GRLIB_A3W_Mission_MR") ) then
-	if (_newAiCount < _oldAiCount ) then
-	{
-		// some units were killed, mission expiry will be reset to 15 mins if it's currently lower than that
+	if (_newAiCount < _oldAiCount || GRLIB_A3W_ExtendTimer == _missionType) then {
+		// some units were killed, mission expiry will be reset to 20 mins if it's currently lower than that
 		_adjustTime = if (_missionTimeout < MISSION_TIMER_EXTENSION) then { MISSION_TIMER_EXTENSION - _missionTimeout } else { 0 };
 		_startTime = _startTime max (diag_tickTime - ((MISSION_TIMER_EXTENSION - _adjustTime) max 0));
+		if (GRLIB_A3W_ExtendTimer == _missionType) then { GRLIB_A3W_ExtendTimer = ""};
 	};
 
 	_oldAiCount = _newAiCount;
@@ -100,8 +95,7 @@ waitUntil
 
 	_failed = ((!isNil "_waitUntilCondition" && {call _waitUntilCondition}) || diag_tickTime - _startTime >= _missionTimeout);
 
-	if (!isNil "_waitUntilSuccessCondition" && {call _waitUntilSuccessCondition}) then
-	{
+	if (!isNil "_waitUntilSuccessCondition" && {call _waitUntilSuccessCondition}) then {
 		_failed = false;
 		_complete = true;
 	};
@@ -109,8 +103,7 @@ waitUntil
 	(_failed || _complete || (!_ignoreAiDeaths && {alive _x} count units _aiGroup == 0))
 };
 
-if (_failed) then
-{
+if (_failed) then {
 	// Mission failed
 
 	{ moveOut _x; deleteVehicle _x } forEach units _aiGroup;
@@ -142,16 +135,12 @@ if (_failed) then
 
 	diag_log format ["%1 Mission%2 failed: %3", MISSION_PROC_TYPE_NAME, _controllerSuffix, _missionType];
 }
-else
-{
+else {
 	// Mission completed
 
-	if (isNull _leader) then
-	{
+	if (isNull _leader) then {
 		_lastPos = markerPos _marker;
-	}
-	else
-	{
+	} else {
 		_lastPos = ASLToAGL getPosASL _leader;
 		_floorHeight = (getPos _leader) select 2;
 		_lastPos set [2, (_lastPos select 2) - _floorHeight];

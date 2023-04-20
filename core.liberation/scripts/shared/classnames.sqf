@@ -113,7 +113,7 @@ air_vehicles = [
 	["B_T_VTOL_01_infantry_F",10,1000,15,GRLIB_perm_air],
 	["B_T_VTOL_01_vehicle_F",10,1000,15,GRLIB_perm_air],
 	["B_Heli_Attack_01_F",10,3000,20,GRLIB_perm_air],
-	["I_Plane_Fighter_04_F", 10,2500,20,GRLIB_perm_air],
+	["I_Plane_Fighter_04_F", 10,2500,20,GRLIB_perm_max],
 	["B_Plane_CAS_01_F",20,4000,40,GRLIB_perm_max],
 	["B_Plane_Fighter_01_F",20,4500,40,GRLIB_perm_max]
 ];
@@ -309,22 +309,8 @@ uavs = [
 ];
 if ( isNil "uavs" ) then { uavs = [] };
 
-elite_vehicles = [
-	"B_UGV_01_rcws_F",
-	"B_MBT_01_TUSK_F",
-	"B_MBT_01_arty_F",
-	"I_MBT_03_cannon_F",
-	"B_Heli_Attack_01_F",
-	"I_Heli_light_03_F",
-	"B_UAV_02_F",
-	"B_T_UAV_03_F",
-	"B_Plane_CAS_01_F",
-	"B_AFV_Wheeled_01_cannon_F",
-	"B_AFV_Wheeled_01_up_cannon_F",
-	"I_E_Truck_02_MRL_F",
-	"B_Plane_Fighter_01_F",
-	"I_Plane_Fighter_04_F"
-];
+elite_vehicles = ["B_APC_Tracked_01_CRV_F", "B_MBT_01_TUSK_F" ];
+{ if (_x select 4 == GRLIB_perm_max) then { elite_vehicles pushback (_x select 0)} } foreach light_vehicles + heavy_vehicles + air_vehicles + static_vehicles;
 
 // Everything the AI troups should be able to resupply from
 ai_resupply_sources = [

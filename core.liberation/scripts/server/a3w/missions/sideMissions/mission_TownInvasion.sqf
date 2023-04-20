@@ -48,7 +48,7 @@ _setupObjects =
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	[_aiGroup, _missionPos, _nbUnits] call createCustomGroup;
 	[_aiGroup, _missionPos, 200, _fillEvenly, _putOnRoof] call moveIntoBuildings;
-	[_missionPos, 25] call createlandmines;
+	[_missionPos, 50] call createlandmines;
 
 	_missionHintText = format ["Hostiles have taken over <br/><t size='1.25' color='%1'>%2</t><br/><br/>There seem to be <t color='%1'>%3 enemies</t> hiding inside or on top of buildings. Get rid of them all, and take their supplies!<br/>Watch out for those windows!", sideMissionColor, _townName, _nbUnits];
 };
