@@ -89,7 +89,6 @@ while { true } do {
 			stats_blufor_soldiers_recruited = stats_blufor_soldiers_recruited + 1; publicVariable "stats_blufor_soldiers_recruited";
 		};
 		if (!([_price] call F_pay)) exitWith {};
-		//[_price] call do_pay_build;
 		build_confirmed = 0;
 	} else {
 		if ( buildtype == 8 ) then {
@@ -110,6 +109,7 @@ while { true } do {
 					_unit enableGunLights "Auto";
 					_unit setVariable ["PAR_Grp_ID", format["AI_%1",PAR_Grp_ID], true];
 					_unit addUniform uniform player;
+<<<<<<< HEAD
 					[_unit] call PAR_fn_EHDamage;
 =======
 					_x createUnit [_pos, _grp, "this addMPEventHandler [""MPKilled"", FAR_Player_MPKilled]", 0.5, _unitrank];
@@ -117,12 +117,14 @@ while { true } do {
 					_x addUniform uniform player;
 					[_x] call PAR_fn_EHDamage;
 >>>>>>> 4dcd805a (ai squad)
+=======
+					[_unit] call PAR_fn_AI_Damage_EH;
+>>>>>>> d5c9dc6e (fix func name)
 					_idx = _idx + 1;
 				} foreach _classname;
 				_grp setCombatMode "GREEN";
 				_grp setBehaviour "AWARE";
 
-				//[_price] call do_pay_build;
 				if (!([_price] call F_pay)) exitWith {};
 				stats_blufor_soldiers_recruited = stats_blufor_soldiers_recruited + count (units _grp); publicVariable "stats_blufor_soldiers_recruited";
 				player hcSetGroup [_grp];
@@ -381,7 +383,6 @@ while { true } do {
 					{ _x addMPEventHandler ["MPKilled", { _this spawn kill_manager }] } foreach (crew _vehicle);
 				};
 
-				//[_price] call do_pay_build;
 				if (!([_price] call F_pay)) exitWith {};
 				stats_blufor_vehicles_built = stats_blufor_vehicles_built + 1; publicVariable "stats_blufor_vehicles_built";
 			};

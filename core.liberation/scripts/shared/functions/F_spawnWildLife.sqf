@@ -22,7 +22,7 @@ while { _idx < _nbcivs } do {
 	_nextciv = createAgent [_type, _spawnpos, [], 5, "NONE"];
 	_nextciv setName "Animal";
 	_nextciv setVariable ["BIS_fnc_animalBehaviour_disable", true];
-	_nextciv addMPEventHandler ["MPKilled", {[_this select 0] spawn {sleep 60;deleteVehicle (_this select 0)}}];
+	_nextciv addMPEventHandler ["MPKilled", {_this spawn PAR_Player_MPKilled}];
 	_nextciv setSpeaker "NoVoice";
 	//_nextciv disableAI "FSM";
 	_nextciv disableAI "AIMINGERROR";
