@@ -632,12 +632,12 @@
 					<Chinesesimp>高优先级 - %1受到攻击</Chinesesimp>
 			</Key>
 			<Key ID="STR_NOTIFICATION_FOBATTACKED_TEXT">
-					<Original>FOB %1 is under attack!&lt;br/&gt;You &lt;t color='#ff0000'&gt;MUST&lt;/t&gt; defend the FOB!</Original>
-					<French>La FOB %1 est attaquée !&lt;br/&gt;Vous &lt;t color='#ff0000'&gt;DEVEZ&lt;/t&gt; defendre la FOB !</French>
-					<German>FOB %1 wird angegriffen !</German>
-					<Spanish>FOB %1 está bajo ataque!</Spanish>
-					<Russian>FOB %1 атакована!</Russian>
-					<Chinesesimp>FOB %1 受到了攻击!&lt;br/&gt;你 &lt;t color='#ff0000'&gt;必须&lt;/t&gt; 保卫这个 FOB!</Chinesesimp>
+					<Original>%1 %2 is under attack!&lt;br/&gt;You &lt;t color='#ff0000'&gt;MUST&lt;/t&gt; defend the FOB!</Original>
+					<French>%1 %2 est attaquée !&lt;br/&gt;Vous &lt;t color='#ff0000'&gt;DEVEZ&lt;/t&gt; defendre la FOB !</French>
+					<German>%1 %2 wird angegriffen !</German>
+					<Spanish>%1 %2 está bajo ataque!</Spanish>
+					<Russian>%1 %2 атакована!</Russian>
+					<Chinesesimp>%1 %2 受到了攻击!&lt;br/&gt;你 &lt;t color='#ff0000'&gt;必须&lt;/t&gt; 保卫这个 FOB!</Chinesesimp>
 			</Key>
 			<Key ID="STR_NOTIFICATION_FOBLOST_TITLE">
 					<Original>%1 DESTROYED</Original>
