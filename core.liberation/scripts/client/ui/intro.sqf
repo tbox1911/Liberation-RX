@@ -1,7 +1,11 @@
 private [ "_dialog" ];
 
 if ( isNil "cinematic_camera_started" ) then { cinematic_camera_started = false };
-waituntil {(time > 2) && (getClientStateNumber >= 10) && (getClientState == "BRIEFING READ")};
+if (isMultiplayer) then {
+	waituntil {(time > 2) && (getClientStateNumber >= 10) && (getClientState == "BRIEFING READ")};
+} else {
+	sleep 2;
+};
 
 [] spawn cinematic_camera;
 if (serverName == "DevSrv") then {
