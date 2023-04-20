@@ -14,6 +14,7 @@ private _recycleable_classnames_exp = [
 ];
 
 private _wreck_class = [
+	"StaticWeapon",
 	"Slingload_01_Base_F",
 	"Pod_Heli_Transport_04_base_F",
 	"B_AAA_System_01_F",
@@ -68,13 +69,13 @@ while { true } do {
 		_vehicle = _x;
 		_vehicle addAction ["<t color='#FFFF00'>-- SALVAGE</t> <img size='1' image='res\ui_recycle.paa'/>","scripts\client\actions\do_wreck.sqf","",-900,true,true,"","[] call is_menuok && !(_target getVariable ['wreck_in_use', false]) && !(player getVariable ['salvage_wreck', false])", (_distveh + 5)];
 		_vehicle setVariable ["GRLIB_salvage_action", true];
-	} forEach _nearwreck+_nearruins;
+	} forEach _nearwreck + _nearruins;
 
 	// Dead Men
 	_neardead = [allDeadMen, {(_x distance lhd) >= GRLIB_sector_size && (_x distance2D player < _searchradius) && isNil {_x getVariable "GRLIB_dead_action"}}] call BIS_fnc_conditionalSelect;
 	{
 		_unit = _x;
-		_unit addAction ["<t color='#0080F0'>-- REMOVE BODY</t>",{hidebody (_this select 0)},"",1.5,false,true,"","_this distance2D _target < 3" ];
+		_unit addAction ["<t color='#0080F0'>-- REMOVE BODY</t>",{ [_this select 0] remoteExec ["hidebody", 0]},"",1.5,false,true,"","_this distance2D _target < 3" ];
 		_unit setVariable ["GRLIB_dead_action", true];
 	} forEach _neardead;
 

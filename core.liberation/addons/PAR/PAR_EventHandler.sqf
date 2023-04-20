@@ -128,8 +128,8 @@ if (_unit == player && alive player && player isKindOf "Man") then {
 	_unit addEventHandler ["GetInMan", {
 		1 fadeSound ( NRE_vehvolume / 100.0 );
 		NRE_EarplugsActive = 1;
-		_this spawn vehicle_permissions;
 		_this spawn vehicle_defense;
+		_this call vehicle_permissions;
 		[player, "hide"] remoteExec ["dog_action_remote_call", 2];
 	}];
 

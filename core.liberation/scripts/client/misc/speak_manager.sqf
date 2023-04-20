@@ -165,5 +165,5 @@ switch (side _unit) do {
 
 	default {};
 };
-sleep 1;
+uIsleep 3;
 GRLIB_speaking = nil;
