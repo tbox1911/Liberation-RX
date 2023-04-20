@@ -1,22 +1,19 @@
 if (!isServer) exitWith {};
+params ["_grp", "_pos", ["_nbUnits", 7], ["_type", "infantry"], ["_patrol", true]];
+if (isNil "_grp" || isNil "_pos") exitWith {};
+diag_log format [ "Spawning SideMission squad type %1 (%2) at %3", _type, _nbUnits, time ];
 
-private _grp = _this select 0;
-private _pos = _this select 1;
-private _nbUnits = param [2, 7, [0]];
-private _type =  param [3, "infantry"];
-private _patrol = param [4, true];
 private _radius = 20;
 private _uPos = zeropos;
 private _unitTypes = opfor_infantry;
 
-if (isNil "_grp") exitWith {};
-
 switch (_type) do {
+	case ("infantry"): { _unitTypes = opfor_infantry };
 	case ("militia"): { _unitTypes = militia_squad };
 	case ("divers"): { _unitTypes = divers_squad };
 	case ("resistance"): { _unitTypes = resistance_squad };
 };
-diag_log format [ "Spawning SideMission squad %1 %2 at %3", _nbUnits, _type , time ];
+
 sleep 0.5;
 for "_i" from 1 to _nbUnits do {
 	if (_type == "divers") then {
@@ -34,7 +31,9 @@ for "_i" from 1 to _nbUnits do {
 	_unit allowFleeing 0;
 	_unit setVariable ["mission_AI", true];
 	_unit switchMove "amovpknlmstpsraswrfldnon";
-	[ _unit ] call loadout_militia;
+	if (_type == "militia") then { 
+		[ _unit ] call loadout_militia;
+	};	
 	[ _unit ] call reammo_ai;
 	sleep 0.1;
 };

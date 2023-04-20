@@ -12,5 +12,5 @@ if (_primary_weapon == "") exitWith {};
 if ( _primary_weapon find "LMG" >= 0 || _primary_weapon find "MMG" >= 0 || _primary_weapon find "RPK12" >= 0 ) then { _minpri = 1; _maxpri = 3 };
 private _needammo1 = [_unit, _primary_weapon, _minpri] call F_UnitNeedAmmo;
 if (_needammo1) then {
-    _needammo1 = [_unit, _primary_weapon, _maxpri] call F_UnitAddAmmo;
+    [_unit, _primary_weapon, _maxpri] call F_UnitAddAmmo;
 };

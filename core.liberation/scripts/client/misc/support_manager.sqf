@@ -42,7 +42,7 @@ while { true } do {
 					_needammo1 = [_x, _primary_weapon, _minpri] call F_UnitNeedAmmo;
 					if (_needammo1) then {
 						_x groupchat "Rearming Primary Weapon.";
-						_needammo1 = [_x, _primary_weapon, _maxpri] call F_UnitAddAmmo;
+						[_x, _primary_weapon, _maxpri] call F_UnitAddAmmo;
 					};
 
 					// check secondary Weapon if backpack present
@@ -51,7 +51,7 @@ while { true } do {
 						if (_needammo2) then {
 							//clearAllItemsFromBackpack _x;
 							_x groupchat "Rearming Secondary Weapon.";
-							_needammo2 = [_x, secondaryWeapon _x, _maxsec_def] call F_UnitAddAmmo;
+							[_x, secondaryWeapon _x, _maxsec_def] call F_UnitAddAmmo;
 						};
 					};
 				};

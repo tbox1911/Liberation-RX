@@ -1,7 +1,6 @@
-diag_log format [ "Spawning building squad at %1", time ];
-
 params [ "_infsquad", "_building_ai_max", "_buildingpositions", "_sectorpos", [ "_sector", "" ] ];
 private [ "_squadtospawnnn", "_infsquad_classnames", "_usedposits", "_nextposit", "_remainingposits", "_grp", "_everythingspawned", "_nextunit", "_position_indexes", "_position_count", "_idxposit", "_groupunitscount" ];
+diag_log format [ "Spawning building squad type %1 at %2", _infsquad, time ];
 
 _everythingspawned = [];
 _default_side = GRLIB_side_enemy;
@@ -38,7 +37,6 @@ _idxposit = 0;
 	if ( _infsquad == "militia" ) then {
 		[ _nextunit ] call loadout_militia;
 	};
-	[ _nextunit ] call loadout_militia;
 	[ _nextunit ] call reammo_ai;
 
 	_idxposit = _idxposit + 1;

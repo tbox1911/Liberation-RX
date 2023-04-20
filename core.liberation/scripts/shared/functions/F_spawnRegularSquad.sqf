@@ -1,7 +1,6 @@
-diag_log format [ "Spawning regular squad at %1", time ];
-
-params [ "_sector", "_squadies_to_spawn" ];
+params [ "_sector", "_infsquad", "_squadies_to_spawn" ];
 private [ "_sectorpos", "_spawnpos", "_grp", "_nextunit", "_corrected_amount" ];
+diag_log format [ "Spawning regular squad type %1 (%2) at %3", _infsquad, count _squadies_to_spawn, time ];
 
 _corrected_amount = round ( (count _squadies_to_spawn) * ([] call F_adaptiveOpforFactor) );
 _grp = createGroup [GRLIB_side_enemy, true];
@@ -21,7 +20,9 @@ _grp = createGroup [GRLIB_side_enemy, true];
 		if (!(_spawnpos isEqualTo zeropos)) then {
 			_x createUnit [([_spawnpos, floor(random 300), random 360] call BIS_fnc_relPos), _grp,'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]'];
 			_nextunit = (units _grp) select ((count (units _grp)) -1);
-			[ _nextunit ] call loadout_militia;
+			if ( _infsquad == "militia" ) then {
+				[ _nextunit ] call loadout_militia;
+			};
 			[ _nextunit ] call reammo_ai;
 		};
 	};
