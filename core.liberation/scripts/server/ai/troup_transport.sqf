@@ -12,19 +12,13 @@ private _initial_crewcount = count crew _troup_transport;
 waitUntil { sleep 0.2; !(alive _troup_transport) || !(alive (driver _troup_transport)) || (((_troup_transport distance2D _dat_objective) < _unload_distance) && (!(surfaceIsWater (getpos _troup_transport)))) };
 
 if ((alive _troup_transport) && (alive (driver _troup_transport))) then {
-	private _troupgrp = createGroup [GRLIB_side_enemy, true];
+	private _troupgrp = [_start_pos, ([] call F_getAdaptiveSquadComp), GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
 	{
-		_unit = _troupgrp createUnit [_x, _start_pos, [], 5, "NONE"];
-		sleep 0.1;
-		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-        [_unit] joinSilent _troupgrp;
-		_unit assignAsCargo _troup_transport;
-		_unit moveInCargo _troup_transport;
-		_unit allowFleeing 0;
-		_unit setVariable ["GRLIB_counter_TTL", round(time + 1800)];
-		[ _unit ] call reammo_ai;
-		sleep 0.1;
-	} foreach ([] call F_getAdaptiveSquadComp);
+		_x assignAsCargo _troup_transport;
+		_x moveInCargo _troup_transport;
+		_x allowFleeing 0;
+		_x setVariable ["GRLIB_counter_TTL", round(time + 1800)];
+	} foreach (units _troupgrp);
 
 	while {(count (waypoints _troupgrp)) != 0} do {deleteWaypoint ((waypoints _troupgrp) select 0);};
 	sleep 2;

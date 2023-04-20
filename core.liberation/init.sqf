@@ -83,6 +83,7 @@ if (!abort_loading) then {
 	if (!GRLIB_ACE_enabled) then {
 		[] execVM "R3F_LOG\init.sqf";
 	} else {
+<<<<<<< HEAD
 		call compileFinal preprocessFileLineNUmbers format ["R3F_LOG\addons_config\Liberation.sqf"];
 		call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_r3f.sqf", GRLIB_mod_west];
 		call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_r3f.sqf", GRLIB_mod_east];
@@ -90,6 +91,9 @@ if (!abort_loading) then {
 	}};
 >>>>>>> 66945ed9 (update ace support)
 =======
+=======
+		[] call compileFinal preprocessFileLineNUmbers "scripts\shared\init_ace.sqf";
+>>>>>>> cdda4c8b (ace stuff)
 	};
 >>>>>>> be8cb08a (Update init.sqf)
 

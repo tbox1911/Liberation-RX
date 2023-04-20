@@ -17,22 +17,21 @@ private _sendPara = {
 	private _cargo_seat_free = count (fullCrew [_newvehicle, "cargo", true] - fullCrew [_newvehicle, "cargo", false]);
 	if (_cargo_seat_free > 8) then {_cargo_seat_free = 8};
 	diag_log format ["Spawn (%1) ParaTroopers on sector %2 at %3", _cargo_seat_free, _spawnsector, time];
-	for "_i" from 1 to _cargo_seat_free do {
-		_unit = _para_group createUnit [opfor_paratrooper, markerpos _spawnsector, [], 5, "NONE"];
-		sleep 0.1;
-		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-		[_unit] joinSilent _para_group;
-		_unit assignAsCargo _newvehicle;
-		_unit moveInCargo _newvehicle;
-		_unit addBackpack "B_Parachute";
-		_unit setSkill 0.65;
-		_unit setSkill ["courage", 1];
-		_unit allowFleeing 0;
-		_unit setVariable ["GRLIB_counter_TTL", round(time + 3600)];
-		_unit setVariable ["GRLIB_mission_AI", true];
-		[ _unit ] call reammo_ai;
-		sleep 0.1;
-	};
+
+	private _unitclass = [];
+	while { (count _unitclass) < _cargo_seat_free } do { _unitclass pushback opfor_paratrooper };
+	private _para_group_tmp = [markerpos _spawnsector, _unitclass, GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
+	{
+		[_x] joinSilent _para_group;
+		_x assignAsCargo _newvehicle;
+		_x moveInCargo _newvehicle;
+		_x addBackpack "B_Parachute";
+		_x setSkill 0.65;
+		_x setSkill ["courage", 1];
+		_x allowFleeing 0;
+		_x setVariable ["GRLIB_counter_TTL", round(time + 3600)];
+		_x setVariable ["GRLIB_mission_AI", true];
+	} foreach (units _para_group_tmp);
 
 	while {(count (waypoints _pilot_group)) != 0} do {deleteWaypoint ((waypoints _pilot_group) select 0);};
 	while {(count (waypoints _para_group)) != 0} do {deleteWaypoint ((waypoints _para_group) select 0);};
