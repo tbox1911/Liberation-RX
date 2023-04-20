@@ -26,21 +26,10 @@ _setupObjects =
 	_vehicle1 = [_missionPos, _vehicleClass, false, false, true] call F_libSpawnVehicle;
 	_vehicle1 allowCrewInImmobile [true, true];
 	_vehicle1 addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage }];
-	_driver = _aiGroup createUnit ["O_GEN_Soldier_F", _missionPos, [], 0, "NONE"];
-    _driver moveInDriver _vehicle1;
-	_driver assignAsDriver _vehicle1;
-	_driver limitSpeed 70;
-
-	_leader = _aiGroup createUnit ["O_GEN_Commander_F", _missionPos, [], 0, "NONE"];
-	_leader assignAsCargoIndex [_vehicle1, 0];
-	_leader moveInCargo _vehicle1;
-
-	for "_i" from 1 to 3 do {
-		_squad = _aiGroup createUnit ["O_GEN_Soldier_F", _missionPos, [], 0, "NONE"];
-		_squad assignAsCargoIndex [_vehicle1, _i];
-		_squad moveInCargo _vehicle1;	
-	};
-	(crew _vehicle1) joinSilent _aiGroup;
+	_grp = createGroup [GRLIB_side_enemy, true];
+	[_grp, _missionPos, 5, "guard"] call createCustomGroup;
+	{ _x moveInAny _vehicle1; [_x] joinSilent _aiGroup } forEach (units _grp);
+	(driver _vehicle1) limitSpeed 70;
 	sleep 2;
 
 	// veh2 + vip + squad
@@ -48,22 +37,13 @@ _setupObjects =
 	_vehicle2 allowCrewInImmobile [true, true];
 	_vehicle2 addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage }];
 	_vehicle2 setConvoySeparation 30;
-	_driver = _aiGroup createUnit ["O_GEN_Soldier_F", _missionPos, [], 0, "NONE"];
-    _driver moveInDriver _vehicle2;
-	_driver assignAsDriver _vehicle2;
-
-	_vip = _aiGroup createUnit ["O_Officer_Parade_Veteran_F", _missionPos, [], 0, "NONE"];
-	_vip assignAsCargoIndex [_vehicle2, 0];
-	_vip moveInCargo _vehicle2;
+	_grp = createGroup [GRLIB_side_enemy, true];
+	[_grp, _missionPos, 4, "guard"] call createCustomGroup;
+	_vip = _grp createUnit ["O_Officer_Parade_Veteran_F", _missionPos, [], 0, "NONE"];
+	_vip addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	[_vip, false, true] spawn prisonner_ai;
 	_vip setrank "COLONEL";
-
-	for "_i" from 1 to 3 do {
-		_squad = _aiGroup createUnit ["O_GEN_Soldier_F", _missionPos, [], 0, "NONE"];
-		_squad assignAsCargoIndex [_vehicle2, _i];
-		_squad moveInCargo _vehicle2;
-	};
-	(crew _vehicle2) joinSilent _aiGroup;
+	{ _x moveInAny _vehicle2; [_x] joinSilent _aiGroup } forEach (units _grp);
 	sleep 2;
 
 	// veh3 + squad
@@ -71,28 +51,10 @@ _setupObjects =
 	_vehicle3 allowCrewInImmobile [true, true];
 	_vehicle3 addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage }];
 	_vehicle3 setConvoySeparation 30;
-	_driver = _aiGroup createUnit ["O_GEN_Soldier_F", _missionPos, [], 0, "NONE"];
-    _driver moveInDriver _vehicle3;
-	_driver assignAsDriver _vehicle3;
-
-	_leader = _aiGroup createUnit ["O_GEN_Commander_F", _missionPos, [], 0, "NONE"];
-	_leader assignAsCargoIndex [_vehicle3, 0];
-	_leader moveInCargo _vehicle3;
-
-	for "_i" from 1 to 3 do {
-		_squad = _aiGroup createUnit ["O_GEN_Soldier_F", _missionPos, [], 0, "NONE"];
-		_squad assignAsCargoIndex [_vehicle3, _i];
-		_squad moveInCargo _vehicle3;	
-	};
-	(crew _vehicle3) joinSilent _aiGroup;
-	sleep 2;
-
-	{
-		_x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-		_x setSkill 0.75;
-		_x setSkill ["courage", 1];
-		_x allowFleeing 0;
-	} foreach (units _aiGroup);
+	_grp = createGroup [GRLIB_side_enemy, true];
+	[_grp, _missionPos, 5, "guard"] call createCustomGroup;
+	{ _x moveInAny _vehicle3; [_x] joinSilent _aiGroup } forEach (units _grp);
+	sleep 2;	
 
 	_aiGroup setFormation "COLUMN";
 	_aiGroup setBehaviour "SAFE";
@@ -126,6 +88,7 @@ _waitUntilCondition = {
 	if (combatMode _aiGroup != "GREEN") then {
 		{ 
 			_veh = objectParent _x;
+			if (_x == driver _veh) then { doStop _x; sleep 2 };
 			if (!(isNull _veh) && speed vehicle _veh < 5) then {
 				unAssignVehicle _x;
 				_x action ["eject", vehicle _x];
