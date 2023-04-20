@@ -1,8 +1,7 @@
-private [ "_interval", "_cur", "_last", "_msg", "_msg2", "_rank", "_uid", "_newrank", "_ignore" ];
+private [ "_cur", "_last", "_msg", "_msg2", "_rank", "_uid", "_newrank", "_ignore" ];
 
 waitUntil { !isNil "GRLIB_player_scores" };
 waitUntil { !isNil "save_is_loaded" };
-_interval=5;
 
 CHG_Perm = {
  params ["_uid", "_perms"];
@@ -110,5 +109,5 @@ while { true } do {
 			_x setVariable ["score_last",_cur];
 		};
 	} forEach playableUnits;
-	sleep _interval;
+	sleep 5;
 };

@@ -72,7 +72,7 @@ _weaponHolderLimit = -1;						// Weapon Holders. Set -1 to disable.
 _weaponHolderDistCheck = TRUE;					// TRUE to delete any weapon holders that are far from players.
 _weaponHolderDist = 500;						// Distance (meters) from players that ground garbage is not deleted if below max.
 
-_minesLimit = 20;								// Land mines. Set -1 to disable.
+_minesLimit = 40;								// Land mines. Set -1 to disable.
 _minesDistCheck = TRUE;							// TRUE to delete any mines that are far from ANY UNIT (not just players).
 _minesDist = 2000;								// Distance (meters) from players that land mines are not deleted if below max.
 

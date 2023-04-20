@@ -13,7 +13,7 @@ _setupVars =
 	_missionType = "Town Invasion";
 	_nbUnits = if (count AllPlayers > 2) then { AI_GROUP_LARGE } else { AI_GROUP_MEDIUM };
 	//randomize amount of units
-	_nbUnits = _nbUnits + round(random (_nbUnits*0.5));
+	_nbUnits = _nbUnits + 5 + round(random (_nbUnits*0.5));
 
 	// settings for this mission
 	_missionLocation = selectRandom ((blufor_sectors select {["capture_", _x] call fn_startsWith;}) apply {[_x, false]}) select 0;

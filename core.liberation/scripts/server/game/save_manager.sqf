@@ -339,25 +339,8 @@ while { true } do {
 
 		stats_saves_performed = stats_saves_performed + 1;
 
-		private [ "_newscores", "_knownplayers", "_playerindex", "_nextplayer" ];
-		_knownplayers = [];
-		_newscores = [] + GRLIB_player_scores;
-		{ _knownplayers pushback (_x select 0) } foreach GRLIB_player_scores;
-
-		{
-			_nextplayer = _x;
-
-			if ( (score _nextplayer >= 20) && (_nextplayer getVariable "GRLIB_score_set" == 1) ) then {
-				_ammo = _nextplayer getVariable ["GREUH_ammo_count",0];
-				_playerindex = _knownplayers find (getPlayerUID _nextplayer);
-				if ( _playerindex >= 0 ) then {
-					_newscores set [ _playerindex, [getPlayerUID _x, score _x, _ammo, name _x] ];
-				} else {
-					_newscores pushback [getPlayerUID _x, score _x, _ammo, name _x];
-				};
-			};
-		} foreach allPlayers;
-		GRLIB_player_scores = _newscores;
+		_saved_score = [];
+		{ if ((_x select 1) >= 20) then {_saved_score pushback _x} } forEach GRLIB_player_scores;
 
 		_stats = [];
 		_stats pushback stats_opfor_soldiers_killed;
@@ -403,7 +386,7 @@ while { true } do {
 			GRLIB_permissions,
 			0,  //ai_groups
 			resources_intel,
-			GRLIB_player_scores
+			_saved_score
 		];
 
 		profileNamespace setVariable [ GRLIB_save_key, greuh_liberation_savegame ];

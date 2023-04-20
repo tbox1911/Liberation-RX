@@ -546,10 +546,10 @@ ind_recyclable = [
 
 opfor_recyclable = [
 	["O_LSV_02_armed_F",0,round (20 / GRLIB_recycling_percentage),0],
-	["O_LSV_02_AT_F",0,round (20 / GRLIB_recycling_percentage),0],
-	["O_G_Offroad_01_armed_F",0,round (20 / GRLIB_recycling_percentage),0],
-	["O_G_Offroad_01_AT_F",0,round (20 / GRLIB_recycling_percentage),0],
-	["I_C_Offroad_02_LMG_F",0,round (20 / GRLIB_recycling_percentage),0],
+	["O_LSV_02_AT_F",0,round (40 / GRLIB_recycling_percentage),0],
+	["O_G_Offroad_01_armed_F",0,round (30 / GRLIB_recycling_percentage),0],
+	["O_G_Offroad_01_AT_F",0,round (40 / GRLIB_recycling_percentage),0],
+	["I_C_Offroad_02_LMG_F",0,round (30 / GRLIB_recycling_percentage),0],
 	["O_Truck_03_covered_F",0,round (20 / GRLIB_recycling_percentage),0],
 	["O_Truck_03_transport_F",0,round (20 / GRLIB_recycling_percentage),0],
 	["O_MRAP_02_hmg_F",0,round (50 / GRLIB_recycling_percentage),0],
