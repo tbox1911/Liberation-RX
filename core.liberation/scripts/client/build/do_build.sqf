@@ -303,6 +303,13 @@ while { true } do {
 					clearBackpackCargoGlobal _vehicle;
 				};
 
+				// Vehicle owner
+				if(buildtype in [2,3,4,7,9]) then {
+					if (!(typeOf _vehicle in GRLIB_vehicle_blacklist) ) then {
+						_vehicle setVariable ["GRLIB_vehicle_owner", getPlayerUID player, true];
+					};
+				};
+
 				// Crewed vehicle
 				if ( (_classname in uavs) || manned ) then {
 					[ _vehicle ] call F_forceBluforCrew;
@@ -365,12 +372,6 @@ while { true } do {
 					_vehicle addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
 					_vehicle addEventHandler ["HandleDamage", damage_manager_EH ];
 					{ _x addMPEventHandler ["MPKilled", { _this spawn kill_manager }] } foreach (crew _vehicle);
-				};
-
-				if(buildtype in [2,3,4,7,9]) then {
-					if (!(typeOf _vehicle in GRLIB_vehicle_blacklist) ) then {
-						_vehicle setVariable ["GRLIB_vehicle_owner", getPlayerUID player, true];
-					};
 				};
 
 				[_price] call do_pay_build;

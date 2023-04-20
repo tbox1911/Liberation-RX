@@ -91,6 +91,21 @@ if ( isServer ) then {
 					[name _unit, _penalty, _killer] remoteExec ["remote_call_civ_penalty", 0];
 				};
 			};
+
+			if ( side (group _killer) == GRLIB_side_friendly && (!isPlayer _killer) && ((driver vehicle _killer) != _killer) ) then {
+				_owner_id = (vehicle _killer) getVariable ["GRLIB_vehicle_owner", nil];
+				if (isNil "_owner_id") then {
+					_owner_id = (_killer getVariable ["PAR_Grp_ID", "_0"]) splitString "_" select 1;
+				};
+
+				if (!isNil "_owner_id") then {
+					_owner_player = (allPlayers select {getPlayerUID _x == _owner_id}) select 0;
+					_owner_player addScore - 5;
+					_msg = format ["%1, Your AI kill civilian !!", name _owner_player] ;
+					[gamelogic, _msg] remoteExec ["globalChat", 0];
+					[name _unit, 5, _owner_player] remoteExec ["remote_call_civ_penalty", 0];
+				};
+			};
 		};
 
 		if ( side _killer == GRLIB_side_friendly ) then {
