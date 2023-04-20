@@ -32,7 +32,7 @@ while { dialog && alive player } do {
 		{
 			if (getPlayerUID player == _x select 3) then {_myveh pushBack [(_x select 0), 1, _i]}; // veh list inside + index
 			_i = _i + 1;
-		} forEach GRLIB_garage; 	// [_veh_class, _veh_color, _veh_ammo,  player_id]
+		} forEach GRLIB_garage;
 
 		lbClear 110;
 		{
