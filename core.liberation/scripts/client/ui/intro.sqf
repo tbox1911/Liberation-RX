@@ -38,6 +38,7 @@ closeDialog 0;
 uisleep 3;
 
 createDialog "liberation_menu";
+uisleep 1;
 waitUntil { dialog };
 _noesckey = (findDisplay 5651) displayAddEventHandler ["KeyDown", "if ((_this select 1) == 1) then { true }"];
 waitUntil { dostartgame == 1 || howtoplay == 1 || !dialog };

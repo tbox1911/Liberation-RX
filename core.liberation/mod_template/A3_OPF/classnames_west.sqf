@@ -34,7 +34,7 @@ infantry_units = [
 	["O_Sharpshooter_F",1,0,0,GRLIB_perm_inf],
 	["O_HeavyGunner_F",1,0,0,GRLIB_perm_inf],
 	["O_recon_F",1,0,0,GRLIB_perm_log],
-	["O_recon_M_F",1,0,0,GRLIB_perm_log],
+	["O_diver_F",1,0,0,GRLIB_perm_log],
 	["O_recon_LAT_F",1,0,0,GRLIB_perm_log],
 	["O_soldier_AA_F",1,0,0,GRLIB_perm_log],
 	["O_soldier_AT_F",1,0,0,GRLIB_perm_log],

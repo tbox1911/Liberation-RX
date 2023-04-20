@@ -1,3 +1,5 @@
+if (isDedicated || !hasInterface) exitWith { diag_log format ["Error in GRAD_fireworks, call script on client only"]; };
+
 params [
 	"_firing_position", // where rocket starts
 	"_type",
@@ -129,7 +131,7 @@ for [{_i=0},{_i < count _explosion_fragments_array},{_i=_i+1}] do
 		_light setLightFlareSize 2;
 
 		if (_type == "normal") then {
-			sleep (3 + (random 1));
+			sleep (4 + (random 1));
 			deleteVehicle _light;
 		};
 
