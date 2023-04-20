@@ -243,6 +243,8 @@ opfor_recyclable = [
 ];
 
 box_transport_config_east = [
-	[ "CUP_O_Kamaz_RU", -5.5, [0, 0.3, 0], [0, -1.25, 0] ]
+	[ "CUP_O_Kamaz_RU", -5.5, [0, 0.3, 0], [0, -1.25, 0] ],
+	[ "CUP_O_Kamaz_Open_RU", -5.5, [0, 0.3, 0], [0, -1.25, 0] ]
+	
 ];
 

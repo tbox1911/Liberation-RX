@@ -134,7 +134,7 @@ _vehicle_owner = _transporteur getVariable ["GRLIB_vehicle_owner", ""];
 				_objet addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 
 				// Owner
-				if (!(_objet in GRLIB_vehicle_blacklist)) then {
+				if (!((typeOf _objet) in GRLIB_vehicle_blacklist)) then {
 					_objet setVariable ["GRLIB_vehicle_owner", _vehicle_owner, true];
 				};
 			}
