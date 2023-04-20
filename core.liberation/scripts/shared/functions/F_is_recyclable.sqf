@@ -22,7 +22,7 @@ if ( _alive && _onfoot && _R3F_move && _far_lhd && _nearfob && _noflight) then {
 		(_x getVariable ["GRLIB_ammo_truck_load", 0] == 0) &&
 		(count (_x getVariable ["R3F_LOG_objets_charges", []]) == 0) &&
 		(isNull attachedTo _vehicle) &&
-		([player, _x] call is_owner)
+		( (_x getVariable ["GRLIB_vehicle_owner", ""] ==  getPlayerUID player) || (typeOf _x in GRLIB_vehicle_whitelist) || (score player >= GRLIB_perm_tank) )
 	}] call BIS_fnc_conditionalSelect;
 };
 

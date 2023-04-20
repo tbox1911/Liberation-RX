@@ -75,6 +75,7 @@ R3F_LOG_CFG_language = switch (language) do
 	case "English":{"en"};
 	case "French":{"fr"};
 	case "Russian":{"ru"};
+	case "Chinesesimp":{"cn"};
 
 	default {"en"}; // If language is not supported, use English
 };

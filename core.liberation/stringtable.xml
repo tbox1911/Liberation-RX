@@ -2231,7 +2231,7 @@
 					<German>Aufmunitionier</German>
 					<Spanish>Rearmando</Spanish>
 					<Russian>Перезарядка</Russian>
-					<Chinesesimp>秒内补给弹药</Chinesesimp>
+					<Chinesesimp>补给弹药</Chinesesimp>
 			</Key>
 			<Key ID="STR_REFUELING">
 					<Original>Refueling</Original>
@@ -3633,50 +3633,62 @@
 		<Key ID="STR_TK_MODE">
 			<Original>TeamKill Mode</Original>
 			<French>TeamKill Mode</French>
+			<Chinesesimp>TK友伤模式</Chinesesimp>
 		</Key>
 		<Key ID="STR_TK_MODE_STRICT">
 			<Original>Strict - Warning + Autoban</Original>
 			<French>Strict - Warning + Autoban</French>
+			<Chinesesimp>严厉 - 警告 + 自动ban</Chinesesimp>
 		</Key>
 		<Key ID="STR_TK_MODE_RELAX">
 			<Original>Relax - The Player decide</Original>
 			<French>Relax - Le Joueur choisit</French>
+			<Chinesesimp>放松 - 由玩家决定</Chinesesimp>
 		</Key>
 		<Key ID="STR_TK_COUNT">
 			<Original>TeamKill Warning</Original>
 			<French>TeamKill Avertissement</French>
+			<Chinesesimp>TK友伤警告</Chinesesimp>
 		</Key>
 		<Key ID="STR_TK_INFO1">
 			<Original>You have been TK by %1\nUse the action menu to react !</Original>
 			<French>Vous avez été TK par %1\nUtilisez le menu d'action pour réagir !</French>
+			<Chinesesimp>你被 %1 TK了\n使用动作菜单进行举报！</Chinesesimp>
 		</Key>
 		<Key ID="STR_TK_INFO2">
 			<Original>You have been &lt;t color='#e00000'&gt;Punish&lt;/t&gt; by &lt;t color='#0000e0'&gt;%1&lt;/t&gt;.</Original>
 			<French>Vous avez été &lt;t color='#e00000'&gt;Punis&lt;/t&gt; par &lt;t color='#0000e0'&gt;%1&lt;/t&gt;.</French>
+			<Chinesesimp>你由于TK了&lt;t color='#0000e0'&gt;%1&lt;/t&gt; &lt;t color='#e00000'&gt;受到了惩罚&lt;/t&gt; .</Chinesesimp>
 		</Key>
 		<Key ID="STR_TK_ASK1">
 			<Original>Do you want to &lt;t color='#e00000'&gt;Punish&lt;/t&gt; or &lt;t color='#00e000'&gt;Forgive&lt;/t&gt; %1 ?</Original>
 			<French>Voulez-vous &lt;t color='#e00000'&gt;Punir&lt;/t&gt; or &lt;t color='#00e000'&gt;Pardonner&lt;/t&gt; %1 ?</French>
+			<Chinesesimp>你是否想要 &lt;t color='#e00000'&gt;举报惩罚&lt;/t&gt; 或者 &lt;t color='#00e000'&gt;原谅饶恕&lt;/t&gt; %1 ?</Chinesesimp>
 		</Key>
 		<Key ID="STR_TK_PUNISH">
 			<Original>Punish</Original>
 			<French>Punir</French>
+			<Chinesesimp>惩罚</Chinesesimp>
 		</Key>
 		<Key ID="STR_TK_FORGIVE">
 			<Original>Forgive</Original>
 			<French>Pardonner</French>
+			<Chinesesimp>原谅</Chinesesimp>
 		</Key>
 		<Key ID="STR_TK_ACTION1">
 			<Original>-- Punish or Forgive</Original>
 			<French>-- Punir ou Pardonner</French>
+			<Chinesesimp>-- 惩罚或原谅他 --</Chinesesimp>
 		</Key>
 		<Key ID="STR_TK_MSG1">
 			<Original>TK: %1 punish %2.</Original>
 			<French>TK: %1 punit %2.</French>
+			<Chinesesimp>TK: %1 惩罚了 %2.</Chinesesimp>
 		</Key>
 		<Key ID="STR_TK_MSG2">
 			<Original>TK: %1 forgive %2.</Original>
 			<French>TK: %1 pardonne %2.</French>
+			<Chinesesimp>TK: %1 原谅了 %2.</Chinesesimp>
 		</Key>
 	</Package>
 </Project>

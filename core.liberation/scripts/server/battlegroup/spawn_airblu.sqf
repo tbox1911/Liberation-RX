@@ -1,6 +1,6 @@
 params ["_first_objective"];
 
-_planes_number = round (random [3,3.5,4]);
+_planes_number = (3 + round (random 3));
 _air_spawnpoint = ( [ sectors_airspawn , [ _first_objective ] , { (markerpos _x) distance _input0 }, "ASCEND"] call BIS_fnc_sortBy ) select 0;
 _air_grp = createGroup [GRLIB_side_friendly, true];
 
