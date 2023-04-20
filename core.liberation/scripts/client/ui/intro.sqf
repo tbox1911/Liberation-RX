@@ -41,4 +41,4 @@ if ( howtoplay == 0 ) then {
 };
 introDone = true;
 (findDisplay 5651) displayRemoveEventHandler ["KeyDown", _noesckey];
-//disableUserInput true;
+disableUserInput true;
