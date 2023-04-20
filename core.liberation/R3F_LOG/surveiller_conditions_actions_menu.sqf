@@ -66,7 +66,7 @@ while {true} do
 		if (_fonctionnalites select __can_be_moved_by_player) then
 		{
 			// Condition action deplacer_objet
-			R3F_LOG_action_deplacer_objet_valide = (count crew _objet_pointe == 0 || _isUav) && (isNull R3F_LOG_joueur_deplace_objet) &&
+			R3F_LOG_action_deplacer_objet_valide = (count crew _objet_pointe == 0 || _isUav || typeOf _objet_pointe in static_vehicles_AI) && (isNull R3F_LOG_joueur_deplace_objet) &&
 				_objet_pas_en_cours_de_deplacement && isNull (_objet_pointe getVariable "R3F_LOG_est_transporte_par") &&
 				_objet_deverrouille && !(_objet_pointe getVariable "R3F_LOG_disabled");
 

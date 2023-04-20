@@ -54,6 +54,7 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 R3F_LOG_CFG_can_tow = R3F_LOG_CFG_can_tow +
 [
 	"CUP_T810_Base",
+	"CUP_MTVR_Base",
 	"CUP_LR_Base",
 	"CUP_BAF_Jackal2_BASE_D",
 	"CUP_BAF_Coyote_BASE_D"
@@ -62,6 +63,7 @@ R3F_LOG_CFG_can_tow = R3F_LOG_CFG_can_tow +
 R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 [
 	"CUP_T810_Base",
+	"CUP_MTVR_Base",
 	"CUP_LR_Base",
 	"CUP_BAF_Jackal2_BASE_D",
 	"CUP_BAF_Coyote_BASE_D"
@@ -74,6 +76,7 @@ R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
 R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 [
 	"CUP_T810_Base",
+	"CUP_MTVR_Base",
 	"CUP_LR_Base",
 	"CUP_BAF_Jackal2_BASE_D",
 	"CUP_BAF_Coyote_BASE_D"
@@ -82,6 +85,7 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 [
 	["CUP_T810_Base", 100],
+	["CUP_MTVR_Base", 150],
 	["CUP_LR_Base", 20],
 	["CUP_BAF_Jackal2_BASE_D", 30],
 	["CUP_BAF_Coyote_BASE_D", 30]
@@ -153,11 +157,7 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 
 R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 [
-	"CUP_B_SearchLight_static_BAF_DDPM",
-	"CUP_B_L111A1_BAF_DDPM",
-	"CUP_B_L111A1_MiniTripod_BAF_DDPM",
-	"CUP_B_L16A2_BAF_DDPM",
-	"CUP_B_M119_HIL"
+
 ];
 
 R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
