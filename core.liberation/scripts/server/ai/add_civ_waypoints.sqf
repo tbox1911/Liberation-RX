@@ -60,6 +60,7 @@ if (isNull _civveh) then {
 		_sectors_patrol = _sectors_patrol - [_nextsector];
 	};
 
+	// todo: water waypoints
 	{
 		private _nearestroad = [ [ markerpos (_x), floor(random 100), random 360 ] call BIS_fnc_relPos, 200, [] ] call BIS_fnc_nearestRoad;
 		if ( isNull _nearestroad ) then {

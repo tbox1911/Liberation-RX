@@ -33,6 +33,7 @@ sleep 2;
 	_x setDamage 0;
 	_x allowDamage true;
 	_x setVariable ["R3F_LOG_disabled", false, true];
+	_x enableSimulationGlobal true;
 } forEach _all_objects;
 
 _truck_to_unload enableSimulationGlobal true;

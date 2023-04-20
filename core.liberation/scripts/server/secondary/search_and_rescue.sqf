@@ -44,8 +44,7 @@ private _patrolcorners = [
 
 while {(count (waypoints _grppatrol)) != 0} do {deleteWaypoint ((waypoints _grppatrol) select 0);};
 {
-	private _nextcorner = _x;
-	_waypoint = _grppatrol addWaypoint [_nextcorner,0];
+	_waypoint = _grppatrol addWaypoint [_x, 0];
 	_waypoint setWaypointType "MOVE";
 	_waypoint setWaypointSpeed "LIMITED";
 	_waypoint setWaypointBehaviour "SAFE";

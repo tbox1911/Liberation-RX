@@ -1,7 +1,7 @@
 params ["_unit"];
 
-if (rating _unit < -2000) exitWith {_unit spawn PAR_fn_death};
-if (!([] call F_getValid)) exitWith {_unit spawn PAR_fn_death};
+if (rating _unit < -2000) exitWith {[_unit] spawn PAR_fn_death};
+if (!([] call F_getValid)) exitWith {[_unit] spawn PAR_fn_death};
 waituntil {sleep (0.5 + random 2); lifeState _unit == "INCAPACITATED" && (isTouchingGround _unit || (round (getPos _unit select 2) <= 1))};
 
 if (isPlayer _unit) then {
@@ -117,5 +117,5 @@ if (isPlayer _unit) then {
 };
 
 if (lifeState _unit == "INCAPACITATED" && time > _unit getVariable ["PAR_BleedOutTimer", 0]) then {
-  _unit spawn PAR_fn_death;
+  [_unit] spawn PAR_fn_death;
 };
