@@ -1,13 +1,15 @@
-private ["_pos", "_class", "_veh", "_para", "_text", "_rank", "_cost", "_dist", "_ammo_collected"];
+private ["_class",  "_cost"];
+private _timer = player getVariable ["AirCoolDown", 0];
+if (_timer > time) exitWith {hint format ["Air Support not ready !\nNext call in %1 min\n\nPlease wait...", round ((_timer - time)/60)]};
 
 do_action = 0;
 air_type = 0;
 air_perm = 0;
 hintSilent "";
 createDialog "liberation_airdrop";
-_list_perm=[];
 
-_rank = player getVariable ["GRLIB_Rank", "Private"];
+private _list_perm = [];
+private _rank = player getVariable ["GRLIB_Rank", "Private"];
 if (_rank in ["Private"]) then {_list_perm = [1601,1602,1603,1604,1605,1606]};
 if (_rank in ["Corporal"]) then {_list_perm = [1602,1603,1604,1605,1606]};
 if (_rank in ["Sergeant"]) then {_list_perm = [1603,1604,1605]};
@@ -25,8 +27,6 @@ while { dialog && (alive player) && do_action == 0 } do {
 closeDialog 0;
 
 if (do_action == 1) then {
-	_timer = player getVariable ["AirCoolDown", 0];
-	if (_timer > time) exitWith {hint format ["Air Support not ready !\nNext call in %1 min\n\nPlease wait...", round ((_timer - time)/60)]};
 	_cost = 0;
 	switch (air_type) do {
 		case 1 : {_class=selectRandom GRLIB_AirDrop_1;_cost=50};

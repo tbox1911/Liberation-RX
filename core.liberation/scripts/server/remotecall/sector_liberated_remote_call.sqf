@@ -62,7 +62,11 @@ reset_battlegroups_ai = true; publicVariable "reset_battlegroups_ai";
 blufor_sectors pushback _liberated_sector; publicVariable "blufor_sectors";
 stats_sectors_liberated = stats_sectors_liberated + 1;
 
-[] spawn check_victory_conditions;
+if (isServer) then {
+	[] spawn check_victory_conditions;
+} else {
+	[] remoteExec ["check_victory_conditions", 2];
+};
 
 sleep 45;
 

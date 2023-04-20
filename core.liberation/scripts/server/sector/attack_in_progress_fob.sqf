@@ -10,7 +10,7 @@ private _grp = grpNull;
 if ( GRLIB_blufor_defenders ) then {
 	_grp = [_fobpos, blufor_squad_mix, GRLIB_side_friendly, "defender"] call F_libSpawnUnits;
 	_grp setCombatMode "RED";
-	_grp setBehaviourStrong "COMBAT";
+	_grp setCombatBehaviour  "COMBAT";
 	{
 		_x setSkill 0.65;
 		_x setSkill ["courage", 1];

@@ -1,4 +1,4 @@
-sleep 5;
+diag_log format ["Check Victory condition at %1", time];
 
 _blufor_bigtowns = [ blufor_sectors, { _x in sectors_bigtown } ] call BIS_fnc_conditionalSelect;
 
