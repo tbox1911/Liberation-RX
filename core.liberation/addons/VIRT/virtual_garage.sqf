@@ -24,7 +24,7 @@ while { dialog && alive player } do {
 	if ( _refresh ) then {
 		_refresh = false;
 
-		_myveh_lst = [getPosATL player nearEntities [["LandVehicle","Air","Ship"], 150], {			
+		_myveh_lst = [getPosATL player nearEntities [["LandVehicle","Air","Ship",playerbox_typename], 150], {			
 			alive _x && (count (crew _x) == 0 || typeOf _x in uavs) &&
 			!([_x, "LHD", GRLIB_sector_size] call F_check_near) &&
 			_x getVariable ["GRLIB_vehicle_owner", ""] == _guid &&
@@ -46,10 +46,9 @@ while { dialog && alive player } do {
 
 		lbClear 110;
 		{
-			_classnamevar = (_x select 0);
-			_entrytext = getText (_cfg >> _classnamevar >> "displayName");
-			_loctext = "";
-			if (_x select 1 == 0 ) then {_loctext = "OUT" } else {_loctext = "IN"};
+			_entrytext = [(_x select 0)] call get_lrx_name;
+			_loctext = "IN";
+			if (_x select 1 == 0 ) then {_loctext = "OUT" };
 			(_display displayCtrl (110)) lnbAddRow [_entrytext, _loctext];
 
 			_icon = getText ( _cfg >> (_x select 0) >> "icon");
@@ -130,7 +129,7 @@ while { dialog && alive player } do {
 					waitUntil {sleep 0.3; dobuild == 0};
 					if (build_confirmed == 0) then {
 						[_vehicle, load_veh, _guid] remoteExec ["vehicle_garage_remote_call", 2];
-						hintSilent (format ["Vehicle %1\nUnloaded from Garage.", getText (configFile >> "cfgVehicles" >> _veh_class >> "displayName")]);
+						hintSilent (format ["Vehicle %1\nUnloaded from Garage.", [_veh_class] call get_lrx_name]);
 					};
 				};
 				sleep 2;
