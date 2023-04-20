@@ -30,6 +30,9 @@ manage_one_patrol = compileFinal preprocessFileLineNumbers "scripts\server\patro
 reinforcements_manager = compileFinal preprocessFileLineNumbers "scripts\server\patrols\reinforcements_manager.sqf";
 send_paratroopers = compileFinal preprocessFileLineNumbers "scripts\server\patrols\send_paratroopers.sqf";
 
+// Wildlife
+manage_one_wildlife = compileFinal preprocessFileLineNumbers "scripts\server\patrols\manage_one_wildlife.sqf";
+
 // Resources
 recalculate_caps = compileFinal preprocessFileLineNumbers "scripts\server\resources\recalculate_caps.sqf";
 
@@ -79,6 +82,7 @@ clearlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scri
 [] execVM "scripts\server\offloading\offload_manager.sqf";
 [] execVM "scripts\server\patrols\civilian_patrols.sqf";
 [] execVM "scripts\server\patrols\manage_patrols.sqf";
+[] execVM "scripts\server\patrols\manage_wildlife.sqf";
 [] execVM "scripts\server\patrols\reinforcements_resetter.sqf";
 [] execVM "scripts\server\resources\manage_resources.sqf";
 [] execVM "scripts\server\resources\recalculate_resources.sqf";
