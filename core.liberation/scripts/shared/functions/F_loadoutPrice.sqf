@@ -21,6 +21,7 @@ _free_items = [
 	"30Rnd",
 	"20Rnd",
 	"16Rnd",
+	"10Rnd",
 	"7Rnd",
 	"5Rnd",
 	"3Rnd",
