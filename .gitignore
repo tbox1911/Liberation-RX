@@ -1,4 +1,8 @@
 __*
 mybuild/*
 core.liberation/build_info.sqf
+<<<<<<< HEAD
 a.bat
+=======
+maps/Liberation_RX.Eusa/*
+>>>>>>> 2a8b6155 (1)
