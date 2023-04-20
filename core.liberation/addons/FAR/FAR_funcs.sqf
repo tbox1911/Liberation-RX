@@ -193,14 +193,15 @@ FAR_HandleRevive = {
 	private ["_target"];
 
 	_target = _this select 0;
-	_isMedic = getNumber (configfile >> "CfgVehicles" >> typeOf player >> "attendant");
+	_isMedic = [player] call FAR_is_medic;
+	_hasMedikit = [player] call FAR_has_medikit;
 	if (alive _target) then	{
 		player playMove "AinvPknlMstpSlayWrflDnon_medic";
 		sleep 6;
-		if (!(FAR_Medikit in (backpackItems player)) ) then {
+		if (! _hasMedikit ) then {
 			player removeItem FAR_AidKit;
 		};
-		if (_isMedic == 1 && FAR_Medikit in (backpackItems player)) then {
+		if ( _isMedic && _hasMedikit ) then {
 			_target setDamage 0;
 		} else {
 			_target setDamage 0.25;
@@ -221,7 +222,8 @@ FAR_HandleStabilize = {
 	if (alive _target) then
 	{
 		player playMove "AinvPknlMstpSlayWrflDnon_medic";
-		if (!(FAR_Medikit in (items player)) ) then {
+		_hasMedikit = [player] call FAR_has_medikit;
+		if (! _hasMedikit ) then {
 			player removeItem FAR_AidKit;
 		};
 		_target setVariable ["FAR_isStabilized", 1, true];
@@ -333,7 +335,7 @@ FAR_Check_Revive = {
 
 	// Unit that will excute the action
 	_isPlayerUnconscious = player getVariable "FAR_isUnconscious";
-	_isMedic = getNumber (configfile >> "CfgVehicles" >> typeOf player >> "attendant");
+	_isMedic = [player] call FAR_is_medic;
 	_target = cursorTarget;
 
 	// Make sure player is alive and target is an injured unit
@@ -346,12 +348,12 @@ FAR_Check_Revive = {
 	_isDragged = _target getVariable "FAR_isDragged";
 
 	// Make sure target is unconscious and player is a medic
-	if (_isTargetUnconscious == 1 && _isDragged == 0 && (_isMedic == 1 || FAR_ReviveMode > 0) && ( (FAR_AidKit in (items player)) || (FAR_Medikit in (items player)) ) ) then
+	if (_isTargetUnconscious == 1 && _isDragged == 0 && (_isMedic || FAR_ReviveMode > 0) && ( (FAR_AidKit in (items player)) || ([player] call FAR_has_medikit) ) ) then
 	{
 		_return = true;
 
 		// [ReviveMode] Check if player has a Medikit
-		if ( FAR_ReviveMode == 2 && !(FAR_Medikit in (items player)) ) then
+		if ( FAR_ReviveMode == 2 && !([player] call FAR_has_medikit) ) then
 		{
 			_return = false;
 		};
@@ -384,7 +386,7 @@ FAR_Check_Stabilize = {
 	_isDragged = _target getVariable "FAR_isDragged";
 
 	// Make sure target is unconscious and hasn't been stabilized yet, and player has a FAK/Medikit
-	if (_isTargetUnconscious == 1 && _isTargetStabilized == 0 && _isDragged == 0 && ( (FAR_AidKit in (items player)) || (FAR_Medikit in (items player)) ) ) then
+	if (_isTargetUnconscious == 1 && _isTargetStabilized == 0 && _isDragged == 0 && ( (FAR_AidKit in (items player)) || ([player] call FAR_has_medikit) ) ) then
 	{
 		_return = true;
 	};
@@ -427,5 +429,31 @@ FAR_Check_Dragging = {
 		_return = true;
 	};
 
+	_return
+};
+
+////////////////////////////////////////////////
+// If the unit is Medic
+////////////////////////////////////////////////
+FAR_is_medic = {
+	params ["_unit"];
+	_return = false;
+
+	if ( getNumber (configfile >> "CfgVehicles" >> typeOf _unit >> "attendant") == 1 ) then {
+		_return = true;
+	};
+	_return
+};
+
+////////////////////////////////////////////////
+// If the unit has a "Medikit"
+////////////////////////////////////////////////
+FAR_has_medikit = {
+	params ["_unit"];
+	_return = false;
+
+	if ( (FAR_Medikit in (vest _unit)) || (FAR_Medikit in (items _unit)) || (FAR_Medikit in (backpackItems _unit)) ) then {
+		_return = true;
+	};
 	_return
 };

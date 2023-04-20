@@ -1,3 +1,5 @@
+// Weapon to the back
+
 if (player getVariable ["GRLIB_action_inuse", false])  exitWith {};
 
 if (currentWeapon player != "") then {
