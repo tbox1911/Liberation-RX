@@ -187,6 +187,10 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 				clearBackpackCargoGlobal _nextbuilding;
 			};
 
+			if ( _nextclass in vehicle_rearm_sources ) then {
+				_nextbuilding setAmmoCargo 0;
+			};
+
 			if ( _nextclass in _building_classnames ) then {
 				_nextbuilding setVariable [ "GRLIB_saved_pos", _nextpos, false];
 			};

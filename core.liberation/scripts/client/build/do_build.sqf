@@ -6,6 +6,7 @@ _truepos = [];
 _debug_colisions = false;
 _price = 0;
 _color = [];
+_ammo = 0;
 build_unit = [];
 GRLIB_preview_spheres = [];
 while { count GRLIB_preview_spheres < 36 } do {
@@ -50,11 +51,12 @@ while { true } do {
 			_classname = build_unit select 0;
 			_price = build_unit select 2;
 			_color = build_unit select 5;
-			//buildtype = 2;
+			_ammo = build_unit select 6;
 		} else {
 			_classname = (_build_list select buildindex) select 0;
 			_price = (_build_list select buildindex) select 2;
 			_color = [];
+			_ammo = 0;
 		};
 	};
 
@@ -295,6 +297,16 @@ while { true } do {
 				// Color
 				if (count _color > 0) then {
 					[_vehicle, _color, "N/A", []] call RPT_fnc_TextureVehicle;
+				};
+
+				// Remaining Ammo
+				if (_ammo > 0) then {
+					_vehicle setVehicleAmmoDef _ammo;
+				};
+
+				// Automatic ReAmmo
+				if (_classname in vehicle_rearm_sources) then {
+					_veh setAmmoCargo 0;
 				};
 
 				// Give real truck horn to APC

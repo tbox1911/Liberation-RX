@@ -53,3 +53,4 @@ F_getBounty = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F
 F_check_nearFuel = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_check_nearFuel.sqf";
 F_check_near = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_check_near.sqf";
 F_is_recyclable = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_is_recyclable.sqf";
+F_getVehicleAmmoDef = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getVehicleAmmoDef.sqf";

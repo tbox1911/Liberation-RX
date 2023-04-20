@@ -7,8 +7,8 @@ garage_in_use = true;
 if (_cmd == 1) then {
 	_owner = _veh getVariable ["GRLIB_vehicle_owner", ""];
 	_color = _veh getVariable ["GRLIB_vehicle_color", ""];
-
-	GRLIB_garage append [[typeOf _veh, _color, _owner]];
+	_ammo = [_veh] call F_getVehicleAmmoDef;
+	GRLIB_garage append [[typeOf _veh, _color, _ammo, _owner]];
 	deleteVehicle _veh;
 };
 
