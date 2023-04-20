@@ -51,24 +51,6 @@ militia_squad = [
 ];
 
 militia_loadout_overide = [
-
-];
-
-divers_squad = [
-	"B_diver_TL_F",
-	"B_diver_TL_F",
-	"B_diver_exp_F",
-	"B_diver_exp_F",
-	"B_diver_exp_F",
-	"B_diver_exp_F",
-	"B_diver_F",
-	"B_diver_F",
-	"B_diver_F",
-	"B_diver_F",
-	"B_diver_F",
-	"B_diver_F",
-	"B_diver_F",
-	"B_diver_F"
 ];
 
 militia_vehicles = [
@@ -82,7 +64,7 @@ militia_vehicles = [
 	"UK3CB_BAF_Coyote_Passenger_L134A1_D_DDPM"
 ];
 
-boats_east = [
+opfor_boats = [
 "B_Boat_Transport_01_F",
 "UK3CB_BAF_RHIB_GPMG_DPMW",
 "UK3CB_BAF_RHIB_HMG_DPMW"
@@ -131,7 +113,6 @@ opfor_vehicles_low_intensity = [
 	"UK3CB_BAF_Coyote_Passenger_L134A1_D_DDPM",
 	"UK3CB_BAF_Coyote_Passenger_L111A1_D_DDPM"
 ];
-
 
 opfor_battlegroup_vehicles = [
 	"UK3CB_BAF_Jackal2_GMG_D_DDPM",

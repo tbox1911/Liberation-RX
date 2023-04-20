@@ -75,12 +75,21 @@ while {	sleep 5; {( alive _x )} count (units _air_grp) > 0 } do {
 			while {(count (waypoints _flee_grp)) != 0} do {deleteWaypoint ((waypoints _flee_grp) select 0);};
 			{_x doFollow leader _flee_grp} foreach units _flee_grp;
 
+<<<<<<< HEAD
 			_waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];
 			_waypoint setWaypointType "MOVE";
 			_waypoint setWaypointSpeed "FULL";
 			_waypoint setWaypointBehaviour "AWARE";
 			_waypoint setWaypointCombatMode "GREEN";
 			_waypoint setWaypointCompletionRadius 50;
+=======
+				_waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];
+				_waypoint setWaypointType "MOVE";
+				_waypoint setWaypointSpeed "FULL";
+				_waypoint setWaypointBehaviour "SAFE";
+				_waypoint setWaypointCombatMode "GREEN";
+				_waypoint setWaypointCompletionRadius 50;
+>>>>>>> 65226c5b (set SAFE)
 
 			_waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];
 			_waypoint setWaypointType "MOVE";

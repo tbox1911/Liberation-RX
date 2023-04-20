@@ -56,7 +56,6 @@ GRLIB_param_wipe_savegame_1 = ["WipeSave1",0] call bis_fnc_getParamValue;
 GRLIB_param_wipe_savegame_2 = ["WipeSave2",0] call bis_fnc_getParamValue;
 GRLIB_param_wipe_keepscore = ["KeepScore",0] call bis_fnc_getParamValue;
 GRLIB_force_load = ["ForceLoading", 0] call bis_fnc_getParamValue;
-GRLIB_remote_sensors = [ "DisableRemoteSensors",0] call bis_fnc_getParamValue;
 //------------------------------------------------------------------------
 
 // Define constant

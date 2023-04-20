@@ -14,12 +14,12 @@ private _base_objectives = [];
 private _base_defenders = [];
 private _template_selected = selectRandom _fob_templates;
 private _template = ([] call compile preprocessFileLineNumbers _template_selected);
-private _objects_to_build = _template select 0;
-private _objectives_to_build = _template select 1;
-private _defenders_to_build = _template select 2;
-private _base_corners =  _template select 3;
-diag_log format ["--- LRX Spawn Outpost at %1", time];
-diag_log format ["  Outpost type: %1 position: %2", _template_selected, _base_position];
+private _template_name =  _template select 0;
+private _objects_to_build = _template select 1;
+private _objectives_to_build = _template select 2;
+private _defenders_to_build = _template select 3;
+private _base_corners =  _template select 4;
+diag_log format ["--- LRX Spawn Outpost %1 pos %2 at %3", _template_name, _base_position, time];
 
 {
 	_nextclass = _x select 0;

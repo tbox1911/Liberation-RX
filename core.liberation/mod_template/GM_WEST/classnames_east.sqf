@@ -69,8 +69,6 @@ divers_squad = [
 	"B_diver_F",
 	"B_diver_F",
 	"B_diver_F",
-	"B_diver_F",
-	"B_diver_F",
 	"B_diver_F"
 ];
 
@@ -79,7 +77,7 @@ militia_vehicles = [
 	"gm_ge_army_iltis_milan"
 ];
 
-boats_east = [
+opfor_boats = [
 	"B_Boat_Armed_01_minigun_F"
 ];
 

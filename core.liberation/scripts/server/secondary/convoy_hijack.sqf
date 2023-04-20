@@ -2,7 +2,7 @@ if ( count (sectors_allSectors - blufor_sectors - sectors_tower) < 4) exitWith {
 
 private _convoy_destinations_markers = [];
 private _max_try = 10;
-private _max_waypoints = 5;
+private _max_waypoints = 6;
 _sector_list = (sectors_allSectors - blufor_sectors - sectors_tower);
 
 while { count _convoy_destinations_markers < _max_waypoints && _max_try > 0} do {
@@ -76,6 +76,7 @@ waitUntil {sleep 2; _scout_vehicle distance2D _spawnpos > 50 || time > _timout};
 private _transport_vehicle = [_spawnpos, opfor_transport_truck, true] call F_libSpawnVehicle;
 [driver _transport_vehicle] joinSilent _convoy_group;
 (driver _transport_vehicle) disableAI "AUTOCOMBAT";
+_transport_vehicle setConvoySeparation 40;
 _transport_vehicle allowCrewInImmobile [true, true];
 _transport_vehicle addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage } ];
 for "_n" from 1 to _boxes_amount do { [_transport_vehicle, ammobox_o_typename] call attach_object_direct };
@@ -86,20 +87,20 @@ waitUntil {sleep 2; _transport_vehicle distance2D _spawnpos > 50 || time > _timo
 private _troop_vehicle = [_spawnpos, opfor_transport_truck, true] call F_libSpawnVehicle;
 [driver _troop_vehicle] joinSilent _convoy_group;
 (driver _troop_vehicle) disableAI "AUTOCOMBAT";
+_troop_vehicle setConvoySeparation 40;
 _troop_vehicle allowCrewInImmobile [true, true];
 _troop_vehicle addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage } ];
 private _troops_group = [_spawnpos, ([] call F_getAdaptiveSquadComp), GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
 {
 	_x assignAsCargoIndex [_troop_vehicle, _forEachIndex + 1];
 	_x moveInCargo _troop_vehicle;
-	[_x] orderGetIn true;
 	_x setSkill 0.65;
 	_x setSkill ["courage", 1];
 	_x allowFleeing 0;
 } foreach (units _troops_group);
 
 _convoy_group setFormation "COLUMN";
-_convoy_group setBehaviour "AWARE";
+_convoy_group setBehaviour "SAFE";
 _convoy_group setCombatMode "GREEN";
 _convoy_group setSpeedMode "LIMITED";
 
@@ -147,6 +148,8 @@ while { _mission_in_progress } do {
 			unAssignVehicle _x;
 			_x action ["eject", vehicle _x];
 			_x action ["getout", vehicle _x];
+			[_x] orderGetIn false;
+			[_x] allowGetIn false;
 			sleep 0.2;
 		} foreach ( crew _troop_vehicle );
 
@@ -163,13 +166,10 @@ while { _mission_in_progress } do {
 	_veh_leader = vehicle (leader _convoy_group);
 	{
 		if (speed vehicle _x < 5 && (speed vehicle _veh_leader > 5 || vehicle _x == vehicle _veh_leader) && behaviour _x != "COMBAT") then {
+			(vehicle _x) setFuel 1;
 			[vehicle _x] execVM "scripts\client\actions\do_unflip.sqf";
-			if (vehicle _x != _veh_leader) then {
-				_x doFollow (leader _convoy_group);
-				_x doMove (getPosATL (leader _convoy_group));
-			};
+			if (vehicle _x != _veh_leader) then { _x doFollow (leader _convoy_group) };
 		};
-		(vehicle _x) setConvoySeparation 40;
 	} forEach (units _convoy_group);
 };
 

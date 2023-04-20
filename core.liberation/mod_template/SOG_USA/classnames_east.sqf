@@ -70,7 +70,7 @@ militia_vehicles = [
 	"vn_b_wheeled_m151_01_mp"
 ];
 
-boats_east = [
+opfor_boats = [
 	"vn_o_boat_02_mg_02",
 	"vn_o_boat_01_mg_02",
 	"vn_b_boat_06_01",

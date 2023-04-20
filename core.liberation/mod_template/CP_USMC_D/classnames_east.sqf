@@ -63,13 +63,6 @@ divers_squad = [
 	"B_diver_TL_F",
 	"B_diver_exp_F",
 	"B_diver_exp_F",
-	"B_diver_exp_F",
-	"B_diver_exp_F",
-	"CUP_B_HIL_Diver_MP5_SF",
-	"CUP_B_HIL_Diver_MP5_SF",
-	"CUP_B_HIL_Diver_MP5_SF",
-	"CUP_B_HIL_Diver_MP5_SF",
-	"CUP_B_HIL_Diver_MP7_SF",
 	"CUP_B_HIL_Diver_MP7_SF",
 	"CUP_B_HIL_Diver_MP7_SF",
 	"CUP_B_HIL_Diver_MP7_SF"
@@ -83,7 +76,7 @@ militia_vehicles = [
 	"CUP_B_nM1025_SOV_M2_ION"
 ];
 
-boats_east = [
+opfor_boats = [
 	"CUP_B_RHIB_USMC",
 	"CUP_B_RHIB2Turret_USMC"
 ];

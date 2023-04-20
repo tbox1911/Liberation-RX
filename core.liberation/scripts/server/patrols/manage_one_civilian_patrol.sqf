@@ -10,7 +10,7 @@ private [
 
 while { GRLIB_endgame == 0 } do {
 	sleep (30 + floor(random 30));
-	while { [] call F_opforCap > GRLIB_patrol_cap || (diag_fps < 25.0) } do {
+	while { [] call F_opforCap > GRLIB_patrol_cap || (diag_fps < 30.0) } do {
 		sleep (30 + floor(random 30));
 	};
 
@@ -71,7 +71,7 @@ while { GRLIB_endgame == 0 } do {
 			_civ_unit_ttl = round(time + 1800);
 			waitUntil {
 				sleep 60;
-				( (!alive _civ_unit) || round (speed vehicle _civ_unit) == 0 || (count ([getPosATL _civ_unit , 4000] call F_getNearbyPlayers) == 0) || time > _civ_unit_ttl )
+				( (diag_fps < 20) || (!alive _civ_unit) || round (speed vehicle _civ_unit) == 0 || (count ([getPosATL _civ_unit , 4000] call F_getNearbyPlayers) == 0) || time > _civ_unit_ttl )
 			};
 
 			// Cleanup

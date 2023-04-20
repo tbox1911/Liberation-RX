@@ -1,7 +1,7 @@
 createDialog "liberation_admin";
 waitUntil { dialog };
 disableSerialization;
-if (isNil "do_admin") then { do_admin = 0 };
+if (isNil "do_admin" || isDamageAllowed player) then { do_admin = 0 };
 if (isNil "last_build") then { last_build = 0 };
 if (isNil "do_teleport") then { do_teleport = 0 };
 do_unban = 0;

@@ -38,25 +38,25 @@ units_loadout_overide = [];
 
 // *** RESISTANCE - Private Military Company ***
 resistance_squad = [
-"LOP_PMC_Infantry_AA",
-"LOP_PMC_Infantry_AT_Asst",
-"LOP_PMC_Infantry_AT",
-"LOP_PMC_Infantry_EOD",
-"LOP_PMC_Infantry_Marksman",
-"LOP_PMC_Infantry_Rifleman_2",
-"LOP_PMC_Infantry_GL",
-"LOP_PMC_Infantry_MG_Asst",
-"LOP_PMC_Infantry_MG",
-"LOP_PMC_Infantry_Rifleman_3",
-"LOP_PMC_Infantry_Rifleman",
-"LOP_PMC_Infantry_Corpsman",
-"LOP_PMC_Infantry_Marksman_2",
-"LOP_PMC_Infantry_Rifleman_4",
-"LOP_PMC_Infantry_Engineer",
-"LOP_PMC_Infantry_Cam",
-"LOP_PMC_Infantry_Crewman",
-"LOP_PMC_Infantry_SL",
-"LOP_PMC_Infantry_TL"
+	"LOP_PMC_Infantry_AA",
+	"LOP_PMC_Infantry_AT_Asst",
+	"LOP_PMC_Infantry_AT",
+	"LOP_PMC_Infantry_EOD",
+	"LOP_PMC_Infantry_Marksman",
+	"LOP_PMC_Infantry_Rifleman_2",
+	"LOP_PMC_Infantry_GL",
+	"LOP_PMC_Infantry_MG_Asst",
+	"LOP_PMC_Infantry_MG",
+	"LOP_PMC_Infantry_Rifleman_3",
+	"LOP_PMC_Infantry_Rifleman",
+	"LOP_PMC_Infantry_Corpsman",
+	"LOP_PMC_Infantry_Marksman_2",
+	"LOP_PMC_Infantry_Rifleman_4",
+	"LOP_PMC_Infantry_Engineer",
+	"LOP_PMC_Infantry_Cam",
+	"LOP_PMC_Infantry_Crewman",
+	"LOP_PMC_Infantry_SL",
+	"LOP_PMC_Infantry_TL"
 ];
 
 light_vehicles = [

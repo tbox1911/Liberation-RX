@@ -79,8 +79,6 @@ divers_squad = [
 	"B_diver_F",
 	"B_diver_F",
 	"B_diver_F",
-	"B_diver_F",
-	"B_diver_F",
 	"B_diver_F"
 ];
 
@@ -98,7 +96,7 @@ militia_vehicles = [
 	"UK3CB_CHD_O_BTR40_MG"
 ];
 
-boats_east = [
+opfor_boats = [
 	"UK3CB_CHD_O_Small_Boat_Open",
 	"UK3CB_CHD_O_Fishing_Boat_DSHKM",
 	"UK3CB_CHD_O_Fishing_Boat_SPG9",

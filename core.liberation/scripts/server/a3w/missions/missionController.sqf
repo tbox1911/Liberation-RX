@@ -26,11 +26,11 @@ while {true} do {
 		_availableMissions = [MISSION_CTRL_PVAR_LIST, { !(_x select 2) }] call BIS_fnc_conditionalSelect;
 		// _availableMissions = MISSION_CTRL_PVAR_LIST; // If you want to allow multiple missions of the same type running along, uncomment this line and comment the one above
 
-		if (count _availableMissions > 0) then {
+		if (count _availableMissions > 0 && diag_fps > 35.0) then {
 			_missionsList = _availableMissions call generateMissionWeights;
 			_nextMission = _missionsList call fn_selectRandomWeighted;
 		} else {
-			sleep 10;
+			sleep 30;
 		};
 	};
 

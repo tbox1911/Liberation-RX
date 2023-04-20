@@ -53,23 +53,6 @@ militia_squad = [
 militia_loadout_overide = [
 ];
 
-divers_squad = [
-	"O_diver_TL_F",
-	"O_diver_TL_F",
-	"O_diver_exp_F",
-	"O_diver_exp_F",
-	"O_diver_exp_F",
-	"O_diver_exp_F",
-	"O_diver_F",
-	"O_diver_F",
-	"O_diver_F",
-	"O_diver_F",
-	"O_diver_F",
-	"O_diver_F",
-	"O_diver_F",
-	"O_diver_F"
-];
-
 militia_vehicles = [
 	"vn_o_car_04_mg_01",
 	"vn_o_car_04_mg_01",
@@ -79,7 +62,7 @@ militia_vehicles = [
 	"vn_o_wheeled_btr40_mg_02_nva65"
 ];
 
-boats_east = [
+opfor_boats = [
 	"vn_o_boat_02_mg_02",
 	"vn_o_boat_01_mg_02",
 	"vn_o_boat_03_02",

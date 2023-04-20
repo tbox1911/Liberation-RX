@@ -57,7 +57,7 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 	};
 };
 
-// Disable HostileHelicopter if no more bigcity
+// Hostile Helicopter
 _mission_name = "mission_HostileHelicopter";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
 	private _opfor_city = count ([] call cityList);
@@ -68,7 +68,18 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 	};
 };
 
-// MeetRes
+// Capture VIP
+_mission_name = "mission_CaptureVIP";
+if (!([_missionsList, _mission_name] call getMissionState)) then {
+	private _opfor_city = count ([] call cityList);
+	if (_opfor_city <= 1) then {
+		[_missionsList, _mission_name, true] call setMissionState;
+	} else {
+		[_missionsList, _mission_name, false] call setMissionState;
+	};
+};
+
+// Meet Resistance
 _mission_name = "mission_MeetResistance";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
 	if (count blufor_sectors >= 7 && _opfor_factor >= 50) then {
