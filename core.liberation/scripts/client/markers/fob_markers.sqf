@@ -32,7 +32,7 @@ while { true } do {
 		};
 	};
 
-	_respawn_trucks = call F_getMobileRespawns;
+	_respawn_trucks = [] call F_getMobileRespawns;
 	if ( count _markers_mobilespawns != count _respawn_trucks ) then {
 		{ deleteMarkerLocal _x; } foreach _markers_mobilespawns;
 		_markers_mobilespawns = [];

@@ -34,6 +34,7 @@ GRLIB_fob_type = [ "FobType",0] call bis_fnc_getParamValue;
 GRLIB_huron_type = [ "HuronType", 0] call bis_fnc_getParamValue;
 GRLIB_squad_size = ["SquadSize",3] call bis_fnc_getParamValue;
 GRLIB_max_squad_size = ["MaxSquadSize",7] call bis_fnc_getParamValue;
+GRLIB_max_spawn_point = ["MaxSpawnPoint",2] call bis_fnc_getParamValue;
 GRLIB_enable_arsenal = ["EnableArsenal",1] call bis_fnc_getParamValue;
 GRLIB_limited_arsenal = ["LimitedArsenal",1] call bis_fnc_getParamValue;
 GRLIB_filter_arsenal = ["EnableFilter",0] call bis_fnc_getParamValue;
