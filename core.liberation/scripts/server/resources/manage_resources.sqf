@@ -27,7 +27,7 @@ while { GRLIB_endgame == 0 } do {
 		if ( count _blufor_mil_sectors > 0 ) then {
 			if ( GRLIB_passive_income ) then {
 
-				private _income =  (round (300 + (random 75)));
+				private _income =  (round (125 + (random 75)));
 				{
 					private _ammo_collected = _x getVariable ["GREUH_ammo_count",0];
 					_x setVariable ["GREUH_ammo_count", _ammo_collected + _income, true];

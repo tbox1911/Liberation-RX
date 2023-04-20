@@ -69,7 +69,7 @@ if ( isServer ) then {
 					if ( _score < GRLIB_perm_inf ) then { _penalty = 5 };
 					if ( _score > GRLIB_perm_inf && _score < GRLIB_perm_log ) then { _penalty = 10 };
 					_killer addScore - _penalty;
-					[[name _unit, _penalty, _killer] , "remote_call_civ_penalty"] call BIS_fnc_MP;
+					[name _unit, _penalty, _killer] remoteExec ["remote_call_civ_penalty", 0];
 				};
 			};
 		};
@@ -85,7 +85,7 @@ if ( isServer ) then {
 				stats_blufor_teamkills = stats_blufor_teamkills + 1;
 				_killer addScore -9;
 				_msg = localize "STR_FRIENDLY_FIRE";
-				[gamelogic, _msg]  remoteExec ["globalChat", -2];
+				[gamelogic, _msg] remoteExec ["globalChat", 0];
 			};
 		} else {
 			if ( side (group _unit) == GRLIB_side_friendly ) then {
@@ -100,7 +100,7 @@ if ( isServer ) then {
 
 				if ( GRLIB_ammo_bounties ) then {
 					_res = [_unit] call F_getBounty;
-					[ [ typeOf _unit, _res select 0,  _res select 1, _killer] , "remote_call_ammo_bounty" ] call BIS_fnc_MP;
+					[typeOf _unit, _res select 0,  _res select 1, _killer] remoteExec ["remote_call_ammo_bounty", 0];
 					_killer addScore (_bonus);
 					_killer addRating 100;
 				};

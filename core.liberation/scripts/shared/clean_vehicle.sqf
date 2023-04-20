@@ -1,7 +1,7 @@
 params ["_vehicle"];
 
 // Delete Cargo
-{[[_x], "deleteVehicle"] call BIS_fnc_MP} forEach (_vehicle getVariable ["R3F_LOG_objets_charges", []]);
+{[_x] remoteExec ["deleteVehicle", 0]} forEach (_vehicle getVariable ["R3F_LOG_objets_charges", []]);
 
 //unTow
 _towed = _vehicle getVariable ["R3F_LOG_remorque", objNull];
@@ -11,9 +11,9 @@ if (!isNull _towed) then {
 
 // Delete GR Cargo
 if ( _vehicle getVariable ["GRLIB_ammo_truck_load", 0] >= 1 ) then {
-	{[[_x], "deleteVehicle"] call BIS_fnc_MP} foreach (attachedObjects _vehicle);
+	{[_x] remoteExec ["deleteVehicle", 0]} foreach (attachedObjects _vehicle);
 };
 
 // Delete Crew
-{if (! alive _x) then {[[_x], "deleteVehicle"] call BIS_fnc_MP}} forEach crew _vehicle;
+{if (! alive _x) then {[_x] remoteExec ["deleteVehicle", 0]}} forEach crew _vehicle;
 _vehicle removeAllEventHandlers "HandleDamage";

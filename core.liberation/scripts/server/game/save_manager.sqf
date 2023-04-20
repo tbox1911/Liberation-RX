@@ -212,6 +212,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 
 			if ( !(_nextclass in no_kill_handler_classnames ) ) then {
 				_nextbuilding addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+				_nextbuilding addEventHandler ["HandleDamage", damage_manager_EH];
 			};
 
 			if ( _nextclass in all_hostile_classnames ) then {
