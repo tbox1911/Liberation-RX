@@ -25,7 +25,6 @@ LRX_tk_vip = [];
 LRX_tk_player_action = 0;
 
 LRX_tk_check = {
-	if (isDedicated) exitWith {};
 	params ["_unit", "_killer"];
 
 	if (player == _killer) then {
