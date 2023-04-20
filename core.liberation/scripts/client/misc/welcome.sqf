@@ -16,27 +16,24 @@ private _score = score player;
 private _rank = [player] call set_rank;
 private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
 
-// Load Loadout
+// Loadout
 if (isNil "GRLIB_loadout_overide") then { GRLIB_loadout_overide = false };
 if (!GRLIB_loadout_overide) then {
 	if (GRLIB_forced_loadout > 0) then {
 		[player] call compile preprocessFileLineNumbers (format ["scripts\loadouts\vanilla\player_set%1.sqf", GRLIB_forced_loadout]);
 	} else {
 		[player, configfile >> "CfgVehicles" >> typeOf player] call BIS_fnc_loadInventory;
-
-		if (typeOf player in units_loadout_overide) then {
-			_loadouts_folder = format ["scripts\loadouts\%1\%2.sqf", GRLIB_side_friendly, typeOf player];
-			[player] call compileFinal preprocessFileLineNUmbers _loadouts_folder;
-		};
-
-		if (!(isNil "GRLIB_respawn_loadout")) then {
-			[player, GRLIB_respawn_loadout] call F_setLoadout;
-		};
-
-		gamelogic globalChat "You pay your Startup Equipments";
-		[player] call F_filterLoadout;
-		[player] call F_payLoadout;
 	};
+	if (typeOf player in units_loadout_overide) then {
+		_loadouts_folder = format ["scripts\loadouts\%1\%2.sqf", GRLIB_side_friendly, typeOf player];
+		[player] call compileFinal preprocessFileLineNUmbers _loadouts_folder;
+	};
+	if (!(isNil "GRLIB_respawn_loadout")) then {
+		[player, GRLIB_respawn_loadout] call F_setLoadout;
+	};
+	gamelogic globalChat "You pay your Startup Equipments";
+	[player] call F_filterLoadout;
+	[player] call F_payLoadout;
 };
 
 // first time notice
@@ -51,7 +48,6 @@ Your Credit : <t color='#800000'>%4</t>", name player, _rank, _score, _ammo_coll
 // HCI Command IA
 hcRemoveAllGroups player;
 if ( player == [] call F_getCommander ) then {
-
 	private _myveh = [vehicles, {
 		(_x distance lhd) >= 1000 &&
 		[player, _x] call is_owner &&
