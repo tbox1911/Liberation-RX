@@ -4,8 +4,7 @@ PAR_unit_eject = {
 	params ['_veh', '_unit'];
 	unAssignVehicle _unit;
 	_unit allowDamage false;
-	_unit action ["Eject", _veh];
-	/*
+	//_unit action ["eject", _veh];
 	moveOut _unit;
 	_unit setPos (getPosATL _veh vectorAdd [([[-15,0,15], 2] call F_getRND), ([[-15,0,15], 2] call F_getRND), 0]);
 	if (round(getPosATL _unit select 2) > 20) then {
@@ -14,7 +13,6 @@ PAR_unit_eject = {
 		sleep 1;
 		if (isnull driver (_para)) then {deleteVehicle _para};
 	};
-	*/
 	sleep 3;
 	_unit allowDamage true;
 };
