@@ -39,9 +39,6 @@ FAR_Player_Actions = {
 	if (alive player && player isKindOf "Man") then
 	{
 		// addAction args: title, filename, (arguments, priority, showWindow, hideOnUse, shortcut, condition, positionInModel, radius, radiusView, showIn3D, available, textDefault, textToolTip)
-		player addAction ["<t color='#00C900'>" + "Revive" + "</t>", "addons\FAR\FAR_handleAction.sqf", ["action_revive"], 10, true, true, "", "call FAR_Check_Revive"];
-		player addAction ["<t color='#009900'>" + "Stabilize" + "</t>", "addons\FAR\FAR_handleAction.sqf", ["action_stabilize"], 10, true, true, "", "call FAR_Check_Stabilize"];
-		player addAction ["<t color='#C90000'>" + "Suicide" + "</t>", "addons\FAR\FAR_handleAction.sqf", ["action_suicide"], 9, false, true, "", "call FAR_Check_Suicide"];
 		player addAction ["<t color='#C90000'>" + "Drag" + "</t>", "addons\FAR\FAR_handleAction.sqf", ["action_drag"], 9, false, true, "", "call FAR_Check_Dragging"];
 	};
 };
@@ -133,34 +130,21 @@ FAR_Player_Unconscious = {
 	[_unit] spawn MGI_fn_unconscious;
 
 	_bleedOut = time + FAR_BleedOut;
-	while { !isNull _unit && alive _unit && _unit getVariable "FAR_isUnconscious" == 1 && _unit getVariable "FAR_isStabilized" == 0 && (FAR_BleedOut <= 0 || time < _bleedOut) } do
-	{
-		//hintSilent format[localize "STR_BLEEDOUT_MESSAGE" + "\n\n%2", round (_bleedOut - time), call FAR_CheckFriendlies];
+	while { !isNull _unit && alive _unit && _unit getVariable "FAR_isUnconscious" == 1 && (FAR_BleedOut <= 0 || time < _bleedOut) } do {
+
 		hintSilent format[localize "STR_BLEEDOUT_MESSAGE" + "\n", round (_bleedOut - time)];
 		public_bleedout_message = format [localize "STR_BLEEDOUT_MESSAGE", round (_bleedOut - time)];
 		public_bleedout_timer = round (_bleedOut - time);
 		sleep 0.5;
 	};
 
-	if (_unit getVariable "FAR_isStabilized" == 1) then {
-		//Unit has been stabilized. Disregard bleedout timer and umute player
-		_unit setVariable ["ace_sys_wounds_uncon", false];
-		while { !isNull _unit && alive _unit && _unit getVariable "FAR_isUnconscious" == 1 } do
-		{
-			//hintSilent format["%1\n\n%2", localize "STR_BLEEDOUT_STABILIZED", call FAR_CheckFriendlies];
-			hintSilent format["%1\n", localize "STR_BLEEDOUT_STABILIZED"];
-			public_bleedout_message = localize "STR_BLEEDOUT_STABILIZED";
-			public_bleedout_timer = FAR_BleedOut;
-			sleep 0.5;
-		};
-	};
-
 	// Player bled out
-	if ((FAR_BleedOut > 0 && {time > _bleedOut} && {_unit getVariable ["FAR_isStabilized",0] == 0}) || (vehicle _unit != _unit)) then {
+	if ((FAR_BleedOut > 0 && {time > _bleedOut}) || (vehicle _unit != _unit)) then {
 		_unit setDamage 1;
 	} else {
 		// Player got revived
-		_unit setVariable ["FAR_isStabilized", 0, true];
+		_unit playMove "amovppnemstpsraswrfldnon";
+		_unit playMove "";
 
 		// Clear the "medic nearby" hint
 		hintSilent "";
@@ -175,59 +159,6 @@ FAR_Player_Unconscious = {
 
 		// Dog stop
 		if (!isNil "_my_dog") then { _my_dog setVariable ["do_find", nil] };
-
-		_unit setUnconscious false;
-		_unit playMove "amovppnemstpsraswrfldnon";
-		_unit playMove "";
-		uIsleep 10;
-
-		_unit setCaptive false;
-		_unit allowDamage true;
-	};
-};
-
-////////////////////////////////////////////////
-// Revive Player
-////////////////////////////////////////////////
-FAR_HandleRevive = {
-	private ["_target"];
-
-	_target = _this select 0;
-	_isMedic = [player] call FAR_is_medic;
-	_hasMedikit = [player] call FAR_has_medikit;
-	if (alive _target) then	{
-		player playMove "AinvPknlMstpSlayWrflDnon_medic";
-		sleep 6;
-		if (! _hasMedikit ) then {
-			player removeItem FAR_AidKit;
-		};
-		if ( _isMedic && _hasMedikit ) then {
-			_target setDamage 0;
-		} else {
-			_target setDamage 0.25;
-		};
-		_target setVariable ["FAR_isUnconscious", 0, true];
-		_target setVariable ['MGI_isUnconscious', false];
-		_target setVariable ["FAR_isDragged", 0, true];
-		[player, 5] remoteExec ["addScore", 2];
-	};
-};
-
-////////////////////////////////////////////////
-// Stabilize Player
-////////////////////////////////////////////////
-FAR_HandleStabilize = {
-	private ["_target"];
-	_target = _this select 0;
-	if (alive _target) then
-	{
-		player playMove "AinvPknlMstpSlayWrflDnon_medic";
-		_hasMedikit = [player] call FAR_has_medikit;
-		if (! _hasMedikit ) then {
-			player removeItem FAR_AidKit;
-		};
-		_target setVariable ["FAR_isStabilized", 1, true];
-		sleep 6;
 	};
 };
 
@@ -323,90 +254,6 @@ FAR_public_EH = {
 			gamelogic globalChat (format ["%1 has committed TK and has been punished by %2",name _killer, name _killed]);
 		};
 	};
-};
-
-////////////////////////////////////////////////
-// Revive Action Check
-////////////////////////////////////////////////
-FAR_Check_Revive = {
-	private ["_target", "_isTargetUnconscious", "_isDragged"];
-
-	_return = false;
-
-	// Unit that will excute the action
-	_isPlayerUnconscious = player getVariable "FAR_isUnconscious";
-	_isMedic = [player] call FAR_is_medic;
-	_target = cursorObject;
-
-	// Make sure player is alive and target is an injured unit
-	if( !alive player || _isPlayerUnconscious == 1 || FAR_isDragging || !isNull R3F_LOG_joueur_deplace_objet || isNull _target || !alive _target || (!isPlayer _target && !FAR_Debugging) || round(_target distance2D player) > 3 ) exitWith
-	{
-		_return
-	};
-
-	_isTargetUnconscious = _target getVariable "FAR_isUnconscious";
-	_isDragged = _target getVariable "FAR_isDragged";
-
-	// Make sure target is unconscious and player is a medic
-	if (_isTargetUnconscious == 1 && _isDragged == 0 && (_isMedic || FAR_ReviveMode > 0) && ( (FAR_AidKit in (items player)) || ([player] call FAR_has_medikit) ) ) then
-	{
-		_return = true;
-
-		// [ReviveMode] Check if player has a Medikit
-		if ( FAR_ReviveMode == 2 && !([player] call FAR_has_medikit) ) then
-		{
-			_return = false;
-		};
-	};
-
-	_return
-};
-
-////////////////////////////////////////////////
-// Stabilize Action Check
-////////////////////////////////////////////////
-FAR_Check_Stabilize = {
-	private ["_target", "_isTargetUnconscious", "_isDragged"];
-
-	_return = false;
-
-	// Unit that will excute the action
-	_isPlayerUnconscious = player getVariable "FAR_isUnconscious";
-	_target = cursorObject;
-
-
-	// Make sure player is alive and target is an injured unit
-	if( !alive player || _isPlayerUnconscious == 1 || FAR_isDragging || !isNull R3F_LOG_joueur_deplace_objet || isNull _target || !alive _target || (!isPlayer _target && !FAR_Debugging) || (_target distance player) > 2 ) exitWith
-	{
-		_return
-	};
-
-	_isTargetUnconscious = _target getVariable "FAR_isUnconscious";
-	_isTargetStabilized = _target getVariable "FAR_isStabilized";
-	_isDragged = _target getVariable "FAR_isDragged";
-
-	// Make sure target is unconscious and hasn't been stabilized yet, and player has a FAK/Medikit
-	if (_isTargetUnconscious == 1 && _isTargetStabilized == 0 && _isDragged == 0 && ( (FAR_AidKit in (items player)) || ([player] call FAR_has_medikit) ) ) then
-	{
-		_return = true;
-	};
-
-	_return
-};
-
-////////////////////////////////////////////////
-// Suicide Action Check
-////////////////////////////////////////////////
-FAR_Check_Suicide = {
-	_return = false;
-	_isPlayerUnconscious = player getVariable ["FAR_isUnconscious",0];
-
-	if (alive player && _isPlayerUnconscious == 1) then
-	{
-		_return = true;
-	};
-
-	_return
 };
 
 ////////////////////////////////////////////////

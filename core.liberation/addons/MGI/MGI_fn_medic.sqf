@@ -1,7 +1,6 @@
 params ["_wnded"];
-private "_medic";
 
-private _bros = allUnits select {(_x getVariable ["MGI_Grp_ID","0"]) == (_wnded getVariable ["MGI_Grp_ID","1"])};
+private _bros = (units player) select {(_x getVariable ["MGI_Grp_ID","0"]) == (_wnded getVariable ["MGI_Grp_ID","1"])};
 private _medics = _bros select {
   round (_x distance2D _wnded) <= 300 &&
   (!(objectParent _x iskindof "Steerable_Parachute_F")) &&
@@ -24,7 +23,8 @@ if (count _medics == 0) exitWith {
 
 _medics = _medics apply {[_x distance2D _wnded, _x]};
 _medics sort true;
-_medic = _medics select 0 select 1;
+
+private _medic = _medics select 0 select 1;
 _msg = format ["Hold on %1 !, Brother %2 (dist: %3m), come to save you !", name _wnded, name _medic, round (_medics select 0 select 0)];
 [_wnded, _msg] call MGI_fn_globalchat;
 

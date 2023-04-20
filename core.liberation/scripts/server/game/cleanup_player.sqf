@@ -20,9 +20,9 @@ if !(isNull _unit) then {
 	} forEach _cleanveh;
 
 	// Remove Injured AI
-	private _bros = allUnits select {(_x getVariable ["MGI_Grp_ID","0"]) == (player getVariable ["MGI_Grp_ID","1"])};
+	private _gid = _unit getVariable ["MGI_Grp_ID","1"];
+	private _bros = allUnits select {side _x == GRLIB_side_friendly && (_x getVariable ["MGI_Grp_ID","0"]) == _gid};
 	{
-		_x setVariable ["MGI_busy", nil];
 		if (!(lifeState _x in ["HEALTHY", "INJURED"])) then { deleteVehicle _x };
 	} forEach _bros;
 

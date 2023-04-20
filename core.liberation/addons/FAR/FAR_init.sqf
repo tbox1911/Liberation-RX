@@ -47,7 +47,6 @@ FAR_Player_Init = {
 	player addMPEventHandler ["MPKilled", FAR_Player_MPKilled];
 	player setVariable ["GREUH_isUnconscious", 0, true];
 	player setVariable ["FAR_isUnconscious", 0, true];
-	player setVariable ["FAR_isStabilized", 0, true];
 	player setVariable ["FAR_isDragged", 0, true];
 	player setVariable ["ace_sys_wounds_uncon", false];
 	player setVariable ["MGI_Grp_ID",format["Bros_%1", MGI_Grp_ID], true];

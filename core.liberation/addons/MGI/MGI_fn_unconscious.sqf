@@ -14,42 +14,58 @@ _unit setVariable ['MGI_healed', nil];
 _unit setCaptive true;
 _unit switchMove "AinjPpneMstpSnonWrflDnon";  // lay down
 
-if (!isPlayer _unit) then {
+[
+  [_unit],
+{
   [
-  _unit,
-  "<t color='#00C900'>Heal Bros</t>",
+  (_this select 0),
+  "<t color='#00C900'>Revive</t>",
   "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_reviveMedic_ca.paa","\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_reviveMedic_ca.paa",
-  "round(player distance2D _target) < 3 && lifeState _target == 'incapacitated' && _target getVariable ['FAR_isDragged',0] == 0 ",
-  "round(player distance2D _target) < 3",
-  {   if (stance player == 'PRONE') then {
-        player playMoveNow 'ainvppnemstpslaywrfldnon_medicother';
-      } else {
-        player playMoveNow 'ainvpknlmstpslaywrfldnon_medicother';
+   "round(_this distance2D _target) < 3 &&
+    lifeState _target == 'incapacitated' &&
+    _target getVariable ['FAR_isDragged',0] == 0 &&
+    ((FAR_AidKit in (items _this)) || ([_this] call FAR_is_medic && [_this] call FAR_has_medikit))",
+  "round(_caller distance2D _target) < 3",
+  {
+    if (_caller != player) then {
+      _msg = format ["%1 is healing %2 now...", name _caller, name _target];
+      [gamelogic, _msg] remoteExec ["globalChat", owner _target];
+    };
+    if (stance _caller == 'PRONE') then {
+      _caller playMoveNow 'ainvppnemstpslaywrfldnon_medicother';
+    } else {
+      _caller playMoveNow 'ainvpknlmstpslaywrfldnon_medicother';
     };
   },
   {
-    if ((diag_tickTime > (_this select 3 select 0) + MGI_BleedOut) && lifeState _target == 'incapacitated') then {
+    if ((diag_tickTime > (_this select 3 select 0) + MGI_BleedOut) && ! isPlayer _target && lifeState _target == 'incapacitated') then {
       _target call MGI_fn_death;
     }
   },
   {
-    [_target, player] call MGI_fn_sortie;
+    if (local _target) then {
+      [_target, _caller] spawn MGI_fn_sortie;
+    } else {
+      [[_target, _caller], {[(_this select 0),(_this select 1)] spawn MGI_fn_sortie}] remoteExec ["bis_fnc_call", owner _target];
+    };
   },
   {
-    player switchMove "";
+    _caller switchMove "";
   },
-  [diag_tickTime],5,12,true,false] call BIS_fnc_holdActionAdd;
-};
-sleep 10;
+  [diag_tickTime],6,12] call BIS_fnc_holdActionAdd;
+}] remoteExec ["bis_fnc_call", 0];
+sleep 5;
 
 _timer = diag_tickTime;
 while {lifeState _unit == 'incapacitated' && diag_tickTime <= _timer + MGI_BleedOut} do {
-  _medic = _unit getVariable ['MGI_myMedic', nil];
-  if (isNil "_medic") then {
-    _unit groupchat "I need a Medic !!";
-    _medic = _unit call MGI_fn_medic;
-    if (!isNil "_medic") then {
-      [_unit, _medic] call MGI_fn_911;
+  if ( count units player > 1 ) then {
+    _medic = _unit getVariable ['MGI_myMedic', nil];
+    if (isNil "_medic") then {
+      _unit groupchat "I need a Medic !!";
+      _medic = _unit call MGI_fn_medic;
+      if (!isNil "_medic") then {
+        [_unit, _medic] call MGI_fn_911;
+      };
     };
   };
   sleep 10;
