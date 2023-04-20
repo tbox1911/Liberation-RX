@@ -1,6 +1,6 @@
 if (!isServer && hasInterface) exitWith {};
-if ( isNil "_intel_object" ) exitWith {};
 params [ "_intel_object", "_unit_owner" ];
+if ( isNil "_intel_object" ) exitWith {};
 
 _intel_yield = 8;
 deleteVehicle _intel_object;

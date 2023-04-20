@@ -40,10 +40,7 @@ while { true } do {
 			stats_spartan_respawns = stats_spartan_respawns + 1;
 			sleep 15;
 		};
-
-		if (huron distance lhd < 500) then {
-			deletevehicle huron;
-		};
+		deletevehicle huron;	
 	};
 	sleep 10;
 };
