@@ -14,6 +14,9 @@ if ( isNil "opfor_ammobox_transport" ) then { opfor_ammobox_transport = "O_Truck
 if ( isNil "commander_classname" ) then { commander_classname = "B_officer_F"; };
 if ( isNil "crewman_classname" ) then { crewman_classname = "B_crew_F" };
 if ( isNil "pilot_classname" ) then { pilot_classname = "B_Helipilot_F" };
+if ( isNil "FAR_Medikit" ) then { FAR_Medikit = "Medikit" };
+if ( isNil "FAR_AidKit" ) then { FAR_AidKit = "FirstAidKit" };
+if ( isNil "A3W_BoxWps" ) then { A3W_BoxWps = "Box_East_Wps_F" };
 
 // *** FRIENDLIES ***
 infantry_units = [
@@ -157,26 +160,26 @@ buildings = [
 	["Land_PierLadder_F",0,0,0,GRLIB_perm_inf],
 	["Land_CncBarrierMedium4_F",0,0,0,0],
 	["Land_CncWall4_F",0,0,0,0],
-	["Land_BagBunker_Small_F",0,0,0,GRLIB_perm_inf],
-	["Land_HBarrier_5_F",0,0,0,GRLIB_perm_inf],
-	["Land_CncWall1_F",0,0,0,GRLIB_perm_inf],
+	["Land_CncWall1_F",0,0,0,0],
 	["Land_BagFence_Round_F",0,0,0,GRLIB_perm_log],
 	["Land_BagFence_Long_F",0,0,0,0],
 	["Land_BagFence_Short_F",0,0,0,GRLIB_perm_inf],
 	["Land_BagFence_Corner_F",0,0,0,GRLIB_perm_log],
+	["Land_HBarrier_5_F",0,0,0,0],
 	["Land_HBarrierWall4_F",0,0,0,GRLIB_perm_tank],
 	["Land_HBarrierWall6_F",0,0,0,GRLIB_perm_tank],
 	["Land_HBarrierWall_corner_F",0,0,0,GRLIB_perm_tank],
 	["Land_HBarrierTower_F",0,0,0,GRLIB_perm_tank],
+	["Land_HBarrierBig_F",0,0,0,GRLIB_perm_tank],
 	["Land_CncShelter_F",0,0,0,GRLIB_perm_log],
 	["Land_Cargo_Tower_V1_F",0,0,0,GRLIB_perm_tank],
 	["Land_Cargo_House_V1_F",0,0,0,GRLIB_perm_inf],
 	["Land_Cargo_Patrol_V1_F",0,0,0,GRLIB_perm_log],
+	["Land_BagBunker_Small_F",0,0,0,0],
 	["Land_BagBunker_Large_F",0,0,0,GRLIB_perm_tank],
 	["Land_BagBunker_Tower_F",0,0,0,GRLIB_perm_tank],
 	["Land_SM_01_shed_F",0,0,0,GRLIB_perm_max],
 	["Land_Hangar_F",0,0,0,GRLIB_perm_max],
-	["Land_HBarrierBig_F",0,0,0,GRLIB_perm_tank],
 	["Flag_NATO_F",0,0,0,0],
 	["Land_PortableLight_double_F",0,0,0,GRLIB_perm_log],
 	["Land_LampHalogen_F",0,0,0,GRLIB_perm_tank],
@@ -230,24 +233,87 @@ support_vehicles = [
 	[ammobox_b_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
 	[ammobox_o_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
 	[ammobox_i_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
-	["Box_East_Wps_F",0,round(150 / GRLIB_recycling_percentage),0,99999]
+	[A3W_BoxWps,0,round(150 / GRLIB_recycling_percentage),0,99999]
 ];
 
 if ( isNil "blufor_squad_inf_light" ) then { blufor_squad_inf_light = [] };
-if ( count blufor_squad_inf_light == 0 ) then { blufor_squad_inf_light = [ "B_Soldier_SL_F","B_Soldier_TL_F","B_Soldier_GL_F","B_soldier_AR_F","B_Soldier_GL_F","B_medic_F","B_Soldier_LAT_F","B_Soldier_F","B_Soldier_F" ]; };
+if ( count blufor_squad_inf_light == 0 ) then { blufor_squad_inf_light = [
+	"B_Soldier_SL_F",
+	"B_Soldier_TL_F",
+	"B_Soldier_GL_F",
+	"B_soldier_AR_F",
+	"B_Soldier_GL_F",
+	"B_medic_F",
+	"B_Soldier_LAT_F",
+	"B_Soldier_F",
+	"B_Soldier_F"
+	];
+};
 if ( isNil "blufor_squad_inf" ) then { blufor_squad_inf = [] };
-if ( count blufor_squad_inf == 0 ) then { blufor_squad_inf = [ "B_Soldier_SL_F","B_Soldier_TL_F","B_Soldier_AR_F","B_HeavyGunner_F","B_medic_F","B_Soldier_GL_F","B_Soldier_LAT_F","B_Soldier_LAT_F","B_soldier_M_F","B_Sharpshooter_F" ]; };
+if ( count blufor_squad_inf == 0 ) then { blufor_squad_inf = [ "B_Soldier_SL_F",
+	"B_Soldier_TL_F",
+	"B_Soldier_AR_F",
+	"B_HeavyGunner_F",
+	"B_medic_F",
+	"B_Soldier_GL_F",
+	"B_Soldier_LAT_F",
+	"B_Soldier_LAT_F",
+	"B_soldier_M_F",
+	"B_Sharpshooter_F"
+	];
+};
 if ( isNil "blufor_squad_at" ) then { blufor_squad_at = [] };
-if ( count blufor_squad_at == 0 ) then { blufor_squad_at = [ "B_Soldier_SL_F","B_soldier_AT_F","B_soldier_AT_F","B_soldier_AT_F","B_medic_F","B_soldier_F" ]; };
+if ( count blufor_squad_at == 0 ) then { blufor_squad_at = [ "B_Soldier_SL_F",
+	"B_soldier_AT_F",
+	"B_soldier_AT_F",
+	"B_soldier_AT_F",
+	"B_medic_F",
+	"B_soldier_F"
+	];
+};
 if ( isNil "blufor_squad_aa" ) then { blufor_squad_aa = [] };
-if ( count blufor_squad_aa == 0 ) then { blufor_squad_aa = [ "B_Soldier_SL_F","B_soldier_AA_F","B_soldier_AA_F","B_soldier_AA_F","B_medic_F","B_soldier_F" ]; };
+if ( count blufor_squad_aa == 0 ) then { blufor_squad_aa = [ "B_Soldier_SL_F",
+	"B_soldier_AA_F",
+	"B_soldier_AA_F",
+	"B_soldier_AA_F",
+	"B_medic_F",
+	"B_soldier_F"
+	];
+};
 if ( isNil "blufor_squad_recon" ) then { blufor_squad_recon = [] };
-if ( count blufor_squad_recon == 0 ) then { blufor_squad_recon = [ "B_recon_TL_F","B_recon_F","B_recon_exp_F","B_recon_medic_F","B_recon_LAT_F","B_recon_LAT_F","B_recon_M_F","B_Recon_Sharpshooter_F","B_recon_F" ]; };
+if ( count blufor_squad_recon == 0 ) then { blufor_squad_recon = [ "B_recon_TL_F",
+	"B_recon_F",
+	"B_recon_exp_F",
+	"B_recon_medic_F",
+	"B_recon_LAT_F",
+	"B_recon_LAT_F",
+	"B_recon_M_F",
+	"B_Recon_Sharpshooter_F",
+	"B_recon_F"
+	];
+};
 if ( isNil "blufor_squad_para" ) then { blufor_squad_para = [] };
-if ( count blufor_squad_para == 0 ) then { blufor_squad_para = [ "B_soldier_PG_F","B_soldier_PG_F","B_soldier_PG_F","B_soldier_PG_F","B_soldier_PG_F","B_soldier_PG_F","B_soldier_PG_F","B_soldier_PG_F","B_soldier_PG_F","B_soldier_PG_F" ]; };
-if ( isNil "blufor_squad_inf_light" ) then { blufor_squad_inf_light = [] };
-if ( count blufor_squad_inf_light == 0 ) then { blufor_squad_inf_light = [ "B_Soldier_SL_F","B_Soldier_TL_F","B_Soldier_GL_F","B_soldier_AR_F","B_Soldier_GL_F","B_medic_F","B_Soldier_LAT_F","B_Soldier_F","B_Soldier_F"]; };
+if ( count blufor_squad_para == 0 ) then { blufor_squad_para = [ "B_soldier_PG_F",
+	"B_soldier_PG_F",
+	"B_soldier_PG_F",
+	"B_soldier_PG_F",
+	"B_soldier_PG_F",
+	"B_soldier_PG_F",
+	"B_soldier_PG_F",
+	"B_soldier_PG_F",
+	"B_soldier_PG_F",
+	"B_soldier_PG_F"
+	];
+};
 
+squads = [
+	[blufor_squad_inf_light,10,100,0,GRLIB_perm_max],
+	[blufor_squad_inf,20,200,0,GRLIB_perm_max],
+	[blufor_squad_at,25,300,0,GRLIB_perm_max],
+	[blufor_squad_aa,25,300,0,GRLIB_perm_max],
+	[blufor_squad_recon,25,250,0,GRLIB_perm_max],
+	[blufor_squad_para,20,250,0,GRLIB_perm_max]
+];
 
 // All the UAVs must be declared here
 uavs = [
@@ -313,14 +379,6 @@ vehicle_artillery = [
 	"B_Ship_Gun_01_F",
 	"I_E_Truck_02_MRL_F",
 	"B_MBT_01_arty_F"
-];
-squads = [
-	[blufor_squad_inf_light,20,0,0],
-	[blufor_squad_inf,30,0,0],
-	[blufor_squad_at,20,25,0],
-	[blufor_squad_aa,20,25,0],
-	[blufor_squad_recon,25,0,0],
-	[blufor_squad_para,20,0,0]
 ];
 
 // *** BADDIES ***
@@ -632,7 +690,7 @@ GRLIB_vehicle_whitelist = [
 	ammobox_o_typename,
 	ammobox_i_typename,
 	mobile_respawn,
-	"Box_East_Wps_F",
+	A3W_BoxWps,
 	"Land_CanisterFuel_Red_F",
 	"Land_PierLadder_F",
 	"Box_B_UAV_06_medical_F",
@@ -640,6 +698,7 @@ GRLIB_vehicle_whitelist = [
 	"Land_CncWall4_F",
 	"Land_BagBunker_Small_F",
 	"Land_CncWall1_F",
+	"Land_BagFence_Long_F",
 	"Land_HBarrier_5_F",
 	"O_Truck_03_covered_F",
 	"O_Truck_03_transport_F",
@@ -759,10 +818,10 @@ GRLIB_sar_wreck = "Land_Wreck_Heli_Attack_01_F";
 GRLIB_sar_fire = "test_EmptyObjectForFireBig";
 GRLIB_Ammobox = [
 	Arsenal_typename,
+	A3W_BoxWps,
 	"Box_B_UAV_06_medical_F",
 	"Box_NATO_Ammo_F",
 	"Box_NATO_WpsLaunch_F",
-	"Box_East_Wps_F",
 	"mission_USLaunchers",
 	"Land_CargoBox_V1_F"
 ];

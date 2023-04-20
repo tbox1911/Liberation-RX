@@ -196,10 +196,10 @@ FAR_HandleRevive = {
 	if (alive _target) then	{
 		player playMove "AinvPknlMstpSlayWrflDnon_medic";
 		sleep 6;
-		if (!("Medikit" in (backpackItems player)) ) then {
-			player removeItem "FirstAidKit";
+		if (!(FAR_Medikit in (backpackItems player)) ) then {
+			player removeItem FAR_AidKit;
 		};
-		if (_isMedic == 1 && "Medikit" in (backpackItems player)) then {
+		if (_isMedic == 1 && FAR_Medikit in (backpackItems player)) then {
 			_target setDamage 0;
 		} else {
 			_target setDamage 0.25;
@@ -220,8 +220,8 @@ FAR_HandleStabilize = {
 	if (alive _target) then
 	{
 		player playMove "AinvPknlMstpSlayWrflDnon_medic";
-		if (!("Medikit" in (items player)) ) then {
-			player removeItem "FirstAidKit";
+		if (!(FAR_Medikit in (items player)) ) then {
+			player removeItem FAR_AidKit;
 		};
 		_target setVariable ["FAR_isStabilized", 1, true];
 		sleep 6;
@@ -347,12 +347,12 @@ FAR_Check_Revive = {
 	_isDragged = _target getVariable "FAR_isDragged";
 
 	// Make sure target is unconscious and player is a medic
-	if (_isTargetUnconscious == 1 && _isDragged == 0 && (_isMedic == 1 || FAR_ReviveMode > 0) && ( ("FirstAidKit" in (items player)) || ("Medikit" in (items player)) ) ) then
+	if (_isTargetUnconscious == 1 && _isDragged == 0 && (_isMedic == 1 || FAR_ReviveMode > 0) && ( (FAR_AidKit in (items player)) || (FAR_Medikit in (items player)) ) ) then
 	{
 		_return = true;
 
 		// [ReviveMode] Check if player has a Medikit
-		if ( FAR_ReviveMode == 2 && !("Medikit" in (items player)) ) then
+		if ( FAR_ReviveMode == 2 && !(FAR_Medikit in (items player)) ) then
 		{
 			_return = false;
 		};
@@ -385,7 +385,7 @@ FAR_Check_Stabilize = {
 	_isDragged = _target getVariable "FAR_isDragged";
 
 	// Make sure target is unconscious and hasn't been stabilized yet, and player has a FAK/Medikit
-	if (_isTargetUnconscious == 1 && _isTargetStabilized == 0 && _isDragged == 0 && ( ("FirstAidKit" in (items player)) || ("Medikit" in (items player)) ) ) then
+	if (_isTargetUnconscious == 1 && _isTargetStabilized == 0 && _isDragged == 0 && ( (FAR_AidKit in (items player)) || (FAR_Medikit in (items player)) ) ) then
 	{
 		_return = true;
 	};

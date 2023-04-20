@@ -32,10 +32,10 @@ _setupObjects =
 	_missionPos = (markerPos _missionLocation vectorAdd [([[-150,0,150], 20] call F_getRND), ([[-150,0,150], 20] call F_getRND), 0]);
 
 	// spawn some crates in the middle of town (Town marker position)
-	_box1 = ["Box_East_Wps_F", _missionPos, true] call boxSetup;
-	[_box1, "mission_USLaunchers"] call fn_refillbox;
-	_box2 = ["Box_East_Wps_F", _missionPos, true] call boxSetup;
-	[_box2, "mission_USSpecial"] call fn_refillbox;
+	_box1 = [A3W_BoxWps, _missionPos, true] call boxSetup;
+//	[_box1, "mission_USLaunchers"] call fn_refillbox;
+	_box2 = [A3W_BoxWps, _missionPos, true] call boxSetup;
+//	[_box2, "mission_USSpecial"] call fn_refillbox;
 
 	// create some atmosphere around the crates 8)
 	_tent1 = createVehicle ["Land_cargo_addon02_V2_F", _missionPos, [], 3, "None"];

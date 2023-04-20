@@ -46,7 +46,7 @@ MGI_fn_Revive = {
   MGI_AiRevive = _AiRevive;
 
     while {true} do {
-      MGI_bros = allUnits select {(_x getVariable [format["Bros_%1",MGI_Grp_ID],nil])};
+      MGI_bros = allUnits select {(_x getVariable format["Bros_%1",MGI_Grp_ID])};
       {
         // Only for AI
         if (!isplayer _x) then {
@@ -96,7 +96,7 @@ waituntil {!isNull player && GRLIB_player_spawned};
 waituntil {!isNil {player getVariable ["GRLIB_Rank", nil]}};
 
 // AI rejoin player's group
-MGI_bros = allUnits select {(_x getVariable [format["Bros_%1",MGI_Grp_ID],nil])};
+MGI_bros = allUnits select {(_x getVariable format["Bros_%1",MGI_Grp_ID])};
 {
   if ( count (units group player) < (GRLIB_squad_size + GRLIB_squad_size_bonus) ) then { [_x] joinSilent my_group };
 } foreach MGI_bros;

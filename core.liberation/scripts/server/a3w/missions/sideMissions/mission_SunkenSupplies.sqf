@@ -27,8 +27,8 @@ _setupObjects =
 	};
 	_missionPos = markerPos _missionLocation;
 
-	_box1 = ["Box_East_AmmoVeh_F", _missionPos, true] call boxSetup;
-	_box2 = ["Box_East_AmmoVeh_F", _missionPos, true] call boxSetup;
+	_box1 = [ammobox_o_typename, _missionPos, true] call boxSetup;
+	_box2 = [ammobox_o_typename, _missionPos, true] call boxSetup;
 
 	{
 		_boxPos = getPosASL _x;

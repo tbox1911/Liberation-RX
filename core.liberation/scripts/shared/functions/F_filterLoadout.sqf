@@ -1,6 +1,8 @@
 params [ "_unit" ];
 
 {
+    if (_x in ([primaryWeapon _unit])) then {_unit removeWeapon _x};
+    if (_x in ([secondaryWeapon _unit])) then {_unit removeWeapon _x};
     if (_x in ([uniform _unit])) then {removeUniform _unit};
     if (_x in ([headgear _unit])) then {removeHeadgear _unit};
     if (_x in ([backpack _unit])) then {removeBackpack _unit};
