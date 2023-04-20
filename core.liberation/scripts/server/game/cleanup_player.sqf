@@ -55,4 +55,8 @@ if !(isNull _unit) then {
 
 	//remove marker
 	deletemarker format ["PAR_marker_%1", name _unit];
+
+	// remove grave box
+	private _grave_box = _unit getVariable ["GRLIB_grave_box", nil];
+	if (!isNil "_grave_box") then { deleteVehicle _grave_box };
 };

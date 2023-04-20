@@ -21,9 +21,9 @@ if (_unit == player) then {
 		_grave_box = "Land_PlasticCase_01_small_black_F" createVehicle _grave_box_pos;
 		_grave_box setPosASL _grave_box_pos; 
 		_grave_box setDir _grave_dir; 
-		_grave_box setVariable ["R3F_LOG_disabled",true,true];
+		_grave_box setVariable ["R3F_LOG_disabled", true, true];
 		_grave_box setVariable ["GRLIB_vehicle_owner", getPlayerUID player, true];
-		_unit setvariable ["GRLIB_grave_box", _grave_box];
+		_unit setvariable ["GRLIB_grave_box", _grave_box, true];
 
 		// clear box
 		clearWeaponCargo _grave_box;
