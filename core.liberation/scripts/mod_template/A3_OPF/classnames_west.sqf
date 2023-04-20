@@ -1,5 +1,6 @@
 // *** FRIENDLIES ***
-// Default classname and advanced definition in : scripts\shared\classnames.sqf
+// Default classname: scripts\shared\default_classnames.sqf
+// Advanced definition: scripts\shared\classnames.sqf
 
 huron_typename = "O_Heli_Transport_04_black_F";
 FOB_typename = "Land_Cargo_HQ_V3_F";
@@ -233,13 +234,13 @@ ai_healing_sources_west = [
 vehicle_rearm_sources_west = [
 ];
 
-vehicle_artillery = [
+vehicle_artillery_west = [
 	"O_Mortar_01_F",
 	"I_E_Truck_02_MRL_F",
 	"O_MBT_02_arty_F"
 ];
 
-vehicle_big_units = [
+vehicle_big_units_west = [
 	"Land_Cargo_Tower_V1_F",
 	"B_T_VTOL_01_infantry_F",
 	"B_T_VTOL_01_vehicle_F",

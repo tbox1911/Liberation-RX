@@ -1,5 +1,6 @@
 // *** FRIENDLIES ***
-// Default classname and advanced definition in : scripts\shared\classnames.sqf
+// Default classname: scripts\shared\default_classnames.sqf
+// Advanced definition: scripts\shared\classnames.sqf
 
 FOB_box_typename = "gm_ge_army_shelteraceII_standard";
 FOB_truck_typename = "gm_ge_army_kat1_454_cargo";
@@ -235,11 +236,11 @@ vehicle_rearm_sources_west = [
 	"gm_AmmoBox_wood_03_empty"
 ];
 
-vehicle_artillery = [
+vehicle_artillery_west = [
 	"B_Mortar_01_F"
 ];
 
-vehicle_big_units = [
+vehicle_big_units_west = [
 	"Land_Cargo_Tower_V1_F",
 	"B_T_VTOL_01_infantry_F",
 	"B_T_VTOL_01_vehicle_F",

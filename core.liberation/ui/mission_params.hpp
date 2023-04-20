@@ -56,8 +56,8 @@ class Params
 	};
 	class ModPresetWest {
 		title = "MOD Preset - Friendly";
-		values[] = { 0,1,2,3,4,5,6 };
-		texts[] = { "A3_BLU", "A3_OPF", "A3_IND", "CP_BAF", "CP_CZ", "GM_WEST", "GM_WEST_WINT" };
+		values[] = { 0,1,2,3,4,5,6,7,8 };
+		texts[] = { "A3_BLU", "A3_OPF", "A3_IND", "CP_BAF", "CP_CZ", "RHS_US", "RHS_AF", "GM_WEST", "GM_WEST_WINT" };
 		default = 0;
 	};
 	class ModPresetEast {

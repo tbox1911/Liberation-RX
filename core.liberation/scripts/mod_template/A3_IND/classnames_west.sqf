@@ -1,5 +1,6 @@
 // *** FRIENDLIES ***
-// Default classname and advanced definition in : scripts\shared\classnames.sqf
+// Default classname: scripts\shared\default_classnames.sqf
+// Advanced definition: scripts\shared\classnames.sqf
 
 huron_typename = "I_Heli_Transport_02_F";  // comment to use value from lobby/server.cfg
 FOB_typename = "Land_Cargo_HQ_V2_F";
@@ -230,14 +231,14 @@ vehicle_rearm_sources_west = [
 	"I_Truck_02_ammo_F"
 ];
 
-vehicle_artillery = [
+vehicle_artillery_west = [
 	"I_Mortar_01_F",
 	"I_Ship_Gun_01_F",
 	"I_E_Truck_02_MRL_F",
 	"I_MBT_01_arty_F"
 ];
 
-vehicle_big_units = [
+vehicle_big_units_west = [
 	"Land_Cargo_Tower_V1_F",
 	"B_T_VTOL_01_infantry_F",
 	"B_T_VTOL_01_vehicle_F",
