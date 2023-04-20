@@ -125,7 +125,7 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 // Water Delivery
 _mission_name = "mission_WaterDelivery";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
-	if (count blufor_sectors >= 5 && {_x in sectors_tower} count blufor_sectors >= 3) then {
+	if (count blufor_sectors >= 5 && {_x in sectors_tower} count blufor_sectors >= 3 && A3W_delivery_failed < 3) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;
@@ -135,7 +135,7 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 // Food Delivery
 _mission_name = "mission_FoodDelivery";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
-	if (count blufor_sectors >= 5 && {_x in sectors_bigtown} count blufor_sectors >= 1) then {
+	if (count blufor_sectors >= 5 && {_x in sectors_bigtown} count blufor_sectors >= 1 && A3W_delivery_failed < 3) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;
@@ -145,7 +145,7 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 // Fuel Delivery
 _mission_name = "mission_FuelDelivery";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
-	if (count blufor_sectors >= 5 && {_x in sectors_factory} count blufor_sectors >= 3) then {
+	if (count blufor_sectors >= 5 && {_x in sectors_factory} count blufor_sectors >= 3 && A3W_delivery_failed < 3) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;
@@ -155,7 +155,7 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 // Ammo Delivery
 _mission_name = "mission_AmmoDelivery";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
-	if (count blufor_sectors >= 5 && {_x in sectors_military} count blufor_sectors >= 3) then {
+	if (count blufor_sectors >= 5 && {_x in sectors_military} count blufor_sectors >= 3 && A3W_delivery_failed < 3) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;

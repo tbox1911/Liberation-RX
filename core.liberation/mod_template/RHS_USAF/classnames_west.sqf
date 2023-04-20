@@ -42,6 +42,8 @@ units_loadout_overide = [
 	"rhsusf_army_ucp_aa"		// add backpack
 ];
 
+resistance_squad_static = "RHS_Stinger_AA_pod_WD";
+
 light_vehicles = [
 	["B_Boat_Transport_01_F",1,25,1,GRLIB_perm_inf],
 	["B_Boat_Armed_01_minigun_F",5,30,5,GRLIB_perm_log],
@@ -50,7 +52,7 @@ light_vehicles = [
 	["rhsusf_m1025_w_mk19",1,50,5,GRLIB_perm_log],
 	["rhsusf_M1078A1P2_WD_fmtv_usarmy",1,15,7,0],
 	["rhsusf_M1083A1P2_B_WD_fmtv_usarmy",5,30,10,GRLIB_perm_inf],
-	["rhsusf_M1078A1P2_B_M2_WD_fmtv_usarmy",5,30,10,GRLIB_perm_log],
+	["rhsusf_M1078A1P2_B_M2_WD_fmtv_usarmy",5,80,10,GRLIB_perm_log],
 	["rhsusf_M977A4_usarmy_wd",5,150,12,GRLIB_perm_log],
 	["rhsusf_m1151_usarmy_wd",2,25,12,0],
 	["rhsusf_m1151_m240_v2_usarmy_wd",5,100,12,GRLIB_perm_inf],
@@ -58,7 +60,8 @@ light_vehicles = [
 	["rhsusf_m1240a1_usarmy_wd",5,50,10,0],
 	["rhsusf_m1240a1_m2_usarmy_wd",5,150,5,GRLIB_perm_inf],
 	["rhsusf_m1240a1_mk19_usarmy_wd",5,150,5,GRLIB_perm_tank],
-	["rhsusf_stryker_m1126_m2_wd",5,250,5,GRLIB_perm_tank]
+	["rhsusf_stryker_m1126_m2_wd",5,250,5,GRLIB_perm_tank],
+	["rhsusf_stryker_m1126_mk19_wd",5,250,5,GRLIB_perm_tank]
 ];
 
 heavy_vehicles = [
@@ -124,9 +127,9 @@ static_vehicles_AI = [
 ];
 
 support_vehicles_west = [
-	["rhsusf_M977A4_REPAIR_usarmy_wd",5,15,5,GRLIB_perm_inf],
-	["rhsusf_M978A4_usarmy_wd",5,15,20,GRLIB_perm_inf],
-	["rhsusf_M977A4_AMMO_usarmy_wd",5,15,20,GRLIB_perm_tank],
+	["rhsusf_M977A4_REPAIR_usarmy_wd",5,250,20,GRLIB_perm_inf],
+	["rhsusf_M978A4_usarmy_wd",5,150,20,GRLIB_perm_inf],
+	["rhsusf_M977A4_AMMO_usarmy_wd",5,300,20,GRLIB_perm_tank],
 	["rhsusf_launcher_crate",0,150,0,GRLIB_perm_tank]
 ];
 
@@ -214,11 +217,9 @@ vehicle_rearm_sources_west = [
 ];
 
 vehicle_big_units_west = [
-
 ];
 
 GRLIB_vehicle_whitelist_west = [
-
 ];
 
 GRLIB_vehicle_blacklist_west = [
@@ -232,23 +233,28 @@ GRLIB_vehicle_blacklist_west = [
 ];
 
 GRLIB_AirDrop_1 = [			// Unarmed Offroader 50
-	"rhsusf_m1025_w"
+	"rhsusf_m1025_w",
+	"rhsusf_m1151_usarmy_wd"
 ];
 
 GRLIB_AirDrop_2 = [			// Armed Offroader 100
+	"rhsusf_m1025_w_m2",
 	"rhsusf_m1025_w_mk19"
 ];
 
 GRLIB_AirDrop_3 = [			// MRAP 200
-	"rhsusf_m1240a1_m2_usarmy_wd"
+	"rhsusf_m1240a1_m2_usarmy_wd",
+	"rhsusf_m1240a1_mk19_usarmy_wd"
 ];
 
 GRLIB_AirDrop_4 = [			// Large Truck 300
-	"rhsusf_M1083A1P2_B_WD_fmtv_usarmy"
+	"rhsusf_M1083A1P2_B_WD_fmtv_usarmy",
+	"rhsusf_M1078A1P2_B_M2_WD_fmtv_usarmy"
 ];
 
 GRLIB_AirDrop_5 = [			// APC 750
-	"rhsusf_stryker_m1126_m2_wd"
+	"rhsusf_stryker_m1126_m2_wd",
+	"rhsusf_stryker_m1126_mk19_wd"
 ];
 
 GRLIB_AirDrop_6 = [			// Boat 250

@@ -7,7 +7,10 @@ while { true } do {
         _static = _x;
   
         // No damage
-        _static allowDamage false;
+        if (isDamageAllowed _static) then {
+            _static allowDamage false;
+            _static addEventHandler ["HandleDamage", {0}];
+        };
 
         // OPFor infinite Ammo
         if (side _static == GRLIB_side_enemy) then {
@@ -19,9 +22,31 @@ while { true } do {
         if ((vectorUp _static) select 2 < 0.60) then {
             _static setpos [(getposATL _static) select 0,(getposATL _static) select 1, 0.5];
             _static setVectorUp surfaceNormal position _static;
+            sleep 1;
         };
 
+        if (getPosATL _static select 2 < -0.02) then {
+            _static setpos (getpos _static);
+            sleep 1;
+        };
+
+        // Keep gunner
+        private _gunner = gunner _static;
+        private _gunner_list = _static getVariable ["GRLIB_vehicle_gunner", []];
+        if (isNull _gunner) then {
+            {
+                if (alive _x) exitWith {
+                    _x assignAsGunner _static;
+                    [_x] orderGetIn true ;
+                };
+            } forEach _gunner_list;
+        } else {
+            // Nearest enemy
+            [_gunner] call F_getNearestEnemy;
+        };
+
+        sleep 1;
     } forEach _all_static;
 
-	sleep 10;
+	sleep 30;
 };

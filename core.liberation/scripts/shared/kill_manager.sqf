@@ -126,7 +126,14 @@ if ( isServer ) then {
 							[_leader, 1] call F_addScore;
 						};
 					};
-					if (floor random 2 == 0) then { [_unit] remoteExec ["F_deathSound", 0] };
+					if (floor random 2 == 0) then { 
+						private _deathsound = format ["A3\sounds_f\characters\human-sfx\P%1\hit_max_%2.wss", selectRandom ["03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18"], selectRandom [1,2,3]];
+						{
+							if ((_x distance2D _unit) <= 300 && lifestate _x != "INCAPACITATED") then {
+								[[_deathsound, _unit, false, getPosASL _unit, 4, 0.8, 300]] remoteExec ["playSound3D", owner _x];
+							};
+						} forEach (AllPlayers - (entities "HeadlessClient_F"));
+					};
 				};
 				if ( side (group _unit) == GRLIB_side_friendly ) then {
 					stats_blufor_teamkills = stats_blufor_teamkills + 1;

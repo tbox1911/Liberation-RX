@@ -39,7 +39,7 @@ if ( _targetsector in active_sectors ) then {
 	if (_sector1 != "" && !(_sector1 in active_sectors)) then {
 		diag_log format ["Spawn Defense on Sector %1 at %2", _sector1, time];
 		if ( _sector1 in sectors_tower) then {
-			[ _sector1, _defensecount ] spawn static_manager;
+			[_sector1, _defensecount] spawn static_manager;
 		} else {
 			[_sector1, (1 + floor (random 2))] spawn patrol_manager;
 		};
@@ -56,7 +56,7 @@ if ( _targetsector in active_sectors ) then {
 		if (_sector2 != "" && !(_sector2 in active_sectors) && _nb_player > 1) then {
 			diag_log format ["Spawn Defense on Sector %1 at %2", _sector2, time];
 			if ( _sector2 in sectors_tower) then {
-				[ _sector2, _defensecount ] spawn static_manager;
+				[_sector2, _defensecount] spawn static_manager;
 			} else {
 				[_sector2, (1 + floor (random 2))] spawn patrol_manager;
 			};
@@ -74,7 +74,7 @@ if ( _targetsector in active_sectors ) then {
 		if (_sector3 != "" && !(_sector3 in active_sectors) && _nb_player > 2) then {
 			diag_log format ["Spawn Defense on Sector %1 at %2", _sector3, time];
 			if ( _sector3 in sectors_tower) then {
-				[ _sector3, _defensecount ] spawn static_manager;
+				[_sector3, _defensecount] spawn static_manager;
 			} else {
 				[_sector3, (1 + floor (random 2))] spawn patrol_manager;
 			};
