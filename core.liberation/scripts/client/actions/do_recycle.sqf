@@ -49,13 +49,13 @@ if ( dorecycle == 1 && !(isNull _vehicle) && alive _vehicle) exitWith {
 		hint format ["%1\nBonus Score + 10 Pts!", name player];
 		playSound "taskSucceeded";
 	};
-	if (typeOf _vehicle == mobile_respawn) then {
-		[_vehicle, "del"] remoteExec ["addel_beacon_remote_call", 2];
-	} else {
-		[_vehicle] remoteExec ["deleteVehicle", 2];
-	};
 	private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
 	player setVariable ["GREUH_ammo_count", (_ammo_collected + _ammount_ammo), true];
 	player addRating 500;
+
+	if (typeOf _vehicle == mobile_respawn) exitWith {
+		[_vehicle, "del"] remoteExec ["addel_beacon_remote_call", 2];
+	};
+	[_vehicle] remoteExec ["deleteVehicle", 2];
 };
 _vehicle setVariable ["recycle_in_use", false, true];
