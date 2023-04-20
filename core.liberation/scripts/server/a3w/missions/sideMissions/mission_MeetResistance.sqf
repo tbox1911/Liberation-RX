@@ -57,8 +57,8 @@ _setupObjects =
 	// remove dead body to let the leader change
 	{_x addEventHandler ["Killed", {_this spawn {sleep 20;hidebody (_this select 0);sleep 5;deleteVehicle (_this select 0)}}]} forEach units _aiGroupRes;
 
-	(_aiGroupRes select 2) assignAsGunner _veh1;
-	(_aiGroupRes select 3) assignAsGunner _veh2;
+	(units _aiGroupRes select 2) assignAsGunner _veh1;
+	(units _aiGroupRes select 3) assignAsGunner _veh2;
 
 	// 25% change on AI not going on rooftops
 	if (random 1 < 0.75) then { _putOnRoof = true } else { _putOnRoof = false };

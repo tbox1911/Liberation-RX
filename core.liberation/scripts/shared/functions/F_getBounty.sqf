@@ -7,7 +7,7 @@ private _extra_bounty = [
 	"O_MBT_04_command_F",
 	"O_Plane_CAS_02_F",
 	"O_Plane_Fighter_02_F"
-	];
+];
 
 _bounty = 10;
 _bonus = 2;
@@ -33,8 +33,12 @@ if ( _vehicle isKindOf "Air" ) then {
 };
 
 if (typeOf _vehicle in _extra_bounty) then {
-	_bounty = 50;
-	_bonus = 5;
+	_bounty = _bounty + 25;
+	_bonus = _bonus + 1;
+};
+
+if (typeOf _vehicle in heavy_vehicles) then {
+	_bonus = 0;
 };
 
 [_bounty, _bonus];

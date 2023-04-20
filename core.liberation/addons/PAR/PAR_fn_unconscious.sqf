@@ -48,7 +48,7 @@ _unit switchMove "AinjPpneMstpSnonWrflDnon";  // lay down
     if (local _target) then {
       [_target, _caller] call PAR_fn_sortie;
     } else {
-      [[_target, _caller], {[(_this select 0),(_this select 1)] call PAR_fn_sortie}] remoteExec ["bis_fnc_call", [0,-2] select isDedicated,true];
+      [[_target, _caller], {if (!isNil "GRLIB_player_spawned") then {[(_this select 0),(_this select 1)] call PAR_fn_sortie}}] remoteExec ["bis_fnc_call", [0,-2] select isDedicated,true];
     };
   },
   {
@@ -61,6 +61,7 @@ sleep 6;
 _bleedOut = time + PAR_BleedOut;
 _extra_time = 0;
 while {lifeState _unit == 'incapacitated' && time <= _bleedOut + _extra_time} do {
+  _unit setOxygenRemaining 1;
   if ( count units player > 1 ) then {
     _medic = _unit getVariable ['PAR_myMedic', nil];
     if (isNil "_medic") then {
