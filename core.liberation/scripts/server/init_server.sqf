@@ -71,6 +71,7 @@ clearlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scri
 [] execVM "scripts\server\game\zeus_synchro.sqf";
 [] execVM "scripts\server\game\manage_score.sqf";
 [] execVM "scripts\server\game\hall_of_fame.sqf";
+[] execVM "scripts\server\game\init_marker.sqf";
 [] execVM "scripts\server\offloading\offload_calculation.sqf";
 [] execVM "scripts\server\offloading\offload_manager.sqf";
 [] execVM "scripts\server\patrols\civilian_patrols.sqf";

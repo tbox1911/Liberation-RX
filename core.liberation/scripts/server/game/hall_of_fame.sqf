@@ -1,4 +1,3 @@
-
 if (!isServer) exitWith {};
 private ["_HoF", "_msg", "_max", "_info"];
 
