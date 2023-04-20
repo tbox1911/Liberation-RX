@@ -4,9 +4,8 @@ private _bros = allunits select {(_x getVariable ["PAR_Grp_ID","0"]) == (_wnded 
 private _medics = _bros select {
   round (_x distance2D _wnded) <= 300 &&
   (!(objectParent _x iskindof "Steerable_Parachute_F")) &&
-  !isPlayer _x &&
-  _x != _wnded &&
-  alive _x &&  speed (vehicle _x) <= 20 &&
+  !isPlayer _x && _x != _wnded &&
+  alive _x && speed (vehicle _x) <= 20 &&
   lifeState _x != "INCAPACITATED" &&
   isNil {_x getVariable "PAR_busy"}
 };
@@ -21,11 +20,11 @@ if (count _medics == 0) exitWith {
   [_wnded, _msg] call PAR_fn_globalchat;
 };
 
-_medics = _medics apply {[_x distance2D _wnded, _x]};
-_medics sort true;
+private _medics_lst = _medics apply {[_x distance2D _wnded, _x]};
+_medics_lst sort true;
+private _medic = _medics_lst select 0 select 1;
 
-private _medic = _medics select 0 select 1;
-_msg = format [localize "STR_PAR_MD_03", name _wnded, name _medic, round (_medics select 0 select 0)];
+private _msg = format [localize "STR_PAR_MD_03", name _wnded, name _medic, round (_medics_lst select 0 select 0)];
 [_wnded, _msg] call PAR_fn_globalchat;
 
 _medic setVariable ["PAR_busy", true];
