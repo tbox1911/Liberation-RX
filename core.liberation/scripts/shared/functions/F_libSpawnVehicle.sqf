@@ -13,9 +13,13 @@ private _spawnpos = zeropos;
 if ( _precise_position ) then {
 	_spawnpos = [] + _sectorpos;
 } else {
-	while { _spawnpos distance zeropos < 1000 } do {
-		//_spawnpos = ( [ _sectorpos, random 150, random 360 ] call bis_fnc_relpos ) findEmptyPosition [10, 200, 'B_Heli_Transport_01_F'];
-		_spawnpos = (selectBestPlaces [_sectorpos, 200, "(1 + meadow) * (1 + sea) * (1 - forest) * (1 - trees)", 50, 1] select 0) select 0;
+	while { _spawnpos isEqualTo zeropos } do {
+		_safepos = [_sectorpos, 5, 300, 1, 1, 0.25, 0, [], [zeropos, zeropos]] call BIS_fnc_findSafePos;
+		if (surfaceIsWater _safepos) then {
+			_spawnpos = _safepos;
+		} else {
+			_spawnpos = _safepos findEmptyPosition [1, 20, "B_Heli_Light_01_F"];
+		};
 		if ( count _spawnpos == 0 ) then { _spawnpos = zeropos; };
 	};
 };

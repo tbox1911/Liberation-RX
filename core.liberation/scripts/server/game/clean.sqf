@@ -7,6 +7,7 @@ Author:
 Last modified:
 
 	10/12/2014 ArmA 1.36 by Quiksilver
+	01/10/2021 LRX - pSiko
 
 Description:
 
@@ -50,6 +51,11 @@ _isHidden = {
 	private _c = false;
 	if ( ({(( _unit distance2D _x) < _dist)} count _list) == 0 ) then { _c = true };
 	_c;
+};
+
+// Get CounterStrik units
+_getTTLunits = {
+	[(allUnits + vehicles), {alive _x && side _x == GRLIB_side_enemy && round (speed _x) == 0 && !(isNil {_x getVariable "GRLIB_counter_TTL"})}] call BIS_fnc_conditionalSelect;
 };
 
 //================================================================ CONFIG
@@ -99,6 +105,21 @@ private _emptyGroups = TRUE;							// Set FALSE to not delete empty groups.
 //================================================================ LOOP
 
 while {deleteManagerPublic} do {
+	private _stats = 0;
+
+	//================================= LRX TTL UNITS
+	private _units_ttl = [] call _getTTLunits;
+	if (count _units_ttl > 0) then {
+		{
+			_ttl = _x getVariable "GRLIB_counter_TTL";
+			if ([_x,_deadMenDist,(playableUnits + switchableUnits)] call _isHidden && _ttl > time ) then {
+				detach _x;
+				deleteVehicle _x;
+				_stats = _stats + 1;
+			};
+		} count _units_ttl;
+	};
+	sleep 1;
 
 	//================================= DEAD MEN
 	if (!(_deadMenLimit isEqualTo -1)) then {
@@ -108,6 +129,7 @@ while {deleteManagerPublic} do {
 					if ([_x,_deadMenDist,(playableUnits + switchableUnits)] call _isHidden) then {
 						detach _x;
 						deleteVehicle _x;
+						_stats = _stats + 1;
 					};
 				} count allDeadMen;
 			};
@@ -116,6 +138,7 @@ while {deleteManagerPublic} do {
 				_unit = selectRandom allDeadMen;
 				detach _unit;
 				deleteVehicle _unit;
+				_stats = _stats + 1;
 				sleep 0.5;
 			};
 		};
@@ -123,7 +146,7 @@ while {deleteManagerPublic} do {
 	sleep 1;
 	//================================= VEHICLES
 	if (!(_vehiclesLimit isEqualTo -1)) then {
-		_nbVehicles = [vehicles,
+		private _nbVehicles = [vehicles,
 			{ alive _x &&
 			 _x getVariable ["GRLIB_vehicle_owner", ""] == "" &&
 			 isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) &&
@@ -139,6 +162,7 @@ while {deleteManagerPublic} do {
 					if ([_x,_vehicleDist,(playableUnits + switchableUnits)] call _isHidden) then {
 						[_x] call clean_vehicle;
 						deleteVehicle _x;
+						_stats = _stats + 1;
 					};
 				} count (_nbVehicles);
 			};
@@ -147,6 +171,7 @@ while {deleteManagerPublic} do {
 				_veh = selectRandom (_nbVehicles);
 				[_veh] call clean_vehicle;
 				deleteVehicle _veh;
+				_stats = _stats + 1;
 				sleep 0.5;
 			};
 		};
@@ -160,6 +185,7 @@ while {deleteManagerPublic} do {
 					if ([_x,_deadVehicleDist,(playableUnits + switchableUnits)] call _isHidden) then {
 						[_x] call clean_vehicle;
 						deleteVehicle _x;
+						_stats = _stats + 1;
 					};
 				} count (allDead - allDeadMen);
 			};
@@ -168,6 +194,7 @@ while {deleteManagerPublic} do {
 				_veh = selectRandom (allDead - allDeadMen);
 				[_veh] call clean_vehicle;
 				deleteVehicle _veh;
+				_stats = _stats + 1;
 				sleep 0.5;
 			};
 		};
@@ -180,12 +207,14 @@ while {deleteManagerPublic} do {
 				{
 					if ([_x,_craterDist,(playableUnits + switchableUnits)] call _isHidden) then {
 						deleteVehicle _x;
+						_stats = _stats + 1;
 					};
 				} count (allMissionObjects "CraterLong");
 			};
 
 			while {(((count (allMissionObjects "CraterLong")) - _craterLimit) > 0)} do {
 				deleteVehicle (selectRandom (allMissionObjects "CraterLong"));
+				_stats = _stats + 1;
 				sleep 0.5;
 			};
 		};
@@ -198,16 +227,20 @@ while {deleteManagerPublic} do {
 				{
 					if ([_x,_weaponHolderDist,(playableUnits + switchableUnits)] call _isHidden) then {
 						deleteVehicle _x;
+						_stats = _stats + 1;
 					};
 				} count (allMissionObjects "WeaponHolder");
 			};
 
 			while {(((count (allMissionObjects "WeaponHolder")) - _weaponHolderLimit) > 0)} do {
 				deleteVehicle (selectRandom (allMissionObjects "WeaponHolder"));
+				_stats = _stats + 1;
 				sleep 0.5;
 			};
 		};
 	};
+	sleep 1;
+
 	// Object WeaponHolderSimulated can't have zero or negative mass!
 	{ if (round (getMass _x) <= 0) then { _x setMass 1 } } forEach (entities "WeaponHolderSimulated");
 	sleep 1;
@@ -218,12 +251,14 @@ while {deleteManagerPublic} do {
 				{
 					if ([_x,_minesDist,allUnits] call _isHidden) then {
 						deleteVehicle _x;
+						_stats = _stats + 1;
 					};
 				} count allMines;
 			};
 
 			while {(((count allMines) - _minesLimit) > 0)} do {
 				deleteVehicle (selectRandom allMines);
+				_stats = _stats + 1;
 				sleep 0.5;
 			};
 		};
@@ -236,12 +271,14 @@ while {deleteManagerPublic} do {
 				{
 					if ([_x,_staticsDist,allUnits] call _isHidden) then {
 						deleteVehicle _x;
+						_stats = _stats + 1;
 					};
 				} count (allMissionObjects "StaticWeapon");
 			};
 
 			while {(((count (allMissionObjects "StaticWeapon")) - _staticsLimit) > 0)} do {
 				deleteVehicle (selectRandom (allMissionObjects "StaticWeapon"));
+				_stats = _stats + 1;
 				sleep 0.5;
 			};
 		};
@@ -249,10 +286,10 @@ while {deleteManagerPublic} do {
 	sleep 1;
 	//================================= RUINS
 	if (!(_ruinsLimit isEqualTo -1)) then {
-		_ruins = [];
+		private _ruins = [];
 		{
 			if ((_x distance [0,0,0]) > 100) then {
-				0 = _ruins pushBack _x;
+				_ruins pushBack _x;
 				sleep 0.1;
 			};
 		} count (allMissionObjects "Ruins");
@@ -262,6 +299,7 @@ while {deleteManagerPublic} do {
 				{
 					if ([_x,_ruinsDist,(playableUnits + switchableUnits)] call _isHidden) then {
 						deleteVehicle _x;
+						_stats = _stats + 1;
 					};
 				} count (allMissionObjects "Ruins");
 			};
@@ -269,6 +307,7 @@ while {deleteManagerPublic} do {
 			while {(((count _ruins) - _ruinsLimit) > 0)} do {
 				_ruins resize (count _ruins - 1);
 				deleteVehicle (selectRandom _ruins);
+				_stats = _stats + 1;
 				sleep 0.5;
 			};
 		};
@@ -292,6 +331,9 @@ while {deleteManagerPublic} do {
 		} count allGroups;
 	};
     sleep 1;
+
+	diag_log format ["--- LRX Garbage Collector --- run at %1 delete %2 objects", round(time), _stats];
+
 	//================================= SLEEP
 	if (_checkPlayerCount) then {
 		if ((count (playableUnits + switchableUnits)) >= _playerThreshold) then {

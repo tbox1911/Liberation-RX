@@ -1,6 +1,7 @@
 params [ "_unit" ];
 
 GRLIB_wildlife_max = 4;
+waitUntil {sleep 1; !isNil "sectors_allSectors" };
 
 while {alive _unit} do {
 	sleep (30 + random 60);

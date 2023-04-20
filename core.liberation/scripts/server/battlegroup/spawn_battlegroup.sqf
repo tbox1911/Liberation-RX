@@ -36,9 +36,11 @@ if ( _spawn_marker != "" ) then {
 		_nextgrp = createGroup [GRLIB_side_enemy, true];
 		sleep 0.5;
 		_vehicle = [markerpos _spawn_marker, _x] call F_libSpawnVehicle;
+		_vehicle setVariable ["GRLIB_counter_TTL", round(time + 1800)];  // 30 minutes TTL
 		sleep 0.5;
 		(crew _vehicle) joinSilent _nextgrp;
 		[_nextgrp] spawn battlegroup_ai;
+		{ _x setVariable ["GRLIB_counter_TTL", round(time + 1800)] } forEach (units _nextgrp);
 		_bg_groups pushback _nextgrp;
 		if ( ( _x in opfor_troup_transports ) &&  ( [] call F_opforCap < GRLIB_battlegroup_cap ) ) then {
 			[_vehicle] spawn troup_transport;

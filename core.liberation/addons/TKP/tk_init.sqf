@@ -6,7 +6,7 @@ BTC_vip = [];
 
 //Def
 BTC_tk_max = 4;
-BTC_tk_fine = 500;
+BTC_tk_fine = 200;
 
 BTC_fnc_tk_PVEH = {
 	_array = _this select 1;
