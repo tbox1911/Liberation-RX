@@ -5,8 +5,16 @@ if ( isNil "FOB_box_typename" ) then { FOB_box_typename = "gm_ge_army_shelterace
 if ( isNil "FOB_truck_typename" ) then { FOB_truck_typename = "gm_ge_army_kat1_454_cargo" };
 if ( isNil "Arsenal_typename" ) then { Arsenal_typename = "B_supplyCrate_F" };
 if ( isNil "Respawn_truck_typename" ) then { Respawn_truck_typename = "gm_gc_army_ural375d_medic" };
+if ( isNil "ammo_truck_typename" ) then { ammo_truck_typename = "B_Truck_01_ammo_F" };
+if ( isNil "fuel_truck_typename" ) then { fuel_truck_typename = "B_Truck_01_fuel_F" };
+if ( isNil "repair_truck_typename" ) then { repair_truck_typename = "B_Truck_01_Repair_F" };
+if ( isNil "repair_sling_typename" ) then { repair_sling_typename = "B_Slingload_01_Repair_F" };
+if ( isNil "fuel_sling_typename" ) then { fuel_sling_typename = "B_Slingload_01_Fuel_F" };
+if ( isNil "ammo_sling_typename" ) then { ammo_sling_typename = "B_Slingload_01_Ammo_F" };
+if ( isNil "medic_sling_typename" ) then { medic_sling_typename = "B_Slingload_01_Medevac_F" };
 if ( isNil "mobile_respawn" ) then { mobile_respawn = "Land_TentDome_F" };
 if ( isNil "mobile_respawn_bag" ) then { mobile_respawn_bag = "B_Kitbag_Base" };
+if ( isNil "medicalbox_typename" ) then { medicalbox_typename = "Box_B_UAV_06_medical_F" };
 if ( isNil "huron_typename" ) then { huron_typename = "gm_ge_army_ch53g" };
 if ( isNil "ammobox_b_typename" ) then { ammobox_b_typename = "Box_NATO_AmmoVeh_F" };
 if ( isNil "ammobox_o_typename" ) then { ammobox_o_typename = "Box_East_AmmoVeh_F" };
@@ -18,12 +26,13 @@ if ( isNil "opfor_ammobox_transport" ) then { opfor_ammobox_transport = "gm_gc_a
 if ( isNil "commander_classname" ) then { commander_classname = "gm_ge_army_officer_p1_80_oli" };
 if ( isNil "crewman_classname" ) then { crewman_classname = "gm_ge_army_crew_mp2a1_80_oli" };
 if ( isNil "pilot_classname" ) then { pilot_classname = "gm_ge_army_pilot_p1_80_oli" };
-if ( isNil "FAR_Medikit" ) then { FAR_Medikit = "Medikit" };
-if ( isNil "FAR_AidKit" ) then { FAR_AidKit = "FirstAidKit" };
+if ( isNil "PAR_Medikit" ) then { PAR_Medikit = "gm_ge_army_medkit_80" };
+if ( isNil "PAR_AidKit" ) then { PAR_AidKit = "gm_ge_army_burnBandage" };
 if ( isNil "A3W_BoxWps" ) then { A3W_BoxWps = "Box_East_Wps_F" };
 if ( isNil "canisterFuel" ) then { canisterFuel = "gm_jerrycan" };
 
 // *** FRIENDLIES ***
+// [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 //gm_ge_army_rifleman_g3a3_80_ols
 //gm_ge_army_rifleman_g3a3_parka_80_ols
 //gm_ge_army_rifleman_g3a3_parka_80_win
@@ -49,12 +58,17 @@ infantry_units = [
 ];
 
 // calc units price
+[] call compileFinal preprocessFileLineNumbers "scripts\loadouts\init_loadouts.sqf";
 _grp = createGroup [GRLIB_side_friendly, true];
 {
 	_unit_class = _x select 0;
 	_unit_mp = _x select 1;
 	_unit_rank = _x select 4;
 	_unit = _grp createUnit [_unit_class, [0,0,0], [], 0, "NONE"];
+	if (typeOf _unit in units_loadout_overide) then {
+		_loadouts_folder = format ["scripts\loadouts\%1\%2.sqf", GRLIB_side_friendly, typeOf _unit];
+		[_unit] call compileFinal preprocessFileLineNUmbers _loadouts_folder;
+	};
 	_price = [_unit] call F_loadoutPrice;
 	infantry_units set [_forEachIndex, [_unit_class, _unit_mp, _price, 0,_unit_rank] ];
 	deleteVehicle _unit;
@@ -303,25 +317,11 @@ ai_healing_sources = [
 	"gm_ge_army_bpz2a0"
 ];
 
-// Everything that can resupply other vehicles
-vehicle_repair_sources = [
-	"gm_ge_army_bpz2a0",
-	"gm_ge_army_shelteraceII_repair",
-	"gm_gc_army_shelterlakII_repair",
-	"gm_ge_army_u1300l_repair",
-	"gm_ge_army_fuchsa0_engineer"
-];
-
 vehicle_rearm_sources = [
 	"gm_ge_army_bpz2a0",
 	"gm_ge_army_kat1_451_reammo",
 	"gm_AmmoBox_wood_02_empty",
 	"gm_AmmoBox_wood_03_empty"
-];
-
-vehicle_refuel_sources = [
-	"gm_ge_army_bpz2a0",
-	"gm_ge_army_kat1_451_refuel"
 ];
 
 vehicle_artillery = [
@@ -647,12 +647,15 @@ box_transport_config = [
 	[ "C_Offroad_01_F", -5, [0, -1.55, 0.2] ],
 	[ "B_G_Offroad_01_F", -5, [0, -1.55, 0.2] ],
 	[ "I_G_Offroad_01_F", -5, [0, -1.55, 0.2] ],
+	[ "O_G_Offroad_01_F", -5, [0, -1.55, 0.2] ],
 	[ "B_Truck_01_transport_F", -6.5, [0, -0.4, 0.4], [0, -2.1, 0.4], [0, -3.8, 0.4] ],
 	[ "B_Truck_01_covered_F", -6.5, [0, -0.4, 0.4], [0, -2.1, 0.4], [0, -3.8, 0.4] ],
 	[ "C_Truck_02_transport_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
 	[ "C_Truck_02_covered_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
 	[ "I_Truck_02_transport_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
 	[ "I_Truck_02_covered_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
+	[ "O_Truck_02_transport_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
+	[ "O_Truck_02_covered_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
 	[ "O_Truck_03_transport_F", -6.5, [0, -0.8, 0.4], [0, -2.4, 0.4], [0, -4.0, 0.4] ],
 	[ "O_Truck_03_covered_F", -6.5, [0, -0.8, 0.4], [0, -2.4, 0.4], [0, -4.0, 0.4] ],
 	[ "C_Van_01_box_F", -5.3, [0, -1.05, 0.2], [0, -2.6, 0.2] ],
@@ -671,20 +674,20 @@ GRLIB_vehicle_whitelist = [
 	ammobox_o_typename,
 	ammobox_i_typename,
 	mobile_respawn,
+	opfor_ammobox_transport,
 	A3W_BoxWps,
 	canisterFuel,
 	waterbarrel_typename,
 	fuelbarrel_typename,
 	foodbarrel_typename,
+	medicalbox_typename,
 	"Land_PierLadder_F",
-	"Box_B_UAV_06_medical_F",
 	"Land_CncBarrierMedium4_F",
 	"Land_CncWall4_F",
 	"Land_HBarrier_5_F",
 	"Land_BagBunker_Small_F",
 	"Land_BagFence_Long_F"
 ];
-{GRLIB_vehicle_whitelist pushBack ( _x select 0 )} foreach (static_vehicles + opfor_recyclable);
 
 // Blacklist Vehicle (lock and paint)
 GRLIB_vehicle_blacklist = [
@@ -699,13 +702,13 @@ GRLIB_vehicle_blacklist = [
 	waterbarrel_typename,
 	fuelbarrel_typename,
 	foodbarrel_typename,
+	medicalbox_typename,
+	repair_sling_typename,
+	fuel_sling_typename,
+	ammo_sling_typename,
+	medic_sling_typename,
 	"gm_AmmoBox_wood_02_empty",
         "gm_AmmoBox_wood_03_empty",
-	"Box_B_UAV_06_medical_F",
-	"B_Slingload_01_Repair_F",
-	"B_Slingload_01_Fuel_F",
-	"B_Slingload_01_Ammo_F",
-	"B_Slingload_01_Medevac_F",
 	"B_Heli_Transport_01_F",
 	"O_Heli_Light_02_unarmed_F",
 	"O_Truck_03_transport_F",
@@ -799,7 +802,6 @@ ammobox_transports_typenames = [];
 { ammobox_transports_typenames pushback (_x select 0) } foreach box_transport_config;
 ammobox_transports_typenames = [ ammobox_transports_typenames , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
 elite_vehicles = [ elite_vehicles , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
-original_resistance = [ "O_G_Soldier_SL_F","O_G_Soldier_A_F","O_G_Soldier_AR_F","O_G_medic_F","O_G_engineer_F","O_G_Soldier_exp_F","O_G_Soldier_GL_F","O_G_Soldier_M_F","O_G_Soldier_F","O_G_Soldier_LAT_F","O_G_Soldier_lite_F","O_G_Sharpshooter_F","O_G_Soldier_TL_F","O_Soldier_AA_F","O_Soldier_AT_F"];
 opfor_infantry = [opfor_sentry,opfor_rifleman,opfor_grenadier,opfor_squad_leader,opfor_team_leader,opfor_marksman,opfor_machinegunner,opfor_heavygunner,opfor_medic,opfor_rpg,opfor_at,opfor_aa,opfor_officer,opfor_sharpshooter,opfor_sniper,opfor_engineer];
 GRLIB_intel_table = "Land_CampingTable_small_F";
 GRLIB_intel_chair = "Land_CampingChair_V2_F";
@@ -809,7 +811,7 @@ GRLIB_ignore_colisions_when_building = [
 	Arsenal_typename,
 	mobile_respawn,
 	canisterFuel,
-	"Box_B_UAV_06_medical_F",
+	medicalbox_typename,
 	"gm_AmmoBox_wood_02_empty",
   	"gm_AmmoBox_wood_03_empty",
 	"Land_CargoBox_V1_F",
@@ -841,7 +843,6 @@ GRLIB_ignore_colisions_when_building = [
 GRLIB_sar_wreck = "Land_Wreck_Heli_Attack_01_F";
 GRLIB_sar_fire = "test_EmptyObjectForFireBig";
 GRLIB_Ammobox = [
-	Arsenal_typename,
 	A3W_BoxWps,
 	"Box_B_UAV_06_medical_F",
 	"gm_AmmoBox_wood_02_empty",
@@ -864,7 +865,7 @@ GRLIB_AirDrop_2 = [
 ];
 GRLIB_AirDrop_3 = [
 	"I_MRAP_03_hmg_F",
-	"I_MRAP_03_hmg_F",
+	"I_MRAP_03_gmg_F",
 	"B_T_MRAP_01_hmg_F",
 	"B_T_MRAP_01_gmg_F"
 ];

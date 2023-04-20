@@ -29,7 +29,7 @@ PAR_has_medikit = {
 	params ["_unit"];
 	private _ret = false;
 
-	if ( (PAR_Medikit in (vest _unit)) || (PAR_Medikit in (items _unit)) || (PAR_Medikit in (backpackItems _unit)) ) then {
+	if ( PAR_AidKit in (items _unit + backpackItems _unit) || PAR_Medikit in (backpackItems _unit + vestItems _unit) ) then {
 		_ret = true;
 	};
 	_ret
