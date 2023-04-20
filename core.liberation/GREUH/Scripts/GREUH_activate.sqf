@@ -1,7 +1,3 @@
-if (isDedicated) exitWith {};
-if (abort_loading) exitWith {};
-waitUntil {sleep 1; alive player };
-
 desiredviewdistance_inf = viewDistance;
 desiredviewdistance_veh = viewDistance;
 desiredviewdistance_obj = 75;

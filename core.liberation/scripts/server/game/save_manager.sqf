@@ -294,12 +294,12 @@ publicVariable "GRLIB_vehicle_to_military_base_links";
 publicVariable "GRLIB_permissions";
 publicVariable "GRLIB_player_scores";
 save_is_loaded = true; publicVariable "save_is_loaded";
-if (abort_loading) exitWith {
-	diag_log "*********************************************************************************";
-	diag_log format ["FATAL! - This Savegame was made with a differents Modset (%1/%2)", _side_west, _side_east];
-	diag_log "Loading Aborted to protect data integrity.";
-	diag_log "Correct the Modset or Wipe the savegame.";
-	diag_log "*********************************************************************************";
+if (abort_loading) exitWith { abort_loading_msg = format [
+	"********************************\n
+	FATAL! - This Savegame was made with a differents Modset (%1/%2)\n\n
+	Loading Aborted to protect data integrity.\n
+	Correct the Modset or Wipe the savegame..\n
+	*********************************", _side_west, _side_east];
 };
 
 diag_log format [ "--- LRX Load Game finish at %1", time ];

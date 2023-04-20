@@ -35,7 +35,7 @@ disableUserInput true;
 disableUserInput false;
 
 closeDialog 0;
-uisleep 1;
+uisleep 3;
 
 createDialog "liberation_menu";
 waitUntil { dialog };
