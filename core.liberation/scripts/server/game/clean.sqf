@@ -39,14 +39,20 @@ private ["_isHidden","_checkPlayerCount","_checkFrequencyDefault","_checkFrequen
 
 //==================== HIDDEN-FROM-PLAYERS FUNCTION
 
-_isHidden = compileFinal "
-	private [""_c""];
-	_c = FALSE;
-	if (({(((_this select 0) distance _x) < (_this select 1))} count (_this select 2)) isEqualTo 0) then {
-		_c = TRUE;
-	};
+// _isHidden = compileFinal "
+// 	private [""_c""];
+// 	_c = FALSE;
+// 	if (({(((_this select 0) distance _x) < (_this select 1))} count (_this select 2)) isEqualTo 0) then {
+// 		_c = TRUE;
+// 	};
+// 	_c;
+// ";
+_isHidden = {
+	params ["_unit", "_dist", "_list"];
+	private _c = false;
+	if ( ({(( _unit distance2D _x) < _dist)} count _list) isEqualTo 0 ) then { _c = true };
 	_c;
-";
+};
 
 //================================================================ CONFIG
 
@@ -57,7 +63,7 @@ _checkFrequencyDefault = 180;					// sleep default
 _checkFrequencyAccelerated = 60;				// sleep accelerated
 _playerThreshold = 5;							// How many players before accelerated cycle kicks in?
 
-_deadMenLimit = 50;								// Bodies. Set -1 to disable.
+_deadMenLimit = 100;							// Bodies. Set -1 to disable.
 _deadMenDistCheck = TRUE;						// TRUE to delete any bodies that are far from players.
 _deadMenDist = 2000;							// Distance (meters) from players that bodies are not deleted if below max.
 
@@ -69,9 +75,9 @@ _craterLimit = 20;								// Craters. Set -1 to disable.
 _craterDistCheck = TRUE;						// TRUE to delete any craters that are far from players.
 _craterDist = 2000;								// Distance (meters) from players that craters are not deleted if below max.
 
-_weaponHolderLimit = 50;						// Weapon Holders. Set -1 to disable.
+_weaponHolderLimit = 100;						// Weapon Holders. Set -1 to disable.
 _weaponHolderDistCheck = TRUE;					// TRUE to delete any weapon holders that are far from players.
-_weaponHolderDist = 500;						// Distance (meters) from players that ground garbage is not deleted if below max.
+_weaponHolderDist = 1000;						// Distance (meters) from players that ground garbage is not deleted if below max.
 
 _minesLimit = 40;								// Land mines. Set -1 to disable.
 _minesDistCheck = TRUE;							// TRUE to delete any mines that are far from ANY UNIT (not just players).
