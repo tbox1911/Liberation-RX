@@ -1,26 +1,26 @@
 params [ "_sector" ];
-private [ "_sectorpos", "_stopit", "_spawncivs", "_building_ai_max", "_infsquad", "_building_range", "_local_capture_size", "_iedcount","_combat_readiness_increase","_vehtospawn","_managed_units","_squad1", "_squad2", "_squad3", "_squad4", "_minimum_building_positions", "_popfactor", "_sector_despawn_tickets", "_opforcount" ];
 
 waitUntil {sleep 1; !isNil "combat_readiness" };
 
-_sectorpos = getmarkerpos _sector;
-_stopit = false;
-_spawncivs = false;
-_building_ai_max = 0;
-_infsquad = "militia";
-_building_range = 200;
-_local_capture_size = GRLIB_capture_size;
-_iedcount = 0;
-_vehtospawn = [];
-_managed_units = [];
-_squad1 = [];
-_squad2 = [];
-_squad3 = [];
-_squad4 = [];
-_minimum_building_positions = 5;
-_sector_despawn_tickets = 24;
+private _sectorpos = getmarkerpos _sector;
+private _stopit = false;
+private _spawncivs = false;
+private _building_ai_max = 0;
+private _infsquad = "militia";
+private _building_range = 200;
+private _local_capture_size = GRLIB_capture_size;
+private _iedcount = 0;
+private _vehtospawn = [];
+private _managed_units = [];
+private _squad1 = [];
+private _squad2 = [];
+private _squad3 = [];
+private _squad4 = [];
+private _minimum_building_positions = 5;
+private _max_prisonners = 5;
+private _sector_despawn_tickets = 24;
+private _popfactor = 1;
 
-_popfactor = 1;
 if ( GRLIB_unitcap < 1 ) then { _popfactor = GRLIB_unitcap; };
 
 if ( isNil "active_sectors" ) then { active_sectors = [] };
@@ -28,7 +28,7 @@ if ( _sector in active_sectors ) exitWith {};
 active_sectors pushback _sector; publicVariable "active_sectors";
 
 
-_opforcount = [] call F_opforCap;
+private _opforcount = [] call F_opforCap;
 [ _sector, _opforcount ] call wait_to_spawn_sector;
 
 if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcount ] call F_getCorrectedSectorRange , GRLIB_side_friendly ] call F_getUnitsCount ) > 0 ) ) then {
@@ -187,7 +187,12 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 		if ( ([_sectorpos, _local_capture_size] call F_sectorOwnership == GRLIB_side_friendly) && (GRLIB_endgame == 0) ) then {
 			[ _sector ] spawn sector_liberated_remote_call;
 			_stopit = true;
-			{ [_x] spawn prisonner_ai; } foreach ( (getmarkerpos _sector) nearEntities [ ["Man"], _local_capture_size * 1.2 ] );
+			{ 
+				if ( _max_prisonners > 0 && ((random 100) < GRLIB_surrender_chance) ) then {
+					[_x] spawn prisonner_ai;
+					_max_prisonners = _max_prisonners - 1;
+				};
+			} foreach ( (getmarkerpos _sector) nearEntities [ ["Man"], _local_capture_size * 1.2 ] );
 			sleep 60;
 
 			active_sectors = active_sectors - [ _sector ]; publicVariable "active_sectors";

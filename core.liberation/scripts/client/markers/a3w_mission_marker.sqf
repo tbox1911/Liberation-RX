@@ -3,8 +3,7 @@ while { true } do {
 		_unit = player getVariable ["GRLIB_A3W_Mission_Marker", nil];
 		if (!isNil "_unit") then {
 			deleteMarker "nikos_1";
-			_markername = "nikos_1";
-			_marker = createMarkerLocal [_markername, getPos _unit];
+			_marker = createMarkerLocal ["nikos_1", getPos _unit];
 			_marker setMarkerShapeLocal "ICON";
 			_marker setMarkerTypeLocal "mil_pickup";
 			_marker setMarkerColorLocal "ColorPink";

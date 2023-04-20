@@ -1,12 +1,11 @@
 params [ "_thispos" ];
-private [ "_attacktime", "_ownership", "_grp" ];
-
+private _max_prisonners = 4;
 sleep 5;
 
-_ownership = [ _thispos ] call F_sectorOwnership;
+private _ownership = [ _thispos ] call F_sectorOwnership;
 if ( _ownership != GRLIB_side_enemy ) exitWith {};
 
-_grp = createGroup [GRLIB_side_friendly, true];
+private _grp = createGroup [GRLIB_side_friendly, true];
 
 if ( GRLIB_blufor_defenders ) then {
 	{ _x createUnit [ _thispos, _grp,'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]']; } foreach blufor_squad_inf;
@@ -30,7 +29,7 @@ if ( _ownership == GRLIB_side_friendly ) exitWith {
 
 [ _thispos , 1 ] remoteExec ["remote_call_fob", 0];
 
-_attacktime = GRLIB_vulnerability_timer;
+private _attacktime = GRLIB_vulnerability_timer;
 
 while { _attacktime > 0 && ( _ownership == GRLIB_side_enemy || _ownership == GRLIB_side_civilian ) } do {
 	_ownership = [ _thispos ] call F_sectorOwnership;
@@ -61,7 +60,12 @@ if ( GRLIB_endgame == 0 ) then {
 		stats_fobs_lost = stats_fobs_lost + 1;
 	} else {
 		[ _thispos , 3 ] remoteExec ["remote_call_fob", 0];
-		{ [_x] spawn prisonner_ai; } foreach ( _thispos nearEntities [ ["Man"], GRLIB_capture_size * 0.8 ] );
+		{ 
+			if ( _max_prisonners > 0 && ((random 100) < GRLIB_surrender_chance) ) then {
+				[_x] spawn prisonner_ai;
+				_max_prisonners = _max_prisonners - 1;
+			};
+		} foreach ( _thispos nearEntities [ ["Man"], GRLIB_capture_size * 0.8 ] );
 	};
 };
 

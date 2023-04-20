@@ -55,14 +55,14 @@ light_vehicles = [
 heavy_vehicles = [
 	["CUP_B_Mastiff_HMG_GB_D",10,500,10,GRLIB_perm_log],
 	["CUP_B_Mastiff_GMG_GB_D",10,500,10,GRLIB_perm_log],
-	["CUP_B_BAF_Coyote_L2A1_D",10,500,10,GRLIB_perm_tank],
-	["CUP_B_BAF_Coyote_GMG_D",10,500,10,GRLIB_perm_tank],
-	["CUP_B_MCV80_GB_D",10,500,10,GRLIB_perm_tank],
-	["CUP_B_MCV80_GB_D_SLAT",10,500,10,GRLIB_perm_tank],
-	["CUP_B_FV510_GB_D",15,1000,15,GRLIB_perm_tank],
-	["CUP_B_FV510_GB_D_SLAT",15,1500,15,GRLIB_perm_air],
-	["CUP_B_Challenger2_Desert_BAF",15,3000,15,GRLIB_perm_max],
-	["CUP_B_Challenger2_2CD_BAF",15,3500,15,GRLIB_perm_max]
+	["CUP_B_BAF_Coyote_L2A1_D",10,700,10,GRLIB_perm_tank],
+	["CUP_B_BAF_Coyote_GMG_D",10,700,10,GRLIB_perm_tank],
+	["CUP_B_MCV80_GB_D",10,800,10,GRLIB_perm_tank],
+	["CUP_B_MCV80_GB_D_SLAT",10,1000,10,GRLIB_perm_tank],
+	["CUP_B_FV510_GB_D",15,1200,15,GRLIB_perm_tank],
+	["CUP_B_FV510_GB_D_SLAT",15,1400,15,GRLIB_perm_air],
+	["CUP_B_Challenger2_Desert_BAF",15,2000,15,GRLIB_perm_max],
+	["CUP_B_Challenger2_2CD_BAF",15,2250,15,GRLIB_perm_max]
 ];
 
 air_vehicles = [
@@ -93,7 +93,7 @@ static_vehicles = [
 	["CUP_B_L111A1_BAF_DDPM",0,50,0,GRLIB_perm_log],
 	["CUP_B_L111A1_MiniTripod_BAF_DDPM",0,70,0,GRLIB_perm_tank],
 	["CUP_B_L16A2_BAF_DDPM",0,500,0,GRLIB_perm_max],
-	["CUP_B_M119_HIL",0,1000,0,GRLIB_perm_air]
+	["CUP_B_M119_HIL",0,500,0,GRLIB_perm_air]
 ];
 
 // *** Static Weapon with AI ***

@@ -107,7 +107,7 @@ _failedExec = {
 	{ deleteVehicle _x } forEach GRLIB_A3W_Mission_SD;
 	GRLIB_A3W_Mission_SD = nil;
 	publicVariable "GRLIB_A3W_Mission_SD";
-
+	[player, ["GRLIB_A3W_Mission_Marker", nil]] remoteExec ["setVariable", -2];
 	_failedHintMessage = format ["Special Delivery<br/><t color='%1'>FAILED</t> !!<br/><br/>Better luck next time!", sideMissionColor];
 };
 
