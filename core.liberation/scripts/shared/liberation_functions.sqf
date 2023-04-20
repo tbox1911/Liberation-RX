@@ -50,3 +50,5 @@ F_check_nearFuel = compileFinal preprocessFileLineNumbers "scripts\shared\functi
 F_check_near = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_check_near.sqf";
 F_is_recyclable = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_is_recyclable.sqf";
 F_getVehicleAmmoDef = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getVehicleAmmoDef.sqf";
+F_getSectorPath = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getSectorPath.sqf";
+F_getNextSector = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getNextSector.sqf";
