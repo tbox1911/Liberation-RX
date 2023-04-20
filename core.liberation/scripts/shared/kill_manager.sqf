@@ -139,7 +139,7 @@ if ( isServer ) then {
 					_grave setvariable ["GRLIB_grave_message", format ["%1 - R.I.P -", name _unit], true];
 				};
 			};
-			[_unit] spawn {sleep 20; deleteVehicle (_this select 0)};
+			[_unit] spawn {sleep 10; deleteVehicle (_this select 0)};
 		};
 
 	} else {

@@ -8,9 +8,10 @@ if (isMultiplayer) then {
 };
 
 [] spawn cinematic_camera;
+uiSleep 1;
+
 if (serverName == "DevSrv") then {
 	GRLIB_introduction = false;
-	uiSleep 1;
 };
 
 if ( GRLIB_introduction ) then {
@@ -36,7 +37,7 @@ disableUserInput true;
 disableUserInput false;
 waitUntil { dialog };
 waitUntil { dostartgame == 1 || howtoplay == 1 || !dialog };
-disableUserInput true;
+//disableUserInput true;
 (findDisplay 5651) displayRemoveEventHandler ["KeyDown", _noesckey];
 closeDialog 0;
 

@@ -121,7 +121,7 @@ air_vehicles = [
 	["B_T_UAV_03_dynamicLoadout_F",5,1500,10,GRLIB_perm_max],
 	["B_UAV_05_F",5,2000,15,GRLIB_perm_max],
 	["C_Plane_Civil_01_F",1,50,5,GRLIB_perm_air],
-	["B_Heli_Light_01_F",1,50,5,GRLIB_perm_tank],
+	["B_Heli_Light_01_F",1,50,5,GRLIB_perm_log],
 	["I_Heli_light_03_unarmed_F",1,50,5,GRLIB_perm_tank],
 	["I_Heli_light_03_dynamicLoadout_F",10,1500,20,GRLIB_perm_air],
 	["B_Heli_Light_01_dynamicLoadout_F",5,200,10,GRLIB_perm_air],
@@ -640,6 +640,14 @@ ind_recyclable = [
 	["I_Truck_02_covered_F",0,round (20 / GRLIB_recycling_percentage),0],
 	["I_Truck_02_transport_F",0,round (20 / GRLIB_recycling_percentage),0],
 	["I_Heli_light_03_dynamicLoadout_F",0,round (20 / GRLIB_recycling_percentage),0]
+];
+
+ind_statics = [
+	"I_HMG_01_high_F",
+	"I_GMG_01_high_F",
+	"I_static_AA_F",
+	"I_static_AT_F",
+	"I_Mortar_01_F"
 ];
 
 // Other stuff

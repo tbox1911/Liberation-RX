@@ -612,6 +612,14 @@ ind_recyclable = [
 	["I_Heli_light_03_dynamicLoadout_F",0,round (20 / GRLIB_recycling_percentage),0]
 ];
 
+ind_statics = [
+	"I_HMG_01_high_F",
+	"I_GMG_01_high_F",
+	"I_static_AA_F",
+	"I_static_AT_F",
+	"I_Mortar_01_F"
+];
+
 // Other stuff
 
 civilians = [
@@ -742,13 +750,7 @@ GRLIB_vehicle_blacklist = [
 	medic_sling_typename,
 	"Box_NATO_Ammo_F",
   	"Box_NATO_WpsLaunch_F",
-	"Land_CargoBox_V1_F",
-	"O_Heli_Light_02_unarmed_F",
-	"O_Truck_03_transport_F",
-	"O_Truck_03_covered_F",
-	"O_Truck_03_ammo_F",
-	"O_Truck_03_fuel_F",
-	"O_Truck_03_medical_F"
+	"Land_CargoBox_V1_F"
 ];
 //{GRLIB_vehicle_blacklist pushBack ( _x select 0 )} foreach (support_vehicles);
 
