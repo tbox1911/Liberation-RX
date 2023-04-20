@@ -1,6 +1,10 @@
 // Add ACE Weapons
 <<<<<<< HEAD
+<<<<<<< HEAD
 GRLIB_MOD_signature = GRLIB_MOD_signature + ["ACE_"];
+=======
+GRLIB_MOD_signature = GRLIB_MOD_signature + ["ace_"];
+>>>>>>> bfd9d463 (1)
 GRLIB_blacklisted_from_arsenal append [
 	"ace_intelitems_base",
 	"ACE_ropeBase",
@@ -14,7 +18,7 @@ GRLIB_blacklisted_from_arsenal append [
 
 (
 	"
-	tolower ((configName _x) select [0,4]) == 'ACE_' &&
+	tolower ((configName _x) select [0,4]) == 'ace_' &&
 	([(configName _x)] call is_allowed_item)
 =======
 GRLIB_MOD_signature = GRLIB_MOD_signature + ["ace_"];
@@ -30,7 +34,11 @@ GRLIB_MOD_signature = GRLIB_MOD_signature + ["ace_"];
 (
 	"
 <<<<<<< HEAD
+<<<<<<< HEAD
 	tolower ((configName _x) select [0,4]) == 'ACE_' &&
+=======
+	tolower ((configName _x) select [0,4]) == 'ace_' &&
+>>>>>>> bfd9d463 (1)
 	([(configName _x)] call is_allowed_item)
 =======
 	tolower ((configName _x) select [0,3]) == 'ACE'
@@ -42,7 +50,11 @@ GRLIB_MOD_signature = GRLIB_MOD_signature + ["ace_"];
 (
 	"
 <<<<<<< HEAD
+<<<<<<< HEAD
 	tolower ((configName _x) select [0,4]) == 'ACE_' &&
+=======
+	tolower ((configName _x) select [0,4]) == 'ace_' &&
+>>>>>>> bfd9d463 (1)
 	([(configName _x)] call is_allowed_item)
 =======
 	tolower ((configName _x) select [0,3]) == 'ACE'
@@ -54,7 +66,11 @@ GRLIB_MOD_signature = GRLIB_MOD_signature + ["ace_"];
 (
 	"
 <<<<<<< HEAD
+<<<<<<< HEAD
 	tolower ((configName _x) select [0,4]) == 'ACE_' &&
+=======
+	tolower ((configName _x) select [0,4]) == 'ace_' &&
+>>>>>>> bfd9d463 (1)
 	([(configName _x)] call is_allowed_item)
 =======
 	tolower ((configName _x) select [0,3]) == 'ACE'
