@@ -16,7 +16,6 @@ repair_sling_typename = "B_Slingload_01_repair_F";
 fuel_sling_typename = "B_Slingload_01_Fuel_F";
 ammo_sling_typename = "B_Slingload_01_Ammo_F";
 medic_sling_typename = "B_Slingload_01_Medevac_F";
-commander_classname = "CUP_B_FR_Commander";
 pilot_classname = "CUP_B_USMC_Pilot";
 crewman_classname = "CUP_B_USMC_Crew";
 A3W_BoxWps = "CUP_LocalBasicWeaponsBox";

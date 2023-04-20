@@ -30,6 +30,9 @@ opfor_ammo_truck = "rhs_gaz66_ammo_msv";
 opfor_fuel_container = "Land_Pod_Heli_Transport_04_fuel_F";
 opfor_ammo_container = "Land_Pod_Heli_Transport_04_ammo_F";
 opfor_flag = "Flag_CSAT_F";
+opfor_house = "Land_Cargo_House_V3_F";
+opfor_patrol = "Land_Cargo_Patrol_V3_F";
+opfor_hq = "Land_Cargo_HQ_V3_F";
 
 militia_squad = [
 	"rhs_vdv_mflora_junior_sergeant",

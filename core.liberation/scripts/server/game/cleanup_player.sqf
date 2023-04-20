@@ -28,10 +28,14 @@ if !(isNull _unit) then {
 	// Remove Taxi
 	private _taxi = _unit getVariable ["GRLIB_taxi_called", nil];
 	if (!isNil "_taxi") then {
-		deleteVehicle (nearestObjects [markerPos "taxi_lz", [taxi_helipad_type], 50] select 0);
-		deleteMarkerLocal "taxi_lz";
-		deleteVehicle (nearestObjects [markerPos "taxi_dz", [taxi_helipad_type], 50] select 0);
-		deleteMarkerLocal "taxi_dz";
+		if (getMarkerColor "taxi_lz" != "") then {
+			deleteVehicle (nearestObjects [markerPos "taxi_lz", [taxi_helipad_type], 50] select 0);
+			deleteMarkerLocal "taxi_lz";
+		};
+		if (getMarkerColor "taxi_dz" != "") then {
+			deleteVehicle (nearestObjects [markerPos "taxi_dz", [taxi_helipad_type], 50] select 0);
+			deleteMarkerLocal "taxi_dz";
+		};
 		{
 			if (!isNil {_x getVariable ["GRLIB_counter_TTL", nil]}) then { deletevehicle _x };
 		} forEach (crew _taxi);

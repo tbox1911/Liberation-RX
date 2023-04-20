@@ -32,6 +32,9 @@ opfor_ammo_truck = "CUP_O_V3S_Rearm_TKA";
 opfor_fuel_container = "Land_Pod_Heli_Transport_04_fuel_F";
 opfor_ammo_container = "CUP_TKBasicAmmunitionBox_EP1";
 opfor_flag = "CUP_Flag_Black";
+opfor_house = "Land_Cargo_House_V3_F";
+opfor_patrol = "Land_Cargo_Patrol_V3_F";
+opfor_hq = "Land_Cargo_HQ_V3_F";
 
 militia_squad = [
 	"CUP_O_TK_INS_Soldier_FNFAL",

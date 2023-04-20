@@ -24,7 +24,6 @@ opfor_engineer = "UK3CB_BAF_Engineer_DDPM_RM";
 opfor_pilot = "UK3CB_BAF_HeliPilot_RN_DDPM";
 opfor_crew = "UK3CB_BAF_Crewman_DDPM_RM";
 opfor_paratrooper = "UK3CB_BAF_Grenadier_762_DDPM_RM";
-
 opfor_mrap = "UK3CB_BAF_LandRover_Soft_FFR_Sand_A_DDPM";
 opfor_mrap_hmg = "UK3CB_BAF_LandRover_WMIK_GPMG_FFR_Sand_A_DDPM";
 opfor_mrap_gmg = "UK3CB_BAF_LandRover_WMIK_GMG_FFR_Sand_A_DDPM";
@@ -34,9 +33,10 @@ opfor_fuel_truck = "UK3CB_BAF_MAN_HX60_Fuel_Sand_DDPM";
 opfor_ammo_truck = "UK3CB_CW_US_B_LATE_M939_Reammo"; // 3CB Cold War US Early
 opfor_fuel_container = "Land_Pod_Heli_Transport_04_fuel_F";
 opfor_ammo_container = "Land_Pod_Heli_Transport_04_ammo_F";
-
-
 opfor_flag = "Flag_UK_F";
+opfor_house = "Land_Cargo_House_V3_F";
+opfor_patrol = "Land_Cargo_Patrol_V3_F";
+opfor_hq = "Land_Cargo_HQ_V3_F";
 
 // BAF Army Desert Special Forces
 militia_squad = [

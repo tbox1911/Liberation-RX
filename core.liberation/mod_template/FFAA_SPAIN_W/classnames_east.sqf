@@ -30,6 +30,9 @@ opfor_ammo_truck = "ffaa_et_m250_municion_blin";
 opfor_fuel_container = "B_Slingload_01_Fuel_F";
 opfor_ammo_container = "B_Slingload_01_Ammo_F";
 opfor_flag = "ffaa_bandera_espa";
+opfor_house = "Land_Cargo_House_V3_F";
+opfor_patrol = "Land_Cargo_Patrol_V3_F";
+opfor_hq = "Land_Cargo_HQ_V3_F";
 
 militia_squad = [
 	"ffaa_ar_fgne_lider_bk",

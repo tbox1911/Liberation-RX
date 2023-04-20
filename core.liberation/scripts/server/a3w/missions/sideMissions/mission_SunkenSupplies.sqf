@@ -21,6 +21,7 @@ _setupObjects =
 	_box1 = [ammobox_o_typename, _missionPos, true] call boxSetup;
 	_box2 = [ammobox_o_typename, _missionPos, true] call boxSetup;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 	{
 		_boxPos = getPosASL _x;
@@ -32,6 +33,9 @@ _setupObjects =
 
 >>>>>>> 5fea71b4 (a3w and waypoints)
 	_vehicle = [_missionPos, "O_Boat_Armed_01_hmg_F", true] call F_libSpawnVehicle;
+=======
+	_vehicle = [_missionPos, selectRandom boats_east, true] call F_libSpawnVehicle;
+>>>>>>> 2e014cca (add opfor building)
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	[_aiGroup, _missionPos, _nbUnits, "divers", true] call createCustomGroup;
 	(crew _vehicle) joinSilent _aiGroup;

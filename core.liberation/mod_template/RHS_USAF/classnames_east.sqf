@@ -30,6 +30,9 @@ opfor_ammo_truck = "rhsusf_M977A4_AMMO_usarmy_wd";
 opfor_fuel_container = "B_Slingload_01_Fuel_F";
 opfor_ammo_container = "B_Slingload_01_Ammo_F";
 opfor_flag = "Flag_US_F";
+opfor_house = "Land_Cargo_House_V1_F";
+opfor_patrol = "Land_Cargo_Patrol_V1_F";
+opfor_hq = "Land_Cargo_HQ_V1_F";
 
 militia_squad = [
 	"rhsusf_usmc_marpat_wd_squadleader",

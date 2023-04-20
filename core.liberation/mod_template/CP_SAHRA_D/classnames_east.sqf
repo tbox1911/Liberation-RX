@@ -33,6 +33,9 @@ opfor_ammo_truck = "CUP_I_MTVR_Ammo_RACS";
 opfor_fuel_container = "Land_Pod_Heli_Transport_04_fuel_F";
 opfor_ammo_container = "CUP_TKBasicAmmunitionBox_EP1";
 opfor_flag = "CUP_Flag_Black";
+opfor_house = "Land_Cargo_House_V3_F";
+opfor_patrol = "Land_Cargo_Patrol_V3_F";
+opfor_hq = "Land_Cargo_HQ_V3_F";
 
 // Nat. Party of Chernarus
 militia_squad = [

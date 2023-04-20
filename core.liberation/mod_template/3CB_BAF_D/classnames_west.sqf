@@ -10,7 +10,6 @@ FOB_typename = "Land_Cargo_HQ_V1_F";
 Respawn_truck_typename = "UK3CB_BAF_LandRover_Amb_FFR_Sand_A_DDPM";
 //FOB_box_typename = "B_Slingload_01_Cargo_F";
 //FOB_truck_typename = "B_Truck_01_box_F";
-commander_classname = "UK3CB_BAF_SC_DDPM";
 pilot_classname = "UK3CB_BAF_HeliPilot_Army_DDPM";
 crewman_classname = "UK3CB_BAF_Crewman_DDPM";
 A3W_BoxWps = "rhsgref_weapons_crate";  	 //"rhs_weapon_crate";

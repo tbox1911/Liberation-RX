@@ -9,7 +9,6 @@ FOB_typename = "Land_Cargo_HQ_V1_F";
 Respawn_truck_typename = "LOP_UKR_KAMAZ_Medical";  //"rhsusf_m113_usarmy_medical"
 //FOB_box_typename = "B_Slingload_01_Cargo_F";
 //FOB_truck_typename = "B_Truck_01_box_F";
-commander_classname = "LOP_UKR_Infantry_officer";
 pilot_classname = "LOP_UKR_Infantry_crew";
 crewman_classname = "LOP_UKR_Infantry_crew";
 A3W_BoxWps = "rhsgref_weapons_crate";  	 //"rhs_weapon_crate";
@@ -17,16 +16,6 @@ chimera_vehicle_overide = [
   ["B_Heli_Light_01_F", "RHS_MELB_MH6M"],
   ["B_Heli_Transport_01_F", "RHS_UH60M_d"]
 ];
-
-
-/* RANK
-PRIVATE<br/>%2", "000", localize "STR_RANK_LVL1"]]];
-CORPORAL<br/>%2", GRLIB_perm_inf, localize "STR_RANK_LVL2"]]];
-SERGEANT<br/>%2", GRLIB_perm_log, localize "STR_RANK_LVL3"]]];
-CAPTAIN<br/>%2", GRLIB_perm_tank, localize "STR_RANK_LVL4"]]];
-MAJOR<br/>%2", GRLIB_perm_air, localize "STR_RANK_LVL5"]]];
-COLONEL<br/>%2", GRLIB_perm_max, localize "STR_RANK_LVL6"]]];
-*/
 
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]

@@ -8,7 +8,6 @@ FOB_typename = "Land_Cargo_HQ_V1_F";
 Respawn_truck_typename = "rhsusf_M1085A1P2_B_WD_Medical_fmtv_usarmy";  //"rhsusf_m113_usarmy_medical"
 //FOB_box_typename = "B_Slingload_01_Cargo_F";
 //FOB_truck_typename = "B_Truck_01_box_F";
-commander_classname = "rhsusf_army_ucp_officer";
 pilot_classname = "rhsusf_army_ucp_helipilot";
 crewman_classname = "rhsusf_army_ucp_crewman";
 A3W_BoxWps = "rhs_weapon_crate";

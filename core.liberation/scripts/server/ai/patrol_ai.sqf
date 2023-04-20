@@ -39,7 +39,7 @@ while { count (units _grp) > 0 } do {
 
 					_vehicle setDir (_vehicle getDir _next_target);
 					_grp setBehaviour "COMBAT";
-					_grp reveal _next_target;
+					//_grp reveal _next_target;
 					_gunner doTarget _next_target;
 					//_vehicle fireAtTarget [_next_target];
 				} else {

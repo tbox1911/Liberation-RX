@@ -24,7 +24,6 @@ opfor_engineer = "LOP_UKR_Infantry_engineer";
 opfor_pilot = "LOP_UKR_Infantry_JetPilot";
 opfor_crew = "LOP_UKR_Infantry_crew";
 opfor_paratrooper = "LOP_UKR_Infantry_RPG_Asst";
-
 opfor_mrap = "LOP_UKR_UAZ";
 opfor_mrap_hmg = "LOP_UKR_UAZ_DshKM";
 opfor_mrap_gmg = "LOP_UKR_UAZ_AGS";
@@ -35,6 +34,9 @@ opfor_ammo_truck = "LOP_UKR_KAMAZ_Ammo";
 opfor_fuel_container = "B_Slingload_01_Fuel_F";
 opfor_ammo_container = "B_Slingload_01_Ammo_F";
 opfor_flag = "lop_Flag_ukr_F";
+opfor_house = "Land_Cargo_House_V1_F";
+opfor_patrol = "Land_Cargo_Patrol_V1_F";
+opfor_hq = "Land_Cargo_HQ_V1_F";
 
 militia_squad = [
 "LOP_UKR_Infantry_engineer",

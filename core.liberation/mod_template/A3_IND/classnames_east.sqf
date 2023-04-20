@@ -32,6 +32,9 @@ opfor_ammo_truck = "I_Truck_03_ammo_F";
 opfor_fuel_container = "Land_Pod_Heli_Transport_04_fuel_F";
 opfor_ammo_container = "Land_Pod_Heli_Transport_04_ammo_F";
 opfor_flag = "Flag_FIA_F";
+opfor_house = "Land_Cargo_House_V2_F";
+opfor_patrol = "Land_Cargo_Patrol_V2_F";
+opfor_hq = "Land_Cargo_HQ_V2_F";
 
 militia_squad = [
 	"I_G_Soldier_SL_F",

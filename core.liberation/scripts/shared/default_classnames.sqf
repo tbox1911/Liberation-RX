@@ -7,6 +7,7 @@ FOB_truck_typename = "B_Truck_01_box_F";
 FOB_outpost = "Land_BagBunker_Tower_F";
 FOB_box_outpost = "Land_Cargo10_grey_F";
 FOB_sign = "SignAd_Sponsor_F";
+fireworks_typename = "Land_CargoBox_V1_F";
 Radio_tower = "Land_Communication_F";
 Arsenal_typename = "B_supplyCrate_F";
 Respawn_truck_typename = "B_Truck_01_medical_F";

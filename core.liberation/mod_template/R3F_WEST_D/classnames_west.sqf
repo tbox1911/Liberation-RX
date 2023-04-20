@@ -15,7 +15,6 @@ repair_sling_typename = "B_Slingload_01_Repair_F";
 fuel_sling_typename = "B_Slingload_01_Fuel_F";
 ammo_sling_typename = "B_Slingload_01_Ammo_F";
 medic_sling_typename = "B_Slingload_01_Medevac_F";
-commander_classname = "R3F_FANTASSIN_OFFICIER_BLUFOR_DA";
 pilot_classname = "R3F_APSO_PILOT_BLUFOR";
 crewman_classname = "R3F_APSO_PILOT_VEHI_BLUFOR_DA";
 chimera_vehicle_overide = [

@@ -15,7 +15,6 @@ repair_sling_typename = "B_Slingload_01_Repair_F";
 fuel_sling_typename = "B_Slingload_01_Fuel_F";
 ammo_sling_typename = "B_Slingload_01_Ammo_F";
 medic_sling_typename = "B_Slingload_01_Medevac_F";
-commander_classname = "ffaa_brilat_jefe_escuadra";
 pilot_classname = "ffaa_piloto_hmsd_famet";
 crewman_classname = "ffaa_brilat_carrista";
 chimera_vehicle_overide = [

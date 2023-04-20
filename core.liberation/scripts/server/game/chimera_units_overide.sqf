@@ -56,3 +56,20 @@ if (!isNil "chimera_vehicle_overide") then {
 
     } forEach chimera_vehicle_overide;
 };
+
+// Optre bonus
+if (GRLIB_OPTRE_enabled) then {
+    _src_pos = (getPosATL lhd) vectorAdd [0,-300,250]; 
+    _veh = createVehicle ["OPTRE_Frigate_UNSC", _src_pos, [], 0, "CAN_COLLIDE"]; 
+    _veh allowDamage false; 
+    _veh setDir 90; 
+    _veh setVehicleLock "LOCKED"; 
+    _veh enableSimulation false; 
+     
+    _src_pos = _src_pos vectorAdd [-200,-500,0]; 
+    _veh = createVehicle ["OPTRE_Frigate_In", _src_pos, [], 0, "CAN_COLLIDE"]; 
+    _veh allowDamage false; 
+    _veh setDir 90; 
+    _veh setVehicleLock "LOCKED"; 
+    _veh enableSimulation false;
+};

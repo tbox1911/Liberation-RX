@@ -15,7 +15,6 @@ repair_sling_typename = "B_Slingload_01_Repair_F";
 fuel_sling_typename = "B_Slingload_01_Fuel_F";
 ammo_sling_typename = "B_Slingload_01_Ammo_F";
 medic_sling_typename = "B_Slingload_01_Medevac_F";
-commander_classname = "B_officer_F";
 pilot_classname = "B_UN_Helipilot_lxWS";
 crewman_classname = "B_UN_crew_lxWS";
 

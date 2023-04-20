@@ -15,7 +15,6 @@ repair_sling_typename = "gm_ge_army_shelteraceII_repair";
 fuel_sling_typename = "B_Slingload_01_Fuel_F";
 ammo_sling_typename = "gm_ge_army_shelteraceII_reammo";
 medic_sling_typename = "gm_ge_army_shelteraceII_medic";
-commander_classname = "gm_pl_army_squadleader_akm_80_win";
 pilot_classname = "gm_pl_airforce_pilot_pm_80_gry";
 crewman_classname = "gm_pl_army_crew_pm63_80_moro";
 PAR_Medikit = "gm_gc_army_medbox";
