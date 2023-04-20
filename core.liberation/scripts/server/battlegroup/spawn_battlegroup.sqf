@@ -49,7 +49,7 @@ if ( _spawn_marker != "" ) then {
 	} foreach _selected_opfor_battlegroup;
 
 	if ( GRLIB_csat_aggressivity > 0.9 ) then {
-		[([markerpos _spawn_marker] call F_getNearestBluforObjective) select 0] spawn spawn_air;
+		[([markerpos _spawn_marker] call F_getNearestBluforObjective) select 0, GRLIB_side_enemy] spawn spawn_air;
 	};
 
 	sleep 5;

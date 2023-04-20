@@ -1,7 +1,7 @@
 params ["_unit"];
 
 _targetsector = [allMapMarkers, _unit] call BIS_fnc_nearestPosition;
-[getMarkerPos _targetsector] spawn spawn_airblu;
+[getMarkerPos _targetsector, GRLIB_side_friendly] spawn spawn_air;
 
 _msg = format ["Commander <t color='#00008f'>%1</t>, ask for<br/><br/>
 <t color='#0000F0'>Air</t> <t color='#F00000'>Suppremacy</t><br/><br/>

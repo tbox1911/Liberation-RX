@@ -5,28 +5,23 @@ _sendPara = {
 
 	private _targetpos = getMarkerPos _targetsector;
 	private _spawnsector = ( [ sectors_airspawn , [ _targetpos ] , { (markerpos _x) distance _input0 }, "ASCEND"] call BIS_fnc_sortBy ) select 0;
-
-	private _chopper_type = selectRandom opfor_choppers;
-	_air_spawnpos = markerPos _spawnsector;
-	//private _newvehicle = createVehicle [ _chopper_type, markerpos _spawnsector, [], 0, "FLY"];
-
-	_air_spawnpos = [(((_air_spawnpos select 0) + 500) - random 1000),(((_air_spawnpos select 1) + 500) - random 1000), 120];
-	private _newvehicle = createVehicle [ _chopper_type, _air_spawnpos, [], 0, "FLY"];
-
-	_newvehicle flyInHeight (300 + (random 100));
+	private _newvehicle = createVehicle [ (selectRandom opfor_choppers), (markerPos _spawnsector), [], 50, "FLY"];
+	_newvehicle setPos (getPosATL _newvehicle vectorAdd [0, 0, 400]);
 	createVehicleCrew _newvehicle;
-	sleep 1;
+	_newvehicle flyInHeight 400;
 
 	private _pilot_group = group ((crew _newvehicle) select 0);
 	_newvehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	{ _x addMPEventHandler ["MPKilled", {_this spawn kill_manager}]; } foreach (crew _newvehicle);
+	sleep 0.2;
 
 	while { count units _para_group < 8 } do {
 		opfor_paratrooper createUnit [ getmarkerpos _spawnsector, _para_group, 'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]'];
-    	sleep 0.1;
+		sleep 0.1;
 	};
 
 	{
+		_x assignAsCargo _newvehicle;
 		_x moveInCargo _newvehicle;
 		_x allowFleeing 0;
 	} foreach (units _para_group);

@@ -38,6 +38,6 @@ while { GRLIB_csat_aggressivity >= 0.9 && GRLIB_endgame == 0 } do {
 	 } foreach allPlayers;
 
 	 if (!(isNull _target_player)) then {
-		[markerPos ([99999, getpos _target_player ] call F_getNearestSector)] spawn spawn_air;
+		[markerPos ([99999, getpos _target_player ] call F_getNearestSector), GRLIB_side_enemy] spawn spawn_air;
 	 };
 };
