@@ -2,7 +2,6 @@
 [] call compileFinal preprocessFileLineNumbers "scripts\loadouts\init_loadouts.sqf";
 
 // *** FRIENDLIES ***
-[] call compileFinal preprocessFileLineNUmbers format ["scripts\shared\default_classnames.sqf"];
 [] call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_west.sqf", GRLIB_mod_west];
 [] call F_calcUnitsCost;
 
@@ -11,6 +10,9 @@
 
 // *** CIVILIAN ***
 [] call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_civ.sqf", GRLIB_mod_west];
+
+// *** DEFAULT ***
+[] call compileFinal preprocessFileLineNUmbers format ["scripts\shared\default_classnames.sqf"];
 
 // *** GLOBAL DEFINITIOON ***
 GRLIB_side_friendly = WEST;

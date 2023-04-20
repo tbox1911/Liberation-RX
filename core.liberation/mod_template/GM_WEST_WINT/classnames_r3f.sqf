@@ -229,20 +229,14 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 [
-	["B_HMG_01_F",5],
-	["B_HMG_01_high_F",5],
 	["gm_ge_army_mg3_aatripod",10],
-	["gm_ge_army_milan_launcher_tripod",10],
-	["B_Mortar_01_F",10]
+	["gm_ge_army_milan_launcher_tripod",10]
 ];
 
 R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 [
-	"B_HMG_01_F",
-	"B_HMG_01_high_F",
 	"gm_ge_army_mg3_aatripod",
-	"gm_ge_army_milan_launcher_tripod",
-	"B_Mortar_01_F"
+	"gm_ge_army_milan_launcher_tripod"
 ];
 
 //--------------- Camping ---------------
