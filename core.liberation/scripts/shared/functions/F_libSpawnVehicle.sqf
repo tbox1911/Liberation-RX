@@ -15,7 +15,11 @@ if ( _precise_position ) then {
 } else {
 	while { _spawnpos isEqualTo zeropos } do {
 		_safepos = [_sectorpos, 5, 300, 1, 1, 0.25, 0, [], [zeropos, zeropos]] call BIS_fnc_findSafePos;
+<<<<<<< HEAD
 		if (surfaceIsWater _safepos) then {
+=======
+		if (surfaceIsWater _safepos ) then {
+>>>>>>> 5c09b7e5 (fix spawn boats)
 			_spawnpos = _safepos;
 		} else {
 			_spawnpos = _safepos findEmptyPosition [1, 20, "B_Heli_Light_01_F"];
