@@ -11,6 +11,9 @@ params ["_unit"];
 ];
 
 // For all
+// UI Event Handler
+inGameUISetEventHandler ["Action", "if (_this select 3 == 'DisAssemble') then { hintSilent 'You are not allowed to do this';true}"];
+
 // Check Veh perms
 _unit addEventHandler ["GetInMan", {_this spawn vehicle_permissions}];
 _unit addEventHandler ["GetInMan", {_this spawn vehicle_defense}];
@@ -149,9 +152,6 @@ if (_unit == player && alive player && player isKindOf "Man") then {
 			[player, "show"] remoteExec ["dog_action_remote_call", 2];
 		};
 	}];
-
-	// UI Event Handler
-	inGameUISetEventHandler ["Action", "if (_this select 3 == 'DisAssemble') then { hintSilent 'You are not allowed to do this';true}"];
 
 };
 

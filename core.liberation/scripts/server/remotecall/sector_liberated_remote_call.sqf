@@ -16,12 +16,20 @@ if (isServer) then {
 	if ( _liberated_sector in sectors_military ) then {
 		_combat_readiness_increase = (5 + (floor (random 11))) * GRLIB_difficulty_modifier;
 
-		_boxlist = [entities [[opfor_ammobox_transport, ammobox_o_typename], [], false, false], {
+		private _trucklist = [entities [[opfor_ammobox_transport], [], false, false], {
 			(getPos _x) distance2D (markerPos _liberated_sector) < 300
 		}] call BIS_fnc_conditionalSelect;
 		{
 			_x setVariable ["R3F_LOG_disabled", false, true];
 			_x setVariable ["GRLIB_vehicle_owner", "public", true];
+		} forEach _trucklist;
+
+		private _boxlist = [entities [[ammobox_o_typename], [], false, false], {
+			(getPos _x) distance2D (markerPos _liberated_sector) < 300
+		}] call BIS_fnc_conditionalSelect;
+		{
+			_x setVariable ["R3F_LOG_disabled", false, true];
+			_x setVariable ["GRLIB_vehicle_owner", "", true];
 		} forEach _boxlist;
 	};
 
