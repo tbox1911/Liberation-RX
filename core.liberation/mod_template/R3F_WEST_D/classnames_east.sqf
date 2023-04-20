@@ -78,8 +78,6 @@ opfor_boats = [
 
 opfor_vehicles = [
 	"R3F_TIGRE",
-	"R3F_LYNX_DA_ARMED",
-	"R3F_KAMAZ_DA_VPC",
 	"R3F_MATV_DA_HMG",
 	"R3F_MATV_DA_HMG",
 	"R3F_MATV_DA_GMG",
@@ -90,15 +88,13 @@ opfor_vehicles = [
 	"R3F_PANDUR_DA",
 	"R3F_PANDUR_DA",
 	"R3F_MBT52_DA",
-	"R3F_MBT52_DA",	
+	"R3F_MBT52_DA",
 	"R3F_ALCA_ADLA",
 	"R3F_GRIPEN"
 ];
 
 opfor_vehicles_low_intensity = [
-	"R3F_AH6_DA_ARMED",
 	"R3F_TIGRE",
-	"R3F_KAMAZ_DA_trans",
 	"R3F_FENNEC_DA_HMG",
 	"R3F_FENNEC_DA_GMG",
 	"R3F_MATV_DA_HMG",
@@ -130,7 +126,6 @@ opfor_battlegroup_vehicles = [
 
 opfor_battlegroup_vehicles_low_intensity = [
 	"R3F_AH6_DA_ARMED",
-	"R3F_LYNX_DA_ARMED",
 	"R3F_KAMAZ_DA_trans",
 	"R3F_FENNEC_DA_HMG",
 	"R3F_FENNEC_DA_GMG",

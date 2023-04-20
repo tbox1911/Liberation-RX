@@ -8,7 +8,7 @@ date_day = date select 2;
 blufor_sectors = [];
 GRLIB_all_fobs = [];
 GRLIB_mobile_respawn = [];
-buildings_to_save= [];
+buildings_to_load= [];
 combat_readiness = 0;
 stats_opfor_soldiers_killed = 0;
 stats_opfor_killed_by_players = 0;
@@ -53,7 +53,7 @@ no_kill_handler_classnames = [FOB_typename, FOB_outpost];
 	no_kill_handler_classnames pushback (_x select 0);
 } foreach buildings;
 
-_vehicles_blacklist = list_static_weapons + uavs + [mobile_respawn];
+private _vehicles_blacklist = list_static_weapons + uavs + support_vehicles + [mobile_respawn];
 _buildings_created = [];
 
 // Wipe Savegame
@@ -85,7 +85,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 
 	blufor_sectors = greuh_liberation_savegame select 0;
 	GRLIB_all_fobs = greuh_liberation_savegame select 1;
-	buildings_to_save = greuh_liberation_savegame select 2;
+	buildings_to_load = greuh_liberation_savegame select 2;
 	time_of_day = greuh_liberation_savegame select 3;
 	combat_readiness = greuh_liberation_savegame select 4;
 	GRLIB_garage = greuh_liberation_savegame select 5;
@@ -154,7 +154,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 	GRLIB_all_fobs = _correct_fobs;
 	stats_saves_loaded = stats_saves_loaded + 1;
 
-	diag_log format [ "--- LRX Load Game %1 objects to load...", count(buildings_to_save)];
+	diag_log format [ "--- LRX Load Game %1 objects to load...", count(buildings_to_load)];
 	{
 		_nextclass = _x select 0;
         _nextpos = _x select 1;
@@ -233,7 +233,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 			};
         };
 
-        if ( _nextclass in list_static_weapons ) then {
+        if ( _nextclass in (list_static_weapons + support_vehicles)) then {
             _nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
             _nextbuilding setVariable ["R3F_LOG_disabled", false, true];
             if (_nextclass in static_vehicles_AI) then {
@@ -256,18 +256,8 @@ if ( !isNil "greuh_liberation_savegame" ) then {
             _nextbuilding setVariable ["GRLIB_vehicle_manned", true, true];
         };
 
-        if ( !(_nextclass in no_kill_handler_classnames ) ) then {
-            _nextbuilding addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-        };
-
-        if ( _nextclass in [FOB_typename, FOB_outpost] ) then {
-            _nextbuilding allowDamage false;
-            _nextbuilding addEventHandler ["HandleDamage", { 0 }];
-        };
-
         if ( _nextclass == mobile_respawn ) then {
             _nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
-            _nextbuilding addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
             GRLIB_mobile_respawn pushback _nextbuilding;
         };
 
@@ -277,9 +267,16 @@ if ( !isNil "greuh_liberation_savegame" ) then {
             _nextbuilding allowDamage false;
         };
       
+        if ( _nextclass in no_kill_handler_classnames ) then {
+            _nextbuilding allowDamage false;
+            //_nextbuilding addEventHandler ["HandleDamage", { 0 }];
+        } else {
+			_nextbuilding addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+		};
+
         //diag_log format [ "--- LRX Load Game %1 loaded at %2.", typeOf _nextbuilding, time];
 		
-	} foreach buildings_to_save;
+	} foreach buildings_to_load;
 
 	sleep 1;
 	{

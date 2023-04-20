@@ -39,7 +39,7 @@ militia_squad = [
 	"gm_ge_army_sf_squadleader_mp5sd3_p2a1_80_wdl",
 	"gm_ge_army_sf_rifleman_g3a4_80_wdl",
 	"gm_ge_army_sf_rifleman_g3a4_80_wdl",
-	"gm_ge_army_sf_rifleman_g3a4_80_wdl",	
+	"gm_ge_army_sf_rifleman_g3a4_80_wdl",
 	"gm_ge_army_sf_grenadier_hk69a1_80_wdl",
 	"gm_ge_army_sf_marksman_g3a3_80_wdl",
 	"gm_ge_army_sf_marksman_g3a3_80_wdl",
@@ -47,7 +47,7 @@ militia_squad = [
 	"gm_ge_army_sf_antitank_mp5a2_pzf84_80_wdl",
 	"gm_ge_army_sf_antitank_mp5a2_pzf84_80_wdl",
 	"gm_ge_army_sf_demolition_mp5a2_80_wdl",
-	"gm_ge_army_sf_demolition_mp5a2_80_wdl",	
+	"gm_ge_army_sf_demolition_mp5a2_80_wdl",
 	"gm_ge_army_sf_radioman_mp5a3_80_wdl",
 	"gm_ge_army_sf_radioman_mp5a3_80_wdl",
 	"gm_ge_army_sf_rifleman_mp5a3_80_wdl",
@@ -87,7 +87,7 @@ opfor_vehicles = [
 	"gm_ge_army_iltis_milan",
 	"gm_ge_army_m113a1g_apc_milan",
 	"gm_ge_army_m113a1g_apc_milan",
-	"gm_ge_army_marder1a1plus",
+	"gm_ge_army_m113a1g_apc",
 	"gm_dk_army_m113a2dk",
 	"gm_ge_army_Leopard1a1a2",
 	"gm_ge_army_gepard1a1",
@@ -99,7 +99,8 @@ opfor_vehicles_low_intensity = [
 	"gm_ge_army_iltis_milan",
 	"gm_ge_army_m113a1g_apc_milan",
 	"gm_ge_army_m113a1g_apc_milan",
-	"gm_ge_army_fuchsa0_command"
+	"gm_ge_army_fuchsa0_command",
+	"gm_ge_army_m113a1g_apc"
 ];
 
 opfor_battlegroup_vehicles = [
@@ -132,9 +133,7 @@ opfor_battlegroup_vehicles_low_intensity = [
 
 opfor_troup_transports_truck = [
 	"gm_ge_army_kat1_451_cargo",
-	"gm_dk_army_m113a2dk",
-	"gm_ge_army_marder1a1plus",
-	"gm_ge_army_m113a1g_apc"
+	"gm_ge_army_marder1a1plus"
 ];
 
 opfor_troup_transports_heli = [

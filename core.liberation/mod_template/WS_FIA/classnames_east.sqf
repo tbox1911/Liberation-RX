@@ -77,14 +77,15 @@ opfor_vehicles = [
 	"O_APC_Wheeled_02_rcws_v2_F",
 	"O_SFIA_MBT_02_cannon_lxWS",
 	"O_SFIA_MBT_02_cannon_lxWS",
-	"O_Truck_03_covered_F",
 	"O_APC_Tracked_02_AA_F"
 ];
 
 opfor_vehicles_low_intensity = [
+	"O_SFIA_Offroad_AT_lxWS",
+	"O_SFIA_Offroad_armed_lxWS",
+	"O_SFIA_Offroad_armed_lxWS",
 	"O_SFIA_APC_Tracked_02_cannon_lxWS",
 	"O_APC_Wheeled_02_rcws_v2_F",
-	"O_Truck_02_covered_F",
 	"O_MRAP_02_hmg_F",
 	"O_MRAP_02_hmg_F",
 	"O_MRAP_02_gmg_F",
@@ -93,13 +94,15 @@ opfor_vehicles_low_intensity = [
 ];
 
 opfor_battlegroup_vehicles = [
+	"O_T_VTOL_02_infantry_F",
 	"O_MRAP_02_hmg_F",
 	"O_MRAP_02_gmg_F",
 	"O_MRAP_02_hmg_F",
 	"O_MRAP_02_gmg_F",
 	"O_SFIA_APC_Tracked_02_cannon_lxWS",
 	"O_APC_Wheeled_02_rcws_v2_F",
-	"O_Truck_03_transport_F",
+	"O_Truck_03_covered_F",
+	"O_SFIA_MBT_02_cannon_lxWS",
 	"O_SFIA_MBT_02_cannon_lxWS",
 	"O_APC_Tracked_02_AA_F",
 	"O_SFIA_Heli_Attack_02_dynamicLoadout_lxWS",
@@ -108,6 +111,8 @@ opfor_battlegroup_vehicles = [
 ];
 
 opfor_battlegroup_vehicles_low_intensity = [
+	"O_Heli_Light_02_dynamicLoadout_F",
+	"O_SFIA_APC_Tracked_02_cannon_lxWS",
 	"O_SFIA_APC_Tracked_02_cannon_lxWS",
 	"O_APC_Wheeled_02_rcws_v2_F",
 	"O_MRAP_02_hmg_F",
@@ -120,24 +125,18 @@ opfor_battlegroup_vehicles_low_intensity = [
 ];
 
 opfor_troup_transports_truck = [
-	"O_Truck_03_transport_F",
 	"O_Truck_03_covered_F",
-	"O_Truck_02_covered_F",
 	"O_Truck_02_transport_F"
 ];
 
 opfor_troup_transports_heli = [
-	"O_Heli_Light_02_v2_F",
-	"O_SFIA_Heli_Attack_02_dynamicLoadout_lxWS",
-	"O_Heli_Attack_02_dynamicLoadout_F",
 	"O_Heli_Transport_04_covered_F"
 ];
 
 opfor_air = [
-	"O_Heli_Light_02_v2_F",
+	"O_Heli_Light_02_dynamicLoadout_F",
 	"O_SFIA_Heli_Attack_02_dynamicLoadout_lxWS",
-	"O_Heli_Attack_02_dynamicLoadout_F",
-	//"O_T_VTOL_02_infantry_F",
+	"O_T_VTOL_02_infantry_F",
 	"O_Plane_CAS_02_F",
 	"O_Plane_Fighter_02_F"
 ];
@@ -164,7 +163,7 @@ opfor_recyclable = [
 	["O_Tura_Offroad_armor_armed_lxWS",1,round (30 / GRLIB_recycling_percentage),2],
 	["O_Tura_Offroad_armor_AT_lxWS",1,round (35 / GRLIB_recycling_percentage),2],
 	["O_SFIA_Offroad_armed_lxWS",1,round (30 / GRLIB_recycling_percentage),2],
-	["O_SFIA_Offroad_AT_lxWS",1,round (35 / GRLIB_recycling_percentage),2],	
+	["O_SFIA_Offroad_AT_lxWS",1,round (35 / GRLIB_recycling_percentage),2],
 	["O_Truck_02_covered_F",5,round (20 / GRLIB_recycling_percentage),5],
 	["O_Truck_02_transport_F",5,round (20 / GRLIB_recycling_percentage),5],
 	["O_Truck_03_covered_F",5,round (50 / GRLIB_recycling_percentage),5],
@@ -181,10 +180,7 @@ opfor_recyclable = [
 	["O_SFIA_Heli_Attack_02_dynamicLoadout_lxWS",10,round (1700 / GRLIB_recycling_percentage),20],
 	["O_Heli_Attack_02_F",10,round (1700 / GRLIB_recycling_percentage),20],
 	["O_Heli_Attack_02_dynamicLoadout_black_F",10,round (1700 / GRLIB_recycling_percentage),20],
-	["O_Heli_Attack_02_dynamicLoadout_F",10,round (1700 / GRLIB_recycling_percentage),20],
-	["O_Heli_Attack_02_dynamicLoadout_F",10,round (1700 / GRLIB_recycling_percentage),20],
 	["O_Heli_Light_02_dynamicLoadout_F",10,round (1600 / GRLIB_recycling_percentage),20],
-	["O_Heli_Light_02_v2_F",10,round (1600 / GRLIB_recycling_percentage),20],
 	["O_Heli_Transport_04_covered_F",10,round (1400 / GRLIB_recycling_percentage),20],
 	["O_Plane_CAS_02_F",20,round (2000 / GRLIB_recycling_percentage),30],
 	["O_Plane_Fighter_02_F",20,round (2000 / GRLIB_recycling_percentage),30],

@@ -39,7 +39,7 @@ militia_squad = [
 	"gm_gc_army_sf_squadleader_mpikms72_80_win",
 	"gm_gc_army_sf_rifleman_mpikms72_80_win",
 	"gm_gc_army_sf_machinegunner_lmgrpk_80_win",
-	"gm_gc_army_sf_machinegunner_lmgrpk_80_win",	
+	"gm_gc_army_sf_machinegunner_lmgrpk_80_win",
 	"gm_gc_army_sf_engineer_mpikms72_80_win",
 	"gm_gc_army_sf_demolition_pm63_80_win",
 	"gm_gc_army_sf_demolition_pm63_80_win",
@@ -47,7 +47,7 @@ militia_squad = [
 	"gm_gc_army_sf_rifleman_pm63_80_win",
 	"gm_gc_army_sf_rifleman_pm63_80_win",
 	"gm_gc_army_sf_radioman_mpikms72_80_win",
-	"gm_gc_army_sf_marksman_svd_80_win",	
+	"gm_gc_army_sf_marksman_svd_80_win",
 	"gm_gc_army_sf_marksman_svd_80_win",
 	"gm_gc_army_sf_radioman_mpikms72_80_win",
 	"gm_gc_army_sf_antiair_pm63_9k32m_80_win",
@@ -86,8 +86,7 @@ opfor_vehicles_low_intensity = [
 	"gm_gc_army_brdm2",
 	"gm_gc_army_btr60pb",
 	"gm_gc_army_pt76b",
-	"gm_gc_army_bmp1sp2",
-	"gm_gc_army_ural375d_cargo"	
+	"gm_gc_army_bmp1sp2"
 ];
 
 opfor_battlegroup_vehicles = [
@@ -101,8 +100,7 @@ opfor_battlegroup_vehicles = [
 	"gm_pl_army_ot64a",
 	"gm_gc_army_t55ak",
 	"gm_pl_airforce_mi2p",
-	"gm_gc_army_btr60pb",
-	"gm_pl_airforce_mi2t"
+	"gm_gc_army_btr60pb"
 ];
 
 opfor_battlegroup_vehicles_low_intensity = [
@@ -112,16 +110,13 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"gm_pl_army_ot64a",
 	"gm_gc_army_t55ak",
 	"gm_gc_army_ural375d_cargo",
-	"gm_pl_airforce_mi2p",
 	"gm_gc_army_btr60pb",
 	"gm_pl_airforce_mi2t"
 ];
 
 opfor_troup_transports_truck = [
 	"gm_gc_army_ural375d_cargo",
-	"gm_gc_army_btr60pb",
-	"gm_pl_army_ot64a",
-	"gm_gc_army_btr60pb"
+	"gm_pl_army_ot64a"
 ];
 
 opfor_troup_transports_heli = [

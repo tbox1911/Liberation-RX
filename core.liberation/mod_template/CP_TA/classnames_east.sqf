@@ -114,6 +114,9 @@ opfor_vehicles_low_intensity = [
 ];
 
 opfor_battlegroup_vehicles = [
+	"CUP_O_L39_TK",
+	"CUP_O_AN2_TK",
+	"CUP_O_MI6A_TKA",
 	"CUP_O_BRDM2_TKA",
 	"CUP_O_BRDM2_ATGM_TKA",
 	"CUP_O_BTR60_TK",
@@ -125,10 +128,13 @@ opfor_battlegroup_vehicles = [
 	"CUP_O_BMP1P_TKA",
 	"CUP_O_UH1H_slick_TKA",
 	"CUP_O_BTR40_MG_TKA",
-	"CUP_O_T72_TKA"
+	"CUP_O_T72_TKA",
+	"CUP_O_UH1H_armed_TKA",
+	"CUP_O_Mi17_TK"
 ];
 
 opfor_battlegroup_vehicles_low_intensity = [
+	"CUP_O_MI6A_TKA",
 	"CUP_O_LR_MG_TKA",
 	"CUP_O_LR_SPG9_TKA",
 	"CUP_O_BTR60_TK",
@@ -140,12 +146,12 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"CUP_O_BRDM2_TKA",
 	"CUP_O_LR_MG_TKA",
 	"CUP_O_UH1H_slick_TKA",
-	"CUP_O_BTR40_MG_TKA"
+	"CUP_O_V3S_Open_TKM",
+	"CUP_O_MI6T_TKA"
 ];
 
 opfor_troup_transports_truck = [
 	"CUP_O_BTR40_MG_TKA",
-	"CUP_O_V3S_Covered_TKM",
 	"CUP_O_V3S_Open_TKM"
 ];
 
@@ -160,7 +166,7 @@ opfor_air = [
 	"CUP_O_L39_TK",
 	"CUP_O_AN2_TK",
 	"CUP_O_MI6A_TKA",
-	"CUP_O_Mi24_D_Dynamic_TK"			
+	"CUP_O_Mi24_D_Dynamic_TK"
 ];
 
 opfor_statics = [
@@ -188,7 +194,7 @@ opfor_recyclable = [
 	["CUP_O_UAZ_SPG9_TKA",1,round (20 / GRLIB_recycling_percentage),2],
 	["CUP_O_BTR40_MG_TKA",1,round (120 / GRLIB_recycling_percentage),2],
 	["CUP_O_BTR60_TK",1,round (220 / GRLIB_recycling_percentage),10],
-	["CUP_O_BMP1_TKA",1,round (440 / GRLIB_recycling_percentage),20],	
+	["CUP_O_BMP1_TKA",1,round (440 / GRLIB_recycling_percentage),20],
 	["CUP_O_BMP1P_TKA",1,round (120 / GRLIB_recycling_percentage),10],
 	["CUP_O_BMP2_TKA",1,round (150 / GRLIB_recycling_percentage),10],
 	["CUP_O_BMP2_ZU_TKA",1,round (220 / GRLIB_recycling_percentage),15],

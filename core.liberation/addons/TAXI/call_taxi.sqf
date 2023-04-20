@@ -107,6 +107,7 @@ if (time < _stop) then {
 
 		_dest = markerPos "taxi_dz";
 		[_vehicle, _air_grp, _dest, "STR_TAXI_PROGRESS"] call taxi_dest;
+		_vehicle removeAction _idact_dest;
 		[_vehicle] call taxi_land;
 	};
 };

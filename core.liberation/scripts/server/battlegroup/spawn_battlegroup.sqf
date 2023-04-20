@@ -2,17 +2,16 @@ if ( GRLIB_endgame == 1 ) exitWith {};
 params ["_liberated_sector"];
 diag_log format ["Spawn BattlegGroup at %1", time];
 
-private [ "_bg_groups", "_target_size", "_vehicle_pool", "_selected_opfor_battlegroup" ];
-_bg_groups = [];
-
-_spawn_marker = "";
+private ["_target_size", "_selected_opfor_battlegroup"];
+private _bg_groups = [];
+private _spawn_marker = "";
 if ( isNil "_liberated_sector" ) then {
 	_spawn_marker = [ GRLIB_spawn_min, GRLIB_spawn_max, false ] call F_findOpforSpawnPoint;
 } else {
 	_spawn_marker = [ GRLIB_spawn_min, GRLIB_spawn_max, false, _liberated_sector ] call F_findOpforSpawnPoint;
 };
 
-_vehicle_pool = opfor_battlegroup_vehicles;
+private _vehicle_pool = opfor_battlegroup_vehicles;
 if ( combat_readiness < 50 ) then {
 	_vehicle_pool = opfor_battlegroup_vehicles_low_intensity;
 };

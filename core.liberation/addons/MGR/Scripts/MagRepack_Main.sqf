@@ -345,7 +345,7 @@ outlw_MR_repack =
 		UIsleep 0.05;
 	};
 
-	while _keepRepacking do
+	while { _keepRepacking } do
 	{
 		call _magCode;
 
@@ -382,7 +382,7 @@ outlw_MR_repackingText =
 
 	_repacking = "Repacking...";
 
-	while {outlw_MR_isRepacking} do
+	while { outlw_MR_isRepacking } do
 	{
 		_repacking = _repacking + ".";
 
@@ -884,7 +884,7 @@ outlw_MR_showFullSwitch =
 		outlw_MR_doHideFull = true;
 		profileNamespace setVariable ["outlw_MR_doHideFull_profile", true];
 		((uiNamespace getVariable "outlw_MR_Dialog_Main") displayCtrl 9004) ctrlSetStructuredText parseText "Show Full: <t align='right'>Off</t>";
-	}:
+	};
 
 	call outlw_MR_populateMagListBox;
 };

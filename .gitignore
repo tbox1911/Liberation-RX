@@ -5,4 +5,8 @@ core.liberation/build_info.sqf
 a.bat
 =======
 maps/Liberation_RX.Eusa/*
+<<<<<<< HEAD
 >>>>>>> 2a8b6155 (1)
+=======
+maps/Liberation_RX.Utes/*
+>>>>>>> 7e77cfa5 (1)
