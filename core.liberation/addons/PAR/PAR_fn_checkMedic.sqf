@@ -32,9 +32,9 @@ _release_medic = {
   [_medic,_wnded] call PAR_fn_medicRelease;
 };
 
-while {lifeState _wnded == "incapacitated" || lifeState _medic != "incapacitated" || isNil {_wnded getVariable ["PAR_myMedic", nil]} } do {
+while {lifeState _wnded == "INCAPACITATED" || lifeState _medic != "INCAPACITATED" || isNil {_wnded getVariable ["PAR_myMedic", nil]} } do {
 
-  if (lifeState _medic == "incapacitated" || _fail > 6 || isNil {_wnded getVariable ["PAR_myMedic", nil]}) exitWith {
+  if (lifeState _medic == "INCAPACITATED" || _fail > 6 || isNil {_wnded getVariable ["PAR_myMedic", nil]}) exitWith {
       [_wnded,_medic] call _release_medic;
   };
 

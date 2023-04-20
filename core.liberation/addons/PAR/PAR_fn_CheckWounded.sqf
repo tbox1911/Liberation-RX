@@ -9,7 +9,7 @@ private _wounded_list = _bros select {
   alive _x &&
   damage _x >= 0.1 &&
   behaviour _x != "COMBAT" &&
-  lifeState _x != 'incapacitated' &&
+  lifeState _x != 'INCAPACITATED' &&
   isNil {_x getVariable 'PAR_busy'} &&
   isNil {_x getVariable 'PAR_healed'}
 };
@@ -31,8 +31,8 @@ if (count (_wounded_list) > 0) then {
 		alive _medic &&
 		isNil {_wounded getVariable 'PAR_busy'} &&
 		isNil {_medic getVariable 'PAR_busy'} &&
-		lifeState _wounded != 'incapacitated' &&
-		lifeState _medic != 'incapacitated' &&
+		lifeState _wounded != 'INCAPACITATED' &&
+		lifeState _medic != 'INCAPACITATED' &&
 		damage _wounded  >= 0.1 &&
 		vehicle _medic == _medic &&
 		vehicle _wounded == _wounded &&
@@ -45,7 +45,7 @@ if (count (_wounded_list) > 0) then {
 		//waitUntil {sleep 0.5; round (speed (vehicle _medic)) == 0};
 	};
 
-	if (lifeState _medic != 'incapacitated' && lifeState _wounded != 'incapacitated' && round (_medic distance2D _wounded) <= 3) then {
+	if (lifeState _medic != 'INCAPACITATED' && lifeState _wounded != 'INCAPACITATED' && round (_medic distance2D _wounded) <= 3) then {
 		_azimuth = _medic getDir _wounded;
 		_medic setDir _azimuth;
 
@@ -55,7 +55,7 @@ if (count (_wounded_list) > 0) then {
 			_medic playMoveNow 'ainvpknlmstpslaywrfldnon_medicother';
 		};
 		sleep 7;
-		if (lifeState _medic != 'incapacitated' && lifeState _wounded != 'incapacitated' && round (_medic distance2D _wounded) <= 3) then {
+		if (lifeState _medic != 'INCAPACITATED' && lifeState _wounded != 'INCAPACITATED' && round (_medic distance2D _wounded) <= 3) then {
 			_wounded setDamage 0;
 		};
 	};

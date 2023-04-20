@@ -50,7 +50,7 @@ while { true } do {
 	{_UnitList append units _x} foreach hcAllGroups player;
 	{
 		// Out vehicle
-		if (_x != player && lifeState _x != 'incapacitated' && vehicle _x == _x) then {
+		if (_x != player && lifeState _x != 'INCAPACITATED' && vehicle _x == _x) then {
 			_needammo1 = false;
 			_needammo2 = false;
 			_needmedic = false;
@@ -98,7 +98,7 @@ while { true } do {
 					_target setVariable ['PAR_heal', true];
 					_target playMove "AinvPknlMstpSlayWrflDnon_medic";
 					sleep 6;
-					if (lifeState _target != 'incapacitated') then {
+					if (lifeState _target != 'INCAPACITATED') then {
 						_target setDamage 0;
 					};
 					sleep 4;
@@ -109,7 +109,7 @@ while { true } do {
 		};
 
 		// In vehicle
-		if (lifeState _x != 'incapacitated' && ( ((gunner vehicle _x) == _x) || ((driver vehicle _x) == _x) || ((commander vehicle _x) == _x) )) then {
+		if (lifeState _x != 'INCAPACITATED' && ( ((gunner vehicle _x) == _x) || ((driver vehicle _x) == _x) || ((commander vehicle _x) == _x) )) then {
 			_unit = _x;
 			_vehicle = vehicle _unit;
 			_vehicle_class = typeOf _vehicle;

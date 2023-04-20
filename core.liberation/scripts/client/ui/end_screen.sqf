@@ -6,12 +6,12 @@ _page_delay = 5;
 
 disableUserInput true;
 closeDialog 0;
-if (lifestate player == "incapacitated") then {
+if (lifestate player == "INCAPACITATED") then {
 	player setDamage 1;
 	sleep 4;
 };
 
-if (alive player && vehicle player == player && lifestate player != "incapacitated") then {
+if (alive player && vehicle player == player && lifestate player != "INCAPACITATED") then {
 	player switchCamera "EXTERNAL";
 	player switchMove "";
 	player playMoveNow "acts_briefing_sb_in";

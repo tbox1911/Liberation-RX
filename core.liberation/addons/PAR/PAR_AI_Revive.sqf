@@ -94,7 +94,7 @@ PAR_fn_Revive = {
         if ( _isMedic && _hasMedikit &&
             vehicle _x == _x &&
             (behaviour _x) != "COMBAT" &&
-            lifeState _x != 'incapacitated' &&
+            lifeState _x != 'INCAPACITATED' &&
             isNil {_x getVariable 'PAR_busy'} &&
             isNil {_x getVariable 'PAR_heal'}
             ) then {
@@ -103,7 +103,7 @@ PAR_fn_Revive = {
 
         // AI stop doing shit !
         if ( leader group player != player &&
-              lifeState player == 'incapacitated' &&
+              lifeState player == 'INCAPACITATED' &&
               _x distance2D player <= 500 &&
               isNil {_x getVariable 'PAR_busy'} &&
               isNil {_x getVariable 'PAR_heal'}

@@ -8,7 +8,7 @@ FAR_unblock_AI = {
 	} else {
 		{
 			_unit = _x;
-			if (round (player distance2D _unit) < 50 && (lifeState _unit != 'incapacitated') ) then {
+			if (round (player distance2D _unit) < 50 && (lifeState _unit != 'INCAPACITATED') ) then {
 				doStop _unit;
 				sleep 1;
 				_unit doWatch objNull;
@@ -187,7 +187,7 @@ FAR_Drag = {
 	{
 		!alive player || player getVariable ["FAR_isUnconscious", 1] == 1 ||
 		!alive _target || _target getVariable ["FAR_isUnconscious", 1] == 0 ||
-		_target getVariable "FAR_isDragged" == 0 || lifeState _target != 'incapacitated' ||
+		_target getVariable "FAR_isDragged" == 0 || lifeState _target != 'INCAPACITATED' ||
 		!FAR_isDragging
 	};
 
@@ -269,7 +269,7 @@ FAR_Check_Dragging = {
 	};
 
 	_isDragged = _target getVariable ["FAR_isDragged", 0];
-	if( lifeState _target == 'incapacitated' && _isDragged == 0) then {
+	if( lifeState _target == 'INCAPACITATED' && _isDragged == 0) then {
 		_return = true;
 	};
 

@@ -7,7 +7,7 @@ private _medics = _bros select {
   !isPlayer _x &&
   _x != _wnded &&
   alive _x &&  speed (vehicle _x) <= 20 &&
-  lifeState _x != "incapacitated" &&
+  lifeState _x != "INCAPACITATED" &&
   isNil {_x getVariable "PAR_busy"}
 };
 
@@ -16,7 +16,7 @@ if (count _medics == 0) exitWith {
   _msg = format ["Sorry %1, but there is no medic nearby...", name _wnded];
   [_wnded, _msg] call PAR_fn_globalchat;
 
-  _lst = _bros select {!isPlayer _x && alive _x && lifeState _x != "incapacitated"};
+  _lst = _bros select {!isPlayer _x && alive _x && lifeState _x != "INCAPACITATED"};
   _msg = format ["Units alive in your squad : %1", count (_lst)];
   [_wnded, _msg] call PAR_fn_globalchat;
 };

@@ -54,7 +54,7 @@ if (!isNil "_grp") then { player hcSetGroup [_grp] };
 private _grp = group player;
 private _squad = allUnits select {(_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1",PAR_Grp_ID]};
 {
-	if ( !(_x in units _grp) && lifeState _x != 'incapacitated' ) then {
+	if ( !(_x in units _grp) ) then {
 		if ( count (units _grp) < (GRLIB_squad_size + GRLIB_squad_size_bonus) ) then { [_x] joinSilent _grp};
 		sleep 0.5;
 	};
