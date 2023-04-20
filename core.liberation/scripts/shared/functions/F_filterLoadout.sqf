@@ -26,7 +26,7 @@ private _checkItem = {
     { if (_x == _item) then {_unit removeItem _item} } forEach ((vestItems _unit)+(uniformItems _unit)+(backpackItems _unit)+(items _unit));
 } forEach GRLIB_blacklisted_from_arsenal;
 
-if (!isNil "GRLIB_MOD_signature") then {
+if (count GRLIB_MOD_signature > 0) then {
     if ([handgunWeapon _unit] call _checkItem) then {_unit removeWeapon (handgunWeapon _unit)};
     if ([primaryWeapon _unit] call _checkItem) then {_unit removeWeapon (primaryWeapon _unit)};
     if ([secondaryWeapon _unit] call _checkItem) then {_unit removeWeapon (secondaryWeapon _unit)};

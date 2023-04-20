@@ -4,7 +4,7 @@ if (!isServer or !canSuspend) exitWith {};
 private _veh = param [0,objNull,[objNull]];
 private _pylonMagazines = param [1,[],[[]]];
 private _pylonPaths = param [2,[],[[]]];
-private _cfgComponent = configFile >> "CfgVehicles" >> typeOf _veh >> "Components" >> "TransportPylonsComponent";
+private _cfgComponent = configOf _veh >> "Components" >> "TransportPylonsComponent";
 
 if (!isClass _cfgComponent) exitWith {};
 

@@ -3,7 +3,7 @@ scriptName _fnc_scriptName;
 private _veh = param [0,objNull,[objNull]];
 private _turret = param [1,[-1],[[]]];
 private _type = typeName param [2,0,[0,"",configNull]];
-private _cfgComponent = configFile >> "CfgVehicles" >> typeOf _veh >> "Components" >> "TransportPylonsComponent";
+private _cfgComponent = configOf _veh >> "Components" >> "TransportPylonsComponent";
 private _pylons = [];
 
 if (!isClass _cfgComponent) exitWith {_pylons;};

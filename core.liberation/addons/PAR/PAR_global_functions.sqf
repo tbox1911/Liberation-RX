@@ -21,7 +21,7 @@ PAR_is_medic = {
 	params ["_unit"];
 	private _ret = false;
 
-	if ( getNumber (configfile >> "CfgVehicles" >> typeOf _unit >> "attendant") == 1 ) then {
+	if ( getNumber (configOf _unit >> "attendant") == 1 ) then {
 		_ret = true;
 	};
 	_ret

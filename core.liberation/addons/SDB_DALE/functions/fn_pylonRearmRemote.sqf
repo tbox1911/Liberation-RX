@@ -17,7 +17,7 @@ private _pylonMagazines = getPylonMagazines _veh;
 // Rearm
 if (_fill) then {
 	// Normal
-	private _cfgTurret = configFile >> "CfgVehicles" >> typeOf _veh;
+	private _cfgTurret = configOf _veh;
 	{_cfgTurret = (_cfgTurret >> "turrets") select _x;} forEach _path;
 	{_veh addMagazineTurret [_x,_turret];} forEach getArray (_cfgTurret >> "magazines");
 	

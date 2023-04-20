@@ -13,7 +13,7 @@ if (!GRLIB_loadout_overide) then {
 	if (GRLIB_forced_loadout > 0) then {
 		[player] call compile preprocessFileLineNumbers (format ["mod_template\%1\loadout\player_set%2.sqf", GRLIB_mod_west, GRLIB_forced_loadout]);
 	} else {
-		[player, configfile >> "CfgVehicles" >> typeOf player] call BIS_fnc_loadInventory;
+		[player, configOf player] call BIS_fnc_loadInventory;
 	};
 	if (typeOf player in units_loadout_overide) then {
 		_loadouts_folder = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, toLower (typeOf player)];
