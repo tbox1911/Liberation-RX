@@ -20,6 +20,7 @@ RPT_colorList =[
 	["ARPA Woodland", RPT_texDir + "arpa_woodland.paa"],
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	["Abstract Red", RPT_texDir + "abstraitrouge.paa"],
 =======
 	["Abstract Red", _texDir + "abstraitrouge.paa"],
@@ -27,8 +28,12 @@ RPT_colorList =[
 =======
 	//["Abstract Red", RPT_texDir + "abstraitrouge.paa"],
 >>>>>>> e8d532b2 (taz vip)
+=======
+	["Abstract Red", RPT_texDir + "abstraitrouge.paa"],
+>>>>>>> f8164b3e (rpt vip)
 	["Abstract Green", RPT_texDir + "abstraitvert.paa"],
 	["Abstract Modern", RPT_texDir + "abstraitmoderne.paa"],
+	["Camo Chris", RPT_texDir + "camo_chris.paa"],
 	["Camo Green 1", RPT_texDir + "camovert1.paa"],
 	["Camo Green 2", RPT_texDir + "camovert2.paa"],
 	["Digital", RPT_texDir + "digi.paa"],
@@ -40,6 +45,7 @@ RPT_colorList =[
 	["Forest 2", RPT_texDir + "raven.paa"],
 	["Jungle", RPT_texDir + "jungle.paa"],
 	["Panzer Grey", RPT_texDir + "panzergris.paa"],
+	["Raven", RPT_texDir + "raven.paa"],
 	["Urban", RPT_texDir + "urban.paa"],
 	["Woodland", RPT_texDir + "woodland.paa"],
 	["Woodland Tiger", RPT_texDir + "woodtiger.paa"]
