@@ -17,11 +17,11 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 
 R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 [
-  	("CUP_O_Su25_Dyn_TKA", 25],
-	("CUP_O_L39_TK", 25],
-	("CUP_O_AN2_TK", 25],
-	("CUP_O_MI6A_TKA", 25],
-	("CUP_O_Mi24_D_Dynamic_TK", 25]
+  	["CUP_O_Su25_Dyn_TKA", 25],
+	["CUP_O_L39_TK", 25],
+	["CUP_O_AN2_TK", 25],
+	["CUP_O_MI6A_TKA", 25],
+	["CUP_O_Mi24_D_Dynamic_TK", 25]
 ];
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
