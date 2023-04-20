@@ -184,8 +184,8 @@ while { dialog && alive player } do {
 		GRLIB_squadconfirm = -1;
 
 		if ( GRLIB_squadaction == 1 ) then {
-			private _ai_rank = (GREUH_rank_level find (rank _selectedmember));
-			private _pl_rank = (GREUH_rank_level find (rank player));
+			private _ai_rank = (GRLIB_rank_level find (rank _selectedmember));
+			private _pl_rank = (GRLIB_rank_level find (rank player));
 			private _ai_score = _selectedmember getVariable ["PAR_AI_score", nil];
 			if (!isNil "_ai_score") then {
 				if (_ai_rank < _pl_rank) then {

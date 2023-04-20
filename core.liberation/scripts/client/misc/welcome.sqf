@@ -20,20 +20,20 @@ private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
 if (isNil "GRLIB_loadout_overide") then { GRLIB_loadout_overide = false };
 if (!GRLIB_loadout_overide) then {
 	if (GRLIB_forced_loadout > 0) then {
-		[player] call compile preprocessFileLineNumbers (format ["scripts\loadouts\vanilla\player_set%1.sqf", GRLIB_forced_loadout]);
+		[player] call compile preprocessFileLineNumbers (format ["scripts\loadouts\%1\player_set%2.sqf", GRLIB_mod_west, GRLIB_forced_loadout]);
 	} else {
 		[player, configfile >> "CfgVehicles" >> typeOf player] call BIS_fnc_loadInventory;
 	};
 	if (typeOf player in units_loadout_overide) then {
-		_loadouts_folder = format ["scripts\loadouts\%1\%2.sqf", GRLIB_side_friendly, typeOf player];
+		_loadouts_folder = format ["scripts\loadouts\forced\%1.sqf", typeOf player];
 		[player] call compileFinal preprocessFileLineNUmbers _loadouts_folder;
 	};
 	if (!(isNil "GRLIB_respawn_loadout")) then {
 		[player, GRLIB_respawn_loadout] call F_setLoadout;
 	};
-	gamelogic globalChat "You pay your Startup Equipments";
 	[player] call F_filterLoadout;
-	[player] call F_payLoadout;
+	// gamelogic globalChat "You pay your Startup Equipments";
+	// [player] call F_payLoadout;
 };
 
 // first time notice

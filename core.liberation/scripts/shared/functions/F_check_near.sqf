@@ -24,12 +24,17 @@ switch ( _list ) do {
 
 if (count(_classlist) == 0 ) then {
 	// From Objects
-	//_near = (_vehpos nearEntities [_object, _dist]); //dont find tent
-	_near = nearestObjects [_vehpos, _object, _dist];
+	//_near_list = (_vehpos nearEntities [_object, _dist]); //dont find tent
+	_near = [ nearestObjects [_vehpos, _object, _dist], {
+			alive _x &&
+			!(_x getVariable ['R3F_LOG_disabled', true]) &&
+			isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull])
+			}] call BIS_fnc_conditionalSelect;
 } else {
 	// From GRLIB_Marker
 	_near = _classlist select {( _vehpos distance2D _x) <= _dist};
 };
+
 if (count _near > 0) then {_ret = true};
 
 // Include FOB

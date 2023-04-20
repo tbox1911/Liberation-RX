@@ -4,10 +4,10 @@ if (isMultiplayer) then {
 } else {
 	GRLIB_introduction = true;
 };
-waitUntil {!(isNull (findDisplay 46))};
 
+waitUntil {!(isNull (findDisplay 46))};
 [] spawn cinematic_camera;
-uiSleep 1;
+uisleep 2;
 
 if (serverName == "DevSrv") then {
 	GRLIB_introduction = false;
@@ -30,7 +30,6 @@ dostartgame = 0;
 howtoplay = 0;
 
 createDialog "liberation_menu";
-uisleep 2;
 waitUntil { dialog };
 
 _noesckey = (findDisplay 5651) displayAddEventHandler ["KeyDown", "if ((_this select 1) == 1) then { true }"];

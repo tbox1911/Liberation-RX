@@ -125,7 +125,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 
 	{
 		_vehicle = [_sectorpos, _x] call F_libSpawnVehicle;
-		[group ((crew _vehicle) select 0 ),_sectorpos] spawn add_defense_waypoints;
+		[group ((crew _vehicle) select 0), _sectorpos] spawn add_defense_waypoints;
 		_managed_units pushback _vehicle;
 		{ _managed_units pushback _x; } foreach (crew _vehicle);
 		sleep 0.25;
@@ -205,7 +205,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 					if (_x isKindOf "Man") then {
 						deleteVehicle _x;
 					} else {
-						_x setVariable ["GRLIB_counter_TTL", 0];
+						if (count(crew _x) > 0) then { deleteVehicle _x	};
 					};
 				} foreach _managed_units;
 				_stopit = true;

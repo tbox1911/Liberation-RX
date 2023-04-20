@@ -42,10 +42,28 @@ class Params
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 1;
 	};
+	class ModPresetWest {
+		title = "MOD Preset - Friendly";
+		values[] = { 0,1,2,3,4,5 };
+		texts[] = { "A3_BLU", "A3_OPF", "CP_NATO", "CP_RF", "GM_WEST", "GM_WEST_WINT" };
+		default = 0;
+	};
+	class ModPresetEast {
+		title = "MOD Preset - Enemy";
+		values[] = { 0,1,2,3,4,5,6,7 };
+		texts[] = {"A3_OPF", "A3_BLU", "A3_IND", "CP_RF", "CP_TA", "GM_EAST", "GM_EAST_WINT", "EJW_TA"};
+		default = 0;
+	};
 	class ForcedLoadout {
 		title = $STR_FORCE_LOADOUT;
 		values[] = { 0,1,2 };
 		texts[] = { $STR_PARAMS_DISABLED, "Preset 1", "Preset 2" };
+		default = 1;
+	};
+	class TextureOveride {
+		title = "Overide OPFor Vehicles Texture";
+		values[] = { 0,1,2 };
+		texts[] = { $STR_PARAMS_DISABLED, "Urban", "pink"};
 		default = 0;
 	};
 	class Thermic {

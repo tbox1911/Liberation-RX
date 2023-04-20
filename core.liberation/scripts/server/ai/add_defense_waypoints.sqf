@@ -1,8 +1,6 @@
-_grp = _this select 0;
+params ["_grp", "_flagpos", ["_radius", 150]];
 if (isNil "_grp") exitWith {};
 
-_flagpos = _this select 1;
-_radius = param [2, 150];
 _basepos = getpos (leader _grp);
 _is_infantry = false;
 if ( vehicle (leader _grp) == (leader _grp) ) then { _is_infantry = true };

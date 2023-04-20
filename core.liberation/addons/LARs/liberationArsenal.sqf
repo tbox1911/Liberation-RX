@@ -6,7 +6,12 @@ waitUntil {sleep 1; !isNil "GRLIB_limited_arsenal"};
 // Initalize Blacklist
 GRLIB_whitelisted_from_arsenal = [];
 GRLIB_blacklisted_from_arsenal = [];
-[] call compileFinal preprocessFileLineNUmbers "addons\LARs\liberationBlacklist.sqf";
+
+// Initalize Side
+GRLIB_arsenal_side = WEST;
+
+[] call compileFinal preprocessFileLineNUmbers format ["scripts\mod_template\%1\arsenal.sqf", GRLIB_mod_west];
+
 // Check LRX option
 if (GRLIB_limited_arsenal) then {
 	GRLIB_blacklisted_from_arsenal = blacklisted_bag + blacklisted_weapon;
@@ -116,7 +121,7 @@ if ( GRLIB_GM_enabled || GRLIB_OPTRE_enabled ) then {
 	[myLARsBox, ["GRLIB_whitelisted_from_arsenal", "GRLIB_blacklisted_from_arsenal"], false, "Liberation", { false }] call LARs_fnc_blacklistArsenal;
 } else {
 	//[ myBox, [ whitelist, blacklist ], targets, name, condition ] call LARs_fnc_blacklistArsenal;
-	[myLARsBox, [GRLIB_side_friendly, "GRLIB_blacklisted_from_arsenal"], false, "Liberation", { false }] call LARs_fnc_blacklistArsenal;
+	[myLARsBox, [GRLIB_arsenal_side, "GRLIB_blacklisted_from_arsenal"], false, "Liberation", { false }] call LARs_fnc_blacklistArsenal;
 	waitUntil {sleep 0.5; !(isNil "LARs_initBlacklist")};
 
 	//[ box, arsenalName, [ white, black ], _targets ] call LARs_fnc_updateArsenal

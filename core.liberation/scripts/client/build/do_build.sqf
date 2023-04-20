@@ -84,18 +84,18 @@ while { true } do {
 		} else {
 			_grp = group player;
 			_unit = _grp createUnit [_classname, _pos, [], 5, "NONE"];
+			[_unit] joinSilent _grp;
 			_unit addUniform uniform player;
 			_unit setMass 10;
 			_unit setUnitRank "PRIVATE";
 			_unit setSkill 0.6;
-			_grp = group player;
 			_unit setVariable ["PAR_Grp_ID", format["Bros_%1",PAR_Grp_ID], true];
 			_unit enableIRLasers true;
 			_unit enableGunLights "Auto";
 			[_unit] call player_EVH;
 
 			if (typeOf _unit in units_loadout_overide) then {
-				_loadouts_folder = format ["scripts\loadouts\%1\%2.sqf", GRLIB_side_friendly, typeOf _unit];
+				_loadouts_folder = format ["scripts\loadouts\forced\%1.sqf", typeOf _unit];
 				[_unit] call compileFinal preprocessFileLineNUmbers _loadouts_folder;
 			};
 
@@ -123,6 +123,7 @@ while { true } do {
 					if(_idx == 1) then { _unitrank = "CORPORAL"; };
 >>>>>>> dff4f14c (manage rank AI)
 					_unit = _grp createUnit [_x, _pos, [], 5, "NONE"];
+					[_unit] joinSilent _grp;
 					_unit setUnitRank _unitrank;
 					_unit setSkill 0.6;
 					_unit enableIRLasers true;

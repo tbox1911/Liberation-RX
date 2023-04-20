@@ -30,36 +30,35 @@ if ( _precise_position ) then {
 };
 
 _newvehicle = objNull;
-if ( _classname in opfor_choppers ) then {
+if ( _classname isKindOf "Air" ) then {
 	_newvehicle = createVehicle [_classname, _spawnpos, [], 0, "FLY"];
 	_newvehicle setPos (getPosATL _newvehicle vectorAdd [0, 0, 400]);
 	_newvehicle flyInHeight 400;
 } else {
-	if (surfaceIsWater _spawnpos && !(_classname in opfor_boat)) then {
+	_spawnpos set [2, 0.5];  //ATL
+	if (surfaceIsWater _spawnpos && !(_classname isKindOf "Ship")) then {
 		_classname = selectRandom opfor_boat;
 	};
-	_spawnpos set [2,0];
+	if (surfaceIsWater _spawnpos) then {
+		_seadepth = abs (getTerrainHeightASL _spawnpos);
+		_spawnpos set [2, _seadepth + 0.5];  //ASL
+	};
 	_newvehicle = createVehicle [_classname, _spawnpos, [], 0, "NONE"];
+	_newvehicle setPos _spawnpos;
 };
-_newvehicle allowdamage false;
+
 clearWeaponCargoGlobal _newvehicle;
 clearMagazineCargoGlobal _newvehicle;
 clearItemCargoGlobal _newvehicle;
 clearBackpackCargoGlobal _newvehicle;
-sleep 1;
+sleep 0.1;
 
 if ( _classname in militia_vehicles ) then {
 	[ _newvehicle ] call F_libSpawnMilitiaCrew;
 } else {
-	createVehicleCrew _newvehicle;
-	sleep 1;
-	_vehcrew = crew _newvehicle;
-	{
-		_x allowdamage false;
-		_x addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
-		_x addEventHandler ["HandleDamage", {_this call damage_manager_EH}];
-	} foreach _vehcrew;
+	[ _newvehicle ] call F_forceOpforCrew;
 };
+
 _newvehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
 _newvehicle allowCrewInImmobile true;
 _newvehicle setUnloadInCombat [true, false];
@@ -78,20 +77,6 @@ if (count opfor_texture_overide > 0) then {
 	_texture_name = selectRandom opfor_texture_overide;
 	_texture = [ RPT_colorList, { _x select 0 == _texture_name } ] call BIS_fnc_conditionalSelect select 0 select 1;
 	[_newvehicle, _texture, _texture_name,[]] call RPT_fnc_TextureVehicle;
-};
-
-[_newvehicle,_vehcrew] spawn {
-	params ["_veh", "_crew"];
-	sleep 5;
-	// Correct position
-	if ((vectorUp _veh) select 2 < 0.70) then {
-		_veh setpos [(getposATL _veh) select 0,(getposATL _veh) select 1, 0.5];
-		_veh setVectorUp surfaceNormal position _veh;
-		sleep 2;
-	};
-	_veh setdamage 0;
-	_veh allowdamage true;
-	{ _x setdamage 0;_x allowdamage true } foreach _crew;
 };
 
 diag_log format [ "Done Spawning vehicle %1 at %2", _classname , time ];

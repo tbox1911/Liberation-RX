@@ -9,19 +9,11 @@ if ( combat_readiness >= 50 ) then { _planes_number = 2 };
 if ( combat_readiness >= 75 ) then { _planes_number = 3 };
 if ( combat_readiness >= 85 ) then { _planes_number = 4 };
 
-_air_spawnpoint = ( [ sectors_airspawn , [ _first_objective ] , { (markerpos _x) distance _input0 }, "ASCEND"] call BIS_fnc_sortBy ) select 0;
-_air_grp = createGroup [_side, true];
+private _air_spawnpoint = ( [ sectors_airspawn , [ _first_objective ] , { (markerpos _x) distance _input0 }, "ASCEND"] call BIS_fnc_sortBy ) select 0;
+private _air_grp = createGroup [_side, true];
 
 for "_i" from 1 to _planes_number do {
-	private _newvehicle = createVehicle [ (selectRandom _planeType), (markerPos _air_spawnpoint), [], 50, "FLY"];
-	_newvehicle setPos (getPosATL _newvehicle vectorAdd [0, 0, 400]);
-	createVehicleCrew _newvehicle;
-	sleep 1;
-	_newvehicle flyInHeight 400;
-
-	private _pilot_group = group ((crew _newvehicle) select 0);
-	_newvehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-	{ _x addMPEventHandler ["MPKilled", {_this spawn kill_manager}]; } foreach (crew _newvehicle);
+	_newvehicle = [markerpos _air_spawnpoint, selectRandom _planeType] call F_libSpawnVehicle;
 	(crew _newvehicle) joinSilent _air_grp;
 	diag_log format [ "Spawning Air vehicle %1 at %2", typeOf _newvehicle, time ];
 	sleep 5;
