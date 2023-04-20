@@ -195,8 +195,6 @@ opfor_recyclable = [
 	["LOP_ChDKZ_BMP2",1,round (30 / GRLIB_recycling_percentage),2],
 	["RHS_BM21_MSV_01",5,round (20 / GRLIB_recycling_percentage),5],
 	["rhs_gaz66_zu23_msv",5,round (20 / GRLIB_recycling_percentage),5],
-	["O_Truck_03_covered_F",5,round (50 / GRLIB_recycling_percentage),5],
-	["O_Truck_03_transport_F",5,round (50 / GRLIB_recycling_percentage),5],
 	["rhs_btr80a_msv",5,round (50 / GRLIB_recycling_percentage),5],
 	["rhs_tigr_sts_msv",5,round (50 / GRLIB_recycling_percentage),5],
 	["rhs_Ob_681_2",5,round (50 / GRLIB_recycling_percentage),5],
@@ -224,5 +222,8 @@ opfor_recyclable = [
 	["LOP_ChDKZ_BTR60",10,round (150 / GRLIB_recycling_percentage),10],
 	["LOP_ChDKZ_BTR70",10,round (200 / GRLIB_recycling_percentage),10],
 	["LOP_ChDKZ_T72BB",10,round (300 / GRLIB_recycling_percentage),10],
-	["LOP_ChDKZ_ZSU234",15,round (400 / GRLIB_recycling_percentage),15]
+	["LOP_ChDKZ_ZSU234",15,round (400 / GRLIB_recycling_percentage),15],
+	["RHS_T50_vvs_052",15,round (800 / GRLIB_recycling_percentage),15],
+	["RHS_Su25SM_KH29_vvsc",15,round (900 / GRLIB_recycling_percentage),15],
+	["RHS_TU95MS_vvs_irkutsk",15,round (900 / GRLIB_recycling_percentage),15]
 ];
