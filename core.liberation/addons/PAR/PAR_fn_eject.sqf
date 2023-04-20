@@ -20,7 +20,7 @@ _unit_eject = {
 if (_veh getVariable ["evacVeh", false]) exitWith {};
 if (_veh iskindof "Steerable_Parachute_F") exitWith {};
 
-waitUntil {sleep 1; (round (speed _veh) == 0 && (round(getPosATL _veh select 2) < 5)) || damage _veh > 0.8 || (round(getPosATL _veh select 2) > 20)};  // No eject when driving
+waitUntil {sleep 0.5; (round (speed _veh) == 0 && (round(getPosATL _veh select 2) < 5)) || damage _veh > 0.8};  // No eject when driving
 
 if (_all) then {
 	_veh setVariable ["evacVeh", true];

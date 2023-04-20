@@ -27,21 +27,25 @@ if (side _grp == GRLIB_side_civilian) then {
 		};
 	} foreach (sectors_allSectors);
 
-	while {(count (waypoints _grp)) != 0} do {deleteWaypoint ((waypoints _grp) select 0);};
-	{_x doFollow leader _grp} foreach units _grp;
+	private _nearest_sector = [sectors_allSectors, _unit] call F_nearestPosition;
 
-	{
-		_waypoint = _grp addWaypoint [markerpos _x, 300];
+	if (typeName _nearest_sector == "STRING") then {
+
+		while {(count (waypoints _grp)) != 0} do {deleteWaypoint ((waypoints _grp) select 0);};
+		{_x doFollow leader _grp} foreach units _grp;
+
+		_waypoint = _grp addWaypoint [markerPos _nearest_sector, 0];
 		_waypoint setWaypointType "MOVE";
-		_waypoint setWaypointSpeed "LIMITED";
+		_waypoint setWaypointSpeed "FULL";
 		_waypoint setWaypointBehaviour "AWARE";
 		_waypoint setWaypointCombatMode "GREEN";
-		_waypoint setWaypointCompletionRadius 30;
-	} foreach _sectors_patrol;
+		_waypoint setWaypointCompletionRadius 50;
 
-	_waypoint = _grp addWaypoint [_patrol_startpos, 300];
-	_waypoint setWaypointType "MOVE";
-	_waypoint setWaypointCompletionRadius 100;
-	_waypoint = _grp addWaypoint [_patrol_startpos , 300];
-	_waypoint setWaypointType "CYCLE";
+		_waypoint = _grp addWaypoint [markerPos _nearest_sector, 0];
+		_waypoint setWaypointType "MOVE";
+		_waypoint setWaypointCompletionRadius 50;
+		_waypoint setWaypointStatements ["true", "deleteVehicle this"];
+		sleep 10;
+	};
+
 };
