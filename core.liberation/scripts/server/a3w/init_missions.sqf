@@ -26,9 +26,12 @@ updateMissionsList = compileFinal preprocessFileLineNumbers "scripts\server\a3w\
 getNbUnits = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_getNbUnits.sqf";
 createOutpost = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_createOutpost.sqf";
 
+A3W_sectors_in_use = [];
+
 waitUntil {sleep 1; !isNil "blufor_sectors" };
 waitUntil {sleep 1; !isNil "sectors_allSectors" };
 waitUntil {sleep 1; !isNil "save_is_loaded" };
+
 [] call compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionArrays.sqf";
 diag_log "--- LRX A3W Missions Initialized";
 

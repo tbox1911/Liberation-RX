@@ -56,6 +56,7 @@ _setupObjects =
 
 	{ _x setVariable ["GRLIB_mission_AI", nil] } forEach (units _aiGroup);
 
+	A3W_sectors_in_use = A3W_sectors_in_use + [_missionLocation];
 	_missionHintText = format [localize "STR_INVASION_MESSAGE1", sideMissionColor, _townName, _nbUnits];
 	true;
 };
@@ -73,6 +74,7 @@ _failedExec = {
 	// Mission failed
 	{ deleteVehicle _x } forEach [_box1, _box2, _tent1, _chair1, _chair2, _fire1];
 	[_missionPos] call clearlandmines;
+	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
 
 _successExec = {
@@ -95,6 +97,7 @@ _successExec = {
 	_successHintMessage = format [localize "STR_INVASION_MESSAGE2", sideMissionColor, _townName];
 	{ deleteVehicle _x } forEach [_tent1, _chair1, _chair2, _fire1];
 	[_missionPos] call showlandmines;
+	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
 
 _this call sideMissionProcessor;

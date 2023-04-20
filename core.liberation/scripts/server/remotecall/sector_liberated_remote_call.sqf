@@ -2,8 +2,8 @@ if (!isServer && hasInterface) exitWith {};
 params [ "_liberated_sector" ];
 diag_log format ["Sector %1 liberated", _liberated_sector];
 private _combat_readiness_increase = 0;
-private _rwd_ammo = (100 + floor(random 100));
-private _rwd_fuel = (10 + floor(random 10));
+private _rwd_ammo = (100 + floor(random 100)) * GRLIB_resources_multiplier;
+private _rwd_fuel = (10 + floor(random 10)) * GRLIB_resources_multiplier;
 
 if ( _liberated_sector in sectors_bigtown ) then {
 	_combat_readiness_increase = (5 + (floor (random 10))) * GRLIB_difficulty_modifier;

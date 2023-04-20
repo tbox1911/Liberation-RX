@@ -82,12 +82,13 @@ private _stop = time + (5 * 60); // wait 5min max
 waitUntil {
 	hintSilent format [localize "STR_TAXI_ARRIVED", round (_stop - time)];
 	sleep 1;
-	((count ([_vehicle, _pilots] call taxi_cargo) > 0) || time > _stop)
+	(objectparent player == _vehicle || time > _stop)
 };
 hintSilent "";
 
 if (time < _stop) then {
 	_stop = time + (5 * 60); // wait 5min max
+	gamelogic globalChat "Taxi auto return to base in 5 min.";
 	waitUntil {
 		sleep 0.5;
 		( (markerPos "taxi_dz") distance2D zeropos > 100 || isNil {player getVariable ["GRLIB_taxi_called", nil]} || time > _stop )
@@ -110,16 +111,18 @@ if (time < _stop) then {
 		deleteVehicle _helipad;
 		deleteMarkerLocal "taxi_dz";
 	};
-
-	// Board Out
-	_vehicle lock 3;
-	[_cargo] call taxi_outboard;
-	{ _x allowDamage true } forEach (_cargo);
-	sleep 5;
-
-	// Go back
-	[_vehicle, _air_grp, zeropos, "STR_TAXI_RETURN"] call taxi_dest;
 };
+
+// Board Out
+_cargo = [_vehicle, _pilots] call taxi_cargo;
+_vehicle lock 3;
+[_cargo] call taxi_outboard;
+{ _x allowDamage true } forEach (_cargo);
+sleep 5;
+
+// Go back
+deleteMarkerLocal "taxi_lz";
+[_vehicle, _air_grp, zeropos, "STR_TAXI_RETURN"] call taxi_dest;
 
 // Cleanup
 hintSilent "";

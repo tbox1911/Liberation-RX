@@ -16,37 +16,46 @@ if (count _context >= 1) then {
         private _wait = true;
         while { _wait } do {
             _player = _uid call BIS_fnc_getUnitByUID;
-            if (isNull _player) then { 
+            if (isNull _player) then {
                 _wait = false
             } else {
                 [localize "$STR_SQUAD_WAIT"] remoteExec ["hintSilent", owner _player];
                 if ([_player, "FOB", GRLIB_fob_range] call F_check_near && isTouchingGround (vehicle _player)) then {
+                    private ["_grp", "_pos", "_uid", "_unit"];
+                    _grp = createGroup [GRLIB_side_friendly, true];
                     {
                         _class = _x select 0;
                         _rank = _x select 1;
                         _loadout = _x select 2;
+
+                        _pos = getPosATL _player;
+                        _uid = getPlayerUID _player;
+                        _unit = _grp createUnit [_class, _pos, [], 10, "NONE"];
+                        sleep 0.2;
+                        _unit setVariable ["PAR_Grp_ID", format["Bros_%1", _uid], true];
+                        _unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+                        _unit setUnitLoadout _loadout;
+                        _unit setUnitRank _rank;
+                        _unit setSkill (0.6 + (GRLIB_rank_level find _rank) * 0.05);
+                    } foreach (_context select 2);
+
+                    if (count units _grp > 0) then {
                         [
-                            [_class, _rank, _loadout],
-                        {
-                            params ["_class", "_rank", "_loadout"];
-                            private _pos = getPosATL player;
-                            private _grp = group player;
-                            private _uid = getPlayerUID player;
-                            private _unit = _grp createUnit [_class, _pos, [], 10, "NONE"];
-                            [_unit] joinSilent _grp;
-                            _unit setVariable ["PAR_Grp_ID", format["Bros_%1", _uid], true];
-                            _unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-                            gamelogic globalChat format ["Adds %1 (%2) to your squad.", name _unit, _rank];
-                            _unit setMass 10;
-                            _unit setUnitRank _rank;
-                            _unit setSkill (0.6 + (GRLIB_rank_level find _rank) * 0.05);
-                            _unit enableIRLasers true;
-                            _unit enableGunLights "Auto";
-                            _unit setUnitLoadout _loadout;
-                            //(group player) selectLeader player;
-                        }] remoteExec ["bis_fnc_call", owner _player];
-                        sleep 0.5;
-                    } foreach (_context select 2);       
+                            [ _grp ],
+                            {
+                                params ["_grp"];
+                                {
+                                    _x enableIRLasers true;
+                                    _x enableGunLights "Auto";
+                                    [_x] joinSilent (group player);
+                                    gamelogic globalChat format ["Adds %1 (%2) to your squad.", name _x, rank _x];
+                                    sleep 0.5;
+                                } forEach (units _grp);
+                                (group player) selectLeader player;
+                            }
+                        ] remoteExec ["bis_fnc_call", owner _player];
+                    };
+
                     _wait = false;
                     diag_log format ["--- LRX Loading %1 unit(s) for %2 Squad.", count (_context select 2), name _player];
                 };

@@ -13,9 +13,7 @@ if ( _sector == attack_in_progress select 0 ) then {
 	};
 };
 
-{
-	if ((markerPos _x) distance2D (markerPos _sector) < GRLIB_capture_size && _x find "Town Invasion" > 0) exitWith { _defenders_cooldown = true };
-} forEach allMapMarkers;
+if (_sector in A3W_sectors_in_use) then { _defenders_cooldown = true };
 
 private _grp = grpNull;
 if ( GRLIB_blufor_defenders && !_defenders_cooldown) then {
@@ -48,7 +46,10 @@ if ( _ownership == GRLIB_side_friendly ) exitWith {
 	};
 };
 
-private _arsenal_box = createVehicle [Arsenal_typename, markerPos _sector, [], 20, "NONE"];
+private _arsenal_box = objNull;
+if (!(_sector in sectors_tower)) then {
+	_arsenal_box = createVehicle [Arsenal_typename, markerPos _sector, [], 20, "NONE"];
+};
 
 private _sector_timer = GRLIB_vulnerability_timer;
 if (_sector in sectors_bigtown) then {
@@ -95,7 +96,8 @@ if ( GRLIB_endgame == 0 ) then {
 	};
 };
 
-_arsenal_box spawn {sleep 120; deleteVehicle _this};
+if (!isNull _arsenal_box) then { _arsenal_box spawn {sleep 120; deleteVehicle _this} };
+
 if ( count (units _grp) > 0 ) then {
 	[_grp] spawn {
 		params ["_grp"];

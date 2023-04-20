@@ -49,7 +49,6 @@ F_correctHEGL = compileFinal preprocessFileLineNumbers "scripts\shared\functions
 F_filterLoadout = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_filterLoadout.sqf";
 F_getRND = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getRND.sqf";
 F_getBounty = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getBounty.sqf";
-F_check_nearFuel = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_check_nearFuel.sqf";
 F_check_near = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_check_near.sqf";
 F_getVehicleAmmoDef = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getVehicleAmmoDef.sqf";
 F_getSectorPath = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getSectorPath.sqf";
