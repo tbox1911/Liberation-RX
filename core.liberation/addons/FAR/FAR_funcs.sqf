@@ -130,8 +130,8 @@ FAR_Player_Unconscious = {
 	_unit switchMove "";
 	[_unit] spawn PAR_fn_unconscious;
 
-	_bleedOut = player getVariable ["PAR_BleedOutTimer", 0];
 	while { !isNull _unit && alive _unit && _unit getVariable "FAR_isUnconscious" == 1 } do {
+		_bleedOut = player getVariable ["PAR_BleedOutTimer", 0];
 		hintSilent format[localize "STR_BLEEDOUT_MESSAGE" + "\n", round (_bleedOut - time)];
 		public_bleedout_message = format [localize "STR_BLEEDOUT_MESSAGE", round (_bleedOut - time)];
 		public_bleedout_timer = round (_bleedOut - time);
