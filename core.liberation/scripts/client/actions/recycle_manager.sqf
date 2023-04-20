@@ -18,7 +18,7 @@ while { true } do {
 	_nearrecycl = [nearestObjects [player, _recycleable_classnames, _searchradius], {
 		(_x distance lhd) >= 1000 &&
 		!(typeOf _x in _recycleable_blacklist) &&
-		_x getVariable ["GRLIB_vehicle_owner", ""] != "public" &&
+		!([_x] call is_public) &&
 		isNil {_x getVariable "GRLIB_recycle_action"}
 	}] call BIS_fnc_conditionalSelect;
 
@@ -28,7 +28,7 @@ while { true } do {
 		if (typeOf _vehicle in vehicle_big_units) then {
 			_distvehclose = _distvehclose * 3;
 		};
-		_vehicle addAction ["<t color='#FFFF00'>-- RECYCLE</t> <img size='1' image='res\ui_recycle.paa'/>","scripts\client\actions\do_recycle.sqf","",-950,false,true,"","[_target] call is_menuok && [_target] call F_is_recyclable",_distvehclose];
+		_vehicle addAction ["<t color='#FFFF00'>-- RECYCLE</t> <img size='1' image='res\ui_recycle.paa'/>","scripts\client\actions\do_recycle.sqf","",-950,false,true,"","[_target] call is_menuok && [_target] call is_recyclable",_distvehclose];
 
 		// Fireworks
 		if (typeOf _vehicle == "Land_CargoBox_V1_F") then {

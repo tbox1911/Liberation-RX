@@ -39,7 +39,7 @@ if (!((_role == "cargo") || (_vehicle isKindOf "Steerable_Parachute_F"))) then {
 		_msg = localize "STR_PERMISSION_NO_SUP";
 	};
 
-	if (_vehicle getVariable ["GRLIB_vehicle_owner", ""] != "public") then {
+	if (!([_vehicle] call is_public)) then {
 		if (!([_unit, _vehicle] call is_owner)) then {
 			_msg = localize "STR_PERMISSION_NO_OWN";
 			if (isPlayer _unit) then {

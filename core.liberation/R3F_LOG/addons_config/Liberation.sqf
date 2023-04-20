@@ -320,6 +320,8 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 [
 	"StaticMGWeapon",
+	"StaticGrenadeLauncher",
+	"StaticMortar",
 	"Land_CzechHedgehog_01_new_F"
 ];
 

@@ -21,7 +21,7 @@ while { true } do {
 	if ( [ player, 5 ] call fetch_permission ) then {
 
 		_nearammoboxes = [((getpos player) nearEntities [ _classname_box ,10]), { !(_x getVariable ["R3F_LOG_disabled", false]) }] call BIS_fnc_conditionalSelect;
-		_neartransporttrucks = [((getpos player) nearEntities [ ammobox_transports_typenames ,10]), {[player, _x] call is_owner}] call BIS_fnc_conditionalSelect;
+		_neartransporttrucks = [((getpos player) nearEntities [ ammobox_transports_typenames ,10]), {[player, _x] call is_owner || [_x] call is_public}] call BIS_fnc_conditionalSelect;
 
 		_checked_trucks = [];
 
