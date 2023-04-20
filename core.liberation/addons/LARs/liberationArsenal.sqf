@@ -10,7 +10,7 @@ GRLIB_blacklisted_from_arsenal = [];
 // Initalize Side
 GRLIB_arsenal_side = WEST;
 
-[] call compileFinal preprocessFileLineNUmbers format ["scripts\mod_template\%1\arsenal.sqf", GRLIB_mod_west];
+[] call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\arsenal.sqf", GRLIB_mod_west];
 
 // Check LRX option
 if (GRLIB_limited_arsenal) then {

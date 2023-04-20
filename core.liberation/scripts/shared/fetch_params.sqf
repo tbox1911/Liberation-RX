@@ -48,7 +48,7 @@ GRLIB_mod_preset_east = ["ModPresetEast", 0] call bis_fnc_getParamValue;
 [] call compileFinal preprocessFileLineNUmbers "gameplay_constants.sqf";
 
 // Classename MOD source
-[] call compileFinal preprocessFileLineNUmbers "scripts\mod_template\mod_init.sqf";
+[] call compileFinal preprocessFileLineNUmbers "mod_template\mod_init.sqf";
 if (isNil "GRLIB_mod_west") then { GRLIB_mod_west = GRLIB_mod_list_west select GRLIB_mod_preset_west };
 if (isNil "GRLIB_mod_east") then { GRLIB_mod_east = GRLIB_mod_list_east select GRLIB_mod_preset_east };
 GRLIB_r1 = "&#108;&#105;&#98;&#101;&#114;&#97;&#116;&#105;&#111;&#110;";
