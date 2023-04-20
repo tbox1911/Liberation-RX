@@ -35,7 +35,7 @@
 
 #define IDCS	[IDCS_LEFT,IDCS_RIGHT]
 
-DEBUG( "Override Button Down" );
+diag_log "Override Button Down";
 
 _display = _this select 0;
 _key = _this select 1;

@@ -4,15 +4,6 @@ private ["_near_arsenal", "_near_medic", "_needammo1", "_needammo2", "_needmedic
 
 _distarsenal = 30;
 _maxsec = 3;
-_list_vehicles = [] + uavs;
-{
-	_veh = (_x select 0);
-	if (!(_veh isKindOf "Plane")) then {
-		_list_vehicles pushBack _veh;
-	};
-} foreach ( light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + opfor_recyclable );
-_ignore_ammotype = ["Laserbatteries", "8Rnd_82mm_Mo_Flare_white", "8Rnd_82mm_Mo_Smoke_white"];
-_list_static = ["B_static_AT_F", "B_static_AA_F", "O_static_AT_F", "O_static_AA_F"];
 
 _NeedAmmo = {
 	params ["_unit", "_item", "_min"];
@@ -117,29 +108,16 @@ while { true } do {
 				_vehicle_class_text =  getText (configFile >> "CfgVehicles" >> _vehicle_class >> "displayName");
 				_near_arsenal = [_vehicle, "REAMMO", _distarsenal, true] call F_check_near;
 				_is_enabled = !(_vehicle getVariable ["R3F_LOG_disabled", false]);
-
-				if (_vehicle_class in _list_vehicles && _near_arsenal && _is_enabled) then {
+				_vehicle_need_ammo = (([_vehicle] call F_getVehicleAmmoDef) <= 0.80);
+				if (((_vehicle_class iskindof "LandVehicle") || (_vehicle_class iskindof "Air") || (_vehicle_class iskindof "Ship")) && _near_arsenal && _is_enabled && _vehicle_need_ammo) then {
 					_timer = _vehicle getVariable ["GREUH_rearm_timer", 0];
 					if (_timer <= time) then {
 						_max_ammo = 3;
-						if (_vehicle_class in _list_static) then { _max_ammo = 6 };
-						//_vehicle setVehicleAmmoDef 1;
-						_magType = (getArray(configFile >> "CfgVehicles" >> _vehicle_class >> "Turrets" >> "MainTurret" >> "magazines") - _ignore_ammotype);
-						{
-							_ammo_type = _x;
-							_cnt = { _x == _ammo_type } count magazines _vehicle;
-							if (_cnt < _max_ammo) then {
-								_vehicle addMagazines [_ammo_type, (_max_ammo - _cnt)];
-								_unit groupchat format ["Rearming %1.", _vehicle_class_text];
-
-								if ( _unit == player || _vehicle_class in uavs) then {
-									_screenmsg = format [ "%1\n%2 - %3", _vehicle_class_text, localize "STR_REARMING", "100%" ];
-									titleText [ _screenmsg, "PLAIN DOWN" ];
-									hintSilent _screenmsg;
-								};
-								_vehicle setVariable ["GREUH_rearm_timer", round (time + (5*60))];  // min cooldown
-							};
-						} forEach _magType;
+						_vehicle setVehicleAmmo 1;
+						_vehicle setVariable ["GREUH_rearm_timer", round (time + (5*60))];  // min cooldown
+						_screenmsg = format [ "%1\n%2 - %3", _vehicle_class_text, localize "STR_REARMING", "100%" ];
+						titleText [ _screenmsg, "PLAIN DOWN" ];
+						hintSilent _screenmsg;
 					} else {
 						if ( _unit == player || ((uavControl _vehicle select 0) == player) ) then {
 							_screenmsg = format [ "%1\nRearming Cooldown (%2 sec), Please Wait...", _vehicle_class_text, round (_timer - time) ];
