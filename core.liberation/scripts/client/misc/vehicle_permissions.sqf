@@ -58,8 +58,6 @@ if (!((_role == "cargo") || (_vehicle isKindOf "Steerable_Parachute_F"))) then {
 if (_doeject) then {
 	hintSilent _msg;
 	moveOut _unit;
-	sleep 3;
-	hintSilent "";
 };
 
 !(_doeject);
