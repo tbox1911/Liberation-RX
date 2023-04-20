@@ -114,4 +114,8 @@ addMissionEventHandler["draw3D",{
 chimera_sign addAction ["<t color='#FFFFFF'>-= READ  ME =-</t>",{createDialog "liberation_notice"},"",999,true,true,"","[] call is_menuok",5];
 chimera_sign addAction ["<t color='#FFFFFF'>-=   TIPS   =-</t>",{createDialog "liberation_tips"},"",998,true,true,"","[] call is_menuok",5];
 
+waitUntil { time > 2 };
+initAmbientLife;
+enableEnvironment [true, true];
+
 diag_log "--- Client Init stop ---";
