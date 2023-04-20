@@ -24,6 +24,7 @@ for "_i" from 1 to _nbcivs do {
 	//_nextciv disableAI "AUTOCOMBAT";
 	_nextciv switchMove "amovpknlmstpsraswrfldnon";
 	_createdcivs pushBack _nextciv;
+	[_grp] call add_civ_waypoints;
 	sleep 0.1;
 };
 
