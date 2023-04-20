@@ -11,7 +11,6 @@ class DALE_RscButton {
 	h = __EVAL(safezoneH * DALE_var_dlgHeightSection);	
 	text = "";
 	
-	access = 0;
 	borderSize = 0;
 	colorBackground[] 			= {0,0,0,0.8};
 	colorBackgroundActive[] 	= {1,1,1,0.8};
@@ -44,7 +43,6 @@ class DALE_RscCombo {
 	w = __EVAL(safezoneW * DALE_var_dlgWidthSection);
 	h = __EVAL(safezoneH * DALE_var_dlgHeightSection);
 	
-	access = 0;
 	arrowEmpty = "\A3\ui_f\data\GUI\RscCommon\rsccombo\arrow_combo_ca.paa";
 	arrowFull = "\A3\ui_f\data\GUI\RscCommon\rsccombo\arrow_combo_active_ca.paa";
 

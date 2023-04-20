@@ -1,13 +1,13 @@
 // Taxi functions
 taxi_land = {
 	params ["_vehicle"];
-	private _stop = time + (3 * 60);
+	private _stop = time + (2 * 60);
 	waitUntil {
 		hintSilent localize "STR_TAXI_LANDING";
 		_vehicle land "LAND";
-		sleep 30;
+		sleep 10;
 		_alt = getPosATL _vehicle select 2;
-		if (round (speed _vehicle) == 0 && _alt > 3) then {
+		if (speed _vehicle < 1 && _alt > 3) then {
 			_vehicle setPosATL (getPosATL _vehicle vectorAdd [0, 0, -2]);
 		};
 		_alt <= 3 || time > _stop

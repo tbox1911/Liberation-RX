@@ -1,8 +1,10 @@
 params ["_vehicle", "_list", "_dist", "_includeFOB"];
 
-//private _dist,_includeFOB;
 private _ret = false;
 private _classlist = [];
+private _object = [];
+private _near = 0;
+private _vehpos = getPosATL _vehicle;
 
 if (isNil "_list") exitWith {_ret};
 if (isNil "_dist") then {_dist = 15};
@@ -13,12 +15,22 @@ switch ( _list ) do {
 	case "ATM" : { _classlist = GRLIB_Marker_ATM};
 	case "FUEL" : { _classlist = GRLIB_Marker_FUEL};
 	case "REPAIR" : { _classlist = GRLIB_Marker_REPAIR};
+	case "MEDIC" : { _object = ai_healing_sources};
+	case "ARSENAL" : { _object = Arsenal_typename};
+	case "REAMMO" : { _object = vehicle_rearm_sources};
+	case "REAMMO_AI" : { _object = ai_resupply_sources};
 };
 
-private _vehpos = getPosATL _vehicle;
-private _near = _classlist select {( _vehpos distance2D _x) <= _dist};
+if (count(_classlist) == 0 ) then {
+	// From Objects
+	_near = (_vehpos nearEntities [_object, _dist]);
+} else {
+	// From GRLIB_Marker
+	_near = _classlist select {( _vehpos distance2D _x) <= _dist};
+};
 if (count _near > 0) then {_ret = true};
 
+// Include FOB
 if (_includeFOB) then {
 	_nearfob = [] call F_getNearestFob;
 	_fobdistance = round (_vehpos distance2D _nearfob);

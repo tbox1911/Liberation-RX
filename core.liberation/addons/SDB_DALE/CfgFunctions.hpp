@@ -14,7 +14,7 @@ class DALE {
 	};
 	class DLG {
 		file = "addons\SDB_DALE\functions";
-		class dlgLoadoutApply {}
+		class dlgLoadoutApply {};
 		class dlgLoadoutChangePreset {};
 		class dlgLoadoutChangePriority {};
 		class dlgLoadoutCreate {};
