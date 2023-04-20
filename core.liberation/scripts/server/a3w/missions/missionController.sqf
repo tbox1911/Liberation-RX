@@ -55,7 +55,7 @@ while {true} do {
 					subTextColor,
 					_missionDelay / 60
 				];
-		_info = [_msg, 0, 0, 3, 0, -1, 90];
+		_info = [_msg, 0, 0, 6, 0, -1, 90];
 	} else {
 		_info = ["Next Objective", "", format ["Starting in %1 minutes", _missionDelay / 60]];
 	};
