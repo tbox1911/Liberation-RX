@@ -167,8 +167,8 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 				_owner = _x select 4;
 			};
 
-			if (_nextclass == "Land_ClutterCutter_large_F") then {
-				_nextbuilding = createSimpleObject [_nextclass, ATLToASL _nextpos];
+			if ([_nextclass, simple_objects] call F_itemIsInClass) then {
+				_nextbuilding = createSimpleObject [_nextclass, AGLtoASL _nextpos];
 			} else {
 				_nextbuilding = _nextclass createVehicle _nextpos;
 				_nextbuilding allowDamage false;

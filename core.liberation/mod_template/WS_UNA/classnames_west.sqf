@@ -74,12 +74,12 @@ heavy_vehicles = [
 	["B_APC_Tracked_01_rcws_F",10,500,20,GRLIB_perm_log],
 	["B_UN_APC_Wheeled_01_command_lxWS",10,500,20,GRLIB_perm_log],
 	["B_APC_Tracked_01_AA_F",10,500,20,GRLIB_perm_tank],
-	//["I_APC_Wheeled_03_cannon_F",10,500,20,GRLIB_perm_tank],
-	//["I_APC_tracked_03_cannon_F",10,500,20,GRLIB_perm_tank],
+	["I_APC_Wheeled_03_cannon_F",10,500,20,GRLIB_perm_tank],
+	["I_APC_tracked_03_cannon_F",10,500,20,GRLIB_perm_tank],
 	//["I_MBT_03_cannon_F",15,4500,15,GRLIB_perm_max],
 	//["I_E_Truck_02_MRL_F",15,3500,15,GRLIB_perm_max],
-	["B_MBT_01_cannon_F",15,1000,35,GRLIB_perm_tank],
-	["B_MBT_01_TUSK_F",15,1500,35,GRLIB_perm_air],
+	["B_MBT_01_cannon_F",15,1500,35,GRLIB_perm_tank],
+	["B_MBT_01_TUSK_F",15,2000,35,GRLIB_perm_air],
 	["B_AFV_Wheeled_01_cannon_F",15,3000,35,GRLIB_perm_max],
 	["B_AFV_Wheeled_01_up_cannon_F",15,3500,35,GRLIB_perm_max],
 	["B_Tura_Truck_02_aa_lxWS",15,3500,30,GRLIB_perm_max]
@@ -262,5 +262,5 @@ GRLIB_vehicle_blacklist_west = [
 ];
 
 box_transport_config_west = [
-
+	[ "B_UN_Offroad_lxWS", -5, [0, -1.55, 0.2] ]
 ];

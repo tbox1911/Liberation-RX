@@ -33,9 +33,12 @@ if ( !( _sector in GRLIB_military_sectors_already_activated )) then {
 		_crates_amount = ceil (((0.5 * GRLIB_sector_military_value) + (random (0.5 * GRLIB_sector_military_value ))) * GRLIB_resources_multiplier);
 		if ( _crates_amount > 4 ) then { _crates_amount = 4 };
 
-		_vehicle = opfor_ammobox_transport createVehicle (markerpos _sector);
-		_vehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-		_vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
+		_spawnpos = (markerpos _sector) findEmptyPosition [10, 100, "B_Heli_Transport_03_unarmed_F"];
+		if (count _spawnpos > 0) then {
+			_vehicle = opfor_ammobox_transport createVehicle _spawnpos;
+			_vehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+			_vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
+		};
 
 		for "_i" from 1 to _crates_amount do {
 			_newbox = [ammobox_o_typename, markerpos _sector, true] call boxSetup;

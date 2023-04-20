@@ -178,7 +178,7 @@ class liberation_admin {
   class DeleteButton: StdButton
   {
     idc = 1610;
-    action = "deleteVehicle (cursorObject)";
+    action = "deleteVehicle (cursorObject);closeDialog 0;";
     text = $STR_ADMIN_DELETEOBJ;
     x = 0.2275 * safezoneW + safezoneX;
     y = 0.624 * safezoneH + safezoneY;
