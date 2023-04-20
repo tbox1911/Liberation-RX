@@ -3,7 +3,15 @@
 if (!isServer) exitWith {};
 params ["_type", "_pos", "_locked"];
 private _box_refill = ["mission_Ammo","mission_USLaunchers","mission_USSpecial","mission_Main_A3snipers","mission_Ammo"];
-private _box = createVehicle [_type, _pos, [], 5, "None"];
+
+private _spawnpos = zeropos;
+while { _spawnpos distance zeropos < 1000 } do {
+	_spawnpos =  ( [ _pos, random 50, random 360 ] call BIS_fnc_relPos ) findEmptyPosition [ 10, 100, 'B_Heli_Transport_01_F' ];
+	if ( count _spawnpos == 0 ) then { _spawnpos = zeropos; };
+};
+
+private _box = createVehicle [_type, _spawnpos, [], 5, "None"];
+
 _box setDir random 360;
 _box addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 

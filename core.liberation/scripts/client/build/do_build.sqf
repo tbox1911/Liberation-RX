@@ -348,7 +348,7 @@ while { true } do {
 				};
 
 				// A3 / R3F Inventory
-				if (buildtype == 9) then {
+				if (buildtype == 9 && !(_classname in GRLIB_vehicle_whitelist) ) then {
 					{_vehicle addWeaponWithAttachmentsCargoGlobal [ _x, 1] } forEach _lst_a3;
 					[_vehicle, _lst_r3f] call R3F_LOG_FNCT_transporteur_charger_auto;
 				};

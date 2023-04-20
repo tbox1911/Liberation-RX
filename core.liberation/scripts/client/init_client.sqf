@@ -15,6 +15,7 @@ is_owner = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_owner.
 is_menuok = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_menuok.sqf";
 player_EVH = compileFinal preprocessFileLineNumbers "addons\FAR\FAR_EventHandler.sqf";
 paraDrop = compileFinal preprocessFileLineNumbers "scripts\client\spawn\paraDrop.sqf";
+get_lrx_name = compileFinal preprocessFileLineNumbers "scripts\client\misc\get_lrx_name.sqf";
 
 R3F_LOG_joueur_deplace_objet = objNull;
 GRLIB_player_spawned = false;
