@@ -840,7 +840,7 @@ GRLIB_intel_table = "Land_CampingTable_small_F";
 GRLIB_intel_chair = "Land_CampingChair_V2_F";
 GRLIB_intel_file = "Land_File1_F";
 GRLIB_intel_laptop = "Land_Laptop_device_F";
-GRLIB_ignore_colisions_when_building = [
+GRLIB_ignore_colisions_objects = [
 	Arsenal_typename,
 	mobile_respawn,
 	canisterFuel,
@@ -864,15 +864,18 @@ GRLIB_ignore_colisions_when_building = [
 	"Land_runway_edgelight_blue_F",
 	"Land_HelipadSquare_F",
 	"Sign_Sphere100cm_F",
-	"TMR_Autorest_Georef",
 	"Land_ClutterCutter_large_F",
-	"Land_HighVoltageColumn_F",
-	"Land_HighVoltageColumnWire_F",
-	"Land_PowerLine_01_pole_small_F",
-	"Land_PowerLine_01_pole_tall_F",
-	"Land_PowerLine_01_wire_50m_F",
-	"Land_PowerLine_01_wire_50m_main_F"
+ 	"Land_PowLine_wire_BB_EP1",
+ 	"Land_PowLine_wire_AB_EP1",
+ 	"Land_PowLine_wire_A_left_EP1",
+ 	"Land_PowLine_wire_A_right_EP1"
 ];
+GRLIB_ignore_colisions_classes = [
+	"PowerLines_base_F",
+	"PowerLines_Small_base_F",
+	"PowerLines_Wires_base_F"
+];
+
 GRLIB_sar_wreck = "Land_Wreck_Heli_Attack_01_F";
 GRLIB_sar_fire = "test_EmptyObjectForFireBig";
 GRLIB_Ammobox = [

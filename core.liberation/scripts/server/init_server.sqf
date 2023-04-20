@@ -44,15 +44,19 @@ attack_in_progress_fob = compileFinal preprocessFileLineNumbers "scripts\server\
 attack_in_progress_sector = compileFinal preprocessFileLineNumbers "scripts\server\sector\attack_in_progress_sector.sqf";
 destroy_fob = compileFinal preprocessFileLineNumbers "scripts\server\sector\destroy_fob.sqf";
 ied_manager = compileFinal preprocessFileLineNumbers "scripts\server\sector\ied_manager.sqf";
-boxSetup = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_boxSetup.sqf";
 manage_ammoboxes = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_ammoboxes.sqf";
 manage_one_sector = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_one_sector.sqf";
 wait_to_spawn_sector = compileFinal preprocessFileLineNumbers "scripts\server\sector\wait_to_spawn_sector.sqf";
 
 // A3W
+boxSetup = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_boxSetup.sqf";
 createlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_createLandMines.sqf";
 showlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_showLandMines.sqf";
 clearlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_clearLandMines.sqf";
+a3w_setupMissionArrays = compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionArrays.sqf";
+a3w_masterController = compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\masterController.sqf";
+a3w_sideMissionController = compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\sideMissionController.sqf";
+
 if (!([] call F_getValid)) exitWith {};
 
 [] execVM "scripts\server\game\init_marker.sqf";
@@ -74,6 +78,7 @@ if (!([] call F_getValid)) exitWith {};
 [] execVM "scripts\server\patrols\civilian_patrols.sqf";
 [] execVM "scripts\server\patrols\manage_patrols.sqf";
 [] execVM "scripts\server\patrols\manage_wildlife.sqf";
+[] execVM "scripts\server\a3w\init_missions.sqf";
 [] execVM "scripts\server\patrols\reinforcements_resetter.sqf";
 [] execVM "scripts\server\resources\manage_resources.sqf";
 [] execVM "scripts\server\resources\recalculate_resources.sqf";
@@ -82,7 +87,6 @@ if (!([] call F_getValid)) exitWith {};
 [] execVM "scripts\server\sector\lose_sectors.sqf";
 [] execVM "scripts\server\sector\manage_sectors.sqf";
 [] execVM "scripts\server\secondary\autostart.sqf";
-[] execVM "scripts\server\a3w\init_missions.sqf";
 [] execVM "scripts\server\game\synchronise_vars.sqf";
 [] execVM "scripts\server\game\zeus_synchro.sqf";
 [] execVM "scripts\server\game\clean.sqf";
