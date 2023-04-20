@@ -148,6 +148,7 @@ support_vehicles = support_vehicles + [
 	[ammo_truck_typename,5,400,10,GRLIB_perm_tank],
 	[repair_truck_typename,5,200,30,GRLIB_perm_tank],
 	[fuel_truck_typename,5,150,70,GRLIB_perm_tank],
+	[Warehouse_typename,0,0,0,GRLIB_perm_log],
 	[FOB_box_outpost,5,500,20,GRLIB_perm_log],
 	[FOB_box_typename,5,1500,80,GRLIB_perm_max],
 	[FOB_truck_typename,5,1500,150,GRLIB_perm_max],
@@ -155,9 +156,9 @@ support_vehicles = support_vehicles + [
 	[ammobox_o_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
 	[ammobox_i_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
 	[A3W_BoxWps,0,round(150 / GRLIB_recycling_percentage),0,99999],
-	[waterbarrel_typename,0,round(100 / GRLIB_recycling_percentage),0,99999],
-	[fuelbarrel_typename,0,round(60 / GRLIB_recycling_percentage),30,99999],
-	[foodbarrel_typename,0,round(100 / GRLIB_recycling_percentage),0,99999]
+	[waterbarrel_typename,0,round(110),0,99999],
+	[fuelbarrel_typename,0,round(120),0,99999],
+	[foodbarrel_typename,0,round(130),0,99999]
 ] + support_vehicles_west;
 
 // *** BUILDINGS ***
@@ -357,9 +358,6 @@ GRLIB_vehicle_whitelist = [
 	ammobox_i_typename,
 	mobile_respawn,
 	A3W_BoxWps,
-	waterbarrel_typename,
-	fuelbarrel_typename,
-	foodbarrel_typename,
 	medicalbox_typename
 ] + GRLIB_vehicle_whitelist_west + opfor_statics;
 
@@ -377,7 +375,14 @@ GRLIB_vehicle_blacklist = [
 ] + GRLIB_vehicle_blacklist_west;
 
 // Recycleable objects
-GRLIB_recycleable_blacklist = [FOB_sign,Warehouse_typename,canister_fuel_typename];
+GRLIB_recycleable_blacklist = [
+	FOB_sign,
+	Warehouse_typename,
+	canister_fuel_typename,
+	waterbarrel_typename,
+	fuelbarrel_typename,
+	foodbarrel_typename
+];
 GRLIB_recycleable_classnames = ["LandVehicle","Air","Ship","StaticWeapon","Slingload_01_Base_F","Pod_Heli_Transport_04_base_F"];
 {
 	if (!((_x select 0) in GRLIB_recycleable_blacklist)) then {GRLIB_recycleable_classnames pushBack (_x select 0)};

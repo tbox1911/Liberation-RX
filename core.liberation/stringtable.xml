@@ -6395,12 +6395,6 @@
 			<Czech>Vozidlo %1\nVloženo do Garáže.</Czech>
 		</Key>
 
-		<!-- virtual_garage.hpp -->
-		<Key ID="STR_WAREHOUSE_SHOP">
-			<Original>-- WareHouse --</Original>
-			<French>-- Entrepôt --</French>
-		</Key>
-
 		<!-- veh_repaint -->
 		<Key ID="STR_PAINT_SHOP">
 			<Original>-- Paint Shop --</Original>
@@ -8073,6 +8067,42 @@
 			<Chinese>&lt;t align='center'&gt;出售 %1&lt;br/&gt;以獲得 %2 彈藥。 &lt;br/&gt;你確定嗎？ &lt;/t&gt;</Chinese>
 			<Portuguese>&lt;t align='center'&gt;Vender %1&lt;br/&gt;for %2 AMMO.&lt;br/&gt;Tem a certeza ?&lt;/t&gt;</Portuguese>
 			<Czech>&lt;t align='center'&gt;Koupit %1&lt;br/&gt;za %2 AMMO.&lt;br/&gt;Jsi si jistý ?&lt;/t&gt;</Czech>
+		</Key>
+	</Package>
+
+	<!-- LRX Warehouse-->
+	<Package name="LRX_WAREHOUSE">
+		<Key ID="STR_WAREHOUSE_SHOP">
+			<Original>-- WareHouse --</Original>
+			<French>-- Entrepôt --</French>
+		</Key>
+		<Key ID="STR_WAREHOUSE_ENTER">
+			<Original>-- ENTER WAREHOUSE</Original>
+		</Key>
+		<Key ID="STR_WAREHOUSE_ACTION1">
+			<Original>LOAD</Original>
+			<French>CHARGER</French>
+
+		</Key>
+		<Key ID="STR_WAREHOUSE_ACTION2">
+			<Original>UNLOAD</Original>
+			<French>DECHARGER</French>
+		</Key>
+		<Key ID="STR_WAREHOUSE_LOAD">
+			<Original>STORE GOODS</Original>
+			<French>STOCKER MARCHANDISES</French>
+		</Key>
+		<Key ID="STR_WAREHOUSE_LOAD_MSG">
+			<Original>&lt;t align='center'&gt;Unload %1 to Warehouse&lt;br/&gt;for %2 AMMO.&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
+			<French>&lt;t align='center'&gt;Deposer %1 à l'Entrepôt&lt;br/&gt;pour %2 AMMO.&lt;br/&gt;Êtes-vous sûr ?&lt;/t&gt;</French>
+		</Key>
+		<Key ID="STR_WAREHOUSE_UNLOAD">
+			<Original>TAKE GOODS</Original>
+			<French>PRENDRE MARCHANDISES</French>
+		</Key>
+		<Key ID="STR_WAREHOUSE_UNLOAD_MSG">
+			<Original>&lt;t align='center'&gt;Take %1 from Warehouse&lt;br/&gt;for %2 AMMO.&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
+			<French>&lt;t align='center'&gt;Prendre %1 de l'Entrepôt&lt;br/&gt;pour %2 AMMO.&lt;br/&gt;Êtes-vous sûr ?&lt;/t&gt;</French>
 		</Key>
 	</Package>
 
