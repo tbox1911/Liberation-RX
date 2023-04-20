@@ -37,10 +37,13 @@ if (GRLIB_revive != 0) then {[] execVM "addons\FAR\FAR_init.sqf"};
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\init_sectors.sqf";
 >>>>>>> eefcff68 (add radius / huron type to parameters)
 
+<<<<<<< HEAD
 waitUntil { sleep 1; !isNil "GRLIB_ACE_enabled" };
 >>>>>>> 8fd700ef (public veh concept)
 if (!GRLIB_ACE_enabled) then {[] execVM "R3F_LOG\init.sqf"};
 
+=======
+>>>>>>> ce1ce1ba (init)
 if (isServer) then {
 	lhd setpos getmarkerpos "base_chimera";
 	lhd hideObject true;

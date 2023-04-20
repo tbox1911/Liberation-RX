@@ -127,6 +127,8 @@ if ( GRLIB_thermic == 1 ) then { GRLIB_thermic = true } else { GRLIB_thermic = f
 
 [] call compileFinal preprocessFileLineNUmbers "gameplay_constants.sqf";
 
-if (GRLIB_sector_radius != 0) then {
-	GRLIB_sector_size = GRLIB_sector_radius;
-};
+// Overide sector radius
+if (GRLIB_sector_radius != 0) then { GRLIB_sector_size = GRLIB_sector_radius };
+
+// Start R3F if ACE no present
+if (!GRLIB_ACE_enabled) then {[] execVM "R3F_LOG\init.sqf"};
