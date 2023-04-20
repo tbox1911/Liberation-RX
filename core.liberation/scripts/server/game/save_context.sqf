@@ -1,6 +1,6 @@
-params ["_player"];
+params ["_player","_uid"];
 
-private _uid = getPlayerUID _player;
+if (isNil "_uid") then { _uid = getPlayerUID _player };
 private _puid = _player getVariable ["PAR_Grp_ID","1"];
 private _loaded = _player getVariable ["GRLIB_squad_context_loaded", false];
 private _ai_group = [];
@@ -25,4 +25,4 @@ if (_new) then {
 	GRLIB_player_context pushback [ _uid, _loadout, _ai_group ];
 };
 
-diag_log format ["--- LRX Player %1 Context Saved at %2", name _player, time];
+diag_log format ["--- LRX Player %1 (%2) Context Saved at %3", name _player, _uid, time];

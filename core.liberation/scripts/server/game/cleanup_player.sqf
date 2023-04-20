@@ -54,6 +54,7 @@ if !(isNull _unit) then {
 	{if ((_x select 0) == _uid) exitWith {_score = (_x select 1)}} forEach GRLIB_player_scores; 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if (_score > 20) then { [_unit, _uid] call save_context };
 =======
 	if (_score > 20) then { [_unit] call save_context };
@@ -61,6 +62,9 @@ if !(isNull _unit) then {
 =======
 	if (_score > 20) then { [_unit] call save_context };
 >>>>>>> 2731dc1c (context call)
+=======
+	if (_score > 20) then { [_unit, _uid] call save_context };
+>>>>>>> ac0805ff (fix first save context)
 
 	// Remove AI
 	private _bros = allUnits select {(_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1", _uid]};
