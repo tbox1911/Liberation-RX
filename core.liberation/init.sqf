@@ -47,9 +47,6 @@ if (!GRLIB_ACE_enabled) then {[] execVM "R3F_LOG\init.sqf"};
 =======
 >>>>>>> ce1ce1ba (init)
 if (isServer) then {
-	lhd setpos getmarkerpos "base_chimera";
-	lhd hideObject true;
-	//{ deleteVehicle _x } foreach ( ( getmarkerpos "lhd" ) nearObjects 500 );
 	{
 		_x removeAllMPEventHandlers "MPKilled";
 		_x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];

@@ -1,7 +1,7 @@
 params [ "_unit" ];
 
 private _score = [_unit] call F_getScore;
-private _rank = "None";
+private _rank = "Private";
 GRLIB_squad_size_bonus = 0;
 
 if ((_score >=  0) && (_score < GRLIB_perm_inf)) then {_rank = "Private"};

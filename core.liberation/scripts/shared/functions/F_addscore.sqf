@@ -1,3 +1,4 @@
+if (!isServer) exitWith {};
 params ["_unit", "_score"];
 if (isNil "_unit") exitWith {};
 
