@@ -19,8 +19,12 @@ Based on: AI REVIVE HEAL SCRIPT SP/MP by Pierre MGI
   at : https://forums.bohemia.net/forums/topic/207522-ai-revive-heal-script-spmp/
 
 _________________________________________________________________________*/
+<<<<<<< HEAD
 PAR_Player_MPKilled = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_MPKilled.sqf";
 
+=======
+PAR_Player_MPKilled = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_player_MPKilled.sqf";
+>>>>>>> d49e44e5 (global PAR_Player_MPKilled)
 if (isDedicated) exitWith {};
 
 PAR_isDragging = false;

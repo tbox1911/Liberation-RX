@@ -28,7 +28,12 @@ PAR_fn_AI_Damage_EH = {
       _dam min 0.86;
   }];
   _unit removeAllMPEventHandlers "MPKilled";
+<<<<<<< HEAD
   _unit addMPEventHandler ["MPKilled", {_this spawn PAR_Player_MPKilled}];
+=======
+  _unit addMPEventHandler ["MPKilled", PAR_Player_MPKilled];
+  //[_unit, ["MPKilled", PAR_Player_MPKilled]] remoteExec [addMPEventHandler, 2];
+>>>>>>> d49e44e5 (global PAR_Player_MPKilled)
   _unit setVariable ["PAR_wounded",false];
   _unit setVariable ["PAR_myMedic", nil];
   _unit setVariable ["PAR_busy", nil];

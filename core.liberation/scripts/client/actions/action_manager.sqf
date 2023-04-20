@@ -33,8 +33,7 @@ while { true } do {
 	if ([] call is_menuok) then {
 		_fobdistance = round (player distance2D ([] call F_getNearestFob));
 		_near_arsenal = (player nearEntities [Arsenal_typename, _distarsenal]) + (player nearObjects [FOB_typename, _distredeploy]);
-		_near_mobspawn = [GRLIB_mobile_respawn, {alive _x && _x distance2D lhd > 1000 && (player distance2D (getPos _x) < _distvehclose) && isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull])}] call BIS_fnc_conditionalSelect;
-		_near_spawn = (player nearEntities [[Respawn_truck_typename, huron_typename], _distspawn]) + _near_mobspawn;
+		_near_spawn = [(call F_getMobileRespawns), {(player distance2D (getPos _x) < _distvehclose)}] call BIS_fnc_conditionalSelect;
 		_near_fobbox = player nearEntities [[FOB_box_typename, FOB_truck_typename], _distspawn];
 		_near_fuel = [player, "FUEL", _distvehclose, false] call F_check_near;
 		_near_repair = [player, "REPAIR", _distvehclose, false] call F_check_near;
