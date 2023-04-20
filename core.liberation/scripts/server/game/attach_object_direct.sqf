@@ -9,12 +9,13 @@ private _offsets = [];
 	};
 } foreach box_transport_config;
 
-private _object = _object_type createVehicle zeropos;
 private _truck_load = _truck getVariable ["GRLIB_ammo_truck_load", 0];
 
 if (  _truck_load < _maxload ) then {
 	_truck_to_load = _truck;
 	_truck_offset = _offsets select _truck_load;
+	_object = _object_type createVehicle zeropos;
+	_object addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
 	if (typeOf _object in [waterbarrel_typename,fuelbarrel_typename,foodbarrel_typename]) then {
 		_truck_offset = _truck_offset vectorAdd [0, 0, -0.4];
 	};
