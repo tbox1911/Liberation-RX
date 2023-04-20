@@ -54,6 +54,7 @@ PAR_fn_EHDamage = {
   _unit setVariable ["PAR_busy", nil];
   _unit setVariable ["PAR_heal", nil];
   _unit setVariable ["PAR_healed", nil];
+  _unit setVariable ['PAR_extratime', nil, true];
 };
 
 PAR_fn_Revive = {
@@ -107,6 +108,7 @@ PAR_fn_Revive = {
 
 PAR_fn_globalchat = {
   params ["_speaker", "_msg"];
+  if (!(local _speaker)) exitWith {};
   if ((_speaker getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1",PAR_Grp_ID] || isPlayer _speaker) then {
     gamelogic globalChat _msg;
   };

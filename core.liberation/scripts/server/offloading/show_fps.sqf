@@ -69,21 +69,16 @@ while { true } do {
 	if ( _myfps < 20 ) then { _myfpsmarker setMarkerColor "ColorORANGE"; };
 	if ( _myfps < 10 ) then { _myfpsmarker setMarkerColor GRLIB_color_enemy_bright; };
 
-	_saved = "";
 	if ( diag_server_save ) then {
 		diag_server_save = false;
-		_saved = "- Game Saved."
+		_myfpsmarker setMarkerText "Game State Saved.";
+		sleep 3;
 	};
 
-	_myfpsmarker setMarkerText format [ "%1: %2 fps, units: (civ:%3 blu:%4 red:%5), vehicles: (civ:%6 blu:%7 red:%8) - %9",
-	 _sourcestr, ( round ( _myfps * 100.0 ) ) / 100.0 ,
-	 _localunits_civ,_localunits_blu,_localunits_opfor,
-	 _localvehicles_civ,_localvehicles_blu,_localvehicles_opfor,
-	 _saved ];
-	sleep 3;
-	_myfpsmarker setMarkerText format [ "%1: %2 fps, units: (civ:%3 blu:%4 red:%5), vehicles: (civ:%6 blu:%7 red:%8)",
-	 _sourcestr, ( round ( _myfps * 100.0 ) ) / 100.0 ,
-	 _localunits_civ,_localunits_blu,_localunits_opfor,
-	 _localvehicles_civ,_localvehicles_blu,_localvehicles_opfor];
+	_myfpsmarker setMarkerText format [ "%1: %2 fps - Unt: civ:%3 blu:%4 red:%5 - Veh:civ:%6 blu:%7 red:%8",
+		_sourcestr, ( round ( _myfps * 100.0 ) ) / 100.0 ,
+		_localunits_civ,_localunits_blu,_localunits_opfor,
+		_localvehicles_civ,_localvehicles_blu,_localvehicles_opfor];
+
 	sleep 15;
 };

@@ -1,18 +1,25 @@
 // Heli Taxi Script
-
-//check dest place
-private _dest = (getPosATL player) findEmptyPosition [1,50, huron_typename];
 private _taxi = player getVariable ["GRLIB_taxi_called", nil];
 if (!isNil "_taxi") exitWith {hintSilent "Sorry, Only one Taxi at time."};
-if (count _dest == 0 || surfaceIsWater _dest) exitWith {hintSilent "Sorry, Taxi cannot Land on this place."};
+
+//check dest place
+buildtype = 9;
+build_unit = ["Land_HelipadSquare_F",[],1,[],[]];
+dobuild = 1;
+
+waitUntil { sleep 1; dobuild == 0};
+private _helipad = nearestObjects [player, ["Land_HelipadSquare_F"], 200] select 0;
+private _degree = aCos ([0,0,1] vectorCos (surfaceNormal getPos _helipad));
+private _dest = getPosATL _helipad;
+if (surfaceIsWater _dest || _degree > 8) exitWith {deleteVehicle _helipad; hintSilent "Sorry, Taxi cannot Land on this place."};
 
 // Taxi functions
 taxi_land = {
 	params ["_vehicle"];
-	_vehicle land "LAND";
 	hintSilent "Taxi Landing...";
-	waitUntil {sleep 1; isTouchingGround _vehicle};
+	waitUntil {_vehicle land "LAND"; sleep 10; isTouchingGround _vehicle};
 	hintSilent "Taxi Landed.";
+	deleteVehicle _helipad;
 };
 
 taxi_dest = {
@@ -99,7 +106,7 @@ hintSilent "Air Taxi Called !";
 waitUntil {
   sleep 5;
   isNil{hintSilent format ["Taxi on the way!\nDistance: %1m", round (_vehicle distance2D _dest)]};
-  (!alive _vehicle || _vehicle distance2D _dest < 120)
+  (!alive _vehicle || _vehicle distance2D _dest < 200)
 };
 
 if (alive _vehicle && alive player) then {
@@ -112,13 +119,13 @@ if (alive _vehicle && alive player) then {
 	_marker setMarkerTypeLocal "mil_pickup";
 	_marker setMarkerTextlocal "Taxi PickUp";
 
-	_stop = diag_tickTime + (5 * 60); // wait 5min max
+	_stop = time + (5 * 60); // wait 5min max
 	waitUntil {
 		sleep 1;
-		(!alive _vehicle || vehicle player == _vehicle || diag_tickTime > _stop)
+		(!alive _vehicle || vehicle player == _vehicle || time > _stop)
 	};
 
-	if (diag_tickTime < _stop && alive _vehicle) then {
+	if (time < _stop && alive _vehicle) then {
 
 		_idact_dest = _vehicle addAction ["<t color='#8000FF'>-- TAXI Destination</t>","addons\TAXI\taxi_dest.sqf","",999,true,true,"","vehicle _this == _target"];
 		waitUntil {
@@ -172,4 +179,5 @@ deleteMarkerLocal "taxi_dz";
 sleep 60;
 {deletevehicle _x} forEach _pilots;
 deleteVehicle _vehicle;
+deleteVehicle _helipad;
 player setVariable ["GRLIB_taxi_called", nil, true];

@@ -130,7 +130,7 @@ FAR_Player_Unconscious = {
 	[_unit] spawn PAR_fn_unconscious;
 
 	_bleedOut = time + FAR_BleedOut;
-	while { !isNull _unit && alive _unit && _unit getVariable "FAR_isUnconscious" == 1 && (FAR_BleedOut <= 0 || time < _bleedOut) } do {
+	while { !isNull _unit && alive _unit && _unit getVariable "FAR_isUnconscious" == 1 } do {
 
 		hintSilent format[localize "STR_BLEEDOUT_MESSAGE" + "\n", round (_bleedOut - time)];
 		public_bleedout_message = format [localize "STR_BLEEDOUT_MESSAGE", round (_bleedOut - time)];
@@ -138,10 +138,7 @@ FAR_Player_Unconscious = {
 		sleep 0.5;
 	};
 
-	// Player bled out
-	if ((FAR_BleedOut > 0 && {time > _bleedOut}) || (vehicle _unit != _unit)) then {
-		_unit setDamage 1;
-	} else {
+	if (alive _unit && _unit getVariable "FAR_isUnconscious" == 0) then {
 		// Player got revived
 		_unit playMove "amovppnemstpsraswrfldnon";
 		_unit playMove "";

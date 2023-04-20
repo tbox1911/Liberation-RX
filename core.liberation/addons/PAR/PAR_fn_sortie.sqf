@@ -1,13 +1,13 @@
 params ["_wnded", "_medic"];
 //diag_log format ["DBG_fn_sortie WNDED:%1 MEDIC:%2", name _wnded, name _medic];
+if (!(local _wnded)) exitWith {};
 
 if (lifeState _wnded != "incapacitated") exitWith { [_medic, _wnded] call PAR_fn_medicRelease };
 
 if (!isPlayer _medic) then {
   _msg = format ["%1 is healing %2 now...", name _medic, name _wnded];
   [_wnded, _msg] call PAR_fn_globalchat;
-   //extend PAR_BleedOut
-
+  _wnded setVariable ['PAR_extratime', 20];
   _medic setDir (_medic getDir _wnded);
   //_medic removeitem "FirstAidKit";
   if (stance _medic == "PRONE") then {
@@ -30,6 +30,18 @@ if (_isMedic && _hasMedikit) then {
 } else {
   _wnded setDamage 0.25;
 };
+
+[
+  [_wnded],
+{
+  params ["_wnded"];
+  {
+    if (["Revive",(_wnded actionParams _x) select 0] call bis_fnc_inString) then {
+      [_wnded, _x] call BIS_fnc_holdActionRemove;
+    };
+  } count (actionIDs _wnded);
+}] remoteExec ["bis_fnc_call", [0,-2] select isDedicated,true];
+
 _wnded selectWeapon primaryWeapon _wnded;
 sleep 0.5;
 
@@ -37,15 +49,8 @@ if (isPlayer _wnded) then {
   player setVariable ["FAR_isUnconscious", 0, true];
   player setVariable ["FAR_isDragged", 0, true];
   group _wnded selectLeader player;
-  if (isPlayer _medic) then {
-    [_medic, 5] remoteExec ["addScore", 2];
-  };
+  if (isPlayer _medic) then { [_medic, 5] remoteExec ["addScore", 2] };
 } else {
-  {
-    if (["Revive",(_wnded actionParams _x) select 0] call bis_fnc_inString) then {
-      [ _wnded,_x] call BIS_fnc_holdActionRemove;
-    };
-  } count (actionIDs _wnded);
   _wnded switchMove "amovpknlmstpsraswrfldnon"; //go up
   _wnded setSpeedMode (speedMode group player);
 };
