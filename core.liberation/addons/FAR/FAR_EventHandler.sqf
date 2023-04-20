@@ -99,7 +99,7 @@ if (_unit == player && alive player && player isKindOf "Man") then {
 	_unit addEventHandler ["GetOutMan", {
 		1 fadeSound 1;
 		NRE_EarplugsActive = 0;
-		_pos = getPosATL player;
+		_pos = getPos player;
 		if ( _pos select 2 > 80 ) then {
 			[player, _pos] spawn paraDrop;
 		} else {

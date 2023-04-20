@@ -102,7 +102,7 @@ GREUH_TipsText = [];
 } foreach allCurators;
 
 // Sign Add
-["<t size='2'>READ ME</t>", (getPos chimera_sign), 15, 0] spawn BIS_fnc_3Dcredits;
+["<t size='2'>READ ME</t>", (getPos chimera_sign)] spawn BIS_fnc_3Dcredits;
 chimera_sign addAction ["<t color='#FFFFFF'>-= READ  ME =-</t>",{createDialog "liberation_notice"},"",999,true,true,"","[] call is_menuok",5];
 chimera_sign addAction ["<t color='#FFFFFF'>-=   TIPS   =-</t>",{createDialog "liberation_tips"},"",998,true,true,"","[] call is_menuok",5];
 
