@@ -179,7 +179,9 @@ PAR_AI_Manager = {
             	sleep 3;
             };
             _x doMove (getPos player);
-        };
+        } else {
+			doStop _x;
+		};
 
         // Blood trail
         if (damage _x > 0.6 && vehicle _x == _x) then {

@@ -43,6 +43,7 @@ while {lifeState _wnded == "INCAPACITATED" || lifeState _medic != "INCAPACITATED
 
   _msg = "";
   _dist = round (_wnded distance2D _medic);
+  if (_dist > 550) exitWith {[_wnded,_medic] call _release_medic};
   if (_dist >= _old && round (speed (vehicle _medic)) == 0) then {
     _fail = _fail + 1;
     doStop _medic;
