@@ -35,22 +35,22 @@ if(!isNull (findDisplay 2300)) then {
 	} foreach colorList;
 	lbSetCurSel [231,0];
 
-	while { dialog && (alive player) && paint_veh == 0 } do {
-		sleep 0.1;
+	while { dialog && alive player } do {
+		if (paint_veh == 1) then {
+			_color = lbcursel 231;
+			if (_color == -1) exitWith {};
+			_name = lbText [231, _color];
+			_texture = lbData[231, _color];
+
+			if (!([player, _vehicle] call is_owner)) exitWith { hintSilent "Wrong Vehicle Owner.\nAccess is Denied !" };
+			if ((damage _vehicle) != 0) exitWith { hintSilent "Damaged Vehicles cannot be Painted !" };
+			if (_veh_class in GRLIB_vehicle_blacklist) exitWith { hintSilent "This Vehicle cannot be Painted !" };
+			if (_texture == "" ) then {_texture = [_name]};
+			[_vehicle, _texture, _name, []] call RPT_fnc_TextureVehicle;
+			paint_veh = 0;
+			sleep 0.5;
+		};
+		sleep 0.5;
 	};
 	closeDialog 0;
-
-	if (paint_veh == 1) then {
-		_color = lbcursel 231;
-		if (_color == -1) exitWith {};
-		_name = lbText [231, _color];
-		_texture = lbData[231, _color];
-
-		if (!([player, _vehicle] call is_owner)) exitWith { hintSilent "Wrong Vehicle Owner.\nAccess is Denied !" };
-		if ((damage _vehicle) != 0) exitWith { hintSilent "Damaged Vehicles cannot be Painted !" };
-		if (_veh_class in GRLIB_vehicle_blacklist) exitWith { hintSilent "This Vehicle cannot be Painted !" };
-		if (_texture == "" ) then {_texture = [_name]};
-		[_vehicle, _texture, _name, []] call RPT_fnc_TextureVehicle;
-		sleep 1;
-	};
 };
