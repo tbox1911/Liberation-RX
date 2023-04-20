@@ -77,18 +77,6 @@ if (_unit == player && alive player && player isKindOf "Man") then {
 	if (GRLIB_ACE_enabled) then {
 		["ace_arsenal_displayClosed", {[player] call F_payLoadout}] call CBA_fnc_addEventHandler;
 	} else {
-		// Clean player body
-		_unit removeAllEventHandlers "Killed";
-		_unit addEventHandler ["Killed", {
-			params ["_unit"];
-			[_unit] spawn {
-				waitUntil {sleep 1; alive player};
-				hidebody (_this select 0);
-				1 fadeSound 1;
-				1 fadeRadio 1;
-				NRE_EarplugsActive = 0;
-			};
-		}];
 		// Filter and Pay Loadout
 		[missionNamespace, "arsenalClosed", {[player] call F_filterLoadout;[player] call F_payLoadout}] call BIS_fnc_addScriptedEventHandler;
 
@@ -143,14 +131,14 @@ if (_unit == player && alive player && player isKindOf "Man") then {
 
 	_unit removeAllEventHandlers "GetOutMan";
 	_unit addEventHandler ["GetOutMan", {
+		params ["_unit", "_role", "_vehicle"];
 		1 fadeSound 1;
 		NRE_EarplugsActive = 0;
-		_pos = getPos player;
-		if ( _pos select 2 > 80 ) then {
-			[player, _pos] spawn paraDrop;
+		if ( (getPos _unit) select 2 > 20 ) then {
+			[_vehicle, _unit] spawn PAR_fn_eject;
 		} else {
-			player selectWeapon primaryWeapon player;
-			[player, "show"] remoteExec ["dog_action_remote_call", 2];
+			_unit selectWeapon primaryWeapon _unit;
+			[_unit, "show"] remoteExec ["dog_action_remote_call", 2];
 		};
 	}];
 

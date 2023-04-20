@@ -20,11 +20,14 @@ Based on: AI REVIVE HEAL SCRIPT SP/MP by Pierre MGI
 
 _________________________________________________________________________*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 PAR_Player_MPKilled = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_MPKilled.sqf";
 
 =======
 PAR_Player_MPKilled = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_player_MPKilled.sqf";
 >>>>>>> d49e44e5 (global PAR_Player_MPKilled)
+=======
+>>>>>>> 7ff48884 (mpkill)
 if (isDedicated) exitWith {};
 
 PAR_isDragging = false;
