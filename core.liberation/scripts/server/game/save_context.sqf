@@ -26,7 +26,6 @@ if (alive _player && lifeState _player != "INCAPACITATED") then {
 	private _bros = allUnits select { alive _x && _x != _player && lifeState _x != "INCAPACITATED" && (_x getVariable ["PAR_Grp_ID","0"]) == _puid};
 >>>>>>> ff1a958a (1)
 	{ _ai_group pushback [typeOf _x, rank _x, getUnitLoadout _x] } forEach _bros;
-	GRLIB_backup_loadout = getUnitLoadout player;
 	_loadout = getUnitLoadout _player;
 >>>>>>> eb759921 (new load/save loadout (BIS fnc))
 };

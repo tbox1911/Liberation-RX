@@ -177,20 +177,10 @@ blufor_squad_mix = [
 	"OPTRE_UNSC_Marine_Soldier_Rifleman_BR",
 	"OPTRE_UNSC_Marine_Soldier_Rifleman_AR"
 ];
-blufor_squad_recon = [
-	"OPTRE_UNSC_Marine_Soldier_SquadLead",
-	"OPTRE_UNSC_Marine_Soldier_ForwardObserver",
-	"OPTRE_UNSC_Marine_Soldier_Autorifleman",
-	"OPTRE_UNSC_Marine_Soldier_Sniper",
-	"OPTRE_UNSC_Marine_Soldier_Marksman",
-	"OPTRE_UNSC_Marine_Soldier_Marksman",
-	"OPTRE_UNSC_Marine_Soldier_Marksman"
-];
 
 squads = [
 	[blufor_squad_inf_light,10,300,0,GRLIB_perm_max],
 	[blufor_squad_inf,20,400,0,GRLIB_perm_max],
-	[blufor_squad_recon,25,500,0,GRLIB_perm_max],
 	[blufor_squad_at,25,600,0,GRLIB_perm_max],
 	[blufor_squad_aa,25,600,0,GRLIB_perm_max],
 	[blufor_squad_mix,25,600,0,GRLIB_perm_max]

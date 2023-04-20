@@ -178,20 +178,9 @@ blufor_squad_mix = [
 "BWA3_Medic_Tropen"
 ];
 
-blufor_squad_recon = [
-"BWA3_recon_TL_Tropen",
-"BWA3_Sniper_G29_Tropen",
-"BWA3_Spotter_Tropen",
-"BWA3_recon_LAT_Tropen",
-"BWA3_recon_Pioneer_Tropen",
-"BWA3_recon_Medic_Tropen",
-"BWA3_Sniper_G82_Tropen"
-];
-
 squads = [
 	[blufor_squad_inf_light,10,300,0,GRLIB_perm_max],
 	[blufor_squad_inf,20,400,0,GRLIB_perm_max],
-	[blufor_squad_recon,25,500,0,GRLIB_perm_max],
 	[blufor_squad_at,25,600,0,GRLIB_perm_max],
 	[blufor_squad_aa,25,600,0,GRLIB_perm_max],
 	[blufor_squad_mix,25,600,0,GRLIB_perm_max]

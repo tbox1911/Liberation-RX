@@ -79,7 +79,7 @@ heavy_vehicles = [
 	["B_APC_Wheeled_01_cannon_F",10,500,20,GRLIB_perm_log],
 	["B_APC_Tracked_01_AA_F",10,500,20,GRLIB_perm_tank],
 	["I_APC_Wheeled_03_cannon_F",10,500,20,GRLIB_perm_tank],
-	["I_APC_tracked_03_cannon_F",10,500,20,GRLIB_perm_tank],
+	//["I_APC_tracked_03_cannon_F",10,500,20,GRLIB_perm_tank],
 	//["I_MBT_03_cannon_F",15,4500,15,GRLIB_perm_max],
 	//["I_E_Truck_02_MRL_F",15,3500,15,GRLIB_perm_max],
 	["B_MBT_01_cannon_F",15,1000,35,GRLIB_perm_tank],
@@ -198,19 +198,10 @@ blufor_squad_mix = [
 	"B_Soldier_F",
 	"B_Soldier_F"
 ];
-blufor_squad_recon = [
-	"B_recon_TL_F",
-	"B_recon_medic_F",
-	"B_Recon_Sharpshooter_F",
-	"B_recon_LAT_F",
-	"B_recon_M_F",
-	"B_recon_F"
-];
 
 squads = [
 	[blufor_squad_inf_light,10,300,0,GRLIB_perm_max],
 	[blufor_squad_inf,20,400,0,GRLIB_perm_max],
-	[blufor_squad_recon,25,500,0,GRLIB_perm_max],
 	[blufor_squad_at,25,600,0,GRLIB_perm_max],
 	[blufor_squad_aa,25,600,0,GRLIB_perm_max],
 	[blufor_squad_mix,25,600,0,GRLIB_perm_max]

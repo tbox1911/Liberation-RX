@@ -219,22 +219,13 @@ blufor_squad_mix = [
 	"CUP_B_USMC_Soldier_AA",
 	"CUP_B_USMC_Soldier_AT"
 ];
-blufor_squad_recon = [
-	"CUP_B_USMC_MARSOC_TL_DA",
-	"CUP_B_USMC_MARSOC_Medic_DA",
-	"CUP_B_USMC_MARSOC_Marksman_DA",
-	"CUP_B_USMC_MARSOC_DA",
-	"CUP_B_USMC_MARSOC_EL_DA",
-	"CUP_B_USMC_MARSOC_CC_DA"
-];
 
 squads = [
 	[blufor_squad_inf_light,15,400,0,GRLIB_perm_max],
 	[blufor_squad_inf,25,550,0,GRLIB_perm_max],
 	[blufor_squad_at,25,600,0,GRLIB_perm_max],
 	[blufor_squad_aa,25,600,0,GRLIB_perm_max],
-	[blufor_squad_mix,25,600,0,GRLIB_perm_max],
-	[blufor_squad_recon,20,450,0,GRLIB_perm_max]
+	[blufor_squad_mix,25,600,0,GRLIB_perm_max]
 ];
 
 // All the UAVs must be declared here

@@ -234,7 +234,12 @@ blufor_squad_at = [
 	"vn_b_men_army_21"
 ];
 blufor_squad_aa = [
-	// No AA unit
+	"vn_b_men_army_02",
+	"vn_b_men_army_03",
+	"vn_b_men_army_12",
+	"vn_b_men_army_12",
+	"vn_b_men_army_21",
+	"vn_b_men_army_21"	
 ];
 blufor_squad_mix = [
 	"vn_b_men_army_02",
@@ -245,21 +250,13 @@ blufor_squad_mix = [
 	"vn_b_men_army_06",
 	"vn_b_men_army_07"
 ];
-blufor_squad_recon = [
-	"vn_b_men_sog_04",
-	"vn_b_men_sog_10",
-	"vn_b_men_sog_06",
-	"vn_b_men_sog_12",
-	"vn_b_men_sog_07",
-	"vn_b_men_sog_17"
-];
 
 squads = [
 	[blufor_squad_inf_light,15,400,0,GRLIB_perm_max],
 	[blufor_squad_inf,25,550,0,GRLIB_perm_max],
 	[blufor_squad_at,25,600,0,GRLIB_perm_max],
-	[blufor_squad_mix,25,600,0,GRLIB_perm_max],
-	[blufor_squad_recon,20,450,0,GRLIB_perm_max]
+	[blufor_squad_aa,25,600,0,GRLIB_perm_max],
+	[blufor_squad_mix,25,600,0,GRLIB_perm_max]
 ];
 
 // All the UAVs must be declared here

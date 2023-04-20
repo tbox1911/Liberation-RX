@@ -1,3 +1,10 @@
+// the LRX Admin Tool by pSiKO
+//
+// godmode / teleport
+// import / export save game
+// create object
+// manage player ban/score/ammo
+
 createDialog "liberation_admin";
 waitUntil { dialog };
 disableSerialization;

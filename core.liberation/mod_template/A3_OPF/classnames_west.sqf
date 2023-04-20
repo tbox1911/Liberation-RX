@@ -17,6 +17,9 @@ ammo_sling_typename = "Land_Pod_Heli_Transport_04_ammo_F";
 medic_sling_typename = "Land_Pod_Heli_Transport_04_medevac_F";
 pilot_classname = "O_Helipilot_F";
 crewman_classname = "O_crew_F";
+chimera_vehicle_overide = [
+  ["B_Heli_Transport_01_F", "O_Heli_Light_02_F"]
+];
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 infantry_units_west = [
@@ -49,7 +52,7 @@ light_vehicles = [
 	["O_Boat_Transport_01_F",1,25,1,GRLIB_perm_inf],
 	["C_Boat_Transport_02_F",2,25,2,GRLIB_perm_log],
 	["O_Boat_Armed_01_hmg_F",5,30,5,GRLIB_perm_log],
-	["B_SDV_01_F",5,30,5,GRLIB_perm_log],
+	["O_SDV_01_F",5,30,5,GRLIB_perm_log],
 	["C_Scooter_Transport_01_F",1,5,1,0],
 	["SUV_01_base_black_F",1,10,1,0],
 	["O_G_Offroad_01_F",1,10,1,0],
@@ -190,19 +193,10 @@ blufor_squad_mix = [
 	"O_soldier_F",
 	"O_soldier_F"
 ];
-blufor_squad_recon = [
-	"O_recon_TL_F",
-	"O_recon_medic_F",
-	"O_recon_F",
-	"O_recon_LAT_F",
-	"O_recon_M_F",
-	"O_recon_F"
-];
 
 squads = [
 	[blufor_squad_inf_light,10,300,0,GRLIB_perm_max],
 	[blufor_squad_inf,20,400,0,GRLIB_perm_max],
-	[blufor_squad_recon,25,500,0,GRLIB_perm_max],
 	[blufor_squad_at,25,600,0,GRLIB_perm_max],
 	[blufor_squad_aa,25,600,0,GRLIB_perm_max],
 	[blufor_squad_mix,25,600,0,GRLIB_perm_max]

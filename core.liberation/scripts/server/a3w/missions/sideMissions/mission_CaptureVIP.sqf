@@ -29,7 +29,7 @@ _setupObjects =
 	_grp = createGroup [GRLIB_side_enemy, true];
 	[_grp, _missionPos, 5, "guard"] call createCustomGroup;
 	{ _x moveInAny _vehicle1; [_x] joinSilent _aiGroup } forEach (units _grp);
-	(driver _vehicle1) limitSpeed 70;
+	(driver _vehicle1) limitSpeed 50;
 	sleep 2;
 
 	// veh2 + vip + squad

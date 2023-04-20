@@ -21,7 +21,9 @@ _setupObjects =
 	_vehiclePos = _missionPos findEmptyPosition [1, 60, "B_Heli_Transport_03_unarmed_F"];
 	_chopper_only = []; 
 	{if !(_x isKindOf "Plane") then {_chopper_only pushBack _x};true} count opfor_air;
-	_vehicle = [_vehiclePos, selectRandom _chopper_only, true, false, true] call F_libSpawnVehicle;
+	_vehicle = createVehicle [ (selectRandom _chopper_only), _vehiclePos, [], 0, "NONE"];
+	_vehicle allowDamage false;
+	_vehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	_vehicle setPos (getPos _vehicle);
 	_vehicle setVariable ["R3F_LOG_disabled", true, true];
 	_vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
@@ -32,10 +34,10 @@ _setupObjects =
 	_vehicle setHit [getText (configFile >> "cfgVehicles" >> (typeOf _vehicle) >> "HitPoints" >> "HitEngine" >> "name"), 1];
 	_smoke = "test_EmptyObjectForSmoke" createVehicle _vehiclePos;
 	_smoke attachTo [_vehicle, [0, 1.5, 0]];
-
-	[_missionPos] call clearlandmines;
 	sleep 2;
-	[_missionPos, 25] call createlandmines;
+	_vehicle allowDamage true;
+
+	[_missionPos, 30] call createlandmines;
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	[_aiGroup, _missionPos, _nbUnits, "infantry"] call createCustomGroup;
 

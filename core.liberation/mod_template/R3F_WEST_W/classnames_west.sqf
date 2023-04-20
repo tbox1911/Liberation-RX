@@ -186,23 +186,13 @@ blufor_squad_mix = [
 	"R3F_FANTASSIN_600_BLUFOR",
 	"R3F_FANTASSIN_MG_BLUFOR"
 ];
-blufor_squad_recon = [
-	"R3F_CQB_O",
-	"R3F_CQB_1",
-	"R3F_CQB_2",
-	"R3F_CQB_4",
-	"R3F_CQB_MEDIC",
-	"R3F_CQB_1",
-	"R3F_CQB_1"
-];
 
 squads = [
 	[blufor_squad_inf_light,10,400,0,GRLIB_perm_max],
 	[blufor_squad_inf,20,650,0,GRLIB_perm_max],
 	[blufor_squad_at,25,750,0,GRLIB_perm_max],
 	[blufor_squad_aa,25,750,0,GRLIB_perm_max],
-	[blufor_squad_mix,25,1000,0,GRLIB_perm_max],
-	[blufor_squad_recon,25,600,0,GRLIB_perm_max]
+	[blufor_squad_mix,25,1000,0,GRLIB_perm_max]
 ];
 
 // All the UAVs must be declared here

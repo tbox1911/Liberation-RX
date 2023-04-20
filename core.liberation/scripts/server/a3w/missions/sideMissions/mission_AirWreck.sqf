@@ -22,17 +22,19 @@ _setupObjects =
 	_wreckPos = _missionPos vectorAdd ([[5 + floor(random 20), 0, 0], random 360] call BIS_fnc_rotateVector2D);
 	_wreck = createVehicle [GRLIB_sar_wreck, _wreckPos, [], 0, "NONE"];
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 	// Class, Position, Fuel, Ammo, Damage, Special
 >>>>>>> 5fea71b4 (a3w and waypoints)
+=======
+	_wreck setpos (getpos _wreck);
+>>>>>>> 61d5a192 (adapt to terrain)
 	_box1 = [ammobox_b_typename, _missionPos, true] call boxSetup;
 	_box2 = [ammobox_b_typename, _missionPos, true] call boxSetup;
 	_box3 = [A3W_BoxWps, _missionPos, true] call boxSetup;
 
-	[_missionPos] call clearlandmines;
-	sleep 2;
-	[_missionPos, 25] call createlandmines;
+	[_missionPos, 30] call createlandmines;
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	[_aiGroup, _missionPos, _nbUnits, "infantry"] call createCustomGroup;
 

@@ -69,8 +69,14 @@ player addEventHandler ["Respawn", { [] spawn PAR_Player_Init }];
 // Init player EH
 [player] call PAR_EventHandler;
 
-// if ACE med is active no AI revive
-if (!GRLIB_ACE_medical_enabled) then { [] spawn PAR_AI_Manager };
+// Handle Damage EH
+player removeAllEventHandlers "HandleDamage";
+if (GRLIB_revive != 0) then {
+  player addEventHandler ["HandleDamage", { _this call PAR_HandleDamage_EH }];
+  [] spawn PAR_AI_Manager;
+} else {
+  player addEventHandler ["HandleDamage", { _this call damage_manager_EH }];
+};
 
 waitUntil {!(isNull (findDisplay 46))};
 systemChat "-------- pSiKo AI Revive Initialized --------";

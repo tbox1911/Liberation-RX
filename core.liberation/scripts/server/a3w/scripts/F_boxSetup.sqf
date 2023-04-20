@@ -34,23 +34,6 @@ if (_locked) then {
 	_box setVariable ["GRLIB_vehicle_owner", "", true];
 };
 
-//ACE
-if (GRLIB_ACE_enabled) then {
- if (_type in GRLIB_movableObjects) then {
-	 	//Set the size of cargo
-		if ( _type in (GRLIB_cargoSize select 0)) then {
-			_cargoSize = ((GRLIB_cargoSize select 1) select ((GRLIB_cargoSize select 0) find _type));
-			if (_cargoSize <= GRLIB_maxLiftWeight) then {
-				[_box, true, [0, 3, 1], 0] call ace_dragging_fnc_setCarryable;
-			};
-			[_box, _cargoSize] call ace_cargo_fnc_setSize;
-		};	
-		// Set object movable with ACE. [_object, _enabled, [_offsetSide,_offsetForward,_offsetUp],_rotation] call ace_dragging_fnc_setCarryable;		
-		[_box, true, [0, 3, 0], 0] call ace_dragging_fnc_setDraggable;
-	};
-};
-
-
 if (["A3_", GRLIB_mod_west, true] call F_startsWith && _type == A3W_BoxWps) then {
 	private _box_refill = selectRandom ["mission_Ammo","mission_USLaunchers","mission_USSpecial","mission_Main_A3snipers","mission_Ammo"];
 	[_box, _box_refill] call fn_refillbox;

@@ -71,7 +71,7 @@ jobs:
         uses: Varrkan82/delete-older-releases@v0.2.1
         with:
           # repo: <owner>/<repoName> # defaults to current repo
-          keep_latest: 5
-          delete_tags: true
+          keep_latest: 10
+          delete_tags: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

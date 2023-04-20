@@ -1,7 +1,6 @@
 kill_manager = compileFinal preprocessFileLineNumbers "scripts\shared\kill_manager.sqf";
 clean_vehicle = compileFinal preprocessFileLineNumbers "scripts\shared\clean_vehicle.sqf";
 damage_manager_EH = compileFinal preprocessFileLineNumbers "scripts\shared\damage_manager.sqf";
-prisonner_captured = compileFinal preprocessFileLineNumbers "scripts\server\ai\prisonner_captured.sqf";
 
 // Remote Call
 // Server Side
@@ -43,3 +42,6 @@ remote_call_tunnel_success = compileFinal preprocessFileLineNumbers "scripts\cli
 // Vehicle Color
 [] execVM "addons\RPT\RPT_init.sqf";
 RPT_fnc_TextureVehicle = compileFinal preprocessFileLineNumbers "addons\RPT\fn_textureVehicle.sqf";
+
+// Units Awareness
+[] execVM "scripts\shared\active_awareness.sqf";
