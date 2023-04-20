@@ -42,7 +42,7 @@ while { true } do {
 		_near_fuel = [player, "FUEL", _distvehclose, false] call F_check_near;
 		_near_repair = [player, "REPAIR", _distvehclose, false] call F_check_near;
 		_near_atm = [player, "ATM", _distvehclose, true] call F_check_near;
-		_near_lhd = [player, "LHD", GRLIB_sector_size] call F_check_near;
+		_near_lhd = (player distance2D lhd < GRLIB_fob_range);
 		_my_dog = player getVariable ["my_dog", nil];
 		_my_squad = player getVariable ["my_squad", nil];
 		_idact_id = 0;

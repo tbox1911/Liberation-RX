@@ -6,7 +6,7 @@ while { true } do {
 	private _nearfob = [player, "FOB", GRLIB_fob_range] call F_check_near;
 	if (_nearfob) then {
 		private _nearrecycl = [nearestObjects [player, GRLIB_recycleable_classnames + GRLIB_vehicle_whitelist, 30], {
-			!([_x, "LHD", GRLIB_sector_size] call F_check_near) &&
+			(_x distance2D lhd > GRLIB_fob_range) &&
 			([player, _x] call is_owner) &&
 			isNil {_x getVariable "GRLIB_recycle_action"}
 		}] call BIS_fnc_conditionalSelect;

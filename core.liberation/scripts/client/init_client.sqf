@@ -162,7 +162,7 @@ addMissionEventHandler ["Draw3D",{
 	};
 
 	private _near_sign = nearestObjects [player, [FOB_sign], 5];
-	if (count (_near_sign) > 0 && !([player, "LHD", GRLIB_sector_size] call F_check_near)) then {
+	if (count (_near_sign) > 0 && (player distance2D lhd > GRLIB_fob_range)) then {
 		private _sign = _near_sign select 0;
 		private _gid = _sign getVariable ["GRLIB_vehicle_owner", "public"];
 		private _type = "FOB";

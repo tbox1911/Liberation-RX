@@ -18,9 +18,9 @@ waitUntil {sleep 1; !isNil "GRLIB_mobile_respawn"};
 while { true } do {
 	_veh_list = [vehicles, {
 		alive _x &&
+		(_x distance2D lhd > GRLIB_fob_range) &&
 		!(_x isKindOf "CAManBase") &&
 		!(_x isKindOf "WeaponHolderSimulated") &&
-		!([_x, "LHD", GRLIB_sector_size] call F_check_near) &&
 		!([typeOf _x, _no_marker_classnames] call F_itemIsInClass) &&
 		(isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull])) &&
 		(

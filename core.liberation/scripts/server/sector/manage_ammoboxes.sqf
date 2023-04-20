@@ -22,8 +22,7 @@ if ( !( _sector in GRLIB_military_sectors_already_activated )) then {
 	GRLIB_military_sectors_already_activated pushback _sector;
 
 	if ( !GRLIB_passive_income ) then {
-		_crates_amount = ceil (((0.5 * GRLIB_sector_military_value) + (random (0.5 * GRLIB_sector_military_value ))) * GRLIB_resources_multiplier);
-		if ( _crates_amount > 6 ) then { _crates_amount = 6 };
+		_crates_amount = round ((1 + floor random 4) * GRLIB_resources_multiplier) min 6;
 
 		_spawnpos = [4, (markerpos _sector), 100, 30, false] call R3F_LOG_FNCT_3D_tirer_position_degagee_sol;
 		if (count _spawnpos > 0) then {
