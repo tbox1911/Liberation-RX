@@ -200,6 +200,7 @@ static_vehicles_AI = [
 buildings = [
 =======
 // *** BUILDINGS ***
+<<<<<<< HEAD
 buildings = buildings_west + [
 >>>>>>> 150ad3dd (init)
 	["Land_PierLadder_F",0,0,0,GRLIB_perm_inf],
@@ -266,6 +267,14 @@ buildings = buildings_west + [
 	["Land_ClutterCutter_large_F",0,0,0,GRLIB_perm_tank],
 	[FOB_sign,0,0,0,99999]
 ];
+=======
+buildings = [[FOB_sign,0,0,0,99999]];
+if (isNil "buildings_west_overide") then {
+	buildings append buildings_default + buildings_west;
+} else {
+	buildings append buildings_west;
+};
+>>>>>>> 238fe50a (overide west buildings)
 
 // *** SIMPLE OBJECTS ***
 simple_objects = [
