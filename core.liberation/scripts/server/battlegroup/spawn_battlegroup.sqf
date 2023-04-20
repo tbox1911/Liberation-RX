@@ -45,7 +45,7 @@ if ( _spawn_marker != "" ) then {
 		if ( ( _x in opfor_troup_transports ) &&  ( [] call F_opforCap < GRLIB_battlegroup_cap ) ) then {
 			[_vehicle] spawn troup_transport;
 		};
-		last_battlegroup_size = last_battlegroup_size + 1;
+		last_battlegroup_size = last_battlegroup_size + 1.3;
 		sleep 2;
 	} foreach _selected_opfor_battlegroup;
 

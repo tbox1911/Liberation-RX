@@ -206,7 +206,6 @@ while { dialog && alive player } do {
 		};
 
 		if (GRLIB_squadaction == 2) then {
-			private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
 			private _ai_rank = 1 + (GRLIB_rank_level find (rank _selectedmember));
 			private _refund = 0;
 			if (_ai_rank > 1 ) then {
@@ -214,7 +213,7 @@ while { dialog && alive player } do {
 			} else {
 				_refund = [_selectedmember] call F_loadoutPrice;
 			};
-			player setVariable ["GREUH_ammo_count", (_ammo_collected + _refund), true];
+			[player, _refund] remoteExec ["ammo_add_remote_call", 2];
 			playSound "rearm";
 			if (_ai_rank > 1 ) then {
 				gamelogic globalChat format ["Soldier rank %2 Refund: %1, Thank you !", _refund, _ai_rank];
