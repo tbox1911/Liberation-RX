@@ -1,11 +1,7 @@
 params ["_static"];
 
 if (typeOf _static in static_vehicles_AI) exitWith {};
-private _list_static_weapons = [] + opfor_statics;
-{
-	_list_static_weapons pushback (_x select 0);
-} foreach static_vehicles;
-if (!(typeOf _static in _list_static_weapons)) exitWith {};
+if (!(typeOf _static in list_static_weapons)) exitWith {};
 
 while { alive _static } do {
 	// No damage

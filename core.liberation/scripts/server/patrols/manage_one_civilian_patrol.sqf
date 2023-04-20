@@ -72,7 +72,7 @@ while { GRLIB_endgame == 0 } do {
 			};
 
 			waitUntil {
-				sleep (30 + floor(random 30));
+				sleep 10;
 				( (!alive _civ) || ( count ([getpos _civ , 4000] call F_getNearbyPlayers) == 0 ) )
 			};
 

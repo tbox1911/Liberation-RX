@@ -15,15 +15,15 @@ while { count (units _grp) > 0 } do {
 			};
 
 			// Default for HMG, GMG
-			private _radius = 1000;
+			private _radius = 800;
 			private _kind = ["Man"];
 
 			private _veh_class = typeOf _vehicle;
-			if (_veh_class == "O_static_AT_F") then {_radius = 2000; _kind = ["Car", "Tank"]};
-			if (_veh_class == "O_static_AA_F") then {_radius = 2500; _kind = ["Air"]};
-			if (_veh_class == "O_Mortar_01_F") then {_radius = 3000; _kind = ["Man"]};
+			if (_veh_class isKindOf "AT_01_base_F") then {_radius = 1500; _kind = ["Car", "Tank"]};
+			if (_veh_class isKindOf "StaticMortar") then {_radius = 2000; _kind = ["Man"]};
+			if (_veh_class isKindOf "AA_01_base_F") then {_radius = 2500; _kind = ["Air"]};
 
-			_scan_target =  [ ((getPos _vehicle) nearEntities [ _kind, _radius]), {
+			private _scan_target = [ ((getPos _vehicle) nearEntities [ _kind, _radius]), {
 				alive _x &&
 				side _x == GRLIB_side_friendly &&
 				!(_x getVariable ['R3F_LOG_disabled', false]) &&
@@ -33,9 +33,9 @@ while { count (units _grp) > 0 } do {
 
 			if (count (_scan_target) > 0 ) then {
 				// closest first
-				_target_list = _scan_target apply {[_x distance2D _vehicle, _x]};
+				private _target_list = _scan_target apply {[_x distance2D _vehicle, _x]};
 				_target_list sort true;
-				_next_target = _target_list select 0 select 1;
+				private _next_target = _target_list select 0 select 1;
 
 				_vehicle setDir (_vehicle getDir _next_target);
 				_grp setBehaviour "COMBAT";
@@ -111,4 +111,5 @@ while { count (units _grp) > 0 } do {
 		};
 		waitUntil { sleep 5;(count (units _grp) == 0) || ( reinforcements_sector_under_attack != "" && ((markerpos reinforcements_sector_under_attack) distance2D (getPos leader _grp) < 4000) ) };
 	};
+	sleep 5;
 };

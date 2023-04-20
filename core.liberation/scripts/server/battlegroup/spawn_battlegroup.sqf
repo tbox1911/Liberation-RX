@@ -1,6 +1,6 @@
 if ( GRLIB_endgame == 1 ) exitWith {};
 
-private [ "_bg_groups", "_target_size", "_vehicle_pool" ];
+private [ "_bg_groups", "_target_size", "_vehicle_pool", "_selected_opfor_battlegroup" ];
 _bg_groups = [];
 
 last_battlegroup_size = 0;
