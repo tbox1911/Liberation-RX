@@ -30,6 +30,7 @@ dostartgame = 0;
 howtoplay = 0;
 
 createDialog "liberation_menu";
+uisleep 2;
 waitUntil { dialog };
 
 _noesckey = (findDisplay 5651) displayAddEventHandler ["KeyDown", "if ((_this select 1) == 1) then { true }"];
@@ -37,7 +38,7 @@ disableUserInput false;
 disableUserInput true;
 disableUserInput false;
 
-waitUntil { dostartgame == 1 || howtoplay == 1 || !dialog };
+waitUntil { dostartgame == 1 || howtoplay == 1 };
 //disableUserInput true;
 (findDisplay 5651) displayRemoveEventHandler ["KeyDown", _noesckey];
 closeDialog 0;
