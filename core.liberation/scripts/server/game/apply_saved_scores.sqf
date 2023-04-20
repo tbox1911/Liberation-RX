@@ -16,7 +16,7 @@ while { true } do {
 			{
 				if ( (getPlayerUID _nextplayer) == (_x select 0) ) then {
 					_nextplayer addScore ((_x select 1) - (score _nextplayer));
-					_nextplayer setVariable ["GREUH_score_last",score _nextplayer, true];
+					_nextplayer setVariable ["GREUH_score_last", score _nextplayer, true];
 					_nextplayer setVariable ["GREUH_ammo_count", (_x select 2), true];
 					//compat fix
 					if ( typeName (_x select 3) == "STRING") then {
@@ -34,6 +34,12 @@ while { true } do {
 				_nextplayer setVariable ["GREUH_fuel_count", GREUH_start_fuel, true];
 				GRLIB_player_scores pushback [getPlayerUID _nextplayer, 0, GREUH_start_ammo, GREUH_start_fuel, name _nextplayer];
 			};
+
+			// set player rank
+			_rank = [score _nextplayer] call get_rank;
+			_nextplayer setVariable ["GRLIB_Rank", _rank, true];
+			[] remoteExec ["set_rank", owner _nextplayer];
+			
 			_nextplayer setVariable ["GRLIB_score_set", 1, true];
 		};
 
@@ -48,7 +54,7 @@ while { true } do {
 				_newscores pushback [getPlayerUID _nextplayer, score _nextplayer, _ammo, _fuel, name _nextplayer];
 			};
 		};
-	} foreach allPlayers;
+	} foreach (AllPlayers - (entities "HeadlessClient_F"));
 	GRLIB_player_scores = _newscores;
 	publicVariable "GRLIB_player_scores";
 	sleep 5;

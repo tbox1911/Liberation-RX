@@ -1,17 +1,13 @@
-params [ "_unit" ];
-
-private _score = score _unit;
+private _score = score player;
 private _rank = "Private";
 GRLIB_squad_size_bonus = 0;
 
 if ((_score >= GRLIB_perm_ban) && (_score < GRLIB_perm_min)) then {
-	_rank = "None"; 
 	GRLIB_squad_size_bonus = 0;
 	infantry_cap = 5 * GRLIB_resources_multiplier;
 };
 
 if ((_score >= GRLIB_perm_min) && (_score < GRLIB_perm_inf)) then {
-	_rank = "Private";
 	GRLIB_squad_size_bonus = 0;
 	infantry_cap = 15 * GRLIB_resources_multiplier;
 };
@@ -46,7 +42,8 @@ if (_score >= GRLIB_perm_max) then {
 	infantry_cap = 70 * GRLIB_resources_multiplier;
 };
 
-if (_score >= 2 * GRLIB_perm_max) then {
+if (_score >= GRLIB_perm_max*2) then {
+	_rank = "Colonel";
 	GRLIB_squad_size_bonus = 6;
 	infantry_cap = 100 * GRLIB_resources_multiplier;
 };
@@ -55,7 +52,5 @@ if ( (GRLIB_squad_size + GRLIB_squad_size_bonus) > GRLIB_max_squad_size) then {
 	GRLIB_squad_size_bonus = (GRLIB_max_squad_size - GRLIB_squad_size);
 };
 
-if (_rank != "None") then { _unit setUnitRank _rank };
-_unit setVariable ["GRLIB_Rank", _rank, true];
-_unit addRating 1000;
-_rank;
+player setUnitRank _rank;
+player addRating 1000;

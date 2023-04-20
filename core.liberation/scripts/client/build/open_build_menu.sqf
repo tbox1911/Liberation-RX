@@ -17,15 +17,10 @@ _title = localize "STR_BUILD_TITLE";
 private _msg = "";
 private _score = score player;
 private _rank = player getVariable ["GRLIB_Rank", "Private"];
-
 private _iscommandant = false;
-if ( _rank == "Colonel" ) then {
-	_iscommandant = true;
-};
+if ( _rank in ["Colonel", "Super Colonel"] ) then {	_iscommandant = true };
 private _iscommander = false;
-if ( player == ([] call F_getCommander) ) then {
-	_iscommander = true;
-};
+if ( player == ([] call F_getCommander) ) then { _iscommander = true };
 private _near_outpost = (count (player nearObjects [FOB_outpost, 100]) > 0);
 ctrlSetText [1011, format ["%1 - %2", _title, _rank]];
 ctrlShow [ 108, _iscommandant ];
