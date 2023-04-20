@@ -24,7 +24,7 @@ _free_vehicles = _free_vehicles + [
 
 disableUserInput true;
 player playMove 'ainvpknlmstpslaywrfldnon_medic';
-for [{_i=0}, {_i<3}, {_i=_i+1}] do {
+for "_i" from 1 to 3 do {
 	playSound "repair";
 	sleep 2;
 };

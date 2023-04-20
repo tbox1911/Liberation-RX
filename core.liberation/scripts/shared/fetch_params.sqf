@@ -30,6 +30,7 @@ if ( isMultiplayer ) then {
 	GRLIB_max_squad_size = ["MaxSquadSize",3] call bis_fnc_getParamValue;
 	GRLIB_limited_arsenal = ["LimitedArsenal",1] call bis_fnc_getParamValue;
 	GRLIB_fancy_info = ["FancyInfo",2] call bis_fnc_getParamValue;
+	GRLIB_hide_opfor = ["HideOpfor",0] call bis_fnc_getParamValue;
 
 } else {
 	GRLIB_difficulty_modifier = 1;
@@ -63,6 +64,7 @@ if ( isMultiplayer ) then {
 	GRLIB_max_squad_size = 3;
 	GRLIB_limited_arsenal = 1;
 	GRLIB_fancy_info = 2;
+	GRLIB_hide_opfor = 0;
 };
 //ACE ACRE
 GRLIB_ACE_enabled = isClass(configFile >> "cfgPatches" >> "ace_main"); // Returns true if ACE is enabled
@@ -73,6 +75,7 @@ if ( GRLIB_fatigue == 1 ) then { GRLIB_fatigue = true } else { GRLIB_fatigue = f
 if ( GRLIB_introduction == 1 ) then { GRLIB_introduction = true } else { GRLIB_introduction = false };
 if ( GRLIB_deployment_cinematic == 1 ) then { GRLIB_deployment_cinematic = true } else { GRLIB_deployment_cinematic = false };
 if ( GRLIB_cheat_menu == 1 ) then { GRLIB_cheat_menu = true } else { GRLIB_cheat_menu = false };
+if ( GRLIB_hide_opfor == 1 ) then { GRLIB_hide_opfor = true } else { GRLIB_hide_opfor = false };
 if ( GRLIB_limited_arsenal == 1 ) then { GRLIB_limited_arsenal = true } else { GRLIB_limited_arsenal = false };
 if ( GRLIB_adaptive_opfor == 1 ) then { GRLIB_adaptive_opfor = true } else { GRLIB_adaptive_opfor = false };
 if ( GRLIB_passive_income == 1 ) then { GRLIB_passive_income = true } else { GRLIB_passive_income = false };

@@ -73,6 +73,7 @@ light_vehicles = [
 	["B_Truck_01_transport_F",5,30,5,GRLIB_perm_log],
 	["B_Truck_01_covered_F",5,30,5,GRLIB_perm_log],
 	["I_LT_01_cannon_F",2,200,2,GRLIB_perm_log],
+	["B_LSV_01_unarmed_F",2,25,2,GRLIB_perm_inf],
 	["B_LSV_01_armed_F",5,100,2,GRLIB_perm_log],
 	["B_UGV_01_F",5,10,5,GRLIB_perm_inf],
 	["B_UGV_01_rcws_F",5,250,5,GRLIB_perm_log]
@@ -80,9 +81,9 @@ light_vehicles = [
 
 heavy_vehicles = [
 	["B_APC_Tracked_01_rcws_F",10,500,10,GRLIB_perm_log],
-	["I_APC_Wheeled_03_cannon_F",10,500,10,GRLIB_perm_log],
+	["B_APC_Wheeled_01_cannon_F",10,500,10,GRLIB_perm_log],
 	["B_APC_Tracked_01_AA_F",10,500,10,GRLIB_perm_tank],
-	["B_APC_Wheeled_01_cannon_F",10,500,10,GRLIB_perm_tank],
+	["I_APC_Wheeled_03_cannon_F",10,500,10,GRLIB_perm_tank],
 	["I_APC_tracked_03_cannon_F",10,500,10,GRLIB_perm_tank],
 	["B_MBT_01_cannon_F",15,1000,15,GRLIB_perm_tank],
 	["B_MBT_01_TUSK_F",15,1500,15,GRLIB_perm_air],
@@ -402,9 +403,13 @@ militia_vehicles = [
 	"O_G_Offroad_01_armed_F",
 	"O_G_Offroad_01_AT_F",
 	"I_C_Offroad_02_LMG_F",
+	"O_LSV_02_armed_F",
+	"O_LSV_02_AT_F",
 	"O_G_Offroad_01_armed_F",
 	"O_G_Offroad_01_AT_F",
-	"I_C_Offroad_02_LMG_F"
+	"I_C_Offroad_02_LMG_F",
+	"O_LSV_02_armed_F",
+	"O_LSV_02_AT_F"
 ];
 
 opfor_boat = [
@@ -434,7 +439,9 @@ opfor_vehicles_low_intensity = [
 	"O_APC_Wheeled_02_rcws_F",
 	"O_MRAP_02_hmg_F",
 	"O_MRAP_02_hmg_F",
-	"O_MRAP_02_gmg_F"
+	"O_MRAP_02_gmg_F",
+	"O_LSV_02_armed_F",
+	"O_LSV_02_AT_F"
 ];
 
 opfor_battlegroup_vehicles = [
@@ -462,7 +469,9 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"O_MRAP_02_gmg_F",
 	"O_Truck_03_covered_F",
 	"O_Heli_Transport_04_bench_F",
-	"O_Truck_03_transport_F"
+	"O_Truck_03_transport_F",
+	"O_LSV_02_armed_F",
+	"O_LSV_02_AT_F"
 ];
 
 opfor_troup_transports = [
@@ -500,6 +509,8 @@ ind_recyclable = [
 ];
 
 opfor_recyclable = [
+	["O_LSV_02_armed_F",0,round (20 / GRLIB_recycling_percentage),0],
+	["O_LSV_02_AT_F",0,round (20 / GRLIB_recycling_percentage),0],
 	["O_G_Offroad_01_armed_F",0,round (20 / GRLIB_recycling_percentage),0],
 	["O_G_Offroad_01_AT_F",0,round (20 / GRLIB_recycling_percentage),0],
 	["I_C_Offroad_02_LMG_F",0,round (20 / GRLIB_recycling_percentage),0],
@@ -528,6 +539,9 @@ opfor_recyclable = [
 // Other stuff
 
 civilians = [
+	"C_Orestes",
+	"C_Nikos",
+	"C_Nikos_aged",
 	"C_man_1",
 	"C_man_polo_6_F",
 	"C_man_polo_3_F",
@@ -542,6 +556,8 @@ civilians = [
 	"C_Man_Fisherman_01_F",
 	"C_man_sport_1_F",
 	"C_man_sport_3_F",
+	"C_Man_Messenger_01_F",
+	"C_Story_Mechanic_01_F",
 	"C_Man_casual_2_F",
 	"C_Man_casual_4_F",
 	"C_Man_casual_1_F",
@@ -551,9 +567,8 @@ civilians = [
 	"C_man_shorts_2_F",
 	"C_man_w_worker_F",
 	"C_Paramedic_01_base_F",
-	"C_Man_UtilityWorker_01_F",
-	"C_Orestes",
-	"C_Nikos"
+	"C_Man_UAV_06_F",
+	"C_Man_UtilityWorker_01_F"
 ];
 
 civilian_vehicles = [

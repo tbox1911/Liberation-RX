@@ -64,11 +64,11 @@
 						<Russian>ВЫ БЕЗ СОЗНАНИЯ</Russian>
 				</Key>
 				<Key ID="STR_BUILD_ACTION">
-						<Original>-- BUILD --</Original>
-						<French>-- CONSTRUIRE --</French>
-						<German>-- BAUEN --</German>
-						<Spanish>-- CONSTRUIR --</Spanish>
-						<Russian>-- ОБЕСПЕЧЕНИЕ --</Russian>
+						<Original>-- BUILD</Original>
+						<French>-- CONSTRUIRE</French>
+						<German>-- BAUEN</German>
+						<Spanish>-- CONSTRUIR</Spanish>
+						<Russian>-- ОБЕСПЕЧЕНИЕ</Russian>
 				</Key>
 				<Key ID="STR_BUILD_TITLE">
 						<Original>BUILD MENU</Original>
@@ -176,11 +176,11 @@
 						<Russian>Это место подходит.</Russian>
 				</Key>
 				<Key ID="STR_ARSENAL_ACTION">
-						<Original>-- ARSENAL --</Original>
-						<French>-- ARSENAL --</French>
-						<German>-- ARSENAL --</German>
-						<Spanish>-- ARSENAL --</Spanish>
-						<Russian>-- АРСЕНАЛ --</Russian>
+						<Original>-- ARSENAL</Original>
+						<French>-- ARSENAL</French>
+						<German>-- ARSENAL</German>
+						<Spanish>-- ARSENAL</Spanish>
+						<Russian>-- АРСЕНАЛ</Russian>
 				</Key>
 				<Key ID="STR_ACTION_LOAD_BOX">
 						<Original>-- LOAD AMMO BOX</Original>
@@ -218,11 +218,11 @@
 						<Russian>Рядом нет техники способной перевозить ящики с боеприпасами.</Russian>
 				</Key>
 				<Key ID="STR_FOB_ACTION">
-						<Original>-- DEPLOY FOB --</Original>
-						<French>-- DEPLOYER FOB --</French>
-						<German>-- FOB Bereitstellen --</German>
-						<Spanish>-- DESPLEGAR FOB --</Spanish>
-						<Russian>-- РАЗВЕРНУТЬ FOB --</Russian>
+						<Original>-- DEPLOY FOB</Original>
+						<French>-- DEPLOYER FOB</French>
+						<German>-- FOB Bereitstellen</German>
+						<Spanish>-- DESPLEGAR FOB</Spanish>
+						<Russian>-- РАЗВЕРНУТЬ FOB</Russian>
 				</Key>
 				<Key ID="STR_FOB_BUILDING_IMPOSSIBLE">
 						<Original>Can't deploy a new FOB here, you must be at least %1 meters away from every other FOB. Nearest FOB is %2 meters away.</Original>
@@ -295,11 +295,11 @@
 						<Russian>РАЗМЕСТИТЬ</Russian>
 				</Key>
 				<Key ID="STR_DEPLOY_ACTION">
-						<Original>-- REDEPLOY --</Original>
-						<French>-- REDEPLOIEMENT --</French>
-						<German>-- NEU EINSETZEN --</German>
-						<Spanish>-- REDESPLEGAR --</Spanish>
-						<Russian>-- ПЕРЕМЕСТИТЬСЯ --</Russian>
+						<Original>-- REDEPLOY</Original>
+						<French>-- REDEPLOIEMENT</French>
+						<German>-- NEU EINSETZEN</German>
+						<Spanish>-- REDESPLEGAR</Spanish>
+						<Russian>-- ПЕРЕМЕСТИТЬСЯ</Russian>
 				</Key>
 				<Key ID="STR_BUILD_CREW">
 						<Original>Build (Crew)</Original>
@@ -1642,11 +1642,11 @@
 						<Russian>Стандартно</Russian>
 				</Key>
 				<Key ID="STR_FOB_REPACKAGE">
-						<Original>-- REPACKAGE FOB --</Original>
-						<French>-- REPLIER FOB --</French>
-						<German>-- FOB EINPACKEN --</German>
-						<Spanish>-- EMPAQUETAR FOB --</Spanish>
-						<Russian>-- СВЕРНУТЬ FOB --</Russian>
+						<Original>-- REPACKAGE FOB</Original>
+						<French>-- REPLIER FOB</French>
+						<German>-- FOB EINPACKEN</German>
+						<Spanish>-- EMPAQUETAR FOB</Spanish>
+						<Russian>-- СВЕРНУТЬ FOB</Russian>
 				</Key>
 				<Key ID="STR_FOB_REPACKAGE_TITLE">
 						<Original>REPACKAGE FOB</Original>

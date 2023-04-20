@@ -10,6 +10,8 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 
 R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
 [
+	"I_Heli_light_03_unarmed_F",
+	"O_Heli_Light_02_unarmed_F",
 	"B_Heli_Transport_03_F",
 	"B_Heli_Transport_03_unarmed_F",
 	"B_Heli_Transport_01_F",
@@ -26,6 +28,7 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 [
 	["B_Heli_Light_01_F", 10],
 	["B_Heli_Light_01_armed_F", 10],
+	["O_Heli_Light_02_unarmed_F", 50],
 	["B_Heli_Attack_01_F", 25],
 	["I_Heli_light_03_unarmed_F", 50],
 	["B_Heli_Transport_01_F", 100],
@@ -289,6 +292,7 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 
 R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 [
+	"Land_Suitcase_F",
 	"Wall_F",
 	//"Items_base_F",
 	"HBarrier_base_F",
@@ -322,6 +326,7 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 [
+	["Land_Suitcase_F", 1],
 	["Wall_F", 5],
 	//["Items_base_F", 5],
 	["Land_HBarrierBig_F", 5],

@@ -8,6 +8,7 @@ if (!isServer) exitWith {};
 
 SideMissions = [
 	// Mission filename, weight
+	["mission_Delivery", 1],
 	["mission_TownInvasion", 1],
 	["mission_HostileHelicopter", 1],
 	["mission_MeetResistance", 1]

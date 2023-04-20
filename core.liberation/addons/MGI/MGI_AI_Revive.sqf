@@ -38,7 +38,6 @@ MGI_fn_EHDamage = {
   _unit setVariable ["MGI_busy", nil];
   _unit setVariable ["MGI_heal", nil];
   _unit setVariable ["MGI_healed", nil];
-  _unit setVariable [format["Bros_%1",MGI_Grp_ID], true];
 };
 
 MGI_fn_Revive = {
@@ -73,8 +72,8 @@ MGI_fn_Revive = {
           // AI rejoin player's group
           if (group _x != group player &&
               isNil {_x getVariable 'MGI_busy'} &&
-              (count (units group player) < GRLIB_max_squad_size+GRLIB_squad_size_bonus)
-            ) then { [_x] joinSilent my_group };
+              (count (MGI_bros) < GRLIB_max_squad_size+GRLIB_squad_size_bonus)
+          ) then { [_x] joinSilent my_group };
 
 
           // AI stop doing shit !
@@ -96,8 +95,9 @@ MGI_fn_Revive = {
           };
 
         };
+        sleep 0.1;
       } forEach MGI_bros;
-      sleep 10;
+      sleep 5;
     };
 };
 

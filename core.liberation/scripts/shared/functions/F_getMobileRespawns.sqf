@@ -6,7 +6,7 @@ _respawn_trucks_unsorted = [ vehicles, { ( typeof _x == Respawn_truck_typename |
 										] call BIS_fnc_conditionalSelect;
 
 _respawn_tents_unsorted = [ allMissionObjects "Land_TentDome_F", {  alive _x &&
-										_x distance lhd > 1000 &&
+										_x distance2D lhd > 1000 &&
 										_x distance2D ([_x] call F_getNearestFob) > GRLIB_sector_size &&
 										!surfaceIsWater (getpos _x) &&
 										isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull])

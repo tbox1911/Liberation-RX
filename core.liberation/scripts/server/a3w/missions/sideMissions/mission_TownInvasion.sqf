@@ -11,7 +11,7 @@ private ["_nbUnits", "_box1", "_box2", "_townName", "_putOnRoof", "_fillEvenly",
 _setupVars =
 {
 	_missionType = "Town Invasion";
-	_nbUnits = if (missionDifficultyHard) then { AI_GROUP_LARGE } else { AI_GROUP_MEDIUM };
+	_nbUnits = if (count AllPlayers > 2) then { AI_GROUP_LARGE } else { AI_GROUP_MEDIUM };
 	//randomize amount of units
 	_nbUnits = _nbUnits + round(random (_nbUnits*0.5));
 
@@ -23,6 +23,7 @@ _setupVars =
 	if (random 1 < 0.75) then { _putOnRoof = true } else { _putOnRoof = false };
 	// 25% chance on AI trying to fit into a single building instead of spreading out
 	if (random 1 < 0.75) then { _fillEvenly = true } else { _fillEvenly = false };
+	_locationsArray = nil;
 };
 
 _setupObjects =

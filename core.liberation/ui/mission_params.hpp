@@ -18,6 +18,12 @@ class Params
 		texts[] = { $STR_PARAMS_ENABLED, "Info", $STR_PARAMS_DISABLED };
 		default = 2;
 	};
+	class HideOpfor {
+		title = "Hide Opfor Markers";
+		values[] = { 1, 0 };
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
+		default = 0;
+	};
 	class LimitedArsenal {
 		title = "Limited Arsenal";
 		values[] = { 1, 0 };

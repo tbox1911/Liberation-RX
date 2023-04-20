@@ -1,22 +1,24 @@
 
-private [ "_idact_build","_idact_arsenal", "_idact_redeploy", "_idact_tutorial",
-		  "_distfob", "_distarsenal","_distspawn","_distredeploy", "_idact_commander",
-		  "_idact_halo", "_idact_heal", "_idact_lead","_idact_drop", "_idact_squad",
-		  "_idact_send", "_idact_packfob", "_idact_unpackfob", "_idact_packtent", "_idact_unpacktent",
-		  "_idact_dog_del", "_idact_dog_find", "_idact_dog_recall"];
+private["_idact_build","_idact_arsenal","_idact_redeploy","_idact_tutorial","_idact_commander",
+		"_idact_halo","_idact_heal","_idact_lead","_idact_drop","_idact_squad","_idact_send",
+		"_idact_packfob","_idact_unpackfob","_idact_packtent","_idact_unpacktent","_idact_buyfuel",
+		"_idact_secondary","_idact_cheat","_idact_options", "_idact_garage","_idact_dog_action1",
+		"_idact_dog_action2","_idact_dog_action3","_idact_dog_action4"
+];
 
-_idact_build = -1; _idact_arsenal = -1; _idact_redeploy = -1; _idact_tutorial = -1; _idact_squad = -1;
-_idact_commander = -1; _idact_repackage = -1; _idact_halo = -1; _idact_heal = -1; _idact_lead = -1;
-_idact_drop = -1; _idact_send = -1; _idact_secondary = -1; _idact_packfob = -1; _idact_unpackfob = -1;
-_idact_packtent = -1; _idact_unpacktent = -1; _idact_buyfuel = -1; _idact_dog_del = -1; _idact_dog_find = -1;
-_idact_dog_recall = -1;
+private _distfob = 100;
+private _distarsenal = 10;
+private _distspawn = 10;
+private _distredeploy = 20;
+private _distveh = 15;
+private _distvehclose = 5;
 
-_distfob = 100;
-_distarsenal = 10;
-_distspawn = 10;
-_distredeploy = 20;
-_distveh = 15;
-_distvehclose = 5;
+_idact_build=-1;_idact_arsenal=-1;_idact_redeploy=-1;_idact_tutorial=-1;_idact_squad=-1;
+_idact_commander=-1;_idact_repackage=-1;_idact_halo=-1;_idact_heal=-1;_idact_lead=-1;
+_idact_drop=-1;_idact_send=-1;_idact_secondary=-1;_idact_packfob=-1;_idact_unpackfob=-1;
+_idact_packtent=-1;_idact_unpacktent=-1;_idact_buyfuel=-1;_idact_cheat=-1;_idact_options=-1;
+_idact_garage=-1;_idact_dog_action1=-1;_idact_dog_action2=-1;_idact_dog_action3=-1;
+_idact_dog_action4=-1;
 
 is_DogOnDuty = {
 	private _ret = false;
@@ -33,7 +35,12 @@ waitUntil {sleep 1; !isNil "GRLIB_player_spawned" };
 waituntil {sleep 1; GRLIB_player_spawned; (player getVariable ["GRLIB_score_set", 0] == 1)};
 
 while { true } do {
+
 	_fobdistance = round (player distance2D ([] call F_getNearestFob));
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1a044c04 (clean)
 	_near_arsenal = (player nearEntities [Arsenal_typename, _distarsenal]) + (player nearObjects [FOB_typename, _distredeploy]);
 	_near_tent = nearestObjects [player, ["Land_TentDome_F"], _distvehclose];
 	_near_spawn = (player nearEntities [[Respawn_truck_typename, huron_typename], _distspawn]) + _near_tent;
@@ -41,7 +48,6 @@ while { true } do {
 	_near_fuel = [player, "FUEL", _distvehclose, false] call F_check_near;
 	_near_atm = [player, "ATM", _distvehclose, true] call F_check_near;
 	_my_dog = player getVariable ["my_dog", objNull];
-
 
 	// Tuto
 	if ( [] call is_menuok && (player distance lhd) <= 200 ) then {
@@ -55,42 +61,22 @@ while { true } do {
 		};
 	};
 
-	// Dog - Find
+	// Dog - Actions
 	if ( [] call is_menuok && !isNull _my_dog ) then {
-		if ( _idact_dog_find == -1 ) then {
+		if ( _idact_dog_action1 == -1 ) then {
 			_icon = (getText (configFile >> "CfgVehicleIcons" >> "iconAnimal"));
-			_idact_dog_find = player addAction ["<t color='#80FF80'>" + "-- DOG FIND."+ "</t> <img size='1' image='" + _icon + "'/>","scripts\client\actions\do_dog.sqf","find",-640,false,true,"","!call is_DogOnDuty"];
+			_idact_dog_action1 = player addAction ["<t color='#80FF80'>" + "-- DOG FIND."+ "</t> <img size='1' image='" + _icon + "'/>","scripts\client\actions\do_dog.sqf","find",-640,false,true,"","!call is_DogOnDuty"];
+			_idact_dog_action2 = player addAction ["<t color='#80FF80'>" + "-- DOG RECALL."+ "</t> <img size='1' image='" + _icon + "'/>","scripts\client\actions\do_dog.sqf","recall",-640,false,true,"","call is_DogOnDuty"];
+			_idact_dog_action3 = player addAction ["<t color='#80FF80'>" + "-- DOG STOP." + "</t> <img size='1' image='" + _icon + "'/>","scripts\client\actions\do_dog.sqf","stop",-641,false,true,"",""];
+			_idact_dog_action4 = player addAction ["<t color='#FF8080'>" + "-- DOG DISMISS." + "</t> <img size='1' image='" + _icon + "'/>","scripts\client\actions\do_dog.sqf","del",-641,false,true,"",""];
 		};
 	} else {
-		if ( _idact_dog_find != -1 ) then {
-			player removeAction _idact_dog_find;
-			_idact_dog_find = -1;
-		};
-	};
-
-	// Dog - Recall
-	if ( [] call is_menuok && !isNull _my_dog ) then {
-		if ( _idact_dog_recall == -1 ) then {
-			_icon = (getText (configFile >> "CfgVehicleIcons" >> "iconAnimal"));
-			_idact_dog_recall = player addAction ["<t color='#80FF80'>" + "-- DOG RECALL."+ "</t> <img size='1' image='" + _icon + "'/>","scripts\client\actions\do_dog.sqf","recall",-640,false,true,"","call is_DogOnDuty"];
-		};
-	} else {
-		if ( _idact_dog_recall != -1 ) then {
-			player removeAction _idact_dog_recall;
-			_idact_dog_recall = -1;
-		};
-	};
-
-	// Dog - Delete
-	if ( [] call is_menuok && !isNull _my_dog ) then {
-		if ( _idact_dog_del == -1 ) then {
-			_icon = (getText (configFile >> "CfgVehicleIcons" >> "iconAnimal"));
-			_idact_dog_del = player addAction ["<t color='#FF8080'>" + "-- DOG DISMISS." + "</t> <img size='1' image='" + _icon + "'/>","scripts\client\actions\do_dog.sqf","del",-641,false,true,"",""];
-		};
-	} else {
-		if ( _idact_dog_del != -1 ) then {
-			player removeAction _idact_dog_del;
-			_idact_dog_del = -1;
+		if ( _idact_dog_action1 != -1 ) then {
+			player removeAction _idact_dog_action1;
+			player removeAction _idact_dog_action2;
+			player removeAction _idact_dog_action3;
+			player removeAction _idact_dog_action4;
+			_idact_dog_action1 = -1; _idact_dog_action2 = -1;_idact_dog_action3 = -1;_idact_dog_action4 = -1;
 		};
 	};
 
@@ -157,7 +143,7 @@ while { true } do {
 	// Air Drop
 	if ( [] call is_menuok && (player distance ([] call F_getNearestFob)) >= (2 * GRLIB_fob_range) && (player distance lhd >= 1000) ) then {
 		if ( _idact_drop == -1 ) then {
-			_idact_drop = player addAction ["<t color='#00F0F0'>-- AIR SUPPORT --</t> <img size='1' image='R3F_LOG\icons\r3f_drop.paa'/>","scripts\client\misc\drop_support.sqf","",-980,false,true];
+			_idact_drop = player addAction ["<t color='#00F0F0'>-- AIR SUPPORT</t> <img size='1' image='R3F_LOG\icons\r3f_drop.paa'/>","scripts\client\misc\drop_support.sqf","",-980,false,true];
 		};
 	} else {
 		if ( _idact_drop != -1 ) then {
@@ -187,6 +173,18 @@ while { true } do {
 		if ( _idact_arsenal != -1 ) then {
 			player removeAction _idact_arsenal;
 			_idact_arsenal = -1;
+		};
+	};
+
+	// Virtual Garage
+	if ( [] call is_menuok && _fobdistance > 15 && _fobdistance < _distfob && (player distance lhd) >= 1000 && score player >= GRLIB_perm_inf ) then {
+		if ( _idact_garage == -1 ) then {
+			_idact_garage = player addAction ["<t color='#0080FF'>-- VIRTUAL GARAGE" + "</t> <img size='1' image='res\ui_veh.paa'/>","addons\VIRT\virtual_garage.sqf","",-984,false,true,"",""];
+		};
+	} else {
+		if ( _idact_garage != -1 ) then {
+			player removeAction _idact_garage;
+			_idact_garage = -1;
 		};
 	};
 
@@ -283,6 +281,30 @@ while { true } do {
 		if ( _idact_unpacktent != -1 ) then {
 			player removeAction _idact_unpacktent;
 			_idact_unpacktent = -1;
+		};
+	};
+
+	// Options
+	if ( [] call is_menuok ) then {
+		if ( _idact_options == -1 ) then {
+			_idact_options = player addAction ["<t color='#FF8000'>-- Extended Options</t>","GREUH\scripts\GREUH_dialog.sqf","",-997,false,true];
+		};
+	} else {
+		if ( _idact_options != -1 ) then {
+			player removeAction _idact_options;
+			_idact_options = -1;
+		};
+	};
+
+	// Cheat Menu
+	if ( [] call is_menuok && ([] call F_isAdmin) && GRLIB_cheat_menu ) then {
+		if ( _idact_cheat == -1 ) then {
+			_idact_cheat = player addAction ["<t color='#FF8000'>-- CHEAT MENU</t>","scripts\client\commander\cheat_menu.sqf","",-998,false,true,"",""];
+		};
+	} else {
+		if ( _idact_cheat != -1 ) then {
+			player removeAction _idact_cheat;
+			_idact_cheat = -1;
 		};
 	};
 

@@ -67,7 +67,7 @@ _craterDistCheck = TRUE;						// TRUE to delete any craters that are far from pl
 _craterDist = 2000;								// Distance (meters) from players that craters are not deleted if below max.
 _weaponHolderLimit = 50;						// Weapon Holders. Set -1 to disable.
 _weaponHolderDistCheck = TRUE;					// TRUE to delete any weapon holders that are far from players.
-_weaponHolderDist = 500;							// Distance (meters) from players that ground garbage is not deleted if below max.
+_weaponHolderDist = 500;						// Distance (meters) from players that ground garbage is not deleted if below max.
 _minesLimit = -1;								// Land mines. Set -1 to disable.
 _minesDistCheck = TRUE;							// TRUE to delete any mines that are far from ANY UNIT (not just players).
 _minesDist = 3000;								// Distance (meters) from players that land mines are not deleted if below max.
@@ -77,8 +77,8 @@ _staticsDist = 3000;							// Distance (meters) from players that static weapons
 _ruinsLimit = 20;								// Ruins. Set -1 to disable.
 _ruinsDistCheck = TRUE;							// TRUE to delete any ruins that are far from players.
 _ruinsDist = 3000;								// Distance (meters) from players that ruins are not deleted if below max.
-_orphanedTriggers = TRUE;						// Clean orphaned triggers in MP.
-_emptyGroups = TRUE;							// Set FALSE to not delete empty groups.
+_orphanedTriggers = FALSE;						// Clean orphaned triggers in MP.
+_emptyGroups = FALSE;							// Set FALSE to not delete empty groups.
 
 //================================================================ LOOP
 

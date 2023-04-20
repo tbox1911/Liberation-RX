@@ -14,6 +14,7 @@ send_aircraft_remote_call = compileFinal preprocessFileLineNumbers "scripts\serv
 addel_group_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\addel_group.sqf";
 sendammo_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\sendammo_remote_call.sqf";
 dog_action_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\dog_action_remote_call.sqf";
+vehicle_garage_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\vehicle_garage_remote_call.sqf";
 
 // Client Side
 remote_call_sector = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_sector.sqf";
@@ -28,6 +29,7 @@ remote_call_intel = compileFinal preprocessFileLineNumbers "scripts\client\remot
 remote_call_incoming = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_incoming.sqf";
 remote_call_airdrop = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_airdrop.sqf";
 remote_call_showinfo = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_showinfo.sqf";
+remote_call_garage = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_garage.sqf";
 
 // Vehicle Color
 RPT_fnc_TextureVehicle = compileFinal preprocessFileLineNumbers "addons\RPT\fn_textureVehicle.sqf";

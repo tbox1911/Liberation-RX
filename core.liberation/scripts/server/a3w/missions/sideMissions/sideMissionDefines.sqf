@@ -17,4 +17,3 @@
 
 #define AI_GROUP_MEDIUM 7
 #define AI_GROUP_LARGE 12
-#define missionDifficultyHard true

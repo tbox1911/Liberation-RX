@@ -6,7 +6,7 @@ private _alive = alive player;
 private _onfoot = vehicle player == player;
 private _noflight = (isTouchingGround player || (round (getPosATL player select 2) <= 20));
 
-if (_alive && _onfoot && _R3F_move && _noflight) then {
+if (_alive && _onfoot && _R3F_move && _noflight && build_confirmed == 0) then {
 	_ret = true;
 };
 

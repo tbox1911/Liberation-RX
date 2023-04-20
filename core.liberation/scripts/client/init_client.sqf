@@ -41,7 +41,7 @@ clear_wpt = compileFinal preprocessFileLineNumbers "scripts\client\misc\clear_wa
 is_owner = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_owner.sqf";
 is_menuok = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_menuok.sqf";
 is_local = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_local.sqf";
-player_EVH = compileFinal preprocessFileLineNumbers "addons\FAR_revive\FAR_EventHandler.sqf";
+player_EVH = compileFinal preprocessFileLineNumbers "addons\FAR\FAR_EventHandler.sqf";
 get_group = compileFinal preprocessFileLineNumbers "scripts\client\misc\get_group.sqf";
 paraDrop = compileFinal preprocessFileLineNumbers "scripts\client\spawn\paraDrop.sqf";
 
@@ -57,6 +57,7 @@ paraDrop = compileFinal preprocessFileLineNumbers "scripts\client\spawn\paraDrop
 [] execVM "scripts\client\build\do_build.sqf";
 [] execVM "scripts\client\markers\empty_vehicles_marker.sqf";
 [] execVM "scripts\client\markers\fob_markers.sqf";
+[] execVM "scripts\client\markers\a3w_mission_marker.sqf";
 [] execVM "scripts\client\markers\group_icons.sqf";
 [] execVM "scripts\client\markers\hostile_groups.sqf";
 [] execVM "scripts\client\markers\huron_marker.sqf";
@@ -90,13 +91,13 @@ GREUH_TipsText = [];
 } foreach allCurators;
 
 if (!GRLIB_ACE_enabled) then {
-	[] execVM "scripts\client\misc\support_manager.sqf";
 	[] execVM "addons\MGI\MGI_AI_Revive.sqf";
 	[] execVM "addons\MGR\MagRepack_init.sqf";
 	[] execVM "addons\NRE\NRE_init.sqf";
 	[] execVM "addons\RPT\RPT_init.sqf";
-	[] execVM "addons\fpsFix\vehicleManager.sqf";
 	[] execVM "addons\KEY\shortcut_init.sqf";
+	[] execVM "addons\VIRT\virtual_garage_init.sqf";
+	[] execVM "scripts\client\misc\support_manager.sqf";
 };
 
 // Sign Add

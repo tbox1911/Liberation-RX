@@ -24,9 +24,11 @@ if ( _countblufor_ownership == 0 && _countopfor_ownership > _cap_thresold_count 
 if ( [_thatpos, GRLIB_side_enemy, GRLIB_capture_size] call F_getNearestTower != "" ) then {
 	_tower = [];
 	_tower = (_thatpos nearobjects ["Land_Communication_F", GRLIB_capture_size]) select 0;
+	if (!isNil "_tower") then {
 		if (alive _tower) then {
 			_sectorside = GRLIB_side_enemy;
 		};
+	};
 };
 
 _sectorside

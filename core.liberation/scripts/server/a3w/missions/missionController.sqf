@@ -51,6 +51,13 @@ while {true} do
 			} else {
 				_missionsList = ["mission_MeetResistance", true, _missionsList] call updateMissionsList;
 			};
+
+			// Delivery
+			if (count blufor_sectors >= 10) then {
+				_missionsList = ["mission_Delivery", false, _missionsList, 1] call updateMissionsList;
+			} else {
+				_missionsList = ["mission_Delivery", true, _missionsList] call updateMissionsList;
+			};
 			_nextMission = _missionsList call fn_selectRandomWeighted;
 		};
 	};

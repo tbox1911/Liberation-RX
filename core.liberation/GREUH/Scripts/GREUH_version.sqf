@@ -18,6 +18,7 @@ player createDiarySubject ["Info","Info"];
 player createDiarySubject ["Info", "pSiKO Tweaks"];
 player createDiaryRecord ["Info", ["pSiKO Tweaks", format ["This version was build on %1 at %2 in France, with love ;)", GRLIB_build_date, GRLIB_build_time]]];
 player createDiaryRecord ["Info", ["pSiKO Tweaks", format ["All the rest and Scripting Integration<br/>by <font color='#0080ff'>-pSiKO-</font>"]]];
+player createDiaryRecord ["Info", ["pSiKO Tweaks", format ["Beautiful Artwork<br/>by <font color='%1'>-Zeus39-</font>", call _getRandomColor]]];
 player createDiaryRecord ["Info", ["pSiKO Tweaks", format ["Mag Repack v3.13<br/>by <font color='%1'>-Outlawled-</font>", call _getRandomColor]]];
 player createDiaryRecord ["Info", ["pSiKO Tweaks", format ["A3W Missions v1.3<br/>by <font color='%1'>-AgentRev-</font>", call _getRandomColor]]];
 player createDiaryRecord ["Info", ["pSiKO Tweaks", format ["R3F Logistics v3.1<br/>by <font color='%1'>-Team-R3F.org-</font>", call _getRandomColor]]];
@@ -54,7 +55,7 @@ player createDiaryRecord ["Table", ["Table", format ["<font color='#00ff40'>+5  
 player createDiaryRecord ["Table", ["Table", format ["-- Killing Table --"]]];
 
 player createDiarySubject ["Shortcut","Shortcut"];
-player createDiaryRecord ["Shortcut", ["Shortcut", format ["Key  <font color='#ff8000'>%1</font>  :  (UserAction n°9) Take Screenshot.", ["User9"] call _getkeyName]]];
+player createDiaryRecord ["Shortcut", ["Shortcut", format ["Key  <font color='#ff8000'>%1</font>  :  (UserAction n°4) Take Screenshot.", ["User4"] call _getkeyName]]];
 player createDiaryRecord ["Shortcut", ["Shortcut", format ["Key  <font color='#ff8000'>%1</font>  :  (UserAction n°3) Toggle earplugs on/off.", ["User3"] call _getkeyName]]];
 player createDiaryRecord ["Shortcut", ["Shortcut", format ["Key  <font color='#ff8000'>%1</font>  :  (UserAction n°2) Always run.", ["User2"] call _getkeyName]]];
 player createDiaryRecord ["Shortcut", ["Shortcut", format ["Key  <font color='#ff8000'>%1</font>  :  (UserAction n°1) Weapon to the back.", ["User1"] call _getkeyName]]];

@@ -3,6 +3,7 @@ private [ "_oldbuildtype", "_cfg", "_initindex", "_dialog", "_iscommandant", "_s
 if ( ( [ getpos player , 500 , GRLIB_side_enemy ] call F_getUnitsCount ) > 4 ) exitWith { hint localize "STR_BUILD_ENEMIES_NEARBY"; };
 
 if ( isNil "buildtype" ) then { buildtype = 1 };
+if ( buildtype > 8 ) then { buildtype = 1 };
 if ( isNil "buildindex" ) then { buildindex = -1 };
 dobuild = 0;
 _oldbuildtype = -1;
@@ -119,7 +120,8 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 	_affordable = false;
 	_squad_full = false;
 	_ammo_collected = player getVariable ["GREUH_ammo_count",0];
-	if ((buildtype == 1) && (count (units group player) >= GRLIB_max_squad_size+GRLIB_squad_size_bonus)) then {
+	_bros = allUnits select {(_x getVariable [format["Bros_%1",MGI_Grp_ID],nil])};
+	if ((buildtype == 1) && (count (_bros) >= GRLIB_max_squad_size+GRLIB_squad_size_bonus)) then {
 		_squad_full = true;
 	};
 	_linked = false;

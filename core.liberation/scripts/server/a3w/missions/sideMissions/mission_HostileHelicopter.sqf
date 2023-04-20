@@ -39,7 +39,7 @@ _setupObjects =
 	_aiGroup setCombatMode "RED"; // Agressive behaviour
 	_aiGroup setBehaviour "AWARE";
 	_aiGroup setFormation "STAG COLUMN";
-	_speedMode = if (missionDifficultyHard) then { "NORMAL" } else { "LIMITED" };
+	_speedMode = if (count AllPlayers > 2) then { "NORMAL" } else { "LIMITED" };
 	_aiGroup setSpeedMode _speedMode;
 
 	_vehicle = [_vehicleClass, _missionPos, 0, _aiGroup] call _createVehicle;
