@@ -88,7 +88,7 @@ while {
 				_waypoint setWaypointCombatMode "GREEN";
 				_waypoint setWaypointCompletionRadius 50;
 
-				_waypoint = _grp addWaypoint [markerPos _nearest_sector, 0];
+				_waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];
 				_waypoint setWaypointType "MOVE";
 				_waypoint setWaypointCompletionRadius 50;
 				_waypoint setWaypointStatements ["true", "deleteVehicle this"];

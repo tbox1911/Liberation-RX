@@ -1,4 +1,5 @@
 // Additional Key Shortcut
+waitUntil {sleep 0.5;!(isNil "GRLIB_whitelisted_steamids")};
 waitUntil {sleep 0.5;!(isNull (findDisplay 46))};
 
 // Weapon to the back
@@ -57,4 +58,4 @@ if ((getPlayerUID player) in GRLIB_whitelisted_steamids) then {
 			gamelogic globalChat "LRX Diag called.";
 		};
 	}];
-}:
+};
