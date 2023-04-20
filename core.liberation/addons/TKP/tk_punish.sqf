@@ -8,7 +8,7 @@ if (_result) then {
 	_kill = BTC_logic getVariable [_uid, 0];
 	BTC_logic setVariable [_uid, (_kill + 1), true];
 	_msg = format [localize "STR_TK_MSG1", name _target, name _killer];
-	[_target] remoteExec ["LRX_tk_actions", owner _killer];
+	[_killer, _target] remoteExec ["LRX_tk_actions",[0,-2] select isDedicated];
 } else {
 	_msg = format [localize "STR_TK_MSG2", name _target, name _killer];
 };

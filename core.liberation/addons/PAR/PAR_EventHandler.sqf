@@ -12,7 +12,8 @@ params ["_unit"];
 
 // For all
 // Check Veh perms
-_unit addEventHandler ["GetInMan", {_this spawn vehicle_permissions;_this spawn vehicle_defense}];
+_unit addEventHandler ["GetInMan", {_this spawn vehicle_permissions}];
+_unit addEventHandler ["GetInMan", {_this spawn vehicle_defense}];
 _unit addEventHandler ["SeatSwitchedMan", {_this spawn vehicle_permissions}];
 _unit addEventHandler ["GetOutMan", {
 	params ["_unit", "_role", "_veh"];

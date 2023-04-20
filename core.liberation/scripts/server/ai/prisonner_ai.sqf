@@ -60,6 +60,7 @@ if ( (_unit isKindOf "Man") && ( alive _unit ) && (vehicle _unit == _unit) && (s
 			private _sectors = (sectors_allSectors - blufor_sectors);
 			private _nearest_sector = [_sectors, _unit] call BIS_fnc_nearestPosition;
 
+<<<<<<< HEAD
 			if (!isNil "_nearest_sector") then {
 				_waypoint = _grp addWaypoint [markerPos _nearest_sector, 0];
 				_waypoint setWaypointType "MOVE";
@@ -67,13 +68,21 @@ if ( (_unit isKindOf "Man") && ( alive _unit ) && (vehicle _unit == _unit) && (s
 				_waypoint setWaypointBehaviour "AWARE";
 				_waypoint setWaypointCombatMode "GREEN";
 				_waypoint setWaypointCompletionRadius 50;
+=======
+			_waypoint = _grp addWaypoint [markerPos _nearest_sector, 0];
+			_waypoint setWaypointType "MOVE";
+			_waypoint setWaypointSpeed "FULL";
+			_waypoint setWaypointBehaviour "AWARE";
+			_waypoint setWaypointCombatMode "GREEN";
+			_waypoint setWaypointCompletionRadius 50;
 
-				_waypoint = _grp addWaypoint [markerPos _nearest_sector, 0];
-				_waypoint setWaypointType "MOVE";
-				_waypoint setWaypointCompletionRadius 50;
-				_waypoint setWaypointStatements ["true", "deleteVehicle this"];
-				sleep 10;
-			};
+			_waypoint = _grp addWaypoint [markerPos _nearest_sector, 0];
+			_waypoint setWaypointType "MOVE";
+			_waypoint setWaypointCompletionRadius 50;
+			_waypoint setWaypointStatements ["true", "deleteVehicle this"];
+			sleep 10;
+>>>>>>> 1b16778d (nearestPosition)
+
 		};
 
 		// Captured
