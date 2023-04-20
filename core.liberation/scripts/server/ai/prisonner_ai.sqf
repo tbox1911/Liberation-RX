@@ -74,7 +74,7 @@ if ( (_unit isKindOf "Man") && ( alive _unit ) && (vehicle _unit == _unit) && (s
 		private _is_near_fob = (( _unit distance ([getpos _unit] call F_getNearestFob) ) < 30 );
 		if ( _is_near_fob ) then {
 			private _unit_owner = leader group _unit;
-			sleep (1 + random 3);
+			sleep (3 + (random 3));
 			if (vehicle _unit != _unit) then {
 				unassignVehicle _unit;
 				doGetOut _unit;

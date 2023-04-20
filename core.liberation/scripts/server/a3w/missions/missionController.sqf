@@ -5,6 +5,7 @@
 //	@file Author: AgentRev
 
 if (!isServer) exitWith {};
+sleep (floor random [5,10,15] * 60);
 
 private ["_controllerNum", "_tempController", "_controllerSuffix", "_missionsFolder", "_missionDelay", "_availableMissions", "_missionsList", "_nextMission", "_info"];
 
