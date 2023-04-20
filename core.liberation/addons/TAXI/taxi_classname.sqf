@@ -30,6 +30,5 @@ taxi_type_8 = [
 taxi_type_14 = [
 	"B_Heli_Transport_03_unarmed_green_F",
 	"B_Heli_Transport_03_black_F",
-	"I_Heli_Transport_02_F",
-	"B_T_VTOL_01_infantry_F"
+	"I_Heli_Transport_02_F"
 ];

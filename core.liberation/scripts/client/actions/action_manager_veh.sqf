@@ -9,11 +9,6 @@ private _recycleable_classnames_exp = [
 	"Land_Cargo_Patrol_V1_ruins_F"
 ];
 
-private _big_unit = [
-	"B_T_VTOL_01_infantry_F",
-	"B_T_VTOL_01_vehicle_F"
-];
-
 private _recycleable_blacklist = [] + opfor_statics;
 {_recycleable_blacklist pushBack ( _x select 0 )} foreach (static_vehicles);
 
@@ -36,8 +31,8 @@ while { true } do {
 	{
 		_vehicle = _x;
 		_distvehclose = 5;
-		if (typeOf _vehicle in _big_unit) then {
-			_distvehclose = _distvehclose * 4;
+		if (typeOf _vehicle in vehicle_big_units) then {
+			_distvehclose = _distvehclose * 3;
 		};
 		_vehicle addAction ["<t color='#00DD00'>-- SELL CARGO</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_sell.sqf","",-900,true,true,"","[_target] call is_menuok && [_target, 'SRV', _distveh, true] call F_check_near && [_this, _target] call is_owner && (locked _target == 0 || locked _target == 1)", _distvehclose];
 		_vehicle addAction ["<t color='#00F000'>-- REFUEL</t> <img size='1' image='R3F_LOG\icons\r3f_fuel.paa'/>", "scripts\client\actions\do_refuel.sqf","",-900,false,true,"","[_target] call is_menuok && [_target] call F_check_nearFuel", _distvehclose];
