@@ -20,7 +20,7 @@ PAR_unit_eject = {
 if (_veh getVariable ["evacVeh", false]) exitWith {};
 if (_veh iskindof "Steerable_Parachute_F") exitWith {};
 
-waitUntil {sleep 1; (round (speed _veh) == 0 && (round(getPosATL _veh select 2) < 5)) || round (damage _veh) > 0.8};  // No eject when driving
+waitUntil {sleep 1; (round (speed _veh) == 0 && (round(getPosATL _veh select 2) < 10)) || round (damage _veh) > 0.8};  // No eject when driving
 
 if (round(damage _veh) > 0.8 || (!alive _veh) || (!canMove _veh && !canFire _veh )) then {
 	_veh setVariable ["evacVeh", true];
