@@ -9,6 +9,7 @@ private _pilot_group = createGroup [GRLIB_side_enemy, true];
 private _newvehicle = [markerpos _spawnsector, selectRandom opfor_troup_transports_heli] call F_libSpawnVehicle;
 (crew _newvehicle) joinSilent _pilot_group;
 
+<<<<<<< HEAD
 _newvehicle setVariable ["GRLIB_counter_TTL", round(time + 3600)];
 {
 	_x setVariable ["GRLIB_counter_TTL", round(time + 3600)];
@@ -37,6 +38,23 @@ private _para_group_tmp = [markerpos _spawnsector, _unitclass, GRLIB_side_enemy,
 
 [_newvehicle, _targetpos, _pilot_group, _para_group] spawn {
 	params [ "_newvehicle", "_targetpos", "_pilot_group", "_para_group"];
+=======
+	private _unitclass = [];
+	while { (count _unitclass) < _cargo_seat_free } do { _unitclass pushback opfor_paratrooper };
+	private _para_group_tmp = [markerpos _spawnsector, _unitclass, GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
+	{
+		[_x] joinSilent _para_group;
+		_x assignAsCargo _newvehicle;
+		_x moveInCargo _newvehicle;
+		_x addBackpack "B_Parachute";
+		_x setSkill 0.65;
+		_x setSkill ["courage", 1];
+		_x allowFleeing 0;
+		_x setVariable ["GRLIB_counter_TTL", round(time + 3600)];
+		_x setVariable ["GRLIB_mission_AI", true];
+		sleep 0.1;
+	} foreach (units _para_group_tmp);
+>>>>>>> 99e6f595 (meet resistance)
 
 	while {(count (waypoints _pilot_group)) != 0} do {deleteWaypoint ((waypoints _pilot_group) select 0);};
 	while {(count (waypoints _para_group)) != 0} do {deleteWaypoint ((waypoints _para_group) select 0);};
@@ -99,4 +117,10 @@ private _para_group_tmp = [markerpos _spawnsector, _unitclass, GRLIB_side_enemy,
 	_waypoint setWaypointType "CYCLE";
 };
 
+<<<<<<< HEAD
+=======
+private _para_group = createGroup [GRLIB_side_enemy, true];
+[_targetpos, _para_group] spawn _sendPara;
+waituntil {sleep 3; count (units _para_group) > 0};
+>>>>>>> 99e6f595 (meet resistance)
 _para_group;
