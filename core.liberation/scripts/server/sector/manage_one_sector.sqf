@@ -21,6 +21,13 @@ private _max_prisonners = 5;
 private _sector_despawn_tickets = 24;
 private _popfactor = 1;
 
+if ( isNil "active_sectors" ) then { active_sectors = [] };
+if ( _sector in active_sectors ) exitWith {};
+active_sectors pushback _sector; publicVariable "active_sectors";
+
+diag_log format ["Spawn Defend Sector %1 at %2", _sector, time];
+sleep 5;
+
 if ( GRLIB_adaptive_opfor ) then {
 	private _activeplayers = count ([allPlayers, {alive _x && (_x distance2D (getmarkerpos _sector)) < GRLIB_sector_size}] call BIS_fnc_conditionalSelect);
 	switch (true) do {
@@ -31,13 +38,6 @@ if ( GRLIB_adaptive_opfor ) then {
 		default { _popfactor = GRLIB_unitcap };
 	};
 };
-
-if ( isNil "active_sectors" ) then { active_sectors = [] };
-if ( _sector in active_sectors ) exitWith {};
-active_sectors pushback _sector; publicVariable "active_sectors";
-
-diag_log format ["Spawn Defend Sector %1 at %2", _sector, time];
-sleep 5;
 
 if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector_size, GRLIB_side_friendly ] call F_getUnitsCount ) > 0 ) ) then {
 
@@ -198,7 +198,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 		if ( ([_sectorpos, _local_capture_size] call F_sectorOwnership == GRLIB_side_friendly) && (GRLIB_endgame == 0) ) then {
 			[ _sector ] spawn sector_liberated_remote_call;
 			_stopit = true;
-			_enemy_left = [allUnits, {(alive _x) && (vehicle _x == _x) && (side group _x == GRLIB_side_enemy) && !(_x getVariable ["mission_AI", false]) && (((getmarkerpos _sector) distance2D _x) < _local_capture_size * 1.2)}] call BIS_fnc_conditionalSelect;
+			_enemy_left = [allUnits, {(alive _x) && (vehicle _x == _x) && (side group _x == GRLIB_side_enemy) && !(_x getVariable ["GRLIB_mission_AI", false]) && (((getmarkerpos _sector) distance2D _x) < _local_capture_size * 1.2)}] call BIS_fnc_conditionalSelect;
 			{ 
 				if ( _max_prisonners > 0 && ((random 100) < GRLIB_surrender_chance) ) then {
 					[_x] spawn prisonner_ai;

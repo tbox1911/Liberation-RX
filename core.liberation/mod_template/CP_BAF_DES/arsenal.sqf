@@ -133,3 +133,19 @@ GRLIB_whitelisted_from_arsenal = [
 	"MineDetector",
 	"Rangefinder"
 ];
+
+GRLIB_whitelisted_from_arsenal_limited= [
+	"optic_MRCO",
+	"optic_Hamr",
+	"optic_Arco_blk_F",
+	"optic_ERCO_blk_F",
+	"optic_ERCO_snd_F",
+	"Medikit",
+	"FirstAidKit",
+	"ToolKit",
+	"ItemGPS",
+	"Laserdesignator",
+	"Binocular",
+	"MineDetector",
+	"Rangefinder"
+];

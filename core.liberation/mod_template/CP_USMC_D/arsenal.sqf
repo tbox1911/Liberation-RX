@@ -222,7 +222,7 @@ GRLIB_whitelisted_from_arsenal_limited = [
 	"Binocular",
 	"FirstAidKit",
 	"B_Kitbag_Base",
-	"B_Parachute",	
+	"B_Parachute",		
 	"APERSTripMine_Wire_Mag",
 	"APERSMine_Range_Mag",
 	"APERSBoundingMine_Range_Mag",

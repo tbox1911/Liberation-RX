@@ -12,7 +12,7 @@ opfor_machinegunner = "PIF_MG";
 opfor_heavygunner = "PIF_HeavyGunner";
 opfor_medic = "PIF_Medic";
 opfor_rpg = "PIF_RPG";
-opfor_at = "PIF_RPG";
+opfor_at = "O_Soldier_AT_F";
 opfor_aa = "O_Soldier_AA_F";
 opfor_officer = "Haji_Matin";
 opfor_sharpshooter = "PIF_Soldier";
@@ -64,7 +64,8 @@ militia_squad = [
 	"PIF_Militia6",
 	"PIF_Militia7",
 	"PIF_Militia8",
-	"O_Soldier_AA_F"
+	"O_Soldier_AA_F",
+	"O_Soldier_AT_F"
 ];
 
 militia_loadout_overide = [

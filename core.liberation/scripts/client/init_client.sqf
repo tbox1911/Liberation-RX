@@ -9,6 +9,7 @@ waitUntil {!isNil "abort_loading" };
 if (abort_loading) exitWith {
 	private _msg = format ["Sorry, An error occured on Server startup.\nPlease check the error logs.\n\n%1", abort_loading_msg];
 	titleText [_msg, "BLACK FADED", 100];
+	diag_log abort_loading_msg;
 	uisleep 10;
 	endMission "LOSER";
 };
@@ -79,6 +80,7 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 [] execVM "scripts\client\misc\manage_manpower.sqf";
 [] execVM "scripts\client\misc\no_thermic.sqf";
 [] execVM "scripts\client\misc\init_markers.sqf";
+[] execVM "scripts\client\misc\fps_fix.sqf";
 [] execVM "scripts\client\actions\action_manager.sqf";
 [] execVM "scripts\client\actions\action_manager_veh.sqf";
 [] execVM "scripts\client\actions\recycle_manager.sqf";

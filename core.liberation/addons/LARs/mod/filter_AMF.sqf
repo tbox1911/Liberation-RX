@@ -3,7 +3,7 @@ if ( GRLIB_AMF_enabled ) then {
 	// Weapons + Equipements (uniforme, etc..)
 	(
 		"
-		((configName _x) select [0,4]) == 'AMF_' &&
+		tolower ((configName _x) select [0,4]) == 'amf_' &&
 		!((configName _x) in GRLIB_blacklisted_from_arsenal)
 		"
 		configClasses (configfile >> "CfgWeapons" )
@@ -12,7 +12,7 @@ if ( GRLIB_AMF_enabled ) then {
 	// Others object (bagpack, etc..)
 	(
 		"
-		((configName _x) select [0,4]) == 'AMF_' &&
+		tolower ((configName _x) select [0,4]) == 'amf_' &&
 		!((configName _x) in GRLIB_blacklisted_from_arsenal) &&
 		( (configName _x) find '_Bag' == -1 )
 		"
@@ -22,7 +22,7 @@ if ( GRLIB_AMF_enabled ) then {
 	// Glasses
 	(
 		"
-		((configName _x) select [0,4]) == 'AMF_' &&
+		tolower ((configName _x) select [0,4]) == 'amf_' &&
 		!((configName _x) in GRLIB_blacklisted_from_arsenal)
 		"
 		configClasses (configfile >> "CfgGlasses" )
@@ -31,7 +31,7 @@ if ( GRLIB_AMF_enabled ) then {
 	// Magazines
 	(
 		"
-		((configName _x) select [0,4]) == 'AMF_' &&
+		tolower ((configName _x) select [0,4]) == 'amf_' &&
 		(configName _x) find '_Tracer' < 0 &&
 		!((configName _x) in GRLIB_blacklisted_from_arsenal)
 		"

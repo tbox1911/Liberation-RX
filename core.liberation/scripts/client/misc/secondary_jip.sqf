@@ -1,7 +1,4 @@
-waitUntil {
-	sleep 1;
-	time > 20;
-};
+waitUntil {	sleep 1; time > 20 };
 
 if ( isNil "GRLIB_secondary_in_progress" ) exitWith {};
 if ( GRLIB_secondary_in_progress < 0 ) exitWith {};

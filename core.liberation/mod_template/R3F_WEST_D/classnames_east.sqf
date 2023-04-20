@@ -215,5 +215,5 @@ opfor_recyclable = [
 box_transport_config_west = [
     [ "ffaa_famet_cougar", -12, [0.15, 2.45, -1.05] ],
     [ "B_AMF_Heli_Transport_4RHFS_01_F", -20, [0, -1.6, 2.1], [0, -3.2, 2.1] ],
-    [ "ffaa_nh90_tth_transport", -12, [0.1, 0.35, -1.15] ],
+    [ "ffaa_nh90_tth_transport", -12, [0.1, 0.35, -1.15] ]
 ];

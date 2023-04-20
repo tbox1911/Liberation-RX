@@ -20,6 +20,7 @@ R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
 	"CUP_B_CH47F_GB",
 	"CUP_B_GR9_DYN_GB",
 	"CUP_B_F35B_BAF",
+	"CUP_B_AW159_Unarmed_RN_Blackcat",
 	"CUP_B_C130J_Cargo_GB"
 ];
 
@@ -40,6 +41,7 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["CUP_B_CH47F_GB", 150],
 	["CUP_B_GR9_DYN_GB", 50],
 	["CUP_B_F35B_BAF", 50],
+	["CUP_B_AW159_Unarmed_RN_Blackcat", 50],
 	["CUP_B_C130J_Cargo_GB", 200]
 ];
 

@@ -2,7 +2,7 @@
 if ( GRLIB_GM_enabled ) then {
 	(
 		"
-		getText (_x >> 'dlc') == 'gm' &&
+		tolower (getText (_x >> 'dlc')) == 'gm' &&
 		getNumber (_x >> 'scope') > 1 &&
 		toLower (configName _x) find '_coyote' < 0 &&
 		!((configName _x) in GRLIB_blacklisted_from_arsenal)
@@ -12,7 +12,7 @@ if ( GRLIB_GM_enabled ) then {
 
 	(
 		"
-		((configName _x) select [0,3]) == 'gm_' &&
+		tolower ((configName _x) select [0,3]) == 'gm_' &&
 		(configName _x) find '_Tracer' < 0 &&
 		!((configName _x) in GRLIB_blacklisted_from_arsenal)
 		"

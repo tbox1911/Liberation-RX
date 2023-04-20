@@ -12,6 +12,7 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 	"CUP_B_AH6M_USA",
 	"CUP_B_UH60M_US",
 	"CUP_B_MH60L_DAP_2x_US",
+	"CUP_B_UH60M_Unarmed_US",
 	"CUP_B_MH47E_USA",
 	"CUP_B_CH53E_USMC",
 	"CUP_B_MV22_USMC_RAMPGUN",
@@ -26,6 +27,7 @@ R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
 [
 	"CUP_B_UH60M_US",
 	"CUP_B_MH60L_DAP_2x_US",
+	"CUP_B_UH60M_Unarmed_US",
 	"CUP_B_MH47E_USA",
 	"CUP_B_CH53E_USMC",
 	"CUP_B_AH1Z_Dynamic_USMC",
@@ -46,6 +48,7 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["CUP_B_AH6M_USA", 15],
 	["CUP_B_UH60M_US", 30],
 	["CUP_B_MH60L_DAP_2x_US", 30],
+	["CUP_B_UH60M_Unarmed_US", 75],
 	["CUP_B_MH47E_USA", 75],
 	["CUP_B_CH53E_USMC", 100],
 	["CUP_B_MV22_USMC_RAMPGUN", 60],

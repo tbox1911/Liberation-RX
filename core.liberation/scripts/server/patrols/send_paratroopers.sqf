@@ -27,6 +27,7 @@ private _sendPara = {
 		_unit setSkill ["courage", 1];
 		_unit allowFleeing 0;
 		_unit setVariable ["GRLIB_counter_TTL", round(time + 3600)];
+		_unit setVariable ["GRLIB_mission_AI", true];
 		[ _unit ] call reammo_ai;
 		sleep 0.1;
 	};
@@ -49,7 +50,7 @@ private _sendPara = {
 	_waypoint setWaypointCompletionRadius 20;
 
 	waitUntil { sleep 1;
-		!(alive _newvehicle) || (damage _newvehicle > 0.2 ) || (_newvehicle distance2D _targetpos < 250)
+		!(alive _newvehicle) || (damage _newvehicle > 0.2 ) || (_newvehicle distance2D _targetpos < 300)
 	};
 
 	_newvehicle flyInHeight 200;

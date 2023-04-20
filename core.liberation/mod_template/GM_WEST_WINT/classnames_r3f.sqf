@@ -5,9 +5,11 @@ R3F_LOG_CFG_can_tow = R3F_LOG_CFG_can_tow +
 
 R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 [
-	"gm_ge_army_ch53gs",
+    "gm_ge_army_ch53gs",
     "gm_ge_bgs_bo105m_vbh",
     "gm_ge_army_bo105p1m_vbh",
+    "gm_ge_army_bo105m_vbh",
+    "gm_ge_army_bo105p1m_vbh_swooper",
     "gm_ge_army_ch53g",
     "gm_ge_army_bo105p_pah1a1",
     "gm_ge_airforce_do28d2",
@@ -24,6 +26,8 @@ R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
 	"gm_ge_army_ch53gs",
     "gm_ge_bgs_bo105m_vbh",
     "gm_ge_army_bo105p1m_vbh",
+    "gm_ge_army_bo105m_vbh",
+    "gm_ge_army_bo105p1m_vbh_swooper",
     "gm_ge_army_ch53g",
     "gm_ge_army_bo105p_pah1a1",
     "gm_ge_pol_bo105m_vbh",
@@ -39,9 +43,11 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 
 R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 [
-	["gm_ge_army_ch53gs", 100],
+    ["gm_ge_army_ch53gs", 100],
     ["gm_ge_bgs_bo105m_vbh", 75],
     ["gm_ge_army_bo105p1m_vbh", 75],
+    ["gm_ge_army_bo105m_vbh", 75],
+    ["gm_ge_army_bo105p1m_vbh_swooper", 75],
     ["gm_ge_army_ch53g", 100],
     ["gm_ge_army_bo105p_pah1a1", 75],
     ["gm_ge_airforce_do28d2", 100],

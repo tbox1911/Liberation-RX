@@ -8,6 +8,7 @@ GRLIB_mod_list_west = [
     "CP_BAF_DES",
     "CP_USMC_W",
     "CP_USMC_D",
+    "EJW",
     "R3F_WEST_D",
     "R3F_WEST_W",
     "RHS_USAF",
@@ -16,7 +17,7 @@ GRLIB_mod_list_west = [
     "GM_WEST",
     "GM_WEST_WINT",
     "GM_EAST",
-    "GM_EAST_WINT",
+    "GM_EAST_WINT",   
     "OPTRE_WEST",
     "WS_UNA",
     "SOG_USA",
@@ -25,7 +26,8 @@ GRLIB_mod_list_west = [
     "3CB_BAF_W",	// Z@Warrior British Armed Forces Woodland
     "3CB_BAF_D",	// Z@Warrior British Armed Forces Desert
     "3CB_ChDKZ",	// Z@Warrior Chernarussian Movement of the Red Star
-    "BW_MOD"		// Z@Warrior Bundenswehr Tropentarn    
+    "BW_MOD",		// Z@Warrior Bundenswehr Tropentarn
+    "CWR3_US"		// Z@Warrior Cold War Rearmed III - US
 ];
 
 GRLIB_mod_list_east = [
@@ -35,7 +37,7 @@ GRLIB_mod_list_east = [
     "A3_OPF_UB",
     "CP_TA",
     "CP_USMC_W",
-    "CP_USMC_D",
+    "CP_USMC_D",    
     "CP_AFRF",		// Z@warrior CUP AFRF
     "CP_SAHRA_D",	// Z@Warrior CUP Sahrani Desert
     "EJW",
@@ -45,7 +47,7 @@ GRLIB_mod_list_east = [
     "RHS_AFRF",
     "FFAA_SPAIN_W",
     "GM_WEST",
-    "GM_WEST_WINT",
+    "GM_WEST_WINT",    
     "GM_EAST",
     "GM_EAST_WINT",
     "OPTRE_EAST",
@@ -57,5 +59,6 @@ GRLIB_mod_list_east = [
     "PO_UAF",		// Z@Warrior Project Opfor Ukrainian Armed Forces
     "3CB_BAF_W",	// Z@Warrior British Armed Forces Woodland
     "3CB_BAF_D",	// Z@Warrior British Armed Forces Desert
-    "3CB_ChDKZ"		// Z@Warrior Chernarussian Movement of the Red Star
+    "3CB_ChDKZ",	// Z@Warrior Chernarussian Movement of the Red Star
+    "CWR3_SOV"		// Z@Warrior Cold War Rearmed III - SOVIET
 ];

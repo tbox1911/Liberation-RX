@@ -14,6 +14,10 @@ pilot_classname = "CUP_B_BAF_Soldier_Pilot_DDPM";
 crewman_classname = "CUP_B_BAF_Soldier_Crew_DDPM";
 A3W_BoxWps = "CUP_LocalBasicWeaponsBox";
 
+chimera_vehicle_overide = [
+  ["B_Heli_Transport_01_F", "CUP_B_AW159_Unarmed_RN_Blackcat"]
+];
+
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 infantry_units = [
 	["Alsatian_Random_F",0,0,0,GRLIB_perm_max],

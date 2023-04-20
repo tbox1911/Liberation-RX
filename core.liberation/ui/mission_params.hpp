@@ -68,7 +68,7 @@ class Params
 	};
 	class ModPresetWest {
 		title = "MOD Preset - Friendly";
-		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 };
+		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25 };
 		texts[] = {
 					"ArmA3 NATO",
 					"ArmA3 CSAT",
@@ -76,6 +76,7 @@ class Params
 					"CUP BAF Desert",
 					"CUP USMC Woodland",
 					"CUP USMC Desert",
+					"EJW Task Force",
 					"R3F WEST Desert",
 					"R3F WEST Woodland",
 					"RHS USAF",
@@ -93,13 +94,14 @@ class Params
 					"3CB British Army Woodland",
 					"3CB British Army Desert",
 					"3CB Chernarussian Red Star",
-					"Bundenswehr Tropentarn"
+					"Bundenswehr Tropentarn",
+					"CWR Cold War Rearmed III - US"
 				};
 		default = 0;
 	};
 	class ModPresetEast {
 		title = "MOD Preset - Enemy";
-		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28 };
+		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29 };
 		texts[] = {
 					"ArmA3 CSAT",
 					"ArmA3 NATO",
@@ -129,7 +131,8 @@ class Params
 					"Project Opfor Ukrainian Army",
 					"3CB British Army Woodland",
 					"3CB British Army desert",
-					"3CB Chernarussian Red Star"
+					"3CB Chernarussian Red Star",
+					"CWR Cold War Rearmed III - SOVIET"
 				};
 		default = 0;
 	};	
@@ -152,7 +155,7 @@ class Params
 		default = 0;
 	};
 	class EnableFilterEJW {
-		title = "MOD filter: Eric JW";
+		title = "MOD filter: EJW";
 		values[] = { 1, 0 };
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 0;

@@ -52,7 +52,7 @@ _setupObjects =
 	[_missionPos, 25] call createlandmines;
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	_managed_units = (["militia", (_nbUnits - 4), _buildingpositions, _missionPos] call F_spawnBuildingSquad);
-	{ _x setVariable ["mission_AI", true] } forEach _managed_units;
+	{ _x setVariable ["GRLIB_mission_AI", true] } forEach _managed_units;
 	_managed_units joinSilent _aiGroup;
 
 	[_aiGroup, _missionPos, (_nbUnits - (count _managed_units)) , "militia"] call createCustomGroup;

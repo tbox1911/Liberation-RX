@@ -66,7 +66,7 @@ _i = 0;
 } foreach (AllPlayers - (entities "HeadlessClient_F"));
 
 {
-	_score_combo lbAdd format["%1", _x select 3];
+	_score_combo lbAdd format["%1", _x select 4];
 	_uid = _x  select 0;
 	_score_combo lbSetData [_i, _uid];
 	_score_combo lbSetColor [_i, _color];

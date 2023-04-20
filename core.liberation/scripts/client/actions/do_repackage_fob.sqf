@@ -4,6 +4,7 @@ private ["_fob_hq", "_fobbox", "_near_sign" ];
 
 //only one at time
 _fob_hq = player nearobjects [FOB_typename, GRLIB_fob_range] select 0;
+if (isNil "_fob_hq") exitWith {};
 _fob_sign = (getPosATL _fob_hq) nearobjects [FOB_sign, 10] select 0;
 if ((_fob_hq getVariable ["fob_in_use", false])) exitWith {};
 _fob_hq setVariable ["fob_in_use", true, true];

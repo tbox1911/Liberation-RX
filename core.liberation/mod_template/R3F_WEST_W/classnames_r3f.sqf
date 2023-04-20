@@ -56,7 +56,7 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["B_FR_Greyhawk_01", 0],
 	["B_UAV_05_F", 0],
 	["B_FR_Rafale_M_01", 0],
-	["B_FR_Mirage_2000_5F_01", 0],
+	["B_FR_Mirage_2000_5F_01", 0]
 ];
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
