@@ -46,6 +46,7 @@ check_victory_conditions = compileFinal preprocessFileLineNumbers "scripts\serve
 attach_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\attach_object_direct.sqf";
 load_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\load_object_direct.sqf";
 get_rank = compileFinal preprocessFileLineNumbers "scripts\server\game\get_rank.sqf";
+launch_firework = compileFinal preprocessFileLineNumbers "scripts\server\game\launch_firework.sqf";
 
 // Patrol
 reinforcements_manager = compileFinal preprocessFileLineNumbers "scripts\server\patrols\reinforcements_manager.sqf";
@@ -132,7 +133,12 @@ if (GRLIB_side_enemy == INDEPENDENT) then {
 	GRLIB_side_enemy setFriend [resistance, 0];
 };
 
-addMissionEventHandler ["MPEnded", { diag_log "--- LRX Mission End!" }];
+addMissionEventHandler ["MPEnded", {
+	diag_log "--- LRX Mission End!";
+	{deleteVehicle _x} forEach (vehicles + allUnits);
+	{deleteMarker _x} forEach allMapMarkers;
+}];
+
 addMissionEventHandler ['HandleDisconnect', {
 	_this call cleanup_player;
 	if (count (AllPlayers - (entities "HeadlessClient_F")) == 0) then {

@@ -224,7 +224,6 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	fuelbarrel_typename,
 	foodbarrel_typename,
 	medicalbox_typename,
-	fireworks_typename,
 	repair_sling_typename,
 	fuel_sling_typename,
 	ammo_sling_typename,
