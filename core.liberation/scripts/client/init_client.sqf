@@ -51,6 +51,7 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 	[] execVM "scripts\client\misc\synchronise_vars.sqf";
 	[] execVM "scripts\client\ui\ui_manager.sqf";
 };
+[] execVM "scripts\client\commander\enforce_whitelist.sqf";
 [] execVM "scripts\client\ui\intro.sqf";
 [] execVM "scripts\client\ammoboxes\ammobox_action_manager.sqf";
 [] execVM "scripts\client\markers\sector_manager.sqf";
