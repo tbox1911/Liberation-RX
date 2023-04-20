@@ -1,3 +1,4 @@
+private  ["_vehicle", "_unit"];
 private _distveh = 10;
 private _distvehclose = 5;
 private _searchradius = 30;
@@ -26,14 +27,13 @@ private _wreck_class = [
 waitUntil { sleep 1; !isNil "build_confirmed" };
 waitUntil { sleep 1; !isNil "one_synchro_done" };
 waitUntil { sleep 1; one_synchro_done };
-waitUntil { sleep 1; !isNil "GRLIB_player_spawned" };
 waituntil { sleep 1; GRLIB_player_spawned; (player getVariable ["GRLIB_score_set", 0] == 1)};
 waituntil { sleep 1; !isNil "GRLIB_marker_init" };
 if (!(player diarySubjectExists str(parseText GRLIB_r3))) exitWith {};
 
 while { true } do {
 	// Vehicles actions
-	_nearmyveh = [nearestObjects [player, ["LandVehicle","Air","Ship"], _searchradius], {
+	private _nearmyveh = [nearestObjects [player, ["LandVehicle","Air","Ship"], _searchradius], {
 		(_x distance lhd) >= GRLIB_sector_size &&
 		!(typeOf _x in list_static_weapons) &&
 		isNil {_x getVariable "GRLIB_vehicle_action"}
@@ -61,8 +61,8 @@ while { true } do {
 	} forEach _nearmyveh;
 
 	// Salvage Wreck & Ruins
-	_nearruins = [nearestObjects [player, ["Ruins_F"], _searchradius], {(_x distance lhd) >= GRLIB_sector_size && (typeof _x in _recycleable_classnames_exp) && isNil {_x getVariable "GRLIB_salvage_action"}}] call BIS_fnc_conditionalSelect;
-	_nearwreck = [nearestObjects [player, _wreck_class, _searchradius], {(_x distance lhd) >= GRLIB_sector_size && !(alive _x) && isNil {_x getVariable "GRLIB_salvage_action"}}] call BIS_fnc_conditionalSelect;
+	private _nearruins = [nearestObjects [player, ["Ruins_F"], _searchradius], {(_x distance lhd) >= GRLIB_sector_size && (typeof _x in _recycleable_classnames_exp) && isNil {_x getVariable "GRLIB_salvage_action"}}] call BIS_fnc_conditionalSelect;
+	private _nearwreck = [nearestObjects [player, _wreck_class, _searchradius], {(_x distance lhd) >= GRLIB_sector_size && !(alive _x) && isNil {_x getVariable "GRLIB_salvage_action"}}] call BIS_fnc_conditionalSelect;
 	{
 		_vehicle = _x;
 		_vehicle addAction ["<t color='#FFFF00'>" + localize "STR_SALVAGE" + "</t> <img size='1' image='res\ui_recycle.paa'/>","scripts\client\actions\do_wreck.sqf","",-900,true,true,"","[] call is_menuok && !(_target getVariable ['wreck_in_use', false]) && !(player getVariable ['salvage_wreck', false])", (_distveh + 5)];
@@ -70,7 +70,7 @@ while { true } do {
 	} forEach _nearwreck + _nearruins;
 
 	// Dead Men
-	_neardead = [allDeadMen, {(_x distance lhd) >= GRLIB_sector_size && (_x distance2D player < _searchradius) && isNil {_x getVariable "GRLIB_dead_action"}}] call BIS_fnc_conditionalSelect;
+	private _neardead = [allDeadMen, {(_x distance lhd) >= GRLIB_sector_size && (_x distance2D player < _searchradius) && isNil {_x getVariable "GRLIB_dead_action"}}] call BIS_fnc_conditionalSelect;
 	{
 		_unit = _x;
 		_unit addAction ["<t color='#0080F0'>" + localize "STR_REMOVE_BODY" + "</t>",{ [_this select 0] remoteExec ["hidebody", 0]},"",1.5,false,true,"","_this distance2D _target < 3" ];

@@ -3,7 +3,6 @@ private _distvehclose = 5;
 waitUntil {sleep 1; !isNil "build_confirmed" };
 waitUntil {sleep 1; !isNil "one_synchro_done" };
 waitUntil {sleep 1; one_synchro_done };
-waitUntil {sleep 1; !isNil "GRLIB_player_spawned" };
 
 while { true } do {
 
@@ -24,10 +23,10 @@ while { true } do {
 		};
 
 		// Mission for Dog
-		_man = _my_dog getVariable ["do_find", nil];
+		private _man = _my_dog getVariable ["do_find", nil];
 		if (!isNil "_man") then {
 			// Find !
-			_is_captured = !(_man getVariable ["GRLIB_is_prisonner", true]);
+			private _is_captured = !(_man getVariable ["GRLIB_is_prisonner", true]);
 			if (!alive _man || side _man == GRLIB_side_friendly || _is_captured) then {
 				_my_dog setVariable ["do_find", nil];
 			} else {

@@ -1,8 +1,7 @@
-
+private  ["_cargo_seat_free", "_cargo_idx"];
 waitUntil {sleep 1; !isNil "build_confirmed" };
 waitUntil {sleep 1; !isNil "one_synchro_done" };
 waitUntil {sleep 1; one_synchro_done };
-waitUntil {sleep 1; !isNil "GRLIB_player_spawned" };
 
 while { true } do {
 
@@ -78,11 +77,11 @@ while { true } do {
 			} else {
 				doStop _leader;
 			};
-			_squad_grp = (units _my_squad - [_leader]);
+			private _squad_grp = (units _my_squad - [_leader]);
 			_squad_grp doFollow _leader;
 		};
 		
-		_my_squad_order = player getVariable ["my_squad_order", nil];
+		private _my_squad_order = player getVariable ["my_squad_order", nil];
 		if (!isNil "_my_squad_order") then {
 			_leader sideChat "Order Received !!";
 			player setVariable ["my_squad_order", nil, true];

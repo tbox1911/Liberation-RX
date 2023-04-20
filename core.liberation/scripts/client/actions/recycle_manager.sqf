@@ -1,7 +1,7 @@
+private  ["_vehicle", "_distvehclose"];
 waitUntil {sleep 1; !isNil "build_confirmed" };
 waitUntil {sleep 1; !isNil "one_synchro_done" };
 waitUntil {sleep 1; one_synchro_done };
-waitUntil {sleep 1; !isNil "GRLIB_player_spawned" };
 waituntil {sleep 1; GRLIB_player_spawned; (player getVariable ["GRLIB_score_set", 0] == 1)};
 
 while { true } do {
@@ -19,8 +19,8 @@ while { true } do {
 		}] call BIS_fnc_conditionalSelect;
 
 		{
-			private _vehicle = _x;
-			private _distvehclose = 5;
+			_vehicle = _x;
+			_distvehclose = 5;
 			if (typeOf _vehicle in vehicle_big_units) then {
 				_distvehclose = _distvehclose * 3;
 			};

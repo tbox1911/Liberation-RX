@@ -1,15 +1,15 @@
+private  ["_unit"];
 private _distvehclose = 5;
 private _searchradius = 100;
 
 waitUntil {sleep 1; !isNil "build_confirmed" };
 waitUntil {sleep 1; !isNil "one_synchro_done" };
 waitUntil {sleep 1; one_synchro_done };
-waitUntil {sleep 1; !isNil "GRLIB_player_spawned" };
 
 while { true } do {
 
 	// Man
-	_near_man = [player nearEntities [["Man"], _searchradius], {
+	private _near_man = [player nearEntities [["Man"], _searchradius], {
  		(alive _x) && vehicle _x == _x &&
 		(_x getVariable ['GRLIB_can_speak', false]) &&
 		isNil {_x getVariable "GRLIB_speak_action"}
