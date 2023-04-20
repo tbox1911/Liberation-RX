@@ -1,6 +1,7 @@
 params [ "_unit", ["_force_surrender", false] ];
 
-if ( (!_force_surrender) && (( random 100 ) > GRLIB_surrender_chance) && (typeof _unit == pilot_classname)) exitWith {};
+if (typeof _unit == pilot_classname) exitWith {};
+if ( (!_force_surrender) && floor(random 100) > GRLIB_surrender_chance ) exitWith {};
 
 if ( (_unit isKindOf "Man") && ( alive _unit ) && (vehicle _unit == _unit) && (side group _unit == GRLIB_side_enemy) && (!(_unit getVariable ["mission_AI", false])) ) then {
 	sleep (3 + floor( 5));

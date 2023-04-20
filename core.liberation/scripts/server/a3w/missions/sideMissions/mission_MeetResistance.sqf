@@ -128,7 +128,7 @@ _successExec = {
 	GRLIB_A3W_Mission_MRR = nil;
 	publicVariable "GRLIB_A3W_Mission_MRR";
 
-	private _nb = floor(random 3);
+	private _nb = selectRandom [1,2];
 	for "_i" from 1 to _nb do {
 		_pos = _missionPos vectorAdd [([[-50,0,50], 20] call F_getRND), ([[-50,0,50], 20] call F_getRND), 0];
 		[ammobox_i_typename, _pos, false] call boxSetup;

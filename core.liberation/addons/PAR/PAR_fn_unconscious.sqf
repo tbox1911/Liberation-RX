@@ -28,7 +28,7 @@ sleep 8;
    "round(_this distance2D _target) < 3 &&
     lifeState _target == 'INCAPACITATED' &&
     _target getVariable ['PAR_isDragged',0] == 0 &&
-    ((PAR_AidKit in (items _this)) || ([_this] call PAR_is_medic && [_this] call PAR_has_medikit))",
+    ( [_this] call PAR_has_medikit || [_this] call PAR_is_medic )",
   "round(_caller distance2D _target) < 3",
   {
     if (_caller == player) then {

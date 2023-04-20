@@ -14,12 +14,14 @@ private _counter = 0;
 
 if ( !isNil "_saved_loadouts" ) then {
 	private _grp = createGroup [GRLIB_side_friendly, true];
-	private _unit = _grp createUnit ["B_Soldier_F", [0,0,0], [], 0, "NONE"];
+	private _unit = _grp createUnit ["B_Survivor_F", [0,0,0], [], 0, "NONE"];
+	private _max_loadout = 24;
 	{
-		if ( _counter % 2 == 0 ) then {
+		if ( _counter % 2 == 0 && _max_loadout > 0) then {
 			[_unit, [profileNamespace, _x]] call bis_fnc_loadInventory;
 			_price = [_unit] call F_loadoutPrice;
 			_loadouts_data pushback [_x, _price];
+			_max_loadout = _max_loadout - 1;
 		};
 		_counter = _counter + 1;
 	} foreach _saved_loadouts;
