@@ -1,6 +1,13 @@
 waitUntil {!isNil "abort_loading" };
 if (abort_loading) exitWith {};
 
+while {	(player getVariable ["GRLIB_score_set", 0] == 0) } do {
+	titleText ["... Loading Player Data ...", "BLACK FADED", 100];
+	uIsleep 2;
+	titleText ["... Please Wait ...", "BLACK FADED", 100];
+	uIsleep 2;
+};
+
 if ( isNil "cinematic_camera_started" ) then { cinematic_camera_started = false };
 waituntil {(time > 2) && (getClientStateNumber >= 10) && (getClientState == "BRIEFING READ")};
 

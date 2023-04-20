@@ -13,6 +13,7 @@ setGroupIconsVisible [false,false];
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\fetch_params.sqf";
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\classnames.sqf";
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -42,6 +43,9 @@ if (GRLIB_revive != 0) then {[] execVM "addons\FAR\FAR_init.sqf"};
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\init_sectors.sqf";
 >>>>>>> eefcff68 (add radius / huron type to parameters)
 =======
+=======
+if (abort_loading) exitWith {};
+>>>>>>> 9485b064 (1)
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\classnames.sqf";
 [] call compileFinal preprocessfilelinenumbers "scripts\shared\init_shared.sqf";
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\init_sectors.sqf";

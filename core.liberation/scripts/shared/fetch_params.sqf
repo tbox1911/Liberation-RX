@@ -53,13 +53,15 @@ GRLIB_mod_preset_east = ["ModPresetEast", 0] call bis_fnc_getParamValue;
 if (isNil "GRLIB_mod_west") then { GRLIB_mod_west = GRLIB_mod_list_west select GRLIB_mod_preset_west };
 if (isNil "GRLIB_mod_east") then { GRLIB_mod_east = GRLIB_mod_list_east select GRLIB_mod_preset_east };
 
-if (GRLIB_mod_list_west == GRLIB_mod_list_east) exitWith {
+abort_loading = false;
+if (GRLIB_mod_west == GRLIB_mod_east) then { abort_loading = true };
+publicVariable "abort_loading";
+if (abort_loading) exitWith {
 	diag_log "*********************************************************************************";
 	diag_log "FATAL! - Invalid Side selection !";
 	diag_log "Loading Aborted to protect data integrity.";
 	diag_log "Correct the Side selection.";
 	diag_log "*********************************************************************************";
-	abort_loading = true; publicVariable "abort_loading";
 };
 
 GRLIB_r1 = "&#108;&#105;&#98;&#101;&#114;&#97;&#116;&#105;&#111;&#110;";
