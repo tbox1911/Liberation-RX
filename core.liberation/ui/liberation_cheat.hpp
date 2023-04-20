@@ -100,12 +100,10 @@ class liberation_cheat {
     y = 0.368 * safezoneH + safezoneY;
     w = 0.09 * safezoneW;
     h = 0.033 * safezoneH;
-    //sizeEx = 0.018 * safezoneH * GUI_GRID_H * GUI_GRID_H;
   };
   class Item02Button: StdButton
   {
     idc = 1603;
-    //action = "[player, 200] remoteExec ['addScore', 2];hint 'Score changed !'";
     action = "do_score=1";
     text = "Add 200 Points";
     x = 0.2275 * safezoneW + safezoneX;
@@ -119,9 +117,7 @@ class liberation_cheat {
     y = 0.420 * safezoneH + safezoneY;
     w = 0.09 * safezoneW;
     h = 0.033 * safezoneH;
-    //sizeEx = 0.018 * safezoneH * GUI_GRID_H * GUI_GRID_H;
   };
-
   class SkipTimeButton: StdButton
   {
     idc = 1604;

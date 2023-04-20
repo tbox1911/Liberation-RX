@@ -223,6 +223,7 @@ support_vehicles = [
 	["B_Truck_01_fuel_F",5,120,40,GRLIB_perm_tank],
   	["Box_NATO_Ammo_F",0,80,0,GRLIB_perm_log],
   	["Box_NATO_WpsLaunch_F",0,80,0,GRLIB_perm_tank],
+	["Land_CargoBox_V1_F",0,500,0,GRLIB_perm_max],
 	[FOB_box_typename,50,1500,50,GRLIB_perm_max],
 	[FOB_truck_typename,50,1500,50,GRLIB_perm_max],
 	["B_APC_Tracked_01_CRV_F",10,2000,20,GRLIB_perm_max],
@@ -733,6 +734,7 @@ GRLIB_ignore_colisions_when_building = [
 	"Box_B_UAV_06_medical_F",
 	"Box_NATO_Ammo_F",
   	"Box_NATO_WpsLaunch_F",
+	"Land_CargoBox_V1_F",
 	"Land_CanisterFuel_Red_F",
 	"B_HMG_01_F",
 	"B_HMG_01_high_F",
@@ -761,7 +763,8 @@ GRLIB_Ammobox = [
 	"Box_NATO_Ammo_F",
 	"Box_NATO_WpsLaunch_F",
 	"Box_East_Wps_F",
-	"mission_USLaunchers"
+	"mission_USLaunchers",
+	"Land_CargoBox_V1_F"
 ];
 GRLIB_AirDrop_1 = [
 	"I_Quadbike_01_F",

@@ -24,7 +24,7 @@ _totalCurAmmo = 0;
 	_totalCurAmmo = _totalCurAmmo + (_x select 1);
 } forEach (magazinesAmmo _vehicle);
 
-_getVehicleAmmoDef = 0;
-_getVehicleAmmoDef = (_totalCurAmmo/_defTotalAmmo);
-
+if (_defTotalAmmo != 0 ) then {
+	_getVehicleAmmoDef = (_totalCurAmmo/_defTotalAmmo);
+};
 _getVehicleAmmoDef;
