@@ -37,7 +37,7 @@ Your Credit : <t color='#800000'>%4</t>", name player, _rank, _score, _ammo_coll
 hcRemoveAllGroups player;
 if ( player == [] call F_getCommander ) then {
 
-	_myveh = [vehicles, {
+	private _myveh = [vehicles, {
 		(_x distance lhd) >= 1000 &&
 		[player, _x] call is_owner &&
 		_x getVariable ["GRLIB_vehicle_manned", false] &&
@@ -48,3 +48,13 @@ if ( player == [] call F_getCommander ) then {
 };
 private _grp = player getVariable ["my_squad", nil];
 if (!isNil "_grp") then { player hcSetGroup [_grp] };
+
+// IA Recall
+private _grp = group player;
+private _squad = (allUnits) select {(_x getVariable ["MGI_Grp_ID","0"]) == (player getVariable ["MGI_Grp_ID","1"])};
+{
+	if ( !(_x in units _grp) && lifeState _x != 'incapacitated' ) then {
+		if ( count (units _grp) < (GRLIB_squad_size + GRLIB_squad_size_bonus) ) then { [_x] joinSilent _grp};
+		sleep 0.5;
+	};
+} forEach _squad;

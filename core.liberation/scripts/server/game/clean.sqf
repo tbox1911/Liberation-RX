@@ -165,6 +165,7 @@ while {deleteManagerPublic} do {
 		} else {
 			if (_weaponHolderDistCheck) then {
 				{
+					if (round (getMass _x) <= 0)  then { _x setMass 1 };
 					if ([_x,_weaponHolderDist,(playableUnits + switchableUnits)] call _isHidden) then {
 						deleteVehicle _x;
 					};

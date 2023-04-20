@@ -38,7 +38,7 @@ for "_i" from 1 to _nbUnits do {
 	[_unit] call unitSetSkill;
 };
 
-[ _grp, _pos, 75] spawn add_defense_waypoints;
+[ _grp, _pos, 100] spawn add_defense_waypoints;
 
 //Unit Skill;
 //  Novice < 0.25

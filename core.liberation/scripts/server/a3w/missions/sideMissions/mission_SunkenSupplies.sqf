@@ -39,8 +39,8 @@ _setupObjects =
 
 	_nbUnits = 6;
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
-	_vehicle = ["O_Boat_Armed_01_hmg_F", _missionPos, 0, _aiGroup] call _createVehicle;
 	[_aiGroup, _missionPos, _nbUnits, "divers"] call createCustomGroup;
+	_vehicle = ["O_Boat_Armed_01_hmg_F", _missionPos, 0, _aiGroup] call _createVehicle;
 
 	_missionPicture = getText (configFile >> "CfgVehicles" >> "O_Boat_Armed_01_hmg_F" >> "picture");
 	_missionHintText = "Sunken supplies have been spotted in the ocean near the marker, and are heavily guarded. Diving gear and an underwater weapon are recommended.";
