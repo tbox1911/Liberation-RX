@@ -160,7 +160,6 @@ buildings = [
 	["Land_PierLadder_F",0,0,0,GRLIB_perm_inf],
 	["Land_CncBarrierMedium4_F",0,0,0,0],
 	["Land_CncWall4_F",0,0,0,0],
-	["Land_CncWall1_F",0,0,0,0],
 	["Land_BagFence_Round_F",0,0,0,GRLIB_perm_log],
 	["Land_BagFence_Long_F",0,0,0,0],
 	["Land_BagFence_Short_F",0,0,0,GRLIB_perm_inf],
@@ -696,24 +695,11 @@ GRLIB_vehicle_whitelist = [
 	"Box_B_UAV_06_medical_F",
 	"Land_CncBarrierMedium4_F",
 	"Land_CncWall4_F",
-	"Land_BagBunker_Small_F",
-	"Land_CncWall1_F",
-	"Land_BagFence_Long_F",
 	"Land_HBarrier_5_F",
-	"O_Truck_03_covered_F",
-	"O_Truck_03_transport_F",
-	"O_MRAP_02_hmg_F",
-	"O_MRAP_02_gmg_F",
-	"O_APC_Wheeled_02_rcws_F",
-	"O_APC_Tracked_02_cannon_F",
-	"O_APC_Tracked_02_AA_F",
-	"O_MBT_02_cannon_F",
-	"O_MBT_04_cannon_F",
-	"O_MBT_04_command_F",
-	"O_Heli_Attack_02_F",
-	"O_Heli_Attack_02_black_F"
+	"Land_BagBunker_Small_F",
+	"Land_BagFence_Long_F"
 ];
-{GRLIB_vehicle_whitelist pushBack ( _x select 0 )} foreach (static_vehicles);
+{GRLIB_vehicle_whitelist pushBack ( _x select 0 )} foreach (static_vehicles + opfor_recyclable);
 
 // Blacklist Vehicle (lock and paint)
 GRLIB_vehicle_blacklist = [

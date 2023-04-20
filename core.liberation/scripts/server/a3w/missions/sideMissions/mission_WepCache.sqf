@@ -25,7 +25,6 @@ _setupObjects =
 	_missionPos = markerPos _missionLocation;
 	_box1 = [ammobox_o_typename, _missionPos, true] call boxSetup;
 	_box2 = [A3W_BoxWps, _missionPos, true] call boxSetup;
-	//[_box2, "mission_USLaunchers"] call fn_refillbox;
 	_box3 = [ammobox_o_typename, _missionPos, true] call boxSetup;
 
 	_aiGroup = createGroup [GRLIB_side_enemy, true];

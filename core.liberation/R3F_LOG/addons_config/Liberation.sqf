@@ -250,7 +250,6 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	"B_Slingload_01_Ammo_F",
 	"B_Slingload_01_Medevac_F",
 	"Land_Cargo_House_V1_F",
-	"Land_Cargo_Tower_V1_F",
 	"Land_Cargo_Patrol_V1_F",
 	"Land_BagBunker_Large_F",
 	"Land_BagBunker_Small_F",
