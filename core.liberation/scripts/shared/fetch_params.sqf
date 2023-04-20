@@ -125,10 +125,14 @@ if ( GRLIB_blufor_defenders == 1 ) then { GRLIB_blufor_defenders = true } else {
 if ( GRLIB_autodanger == 1 ) then { GRLIB_autodanger = true } else { GRLIB_autodanger = false };
 if ( GRLIB_thermic == 1 ) then { GRLIB_thermic = true } else { GRLIB_thermic = false };
 
+// Define constant
 [] call compileFinal preprocessFileLineNUmbers "gameplay_constants.sqf";
 
 // Overide sector radius
 if (GRLIB_sector_radius != 0) then { GRLIB_sector_size = GRLIB_sector_radius };
+
+// Define classname
+[] call compileFinal preprocessFileLineNUmbers "scripts\shared\classnames.sqf";
 
 // Start R3F if ACE no present
 if (!GRLIB_ACE_enabled) then {[] execVM "R3F_LOG\init.sqf"};

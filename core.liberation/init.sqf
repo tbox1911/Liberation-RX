@@ -10,6 +10,7 @@ setGroupIconsVisible [false,false];
 
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\liberation_functions.sqf";
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\fetch_params.sqf";
+<<<<<<< HEAD
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\classnames.sqf";
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -33,6 +34,8 @@ if (GRLIB_revive != 0) then {[] execVM "addons\FAR\FAR_init.sqf"};
 >>>>>>> ad744a03 (init mission)
 =======
 =======
+=======
+>>>>>>> 97a50ecd (init)
 [] call compileFinal preprocessfilelinenumbers "scripts\shared\init_shared.sqf";
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\init_sectors.sqf";
 >>>>>>> eefcff68 (add radius / huron type to parameters)
@@ -51,7 +54,9 @@ if (isServer) then {
 	{
 		_x removeAllMPEventHandlers "MPKilled";
 		_x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-		_x setVariable ["GRLIB_vehicle_owner", "public", true];
+		if (isNil {_x getVariable "GRLIB_vehicle_owner"} ) then {
+			_x setVariable ["GRLIB_vehicle_owner", "public", true];
+		};
 	} foreach vehicles;
 
 	[] execVM "scripts\server\init_server.sqf";
