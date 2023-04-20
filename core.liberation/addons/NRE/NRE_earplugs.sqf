@@ -13,6 +13,6 @@ if (!(isNil "NRE_EarplugsActive")) then {
     hint format	[ localize "STR_NREEP_IN_HINT" ];
   };
   sleep 2;
-  hint "";
+  hintSilent "";
 };
 

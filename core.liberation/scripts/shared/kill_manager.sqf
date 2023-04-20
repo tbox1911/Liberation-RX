@@ -21,13 +21,18 @@ if ( isServer ) then {
 	};
 
 	// unTow
-	private _towed = _unit getVariable ["R3F_LOG_remorque", objNull];
-	if (!isNull _towed) then {
-		[_towed] remoteExec ["R3F_LOG_FNCT_remorqueur_detacher", owner _towed];
+	private _tow = _unit getVariable ["R3F_LOG_remorque", objNull];
+	if (!isNull _tow) then {
+		_unit setVariable ["R3F_LOG_remorque", objNull, true];
+		_tow setVariable ["R3F_LOG_est_transporte_par", objNull, true];
+		[_tow, "detachSetVelocity", [0, 0, 0.1]] call R3F_LOG_FNCT_exec_commande_MP;
 	};
 
-	if (!isNull(_unit getVariable ["R3F_LOG_est_transporte_par", objNull])) then {
-		[_unit] remoteExec ["R3F_LOG_FNCT_remorqueur_detacher", owner _unit];
+	private _towed = _unit getVariable ["R3F_LOG_est_transporte_par", objNull];
+	if (!isNull _towed) then {
+		_towed setVariable ["R3F_LOG_remorque", objNull, true];
+		_unit setVariable ["R3F_LOG_est_transporte_par", objNull, true];
+		[_unit, "detachSetVelocity", [0, 0, 0.1]] call R3F_LOG_FNCT_exec_commande_MP;
 	};
 
 	waitUntil { sleep 0.3; (isNull attachedTo _unit) };

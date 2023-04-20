@@ -52,7 +52,6 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 		};
 	} forEach (build_lists select buildtype);
 
-	hintSilent "";
 
 	if (_oldbuildtype != buildtype || synchro_done ) then {
 		synchro_done = false;
