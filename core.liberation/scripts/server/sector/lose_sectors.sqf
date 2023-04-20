@@ -23,6 +23,6 @@ while { GRLIB_endgame == 0 } do {
 		sleep 0.5;
 	} foreach GRLIB_all_fobs;
 
-	sleep 1;
+	sleep 2;
 
 };
