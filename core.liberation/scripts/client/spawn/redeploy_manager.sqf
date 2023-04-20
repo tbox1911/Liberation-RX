@@ -3,14 +3,13 @@ fullmap = 0;
 _old_fullmap = 0;
 _standard_map_pos = [];
 _frame_pos = [];
+_spawn_str = "";
 
 GRLIB_force_redeploy = false;
 
 waitUntil { !isNil "GRLIB_all_fobs" };
 waitUntil { !isNil "blufor_sectors" };
 waitUntil { !isNil "save_is_loaded" };
-
-_spawn_str = "";
 
 waitUntil { !isNil "introDone" };
 waitUntil { introDone };
@@ -198,6 +197,7 @@ while { true } do {
 	};
 
 	if (alive player && deploy == 1) then {
+		if (isNil "_spawn_str") then {_spawn_str = "Somewhere."};
 		[_spawn_str] spawn spawn_camera;
 	};
 };

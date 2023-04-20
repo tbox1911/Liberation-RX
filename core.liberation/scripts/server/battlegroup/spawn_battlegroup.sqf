@@ -25,6 +25,7 @@ if ( _spawn_marker != "" ) then {
 	_target_size = GRLIB_battlegroup_size * ([] call F_adaptiveOpforFactor) * (sqrt GRLIB_csat_aggressivity);
 	if ( _target_size >= 16 ) then { _target_size = 16; };
 	if ( combat_readiness < 60 ) then { _target_size = round (_target_size * 0.65) };
+	if ( count allPlayers <= 3 ) then { _target_size = round (_target_size * 0.65) };
 	while { count _selected_opfor_battlegroup < _target_size } do {
 		_selected_opfor_battlegroup pushback (_vehicle_pool call BIS_fnc_selectRandom);
 	};
