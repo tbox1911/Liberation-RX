@@ -17,6 +17,7 @@ if (alive player && vehicle player == player && lifestate player != "incapacitat
 	player playMoveNow "acts_briefing_sb_in";
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	sleep 10;
 =======
 	sleep 8;
@@ -24,6 +25,9 @@ if (alive player && vehicle player == player && lifestate player != "incapacitat
 =======
 	sleep 12;
 >>>>>>> 371d672d (endgame + sb)
+=======
+	sleep 12;
+>>>>>>> f53c1ed9 (endgame + sb)
 };
 
 [] spawn cinematic_camera;

@@ -22,7 +22,11 @@ while { true } do {
 	waitUntil {
 		(GRLIB_endgame == 1 || GRLIB_force_redeploy || (player distance (getmarkerpos GRLIB_respawn_marker) < 50) ) && vehicle player == player && alive player && !dialog && howtoplay == 0
 	};
+<<<<<<< HEAD
 	if (GRLIB_endgame == 1 ) exitWith {};
+=======
+	if (GRLIB_endgame == 1 ) exitWith {titleText ["","BLACK FADED", 1000]};
+>>>>>>> f53c1ed9 (endgame + sb)
 	fullmap = 0;
 	_old_fullmap = 0;
 
