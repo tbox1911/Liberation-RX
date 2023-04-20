@@ -27,7 +27,6 @@ while { true } do {
 						if (!(_grp in (global_locked_group))) then {
 							[group player, "del"] remoteExec ["addel_group_remote_call", 2];
 							[player] join _grp;
-							my_group = _grp;
 							hint "Squad joined";
 						} else {hint "Sorry, the Squad is Locked."};
 					} else {hint "Sorry, your Group is not Empty."};
@@ -35,9 +34,9 @@ while { true } do {
 			};
 			case "leave" : {
 				if (leader group player != player) then {
-					my_group = createGroup [GRLIB_side_friendly, true];
-					[my_group, "add"] remoteExec ["addel_group_remote_call", 2];
-					[player] joinSilent my_group;
+					_group = createGroup [GRLIB_side_friendly, true];
+					[_group, "add"] remoteExec ["addel_group_remote_call", 2];
+					[player] joinSilent _group;
 					hint "New Squad created";
 				};
 			};

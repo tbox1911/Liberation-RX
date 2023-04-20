@@ -27,6 +27,7 @@ if (isMultiplayer) then {
 } else {
 	PAR_Grp_ID = str floor(random 4096);
 };
+((units player) - [player]) joinSilent grpNull;
 my_group = group player;
 [my_group, "add"] remoteExec ["addel_group_remote_call", 2];
 
