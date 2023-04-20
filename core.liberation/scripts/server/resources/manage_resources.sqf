@@ -1,12 +1,8 @@
 waitUntil { !isNil "save_is_loaded" };
 waitUntil { !isNil "blufor_sectors" };
-waitUntil { !isNil "saved_intel_res" };
-
-_base_tick_period = 600;
-resources_intel = saved_intel_res;
 
 while { GRLIB_endgame == 0 } do {
-	sleep _base_tick_period;
+	sleep (floor random [10,15,20] * 60);
 
 	if ( count allPlayers > 0 ) then {
 
@@ -92,5 +88,4 @@ while { GRLIB_endgame == 0 } do {
 		};
 
 	};
-	sleep 300;
 };
