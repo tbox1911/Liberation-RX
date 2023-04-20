@@ -21,20 +21,13 @@ _expensive_items = [
 ];
 
 _free_items = [
-	"200Rnd",
-	"100Rnd",
-	"30Rnd",
-	"20Rnd",
-	"16Rnd",
-	"10Rnd",
-	"7Rnd",
-	"5Rnd",
-	"3Rnd",
-	"1Rnd",
+	"Rnd_",
 	"FirstAidKit",
 	"SmokeShell",
+	"Grenade",
+	"Charge_Remote_Mag",
 	"Chemlight"
- ];
+];
 
 _fn_isfree = {
 	params ["_item"];
