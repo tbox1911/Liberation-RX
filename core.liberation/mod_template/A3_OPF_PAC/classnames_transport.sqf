@@ -13,8 +13,8 @@ box_transport_config = box_transport_config + [
 	[ "O_T_Truck_03_transport_F", -6.5, [0, -0.8, 0.4], [0, -2.4, 0.4], [0, -4.0, 0.4] ],
 	[ "O_T_Truck_03_covered_F", -6.5, [0, -0.8, 0.4], [0, -2.4, 0.4], [0, -4.0, 0.4] ],
 	[ "O_T_Heli_Transport_04_F", -7.5, [0, 0.8, -1.45], [0, -0.9, -1.45], [0, -2.6, -1.45], [0, -4.3, -1.45] ]
-//	[ "O_T_T_VTOL_02_vehicle_dynamicLoadout_F", -7.5, [0, 2.2, -1], [0, 0.8, -1], [0, -1.0, -1] ],
-//	[ "O_T_T_VTOL_02_infantry_dynamicLoadout_F", -7.5, [0, 2.2, -1], [0, 0.8, -1], [0, -1.0, -1] ],
+//	[ "O_T_VTOL_02_vehicle_dynamicLoadout_F", -7.5, [0, 2.2, -1], [0, 0.8, -1], [0, -1.0, -1] ],
+//	[ "O_T_VTOL_02_infantry_dynamicLoadout_F", -7.5, [0, 2.2, -1], [0, 0.8, -1], [0, -1.0, -1] ],
 ];
 
 // Additional offset per object

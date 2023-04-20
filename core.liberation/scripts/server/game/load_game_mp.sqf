@@ -47,6 +47,7 @@ GRLIB_player_context = [];
 resources_intel = 0;
 GRLIB_player_scores = [];
 GRLIB_garage = [];
+GRLIB_warehouse = [];
 
 private _no_kill_handler_classnames = [FOB_typename, FOB_outpost];
 { _no_kill_handler_classnames pushback (_x select 0) } foreach buildings;
@@ -89,8 +90,6 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 	time_of_day = greuh_liberation_savegame select 3;
 	combat_readiness = greuh_liberation_savegame select 4;
 	GRLIB_garage = greuh_liberation_savegame select 5;
-	if (typeName GRLIB_garage != "ARRAY") then {GRLIB_garage = []};
-
 	_side_west = greuh_liberation_savegame select 6;
 	_side_east = greuh_liberation_savegame select 7;
 	if ( GRLIB_force_load == 0 && typeName _side_west == "STRING" && typeName _side_east == "STRING" ) then {
@@ -98,6 +97,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 			abort_loading = true;
 		};
 	};
+	GRLIB_warehouse = greuh_liberation_savegame select 8;
 	_stats = greuh_liberation_savegame select 9;
 	stats_opfor_soldiers_killed = _stats select 0;
 	stats_opfor_killed_by_players = _stats select 1;
@@ -176,15 +176,10 @@ if ( !isNil "greuh_liberation_savegame" ) then {
             _owner = _x select 4;
         };
 
-        if ([_nextclass, simple_objects] call F_itemIsInClass) then {
-            _nextbuilding = createSimpleObject [_nextclass, AGLtoASL _nextpos];
-        } else {
-			_nextbuilding = createVehicle [_nextclass, zeropos, [], 0, "CAN_COLLIDE"];
-			_nextbuilding allowDamage false;
-			_nextbuilding setVectorDirAndUp [[-cos _nextdir, sin _nextdir, 0] vectorCrossProduct surfaceNormal _nextpos, surfaceNormal _nextpos];
-			_nextbuilding setPosWorld _nextpos;
-        };
-
+		_nextbuilding = createVehicle [_nextclass, zeropos, [], 0, "CAN_COLLIDE"];
+		_nextbuilding allowDamage false;		
+		_nextbuilding setVectorDirAndUp [_nextdir select 0, _nextdir select 1];
+		_nextbuilding setPosWorld _nextpos;
 		_buildings_created pushback _nextbuilding;
 
 		if (!(_nextclass in GRLIB_Ammobox_keep)) then {
@@ -304,13 +299,16 @@ if ( !isNil "greuh_liberation_savegame" ) then {
             _nextbuilding addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		};
 
+		if (_nextclass == Warehouse_typename) then {
+			[_nextbuilding] call warehouse_init_remote_call;
+		};
         //diag_log format [ "--- LRX Load Game %1 loaded at %2.", typeOf _nextbuilding, time];
 	} foreach (_s1 + _s2 + _s3);
+	sleep 1;
 
-	sleep 3;
 	{ 
 		_allow_damage = true;
-		if ( (typeOf _x) in [FOB_typename, FOB_outpost, FOB_sign, playerbox_typename] ) then {
+		if ( (typeOf _x) in [FOB_typename,FOB_outpost,FOB_sign,Warehouse_typename,playerbox_typename] ) then {
 			_x addEventHandler ["HandleDamage", { 0 }];
 			_allow_damage = false;
 		};
@@ -319,6 +317,16 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 		};
 		if ( _allow_damage ) then { _x allowDamage true };
 	} foreach _buildings_created;
+	sleep 2;
+
+	{
+		if (typeOf _x == WRHS_Man) then {
+			if (!isNull (_x getVariable ["GRLIB_Warehouse", objNull])) then {
+				[_x] call warehouse_update_remote_call;
+			};
+		};
+	} forEach (units (group chimeraofficer));
+	sleep 1;
 
 	diag_log format [ "--- LRX Load Game finish at %1", time ];
 } else {

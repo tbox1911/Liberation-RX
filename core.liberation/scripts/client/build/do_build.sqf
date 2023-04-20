@@ -2,6 +2,7 @@ private [  "_built_object_remote", "_unit", "_pos", "_grp", "_classname", "_idx"
 
 build_confirmed = 0;
 build_unit = [];
+build_mode = 1;
 
 private _maxdist = GRLIB_fob_range;
 private _truepos = [];
@@ -227,6 +228,7 @@ while { true } do {
 			_idactsnap = -1;
 			_idactupper = -1;
 			_idactlower = -1;
+			_idactmode = -1;
 			_idactplacebis = -1;
 
 			if (buildtype == 6 ) then {
@@ -237,6 +239,7 @@ while { true } do {
 				_idactsnap = player addAction ["<t color='#B0FF00'>" + localize "STR_GRID" + "</t>","scripts\client\build\do_grid.sqf","",-755,false,false,"","build_confirmed == 1"];
 				_idactupper = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEUP" + "</t> <img size='1' image='R3F_LOG\icons\r3f_lift.paa'/>","scripts\client\build\build_up.sqf","",-755,false,false,"","build_confirmed == 1"];
 				_idactlower = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEDOWN" + "</t> <img size='1' image='R3F_LOG\icons\r3f_release.paa'/>","scripts\client\build\build_down.sqf","",-755,false,false,"","build_confirmed == 1"];
+				_idactmode = player addAction ["<t color='#B0FF00'>" + localize "STR_MODE" + "</t> <img size='1' image='R3F_LOG\icons\r3f_drop.paa'/>","scripts\client\build\build_mode.sqf","",-755,false,false,"","build_confirmed == 1"];
 			};
 			_idactplace = player addAction ["<t color='#B0FF00'>" + localize "STR_PLACEMENT" + "</t> <img size='1' image='res\ui_confirm.paa'/>","scripts\client\build\build_place.sqf","",-750,false,true,"","build_invalid == 0 && build_confirmed == 1"];
 			_idactrotate = player addAction ["<t color='#B0FF00'>" + localize "STR_ROTATION" + "</t> <img size='1' image='res\ui_rotation.paa'/>","scripts\client\build\build_rotate.sqf","",-756,false,false,"","build_confirmed == 1"];
@@ -346,7 +349,12 @@ while { true } do {
 					} else {
 						_vehicle setposATL _truepos;
 					};
-					_vehicle setVectorDirAndUp [[-cos _actualdir, sin _actualdir, 0] vectorCrossProduct surfaceNormal _truepos, surfaceNormal _truepos];
+
+					if (build_mode == 1) then {
+						_vehicle setVectorDirAndUp [[-cos _actualdir, sin _actualdir, 0] vectorCrossProduct surfaceNormal _truepos, surfaceNormal _truepos];
+					} else {
+						_vehicle setVectorDirAndUp [[sin _actualdir, cos _actualdir, 0], [0, 0, 1]];
+					};
 
 					if ( build_invalid == 1 ) then {
 						GRLIB_ui_notif = "";
@@ -397,163 +405,169 @@ while { true } do {
 				deleteVehicle _vehicle;
 				sleep 0.1;
 
-				if ([_classname, simple_objects] call F_itemIsInClass) then {
-					createSimpleObject [_classname, AGLtoASL _truepos];
+				_vehicle = _classname createVehicle _truepos;
+				_vehicle allowDamage false;
+				if ( _classname isKindOf "Ship" && surfaceIsWater _truepos ) then {
+					_vehicle setposASL _truepos;
 				} else {
-					_vehicle = _classname createVehicle _truepos;
-					_vehicle allowDamage false;
-					if ( _classname isKindOf "Ship" && surfaceIsWater _truepos ) then {
-						_vehicle setposASL _truepos;
-					} else {
-						_vehicle setposATL _truepos;
-					};
-					_vehicle setVectorDirAndUp [[-cos _vehdir, sin _vehdir, 0] vectorCrossProduct surfaceNormal _truepos, surfaceNormal _truepos];
-
-					// Ammo Box clean inventory
-					if ( !(_classname in GRLIB_Ammobox_keep) ) then {
-						clearWeaponCargoGlobal _vehicle;
-						clearMagazineCargoGlobal _vehicle;
-						clearItemCargoGlobal _vehicle;
-						clearBackpackCargoGlobal _vehicle;
-					};
-
-					// Vehicle owner
-					if ( buildtype in [2,3,4,5,7,9,10] ) then {
-						if (!([typeOf _vehicle, GRLIB_vehicle_blacklist] call F_itemIsInClass)) then {
-							_vehicle setVariable ["GRLIB_vehicle_owner", getPlayerUID player, true];
-							_vehicle allowCrewInImmobile [true, false];
-							_vehicle setUnloadInCombat [true, false];
-						};
-					};
-
-					// Crewed vehicle
-					if ( (_classname in uavs) || manned ) then {
-						[ _vehicle ] call F_forceBluforCrew;
-						_vehicle setVariable ["GRLIB_vehicle_manned", true, true];
-						player hcSetGroup [group _vehicle];
-						player linkItem "B_UavTerminal";
-					};
-
-					// Default Paint
-					if ( _classname in ["I_E_Truck_02_MRL_F"] ) then {
-						[_vehicle, ["EAF",1], true ] call BIS_fnc_initVehicle;
-					};
-
-					// CUP remove tank panel
-					if (GRLIB_CUPV_enabled && _classname isKindOf "Tank") then {
-						[_vehicle, false, ["hide_front_ti_panels",1,"hide_cip_panel_rear",1,"hide_cip_panel_bustle",1]] call BIS_fnc_initVehicle;
-					};
-
-					// Color
-					if ( count _color > 0 ) then {
-						[_vehicle, _color, "N/A"] call RPT_fnc_TextureVehicle;
-					};
-
-					// Composant
-					if ( count _compo > 0 ) then {
-						[_vehicle, _compo] call RPT_fnc_CompoVehicle;
-					};
-
-					// Remaining Ammo
-					if ( _ammo > 0 ) then {
-						_vehicle setVehicleAmmo _ammo;
-					};
-
-					// Automatic ReAmmo
-					if ( _classname in vehicle_rearm_sources ) then {
-						_vehicle setAmmoCargo 0;
-					};
-
-					// Give real truck horn to APC,Truck,Tank
-					if ( _vehicle isKindOf "Wheeled_APC_F" || _vehicle isKindOf "Tank_F" || _vehicle isKindOf "Truck_F" ) then {
-						_vehicle removeWeaponTurret ["TruckHorn", [-1]];
-						_vehicle removeWeaponTurret ["TruckHorn2", [-1]];
-						_vehicle addWeaponTurret ["TruckHorn3", [-1]];
-					};
-
-					// Mobile respawn
-					if ( _classname == mobile_respawn ) then {
-						[_vehicle, "add"] remoteExec ["addel_beacon_remote_call", 2];
-					};
-
-					// A3 / R3F Inventory
-					if ( buildtype == 10 && !(_classname in GRLIB_vehicle_whitelist) ) then {
-						[_vehicle, _lst_a3] call F_setCargo;
-						if (!GRLIB_ACE_enabled) then {
-							[_vehicle, _lst_r3f] call R3F_LOG_FNCT_transporteur_charger_auto;
-						};
-					};
-
-					// Personal Box
-					if ( _classname == playerbox_typename ) then {
-						_vehicle allowDamage false;
-						_vehicle setMaxLoad playerbox_cargospace;
-					};
-
-					// Ammobox (add Charge)
-					if ( _classname == Box_Ammo_typename ) then {
-						_vehicle addItemCargoGlobal ["SatchelCharge_Remote_Mag", 2];
-					};
-
-					// Static Weapon
-					if (_classname in static_vehicles_AI) then {
-						_vehicle setMass 5000;
-						[ _vehicle ] call F_forceBluforCrew;
-						_vehicle setVariable ["GRLIB_vehicle_manned", true, true];
-						_vehicle setVehicleLock "LOCKEDPLAYER";
-						_vehicle addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1 }];
-						_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_static }];
-					};
-
-					// Magic ClutterCutter
-					if (_classname == land_cutter_typename) then {
-						[_truepos] remoteExec ["build_cutter_remote_call", 2];
-					};
-
-					// FOB
-					if(buildtype == 99) then {
-						_vehicle addEventHandler ["HandleDamage", {0}];
-						_vehicle allowDamage false;
-						[(getpos _vehicle), false] remoteExec ["build_fob_remote_call", 2];
-
-						// Add owner sign
-						private _fobdir = getDir _vehicle;
-						private _offset = [[-6, -5, -0.2], -_fobdir];
-						if (_classname == FOB_outpost ) then { _offset = [[5, -3, -0.2], -_fobdir] };
-						private _sign_pos = (getposATL _vehicle) vectorAdd (_offset call BIS_fnc_rotateVector2D);
-						private _sign = createVehicle [FOB_sign, _sign_pos, [], 0, "CAN_COLLIDE"];
-						_sign allowDamage false;
-						if (_classname == FOB_outpost ) then {
-							_sign setDir (_fobdir - 90);
-						} else {
-							_sign setDir (_fobdir + 90);
-						};
-						_sign setObjectTextureGlobal [0, getMissionPath "res\splash_libe2.paa"];
-						if (count GRLIB_all_fobs == 0) then {
-							_sign setVariable ["GRLIB_vehicle_owner", "public", true];
-						} else {
-							_sign setVariable ["GRLIB_vehicle_owner", getPlayerUID player, true];
-						};
-						if (!GRLIB_enable_arsenal) then {
-							sleep 1;
-							private _ammo_pos = (getposATL _sign) vectorAdd ([[10, 0, 0], -(getDir _sign) - 90] call BIS_fnc_rotateVector2D);
-							{
-								_ammo1 = createVehicle [_x, _ammo_pos, [], 1, "NONE"];
-								_ammo1 allowDamage false;
-								_ammo1 setVariable ["GRLIB_vehicle_owner", "public", true];
-								_ammo1 setVariable ["R3F_LOG_disabled", true, true];
-								if (_x == Arsenal_typename) then { _ammo1 addItemCargoGlobal ["SatchelCharge_Remote_Mag", 2] };
-								sleep 0.5;
-							} forEach [Arsenal_typename, Box_Weapon_typename];
-						};
-					} else {
-						sleep 0.3;
-						_vehicle allowDamage true;
-						_vehicle setDamage 0;
-					};
-
-					build_vehicle = _vehicle;
+					_vehicle setposATL _truepos;
 				};
+
+				if (build_mode == 1) then {
+					_vehicle setVectorDirAndUp [[-cos _vehdir, sin _vehdir, 0] vectorCrossProduct surfaceNormal _truepos, surfaceNormal _truepos];
+				} else {
+					_vehicle setVectorDirAndUp [[sin _vehdir, cos _vehdir, 0], [0, 0, 1]];
+				};
+
+				// Ammo Box clean inventory
+				if ( !(_classname in GRLIB_Ammobox_keep) ) then {
+					clearWeaponCargoGlobal _vehicle;
+					clearMagazineCargoGlobal _vehicle;
+					clearItemCargoGlobal _vehicle;
+					clearBackpackCargoGlobal _vehicle;
+				};
+
+				// Vehicle owner
+				if ( buildtype in [2,3,4,5,7,9,10] ) then {
+					if (!([typeOf _vehicle, GRLIB_vehicle_blacklist] call F_itemIsInClass)) then {
+						_vehicle setVariable ["GRLIB_vehicle_owner", getPlayerUID player, true];
+						_vehicle allowCrewInImmobile [true, false];
+						_vehicle setUnloadInCombat [true, false];
+					};
+				};
+
+				// Crewed vehicle
+				if ( (_classname in uavs) || manned ) then {
+					[ _vehicle ] call F_forceBluforCrew;
+					_vehicle setVariable ["GRLIB_vehicle_manned", true, true];
+					player hcSetGroup [group _vehicle];
+					player linkItem "B_UavTerminal";
+				};
+
+				// Default Paint
+				if ( _classname in ["I_E_Truck_02_MRL_F"] ) then {
+					[_vehicle, ["EAF",1], true ] call BIS_fnc_initVehicle;
+				};
+
+				// CUP remove tank panel
+				if (GRLIB_CUPV_enabled && _classname isKindOf "Tank") then {
+					[_vehicle, false, ["hide_front_ti_panels",1,"hide_cip_panel_rear",1,"hide_cip_panel_bustle",1]] call BIS_fnc_initVehicle;
+				};
+
+				// Color
+				if ( count _color > 0 ) then {
+					[_vehicle, _color, "N/A"] call RPT_fnc_TextureVehicle;
+				};
+
+				// Composant
+				if ( count _compo > 0 ) then {
+					[_vehicle, _compo] call RPT_fnc_CompoVehicle;
+				};
+
+				// Remaining Ammo
+				if ( _ammo > 0 ) then {
+					_vehicle setVehicleAmmo _ammo;
+				};
+
+				// Automatic ReAmmo
+				if ( _classname in vehicle_rearm_sources ) then {
+					_vehicle setAmmoCargo 0;
+				};
+
+				// Give real truck horn to APC,Truck,Tank
+				if ( _vehicle isKindOf "Wheeled_APC_F" || _vehicle isKindOf "Tank_F" || _vehicle isKindOf "Truck_F" ) then {
+					_vehicle removeWeaponTurret ["TruckHorn", [-1]];
+					_vehicle removeWeaponTurret ["TruckHorn2", [-1]];
+					_vehicle addWeaponTurret ["TruckHorn3", [-1]];
+				};
+
+				// Mobile respawn
+				if ( _classname == mobile_respawn ) then {
+					[_vehicle, "add"] remoteExec ["addel_beacon_remote_call", 2];
+				};
+
+				// A3 / R3F Inventory
+				if ( buildtype == 10 && !(_classname in GRLIB_vehicle_whitelist) ) then {
+					[_vehicle, _lst_a3] call F_setCargo;
+					if (!GRLIB_ACE_enabled) then {
+						[_vehicle, _lst_r3f] call R3F_LOG_FNCT_transporteur_charger_auto;
+					};
+				};
+
+				// Personal Box
+				if ( _classname == playerbox_typename ) then {
+					_vehicle allowDamage false;
+					_vehicle setMaxLoad playerbox_cargospace;
+				};
+
+				// Ammobox (add Charge)
+				if ( _classname == Box_Ammo_typename ) then {
+					_vehicle addItemCargoGlobal ["SatchelCharge_Remote_Mag", 2];
+				};
+
+				// Static Weapon
+				if (_classname in static_vehicles_AI) then {
+					_vehicle setMass 5000;
+					[ _vehicle ] call F_forceBluforCrew;
+					_vehicle setVariable ["GRLIB_vehicle_manned", true, true];
+					_vehicle setVehicleLock "LOCKEDPLAYER";
+					_vehicle addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1 }];
+					_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_static }];
+				};
+
+				// Magic ClutterCutter
+				if (_classname == land_cutter_typename) then {
+					[_truepos] remoteExec ["build_cutter_remote_call", 2];
+				};
+
+				// WareHouse
+				if (_classname == Warehouse_typename) then {
+					[_vehicle] remoteExec ["warehouse_init_remote_call", 2];
+				};
+
+				// FOB
+				if(buildtype == 99) then {
+					_vehicle addEventHandler ["HandleDamage", {0}];
+					_vehicle allowDamage false;
+					[(getpos _vehicle), false] remoteExec ["build_fob_remote_call", 2];
+
+					// Add owner sign
+					private _fobdir = getDir _vehicle;
+					private _offset = [[-6, -5, -0.2], -_fobdir];
+					if (_classname == FOB_outpost ) then { _offset = [[5, -3, -0.2], -_fobdir] };
+					private _sign_pos = (getposATL _vehicle) vectorAdd (_offset call BIS_fnc_rotateVector2D);
+					private _sign = createVehicle [FOB_sign, _sign_pos, [], 0, "CAN_COLLIDE"];
+					_sign allowDamage false;
+					if (_classname == FOB_outpost ) then {
+						_sign setDir (_fobdir - 90);
+					} else {
+						_sign setDir (_fobdir + 90);
+					};
+					_sign setObjectTextureGlobal [0, getMissionPath "res\splash_libe2.paa"];
+					if (count GRLIB_all_fobs == 0) then {
+						_sign setVariable ["GRLIB_vehicle_owner", "public", true];
+					} else {
+						_sign setVariable ["GRLIB_vehicle_owner", getPlayerUID player, true];
+					};
+					if (!GRLIB_enable_arsenal) then {
+						sleep 1;
+						private _ammo_pos = (getposATL _sign) vectorAdd ([[10, 0, 0], -(getDir _sign) - 90] call BIS_fnc_rotateVector2D);
+						{
+							_ammo1 = createVehicle [_x, _ammo_pos, [], 1, "NONE"];
+							_ammo1 allowDamage false;
+							_ammo1 setVariable ["GRLIB_vehicle_owner", "public", true];
+							_ammo1 setVariable ["R3F_LOG_disabled", true, true];
+							if (_x == Arsenal_typename) then { _ammo1 addItemCargoGlobal ["SatchelCharge_Remote_Mag", 2] };
+							sleep 0.5;
+						} forEach [Arsenal_typename, Box_Weapon_typename];
+					};
+				} else {
+					sleep 0.3;
+					_vehicle allowDamage true;
+					_vehicle setDamage 0;
+				};
+
+				build_vehicle = _vehicle;
 
 				if(buildtype != 6) then {
 					_vehicle addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
@@ -578,6 +592,9 @@ while { true } do {
 				player removeAction _idactupper;
 				player removeAction _idactlower;
 			};
+			if ( _idactmode != -1 ) then {
+				player removeAction _idactmode;
+			};			
 			player removeAction _idactrotate;
 			player removeAction _idactplace;
 

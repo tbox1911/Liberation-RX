@@ -30,7 +30,7 @@ if (count squads == 0) then {
 	ctrlShow [ 1085, false ];
 };
 
-private _near_outpost = (count (player nearObjects [FOB_outpost, 100]) > 0);
+private _near_outpost = (count (player nearObjects [FOB_outpost, GRLIB_fob_range]) > 0);
 private _has_box = false;
 { if ((_x select 0) == playerbox_typename && (_x select 3) == getPlayerUID player) exitWith {_has_box = true} } foreach GRLIB_garage;
 if (count ([entities playerbox_typename, {[player, _x] call is_owner}] call BIS_fnc_conditionalSelect) > 0) then {_has_box = true};
@@ -104,6 +104,14 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 				};
 			};
 
+			if ( buildtype == 6 ) then {
+				if (_x select 0 == Warehouse_typename) then {
+					if (count (player nearObjects [Warehouse_typename, GRLIB_fob_range]) > 0) then {
+						_affordable = false;
+					};
+				};
+			};
+
 			if ( buildtype == 7 ) then {
 				if (_x select 0 == mobile_respawn) then {
 					if (([getPlayerUID player] call F_getMobileRespawnsPlayer) select 1) then {
@@ -171,6 +179,14 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 				if (!(isNil {player getVariable ["my_dog", nil]})) then {
 					_affordable = false;
 					_refresh = true;
+				};
+			};
+		};
+
+		if ( buildtype == 6 ) then {
+			if (_build_item select 0 == Warehouse_typename) then {
+				if (count (player nearObjects [Warehouse_typename, GRLIB_fob_range]) > 0) then {
+					_affordable = false;
 				};
 			};
 		};

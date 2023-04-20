@@ -44,4 +44,7 @@ if ( _class == playerbox_typename ) then {
 if ( _class == land_cutter_typename ) then {
 	_text = "Magic Mower Cutter (Hide Terrain Objects)";
 };
+if ( _class == Warehouse_typename ) then {
+	_text = "LRX Warehouse";
+};
 _text;

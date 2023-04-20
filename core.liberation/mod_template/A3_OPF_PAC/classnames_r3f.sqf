@@ -25,9 +25,9 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["O_T_Heli_Light_02_unarmed_F", 50],
 	["O_T_Heli_Attack_02_dynamicLoadout_black_F", 30],
 	["O_T_Heli_Attack_02_dynamicLoadout_F", 30],
-	["O_T_T_VTOL_01_infantry_F", 100],
-	["O_T_T_VTOL_01_vehicle_F", 100],
-	["O_T_T_VTOL_01_armed_F", 100]
+	["O_T_VTOL_01_infantry_F", 100],
+	["O_T_VTOL_01_vehicle_F", 100],
+	["O_T_VTOL_01_armed_F", 100]
 ];
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +

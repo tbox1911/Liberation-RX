@@ -66,6 +66,7 @@ if ( GRLIB_endgame == 1 ) then {
         _fobpos = _x;
         _nextbuildings = [ _fobpos nearobjects (GRLIB_fob_range * 2), {
             ( getObjectType _x >= 8 ) &&
+            ( !isSimpleObject _x ) &&
             ((typeof _x) in _classnames_to_save ) &&
             ( alive _x) &&
             ( speed vehicle _x < 5 ) &&
@@ -92,7 +93,7 @@ if ( GRLIB_endgame == 1 ) then {
     {
         private _savedpos = getPosWorld _x;
         private _nextclass = typeof _x;
-        private _nextdir = getdir _x;
+        private _nextdir = [vectorDir _x, vectorUp _x];
         private _hascrew = false;
         private _owner = "";
         private _color = "";
@@ -107,7 +108,7 @@ if ( GRLIB_endgame == 1 ) then {
                 _owner = _x getVariable ["GRLIB_vehicle_owner", ""];
                 _hascrew = _x getVariable ["GRLIB_vehicle_manned", false];
                 if (_owner == "") then {
-                    buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew ];
+                    buildings_to_save pushback [ _nextclass, _savedpos, _nextdir ];
                 };
                 if (_owner == "public") then {
                     buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner ];
@@ -203,7 +204,7 @@ if ( GRLIB_endgame == 1 ) then {
         GRLIB_garage,
         GRLIB_mod_west,
         GRLIB_mod_east,
-        0,		// free for future use
+        GRLIB_warehouse,
         _stats,
         [ round infantry_weight max 33, round armor_weight max 33, round air_weight max 33 ],
         GRLIB_vehicle_to_military_base_links,

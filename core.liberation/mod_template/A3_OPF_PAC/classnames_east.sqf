@@ -110,7 +110,7 @@ opfor_battlegroup_vehicles = [
 	"O_T_MBT_02_cannon_F",
 	"O_T_APC_Tracked_02_AA_F",
 	"O_T_Heli_Attack_02_dynamicLoadout_F",
-	"O_T_T_VTOL_02_infantry_F",
+	"O_T_VTOL_02_infantry_F",
 	"O_T_MBT_04_cannon_F",
 	"O_T_MBT_04_command_F"
 ];
@@ -136,14 +136,14 @@ opfor_troup_transports_truck = [
 opfor_troup_transports_heli = [
 	"O_T_Heli_Attack_02_dynamicLoadout_F",
 	"O_T_Heli_Transport_04_covered_F",
-	"O_T_T_VTOL_02_infantry_F"
+	"O_T_VTOL_02_infantry_F"
 ];
 
 opfor_air = [
 	"O_T_Heli_Light_02_dynamicLoadout_F",
 	"O_T_Heli_Attack_02_dynamicLoadout_black_F",
 	"O_T_Heli_Attack_02_dynamicLoadout_F",
-	"O_T_T_VTOL_02_vehicle_F",
+	"O_T_VTOL_02_vehicle_F",
 	"O_T_Plane_CAS_02_F",
 	"O_T_Plane_Fighter_02_F"
 ];
@@ -187,6 +187,6 @@ opfor_recyclable = [
 	["O_T_Plane_CAS_02_F",20,round (2000 / GRLIB_recycling_percentage),30],
 	["O_T_Plane_Fighter_02_F",20,round (2000 / GRLIB_recycling_percentage),30],
 	["O_T_Plane_Fighter_02_Stealth_F",20,round (2000 / GRLIB_recycling_percentage),30],
-	["O_T_T_VTOL_02_vehicle_F",20,round (2500 / GRLIB_recycling_percentage),20],
-	["O_T_T_VTOL_02_infantry_F",20,round (2500 / GRLIB_recycling_percentage),20]
+	["O_T_VTOL_02_vehicle_F",20,round (2500 / GRLIB_recycling_percentage),20],
+	["O_T_VTOL_02_infantry_F",20,round (2500 / GRLIB_recycling_percentage),20]
 ];
