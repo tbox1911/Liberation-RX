@@ -14,7 +14,7 @@ taxi_land = {
 			hintSilent localize "STR_TAXI_LANDING";
 			sleep 5;
 		};
-		(_alt <= 1 || time > _stop);
+		(_alt <= 3 || time > _stop);
 	};
 	hintSilent localize "STR_TAXI_LANDED";
 	deleteVehicle _helipad;

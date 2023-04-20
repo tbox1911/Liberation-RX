@@ -1,8 +1,6 @@
 if ( isDedicated ) exitWith {};
 
-if ( isNil "sector_timer" ) then { sector_timer = 0 };
-
-params [ "_fobpos", "_status" ];
+params [ "_fobpos", "_status", ["_sector_timer", 0] ];
 
 private _fobname = [ _fobpos ] call F_getFobName;
 private _fobtype = "FOB";
@@ -16,19 +14,19 @@ if ( _status == 0 ) then {
 if ( _status == 1 ) then {
 	[ "lib_fob_attacked", [ _fobtype, _fobname ] ] call BIS_fnc_showNotification;
 	"opfor_capture_marker" setMarkerPosLocal _fobpos;
-	sector_timer = GRLIB_vulnerability_timer + (5 * 60);
+	sector_timer = _sector_timer;
 };
 
 if ( _status == 2 ) then {
 	[ "lib_fob_lost", [ _fobtype, _fobname ] ] call BIS_fnc_showNotification;
 	"opfor_capture_marker" setMarkerPosLocal markers_reset;
-	sector_timer = 0;
+	sector_timer = _sector_timer;
 };
 
 if ( _status == 3 ) then {
 	[ "lib_fob_safe", [ _fobtype, _fobname ] ] call BIS_fnc_showNotification;
 	"opfor_capture_marker" setMarkerPosLocal markers_reset;
-	sector_timer = 0;
+	sector_timer = _sector_timer;
 };
 
 if ( _status == 4 ) then {

@@ -61,6 +61,7 @@ if (!isNull _killer && _unit != _killer) then {
 		};
 		if (GRLIB_revive != 0) then { _ret = _amountOfDamage min 0.86 };
 	};
+<<<<<<< HEAD:core.liberation/scripts/shared/damage_manager.sqf
 
 	// OpFor in vehicle
 	if (isPlayer _killer && side group _unit == GRLIB_side_enemy && _unit != _killer && _veh_unit != _unit && _veh_killer == _killer && round (_killer distance2D _unit) <= 2) then {
@@ -88,6 +89,8 @@ if (!isNull _killer && _unit != _killer) then {
 		};
 	};
 >>>>>>> 23851faa (static ai damage manager)
+=======
+>>>>>>> 81561949 (new damage EH):core.liberation/scripts/shared/damage_manager_firendly.sqf
 };
 
 _ret;

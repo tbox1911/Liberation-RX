@@ -20,8 +20,8 @@ sleep 1;
 	} else {
 		[_x] call loadout_crewman;
 		[_x] call reammo_ai;
-		_x addEventHandler ["HandleDamage", {_this call damage_manager_EH}];
-		_x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+		_x addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
+		_x addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
 		_x setSkill 0.65;
 		_x setSkill ["courage", 1];
 		_x allowFleeing 0;

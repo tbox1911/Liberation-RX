@@ -48,7 +48,7 @@ private _text = format ["Reward Received: %1 Ammo and %2 Fuel", _rwd_ammo, _rwd_
 		[_x, _rwd_ammo, _rwd_fuel] call ammo_add_remote_call;
 		[gamelogic, _text] remoteExec ["globalChat", owner _x];
 	};
-} forEach allPlayers;
+} forEach (AllPlayers - (entities "HeadlessClient_F"));
 [markerPos _liberated_sector] call showlandmines;
 
 combat_readiness = combat_readiness + _combat_readiness_increase;
@@ -71,11 +71,11 @@ sleep 45;
 if ( GRLIB_endgame == 0 ) then {
 	if ( 
 	   (!( _liberated_sector in sectors_tower )) &&
-	   ((floor(random (200.0 / (GRLIB_difficulty_modifier * GRLIB_csat_aggressivity) )) < (combat_readiness - 20)) || ( _liberated_sector in sectors_bigtown )) &&
+	   ((combat_readiness > 70) || (_liberated_sector in sectors_bigtown)) &&
 	   ([] call F_opforCap < GRLIB_battlegroup_cap) &&
 	   (diag_fps > 30.0)
 	) then {
-		[ _liberated_sector ] spawn spawn_battlegroup;
+		[_liberated_sector] spawn spawn_battlegroup;
 	};
 };
 

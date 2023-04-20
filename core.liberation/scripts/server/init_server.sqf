@@ -124,8 +124,14 @@ GRLIB_side_friendly setFriend [resistance, 1];
 resistance setFriend [GRLIB_side_enemy, 0];
 GRLIB_side_enemy setFriend [resistance, 0];
 
-addMissionEventHandler ['HandleDisconnect', cleanup_player];
 addMissionEventHandler ["MPEnded", { diag_log "--- LRX Mission End!" }];
+addMissionEventHandler ['HandleDisconnect', {
+	_this call cleanup_player;
+	if (count (AllPlayers - (entities "HeadlessClient_F")) == 0) then {
+		[] call save_game_mp;
+	};
+	false;
+}];
 
 // AI Skill
 [ 
