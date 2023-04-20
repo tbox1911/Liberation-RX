@@ -221,6 +221,8 @@ GRLIB_whitelisted_from_arsenal = [
 GRLIB_whitelisted_from_arsenal_limited = [
 	"Binocular",
 	"FirstAidKit",
+	"B_Kitbag_Base",
+	"B_Parachute",	
 	"APERSTripMine_Wire_Mag",
 	"APERSMine_Range_Mag",
 	"APERSBoundingMine_Range_Mag",
@@ -255,7 +257,6 @@ GRLIB_whitelisted_from_arsenal_limited = [
 	"G_I_Diving",
 	"G_O_Diving",
 	"G_B_Diving",
-	"B_Parachute",
 	"V_BandollierB_cbr",
 	"Laserbatteries"
 ];

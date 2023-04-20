@@ -27,7 +27,7 @@ _setupObjects =
 	_vehicle setVehicleLock "LOCKED";
 	_vehicle setFuel 0.1;
 	_vehicle setVehicleAmmo 0.1;
-	_vehicle setHit ["motor", 1];
+	_vehicle setHit [getText (configFile >> "cfgVehicles" >> (typeOf _vehicle) >> "HitPoints" >> "HitEngine" >> "name"), 1];
 	_smoke = "test_EmptyObjectForSmoke" createVehicle _vehiclePos;
 	_smoke attachTo [_vehicle, [0, 1.5, 0]];
 

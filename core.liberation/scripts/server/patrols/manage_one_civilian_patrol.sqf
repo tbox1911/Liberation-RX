@@ -23,7 +23,7 @@ while { GRLIB_endgame == 0 } do {
 
 			// 40% in vehicles
 			if ( floor(random 100) > 60 ) then {
-				_civ_veh = [markerPos _spawnsector, (selectRandom civilian_vehicles), false, true, true] call F_libSpawnVehicle;
+				_civ_veh = [markerPos _spawnsector, (selectRandom civilian_vehicles), false, false, true] call F_libSpawnVehicle;
 				_civ_unit moveInDriver _civ_veh;
 				_civ_unit assignAsDriver _civ_veh;
 				_civ_veh addEventHandler ["HandleDamage", {
@@ -38,7 +38,6 @@ while { GRLIB_endgame == 0 } do {
 					_dam;
 				}];
 				_civ_veh addEventHandler ["Fuel", { if (!(_this select 1)) then {(_this select 0) setFuel 1}}];
-				_civ_veh allowCrewInImmobile true;
 				[_civ_veh] spawn {
 					params ["_vehicle"];
 					if (typeOf _vehicle isKindOf "Air") exitWith {};

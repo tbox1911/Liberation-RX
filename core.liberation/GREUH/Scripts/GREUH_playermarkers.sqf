@@ -89,11 +89,7 @@ while { true } do {
 					_marker_objs pushback [ _marker, _nextplayer ];
 					_nextplayer setVariable [ "spotmarker", _marker ];
 
-					private _playername = "";
-					if( count (squadParams _nextplayer) != 0 ) then {
-						_playername = "[" + ((squadParams _nextplayer select 0) select 0) + "] ";
-					};
-					_playername = _playername + (name _nextplayer);
+					_playername = [_nextplayer] call get_player_name;
 					_marker setMarkerTextLocal _playername;
 
 					_marker setMarkerSizeLocal [ 0.75, 0.75 ];

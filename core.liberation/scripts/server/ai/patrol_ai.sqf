@@ -11,7 +11,7 @@ while { count (units _grp) > 0 } do {
 			// Keep gunner
 			if (_gunner != gunner _vehicle) then {
 				_gunner assignAsGunner _vehicle;
-				[_gunner] orderGetIn true ;
+				[_gunner] orderGetIn true;
 			};
 
 			// Default for HMG, GMG

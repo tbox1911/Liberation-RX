@@ -32,10 +32,6 @@ PAR_Player_MPKilled = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_pla
 >>>>>>> 7ff48884 (mpkill)
 if (isDedicated) exitWith {};
 
-PAR_isDragging = false;
-PAR_deathMessage = [];
-PAR_tkMessage = [];
-
 call compile preprocessFile "addons\TKP\tk_init.sqf";
 call compile preprocessFile "addons\PAR\PAR_global_functions.sqf";
 
@@ -60,8 +56,8 @@ PAR_MedGarbage = [
   "MedicalGarbage_01_3x3_v2_F"
 ];
 
-waituntil {GRLIB_player_spawned};
-waituntil {!isNil {player getVariable ["GRLIB_Rank", nil]}};
+waituntil {sleep 1; GRLIB_player_spawned};
+waituntil {sleep 1; !isNil {player getVariable ["GRLIB_Rank", nil]}};
 
 [] spawn PAR_AI_Manager;
 [] spawn PAR_Player_Init;

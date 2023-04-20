@@ -1,18 +1,19 @@
 waitUntil {sleep 1; !isNil "sectors_allSectors" };
+waitUntil {sleep 1; GRLIB_player_spawned};
 
 while { GRLIB_endgame == 0 } do {
 	sleep (30 + floor(random 30));
 
-	private _unit_lst = [allPlayers, {
-		alive _x && vehicle _x == _x && isPlayer _x &&
-		(_x distance2D lhd) > GRLIB_sector_size &&
-		(_x distance2D (getmarkerpos GRLIB_respawn_marker)) > GRLIB_sector_size &&
-		(_x distance2D ([getPos _x] call F_getNearestFob)) > GRLIB_sector_size &&
-		!(([ GRLIB_sector_size, getPos _x ] call F_getNearestSector) in sectors_bigtown)
-	}] call BIS_fnc_conditionalSelect;
+	private _spawn_life = (
+		alive player && vehicle player == player &&
+		(player distance2D lhd) > GRLIB_sector_size &&
+		(player distance2D (getmarkerpos GRLIB_respawn_marker)) > GRLIB_sector_size &&
+		(player distance2D ([getPosATL player] call F_getNearestFob)) > GRLIB_sector_size &&
+		!(([ GRLIB_sector_size, getPosATL player ] call F_getNearestSector) in sectors_bigtown)
+	);
 
-	if (count _unit_lst > 0) then {
-		private _unit = selectRandom _unit_lst;
+	if (_spawn_life) then {
+		private _unit = player;
 		private _managed_units = ([getPos _unit] call F_spawnWildLife);
 
 		waitUntil {

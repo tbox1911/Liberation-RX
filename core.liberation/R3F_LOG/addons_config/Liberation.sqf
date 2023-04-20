@@ -10,9 +10,7 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 
 R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
 [
-	huron_typename,
-	"B_Heli_Transport_01_F",
-	"B_Heli_Transport_01_camo_F"
+	huron_typename
 ];
 
 R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
@@ -24,8 +22,6 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 [
 	[huron_typename, 200],
-	["B_Heli_Transport_01_F", 50],
-	["B_Heli_Transport_01_camo_F", 50],
 	["Heli_Light_01_base_F", 10]
 ];
 
@@ -267,17 +263,8 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 [
 	//["StaticMGWeapon", 10],
 	["Land_CzechHedgehog_01_new_F", 5],
-	["B_HMG_01_F", 10],
-	["B_HMG_01_high_F", 10],
-	["I_HMG_01_F", 10],
-	["I_HMG_01_high_F", 10],
-	["O_HMG_01_F", 10],
-	["O_HMG_01_high_F", 10],
-	["O_static_AA_F", 10],
-	["O_static_AT_F", 10],
-	["O_Mortar_01_F", 10],
 	["StaticGrenadeLauncher", 10],
-	["StaticMortar", 10],
+	["StaticMortar", 15],
 	["Land_CzechHedgehog_01_new_F", 10]
 ];
 //--------------- Camping ---------------

@@ -113,7 +113,6 @@ opfor_battlegroup_vehicles = [
 	"gm_gc_army_btr60pb",
 	"gm_pl_army_ot64a",
 	"gm_gc_army_t55ak",
-	"gm_pl_airforce_mi2us",
 	"gm_pl_airforce_mi2p",
 	"gm_gc_army_btr60pb",
 	"gm_pl_airforce_mi2t"

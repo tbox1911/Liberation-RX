@@ -259,13 +259,13 @@ class RscTitles
 		y = (0.4 + ( ICONE_SPACY * 1 ) ) * safezoneH + safezoneY;
 		text = "res\ui_ammo.paa";
 	  };
-	 class PictureManpower : GenericPicture69 {
-		y = (0.4 + ( ICONE_SPACY * 2 ) ) * safezoneH + safezoneY;
-		text = "res\ui_manpo.paa";
-	  };
 	  class PictureFuel : GenericPicture69 {
-		y = (0.4 + ( ICONE_SPACY * 3 ) ) * safezoneH + safezoneY;
+		y = (0.4 + ( ICONE_SPACY * 2 ) ) * safezoneH + safezoneY;
 		text = "res\ui_fuel.paa";
+	  };
+	 class PictureManpower : GenericPicture69 {
+		y = (0.4 + ( ICONE_SPACY * 3 ) ) * safezoneH + safezoneY;
+		text = "res\ui_manpo.paa";
 	  };
 	  class PictureCap : GenericPicture69 {
 		y = (0.4 + ( ICONE_SPACY * 4 ) ) * safezoneH + safezoneY;
@@ -292,12 +292,12 @@ class RscTitles
 		x = (0.985 + SHADOW_X) * safezoneW + safezoneX;
 		colorText[] = {0,0,0,0.7};
 	  };
-		class PictureManpowerShadow : PictureManpower {
+	  class PictureFuelShadow : PictureFuel {
 		y = (0.4 + SHADOW_Y + ( ICONE_SPACY * 2 ) ) * safezoneH + safezoneY;
 		x = (0.985 + SHADOW_X) * safezoneW + safezoneX;
 		colorText[] = {0,0,0,0.7};
 	  };
-	  class PictureFuelShadow : PictureFuel {
+	  class PictureManpowerShadow : PictureManpower {
 		y = (0.4 + SHADOW_Y + ( ICONE_SPACY * 3 ) ) * safezoneH + safezoneY;
 		x = (0.985 + SHADOW_X) * safezoneW + safezoneX;
 		colorText[] = {0,0,0,0.7};
@@ -331,17 +331,17 @@ class RscTitles
 		y = (0.39 + ( ICONE_SPACY * 1 ) ) * safezoneH + safezoneY;
 		colorText[] = {0.75, 0, 0, 1};
 	  };
-	  class LabelManpower : GenericLabel69 {
-	  	idc = 101;
-		text = "";
-		y = (0.39 + ( ICONE_SPACY * 2 ) ) * safezoneH + safezoneY;
-		colorText[] = {0, 0.75, 0, 1};
-	  };
 	  class LabelFuel : GenericLabel69 {
 	  	idc = 103;
 		text = "";
-		y = (0.39 + ( ICONE_SPACY * 3 ) ) * safezoneH + safezoneY;
+		y = (0.39 + ( ICONE_SPACY * 2 ) ) * safezoneH + safezoneY;
 		colorText[] = {0.75, 0.75, 0, 1};
+	  };
+	  class LabelManpower : GenericLabel69 {
+	  	idc = 101;
+		text = "";
+		y = (0.39 + ( ICONE_SPACY * 3 ) ) * safezoneH + safezoneY;
+		colorText[] = {0, 0.75, 0, 1};
 	  };
 	  class LabelCap : GenericLabel69 {
 	  	idc = 104;

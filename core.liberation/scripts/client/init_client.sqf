@@ -37,11 +37,14 @@ is_neartransport = compileFinal preprocessFileLineNumbers "scripts\client\misc\i
 player_EVH = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_EventHandler.sqf";
 paraDrop = compileFinal preprocessFileLineNumbers "scripts\client\spawn\paraDrop.sqf";
 get_lrx_name = compileFinal preprocessFileLineNumbers "scripts\client\misc\get_lrx_name.sqf";
+get_player_name = compileFinal preprocessFileLineNumbers "scripts\client\misc\get_player_name.sqf";
 
 R3F_LOG_joueur_deplace_objet = objNull;
 GRLIB_player_spawned = false;
 
-[group player, "add"] remoteExec ["addel_group_remote_call", 2];
+private _grp = createGroup [GRLIB_side_friendly, true];
+[player] joinSilent _grp;
+[_grp, "add"] remoteExec ["addel_group_remote_call", 2];
 
 if (!([] call F_getValid)) exitWith {endMission "LOSER"};
 if ( typeOf player == "VirtualSpectator_F" ) exitWith {
@@ -51,7 +54,6 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 	[] execVM "scripts\client\markers\huron_marker.sqf";
 	[] execVM "scripts\client\markers\sector_manager.sqf";
 	[] execVM "scripts\client\markers\spot_timer.sqf";
-	[] execVM "scripts\client\misc\synchronise_vars.sqf";
 	[] execVM "scripts\client\ui\ui_manager.sqf";
 };
 [] execVM "scripts\client\commander\enforce_whitelist.sqf";
@@ -68,12 +70,12 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 [] execVM "scripts\client\markers\spot_timer.sqf";
 [] execVM "scripts\client\misc\broadcast_squad_colors.sqf";
 [] execVM "scripts\client\misc\disable_remote_sensors.sqf";
-//[] execVM "scripts\client\misc\offload_diag.sqf";
 [] execVM "scripts\client\misc\permissions_warning.sqf";
 [] execVM "scripts\client\misc\secondary_jip.sqf";
 [] execVM "scripts\client\misc\stop_renegade.sqf";
-[] execVM "scripts\client\misc\synchronise_vars.sqf";
 [] execVM "scripts\client\misc\manage_weather.sqf";
+[] execVM "scripts\client\misc\manage_wildlife.sqf";
+[] execVM "scripts\client\misc\manage_manpower.sqf";
 [] execVM "scripts\client\misc\no_thermic.sqf";
 [] execVM "scripts\client\misc\init_markers.sqf";
 [] execVM "scripts\client\actions\action_manager.sqf";
@@ -95,6 +97,7 @@ if (!GRLIB_ACE_enabled) then {
 	[] execVM "scripts\client\misc\support_manager.sqf";
 };
 [] execVM "addons\VIRT\virtual_garage_init.sqf";
+[] execVM "addons\SELL\sell_shop_init.sqf";
 [] execVM "addons\SHOP\traders_shop_init.sqf";
 [] execVM "addons\TAXI\taxi_init.sqf";
 [] execVM "addons\TARU\taru_init.sqf";
@@ -131,7 +134,7 @@ addMissionEventHandler ["Draw3D",{
 		private _gid = _sign getVariable ["GRLIB_vehicle_owner", "public"];
 		private _name = "- LRX";
 		if (_gid != "public") then {
-			_name = GRLIB_player_scores select { _x select 0 == _gid} select 0 select 3;
+			_name = GRLIB_player_scores select { _x select 0 == _gid} select 0 select 4;
 		};
 		drawIcon3D ["", [1,1,1,1], (ASLToAGL getPosASL _sign) vectorAdd [0, 0, 2.5], 0, 0, 0, format ["- FOB %1 -", _name], 2, 0.07, "RobotoCondensed", "center"];
 	};

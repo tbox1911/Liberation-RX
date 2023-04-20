@@ -44,7 +44,7 @@ while { cinematic_camera_started } do {
 			};
 
 			if ( GRLIB_endgame == 0 ) then {
-				 _activeplayers = ( [ allPlayers , { alive _x && ( _x distance ( getmarkerpos GRLIB_respawn_marker ) ) > 100 } ] call BIS_fnc_conditionalSelect );
+				 _activeplayers = ( [ allPlayers , { alive _x && ( _x distance2D ( getmarkerpos GRLIB_respawn_marker ) ) > 100 } ] call BIS_fnc_conditionalSelect );
 				 if ( count _activeplayers > 0 ) then {
 				 	for [ {_idx=0},{_idx < 3},{_idx=_idx+1} ] do {
 						_positions pushback (getpos (selectRandom _activeplayers));

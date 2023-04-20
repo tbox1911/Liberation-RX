@@ -21,7 +21,7 @@ if(!isNull (findDisplay 2337)) then {
 		_player_combo lbAdd format["%1", name _x];
 		_player_combo lbSetData [_i, getPlayerUID _x];
 		_i = _i + 1;
-	} foreach AllPlayers;
+	} foreach (AllPlayers - (entities "HeadlessClient_F"));
 
 	_i = 0;
 	{

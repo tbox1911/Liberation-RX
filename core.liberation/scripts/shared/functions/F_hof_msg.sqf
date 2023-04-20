@@ -9,7 +9,7 @@ if (isNil "_max") then {
 };
 
 _HoF=[];
-{ _HoF pushback [(_x select 1),  (_x select 3)]} foreach GRLIB_player_scores;
+{ _HoF pushback [(_x select 1),  (_x select 4)]} foreach GRLIB_player_scores;
 _HoF sort false;
 
 _msg = format ["<t color='#4BC9B0' shadow='2' size='1.75'>Hall of Fame</t><br/><t color='#777777'>------------------------------</t><br/><br/>"];

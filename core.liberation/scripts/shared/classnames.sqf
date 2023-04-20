@@ -29,7 +29,7 @@ support_vehicles = [
 	[Arsenal_typename,0,10,0,0],
 	[medicalbox_typename,5,5,0,0],
 	[mobile_respawn,10,5,0,0],
-	[canisterFuel,0,5,1,0],
+	[canisterFuel,0,10,5,0],
 	[Respawn_truck_typename,15,150,5,GRLIB_perm_log],
 	["Land_RepairDepot_01_civ_F",10,150,0,GRLIB_perm_log],
 	["Land_MedicalTent_01_MTP_closed_F",5,100,0,GRLIB_perm_log],
@@ -48,9 +48,9 @@ support_vehicles = [
 	[ammobox_o_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
 	[ammobox_i_typename,0,round(300 / GRLIB_recycling_percentage),0,99999],
 	[A3W_BoxWps,0,round(150 / GRLIB_recycling_percentage),0,99999],
-	[waterbarrel_typename,0,round(70 / GRLIB_recycling_percentage),0,GRLIB_perm_inf],
-	[fuelbarrel_typename,0,round(70 / GRLIB_recycling_percentage),0,GRLIB_perm_inf],
-	[foodbarrel_typename,0,round(70 / GRLIB_recycling_percentage),0,GRLIB_perm_inf]
+	[waterbarrel_typename,0,round(100 / GRLIB_recycling_percentage),0,99999],
+	[fuelbarrel_typename,0,round(60 / GRLIB_recycling_percentage),30,99999],
+	[foodbarrel_typename,0,round(100 / GRLIB_recycling_percentage),0,99999]
 ] + support_vehicles_west;
 
 <<<<<<< HEAD
@@ -347,20 +347,22 @@ boats_names_civ = [
 ];
 
 // *** RESISTANCE ***
-resistance_squad = [
-	"I_G_Soldier_SL_F",
-	"I_G_Soldier_A_F",
-	"I_G_Soldier_AR_F",
-	"I_G_medic_F",
-	"I_G_Soldier_exp_F",
-	"I_G_Soldier_GL_F",
-	"I_G_Soldier_M_F",
-	"I_G_Soldier_F",
-	"I_G_Soldier_LAT_F",
-	"I_G_Soldier_lite_F",
-	"I_G_Sharpshooter_F",
-	"I_G_Soldier_TL_F"
-];
+if ( isNil "resistance_squad" ) then {
+	resistance_squad = [
+		"I_G_Soldier_SL_F",
+		"I_G_Soldier_A_F",
+		"I_G_Soldier_AR_F",
+		"I_G_medic_F",
+		"I_G_Soldier_exp_F",
+		"I_G_Soldier_GL_F",
+		"I_G_Soldier_M_F",
+		"I_G_Soldier_F",
+		"I_G_Soldier_LAT_F",
+		"I_G_Soldier_lite_F",
+		"I_G_Sharpshooter_F",
+		"I_G_Soldier_TL_F"
+	];
+};
 
 ind_recyclable = [
 	["I_HMG_01_high_F",0,round (80 / GRLIB_recycling_percentage),0],
@@ -425,7 +427,6 @@ GRLIB_vehicle_whitelist = [
 	ammobox_o_typename,
 	ammobox_i_typename,
 	mobile_respawn,
-	opfor_transport_truck,
 	A3W_BoxWps,
 	canisterFuel,
 	waterbarrel_typename,
@@ -446,7 +447,6 @@ GRLIB_vehicle_blacklist = [
 	ammobox_b_typename,
 	ammobox_o_typename,
 	ammobox_i_typename,
-	opfor_transport_truck,
 	FOB_truck_typename,
 	FOB_box_typename,
 	FOB_box_outpost,
@@ -497,7 +497,7 @@ opfor_squad_low_intensity = [
 	opfor_squad_leader,
 	opfor_medic,
 	opfor_rpg,
-	opfor_sentry,
+	opfor_marksman,
 	opfor_sentry,
 	opfor_sentry,
 	opfor_sentry
@@ -508,7 +508,7 @@ opfor_squad_8_standard = [
 	opfor_machinegunner,
 	opfor_rpg,
 	opfor_heavygunner,
-	opfor_marksman,
+	opfor_sharpshooter,
 	opfor_marksman,
 	opfor_grenadier
 ];
@@ -519,6 +519,7 @@ opfor_squad_8_infkillers = [
 	opfor_heavygunner,
 	opfor_marksman,
 	opfor_sniper,
+	opfor_sharpshooter,
 	opfor_rifleman,
 	opfor_rifleman,
 	opfor_rpg

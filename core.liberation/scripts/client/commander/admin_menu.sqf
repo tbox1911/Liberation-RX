@@ -57,7 +57,7 @@ _i = 0;
 	_score_combo lbSetData [_i, _uid];
 	_score_combo lbSetColor [_i, _color];
 	_i = _i + 1;
-} foreach AllPlayers;
+} foreach (AllPlayers - (entities "HeadlessClient_F"));
 
 {
 	_score_combo lbAdd format["%1", _x select 3];

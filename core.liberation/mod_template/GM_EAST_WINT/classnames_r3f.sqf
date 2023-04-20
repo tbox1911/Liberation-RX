@@ -6,6 +6,7 @@ R3F_LOG_CFG_can_tow = R3F_LOG_CFG_can_tow +
 R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 [
 	"gm_gc_airforce_mi2p",
+    "gm_gc_airforce_mi2us",
     "gm_pl_airforce_mi2t",
     "gm_pl_airforce_mi2p",
     "gm_pl_airforce_mi2us",
@@ -24,6 +25,7 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
 [
 	"gm_gc_airforce_mi2p",
+    "gm_gc_airforce_mi2us",
     "gm_pl_airforce_mi2t",
     "gm_pl_airforce_mi2p",
     "gm_pl_airforce_mi2us",
@@ -44,6 +46,7 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 [
 	["gm_gc_airforce_mi2p", 75],
+    ["gm_gc_airforce_mi2us", 75],
     ["gm_pl_airforce_mi2t", 75],
     ["gm_pl_airforce_mi2p", 75],
     ["gm_pl_airforce_mi2us", 75],

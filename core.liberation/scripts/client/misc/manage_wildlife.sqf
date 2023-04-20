@@ -3,11 +3,11 @@
 // updated by: pSiKO
 
 if (GRLIB_wildlife_manager == 0) exitWith {};
-sleep (2*60);
+
 diag_log "--- LRX Starting Wildlife Manager";
-GRLIB_wildlife_max = 4;
+GRLIB_wildlife_max = 5;
 
 for "_i" from 1 to GRLIB_wildlife_max do {
-	[] execVM "scripts\server\patrols\manage_one_wildlife.sqf";
-	sleep 1;
+	[] execVM "scripts\client\misc\manage_one_wildlife.sqf";
+	sleep 5;
 };

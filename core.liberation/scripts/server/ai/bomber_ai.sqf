@@ -52,7 +52,7 @@ while {alive _unit} do {
 			sleep 3;
 			{
 				if ((_unit distance2D _x) <= 150) then { ["bombershout"] remoteExec ["playSound", owner _x] };
-			} forEach allPlayers;
+			} forEach (AllPlayers - (entities "HeadlessClient_F"));
 
 			sleep 0.5;
 			if (alive _unit) then {

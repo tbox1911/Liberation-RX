@@ -40,6 +40,7 @@ waituntil {sleep 1; !isNil "GRLIB_marker_init"};
     _man setDir _deskDir; 
     _man switchMove "AidlPercMstpSnonWnonDnon_AI"; 
     _man setVariable ["SHOP_ratio", (SHOP_ratio select (_forEachIndex % count SHOP_ratio))];
+    _man addAction ["<t color='#00F080'>" + localize "STR_SHOP_ENTER" + "</t> <img size='1' image='res\ui_recycle.paa'/>", "addons\SHOP\traders_shop.sqf","",-900,true,true,"","", 5];
     sleep 0.2;
 } forEach GRLIB_Marker_SHOP;
 
