@@ -1,7 +1,7 @@
 /**
- * Larguer un objet en train d'étre héliporté
+ * Larguer un objet en train d'�tre h�liport�
  *
- * @param 0 l'héliporteur
+ * @param 0 l'h�liporteur
  *
  * Copyright (C) 2014 Team ~R3F~
  *
@@ -27,10 +27,10 @@ else
 	_objet setVariable ["R3F_LOG_est_transporte_par", objNull, true];
 
 	if ( R3F_LOG_action_heliport_paradrop_valide ) then {
-		// Parachuter l'objet et lui appliquer la vitesse de l'héliporteur (inertie)
+		// Parachuter l'objet et lui appliquer la vitesse de l'h�liporteur (inertie)
 		[_objet, "paraDrop", _heliporteur] call R3F_LOG_FNCT_exec_commande_MP;
 	} else {
-		// Détacher l'objet et lui appliquer la vitesse de l'héliporteur (inertie)
+		// D�tacher l'objet et lui appliquer la vitesse de l'h�liporteur (inertie)
 		[_objet, "detachSetVelocity", velocity _heliporteur] call R3F_LOG_FNCT_exec_commande_MP;
 	};
 

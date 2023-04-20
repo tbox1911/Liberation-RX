@@ -47,7 +47,11 @@ GRLIB_whitelisted_from_arsenal = [];			// whitelist when Arsenal is enabled
 GRLIB_blacklisted_from_arsenal = blacklisted_bag + blacklisted_weapon;
 
 // Default LRX whitelist
+<<<<<<< HEAD
 GRLIB_whitelisted_from_arsenal = [mobile_respawn_bag] + whitelisted_from_arsenal;
+=======
+GRLIB_whitelisted_from_arsenal = GRLIB_whitelisted_from_arsenal + [mobile_respawn_bag];
+>>>>>>> f917bca7 (case)
 
 // Ace compat.
 if (GRLIB_ACE_enabled) then { [myLARsBox, true, false] call ace_arsenal_fnc_initBox };

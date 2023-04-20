@@ -1,5 +1,5 @@
 /**
- * Constantes pour rendre les définitions des boétes de dialogue plus lisible et maintenable
+ * Constantes pour rendre les d�finitions des bo�tes de dialogue plus lisible et maintenable
  */
 
 #define R3F_LOG_ID_TRANSPORTEUR_START 65430

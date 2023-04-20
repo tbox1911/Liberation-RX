@@ -1,5 +1,5 @@
 /**
- * Interface d'affichage du contenu du véhicule
+ * Interface d'affichage du contenu du v�hicule
  *
  * Copyright (C) 2014 Team ~R3F~
  *
@@ -36,7 +36,7 @@ class R3F_LOG_dlg_contenu_vehicule
 		R3F_LOG_dlg_CV_btn_fermer
 	};
 
-	// Définition des classes de base
+	// D�finition des classes de base
 	class R3F_LOG_dlg_CV_texte
 	{
 		idc = -1;
@@ -176,7 +176,7 @@ class R3F_LOG_dlg_contenu_vehicule
 			border = "\A3\ui_f\data\gui\cfg\scrollbar\border_ca.paa";
 		};
 	};
-	// FIN Définition des classes de base
+	// FIN D�finition des classes de base
 
 
 	class R3F_LOG_dlg_CV_titre_fond : R3F_LOG_dlg_CV_texte

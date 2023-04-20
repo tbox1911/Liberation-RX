@@ -1,6 +1,6 @@
 /**
- * Evalue réguliérement les conditions é vérifier pour autoriser les actions logistiques
- * Permet de diminuer la fréquence des vérifications des conditions normalement faites
+ * Evalue r�guli�rement les conditions � v�rifier pour autoriser les actions logistiques
+ * Permet de diminuer la fr�quence des v�rifications des conditions normalement faites
  * dans les addAction (~60Hz) et donc de limiter la consommation CPU.
  *
  * Copyright (C) 2014 Team ~R3F~
@@ -13,7 +13,7 @@
 private ["_joueur", "_vehicule_joueur", "_cursorTarget_distance", "_objet_pointe", "_objet_pas_en_cours_de_deplacement", "_fonctionnalites", "_pas_de_hook"];
 private ["_objet_deverrouille", "_objet_pointe_autre_que_deplace", "_objet_pointe_autre_que_deplace_deverrouille", "_isUav", "_usine_autorisee_client"];
 
-// Indices du tableau des fonctionnalités retourné par R3F_LOG_FNCT_determiner_fonctionnalites_logistique
+// Indices du tableau des fonctionnalit�s retourn� par R3F_LOG_FNCT_determiner_fonctionnalites_logistique
 #define __can_be_depl_heli_remorq_transp 0
 #define __can_be_moved_by_player 1
 #define __can_lift 2
@@ -50,19 +50,19 @@ while {true} do
 
 		_usine_autorisee_client = call compile R3F_LOG_CFG_string_condition_allow_creation_factory_on_this_client;
 
-		// L'objet est-il déverrouillé
+		// L'objet est-il d�verrouill�
 		_objet_deverrouille = !([_objet_pointe, _joueur] call R3F_LOG_FNCT_objet_est_verrouille);
 
-		// Trouver l'objet pointé qui se trouve derriére l'objet en cours de déplacement
+		// Trouver l'objet point� qui se trouve derri�re l'objet en cours de d�placement
 		_objet_pointe_autre_que_deplace = [R3F_LOG_joueur_deplace_objet, 3.75] call R3F_LOG_FNCT_3D_cursorTarget_virtuel;
 
 		if (!isNull _objet_pointe_autre_que_deplace) then
 		{
-			// L'objet (pointé qui se trouve derriére l'objet en cours de déplacement) est-il déverrouillé
+			// L'objet (point� qui se trouve derri�re l'objet en cours de d�placement) est-il d�verrouill�
 			_objet_pointe_autre_que_deplace_deverrouille = !([_objet_pointe_autre_que_deplace, _joueur] call R3F_LOG_FNCT_objet_est_verrouille);
 		};
 
-		// Si l'objet est un objet déplaéable
+		// Si l'objet est un objet d�pla�able
 		if (_fonctionnalites select __can_be_moved_by_player) then
 		{
 			// Condition action deplacer_objet
@@ -86,7 +86,7 @@ while {true} do
 		// Si l'objet est un objet remorquable
 		if (_fonctionnalites select __can_be_towed) then
 		{
-			// Et qu'il est déplaéable
+			// Et qu'il est d�pla�able
 			if (_fonctionnalites select __can_be_moved_by_player) then
 			{
 				// Condition action remorquer_deplace
@@ -130,7 +130,7 @@ while {true} do
 								]
 							);
 
-							// L'arriére du remorqueur est proche de l'avant de l'objet pointé
+							// L'arri�re du remorqueur est proche de l'avant de l'objet point�
 							abs (_delta_pos select 0) < 3 && abs (_delta_pos select 1) < 5
 						}
 					} count (_objet_pointe nearEntities [["All"], 30]) != 0
@@ -144,7 +144,7 @@ while {true} do
 		// Si l'objet est un objet transportable
 		if (_fonctionnalites select __can_be_transported_cargo) then
 		{
-			// Et qu'il est déplaéable
+			// Et qu'il est d�pla�able
 			if (_fonctionnalites select __can_be_moved_by_player) then
 			{
 				// Condition action charger_deplace
@@ -165,7 +165,7 @@ while {true} do
 				(([_joueur, _objet_pointe] call is_owner) || ([_objet_pointe] call is_public));
 		};
 
-		// Si l'objet est un véhicule remorqueur
+		// Si l'objet est un v�hicule remorqueur
 		if (_fonctionnalites select __can_tow && !isNull R3F_LOG_joueur_deplace_objet) then
 		{
 			// Condition action remorquer_deplace
@@ -177,7 +177,7 @@ while {true} do
 				_objet_deverrouille && !(_objet_pointe getVariable "R3F_LOG_disabled");
 		};
 
-		// Si l'objet est un véhicule transporteur
+		// Si l'objet est un v�hicule transporteur
 		if (_fonctionnalites select __can_transport_cargo) then
 		{
 			if (!isNull R3F_LOG_joueur_deplace_objet) then 
@@ -205,7 +205,7 @@ while {true} do
 			};
 		};
 
-		// Condition déverrouiller objet
+		// Condition d�verrouiller objet
 		R3F_LOG_action_deverrouiller_valide = _objet_pas_en_cours_de_deplacement && !_objet_deverrouille && !(_objet_pointe getVariable "R3F_LOG_disabled");
 	}
 	else
@@ -226,16 +226,16 @@ while {true} do
 		R3F_LOG_action_deverrouiller_valide = false;
 	};
 
-	// Si le joueur est pilote dans un héliporteur
+	// Si le joueur est pilote dans un h�liporteur
 	if (call compile R3F_LOG_CFG_string_condition_allow_logistics_on_this_client &&
 		!R3F_LOG_mutex_local_verrou && _vehicule_joueur != _joueur && driver _vehicule_joueur == _joueur && {_vehicule_joueur getVariable ["R3F_LOG_fonctionnalites", R3F_LOG_CST_zero_log] select __can_lift}
 	) then
 	{
 		R3F_LOG_objet_addAction = _vehicule_joueur;
 
-		// Note : pas de restriction liée é R3F_LOG_proprietaire_verrou pour l'héliportage
+		// Note : pas de restriction li�e � R3F_LOG_proprietaire_verrou pour l'h�liportage
 
-		// A partir des versions > 1.32, on interdit le lift si le hook de BIS est utilisé
+		// A partir des versions > 1.32, on interdit le lift si le hook de BIS est utilis�
 		if (productVersion select 2 > 132) then
 		{
 			// Call compile car la commande getSlingLoad n'existe pas en 1.32
