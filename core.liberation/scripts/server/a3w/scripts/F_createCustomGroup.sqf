@@ -23,11 +23,10 @@ for "_i" from 1 to _nbUnits do {
 	} else {
 		_uPos = _pos vectorAdd ([[random _radius, 0, 1], random 360] call BIS_fnc_rotateVector2D);
 	};
-	(selectRandom _unitTypes) createUnit [_uPos, _grp, "this addMPEventHandler [""MPKilled"", {_this spawn kill_manager}]", 0.5, "PRIVATE"];
+	(selectRandom _unitTypes) createUnit [_uPos, _grp, "this addMPEventHandler [""MPKilled"", {_this spawn kill_manager}]", 0.65, "PRIVATE"];
 };
 
 {
-	_x setSkill 0.65;
 	_x setSkill ["courage", 1];
 	_x allowFleeing 0;
 	_x setVariable ["mission_AI", true];
