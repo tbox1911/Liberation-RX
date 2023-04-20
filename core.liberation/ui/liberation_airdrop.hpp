@@ -198,7 +198,7 @@ class liberation_airdrop {
   {
     idc = 1605;
     action = "air_type=7;do_action=1";
-    text = $STR_AIRDROP_AIRSUPERIORITY;
+    text = $STR_AIRDROP_AIRSUPREMACY;
     x = 0.206094 * safezoneW + safezoneX;
     y = 0.6386 * safezoneH + safezoneY;
     w = 0.061875 * safezoneW;
@@ -206,7 +206,7 @@ class liberation_airdrop {
   };
   class LabelAir: GREUH_RscStructuredText
   {
-    text = $STR_AIRSUPERIORITY;
+    text = $STR_AIRSUPREMACY;
     x = 0.283437 * safezoneW + safezoneX;
     y = 0.6386 * safezoneH + safezoneY;
     w = 0.149531 * safezoneW;
