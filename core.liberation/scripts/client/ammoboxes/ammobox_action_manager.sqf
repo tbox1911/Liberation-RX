@@ -21,7 +21,7 @@ while { true } do {
 	if ( [ player, 5 ] call fetch_permission ) then {
 
 		_nearammoboxes = ((getpos player) nearEntities [ _classname_box, 10]);
-		_neartransporttrucks = ((getpos player) nearEntities [ ammobox_transports_typenames ,10]);
+		_neartransporttrucks = [((getpos player) nearEntities [ ammobox_transports_typenames ,10]), {[player, _x] call is_owner}] call BIS_fnc_conditionalSelect;
 
 		_checked_trucks = [];
 

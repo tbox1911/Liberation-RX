@@ -23,6 +23,7 @@ spawn_battlegroup = compileFinal preprocessFileLineNumbers "scripts\server\battl
 
 // Game
 check_victory_conditions = compileFinal preprocessFileLineNumbers "scripts\server\game\check_victory_conditions.sqf";
+attach_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\attach_object_direct.sqf";
 
 // Patrol
 reinforcements_manager = compileFinal preprocessFileLineNumbers "scripts\server\patrols\reinforcements_manager.sqf";
