@@ -551,6 +551,11 @@ ind_recyclable = [
 	["I_Truck_02_transport_F",0,round (20 / GRLIB_recycling_percentage),0]
 ];
 
+opfor_texture_overide = [
+	//"Urban",
+	//"Digital"
+];
+
 opfor_recyclable = [
 	["O_LSV_02_armed_F",0,round (20 / GRLIB_recycling_percentage),0],
 	["O_LSV_02_AT_F",0,round (40 / GRLIB_recycling_percentage),0],

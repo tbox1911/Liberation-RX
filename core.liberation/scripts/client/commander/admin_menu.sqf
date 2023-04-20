@@ -45,7 +45,7 @@ _i = 0;
 	_build_combo lbAdd format["%1", getText(configFile >> "cfgVehicles" >> ( _x select 0 ) >> "DisplayName")];
 	_build_combo lbSetData [_i, ( _x select 0 )];
 	_i = _i + 1;
-} forEach light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles;
+} forEach light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles + opfor_recyclable;
 
 _player_combo lbSetCurSel 0;
 _player_combo2 lbSetCurSel 0;
