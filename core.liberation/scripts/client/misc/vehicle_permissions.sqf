@@ -1,11 +1,12 @@
 params ["_unit", "_role", "_vehicle"];
 
-private _doeject = false;
 if (isNil "_role") exitWith {moveOut _unit;};  // Eject unit
+private _doeject = false;
+private _role = (assignedVehicleRole _unit) select 0;
 if (count GRLIB_all_fobs == 0 && typeOf _vehicle in [FOB_truck_typename,huron_typename]) exitWith {true}; // Allowed at start
 
 private _msg = "";
-if (!((_role == "cargo") || (_vehicle isKindOf "Steerable_Parachute_F"))) then {
+if (!(_role == "cargo" || _vehicle isKindOf "Steerable_Parachute_F")) then {
 	if (!([player, 0] call fetch_permission)) then {
 		_doeject = true;
 		_msg = localize "STR_PERMISSION_NO_LIGHT";

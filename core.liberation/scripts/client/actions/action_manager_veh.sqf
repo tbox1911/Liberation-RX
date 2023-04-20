@@ -17,6 +17,7 @@ private _wreck_class = [
 	"StaticWeapon",
 	"Slingload_01_Base_F",
 	"Pod_Heli_Transport_04_base_F",
+	"Land_RepairDepot_01_base_F",
 	"B_AAA_System_01_F",
 	"B_SAM_System_02_F",
 	"O_SAM_System_04_F"
