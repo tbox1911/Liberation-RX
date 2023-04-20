@@ -6,7 +6,7 @@ if ( GRLIB_weather_param == 2 ) then {
 };
 
 if ( GRLIB_weather_param == 3 ) then {
-	_weathers = [0.45,0.5,0.55,0.6,0.65,0.7];
+	_weathers = [0.4,0.45,0.5,0.55,0.6,0.65,0.7];
 };
 
 if ( GRLIB_weather_param == 4 ) then {
@@ -24,7 +24,7 @@ while { GRLIB_endgame == 0 } do {
 	0 setOvercast chosen_weather;
 	0 setRain 0;
 	0 setGusts 0;
-	setWind [5, 5, true];
+	setWind [0, 0, true];
 	sleep _weathertime;
 	chosen_weather = _weathers call BIS_fnc_selectRandom;
 };
