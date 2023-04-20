@@ -53,6 +53,9 @@ militia_squad = [
 	"gm_pl_army_sf_rifleman_akmn_80_moro"
 ];
 
+militia_loadout_overide = [
+];
+
 divers_squad = [
 	"O_diver_TL_F",
 	"O_diver_TL_F",

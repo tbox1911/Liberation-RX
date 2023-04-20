@@ -46,6 +46,9 @@ militia_squad = [
 	"LOP_ChDKZ_Infantry_TL"
 ];
 
+militia_loadout_overide = [
+];
+
 divers_squad = [
 	"O_diver_TL_F",
 	"O_diver_TL_F",
