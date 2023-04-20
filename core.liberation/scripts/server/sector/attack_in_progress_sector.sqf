@@ -16,13 +16,16 @@ private _grp = createGroup [GRLIB_side_friendly, true];
 private	_is_side_sector = (count (allMapMarkers select {_x select [0,12] == "side_mission" && markerPos _x distance2D markerPos _sector <= GRLIB_capture_size}) > 0);
 
 if ( GRLIB_blufor_defenders && !_is_side_sector) then {
-	{ _x createUnit [ markerpos _sector, _grp,'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]']; } foreach _squad_type;
+	{ _x createUnit [markerpos _sector, _grp, 'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]'] } foreach _squad_type;
+	{
+		_x setSkill 0.65;
+		_x setSkill ["courage", 1];
+		_x allowFleeing 0;
+		_x doFollow leader _grp
+	} foreach units _grp;
+	_grp setCombatMode "RED";
+	_grp setBehaviourStrong "COMBAT";
 };
-
-sleep 3;
-
-_grp setCombatMode "GREEN";
-_grp setBehaviour "COMBAT";
 
 sleep 60;
 
@@ -38,15 +41,17 @@ if ( _ownership == GRLIB_side_friendly ) exitWith {
 [ _sector, 1 ] remoteExec ["remote_call_sector", 0];
 private _attacktime = GRLIB_vulnerability_timer;
 
-while { _attacktime > 0 && ( _ownership == GRLIB_side_enemy || _ownership == GRLIB_side_resistance ) } do {
+while { _attacktime > 0 && _ownership == GRLIB_side_enemy } do {
 	_ownership = [markerpos _sector] call F_sectorOwnership;
 	_attacktime = _attacktime - 1;
 	sleep 1;
 };
 
-waitUntil {
+private _countblufor = [markerpos _sector, GRLIB_capture_size, GRLIB_side_friendly ] call F_getUnitsCount;
+while { _countblufor > 0 && _ownership == GRLIB_side_enemy } do {
+	_ownership = [markerpos _sector] call F_sectorOwnership;
+	_countblufor = [markerpos _sector, GRLIB_capture_size, GRLIB_side_friendly ] call F_getUnitsCount;
 	sleep 1;
-	[markerpos _sector] call F_sectorOwnership != GRLIB_side_resistance;
 };
 
 if ( GRLIB_endgame == 0 ) then {

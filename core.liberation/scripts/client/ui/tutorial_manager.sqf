@@ -40,10 +40,6 @@ disableUserInput false;
 disableUserInput true;
 disableUserInput false;
 createDialog "liberation_tutorial";
-if ( !cinematic_camera_started ) then {
-	[] spawn cinematic_camera;
-};
-
 waitUntil { dialog };
 
 {
@@ -65,5 +61,4 @@ while { howtoplay == 1 && alive player && dialog } do {
 if ( dialog ) then { closeDialog 0 };
 disableUserInput true;
 
-cinematic_camera_started = false;
 howtoplay = 0;

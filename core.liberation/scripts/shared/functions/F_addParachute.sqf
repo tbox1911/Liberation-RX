@@ -13,7 +13,7 @@ _chute disableCollisionWith _heli;
 _objet attachTo [_chute,[0,0,0.6]];
 
 private _stop = time + 150;
-waitUntil {sleep 0.2;((getPos _objet select 2) < 50 || !(alive _objet) || time > _stop)};
+waitUntil {sleep 0.2;((getPos _objet select 2) < 100 || !(alive _objet) || time > _stop)};
 private _smoke1 = (selectRandom _shellSmoke) createVehicle _pos;
 _smoke1 attachTo [_objet,[0,0,0.6]];
 sleep 3;

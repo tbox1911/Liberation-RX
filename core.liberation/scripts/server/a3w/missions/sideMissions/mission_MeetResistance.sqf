@@ -67,19 +67,26 @@ _setupObjects =
 	};
 	[_aiGroupRes, _missionPos, (_nbUnits - (count _managed_units)), "resistance"] call createCustomGroup;
 
-	// create static weapons
+	// create static weapons + crew
 	_veh1 = createVehicle ["I_static_AA_F", _missionPos, [], 50, "None"];
 	[_veh1] spawn protect_static;
 	_veh1 setDir random 360;
-	createVehicleCrew _veh1;
-	sleep 1;
+	_grp = createVehicleCrew _veh1;
+	sleep 0.5;
+	_gunner = units _grp select 0;
+	_gunner assignAsGunner _veh1;
+	[_gunner] orderGetIn true;
 	(crew _veh1) joinSilent _aiGroupRes;
+	sleep 1;
 
 	_veh2 = createVehicle ["I_static_AA_F", _missionPos, [], 50, "None"];
 	[_veh2] spawn protect_static;
 	_veh2 setDir random 360;
-	createVehicleCrew _veh2;
-	sleep 1;
+	_grp = createVehicleCrew _veh2;
+	sleep 0.5;
+	_gunner = units _grp select 0;
+	_gunner assignAsGunner _veh2;
+	[_gunner] orderGetIn true;
 	(crew _veh2) joinSilent _aiGroupRes;
 
 	// remove dead body to let the leader change

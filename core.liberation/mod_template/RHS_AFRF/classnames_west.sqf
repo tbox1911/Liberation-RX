@@ -146,7 +146,8 @@ if ( count blufor_squad_inf_light == 0 ) then { blufor_squad_inf_light = [
 	"rhs_vmf_emr_junior_sergeant",
 	"rhs_vmf_emr_rifleman",
 	"rhs_vmf_emr_grenadier",
-	"rhs_vmf_emr_machinegunner"
+	"rhs_vmf_emr_rifleman",
+	"rhs_vmf_emr_rifleman"		
   ];
 };
 if ( isNil "blufor_squad_inf" ) then { blufor_squad_inf = [] };
@@ -158,7 +159,9 @@ if ( count blufor_squad_inf == 0 ) then { blufor_squad_inf = [
     "rhs_vmf_emr_junior_sergeant",
     "rhs_vmf_emr_rifleman",
     "rhs_vmf_emr_grenadier",
-    "rhs_vmf_emr_machinegunner"
+    "rhs_vmf_emr_machinegunner",
+	"rhs_vmf_emr_rifleman",
+	"rhs_vmf_emr_rifleman"
   ];
 };
 if ( isNil "blufor_squad_at" ) then { blufor_squad_at = [] };
