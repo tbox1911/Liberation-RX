@@ -81,7 +81,7 @@ class liberation_menu {
 		tooltipColorShade[] = COLOR_BROWN;
 		tooltipColorText[] = COLOR_WHITE;
 		tooltipColorBox[] = COLOR_GREEN;
-		action = "howtoplay=1;";
+		action = "[] execVM 'scripts\client\ui\tutorial_manager.sqf'";
 	};
 
 
