@@ -39,6 +39,7 @@ GRLIB_blacklisted_names = [
     "user1",
     "windows 10",
     "windows",
+    "dell",
     "acer",
     "asus"
 ];

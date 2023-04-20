@@ -6,7 +6,7 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_nbUnits", "_vehicle", "_vehicleName", "_vehiclePos", "_smoke"];
+private ["_nbUnits", "_vehicle", "_vehicleName", "_vehiclePos", "_smoke", "_chopper_only"];
 
 _setupVars =
 {
@@ -19,7 +19,9 @@ _setupObjects =
 {
 	_missionPos = markerPos _missionLocation;
 	_vehiclePos = _missionPos findEmptyPosition [1, 60, "B_Heli_Transport_03_unarmed_F"];
-	_vehicle = createVehicle [ (selectRandom opfor_air), _vehiclePos, [], 0, "NONE"];
+	_chopper_only = []; 
+	{if !(_x isKindOf "Plane") then {_chopper_only pushBack _x};true} count opfor_air;
+	_vehicle = createVehicle [ (selectRandom _chopper_only), _vehiclePos, [], 0, "NONE"];
 	_vehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	_vehicle setVariable ["R3F_LOG_disabled", true, true];
 	_vehicle setVariable ["GRLIB_vehicle_owner", "server", true];

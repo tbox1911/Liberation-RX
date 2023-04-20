@@ -11,7 +11,7 @@ if (GRLIB_blacklisted_from_arsenal find _item >= 0) then {
 	} foreach GRLIB_blacklisted_from_arsenal;
 };
 
-if (_ret) then {
+if (_ret && LRX_arsenal_init_done) then {
 	if (GRLIB_filter_arsenal == 2) then {
 		if (!(_item in GRLIB_whitelisted_from_arsenal)) then { _ret = false };
 	};
