@@ -31,16 +31,13 @@ if ( !( _sector in GRLIB_military_sectors_already_activated )) then {
 
 	if ( !GRLIB_passive_income ) then {
 		_crates_amount = ceil (((0.5 * GRLIB_sector_military_value) + (random (0.5 * GRLIB_sector_military_value ))) * GRLIB_resources_multiplier);
-		if ( _crates_amount > 6 ) then { _crates_amount = 6 };
+		if ( _crates_amount > 4 ) then { _crates_amount = 4 };
 
-		for [ {_i=0}, {_i < (_crates_amount + 1) }, {_i=_i+1} ] do {
+		_vehicle = opfor_ammobox_transport createVehicle (markerpos _sector);
+		_vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
 
-			_spawnclass = ammobox_o_typename;
-			if ( _i == 0 ) then {
-				_spawnclass = opfor_ammobox_transport;
-			};
-
-			_newbox = [_spawnclass, markerpos _sector, true] call boxSetup;
+		for "_i" from 1 to _crates_amount do {
+			_newbox = [ammobox_o_typename, markerpos _sector, true] call boxSetup;
 			clearWeaponCargoGlobal _newbox;
 			clearMagazineCargoGlobal _newbox;
 			clearItemCargoGlobal _newbox;

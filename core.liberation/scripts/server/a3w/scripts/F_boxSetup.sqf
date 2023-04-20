@@ -21,7 +21,6 @@ if (isNil "_locked") then { _locked = false};
 
 if (_locked) then {
 	_box setVariable ["R3F_LOG_disabled", true, true];
-	_box setVariable ["GRLIB_vehicle_owner", "server", true];
 	//_box allowDamage false;
 } else {
 	_box setVariable ["R3F_LOG_disabled", false, true];
@@ -29,7 +28,7 @@ if (_locked) then {
 };
 
 if (!GRLIB_OPTRE_enabled && !GRLIB_GM_enabled && _type == A3W_BoxWps) then {
-	private _box_refill = ["mission_Ammo","mission_USLaunchers","mission_USSpecial","mission_Main_A3snipers","mission_Ammo"];
-	[_box, selectRandom _box_refill] call fn_refillbox;
+	private _box_refill = selectRandom ["mission_Ammo","mission_USLaunchers","mission_USSpecial","mission_Main_A3snipers","mission_Ammo"];
+	[_box, _box_refill] call fn_refillbox;
 };
 _box;
