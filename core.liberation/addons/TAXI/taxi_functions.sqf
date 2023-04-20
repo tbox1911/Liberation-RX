@@ -1,7 +1,7 @@
 // Taxi functions
 taxi_land = {
 	params ["_vehicle"];
-	private _stop = time + (2 * 60);
+	private _stop = time + (3 * 60);
 	waitUntil {
 		hintSilent localize "STR_TAXI_LANDING";
 		_vehicle land "LAND";
