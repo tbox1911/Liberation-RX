@@ -1,6 +1,7 @@
 if (!isServer) exitWith {};
 
 waituntil {sleep 0.5; !isNil "GRLIB_sectors_init"};
+waituntil {sleep 0.5; count sectors_factory > 0};
 
 GRLIB_Marker_SRV = [];
 GRLIB_Marker_ATM = [];

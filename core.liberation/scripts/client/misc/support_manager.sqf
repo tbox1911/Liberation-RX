@@ -1,10 +1,11 @@
-private ["_neararsenal", "_nearmedic", "_needammo1", "_needammo2", "_needmedic", "_magType", "_list_static", "_min"];
+private ["_neararsenal", "_nearmedic", "_needammo1", "_needammo2", "_needmedic", "_magType", "_list_vehicles", "_min"];
 
 _distarsenal = 30;
 _maxsec = 3;
-_list_static = [] + uavs;
-{_list_static pushBack ( _x select 0 )} foreach (static_vehicles);
+_list_vehicles = [];
+{_list_vehicles pushBack ( _x select 0 )} foreach ( light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + opfor_recyclable );
 _ignore_ammotype = ["Laserbatteries", "8Rnd_82mm_Mo_Flare_white", "8Rnd_82mm_Mo_Smoke_white"];
+_list_static = ["B_static_AT_F", "B_static_AA_F", "O_static_AT_F", "O_static_AA_F"];
 
 NeedAmmo = {
 	params ["_unit", "_item", "_min"];
@@ -108,23 +109,23 @@ while { true } do {
 		};
 
 		// In vehicle
-		if (lifeState _x != 'incapacitated' && vehicle _x != _x) then {
+		if (lifeState _x != 'incapacitated' && ( ((gunner vehicle _x) == _x) || ((driver  vehicle _x) == _x) || ((commander vehicle _x) == _x) )) then {
 			_unit = _x;
 			_vehicle = vehicle _unit;
 			_vehicle_class = typeOf _vehicle;
 
-			if (_vehicle_class in _list_static) then {
+			if (_vehicle_class in _list_vehicles ) then {
 				_timer = _vehicle getVariable ["GREUH_rearm_timer", 0];
 				if (_timer == 0 ) then {
-					_max_ammo = 6;
-					if (_vehicle_class in uavs) then { _max_ammo = 3 };
-					if (_vehicle_class == "B_Mortar_01_F") then { _max_ammo = 3 };
+					_max_ammo = 3;
+					if (_vehicle_class in _list_static) then { _max_ammo = 6 };
 
 					// Arsenal
 					_neararsenal =  ((getpos _unit) nearEntities [vehicle_rearm_sources, _distarsenal]) +
 									((getpos _unit) nearobjects [FOB_typename, _distarsenal * 2]);
 
 					if (count(_neararsenal) > 0)  then {
+						//_vehicle setVehicleAmmoDef 1;
 						_magType = (getArray(configFile >> "CfgVehicles" >> _vehicle_class >> "Turrets" >> "MainTurret" >> "magazines") - _ignore_ammotype);
 						{
 							_ammo_type = _x;

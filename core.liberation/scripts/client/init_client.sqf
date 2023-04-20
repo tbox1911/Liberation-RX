@@ -58,7 +58,6 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 [] execVM "scripts\client\misc\sides_stats_manager.sqf";
 [] execVM "scripts\client\ui\ui_manager.sqf";
 [] execVM "scripts\client\ui\tutorial_manager.sqf";
-[] execVM "scripts\client\misc\resupply_manager.sqf";
 [] execVM "scripts\client\build\build_overlay.sqf";
 [] execVM "scripts\client\build\do_build.sqf";
 [] execVM "scripts\client\markers\empty_vehicles_marker.sqf";
