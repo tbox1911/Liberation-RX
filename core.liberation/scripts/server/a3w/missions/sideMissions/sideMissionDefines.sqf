@@ -3,8 +3,6 @@
 // ******************************************************************************************
 //	@file Version: 1.0
 //	@file Name: sideMissionDefines.sqf
-//	@file Author: [404] Deadbeat, AgentRev
-//	@file Created: 08/12/2012 15:19
 
 // Side Mission Color = #4BC9B0 - Teal
 // Fail Mission Color = #FF1717 - Light red

@@ -14,7 +14,8 @@ SideMissions = [
 	["mission_FuelDelivery", 1],
 	["mission_TownInvasion", 1],
 	["mission_HostileHelicopter", 1],
-	["mission_MeetResistance", 1]
+	["mission_MeetResistance", 1],
+	["mission_VehicleCapture", 1]
 ];
 
 SpawnMissionMarkers = (allMapMarkers select {["Mission_", _x] call fn_startsWith;}) apply {[_x, false]};
