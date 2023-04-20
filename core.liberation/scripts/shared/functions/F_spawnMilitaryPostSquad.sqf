@@ -2,19 +2,28 @@ params [ "_squadpos" ];
 private [ "_grp", "_building_positions", "_unitclass", "_unit", "_totalx2", "_totaly2", "_avgx2", "_avgy2", "_vd2", "_newdir2" ];
 diag_log format ["Spawn cargopost squad at %1", time];
 
+private _posts_classname =[
+	"Cargo_HQ_base_F",
+	"Cargo_Patrol_base_F",
+	"Cargo_Tower_base_F",
+	"Cargo_House_base_F"
+];
 private _spawned_units_local = [];
-private _allposts = [ nearestObjects [ _squadpos, [ 'Land_Cargo_Patrol_V1_F','Land_Cargo_Patrol_V2_F','Land_Cargo_Patrol_V3_F', 'Industry_base_F' ], GRLIB_capture_size ] , { alive _x } ] call BIS_fnc_conditionalSelect;
-private _garnison = 5;
+private _allposts = ([nearestObjects [_squadpos, _posts_classname, GRLIB_capture_size], {alive _x}] call BIS_fnc_conditionalSelect) select [0, 4];
+private _garnison_max = 5;
 if ( count _allposts > 0 ) then {
 	{
-		_building_positions = [_x, _garnison] call BIS_fnc_buildingPositions;
-		_unitclass = [];
-		while { (count _unitclass) < _garnison } do { _unitclass pushback (selectRandom opfor_infantry) };	
-		_grp = [_squadpos, _unitclass, GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
-		{	
-			_x setPos (_building_positions select _forEachIndex);
-			_spawned_units_local pushback _x;
-		} foreach (units _grp);
+		_building_positions = [_x, _garnison_max] call BIS_fnc_buildingPositions;
+		_garnison = _garnison_max min (count _building_positions);
+		if (_garnison > 0) then {
+			_unitclass = [];
+			while { (count _unitclass) < _garnison } do { _unitclass pushback (selectRandom opfor_infantry) };	
+			_grp = [_squadpos, _unitclass, GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
+			{
+				_x setPos (_building_positions select _forEachIndex);
+				_spawned_units_local pushback _x;
+			} foreach (units _grp);
+		};
 	} foreach _allposts;
 
 	_totalx2 = 0;
@@ -36,9 +45,10 @@ if ( count _allposts > 0 ) then {
 		if (_newdir2 < 0) then {_dir = 360 + _newdir2 };
 		_x setdir (_newdir2);
 	} foreach (units _grp);
-
+	
+	diag_log format ["Done spawning cargopost squad (%1) at %2", count _spawned_units_local, time];
+} else {
+	diag_log format ["Done spawning cargopost no place found at pos %1", _squadpos];
 };
-
-diag_log format ["Done spawning cargopost squad (%1) at %2", count _spawned_units_local, time];
 
 _spawned_units_local;

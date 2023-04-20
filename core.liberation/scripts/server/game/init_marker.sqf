@@ -9,7 +9,7 @@ waituntil {sleep 1; !isNil "GRLIB_sectors_init"};
   private _find_pos = false;
   private _cur_pos = markerPos _x;
   while {!_find_pos && _max_try > 0} do {
-    _pos = _cur_pos findEmptyPosition [5,50, repair_offroad];
+    _pos = _cur_pos findEmptyPosition [0,50, repair_offroad];
     if (count _pos == 3) then {
       if (!isOnRoad _pos) then {_find_pos = true};
       _cur_pos = _pos vectorAdd [([[-50,0,50], 5] call F_getRND), ([[-50,0,50], 5] call F_getRND), 0];

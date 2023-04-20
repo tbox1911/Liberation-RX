@@ -32,6 +32,12 @@ if (floor(random combat_readiness) > (15 + (30 / GRLIB_csat_aggressivity))) then
 				["lib_reinforcements", [markertext _targetsector]] remoteExec ["bis_fnc_shownotification", 0];
 				[ markerPos _targetsector ] spawn send_paratroopers;
 				stats_reinforcements_called = stats_reinforcements_called + 1;
+				
+				if ( combat_readiness >= 90 ) then { 
+					[ markerPos _targetsector ] spawn send_paratroopers;
+					stats_reinforcements_called = stats_reinforcements_called + 1;
+				};
+
 				publicVariable "stats_reinforcements_called";
 			};
 		};
