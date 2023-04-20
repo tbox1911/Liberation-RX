@@ -4,6 +4,9 @@
 			<Key ID="STR_MISSION_TITLE">
 					<Original>-= Liberation RX =-</Original>
 			</Key>
+			<Key ID="STR_MISSION_AUTHOR">
+					<Original>[GREUH] Zbug, [GREUH] McKeewa, [AKH] pSiKO</Original>
+			</Key>
 			<Key ID="STR_MISSION_VERSION">
 					<Original>v0.927</Original>
 					<Chinesesimp>0.927版本</Chinesesimp>
