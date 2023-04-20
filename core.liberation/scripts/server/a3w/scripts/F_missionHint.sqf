@@ -4,7 +4,7 @@
 //	@file Version: 1.0
 //	@file Name: missionHint.sqf
 //	@file Author: AgentRev
-//	@file Created: 09/01/2014 20:30
+//	LRX Integration: pSiKO
 
 private ["_title", "_subTitle", "_picture", "_text", "_titleColor", "_info"];
 

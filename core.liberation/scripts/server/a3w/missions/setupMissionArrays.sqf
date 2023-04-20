@@ -3,6 +3,7 @@
 // ******************************************************************************************
 //	@file Name: setupMissionArrays.sqf
 //	@file Author: AgentRev
+//	LRX Integration: pSiKO
 
 if (!isServer) exitWith {};
 

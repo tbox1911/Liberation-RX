@@ -3,6 +3,8 @@
 // ******************************************************************************************
 //	@file Name: createMissionMarker.sqf
 //	@file Author: AgentRev
+//	LRX Integration: pSiKO
+
 params ["_text", "_pos"];
 
 private _marker = createMarker [format ["side_mission_%1", _text], _pos];

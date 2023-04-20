@@ -3,6 +3,7 @@
 // ******************************************************************************************
 //	@file Name: sideMissionController.sqf
 //	@file Author: AgentRev
+//	LRX Integration: pSiKO
 
 #define MISSION_CTRL_PVAR_LIST SideMissions
 #define MISSION_CTRL_TYPE_NAME "Side"

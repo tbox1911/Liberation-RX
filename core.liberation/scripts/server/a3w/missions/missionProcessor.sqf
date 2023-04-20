@@ -3,6 +3,7 @@
 // ******************************************************************************************
 //	@file Name: missionProcessor.sqf
 //	@file Author: AgentRev
+//	LRX Integration: pSiKO
 
 if (!isServer) exitwith {};
 
