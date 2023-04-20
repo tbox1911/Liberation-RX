@@ -16,7 +16,6 @@ GRLIB_Marker_SRV = [];
 GRLIB_Marker_ATM = [];
 GRLIB_Marker_FUEL = [];
 GRLIB_Marker_SHOP = [];
-GRLIB_Marker_REPAIR = [];
 
 waituntil {sleep 1; !isNil "GRLIB_sectors_init"};
 sleep 5;
@@ -79,16 +78,14 @@ sleep 5;
   _marker setMarkerSizeLocal [ 0.75, 0.75 ];
 } forEach GRLIB_Marker_SHOP;
 
-// Repair Marker
-private _tmp_marker = [];
-_tmp_marker = [vehicles, {(alive _x) && typeOf _x == repair_offroad && (_x getVariable ["GRLIB_vehicle_owner", ""] == "server")}] call BIS_fnc_conditionalSelect;
+// Repair Marker (computed on server side)
+waitUntil {sleep 2; !isNil "GRLIB_Marker_REPAIR"};
 {
-  _marker = createMarkerLocal [format ["marked_repair%1", _forEachIndex], getPos _x];
+  _marker = createMarkerLocal [format ["marked_repair%1", _forEachIndex], _x];
   _marker setMarkerColorLocal "ColorOrange";
   _marker setMarkerTypeLocal "mil_dot";
   _marker setMarkerTextLocal "Repair";
   _marker setMarkerSizeLocal [ 0.75, 0.75 ];
-  GRLIB_Marker_REPAIR pushback getPos _x;
-} forEach _tmp_marker;
+} forEach GRLIB_Marker_REPAIR;
 
 GRLIB_marker_init = true;

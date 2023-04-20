@@ -1,7 +1,5 @@
 params [ "_sector" ];
 
-waitUntil {sleep 1; !isNil "combat_readiness" };
-
 private _sectorpos = getmarkerpos _sector;
 private _stopit = false;
 private _spawncivs = false;
@@ -26,7 +24,6 @@ if ( _sector in active_sectors ) exitWith {};
 active_sectors pushback _sector; publicVariable "active_sectors";
 
 diag_log format ["Spawn Defend Sector %1 at %2", _sector, time];
-sleep 5;
 
 if ( GRLIB_adaptive_opfor ) then {
 	private _activeplayers = count ([allPlayers, {alive _x && (_x distance2D (getmarkerpos _sector)) < GRLIB_sector_size}] call BIS_fnc_conditionalSelect);
@@ -137,8 +134,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 		_vehicle = [_sectorpos, _x] call F_libSpawnVehicle;
 		[group ((crew _vehicle) select 0), _sectorpos] spawn add_defense_waypoints;
 		_managed_units pushback _vehicle;
-		{ _managed_units pushback _x; } foreach (crew _vehicle);
-		sleep 0.25;
+		{ _managed_units pushback _x } foreach (crew _vehicle);
 	} foreach _vehtospawn;
 
 	if ( _building_ai_max > 0 ) then {

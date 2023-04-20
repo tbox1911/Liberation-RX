@@ -17,7 +17,7 @@ while { true } do {
 	};
 
 	if ( combat_readiness < 0 ) then { combat_readiness = 0 };
-	if ( combat_readiness > 100.0 && GRLIB_difficulty_modifier < 2 ) then { combat_readiness = 100.0 };
+	if ( combat_readiness > 100 && GRLIB_difficulty_modifier < 2 ) then { combat_readiness = 100 };
 
 	sleep (45 + floor( 45));
 };

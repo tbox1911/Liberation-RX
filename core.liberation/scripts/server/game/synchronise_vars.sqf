@@ -7,5 +7,5 @@ while { true } do {
 	publicVariable "unitcap";
 	publicVariable "combat_readiness";
 	publicVariable "resources_intel";
-	sleep 1;
+	sleep 2;
 };
