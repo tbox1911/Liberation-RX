@@ -8,6 +8,7 @@ _offset = 0;
 } foreach box_transport_config;
 
 _truck_to_unload allowDamage false;
+_truck_to_unload enableSimulationGlobal false;
 _all_objects = attachedObjects _truck_to_unload;
 { 
 	_truck_to_unload disableCollisionWith _x;
@@ -33,4 +34,6 @@ sleep 2;
 	_x allowDamage true;
 	_x setVariable ["R3F_LOG_disabled", false, true];
 } forEach _all_objects;
+
+_truck_to_unload enableSimulationGlobal true;
 _truck_to_unload allowDamage true;
