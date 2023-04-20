@@ -88,6 +88,18 @@ while {	sleep 5; {( alive _x )} count (units _air_grp) > 0 } do {
 			_waypoint setWaypointStatements ["true", "deleteVehicle this"];
 			sleep 10;
 
+<<<<<<< HEAD
+=======
+				_waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];
+				_waypoint setWaypointType "MOVE";
+				_waypoint setWaypointCompletionRadius 50;
+				_waypoint setWaypointStatements ["true", "deleteVehicle this"];
+				sleep 10;
+			} else {
+				sleep 60;
+				{ deleteVehicle _x } forEach _flee_grp;
+			};
+>>>>>>> d265ab3a (delete lost pilot)
 		};
 	} foreach units _air_grp;
 

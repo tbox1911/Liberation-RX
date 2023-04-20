@@ -9,5 +9,6 @@ while { count _destinations_markers < _max_wp } do {
 	if (_next_pos == "") exitWith {};
 	_destinations_markers pushback _next_pos;
 	_start_pos = _next_pos;
+	_sector_list = _sector_list - [_next_pos];
 };
 _destinations_markers;
