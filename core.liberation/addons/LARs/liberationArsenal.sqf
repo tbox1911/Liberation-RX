@@ -30,6 +30,10 @@ if (GRLIB_limited_arsenal) then {
 [] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_EJW.sqf";
 // Add RHS Weapons
 [] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_RHS.sqf";
+// Add R3F Weapons
+[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_R3F.sqf";
+// Add AMF Weapons
+[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_AMF.sqf";
 
 // if mod enabled
 if ( GRLIB_filter_arsenal && GRLIB_mod_enabled) then {

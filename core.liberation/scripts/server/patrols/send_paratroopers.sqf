@@ -2,7 +2,7 @@ params [ "_targetpos" ];
 
 private _sendPara = {
 	params [ "_targetpos", "_para_group" ];
-	private ["_waypoint"];
+	private ["_waypoint", "_unit"];
 
 	private _spawnsector = ( [ sectors_airspawn , [ _targetpos ] , { (markerpos _x) distance _input0 }, "ASCEND"] call BIS_fnc_sortBy ) select 0;
 	private _pilot_group = createGroup [GRLIB_side_enemy, true];
@@ -26,6 +26,7 @@ private _sendPara = {
 		_unit setSkill ["courage", 1];
 		_unit allowFleeing 0;
 		_unit setVariable ["GRLIB_counter_TTL", round(time + 3600)];
+		[ _unit ] call reammo_ai;
 		sleep 0.1;
 	};
 

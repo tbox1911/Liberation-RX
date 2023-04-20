@@ -91,7 +91,10 @@ _troop_vehicle addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( si
 
 private _troops_group = createGroup [GRLIB_side_enemy, true];
 { _x createUnit [_spawnpos, _troops_group,'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.65, "PRIVATE"] } foreach ([] call F_getAdaptiveSquadComp);
-{ _x moveInCargo _troop_vehicle } foreach (units _troops_group);
+{
+	[ _x ] call reammo_ai;
+	 _x moveInCargo _troop_vehicle
+} foreach (units _troops_group);
 ( crew _troop_vehicle ) joinSilent _convoy_group;
 //-----------------------------------------
 

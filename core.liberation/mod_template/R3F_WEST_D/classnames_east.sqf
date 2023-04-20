@@ -58,6 +58,7 @@ militia_squad = [
 ];
 
 militia_loadout_overide = [
+	"R3F_CQB_4"
 ];
 
 divers_squad = [

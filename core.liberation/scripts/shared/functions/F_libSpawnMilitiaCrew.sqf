@@ -18,6 +18,7 @@ sleep 1;
 		deleteVehicle _x;
 	} else {
 		[ _x ] call loadout_crewman;
+		[ _x ] call reammo_ai;
 		_x addEventHandler ["HandleDamage", {_this call damage_manager_EH}];
 		_x setSkill 0.65;
 		_x setSkill ["courage", 1];
