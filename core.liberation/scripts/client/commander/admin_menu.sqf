@@ -83,10 +83,10 @@ while { dialog && (alive player) } do {
 		_veh_class = _build_combo lbData (lbCurSel _build_combo);
 		systemchat format ["Build Vehicle: %1", _veh_text];
 		buildtype = 9;
-		build_unit = [_veh_class,0,0,0,0,[],1];
-		closeDialog 0;
+		build_unit = [_veh_class,[],1,[],[]];
 		dobuild = 1;
 		do_spawn = 0;
+		closeDialog 0;
 	};
 
 	if (do_ammo == 1) then {
