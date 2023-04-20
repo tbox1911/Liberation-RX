@@ -218,14 +218,14 @@ support_vehicles = [
 	[canisterFuel,0,5,1,0],
 	["O_G_Offroad_01_repair_F",5,15,5,GRLIB_perm_inf],
 	["O_G_Van_01_fuel_F",5,15,20,GRLIB_perm_inf],
-	[Respawn_truck_typename,15,50,5,GRLIB_perm_log],
+	[Respawn_truck_typename,15,150,5,GRLIB_perm_log],
 	["Land_Pod_Heli_Transport_04_bench_F",0,50,0,GRLIB_perm_log],
 	["Land_Pod_Heli_Transport_04_covered_F",0,50,0,GRLIB_perm_log],
 	[repair_sling_typename,10,100,0,GRLIB_perm_log],
 	[fuel_sling_typename,0,100,30,GRLIB_perm_log],
 	[ammo_sling_typename,0,150,0,GRLIB_perm_log],
 	[medic_sling_typename,0,150,0,GRLIB_perm_log],
-	[ammo_truck_typename,5,150,10,GRLIB_perm_tank],
+	[ammo_truck_typename,5,200,10,GRLIB_perm_tank],
 	[repair_truck_typename,10,130,10,GRLIB_perm_tank],
 	[fuel_truck_typename,5,120,40,GRLIB_perm_tank],
 	["Box_NATO_Ammo_F",0,80,0,GRLIB_perm_log],
@@ -710,7 +710,6 @@ GRLIB_vehicle_blacklist = [
 	mobile_respawn,
 	huron_typename,
 	opfor_ammobox_transport,
-	Respawn_truck_typename,
 	FOB_box_typename,
 	FOB_truck_typename,
 	canisterFuel,
@@ -813,7 +812,7 @@ air_vehicles_classnames = [] + opfor_choppers;
 markers_reset = [99999,99999,0];
 zeropos = [0,0,0];
 squads_names = [ localize "STR_LIGHT_RIFLE_SQUAD", localize "STR_RIFLE_SQUAD", localize "STR_AT_SQUAD", localize "STR_AA_SQUAD", localize "STR_MIXED_SQUAD", localize "STR_RECON_SQUAD" ];
-boats_names = [ "O_Boat_Transport_01_F", "C_Boat_Transport_02_F", "O_T_Boat_Armed_01_hmg_F" ];
+boats_names = [ "B_Boat_Transport_01_F", "C_Boat_Transport_02_F", "B_Boat_Armed_01_minigun_F" ];
 ammobox_transports_typenames = [];
 { ammobox_transports_typenames pushback (_x select 0) } foreach box_transport_config;
 ammobox_transports_typenames = [ ammobox_transports_typenames , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
