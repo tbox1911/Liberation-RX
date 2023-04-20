@@ -1,8 +1,6 @@
 if (!isServer && hasInterface) exitWith {};
 params ["_player"];
 
-waitUntil {sleep 0.2; !isNil {_player getVariable ["PAR_Grp_ID", nil]}};
-
  // HCI Command IA
 hcRemoveAllGroups _player;
 if ( _player == ([] call F_getCommander) ) then {

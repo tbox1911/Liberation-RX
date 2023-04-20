@@ -2,7 +2,7 @@ params ["_unit"];
 
 if (isNil "_unit") exitWith {};
 if (count (attachedObjects _unit) > 0 && _unit isKindOf "Man") exitWith {};
-if (_unit getVariable ["GRLIB_action_inuse", false]) exitWith {};
+if (player getVariable ["GRLIB_action_inuse", false]) exitWith {};
 
 private _result = true;
 private _cost = GRLIB_AirDrop_Vehicle_cost;
@@ -72,7 +72,7 @@ if ( dojump > 0 ) then {
 		private _my_squad = _unit getVariable ["my_squad", nil];
 		if (!isNil "_my_squad") then { { _units pushBack _x } forEach units _my_squad };
 
-		_unit setVariable ["GRLIB_action_inuse", true, true];
+		player setVariable ["GRLIB_action_inuse", true, true];
 		private _unit_list_halo = [_units, { !(isPlayer _x) && (isNull objectParent _x) && (_x distance2D _player_pos) < 40 && lifestate _x != 'INCAPACITATED' }] call BIS_fnc_conditionalSelect;
 		[_unit_list_halo] spawn {
 			params ["_list"];
@@ -81,6 +81,6 @@ if ( dojump > 0 ) then {
 				[_x, halo_position] spawn paraDrop;
 			} forEach _list;
 		};
-		_unit setVariable ["GRLIB_action_inuse", false, true];
+		player setVariable ["GRLIB_action_inuse", false, true];
 	};
 };

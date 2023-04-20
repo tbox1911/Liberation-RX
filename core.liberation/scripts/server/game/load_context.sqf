@@ -22,7 +22,6 @@ if (count _context >= 1) then {
             if (isNull _player) then {
                 _wait = false
             } else {
-                [localize "$STR_SQUAD_WAIT"] remoteExec ["hintSilent", owner _player];
                 if ([_player, "FOB", GRLIB_fob_range] call F_check_near && isTouchingGround (vehicle _player)) then {
                     {
                         [
@@ -31,7 +30,7 @@ if (count _context >= 1) then {
                                 params ["_class", "_rank", "_loadout"];
                                 private _unit = (group player) createUnit [_class, (getPosATL player), [], 10, "NONE"];
                                 [_unit] joinSilent (group player);
-                                _unit setVariable ["PAR_Grp_ID", format["Bros_%1", PAR_Grp_ID], true];
+                                _unit setVariable ["PAR_Grp_ID", format["Bros_%1", (getPlayerUID player)], true];
                                 [_unit] call PAR_fn_AI_Damage_EH;
                                 _unit setUnitLoadout _loadout;
                                 _unit setUnitRank _rank;
@@ -49,6 +48,10 @@ if (count _context >= 1) then {
 
                     _wait = false;
                     diag_log format ["--- LRX Loading %1 unit(s) for %2 Squad.", count (_context select 2), name _player];
+                } else {
+                    if ((getPosATL _player) distance2D (markerPos "respawn_west") > 100) then {
+                        [localize "$STR_SQUAD_WAIT"] remoteExec ["hintSilent", owner _player];
+                    };
                 };
             };
             sleep 3;

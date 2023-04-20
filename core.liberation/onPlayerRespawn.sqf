@@ -19,7 +19,7 @@ removeVest player;
 removeBackpack player;
 removeHeadgear player;
 removeGoggles player;
-player setVariable ["GRLIB_action_inuse", false];
+player setVariable ["GRLIB_action_inuse", false, true];
 player setVariable ["SOG_player_in_tunnel", nil];
 
 if (GRLIB_forced_loadout > 0) then {

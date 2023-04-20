@@ -14,6 +14,8 @@ while {	(player getVariable ["GRLIB_score_set", 0] == 0) } do {
 };
 titleText ["", "BLACK FADED", 100];
 
+[player] remoteExec ["load_context_remote_call", 2];
+
 if ( isNil "cinematic_camera_started" ) then { cinematic_camera_started = false };
 
 [] spawn cinematic_camera;
@@ -63,7 +65,3 @@ if ( howtoplay == 1 ) then {
 cinematic_camera_started = false;
 introDone = true;
 dostartgame = 1;
-
-// Load Player Context
-waitUntil {sleep 0.5; GRLIB_player_spawned};
-[player] remoteExec ["load_context_remote_call", 2];
