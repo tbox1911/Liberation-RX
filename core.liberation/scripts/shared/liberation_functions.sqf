@@ -38,7 +38,6 @@ F_objectProtection = compileFinal preprocessFileLineNumbers "scripts\shared\func
 F_isBigtownActive = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_isBigtownActive.sqf";
 F_getUnitPositionId = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getUnitPositionId.sqf";
 F_getCommander = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getCommander.sqf";
-F_cleanOpforVehicle = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_cleanOpforVehicle.sqf";
 F_getLoadout = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getLoadout.sqf";
 F_setLoadout = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_setLoadout.sqf";
 F_forceBluforCrew = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_forceBluforCrew.sqf";

@@ -3429,6 +3429,10 @@
 				<French>Activer l'Arsenal Virtuel limité</French>
 				<Chinesesimp>启用限制的虚拟武器库</Chinesesimp>
 			</Key>
+			<Key ID="STR_VEH_LOCK">
+				<Original>Enable Vehicles Ownership</Original>
+				<French>Activer la Propriété des Véhicules </French>
+			</Key>
 			<Key ID="STR_FORCE_LOADOUT">
 				<Original>Force default equipment</Original>
 				<French>Forcer l'équipement par défaut</French>
