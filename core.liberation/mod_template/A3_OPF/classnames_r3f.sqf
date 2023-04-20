@@ -10,7 +10,10 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
 [
 	"Heli_Transport_04_base_F",
-	"O_Heli_Light_02_unarmed_F"
+	"O_Heli_Light_02_unarmed_F",
+	"O_Heli_Attack_02_F",
+	"O_Heli_Attack_02_black_F",
+	"O_Heli_Attack_02_dynamicLoadout_F"
 ];
 
 R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
@@ -21,6 +24,9 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 [
 	["Heli_Transport_04_base_F", 150],
 	["O_Heli_Light_02_unarmed_F", 50],
+	["O_Heli_Attack_02_F", 30],
+	["O_Heli_Attack_02_black_F", 30],
+	["O_Heli_Attack_02_dynamicLoadout_F", 30],
 	["O_T_VTOL_01_infantry_F", 100],
 	["O_T_VTOL_01_vehicle_F", 100],
 	["O_T_VTOL_01_armed_F", 100]

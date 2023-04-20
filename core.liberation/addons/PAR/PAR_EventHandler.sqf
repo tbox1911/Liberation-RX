@@ -16,13 +16,7 @@ params ["_unit"];
 _unit enableWeaponDisassembly false;
 
 // Check Veh perms
-_unit addEventHandler ["GetInMan", {
-	params ["_unit", "_role", "_vehicle"];
-	if (_this call vehicle_permissions) then {
-		_vehicle spawn vehicle_defense;
-	};
-}];
-
+_unit addEventHandler ["GetInMan", {_this spawn vehicle_permissions}];
 _unit addEventHandler ["SeatSwitchedMan", {_this spawn vehicle_permissions}];
 
 _unit addEventHandler ["GetOutMan", {
@@ -95,10 +89,12 @@ if (_unit == player) then {
 		1 fadeSound ( round desired_vehvolume / 100.0 );
 		NRE_EarplugsActive = 1;
 		[player, "hide"] remoteExec ["dog_action_remote_call", 2];
-		if (!GRLIB_thermic && !(daytime > GRLIB_nights_start || daytime < GRLIB_nights_stop)) then { _vehicle disableTIEquipment true };
-		if (_this call vehicle_permissions) then {
-			_vehicle spawn vehicle_defense;
+		if (GRLIB_thermic == 0 || (GRLIB_thermic == 1 && !(daytime > GRLIB_nights_start || daytime < GRLIB_nights_stop))) then {
+			_vehicle disableTIEquipment true;
+		} else {
+			_vehicle disableTIEquipment false;
 		};
+		_this spawn vehicle_permissions
 	}];
 
 	// Get out Vehicle

@@ -13,7 +13,7 @@ diag_log "--- Server Init start ---";
 
 // Init owner on user placed objects 
 {
-	if (getObjectType _x >= 8) then {
+	if (getObjectType _x >= 8 && !(_x iskindof "Man")) then {
 		if (isNil {_x getVariable "GRLIB_vehicle_owner"} ) then {
 			_x setVariable ["GRLIB_vehicle_owner", "server", true];
 		};
@@ -124,7 +124,11 @@ resistance setFriend [GRLIB_side_enemy, 0];
 GRLIB_side_enemy setFriend [resistance, 0];
 
 addMissionEventHandler ['HandleDisconnect', cleanup_player];
-addMissionEventHandler ["MPEnded", {diag_log "--- LRX Mission End"}];
+addMissionEventHandler ["MPEnded", {
+	diag_log "--- LRX Mission End";
+	// Cleanup game objects 
+	{ if (getObjectType _x >= 8 ) then { deleteVehicle _x } } forEach (allMissionObjects "");	
+}];
 
 // AI Skill
 [ 

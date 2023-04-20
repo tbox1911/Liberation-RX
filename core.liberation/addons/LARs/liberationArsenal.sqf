@@ -12,10 +12,10 @@
 //                        
 // - FilterArsenal = 1    Soft Mode: The Arsenal only show your side gears.
 //                        but the player can use other objects,
-//                        from enemy equipment or anything else. (saved loadout).
+//                        from enemy equipment or anything else. (from saved loadout).
 //                        
 // - FilterArsenal = 2    Strict Mode: The player can ONLY use items present in the Arsenal.
-//                        he will not be able to use enemy weapons or anything else. (saved loadout).
+//                        he will not be able to use enemy weapons or anything else. (from saved loadout).
 //                        
 // - FilterArsenal = 3    Strict Mode + MOD: The player can ONLY use items present in the Arsenal.
 //                        plus items from the current MOD.

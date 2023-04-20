@@ -65,7 +65,7 @@ player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", localize "STR_MISSION_TIT
 >>>>>>> 2711d120 (update version)
 
 player createDiarySubject ["LRX Info", "Server"];
-player createDiaryRecord ["LRX Info", ["Server", format ["Join us on the Official Server !<br/><br/>- ARMA III - Liberation RX<br/><img image='res\liberation.paa' height='128' width='256'/><br/><font color='#0080ff'>arma.liberation-rx.fr</font><br/><br/>Team Speak 3<br/><font color='#0080ff'>ts3.liberation-rx.fr</font>"]]];
+player createDiaryRecord ["LRX Info", ["Server", format ["Join us on the Official Server !<br/><br/>- ARMA III - Liberation RX<br/><img image='res\liberation.paa' height='128' width='256'/><br/><font color='#0080ff'>arma.liberation-rx.fr</font><br/><br/>Team Speak 3<br/><font color='#0080ff'>ts3.liberation-rx.fr</font><br/>Discord LRX<br/><font color='#0080ff'>https://discord.gg/uCRzJ7wauR</font>"]]];
 
 player createDiarySubject ["LRX Info", "Original"];
 player createDiaryRecord ["LRX Info", ["Original", format ["Last version 0.924"]]];

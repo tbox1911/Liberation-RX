@@ -7,7 +7,7 @@ if (_name in ["HC1","HC2","HC3" ]) exitWith {
 };
 
 if !(isNull _unit) then {
-	diag_log format ["--- LRX: Cleanup player %1 (%2)", name _unit, _uid];
+	diag_log format ["--- LRX Cleanup player %1 (%2)", name _unit, _uid];
 
 	// Remove Dog
 	private _my_dog = _unit getVariable ["my_dog", nil];

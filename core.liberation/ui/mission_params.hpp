@@ -38,8 +38,8 @@ class Params
 	};
 	class Thermic {
 		title = $STR_THERMAL;
-		values[] = { 1, 0 };
-		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
+		values[] = { 2, 1, 0 };
+		texts[] = { $STR_PARAMS_ENABLED, "Only at night", $STR_PARAMS_DISABLED };
 		default = 1;
 	};
 	class DeathChat {
