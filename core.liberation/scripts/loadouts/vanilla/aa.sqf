@@ -23,6 +23,7 @@ _unit addGoggles "G_Bandanna_aviator";
 _unit addWeapon "arifle_TRG20_F";
 _unit addPrimaryWeaponItem "optic_ACO_grn";
 _unit addWeapon "launch_B_Titan_F";
+_unit addItemToBackpack "Titan_AA";
 _unit addWeapon "hgun_P07_F";
 _unit linkItem "ItemMap";
 _unit linkItem "ItemCompass";
