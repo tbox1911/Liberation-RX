@@ -144,7 +144,8 @@ static_vehicles = [
 	["B_static_AT_F",0,50,0,GRLIB_perm_air],
 	["B_Mortar_01_F",0,500,0,GRLIB_perm_max],
 	["B_AAA_System_01_F",10,500,0,GRLIB_perm_max],
-	["B_Ship_Gun_01_F",10,1500,0,GRLIB_perm_max]
+	["B_Ship_Gun_01_F",10,1500,0,GRLIB_perm_max],
+	["Land_CzechHedgehog_01_new_F",0,2,0,GRLIB_perm_inf]
 ];
 
 buildings = [

@@ -7,6 +7,7 @@ private [ "_managed_trucks", "_managed_boxes", "_classname_box", "_next_truck", 
 _managed_trucks = [];
 _managed_boxes = [];
 _classname_box = [
+	Arsenal_typename,
 	ammobox_b_typename,
 	ammobox_o_typename,
 	ammobox_i_typename,
