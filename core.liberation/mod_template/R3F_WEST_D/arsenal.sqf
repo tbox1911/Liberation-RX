@@ -194,6 +194,11 @@ GRLIB_whitelisted_from_arsenal = [
 
 GRLIB_whitelisted_from_arsenal_limited = [
 	"launch_I_Titan_F",
+	"Titan_AA",
 	"launch_RPG32_green_F",
-	"launch_MRAWS_green_F"
+	"RPG32_F",
+	"launch_MRAWS_green_F",
+	"MRAWS_HEAT_F",
+	"HandGrenade",
+	"MiniGrenade"
 ];
