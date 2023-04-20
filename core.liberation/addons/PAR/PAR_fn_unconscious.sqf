@@ -67,24 +67,25 @@ if (vehicle _unit == _unit) then {
 };
 private _cnt = 0;
 while {lifeState _unit == "INCAPACITATED" && time <= _unit getVariable ["PAR_BleedOutTimer", 0]} do {
-  _unit setOxygenRemaining 1;
-  _bros = allunits select {(_x getVariable ["PAR_Grp_ID","0"]) == (_unit getVariable ["PAR_Grp_ID","1"]) && alive _x && lifeState _x != "INCAPACITATED"};
-  if ( count _bros > 0 ) then {
-    _medic = _unit getVariable ["PAR_myMedic", nil];
-    if (isNil "_medic" && _cnt == 0) then {
-      _unit groupchat localize "STR_PAR_UC_01";
-      _medic = _unit call PAR_fn_medic;
-      if (!isNil "_medic") then { [_unit, _medic] call PAR_fn_911 };
-      _cnt = 10;
-    };
-  } else {
-      if (isPlayer _unit && _cnt == 0) then {
-        _msg = format [localize "STR_PAR_UC_02", name _unit];
-        [_unit, _msg] call PAR_fn_globalchat;
-        _cnt = 10;
+  if (_cnt == 0) then {
+    _unit setOxygenRemaining 1;
+    private _bros = allunits select {(_x getVariable ["PAR_Grp_ID","0"]) == (_unit getVariable ["PAR_Grp_ID","1"]) && alive _x && lifeState _x != "INCAPACITATED"};
+    if ( count _bros > 0 ) then {
+      _medic = _unit getVariable ["PAR_myMedic", nil];
+      if (isNil "_medic") then {
+        _unit groupchat localize "STR_PAR_UC_01";
+        _medic = _unit call PAR_fn_medic;
+        if (!isNil "_medic") then { [_unit, _medic] call PAR_fn_911 };
       };
+    } else {
+        if (isPlayer _unit) then {
+          _msg = format [localize "STR_PAR_UC_02", name _unit];
+          [_unit, _msg] call PAR_fn_globalchat;
+        };
+    };
+    //systemchat str ((_unit getVariable ["PAR_BleedOutTimer", 0]) - time);
+    _cnt = 10;
   };
-  //systemchat str ((_unit getVariable ["PAR_BleedOutTimer", 0]) - time);
   _cnt = _cnt - 1;
   sleep 1;
 };
