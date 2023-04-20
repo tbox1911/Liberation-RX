@@ -38,9 +38,9 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["I_Heli_light_03_F",100],
 	["B_T_VTOL_01_infantry_F", 100],
 	["B_T_VTOL_01_vehicle_F", 100],
-	["B_UAV_01_F", 0],
-	["B_UAV_02_F", 0],
-	["B_UAV_06_F", 3],
+	["B_UAV_01_F", 1],
+	["B_UAV_02_F", 1],
+	["B_UAV_06_F", 5],
 	["B_UGV_02_Demining_F", 0],
 	["B_T_UAV_03_F", 15]
 ];

@@ -6,6 +6,8 @@ if (lifeState _wnded != "incapacitated") exitWith { [_medic, _wnded] call PAR_fn
 if (!isPlayer _medic) then {
   _msg = format ["%1 is healing %2 now...", name _medic, name _wnded];
   [_wnded, _msg] call PAR_fn_globalchat;
+   //extend PAR_BleedOut
+
   _medic setDir (_medic getDir _wnded);
   //_medic removeitem "FirstAidKit";
   if (stance _medic == "PRONE") then {
@@ -16,7 +18,7 @@ if (!isPlayer _medic) then {
   sleep 6;
 };
 
-if (lifeState _medic == "incapacitated") exitWith { [_medic, _wnded] call PAR_fn_medicRelease };
+if (lifeState _medic == "incapacitated" || (!alive _wnded)) exitWith { [_medic, _wnded] call PAR_fn_medicRelease };
 
 // Revived
 _wnded setUnconscious false;
