@@ -71,6 +71,7 @@ while { true } do {
 				_unit addMPEventHandler ["MPKilled", {[_this select 0] spawn {sleep 10; deleteVehicle (_this select 0)}}];
 				player setVariable ["my_dog", _unit, true];
 				playSound3D ["a3\sounds_f\ambient\animals\dog1.wss", _unit, false, getPosASL _unit, 2, 0.8, 0];
+				_unit setDir (_unit getDir player);
 				_unit playMoveNow "Dog_Idle_Bark";
 			} else {
 				hint "Only One Dog Allowed !!";

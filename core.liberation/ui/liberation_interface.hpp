@@ -14,7 +14,7 @@
 #include "liberation_repackage_fob.hpp"
 #include "liberation_halo.hpp"
 #include "liberation_secondary.hpp"
-#include "liberation_cheat.hpp"
+#include "liberation_admin.hpp"
 #include "liberation_airdrop.hpp"
 #include "liberation_sendammo.hpp"
 #include "liberation_notice.hpp"
