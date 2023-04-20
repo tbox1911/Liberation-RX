@@ -103,10 +103,11 @@ speak_mission_delivery_3 = {
 	_near_case = nearestObjects [_unit, ["Land_Suitcase_F"], 10];
 	if (count _near_case > 0) then {
 		deleteVehicle (_near_case select 0);
+		_unit switchMove "AmovPercMstpSrasWrflDnon_Salute";
+		gamelogic globalChat "Thank you very much, Please take your reward.";
 		{_x setVariable ['GRLIB_can_speak', false, true]} foreach GRLIB_A3W_Mission_SD;
 		_unit setVariable ["GRLIB_A3W_Mission_SD_END", true, true];
 		player setVariable ["GRLIB_A3W_Mission_Marker", nil];
-		gamelogic globalChat "Thank you very much, Please take your reward.";
 	} else {
 		gamelogic globalChat "Sorry, I wait for something special...";
 	};
@@ -115,19 +116,25 @@ speak_mission_delivery_3 = {
 // Marshal
 speak_mission_delivery_4 = {
 	params ["_unit"];
-	private _leader = leader group _unit;
-	if (!(_unit getVariable ["GRLIB_A3W_Mission_DW", false]) && !(_unit getVariable ["GRLIB_A3W_Mission_DF", false])) exitWith {gamelogic globalChat "Maybe another time..."};
+	if (!(_unit getVariable ["GRLIB_A3W_Mission_DW", false]) &&
+	    !(_unit getVariable ["GRLIB_A3W_Mission_DF", false]) &&
+		!(_unit getVariable ["GRLIB_A3W_Mission_DN", false]) ) exitWith {gamelogic globalChat "Maybe another time..."};
 
-	private _text = "Water";
-	if (_unit getVariable ["GRLIB_A3W_Mission_DF", false]) then { _text = "Fuel" };
+	private _txt1 = "Water";
+	private _txt2 = "barrels";
+	if (_unit getVariable ["GRLIB_A3W_Mission_DF", false]) then { _txt1 = "Fuel" };
+	if (_unit getVariable ["GRLIB_A3W_Mission_DN", false]) then { _txt1 = "Food"; _txt2 = "pallets" };
 
+	_unit switchMove "AmovPercMstpSrasWrflDnon_Salute";
 	player globalChat "Hello, What do you need ?";
 	uIsleep 2;
-	gamelogic globalChat format ["Hi, We running out of %1 !", _text];
+	gamelogic globalChat format ["Hi, We running out of %1 !", _txt1];
 	uIsleep 2;
-	gamelogic globalChat format ["Please bring us back 3 barrels of %1", _text];
+	gamelogic globalChat format ["Please bring us back 3 %1 of %2", _txt2, _txt1];
 	uIsleep 2;
-	gamelogic globalChat "I will wait here for you to come back with the barrels, Please hurry up!";
+	gamelogic globalChat format ["I will wait here for you to come back with the %1, Please hurry up!", _txt2];
+	sleep 3;
+	_unit switchMove "LHD_krajPaluby"
 };
 
 GRLIB_speaking = true;

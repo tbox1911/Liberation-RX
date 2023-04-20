@@ -45,7 +45,7 @@ while { true } do {
 		_text = [(typeOf _x)] call get_lrx_name;
 		_marker setMarkerTextLocal _text;
 		_marker setMarkerColorLocal "ColorKhaki";
-		if (typeOf _x in [waterbarrel_typename,fuelbarrel_typename,medicbarrel_typename]) then {
+		if (typeOf _x in [waterbarrel_typename,fuelbarrel_typename,foodbarrel_typename]) then {
 			_marker setMarkerColorLocal "ColorGrey";
 		};
 	} foreach _markedveh;

@@ -21,7 +21,7 @@ _truck_to_load = objNull;
 		if (  _truck_load < _maxload ) then {
 			_truck_to_load = _next_truck;
 			_truck_offset = _offsets select _truck_load;
-			if (typeOf _ammobox in [waterbarrel_typename,fuelbarrel_typename,medicbarrel_typename]) then {
+			if (typeOf _ammobox in [waterbarrel_typename,fuelbarrel_typename,foodbarrel_typename]) then {
 				_truck_offset = _truck_offset vectorAdd [0, 0, -0.4];
 			};
 			_ammobox attachTo [ _truck_to_load, _truck_offset ];

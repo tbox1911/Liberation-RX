@@ -28,6 +28,15 @@ _setupObjects =
 	_man1 allowDamage false;
 	_man1 disableAI "Move";
 
+	_man1 switchMove "LHD_krajPaluby";
+	_man1 disableAI "MOVE";
+	_man1 disableAI "ANIM";
+	_man1 removeAllEventHandlers "AnimDone";
+	_man1 addEventHandler [ "AnimDone", {
+	params[ "_unit", "_anim" ];
+		if ( _anim == "LHD_krajPaluby" ) then { _unit switchMove "LHD_krajPaluby" };
+	}];
+
 	_marker_zone = createMarker ["A3W_Mission_DF", _missionPos];
 	_marker_zone setMarkerColor "ColorCivilian";
 	_marker_zone setMarkerShape "ELLIPSE";

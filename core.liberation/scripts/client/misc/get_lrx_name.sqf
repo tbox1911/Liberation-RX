@@ -29,8 +29,8 @@ if ( _class == waterbarrel_typename ) then {
 if ( _class == fuelbarrel_typename ) then {
 	_text = "Fuel Barrel";
 };
-if ( _class == medicbarrel_typename ) then {
-	_text = "Medical Supply";
+if ( _class == foodbarrel_typename ) then {
+	_text = "Food Pallet";
 };
 if ( _class == "Land_CargoBox_V1_F" ) then {
 	_text = "Fireworks Box";
