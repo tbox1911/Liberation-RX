@@ -1,3 +1,4 @@
+waituntil {(time > 2) && (getClientStateNumber >= 10) && (getClientState == "BRIEFING READ")};
 while {	(player getVariable ["GRLIB_score_set", 0] == 0) } do {
 	titleText ["... Loading Player Data ...", "BLACK FADED", 100];
 	uIsleep 2;
@@ -6,7 +7,6 @@ while {	(player getVariable ["GRLIB_score_set", 0] == 0) } do {
 };
 
 if ( isNil "cinematic_camera_started" ) then { cinematic_camera_started = false };
-waituntil {(time > 2) && (getClientStateNumber >= 10) && (getClientState == "BRIEFING READ")};
 
 [] spawn cinematic_camera;
 
@@ -41,7 +41,7 @@ createDialog "liberation_menu";
 waitUntil { dialog };
 _noesckey = (findDisplay 5651) displayAddEventHandler ["KeyDown", "if ((_this select 1) == 1) then { true }"];
 waitUntil { dostartgame == 1 || howtoplay == 1 || !dialog };
-//disableUserInput true;
+disableUserInput true;
 (findDisplay 5651) displayRemoveEventHandler ["KeyDown", _noesckey];
 closeDialog 0;
 

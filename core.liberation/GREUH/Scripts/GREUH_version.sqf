@@ -14,7 +14,14 @@ _getkeyName = {
 	if (_ret == "") then {_ret = "N/A"};
 	_ret;
 };
+
 player createDiarySubject ["LRX Info","LRX Info"];
+player createDiarySubject ["LRX Info","Support LRX !"];
+player createDiaryRecord ["LRX Info", ["Support LRX !", "<img image='res\mail.paa' height='32' width='25'/>  <img image='res\paypal.paa' height='32' width='32'/>     <font color='#0080ff'>tbox1911@gmail.com</font><br/><br/>Thank you !"]];
+player createDiaryRecord ["LRX Info", ["Support LRX !", "or just buy me a beer !!<br/><br/>You can use my payPal account:<br/>"]];
+player createDiaryRecord ["LRX Info", ["Support LRX !", "You want to participate to the mission dev ?<br/><br/>or contribute to the server hosting ?"]];
+player createDiaryRecord ["LRX Info", ["Support LRX !", "<br/>You like Liberation RX ?<br/>"]];
+
 player createDiarySubject ["LRX Info", "pSiKO Tweaks"];
 player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["<img image='\a3\ui_f\data\map\markers\flags\france_ca.paa' height='20' width='20'/>&#160;&#160;This version was build on %1 at %2 in France, with love ;)", GRLIB_build_date, GRLIB_build_time]]];
 player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["All the rest and Scripting Integration<br/>by <font color='#0080ff'>-pSiKO-</font>"]]];
