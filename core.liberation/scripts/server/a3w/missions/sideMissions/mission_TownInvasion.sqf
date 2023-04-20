@@ -58,7 +58,11 @@ _setupObjects =
 _waitUntilMarkerPos = nil;
 _waitUntilExec = nil;
 
+<<<<<<< HEAD
 _waitUntilCondition = { _missionLocation in (sectors_allSectors - blufor_sectors) };
+=======
+_waitUntilCondition = { _missionLocation in (sectors_allSectors - blufor_sectors);
+>>>>>>> 78fae6b2 (yown inv fix failed)
 
 _failedExec = {
 	// Mission failed
