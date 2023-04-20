@@ -1,5 +1,10 @@
 if (!isServer) exitWith {};
 params ["_unit", "_id", "_uid", "_name"];
+if (name _unit == "headlessclient") exitWith {
+	deleteMarker "fpsmarkerHC1";
+	deleteMarker "fpsmarkerHC2";
+	deleteMarker "fpsmarkerHC3";
+};
 
 if !(isNull _unit) then {
 
