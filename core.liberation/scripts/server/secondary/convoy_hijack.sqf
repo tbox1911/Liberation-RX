@@ -36,10 +36,12 @@ private _convoy_destinations = [];
 private _spawnpos = _convoy_destinations select 0;
 [ 4, _spawnpos ] remoteExec ["remote_call_intel", 0];
 
+private _convoy_group = createGroup [GRLIB_side_enemy, true];
+
 // scout
 private _scout_vehicle = [_spawnpos, selectRandom opfor_vehicles_low_intensity, true, false ] call F_libSpawnVehicle;
 _scout_vehicle addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage } ];
-private _convoy_group = group driver _scout_vehicle;
+( crew _scout_vehicle ) joinSilent _convoy_group;
 
 //-----------------------------------------
 // Waypoints
@@ -74,7 +76,7 @@ _waypoint setWaypointCompletionRadius 100;
 //-----------------------------------------
 // ammo transport
 sleep 10;
-waitUntil {sleep 2; speed _scout_vehicle > 2};
+waitUntil {sleep 2; speed _scout_vehicle > 2 || !(alive _scout_vehicle)};
 
 private _transport_vehicle = [ _spawnpos, opfor_ammobox_transport, true, false ] call F_libSpawnVehicle;
 _transport_vehicle addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage } ];
@@ -83,7 +85,7 @@ for "_n" from 1 to _boxes_amount do { [_transport_vehicle, ammobox_o_typename] c
 
 // troop transport
 sleep 10;
-waitUntil {sleep 2; speed _transport_vehicle > 2};
+waitUntil {sleep 2; speed _transport_vehicle > 2 || !(alive _transport_vehicle) };
 private _troop_vehicle = [ _spawnpos, opfor_transport_truck, true, false ] call F_libSpawnVehicle;
 _troop_vehicle addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage } ];
 

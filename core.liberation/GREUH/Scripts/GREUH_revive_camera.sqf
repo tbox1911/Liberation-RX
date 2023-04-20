@@ -20,7 +20,8 @@ while { true } do {
 	//_cam camSetTarget _camobj;   //follow player
 	_cam camSetTarget getpos player;	//static view
 
-	_dialog = createDialog "deathscreen";
+	createDialog "deathscreen";
+	waitUntil { dialog };
 	_noesckey = (findDisplay 5651) displayAddEventHandler ["KeyDown", "if ((_this select 1) == 1) then { true }"];
 	_randomsound1 = selectRandom [3,4,5,6,7,8,9];
 	_randomsound2 = selectRandom [1,2,3];

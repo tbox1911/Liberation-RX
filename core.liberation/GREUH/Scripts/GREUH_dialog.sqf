@@ -9,7 +9,7 @@ _leader_controls = [561,562,563,564,565,566,567];
 renaming = false;
 choosingleader = false;
 
-_dialog = createDialog "GREUH_Menu";
+createDialog "GREUH_Menu";
 waitUntil { dialog };
 
 if ( GREUH_allow_customsquads ) then {

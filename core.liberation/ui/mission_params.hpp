@@ -49,7 +49,7 @@ class Params
 		default = 1;
 	};
 	class Space5 {
-		title = "Mod";
+		title = "";
 		values[] = { "" };
 		texts[] = { "" };
 		default = "";
@@ -240,6 +240,21 @@ class Params
 		texts[] = {3,5,7,10,15,20,26};
 		default = 5;
 	};
+<<<<<<< HEAD
+=======
+	class FobType{
+		title = $STR_PARAM_FOB_TYPE ;
+		values[] = {0,1};
+		texts[] = {"Huron", "Truck"};
+		default = 0;
+	};
+	class HuronType{
+		title = $STR_PARAM_HURON_TYPE ;
+		values[] = {0,1,2};
+		texts[] = {"CH-67 Huron", "CH-49 Mohawk", "UH-80 Ghost Hawk"};
+		default = 0;
+	};
+>>>>>>> 6e90246b (1)
 	class SquadSize{
 		title = $STR_PARAM_SQUAD_SIZE_START;
 		values[] = {0,1,2,3,4,5,6,7,8,9,10};
@@ -250,7 +265,7 @@ class Params
 		title = $STR_PARAM_SQUAD_SIZE;
 		values[] = {0,1,2,3,4,5,6,7,8,9,10};
 		texts[] = {0,1,2,3,4,5,6,7,8,9,10};
-		default = 8;
+		default = 7;
 	};
 	class Space3 {
 		title = "";

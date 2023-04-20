@@ -1,11 +1,10 @@
-private [ "_dialog", "_bros", "_membercount", "_memberselection", "_unitname", "_selectedmember", "_cfgVehicles", "_cfgWeapons", "_primary_mags", "_secondary_mags", "_vehstring", "_nearfob", "_fobdistance", "_nearsquad", "_tempgmp", "_destpos", "_destdir", "_resupplied","_firstloop", "_squad_camera", "_targetobject", "_isvehicle" ];
+private [ "_bros", "_membercount", "_memberselection", "_unitname", "_selectedmember", "_cfgVehicles", "_cfgWeapons", "_primary_mags", "_secondary_mags", "_vehstring", "_nearfob", "_fobdistance", "_nearsquad", "_tempgmp", "_destpos", "_destdir", "_resupplied","_firstloop", "_squad_camera", "_targetobject", "_isvehicle" ];
 
 GRLIB_squadaction = -1;
 GRLIB_squadconfirm = -1;
 _membercount = -1;
 _memberselection = -1;
 _selectedmember = objNull;
-_dialog = createDialog "liberation_squad";
 _cfgVehicles = configFile >> "cfgVehicles";
 _cfgWeapons = configFile >> "cfgWeapons";
 _firstloop = true;
@@ -14,6 +13,7 @@ _rename_controls = [521,522,523,524,525,526,527];
 _resupplied = false;
 _renamed = false;
 
+createDialog "liberation_squad";
 waitUntil { dialog };
 
 { ctrlShow [_x, false] } foreach _rename_controls;

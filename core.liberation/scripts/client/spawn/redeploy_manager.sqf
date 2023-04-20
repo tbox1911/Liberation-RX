@@ -25,7 +25,7 @@ fullmap = 0;
 _old_fullmap = 0;
 >>>>>>> 2e321817 (no wait for redeploy)
 
-_dialog = createDialog "liberation_deploy";
+createDialog "liberation_deploy";
 _noesckey = (findDisplay 5201) displayAddEventHandler ["KeyDown", "if ((_this select 1) == 1) then { true }"];
 disableUserInput false;
 disableUserInput true;

@@ -1,6 +1,7 @@
 // *** FRIENDLIES ***
 // Default classname and advanced definition in : scripts\shared\classnames.sqf
 
+//huron_typename = "B_Heli_Transport_03_unarmed_F";  // comment to use value from lobby/server.cfg
 commander_classname = "B_officer_F";
 pilot_classname = "B_Helipilot_F";
 crewman_classname = "B_crew_F";

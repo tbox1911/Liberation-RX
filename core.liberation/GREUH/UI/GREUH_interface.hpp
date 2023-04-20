@@ -891,7 +891,7 @@ class GREUH_respawn {
 		w = 0.1 * safezoneW;
 		h = 0.04 * safezoneH;
 		text = "Respawn";
-		action = "player setDamage 1";
+		action = "player spawn PAR_fn_death";
 		colorDisabled[] = { 1, 1, 1, 1 };
 	};
 
