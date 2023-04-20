@@ -51,7 +51,7 @@ if ( isServer ) then {
 	};
 
 	if ((_unit iskindof "LandVehicle") || (_unit iskindof "Air") || (_unit iskindof "Ship") ) then {
-		[_unit] call clean_vehicle;
+		[_unit] spawn clean_vehicle;
 	};
 
 	if ( _unit isKindOf "Man" && vehicle _unit != _unit ) then {
