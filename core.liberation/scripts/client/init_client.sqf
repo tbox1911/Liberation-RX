@@ -145,7 +145,7 @@ chimera_sign addAction ["<t color='#FFFFFF'>" + localize "STR_READ_ME" + "</t>",
 chimera_sign addAction ["<t color='#FFFFFF'>" + localize "STR_TIPS" + "</t>",{createDialog "liberation_tips"},"",998,true,true,"","[] call is_menuok",5];
 
 if (isServer && hasInterface) then {
-	(findDisplay 46) displayAddEventHandler ["Unload",{	[player] call save_context }];
+	(findDisplay 46) displayAddEventHandler ["Unload",{	[player] call save_context; [] call save_game_mp }];
 };
 
 waitUntil { time > 5 };

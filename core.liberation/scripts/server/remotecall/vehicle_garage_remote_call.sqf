@@ -31,4 +31,3 @@ publicVariable "GRLIB_garage";
 sleep 1;
 GRLIB_garage_in_use = nil;
 publicVariable "GRLIB_garage_in_use";
-trigger_server_save = true;

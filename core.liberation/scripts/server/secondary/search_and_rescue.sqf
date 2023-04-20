@@ -106,10 +106,8 @@ if ( _alive_crew_count == 0 ) then {
 resources_intel = resources_intel + (25 * _alive_crew_count);
 combat_readiness = combat_readiness - 10;
 stats_secondary_objectives = stats_secondary_objectives + 1;
-
 GRLIB_secondary_in_progress = -1; publicVariable "GRLIB_secondary_in_progress";
-sleep 1;
-trigger_server_save = true;
+
 sleep 3;
 { moveOut _x; deleteVehicle _x } forEach units _grppatrol;
 deleteVehicle _helowreck;

@@ -71,7 +71,6 @@ if ( GRLIB_endgame == 0 ) then {
 	};
 };
 
-trigger_server_save = true;
 sleep 60;
 
 if ( GRLIB_blufor_defenders ) then {

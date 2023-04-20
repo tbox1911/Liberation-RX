@@ -5,6 +5,8 @@ _blufor_bigtowns = [ blufor_sectors, { _x in sectors_bigtown } ] call BIS_fnc_co
 if ( (count _blufor_bigtowns == count sectors_bigtown) && (count (sectors_allSectors - blufor_sectors) == 0) ) then {
 	GRLIB_endgame = 1;
 	publicVariable "GRLIB_endgame";
+	[] call save_game_mp;
+	
 	{ _x allowDamage false; (vehicle _x) allowDamage false; } foreach allPlayers;
 
 	publicstats = [];

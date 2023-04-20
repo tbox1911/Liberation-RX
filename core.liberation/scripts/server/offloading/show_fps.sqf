@@ -32,7 +32,6 @@ if ( isServer ) then {
 	};
 };
 
-diag_server_save = false;
 _myfpsmarker = createMarker [ format ["fpsmarker%1", _sourcestr ], [ 200, 200 + (200 * _position) ] ];
 _myfpsmarker setMarkerType "mil_start";
 _myfpsmarker setMarkerSize [ 0.7, 0.7 ];
@@ -69,18 +68,10 @@ while { true } do {
 	if ( _myfps < 20 ) then { _myfpsmarker setMarkerColor "ColorORANGE"; };
 	if ( _myfps < 10 ) then { _myfpsmarker setMarkerColor "ColorRED"; };
 
-	if ( diag_server_save ) then {
-		diag_server_save = false;
-		_formatedTime = [time/3600,"HH:MM:SS"] call BIS_fnc_timeToString;
-		_msg = format ["Game Saved - Server Uptime: %1", _formatedTime];
-		_myfpsmarker setMarkerText _msg;
-		sleep 3;
-	};
-
-	_myfpsmarker setMarkerText format [ "%1: %2 fps - Unt: civ:%3 blu:%4 red:%5 - Veh:civ:%6 blu:%7 red:%8",
+	_myfpsmarker setMarkerText format [ "%1: %2 fps - Up: %9 - Inf: civ:%3 blu:%4 red:%5 - Veh:civ:%6 blu:%7 red:%8",
 		_sourcestr, ( round ( _myfps * 100.0 ) ) / 100.0 ,
 		_localunits_civ,_localunits_blu,_localunits_opfor,
-		_localvehicles_civ,_localvehicles_blu,_localvehicles_opfor];
+		_localvehicles_civ,_localvehicles_blu,_localvehicles_opfor,[time/3600,"HH:MM:SS"] call BIS_fnc_timeToString];
 
 	sleep 15;
 };

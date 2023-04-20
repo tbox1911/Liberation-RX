@@ -64,10 +64,6 @@ stats_sectors_liberated = stats_sectors_liberated + 1;
 
 [] spawn check_victory_conditions;
 
-sleep 1;
-
-trigger_server_save = true;
-
 sleep 45;
 
 if ( GRLIB_endgame == 0 ) then {

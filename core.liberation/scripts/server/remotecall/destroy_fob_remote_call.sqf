@@ -6,6 +6,5 @@ GRLIB_all_fobs = GRLIB_all_fobs - [_thispos];
 publicVariable "GRLIB_all_fobs";
 
 [_thispos] call destroy_fob;
-trigger_server_save = true;
 
 stats_fobs_lost = stats_fobs_lost + 1;
