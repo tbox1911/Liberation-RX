@@ -5,15 +5,15 @@ waitUntil {!isNil "abort_loading" };
 waitUntil {!isNil "GRLIB_init_server" };
 if (!GRLIB_init_server || abort_loading) exitWith {
 	private _msg = format ["Sorry, An error occured on Server startup.\nPlease check the error logs.\n\n%1", abort_loading_msg];
-	titleText [_msg ,"BLACK FADED", 100];
-	diag_log _msg;
+	titleText [_msg, "BLACK FADED", 100];
 	uisleep 10;
 	endMission "LOSER";
 };
 
 PAR_Grp_ID = getPlayerUID player;
 if (PAR_Grp_ID == "" || !(isPlayer player)) exitWith {
-	titleText ["ARMA3 Multiplayer Initialization Error!\nPlease reconnect to the server." ,"BLACK FADED", 100];
+	private _msg = format ["ARMA3 Multiplayer Initialization Error!\nPlease reconnect to the server..."];
+	titleText [_msg, "BLACK FADED", 100];
 	uisleep 10;
 	endMission "LOSER"
 };

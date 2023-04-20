@@ -1,11 +1,3 @@
-private _distvehclose = 5;
-private _searchradius = 30;
-
-private _nearrecycl = [];
-private _recycleable_classnames = ["LandVehicle","Air","Ship","StaticWeapon","Slingload_01_Base_F","Pod_Heli_Transport_04_base_F"];
-{_recycleable_classnames pushBack ( _x select 0 )} foreach (support_vehicles + buildings);
-_recycleable_classnames = _recycleable_classnames + GRLIB_vehicle_whitelist;
-
 waitUntil {sleep 1; !isNil "build_confirmed" };
 waitUntil {sleep 1; !isNil "one_synchro_done" };
 waitUntil {sleep 1; one_synchro_done };
@@ -20,15 +12,15 @@ while { true } do {
 	};
 	private _nearfob = _fobdistance <= GRLIB_fob_range;
 	if (_nearfob) then {
-		_nearrecycl = [nearestObjects [player, _recycleable_classnames, _searchradius], {
+		private _nearrecycl = [nearestObjects [player, GRLIB_recycleable_classnames + GRLIB_vehicle_whitelist, 30], {
 			(_x distance lhd) >= 1000 &&
 			!([_x] call is_public) &&
 			isNil {_x getVariable "GRLIB_recycle_action"}
 		}] call BIS_fnc_conditionalSelect;
 
 		{
-			_vehicle = _x;
-			_distvehclose = 5;
+			private _vehicle = _x;
+			private _distvehclose = 5;
 			if (typeOf _vehicle in vehicle_big_units) then {
 				_distvehclose = _distvehclose * 3;
 			};
