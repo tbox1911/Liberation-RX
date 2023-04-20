@@ -1,10 +1,12 @@
-_combat_triggers = [20,40,50,65,80,95];
-if ( GRLIB_unitcap < 0.9 ) then { _combat_triggers = [20,45,90]; };
-if ( GRLIB_unitcap > 1.3 ) then { _combat_triggers = [15,25,40,65,75,85,95]; };
+//_combat_triggers = [20,40,50,65,80,95];
+_combat_triggers = [20,40,60,80];
+if ( GRLIB_unitcap < 0.9 ) then { _combat_triggers = [20,40,80]; };
+if ( GRLIB_unitcap > 1.3 ) then { _combat_triggers = [15,25,45,65,75,85,95]; };
 
-_combat_triggers_infantry = [15,35,45,60,70,85];
-if ( GRLIB_unitcap < 0.9 ) then { _combat_triggers_infantry = [15,40,80]; };
-if ( GRLIB_unitcap > 1.3 ) then { _combat_triggers_infantry = [10,20,35,55,70,80,90]; };
+//_combat_triggers_infantry = [15,35,45,60,70,85];
+_combat_triggers_infantry = [15,35,55,75];
+if ( GRLIB_unitcap < 0.9 ) then { _combat_triggers_infantry = [15,35,75]; };
+if ( GRLIB_unitcap > 1.3 ) then { _combat_triggers_infantry = [10,20,40,60,70,80,90]; };
 
 sleep 5;
 

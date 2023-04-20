@@ -117,6 +117,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 		};
 		_building_ai_max = 0;
 		if((random 100) > 85) then { _vehtospawn pushback ( [] call F_getAdaptiveVehicle ); };
+		[markerPos _sector, 25] call createlandmines;
 	};
 
 	//diag_log format [ "Sector %2 checkpoint E at %1", time, _sector ];
