@@ -1,8 +1,7 @@
 private [ "_marker", "_nextbase", "_nextvehicle", "_nextmarker", "_sector_pos", "_nearest_sector", "_near_fob" ];
 
-waitUntil {sleep 1; !isNil "sectors_allSectors" };
-waitUntil {sleep 1; !isNil "save_is_loaded" };
-waitUntil {sleep 1; !isNil "blufor_sectors" };
+waitUntil {sleep 1; !isNil "GRLIB_init_server"};
+waitUntil {sleep 1; !isNil "blufor_sectors"};
 
 private _getMarkerType = {
 	params ["_marker"];

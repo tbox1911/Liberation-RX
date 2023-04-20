@@ -2,9 +2,8 @@ private [ "_marker", "_idx", "_respawn_trucks", "_markers_mobilespawns" ];
 private _markers = [];
 private _markers_mobilespawns = [];
 
-waitUntil { sleep 1; !isNil "GRLIB_all_fobs" };
-
-sleep 10;
+waitUntil {sleep 1; !isNil "GRLIB_init_server"};
+waitUntil {sleep 1; !isNil "GRLIB_all_fobs"};
 
 while { true } do {
 	if ( count _markers != count GRLIB_all_fobs ) then {

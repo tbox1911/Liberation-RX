@@ -1,16 +1,13 @@
-private [ "_hostile_markers", "_hostile_groups", "_nextgroup", "_marker" ];
+private [ "_nextgroup", "_marker" ];
+private _hostile_markers = [];
+private _hostile_groups = [];
 
 if (GRLIB_fancy_info == 0) exitWith {};
 
-_hostile_markers = [];
-
-waitUntil {
-	sleep 1;
-	!isNil "blufor_sectors"
-};
+waitUntil {sleep 1; !isNil "GRLIB_init_server"};
+waitUntil {sleep 1;	!isNil "blufor_sectors"};
 
 while { true } do {
-
 	{ deleteMarkerLocal _x } foreach _hostile_markers;
 	_hostile_markers = [];
 	_hostile_groups = [];
@@ -20,7 +17,6 @@ while { true } do {
 		_nextgroup = _x;
 		if ( (side _nextgroup == GRLIB_side_enemy) && (({ !captive _x } count ( units _nextgroup ) ) > 0)) then {
 			if ( [(getpos leader _nextgroup), GRLIB_side_friendly, GRLIB_radiotower_size] call F_getNearestTower != "" ) then {
-
 				_hostile_groups pushback _nextgroup;
 			};
 		};

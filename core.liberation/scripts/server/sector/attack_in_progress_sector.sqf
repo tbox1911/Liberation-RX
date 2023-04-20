@@ -101,6 +101,7 @@ if ( _ownership == GRLIB_side_enemy ) then {
 			publicVariable "blufor_sectors";
 			[ _sector, 2 ] remoteExec ["remote_call_sector", 0];
 			stats_sectors_lost = stats_sectors_lost + 1;
+			diag_log format ["Sector %1 Lost at %2", _sector, time];
 		} else {
 			[ _sector, 3 ] remoteExec ["remote_call_sector", 0];
 			_enemy_left = [allUnits, {(alive _x) && (vehicle _x == _x) && (side group _x == GRLIB_side_enemy) && !(_x getVariable ["GRLIB_mission_AI", false]) && (((getmarkerpos _sector) distance2D _x) < GRLIB_capture_size * 0.8)}] call BIS_fnc_conditionalSelect;

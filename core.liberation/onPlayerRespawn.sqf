@@ -21,7 +21,7 @@ removeGoggles player;
 player setVariable ["GRLIB_action_inuse", false];
 player setVariable ["SOG_player_in_tunnel", nil];
 
-waitUntil {sleep 1; !isNil "GRLIB_init_server" };
+waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 
 if (GRLIB_forced_loadout > 0) then {
 	[player] call compile preprocessFileLineNumbers (format ["mod_template\%1\loadout\player_set%2.sqf", GRLIB_mod_west, GRLIB_forced_loadout]);
