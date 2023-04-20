@@ -112,7 +112,7 @@ while {alive _unit} do {
 >>>>>>> 07541a9d (bomber)
 		};
 
-		private _nearest_sector = [(sectors_allSectors - blufor_sectors), _unit] call BIS_fnc_nearestPosition;
+		private _nearest_sector = [(sectors_allSectors - blufor_sectors), _unit] call F_nearestPosition;
 
 		if (typeName _nearest_sector == "STRING") then {
 			private _flee_grp = createGroup [GRLIB_side_civilian, true];

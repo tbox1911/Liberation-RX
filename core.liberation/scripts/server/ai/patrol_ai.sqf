@@ -87,7 +87,7 @@ while { count (units _grp) > 0 } do {
 
 			// Found new waypoints
 			private _sectors_patrol = [];
-			_start_pos =  [_sector_list, _patrol_startpos] call BIS_fnc_nearestPosition;
+			_start_pos =  [_sector_list, _patrol_startpos] call F_nearestPosition;
 			_sectors_patrol = [_start_pos, _sector_radius, _sector_list, _max_waypoints] call F_getSectorPath;
 
 			// Clean old waypoints

@@ -1,3 +1,4 @@
+F_nearestPosition = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_nearestPosition.sqf";
 F_calcUnitsCost = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_calcUnitsCost.sqf";
 F_addPlayerScore = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_addPlayerScore.sqf";
 F_addPlayerAmmo = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_addPlayerAmmo.sqf";

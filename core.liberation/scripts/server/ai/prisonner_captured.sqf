@@ -8,6 +8,7 @@ if ( ( typeof _unit ) in all_resistance_troops ) then {
 };
 resources_intel = resources_intel + ( _yield + (round (random _yield)));
 stats_prisonners_captured = stats_prisonners_captured + 1;
+publicVariable "stats_prisonners_captured";
 
 [ 0 ] remoteExec ["remote_call_intel", 0];
 
