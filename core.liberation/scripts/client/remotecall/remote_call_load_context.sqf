@@ -10,12 +10,12 @@ private _grp = group player;
 if (count (_context select 2) >= 1 ) then {
     waitUntil {
         sleep 3;
-        if ((player distance2D ([getpos player] call F_getNearestFob)) < GRLIB_fob_range) exitWith { true };
+        if ([] call is_menuok && [player, "FOB", GRLIB_fob_range] call F_check_near) exitWith { true };
         hintSilent localize "$STR_SQUAD_WAIT";
         false;
     };
     hintSilent "";
-    
+
     {
         _unit = _grp createUnit [(_x select 0), getPosATL player, [], 10, "NONE"];
         sleep 0.1;
@@ -32,3 +32,5 @@ if (count (_context select 2) >= 1 ) then {
 
     _grp selectLeader player;
 };
+
+player setVariable ["GRLIB_player_context_loaded", true, true];

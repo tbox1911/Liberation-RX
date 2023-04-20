@@ -4,7 +4,7 @@ private _max_respawn_reached = false;
 private _respawn_trucks_unsorted = [entities [[Respawn_truck_typename, huron_typename], [], false, true], {
 	_x getVariable ["GRLIB_vehicle_owner", ""] == _playerId &&
 	!(_x getVariable ['R3F_LOG_disabled', true]) &&
-	alive _x && _x distance2D lhd > GRLIB_sector_size &&
+	alive _x && !([_x, "LHD", GRLIB_sector_size] call F_check_near) &&
 	!surfaceIsWater (getpos _x) &&
 	((getpos _x) select 2) < 5 &&  speed _x < 5
 }] call BIS_fnc_conditionalSelect;
@@ -13,9 +13,9 @@ private _respawn_tent_unsorted = [];
 if (!isNil "GRLIB_mobile_respawn") then {
 	_respawn_tent_unsorted = [ GRLIB_mobile_respawn, {
 		_x getVariable ["GRLIB_vehicle_owner", ""] == _playerId &&
-		_x distance2D lhd > GRLIB_sector_size &&
+		!([_x, "LHD", GRLIB_sector_size] call F_check_near) &&
+		!([_x, "FOB", GRLIB_sector_size] call F_check_near) &&
 		!surfaceIsWater (getpos _x) &&
-		_x distance2D ([_x] call F_getNearestFob) > GRLIB_sector_size &&
 		isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull])
 	}] call BIS_fnc_conditionalSelect;
 };

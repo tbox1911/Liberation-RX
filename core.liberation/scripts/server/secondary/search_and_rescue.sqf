@@ -73,7 +73,7 @@ GRLIB_secondary_in_progress = 2; publicVariable "GRLIB_secondary_in_progress";
 
 waitUntil {
 	sleep 5;
-	{ ( alive _x ) && ( _x distance ( [ getpos _x ] call F_getNearestFob ) > 50 ) } count _pilotUnits == 0
+	{ ( alive _x ) && !([_x, "FOB", 50] call F_check_near)} count _pilotUnits == 0
 };
 
 sleep 5;

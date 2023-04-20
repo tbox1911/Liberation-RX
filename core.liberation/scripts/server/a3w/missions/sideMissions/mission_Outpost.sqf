@@ -5,7 +5,7 @@
 //	@file Name: mission_Outpost.sqf
 
 if (!isServer) exitwith {};
-#include "sideMissionDefines.sqf";
+#include "sideMissionDefines.sqf"
 
 private ["_objects"];
 

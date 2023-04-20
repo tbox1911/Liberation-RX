@@ -166,7 +166,7 @@ while {deleteManagerPublic} do {
 			 isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) &&
 			 !(_x getVariable ['R3F_LOG_disabled', true]) &&
 			 count (crew _x) == 0 &&
-			 (_x distance lhd) >= 1000 &&
+			 !([_x, "LHD", GRLIB_sector_size] call F_check_near) &&
 			 !([typeOf _x, _no_cleanup_classnames] call F_itemIsInClass)
 			}] call BIS_fnc_conditionalSelect;
 

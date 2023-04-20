@@ -6,8 +6,8 @@ _countAllBox = {
 
 	private _ret = {
 		typeof _x == _type &&
-		(getPosATL _x) distance2D (getPosATL lhd) > GRLIB_fob_range &&
-		(getPosATL _x) distance2D ([getPosATL _x] call F_getNearestFob) > GRLIB_fob_range
+		!([_x, "LHD", GRLIB_fob_range] call F_check_near) &&
+		!([_x, "FOB", GRLIB_fob_range] call F_check_near) 
 	} count vehicles;
 
 	_ret;

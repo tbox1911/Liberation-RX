@@ -21,13 +21,13 @@ medic_sling_typename = "B_Slingload_01_Medevac_F";
 commander_classname = "vn_o_men_nva_15";
 pilot_classname = "vn_o_men_aircrew_01";
 crewman_classname = "vn_o_men_nva_41";
-Arsenal_typename = "Land_vn_pavn_weapons_stack3";
+Arsenal_typename = "Land_vn_pavn_weapons_stack1";
 PAR_Medikit = "vn_o_item_medikit_01";
 PAR_AidKit = "vn_o_item_firstaidkit";
 //GRLIB_sar_wreck = "Land_Wreck_Heli_Attack_01_F"
 waterbarrel_typename = "Land_WaterBottle_01_stack_F";
 fuelbarrel_typename = "Land_vn_metalbarrel_f";
-foodbarrel_typename = "Land_vn_sacks_goods_f";
+foodbarrel_typename = "Land_FoodSacks_01_large_brown_idap_F";
 A3W_BoxWps = "Land_vn_us_weapons_stack2";
 chimera_vehicle_overide = [
   ["B_Heli_Light_01_F",  "vn_b_air_oh6a_01"],
@@ -299,6 +299,12 @@ box_transport_config_west = [
     [ "vn_o_boat_04_02", 25, [1, -10.7, -0.9], [-1, -10.7, -0.9] ]
 ];
 
+box_transport_offset_west = [
+	["Land_vn_us_weapons_stack2", [0, 0, -0.9] ],
+	["Land_vn_pavn_weapons_stack1", [0, 0, -0.9] ],
+	["Land_WaterBottle_01_stack_F", [0, 0, -0.25] ],
+	["Land_vn_metalbarrel_f", [0, 0, -0.4] ]
+];
 
 GRLIB_AirDrop_1 = [		// cost = 50 Unarmed Offroad
 	"vn_o_wheeled_btr40_01"

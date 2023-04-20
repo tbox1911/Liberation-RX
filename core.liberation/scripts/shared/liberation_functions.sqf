@@ -23,7 +23,6 @@ F_findOpforSpawnPoint = compileFinal preprocessFileLineNumbers "scripts\shared\f
 F_getAdaptiveSquadComp = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getAdaptiveSquadComp.sqf";
 F_getAdaptiveVehicle = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getAdaptiveVehicle.sqf";
 F_secondsToTimer = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_secondsToTimer.sqf";
-F_squadRespawn = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_squadRespawn.sqf";
 F_checkClass = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_checkClass.sqf";
 F_filterMods = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_filterMods.sqf";
 F_loadoutPrice = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_loadoutPrice.sqf";

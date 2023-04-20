@@ -14,6 +14,7 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 	"vn_b_air_ch34_03_01",
 	"vn_b_air_ch34_04_03",
 	"vn_b_air_uh1d_02_02",
+	"vn_b_air_uh1d_02_04",
 	"vn_b_air_uh1c_04_02",
 	"vn_b_air_uh1c_02_02",
 	"vn_i_air_ch34_01_02"
@@ -29,6 +30,7 @@ R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
 	"vn_b_air_ch34_03_01",
 	"vn_b_air_ch34_04_03",
 	"vn_b_air_uh1d_02_02",
+	"vn_b_air_uh1d_02_04",	
 	"vn_b_air_uh1c_04_02",
 	"vn_b_air_uh1c_02_02",
 	"vn_i_air_ch34_01_02"
@@ -49,6 +51,7 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["vn_b_air_ch34_03_01", 100],
 	["vn_b_air_ch34_04_03", 100],
 	["vn_b_air_uh1d_02_02", 60],
+	["vn_b_air_uh1d_02_04", 60],
 	["vn_b_air_uh1c_04_02", 60],
 	["vn_b_air_uh1c_02_02", 60],
 	["vn_i_air_ch34_01_02", 100]

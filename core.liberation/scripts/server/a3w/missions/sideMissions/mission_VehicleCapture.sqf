@@ -22,6 +22,7 @@ _setupObjects =
 
 	// Class, Position, Fuel, Ammo, Damage, Special
 	_vehicle = createVehicle [ (selectRandom opfor_vehicles), _vehiclePos, [], 0, "NONE"];
+	_vehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	_vehicle setVariable ["R3F_LOG_disabled", true, true];
 	_vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
 	_vehicle setVehicleLock "LOCKED";

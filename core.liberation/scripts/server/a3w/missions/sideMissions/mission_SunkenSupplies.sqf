@@ -6,7 +6,7 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_nbUnits", "_box1", "_box2", "_vehicle", "_boxPos", "_aiGroup", "_unit"];
+private ["_nbUnits", "_box1", "_box2", "_vehicle", "_boxPos"];
 
 _setupVars =
 {

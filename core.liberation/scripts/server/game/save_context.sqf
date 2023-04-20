@@ -1,6 +1,7 @@
 params ["_player", "_uid"];
 
 private _puid = _player getVariable ["PAR_Grp_ID","1"];
+private _loaded = _player getVariable ["GRLIB_player_context_loaded", false];
 private _ai_group = [];
 private _loadout = [];
 
@@ -14,7 +15,7 @@ private _new = true;
 {
 	if (_x select 0 == _uid) exitWith {
 		_x set [1, _loadout];
-		_x set [2, _ai_group ];
+		if (_loaded) then {	_x set [2, _ai_group ] };
 		_new = false;
 	};
 } foreach GRLIB_player_context;

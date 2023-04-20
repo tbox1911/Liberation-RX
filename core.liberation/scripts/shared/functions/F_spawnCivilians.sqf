@@ -1,6 +1,10 @@
-params [ "_sector", "_nbcivs" ];
-diag_log format [ "Spawn %1 civilians at %2", _nbcivs, time ];
+params [ 
+	"_sector",
+	["_nbcivs", 1]
+];
+//diag_log format [ "Spawn %1 civilians at %2", _nbcivs, time ];
 
+private [ "_spawnpos", "_grp"];
 private _createdcivs = [];
 private _sectorpos = getMarkerPos _sector;
 
@@ -35,6 +39,6 @@ for "_i" from 1 to _nbcivs do {
 	sleep 0.2;
 };
 
-diag_log format [ "Done Spawning %1 civilians at %2", count _createdcivs, time ];
+//diag_log format [ "Done Spawning %1 civilians at %2", count _createdcivs, time ];
 
 _createdcivs;

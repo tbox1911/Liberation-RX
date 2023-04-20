@@ -20,7 +20,6 @@ if ( isServer ) then {
 		};
 	};
 
-	if (isNull _killer) exitWith {};
 	if (isNil "infantry_weight") then { infantry_weight = 33 };
 	if (isNil "armor_weight") then { armor_weight = 33 };
 	if (isNil "air_weight") then { air_weight = 33 };
@@ -65,6 +64,7 @@ if ( isServer ) then {
 			//moveOut _unit;
 		};
 
+		if (isNull _killer) exitWith {};
 		if ( _unit != _killer ) then {
 			_isPrisonner = _unit getVariable ["GRLIB_is_prisonner", false];
 			_isKamikaz = _unit getVariable ["GRLIB_is_kamikaze", false];
@@ -151,7 +151,7 @@ if ( isServer ) then {
 			waitUntil { sleep 0.3; (isNull attachedTo _unit) };
 		};
 
-		if ( (typeof _unit) in [FOB_box_typename, FOB_truck_typename, foodbarrel_typename, waterbarrel_typename] ) exitWith {
+		if ( (typeof _unit) in [Arsenal_typename, FOB_box_typename, FOB_truck_typename, foodbarrel_typename, waterbarrel_typename] ) exitWith {
 			sleep 30;
 			deleteVehicle _unit;
 		};

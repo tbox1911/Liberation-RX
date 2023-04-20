@@ -43,6 +43,6 @@ if ( (count _blufor_bigtowns == count sectors_bigtown) && (count (sectors_allSec
 
 	sleep 20;
 
-	{ if ( !(isPlayer _x) && _x distance lhd > 500  ) then { deleteVehicle _x } } foreach allUnits;
+	{ if ( !(isPlayer _x) && !([_x, "LHD", GRLIB_sector_size] call F_check_near) ) then { deleteVehicle _x } } foreach allUnits;
 
 };

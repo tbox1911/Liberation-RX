@@ -1,6 +1,7 @@
 createDialog "liberation_admin";
 waitUntil { dialog };
 disableSerialization;
+if (isNil "last_build") then { last_build = 0 };
 do_unban = 0;
 do_score = 0;
 do_spawn = 0;
@@ -96,7 +97,7 @@ _i = 0;
 
 _ban_combo lbSetCurSel 0;
 _score_combo lbSetCurSel 0;
-_build_combo lbSetCurSel 0;
+_build_combo lbSetCurSel last_build;
 
 while { alive player && dialog } do {
 	if (do_unban == 1) then {
@@ -133,6 +134,7 @@ while { alive player && dialog } do {
 		buildtype = 9;
 		build_unit = [_veh_class,[],1,[],[]];
 		dobuild = 1;
+		last_build = (lbCurSel _build_combo);
 		closeDialog 0;
 	};
 
