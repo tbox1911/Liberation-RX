@@ -2,9 +2,8 @@ if (!isServer) exitWith {};
 params ["_src", "_dst_id", "_ammo"];
 private ["_dst", "_src_ammo", "_dst_ammo"];
 
-_dst = (allPlayers select {alive _x && getPlayerUID _x == _dst_id}) select 0;
-if (isNil "_dst" ) exitWith {};
-if (!isPlayer _src || !isPlayer _dst || _src == _dst) exitWith {};
+_dst = _dst_id call BIS_fnc_getUnitByUID;
+if (isNull _dst || !isPlayer _src || !isPlayer _dst || _src == _dst) exitWith {};
 
 _src_ammo = _src getVariable ["GREUH_ammo_count",0];
 if (_src_ammo < _ammo) exitWith {};

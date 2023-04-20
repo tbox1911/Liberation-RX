@@ -19,22 +19,27 @@ do_score = 0;
 do_spawn = 0;
 do_ammo = 0;
 
+// Clear listbox
 _display = findDisplay 5204;
-_player_combo = _display displayCtrl 1611;
-lbClear _player_combo;
-_player_combo2 = _display displayCtrl 1612;
-lbClear _player_combo2;
-_build_combo = _display displayCtrl 1614;
-lbClear _build_combo;
+_ban_combo = _display displayCtrl 1611;
+lbClear _ban_combo;
+_score_combo = _display displayCtrl 1612;
+lbClear _score_combo;
 _ammo_combo = _display displayCtrl 1616;
 lbClear _ammo_combo;
+_build_combo = _display displayCtrl 1614;
+lbClear _build_combo;
+
+{
+	if ((BTC_logic getVariable [_x, 0]) > 0) then {
+		_ban_combo lbAdd format["%1", _x];
+	};
+} foreach allVariables BTC_logic;
 
 _i = 0;
 {
-	_player_combo lbAdd format["%1", name _x];
-	_player_combo lbSetData [_i, getPlayerUID _x];
-	_player_combo2 lbAdd format["%1", name _x];
-	_player_combo2 lbSetData [_i, getPlayerUID _x];
+	_score_combo lbAdd format["%1", name _x];
+	_score_combo lbSetData [_i, getPlayerUID _x];
 	_ammo_combo lbAdd format["%1", name _x];
 	_ammo_combo lbSetData [_i, getPlayerUID _x];
 	_i = _i + 1;
@@ -47,29 +52,32 @@ _i = 0;
 	_i = _i + 1;
 } forEach light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles + opfor_recyclable;
 
-_player_combo lbSetCurSel 0;
-_player_combo2 lbSetCurSel 0;
+_ban_combo lbSetCurSel 0;
+_score_combo lbSetCurSel 0;
 _build_combo lbSetCurSel 0;
 _ammo_combo lbSetCurSel 0;
 
 while { dialog && (alive player) } do {
 	if (do_unban == 1) then {
-		_dst_name = _player_combo lbText (lbCurSel _player_combo);
-		_dst_id = _player_combo lbData (lbCurSel _player_combo);
-		BTC_logic setVariable [_dst_id, 0, true];
-		systemchat format ["Unban player: %1 UID:%2", _dst_name, _dst_id];
-		sleep 1;
+		_dst_id = _ban_combo lbText (lbCurSel _ban_combo);
+		if (_dst_id != "") then {
+			BTC_logic setVariable [_dst_id, 0, true];
+			systemchat format ["Unban player UID: %1", _dst_id];
+
+			_ban_combo = _display displayCtrl 1611;
+			lbClear _ban_combo;
+			{
+				if ((BTC_logic getVariable [_x, 0]) > 0) then {	_ban_combo lbAdd format["%1", _x] };
+			} foreach allVariables BTC_logic;
+			sleep 1;
+		};
 		do_unban = 0;
 	};
 
 	if (do_score == 1) then {
-		_dst_name = _player_combo2 lbText (lbCurSel _player_combo2);
-		_dst_id = _player_combo2 lbData (lbCurSel _player_combo2);
-		_player = objNull;
-		{
-			if (getPlayerUID _x == _dst_id) exitWith { _player = _x };
-		} forEach allPlayers;
-
+		_dst_name = _score_combo lbText (lbCurSel _score_combo);
+		_dst_id = _score_combo lbData (lbCurSel _score_combo);
+		_player = _dst_id call BIS_fnc_getUnitByUID;
 		if (!isNull _player) then {
 			[_player, 200] remoteExec ['addScore', 2];
 			systemchat format ["Add 200 XP to player: %1.", _dst_name];
@@ -92,10 +100,7 @@ while { dialog && (alive player) } do {
 	if (do_ammo == 1) then {
 		_dst_name = _ammo_combo lbText (lbCurSel _ammo_combo);
 		_dst_id = _ammo_combo lbData (lbCurSel _ammo_combo);
-		_player = objNull;
-		{
-			if (getPlayerUID _x == _dst_id) exitWith { _player = _x };
-		} forEach allPlayers;
+		_player = _dst_id call BIS_fnc_getUnitByUID;
 
 		if (!isNull _player) then {
 			_tmp = _player getVariable ['GREUH_ammo_count', 0];

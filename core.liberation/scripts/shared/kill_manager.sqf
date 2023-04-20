@@ -109,7 +109,7 @@ if ( isServer ) then {
 				};
 
 				if (_owner_id != "0") then {
-					_owner_player = (allPlayers select {getPlayerUID _x == _owner_id}) select 0;
+					_owner_player = _owner_id call BIS_fnc_getUnitByUID;
 					_owner_player addScore - GRLIB_civ_killing_penalty;
 					_msg = format ["%1, Your AI kill Civilian !!", name _owner_player] ;
 					[gamelogic, _msg] remoteExec ["globalChat", 0];
