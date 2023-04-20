@@ -55,4 +55,4 @@ if (count _context >= 1) then {
         [""] remoteExec ["hintSilent", owner _player];
     };
 };
-_player setVariable ["GRLIB_squad_context_loaded", true];
+_player setVariable ["GRLIB_squad_context_loaded", true, true];
