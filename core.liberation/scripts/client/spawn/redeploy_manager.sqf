@@ -1,5 +1,5 @@
 if (player getVariable ["GRLIB_action_inuse", false]) exitWith {};
-if (count (attachedObjects player) > 0) then {R3F_LOG_joueur_deplace_objet = objNull;};
+if (count (attachedObjects player) > 0) then {{detach _x} forEach attachedObjects player};
 R3F_LOG_joueur_deplace_objet = objNull;
 
 private _choiceslist = [];
