@@ -2,6 +2,7 @@ if (!isServer && hasInterface) exitWith {};
 params ["_player", "_vehicle"];
 
 private _crew = crew _vehicle;
+if (count _crew == 0) exitWith {};
 _crew allowGetIn false;
 {
 	[_x] spawn {

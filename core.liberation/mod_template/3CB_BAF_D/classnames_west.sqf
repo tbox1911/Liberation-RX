@@ -270,14 +270,6 @@ GRLIB_vehicle_blacklist_west = [
 
 ];
 
-box_transport_config_west = [
-	[ "UK3CB_BAF_MAN_HX58_Transport_Sand_DDPM", -6.5, [0,-0.2,0.6], [0,-1.8,0.6] ],
-	[ "UK3CB_BAF_MAN_HX60_Cargo_Sand_A_DDPM", -6.5, [0,-0.2,0.6], [0,-1.8,0.6] ],
-	[ "UK3CB_BAF_MAN_HX60_Transport_Sand_DDPM", -6.5, [0,0.5,1.5], [0,-0.9,1.5], [0,-2.4,1.5], [0,-3.8,1.5] ],
-	[ "UK3CB_BAF_Merlin_HC3_Cargo_DPMW", -7.5, [0,2,-1.8], [0,0.6,-1.8], [0,-1.2,-1.8], [0,-2.6,-1.8] ]
-];
-
-
 GRLIB_AirDrop_1 = [		// cost = 50 Unarmed Offroad
 	"UK3CB_BAF_LandRover_Soft_FFR_Sand_A_DDPM"
 ];
@@ -297,7 +289,6 @@ GRLIB_AirDrop_4 = [		// cost 300 Large Truck
 GRLIB_AirDrop_5 = [		// cost 750 APC (Armoured personnel carrier)
 	"UK3CB_BAF_FV432_Mk3_GPMG_Sand_DDPM"
 ];
-
 
 GRLIB_AirDrop_6 = [		// cost 250 Boat
 	"B_Boat_Transport_01_F"

@@ -41,6 +41,7 @@ private _grp = createGroup [_side, true];
 			if (_type == "militia") then {[ _unit ] call loadout_militia};
 			[ _unit ] call reammo_ai;
             _unit switchMove "amovpknlmstpsraswrfldnon";
+			_unit playMoveNow "amovpknlmstpsraswrfldnon"; 
             sleep 0.1;
 		} else {
 			diag_log format ["--- LRX Error: No place to build unit %1 at position %2", _x, _spawnpos];

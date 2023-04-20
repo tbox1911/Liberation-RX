@@ -81,6 +81,7 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["BWA3_Dingo2_FLW200_GMW_Tropen", 50],
 	["BWA3_Dingo2_FLW200_GMW_Tropen", 50],
 	["BWA3_Eagle_Fleck", 50]
+];
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 [

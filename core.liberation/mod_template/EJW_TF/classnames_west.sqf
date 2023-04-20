@@ -285,7 +285,3 @@ GRLIB_vehicle_whitelist_west = [
 GRLIB_vehicle_blacklist_west = [
 
 ];
-
-box_transport_config_west = [
-
-];

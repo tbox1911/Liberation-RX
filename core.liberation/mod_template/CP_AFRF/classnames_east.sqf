@@ -244,9 +244,3 @@ opfor_recyclable = [
 ["CUP_O_Su25_Dyn_RU",20,round (1040 / GRLIB_recycling_percentage),30],
 ["CUP_O_SU34_RU",25,round (1060 / GRLIB_recycling_percentage),35]
 ];
-
-box_transport_config_east = [
-	[ "CUP_O_Kamaz_RU", -5.5, [0, 0.3, 0], [0, -1.25, 0] ],
-	[ "CUP_O_Kamaz_Open_RU", -5.5, [0, 0.3, 0], [0, -1.25, 0] ]	
-];
-

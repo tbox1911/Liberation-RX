@@ -24,7 +24,7 @@ opfor_mrap = "rhsusf_m1151_usmc_wd";
 opfor_mrap_hmg = "rhsusf_m1151_m2crows_usmc_wd";
 opfor_mrap_gmg = "rhsusf_m1151_mk19crows_usmc_wd";
 opfor_transport_helo = "RHS_CH_47F";
-opfor_transport_truck = "rhsusf_M1083A1P2_B_M2_WD_fmtv_usarmy";
+opfor_transport_truck = "rhsusf_M977A4_usarmy_wd";
 opfor_fuel_truck = "rhsusf_M978A4_usarmy_wd";
 opfor_ammo_truck = "rhsusf_M977A4_AMMO_usarmy_wd";
 opfor_fuel_container = "B_Slingload_01_Fuel_F";
@@ -107,6 +107,7 @@ opfor_vehicles = [
 	"RHS_M2A3_BUSKI_wd",
 	"RHS_M2A3_BUSKIII_wd",
 	"RHS_M6_wd",
+	"rhsusf_M1083A1P2_B_M2_WD_fmtv_usarmy",
 	"rhsusf_m1a1aimwd_usarmy",
 	"rhsusf_m1a2sep1wd_usarmy",
 	"rhsusf_m1a2sep2wd_usarmy",
@@ -125,6 +126,7 @@ opfor_vehicles_low_intensity = [
 	"rhsusf_M1230_M2_usarmy_wd",
 	"rhsusf_M1237_M2_usarmy_wd",
 	"rhsusf_m1240a1_m2_usarmy_wd",
+	"rhsusf_M1078A1P2_B_M2_WD_fmtv_usarmy",	
 	"rhsusf_m1165a1_gmv_mk19_m240_socom_d",
 	"rhsusf_m1165a1_gmv_m2_m240_socom_d"
 ];
@@ -145,8 +147,7 @@ opfor_battlegroup_vehicles = [
 	"rhsusf_m1a1fep_od",
 	"rhsusf_M1083A1P2_B_M2_WD_fmtv_usarmy",
 	"RHS_UH60M",
-	"RHS_CH_47F",
-	"rhsusf_CH53E_USMC_GAU21_D"
+	"RHS_CH_47F"
 ];
 
 opfor_battlegroup_vehicles_low_intensity = [
@@ -166,11 +167,7 @@ opfor_battlegroup_vehicles_low_intensity = [
 
 opfor_troup_transports_truck = [
 	"rhsusf_M1078A1P2_B_M2_WD_fmtv_usarmy",
-	"rhsusf_M1083A1P2_B_M2_WD_fmtv_usarmy",
-	"RHS_UH60M",
-	"RHS_UH1Y",
-	"RHS_CH_47F",
-	"rhsusf_CH53E_USMC_GAU21_D"
+	"rhsusf_M1083A1P2_B_M2_WD_fmtv_usarmy"
 ];
 
 opfor_troup_transports_heli = [
@@ -188,8 +185,6 @@ opfor_air = [
 ];
 
 opfor_statics = [
-	"B_GMG_01_high_F",
-	"B_Mortar_01_F",
 	"RHS_M2StaticMG_WD",
 	"RHS_M2StaticMG_MiniTripod_WD",
 	"RHS_TOW_TriPod_WD",
@@ -200,33 +195,31 @@ opfor_statics = [
 opfor_recyclable = [
 	["B_Boat_Armed_01_minigun_F",2,round (30 / GRLIB_recycling_percentage),2],
 	["B_T_Boat_Armed_01_minigun_F",2,round (30 / GRLIB_recycling_percentage),2],
-	["B_HMG_01_high_F",0,round (20 / GRLIB_recycling_percentage),0],
-	["B_GMG_01_high_F",0,round (40 / GRLIB_recycling_percentage),0],
-	["B_static_AA_F",0,round (80 / GRLIB_recycling_percentage),0],
-	["B_static_AT_F",0,round (80 / GRLIB_recycling_percentage),0],
 	["RHS_M2StaticMG_WD",0,round (80 / GRLIB_recycling_percentage),0],
 	["RHS_M2StaticMG_MiniTripod_WD",0,round (80 / GRLIB_recycling_percentage),0],
 	["RHS_TOW_TriPod_WD",0,round (80 / GRLIB_recycling_percentage),0],
 	["RHS_Stinger_AA_pod_WD",0,round (80 / GRLIB_recycling_percentage),0],
 	["RHS_MK19_TriPod_WD",0,round (80 / GRLIB_recycling_percentage),0],
 	["B_Mortar_01_F",0,round (200 / GRLIB_recycling_percentage),0],
-	["rhsusf_m1151_m2crows_usarmy_wd",1,round (20 / GRLIB_recycling_percentage),2],
-	["rhsusf_m1151_mk19crows_usarmy_wd",1,round (20 / GRLIB_recycling_percentage),2],
-	["rhsusf_m1151_m2_lras3_v1_usarmy_wd",1,round (20 / GRLIB_recycling_percentage),2],
-	["rhsusf_m1151_m240_v1_usarmy_wd",1,round (20 / GRLIB_recycling_percentage),2],
-	["rhsusf_m1151_mk19_v2_usarmy_wd",1,round (20 / GRLIB_recycling_percentage),2],
-	["rhsusf_M1117_W",1,round (20 / GRLIB_recycling_percentage),2],
-	["rhsusf_M1220_M2_usarmy_wd",1,round (20 / GRLIB_recycling_percentage),2],
-	["rhsusf_M1220_MK19_usarmy_wd",1,round (20 / GRLIB_recycling_percentage),2],
-	["rhsusf_M1230_M2_usarmy_wd",1,round (20 / GRLIB_recycling_percentage),2],
-	["rhsusf_M1237_M2_usarmy_wd",1,round (20 / GRLIB_recycling_percentage),2],
-	["rhsusf_m1240a1_m2_usarmy_wd",1,round (20 / GRLIB_recycling_percentage),2],
-	["rhsusf_m1240a1_m240_usarmy_wd",1,round (20 / GRLIB_recycling_percentage),2],
-	["rhsusf_m1240a1_mk19_usarmy_wd",1,round (20 / GRLIB_recycling_percentage),2],
-	["rhsusf_m1240a1_m2_uik_usarmy_wd",1,round (20 / GRLIB_recycling_percentage),2],
-	["rhsusf_m1165a1_gmv_mk19_m240_socom_d",1,round (20 / GRLIB_recycling_percentage),2],
-	["rhsusf_m1165a1_gmv_m2_m240_socom_d",1,round (20 / GRLIB_recycling_percentage),2],
-	["rhsusf_M1083A1P2_B_M2_WD_fmtv_usarmy",1,round (40 / GRLIB_recycling_percentage),2],
+	["rhsusf_m1151_m2crows_usarmy_wd",1,round (120 / GRLIB_recycling_percentage),2],
+	["rhsusf_m1151_mk19crows_usarmy_wd",1,round (130 / GRLIB_recycling_percentage),2],
+	["rhsusf_m1151_m2_lras3_v1_usarmy_wd",1,round (220 / GRLIB_recycling_percentage),2],
+	["rhsusf_m1151_m240_v1_usarmy_wd",1,round (120 / GRLIB_recycling_percentage),2],
+	["rhsusf_m1151_mk19_v2_usarmy_wd",1,round (120 / GRLIB_recycling_percentage),2],
+	["rhsusf_M1117_W",1,round (120 / GRLIB_recycling_percentage),2],
+	["rhsusf_M1220_M2_usarmy_wd",1,round (150 / GRLIB_recycling_percentage),2],
+	["rhsusf_M1220_MK19_usarmy_wd",1,round (170 / GRLIB_recycling_percentage),2],
+	["rhsusf_M1230_M2_usarmy_wd",1,round (160 / GRLIB_recycling_percentage),2],
+	["rhsusf_M1237_M2_usarmy_wd",1,round (160 / GRLIB_recycling_percentage),2],
+	["rhsusf_m1240a1_m2_usarmy_wd",1,round (160 / GRLIB_recycling_percentage),2],
+	["rhsusf_m1240a1_m240_usarmy_wd",1,round (170 / GRLIB_recycling_percentage),2],
+	["rhsusf_m1240a1_mk19_usarmy_wd",1,round (180 / GRLIB_recycling_percentage),2],
+	["rhsusf_m1240a1_m2_uik_usarmy_wd",1,round (160 / GRLIB_recycling_percentage),2],
+	["rhsusf_m1165a1_gmv_mk19_m240_socom_d",1,round (220 / GRLIB_recycling_percentage),2],
+	["rhsusf_m1165a1_gmv_m2_m240_socom_d",1,round (220 / GRLIB_recycling_percentage),2],
+	["rhsusf_M1083A1P2_B_M2_WD_fmtv_usarmy",1,round (140 / GRLIB_recycling_percentage),2],
+	["rhsusf_M1078A1P2_B_M2_WD_fmtv_usarmy",1,round (160 / GRLIB_recycling_percentage),2],
+	["rhsusf_M977A4_usarmy_wd",10,round (100 / GRLIB_recycling_percentage),10],
 	["rhsusf_m1a1aimwd_usarmy",10,round (600 / GRLIB_recycling_percentage),10],
 	["rhsusf_m1a2sep1wd_usarmy",10,round (600 / GRLIB_recycling_percentage),10],
 	["rhsusf_m1a2sep2wd_usarmy",10,round (600 / GRLIB_recycling_percentage),10],
@@ -244,7 +237,6 @@ opfor_recyclable = [
 	["RHS_AH64D_wd",10,round (700 / GRLIB_recycling_percentage),15],
 	["RHS_UH60M",10,round (700 / GRLIB_recycling_percentage),15],
 	["RHS_AH1Z",10,round (700 / GRLIB_recycling_percentage),15],
-	["rhsusf_CH53E_USMC",10,round (700 / GRLIB_recycling_percentage),15],
 	["RHS_UH1Y",10,round (700 / GRLIB_recycling_percentage),15],
 	["B_Plane_CAS_01_dynamicLoadout_F",20,round (1000 / GRLIB_recycling_percentage),30],
 	["RHS_A10",20,round (1000 / GRLIB_recycling_percentage),30],

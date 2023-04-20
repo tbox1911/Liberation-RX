@@ -174,6 +174,7 @@ opfor_battlegroup_vehicles_low_intensity = [
 
 opfor_troup_transports_truck = [
 	"cwr3_o_ural",
+	"cwr3_o_ural_open",
 	"cwr3_o_uaz452",
 	"cwr3_o_mtlb_pk"
 ];

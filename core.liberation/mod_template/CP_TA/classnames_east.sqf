@@ -26,7 +26,7 @@ opfor_mrap = "CUP_O_UAZ_Open_TKA";
 opfor_mrap_hmg = "CUP_O_UAZ_MG_TKA";
 opfor_mrap_gmg = "CUP_O_UAZ_SPG9_TKA";
 opfor_transport_helo = "CUP_O_MI6T_TKA";
-opfor_transport_truck = "CUP_O_V3S_Covered_TKA";
+opfor_transport_truck = "CUP_O_V3S_Covered_TKM";
 opfor_fuel_truck = "CUP_O_V3S_Refuel_TKA";
 opfor_ammo_truck = "CUP_O_V3S_Rearm_TKA";
 opfor_fuel_container = "Land_Pod_Heli_Transport_04_fuel_F";
@@ -216,9 +216,4 @@ opfor_recyclable = [
 	["CUP_O_T55_TK",1,round (1040 / GRLIB_recycling_percentage),2],
 	["CUP_O_T72_TKA",1,round (1040 / GRLIB_recycling_percentage),2]
 
-];
-
-box_transport_config_east = [
-	//[ "CUP_B_MTVR_BAF_DES", -6.5, [0, -0.4, 0.3], [0, -2.1, 0.3] ],
-	[ "CUP_O_V3S_Covered_TKA", -5.5, [0, 0.3, 0], [0, -1.25, 0] ]
 ];

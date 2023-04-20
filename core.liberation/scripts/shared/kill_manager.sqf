@@ -3,7 +3,9 @@ private [ "_nearby_bigtown","_msg" ];
 
 if ( isServer ) then {
 	if (!(isNull _instigator)) then {
-		_killer = _instigator;
+		if (isNull (getAssignedCuratorLogic _instigator)) then {
+	    	_killer = _instigator;
+		};
 	} else {
 		if (!(_killer isKindOf "CAManBase")) then {
 			_killer = effectiveCommander _killer;

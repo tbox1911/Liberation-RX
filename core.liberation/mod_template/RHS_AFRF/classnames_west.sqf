@@ -17,7 +17,7 @@ ammo_sling_typename = "Land_Pod_Heli_Transport_04_ammo_F";
 medic_sling_typename = "Land_Pod_Heli_Transport_04_medevac_F";
 pilot_classname = "rhs_pilot_combat_heli";
 crewman_classname = "rhs_msv_emr_combatcrew";
-A3W_BoxWps = "rhs_weapon_crate";
+A3W_BoxWps = "rhs_mags_crate";
 
 chimera_vehicle_overide = [
   ["B_Heli_Transport_01_F", "rhs_ka60_grey"]
@@ -88,16 +88,16 @@ heavy_vehicles = [
 	["rhs_prp3_msv",10,170,10,GRLIB_perm_tank],
 	["rhs_bmp3mera_msv",180,80,10,GRLIB_perm_tank],                     
 	["rhs_bmp2k_msv",15,200,20,GRLIB_perm_air],
-	["rhs_t72bb_tv",15,400,20,GRLIB_perm_tank],
-	["rhs_t72be_tv",20,500,25,GRLIB_perm_air],
+	["rhs_t72bb_tv",15,500,20,GRLIB_perm_tank],
+	["rhs_t72be_tv",20,600,25,GRLIB_perm_air],
 	["rhs_t80bvk",20,500,25,GRLIB_perm_tank],
 	["rhs_t80u45m",20,500,25,GRLIB_perm_air],
-	["rhs_t90sab_tv",20,500,25,GRLIB_perm_tank],
-	["rhs_t90saa_tv",20,550,25,GRLIB_perm_air],
-	["rhs_zsu234_aa",20,550,25,GRLIB_perm_air],
+	["rhs_t90sab_tv",20,1500,25,GRLIB_perm_tank],
+	["rhs_t90saa_tv",20,1550,25,GRLIB_perm_air],
+	["rhs_zsu234_aa",20,750,25,GRLIB_perm_air],
 	["rhs_t14_tv",150,1500,300,GRLIB_perm_max],
-	["RHS_BM21_MSV_01",50,1300,100,GRLIB_perm_max],
-	["rhs_2s3_tv",50,1300,100,GRLIB_perm_max]	
+	["rhs_2s1_tv",50,2000,100,GRLIB_perm_max],
+	["rhs_2s3_tv",50,2300,100,GRLIB_perm_max]
 ];
 
 air_vehicles = [
@@ -133,8 +133,9 @@ static_vehicles = [
 	["rhs_Igla_AA_pod_msv",0,50,0,GRLIB_perm_air],
 	["rhs_Metis_9k115_2_msv",0,50,0,GRLIB_perm_log],
 	["rhs_Kornet_9M133_2_msv",0,50,0,GRLIB_perm_tank],
-	["RHS_ZU23_MSV",0,500,0,GRLIB_perm_max],
-	["RHS_M119_WD",10,500,0,GRLIB_perm_max]
+	["RHS_ZU23_MSV",0,500,0,GRLIB_perm_tank],
+	["RHS_M119_WD",10,600,0,GRLIB_perm_air],
+	["RHS_BM21_MSV_01",10,2600,0,GRLIB_perm_max]
 ];
 
 // *** Static Weapon with AI ***
@@ -255,18 +256,6 @@ GRLIB_vehicle_blacklist_west = [
 	"RHS_ZU23_MSV",
 	"RHS_M119_WD"
 ];
-
-box_transport_config_west = [
-	[ "rhs_gaz66_msv", -6.5, [0,-0.2,0.6], [0,-1.8,0.6] ],
-	[ "rhs_kamaz5350_open_msv", -6.5, [0,0.8,0], [0,-0.8,0.0], [0,-2.5,0] ],
-	[ "RHS_Ural_Open_MSV_01", -6.5, [0,0.5,1.5], [0,-0.9,1.5], [0,-2.4,1.5] ],
-	[ "rhs_kraz255b1_cargo_open_msv", -6.5, [0,0.5,1.5], [0,-0.9,1.5], [0,-2.4,1.5], [0,-3.8,1.5] ],
-	[ "RHS_Mi8mt_vv", -7.5, [0,2,-1.8], [0,0.6,-1.8], [0,-1.2,-1.8], [0,-2.6,-1.8] ]
-	
-];
-
-
-
 
 GRLIB_AirDrop_1 = [			// Unarmed Offroader 50
 	"RHS_UAZ_MSV_01"

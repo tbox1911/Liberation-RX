@@ -40,6 +40,8 @@ GRLIB_sar_wreck = "Land_Wreck_Heli_Attack_01_F";
 GRLIB_sar_fire = "test_EmptyObjectForFireBig";
 civilians = ["C_man_1"];
 civilian_vehicles = ["C_SUV_01_F"];
+SHOP_Man = "C_Man_formal_1_F";
+SELL_Man = "C_Story_Mechanic_01_F";
 uavs = [];
 boats_west = [];
 boats_east = [];
@@ -49,14 +51,9 @@ vehicle_rearm_sources = [];
 vehicle_big_units = [];
 GRLIB_vehicle_whitelist = [];
 GRLIB_vehicle_blacklist = [];
-box_transport_config = [];
 opfor_texture_overide = [];
-box_transport_config_west = [];
-box_transport_config_east = [];
 opfor_statics = [];
 units_loadout_overide = [];
-box_transport_offset_west = [];
-box_transport_offset_east = [];
 
 // *** LRX DEFAULT BUILDINGS CLASSNAMES ***
 buildings_default = [

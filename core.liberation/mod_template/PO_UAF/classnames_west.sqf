@@ -228,16 +228,6 @@ GRLIB_vehicle_blacklist_west = [
 
 ];
 
-box_transport_config_west = [
-	[ "LOP_UKR_Ural", -6.5, [0,-0.2,0.6], [0,-1.8,0.6] ],
-	[ "LOP_UKR_Ural_open", -6.5, [0,-0.2,0.6], [0,-1.8,0.6] ],
-	[ "LOP_UKR_KAMAZ_Covered", -6.5, [0,0.5,1.5], [0,-0.9,1.5], [0,-2.4,1.5], [0,-3.8,1.5] ],
-	[ "LOP_UKR_KAMAZ_Transport", -6.5, [0,0.5,1.5], [0,-0.9,1.5], [0,-2.4,1.5], [0,-3.8,1.5] ],
-	[ "LOP_UKR_Mi8MT_Cargo", -7.5, [0,2,-1.8], [0,0.6,-1.8], [0,-1.2,-1.8], [0,-2.6,-1.8] ]
-];
-
-
-
 GRLIB_AirDrop_1 = [		// cost = 50 Unarmed Offroad
 	"LOP_UKR_UAZ"
 ];

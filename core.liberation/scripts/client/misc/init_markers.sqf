@@ -17,14 +17,14 @@ GRLIB_Marker_ATM = [];
 GRLIB_Marker_FUEL = [];
 GRLIB_Marker_SHOP = [];
 
-waituntil {sleep 1; !isNil "GRLIB_sectors_init"};
-sleep 5;
-
 // Objects too long to search (atm, phone, etc ..)
 [] call compileFinal preprocessFileLineNUmbers "fixed_position.sqf";
 
 // Search Objects by classname (only when dev)
 //[] execVM "compute_position.sqf";
+
+waituntil {sleep 1; !isNil "GRLIB_sectors_init"};
+waituntil {sleep 1; !isNil "GRLIB_marker_init"};
 
 // ATM Markers
 {
@@ -87,5 +87,3 @@ waitUntil {sleep 2; !isNil "GRLIB_Marker_REPAIR"};
   _marker setMarkerTextLocal "Repair";
   _marker setMarkerSizeLocal [ 0.75, 0.75 ];
 } forEach GRLIB_Marker_REPAIR;
-
-GRLIB_marker_init = true;

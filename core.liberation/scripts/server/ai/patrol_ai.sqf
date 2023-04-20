@@ -14,17 +14,16 @@ while { count (units _grp) > 0 } do {
 				[_gunner] orderGetIn true;
 			} else {
 				// Default for HMG, GMG
-				private _radius = 800;
+				private _radius = 1000;
 				private _kind = "Man";
 				private _veh_class = typeOf _vehicle;
 
-				if (_veh_class isKindOf "AT_01_base_F") then {_radius = 1000; _kind = "LandVehicle"};
+				if (_veh_class isKindOf "AT_01_base_F") then {_radius = 2000; _kind = "LandVehicle"};
 				if (_veh_class isKindOf "StaticMortar") then {_radius = 1500; _kind = "Man"};
-				if (_veh_class isKindOf "AA_01_base_F") then {_radius = 2000; _kind = "Air"};
+				if (_veh_class isKindOf "AA_01_base_F") then {_radius = 3000; _kind = "Air"};
 
-				private _scan_target = [allUnits, {
+				private _scan_target = [units GRLIB_side_friendly, {
 					alive _x &&
-					side _x == GRLIB_side_friendly &&
 					(vehicle _x) isKindOf _kind &&
 					!(_x getVariable ['R3F_LOG_disabled', false]) &&
 					!([_x, "LHD", GRLIB_sector_size] call F_check_near) &&
@@ -43,6 +42,7 @@ while { count (units _grp) > 0 } do {
 					_gunner reveal [_next_target, 1.5];
 					_gunner doTarget _next_target;
 					//_vehicle fireAtTarget [_next_target];
+					diag_log format ["--- LRX: OPFor defender %1 spot unit %2 (%3) dist %4m", _veh_class, _next_target, typeOf _next_target, round (_gunner distance2D _next_target)];
 				} else {
 					_grp setBehaviour "CARELESS";
 					_gunner doTarget objNull;

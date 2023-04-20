@@ -100,7 +100,9 @@ _waitUntilSuccessCondition = {
 	_ret = false;
 	if (!isnil "GRLIB_A3W_Mission_MR") then {
 		private _opf = 0;
-		{_opf = _opf + count (units _x select {alive _x})} forEach GRLIB_A3W_Mission_MR;
+		{
+			_opf = _opf + count (units _x select { alive _x && (_x distance2D _missionPos < (GRLIB_sector_size * 2) || !isNull objectParent _x) })
+		} forEach GRLIB_A3W_Mission_MR;
 		if (_opf == 0) then {_ret = true};
 	};
 	_ret;

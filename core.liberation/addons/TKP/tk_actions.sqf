@@ -1,6 +1,6 @@
 params ["_killer", "_unit"];
 
-if (player != _killer) exitWith {};
+if (player != _killer || ([] call is_admin)) exitWith {};
 private _kill = BTC_logic getVariable [getPlayerUID player, 0];
 
 if (!isNil "_unit") then {

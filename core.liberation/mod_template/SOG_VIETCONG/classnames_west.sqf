@@ -292,20 +292,6 @@ GRLIB_vehicle_blacklist_west = [
 
 ];
 
-box_transport_config_west = [
-    [ "vn_o_wheeled_z157_01_nva65", -6.5, [0, -0.8, 0.4], [0, -2.5, 0.4] ],
-    [ "vn_o_wheeled_z157_02_nva65", -6.5, [0, -0.8, 0.4], [0, -2.5, 0.4] ],
-    //[ "vn_o_boat_03_02", 25, [1, -10.7, -0.9], [-1, -10.7, -0.9] ],
-    [ "vn_o_boat_04_02", 25, [1, -10.7, -0.9], [-1, -10.7, -0.9] ]
-];
-
-box_transport_offset_west = [
-	["Land_vn_us_weapons_stack2", [0, 0, -0.9] ],
-	["Land_vn_pavn_weapons_stack1", [0, 0, -0.9] ],
-	["Land_WaterBottle_01_stack_F", [0, 0, -0.25] ],
-	["Land_vn_metalbarrel_f", [0, 0, -0.4] ]
-];
-
 GRLIB_AirDrop_1 = [		// cost = 50 Unarmed Offroad
 	"vn_o_wheeled_btr40_01"
 ];

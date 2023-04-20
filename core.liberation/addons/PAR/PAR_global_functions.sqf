@@ -33,6 +33,7 @@ PAR_unblock_AI = {
 				_unit enableAI "ALL";
 				_unit doFollow leader player;
 				_unit switchMove "amovpknlmstpsraswrfldnon";
+				_unit playMoveNow "amovpknlmstpsraswrfldnon";
 			} else {
 				hintSilent "Unit is too far or is unconscious. (max 50m)";
 			};
@@ -333,7 +334,9 @@ PAR_HandleDamage_EH = {
 	params ["_unit", "_selectionName", "_amountOfDamage", "_killer", "_projectile", "_hitPartIndex", "_instigator"];
 	if (isNull _unit) exitWith {0};
 	if (!(isNull _instigator)) then {
-		_killer = _instigator;
+		if (isNull (getAssignedCuratorLogic _instigator)) then {
+	    	_killer = _instigator;
+		};
 	} else {
 		if (!(_killer isKindOf "CAManBase")) then {
 			_killer = effectiveCommander _killer;

@@ -47,7 +47,7 @@ resources_intel = 0;
 GRLIB_player_scores = [];
 GRLIB_garage = [];
 
-no_kill_handler_classnames = [FOB_typename, FOB_outpost, huron_typename];
+no_kill_handler_classnames = [FOB_typename, FOB_outpost];
 {
 	no_kill_handler_classnames pushback (_x select 0);
 } foreach buildings;
