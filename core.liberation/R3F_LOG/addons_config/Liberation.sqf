@@ -256,7 +256,13 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	"StaticMortar",
 	"Land_CzechHedgehog_01_new_F"
 ];
-
+R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
+[
+	["StaticMGWeapon", 10],
+	["StaticGrenadeLauncher", 10],
+	["StaticMortar", 10],
+	["Land_CzechHedgehog_01_new_F", 10]
+];
 //--------------- Camping ---------------
 
 R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +

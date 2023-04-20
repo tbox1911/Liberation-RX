@@ -27,6 +27,8 @@ while { GRLIB_endgame == 0 } do {
 
 	 	if (score _x >= GRLIB_perm_tank) then {
 	 		_target_player = _x;
+			armor_weight = armor_weight - 7;
+			air_weight = air_weight - 7;
 	 	};
 
 	 } foreach allPlayers;

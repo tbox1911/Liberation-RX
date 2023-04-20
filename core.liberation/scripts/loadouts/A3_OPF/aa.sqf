@@ -14,7 +14,7 @@ sleep 0.5;
 for "_i" from 1 to 2 do {_unit addItemToUniform "FirstAidKit";};
 for "_i" from 1 to 2 do {_unit addItemToUniform "MiniGrenade";};
 for "_i" from 1 to 2 do {_unit addItemToUniform "16Rnd_9x21_Mag";};
-_unit addVest "V_Chestrig_rgr";
+_unit addVest "V_TacVest_blk";
 for "_i" from 1 to 5 do {_unit addItemToVest "30Rnd_556x45_Stanag_Tracer_Green";};
 _unit addBackpack "B_Carryall_oli";
 for "_i" from 1 to 3 do {_unit addItemToBackpack "Titan_AA";};

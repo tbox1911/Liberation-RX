@@ -38,7 +38,6 @@ GRLIB_enable_arsenal = ["EnableArsenal",1] call bis_fnc_getParamValue;
 GRLIB_limited_arsenal = ["LimitedArsenal",1] call bis_fnc_getParamValue;
 GRLIB_permission_vehicles = ["EnableLock",1] call bis_fnc_getParamValue;
 GRLIB_forced_loadout = ["ForcedLoadout",1] call bis_fnc_getParamValue;
-GRLIB_overide_opfor = ["TextureOveride",0] call bis_fnc_getParamValue;
 GRLIB_fancy_info = ["FancyInfo",1] call bis_fnc_getParamValue;
 GRLIB_hide_opfor = ["HideOpfor",0] call bis_fnc_getParamValue;
 GRLIB_thermic = ["Thermic",1] call bis_fnc_getParamValue;
@@ -107,12 +106,3 @@ if ( GRLIB_thermic == 1 ) then { GRLIB_thermic = true } else { GRLIB_thermic = f
 
 // Overide sector radius
 if (GRLIB_sector_radius != 0) then { GRLIB_sector_size = GRLIB_sector_radius };
-
-// Overide Textures
-opfor_texture_overide = [];
-if (GRLIB_overide_opfor > 0) then {
-	switch (GRLIB_overide_opfor) do {
-		case 1: {opfor_texture_overide = ["Urban","Digital"] };
-		case 2: {opfor_texture_overide = ["Pink"] };
-	};
-};

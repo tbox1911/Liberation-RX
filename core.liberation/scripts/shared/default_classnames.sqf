@@ -38,5 +38,6 @@ if ( isNil "vehicle_big_units" ) then { vehicle_big_units = [] };
 if ( isNil "GRLIB_vehicle_whitelist" ) then { GRLIB_vehicle_whitelist = [] };
 if ( isNil "GRLIB_vehicle_blacklist" ) then { GRLIB_vehicle_blacklist = [] };
 if ( isNil "box_transport_config" ) then { box_transport_config = [] };
+if ( isNil "opfor_texture_overide" ) then { opfor_texture_overide = [] };
 if ( isNil "civilians" ) then { civilians = ["C_man_1"] };
 if ( isNil "civilian_vehicles" ) then { civilian_vehicles = ["C_SUV_01_F"] };

@@ -57,13 +57,13 @@ class Params
 	class ModPresetWest {
 		title = "MOD Preset - Friendly";
 		values[] = { 0,1,2,3,4,5,6,7,8 };
-		texts[] = { "A3_BLU", "A3_OPF", "A3_IND", "CP_BAF", "CP_CZ", "RHS_US", "RHS_AF", "GM_WEST", "GM_WEST_WINT" };
+		texts[] = { "A3 NATO", "A3 CSAT", "A3 FIA", "CP BAF Desert", "CP CZ", "RHS USA", "RHS Russian F", "GM WEST", "GM WEST Winter" };
 		default = 0;
 	};
 	class ModPresetEast {
 		title = "MOD Preset - Enemy";
-		values[] = { 0,1,2,3,4,5,6 };
-		texts[] = { "A3_OPF", "A3_BLU", "A3_IND", "CP_TA", "CP_RF", "GM_EAST", "GM_EAST_WINT"};
+		values[] = { 0,1,2,3,4,5,6,7,8 };
+		texts[] = { "A3 CSAT", "A3 NATO", "A3 FIA", "A3 CSAT Urban", "CP Takistan", "CP Russian F", "RHS Russian F", "GM EAST", "GM EAST Winter"};
 		default = 0;
 	};
 	class ForcedLoadout {
@@ -71,12 +71,6 @@ class Params
 		values[] = { 0,1,2 };
 		texts[] = { $STR_PARAMS_DISABLED, "Preset 1", "Preset 2" };
 		default = 1;
-	};
-	class TextureOveride {
-		title = "Overide OPFor Vehicles Texture";
-		values[] = { 0,1,2 };
-		texts[] = { $STR_PARAMS_DISABLED, "Urban", "pink"};
-		default = 0;
 	};
 	class FobType{
 		title = $STR_PARAM_FOB_TYPE ;
