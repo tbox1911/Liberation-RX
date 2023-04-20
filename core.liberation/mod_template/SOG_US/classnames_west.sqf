@@ -25,6 +25,8 @@ Arsenal_typename = "Land_vn_us_weapons_stack3";
 waterbarrel_typename = "Land_vn_waterbottle_01_stack_f";
 fuelbarrel_typename = "Land_vn_b_prop_fueldrum_03";
 foodbarrel_typename = "Land_vn_sacks_goods_f";
+PAR_Medikit = "vn_b_item_medikit_01";
+PAR_AidKit = "vn_b_item_firstaidkit";
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 infantry_units = [
@@ -45,6 +47,24 @@ infantry_units = [
 ];
 
 units_loadout_overide = [
+];
+
+LOADOUT_fixed_price = [
+  //["launch_o_vorona_brown_f" , 200]
+];
+
+LOADOUT_expensive_items = [
+  "vn_b_item_toolkit",
+  "vn_b_item_medikit"
+];
+
+LOADOUT_free_items = [
+  "_mag",
+  "vn_b_item_firstaidkit",
+  "vn_b_item_map",
+  "vn_b_item_radio_urc10",
+  "vn_b_item_compass",
+  "vn_b_item_watch"
 ];
 
 light_vehicles = [
@@ -219,7 +239,6 @@ squads = [
 	[blufor_squad_inf_light,15,400,0,GRLIB_perm_max],
 	[blufor_squad_inf,25,550,0,GRLIB_perm_max],
 	[blufor_squad_at,25,600,0,GRLIB_perm_max],
-	[blufor_squad_aa,25,999999,0,GRLIB_perm_max],
 	[blufor_squad_mix,25,600,0,GRLIB_perm_max],
 	[blufor_squad_recon,20,450,0,GRLIB_perm_max]
 ];

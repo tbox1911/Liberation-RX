@@ -90,6 +90,12 @@ class Params
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 0;
 	};
+	class EnableFilterSOG {
+		title = "MOD filter: SoG";
+		values[] = { 1, 0 };
+		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
+		default = 0;
+	};	
 	class Space5 {
 		title = "";
 		values[] = { "" };
@@ -98,7 +104,7 @@ class Params
 	};
 	class ModPresetWest {
 		title = "MOD Preset - Friendly";
-		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 };
+		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17 };
 		texts[] = {
 					"A3 NATO",
 					"A3 CSAT",
@@ -115,13 +121,15 @@ class Params
 					"GM WEST",
 					"GM WEST Winter",
 					"OPTRE West",
-					"WS UNA"
+					"WS UNA",
+					"SoG USA",
+					"SoG VIETCONG"
 				};
 		default = 0;
 	};
 	class ModPresetEast {
 		title = "MOD Preset - Enemy";
-		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17 };
+		values[] = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19 };
 		texts[] = {
 					"A3 CSAT",
 					"A3 NATO",
@@ -140,7 +148,9 @@ class Params
 					"GM EAST",
 					"GM EAST Winter",
 					"OPTRE East",
-					"WS FIA"
+					"WS FIA",
+					"SoG USA",
+					"SoG VIETCONG"
 				};
 		default = 0;
 	};

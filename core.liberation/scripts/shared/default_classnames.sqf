@@ -49,6 +49,7 @@ if ( isNil "civilian_vehicles" ) then { civilian_vehicles = ["C_SUV_01_F"] };
 if ( isNil "box_transport_config_west" ) then { box_transport_config_west = [] };
 if ( isNil "box_transport_config_east" ) then { box_transport_config_east = [] };
 if ( isNil "opfor_statics" ) then { opfor_statics = [] };
+if ( isNil "units_loadout_overide" ) then { units_loadout_overide = [] };
 
 // *** LRX DEFAULT BUILDINGS CLASSNAMES ***
 buildings_default = [	

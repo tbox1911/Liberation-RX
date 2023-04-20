@@ -17,7 +17,9 @@ GRLIB_mod_list_west = [
     "GM_WEST",
     "GM_WEST_WINT",
     "OPTRE_WEST",
-    "WS_UNA"
+    "WS_UNA",
+    "SOG_US",
+    "SOG_VIETCONG"
 ];
 
 GRLIB_mod_list_east = [
@@ -38,5 +40,7 @@ GRLIB_mod_list_east = [
     "GM_EAST",
     "GM_EAST_WINT",
     "OPTRE_EAST",
-    "WS_FIA"
+    "WS_FIA",
+    "SOG_US",
+    "SOG_VIETCONG"
 ];

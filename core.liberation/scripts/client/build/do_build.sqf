@@ -88,8 +88,8 @@ while { true } do {
 		} else {
 			if (!([_price] call F_pay)) exitWith {};
 			_grp = group player;
-			_classname createUnit [_pos, _grp, 'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]'];
-			_unit = (units _grp) select ((count (units _grp)) -1);
+			_unit = _grp createUnit [_classname, _pos, [], 5, "NONE"];
+			[_unit] joinSilent _grp;
 			//_unit forceAddUniform (uniform player);
 			_unit setMass 10;
 			_unit setUnitRank "PRIVATE";
@@ -132,6 +132,7 @@ while { true } do {
 					if(_idx == 0) then { _unitrank = "SERGEANT"; };
 					if(_idx == 1) then { _unitrank = "CORPORAL"; };
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> dff4f14c (manage rank AI)
 					_unit = _grp createUnit [_x, _pos, [], 5, "NONE"];
 					[_unit] joinSilent _grp;
@@ -139,6 +140,10 @@ while { true } do {
 					_x createUnit [_pos, _grp, 'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]'];
 					_unit = (units _grp) select ((count (units _grp)) -1);
 >>>>>>> a7455eff (rewrite createunit)
+=======
+					_unit = _grp createUnit [_x, _pos, [], 5, "NONE"];
+					[_unit] joinSilent _grp;
+>>>>>>> e4d46842 (fix unit build order)
 					_unit setUnitRank _unitrank;
 					_unit setSkill 0.6;
 					_unit enableIRLasers true;
