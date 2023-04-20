@@ -90,7 +90,7 @@ while { true } do {
 			_grp = group player;
 			_classname createUnit [_pos, _grp, 'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]'];
 			_unit = (units _grp) select ((count (units _grp)) -1);
-			_unit forceAddUniform (uniform player);
+			//_unit forceAddUniform (uniform player);
 			_unit setMass 10;
 			_unit setUnitRank "PRIVATE";
 			_unit setSkill 0.6;
@@ -144,6 +144,7 @@ while { true } do {
 					_unit enableIRLasers true;
 					_unit enableGunLights "Auto";
 					_unit setVariable ["PAR_Grp_ID", format["AI_%1",PAR_Grp_ID], true];
+<<<<<<< HEAD
 					_unit addUniform uniform player;
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -158,6 +159,9 @@ while { true } do {
 					[_unit] call PAR_fn_AI_Damage_EH;
 >>>>>>> d5c9dc6e (fix func name)
 =======
+=======
+					//_unit forceAddUniform (uniform player);
+>>>>>>> 9a15d5bc (remove force uniform)
 					if (GRLIB_ACE_enabled) then { 
 						_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 					} else {
