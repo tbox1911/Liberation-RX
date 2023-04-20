@@ -24,7 +24,7 @@ while { GRLIB_endgame == 0 } do {
 	0 setOvercast chosen_weather;
 	0 setRain 0;
 	0 setGusts 0;
-	setWind [0, 0, true];
+	setWind [2, 2, true];
 	sleep _weathertime;
 	chosen_weather = _weathers call BIS_fnc_selectRandom;
 };
