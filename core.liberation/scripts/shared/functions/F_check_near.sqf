@@ -2,8 +2,7 @@ params ["_vehicle", "_list", "_dist", "_includeFOB"];
 
 private _ret = false;
 private _classlist = [];
-private _object = [];
-private _near = 0;
+private _near = [];
 private _vehpos = getPosATL _vehicle;
 
 if (isNil "_list") exitWith {_ret};
@@ -15,29 +14,12 @@ switch ( _list ) do {
 	case "ATM" : { _classlist = GRLIB_Marker_ATM};
 	case "FUEL" : { _classlist = GRLIB_Marker_FUEL};
 	case "REPAIR" : { _classlist = GRLIB_Marker_REPAIR};
-	case "RESPAWN" : { _object = [mobile_respawn, Respawn_truck_typename, huron_typename]};
-	case "MEDIC" : { _object = ai_healing_sources};
-	case "ARSENAL" : { _object = [Arsenal_typename]};
-	case "REAMMO" : { _object = vehicle_rearm_sources};
-	case "REAMMO_AI" : { _object = ai_resupply_sources};
+	case "RESPAWN" : { _classlist = [mobile_respawn, Respawn_truck_typename, huron_typename]};
+	case "MEDIC" : { _classlist = ai_healing_sources};
+	case "ARSENAL" : { _classlist = [Arsenal_typename]};
+	case "REAMMO" : { _classlist = vehicle_rearm_sources};
+	case "REAMMO_AI" : { _classlist = ai_resupply_sources};
 };
-
-if (count(_classlist) == 0 ) then {
-	// From Objects
-	//_near_list = (_vehpos nearEntities [_object, _dist]); //dont find tent
-	_near = [ nearestObjects [_vehpos, _object, _dist], {
-			alive _x &&
-			( typeOf _x in [Arsenal_typename] || 
-			  isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) || 
-			  !(_x getVariable ['R3F_LOG_disabled', true])
-			)
-			}] call BIS_fnc_conditionalSelect;
-} else {
-	// From GRLIB_Marker
-	_near = _classlist select {( _vehpos distance2D _x) <= _dist};
-};
-
-if (count _near > 0) then {_ret = true};
 
 // Include FOB
 if (_includeFOB) then {
@@ -45,5 +27,23 @@ if (_includeFOB) then {
 	_fobdistance = round (_vehpos distance2D _nearfob);
 	if (_fobdistance <= (_dist * 2) ) then {_ret = true};
 };
+
+if (count(_classlist) == 0) exitWith {_ret};
+
+if (typeName (_classlist select 0) == "STRING") then {
+	// From Objects classname
+	_near = [ nearestObjects [_vehpos, _classlist, _dist], {
+			alive _x &&
+			( typeOf _x in [Arsenal_typename] || 
+			  isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) || 
+			  !(_x getVariable ['R3F_LOG_disabled', true])
+			)
+			}] call BIS_fnc_conditionalSelect;
+} else {
+	// From GRLIB_Marker position
+	_near = _classlist select {( _vehpos distance2D _x) <= _dist};
+};
+
+if (count _near > 0) then {_ret = true};
 
 _ret;
