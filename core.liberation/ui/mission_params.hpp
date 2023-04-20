@@ -216,7 +216,7 @@ class Params
 	};
 	class HuronType{
 		title = $STR_PARAM_HURON_TYPE ;
-		values[] = {0,1};
+		values[] = {0,1,2};
 		texts[] = {"CH-67 Huron", "CH-49 Mohawk", "UH-80 Ghost Hawk"};
 		default = 0;
 	};
