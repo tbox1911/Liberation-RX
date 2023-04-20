@@ -67,7 +67,3 @@ disableUserInput true;
 
 cinematic_camera_started = false;
 howtoplay = 0;
-if (GRLIB_player_spawned) then {
-	uiSleep 0.5;
-	titleText ["" ,"BLACK IN", 3];
-};

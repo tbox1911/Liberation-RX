@@ -42,6 +42,5 @@ closeDialog 0;
 
 if ( howtoplay == 1 ) then {
 	[] call compileFinal preprocessFileLineNUmbers "scripts\client\ui\tutorial_manager.sqf";
+	dostartgame = 1;
 };
-[] execVM "scripts\client\spawn\redeploy_manager.sqf";
-
