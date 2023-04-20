@@ -187,8 +187,7 @@ PAR_fn_AI_Damage_EH = {
 			_veh = objectParent _unit;
 			if (!(isNull _veh) && damage _veh > 0.8) then {[_veh, _unit, true] spawn PAR_fn_eject};
 
-			private _isNotWounded = !(_unit getVariable ["PAR_wounded", false]);
-			if (_isNotWounded && _dam >= 0.86) then {
+			if (!(_unit getVariable ["PAR_wounded", false]) && _dam >= 0.86) then {
 				if (!isNull _veh) then {[_veh, _unit] spawn PAR_fn_eject};
 				_unit allowDamage false;
 				_unit setVariable ["PAR_wounded", true];
@@ -200,6 +199,7 @@ PAR_fn_AI_Damage_EH = {
 		}];
 	};
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> dfbe228e (fix disable ai revive)
 	_unit removeAllEventHandlers "Killed";
 	_unit addEventHandler ["Killed", {_this spawn PAR_fn_Killed}];
@@ -207,6 +207,14 @@ PAR_fn_AI_Damage_EH = {
 >>>>>>> c2715e0a (better death manager)
 	_unit removeAllMPEventHandlers "MPKilled";
 	_unit addMPEventHandler ["MPKilled", {_this spawn PAR_fn_death}];
+=======
+	if (GRLIB_ACE_enabled) then {
+		_unit addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
+	} else {
+		_unit removeAllMPEventHandlers "MPKilled";
+		_unit addMPEventHandler ["MPKilled", { _this spawn PAR_fn_death }];
+	};
+>>>>>>> f2284768 (fix insta kill and typo)
 	_unit setVariable ["PAR_wounded", false];
 	_unit setVariable ["PAR_myMedic", nil];
 	_unit setVariable ["PAR_busy", nil];
@@ -225,7 +233,11 @@ PAR_fn_AI_Damage_EH = {
 >>>>>>> dfbe228e (fix disable ai revive)
 =======
 	[_unit] spawn PAR_EventHandler;
+<<<<<<< HEAD
 >>>>>>> 8ba18716 (split respawn EH)
+=======
+	_unit setVariable ["PAR_EH_Installed", true];
+>>>>>>> f2284768 (fix insta kill and typo)
 };
 
 // Player Section

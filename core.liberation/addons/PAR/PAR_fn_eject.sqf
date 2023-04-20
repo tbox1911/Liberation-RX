@@ -7,7 +7,7 @@ waitUntil {sleep 0.1; (round (speed vehicle _veh) == 0 && (round(getPosATL _veh 
 
 if (_all) then {
 	_veh setVariable ["evacVeh", true];
-	{[_veh, _x] spawn PAR_unit_eject} forEach crew _veh;
+	{ if (alive _x) then { [_veh, _x] spawn PAR_unit_eject } } forEach (crew _veh);
 	//lock
 	sleep 5;
 	_veh setVariable ['evacVeh', nil];
