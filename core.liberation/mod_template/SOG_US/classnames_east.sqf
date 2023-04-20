@@ -100,15 +100,8 @@ opfor_battlegroup_vehicles = [
 	"vn_b_wheeled_m54_mg_02",
 	"vn_b_armor_m41_01_01",
 	"vn_b_wheeled_m151_mg_05",
-	"vn_b_air_oh6a_01",
-	"vn_b_air_oh6a_03",
-	"vn_b_air_oh6a_02",
-	"vn_b_air_oh6a_05",
-	"vn_b_air_ch34_03_01",
 	"vn_b_air_ch34_04_03",
 	"vn_b_air_uh1d_02_02",
-	"vn_b_air_uh1c_04_02",
-	"vn_b_air_uh1c_02_02",
 	"vn_b_wheeled_m54_01",
 	"vn_b_wheeled_m54_02"
 ];
@@ -119,20 +112,15 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"vn_b_wheeled_m151_mg_03",
 	"vn_b_wheeled_m54_01",
 	"vn_b_wheeled_m54_02",
-	"vn_b_air_oh6a_01",
-	"vn_b_air_ch34_03_01",
 	"vn_b_air_uh1d_02_02"
 ];
 
-opfor_troup_transports = [
-	"vn_b_air_oh6a_01",
-	"vn_b_air_ch34_03_01",
-	"vn_b_air_uh1d_02_02",
+opfor_troup_transports_truck = [
 	"vn_b_wheeled_m54_02",
 	"vn_b_wheeled_m54_01"
 ];
 
-opfor_choppers = [
+opfor_troup_transports_heli = [
 	"vn_b_air_oh6a_01",
 	"vn_b_air_ch34_03_01",
 	"vn_b_air_uh1d_02_02"
@@ -151,12 +139,7 @@ opfor_air = [
 ];
 
 opfor_statics = [
-	"vn_b_army_static_m60_low",
-	"vn_b_army_static_m60_high",
-	"vn_b_army_static_m1919a6",
-	"vn_b_army_static_m1919a4_low",
 	"vn_b_army_static_m1919a4_high",
-	"vn_b_army_static_m2_low",
 	"vn_b_army_static_m2_high",
 	"vn_b_army_static_m45",
 	"vn_b_army_static_tow",
@@ -221,4 +204,15 @@ opfor_recyclable = [
 	["vn_b_air_ah1g_10_usmc",12,round (850 / GRLIB_recycling_percentage),26],
 	//
 	["vn_b_air_f4c_chico",16,round (1500 / GRLIB_recycling_percentage),30]
+];
+
+box_transport_config_east = [
+    [ "vn_b_wheeled_m54_02_sog", -6.5, [0, -0.8, 0.2], [0, -2.5, 0.2] ],
+    [ "vn_b_wheeled_m54_01", -6.5, [0, -0.9, 0.2], [0, -2.6, 0.2] ],
+    [ "vn_b_wheeled_m54_02", -6.5, [0, -0.8, 0.2], [0, -2.5, 0.2] ],
+    [ "vn_b_wheeled_m54_mg_01", -6.5, [-0.3, -0.3, -0.4] ],
+    [ "vn_b_wheeled_m54_mg_03", -6.5, [-0.3, -0.3, -0.4] ],
+    [ "vn_b_air_uh1d_02_02", 10, [-0.1, 2.65, -1.2] ],
+    [ "vn_b_boat_06_01", 25, [2.2, -8.5, 0.5], [-2.2, -8.5, 0.5] ],
+    [ "vn_b_boat_05_01", 25, [2.2, -8.5, 0.5], [-2.2, -8.5, 0.5] ]
 ];

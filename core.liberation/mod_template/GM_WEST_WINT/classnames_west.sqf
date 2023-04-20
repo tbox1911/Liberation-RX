@@ -139,8 +139,7 @@ buildings_west = [
 	["gm_flag_GE",0,0,0,0]
 ];
 
-if ( isNil "blufor_squad_inf_light" ) then { blufor_squad_inf_light = [] };
-if ( count blufor_squad_inf_light == 0 ) then { blufor_squad_inf_light = [
+blufor_squad_inf_light = [
 	"gm_ge_army_sf_squadleader_mp5sd3_p2a1_80_win",
 	"gm_ge_army_medic_g3a3_80_win",
 	"gm_ge_army_sf_marksman_g3a3_80_win",
@@ -149,10 +148,8 @@ if ( count blufor_squad_inf_light == 0 ) then { blufor_squad_inf_light = [
 	"gm_ge_army_sf_rifleman_g3a4_80_win",		
 	"gm_ge_army_sf_rifleman_g3a4_80_win",
 	"gm_ge_army_sf_rifleman_g3a4_80_win"
-	];
-};
-if ( isNil "blufor_squad_inf" ) then { blufor_squad_inf = [] };
-if ( count blufor_squad_inf == 0 ) then { blufor_squad_inf = [
+];
+blufor_squad_inf = [
 	"gm_ge_army_sf_squadleader_mp5sd3_p2a1_80_win",
 	"gm_ge_army_medic_g3a3_80_win",
 	"gm_ge_army_sf_antitank_mp5a2_pzf84_80_win",
@@ -164,48 +161,39 @@ if ( count blufor_squad_inf == 0 ) then { blufor_squad_inf = [
 	"gm_ge_army_sf_rifleman_mp5a3_80_win",
 	"gm_ge_army_sf_rifleman_mp5a3_80_win",
 	"gm_ge_army_sf_rifleman_mp5a3_80_win"
-	];
-};
-if ( isNil "blufor_squad_at" ) then { blufor_squad_at = [] };
-if ( count blufor_squad_at == 0 ) then { blufor_squad_at = [
+];
+blufor_squad_at = [
 	"gm_ge_army_sf_squadleader_mp5sd3_p2a1_80_win",
 	"gm_ge_army_medic_g3a3_80_win",
 	"gm_ge_army_sf_antitank_mp5a2_pzf84_80_win",
 	"gm_ge_army_sf_antitank_mp5a2_pzf84_80_win",
 	"gm_ge_army_sf_antitank_mp5a3_milan_80_win",
 	"gm_ge_army_sf_rifleman_mp5a3_80_win"
-	];
-};
-if ( isNil "blufor_squad_aa" ) then { blufor_squad_aa = [] };
-if ( count blufor_squad_aa == 0 ) then { blufor_squad_aa = [
+];
+blufor_squad_aa = [
 	"gm_ge_army_sf_squadleader_mp5sd3_p2a1_80_win",
 	"gm_ge_army_medic_g3a3_80_win",
 	"gm_ge_army_sf_antiair_mp5a3_fim43_80_win",
 	"gm_ge_army_sf_antiair_mp5a3_fim43_80_win",
 	"gm_ge_army_sf_antiair_mp5a3_fim43_80_win",
 	"gm_ge_army_sf_rifleman_mp5a3_80_win"
-	];
-};
-if ( isNil "blufor_squad_mix" ) then { blufor_squad_mix = [] };
-if ( count blufor_squad_mix == 0 ) then { blufor_squad_mix = [
+];
+blufor_squad_mix = [
 	"gm_ge_army_sf_squadleader_mp5sd3_p2a1_80_win",
 	"gm_ge_army_medic_g3a3_80_win",
 	"gm_ge_army_sf_antiair_mp5a3_fim43_80_win",
 	"gm_ge_army_sf_antitank_mp5a2_pzf84_80_win",
 	"gm_ge_army_sf_rifleman_g3a4_80_win",
 	"gm_ge_army_sf_rifleman_g3a4_80_win"
-	];
-};
-if ( isNil "blufor_squad_recon" ) then { blufor_squad_recon = [] };
-if ( count blufor_squad_recon == 0 ) then { blufor_squad_recon = [
+];
+blufor_squad_recon = [
 	"gm_ge_army_sf_squadleader_mp5sd3_p2a1_80_win",
 	"gm_ge_army_medic_g3a3_80_win",
 	"gm_ge_army_sf_marksman_g3a3_80_win",
 	"gm_ge_army_sf_antitank_mp5a2_pzf84_80_win",
 	"gm_ge_army_sf_rifleman_g3a4_80_win",
 	"gm_ge_army_sf_rifleman_g3a4_80_win"
-	];
-};
+];
 
 squads = [
 	[blufor_squad_inf_light,10,300,0,GRLIB_perm_max],

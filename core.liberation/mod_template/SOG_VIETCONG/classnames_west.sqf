@@ -22,11 +22,16 @@ commander_classname = "vn_o_men_nva_15";
 pilot_classname = "vn_o_men_aircrew_01";
 crewman_classname = "vn_o_men_nva_41";
 Arsenal_typename = "Land_vn_pavn_weapons_stack3";
-waterbarrel_typename = "Land_vn_waterbottle_01_stack_f";
-fuelbarrel_typename = "Land_vn_b_prop_fueldrum_03";
-foodbarrel_typename = "Land_vn_sacks_goods_f";
 PAR_Medikit = "vn_o_item_medikit_01";
 PAR_AidKit = "vn_o_item_firstaidkit";
+//GRLIB_sar_wreck = "Land_Wreck_Heli_Attack_01_F"
+waterbarrel_typename = "Land_WaterBottle_01_stack_F";
+fuelbarrel_typename = "Land_vn_metalbarrel_f";
+foodbarrel_typename = "Land_vn_sacks_goods_f";
+chimera_vehicle_overide = [
+  ["B_Heli_Light_01_F",  "vn_b_air_oh6a_01"],
+  ["B_Heli_Transport_01_F", "vn_b_air_uh1d_02_04"]
+];
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 infantry_units = [
@@ -50,7 +55,12 @@ units_loadout_overide = [
 ];
 
 LOADOUT_fixed_price = [
-  //["launch_o_vorona_brown_f" , 200]
+  //["launch_o_vorona_brown_f" , 200],
+  ["vn_sa7_mag" , 6],
+  ["vn_sa7b_mag" , 6],
+  ["vn_m72_mag" , 3],
+  ["vn_rpg2_mag" , 3],
+  ["vn_rpg7_mag" , 3]
 ];
 
 LOADOUT_expensive_items = [
@@ -86,12 +96,12 @@ light_vehicles = [
 	["vn_o_wheeled_btr40_mg_02_nva65",3,100,2,GRLIB_perm_log],
 	["vn_o_wheeled_z157_01_nva65",3,100,3,GRLIB_perm_log],
 	["vn_o_wheeled_z157_02_nva65",4,150,4,GRLIB_perm_tank],
-	["vn_o_wheeled_z157_mg_01_nva65",4,150,4,GRLIB_perm_tank],
-	["vn_o_wheeled_btr40_mg_03_nva65",10,500,6,GRLIB_perm_air],
-	["vn_o_wheeled_z157_mg_02_nva65",10,650,8,GRLIB_perm_air]
+	["vn_o_wheeled_z157_mg_01_nva65",4,150,4,GRLIB_perm_tank]
 ];
 
 heavy_vehicles = [
+	["vn_o_wheeled_btr40_mg_03_nva65",10,500,6,GRLIB_perm_air],
+	["vn_o_wheeled_z157_mg_02_nva65",10,650,8,GRLIB_perm_air],
 	["vn_o_armor_type63_01_nva65",20,1500,25,GRLIB_perm_max]
 ];
 
@@ -153,27 +163,25 @@ buildings_west = [
 	["Land_vn_o_bunker_04",0,0,0,GRLIB_perm_log],
 	["Land_vn_o_platform_06",0,0,0,GRLIB_perm_log],
 	["Land_vn_fence_bamboo_02",0,0,0,0],
-	["Land_vn_fence_punji_01_10",0,0,0,0],
+	["Land_vn_fence_bamboo_02_gate",0,0,0,0],
+	["Land_vn_fence_punji_01_10",0,0,0,GRLIB_perm_log],
 	["Land_vn_o_trench_firing_01",0,0,0,0],
-	["Land_vn_wf_field_hospital_east",0,0,0,0],
+	["Land_vn_wf_field_hospital_east",0,0,0,GRLIB_perm_inf],
 	["vn_banner_pavn",0,0,0,0],
 	["vn_flag_pavn",0,0,0,0],
 	["Land_vn_o_bunker_02",0,0,0,0],
 	["Land_vn_o_shelter_05",0,0,0,0]
 ];
 
-if ( isNil "blufor_squad_inf_light" ) then { blufor_squad_inf_light = [] };
-if ( count blufor_squad_inf_light == 0 ) then { blufor_squad_inf_light = [
+blufor_squad_inf_light = [
 	"vn_o_men_nva_15",
 	"vn_o_men_nva_22",
 	"vn_o_men_nva_21",
 	"vn_o_men_nva_25",
 	"vn_o_men_nva_28",
 	"vn_o_men_nva_19"
-	];
-};
-if ( isNil "blufor_squad_inf" ) then { blufor_squad_inf = [] };
-if ( count blufor_squad_inf == 0 ) then { blufor_squad_inf = [
+];
+blufor_squad_inf = [
 	"vn_o_men_nva_15",
 	"vn_o_men_nva_22",
 	"vn_o_men_nva_17",
@@ -183,48 +191,39 @@ if ( count blufor_squad_inf == 0 ) then { blufor_squad_inf = [
 	"vn_o_men_nva_24",
 	"vn_o_men_nva_19",
 	"vn_o_men_nva_19"
-	];
-};
-if ( isNil "blufor_squad_at" ) then { blufor_squad_at = [] };
-if ( count blufor_squad_at == 0 ) then { blufor_squad_at = [
+];
+blufor_squad_at = [
 	"vn_o_men_nva_15",
 	"vn_o_men_nva_22",
 	"vn_o_men_nva_28",
 	"vn_o_men_nva_28",
 	"vn_o_men_nva_19",
 	"vn_o_men_nva_19"
-	];
-};
-if ( isNil "blufor_squad_aa" ) then { blufor_squad_aa = [] };
-if ( count blufor_squad_aa == 0 ) then { blufor_squad_aa = [
+];
+blufor_squad_aa = [
 	"vn_o_men_nva_15",
 	"vn_o_men_nva_22",
 	"vn_o_men_nva_44",
 	"vn_o_men_nva_44",
 	"vn_o_men_nva_19",
 	"vn_o_men_nva_19"
-	];
-};
-if ( isNil "blufor_squad_mix" ) then { blufor_squad_mix = [] };
-if ( count blufor_squad_mix == 0 ) then { blufor_squad_mix = [
+];
+blufor_squad_mix = [
 	"vn_o_men_nva_15",
 	"vn_o_men_nva_22",
 	"vn_o_men_nva_28",
 	"vn_o_men_nva_44",
 	"vn_o_men_nva_19",
 	"vn_o_men_nva_19"
-	];
-};
-if ( isNil "blufor_squad_recon" ) then { blufor_squad_recon = [] };
-if ( count blufor_squad_recon == 0 ) then { blufor_squad_recon = [
+];
+blufor_squad_recon = [
 	"vn_o_men_vc_01",
 	"vn_o_men_vc_08",
 	"vn_o_men_vc_10",
 	"vn_o_men_vc_11",
 	"vn_o_men_vc_14",
 	"vn_o_men_vc_04"
-	];
-};
+];
 
 squads = [
 	[blufor_squad_inf_light,15,400,0,GRLIB_perm_max],
@@ -255,7 +254,19 @@ vehicle_big_units_west = [
 ];
 
 GRLIB_vehicle_whitelist_west = [
-
+    "Land_vn_o_tower_02",
+	"Land_vn_o_bunker_03",
+	"Land_vn_o_bunker_04",
+	"Land_vn_o_platform_06",
+	"Land_vn_fence_bamboo_02",
+	"Land_vn_fence_bamboo_02_gate",
+	"Land_vn_fence_punji_01_10",
+	"Land_vn_o_trench_firing_01",
+	"Land_vn_wf_field_hospital_east",
+	"vn_banner_pavn",
+	"vn_flag_pavn",
+	"Land_vn_o_bunker_02",
+	"Land_vn_o_shelter_05"
 ];
 
 GRLIB_vehicle_blacklist_west = [

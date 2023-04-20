@@ -38,6 +38,17 @@ while { GRLIB_endgame == 0 } do {
 				}];
 				_civ_veh addEventHandler ["Fuel", { if (!(_this select 1)) then {(_this select 0) setFuel 1}}];
 				_civ_veh allowCrewInImmobile true;
+				[_civ_veh] spawn {
+					params ["_vehicle"];
+					while { alive _vehicle } do {
+						// Correct static position
+						if ((vectorUp _vehicle) select 2 < 0.70) then {
+							_vehicle setpos [(getposATL _vehicle) select 0, (getposATL _vehicle) select 1, 0.5];
+							_vehicle setVectorUp surfaceNormal position _vehicle;
+						};
+						sleep 5;
+					};
+				};
 				[_grp] call add_civ_waypoints;
 			};
 			

@@ -16,7 +16,7 @@ for "_i" from 1 to _planes_number do {
 	_newvehicle = [markerpos _air_spawnpoint, selectRandom _planeType] call F_libSpawnVehicle;
 	(crew _newvehicle) joinSilent _air_grp;
 	{_x addBackpack "B_Parachute"} forEach (crew _newvehicle);
-	diag_log format [ "Spawning Air vehicle %1 at %2", typeOf _newvehicle, time ];
+	diag_log format [ "Spawn Air vehicle %1 at %2", typeOf _newvehicle, time ];
 	sleep 5;
 };
 

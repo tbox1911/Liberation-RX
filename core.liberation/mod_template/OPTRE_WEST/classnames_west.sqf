@@ -130,18 +130,15 @@ buildings_west = [
 	["Flag_NATO_F",0,0,0,0]
 ];
 
-if ( isNil "blufor_squad_inf_light" ) then { blufor_squad_inf_light = [] };
-if ( count blufor_squad_inf_light == 0 ) then { blufor_squad_inf_light = [
+blufor_squad_inf_light = [
 	"OPTRE_UNSC_Marine_Soldier_SquadLead",
 	"OPTRE_UNSC_Marine_Soldier_Breacher",
 	"OPTRE_UNSC_Marine_Soldier_Grenadier",
 	"OPTRE_UNSC_Marine_Soldier_Autorifleman",
 	"OPTRE_UNSC_Marine_Soldier_Rifleman_BR",
 	"OPTRE_UNSC_Marine_Soldier_Rifleman_AR"
-	];
-};
-if ( isNil "blufor_squad_inf" ) then { blufor_squad_inf = [] };
-if ( count blufor_squad_inf == 0 ) then { blufor_squad_inf = [
+];
+blufor_squad_inf = [
 	"OPTRE_UNSC_Marine_Soldier_SquadLead",
 	"OPTRE_UNSC_Marine_Soldier_Rifleman_BR",
 	"OPTRE_UNSC_Marine_Soldier_Autorifleman",
@@ -149,40 +146,32 @@ if ( count blufor_squad_inf == 0 ) then { blufor_squad_inf = [
 	"OPTRE_UNSC_Marine_Soldier_Grenadier",
 	"OPTRE_UNSC_Marine_Soldier_Breacher",
 	"OPTRE_UNSC_Marine_Soldier_Sniper"
-	];
-};
-if ( isNil "blufor_squad_at" ) then { blufor_squad_at = [] };
-if ( count blufor_squad_at == 0 ) then { blufor_squad_at = [
+];
+blufor_squad_at = [
 	"OPTRE_UNSC_Marine_Soldier_SquadLead",
 	"OPTRE_UNSC_Marine_Soldier_AT_Specialist",
 	"OPTRE_UNSC_Marine_Soldier_AT_Specialist",
 	"OPTRE_UNSC_Marine_Soldier_AT_Specialist",
 	"OPTRE_UNSC_Marine_Soldier_Rifleman_BR",
 	"OPTRE_UNSC_Marine_Soldier_Rifleman_AR"
-	];
-};
-if ( isNil "blufor_squad_aa" ) then { blufor_squad_aa = [] };
-if ( count blufor_squad_aa == 0 ) then { blufor_squad_aa = [
+];
+blufor_squad_aa = [
 	"OPTRE_UNSC_Marine_Soldier_SquadLead",
 	"OPTRE_UNSC_Marine_Soldier_AA_Specialist",
 	"OPTRE_UNSC_Marine_Soldier_AA_Specialist",
 	"OPTRE_UNSC_Marine_Soldier_AA_Specialist",
 	"OPTRE_UNSC_Marine_Soldier_Rifleman_BR",
 	"OPTRE_UNSC_Marine_Soldier_Rifleman_AR"
-	];
-};
-if ( isNil "blufor_squad_mix" ) then { blufor_squad_mix = [] };
-if ( count blufor_squad_mix == 0 ) then { blufor_squad_mix = [
+];
+blufor_squad_mix = [
 	"OPTRE_UNSC_Marine_Soldier_SquadLead",
 	"OPTRE_UNSC_Marine_Soldier_TeamLead",
 	"OPTRE_UNSC_Marine_Soldier_AA_Specialist",
 	"OPTRE_UNSC_Marine_Soldier_AT_Specialist",
 	"OPTRE_UNSC_Marine_Soldier_Rifleman_BR",
 	"OPTRE_UNSC_Marine_Soldier_Rifleman_AR"
-	];
-};
-if ( isNil "blufor_squad_recon" ) then { blufor_squad_recon = [] };
-if ( count blufor_squad_recon == 0 ) then { blufor_squad_recon = [
+];
+blufor_squad_recon = [
 	"OPTRE_UNSC_Marine_Soldier_SquadLead",
 	"OPTRE_UNSC_Marine_Soldier_ForwardObserver",
 	"OPTRE_UNSC_Marine_Soldier_Autorifleman",
@@ -190,8 +179,7 @@ if ( count blufor_squad_recon == 0 ) then { blufor_squad_recon = [
 	"OPTRE_UNSC_Marine_Soldier_Marksman",
 	"OPTRE_UNSC_Marine_Soldier_Marksman",
 	"OPTRE_UNSC_Marine_Soldier_Marksman"
-	];
-};
+];
 
 squads = [
 	[blufor_squad_inf_light,10,300,0,GRLIB_perm_max],

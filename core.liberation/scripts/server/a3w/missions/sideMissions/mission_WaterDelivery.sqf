@@ -53,9 +53,9 @@ _waitUntilSuccessCondition = {
 	_ret = false;
 	private _barrels = [_man1 nearEntities [waterbarrel_typename, 20], {isNil {_x getVariable "R3F_LOG_objets_charges"} && !(_x getVariable ['R3F_LOG_disabled', false])}] call BIS_fnc_conditionalSelect;
 	if (count _barrels == 3) then {
+		sleep 1;
 		[_missionType, _man1] remoteExec ["remote_call_a3w_info", 0];
-		{ _x setVariable ["R3F_LOG_disabled", true, true] } forEach _barrels;
-		{ sleep 1; deleteVehicle _x } forEach _barrels;
+		{ deleteVehicle _x } forEach _barrels;
 		_ret = true;
 	};
 	_ret;

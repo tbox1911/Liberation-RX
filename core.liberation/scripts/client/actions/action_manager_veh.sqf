@@ -77,5 +77,7 @@ while { true } do {
 		_unit setVariable ["GRLIB_dead_action", true];
 	} forEach _neardead;
 
+	// Object WeaponHolderSimulated can't have zero or negative mass!
+	{ if (round (getMass _x) <= 0) then { _x setMass 1 } } forEach (entities "WeaponHolderSimulated");
 	sleep 6;
 };

@@ -5,9 +5,11 @@ params ["_type", "_pos", "_locked"];
 
 private _spawnpos = zeropos;
 private _max_try = 10;
+private _radius = 30;
 
 while { (_spawnpos isEqualTo zeropos) && _max_try > 0 } do {
-	_spawnpos = [_pos, 0, 20, 3, 1, 0.25, 0, [], [zeropos, zeropos]] call BIS_fnc_findSafePos;
+	_spawnpos = [_pos, 0, _radius, 3, 1, 0.25, 0, [], [zeropos, zeropos]] call BIS_fnc_findSafePos;
+	_radius = _radius + 10;
 	_max_try = _max_try - 1;
 };
 _spawnpos set [2, 0.5];

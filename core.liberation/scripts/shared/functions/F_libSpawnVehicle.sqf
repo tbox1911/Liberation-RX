@@ -6,7 +6,7 @@ params [
 	[ "_civilian", false]
 ];
 
-diag_log format [ "Spawning vehicle %1 at %2", _classname , time ];
+diag_log format [ "Spawn vehicle %1 at %2", _classname , time ];
 
 private _newvehicle = objNull;
 private _spawnpos = zeropos;

@@ -1,4 +1,4 @@
-diag_log format [ "Spawning cargopost squad at %1", time ];
+diag_log format [ "Spawn cargopost squad at %1", time ];
 
 params [ "_squadpos" ];
 private [ "_spawned_units_local", "_allposts", "_grp", "_building_positions", "_unitclasspost", "_unit", "_totalx2", "_totaly2", "_avgx2", "_avgy2", "_vd2", "_newdir2" ];

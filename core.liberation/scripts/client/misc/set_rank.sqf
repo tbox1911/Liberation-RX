@@ -4,7 +4,14 @@ private _score = score _unit;
 private _rank = "Private";
 GRLIB_squad_size_bonus = 0;
 
-if ((_score >=  0) && (_score < GRLIB_perm_inf)) then {_rank = "Private"};
+if ((_score >= GRLIB_perm_ban) && (_score < GRLIB_perm_min)) then {
+	_rank = "None"; 
+	GRLIB_squad_size_bonus = 0;
+};
+if ((_score >= GRLIB_perm_min) && (_score < GRLIB_perm_inf)) then {
+	_rank = "Private";
+	GRLIB_squad_size_bonus = 0;
+};
 if ((_score >= GRLIB_perm_inf) && (_score < GRLIB_perm_log)) then {
 	_rank = "Corporal";
 	GRLIB_squad_size_bonus = 1;
@@ -33,7 +40,7 @@ if ( (GRLIB_squad_size + GRLIB_squad_size_bonus) > GRLIB_max_squad_size) then {
 	GRLIB_squad_size_bonus = (GRLIB_max_squad_size - GRLIB_squad_size);
 };
 
-_unit setUnitRank _rank;
+if (_rank != "None") then { _unit setUnitRank _rank };
 _unit setVariable ["GRLIB_Rank", _rank, true];
 _unit addRating 1000;
 _rank;

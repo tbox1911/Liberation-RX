@@ -131,7 +131,7 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"rhs_pchela1t_vvsc"
 ];
 
-opfor_troup_transports = [
+opfor_troup_transports_truck = [
 	"rhs_btr80a_msv",
 	"rhs_bmd4_vdv",
 	"rhs_bmd2",
@@ -145,7 +145,7 @@ opfor_troup_transports = [
 	"RHS_Mi8AMTSh_UPK23_vvsc"
 ];
 
-opfor_choppers = [
+opfor_troup_transports_heli = [
 	"RHS_Mi24P_CAS_vdv",
 	"RHS_Mi24V_UPK23_vdv",
 	"RHS_Mi8AMT_vdv",

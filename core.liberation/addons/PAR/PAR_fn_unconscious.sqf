@@ -63,11 +63,11 @@ sleep 8;
       [[_target, _caller], {
         if (isDedicated) exitWith {};
         if (!isNil "GRLIB_player_spawned") then {
-           if (GRLIB_player_spawned) then {
+          if (GRLIB_player_spawned) then {
             [(_this select 0),(_this select 1)] call PAR_fn_sortie;
-           };
-         };
-        }] remoteExec ["bis_fnc_call", 0];
+          };
+        };
+      }] remoteExec ["bis_fnc_call", 0];
     };
   },
   {

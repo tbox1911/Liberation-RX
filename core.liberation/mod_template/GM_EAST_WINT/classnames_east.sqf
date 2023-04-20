@@ -149,7 +149,7 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"gm_gc_army_ural4320_cargo"
 ];
 
-opfor_troup_transports = [
+opfor_troup_transports_truck = [
 	"gm_gc_army_btr60pu12",
 	"gm_gc_army_ural4320_cargo",
 	"gm_gc_bgs_ural4320_cargo",
@@ -158,7 +158,7 @@ opfor_troup_transports = [
 	"gm_gc_airforce_l410t"
 ];
 
-opfor_choppers = [
+opfor_troup_transports_heli = [
 	"gm_gc_airforce_mi2p",
 	"gm_gc_airforce_mi2t",
 	"gm_gc_airforce_l410t"

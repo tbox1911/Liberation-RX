@@ -137,18 +137,15 @@ buildings_west = [
 	["Flag_UNO_F",0,0,0,0]
 ];
 
-if ( isNil "blufor_squad_inf_light" ) then { blufor_squad_inf_light = [] };
-if ( count blufor_squad_inf_light == 0 ) then { blufor_squad_inf_light = [
+blufor_squad_inf_light = [
 	"R3F_APSO_SOUSOFF_BLUFOR",
 	"R3F_APSO_MEDIC_BLUFOR",
 	"R3F_FANTASSIN_600_BLUFOR",
 	"R3F_FANTASSIN_MG_BLUFOR",
 	"R3F_FANTASSIN_300_BLUFOR",
 	"R3F_FANTASSIN_300_BLUFOR"
-	];
-};
-if ( isNil "blufor_squad_inf" ) then { blufor_squad_inf = [] };
-if ( count blufor_squad_inf == 0 ) then { blufor_squad_inf = [
+];
+blufor_squad_inf = [
 	"R3F_APSO_SOUSOFF_BLUFOR",
 	"R3F_APSO_MEDIC_BLUFOR",
 	"R3F_URR_OBS_BLUFOR",
@@ -158,30 +155,24 @@ if ( count blufor_squad_inf == 0 ) then { blufor_squad_inf = [
 	"R3F_FANTASSIN_TP_BLUFOR",
 	"R3F_FANTASSIN_300_BLUFOR",
 	"R3F_FANTASSIN_300_BLUFOR"
-	];
-};
-if ( isNil "blufor_squad_at" ) then { blufor_squad_at = [] };
-if ( count blufor_squad_at == 0 ) then { blufor_squad_at = [
+];
+blufor_squad_at = [
 	"R3F_APSO_SOUSOFF_BLUFOR",
 	"R3F_APSO_MEDIC_BLUFOR",
 	"R3F_CDE600_APSO_AF_BLUFOR",
 	"R3F_CDE600_APSO_AF_BLUFOR",
 	"R3F_FANTASSIN_300_BLUFOR",
 	"R3F_FANTASSIN_300_BLUFOR"
-	];
-};
-if ( isNil "blufor_squad_aa" ) then { blufor_squad_aa = [] };
-if ( count blufor_squad_aa == 0 ) then { blufor_squad_aa = [
+];
+blufor_squad_aa = [
 	"R3F_APSO_SOUSOFF_BLUFOR",
 	"R3F_APSO_MEDIC_BLUFOR",
 	"B_W_Soldier_AA_F",
 	"B_W_Soldier_AA_F",
 	"R3F_FANTASSIN_300_BLUFOR",
 	"R3F_FANTASSIN_300_BLUFOR"
-	];
-};
-if ( isNil "blufor_squad_mix" ) then { blufor_squad_mix = [] };
-if ( count blufor_squad_mix == 0 ) then { blufor_squad_mix = [
+];
+blufor_squad_mix = [
 	"R3F_APSO_SOUSOFF_BLUFOR",
 	"R3F_APSO_MEDIC_BLUFOR",
 	"B_W_Soldier_AA_F",
@@ -191,10 +182,8 @@ if ( count blufor_squad_mix == 0 ) then { blufor_squad_mix = [
 	"R3F_FANTASSIN_TP_BLUFOR",
 	"R3F_FANTASSIN_600_BLUFOR",
 	"R3F_FANTASSIN_MG_BLUFOR_DA"
-	];
-};
-if ( isNil "blufor_squad_recon" ) then { blufor_squad_recon = [] };
-if ( count blufor_squad_recon == 0 ) then { blufor_squad_recon = [
+];
+blufor_squad_recon = [
 	"R3F_CQB_O",
 	"R3F_CQB_1",
 	"R3F_CQB_2",
@@ -202,8 +191,7 @@ if ( count blufor_squad_recon == 0 ) then { blufor_squad_recon = [
 	"R3F_CQB_MEDIC",
 	"R3F_CQB_1",
 	"R3F_CQB_1"
-	];
-};
+];
 
 squads = [
 	[blufor_squad_inf_light,10,400,0,GRLIB_perm_max],

@@ -483,8 +483,8 @@ opfor_vehicles = [ opfor_vehicles , { [ _x ] call F_checkClass } ]  call BIS_fnc
 opfor_vehicles_low_intensity = [ opfor_vehicles_low_intensity , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
 opfor_battlegroup_vehicles = [ opfor_battlegroup_vehicles , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
 opfor_battlegroup_vehicles_low_intensity = [ opfor_battlegroup_vehicles_low_intensity , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
-opfor_troup_transports = [ opfor_troup_transports , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
-opfor_choppers = [ opfor_choppers , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
+opfor_troup_transports_truck = [ opfor_troup_transports_truck , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
+opfor_troup_transports_heli = [ opfor_troup_transports_heli , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
 opfor_air = [ opfor_air , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
 civilians = [ civilians , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
 civilian_vehicles = [ civilian_vehicles , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
@@ -515,8 +515,9 @@ opfor_squad_8_infkillers = [
 	opfor_machinegunner,
 	opfor_heavygunner,
 	opfor_marksman,
-	opfor_sharpshooter,
 	opfor_sniper,
+	opfor_rifleman,
+	opfor_rifleman,
 	opfor_rpg
 ];
 opfor_squad_8_tankkillers = [
@@ -534,15 +535,15 @@ opfor_squad_8_airkillers = [
 	opfor_medic,
 	opfor_machinegunner,
 	opfor_rpg,
-	opfor_rpg,
+	opfor_aa,
 	opfor_aa,
 	opfor_aa,
 	opfor_aa
 ];
 all_resistance_troops = [] + militia_squad;
-all_hostile_classnames = (land_vehicles_classnames + opfor_air + opfor_choppers + opfor_troup_transports + opfor_vehicles_low_intensity + opfor_statics + boats_east);
+all_hostile_classnames = (land_vehicles_classnames + opfor_air + opfor_troup_transports_heli + opfor_troup_transports_truck + opfor_vehicles_low_intensity + opfor_statics + boats_east);
 { land_vehicles_classnames pushback (_x select 0); } foreach (heavy_vehicles + light_vehicles);
-air_vehicles_classnames = [] + opfor_choppers;
+air_vehicles_classnames = [] + opfor_troup_transports_heli;
 { air_vehicles_classnames pushback (_x select 0); } foreach air_vehicles;
 markers_reset = [99999,99999,0];
 zeropos = [0,0,0];
@@ -590,9 +591,6 @@ GRLIB_ignore_colisions = [
  	"Land_PowLine_wire_A_left_EP1",
  	"Land_PowLine_wire_A_right_EP1"
 ];
-
-GRLIB_sar_wreck = "Land_Wreck_Heli_Attack_01_F";
-GRLIB_sar_fire = "test_EmptyObjectForFireBig";
 
 // Ammobox you want keep contents
 GRLIB_Ammobox_keep = [

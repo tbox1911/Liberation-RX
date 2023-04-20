@@ -176,18 +176,15 @@ buildings_west = [
 	["SignM_FOB_Revolve_EP1",0,0,0,0]
 ];
 
-if ( isNil "blufor_squad_inf_light" ) then { blufor_squad_inf_light = [] };
-if ( count blufor_squad_inf_light == 0 ) then { blufor_squad_inf_light = [
+blufor_squad_inf_light = [
 	"CUP_B_USMC_Soldier_SL",
 	"CUP_B_USMC_Medic",
 	"CUP_B_USMC_Soldier",
 	"CUP_B_USMC_Soldier_LAT",
 	"CUP_B_USMC_Soldier_AR",
 	"CUP_B_USMC_Soldier_GL"
-	];
-};
-if ( isNil "blufor_squad_inf" ) then { blufor_squad_inf = [] };
-if ( count blufor_squad_inf == 0 ) then { blufor_squad_inf = [
+];
+blufor_squad_inf = [
 	"CUP_B_USMC_Soldier_SL",
 	"CUP_B_USMC_Medic",
 	"CUP_B_USMC_Soldier",
@@ -197,48 +194,39 @@ if ( count blufor_squad_inf == 0 ) then { blufor_squad_inf = [
 	"CUP_B_USMC_Soldier_AR",
 	"CUP_B_USMC_Soldier_Marksman",
 	"CUP_B_USMC_Soldier"
-	];
-};
-if ( isNil "blufor_squad_at" ) then { blufor_squad_at = [] };
-if ( count blufor_squad_at == 0 ) then { blufor_squad_at = [
+];
+blufor_squad_at = [
 	"CUP_B_USMC_Soldier_SL",
 	"CUP_B_USMC_Medic",
 	"CUP_B_USMC_Soldier",
 	"CUP_B_USMC_Soldier",
 	"CUP_B_USMC_Soldier_AT",
 	"CUP_B_USMC_Soldier_HAT"
-	];
-};
-if ( isNil "blufor_squad_aa" ) then { blufor_squad_aa = [] };
-if ( count blufor_squad_aa == 0 ) then { blufor_squad_aa = [
+];
+blufor_squad_aa = [
 	"CUP_B_USMC_Soldier_SL",
 	"CUP_B_USMC_Medic",
 	"CUP_B_USMC_Soldier",
 	"CUP_B_USMC_Soldier",
 	"CUP_B_USMC_Soldier_AA",
 	"CUP_B_USMC_Soldier_AA"
-	];
-};
-if ( isNil "blufor_squad_mix" ) then { blufor_squad_mix = [] };
-if ( count blufor_squad_mix == 0 ) then { blufor_squad_mix = [
+];
+blufor_squad_mix = [
 	"CUP_B_USMC_Soldier_SL",
 	"CUP_B_USMC_Medic",
 	"CUP_B_USMC_Soldier",
 	"CUP_B_USMC_Soldier",
 	"CUP_B_USMC_Soldier_AA",
 	"CUP_B_USMC_Soldier_AT"
-	];
-};
-if ( isNil "blufor_squad_recon" ) then { blufor_squad_recon = [] };
-if ( count blufor_squad_recon == 0 ) then { blufor_squad_recon = [
+];
+blufor_squad_recon = [
 	"CUP_B_USMC_MARSOC_TL_DA",
 	"CUP_B_USMC_MARSOC_Medic_DA",
 	"CUP_B_USMC_MARSOC_Marksman_DA",
 	"CUP_B_USMC_MARSOC_DA",
 	"CUP_B_USMC_MARSOC_EL_DA",
 	"CUP_B_USMC_MARSOC_CC_DA"
-	];
-};
+];
 
 squads = [
 	[blufor_squad_inf_light,15,400,0,GRLIB_perm_max],

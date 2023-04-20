@@ -136,7 +136,7 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"ffaa_et_lince_lag40"
 ];
 
-opfor_troup_transports = [
+opfor_troup_transports_truck = [
 	"ffaa_et_m250_carga_lona_blin",
 	"ffaa_et_pegaso_carga_lona",
 	"ffaa_famet_cougar_armed",
@@ -145,7 +145,7 @@ opfor_troup_transports = [
 	"ffaa_ea_hercules"
 ];
 
-opfor_choppers = [
+opfor_troup_transports_heli = [
 	"ffaa_nh90_tth_armed",
 	"ffaa_famet_ch47_mg",
 	"ffaa_famet_cougar_armed"

@@ -155,8 +155,7 @@ buildings_west = [
 	["ffaa_bandera_espa",0,0,0,0]
 ];
 
-if ( isNil "blufor_squad_inf_light" ) then { blufor_squad_inf_light = [] };
-if ( count blufor_squad_inf_light == 0 ) then { blufor_squad_inf_light = [
+blufor_squad_inf_light = [
 	"ffaa_brilat_jefe_peloton",
 	"ffaa_brilat_medico",
 	"ffaa_brilat_granadero",
@@ -165,10 +164,8 @@ if ( count blufor_squad_inf_light == 0 ) then { blufor_squad_inf_light = [
 	"ffaa_brilat_soldado",
 	"ffaa_brilat_soldado",
 	"ffaa_brilat_soldado"
-	];
-};
-if ( isNil "blufor_squad_inf" ) then { blufor_squad_inf = [] };
-if ( count blufor_squad_inf == 0 ) then { blufor_squad_inf = [
+];
+blufor_squad_inf = [
 	"ffaa_brilat_jefe_peloton",
 	"ffaa_brilat_medico",
 	"ffaa_brilat_mg4",
@@ -179,48 +176,39 @@ if ( count blufor_squad_inf == 0 ) then { blufor_squad_inf = [
 	"ffaa_brilat_soldado",
 	"ffaa_brilat_soldado",
 	"ffaa_brilat_soldado"
-	];
-};
-if ( isNil "blufor_squad_at" ) then { blufor_squad_at = [] };
-if ( count blufor_squad_at == 0 ) then { blufor_squad_at = [
+];
+blufor_squad_at = [
 	"ffaa_brilat_jefe_peloton",
 	"ffaa_brilat_medico",
 	"ffaa_brilat_alcotan",
 	"ffaa_brilat_alcotan",
 	"ffaa_brilat_soldado",
 	"ffaa_brilat_soldado"
-	];
-};
-if ( isNil "blufor_squad_aa" ) then { blufor_squad_aa = [] };
-if ( count blufor_squad_aa == 0 ) then { blufor_squad_aa = [
+];
+blufor_squad_aa = [
 	"ffaa_brilat_jefe_peloton",
 	"ffaa_brilat_medico",
 	"B_W_Soldier_AA_F",
 	"B_W_Soldier_AA_F",
 	"ffaa_brilat_soldado",
 	"ffaa_brilat_soldado"
-	];
-};
-if ( isNil "blufor_squad_mix" ) then { blufor_squad_mix = [] };
-if ( count blufor_squad_mix == 0 ) then { blufor_squad_mix = [
+];
+blufor_squad_mix = [
 	"ffaa_brilat_jefe_peloton",
 	"ffaa_brilat_medico",
 	"B_W_Soldier_AA_F",
 	"ffaa_brilat_alcotan",
 	"ffaa_brilat_soldado",
 	"ffaa_brilat_soldado"
-	];
-};
-if ( isNil "blufor_squad_recon" ) then { blufor_squad_recon = [] };
-if ( count blufor_squad_recon == 0 ) then { blufor_squad_recon = [
+];
+blufor_squad_recon = [
 	"ffaa_et_moe_lider",
 	"ffaa_ar_fgne_medico_bk",
 	"ffaa_ar_fgne_tirador_bk",
 	"ffaa_ar_fgne_at_bk",
 	"ffaa_ar_fgne_sabot_bk",
 	"ffaa_et_moe_fusilero_mochila"
-	];
-};
+];
 
 squads = [
 	[blufor_squad_inf_light,10,400,0,GRLIB_perm_max],

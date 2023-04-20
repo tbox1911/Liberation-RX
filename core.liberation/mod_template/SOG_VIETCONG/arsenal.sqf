@@ -207,5 +207,6 @@ GRLIB_whitelisted_from_arsenal = [
 ];
 
 GRLIB_whitelisted_from_arsenal_limited = [
+	"B_Kitbag_Base",
 	"B_Parachute"
 ];

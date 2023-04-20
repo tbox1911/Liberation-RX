@@ -87,11 +87,11 @@ opfor_vehicles = [
 	"vn_o_armor_type63_01_nva65",
 	"vn_o_wheeled_btr40_mg_02_nva65",
 	"vn_o_wheeled_btr40_mg_01_nva65",
-	"vn_o_wheeled_btr40_mg_02_nva65",
-	"vn_o_wheeled_btr40_mg_01_nva65",
+	"vn_o_wheeled_btr40_mg_03_nva65",
 	"vn_o_wheeled_btr40_mg_03_nva65",
 	"vn_o_wheeled_z157_mg_01_nva65",
 	"vn_o_wheeled_z157_mg_01_nva65",
+	"vn_o_wheeled_z157_mg_02_nva65",
 	"vn_o_wheeled_z157_mg_02_nva65"
 ];
 
@@ -99,7 +99,7 @@ opfor_vehicles_low_intensity = [
 	"vn_o_wheeled_btr40_mg_02_nva65",
 	"vn_o_wheeled_btr40_mg_01_nva65",
 	"vn_o_wheeled_z157_mg_01_nva65",
-	"vn_o_wheeled_btr40_mg_03_nva65"
+	"vn_o_wheeled_z157_mg_02_nva65"
 ];
 
 opfor_battlegroup_vehicles = [
@@ -107,13 +107,11 @@ opfor_battlegroup_vehicles = [
 	"vn_o_wheeled_btr40_mg_02_nva65",
 	"vn_o_wheeled_btr40_mg_01_nva65",
 	"vn_o_wheeled_btr40_mg_03_nva65",
+	"vn_o_wheeled_btr40_mg_03_nva65",
 	"vn_o_wheeled_z157_mg_01_nva65",
 	"vn_o_wheeled_z157_mg_02_nva65",
 	"vn_o_air_mi2_01_03",
-	"vn_o_air_mi2_03_04",
-	"vn_o_air_mi2_05_02",
 	"vn_o_air_mi2_05_06",
-	"vn_o_air_mi2_04_02",
 	"vn_o_wheeled_z157_02_nva65"
 ];
 
@@ -123,17 +121,16 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"vn_o_wheeled_z157_mg_01_nva65",
 	"vn_o_wheeled_btr40_mg_03_nva65",
 	"vn_o_air_mi2_01_03",
-	"vn_o_wheeled_z157_02_nva65",
-	"vn_o_air_mi2_03_04"
-];
-
-opfor_troup_transports = [
 	"vn_o_wheeled_z157_01_nva65",
-	"vn_o_wheeled_z157_02_nva65",
-	"vn_o_air_mi2_01_03"
+	"vn_o_wheeled_z157_02_nva65"
 ];
 
-opfor_choppers = [
+opfor_troup_transports_truck = [
+	"vn_o_wheeled_z157_01_nva65",
+	"vn_o_wheeled_z157_02_nva65"
+];
+
+opfor_troup_transports_heli = [
 	"vn_o_air_mi2_01_03"
 ];
 
@@ -147,11 +144,7 @@ opfor_air = [
 opfor_statics = [
 	"vn_o_nva_65_static_d44",
 	"vn_o_nva_65_static_type56rr",
-	"vn_o_nva_65_static_dshkm_low_01",
-	"vn_o_nva_65_static_dshkm_high_01",
-	"vn_o_nva_65_static_pk_low",
 	"vn_o_nva_65_static_pk_high",
-	"vn_o_nva_65_static_rpd_high",
 	"vn_o_nva_65_static_dshkm_high_02",
 	"vn_o_nva_65_static_zpu4",
 	"vn_o_nva_65_static_mortar_type53",
@@ -194,4 +187,11 @@ opfor_recyclable = [
 	["vn_o_air_mi2_05_06",10,round (750 / GRLIB_recycling_percentage),25],
 	["vn_o_air_mi2_04_02",8,round (400 / GRLIB_recycling_percentage),20],
 	["vn_o_wheeled_z157_01_nva65",2,round (100 / GRLIB_recycling_percentage),4]
+];
+
+box_transport_config_east = [
+    [ "vn_o_wheeled_z157_01_nva65", -6.5, [0, -0.8, 0.4], [0, -2.5, 0.4] ],
+    [ "vn_o_wheeled_z157_02_nva65", -6.5, [0, -0.8, 0.4], [0, -2.5, 0.4] ],
+    [ "vn_o_boat_03_02", 25, [1, -10.7, -0.9], [-1, -10.7, -0.9] ],
+    [ "vn_o_boat_04_02", 25, [1, -10.7, -0.9], [-1, -10.7, -0.9] ]
 ];

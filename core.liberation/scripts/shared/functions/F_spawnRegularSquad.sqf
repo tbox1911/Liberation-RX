@@ -1,6 +1,6 @@
 params [ "_sector", "_infsquad", "_squadies_to_spawn" ];
 private [ "_spawnpos", "_max_try", "_grp", "_nextunit", "_corrected_amount" ];
-diag_log format [ "Spawning regular squad type %1 (%2) at %3", _infsquad, count _squadies_to_spawn, time ];
+diag_log format [ "Spawn regular squad type %1 (%2) at %3", _infsquad, count _squadies_to_spawn, time ];
 
 _corrected_amount = round ( (count _squadies_to_spawn) * ([] call F_adaptiveOpforFactor) );
 _grp = createGroup [GRLIB_side_enemy, true];
