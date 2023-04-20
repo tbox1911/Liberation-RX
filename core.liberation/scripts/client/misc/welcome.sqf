@@ -3,7 +3,7 @@
 */
 waitUntil {sleep 1;GRLIB_player_spawned};
 
-while {	(player getVariable "GRLIB_score_set" == 0) } do {
+while {	(player getVariable ["GRLIB_score_set", 0] == 0) } do {
 	_msg= "... Loading Player Data ...";
     [_msg, 0, 0, 5, 0, 0, 90] spawn BIS_fnc_dynamicText;
 	uIsleep 2;
@@ -12,7 +12,7 @@ while {	(player getVariable "GRLIB_score_set" == 0) } do {
 	uIsleep 2;
 };
 
-private _score = [player] call F_getScore;
+private _score = score player;
 private _rank = [player] call set_rank;
 private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
 

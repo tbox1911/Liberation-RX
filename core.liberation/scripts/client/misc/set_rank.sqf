@@ -1,6 +1,6 @@
 params [ "_unit" ];
 
-private _score = [_unit] call F_getScore;
+private _score = score _unit;
 private _rank = "Private";
 GRLIB_squad_size_bonus = 0;
 

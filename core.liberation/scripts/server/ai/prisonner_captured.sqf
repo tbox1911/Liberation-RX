@@ -13,9 +13,8 @@ stats_prisonners_captured = stats_prisonners_captured + 1;
 
 if (isPlayer _unit_owner) then {
 	private _bonus = 5;
-	if ( [_unit_owner] call F_getScore <= GRLIB_perm_log) then { _bonus = 10 };
-	[_unit_owner, _bonus] call F_addScore;
-
+	if ( score _unit_owner <= GRLIB_perm_log) then { _bonus = 10 };
+	[_unit_owner, _bonus] remoteExec ["addScore", 2];
 	private _msg = format ["%1\nBonus Score + %2 Pts!", name _unit_owner, _bonus];
 	[_msg] remoteExec ["hint", owner _unit_owner];
 };

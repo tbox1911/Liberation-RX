@@ -18,9 +18,6 @@ get_lrx_name = compileFinal preprocessFileLineNumbers "scripts\client\misc\get_l
 
 R3F_LOG_joueur_deplace_objet = objNull;
 GRLIB_player_spawned = false;
-setTerrainGrid 12.5;  //Very High = 6.25, Ultra = 3.125
-player setVariable ["GRLIB_score_set", 0, true];
-player setVariable ["GREUH_ammo_count", 0, true];
 
 if (isMultiplayer) then {
 	PAR_Grp_ID = getPlayerUID player;
@@ -123,5 +120,6 @@ chimera_sign addAction ["<t color='#FFFFFF'>-=   TIPS   =-</t>",{createDialog "l
 waitUntil { time > 2 };
 initAmbientLife;
 enableEnvironment [true, true];
+setTerrainGrid 12.5;  //Very High = 6.25, Ultra = 3.125
 
 diag_log "--- Client Init stop ---";

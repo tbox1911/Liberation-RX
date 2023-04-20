@@ -1,6 +1,6 @@
 if ( isDedicated ) exitWith {};
 params [ "_location", "_penalty"];
-if ([player] call F_getScore < GRLIB_perm_air || (player distance2D _location < GRLIB_sector_size) || time < (15 * 60) ) exitWith {};
+if (score player < GRLIB_perm_air || (player distance2D _location < GRLIB_sector_size) || time < (15 * 60) ) exitWith {};
 
 _fobname = [ _location ] call F_getFobName;
 
@@ -10,4 +10,4 @@ The HQ order a score penalty of: <t color='#A00000'>%3</t>.<br/>", name player, 
 [_msg, 0, 0, 10, 0, 0, 90] spawn BIS_fnc_dynamicText;
 
 playSound "taskfailed";
-[player, -_penalty] call F_addScore;
+[player, -_penalty] remoteExec ["addScore", 2];
