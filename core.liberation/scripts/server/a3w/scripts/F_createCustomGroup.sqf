@@ -20,7 +20,7 @@ switch (_type) do {
 sleep 0.5;
 for "_i" from 1 to _nbUnits do {
 	if (_type == "divers") then {
-		 _seadepth = getTerrainHeightASL _pos;
+		 _seadepth = abs (getTerrainHeightASL _pos);
 		_uPos = _pos vectorAdd ([[floor(random _radius), 0, _seadepth + 3], random 360] call BIS_fnc_rotateVector2D);
 	} else {
 		_uPos = _pos vectorAdd ([[floor(random _radius), 0, 1], random 360] call BIS_fnc_rotateVector2D);

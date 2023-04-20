@@ -30,7 +30,7 @@ if (isNil "manned") then { manned = false };
 if (isNil "gridmode" ) then { gridmode = 0 };
 if (isNil "repeatbuild" ) then { repeatbuild = false };
 if (isNil "build_rotation" ) then { build_rotation = 0 };
-if (isNil "build_altitude" ) then { build_altitude = 0 };
+if (isNil "build_altitude" ) then { build_altitude = 0.2 };
 
 waitUntil { sleep 0.2; !isNil "dobuild" };
 
@@ -185,7 +185,7 @@ while { true } do {
 			_idactplace = player addAction ["<t color='#B0FF00'>" + localize "STR_PLACEMENT" + "</t> <img size='1' image='res\ui_confirm.paa'/>","scripts\client\build\build_place.sqf","",-750,false,true,"","build_invalid == 0 && build_confirmed == 1"];
 			_idactrotate = player addAction ["<t color='#B0FF00'>" + localize "STR_ROTATION" + "</t> <img size='1' image='res\ui_rotation.paa'/>","scripts\client\build\build_rotate.sqf","",-756,false,false,"","build_confirmed == 1"];
 			_idactcancel = player addAction ["<t color='#B0FF00'>" + localize "STR_CANCEL" + "</t> <img size='1' image='res\ui_cancel.paa'/>","scripts\client\build\build_cancel.sqf","",-760,false,true,"","build_confirmed == 1 && buildtype != 9"];
-			_ghost_spot = (getmarkerpos "ghost_spot") findEmptyPosition [1,50,_classname];
+			_ghost_spot = (getmarkerpos "ghost_spot") findEmptyPosition [1,250,_classname];
 
 			_vehicle = _classname createVehicleLocal _ghost_spot;
 			_vehicle allowdamage false;
@@ -279,7 +279,7 @@ while { true } do {
 
 				if (count _near_objects == 0 && ((_truepos distance _posfob) < _maxdist || buildtype == 9) && (  ((!surfaceIsWater _truepos) && (!surfaceIsWater getpos player)) || (_classname in boats_names) ) ) then {
 
-					_vehicle setposATL _truepos;
+					_vehicle setpos (_truepos vectorAdd [0, 0, build_altitude]);
 
 					if(build_invalid == 1) then {
 						GRLIB_ui_notif = "";
@@ -330,7 +330,7 @@ while { true } do {
 				_vehicle = _classname createVehicle _truepos;
 				_vehicle allowDamage false;
 				_vehicle setdir _vehdir;
-				_vehicle setposATL _truepos;
+				_vehicle setpos (_truepos vectorAdd [0, 0, build_altitude]);
 
 				// Ammo Box clean inventory
 				if (!(_classname in  GRLIB_Ammobox_keep)) then {
@@ -452,7 +452,7 @@ while { true } do {
 	} else {
 		dobuild = 0;
 		build_rotation = 0;
-		build_altitude = 0;
+		build_altitude = 0.2;
 	};
 	manned = false;
 };

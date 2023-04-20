@@ -38,6 +38,8 @@
 	R3F_LOG_CFG_CF_blacklist_categories = [];
 
 	#include "config.sqf"
+	call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_r3f.sqf", GRLIB_mod_west];
+	call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_r3f.sqf", GRLIB_mod_east];
 
 	// Chargement du fichier de langage
 	call compile preprocessFile format ["R3F_LOG\%1_strings_lang.sqf", R3F_LOG_CFG_language];

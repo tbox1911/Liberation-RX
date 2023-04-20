@@ -89,6 +89,10 @@ blufor_air = [
 	"CUP_B_F35B_BAF"
 ];
 
+boats = [
+  "CUP_B_MK10_GB"
+];
+
 static_vehicles = [
 	["CUP_B_SearchLight_static_BAF_DDPM",0,10,0,GRLIB_perm_log],
 	["CUP_B_L111A1_BAF_DDPM",0,50,0,GRLIB_perm_log],
@@ -205,15 +209,7 @@ vehicle_rearm_sources_west = [
 ];
 
 vehicle_big_units_west = [
-	"Land_Cargo_Tower_V1_F",
-	"B_T_VTOL_01_infantry_F",
-	"B_T_VTOL_01_vehicle_F",
-	"B_T_VTOL_01_armed_F",
-	"O_T_VTOL_01_infantry_F",
-	"O_T_VTOL_01_vehicle_F",
-	"O_T_VTOL_01_armed_F",
-	"Land_SM_01_shed_F",
-	"Land_Hangar_F"
+	"CUP_B_MK10_GB"
 ];
 
 GRLIB_vehicle_whitelist_west = [

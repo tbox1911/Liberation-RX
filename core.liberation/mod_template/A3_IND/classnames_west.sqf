@@ -232,15 +232,7 @@ vehicle_rearm_sources_west = [
 ];
 
 vehicle_big_units_west = [
-	"Land_Cargo_Tower_V1_F",
-	"B_T_VTOL_01_infantry_F",
-	"B_T_VTOL_01_vehicle_F",
-	"B_T_VTOL_01_armed_F",
-	"O_T_VTOL_01_infantry_F",
-	"O_T_VTOL_01_vehicle_F",
-	"O_T_VTOL_01_armed_F",
-	"Land_SM_01_shed_F",
-	"Land_Hangar_F"
+
 ];
 
 GRLIB_vehicle_whitelist_west = [

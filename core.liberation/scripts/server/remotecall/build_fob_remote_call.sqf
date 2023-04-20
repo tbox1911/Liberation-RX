@@ -14,7 +14,7 @@ if ( _create_fob_building ) then {
 	sleep 1;
 };
 
-{deleteVehicle _x} foreach ([_new_fob nearObjects GRLIB_fob_range ,{( typeof _x in [FOB_box_typename, FOB_truck_typename, FOB_box_outpost] )}] call BIS_fnc_conditionalSelect);
+{deleteVehicle _x} foreach ([_new_fob nearObjects GRLIB_sector_size ,{( typeof _x in [FOB_box_typename, FOB_truck_typename, FOB_box_outpost] )}] call BIS_fnc_conditionalSelect);
 
 trigger_server_save = true;
 sleep 3;
