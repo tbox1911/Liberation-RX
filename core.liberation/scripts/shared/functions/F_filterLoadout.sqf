@@ -1,5 +1,7 @@
 params [ "_unit" ];
 
+if (GRLIB_limited_arsenal) exitWith {};
+
 {
     if (_x in ([primaryWeapon _unit])) then {_unit removeWeapon _x};
     if (_x in ([secondaryWeapon _unit])) then {_unit removeWeapon _x};

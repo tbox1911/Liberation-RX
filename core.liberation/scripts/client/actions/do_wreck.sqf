@@ -42,8 +42,6 @@ if (lifeState player == 'incapacitated' || vehicle player != player) exitWith {
 	_vehicle setVariable ["wreck_in_use", false, true];
 	player setVariable ["salvage_wreck", false, true];
 };
-//{[_x] remoteExec ["deleteVehicle", 0]} forEach (_vehicle getVariable ["R3F_LOG_objets_charges", []]);
-//{[_x] remoteExec ["deleteVehicle", 0]} forEach crew _vehicle;
 [_vehicle] remoteExec ["clean_vehicle", 2];
 [_vehicle] remoteExec ["deleteVehicle", 2];
 

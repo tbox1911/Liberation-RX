@@ -56,8 +56,11 @@ _unit addEventHandler ["FiredMan",	{
 }];
 
 if (_unit == player && alive player && player isKindOf "Man") then {
-	// only when ACE is not present
-	if (!GRLIB_ACE_enabled) then {
+	// ACE specific
+	if (GRLIB_ACE_enabled) then {
+		["ace_arsenal_displayClosed", {[player] call F_payLoadout}] call CBA_fnc_addEventHandler;
+	} else {
+		// Clean player body
 		_unit removeAllEventHandlers "Killed";
 		_unit addEventHandler ["Killed", {
 			params ["_unit"];
@@ -69,15 +72,9 @@ if (_unit == player && alive player && player isKindOf "Man") then {
 				NRE_EarplugsActive = 0;
 			};
 		}];
+		// Filter and Pay Loadout
+		[missionNamespace, "arsenalClosed", {[player] call F_filterLoadout;[player] call F_payLoadout}] call BIS_fnc_addScriptedEventHandler;
 	};
-
-	// Filter Layout
-	[missionNamespace, "arsenalClosed", {
-		[] spawn {
-			[player] call F_filterLoadout;
-			[player] call F_payLoadout;
-		};
-	}] call BIS_fnc_addScriptedEventHandler;
 
 	missionNamespace setVariable [
 	"BIS_fnc_addCommMenuItem_menu", [

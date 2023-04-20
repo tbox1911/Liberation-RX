@@ -106,27 +106,32 @@ while { dialog && (alive player) && edit_loadout == 0 } do {
 if ( edit_loadout > 0 ) then {
 	closeDialog 0;
 	waitUntil {!dialog};
-	if (GRLIB_limited_arsenal) then {
-		_box = missionNamespace getVariable ["myLARsBox", objNull];
-		_savedD = BIS_fnc_arsenal_data;
-		_data = _box getVariable 'LARs_arsenal_Liberation_data';
-		BIS_fnc_arsenal_data = _data;
-
-		_savedC = _box getVariable [ 'bis_addVirtualWeaponCargo_cargo', [] ];
-		_cargo = _box getVariable 'LARs_arsenal_Liberation_cargo';
-		_box setvariable [ 'bis_addVirtualWeaponCargo_cargo', _cargo ];
-
-		['Open',[nil,_box]] call BIS_fnc_arsenal;
-
-		_nul = [ _box, _savedD, _savedC ] spawn {
-			_box = _this select 0;
-			waituntil { !isNull ( uiNamespace getvariable ['RscDisplayArsenal', displayNull] ) };
-			waitUntil {  isNull ( uinamespace getvariable ['BIS_fnc_arsenal_cam', objnull] ) };
-			BIS_fnc_arsenal_data = _this select 1;
-			_box setVariable [ 'bis_addvirtualWeaponCargo_cargo', _this select 2 ];
-		};
+	_box = missionNamespace getVariable ["myLARsBox", objNull];
+	if (GRLIB_ACE_enabled) then {
+		[_box, true] call ace_arsenal_fnc_initBox;
+		[_box, player, true] call ace_arsenal_fnc_openBox;
 	} else {
-		["Open", [true]] call BIS_fnc_arsenal;
+		if (GRLIB_limited_arsenal) then {
+			_savedD = BIS_fnc_arsenal_data;
+			_data = _box getVariable 'LARs_arsenal_Liberation_data';
+			BIS_fnc_arsenal_data = _data;
+
+			_savedC = _box getVariable [ 'bis_addVirtualWeaponCargo_cargo', [] ];
+			_cargo = _box getVariable 'LARs_arsenal_Liberation_cargo';
+			_box setvariable [ 'bis_addVirtualWeaponCargo_cargo', _cargo ];
+
+			['Open',[nil,_box]] call BIS_fnc_arsenal;
+
+			_nul = [ _box, _savedD, _savedC ] spawn {
+				_box = _this select 0;
+				waituntil { !isNull ( uiNamespace getvariable ['RscDisplayArsenal', displayNull] ) };
+				waitUntil {  isNull ( uinamespace getvariable ['BIS_fnc_arsenal_cam', objnull] ) };
+				BIS_fnc_arsenal_data = _this select 1;
+				_box setVariable [ 'bis_addvirtualWeaponCargo_cargo', _this select 2 ];
+			};
+		} else {
+			["Open", [true]] call BIS_fnc_arsenal;
+		};
 	};
 };
 
