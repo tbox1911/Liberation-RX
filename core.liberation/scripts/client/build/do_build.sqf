@@ -112,6 +112,7 @@ while { true } do {
 					_unitrank = "Private";
 					if(_idx == 0) then { _unitrank = "Sergeant"; };
 					if(_idx == 1) then { _unitrank = "Corporal"; };
+<<<<<<< HEAD
 					_unit = _grp createUnit [_x, _pos, [], 5, "NONE"];
 					_unit setUnitRank _unitrank;
 					_unit enableIRLasers true;
@@ -119,6 +120,12 @@ while { true } do {
 					_unit setVariable ["PAR_Grp_ID", format["AI_%1",PAR_Grp_ID], true];
 					_unit addUniform uniform player;
 					[_unit] call PAR_fn_EHDamage;
+=======
+					_x createUnit [_pos, _grp, "this addMPEventHandler [""MPKilled"", FAR_Player_MPKilled]", 0.5, _unitrank];
+					_x setVariable ["PAR_Grp_ID", format["AI_%1",PAR_Grp_ID], true];
+					_x addUniform uniform player;
+					[_x] call PAR_fn_EHDamage;
+>>>>>>> 4dcd805a (ai squad)
 					_idx = _idx + 1;
 				} foreach _classname;
 				_grp setCombatMode "GREEN";
