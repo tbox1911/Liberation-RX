@@ -8,6 +8,7 @@ loadout_rifleman_light = compile preprocessFileLineNumbers (format ["%1%2.sqf", 
 loadout_rifleman_akm = compile preprocessFileLineNumbers (format ["%1%2.sqf", _loadouts_folder, "rifleman_akm"]);
 loadout_marksman = compile preprocessFileLineNumbers (format ["%1%2.sqf", _loadouts_folder, "marksman"]);
 loadout_at = compile preprocessFileLineNumbers (format ["%1%2.sqf", _loadouts_folder, "at"]);
+loadout_at2 = compile preprocessFileLineNumbers (format ["%1%2.sqf", _loadouts_folder, "at2"]);
 loadout_aa = compile preprocessFileLineNumbers (format ["%1%2.sqf", _loadouts_folder, "aa"]);
 
 militia_standard_squad = [
@@ -21,6 +22,8 @@ militia_standard_squad = [
 	loadout_rifleman_akm,
 	loadout_marksman,
 	loadout_at,
-    loadout_at,
+    loadout_at2,
+	loadout_at,
+    loadout_at2,
 	loadout_aa
 	];

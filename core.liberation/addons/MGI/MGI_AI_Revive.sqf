@@ -29,6 +29,7 @@ MGI_fn_EHDamage = {
       };
       _dam min 0.86;
   }];
+  _unit setVariable ["MGI_soliders",true,true];
   _unit setVariable ["MGI_isUnconscious",false];
   _unit setVariable ["MGI_myMedic", nil];
   _unit setVariable ["MGI_busy", nil];
