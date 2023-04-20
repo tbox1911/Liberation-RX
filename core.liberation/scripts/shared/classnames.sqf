@@ -5,7 +5,8 @@ if ( isNil "FOB_box_typename" ) then { FOB_box_typename = "B_Slingload_01_Cargo_
 if ( isNil "FOB_truck_typename" ) then { FOB_truck_typename = "B_Truck_01_box_F"; };
 if ( isNil "Arsenal_typename" ) then { Arsenal_typename = "B_supplyCrate_F"; };
 if ( isNil "Respawn_truck_typename" ) then { Respawn_truck_typename = "B_Truck_01_medical_F"; };
-if ( isNil "mobile_respawn" ) then { mobile_respawn = "Land_SatelliteAntenna_01_F"; };   //Land_SatellitePhone_F
+if ( isNil "mobile_respawn" ) then { mobile_respawn = "Land_SatelliteAntenna_01_F"; };
+if ( isNil "mobile_respawn_bag" ) then { mobile_respawn_bag = "B_Kitbag_Base"; };
 if ( isNil "huron_typename" ) then { huron_typename = "B_Heli_Transport_03_unarmed_F"; };
 if ( isNil "ammobox_b_typename" ) then { ammobox_b_typename = "Box_NATO_AmmoVeh_F"; };
 if ( isNil "ammobox_o_typename" ) then { ammobox_o_typename = "Box_East_AmmoVeh_F"; };
@@ -17,6 +18,7 @@ if ( isNil "pilot_classname" ) then { pilot_classname = "B_Helipilot_F" };
 if ( isNil "FAR_Medikit" ) then { FAR_Medikit = "Medikit" };
 if ( isNil "FAR_AidKit" ) then { FAR_AidKit = "FirstAidKit" };
 if ( isNil "A3W_BoxWps" ) then { A3W_BoxWps = "Box_East_Wps_F" };
+if ( isNil "canisterFuel" ) then { canisterFuel = "Land_CanisterFuel_Red_F" };
 
 // *** FRIENDLIES ***
 infantry_units = [
@@ -197,7 +199,7 @@ support_vehicles = [
 	[Arsenal_typename,0,10,0,0],
 	["Box_B_UAV_06_medical_F",5,5,0,0],
 	[mobile_respawn,10,5,0,0],
-	["Land_CanisterFuel_Red_F",0,5,1,0],
+	[canisterFuel,0,5,1,0],
 	["C_Offroad_01_repair_F",5,15,5,GRLIB_perm_inf],
 	["C_Van_01_fuel_F",5,15,20,GRLIB_perm_inf],
 	[Respawn_truck_typename,15,50,5,GRLIB_perm_log],
@@ -338,7 +340,6 @@ ai_healing_sources = [
 	"Box_B_UAV_06_medical_F",
 	"B_APC_Tracked_01_CRV_F"
 ];
-
 
 // Everything that can resupply other vehicles
 vehicle_repair_sources = [
@@ -676,7 +677,7 @@ GRLIB_vehicle_whitelist = [
 	ammobox_i_typename,
 	mobile_respawn,
 	A3W_BoxWps,
-	"Land_CanisterFuel_Red_F",
+	canisterFuel,
 	"Land_PierLadder_F",
 	"Box_B_UAV_06_medical_F",
 	"Land_CncBarrierMedium4_F",
@@ -696,9 +697,9 @@ GRLIB_vehicle_blacklist = [
 	Respawn_truck_typename,
 	FOB_box_typename,
 	FOB_truck_typename,
+	canisterFuel,
 	"Box_NATO_Ammo_F",
   	"Box_NATO_WpsLaunch_F",
-	"Land_CanisterFuel_Red_F",
 	"Box_B_UAV_06_medical_F",
 	"B_Slingload_01_Repair_F",
 	"B_Slingload_01_Fuel_F",
@@ -762,11 +763,11 @@ GRLIB_intel_laptop = "Land_Laptop_device_F";
 GRLIB_ignore_colisions_when_building = [
 	Arsenal_typename,
 	mobile_respawn,
+	canisterFuel,
 	"Box_B_UAV_06_medical_F",
 	"Box_NATO_Ammo_F",
   	"Box_NATO_WpsLaunch_F",
 	"Land_CargoBox_V1_F",
-	"Land_CanisterFuel_Red_F",
 	"B_HMG_01_F",
 	"B_HMG_01_high_F",
 	"B_GMG_01_F",

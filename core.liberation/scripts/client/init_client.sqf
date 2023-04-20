@@ -13,7 +13,6 @@ fetch_permission = compileFinal preprocessFileLineNumbers "scripts\client\misc\f
 clear_wpt = compileFinal preprocessFileLineNumbers "scripts\client\misc\clear_waypoints.sqf";
 is_owner = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_owner.sqf";
 is_menuok = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_menuok.sqf";
-is_local = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_local.sqf";
 player_EVH = compileFinal preprocessFileLineNumbers "addons\FAR\FAR_EventHandler.sqf";
 paraDrop = compileFinal preprocessFileLineNumbers "scripts\client\spawn\paraDrop.sqf";
 
@@ -86,6 +85,7 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 [] execVM "scripts\client\actions\dog_manager.sqf";
 [] execVM "scripts\client\actions\man_manager.sqf";
 [] execVM "scripts\client\actions\squad_manager.sqf";
+[] execVM "scripts\client\misc\wildlife_manager.sqf";
 
 if (!GRLIB_ACE_enabled) then {
 	[] execVM "addons\MGI\MGI_AI_Revive.sqf";

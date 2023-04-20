@@ -5,7 +5,8 @@ if ( isNil "FOB_box_typename" ) then { FOB_box_typename = "gm_ge_army_shelterace
 if ( isNil "FOB_truck_typename" ) then { FOB_truck_typename = "gm_ge_army_kat1_454_cargo"; };
 if ( isNil "Arsenal_typename" ) then { Arsenal_typename = "B_supplyCrate_F"; };
 if ( isNil "Respawn_truck_typename" ) then { Respawn_truck_typename = "gm_gc_army_ural375d_medic"; };
-if ( isNil "mobile_respawn" ) then { mobile_respawn = "Land_SatelliteAntenna_01_F"; };   //Land_SatellitePhone_F
+if ( isNil "mobile_respawn" ) then { mobile_respawn = "Land_SatelliteAntenna_01_F"; };
+if ( isNil "mobile_respawn_bag" ) then { mobile_respawn_bag = "B_Kitbag_Base"; };
 if ( isNil "huron_typename" ) then { huron_typename = "gm_ge_army_ch53g"; };
 if ( isNil "ammobox_b_typename" ) then { ammobox_b_typename = "Box_NATO_AmmoVeh_F"; };
 if ( isNil "ammobox_o_typename" ) then { ammobox_o_typename = "Box_East_AmmoVeh_F"; };
@@ -17,6 +18,7 @@ if ( isNil "pilot_classname" ) then { pilot_classname = "gm_ge_army_pilot_p1_80_
 if ( isNil "FAR_Medikit" ) then { FAR_Medikit = "Medikit" };
 if ( isNil "FAR_AidKit" ) then { FAR_AidKit = "FirstAidKit" };
 if ( isNil "A3W_BoxWps" ) then { A3W_BoxWps = "Box_East_Wps_F" };
+if ( isNil "canisterFuel" ) then { canisterFuel = "gm_jerrycan" };
 
 // *** FRIENDLIES ***
 infantry_units = [
@@ -638,7 +640,7 @@ GRLIB_vehicle_whitelist = [
 	ammobox_i_typename,
 	mobile_respawn,
 	A3W_BoxWps,
-	"gm_jerrycan",
+	canisterFuel,
 	"Land_PierLadder_F",
 	"Box_B_UAV_06_medical_F",
 	"Land_CncBarrierMedium4_F",
@@ -658,9 +660,9 @@ GRLIB_vehicle_blacklist = [
 	Respawn_truck_typename,
 	FOB_box_typename,
 	FOB_truck_typename,
+	canisterFuel,
 	"gm_AmmoBox_wood_02_empty",
-    "gm_AmmoBox_wood_03_empty",
-	"gm_jerrycan",
+        "gm_AmmoBox_wood_03_empty",
 	"Box_B_UAV_06_medical_F",
 	"B_Slingload_01_Repair_F",
 	"B_Slingload_01_Fuel_F",
@@ -724,11 +726,11 @@ GRLIB_intel_laptop = "Land_Laptop_device_F";
 GRLIB_ignore_colisions_when_building = [
 	Arsenal_typename,
 	mobile_respawn,
+	canisterFuel,
 	"Box_B_UAV_06_medical_F",
 	"gm_AmmoBox_wood_02_empty",
-    "gm_AmmoBox_wood_03_empty",
+  	"gm_AmmoBox_wood_03_empty",
 	"Land_CargoBox_V1_F",
-	"gm_jerrycan",
 	"B_HMG_01_F",
 	"B_HMG_01_high_F",
 	"B_Mortar_01_F",

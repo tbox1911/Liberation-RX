@@ -58,4 +58,5 @@ if (typeOf _vehicle in _free_vehicles) then {
 	[player, _bonus] remoteExec ["addScore", 2];
 	player addRating 100;
 };
+sleep 0.5;
 player setVariable ["salvage_wreck", false, true];
