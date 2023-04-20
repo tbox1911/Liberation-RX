@@ -59,7 +59,8 @@ if !(isNull _unit) then {
 >>>>>>> df6a7d0c (context mp fix)
 
 	// Remove AI
-	{ deleteVehicle _x } forEach (units _unit);
+	private _bros = allUnits select {(_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1", _uid]};
+	{ deleteVehicle _x } forEach _bros;
 
 	// Remove Grave Box
 	private _grave_box = _unit getVariable ["GRLIB_grave_box", nil];
@@ -73,4 +74,4 @@ if !(isNull _unit) then {
 };
 
 private _player_left = count (AllPlayers - (entities "HeadlessClient_F"));
-if (_player_left == 0) then {if (time > 300) then {[] call save_game_mp}};
+if (_player_left == 0) then {if (serverTime > 300) then {[] call save_game_mp}};

@@ -22,7 +22,6 @@ diag_log "--- Server Init start ---";
 
 // Cleanup
 cleanup_player = compileFinal preprocessFileLineNumbers "scripts\server\game\cleanup_player.sqf";
-save_context = compileFinal preprocessFileLineNumbers "scripts\server\game\save_context.sqf";
 
 // AI
 add_civ_waypoints = compileFinal preprocessFileLineNumbers "scripts\server\ai\add_civ_waypoints.sqf";
@@ -41,6 +40,8 @@ spawn_battlegroup = compileFinal preprocessFileLineNumbers "scripts\server\battl
 // Game
 load_game_mp = compileFinal preprocessFileLineNumbers "scripts\server\game\load_game_mp.sqf";
 save_game_mp  = compileFinal preprocessFileLineNumbers "scripts\server\game\save_game_mp.sqf";
+load_context = compileFinal preprocessFileLineNumbers "scripts\server\game\load_context.sqf";
+save_context = compileFinal preprocessFileLineNumbers "scripts\server\game\save_context.sqf";
 check_victory_conditions = compileFinal preprocessFileLineNumbers "scripts\server\game\check_victory_conditions.sqf";
 attach_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\attach_object_direct.sqf";
 load_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\load_object_direct.sqf";
