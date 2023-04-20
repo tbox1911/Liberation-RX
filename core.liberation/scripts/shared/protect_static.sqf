@@ -1,5 +1,7 @@
 params ["_static"];
 
+if (typeOf _static in static_vehicles_AI) exitWith {};
+
 while { alive _static } do {
 	// No damage
 	_static allowDamage false;
@@ -18,3 +20,5 @@ while { alive _static } do {
 
 	sleep 5;
 };
+
+deleteVehicle _static;
