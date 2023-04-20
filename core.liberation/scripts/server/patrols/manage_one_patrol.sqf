@@ -39,7 +39,7 @@ while { GRLIB_endgame == 0 } do {
 		_squad = [] call F_getAdaptiveSquadComp;
 		sleep 0.5;
 		{
-			_x createUnit [_sector_spawn_pos, _grp, "this addMPEventHandler [""MPKilled"", {_this spawn kill_manager}]", 0.5, "PRIVATE"];
+			_x createUnit [_sector_spawn_pos, _grp, 'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.5, "PRIVATE"];
 		} foreach _squad;
 	};
 
@@ -63,8 +63,8 @@ while { GRLIB_endgame == 0 } do {
 			_vehicle_object = [ _tower_spawn_pos, selectRandom opfor_statics ] call F_libSpawnVehicle;
 			_grp_veh = group _vehicle_object;
 			[_vehicle_object] spawn protect_static;
-			opfor_spotter createUnit [ getposATL _vehicle_object, _grp, "this addMPEventHandler [""MPKilled"", {_this spawn kill_manager}]", 0.5, "PRIVATE"];
-			opfor_spotter createUnit [ getposATL _vehicle_object, _grp, "this addMPEventHandler [""MPKilled"", {_this spawn kill_manager}]", 0.5, "PRIVATE"];
+			opfor_spotter createUnit [ getposATL _vehicle_object, _grp, 'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.5, "PRIVATE"];
+			opfor_spotter createUnit [ getposATL _vehicle_object, _grp, 'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.5, "PRIVATE"];
  			(units _grp_veh) joinSilent _grp;
 			{ _x setVariable ["OPFor_vehicle", _vehicle_object] } forEach units _grp;
 		};

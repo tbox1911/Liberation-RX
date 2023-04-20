@@ -10,15 +10,16 @@ if ( isServer ) then {
 		};
 	};
 
-	//diag_log format ["DBG: %1 %2", name _killer, side (group _killer)];
-	//diag_log format ["DBG: %1 %2", name _unit, side (group _unit)];
+	//diag_log format ["DBG: Killer: %1 %2", name _killer, side (group _killer)];
+	//diag_log format ["DBG: Killed: %1 %2", name _unit, side (group _unit)];
 
 	// ACE
 	if (GRLIB_ACE_enabled && local _unit) then {
-		if (isNull _killer) then {
+		if (isNull _killer || _killer == _unit) then {
 			_killer = _unit getVariable ["ace_medical_lastDamageSource", objNull];
 		};
 	};
+	if (isNull _killer) exitWith {};
 
 	if (isNil "infantry_weight") then { infantry_weight = 33 };
 	if (isNil "armor_weight") then { armor_weight = 33 };
@@ -78,7 +79,7 @@ if ( isServer ) then {
 						if ( _score > GRLIB_perm_inf ) then { _penalty = 10 };
 						if ( _score > GRLIB_perm_air ) then { _penalty = 20 };
 						if ( _score > GRLIB_perm_max ) then { _penalty = 60 };
-						_killer addScore -_penalty;
+						[_killer, -_penalty] remoteExec ["addScore", 2];
 						[name _unit, _penalty, _killer] remoteExec ["remote_call_civ_penalty", 0];
 					};
 				};
@@ -92,7 +93,7 @@ if ( isServer ) then {
 
 					if (_owner_id != "0") then {
 						_owner_player = _owner_id call BIS_fnc_getUnitByUID;
-						_owner_player addScore -GRLIB_civ_killing_penalty;
+						[_owner_player, -GRLIB_civ_killing_penalty] remoteExec ["addScore", 2];
 						_msg = format ["%1, Your AI kill Civilian !!", name _owner_player] ;
 						[gamelogic, _msg] remoteExec ["globalChat", 0];
 						[name _unit, GRLIB_civ_killing_penalty, _owner_player] remoteExec ["remote_call_civ_penalty", 0];
@@ -105,6 +106,7 @@ if ( isServer ) then {
 					stats_opfor_soldiers_killed = stats_opfor_soldiers_killed + 1;
 					if ( isplayer _killer ) then {
 						stats_opfor_killed_by_players = stats_opfor_killed_by_players + 1;
+						if (GRLIB_ACE_enabled) then { [_killer, 1] remoteExec ["addScore", 2] };
 					};
 
 					private _ai_score = _killer getVariable ["PAR_AI_score", nil];
@@ -114,7 +116,7 @@ if ( isServer ) then {
 				};
 				if ( side (group _unit) == GRLIB_side_friendly ) then {
 					stats_blufor_teamkills = stats_blufor_teamkills + 1;
-					_killer addScore -10;
+					[_killer, -10] remoteExec ["addScore", 2];
 					_msg = localize "STR_FRIENDLY_FIRE";
 					[gamelogic, _msg] remoteExec ["globalChat", 0];
 				};

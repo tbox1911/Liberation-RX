@@ -25,7 +25,7 @@ for "_i" from 1 to _nbUnits do {
 	} else {
 		_uPos = _pos vectorAdd ([[floor(random _radius), 0, 1], random 360] call BIS_fnc_rotateVector2D);
 	};
-	(selectRandom _unitTypes) createUnit [_uPos, _grp, "this addMPEventHandler [""MPKilled"", {_this spawn kill_manager}]", 0.65, "PRIVATE"];
+	(selectRandom _unitTypes) createUnit [_uPos, _grp, 'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.65, "PRIVATE"];
 };
 
 {
