@@ -6,7 +6,7 @@ private _respawn_trucks_unsorted = [entities [[Respawn_truck_typename, huron_typ
 	!(_x getVariable ['R3F_LOG_disabled', true]) &&
 	alive _x && !([_x, "LHD", GRLIB_sector_size] call F_check_near) &&
 	!surfaceIsWater (getpos _x) &&
-	((getpos _x) select 2) < 5 &&  speed _x < 5
+	((getpos _x) select 2) < 5 && speed vehicle _x < 5
 }] call BIS_fnc_conditionalSelect;
 
 private _respawn_tent_unsorted = [];

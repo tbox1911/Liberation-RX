@@ -6,7 +6,7 @@ private _old = 999;
 _check_sortie = {
   params ["_wnded","_medic"];
   private _ret = false;
-  //systemchat format ["dbg: wnded 2D dist : %1 sqr dist %2   speed %3", _wnded distance2D _medic, _wnded distanceSqr _medic, round (speed (vehicle _medic)) ];
+  //systemchat format ["dbg: wnded 2D dist : %1 sqr dist %2   speed %3", _wnded distance2D _medic, _wnded distanceSqr _medic, round (speed vehicle _medic) ];
 
   if ( !alive _medic || !alive _wnded ||
        isNil {_wnded getVariable ["PAR_myMedic", nil]} ||
@@ -21,7 +21,7 @@ _check_sortie = {
       _medic doMove (getPosATL _wnded);
       sleep 3;
     };
-    waitUntil {sleep 0.5; round (speed (vehicle _medic)) == 0};
+    waitUntil {sleep 0.5; round (speed vehicle _medic) == 0};
     _ret = true;
   };
   _ret;
@@ -44,7 +44,7 @@ while {lifeState _wnded == "INCAPACITATED" || lifeState _medic != "INCAPACITATED
   _msg = "";
   _dist = round (_wnded distance2D _medic);
   if (_dist > 600) exitWith {[_wnded,_medic] call _release_medic};
-  if (_dist >= _old && round (speed (vehicle _medic)) == 0) then {
+  if (_dist >= _old && round (speed vehicle _medic) == 0) then {
     _fail = _fail + 1;
     doStop _medic;
     _medic setDir (_medic getDir _wnded);
@@ -93,7 +93,7 @@ while {lifeState _wnded == "INCAPACITATED" || lifeState _medic != "INCAPACITATED
 
   if (_cnt == 0 && !isNull _wnded) then {
     if (_fail == 0) then {
-      _msg = format [localize "STR_PAR_CM_02", name _wnded, name _medic, _dist, round (speed _medic)];
+      _msg = format [localize "STR_PAR_CM_02", name _wnded, name _medic, _dist, round (speed vehicle _medic)];
     };
     [_wnded, _msg] call PAR_fn_globalchat;
     _cnt = 3;

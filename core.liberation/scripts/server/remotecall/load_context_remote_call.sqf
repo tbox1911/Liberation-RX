@@ -22,4 +22,4 @@ if (!isNil "_grp") then { _player hcSetGroup [_grp] };
 
 // Recover Squad
 private _uid = getPlayerUID _player;
-{if (_x select 0 == _uid) exitWith {[_player, _uid, _x ] spawn load_context} } foreach GRLIB_player_context;
+{if (_x select 0 == _uid) exitWith {[_player, _uid, _x ] spawn load_context}} foreach GRLIB_player_context;

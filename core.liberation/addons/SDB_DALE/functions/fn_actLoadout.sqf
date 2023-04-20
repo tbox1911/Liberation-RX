@@ -10,7 +10,7 @@ private _cfgComponent = configOf _veh >> "Components" >> "TransportPylonsCompone
 if (!isClass _cfgComponent) exitWith {};
 if (!(_veh isKindOf "Air")) exitWith {};
 
-private _actionCond = "(isTouchingGround _target) && (driver _target isEqualTo _this) && (speed _target < 1) && ([player, 'REAMMO', 30, true] call F_check_near || [_unit, 'LHD', 200] call F_check_near )";
+private _actionCond = "(isTouchingGround _target) && (driver _target isEqualTo _this) && (speed vehicle _target < 1) && ([player, 'REAMMO', 30, true] call F_check_near || [_unit, 'LHD', 200] call F_check_near )";
 private _actionText = localize "STR_DALE_Actions_Loadout";
 
 private _actionID = _veh addAction ["",DALE_fnc_dlgLoadoutOpen,nil,20,true,true,"",_actionCond];
