@@ -30,3 +30,17 @@ Your Rank : <t color='#000080'>%2</t><br/>
 Your Score : <t color='#008000'>%3</t><br/>
 Your Credit : <t color='#800000'>%4</t>", name player, _rank, _score, _ammo_collected];
 [_msg, 0, 0, 10, 0, 0, 90] spawn BIS_fnc_dynamicText;
+
+hcRemoveAllGroups player;
+// Commander IA veh
+if ( player == [] call F_getCommander ) then {
+
+	_myveh = [vehicles, {
+		(_x distance lhd) >= 1000 &&
+		[player, _x] call is_owner &&
+		_x getVariable ["GRLIB_vehicle_manned", false] &&
+		count (crew _x) > 0
+	}] call BIS_fnc_conditionalSelect;
+
+	{ player hcSetGroup [group _x] } foreach _myveh;
+};
