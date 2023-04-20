@@ -1,7 +1,7 @@
 params ["_vehicle"];
 if (isNil "_vehicle") exitWith {};
 
-_jerycan = nearestObjects [(getPosATL _vehicle), [canisterFuel, fuelbarrel_typename], 15] select 0;
+private _jerycan = getPosATL _vehicle nearEntities [[canisterFuel, fuelbarrel_typename], 15] select 0;
 
 if (!isNil "_jerycan") then {
 	private _max_fuel = 0.10;

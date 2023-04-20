@@ -112,7 +112,7 @@ GREUH_TipsText = [];
 } foreach allCurators;
 
 // Sign Add
-addMissionEventHandler["draw3D",{
+addMissionEventHandler ["Draw3D",{
 	private _pos = ASLToAGL getPosASL chimera_sign;
 	if (player distance2D _pos <= 30) then {
 		drawIcon3D ["", [1,1,1,1], _pos vectorAdd [0, 0, 3], 0, 0, 0, "- READ ME -", 2, 0.05, "TahomaB"];
@@ -130,7 +130,8 @@ chimera_sign addAction ["<t color='#FFFFFF'>" + localize "STR_TIPS" + "</t>",{cr
 
 waitUntil {!isNull findDisplay 46};
 (findDisplay 46) displayAddEventHandler ["Unload",{	
-	// code here gets executed on the client at end of mission, whether due to player abort, loss of connection, or mission ended by server; might not work on headless clients
+	// code here gets executed on the client at end of mission, whether due to player abort, loss of connection, or mission ended by server;
+	// might not work on headless clients
 }];
 
 waitUntil { time > 5 };

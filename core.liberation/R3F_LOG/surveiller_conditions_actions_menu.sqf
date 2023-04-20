@@ -132,7 +132,7 @@ while {true} do
 							// L'arri�re du remorqueur est proche de l'avant de l'objet point�
 							abs (_delta_pos select 0) < 3 && abs (_delta_pos select 1) < 5
 						}
-					} count (nearestObjects [_objet_pointe, ["All"], 30]) != 0
+					} count (_objet_pointe nearEntities [["LandVehicle"], 30]) != 0
 				};
 
 			// Condition action detacher
@@ -274,7 +274,7 @@ while {true} do
 					(_x getVariable ["R3F_LOG_fonctionnalites", R3F_LOG_CST_zero_log] select __can_be_lifted) &&
 					_x != _vehicule_joueur && !(_x getVariable "R3F_LOG_disabled") &&
 					((getPosASL _vehicule_joueur select 2) - (getPosASL _x select 2) > 2 && (getPosASL _vehicule_joueur select 2) - (getPosASL _x select 2) < 15)
-				} count (nearestObjects [_vehicule_joueur, ["All"], 15]) != 0
+				} count (_vehicule_joueur nearEntities [["All"], 15]) != 0
 			};
 
 		// Condition action heliport_larguer

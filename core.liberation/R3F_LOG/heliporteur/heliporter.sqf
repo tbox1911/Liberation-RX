@@ -1,7 +1,7 @@
 /**
- * Héliporte un objet avec un héliporteur
+ * Hï¿½liporte un objet avec un hï¿½liporteur
  * 
- * @param 0 l'héliporteur
+ * @param 0 l'hï¿½liporteur
  * 
  * Copyright (C) 2014 Team ~R3F~
  * 
@@ -22,7 +22,7 @@ else
 	
 	_heliporteur = _this select 0;
 	
-	// Recherche de l'objet à héliporter
+	// Recherche de l'objet ï¿½ hï¿½liporter
 	_objet = objNull;
 	{
 		if (
@@ -30,7 +30,7 @@ else
 			_x != _heliporteur && !(_x getVariable "R3F_LOG_disabled") &&
 			((getPosASL _heliporteur select 2) - (getPosASL _x select 2) > 2 && (getPosASL _heliporteur select 2) - (getPosASL _x select 2) < 15)
 		) exitWith {_objet = _x;};
-	} forEach (nearestObjects [_heliporteur, ["All"], 20]);
+	} forEach (getPosATL _heliporteur nearEntities [["All"], 20]);
 	
 	if (!isNull _objet) then
 	{
@@ -38,10 +38,10 @@ else
 		{
 			if (isNull (_objet getVariable "R3F_LOG_est_transporte_par") && (isNull (_objet getVariable "R3F_LOG_est_deplace_par") || (!alive (_objet getVariable "R3F_LOG_est_deplace_par")) || (!isPlayer (_objet getVariable "R3F_LOG_est_deplace_par")))) then
 			{
-				// Finalement on autorise l'héliport d'un véhicule avec du personnel à bord
+				// Finalement on autorise l'hï¿½liport d'un vï¿½hicule avec du personnel ï¿½ bord
 				//if (count crew _objet == 0 || getNumber (configFile >> "CfgVehicles" >> (typeOf _objet) >> "isUav") == 1) then
 				//{
-					// Ne pas héliporter quelque chose qui remorque autre chose
+					// Ne pas hï¿½liporter quelque chose qui remorque autre chose
 					if (isNull (_objet getVariable ["R3F_LOG_remorque", objNull])) then
 					{
 						private ["_duree", "_ctrl_titre", "_ctrl_fond", "_ctrl_jauge", "_time_debut", "_attente_valide", "_pas_de_hook"];
@@ -54,26 +54,26 @@ else
 						
 						disableSerialization;
 						
-						// Création du titre du compte-à-rebours dans le display du jeu
+						// Crï¿½ation du titre du compte-ï¿½-rebours dans le display du jeu
 						_ctrl_titre = (findDisplay 46) ctrlCreate ["RscText", -1];
 						_ctrl_titre ctrlSetPosition [0.5 - 0.5*_JAUGE_W, _JAUGE_Y - 1.5*_JAUGE_H, _JAUGE_W, 1.5*_JAUGE_H];
 						_ctrl_titre ctrlSetFontHeight 1.5*_JAUGE_H;
 						_ctrl_titre ctrlSetText format [STR_R3F_LOG_action_heliport_attente, _duree];
 						_ctrl_titre ctrlCommit 0;
 						
-						// Création de l'arrière-plan de la jauge dans le display du jeu
+						// Crï¿½ation de l'arriï¿½re-plan de la jauge dans le display du jeu
 						_ctrl_fond = (findDisplay 46) ctrlCreate ["RscText", -1];
 						_ctrl_fond ctrlSetBackgroundColor [0, 0, 0, 0.4];
 						_ctrl_fond ctrlSetPosition [0.5 - 0.5*_JAUGE_W, _JAUGE_Y, _JAUGE_W, _JAUGE_H];
 						_ctrl_fond ctrlCommit 0;
 						
-						// Création d'une jauge à 0% dans le display du jeu
+						// Crï¿½ation d'une jauge ï¿½ 0% dans le display du jeu
 						_ctrl_jauge = (findDisplay 46) ctrlCreate ["RscText", -1];
 						_ctrl_jauge ctrlSetBackgroundColor [0, 0.6, 0, 1];
 						_ctrl_jauge ctrlSetPosition [0.5 - 0.5*_JAUGE_W, _JAUGE_Y, 0, _JAUGE_H];
 						_ctrl_jauge ctrlCommit 0;
 						
-						// La jauge passe progressivement de 0% à 100%
+						// La jauge passe progressivement de 0% ï¿½ 100%
 						_ctrl_jauge ctrlSetPosition [0.5 - 0.5*_JAUGE_W, _JAUGE_Y, _JAUGE_W, _JAUGE_H];
 						_ctrl_jauge ctrlCommit _duree;
 						
@@ -84,7 +84,7 @@ else
 						{
 							_ctrl_titre ctrlSetText format [STR_R3F_LOG_action_heliport_attente, ceil (_duree - (time - _time_debut))];
 							
-							// A partir des versions > 1.32, on interdit le lift si le hook de BIS est utilisé
+							// A partir des versions > 1.32, on interdit le lift si le hook de BIS est utilisï¿½
 							if (productVersion select 2 > 132) then
 							{
 								// Call compile car la commande getSlingLoad n'existe pas en 1.32
@@ -95,7 +95,7 @@ else
 								_pas_de_hook = true;
 							};
 							
-							// Pour valider l'héliportage, il faut rester en stationnaire au dessus de l'objet pendant le compte-à-rebours
+							// Pour valider l'hï¿½liportage, il faut rester en stationnaire au dessus de l'objet pendant le compte-ï¿½-rebours
 							if !(
 								alive player && vehicle player == _heliporteur && !(_heliporteur getVariable "R3F_LOG_disabled") && _pas_de_hook &&
 								isNull (_heliporteur getVariable "R3F_LOG_heliporte") && (vectorMagnitude velocity _heliporteur < 6) && (_heliporteur distance _objet < 15) &&
@@ -110,7 +110,7 @@ else
 							sleep 0.1;
 						};
 						
-						// On effecture l'héliportage
+						// On effecture l'hï¿½liportage
 						if (_attente_valide) then
 						{
 							ctrlDelete _ctrl_titre;
@@ -120,14 +120,14 @@ else
 							_heliporteur setVariable ["R3F_LOG_heliporte", _objet, true];
 							_objet setVariable ["R3F_LOG_est_transporte_par", _heliporteur, true];
 							
-							// Attacher sous l'héliporteur au ras du sol
+							// Attacher sous l'hï¿½liporteur au ras du sol
 							_objet attachTo [_heliporteur, [
 								0,
 								0,
 								(boundingBoxReal _heliporteur select 0 select 2) - (boundingBoxReal _objet select 0 select 2) - (getPos _heliporteur select 2) + 0.5
 							]];
 							
-							// Ré-aligner dans le sens de la longueur si besoin
+							// Rï¿½-aligner dans le sens de la longueur si besoin
 							if (((boundingBoxReal _objet select 1 select 0) - (boundingBoxReal _objet select 0 select 0)) >
 								((boundingBoxReal _objet select 1 select 1) - (boundingBoxReal _objet select 0 select 1))) then
 							{
@@ -136,7 +136,7 @@ else
 							
 							systemChat format [STR_R3F_LOG_action_heliporter_fait, getText (configFile >> "CfgVehicles" >> (typeOf _objet) >> "displayName")];
 							
-							// Boucle de contrôle pendant l'héliportage
+							// Boucle de contrï¿½le pendant l'hï¿½liportage
 							[_heliporteur, _objet] spawn
 							{
 								private ["_heliporteur", "_objet", "_a_ete_souleve"];
@@ -148,19 +148,19 @@ else
 								
 								while {_heliporteur getVariable "R3F_LOG_heliporte" == _objet} do
 								{
-									// Mémoriser si l'objet a déjà été soulevé (cables tendus)
+									// Mï¿½moriser si l'objet a dï¿½jï¿½ ï¿½tï¿½ soulevï¿½ (cables tendus)
 									if (!_a_ete_souleve && getPos _objet select 2 > 3) then
 									{
 										_a_ete_souleve = true;
 									};
 									
-									// Si l'hélico se fait détruire ou si l'objet héliporté entre en contact avec le sol, on largue l'objet
+									// Si l'hï¿½lico se fait dï¿½truire ou si l'objet hï¿½liportï¿½ entre en contact avec le sol, on largue l'objet
 									if (!alive _heliporteur || (_a_ete_souleve && getPos _objet select 2 < 0)) exitWith
 									{
 										_heliporteur setVariable ["R3F_LOG_heliporte", objNull, true];
 										_objet setVariable ["R3F_LOG_est_transporte_par", objNull, true];
 										
-										// Détacher l'objet et lui appliquer la vitesse de l'héliporteur (inertie)
+										// Dï¿½tacher l'objet et lui appliquer la vitesse de l'hï¿½liporteur (inertie)
 										[_objet, "detachSetVelocity", velocity _heliporteur] call R3F_LOG_FNCT_exec_commande_MP;
 										
 										systemChat format [STR_R3F_LOG_action_heliport_larguer_fait, getText (configFile >> "CfgVehicles" >> (typeOf _objet) >> "displayName")];
@@ -174,7 +174,7 @@ else
 						{
 							systemChat STR_R3F_LOG_action_heliport_echec_attente;
 							
-							// La jauge s'arrête
+							// La jauge s'arrï¿½te
 							_ctrl_jauge ctrlSetPosition ctrlPosition _ctrl_jauge;
 							
 							// La jauge clignote rouge

@@ -11,17 +11,6 @@ private _ratio = (player nearEntities [SHOP_man, 10] select 0) getvariable ["SHO
 
 private _sell_list = [];
 private _sell_blacklist = [];
-private _classname_box = [
-	ammobox_b_typename,
-	ammobox_o_typename,
-	ammobox_i_typename,
-	A3W_BoxWps
-];
-private _classname_barrel = [
-	waterbarrel_typename,
-	fuelbarrel_typename,
-	foodbarrel_typename
-];
 
 private _getPrice = {
 	params ["_class"];
@@ -79,10 +68,8 @@ while { dialog && alive player } do {
 	if (_refresh) then {
 		// Init SELL list
 
-		private _sell_classnames = ["LandVehicle","Air","Ship"];
-		{ _sell_classnames pushBack _x } foreach _classname_box + _classname_barrel;
-
-		_sell_list = [nearestObjects [player, _sell_classnames, 100], {
+		private _sell_classnames = ["LandVehicle","Air","Ship","ReammoBox_F","Items_base_F"];
+		_sell_list = [getPosATL player nearEntities [_sell_classnames, 100], {
 			alive _x && (count (crew _x) == 0 || typeOf _x in uavs) &&
 			locked _x != 2 &&
 			[player, _x] call is_owner &&
@@ -93,15 +80,7 @@ while { dialog && alive player } do {
 		{
 			private _classname = typeOf _x;
 			private _price = [_classname] call _getPrice;
-	
-			if (_classname in _classname_box) then {
-				_price = round ((_price * GRLIB_recycling_percentage) / 1.5);
-			};
-			if (_classname in _classname_barrel) then {
-				_price = round ((_price * GRLIB_recycling_percentage) * 1.5);
-			};
-	
-			_price = round (_price * _ratio);
+			_price = round ((_price * GRLIB_recycling_percentage) * _ratio);
 			_sell_list_dlg1 pushBack [_classname, _price];
 		} forEach _sell_list;
 

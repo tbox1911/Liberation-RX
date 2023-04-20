@@ -12,6 +12,6 @@ while {true} do {
     _layer cutText ["", "PLAIN"];
   };
 
-  {_x disableTIEquipment true} forEach vehicles;
+  //{_x disableTIEquipment true} forEach vehicles; 
   sleep 1;
 };

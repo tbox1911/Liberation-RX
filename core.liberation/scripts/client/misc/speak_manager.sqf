@@ -100,10 +100,10 @@ speak_mission_delivery_2 = {
 // Nikos Old
 speak_mission_delivery_3 = {
 	params ["_unit"];
-	_target = player getVariable ["GRLIB_A3W_Mission_Marker", objNull];
+	private _target = player getVariable ["GRLIB_A3W_Mission_Marker", objNull];
 	if (!(_unit getVariable ["GRLIB_A3W_Mission_SD", false]) || _unit != _target) exitWith {gamelogic globalChat "Maybe another time..."};
 
-	_near_case = nearestObjects [_unit, ["Land_Suitcase_F"], 10];
+	private _near_case = getPosATL _unit nearEntities [["Land_Suitcase_F"], 10];
 	if (count _near_case > 0) then {
 		deleteVehicle (_near_case select 0);
 		_unit switchMove "AmovPercMstpSrasWrflDnon_Salute";

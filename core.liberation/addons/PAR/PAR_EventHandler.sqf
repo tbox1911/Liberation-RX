@@ -112,10 +112,12 @@ if (_unit == player && alive player && player isKindOf "Man") then {
 
 	_unit removeAllEventHandlers "GetInMan";
 	_unit addEventHandler ["GetInMan", {
+		params ["_unit", "_role", "_vehicle"];
 		1 fadeSound ( NRE_vehvolume / 100.0 );
 		NRE_EarplugsActive = 1;
 		[player, "hide"] remoteExec ["dog_action_remote_call", 2];
 		_this call vehicle_permissions;
+		_vehicle disableTIEquipment true;
 	}];
 
 	_unit removeAllEventHandlers "GetOutMan";

@@ -5,22 +5,22 @@ _debug = false;
 _intel_range = 150;
 _nbintel = 2 + (floor (random 3));
 _compatible_classnames = [
-"Land_Cargo_House_V1_F",
-"Land_Cargo_House_V2_F",
-"Land_Cargo_House_V3_F",
-"Land_Cargo_HQ_V1_F",
-"Land_Cargo_HQ_V2_F",
-"Land_Cargo_HQ_V3_F",
-"Land_Medevac_house_V1_F",
-"Land_Medevac_HQ_V1_F",
-"Land_i_Barracks_V1_F",
-"Land_i_Barracks_V1_dam_F",
-"Land_i_Barracks_V2_F",
-"Land_i_Barracks_V2_dam_F",
-"Land_u_Barracks_V2_F",
-"Land_MilOffices_V1_F",
-"Land_Research_HQ_F",
-"Land_Research_house_V1_F"
+	"Land_Cargo_House_V1_F",
+	"Land_Cargo_House_V2_F",
+	"Land_Cargo_House_V3_F",
+	"Land_Cargo_HQ_V1_F",
+	"Land_Cargo_HQ_V2_F",
+	"Land_Cargo_HQ_V3_F",
+	"Land_Medevac_house_V1_F",
+	"Land_Medevac_HQ_V1_F",
+	"Land_i_Barracks_V1_F",
+	"Land_i_Barracks_V1_dam_F",
+	"Land_i_Barracks_V2_F",
+	"Land_i_Barracks_V2_dam_F",
+	"Land_u_Barracks_V2_F",
+	"Land_MilOffices_V1_F",
+	"Land_Research_HQ_F",
+	"Land_Research_house_V1_F"
 ];
 
 if ( isNil "GRLIB_military_sectors_already_activated" ) then { GRLIB_military_sectors_already_activated = [] };
