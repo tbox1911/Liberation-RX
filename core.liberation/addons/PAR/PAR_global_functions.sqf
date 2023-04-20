@@ -121,6 +121,9 @@ PAR_del_marker = {
 // AI Section
 PAR_fn_AI_Damage_EH = {
 	params ["_unit"];
+
+	if ( _unit getVariable ["PAR_EH_Installed", false] ) exitWith {};
+	_unit setVariable ["PAR_EH_Installed", true];
 	_unit removeAllEventHandlers "HandleDamage";
 <<<<<<< HEAD
 	_unit addEventHandler ["HandleDamage", { _this call damage_manager_EH }];
@@ -187,7 +190,8 @@ PAR_fn_AI_Damage_EH = {
 			_veh = objectParent _unit;
 			if (!(isNull _veh) && damage _veh > 0.8) then {[_veh, _unit, true] spawn PAR_fn_eject};
 
-			if (!(_unit getVariable ["PAR_wounded", false]) && _dam >= 0.86) then {
+			private _isNotWounded = !(_unit getVariable ["PAR_wounded", false]);
+			if (_isNotWounded && _dam >= 0.86) then {
 				if (!isNull _veh) then {[_veh, _unit] spawn PAR_fn_eject};
 				_unit allowDamage false;
 				_unit setVariable ["PAR_wounded", true];
@@ -227,6 +231,7 @@ PAR_fn_AI_Damage_EH = {
 	_unit setVariable ["PAR_AI_score", 5, true];
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 94a03f47 (progressive level up)
 =======
 	[_unit] spawn player_EVH;
@@ -238,6 +243,9 @@ PAR_fn_AI_Damage_EH = {
 =======
 	_unit setVariable ["PAR_EH_Installed", true];
 >>>>>>> f2284768 (fix insta kill and typo)
+=======
+	[_unit] call PAR_EventHandler;
+>>>>>>> e4c60d98 (fix PAR)
 };
 
 // Player Section

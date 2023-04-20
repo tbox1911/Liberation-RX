@@ -216,7 +216,10 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 				_nextbuilding setVariable ["R3F_LOG_disabled", false, true];
 				_nextbuilding setVehicleLock "DEFAULT";
 				[_nextbuilding, _x select 5] call F_setCargo;
-			};	
+			};
+			if ( _nextclass == Arsenal_typename && !GRLIB_enable_arsenal ) then {
+				_nextbuilding addItemCargoGlobal ["SatchelCharge_Remote_Mag", 2];
+			};			
         } else {
 			if ( !(_owner in ["", "public"]) && count _x > 5 ) then {
 				[_x select 5] params [["_color", ""]];

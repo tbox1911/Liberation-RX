@@ -93,12 +93,12 @@ while { true } do {
 			_grp = group player;
 			_unit = _grp createUnit [_classname, _pos, [], 5, "NONE"];
 			[_unit] joinSilent _grp;
-			_unit setUnitRank "PRIVATE";
-			_unit setSkill 0.6;
 			_unit setVariable ["PAR_Grp_ID", format["Bros_%1", PAR_Grp_ID], true];
+			[_unit] call PAR_fn_AI_Damage_EH;
 			_unit enableIRLasers true;
 			_unit enableGunLights "Auto";
-			[_unit] spawn PAR_fn_AI_Damage_EH;
+			_unit setUnitRank "PRIVATE";
+			_unit setSkill 0.6;
 
 			if (GRLIB_opfor_english) then {
 				//[_unit, _spk] remoteExec ["setSpeaker", 0];
@@ -204,7 +204,7 @@ while { true } do {
 				_unit enableGunLights "Auto";
 				_unit setVariable ["PAR_Grp_ID", format["AI_%1",PAR_Grp_ID], true];
 				//_unit forceAddUniform (uniform player);
-				[_unit] spawn PAR_fn_AI_Damage_EH;
+				[_unit] call PAR_fn_AI_Damage_EH;
 				_idx = _idx + 1;
 				sleep 0.1;
 			} foreach _classname;
@@ -485,6 +485,11 @@ while { true } do {
 						_vehicle setMaxLoad playerbox_cargospace;
 					};
 
+					// Ammobox (add Charge)
+					if ( _classname == Arsenal_typename && !GRLIB_enable_arsenal ) then {
+						_vehicle addItemCargoGlobal ["SatchelCharge_Remote_Mag", 2];
+					};
+
 					// Static Weapon
 					if (_classname in static_vehicles_AI) then {
 						_vehicle setMass 5000;
@@ -527,6 +532,7 @@ while { true } do {
 								_ammo1 allowDamage false;
 								_ammo1 setVariable ["GRLIB_vehicle_owner", "public", true];
 								_ammo1 setVariable ["R3F_LOG_disabled", true, true];
+								if (_x == Arsenal_typename) then { _ammo1 addItemCargoGlobal ["SatchelCharge_Remote_Mag", 2] };
 								sleep 0.5;
 							} forEach [Arsenal_typename, "Box_NATO_Ammo_F"];
 						};

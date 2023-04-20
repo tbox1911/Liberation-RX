@@ -21,7 +21,7 @@ if (count _context >= 1) then {
             } else {
                 [localize "$STR_SQUAD_WAIT"] remoteExec ["hintSilent", owner _player];
                 if ([_player, "FOB", GRLIB_fob_range] call F_check_near && isTouchingGround (vehicle _player)) then {
-                    private ["_grp", "_pos", "_uid", "_unit"];
+                    private ["_grp", "_pos", "_unit"];
                     _grp = createGroup [GRLIB_side_friendly, true];
                     {
                         _class = _x select 0;
@@ -29,10 +29,7 @@ if (count _context >= 1) then {
                         _loadout = _x select 2;
 
                         _pos = getPosATL _player;
-                        _uid = getPlayerUID _player;
                         _unit = _grp createUnit [_class, _pos, [], 10, "NONE"];
-                        _unit setVariable ["PAR_Grp_ID", format["Bros_%1", _uid], true];
-                        _unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
                         _unit setUnitLoadout _loadout;
                         _unit setUnitRank _rank;
                         _unit setSkill (0.6 + (GRLIB_rank_level find _rank) * 0.05);
@@ -42,10 +39,11 @@ if (count _context >= 1) then {
                             [ _unit ],
                             {
                                 params ["_unit"];
+                                [_unit] joinSilent (group player);
+                                _unit setVariable ["PAR_Grp_ID", format["Bros_%1", PAR_Grp_ID], true];
+                                [_unit] call PAR_fn_AI_Damage_EH;
                                 _unit enableIRLasers true;
                                 _unit enableGunLights "Auto";
-                                [_unit] joinSilent (group player);
-                                [_unit] spawn PAR_fn_AI_Damage_EH;
                                 gamelogic globalChat format ["Adds %1 (%2) to your squad.", name _unit, rank _unit];
                             }
                         ] remoteExec ["bis_fnc_call", owner _player];
