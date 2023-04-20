@@ -3,6 +3,7 @@ class VIRT_vehicle_garage {
 	name = "VIRT_vehicle_garage";
 	movingEnable = false;
 	enableSimulation = true;
+
 	class controlsBackground {
 		class OuterBG1: StdBG {
 			colorBackground[] = COLOR_BROWN;
@@ -35,16 +36,16 @@ class VIRT_vehicle_garage {
 			h = 0.04 * safezoneH;
 		};
 
-		class VehList : StdListNBox {
+		class VehList: StdListNBox {
 			idc = 110;
-			x = 0.21 * safezoneW + safezoneX;
-			y = 0.2294 * safezoneH + safezoneY;
-			w = 0.2372 * safezoneW;
-			h = (0.35 * safezoneH) - (2 * BORDERSIZE);
+			x = 0.205887 * safezoneW + safezoneX;
+			y = 0.2074 * safezoneH + safezoneY;
+			w = 0.221719 * safezoneW;
+			h = 0.473 * safezoneH;
 			columns[] = {0, 0.75};
-			onLBSelChanged="";
+			onLBSelChanged = "";
 			shadow = 2;
-			rowHeight = 1.25 * 0.018 * safezoneH;
+			rowHeight = "1.25 * 0.018 * safezoneH";
 			colorPicture[] = {1,1,1,1};
 			colorPictureSelected[] = {0,1,0,1};
 			colorPictureDisabled[] = {0.4,0.4,0.4,1};

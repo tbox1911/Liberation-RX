@@ -95,6 +95,7 @@ if (!GRLIB_ACE_enabled) then {
 	[] execVM "scripts\client\misc\support_manager.sqf";
 };
 [] execVM "addons\VIRT\virtual_garage_init.sqf";
+[] execVM "addons\SHOP\traders_shop_init.sqf";
 [] execVM "addons\TAXI\taxi_init.sqf";
 [] execVM "addons\TARU\taru_init.sqf";
 
