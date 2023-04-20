@@ -65,6 +65,12 @@ if ( isServer ) then {
 		[_unit] call clean_vehicle;
 	};
 
+	if ( _unit isKindOf "Man" && vehicle _unit != _unit ) then {
+		sleep 3;
+		_unit action ["Eject", vehicle _unit];
+		//moveOut _unit;
+	};
+
 	if ( _unit isKindOf "Man" && _unit != _killer ) then {
 		_isPrisonner = _unit getVariable ["GRLIB_is_prisonner", false];
 		if ( side (group _unit) == GRLIB_side_civilian || _isPrisonner ) then {
