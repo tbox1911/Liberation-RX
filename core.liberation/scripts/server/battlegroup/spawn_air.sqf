@@ -22,6 +22,7 @@ for "_i" from 1 to _planes_number do {
 	_newvehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	{ _x addMPEventHandler ["MPKilled", {_this spawn kill_manager}]; } foreach (crew _newvehicle);
 	(crew _newvehicle) joinSilent _air_grp;
+	diag_log format [ "Spawning Air vehicle %1 at %2", typeOf _newvehicle, time ];
 	sleep 5;
 };
 

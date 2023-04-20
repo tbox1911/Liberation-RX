@@ -34,10 +34,8 @@ if ( _spawn_marker != "" ) then {
 
 	{
 		_nextgrp = createGroup [GRLIB_side_enemy, true];
-		sleep 0.5;
 		_vehicle = [markerpos _spawn_marker, _x] call F_libSpawnVehicle;
 		_vehicle setVariable ["GRLIB_counter_TTL", round(time + 1800)];  // 30 minutes TTL
-		sleep 0.5;
 		(crew _vehicle) joinSilent _nextgrp;
 		[_nextgrp, false] spawn battlegroup_ai;
 		{ _x setVariable ["GRLIB_counter_TTL", round(time + 1800)] } forEach (units _nextgrp);
@@ -46,8 +44,10 @@ if ( _spawn_marker != "" ) then {
 			[_vehicle] spawn troup_transport;
 		};
 		last_battlegroup_size = last_battlegroup_size + 1;
+		sleep 2;
 	} foreach _selected_opfor_battlegroup;
 
+	sleep 5;
 	if ( GRLIB_csat_aggressivity > 0.9 ) then {
 		[([markerpos _spawn_marker] call F_getNearestBluforObjective) select 0, GRLIB_side_enemy] spawn spawn_air;
 	};
