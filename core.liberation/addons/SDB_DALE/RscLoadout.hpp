@@ -1,16 +1,16 @@
-#define DALE_var_dlgWidthImg			0.650
-#define DALE_var_dlgHeightImg			0.600
-#define DALE_var_dlgWidthSection		0.100
-#define DALE_var_dlgHeightSection		0.020
+#define DALE_VAR_DLGWIDTHIMG			0.650
+#define DALE_VAR_DLGHEIGHTIMG			0.600
+#define DALE_VAR_DLGWIDTHSECTION		0.100
+#define DALE_VAR_DLGHEIGHTSECTION		0.020
 
 class DALE_RscButton {
 	idc = 2000;
 	x = 0;
 	y = 0;
-	w = __EVAL(safezoneW * DALE_var_dlgHeightSection);
-	h = __EVAL(safezoneH * DALE_var_dlgHeightSection);	
+	w = __EVAL(safezoneW * DALE_VAR_DLGHEIGHTSECTION);
+	h = __EVAL(safezoneH * DALE_VAR_DLGHEIGHTSECTION);
 	text = "";
-	
+
 	borderSize = 0;
 	colorBackground[] 			= {0,0,0,0.8};
 	colorBackgroundActive[] 	= {1,1,1,0.8};
@@ -22,7 +22,7 @@ class DALE_RscButton {
 	colorText[] 				= {1,1,1,1};
 	deletable = 0;
 	fade = 0;
-	font = "PuristaLight";		
+	font = "PuristaLight";
 	offsetPressedX = 0;
 	offsetPressedY = 0;
 	offsetX = 0;
@@ -40,9 +40,9 @@ class DALE_RscCombo {
 	idc = 3000;
 	x = 0;
 	y = 0;
-	w = __EVAL(safezoneW * DALE_var_dlgWidthSection);
-	h = __EVAL(safezoneH * DALE_var_dlgHeightSection);
-	
+	w = __EVAL(safezoneW * DALE_VAR_DLGWIDTHSECTION);
+	h = __EVAL(safezoneH * DALE_VAR_DLGHEIGHTSECTION);
+
 	arrowEmpty = "\A3\ui_f\data\GUI\RscCommon\rsccombo\arrow_combo_ca.paa";
 	arrowFull = "\A3\ui_f\data\GUI\RscCommon\rsccombo\arrow_combo_active_ca.paa";
 
@@ -62,7 +62,7 @@ class DALE_RscCombo {
 	colorSelect2Right[] = {0,0,0,1};
 	colorText[] = {1,1,1,1};
 	colorTextRight[] = {1,1,1,1};
-	
+
 	deletable = 0;
 	fade = 0;
 	font = "PuristaLight";
@@ -103,17 +103,17 @@ class DALE_RscLoadout {
 	class controls {
 		class title {
 			idc = 1000;
-			x = __EVAL(safezoneX + safezoneW * (0.500-DALE_var_dlgWidthImg/2));
-			y = __EVAL(safezoneY + safezoneH * (0.475-DALE_var_dlgHeightImg/2));
-			w = __EVAL(safezoneW * DALE_var_dlgWidthImg);
-			h = __EVAL(safezoneH * DALE_var_dlgHeightSection);
+			x = __EVAL(safezoneX + safezoneW * (0.500-DALE_VAR_DLGWIDTHIMG/2));
+			y = __EVAL(safezoneY + safezoneH * (0.475-DALE_VAR_DLGHEIGHTIMG/2));
+			w = __EVAL(safezoneW * DALE_VAR_DLGWIDTHIMG);
+			h = __EVAL(safezoneH * DALE_VAR_DLGHEIGHTSECTION);
 			text = "";
-			
+
 			colorbackground[] = {0.77,0.51,0.08,0.8};
 			colorText[] = {1,1,1,1};
 			deletable = 0;
 			fade = 0;
-			size = __EVAL(safezoneH * DALE_var_dlgHeightSection);
+			size = __EVAL(safezoneH * DALE_VAR_DLGHEIGHTSECTION);
 			shadow = 1;
 			style = 0;
 			type = 13;
@@ -127,12 +127,12 @@ class DALE_RscLoadout {
 		};
 		class background {
 			idc = 1001;
-			x = __EVAL(safezoneX + safezoneW * (0.500-DALE_var_dlgWidthImg/2));
-			y = __EVAL(safezoneY + safezoneH * (0.500-DALE_var_dlgHeightImg/2));
-			w = __EVAL(safezoneW * DALE_var_dlgWidthImg);
-			h = __EVAL(safezoneH * DALE_var_dlgHeightImg);	
+			x = __EVAL(safezoneX + safezoneW * (0.500-DALE_VAR_DLGWIDTHIMG/2));
+			y = __EVAL(safezoneY + safezoneH * (0.500-DALE_VAR_DLGHEIGHTIMG/2));
+			w = __EVAL(safezoneW * DALE_VAR_DLGWIDTHIMG);
+			h = __EVAL(safezoneH * DALE_VAR_DLGHEIGHTIMG);
 			text = "";
-			
+
 			colorbackground[] = {0.2,0.2,0.2,0.95};
 			colorText[] = {0,0,0,0};
 			font = "PuristaLight";
@@ -143,12 +143,12 @@ class DALE_RscLoadout {
 		};
 		class picture {
 			idc = 1002;
-			x = __EVAL(safezoneX + safezoneW * (0.500-DALE_var_dlgWidthImg/2));
-			y = __EVAL(safezoneY + safezoneH * (0.500-DALE_var_dlgHeightImg/2));
-			w = __EVAL(safezoneW * DALE_var_dlgWidthImg);
-			h = __EVAL(safezoneH * DALE_var_dlgHeightImg);
+			x = __EVAL(safezoneX + safezoneW * (0.500-DALE_VAR_DLGWIDTHIMG/2));
+			y = __EVAL(safezoneY + safezoneH * (0.500-DALE_VAR_DLGHEIGHTIMG/2));
+			w = __EVAL(safezoneW * DALE_VAR_DLGWIDTHIMG);
+			h = __EVAL(safezoneH * DALE_VAR_DLGHEIGHTIMG);
 			text = "";
-			
+
 			colorBackground[] = {0,0,0,0};
 			colorText[] = {1,1,1,1};
 			deletable = 0;
@@ -166,30 +166,30 @@ class DALE_RscLoadout {
 		};
 		class comboPreset: DALE_RscCombo {
 			idc = 1003;
-			x = __EVAL(safezoneX + safezoneW * (0.505-DALE_var_dlgWidthImg/2));
-			y = __EVAL(safezoneY + safezoneH * (0.505-DALE_var_dlgHeightImg/2));
-			w = __EVAL(safezoneW * DALE_var_dlgWidthSection*2);
+			x = __EVAL(safezoneX + safezoneW * (0.505-DALE_VAR_DLGWIDTHIMG/2));
+			y = __EVAL(safezoneY + safezoneH * (0.505-DALE_VAR_DLGHEIGHTIMG/2));
+			w = __EVAL(safezoneW * DALE_VAR_DLGWIDTHSECTION*2);
 		};
 		class comboPriority: DALE_RscCombo {
 			idc = 1004;
-			x = __EVAL(safezoneX + safezoneW * (0.495+DALE_var_dlgWidthImg/2-2*DALE_var_dlgWidthSection));
-			y = __EVAL(safezoneY + safezoneH * (0.505-DALE_var_dlgHeightImg/2));
-			w = __EVAL(safezoneW * DALE_var_dlgWidthSection*2);
+			x = __EVAL(safezoneX + safezoneW * (0.495+DALE_VAR_DLGWIDTHIMG/2-2*DALE_VAR_DLGWIDTHSECTION));
+			y = __EVAL(safezoneY + safezoneH * (0.505-DALE_VAR_DLGHEIGHTIMG/2));
+			w = __EVAL(safezoneW * DALE_VAR_DLGWIDTHSECTION*2);
 		};
 		class buttonClose: DALE_RscButton {
 			idc = 1005;
-			x = __EVAL(safezoneX + safezoneW * (0.500+DALE_var_dlgWidthImg/2-1*DALE_var_dlgWidthSection));
-			y = __EVAL(safezoneY + safezoneH * (0.505+DALE_var_dlgHeightImg/2));
-			w = __EVAL(safezoneW * DALE_var_dlgWidthSection);
+			x = __EVAL(safezoneX + safezoneW * (0.500+DALE_VAR_DLGWIDTHIMG/2-1*DALE_VAR_DLGWIDTHSECTION));
+			y = __EVAL(safezoneY + safezoneH * (0.505+DALE_VAR_DLGHEIGHTIMG/2));
+			w = __EVAL(safezoneW * DALE_VAR_DLGWIDTHSECTION);
 			text = $STR_DALE_Dialogs_Cancel;
 			onButtonClick = "(ctrlParent (_this select 0)) closeDisplay 0;";
 			style = 2;
 		};
 		class buttonApply: DALE_RscButton {
 			idc = 1006;
-			x = __EVAL(safezoneX + safezoneW * (0.495+DALE_var_dlgWidthImg/2-2*DALE_var_dlgWidthSection));
-			y = __EVAL(safezoneY + safezoneH * (0.505+DALE_var_dlgHeightImg/2));
-			w = __EVAL(safezoneW * DALE_var_dlgWidthSection);
+			x = __EVAL(safezoneX + safezoneW * (0.495+DALE_VAR_DLGWIDTHIMG/2-2*DALE_VAR_DLGWIDTHSECTION));
+			y = __EVAL(safezoneY + safezoneH * (0.505+DALE_VAR_DLGHEIGHTIMG/2));
+			w = __EVAL(safezoneW * DALE_VAR_DLGWIDTHSECTION);
 			text = $STR_DALE_Dialogs_Apply;
 			onButtonClick = "_this call DALE_fnc_dlgLoadoutApply;";
 			style = 2;

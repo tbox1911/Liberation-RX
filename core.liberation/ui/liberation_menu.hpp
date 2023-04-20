@@ -10,7 +10,7 @@ class liberation_menu {
 		style = ST_PICTURE;
 		colorText[] = COLOR_WHITE;
 		colorBackground[] = COLOR_NOALPHA;
-		font = FontM;
+		font = FONTM;
 		sizeEx = 0.1 * safezoneH;
 		x = 0.08 * safezoneW + safezoneX;
 		w = 0.25 * safezoneW;
@@ -45,7 +45,7 @@ class liberation_menu {
 		colorBackground2[] = COLOR_WHITE;
 		colorDisabled[] = COLOR_WHITE;
 		colorFocused[] = COLOR_WHITE;
-		font = FontM;
+		font = FONTM;
 		soundEnter[] = { "", 0, 1 };  // no sound
 		soundPush[] = {"\a3\Ui_f\data\Sound\CfgIngameUI\hintExpand", 0.891251, 1};
 		soundClick[] = { "", 0, 1 };  // no sound

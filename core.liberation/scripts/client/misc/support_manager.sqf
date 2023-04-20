@@ -149,9 +149,6 @@ while { true } do {
 		};
 	} forEach _UnitList;
 
-	// Clear waypoints
-	[player] spawn clear_wpt;
-
 	// Show Hint
 	private _neartower = ((sectors_allSectors select {_x select [0,6] == "tower_" && !(_x in blufor_sectors) && player distance2D (getMarkerPos _x) <= 20})) select 0;
 	if (!isNil "_neartower") then {

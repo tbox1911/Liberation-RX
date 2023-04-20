@@ -1,20 +1,20 @@
 /**
- * Constantes pour rendre les définitions des boîtes de dialogue plus lisible et maintenable
+ * Constantes pour rendre les dï¿½finitions des boï¿½tes de dialogue plus lisible et maintenable
  */
 
-#define R3F_LOG_ID_transporteur_START 65430
+#define R3F_LOG_ID_TRANSPORTEUR_START 65430
 
-#define R3F_LOG_IDD_dlg_contenu_vehicule (R3F_LOG_ID_transporteur_START + 1)
+#define R3F_LOG_IDD_DLG_CONTENU_VEHICULE (R3F_LOG_ID_TRANSPORTEUR_START + 1)
 
-#define R3F_LOG_IDC_dlg_CV_capacite_vehicule (R3F_LOG_ID_transporteur_START + 2)
-#define R3F_LOG_IDC_dlg_CV_liste_contenu (R3F_LOG_ID_transporteur_START + 3)
-#define R3F_LOG_IDC_dlg_CV_btn_decharger (R3F_LOG_ID_transporteur_START + 4)
+#define R3F_LOG_IDC_DLG_CV_CAPACITE_VEHICULE (R3F_LOG_ID_TRANSPORTEUR_START + 2)
+#define R3F_LOG_IDC_DLG_CV_LISTE_CONTENU (R3F_LOG_ID_TRANSPORTEUR_START + 3)
+#define R3F_LOG_IDC_DLG_CV_BTN_DECHARGER (R3F_LOG_ID_TRANSPORTEUR_START + 4)
 
-#define R3F_LOG_IDC_dlg_CV_titre (R3F_LOG_ID_transporteur_START + 10)
-#define R3F_LOG_IDC_dlg_CV_credits (R3F_LOG_ID_transporteur_START + 11)
-#define R3F_LOG_IDC_dlg_CV_btn_fermer (R3F_LOG_ID_transporteur_START + 12)
+#define R3F_LOG_IDC_DLG_CV_TITRE (R3F_LOG_ID_TRANSPORTEUR_START + 10)
+#define R3F_LOG_IDC_DLG_CV_CREDITS (R3F_LOG_ID_TRANSPORTEUR_START + 11)
+#define R3F_LOG_IDC_DLG_CV_BTN_FERMER (R3F_LOG_ID_TRANSPORTEUR_START + 12)
 
-#define R3F_LOG_IDC_dlg_CV_jauge_chargement (R3F_LOG_ID_transporteur_START + 13)
+#define R3F_LOG_IDC_DLG_CV_JAUGE_CHARGEMENT (R3F_LOG_ID_TRANSPORTEUR_START + 13)
 
 // Control types
 #define CT_STATIC           0
@@ -49,7 +49,7 @@
 #define CT_USER             99
 #define CT_MAP              100
 #define CT_MAP_MAIN         101
-#define CT_List_N_Box       102 // Arma 2 - N columns list box
+#define CT_LIST_N_BOX       102 // Arma 2 - N columns list box
 
 // Static styles
 #define ST_POS            0x0F

@@ -159,7 +159,7 @@ class liberation_secondary {
 	 			size = 0.02 * safezoneH;
 	 			sizeEx = 0.02 * safezoneH;
 	 			shadow = 2;
- 				font = FontM;
+ 				font = FONTM;
  				color = "#e0e0e0";
  				align = "left";
  				valign = "top";

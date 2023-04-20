@@ -46,7 +46,7 @@ class RPT_vehicle_repaint {
 			w = (0.030 * safezoneW);
 			h = (0.050 * safezoneH);
 			moving = false;
-			font = FontM;
+			font = FONTM;
 			text = "";
 		};
 		class VehImageShadow : IconImage {

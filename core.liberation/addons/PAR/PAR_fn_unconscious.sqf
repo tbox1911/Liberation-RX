@@ -23,7 +23,7 @@ sleep 8;
   params ["_wnded"];
   [
   _wnded,
-  "<t color='#00C900'>Revive</t>",
+  "<t color='#00C900'>" + localize "STR_PAR_AC_01" + "</t>",
   "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_reviveMedic_ca.paa","\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_reviveMedic_ca.paa",
    "round(_this distance2D _target) < 3 &&
     lifeState _target == 'INCAPACITATED' &&
@@ -64,8 +64,8 @@ sleep 8;
     _caller switchMove "";
   },
   [time],6,12] call BIS_fnc_holdActionAdd;
-  _wnded addAction ["<t color='#C90000'>" + "Drag" + "</t>", "addons\PAR\PAR_fn_drag.sqf", ["action_drag"], 9, false, true, "", "!PAR_isDragging", 3];
-  _wnded addAction ["<t color='#C90000'>" + "Release" + "</t>", { PAR_isDragging = false }, ["action_release"], 10, true, true, "", "PAR_isDragging"];
+  _wnded addAction ["<t color='#C90000'>" + localize "STR_PAR_AC_02" + "</t>", "addons\PAR\PAR_fn_drag.sqf", ["action_drag"], 9, false, true, "", "!PAR_isDragging", 3];
+  _wnded addAction ["<t color='#C90000'>" + localize "STR_PAR_AC_03" + "</t>", { PAR_isDragging = false }, ["action_release"], 10, true, true, "", "PAR_isDragging"];
 }] remoteExec ["bis_fnc_call", 0];
 
 private _bld = createVehicle [(selectRandom PAR_BloodSplat), getPos _unit, [], 0, "CAN_COLLIDE"];

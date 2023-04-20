@@ -60,7 +60,7 @@ class liberation_notice {
 		size = 0.025 * safezoneH;
 		sizeEx = 0.025 * safezoneH;
 		shadow = 2;
-		font = FontM;
+		font = FONTM;
 		color = "#e0e0e0";
 		align = "left";
 		valign = "top";

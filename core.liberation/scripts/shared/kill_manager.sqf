@@ -91,10 +91,12 @@ if ( isServer ) then {
 			if ( isPlayer _killer ) then {
 				stats_civilians_killed_by_players = stats_civilians_killed_by_players + 1;
 				if ( GRLIB_civ_penalties ) then {
-					_penalty = GRLIB_civ_killing_penalty;
-					_score = score _killer;
+					private _penalty = GRLIB_civ_killing_penalty;
+					private _score = score _killer;
 					if ( _score < GRLIB_perm_inf ) then { _penalty = 5 };
-					if ( _score > GRLIB_perm_inf && _score < GRLIB_perm_log ) then { _penalty = 10 };
+					if ( _score > GRLIB_perm_inf ) then { _penalty = 10 };
+					if ( _score > GRLIB_perm_air ) then { _penalty = 20 };
+					if ( _score > GRLIB_perm_max ) then { _penalty = 60 };
 					_killer addScore - _penalty;
 					[name _unit, _penalty, _killer] remoteExec ["remote_call_civ_penalty", 0];
 				};

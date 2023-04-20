@@ -64,7 +64,7 @@ class liberation_build {
 		style = ST_PICTURE;
 		colorText[] = {0, 0, 0, 1};
         colorBackground[] = {0, 0, 0, 1};
-		font = FontM;
+		font = FONTM;
 		sizeEx = 0.023;
 		y = (0.2525 * safezoneH + safezoneY);
 		w = (0.02 * safezoneW);
@@ -174,7 +174,7 @@ class liberation_build {
 		style = ST_PICTURE;
 		colorText[] = {1, 1, 1, 1};
         colorBackground[] = {0, 0, 0, 1};
-		font = FontM;
+		font = FONTM;
 		sizeEx = 0.023;
 		y = (0.32 * safezoneH + safezoneY);
 		w = (0.015 * safezoneW);
@@ -300,7 +300,7 @@ class liberation_build {
 		size = 0.02 * safezoneH;
 		sizeEx = 0.02 * safezoneH;
 		shadow = 2;
-		font = FontM;
+		font = FONTM;
 		color = "#e0e000";
 		align = "right";
 		valign = "top";

@@ -190,6 +190,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 				[_x select 9] params [["_lst_grl", []]];
 
 				_nextbuilding setVehicleLock "LOCKED";
+				_nextbuilding allowCrewInImmobile true;
 				_nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
 				_nextbuilding setVariable ["R3F_LOG_disabled", true, true];
 				[_nextbuilding, _color, _color_name, []] spawn RPT_fnc_TextureVehicle;
@@ -210,7 +211,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 
 			if ( !(_nextclass in no_kill_handler_classnames ) ) then {
 				_nextbuilding addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-				_nextbuilding addEventHandler ["HandleDamage", damage_manager_EH];
+				_nextbuilding addEventHandler ["HandleDamage", {_this spawn damage_manager_EH}];
 			};
 
 			if ( _nextclass == FOB_typename ) then {

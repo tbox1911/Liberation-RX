@@ -22,9 +22,9 @@ else
 	_transporteur = uiNamespace getVariable "R3F_LOG_dlg_CV_transporteur";
 	_objets_charges = _transporteur getVariable ["R3F_LOG_objets_charges", []];
 
-	if (lbCurSel R3F_LOG_IDC_dlg_CV_liste_contenu == -1) exitWith {R3F_LOG_mutex_local_verrou = false;};
+	if (lbCurSel R3F_LOG_IDC_DLG_CV_LISTE_CONTENU == -1) exitWith {R3F_LOG_mutex_local_verrou = false;};
 
-	_type_objet_a_decharger = lbData [R3F_LOG_IDC_dlg_CV_liste_contenu, lbCurSel R3F_LOG_IDC_dlg_CV_liste_contenu];
+	_type_objet_a_decharger = lbData [R3F_LOG_IDC_DLG_CV_LISTE_CONTENU, lbCurSel R3F_LOG_IDC_DLG_CV_LISTE_CONTENU];
 
 	_est_deplacable = ([_type_objet_a_decharger] call R3F_LOG_FNCT_determiner_fonctionnalites_logistique) select R3F_LOG_IDX_can_be_moved_by_player;
 

@@ -59,7 +59,7 @@ class liberation_tips {
 		text = "$STR_TUTO_TEXT12";
 		size =  0.020 * safezoneH;
 		shadow = 2;
-		font = FontM;
+		font = FONTM;
 		color = "#e0e0e0";
 		align = "left";
 		valign = "top";
