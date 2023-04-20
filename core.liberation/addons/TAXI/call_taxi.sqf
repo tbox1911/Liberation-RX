@@ -28,26 +28,32 @@ if (_nb_unit > 8) then {_taxi_type = selectRandom taxi_type_14};
 hintSilent format [localize "STR_TAXI_CALLED", getText(configFile >> "cfgVehicles" >> _taxi_type >> "DisplayName")];
 
 // Create Taxi
-_air_grp = createGroup [GRLIB_side_civilian, true];
-_air_spawnpos = [] call F_getNearestFob;
+private _air_grp = createGroup [GRLIB_side_civilian, true];
+private _air_spawnpos = [] call F_getNearestFob;
 if (isNil "GRLIB_all_fobs" || count GRLIB_all_fobs == 0) then {
 	_air_spawnpos = markerPos "base_chimera";
 };
 
 _air_spawnpos = [(((_air_spawnpos select 0) + 500) - random 1000),(((_air_spawnpos select 1) + 500) - random 1000), 120];
 _vehicle = createVehicle [_taxi_type, _air_spawnpos, [], 0, "FLY"];
+_vehicle flyInHeight 150;
 _vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
+_vehicle setVariable ["GRLIB_counter_TTL", round(time + 1800), true];  // 30 minutes TTL
 _vehicle setVariable ["R3F_LOG_disabled", true, true];
-[_vehicle] spawn protect_static;
-_vehicle flyInHeight (100 + (random 60));
+_vehicle allowDamage false;
+_vehicle allowCrewInImmobile true;
+_vehicle setUnloadInCombat [true, false];
+_vehicle addAction [format ["<t color='#8000FF'>%1</t>", localize "STR_TAXI_ACTION1"], "addons\TAXI\taxi_pickdest.sqf","",999,true,true,"","vehicle _this == _target"];
+_vehicle addAction [format ["<t color='#FF0080'>%1</t>", localize "STR_TAXI_ACTION2"], {player setVariable ["GRLIB_taxi_called", nil, true]},"",998,true,true,"","vehicle _this == _target"];
 player setVariable ["GRLIB_taxi_called", _vehicle, true];
 
 createVehicleCrew _vehicle;
 sleep 1;
-_pilots = crew _vehicle;
+private _pilots = crew _vehicle;
 {
 	_x allowDamage false;
 	_x allowFleeing 0;
+	_x setVariable ["GRLIB_counter_TTL", round(time + 1800), true];  // 30 minutes TTL
  } foreach _pilots;
 _pilots joinSilent _air_grp;
 
@@ -59,83 +65,80 @@ waitUntil {
   (_vehicle distance2D _dest < 150)
 };
 
-if (alive player) then {
-	[_vehicle] call taxi_land;
+[_vehicle] call taxi_land;
 
-	// Pickup Marker
-	_marker = createMarkerLocal ["taxi_lz", getPos _vehicle];
-	_marker setMarkerShapeLocal "ICON";
-	_marker setMarkerTypeLocal "mil_pickup";
-	_marker setMarkerTextlocal "Taxi PickUp";
+// Pickup Marker
+_marker = createMarkerLocal ["taxi_lz", getPos _vehicle];
+_marker setMarkerShapeLocal "ICON";
+_marker setMarkerTypeLocal "mil_pickup";
+_marker setMarkerTextlocal "Taxi PickUp";
 
-	_stop = time + (5 * 60); // wait 5min max
+private _stop = time + (5 * 60); // wait 5min max
+waitUntil {
+	hintSilent format [localize "STR_TAXI_ARRIVED", round (_stop - time)];
+	sleep 1;
+	((count ([_vehicle, _pilots] call taxi_cargo) > 0) || time > _stop)
+};
+hintSilent "";
+
+if (time < _stop) then {
+
+	private _stop = time + (5 * 60); // wait 5min max
 	waitUntil {
-		hintSilent format [localize "STR_TAXI_ARRIVED", round (_stop - time)];
-		sleep 1;
-		(vehicle player == _vehicle || time > _stop)
+		sleep 0.5;
+		( (markerPos "taxi_dz") distance2D zeropos > 100 || isNil {player getVariable ["GRLIB_taxi_called", nil]} || time > _stop )
 	};
-	hintSilent "";
 
-	if (vehicle player == _vehicle) then {
-		_idact_dest = _vehicle addAction [format ["<t color='#8000FF'>%1</t>", localize "STR_TAXI_ACTION1"], "addons\TAXI\taxi_pickdest.sqf","",999,true,true,"","vehicle _this == _target"];
-		_idact_retr = _vehicle addAction [format ["<t color='#FF0080'>%1</t>", localize "STR_TAXI_ACTION2"], {player setVariable ["GRLIB_taxi_called", nil, true]},"",998,true,true,"","vehicle _this == _target"];
-		waitUntil {
-			sleep 0.5;
-			( !alive player || (markerPos "taxi_dz") distance2D zeropos > 100 || isNil {player getVariable ["GRLIB_taxi_called", nil]} )
-		};
+	removeAllActions _vehicle;
+	deleteMarkerLocal "taxi_lz";
 
-		_vehicle removeAction _idact_dest;
-		_vehicle removeAction _idact_retr;
-		deleteMarkerLocal "taxi_lz";
+	if ( (markerPos "taxi_dz") distance2D zeropos > 100 ) then {
+		hintSilent "Ok, let's go...";
+		_vehicle lock 2;
+		{ _x allowDamage false } forEach ([_vehicle, _pilots] call taxi_cargo);
 
-		if (!isNil {player getVariable ["GRLIB_taxi_called", nil]} && count ([_vehicle, _pilots] call taxi_cargo) > 0) then {
-			hintSilent "Ok, let's go...";
-
-			{ _x allowDamage false } forEach ([_vehicle, _pilots] call taxi_cargo);
-			_vehicle lock 2;
-
-			_dest = markerPos "taxi_dz";
-			_helipad = taxi_helipad_type createVehicle _dest;
-			[_air_grp, _dest] call taxi_dest;
-			(driver _vehicle) doMove _dest;
-			sleep 15;
-			waitUntil {
-				hintSilent format [localize "STR_TAXI_PROGRESS", round (_vehicle distance2D _dest)];
-				sleep 5;
-				if (round (speed _vehicle) == 0) then {
-					_vehicle setpos (getPos _vehicle vectorAdd [0, 0, 2]);
-					sleep 3;
-				};
-				(_vehicle distance2D _dest < 150)
-			};
-
-			[_vehicle] call taxi_land;
-			sleep 1;
-
-			{ _x allowDamage true } forEach ([_vehicle, _pilots] call taxi_cargo);
-
-			deleteVehicle _helipad;
-			deleteMarkerLocal "taxi_dz";
-		};
-
-		// Board Out
-		_vehicle lock 3;
-		waitUntil {[_vehicle] call taxi_outboard};
-
-		// Go back
-		sleep 5;
-		hintSilent localize "STR_TAXI_RETURN";
-		[_air_grp, zeropos] call taxi_dest;
-		(driver _vehicle) doMove zeropos;
+		_dest = markerPos "taxi_dz";
+		_helipad = taxi_helipad_type createVehicle _dest;
+		[_air_grp, _dest] call taxi_dest;
+		(driver _vehicle) doMove _dest;
 		sleep 30;
+
+		private _stop = time + (5 * 60); // wait 5min max
 		waitUntil {
-			sleep 3;
-			_speed = round (speed _vehicle);
-			if (_speed == 0) then {
+			hintSilent format [localize "STR_TAXI_PROGRESS", round (_vehicle distance2D _dest)];
+			sleep 5;
+			if (round (speed _vehicle) == 0) then {
 				_vehicle setpos (getPos _vehicle vectorAdd [0, 0, 2]);
 			};
-			_speed >= 10
+			(_vehicle distance2D _dest < 150 || time > _stop)
 		};
+
+		[_vehicle] call taxi_land;
+		{ _x allowDamage true } forEach ([_vehicle, _pilots] call taxi_cargo);
+
+		deleteVehicle _helipad;
+		deleteMarkerLocal "taxi_dz";
+	};
+
+	// Board Out
+	_vehicle lock 3;
+	waitUntil {[_vehicle] call taxi_outboard};
+	sleep 5;
+
+	// Go back
+	hintSilent localize "STR_TAXI_RETURN";
+	[_air_grp, zeropos] call taxi_dest;
+	(driver _vehicle) doMove zeropos;
+	sleep 30;
+
+	private _stop = time + (2 * 60); // wait 2min max
+	waitUntil {
+		sleep 5;
+		_speed = round (speed _vehicle);
+		if (_speed == 0) then {
+			_vehicle setpos (getPos _vehicle vectorAdd [0, 0, 2]);
+		};
+		(_speed >= 10 || time > _stop)
 	};
 };
 
