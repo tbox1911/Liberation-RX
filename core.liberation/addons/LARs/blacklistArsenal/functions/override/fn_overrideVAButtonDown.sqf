@@ -131,7 +131,8 @@ switch true do {
 					{
 						_soldiers set [count _soldiers,configName _x];
 					} forEach ("isclass _x && getnumber (_x >> 'scope') > 1 && gettext (_x >> 'simulation') == 'soldier'" configClasses (configFile >> "cfgvehicles"));
-					[_center,_soldiers call BIS_fnc_selectRandom] call BIS_fnc_loadInventory;
+					//[_center,_soldiers call BIS_fnc_selectRandom] call BIS_fnc_loadInventory;
+					[_center, selectRandom _soldiers] call BIS_fnc_loadInventory;
 					["ListSelectCurrent",[_display]] call BIS_fnc_arsenal;
 				}else {
 					['buttonRandom',[_display]] call BIS_fnc_arsenal;

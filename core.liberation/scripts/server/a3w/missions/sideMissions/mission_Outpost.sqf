@@ -22,7 +22,8 @@ _setupObjects =
 {
 	_missionPos = markerPos _missionLocation;
 
-	_outpost = (call compile preprocessFileLineNumbers "server\missions\outposts\outpostsList.sqf") call BIS_fnc_selectRandom;
+	//_outpost = (call compile preprocessFileLineNumbers "server\missions\outposts\outpostsList.sqf") call BIS_fnc_selectRandom;
+	_outpost = selectRandom (call compile preprocessFileLineNumbers "server\missions\outposts\outpostsList.sqf");
 	_objects = [_outpost, _missionPos, 0] call createOutpost;
 
 	_aiGroup = createGroup CIVILIAN;

@@ -5,7 +5,6 @@
 //	@file Author: AgentRev
 
 if (!isServer) exitWith {};
-sleep ((5 + (floor random 10)) * 60);
 
 private ["_controllerNum", "_tempController", "_controllerSuffix", "_missionsFolder", "_missionDelay", "_availableMissions", "_missionsList", "_nextMission", "_info"];
 
@@ -84,9 +83,12 @@ while {true} do {
 			sleep 10;
 		};
 	};
-	_missionDelay = MISSION_CTRL_DELAY;
+
 	[MISSION_CTRL_PVAR_LIST, _nextMission, true] call setMissionState;
-	diag_log format ["%1 Mission%2 waiting to run: %3", MISSION_CTRL_TYPE_NAME, _controllerSuffix, _nextMission];
+
+	_missionDelay = MISSION_CTRL_DELAY + ((floor random 10) * 60);
+	diag_log format ["%1 Mission%2 waiting to run: %3 in %4min", MISSION_CTRL_TYPE_NAME, _controllerSuffix, _nextMission, _missionDelay/60];
+
 	if (GRLIB_fancy_info == 2) then {
 		_msg = format
 				[
@@ -109,8 +111,8 @@ while {true} do {
 	[_info] remoteExec ["remote_call_showinfo", 0];
 
 	_timer = time;
-	waitUntil {sleep 5; ( time > (_timer + _missionDelay) || count allPlayers == 0) };
-	if (count allPlayers == 0 ) exitWith {};
+	waitUntil {sleep 5; ( time > (_timer + _missionDelay) || count allPlayers == 0)};
+	if (count allPlayers == 0) exitWith {};
 
 	// these should be defined in the mission script
 	private ["_setupVars", "_setupObjects", "_waitUntilMarkerPos", "_waitUntilExec", "_waitUntilCondition", "_waitUntilSuccessCondition", "_ignoreAiDeaths", "_failedExec", "_successExec"];
