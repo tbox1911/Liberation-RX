@@ -15,7 +15,7 @@ if (PAR_Grp_ID == "" || !(isPlayer player)) exitWith {
 	private _msg = format ["ARMA3 Multiplayer Initialization Error!\nPlease reconnect to the server..."];
 	titleText [_msg, "BLACK FADED", 100];
 	uisleep 10;
-	endMission "LOSER"
+	endMission "LOSER";
 };
 
 if (!isMultiplayer) exitWith {
@@ -132,12 +132,14 @@ addMissionEventHandler ["Draw3D",{
 	};
 
 	private _near_sign = player nearobjects [FOB_sign, 5];
-	if (count (_near_sign) != 0 && player distance2D lhd >= 1000) then {  
-		private _sign = _near_sign select 0;  
-		private _sign_pos = ASLToAGL getPosASL _sign;  
-		private _gid = _sign getVariable ["GRLIB_vehicle_owner", ""];  
-		private _name = GRLIB_player_scores select { _x select 0 == _gid} select 0 select 3;  
-		drawIcon3D ["", [1,1,1,1], _sign_pos vectorAdd [0, 0, 2.5], 0, 0, 0, format ["- FOB %1 -", _name], 2, 0.07, "RobotoCondensed", "center"];  
+	if (count (_near_sign) > 0 && player distance2D lhd >= 1000) then {  
+		private _sign = _near_sign select 0;
+		private _gid = _sign getVariable ["GRLIB_vehicle_owner", "public"];
+		private _name = "- LRX";
+		if (_gid != "public") then {
+			_name = GRLIB_player_scores select { _x select 0 == _gid} select 0 select 3;
+		};
+		drawIcon3D ["", [1,1,1,1], (ASLToAGL getPosASL _sign) vectorAdd [0, 0, 2.5], 0, 0, 0, format ["- FOB %1 -", _name], 2, 0.07, "RobotoCondensed", "center"];
 	};
 }];
 chimera_sign addAction ["<t color='#FFFFFF'>" + localize "STR_READ_ME" + "</t>",{createDialog "liberation_notice"},"",999,true,true,"","[] call is_menuok",5];

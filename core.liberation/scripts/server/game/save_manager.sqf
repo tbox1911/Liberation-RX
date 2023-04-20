@@ -323,8 +323,7 @@ while { true } do {
 		trigger_server_save = false;
 <<<<<<< HEAD
 		buildings_to_save = [];
-
-		_all_buildings = [];
+		private _all_buildings = [];
 		{
 			_fobpos = _x;
 			_nextbuildings = [ _fobpos nearobjects (GRLIB_fob_range * 2), {
@@ -334,7 +333,7 @@ while { true } do {
 				( speed _x < 5 ) &&
 				( isNull attachedTo _x ) &&
 				(((getpos _x) select 2) < 10 ) &&
-				( !(_x getVariable ['GRLIB_vehicle_owner', ""] in ["server", "public"]) || typeOf _x == huron_typename )
+				!(_x getVariable ["GRLIB_vehicle_owner", ""] == "server")
  				} ] call BIS_fnc_conditionalSelect;
 
 			_all_buildings = _all_buildings + _nextbuildings;
@@ -449,10 +448,14 @@ while { true } do {
 
 		profileNamespace setVariable [ GRLIB_save_key, greuh_liberation_savegame ];
 		saveProfileNamespace;
+<<<<<<< HEAD
 		diag_server_save = true;
 =======
 		[] call save_game;
 >>>>>>> a18fdb9a (save state at server stop)
+=======
+		diag_server_save = ([] call F_getValid);
+>>>>>>> 7b0f5b1f (FOB_sign public)
 	};
 
 };
