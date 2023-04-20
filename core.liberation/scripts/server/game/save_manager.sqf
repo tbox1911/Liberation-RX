@@ -293,9 +293,9 @@ while { true } do {
 				((typeof _x) in _classnames_to_save ) &&
 				( alive _x) &&
 				( speed _x < 5 ) &&
-				( isNull  attachedTo _x ) &&
+				( isNull attachedTo _x ) &&
 				(((getpos _x) select 2) < 10 ) &&
-				( !(_x getVariable ['R3F_LOG_disabled', false]) || (_x getVariable ['GRLIB_vehicle_owner', "Null"] != "Null") ) &&
+				( !(_x getVariable ['R3F_LOG_disabled', false]) || (_x getVariable ['GRLIB_vehicle_owner', "server"] != "server") ) &&
 				( getObjectType _x >= 8 )
  				} ] call BIS_fnc_conditionalSelect;
 

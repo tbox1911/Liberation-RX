@@ -68,6 +68,7 @@ while { true } do {
 				_unit = createAgent [_classname, _pos, [], 5, "CAN_COLLIDE"];
 				_unit setVariable ["BIS_fnc_animalBehaviour_disable", true];
 				_unit allowDamage false;
+				_unit addMPEventHandler ["MPKilled", FAR_Player_MPKilled];
 				player setVariable ["my_dog", _unit, true];
 				playSound3D ["a3\sounds_f\ambient\animals\dog1.wss", _unit, false, getPosASL _unit, 2, 0.8, 0];
 				_unit playMoveNow "Dog_Idle_Bark";
@@ -85,7 +86,7 @@ while { true } do {
 			_unit setSkill 0.6;
 			_unit setRank "PRIVATE";
 			_unit setVariable [format["Bros_%1",MGI_Grp_ID], true, true];
-			_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+			_unit addMPEventHandler ["MPKilled", FAR_Player_MPKilled];
 			_unit enableIRLasers true;
 			_unit enableGunLights "Auto";
 			[_unit] call player_EVH;
