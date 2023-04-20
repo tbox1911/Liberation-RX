@@ -16,11 +16,11 @@ private _big_unit = [
 private _recycleable_blacklist = [];
 {_recycleable_blacklist pushBack ( _x select 0 )} foreach (static_vehicles);
 
-waitUntil {sleep 1; !isNil "build_confirmed" };
-waitUntil {sleep 1; !isNil "one_synchro_done" };
-waitUntil {sleep 1; one_synchro_done };
-waitUntil {sleep 1; !isNil "GRLIB_player_spawned" };
-waituntil {sleep 1; GRLIB_player_spawned; (player getVariable ["GRLIB_score_set", 0] == 1)};
+waitUntil { !isNil "build_confirmed" };
+waitUntil { !isNil "one_synchro_done" };
+waitUntil { one_synchro_done };
+waitUntil { !isNil "GRLIB_player_spawned" };
+waituntil { GRLIB_player_spawned; (player getVariable ["GRLIB_score_set", 0] == 1)};
 
 while { true } do {
 	// Vehicles actions

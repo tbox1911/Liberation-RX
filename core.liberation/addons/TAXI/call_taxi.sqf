@@ -26,10 +26,10 @@ taxi_dest = {
 // Heli Taxi
 _taxi_type = [
 	"O_Heli_Light_02_unarmed_F",
+	"B_Heli_Transport_01_F",
 	"B_Heli_Transport_03_unarmed_green_F",
-	"B_Heli_Transport_03_unarmed_F",
-	"B_Heli_Light_01_F",
-	"I_Heli_light_03_F",
+	"B_Heli_Transport_03_black_F",
+	"I_Heli_light_03_unarmed_F",
 	"I_Heli_Transport_02_F"
 ] call BIS_fnc_selectRandom;
 
@@ -40,7 +40,7 @@ if (isNil "GRLIB_all_fobs" || count GRLIB_all_fobs == 0) then {
 	_air_spawnpos = markerPos "base_chimera";
 };
 
-_air_spawnpos = [(((_air_spawnpos select 0) + 500) - random 1000),(((_air_spawnpos select 1) + 500) - random 1000),0];
+_air_spawnpos = [(((_air_spawnpos select 0) + 500) - random 1000),(((_air_spawnpos select 1) + 500) - random 1000), 120];
 _vehicle = createVehicle [_taxi_type, _air_spawnpos, [], 0, "FLY"];
 _vehicle setVariable ["GRLIB_vehicle_owner", "server"];
 _vehicle setVariable ["R3F_LOG_disabled", true];

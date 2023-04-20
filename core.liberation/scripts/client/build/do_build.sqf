@@ -125,7 +125,7 @@ while { true } do {
 			if (buildtype != 9) then {
 				_idactcancel = player addAction ["<t color='#B0FF00'>" + localize "STR_CANCEL" + "</t> <img size='1' image='res\ui_cancel.paa'/>","scripts\client\build\build_cancel.sqf","",-760,false,true,"","build_confirmed == 1"];
 			};
-			_ghost_spot = (getmarkerpos "ghost_spot") findEmptyPosition [0,100];
+			_ghost_spot = (getmarkerpos "ghost_spot") findEmptyPosition [1,100,_classname];
 
 			_vehicle = _classname createVehicleLocal _ghost_spot;
 			_vehicle allowdamage false;
@@ -219,16 +219,8 @@ while { true } do {
 
 				if (count _near_objects == 0 && ((_truepos distance _posfob) < _maxdist) && (  ((!surfaceIsWater _truepos) && (!surfaceIsWater getpos player)) || (_classname in boats_names) ) ) then {
 
-					if ( ((buildtype == 6) || (buildtype == 99)) && ((gridmode % 2) == 1) ) then {
-						_vehicle setpos [round (_truepos select 0),round (_truepos select 1), _truepos select 2];
-					} else {
-						_vehicle setpos _truepos;
-					};
-					if ( buildtype == 6 || buildtype == 99 ) then {
-						_vehicle setVectorUp [0,0,1];
-					} else {
-						_vehicle setVectorUp surfaceNormal position _vehicle;
-					};
+					_vehicle setposATL _truepos;
+
 					if(build_invalid == 1) then {
 						GRLIB_ui_notif = "";
 						{ _x setObjectTexture [0, "#(rgb,8,8,3)color(0,1,0,1)"]; } foreach GRLIB_preview_spheres;
@@ -272,25 +264,20 @@ while { true } do {
 			};
 
 			if ( build_confirmed == 2 ) then {
-				_vehpos = getpos _vehicle;
 				_vehdir = getdir _vehicle;
 				deleteVehicle _vehicle;
 				sleep 0.1;
 				_vehicle = _classname createVehicle _truepos;
 				_vehicle allowDamage false;
 				_vehicle setdir _vehdir;
-				_vehicle setpos _truepos;
+				_vehicle setposATL _truepos;
 				if (!(_classname in  GRLIB_Ammobox)) then {
 					clearWeaponCargoGlobal _vehicle;
 					clearMagazineCargoGlobal _vehicle;
 					clearItemCargoGlobal _vehicle;
 					clearBackpackCargoGlobal _vehicle;
 				};
-				if ( buildtype == 6 || buildtype == 99 ) then {
-					_vehicle setVectorUp [0,0,1];
-				} else {
-					_vehicle setVectorUp surfaceNormal position _vehicle;
-				};
+
 				if ( (_classname in uavs) || manned ) then {
 					[ _vehicle ] call F_forceBluforCrew;
 				};

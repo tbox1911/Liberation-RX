@@ -1,4 +1,4 @@
-waitUntil { !isNil "GRLIB_permissions" };
+//waitUntil { !isNil "GRLIB_permissions" };
 private [ "_dialog", "_players_array" ];
 
 _players_array = [];

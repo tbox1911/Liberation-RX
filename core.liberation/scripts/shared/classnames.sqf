@@ -5,6 +5,7 @@ if ( isNil "FOB_box_typename" ) then { FOB_box_typename = "B_Slingload_01_Cargo_
 if ( isNil "FOB_truck_typename" ) then { FOB_truck_typename = "B_Truck_01_box_F"; };
 if ( isNil "Arsenal_typename" ) then { Arsenal_typename = "B_supplyCrate_F"; };
 if ( isNil "Respawn_truck_typename" ) then { Respawn_truck_typename = "B_Truck_01_medical_F"; };
+if ( isNil "mobile_respawn" ) then { mobile_respawn = "Land_SatelliteAntenna_01_F"; };   //Land_SatellitePhone_F
 if ( isNil "huron_typename" ) then { huron_typename = "B_Heli_Transport_03_unarmed_F"; };
 if ( isNil "ammobox_b_typename" ) then { ammobox_b_typename = "Box_NATO_AmmoVeh_F"; };
 if ( isNil "ammobox_o_typename" ) then { ammobox_o_typename = "Box_East_AmmoVeh_F"; };
@@ -57,18 +58,16 @@ light_vehicles = [
 	["B_Boat_Armed_01_minigun_F",5,30,5,GRLIB_perm_log],
 	["B_SDV_01_F",5,30,5,GRLIB_perm_log],
 	["C_Scooter_Transport_01_F",1,5,1,0],
-	["C_Hatchback_01_F",1,10,1,0],
-	["C_Hatchback_01_sport_F",1,10,1,GRLIB_perm_inf],
+	["SUV_01_base_black_F",1,10,1,0],
 	["C_Offroad_01_F",1,10,1,0],
 	["C_Offroad_02_unarmed_black_F",1,10,1,GRLIB_perm_inf],
 	["C_SUV_01_F",1,10,1,GRLIB_perm_inf],
 	["C_Van_01_transport_F",1,15,1,0],
-	["C_Van_01_box_F",1,15,1,0],
-	["B_MRAP_01_F",2,25,2,GRLIB_perm_inf],
-	["B_MRAP_01_hmg_F",5,100,2,GRLIB_perm_log],
+	["B_MRAP_01_F",2,25,2,0],
+	["B_MRAP_01_hmg_F",5,100,2,GRLIB_perm_inf],
 	["B_MRAP_01_gmg_F",5,125,2,GRLIB_perm_log],
-	["I_MRAP_03_F",2,25,2,GRLIB_perm_inf],
-	["I_MRAP_03_hmg_F",5,100,2,GRLIB_perm_log],
+	["I_MRAP_03_F",2,25,2,0],
+	["I_MRAP_03_hmg_F",5,100,2,GRLIB_perm_inf],
 	["I_MRAP_03_gmg_F",5,125,2,GRLIB_perm_log],
 	["B_Truck_01_transport_F",5,30,5,GRLIB_perm_log],
 	["B_Truck_01_covered_F",5,30,5,GRLIB_perm_log],
@@ -208,7 +207,7 @@ buildings = [
 support_vehicles = [
 	[Arsenal_typename,0,10,0,0],
 	["Box_B_UAV_06_medical_F",5,5,0,0],
-	["Land_TentDome_F",10,5,0,0],
+	[mobile_respawn,10,5,0,0],
 	["Land_CanisterFuel_Red_F",0,5,1,0],
 	["C_Offroad_01_repair_F",5,15,5,GRLIB_perm_inf],
 	["C_Van_01_fuel_F",5,15,20,GRLIB_perm_inf],
@@ -217,6 +216,7 @@ support_vehicles = [
 	["B_Slingload_01_Fuel_F",0,100,30,GRLIB_perm_log],
 	["B_Slingload_01_Ammo_F",0,150,0,GRLIB_perm_log],
 	["B_Slingload_01_Medevac_F",10,100,0,GRLIB_perm_log],
+	["B_Truck_01_cargo_F",5,50,10,GRLIB_perm_log],
 	["B_Truck_01_ammo_F",5,150,10,GRLIB_perm_tank],
 	["B_Truck_01_Repair_F",10,130,10,GRLIB_perm_tank],
 	["B_Truck_01_fuel_F",5,120,40,GRLIB_perm_tank],
@@ -285,7 +285,6 @@ ai_resupply_sources = [
 ai_healing_sources = [
 	Respawn_truck_typename,
 	"Box_B_UAV_06_medical_F",
-	"Land_MedicalTent_01_MTP_closed_F",
 	"B_APC_Tracked_01_CRV_F"
 ];
 
@@ -572,6 +571,8 @@ civilians = [
 ];
 
 civilian_vehicles = [
+	"C_Heli_Light_01_civil_F",
+	"C_Heli_light_01_furious_F",
 	"C_Hatchback_01_F",
 	"C_Hatchback_01_sport_F",
 	"C_Offroad_01_F",
@@ -622,8 +623,8 @@ GRLIB_vehicle_whitelist = [
 	ammobox_b_typename,
 	ammobox_o_typename,
 	ammobox_i_typename,
+	mobile_respawn,
 	"Box_East_Wps_F",
-	"Land_TentDome_F",
 	"Land_CanisterFuel_Red_F",
 	"Land_PierLadder_F",
 	"Box_B_UAV_06_medical_F",
@@ -651,7 +652,12 @@ GRLIB_vehicle_whitelist = [
 GRLIB_vehicle_blacklist = [
 	huron_typename,
 	opfor_ammobox_transport,
+	Respawn_truck_typename,
+	FOB_box_typename,
+	FOB_truck_typename,
 	"ReammoBox_F",
+	"C_Offroad_01_repair_F",
+	"C_Van_01_fuel_F",
 	"Box_UAV_06_base_F",
 	"B_Heli_Transport_01_F",
 	"O_Heli_Light_02_unarmed_F",
@@ -661,7 +667,7 @@ GRLIB_vehicle_blacklist = [
 	"O_Truck_03_fuel_F",
 	"O_Truck_03_medical_F"
 ];
-{GRLIB_vehicle_blacklist pushBack ( _x select 0 )} foreach (support_vehicles);
+//{GRLIB_vehicle_blacklist pushBack ( _x select 0 )} foreach (support_vehicles);
 
 infantry_units = [ infantry_units ] call F_filterMods;
 light_vehicles = [ light_vehicles ] call F_filterMods;
@@ -710,8 +716,8 @@ GRLIB_intel_file = "Land_File1_F";
 GRLIB_intel_laptop = "Land_Laptop_device_F";
 GRLIB_ignore_colisions_when_building = [
 	Arsenal_typename,
+	mobile_respawn,
 	"Box_B_UAV_06_medical_F",
-	"Land_TentDome_F",
 	"Box_NATO_Ammo_F",
   	"Box_NATO_WpsLaunch_F",
 	"Land_CanisterFuel_Red_F",

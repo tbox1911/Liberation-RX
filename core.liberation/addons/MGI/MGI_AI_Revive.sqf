@@ -69,12 +69,6 @@ MGI_fn_Revive = {
               isNil {_x getVariable 'MGI_heal'}
              ) then { [_x] spawn MGI_fn_checkWounded };
 
-          // AI rejoin player's group
-          if (group _x != group player &&
-              isNil {_x getVariable 'MGI_busy'} &&
-              (count (MGI_bros) < GRLIB_max_squad_size+GRLIB_squad_size_bonus)
-          ) then { [_x] joinSilent my_group };
-
           // AI stop doing shit !
           if ( leader group player != player &&
                lifeState player == 'incapacitated' &&
@@ -98,6 +92,14 @@ MGI_fn_Revive = {
       sleep 5;
     };
 };
+
+// AI rejoin player's group
+MGI_bros = allUnits select {(_x getVariable [format["Bros_%1",MGI_Grp_ID],nil])};
+{
+  if ( count (units group player) < (GRLIB_max_squad_size + GRLIB_squad_size_bonus) ) then { [_x] joinSilent my_group };
+} foreach MGI_bros;
+sleep 1;
+(group player) selectLeader player;
 
 [20,300,true] spawn MGI_fn_Revive;
 

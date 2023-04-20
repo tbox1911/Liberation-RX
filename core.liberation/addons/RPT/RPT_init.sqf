@@ -28,7 +28,6 @@ colorList =[
 	["Digital Desert 2", _texDir + "digi_desert2.paa"],
 	["Digital Woodland", _texDir + "digi_wood.paa"],
 	["Forest 1", _texDir + "foret1.paa"],
-	["Hex", _texDir + "hex.paa"],
 	["Jungle", _texDir + "jungle.paa"],
 	["Panzer Grey", _texDir + "panzergris.paa"],
 	["Urban", _texDir + "urban.paa"],
@@ -36,6 +35,10 @@ colorList =[
 	["Woodland Tiger", _texDir + "woodtiger.paa"]
 ];
 
+//pSikO
+if (getPlayerUID player in ["76561198085724439"]) then {
+	colorList = colorList +	[["pSiKO", _texDir + "hex.paa"]];
+};
 // Barbare
 if (getPlayerUID player in ["76561198085724439", "76561198098904932"]) then {
 	colorList = colorList +	[["Barbare", _texDir + "hellokitty.paa"]];

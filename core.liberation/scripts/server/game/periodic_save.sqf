@@ -1,4 +1,4 @@
-_save_interval = 30;
+_save_interval = 60;
 
 while { GRLIB_endgame == 0 } do {
 	sleep _save_interval;

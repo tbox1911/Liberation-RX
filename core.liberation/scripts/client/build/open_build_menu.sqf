@@ -70,6 +70,9 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 				if ( _classnamevar == FOB_truck_typename ) then {
 					_entrytext = localize "STR_FOBTRUCK";
 				};
+				if ( _classnamevar == mobile_respawn ) then {
+					_entrytext = "Mobile Respawn";
+				};
 				((findDisplay 5501) displayCtrl (110)) lnbAddRow [ _entrytext, format [ "%1" ,_x select 1], format [ "%1" ,_x select 2], format [ "%1" ,_x select 3]];
 
 				_icon = getText ( _cfg >> (_x select 0) >> "icon");
@@ -121,7 +124,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 	_squad_full = false;
 	_ammo_collected = player getVariable ["GREUH_ammo_count",0];
 	_bros = allUnits select {(_x getVariable [format["Bros_%1",MGI_Grp_ID],nil])};
-	if ((buildtype == 1) && (count (_bros) >= GRLIB_max_squad_size+GRLIB_squad_size_bonus)) then {
+	if ((buildtype == 1) && (count (_bros) >= GRLIB_max_squad_size + GRLIB_squad_size_bonus)) then {
 		_squad_full = true;
 	};
 	_linked = false;
