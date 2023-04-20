@@ -13,6 +13,7 @@ if ( isMultiplayer ) then {
 	GRLIB_civilian_activity = ["Civilians",1] call bis_fnc_getParamValue;
 	GRLIB_wildlife_manager = ["Wildlife",1] call bis_fnc_getParamValue;
 	GRLIB_Patrol_manager = ["Patrol",1] call bis_fnc_getParamValue;
+	GRLIB_sector_radius = ["SectorRadius",0] call bis_fnc_getParamValue;
 	GRLIB_admin_menu = ["AdminMenu",1] call bis_fnc_getParamValue;
 	GRLIB_param_wipe_savegame_1 = ["WipeSave1",0] call bis_fnc_getParamValue;
 	GRLIB_param_wipe_savegame_2 = ["WipeSave2",0] call bis_fnc_getParamValue;
@@ -31,6 +32,7 @@ if ( isMultiplayer ) then {
 	GRLIB_autodanger = [ "Autodanger",0] call bis_fnc_getParamValue;
 	GRLIB_maximum_fobs = [ "MaximumFobs",5] call bis_fnc_getParamValue;
 	GRLIB_fob_type = [ "FobType",0] call bis_fnc_getParamValue;
+	GRLIB_huron_type = [ "HuronType", 0] call bis_fnc_getParamValue;
 	GRLIB_squad_size = ["SquadSize",3] call bis_fnc_getParamValue;
 	GRLIB_max_squad_size = ["MaxSquadSize",7] call bis_fnc_getParamValue;
 	GRLIB_enable_arsenal = ["EnableArsenal",1] call bis_fnc_getParamValue;
@@ -54,6 +56,7 @@ if ( isMultiplayer ) then {
 	GRLIB_civilian_activity = 1;
 	GRLIB_wildlife_manager = 1;
 	GRLIB_Patrol_manager = 1;
+	GRLIB_sector_radius = 700;
 	GRLIB_admin_menu = 1;
 	GRLIB_param_wipe_savegame_1 = 0;
 	GRLIB_param_wipe_savegame_2 = 0;
@@ -72,6 +75,7 @@ if ( isMultiplayer ) then {
 	GRLIB_autodanger = 0;
 	GRLIB_maximum_fobs = 5;
 	GRLIB_fob_type = 0;
+	GRLIB_huron_type = 0;
 	GRLIB_squad_size = 3;
 	GRLIB_max_squad_size = 10;
 	GRLIB_enable_arsenal = 1;
@@ -80,6 +84,12 @@ if ( isMultiplayer ) then {
 	GRLIB_fancy_info = 2;
 	GRLIB_hide_opfor = 0;
 	GRLIB_thermic = 1;
+};
+
+// Huron type
+switch (GRLIB_huron_type) do {
+	case 0: {huron_typename = "B_Heli_Transport_03_unarmed_F" };
+	case 1: {huron_typename = "B_Heli_Transport_01_F" };
 };
 
 GRLIB_r1 = "&#108;&#105;&#98;&#101;&#114;&#97;&#116;&#105;&#111;&#110;";
@@ -114,3 +124,9 @@ if ( GRLIB_civ_penalties == 1 ) then { GRLIB_civ_penalties = true } else { GRLIB
 if ( GRLIB_blufor_defenders == 1 ) then { GRLIB_blufor_defenders = true } else { GRLIB_blufor_defenders = false };
 if ( GRLIB_autodanger == 1 ) then { GRLIB_autodanger = true } else { GRLIB_autodanger = false };
 if ( GRLIB_thermic == 1 ) then { GRLIB_thermic = true } else { GRLIB_thermic = false };
+
+[] call compileFinal preprocessFileLineNUmbers "gameplay_constants.sqf";
+
+if (GRLIB_sector_radius != 0) then {
+	GRLIB_sector_size = GRLIB_sector_radius;
+};

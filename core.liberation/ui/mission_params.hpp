@@ -72,6 +72,13 @@ class Params
 		texts[] = {$STR_PARAMS_ENABLED,$STR_PARAMS_DISABLED};
 		default = 1;
 	};
+	class SectorRadius{
+		title = $STR_PARAM_SECTOR_RADIUS;
+		values[] = {0,300,400,500,600,700,800,900,1000,1200,1500};
+		texts[] = {$STR_PARAMS_DISABLED,300,400,500,600,700,800,900,1000,1200,1500};
+		default = 0;
+	};
+
 	class DayDuration {
 		title = $STR_PARAMS_DAYDURATION;
 		values[] = { 48, 24, 16, 12, 9.6, 8, 6.8, 6, 4.8, 4, 3, 2.4, 2, 1.6, 1, 0.66, 0.5, 0.375, 0.25, 0.1875, 0.125, 0.11 };
@@ -148,7 +155,7 @@ class Params
 		default = 1;
 	};
 	class Patrol{
-		title = "Patrol Manager";
+		title = $STR_PARAM_PATROL;
 		values[] = {1,0};
 		texts[] = { $STR_PARAMS_ENABLED, $STR_PARAMS_DISABLED };
 		default = 1;
@@ -201,6 +208,13 @@ class Params
 		texts[] = {"Huron", "Truck"};
 		default = 0;
 	};
+	class HuronType{
+		title = $STR_PARAM_HURON_TYPE ;
+		values[] = {0,1};
+		texts[] = {"CH-67 Huron", "UH-80 Ghost Hawk"};
+		default = 0;
+	};
+
 	class SquadSize{
 		title = $STR_PARAM_SQUAD_SIZE_START;
 		values[] = {0,1,2,3,4,5,6,7,8,9,10};

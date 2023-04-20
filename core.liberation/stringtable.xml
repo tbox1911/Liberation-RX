@@ -1297,8 +1297,8 @@
 					<Chinesesimp>200% - 推荐使用具有多个无头客户端的专用服务器</Chinesesimp>
 			</Key>
 			<Key ID="STR_PARAMS_CIVILIANS">
-					<Original>Civilian activity</Original>
-					<French>Activité civile</French>
+					<Original>Enable the Civilian Manager</Original>
+					<French>Activiter le Gestionnaire de Civile</French>
 					<German>Zivile Aktivität</German>
 					<Spanish>Actividad civil</Spanish>
 					<Russian>Гражданская активность</Russian>
@@ -1338,7 +1338,12 @@
 			</Key>
 			<Key ID="STR_PARAM_WILDLIFE">
 					<Original>Enable the Wildlife Manager</Original>
-					<French>Activer le gestionnaire de vie sauvage</French>
+					<French>Activer le Gestionnaire de Vie Sauvage</French>
+					<Chinesesimp>启用野生动物管理</Chinesesimp>
+			</Key>
+			<Key ID="STR_PARAM_PATROL">
+					<Original>Enable the Patrol Manager</Original>
+					<French>Activer le Gestionnaire de Patrouilles</French>
 					<Chinesesimp>启用野生动物管理</Chinesesimp>
 			</Key>
 			<Key ID="STR_FRIENDLY_FIRE">
@@ -1364,6 +1369,10 @@
 					<Spanish>Adaptar presencia hostil según la cantidad de jugadores</Spanish>
 					<Russian>Вражеские силы адаптируются к количеству игроков</Russian>
 					<Chinesesimp>随玩家数量调整敌军活动</Chinesesimp>
+			</Key>
+			<Key ID="STR_PARAM_SECTOR_RADIUS">
+					<Original>The size of a sector (radius)</Original>
+					<French>La taille d'un secteur (radius)</French>
 			</Key>
 			<Key ID="STR_PARAM_PASSIVE_INCOME">
 					<Original>Replace ammo boxes spawns with passive income</Original>
@@ -3181,6 +3190,10 @@
 					<Original>Startup Fob Vehicle</Original>
 					<French>Type du vehicle de FOB</French>
 					<Chinesesimp>启动FOB车辆</Chinesesimp>
+			</Key>
+			<Key ID="STR_PARAM_HURON_TYPE">
+					<Original>The type of Huron</Original>
+					<French>Le type de Huron</French>
 			</Key>
 			<Key ID="STR_HINT_FOBS_EXCEEDED">
 					<Original>You are not allowed to deploy more than %1 FOBs at the same time.</Original>

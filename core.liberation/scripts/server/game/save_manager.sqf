@@ -182,7 +182,7 @@ if ( !isNil "greuh_liberation_savegame" ) then {
 				_nextbuilding setVariable [ "GRLIB_saved_pos", _nextpos, false];
 			};
 
-			if ( _owner != "" ) then {
+			if ( _owner != "" && _owner != "public" ) then {
 				[_x select 5] params [["_color", ""]];
 				[_x select 6] params [["_color_name", ""]];
 				[_x select 7] params [["_lst_a3", []]];

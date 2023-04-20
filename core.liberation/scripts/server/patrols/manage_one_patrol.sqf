@@ -89,8 +89,8 @@ while { GRLIB_endgame == 0 } do {
 			if ( count (units _grp) == 0  ) then {
 				_patrol_continue = false;
 			} else {
-				if ( time - _started_time > 800 ) then {
-					if ( [ getpos (leader _grp) , 4000 , GRLIB_side_friendly ] call F_getUnitsCount == 0 ) then {
+				if ( time - _started_time > 900 ) then {
+					if ( [ getpos (leader _grp) , (GRLIB_sector_size * 2) , GRLIB_side_friendly ] call F_getUnitsCount == 0 ) then {
 						_patrol_continue = false;
 						{
 							if ( vehicle _x != _x ) then {

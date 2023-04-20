@@ -11,7 +11,7 @@ private ["_nbUnits", "_box1", "_box2", "_townName", "_buildingpositions", "_tent
 _setupVars =
 {
 	_missionType = "Town Invasion";
-	_nbUnits = 10;
+	_nbUnits = AI_GROUP_LARGE;
 	_nbUnits = _nbUnits + round(random (_nbUnits*0.4));
 
 	// settings for this mission
