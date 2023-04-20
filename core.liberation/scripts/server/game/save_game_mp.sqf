@@ -65,7 +65,6 @@ if ( GRLIB_endgame == 1 ) then {
         _fobpos = _x;
         _nextbuildings = [ _fobpos nearobjects (GRLIB_fob_range * 2), {
             ( getObjectType _x >= 8 ) &&
-            !(isSimpleObject _x) &&
             ((typeof _x) in _classnames_to_save ) &&
             ( alive _x) &&
             ( speed vehicle _x < 5 ) &&

@@ -1,3 +1,4 @@
+GRLIB_map_modder = "pSiKO";
 GRLIB_save_key = "GREUH_LIBERATION_KAP_SAVEGAME_PSK";	// change this value if you want different savegames on different map
 GRLIB_side_resistance = RESISTANCE;
 GRLIB_side_civilian = CIVILIAN;

@@ -1,9 +1,11 @@
 // *** BADDIES ***
 GRLIB_side_enemy = INDEPENDENT;
+GRLIB_east_modder = "Z@Warrior";
 
 // All class MUST be defined !
 
 // CUP Royal Army Corps od Sahrani (Desert)
+
 opfor_sentry = "CUP_I_RACS_Soldier_AMG";
 opfor_rifleman = "CUP_I_RACS_Soldier";
 opfor_grenadier = "CUP_I_RACS_GL";

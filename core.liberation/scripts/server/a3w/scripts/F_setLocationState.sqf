@@ -4,18 +4,13 @@
 //	@file Name: setLocationState.sqf
 //	@file Author: AgentRev
 
-if (!isServer) exitWith {};
+#define MISSION_LOCATION_COOLDOWN (30*60)
 
-private ["_locArray", "_locName", "_locState"];
-
-_locArray = param [0, [], [[]]];
-_locName = param [1, "", [""]];
-_locState = param [2, false, [false]];
+params ["_locArray", "_locName", "_locState"];
 
 {
-	if (_x select 0 == _locName) exitWith
-	{
+	if (_x select 0 == _locName) exitWith {
 		_x set [1, _locState];
-		_x set [2, diag_tickTime];
+		_x set [2, round (time + MISSION_LOCATION_COOLDOWN)];
 	};
 } forEach _locArray;

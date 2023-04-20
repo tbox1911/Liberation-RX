@@ -1,5 +1,6 @@
 // *** FRIENDLIES ***
 GRLIB_side_friendly = WEST;
+GRLIB_west_modder = "Z@Warrior";
 
 // United States Army - Cold War Rearmed III
 

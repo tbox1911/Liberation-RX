@@ -34,10 +34,10 @@ if ( !(isnull _roadobj) ) then {
 		if ( count _nearinfantry >= _infantry_trigger || count _nearvehicles >= _vehicle_trigger ) then {
 			if ( _ultra_strong ) then {
 				"Bomb_04_F" createVehicle (getposATL _ied_obj);
-				deleteVehicle _ied_obj;
 			} else {
-				_ied_obj setDamage 1;
+				"R_80mm_HE" createVehicle (getPosATL _ied_obj);
 			};
+			deleteVehicle _ied_obj;
 			stats_ieds_detonated = stats_ieds_detonated + 1; publicVariable "stats_ieds_detonated";
 			_goes_boom = true;
 		};

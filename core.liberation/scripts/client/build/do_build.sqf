@@ -34,6 +34,7 @@ while { true } do {
 
 	build_confirmed = 1;
 	build_invalid = 0;
+	build_vehicle = objNull;
 	_classname = "";
 
 	if ( buildtype == 6 ) then { build_altitude = building_altitude } else { build_altitude = 0.2 };
@@ -394,7 +395,7 @@ while { true } do {
 				sleep 0.1;
 
 				if ([_classname, simple_objects] call F_itemIsInClass) then {
-					 createSimpleObject [_classname, AGLtoASL _truepos];
+					createSimpleObject [_classname, AGLtoASL _truepos];
 				} else {
 					_vehicle = _classname createVehicle _truepos;
 					_vehicle allowDamage false;
@@ -501,6 +502,11 @@ while { true } do {
 						_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_static }];
 					};
 
+					// ClutterCutter
+					if (_classname == "Land_ClutterCutter_large_F") then {
+						{_x hideObjectGlobal true} forEach (nearestTerrainObjects [_truepos, GRLIB_clutter_cutter, 20]);
+					};
+					
 					// FOB
 					if(buildtype == 99) then {
 						_vehicle addEventHandler ["HandleDamage", {0}];
@@ -542,6 +548,8 @@ while { true } do {
 						_vehicle allowDamage true;
 						_vehicle setDamage 0;
 					};
+
+					build_vehicle = _vehicle;
 				};
 
 				if(buildtype != 6) then {

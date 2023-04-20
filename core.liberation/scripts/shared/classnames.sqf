@@ -390,7 +390,6 @@ if (isNil "buildings_west_overide") then {
 
 // *** SIMPLE OBJECTS ***
 simple_objects = [
-	"Land_ClutterCutter_large_F",
 	"Land_PortableHelipadLight_01_F"
 ];
 
@@ -407,13 +406,15 @@ boats_names = [
 	"B_Boat_Armed_01_minigun_F"
 ] + opfor_boats + boats_west;
 
-boats_names_civ = [
-	"C_Scooter_Transport_01_F",
-	"C_Boat_Civil_01_F",
-	"C_Boat_Transport_02_F",
-	"C_Boat_Civil_01_police_F",
-	"C_Boat_Civil_01_rescue_F"
-];
+if ( isNil "civilian_boats" ) then {
+	civilian_boats = [
+		"C_Scooter_Transport_01_F",
+		"C_Boat_Civil_01_F",
+		"C_Boat_Transport_02_F",
+		"C_Boat_Civil_01_police_F",
+		"C_Boat_Civil_01_rescue_F"
+	];
+};
 
 // *** LRX - A3W ***
 if ( isNil "guard_squad" ) then {
@@ -699,8 +700,15 @@ opfor_infantry = [opfor_sentry,opfor_rifleman,opfor_grenadier,opfor_squad_leader
 GRLIB_rank_level = ["PRIVATE", "CORPORAL", "SERGEANT", "LIEUTENANT", "CAPTAIN", "MAJOR", "COLONEL"];
 GRLIB_intel_table = "Land_CampingTable_small_F";
 GRLIB_intel_chair = "Land_CampingChair_V2_F";
-GRLIB_intel_file = "Land_File1_F";
-GRLIB_intel_laptop = "Land_Laptop_device_F";
+GRLIB_intel_items = [
+	"Land_File1_F",
+	"Item_FileTopSecret",
+	"Item_SecretFiles",
+	"Item_NetworkStructure",
+	"Land_Laptop_device_F",
+	"Item_Laptop_Unfolded",
+	"Land_SatellitePhone_F"
+];
 GRLIB_ignore_colisions = [
 	huron_typename,
 	Arsenal_typename,

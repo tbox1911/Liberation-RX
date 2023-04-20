@@ -62,6 +62,9 @@ opfor_texture_overide = [];
 opfor_statics = [];
 units_loadout_overide = [];
 
+// see https://community.bistudio.com/wiki/nearestTerrainObjects for list
+GRLIB_clutter_cutter = ["Tree","Bush","Hide","House","Fence","Ruins","Rock","Rocks","Building"];
+
 // *** LRX DEFAULT BUILDINGS CLASSNAMES ***
 buildings_default = [
 	["Land_PierLadder_F",0,0,0,GRLIB_perm_inf],
@@ -96,6 +99,7 @@ buildings_default = [
 	["Land_TentLamp_01_suspended_F",0,0,0,GRLIB_perm_log],
     ["Land_TentLamp_01_suspended_red_F",0,0,0,GRLIB_perm_log],
 	["Land_LampHalogen_F",0,0,0,GRLIB_perm_tank],
+	["Land_LampStreet_02_triple_F",0,0,0,GRLIB_perm_inf],
 	["Land_HelipadSquare_F",0,0,0,GRLIB_perm_log],
 	["Land_Razorwire_F",0,0,0,GRLIB_perm_tank],
 	["Land_ToolTrolley_02_F",0,0,0,GRLIB_perm_tank],
@@ -125,5 +129,5 @@ buildings_default = [
 	["Land_CzechHedgehog_01_new_F",0,0,0,GRLIB_perm_inf],
 	["Land_ConcreteHedgehog_01_F",0,0,0,GRLIB_perm_log],
 	["Land_DragonsTeeth_01_4x2_old_redwhite_F",0,0,0,GRLIB_perm_tank],
-	["Land_ClutterCutter_large_F",0,0,0,GRLIB_perm_tank]
+	["Land_ClutterCutter_large_F",0,0,0,GRLIB_perm_inf]
 ];

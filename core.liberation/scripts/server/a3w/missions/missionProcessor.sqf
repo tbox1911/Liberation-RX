@@ -7,7 +7,6 @@
 
 if (!isServer) exitwith {};
 
-#define MISSION_LOCATION_COOLDOWN (10*60)
 #define MISSION_TIMER_EXTENSION (20*60)
 
 private ["_controllerSuffix", "_missionTimeout", "_availableLocations", "_missionLocation", "_leader", "_marker", "_failed", "_complete", "_startTime", "_oldAiCount", "_leaderTemp", "_newAiCount", "_adjustTime", "_lastPos", "_floorHeight"];
@@ -28,15 +27,13 @@ _missionTimeout = MISSION_PROC_TIMEOUT;
 if (!isNil "_locationsArray") then {
 	while {true} do
 	{
-		_availableLocations = [_locationsArray, { !(_x select 1) && diag_tickTime - (_x param [2, -1e11]) >= MISSION_LOCATION_COOLDOWN}] call BIS_fnc_conditionalSelect;
-
+		_availableLocations = [_locationsArray, {!(_x select 1) && (_x param [2, 0]) <= time }] call BIS_fnc_conditionalSelect;
 		if (count _availableLocations > 0) exitWith {};
 		sleep 60;
 	};
 
 	_missionLocation = (selectRandom _availableLocations) select 0;
 	[_locationsArray, _missionLocation, true] call setLocationState;
-	[_locationsArray, _missionLocation, markerPos _missionLocation] call cleanLocationObjects; // doesn't matter if _missionLocation is not a marker, the function will know
 };
 
 _continue_mission = true;

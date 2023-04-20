@@ -20,7 +20,7 @@ taxi_land = {
 	hintSilent localize "STR_TAXI_LANDED";
 	doStop (driver _vehicle);
 	deleteMarkerLocal "taxi_dz";
-	deleteVehicle GRLIB_taxi_helipad;
+	if (GRLIB_taxi_helipad_created) then { deleteVehicle GRLIB_taxi_helipad };
 };
 
 taxi_dest = {

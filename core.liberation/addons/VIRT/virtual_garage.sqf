@@ -126,7 +126,7 @@ while { dialog && alive player } do {
 					build_unit = [_veh_class,_color,_ammo,_lst_a3,_lst_r3f,_compo];
 					dobuild = 1;
 
-					waitUntil {sleep 0.3; dobuild == 0};
+					waitUntil {sleep 0.5; dobuild == 0};
 					if (build_confirmed == 0) then {
 						[_vehicle, load_veh, _guid] remoteExec ["vehicle_garage_remote_call", 2];
 						hintSilent (format ["Vehicle %1\nUnloaded from Garage.", [_veh_class] call F_getLRXName]);

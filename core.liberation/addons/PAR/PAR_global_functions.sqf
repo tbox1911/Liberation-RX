@@ -16,12 +16,12 @@ PAR_unblock_AI = {
 	// Unblock unit(s) 0-8-1
 	params ["_unit_array"];
 	if (player getVariable ["SOG_player_in_tunnel", false]) exitWith {};
-	if ( count _unit_array == 0 ) then {
+	if ( isNull (objectParent player) && count _unit_array == 0 ) then {
 		player setPosATL (getPosATL player vectorAdd [([] call F_getRND), ([] call F_getRND), 0.5]);
 	} else {
 		{
 			_unit = _x;
-			if (round (player distance2D _unit) < 50 && (lifeState _unit != 'INCAPACITATED') && vehicle _unit == _unit) then {
+			if (isNull (objectParent _unit) && round (player distance2D _unit) < 50 && (lifeState _unit != 'INCAPACITATED') && vehicle _unit == _unit) then {
 				doStop _unit;
 				sleep 1;
 				_unit doWatch objNull;
@@ -38,7 +38,7 @@ PAR_unblock_AI = {
 				_unit switchMove "amovpknlmstpsraswrfldnon";
 				_unit playMoveNow "amovpknlmstpsraswrfldnon";
 			} else {
-				hintSilent "Unit is too far or is unconscious. (max 50m)";
+				hintSilent "Unit is in a vehicle or is unconscious,\n or is too far. (max 50m)";
 			};
 		} forEach _unit_array;
 	};

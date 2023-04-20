@@ -1,11 +1,14 @@
 // *** FRIENDLIES ***
 GRLIB_side_friendly = EAST;
+GRLIB_west_modder = "Z@Warrior / pSiKO";
 
 // Default classname: scripts\shared\default_classnames.sqf
 // Advanced definition: scripts\shared\classnames.sqf
 
 // Unsung Men NVA (8th Battalion PAWN '65)
 
+Arsenal_typename = "uns_AmmoBox_ANZAC";
+A3W_BoxWps = "uns_AmmoBoxUS_army";
 huron_typename = "uns_Mi8T_VPAF";
 FOB_typename = "Land_Cargo_HQ_V1_F";
 FOB_box_typename = "B_Slingload_01_Cargo_F";
@@ -13,26 +16,21 @@ FOB_truck_typename = "uns_nvatruck";
 FOB_typename = "Land_Cargo_HQ_V1_F";
 FOB_outpost = "Land_BagBunker_Tower_F";
 FOB_box_outpost = "Land_Cargo10_grey_F";
-
 Respawn_truck_typename = "uns_Type63_amb";
 ammo_truck_typename = "uns_nvatruck_reammo";
 fuel_truck_typename = "uns_nvatruck_refuel";
 repair_truck_typename = "uns_nvatruck_repair";
-
 pilot_classname = "uns_nvaf_pilot2";
 crewman_classname = "uns_nvaf_pilot5";
-
-//Arsenal_typename = "Land_vn_us_weapons_stack2";
-
-A3W_BoxWps = "uns_resupply_crate_NVA";
-
 repair_offroad = "C_Offroad_01_repair_F";
-
-SHOP_Man = "uns_civilian4";	//"C_Man_formal_1_F";
-SELL_Man = "uns_civilian3_b1";	//"C_Story_Mechanic_01_F";
-
-
-Radio_tower = "Antenna";  // Unsung Antenna - default Antenna will not explode ???
+SHOP_Man = "uns_civilian4";	
+SELL_Man = "uns_civilian3_b1";
+Radio_tower = "Antenna";
+waterbarrel_typename = "Land_WaterBottle_01_stack_F";
+fuelbarrel_typename = "LAND_barel7";
+foodbarrel_typename = "Land_FoodSacks_01_large_brown_idap_F";
+GRLIB_sar_wreck = "vn_air_uh1d_med_wreck";
+canisterFuel = "Land_CanisterFuel_Red_F";
 
 //repair_sling_typename = "B_Slingload_01_repair_F";
 //fuel_sling_typename = "B_Slingload_01_Fuel_F";
@@ -40,11 +38,6 @@ Radio_tower = "Antenna";  // Unsung Antenna - default Antenna will not explode ?
 //medic_sling_typename = "B_Slingload_01_Medevac_F";
 //PAR_Medikit = "Medikit";
 //PAR_AidKit = "FirstAidKit";
-//waterbarrel_typename = "Land_WaterBottle_01_stack_F";
-//fuelbarrel_typename = "Land_vn_metalbarrel_f";
-//foodbarrel_typename = "Land_FoodSacks_01_large_brown_idap_F";
-//GRLIB_sar_wreck = "vn_air_uh1d_med_wreck";
-//canisterFuel = "Land_CanisterFuel_Red_F";
 
 // *********************************************************************
 
@@ -87,56 +80,56 @@ GRLIB_perm_max*2	Super Colonel 	2000
 */
 
 light_vehicles = [
-["UNS_Zodiac_NVA",1,25,1,0],
-["UNS_ASSAULT_BOAT_VC",2,180,5,GRLIB_perm_log],
-["UNS_PATROL_BOAT_NVA",2,200,5,GRLIB_perm_log],
-["uns_Type55",2,130,5,0],
-["uns_nvatruck_mg",1,50,5,0],
-["uns_Type55_MG",1,65,5,GRLIB_perm_inf],
-["uns_Type55_M40",1,80,5,GRLIB_perm_inf],
-["uns_Type55_twinMG",1,60,5,GRLIB_perm_log],
-["uns_BTR152_ZPU",1,60,5,GRLIB_perm_log],
-["uns_Type55_ZU",1,80,5,GRLIB_perm_log],
-["uns_nvatruck_s60",1,100,5,GRLIB_perm_log],
-["uns_nvatruck_type65",1,125,5,GRLIB_perm_log],
-["uns_nvatruck_zpu",1,100,5,GRLIB_perm_log],
-["uns_Type63_mg",1,200,8,GRLIB_perm_tank]
+	["UNS_Zodiac_NVA",1,25,1,0],
+	["UNS_ASSAULT_BOAT_VC",2,180,5,GRLIB_perm_log],
+	["UNS_PATROL_BOAT_NVA",2,200,5,GRLIB_perm_log],
+	["uns_Type55",2,130,5,0],
+	["uns_nvatruck_mg",1,50,5,0],
+	["uns_Type55_MG",1,65,5,GRLIB_perm_inf],
+	["uns_Type55_M40",1,80,5,GRLIB_perm_inf],
+	["uns_Type55_twinMG",1,60,5,GRLIB_perm_log],
+	["uns_BTR152_ZPU",1,60,5,GRLIB_perm_log],
+	["uns_Type55_ZU",1,80,5,GRLIB_perm_log],
+	["uns_nvatruck_s60",1,100,5,GRLIB_perm_log],
+	["uns_nvatruck_type65",1,125,5,GRLIB_perm_log],
+	["uns_nvatruck_zpu",1,100,5,GRLIB_perm_log],
+	["uns_Type63_mg",1,200,8,GRLIB_perm_tank]
 ];
 
 heavy_vehicles = [
-["uns_ZSU23_NVA",2,225,10,GRLIB_perm_tank],
-["uns_ZSU57_NVA",2,250,10,GRLIB_perm_tank],
-["uns_ot34_85_nva",2,275,10,GRLIB_perm_tank],
-["uns_pt76",2,300,10,GRLIB_perm_tank],
-["uns_t34_85_nva",2,350,12,GRLIB_perm_tank],
-["uns_t54_nva",2,375,12,GRLIB_perm_max],
-["uns_t55_nva",2,400,12,GRLIB_perm_max],
-["uns_to55_nva",2,450,12,GRLIB_perm_max]
+	["uns_ZSU23_NVA",2,225,10,GRLIB_perm_tank],
+	["uns_ZSU57_NVA",2,250,10,GRLIB_perm_tank],
+	["uns_ot34_85_nva",2,275,10,GRLIB_perm_tank],
+	["uns_pt76",2,300,10,GRLIB_perm_tank],
+	["uns_t34_85_nva",2,350,12,GRLIB_perm_tank],
+	["uns_t54_nva",2,375,12,GRLIB_perm_max],
+	["uns_t55_nva",2,400,12,GRLIB_perm_max],
+	["uns_to55_nva",2,450,12,GRLIB_perm_max]
 ];
 
 air_vehicles = [
-["uns_Mi8TV_VPAF_MG",2,200,5,GRLIB_perm_inf],
-["uns_an2_bmb",3,800,10,GRLIB_perm_air],
-["uns_an2_cas",4,900,12,GRLIB_perm_air],
-["uns_Mig21_BMB",4,1000,12,GRLIB_perm_max],
-["uns_Mig21_SEAD",4,1100,12,GRLIB_perm_max],
-["uns_Mig21_CAS",4,1200,12,GRLIB_perm_max]
+	["uns_Mi8TV_VPAF_MG",2,200,5,GRLIB_perm_inf],
+	["uns_an2_bmb",3,800,10,GRLIB_perm_air],
+	["uns_an2_cas",4,900,12,GRLIB_perm_air],
+	["uns_Mig21_BMB",4,1000,12,GRLIB_perm_max],
+	["uns_Mig21_SEAD",4,1100,12,GRLIB_perm_max],
+	["uns_Mig21_CAS",4,1200,12,GRLIB_perm_max]
 ];
 
 
 blufor_air = [
-"uns_Mi8TV_VPAF_MG",
-"uns_Mig21_BMB",
-"uns_Mig21_CAS",
-"uns_an2_bmb",
-"uns_an2_cas"];
+	"uns_Mi8TV_VPAF_MG",
+	"uns_Mig21_BMB",
+	"uns_Mig21_CAS",
+	"uns_an2_bmb",
+	"uns_an2_cas"
+];
 
 static_vehicles = [
 	["uns_m1941_82mm_mortarNVA_arty",0,70,0,GRLIB_perm_log],
 	["uns_M40_106mm_NVA",0,40,0,GRLIB_perm_log],
 	["uns_KS19_NVA",0,40,0,GRLIB_perm_log],
 	["uns_ZPU4_NVA",0,40,0,GRLIB_perm_log],
-
 	["uns_pk_high_NVA",1,40,0,GRLIB_perm_log],
 	["uns_dshk_armoured_NVA",1,140,0,GRLIB_perm_log],
 	["uns_dshk_twin_NVA",1,40,0,GRLIB_perm_log],
@@ -148,12 +141,12 @@ static_vehicles = [
 
 // *** Static Weapon with AI ***
 static_vehicles_AI = [
-"uns_dshk_armoured_NVA",
-"uns_dshk_twin_NVA",
-"uns_pk_high_NVA",
-"uns_Type36_57mm_NVA",
-"uns_Type74_NVA",
-"uns_ZU23_NVA"
+	"uns_dshk_armoured_NVA",
+	"uns_dshk_twin_NVA",
+	"uns_pk_high_NVA",
+	"uns_Type36_57mm_NVA",
+	"uns_Type74_NVA",
+	"uns_ZU23_NVA"
 ];
 
 support_vehicles_west = [
@@ -194,47 +187,47 @@ buildings_west = [
 ];
 
 blufor_squad_inf_light = [
-"uns_men_NVA_65_off",
-"uns_men_NVA_65_MED",
-"uns_men_NVA_65_RF2",
-"uns_men_NVA_65_AS8"
+	"uns_men_NVA_65_off",
+	"uns_men_NVA_65_MED",
+	"uns_men_NVA_65_RF2",
+	"uns_men_NVA_65_AS8"
 ];
 
 
 blufor_squad_inf = [
-"uns_men_NVA_65_off",
-"uns_men_NVA_65_MED",
-"uns_men_NVA_65_RF2",
-"uns_men_NVA_65_AS8",
-"uns_men_NVA_65_HMG",
-"uns_men_NVA_65_AS8"
+	"uns_men_NVA_65_off",
+	"uns_men_NVA_65_MED",
+	"uns_men_NVA_65_RF2",
+	"uns_men_NVA_65_AS8",
+	"uns_men_NVA_65_HMG",
+	"uns_men_NVA_65_AS8"
 ];
 
 
 blufor_squad_at = [
-"uns_men_NVA_65_off",
-"uns_men_NVA_65_MED",
-"uns_men_NVA_65_RF2",
-"uns_men_NVA_65_AT",
-"uns_men_NVA_65_AT2"
+	"uns_men_NVA_65_off",
+	"uns_men_NVA_65_MED",
+	"uns_men_NVA_65_RF2",
+	"uns_men_NVA_65_AT",
+	"uns_men_NVA_65_AT2"
 ];
 
 blufor_squad_aa = [
-"uns_men_NVA_65_off",
-"uns_men_NVA_65_MED",
-"uns_men_NVA_65_RF2",
-"uns_men_NVA_65_AA",
-"uns_men_NVA_65_AA"
+	"uns_men_NVA_65_off",
+	"uns_men_NVA_65_MED",
+	"uns_men_NVA_65_RF2",
+	"uns_men_NVA_65_AA",
+	"uns_men_NVA_65_AA"
 ];
 
 blufor_squad_mix = [
-"uns_men_NVA_65_off",
-"uns_men_NVA_65_MED",
-"uns_men_NVA_65_RF2",
-"uns_men_NVA_65_AA",
-"uns_men_NVA_65_AT",
-"uns_men_NVA_65_MRK",
-"uns_men_NVA_65_LMG"
+	"uns_men_NVA_65_off",
+	"uns_men_NVA_65_MED",
+	"uns_men_NVA_65_RF2",
+	"uns_men_NVA_65_AA",
+	"uns_men_NVA_65_AT",
+	"uns_men_NVA_65_MRK",
+	"uns_men_NVA_65_LMG"
 ];
 
 squads = [
@@ -251,25 +244,22 @@ uavs = [
 
 // Everything the AI troups should be able to resupply from
 ai_resupply_sources_west = [
-"uns_Mi8T_VPAF",
-"uns_nvatruck_reammo",
-"uns_M577_amb",
-"Land_TentDome_F",
-Arsenal_typename
+	"uns_Mi8T_VPAF",
+	"uns_nvatruck_reammo",
+	"uns_M577_amb"
 ];
 
 // Everything the AI troups should be able to healing from
 ai_healing_sources_west = [
-"uns_Mi8T_VPAF",
-"uns_M577_amb",
-"Land_TentDome_F"
+	"uns_Mi8T_VPAF",
+	"uns_M577_amb",
+	"Land_TentDome_F"
 ];
 
 
 vehicle_rearm_sources_west = [
-"uns_Mi8T_VPAF",
-"uns_nvatruck_reammo",
-Arsenal_typename
+	"uns_Mi8T_VPAF",
+	"uns_nvatruck_reammo"
 ];
 
 vehicle_big_units_west = [
