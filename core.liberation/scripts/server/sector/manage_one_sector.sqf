@@ -52,12 +52,13 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 		if((random 100) > (33 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback ( [] call F_getAdaptiveVehicle ); };
 		_spawncivs = true;
 
-		_building_ai_max = round (30 * _popfactor) ;
+		_building_ai_max = round (15 * _popfactor) ;
 		_building_range = 300;
 		_local_capture_size = _local_capture_size * 1.4;
 		_iedcount = (2 + (floor (random 4))) * GRLIB_difficulty_modifier;
 		if ( _iedcount > 10 ) then { _iedcount = 10 };
 	};
+
 	if ( _sector in sectors_capture ) then {
 		_vehtospawn = [];
 		_infsquad = "militia";
@@ -65,11 +66,12 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 		if((random 100) > (66 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback (selectRandom militia_vehicles); };
 		if((random 100) > (33 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback (selectRandom militia_vehicles); };
 		_spawncivs = true;
-		_building_ai_max = round ((floor (20 + (round (combat_readiness / 10 )))) * _popfactor);
+		_building_ai_max = round ((floor (8 + (round (combat_readiness / 10 )))) * _popfactor);
 		_building_range = 200;
 		_iedcount = (floor (random 4)) * GRLIB_difficulty_modifier;
 		if ( _iedcount > 7 ) then { _iedcount = 7 };
 	};
+
 	if ( _sector in sectors_military ) then {
 		_infsquad = "csat";
 		_squad1 = ([] call F_getAdaptiveSquadComp);
@@ -84,9 +86,10 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 		if((random 100) > (33 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback ( [] call F_getAdaptiveVehicle ); };
 		if((random 100) > (66 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback ( [] call F_getAdaptiveVehicle ); };
 		_spawncivs = false;
-		_building_ai_max = round ((floor (18 + (round (combat_readiness / 4 )))) * _popfactor);
+		_building_ai_max = round ((floor (8 + (round (combat_readiness / 10 )))) * _popfactor);
 		_building_range = 110;
 	};
+
 	if ( _sector in sectors_factory ) then {
 		_vehtospawn = [];
 		_infsquad = "militia";
@@ -97,11 +100,12 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [ getmarkerpos _sector , [ _opforcou
 		if((random 100) > 66) then { _vehtospawn pushback ( [] call F_getAdaptiveVehicle ); };
 		if((random 100) > 33) then { _vehtospawn pushback (selectRandom militia_vehicles); };
 		_spawncivs = false;
-		_building_ai_max = round ((floor (18 + (round (combat_readiness / 10 )))) * _popfactor);
+		_building_ai_max = round ((floor (8 + (round (combat_readiness / 10 )))) * _popfactor);
 		_building_range = 100;
 		_iedcount = (floor (random 3)) * GRLIB_difficulty_modifier;
 		if ( _iedcount > 5 ) then { _iedcount = 5 };
 	};
+
 	if ( _sector in sectors_tower ) then {
 		_spawncivs = false;
 		_squad1 = ([] call F_getAdaptiveSquadComp);
