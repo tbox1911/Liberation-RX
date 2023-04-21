@@ -77,7 +77,9 @@ taxi_cargo = {
 };
 
 taxi_outboard = {
-	params ["_cargo"];
+	params ["_vehicle", "_cargo"];
+	_vehicle setVehicleLock "UNLOCKED";
+	_vehicle lockCargo false;
 	waitUntil {
 		_bailout = true;
 		{
@@ -91,4 +93,6 @@ taxi_outboard = {
 		sleep 1;
 		(_bailout);
 	};
+	_vehicle setVehicleLock "LOCKED";
+	_vehicle lockCargo true;		
 };
