@@ -75,44 +75,6 @@ if !(isNull _unit) then {
 		deleteVehicle _taxi;
 	};
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-	// Remove Marker
-	deletemarker format ["PAR_marker_%1", _name];
-
-	// Remove Squad
-	private _my_squad = _unit getVariable ["my_squad", nil];
-	if (!isNil "_my_squad") then { {deleteVehicle _x} forEach units _my_squad };
-
-	// Save Player Context
-	private _score = 0; 
-	{if ((_x select 0) == _uid) exitWith {_score = (_x select 1)}} forEach GRLIB_player_scores; 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	if (_score > 20) then { [_unit, _uid] call save_context };
-=======
-	if (_score > 20) then { [_unit] call save_context };
->>>>>>> df6a7d0c (context mp fix)
-=======
-	if (_score > 20) then { [_unit] call save_context };
->>>>>>> 2731dc1c (context call)
-=======
-	if (_score > 20) then { [_unit, _uid] call save_context };
->>>>>>> ac0805ff (fix first save context)
-
-	// Remove AI
-	private _bros = allUnits select {(_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1", _uid]};
-	{ deleteVehicle _x } forEach _bros;
-
-	// Remove Grave Box
-	private _grave_box = _unit getVariable ["GRLIB_grave_box", nil];
-	if (!isNil "_grave_box") then { deleteVehicle _grave_box };
-
-=======
->>>>>>> 04dab3c1 (auto untow + new GRLIB_ammo_truck_load)
-=======
->>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 	// Delete Body
 	deleteVehicle _unit;
 

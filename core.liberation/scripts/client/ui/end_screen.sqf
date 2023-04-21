@@ -22,27 +22,7 @@ if (alive player && isNull objectParent player && lifestate player != "INCAPACIT
 	player switchCamera "EXTERNAL";
 	player switchMove "";
 	player playMoveNow "acts_briefing_sb_in";
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	sleep 10;
-=======
-	sleep 8;
->>>>>>> 84ad6463 (endgame)
-=======
-	sleep 12;
->>>>>>> 371d672d (endgame + sb)
-=======
-	sleep 12;
->>>>>>> f53c1ed9 (endgame + sb)
-=======
 	uiSleep 12;
->>>>>>> d718e45e (uisleep)
-=======
-	uiSleep 12;
->>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 };
 
 [] spawn cinematic_camera;

@@ -118,79 +118,6 @@ while { true } do {
 		build_confirmed = 0;
 	} else {
 		if ( buildtype == 8 ) then {
-<<<<<<< HEAD
-<<<<<<< HEAD
-			if (isNil {player getVariable ["my_squad", nil]} ) then {
-				if (!([_price] call F_pay)) exitWith {};
-				_pos = [(getpos player select 0) + 1,(getpos player select 1) + 1, 0];
-				_grp = createGroup [GRLIB_side_friendly, true];
-				player setVariable ["my_squad", _grp, true];
-				_grp setGroupId [format ["%1 %2",squads_names select buildindex, groupId _grp]];
-				_idx = 0;
-				{
-<<<<<<< HEAD
-					_unitrank = "Private";
-					if(_idx == 0) then { _unitrank = "Sergeant"; };
-					if(_idx == 1) then { _unitrank = "Corporal"; };
-<<<<<<< HEAD
-=======
-					_unitrank = "PRIVATE";
-					if(_idx == 0) then { _unitrank = "SERGEANT"; };
-					if(_idx == 1) then { _unitrank = "CORPORAL"; };
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> dff4f14c (manage rank AI)
-					_unit = _grp createUnit [_x, _pos, [], 5, "NONE"];
-					[_unit] joinSilent _grp;
-=======
-					_x createUnit [_pos, _grp, 'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]'];
-					_unit = (units _grp) select ((count (units _grp)) -1);
->>>>>>> a7455eff (rewrite createunit)
-=======
-					_unit = _grp createUnit [_x, _pos, [], 5, "NONE"];
-					[_unit] joinSilent _grp;
->>>>>>> e4d46842 (fix unit build order)
-					_unit setUnitRank _unitrank;
-					_unit setSkill 0.6;
-					_unit enableIRLasers true;
-					_unit enableGunLights "Auto";
-					_unit setVariable ["PAR_Grp_ID", format["AI_%1",PAR_Grp_ID], true];
-<<<<<<< HEAD
-					_unit addUniform uniform player;
-<<<<<<< HEAD
-<<<<<<< HEAD
-					[_unit] call PAR_fn_EHDamage;
-=======
-					_x createUnit [_pos, _grp, "this addMPEventHandler [""MPKilled"", FAR_Player_MPKilled]", 0.5, _unitrank];
-					_x setVariable ["PAR_Grp_ID", format["AI_%1",PAR_Grp_ID], true];
-					_x addUniform uniform player;
-					[_x] call PAR_fn_EHDamage;
->>>>>>> 4dcd805a (ai squad)
-=======
-					[_unit] call PAR_fn_AI_Damage_EH;
->>>>>>> d5c9dc6e (fix func name)
-=======
-=======
-					//_unit forceAddUniform (uniform player);
-<<<<<<< HEAD
->>>>>>> 9a15d5bc (remove force uniform)
-					if (GRLIB_ACE_enabled) then { 
-=======
-					if (GRLIB_ACE_enabled) then {
->>>>>>> 45e86452 (destroy fob)
-						_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-					} else {
-						[_unit] call PAR_fn_AI_Damage_EH;
-					};
->>>>>>> 35ad34bd (ace fix)
-					_idx = _idx + 1;
-					sleep 0.1;
-				} foreach _classname;
-				_grp setCombatMode "GREEN";
-				_grp setBehaviour "AWARE";
-=======
-=======
->>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 			if (!([_price] call F_pay)) exitWith {};
 			_pos = [(getpos player select 0) + 1,(getpos player select 1) + 1, 0];
 			_grp = createGroup [GRLIB_side_friendly, true];
@@ -215,10 +142,6 @@ while { true } do {
 			} foreach _classname;
 			_grp setCombatMode "GREEN";
 			_grp setBehaviour "AWARE";
-<<<<<<< HEAD
->>>>>>> 51244372 (1)
-=======
->>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 
 			stats_blufor_soldiers_recruited = stats_blufor_soldiers_recruited + count (units _grp); publicVariable "stats_blufor_soldiers_recruited";
 			player hcSetGroup [_grp];

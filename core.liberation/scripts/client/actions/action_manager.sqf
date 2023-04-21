@@ -47,25 +47,6 @@ while { true } do {
 		_my_squad = player getVariable ["my_squad", nil];
 		_idact_id = 0;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-	_fobdistance = round (player distance2D ([] call F_getNearestFob));
-<<<<<<< HEAD
-=======
-
->>>>>>> 1a044c04 (clean)
-	_near_arsenal = (player nearEntities [Arsenal_typename, _distarsenal]) + (player nearObjects [FOB_typename, _distredeploy]);
-	_near_radio = [GRLIB_mobile_respawn, {alive _x && _x distance2D lhd > 1000 && (player distance2D (getPos _x) < _distvehclose) && isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull])}] call BIS_fnc_conditionalSelect;
-	_near_spawn = (player nearEntities [[Respawn_truck_typename, huron_typename], _distspawn]) + _near_radio;
-	_near_fobbox = player nearEntities [[FOB_box_typename, FOB_truck_typename], _distspawn];
-	_near_fuel = [player, "FUEL", _distvehclose, false] call F_check_near;
-	_near_repair = [player, "REPAIR", _distvehclose, false] call F_check_near;
-	_near_atm = [player, "ATM", _distvehclose, true] call F_check_near;
-	_my_dog = player getVariable ["my_dog", objNull];
-	_my_squad = player getVariable ["my_squad", objNull];
-=======
-=======
->>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 		// Tuto
 		_idact_num = _id_actions select _idact_id;
 		if (_near_lhd ) then {
@@ -79,23 +60,7 @@ while { true } do {
 				_id_actions set [_idact_id, -1];
 			};
 		};
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> f4529ad1 (action mgr menuok)
-=======
-//		idact_id = idact_id + 1;
->>>>>>> 45a1ba1d (add action respawn)
-=======
 
-<<<<<<< HEAD
->>>>>>> a1cae88c (new design)
-
-=======
->>>>>>> a6cec779 (Update Arsenal ace support)
-=======
-
->>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 		// Dog - Actions
 		_idact_id = _idact_id + 1;
 		_idact_num = _id_actions select _idact_id;
@@ -157,38 +122,10 @@ while { true } do {
 		};
 
 		// Halo Jump
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-		_idact_halo = _id_actions select 9;
-<<<<<<< HEAD
-<<<<<<< HEAD
-		if (( _near_spawn || (player distance lhd) <= 200) && GRLIB_halo_param > 0) then {
-=======
-		if ((_fobdistance < _distredeploy || _near_spawn || typeOf cursorObject == mobile_respawn || (player distance lhd) <= 200) && GRLIB_halo_param > 0) then {
->>>>>>> e4b012b7 (halo)
-=======
-=======
-		private _idact_halo = _id_actions select 9;
-<<<<<<< HEAD
->>>>>>> f7898c31 (isNil "GRLIB_player_spawned" is useless + private)
-		if (( _near_spawn || (player distance2D lhd) <= 200) && GRLIB_halo_param > 0) then {
->>>>>>> c6b3f4c5 (add FOB sign (owner + hof))
-=======
-		if ((_near_spawn || _near_lhd) && GRLIB_halo_param > 0) then {
->>>>>>> 8fff9163 (use checknear func)
-			if ( _idact_halo == -1 ) then {
-=======
-=======
->>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 		_idact_id = _idact_id + 4;
 		_idact_num = _id_actions select _idact_id;
 		if ((_near_spawn || _near_lhd) && GRLIB_halo_param > 0) then {
 			if ( _idact_num == -1 ) then {
-<<<<<<< HEAD
->>>>>>> a1cae88c (new design)
-=======
->>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 				_idact = player addAction ["<t color='#80FF80'>" + localize "STR_HALO_ACTION" + "</t> <img size='1' image='res\ui_redeploy.paa'/>","scripts\client\spawn\do_halo.sqf","",-749,false,true,"","build_confirmed == 0"];
 				_id_actions set [_idact_id, _idact];
 			};
@@ -275,38 +212,10 @@ while { true } do {
 		};
 
 		// Redeploy
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-		_idact_redeploy = _id_actions select 15;
-<<<<<<< HEAD
-<<<<<<< HEAD
-		if ((_near_spawn || (player distance lhd) <= 200) ) then {
-=======
-		if ((_fobdistance < _distredeploy || _near_spawn || typeOf cursorObject == mobile_respawn || (player distance lhd) <= 200) ) then {
->>>>>>> 4283ee4f (fix redeploy)
-=======
-=======
-		private _idact_redeploy = _id_actions select 15;
-<<<<<<< HEAD
->>>>>>> f7898c31 (isNil "GRLIB_player_spawned" is useless + private)
-		if ((_near_spawn || (player distance2D lhd) <= 200) ) then {
->>>>>>> c6b3f4c5 (add FOB sign (owner + hof))
-=======
-		if ((_near_spawn || _near_lhd) ) then {
->>>>>>> 8fff9163 (use checknear func)
-			if ( _idact_redeploy == -1 ) then {
-=======
-=======
->>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 		_idact_id = _idact_id + 1;
 		_idact_num = _id_actions select _idact_id;
 		if ((_near_spawn || _near_lhd) ) then {
 			if ( _idact_num == -1 ) then {
-<<<<<<< HEAD
->>>>>>> a1cae88c (new design)
-=======
->>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 				_idact = player addAction ["<t color='#80FF80'>" + localize "STR_DEPLOY_ACTION" + "</t> <img size='1' image='res\ui_redeploy.paa'/>","scripts\client\spawn\redeploy_manager.sqf","",-750,false,true,"","build_confirmed == 0"];
 				_id_actions set [_idact_id, _idact];
 			};

@@ -68,22 +68,7 @@ GRLIB_whitelisted_from_arsenal = [];			// whitelist when Arsenal is enabled
 GRLIB_blacklisted_from_arsenal = blacklisted_bag + blacklisted_weapon;
 
 // Default LRX whitelist
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-GRLIB_whitelisted_from_arsenal = [mobile_respawn_bag] + whitelisted_from_arsenal;
-=======
-GRLIB_whitelisted_from_arsenal = GRLIB_whitelisted_from_arsenal + [mobile_respawn_bag];
->>>>>>> f917bca7 (case)
-=======
 GRLIB_whitelisted_from_arsenal = [mobile_respawn_bag, "B_Parachute"] + whitelisted_from_arsenal;
-<<<<<<< HEAD
->>>>>>> 1990fece (whitelist parachute)
-=======
->>>>>>> a6cec779 (Update Arsenal ace support)
-=======
-GRLIB_whitelisted_from_arsenal = [mobile_respawn_bag, "B_Parachute"] + whitelisted_from_arsenal;
->>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 
 // Mod signature
 GRLIB_MOD_signature = [];
@@ -105,12 +90,6 @@ if (GRLIB_ACE_enabled) then {
 	[myLARsBox, ["GRLIB_whitelisted_from_arsenal", "GRLIB_blacklisted_from_arsenal"], false, "Liberation", { false }] call LARs_fnc_blacklistArsenal;
 };
 
-<<<<<<< HEAD
-// Ace compat.
-if (GRLIB_ACE_enabled) then { [myLARsBox, GRLIB_whitelisted_from_arsenal, false] call ace_arsenal_fnc_initBox };
-
-=======
->>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 diag_log format ["--- LRX Arsenal initialized. blacklist: %1 - whitelist: %2", count GRLIB_blacklisted_from_arsenal, count GRLIB_whitelisted_from_arsenal];
 diag_log format ["--- LRX Arsenal MOD signature in use: %1", GRLIB_MOD_signature];
 

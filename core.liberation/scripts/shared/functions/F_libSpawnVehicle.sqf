@@ -18,71 +18,6 @@ private _max_try = 10;
 if ( _precise_position ) then {
 	_spawnpos = _sectorpos;
 } else {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	while { _spawnpos isEqualTo zeropos } do {
-		_safepos = [_sectorpos, 5, 300, 1, 1, 0.25, 0, [], [zeropos, zeropos]] call BIS_fnc_findSafePos;
-<<<<<<< HEAD
-		if (surfaceIsWater _safepos) then {
-=======
-		if (surfaceIsWater _safepos ) then {
->>>>>>> 5c09b7e5 (fix spawn boats)
-			_spawnpos = _safepos;
-		} else {
-			_spawnpos = _safepos findEmptyPosition [1, GRLIB_capture_size, "B_Heli_Transport_03_unarmed_F"];
-		};
-		if ( count _spawnpos == 0 ) then { _spawnpos = zeropos; };
-=======
-	while { (_spawnpos isEqualTo zeropos) && _max_try > 0 } do {
-		_spawnpos = [_sectorpos, 0, _radius, 3, 1, 0.25, 0, [], [zeropos, zeropos]] call BIS_fnc_findSafePos;
-		_radius = _radius + 20;
-		_max_try = _max_try - 1;
->>>>>>> 43844fd7 (better find position)
-	};
-=======
-	_spawnpos = [4, _sectorpos, GRLIB_capture_size, 30, true] call R3F_LOG_FNCT_3D_tirer_position_degagee_sol;
->>>>>>> 70410843 (use r3f findPos)
-=======
-	while { count _spawnpos == 0 && _max_try > 0 } do {
-		_spawnpos = [4, _sectorpos, _radius, 30, true] call R3F_LOG_FNCT_3D_tirer_position_degagee_sol;
-		_radius = _radius + 20;
-		_max_try = _max_try -1;
-		sleep 0.5;
-	};
->>>>>>> 4c862ea6 (search harder :))
-};
-
-if ( count _spawnpos == 0 ) then {
-	_spawnpos = _sectorpos findEmptyPosition [0, _radius, _classname];
-};
-
-if ( count _spawnpos == 0 ) exitWith { diag_log format ["--- LRX Error: No place to build vehicle %1 at position %2", _classname, _sectorpos]; objNull };
-
-if ( _classname isKindOf "Air" ) then {
-	if ( _civilian ) then { _airveh_alt = 200 };
-	_spawnpos set [2, _airveh_alt];
-	_vehicle = createVehicle [_classname, _spawnpos, [], 0, "FLY"];
-} else {
-	_spawnpos set [2, 0.5];
-	if (surfaceIsWater _spawnpos && !(_classname isKindOf "Ship")) then {
-		_classname = selectRandom opfor_boats;
-		if ( _civilian ) then {
-			_classname = selectRandom civilian_boats;
-		};
-	};
-	_vehicle = createVehicle [_classname, _spawnpos, [], 0, "NONE"];
-};
-waitUntil {!isNull _vehicle};
-_vehicle allowDamage false;
-
-if ( _vehicle isKindOf "Air" ) then {
-	_vehicle engineOn true;
-	_vehicle flyInHeight _airveh_alt;
-};
-
-=======
 	while { count _spawnpos == 0 && _max_try > 0 } do {
 		_spawnpos = [4, _sectorpos, _radius, 30, true] call R3F_LOG_FNCT_3D_tirer_position_degagee_sol;
 		_radius = _radius + 20;
@@ -119,7 +54,6 @@ if ( _vehicle isKindOf "Air" ) then {
 	_vehicle flyInHeight _airveh_alt;
 };
 
->>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 if ( _random_rotate ) then {
 	_vehicle setdir (random 360);
 };

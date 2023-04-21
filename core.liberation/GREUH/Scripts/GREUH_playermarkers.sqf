@@ -143,19 +143,7 @@ while { true } do {
 				_vehiclename = _vehiclename + " ";
 			} foreach  _datcrew;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-			_vehiclename = _vehiclename + "(" + ([typeOf _nextvehicle] call get_lrx_name) + ")";
-=======
-			_vehiclename = _vehiclename + "(" + [typeOf _nextvehicle] call get_lrx_name + ")";
->>>>>>> d31a9995 (fix)
-=======
 			_vehiclename = _vehiclename + "(" + ([typeOf _nextvehicle] call F_getLRXName) + ")";
->>>>>>> 1c483a89 (get name shared)
-=======
-			_vehiclename = _vehiclename + "(" + ([typeOf _nextvehicle] call F_getLRXName) + ")";
->>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 			_marker setMarkerTextLocal _vehiclename;
 		} foreach _marked_vehicles;
 

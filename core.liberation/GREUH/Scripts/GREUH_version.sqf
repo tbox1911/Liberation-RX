@@ -52,24 +52,8 @@ player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["A3W Missions and
 player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["R3F Logistics v3.10<br/>by <font color='%1'>-Team-R3F.org-</font>", call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["Robust Air Taxi v1.05<br/>by <font color='%1'>-pSiKO-</font>", call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["pSiKO AI Revive v2.04<br/>by <font color='%1'>-pSiKO-</font>", call _getRandomColor]]];
-<<<<<<< HEAD
-<<<<<<< HEAD
-player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["LARs Arsenal v1.00<br/>by <font color='%1'>-Larrow Zurb-</font>", call _getRandomColor]]];
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["LARs Arsenal v1.05<br/>by <font color='%1'>-Larrow Zurb-</font>", call _getRandomColor]]];
->>>>>>> 55cb1de4 (1)
-player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", localize "STR_MISSION_TITLE"]];
-=======
->>>>>>> fdb5b558 (get valid)
-=======
-player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", localize "STR_MISSION_TITLE"]];
->>>>>>> 2711d120 (update version)
-=======
 player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["LARs Arsenal v1.05<br/>by <font color='%1'>-Larrow Zurb-</font>", call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", localize "STR_MISSION_TITLE"]];
->>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 
 player createDiarySubject ["LRX Info", "Server"];
 player createDiaryRecord ["LRX Info", ["Server", format ["Join us on the Official Server !<br/><br/>- ARMA III - Liberation RX<br/><img image='res\liberation.paa' height='128' width='256'/><br/><font color='#0080ff'>arma.liberation-rx.fr</font><br/><br/>Team Speak 3<br/><font color='#0080ff'>ts3.liberation-rx.fr</font><br/>Discord LRX<br/><font color='#0080ff'>https://discord.gg/uCRzJ7wauR</font>"]]];

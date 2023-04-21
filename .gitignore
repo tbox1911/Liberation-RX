@@ -1,22 +1,5 @@
 __*
 mybuild/*
 core.liberation/build_info.sqf
-<<<<<<< HEAD
-<<<<<<< HEAD
-a.bat
-=======
-maps/Liberation_RX.Eusa/*
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 2a8b6155 (1)
-=======
-maps/Liberation_RX.Utes/*
->>>>>>> 7e77cfa5 (1)
-=======
-maps/Liberation_RX.Utes/*
-*.bak
->>>>>>> f456b13b (ACE Arsenal filtering + ACE Item filter logic)
-=======
 maps/Liberation_RX.Eusa/*
 maps/Liberation_RX.Utes/*
->>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04

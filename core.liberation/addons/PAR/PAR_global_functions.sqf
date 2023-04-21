@@ -132,70 +132,8 @@ PAR_fn_AI_Damage_EH = {
 	if ( _unit getVariable ["PAR_EH_Installed", false] ) exitWith {};
 	_unit setVariable ["PAR_EH_Installed", true];
 	_unit removeAllEventHandlers "HandleDamage";
-<<<<<<< HEAD
-<<<<<<< HEAD
-	_unit addEventHandler ["HandleDamage", { _this call damage_manager_EH }];
-<<<<<<< HEAD
-<<<<<<< HEAD
-	_unit addEventHandler ["HandleDamage", {
-		params ["_unit","","_dam"];
-		_veh = objectParent _unit;
-		if (!(isNull _veh) && damage _veh > 0.8) then {[_veh, _unit, true] spawn PAR_fn_eject};
-=======
-	_unit addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
->>>>>>> 81561949 (new damage EH)
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-      if (!(_unit getVariable ["PAR_wounded",false]) && (_dam >= 0.86)) then {
-        if (!(isNull _veh)) then {[_veh, _unit] spawn PAR_fn_eject};
-        _unit allowDamage false;
-        _unit setVariable ["PAR_wounded", true];
-        _unit setUnconscious true;
-        _unit setVariable ["PAR_BleedOutTimer", round(time + PAR_BleedOut), true];
-        [_unit] spawn PAR_fn_unconscious;
-      };
-      _dam min 0.86;
-  }];
-  _unit removeAllMPEventHandlers "MPKilled";
-<<<<<<< HEAD
-  _unit addMPEventHandler ["MPKilled", {_this spawn PAR_Player_MPKilled}];
-=======
-  _unit addMPEventHandler ["MPKilled", PAR_Player_MPKilled];
-  //[_unit, ["MPKilled", PAR_Player_MPKilled]] remoteExec [addMPEventHandler, 2];
->>>>>>> d49e44e5 (global PAR_Player_MPKilled)
-  _unit setVariable ["PAR_wounded",false];
-  _unit setVariable ["PAR_myMedic", nil];
-  _unit setVariable ["PAR_busy", nil];
-  _unit setVariable ["PAR_heal", nil];
-  _unit setVariable ["PAR_healed", nil];
-=======
-		if (!(_unit getVariable ["PAR_wounded",false]) && (_dam >= 0.86)) then {
-=======
-		if (!(_unit getVariable ["PAR_wounded",false]) && _dam >= 0.86) then {
->>>>>>> 24476da0 (par HE rewrite)
-=======
-		private _isNotWounded = !(_unit getVariable ["PAR_wounded", false]);
-		if (_isNotWounded && _dam >= 0.86) then {
->>>>>>> 4400cf05 (fix PAR player protection)
-			if (!(isNull _veh)) then {[_veh, _unit] spawn PAR_fn_eject};
-			_unit allowDamage false;
-			_unit setVariable ["PAR_wounded", true];
-			_unit setUnconscious true;
-			_unit setVariable ["PAR_BleedOutTimer", round(time + PAR_BleedOut), true];
-			[_unit] spawn PAR_fn_unconscious;
-		};
-		_dam min 0.86;
-	}];
-=======
-=======
-
->>>>>>> d8a0a01f (1)
-=======
 	_unit addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
 
->>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 	if (GRLIB_revive != 0) then {
 		_unit addEventHandler ["HandleDamage", {
 			params ["_unit","","_dam"];
@@ -214,61 +152,19 @@ PAR_fn_AI_Damage_EH = {
 			_dam min 0.86;
 		}];
 	};
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> dfbe228e (fix disable ai revive)
-	_unit removeAllEventHandlers "Killed";
-	_unit addEventHandler ["Killed", {_this spawn PAR_fn_Killed}];
-=======
->>>>>>> c2715e0a (better death manager)
-	_unit removeAllMPEventHandlers "MPKilled";
-	_unit addMPEventHandler ["MPKilled", {_this spawn PAR_fn_death}];
-=======
-=======
->>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 	if (GRLIB_ACE_enabled) then {
 		_unit addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
 	} else {
 		_unit removeAllMPEventHandlers "MPKilled";
 		_unit addMPEventHandler ["MPKilled", { _this spawn PAR_fn_death }];
 	};
-<<<<<<< HEAD
->>>>>>> f2284768 (fix insta kill and typo)
-=======
->>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 	_unit setVariable ["PAR_wounded", false];
 	_unit setVariable ["PAR_myMedic", nil];
 	_unit setVariable ["PAR_busy", nil];
 	_unit setVariable ["PAR_heal", nil];
 	_unit setVariable ["PAR_healed", nil];
-<<<<<<< HEAD
-<<<<<<< HEAD
-	_unit setVariable ["PAR_AI_score", 0, true];
->>>>>>> dff4f14c (manage rank AI)
-=======
-	_unit setVariable ["PAR_AI_score", 5, true];
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 94a03f47 (progressive level up)
-=======
-	[_unit] spawn player_EVH;
->>>>>>> dfbe228e (fix disable ai revive)
-=======
-	[_unit] spawn PAR_EventHandler;
-<<<<<<< HEAD
->>>>>>> 8ba18716 (split respawn EH)
-=======
-	_unit setVariable ["PAR_EH_Installed", true];
->>>>>>> f2284768 (fix insta kill and typo)
-=======
-	[_unit] call PAR_EventHandler;
->>>>>>> e4c60d98 (fix PAR)
-=======
 	_unit setVariable ["PAR_AI_score", 5, true];
 	[_unit] call PAR_EventHandler;
->>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 };
 
 // Player Section

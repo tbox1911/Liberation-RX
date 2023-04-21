@@ -59,32 +59,6 @@ while {	sleep 5; {( alive _x )} count (units _air_grp) > 0 } do {
 			if (_side == GRLIB_side_friendly) then {_sectors = blufor_sectors};
 			private _nearest_sector = [_sectors, _unit] call F_nearestPosition;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-			if (!isNil "_nearest_sector") then {
-=======
-			if (typeName _nearest_sector == "STRING") then {
->>>>>>> 239b83af (fix flee priso)
-				private _flee_grp = createGroup [_side, true];
-				[_unit] joinSilent _flee_grp;
-=======
-			private _flee_grp = createGroup [_side, true];
-			[_unit] joinSilent _flee_grp;
->>>>>>> 1b16778d (nearestPosition)
-
-			while {(count (waypoints _flee_grp)) != 0} do {deleteWaypoint ((waypoints _flee_grp) select 0);};
-			{_x doFollow leader _flee_grp} foreach units _flee_grp;
-
-<<<<<<< HEAD
-			_waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];
-			_waypoint setWaypointType "MOVE";
-			_waypoint setWaypointSpeed "FULL";
-			_waypoint setWaypointBehaviour "AWARE";
-			_waypoint setWaypointCombatMode "GREEN";
-			_waypoint setWaypointCompletionRadius 50;
-=======
-=======
 			if (typeName _nearest_sector == "STRING") then {
 				private _flee_grp = createGroup [_side, true];
 				[_unit] joinSilent _flee_grp;
@@ -92,27 +66,13 @@ while {	sleep 5; {( alive _x )} count (units _air_grp) > 0 } do {
 				while {(count (waypoints _flee_grp)) != 0} do {deleteWaypoint ((waypoints _flee_grp) select 0);};
 				{_x doFollow leader _flee_grp} foreach units _flee_grp;
 
->>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 				_waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];
 				_waypoint setWaypointType "MOVE";
 				_waypoint setWaypointSpeed "FULL";
 				_waypoint setWaypointBehaviour "SAFE";
 				_waypoint setWaypointCombatMode "GREEN";
 				_waypoint setWaypointCompletionRadius 50;
-<<<<<<< HEAD
->>>>>>> 65226c5b (set SAFE)
 
-			_waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];
-			_waypoint setWaypointType "MOVE";
-			_waypoint setWaypointCompletionRadius 50;
-			_waypoint setWaypointStatements ["true", "deleteVehicle this"];
-			sleep 10;
-
-<<<<<<< HEAD
-=======
-=======
-
->>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 				_waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];
 				_waypoint setWaypointType "MOVE";
 				_waypoint setWaypointCompletionRadius 50;
@@ -122,10 +82,6 @@ while {	sleep 5; {( alive _x )} count (units _air_grp) > 0 } do {
 				sleep 60;
 				{ deleteVehicle _x } forEach _flee_grp;
 			};
-<<<<<<< HEAD
->>>>>>> d265ab3a (delete lost pilot)
-=======
->>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 		};
 	} foreach units _air_grp;
 

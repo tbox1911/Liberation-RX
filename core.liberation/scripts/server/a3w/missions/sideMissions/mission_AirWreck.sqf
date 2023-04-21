@@ -20,26 +20,8 @@ _setupObjects =
 {
 	_missionPos = markerPos _missionLocation;
 	_wreckPos = _missionPos vectorAdd ([[5 + floor(random 20), 0, 0], random 360] call BIS_fnc_rotateVector2D);
-<<<<<<< HEAD
-<<<<<<< HEAD
-	_wreck = createVehicle [GRLIB_sar_wreck, _wreckPos, [], 0, "NONE"];
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
-	// Class, Position, Fuel, Ammo, Damage, Special
->>>>>>> 5fea71b4 (a3w and waypoints)
-=======
-	_wreck setpos (getpos _wreck);
->>>>>>> 61d5a192 (adapt to terrain)
-=======
 	_vehicle = createVehicle [GRLIB_sar_wreck, _wreckPos, [], 0, "NONE"];
 	_vehicle setpos (getpos _vehicle);
->>>>>>> 7db76814 (a3w update)
-=======
-	_vehicle = createVehicle [GRLIB_sar_wreck, _wreckPos, [], 0, "NONE"];
-	_vehicle setpos (getpos _vehicle);
->>>>>>> 1e7c6bf8544b06f295ba289c00b1a91a80e63c04
 	_box1 = [ammobox_b_typename, _missionPos, true] call boxSetup;
 	_box2 = [ammobox_b_typename, _missionPos, true] call boxSetup;
 	_box3 = [basic_weapon_typename, _missionPos, true] call boxSetup;
