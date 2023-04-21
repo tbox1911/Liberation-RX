@@ -235,8 +235,8 @@ class Params
 	};
 	class Weather {
 		title = $STR_WEATHER_PARAM;
-		values[] = { 1,2,3,4 };
-		texts[] = { $STR_WEATHER_PARAM1, $STR_WEATHER_PARAM2, $STR_WEATHER_PARAM3, $STR_WEATHER_PARAM4 };
+		values[] = { 1,2,3,4,5 };
+		texts[] = { $STR_WEATHER_PARAM1, $STR_WEATHER_PARAM2, $STR_WEATHER_PARAM3, $STR_WEATHER_PARAM4,$STR_WEATHER_PARAM5 };
 		default = 4;
 	};
 	class ResourcesMultiplier {
