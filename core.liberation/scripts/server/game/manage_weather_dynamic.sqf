@@ -169,10 +169,10 @@ while { GRLIB_endgame == 0 } do {
 		_runEvening = false;
 		sleep 10;
 	} else {
-		sleep _delay;
 		// Force Weather Change because of higher timeMultiplier clouds/overcast gets all whacky. Thanks BI.
 		if (timeMultiplier != 1) then {
 			forceWeatherChange;
 		};
+		sleep _delay;
 	};
 };
