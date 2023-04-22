@@ -62,6 +62,7 @@ while { true } do {
 		_lst_a3 = build_unit select 3;
 		_lst_r3f = build_unit select 4;
 		_compo = build_unit select 5;
+		build_altitude = 0.8;
 	};
 
 	if ( buildtype in [1,2,3,4,5,6,7,8] ) then {
