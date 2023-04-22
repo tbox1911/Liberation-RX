@@ -80,10 +80,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  # This workflow remove old workflow runs
-  del_runs:
-    runs-on: ubuntu-latest
-    steps:
+      # This workflow remove old workflow runs
       - name: Delete workflow runs
         uses: Mattraks/delete-workflow-runs@v2
         with:
