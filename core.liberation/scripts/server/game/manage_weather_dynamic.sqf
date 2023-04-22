@@ -83,7 +83,7 @@ while { GRLIB_endgame == 0 } do {
 	diag_log "Fog";
 	// fog Value
 	private _fog = (fogList select _seasonIdx);
-
+	
 	// setFog Height randomness
 	private _fogRndH = random [
 		((_fog select 2)*0.8), // -20%
@@ -110,8 +110,8 @@ while { GRLIB_endgame == 0 } do {
 	private _sunDown 		= (_sunUpDownList select 1);
 
 	// Calculate time for forming of fog...
-	private _sunUpAdjusted 		= (round((_sunUp - 0.5)*10))/10;
-	private _sunDownAdjusted 	= (round((_sunDown - 0.5)*10))/10;
+	private _sunUpAdjusted 		= (round((_sunUp - 1.2)*10))/10;
+	private _sunDownAdjusted 	= (round((_sunDown - 1.2)*10))/10;
 
 	// Create Morning fog...
 	if (dayTime >= _sunUpAdjusted && dayTime <= _sunUp && _runMorning == false) then {
