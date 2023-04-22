@@ -520,6 +520,7 @@ GRLIB_ignore_colisions = [
 	canister_fuel_typename,
 	medicalbox_typename,
 	land_cutter_typename,
+	Warehouse_typename,
 	"Helper_Base_F",
 	"Blood_01_Base_F",
 	"MedicalGarbage_01_Base_F",
