@@ -15,7 +15,7 @@ GRLIB_checkAction_Abandon = {
 
 GRLIB_checkAction_Paint = {
 	params ["_target", "_unit"];
-	([_target] call is_menuok_veh && [_target, 'REPAINT', 25] call F_check_near && [_unit, _target] call is_owner && locked _target == 2)
+	([_target] call is_menuok_veh && ([_target, 'REPAINT', 30] call F_check_near || [_target, 'FOB', GRLIB_fob_range] call F_check_near) && [_unit, _target] call is_owner && locked _target == 2 && damage _target == 0)
 };
 
 GRLIB_checkAction_Eject = {
@@ -45,7 +45,7 @@ GRLIB_checkAction_ReFuel = {
 
 GRLIB_checkAction_Halo = {
 	params ["_target", "_unit"];
-	([_target] call is_menuok_veh && [_unit, _target] call is_owner && [_target, 'FOB',GRLIB_fob_range] call F_check_near && _target isKindOf 'LandVehicle' && locked _target < 2)
+	([_target] call is_menuok_veh && [_unit, _target] call is_owner && [_target, 'FOB', GRLIB_fob_range] call F_check_near && _target isKindOf 'LandVehicle' && locked _target < 2)
 };
 
 GRLIB_checkAction_Wreck = {
