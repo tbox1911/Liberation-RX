@@ -8,7 +8,6 @@ echo -e "- Liberation_RX PBO build script -\n"
 rm ./*.pbo 2>/dev/null
 
 BUILD_ONLY=(
-  Altis
 )
 
 which makepbo &>/dev/null
