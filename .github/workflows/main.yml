@@ -1,21 +1,22 @@
-# This is a basic workflow to help you get started with Actions
+name: Missions build on release tag
 
-name: CI
-
-# Controls when the workflow will run
+# on: workflow_dispatch
+# Controls when the action will run.
 on:
-  # Triggers the workflow on push or pull request events but only for the "master" branch
-  push:
-    branches: [ "master" ]
-  #pull_request:
-  #  branches: [ "master" ]
-
-  # Sequence of patterns matched against refs/tags
-    tags:
-      - v*
+  # Triggers the workflow on push or pull request events but only for the master branch
+  # push:
+  #   branches: [ master ]
+  # pull_request:
+  #   branches: [ master ]
 
   # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+  push:
+      # Sequence of patterns matched against refs/heads
+    # branches:
+    #   - master
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - v*
 
 # Need permission to write to the Releases tab now.
 permissions:
@@ -33,36 +34,33 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3.1.0
 
+      - name: Install dependencies
+        run: sudo apt-get install -y liblzo2-2 libvorbis0a libvorbisfile3 libvorbisenc2 libogg0 libuchardet0 wget
+
       # Runs a single command using the runners shell
-      - name: Build LRX PBOs
+      - name: Download Mikero PBO tool
+        run: wget https://mikero.bytex.digital/$(curl -Ls https://mikero.bytex.digital/Downloads | grep api | grep linux | cut -d "/" -f 2,3 | cut -d "\"" -f 1) -O ../depbo-tools.tgz
+
+      # Runs a set of commands using the runners shell
+      - name: Extract PBO tool
         run: |
-          echo Install Libs
-          sudo apt-get install liblzo2-2 libvorbis0a libvorbisfile3 libvorbisenc2 libogg0 libuchardet0 tar
+          cd ../
+          tar xvf depbo-tools.tgz
+          mv -v depbo-*/* $HOME/
 
-          echo Install Pbo tools
-          #wget https://mikero.bytex.digital/api/download?filename=depbo-tools-0.8.78-linux-x86_64.tgz -O depbo-tools-0.8.tgz
-          tar -xf build/bin/depbo-tools-0.8.tgz
+      - name: Build missions
+        run: |
+          cd build
+          export PATH=$PATH:$HOME/bin
+          export LD_LIBRARY_PATH=$HOME/lib
+          bash build.sh
 
-          echo Update PATH / LD_LIBRARY_PATH
-          export PATH=$PATH:$GITHUB_WORKSPACE/depbo-tools-0.8.78/bin
-          export LD_LIBRARY_PATH=$GITHUB_WORKSPACE/depbo-tools-0.8.78/lib
-          echo $PATH
-
-          echo Check Pbo Tool ready
-          which makepbo
-
-          echo Build LRX PBOs
-          chmod +x ./build/build.sh
-          cd ./build/
-          ./build.sh
-
-      - name: Check Build LRX PBOs
-        run: ls -al build/
-
-      - uses: actions/upload-artifact@v3.1.0
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v3.1.0
         with:
-          name: latest-build
-          path: build/*.pbo
+          name: PBO_files
+          path: |
+            build/*.pbo
 
       - name: Create a Release
         uses: ncipollo/release-action@v1.12.0
@@ -71,21 +69,23 @@ jobs:
           artifacts: "build/*.pbo"
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Delete Older Releases
+      - name: Delete old releases
         uses: Varrkan82/delete-older-releases@v0.2.1
         with:
           # repo: <owner>/<repoName> # defaults to current repo
-          keep_latest: 10
+          keep_latest: 3
           delete_tags: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # This workflow remove old workflow runs
-      - name: Delete workflow runs
-        uses: Mattraks/delete-workflow-runs@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.repository }}
-          retain_days: 30
-          keep_minimum_runs: 6
-          delete_run_by_conclusion_pattern: 'All'
+  cleanup:
+    needs: [build]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+    - name: call webhook to delete artifacts
+      env:
+        FOR_WEBHOOKS_SECRET: ${{ secrets.FOR_WEBHOOKS_SECRET }}
+      run: |
+        echo "::add-mask::$FOR_WEBHOOKS_SECRET"
+        curl --verbose --fail --show-error --location --request POST "https://api.github.com/repos/$GITHUB_REPOSITORY/dispatches" --header "Authorization: token $FOR_WEBHOOKS_SECRET" --header 'Content-Type: application/json' --header 'Accept: application/vnd.github.everest-preview+json' --data-raw "{ \"event_type\": \"delete_all_artifacts\", \"client_payload\": {\"parent_runid\": \"$GITHUB_RUN_ID\", \"parent_repo\": \"$GITHUB_REPOSITORY\"} }"
