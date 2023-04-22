@@ -37,16 +37,19 @@ jobs:
       - name: Build LRX PBOs
         run: |
           echo Install Libs
-          sudo apt-get install liblzo2-2 libvorbis0a libvorbisfile3 libvorbisenc2 libogg0 libuchardet0 tar
+          sudo apt-get install -y liblzo2-2 libvorbis0a libvorbisfile3 libvorbisenc2 libogg0 libuchardet0 wget tar
 
           echo Install Pbo tools
-          #wget https://mikero.bytex.digital/api/download?filename=depbo-tools-0.8.78-linux-x86_64.tgz -O depbo-tools-0.8.tgz
-          tar -xf build/bin/depbo-tools-0.8.tgz
+          wget https://mikero.bytex.digital/$(curl -Ls https://mikero.bytex.digital/Downloads | grep api | grep linux | cut -d "/" -f 2,3 | cut -d "\"" -f 1) -O ../depbo-tools.tgz
 
+          cd ../
+          tar xvf depbo-tools.tgz
+          mv -v depbo-*/* $HOME/
+          
           echo Update PATH / LD_LIBRARY_PATH
-          export PATH=$PATH:$GITHUB_WORKSPACE/depbo-tools-0.8.78/bin
-          export LD_LIBRARY_PATH=$GITHUB_WORKSPACE/depbo-tools-0.8.78/lib
-          echo $PATH
+          export PATH=$PATH:$HOME/bin
+          export LD_LIBRARY_PATH=$HOME/lib
+          echo $PATH $LD_LIBRARY_PATH
 
           echo Check Pbo Tool ready
           which makepbo
