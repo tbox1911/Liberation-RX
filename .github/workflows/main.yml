@@ -76,6 +76,18 @@ jobs:
         with:
           # repo: <owner>/<repoName> # defaults to current repo
           keep_latest: 10
-          delete_tags: false
+          delete_tags: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # This workflow remove old workflow runs
+  del_runs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete workflow runs
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          retain_days: 30
+          keep_minimum_runs: 6
