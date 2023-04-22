@@ -95,7 +95,7 @@ buildings_default = [
 	["Land_SandbagBarricade_01_hole_F",0,0,0,GRLIB_perm_log],
 	["Land_SandbagBarricade_01_half_F",0,0,0,GRLIB_perm_log],
 	["Land_SM_01_shed_F",0,0,0,GRLIB_perm_max],
-	[Warehouse_typename,0,0,0,GRLIB_perm_log],
+	[Warehouse_typename,0,0,0,0],
 	["Land_Hangar_F",0,0,0,GRLIB_perm_max],
 	["Land_Medevac_house_V1_F",0,0,0,GRLIB_perm_tank],
 	["Land_Medevac_HQ_V1_F",0,0,0,GRLIB_perm_air],
