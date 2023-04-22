@@ -62,8 +62,8 @@ while { dialog && alive player } do {
 
 	if ( !isNil "GRLIB_warehouse_in_use" ) then {
 		hintSilent "Warehouse is busy !!\nPlease wait...";
-        ctrlEnable [ 120, false ];
-        ctrlEnable [ 121, false ];
+        ctrlEnable [120, false];
+        ctrlEnable [121, false];
 		_refresh = true;
         sleep 1;
 	} else {
@@ -72,23 +72,24 @@ while { dialog && alive player } do {
         // button
         _selected_item = lbCurSel 110;
         if (_selected_item != -1) then {
-            ctrlEnable [ 120, true ];
+            ctrlEnable [120, true];
         } else {
-            ctrlEnable [ 120, false ];
+            ctrlEnable [120, false];
         };
 
         _selected_item = lbCurSel 111;
         if (_selected_item != -1) then {
              if ((GRLIB_warehouse select _selected_item select 1) == 0) then {
-                ctrlEnable [ 121, false ];
+                ctrlEnable [121, false];
             } else {
-                ctrlEnable [ 121, true ];
+                ctrlEnable [121, true];
             };
         };
 
         if (load_box != 0) then {
             // load
             if (load_box == 1) then {
+                ctrlEnable [120, false];
                 _box = _mybox select (lbCurSel 110);
                 _box_name = [typeOf _box] call F_getLRXName;
                 _price = support_vehicles select {(_x select 0) == (typeOf _box)} select 0 select 2;
@@ -98,11 +99,13 @@ while { dialog && alive player } do {
                     hintSilent format ["%1 Stored to Warehouse,\n for %2 AMMO.", _box_name, _price];
                     [_box, load_box, player] remoteExec ["warehouse_remote_call", 2];
                     playSound "taskSucceeded";
+                    sleep 1;
                 };
             };
 
             // unload
             if (load_box == 2) then {
+                ctrlEnable [121, false];
                 _box = GRLIB_warehouse select (lbCurSel 111) select 0;
                 _box_name = [_box] call F_getLRXName;
                 _price = support_vehicles select {(_x select 0) == (_box)} select 0 select 2;
@@ -126,6 +129,7 @@ while { dialog && alive player } do {
                             playSound "taskSucceeded";
                         };                        
                     };
+                    sleep 1;
                 };
             };
 

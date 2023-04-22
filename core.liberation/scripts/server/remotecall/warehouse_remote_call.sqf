@@ -30,7 +30,7 @@ if (_cmd == 2) then {
             [_x] call warehouse_update;
         };
     };
-} forEach (units (group chimeraofficer));
+} forEach (units GRLIB_WHS_Group);
 
 sleep 1;
 GRLIB_warehouse_in_use = nil;

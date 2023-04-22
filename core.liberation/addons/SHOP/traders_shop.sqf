@@ -111,6 +111,7 @@ while { dialog && alive player } do {
 	if (shop_action != 0) then {
 
 		if (shop_action == 1) then {
+			ctrlEnable [120, false];
 			_selected_item = lbCurSel 110;
 			private _vehicle_name = (_display displayCtrl (110)) lnbText [_selected_item, 0];
 			private _price = parseNumber ((_display displayCtrl (110)) lnbText [_selected_item, 1]);
@@ -123,11 +124,13 @@ while { dialog && alive player } do {
 				hintSilent format ["%1 Sold for %2 AMMO !", _vehicle_name, _price];
 				ctrlEnable [120, false];
 				playSound "taskSucceeded";
+				sleep 1;
 			};
 			_refresh = true;
 		};
 
 		if (shop_action == 2) then {
+			ctrlEnable [121, false];
 			_selected_item = lbCurSel 111;
 			private _vehicle_name = (_display displayCtrl (111)) lnbText [_selected_item, 0];
 			private _price = parseNumber ((_display displayCtrl (111)) lnbText [_selected_item, 1]);
@@ -146,6 +149,7 @@ while { dialog && alive player } do {
 						deleteVehicle build_vehicle;
 					};
 				};
+				sleep 1;
 			};
 		};
 		shop_action = 0;
