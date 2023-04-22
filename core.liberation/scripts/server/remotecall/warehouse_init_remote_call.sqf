@@ -81,3 +81,4 @@ _warehouse_dir = getdir _warehouse;
 
 // update warehouse
 [_man] call warehouse_update;
+publicVariable "GRLIB_warehouse";
