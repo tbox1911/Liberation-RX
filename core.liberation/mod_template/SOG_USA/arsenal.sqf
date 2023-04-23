@@ -1,7 +1,7 @@
 //Blacklist Items
 blacklisted_bag = [
     "vn_prop_",
-    "vn_b_item_radio",
+    "vn_b_item_radio_urc10_",
     "vn_o_item_radio",
     "vn_rocket",
     "vn_missile",
@@ -37,5 +37,6 @@ whitelisted_from_arsenal = [
     "vn_o_4x_m16",
     "vn_o_3x_m9130",
     "vn_o_4x_m4956",
-    "vn_o_3x_m84"
+    "vn_o_3x_m84",
+    "vn_b_item_radio_urc10"
 ];
