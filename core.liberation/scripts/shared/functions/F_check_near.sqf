@@ -6,6 +6,7 @@ params [
 ];
 
 private _ret = false;
+private _only_outpost = false;
 private _classlist = [];
 private _obj_list = [];
 private _near = [];
@@ -18,7 +19,6 @@ if (isNil "_list") exitWith {_ret};
 
 switch ( _list ) do {
 	case "LHD" : { _classlist = [lhd]};	
-	case "OUTPOST" : { _classlist = [FOB_outpost]};
 	case "SRV" : { _classlist = GRLIB_Marker_SRV};
 	case "ATM" : { _classlist = GRLIB_Marker_ATM};
 	case "FUEL" : { _classlist = GRLIB_Marker_FUEL};
@@ -36,28 +36,31 @@ switch ( _list ) do {
 	default { _classlist = [] };
 };
 
-// Include FOB
+// Include FOB / Outpost
 if (_includeFOB) then {
-	if ((_vehpos distance2D ([] call F_getNearestFob)) <= _dist) then { _ret = true };
+	if (_list == "OUTPOST") then { _only_outpost = true };
+	if ((_vehpos distance2D ([_vehpos, _only_outpost] call F_getNearestFob)) <= _dist) then { _ret = true };
 };
-
 if (_ret) exitWith {true};
-if (_list == "FOB") exitWith {_ret};
+if (_list in ["FOB", "OUTPOST"]) exitWith {_ret};
 if (count(_classlist) == 0) exitWith {false};
 
 if (typeName (_classlist select 0) == "STRING") then {
 	// From Objects classname
 	_obj_list = _vehpos nearEntities [_classlist, _dist];
-	if (count _obj_list == 0) then {
-		_obj_list = nearestObjects [_vehpos, _classlist, _dist];
+	// if (count _obj_list == 0) then {
+	//	// powerfull but slow
+	// 	_obj_list = nearestObjects [_vehpos, _classlist, _dist];
+	// };
+	if (count _obj_list > 0) then {
+		_near = [ _obj_list, {
+			alive _x && getObjectType _x >= 8 &&
+			( 
+				isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) || 
+				!(_x getVariable ['R3F_LOG_disabled', true])
+			)
+		}] call BIS_fnc_conditionalSelect;
 	};
-	_near = [ _obj_list, {
-		alive _x && getObjectType _x >= 8 &&
-		( 
-			isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) || 
-			!(_x getVariable ['R3F_LOG_disabled', true])
-		)
-	}] call BIS_fnc_conditionalSelect;
 } else {
 	// From Position
 	_near = _classlist select { (_vehpos distance2D _x) <= _dist };

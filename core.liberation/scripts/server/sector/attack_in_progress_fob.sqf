@@ -30,7 +30,7 @@ if ( GRLIB_blufor_defenders ) then {
 
 if ( _ownership == GRLIB_side_enemy ) then {
 	private _sector_timer = GRLIB_vulnerability_timer + (5 * 60);
-	private _near_outpost = ([_fobpos, "OUTPOST", 50, false] call F_check_near);
+	private _near_outpost = ([_fobpos, "OUTPOST", 50] call F_check_near);
 	private _activeplayers = 0;
 
 	[_fobpos, 1, _sector_timer] remoteExec ["remote_call_fob", 0];

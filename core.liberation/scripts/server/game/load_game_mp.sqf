@@ -7,6 +7,7 @@ date_month = date select 1;
 date_day = date select 2;
 blufor_sectors = [];
 GRLIB_all_fobs = [];
+GRLIB_all_outposts = [];
 GRLIB_mobile_respawn = [];
 buildings_to_load= [];
 combat_readiness = 0;
@@ -363,10 +364,16 @@ if ( count GRLIB_vehicle_to_military_base_links == 0 ) then {
 		};
 	} foreach _classnames_to_check;
 };
+
+{
+	if (count (_x nearObjects [FOB_outpost, 20]) > 0) then { GRLIB_all_outposts pushBack _x };
+} forEach GRLIB_all_fobs;
+
 publicVariable "GRLIB_garage";
 publicVariable "GRLIB_warehouse";
 publicVariable "blufor_sectors";
 publicVariable "GRLIB_all_fobs";
+publicVariable "GRLIB_all_outposts";
 publicVariable "GRLIB_mobile_respawn";
 publicVariable "GRLIB_vehicle_to_military_base_links";
 publicVariable "GRLIB_permissions";

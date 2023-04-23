@@ -82,7 +82,7 @@ while { dialog && alive player && deploy == 0} do {
 
 	for [{_idx=0},{_idx < count GRLIB_all_fobs},{_idx=_idx+1}] do {
 		_fobpos = GRLIB_all_fobs select _idx;
-		_near_outpost = ([_fobpos, "OUTPOST", 50, false] call F_check_near);
+		_near_outpost = ([_fobpos, "OUTPOST", 50] call F_check_near);
 		if (_near_outpost) then {
 			_choiceslist = _choiceslist + [[format [ "Outpost %1 - %2", (military_alphabet select _idx),mapGridPosition (GRLIB_all_fobs select _idx) ],GRLIB_all_fobs select _idx]];
 		} else {

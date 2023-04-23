@@ -33,7 +33,7 @@ while { true } do {
 	GRLIB_player_is_menuok = [] call is_menuok;
 	if (GRLIB_player_is_menuok) then {
 		_fobdistance = round (player distance2D ([] call F_getNearestFob));
-		_near_outpost = ([player, "OUTPOST", GRLIB_fob_range, false] call F_check_near);
+		_near_outpost = ([player, "OUTPOST", GRLIB_fob_range] call F_check_near);
 		_outpost_owner = [getPosATL player] call F_getFobOwner;
 		_near_arsenal = [player, "ARSENAL", _distarsenal, true] call F_check_near;
 		_near_spawn = ([player, "SPAWNT", _distarsenal, true] call F_check_near || [player, "SPAWNV", _distvehclose, true] call F_check_near);

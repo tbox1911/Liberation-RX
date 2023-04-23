@@ -30,7 +30,7 @@ if (count squads == 0) then {
 	ctrlShow [ 1085, false ];
 };
 
-private _near_outpost = ([player, "OUTPOST", GRLIB_fob_range, false] call F_check_near);
+private _near_outpost = ([player, "OUTPOST", GRLIB_fob_range] call F_check_near);
 private _has_box = false;
 { if ((_x select 0) == playerbox_typename && (_x select 3) == getPlayerUID player) exitWith {_has_box = true} } foreach GRLIB_garage;
 if (count ([entities playerbox_typename, {[player, _x] call is_owner}] call BIS_fnc_conditionalSelect) > 0) then {_has_box = true};

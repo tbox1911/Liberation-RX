@@ -4,7 +4,7 @@ private _attacked_string = [ _attacked_position ] call F_getFobName;
 if ( _attacked_string == "" ) then {
 	_attacked_string = markerText  ( [GRLIB_fob_range, _attacked_position ] call F_getNearestSector );
 } else {
-	private _near_outpost = ([_attacked_position, "OUTPOST", GRLIB_fob_range, false] call F_check_near);
+	private _near_outpost = ([_attacked_position, "OUTPOST", GRLIB_fob_range] call F_check_near);
 	if (_near_outpost) then {
 		_attacked_string = format [ "Outpost %1", _attacked_string ];
 	} else {

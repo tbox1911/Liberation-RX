@@ -4,7 +4,7 @@ if (isDedicated || (!hasInterface && !isServer)) exitWith {};
 
 private _fob_name = [_fobpos] call F_getFobName;
 private _fob_type = "FOB";
-private _near_outpost = ([_fobpos, "OUTPOST", GRLIB_fob_range, false] call F_check_near);
+private _near_outpost = ([_fobpos, "OUTPOST", GRLIB_fob_range] call F_check_near);
 if (_near_outpost) then {_fob_type = "Outpost"};
 
 sector_timer = _sector_timer;
