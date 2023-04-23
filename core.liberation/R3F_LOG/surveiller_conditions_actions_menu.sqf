@@ -201,6 +201,7 @@ while {true} do
 				};
 				// Condition action contenu_vehicule
 				R3F_LOG_action_contenu_vehicule_valide = alive _objet_pointe &&
+					(([_joueur, _objet_pointe] call is_owner) || ([_objet_pointe] call is_public)) &&
 					(vectorMagnitude velocity _objet_pointe < 6) && _objet_deverrouille && !(_objet_pointe getVariable "R3F_LOG_disabled");
 			};
 		};
