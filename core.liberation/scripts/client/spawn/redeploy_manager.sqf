@@ -205,10 +205,10 @@ if (dialog && deploy == 1) then {
 			_destdist = 6;
 		} else {
 			// FOB / Outpost
+			_destpos = ((_choiceslist select _idxchoice) select 1);
 			private _attacked = ([_destpos] call F_sectorOwnership == GRLIB_side_enemy);
 			private _near_sign = nearestObjects [_destpos, [FOB_sign], 10] select 0;
 			private _near_outpost = (_destpos in GRLIB_all_outposts);
-			_destpos = ((_choiceslist select _idxchoice) select 1);
 			_destdir = (getDir _near_sign) + 180;
 			_destdist = 12;
 			if (_near_outpost) then { _destdist = 8 };
