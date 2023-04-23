@@ -1000,6 +1000,14 @@
 			<Portuguese>%1 %2 foi destruído!</Portuguese>
 			<Czech>%1 %2 bylo zničeno!</Czech>
 		</Key>
+		<Key ID="STR_NOTIFICATION_FOBREPACK_TITLE">
+			<Original>%1 FOLDED</Original>
+			<French>%1 REPLIÉ</French>
+		</Key>
+		<Key ID="STR_NOTIFICATION_FOBREPACK_TEXT">
+			<Original>%1 %2 has been folded!</Original>
+			<French>%1 %2 a été repliée !</French>		
+		</Key>		
 		<Key ID="STR_NOTIFICATION_BATTLEGROUP_TITLE">
 			<Original>HOSTILE FORCES INCOMING</Original>
 			<French>FORCES HOSTILES EN APPROCHE</French>
