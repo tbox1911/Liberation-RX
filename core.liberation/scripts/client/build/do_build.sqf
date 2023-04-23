@@ -459,7 +459,7 @@ while { true } do {
 				if(buildtype == 99) then {
 					_vehicle addEventHandler ["HandleDamage", {0}];
 					_vehicle allowDamage false;
-					[(getpos _vehicle), false] remoteExec ["build_fob_remote_call", 2];
+					[(getpos _vehicle), _classname] remoteExec ["build_fob_remote_call", 2];
 
 					// Add owner sign
 					private _fobdir = getDir _vehicle;

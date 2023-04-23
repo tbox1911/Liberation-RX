@@ -63,8 +63,8 @@ while { true } do {
 	} forEach _nearveh;
 
 	// Salvage Wreck & Ruins
-	_nearruins = [nearestObjects [player, ["Ruins_F"], _searchradius], {([_x, "FOB", GRLIB_sector_size] call F_check_near) && isNil {_x getVariable "GRLIB_salvage_action"}}] call BIS_fnc_conditionalSelect;
-	_nearwreck = [nearestObjects [player, _wreck_class, _searchradius], {!([_x, "LHD", GRLIB_sector_size, false] call F_check_near) && !(alive _x) && isNil {_x getVariable "GRLIB_salvage_action"}}] call BIS_fnc_conditionalSelect;
+	_nearruins = [nearestObjects [player, ["Ruins_F"], _searchradius], {(getObjectType _x >= 8) && ([_x, "FOB", GRLIB_sector_size] call F_check_near) && isNil {_x getVariable "GRLIB_salvage_action"}}] call BIS_fnc_conditionalSelect;
+	_nearwreck = [nearestObjects [player, _wreck_class, _searchradius], {(getObjectType _x >= 8) && !([_x, "LHD", GRLIB_sector_size, false] call F_check_near) && !(alive _x) && isNil {_x getVariable "GRLIB_salvage_action"}}] call BIS_fnc_conditionalSelect;
 	{
 		_vehicle = _x;
 		_vehicle addAction ["<t color='#FFFF00'>" + localize "STR_SALVAGE" + "</t> <img size='1' image='res\ui_recycle.paa'/>","scripts\client\actions\do_wreck.sqf","",-900,true,true,"","[_target, _this] call GRLIB_checkAction_Wreck", (_distveh + 5)];

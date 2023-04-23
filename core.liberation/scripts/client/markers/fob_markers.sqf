@@ -11,8 +11,7 @@ while { true } do {
 		_markers = [];
 		for [ {_idx=0},{_idx < count GRLIB_all_fobs},{_idx=_idx+1}] do {
 			_fobpos = GRLIB_all_fobs select _idx;
-			_near_outpost = ([_fobpos, "OUTPOST", 50, false] call F_check_near);
-
+			_near_outpost = (_fobpos in GRLIB_all_outposts);
 			_marker = createMarkerLocal [format ["fobmarker%1",_idx], markers_reset];
 			if (_near_outpost) then {
 				_marker setMarkerTypeLocal "b_support";

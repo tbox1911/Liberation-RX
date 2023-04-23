@@ -82,7 +82,7 @@ while { dialog && alive player && deploy == 0} do {
 
 	for [{_idx=0},{_idx < count GRLIB_all_fobs},{_idx=_idx+1}] do {
 		_fobpos = GRLIB_all_fobs select _idx;
-		_near_outpost = ([_fobpos, "OUTPOST", 50, false] call F_check_near);
+		_near_outpost = (_fobpos in GRLIB_all_outposts);
 		if (_near_outpost) then {
 			_choiceslist = _choiceslist + [[format [ "Outpost %1 - %2", (military_alphabet select _idx),mapGridPosition (GRLIB_all_fobs select _idx) ],GRLIB_all_fobs select _idx]];
 		} else {
@@ -193,23 +193,40 @@ if (dialog && deploy == 1) then {
 
 	player setVariable ["GRLIB_action_inuse", true, true];
 	if (((_choiceslist select _idxchoice) select 0) == _basenamestr) then {
+		// LHD (Chimera)
 		call respawn_lhd;
 	} else {
-		_player_pos = getPos player;
+		private _destpos = zeropos;
+		private _destdir = random 360;
+		private _destdist = 4;
 		if (count (_choiceslist select _idxchoice) == 3) then {
-			_truck = (_choiceslist select _idxchoice) select 2;
-			player setpos ([_truck, 5 + floor(random 3), random 360] call BIS_fnc_relPos);
+			// Mobile Respawn
+			_destpos = (_choiceslist select _idxchoice) select 2;
+			_destdist = 6;
 		} else {
+			// FOB / Outpost
+			private _attacked = ([_destpos] call F_sectorOwnership == GRLIB_side_enemy);
+			private _near_sign = nearestObjects [_destpos, [FOB_sign], 10] select 0;
+			private _near_outpost = (_destpos in GRLIB_all_outposts);
 			_destpos = ((_choiceslist select _idxchoice) select 1);
-			player setpos [((_destpos select 0) + 5) - floor(random 10),((_destpos select 1) + 5) - floor(random 10),0.3];
+			_destdir = (getDir _near_sign) + 180;
+			_destdist = 12;
+			if (_near_outpost) then { _destdist = 8 };
+			if (!_near_outpost && _attacked) then {
+				_destdir = random 360;
+				_destdist = 4;
+				_destpos = _destpos vectorAdd [0,0,0.6];
+			};
+			player setDir (getDir _near_sign);
 		};
+		player setPos ([_destpos, _destdist, _destdir] call BIS_fnc_relPos);
 
 		private _unit_list = units group player;
 		private _my_squad = player getVariable ["my_squad", nil];
 		if (!isNil "_my_squad") then {
 			{ _unit_list pushBack _x } forEach units _my_squad;
 		};
-		private _unit_list_redep = [_unit_list, { !(isPlayer _x) && (isNull objectParent _x) && (_x distance2D _player_pos) < 40 && lifestate _x != 'INCAPACITATED' }] call BIS_fnc_conditionalSelect;
+		private _unit_list_redep = [_unit_list, { !(isPlayer _x) && (isNull objectParent _x) && (_x distance2D player) < 30 && lifestate _x != 'INCAPACITATED' }] call BIS_fnc_conditionalSelect;
 		[_unit_list_redep] spawn {
 			params ["_list"];
 			{

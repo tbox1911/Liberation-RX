@@ -1,20 +1,19 @@
 _fobpos = _this select 0;
 
-GRLIB_all_fobs = GRLIB_all_fobs - [_fobpos];
-publicVariable "GRLIB_all_fobs";
-
 private _classnames_to_destroy = [];
-private _all_buildings_to_destroy = [];
-
-private _near_outpost = ([_fobpos, "OUTPOST", 50, false] call F_check_near);
-if (_near_outpost) then {
+GRLIB_all_fobs = GRLIB_all_fobs - [_fobpos];
+if (_fobpos in GRLIB_all_outposts) then {
 	_classnames_to_destroy = [FOB_outpost, FOB_sign];
+	GRLIB_all_outposts = GRLIB_all_outposts - [_fobpos];
 } else {
 	_classnames_to_destroy = [FOB_typename, FOB_sign];
 };
+publicVariable "GRLIB_all_fobs";
+publicVariable "GRLIB_all_outposts";
 
 { _classnames_to_destroy pushBack (_x select 0) } foreach buildings;
 
+private _all_buildings_to_destroy = [];
 _all_buildings_to_destroy = [(_fobpos nearobjects 200), { getObjectType _x >= 8 && (typeOf _x) in _classnames_to_destroy }] call BIS_fnc_conditionalSelect;
 _all_buildings_to_destroy = _all_buildings_to_destroy + ([(_fobpos nearobjects 200), { (typeOf _x) in GRLIB_Ammobox_keep && [_x] call is_public }] call BIS_fnc_conditionalSelect);
 

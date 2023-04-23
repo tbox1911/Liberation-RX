@@ -80,6 +80,15 @@ class CfgNotifications
 		color[] = {1,0,0,1};
 		sound = "taskFailed";
     };
+	class lib_fob_repacked : lib_default_notification
+    {
+		title = $STR_NOTIFICATION_FOBREPACK_TITLE;
+		description = $STR_NOTIFICATION_FOBREPACK_TEXT;
+        iconPicture = "res\notif\ui_notif_fob_sec.paa";
+		color[] = {0,1,1,1};
+		sound = "taskUpdated";
+		priority = 3;
+    };	
 	class lib_battlegroup : lib_default_notification
     {
 		title = $STR_NOTIFICATION_BATTLEGROUP_TITLE;
