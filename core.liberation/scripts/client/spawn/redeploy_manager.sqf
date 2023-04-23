@@ -19,7 +19,7 @@ if (!GRLIB_player_spawned) then {
 	waitUntil {sleep 0.2; !(isNil "dostartgame")};
 	waitUntil {sleep 0.2; dostartgame == 1};
 	waitUntil {sleep 0.2; !(isNil "LRX_arsenal_init_done")};
-	waitUntil {sleep 0.2; LRX_arsenal_init_done };	
+	waitUntil {sleep 0.2; LRX_arsenal_init_done };
 };
 
 fullmap = 0;
@@ -55,7 +55,7 @@ _frame_pos = ctrlPosition ((findDisplay 5201) displayCtrl 198);
 _loadouts_data = [];
 _loadout_controls = [101,203,205];
 
-if ( GRLIB_player_spawned ) then {	
+if ( GRLIB_player_spawned ) then {
 	_saved_loadouts = profileNamespace getVariable ["bis_fnc_saveInventory_data", []];
 	_counter = 0;
 
@@ -82,7 +82,7 @@ while { dialog && alive player && deploy == 0} do {
 
 	for [{_idx=0},{_idx < count GRLIB_all_fobs},{_idx=_idx+1}] do {
 		_fobpos = GRLIB_all_fobs select _idx;
-		_near_outpost = (count (_fobpos nearObjects [FOB_outpost, 50]) > 0);
+		_near_outpost = ([_fobpos, "OUTPOST", 50, false] call F_check_near);
 		if (_near_outpost) then {
 			_choiceslist = _choiceslist + [[format [ "Outpost %1 - %2", (military_alphabet select _idx),mapGridPosition (GRLIB_all_fobs select _idx) ],GRLIB_all_fobs select _idx]];
 		} else {
@@ -157,7 +157,7 @@ while { dialog && alive player && deploy == 0} do {
 if (dialog && deploy == 1) then {
 
 	// Manage Player Loadout
-	if ( !GRLIB_player_spawned ) then {	
+	if ( !GRLIB_player_spawned ) then {
 		// respawn loadout
 		if ( !isNil "GRLIB_respawn_loadout" ) then {
 			player setUnitLoadout GRLIB_respawn_loadout;
@@ -186,7 +186,7 @@ if (dialog && deploy == 1) then {
 		[player] call F_filterLoadout;
 		[player] call F_payLoadout;
 	};
-	
+
 	// Redeploy
 	_idxchoice = lbCurSel 201;
 	_spawn_str = (_choiceslist select _idxchoice) select 0;

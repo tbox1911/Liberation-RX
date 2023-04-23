@@ -166,7 +166,7 @@ addMissionEventHandler ["Draw3D",{
 		private _sign = _near_sign select 0;
 		private _gid = _sign getVariable ["GRLIB_vehicle_owner", "public"];
 		private _type = "FOB";
-		private _near_outpost = (count ((getPosATL _sign) nearObjects [FOB_outpost, 50]) > 0);
+		private _near_outpost = ([_sign, "OUTPOST", 30, false] call F_check_near);
 		if (_near_outpost) then { _type = "Outpost" };
 		private _name = "- LRX";
 		if (_gid != "public") then {

@@ -6,7 +6,7 @@ publicVariable "GRLIB_all_fobs";
 private _classnames_to_destroy = [];
 private _all_buildings_to_destroy = [];
 
-private _near_outpost = (count (_fobpos nearObjects [FOB_outpost, 50]) > 0);
+private _near_outpost = ([_fobpos, "OUTPOST", 50, false] call F_check_near);
 if (_near_outpost) then {
 	_classnames_to_destroy = [FOB_outpost, FOB_sign];
 } else {

@@ -7,13 +7,18 @@ params [
 
 private _ret = false;
 private _classlist = [];
+private _obj_list = [];
 private _near = [];
-private _vehpos = getPosATL _vehicle;
+private _vehpos = _vehicle;
+if (typeName _vehicle == "OBJECT" ) then {
+	_vehpos = getPosATL _vehicle;
+};
 
 if (isNil "_list") exitWith {_ret};
 
 switch ( _list ) do {
 	case "LHD" : { _classlist = [lhd]};	
+	case "OUTPOST" : { _classlist = [FOB_outpost]};
 	case "SRV" : { _classlist = GRLIB_Marker_SRV};
 	case "ATM" : { _classlist = GRLIB_Marker_ATM};
 	case "FUEL" : { _classlist = GRLIB_Marker_FUEL};
@@ -42,9 +47,12 @@ if (count(_classlist) == 0) exitWith {false};
 
 if (typeName (_classlist select 0) == "STRING") then {
 	// From Objects classname
-	_near = [ _vehpos nearEntities [_classlist, _dist], {
-	//_near = [ nearestObjects [_vehpos, _classlist, _dist], {
-		alive _x &&
+	_obj_list = _vehpos nearEntities [_classlist, _dist];
+	if (count _obj_list == 0) then {
+		_obj_list = nearestObjects [_vehpos, _classlist, _dist];
+	};
+	_near = [ _obj_list, {
+		alive _x && getObjectType _x >= 8 &&
 		( 
 			isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) || 
 			!(_x getVariable ['R3F_LOG_disabled', true])

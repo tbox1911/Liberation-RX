@@ -30,7 +30,7 @@ if ( GRLIB_blufor_defenders ) then {
 
 if ( _ownership == GRLIB_side_enemy ) then {
 	private _sector_timer = GRLIB_vulnerability_timer + (5 * 60);
-	private _near_outpost = (count (_fobpos nearObjects [FOB_outpost, 50]) > 0);
+	private _near_outpost = ([_fobpos, "OUTPOST", 50, false] call F_check_near);
 	private _activeplayers = 0;
 
 	[_fobpos, 1, _sector_timer] remoteExec ["remote_call_fob", 0];
@@ -42,7 +42,7 @@ if ( _ownership == GRLIB_side_enemy ) then {
 		_activeplayers = count ([allPlayers, {alive _x && (_x distance2D (_fobpos)) < GRLIB_sector_size}] call BIS_fnc_conditionalSelect);
 		if (_sector_timer mod 60 == 0 && !_near_outpost) then {
 			[ _fobpos , 4 ] remoteExec ["remote_call_fob", 0];
-		};	
+		};
 		sleep 3;
 	};
 
@@ -57,7 +57,7 @@ if ( _ownership == GRLIB_side_enemy ) then {
 		} else {
 			[ _fobpos , 3 ] remoteExec ["remote_call_fob", 0];
 			_enemy_left = [allUnits, {(alive _x) && (vehicle _x == _x) && (side group _x == GRLIB_side_enemy) && ((_fobpos distance2D _x) < GRLIB_capture_size * 0.8)}] call BIS_fnc_conditionalSelect;
-			{ 
+			{
 				if ( _max_prisonners > 0 && ((random 100) < GRLIB_surrender_chance) ) then {
 					[_x] spawn prisonner_ai;
 					_max_prisonners = _max_prisonners - 1;

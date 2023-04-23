@@ -1,10 +1,10 @@
-params [ "_fob_pos", "_status", ["_sector_timer", 0] ];
+params [ "_fobpos", "_status", ["_sector_timer", 0] ];
 
 if (isDedicated || (!hasInterface && !isServer)) exitWith {};
 
-private _fob_name = [_fob_pos] call F_getFobName;
+private _fob_name = [_fobpos] call F_getFobName;
 private _fob_type = "FOB";
-private _near_outpost = (count (_fob_pos nearObjects [FOB_outpost, 50]) > 0);
+private _near_outpost = ([_fobpos, "OUTPOST", GRLIB_fob_range, false] call F_check_near);
 if (_near_outpost) then {_fob_type = "Outpost"};
 
 sector_timer = _sector_timer;
@@ -14,7 +14,7 @@ if ( _status == 0 ) then {
 
 if ( _status == 1 ) then {
 	[ "lib_fob_attacked", [ _fob_type, _fob_name ] ] call BIS_fnc_showNotification;
-	"opfor_capture_marker" setMarkerPosLocal _fob_pos;
+	"opfor_capture_marker" setMarkerPosLocal _fobpos;
 };
 
 if ( _status == 2 ) then {
@@ -28,7 +28,7 @@ if ( _status == 3 ) then {
 };
 
 if ( _status == 4 ) then {
-	if (player distance2D _fob_pos > GRLIB_sector_size) then {
+	if (player distance2D _fobpos > GRLIB_sector_size) then {
 		[ "lib_fob_attacked", [ _fob_type, _fob_name ] ] call BIS_fnc_showNotification;
 	};
 };
