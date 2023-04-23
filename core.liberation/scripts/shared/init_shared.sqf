@@ -23,6 +23,7 @@ sendammo_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\re
 dog_action_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\dog_action_remote_call.sqf";
 vehicle_garage_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\vehicle_garage_remote_call.sqf";
 a3w_create_enemy = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\a3w_create_enemy.sqf";
+load_truck_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\load_truck_remote_call.sqf";
 unload_truck_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\unload_truck_remote_call.sqf";
 load_context_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\load_context_remote_call.sqf";
 ammo_add_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\ammo_add_remote_call.sqf";
