@@ -1,5 +1,6 @@
 // load MapSpecific Data etc.
-[] call compile preprocessFileLineNumbers format ["scripts\server\game\weatherData\maps\%1.sqf", worldName ];
+//[] call compile preprocessFileLineNumbers format ["scripts\server\game\weatherData\maps\%1.sqf", worldName ];
+[] call compile preprocessFileLineNumbers "weatherData.sqf";
 
 // init variables
 private _seasonIdx = 9;
@@ -28,7 +29,6 @@ while { GRLIB_endgame == 0 } do {
 		_monthSkipped = false;
 	};
 
-	diag_log "SetSeason";
 	// set seasonIdx - this will indicate the Index for seasonal data....
 	switch (true) do {
 		case ((_date_month >= 1) && (_date_month <= 3)): {
@@ -52,18 +52,15 @@ while { GRLIB_endgame == 0 } do {
 			_seasonIdx = 2;
 		};
 	};
-	diag_log "GetOvercast";
+
 	// overcast Value.
 	private _overcast = selectRandomWeighted (cloudsList select _seasonIdx);
-
-	diag_log "Random Overcast";
 	// apply some randomness...
 	private _overcastRng = random [-0.1, 0, 0.1];
 	_overcast = _overcast + _overcastRng;
 	// prevent values from being negative
 	_overcast = _overcast max 0;
 
-	diag_log "Rain";
 	// rain Value
 	if (( random 101) <= ((rainList select _seasonIdx) select 1)) then {
 		_rain = ((rainList select _seasonIdx) select 0);
@@ -75,12 +72,11 @@ while { GRLIB_endgame == 0 } do {
 		_rain = 0;
 	};
 
-	diag_log "Thunderstorm";
 	// Thunderstorm Value
 	if ((_rain >= 0.1 ) && ( random[1, 0, 1] <= (thunderstormsList select _seasonIdx))) then {
 		_thunder = random 1.0;
 	};
-	diag_log "Fog";
+
 	// fog Value
 	private _fog = (fogList select _seasonIdx);
 	
@@ -158,9 +154,9 @@ while { GRLIB_endgame == 0 } do {
 	// set lightnings...
 	_delay setLightnings _thunder;
 
-	diag_log "RunUpdate";
 	format ["The current season is %1", _seasonText] remoteExec ["hint"];
 
+	diag_log format [" ---- Dymamic Weather has been updated "];
 	// force this for first time...
 	if (_firstRun == true) then {
 		forceWeatherChange;
