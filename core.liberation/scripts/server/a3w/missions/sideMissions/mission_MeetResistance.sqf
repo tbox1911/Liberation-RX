@@ -7,11 +7,12 @@ if (!isServer) exitwith {};
 if (!isNil "GRLIB_A3W_Mission_MR") exitWith {};
 #include "sideMissionDefines.sqf"
 
-private ["_nbUnits", "_townName",
-		 "_aiGroupRes", "_buildingpositions",
-		 "_tent1", "_chair1", "_chair2", "_fire1",
-		 "_box1", "_box2",
-		 "_veh1", "_veh2", "_gunner"];
+private [
+	"_nbUnits", "_townName", "_aiGroupRes", "_buildingpositions",
+	"_tent1", "_chair1", "_chair2", "_fire1",
+	"_box1", "_box2",
+	"_veh1", "_veh2", "_gunner"
+];
 
 _setupVars =
 {

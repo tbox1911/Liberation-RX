@@ -22,7 +22,7 @@ _setupObjects = {
 	_grpdefenders = _base_output select 2;
 	_grpsentry = _base_output select 3;
 	_aiGroup = _grpdefenders;
-
+	[_missionPos, 150, floor (random 11)] spawn ied_trap_manager;
 	_missionHintText = format [localize "STR_OUTPOST_MESSAGE1", sideMissionColor];
 	true;
 };
