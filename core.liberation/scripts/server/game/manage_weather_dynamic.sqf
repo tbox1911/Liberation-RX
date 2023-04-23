@@ -1,5 +1,6 @@
+// Dynamic Weather
 // load MapSpecific Data etc.
-//[] call compile preprocessFileLineNumbers format ["scripts\server\game\weatherData\maps\%1.sqf", worldName ];
+// by  sturmalex
 [] call compile preprocessFileLineNumbers "weatherData.sqf";
 
 // init variables
