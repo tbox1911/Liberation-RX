@@ -18,7 +18,6 @@ PAR_unblock_AI = {
 	if (player getVariable ["SOG_player_in_tunnel", false]) exitWith {};
 	if ( isNull (objectParent player) && count _unit_array == 0 ) then {
 		private _grp = group player;
-		while {(count (waypoints _grp)) != 0} do {deleteWaypoint ((waypoints _grp) select 0);};
 		player setPosATL (getPosATL player vectorAdd [([] call F_getRND), ([] call F_getRND), 0.5]);
 	} else {
 		{

@@ -8,7 +8,7 @@ if (isNil "_fob_hq") exitWith {};
 
 private _fob_name = [_fob_pos] call F_getFobName;
 private _fob_owner = [_fob_pos] call F_getFobOwner;
-if (getPlayerUID player != _fob_owner) exitWith { hintSilent "Error!\nYour are NOT the owner of the FOB!" };
+if ((getPlayerUID player != _fob_owner) && !([] call is_admin)) exitWith { hintSilent localize "STR_HINT_FOB_WRONG_OWNER" };
 
 build_confirmed = 1;
 dorepackage = 0;

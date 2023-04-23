@@ -49,7 +49,6 @@ if (_wnded == player) then {
     }] remoteExec ["bis_fnc_call", -2];
   };
   private _grp = group _wnded;
-	while {(count (waypoints _grp)) != 0} do {deleteWaypoint ((waypoints _grp) select 0);};
 } else {
   _wnded switchMove "amovpknlmstpsraswrfldnon"; //go up
   _wnded playMoveNow "amovpknlmstpsraswrfldnon";

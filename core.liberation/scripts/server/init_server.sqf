@@ -141,8 +141,6 @@ if (GRLIB_side_enemy == INDEPENDENT) then {
 
 addMissionEventHandler ["MPEnded", {
 	diag_log "--- LRX Mission End!";
-	{deleteVehicle _x} forEach (vehicles + allUnits);
-	{deleteMarker _x} forEach allMapMarkers;
 }];
 
 addMissionEventHandler ['HandleDisconnect', {

@@ -16,7 +16,7 @@
 		<Key ID="STR_MISSION_MOTD">
 			<Original>It should not be too easy...</Original>
 			<Russian>Это не должно быть слишком просто...</Russian>
-			<French>Ça dois pas être trop facile...</French>
+			<French>Ça doit pas être trop facile...</French>
 			<Chinesesimp>经历漫漫的战斗历程才终能获得解放</Chinesesimp>
 			<Chinese>經歷漫漫的戰鬥歷程才終能獲得解放</Chinese>
 			<Portuguese>Não deve ser muito fácil...</Portuguese>
@@ -5017,8 +5017,12 @@
 			<Portuguese>O tipo de Huron</Portuguese>
 			<Czech>FOB Kontejnér</Czech>
 		</Key>
+		<Key ID="STR_HINT_FOB_WRONG_OWNER">
+			<Original>You are NOT the Owner of the FOB!</Original>
+			<French>Vous n'êtes PAS le propriétaire de la FOB!</French>		
+		</Key>
 		<Key ID="STR_HINT_FOBS_EXCEEDED">
-			<Original>You are not allowed to deploy more than %1 FOBs at the same time.</Original>
+			<Original>You are NOT allowed to deploy more than %1 FOBs at the same time.</Original>
 			<French>Vous n'êtes pas autorisé à déployer plus de %1 FOBs en même temps.</French>
 			<German>Sie haben nicht die Erlaubnis mehr als %1 FOBs zur selben Zeit zu errichten.</German>
 			<Russian>Вам не разрешено развертывать более %1 FOB одновременно.</Russian>

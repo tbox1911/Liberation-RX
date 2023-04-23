@@ -12,6 +12,10 @@ if (count GRLIB_warehouse == 0) then {
 	];
 };
 
+if (isNil "GRLIB_WHS_Group") then {
+	GRLIB_WHS_Group = createGroup [GRLIB_side_civilian, true];
+};
+
 private _warehouse_offset = [
 	// row 1 (Water)
 	[
@@ -45,8 +49,7 @@ _desk setDir _warehouse_dir;
 _desk setPosASL _deskPos;
 _warehouse_dir = (180 + _warehouse_dir);
 private _manPos = (ASLToATL _deskPos) vectorAdd ([[0, -0.7, 0.1], -_warehouse_dir] call BIS_fnc_rotateVector2D);
-private _grp = group chimeraofficer;
-private _man = _grp createUnit [WRHS_Man, zeropos, [], 0, "NONE"];
+private _man = GRLIB_WHS_Group createUnit [WRHS_Man, zeropos, [], 0, "NONE"];
 _man allowDamage false;
 _man disableCollisionWith _desk;
 _man setDir _warehouse_dir;
@@ -55,6 +58,7 @@ doStop _man;
 [_man, "AidlPercMstpSnonWnonDnon_AI"] spawn F_startAnimMP;
 _man setVariable ["GRLIB_Warehouse", _warehouse];
 _warehouse setVariable ["GRLIB_WarehouseOwner", _man];
+publicVariable "GRLIB_WHS_Group";
 
 // build box
 _warehouse_dir = getdir _warehouse;
@@ -77,3 +81,4 @@ _warehouse_dir = getdir _warehouse;
 
 // update warehouse
 [_man] call warehouse_update;
+publicVariable "GRLIB_warehouse";

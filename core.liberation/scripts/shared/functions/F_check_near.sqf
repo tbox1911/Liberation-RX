@@ -33,7 +33,7 @@ switch ( _list ) do {
 
 // Include FOB
 if (_includeFOB) then {
-	if ((_vehpos distance2D ([] call F_getNearestFob)) <= (_dist * 2)) then { _ret = true };
+	if ((_vehpos distance2D ([] call F_getNearestFob)) <= _dist) then { _ret = true };
 };
 
 if (_ret) exitWith {true};
