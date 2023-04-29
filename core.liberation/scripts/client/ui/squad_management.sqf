@@ -188,7 +188,11 @@ while { dialog && alive player } do {
 					private _result = [_msg, "Warning !", true, true] call BIS_fnc_guiMessage;
 					if (_result) then {
 						if (!([_cost] call F_pay)) exitWith {};
-						_selectedmember setVariable ["PAR_AI_score", 0];
+						_selectedmember setSkill ((skill _selectedmember ) +0.05);		// Add Skill!
+						_selectedmember setVariable ["PAR_AI_score", ((GRLIB_rank_level find (rank _selectedmember)) + 1) * 5, true];												
+						_selectedmember setUnitRank (GRLIB_rank_level select (GRLIB_rank_level find (rank _selectedmember)) + 1); 													// Promotion in Rank
+						_msg = format ["%1 was promoted to the rank of %2 !", name _selectedmember, (GRLIB_rank_level select (GRLIB_rank_level find (rank _selectedmember)))];		//Message
+                    	[_selectedmember, _msg] call PAR_fn_globalchat;
 						hint localize 'STR_PROMOTE_OK';
 						waitUntil {sleep 0.3; _selectedmember getVariable ["PAR_AI_score", 0] !=0 };
 						_resupplied = true;
