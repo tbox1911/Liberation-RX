@@ -209,7 +209,9 @@ if (dialog && deploy == 1) then {
 			private _attacked = ([_destpos] call F_sectorOwnership == GRLIB_side_enemy);
 			private _near_sign = nearestObjects [_destpos, [FOB_sign], 10] select 0;
 			private _near_outpost = (_destpos in GRLIB_all_outposts);
-			_destdir = 0; //(getDir _near_sign) + 180;		Threw an error and only god knows why
+			if (!isNull _near_sign) then {
+				_destdir = (getDir _near_sign) + 180;
+			};
 			_destdist = 12;
 			if (_near_outpost) then { _destdist = 8 };
 			if (!_near_outpost && _attacked) then {
