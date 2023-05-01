@@ -32,7 +32,7 @@ GRLIB_build_date = \"$(date +'%d/%m/%Y')\";
 GRLIB_build_time = \"$(date +'%H:%M:%S')\";
 " > ./"${dir}"/build_info.sqf
 
-		tag=$(git tag | tail -n1)
+		tag=$(git describe --tags)
 		sed -i "s/\(\"Last version\) .*\"\]/\1 $tag\"\]/" ./"${dir}"/GREUH/Scripts/GREUH_version.sqf
 
 		if [[ -d custom ]]; then
