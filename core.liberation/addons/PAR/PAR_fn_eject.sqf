@@ -1,0 +1,15 @@
+params ["_veh", "_unit", ["_all",false]];
+
+if (_veh getVariable ["evacVeh", false]) exitWith {};
+if (_veh iskindof "Steerable_Parachute_F") exitWith {};
+
+waitUntil {sleep 0.1; (round (speed vehicle _veh) == 0 && (round(getPosATL _veh select 2) < 5)) || damage _veh > 0.8 || driver _veh == _unit || vehicle _unit == _unit};  // No eject when driving
+
+if (_all) then {
+	_veh setVariable ["evacVeh", true];
+	{ if (local _x) then {[_veh, _x] spawn PAR_unit_eject} } forEach (crew _veh);
+	sleep 5; 	//lock
+	_veh setVariable ['evacVeh', nil];
+} else {
+	[_veh, _unit] spawn PAR_unit_eject;
+};
