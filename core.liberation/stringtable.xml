@@ -1719,8 +1719,8 @@
 			<Czech>Zdroje</Czech>
 		</Key>
 		<Key ID="STR_PARAMS_FATIGUE">
-			<Original>Stamina</Original>
-			<French>Endurance</French>
+			<Original>Player's Stamina</Original>
+			<French>Endurance du Joueur</French>
 			<German>Ausdauer</German>
 			<Spanish>Estamina</Spanish>
 			<Russian>Усталость</Russian>
@@ -3400,18 +3400,6 @@
 			<Japanese>-- セカンダリーミッション</Japanese>
 			<Portuguese>-- OBJETIVOS SECUNDÁRIOS</Portuguese>
 			<Czech>-- SEKUNDÁRNÍ CÍLE</Czech>
-		</Key>
-		<Key ID="STR_AMMO_BOUNTIES">
-			<Original>Ammunition bounties</Original>
-			<French>Primes de munitions</French>
-			<German>Munition als Kopfgelder</German>
-			<Spanish>Recompensas de munición</Spanish>
-			<Russian>Вознаграждать за уничтожение техники</Russian>
-			<Chinesesimp>弹药奖励</Chinesesimp>
-			<Chinese>彈藥獎勵</Chinese>
-			<Japanese>弾薬バウンティ</Japanese>
-			<Portuguese>Recompensas de munição</Portuguese>
-			<Czech>Munice jako Odměna</Czech>
 		</Key>
 		<Key ID="STR_BOUNTY_MESSAGE">
 			<Original>Bounty of %1 Ammunition for a %2 destroyed by %3</Original>

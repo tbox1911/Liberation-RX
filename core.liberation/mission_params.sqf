@@ -41,7 +41,6 @@ LRX_Mission_Params = [
 	["Civilians", 1],				// Cilivilian activity - [default 1] - values = [0,0.5,1,2] - Text {None,Reduced,Normal,Increased}
 	["Wildlife", 1],				// Wildlife Manager - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["PassiveIncome", 0],			// Replace ammo box spawns with passive income - [default 0] - values = [1,0] - Text {Enabled,Disabled}
-	["AmmoBounties", 1],			// Ammunition bounties - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["HaloJump", 1],				// HALO jump - [default 1] - values = [1,5,10,15,20,30,0] - Text {Enabled - no cooldown,Enabled - 5min cooldown,Enabled - 10min cooldown,Enabled - 15min cooldown,Enabled - 20min cooldown,Enabled - 30min cooldown,Disabled}
 	["BluforDefenders", 1],			// BLUFOR defenders in owned sectors - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["MaximumFobs", 5],				// Maximum number of FOBs allowed - [default 26] - values = [3,5,7,10,15,20,26] - Text {3,5,7,10,15,20,26}
@@ -199,7 +198,6 @@ LRX_Mission_Params_Def = [
 	["Permissions", localize "STR_PERMISSIONS_PARAM", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["Wildlife", localize "STR_PARAM_WILDLIFE", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["PassiveIncome", localize "STR_PARAM_PASSIVE_INCOME", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
-	["AmmoBounties", localize "STR_AMMO_BOUNTIES", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["Thermic", localize "STR_THERMAL", [localize "STR_PARAMS_DISABLED","Only at night",localize "STR_PARAMS_ENABLED"]],
 	["EnableArsenal", localize "STR_ARSENAL", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],	
 	["EnableLock", localize "STR_VEH_LOCK", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],	
