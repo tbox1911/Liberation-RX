@@ -213,7 +213,7 @@ PAR_HandleDamage_EH = {
 	private _isNotWounded = !(_unit getVariable ["PAR_wounded", false]);
 	private _veh_unit = objectParent _unit;
 
-	if (GRLIB_tk_mode != 2) then {
+	if (GRLIB_tk_mode > 0) then {
 		// TK Protect
 		private _veh_killer = vehicle _killer;
 		if (_isNotWounded && isPlayer _killer && _killer != _unit && _veh_killer != _veh_unit && _amountOfDamage > 0.15) then {

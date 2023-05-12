@@ -19,7 +19,7 @@ heavily modified by pSiKO
 LRX_tk_actions = compileFinal preprocessFileLineNumbers "addons\TKP\tk_actions.sqf";
 if ((BTC_logic getVariable [getPlayerUID player, 0]) > GRLIB_tk_count) exitWith {[player] spawn LRX_tk_actions};
 if (!([] call F_getValid)) exitWith {endMission "LOSER"};
-if (GRLIB_tk_mode == 2) exitWith {};
+if (GRLIB_tk_mode == 0) exitWith {};
 
 // TK VIP Protect
 LRX_tk_vip = [];
@@ -30,7 +30,7 @@ LRX_tk_check = {
 	if (LRX_tk_vip find (name _killer) > -1) exitWith {};
 
 	if (player == _killer) then {
-		if (GRLIB_tk_mode == 0) then {
+		if (GRLIB_tk_mode == 2) then {
 			_kill = BTC_logic getVariable [getPlayerUID _killer, 0];
 			BTC_logic setVariable [getPlayerUID player, (_kill + 1), true];
 		};
