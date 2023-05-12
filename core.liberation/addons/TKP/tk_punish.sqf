@@ -1,4 +1,5 @@
 params ["_target", "_caller", "_actionId", "_killer"];
+if (isNull _killer) exitWith {};
 
 private _msg = format ["<t align='center'>" + localize "STR_TK_ASK1" + "</t>", name _killer];
 private _result = [_msg, localize "STR_TK_COUNT", localize "STR_TK_PUNISH", localize "STR_TK_FORGIVE"] call BIS_fnc_guiMessage;

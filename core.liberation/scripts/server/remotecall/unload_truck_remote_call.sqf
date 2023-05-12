@@ -35,7 +35,7 @@ private [ "_next_box", "_next_pos" ];
 		sleep 0.5;
 	};
 } foreach _all_objects;
-sleep 1;
+sleep 2;
 
 { 
 	_x enableSimulationGlobal true;
@@ -43,6 +43,7 @@ sleep 1;
 	_x allowDamage true;
 	_x setVariable ["R3F_LOG_disabled", false, true];
 } foreach _all_objects;
+sleep 1;
 
 _truck_to_unload allowDamage true;
 _truck_to_unload setVariable ["GRLIB_ammo_truck_load", [], true];
