@@ -20,10 +20,6 @@ if ( isNil "cinematic_camera_started" ) then { cinematic_camera_started = false 
 
 [] spawn cinematic_camera;
 
-if (serverName == "DevSrv") then {
-	GRLIB_introduction = false;
-};
-
 if ( GRLIB_introduction ) then {
 	uisleep 2;
 	cutRsc ["intro1","PLAIN",1,true];
