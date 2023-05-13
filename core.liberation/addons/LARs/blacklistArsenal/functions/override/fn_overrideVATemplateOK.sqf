@@ -1,7 +1,7 @@
 #include "\A3\Ui_f\hpp\defineResinclDesign.inc"
 
 private _display = _this select 0;
-private _center = (missionNamespace getVariable ["BIS_fnc_arsenal_center",player]);
+private _center = (missionNamespace getVariable ["BIS_fnc_arsenal_center", player]);
 private _hideTemplate = true;
 private _ctrlTemplateName = _display displayCtrl IDC_RSCDISPLAYARSENAL_TEMPLATE_EDITNAME;
 
@@ -46,4 +46,14 @@ if (ctrlEnabled _ctrlTemplateName) then {
 	} else {
 		_hideTemplate = false;
 	};
+};
+
+if (_hideTemplate) then {
+	_ctrlTemplate = _display displayCtrl IDC_RSCDISPLAYARSENAL_TEMPLATE_TEMPLATE;
+	_ctrlTemplate ctrlSetFade 1;
+	_ctrlTemplate ctrlCommit 0;
+	_ctrlTemplate ctrlEnable false;
+	
+	_ctrlMouseBlock = _display displayCtrl IDC_RSCDISPLAYARSENAL_MOUSEBLOCK;
+	_ctrlMouseBlock ctrlEnable false;
 };
