@@ -67,9 +67,9 @@ while { true } do {
 		_idact_num = _id_actions select _idact_id;
 		if (([] call is_admin || getPlayerUID player in GRLIB_whitelisted_moderators) && GRLIB_admin_menu ) then {
 			if ( _idact_num == -1 ) then {
-				_idact = player addAction ["<t color='#0000F8'>" + localize "STR_ADMIN_MENU" + "</t>","scripts\client\commander\admin_menu.sqf","",999,false,true,"",""];
+				_idact = player addAction ["<t color='#0000F8'>" + localize "STR_ADMIN_MENU" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Use_ca.paa'/>","scripts\client\commander\admin_menu.sqf","",999,false,true,"",""];
 				_id_actions set [_idact_id, _idact];
-				_idact = player addAction ["<t color='#008080'>-- CONFIGURE MISSION</t>","scripts\client\commander\open_params.sqf","",998,false,true,"",""];
+				_idact = player addAction ["<t color='#008080'>-- CONFIGURE MISSION</t> <img size='1' image='\a3\Ui_f\data\GUI\Rsc\RscDisplayArcadeMap\icon_saveas_ca.paa'/>","scripts\client\commander\open_params.sqf","",998,false,true,"",""];
 				_id_actions set [_idact_id+1, _idact];
 			};
 		} else {
@@ -177,7 +177,7 @@ while { true } do {
 		_idact_num = _id_actions select _idact_id;
 		if (!_near_lhd && (_near_fuel || _near_repair) ) then {
 			if ( _idact_num == -1 ) then {
-				_idact = player addAction ["<t color='#00F080'>" + localize "STR_BUY_FUEL" + "</t> <img size='1' image='R3F_LOG\icons\r3f_fuel.paa'/>", "scripts\client\actions\do_buyfuel.sqf","",-900,true,true,"",""];
+				_idact = player addAction ["<t color='#00F080'>" + localize "STR_BUY_FUEL" + "</t> <img size='1' image='\A3\ui_f\data\map\mapcontrol\Fuelstation_CA.paa'/>", "scripts\client\actions\do_buyfuel.sqf","",-900,true,true,"",""];
 				_id_actions set [_idact_id, _idact];
 			};
 		} else {
@@ -192,7 +192,7 @@ while { true } do {
 		_idact_num = _id_actions select _idact_id;
 		if ((_fobdistance < _distarsenal || _near_lhd) && damage player >= 0.02) then {
 			if ( _idact_num == -1 ) then {
-				_idact = player addAction ["<img size='1' image='\a3\ui_f\data\IGUI\Cfg\Actions\heal_ca'/> Heal self", { (_this select 1) playMove "AinvPknlMstpSlayWnonDnon_medic"; (_this select 1) setDamage 0;},"",999,true,true,"", ""];
+				_idact = player addAction ["<img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Heal_ca.paa'/> Heal self", { (_this select 1) playMove "AinvPknlMstpSlayWnonDnon_medic"; (_this select 1) setDamage 0;},"",999,true,true,"", ""];
 				_id_actions set [_idact_id, _idact];
 			};
 		} else {
@@ -267,7 +267,7 @@ while { true } do {
 		_idact_num = _id_actions select _idact_id;
 		if (_fobdistance > 15 && _fobdistance < GRLIB_fob_range && !_near_outpost && !_near_lhd && [player] call F_getScore >= GRLIB_perm_inf ) then {
 			if ( _idact_num == -1 ) then {
-				_idact = player addAction ["<t color='#0080FF'>" + localize "STR_VIRTUAL_GARAGE" + "</t> <img size='1' image='res\ui_veh.paa'/>","addons\VIRT\virtual_garage.sqf","",-984,false,true,"","build_confirmed == 0"];
+				_idact = player addAction ["<t color='#0080FF'>" + localize "STR_VIRTUAL_GARAGE" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\truck_ca.paa'/>","addons\VIRT\virtual_garage.sqf","",-984,false,true,"","build_confirmed == 0"];
 				_id_actions set [_idact_id, _idact];
 			};
 		} else {
