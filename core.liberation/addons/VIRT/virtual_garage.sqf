@@ -65,6 +65,7 @@ while { dialog && alive player } do {
 				(_display displayCtrl (110)) lnbSetColor [[((lnbSize 110) select 0) - 1, 1], [0.4,0.4,0.4,1]];
 			};
 		} foreach _myveh;
+		lbSetCurSel [110, -1];
 	};
 
 	if ( !isNil "GRLIB_garage_in_use" ) then {
