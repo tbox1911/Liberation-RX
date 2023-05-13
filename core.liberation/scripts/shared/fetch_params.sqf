@@ -14,7 +14,6 @@ GRLIB_use_whitelist = ["Whitelist",1] call bis_fnc_getParamValue;
 GRLIB_use_exclusive = ["Exclusive",0] call bis_fnc_getParamValue;
 GRLIB_param_wipe_savegame_1 = ["WipeSave1",0] call bis_fnc_getParamValue;
 GRLIB_param_wipe_savegame_2 = ["WipeSave2",0] call bis_fnc_getParamValue;
-GRLIB_param_open_params = ["OpenParams",0] call bis_fnc_getParamValue;
 GRLIB_param_wipe_params = ["WipeSave3",0] call bis_fnc_getParamValue;
 GRLIB_force_load = ["ForceLoading",0] call bis_fnc_getParamValue;
 //------------------------------------------------------------------------
@@ -30,14 +29,6 @@ private _lrx_getParamValue = {
 private _params_name = format ["%1-config", GRLIB_save_key];
 if (GRLIB_param_wipe_params == 1 && isServer) then { profileNamespace setVariable [_params_name, LRX_Mission_Params]; };
 
-// Open Mission Parameters
-if (GRLIB_param_open_params == 1) then {
-	if (!isDedicated && hasInterface) then {
-		[] execVM "scripts\client\commander\open_params.sqf";
-	};
-	waitUntil { sleep 1; GRLIB_param_open_params == 0 };
-};
-
 // Load Mission Parameters
 if (isServer) then {
 	GRLIB_LRX_params = profileNamespace getVariable _params_name;
@@ -48,6 +39,18 @@ if (isServer) then {
 	publicVariable "GRLIB_LRX_params";
 } else {
 	waitUntil { sleep 1; !isNil "GRLIB_LRX_params" };
+};
+
+// Open Mission Parameters
+if (isNil "GRLIB_param_open_params") then {
+	GRLIB_param_open_params = ["OpenParams",0] call bis_fnc_getParamValue;
+};
+
+if (GRLIB_param_open_params == 1) then {
+	if (!isDedicated && hasInterface) then {
+		[] execVM "scripts\client\commander\open_params.sqf";
+	};
+	waitUntil { sleep 1; GRLIB_param_open_params == 0 };
 };
 
 // Selectable

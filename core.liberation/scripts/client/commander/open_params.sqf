@@ -15,7 +15,7 @@ if ( !([] call is_admin) && GRLIB_param_open_params == 1) then {
 	};
 	titleText ["", "BLACK FADED", 100];
 };
-if !([] call is_admin) exitWith {};
+if !([] call is_admin) exitWith { disableUserInput true };
 
 waitUntil { sleep 1; !isNil "GRLIB_LRX_params" };
 private _params_save = GRLIB_LRX_params;
