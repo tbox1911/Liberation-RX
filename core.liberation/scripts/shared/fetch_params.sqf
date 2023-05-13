@@ -23,12 +23,12 @@ private _lrx_getParamValue = {
 	params ["_param", "_def"];
 	{
 		if (_x select 0 == _param) exitWith { _def = _x select 1 };
-	} forEach _lrx_liberation_params;
+	} forEach GRLIB_LRX_params;
 	_def;
 };
 
 private _params_name = format ["%1-config", GRLIB_save_key];
-if (GRLIB_param_wipe_params == 1) then { profileNamespace setVariable [_params_name, LRX_Mission_Params]; };
+if (GRLIB_param_wipe_params == 1 && isServer) then { profileNamespace setVariable [_params_name, LRX_Mission_Params]; };
 
 // Open Mission Parameters
 if (GRLIB_param_open_params == 1) then {
@@ -39,10 +39,15 @@ if (GRLIB_param_open_params == 1) then {
 };
 
 // Load Mission Parameters
-private _lrx_liberation_params = profileNamespace getVariable _params_name;
-if ( isNil "_lrx_liberation_params" ) then {
-	_lrx_liberation_params = LRX_Mission_Params;
-	profileNamespace setVariable [_params_name, _lrx_liberation_params];
+if (isServer) then {
+	GRLIB_LRX_params = profileNamespace getVariable _params_name;
+	if ( isNil "GRLIB_LRX_params" ) then {
+		GRLIB_LRX_params = LRX_Mission_Params;
+		profileNamespace setVariable [_params_name, GRLIB_LRX_params];
+	};
+	publicVariable "GRLIB_LRX_params";
+} else {
+	waitUntil { sleep 1; !isNil "GRLIB_LRX_params" };
 };
 
 // Selectable
@@ -188,7 +193,6 @@ if ( GRLIB_passive_income == 1 ) then { GRLIB_passive_income = true } else { GRL
 if ( GRLIB_permissions_param == 1 ) then { GRLIB_permissions_param = true } else { GRLIB_permissions_param = false };
 if ( GRLIB_use_whitelist == 1 ) then { GRLIB_use_whitelist = true } else { GRLIB_use_whitelist = false };
 if ( GRLIB_use_exclusive == 1 ) then { GRLIB_use_exclusive = true } else { GRLIB_use_exclusive = false };
-if ( GRLIB_ammo_bounties == 1 ) then { GRLIB_ammo_bounties = true } else { GRLIB_ammo_bounties = false };
 if ( GRLIB_civ_penalties == 1 ) then { GRLIB_civ_penalties = true } else { GRLIB_civ_penalties = false };
 if ( GRLIB_blufor_defenders == 1 ) then { GRLIB_blufor_defenders = true } else { GRLIB_blufor_defenders = false };
 if ( GRLIB_opfor_english == 1 ) then { GRLIB_opfor_english = true } else { GRLIB_opfor_english = false };

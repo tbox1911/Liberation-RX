@@ -17,6 +17,9 @@ if ( !([] call is_admin) && GRLIB_param_open_params == 1) then {
 };
 if !([] call is_admin) exitWith {};
 
+waitUntil { sleep 1; !isNil "GRLIB_LRX_params" };
+private _params_save = GRLIB_LRX_params;
+
 createDialog "liberation_params";
 disableSerialization;
 waitUntil { dialog };
@@ -33,7 +36,6 @@ private _lrx_getParamData = {
 	_def;
 };
 
-private _params_save = profileNamespace getVariable format ["%1-config", GRLIB_save_key];
 private _params_array = [];
 param_id = -1;
 param_value = -1;

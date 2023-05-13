@@ -11,7 +11,6 @@ disableRemoteSensors false;
 abort_loading = false;
 abort_loading_msg = "Unkwon Error";
 GRLIB_ACE_enabled = false;
-GRLIB_init_server = nil;
 
 [] call compileFinal preprocessFileLineNUmbers "whitelist.sqf";
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\liberation_functions.sqf";

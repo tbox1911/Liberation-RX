@@ -199,15 +199,12 @@ if ( isServer ) then {
 			stats_opfor_vehicles_killed = stats_opfor_vehicles_killed + 1;
 			if ( isplayer _killer ) then {
 				stats_opfor_vehicles_killed_by_players = stats_opfor_vehicles_killed_by_players + 1;
-
-				if ( GRLIB_ammo_bounties ) then {
-					_bounty = [_unit] call F_getBounty;
-					[typeOf _unit, _bounty, _killer] remoteExec ["remote_call_ammo_bounty", 0];
-					if (isPlayer _killer) then {
-						[_killer, (_bounty select 0), 0] call ammo_add_remote_call;
-						[_killer, (_bounty select 1)] call F_addScore;
-						_killer addRating 500;
-					};
+				_bounty = [_unit] call F_getBounty;
+				[typeOf _unit, _bounty, _killer] remoteExec ["remote_call_ammo_bounty", 0];
+				if (isPlayer _killer) then {
+					[_killer, (_bounty select 0), 0] call ammo_add_remote_call;
+					[_killer, (_bounty select 1)] call F_addScore;
+					_killer addRating 500;
 				};
 			};
 		} else {
