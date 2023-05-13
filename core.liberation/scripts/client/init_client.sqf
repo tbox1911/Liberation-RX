@@ -200,8 +200,8 @@ if (isServer && hasInterface) then {
 		[] call save_game_mp;
 	 }];
 };
+
 onPlayerDisconnected {
-	diag_log [_id, _uid, _name];
 	// Remove Marker
 	deletemarker format ["PAR_marker_%1", _name];
 
