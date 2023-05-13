@@ -78,7 +78,7 @@ GRLIB_SHOP_Group = createGroup [GRLIB_side_civilian, true];
     if (_str find "house_big_02" > 0) then { _deskDir = (180 + _deskDir); _offset = [-0.7, -2, 0.25]};
 
     _deskPos = (getposASL _shop) vectorAdd ([_offset, -_deskDir] call BIS_fnc_rotateVector2D);
-    _desk = createSimpleObject ["Land_CashDesk_F", zeropos];
+    _desk = "Land_CashDesk_F" createVehicle zeropos;
     _desk allowDamage false;
     _desk setDir _deskDir;
     _desk setPosASL _deskPos;

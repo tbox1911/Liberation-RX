@@ -46,7 +46,7 @@ private _warehouse_offset = [
 private _warehouse_dir = (90 + getdir _warehouse);
 private _offset = [2, 1, 0];
 private _deskPos = (getposASL _warehouse) vectorAdd ([_offset, -_warehouse_dir] call BIS_fnc_rotateVector2D);
-private _desk = createSimpleObject ["Land_PortableDesk_01_black_F", zeropos];
+private _desk = "Land_PortableDesk_01_black_F" createVehicle zeropos;
 _desk allowDamage false;
 _desk setDir _warehouse_dir;
 _desk setPosASL _deskPos;
