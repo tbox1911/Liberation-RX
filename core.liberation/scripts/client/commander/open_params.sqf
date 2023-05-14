@@ -118,6 +118,7 @@ while { dialog && alive player } do {
 				profileNamespace setVariable [format ["%1-config", GRLIB_save_key], _params];
 				saveProfileNamespace;
 				GRLIB_LRX_params = _params;
+				publicVariable "GRLIB_LRX_params";
 				GRLIB_param_open_params = 0;
 				publicVariable "GRLIB_param_open_params";
 			}
