@@ -114,7 +114,7 @@ while {alive _unit} do {
 				_waypoint setWaypointStatements ["true", "deleteVehicle this"];
 				sleep 5;
 			} else {
-				{ deleteVehicle _x } forEach _flee_grp;
+				{ deleteVehicle _x } forEach (units _flee_grp);
 			};	
 		};
 	};
