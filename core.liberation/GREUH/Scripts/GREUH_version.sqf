@@ -1,16 +1,25 @@
 if (player diarySubjectExists "LRX Info") exitWith {};
-_getRandomColor = {
+private _getRandomColor = {
 	private _str = "#";
 	private _mColors = ["ff","30","40","60","6f","80","8f","B0"];
 	for "_i" from 0 to 2 do { _str = _str + selectRandom _mColors };
 	_str;
 };
 
-_getkeyName = {
+private _getkeyName = {
 	params ["_name"];
 	private _ret = actionKeysNames _name;
 	if (_ret == "") then {_ret = "N/A"};
 	_ret;
+};
+
+private _getParamData = {
+	params ["_param"];
+	private _def = [_param, ["Error!"]];
+	{
+		if (_x select 0 == _param) exitWith { _def = [_x select 1, _x select 2, _x select 3] };
+	} forEach LRX_Mission_Params_Def;
+	_def;
 };
 
 player createDiarySubject ["LRX Info", "LRX Info"];
@@ -54,6 +63,29 @@ player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["Robust Air Taxi 
 player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["pSiKO AI Revive v2.04<br/>by <font color='%1'>-pSiKO-</font>", call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["LARs Arsenal v1.05<br/>by <font color='%1'>-Larrow Zurb-</font>", call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", localize "STR_MISSION_TITLE"]];
+
+player createDiarySubject ["LRX Info", "Settings"];
+private _diary = [];
+{
+	_data = [_x select 0] call _getParamData;
+	_name = _data select 0;
+	_values_raw = _data select 2;
+	_value_text = "";
+
+	if (isNil "_values_raw") then {_values_raw = []};
+	if (count (_values_raw) > 0) then {
+		_value_text = (_data select 1) select (_values_raw find (_x select 1));
+	} else {
+		_value_text = (_data select 1) select (_x select 1);
+	};
+	if (isNil "_value_text") then { _value_text = "Error!" };
+	_diary pushBack format ["%1: <font color='#ff8000'>%2</font>", _name, _value_text];
+} foreach GRLIB_LRX_params;
+reverse _diary;
+{
+	player createDiaryRecord ["LRX Info", ["Settings", _x]];
+} forEach _diary;
+player createDiaryRecord ["LRX Info", ["Settings", format ["-= LRX Current Settings =-"]]];
 
 player createDiarySubject ["LRX Info", "Server"];
 player createDiaryRecord ["LRX Info", ["Server", format ["Join us on the Official Server !<br/><br/>- ARMA III - Liberation RX<br/><img image='res\liberation.paa' height='128' width='256'/><br/><font color='#0080ff'>arma.liberation-rx.fr</font><br/><br/>Team Speak 3<br/><font color='#0080ff'>ts3.liberation-rx.fr</font><br/>Discord LRX<br/><font color='#0080ff'>https://discord.gg/uCRzJ7wauR</font>"]]];
