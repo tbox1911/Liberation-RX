@@ -9,19 +9,19 @@ if (!isServer) exitWith {};
 
 SideMissions = [
 	// Mission filename, weight
-	["mission_CaptureVIP", 0.5],
-	["mission_SpecialDelivery", 0.5],
+	["mission_CaptureVIP", 1],
+	["mission_SpecialDelivery", 1],
 	["mission_AmmoDelivery", 1],
 	["mission_WaterDelivery", 1],
 	["mission_FoodDelivery", 1],
 	["mission_FuelDelivery", 1],
 	["mission_TownInvasion", 1],
-	["mission_TownInsurgency", 0],
+	["mission_TownInsurgency", 1],
 	["mission_HostileHelicopter", 1],
 	["mission_MeetResistance", 1],
 	["mission_VehicleCapture", 1],
-	["mission_HeliCapture", 0.5],
-	["mission_Outpost", 0.5]
+	["mission_HeliCapture", 1],
+	["mission_Outpost", 1]
 ];
 
 SpawnMissionMarkers = ((allMapMarkers select {["Mission_", _x] call F_startsWith}) + sectors_allSectors) apply {[_x, false]};
