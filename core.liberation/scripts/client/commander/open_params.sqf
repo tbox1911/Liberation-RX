@@ -17,7 +17,7 @@ if ( !([] call is_admin) && GRLIB_param_open_params == 1) then {
 };
 if !([] call is_admin) exitWith { disableUserInput true };
 
-waitUntil { sleep 1; !isNil "GRLIB_LRX_params" };
+waitUntil { sleep 0.5; !isNil "GRLIB_LRX_params" };
 private _params_save = GRLIB_LRX_params;
 
 createDialog "liberation_params";
@@ -29,7 +29,7 @@ private _noesckey = _display displayAddEventHandler ["KeyDown", "if ((_this sele
 
 private _lrx_getParamData = {
 	params ["_param"];
-	private _def = [_param, ["Error!"], []];
+	private _def = [];
 	{
 		if (_x select 0 == _param) exitWith { _def = [_x select 1, _x select 2, _x select 3] };
 	} forEach LRX_Mission_Params_Def;
@@ -37,17 +37,24 @@ private _lrx_getParamData = {
 };
 
 private _params_array = [];
+private _indx = 1;
 param_id = -1;
 param_value = -1;
 save_changes = 0;
 
 {
 	_data = [_x select 0] call _lrx_getParamData;
-	_name = _data select 0;
-	_values =  _data select 1;
-	_values_raw = _data select 2;
-	if (isNil "_values_raw") then {_values_raw = []};
-	_params_array pushback [ _x select 0, _x select 1, _forEachIndex + 1, _name, _values, _values_raw ];
+	if (count _data > 0) then {
+		_name = _data select 0;
+		_values =  _data select 1;
+		_values_raw = _data select 2;
+		if (isNil "_values_raw") then {_values_raw = []};
+		_params_array pushback [ _x select 0, _x select 1, _indx, _name, _values, _values_raw ];
+		_indx = _indx + 1;
+	} else {
+		_params_save deleteAt _forEachIndex;
+		diag_log format ["--- LRX Delete unknow parameter: %1", _x select 0];
+	}
 } foreach _params_save;
 
 {
@@ -114,7 +121,7 @@ while { dialog && alive player } do {
 			}
 		] remoteExec ["bis_fnc_call", 2];
 
-		waitUntil { sleep 1; GRLIB_param_open_params == 0 };
+		waitUntil { sleep 0.5; GRLIB_param_open_params == 0 };
 		closeDialog 0;
 	};
 
