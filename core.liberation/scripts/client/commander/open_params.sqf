@@ -29,7 +29,7 @@ private _noesckey = _display displayAddEventHandler ["KeyDown", "if ((_this sele
 
 private _lrx_getParamData = {
 	params ["_param"];
-	private _def = ["Unknown!", ["---"], []];
+	private _def = [_param, ["Error!"], []];
 	{
 		if (_x select 0 == _param) exitWith { _def = [_x select 1, _x select 2, _x select 3] };
 	} forEach LRX_Mission_Params_Def;
