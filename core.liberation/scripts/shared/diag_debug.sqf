@@ -20,7 +20,7 @@ diag_log  "[scriptName, fileName, isRunning, currentLine]";
 } forEach diag_activeSQFScripts;
 diag_log "-----------------------------------------------------";
 
-if (_save == 1) then {
+if (_save == 1 && isServer) then {
   diag_log "--- LRX Savegame ------------------------------------";
   diag_log format ["Save key: %1", GRLIB_save_key];
   {
