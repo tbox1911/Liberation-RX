@@ -86,19 +86,13 @@ private _para_group = [markerpos _spawnsector, _unitclass, GRLIB_side_enemy, "pa
 	_waypoint setWaypointCombatMode "RED";
 	_waypoint setWaypointType "SAD";
 	_waypoint = _pilot_group addWaypoint [ _targetpos, 200];
-	_waypoint setWaypointBehaviour "COMBAT";
-	_waypoint setWaypointCombatMode "RED";
-	_waypoint setWaypointType "SAD";
-	_waypoint = _pilot_group addWaypoint [ _targetpos, 200];
-	_waypoint setWaypointBehaviour "COMBAT";
-	_waypoint setWaypointCombatMode "RED";
 	_waypoint setWaypointType "SAD";
 	_waypoint = _pilot_group addWaypoint [ _targetpos, 200];
 	_waypoint setWaypointType "SAD";
 	_waypoint = _pilot_group addWaypoint [ _targetpos, 200];
 	_waypoint setWaypointType "CYCLE";
 
-	[_para_group] spawn battlegroup_ai;
+	[_para_group, _targetpos] spawn battlegroup_ai;
 };
 
 _para_group;

@@ -5,10 +5,13 @@ diag_log format ["Spawn BattlegGroup at %1", time];
 private ["_target_size", "_selected_opfor_battlegroup", "_para_pos"];
 private _bg_groups = [];
 private _spawn_marker = "";
+private _objectivepos = [];
 if ( isNil "_liberated_sector" ) then {
-	_spawn_marker = [ GRLIB_spawn_min, GRLIB_spawn_max, false ] call F_findOpforSpawnPoint;
+	_spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max, false] call F_findOpforSpawnPoint;
+	_objectivepos = ([markerpos _spawn_marker] call F_getNearestBluforObjective) select 0;
 } else {
-	_spawn_marker = [ GRLIB_spawn_min, GRLIB_spawn_max, false, _liberated_sector ] call F_findOpforSpawnPoint;
+	_spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max, false, _liberated_sector] call F_findOpforSpawnPoint;
+	_objectivepos = markerPos _liberated_sector;
 };
 
 private _vehicle_pool = opfor_battlegroup_vehicles;
@@ -16,7 +19,7 @@ if ( combat_readiness < 50 ) then {
 	_vehicle_pool = opfor_battlegroup_vehicles_low_intensity;
 };
 
-if ( _spawn_marker != "" ) then {
+if (_spawn_marker != "") then {
 
 	GRLIB_last_battlegroup_time = time;
 
@@ -38,19 +41,17 @@ if ( _spawn_marker != "" ) then {
 		_vehicle = [markerpos _spawn_marker, _x] call F_libSpawnVehicle;
 		_vehicle setVariable ["GRLIB_counter_TTL", round(time + 3600)];  // 60 minutes TTL
 		(crew _vehicle) joinSilent _nextgrp;
-		[_nextgrp] spawn battlegroup_ai;
+		[_nextgrp, _objectivepos] spawn battlegroup_ai;
 		{ _x setVariable ["GRLIB_counter_TTL", round(time + 3600)] } forEach (units _nextgrp);
 		_bg_groups pushback _nextgrp;
 		if ( ( _x in opfor_troup_transports_truck + opfor_troup_transports_heli) &&  ( [] call F_opforCap < GRLIB_battlegroup_cap ) ) then {
-			[_vehicle] spawn troup_transport;
+			[_vehicle, _objectivepos] spawn troup_transport;
 		};
 		sleep 2;
 	} foreach _selected_opfor_battlegroup;
-	diag_log format ["Done Spawning BattlegGroup at %1", time];
 
 	sleep 5;
 	if ( GRLIB_csat_aggressivity > 0.7 ) then {
-		private _objectivepos = ([markerpos _spawn_marker] call F_getNearestBluforObjective) select 0;
 		if (floor random 2 == 0) then {
 			[_objectivepos, GRLIB_side_enemy] spawn spawn_air;
 		} else {
@@ -64,7 +65,7 @@ if ( _spawn_marker != "" ) then {
 	if ( combat_readiness < 0 ) then { combat_readiness = 0 };
 
 	stats_hostile_battlegroups = stats_hostile_battlegroups + 1;
-
+	diag_log format ["Done Spawning BattlegGroup at %1", time];
 	{
 		if ( local _x ) then {
 			_headless_client = [] call F_lessLoadedHC;

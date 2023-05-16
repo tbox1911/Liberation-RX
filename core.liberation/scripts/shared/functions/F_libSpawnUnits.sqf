@@ -50,16 +50,22 @@ private _grp = createGroup [_side, true];
 			diag_log format ["--- LRX Error: No place to build unit %1 at position %2", _x, _spawnpos];
 		};
 
-        if (_type == "para") then {
-			_backpack = backpack _unit;
-			if ( _backpack != "" && _backpack != "B_Parachute" ) then {
-				_unit setVariable ["GRLIB_para_backpack", _backpack];
-				_unit setVariable ["GRLIB_para_backpack_contents", (backpackItems _unit)];
-				removeBackpack _unit;
-				sleep 0.1;
+		if (!isNil "_unit") then {
+			if (_type == "para") then {
+				_backpack = backpack _unit;
+				if ( _backpack != "" && _backpack != "B_Parachute" ) then {
+					_unit setVariable ["GRLIB_para_backpack", _backpack];
+					_unit setVariable ["GRLIB_para_backpack_contents", (backpackItems _unit)];
+					removeBackpack _unit;
+					sleep 0.1;
+				};
+				_unit addBackpack "B_Parachute";
 			};
-			_unit addBackpack "B_Parachute";
-        };
+
+			if (_type == "defender") then {
+				_unit setVariable ["GRLIB_mission_AI", true];
+			};
+		};
 	};
 	sleep 0.1;
 } foreach _classname;

@@ -34,15 +34,16 @@ while { true } do {
             sleep 1;
         };
 
+        // Keep gunner
         if (side group _static == GRLIB_side_enemy) then {
-            // Keep gunner
             private _gunner = gunner _static;
             private _gunner_list = _static getVariable ["GRLIB_vehicle_gunner", []];
             if (isNull _gunner) then {
                 {
                     if (alive _x) exitWith {
-                        _x assignAsGunner _static;
                         [_x] orderGetIn true ;
+                        _x assignAsGunner _static;
+                        _x moveInGunner _static;
                     };
                 } forEach _gunner_list;
             } else {
@@ -50,6 +51,21 @@ while { true } do {
                 [_gunner] call F_getNearestEnemy;
             };
         };
+
+        if (side group _static == GRLIB_side_resistance) then {
+            private _gunner = gunner _static;
+            private _gunner_list = _static getVariable ["GRLIB_vehicle_gunner", []];
+            if (isNull _gunner) then {
+                {
+                    if (alive _x) exitWith {
+                        [_x] orderGetIn true;
+                        _x assignAsGunner _static;
+                        _x moveInGunner _static;
+                    };
+                } forEach _gunner_list;
+            };
+        };
+
         sleep 1;
     } forEach _all_static;
 

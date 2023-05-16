@@ -1,15 +1,11 @@
-params ["_grp"];
-private ["_waypoint", "_objective_pos", "_objective_dist", "_objective_sector"];
+params ["_grp", "_objective_pos"];
+private ["_waypoint", "_objective_sector"];
 
 while { ({alive _x} count (units _grp) > 0) && ( GRLIB_endgame == 0 ) } do {
 
-	sleep 10;
+	sleep 5;
 
-	_objective = [getPosATL (leader _grp)] call F_getNearestBluforObjective;
-	_objective_pos = _objective select 0;
-	_objective_dist = _objective select 1;
-
-	if (_objective_dist > GRLIB_spawn_max * 2) exitWith {
+	if (getPosATL (leader _grp) distance2D _objective_pos > GRLIB_spawn_max * 2) exitWith {
 		{ deleteVehicle _x } foreach units _grp;
 		deleteGroup _grp;
 	};
