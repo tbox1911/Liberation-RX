@@ -5,8 +5,10 @@ private _markers_mobilespawns = [];
 waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 waitUntil {sleep 1; !isNil "GRLIB_all_fobs"};
 
+GRLIB_redraw_marker_fob = false;
 while { true } do {
-	if ( count _markers != count GRLIB_all_fobs ) then {
+	if ( count _markers != count GRLIB_all_fobs || GRLIB_redraw_marker_fob) then {
+		GRLIB_redraw_marker_fob = false;
 		{ deleteMarkerLocal _x } foreach _markers;
 		_markers = [];
 		for [ {_idx=0},{_idx < count GRLIB_all_fobs},{_idx=_idx+1}] do {

@@ -234,7 +234,7 @@
 		</Key>
 		<Key ID="STR_MODE">
 			<Original>-- Follow terrain</Original>
-			<French>-- Suivre relief</French>		
+			<French>-- Suivre relief</French>
 		</Key>
 		<Key ID="STR_CANCEL">
 			<Original>-- Cancel</Original>
@@ -1002,8 +1002,16 @@
 		</Key>
 		<Key ID="STR_NOTIFICATION_FOBREPACK_TEXT">
 			<Original>%1 %2 has been folded!</Original>
-			<French>%1 %2 a été repliée !</French>		
-		</Key>		
+			<French>%1 %2 a été repliée !</French>
+		</Key>
+		<Key ID="STR_NOTIFICATION_FOBUPGRADE_TITLE">
+			<Original>%1 UPGRADED</Original>
+			<French>%1 AMÉLIORÉ</French>
+		</Key>
+		<Key ID="STR_NOTIFICATION_FOBUPGRADE_TEXT">
+			<Original>%1 %2 has been upgraded!</Original>
+			<French>%1 %2 a été amélioré !</French>
+		</Key>
 		<Key ID="STR_NOTIFICATION_BATTLEGROUP_TITLE">
 			<Original>HOSTILE FORCES INCOMING</Original>
 			<French>FORCES HOSTILES EN APPROCHE</French>
@@ -2888,7 +2896,7 @@
 		<Key ID="STR_HALO_PARAM_VEH">
 			<Original>HALO Vehicle</Original>
 			<French>Vehicule HALO</French>
-		</Key>		
+		</Key>
 		<Key ID="STR_HALO_PARAM1">
 			<Original>Enabled - No cooldown</Original>
 			<French>Activé - Pas d'attente</French>
@@ -4998,7 +5006,11 @@
 		</Key>
 		<Key ID="STR_HINT_FOB_WRONG_OWNER">
 			<Original>You are NOT the Owner of the FOB!</Original>
-			<French>Vous n'êtes PAS le propriétaire de la FOB!</French>		
+			<French>Vous n'êtes PAS le propriétaire de la FOB!</French>
+		</Key>
+		<Key ID="STR_HINT_OUTPOST_WRONG_OWNER">
+			<Original>You are NOT the Owner of the Outpost!</Original>
+			<French>Vous n'êtes PAS le propriétaire du Poste Avancé FOB!</French>
 		</Key>
 		<Key ID="STR_HINT_FOBS_EXCEEDED">
 			<Original>You are NOT allowed to deploy more than %1 FOBs at the same time.</Original>
@@ -5820,7 +5832,18 @@
 			<Portuguese>-- DESTRUIR POSTO AVANÇADO</Portuguese>
 			<Czech>-- OUTPOST ZNIČEN</Czech>
 		</Key>
-
+		<Key ID="STR_UPGRADE_OUTPOST">
+			<Original>-- UPGRADE OUTPOST</Original>
+			<French>-- AMÉLIORER AVANT-POSTE</French>
+		</Key>
+		<Key ID="STR_UPGRADE_OUTPOST_HINT">
+			<Original>upgraded.</Original>
+			<French>amélioré.</French>
+		</Key>
+ 		<Key ID="STR_UPGRADE_OUTPOST_PAY">
+			<Original>&lt;t align='center'&gt;Upgrade the Outpost for %1 Ammo&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
+			<Original>&lt;t align='center'&gt;Améliorer l'Outpost pour %1 Ammo&lt;br/&gt;Êtes-vous sûr ?&lt;/t&gt;</Original>
+		</Key>
 		<!-- action_manager_veh.sqf -->
 		<Key ID="STR_SELL_CARGO">
 			<Original>-- SELL CARGO</Original>
@@ -7287,7 +7310,26 @@
 			<Chinese>物資已摧毀，做得很好！</Chinese>
 			<Czech>Zásoby byly shromážděny, dobře provedeno.</Czech>
 		</Key>
-
+		<!-- mission_Roadblock.sqf -->
+		<Key ID="STR_ROADBLOCK">
+			<Original>Random Checkpoints</Original>
+		</Key>
+		<Key ID="STR_ROADBLOCK_MESSAGE1">
+			<Original>A Checkpoints has been spotted near the marker.</Original>
+		</Key>
+		<Key ID="STR_ROADBLOCK_MESSAGE2">
+			<Original>The Checkpoints have been cleared, well done.</Original>
+		</Key>
+		<!-- mission_SearchIntel.sqf -->
+		<Key ID="STR_SEARCH_INTEL">
+			<Original>Search for Intels</Original>
+		</Key>
+		<Key ID="STR_SEARCH_INTEL_MESSAGE1">
+			<Original>Search for %1 Intels in the buildings near the marker.</Original>
+		</Key>
+		<Key ID="STR_SEARCH_INTEL_MESSAGE2">
+			<Original>All the Intels have been found, well done.</Original>
+		</Key>
 		<!-- speak_manager.sqf -->
 		<Key ID="STR_SPEAKMANAGER1">
 			<Original>Hello, you see somes enemies around here ?</Original>
@@ -7761,7 +7803,7 @@
 		<Key ID="STR_TAXI_ACTION3">
 			<Original>-- TAXI Ejection</Original>
 			<French>-- TAXI Éjection</French>
-		</Key>		
+		</Key>
 		<Key ID="STR_TAXI_ONLY_ONE">
 			<Original>Sorry, only one Taxi at time.</Original>
 			<Russian>Извините, только один вертолет за раз.</Russian>
@@ -8279,7 +8321,7 @@
 			<Korean>당신의 마리드는 오래된 것입니다.\n다음 번에 차량 구성품 설정을 불러올 수 없을 것입니다.\n해당 서버 관리자와 연락을 취해보십시오.</Korean>
 			<Czech>Váš Marid je zastaralý.\nNastavení Komponent vozidla se nemusí příště načíst.\nKontaktujte prosím svého správce serveru.</Czech>
 		</Key>
-		
+
 		<!-- Camouflage/위장 -->
 		<Key ID="STR_VAM_BLUFOR_CAMO">
 			<Original>BLUFOR</Original>

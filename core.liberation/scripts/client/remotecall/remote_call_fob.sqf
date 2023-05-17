@@ -39,3 +39,9 @@ if ( _status == 5 ) then {
 	[ "lib_fob_repacked", [ _fob_type, _fob_name ] ] call BIS_fnc_showNotification;
 	"opfor_capture_marker" setMarkerPosLocal markers_reset;
 };
+
+if ( _status == 6 ) then {
+	[ "lib_fob_upgraded", [ _fob_type, _fob_name ] ] call BIS_fnc_showNotification;
+	"opfor_capture_marker" setMarkerPosLocal markers_reset;
+	GRLIB_redraw_marker_fob = true; 
+};

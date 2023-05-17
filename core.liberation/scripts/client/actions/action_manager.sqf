@@ -420,7 +420,7 @@ while { true } do {
 		_idact_num = _id_actions select _idact_id;
 		if ((_fobdistance < _distarsenal && !_near_lhd) && _near_outpost && ( (getPlayerUID player == _outpost_owner) || (player == ( [] call F_getCommander ) || [] call is_admin) )) then {
 			if ( _idact_num == -1 ) then {
-				_idact = player addAction ["<t color='#FF6F00'>" + localize "STR_DESTROY_OUTPOST" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_destroy_fob.sqf",([] call F_getNearestFob),-981,false,true,"","build_confirmed == 0"];
+				_idact = player addAction ["<t color='#FF6F00'>" + localize "STR_DESTROY_OUTPOST" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_destroy_outpost.sqf",([] call F_getNearestFob),-981,false,true,"","build_confirmed == 0"];
 				_id_actions set [_idact_id, _idact];
 			};
 		} else {
@@ -429,6 +429,21 @@ while { true } do {
 				_id_actions set [_idact_id, -1];
 			};
 		};
+
+		// Upgrade Outpost
+		_idact_id = _idact_id + 1;
+		_idact_num = _id_actions select _idact_id;
+		if ((_fobdistance < _distarsenal && !_near_lhd) && _near_outpost && ( (getPlayerUID player == _outpost_owner) || (player == ( [] call F_getCommander ) || [] call is_admin) )) then {
+			if ( _idact_num == -1 ) then {
+				_idact = player addAction ["<t color='#006F80'>" + localize "STR_UPGRADE_OUTPOST" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_upgrade_outpost.sqf",([] call F_getNearestFob),-981,false,true,"","build_confirmed == 0"];
+				_id_actions set [_idact_id, _idact];
+			};
+		} else {
+			if ( _idact_num != -1 ) then {
+				player removeAction _idact_num;
+				_id_actions set [_idact_id, -1];
+			};
+		};		
 
 		// FOB Sign Actions
 		if (!_near_lhd && _fobdistance < GRLIB_fob_range && cursorObject isKindof FOB_sign) then {

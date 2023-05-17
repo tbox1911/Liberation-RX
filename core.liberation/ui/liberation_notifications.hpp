@@ -89,6 +89,15 @@ class CfgNotifications
 		sound = "taskUpdated";
 		priority = 3;
     };	
+	class lib_fob_upgraded : lib_default_notification
+    {
+		title = $STR_NOTIFICATION_FOBUPGRADE_TITLE;
+		description = $STR_NOTIFICATION_FOBUPGRADE_TEXT;
+        iconPicture = "res\notif\ui_notif_fob_sec.paa";
+		color[] = {0,1,1,1};
+		sound = "taskUpdated";
+		priority = 3;
+    };		
 	class lib_battlegroup : lib_default_notification
     {
 		title = $STR_NOTIFICATION_BATTLEGROUP_TITLE;

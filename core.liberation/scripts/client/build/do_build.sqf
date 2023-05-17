@@ -62,7 +62,7 @@ while { true } do {
 		_lst_a3 = build_unit select 3;
 		_lst_r3f = build_unit select 4;
 		_compo = build_unit select 5;
-		build_altitude = 0.8;
+		build_altitude = 0.6;
 	};
 
 	if ( buildtype in [1,2,3,4,5,6,7,8] ) then {
@@ -458,40 +458,8 @@ while { true } do {
 
 				// FOB
 				if(buildtype == 99) then {
-					_vehicle addEventHandler ["HandleDamage", {0}];
-					_vehicle allowDamage false;
-					[(getpos _vehicle), _classname] remoteExec ["build_fob_remote_call", 2];
-
-					// Add owner sign
-					private _fobdir = getDir _vehicle;
-					private _offset = [[-6, -5, -0.2], -_fobdir];
-					if (_classname == FOB_outpost ) then { _offset = [[5, -3, -0.2], -_fobdir] };
-					private _sign_pos = (getposATL _vehicle) vectorAdd (_offset call BIS_fnc_rotateVector2D);
-					private _sign = createVehicle [FOB_sign, _sign_pos, [], 0, "CAN_COLLIDE"];
-					_sign allowDamage false;
-					if (_classname == FOB_outpost ) then {
-						_sign setDir (_fobdir - 90);
-					} else {
-						_sign setDir (_fobdir + 90);
-					};
-					_sign setObjectTextureGlobal [0, getMissionPath "res\splash_libe2.paa"];
-					if (count GRLIB_all_fobs == 0) then {
-						_sign setVariable ["GRLIB_vehicle_owner", "public", true];
-					} else {
-						_sign setVariable ["GRLIB_vehicle_owner", getPlayerUID player, true];
-					};
-					if (!GRLIB_enable_arsenal) then {
-						sleep 1;
-						private _ammo_pos = (getposATL _sign) vectorAdd ([[10, 0, 0], -(getDir _sign) - 90] call BIS_fnc_rotateVector2D);
-						{
-							_ammo1 = createVehicle [_x, _ammo_pos, [], 1, "NONE"];
-							_ammo1 allowDamage false;
-							_ammo1 setVariable ["GRLIB_vehicle_owner", "public", true];
-							_ammo1 setVariable ["R3F_LOG_disabled", true, true];
-							if (_x == Arsenal_typename) then { _ammo1 addItemCargoGlobal ["SatchelCharge_Remote_Mag", 2] };
-							sleep 0.5;
-						} forEach [Arsenal_typename, Box_Weapon_typename];
-					};
+					[_vehicle] call fob_init;
+					[(getPos _vehicle), _classname] remoteExec ["build_fob_remote_call", 2];
 				} else {
 					sleep 0.3;
 					_vehicle allowDamage true;
