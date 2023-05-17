@@ -66,6 +66,7 @@ ied_trap_manager = compileFinal preprocessFileLineNumbers "scripts\server\sector
 static_manager = compileFinal preprocessFileLineNumbers "scripts\server\sector\static_manager.sqf";
 patrol_manager = compileFinal preprocessFileLineNumbers "scripts\server\sector\patrol_manager.sqf";
 manage_ammoboxes = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_ammoboxes.sqf";
+manage_intels = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_intels.sqf";
 manage_one_sector = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_one_sector.sqf";
 
 // Ressources
