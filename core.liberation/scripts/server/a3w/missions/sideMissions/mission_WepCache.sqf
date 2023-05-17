@@ -17,7 +17,7 @@ _setupVars =
 
 _setupObjects =
 {
-	_missionPos = ([markerPos _missionLocation, 100, random 360] call BIS_fnc_relPos);
+	_missionPos = (markerpos _missionLocation) getPos [100, random 360];
 	_box1 = [ammobox_o_typename, _missionPos, true] call boxSetup;
 	_box2 = [ammobox_o_typename, _missionPos, true] call boxSetup;
 	_box3 = [basic_weapon_typename, _missionPos, true] call boxSetup;

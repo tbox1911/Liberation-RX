@@ -6,8 +6,7 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private [ "_citylist", "_vehicleClass", "_vip", "_vehicle1", "_vehicle2", "_vehicle3",
-          "_waypoint", "_vehicleName", "_numWaypoints", "_convoy_attacked", "_disembark_troops"];
+private [ "_citylist", "_vip", "_vehicle1", "_vehicle2", "_vehicle3", "_numWaypoints", "_convoy_attacked", "_disembark_troops"];
 
 _setupVars =
 {

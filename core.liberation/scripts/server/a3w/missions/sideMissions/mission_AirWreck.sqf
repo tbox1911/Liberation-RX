@@ -7,7 +7,7 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_nbUnits", "_wreckPos", "_box1", "_box2", "_box3"];
+private ["_nbUnits", "_box1", "_box2", "_box3"];
 
 _setupVars =
 {
@@ -18,8 +18,8 @@ _setupVars =
 
 _setupObjects =
 {
-	_missionPos = ([markerPos _missionLocation, 100, random 360] call BIS_fnc_relPos);
-	_wreckPos = ([_missionPos, 20, random 360] call BIS_fnc_relPos);
+	_missionPos = (markerpos _missionLocation) getPos [100, random 360];
+	_wreckPos = _missionPos getPos [20, random 360];
 	_vehicle = createVehicle [GRLIB_sar_wreck, _wreckPos, [], 0, "NONE"];
 	_vehicle setpos (getpos _vehicle);
 	_box1 = [ammobox_b_typename, _missionPos, true] call boxSetup;

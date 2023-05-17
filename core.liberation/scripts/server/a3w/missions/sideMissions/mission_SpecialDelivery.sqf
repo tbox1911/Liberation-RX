@@ -7,7 +7,7 @@ if (!isServer) exitwith {};
 if (!isNil "GRLIB_A3W_Mission_SD") exitWith {};
 #include "sideMissionDefines.sqf"
 
-private ["_missionPos", "_missionPos2", "_missionPos3", "_missionPosEnd", "_mission_grp", "_house"];
+private ["_missionPosEnd", "_house"];
 
 _setupVars =
 {
@@ -18,20 +18,20 @@ _setupVars =
 
 _setupObjects =
 {
-	private _missionEnd = selectRandom ([SpawnMissionMarkers, { ([markerpos _x] call F_getNearestBluforObjective) select 1 > GRLIB_sector_size }] call BIS_fnc_conditionalSelect) select 0;
+	private _missionEnd = selectRandom ([SpawnMissionMarkers, { ([markerpos _x, false] call F_getNearestBluforObjective) select 1 > GRLIB_sector_size }] call BIS_fnc_conditionalSelect) select 0;
 	if (!isNil "_missionEnd") then {	
 		private _missionLocationList = [blufor_sectors, {_x in sectors_capture && (markerpos _x) distance2D (markerpos _missionEnd) < 5000 }] call BIS_fnc_conditionalSelect;
 		if (count _missionLocationList >= 3) then {
 			_m1 = selectRandom _missionLocationList;
 			_missionPicture = getText (configFile >> "CfgVehicles" >> "C_Hatchback_01_F" >> "picture");
 			_missionHintText = format [localize "STR_SPECIALDELI_MESSAGE1", sideMissionColor, markerText _m1];
-			_missionPos = ([markerPos _m1, 100, random 360] call BIS_fnc_relPos);
+			_missionPos = (markerpos _m1) getPos [100, random 360];
 			_missionLocationList = _missionLocationList - [ _m1 ];
 			_m1 = selectRandom _missionLocationList;
-			_missionPos2 = ([markerPos _m1, 100, random 360] call BIS_fnc_relPos);
+			_missionPos2 = (markerpos _m1) getPos [100, random 360];
 			_missionLocationList = _missionLocationList - [ _m1 ];
 			_m1 = selectRandom _missionLocationList;
-			_missionPos3 = ([markerPos _m1, 100, random 360] call BIS_fnc_relPos);
+			_missionPos3 = (markerpos _m1) getPos [100, random 360];
 			_missionPosEnd = (markerpos _missionEnd);
 		};
 	};
@@ -62,6 +62,7 @@ _setupObjects =
 
 	_man4 enableAI "Cover";
 	_house = createVehicle ["Land_i_House_Small_01_V1_F", _missionPosEnd, [], 2, "None"];
+	_house setVectorDirAndUp [[0, 0, 0] vectorCrossProduct surfaceNormal _missionPosEnd, surfaceNormal _missionPosEnd];
 	_man4 setPosATL (getposATL _house);
 
 	private _marker = createMarker ["side_mission_A3W_Mission_SD", _missionPosEnd];

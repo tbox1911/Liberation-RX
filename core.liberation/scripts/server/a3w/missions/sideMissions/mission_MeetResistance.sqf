@@ -8,10 +8,10 @@ if (!isNil "GRLIB_A3W_Mission_MR") exitWith {};
 #include "sideMissionDefines.sqf"
 
 private [
-	"_nbUnits", "_townName", "_aiGroupRes", "_buildingpositions",
+	"_nbUnits", "_townName", "_aiGroupRes",
 	"_tent1", "_chair1", "_chair2", "_fire1",
 	"_box1", "_box2",
-	"_veh1", "_veh2", "_gunner"
+	"_veh1", "_veh2"
 ];
 
 _setupVars =
@@ -33,7 +33,7 @@ _setupVars =
 
 _setupObjects =
 {
-	_missionPos = ([markerPos _missionLocation, 100, random 360] call BIS_fnc_relPos);
+	_missionPos = (markerpos _missionLocation) getPos [100, random 360];
 
 	// spawn some crates in the middle of town (Town marker position)
 	_box1 = [basic_weapon_typename, _missionPos, true] call boxSetup;
@@ -70,7 +70,6 @@ _setupObjects =
 	// create static weapons + crew
 	_veh1 = createVehicle [resistance_squad_static, _missionPos, [], 100, "None"];
 	_veh1 setDir random 360;
-	sleep 0.5;
 	_gunner = (units _aiGroupRes) select ((count (units _aiGroupRes)) -1);
 	_gunner assignAsGunner _veh1;
 	_gunner moveInGunner _veh1;
@@ -80,7 +79,6 @@ _setupObjects =
 
 	_veh2 = createVehicle [resistance_squad_static, _missionPos, [], 100, "None"];
 	_veh2 setDir random 360;
-	sleep 0.5;
 	_gunner = (units _aiGroupRes) select ((count (units _aiGroupRes)) -2);
 	_gunner assignAsGunner _veh2;
 	_gunner moveInGunner _veh2;

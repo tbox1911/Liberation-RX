@@ -6,7 +6,7 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_nbUnits", "_townName", "_buildingpositions", "_tent1", "_chair1", "_chair2", "_fire1"];
+private ["_nbUnits", "_townName", "_tent1", "_chair1", "_chair2", "_fire1"];
 
 _setupVars =
 {
@@ -22,7 +22,7 @@ _setupVars =
 
 _setupObjects =
 {
-	_missionPos = ([markerPos _missionLocation, 50, random 360] call BIS_fnc_relPos);
+	_missionPos = (markerpos _missionLocation) getPos [100, random 360];
 
 	// create some atmosphere around the crates 8)
 	_tent1 = createVehicle ["Land_cargo_addon02_V2_F", _missionPos, [], 3, "None"];
@@ -80,7 +80,7 @@ _successExec = {
 	private _rwd_fuel = (10 + floor(random 10));
 	private _text = format ["Reward Received: %1 Ammo and %2 Fuel", _rwd_ammo, _rwd_fuel];
 	{
-		if (_x distance2D _missionPos < GRLIB_sector_size ) then {
+		if (_x distance2D _missionPos < GRLIB_capture_size) then {
 			[_x, _rwd_ammo, _rwd_fuel] call ammo_add_remote_call;
 			[gamelogic, _text] remoteExec ["globalChat", owner _x];
 		};

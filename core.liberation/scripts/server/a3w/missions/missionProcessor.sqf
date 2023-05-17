@@ -39,7 +39,7 @@ if (!isNil "_locationsArray") then {
 _continue_mission = true;
 if (!isNil "_setupObjects") then { _continue_mission = call _setupObjects };
 if (!_continue_mission) exitWith {
-	diag_log format ["%1 Mission%2 failed to setup: %3", MISSION_PROC_TYPE_NAME, _controllerSuffix, _missionType];
+	diag_log format ["--- LRX Error: %1 Mission%2 failed to setup: %3", MISSION_PROC_TYPE_NAME, _controllerSuffix, _missionType];
 };
 
 sleep 5;

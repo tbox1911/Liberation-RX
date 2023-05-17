@@ -172,3 +172,23 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 		[_missionsList, _mission_name, true] call setMissionState;
 	};
 };
+
+// RoadBlock
+_mission_name = "mission_RoadBlock";
+if (!([_missionsList, _mission_name] call getMissionState)) then {
+	if (count blufor_sectors >= 7 && _opfor_factor >= 30) then {
+		[_missionsList, _mission_name, false] call setMissionState;
+	} else {
+		[_missionsList, _mission_name, true] call setMissionState;
+	};
+};
+
+// Search Intel
+_mission_name = "mission_SearchIntel";
+if (!([_missionsList, _mission_name] call getMissionState)) then {
+	if (_spawn_place >= 1 && _opfor_factor >= 20) then {
+		[_missionsList, _mission_name, false] call setMissionState;
+	} else {
+		[_missionsList, _mission_name, true] call setMissionState;
+	};
+};

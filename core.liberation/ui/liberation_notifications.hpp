@@ -148,7 +148,7 @@ class CfgNotifications
 	class lib_secondary_a3w_mission : lib_secondary_fob_destroyed
 	{
 		description = $STR_SIDE_START;
-		color[] = {0,0,1,1};
+		color[] = {0.8,0.8,0.8,1};
 	};
 	class lib_secondary_a3w_mission_success : lib_secondary_a3w_mission
 	{

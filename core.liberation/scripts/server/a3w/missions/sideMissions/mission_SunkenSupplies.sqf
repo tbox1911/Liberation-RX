@@ -6,7 +6,7 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_nbUnits", "_box1", "_box2", "_boxPos"];
+private ["_nbUnits", "_box1", "_box2"];
 
 _setupVars =
 {
@@ -17,7 +17,7 @@ _setupVars =
 
 _setupObjects =
 {
-	_missionPos = ([markerPos _missionLocation, 100, random 360] call BIS_fnc_relPos);
+	_missionPos = (markerpos _missionLocation) getPos [100, random 360];
 	_box1 = [ammobox_o_typename, _missionPos, true] call boxSetup;
 	_box2 = [ammobox_o_typename, _missionPos, true] call boxSetup;
 	_vehicle = [_missionPos, selectRandom opfor_boats, true] call F_libSpawnVehicle;

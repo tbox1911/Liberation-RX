@@ -7315,7 +7315,7 @@
 			<Original>Random Checkpoints</Original>
 		</Key>
 		<Key ID="STR_ROADBLOCK_MESSAGE1">
-			<Original>A Checkpoints has been spotted near the marker.</Original>
+			<Original>A Checkpoints has been spotted near the marker.&lt;br/&gt;Act fast or they'll call for support!</Original>
 		</Key>
 		<Key ID="STR_ROADBLOCK_MESSAGE2">
 			<Original>The Checkpoints have been cleared, well done.</Original>
@@ -7325,7 +7325,7 @@
 			<Original>Search for Intels</Original>
 		</Key>
 		<Key ID="STR_SEARCH_INTEL_MESSAGE1">
-			<Original>Search for %1 Intels in the buildings near the marker.</Original>
+			<Original>Search for %1 Intels in the buildings near the marker.&lt;br/&gt;Extra stealth highly recommended!</Original>
 		</Key>
 		<Key ID="STR_SEARCH_INTEL_MESSAGE2">
 			<Original>All the Intels have been found, well done.</Original>

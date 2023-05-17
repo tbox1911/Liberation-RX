@@ -7,7 +7,7 @@ if (!isServer) exitwith {};
 if (!isNil "GRLIB_A3W_Mission_MR") exitWith {};
 #include "sideMissionDefines.sqf"
 
-private ["_nbUnits", "_townName","_buildingpositions", "_man1", "_marker_zone"];
+private ["_townName", "_man1", "_marker_zone"];
 
 _setupVars =
 {
@@ -20,7 +20,7 @@ _setupVars =
 
 _setupObjects =
 {
-	_missionPos = ([markerPos _missionLocation, 100, random 360] call BIS_fnc_relPos);
+	_missionPos = (markerpos _missionLocation) getPos [100, random 360];
 	_mission_grp = createGroup [GRLIB_side_civilian, true];
 	_man1 = _mission_grp createUnit ["C_Marshal_F", _missionPos, [], 0, "NONE"];
 	_man1 setVariable ['GRLIB_can_speak', true, true];

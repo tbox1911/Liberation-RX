@@ -14,7 +14,7 @@ private _list=[];
 	} forEach (sectors_allSectors - blufor_sectors);
 
 	if ( (_position distance2D ([_position] call F_getNearestFob)) <= GRLIB_spawn_min ) then { _item = false };
-	if ( ([_position] call F_getNearestBluforObjective select 1) > GRLIB_spawn_max ) then { _item = false };
+	if ( ([_position, false] call F_getNearestBluforObjective select 1) > GRLIB_spawn_max ) then { _item = false };
 
 	if ( _x in A3W_sectors_in_use ) then { _item = false };
 

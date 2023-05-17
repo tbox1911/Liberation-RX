@@ -6,7 +6,7 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_nbUnits", "_vehicleName", "_vehiclePos", "_smoke"];
+private ["_nbUnits", "_vehicleName", "_smoke"];
 
 _setupVars =
 {
@@ -17,7 +17,7 @@ _setupVars =
 
 _setupObjects =
 {
-	_missionPos = ([markerPos _missionLocation, 100, random 360] call BIS_fnc_relPos);
+	_missionPos = (markerpos _missionLocation) getPos [100, random 360];
 	_vehiclePos = _missionPos findEmptyPosition [1, 60, "B_Heli_Transport_03_unarmed_F"];
 	_vehicle = [_vehiclePos, selectRandom opfor_vehicles, true, false, true] call F_libSpawnVehicle;
 	_vehicle setVariable ["R3F_LOG_disabled", true, true];
