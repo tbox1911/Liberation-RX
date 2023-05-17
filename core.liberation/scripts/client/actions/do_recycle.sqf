@@ -49,7 +49,7 @@ if ( dorecycle == 1 && !(isNull _vehicle) && (alive _vehicle || typeOf _vehicle 
 		playSound "taskSucceeded";
 	};
 	[player, _ammount_ammo, _ammount_fuel] remoteExec ["ammo_add_remote_call", 2];
-	player addRating 500;
+	player addRating 50;
 
 	if (typeOf _vehicle == mobile_respawn) exitWith {
 		[_vehicle, "del"] remoteExec ["addel_beacon_remote_call", 2];

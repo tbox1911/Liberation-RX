@@ -207,7 +207,6 @@ if ( isServer ) then {
 				if (isPlayer _killer) then {
 					[_killer, (_bounty select 0), 0] call ammo_add_remote_call;
 					[_killer, (_bounty select 1)] call F_addScore;
-					_killer addRating 500;
 				};
 			};
 		} else {

@@ -56,4 +56,4 @@ if ( (GRLIB_squad_size + GRLIB_squad_size_bonus) > GRLIB_max_squad_size) then {
 };
 
 player setUnitRank _rank;
-player addRating 1000;
+player addRating 100;

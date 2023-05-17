@@ -41,7 +41,7 @@ if (typeOf _vehicle in _valuable_veh) then {
 	[player, _bounty, 2] remoteExec ["ammo_add_remote_call", 2];
 	hintSilent format [localize "STR_DO_WRECK", name player, _bonus, _bounty];
 	[player, _bonus] remoteExec ["F_addScore", 2];
-	player addRating 100;
+	player addRating 10;
 } else {
 	hintSilent "Thank You !!";
 };
