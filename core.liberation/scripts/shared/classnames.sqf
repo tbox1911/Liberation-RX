@@ -485,6 +485,10 @@ GRLIB_intel_table = "Land_CampingTable_small_F";
 GRLIB_intel_chair = "Land_CampingChair_V2_F";
 GRLIB_intel_items = [
 	"Land_File1_F",
+	"Intel_File1_F",
+	"Intel_File2_F",
+	"Intel_Photos_F",
+	"Land_Wallet_01_F",
 	"Item_FileTopSecret",
 	"Item_SecretFiles",
 	"Item_NetworkStructure",
@@ -492,6 +496,7 @@ GRLIB_intel_items = [
 	"Item_Laptop_Unfolded",
 	"Land_SatellitePhone_F"
 ];
+
 GRLIB_ide_traps = [
 	"Item_Sleeping_bag_folded_01",
 	"Land_LuggageHeap_01_F",
