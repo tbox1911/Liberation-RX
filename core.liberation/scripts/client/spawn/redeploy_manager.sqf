@@ -49,11 +49,12 @@ respawn_camera camSetTarget respawn_object;
 respawn_camera cameraEffect ["internal","back"];
 respawn_camera camcommit 0;
 
-_standard_map_pos = ctrlPosition ((findDisplay 5201) displayCtrl 251);
-_frame_pos = ctrlPosition ((findDisplay 5201) displayCtrl 198);
+private _standard_map_pos = ctrlPosition ((findDisplay 5201) displayCtrl 251);
+private _frame_pos = ctrlPosition ((findDisplay 5201) displayCtrl 198);
 
-_loadouts_data = [];
-_loadout_controls = [101,203,205];
+private _is_mobile_respawn = false;
+private _loadouts_data = [];
+private _loadout_controls = [101,203,205];
 
 if ( GRLIB_player_spawned ) then {
 	_saved_loadouts = profileNamespace getVariable ["bis_fnc_saveInventory_data", []];
@@ -204,6 +205,7 @@ if (dialog && deploy == 1) then {
 			// Mobile Respawn
 			_destpos = (_choiceslist select _idxchoice) select 2;
 			_destdist = 6;
+			_is_mobile_respawn = true;
 		} else {
 			// FOB / Outpost
 			_destpos = ((_choiceslist select _idxchoice) select 1);
@@ -257,8 +259,8 @@ if (dialog) then {
 
 if (alive player && deploy == 1) then {
 	if (isNil "_spawn_str") then {_spawn_str = "Somewhere."};
-	[_spawn_str] spawn spawn_camera;
+	[_spawn_str, _is_mobile_respawn] spawn spawn_camera;
 };
 
-sleep 7;
+sleep 8;
 playMusic "";
