@@ -4,12 +4,15 @@ private _vehmarkers = [];
 private _vehmarkers_bak = [];
 
 private _no_marker_classnames = [
-	"Kart_01_Base_F",
 	Respawn_truck_typename,
 	huron_typename,
 	playerbox_typename,
-	GRLIB_player_gravebox
+	GRLIB_player_gravebox,
+	"Kart_01_Base_F",
+	"Land_HumanSkull_F",
+	"Land_HumanSkeleton_F"
 ] + GRLIB_ide_traps + GRLIB_intel_items;
+
 { _no_marker_classnames pushback (_x select 0) } foreach buildings;
 
 waitUntil {sleep 1; !isNil "GRLIB_init_server"};
