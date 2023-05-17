@@ -68,58 +68,58 @@ _setupObjects =
 	];
 
 	//----- build village ---------------------------------
-	_vehicles = [];
 	_statue = createVehicle [selectRandom _statue, _missionPos, [], 1, "None"];
-	_vehicles pushBack _statue;
 
+	_build_list  = [];
 	for "_i" from 1 to 5 do {
 		_dir = random 360;
 		_max = 100;
 		_pos = [];
 		while { count _pos == 0 && _max > 0 } do {
 			_pos = _missionPos findEmptyPosition [20, 200, "B_Heli_Transport_01_F"];
-			if ((isOnRoad _missionPos) || (surfaceIsWater _missionPos)) then {
+			if (isOnRoad _missionPos || surfaceIsWater _missionPos) then {
 				_pos = [];
 			};
 			_max = _max - 1;
 			sleep 0.1;
 		};
 		if (count _pos == 3) then {
-			_build = createVehicle [selectRandom _buildings, _pos, [], 1, "None"];
-			_build setVectorDirAndUp [[-cos _dir, sin _dir, 0] vectorCrossProduct surfaceNormal _pos, surfaceNormal _pos];
-			_vehicles pushBack _build;
+		_build = createVehicle [selectRandom _buildings, _pos, [], 1, "None"];
+		_build setVectorDirAndUp [[-cos _dir, sin _dir, 0] vectorCrossProduct surfaceNormal _pos, surfaceNormal _pos];
+		_build_list pushBack _build;
+		sleep 0.2;
 		};
 	};
-	if (count _vehicles < 4) exitWith { false };
-	sleep 0.5;
+	if (count _build_list < 3) exitWith { false };
 
+	_vrac_list = [];
 	for "_i" from 1 to 7 do {
-		_pos = _missionPos findEmptyPosition [10, 50, "B_Heli_Transport_01_F"];
+		_pos = (getPosATL (selectRandom _build_list)) findEmptyPosition [10, 50, "B_Heli_Transport_01_F"];
 		if (count _pos == 3) then {
 			_wreck = createVehicle [selectRandom _wrecks, _pos, [], 1, "None"];
 			_wreck setDir (random 360);
-			_vehicles pushBack _wreck;
+			_vrac_list pushBack _wreck;
+			sleep 0.2;
 		};
 	};
-	sleep 0.5;
 
 	for "_i" from 1 to 8 do {
-		_lamp = createVehicle ["Land_LampStreet_02_triple_F", _missionPos, [], 60, "None"];
+		_lamp = createVehicle ["Land_LampStreet_02_triple_F", (getPosATL (selectRandom _build_list)), [], 15, "None"];
 		_lamp setDir (random 360);
-		_vehicles pushBack _lamp;
+		_vrac_list pushBack _lamp;
+		sleep 0.2;
 	};
-	sleep 0.5;
 
 	for "_i" from 1 to 7 do {
-		_wreck = createVehicle [selectRandom _skel, _missionPos, [], 40, "None"];
+		_wreck = createVehicle [selectRandom _skel, (getPosATL (selectRandom _build_list)), [], 30, "None"];
 		_wreck setDir (random 360);
-		_vehicles pushBack _wreck;
+		_vrac_list pushBack _wreck;
+		sleep 0.2;
 	};
-	sleep 0.5;
 
 	//----- spawn intels ---------------------------------
-	_intels = [_missionPos] call manage_intels;
-	_vehicles append _intels;
+	_intels = [getPosATL (_build_list select 0)] call manage_intels;
+	_vehicles =  [_statue] + _build_list + _vrac_list + _intels;
 	sleep 0.5;
 
 	//----- spawn units ---------------------------------
