@@ -30,7 +30,7 @@ A3W_sectors_in_use = [];
 A3W_delivery_failed = 0;
 A3W_mission_success = 0;
 A3W_mission_failed = 0;
-A3W_Mission_delay = 15*60;		// Time in seconds between Side Missions
+A3W_Mission_delay = 15*60;			// Time in seconds between Side Missions
 A3W_Mission_timeout = 60*60;		// Time in seconds that a Side Mission will run for, unless completed
 
 //***  Debug A3W missions ***
