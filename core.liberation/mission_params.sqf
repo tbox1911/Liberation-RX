@@ -1,3 +1,11 @@
+// All Liberation RX Mission Parameters here
+//
+// in LRX_Mission_Params, 
+//   define parameter name and default value 
+//
+// in LRX_Mission_Params_Def,
+//   define parameter full name, list of choice, (optinal) custom value
+
 private _lrx_getParamValue = {
 	params ["_param"];
 	_def = "Unknown!";
@@ -29,7 +37,7 @@ LRX_Mission_Params = [
 	["NightDuration", 1],			// Night duration (multiplier) - [default 1] - values = [0.25, 0.5, 1, 1.5, 2, 2.5, 3, 5, 10, 20, 30, 60]
 	["Thermic", 1],					// Enable Thermal Equipment [default 1] - values = [2,1,0] - Text {Enabled,Only at night,Disabled}
 	["EnableArsenal", 1],			// Enable the Arsenal [default 1] - values = [1,0] - Text {Enabled,Disabled}
-	["FilterArsenal", 1],			// Arsenal Filter Mode [default 1] - values = [0,1,2,3] - Text {Disabled,"Soft","Strict","Strict+MOD"}
+	["FilterArsenal", 1],			// Arsenal Filter Mode [default 1] - values = [0,1,2,3,4] - Text {Disabled,"Soft","Strict","Strict+MOD",Whitelist only}
 	["ModPresetWest", 0],			// Select MOD Preset for Friendly side - value =  { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25 } Text = "A3_BLU", "A3_OPF",  etc...
 	["ModPresetEast", 0],			// Select MOD Preset for Enemy side - values = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25 } text "A3_OPF", "A3_BLU", "A3_IND",  etc...
 	["Weather", 1],					// Weather - [default 4] - values = [1,2,3,4] - Text {Always Sunny,Random without rain,Random Cloudy,Random}
@@ -110,7 +118,8 @@ LRX_Mission_Params_Def = [
 		localize "STR_PARAMS_DISABLED",
 		localize "STR_LIMIT_ARSENAL_PARAM1",
 		localize "STR_LIMIT_ARSENAL_PARAM2",
-		localize "STR_LIMIT_ARSENAL_PARAM3"
+		localize "STR_LIMIT_ARSENAL_PARAM3",
+		localize "STR_LIMIT_ARSENAL_PARAM4"
 		]
 	],
 	["Weather", localize "STR_WEATHER_PARAM", [

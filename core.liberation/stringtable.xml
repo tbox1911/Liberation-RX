@@ -5539,13 +5539,13 @@
 			<Czech>Strict: Hráč může používat POUZE předměty v arzenálu.</Czech>
 		</Key>
 		<Key ID="STR_LIMIT_ARSENAL_PARAM3">
-			<Original>Strict + MOD: The player can ONLY use items present in the Arsenal + items from the current Mod</Original>
-			<Russian>Строгое + МОД: Игрок может использовать предметы ТОЛЬКО представленные в Арсенале + из текущего Мода</Russian>
-			<Chinesesimp>严谨+MOD：玩家只能使用当前武器库和MOD中的装备。</Chinesesimp>
-			<Chinese>嚴謹+MOD：玩家只能使用當前武器庫和MOD中的裝備。</Chinese>
-			<Portuguese>Strict + MOD: O jogador SÓ pode usar itens presentes no Arsenal + itens do Mod atual</Portuguese>
-			<Czech>Strict + MOD: Hráč může používat POUZE předměty v arzenálu + předměty z aktuálního modu</Czech>
+			<Original>Strict + MOD: Strict mode + items from current Mod</Original>
+			<Russian>Строгое + МОД: Строгое + из текущего Мода</Russian>
+			<Portuguese>Strict + MOD: Rígido + itens do Mod atual</Portuguese>
 		</Key>
+		<Key ID="STR_LIMIT_ARSENAL_PARAM4">
+			<Original>Only items defined in Whitelist</Original>
+		</Key>		
 		<Key ID="STR_VEH_LOCK">
 			<Original>Enable Vehicles Ownership</Original>
 			<Russian>Включить Владение Транспортом</Russian>

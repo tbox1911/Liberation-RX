@@ -18,6 +18,8 @@
 // - FilterArsenal = 3    Strict Mode + MOD: The player can ONLY use items present in the Arsenal.
 //                        plus items from the current MOD.
 //
+// - FilterArsenal = 4    Only Whitelist and Blacklist - no autofill
+//
 // The Whitelist and Blacklist apply from FilterArsenal = 1 and up
 //
 // customize Arsenal:
@@ -74,8 +76,10 @@ GRLIB_whitelisted_from_arsenal = [mobile_respawn_bag, "B_Parachute"] + whitelist
 GRLIB_MOD_signature = [];
 
 // Add Mod Items (Weapons,Uniform,etc.)
-[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_init_west.sqf";
-[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_init_east.sqf";
+if (GRLIB_filter_arsenal != 4) then {
+	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_init_west.sqf";
+	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_init_east.sqf";
+};
 
 // Dedup list
 GRLIB_MOD_signature = GRLIB_MOD_signature arrayIntersect GRLIB_MOD_signature;
