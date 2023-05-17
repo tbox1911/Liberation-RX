@@ -97,7 +97,8 @@ _setupObjects =
 		_pos = (getPosATL (selectRandom _build_list)) findEmptyPosition [10, 50, "B_Heli_Transport_01_F"];
 		if (count _pos == 3) then {
 			_wreck = createVehicle [selectRandom _wrecks, _pos, [], 1, "None"];
-			_wreck setDir (random 360);
+			_dir = random 360;
+			_wreck setVectorDirAndUp [[-cos _dir, sin _dir, 0] vectorCrossProduct surfaceNormal _pos, surfaceNormal _pos];
 			_vrac_list pushBack _wreck;
 			sleep 0.2;
 		};
@@ -110,7 +111,7 @@ _setupObjects =
 		sleep 0.2;
 	};
 
-	for "_i" from 1 to 7 do {
+	for "_i" from 1 to 10 do {
 		_wreck = createVehicle [selectRandom _skel, (getPosATL (selectRandom _build_list)), [], 30, "None"];
 		_wreck setDir (random 360);
 		_vrac_list pushBack _wreck;

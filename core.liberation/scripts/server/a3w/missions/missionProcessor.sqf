@@ -20,9 +20,9 @@ _aiGroup = grpNull;
 if (!isNil "_setupVars") then { call _setupVars };
 
 ["lib_secondary_a3w_mission", [_missionType]] remoteExec ["bis_fnc_shownotification", 0];
-diag_log format ["%1 Mission%2 started: %3", MISSION_PROC_TYPE_NAME, _controllerSuffix, _missionType];
+diag_log format ["A3W Side Mission% started: %2", _controllerSuffix, _missionType];
 
-_missionTimeout = MISSION_PROC_TIMEOUT;
+_missionTimeout = A3W_Mission_timeout;
 
 if (!isNil "_locationsArray") then {
 	while {true} do
@@ -39,7 +39,7 @@ if (!isNil "_locationsArray") then {
 _continue_mission = true;
 if (!isNil "_setupObjects") then { _continue_mission = call _setupObjects };
 if (!_continue_mission) exitWith {
-	diag_log format ["--- LRX Error: %1 Mission%2 failed to setup: %3", MISSION_PROC_TYPE_NAME, _controllerSuffix, _missionType];
+	diag_log format ["--- LRX Error: A3W Side Mission%1 failed to setup: %2", _controllerSuffix, _missionType];
 };
 
 sleep 5;
@@ -50,14 +50,14 @@ _aiGroup setVariable ["A3W_missionMarkerName", _marker, true];
 if (isNil "_missionPicture") then { _missionPicture = "" };
 
 [
-	format ["%1 Objective", MISSION_PROC_TYPE_NAME],
+	format ["%1 Objective", "Side"],
 	_missionType,
 	_missionPicture,
 	_missionHintText,
-	MISSION_PROC_COLOR_DEFINE
+	sideMissionColor
 ] call missionHint;
 
-diag_log format ["%1 Mission%2 waiting to be finished: %3", MISSION_PROC_TYPE_NAME, _controllerSuffix, _missionType];
+diag_log format ["A3W Side Mission%1 waiting to be finished: %2", _controllerSuffix, _missionType];
 
 _failed = false;
 _complete = false;
@@ -127,7 +127,7 @@ if (_failed) then {
 	] call missionHint;
 
 	["lib_secondary_a3w_mission_fail", [_missionType]] remoteExec ["bis_fnc_shownotification", 0];
-	diag_log format ["%1 Mission%2 failed: %3", MISSION_PROC_TYPE_NAME, _controllerSuffix, _missionType];
+	diag_log format ["A3W Side Mission%1 failed: %2", _controllerSuffix, _missionType];
 	A3W_mission_failed = A3W_mission_failed + 1;
 } else {
 	// Mission completed
@@ -161,7 +161,7 @@ if (_failed) then {
 	] call missionHint;
 
 	["lib_secondary_a3w_mission_success", [_missionType]] remoteExec ["bis_fnc_shownotification", 0];
-	diag_log format ["%1 Mission%2 complete: %3", MISSION_PROC_TYPE_NAME, _controllerSuffix, _missionType];
+	diag_log format ["A3W Mission%1 complete: %2", _controllerSuffix, _missionType];
 	A3W_mission_success = A3W_mission_success + 1;
 };
 

@@ -30,7 +30,14 @@ A3W_sectors_in_use = [];
 A3W_delivery_failed = 0;
 A3W_mission_success = 0;
 A3W_mission_failed = 0;
-//GRLIB_A3W_debug = true;
+A3W_Mission_delay = 15*60;		// Time in seconds between Side Missions
+A3W_Mission_timeout = 60*60;		// Time in seconds that a Side Mission will run for, unless completed
+
+//***  Debug A3W missions ***
+// A3W_debug = true;   // enable debug
+// A3W_mission = "mission_SearchIntel";   // load mission
+// A3W_Mission_delay = 1*60;
+// A3W_Mission_timeout = 5*60;
 
 waitUntil {sleep 1; !isNil "blufor_sectors" };
 waitUntil {sleep 1; !isNil "sectors_allSectors" };
@@ -40,9 +47,13 @@ waitUntil {sleep 1; !isNil "save_is_loaded" };
 
 for "_i" from 1 to 4 do {
 	// Start Permanent controller
-	sleep ((2 + floor random 14) * 60);
+	private _init_sleep = ((2 + floor random 14) * 60);
+	while {_init_sleep > 0 && isNil "A3W_debug"} do { sleep 1; _init_sleep = _init_sleep - 1 };
 	diag_log format ["--- LRX A3W Starting Mission Controller #%1 at %2", _i, time];
-	[_i, false] execVM "scripts\server\a3w\missions\sideMissionController.sqf";
+	if ((_i == 1) || (_i > 1 && isNil "A3W_debug")) then {
+		[_i, false] execVM "scripts\server\a3w\missions\sideMissionController.sqf";
+	};
+	sleep 60;
 };
 
 diag_log "--- LRX A3W Missions Initialized";
