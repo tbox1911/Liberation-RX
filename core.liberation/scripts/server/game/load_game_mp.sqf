@@ -73,7 +73,7 @@ if ( GRLIB_param_wipe_savegame_1 == 1 && GRLIB_param_wipe_savegame_2 == 1 ) then
 			_keep_players pushback _x;
 		} foreach (profileNamespace getVariable GRLIB_save_key select 15);
 		GRLIB_player_scores = _keep_players;
-	};	
+	};
 	profileNamespace setVariable [ GRLIB_save_key, nil ];
 	saveProfileNamespace;
 };
@@ -145,7 +145,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 			Loading Aborted to protect data integrity.\n
 			Correct the Modset or Wipe the savegame...\n
 			Current Modset: (%3 / %4)\n
-			*********************************", _side_west, _side_east, GRLIB_mod_west, GRLIB_mod_east];			
+			*********************************", _side_west, _side_east, GRLIB_mod_west, GRLIB_mod_east];
 			abort_loading = true;
 		};
 	};
@@ -156,7 +156,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 		FATAL! - The savegame is incompatible with this version of LRX\n\n
 		Loading Aborted to protect data integrity.\n
 		Wipe the savegame...\n
-		*********************************"];			
+		*********************************"];
 		abort_loading = true;
 	};
 	if (abort_loading) exitWith {};
@@ -182,7 +182,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 			};
 		};
 	} foreach buildings_to_load;
- 
+
 	{
 		_nextclass = _x select 0;
         _nextpos = _x select 1;
@@ -199,7 +199,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
         };
 
 		_nextbuilding = createVehicle [_nextclass, zeropos, [], 0, "CAN_COLLIDE"];
-		_nextbuilding allowDamage false;		
+		_nextbuilding allowDamage false;
 		_nextbuilding setVectorDirAndUp [_nextdir select 0, _nextdir select 1];
 		_nextbuilding setPosWorld _nextpos;
 		_buildings_created pushback _nextbuilding;
@@ -252,7 +252,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 			};
 			if ( _nextclass == Box_Ammo_typename ) then {
 				_nextbuilding addItemCargoGlobal ["SatchelCharge_Remote_Mag", 2];
-			};			
+			};
         } else {
 			if ( !(_owner in ["", "public"]) && count _x > 5 ) then {
 				[_x select 5] params [["_color", ""]];
@@ -271,11 +271,8 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 				_nextbuilding setUnloadInCombat [true, false];
 				_nextbuilding setVariable ["R3F_LOG_disabled", true, true];
 
-				// temp workaround
-				if (typeName _color != "ARRAY") then {
-					if (_color != "") then {
-						[_nextbuilding, _color, _color_name] call RPT_fnc_TextureVehicle;
-					};
+				if (_color != "") then {
+					[_nextbuilding, _color, _color_name] call RPT_fnc_TextureVehicle;
 				};
 				if (count _compo > 0) then {
 					[_nextbuilding, _compo]  call RPT_fnc_CompoVehicle;
@@ -328,7 +325,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 	} foreach (_s1 + _s2 + _s3);
 	sleep 1;
 
-	{ 
+	{
 		_allow_damage = true;
 		if ( (typeOf _x) in [FOB_typename,FOB_outpost,FOB_sign,Warehouse_typename,playerbox_typename] ) then {
 			_x addEventHandler ["HandleDamage", { 0 }];

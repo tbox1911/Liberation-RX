@@ -220,27 +220,6 @@ while { dialog && alive player } do {
 		};
 
 		if (GRLIB_squadaction == 3) then {
-
-			// closeDialog 0;
-			// if ( primaryWeapon player == "" && secondaryWeapon player == "" ) then {
-			// 	[ _selectedmember, player ] call F_swapInventory;
-			// };
-			// _destpos = getposATL _selectedmember;
-			// _destdir = getdir _selectedmember;
-			// if ( damage _selectedmember > 0.4 ) then {
-			// 	if ( damage _selectedmember < 0.7 ) then {
-			// 		player setDamage (damage _selectedmember);
-			// 	} else {
-			// 		player setDamage 0.7;
-			// 	};
-			// };
-			// deleteVehicle _selectedmember;
-			// uiSleep 0.01;
-			// player setPosATL _destpos;
-			// player setDir _destdir;
-			// uiSleep 0.01;
-			// [ localize 'STR_SQUAD_DEPLOY' ] spawn spawn_camera;
-
 		};
 
 		if (GRLIB_squadaction == 4) then {
