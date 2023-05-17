@@ -33,6 +33,22 @@ private _getBannedUID = {
 	} foreach allVariables BTC_logic;
 };
 
+private _addBuild = {
+	params ["_i", "_list", "_color"];
+	{
+		_strname = [(_x select 0)] call F_getLRXName;
+		if (_strname == "") then {
+			diag_log format ["--- LRX Error: Classname not found: %1", (_x select 0)];
+		} else {
+			_build_combo lbAdd format["%1", _strname];
+			_build_combo lbSetData [_i, ( _x select 0 )];
+			_build_combo lbSetColor [_i, _color ];
+			_i = _i + 1;
+		};
+	} forEach _list;
+	_i;
+};
+
 private _color = getArray (configFile >> "CfgMarkerColors" >> GRLIB_color_friendly >> "color") call BIS_fnc_colorConfigToRGBA;
 private _display = findDisplay 5204;
 
@@ -104,17 +120,11 @@ private _list = [];
 } foreach GRLIB_player_scores;
 
 // Build Vehicles list
-_i = 0;
-{
-	_strname = [(_x select 0)] call F_getLRXName;
-	if (_strname == "") then {
-		diag_log format ["--- LRX Error: Classname not found: %1", (_x select 0)];
-	} else {
-		_build_combo lbAdd format["%1", _strname];
-		_build_combo lbSetData [_i, ( _x select 0 )];
-		_i = _i + 1;
-	};
-} forEach light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles + opfor_recyclable;
+private _indx = 0;
+_indx = [_indx, light_vehicles + heavy_vehicles + air_vehicles, [0,0.3,0.7,1]] call _addBuild;
+_indx = [_indx, static_vehicles, [0,0.8,0,1]] call _addBuild;
+_indx = [_indx, support_vehicles, [0.5,0.6,0.4,1]] call _addBuild;
+_indx = [_indx, opfor_recyclable, [0.8,0,0,1]] call _addBuild;
 
 _ban_combo lbSetCurSel 0;
 _score_combo lbSetCurSel 0;
