@@ -54,4 +54,4 @@ _unit linkItem "ItemGPS";
 _unit linkItem "rhs_1PN138";
 
 // "Set identity";
-[_unit,"GreekHead_A3_02","male01eng"] call BIS_fnc_setIdentity;
+//[_unit,"GreekHead_A3_02","male01eng"] call BIS_fnc_setIdentity;
