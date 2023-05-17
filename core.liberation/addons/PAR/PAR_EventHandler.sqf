@@ -140,8 +140,10 @@ if (_unit == player) then {
 		params ["_unit", "_role", "_vehicle"];
 		1 fadeSound 1;
 		NRE_EarplugsActive = 0;
-		if ( (getPos _unit) select 2 > 20 && !(_unit getVariable ["AR_Is_Rappelling",false]) ) then {
-			[_vehicle, _unit] spawn PAR_unit_eject;
+		if (!GRLIB_ACE_enabled) then {
+			if ( (getPos _unit) select 2 > 20 && !(_unit getVariable ["AR_Is_Rappelling",false]) ) then {
+				[_vehicle, _unit] spawn PAR_unit_eject;
+			};
 		};
 		[_unit] spawn {
 			params ["_unit"];
