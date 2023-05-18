@@ -4,13 +4,37 @@ private _createdcivs = [];
 private _spawnpos = [_pos, 80, 300] call BIS_fnc_findSafePos;
 if (surfaceIsWater _spawnpos) exitWith {_createdcivs};
 
-private _type = selectRandom ["Cock_random_F","Hen_random_F","Alsatian_Random_F","Fin_random_F","Goat_random_F","Sheep_random_F"];
-private _nbcivs = (3 + floor(random 4));
+private _type_random = [
+	"Cock_random_F",
+	"Hen_random_F",
+	"Alsatian_Random_F",
+	"Fin_random_F",
+	"Goat_random_F",
+	"Sheep_random_F"
+];
 
+private _type_desert = [
+	"Dromedary_03_lxWS",
+	"Dromedary_02_lxWS",
+	"Dromedary_03_saddle2_lxWS",
+	"Dromedary_03_saddle_lxWS",
+	"Dromedary_01_saddle_lxWS",
+	"Dromedary_01_saddle2_lxWS",
+	"Dromedary_04_saddle_lxWS",
+	"Dromedary_04_saddle2_lxWS",
+	"Dromedary_04_lxWS"
+];
+
+private _is_desert = (worldname in ["SefrouRamal", "Takistan"] && GRLIB_WS_enabled);
+private _nbcivs = (3 + floor(random 4));
+private _type = selectRandom _type_random;
+if (_is_desert) then { _type = selectRandom (_type_random + _type_desert) };
+private _is_dromedary = (["Dromedary_", _type, true] call F_startsWith);
 if (_type in ["Alsatian_Random_F","Fin_random_F"]) then { _nbcivs = 2 };
 if (_type in ["Cock_random_F","Hen_random_F"]) then { _nbcivs = _nbcivs + 2 };
 
 for "_n" from 1 to _nbcivs do {
+	if (_is_dromedary) then { _type = selectRandom _type_desert };
 	_nextciv = createAgent [_type, _spawnpos, [], 5, "NONE"];
 	_nextciv setVariable ["BIS_fnc_animalBehaviour_disable", true];
 	_nextciv setName "Animal";
