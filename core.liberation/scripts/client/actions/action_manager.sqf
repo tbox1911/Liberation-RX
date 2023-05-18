@@ -1,4 +1,4 @@
-private _distarsenal = 10;
+private _distarsenal = 15;
 private _distredeploy = 20;
 private _distvehclose = 5;
 private _icon_dog = (getText (configFile >> "CfgVehicleIcons" >> "iconAnimal"));
