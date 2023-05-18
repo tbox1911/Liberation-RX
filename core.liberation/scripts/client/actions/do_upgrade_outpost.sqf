@@ -5,17 +5,16 @@ private _fob_owner = [_fob_pos] call F_getFobOwner;
 private _fob_name = [_fob_pos] call F_getFobName;
 if (getPlayerUID player != _fob_owner) exitWith { hintSilent "Error!\nYour are NOT the owner of the Outpost!" };
 
-private _cost = 1000;
+private _cost = 1500;
 private _result = [format [localize "STR_UPGRADE_OUTPOST_PAY", _cost], localize "STR_WARNING", true, true] call BIS_fnc_guiMessage;
 if (!_result) exitWith {};
 if (!([_cost] call F_pay)) exitWith {};
 
-private _outpost = nearestObjects [_fob_pos, [FOB_outpost], 30] select 0;
-private _outpost_dir = getDir _outpost;
-
 player setPos (player getPos [5, (getDir player) - 180]);
 sleep 0.2;
 
+private _outpost = nearestObjects [_fob_pos, [FOB_outpost], 30] select 0;
+private _outpost_dir = getDir _outpost;
 deleteVehicle _outpost;
 { deleteVehicle _x } foreach (_fob_pos nearObjects [FOB_sign, 30]);
 sleep 0.5;
