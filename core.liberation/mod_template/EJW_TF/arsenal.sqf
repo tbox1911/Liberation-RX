@@ -173,7 +173,10 @@ blacklisted_weapon = [
 	"_Leaflets",
 	"_esd_",
 	"ej_launch_TitanDAT",
-	"ej_launch_TitanAAD"
+	"ej_launch_TitanAAD",
+	"R3F_LGI_DEM",
+	"R3F_securite_mag",
+	"R3F_securite_fn_mag"
 ];
 
 whitelisted_from_arsenal = [

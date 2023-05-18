@@ -148,7 +148,6 @@ blufor_air = [
 ];
 
 static_vehicles = [
-	["B_Static_Designator_01_F",0,5,0,GRLIB_perm_inf],
 	["B_HMG_01_F",0,10,0,GRLIB_perm_log],
 	["B_HMG_01_high_F",0,10,0,GRLIB_perm_tank],
 	["B_GMG_01_F",0,20,0,GRLIB_perm_log],
