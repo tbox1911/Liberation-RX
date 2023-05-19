@@ -118,7 +118,7 @@ while { true } do {
 				// REPAIR
 				_near_repair = [_vehicle, "REPAIR_AI", _distarsenal, true] call F_check_near;
 				_is_enabled = !(_vehicle getVariable ["R3F_LOG_disabled", false]);
-				_vehicle_need_repair = (damage _vehicle >= 0.10);
+				_vehicle_need_repair = (damage _vehicle >= 0.015);
 
 				if (!isNil "GRLIB_LRX_debug") then {
 					diag_log format ["DBG: %1: need Repair:%2 - near Repair source:%3", typeOf _vehicle, _vehicle_need_repair, _near_repair];
