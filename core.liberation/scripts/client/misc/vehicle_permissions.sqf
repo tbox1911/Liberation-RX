@@ -64,7 +64,7 @@ if (_doeject) then {
 				case "driver": { _unit2 action ["moveToDriver", _vehicle] };
 				case "commander": { _unit2 action ["moveToCommander", _vehicle] };
 				case "gunner": { _unit2 action ["moveToGunner", _vehicle] };
-				case "turret": { _unit2 action ["moveToTurret", _vehicle, (assignedVehicleRole _unit1) select 1] };				
+				case "turret": { _unit2 action ["moveToTurret", _vehicle, (assignedVehicleRole _unit1) select 1] };
 			};
 		};
 	};
