@@ -2,6 +2,7 @@
 
 // Map constant
 [] call compileFinal preprocessFileLineNUmbers "gameplay_constants.sqf";
+GRLIB_params_save_key = format ["%1-config", GRLIB_save_key];
 
 // Classename MOD source
 [] call compileFinal preprocessFileLineNUmbers "mod_template\mod_init.sqf";
@@ -48,15 +49,14 @@ private _lrx_getParamValue = {
 	_def;
 };
 
-private _params_name = format ["%1-config", GRLIB_save_key];
-if (GRLIB_param_wipe_params == 1 && isServer) then { profileNamespace setVariable [_params_name, LRX_Mission_Params]; };
+if (GRLIB_param_wipe_params == 1 && isServer) then { profileNamespace setVariable [GRLIB_params_save_key, LRX_Mission_Params]; };
 
 // Load Mission Parameters
 if (isServer) then {
-	GRLIB_LRX_params = profileNamespace getVariable _params_name;
+	GRLIB_LRX_params = profileNamespace getVariable [GRLIB_params_save_key, nil];
 	if ( isNil "GRLIB_LRX_params" ) then {
 		GRLIB_LRX_params = LRX_Mission_Params;
-		profileNamespace setVariable [_params_name, GRLIB_LRX_params];
+		profileNamespace setVariable [GRLIB_params_save_key, GRLIB_LRX_params];
 	};
 	publicVariable "GRLIB_LRX_params";
 } else {

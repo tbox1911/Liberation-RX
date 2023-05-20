@@ -42,6 +42,12 @@ param_id = -1;
 param_value = -1;
 save_changes = 0;
 
+_control = _display ctrlCreate [ "RscText", (100 + 0), _display displayCtrl 9969 ];
+_control ctrlSetPosition [ 0,  (0 * 0.025) * safezoneH, 0.3 * safeZoneW, 0.025  * safezoneH];
+_control ctrlSetText format ["Parameters Profile name: %1", GRLIB_params_save_key];
+_control ctrlSetTextColor [0.5,0.5,0.5,1];
+_control ctrlCommit 0;
+
 {
 	_data = [_x select 0] call _lrx_getParamData;
 	if (count _data > 0) then {
@@ -49,7 +55,7 @@ save_changes = 0;
 		_values =  _data select 1;
 		_values_raw = _data select 2;
 		if (isNil "_values_raw") then {_values_raw = []};
-		_params_array pushback [ _x select 0, _x select 1, _indx, _name, _values, _values_raw ];
+		_params_array pushback [_x select 0, _x select 1, _indx, _name, _values, _values_raw];
 		_indx = _indx + 1;
 	} else {
 		_params_save deleteAt _forEachIndex;
@@ -115,7 +121,7 @@ while { dialog && alive player } do {
 			[_params_save],
 			{
 				params ["_params"];
-				profileNamespace setVariable [format ["%1-config", GRLIB_save_key], _params];
+				profileNamespace setVariable [GRLIB_params_save_key, _params];
 				saveProfileNamespace;
 				GRLIB_LRX_params = _params;
 				publicVariable "GRLIB_LRX_params";
