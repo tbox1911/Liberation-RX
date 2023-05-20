@@ -52,7 +52,7 @@ closeDialog 0;
 
 if ( dojump > 0 ) then {
 	halo_position = [ halo_position, floor(random 250), floor(random 360) ] call BIS_fnc_relPos;
-	if (_unit isKindOf "LandVehicle") then {
+	if (_unit isKindOf "LandVehicle" || _unit isKindOf "Ship") then {
 		if ([_cost] call F_pay) then {
 			halo_position set [2, 400];
 			_unit setPos halo_position; 
