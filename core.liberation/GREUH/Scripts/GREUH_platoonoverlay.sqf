@@ -5,8 +5,7 @@ formation_leader_icon = "\A3\Ui_f\data\GUI\Cfg\Ranks\corporal_gs.paa";
 commander_icon = "\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa";
 group_leader_icon = "\A3\Ui_f\data\GUI\Cfg\Ranks\sergeant_gs.paa";
 wounded_icon = "\A3\ui_f\data\map\vehicleicons\pictureHeal_ca.paa";
-
-nametags_distance = 32.0;
+nametags_distance = 40;
 
 private [ "_groups", "_unitstocount", "_totalx", "_totaly", "_totalz", "_alpha", "_textalpha", "_size", "_screenpos", "_grouppos", "_distlabel", "_dist", "_nextunit", "_color", "_drawicon", "_playername", "_iconpos" ];
 
