@@ -208,3 +208,6 @@ if (GRLIB_sector_radius != 0) then { GRLIB_sector_size = GRLIB_sector_radius };
 GRLIB_map_modder = "Unknow";
 GRLIB_west_modder = "Unknow";
 GRLIB_east_modder = "Unknow";
+
+// Params loaded
+GRLIB_LRX_params_loaded = true;
