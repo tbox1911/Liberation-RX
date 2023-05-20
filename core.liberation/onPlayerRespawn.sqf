@@ -1,7 +1,8 @@
 titleText ["" ,"BLACK FADED", 100];
 player allowDamage false;
 disableUserInput true;
-waitUntil {sleep 0.5; !isNil "GRLIB_init_server"};
+waitUntil {sleep 0.1; !isNil "GRLIB_init_server"};
+waitUntil {sleep 0.1; !isNil "GRLIB_LRX_params"};
 
 if (GRLIB_ACE_medical_enabled) then {
 	[player] call ACE_medical_treatment_fnc_fullHealLocal;
