@@ -132,9 +132,9 @@ if (_unit == player) then {
 			_vehicle disableTIEquipment false;
 		};
 		_this spawn vehicle_permissions;
-		_fuel = (fuel _vehicle * 100);
-		_ammo = ([_vehicle] call F_getVehicleAmmoDef) * 100;
-		_damage = (damage _vehicle * 100);
+		_fuel = round (fuel _vehicle * 100);
+		_ammo = round (([_vehicle] call F_getVehicleAmmoDef) * 100);
+		_damage = round (damage _vehicle * 100);
 		hintSilent format ["Damage: %1%2\nFuel: %3%4\nAmmo: %5%6", _damage,"%",_fuel,"%",_ammo,"%"];
 	}];
 
