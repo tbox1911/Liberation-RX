@@ -9,6 +9,8 @@ private _no_marker_classnames = [
 	playerbox_typename,
 	GRLIB_player_gravebox,
 	"Kart_01_Base_F",
+	"Land_CashDesk_F",
+	"Land_PortableDesk_01_black_F",
 	"Land_HumanSkull_F",
 	"Land_HumanSkeleton_F"
 ] + GRLIB_ide_traps + GRLIB_intel_items;
