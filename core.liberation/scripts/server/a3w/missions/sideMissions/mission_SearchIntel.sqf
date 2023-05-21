@@ -137,7 +137,7 @@ _setupObjects =
 		_x setSkill 0.70;
 		_x setSkill ["courage", 1];
 		_x allowFleeing 0;
-		_x setVariable ["GRLIB_mission_AI", true];
+		_x setVariable ["GRLIB_mission_AI", true, true];
 	} forEach (units _aiGroup);
 
 	[_missionPos, 30] call createlandmines;

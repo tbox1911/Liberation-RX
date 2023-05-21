@@ -63,7 +63,7 @@ private _grp = createGroup [_side, true];
 			};
 
 			if (_type == "defender") then {
-				_unit setVariable ["GRLIB_mission_AI", true];
+				_unit setVariable ["GRLIB_mission_AI", true, true];
 			};
 		};
 	};

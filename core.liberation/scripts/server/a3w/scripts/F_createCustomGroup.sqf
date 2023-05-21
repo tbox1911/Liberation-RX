@@ -27,7 +27,7 @@ private _grp_tmp = [_pos, _unitclass, GRLIB_side_enemy, _type] call F_libSpawnUn
 	_x setSkill 0.70;
 	_x setSkill ["courage", 1];
 	_x allowFleeing 0;
-	_x setVariable ["GRLIB_mission_AI", true];
+	_x setVariable ["GRLIB_mission_AI", true, true];
 } forEach (units _grp_tmp);
 
 sleep 1;

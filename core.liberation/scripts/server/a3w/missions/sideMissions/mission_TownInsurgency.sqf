@@ -42,7 +42,7 @@ _setupObjects =
 
 	{
 		_x setSkill ["courage", 1];
-		_x setVariable ["GRLIB_mission_AI", nil];
+		_x setVariable ["GRLIB_mission_AI", nil, true];
 	} forEach (units _aiGroup);
 
 	_missionHintText = format [localize "STR_INSURGENCY_MESSAGE1", sideMissionColor, _townName];

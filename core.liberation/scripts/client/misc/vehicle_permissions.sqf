@@ -1,10 +1,13 @@
 params ["_unit1", "_unit2", "_vehicle"];
 
+if (count GRLIB_all_fobs == 0 && typeOf _vehicle in [FOB_truck_typename,huron_typename]) exitWith { true }; // Allowed at start
+
 private _doeject = false;
-private _role = (assignedVehicleRole _unit1) select 0;
-private _turret = (assignedVehicleRole _unit1) select 1;
-if (isNil "_role") exitWith {moveOut _unit1};  // Eject unit
-if (count GRLIB_all_fobs == 0 && typeOf _vehicle in [FOB_truck_typename,huron_typename]) exitWith {true}; // Allowed at start
+private _info = (assignedVehicleRole _unit1);
+if (count _info == 0) exitWith { moveOut _unit1 };  // Eject unit
+private _role = _info select 0;
+private _turret = [0];
+if (count _info == 2) then { _turret = _info select 1 };
 
 private _msg = "";
 if (!(_role == "cargo" || _vehicle isKindOf "Steerable_Parachute_F" || typeOf _vehicle in list_static_weapons)) then {
@@ -66,10 +69,7 @@ if (_doeject) then {
 				case "driver": { _unit2 action ["moveToDriver", _vehicle] };
 				case "commander": { _unit2 action ["moveToCommander", _vehicle] };
 				case "gunner": { _unit2 action ["moveToGunner", _vehicle] };
-				case "turret": {
-					if (isNil "_turret") then { _turret = [0] };
-					_unit2 action ["moveToTurret", _vehicle, _turret];
-				};
+				case "turret": {_unit2 action ["moveToTurret", _vehicle, _turret] };
 			};
 		};
 	};
