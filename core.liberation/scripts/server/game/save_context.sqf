@@ -17,7 +17,7 @@ private _loadout = [];
 if (alive _player && lifeState _player != "INCAPACITATED") then {
 	_loadout = getUnitLoadout [_player, true];
 	if (_loaded) then {
-		private _bros = allUnits select { alive _x && _x != _player && lifeState _x != "INCAPACITATED" && (_x getVariable ["PAR_Grp_ID","0"]) == _puid};
+		private _bros = (units _player) select { alive _x && _x != _player && (_x getVariable ["PAR_Grp_ID","0"]) == _puid};
 		{ _ai_group pushback [typeOf _x, rank _x, getUnitLoadout [_x, true]]} forEach _bros;
 	} else {
 		private _context = localNamespace getVariable [format ["player_context_%1", _uid], []];

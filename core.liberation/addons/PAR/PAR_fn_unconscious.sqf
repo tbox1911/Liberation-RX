@@ -91,7 +91,7 @@ private _cnt = 0;
 while {lifeState _unit == "INCAPACITATED" && time <= _unit getVariable ["PAR_BleedOutTimer", 0]} do {
   if (_cnt == 0) then {
     _unit setOxygenRemaining 1;
-    private _bros = allunits select {(_x getVariable ["PAR_Grp_ID","0"]) == (_unit getVariable ["PAR_Grp_ID","1"]) && alive _x && lifeState _x != "INCAPACITATED"};
+    private _bros = (units player) select {(_x getVariable ["PAR_Grp_ID","0"]) == (_unit getVariable ["PAR_Grp_ID","1"]) && alive _x};
     if ( count _bros > 0 ) then {
       _medic = _unit getVariable ["PAR_myMedic", nil];
       if (isNil "_medic") then {

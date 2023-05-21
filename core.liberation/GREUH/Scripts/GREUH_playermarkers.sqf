@@ -25,7 +25,7 @@ while { true } do {
 
 		private _playableunits = [];
 		if ( count playableUnits > 0 ) then {
-			_playableunits = [ playableUnits, { (side (group _x)) == (side (group player)) } ] call BIS_fnc_conditionalSelect;
+			_playableunits = playableUnits;
 		} else {
 			_playableunits = [ player ];
 		};
@@ -82,13 +82,12 @@ while { true } do {
 			private _nextplayer = _x;
 			private _marker = _nextplayer getVariable [ "spotmarker", "" ];
 			if ( _marker == "" ) then {
-				_marker = ( createMarkerLocal [ format [ "playermarker%1", (allUnits find _x) * (time % 1000) * (floor (random 100)) ], getPosATL _nextplayer ] );
+				_marker = ( createMarkerLocal [ format [ "playermarker%1", (time % 1000) * (floor (random 100)) ], getPosATL _nextplayer ] );
 				_marker_objs pushback [ _marker, _nextplayer ];
 				_nextplayer setVariable [ "spotmarker", _marker ];
 
 				_playername = [_nextplayer] call get_player_name;
 				_marker setMarkerTextLocal _playername;
-
 				_marker setMarkerSizeLocal [ 0.75, 0.75 ];
 				_marker setMarkerColorLocal _color;
 			};
@@ -105,7 +104,7 @@ while { true } do {
 			private _marker = _nextai getVariable [ "spotmarker", "" ];
 
 			if ( _marker == "" ) then {
-				_marker = ( createMarkerLocal [ format [ "squadaimarker%1", (allUnits find _x) * (time % 1000) * (floor (random 10000)) ], getPosATL _nextai ] );
+				_marker = ( createMarkerLocal [ format [ "squadaimarker%1", (time % 1000) * (floor (random 10000)) ], getPosATL _nextai ] );
 				_marker_objs pushback [ _marker, _nextai ];
 				_nextai setVariable [ "spotmarker", _marker ];
 				_marker setMarkerTypeLocal "mil_triangle";
@@ -120,7 +119,7 @@ while { true } do {
 			private _nextvehicle = _x;
 			private _marker = _nextvehicle getVariable [ "spotmarker", "" ];
 			if ( _marker == "" ) then {
-				_marker = ( createMarkerLocal [ format [ "vehiclemarker%1", (vehicles find _x) * (time % 1000) * (floor (random 10000)) ], getPosATL _nextvehicle ] );
+				_marker = ( createMarkerLocal [ format [ "vehiclemarker%1", (time % 1000) * (floor (random 10000)) ], getPosATL _nextvehicle ] );
 				_marker_objs pushback [ _marker, _nextvehicle ];
 				_nextvehicle setVariable [ "spotmarker", _marker ];
 				_marker setMarkerTypeLocal "mil_arrow2";
@@ -173,5 +172,5 @@ while { true } do {
 			deleteMarkerLocal _marker;
 			_nextunit setVariable [ "spotmarker", "" ];
 		};
-	} forEach (allUnits + vehicles);
+	} forEach ((units GRLIB_side_friendly) + vehicles);
 };
