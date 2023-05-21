@@ -5,7 +5,7 @@ private _medics = PAR_AI_bros select {
   !isPlayer _x && alive _x && speed vehicle _x <= 20 &&
   _x distance2D _wnded <= 600 && getPos _x select 2 <= 20 &&
   (!(objectParent _x iskindof "Steerable_Parachute_F")) &&
-  lifeState _x != "INCAPACITATED" &&  
+  lifeState _x != "INCAPACITATED" &&
   isNil {_x getVariable "PAR_busy"}
 };
 
