@@ -207,8 +207,7 @@ onPlayerDisconnected {
 	deletemarker format ["PAR_marker_%1", _name];
 
 	// Remove AI
-	private _bros = allUnits select {(_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1", _uid]};
-	{ deleteVehicle _x } forEach _bros;
+	{ deleteVehicle _x } forEach PAR_AI_bros;
 };
 
 initAmbientLife;
