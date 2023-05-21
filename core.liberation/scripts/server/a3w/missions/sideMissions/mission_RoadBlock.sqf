@@ -28,7 +28,7 @@ _setupObjects =
 		if (_dist > (GRLIB_sector_size + 100) && _dist < 3000) then {
 			_idx = 100;
 			while {count _missionPos == 0 && _idx > 0} do {
-				_missionPos = _sector_pos getPos [300, random 360];
+				_missionPos = _sector_pos getPos [300 + (round(random 100) -50), random 360];
 				_no_road = (!isOnRoad _missionPos);
 				_no_water = (!surfaceIsWater _missionPos);
 				_no_build = (count (nearestTerrainObjects [_missionPos, ["BUILDING","HOUSE","QUAY","ROCKS"], 30, false, true]) == 0);
