@@ -10,9 +10,9 @@ huron_typename = "RHS_Mi8mt_vv";
 FOB_box_typename = "Land_Pod_Heli_Transport_04_box_black_F";
 FOB_truck_typename = "O_T_Truck_03_device_ghex_F";
 Respawn_truck_typename = "rhs_gaz66_ap2_msv" ;
-ammo_truck_typename = "O_Truck_03_ammo_F";
-fuel_truck_typename = "O_Truck_03_fuel_F";
-repair_truck_typename = "O_Truck_03_Repair_F";
+ammo_truck_typename = "RHS_Ural_Ammo_VV_01";
+fuel_truck_typename = "RHS_Ural_Fuel_VV_01";
+repair_truck_typename = "RHS_Ural_Repair_VV_01";
 repair_sling_typename = "Land_Pod_Heli_Transport_04_repair_F";
 fuel_sling_typename = "Land_Pod_Heli_Transport_04_fuel_F";
 ammo_sling_typename = "Land_Pod_Heli_Transport_04_ammo_F";
@@ -147,9 +147,6 @@ static_vehicles_AI = [
 ];
 
 support_vehicles_west = [
-	["RHS_Ural_Repair_VV_01",1,30,1,GRLIB_perm_inf],
-	["RHS_Ural_Ammo_VV_01",1,30,1,GRLIB_perm_inf],
-	["RHS_Ural_Fuel_VV_01",1,30,1,GRLIB_perm_inf],
 	["rhs_launcher_crate",0,150,0,GRLIB_perm_tank]
 ];
 

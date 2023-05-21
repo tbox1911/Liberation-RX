@@ -10,6 +10,9 @@ FOB_typename = "Land_Cargo_HQ_V1_F";
 Respawn_truck_typename = "rhsusf_M1085A1P2_B_WD_Medical_fmtv_usarmy";  //"rhsusf_m113_usarmy_medical"
 //FOB_box_typename = "B_Slingload_01_Cargo_F";
 //FOB_truck_typename = "B_Truck_01_box_F";
+ammo_truck_typename = "rhsusf_M977A4_AMMO_usarmy_wd";
+repair_truck_typename = "rhsusf_M977A4_REPAIR_usarmy_wd";
+fuel_truck_typename = "rhsusf_M978A4_usarmy_wd";
 pilot_classname = "rhsusf_army_ucp_helipilot";
 crewman_classname = "rhsusf_army_ucp_crewman";
 basic_weapon_typename = "Box_Syndicate_Ammo_F";
@@ -128,9 +131,7 @@ static_vehicles_AI = [
 ];
 
 support_vehicles_west = [
-	["rhsusf_M977A4_REPAIR_usarmy_wd",5,250,20,GRLIB_perm_inf],
 	["rhsusf_M978A4_usarmy_wd",5,150,20,GRLIB_perm_inf],
-	["rhsusf_M977A4_AMMO_usarmy_wd",5,300,20,GRLIB_perm_tank],
 	["rhsusf_launcher_crate",0,150,0,GRLIB_perm_tank]
 ];
 
@@ -205,16 +206,13 @@ uavs = [
 
 // Everything the AI troups should be able to resupply from
 ai_resupply_sources_west = [
-  "rhsusf_M977A4_AMMO_usarmy_wd"
 ];
 
 // Everything the AI troups should be able to healing from
 ai_healing_sources_west = [
-	"rhsusf_M1085A1P2_B_WD_Medical_fmtv_usarmy"
 ];
 
 vehicle_rearm_sources_west = [
-	"rhsusf_M977A4_AMMO_usarmy_wd"
 ];
 
 vehicle_big_units_west = [

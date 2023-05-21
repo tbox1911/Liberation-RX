@@ -105,7 +105,7 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["rhsusf_m1a1tank_base", 40],
 	["rhsusf_m1a2tank_base", 50],
 	["rhsusf_m1a2sep2_base", 60],
-	["RHS_M2A2_Base", 150],
+	["RHS_M2A2_Base", 30],
 	["rhsusf_m109tank_base", 60],
 	["rhsusf_M1117_base", 70],
 	["rhsusf_m113tank_base", 50],
