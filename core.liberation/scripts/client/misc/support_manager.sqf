@@ -1,5 +1,10 @@
 waitUntil { sleep 1; !isNil "blufor_sectors" };
-private ["_near_arsenal", "_primary_weapon", "_near_medic", "_needammo1", "_needammo2", "_maxpri", "_minpri", "_needmedic", "_magType", "_list_vehicles", "_guid", "_static_ai"];
+private [
+	"_unitList", "_my_squad", "_static_ai",
+	"_near_arsenal", "_primary_weapon", "_needammo1", "_needammo2", "_maxpri", "_minpri", "_magType",
+	"_near_medic", "_needmedic",
+	"_near_repair", "_list_vehicles", "_vehicle_need_repair", "_vehicle_hitpoints"
+];
 
 private _distarsenal = 30;           // minimal distance from source (ammo/repair)
 private _maxpri_def = 10;            // maximum magazines unit can take (primary weapon)
@@ -84,7 +89,10 @@ while { true } do {
 			};
 
 			// In vehicle
-			if ( !(isNull objectParent _x) && lifeState _x != 'INCAPACITATED' && ( ((gunner vehicle _x) == _x) || ((driver vehicle _x) == _x) || ((commander vehicle _x) == _x) )) then {
+			if (!(isNull objectParent _x) && lifeState _x != 'INCAPACITATED' &&
+				!((typeOf _x) isKindOf "Steerable_Parachute_F") &&
+			    (((gunner vehicle _x) == _x) || ((driver vehicle _x) == _x) || ((commander vehicle _x) == _x))
+			) then {
 				_unit = _x;
 				_vehicle = vehicle _unit;
 				_vehicle_name = [typeOf _vehicle] call F_getLRXName;
@@ -119,7 +127,10 @@ while { true } do {
 				_near_repair = [_vehicle, "REPAIR_AI", _distarsenal, true] call F_check_near;
 				_is_enabled = !(_vehicle getVariable ["R3F_LOG_disabled", false]);
 				_vehicle_need_repair = false;
-				{ if (_x == 1) exitWith { _vehicle_need_repair = true }} forEach (getAllHitPointsDamage _vehicle select 2);
+				_vehicle_hitpoints = getAllHitPointsDamage _vehicle;
+				if (count _vehicle_hitpoints == 3) then {
+					{ if (_x == 1) exitWith { _vehicle_need_repair = true }} forEach (_vehicle_hitpoints select 2);
+				};
 
 				if (!isNil "GRLIB_LRX_debug") then {
 					diag_log format ["DBG: %1: need Repair:%2 - near Repair source:%3", typeOf _vehicle, _vehicle_need_repair, _near_repair];
