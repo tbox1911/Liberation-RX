@@ -51,8 +51,7 @@ if !(isNull _unit) then {
 	if (!isNil "_my_squad") then { {deleteVehicle _x} forEach units _my_squad };
 
 	// Remove AI
-	private _bros = allUnits select {(_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1", _uid]};
-	{ deleteVehicle _x } forEach _bros;
+	{ deleteVehicle _x } forEach (_unit getVariable ["PAR_AI_bros", []]);
 
 	// remove last grave box
 	private _old_graves = _unit getVariable ["GRLIB_grave", []];

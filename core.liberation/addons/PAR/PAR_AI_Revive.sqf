@@ -33,6 +33,9 @@ PAR_BleedOutExtra = 60;
 // Enable info killer message
 PAR_EnableDeathMessages = true;
 
+// player AI brothers
+PAR_AI_bros = [];
+
 //------------------------------------------//
 PAR_BloodSplat = [
   "BloodPool_01_Large_New_F",
