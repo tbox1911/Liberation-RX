@@ -31,8 +31,10 @@ if(!isNull (findDisplay 2306)) then {
 
 			[JKB_current_sound] call JKB_stopMusic;
 			if (_classname find 'vn_drmm_song_' >= 0) then {
+				1 fadeSound (round desired_vehvolume / 100.0);
 				JKB_current_sound = playSound _classname;
 			} else {
+				1 fadeMusic (getAudioOptionVolumes select 1);
 				playMusic _classname;
 			};
 			JKB_current_music = _title;

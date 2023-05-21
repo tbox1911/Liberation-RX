@@ -1,4 +1,5 @@
 titleText ["" ,"BLACK FADED", 100];
+1 fadeSound 0;
 player allowDamage false;
 disableUserInput true;
 waitUntil {sleep 0.1; !isNil "GRLIB_init_server"};
