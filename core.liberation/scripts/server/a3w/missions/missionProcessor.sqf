@@ -39,7 +39,7 @@ if (!isNil "_locationsArray") then {
 _continue_mission = true;
 if (!isNil "_setupObjects") then { _continue_mission = call _setupObjects };
 if (!_continue_mission) exitWith {
-	diag_log format ["--- LRX Error: A3W Side Mission%1 failed to setup: %2", _controllerSuffix, _missionType];
+	diag_log format ["--- LRX Error: A3W Side Mission%1 failed to setup: %2 at %3", _controllerSuffix, _missionType, _missionLocation];
 };
 
 sleep 5;
