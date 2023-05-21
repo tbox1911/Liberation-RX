@@ -13,7 +13,7 @@ if (isNil "_medic") exitWith {
     [_wnded, _msg] call PAR_fn_globalchat;
   };
 
-  _lst = allunits select {!isPlayer _x && alive _x && (_x getVariable ["PAR_Grp_ID","0"]) == (_wnded getVariable ["PAR_Grp_ID","1"]) && lifeState _x != "INCAPACITATED"};
+  _lst = PAR_AI_bros select { lifeState _x != "INCAPACITATED" };
   _msg = format [localize "STR_PAR_MD_02", count (_lst)];
   [_wnded, _msg] call PAR_fn_globalchat;
 };

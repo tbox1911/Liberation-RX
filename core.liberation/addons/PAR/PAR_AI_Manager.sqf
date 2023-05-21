@@ -1,7 +1,7 @@
-private _bros = [];
+PAR_AI_bros = [];
 while {true} do {
-    _bros = (units group player) select {!isplayer _x && (_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1",PAR_Grp_ID]};
-    if (count _bros > 0 ) then {
+    PAR_AI_bros = (units player) select {!isplayer _x && (_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1",PAR_Grp_ID]};
+    if (count PAR_AI_bros > 0 ) then {
         {
             // Set EH
             //[_x] call PAR_fn_AI_Damage_EH;
@@ -59,7 +59,8 @@ while {true} do {
             };
 
             sleep 0.3;
-        } forEach _bros;
+        } forEach PAR_AI_bros;
     };
+    player setVariable ["PAR_AI_bros", PAR_AI_bros, true];
     sleep 5;
 };

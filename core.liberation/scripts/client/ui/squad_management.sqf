@@ -1,4 +1,4 @@
-private [ "_bros", "_membercount", "_memberselection", "_unitname", "_selectedmember", "_cfgVehicles", "_cfgWeapons", "_primary_mags", "_secondary_mags", "_vehstring", "_nearfob", "_fobdistance", "_nearsquad", "_tempgmp", "_destpos", "_destdir", "_resupplied","_firstloop", "_squad_camera", "_targetobject", "_isvehicle" ];
+private ["_membercount", "_memberselection", "_unitname", "_selectedmember", "_cfgVehicles", "_cfgWeapons", "_primary_mags", "_secondary_mags", "_vehstring", "_nearfob", "_fobdistance", "_nearsquad", "_tempgmp", "_destpos", "_destdir", "_resupplied","_firstloop", "_squad_camera", "_targetobject", "_isvehicle" ];
 
 GRLIB_squadaction = -1;
 GRLIB_squadconfirm = -1;
@@ -27,10 +27,9 @@ _squad_camera camcommit 0;
 "rtt" setPiPEffect [0];
 
 while { dialog && alive player } do {
-	_bros = allUnits select {(_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1",PAR_Grp_ID]};
-	if (  { alive _x } count (_bros) != _membercount || _renamed ) then {
+	if (  { alive _x } count PAR_AI_bros != _membercount || _renamed ) then {
 
-		_membercount = { alive _x } count (_bros);
+		_membercount = { alive _x } count PAR_AI_bros;
 
 		lbClear 101;
 		{
@@ -41,7 +40,7 @@ while { dialog && alive player } do {
 				};
 				lbAdd [ 101, _unitname ];
 			};
-		} foreach (_bros);
+		} foreach PAR_AI_bros;
 
 		if ( _firstloop ) then {
 			lbSetCurSel [ 101, 0 ];
@@ -50,8 +49,8 @@ while { dialog && alive player } do {
 	};
 
 	_selectedmember = objNull;
-	if ( lbCurSel 101 != -1 && (count (_bros) > lbCurSel 101 ) ) then {
-		_selectedmember = (_bros) select (lbCurSel 101);
+	if ( lbCurSel 101 != -1 && (count PAR_AI_bros > lbCurSel 101 ) ) then {
+		_selectedmember = PAR_AI_bros select (lbCurSel 101);
 	};
 
 	if ( !(isNull _selectedmember) ) then {

@@ -160,7 +160,6 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 	_squad_full = false;
 	_ammo_collected = player getVariable ["GREUH_ammo_count",0];
 	_fuel_collected = player getVariable ["GREUH_fuel_count",0];
-	_bros = allUnits select {!isPlayer _x && (_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1",PAR_Grp_ID]};
 	_linked = false;
 	_linked_unlocked = true;
 	_base_link = "";
@@ -220,7 +219,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 			};
 		};
 
-		if (buildtype == 1 && _build_item select 1 >= 1 && (count (_bros) >= GRLIB_squad_size + GRLIB_squad_size_bonus || !(player getVariable ["GRLIB_squad_context_loaded", false])) ) then {
+		if (buildtype == 1 && _build_item select 1 >= 1 && (count PAR_AI_bros >= GRLIB_squad_size + GRLIB_squad_size_bonus || !(player getVariable ["GRLIB_squad_context_loaded", false])) ) then {
 			_squad_full = true;
 		};
 	};

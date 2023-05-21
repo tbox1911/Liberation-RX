@@ -106,7 +106,7 @@ if ( _ownership == GRLIB_side_enemy ) then {
 			diag_log format ["Sector %1 Lost at %2", _sector, time];
 		} else {
 			[ _sector, 3 ] remoteExec ["remote_call_sector", 0];
-			_enemy_left = [units GRLIB_side_enemy, {(alive _x) && (vehicle _x == _x) && !(_x getVariable ["GRLIB_mission_AI", false]) && (((getmarkerpos _sector) distance2D _x) < GRLIB_capture_size * 0.8)}] call BIS_fnc_conditionalSelect;
+			_enemy_left = [(units GRLIB_side_enemy), {(alive _x) && (vehicle _x == _x) && !(_x getVariable ["GRLIB_mission_AI", false]) && (((getmarkerpos _sector) distance2D _x) < GRLIB_capture_size * 0.8)}] call BIS_fnc_conditionalSelect;
 			{
 				if ( _max_prisonners > 0 && ((random 100) < GRLIB_surrender_chance) ) then {
 					[_x] spawn prisonner_ai;

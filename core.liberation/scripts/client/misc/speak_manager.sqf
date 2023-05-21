@@ -6,7 +6,7 @@ speak_civil_AI = {
 	params ["_unit"];
 	player globalChat localize "STR_SPEAKMANAGER1";
 	uIsleep 2;
-	private _opfor_list = allUnits select {alive _x && _x distance2D getPos _unit < 500 && side _x == GRLIB_side_enemy};
+	private _opfor_list = (units GRLIB_side_enemy) select {alive _x && _x distance2D getPos _unit < 500};
 	if (count _opfor_list > 0) then {
 		_opfor = _opfor_list select 0;
 		_unit globalChat (format [localize "STR_SPEAKMANAGER2", round(_unit distance2D _opfor), round(_unit getDir _opfor)]);
