@@ -123,7 +123,8 @@ if (_unit == player) then {
 	_unit removeAllEventHandlers "GetInMan";
 	_unit addEventHandler ["GetInMan", {
 		params ["_unit", "_role", "_vehicle"];
-		1 fadeSound ( round desired_vehvolume / 100.0 );
+		1 fadeSound (round desired_vehvolume / 100.0);
+		3 fadeMusic 3;
 		NRE_EarplugsActive = 1;
 		[player, "hide"] remoteExec ["dog_action_remote_call", 2];
 		if (GRLIB_thermic == 0 || (GRLIB_thermic == 1 && !(call is_night))) then {
@@ -143,6 +144,7 @@ if (_unit == player) then {
 	_unit addEventHandler ["GetOutMan", {
 		params ["_unit", "_role", "_vehicle"];
 		1 fadeSound 1;
+		3 fadeMusic 0;
 		NRE_EarplugsActive = 0;
 		if (!GRLIB_ACE_enabled) then {
 			if ( (getPos _unit) select 2 > 20 && !(_unit getVariable ["AR_Is_Rappelling",false]) ) then {

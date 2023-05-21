@@ -262,5 +262,6 @@ if (alive player && deploy == 1) then {
 	[_spawn_str, _is_mobile_respawn] spawn spawn_camera;
 };
 
-sleep 8;
+10 fadeMusic 0;
+sleep 10;
 playMusic "";
