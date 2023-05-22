@@ -25,8 +25,7 @@ diag_log format ["A3W Side Mission% started: %2", _controllerSuffix, _missionTyp
 _missionTimeout = A3W_Mission_timeout;
 
 if (!isNil "_locationsArray") then {
-	while {true} do
-	{
+	while {true} do	{
 		_availableLocations = [_locationsArray, {!(_x select 1) && (_x param [2, 0]) <= time }] call BIS_fnc_conditionalSelect;
 		if (count _availableLocations > 0) exitWith {};
 		sleep 60;
@@ -39,7 +38,7 @@ if (!isNil "_locationsArray") then {
 _continue_mission = true;
 if (!isNil "_setupObjects") then { _continue_mission = call _setupObjects };
 if (!_continue_mission) exitWith {
-	diag_log format ["--- LRX Error: A3W Side Mission%1 failed to setup: %2 at %3", _controllerSuffix, _missionType, _missionLocation];
+	diag_log format ["--- LRX Error: A3W Side Mission%1 failed to setup: %2 at %3", _controllerSuffix, _missionType, _missionPos];
 };
 
 sleep 5;

@@ -37,7 +37,7 @@ _setupObjects =
 	};
 
 	if (isnil "_missionPos" || isnil "_missionPos2" || isnil "_missionPos3" || isnil "_missionPosEnd") exitWith {
-		diag_log format ["--- LRX Error: side mission SD, cannot find location from marker %1", _missionEnd];
+		diag_log format ["--- LRX Error: side mission SD, cannot find location from marker %1 %2", _missionEnd, _missionLocationList];
 		GRLIB_A3W_Mission_SD = [];
 		publicVariable "GRLIB_A3W_Mission_SD";
 		false;
