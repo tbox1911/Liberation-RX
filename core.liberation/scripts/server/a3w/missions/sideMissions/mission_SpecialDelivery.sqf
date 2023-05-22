@@ -21,11 +21,13 @@ _setupObjects =
 	private _missionPos = [];
 	private _missionPos2 = [];
 	private _missionPos3 = [];
+	private _missionPosEnd = [];
+
 	private _missionEnd = selectRandom ([SpawnMissionMarkers, { ([markerpos _x, false] call F_getNearestBluforObjective) select 1 > GRLIB_sector_size }] call BIS_fnc_conditionalSelect) select 0;
 	if (!isNil "_missionEnd") then {	
 		private _missionLocationList = [blufor_sectors, {_x in sectors_capture && (markerpos _x) distance2D (markerpos _missionEnd) < 5000 }] call BIS_fnc_conditionalSelect;
 		if (count _missionLocationList >= 3) then {
-			_m1 = selectRandom _missionLocationList;
+			private _m1 = selectRandom _missionLocationList;
 			_missionPos = (markerpos _m1) getPos [100, random 360];
 			_missionLocationList = _missionLocationList - [ _m1 ];
 			_m1 = selectRandom _missionLocationList;
