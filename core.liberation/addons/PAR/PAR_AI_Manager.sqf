@@ -1,7 +1,7 @@
 // PAR Manage AI
 
 while {true} do {
-    PAR_AI_bros = ((units GRLIB_side_friendly) + (units GRLIB_side_civilian)) select {!isplayer _x && (_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1", PAR_Grp_ID]};
+    PAR_AI_bros = ((units player) + (units GRLIB_side_civilian)) select {!isplayer _x && alive _x && (_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1", PAR_Grp_ID]};
     player setVariable ["PAR_AI_bros", PAR_AI_bros, true];
     if (count PAR_AI_bros > 0 ) then {
         {
