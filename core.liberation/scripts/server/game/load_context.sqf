@@ -48,8 +48,6 @@ if (count _context >= 1) then {
                                 _unit switchMove "AmovPercMwlkSrasWrflDf";
 				                _unit playMoveNow "AmovPercMwlkSrasWrflDf";
                                 gamelogic globalChat format ["Adds %1 (%2) to your squad.", name _unit, rank _unit];
-                                PAR_AI_bros append [_unit]; 
-                                player setVariable ["PAR_AI_bros", PAR_AI_bros, true];
                             }
                         ] remoteExec ["bis_fnc_call", owner _player];
                         sleep 1;
