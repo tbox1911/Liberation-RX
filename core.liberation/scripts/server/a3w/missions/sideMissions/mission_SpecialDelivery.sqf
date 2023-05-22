@@ -18,13 +18,14 @@ _setupVars =
 
 _setupObjects =
 {
+	private _missionPos = [];
+	private _missionPos2 = [];
+	private _missionPos3 = [];
 	private _missionEnd = selectRandom ([SpawnMissionMarkers, { ([markerpos _x, false] call F_getNearestBluforObjective) select 1 > GRLIB_sector_size }] call BIS_fnc_conditionalSelect) select 0;
 	if (!isNil "_missionEnd") then {	
 		private _missionLocationList = [blufor_sectors, {_x in sectors_capture && (markerpos _x) distance2D (markerpos _missionEnd) < 5000 }] call BIS_fnc_conditionalSelect;
 		if (count _missionLocationList >= 3) then {
 			_m1 = selectRandom _missionLocationList;
-			_missionPicture = getText (configFile >> "CfgVehicles" >> "C_Hatchback_01_F" >> "picture");
-			_missionHintText = format [localize "STR_SPECIALDELI_MESSAGE1", sideMissionColor, markerText _m1];
 			_missionPos = (markerpos _m1) getPos [100, random 360];
 			_missionLocationList = _missionLocationList - [ _m1 ];
 			_m1 = selectRandom _missionLocationList;
@@ -37,7 +38,7 @@ _setupObjects =
 	};
 
 	if (isnil "_missionPos" || isnil "_missionPos2" || isnil "_missionPos3" || isnil "_missionPosEnd") exitWith {
-		diag_log format ["--- LRX Error: side mission SD, cannot find location from marker %1 %2", _missionEnd, _missionLocationList];
+		diag_log format ["--- LRX Error: side mission SD, cannot find location from marker %1", _missionEnd];
 		GRLIB_A3W_Mission_SD = [];
 		publicVariable "GRLIB_A3W_Mission_SD";
 		false;
@@ -68,6 +69,9 @@ _setupObjects =
 	private _marker = createMarker ["side_mission_A3W_Mission_SD", _missionPosEnd];
 	_marker setMarkerShape "ICON";
 	_marker setMarkerType "Empty";
+
+	_missionPicture = getText (configFile >> "CfgVehicles" >> "C_Hatchback_01_F" >> "picture");
+	_missionHintText = format [localize "STR_SPECIALDELI_MESSAGE1", sideMissionColor, markerText _m1];	
 	true;
 };
 
