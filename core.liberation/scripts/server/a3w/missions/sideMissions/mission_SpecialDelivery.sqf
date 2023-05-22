@@ -7,7 +7,7 @@ if (!isServer) exitwith {};
 if (!isNil "GRLIB_A3W_Mission_SD") exitWith {};
 #include "sideMissionDefines.sqf"
 
-private ["_missionPosEnd", "_house"];
+private ["_missionPosEnd", "_missionStart", "_house"];
 
 _setupVars =
 {
@@ -18,17 +18,16 @@ _setupVars =
 
 _setupObjects =
 {
-	private _missionPos = [];
 	private _missionPos2 = [];
 	private _missionPos3 = [];
-	private _missionPosEnd = [];
 
 	private _missionEnd = selectRandom ([SpawnMissionMarkers, { ([markerpos _x, false] call F_getNearestBluforObjective) select 1 > GRLIB_sector_size }] call BIS_fnc_conditionalSelect) select 0;
 	if (!isNil "_missionEnd") then {	
-		private _missionLocationList = [blufor_sectors, {_x in sectors_capture && (markerpos _x) distance2D (markerpos _missionEnd) < 5000 }] call BIS_fnc_conditionalSelect;
+		private _missionLocationList = [blufor_sectors, { (_x in sectors_capture) && (markerpos _x) distance2D (markerpos _missionEnd) < 3500 }] call BIS_fnc_conditionalSelect;
 		if (count _missionLocationList >= 3) then {
 			private _m1 = selectRandom _missionLocationList;
 			_missionPos = (markerpos _m1) getPos [100, random 360];
+			_missionStart = _m1;
 			_missionLocationList = _missionLocationList - [ _m1 ];
 			_m1 = selectRandom _missionLocationList;
 			_missionPos2 = (markerpos _m1) getPos [100, random 360];
@@ -73,7 +72,7 @@ _setupObjects =
 	_marker setMarkerType "Empty";
 
 	_missionPicture = getText (configFile >> "CfgVehicles" >> "C_Hatchback_01_F" >> "picture");
-	_missionHintText = format [localize "STR_SPECIALDELI_MESSAGE1", sideMissionColor, markerText _m1];	
+	_missionHintText = format [localize "STR_SPECIALDELI_MESSAGE1", sideMissionColor, markerText _missionStart];	
 	true;
 };
 

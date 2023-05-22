@@ -58,13 +58,16 @@ speak_mission_delivery_1 = {
 
 	_quest_item = player getVariable ["GRLIB_A3W_Mission_Item", objNull];
 	if (isNull _quest_item) then {
-		private _can = createVehicle ["Land_Suitcase_F", (player modelToWorld [0,1,1]), [], 0, "CAN_COLLIDE"];
-		player setVariable ["GRLIB_A3W_Mission_Item", _can];
-		_can addEventHandler ["Deleted", {
+		buildtype = 9;
+		build_unit = ["Land_Suitcase_F",[],1,[],[],[]];
+		dobuild = 1;
+		waitUntil { sleep 0.5; dobuild == 0 };
+		if (build_confirmed == 3) exitWith {};
+		player setVariable ["GRLIB_A3W_Mission_Item", build_vehicle];
+		build_vehicle addEventHandler ["Deleted", {
 			player setVariable ["GRLIB_A3W_Mission_Item", nil]; 
 			GRLIB_A3W_Mission_Marker = GRLIB_A3W_Mission_SD select 0;
 		}];
-		[_can, player, 0, true] spawn R3F_LOG_FNCT_objet_deplacer;
 	};
 	GRLIB_A3W_Mission_Marker = _next_unit;
 	uIsleep 3;
