@@ -1,8 +1,11 @@
 waitUntil {sleep 1; GRLIB_player_spawned};
 revive_ui = compileFinal preprocessFileLineNumbers "GREUH\scripts\GREUH_revive_ui.sqf";
+private ["_pos", "_destpos", "_cam", "_noesckey"];
 
 while { true } do {
-	waitUntil {sleep 0.5; ( player getVariable ["GREUH_isUnconscious",0]) == 1 };
+	waitUntil {sleep 0.5; ( player getVariable ["GREUH_isUnconscious", 0]) == 1 };
+	closeDialog 0;
+	closeDialog 0;
 
 	//_camobj = player;
 	_pos = positionCameraToWorld [0,0,-0.2];
@@ -16,7 +19,7 @@ while { true } do {
 	_cam camSetTarget getpos player;	//static view
 
 	createDialog "deathscreen";
-	waitUntil { dialog };
+	waitUntil { sleep 0.1; dialog };
 	_noesckey = (findDisplay 5651) displayAddEventHandler ["KeyDown", "if ((_this select 1) == 1) then { true }"];
 
 	[player] call F_deathSound;
@@ -33,17 +36,15 @@ while { true } do {
 	"colorCorrections" ppEffectEnable TRUE;
 
 	_cam camCommit 0;
-
 	_cam camSetPos _destpos;
-
 	_cam camCommit 900;
 
 	waitUntil {sleep 0.5; ((player getVariable ["GREUH_isUnconscious",0]) == 0) || ((player getVariable ["PAR_isUnconscious", 0]) == 1) };
 	closeDialog 0;
-	waitUntil {!dialog};
-	if ((player getVariable "GREUH_isUnconscious") != 0) then {
+	waitUntil {sleep 0.1; !dialog};
+	if ((player getVariable ["GREUH_isUnconscious", 0]) != 0) then {
 		[] spawn revive_ui;
-		waitUntil {dialog};
+		waitUntil {sleep 0.1; dialog};
 	};
 	waitUntil {sleep 0.5; ( player getVariable ["PAR_isUnconscious", 0] ) == 0 || !alive player || !dialog };
 	player setVariable ["GREUH_isUnconscious", 0, true];
