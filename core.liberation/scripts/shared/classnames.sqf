@@ -169,6 +169,11 @@ if (isNil "buildings_west_overide") then {
 	buildings append buildings_west;
 };
 
+buildings append [
+	[Warehouse_typename,0,0,0,GRLIB_perm_inf],
+	[land_cutter_typename,0,0,0,GRLIB_perm_inf]
+];
+
 // *** ELITES ***
 elite_vehicles = [];
 { if (_x select 4 == GRLIB_perm_max) then { elite_vehicles pushback (_x select 0)} } foreach light_vehicles + heavy_vehicles + air_vehicles + static_vehicles;
