@@ -252,10 +252,10 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 
 	buildindex = _selected_item;
 
-	if(buildtype == 1 && dobuild != 0) then {
+	if (buildtype == 1 && dobuild != 0) then {
 		ctrlEnable [120, false];
 		ctrlEnable [121, false];
-		waitUntil {sleep 0.3; dobuild == 0};
+		waitUntil {sleep 2; dobuild == 0};
 		_refresh = true;
 	};
 

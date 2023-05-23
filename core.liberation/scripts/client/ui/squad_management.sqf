@@ -1,35 +1,36 @@
-private ["_membercount", "_memberselection", "_unitname", "_selectedmember", "_cfgVehicles", "_cfgWeapons", "_primary_mags", "_secondary_mags", "_vehstring", "_nearfob", "_fobdistance", "_nearsquad", "_tempgmp", "_destpos", "_destdir", "_resupplied","_firstloop", "_squad_camera", "_targetobject", "_isvehicle" ];
+private [  "_unitname", "_primary_mags", "_secondary_mags", "_vehstring" ];
 
 GRLIB_squadaction = -1;
 GRLIB_squadconfirm = -1;
-_membercount = -1;
-_memberselection = -1;
-_selectedmember = objNull;
-_cfgVehicles = configFile >> "cfgVehicles";
-_cfgWeapons = configFile >> "cfgWeapons";
-_firstloop = true;
-_isvehicle = false;
-_rename_controls = [521,522,523,524,525,526,527];
-_resupplied = false;
-_renamed = false;
+
+private _membercount = -1;
+private _memberselection = -1;
+private _selectedmember = objNull;
+private _cfgVehicles = configFile >> "cfgVehicles";
+private _cfgWeapons = configFile >> "cfgWeapons";
+private _firstloop = true;
+private _isvehicle = false;
+private _rename_controls = [521,522,523,524,525,526,527];
+private _resupplied = false;
+private _renamed = false;
 
 createDialog "liberation_squad";
 waitUntil { dialog };
 
 { ctrlShow [_x, false] } foreach _rename_controls;
-_targetobject = "Sign_Sphere100cm_F" createVehicleLocal [ 0, 0, 0 ];
+private _targetobject = "Sign_Sphere100cm_F" createVehicleLocal [ 0, 0, 0 ];
 hideObject _targetobject;
 
-_squad_camera = "camera" camCreate (getpos player);
+private _squad_camera = "camera" camCreate (getpos player);
 _squad_camera cameraEffect ["internal","back", "rtt"];
 _squad_camera camSetTarget  _targetobject;
 _squad_camera camcommit 0;
 "rtt" setPiPEffect [0];
 
 while { dialog && alive player } do {
-	if (  { alive _x } count PAR_AI_bros != _membercount || _renamed ) then {
+	if ( count PAR_AI_bros != _membercount || _renamed ) then {
 
-		_membercount = { alive _x } count PAR_AI_bros;
+		_membercount = count PAR_AI_bros;
 
 		lbClear 101;
 		{
@@ -200,11 +201,9 @@ while { dialog && alive player } do {
 
 		if (GRLIB_squadaction == 2) then {
 			private _ai_rank = 1 + (GRLIB_rank_level find (rank _selectedmember));
-			private _refund = 0;
+			private _refund = [_selectedmember] call F_loadoutPrice;
 			if (_ai_rank > 1 ) then {
-				_refund = round (([_selectedmember] call F_loadoutPrice) * (_ai_rank * 0.7));
-			} else {
-				_refund = [_selectedmember] call F_loadoutPrice;
+				_refund = round (_refund * (_ai_rank * 0.7));
 			};
 			[player, _refund, 0] remoteExec ["ammo_add_remote_call", 2];
 			playSound "taskSucceeded";
@@ -213,6 +212,7 @@ while { dialog && alive player } do {
 			} else {
 				gamelogic globalChat format ["Soldier Refund: %1, Thank you !", _refund];
 			};
+			PAR_AI_bros = PAR_AI_bros - [_selectedmember];
 			deleteVehicle _selectedmember;
 			_resupplied = true;
 			hint localize 'STR_REMOVE_OK';

@@ -97,6 +97,7 @@ while { true } do {
 			_unit = _grp createUnit [_classname, _pos, [], 5, "NONE"];
 			[_unit] joinSilent _grp;
 			_unit setVariable ["PAR_Grp_ID", format["Bros_%1", PAR_Grp_ID], true];
+			PAR_AI_bros = PAR_AI_bros + [_unit];
 			[_unit] call PAR_fn_AI_Damage_EH;
 			_unit enableIRLasers true;
 			_unit enableGunLights "Auto";

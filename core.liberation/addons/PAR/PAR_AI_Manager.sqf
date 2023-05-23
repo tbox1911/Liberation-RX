@@ -59,7 +59,6 @@ while {true} do {
                     _x setVariable ["PAR_AI_score", ((GRLIB_rank_level find (rank _x)) + 1) * 5, true];
                 };
             };
-
             sleep 0.3;
         } forEach PAR_AI_bros;
     };
