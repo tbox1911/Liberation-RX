@@ -33,12 +33,11 @@ if (!isNil "chimera_vehicle_overide") then {
         _src_class = _x select 0;
         _dst_class = _x select 1;
         _veh_lst = [ vehicles, { alive _x && (_x distance2D lhd < GRLIB_fob_range) && typeOf _x == _src_class }] call BIS_fnc_conditionalSelect;
-
         {
             _src_pos = (getPosATL _x) vectorAdd [0, 0, 0.2];
             _src_dir = getDir _x;
             deleteVehicle _x;
-            sleep 0.2;
+            sleep 0.5;
             _veh = _dst_class createVehicle _src_pos;
             _veh allowDamage false;
             _veh setDir _src_dir;
@@ -55,10 +54,9 @@ if (!isNil "chimera_vehicle_overide") then {
                 };
             };
 
-             sleep 0.2;
+             sleep 1;
             _veh allowDamage true;
         } forEach _veh_lst;
-
     } forEach chimera_vehicle_overide;
 };
 
