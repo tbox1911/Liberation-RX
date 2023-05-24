@@ -11,7 +11,7 @@ diag_log format [ "Spawn vehicle %1 at %2", _classname , time ];
 private _vehicle = objNull;
 private _spawnpos = [];
 private _vehcrew = [];
-private _airveh_alt = 350;
+private _airveh_alt = 300;
 private _radius = GRLIB_capture_size;
 private _max_try = 10;
 
@@ -50,8 +50,10 @@ waitUntil {!isNull _vehicle};
 _vehicle allowDamage false;
 
 if ( _vehicle isKindOf "Air" ) then {
+	if (GRLIB_SOG_enabled) then { _airveh_alt = 100 };
 	_vehicle engineOn true;
 	_vehicle flyInHeight _airveh_alt;
+	_vehicle flyInHeightASL [_airveh_alt, 50, 350];
 };
 
 if ( _random_rotate ) then {
