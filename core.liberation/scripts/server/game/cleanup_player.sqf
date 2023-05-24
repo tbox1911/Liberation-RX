@@ -51,7 +51,9 @@ if !(isNull _unit) then {
 	if (!isNil "_my_squad") then { {deleteVehicle _x} forEach units _my_squad };
 
 	// Remove AI
-	{ deleteVehicle _x } forEach (_unit getVariable ["PAR_AI_bros", []]);
+	private _puid = _unit getVariable ["PAR_Grp_ID", "1"];
+	private _bros = ((units GRLIB_side_friendly) + (units GRLIB_side_civilian)) select { !(isPlayer _x) && (_x getVariable ["PAR_Grp_ID", "0"]) == _puid };
+	{ deleteVehicle _x } forEach _bros;
 
 	// remove last grave box
 	private _old_graves = _unit getVariable ["GRLIB_grave", []];
