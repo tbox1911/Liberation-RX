@@ -59,26 +59,29 @@ _setupObjects =
 	_bunker_typename = selectRandom ["Land_BagBunker_Small_F"];
 	_bunker = createVehicle [_bunker_typename, _missionPos, [], 0, "None"];
 	_bunker setVectorDirAndUp [[-cos (_road_dir - 180), sin (_road_dir - 180), 0] vectorCrossProduct surfaceNormal _missionPos, surfaceNormal _missionPos];
+	_bunker setVariable ["R3F_LOG_disabled", true, true];
 
 	_bunker_dir = (90 + getdir _bunker);
 	_def1_pos = (getPos _bunker) vectorAdd ([[0, 12, 0], -_bunker_dir] call BIS_fnc_rotateVector2D);
 	_def1 = createVehicle ["Land_BagFence_Round_F", _def1_pos, [], 1, "None"];
 	_def1 setVectorDirAndUp [[-cos (_bunker_dir - 180), sin (_bunker_dir - 180), 0] vectorCrossProduct surfaceNormal _def1_pos, surfaceNormal _def1_pos];
 	_def1 setPosATL _def1_pos;
+	_def1 setVariable ["R3F_LOG_disabled", true, true];
 
 	_def2_pos = (getPosATL _bunker) vectorAdd ([[0, -12, 0], -_bunker_dir] call BIS_fnc_rotateVector2D);
 	_def2 = createVehicle ["Land_BagFence_Round_F", _def2_pos, [], 1, "None"];
 	_def2 setVectorDirAndUp [[-cos _bunker_dir, sin _bunker_dir, 0] vectorCrossProduct surfaceNormal _def2_pos, surfaceNormal _def2_pos];
 	_def2 setPosATL _def2_pos;
+	_def2 setVariable ["R3F_LOG_disabled", true, true];
 
-	_veh1_class = selectRandom ["O_HMG_01_high_F","O_GMG_01_high_F","B_static_AT_F"];
+	_veh1_class = selectRandom (opfor_statics select {!(_x isKindOf "StaticMortar")});
 	_veh1_pos = (getPosATL _def1) vectorAdd ([[0, -1, 0.1], - _bunker_dir] call BIS_fnc_rotateVector2D);
 	_veh1 = createVehicle [_veh1_class, _veh1_pos, [], 0, "None"];
 	_veh1 disableCollisionWith _def1;
 	_veh1 setDir _bunker_dir;
 	_veh1 setPos _veh1_pos;
 
-	_veh2_class = selectRandom ["O_HMG_01_high_F","O_GMG_01_high_F","B_static_AT_F"];
+	_veh2_class = selectRandom (opfor_statics select {!(_x isKindOf "StaticMortar")});
 	_veh2_pos = (getPosATL _def2) vectorAdd ([[0, 1, 0.1], - _bunker_dir] call BIS_fnc_rotateVector2D);
 	_veh2 = createVehicle [_veh2_class, _veh2_pos, [], 0, "None"];
 	_veh2 disableCollisionWith _def2;
