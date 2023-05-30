@@ -1,4 +1,4 @@
-private [  "_built_object_remote", "_unit", "_pos", "_grp", "_classname", "_idx", "_unitrank", "_posfob", "_ghost_spot", "_vehicle", "_dist", "_actualdir", "_near_objects", "_near_objects_25"];
+private [ "_unit", "_pos", "_grp", "_classname", "_idx", "_unitrank", "_posfob", "_ghost_spot", "_vehicle", "_allow_damage", "_dist", "_actualdir", "_near_objects", "_near_objects_25"];
 
 build_confirmed = 0;
 build_unit = [];
@@ -339,6 +339,8 @@ while { true } do {
 
 				_vehicle = _classname createVehicle _truepos;
 				_vehicle allowDamage false;
+				_allow_damage = true;
+
 				if ( _classname isKindOf "Ship" && surfaceIsWater _truepos ) then {
 					_vehicle setposASL _truepos;
 				} else {
@@ -428,13 +430,19 @@ while { true } do {
 
 				// Personal Box
 				if ( _classname == playerbox_typename ) then {
-					_vehicle allowDamage false;
 					_vehicle setMaxLoad playerbox_cargospace;
+					_allow_damage = false;
 				};
 
 				// Ammobox (add Charge)
 				if ( _classname == Box_Ammo_typename ) then {
 					_vehicle addItemCargoGlobal ["SatchelCharge_Remote_Mag", 2];
+				};
+
+				// Helipad lights
+				if ( _classname isKindOf "Land_PortableHelipadLight_01_F" ) then {
+					[_vehicle, false] remoteExec ["enableSimulationGlobal", 2];
+					_allow_damage = false;
 				};
 
 				// Static Weapon
@@ -455,6 +463,7 @@ while { true } do {
 				// WareHouse
 				if (_classname == Warehouse_typename) then {
 					[_vehicle] remoteExec ["warehouse_init_remote_call", 2];
+					_allow_damage = false;
 				};
 
 				// FOB
@@ -462,12 +471,14 @@ while { true } do {
 					playsound "Land_Carrier_01_blast_deflector_up_sound";
 					[_vehicle] call fob_init;
 					[(getPos _vehicle), _classname] remoteExec ["build_fob_remote_call", 2];
-				} else {
-					sleep 0.3;
-					_vehicle allowDamage true;
-					_vehicle setDamage 0;
+					_allow_damage = false;
 				};
-
+				
+				sleep 0.3;
+				if (_allow_damage) then {
+					_vehicle allowDamage true;
+				};
+				_vehicle setDamage 0;
 				build_vehicle = _vehicle;
 
 				if(buildtype != 6) then {
