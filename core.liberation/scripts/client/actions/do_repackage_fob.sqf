@@ -25,6 +25,7 @@ if ( dorepackage > 0 ) then {
 	private _spawnpos = [4, (getPosATL player), 50, 30, false] call R3F_LOG_FNCT_3D_tirer_position_degagee_sol;
 	if ( count _spawnpos == 0 ) exitWith { hint "Cannot find enough place to repack FOB!" };
 
+	playsound "Land_Carrier_01_blast_deflector_down_sound";
 	if ( dorepackage == 1 ) then {
 		_fobbox = FOB_box_typename createVehicle _spawnpos;
 	};
@@ -32,7 +33,7 @@ if ( dorepackage > 0 ) then {
 	if ( dorepackage == 2 ) then {
 		_fobbox = FOB_truck_typename createVehicle _spawnpos;
 	};
-	sleep 0.5;
+	sleep 1;
 
 	if ( !isNil "_fobbox" ) then {
 		clearWeaponCargoGlobal _fobbox;
@@ -45,7 +46,9 @@ if ( dorepackage > 0 ) then {
 
 	[_fob_pos] remoteExec ["destroy_fob_remote_call", 2];
 	hintSilent format ["%1 %2 "+ localize "STR_FOB_REPACKAGE_HINT", "FOB", _fob_name];
-	sleep 10;
+	sleep 3;
+	playsound "Land_Carrier_01_blast_deflector_down_sound";
+
 };
 sleep 0.5;
 build_confirmed = 0;
