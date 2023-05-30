@@ -35,6 +35,7 @@ if (count _context >= 1) then {
                             [_x select 0, _x select 1, _x select 2],
                             {
                                 params ["_class", "_rank", "_loadout"];
+                                if (count units player > (GRLIB_squad_size + GRLIB_squad_size_bonus)) exitWith {};
                                 private _unit = (group player) createUnit [_class, (getPosATL player), [], 10, "NONE"];
                                 [_unit] joinSilent (group player);
                                 _unit setVariable ["PAR_Grp_ID", format["Bros_%1", (getPlayerUID player)], true];
