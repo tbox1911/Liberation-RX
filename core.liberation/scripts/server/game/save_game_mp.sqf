@@ -219,5 +219,3 @@ if ( GRLIB_endgame == 1 ) then {
     saveProfileNamespace;
     diag_log format [ "--- LRX Save %1 in Profile at %2", GRLIB_save_key, time ];
 };
-
-diag_log format [ "--- LRX Save finish at %1", time ];
