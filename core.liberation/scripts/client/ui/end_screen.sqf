@@ -1,4 +1,4 @@
-private [ "_line_delay", "_page_delay", "_playtime_days", "_playtime_hours", "_playtime_minutes", "_playtime_seconds", "_comma", "_playtime_str" ];
+private [ "_playtime_days", "_playtime_hours", "_playtime_minutes", "_playtime_seconds", "_comma", "_playtime_str" ];
 if (isDedicated) exitWith {};
 
 playSound3D ["\A3\Sounds_F\environment\structures\church\worship.wss",player,false,getPosASL player,1.5, 1, 0, 0,true];
@@ -8,8 +8,8 @@ sleep 5;
 sleep 20;
 
 if ( isNil "cinematic_camera_started" ) then { cinematic_camera_started = false };
-_line_delay = 0.75;
-_page_delay = 5;
+private _line_delay = 0.75;
+private _page_delay = 5;
 
 disableUserInput true;
 closeDialog 0;
