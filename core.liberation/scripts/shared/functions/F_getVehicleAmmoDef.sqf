@@ -9,7 +9,10 @@ private _ignore_ammotype = [
 	"200Rnd_762",
 	"8Rnd_82mm_Mo_Flare_white",
 	"8Rnd_82mm_Mo_Smoke_white",
-	"CUP_2800Rnd_"
+	"CUP_2800Rnd_",
+    "vn_m60_v_200_mag",
+    "vn_m60_v_500_mag",
+    "vn_m60_v_1500_mag"
 ];
 
 {
