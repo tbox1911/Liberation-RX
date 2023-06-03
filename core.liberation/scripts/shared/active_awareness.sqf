@@ -1,4 +1,7 @@
-// make local units aware of other (remote) friendly units around them
+// Inform local units of other (remote) friendly units
+if (GRLIB_active_awareness == 0) exitWith {};
+disableRemoteSensors false;
+
 sleep 120;
 
 private ["_local_units", "_remote_units"];

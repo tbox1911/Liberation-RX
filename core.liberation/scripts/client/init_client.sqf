@@ -136,6 +136,9 @@ if (!GRLIB_ACE_enabled) then {
 [] execVM "addons\JKB\JKB_init.sqf";
 [] execVM "addons\WHS\warehouse_init.sqf";
 
+// Units Awareness
+[] execVM "scripts\shared\active_awareness.sqf";
+
 // Init Tips Tables from XML
 GREUH_TipsText = [];
 {

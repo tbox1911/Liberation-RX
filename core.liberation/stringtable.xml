@@ -5493,6 +5493,10 @@
 			<Original>Keep Players score on map restart</Original>
 			<French>Garder le score du joueurs au redemarage de la Map</French>
 		</Key>
+		<Key ID="STR_AWARENESS">
+			<Original>Inform local units of other (remote) friendly units</Original>
+			<French>Informer les unités locales des autres unités amies (remote)</French>
+		</Key>		
 		<Key ID="STR_OPFORMARK">
 			<Original>Dynamic Opfor sector markers</Original>
 			<Russian>Скрыть маркеры секторов противника</Russian>

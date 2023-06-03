@@ -125,6 +125,9 @@ if (abort_loading) exitWith {
 [] execVM "scripts\server\offloading\offload_manager.sqf";
 [] execVM "scripts\server\offloading\show_fps.sqf";
 
+// Units Awareness
+[] execVM "scripts\shared\active_awareness.sqf";
+
 global_locked_group = [];
 publicVariable "global_locked_group";
 

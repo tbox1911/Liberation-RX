@@ -119,6 +119,7 @@ GRLIB_admin_menu = ["AdminMenu",1] call _lrx_getParamValue;
 GRLIB_cleanup_vehicles = ["CleanupVehicles",1800] call _lrx_getParamValue;
 GRLIB_autosave_timer = ["AutoSave",3600] call _lrx_getParamValue;
 GRLIB_param_wipe_keepscore = ["KeepScore",0] call _lrx_getParamValue;
+GRLIB_active_awareness = ["Awareness",0] call _lrx_getParamValue;
 
 // Hardcoded
 GRLIB_endgame = 0;
@@ -181,7 +182,6 @@ if ( GRLIB_mod_west in ["A3_BLU", "A3_IND"]) then {
 	};
 };
 
-// ACE
 if ( GRLIB_ACE_enabled ) then { GRLIB_fancy_info = 0 };		// Disable Fancy if ACE present
 if ( GRLIB_ACE_medical_enabled ) then { GRLIB_revive = 0; GRLIB_fatigue = 1 };		// Disable PAR/Fatigue if ACE Medical is present
 if ( GRLIB_fatigue == 1 ) then { GRLIB_fatigue = true } else { GRLIB_fatigue = false };
