@@ -1,7 +1,7 @@
 private [ "_line_delay", "_page_delay", "_playtime_days", "_playtime_hours", "_playtime_minutes", "_playtime_seconds", "_comma", "_playtime_str" ];
 if (isDedicated) exitWith {};
 
-playSound "Worship";
+playSound3D ["\A3\Sounds_F\environment\structures\church\worship.wss",player,false,getPosASL player,1.5, 1, 0, 0,true];
 sleep 5;
 
 [localize "STR_VICTORY_TITLE", 0, 0, 5, 0, 0, 90] spawn BIS_fnc_dynamicText;
