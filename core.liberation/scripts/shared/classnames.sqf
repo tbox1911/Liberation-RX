@@ -543,7 +543,7 @@ GRLIB_ignore_colisions = [
 	"CamoNet_BLUFOR_big_F",
 	"Land_NavigLight",
 	"Lamps_base_F",
-	"Land_HelipadSquare_F",
+	"Helipad_base_F",
 	"PowerLines_base_F",
 	"PowerLines_Small_base_F",
 	"PowerLines_Wires_base_F",
