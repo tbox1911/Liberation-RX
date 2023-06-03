@@ -1,4 +1,4 @@
-private ["_build_list", "_entrytext", "_icon", "_affordable", "_affordable_crew", "_selected_item", "_linked", "_linked_unlocked", "_base_link", "_link_color", "_link_str" ];
+private ["_build_list", "_entrytext", "_icon", "_affordable", "_affordable_crew", "_selected_item", "_linked", "_linked_unlocked", "_base_link", "_link_color", "_link_str", "_picture" ];
 
 if ( ( [ getpos player , 500 , GRLIB_side_enemy ] call F_getUnitsCount ) > 4 ) exitWith { hint localize "STR_BUILD_ENEMIES_NEARBY"; };
 
@@ -14,6 +14,7 @@ private _initindex = buildindex;
 createDialog "liberation_build";
 waitUntil { dialog };
 
+private _display = findDisplay 5501;
 private _title = localize "STR_BUILD_TITLE";
 private _msg = "";
 private _score = [player] call F_getScore;
@@ -67,7 +68,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 			ctrlSetText [ 151, _buildpages select ( buildtype - 1) ];
 			if ( buildtype != 8 ) then {
 				_entrytext = [(_x select 0)] call F_getLRXName;
-				((findDisplay 5501) displayCtrl (110)) lnbAddRow [ _entrytext, format [ "%1" ,_x select 1], format [ "%1" ,_x select 2], format [ "%1" ,_x select 3]];
+				(_display displayCtrl (110)) lnbAddRow [ _entrytext, format [ "%1" ,_x select 1], format [ "%1" ,_x select 2], format [ "%1" ,_x select 3]];
 
 				_icon = getText ( _cfg >> (_x select 0) >> "icon");
 				if(isText  (configFile >> "CfgVehicleIcons" >> _icon)) then {
@@ -80,7 +81,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 				} else {
 					_squadname = "";
 				};
-				((findDisplay 5501) displayCtrl (110)) lnbAddRow  [_squadname, format [ "%1" ,_x select 1], format [ "%1" ,_x select 2], format [ "%1" ,_x select 3]];
+				(_display displayCtrl (110)) lnbAddRow  [_squadname, format [ "%1" ,_x select 1], format [ "%1" ,_x select 2], format [ "%1" ,_x select 3]];
 				_icon = "\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa";
 				lnbSetPicture  [110, [((lnbSize 110) select 0) - 1, 0],_icon];
 			};
@@ -132,21 +133,20 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 			};
 
 			if ( _affordable ) then {
-				((findDisplay 5501) displayCtrl (110)) lnbSetColor  [[((lnbSize 110) select 0) - 1, 0], [1,1,1,1]];
-				((findDisplay 5501) displayCtrl (110)) lnbSetColor  [[((lnbSize 110) select 0) - 1, 1], [1,1,1,1]];
-				((findDisplay 5501) displayCtrl (110)) lnbSetColor  [[((lnbSize 110) select 0) - 1, 2], [1,1,1,1]];
-				((findDisplay 5501) displayCtrl (110)) lnbSetColor  [[((lnbSize 110) select 0) - 1, 3], [1,1,1,1]];
+				(_display displayCtrl (110)) lnbSetColor  [[((lnbSize 110) select 0) - 1, 0], [1,1,1,1]];
+				(_display displayCtrl (110)) lnbSetColor  [[((lnbSize 110) select 0) - 1, 1], [1,1,1,1]];
+				(_display displayCtrl (110)) lnbSetColor  [[((lnbSize 110) select 0) - 1, 2], [1,1,1,1]];
+				(_display displayCtrl (110)) lnbSetColor  [[((lnbSize 110) select 0) - 1, 3], [1,1,1,1]];
 			} else {
-				((findDisplay 5501) displayCtrl (110)) lnbSetColor  [[((lnbSize 110) select 0) - 1, 0], [0.4,0.4,0.4,1]];
-				((findDisplay 5501) displayCtrl (110)) lnbSetColor  [[((lnbSize 110) select 0) - 1, 1], [0.4,0.4,0.4,1]];
-				((findDisplay 5501) displayCtrl (110)) lnbSetColor  [[((lnbSize 110) select 0) - 1, 2], [0.4,0.4,0.4,1]];
-				((findDisplay 5501) displayCtrl (110)) lnbSetColor  [[((lnbSize 110) select 0) - 1, 3], [0.4,0.4,0.4,1]];
+				(_display displayCtrl (110)) lnbSetColor  [[((lnbSize 110) select 0) - 1, 0], [0.4,0.4,0.4,1]];
+				(_display displayCtrl (110)) lnbSetColor  [[((lnbSize 110) select 0) - 1, 1], [0.4,0.4,0.4,1]];
+				(_display displayCtrl (110)) lnbSetColor  [[((lnbSize 110) select 0) - 1, 2], [0.4,0.4,0.4,1]];
+				(_display displayCtrl (110)) lnbSetColor  [[((lnbSize 110) select 0) - 1, 3], [0.4,0.4,0.4,1]];
 			};
-
 		} foreach _build_list;
 
 		if (_near_outpost && count (_build_list) == 0) then {
-			((findDisplay 5501) displayCtrl (110)) lnbAddRow [ "       Unavailable at Outpost.","-","-","-"];
+			(_display displayCtrl (110)) lnbAddRow [ "       Unavailable at Outpost.","-","-","-"];
 		};
 	};
 
@@ -163,6 +163,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 	_linked = false;
 	_linked_unlocked = true;
 	_base_link = "";
+	_picture = "";
 	if (dobuild == 0 && _selected_item != -1 && (_selected_item < (count _build_list))) then {
 		_build_item = _build_list select _selected_item;
 		if (
@@ -189,6 +190,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 				};
 			};
 		};
+
 		if ( buildtype == 7 ) then {
 			if (_build_item select 0 == mobile_respawn) then {
 				if (([getPlayerUID player] call F_getMobileRespawnsPlayer) select 1) then {
@@ -217,6 +219,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 			if ( _linked ) then {
 				if ( !(_base_link in blufor_sectors) ) then { _linked_unlocked = false };
 			};
+			_picture = getText (configFile >> "CfgVehicles" >> _build_item select 0 >> "editorPreview");
 		};
 
 		if (buildtype == 1 && _build_item select 1 >= 1 && (count PAR_AI_bros >= GRLIB_squad_size + GRLIB_squad_size_bonus || !(player getVariable ["GRLIB_squad_context_loaded", false])) ) then {
@@ -241,13 +244,15 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 	ctrlSetText [133, format [ "%1 : %2", localize "STR_FUEL", (player getVariable ["GREUH_fuel_count",0])] ];
 	ctrlSetText [134, format [ "%1 : %2/%3", localize "STR_UNITCAP", unitcap, GRLIB_blufor_cap] ];
 
+	(_display displayCtrl (162)) ctrlSetText _picture;
+
 	_link_color = "#0040e0";
 	_link_str = localize "STR_VEHICLE_UNLOCKED";
 	if (!_linked_unlocked) then { _link_color = "#e00000"; _link_str = localize "STR_VEHICLE_LOCKED"; };
 	if ( _linked ) then {
-		((findDisplay 5501) displayCtrl (161)) ctrlSetStructuredText parseText ( "<t color='" + _link_color + "' align='center'>" + _link_str +  "<br/>" + ( markerText _base_link ) + "</t>" );
+		(_display displayCtrl (161)) ctrlSetStructuredText parseText ( "<t color='" + _link_color + "' align='center'>" + _link_str +  "<br/>" + ( markerText _base_link ) + "</t>" );
 	} else {
-		((findDisplay 5501) displayCtrl (161)) ctrlSetStructuredText parseText "";
+		(_display displayCtrl (161)) ctrlSetStructuredText parseText "";
 	};
 
 	buildindex = _selected_item;

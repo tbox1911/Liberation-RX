@@ -9,8 +9,7 @@ class liberation_build {
 	"BuildSupportButton","BuildSquadButton","BuildBuildingButton","BuildInfantryImage",
 	"BuildTransportVehicleImage","BuildCombatVehicleImage","BuildAerialImage","ManpowerImageShadow","AmmoImageShadow","FuelImageShadow",
 	"BuildDefenceImage","BuildSupportImage","BuildSquadImage","BuildBuildingImage","ListBG","ManpowerImage","AmmoImage","FuelImage",
-	"BuildList","BuildButton","LabelManpower","LabelAmmo","LabelFuel","LabelCap","BuildMannedButton","PageLabel", "LinkedSector"
-
+	"BuildList","BuildButton","LabelManpower","LabelAmmo","LabelFuel","LabelCap","BuildMannedButton","PageLabel", "BuildPreview", "LinkedSector"
 	};
 
 	objects[] = {};
@@ -217,7 +216,7 @@ class liberation_build {
 		x = 0.35 * safezoneW + safezoneX;
 		w = 0.3 * safezoneW;
 		y = 0.35 * safezoneH + safezoneY;
-		h = (0.35 * safezoneH) - (2 * BORDERSIZE);
+		h = (0.345 * safezoneH) - (2 * BORDERSIZE);
 		columns[] = {0, 0.65, 0.75, 0.85};
 		onLBSelChanged="";
 		shadow = 2;
@@ -292,9 +291,9 @@ class liberation_build {
 		type = CT_STRUCTURED_TEXT;
 		colorBackground[] = COLOR_NOALPHA;
 		style = ST_LEFT;
-		x = 0.45 * safezoneW + safezoneX;
-		w = 0.1 * safezoneW;
+		x = 0.44 * safezoneW + safezoneX;
 		y = 0.725 * safezoneH + safezoneY;
+		w = 0.1 * safezoneW;
 		h = 0.05 * safezoneH;
 		text= "";
 		size = 0.02 * safezoneH;
@@ -305,4 +304,21 @@ class liberation_build {
 		align = "right";
 		valign = "top";
 	};
+	class BuildPreview{
+		idc = 162;
+		type = CT_STATIC;
+		style = ST_PICTURE + ST_KEEP_ASPECT_RATIO;
+		x = 0.44 * safezoneW + safezoneX;
+		y = 0.68 * safezoneH + safezoneY;
+		w = 0.25;
+		h = 0.25;
+		colorBackground[] = {0,0,0,0};
+		colorText[] = {1,1,1,1};
+		text = "";
+		size = 0.02 * safezoneH;
+		sizeEx = 0.02 * safezoneH;
+		shadow = 2;
+		font = FONTM;
+		color = "#e0e000";		
+	};	
 };
