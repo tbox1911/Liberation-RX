@@ -53,7 +53,7 @@ if ( _vehicle isKindOf "Air" ) then {
 	if (GRLIB_SOG_enabled) then { _airveh_alt = 100 };
 	_vehicle engineOn true;
 	_vehicle flyInHeight _airveh_alt;
-	_vehicle flyInHeightASL [_airveh_alt, 50, 350];
+	_vehicle flyInHeightASL [_airveh_alt, 50, 300];
 };
 
 if ( _random_rotate ) then {

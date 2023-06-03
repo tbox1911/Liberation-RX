@@ -55,8 +55,8 @@ private _para_group = [markerpos _spawnsector, _unitclass, GRLIB_side_enemy, "pa
 		!(alive _newvehicle) || (damage _newvehicle > 0.2 ) || (_newvehicle distance2D _targetpos < 300)
 	};
 
-	_newvehicle flyInHeight 200;
-	sleep 2;
+	_newvehicle flyInHeight 150;
+	sleep 3;
 	{
 		_x allowDamage false;
 		unassignVehicle _x;
