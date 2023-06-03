@@ -53,17 +53,17 @@ taxi_dest = {
 			hintSilent format [localize _msg, round (_vehicle distance2D _dest)];
 		};
 
-		_alt = getPos _vehicle select 2;
+		_alt = (getPosATL _vehicle) select 2;
 		_speed = round (abs speed vehicle _vehicle);
 		_vspeed = round (abs (_alt - _alt_old));
 		_alt_old = _alt;
-		if (_speed == 0 && _vspeed == 0 && _alt < 30 ) then {
+		if (_speed == 0 && _vspeed == 0) then {
 			if ((vectorUp _vehicle) select 2 < 0.70) then {
-				_vehicle setPos [(getposATL _vehicle) select 0, (getposATL _vehicle) select 1, ((getposATL _vehicle) select 2) + 2];
+				_vehicle setPosATL [(getposATL _vehicle) select 0, (getposATL _vehicle) select 1, ((getposATL _vehicle) select 2) + 2];
 				_vehicle setVectorUp surfaceNormal position _vehicle;
 				sleep 1;
 			};
-			_vehicle setPos (getPosATL _vehicle vectorAdd [0, 0, 3]);
+			_vehicle setPos ((getPosATL _vehicle) vectorAdd [0, 0, 3]);
 			sleep 1;
 		};
 		(((_vehicle distance2D _dest < _landing_range || time > _stop) && unitReady (driver _vehicle)) || !(isNil "GRLIB_taxi_eject"))
