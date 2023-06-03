@@ -1,9 +1,9 @@
 params [
 	"_sectorpos",
 	"_classname",
-	[ "_precise_position", false ],
-	[ "_random_rotate", false ],
-	[ "_civilian", false]
+	["_precise_position", false],
+	["_random_rotate", false],
+	["_civilian", false]
 ];
 
 diag_log format [ "Spawn vehicle %1 at %2", _classname , time ];
