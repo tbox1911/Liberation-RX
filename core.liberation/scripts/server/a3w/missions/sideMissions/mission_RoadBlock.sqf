@@ -123,7 +123,7 @@ _waitUntilExec = {
 		GRLIB_A3W_Mission_BR = GRLIB_A3W_Mission_BR - 1;
 		if (GRLIB_A3W_Mission_BR == 0) then {
 			{
-				if (_x distance2D _missionPos < GRLIB_capture_size) then {
+				if (_x distance2D _missionPos < GRLIB_sector_size) then {
 					playsound "air_raid";
 					_msg = ["<t color='#FFFFFF' size='2'>You have been Detected!!<br/><br/>Enemies launch the </t><t color='#ff0000' size='3'>RED ALERT</t><t color='#FFFFFF' size='2'> !!</t>", "PLAIN", -1, false, true];
 					[_msg] remoteExec ["titleText", owner _x];
