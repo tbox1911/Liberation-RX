@@ -98,7 +98,7 @@ while { true } do {
 			[_unit] joinSilent _grp;
 			_unit setVariable ["PAR_Grp_ID", format["Bros_%1", PAR_Grp_ID], true];
 			PAR_AI_bros = PAR_AI_bros + [_unit];
-			[_unit] call PAR_fn_AI_Damage_EH;
+			[_unit] spawn PAR_fn_AI_Damage_EH;
 			_unit enableIRLasers true;
 			_unit enableGunLights "Auto";
 			_unit setUnitRank "PRIVATE";
@@ -138,7 +138,7 @@ while { true } do {
 				_unit enableGunLights "Auto";
 				_unit setVariable ["PAR_Grp_ID", format["AI_%1",PAR_Grp_ID], true];
 				//_unit forceAddUniform (uniform player);
-				[_unit] call PAR_fn_AI_Damage_EH;
+				[_unit] spawn PAR_fn_AI_Damage_EH;
 				_idx = _idx + 1;
 				sleep 0.1;
 			} foreach _classname;

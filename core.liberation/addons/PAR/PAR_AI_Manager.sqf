@@ -5,7 +5,7 @@ while {true} do {
     if (count PAR_AI_bros > 0 ) then {
         {
             // Set EH
-            //[_x] call PAR_fn_AI_Damage_EH;
+            //[_x] spawn PAR_fn_AI_Damage_EH;
 
             // Medic can heal
             _isMedic = [_x] call PAR_is_medic;
