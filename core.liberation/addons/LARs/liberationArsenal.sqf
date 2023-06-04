@@ -72,6 +72,13 @@ GRLIB_blacklisted_from_arsenal = blacklisted_bag + blacklisted_weapon;
 // Default LRX whitelist
 GRLIB_whitelisted_from_arsenal = [mobile_respawn_bag, "B_Parachute"] + whitelisted_from_arsenal;
 
+// TFAR radio
+GRLIB_TFR_radios = [];
+if (GRLIB_TFR_enabled) then {
+	GRLIB_TFR_radios = ["tf_anprc152","tf_anprc148jem","tf_fadak","tf_anprc154","tf_rf7800str","tf_pnr1000a"];
+	GRLIB_whitelisted_from_arsenal append GRLIB_TFR_radios;
+};
+
 // Mod signature
 GRLIB_MOD_signature = [];
 
