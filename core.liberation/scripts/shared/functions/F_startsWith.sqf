@@ -1,11 +1,14 @@
 /*
+	check if _needles starts by _haystack string
+	
+	authors: AgentRev, Killzone_Kid, pSiKO
+
 	Parameters:
 	_this select 0: String or Array - string(s) to search for
 	_this select 1: String - string to check in
 	_this select 2: Boolean - case sensitive search (optional, default: false)
 
 	Returns: Boolean - test result
-	thx: AgentRev, Killzone_Kid
 */
 
 params [
