@@ -32,6 +32,7 @@ if (count squads == 0) then {
 };
 
 private _near_outpost = ([player, "OUTPOST", GRLIB_fob_range] call F_check_near);
+private _squad_leader = (player == leader group player);
 private _has_box = false;
 { if ((_x select 0) == playerbox_typename && (_x select 3) == getPlayerUID player) exitWith {_has_box = true} } foreach GRLIB_garage;
 if (count ([entities playerbox_typename, {[player, _x] call is_owner}] call BIS_fnc_conditionalSelect) > 0) then {_has_box = true};
@@ -51,6 +52,7 @@ private _buildpages = [
 while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
  	_build_list = [];
 	{
+		if (!_squad_leader && buildtype in [1,8]) exitWith {};
 		if (_near_outpost && buildtype in [3,4,8]) exitWith {};
 		if (buildtype == 8 ) then {
 			_build_list pushback _x;
@@ -145,9 +147,12 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 			};
 		} foreach _build_list;
 
-		if (_near_outpost && count (_build_list) == 0) then {
+		if (_near_outpost && _squad_leader && count (_build_list) == 0) then {
 			(_display displayCtrl (110)) lnbAddRow [ "       Unavailable at Outpost.","-","-","-"];
 		};
+		if (!_squad_leader && count (_build_list) == 0) then {
+			(_display displayCtrl (110)) lnbAddRow [ "       Only for Squad Leader.","-","-","-"];
+		};		
 	};
 
 	if(_initindex != -1) then {
