@@ -1,5 +1,28 @@
 diag_log "--- Server Init start ---";
 
+// EventHandler
+addMissionEventHandler ['HandleDisconnect', {
+	_this call cleanup_player;
+	if (count (AllPlayers - (entities "HeadlessClient_F")) == 0) then {
+		[] call save_game_mp;
+		diag_log "--- LRX Mission End!";
+		//[] call cleanup_server;
+		endMission "END1";
+		forceEnd;			
+	};
+	false;
+}];
+
+// AI Skill
+// skillMin, skillAimMin, skillMax, skillAimMax
+[ 
+ true, 
+ [ 
+  [GRLIB_side_friendly, 0.52, 0.36, 0.81, 0.64 ], 
+  [GRLIB_side_enemy,    0.52, 0.36, 0.81, 0.64 ]
+ ]
+] call BIS_fnc_EXP_camp_dynamicAISkill;
+
 // Init owner on map vehicles
 {
 	if (_x isKindOf "AllVehicles") then {
@@ -142,27 +165,6 @@ if (GRLIB_side_enemy == INDEPENDENT) then {
 	resistance setFriend [GRLIB_side_enemy, 0];
 	GRLIB_side_enemy setFriend [resistance, 0];
 };
-
-addMissionEventHandler ["MPEnded", {
-	diag_log "--- LRX Mission End!";
-}];
-
-addMissionEventHandler ['HandleDisconnect', {
-	_this call cleanup_player;
-	if (count (AllPlayers - (entities "HeadlessClient_F")) == 0) then {
-		[] call save_game_mp;
-	};
-	false;
-}];
-
-// AI Skill
-[ 
- true, 
- [ 
-  [GRLIB_side_friendly, 0.5, 0.3, 0.7, 0.6 ], 
-  [GRLIB_side_enemy, 0.5, 0.3, 0.7, 0.6 ]
- ]
-] call BIS_fnc_EXP_camp_dynamicAISkill;
 
 sleep 3;
 GRLIB_init_server = true;
