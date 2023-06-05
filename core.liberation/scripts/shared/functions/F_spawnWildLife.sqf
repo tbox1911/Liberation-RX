@@ -25,11 +25,11 @@ private _type_desert = [
 	"Dromedary_04_lxWS"
 ];
 
-private _is_desert = (worldname in ["SefrouRamal", "Takistan"] && GRLIB_WS_enabled);
+private _is_desert = (worldname in ["SefrouRamal", "Takistan", "Isladuala3"] && GRLIB_WS_enabled);
 private _nbcivs = (3 + floor(random 4));
 private _type = selectRandom _type_random;
 if (_is_desert) then { _type = selectRandom (_type_random + _type_desert) };
-private _is_dromedary = (["Dromedary_", _type, true] call F_startsWith);
+private _is_dromedary = (_type select [0,11] == "Dromedary_");
 if (_type in ["Alsatian_Random_F","Fin_random_F"]) then { _nbcivs = 2 };
 if (_type in ["Cock_random_F","Hen_random_F"]) then { _nbcivs = _nbcivs + 2 };
 
