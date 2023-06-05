@@ -45,8 +45,10 @@ if (!(_role == "cargo" || _vehicle isKindOf "Steerable_Parachute_F" || typeOf _v
 		};
 	};
 
-	if (GRLIB_permission_vehicles) then {
-		if (!([_unit1, _vehicle] call is_owner) && !([_vehicle] call is_public)) then {
+	if (!_doeject && GRLIB_permission_vehicles) then {
+		private _owner = [_unit1, _vehicle] call is_owner;
+		private _public = [_vehicle] call is_public;
+		if (!_owner && !_public) then {	
 			_msg = localize "STR_PERMISSION_NO_OWN";
 			if (isPlayer _unit1) then {
 				playSound3D ["A3\Sounds_F\sfx\alarmcar.wss", _vehicle, false, getPosASL _vehicle, 1, 1, 500];
@@ -55,7 +57,7 @@ if (!(_role == "cargo" || _vehicle isKindOf "Steerable_Parachute_F" || typeOf _v
 		};
 	};
 
-	if ( side _unit1 != GRLIB_side_friendly ) then {
+	if (side _unit1 != GRLIB_side_friendly) then {
 		_doeject = true;
 		_msg = localize "STR_PERMISSION_NO_PRI";
 	};
@@ -78,3 +80,5 @@ if (_doeject) then {
 	[_vehicle] spawn vehicle_defense;
 	[_unit1, _vehicle] spawn vehicle_fuel;
 };
+
+_doeject;

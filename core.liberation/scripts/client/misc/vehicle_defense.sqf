@@ -1,4 +1,7 @@
 params ["_vehicle"];
+
+if (!local _vehicle) exitWith {};
+
 _vehicle removeAllEventHandlers "IncomingMissile";
 _vehicle addEventHandler ["IncomingMissile", {
 	params ["_target", "_ammo", "_vehicle", "_instigator"];

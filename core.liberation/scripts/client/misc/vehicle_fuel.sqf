@@ -1,5 +1,7 @@
 params ["_unit", "_vehicle"];
 
+if (!local _vehicle) exitWith {};
+
 private ["_role", "_fuel_veh", "_fuel_collected"];
 private _conso = 0.003;  // fuel capacity = (((1/_conso) * 5) / 60) in minutes
 
