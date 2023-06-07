@@ -5496,7 +5496,11 @@
 		<Key ID="STR_AWARENESS">
 			<Original>Inform local units of other (remote) friendly units</Original>
 			<French>Informer les unités locales des autres unités amies (remote)</French>
-		</Key>		
+		</Key>
+		<Key ID="STR_RESPAWN_CD">
+			<Original>Add a cooldown if the player respawn too fast</Original>
+			<French>Ajoute une attente si le joueur respawn trop rapidement</French>
+		</Key>			
 		<Key ID="STR_OPFORMARK">
 			<Original>Dynamic Opfor sector markers</Original>
 			<Russian>Скрыть маркеры секторов противника</Russian>

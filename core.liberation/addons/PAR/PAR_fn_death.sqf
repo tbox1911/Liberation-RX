@@ -83,7 +83,12 @@ if (_unit == player) then {
 	};
 
 	// respawn penalty
-	if ( [_unit] call F_getScore > (GRLIB_perm_log + 20) ) then { [_unit, -10] remoteExec ["F_addScore", 2] };
+	if ([_unit] call F_getScore > (GRLIB_perm_log + 50)) then { [_unit, -10] remoteExec ["F_addScore", 2] };
+
+	// respawn coldown
+	if (GRLIB_respawn_cooldown) then {
+		player setVariable ["GRLIB_last_respawn", round (time + (5 * 60))];
+	};
 	titleText ["" ,"BLACK FADED", 100];
 };
 

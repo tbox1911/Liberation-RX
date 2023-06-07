@@ -170,7 +170,6 @@ PAR_fn_AI_Damage_EH = {
 PAR_Player_Init = {
 	player removeAllMPEventHandlers "MPKilled";
 	player addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-	player setVariable ["GREUH_isUnconscious", 0, true];
 	player setVariable ["PAR_isUnconscious", 0, true];
 	player setVariable ["PAR_wounded", false];
 	player setVariable ["PAR_isDragged", 0, true];
@@ -236,7 +235,6 @@ PAR_HandleDamage_EH = {
 		_unit allowDamage false;
 		_unit setVariable ["PAR_BleedOutTimer", round(time + PAR_BleedOut), true];
 		[_unit, _killer] spawn PAR_Player_Unconscious;
-		closedialog 0;
 	};
 
 	_amountOfDamage min 0.86;
@@ -266,7 +264,7 @@ PAR_Player_Unconscious = {
 	disableUserInput false;
 
 	// PAR AI Revive Call
-	_unit setVariable ["GREUH_isUnconscious", 1, true];
+	_unit setVariable ["GREUH_isUnconscious", 1];
 	_unit setUnconscious true;
 
 	// Mute Radio
@@ -281,7 +279,6 @@ PAR_Player_Unconscious = {
 
 	while { !isNull _unit && alive _unit && _unit getVariable ["PAR_isUnconscious", 0] == 1 } do {
 		_bleedOut = player getVariable ["PAR_BleedOutTimer", 0];
-		hintSilent format [localize "STR_BLEEDOUT_MESSAGE" + "\n", round (_bleedOut - time)];
 		public_bleedout_message = format [localize "STR_BLEEDOUT_MESSAGE", round (_bleedOut - time)];
 		public_bleedout_timer = round (_bleedOut - time);
 		sleep 0.5;
@@ -291,9 +288,6 @@ PAR_Player_Unconscious = {
 		// Player got revived
 		_unit switchMove "amovppnemstpsraswrfldnon";
 		_unit playMoveNow "amovppnemstpsraswrfldnon";
-
-		// Clear the "medic nearby" hint
-		hintSilent "";
 
 		// Unmute Radio
 		5 fadeRadio 1;

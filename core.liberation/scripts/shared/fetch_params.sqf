@@ -121,6 +121,7 @@ GRLIB_cleanup_vehicles = ["CleanupVehicles",1800] call _lrx_getParamValue;
 GRLIB_autosave_timer = ["AutoSave",3600] call _lrx_getParamValue;
 GRLIB_param_wipe_keepscore = ["KeepScore",0] call _lrx_getParamValue;
 GRLIB_active_awareness = ["Awareness",0] call _lrx_getParamValue;
+GRLIB_respawn_cooldown = ["RespawnCD",1] call _lrx_getParamValue;
 
 // Hardcoded
 GRLIB_endgame = 0;
@@ -201,6 +202,7 @@ if ( GRLIB_civ_penalties == 1 ) then { GRLIB_civ_penalties = true } else { GRLIB
 if ( GRLIB_blufor_defenders == 1 ) then { GRLIB_blufor_defenders = true } else { GRLIB_blufor_defenders = false };
 if ( GRLIB_opfor_english == 1 ) then { GRLIB_opfor_english = true } else { GRLIB_opfor_english = false };
 if ( GRLIB_disable_death_chat == 1 ) then { GRLIB_disable_death_chat = true } else { GRLIB_disable_death_chat = false };
+if ( GRLIB_respawn_cooldown == 1 ) then { GRLIB_respawn_cooldown = true } else { GRLIB_respawn_cooldown = false };
 
 // Overide sector radius
 if (GRLIB_sector_radius != 0) then { GRLIB_sector_size = GRLIB_sector_radius };

@@ -8,6 +8,15 @@ private _labelpos = [];
 private _tick = 0;
 private _respawn_delay = 80;
 
+if (GRLIB_respawn_cooldown) then {
+	if (time < (player getVariable ["GRLIB_last_respawn", 0])) then {
+		count_death = count_death + 1;
+		_respawn_delay = round (count_death * _respawn_delay);
+	} else {
+		count_death = 1;
+	};
+};
+
 (_display displayCtrl 677) ctrlEnable false; 	//disable restart button
 (_display displayCtrl 679) ctrlEnable false; 	//disable recall button
 
@@ -48,10 +57,10 @@ while { dialog && alive player } do {
 		[ 10000 ] call BIS_fnc_bloodEffect;
 	};
 	if ( _tick % 50 == 0 ) then {
-		private _msg = selectRandom GREUH_TipsText;
-		(_display displayCtrl 678) ctrlSetStructuredText parseText format["<t size='0.8' align='center'>Tips:<br/>%1</t>", _msg];
+		(_display displayCtrl 678) ctrlSetStructuredText parseText format["<t size='0.8' align='center'>Tips:<br/>%1</t>", selectRandom GREUH_TipsText];
 	};
 	_tick = _tick + 1;
 	uiSleep 0.25;
 };
 _display displayRemoveEventHandler ["KeyDown", _noesckey];
+closeDialog 0;

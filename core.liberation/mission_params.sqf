@@ -67,7 +67,8 @@ LRX_Mission_Params = [
 	["DeathChat", 0],				// Disable chat/voice if wounded  [default 0] - values = [1,0] - Text {Enabled,Disabled}
 	["FancyInfo", 1],				// Enable colorfull, fancy Informations [default 2] - values = [2,1,0] - Text {Enabled,Info,Disabled}
 	["KeepScore", 0],				// Keep the Players datas (score/permissions) - [default 0] - values = [0,1] - Text {Disabled,Enabled}
-	["Awareness", 0]				// Inform local units of other (remote) friendly units - [default 0] - values = [0,1] - Text {Disabled,Enabled}
+	["Awareness", 0],				// Inform local units of other (remote) friendly units - [default 0] - values = [0,1] - Text {Disabled,Enabled}
+	["RespawnCD", 1]				// Enable Cooldown if player respawn too fast - [default 0] - values = [0,1] - Text {Disabled,Enabled}
 ];
 
 LRX_Mission_Params_Def = [
@@ -216,6 +217,7 @@ LRX_Mission_Params_Def = [
 	["ForcedLoadout", localize "STR_FORCE_LOADOUT", [localize "STR_PARAMS_DISABLED","Preset 1","Preset 2"]],
 	["DeathChat", localize "STR_DEATHCHAT", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["FancyInfo", localize "STR_FANCY", [localize "STR_PARAMS_DISABLED","Info",localize "STR_PARAMS_ENABLED"]],
+	["RespawnCD", localize "STR_RESPAWN_CD", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["KeepScore", localize "STR_KEEP_SCORE", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["Awareness", localize "STR_AWARENESS", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]]
 ];
