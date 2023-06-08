@@ -46,6 +46,7 @@ while { true } do {
 
 	[] spawn revive_ui;
 	waitUntil {sleep 0.5; (player getVariable ["PAR_isUnconscious", 1]) == 0 || !alive player };
+	closeDialog 5566;
 	player setVariable ["GREUH_isUnconscious", 0];
 
 	"colorCorrections" ppEffectEnable FALSE;

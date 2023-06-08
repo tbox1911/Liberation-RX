@@ -63,4 +63,3 @@ while { dialog && alive player } do {
 	uiSleep 0.25;
 };
 _display displayRemoveEventHandler ["KeyDown", _noesckey];
-closeDialog 0;
