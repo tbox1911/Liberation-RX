@@ -5,7 +5,7 @@ private _vehicle = cursorObject;
 if (typeOf _vehicle in sticky_bombs_typename && !(isNull attachedTo _vehicle)) then {
 	_vehicle = attachedTo _vehicle;
 };
-if (!(_vehicle isKindOf "AllVehicles")) exitWith {};
+if (!(_vehicle iskindof "LandVehicle" || _vehicle iskindof "Air" || _vehicle iskindof "Ship")) exitWith {};
 
 // find memory points
 // cursorobject removeAllEventHandlers "HitPart";
