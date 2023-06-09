@@ -133,6 +133,7 @@ if (_unit == player) then {
 			_vehicle disableTIEquipment false;
 		};
 		_this spawn vehicle_permissions;
+		if (_vehicle iskindof "Steerable_Parachute_F") exitWith {};
 		_fuel = round (fuel _vehicle * 100);
 		_ammo = round (([_vehicle] call F_getVehicleAmmoDef) * 100);
 		_damage = round (damage _vehicle * 100);
