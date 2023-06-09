@@ -171,6 +171,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 	_picture = "";
 	if (dobuild == 0 && _selected_item != -1 && (_selected_item < (count _build_list))) then {
 		_build_item = _build_list select _selected_item;
+		_build_class = _build_item select  0;
 		if (
 				((_build_item select 1 == 0 ) || ((_build_item select 1) <= (infantry_cap - resources_infantry))) &&
 				((_build_item select 2 == 0 ) || ((_build_item select 2) <= _ammo_collected)) &&
@@ -180,16 +181,18 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 		};
 
 		if ( buildtype == 1 ) then {
-			if (_build_item select 0 in ["Alsatian_Random_F","Fin_random_F"] ) then {
+			if (_build_class in ["Alsatian_Random_F","Fin_random_F"] ) then {
 				if (!(isNil {player getVariable ["my_dog", nil]})) then {
 					_affordable = false;
 					_refresh = true;
 				};
+				_picture = getMissionPath "res\preview\dog1_preview.jpg";
+				if (_build_class == "Fin_random_F") then { _picture = getMissionPath "res\preview\dog2_preview.jpg"; };
 			};
 		};
 
 		if ( buildtype == 6 ) then {
-			if (_build_item select 0 == Warehouse_typename) then {
+			if (_build_class == Warehouse_typename) then {
 				if (count (player nearObjects [Warehouse_typename, GRLIB_fob_range]) > 0) then {
 					_affordable = false;
 				};
@@ -197,13 +200,13 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 		};
 
 		if ( buildtype == 7 ) then {
-			if (_build_item select 0 == mobile_respawn) then {
+			if (_build_class == mobile_respawn) then {
 				if (([getPlayerUID player] call F_getMobileRespawnsPlayer) select 1) then {
 					_affordable = false;
 					_refresh = true;
 				};
 			};
-			if (_build_item select 0 == playerbox_typename) then {
+			if (_build_class == playerbox_typename) then {
 				if (_has_box) then {
 					_affordable = false;
 					_refresh = true;
@@ -219,12 +222,13 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 		};
 
 		if ( buildtype != 8 ) then {
-			{ if ( ( _build_item select 0 ) == ( _x select 0 ) ) exitWith { _base_link = _x select 1; _linked = true; } } foreach GRLIB_vehicle_to_military_base_links;
+			{ if (_build_class == ( _x select 0 )) exitWith { _base_link = _x select 1; _linked = true; } } foreach GRLIB_vehicle_to_military_base_links;
 
 			if ( _linked ) then {
 				if ( !(_base_link in blufor_sectors) ) then { _linked_unlocked = false };
 			};
-			_picture = getText (configFile >> "CfgVehicles" >> _build_item select 0 >> "editorPreview");
+			if (_picture == "") then { _picture = getText (configFile >> "CfgVehicles" >> _build_class >> "editorPreview") };
+			if (_picture == "") then { _picture = getMissionPath "res\preview\no_image.jpg" };
 		};
 
 		if (buildtype == 1 && _build_item select 1 >= 1 && (count PAR_AI_bros >= GRLIB_squad_size + GRLIB_squad_size_bonus || !(player getVariable ["GRLIB_squad_context_loaded", false])) ) then {
