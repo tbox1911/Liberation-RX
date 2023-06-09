@@ -68,7 +68,7 @@ LRX_Mission_Params = [
 	["FancyInfo", 1],				// Enable colorfull, fancy Informations [default 2] - values = [2,1,0] - Text {Enabled,Info,Disabled}
 	["KeepScore", 0],				// Keep the Players datas (score/permissions) - [default 0] - values = [0,1] - Text {Disabled,Enabled}
 	["Awareness", 0],				// Inform local units of other (remote) friendly units - [default 0] - values = [0,1] - Text {Disabled,Enabled}
-	["RespawnCD", 1]				// Enable Cooldown if player respawn too fast - [default 0] - values = [0,1] - Text {Disabled,Enabled}
+	["RespawnCD", 0]				// Enable Cooldown if player respawn too fast - [default 0] - values = [0,1] - Text {Disabled,Enabled}
 ];
 
 LRX_Mission_Params_Def = [
