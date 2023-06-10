@@ -23,10 +23,10 @@ opfor_spotter = "O_T_spotter_F";
 opfor_engineer = "O_T_engineer_F";
 opfor_paratrooper = "O_T_soldier_PG_F";
 opfor_mrap = "O_T_MRAP_02_F";
-opfor_mrap_hmg = "O_T_MRAP_02_hmg_F";
-opfor_mrap_gmg = "O_T_MRAP_02_gmg_F";
-opfor_transport_helo = "O_T_Heli_Transport_04_covered_F";
-opfor_transport_truck = "O_T_Truck_03_covered_F";
+opfor_mrap_hmg = "O_T_MRAP_02_hmg_ghex_F";
+opfor_mrap_gmg = "O_T_MRAP_02_gmg_ghex_F";
+opfor_transport_helo = "O_Heli_Transport_04_covered_F";
+opfor_transport_truck = "O_T_Truck_03_covered_ghex_F";
 opfor_fuel_truck = "O_T_Truck_03_fuel_F";
 opfor_ammo_truck = "O_T_Truck_03_ammo_F";
 opfor_fuel_container = "Land_Pod_Heli_Transport_04_fuel_F";
@@ -62,9 +62,9 @@ militia_loadout_overide = [
 ];
 
 militia_vehicles = [
-	"O_T_G_Offroad_01_armed_F",
-	"O_T_G_Offroad_01_armed_F",
-	"O_T_G_Offroad_01_AT_F",
+	"O_G_Offroad_01_armed_F",
+	"O_G_Offroad_01_armed_F",
+	"O_G_Offroad_01_AT_F",
 	"I_C_Offroad_02_LMG_F",
 	"O_T_LSV_02_armed_F",
 	"O_T_LSV_02_AT_F"
@@ -75,117 +75,117 @@ opfor_boats = [
 ];
 
 opfor_vehicles = [
-	"O_T_MRAP_02_hmg_F",
-	"O_T_MRAP_02_hmg_F",
-	"O_T_MRAP_02_gmg_F",
-	"O_T_APC_Tracked_02_cannon_F",
-	"O_T_APC_Wheeled_02_rcws_v2_F",
-	"O_T_APC_Tracked_02_cannon_F",
-	"O_T_APC_Wheeled_02_rcws_v2_F",
-	"O_T_MBT_02_cannon_F",
-	"O_T_MBT_02_cannon_F",
-	"O_T_APC_Tracked_02_AA_F",
+	"O_T_MRAP_02_hmg_ghex_F",
+	"O_T_MRAP_02_hmg_ghex_F",
+	"O_T_MRAP_02_gmg_ghex_F",
+	"O_T_APC_Tracked_02_cannon_ghex_F",
+	"O_T_APC_Wheeled_02_rcws_v2_ghex_F",
+	"O_T_APC_Tracked_02_cannon_ghex_F",
+	"O_T_APC_Wheeled_02_rcws_v2_ghex_F",
+	"O_T_MBT_02_cannon_ghex_F",
+	"O_T_MBT_02_cannon_ghex_F",
+	"O_T_APC_Tracked_02_AA_ghex_F",
 	"O_T_MBT_04_cannon_F",
 	"O_T_MBT_04_command_F"
 ];
 
 opfor_vehicles_low_intensity = [
-	"O_T_APC_Tracked_02_cannon_F",
-	"O_T_APC_Wheeled_02_rcws_v2_F",
-	"O_T_MRAP_02_hmg_F",
-	"O_T_MRAP_02_hmg_F",
-	"O_T_MRAP_02_gmg_F",
+	"O_T_APC_Tracked_02_cannon_ghex_F",
+	"O_T_APC_Wheeled_02_rcws_v2_ghex_F",
+	"O_T_MRAP_02_hmg_ghex_F",
+	"O_T_MRAP_02_hmg_ghex_F",
+	"O_T_MRAP_02_gmg_ghex_F",
 	"O_T_LSV_02_armed_F",
 	"O_T_LSV_02_AT_F"
 ];
 
 opfor_battlegroup_vehicles = [
-	"O_T_MRAP_02_hmg_F",
-	"O_T_MRAP_02_gmg_F",
-	"O_T_MRAP_02_hmg_F",
-	"O_T_MRAP_02_gmg_F",
-	"O_T_APC_Tracked_02_cannon_F",
-	"O_T_APC_Wheeled_02_rcws_v2_F",
-	"O_T_Truck_03_covered_F",
-	"O_T_MBT_02_cannon_F",
-	"O_T_APC_Tracked_02_AA_F",
-	"O_T_Heli_Attack_02_dynamicLoadout_F",
+	"O_T_MRAP_02_hmg_ghex_F",
+	"O_T_MRAP_02_gmg_ghex_F",
+	"O_T_MRAP_02_hmg_ghex_F",
+	"O_T_MRAP_02_gmg_ghex_F",
+	"O_T_APC_Tracked_02_cannon_ghex_F",
+	"O_T_APC_Wheeled_02_rcws_v2_ghex_F",
+	"O_T_Truck_03_covered_ghex_F",
+	"O_T_MBT_02_cannon_ghex_F",
+	"O_T_APC_Tracked_02_AA_ghex_F",
+	"O_Heli_Attack_02_dynamicLoadout_F",
 	"O_T_VTOL_02_infantry_F",
 	"O_T_MBT_04_cannon_F",
 	"O_T_MBT_04_command_F"
 ];
 
 opfor_battlegroup_vehicles_low_intensity = [
-	"O_T_APC_Tracked_02_cannon_F",
-	"O_T_APC_Wheeled_02_rcws_v2_F",
-	"O_T_MRAP_02_hmg_F",
-	"O_T_MRAP_02_hmg_F",
-	"O_T_MRAP_02_gmg_F",
-	"O_T_Truck_02_covered_F",
-	"O_T_Heli_Light_02_dynamicLoadout_F",
-	"O_T_Heli_Transport_04_covered_F",
+	"O_T_APC_Tracked_02_cannon_ghex_F",
+	"O_T_APC_Wheeled_02_rcws_v2_ghex_F",
+	"O_T_MRAP_02_hmg_ghex_F",
+	"O_T_MRAP_02_hmg_ghex_F",
+	"O_T_MRAP_02_gmg_ghex_F",
+	"O_T_Truck_02_F",
+	"O_Heli_Light_02_dynamicLoadout_F",
+	"O_Heli_Transport_04_covered_F",
 	"O_T_LSV_02_armed_F",
 	"O_T_LSV_02_AT_F"
 ];
 
 opfor_troup_transports_truck = [
-	"O_T_Truck_03_covered_F",
-	"O_T_Truck_02_covered_F"
+	"O_T_Truck_03_covered_ghex_F",
+	"O_T_Truck_02_F"
 ];
 
 opfor_troup_transports_heli = [
-	"O_T_Heli_Attack_02_dynamicLoadout_F",
-	"O_T_Heli_Transport_04_covered_F",
+	"O_Heli_Attack_02_dynamicLoadout_F",
+	"O_Heli_Transport_04_covered_F",
 	"O_T_VTOL_02_infantry_F"
 ];
 
 opfor_air = [
-	"O_T_Heli_Light_02_dynamicLoadout_F",
-	"O_T_Heli_Attack_02_dynamicLoadout_black_F",
-	"O_T_Heli_Attack_02_dynamicLoadout_F",
+	"O_Heli_Light_02_dynamicLoadout_F",
+	"O_Heli_Attack_02_dynamicLoadout_black_F",
+	"O_Heli_Attack_02_dynamicLoadout_F",
 	"O_T_VTOL_02_vehicle_F",
-	"O_T_Plane_CAS_02_F",
-	"O_T_Plane_Fighter_02_F"
+	"O_Plane_CAS_02_F",
+	"O_Plane_Fighter_02_F"
 ];
 
 opfor_statics = [
-	"O_T_HMG_01_high_F",
-	"O_T_GMG_01_high_F",
-	"O_T_static_AA_F",
-	"O_T_static_AT_F",
-	"O_T_Mortar_01_F"
+	"O_HMG_01_high_F",
+	"O_GMG_01_high_F",
+	"O_static_AA_F",
+	"O_static_AT_F",
+	"O_Mortar_01_F"
 ];
 
 opfor_recyclable = [
-	["O_T_HMG_01_high_F",0,round (20 / GRLIB_recycling_percentage),0],
-	["O_T_GMG_01_high_F",0,round (40 / GRLIB_recycling_percentage),0],
-	["O_T_static_AA_F",0,round (80 / GRLIB_recycling_percentage),0],
-	["O_T_static_AT_F",0,round (80 / GRLIB_recycling_percentage),0],
-	["O_T_Mortar_01_F",0,round (300 / GRLIB_recycling_percentage),0],
+	["O_HMG_01_high_F",0,round (20 / GRLIB_recycling_percentage),0],
+	["O_GMG_01_high_F",0,round (40 / GRLIB_recycling_percentage),0],
+	["O_static_AA_F",0,round (80 / GRLIB_recycling_percentage),0],
+	["O_static_AT_F",0,round (80 / GRLIB_recycling_percentage),0],
+	["O_Mortar_01_F",0,round (300 / GRLIB_recycling_percentage),0],
 	["O_T_LSV_02_armed_F",1,round (35 / GRLIB_recycling_percentage),2],
 	["O_T_LSV_02_AT_F",1,round (45 / GRLIB_recycling_percentage),2],
-	["O_T_G_Offroad_01_armed_F",1,round (30 / GRLIB_recycling_percentage),2],
-	["O_T_G_Offroad_01_AT_F",1,round (40 / GRLIB_recycling_percentage),2],
+	["O_G_Offroad_01_armed_F",1,round (30 / GRLIB_recycling_percentage),2],
+	["O_G_Offroad_01_AT_F",1,round (40 / GRLIB_recycling_percentage),2],
 	["I_C_Offroad_02_LMG_F",1,round (30 / GRLIB_recycling_percentage),2],
-	["O_T_Truck_02_covered_F",5,round (20 / GRLIB_recycling_percentage),5],
+	["O_T_Truck_02_F",5,round (20 / GRLIB_recycling_percentage),5],
 	["O_T_Truck_02_transport_F",5,round (20 / GRLIB_recycling_percentage),5],
-	["O_T_Truck_03_covered_F",5,round (50 / GRLIB_recycling_percentage),5],
-	["O_T_Truck_03_transport_F",5,round (50 / GRLIB_recycling_percentage),5],
-	["O_T_MRAP_02_hmg_F",5,round (150 / GRLIB_recycling_percentage),3],
-	["O_T_MRAP_02_gmg_F",5,round (150 / GRLIB_recycling_percentage),3],
+	["O_T_Truck_03_covered_ghex_F",5,round (50 / GRLIB_recycling_percentage),5],
+	["O_T_Truck_03_transport_ghex_F",5,round (50 / GRLIB_recycling_percentage),5],
+	["O_T_MRAP_02_hmg_ghex_F",5,round (150 / GRLIB_recycling_percentage),3],
+	["O_T_MRAP_02_gmg_ghex_F",5,round (150 / GRLIB_recycling_percentage),3],
 	["O_T_Boat_Armed_01_hmg_F",2,round (200 / GRLIB_recycling_percentage),2],
-	["O_T_APC_Wheeled_02_rcws_v2_F",10,round (450 / GRLIB_recycling_percentage),10],
-	["O_T_APC_Tracked_02_cannon_F",10,round (1200 / GRLIB_recycling_percentage),10],
-	["O_T_APC_Tracked_02_AA_F",10,round (1300 / GRLIB_recycling_percentage),10],
-	["O_T_MBT_02_cannon_F",15,round (1400 / GRLIB_recycling_percentage),15],
+	["O_T_APC_Wheeled_02_rcws_v2_ghex_F",10,round (450 / GRLIB_recycling_percentage),10],
+	["O_T_APC_Tracked_02_cannon_ghex_F",10,round (1200 / GRLIB_recycling_percentage),10],
+	["O_T_APC_Tracked_02_AA_ghex_F",10,round (1300 / GRLIB_recycling_percentage),10],
+	["O_T_MBT_02_cannon_ghex_F",15,round (1400 / GRLIB_recycling_percentage),15],
 	["O_T_MBT_04_cannon_F",15,round (2300 / GRLIB_recycling_percentage),15],
 	["O_T_MBT_04_command_F",15,round (2300 / GRLIB_recycling_percentage),15],
-	["O_T_Heli_Attack_02_dynamicLoadout_black_F",10,round (1700 / GRLIB_recycling_percentage),20],
-	["O_T_Heli_Attack_02_dynamicLoadout_F",10,round (1700 / GRLIB_recycling_percentage),20],
-	["O_T_Heli_Light_02_dynamicLoadout_F",10,round (1600 / GRLIB_recycling_percentage),20],
-	["O_T_Heli_Transport_04_covered_F",10,round (1400 / GRLIB_recycling_percentage),20],
-	["O_T_Plane_CAS_02_F",20,round (2000 / GRLIB_recycling_percentage),30],
-	["O_T_Plane_Fighter_02_F",20,round (2000 / GRLIB_recycling_percentage),30],
+	["O_Heli_Attack_02_dynamicLoadout_black_F",10,round (1700 / GRLIB_recycling_percentage),20],
+	["O_Heli_Attack_02_dynamicLoadout_F",10,round (1700 / GRLIB_recycling_percentage),20],
+	["O_Heli_Light_02_dynamicLoadout_F",10,round (1600 / GRLIB_recycling_percentage),20],
+	["O_Heli_Transport_04_covered_F",10,round (1400 / GRLIB_recycling_percentage),20],
+	["O_Plane_CAS_02_F",20,round (2000 / GRLIB_recycling_percentage),30],
+	["O_Plane_Fighter_02_F",20,round (2000 / GRLIB_recycling_percentage),30],
 	["O_T_Plane_Fighter_02_Stealth_F",20,round (2000 / GRLIB_recycling_percentage),30],
 	["O_T_VTOL_02_vehicle_F",20,round (2500 / GRLIB_recycling_percentage),20],
 	["O_T_VTOL_02_infantry_F",20,round (2500 / GRLIB_recycling_percentage),20]

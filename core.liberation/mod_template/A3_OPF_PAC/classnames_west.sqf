@@ -20,7 +20,7 @@ medic_sling_typename = "Land_Pod_Heli_Transport_04_medevac_F";
 pilot_classname = "O_T_Helipilot_F";
 crewman_classname = "O_T_crew_F";
 chimera_vehicle_overide = [
-  ["B_Heli_Transport_01_F", "O_T_Heli_Light_02_dynamicLoadout_F"]
+  ["B_Heli_Transport_01_F", "O_Heli_Light_02_dynamicLoadout_F"]
 ];
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
@@ -58,16 +58,16 @@ light_vehicles = [
 	["C_Scooter_Transport_01_F",1,5,1,0],
 	["SUV_01_base_black_F",1,10,1,0],
 	["O_T_G_Offroad_01_F",1,10,1,0],
-	["O_T_G_Offroad_01_armed_F",1,50,1,GRLIB_perm_inf],
+	["O_G_Offroad_01_armed_F",1,50,1,GRLIB_perm_inf],
 	["C_SUV_01_F",1,10,1,GRLIB_perm_inf],
 	["C_Van_01_transport_F",1,15,1,0],
 	["O_T_MRAP_02_F",2,25,2,0],
-	["O_T_MRAP_02_hmg_F",5,100,2,GRLIB_perm_inf],
-	["O_T_MRAP_02_gmg_F",5,125,2,GRLIB_perm_log],
+	["O_T_MRAP_02_hmg_ghex_F",5,100,2,GRLIB_perm_inf],
+	["O_T_MRAP_02_gmg_ghex_F",5,125,2,GRLIB_perm_log],
+	["O_T_Truck_02_F",5,10,5,GRLIB_perm_inf],
 	["O_T_Truck_02_transport_F",5,10,5,GRLIB_perm_inf],
-	["O_T_Truck_03_transport_F",5,50,5,GRLIB_perm_log],
-	["O_T_Truck_02_covered_F",5,10,5,GRLIB_perm_inf],
-	["O_T_Truck_03_covered_F",5,50,5,GRLIB_perm_log],
+	["O_T_Truck_03_transport_ghex_F",5,50,5,GRLIB_perm_log],
+	["O_T_Truck_03_covered_ghex_F",5,50,5,GRLIB_perm_log],
 	["I_LT_01_cannon_F",2,200,2,GRLIB_perm_log],
 	["O_T_LSV_02_unarmed_F",2,25,2,GRLIB_perm_inf],
 	["O_T_LSV_02_armed_F",5,100,2,GRLIB_perm_log],
@@ -76,10 +76,10 @@ light_vehicles = [
 ];
 
 heavy_vehicles = [
-	["O_T_APC_Wheeled_02_rcws_v2_F",10,400,10,GRLIB_perm_log],
-	["O_T_APC_Tracked_02_cannon_F",10,800,10,GRLIB_perm_log],
-	["O_T_APC_Tracked_02_AA_F",10,1500,10,GRLIB_perm_tank],
-	["O_T_MBT_02_cannon_F",15,1500,15,GRLIB_perm_tank],
+	["O_T_APC_Wheeled_02_rcws_v2_ghex_F",10,400,10,GRLIB_perm_log],
+	["O_T_APC_Tracked_02_cannon_ghex_F",10,800,10,GRLIB_perm_log],
+	["O_T_APC_Tracked_02_AA_ghex_F",10,1500,10,GRLIB_perm_tank],
+	["O_T_MBT_02_cannon_ghex_F",15,1500,15,GRLIB_perm_tank],
 	["O_T_MBT_04_cannon_F",15,2500,15,GRLIB_perm_air],
 	["O_T_MBT_04_command_F",15,2500,15,GRLIB_perm_air],
 	["I_MBT_03_cannon_F",15,4500,15,GRLIB_perm_max],
@@ -93,22 +93,22 @@ air_vehicles = [
 	["O_T_UAV_02_dynamicLoadout_F",5,1000,5,GRLIB_perm_air],
 	["O_T_T_UAV_04_CAS_F",5,1500,10,GRLIB_perm_max],
 	["C_Plane_Civil_01_F",1,50,5,GRLIB_perm_air],
-	["O_T_Heli_Light_02_unarmed_F",1,250,5,GRLIB_perm_tank],
+	["O_Heli_Light_02_unarmed_F",1,250,5,GRLIB_perm_tank],
 	["O_T_Heli_Transport_04_F",3,500,10,GRLIB_perm_air],
-	["O_T_Heli_Light_02_dynamicLoadout_F",5,1000,10,GRLIB_perm_air],
-	["O_T_Heli_Attack_02_dynamicLoadout_F",10,2000,20,GRLIB_perm_air],
+	["O_Heli_Light_02_dynamicLoadout_F",5,1000,10,GRLIB_perm_air],
+	["O_Heli_Attack_02_dynamicLoadout_F",10,2000,20,GRLIB_perm_air],
 	["O_T_VTOL_02_infantry_dynamicLoadout_F", 10,2500,20,GRLIB_perm_max],
 	["O_T_Plane_CAS_02_dynamicLoadout_F",20,4000,40,GRLIB_perm_max],
-	["O_T_Plane_Fighter_02_F",20,4500,40,GRLIB_perm_max],
-	["O_T_Plane_Fighter_02_Stealth_F",20,4500,40,GRLIB_perm_max]
+	["O_Plane_Fighter_02_F",20,4500,40,GRLIB_perm_max],
+	["O_T_Plane_Fighter_02_Stealth_F",20,2000,40,GRLIB_perm_max]
 ];
 
 blufor_air = [
-	"O_T_Heli_Light_02_dynamicLoadout_F",
-	"O_T_Heli_Attack_02_dynamicLoadout_F",
+	"O_Heli_Light_02_dynamicLoadout_F",
+	"O_Heli_Attack_02_dynamicLoadout_F",
 	"O_T_VTOL_02_infantry_dynamicLoadout_F",
 	"O_T_Plane_CAS_02_dynamicLoadout_F",
-	"O_T_Plane_Fighter_02_F",
+	"O_Plane_Fighter_02_F",
 	"O_T_Plane_Fighter_02_Stealth_F"
 ];
 
@@ -116,12 +116,12 @@ static_vehicles = [
 	["O_T_UGV_02_Demining_F",0,5,0,GRLIB_perm_inf],
 	["O_T_Static_Designator_01_F",0,5,0,GRLIB_perm_inf],
 	["O_T_HMG_01_F",0,10,0,GRLIB_perm_log],
-	["O_T_HMG_01_high_F",0,10,0,GRLIB_perm_tank],
+	["O_HMG_01_high_F",0,10,0,GRLIB_perm_tank],
 	["O_T_GMG_01_F",0,20,0,GRLIB_perm_log],
-	["O_T_GMG_01_high_F",0,20,0,GRLIB_perm_tank],
-	["O_T_static_AA_F",0,50,0,GRLIB_perm_air],
-	["O_T_static_AT_F",0,50,0,GRLIB_perm_air],
-	["O_T_Mortar_01_F",0,500,0,GRLIB_perm_max],
+	["O_GMG_01_high_F",0,20,0,GRLIB_perm_tank],
+	["O_static_AA_F",0,50,0,GRLIB_perm_air],
+	["O_static_AT_F",0,50,0,GRLIB_perm_air],
+	["O_Mortar_01_F",0,500,0,GRLIB_perm_max],
 	["B_SAM_System_01_F",10,1500,0,GRLIB_perm_tank],
 	["B_AAA_System_01_F",10,1500,0,GRLIB_perm_air],
 	["O_T_SAM_System_04_F",10,1500,0,GRLIB_perm_max]
