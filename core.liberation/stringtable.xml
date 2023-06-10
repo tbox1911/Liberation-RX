@@ -5216,14 +5216,14 @@
 			<Czech>AI Tým při startu.</Czech>
 		</Key>
 		<Key ID="STR_PARAM_SQUAD_SIZE">
-			<Original>AI recruitment limit per squad.</Original>
+			<Original>AI limit per squad.</Original>
 			<Russian>Максимальное количество ИИ в отряде.</Russian>
-			<French>Limite de recrutement d'IA par escouade.</French>
+			<French>Limite d'IA par escouade.</French>
 			<Chinesesimp>每个小队AI招募限制。</Chinesesimp>
 			<Chinese>每個小隊AI招募限制。</Chinese>
 			<Japanese>AIの運用を小隊ごとに制限する。</Japanese>
-			<Portuguese>Limite de recrutamento de IA por esquadrão.</Portuguese>
-			<Czech>Limit náboru AI na tým.</Czech>
+			<Portuguese>Limite de IA por esquadrão.</Portuguese>
+			<Czech>Limit AI na tým.</Czech>
 		</Key>
 		<Key ID="STR_PARAM_SPAWN_MAX">
 			<Original>Maximum Spawn Point per player.</Original>
