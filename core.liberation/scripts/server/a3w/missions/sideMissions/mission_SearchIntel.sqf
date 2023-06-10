@@ -163,7 +163,7 @@ _waitUntilCondition = {
 	{
 		if (_x distance2D _missionPos < GRLIB_sector_size) then {
 			if (_aiGroup knowsAbout _x == 4 ) then {
-				playsound "air_raid";
+				["air_raid"] remoteExec ["playSound", owner _x];
 				_msg = ["<t color='#FFFFFF' size='2'>You have been Detected!!<br/><br/>Enemies destroy the </t><t color='#ff0000' size='3'>INTELS</t><t color='#FFFFFF' size='2'> !!</t>", "PLAIN", -1, false, true];
 				[_msg] remoteExec ["titleText", owner _x];
 				sleep 10;
