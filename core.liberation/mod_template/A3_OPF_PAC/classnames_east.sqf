@@ -37,23 +37,23 @@ opfor_patrol = "Land_Cargo_Patrol_V3_F";
 opfor_hq = "Land_Cargo_HQ_V3_F";
 
 militia_squad = [
-	"O_T_G_Soldier_SL_F",
-	"O_T_G_Soldier_A_F",
-	"O_T_G_Soldier_AR_F",
-	"O_T_G_Soldier_AR_F",
-	"O_T_G_medic_F",
-	"O_T_G_engineer_F",
-	"O_T_G_Soldier_exp_F",
-	"O_T_G_Soldier_GL_F",
-	"O_T_G_Soldier_M_F",
-	"O_T_G_Soldier_F",
-	"O_T_G_Soldier_LAT_F",
-	"O_T_G_Soldier_LAT_F",
-	"O_T_G_Soldier_lite_F",
-	"O_T_G_Sharpshooter_F",
-	"O_T_G_Soldier_TL_F",
-	"O_T_Soldier_AA_F",
-	"O_T_Soldier_AT_F"
+	"O_G_Soldier_SL_F",
+	"O_G_Soldier_A_F",
+	"O_G_Soldier_AR_F",
+	"O_G_Soldier_AR_F",
+	"O_G_medic_F",
+	"O_G_engineer_F",
+	"O_G_Soldier_exp_F",
+	"O_G_Soldier_GL_F",
+	"O_G_Soldier_M_F",
+	"O_G_Soldier_F",
+	"O_G_Soldier_LAT_F",
+	"O_G_Soldier_LAT_F",
+	"O_G_Soldier_lite_F",
+	"O_G_Sharpshooter_F",
+	"O_G_Soldier_TL_F",
+	"O_Soldier_AA_F",
+	"O_Soldier_AT_F"
 ];
 
 militia_loadout_overide = [
