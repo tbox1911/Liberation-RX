@@ -17,7 +17,7 @@ while { true } do {
 			if (typeOf _vehicle in vehicle_big_units) then {
 				_distvehclose = _distvehclose * 3;
 			};
-			_vehicle addAction ["<t color='#FFFF00'>" + localize "STR_RECYCLE_MANAGER" + "</t> <img size='1' image='res\ui_recycle.paa'/>","scripts\client\actions\do_recycle.sqf","",-950,false,true,"","[_target] call is_recyclable",_distvehclose];
+			_vehicle addAction ["<t color='#FFFF00'>" + localize "STR_RECYCLE_MANAGER" + "</t> <img size='1' image='res\ui_recycle.paa'/>","scripts\client\actions\do_recycle.sqf","",-950,false,true,"","[] call is_menuok && [_target] call is_recyclable",_distvehclose];
 			_vehicle setVariable ["GRLIB_recycle_action", true];
 		} forEach _nearrecycl;
 	};
