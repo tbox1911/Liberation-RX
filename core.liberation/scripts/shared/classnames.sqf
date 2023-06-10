@@ -157,7 +157,7 @@ support_vehicles = support_vehicles + [
 	[ammobox_i_typename,0,round(300 / GRLIB_recycling_percentage),0,GRLIB_perm_hidden],
 	[basic_weapon_typename,0,round(150 / GRLIB_recycling_percentage),0,GRLIB_perm_hidden],
 	[waterbarrel_typename,0,110,0,GRLIB_perm_hidden],
-	[fuelbarrel_typename,0,120,0,GRLIB_perm_hidden],
+	[fuelbarrel_typename,0,120,50,GRLIB_perm_hidden],
 	[foodbarrel_typename,0,130,0,GRLIB_perm_hidden]
 ] + support_vehicles_west;
 
@@ -362,7 +362,7 @@ GRLIB_vehicle_whitelist = [
 	ammobox_o_typename,
 	ammobox_i_typename,
 	mobile_respawn,
-	basic_weapon_typename,
+	fuelbarrel_typename,
 	medicalbox_typename
 ] + GRLIB_vehicle_whitelist_west + opfor_statics;
 
@@ -562,6 +562,7 @@ GRLIB_Ammobox_keep = [
 	Box_Support_typename,
 	Box_Launcher_typename,
 	Box_Special_typename,
+	basic_weapon_typename,
 	"mission_USLaunchers",
 	"CUP_LocalBasicWeaponsBox",
 	"gm_AmmoBox_1000Rnd_762x51mm_ap_DM151_g3"
