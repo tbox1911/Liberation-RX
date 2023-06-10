@@ -7,12 +7,12 @@ if (!isNil "_my_dog") then {
 		_msg = format [localize "STR_DISMISS_DOG"];
 		_result = [_msg, localize "STR_WARNING", true, true] call BIS_fnc_guiMessage;
 		if (_result) then {
+			player setVariable ["my_dog", nil, true];
 			_my_dog setDir (_my_dog getDir player);
 			playSound3D ["a3\sounds_f\ambient\animals\dog2.wss", _my_dog, false, getPosASL _my_dog, 2, 0.8, 0];
 			_my_dog playMoveNow "Dog_Idle_Bark";
 			sleep 3;
 			deleteVehicle _my_dog;
-			player setVariable ["my_dog", nil, true];
 		};
 	};
 
