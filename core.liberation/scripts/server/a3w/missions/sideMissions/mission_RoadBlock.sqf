@@ -35,7 +35,7 @@ _setupObjects =
 				_no_blu = (([_missionPos, false] call F_getNearestBluforObjective) select 1 > (GRLIB_sector_size + 100));
 
 				if (_no_road && _no_water && _no_build && _no_blu) then {
-					_roads = _missionPos nearRoads 40;
+					_roads = _missionPos nearRoads 35;
 					_valid = true;
 					{
 						if (_missionPos distance2D _x < 20) exitWith { _valid = false };
@@ -55,7 +55,7 @@ _setupObjects =
 	if (count _missionPos == 0) exitWith { false };		// no location found
 
 	//----- build Check point ---------------------------------
-	_road_dir = _missionPos getDir ((_missionPos nearRoads 40) select 0);
+	_road_dir = _missionPos getDir ((_missionPos nearRoads 35) select 0);
 	_bunker_typename = selectRandom ["Land_BagBunker_Small_F"];
 	_bunker = createVehicle [_bunker_typename, _missionPos, [], 0, "None"];
 	_bunker setVectorDirAndUp [[-cos (_road_dir - 180), sin (_road_dir - 180), 0] vectorCrossProduct surfaceNormal _missionPos, surfaceNormal _missionPos];
