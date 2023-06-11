@@ -2,7 +2,7 @@ private _ret = false;
 
 private _alive = alive player;
 private _onfoot = isNull objectParent player;
-private _no_uav = isNull getConnectedUAV player;
+private _no_uav = ((UAVControl (getConnectedUAV player)) select 1 == "");
 private _R3F_move = isNull R3F_LOG_joueur_deplace_objet;
 private _noflight = (isTouchingGround player || getPos player select 2 <= 1);
 private _notunnel = !(player getVariable ["SOG_player_in_tunnel", false]);
