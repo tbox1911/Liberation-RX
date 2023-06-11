@@ -34,9 +34,8 @@ private _para_group = [markerpos _spawnsector, _unitclass, GRLIB_side_enemy, "pa
 [_newvehicle, _targetpos, _pilot_group, _para_group] spawn {
 	params [ "_newvehicle", "_targetpos", "_pilot_group", "_para_group"];
 	private ["_waypoint"];
-	while {(count (waypoints _pilot_group)) != 0} do {deleteWaypoint ((waypoints _pilot_group) select 0);};
-	while {(count (waypoints _para_group)) != 0} do {deleteWaypoint ((waypoints _para_group) select 0);};
-	sleep 1;
+	[_pilot_group] call F_deleteWaypoints;
+	[_para_group] call F_deleteWaypoints;
 
 	_waypoint = _pilot_group addWaypoint [ _targetpos, 300];
 	_waypoint setWaypointType "MOVE";
@@ -77,9 +76,8 @@ private _para_group = [markerpos _spawnsector, _unitclass, GRLIB_side_enemy, "pa
 	sleep 3;
 	{ _x allowDamage true } foreach (units _para_group);
 
-	while {(count (waypoints _pilot_group)) != 0} do {deleteWaypoint ((waypoints _pilot_group) select 0);};
-	while {(count (waypoints _para_group)) != 0} do {deleteWaypoint ((waypoints _para_group) select 0);};
-	sleep 1;
+	[_pilot_group] call F_deleteWaypoints;
+	[_para_group] call F_deleteWaypoints;
 
 	_waypoint = _pilot_group addWaypoint [ _targetpos, 200];
 	_waypoint setWaypointBehaviour "COMBAT";

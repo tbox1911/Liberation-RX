@@ -98,7 +98,7 @@ while {alive _unit} do {
 			
 			private _nearest_sector = [(sectors_allSectors - blufor_sectors), _unit] call F_nearestPosition;
 			if (typeName _nearest_sector == "STRING") then {
-				while {(count (waypoints _flee_grp)) != 0} do {deleteWaypoint ((waypoints _flee_grp) select 0);};
+				[_flee_grp] call F_deleteWaypoints;
 				{_x doFollow leader _flee_grp} foreach units _flee_grp;
 
 				_waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];

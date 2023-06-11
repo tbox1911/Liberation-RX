@@ -75,3 +75,4 @@ F_startAnimMP = compileFinal preprocessFileLineNumbers "scripts\shared\functions
 F_deathSound = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_deathSound.sqf";
 F_getCargo = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getCargo.sqf";
 F_setCargo = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_setCargo.sqf";
+F_deleteWaypoints = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_deleteWaypoints.sqf";

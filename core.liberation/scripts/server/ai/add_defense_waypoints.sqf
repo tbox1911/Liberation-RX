@@ -12,8 +12,7 @@ private _patrolcorners = [
 	[ (_flagpos select 0) - _radius, (_flagpos select 1) + _radius, 0 ]
 ];
 
-while {(count (waypoints _grp)) != 0} do {deleteWaypoint ((waypoints _grp) select 0)};
-sleep 1;
+[_grp] call F_deleteWaypoints;
 {
 	if (_patrol_in_water) then {
 		_waypoint = _grp addWaypoint [_x, 0];
@@ -42,7 +41,7 @@ waitUntil {
 };
 
 if ( { alive _x } count (units _grp) > 0 ) then {
-	while {(count (waypoints _grp)) != 0} do { deleteWaypoint ((waypoints _grp) select 0) };
+	[_grp] call F_deleteWaypoints;
 	{_x doFollow leader _grp} foreach units _grp;
 
 	_basepos = getPosATL (leader _grp);

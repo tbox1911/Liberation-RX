@@ -1,7 +1,7 @@
 params ["_grp"];
 private ["_waypoint", "_basepos", "_nearestroad"];
 
-while {(count (waypoints _grp)) != 0} do {deleteWaypoint ((waypoints _grp) select 0);};
+[_grp] call F_deleteWaypoints;
 {_x doFollow leader _grp} foreach units _grp;
 
 _civveh = objectParent (leader _grp);

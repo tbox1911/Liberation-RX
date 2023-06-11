@@ -34,7 +34,7 @@ private _patrolcorners = [
 
 private _grppatrol = [_patrolcorners select 0, ([] call F_getAdaptiveSquadComp), GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
 
-while {(count (waypoints _grppatrol)) != 0} do {deleteWaypoint ((waypoints _grppatrol) select 0);};
+[_grppatrol] call F_deleteWaypoints;
 {
 	_waypoint = _grppatrol addWaypoint [_x, 0];
 	_waypoint setWaypointType "MOVE";

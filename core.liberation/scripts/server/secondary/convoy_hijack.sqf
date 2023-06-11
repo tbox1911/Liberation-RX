@@ -56,7 +56,7 @@ sleep 2;
 
 //-----------------------------------------
 // Waypoints
-while {(count (waypoints _convoy_group)) != 0} do {deleteWaypoint ((waypoints _convoy_group) select 0);};
+[_convoy_group] call F_deleteWaypoints;
 {_x doFollow leader _convoy_group} foreach units _convoy_group;
 
 for "_i" from 1 to ((count _convoy_destinations) -1) do {

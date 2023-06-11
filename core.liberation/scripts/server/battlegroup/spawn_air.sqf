@@ -24,7 +24,7 @@ for "_i" from 1 to _planes_number do {
 	sleep 5;
 };
 
-while {(count (waypoints _air_grp)) != 0} do {deleteWaypoint ((waypoints _air_grp) select 0);};
+[_air_grp] call F_deleteWaypoints;
 {_x doFollow leader _air_grp} foreach units _air_grp;
 sleep 1;
 
@@ -54,7 +54,7 @@ while {	sleep 5; {( alive _x )} count (units _air_grp) > 0 } do {
 				private _flee_grp = createGroup [_side, true];
 				[_unit] joinSilent _flee_grp;
 
-				while {(count (waypoints _flee_grp)) != 0} do {deleteWaypoint ((waypoints _flee_grp) select 0);};
+				[_flee_grp] call F_deleteWaypoints;
 				{_x doFollow leader _flee_grp} foreach units _flee_grp;
 
 				_waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];

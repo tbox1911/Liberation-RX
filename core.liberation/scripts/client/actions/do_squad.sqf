@@ -4,7 +4,7 @@ private _my_squad = player getVariable ["my_squad", nil];
 if (!isNil "_my_squad") then {
 
 	if (!isNil "_my_squad_order") then {
-		while {(count (waypoints _my_squad)) != 0} do {deleteWaypoint ((waypoints _my_squad) select 0);};
+		[_my_squad] call F_deleteWaypoints;
 		player setVariable ["my_squad_order", _my_squad_order, true];
 		_leader = leader _my_squad;
 

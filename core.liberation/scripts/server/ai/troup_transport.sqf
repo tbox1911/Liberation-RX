@@ -36,7 +36,7 @@ sleep 2;
 
 // transport vehicle
 if ((alive _troup_transport) && (alive (driver _troup_transport))) then {
-	while {(count (waypoints _transport_group)) != 0} do {deleteWaypoint ((waypoints _transport_group) select 0);};
+	[_transport_group] call F_deleteWaypoints;
 	private _waypoint = _transport_group addWaypoint [_objective_pos, 100];
 	_waypoint setWaypointType "SAD";
 	_waypoint setWaypointSpeed "NORMAL";

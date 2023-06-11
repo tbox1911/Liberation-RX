@@ -71,7 +71,7 @@ _setupObjects =
 	_aiGroup setSpeedMode "LIMITED";
 
 	// behaviour on waypoints
-	while {(count (waypoints _aiGroup)) != 0} do {deleteWaypoint ((waypoints _aiGroup) select 0);};
+	[_aiGroup] call F_deleteWaypoints;
 	{
 		_waypoint = _aiGroup addWaypoint [markerPos (_x select 0), 0];
 		_waypoint setWaypointType "MOVE";

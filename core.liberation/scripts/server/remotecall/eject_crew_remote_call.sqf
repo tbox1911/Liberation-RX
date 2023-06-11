@@ -28,7 +28,7 @@ if (side _grp == GRLIB_side_civilian && !([_player, _vehicle] call is_owner)) th
 	private _nearest_sector = [sectors_allSectors, _vehicle] call F_nearestPosition;
 
 	if (typeName _nearest_sector == "STRING") then {
-		while {(count (waypoints _grp)) != 0} do {deleteWaypoint ((waypoints _grp) select 0);};
+		[_grp] call F_deleteWaypoints;
 		{_x doFollow leader _grp} foreach units _grp;
 
 		_waypoint = _grp addWaypoint [markerPos _nearest_sector, 0];
