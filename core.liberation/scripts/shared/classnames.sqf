@@ -377,6 +377,7 @@ GRLIB_vehicle_blacklist = [
 	fuelbarrel_typename,
 	foodbarrel_typename,
 	medicalbox_typename,
+	land_cutter_typename,
 	basic_weapon_typename
 ] + GRLIB_vehicle_blacklist_west;
 
