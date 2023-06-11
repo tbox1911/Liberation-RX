@@ -5,7 +5,7 @@ blacklisted_bag = [
 	"RHS_Metis_Gun_Bag",
 	"RHS_Metis_Tripod_Bag",
 	"RHS_Kornet_Gun_Bag",
-	"RHS_Kornet_Tripod_Bag",	
+	"RHS_Kornet_Tripod_Bag",
 	"RHS_AGS30_Tripod_Bag",
 	"RHS_AGS30_Gun_Bag",
 	"RHS_DShkM_Gun_Bag",
@@ -25,13 +25,13 @@ blacklisted_bag = [
 	"RHS_SPG9_Gun_Bag",
 	"RHS_SPG9_Tripod_Bag",
 	"rhs_Tow_Gun_Bag",
-	"rhs_TOW_Tripod_Bag"	
+	"rhs_TOW_Tripod_Bag"
 ];
 
 blacklisted_weapon = [
 	"rhs_mag_fakeMuzzle1",
 	"rhs_fakemag",
-	"rhs_mag_fold_stock"	
+	"rhs_mag_fold_stock"
 ];
 
 whitelisted_from_arsenal = [
