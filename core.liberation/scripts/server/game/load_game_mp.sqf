@@ -311,6 +311,8 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
         };
 
 		if (_nextclass == land_cutter_typename) then {
+			_nextpos set [2, 0];
+			_nextbuilding setPosATL _nextpos;
 			{_x hideObjectGlobal true} forEach (nearestTerrainObjects [_nextpos, GRLIB_clutter_cutter, 20]);
 		};
 
