@@ -4,6 +4,8 @@ blacklisted_bag = [
 	"RHS_Podnos_Gun_Bag",
 	"RHS_Metis_Gun_Bag",
 	"RHS_Metis_Tripod_Bag",
+	"RHS_Kornet_Gun_Bag",
+	"RHS_Kornet_Tripod_Bag",	
 	"RHS_AGS30_Tripod_Bag",
 	"RHS_AGS30_Gun_Bag",
 	"RHS_DShkM_Gun_Bag",
