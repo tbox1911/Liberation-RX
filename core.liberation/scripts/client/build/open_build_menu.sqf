@@ -82,13 +82,13 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 		if (_near_outpost && _squad_leader && count _build_list == 0) then {
 			_row = (_display displayCtrl (110)) lnbAddRow [ "       Unavailable at Outpost.","-","-","-"];
 			(_display displayCtrl (110)) lnbSetData  [[_row, 0], "false"];
-			(_display displayCtrl (162)) ctrlSetText getMissionPath "res\preview\no_image.jpg";
+			(_display displayCtrl (162)) ctrlSetText getMissionPath "res\preview\unavailable.jpg";
 		};
 
 		if (!_squad_leader && count _build_list == 0) then {
 			_row = (_display displayCtrl (110)) lnbAddRow [ "       Only for Squad Leader.","-","-","-"];
 			(_display displayCtrl (110)) lnbSetData  [[_row, 0], "false"];
-			(_display displayCtrl (162)) ctrlSetText getMissionPath "res\preview\no_image.jpg";
+			(_display displayCtrl (162)) ctrlSetText getMissionPath "res\preview\unavailable.jpg";
 		};
 
 		_old_buildtype = buildtype;
@@ -220,7 +220,9 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 				_base_link = _linked_state select 2;
 			};
 
-			if ( buildtype != 8 ) then {
+			if ( buildtype == 8 ) then {
+				_picture = getMissionPath "res\preview\blufor_squad.jpg";
+			} else {
 				if (_picture == "") then { _picture = getText (configFile >> "CfgVehicles" >> _build_class >> "editorPreview") };
 			};
 			if (_picture == "") then { _picture = getMissionPath "res\preview\no_image.jpg" };
