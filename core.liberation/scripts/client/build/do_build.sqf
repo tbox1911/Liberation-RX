@@ -378,29 +378,51 @@ while { true } do {
 					player linkItem "B_UavTerminal";
 				};
 
-				// Default Paint
-				if ( _classname in ["I_E_Truck_02_MRL_F"] ) then {
-					[_vehicle, ["EAF",1], true ] call BIS_fnc_initVehicle;
-				};
+				if (_nextclass isKindOf "LandVehicle" || _nextclass isKindOf "Air" || _nextclass isKindOf "Ship") then {
+					// Give real truck horn to APC,Truck,Tank
+					if ( _vehicle isKindOf "Wheeled_APC_F" || _vehicle isKindOf "Tank_F" || _vehicle isKindOf "Truck_F" ) then {
+						_vehicle removeWeaponTurret ["TruckHorn", [-1]];
+						_vehicle removeWeaponTurret ["TruckHorn2", [-1]];
+						_vehicle addWeaponTurret ["TruckHorn3", [-1]];
+					};
 
-				// CUP remove tank panel
-				if (GRLIB_CUPV_enabled && _classname isKindOf "Tank") then {
-					[_vehicle, false, ["hide_front_ti_panels",1,"hide_cip_panel_rear",1,"hide_cip_panel_bustle",1]] call BIS_fnc_initVehicle;
-				};
+					// CUP remove tank panel
+					if (GRLIB_CUPV_enabled) then {
+						[_vehicle, false, ["hide_front_ti_panels",1,"hide_cip_panel_rear",1,"hide_cip_panel_bustle",1]] call BIS_fnc_initVehicle;
+					};
 
-				// Color
-				if ( count _color > 0 ) then {
-					[_vehicle, _color, "N/A"] call RPT_fnc_TextureVehicle;
-				};
+					// RHS remove tank panel
+					if (GRLIB_RHS_enabled) then {
+						[_vehicle, false, ["IFF_Panels_Hide",1,"Miles_Hide",1]] call BIS_fnc_initVehicle;
+					};
 
-				// Composant
-				if ( count _compo > 0 ) then {
-					[_vehicle, _compo] call RPT_fnc_CompoVehicle;
-				};
+					// Color
+					if ( count _color > 0 ) then {
+						[_vehicle, _color, "N/A"] call RPT_fnc_TextureVehicle;
+					};
 
-				// Remaining Ammo
-				if ( _ammo > 0 ) then {
-					_vehicle setVehicleAmmo _ammo;
+					// Composant
+					if ( count _compo > 0 ) then {
+						[_vehicle, _compo] call RPT_fnc_CompoVehicle;
+					};
+
+					// Remaining Ammo
+					if ( _ammo > 0 ) then {
+						_vehicle setVehicleAmmo _ammo;
+					};
+
+					// A3 / R3F Inventory
+					if ( buildtype == 10 && !(_classname in GRLIB_vehicle_whitelist) ) then {
+						[_vehicle, _lst_a3] call F_setCargo;
+						if (!GRLIB_ACE_enabled) then {
+							[_vehicle, _lst_r3f] call R3F_LOG_FNCT_transporteur_charger_auto;
+						};
+					};
+
+					// Default Paint
+					if ( _classname in ["I_E_Truck_02_MRL_F"] ) then {
+						[_vehicle, ["EAF",1], true ] call BIS_fnc_initVehicle;
+					};
 				};
 
 				// Automatic ReAmmo
@@ -408,24 +430,9 @@ while { true } do {
 					_vehicle setAmmoCargo 0;
 				};
 
-				// Give real truck horn to APC,Truck,Tank
-				if ( _vehicle isKindOf "Wheeled_APC_F" || _vehicle isKindOf "Tank_F" || _vehicle isKindOf "Truck_F" ) then {
-					_vehicle removeWeaponTurret ["TruckHorn", [-1]];
-					_vehicle removeWeaponTurret ["TruckHorn2", [-1]];
-					_vehicle addWeaponTurret ["TruckHorn3", [-1]];
-				};
-
 				// Mobile respawn
 				if ( _classname == mobile_respawn ) then {
 					[_vehicle, "add"] remoteExec ["addel_beacon_remote_call", 2];
-				};
-
-				// A3 / R3F Inventory
-				if ( buildtype == 10 && !(_classname in GRLIB_vehicle_whitelist) ) then {
-					[_vehicle, _lst_a3] call F_setCargo;
-					if (!GRLIB_ACE_enabled) then {
-						[_vehicle, _lst_r3f] call R3F_LOG_FNCT_transporteur_charger_auto;
-					};
 				};
 
 				// Personal Box
@@ -473,7 +480,7 @@ while { true } do {
 					[(getPos _vehicle), _classname] remoteExec ["build_fob_remote_call", 2];
 					_allow_damage = false;
 				};
-				
+
 				sleep 0.3;
 				if (_allow_damage) then {
 					_vehicle allowDamage true;
@@ -506,7 +513,7 @@ while { true } do {
 			};
 			if ( _idactmode != -1 ) then {
 				player removeAction _idactmode;
-			};			
+			};
 			player removeAction _idactrotate;
 			player removeAction _idactplace;
 

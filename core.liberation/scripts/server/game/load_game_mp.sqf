@@ -277,17 +277,22 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 				if (count _compo > 0) then {
 					[_nextbuilding, _compo]  call RPT_fnc_CompoVehicle;
 				};
-				if (GRLIB_CUPV_enabled && _nextclass isKindOf "Tank") then {
-					[_nextbuilding, false, ["hide_front_ti_panels",1,"hide_cip_panel_rear",1,"hide_cip_panel_bustle",1]] call BIS_fnc_initVehicle;
-				};
-				if (count _lst_a3 > 0) then {
-					[_nextbuilding, _lst_a3] call F_setCargo;
-				};
-				if (count _lst_r3f > 0) then {
-					[_nextbuilding, _lst_r3f] call load_object_direct;
-				};
-				if (count _lst_grl > 0) then {
-					{[_nextbuilding, _x] call attach_object_direct} forEach _lst_grl;
+				if (_nextclass isKindOf "LandVehicle" || _nextclass isKindOf "Air" || _nextclass isKindOf "Ship") then {
+					if (GRLIB_CUPV_enabled) then {
+						[_nextbuilding, false, ["hide_front_ti_panels",1,"hide_cip_panel_rear",1,"hide_cip_panel_bustle",1]] call BIS_fnc_initVehicle;
+					};
+					if (GRLIB_RHS_enabled) then {
+						[_vehicle, false, ["IFF_Panels_Hide",1,"Miles_Hide",1]] call BIS_fnc_initVehicle;
+					};
+					if (count _lst_a3 > 0) then {
+						[_nextbuilding, _lst_a3] call F_setCargo;
+					};
+					if (count _lst_r3f > 0) then {
+						[_nextbuilding, _lst_r3f] call load_object_direct;
+					};
+					if (count _lst_grl > 0) then {
+						{[_nextbuilding, _x] call attach_object_direct} forEach _lst_grl;
+					};
 				};
 			};
 		};
@@ -338,7 +343,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 		};
 		if ((typeOf _x) isKindOf "Land_PortableHelipadLight_01_F") then {
 			_allow_damage = false;
-		};	
+		};
 		if ( _allow_damage ) then { _x allowDamage true };
 	} foreach _buildings_created;
 	sleep 1;
