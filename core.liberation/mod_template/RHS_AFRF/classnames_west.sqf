@@ -52,17 +52,17 @@ units_loadout_overide = [];
 
 // *** RHS NAPA ***
 resistance_squad = [
-	"rhsgref_nat_pmil_commander",
-	"rhsgref_nat_pmil_specialist_aa",
-	"rhsgref_nat_pmil_machinegunner",
-	"rhsgref_nat_pmil_grenadier_rpg",
-	"rhsgref_nat_pmil_saboteur",
-	"rhsgref_nat_pmil_medic",
-	"rhsgref_nat_pmil_rifleman_akm",
-	"rhsgref_nat_pmil_rifleman_aksu",
-	"rhsgref_nat_pmil_grenadier",
-	"rhsgref_nat_pmil_rifleman",
-	"rhsgref_nat_pmil_hunter"
+	"rhs_vdv_mflora_efreitor",
+	"rhs_vdv_mflora_aa",
+	"rhs_vdv_mflora_grenadier_rpg",
+	"rhs_vdv_mflora_medic",
+	"rhs_vdv_mflora_marksman",
+	"rhs_vdv_mflora_marksman",
+	"rhs_vdv_mflora_rifleman_lite",
+	"rhs_vdv_mflora_rifleman_lite",
+	"rhs_vdv_mflora_arifleman_rpk",
+	"rhs_vdv_mflora_LAT",
+	"rhs_vdv_mflora_grenadier"
 ];
 
 resistance_squad_static = "rhs_Igla_AA_pod_msv";
