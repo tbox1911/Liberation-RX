@@ -51,6 +51,7 @@ GRLIB_SELL_Group = createGroup [GRLIB_side_civilian, true];
 {
     _manPos = _x;
     _man = GRLIB_SELL_Group createUnit [SELL_Man, _manPos, [], 5, "NONE"];
+    [_man] joinSilent GRLIB_SELL_Group;
     _man allowDamage false;
     _man setPosATL (_manPos vectorAdd [0, 0, 0.1]);
     doStop _man;
@@ -85,6 +86,7 @@ GRLIB_SHOP_Group = createGroup [GRLIB_side_civilian, true];
     _deskDir = (180 + _deskDir);
     _manPos = (ASLToATL _deskPos) vectorAdd ([[0, -0.7, 0.1], -_deskDir] call BIS_fnc_rotateVector2D);
     _man = GRLIB_SHOP_Group createUnit [SHOP_Man, zeropos, [], 0, "NONE"];
+    [_man] joinSilent GRLIB_SHOP_Group;
     _man allowDamage false;
     _man disableCollisionWith _desk;
     _man setDir _deskDir;
