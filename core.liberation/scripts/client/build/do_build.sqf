@@ -378,7 +378,7 @@ while { true } do {
 					player linkItem "B_UavTerminal";
 				};
 
-				if (_nextclass isKindOf "LandVehicle" || _nextclass isKindOf "Air" || _nextclass isKindOf "Ship") then {
+				if (_classname isKindOf "LandVehicle" || _classname isKindOf "Air" || _classname isKindOf "Ship") then {
 					// Give real truck horn to APC,Truck,Tank
 					if ( _vehicle isKindOf "Wheeled_APC_F" || _vehicle isKindOf "Tank_F" || _vehicle isKindOf "Truck_F" ) then {
 						_vehicle removeWeaponTurret ["TruckHorn", [-1]];
