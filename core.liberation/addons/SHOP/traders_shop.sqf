@@ -33,7 +33,7 @@ private _buy_list = [opfor_recyclable, {
 private _rank = player getVariable ["GRLIB_Rank", "Private"];
 private _buy_list_dlg = [];
 {
-	private _price = round ((_x select 2) * (1 + _ratio));
+	private _price = round (([_x select 0] call _getPrice) * (1 + _ratio));
 	if (_rank == "Super Colonel") then { _price = round (_price / 2)};
 	_buy_list_dlg pushBack [_x select 0, _price];
 } forEach _buy_list_static + _buy_list;
