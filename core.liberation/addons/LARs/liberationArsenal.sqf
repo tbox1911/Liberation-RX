@@ -74,13 +74,9 @@ GRLIB_whitelisted_from_arsenal = [mobile_respawn_bag, "B_Parachute"] + whitelist
 
 // TFAR radio
 GRLIB_TFR_radios = [];
-GRLIB_TFR_BETA_radios = []; // For TFAR BETA radios since classnames got changed
 if (GRLIB_TFR_enabled) then {
-	GRLIB_TFR_radios = ["tf_anprc152","tf_anprc148jem","tf_fadak","tf_anprc154","tf_rf7800str","tf_pnr1000a"]; // Old radio names. TFAR changed them at some point
+	GRLIB_TFR_radios = ["TFAR_anprc152","TFAR_anprc148jem","TFAR_fadak","TFAR_anprc154","TFAR_rf7800str","TFAR_pnr1000a"];
 	GRLIB_whitelisted_from_arsenal append GRLIB_TFR_radios;
-	
-	GRLIB_TFR_BETA_radios = ["TFAR_anprc152","TFAR_anprc148jem","TFAR_fadak","TFAR_anprc154","TFAR_rf7800str","TFAR_pnr1000a"];
-	GRLIB_whitelisted_from_arsenal append GRLIB_TFR_BETA_radios;
 };
 
 // Mod signature
