@@ -82,9 +82,9 @@ heavy_vehicles = [
 	["O_T_MBT_02_cannon_ghex_F",15,1500,15,GRLIB_perm_tank],
 	["O_T_MBT_04_cannon_F",15,2500,15,GRLIB_perm_air],
 	["O_T_MBT_04_command_F",15,2500,15,GRLIB_perm_air],
-	["I_MBT_03_cannon_F",15,4500,15,GRLIB_perm_max],
-	["O_T_MBT_02_arty_F",15,3500,15,GRLIB_perm_max],
-	["I_E_Truck_02_MRL_F",15,3500,15,GRLIB_perm_max]
+	["I_MBT_03_cannon_F",15,3500,15,GRLIB_perm_max],
+	["O_T_MBT_02_arty_F",15,4000,15,GRLIB_perm_max],
+	["I_E_Truck_02_MRL_F",15,4500,15,GRLIB_perm_max]
 ];
 
 air_vehicles = [

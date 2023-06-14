@@ -72,8 +72,8 @@ heavy_vehicles = [
 	["I_APC_Wheeled_03_cannon_F",10,500,20,GRLIB_perm_tank],
 	["I_APC_tracked_03_cannon_F",10,500,20,GRLIB_perm_tank],
 	["I_MBT_01_cannon_F",15,1000,25,GRLIB_perm_tank],
-	["I_MBT_03_cannon_F",15,4000,25,GRLIB_perm_max],
-	["I_Truck_02_MRL_F",15,3500,25,GRLIB_perm_max]
+	["I_MBT_03_cannon_F",15,3500,25,GRLIB_perm_max],
+	["I_Truck_02_MRL_F",15,4000,25,GRLIB_perm_max]
 ];
 
 air_vehicles = [
