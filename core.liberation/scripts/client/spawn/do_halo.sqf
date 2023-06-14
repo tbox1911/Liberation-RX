@@ -51,16 +51,11 @@ closeDialog 0;
 [ "halo_map_event", "onMapSingleClick" ] call BIS_fnc_removeStackedEventHandler;
 
 if ( dojump > 0 ) then {
-	halo_position = [ halo_position, floor(random 250), floor(random 360) ] call BIS_fnc_relPos;
+	halo_position = [ halo_position, floor(random 100), floor(random 360) ] call BIS_fnc_relPos;
 	if (_unit isKindOf "LandVehicle" || _unit isKindOf "Ship") then {
 		if ([_cost] call F_pay) then {
 			halo_position set [2, 400];
-			_unit setPos halo_position; 
-			[_unit, objNull] spawn F_addParachute;
-			{
-				if ((_unit distance2D _x) <= 500) then {["parasound"] remoteExec ["playSound", owner _x]};
-			} forEach (AllPlayers - (entities "HeadlessClient_F"));			
-			gamelogic globalChat format ["Airdrop vehicle %1 at pos %2", [typeOf _unit] call F_getLRXName, halo_position];
+			[player, _unit, halo_position] remoteExec ["airdrop_remote_call", 2];
 		};
 	} else {
 		playSound "parasound";
