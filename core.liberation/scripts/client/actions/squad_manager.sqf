@@ -12,8 +12,10 @@ while { true } do {
 		//get in
 		if ( _veh_player != player && _leader distance2D player <= 15 && count (waypoints _my_squad) == 0 ) then {
 			{
-				_cargo_seat_free = ( (fullCrew [_veh_player, "cargo", true] - fullCrew [_veh_player, "cargo", false]) +
-									 (fullCrew [_veh_player, "Turret", true] - fullCrew [_veh_player, "Turret", false]) );
+				_cargo_seat_free = (
+					(fullCrew [_veh_player, "cargo", true] - fullCrew [_veh_player, "cargo", false]) +
+					(fullCrew [_veh_player, "turret", true] - fullCrew [_veh_player, "turret", false])
+				);
 
 				if (vehicle _x != _veh_player && count _cargo_seat_free > 0 ) then {
 

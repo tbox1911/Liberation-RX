@@ -12,9 +12,8 @@ _newvehicle setVariable ["GRLIB_counter_TTL", round(time + 3600)];
 } foreach (crew _newvehicle);
 sleep 1;
 
-private _cargo_seat_free = count (fullCrew [_newvehicle, "cargo", true] - fullCrew [_newvehicle, "cargo", false]);
+private _cargo_seat_free = _newvehicle emptyPositions "Cargo";
 if (_cargo_seat_free > 8) then {_cargo_seat_free = 8};
-if ((typeOf _newvehicle) isKindOf "CUP_MH6_TRANSPORT") then {_cargo_seat_free = 6};
 diag_log format ["Spawn (%1) ParaTroopers on sector %2 at %3", _cargo_seat_free, _spawnsector, time];
 
 private _unitclass = [];
