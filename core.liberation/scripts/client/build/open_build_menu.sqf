@@ -65,6 +65,9 @@ private _is_linked = {
 	[_linked, _linked_unlocked, _base_link];
 };
 
+ctrlEnable [120, false];
+ctrlEnable [121, false];
+
 while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 	if (_old_buildtype != buildtype || _refresh) then {
 		lbClear 110;
@@ -238,10 +241,6 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 		};
 	};
 
-	ctrlEnable [ 120, _affordable && _linked_unlocked ];
-	ctrlShow [ 121, _iscommander && buildtype in [2,3,4,5]];
-	ctrlEnable [ 121, _affordable_crew && _linked_unlocked];
-
 	ctrlSetText [131, format [ "%1 : %2/%3", localize "STR_MANPOWER", resources_infantry, infantry_cap] ];
 	ctrlSetText [132, format [ "%1 : %2", localize "STR_AMMO", (player getVariable ["GREUH_ammo_count",0])] ];
 	ctrlSetText [133, format [ "%1 : %2", localize "STR_FUEL", (player getVariable ["GREUH_fuel_count",0])] ];
@@ -258,9 +257,11 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 
 	buildindex = _selected_item;
 
+	ctrlEnable [ 120, _affordable && _linked_unlocked && dobuild == 0];
+	ctrlShow [ 121, _iscommander && buildtype in [2,3,4,5]];
+	ctrlEnable [ 121, _affordable_crew && _linked_unlocked && dobuild == 0];
+
 	if (buildtype == 1 && dobuild != 0) then {
-		ctrlEnable [120, false];
-		ctrlEnable [121, false];
 		waitUntil {sleep 2; dobuild == 0};
 		_refresh = true;
 	};
