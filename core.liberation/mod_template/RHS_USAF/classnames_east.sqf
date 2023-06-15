@@ -112,8 +112,7 @@ opfor_vehicles = [
 	"rhsusf_m1a2sep2wd_usarmy",
 	"rhsusf_m1a1fep_wd",
 	"rhsusf_m1a1fep_od",
-	"rhsusf_m1a1hc_wd",
-	"rhsusf_M142_usmc_WD"
+	"rhsusf_m1a1hc_wd"
 ];
 
 opfor_vehicles_low_intensity = [

@@ -91,8 +91,8 @@ heavy_vehicles = [
 	["rhs_bmp1k_msv",10,160,10,GRLIB_perm_tank],	
 	["rhs_bmp1p_msv",10,160,10,GRLIB_perm_air],
 	["rhs_prp3_msv",10,170,10,GRLIB_perm_tank],
-	["rhs_bmp3mera_msv",180,80,10,GRLIB_perm_tank],                     
-	["rhs_bmp2k_msv",15,200,20,GRLIB_perm_air],
+	["rhs_bmp3mera_msv",10,280,10,GRLIB_perm_tank],                     
+	["rhs_bmp2k_msv",15,240,20,GRLIB_perm_air],
 	["rhs_t72bb_tv",15,500,20,GRLIB_perm_tank],
 	["rhs_t72be_tv",20,600,25,GRLIB_perm_air],
 	["rhs_t80bvk",20,500,25,GRLIB_perm_tank],
@@ -100,7 +100,7 @@ heavy_vehicles = [
 	["rhs_t90sab_tv",20,1500,25,GRLIB_perm_tank],
 	["rhs_t90saa_tv",20,1550,25,GRLIB_perm_air],
 	["rhs_zsu234_aa",20,750,25,GRLIB_perm_air],
-	["rhs_t14_tv",150,1500,300,GRLIB_perm_max],
+	["rhs_t14_tv",15,1500,50,GRLIB_perm_max],
 	["rhs_2s1_tv",50,2000,100,GRLIB_perm_max],
 	["rhs_2s3_tv",50,2300,100,GRLIB_perm_max]
 ];

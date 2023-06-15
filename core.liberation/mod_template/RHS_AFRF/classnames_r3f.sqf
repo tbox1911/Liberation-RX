@@ -13,7 +13,9 @@ R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
 	"RHS_Mi24_base",
 	"RHS_Mi8_base",
 	"rhs_mi28_base",
-	"rhs_mi28n_base"
+	"rhs_mi28n_base",
+	"rhs_ka60_c",
+	"rhs_ka60_grey"
 ];
 
 R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
@@ -22,6 +24,8 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 
 R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 [
+	["rhs_ka60_c",60],
+	["rhs_ka60_grey",60],
 	["RHS_Mi24_base",25],
 	["RHS_Mi8_base",40],
 	["rhs_mi28_base",50],
