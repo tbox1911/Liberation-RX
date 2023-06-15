@@ -54,7 +54,7 @@ if ( dojump > 0 ) then {
 	halo_position = [ halo_position, floor(random 100), floor(random 360) ] call BIS_fnc_relPos;
 	if (_unit isKindOf "LandVehicle" || _unit isKindOf "Ship") then {
 		if ([_cost] call F_pay) then {
-			halo_position set [2, 400];
+			halo_position set [2, 1000];
 			[player, _unit, halo_position] remoteExec ["airdrop_remote_call", 2];
 		};
 	} else {
