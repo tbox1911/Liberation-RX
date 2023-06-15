@@ -15,7 +15,8 @@ if (isNil "_forced_pos") then {
 	_text = format ["Player %1 call Air Support.  Dropping: %2.", name _unit, ([_class] call F_getLRXName)];
 } else {
 	_pos = _forced_pos;
-	_class setPosATL _pos; 
+	_class setPos _pos;
+	sleep 1;
 	[_class, objNull] spawn F_addParachute;
 	_text = format ["Player %1 Air Drop vehicle %2 at %3.", name _unit, ([typeOf _class] call F_getLRXName), _pos];
 };
