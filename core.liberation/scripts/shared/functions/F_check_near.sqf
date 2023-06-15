@@ -33,6 +33,7 @@ switch ( _list ) do {
 	case "REAMMO_AI" : { _classlist = ai_resupply_sources};
 	case "REPAIR_AI" : { _classlist = vehicle_repair_sources};
 	case "REPAINT" : { _classlist = [repair_offroad, "Land_RepairDepot_01_civ_F"]};
+	case "WAREHOUSE" : { _classlist = [Warehouse_typename]};
 	default { _classlist = [] };
 };
 

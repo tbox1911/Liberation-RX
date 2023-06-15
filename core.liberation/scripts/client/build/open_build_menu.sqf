@@ -146,7 +146,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 
 			if ( buildtype == 6 ) then {
 				if (_build_class == Warehouse_typename) then {
-					if (count (player nearObjects [Warehouse_typename, GRLIB_fob_range]) > 0) then {
+					if ([player, "WAREHOUSE", GRLIB_fob_range, false] call F_check_near) then {
 						_affordable = false;
 					};
 				};
