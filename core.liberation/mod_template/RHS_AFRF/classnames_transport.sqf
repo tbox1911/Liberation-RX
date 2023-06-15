@@ -5,7 +5,8 @@
 
 box_transport_config = box_transport_config + [
     // the 'opfor_transport_truck' MUST be declared here
-	[ "rhs_gaz66_msv", -6.5, [0,-0.2,0.4], [0,-1.8,0.4] ],
+	[ "rhs_gaz66_msv", -4.5, [0,0.2,0.3], [0,-1.4,0.3] ],
+	[ "rhs_gaz66o_msv", -4.5, [0,0.2,0.3], [0,-1.4,0.3] ],
 	[ "rhs_kamaz5350_msv", -6.5, [0,0.8,0], [0,-0.8,0.0], [0,-2.5,0] ],
 	[ "rhs_kamaz5350_open_msv", -6.5, [0,0.8,0], [0,-0.8,0.0], [0,-2.5,0] ],
 	[ "RHS_Ural_Open_MSV_01", -6.5, [0,0.5,1.5], [0,-0.9,1.5], [0,-2.4,1.5] ],

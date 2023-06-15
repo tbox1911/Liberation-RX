@@ -72,7 +72,8 @@ light_vehicles = [
 	["O_Boat_Armed_01_hmg_F",5,30,5,GRLIB_perm_log],
 	["RHS_UAZ_MSV_01",1,10,1,0],
 	["O_G_Offroad_01_armed_F",1,50,1,GRLIB_perm_inf],
-	["rhs_gaz66_msv",1,15,1,0],
+	["rhs_gaz66o_msv",1,15,1,0],
+	["rhs_gaz66_msv",1,15,1,GRLIB_perm_inf],
 	["rhs_kamaz5350_open_msv",1,50,1,GRLIB_perm_inf],
 	["RHS_Ural_Open_MSV_01",1,50,1,GRLIB_perm_log],
 	["rhs_kraz255b1_cargo_open_msv",1,50,1,GRLIB_perm_tank],
@@ -271,7 +272,8 @@ GRLIB_AirDrop_3 = [			// MRAP 200
 ];
 
 GRLIB_AirDrop_4 = [			// Large Truck 300
-	"rhs_gaz66_msv"
+	"rhs_gaz66_msv",
+	"rhs_gaz66o_msv"
 ];
 
 GRLIB_AirDrop_5 = [			// APC 750
