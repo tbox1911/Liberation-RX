@@ -99,6 +99,7 @@ PAR_public_EH = {
 PAR_unit_eject = {
 	params ["_veh", "_unit"];
 	if (isNull _unit) exitWith {};
+	if (!alive _unit) exitWith {};
 	_unit allowDamage false;
 	unAssignVehicle _unit;
 	moveOut _unit;
