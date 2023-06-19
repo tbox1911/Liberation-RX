@@ -56,8 +56,8 @@ else
 				_objet attachTo [R3F_LOG_PUBVAR_point_attache, [] call R3F_LOG_FNCT_3D_tirer_position_degagee_ciel];
 				
 				systemChat format [STR_R3F_LOG_action_charger_fait,
-					getText (configOf _objet >> "displayName"),
-					getText (configOf _transporteur >> "displayName")];
+					[_objet] call F_getLRXName,
+					[_transporteur] call F_getLRXName];
 			}
 			else
 			{
@@ -66,7 +66,7 @@ else
 		}
 		else
 		{
-			hintC format [STR_R3F_LOG_objet_remorque_en_cours, getText (configOf _objet >> "displayName")];
+			hintC format [STR_R3F_LOG_objet_remorque_en_cours, [_objet] call F_getLRXName];
 		};
 	};
 	

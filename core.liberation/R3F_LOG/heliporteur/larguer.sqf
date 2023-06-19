@@ -34,7 +34,7 @@ else
 		[_objet, "detachSetVelocity", velocity _heliporteur] call R3F_LOG_FNCT_exec_commande_MP;
 	};
 
-	systemChat format [STR_R3F_LOG_action_heliport_larguer_fait, getText (configOf _objet >> "displayName")];
+	systemChat format [STR_R3F_LOG_action_heliport_larguer_fait, [_objet] call F_getLRXName];
 
 	R3F_LOG_mutex_local_verrou = false;
 };

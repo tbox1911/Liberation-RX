@@ -169,7 +169,7 @@ while {true} do
 				// Si l'objet a �t� cr�� depuis une usine, on ajoute la possibilit� de revendre � l'usine, quelque soit ses fonctionnalit�s logistiques
 				if (_objet getVariable ["R3F_LOG_CF_depuis_usine", false]) then
 				{
-					_objet addAction [("<t color=""#ff9600"">" + format [STR_R3F_LOG_action_revendre_usine_direct, getText (configOf _objet >> "displayName")] + "</t>"), {_this call R3F_LOG_FNCT_usine_revendre_direct}, nil, 5, false, true, "", "!R3F_LOG_mutex_local_verrou && R3F_LOG_objet_addAction == _target && R3F_LOG_action_revendre_usine_direct_valide"];
+					_objet addAction [("<t color=""#ff9600"">" + format [STR_R3F_LOG_action_revendre_usine_direct, [_objet] call F_getLRXName] + "</t>"), {_this call R3F_LOG_FNCT_usine_revendre_direct}, nil, 5, false, true, "", "!R3F_LOG_mutex_local_verrou && R3F_LOG_objet_addAction == _target && R3F_LOG_action_revendre_usine_direct_valide"];
 				};
 				
 				sleep (0.07 max (__tempo / _count_liste_objets));

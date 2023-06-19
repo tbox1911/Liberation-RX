@@ -145,7 +145,7 @@ else
 		}
 		else
 		{
-			hintC format [STR_R3F_LOG_objet_en_cours_transport, getText (configOf _objet >> "displayName")];
+			hintC format [STR_R3F_LOG_objet_en_cours_transport, [_objet] call F_getLRXName];
 		};
 	};
 

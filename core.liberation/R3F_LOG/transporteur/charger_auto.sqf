@@ -91,13 +91,13 @@ _vehicle_owner = _transporteur getVariable ["GRLIB_vehicle_owner", ""];
 	if !(_fonctionnalites select R3F_LOG_IDX_can_be_transported_cargo) then
 	{
 		diag_log format ["[Auto-load ""%1"" in ""%2""] : %3",
-			getText (configFile >> "CfgVehicles" >> _classe >> "displayName"),
-			getText (configOf _transporteur >> "displayName"),
+			[_classe] call F_getLRXName,
+			[_transporteur] call F_getLRXName,
 			"The object is not a transporable class."];
 
 		systemChat format ["[Auto-load ""%1"" in ""%2""] : %3",
-			getText (configFile >> "CfgVehicles" >> _classe >> "displayName"),
-			getText (configOf _transporteur >> "displayName"),
+			[_classe] call F_getLRXName,
+			[_transporteur] call F_getLRXName,
 			"The object is not a transporable class."];
 	}
 	else
@@ -166,13 +166,13 @@ _vehicle_owner = _transporteur getVariable ["GRLIB_vehicle_owner", ""];
 						else
 						{
 							diag_log format ["[Auto-load ""%1"" in ""%2""] : %3",
-								getText (configFile >> "CfgVehicles" >> _classe >> "displayName"),
-								getText (configOf _transporteur >> "displayName"),
+								[_classe] call F_getLRXName,
+								[_transporteur] call F_getLRXName,
 								STR_R3F_LOG_action_charger_pas_assez_de_place];
 
 							systemChat format ["[Auto-load ""%1"" in ""%2""] : %3",
-								getText (configFile >> "CfgVehicles" >> _classe >> "displayName"),
-								getText (configOf _transporteur >> "displayName"),
+								[_classe] call F_getLRXName,
+								[_transporteur] call F_getLRXName,
 								STR_R3F_LOG_action_charger_pas_assez_de_place];
 
 							if (typeName _objet_ou_classe == "STRING") then
@@ -183,14 +183,14 @@ _vehicle_owner = _transporteur getVariable ["GRLIB_vehicle_owner", ""];
 					}
 					else
 					{
-						diag_log format [STR_R3F_LOG_objet_remorque_en_cours, getText (configFile >> "CfgVehicles" >> _classe >> "displayName")];
-						systemChat format [STR_R3F_LOG_objet_remorque_en_cours, getText (configFile >> "CfgVehicles" >> _classe >> "displayName")];
+						diag_log format [STR_R3F_LOG_objet_remorque_en_cours, [_classe] call F_getLRXName];
+						systemChat format [STR_R3F_LOG_objet_remorque_en_cours, [_classe] call F_getLRXName];
 					};
 				}
 				else
 				{
-					diag_log format [STR_R3F_LOG_objet_en_cours_transport, getText (configFile >> "CfgVehicles" >> _classe >> "displayName")];
-					systemChat format [STR_R3F_LOG_objet_en_cours_transport, getText (configFile >> "CfgVehicles" >> _classe >> "displayName")];
+					diag_log format [STR_R3F_LOG_objet_en_cours_transport, [_classe] call F_getLRXName];
+					systemChat format [STR_R3F_LOG_objet_en_cours_transport, [_classe] call F_getLRXName];
 				};
 			};
 		};

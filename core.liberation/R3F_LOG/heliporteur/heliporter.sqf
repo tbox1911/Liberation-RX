@@ -32,7 +32,7 @@ else
 		) exitWith {_objet = _x;};
 	} forEach (getPos _heliporteur nearEntities [["All"], 20]);
 	
-	systemChat format ["%1 (%2)", STR_R3F_LOG_action_heliporter, getText (configOf _objet >> "displayName")];
+	systemChat format ["%1 (%2)", STR_R3F_LOG_action_heliporter, [_objet] call F_getLRXName];
 
 	if (!isNull _objet) then
 	{
@@ -136,7 +136,7 @@ else
 								[_objet, "setDir", 90] call R3F_LOG_FNCT_exec_commande_MP;
 							};
 							
-							systemChat format [STR_R3F_LOG_action_heliporter_fait, getText (configOf _objet >> "displayName")];
+							systemChat format [STR_R3F_LOG_action_heliporter_fait, [_objet] call F_getLRXName];
 							
 							// Boucle de contr�le pendant l'h�liportage
 							[_heliporteur, _objet] spawn
@@ -165,7 +165,7 @@ else
 										// D�tacher l'objet et lui appliquer la vitesse de l'h�liporteur (inertie)
 										[_objet, "detachSetVelocity", velocity _heliporteur] call R3F_LOG_FNCT_exec_commande_MP;
 										
-										systemChat format [STR_R3F_LOG_action_heliport_larguer_fait, getText (configOf _objet >> "displayName")];
+										systemChat format [STR_R3F_LOG_action_heliport_larguer_fait, [_objet] call F_getLRXName];
 									};
 									
 									sleep 0.1;
@@ -202,17 +202,17 @@ else
 					}
 					else
 					{
-						systemChat format [STR_R3F_LOG_objet_remorque_en_cours, getText (configOf _objet >> "displayName")];
+						systemChat format [STR_R3F_LOG_objet_remorque_en_cours, [_objet] call F_getLRXName];
 					};
 				//}
 				//else
 				//{
-				//	systemChat format [STR_R3F_LOG_joueur_dans_objet, getText (configOf _objet >> "displayName")];
+				//	systemChat format [STR_R3F_LOG_joueur_dans_objet, [_objet] call F_getLRXName];
 				//};
 			}
 			else
 			{
-				systemChat format [STR_R3F_LOG_objet_en_cours_transport, getText (configOf _objet >> "displayName")];
+				systemChat format [STR_R3F_LOG_objet_en_cours_transport, [_objet] call F_getLRXName];
 			};
 		};
 	};

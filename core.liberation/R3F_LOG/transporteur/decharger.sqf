@@ -108,13 +108,13 @@ else
 					if (_objet_a_decharger distance _transporteur > 40) then
 					{
 						systemChat format [STR_R3F_LOG_action_decharger_fait + " (%2)",
-							getText (configOf _objet_a_decharger >> "displayName"),
+							[_objet_a_decharger] call F_getLRXName,
 							format ["%1m %2deg", round (_objet_a_decharger distance _transporteur), round ([_transporteur, _objet_a_decharger] call BIS_fnc_dirTo)]
 						];
 					}
 					else
 					{
-						systemChat format [STR_R3F_LOG_action_decharger_fait, getText (configOf _objet_a_decharger >> "displayName")];
+						systemChat format [STR_R3F_LOG_action_decharger_fait, [_objet_a_decharger] call F_getLRXName];
 					};
 					R3F_LOG_mutex_local_verrou = false;
 				}

@@ -137,7 +137,7 @@ while {!isNull _dlg_contenu_vehicule} do
 					_icone = _icone + ".paa";
 				};
 
-				_index = _ctrl_liste lbAdd (getText (configFile >> "CfgVehicles" >> _classe >> "displayName") + format [" (%1x %2pl.)", _quantite, _cout_chargement]);
+				_index = _ctrl_liste lbAdd (([_classe] call F_getLRXName) + format [" (%1x %2pl.)", _quantite, _cout_chargement]);
 				_ctrl_liste lbSetPicture [_index, _icone];
 				_ctrl_liste lbSetData [_index, _classe];
 
