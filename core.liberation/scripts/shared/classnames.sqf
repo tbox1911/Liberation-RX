@@ -660,3 +660,6 @@ if ( isNil "GRLIB_AirDrop_6_cost" ) then {
 if ( isNil "GRLIB_AirDrop_7_cost" ) then {
 	GRLIB_AirDrop_7_cost = 2000;
 };
+if ( isNil "GRLIB_AirDrop_8_cost" ) then {
+	GRLIB_AirDrop_8_cost = 1000;
+};

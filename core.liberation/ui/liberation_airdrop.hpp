@@ -24,6 +24,8 @@ class liberation_airdrop {
     "LabelAir",
     "ButtonBoat",
     "LabelBoat",
+    "ButtonArty",
+    "LabelArty",
 	  "CancelButton"
 	};
 	objects[] = {};
@@ -60,24 +62,7 @@ class liberation_airdrop {
     size = "(((((safezoneW / safezoneH) min 1) / 1) / 30) * 1)";
     shadow = 2;
   };
-  class ButtonTaxi: StdButton
-  {
-    idc = 1607;
-    action = "air_type=8;do_action=1";
-    text = $STR_AIRDROP_TAXI;
-    x = 0.206094 * safezoneW + safezoneX;
-    y = 0.2186 * safezoneH + safezoneY;
-    w = 0.061875 * safezoneW;
-    h = 0.033 * safezoneH;
-  };
-  class LabelTaxi: GREUH_RscStructuredText
-  {
-    idc = 1628;
-    x = 0.283437 * safezoneW + safezoneX;
-    y = 0.2176 * safezoneH + safezoneY;
-    w = 0.149531 * safezoneW;
-    h = 0.044 * safezoneH;
-  };
+  //-------------------------------------------------------------------------------------
   class ButtonLight: StdButton
   {
     idc = 1600;
@@ -90,7 +75,7 @@ class liberation_airdrop {
   };
   class LabelLight: GREUH_RscStructuredText
   {
-    idc = 1621;    
+    idc = 1621;
     x = 0.283437 * safezoneW + safezoneX;
     y = 0.2776 * safezoneH + safezoneY;
     w = 0.149531 * safezoneW;
@@ -204,6 +189,43 @@ class liberation_airdrop {
     w = 0.149531 * safezoneW;
     h = 0.044 * safezoneH;
   };
+  class ButtonArty: StdButton
+  {
+    idc = 1608;
+    action = "air_type=8;do_action=1";
+    text = $STR_AIRDROP_ARTY;
+    x = 0.206094 * safezoneW + safezoneX;
+    y = 0.6386 * safezoneH + safezoneY;
+    w = 0.061875 * safezoneW;
+    h = 0.033 * safezoneH;
+  };
+  class LabelArty: GREUH_RscStructuredText
+  {
+    idc = 1628;
+    x = 0.283437 * safezoneW + safezoneX;
+    y = 0.6376 * safezoneH + safezoneY;
+    w = 0.149531 * safezoneW;
+    h = 0.044 * safezoneH;
+  };
+  class ButtonTaxi: StdButton
+  {
+    idc = 1607;
+    action = "air_type=10;do_action=1";
+    text = $STR_AIRDROP_TAXI;
+    x = 0.206094 * safezoneW + safezoneX;
+    y = 0.2186 * safezoneH + safezoneY;
+    w = 0.061875 * safezoneW;
+    h = 0.033 * safezoneH;
+  };
+  class LabelTaxi: GREUH_RscStructuredText
+  {
+    idc = 1630;
+    x = 0.283437 * safezoneW + safezoneX;
+    y = 0.2176 * safezoneH + safezoneY;
+    w = 0.149531 * safezoneW;
+    h = 0.044 * safezoneH;
+  };
+  //-------------------------------------------------------------------------------------
   class OuterBG1: StdBG
   {
     colorBackground[] = COLOR_BROWN;

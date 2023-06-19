@@ -1,4 +1,4 @@
-private ["_class","_cost","_AirDrop_1_cost","_AirDrop_2_cost","_AirDrop_3_cost","_AirDrop_4_cost","_AirDrop_5_cost","_AirDrop_6_cost","_AirDrop_7_cost"];
+private ["_class","_cost"];
 private _timer = player getVariable ["AirCoolDown", 0];
 if (_timer > time) exitWith {hint format ["Air Support not ready !\nNext call in %1 min\n\nPlease wait...", round ((_timer - time)/60)]};
 
@@ -9,6 +9,15 @@ hintSilent "";
 createDialog "liberation_airdrop";
 waitUntil { dialog };
 
+private _AirDrop_1_cost = GRLIB_AirDrop_1_cost;
+private _AirDrop_2_cost = GRLIB_AirDrop_2_cost;
+private _AirDrop_3_cost = GRLIB_AirDrop_3_cost;
+private _AirDrop_4_cost = GRLIB_AirDrop_4_cost;
+private _AirDrop_5_cost = GRLIB_AirDrop_5_cost;
+private _AirDrop_6_cost = GRLIB_AirDrop_6_cost;
+private _AirDrop_7_cost = GRLIB_AirDrop_7_cost;
+private _AirDrop_8_cost = GRLIB_AirDrop_8_cost;
+
 private _rank = player getVariable ["GRLIB_Rank", "Private"];
 if (_rank == "Super Colonel") then {
 	_AirDrop_1_cost = round (GRLIB_AirDrop_1_cost / 2);
@@ -18,14 +27,7 @@ if (_rank == "Super Colonel") then {
 	_AirDrop_5_cost = round (GRLIB_AirDrop_5_cost / 2);
 	_AirDrop_6_cost = round (GRLIB_AirDrop_6_cost / 2);
 	_AirDrop_7_cost = round (GRLIB_AirDrop_7_cost / 2);
-} else {
-	_AirDrop_1_cost = GRLIB_AirDrop_1_cost;
-	_AirDrop_2_cost = GRLIB_AirDrop_2_cost;
-	_AirDrop_3_cost = GRLIB_AirDrop_3_cost;
-	_AirDrop_4_cost = GRLIB_AirDrop_4_cost;
-	_AirDrop_5_cost = GRLIB_AirDrop_5_cost;
-	_AirDrop_6_cost = GRLIB_AirDrop_6_cost;
-	_AirDrop_7_cost = GRLIB_AirDrop_7_cost;
+	_AirDrop_8_cost = round (GRLIB_AirDrop_8_cost / 2);
 };
 
 private _display = findDisplay 5205;
@@ -36,7 +38,8 @@ ctrlSetText [1624, format [localize "STR_TRUCK", _AirDrop_4_cost]];
 ctrlSetText [1625, format [localize "STR_APC", _AirDrop_5_cost]];
 ctrlSetText [1626, format [localize "STR_BOAT", _AirDrop_6_cost]];
 ctrlSetText [1627, format [localize "STR_AIRSUPREMACY", _AirDrop_7_cost]];
-ctrlSetText [1628, format [localize "STR_CALL_HELITAXI", GRLIB_AirDrop_Taxi_cost]];
+ctrlSetText [1628, format [localize "STR_AIRSUPREMACY", _AirDrop_7_cost]];
+ctrlSetText [1630, format [localize "STR_CALL_HELITAXI", GRLIB_AirDrop_Taxi_cost]];
 
 private _list_perm = [];
 if (_rank in ["Private"]) then {_list_perm = [1601,1602,1603,1604,1605,1606]};
@@ -61,11 +64,36 @@ if (do_action == 1) then {
 		case 5 : {_class=selectRandom GRLIB_AirDrop_5;_cost=_AirDrop_5_cost};
 		case 6 : {_class=selectRandom GRLIB_AirDrop_6;_cost=_AirDrop_6_cost};
 		case 7 : {_cost=_AirDrop_7_cost};
-		case 8 : {_cost=0};
+		case 8 : {_cost=_AirDrop_8_cost};
+		case 10 : {_cost=0};
 	};
-	if (air_type == 8) exitWith {[] execVM "addons\TAXI\call_taxi.sqf"};
+	if (air_type == 10) exitWith {[] execVM "addons\TAXI\call_taxi.sqf"};
 	if (!([_cost] call F_pay)) exitWith {};
+
 	player setVariable ["AirCoolDown", round(time + 15*60)];
 	if (air_type == 7) exitWith {[player] remoteExec ["send_aircraft_remote_call", 2]};
+	if (air_type == 8) exitWith {
+		createDialog "liberation_halo";
+		waitUntil { dialog };
+		dojump = 0;
+		halo_position = getPosATL _unit;
+
+		"spawn_marker" setMarkerTextLocal (localize "STR_HALO_PARAM_ARTY");
+
+		[ "halo_map_event", "onMapSingleClick", { halo_position = _pos } ] call BIS_fnc_addStackedEventHandler;
+
+		while { dialog && alive _unit && dojump == 0 } do {
+			"spawn_marker" setMarkerPosLocal halo_position;
+			sleep 0.2;
+		};
+		closeDialog 0;
+
+		"spawn_marker" setMarkerPosLocal markers_reset;
+		"spawn_marker" setMarkerTextLocal "";
+		[ "halo_map_event", "onMapSingleClick" ] call BIS_fnc_removeStackedEventHandler;
+		if ( dojump > 0 ) then {
+			[player, halo_position] remoteExec ["call_artillery_remote_call", 2];
+		};
+	};
 	[player, _class] remoteExec ["airdrop_remote_call", 2];
 };

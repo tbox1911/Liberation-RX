@@ -2897,6 +2897,10 @@
 			<Original>HALO Vehicle</Original>
 			<French>Vehicule HALO</French>
 		</Key>
+		<Key ID="STR_HALO_PARAM_ARTY">
+			<Original>Artillery Fire</Original>
+			<French>Tir d'Artillerie</French>
+		</Key>		
 		<Key ID="STR_HALO_PARAM1">
 			<Original>Enabled - No cooldown</Original>
 			<French>Activé - Pas d'attente</French>
@@ -6572,6 +6576,10 @@
 			<Portuguese>Primazia Aérea</Portuguese>
 			<Czech>Letecká převaha</Czech>
 		</Key>
+		<Key ID="STR_AIRDROP_ARTY">
+			<Original>Artillery Fire</Original>
+			<French>Tir d'Artillerie</French>
+		</Key>		
 		<Key ID="STR_AIRDROP_MENU">
 			<Original>-- Air Support Menu --</Original>
 			<Russian>-- Меню Поддержки с воздуха</Russian>
@@ -6662,7 +6670,10 @@
 			<Portuguese>Chame a Superioridade Aérea.\nCusto: %1 de Ammo</Portuguese>
 			<Czech>Call Air Superiority.\nCena: %1 Ammo</Czech>
 		</Key>
-
+		<Key ID="STR_ARTILLERY">
+			<Original>Call Artillery Fire.\nCost: %1 Ammo</Original>
+			<French>Demander Tir d'Artillerie.\nPrix: %1 Ammo</French>
+		</Key>
 		<!-- liberation_sendammo.hpp -->
 		<Key ID="STR_SENDAMMO_MENU">
 			<Original>-- Send Ammo Menu --</Original>
