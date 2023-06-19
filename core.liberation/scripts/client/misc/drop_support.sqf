@@ -38,14 +38,14 @@ ctrlSetText [1624, format [localize "STR_TRUCK", _AirDrop_4_cost]];
 ctrlSetText [1625, format [localize "STR_APC", _AirDrop_5_cost]];
 ctrlSetText [1626, format [localize "STR_BOAT", _AirDrop_6_cost]];
 ctrlSetText [1627, format [localize "STR_AIRSUPREMACY", _AirDrop_7_cost]];
-ctrlSetText [1628, format [localize "STR_AIRSUPREMACY", _AirDrop_7_cost]];
+ctrlSetText [1628, format [localize "STR_ARTILLERY", _AirDrop_8_cost]];
 ctrlSetText [1630, format [localize "STR_CALL_HELITAXI", GRLIB_AirDrop_Taxi_cost]];
 
 private _list_perm = [];
-if (_rank in ["Private"]) then {_list_perm = [1601,1602,1603,1604,1605,1606]};
-if (_rank in ["Corporal"]) then {_list_perm = [1602,1603,1604,1605,1606]};
-if (_rank in ["Sergeant"]) then {_list_perm = [1603,1604,1605]};
-if (_rank in ["Captain"]) then {_list_perm = [1604,1605]};
+if (_rank in ["Private"]) then {_list_perm = [1601,1602,1603,1604,1605,1606,1608]};
+if (_rank in ["Corporal"]) then {_list_perm = [1602,1603,1604,1605,1606,1608]};
+if (_rank in ["Sergeant"]) then {_list_perm = [1603,1604,1605,1608]};
+if (_rank in ["Captain"]) then {_list_perm = [1604,1605,1608]};
 if (_rank in ["Major"]) then {_list_perm = [1605]};
 { ctrlEnable [_x, false] } forEach _list_perm;
 
@@ -76,13 +76,13 @@ if (do_action == 1) then {
 		createDialog "liberation_halo";
 		waitUntil { dialog };
 		dojump = 0;
-		halo_position = getPosATL _unit;
+		halo_position = getPosATL player;
 
 		"spawn_marker" setMarkerTextLocal (localize "STR_HALO_PARAM_ARTY");
-
+		ctrlSetText [202, (localize "STR_HALO_PARAM_ARTY")];
 		[ "halo_map_event", "onMapSingleClick", { halo_position = _pos } ] call BIS_fnc_addStackedEventHandler;
 
-		while { dialog && alive _unit && dojump == 0 } do {
+		while { dialog && alive player && dojump == 0 } do {
 			"spawn_marker" setMarkerPosLocal halo_position;
 			sleep 0.2;
 		};
@@ -91,8 +91,17 @@ if (do_action == 1) then {
 		"spawn_marker" setMarkerPosLocal markers_reset;
 		"spawn_marker" setMarkerTextLocal "";
 		[ "halo_map_event", "onMapSingleClick" ] call BIS_fnc_removeStackedEventHandler;
-		if ( dojump > 0 ) then {
-			[player, halo_position] remoteExec ["call_artillery_remote_call", 2];
+
+		if ( dojump > 0) then {
+			private _sector = [300, halo_position ] call F_getNearestSector;
+			private _near_blu = [allPlayers, {_x distance2D halo_position < (GRLIB_sector_size/2)}] call BIS_fnc_conditionalSelect;
+			private _near_fob = ([halo_position, "FOB", GRLIB_sector_size, true] call F_check_near);
+			if (_sector in blufor_sectors || count _near_blu != 0 || _near_fob) then {
+				hintSilent "Cannot fire!\nToo close from friendly units";
+				player setVariable ["AirCoolDown", 0];
+			} else {
+				[player, halo_position] remoteExec ["call_artillery_remote_call", 2];
+			};
 		};
 	};
 	[player, _class] remoteExec ["airdrop_remote_call", 2];

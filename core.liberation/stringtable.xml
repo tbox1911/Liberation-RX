@@ -6569,7 +6569,7 @@
 		<Key ID="STR_AIRDROP_AIRSUPREMACY">
 			<Original>Air Superiority</Original>
 			<Russian>Воздух</Russian>
-			<French>Suprématie Aéro</French>
+			<French>Air Suprématie</French>
 			<Japanese>制空権</Japanese>
 			<Chinesesimp>夺取制空</Chinesesimp>
 			<Chinese>奪取制空</Chinese>
@@ -6672,7 +6672,7 @@
 		</Key>
 		<Key ID="STR_ARTILLERY">
 			<Original>Call Artillery Fire.\nCost: %1 Ammo</Original>
-			<French>Demander Tir d'Artillerie.\nPrix: %1 Ammo</French>
+			<French>Demander un Tir d'Artillerie.\nPrix: %1 Ammo</French>
 		</Key>
 		<!-- liberation_sendammo.hpp -->
 		<Key ID="STR_SENDAMMO_MENU">
