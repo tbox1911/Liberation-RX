@@ -50,7 +50,9 @@ if ( count _ide_pos > 0 ) then {
 					}] remoteExec ["bis_fnc_call", owner _x];
 				} foreach _nearinfantry;
 				sleep 3;
-				_ied_power createVehicle (getPosATL _ied_obj);
+				_round = _ied_power createVehicle (getPosATL _ied_obj);
+				[_round, -90, 0] call BIS_fnc_setPitchBank;
+				_round setVelocity [0,0,-100];
 				stats_ieds_detonated = stats_ieds_detonated + 1; publicVariable "stats_ieds_detonated";
 				_goes_boom = true;
 			};

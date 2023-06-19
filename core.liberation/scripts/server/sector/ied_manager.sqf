@@ -42,7 +42,9 @@ if ( !(isnull _roadobj) ) then {
 		_nearinfantry = [ (getposATL _ied_obj) nearEntities [ "Man", _activation_radius_infantry ] , { side _x == GRLIB_side_friendly } ] call BIS_fnc_conditionalSelect;
 		_nearvehicles = [ (getposATL _ied_obj) nearEntities [ [ "Car", "Tank", "Air" ], _activation_radius_vehicles ] , { side _x == GRLIB_side_friendly } ] call BIS_fnc_conditionalSelect;
 		if ( count _nearinfantry >= _infantry_trigger || count _nearvehicles >= _vehicle_trigger ) then {
-			_ied_power createVehicle (getposATL _ied_obj);
+			_round = _ied_power createVehicle (getposATL _ied_obj);
+			[_round, -90, 0] call BIS_fnc_setPitchBank;
+			_round setVelocity [0,0,-100];
 			stats_ieds_detonated = stats_ieds_detonated + 1; publicVariable "stats_ieds_detonated";
 			_goes_boom = true;
 		};
