@@ -100,10 +100,11 @@ while {lifeState _unit == "INCAPACITATED" && time <= _unit getVariable ["PAR_Ble
         if (!isNil "_medic") then { [_unit, _medic] call PAR_fn_911 };
       };
     } else {
+        _msg = format [localize "STR_PAR_UC_03", name player];
         if (isPlayer _unit) then {
-          _msg = format [localize "STR_PAR_UC_02", name _unit];
-          [_unit, _msg] call PAR_fn_globalchat;
+          _msg = format [localize "STR_PAR_UC_02", name _unit];         
         };
+        [_unit, _msg] call PAR_fn_globalchat;
     };
     //systemchat str ((_unit getVariable ["PAR_BleedOutTimer", 0]) - time);
     _cnt = 10;

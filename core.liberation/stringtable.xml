@@ -7784,6 +7784,10 @@
 			<Portuguese>Desculpe %1, você não tem mais unidades para reanimá-lo...</Portuguese>
 			<Czech>Omlouváme se %1, již nemáte jednotky, které by vás mohly oživit...</Czech>
 		</Key>
+		<Key ID="STR_PAR_UC_03">
+			<Original>Hey %1, All your units are down, Help them!</Original>
+			<French>Hé %1, Toutes tes unités sont à terre, Aide-les !</French>					
+		</Key>
 	</Package>
 
 	<!-- pSiKO LRX Taxi -->
