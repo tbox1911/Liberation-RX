@@ -120,7 +120,6 @@ GRLIB_admin_menu = ["AdminMenu",1] call _lrx_getParamValue;
 GRLIB_cleanup_vehicles = ["CleanupVehicles",1800] call _lrx_getParamValue;
 GRLIB_autosave_timer = ["AutoSave",3600] call _lrx_getParamValue;
 GRLIB_param_wipe_keepscore = ["KeepScore",0] call _lrx_getParamValue;
-GRLIB_active_awareness = ["Awareness",0] call _lrx_getParamValue;
 GRLIB_respawn_cooldown = ["RespawnCD",0] call _lrx_getParamValue;
 
 // Hardcoded
