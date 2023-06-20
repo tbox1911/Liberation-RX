@@ -32,6 +32,8 @@ for "_i" from 1 to 6 do {
 	_ammo = selectRandom _ammo_list;
 	_max = 4;
 	if (_ammo find "Bomb" > -1) then { _max = 1 };
+	_msg = format ["Artillery fire %1 x %2.", _max, [_ammo] call F_getLRXName];
+	[gamelogic, _msg] remoteExec ["globalChat", 0];
 	for "_j" from 1 to _max do {
 		_round = _ammo createVehicle (_position getPos [50 + (round(random 100) -50), random 360]);
 		[_round, -90, 0] call BIS_fnc_setPitchBank;
@@ -40,3 +42,4 @@ for "_i" from 1 to 6 do {
 	};
 	sleep 5;
 };
+[gamelogic, "Artillery fires end."] remoteExec ["globalChat", 0];

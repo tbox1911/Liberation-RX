@@ -20,6 +20,10 @@ for "_i" from 1 to _planes_number do {
 		_x addBackpack "B_Parachute";
 		_x setVariable ["GRLIB_counter_TTL", round(time + 1800), true];  // 30 minutes TTL	
 	} forEach (crew _vehicle);
+	if (_side == GRLIB_side_friendly) then {
+		_msg = format ["Air support %1 incoming...", [typeOf _vehicle] call F_getLRXName];
+		[gamelogic, _msg] remoteExec ["globalChat", 0];
+	};
 	diag_log format [ "Spawn Air vehicle %1 at %2", typeOf _vehicle, time ];
 	sleep 5;
 };
