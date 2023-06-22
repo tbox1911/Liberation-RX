@@ -5,13 +5,15 @@ if ( ( [ getpos player , 500 , GRLIB_side_enemy ] call F_getUnitsCount ) > 4 ) e
 if ( isNil "buildtype" ) then { buildtype = 1 };
 if ( buildtype > 8 ) then { buildtype = 1 };
 if ( isNil "buildindex" ) then { buildindex = -1 };
+
 dobuild = 0;
+build_refresh = true;
+
 private _linked = false;
 private _linked_unlocked = true;
 private _base_link = "";
 private _old_buildtype = -1;
 private _old_selected_item = -1;
-private _refresh = true;
 private _cfg = configFile >> "cfgVehicles";
 
 createDialog "liberation_build";
@@ -69,7 +71,10 @@ ctrlEnable [120, false];
 ctrlEnable [121, false];
 
 while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
-	if (_old_buildtype != buildtype || _refresh) then {
+	if (_old_buildtype != buildtype) then { build_refresh = true }; 
+
+	if (build_refresh) then {
+		build_refresh = false;
 		lbClear 110;
 		_build_list = [];
 		{
@@ -95,7 +100,6 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 		};
 
 		_old_buildtype = buildtype;
-		_refresh = false;
 		_row = 0;
 		ctrlSetText [ 151, _buildpages select (buildtype - 1) ];
 
@@ -189,9 +193,6 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 			(_display displayCtrl (110)) lnbSetData  [[_row, 0], str _affordable];
 		} foreach _build_list;
 
-		_sel = 0;
-		if (buildindex != -1) then { _sel =  buildindex };
-		lbSetCurSel [110, _sel];
 		_old_selected_item = -1;
 	};
 	
@@ -256,17 +257,11 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 	};
 
 	buildindex = _selected_item;
-
 	ctrlEnable [ 120, _affordable && _linked_unlocked && dobuild == 0];
 	ctrlShow [ 121, _iscommander && buildtype in [2,3,4,5]];
 	ctrlEnable [ 121, _affordable_crew && _linked_unlocked && dobuild == 0];
-
-	if (buildtype == 1 && dobuild != 0) then {
-		waitUntil {sleep 2; dobuild == 0};
-		_refresh = true;
-	};
-
 	sleep 0.1;
 };
+
 hintSilent "";
 if (!alive player || dobuild != 0) then {closeDialog 0 };

@@ -117,7 +117,9 @@ while { true } do {
 
 			stats_blufor_soldiers_recruited = stats_blufor_soldiers_recruited + 1; publicVariable "stats_blufor_soldiers_recruited";
 		};
+		sleep 1;
 		build_confirmed = 0;
+		build_refresh = true;
 	} else {
 		if ( buildtype == 8 ) then {
 			if (!([_price] call F_pay)) exitWith {};
