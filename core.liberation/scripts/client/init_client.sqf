@@ -57,6 +57,7 @@ set_rank = compileFinal preprocessFileLineNumbers "scripts\client\misc\set_rank.
 set_sticky_bomb = compileFinal preprocessFileLineNumbers "scripts\client\misc\set_sticky_bomb.sqf";
 vehicle_permissions = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_permissions.sqf";
 vehicle_fuel = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_fuel.sqf";
+vehicle_local = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_local.sqf";
 vehicle_defense = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_defense.sqf";
 fetch_permission = compileFinal preprocessFileLineNumbers "scripts\client\misc\fetch_permission.sqf";
 fob_init = compileFinal preprocessFileLineNumbers "scripts\client\misc\fob_init.sqf";
