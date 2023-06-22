@@ -178,7 +178,7 @@ opfor_recyclable = [
 	["O_APC_Tracked_02_cannon_F",10,round (1200 / GRLIB_recycling_percentage),10],
 	["O_APC_Tracked_02_AA_F",10,round (1300 / GRLIB_recycling_percentage),10],
 	["O_MBT_02_cannon_F",15,round (1400 / GRLIB_recycling_percentage),15],
-	["O_MBT_04_cannon_F",15,round (2300 / GRLIB_recycling_percentage),15],
+	["O_MBT_04_cannon_F",15,round (2000 / GRLIB_recycling_percentage),15],
 	["O_MBT_04_command_F",15,round (2300 / GRLIB_recycling_percentage),15],
 	["O_Heli_Attack_02_dynamicLoadout_black_F",10,round (1700 / GRLIB_recycling_percentage),20],
 	["O_Heli_Attack_02_dynamicLoadout_F",10,round (1700 / GRLIB_recycling_percentage),20],
