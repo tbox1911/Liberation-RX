@@ -11,7 +11,7 @@ private ["_nbUnits", "_intels"];
 
 _setupVars =
 {
-	_missionType = localize "STR_SEARCH_INTEL";
+	_missionType = "STR_SEARCH_INTEL";
 	_locationsArray = [SpawnMissionMarkers] call checkSpawn;
 	_nbUnits = [] call getNbUnits;
 };
@@ -144,7 +144,7 @@ _setupObjects =
 	[_missionPos, 30] call createlandmines;
 
 	//_missionPicture = getText (configFile >> "CfgVehicles" >> "Land_i_Barracks_V1_F" >> "picture");
-	_missionHintText = format [localize "STR_SEARCH_INTEL_MESSAGE1", count _intels]; ;
+	_missionHintText = ["STR_SEARCH_INTEL_MESSAGE1", count _intels]; ;
 	A3W_sectors_in_use = A3W_sectors_in_use + [_missionLocation];
 	true;
 };
@@ -191,7 +191,7 @@ _successExec = {
 		};
 	} forEach (AllPlayers - (entities "HeadlessClient_F"));
 
-	_successHintMessage = localize "STR_SEARCH_INTEL_MESSAGE2";
+	_successHintMessage = "STR_SEARCH_INTEL_MESSAGE2";
 	[_missionPos] call showlandmines;
 	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };

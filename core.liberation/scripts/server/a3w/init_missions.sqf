@@ -20,7 +20,6 @@ cleanMissionVehicles = compileFinal preprocessFileLineNumbers "scripts\server\a3
 createMissionMarker = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_createMissionMarker.sqf";
 createCustomGroup = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_createCustomGroup.sqf";
 getBallMagazine = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_getBallMagazine.sqf";
-missionHint = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_missionHint.sqf";
 processItems = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_processItems.sqf";
 updateMissionsList = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_updateMissionsList.sqf";
 getNbUnits = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_getNbUnits.sqf";

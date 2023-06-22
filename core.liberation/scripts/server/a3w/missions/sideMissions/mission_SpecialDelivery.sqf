@@ -11,7 +11,7 @@ private ["_missionPosEnd", "_missionStart", "_house"];
 
 _setupVars =
 {
-	_missionType = localize "STR_SPECIALDELI";
+	_missionType = "STR_SPECIALDELI";
 	_ignoreAiDeaths = true;
 	_locationsArray = nil;
 };
@@ -72,7 +72,7 @@ _setupObjects =
 	_marker setMarkerType "Empty";
 
 	_missionPicture = getText (configFile >> "CfgVehicles" >> "C_Hatchback_01_F" >> "picture");
-	_missionHintText = format [localize "STR_SPECIALDELI_MESSAGE1", sideMissionColor, markerText _missionStart];	
+	_missionHintText = ["STR_SPECIALDELI_MESSAGE1", sideMissionColor, markerText _missionStart];	
 	true;
 };
 
@@ -98,7 +98,7 @@ _failedExec = {
 	GRLIB_A3W_Mission_SD_Spawn = nil;
 	publicVariable "GRLIB_A3W_Mission_SD";
 	[missionNamespace, ["GRLIB_A3W_Mission_Marker", nil]] remoteExec ["setVariable", -2];
-	_failedHintMessage = format [localize "STR_SPECIALDELI_MESSAGE2", sideMissionColor];
+	_failedHintMessage = ["STR_SPECIALDELI_MESSAGE2", sideMissionColor];
 };
 
 _successExec = {
@@ -114,7 +114,7 @@ _successExec = {
 		sleep 60;
 		deleteVehicle _house;
 	};
-	_successHintMessage = format [localize "STR_SPECIALDELI_MESSAGE3", sideMissionColor];
+	_successHintMessage = ["STR_SPECIALDELI_MESSAGE3", sideMissionColor];
 
 	for "_i" from 1 to (selectRandom [1,2]) do {
 		[ammobox_i_typename, _missionPosEnd, false] call boxSetup;

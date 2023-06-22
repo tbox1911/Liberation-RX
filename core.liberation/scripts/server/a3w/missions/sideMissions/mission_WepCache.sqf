@@ -10,7 +10,7 @@ private ["_nbUnits", "_box1", "_box2", "_box3"];
 
 _setupVars =
 {
-	_missionType = localize "STR_WEAPCACHE";
+	_missionType = "STR_WEAPCACHE";
 	_locationsArray = [ForestMissionMarkers] call checkSpawn;
 	_nbUnits = [] call getNbUnits;
 };
@@ -27,7 +27,7 @@ _setupObjects =
 	[_aiGroup, _missionPos, _nbUnits, "infantry"] call createCustomGroup;
 
 	_missionPicture = "\A3\Static_f_gamma\data\ui\gear_StaticTurret_GMG_CA.paa";
-	_missionHintText = localize "STR_WEAPCACHE_MESSAGE1";
+	_missionHintText = "STR_WEAPCACHE_MESSAGE1";
 	A3W_sectors_in_use = A3W_sectors_in_use + [_missionLocation];
 	true;
 };
@@ -49,7 +49,7 @@ _successExec = {
 		_x setVariable ["R3F_LOG_disabled", false, true];
 		_x setVariable ["GRLIB_vehicle_owner", nil, true];
 	} forEach [_box1, _box2, _box3];
-	_successHintMessage = localize "STR_WEAPCACHE_MESSAGE2";
+	_successHintMessage = "STR_WEAPCACHE_MESSAGE2";
 	[_missionPos] call showlandmines;
 	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };

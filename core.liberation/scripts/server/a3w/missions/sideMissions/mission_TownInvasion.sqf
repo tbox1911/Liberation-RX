@@ -10,7 +10,7 @@ private ["_nbUnits", "_townName", "_tent1", "_chair1", "_chair2", "_fire1"];
 
 _setupVars =
 {
-	_missionType = localize "STR_INVASION";
+	_missionType = "STR_INVASION";
 	_nbUnits = [] call getNbUnits;
 
 	// settings for this mission
@@ -56,7 +56,7 @@ _setupObjects =
 		_x setVariable ["GRLIB_mission_AI", nil, true];
 	} forEach (units _aiGroup);
 
-	_missionHintText = format [localize "STR_INVASION_MESSAGE1", sideMissionColor, _townName, _nbUnits];
+	_missionHintText = ["STR_INVASION_MESSAGE1", sideMissionColor, _townName, _nbUnits];
 	A3W_sectors_in_use = A3W_sectors_in_use + [_missionLocation];
 	true;
 };
@@ -86,7 +86,7 @@ _successExec = {
 		};
 	} forEach (AllPlayers - (entities "HeadlessClient_F"));
 
-	_successHintMessage = format [localize "STR_INVASION_MESSAGE2", sideMissionColor, _townName];
+	_successHintMessage = ["STR_INVASION_MESSAGE2", sideMissionColor, _townName];
 	{ deleteVehicle _x } forEach [_tent1, _chair1, _chair2, _fire1];
 	[_missionPos] call showlandmines;
 	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];

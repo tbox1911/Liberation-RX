@@ -10,7 +10,7 @@ private ["_nbUnits", "_townName"];
 
 _setupVars =
 {
-	_missionType = localize "STR_INSURGENCY";
+	_missionType = "STR_INSURGENCY";
 	_nbUnits = [] call getNbUnits;
 
 	// settings for this mission
@@ -45,7 +45,7 @@ _setupObjects =
 		_x setVariable ["GRLIB_mission_AI", nil, true];
 	} forEach (units _aiGroup);
 
-	_missionHintText = format [localize "STR_INSURGENCY_MESSAGE1", sideMissionColor, _townName];
+	_missionHintText = ["STR_INSURGENCY_MESSAGE1", sideMissionColor, _townName];
 	A3W_sectors_in_use = A3W_sectors_in_use + [_missionLocation];
 	true;
 };
@@ -72,7 +72,7 @@ _successExec = {
 		};
 	} forEach (AllPlayers - (entities "HeadlessClient_F"));
 
-	_successHintMessage = format [localize "STR_INSURGENCY_MESSAGE2", sideMissionColor, _townName];
+	_successHintMessage = ["STR_INSURGENCY_MESSAGE2", sideMissionColor, _townName];
 	[_missionPos] call showlandmines;
 	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };

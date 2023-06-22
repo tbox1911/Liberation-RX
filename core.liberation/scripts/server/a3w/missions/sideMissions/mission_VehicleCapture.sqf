@@ -10,7 +10,7 @@ private ["_nbUnits", "_vehicleName", "_smoke"];
 
 _setupVars =
 {
-	_missionType = localize "STR_VEHICLECAP";
+	_missionType = "STR_VEHICLECAP";
 	_locationsArray = [SpawnMissionMarkers] call checkSpawn;
 	_nbUnits = [] call getNbUnits;
 };
@@ -35,7 +35,7 @@ _setupObjects =
 
 	_missionPicture = getText (configOf _vehicle >> "picture");
 	_vehicleName = getText (configOf _vehicle >> "displayName");
-	_missionHintText = format [localize "STR_VEHICLECAP_MESSAGE1", _vehicleName, sideMissionColor];
+	_missionHintText = ["STR_VEHICLECAP_MESSAGE1", _vehicleName, sideMissionColor];
 	A3W_sectors_in_use = A3W_sectors_in_use + [_missionLocation];
 	true;
 };
@@ -56,7 +56,7 @@ _successExec = {
 	_vehicle setVariable ["GRLIB_vehicle_owner", nil, true];
 	_vehicle setVehicleLock "UNLOCKED";
 	deleteVehicle _smoke;
-	_successHintMessage = format [localize "STR_VEHICLECAP_MESSAGE2", _vehicleName];
+	_successHintMessage = ["STR_VEHICLECAP_MESSAGE2", _vehicleName];
 	[_missionPos] call showlandmines;
 	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };

@@ -59,21 +59,13 @@ while {true} do {
 
 	diag_log format ["Next Side Mission Starting in %1 minutes", _missionDelay/60];
 
-	if (GRLIB_fancy_info == 2) then {
-		_msg = format
-				[
-					"<t color='%1' shadow='2' size='1.75'>Next Objective</t><br/>" +
-					"<t color='%1'>------------------------------</t><br/>" +
-					"<t color='%2' size='1.0'>Starting in %3 minutes</t>",
-					sideMissionColor,
-					subTextColor,
-					_missionDelay / 60
-				];
-		_info = [_msg, 0, 0, 6, 0, -1, 90];
-	} else {
-		_info = ["Next Objective", "", format ["Starting in %1 minutes", _missionDelay / 60]];
-	};
-	[_info] remoteExec ["remote_call_showinfo", 0];
+	[
+		"Next Objective",
+		"",
+		"",
+		format ["Starting in %1 minutes", _missionDelay / 60],
+		sideMissionColor
+	] remoteExec ["remote_call_showinfo", 0];
 
 	_timer = round (time + _missionDelay);
 	waitUntil {sleep 5; (time > _timer)};

@@ -16,7 +16,7 @@ private [
 
 _setupVars =
 {
-	_missionType = localize "STR_RESISTANCE";
+	_missionType = "STR_RESISTANCE";
 	_nbUnits = 10;
 
 	// settings for this mission
@@ -91,7 +91,7 @@ _setupObjects =
 
 	GRLIB_A3W_Mission_MRR = _aiGroupRes;
 	publicVariable "GRLIB_A3W_Mission_MRR";
-	_missionHintText = format [localize "STR_RESISTANCE_MESSAGE1", sideMissionColor, _townName];
+	_missionHintText = ["STR_RESISTANCE_MESSAGE1", sideMissionColor, _townName];
 	A3W_sectors_in_use = A3W_sectors_in_use + [_missionLocation];
 	true;
 };
@@ -119,7 +119,7 @@ _failedExec = {
 	publicVariable "GRLIB_A3W_Mission_MR";
 	GRLIB_A3W_Mission_MRR = nil;
 	publicVariable "GRLIB_A3W_Mission_MRR";
-	_failedHintMessage = format [localize "STR_RESISTANCE_MESSAGE2", sideMissionColor, _townName];
+	_failedHintMessage = ["STR_RESISTANCE_MESSAGE2", sideMissionColor, _townName];
 	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
 
@@ -128,7 +128,7 @@ _successExec = {
 	{ 	_x setVariable ["R3F_LOG_disabled", false, true];
 		_x setVariable ["GRLIB_vehicle_owner", nil, true];
 	} forEach [_box1, _box2];
-	_successHintMessage = format [localize "STR_RESISTANCE_MESSAGE3", sideMissionColor, _townName];
+	_successHintMessage = ["STR_RESISTANCE_MESSAGE3", sideMissionColor, _townName];
 	{ deleteVehicle _x } forEach [_tent1, _chair1, _chair2, _fire1, _veh1, _veh2];
 	{ deleteVehicle _x } forEach units _aiGroupRes;
 	GRLIB_A3W_Mission_MR = nil;

@@ -19,8 +19,8 @@ _aiGroup = grpNull;
 
 if (!isNil "_setupVars") then { call _setupVars };
 
-["lib_secondary_a3w_mission", [_missionType]] remoteExec ["bis_fnc_shownotification", 0];
-diag_log format ["A3W Side Mission% started: %2", _controllerSuffix, _missionType];
+["lib_secondary_a3w_mission", [localize _missionType]] remoteExec ["bis_fnc_shownotification", 0];
+diag_log format ["A3W Side Mission% started: %2", _controllerSuffix, localize _missionType];
 
 _missionTimeout = A3W_Mission_timeout;
 
@@ -38,12 +38,12 @@ if (!isNil "_locationsArray") then {
 _continue_mission = true;
 if (!isNil "_setupObjects") then { _continue_mission = call _setupObjects };
 if (!_continue_mission) exitWith {
-	diag_log format ["--- LRX Error: A3W Side Mission%1 failed to setup: %2", _controllerSuffix, _missionType];
+	diag_log format ["--- LRX Error: A3W Side Mission%1 failed to setup: %2", _controllerSuffix, localize _missionType];
 };
 
 sleep 5;
 _leader = leader _aiGroup;
-_marker = [_missionType, _missionPos] call createMissionMarker;
+_marker = [localize _missionType, _missionPos] call createMissionMarker;
 _aiGroup setVariable ["A3W_missionMarkerName", _marker, true];
 
 if (isNil "_missionPicture") then { _missionPicture = "" };
@@ -54,9 +54,9 @@ if (isNil "_missionPicture") then { _missionPicture = "" };
 	_missionPicture,
 	_missionHintText,
 	sideMissionColor
-] call missionHint;
+] remoteExec ["remote_call_showinfo", 0];
 
-diag_log format ["A3W Side Mission%1 waiting to be finished: %2", _controllerSuffix, _missionType];
+diag_log format ["A3W Side Mission%1 waiting to be finished: %2", _controllerSuffix, localize _missionType];
 
 _failed = false;
 _complete = false;
@@ -93,7 +93,7 @@ waitUntil {
 	if (!isNull _leaderTemp) then { _leader = _leaderTemp }; // Update current leader
 	if (!isNil "_waitUntilMarkerPos") then { _marker setMarkerPos (call _waitUntilMarkerPos) };
 	if (!isNil "_waitUntilExec") then { call _waitUntilExec };
-	_marker setMarkerText format ["%1 - %2 min left", _missionType, round ((_missionTimeout - (diag_tickTime - _startTime)) /60)];
+	_marker setMarkerText format ["%1 - %2 min left", localize _missionType, round ((_missionTimeout - (diag_tickTime - _startTime)) /60)];
 
 	_expired = (diag_tickTime - _startTime >= _missionTimeout && ([_missionPos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount) == 0);
 	_failed = ((!isNil "_waitUntilCondition" && {call _waitUntilCondition}) || _expired);
@@ -110,11 +110,8 @@ if (_failed) then {
 	// Mission failed
 
 	{ moveOut _x; deleteVehicle _x } forEach units _aiGroup;
-
 	if (!isNil "_failedExec") then { call _failedExec };
-
 	if (!isNil "_vehicle") then	{ [_vehicle, 5, true] spawn cleanMissionVehicles };
-
 	if (!isNil "_vehicles") then { [_vehicles, 5, true] spawn cleanMissionVehicles };
 
 	[
@@ -123,10 +120,10 @@ if (_failed) then {
 		_missionPicture,
 		if (!isNil "_failedHintMessage") then { _failedHintMessage } else { "Better luck next time!" },
 		failMissionColor
-	] call missionHint;
+	] remoteExec ["remote_call_showinfo", 0];
 
-	["lib_secondary_a3w_mission_fail", [_missionType]] remoteExec ["bis_fnc_shownotification", 0];
-	diag_log format ["A3W Side Mission%1 failed: %2", _controllerSuffix, _missionType];
+	["lib_secondary_a3w_mission_fail", [localize _missionType]] remoteExec ["bis_fnc_shownotification", 0];
+	diag_log format ["A3W Side Mission%1 failed: %2", _controllerSuffix, localize _missionType];
 	A3W_mission_failed = A3W_mission_failed + 1;
 } else {
 	// Mission completed
@@ -157,10 +154,10 @@ if (_failed) then {
 		_missionPicture,
 		_successHintMessage,
 		successMissionColor
-	] call missionHint;
+	] remoteExec ["remote_call_showinfo", 0];
 
-	["lib_secondary_a3w_mission_success", [_missionType]] remoteExec ["bis_fnc_shownotification", 0];
-	diag_log format ["A3W Mission%1 complete: %2", _controllerSuffix, _missionType];
+	["lib_secondary_a3w_mission_success", [localize _missionType]] remoteExec ["bis_fnc_shownotification", 0];
+	diag_log format ["A3W Mission%1 complete: %2", _controllerSuffix, localize _missionType];
 	A3W_mission_success = A3W_mission_success + 1;
 };
 

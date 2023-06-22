@@ -10,7 +10,7 @@ private ["_bunker", "_def1", "_def2", "_veh1", "_veh2"];
 
 _setupVars =
 {
-	_missionType = localize "STR_ROADBLOCK";
+	_missionType = "STR_ROADBLOCK";
 	_locationsArray = nil;
 	GRLIB_A3W_Mission_BR = (10 * 60);
 };
@@ -113,7 +113,7 @@ _setupObjects =
 	[_aiGroup, _missionPos, _nbUnits, "infantry"] call createCustomGroup;
 
 	_missionPicture = "\A3\Static_f_gamma\data\ui\gear_StaticTurret_GMG_CA.paa";
-	_missionHintText = localize "STR_ROADBLOCK_MESSAGE1";
+	_missionHintText = "STR_ROADBLOCK_MESSAGE1";
 	true;
 };
 
@@ -153,7 +153,7 @@ _successExec = {
 		};
 	} forEach (AllPlayers - (entities "HeadlessClient_F"));
 
-	_successHintMessage = localize "STR_ROADBLOCK_MESSAGE2";
+	_successHintMessage = "STR_ROADBLOCK_MESSAGE2";
 };
 
 _this call sideMissionProcessor;

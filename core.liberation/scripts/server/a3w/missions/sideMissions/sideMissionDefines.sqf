@@ -11,4 +11,3 @@
 #define sideMissionColor "#4BC9B0"
 #define failMissionColor "#FF1717"
 #define successMissionColor "#17FF41"
-#define subTextColor "#FFFFFF"

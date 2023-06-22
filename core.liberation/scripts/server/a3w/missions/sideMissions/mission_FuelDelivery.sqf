@@ -11,7 +11,7 @@ private ["_townName", "_man1", "_marker_zone"];
 
 _setupVars =
 {
-	_missionType = localize "STR_FUELDELI";
+	_missionType = "STR_FUELDELI";
 	_missionLocation = [sectors_capture] call getMissionLocation;
 	_townName = markerText _missionLocation;
 	_ignoreAiDeaths = true;
@@ -33,7 +33,7 @@ _setupObjects =
 	_marker_zone setMarkerBrush "FDiagonal";
 	_marker_zone setMarkerSize [20,20];
 
-	_missionHintText = format [localize "STR_FUELDELI_MESSAGE1", sideMissionColor, _townName];
+	_missionHintText = ["STR_FUELDELI_MESSAGE1", sideMissionColor, _townName];
 	A3W_sectors_in_use = A3W_sectors_in_use + [_missionLocation];
 	true;
 };
@@ -58,7 +58,7 @@ _failedExec = {
 	// Mission failed
 	deleteVehicle _man1;
 	deleteMarker _marker_zone;
-	_failedHintMessage = format [localize "STR_FUELDELI_MESSAGE2", sideMissionColor, _townName];
+	_failedHintMessage = ["STR_FUELDELI_MESSAGE2", sideMissionColor, _townName];
 	A3W_delivery_failed = A3W_delivery_failed + 1;
 	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
@@ -66,7 +66,7 @@ _failedExec = {
 _successExec = {
 	sleep 3;
 	// Mission completed
-	_successHintMessage = format [localize "STR_FUELDELI_MESSAGE3", sideMissionColor];
+	_successHintMessage = ["STR_FUELDELI_MESSAGE3", sideMissionColor];
 	deleteVehicle _man1;
 	deleteMarker _marker_zone;
 	A3W_delivery_failed = 0;

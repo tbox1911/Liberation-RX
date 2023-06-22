@@ -11,7 +11,7 @@ private ["_nbUnits", "_box1", "_box2", "_box3"];
 
 _setupVars =
 {
-	_missionType = localize "STR_AIRWRECK";
+	_missionType = "STR_AIRWRECK";
 	_locationsArray = [SpawnMissionMarkers] call checkSpawn;
 	_nbUnits = [] call getNbUnits;
 };
@@ -31,7 +31,7 @@ _setupObjects =
 	[_aiGroup, _missionPos, _nbUnits, "infantry"] call createCustomGroup;
 
 	_missionPicture = "\A3\Air_F\Heli_Light_02\Data\UI\Heli_Light_02_CA.paa";
-	_missionHintText = localize "STR_AIRWRECK_MESSAGE1";
+	_missionHintText = "STR_AIRWRECK_MESSAGE1";
 	A3W_sectors_in_use = A3W_sectors_in_use + [_missionLocation];
 	true;
 };
@@ -54,7 +54,7 @@ _successExec = {
 		_x setVariable ["GRLIB_vehicle_owner", nil, true];
 	} forEach [_box1, _box2, _box3];
 
-	_successHintMessage = localize "STR_AIRWRECK_MESSAGE2";
+	_successHintMessage = "STR_AIRWRECK_MESSAGE2";
 	[_missionPos] call showlandmines;
 	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
