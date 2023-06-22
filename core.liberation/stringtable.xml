@@ -6092,7 +6092,10 @@
 			<Portuguese>%1 está bloqueado!</Portuguese>
 			<Czech>%1 uzamčeno!</Czech>
 		</Key>
-
+		<Key ID="STR_DO_LOCK_MSG">
+			<Original>The vehicle and all its contents belong to you.</Original>
+			<French>Le véhicule et tout son contenu vous appartiennent.</French>
+		</Key>
 		<!-- do_recycle.sqf -->
 		<Key ID="STR_DO_RECYCLE">
 			<Original>&lt;t align='center'&gt;Select Reward:&lt;br/&gt;50 XP or 300 AMMO&lt;/t&gt;</Original>

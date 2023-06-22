@@ -2,6 +2,7 @@ params ["_vehicle"];
 if (isNil "_vehicle") exitWith {};
 
 private _uid = getPlayerUID player;
+private _prev_owner = _vehicle getVariable ["GRLIB_vehicle_owner", ""];
 
 [_vehicle] call vehicle_local;
 _vehicle setVariable ["GRLIB_vehicle_owner", _uid, true];
@@ -21,3 +22,6 @@ _vehicle engineOn false;
 } forEach (_vehicle getVariable ["R3F_LOG_objets_charges", []]) + (_vehicle getVariable ["GRLIB_ammo_truck_load", []]);
 
 hintSilent format [localize "STR_DO_LOCK", [typeOf _vehicle] call F_getLRXName];
+if (_prev_owner != _uid) then {
+    gamelogic globalChat localize "STR_DO_LOCK_MSG";
+};
