@@ -85,7 +85,7 @@ _setupObjects =
 	_missionPos = getPosATL leader _aiGroup;
 	_missionPicture = getText (configFile >> "CfgVehicles" >> (_vehicleClass param [0,""]) >> "picture");
 	_vehicleName = getText (configFile >> "CfgVehicles" >> (_vehicleClass param [0,""]) >> "displayName");
-	_missionHintText = format ["An important <t color='%1'>V.I.P</t> is travelling the island. Intercept his convoy and capture him <t color='%1'>ALIVE</t>!", sideMissionColor];
+	_missionHintText = ["STR_SEARCH_VIP_CAP_MSG", sideMissionColor];
 	_numWaypoints = count waypoints _aiGroup;
 	_convoy_attacked = false;
 	_disembark_troops = false;

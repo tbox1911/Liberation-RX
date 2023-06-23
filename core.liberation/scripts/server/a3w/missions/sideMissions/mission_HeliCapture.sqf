@@ -43,7 +43,7 @@ _setupObjects =
 
 	_missionPicture = getText (configOf _vehicle >> "picture");
 	_vehicleName = getText (configOf _vehicle >> "displayName");
-	_missionHintText = format ["A <t color='%2'>%1</t> has been immobilized, go repair it and take it for your team!", _vehicleName, sideMissionColor];
+	_missionHintText = ["STR_SEARCH_HELI_CAP_MSG", _vehicleName, sideMissionColor];
 	A3W_sectors_in_use = A3W_sectors_in_use + [_missionLocation];
 	true;
 };
