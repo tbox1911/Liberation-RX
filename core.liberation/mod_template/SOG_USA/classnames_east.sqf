@@ -146,7 +146,19 @@ opfor_air = [
 	"vn_b_air_uh1c_04_02",
 	"vn_b_air_uh1c_02_02",
 	"vn_b_air_ah1g_10_usmc",
-	"vn_b_air_f4c_chico"
+	"vn_b_air_f4c_chico",
+	"vn_b_air_f100d_at",
+	"vn_b_air_f100d_bmb",
+	"vn_b_air_f100d_ehcas",
+	"vn_b_air_f100d_mr",
+	"vn_b_air_f4b_usmc_at",
+	"vn_b_air_f4b_usmc_bmb",
+	"vn_b_air_f4b_usmc_ehcas",
+	"vn_b_air_f4b_usmc_mr",
+	"vn_b_air_f4c_at",
+	"vn_b_air_f4c_bmb",
+	"vn_b_air_f4c_ehcas",
+	"vn_b_air_f4c_mr"
 ];
 
 opfor_statics = [
@@ -214,5 +226,17 @@ opfor_recyclable = [
 	//
 	["vn_b_air_ah1g_10_usmc",12,round (850 / GRLIB_recycling_percentage),26],
 	//
-	["vn_b_air_f4c_chico",16,round (1500 / GRLIB_recycling_percentage),30]
+	["vn_b_air_f4c_chico",16,round (1500 / GRLIB_recycling_percentage),30],
+	["vn_b_air_f100d_at",16,round (1500 / GRLIB_recycling_percentage),30],
+	["vn_b_air_f100d_bmb",16,round (1500 / GRLIB_recycling_percentage),30],
+	["vn_b_air_f100d_ehcas",16,round (1500 / GRLIB_recycling_percentage),30],
+	["vn_b_air_f100d_mr",16,round (1500 / GRLIB_recycling_percentage),30],
+	["vn_b_air_f4b_usmc_at",16,round (1500 / GRLIB_recycling_percentage),30],
+	["vn_b_air_f4b_usmc_bmb",16,round (1500 / GRLIB_recycling_percentage),30],
+	["vn_b_air_f4b_usmc_ehcas",16,round (1500 / GRLIB_recycling_percentage),30],
+	["vn_b_air_f4b_usmc_mr",16,round (1500 / GRLIB_recycling_percentage),30],
+	["vn_b_air_f4c_at",16,round (1500 / GRLIB_recycling_percentage),30],
+	["vn_b_air_f4c_bmb",16,round (1500 / GRLIB_recycling_percentage),30],
+	["vn_b_air_f4c_ehcas",16,round (1500 / GRLIB_recycling_percentage),30],
+	["vn_b_air_f4c_mr",16,round (1500 / GRLIB_recycling_percentage),30]
 ];

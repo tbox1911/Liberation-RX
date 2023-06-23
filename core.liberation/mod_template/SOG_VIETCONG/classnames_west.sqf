@@ -103,7 +103,9 @@ light_vehicles = [
 	["vn_o_boat_01_mg_02",1,25,1,GRLIB_perm_inf],
 	["vn_o_boat_02_02",1,20,1,GRLIB_perm_inf],
 	["vn_o_boat_02_mg_02",1,45,1,GRLIB_perm_log],
-	["vn_o_boat_03_02",20,800,40,GRLIB_perm_tank],
+	["vn_o_boat_03_01",20,800,40,GRLIB_perm_tank],
+	["vn_o_boat_03_02",20,800,40,GRLIB_perm_air],
+	["vn_o_boat_04_01",20,800,40,GRLIB_perm_tank],
 	["vn_o_boat_04_02",20,800,40,GRLIB_perm_air],
 	// Land
 	["vn_o_car_01_01",1,5,1,0],
@@ -112,24 +114,35 @@ light_vehicles = [
 	["vn_o_car_04_01",1,25,2,0],
 	["vn_o_car_04_mg_01",2,40,2,GRLIB_perm_inf],
 	["vn_o_wheeled_btr40_01_nva65",2,50,2,GRLIB_perm_inf],
-	["vn_o_wheeled_btr40_mg_01_nva65",3,75,2,GRLIB_perm_log],
-	["vn_o_wheeled_btr40_mg_02_nva65",3,100,2,GRLIB_perm_log],
+	["vn_o_wheeled_btr40_mg_01_nva65",3,100,2,GRLIB_perm_log],
+	["vn_o_wheeled_btr40_mg_02_nva65",3,100,2,GRLIB_perm_tank],
+	["vn_o_wheeled_btr40_mg_03_nva65",3,100,2,GRLIB_perm_air],
 	["vn_o_wheeled_z157_01_nva65",3,100,3,GRLIB_perm_log],
 	["vn_o_wheeled_z157_02_nva65",4,150,4,GRLIB_perm_tank],
-	["vn_o_wheeled_z157_mg_01_nva65",4,150,4,GRLIB_perm_tank]
+	["vn_o_wheeled_z157_mg_01_nva65",4,150,4,GRLIB_perm_log],
+	["vn_o_wheeled_z157_mg_02_nva65",10,650,8,GRLIB_perm_tank]
 ];
 
 heavy_vehicles = [
-	["vn_o_wheeled_btr40_mg_03_nva65",10,500,6,GRLIB_perm_air],
-	["vn_o_wheeled_z157_mg_02_nva65",10,650,8,GRLIB_perm_air],
-	["vn_o_armor_type63_01_nva65",20,1500,25,GRLIB_perm_max]
+	["vn_o_armor_pt76a_01_nva65",10,650,20,GRLIB_perm_tank],
+	["vn_o_armor_pt76b_01_nva65",10,650,20,GRLIB_perm_max],
+	["vn_o_armor_btr50pk_02_nva65",10,800,6,GRLIB_perm_tank],
+	["vn_o_armor_type63_01_nva65",20,1100,25,GRLIB_perm_tank],
+	["vn_o_armor_t54b_01_nva65",20,1500,25,GRLIB_perm_air],
+	["vn_o_armor_ot54_01_nva65",20,1500,25,GRLIB_perm_max]
 ];
 
 air_vehicles = [
 	["vn_o_air_mi2_01_03",4,200,6,GRLIB_perm_log],
 	["vn_o_air_mi2_03_04",6,400,10,GRLIB_perm_tank],
 	["vn_o_air_mi2_04_06",10,800,15,GRLIB_perm_air],
-	["vn_o_air_mi2_05_04",20,1500,25,GRLIB_perm_max]
+	["vn_o_air_mi2_05_04",20,1500,25,GRLIB_perm_max],
+	["vn_o_air_mig19_at",20,1500,25,GRLIB_perm_air],
+	["vn_o_air_mig19_bmb",20,1500,25,GRLIB_perm_max],
+	["vn_o_air_mig19_gun",20,1500,25,GRLIB_perm_air],
+	["vn_o_air_mig21_at",20,1500,25,GRLIB_perm_max],
+	["vn_o_air_mig21_hcas",20,1500,25,GRLIB_perm_max],
+	["vn_o_air_mig21_gun",20,1500,25,GRLIB_perm_air]
 ];
 
 blufor_air = [
@@ -162,9 +175,11 @@ static_vehicles = [
 	["vn_o_nva_65_static_zpu4",5,150,0,GRLIB_perm_tank],
 	["vn_o_nva_65_static_type56rr",2,200,0,GRLIB_perm_air],
 	["vn_o_nva_65_static_d44",10,300,0,GRLIB_perm_air],
-	["vn_o_nva_65_static_mortar_type63",15,600,0,GRLIB_perm_max],
-	["vn_o_nva_65_static_mortar_type53",20,800,0,GRLIB_perm_max],
-	["vn_o_nva_navy_static_v11m",15,500,0,GRLIB_perm_max]
+	["vn_o_nva_65_static_mortar_type63",15,600,0,GRLIB_perm_air],
+	["vn_o_nva_65_static_mortar_type53",20,800,0,GRLIB_perm_tank],
+	["vn_o_nva_static_zgu1_01",5,300,0,GRLIB_perm_tank],
+	["vn_o_nva_navy_static_v11m",15,1500,0,GRLIB_perm_max],
+	["vn_o_wheeled_z157_04_nva65",15,2500,0,GRLIB_perm_max]
 ];
 
 // *** Static Weapon with AI ***

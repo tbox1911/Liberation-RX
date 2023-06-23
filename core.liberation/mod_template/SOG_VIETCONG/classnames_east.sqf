@@ -66,21 +66,28 @@ militia_vehicles = [
 opfor_boats = [
 	"vn_o_boat_02_mg_02",
 	"vn_o_boat_01_mg_02",
+	"vn_o_boat_03_01",
 	"vn_o_boat_03_02",
+	"vn_o_boat_04_01",
 	"vn_o_boat_04_02"
 ];
 
 opfor_vehicles = [
+	"vn_o_armor_t54b_01_nva65",
+	"vn_o_armor_ot54_01_nva65",
 	"vn_o_armor_type63_01_nva65",
 	"vn_o_armor_type63_01_nva65",
+	"vn_o_armor_pt76a_01_nva65",
+	"vn_o_armor_pt76b_01_nva65",	
 	"vn_o_wheeled_btr40_mg_01_nva65",
 	"vn_o_wheeled_btr40_mg_02_nva65",
-	"vn_o_wheeled_btr40_mg_03_nva65",
-	"vn_o_wheeled_z157_mg_01_nva65",
+	"vn_o_armor_btr50pk_02_nva65",
 	"vn_o_wheeled_z157_mg_02_nva65"
 ];
 
 opfor_vehicles_low_intensity = [
+	"vn_o_armor_pt76a_01_nva65",
+	"vn_o_armor_pt76b_01_nva65",	
 	"vn_o_wheeled_btr40_mg_02_nva65",
 	"vn_o_wheeled_btr40_mg_01_nva65",
 	"vn_o_wheeled_z157_mg_01_nva65",
@@ -88,11 +95,16 @@ opfor_vehicles_low_intensity = [
 ];
 
 opfor_battlegroup_vehicles = [
+	"vn_o_air_mig21_at",
+	"vn_o_air_mig21_hcas",
+	"vn_o_air_mig21_gun",
+	"vn_o_armor_t54b_01_nva65",
+	"vn_o_armor_ot54_01_nva65",
 	"vn_o_armor_type63_01_nva65",
 	"vn_o_armor_type63_01_nva65",
 	"vn_o_wheeled_btr40_mg_01_nva65",
 	"vn_o_wheeled_btr40_mg_02_nva65",
-	"vn_o_wheeled_btr40_mg_03_nva65",
+	"vn_o_armor_btr50pk_02_nva65",
 	"vn_o_wheeled_z157_mg_01_nva65",
 	"vn_o_wheeled_z157_mg_02_nva65",
 	"vn_o_air_mi2_05_06",
@@ -102,6 +114,11 @@ opfor_battlegroup_vehicles = [
 ];
 
 opfor_battlegroup_vehicles_low_intensity = [
+	"vn_o_armor_pt76a_01_nva65",
+	"vn_o_armor_pt76b_01_nva65",	
+	"vn_o_air_mig19_at",
+	"vn_o_air_mig19_bmb",
+	"vn_o_air_mig19_gun",	
 	"vn_o_wheeled_btr40_mg_02_nva65",
 	"vn_o_wheeled_btr40_mg_01_nva65",
 	"vn_o_wheeled_z157_mg_01_nva65",
@@ -123,7 +140,13 @@ opfor_air = [
 	"vn_o_air_mi2_03_04",
 	"vn_o_air_mi2_05_02",
 	"vn_o_air_mi2_05_06",
-	"vn_o_air_mi2_04_02"
+	"vn_o_air_mi2_04_02",
+	"vn_o_air_mig19_at",
+	"vn_o_air_mig19_bmb",
+	"vn_o_air_mig19_gun",
+	"vn_o_air_mig21_at",
+	"vn_o_air_mig21_hcas",
+	"vn_o_air_mig21_gun"
 ];
 
 opfor_statics = [
@@ -152,17 +175,26 @@ opfor_recyclable = [
 	//
 	["vn_o_boat_01_mg_02",1,round (12 / GRLIB_recycling_percentage),3],
 	["vn_o_boat_02_mg_02",1,round (22 / GRLIB_recycling_percentage),3],
+	["vn_o_boat_03_01",20,round (800 / GRLIB_recycling_percentage),40],
 	["vn_o_boat_03_02",20,round (800 / GRLIB_recycling_percentage),40],
+	["vn_o_boat_04_01",20,round (800 / GRLIB_recycling_percentage),40],
 	["vn_o_boat_04_02",20,round (800 / GRLIB_recycling_percentage),40],
+
 	//
 	["vn_o_air_mi2_01_03",4,round (100 / GRLIB_recycling_percentage),8],
-	["vn_o_wheeled_z157_02_nva65",2,round (100 / GRLIB_recycling_percentage),4],
+	["vn_o_wheeled_z157_01_nva65",2,round (50 / GRLIB_recycling_percentage),4],
+	["vn_o_wheeled_z157_02_nva65",2,round (50 / GRLIB_recycling_percentage),4],
 	["vn_o_wheeled_z157_fuel_nvam",2,round (75 / GRLIB_recycling_percentage),4],
 	["vn_o_wheeled_z157_ammo_nvam",2,round (75 / GRLIB_recycling_percentage),4],
 	["vn_o_car_04_mg_01",2,round (20 / GRLIB_recycling_percentage),4],
 	["vn_o_wheeled_btr40_01_nva65",3,round (25 / GRLIB_recycling_percentage),6],
-	["vn_o_wheeled_btr40_mg_02_nva65",4,round (50 / GRLIB_recycling_percentage),10],
-	["vn_o_wheeled_btr40_mg_01_nva65",4,round (75 / GRLIB_recycling_percentage),10],
+	["vn_o_wheeled_btr40_mg_02_nva65",4,round (150 / GRLIB_recycling_percentage),10],
+	["vn_o_wheeled_btr40_mg_01_nva65",4,round (175 / GRLIB_recycling_percentage),10],
+	["vn_o_armor_btr50pk_02_nva65",4,round (275 / GRLIB_recycling_percentage),10],
+	["vn_o_armor_pt76a_01_nva65",10,round (550 / GRLIB_recycling_percentage),25],
+	["vn_o_armor_pt76b_01_nva65",10,round (550 / GRLIB_recycling_percentage),25],
+	["vn_o_armor_t54b_01_nva65",10,round (1150 / GRLIB_recycling_percentage),25],
+	["vn_o_armor_ot54_01_nva65",10,round (1350 / GRLIB_recycling_percentage),25],
 	["vn_o_armor_type63_01_nva65",10,round (750 / GRLIB_recycling_percentage),25],
 	["vn_o_wheeled_btr40_mg_03_nva65",5,round (250 / GRLIB_recycling_percentage),15],
 	["vn_o_wheeled_z157_mg_01_nva65",3,round (60 / GRLIB_recycling_percentage),8],
@@ -171,5 +203,11 @@ opfor_recyclable = [
 	["vn_o_air_mi2_05_02",10,round (750 / GRLIB_recycling_percentage),25],
 	["vn_o_air_mi2_05_06",10,round (750 / GRLIB_recycling_percentage),25],
 	["vn_o_air_mi2_04_02",8,round (400 / GRLIB_recycling_percentage),20],
-	["vn_o_wheeled_z157_01_nva65",2,round (100 / GRLIB_recycling_percentage),4]
+	//
+	["vn_o_air_mig19_at",10,round (550 / GRLIB_recycling_percentage),25],
+	["vn_o_air_mig19_bmb",10,round (550 / GRLIB_recycling_percentage),25],
+	["vn_o_air_mig19_gun",10,round (550 / GRLIB_recycling_percentage),25],
+	["vn_o_air_mig21_at",10,round (750 / GRLIB_recycling_percentage),25],
+	["vn_o_air_mig21_hcas",10,round (750 / GRLIB_recycling_percentage),25],
+	["vn_o_air_mig21_gun",10,round (750 / GRLIB_recycling_percentage),25]
 ];
