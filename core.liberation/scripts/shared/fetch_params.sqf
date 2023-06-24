@@ -1,6 +1,9 @@
 //--- LRX Fetch Misson Parameters ----------------------------------------
 
 // Map constant
+GRLIB_map_modder = "Unknow";
+GRLIB_west_modder = "Unknow";
+GRLIB_east_modder = "Unknow";
 [] call compileFinal preprocessFileLineNUmbers "gameplay_constants.sqf";
 GRLIB_params_save_key = format ["%1-config", GRLIB_save_key];
 
@@ -205,11 +208,6 @@ if ( GRLIB_respawn_cooldown == 1 ) then { GRLIB_respawn_cooldown = true } else {
 
 // Overide sector radius
 if (GRLIB_sector_radius != 0) then { GRLIB_sector_size = GRLIB_sector_radius };
-
-// Map - Template Creators
-GRLIB_map_modder = "Unknow";
-GRLIB_west_modder = "Unknow";
-GRLIB_east_modder = "Unknow";
 
 // Params loaded
 GRLIB_LRX_params_loaded = true;
