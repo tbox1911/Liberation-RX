@@ -179,6 +179,7 @@ whitelisted_from_arsenal = [
 	"Bandage",
 	"HandGrenade",
 	"MiniGrenade",
+	"B_IR_Grenade",
 	"Laserbatteries",
 	"B_UavTerminal",
 	"APERSMine_Range_Mag",
