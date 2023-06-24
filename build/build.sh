@@ -31,7 +31,7 @@ for dir in $(ls -1 ../maps | grep -E "^Liberation_RX\.*"); do
 GRLIB_build_date = \"$(date +'%d/%m/%Y')\";
 GRLIB_build_time = \"$(date +'%H:%M:%S')\";
 GRLIB_build_version = \"$(git describe --tags)\";
-diag_log format ["version %1 build - date: %2",GRLIB_build_version, GRLIB_build_date]; 
+diag_log format [\"version %1 build - date: %2\",GRLIB_build_version, GRLIB_build_date]; 
 " > ./"${dir}"/build_info.sqf
 
 		if [[ -d custom ]]; then
