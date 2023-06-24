@@ -9,7 +9,7 @@ if (GRLIB_fancy_info == 2) then {
 	if (typeName _text == "ARRAY") then {
 		_formated_text = format [(_text select 0) call BIS_fnc_localize, _text select 1, _text select 2];
 	} else {
-		_formated_text = _text;
+		_formated_text = _text call BIS_fnc_localize;
 	};
 
 	_msg = format [

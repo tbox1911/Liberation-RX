@@ -10,7 +10,7 @@ private [ "_citylist", "_vip", "_vehicle1", "_vehicle2", "_vehicle3", "_numWaypo
 
 _setupVars =
 {
-	_missionType = "Capture VIP";
+	_missionType = "STR_VIP_CAP";
 	_citylist = [] call cityList;
 	_locationsArray = nil; // locations are generated on the fly from towns
 };
@@ -85,7 +85,7 @@ _setupObjects =
 	_missionPos = getPosATL leader _aiGroup;
 	_missionPicture = getText (configFile >> "CfgVehicles" >> (_vehicleClass param [0,""]) >> "picture");
 	_vehicleName = getText (configFile >> "CfgVehicles" >> (_vehicleClass param [0,""]) >> "displayName");
-	_missionHintText = ["STR_SEARCH_VIP_CAP_MSG", sideMissionColor];
+	_missionHintText = ["STR_VIP_CAP_MSG", sideMissionColor];
 	_numWaypoints = count waypoints _aiGroup;
 	_convoy_attacked = false;
 	_disembark_troops = false;
