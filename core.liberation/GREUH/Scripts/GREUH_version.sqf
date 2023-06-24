@@ -50,7 +50,7 @@ player createDiaryRecord ["LRX Info", ["Support LRX !", "You want to contribute 
 player createDiaryRecord ["LRX Info", ["Support LRX !", "<br/>You like Liberation RX ?<br/>"]];
 
 player createDiarySubject ["LRX Info", "pSiKO Tweaks"];
-player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["<img image='\a3\ui_f\data\map\markers\flags\france_ca.paa' height='20' width='20'/>&#160;&#160;This version was build on %1 at %2 in France, with love ;)", GRLIB_build_date, GRLIB_build_time]]];
+player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["<img image='\a3\ui_f\data\map\markers\flags\france_ca.paa' height='20' width='20'/>&#160;&#160;This version (%1) was build on %2 at %3 in France, with love ;)", GRLIB_build_version, GRLIB_build_date, GRLIB_build_time]]];
 player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["All the rest and Scripting Integration<br/>by <font color='#0080ff'>-pSiKO-</font>"]]];
 player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["Advanced Rappelling v1.00<br/>by <font color='%1'>-Seth Duda-</font>", call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["Vehicle Appearance Manager v1.41<br/>by <font color='%1'>-UNIT_normal-</font>", call _getRandomColor]]];
@@ -93,7 +93,7 @@ player createDiarySubject ["LRX Info", "Server"];
 player createDiaryRecord ["LRX Info", ["Server", format ["Join us on the Official Server !<br/><br/>- ARMA III - Liberation RX<br/><img image='res\liberation.paa' height='128' width='256'/><br/><font color='#0080ff'>arma.liberation-rx.fr</font><br/><br/>Team Speak 3<br/><font color='#0080ff'>ts3.liberation-rx.fr</font><br/>Discord LRX<br/><font color='#0080ff'>https://discord.gg/uCRzJ7wauR</font>"]]];
 
 player createDiarySubject ["LRX Info", "Original"];
-player createDiaryRecord ["LRX Info", ["Original", format ["Last version 0.924"]]];
+player createDiaryRecord ["LRX Info", ["Original", format ["Last version 0.927"]]];
 player createDiaryRecord ["LRX Info", ["Original", format ["Website: <font color='#ff8000'>arma.greuh.org</font>"]]];
 player createDiaryRecord ["LRX Info", ["Original", format ["Original version coded by: <font color='#ff8000'>[GREUH] Zbug</font> and <font color='#ff8000'>[GREUH] McKeewa</font>"]]];
 

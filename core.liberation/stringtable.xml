@@ -7349,11 +7349,17 @@
 			<Original>All the Intels have been found, well done.</Original>
 		</Key>
 		<!-- mission_CaptureVIP.sqf -->
-		<Key ID="STR_SEARCH_VIP_CAP_MSG">
+		<Key ID="STR_VIP_CAP">
+			<Original>Capture VIP</Original>
+		</Key>			
+		<Key ID="STR_VIP_CAP_MSG">
 			<Original>An important &lt;t color='%1'&gt;V.I.P&lt;/t&gt; is travelling the island.&lt;br/&gt;Intercept his convoy and capture him &lt;t color='%1'&gt;ALIVE&lt;/t&gt;!</Original>
 		</Key>
 		<!-- mission_HeliCapture.sqf -->
-		<Key ID="STR_SEARCH_HELI_CAP_MSG">
+		<Key ID="STR_HELI_CAP">
+			<Original>Helicopter Capture</Original>
+		</Key>	
+		<Key ID="STR_HELI_CAP_MSG">
 			<Original>A &lt;t color='%2'&gt;%1&lt;/t&gt; has been immobilized, go Repair it and take it for your team!</Original>
 		</Key>		
 		<!-- speak_manager.sqf -->
