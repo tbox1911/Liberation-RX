@@ -36,9 +36,6 @@ while { dialog && alive player } do {
 		{
 			if ( alive _x ) then {
 				_unitname =  format ["%1. %2", [ _x ] call F_getUnitPositionId, name _x];
-				if (isPlayer _x) then {
-					_unitname = [_x] call get_player_name;
-				};
 				lbAdd [ 101, _unitname ];
 			};
 		} foreach PAR_AI_bros;
@@ -78,9 +75,6 @@ while { dialog && alive player } do {
 			_squad_camera camcommit 0;
 
 			_unitname = format ["%1. %2", [ _selectedmember ] call F_getUnitPositionId, name _selectedmember];
-			if (isPlayer _selectedmember) then {
-				_unitname = [_selectedmember] call get_player_name;
-			};
 			ctrlSetText [ 201, _unitname];
 
 			ctrlSetText [ 202, format ["%1 (%2)", getText (_cfgVehicles >> (typeof _selectedmember) >> "displayName"), rank _selectedmember] ];
@@ -144,7 +138,7 @@ while { dialog && alive player } do {
 	if ( GRLIB_squadaction == -1 ) then {
 		ctrlEnable [ 213, false ];
 		ctrlEnable [ 214, false ];
-		if ( !(isPlayer _selectedmember) && (vehicle _selectedmember == _selectedmember) && (side _selectedmember == GRLIB_side_friendly) ) then {
+		if ( (vehicle _selectedmember == _selectedmember) && (side _selectedmember == GRLIB_side_friendly) ) then {
 			ctrlEnable [ 210, true ];
 			ctrlEnable [ 215, true ];
 			if ( leader group player == player ) then {
@@ -229,6 +223,7 @@ while { dialog && alive player } do {
 				if ([_cost] call F_pay) then {
 					_selectedmember setUnitLoadout (getUnitLoadout player);
 					hintSilent format ["Loadout copied, Price: %1\nThank you !", _cost];
+					_resupplied = true;
 				};
 			} else {
 				hintSilent "Unit too far from you.";
