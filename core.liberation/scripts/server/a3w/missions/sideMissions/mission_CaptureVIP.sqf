@@ -99,7 +99,7 @@ _waitUntilCondition = {
 	if ( !_convoy_attacked ) then {
 		{
 			// Attacked ?
-			if ( !(alive _x) || (damage _x > 0.3) || !(alive driver _x) && (count ([getPosATL _x, 1000] call F_getNearbyPlayers) > 0) ) exitWith { _convoy_attacked = true; };
+			if ( !(alive _x) || (damage _x > 0.2) || !(alive driver _x) && (count ([getPosATL _x, 1000] call F_getNearbyPlayers) > 0) ) exitWith { _convoy_attacked = true; };
 
 			// Unflip ?
 			if ((vectorUp _x) select 2 < 0.60) then {
@@ -124,21 +124,15 @@ _waitUntilCondition = {
 		{
 			[_x] spawn {
 				params ["_vehicle"];
-				doStop (driver _vehicle); sleep 0.3;
-				{
-					sleep 0.2;
-					unAssignVehicle _x;
-					_x action ["eject", vehicle _x];
-					_x action ["getout", vehicle _x];
-					[_x] orderGetIn false;
-					[_x] allowGetIn false;
-				} foreach (crew _vehicle);
+				doStop (driver _vehicle);
+				sleep 2;
+				{ [_vehicle, _x] spawn F_ejectUnit } foreach (crew _vehicle);
 			};
-			sleep 0.2;
 		} foreach [_vehicle1, _vehicle2, _vehicle3];
 
 		_aiGroup setBehaviour "COMBAT";
 		_aiGroup setCombatMode "RED";
+		[_aiGroup, getPosATL _vip, 30] spawn add_defense_waypoints;
 	};
 
 	!(alive _vip) || currentWaypoint _aiGroup >= _numWaypoints;

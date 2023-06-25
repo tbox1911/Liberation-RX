@@ -37,25 +37,26 @@ _waypoint setWaypointType "CYCLE";
 
 waitUntil {
 	sleep 10;
-	( { alive _x } count (units _grp) == 0 ) || !(isNull ((leader _grp) findNearestEnemy (leader _grp)))
-};
+	_basepos = (leader _grp) findNearestEnemy (leader _grp);
+	if (!isNull _basepos) then {
+		[_grp] call F_deleteWaypoints;
+		{_x doFollow leader _grp} foreach units _grp;
 
-if ( { alive _x } count (units _grp) > 0 ) then {
-	[_grp] call F_deleteWaypoints;
-	{_x doFollow leader _grp} foreach units _grp;
+		_waypoint = _grp addWaypoint [_basepos, _radius];
+		_waypoint setWaypointType "SAD";
+		_waypoint setWaypointBehaviour "COMBAT";
+		_waypoint setWaypointCombatMode "GREEN";
+		_waypoint setWaypointSpeed "LIMITED";
+		_waypoint = _grp addWaypoint [_basepos, _radius];
+		_waypoint setWaypointType "SAD";
+		_waypoint = _grp addWaypoint [_basepos, _radius];
+		_waypoint setWaypointType "SAD";
+		_waypoint = _grp addWaypoint [_basepos, _radius];
+		_waypoint setWaypointType "SAD";
+		_waypoint = _grp addWaypoint [_basepos, _radius];
+		_waypoint setWaypointType "CYCLE";
+		sleep 60;
+	};	
 
-	_basepos = getPosATL (leader _grp);
-	_waypoint = _grp addWaypoint [_basepos, _radius];
-	_waypoint setWaypointType "SAD";
-	_waypoint setWaypointBehaviour "COMBAT";
-	_waypoint setWaypointCombatMode "GREEN";
-	_waypoint setWaypointSpeed "LIMITED";
-	_waypoint = _grp addWaypoint [_basepos, _radius];
-	_waypoint setWaypointType "SAD";
-	_waypoint = _grp addWaypoint [_basepos, _radius];
-	_waypoint setWaypointType "SAD";
-	_waypoint = _grp addWaypoint [_basepos, _radius];
-	_waypoint setWaypointType "SAD";
-	_waypoint = _grp addWaypoint [_basepos, _radius];
-	_waypoint setWaypointType "CYCLE";
+	( { alive _x } count (units _grp) == 0 )
 };
