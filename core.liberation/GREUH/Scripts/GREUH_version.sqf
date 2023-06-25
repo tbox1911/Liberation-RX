@@ -115,11 +115,11 @@ player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'>-20<
 player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'>-10</font> pts  :  Team Kill"]]];
 player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'> -5</font> pts  :  Firendly Fires"]]];
 player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'> -5</font> pts  :  Respawn when Major and above"]]];
-player createDiaryRecord ["Table", ["Table", format ["<font color='#00ff40'>+10</font> pts  :  Recycle AmmoBox<br/>"]]];
-player createDiaryRecord ["Table", ["Table", format ["<font color='#00ff40'>+10</font> pts  :  Bring Prisoners at HQ"]]];
+player createDiaryRecord ["Table", ["Table", format ["<font color='#00ff40'>+10</font> pts  :  Recycle AmmoBox (when rank < Corporal)<br/>"]]];
+player createDiaryRecord ["Table", ["Table", format ["<font color='#00ff40'>+10</font> pts  :  Bring Prisoners or V.I.P at HQ"]]];
 player createDiaryRecord ["Table", ["Table", format ["<font color='#00ff40'>+20</font> pts  :  Defend Attacked Sector"]]];
 player createDiaryRecord ["Table", ["Table", format ["<font color='#00ff40'> +5</font> pts  :  Salvage Wrecks"]]];
-player createDiaryRecord ["Table", ["Table", format ["<font color='#00ff40'> +5</font> pts  :  Revive other players"]]];
+player createDiaryRecord ["Table", ["Table", format ["<font color='#00ff40'> +5</font> pts  :  Revive other players (near combat)"]]];
 player createDiaryRecord ["Table", ["Table", format ["<font color='#00ff40'> +4</font> pts  :  Kill enemy vehicle"]]];
 player createDiaryRecord ["Table", ["Table", format ["<font color='#00ff40'> +1</font> pts  :  Kill enemy infantry"]]];
 player createDiaryRecord ["Table", ["Table", format ["-= Killing Table =-"]]];
