@@ -12,6 +12,11 @@ private _minpri_def = 3;             // minimal magazines before unit need to re
 private _maxsec_def = 3;             // maximum magazines unit can take (secondary weapon)
 private _minsec_def = 1;             // minimal magazines before unit need to reload
 private _guid = getPlayerUID player;
+private _artillery = [
+	"MBT_01_base_F",
+	"MBT_02_base_F",
+	"MBT_03_base_F"
+];
 
 while { true } do {
 	waitUntil {sleep 1; GRLIB_player_spawned};
@@ -95,7 +100,8 @@ while { true } do {
 			) then {
 				_unit = _x;
 				_vehicle = vehicle _unit;
-				_vehicle_name = [typeOf _vehicle] call F_getLRXName;
+				_vehicle_class = typeOf _vehicle;
+				_vehicle_name = [_vehicle_class] call F_getLRXName;
 
 				// REAMMO
 				_near_arsenal = [_vehicle, "REAMMO", _distarsenal, true] call F_check_near;
@@ -103,7 +109,7 @@ while { true } do {
 				_vehicle_need_ammo = (([_vehicle] call F_getVehicleAmmoDef) <= 0.85);
 
 				if (!isNil "GRLIB_LRX_debug") then {
-					diag_log format ["DBG: %1: need Ammo:%2 - near Ammo source:%3", typeOf _vehicle, _vehicle_need_ammo, _near_arsenal];
+					diag_log format ["DBG: %1: need Ammo:%2 - near Ammo source:%3", _vehicle_class, _vehicle_need_ammo, _near_arsenal];
 				};
 
 				if (_near_arsenal && _is_enabled && _vehicle_need_ammo) then {
@@ -111,7 +117,11 @@ while { true } do {
 					if (_timer <= time) then {
 						_max_ammo = 3;
 						_vehicle setVehicleAmmo 1;
-						_vehicle setVariable ["GREUH_rearm_timer", round (time + (5*60))];  // min cooldown
+						_is_arty = false;
+						_is_arty = { if (_vehicle_class isKindOf _x) exitWith {true} } forEach _artillery;
+						_cooldown = 5 * 60;
+						if (_is_arty) then { _cooldown = _cooldown * 2 };
+						_vehicle setVariable ["GREUH_rearm_timer", round (time + _cooldown)];  // min cooldown
 						_screenmsg = format [ "%1\n%2 - %3", _vehicle_name, localize "STR_REARMING", "100%" ];
 						titleText [ _screenmsg, "PLAIN DOWN" ];
 						hintSilent _screenmsg;
@@ -133,7 +143,7 @@ while { true } do {
 				};
 
 				if (!isNil "GRLIB_LRX_debug") then {
-					diag_log format ["DBG: %1: need Repair:%2 - near Repair source:%3", typeOf _vehicle, _vehicle_need_repair, _near_repair];
+					diag_log format ["DBG: %1: need Repair:%2 - near Repair source:%3", _vehicle_class, _vehicle_need_repair, _near_repair];
 				};
 
 				if (_near_repair && _is_enabled && _vehicle_need_repair) then {
