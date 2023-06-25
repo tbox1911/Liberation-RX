@@ -144,6 +144,6 @@ player createDiaryRecord ["MapInfo", ["MapInfo", format ["The West faction <font
 player createDiaryRecord ["MapInfo", ["MapInfo", format ["-= Map Information =-"]]];
 
 player createDiarySubject ["Original", "Original"];
-player createDiaryRecord ["Original", ["Original", format ["Last version 0.927"]]];
+player createDiaryRecord ["Original", ["Original", format ["Last version: %1", GRLIB_build_version]]];
 player createDiaryRecord ["Original", ["Original", format ["Website: <font color='#ff8000'>arma.greuh.org</font>"]]];
 player createDiaryRecord ["Original", ["Original", format ["Original version coded by: <font color='#ff8000'>[GREUH] Zbug</font> and <font color='#ff8000'>[GREUH] McKeewa</font>"]]];
