@@ -68,10 +68,13 @@ if (do_action == 1) then {
 		case 10 : {_cost=0};
 	};
 	if (air_type == 10) exitWith {[] execVM "addons\TAXI\call_taxi.sqf"};
-	if (!([_cost] call F_pay)) exitWith {};
 
 	player setVariable ["AirCoolDown", round(time + 15*60)];
-	if (air_type == 7) exitWith {[player] remoteExec ["send_aircraft_remote_call", 2]};
+
+	if (air_type == 7) exitWith {
+		if ([_cost] call F_pay) then { [player] remoteExec ["send_aircraft_remote_call", 2] };
+	};
+
 	if (air_type == 8) exitWith {
 		createDialog "liberation_halo";
 		waitUntil { dialog };
@@ -100,9 +103,16 @@ if (do_action == 1) then {
 				hintSilent "Cannot fire!\nToo close from friendly units";
 				player setVariable ["AirCoolDown", 0];
 			} else {
-				[player, halo_position] remoteExec ["call_artillery_remote_call", 2];
+				if ([_cost] call F_pay) then {
+					[player, halo_position] remoteExec ["call_artillery_remote_call", 2];
+				};
 			};
+		} else {
+			player setVariable ["AirCoolDown", 0];
 		};
 	};
-	[player, _class] remoteExec ["airdrop_remote_call", 2];
+
+	if ([_cost] call F_pay) then {
+		[player, _class] remoteExec ["airdrop_remote_call", 2];
+	};
 };
