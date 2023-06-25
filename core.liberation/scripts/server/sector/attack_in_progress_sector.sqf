@@ -14,7 +14,7 @@ if ( _sector == attack_in_progress select 0 ) then {
 	};
 };
 
-if (_sector in A3W_sectors_in_use) then { _defenders_cooldown = true };
+if (_sector in A3W_sectors_in_use || diag_fps < 35) then { _defenders_cooldown = true };
 
 private _blufor_static = [];
 {_blufor_static pushBack (_x select 0)} foreach (static_vehicles);
