@@ -5,6 +5,9 @@ if (isNil "_class") exitWith {};
 private _text = "";
 if (typeName _class == "STRING") then {
 	_text = getText (configFile >> "cfgVehicles" >> _class >> "displayName");
+	if (_text == "") then {
+		_text = getText (configFile >> "CfgWeapons" >> _class >> "displayName");
+	};
 };
 if (typeName _class == "OBJECT") then {
 	_text = getText (configOf _class >> "displayName");
