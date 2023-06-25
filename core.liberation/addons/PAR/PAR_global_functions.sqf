@@ -96,25 +96,6 @@ PAR_public_EH = {
 		};
 	};
 };
-PAR_unit_eject = {
-	params ["_veh", "_unit"];
-	if (isNull _unit) exitWith {};
-	if (!alive _unit) exitWith {};
-	_unit allowDamage false;
-	unAssignVehicle _unit;
-	moveOut _unit;
-	_unit setPos (getPosATL _veh vectorAdd [([[-15,0,15], 2] call F_getRND), ([[-15,0,15], 2] call F_getRND), 0]);
-	if (alive _unit) then {
-		if (getPos _unit select 2 >= 10) then {
-			_para = createVehicle ['Steerable_Parachute_F', (getPos _unit),[],0,'none'];
-			_unit moveInDriver _para;
-			sleep 1;
-			if (isnull driver (_para)) then {deleteVehicle _para};
-		};
-		sleep 3;
-	};
-	_unit allowDamage true;
-};
 PAR_show_marker = {
 	_mk1 = createMarker [format ["PAR_marker_%1", name player], position player];
 	_mk1 setMarkerType "loc_Hospital";

@@ -148,8 +148,8 @@ if (_unit == player) then {
 		3 fadeMusic 0;
 		NRE_EarplugsActive = 0;
 		if (!GRLIB_ACE_enabled) then {
-			if ( (getPos _unit) select 2 > 20 && !(_unit getVariable ["AR_Is_Rappelling",false]) ) then {
-				[_vehicle, _unit] spawn PAR_unit_eject;
+			if ( (getPos _unit) select 2 >= 20 && !(_unit getVariable ["AR_Is_Rappelling",false]) ) then {
+				[_vehicle, _unit] spawn F_ejectUnit;
 			};
 		};
 		[_unit] spawn {

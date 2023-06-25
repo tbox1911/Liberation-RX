@@ -85,12 +85,7 @@ while {alive _unit} do {
 			_unit setUnitPos "AUTO";
 			_unit setVariable ["GRLIB_is_prisonner", true, true];
 			unAssignVehicle _unit;
-			if (!isNull objectParent _unit) then {
-				_unit action ["eject", vehicle _unit];
-				_unit action ["getout", vehicle _unit];
-				[_unit] orderGetIn false;
-				[_unit] allowGetIn false;
-			};
+			if (!isNull objectParent _unit) then { [(vehicle _unit), _unit] spawn F_ejectUnit };
 			_unit setCaptive true;
 			sleep 2;
 			_unit switchMove "AmovPercMwlkSrasWrflDf";

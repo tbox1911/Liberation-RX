@@ -50,30 +50,12 @@ private _para_group = [markerpos _spawnsector, _unitclass, GRLIB_side_enemy, "pa
 	_waypoint setWaypointCompletionRadius 20;
 
 	waitUntil { sleep 1;
+		if (_newvehicle distance2D _targetpos < 600) then { _newvehicle flyInHeight 100 };
 		!(alive _newvehicle) || (damage _newvehicle > 0.2 ) || (_newvehicle distance2D _targetpos < 300)
 	};
 
-	_newvehicle flyInHeight 150;
-	sleep 3;
-	{
-		_x allowDamage false;
-		unassignVehicle _x;
-		moveout _x;
-		if (_x getVariable ["GRLIB_para_backpack", ""] != "") then {
-			[_x] spawn {
-				params ["_unit"];
-				waituntil {sleep 1; !(alive _unit) || (isTouchingGround _unit)};
-				if (!(alive _unit)) exitWith {};
-				_unit addBackpack (_unit getVariable ["GRLIB_para_backpack", ""]);
-				clearAllItemsFromBackpack _unit;
-				{_unit addItemToBackpack _x} foreach (_unit getVariable ["GRLIB_para_backpack_contents", []]);
-			};
-		};
-		sleep 0.5;
-	} foreach (units _para_group);
-
-	sleep 3;
-	{ _x allowDamage true } foreach (units _para_group);
+	{ [_newvehicle, _x] spawn F_ejectUnit } forEach (units _para_group);
+	sleep 2;
 
 	[_pilot_group] call F_deleteWaypoints;
 	[_para_group] call F_deleteWaypoints;
@@ -90,6 +72,7 @@ private _para_group = [markerpos _spawnsector, _unitclass, GRLIB_side_enemy, "pa
 	_waypoint setWaypointType "CYCLE";
 
 	[_para_group, _targetpos] spawn battlegroup_ai;
+	_newvehicle flyInHeight 300;
 };
 
 _para_group;

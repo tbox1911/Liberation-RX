@@ -1,7 +1,7 @@
 params ["_troup_transport", "_objective_pos"];
 private [ "_unit" ];
 
-diag_log format [ "Spawn Troop in vehicle %1 at %2", typeOf _troup_transport, time ];
+diag_log format [ "Spawn Troop in vehicle %1 objective %2 at %3", typeOf _troup_transport, _objective_pos, time ];
 private _transport_group = (group (driver _troup_transport));
 private _start_pos = getpos _troup_transport;
 private _unload_distance = 300;
@@ -15,25 +15,16 @@ private _troupgrp = [_start_pos, ([] call F_getAdaptiveSquadComp), GRLIB_side_en
 	_x setVariable ["GRLIB_counter_TTL", round(time + 1800)];
 } foreach (units _troupgrp);
 
-waitUntil { sleep 1; ((damage _troup_transport > 0.5) || !(alive (driver _troup_transport)) || ((_troup_transport distance2D _objective_pos) < _unload_distance)) };
+waitUntil { sleep 1; ((damage _troup_transport > 0.2) || !(alive (driver _troup_transport)) || ((_troup_transport distance2D _objective_pos) < _unload_distance)) };
 doStop (driver _troup_transport);
 sleep 2;
 
 // transport troops
-{ 
-	_veh = objectParent _x;
-	if (!(isNull _veh) && speed vehicle _veh < 5) then {
-		unAssignVehicle _x;
-		_x action ["eject", vehicle _x];
-		_x action ["getout", vehicle _x];
-		[_x] orderGetIn false;
-		[_x] allowGetIn false;
-		sleep 0.2;
-	};
-} forEach (units _troupgrp);
+{ [_troup_transport, _x] spawn F_ejectUnit } forEach (units _troupgrp);
 sleep 2;
 [_troupgrp, _objective_pos] spawn battlegroup_ai;
 
+sleep 10;
 // transport vehicle
 if ((alive _troup_transport) && (alive (driver _troup_transport))) then {
 	[_transport_group] call F_deleteWaypoints;

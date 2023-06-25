@@ -147,17 +147,10 @@ while { _mission_in_progress } do {
 
 	if ( _convoy_attacked && !_disembark_troops) then {
 		_disembark_troops = true;
-		{
-			unAssignVehicle _x;
-			_x action ["eject", vehicle _x];
-			_x action ["getout", vehicle _x];
-			[_x] orderGetIn false;
-			[_x] allowGetIn false;
-			sleep 0.2;
-		} foreach ( crew _troop_vehicle );
-
+		{ [_troop_vehicle, _x] spawn F_ejectUnit } forEach (units _troops_group);
 		_troops_group setBehaviour "COMBAT";
 		_troops_group setCombatMode "RED";
+		[_troops_group, getPosATL _troop_vehicle, 30] spawn add_defense_waypoints;
 	};
 
 	if ( _convoy_attacked && !_convoy_flee) then {
