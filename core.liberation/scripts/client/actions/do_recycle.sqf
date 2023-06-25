@@ -40,11 +40,9 @@ ctrlSetText [ 132, format [ "%1", _ammount_ammo ] ];
 ctrlSetText [ 133, format [ "%1", _ammount_fuel ] ];
 
 while { dialog && (alive player) && dorecycle == 0 } do { sleep 0.5 };
-
 if ( dialog ) then { closeDialog 0 };
 
 if ( dorecycle == 1 && !(isNull _vehicle) && (alive _vehicle || _veh_class in _buildings) ) exitWith {
-
 	if (_veh_class in [ammobox_b_typename, ammobox_o_typename, ammobox_i_typename] && [player] call F_getScore <= GRLIB_perm_log) then {
 		[player, 10] remoteExec ["F_addScore", 2];
 		hint format [localize "STR_AMMO_SELL", name player, 10];
