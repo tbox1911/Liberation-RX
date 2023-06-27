@@ -6,7 +6,6 @@ addMissionEventHandler ['HandleDisconnect', {
 	if (count (AllPlayers - (entities "HeadlessClient_F")) == 0) then {
 		[] call save_game_mp;
 		diag_log "--- LRX Mission End!";
-		//[] call cleanup_server;
 		endMission "END1";
 		forceEnd;
 	};
