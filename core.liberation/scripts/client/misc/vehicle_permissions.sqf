@@ -4,7 +4,7 @@ if (count GRLIB_all_fobs == 0 && typeOf _vehicle in [FOB_truck_typename,huron_ty
 
 private _doeject = false;
 private _info = (assignedVehicleRole _unit1);
-if (count _info == 0) exitWith { [_vehicle, _unit1] spawn F_ejectUnit };  // Eject unit
+if (count _info == 0) exitWith { [_vehicle, _unit1, false] spawn F_ejectUnit };  // Eject unit
 private _role = _info select 0;
 private _turret = [0];
 if (count _info == 2) then { _turret = _info select 1 };
@@ -64,7 +64,7 @@ if (!(_role == "cargo" || _vehicle isKindOf "Steerable_Parachute_F" || typeOf _v
 };
 
 if (_doeject) then {
-	[_vehicle, _unit1] spawn F_ejectUnit;
+	[_vehicle, _unit1, false] spawn F_ejectUnit;
 	if (typeName _unit2 == "OBJECT") then {
 		if (!isNull _unit2) then {
 			switch (_role) do {

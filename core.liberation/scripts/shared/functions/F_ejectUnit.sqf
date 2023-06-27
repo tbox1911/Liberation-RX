@@ -1,4 +1,4 @@
-params ["_vehicle", "_unit"];
+params ["_vehicle", "_unit", ["_slow", true]];
 if (isNull _unit || !alive _unit) exitWith {};
 if (!local _unit) exitWith {
 	[_vehicle, _unit] remoteExec ["F_ejectUnit", owner _unit];
@@ -6,7 +6,7 @@ if (!local _unit) exitWith {
 
 _unit allowDamage false;
 unAssignVehicle _unit;
-sleep (random 2);
+if (_slow) then { sleep (random 2) };
 _unit action ["eject", _vehicle];
 _unit action ["getout", _vehicle];
 sleep 1;
