@@ -1,7 +1,11 @@
 params ["_vehicle", "_unit", ["_slow", true]];
 if (isNull _unit || !alive _unit) exitWith {};
 if (!local _unit) exitWith {
-	[_vehicle, _unit] remoteExec ["F_ejectUnit", owner _unit];
+	if (isServer) then {
+		[_vehicle, _unit] remoteExec ["F_ejectUnit", owner _unit];
+	} else {
+		[_vehicle, _unit] remoteExec ["F_ejectUnit", 2];
+	};
 };
 
 _unit allowDamage false;
