@@ -185,7 +185,7 @@ _waitUntilCondition = {
 
 _failedExec = {
 	// Mission failed
-	{{deleteVehicle _x} units _x} forEach _civilians;
+	{{deleteVehicle _x} forEach (units _x)} forEach _civilians;
 	[_missionPos] call clearlandmines;
 	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
@@ -202,7 +202,7 @@ _successExec = {
 	} forEach (AllPlayers - (entities "HeadlessClient_F"));
 
 	_successHintMessage = "STR_SEARCH_INTEL_MESSAGE2";
-	{{deleteVehicle _x} units _x} forEach _civilians;
+	{{deleteVehicle _x} forEach (units _x)} forEach _civilians;
 	[_missionPos] call showlandmines;
 	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };

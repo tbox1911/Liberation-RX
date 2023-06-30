@@ -76,7 +76,7 @@ _waitUntilCondition = { !(_missionLocation in blufor_sectors) };
 _failedExec = {
 	// Mission failed
 	{ deleteVehicle _x } forEach [_tent1, _chair1, _chair2, _fire1];
-	{{deleteVehicle _x} units _x} forEach _civilians;
+	{{deleteVehicle _x} forEach (units _x)} forEach _civilians;
 	[_missionPos] call clearlandmines;
 	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
@@ -97,7 +97,7 @@ _successExec = {
 
 	_successHintMessage = ["STR_INVASION_MESSAGE2", sideMissionColor, _townName];
 	{ deleteVehicle _x } forEach [_tent1, _chair1, _chair2, _fire1];
-	{{deleteVehicle _x} units _x} forEach _civilians;
+	{{deleteVehicle _x} forEach (units _x)} forEach _civilians;
 	[_missionPos] call showlandmines;
 	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };

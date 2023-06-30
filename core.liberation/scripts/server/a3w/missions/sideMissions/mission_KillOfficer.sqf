@@ -42,12 +42,13 @@ _setupObjects =
 
 	// Move HVT into Building
 	_hvt move (random(nearestBuilding _hvt buildingPos -1));
-	
+	_hvt_pos = getPosATL _hvt;
+
 	// Spawn civvies
 	_civilians = [];
 	for "_i" from 0 to (5 + random(5)) do {
-		_civ_grp = [(getPosATL _hvt), [selectRandom civilians], GRLIB_side_civilian, "civilian"] call F_libSpawnUnits;
-		[_civ_grp, (getPos _hvt), 75] call BIS_fnc_taskPatrol;
+		_civ_grp = [_hvt_pos, [selectRandom civilians], GRLIB_side_civilian, "civilian"] call F_libSpawnUnits;
+		[_civ_grp, _hvt_pos, 75] call BIS_fnc_taskPatrol;
 		_civilians pushBack _civ_grp;
 	};
 
@@ -60,9 +61,9 @@ _setupObjects =
 	_aiGroup setSpeedMode "LIMITED";
 
 	// Patrol around the HVT
-	[_aiGroup, (getPos _hvt), 50] call BIS_fnc_taskPatrol;
+	[_aiGroup, _hvt_pos, 50] call BIS_fnc_taskPatrol;
 
-	_missionPos = {getPosATL _hvt};
+	_missionPos = _hvt_pos;
 	_missionPicture = getText (configFile >> "CfgVehicles" >> (_vehicleClass param [0, ""]) >> "picture");
 	_vehicleName = getText (configFile >> "CfgVehicles" >> (_vehicleClass param [0, ""]) >> "displayName");
 	_missionHintText = ["STR_HOSSTILE_OFFICER_MESSAGE1", _vehicleName, sideMissionColor];
@@ -71,7 +72,7 @@ _setupObjects =
 
 _failedExec = {
 	// Mission failed
-	{{deleteVehicle _x} units _x} forEach _civilians;
+	{{deleteVehicle _x} forEach (units _x)} forEach _civilians;
 	deleteVehicle _hvt;
 };
 
@@ -79,7 +80,7 @@ _successExec =
 {	
 	// Mission completed
 	_successHintMessage = "STR_HOSSTILE_HELI_MESSAGE2";
-	{{deleteVehicle _x} units _x} forEach _civilians;
+	{{deleteVehicle _x} forEach (units _x)} forEach _civilians;
 	if (combat_readiness > 20) then { combat_readiness = combat_readiness - 15 };
 };
 
