@@ -54,6 +54,7 @@ _warehouse_dir = (180 + _warehouse_dir);
 private _manPos = (ASLToATL _deskPos) vectorAdd ([[0, -0.7, 0.1], -_warehouse_dir] call BIS_fnc_rotateVector2D);
 private _man = GRLIB_WHS_Group createUnit [WRHS_Man, zeropos, [], 0, "NONE"];
 [_man] joinSilent GRLIB_WHS_Group;
+_man setVariable ["acex_headless_blacklist", true];
 _man allowDamage false;
 _man disableCollisionWith _desk;
 _man setDir _warehouse_dir;
