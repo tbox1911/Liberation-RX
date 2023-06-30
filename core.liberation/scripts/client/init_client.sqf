@@ -213,6 +213,6 @@ onPlayerDisconnected {
 
 initAmbientLife;
 enableEnvironment [true, true];
-setTerrainGrid 25;  //High = 12.5, Very High = 6.25, Ultra = 3.125
+setTerrainGrid 12.5;  //Normal = 25, High = 12.5, Very High = 6.25, Ultra = 3.125
 
 diag_log "--- Client Init stop ---";
