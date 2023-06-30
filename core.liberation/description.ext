@@ -1,3 +1,9 @@
+class Header {
+	gameType = CTI;
+	minPlayers = 1;
+	maxPlayers = 10;
+};
+
 author = $STR_MISSION_AUTHOR;
 onLoadName = $STR_MISSION_TITLE;
 briefingName = $STR_MISSION_TITLE;
@@ -33,12 +39,6 @@ class cfgSounds {
  		sound[] = {"res\c130.ogg", 1, 1};
  		titles[] = {};
  	};
-};
-
-class Header {
-	gameType = CTI;
-	minPlayers = 1;
-	maxPlayers = 22;
 };
 
 class CfgDebriefing {
