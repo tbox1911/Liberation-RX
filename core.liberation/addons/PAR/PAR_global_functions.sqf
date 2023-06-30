@@ -109,48 +109,20 @@ PAR_del_marker = {
 // AI Section
 PAR_fn_AI_Damage_EH = {
 	params ["_unit"];
-
-	if ( _unit getVariable ["PAR_EH_Installed", false] ) exitWith {};
+	if (_unit getVariable ["PAR_EH_Installed", false]) exitWith {};
 	_unit setVariable ["PAR_EH_Installed", true];
-	_unit removeAllEventHandlers "HandleDamage";
-	_unit addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
-
-	if (GRLIB_revive != 0) then {
-		_unit addEventHandler ["HandleDamage", {
-			params ["_unit","","_dam"];
-			_veh = objectParent _unit;
-			if (!(isNull _veh) && !(player in (crew _veh)) && damage _veh > 0.8) then {[_veh, _unit, true] spawn PAR_fn_eject};
-
-			private _isNotWounded = !(_unit getVariable ["PAR_wounded", false]);
-			if (_isNotWounded && _dam >= 0.86) then {
-				if (!isNull _veh) then {[_veh, _unit] spawn PAR_fn_eject};
-				_unit allowDamage false;
-				_unit setVariable ["PAR_wounded", true];
-				_unit setUnconscious true;
-				_unit setVariable ["PAR_BleedOutTimer", round(time + PAR_BleedOut), true];
-				[_unit] spawn PAR_fn_unconscious;
-			};
-			_dam min 0.86;
-		}];
-	};
-	if (GRLIB_ACE_enabled) then {
-		_unit addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
-	} else {
-		_unit removeAllMPEventHandlers "MPKilled";
-		_unit addMPEventHandler ["MPKilled", { _this spawn PAR_fn_death }];
-	};
+	[_unit] call PAR_EventHandler;
+	_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	_unit setVariable ["PAR_wounded", false];
 	_unit setVariable ["PAR_myMedic", nil];
 	_unit setVariable ["PAR_busy", nil];
 	_unit setVariable ["PAR_heal", nil];
 	_unit setVariable ["PAR_healed", nil];
 	_unit setVariable ["PAR_AI_score", 5, true];
-	[_unit] call PAR_EventHandler;
 };
 
 // Player Section
 PAR_Player_Init = {
-	player removeAllMPEventHandlers "MPKilled";
 	player addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	player setVariable ["PAR_isUnconscious", 0, true];
 	player setVariable ["PAR_wounded", false];

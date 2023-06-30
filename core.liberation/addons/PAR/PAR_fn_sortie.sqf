@@ -48,7 +48,6 @@ if (_wnded == player) then {
       if (player == (_this select 0)) then { hintSilent (_this select 1) };
     }] remoteExec ["bis_fnc_call", -2];
   };
-  private _grp = group _wnded;
 } else {
   _wnded switchMove "amovpknlmstpsraswrfldnon"; //go up
   _wnded playMoveNow "amovpknlmstpsraswrfldnon";

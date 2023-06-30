@@ -1,18 +1,6 @@
 params ["_unit"];
-// Cleanup
-{_unit removeAllEventHandlers _x} count [
-	"GetInMan",
-	"GetOutMan",
-	"SeatSwitchedMan",
-	"InventoryOpened",
-	"InventoryClosed",
-	"FiredMan",
-	"WeaponAssembled",
-	"Take"
-];
 
 // For all
-
 // Cannot DisAssemble
 _unit enableWeaponDisassembly false;
 
@@ -120,7 +108,6 @@ if (_unit == player) then {
 	"];
 
 	// Get in Vehicle
-	_unit removeAllEventHandlers "GetInMan";
 	_unit addEventHandler ["GetInMan", {
 		params ["_unit", "_role", "_vehicle"];
 		1 fadeSound (round desired_vehvolume / 100.0);
@@ -141,7 +128,6 @@ if (_unit == player) then {
 	}];
 
 	// Get out Vehicle
-	_unit removeAllEventHandlers "GetOutMan";
 	_unit addEventHandler ["GetOutMan", {
 		params ["_unit", "_role", "_vehicle"];
 		1 fadeSound 1;
@@ -160,4 +146,39 @@ if (_unit == player) then {
 		};
 	}];
 
+	// Player killed EH
+	player addEventHandler ["Killed", { _this spawn PAR_fn_death }];
+
+	// Player respawn EH
+	player addEventHandler ["Respawn", { [] spawn PAR_Player_Init }];
+
+	// Player Handle Damage EH
+	if (GRLIB_revive != 0) then {
+		player addEventHandler ["HandleDamage", { _this call PAR_HandleDamage_EH }];
+		[] spawn PAR_AI_Manager;
+	};
+} else {
+	// AI killed EH
+	_unit addEventHandler ["Killed", { _this spawn PAR_fn_death }];	
+
+	// AI Handle Damage EH
+	_unit addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
+	if (GRLIB_revive != 0) then {
+		_unit addEventHandler ["HandleDamage", {
+			params ["_unit","","_dam"];
+			_veh = objectParent _unit;
+			if (!(isNull _veh) && !(player in (crew _veh)) && damage _veh > 0.8) then {[_veh, _unit, true] spawn PAR_fn_eject};
+
+			private _isNotWounded = !(_unit getVariable ["PAR_wounded", false]);
+			if (_isNotWounded && _dam >= 0.86) then {
+				if (!isNull _veh) then {[_veh, _unit] spawn PAR_fn_eject};
+				_unit allowDamage false;
+				_unit setVariable ["PAR_wounded", true];
+				_unit setUnconscious true;
+				_unit setVariable ["PAR_BleedOutTimer", round(time + PAR_BleedOut), true];
+				[_unit] spawn PAR_fn_unconscious;
+			};
+			_dam min 0.86;
+		}];
+	};
 };

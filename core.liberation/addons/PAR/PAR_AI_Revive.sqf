@@ -56,19 +56,8 @@ waituntil {sleep 1; !isNil {player getVariable ["GRLIB_Rank", nil]}};
 // Init player
 [] call PAR_Player_Init;
 
-// Player respawn EH
-player removeAllEventHandlers "Respawn";
-player addEventHandler ["Respawn", { [] spawn PAR_Player_Init }];
-
 // Init player EH
 [player] call PAR_EventHandler;
-
-// Handle Damage EH
-if (GRLIB_revive != 0) then {
-  player removeAllEventHandlers "HandleDamage";
-  player addEventHandler ["HandleDamage", { _this call PAR_HandleDamage_EH }];
-  [] spawn PAR_AI_Manager;
-};
 
 // Grave Marker
 _marker = createMarkerLocal ["player_grave_box", markers_reset];
