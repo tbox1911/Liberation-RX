@@ -33,6 +33,25 @@ if (!isNil "_my_dog") then {
 		gamelogic globalChat _msg;
 	};
 
+	if (_cmd == "find_gun") then {
+		_weapons_lst = nearestObjects [player, ["GroundWeaponHolder"], 300];
+		_weapons_lst = _weapons_lst select {
+			_wp = ((getWeaponCargo _x) select 0);
+			(format ["Weapon_%1",(_wp select 0)] isKindOf "Weapon_Base_F")
+		};
+		_msg = localize "STR_DOG_FOUND_NOTHING";
+		if (count _weapons_lst > 0) then {
+			_weapons_lst = _weapons_lst apply {[_x distance2D player, _x]};
+			_weapons_lst sort true;
+			_dist = (_weapons_lst select 0) select 0;
+			_man = (_weapons_lst select 0) select 1;
+			_msg = format [localize "STR_DOG_FOUND", round (_dist)];
+			_my_dog setVariable ["do_find", _man];
+			_my_dog stop false;
+		};
+		gamelogic globalChat _msg;
+	};
+
 	if (_cmd == "recall") then {
 		_my_dog setVariable ["do_find", nil];
 		_my_dog stop false;

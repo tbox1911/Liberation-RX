@@ -90,12 +90,14 @@ while { true } do {
 			if ( _idact_num == -1 ) then {
 				_idact = player addAction ["<t color='#80FF80'>" + localize "STR_DOG_FIND" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","find",-640,false,true,"","!call is_DogOnDuty"];
 				_id_actions set [_idact_id, _idact];
-				_idact = player addAction ["<t color='#80FF80'>" + localize "STR_DOG_RECALL" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","recall",-640,false,true,"","call is_DogOnDuty"];
+				_idact = player addAction ["<t color='#80FF80'>" + localize "STR_DOG_FIND_GUN" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","find_gun",-640,false,true,"","!call is_DogOnDuty"];
 				_id_actions set [_idact_id+1, _idact];
-				_idact = player addAction ["<t color='#80FF80'>" + localize "STR_DOG_STOP" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","stop",-641,false,true,"","!call is_DogOnDuty"];
+				_idact = player addAction ["<t color='#80FF80'>" + localize "STR_DOG_RECALL" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","recall",-640,false,true,"","call is_DogOnDuty"];
 				_id_actions set [_idact_id+2, _idact];
-				_idact = player addAction ["<t color='#FF8080'>" + localize "STR_DOG_DISMISS" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","del",-642,false,true,"",""];
+				_idact = player addAction ["<t color='#80FF80'>" + localize "STR_DOG_STOP" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","stop",-641,false,true,"","!call is_DogOnDuty"];
 				_id_actions set [_idact_id+3, _idact];
+				_idact = player addAction ["<t color='#FF8080'>" + localize "STR_DOG_DISMISS" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","del",-642,false,true,"",""];
+				_id_actions set [_idact_id+4, _idact];
 			};
 		} else {
 			if ( _idact_num != -1 ) then {
@@ -110,11 +112,14 @@ while { true } do {
 				_idact_num = _id_actions select _idact_id+3;
 				player removeAction _idact_num;
 				_id_actions set [_idact_id, -1];
+				_idact_num = _id_actions select _idact_id+4;
+				player removeAction _idact_num;
+				_id_actions set [_idact_id, -1];
 			};
 		};
 
 		// Squad - Actions
-		_idact_id = _idact_id + 4;
+		_idact_id = _idact_id + 5;
 		_idact_num = _id_actions select _idact_id;
 		if (!isNil "_my_squad") then {
 			if ( _idact_num == -1 ) then {

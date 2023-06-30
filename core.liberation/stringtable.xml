@@ -5670,6 +5670,10 @@
 			<Portuguese>-- ENCONTRAR O CÃO</Portuguese>
 			<Czech>-- DOG HLEDEJ</Czech>
 		</Key>
+		<Key ID="STR_DOG_FIND_GUN">
+			<Original>-- DOG BRINGS WEAPON</Original>
+			<French>-- CHIEN RAMÈNE ARME</French>
+		</Key>		
 		<Key ID="STR_DOG_RECALL">
 			<Original>-- DOG RECALL</Original>
 			<Russian>-- СОБАКА, ЗА МНОЙ</Russian>
@@ -6068,7 +6072,10 @@
 			<Portuguese>O cachorro encontrou algo a %1m de distância !!</Portuguese>
 			<Czech>Pes našel něco %1m daleko!!</Czech>
 		</Key>
-
+		<Key ID="STR_DOG_FOUND_GUN">
+			<Original>The dog return with a gun !!</Original>
+			<French>Le chien reviens avec une arme !! </French>
+		</Key>
 		<!-- do_eject.sqf -->
 		<Key ID="STR_DO_EJECT">
 			<Original>Warning !!\n -5 pts Malus for Ejecting Civilian.</Original>
