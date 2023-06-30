@@ -7,7 +7,7 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_nbUnits", "_intels"];
+private ["_nbUnits", "_intels", "_civilians"];
 
 _setupVars =
 {
@@ -141,6 +141,15 @@ _setupObjects =
 		_x setVariable ["GRLIB_mission_AI", true, true];
 	} forEach (units _aiGroup);
 
+	//----- spawn civilians ---------------------------------
+	_civilians = [];
+	for "_i" from 0 to (5 + random(5)) do {
+		_civ_grp = [_missionPos, [selectRandom civilians], GRLIB_side_civilian, "civilian"] call F_libSpawnUnits;
+		[_civ_grp, _missionPos, 75] call BIS_fnc_taskPatrol;
+		_civilians pushBack _civ_grp;
+	};
+
+	//----- spawn mines ---------------------------------
 	[_missionPos, 30] call createlandmines;
 
 	//_missionPicture = getText (configFile >> "CfgVehicles" >> "Land_i_Barracks_V1_F" >> "picture");
@@ -176,6 +185,7 @@ _waitUntilCondition = {
 
 _failedExec = {
 	// Mission failed
+	{{deleteVehicle _x} units _x} forEach _civilians;
 	[_missionPos] call clearlandmines;
 	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
@@ -192,6 +202,7 @@ _successExec = {
 	} forEach (AllPlayers - (entities "HeadlessClient_F"));
 
 	_successHintMessage = "STR_SEARCH_INTEL_MESSAGE2";
+	{{deleteVehicle _x} units _x} forEach _civilians;
 	[_missionPos] call showlandmines;
 	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };

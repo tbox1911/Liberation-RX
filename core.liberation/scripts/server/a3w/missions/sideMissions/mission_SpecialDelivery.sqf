@@ -58,6 +58,7 @@ _setupObjects =
 	{
 		_x setVariable ['GRLIB_can_speak', true, true];
 		_x setVariable ['GRLIB_A3W_Mission_SD', true, true];
+		_x setVariable ["acex_headless_blacklist", true];
 		_x allowDamage false;
 		[_x, "LHD_krajPaluby"] spawn F_startAnimMP;
 	} forEach GRLIB_A3W_Mission_SD;

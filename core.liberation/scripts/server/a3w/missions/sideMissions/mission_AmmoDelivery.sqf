@@ -25,6 +25,7 @@ _setupObjects =
 	_man1 = _mission_grp createUnit ["C_Marshal_F", _missionPos, [], 0, "NONE"];
 	_man1 setVariable ['GRLIB_can_speak', true, true];
 	_man1 setVariable ['GRLIB_A3W_Mission_DA', true, true];
+	_man1 setVariable ["acex_headless_blacklist", true];
 	_man1 allowDamage false;
 	[_man1, "LHD_krajPaluby"] spawn F_startAnimMP;
 	_marker_zone = createMarker ["A3W_Mission_DF", _missionPos];

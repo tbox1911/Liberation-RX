@@ -6,7 +6,7 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_nbUnits", "_townName", "_tent1", "_chair1", "_chair2", "_fire1"];
+private ["_nbUnits", "_townName", "_tent1", "_chair1", "_chair2", "_fire1", "_civilians"];
 
 _setupVars =
 {
@@ -56,6 +56,14 @@ _setupObjects =
 		_x setVariable ["GRLIB_mission_AI", nil, true];
 	} forEach (units _aiGroup);
 
+	// Spawn civvies
+	_civilians = [];
+	for "_i" from 0 to (5 + random(5)) do {
+		_civ_grp = [_missionPos, [selectRandom civilians], GRLIB_side_civilian, "civilian"] call F_libSpawnUnits;
+		[_civ_grp, _missionPos, 75] call BIS_fnc_taskPatrol;
+		_civilians pushBack _civ_grp;
+	};
+
 	_missionHintText = ["STR_INVASION_MESSAGE1", sideMissionColor, _townName, _nbUnits];
 	A3W_sectors_in_use = A3W_sectors_in_use + [_missionLocation];
 	true;
@@ -68,6 +76,7 @@ _waitUntilCondition = { !(_missionLocation in blufor_sectors) };
 _failedExec = {
 	// Mission failed
 	{ deleteVehicle _x } forEach [_tent1, _chair1, _chair2, _fire1];
+	{{deleteVehicle _x} units _x} forEach _civilians;
 	[_missionPos] call clearlandmines;
 	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
@@ -88,6 +97,7 @@ _successExec = {
 
 	_successHintMessage = ["STR_INVASION_MESSAGE2", sideMissionColor, _townName];
 	{ deleteVehicle _x } forEach [_tent1, _chair1, _chair2, _fire1];
+	{{deleteVehicle _x} units _x} forEach _civilians;
 	[_missionPos] call showlandmines;
 	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };

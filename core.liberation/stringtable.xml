@@ -7114,6 +7114,14 @@
 			<Czech>Obloha je opět jasná, nepřátelská hlídka byla odstraněna! Poblíž vraku spadly bedny s municí.</Czech>
 		</Key>
 
+		<!-- mission_HostileHelicopter.sqf -->
+		<Key ID="STR_HOSSTILE_OFFICER">
+			<Original>Neutralize HVT</Original>
+		</Key>
+		<Key ID="STR_HOSSTILE_OFFICER_MESSAGE1">
+			<Original>An enemy &lt;t color='%2'&gt;Officer&lt;/t&gt; makes ready to fly to their HQ in %1.&lt;br/&gt;He has vital information about us. We need to elimiate him!</Original>
+		</Key>
+
 		<!-- mission_MeetResistance.sqf -->
 		<Key ID="STR_RESISTANCE">
 			<Original>The Resistance</Original>

@@ -23,7 +23,8 @@ SideMissions = [
 	["mission_HeliCapture", 1],
 	["mission_Outpost", 1],
 	["mission_RoadBlock", 1],
-	["mission_SearchIntel", 1]
+	["mission_SearchIntel", 1],
+	["mission_KillOfficer", 1]
 ];
 
 SpawnMissionMarkers = ((allMapMarkers select {["Mission_", _x] call F_startsWith}) + sectors_opfor) apply {[_x, false]};
