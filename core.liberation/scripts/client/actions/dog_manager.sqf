@@ -24,11 +24,12 @@ while { true } do {
 			if (_man isKindOf "CAManBase") then {
 				// Find !
 				private _is_captured = !(_man getVariable ["GRLIB_is_prisonner", true]);
-				if (!alive _man || side _man == GRLIB_side_friendly || _is_captured) then {
+				if (!alive _man || (_man != player && side _man == GRLIB_side_friendly) || _is_captured) then {
 					_my_dog setVariable ["do_find", nil];
 				} else {
 					private _dist = round (_dog_pos distance2D _man);
 					if (_dist <= 3) then {
+						if (isPlayer _man) exitWith { _my_dog setVariable ["do_find", nil] };
 						_my_dog setDir (_my_dog getDir _man);
 						[player, "bark"] remoteExec ["dog_action_remote_call", 2];
 						_my_dog playMoveNow "Dog_Idle_Bark";
@@ -52,11 +53,11 @@ while { true } do {
 					_my_dog setVariable ["do_find", nil];
 				} else {
 					_dist = round (_dog_pos distance2D _man);
-					if (_dist <= 2) then {
+					if (_dist <= 3) then {
 						_my_dog setDir (_my_dog getDir _man);
 						_offset = [-0.1,0.2,0.6];  // "Alsatian_Random_F"
 						if (_my_dog isKindOf "Fin_random_F") then { _offset = [-0.1,0.15,0.5] };
-						_man attachTo [_my_dog,_offset, "head"]; 
+						_man attachTo [_my_dog,_offset, "head"];
 						_man setVectorDirAndUp [[1,0,0],[1,0,0]];
 						_my_dog moveTo (getpos player);
 						_my_dog setVariable ["do_find", player];
@@ -88,21 +89,20 @@ while { true } do {
 			// Relax
 			if (_onfoot && _dist <= 5 && !(stopped _my_dog)) then {
 				_my_dog playMove "Dog_Idle_Stop";
-				if (count attachedObjects _my_dog > 0) then {
+				if (count (attachedObjects _my_dog) > 0) then {
 					_my_dog setDir (_my_dog getDir player);
 					sleep 0.5;
-					{ 
+					{
 						detach _x;
 						sleep 0.1;
 						_x attachTo [_my_dog];
-						sleep 0.1;
 						detach _x;
-						_x setPos (_x getPos [1, (getDir _x)]);
-					} forEach attachedObjects _my_dog;
-					_my_dog setDir (_my_dog getDir player);
+						sleep 0.1;
+						_x setPos (_x getPos [0.5, (getDir _x)]);
+					} forEach (attachedObjects _my_dog);
 					sleep 0.5;
 					[player, "bark"] remoteExec ["dog_action_remote_call", 2];
-					_my_dog playMoveNow "Dog_Idle_Bark";					
+					_my_dog playMoveNow "Dog_Idle_Bark";
 				};
 			};
 
@@ -119,5 +119,5 @@ while { true } do {
 			};
 		};
 	};
-	sleep 5;
+	sleep 3;
 };
