@@ -8,7 +8,7 @@ if (!isServer) exitWith {};
 if (!isNil "GRLIB_A3W_Mission_MR") exitWith {};
 #include "sideMissionDefines.sqf"
 
-private ["_fobList", "_aiGroup", "_hvt", "_civilians"];
+private ["_fobList", "_aiGroup", "_hvt", "_civilians", "_nbUnits"];
 
 _setupVars =
 {
@@ -23,14 +23,14 @@ _setupObjects =
 	_vehicleClass = opfor_mrap_hmg;
 
 	// Spawn vehicle
-	_vehicles = [_missionPos, _vehicleClass, false, false, true] call F_libSpawnVehicle;
-	_vehicles setVariable ["GRLIB_mission_AI", true, true];
+	private _vehicle1 = [_missionPos, _vehicleClass, false, false, true] call F_libSpawnVehicle;
+	_vehicle1 setVariable ["GRLIB_mission_AI", true, true];
 	
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	// Define vehicle
-	_vehicles allowCrewInImmobile true;
-	createVehicleCrew _vehicles;
-	[crew _vehicles] joinSilent _aiGroup;
+	_vehicle1 allowCrewInImmobile true;
+	createVehicleCrew _vehicle1;
+	[crew _vehicle1] joinSilent _aiGroup;
 
 	// Spawn HVT
 	_grp_hvt = createGroup [GRLIB_side_enemy, true];
@@ -41,8 +41,8 @@ _setupObjects =
 	_hvt setrank "COLONEL";
 
 	// Move HVT into Building
-	_hvt move (random(nearestBuilding _hvt buildingPos -1));
 	_hvt_pos = getPosATL _hvt;
+	_hvt move selectRandom ((nearestBuilding _hvt_pos) buildingPos -1);
 
 	// Spawn civvies
 	_civilians = [];
@@ -67,6 +67,7 @@ _setupObjects =
 	_missionPicture = getText (configFile >> "CfgVehicles" >> (_vehicleClass param [0, ""]) >> "picture");
 	_vehicleName = getText (configFile >> "CfgVehicles" >> (_vehicleClass param [0, ""]) >> "displayName");
 	_missionHintText = ["STR_HOSSTILE_OFFICER_MESSAGE1", _vehicleName, sideMissionColor];
+	_vehicles = [_vehicle1];
 	true;
 };
 
