@@ -1,5 +1,5 @@
 params ["_killer", "_unit"];
-
+if (isServer) exitWith {};
 if (player != _killer || ([] call is_admin)) exitWith {};
 private _kill = BTC_logic getVariable [getPlayerUID player, 0];
 
