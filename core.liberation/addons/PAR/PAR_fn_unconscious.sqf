@@ -2,7 +2,7 @@ params ["_unit"];
 
 if (rating _unit < -2000) exitWith {[_unit] spawn PAR_fn_death};
 if (!([] call F_getValid)) exitWith {[_unit] spawn PAR_fn_death};
-waituntil {sleep (0.5 + random 2); lifeState _unit == "INCAPACITATED" && (isTouchingGround (vehicle _unit) || (round (getPos _unit select 2) <= 1))};
+waituntil {sleep 0.5; lifeState _unit == "INCAPACITATED" && (isTouchingGround (vehicle _unit) || (round (getPos _unit select 2) <= 1))};
 
 if (isPlayer _unit) then {
   [] call PAR_show_marker;
@@ -54,9 +54,11 @@ sleep 7;
     _target setVariable ["PAR_BleedOutTimer", _bleedOut + PAR_BleedOutExtra, true];
     _grbg = createVehicle [(selectRandom PAR_MedGarbage), getPos _target, [], 0, "CAN_COLLIDE"];
     _grbg spawn {sleep (60 + floor(random 30)); deleteVehicle _this};
-    if (stance _caller == 'PRONE') then {
+    if (stance _caller == "PRONE") then {
+      _caller switchMove 'ainvppnemstpslaywrfldnon_medicother';
       _caller playMoveNow 'ainvppnemstpslaywrfldnon_medicother';
     } else {
+      _caller switchMove 'ainvpknlmstpslaywrfldnon_medicother';
       _caller playMoveNow 'ainvpknlmstpslaywrfldnon_medicother';
     };
   },
@@ -76,7 +78,13 @@ sleep 7;
     };
   },
   {
-    _caller switchMove "";
+    if (animationState _caller == 'ainvppnemstpslaywrfldnon_medicother') then {
+      _caller switchMove "amovppnemstpsraswrfldnon";
+      _caller playMoveNow "amovppnemstpsraswrfldnon";
+    } else {
+      _caller switchMove "amovpknlmstpsraswrfldnon";
+      _caller playMoveNow "amovpknlmstpsraswrfldnon";
+    };
     _target setVariable ["PAR_myMedic", nil];
   },
   [time],6,12] call BIS_fnc_holdActionAdd;
