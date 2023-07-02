@@ -90,7 +90,7 @@ if ( GRLIB_endgame == 0 ) then {
 	   ((combat_readiness > 70) || (_liberated_sector in sectors_bigtown)) &&
 	   ([] call F_opforCap < GRLIB_battlegroup_cap) &&
 	   (diag_fps > 30.0)
-	) then {
+	) then {		
 		[_liberated_sector] spawn spawn_battlegroup;
 	};
 };
