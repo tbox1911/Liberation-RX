@@ -48,7 +48,7 @@ while { true } do {
 				_reset = 1;
 			};
 
-			if (_man isKindOf "GroundWeaponHolder") then {
+			if (_man isKindOf "GroundWeaponHolder" || _man isKindOf "WeaponHolderSimulated") then {
 				if (isNull _man) then {
 					_my_dog setVariable ["do_find", nil];
 				} else {

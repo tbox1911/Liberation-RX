@@ -35,9 +35,13 @@ if (!isNil "_my_dog") then {
 
 	if (_cmd == "find_gun") then {
 		_weapons_lst = nearestObjects [player, ["GroundWeaponHolder"], 300];
+		_weapons_lst = _weapons_lst + nearestObjects [player, ["WeaponHolderSimulated"], 300];
 		_weapons_lst = _weapons_lst select {
 			_wp = ((getWeaponCargo _x) select 0);
-			(format ["Weapon_%1",(_wp select 0)] isKindOf "Weapon_Base_F")
+			if (count _wp > 0) then {
+				_wp_info = (_wp select 0) call BIS_fnc_weaponComponents;
+				(format ["Weapon_%1", (_wp_info select 0)] isKindOf "Weapon_Base_F")
+			} else { false };
 		};
 		_msg = localize "STR_DOG_FOUND_NOTHING";
 		if (count _weapons_lst > 0) then {
