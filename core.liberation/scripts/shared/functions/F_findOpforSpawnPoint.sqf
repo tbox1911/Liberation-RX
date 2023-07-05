@@ -1,4 +1,4 @@
-params [ "_mindist", "_maxdist", "_try_nearest", ["_spawn_target", ""] ];
+params [ "_mindist", "_maxdist", ["_try_nearest", true], ["_spawn_target", ""] ];
 private [ "_increment", "_opfor_spawn_point", "_all_possible_sectors", "_filtered_possible_sectors", "_current_sector", "_accept_current_sector", "_current_sector_distance", "_nearest_possible_sectors" ];
 
 _increment = 500;
