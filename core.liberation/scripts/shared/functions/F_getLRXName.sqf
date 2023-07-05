@@ -1,6 +1,7 @@
 params ["_class"];
 
-if (isNil "_class") exitWith {};
+private _default = "Unknow";
+if (isNil "_class") exitWith { _default };
 
 private _text = "";
 if (typeName _class == "STRING") then {
@@ -13,7 +14,7 @@ if (typeName _class == "OBJECT") then {
 	_text = getText (configOf _class >> "displayName");
 	_class = typeOf _class;
 };
-if (_text == "") exitWith { diag_log format ["--- LRX Error: get LRX name for %1 not found!", _class] };
+if (_text == "") exitWith { diag_log format ["--- LRX Error: get LRX name for class:%1, not found!", _class]; _default };
 
 if ( _class == FOB_box_typename ) then {
 	_text = localize "STR_FOBBOX";
