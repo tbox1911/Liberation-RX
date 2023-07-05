@@ -117,8 +117,7 @@ while { true } do {
 					if (_timer <= time) then {
 						_max_ammo = 3;
 						_vehicle setVehicleAmmo 1;
-						_is_arty = false;
-						_is_arty = { if (_vehicle_class isKindOf _x) exitWith {true} } forEach _artillery;
+						_is_arty = ([_vehicle_class, _artillery] call F_itemIsInClass);
 						_cooldown = 5 * 60;
 						if (_is_arty) then { _cooldown = _cooldown * 2 };
 						_vehicle setVariable ["GREUH_rearm_timer", round (time + _cooldown)];  // min cooldown
