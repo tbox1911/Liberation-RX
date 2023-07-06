@@ -34,7 +34,7 @@ if (!isNil "_my_dog") then {
 	};
 
 	if (_cmd == "find_gun") then {
-		_weapons_lst = nearestObjects [player, ["GroundWeaponHolder", "WeaponHolderSimulated"], 300];
+		_weapons_lst = nearestObjects [(getPosATL _my_dog), ["GroundWeaponHolder", "WeaponHolderSimulated"], 200];
 		_weapons_lst = _weapons_lst select {
 			_wp = ((getWeaponCargo _x) select 0);
 			if (count _wp > 0) then {
