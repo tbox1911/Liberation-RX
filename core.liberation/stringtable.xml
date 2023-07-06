@@ -2900,7 +2900,7 @@
 		<Key ID="STR_HALO_PARAM_ARTY">
 			<Original>Artillery Fire</Original>
 			<French>Tir d'Artillerie</French>
-		</Key>		
+		</Key>
 		<Key ID="STR_HALO_PARAM1">
 			<Original>Enabled - No cooldown</Original>
 			<French>Activé - Pas d'attente</French>
@@ -5500,7 +5500,7 @@
 		<Key ID="STR_RESPAWN_CD">
 			<Original>Add a cooldown if the player respawn too fast</Original>
 			<French>Ajoute une attente si le joueur respawn trop rapidement</French>
-		</Key>			
+		</Key>
 		<Key ID="STR_OPFORMARK">
 			<Original>Dynamic Opfor sector markers</Original>
 			<Russian>Скрыть маркеры секторов противника</Russian>
@@ -5553,7 +5553,7 @@
 		</Key>
 		<Key ID="STR_LIMIT_ARSENAL_PARAM4">
 			<Original>Only items defined in Whitelist</Original>
-		</Key>		
+		</Key>
 		<Key ID="STR_VEH_LOCK">
 			<Original>Enable Vehicles Ownership</Original>
 			<Russian>Включить Владение Транспортом</Russian>
@@ -5673,7 +5673,11 @@
 		<Key ID="STR_DOG_FIND_GUN">
 			<Original>-- DOG BRINGS WEAPON</Original>
 			<French>-- CHIEN RAMÈNE ARME</French>
-		</Key>		
+		</Key>
+		<Key ID="STR_DOG_PATROL">
+			<Original>-- DOG PATROL</Original>
+			<French>-- CHIEN PATROUILLE</French>
+		</Key>
 		<Key ID="STR_DOG_RECALL">
 			<Original>-- DOG RECALL</Original>
 			<Russian>-- СОБАКА, ЗА МНОЙ</Russian>
@@ -6076,6 +6080,10 @@
 			<Original>The dog return with a gun !!</Original>
 			<French>Le chien reviens avec une arme !! </French>
 		</Key>
+		<Key ID="STR_DOG_FOUND_MINE">
+			<Original>The dog found a mine here !!</Original>
+			<French>Le chien à trouvé une mine ici !! </French>
+		</Key>		
 		<!-- do_eject.sqf -->
 		<Key ID="STR_DO_EJECT">
 			<Original>Warning !!\n -5 pts Malus for Ejecting Civilian.</Original>
@@ -6585,7 +6593,7 @@
 		<Key ID="STR_AIRDROP_ARTY">
 			<Original>Artillery Fire</Original>
 			<French>Tir d'Artillerie</French>
-		</Key>		
+		</Key>
 		<Key ID="STR_AIRDROP_MENU">
 			<Original>-- Air Support Menu --</Original>
 			<Russian>-- Меню Поддержки с воздуха</Russian>
@@ -7366,17 +7374,17 @@
 		<!-- mission_CaptureVIP.sqf -->
 		<Key ID="STR_VIP_CAP">
 			<Original>Capture VIP</Original>
-		</Key>			
+		</Key>
 		<Key ID="STR_VIP_CAP_MSG">
 			<Original>An important &lt;t color='%1'&gt;V.I.P&lt;/t&gt; is travelling the island.&lt;br/&gt;Intercept his convoy and capture him &lt;t color='%1'&gt;ALIVE&lt;/t&gt;!</Original>
 		</Key>
 		<!-- mission_HeliCapture.sqf -->
 		<Key ID="STR_HELI_CAP">
 			<Original>Helicopter Capture</Original>
-		</Key>	
+		</Key>
 		<Key ID="STR_HELI_CAP_MSG">
 			<Original>A &lt;t color='%2'&gt;%1&lt;/t&gt; has been immobilized, go Repair it and take it for your team!</Original>
-		</Key>		
+		</Key>
 		<!-- speak_manager.sqf -->
 		<Key ID="STR_SPEAKMANAGER1">
 			<Original>Hello, you see somes enemies around here ?</Original>
@@ -7825,7 +7833,7 @@
 		</Key>
 		<Key ID="STR_PAR_UC_03">
 			<Original>Hey %1, All your units are down, Help them!</Original>
-			<French>Hé %1, Toutes tes unités sont à terre, Aide-les !</French>					
+			<French>Hé %1, Toutes tes unités sont à terre, Aide-les !</French>
 		</Key>
 	</Package>
 
