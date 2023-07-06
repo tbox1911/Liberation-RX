@@ -29,9 +29,10 @@ if (getPos _unit select 2 >= 20) then {
 		};
 	};
 	_para = createVehicle ['Steerable_Parachute_F', (getPos _unit),[],0,'none'];
+	sleep 0.5;
 	_unit moveInDriver _para;
 	sleep 1;
-	if (isnull driver (_para)) then {deleteVehicle _para};
+	if (isNull (driver _para)) then {deleteVehicle _para};
 };
 
 sleep 1;
