@@ -8,10 +8,11 @@ _tent setVariable ["tent_in_use", true, true];
 _tent setVariable ["R3F_LOG_disabled", true, true];
 
 disableUserInput true;
-player playMove "AinvPknlMstpSlayWnonDnon_medic";
-sleep 7;
+player switchMove "AinvPknlMstpSlayWnonDnon_medic";
+player playMoveNow "AinvPknlMstpSlayWnonDnon_medic";
+sleep 6;
 [_tent, "del"] remoteExec ["addel_beacon_remote_call", 2];
-sleep 1;
+sleep 2;
 if (backpack player == "") then {
 	player addBackpack mobile_respawn_bag;
 	(backpackContainer player) setVariable ["GRLIB_mobile_respawn_bag", true, true];

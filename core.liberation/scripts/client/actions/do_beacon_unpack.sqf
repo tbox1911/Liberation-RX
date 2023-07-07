@@ -6,7 +6,8 @@ if ( _tent_cost > (infantry_cap - resources_infantry)) then {
 	hintSilent format [localize "STR_BEACON_UNPACK", resources_infantry];
 } else {
 	disableUserInput true;
-	player playMove "AinvPknlMstpSlayWnonDnon_medic";
+	player switchMove "AinvPknlMstpSlayWnonDnon_medic";
+	player playMoveNow "AinvPknlMstpSlayWnonDnon_medic";
 	sleep 2;
 	removeBackpack player;
 	sleep 6;
@@ -16,4 +17,10 @@ if ( _tent_cost > (infantry_cap - resources_infantry)) then {
 	disableUserInput false;
 	disableUserInput true;
 	disableUserInput false;
+	waitUntil { sleep 0.5; dobuild == 0};
+	if (build_confirmed == 3) then {
+		player addBackpack mobile_respawn_bag;
+		(backpackContainer player) setVariable ["GRLIB_mobile_respawn_bag", true, true];
+		(backpackContainer player) setMaxLoad 0;
+	};
 };
