@@ -88,9 +88,11 @@ while { true } do {
 			_unit setVariable ["BIS_fnc_animalBehaviour_disable", true];
 			_unit allowDamage false;
 			player setVariable ["my_dog", _unit, true];
-			playSound3D ["a3\sounds_f\ambient\animals\dog1.wss", _unit, false, getPosASL _unit, 2, 0.8, 0];
+			_dog_snd = selectRandom ["dog1.wss", "dog2.wss", "dog3.wss"];
+			_tone = [_dog_snd, random [0.7, 1, 1.5]];
+			_unit setVariable ["my_dog_tone", _tone];
 			_unit setDir (_unit getDir player);
-			_unit playMoveNow "Dog_Idle_Bark";
+			[_unit, _tone] spawn dog_bark;
 		} else {
 			if (!([_price] call F_pay)) exitWith {};
 			_grp = group player;

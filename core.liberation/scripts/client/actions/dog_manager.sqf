@@ -64,8 +64,8 @@ while { true } do {
 						if (_dist <= 3) then {
 							if (isPlayer _man) exitWith { _my_dog setVariable ["do_find", nil] };
 							_my_dog setDir (_my_dog getDir _man);
-							[player, "bark"] remoteExec ["dog_action_remote_call", 2];
-							_my_dog playMoveNow "Dog_Idle_Bark";
+							_tone = _my_dog getVariable "my_dog_tone";
+							[_my_dog, _tone] spawn dog_bark;
 							sleep selectRandom [3,4,5];
 							_my_dog playMoveNow "Dog_Stop";
 						} else {
@@ -135,8 +135,8 @@ while { true } do {
 						_x setPos (_x getPos [0.5, (getDir _x)]);
 					} forEach (attachedObjects _my_dog);
 					sleep 0.5;
-					[player, "bark"] remoteExec ["dog_action_remote_call", 2];
-					_my_dog playMoveNow "Dog_Idle_Bark";
+					_tone = _my_dog getVariable "my_dog_tone";
+					[_my_dog, _tone] spawn dog_bark;
 				};
 			};
 

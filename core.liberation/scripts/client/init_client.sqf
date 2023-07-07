@@ -66,6 +66,7 @@ is_neartransport = compileFinal preprocessFileLineNumbers "scripts\client\misc\i
 is_allowed_item = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_allowed_item.sqf";
 paraDrop = compileFinal preprocessFileLineNumbers "scripts\client\spawn\paraDrop.sqf";
 get_player_name = compileFinal preprocessFileLineNumbers "scripts\client\misc\get_player_name.sqf";
+dog_bark = compileFinal preprocessFileLineNumbers "scripts\client\actions\dog_bark.sqf";
 
 private _grp = createGroup [GRLIB_side_friendly, true];
 waitUntil {
