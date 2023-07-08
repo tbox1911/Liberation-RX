@@ -1,6 +1,7 @@
 params ["_vehicle"];
 if (isNil "_vehicle") exitWith {};
 
+GRLIB_vehicle_lock = false;
 private _uid = getPlayerUID player;
 private _prev_owner = _vehicle getVariable ["GRLIB_vehicle_owner", ""];
 
@@ -24,3 +25,6 @@ hintSilent format [localize "STR_DO_LOCK", [typeOf _vehicle] call F_getLRXName];
 if (_prev_owner != _uid) then {
     gamelogic globalChat localize "STR_DO_LOCK_MSG";
 };
+
+sleep 1;
+GRLIB_vehicle_lock = true;

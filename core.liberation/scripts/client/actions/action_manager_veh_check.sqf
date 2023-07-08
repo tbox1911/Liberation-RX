@@ -1,16 +1,16 @@
 GRLIB_checkAction_Lock = {
 	params ["_target", "_unit"];
-	([_target] call is_menuok_veh && (count (crew _target) == 0 || typeOf _target in uavs) && [_unit, _target] call is_owner && locked _target < 2)
+	([_target] call is_menuok_veh && (count (crew _target) == 0 || typeOf _target in uavs) && [_unit, _target] call is_owner && locked _target < 2 && GRLIB_vehicle_lock)
 };
 
 GRLIB_checkAction_Unlock = {
 	params ["_target", "_unit"];
-	([_target] call is_menuok_veh && [_unit, _target] call is_owner && locked _target == 2)
+	([_target] call is_menuok_veh && [_unit, _target] call is_owner && locked _target == 2 && GRLIB_vehicle_lock)
 };
 
 GRLIB_checkAction_Abandon = {
 	params ["_target", "_unit"];
-	([_target] call is_menuok_veh && [_unit, _target] call is_owner && locked _target == 2)
+	([_target] call is_menuok_veh && [_unit, _target] call is_owner && locked _target == 2 && GRLIB_vehicle_lock)
 };
 
 GRLIB_checkAction_Paint = {
