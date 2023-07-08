@@ -24,7 +24,7 @@ private [ "_next_box", "_next_pos" ];
 	_next_box = _x;
 	if (!isNull _next_box) then {
 		detach _next_box;
-		waitUntil {sleep 0.5; isNull (attachedTo _x)};
+		waitUntil {sleep 0.1; isNull (attachedTo _x)};
 
 		_next_pos = [getPosATL _truck_to_unload, _offset, getdir _truck_to_unload] call BIS_fnc_relPos;
 		_next_box setPosATL (_next_pos vectorAdd [0, 0, 0.2]);
@@ -35,7 +35,7 @@ private [ "_next_box", "_next_pos" ];
 		sleep 0.5;
 	};
 } foreach _all_objects;
-sleep 2;
+sleep 1;
 
 { 
 	_x enableSimulationGlobal true;
@@ -48,5 +48,4 @@ sleep 1;
 _truck_to_unload allowDamage true;
 _truck_to_unload setVariable ["GRLIB_ammo_truck_load", [], true];
 
-sleep 1;
 GRLIB_load_box = nil;
