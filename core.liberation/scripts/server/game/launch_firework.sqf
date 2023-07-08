@@ -9,11 +9,7 @@ private _colors = [
 ];
 
 _pos = _pos vectorAdd [0,0, 25];
-{
-	if ((_x distance2D _pos) <= 200) then {
-		[[getMissionPath "res\launch01.ogg", _pos, false, ATLToASL _pos, 5, 1, 250]] remoteExec ["playSound3D", owner _x];
-	};
-} forEach (AllPlayers - (entities "HeadlessClient_F"));
+playSound3D ["res\launch01.ogg", _pos, false, getPosASL _pos, 4, 1, 300];
 
 private _launcher = createVehicle ["CMflare_Chaff_Ammo", _pos, [], 0, "FLY"];
 private _light = "#lightpoint" createVehicleLocal [0,0,0];
@@ -31,11 +27,7 @@ private _laucher_pos = getPosATL _launcher;
 for "_i" from 1 to _rounds do {
 	[_laucher_pos, selectRandom _colors] spawn {
 		params ["_pos", "_color"];
-		{
-			if ((_x distance2D _pos) <= 500) then {
-				[[getMissionPath "res\bang01.ogg", _pos, false, ATLToASL _pos, 5, 1, 1000]] remoteExec ["playSound3D", owner _x];
-			};
-		} forEach (AllPlayers - (entities "HeadlessClient_F"));
+		playSound3D ["res\bang01.ogg", _pos, false, getPosASL _pos, 4, 1, 800];
 		sleep 0.5;
 
 		private _flare = createVehicle ["CMflare_Chaff_Ammo", _pos, [], 2, "FLY"];

@@ -54,12 +54,7 @@ while {alive _unit} do {
 			_expl3 setVectorDirAndUp [[0.5, -0.5, 0], [0.5, 0.5, 0]];
 
 			sleep 2.5;
-			{
-				if ((_x distance2D _unit) <= 200) then {
-					[[getMissionPath "res\shout.ogg", _unit, false, getPosASL _unit, 5, 1, 250]] remoteExec ["playSound3D", owner _x];
-				};
-			} forEach (AllPlayers - (entities "HeadlessClient_F"));
-
+			playSound3D ["res\shout.ogg", _unit, false, getPosASL _unit, 5, 1, 300];
 			sleep 0.5;
 			{ deleteVehicle _x } forEach [_expl1,_expl2,_expl3];
 			if (alive _unit) then {
