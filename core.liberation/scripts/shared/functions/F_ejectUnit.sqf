@@ -14,6 +14,7 @@ if (_slow) then { sleep (random 2) };
 _unit action ["eject", _vehicle];
 _unit action ["getout", _vehicle];
 sleep 1;
+if (isNull _unit || !alive _unit) exitWith {};
 if (!isNull objectParent _unit) then { moveOut _unit };
 
 if (getPos _unit select 2 >= 20) then {
@@ -28,11 +29,10 @@ if (getPos _unit select 2 >= 20) then {
 			{_unit addItemToBackpack _x} foreach (_unit getVariable ["GRLIB_para_backpack_contents", []]);
 		};
 	};
-	_para = createVehicle ['Steerable_Parachute_F', (getPos _unit),[],0,'none'];
-	sleep 0.5;
+	private _para = createVehicle ['Steerable_Parachute_F',(getPos _unit),[],0,'none'];
 	_unit moveInDriver _para;
-	sleep 1;
-	if (isNull (driver _para)) then {deleteVehicle _para};
+	sleep 2;
+	if (isNull (driver _para)) then { deleteVehicle _para };
 };
 
 sleep 1;
