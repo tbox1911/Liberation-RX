@@ -17,14 +17,13 @@ private _get_mp = {
 while { true } do {
 		_new_manpower_used = count ((units player) select { !(isPlayer _x) && alive _x });
 
-		_player_vehicles = vehicles select {
+		_player_respawn = ([_uid] call F_getMobileRespawnsPlayer) select 0;
+		_player_vehicles = (vehicles - _player_respawn) select {
 			(alive _x) &&
 			(_x getVariable ["GRLIB_vehicle_owner", ""] == _uid) &&
 			!(_x getVariable ['R3F_LOG_disabled', false]) &&
 			isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull])
 		};
-
-		_player_respawn = ([_uid] call F_getMobileRespawnsPlayer) select 0;
 
 		{
 			_new_manpower_used = _new_manpower_used + ([_x] call _get_mp);
