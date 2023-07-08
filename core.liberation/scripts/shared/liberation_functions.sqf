@@ -70,6 +70,7 @@ F_startsWith = compileFinal preprocessFileLineNumbers "scripts\shared\functions\
 F_startsWithMultiple = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_startsWithMultiple.sqf";
 F_UnitAddAmmo = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_UnitAddAmmo.sqf";
 F_UnitNeedAmmo = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_UnitNeedAmmo.sqf";
+F_vehicleLock = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_vehicleLock.sqf";
 is_abandoned = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_isAbandoned.sqf";
 is_admin = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_isAdmin.sqf";
 is_night = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_isNight.sqf";

@@ -262,14 +262,9 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 				[_x select 9] params [["_lst_grl", []]];
 				[_x select 10] params [["_compo", []]];
 
-				_nextbuilding setVehicleLock "LOCKED";
-				_nextbuilding lockCargo true;
-				_nextbuilding lockDriver true;
-				_nextbuilding lockTurret [[0], true];
-				_nextbuilding lockTurret [[0,0], true];
 				_nextbuilding allowCrewInImmobile [true, false];
 				_nextbuilding setUnloadInCombat [true, false];
-				_nextbuilding setVariable ["R3F_LOG_disabled", true, true];
+				[_nextbuilding, "lock"] call F_vehicleLock;
 
 				if (_color != "") then {
 					[_nextbuilding, _color, _color_name] call RPT_fnc_TextureVehicle;
