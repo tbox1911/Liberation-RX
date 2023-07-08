@@ -11,6 +11,8 @@ if (!isNil "_my_dog") then {
 			_my_dog setDir (_my_dog getDir player);
 			[_my_dog, ["dog4.wss", 1]] spawn dog_bark;
 			sleep 4;
+			_id = _my_dog getVariable ["my_dog_marker", 0];
+			(findDisplay 12 displayCtrl 51) ctrlRemoveEventHandler ["Draw", _id];
 			deleteVehicle _my_dog;
 		};
 	};
@@ -39,7 +41,8 @@ if (!isNil "_my_dog") then {
 			_wp = ((getWeaponCargo _x) select 0);
 			if (count _wp > 0) then {
 				_wp_info = (_wp select 0) call BIS_fnc_weaponComponents;
-				(format ["Weapon_%1", (_wp_info select 0)] isKindOf "Weapon_Base_F")
+				_wp_weapon = format ["Weapon_%1", (_wp_info select 0)];
+				([_wp_weapon, ["Weapon_Base_F", "Launcher_Base_F"]] call F_itemIsInClass);
 			} else { false };
 		};
 		_msg = localize "STR_DOG_FOUND_NOTHING";

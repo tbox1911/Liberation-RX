@@ -93,6 +93,19 @@ while { true } do {
 			_unit setVariable ["my_dog_tone", _tone];
 			_unit setDir (_unit getDir player);
 			[_unit, _tone] spawn dog_bark;
+			_id = (findDisplay 12 displayCtrl 51) ctrlAddEventHandler [
+				"Draw", 
+				"
+					private _map = _this select 0;
+					private _icon = 'a3\animals_f\data\ui\map_animals_ca.paa';
+					private _size = 16;
+					private _my_dog = player getVariable ['my_dog', nil];
+					if (!isNil '_my_dog') then {
+						_map drawIcon [_icon, [0.85,0.4,0,1], (getPosATL _my_dog), _size, _size, 0];
+					};
+				"
+			]; 
+			_unit setVariable ["my_dog_marker", _id];
 		} else {
 			if (!([_price] call F_pay)) exitWith {};
 			_grp = group player;
