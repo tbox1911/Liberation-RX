@@ -1,5 +1,4 @@
-_tent = _this select 3;
-if (isNil "_tent") exitWith {};
+private _tent = cursorObject;
 
 //only one at time
 if ((_tent getVariable ["tent_in_use", false])) exitWith {};
@@ -19,7 +18,7 @@ if (backpack player == "") then {
 	(backpackContainer player) setMaxLoad 0;
 } else {
 	sleep 1;
-	_backpack = createVehicle [mobile_respawn_bag, (player getRelPos[3, 0]), [], 0, "CAN_COLLIDE"];
+	private _backpack = createVehicle [mobile_respawn_bag, (player getRelPos[3, 0]), [], 0, "NONE"];
 	_backpack setVariable ["GRLIB_mobile_respawn_bag", true, true];
 	_backpack setMaxLoad 0;
 };

@@ -1,4 +1,4 @@
-private _cmd = (_this select 3);
+private _cmd = _this select 3;
 private _my_dog = player getVariable ["my_dog", nil];
 
 if (!isNil "_my_dog") then {

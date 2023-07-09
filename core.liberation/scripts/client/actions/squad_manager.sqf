@@ -1,5 +1,6 @@
 private  ["_cargo_seat_free", "_cargo_idx"];
-waitUntil {sleep 1; !isNil "build_confirmed" };
+waitUntil {sleep 1; GRLIB_player_spawned};
+if (!(player diarySubjectExists str(parseText GRLIB_r3))) exitWith {};
 
 while { true } do {
 

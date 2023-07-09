@@ -1,7 +1,4 @@
-_box = _this select 3;
-if (isNil "_box") exitWith {};
-
-private [ "_minfobdist", "_minsectordist", "_distfob", "_clearedtobuildfob", "_distsector", "_clearedtobuildsector", "_idx" ];
+private _box = cursorObject;
 
 //only one at time
 if ((_box getVariable ["box_in_use", false])) exitWith {};
@@ -10,14 +7,14 @@ if ( count (GRLIB_all_fobs select {count (_x nearObjects [FOB_typename, 50]) > 0
 };
 
 _box setVariable ["box_in_use", true, true];
-_minfobdist = 1000;
-_minsectordist = GRLIB_capture_size + GRLIB_fob_range;
-_distfob = 1;
-_clearedtobuildfob = true;
-_distsector = 1;
-_clearedtobuildsector = true;
+private _minfobdist = 1000;
+private _minsectordist = GRLIB_capture_size + GRLIB_fob_range;
+private _distfob = 1;
+private _clearedtobuildfob = true;
+private _distsector = 1;
+private _clearedtobuildsector = true;
 
-_idx = 0;
+private _idx = 0;
 while { (_idx < (count GRLIB_all_fobs)) && _clearedtobuildfob } do {
 	if ( player distance (GRLIB_all_fobs select _idx) < _minfobdist ) then {
 		_clearedtobuildfob = false;

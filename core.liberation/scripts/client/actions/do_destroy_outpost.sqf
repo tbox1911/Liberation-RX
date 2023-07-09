@@ -1,6 +1,4 @@
-_fob_pos = _this select 3;
-if (isNil "_fob_pos") exitWith {};
-
+private _fob_pos = [] call F_getNearestFob;
 private _fob_owner = [_fob_pos] call F_getFobOwner;
 private _fob_name = [_fob_pos] call F_getFobName;
 if ((getPlayerUID player != _fob_owner) && !([] call is_admin)) exitWith { hintSilent localize "STR_HINT_OUTPOST_WRONG_OWNER" };

@@ -1,6 +1,5 @@
-_fob_pos = _this select 3;
-if (isNil "_fob_pos") exitWith {};
-private ["_fobbox"];
+private ["_fob_box"];
+private _fob_pos = [] call F_getNearestFob;
 
 //only one at time
 private _fob_hq = player nearobjects [FOB_typename, GRLIB_fob_range] select 0;
@@ -27,21 +26,21 @@ if ( dorepackage > 0 ) then {
 
 	playsound "Land_Carrier_01_blast_deflector_down_sound";
 	if ( dorepackage == 1 ) then {
-		_fobbox = FOB_box_typename createVehicle _spawnpos;
+		_fob_box = FOB_box_typename createVehicle _spawnpos;
 	};
 
 	if ( dorepackage == 2 ) then {
-		_fobbox = FOB_truck_typename createVehicle _spawnpos;
+		_fob_box = FOB_truck_typename createVehicle _spawnpos;
 	};
 	sleep 1;
 
-	if ( !isNil "_fobbox" ) then {
-		clearWeaponCargoGlobal _fobbox;
-		clearMagazineCargoGlobal _fobbox;
-		clearItemCargoGlobal _fobbox;
-		clearBackpackCargoGlobal _fobbox;
-		_fobbox addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
-		_fobbox setVariable ["GRLIB_vehicle_owner", getPlayerUID player, true];
+	if ( !isNil "_fob_box" ) then {
+		clearWeaponCargoGlobal _fob_box;
+		clearMagazineCargoGlobal _fob_box;
+		clearItemCargoGlobal _fob_box;
+		clearBackpackCargoGlobal _fob_box;
+		_fob_box addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
+		_fob_box setVariable ["GRLIB_vehicle_owner", getPlayerUID player, true];
 	};
 
 	[_fob_pos] remoteExec ["destroy_fob_remote_call", 2];
