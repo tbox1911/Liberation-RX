@@ -192,12 +192,11 @@ if (dialog && deploy == 1) then {
 	_idxchoice = lbCurSel 201;
 	_spawn_str = (_choiceslist select _idxchoice) select 0;
 
-	player setVariable ["GRLIB_action_inuse", true, true];
 	if (((_choiceslist select _idxchoice) select 0) == _basenamestr) then {
 		// LHD (Chimera)
 		call respawn_lhd;
 	} else {
-		private _player_pos = getPos player;
+		player setVariable ["GRLIB_action_inuse", true, true];
 		private _destpos = zeropos;
 		private _destdir = random 360;
 		private _destdist = 4;
@@ -224,26 +223,27 @@ if (dialog && deploy == 1) then {
 			};
 			player setDir (getDir _near_sign);
 		};
-		player setPos ([_destpos, _destdist, _destdir] call BIS_fnc_relPos);
 
 		private _unit_list = units group player;
 		private _my_squad = player getVariable ["my_squad", nil];
 		if (!isNil "_my_squad") then {
 			{ _unit_list pushBack _x } forEach units _my_squad;
 		};
-		private _unit_list_redep = [_unit_list, { !(isPlayer _x) && (isNull objectParent _x) && (_x distance2D _player_pos) < 30 && lifestate _x != 'INCAPACITATED' }] call BIS_fnc_conditionalSelect;
+		private _unit_list_redep = [_unit_list, { !(isPlayer _x) && (isNull objectParent _x) && (_x distance2D (getPosATL player)) < 30 && lifestate _x != 'INCAPACITATED' }] call BIS_fnc_conditionalSelect;
+		player setPos ([_destpos, _destdist, _destdir] call BIS_fnc_relPos);
 		[_unit_list_redep] spawn {
 			params ["_list"];
+			sleep 1;
 			{
-				sleep 1;
-				_x setpos ([position player, 10, random 360] call BIS_fnc_relPos);
+				_x setPos ([getPos player, 10, random 360] call BIS_fnc_relPos);
 				_x doFollow leader player;
+				sleep 0.5;
 			} forEach _list;
+			player setVariable ["GRLIB_action_inuse", false, true];
 		};
 		GRLIB_player_spawned = ([] call F_getValid);
 		cinematic_camera_started = false;
 	};
-	player setVariable ["GRLIB_action_inuse", false, true];
 };
 
 respawn_camera cameraEffect ["Terminate","back"];

@@ -3,6 +3,10 @@ if (_unit skill "courage" == 1) exitWith {};
 sleep 3;
 if (!alive _unit) exitWith {};
 
+_unit setCaptive true;
+_unit setVariable ["GRLIB_is_prisonner", true, true];
+_unit setVariable ["GRLIB_can_speak", true, true];
+
 if (!_canmove) then {
 	// Init priso
 	removeAllWeapons _unit;
@@ -18,11 +22,7 @@ if (!_canmove) then {
 	_unit disableAI "MOVE";
 	_unit playMoveNow "AmovPercMstpSnonWnonDnon_AmovPercMstpSsurWnonDnon" ;
 	sleep 2;
-	_unit setCaptive true;
 };
-
-_unit setVariable ["GRLIB_is_prisonner", true, true];
-_unit setVariable ["GRLIB_can_speak", true, true];
 
 // Wait
 if (_friendly) then {
@@ -42,9 +42,11 @@ _unit enableAI "MOVE";
 sleep 1;
 [_unit, ""] remoteExec ["switchmove", 0];
 
-while {alive _unit} do {
+private _unit_captured = false;
+while {alive _unit || !_unit_captured } do {
 	// Captured
-	if ([_unit, "FOB", 30] call F_check_near && isTouchingGround (vehicle _unit)) exitWith {
+	if ([_unit, "FOB", 30] call F_check_near && isTouchingGround (vehicle _unit)) then {
+		_unit_captured = true;
 		sleep (2 + floor(random 4));
 		private _unit_owner = leader group _unit;
 
@@ -71,7 +73,8 @@ while {alive _unit} do {
 	};
 
 	// Flee
-	if (!((leader group _unit) getVariable ["GRLIB_action_inuse", false])) then {
+	_player_redploy = player getVariable ["GRLIB_action_inuse", false];
+	if (!_player_redploy && !_unit_captured) then {
 		private _is_near_blufor = count ([units GRLIB_side_friendly, { (isNil {_x getVariable "GRLIB_is_prisonner"}) && (_x distance2D _unit) < 100 }] call BIS_fnc_conditionalSelect);
 		if ( _is_near_blufor == 0 && !_friendly ) then {
 			if (side group _unit == GRLIB_side_friendly) then {
@@ -86,11 +89,9 @@ while {alive _unit} do {
 			_unit setVariable ["GRLIB_is_prisonner", true, true];
 			unAssignVehicle _unit;
 			if (!isNull objectParent _unit) then { [(vehicle _unit), _unit] spawn F_ejectUnit };
-			_unit setCaptive true;
-			sleep 2;
 			_unit switchMove "AmovPercMwlkSrasWrflDf";
 			_unit playMoveNow "AmovPercMwlkSrasWrflDf";
-			
+			sleep 2;
 			private _nearest_sector = [(sectors_allSectors - blufor_sectors), _unit] call F_nearestPosition;
 			if (typeName _nearest_sector == "STRING") then {
 				[_flee_grp] call F_deleteWaypoints;
@@ -102,7 +103,6 @@ while {alive _unit} do {
 				_waypoint setWaypointBehaviour "SAFE";
 				_waypoint setWaypointCombatMode "GREEN";
 				_waypoint setWaypointCompletionRadius 50;
-
 				_waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];
 				_waypoint setWaypointType "MOVE";
 				_waypoint setWaypointCompletionRadius 50;
