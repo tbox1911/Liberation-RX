@@ -2,11 +2,11 @@ class liberation_recycle {
 	idd = 5751;
 	movingEnable = false;
 	controlsBackground[] = { "OuterBG", "RecycleBG", "OuterBG_F", "InnerBG", "InnerBG_F" };
-	controls[] = { "Header", "ButtonClose",
+	controls[] = {
+		"Header", "RecycleButton", "CancelButton", "ButtonClose",
 		"ManpowerImageShadow","AmmoImageShadow","FuelImageShadow",
 		"ManpowerImage","AmmoImage","FuelImage",
-		"Infotext","LabelManpower","LabelAmmo","LabelFuel",
-		"RecycleButton","CancelButton"
+		"Infotext","LabelManpower","LabelAmmo","LabelFuel"
 	};
 	objects[] = {};
 
