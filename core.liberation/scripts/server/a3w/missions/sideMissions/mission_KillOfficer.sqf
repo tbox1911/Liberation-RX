@@ -13,7 +13,7 @@ private ["_fobList", "_aiGroup", "_hvt", "_civilians", "_nbUnits"];
 _setupVars =
 {
 	_missionType = "STR_HOSSTILE_OFFICER";
-	_fobList = [] call cityList;
+	_fobList = sectors_bigtown select {(_x in blufor_sectors)};
 	_nbUnits = [] call getNbUnits;
 };
 
