@@ -25,6 +25,10 @@ if ( isServer ) then {
 		};
 	};
 
+	if (isNull _killer) then {
+		_killer = _unit getVariable ["GRLIB_last_killer", objNull];
+	};	
+
 	if (isNil "infantry_weight") then { infantry_weight = 33 };
 	if (isNil "armor_weight") then { armor_weight = 33 };
 	if (isNil "air_weight") then { air_weight = 33 };

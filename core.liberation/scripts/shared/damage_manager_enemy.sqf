@@ -11,6 +11,10 @@ if (!isNull _instigator) then {
 	};
 };
 
+if (isPlayer _killer) then {
+	_unit setVariable ["GRLIB_last_killer", _killer];
+};
+
 private _ret = _amountOfDamage;
 if (isPlayer _killer && _unit != _killer) then {
 	private _veh_unit = vehicle _unit;
