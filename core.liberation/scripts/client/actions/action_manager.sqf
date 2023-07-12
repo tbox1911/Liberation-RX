@@ -20,9 +20,10 @@ while { true } do {
 	// FOB Sign Actions
 	if (!GRLIB_player_near_lhd && GRLIB_player_fobdistance < GRLIB_fob_range && cursorObject isKindof FOB_sign) then {
 		if (count (actionIDs cursorObject) == 0) then {
-			cursorObject addAction ["<t color='#FFFFFF'>" + "-= Hall of Fame =-" + "</t>",{([] call F_hof_msg) spawn BIS_fnc_dynamicText},"",999,true,true,"","GRLIB_player_is_menuok",5];
-			cursorObject addAction ["<t color='#FFFFFF'>" + localize "STR_READ_ME" + "</t>",{createDialog "liberation_notice"},"",998,true,true,"","GRLIB_player_is_menuok",5];
-			cursorObject addAction ["<t color='#FFFFFF'>" + localize "STR_TIPS" + "</t>",{createDialog "liberation_tips"},"",997,true,true,"","GRLIB_player_is_menuok",5];
+			cursorObject addAction ["<t color='#FFFFFF'>" + "-= Hall of Fame =-" + "</t>",{([] call F_hof_msg) spawn BIS_fnc_dynamicText},"",970,true,true,"","GRLIB_player_is_menuok",5];
+			cursorObject addAction ["<t color='#FFFFFF'>" + localize "STR_READ_ME" + "</t>",{createDialog "liberation_notice"},"",971,true,true,"","GRLIB_player_is_menuok",5];
+			cursorObject addAction ["<t color='#FFFFFF'>" + localize "STR_TIPS" + "</t>",{createDialog "liberation_tips"},"",972,true,true,"","GRLIB_player_is_menuok",5];
+			cursorObject addAction ["<t color='#FFFF00'>" + localize "STR_SAVE_PLAYER" + "</t><img size='1' image='\a3\Ui_f\data\GUI\Rsc\RscDisplayArcadeMap\icon_saveas_ca.paa'/>",{[player] remoteExec ["save_context", 2];hintSilent localize "STR_SAVE_PLAYER_MSG"},"",973,true,true,"","GRLIB_player_is_menuok",5];
 		};
 	};
 	sleep 1;
