@@ -3,6 +3,7 @@ _platooncontrols = [611,612,613,614];
 _viewcontrols = [712,713,714,722,723,724,732,733,734];
 _worldcontrols = [812,813,814,815];
 _markerscontrols = [911,912,913,914];
+_nametags_controls = [961,962,963,964];
 _allbuttons = [6677,511,512,513,514,613,614,812,813,814,815,913,914,712,722,732];
 _rename_controls = [521,522,523,524,525,526,527];
 _leader_controls = [561,562,563,564,565,566,567];
@@ -51,10 +52,17 @@ if ( GREUH_allow_worldquality ) then {
 };
 
 if ( GREUH_allow_mapmarkers ) then {
+	ctrlShow [910, false];
+} else {
+	ctrlShow [910, true];
+	{ ctrlShow [_x, false] } foreach _markerscontrols;
+};
+
+if ( GREUH_allow_nametags ) then {
 	ctrlShow [901, false];
 } else {
 	ctrlShow [901, true];
-	{ ctrlShow [_x, false] } foreach _markerscontrols;
+	{ ctrlShow [_x, false] } foreach _nametags_controls;
 };
 
 if ( true ) then {
@@ -84,7 +92,7 @@ while { dialog && alive player } do {
 
 	if ( GREUH_allow_platoonview ) then { ctrlShow [612, show_platoon]; };
 	if ( GREUH_allow_mapmarkers ) then { ctrlShow [912, show_teammates]; };
-	ctrlShow [ 962, show_nametags ];
+	if ( GREUH_allow_nametags ) then { ctrlShow [ 962, show_nametags ]; };
 
 	if ( GREUH_allow_customsquads ) then {
 		lbClear 515;
@@ -109,8 +117,8 @@ while { dialog && alive player } do {
 
 if (!alive player) then { closeDialog 0 };
 
-greuh_options_profile = [ desiredviewdistance_inf, desiredviewdistance_veh, desiredviewdistance_obj, show_teammates, show_platoon, desired_vehvolume, show_nametags, desired_fps ];
-profileNamespace setVariable [ "GREUH_OPTIONS_PROFILE",greuh_options_profile ];
+greuh_options_profile = [desiredviewdistance_inf,desiredviewdistance_veh,desiredviewdistance_obj,show_teammates,show_platoon,show_nametags,desired_vehvolume,desired_fps];
+profileNamespace setVariable ["GREUH_OPTIONS_PROFILE", greuh_options_profile];
 saveProfileNamespace;
 sleep 2;
 hintSilent "";

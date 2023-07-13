@@ -658,7 +658,7 @@
 		</Key>
 		<Key ID="STR_WIPE_TITLE_3">
 			<Original>Reset Mission Parameters</Original>
-			<French>RAZ Parametres de la Mission</French>
+			<French>RAZ des paramètres de la mission</French>
 		</Key>
 		<Key ID="STR_WIPE_NO">
 			<Original>No</Original>
@@ -1876,6 +1876,10 @@
 			<Portuguese>Desabilitado</Portuguese>
 			<Czech>Zakázáno</Czech>
 		</Key>
+		<Key ID="STR_PARAMS_USER_DEF">
+			<Original>User defined</Original>
+			<French>Défini par l'utilisateur</French>
+		</Key>				
 		<Key ID="STR_PARAMS_FIRSTFOB">
 			<Original>Start the campaign with the first FOB already built</Original>
 			<French>Commencer la campagne avec une FOB déjà construite</French>
@@ -3051,7 +3055,7 @@
 		</Key>
 		<Key ID="STR_CLEANUP_PARAM">
 			<Original>Cleanup abandonned vehicles outside FOBs</Original>
-			<French>Nettoyer les véhicules abandonnés loin d'une FOB</French>
+			<French>Nettoyer les véhicules abandonnés loin des FOB</French>
 			<German>Räumt verlassene Fahrzeuge auserhalb von FOBs weg</German>
 			<Spanish>Limpieza de vehículos abandonados fuera de FOBs</Spanish>
 			<Russian>Удаление брошенной техники вне FOB.</Russian>
@@ -5493,6 +5497,19 @@
 			<Portuguese>Informações extravagantes</Portuguese>
 			<Czech>Zajímavé informace</Czech>
 		</Key>
+		<Key ID="STR_GUI_PLATOON">
+			<Original>UI - Show Platoon Overlay</Original>
+		</Key>			
+		<Key ID="STR_GUI_NAMETAG">
+			<Original>UI - Show player name tags</Original>		
+		</Key>
+		<Key ID="STR_GUI_TEAM">
+			<Original>UI - Show team mates on map</Original>		
+		</Key>
+		<Key ID="STR_PERSISTENT_MODE">
+			<Original>Server in Persistent Mode</Original>
+			<French>Serveur en Mode Persistant.</French>
+		</Key>	
 		<Key ID="STR_KEEP_SCORE">
 			<Original>Keep Players score on map restart</Original>
 			<French>Garder le score du joueurs au redemarage de la Map</French>
@@ -5511,6 +5528,10 @@
 			<Portuguese>Ocultar marcadores do setor Opfor</Portuguese>
 			<Czech>Skryjte značky sektorů Nepřítele</Czech>
 		</Key>
+		<Key ID="STR_BLUFORMARK">
+			<Original>Show BLUFOR markers</Original>
+			<French>Affiche les marqueurs BLUFOR</French>
+		</Key>		
 		<Key ID="STR_ARSENAL">
 			<Original>Enable Virtual Arsenal</Original>
 			<Russian>Включить Виртуальный Арсенал</Russian>

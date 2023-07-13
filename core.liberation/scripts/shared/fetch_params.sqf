@@ -53,7 +53,9 @@ private _lrx_getParamValue = {
 	_def;
 };
 
-if (GRLIB_param_wipe_params == 1 && isServer) then { profileNamespace setVariable [GRLIB_params_save_key, LRX_Mission_Params]; };
+if (GRLIB_param_wipe_params == 1 && isServer) then { 
+	profileNamespace setVariable [GRLIB_params_save_key, LRX_Mission_Params]; 
+};
 
 // Load Mission Parameters
 if (isServer) then {
@@ -82,9 +84,13 @@ if (GRLIB_param_open_params == 1) then {
 // Selectable
 GRLIB_introduction = ["Introduction",1] call _lrx_getParamValue;
 GRLIB_deployment_cinematic = ["DeploymentCinematic",1] call _lrx_getParamValue;
+GREUH_allow_mapmarkers = ["MapMarkers",0] call _lrx_getParamValue;
+GREUH_allow_platoonview = ["PlatoonView",0] call _lrx_getParamValue;
+GREUH_allow_nametags = ["NameTags",0] call _lrx_getParamValue;
 GRLIB_unitcap = ["Unitcap",1] call _lrx_getParamValue;
 GRLIB_fancy_info = ["FancyInfo",1] call _lrx_getParamValue;
 GRLIB_hide_opfor = ["HideOpfor",1] call _lrx_getParamValue;
+GRLIB_show_blufor = ["ShowBlufor",2] call _lrx_getParamValue;
 GRLIB_thermic = ["Thermic",1] call _lrx_getParamValue;
 GRLIB_fob_type = [ "FobType",0] call _lrx_getParamValue;
 GRLIB_huron_type = [ "HuronType", 0] call _lrx_getParamValue;
@@ -121,9 +127,10 @@ GRLIB_halo_param = ["HaloJump",1] call _lrx_getParamValue;
 GRLIB_blufor_defenders = [ "BluforDefenders",1] call _lrx_getParamValue;
 GRLIB_admin_menu = ["AdminMenu",1] call _lrx_getParamValue;
 GRLIB_cleanup_vehicles = ["CleanupVehicles",1800] call _lrx_getParamValue;
-GRLIB_autosave_timer = ["AutoSave",3600] call _lrx_getParamValue;
+GRLIB_autosave_timer = ["AutoSave",1800] call _lrx_getParamValue;
 GRLIB_param_wipe_keepscore = ["KeepScore",0] call _lrx_getParamValue;
 GRLIB_respawn_cooldown = ["RespawnCD",0] call _lrx_getParamValue;
+GRLIB_server_persistent = ["Persistent",0] call _lrx_getParamValue;
 
 // Hardcoded
 GRLIB_endgame = 0;
@@ -205,6 +212,7 @@ if ( GRLIB_blufor_defenders == 1 ) then { GRLIB_blufor_defenders = true } else {
 if ( GRLIB_opfor_english == 1 ) then { GRLIB_opfor_english = true } else { GRLIB_opfor_english = false };
 if ( GRLIB_disable_death_chat == 1 ) then { GRLIB_disable_death_chat = true } else { GRLIB_disable_death_chat = false };
 if ( GRLIB_respawn_cooldown == 1 ) then { GRLIB_respawn_cooldown = true } else { GRLIB_respawn_cooldown = false };
+if ( GRLIB_server_persistent == 1 ) then { GRLIB_server_persistent = true } else { GRLIB_server_persistent = false };
 
 // Overide sector radius
 if (GRLIB_sector_radius != 0) then { GRLIB_sector_size = GRLIB_sector_radius };

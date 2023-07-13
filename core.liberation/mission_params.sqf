@@ -28,6 +28,9 @@ private _list_east = [];
 LRX_Mission_Params = [
 	["Introduction", 1],			// Introduction - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["DeploymentCinematic", 1],		// Deployment cimematic - [default 1] - values = [1,0] - Text {Enabled,Disabled}
+	["PlatoonView",0],				// UI - Show Platoon Overlay
+	["NameTags",0],					// UI - Show player name tags
+	["MapMarkers",0],				// UI - Show team mates on map
 	["Unitcap", 1],					// Maximum amount AI units - [default 1] - values = [0.5,0.75,1,1.25,1.5,2] - Text {50%,%75,%100,%125,%150,%200}
 	["Difficulty", 1],				// Difficulty - [default 1] - values = [0.5,0.75,1,1.25,1.5,2,4,10] - Text {Tourist,Easy,Normal,Moderate,Hard,Extreme,Ludicrous,Oh god oh god we are all going to die}
 	["Aggressivity",1],				// CSAT aggression - [default 1] - values = [0.25,0.5,1,2,4] - Text {Anemic,Weak,Normal,Strong,Extreme}
@@ -63,11 +66,13 @@ LRX_Mission_Params = [
 	["AutoSave", 1800],				// LRX Game Auto Save Delay - values = {0,900,1800,3600,7200}
 	["AdminMenu", 1],				// Enable the Admin Cheat Menu [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["HideOpfor", 1],				// Hide Opfor marker - [default 1] - values = [1,0] - Text {Enabled,Disabled}
+	["ShowBlufor", 2],				// Hide Blufor marker - [default 1] - values = [0,1,2] - Text {Disabled,"player only",Enabled}
 	["ForcedLoadout", 1],			// Force player default equipment  [default 0] - values = [0,1,2] - Text {Disabled,Preset1,Preset2}
 	["DeathChat", 0],				// Disable chat/voice if wounded  [default 0] - values = [1,0] - Text {Enabled,Disabled}
 	["FancyInfo", 1],				// Enable colorfull, fancy Informations [default 2] - values = [2,1,0] - Text {Enabled,Info,Disabled}
 	["KeepScore", 0],				// Keep the Players datas (score/permissions) - [default 0] - values = [0,1] - Text {Disabled,Enabled}
-	["RespawnCD", 0]				// Enable Cooldown if player respawn too fast - [default 0] - values = [0,1] - Text {Disabled,Enabled}
+	["RespawnCD", 0],				// Enable Cooldown if player respawn too fast - [default 0] - values = [0,1] - Text {Disabled,Enabled}
+	["Persistent", 0]				// Server start with Persistent Mode - [default 0] - values = [0,1] - Text {Disabled,Enabled}
 ];
 
 LRX_Mission_Params_Def = [
@@ -186,7 +191,7 @@ LRX_Mission_Params_Def = [
 		localize "STR_CLEANUP_PARAM3",
 		localize "STR_CLEANUP_PARAM4"
 		],
-		[0, 300, 900, 1800, 3600, 7200]
+		[0, 900, 1800, 3600, 7200]
 	],
 	["AutoSave", localize "STR_AUTO_SAVE", [
 		localize "STR_PARAMS_DISABLED",
@@ -195,9 +200,12 @@ LRX_Mission_Params_Def = [
 		localize "STR_CLEANUP_PARAM3",
 		localize "STR_CLEANUP_PARAM4"
 		],
-		[0, 300, 900, 1800, 3600, 7200]
+		[0, 900, 1800, 3600, 7200]
 	],
 	["FobType", localize "STR_PARAM_FOB_TYPE", ["Huron", "Truck"]],
+	["PlatoonView",localize "STR_GUI_PLATOON", [localize "STR_PARAMS_USER_DEF",localize "STR_PARAMS_ENABLED",localize "STR_PARAMS_DISABLED"]],
+	["NameTags",localize "STR_GUI_NAMETAG", [localize "STR_PARAMS_USER_DEF",localize "STR_PARAMS_ENABLED",localize "STR_PARAMS_DISABLED"]],
+	["MapMarkers",localize "STR_GUI_TEAM", [localize "STR_PARAMS_USER_DEF",localize "STR_PARAMS_ENABLED",localize "STR_PARAMS_DISABLED"]],
 	["HuronType", localize "STR_PARAM_HURON_TYPE", [localize "STR_PARAMS_DISABLED","CH-67 Huron","CH-49 Mohawk","UH-80 Ghost Hawk"]],
 	["TK_mode", localize "STR_TK_MODE", [localize "STR_PARAMS_DISABLED",localize "STR_TK_MODE_RELAX",localize "STR_TK_MODE_STRICT"]],	
 	["DeploymentCinematic", localize "STR_PARAMS_DEPLOYMENTCAMERA", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
@@ -213,9 +221,11 @@ LRX_Mission_Params_Def = [
 	["EnableLock", localize "STR_VEH_LOCK", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],	
 	["AdminMenu", "Enable the Admin Menu", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["HideOpfor", localize "STR_OPFORMARK", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
+	["ShowBlufor", localize "STR_BLUFORMARK", [localize "STR_PARAMS_DISABLED","Player only",localize "STR_PARAMS_ENABLED"]],
 	["ForcedLoadout", localize "STR_FORCE_LOADOUT", [localize "STR_PARAMS_DISABLED","Preset 1","Preset 2"]],
 	["DeathChat", localize "STR_DEATHCHAT", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["FancyInfo", localize "STR_FANCY", [localize "STR_PARAMS_DISABLED","Info",localize "STR_PARAMS_ENABLED"]],
 	["RespawnCD", localize "STR_RESPAWN_CD", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
-	["KeepScore", localize "STR_KEEP_SCORE", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]]
+	["KeepScore", localize "STR_KEEP_SCORE", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
+	["Persistent", localize "STR_PERSISTENT_MODE", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]]
 ];

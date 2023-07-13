@@ -6,8 +6,10 @@ addMissionEventHandler ['HandleDisconnect', {
 	if (count (AllPlayers - (entities "HeadlessClient_F")) == 0) then {
 		[] call save_game_mp;
 		diag_log "--- LRX Mission End!";
-		endMission "END1";
-		forceEnd;
+		if (!GRLIB_server_persistent) then {
+			endMission "END1";
+			forceEnd;
+		};
 	};
 	false;
 }];

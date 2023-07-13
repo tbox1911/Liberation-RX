@@ -248,10 +248,10 @@ class GREUH_Menu {
 	"GREUH_Slider","GREUH_SliderVD","GREUH_LabelMarkers","GREUH_TeammatesYes","GREUH_TeammatesNo","GREUH_LabelPlatoon",
 	"GREUH_PlatoonYes","GREUH_PlatoonNo","GREUH_LabelPlatoonActive","GREUH_LabelMarkersActive","GREUH_SquadList",
 	"GREUH_ButtonJoin","GREUH_ButtonNew","GREUH_ButtonRename","GREUH_PlatoonZone","GREUH_ViewZone","GREUH_WorldZone",
-	"GREUH_MarkersZone","GREUH_Squad_OuterBG","GREUH_Squad_InnerBG","GREUH_Squad_OuterBG_F","GREUH_Squad_InnerBG_F",
-	"GREUH_ButtonName_Rename","GREUH_ButtonName_Abort","GREUH_Squad_TextField","GREUH_LabelVD","GREUH_ButtonLeader",
-	"GREUH_SliderVeh","GREUH_LabelVDVeh","GREUH_SliderVDVeh","GREUH_SliderObj","GREUH_LabelVDObj","GREUH_SliderVDObj",
-	"GREUH_Leader_OuterBG", "GREUH_Leader_InnerBG", "GREUH_Leader_OuterBG_F", "GREUH_Leader_InnerBG_F",
+	"GREUH_MarkersZone","GREUH_LabelZone","GREUH_Squad_OuterBG","GREUH_Squad_InnerBG","GREUH_Squad_OuterBG_F",
+	"GREUH_Squad_InnerBG_F","GREUH_ButtonName_Rename","GREUH_ButtonName_Abort","GREUH_Squad_TextField","GREUH_LabelVD",
+	"GREUH_ButtonLeader","GREUH_SliderVeh","GREUH_LabelVDVeh","GREUH_SliderVDVeh","GREUH_SliderObj","GREUH_LabelVDObj",
+	"GREUH_SliderVDObj","GREUH_Leader_OuterBG", "GREUH_Leader_InnerBG", "GREUH_Leader_OuterBG_F", "GREUH_Leader_InnerBG_F",
 	"GREUH_ButtonLeader_Choose", "GREUH_ButtonLeader_Abort", "GREUH_Squad_Combo","GREUH_ButtonLock",
 	"GREUH_LabelNametags","GREUH_NametagsActive","GREUH_NametagsYes","GREUH_NametagsNo",
 	"GREUH_FPSLabel","GREUH_FPSEdit","GREUH_earplug","GREUH_Slider2","GREUH_SliderEP","GREUH_LabelEP"};
@@ -771,7 +771,7 @@ class GREUH_Menu {
 	};
 	class GREUH_MarkersZone : GREUH_DefaultZone {
 		idc = 901;
-		y = ((BASE_Y + 0.43) * safezoneH) + safezoneY;
+		y = ((BASE_Y + 0.39) * safezoneH) + safezoneY;
 		h = (0.04 * safezoneH) - (2 * BORDERSIZE);
 	};
 	class GREUH_LabelNametags : GREUH_RegularLabel {
@@ -804,6 +804,11 @@ class GREUH_Menu {
 		text = "No";
 		action = "show_nametags = false";
 	};
+	class GREUH_LabelZone : GREUH_DefaultZone {
+		idc = 910;
+		y = ((BASE_Y + 0.43) * safezoneH) + safezoneY;
+		h = (0.04 * safezoneH) - (2 * BORDERSIZE);
+	};	
 	class GREUH_LabelMarkers : GREUH_RegularLabel {
 		idc = 911;
 		y = ((BASE_Y + 0.43) * safezoneH) + safezoneY;

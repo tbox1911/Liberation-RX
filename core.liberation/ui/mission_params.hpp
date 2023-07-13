@@ -67,7 +67,7 @@ class Params
 		default = "";
 	};
 	class ForceLoading {
-		title = "Force save game loading.";
+		title = "Force loading. (ignore mod/save errors)";
 		values[] = {0,1};
 		texts[] = { $STR_NO,$STR_YES };
 		default = 0;
