@@ -70,3 +70,20 @@ R3F_LOG_FNCT_objet_deplacer = compile preprocessFile "R3F_LOG\objet_deplacable\d
 // Add missing objects
 support_vehicles append [["ACE_Wheel",0,0,1,0]];
 support_vehicles append [["ACE_Track",0,0,1,0]];
+
+// ACE Items price
+LOADOUT_fixed_price append [
+    // Medical stuff
+    ["ACE_atropine", 1],
+    ["ACE_fieldDressing", 1],
+    ["ACE_elasticBandage", 1],
+    ["ACE_quikclot", 1],
+    ["ACE_bodyBag", 1],
+    ["ACE_bodyBagObject", 1],
+    ["ACE_epinephrine", 1],
+    ["ACE_morphine", 1],
+    ["ACE_packingBandage", 1],
+    ["ACE_personalAidKit", 1]
+];
+
+//LOADOUT_free_items append [];
