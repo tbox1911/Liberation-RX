@@ -2,6 +2,8 @@ params ["_medic", "_wnded"];
 
 if (isNull _medic) exitWith {_wnded setVariable ['PAR_myMedic', nil]};
 
+_medic switchMove "";
+_medic playMoveNow "";
 _medic setUnitPos "AUTO";
 {_medic enableAI _x} count ["TARGET","AUTOTARGET","AUTOCOMBAT","SUPPRESSION"];
 [_medic] joinSilent (_medic getVariable "PAR_AIgrp");
@@ -15,4 +17,7 @@ _medic setSpeedMode (speedMode group player);
 _medic setVariable ["PAR_busy", nil];
 _medic setCaptive false;
 
-_wnded setVariable ['PAR_myMedic', nil];
+private _my_medic = _wnded getVariable ["PAR_myMedic", objNull];
+if (_my_medic == _medic) then {
+  _wnded setVariable ['PAR_myMedic', nil];
+};
