@@ -19,7 +19,7 @@ _setupVars =
 
 _setupObjects =
 {
-	_missionPos = markerPos ((selectRandom _fobList) select 0);
+	_missionPos = markerPos (selectRandom _fobList);
 	_vehicleClass = opfor_mrap_hmg;
 
 	// Spawn vehicle
