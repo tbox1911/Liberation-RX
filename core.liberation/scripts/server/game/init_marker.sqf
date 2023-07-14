@@ -33,6 +33,7 @@ private ["_vehicle", "_spawnpos", "_startpos", "_radius", "_max_try"];
     _vehicle = createVehicle [repair_offroad, _spawnpos, [], 10, "NONE"];
     _vehicle allowDamage false;
     _vehicle setVehicleLock "LOCKED";
+    _vehicle lockDriver true;
     _vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
     _vehicle setVariable ["R3F_LOG_disabled", true, true];
     clearWeaponCargoGlobal _vehicle;
