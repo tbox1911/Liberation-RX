@@ -3,11 +3,11 @@ if (isNull _unit) exitWith {0};
 if (isNil "GRLIB_Ammobox_keep") then {GRLIB_Ammobox_keep = []};
 
 // item name MUST be lowercase
-private _fixed_price = [
+private _fixed_price = LOADOUT_fixed_price + [
 	//["launch_o_vorona_brown_f" , 200]
 ];
 
-private _expensive_items = [
+private _expensive_items = LOADOUT_expensive_items + [
 	"medikit",
 	"toolkit",
 	"srifle_dmr_02",
@@ -28,7 +28,7 @@ private _expensive_items = [
 	"vorona_heat"
 ];
 
-private _free_items = [
+private _free_items = LOADOUT_free_items + [
 	"rnd_",
 	"firstaidkit",
 	"smokeshell",
@@ -42,17 +42,6 @@ private _free_items = [
 	"itemcompass",
 	"itemwatch"
 ];
-
-// overide custom list
-if (!iSNil "LOADOUT_fixed_price") then {
-	_fixed_price append LOADOUT_fixed_price;
-};
-if (!iSNil "LOADOUT_expensive_items") then {
-	_expensive_items append LOADOUT_expensive_items;
-};
-if (!iSNil "LOADOUT_free_items") then {
-	_free_items append LOADOUT_free_items;
-};
 
 // functions
 _fn_isfixed = {

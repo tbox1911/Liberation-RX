@@ -73,17 +73,17 @@ support_vehicles append [["ACE_Track",0,0,1,0]];
 
 // ACE Items price
 LOADOUT_fixed_price append [
-    // Medical stuff
-    ["ACE_atropine", 1],
-    ["ACE_fieldDressing", 1],
-    ["ACE_elasticBandage", 1],
-    ["ACE_quikclot", 1],
-    ["ACE_bodyBag", 1],
-    ["ACE_bodyBagObject", 1],
-    ["ACE_epinephrine", 1],
-    ["ACE_morphine", 1],
-    ["ACE_packingBandage", 1],
-    ["ACE_personalAidKit", 1]
+    // Medical stuff (in lower case)
+    ["ace_atropine", 1],
+    ["ace_fielddressing", 1],
+    ["ace_elasticbandage", 1],
+    ["ace_quikclot", 1],
+    ["ace_bodybag", 1],
+    ["ace_bodybagobject", 1],
+    ["ace_epinephrine", 1],
+    ["ace_morphine", 1],
+    ["ace_packingbandage", 1],
+    ["ace_personalaidkit", 1]
 ];
 
 //LOADOUT_free_items append [];
