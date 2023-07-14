@@ -3,6 +3,7 @@ params ["_wnded", "_medic"];
 if (isDedicated) exitWith {};
 if (!(local _wnded)) exitWith {};
 private _my_medic = _wnded getVariable ["PAR_myMedic", objNull];
+if (local _medic && (_my_medic != _medic)) exitWith { [_medic, _wnded] call PAR_fn_medicRelease };
 if (lifeState _wnded != "INCAPACITATED" || (!alive _wnded) || (_my_medic != _medic)) exitWith { [_medic, _wnded] call PAR_fn_medicRelease };
 
 if (!isPlayer _medic) then {
@@ -25,7 +26,8 @@ if (!isPlayer _medic) then {
   };
 };
 private _my_medic = _wnded getVariable ["PAR_myMedic", objNull];
-if (lifeState _medic == "INCAPACITATED" || (!alive _wnded) || (_my_medic != _medic)) exitWith { [_medic, _wnded] call PAR_fn_medicRelease };
+if (lifeState _medic == "INCAPACITATED" || (!alive _wnded)) exitWith { [_medic, _wnded] call PAR_fn_medicRelease };
+if (local _medic && (_my_medic != _medic)) exitWith { [_medic, _wnded] call PAR_fn_medicRelease };
 
 // Revived
 _wnded setUnconscious false;
