@@ -6,7 +6,7 @@ if ((damage _vehicle) != 0) exitWith { hintSilent "Damaged Vehicles cannot be Pa
 if ([typeOf _vehicle, GRLIB_vehicle_blacklist] call F_itemIsInClass) exitWith { hintSilent "This Vehicle cannot be Painted !" };
 
 [_vehicle, clientOwner] remoteExec ["setOwner", 2];
-waitUntil { sleep 0.5; local _vehicle };
+waitUntil { sleep 0.2; local _vehicle };
 
 VAM_targetvehicle = _vehicle;
 createDialog 'VAM_GUI';

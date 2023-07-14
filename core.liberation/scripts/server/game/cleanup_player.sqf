@@ -24,8 +24,7 @@ if !(isNull _unit) then {
 
 	{
 		_x setVariable ["GRLIB_vehicle_owner", "", true];
-		_x setVariable ["R3F_LOG_disabled", false, true];
-		_x setVehicleLock "UNLOCKED";
+		[_x, "unlock"] call F_vehicleLock;
 	} forEach _cleanveh;
 
 	// Untow vehicle near FOB

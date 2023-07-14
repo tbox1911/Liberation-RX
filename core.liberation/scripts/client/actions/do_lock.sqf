@@ -9,9 +9,8 @@ if (local _vehicle) then {
     [_vehicle, "lock"] call F_vehicleLock;
 } else {
 	[_vehicle, "lock", player] remoteExec ["vehicle_lock_remote_call", 2];
-	waitUntil { sleep 1; local _vehicle };
 };
-_vehicle engineOn false;
+
 _vehicle setVariable ["GRLIB_vehicle_owner", _uid, true];
 _vehicle setVariable ["GRLIB_counter_TTL", nil, true];
 

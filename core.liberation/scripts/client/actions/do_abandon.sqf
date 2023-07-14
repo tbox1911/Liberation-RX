@@ -7,7 +7,6 @@ if (local _vehicle) then {
 	[_vehicle, "unlock"] call F_vehicleLock;
 } else {
 	[_vehicle, "unlock", player] remoteExec ["vehicle_lock_remote_call", 2];
-	waitUntil { sleep 1; local _vehicle };
 };
 _vehicle setVariable ["GRLIB_vehicle_owner", "", true];
 

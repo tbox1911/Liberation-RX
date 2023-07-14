@@ -9,6 +9,7 @@ switch (_cmd) do {
 		_vehicle lockTurret [[0,0], true];
 		_vehicle setVehicleLock "LOCKED";
 		_vehicle setVariable ["R3F_LOG_disabled", true, true];
+		_vehicle engineOn false;
 	 };
 	case "unlock" : {
 		_vehicle lockCargo false;
