@@ -5,14 +5,14 @@ params ["_player","_uid", ["_delete",false]];
 if (isNull _player) exitWith {};
 if (isNil "_uid") then { _uid = getPlayerUID _player };
 
+private _ai_group = [];
+private _loadout = [];
 private _puid = _player getVariable ["PAR_Grp_ID","1"];
 private _bros = (units _player + units GRLIB_side_civilian) select { (_x != _player) && (_x getVariable ["PAR_Grp_ID", "0"]) == _puid };
 private _score = 0;
 {if ((_x select 0) == _uid) exitWith {_score = (_x select 1)}} forEach GRLIB_player_scores; 
 if (_score >= GRLIB_min_score_player) then {
 	private _loaded = _player getVariable ["GRLIB_squad_context_loaded", false];
-	private _ai_group = [];
-	private _loadout = [];
 	if (alive _player && lifeState _player != "INCAPACITATED") then {
 		_loadout = getUnitLoadout [_player, true];
 		if (_loaded) then {
@@ -35,4 +35,7 @@ if (_score >= GRLIB_min_score_player) then {
 // Remove AI
 if (_delete) then {
 	{ deleteVehicle _x } forEach _bros;
-};
+} else {
+	private _msg = format [localize "STR_SAVE_PLAYER_MSG", count _ai_group];
+	[_msg ] remoteExec ["hintSilent", owner _player]
+}

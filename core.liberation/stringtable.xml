@@ -6374,8 +6374,8 @@
 			<French>-= SAUVEGARDER LE JOUEUR =-</French>
 		</Key>
 		<Key ID="STR_SAVE_PLAYER_MSG">
-			<Original>Player Profile Saved!</Original>
-			<French>Profil du joueur enregistré !</French>
+			<Original>Player Profile and\n%1 Squad unit(s)\nSaved!</Original>
+			<French>Profil du Joueur et\n%1 unitée(s) d'escouade\nEnregistré !</French>
 		</Key>
 
 		<!-- virtual_garage.hpp -->
