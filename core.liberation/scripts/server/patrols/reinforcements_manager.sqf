@@ -22,6 +22,9 @@ if ( _targetsector in active_sectors ) then {
 				diag_log format ["Spawn Armored on Sector %1 at %2", _targetsector, time];
 				[_targetsector, 2] spawn patrol_manager;
 			};
+			if ( _targetsector in (sectors_tower + sectors_military)) then {
+				[_targetsector, 2] spawn static_manager;
+			};
 		};
 	};
 
@@ -44,11 +47,7 @@ if ( _targetsector in active_sectors ) then {
 		_sector1 = [GRLIB_spawn_max, _targetsector_pos, (sectors_allSectors - blufor_sectors - active_sectors)] call F_getNearestSector;
 		if (_sector1 != "") then {
 			diag_log format ["Spawn Defense on Sector %1 at %2", _sector1, time];
-			if ( _sector1 in (sectors_tower + sectors_military)) then {
-				[_sector1, 2] spawn static_manager;
-			} else {
-				[_sector1, (1 + floor (random 2))] spawn patrol_manager;
-			};
+			[_sector1, (1 + floor (random 2))] spawn patrol_manager;
 			stats_reinforcements_called = stats_reinforcements_called + 1;
 		};
 	};

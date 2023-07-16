@@ -7,18 +7,21 @@ if (side group _unit == GRLIB_side_enemy) then {
 
 private _vehicle = objectParent _unit;
 private _vehicle_class = typeOf _vehicle;
-private _dist = 600;
-private _kind = ["Man"];
 private _next_target = objNull;
 private _scan_target = [];
 
 if (isNull _vehicle || (_vehicle_class isKindOf "StaticMortar")) then {
-    _scan_target = [(units _enemy_side), { alive _x && _x distance2D _unit <= _dist && isNull (objectParent _x)}] call BIS_fnc_conditionalSelect;
+    // Default Mortar
+    _scan_target = [(units _enemy_side), { alive _x && _x distance2D _unit <= 2000 && isNull (objectParent _x)}] call BIS_fnc_conditionalSelect;
     _vehicle = _unit;
 } else {
     // Default for HMG, GMG
-    if (_vehicle_class isKindOf "AT_01_base_F") then {_dist = 800; _kind = ["Car", "APC", "Tank"]};
-    if (_vehicle_class isKindOf "AA_01_base_F") then {_dist = 1500; _kind = ["Air"]};
+    private _kind = ["Man"];
+    private _dist = 1000;
+    
+    // Default for AA, AC
+    if (_vehicle_class isKindOf "AT_01_base_F") then {_dist = 1500; _kind = ["Car", "APC", "Tank"]};
+    if (_vehicle_class isKindOf "AA_01_base_F") then {_dist = 2000; _kind = ["Air"]};
 
     _scan_target = [ ((getPosATL _vehicle) nearEntities [ _kind, _dist]), {
         alive _x &&
