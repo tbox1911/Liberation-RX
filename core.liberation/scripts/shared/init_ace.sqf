@@ -56,7 +56,7 @@ GRLIB_movableObjects = [] + boats_names + R3F_LOG_CFG_can_be_moved_by_player;
 } forEach (GRLIB_cargoSize select 0);
 
 // Set ACE Medical Facility
-{ 
+{
     [_x, "init", { (_this select 0) setVariable ["ace_medical_isMedicalFacility",true, true] }, true, [], true] call CBA_fnc_addClassEventHandler;
 } forEach ai_healing_sources;
 
@@ -75,15 +75,28 @@ support_vehicles append [["ACE_Track",0,0,1,0]];
 LOADOUT_fixed_price append [
     // Medical stuff (in lower case)
     ["ace_atropine", 1],
-    ["ace_fielddressing", 1],
-    ["ace_elasticbandage", 1],
-    ["ace_quikclot", 1],
-    ["ace_bodybag", 1],
-    ["ace_bodybagobject", 1],
+    ["ace_bloodiv",3],
+    ["ace_bloodiv_500",2],
+    ["ace_bloodiv_250",1],
+    ["ace_plasmaiv",3],
+    ["ace_plasmaiv_500",2],
+    ["ace_plasmaiv_250",1],
+    ["ace_salineiv",3],
+    ["ace_salineiv_500",2],
+    ["ace_salineiv_250",1],
     ["ace_epinephrine", 1],
     ["ace_morphine", 1],
     ["ace_packingbandage", 1],
-    ["ace_personalaidkit", 1]
+    ["ace_personalaidkit", 1],
+    ["ace_surgicalkit",1]
 ];
 
-//LOADOUT_free_items append [];
+LOADOUT_free_items append [
+    // Medical free stuff (in lower case)
+    "ace_fielddressing",
+    "ace_elasticbandage",
+    "ace_quikclot",
+    "ace_bodybag",
+    "ace_bodybagobject",
+    "ace_tourniquet"
+];
