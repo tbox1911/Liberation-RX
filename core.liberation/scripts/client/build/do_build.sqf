@@ -350,24 +350,20 @@ while { true } do {
 
 			if ( build_confirmed == 2 ) then {
 				if (!([_price, _price_fuel] call F_pay)) exitWith {deleteVehicle _vehicle};
-				_vehdir = getdir _vehicle;
+				private _veh_dir = vectorDir _vehicle;
+				private _veh_vup = vectorUp _vehicle;
+				private _veh_pos = getPosWorld _vehicle;
 				deleteVehicle _vehicle;
 				sleep 0.1;
 
 				_vehicle = _classname createVehicle _truepos;
 				_vehicle allowDamage false;
+				_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
+				_vehicle setPosWorld _veh_pos;
 				_allow_damage = true;
 
 				if ( _classname isKindOf "Ship" && surfaceIsWater _truepos ) then {
 					_vehicle setposASL _truepos;
-				} else {
-					_vehicle setposATL _truepos;
-				};
-
-				if (build_mode == 0) then {
-					_vehicle setVectorDirAndUp [[-cos _vehdir, sin _vehdir, 0] vectorCrossProduct surfaceNormal _truepos, surfaceNormal _truepos];
-				} else {
-					_vehicle setVectorDirAndUp [[sin _vehdir, cos _vehdir, 0], [0, 0, 1]];
 				};
 
 				// Ammo Box clean inventory
