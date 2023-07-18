@@ -186,7 +186,7 @@ _waitUntilCondition = {
 			private _msg = ["<t color='#FFFFFF' size='2'>You have been Detected!!<br/><br/>Enemies destroy the </t><t color='#ff0000' size='3'>INTELS</t><t color='#FFFFFF' size='2'> !!</t>", "PLAIN", -1, false, true];
 
 			{
-				if (_x distance2D _missionPos < GRLIB_sector_size) then { [_msg] remoteExec ["titleText", owner _x] };
+				if (_x distance2D _pos < GRLIB_sector_size) then { [_msg] remoteExec ["titleText", owner _x] };
 			} forEach (AllPlayers - (entities "HeadlessClient_F"));
 
 			for "_i" from 0 to 1 do {

@@ -8,5 +8,6 @@ private _minesTypes =  ["ATMine", "APERSMine", "APERSBoundingMine", "SLAMDirecti
 for "_i" from 1 to _nbMines do {
 	_mine = createMine [(selectRandom _minesTypes), _pos, [], 150];
 	GRLIB_side_enemy revealMine _mine;
+	GRLIB_side_civilian revealMine _mine;
 	sleep 0.1;
 };
