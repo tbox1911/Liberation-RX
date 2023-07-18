@@ -3,7 +3,7 @@ params [ "_sector", "_patrol_type" ];
 if (_sector in active_sectors) exitWith {};
 private _grp = grpNull;
 private _vehicle = objNull;
-private _duration = 15 * 60;
+private _duration = 45 * 60;
 
 // Create Infantry
 if (_patrol_type == 1) then {

@@ -6,7 +6,7 @@ if (_number >= 1) then {
 	[ _sector, _number - 1 ] spawn static_manager;
 };
 
-private _duration = 15 * 60;
+private _duration = 45 * 60;
 
 // Create
 private _grp = createGroup [GRLIB_side_enemy, true];
