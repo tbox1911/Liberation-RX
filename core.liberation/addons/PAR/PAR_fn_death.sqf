@@ -47,39 +47,7 @@ if (_unit == player) then {
 		clearItemCargo _grave_box;
 		clearBackpackCargo _grave_box;
 
-		// store player stuff in the box
-		// uniform
-		if (uniform _unit != "") then {
-			_grave_box addItemCargo [(uniform _unit), 1];
-			_uniform = (everyContainer _grave_box) select (count everyContainer _grave_box) - 1 select 1;
-			{_uniform addItemCargo [_x, 1]} forEach (uniformItems _unit);
-		};
-
-		// vest
-		if (vest _unit != "") then {
-			_grave_box addItemCargo [(vest _unit), 1];
-			_vest = (everyContainer _grave_box) select (count everyContainer _grave_box) - 1 select 1;
-			{_vest addItemCargo [_x, 1]} forEach (vestItems _unit);
-		};
-
-		// headgear and hmd
-		_grave_box addItemCargo [(headgear _unit), 1];
-		_grave_box addItemCargo [(hmd _unit), 1];
-
-		// weapons + attachment
-		{_grave_box addWeaponWithAttachmentsCargo [_x, 1]} forEach weaponsItems _unit;
-		//{_grave_box addItemCargo [_x, 1]} forEach (assignedItems _unit);
-
-		// backpack
-		if (backpack _unit != "") then {
-			_grave_box addBackpackCargo [(Backpack _unit), 1];
-			_backpack = firstBackpack _grave_box;
-			clearItemCargo _backpack;
-			clearWeaponCargo _backpack;
-			clearMagazineCargo _backpack;
-			clearItemCargo _backpack;
-			{_backpack addItemCargo [_x, 1]} forEach (backpackItems _unit);
-		};
+		[_grave_box, _unit] call save_loadout_cargo;
 	};
 
 	// respawn penalty

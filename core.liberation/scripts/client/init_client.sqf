@@ -69,6 +69,7 @@ is_menuok_veh = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_m
 is_neartransport = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_neartransport.sqf";
 is_allowed_item = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_allowed_item.sqf";
 get_player_name = compileFinal preprocessFileLineNumbers "scripts\client\misc\get_player_name.sqf";
+save_loadout_cargo = compileFinal preprocessFileLineNumbers "scripts\client\misc\save_loadout_cargo.sqf";
 
 private _grp = createGroup [GRLIB_side_friendly, true];
 waitUntil {

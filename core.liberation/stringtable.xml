@@ -5995,6 +5995,12 @@
 			<Portuguese>-- REMOVER O CORPO</Portuguese>
 			<Czech>-- ODSTRAŇTE TĚLO</Czech>
 		</Key>
+		<Key ID="STR_STORE_LOADOUT_CARGO">	
+			<Original>-- STORE LOADOUT IN %1</Original>
+		</Key>
+		<Key ID="STR_LOADOUT_CARGO_STORED">	
+			<Original>All your Stuff have been saved in %1.</Original>
+		</Key>
 
 		<!-- recycle_manager.sqf -->
 		<Key ID="STR_RECYCLE_MANAGER">
@@ -6377,7 +6383,10 @@
 			<Original>Player Profile and\n%1 Squad unit(s)\nSaved!</Original>
 			<French>Profil du Joueur et\n%1 unitée(s) d'escouade\nEnregistré !</French>
 		</Key>
-
+		<Key ID="STR_NO_SAVE_PLAYER_MSG">
+			<Original>Your score (%1) is too LOW to be saved.\nMinimal score is: %2\nPlay more!</Original>
+			<French>Votre score (%1) est trop BAS pour être sauvegardé.\nScore minimum : %2\nJouez plus !</French>
+		</Key>
 		<!-- virtual_garage.hpp -->
 		<Key ID="STR_VIRT_GARAGE">
 			<Original>-- Virtual Garage --</Original>
@@ -8368,8 +8377,8 @@
 			<Czech>Stávájící Vozidlo</Czech>
 		</Key>
 		<Key ID="STR_VAM_FOB_CONDITION_CHECK_FAILED">
-			<Original>You should be in %1m from FOB.)</Original>
-			<Russian>Вы должны быть в %1м от FOB.)</Russian>
+			<Original>You should be in %1m from FOB.</Original>
+			<Russian>Вы должны быть в %1м от FOB.</Russian>
 			<Korean>FOB에서 %1m 안에 있어야 합니다.</Korean>
 			<Czech>Měli byste být %1m od FOB.</Czech>
 		</Key>
@@ -8403,6 +8412,15 @@
 			<Korean>구성품이 없습니다.</Korean>
 			<Czech>Neexistuje žádná Komponent.</Czech>
 		</Key>
+		<Key ID="STR_VAM_NO_ARSENAL">
+			<Original>There is no items.</Original>
+		</Key>		
+		<Key ID="STR_VAM_ARSENAL">
+			<Original>Arsenal Items</Original>
+		</Key>		
+		<Key ID="STR_VAM_ARSENAL_VEHICLE">
+			<Original>Put to Cargo</Original>
+		</Key>		
 		<Key ID="STR_VAM_MARID_V1_NOTICE">
 			<Original>Your Marid is outdated one.\nVehicle component setup may not be loaded next time.\nPlease contact with your server admin.</Original>
 			<Russian>Ваш Marid устарел.\nНастройка компонентов автомобиля может не загрузиться в следующий раз.\nПожалуйста, свяжитесь с администратором вашего сервера.</Russian>

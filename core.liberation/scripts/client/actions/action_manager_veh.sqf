@@ -5,6 +5,7 @@ private _nearveh = [];
 private _nearruins = [];
 private _nearwreck = [];
 private _nearboxes = [];
+private _nearcargo = [];
 private _neardead = [];
 
 private _wreck_class = [
@@ -50,6 +51,7 @@ while { true } do {
 			_vehicle addAction ["<t color='#555555'>" + localize "STR_ABANDON" + "</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_abandon.sqf","",-903,false,true,"","[_target, _this] call GRLIB_checkAction_Abandon", GRLIB_ActionDist_5];
 			_vehicle addAction ["<t color='#00F0F0'>" + localize "STR_PAINT" + " (VAM)</t> <img size='1' image='res\ui_veh.paa'/>", "addons\VAM\fn_repaintMenu.sqf","",-905,false,true,"","[_target, _this] call GRLIB_checkAction_Paint", GRLIB_ActionDist_5];
 			_vehicle addAction ["<t color='#0080F0'>" + localize "STR_EJECT_CREW" + "</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_eject.sqf","",-906,false,true,"","[_target, _this] call GRLIB_checkAction_Eject", GRLIB_ActionDist_5];
+			_vehicle addAction ["<t color='#0080F0'>" + format [localize "STR_STORE_LOADOUT_CARGO", ([_vehicle] call F_getLRXName)] + "</t> <img size='1' image='res\ui_arsenal.paa'/>",{_this call save_loadout_cargo},"",-907,false,true,"","[_target, _this] call GRLIB_checkAction_CargoBox",GRLIB_ActionDist_5];
 		};
 
 		if (typeOf _vehicle in transport_vehicles) then {
@@ -75,6 +77,15 @@ while { true } do {
 		_vehicle addAction ["<t color='#FFFF00'>" + localize "STR_ACTION_LOAD_BOX" + "</t>","scripts\client\ammoboxes\do_load_box.sqf","",-501,true,true,"","[_target, _this] call GRLIB_checkAction_Box", GRLIB_ActionDist_5];
 		_vehicle setVariable ["GRLIB_boxes_action", true];
 	} forEach _nearboxes;
+
+
+    // Save loadout Cargo
+	_nearcargo = [(player nearEntities [playerbox_typename, _searchradius]), { isNil {_x getVariable "GRLIB_boxes_action"} }] call BIS_fnc_conditionalSelect;
+	{
+		_vehicle = _x;
+		_vehicle addAction ["<t color='#0080F0'>" + format [localize "STR_STORE_LOADOUT_CARGO", ([_vehicle] call F_getLRXName)] + "</t> <img size='1' image='res\ui_arsenal.paa'/>",{_this call save_loadout_cargo},"",-502,false,true,"","[_target, _this] call GRLIB_checkAction_CargoBox",GRLIB_ActionDist_5];
+		_vehicle setVariable ["GRLIB_boxes_action", true];
+	} forEach _nearcargo;
 
 	// Dead Men
 	_neardead = [allDeadMen, {!([_x, "LHD", GRLIB_sector_size, false] call F_check_near) && (_x distance2D player < _searchradius) && isNil {_x getVariable "GRLIB_dead_action"}}] call BIS_fnc_conditionalSelect;

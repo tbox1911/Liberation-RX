@@ -15,7 +15,7 @@ GRLIB_checkAction_Abandon = {
 
 GRLIB_checkAction_Paint = {
 	params ["_target", "_unit"];
-	([_target] call is_menuok_veh && ([_target, 'REPAINT', 30] call F_check_near || [_target, 'FOB', GRLIB_fob_range] call F_check_near) && [_unit, _target] call is_owner && locked _target == 2)
+	([_target] call is_menuok_veh && ([_target, 'REPAINT', 30] call F_check_near || [_target, 'FOB', GRLIB_fob_range] call F_check_near) && [_unit, _target] call is_owner && locked _target < 2)
 };
 
 GRLIB_checkAction_Eject = {
@@ -56,6 +56,11 @@ GRLIB_checkAction_Wreck = {
 GRLIB_checkAction_Box = {
 	params ["_target", "_unit"];
 	([_target] call is_menuok_veh && [] call is_neartransport && [_unit, _target] call is_owner && !(_target getVariable ['R3F_LOG_disabled', false]))
+};
+
+GRLIB_checkAction_CargoBox = {
+	params ["_target", "_unit"];
+	([_target] call is_menuok_veh && [_unit, _target] call is_owner && locked _target < 2 && _target canAdd "FirstAidKit" && !(_target getVariable ['R3F_LOG_disabled', false]))
 };
 
 // GRLIB_checkAction_X = {
