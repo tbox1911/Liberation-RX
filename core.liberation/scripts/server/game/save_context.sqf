@@ -37,5 +37,8 @@ if (_delete) then {
 	{ deleteVehicle _x } forEach _bros;
 } else {
 	private _msg = format [localize "STR_SAVE_PLAYER_MSG", count _ai_group];
+	if (_score < GRLIB_min_score_player) then {
+		_msg = format [localize "STR_NO_SAVE_PLAYER_MSG", _score, GRLIB_min_score_player];
+	};
 	[_msg ] remoteExec ["hintSilent", owner _player]
 }
