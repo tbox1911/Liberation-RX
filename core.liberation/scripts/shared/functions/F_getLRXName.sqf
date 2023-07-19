@@ -9,6 +9,10 @@ if (typeName _class == "STRING") then {
 	if (_text == "") then {
 		_text = getText (configFile >> "CfgWeapons" >> _class >> "displayName");
 	};
+	if (_text == "") then {
+		_text = getText (configFile >> "CfgMagazines" >> _class >> "displayName");
+	};
+	if (_text == "") then { _text = _class };
 };
 if (typeName _class == "OBJECT") then {
 	_text = getText (configOf _class >> "displayName");
