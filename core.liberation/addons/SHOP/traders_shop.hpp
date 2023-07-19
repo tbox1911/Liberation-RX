@@ -25,7 +25,7 @@ class Traders_Shop {
 		class InnerBG_F1: InnerBG1 {
 			style = ST_FRAME;
 		};
-		
+
 		class InnerBG2: OuterBG1 {
 			colorBackground[] = COLOR_GREEN;
 			x = 0.3630 * safezoneW + safezoneX;
