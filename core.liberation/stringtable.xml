@@ -5732,7 +5732,7 @@
 		<Key ID="STR_SQUAD_MOVE">
 			<Original>-- SQUAD MOVE</Original>
 			<Russian>-- ОТРЯД, ДВИЖЕНИЕ</Russian>
-			<French>-- ESCOUADE BOUGE</French>
+			<French>-- ESCOUADE DEPLACEMENT</French>
 			<Japanese>-- 分隊移動</Japanese>
 			<Chinesesimp>-- 小队移动 --</Chinesesimp>
 			<Chinese>-- 小隊移動 --</Chinese>
