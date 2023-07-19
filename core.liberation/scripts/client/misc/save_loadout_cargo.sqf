@@ -46,6 +46,6 @@ removeBackpack _unit;
 removeHeadgear _unit;
 removeGoggles _unit;
 
-private _msg = format [localize "STR_LOADOUT_CARGO_STORED", ([_vehicle] call F_getLRXName)]
+private _msg = format [localize "STR_LOADOUT_CARGO_STORED", ([_box] call F_getLRXName)];
 hintSilent _msg;
 systemchat _msg;
