@@ -8,8 +8,6 @@ private _currentvehiclecargotext = _VAM_display displayCtrl 4952;
 private _vehicle = VAM_targetvehicle;
 
 if (_vehicle canAdd _item) then {
-	diag_log [_vehicle, _item];
-
 	private _cost = [_item] call F_loadoutPrice;
 	if ([_cost] call F_pay) then {
 		_vehicle addItemCargoGlobal [_item, 1];
