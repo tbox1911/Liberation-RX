@@ -60,41 +60,58 @@ if (isDedicated) exitWith {};
 // Get Arsenal items
 waitUntil {sleep 1; !isNil "LRX_arsenal_init_done"};
 waitUntil {sleep 1; LRX_arsenal_init_done};
+
 VAM_arsenal_class_names = [];
-VAM_arsenal_class_names append whitelisted_from_arsenal;
+VAM_arsenal_enable_weapons = true;
+VAM_arsenal_enable_magazines = true;
+VAM_arsenal_enable_backpacks = false;
+VAM_arsenal_enable_glasses = false;
 
-// Weapons + Equipements (uniforme, etc..)
-(
-	"
-	getNumber (_x >> 'scope') > 1 &&
-    ([(configName _x)] call is_allowed_item)
-	"
-	configClasses (configfile >> "CfgWeapons" )
-) apply { VAM_arsenal_class_names pushback (configName _x) } ;
+if (VAM_arsenal_enable_weapons) then {
+	// Weapons + Equipements (uniforme, etc..)
+	(
+		"
+		getNumber (_x >> 'scope') > 1 &&
+		([(configName _x)] call is_allowed_item)
+		"
+		configClasses (configfile >> "CfgWeapons" )
+	) apply { VAM_arsenal_class_names pushback (configName _x) } ;
+};
 
-// Magazines
-(
-	"
-	([(configName _x)] call is_allowed_item) &&
-	tolower (configName _x) find 'rnd_' >= 0 &&
-	tolower (configName _x) find '_tracer' < 0
-	"
-	configClasses (configfile >> "CfgMagazines")
-) apply { VAM_arsenal_class_names pushback (configName _x)} ;
+if (VAM_arsenal_enable_magazines) then {
+	// Magazines
+	(
+		"
+		getNumber (_x >> 'scope') > 1 &&
+		(getNumber (_x >> 'type') == 256 || (getText (_x >> 'type') find '256') >= 0) &&
+		tolower (configName _x) find '_tracer' < 0 &&
+		([(configName _x)] call is_allowed_item)
+		"
+		configClasses (configfile >> "CfgMagazines")
+	) apply { VAM_arsenal_class_names pushback (configName _x)} ;
+};
 
-// Others object (backpack, etc..)
-(
-	"
-	([(configName _x)] call is_allowed_item) &&
-	((configName _x) iskindof 'Bag_Base') 
-	"
-	configClasses (configfile >> "CfgVehicles" )
-) apply { VAM_arsenal_class_names pushback (configName _x) } ;
+if (VAM_arsenal_enable_backpacks) then {
+	// Others object (backpack, etc..)
+	(
+		"
+		((configName _x) iskindof 'Bag_Base') &&
+		([(configName _x)] call is_allowed_item)
+		"
+		configClasses (configfile >> "CfgVehicles" )
+	) apply { VAM_arsenal_class_names pushback (configName _x) } ;
+};
 
-// Glasses
-(
-	"
-	([(configName _x)] call is_allowed_item)
-	"
-	configClasses (configfile >> "CfgGlasses" )
-) apply { VAM_arsenal_class_names pushback (configName _x) } ;
+if (VAM_arsenal_enable_glasses) then {
+	// Glasses
+	(
+		"
+		([(configName _x)] call is_allowed_item)
+		"
+		configClasses (configfile >> "CfgGlasses" )
+	) apply { VAM_arsenal_class_names pushback (configName _x) } ;
+};
+
+VAM_arsenal_class_names = VAM_arsenal_class_names arrayIntersect (VAM_arsenal_class_names + whitelisted_from_arsenal);
+VAM_arsenal_class_names sort true;
+VAM_arsenal_class_names = whitelisted_from_arsenal + VAM_arsenal_class_names;

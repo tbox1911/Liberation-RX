@@ -87,7 +87,7 @@ class VAM_GUI
 		idc = 4921;
 		style = LB_TEXTURES + LB_MULTI;
 		sizeEx = 0.035;
-		tooltip = "Info"
+		tooltip = "Info";
 		x = 0.506562 * safezoneW + safezoneX;
 		y = 0.560 * safezoneH + safezoneY;
 		w = 0.150937 * safezoneW;
@@ -109,7 +109,7 @@ class VAM_GUI
 		text = $STR_VAM_ARSENAL_VEHICLE;
 		OnButtonClick = "[] spawn fnc_VAM_add_cargo;";
 		x = 0.3725 * safezoneW + safezoneX;
-		y = 0.600 * safezoneH + safezoneY;
+		y = 0.590 * safezoneH + safezoneY;
 		w = 0.06 * safezoneW;
 		h = 0.028 * safezoneH;
 	};
