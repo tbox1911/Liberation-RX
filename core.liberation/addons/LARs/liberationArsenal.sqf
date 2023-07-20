@@ -67,7 +67,14 @@ GRLIB_whitelisted_from_arsenal = [];			// whitelist when Arsenal is enabled
 [] call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\arsenal.sqf", GRLIB_mod_west];
 
 // Default LRX blacklist
-GRLIB_blacklisted_from_arsenal = ["FlareLauncher","Laserdesignator"] + blacklisted_bag + blacklisted_weapon;
+GRLIB_blacklisted_from_arsenal = [
+	"Zasleh2",
+	"CMFlare",
+	"SmokeLauncher",
+	"FlareLauncher",
+	"Laserdesignator",
+	"weapon_Fighter"
+] + blacklisted_bag + blacklisted_weapon;
 
 // Default LRX whitelist
 GRLIB_whitelisted_from_arsenal = [mobile_respawn_bag, "B_Parachute"] + whitelisted_from_arsenal;

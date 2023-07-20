@@ -33,7 +33,9 @@ GRLIB_MOD_signature = GRLIB_MOD_signature + ["LIB_","B_LIB_","G_LIB_","H_LIB_","
 // Magazines
 (
 	"
-	getNumber (_x >> 'type') == 256 &&
+	getNumber (_x >> 'scope') > 1 &&
+	(getNumber (_x >> 'type') == 256 || (getText (_x >> 'type') find '256') >= 0) &&
+	tolower (configName _x) find '_tracer' < 0 &&
 	([(configName _x), GRLIB_MOD_signature] call F_startsWithMultiple) &&
 	([(configName _x)] call is_allowed_item)
 	"

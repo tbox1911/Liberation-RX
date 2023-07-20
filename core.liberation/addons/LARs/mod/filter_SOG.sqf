@@ -40,7 +40,9 @@ if (GRLIB_mod_west == "SOG_VIETCONG") then { _exclude = "vn_b" };
 // Magazines
 (
 	"
-	getNumber (_x >> 'type') == 256 &&
+	getNumber (_x >> 'scope') > 1 &&
+	(getNumber (_x >> 'type') == 256 || (getText (_x >> 'type') find '256') >= 0) &&
+	tolower (configName _x) find '_tracer' < 0 &&
 	tolower ((configName _x) select [0,3]) == 'vn_' &&
 	!([_exclude, (configName _x), true] call F_startsWith) &&
 	tolower (configName _x) find '_t_mag' < 0 &&

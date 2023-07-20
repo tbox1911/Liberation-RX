@@ -33,9 +33,10 @@ GRLIB_MOD_signature = GRLIB_MOD_signature + ["uk3cb_"];
 // Magazines
 (
 	"
-	getNumber (_x >> 'type') == 256 &&
-	tolower ((configName _x) select [0,6]) == 'uk3cb_' &&
+	getNumber (_x >> 'scope') > 1 &&
+	(getNumber (_x >> 'type') == 256 || (getText (_x >> 'type') find '256') >= 0) &&
 	tolower (configName _x) find '_tracer' < 0 &&
+	tolower ((configName _x) select [0,6]) == 'uk3cb_' &&
 	([(configName _x)] call is_allowed_item)
 	"
 	configClasses (configfile >> "CfgMagazines")
