@@ -1,6 +1,12 @@
 // Vehicle Paint v1.10 merged with VAM
 // by pSiKO
 
+VAM_arsenal_enable_weapons = true;
+VAM_arsenal_enable_magazines = true;
+VAM_arsenal_enable_uniforms = true;
+VAM_arsenal_enable_backpacks = false;
+VAM_arsenal_enable_glasses = false;
+
 RPT_color = "#(rgb,1,1,1)color";
 RPT_texDir = "addons\VAM\textures\";
 
@@ -62,11 +68,9 @@ waitUntil {sleep 1; !isNil "LRX_arsenal_init_done"};
 waitUntil {sleep 1; LRX_arsenal_init_done};
 
 VAM_arsenal_class_names = [];
-VAM_arsenal_enable_weapons = true;
-VAM_arsenal_enable_magazines = true;
-VAM_arsenal_enable_backpacks = false;
-VAM_arsenal_enable_glasses = false;
 
+// Weapons
+private _arsenal_enable_weapons = [];
 if (VAM_arsenal_enable_weapons) then {
 	// Weapons + Equipements (uniforme, etc..)
 	(
@@ -75,9 +79,19 @@ if (VAM_arsenal_enable_weapons) then {
 		([(configName _x)] call is_allowed_item)
 		"
 		configClasses (configfile >> "CfgWeapons" )
-	) apply { VAM_arsenal_class_names pushback (configName _x) } ;
+	) apply { _arsenal_enable_weapons pushback (configName _x) };
 };
+_arsenal_enable_weapons sort true;
 
+// Uniforms
+private _arsenal_enable_uniforms = [];
+private _arsenal_uniforms_sign = ["H_", "U_", "V_"];
+_arsenal_enable_uniforms = _arsenal_enable_weapons select { ([_x, _arsenal_uniforms_sign] call F_startsWithMultiple) };
+_arsenal_enable_weapons = _arsenal_enable_weapons - _arsenal_enable_uniforms;
+if (!VAM_arsenal_enable_uniforms) then { _arsenal_enable_uniforms = [] };
+_arsenal_enable_uniforms sort true;
+
+private _arsenal_enable_magazines = [];
 if (VAM_arsenal_enable_magazines) then {
 	// Magazines
 	(
@@ -88,9 +102,11 @@ if (VAM_arsenal_enable_magazines) then {
 		([(configName _x)] call is_allowed_item)
 		"
 		configClasses (configfile >> "CfgMagazines")
-	) apply { VAM_arsenal_class_names pushback (configName _x)} ;
+	) apply { _arsenal_enable_magazines pushback (configName _x) };
 };
+_arsenal_enable_magazines sort true;
 
+private _arsenal_enable_backpacks = [];
 if (VAM_arsenal_enable_backpacks) then {
 	// Others object (backpack, etc..)
 	(
@@ -99,9 +115,11 @@ if (VAM_arsenal_enable_backpacks) then {
 		([(configName _x)] call is_allowed_item)
 		"
 		configClasses (configfile >> "CfgVehicles" )
-	) apply { VAM_arsenal_class_names pushback (configName _x) } ;
+	) apply { _arsenal_enable_backpacks pushback (configName _x) };
 };
+_arsenal_enable_backpacks sort true;
 
+private _arsenal_enable_glasses = [];
 if (VAM_arsenal_enable_glasses) then {
 	// Glasses
 	(
@@ -109,9 +127,10 @@ if (VAM_arsenal_enable_glasses) then {
 		([(configName _x)] call is_allowed_item)
 		"
 		configClasses (configfile >> "CfgGlasses" )
-	) apply { VAM_arsenal_class_names pushback (configName _x) } ;
+	) apply { _arsenal_enable_glasses pushback (configName _x) };
 };
+_arsenal_enable_glasses sort true;
 
-VAM_arsenal_class_names = VAM_arsenal_class_names arrayIntersect (VAM_arsenal_class_names + whitelisted_from_arsenal);
-VAM_arsenal_class_names sort true;
+VAM_arsenal_class_names = (_arsenal_enable_weapons + _arsenal_enable_magazines + _arsenal_enable_uniforms + _arsenal_enable_backpacks + _arsenal_enable_glasses) - whitelisted_from_arsenal;
+VAM_arsenal_class_names = VAM_arsenal_class_names arrayIntersect VAM_arsenal_class_names;
 VAM_arsenal_class_names = whitelisted_from_arsenal + VAM_arsenal_class_names;
