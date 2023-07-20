@@ -80,7 +80,7 @@ while { true } do {
 
 
     // Save loadout Cargo
-	_nearcargo = [(player nearEntities [playerbox_typename, _searchradius]), { isNil {_x getVariable "GRLIB_boxes_action"} }] call BIS_fnc_conditionalSelect;
+	_nearcargo = [(player nearEntities [GRLIB_Ammobox_keep, _searchradius]), { isNil {_x getVariable "GRLIB_boxes_action"} }] call BIS_fnc_conditionalSelect;
 	{
 		_vehicle = _x;
 		_vehicle addAction ["<t color='#0080F0'>" + format [localize "STR_STORE_LOADOUT_CARGO", ([_vehicle] call F_getLRXName)] + "</t> <img size='1' image='res\ui_arsenal.paa'/>",{_this call save_loadout_cargo},"",-502,false,true,"","[_target, _this] call GRLIB_checkAction_CargoBox",GRLIB_ActionDist_5];
