@@ -12,6 +12,9 @@ if (typeName _class == "STRING") then {
 	if (_text == "") then {
 		_text = getText (configFile >> "CfgMagazines" >> _class >> "displayName");
 	};
+	if (_text == "") then {
+		_text = getText (configFile >> "CfgGlasses" >> _class >> "displayName");
+	};
 	if (_text == "") then { _text = _class };
 };
 if (typeName _class == "OBJECT") then {
