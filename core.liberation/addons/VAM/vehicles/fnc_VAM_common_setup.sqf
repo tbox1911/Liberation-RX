@@ -92,7 +92,11 @@ if !(comp_class_names isEqualTo []) then {
 	_list_comp ctrlAddEventHandler ["LBSelChanged", {[] spawn fnc_VAM_common_comp;}];
 };
 if !(VAM_arsenal_class_names isEqualTo []) then {
-	_list_arsenal ctrlAddEventHandler ["LBSelChanged", {VAM_arsenal_item = _this}];
+	_list_arsenal ctrlAddEventHandler ["LBSelChanged", {
+		params ["_control", "_lbCurSel", "_lbSelection"];
+		VAM_arsenal_item = _this;
+		_control ctrlSetTooltip (VAM_arsenal_class_names select _lbCurSel);
+	}];
 };
 
 _reset ctrlAddEventHandler ["ButtonClick", {VAM_check_fnc_delay = true; [] spawn fnc_VAM_common_camo_check; [] spawn fnc_VAM_common_comp_check;}];

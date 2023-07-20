@@ -11,6 +11,7 @@ VAM_repair_vehicle_list = [
 fnc_VAM_GUI_check = compileFinal preprocessFileLineNumbers "addons\VAM\functions\fnc_VAM_GUI_check.sqf";
 fnc_VAM_reset = compileFinal preprocessFileLineNumbers "addons\VAM\functions\fnc_VAM_reset.sqf";
 fnc_VAM_add_cargo = compileFinal preprocessFileLineNumbers "addons\VAM\functions\fnc_VAM_add_cargo.sqf";
+fnc_VAM_get_freecargo = compileFinal preprocessFileLineNumbers "addons\VAM\functions\fnc_VAM_get_freecargo.sqf";
 fnc_VAM_variable_cleaner = compileFinal preprocessFileLineNumbers "addons\VAM\functions\fnc_VAM_variable_cleaner.sqf";
 
 //Vehicle Function

@@ -118,7 +118,7 @@ class VAM_GUI
 		idc = -1;
 		text = $STR_VAM_CURRENT_VEHICLE;
 		x = 0.3425 * safezoneW + safezoneX;
-		y = 0.654 * safezoneH + safezoneY;
+		y = 0.630 * safezoneH + safezoneY;
 		w = 0.091875 * safezoneW;
 		h = 0.028 * safezoneH;
 	};
@@ -127,7 +127,7 @@ class VAM_GUI
 		idc = -1;
 		text = $STR_VAM_FREE_VEHICLE;
 		x = 0.3425 * safezoneW + safezoneX;
-		y = 0.680 * safezoneH + safezoneY;
+		y = 0.655 * safezoneH + safezoneY;
 		w = 0.091875 * safezoneW;
 		h = 0.028 * safezoneH;
 	};
@@ -137,7 +137,7 @@ class VAM_GUI
 		sizeEx = 0.03;
 		text = "<Placeholder>";
 		x = 0.427812 * safezoneW + safezoneX;
-		y = 0.680 * safezoneH + safezoneY;
+		y = 0.655 * safezoneH + safezoneY;
 		w = 0.124687 * safezoneW;
 		h = 0.028 * safezoneH;
 	};
@@ -147,7 +147,7 @@ class VAM_GUI
 		sizeEx = 0.03;
 		text = "<Placeholder>";
 		x = 0.427812 * safezoneW + safezoneX;
-		y = 0.654 * safezoneH + safezoneY;
+		y = 0.630 * safezoneH + safezoneY;
 		w = 0.124687 * safezoneW;
 		h = 0.028 * safezoneH;
 	};
