@@ -15,6 +15,12 @@ private _ammo = 0;
 private _lst_a3 = [];
 private _lst_r3f = [];
 
+GRLIB_build_force_mode = [
+	FOB_typename,
+	FOB_outpost,
+	Warehouse_typename
+];
+
 GRLIB_preview_spheres = [];
 while { count GRLIB_preview_spheres < 36 } do {
 	GRLIB_preview_spheres pushback ( "Sign_Sphere100cm_F" createVehicleLocal [ 0, 0, 0 ] );
@@ -170,7 +176,7 @@ while { true } do {
 		build_confirmed = 0;
 	};
 
-	if ( buildtype in [2,3,4,5,6,7,9] ) then {
+	if ( buildtype in [2,3,4,5,6,7,9,99] ) then {
 		_posfob = getpos player;
 		if (buildtype != 99) then {
 			_posfob = [] call F_getNearestFob;
@@ -185,16 +191,16 @@ while { true } do {
 		_idactmode = -1;
 		_idactplacebis = -1;
 
-		if ( buildtype == 6 && !(_classname in [Warehouse_typename]) ) then {
-			_idactview = player addAction ["<t color='#B0FF00'>" + "-- Build view" + "</t>","scripts\client\build\build_view.sqf","",-755,false,false,"","build_confirmed == 1"];
+		if ( buildtype == 6 && !(_classname in GRLIB_build_force_mode) ) then {
 			_idactplacebis = player addAction ["<t color='#B0FF00'>" + localize "STR_PLACEMENT_BIS" + "</t> <img size='1' image='res\ui_confirm.paa'/>","scripts\client\build\build_place_bis.sqf","",-752,false,false,"","build_invalid == 0 && build_confirmed == 1"];
+			_idactmode = player addAction ["<t color='#B0FF00'>" + localize "STR_MODE" + "</t> <img size='1' image='R3F_LOG\icons\r3f_drop.paa'/>","scripts\client\build\build_mode.sqf","",-755,false,false,"","build_confirmed == 1"];
 		};
 
-		if ( buildtype == 6 || buildtype == 99 ) then {
+		if ( buildtype in [6, 99] ) then {
+			_idactview = player addAction ["<t color='#B0FF00'>" + "-- Build view" + "</t>","scripts\client\build\build_view.sqf","",-755,false,false,"","build_confirmed == 1"];
 			_idactsnap = player addAction ["<t color='#B0FF00'>" + localize "STR_GRID" + "</t>","scripts\client\build\do_grid.sqf","",-755,false,false,"","build_confirmed == 1"];
 			_idactupper = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEUP" + "</t> <img size='1' image='R3F_LOG\icons\r3f_lift.paa'/>","scripts\client\build\build_up.sqf","",-755,false,false,"","build_confirmed == 1"];
 			_idactlower = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEDOWN" + "</t> <img size='1' image='R3F_LOG\icons\r3f_release.paa'/>","scripts\client\build\build_down.sqf","",-755,false,false,"","build_confirmed == 1"];
-			_idactmode = player addAction ["<t color='#B0FF00'>" + localize "STR_MODE" + "</t> <img size='1' image='R3F_LOG\icons\r3f_drop.paa'/>","scripts\client\build\build_mode.sqf","",-755,false,false,"","build_confirmed == 1"];
 		};
 
 		_idactplace = player addAction ["<t color='#B0FF00'>" + localize "STR_PLACEMENT" + "</t> <img size='1' image='res\ui_confirm.paa'/>","scripts\client\build\build_place.sqf","",-750,false,true,"","build_invalid == 0 && build_confirmed == 1"];
@@ -231,7 +237,7 @@ while { true } do {
 			_actualdir = ((getdir player) + build_rotation);
 			if (_classname == "Land_Cargo_Patrol_V1_F") then { _actualdir = _actualdir + 180 };
 			if (_classname == FOB_typename) then { _actualdir = _actualdir + 270 };
-			if (_classname == Warehouse_typename) then { build_mode = 1 };
+			if (_classname in GRLIB_build_force_mode) then { build_mode = 1 };
 
 			while { _actualdir > 360 } do { _actualdir = _actualdir - 360 };
 			while { _actualdir < 0 } do { _actualdir = _actualdir + 360 };
@@ -348,12 +354,13 @@ while { true } do {
 			sleep 0.05;
 		};
 
+		if ( !alive player ) then { build_confirmed = 3 };
 		GRLIB_ui_notif = "";
 
 		{ _x setpos [ 0,0,0 ] } foreach GRLIB_preview_spheres;
 
 		// Cancel build
-		if ( !alive player || build_confirmed == 3 ) then {
+		if ( build_confirmed == 3 ) then {
 			deleteVehicle _vehicle;
 			dobuild = 0;
 			sleep 2;	// time to trap build canceled

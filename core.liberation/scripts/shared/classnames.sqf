@@ -526,6 +526,9 @@ GRLIB_ide_traps = [
 	"VirtualReammoBox_camonet_F"
 ];
 GRLIB_ignore_colisions = [
+	FOB_box_typename,
+	FOB_truck_typename,
+	FOB_box_outpost,
 	huron_typename,
 	Arsenal_typename,
 	mobile_respawn,
