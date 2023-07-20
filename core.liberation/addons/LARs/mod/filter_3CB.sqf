@@ -16,7 +16,7 @@ GRLIB_MOD_signature = GRLIB_MOD_signature + ["uk3cb_"];
 	"
 	tolower ((configName _x) select [0,6]) == 'uk3cb_' &&
 	([(configName _x)] call is_allowed_item) &&
-	((configName _x) iskindof 'Bag_Base') 
+	((configName _x) iskindof 'Bag_Base')
 	"
 	configClasses (configfile >> "CfgVehicles" )
 ) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
@@ -33,6 +33,7 @@ GRLIB_MOD_signature = GRLIB_MOD_signature + ["uk3cb_"];
 // Magazines
 (
 	"
+	getNumber (_x >> 'type') == 256 &&
 	tolower ((configName _x) select [0,6]) == 'uk3cb_' &&
 	tolower (configName _x) find '_tracer' < 0 &&
 	([(configName _x)] call is_allowed_item)

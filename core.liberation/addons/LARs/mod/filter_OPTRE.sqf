@@ -22,7 +22,7 @@ private _OPTRE_Items = [
 	"
 	tolower (getText (_x >> 'dlc')) == 'optre' &&
 	([(configName _x)] call is_allowed_item) &&
-	((configName _x) iskindof 'Bag_Base') 
+	((configName _x) iskindof 'Bag_Base')
 	"
 	configClasses (configfile >> "CfgVehicles" )
 ) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
@@ -38,6 +38,7 @@ private _OPTRE_Items = [
 
 (
 	"
+	getNumber (_x >> 'type') == 256 &&
 	tolower ((configName _x) select [0,6]) == 'optre_' &&
 	([(configName _x)] call is_allowed_item) &&
 	tolower (configName _x) find '_tracer' < 0

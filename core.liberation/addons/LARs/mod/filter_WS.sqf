@@ -23,7 +23,7 @@ GRLIB_MOD_signature = GRLIB_MOD_signature + _A3_Items + ["B_","O_","I_","U_"];
 	"
 	((getText (_x >> 'author')) == 'Bohemia Interactive' || (getText (_x >> 'author')) == 'Rotators Collective') &&
 	([(configName _x)] call is_allowed_item) &&
-	((configName _x) iskindof 'Bag_Base') 
+	((configName _x) iskindof 'Bag_Base')
 	"
 	configClasses (configfile >> "CfgVehicles" )
 ) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
@@ -44,6 +44,7 @@ private _A3_Items = [
 
 (
 	"
+	getNumber (_x >> 'type') == 256 &&
     ((getText (_x >> 'author')) == 'Bohemia Interactive' || (getText (_x >> 'author')) == 'Rotators Collective') &&
 	([(configName _x)] call is_allowed_item) &&
 	(

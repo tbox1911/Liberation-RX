@@ -28,7 +28,7 @@ if (GRLIB_mod_west == "CWR3_SOV") then { _exclude = ["CUP_B"] };
 	!([(configName _x), _exclude] call F_startsWithMultiple) &&
 	([(configName _x)] call is_allowed_item) &&
 	( (configName _x) find '_Bag' == -1 ) &&
-	((configName _x) iskindof 'Bag_Base') 
+	((configName _x) iskindof 'Bag_Base')
 	"
 	configClasses (configfile >> "CfgVehicles" )
 ) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
@@ -46,6 +46,7 @@ if (GRLIB_mod_west == "CWR3_SOV") then { _exclude = ["CUP_B"] };
 // Magazines
 (
 	"
+	getNumber (_x >> 'type') == 256 &&
 	tolower ((configName _x) select [0,4]) == 'cup_' &&
 	tolower (configName _x) find '_tracer' < 0 &&
 	([(configName _x)] call is_allowed_item)

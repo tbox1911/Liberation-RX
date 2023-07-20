@@ -16,7 +16,7 @@ GRLIB_MOD_signature = GRLIB_MOD_signature + ["ej_"];
     "
     tolower (getText (_x >> 'dlc')) == 'u100' &&
     ([(configName _x)] call is_allowed_item) &&
-    ((configName _x) iskindof 'Bag_Base') 
+    ((configName _x) iskindof 'Bag_Base')
     "
     configClasses (configfile >> "CfgVehicles" )
 ) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
@@ -33,6 +33,7 @@ GRLIB_MOD_signature = GRLIB_MOD_signature + ["ej_"];
 // Magazines
 (
     "
+	getNumber (_x >> 'type') == 256 &&
     tolower (getText (_x >> 'ammo') select [0,3]) == 'ej_'  &&
     ([(configName _x)] call is_allowed_item)
     "

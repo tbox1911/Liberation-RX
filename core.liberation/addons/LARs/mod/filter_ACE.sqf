@@ -40,6 +40,7 @@ GRLIB_blacklisted_from_arsenal append [
 
 (
 	"
+	getNumber (_x >> 'type') == 256 &&
 	tolower ((configName _x) select [0,4]) == 'ace_' &&
 	([(configName _x)] call is_allowed_item)
 	"

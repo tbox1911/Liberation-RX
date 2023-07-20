@@ -25,7 +25,7 @@ GRLIB_MOD_signature = GRLIB_MOD_signature + _A3_Items;
 	"
 	(getText (_x >> 'author')) == 'Bohemia Interactive' &&
 	([(configName _x)] call is_allowed_item) &&
-	((configName _x) iskindof 'Bag_Base') 
+	((configName _x) iskindof 'Bag_Base')
 	"
 	configClasses (configfile >> "CfgVehicles" )
 ) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
@@ -46,7 +46,8 @@ private _A3_Items = [
 
 (
 	"
-    (getText (_x >> 'author')) == 'Bohemia Interactive' &&
+	getNumber (_x >> 'type') == 256 &&
+    getText (_x >> 'author') == 'Bohemia Interactive' &&
 	([(configName _x)] call is_allowed_item) &&
 	(
 		(tolower (configName _x) find 'rnd_' >= 0 && tolower (configName _x) find '_tracer' < 0) ||
