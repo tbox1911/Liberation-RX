@@ -1,14 +1,15 @@
 if (!isServer && hasInterface) exitWith {};
+params [ "_fob"];
 
-params [ "_new_fob", "_classname"];
-private [ "_fob_building", "_fob_pos", "_fob_box_list", "_ruin_list" ];
+private _fob_pos = getPosATL _fob;
+GRLIB_all_fobs pushback _fob_pos;
 
-GRLIB_all_fobs pushback _new_fob;
+[_fob] call fob_init;
+if (typeOf _fob == FOB_outpost) then { GRLIB_all_outposts pushBack _fob_pos };
 
-if (_classname == FOB_outpost) then { GRLIB_all_outposts pushBack _new_fob };
 publicVariable "GRLIB_all_fobs";
 publicVariable "GRLIB_all_outposts";
 
-[ _new_fob, 0 ] remoteExec ["remote_call_fob", 0];
+[ _fob_pos, 0 ] remoteExec ["remote_call_fob", 0];
 sleep 1;
 stats_fobs_built = stats_fobs_built + 1;

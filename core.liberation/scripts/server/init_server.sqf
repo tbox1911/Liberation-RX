@@ -72,6 +72,10 @@ load_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game
 get_rank = compileFinal preprocessFileLineNumbers "scripts\server\game\get_rank.sqf";
 launch_firework = compileFinal preprocessFileLineNumbers "scripts\server\game\launch_firework.sqf";
 
+// Bases
+fob_init = compileFinal preprocessFileLineNumbers "scripts\server\base\fob_init.sqf";
+fob_init_officer = compileFinal preprocessFileLineNumbers "scripts\server\base\fob_init_officer.sqf";
+
 // Patrol
 reinforcements_manager = compileFinal preprocessFileLineNumbers "scripts\server\patrols\reinforcements_manager.sqf";
 send_paratroopers = compileFinal preprocessFileLineNumbers "scripts\server\patrols\send_paratroopers.sqf";

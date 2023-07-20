@@ -48,7 +48,11 @@ if (!_clearedtobuildfob) then {
 			dobuild = 1;
 		};
 		waitUntil { sleep 0.5; dobuild == 0};
-		if (build_confirmed != 3) then { deleteVehicle _box };
+		if (build_confirmed != 3) then { 
+			deleteVehicle _box;
+			sleep 2;
+			playsound "Land_Carrier_01_blast_deflector_up_sound";			
+		};
 	};
 };
 _box setVariable ["box_in_use", false, true];

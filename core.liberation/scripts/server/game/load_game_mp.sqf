@@ -323,6 +323,10 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 		if (_nextclass == Warehouse_typename) then {
 			[_nextbuilding] call warehouse_init_remote_call;
 		};
+
+		if (_nextclass == FOB_typename) then {
+			[_nextbuilding] call fob_init_officer;
+		};		
         //diag_log format [ "--- LRX Load Game %1 loaded at %2.", typeOf _nextbuilding, time];
 	} foreach (_s1 + _s2 + _s3);
 	sleep 1;

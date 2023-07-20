@@ -1,7 +1,8 @@
 _fobpos = _this select 0;
 
-private _classnames_to_destroy = [];
 GRLIB_all_fobs = GRLIB_all_fobs - [_fobpos];
+
+private _classnames_to_destroy = [];
 if (_fobpos in GRLIB_all_outposts) then {
 	_classnames_to_destroy = [FOB_outpost, FOB_sign];
 	GRLIB_all_outposts = GRLIB_all_outposts - [_fobpos];
@@ -25,9 +26,17 @@ _all_buildings_to_destroy = _all_buildings_to_destroy + ([(_fobpos nearobjects 2
 			if ((getPosATL _x) distance2D (getPosATL _building) < GRLIB_fob_range) then { deleteVehicle _x };
 		} foreach allSimpleObjects ["Land_PortableDesk_01_black_F",waterbarrel_typename,fuelbarrel_typename,foodbarrel_typename,basic_weapon_typename];
 
-		_owner = _building getVariable ["GRLIB_WarehouseOwner", objNull];
+		private _owner = _building getVariable ["GRLIB_WarehouseOwner", objNull];
 		deleteVehicle _owner;
 	};
+
+	if (typeOf _building == FOB_typename) then {
+		private _officer = _building getVariable ["GRLIB_FOB_Officer", objNull];
+		deleteVehicle _officer;
+		private _map = _building getVariable ["GRLIB_FOB_Mapboard", objNull];
+		deleteVehicle _map;
+	};
+
 	deleteVehicle _building;
 } foreach _all_buildings_to_destroy;
 

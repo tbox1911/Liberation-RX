@@ -1,9 +1,9 @@
 params ["_fob"];
 
-private _fob_class = typeOf _fob;
-
 _fob addEventHandler ["HandleDamage", {0}];
 _fob allowDamage false;
+
+private _fob_class = typeOf _fob;
 
 // Add owner sign
 private _fobdir = getDir _fob;
@@ -17,7 +17,9 @@ if (_fob_class == FOB_outpost ) then {
 	_sign setDir (_fobdir - 90);
 } else {
 	_sign setDir (_fobdir + 90);
+	[_fob] call fob_init_officer;
 };
+
 _sign setObjectTextureGlobal [0, getMissionPath "res\splash_libe2.paa"];
 _sign setVariable ["GRLIB_vehicle_owner", getPlayerUID player, true];
 if (count GRLIB_all_fobs == 0) then {
