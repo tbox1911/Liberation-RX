@@ -8376,6 +8376,9 @@
 			<Korean>현  재    차  량 :</Korean>
 			<Czech>Stávájící Vozidlo</Czech>
 		</Key>
+		<Key ID="STR_VAM_FREE_VEHICLE">
+			<Original>Free Space :</Original>
+		</Key>		
 		<Key ID="STR_VAM_FOB_CONDITION_CHECK_FAILED">
 			<Original>You should be in %1m from FOB.</Original>
 			<Russian>Вы должны быть в %1м от FOB.</Russian>

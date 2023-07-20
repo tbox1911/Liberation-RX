@@ -54,3 +54,47 @@ if (GRLIB_LRX_Texture_enabled) then {
 };
 
 [] call compileFinal preprocessFileLineNumbers "addons\VAM\RPT_vip_textures.sqf";
+
+if (isDedicated) exitWith {};
+
+// Get Arsenal items
+waitUntil {sleep 1; !isNil "LRX_arsenal_init_done"};
+waitUntil {sleep 1; LRX_arsenal_init_done};
+VAM_arsenal_class_names = [];
+VAM_arsenal_class_names append whitelisted_from_arsenal;
+
+// Weapons + Equipements (uniforme, etc..)
+(
+	"
+	getNumber (_x >> 'scope') > 1 &&
+    ([(configName _x)] call is_allowed_item)
+	"
+	configClasses (configfile >> "CfgWeapons" )
+) apply { VAM_arsenal_class_names pushback (configName _x) } ;
+
+// Magazines
+(
+	"
+	([(configName _x)] call is_allowed_item) &&
+	tolower (configName _x) find 'rnd_' >= 0 &&
+	tolower (configName _x) find '_tracer' < 0
+	"
+	configClasses (configfile >> "CfgMagazines")
+) apply { VAM_arsenal_class_names pushback (configName _x)} ;
+
+// Others object (backpack, etc..)
+(
+	"
+	([(configName _x)] call is_allowed_item) &&
+	((configName _x) iskindof 'Bag_Base') 
+	"
+	configClasses (configfile >> "CfgVehicles" )
+) apply { VAM_arsenal_class_names pushback (configName _x) } ;
+
+// Glasses
+(
+	"
+	([(configName _x)] call is_allowed_item)
+	"
+	configClasses (configfile >> "CfgGlasses" )
+) apply { VAM_arsenal_class_names pushback (configName _x) } ;

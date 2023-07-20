@@ -8,3 +8,4 @@ VAM_camo_check_complete = nil;
 VAM_comp_check_complete = nil;
 VAM_check_fnc_delay = nil;
 VAM_targetvehicle = nil;
+VAM_arsenal_item = nil;

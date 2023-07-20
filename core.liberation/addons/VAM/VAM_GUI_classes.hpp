@@ -8,19 +8,25 @@ class VAM_GUI
 	OnLoad = "[] spawn fnc_VAM_GUI_check;";
 	OnUnload = "[] spawn fnc_VAM_variable_cleaner;";
 	movingEnable = false;
-	controls[] = {"VAM_BG", "VAM_Title", "VAM_Text_Camo" ,"VAM_Text_Comp", "VAM_Confirm", "VAM_Reset", "VAM_List_Camo", "VAM_List_Comp", "VAM_Current_Vehicle_1", "VAM_Current_Vehicle_2"};
+	controls[] = {
+		"VAM_BG","VAM_Title","VAM_Text_Camo","VAM_Text_Comp",
+		"VAM_Confirm","VAM_Reset","VAM_AddCargo",
+		"VAM_List_Camo","VAM_List_Comp","VAM_List_Arsenal",
+		"VAM_Current_Vehicle_1","VAM_Current_Vehicle_2",
+		"VAM_Current_Vehicle_3","VAM_Current_Vehicle_4",
+		"VAM_Current_Arsenal"
+	};
 	objects[] = {};
 
-	class VAM_BG: VAM_IGUIBack
-	{
+	class VAM_BG: VAM_IGUIBack {
 		idc = -1;
 		x = 0.329375 * safezoneW + safezoneX;
 		y = 0.318 * safezoneH + safezoneY;
 		w = 0.34125 * safezoneW;
 		h = 0.392 * safezoneH;
 	};
-	class VAM_Title: VAM_RscText
-	{
+
+	class VAM_Title: VAM_RscText {
 		idc = -1;
 		text = $STR_VAM_MAIN_MENU_NAME;
 		x = 0.3425 * safezoneW + safezoneX;
@@ -28,8 +34,8 @@ class VAM_GUI
 		w = 0.144375 * safezoneW;
 		h = 0.028 * safezoneH;
 	};
-	class VAM_Text_Camo: VAM_RscText
-	{
+
+	class VAM_Text_Camo: VAM_RscText {
 		idc = -1;
 		text = $STR_VAM_CAMOUFLAGE;
 		x = 0.3425 * safezoneW + safezoneX;
@@ -37,8 +43,8 @@ class VAM_GUI
 		w = 0.065625 * safezoneW;
 		h = 0.028 * safezoneH;
 	};
-	class VAM_Text_Comp: VAM_RscText
-	{
+
+	class VAM_Text_Comp: VAM_RscText {
 		idc = -1;
 		text = $STR_VAM_COMPONENT;
 		x = 0.506562 * safezoneW + safezoneX;
@@ -46,8 +52,8 @@ class VAM_GUI
 		w = 0.065625 * safezoneW;
 		h = 0.028 * safezoneH;
 	};
-	class VAM_Confirm: VAM_RscButton
-	{
+
+	class VAM_Confirm: VAM_RscButton {
 		idc = 4930;
 		text = $STR_VAM_CONFIRM_MENU;
 		action = "closeDialog 0;";
@@ -56,28 +62,39 @@ class VAM_GUI
 		w = 0.0459375 * safezoneW;
 		h = 0.028 * safezoneH;
 	};
-	class VAM_List_Camo: VAM_RscListbox
-	{
+
+	class VAM_List_Camo: VAM_RscListbox {
 		idc = 4910;
 		style = LB_TEXTURES;
 		sizeEx = 0.035;
 		x = 0.3425 * safezoneW + safezoneX;
-		y = 0.416 * safezoneH + safezoneY;
+		y = 0.405 * safezoneH + safezoneY;
 		w = 0.150937 * safezoneW;
-		h = 0.224 * safezoneH;
+		h = 0.124 * safezoneH;
 	};
-	class VAM_List_Comp: VAM_RscListbox
-	{
+
+	class VAM_List_Comp: VAM_RscListbox	{
 		idc = 4920;
 		style = LB_TEXTURES + LB_MULTI;
 		sizeEx = 0.035;
 		x = 0.506562 * safezoneW + safezoneX;
-		y = 0.416 * safezoneH + safezoneY;
+		y = 0.405 * safezoneH + safezoneY;
 		w = 0.150937 * safezoneW;
-		h = 0.224 * safezoneH;
+		h = 0.124 * safezoneH;
 	};
-	class VAM_Reset: VAM_RscButton
-	{
+
+	class VAM_List_Arsenal: VAM_RscListbox	{
+		idc = 4921;
+		style = LB_TEXTURES + LB_MULTI;
+		sizeEx = 0.035;
+		tooltip = "Info"
+		x = 0.506562 * safezoneW + safezoneX;
+		y = 0.560 * safezoneH + safezoneY;
+		w = 0.150937 * safezoneW;
+		h = 0.124 * safezoneH;
+	};
+
+	class VAM_Reset: VAM_RscButton {
 		idc = 4940;
 		text = $STR_VAM_RESET_VEHICLE;
 		OnButtonClick = "[] spawn fnc_VAM_reset;";
@@ -86,8 +103,18 @@ class VAM_GUI
 		w = 0.0459375 * safezoneW;
 		h = 0.028 * safezoneH;
 	};
-	class VAM_Current_Vehicle_1: VAM_RscText
-	{
+
+	class VAM_AddCargo: VAM_RscButton {
+		idc = 4941;
+		text = $STR_VAM_ARSENAL_VEHICLE;
+		OnButtonClick = "[] spawn fnc_VAM_add_cargo;";
+		x = 0.3725 * safezoneW + safezoneX;
+		y = 0.600 * safezoneH + safezoneY;
+		w = 0.06 * safezoneW;
+		h = 0.028 * safezoneH;
+	};
+
+	class VAM_Current_Vehicle_1: VAM_RscText {
 		idc = -1;
 		text = $STR_VAM_CURRENT_VEHICLE;
 		x = 0.3425 * safezoneW + safezoneX;
@@ -95,8 +122,27 @@ class VAM_GUI
 		w = 0.091875 * safezoneW;
 		h = 0.028 * safezoneH;
 	};
-	class VAM_Current_Vehicle_2: VAM_RscText
-	{
+
+	class VAM_Current_Vehicle_2: VAM_RscText {
+		idc = -1;
+		text = $STR_VAM_FREE_VEHICLE;
+		x = 0.3425 * safezoneW + safezoneX;
+		y = 0.680 * safezoneH + safezoneY;
+		w = 0.091875 * safezoneW;
+		h = 0.028 * safezoneH;
+	};
+
+	class VAM_Current_Vehicle_3: VAM_RscText {
+		idc = 4952;
+		sizeEx = 0.03;
+		text = "<Placeholder>";
+		x = 0.427812 * safezoneW + safezoneX;
+		y = 0.680 * safezoneH + safezoneY;
+		w = 0.124687 * safezoneW;
+		h = 0.028 * safezoneH;
+	};
+
+	class VAM_Current_Vehicle_4: VAM_RscText {
 		idc = 4950;
 		sizeEx = 0.03;
 		text = "<Placeholder>";
@@ -105,7 +151,17 @@ class VAM_GUI
 		w = 0.124687 * safezoneW;
 		h = 0.028 * safezoneH;
 	};
+
+	class VAM_Current_Arsenal: VAM_RscText {
+		idc = -1;
+		text = $STR_VAM_ARSENAL;
+		x = 0.506562 * safezoneW + safezoneX;
+		y = 0.530 * safezoneH + safezoneY;
+		w = 0.091875 * safezoneW;
+		h = 0.028 * safezoneH;
+	};
 };
+
 ////////////////////////////////////////////////////////
 // GUI EDITOR OUTPUT END
 ////////////////////////////////////////////////////////
