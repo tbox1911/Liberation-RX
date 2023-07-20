@@ -6376,8 +6376,8 @@
 			<Czech>-= TIPY =-</Czech>
 		</Key>
 		<Key ID="STR_SAVE_PLAYER">
-			<Original>-= SAVE PLAYER PROFILE =-</Original>
-			<French>-= SAUVEGARDER LE JOUEUR =-</French>
+			<Original>-- SAVE PLAYER PROFILE</Original>
+			<French>-- SAUVEGARDER LE JOUEUR</French>
 		</Key>
 		<Key ID="STR_SAVE_PLAYER_MSG">
 			<Original>Player Profile and\n%1 Squad unit(s)\nSaved!</Original>
