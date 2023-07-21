@@ -8,7 +8,7 @@ _objects_to_build = [
     [ "Land_HBarrierBig_F", [-9.22, -6.62, 0], 0.11 ],
     [ opfor_transport_truck, [4.9, -10.96, -0.03], 272.46 ],
     [ "Land_HBarrierBig_F", [-1.17, 12.94, 0], 0.25 ],
-    [ opfor_transport_truck, [-8.91, -11.52, -0.03], 266.11 ],
+    //[ opfor_transport_truck, [-8.91, -11.52, -0.03], 266.11 ],
     [ "Land_HBarrierWall_corridor_F", [-14.26, 3.18, 0], 180.24 ],
     [ "Land_PaperBox_open_full_F", [11.39, 9.16, 0], 302.69 ],
     [ "Land_HBarrierBig_F", [-14.52, -3.07, 0], 89.68 ],

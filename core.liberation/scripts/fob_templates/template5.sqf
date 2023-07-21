@@ -4,7 +4,7 @@ _objects_to_build = [
     [ opfor_patrol, [17.36, 1.08, 0], 269.81 ],
     [ opfor_house, [15.93, -7.13, 0], 90.12 ],
     [ opfor_hq, [-11.82, -13.91, 0], 89.97 ],
-    [ opfor_transport_truck, [-17.59, 5.76, -0.03], 310.87 ],
+    //[ opfor_transport_truck, [-17.59, 5.76, -0.03], 310.87 ],
     [ opfor_flag, [-20.4, -2.8, 0], 90 ],
     [ "Land_PaperBox_open_full_F", [12.36, -16.46, 0], 228.14 ],
     [ opfor_flag, [20.06, 6.22, 0], 90 ],

@@ -28,10 +28,12 @@ diag_log format ["--- LRX Spawn Outpost %1 pos %2 at %3", _template_name, _base_
 	_nextdir = _x select 2;
 
 	_nextobject = _nextclass createVehicle _nextpos;
-	_nextobject setVectorUp [0,0,1];
-	_nextobject setpos _nextpos;
-	_nextobject setdir _nextdir;
-
+    _nextobject setPosATL _nextpos;
+    if (_nextclass isKindOf "HBarrier_base_F") then {
+        _nextobject setVectorDirAndUp [[-cos _nextdir, sin _nextdir, 0] vectorCrossProduct surfaceNormal _nextpos, surfaceNormal _nextpos];
+     } else {
+        _nextobject setVectorDirAndUp [[_nextdir, _nextdir, 0], [0,0,1]];
+    };
 	_base_objects = _base_objects + [_nextobject];
 } foreach _objects_to_build;
 sleep 1;
@@ -70,8 +72,8 @@ private _grpdefenders = grpNull;
 private _grpsentry = grpNull;
 
 if (_enable_defenders) then {
-    private _defenders_amount = 15 * ( sqrt ( GRLIB_unitcap ) );
-    if ( _defenders_amount > 15 ) then { _defenders_amount = 15 };
+    private _defenders_amount = 8 * ( sqrt ( GRLIB_unitcap ) );
+    if ( _defenders_amount > 10 ) then { _defenders_amount = 10 };
 
     _grpdefenders = createGroup [GRLIB_side_enemy, true];
     private _idxselected = [];
