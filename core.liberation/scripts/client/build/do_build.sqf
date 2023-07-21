@@ -176,7 +176,7 @@ while { true } do {
 		build_confirmed = 0;
 	};
 
-	if ( buildtype in [2,3,4,5,6,7,9,99] ) then {
+	if ( buildtype in [2,3,4,5,6,7,9,10,99] ) then {
 		_posfob = getpos player;
 		if (buildtype != 99) then {
 			_posfob = [] call F_getNearestFob;
