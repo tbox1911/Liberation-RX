@@ -70,4 +70,5 @@ private _grp = createGroup [_side, true];
 	sleep 0.1;
 } foreach _classname;
 
+[_grp] call F_deleteWaypoints;
 _grp;
