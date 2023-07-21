@@ -4,7 +4,8 @@ params [
 	"_pos",
 	["_nbUnits", 7],
 	["_type", "infantry"],
-	["_patrol", true]
+	["_patrol", true],
+	["_radius", 100]
 ];
 if (isNil "_grp" || isNil "_pos") exitWith {};
 diag_log format [ "Spawn SideMission squad type %1 (%2) at %3", _type, _nbUnits, time ];
@@ -30,8 +31,9 @@ private _grp_tmp = [_pos, _unitclass, GRLIB_side_enemy, _type] call F_libSpawnUn
 	_x setVariable ["GRLIB_mission_AI", true, true];
 } forEach (units _grp_tmp);
 
+[_grp] call F_deleteWaypoints;
 sleep 1;
-if (_patrol) then { [_grp, _pos] spawn add_defense_waypoints };
+if (_patrol) then { [_grp, _pos, _radius] spawn add_defense_waypoints };
 
 //Unit Skill;
 //  Novice < 0.25
