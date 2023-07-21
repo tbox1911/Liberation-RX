@@ -31,10 +31,8 @@ _all_buildings_to_destroy = _all_buildings_to_destroy + ([(_fobpos nearobjects 2
 	};
 
 	if (typeOf _building == FOB_typename) then {
-		private _officer = _building getVariable ["GRLIB_FOB_Officer", objNull];
-		deleteVehicle _officer;
-		private _map = _building getVariable ["GRLIB_FOB_Mapboard", objNull];
-		deleteVehicle _map;
+		deleteVehicle (_building getVariable ["GRLIB_FOB_Officer", objNull]);
+		{ deleteVehicle _x } forEach (_building getVariable ["GRLIB_FOB_Objects", []]);
 	};
 
 	deleteVehicle _building;
