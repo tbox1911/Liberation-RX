@@ -6248,6 +6248,9 @@
 		</Key>
 
 		<!-- do_sell.sqf -->
+		<Key ID="STR_SELL_WELCOME_FOB">
+			<Original>Hello solider, The army can recycle your vehicle's cargo!</Original>
+		</Key>		
 		<Key ID="STR_SELL_WELCOME">
 			<Original>Hello stranger, I buy your vehicle's cargo for a good price!</Original>
 			<Russian>Привет незнакомец, я куплю груз из вашего транспорта по хорошей цене!</Russian>

@@ -8,14 +8,19 @@ private _sell_list = [];
 private _display = findDisplay 2305;
 private _cfg = configFile >> "cfgVehicles";
 
-gamelogic globalChat localize "STR_SELL_WELCOME";
+private _nearfob = ((player distance2D ([] call F_getNearestFob)) < 100);
+if (_nearfob) then {
+	gamelogic globalChat localize "STR_SELL_WELCOME_FOB";
+} else {
+	gamelogic globalChat localize "STR_SELL_WELCOME";
+};
 sell_action = 0;
 private _refresh = true;
+private _price = 0;
 
 while { dialog && alive player } do {
 	if (_refresh) then {
 		// Init SELL list
-
 		private _sell_classnames = ["LandVehicle","Air","Ship"] + GRLIB_Ammobox_keep;
 		_sell_list = [getPosATL player nearEntities [_sell_classnames, 50], {
 			alive _x &&
@@ -26,7 +31,13 @@ while { dialog && alive player } do {
 
 		private _sell_list_dlg = [];
 		{
-			_sell_list_dlg pushBack [(typeOf _x), ([_x] call F_loadoutPrice)];
+			_price = [_x] call F_loadoutPrice;
+			if (_nearfob) then {
+				_price = round (_price * GRLIB_recycling_percentage);
+			} else {
+				_price = round (_price / GRLIB_recycling_percentage);
+			};		
+			_sell_list_dlg pushBack [(typeOf _x), _price];
 		} forEach _sell_list;
 
 		lbClear 110;
@@ -51,11 +62,10 @@ while { dialog && alive player } do {
 	_selected_item = lbCurSel 111;
 
 	if (sell_action != 0) then {
-
 		if (sell_action == 1) then {
 			private _selected_item = lbCurSel 110;
 			private _vehicle_name = (_display displayCtrl (110)) lnbText [_selected_item, 0];
-			private _price = parseNumber ((_display displayCtrl (110)) lnbText [_selected_item, 1]);
+			_price = parseNumber ((_display displayCtrl (110)) lnbText [_selected_item, 1]);
 			if (_price == 0) then {
 				gamelogic globalChat localize "STR_NOTHING_TO_SELL";			
 			} else {
