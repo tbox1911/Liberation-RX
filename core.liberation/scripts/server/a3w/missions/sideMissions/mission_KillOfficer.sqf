@@ -8,7 +8,7 @@ if (!isServer) exitWith {};
 if (!isNil "GRLIB_A3W_Mission_MR") exitWith {};
 #include "sideMissionDefines.sqf"
 
-private ["_fobList", "_aiGroup", "_hvt", "_civilians", "_nbUnits"];
+private ["_fobList", "_aiGroup", "_grp_hvt", "_civilians", "_nbUnits"];
 
 _setupVars =
 {
@@ -20,31 +20,57 @@ _setupVars =
 _setupObjects =
 {
 	if (count _fobList == 0) exitWith { false };
-	_missionPos = markerPos (selectRandom _fobList);
-	_missionPos = _missionPos getPos [40, random 360];
+	_sector = selectRandom _fobList;
+	_missionPos = markerPos _sector;
+	_missionPos = _missionPos getPos [80, random 360];
 	_vehicleClass = opfor_mrap_hmg;
-
-	// Spawn vehicle
-	private _vehicle1 = [_missionPos, _vehicleClass, false, false, true] call F_libSpawnVehicle;
-	_vehicle1 setVariable ["GRLIB_mission_AI", true, true];
-	
-	_aiGroup = createGroup [GRLIB_side_enemy, true];
-	// Define vehicle
-	_vehicle1 allowCrewInImmobile true;
-	createVehicleCrew _vehicle1;
-	[crew _vehicle1] joinSilent _aiGroup;
 
 	// Spawn HVT
 	_grp_hvt = createGroup [GRLIB_side_enemy, true];
-	_hvt = _grp_hvt createUnit [ opfor_officer, _missionPos, [], 0, "NONE"];
+	private _hvt = _grp_hvt createUnit [ opfor_officer, _missionPos, [], 0, "NONE"];
+	_hvt setVariable ["GRLIB_mission_AI", true, true];
 	_hvt addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage }];
 	_hvt addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	[_hvt] joinSilent _grp_hvt;
 	_hvt setrank "COLONEL";
+	
+	// Add guards
+	[_grp_hvt, _missionPos, 3, "guard", false] call createCustomGroup;
+	_grp_hvt setCombatMode "RED"; // Aggresive behaviour
+	_grp_hvt setBehaviour "AWARE";
 
+	sleep 1;
+	private _building = nearestBuilding (getPosATL _hvt) buildingPos -1;
 	// Move HVT into Building
+	{ 
+		_x setPos selectRandom _building;
+		_x setUnitPos "UP";
+		_x disableAI "MOVE";
+		sleep 0.3;
+	} foreach (units _grp_hvt);
 	_hvt_pos = getPosATL _hvt;
-	_hvt setPos selectRandom ((nearestBuilding _hvt_pos) buildingPos -1);
+
+	// Spawn Enemy
+	// Vehicle
+	_grp_hmg = createGroup [GRLIB_side_enemy, true];
+	private _roads = _hvt_pos nearRoads 50;
+	private _precise = true;
+	private _vehicle1_pos = getPos (selectRandom _roads);
+	if (isNil "_vehicle1_pos") then { _vehicle1_pos = _hvt_pos; precise = false };
+	private _vehicle1 = [_vehicle1_pos, _vehicleClass, _precise] call F_libSpawnVehicle;
+	_vehicle1 setVariable ["GRLIB_mission_AI", true, true];
+	_vehicle1 allowCrewInImmobile true;
+	createVehicleCrew _vehicle1;
+	sleep 1;
+	(crew _vehicle1) joinSilent _grp_hmg;
+
+	// Patrolgroup
+	_aiGroup = createGroup [GRLIB_side_enemy, true];
+	[_aiGroup, _hvt_pos, _nbUnits, "infantry", true, 40] call createCustomGroup;
+	_aiGroup setCombatMode "WHITE"; // Defensive behaviour
+	_aiGroup setBehaviour "AWARE";
+	_aiGroup setFormation "WEDGE";
+	_aiGroup setSpeedMode "NORMAL";
 
 	// Spawn civvies
 	_civilians = [];
@@ -54,17 +80,6 @@ _setupObjects =
 		_civilians pushBack _civ_grp;
 	};
 
-	// Spawn Patrolgroup
-	// Define group
-	[_aiGroup, _missionPos, _nbUnits, "infantry"] call createCustomGroup;
-	_aiGroup setCombatMode "WHITE"; // Defensive behaviour
-	_aiGroup setBehaviour "AWARE";
-	_aiGroup setFormation "WEDGE";
-	_aiGroup setSpeedMode "LIMITED";
-
-	// Patrol around the HVT
-	[_aiGroup, _hvt_pos, 30] call BIS_fnc_taskPatrol;
-
 	_missionPos = _hvt_pos;
 	_missionPicture = getText (configFile >> "CfgVehicles" >> (_vehicleClass param [0, ""]) >> "picture");
 	_vehicleName = getText (configFile >> "CfgVehicles" >> (_vehicleClass param [0, ""]) >> "displayName");
@@ -73,16 +88,20 @@ _setupObjects =
 	true;
 };
 
+_waitUntilSuccessCondition = { ({alive _x} count (units _grp_hvt) == 0) };
+
 _failedExec = {
 	// Mission failed
 	{{deleteVehicle _x} forEach (units _x)} forEach _civilians;
-	deleteVehicle _hvt;
+	{ deleteVehicle _x } forEach units _grp_hvt;
 };
 
 _successExec =
 {	
 	// Mission completed
 	_successHintMessage = "STR_HOSSTILE_HELI_MESSAGE2";
+	[_vehicles, 5, true] call cleanMissionVehicles;
+	{if (alive _x) then { deleteVehicle _x }} forEach units _aiGroup;
 	{{deleteVehicle _x} forEach (units _x)} forEach _civilians;
 	if (combat_readiness > 20) then { combat_readiness = combat_readiness - 15 };
 };

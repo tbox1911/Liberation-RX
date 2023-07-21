@@ -7,7 +7,7 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_grpdefenders", "_grpsentry"];
+private ["_grpdefenders", "_grpsentry", "_grpprisonners"];
 
 _setupVars = {
 	_missionType = "STR_OUTPOST";
@@ -24,16 +24,32 @@ _setupObjects = {
 	_aiGroup = _grpdefenders;
 	[_missionPos, 150, floor (random 11)] spawn ied_trap_manager;
 	_missionHintText = ["STR_OUTPOST_MESSAGE1", sideMissionColor];
+
+	//add priso
+	_grpprisonners = createGroup [GRLIB_side_enemy, true];
+	for "_i" from 0 to 3 do {
+		_pilotsPos = [ _missionPos, 25, random 360 ] call BIS_fnc_relPos;
+		_man = pilot_classname createUnit [ _pilotsPos,_grpprisonners,'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.5, "private"];
+		[ _man, true, false ] spawn prisonner_ai;
+		sleep 1;
+	};
 	true;
 };
 
 _waitUntilMarkerPos = nil;
 _waitUntilExec = nil;
-_waitUntilCondition = nil;
+_waitUntilCondition = { 
+	({alive _x} count (units _grpprisonners) == 0)
+};
+
+_waitUntilSuccessCondition = { 
+	({side group _x == GRLIB_side_friendly} count _grpprisonners > 0)
+ };
 
 _failedExec = {
 	{ deleteVehicle _x } forEach units _grpdefenders;
 	{ deleteVehicle _x } forEach units _grpsentry;
+	{ deleteVehicle _x } forEach units _grpprisonners;
 };
 
 _successExec = {
