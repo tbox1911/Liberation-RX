@@ -19,7 +19,9 @@ _setupVars =
 
 _setupObjects =
 {
+	if (count _fobList == 0) exitWith { false };
 	_missionPos = markerPos (selectRandom _fobList);
+	_missionPos = _missionPos getPos [40, random 360];
 	_vehicleClass = opfor_mrap_hmg;
 
 	// Spawn vehicle
@@ -42,13 +44,13 @@ _setupObjects =
 
 	// Move HVT into Building
 	_hvt_pos = getPosATL _hvt;
-	_hvt move selectRandom ((nearestBuilding _hvt_pos) buildingPos -1);
+	_hvt setPos selectRandom ((nearestBuilding _hvt_pos) buildingPos -1);
 
 	// Spawn civvies
 	_civilians = [];
 	for "_i" from 0 to (5 + random(5)) do {
 		_civ_grp = [_hvt_pos, [selectRandom civilians], GRLIB_side_civilian, "civilian"] call F_libSpawnUnits;
-		[_civ_grp, _hvt_pos, 75] call BIS_fnc_taskPatrol;
+		[_civ_grp, _hvt_pos, 50] call BIS_fnc_taskPatrol;
 		_civilians pushBack _civ_grp;
 	};
 
@@ -61,7 +63,7 @@ _setupObjects =
 	_aiGroup setSpeedMode "LIMITED";
 
 	// Patrol around the HVT
-	[_aiGroup, _hvt_pos, 50] call BIS_fnc_taskPatrol;
+	[_aiGroup, _hvt_pos, 30] call BIS_fnc_taskPatrol;
 
 	_missionPos = _hvt_pos;
 	_missionPicture = getText (configFile >> "CfgVehicles" >> (_vehicleClass param [0, ""]) >> "picture");
