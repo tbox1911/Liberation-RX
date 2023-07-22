@@ -51,7 +51,6 @@ while { true } do {
 			_vehicle addAction ["<t color='#555555'>" + localize "STR_ABANDON" + "</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_abandon.sqf","",-903,false,true,"","[_target, _this] call GRLIB_checkAction_Abandon", GRLIB_ActionDist_5];
 			_vehicle addAction ["<t color='#00F0F0'>" + localize "STR_PAINT" + " (VAM)</t> <img size='1' image='res\ui_veh.paa'/>", "addons\VAM\fn_repaintMenu.sqf","",-905,false,true,"","[_target, _this] call GRLIB_checkAction_Paint", GRLIB_ActionDist_5];
 			_vehicle addAction ["<t color='#0080F0'>" + localize "STR_EJECT_CREW" + "</t> <img size='1' image='res\ui_veh.paa'/>","scripts\client\actions\do_eject.sqf","",-906,false,true,"","[_target, _this] call GRLIB_checkAction_Eject", GRLIB_ActionDist_5];
-			_vehicle addAction ["<t color='#0080F0'>" + format [localize "STR_STORE_LOADOUT_CARGO", ([_vehicle] call F_getLRXName)] + "</t> <img size='1' image='res\ui_arsenal.paa'/>",{_this call save_loadout_cargo},"",-907,false,true,"","[_target, _this] call GRLIB_checkAction_CargoBox",GRLIB_ActionDist_5];
 		};
 
 		if (typeOf _vehicle in transport_vehicles) then {
@@ -78,20 +77,12 @@ while { true } do {
 		_vehicle setVariable ["GRLIB_boxes_action", true];
 	} forEach _nearboxes;
 
-
-    // Save loadout Cargo
-	_nearcargo = [(player nearEntities [GRLIB_Ammobox_keep, _searchradius]), { isNil {_x getVariable "GRLIB_boxes_action"} }] call BIS_fnc_conditionalSelect;
-	{
-		_vehicle = _x;
-		_vehicle addAction ["<t color='#0080F0'>" + format [localize "STR_STORE_LOADOUT_CARGO", ([_vehicle] call F_getLRXName)] + "</t> <img size='1' image='res\ui_arsenal.paa'/>",{_this call save_loadout_cargo},"",-502,false,true,"","[_target, _this] call GRLIB_checkAction_CargoBox",GRLIB_ActionDist_5];
-		_vehicle setVariable ["GRLIB_boxes_action", true];
-	} forEach _nearcargo;
-
 	// Dead Men
 	_neardead = [allDeadMen, {!([_x, "LHD", GRLIB_sector_size, false] call F_check_near) && (_x distance2D player < _searchradius) && isNil {_x getVariable "GRLIB_dead_action"}}] call BIS_fnc_conditionalSelect;
 	{
 		_unit = _x;
-		_unit addAction ["<t color='#0080F0'>" + localize "STR_REMOVE_BODY" + "</t>",{ [_this select 0] remoteExec ["hidebody", 0]},"",1.5,false,true,"","_this distance2D _target < 3" ];
+		_unit addAction ["<t color='#0080F0'>" + localize "STR_REMOVE_BODY" + "</t>",{ [_this select 0] remoteExec ["hidebody", 0]},"",100,false,true,"","", GRLIB_ActionDist_3];
+		_unit addAction ["<t color='#00F0F0'>" + localize "STR_LOOT_BODY" + "</t>","scripts\client\actions\do_loot.sqf","",101,false,true,"","(loadAbs _target > 120)",GRLIB_ActionDist_3];
 		_unit setVariable ["GRLIB_dead_action", true];
 	} forEach _neardead;
 

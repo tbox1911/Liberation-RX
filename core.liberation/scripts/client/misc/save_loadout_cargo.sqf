@@ -8,10 +8,11 @@ _box addItemCargo [(headgear _unit), 1];
 {_box addItemCargo [_x, 1]} forEach (assignedItems _unit - [binocular _unit]);
 
 // uniform
-if (uniform _unit != "") then {
+if (uniform _unit != "" && isPlayer _unit) then {
 	_box addItemCargo [(uniform _unit), 1];
 	_uniform = (everyContainer _box) select (count everyContainer _box) - 1 select 1;
 	{_uniform addItemCargo [_x, 1]} forEach (uniformItems _unit);
+	removeUniform _unit;
 };
 
 // vest
@@ -40,12 +41,11 @@ if (backpack _unit != "") then {
 removeAllWeapons _unit;
 removeAllItems _unit;
 removeAllAssignedItems _unit;
-removeUniform _unit;
 removeVest _unit;
 removeBackpack _unit;
 removeHeadgear _unit;
 removeGoggles _unit;
 
-private _msg = format [localize "STR_LOADOUT_CARGO_STORED", ([_box] call F_getLRXName)];
+private _msg = format [localize "STR_LOADOUT_CARGO_STORED", name _unit, ([_box] call F_getLRXName)];
 hintSilent _msg;
 systemchat _msg;

@@ -58,11 +58,6 @@ GRLIB_checkAction_Box = {
 	([_target] call is_menuok_veh && [] call is_neartransport && [_unit, _target] call is_owner && !(_target getVariable ['R3F_LOG_disabled', false]))
 };
 
-GRLIB_checkAction_CargoBox = {
-	params ["_target", "_unit"];
-	([_target] call is_menuok_veh && [_unit, _target] call is_owner && locked _target < 2 && loadAbs _unit > 0 && loadAbs _unit < (maxLoad _target - loadAbs _target) && !(_target getVariable ['R3F_LOG_disabled', false]))
-};
-
 // GRLIB_checkAction_X = {
 // 	params ["_target", "_unit"];
 // 	diag_log [_target, _unit];

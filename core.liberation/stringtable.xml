@@ -5995,13 +5995,18 @@
 			<Portuguese>-- REMOVER O CORPO</Portuguese>
 			<Czech>-- ODSTRAŇTE TĚLO</Czech>
 		</Key>
-		<Key ID="STR_STORE_LOADOUT_CARGO">	
-			<Original>-- STORE LOADOUT IN %1</Original>
+		<Key ID="STR_LOOT_BODY">	
+			<Original>-- LOOT BODY</Original>
+			<French>-- LOOTER CORPS</French>
 		</Key>
 		<Key ID="STR_LOADOUT_CARGO_STORED">	
-			<Original>All your Stuff have been saved in %1.</Original>
+			<Original>%1's gear stored in %2.</Original>
+			<French>Équipement de %1 rangé dans %2.</French>
 		</Key>
-
+		<Key ID="STR_LOADOUT_NOCARGO">	
+			<Original>No empty vehicle nearby.</Original>
+			<French>Pas de véhicule vide à proximité.</French>
+		</Key>
 		<!-- recycle_manager.sqf -->
 		<Key ID="STR_RECYCLE_MANAGER">
 			<Original>-- RECYCLE</Original>
