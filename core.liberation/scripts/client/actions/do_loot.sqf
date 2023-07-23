@@ -1,4 +1,11 @@
 params ["_target", "_caller", "_actionId", "_arguments"];
+if (isNil "_target") exitWith {};
+
+sleep random 0.3;
+
+//only one player at time
+if ((_target getVariable ["loot_in_use", false])) exitWith {};
+_target setVariable ["loot_in_use", true, true];
 
 private _load_target = loadAbs _target;
 private _nearset_cargo = vehicles select {
@@ -22,3 +29,5 @@ if (count _nearset_cargo > 0) then {
 	hintSilent _msg;
 	systemchat _msg;
 };
+
+_target setVariable ["loot_in_use", false, true];

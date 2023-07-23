@@ -1,12 +1,12 @@
 params ["_vehicle"];
 if (isNil "_vehicle") exitWith {};
 
+sleep random 0.3;
+
 //only one wreck at time
 if ((player getVariable ["salvage_wreck", false])) exitWith {};
-
 //only one player at time
 if ((_vehicle getVariable ["wreck_in_use", false])) exitWith {};
-
 player setVariable ["salvage_wreck", true, true];
 _vehicle setVariable ["wreck_in_use", true, true];
 

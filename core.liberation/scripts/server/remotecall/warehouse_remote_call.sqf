@@ -1,7 +1,9 @@
 if (!isServer && hasInterface) exitWith {};
 params [ "_box", "_cmd", "_unit" ];
-
 if (isNil "_box") exitWith {};
+
+sleep random 0.3;
+
 if (!isNil "GRLIB_warehouse_in_use") then { waitUntil {sleep 0.1; isNil "GRLIB_warehouse_in_use"} };
 GRLIB_warehouse_in_use = true;
 publicVariable "GRLIB_warehouse_in_use";

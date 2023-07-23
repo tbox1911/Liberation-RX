@@ -1,12 +1,14 @@
 private _box = cursorObject;
 
+sleep random 0.3;
+
 //only one at time
 if ((_box getVariable ["box_in_use", false])) exitWith {};
 if ( count (GRLIB_all_fobs select {count (_x nearObjects [FOB_typename, 50]) > 0}) >= GRLIB_maximum_fobs && typeOf _box != FOB_box_outpost ) exitWith {
 	hint format [ localize "STR_HINT_FOBS_EXCEEDED", GRLIB_maximum_fobs ];
 };
-
 _box setVariable ["box_in_use", true, true];
+
 private _minfobdist = 1000;
 private _minsectordist = GRLIB_capture_size + GRLIB_fob_range;
 private _distfob = 1;

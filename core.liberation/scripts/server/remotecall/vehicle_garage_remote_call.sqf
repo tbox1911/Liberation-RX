@@ -1,7 +1,9 @@
 if (!isServer && hasInterface) exitWith {};
 params [ "_veh", "_cmd", "_owner" ];
-
 if (isNil "_veh") exitWith {};
+
+sleep random 0.3;
+
 if (!isNil "GRLIB_garage_in_use") then { waitUntil {sleep 0.1; isNil "GRLIB_garage_in_use"} };
 GRLIB_garage_in_use = true;
 publicVariable "GRLIB_garage_in_use";
