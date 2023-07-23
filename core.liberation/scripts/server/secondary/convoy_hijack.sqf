@@ -48,7 +48,7 @@ private _scout_vehicle = [_spawnpos, selectRandom (opfor_vehicles_low_intensity 
 (driver _scout_vehicle) limitSpeed 40;
 (driver _scout_vehicle) disableAI "AUTOCOMBAT";
 _scout_vehicle allowCrewInImmobile [true, true];
-if (typeOf _scout_vehicle isKindOf "APC") then {
+if (typeOf _scout_vehicle isKindOf "Wheeled_APC_F") then {
 	_scout_vehicle forceFollowRoad true;
 };
 _scout_vehicle addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage } ];

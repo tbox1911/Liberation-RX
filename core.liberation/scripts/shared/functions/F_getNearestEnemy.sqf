@@ -20,7 +20,7 @@ if (isNull _vehicle || (_vehicle_class isKindOf "StaticMortar")) then {
     private _dist = 1000;
     
     // Default for AA, AC
-    if (_vehicle_class isKindOf "AT_01_base_F") then {_dist = 1500; _kind = ["Car", "APC", "Tank"]};
+    if (_vehicle_class isKindOf "AT_01_base_F") then {_dist = 1500; _kind = ["Car", "Wheeled_APC_F", "Tank"]};
     if (_vehicle_class isKindOf "AA_01_base_F") then {_dist = 2000; _kind = ["Air"]};
 
     _scan_target = [ ((getPosATL _vehicle) nearEntities [ _kind, _dist]), {
