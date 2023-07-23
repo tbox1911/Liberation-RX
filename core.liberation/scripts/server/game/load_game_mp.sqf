@@ -50,8 +50,7 @@ GRLIB_player_scores = [];
 GRLIB_garage = [];
 GRLIB_warehouse = [];
 
-private _no_kill_handler_classnames = [FOB_typename, FOB_outpost];
-{ _no_kill_handler_classnames pushback (_x select 0) } foreach buildings;
+private _no_kill_handler_classnames = [FOB_typename, FOB_outpost] + all_buildings_classnames;
 
 private _vehicles_light = list_static_weapons + [mobile_respawn];
 { _vehicles_light pushback (_x select 0) } foreach support_vehicles;

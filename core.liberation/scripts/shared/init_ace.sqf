@@ -33,7 +33,7 @@ GRLIB_cargoSize = [R3F_LOG_CFG_can_be_transported_cargo, 2] call F_invertArray;
 // Objects that can be moved
 GRLIB_movableObjects = [] + boats_names + R3F_LOG_CFG_can_be_moved_by_player;
 // Adding each buildings to movableObjects
-{GRLIB_movableObjects pushback (_x select 0);} foreach buildings;
+GRLIB_movableObjects = [] + all_buildings_classnames;
 
 // Set object movable with ACE.
 {

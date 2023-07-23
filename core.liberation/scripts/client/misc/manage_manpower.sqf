@@ -2,7 +2,7 @@ waitUntil {sleep 1; GRLIB_player_spawned};
 
 private ["_manpower_used", "_player_vehicles", "_player_respawn", "_unit"];
 private _uid = getPlayerUID player;
-private _search_list = light_vehicles + heavy_vehicles + opfor_recyclable + air_vehicles + static_vehicles + support_vehicles;
+private _search_list = [] + light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles + opfor_recyclable + ind_recyclable;
 
 private _get_mp = {
 	params ["_vehicle"];

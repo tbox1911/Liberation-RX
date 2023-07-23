@@ -14,9 +14,7 @@ private _no_marker_classnames = [
 	"Land_PortableDesk_01_black_F",
 	"Land_HumanSkull_F",
 	"Land_HumanSkeleton_F"
-] + GRLIB_ide_traps + GRLIB_intel_items;
-
-{ _no_marker_classnames pushback (_x select 0) } foreach buildings;
+] + GRLIB_ide_traps + GRLIB_intel_items + all_buildings_classnames;
 
 waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 waitUntil {sleep 1; !isNil "GRLIB_mobile_respawn"};

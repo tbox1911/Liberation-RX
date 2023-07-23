@@ -4,17 +4,13 @@ if (!isNil "GRLIB_server_stopped") exitWith {};
 if (time < 300 && !hasInterface) exitWith {diag_log format ["--- LRX MP Warmup (no save done), %1sec remaining...", round (300 - time)];};
 diag_log format ["--- LRX Save start at %1", time];
 
-private _classnames_to_save = [];
-{
-	_classnames_to_save pushback (_x select 0);
-} foreach buildings;
-
-private _classnames_to_save_blu = [FOB_typename, FOB_outpost, FOB_sign, huron_typename];
+private _classnames_to_save = [] + all_buildings_classnames;
+private _classnames_to_save_blu = [FOB_typename, FOB_outpost, FOB_sign, huron_typename] + all_firendly_classnames;
 {
 	_classnames_to_save_blu pushback (_x select 0);
-} foreach (air_vehicles + heavy_vehicles + light_vehicles + support_vehicles + static_vehicles + ind_recyclable);
-_classnames_to_save_blu = _classnames_to_save_blu arrayIntersect _classnames_to_save_blu;
+} foreach ind_recyclable;
 
+_classnames_to_save_blu = _classnames_to_save_blu arrayIntersect _classnames_to_save_blu;
 _classnames_to_save append (_classnames_to_save_blu + all_hostile_classnames);
 _classnames_to_save = _classnames_to_save arrayIntersect _classnames_to_save;
 

@@ -9,10 +9,10 @@ if (_fobpos in GRLIB_all_outposts) then {
 } else {
 	_classnames_to_destroy = [FOB_typename, FOB_sign];
 };
+_classnames_to_destroy append all_buildings_classnames;
+
 publicVariable "GRLIB_all_fobs";
 publicVariable "GRLIB_all_outposts";
-
-{ _classnames_to_destroy pushBack (_x select 0) } foreach buildings;
 
 private _all_buildings_to_destroy = [];
 _all_buildings_to_destroy = [(_fobpos nearobjects 200), { getObjectType _x >= 8 && (typeOf _x) in _classnames_to_destroy }] call BIS_fnc_conditionalSelect;

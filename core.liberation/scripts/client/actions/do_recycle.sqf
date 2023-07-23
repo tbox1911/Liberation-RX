@@ -1,10 +1,13 @@
 params ["_vehicle"];
 if (isNil "_vehicle") exitWith {};
-private _veh_class = typeOf _vehicle;
+
+sleep random 0.3;
 
 //only one player at time
 if ((_vehicle getVariable ["recycle_in_use", false])) exitWith {};
 _vehicle setVariable ["recycle_in_use", true, true];
+
+private _veh_class = typeOf _vehicle;
 
 // XP AmmoBox
 private _result = false;
@@ -22,10 +25,9 @@ if (_veh_class == ammobox_i_typename && [player] call F_getScore <= GRLIB_perm_l
 if (_result) exitWith {};
 
 // Classic Recycle
-private _objectinfo = ( [ (light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles + buildings + opfor_recyclable + ind_recyclable), { _veh_class == _x select 0 } ] call BIS_fnc_conditionalSelect ) select 0;
+private _objectinfo = ([GRLIB_recycleable_info, { _x select 0 == _veh_class }] call BIS_fnc_conditionalSelect) select 0;
 if (isNil "_objectinfo") then { _objectinfo = [_veh_class, 0, 0, 0] };
-private _buildings = [];
-{ _buildings pushBack (_x select 0) } foreach buildings;
+
 dorecycle = 0;
 
 createDialog "liberation_recycle";
@@ -42,7 +44,7 @@ ctrlSetText [ 133, format [ "%1", _ammount_fuel ] ];
 while { dialog && (alive player) && dorecycle == 0 } do { sleep 0.5 };
 if ( dialog ) then { closeDialog 0 };
 
-if ( dorecycle == 1 && !(isNull _vehicle) && (alive _vehicle || _veh_class in _buildings) ) exitWith {
+if ( dorecycle == 1 && !(isNull _vehicle) && (alive _vehicle || _veh_class in all_buildings_classnames) ) exitWith {
 	if (_veh_class in [ammobox_b_typename, ammobox_o_typename, ammobox_i_typename] && [player] call F_getScore <= GRLIB_perm_log) then {
 		[player, 10] remoteExec ["F_addScore", 2];
 		hint format [localize "STR_AMMO_SELL", name player, 10];

@@ -1,11 +1,6 @@
 waitUntil { !isNil "huron_typename" };
 
-_vehicleClassnames = [huron_typename];
-
-
-{
-	_vehicleClassnames = _vehicleClassnames + [_x select 0];
-} foreach (light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles) ;
+_vehicleClassnames = [huron_typename] + all_firendly_classnames;
 
 while { true } do {
 

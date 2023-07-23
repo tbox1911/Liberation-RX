@@ -174,9 +174,18 @@ buildings append [
 	[land_cutter_typename,0,0,0,GRLIB_perm_inf]
 ];
 
+all_buildings_classnames = [];
+{ all_buildings_classnames pushback (_x select 0) } foreach buildings;
+
+all_hostile_classnames = [];
+{ all_hostile_classnames pushback (_x select 0) } foreach opfor_recyclable;
+
+all_firendly_classnames = [];
+{ all_firendly_classnames pushback (_x select 0) } foreach (light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles);
+
 // *** ELITES ***
 elite_vehicles = [];
-{ if (_x select 4 == GRLIB_perm_max) then { elite_vehicles pushback (_x select 0)} } foreach light_vehicles + heavy_vehicles + air_vehicles + static_vehicles;
+{ if (_x select 4 == GRLIB_perm_max) then { elite_vehicles pushback (_x select 0)} } foreach (heavy_vehicles + air_vehicles + static_vehicles);
 
 // *** Boats ***
 boats_names = [
@@ -391,10 +400,13 @@ GRLIB_recycleable_blacklist = [
 	foodbarrel_typename,
 	basic_weapon_typename
 ];
+
 GRLIB_recycleable_classnames = ["LandVehicle","Air","Ship","StaticWeapon","Slingload_01_Base_F","Pod_Heli_Transport_04_base_F"];
 {
 	if (!((_x select 0) in GRLIB_recycleable_blacklist)) then {GRLIB_recycleable_classnames pushBack (_x select 0)};
 } foreach (support_vehicles + buildings + opfor_recyclable);
+
+GRLIB_recycleable_info = (light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles + buildings + opfor_recyclable + ind_recyclable);
 
 // Filter Mods
 infantry_units = [ infantry_units ] call F_filterMods;
@@ -471,9 +483,6 @@ opfor_squad_8_airkillers = [
 	opfor_aa,
 	opfor_aa
 ];
-
-all_hostile_classnames = [];
-{ all_hostile_classnames pushback (_x select 0) } foreach opfor_recyclable;
 
 air_vehicles_classnames = [] + opfor_troup_transports_heli;
 { air_vehicles_classnames pushback (_x select 0); } foreach air_vehicles;
