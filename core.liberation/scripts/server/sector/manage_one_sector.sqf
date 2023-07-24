@@ -94,13 +94,17 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 		_building_ai_max = round ((floor (8 + (round (combat_readiness / 10 )))) * _popfactor);
 		_building_range = 110;
 		_defensecount = 3;
-		[_sectorpos] spawn {
-			params ["_pos"];
-			sleep 5;
+		[_sector] spawn {
+			params ["_sector"];
+			private _pos = markerPos _sector;
 			private _sound = "\a3\data_f_curator\sound\cfgsounds\air_raid.wss";
-			for "_i" from 0 to 3 do {
-				playSound3D [_sound, _pos, false, ATLToASL _pos, 5, 1, 1000];
-				sleep 5;
+			while { _sector in active_sectors } do {
+				sleep 30;
+				for "_i" from 0 to (floor(random 4)) do {
+					playSound3D [_sound, _pos, false, ATLToASL _pos, 5, 1, 1000];
+					sleep (5 + floor(random 4));
+				};
+				sleep 60;
 			};
 		};
 	};
