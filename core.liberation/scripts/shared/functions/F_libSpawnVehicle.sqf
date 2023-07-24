@@ -70,11 +70,15 @@ if ( _vehicle isKindOf "LandVehicle" ) then {
 
 if ( !_civilian ) then {
 	if ( _classname in militia_vehicles ) then {
-		[ _vehicle ] call F_libSpawnMilitiaCrew;
+		[_vehicle] call F_libSpawnMilitiaCrew;
 	} else {
-		[ _vehicle ] call F_forceOpforCrew;
+		if ( _classname in all_firendly_classnames ) then {
+			[_vehicle] call F_forceBluforCrew;
+		} else {
+			[_vehicle] call F_forceOpforCrew;
+		};
 	};
-
+		
 	_vehcrew = crew _vehicle;
 	{ _x allowDamage false } forEach _vehcrew;
 
