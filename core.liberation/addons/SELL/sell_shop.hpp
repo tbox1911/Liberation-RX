@@ -25,7 +25,7 @@ class Sell_Shop {
 		class InnerBG_F1: InnerBG1 {
 			style = ST_FRAME;
 		};
-		
+
 	};
 
 	class controls {

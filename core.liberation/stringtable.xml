@@ -8361,10 +8361,7 @@
 			<Czech>--------SVV inicializován--------</Czech>
 		</Key>
 		<Key ID="STR_VAM_MAIN_MENU_NAME">
-			<Original>Vehicle Appearance Manager</Original>
-			<Russian>Менеджер внешнего вида машины</Russian>
-			<Korean>차량 형상 관리자</Korean>
-			<Czech>Vzhled vozidla</Czech>
+			<Original>--- PAINT and SHOP ---</Original>
 		</Key>
 		<Key ID="STR_VAM_RESET_VEHICLE">
 			<Original>Reset</Original>
