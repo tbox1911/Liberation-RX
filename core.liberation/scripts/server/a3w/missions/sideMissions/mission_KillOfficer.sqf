@@ -12,7 +12,7 @@ private ["_fobList", "_aiGroup", "_grp_hvt", "_civilians", "_nbUnits"];
 
 _setupVars =
 {
-	_missionType = "STR_HOSSTILE_OFFICER";
+	_missionType = "STR_HOSTILE_OFFICER";
 	_fobList = sectors_bigtown select {(_x in blufor_sectors)};
 	_nbUnits = [] call getNbUnits;
 };
@@ -83,7 +83,7 @@ _setupObjects =
 	_missionPos = _hvt_pos;
 	_missionPicture = getText (configFile >> "CfgVehicles" >> (_vehicleClass param [0, ""]) >> "picture");
 	_vehicleName = getText (configFile >> "CfgVehicles" >> (_vehicleClass param [0, ""]) >> "displayName");
-	_missionHintText = ["STR_HOSSTILE_OFFICER_MESSAGE1", _vehicleName, sideMissionColor];
+	_missionHintText = ["STR_HOSTILE_OFFICER_MESSAGE1", _vehicleName, sideMissionColor];
 	_vehicles = [_vehicle1];
 	true;
 };
@@ -99,7 +99,7 @@ _failedExec = {
 _successExec =
 {	
 	// Mission completed
-	_successHintMessage = "STR_HOSSTILE_HELI_MESSAGE2";
+	_successHintMessage = "STR_HOSTILE_HELI_MESSAGE2";
 	[_vehicles, 5, true] call cleanMissionVehicles;
 	{if (alive _x) then { deleteVehicle _x }} forEach units _aiGroup;
 	{{deleteVehicle _x} forEach (units _x)} forEach _civilians;

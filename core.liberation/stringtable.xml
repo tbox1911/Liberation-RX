@@ -7150,7 +7150,7 @@
 		</Key>
 
 		<!-- mission_HostileHelicopter.sqf -->
-		<Key ID="STR_HOSSTILE_HELI">
+		<Key ID="STR_HOSTILE_HELI">
 			<Original>Hostile Helicopter</Original>
 			<Russian>Вертолет противника</Russian>
 			<Japanese>敵のヘリ</Japanese>
@@ -7158,7 +7158,7 @@
 			<Chinese>敵軍直升機</Chinese>
 			<Czech>Hostile Helicopter</Czech>
 		</Key>
-		<Key ID="STR_HOSSTILE_HELI_MESSAGE1">
+		<Key ID="STR_HOSTILE_HELI_MESSAGE1">
 			<Original>An armed &lt;t color='%2'&gt;%1&lt;/t&gt; is patrolling the island. Intercept it and recover its cargo!</Original>
 			<Russian>Вооруженный &lt;t color='%2'&gt;%1&lt;/t&gt; патрулирует остров. Перехватите его и заберите груз!</Russian>
 			<Japanese>武装した &lt;t color='%2'&gt;%1&lt;/t&gt; が飛行している。迎撃して貨物を回収せよ！</Japanese>
@@ -7166,7 +7166,7 @@
 			<Chinese>一架武裝直升機 &lt;t color='%2'&gt;%1&lt;/t&gt; 正在島上巡邏，攔截並收回貨物！</Chinese>
 			<Czech>Ozbrojený &lt;t color='%2'&gt;%1&lt;/t&gt; hlídá na ostrově. Zničte ho a získejte jeho náklad!</Czech>
 		</Key>
-		<Key ID="STR_HOSSTILE_HELI_MESSAGE2">
+		<Key ID="STR_HOSTILE_HELI_MESSAGE2">
 			<Original>The sky is clear again, the enemy patrol was taken out! Ammo crates have fallen near the wreck.</Original>
 			<Russian>Небо снова чистое, вражеский патруль уничтожен! Ящики с боеприпасами упали рядом с обломками.</Russian>
 			<Japanese>ヘリは撃墜された、残骸の近くの弾薬箱を回収せよ。</Japanese>
@@ -7176,10 +7176,10 @@
 		</Key>
 
 		<!-- mission_HostileHelicopter.sqf -->
-		<Key ID="STR_HOSSTILE_OFFICER">
+		<Key ID="STR_HOSTILE_OFFICER">
 			<Original>Neutralize HVT</Original>
 		</Key>
-		<Key ID="STR_HOSSTILE_OFFICER_MESSAGE1">
+		<Key ID="STR_HOSTILE_OFFICER_MESSAGE1">
 			<Original>An enemy &lt;t color='%2'&gt;Officer&lt;/t&gt; makes ready to fly to their HQ in %1.&lt;br/&gt;He has vital information about us. We need to elimiate him!</Original>
 		</Key>
 

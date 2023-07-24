@@ -19,9 +19,6 @@ _aiGroup = grpNull;
 
 if (!isNil "_setupVars") then { call _setupVars };
 
-["lib_secondary_a3w_mission", [localize _missionType]] remoteExec ["bis_fnc_shownotification", 0];
-diag_log format ["A3W Side Mission% started: %2", _controllerSuffix, localize _missionType];
-
 _missionTimeout = A3W_Mission_timeout;
 
 if (!isNil "_locationsArray") then {
@@ -40,6 +37,9 @@ if (!isNil "_setupObjects") then { _continue_mission = call _setupObjects };
 if (!_continue_mission) exitWith {
 	diag_log format ["--- LRX Error: A3W Side Mission%1 failed to setup: %2", _controllerSuffix, localize _missionType];
 };
+
+["lib_secondary_a3w_mission", [localize _missionType]] remoteExec ["bis_fnc_shownotification", 0];
+diag_log format ["A3W Side Mission% started: %2", _controllerSuffix, localize _missionType];
 
 sleep 5;
 _leader = leader _aiGroup;

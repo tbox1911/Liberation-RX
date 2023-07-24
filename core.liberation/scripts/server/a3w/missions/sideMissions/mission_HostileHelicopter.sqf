@@ -10,7 +10,7 @@ private [ "_citylist", "_leader", "_numWaypoints", "_box1", "_box2"];
 
 _setupVars =
 {
-	_missionType = "STR_HOSSTILE_HELI";
+	_missionType = "STR_HOSTILE_HELI";
 	_citylist = [] call cityList;
 	_locationsArray = nil; // locations are generated on the fly from towns
 };
@@ -47,7 +47,7 @@ _setupObjects =
 	_missionPos = getPosATL leader _aiGroup;
 	_missionPicture = getText (configFile >> "CfgVehicles" >> (_vehicleClass param [0,""]) >> "picture");
 	_vehicleName = getText (configFile >> "CfgVehicles" >> (_vehicleClass param [0,""]) >> "displayName");
-	_missionHintText = ["STR_HOSSTILE_HELI_MESSAGE1", _vehicleName, sideMissionColor];
+	_missionHintText = ["STR_HOSTILE_HELI_MESSAGE1", _vehicleName, sideMissionColor];
 	_numWaypoints = count waypoints _aiGroup;
 	true;
 };
@@ -81,7 +81,7 @@ _successExec =
 		_box2 = [ammobox_o_typename, _wreckPos, false] call boxSetup;
 	};
 
-	_successHintMessage = "STR_HOSSTILE_HELI_MESSAGE2";
+	_successHintMessage = "STR_HOSTILE_HELI_MESSAGE2";
 };
 
 _this call sideMissionProcessor;
