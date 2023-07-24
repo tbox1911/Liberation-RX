@@ -167,7 +167,7 @@ if (_unit == player) then {
 		_unit addEventHandler ["HandleDamage", {
 			params ["_unit","","_dam"];
 			_veh = objectParent _unit;
-			if (!(isNull _veh) && !(player in (crew _veh)) && damage _veh > 0.8) then {[_veh, _unit, true] spawn PAR_fn_eject};
+			if (!(isNull _veh) && damage _veh > 0.8) then {[_veh, _unit, true] spawn PAR_fn_eject};
 
 			private _isNotWounded = !(_unit getVariable ["PAR_wounded", false]);
 			if (_isNotWounded && _dam >= 0.86) then {
