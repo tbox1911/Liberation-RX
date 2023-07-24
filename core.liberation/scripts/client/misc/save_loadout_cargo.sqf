@@ -1,48 +1,57 @@
 params ["_box", "_unit"];
 
+private _addContainerCargo = {
+	params ["_box", "_item"];
+	private _old_content = everyContainer _box;
+	if (_item isKindOf "Bag_Base") then {
+		_box addBackpackCargo [_item, 1];
+	} else {
+		_box addItemCargoGlobal [_item, 1];
+	};
+	sleep 0.1;
+	((everyContainer _box) - _old_content) select 0 select 1; 
+};
+
 // store player stuff in the box
 // headgear
-_box addItemCargo [(headgear _unit), 1];
+_box addItemCargoGlobal [(headgear _unit), 1];
 
 // items
-{_box addItemCargo [_x, 1]} forEach (assignedItems _unit - [binocular _unit]);
+{_box addItemCargoGlobal [_x, 1]} forEach (assignedItems _unit - [binocular _unit]);
 
 // uniform
 if (uniform _unit != "" && isPlayer _unit) then {
-	_box addItemCargo [(uniform _unit), 1];
-	_uniform = (everyContainer _box) select (count everyContainer _box) - 1 select 1;
-	{_uniform addItemCargo [_x, 1]} forEach (uniformItems _unit);
+	private _uniform = [_box, (uniform _unit)] call _addContainerCargo;
+	{_uniform addItemCargoGlobal [_x, 1]} forEach (uniformItems _unit);
 	removeUniform _unit;
 };
 
 // vest
 if (vest _unit != "") then {
-	_box addItemCargo [(vest _unit), 1];
-	_vest = (everyContainer _box) select (count everyContainer _box) - 1 select 1;
-	{_vest addItemCargo [_x, 1]} forEach (vestItems _unit);
+	private _vest = [_box, (vest _unit)] call _addContainerCargo;
+	{_vest addItemCargoGlobal [_x, 1]} forEach (vestItems _unit);
+	removeVest _unit;
 };
 
 // weapons + attachment
 {_box addWeaponWithAttachmentsCargo [_x, 1]} forEach weaponsItems _unit;
-//{_box addItemCargo [_x, 1]} forEach (assignedItems _unit);
+//{_box addItemCargoGlobal [_x, 1]} forEach (assignedItems _unit);
 
 // backpack
 if (backpack _unit != "") then {
-	_box addBackpackCargo [(Backpack _unit), 1];
-	_backpack = firstBackpack _box;
+	private _backpack = [_box, (Backpack _unit)] call _addContainerCargo;
 	clearItemCargo _backpack;
 	clearWeaponCargo _backpack;
 	clearMagazineCargo _backpack;
 	clearItemCargo _backpack;
-	{_backpack addItemCargo [_x, 1]} forEach (backpackItems _unit);
+	{_backpack addItemCargoGlobal [_x, 1]} forEach (backpackItems _unit);
+	removeBackpack _unit;
 };
 
 // Cleanup
 removeAllWeapons _unit;
 removeAllItems _unit;
 removeAllAssignedItems _unit;
-removeVest _unit;
-removeBackpack _unit;
 removeHeadgear _unit;
 removeGoggles _unit;
 
