@@ -6,8 +6,8 @@ if ( _sector in sectors_bigtown ) then {
 	_actual_capture_size = GRLIB_capture_size * 1.4;
 };
 
-_red_forces = [ (markerpos _sector), _actual_capture_size, GRLIB_side_enemy ] call F_getUnitsCount;
-_blue_forces = [ (markerpos _sector), _actual_capture_size, GRLIB_side_friendly ] call F_getUnitsCount;
+_red_forces = [(markerpos _sector), _actual_capture_size, GRLIB_side_enemy] call F_getUnitsCount;
+_blue_forces = [(markerpos _sector), _actual_capture_size, GRLIB_side_friendly] call F_getUnitsCount;
 _ratio = -1;
 
 if (_red_forces > 0) then {
