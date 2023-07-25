@@ -68,6 +68,7 @@ F_spawnWildLife = compileFinal preprocessFileLineNumbers "scripts\shared\functio
 F_startAnimMP = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_startAnimMP.sqf";
 F_startsWith = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_startsWith.sqf";
 F_startsWithMultiple = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_startsWithMultiple.sqf";
+F_replaceWith  = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_replaceWith.sqf";
 F_UnitAddAmmo = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_UnitAddAmmo.sqf";
 F_UnitNeedAmmo = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_UnitNeedAmmo.sqf";
 F_vehicleLock = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_vehicleLock.sqf";
