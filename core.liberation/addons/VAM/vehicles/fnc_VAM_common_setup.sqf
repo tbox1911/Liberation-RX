@@ -7,22 +7,16 @@ private _list_arsenal = _VAM_display displayCtrl 4921;
 private _reset = _VAM_display displayCtrl 4940;
 private _confirm = _VAM_display displayCtrl 4930;
 
-private _vehicleclass = typeof VAM_targetvehicle;
-
-// Get A3 camouflages (texture sets)
-private _camo_path = "true" configClasses (configfile >> "CfgVehicles" >> _vehicleclass >> "TextureSources");
 camo_class_names = [];
 camo_display_names = [];
+comp_class_names = [];
+
+// Get A3 camouflages (texture sets)
+private _camo_path = "true" configClasses (configOf VAM_targetvehicle >> "TextureSources");
 {
 	camo_class_names pushBack (configName _x);
-	camo_display_names pushBack (getText (_x >> "DisplayName"));
+	camo_display_names pushBack (configName _x);
 } forEach _camo_path;
-
-{
-	if (_x isEqualTo "") then {
-		camo_display_names set [_forEachIndex, camo_class_names select _forEachIndex];
-	};
-} forEach camo_display_names;
 
 // Get LRX camouflages (static, custom textures set)
 {
@@ -33,7 +27,6 @@ camo_display_names = [];
 // Get all components(animations)
 private _getvc = [VAM_targetvehicle] call BIS_fnc_getVehicleCustomization;
 private _check_comp = _getvc select 1;
-comp_class_names = [];
 {
 	if (_x isEqualType "STRING") then {
 		comp_class_names pushBack (_check_comp select _forEachIndex);
@@ -41,7 +34,7 @@ comp_class_names = [];
 } forEach _check_comp;
 comp_display_names = [];
 {
-	_name = getText (configfile >> "CfgVehicles" >> _vehicleclass >> "AnimationSources" >> _x >> "DisplayName");
+	_name = getText (configOf VAM_targetvehicle >> "AnimationSources" >> _x >> "DisplayName");
 	comp_display_names pushBack _name;
 } forEach comp_class_names;
 
@@ -55,7 +48,14 @@ comp_display_names = [];
 if (camo_class_names isEqualTo []) then {
 	_list_camo lbAdd localize "STR_VAM_NO_CAMOUFLAGE";
 } else {
-	{_list_camo lbAdd _x} forEach camo_display_names;
+	{
+		_name = getText (configOf VAM_targetvehicle >> "TextureSources" >> _x >> "DisplayName");
+		if (_name != "") then {
+			_list_camo lbAdd _name;
+		} else {
+			_list_camo lbAdd _x;
+		};	
+	} forEach camo_display_names;
 };
 if (comp_class_names isEqualTo []) then {
 	_list_comp lbAdd localize "STR_VAM_NO_COMPONENT";

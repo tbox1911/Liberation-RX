@@ -254,7 +254,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 			};
         } else {
 			if ( !(_owner in ["", "public"]) && count _x > 5 ) then {
-				[_x select 5] params [["_color", ""]];
+				//[_x select 5] params [["_color", ""]];
 				[_x select 6] params [["_color_name", ""]];
 				[_x select 7] params [["_lst_a3", []]];
 				[_x select 8] params [["_lst_r3f", []]];
@@ -265,8 +265,8 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 				_nextbuilding setUnloadInCombat [true, false];
 				[_nextbuilding, "lock"] call F_vehicleLock;
 
-				if (_color != "") then {
-					[_nextbuilding, _color, _color_name] call RPT_fnc_TextureVehicle;
+				if (_color_name != "") then {
+					[_nextbuilding, _color_name] call RPT_fnc_TextureVehicle;
 				};
 				if (count _compo > 0) then {
 					[_nextbuilding, _compo]  call RPT_fnc_CompoVehicle;

@@ -119,7 +119,8 @@ if ( GRLIB_endgame == 1 ) then {
                             buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner ];
                         };
                     } else {
-                        _color = _x getVariable ["GRLIB_vehicle_color", ""];
+                        //_color = _x getVariable ["GRLIB_vehicle_color", ""];
+                        _color = "";
                         _color_name = _x getVariable ["GRLIB_vehicle_color_name", ""];
                         _compo = _x getVariable ["GRLIB_vehicle_composant", []];
                         _lst_a3 = [_x] call F_getCargo;

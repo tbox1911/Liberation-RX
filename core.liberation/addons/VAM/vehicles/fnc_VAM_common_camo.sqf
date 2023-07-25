@@ -12,7 +12,17 @@ private _selected_camo_class_name = camo_class_names select _list_selection;
 private _selected_camo_display_names = camo_display_names select _list_selection;
 private _vehicle = VAM_targetvehicle;
 
-if ([_selected_camo_class_name, ["#(rgb", "addons", "LRX_Texture"]] call F_startsWithMultiple) then {
+if ([_selected_camo_class_name, [".#", "./", "LRX_Texture"]] call F_startsWithMultiple) then {
+    private _camo_class_name = "";
+    if (_selected_camo_class_name select [0,2] == ".#") then {
+        // RGB color
+        _camo_class_name = [_selected_camo_class_name, ".#", RPT_color] call F_replaceWith;
+    };
+    if (_selected_camo_class_name select [0,2] == "./") then {
+        // LRX Textures
+        _camo_class_name = [_selected_camo_class_name, "./", RPT_texDir] call F_replaceWith;
+    };
+
     // Apply texture to all appropriate parts
     private _selections = switch (true) do {
         case (_vehicle isKindOf "Van_01_base_F"):                 { [0,1] };
@@ -58,7 +68,7 @@ if ([_selected_camo_class_name, ["#(rgb", "addons", "LRX_Texture"]] call F_start
         default                                               { [0] };
     };
 
-    { _vehicle setObjectTextureGlobal [_x, _selected_camo_class_name] } forEach _selections;
+    { _vehicle setObjectTextureGlobal [_x, _camo_class_name] } forEach _selections;
 } else {
     [_vehicle,[_selected_camo_class_name,1],nil,nil] call BIS_fnc_initVehicle;
 };

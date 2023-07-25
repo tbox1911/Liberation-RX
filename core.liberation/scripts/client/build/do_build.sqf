@@ -430,7 +430,7 @@ while { true } do {
 
 				// Color
 				if ( count _color > 0 ) then {
-					[_vehicle, _color, "N/A"] call RPT_fnc_TextureVehicle;
+					[_vehicle, _color] call RPT_fnc_TextureVehicle;
 				};
 
 				// Composant
