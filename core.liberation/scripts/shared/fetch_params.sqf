@@ -162,18 +162,27 @@ if (abort_loading) exitWith { abort_loading_msg = format [
 diag_log format ["--- LRX Mod Detection: %1 vs %2", GRLIB_mod_west, GRLIB_mod_east];
 
 // Check side Addon
-if ( (!GRLIB_CUPU_enabled || !GRLIB_CUPV_enabled) && ["CP_", [GRLIB_mod_west, GRLIB_mod_east]] call F_startsWithMultiple) then { abort_loading = true };
-if ( !GRLIB_EJW_enabled && ["EJW_", [GRLIB_mod_west, GRLIB_mod_east]] call F_startsWithMultiple) then { abort_loading = true };
-if ( !GRLIB_R3F_enabled && ["R3F_", [GRLIB_mod_west, GRLIB_mod_east]] call F_startsWithMultiple) then { abort_loading = true };
-if ( !GRLIB_RHS_enabled && ["RHS_", [GRLIB_mod_west, GRLIB_mod_east]] call F_startsWithMultiple) then { abort_loading = true };
-if ( !GRLIB_GM_enabled && ["GM_", [GRLIB_mod_west, GRLIB_mod_east]] call F_startsWithMultiple) then { abort_loading = true };
-if ( !GRLIB_OPTRE_enabled && ["OPTRE", [GRLIB_mod_west, GRLIB_mod_east]] call F_startsWithMultiple) then { abort_loading = true };
-if ( !GRLIB_WS_enabled && ["WS_", [GRLIB_mod_west, GRLIB_mod_east]] call F_startsWithMultiple) then { abort_loading = true };
-if ( !GRLIB_SOG_enabled && ["SOG_", [GRLIB_mod_west, GRLIB_mod_east]] call F_startsWithMultiple) then { abort_loading = true };
-if ( !GRLIB_CWR_enabled && ["CWR3_", [GRLIB_mod_west, GRLIB_mod_east]] call F_startsWithMultiple) then { abort_loading = true };
-if ( !GRLIB_3CB_enabled && ["3CB", [GRLIB_mod_west, GRLIB_mod_east]] call F_startsWithMultiple) then { abort_loading = true };
-if ( !GRLIB_UNS_enabled && ["UNS_", [GRLIB_mod_west, GRLIB_mod_east]] call F_startsWithMultiple) then { abort_loading = true };
-if ( !GRLIB_IFA_enabled && ["IFA_", [GRLIB_mod_west, GRLIB_mod_east]] call F_startsWithMultiple) then { abort_loading = true };
+private _startsWithMultipleInv = {
+	params ["_item", "_list"]; 
+	private _ret = false; 
+	{ 
+		if ([_item, _x] call F_startsWith) exitWith { _ret = true }; 
+	} foreach _list;
+	_ret; 
+};
+
+if ( (!GRLIB_CUPU_enabled || !GRLIB_CUPV_enabled) && ["CP_", [GRLIB_mod_west, GRLIB_mod_east]] call _startsWithMultipleInv) then { abort_loading = true };
+if ( !GRLIB_EJW_enabled && ["EJW_", [GRLIB_mod_west, GRLIB_mod_east]] call _startsWithMultipleInv) then { abort_loading = true };
+if ( !GRLIB_R3F_enabled && ["R3F_", [GRLIB_mod_west, GRLIB_mod_east]] call _startsWithMultipleInv) then { abort_loading = true };
+if ( !GRLIB_RHS_enabled && ["RHS_", [GRLIB_mod_west, GRLIB_mod_east]] call _startsWithMultipleInv) then { abort_loading = true };
+if ( !GRLIB_GM_enabled && ["GM_", [GRLIB_mod_west, GRLIB_mod_east]] call _startsWithMultipleInv) then { abort_loading = true };
+if ( !GRLIB_OPTRE_enabled && ["OPTRE", [GRLIB_mod_west, GRLIB_mod_east]] call _startsWithMultipleInv) then { abort_loading = true };
+if ( !GRLIB_WS_enabled && ["WS_", [GRLIB_mod_west, GRLIB_mod_east]] call _startsWithMultipleInv) then { abort_loading = true };
+if ( !GRLIB_SOG_enabled && ["SOG_", [GRLIB_mod_west, GRLIB_mod_east]] call _startsWithMultipleInv) then { abort_loading = true };
+if ( !GRLIB_CWR_enabled && ["CWR3_", [GRLIB_mod_west, GRLIB_mod_east]] call _startsWithMultipleInv) then { abort_loading = true };
+if ( !GRLIB_3CB_enabled && ["3CB", [GRLIB_mod_west, GRLIB_mod_east]] call _startsWithMultipleInv) then { abort_loading = true };
+if ( !GRLIB_UNS_enabled && ["UNS_", [GRLIB_mod_west, GRLIB_mod_east]] call _startsWithMultipleInv) then { abort_loading = true };
+if ( !GRLIB_IFA_enabled && ["IFA_", [GRLIB_mod_west, GRLIB_mod_east]] call _startsWithMultipleInv) then { abort_loading = true };
 
 if (abort_loading) exitWith { abort_loading_msg = format [
 	"********************************\n

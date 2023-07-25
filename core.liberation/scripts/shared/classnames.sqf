@@ -1,4 +1,5 @@
 // *** GLOBAL DEFINITIOON ***
+if (abort_loading) exitWith {};
 
 GRLIB_perm_hidden = 99999;
 markers_reset = [99999,99999,0];
