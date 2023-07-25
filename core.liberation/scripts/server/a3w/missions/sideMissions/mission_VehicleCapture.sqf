@@ -19,7 +19,7 @@ _setupObjects =
 {
 	_missionPos = (markerpos _missionLocation) getPos [100, random 360];
 	_vehiclePos = _missionPos findEmptyPosition [1, 60, "B_Heli_Transport_03_unarmed_F"];
-	_vehicle = [_vehiclePos, selectRandom opfor_vehicles, true, false, true] call F_libSpawnVehicle;
+	_vehicle = [_vehiclePos, selectRandom opfor_vehicles, true, false, GRLIB_side_civilian] call F_libSpawnVehicle;
 	_vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
 	[_vehicle, "lock"] call F_vehicleLock;
 	_vehicle setFuel 0.1;

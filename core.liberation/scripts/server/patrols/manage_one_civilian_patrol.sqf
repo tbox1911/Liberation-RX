@@ -31,7 +31,7 @@ while { GRLIB_endgame == 0 } do {
 
 			// 40% in vehicles
 			if ( floor(random 100) > 60 ) then {
-				_civ_veh = [markerPos _spawnsector, (selectRandom civilian_vehicles), false, false, true] call F_libSpawnVehicle;
+				_civ_veh = [markerPos _spawnsector, (selectRandom civilian_vehicles), false, false, GRLIB_side_civilian] call F_libSpawnVehicle;
 				_civ_unit moveInDriver _civ_veh;
 				_civ_unit assignAsDriver _civ_veh;
 				_civ_veh addEventHandler ["HandleDamage", {

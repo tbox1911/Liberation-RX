@@ -1,5 +1,7 @@
 params ["_box", "_unit"];
 
+// store player stuff in the box
+
 private _addContainerCargo = {
 	params ["_box", "_item"];
 	private _old_content = everyContainer _box;
@@ -12,7 +14,6 @@ private _addContainerCargo = {
 	((everyContainer _box) - _old_content) select 0 select 1; 
 };
 
-// store player stuff in the box
 // headgear
 _box addItemCargoGlobal [(headgear _unit), 1];
 

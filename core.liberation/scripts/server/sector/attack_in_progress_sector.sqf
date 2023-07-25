@@ -38,9 +38,9 @@ if ( GRLIB_blufor_defenders && !_defenders_cooldown) then {
 	} foreach (units _grp);
 
 	if (_sector in sectors_military) then {
-		private _vehicleClass = heavy_vehicles select { (_x select 0) isKindOf "Wheeled_APC_F" };
+		private _vehicleClass = selectRandom (heavy_vehicles select {(_x select 0) isKindOf "Wheeled_APC_F"}) select 0;
 		private _vehiclePos = _sector_pos findEmptyPosition [5, 120, "B_Heli_Transport_03_unarmed_F"];
-		_vehicle = [_vehiclePos, (selectRandom _vehicleClass) select 0] call F_libSpawnVehicle;
+		_vehicle = [_vehiclePos, _vehicleClass, false, false, GRLIB_side_friendly] call F_libSpawnVehicle;
 		_vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
 	};
 	(crew _vehicle) joinSilent _grp;

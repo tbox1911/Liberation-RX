@@ -3,7 +3,7 @@ params [
 	"_classname",
 	["_precise_position", false],
 	["_random_rotate", false],
-	["_civilian", false]
+	["_side", GRLIB_side_enemy]
 ];
 
 diag_log format [ "Spawn vehicle %1 at %2", _classname , time ];
@@ -33,14 +33,14 @@ if ( count _spawnpos == 0 ) then {
 if ( count _spawnpos == 0 ) exitWith { diag_log format ["--- LRX Error: No place to build vehicle %1 at position %2", _classname, _sectorpos]; objNull };
 
 if ( _classname isKindOf "Air" ) then {
-	if ( _civilian ) then { _airveh_alt = 200 };
+	if ( _side == GRLIB_side_civilian ) then { _airveh_alt = 200 };
 	_spawnpos set [2, _airveh_alt];
 	_vehicle = createVehicle [_classname, _spawnpos, [], 0, "FLY"];
 } else {
 	_spawnpos set [2, 0.5];
 	if (surfaceIsWater _spawnpos && !(_classname isKindOf "Ship")) then {
 		_classname = selectRandom opfor_boats;
-		if ( _civilian ) then {
+		if ( _side == GRLIB_side_civilian ) then {
 			_classname = selectRandom civilian_boats;
 		};
 	};
@@ -68,12 +68,12 @@ if ( _vehicle isKindOf "LandVehicle" ) then {
 	};
 };
 
-if ( !_civilian ) then {
-	if ( _classname in militia_vehicles ) then {
-		[_vehicle] call F_libSpawnMilitiaCrew;
+if ( _side != GRLIB_side_civilian ) then {
+	if ( _side == GRLIB_side_friendly ) then {
+		[_vehicle] call F_forceBluforCrew;
 	} else {
-		if ( _classname in all_firendly_classnames ) then {
-			[_vehicle] call F_forceBluforCrew;
+		if ( _classname in militia_vehicles ) then {
+			[_vehicle] call F_libSpawnMilitiaCrew;
 		} else {
 			[_vehicle] call F_forceOpforCrew;
 		};
@@ -122,7 +122,7 @@ clearMagazineCargoGlobal _vehicle;
 clearItemCargoGlobal _vehicle;
 clearBackpackCargoGlobal _vehicle;
 
-if ( _civilian ) then { _vehicle allowDamage true };
+if ( _side == GRLIB_side_civilian ) then { _vehicle allowDamage true };
 
 diag_log format [ "Done Spawning vehicle %1 at %2", _classname , time ];
 
