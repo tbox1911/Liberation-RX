@@ -73,12 +73,14 @@ if ( GRLIB_param_wipe_savegame_1 == 1 && GRLIB_param_wipe_savegame_2 == 1 ) then
 		} foreach (profileNamespace getVariable GRLIB_save_key select 15);
 		GRLIB_player_scores = _keep_players;
 	};
+	diag_log format ["--- LRX Savegame %1 Erased!", GRLIB_save_key] ;
 	profileNamespace setVariable [ GRLIB_save_key, nil ];
 	saveProfileNamespace;
+	sleep 1;
 };
 
 // Load Savegame
-private _lrx_liberation_savegame = profileNamespace getVariable GRLIB_save_key;
+private _lrx_liberation_savegame = profileNamespace getVariable [GRLIB_save_key, nil];
 private _side_west = "";
 private _side_east = "";
 private _buildings_created = [];
