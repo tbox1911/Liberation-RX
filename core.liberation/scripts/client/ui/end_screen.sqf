@@ -3,7 +3,7 @@ if (isDedicated) exitWith {};
 
 sleep 5;
 ["<t size = '2.5'>" + localize "STR_VICTORY_TITLE" + "</t>", 0, 0, 15, 0, 0, 90] spawn BIS_fnc_dynamicText;
-playSound3D ["\A3\Sounds_F\environment\structures\church\worship.wss",player,false,getPosASL player,1.5, 1, 0, 0,true];
+playSound "worship";
 sleep 20;
 
 if ( isNil "cinematic_camera_started" ) then { cinematic_camera_started = false };
@@ -21,7 +21,7 @@ if (alive player && isNull objectParent player && lifestate player != "INCAPACIT
 	player switchCamera "EXTERNAL";
 	player switchMove "";
 	player playMoveNow "acts_briefing_sb_in";
-	uiSleep 12;
+	uiSleep 14;
 };
 
 [] spawn cinematic_camera;
