@@ -4,8 +4,8 @@ GRLIB_west_modder = "pSiKO";
 
 // Default classname: scripts\shared\default_classnames.sqf
 // Advanced definition: scripts\shared\classnames.sqf
-
-huron_typename = "CUP_B_Merlin_HC3_GB";  // // to use value from lobby/server.cfg
+FOB_truck_typename = "CUP_I_Ural_Repair_UN";  // or "CUP_B_Ural_Repair_CDF"
+huron_typename = "CUP_B_Merlin_HC3_GB";
 Respawn_truck_typename = "CUP_B_LR_Ambulance_GB_D";
 ammo_truck_typename = "CUP_B_MTVR_Ammo_BAF_DES";
 fuel_truck_typename = "CUP_B_MTVR_Refuel_BAF_DES";
@@ -15,7 +15,8 @@ crewman_classname = "CUP_B_BAF_Soldier_Crew_DDPM";
 basic_weapon_typename = "CUP_LocalBasicWeaponsBox";
 
 chimera_vehicle_overide = [
-  ["B_Heli_Transport_01_F", "CUP_B_AW159_Unarmed_RN_Blackcat"]
+  ["B_Heli_Transport_01_F", "CUP_B_AW159_Unarmed_RN_Blackcat"],
+  ["B_MRAP_01_F", "CUP_B_LR_Transport_GB_D"]
 ];
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
