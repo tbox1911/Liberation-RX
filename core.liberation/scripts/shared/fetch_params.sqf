@@ -57,6 +57,10 @@ if (GRLIB_param_wipe_params == 1 && isServer) then {
 	profileNamespace setVariable [GRLIB_params_save_key, LRX_Mission_Params]; 
 };
 
+if (GRLIB_param_wipe_params == 1 && !isDedicated && hasInterface) then { 
+	profileNamespace setVariable ["GREUH_OPTIONS_PROFILE", nil];
+};
+
 // Load Mission Parameters
 if (isServer) then {
 	GRLIB_LRX_params = profileNamespace getVariable [GRLIB_params_save_key, nil];
