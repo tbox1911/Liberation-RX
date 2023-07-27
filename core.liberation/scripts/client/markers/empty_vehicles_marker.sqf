@@ -4,20 +4,21 @@ private _veh_list = [];
 private _vehmarkers = [];
 private _vehmarkers_bak = [];
 
+waitUntil {sleep 1; !isNil "GRLIB_init_server"};
+waitUntil {sleep 1; !isNil "GRLIB_mobile_respawn"};
+
 private _no_marker_classnames = [
 	Respawn_truck_typename,
 	huron_typename,
 	playerbox_typename,
 	GRLIB_player_gravebox,
+	GRLIB_sar_wreck,
 	"Kart_01_Base_F",
 	"Land_CashDesk_F",
 	"Land_PortableDesk_01_black_F",
 	"Land_HumanSkull_F",
 	"Land_HumanSkeleton_F"
 ] + GRLIB_ide_traps + GRLIB_intel_items + all_buildings_classnames;
-
-waitUntil {sleep 1; !isNil "GRLIB_init_server"};
-waitUntil {sleep 1; !isNil "GRLIB_mobile_respawn"};
 
 while { true } do {
 	_veh_list = [vehicles, {
