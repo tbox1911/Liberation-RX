@@ -1,4 +1,4 @@
-params ["_fob"];
+params ["_fob", "_owner"];
 
 _fob addEventHandler ["HandleDamage", {0}];
 _fob allowDamage false;
@@ -21,7 +21,7 @@ if (_fob_class == FOB_outpost ) then {
 };
 
 _sign setObjectTextureGlobal [0, getMissionPath "res\splash_libe2.paa"];
-_sign setVariable ["GRLIB_vehicle_owner", getPlayerUID player, true];
+_sign setVariable ["GRLIB_vehicle_owner", _owner, true];
 if (count GRLIB_all_fobs == 0) then {
 	_sign setVariable ["GRLIB_vehicle_owner", "public", true];
 };

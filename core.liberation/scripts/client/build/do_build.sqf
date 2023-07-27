@@ -508,7 +508,7 @@ while { true } do {
 			// FOB
 			if(buildtype == 99) then {
 				playsound "Land_Carrier_01_blast_deflector_up_sound";
-				[_vehicle] remoteExec ["build_fob_remote_call", 2];
+				[_vehicle, getPlayerUID player] remoteExec ["build_fob_remote_call", 2];
 				_allow_damage = false;
 			};
 

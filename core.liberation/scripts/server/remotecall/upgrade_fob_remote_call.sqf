@@ -1,7 +1,7 @@
 if (!isServer && hasInterface) exitWith {};
-params [ "_fob" ];
+params ["_fob", "_owner"];
 
-[_fob] call fob_init;
+[_fob, _owner] call fob_init;
 
 private _fob_pos = getPosATL _fob;
 GRLIB_all_outposts = GRLIB_all_outposts - [_fob_pos];

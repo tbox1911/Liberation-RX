@@ -25,6 +25,6 @@ private _fob_dir = (_outpost_dir - 180);
 _fob setVectorDirAndUp [[sin _fob_dir, cos _fob_dir, 0], [0, 0, 1]];
 playsound "Land_Carrier_01_blast_deflector_up_sound";
 
-[_fob] remoteExec ["upgrade_fob_remote_call", 2];
+[_fob, getPlayerUID player] remoteExec ["upgrade_fob_remote_call", 2];
 
 hintSilent format ["%1 %2 "+ localize "STR_UPGRADE_OUTPOST_HINT", "Outpost", _fob_name];
