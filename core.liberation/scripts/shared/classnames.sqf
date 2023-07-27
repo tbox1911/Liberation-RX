@@ -481,6 +481,8 @@ opfor_squad_8_airkillers = [
 	opfor_rpg,
 	opfor_aa,
 	opfor_aa,
+	opfor_aa,	
+	opfor_aa,
 	opfor_aa,
 	opfor_aa
 ];
