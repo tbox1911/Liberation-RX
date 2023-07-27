@@ -110,17 +110,25 @@ player createDiaryRecord ["Ranking", ["Ranking", format ["<font color='#0000ff'>
 player createDiaryRecord ["Ranking", ["Ranking", format ["-= How Work the Ranking System =-"]]];
 
 player createDiarySubject["Table","Table"];
+player createDiaryRecord ["Table", ["Table", format ["<br>note: XP points may vary depending on the nature or rank of the targets."]]];
+player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'>-50</font> pts  :  Killing Friendly Vehicles"]]];
+player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'>-20</font> pts  :  Killing Friendly Units"]]];
 player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'>-20</font> pts  :  Killing Prisoners"]]];
-player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'>-20</font> pts  :  Killing Civilians"]]];
-player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'>-10</font> pts  :  Team Kill"]]];
+player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'>-10</font> pts  :  Killing Civilians"]]];
+player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'> -5</font> pts  :  Eject Civilian from Vehicle"]]];
 player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'> -5</font> pts  :  Firendly Fires"]]];
-player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'> -5</font> pts  :  Respawn when Major and above"]]];
-player createDiaryRecord ["Table", ["Table", format ["<font color='#00ff40'>+10</font> pts  :  Recycle AmmoBox (when rank below Corporal)"]]];
+player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'> -5</font> pts  :  Respawn (Sergeant and above)"]]];
+player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'> -1</font> pts  :  Wounded (Sergeant and above)"]]];
+
+player createDiaryRecord ["Table", ["Table", format ["<font color='#00ff40'>+50</font> pts  :  Recycle AAF AmmoBox (rank below Sergeant)"]]];
+player createDiaryRecord ["Table", ["Table", format ["<font color='#00ff40'>+10</font> pts  :  Recycle any AmmoBox (rank below Captain)"]]];
+player createDiaryRecord ["Table", ["Table", format ["<font color='#00ff40'>+15</font> pts  :  Find Intels or Search Traps"]]];
 player createDiaryRecord ["Table", ["Table", format ["<font color='#00ff40'>+10</font> pts  :  Bring Prisoners or V.I.P at HQ"]]];
 player createDiaryRecord ["Table", ["Table", format ["<font color='#00ff40'>+20</font> pts  :  Defend Attacked Sector"]]];
+player createDiaryRecord ["Table", ["Table", format ["<font color='#00ff40'>+10</font> pts  :  Kill a Kamikaze"]]];
 player createDiaryRecord ["Table", ["Table", format ["<font color='#00ff40'> +5</font> pts  :  Salvage Wrecks"]]];
 player createDiaryRecord ["Table", ["Table", format ["<font color='#00ff40'> +5</font> pts  :  Revive other players (near combat)"]]];
-player createDiaryRecord ["Table", ["Table", format ["<font color='#00ff40'> +4</font> pts  :  Kill enemy vehicle"]]];
+player createDiaryRecord ["Table", ["Table", format ["<font color='#00ff40'> +5</font> pts  :  Kill enemy vehicle"]]];
 player createDiaryRecord ["Table", ["Table", format ["<font color='#00ff40'> +1</font> pts  :  Kill enemy infantry"]]];
 player createDiaryRecord ["Table", ["Table", format ["-= Killing Table =-"]]];
 
