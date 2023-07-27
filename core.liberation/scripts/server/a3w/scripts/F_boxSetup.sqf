@@ -11,7 +11,7 @@ while { count _spawnpos == 0 && _max_try > 0 } do {
 	_spawnpos = [1, _pos, _radius, 30, true] call R3F_LOG_FNCT_3D_tirer_position_degagee_sol;
 	_radius = _radius + 10;
 	_max_try = _max_try -1;
-	sleep 1;
+	sleep 0.5;
 };
 
 if ( count _spawnpos == 0 ) then {
@@ -23,10 +23,8 @@ _spawnpos set [2, 0.5];
 
 private _box = createVehicle [_type, _spawnpos, [], 5, "None"];
 _box allowDamage false;
-_box setDir random 360;
 _box addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-sleep 1;
-_box allowDamage true;
+_box spawn { sleep 3; _this allowDamage true };
 
 if (isNil "_locked") then { _locked = false};
 
