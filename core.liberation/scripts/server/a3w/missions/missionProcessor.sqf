@@ -9,14 +9,23 @@ if (!isServer) exitwith {};
 
 #define MISSION_TIMER_EXTENSION (20*60)
 
-private ["_controllerSuffix", "_missionTimeout", "_availableLocations", "_missionLocation", "_leader", "_marker", "_failed", "_complete", "_startTime", "_oldAiCount", "_leaderTemp", "_newAiCount", "_adjustTime", "_lastPos", "_floorHeight"];
+private [
+	"_controllerSuffix", "_missionTimeout", "_availableLocations", "_missionLocation", "_leader", 
+	"_marker", "_marker_zone",
+	"_failed", "_complete", "_startTime", "_oldAiCount", "_leaderTemp", 
+	"_newAiCount", "_adjustTime", "_lastPos", "_floorHeight"
+];
 
 // Variables that can be defined in the mission script :
-private ["_missionType", "_locationsArray", "_aiGroup", "_vehicle", "_vehicles", "_missionPos", "_missionPicture", "_missionHintText", "_successHintMessage", "_failedHintMessage"];
+private [
+	"_missionType", "_locationsArray", "_aiGroup", "_vehicle", "_vehicles",
+	"_missionPos", "_precise_marker", "_missionPicture", "_missionHintText",
+	"_successHintMessage", "_failedHintMessage"
+];
 
 _controllerSuffix = param [0, "", [""]];
 _aiGroup = grpNull;
-
+_precise_marker = true;
 if (!isNil "_setupVars") then { call _setupVars };
 
 _missionTimeout = A3W_Mission_timeout;
@@ -43,7 +52,7 @@ diag_log format ["A3W Side Mission% started: %2", _controllerSuffix, localize _m
 
 sleep 5;
 _leader = leader _aiGroup;
-_marker = [localize _missionType, _missionPos] call createMissionMarker;
+([localize _missionType, _missionPos, _precise_marker] call createMissionMarker) params ["_marker", "_marker_zone"];
 _aiGroup setVariable ["A3W_missionMarkerName", _marker, true];
 
 if (isNil "_missionPicture") then { _missionPicture = "" };
@@ -163,7 +172,7 @@ if (_failed) then {
 
 deleteGroup _aiGroup;
 deleteMarker _marker;
-
+deleteMarker _marker_zone;
 if (!isNil "_locationsArray") then {
 	[_locationsArray, _missionLocation, false] call setLocationState;
 };

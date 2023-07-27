@@ -12,6 +12,7 @@ _setupVars =
 {
 	_missionType = "STR_ROADBLOCK";
 	_locationsArray = nil;
+	_precise_marker = false;
 	GRLIB_A3W_Mission_BR = (10 * 60);
 };
 
@@ -19,7 +20,8 @@ _setupObjects =
 {
 	// find a pos near a road, between opfor sector and blufor
 	_missionPos = [];
-	private _opfor_sectors = (sectors_allSectors - blufor_sectors);
+	//private _sectors = (sectors_allSectors - blufor_sectors);
+	private _sectors = sectors_allSectors;
 	{
 		_sector_pos = markerpos _x;
 		_info = [_sector_pos, false] call F_getNearestBluforObjective;
@@ -50,7 +52,7 @@ _setupObjects =
 			};
 		};
 		if (_found) exitWith { _missionPos };
-	} foreach (_opfor_sectors call BIS_fnc_arrayShuffle);
+	} foreach (_sectors call BIS_fnc_arrayShuffle);
 
 	if (count _missionPos == 0) exitWith { false };		// no location found
 

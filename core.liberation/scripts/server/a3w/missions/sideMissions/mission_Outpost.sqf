@@ -12,6 +12,7 @@ private ["_grpdefenders", "_grpsentry", "_grpprisonners"];
 _setupVars = {
 	_missionType = "STR_OUTPOST";
 	_locationsArray = [SpawnMissionMarkers] call checkSpawn;
+	_precise_marker = false;
 };
 
 _setupObjects = {

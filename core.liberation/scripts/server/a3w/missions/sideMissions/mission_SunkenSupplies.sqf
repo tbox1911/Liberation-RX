@@ -13,6 +13,7 @@ _setupVars =
 	_missionType = "STR_SUNKEN";
 	_locationsArray = [SunkenMissionMarkers] call checkSpawn;
 	_nbUnits = [] call getNbUnits;
+	_precise_marker = false;
 };
 
 _setupObjects =
