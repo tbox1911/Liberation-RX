@@ -140,7 +140,7 @@ if ( isServer ) then {
 				};
 				if ( side (group _unit) == GRLIB_side_friendly ) then {
 					stats_blufor_teamkills = stats_blufor_teamkills + 1;
-					[_killer, -10] call F_addScore;
+					[_killer, -20] call F_addScore;
 					_msg = localize "STR_FRIENDLY_FIRE";
 					[gamelogic, _msg] remoteExec ["globalChat", 0];
 				};
