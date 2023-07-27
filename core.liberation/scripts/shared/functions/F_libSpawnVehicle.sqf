@@ -71,12 +71,14 @@ if ( _vehicle isKindOf "LandVehicle" ) then {
 if ( _side != GRLIB_side_civilian ) then {
 	if ( _side == GRLIB_side_friendly ) then {
 		[_vehicle] call F_forceBluforCrew;
+		_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
 	} else {
 		if ( _classname in militia_vehicles ) then {
 			[_vehicle] call F_libSpawnMilitiaCrew;
 		} else {
 			[_vehicle] call F_forceOpforCrew;
 		};
+		_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
 	};
 		
 	_vehcrew = crew _vehicle;
