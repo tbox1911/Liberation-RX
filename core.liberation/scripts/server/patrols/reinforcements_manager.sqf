@@ -17,11 +17,13 @@ if ( _targetsector in active_sectors ) then {
 			diag_log format ["Spawn Patrol on Sector %1 at %2", _targetsector, time];
 			[_targetsector, 1] spawn patrol_manager;
 			stats_reinforcements_called = stats_reinforcements_called + 1;
+		
 			if (_targetsector in sectors_bigtown) then {
 				sleep (60 + floor(random 60));
 				diag_log format ["Spawn Armored on Sector %1 at %2", _targetsector, time];
 				[_targetsector, 2] spawn patrol_manager;
 			};
+
 			if ( _targetsector in (sectors_tower + sectors_military)) then {
 				[_targetsector, 2] spawn static_manager;
 			};
@@ -36,6 +38,10 @@ if ( _targetsector in active_sectors ) then {
 			[ _targetsector_pos ] spawn send_paratroopers;
 			stats_reinforcements_called = stats_reinforcements_called + 1;
 		};
+	};
+
+	if ( combat_readiness >= 70 && air_weight >= 60 ) then {
+		[_targetsector_pos, GRLIB_side_enemy, 4] spawn spawn_air;
 	};
 } else {
 	// after attack

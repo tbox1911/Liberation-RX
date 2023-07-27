@@ -32,7 +32,7 @@ while { GRLIB_endgame == 0 } do {
 
 			waitUntil {sleep 2; isNull objectParent _target_player};
 			diag_log format [ "Spawn Attack on player %1 at %2", name _target_player, time ];
-			[getPosATL _target_player, GRLIB_side_enemy] spawn spawn_air;
+			[getPosATL _target_player, GRLIB_side_enemy, 3] spawn spawn_air;
 			sleep 10;
 			[getPosATL _target_player] spawn send_paratroopers;
 		};

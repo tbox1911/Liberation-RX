@@ -57,7 +57,7 @@ if (_spawn_marker != "") then {
 	sleep 5;
 	if ( GRLIB_csat_aggressivity > 0.7 ) then {
 		if (floor random 2 == 0) then {
-			[_objectivepos, GRLIB_side_enemy] spawn spawn_air;
+			[_objectivepos, GRLIB_side_enemy, 4] spawn spawn_air;
 		} else {
 			[_objectivepos] spawn send_paratroopers;
 		};

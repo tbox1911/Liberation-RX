@@ -2,7 +2,7 @@ if (!isServer && hasInterface) exitWith {};
 params ["_unit"];
 
 _targetsector = [sectors_allSectors, _unit] call F_nearestPosition;
-[getMarkerPos _targetsector, GRLIB_side_friendly] spawn spawn_air;
+[getMarkerPos _targetsector, GRLIB_side_friendly, 6] spawn spawn_air;
 
 _msg = format ["Commander <t color='#00008f'>%1</t>, ask for<br/><br/>
 <t color='#0000F0'>Air</t> <t color='#F00000'>Suppremacy</t><br/><br/>
