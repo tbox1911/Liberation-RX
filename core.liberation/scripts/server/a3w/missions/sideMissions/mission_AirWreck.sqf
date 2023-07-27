@@ -18,9 +18,10 @@ _setupVars =
 
 _setupObjects =
 {
-	_missionPos = (markerpos _missionLocation) getPos [100, random 360];
+	_missionPos = (markerpos _missionLocation) getPos [150, random 360];
 	_wreckPos = _missionPos getPos [20, random 360];
 	_vehicle = createVehicle [GRLIB_sar_wreck, _wreckPos, [], 0, "NONE"];
+	_vehicle allowDamage false;
 	_vehicle setpos (getpos _vehicle);
 	_box1 = [ammobox_b_typename, _missionPos, true] call boxSetup;
 	_box2 = [ammobox_b_typename, _missionPos, true] call boxSetup;
