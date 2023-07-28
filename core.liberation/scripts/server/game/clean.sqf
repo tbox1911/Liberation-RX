@@ -142,7 +142,7 @@ while {deleteManagerPublic} do {
 		{
 			private _ttl = _x getVariable "GRLIB_counter_TTL";
 			if ([_x,_deadMenDist,(playableUnits + switchableUnits)] call _isHidden && time > _ttl ) then {
-				if (_x isKindOf "Man") then {
+				if (_x isKindOf "CAManBase") then {
 					deleteVehicle _x;
 				} else {
 					[_x] call clean_vehicle;
