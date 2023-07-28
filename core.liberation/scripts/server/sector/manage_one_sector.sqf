@@ -223,7 +223,6 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 
 			active_sectors = active_sectors - [ _sector ];
 			publicVariable "active_sectors";
-			{ _x setVariable ["GRLIB_counter_TTL", 0] } foreach _managed_units;
 			[ _sector ] spawn reinforcements_manager;
 		} else {
 			if ( ([_sectorpos, (GRLIB_sector_size + 300), GRLIB_side_friendly] call F_getUnitsCount) == 0 ) then {
@@ -233,9 +232,8 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 			};
 
 			if ( _sector_despawn_tickets <= 0 ) then {
-				//{ deleteVehicle _x } foreach _managed_units;
 				{
-					if (_x isKindOf "Man") then {
+					if (_x isKindOf "CAManBase") then {
 						deleteVehicle _x;
 					} else {
 						if (count(crew _x) > 0) then { deleteVehicle _x	};
