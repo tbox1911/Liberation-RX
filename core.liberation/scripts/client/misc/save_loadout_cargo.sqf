@@ -18,7 +18,7 @@ private _addContainerCargo = {
 _box addItemCargoGlobal [(headgear _unit), 1];
 
 // items
-{_box addItemCargoGlobal [_x, 1]} forEach (assignedItems _unit - [binocular _unit]);
+//{_box addItemCargoGlobal [_x, 1]} forEach (assignedItems _unit - [binocular _unit]);
 
 // uniform
 if (uniform _unit != "" && isPlayer _unit) then {
