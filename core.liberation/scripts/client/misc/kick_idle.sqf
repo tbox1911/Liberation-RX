@@ -1,4 +1,5 @@
 private ["_timer", "_last_pos", "_last_time"];
+sleep 300;
 
 while { hasInterface } do {
     _last_pos = getPosATL player;
