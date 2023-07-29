@@ -136,6 +136,7 @@ GRLIB_cleanup_vehicles = ["CleanupVehicles",1800] call _lrx_getParamValue;
 GRLIB_autosave_timer = ["AutoSave",1800] call _lrx_getParamValue;
 GRLIB_param_wipe_keepscore = ["KeepScore",0] call _lrx_getParamValue;
 GRLIB_respawn_cooldown = ["RespawnCD",0] call _lrx_getParamValue;
+GRLIB_kick_idle = ["KickIdle",0] call _lrx_getParamValue;
 GRLIB_server_persistent = ["Persistent",0] call _lrx_getParamValue;
 
 // Hardcoded

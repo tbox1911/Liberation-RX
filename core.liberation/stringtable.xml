@@ -1879,7 +1879,7 @@
 		<Key ID="STR_PARAMS_USER_DEF">
 			<Original>User defined</Original>
 			<French>Défini par l'utilisateur</French>
-		</Key>				
+		</Key>
 		<Key ID="STR_PARAMS_FIRSTFOB">
 			<Original>Start the campaign with the first FOB already built</Original>
 			<French>Commencer la campagne avec une FOB déjà construite</French>
@@ -2119,7 +2119,7 @@
 		</Key>
 		<Key ID="STR_PARAM_PASSIVE_INCOME_AMMOUNT">
 			<Original>Passive Income Ammount</Original>
-		</Key>		
+		</Key>
 		<Key ID="STR_BUILD1">
 			<Original>Infantry units</Original>
 			<French>Unités d'infanterie</French>
@@ -3089,7 +3089,7 @@
 			<Chinese>20分钟间隔</Chinese>
 			<Portuguese>20 minutos de atraso</Portuguese>
 			<Czech>za 20 minut Vymazat</Czech>
-		</Key>		
+		</Key>
 		<Key ID="STR_CLEANUP_PARAM3">
 			<Original>30 minutes delay</Original>
 			<French> 30 minutes de délai</French>
@@ -5513,17 +5513,17 @@
 		</Key>
 		<Key ID="STR_GUI_PLATOON">
 			<Original>UI - Show Platoon Overlay</Original>
-		</Key>			
+		</Key>
 		<Key ID="STR_GUI_NAMETAG">
-			<Original>UI - Show player name tags</Original>		
+			<Original>UI - Show player name tags</Original>
 		</Key>
 		<Key ID="STR_GUI_TEAM">
-			<Original>UI - Show team mates on map</Original>		
+			<Original>UI - Show team mates on map</Original>
 		</Key>
 		<Key ID="STR_PERSISTENT_MODE">
 			<Original>Server in Persistent Mode</Original>
 			<French>Serveur en Mode Persistant.</French>
-		</Key>	
+		</Key>
 		<Key ID="STR_KEEP_SCORE">
 			<Original>Keep Players score on map restart</Original>
 			<French>Garder le score du joueurs au redemarage de la Map</French>
@@ -5531,6 +5531,14 @@
 		<Key ID="STR_RESPAWN_CD">
 			<Original>Add a cooldown if the player respawn too fast</Original>
 			<French>Ajoute une attente si le joueur respawn trop rapidement</French>
+		</Key>
+		<Key ID="STR_KICK_IDLE">
+			<Original>Kick player if idle for too long</Original>
+			<French>Eject le joueur si inactif trop longtemps</French>
+		</Key>
+		<Key ID="STR_KICK_IDLE_MSG">
+			<Original>You are idle since %1min, you must move before %2min or you'll be kicked.</Original>
+			<French>Vous êtes inactif depuis %1min, vous devez vous déplacer avant %2min ou vous serez expulsé.</French>
 		</Key>
 		<Key ID="STR_OPFORMARK">
 			<Original>Dynamic Opfor sector markers</Original>
@@ -5545,7 +5553,7 @@
 		<Key ID="STR_BLUFORMARK">
 			<Original>Show BLUFOR markers</Original>
 			<French>Affiche les marqueurs BLUFOR</French>
-		</Key>		
+		</Key>
 		<Key ID="STR_ARSENAL">
 			<Original>Enable Virtual Arsenal</Original>
 			<Russian>Включить Виртуальный Арсенал</Russian>
@@ -6009,15 +6017,15 @@
 			<Portuguese>-- REMOVER O CORPO</Portuguese>
 			<Czech>-- ODSTRAŇTE TĚLO</Czech>
 		</Key>
-		<Key ID="STR_LOOT_BODY">	
+		<Key ID="STR_LOOT_BODY">
 			<Original>-- LOOT BODY</Original>
 			<French>-- LOOTER CORPS</French>
 		</Key>
-		<Key ID="STR_LOADOUT_CARGO_STORED">	
+		<Key ID="STR_LOADOUT_CARGO_STORED">
 			<Original>%1's gear stored in %2.</Original>
 			<French>Équipement de %1 rangé dans %2.</French>
 		</Key>
-		<Key ID="STR_LOADOUT_NOCARGO">	
+		<Key ID="STR_LOADOUT_NOCARGO">
 			<Original>No empty vehicle nearby.</Original>
 			<French>Pas de véhicule vide à proximité.</French>
 		</Key>
@@ -6129,7 +6137,7 @@
 		<Key ID="STR_DOG_FOUND_MINE">
 			<Original>The dog found a mine here !!</Original>
 			<French>Le chien à trouvé une mine ici !! </French>
-		</Key>		
+		</Key>
 		<!-- do_eject.sqf -->
 		<Key ID="STR_DO_EJECT">
 			<Original>Warning !!\n -5 pts Malus for Ejecting Civilian.</Original>
@@ -6269,7 +6277,7 @@
 		<!-- do_sell.sqf -->
 		<Key ID="STR_SELL_WELCOME_FOB">
 			<Original>Hello solider, The army can recycle your vehicle's cargo!</Original>
-		</Key>		
+		</Key>
 		<Key ID="STR_SELL_WELCOME">
 			<Original>Hello stranger, I buy your vehicle's cargo for a good price!</Original>
 			<Russian>Привет незнакомец, я куплю груз из вашего транспорта по хорошей цене!</Russian>
@@ -8397,7 +8405,7 @@
 		</Key>
 		<Key ID="STR_VAM_FREE_VEHICLE">
 			<Original>Free Space :</Original>
-		</Key>		
+		</Key>
 		<Key ID="STR_VAM_FOB_CONDITION_CHECK_FAILED">
 			<Original>You should be in %1m from FOB.</Original>
 			<Russian>Вы должны быть в %1м от FOB.</Russian>
@@ -8436,13 +8444,13 @@
 		</Key>
 		<Key ID="STR_VAM_NO_ARSENAL">
 			<Original>There is no items.</Original>
-		</Key>		
+		</Key>
 		<Key ID="STR_VAM_ARSENAL">
 			<Original>Arsenal Items</Original>
-		</Key>		
+		</Key>
 		<Key ID="STR_VAM_ARSENAL_VEHICLE">
 			<Original>Put to Cargo</Original>
-		</Key>		
+		</Key>
 		<Key ID="STR_VAM_MARID_V1_NOTICE">
 			<Original>Your Marid is outdated one.\nVehicle component setup may not be loaded next time.\nPlease contact with your server admin.</Original>
 			<Russian>Ваш Marid устарел.\nНастройка компонентов автомобиля может не загрузиться в следующий раз.\nПожалуйста, свяжитесь с администратором вашего сервера.</Russian>

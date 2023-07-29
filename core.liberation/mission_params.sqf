@@ -73,7 +73,8 @@ LRX_Mission_Params = [
 	["DeathChat", 0],				// Disable chat/voice if wounded  [default 0] - values = [1,0] - Text {Enabled,Disabled}
 	["FancyInfo", 1],				// Enable colorfull, fancy Informations [default 2] - values = [2,1,0] - Text {Enabled,Info,Disabled}
 	["KeepScore", 0],				// Keep the Players datas (score/permissions) - [default 0] - values = [0,1] - Text {Disabled,Enabled}
-	["RespawnCD", 0],				// Enable Cooldown if player respawn too fast - [default 0] - values = [0,1] - Text {Disabled,Enabled}
+	["RespawnCD", 0],				// Cooldown if player respawn too fast - [default 0] - values = [0,1] - Text {Disabled,Enabled}
+	["KickIdle", 0],				// Kick player if idle too long - [default 0] - values = {0,900,1200,1800,3600,7200}
 	["Persistent", 0]				// Server start with Persistent Mode - [default 0] - values = [0,1] - Text {Disabled,Enabled}
 ];
 
@@ -219,6 +220,17 @@ LRX_Mission_Params_Def = [
 	["PassiveIncomeAmmount", localize "STR_PARAM_PASSIVE_INCOME_AMMOUNT",
 		["100", "200", "300", "400", "500", "1000", "1500"],
 		[100, 200, 300, 400, 500, 1000, 1500]
+	],
+
+	["KickIdle", localize "STR_KICK_IDLE", [
+		localize "STR_PARAMS_DISABLED",
+		localize "STR_CLEANUP_PARAM1",
+		localize "STR_CLEANUP_PARAM2",
+		localize "STR_CLEANUP_PARAM3",
+		localize "STR_CLEANUP_PARAM4",
+		localize "STR_CLEANUP_PARAM5"		
+		],
+		[0, 900, 1200, 1800, 3600, 7200]
 	],
 
 	["FobType", localize "STR_PARAM_FOB_TYPE", ["Huron", "Truck"]],

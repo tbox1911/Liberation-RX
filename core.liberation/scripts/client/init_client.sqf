@@ -50,6 +50,10 @@ if (toLower _name in GRLIB_blacklisted_names || (_name == str parseNumber _name)
 	endMission "LOSER";
 };
 
+if (GRLIB_kick_idle > 0) then {
+	[] execVM "scripts\client\misc\kick_idle.sqf";
+};
+
 add_player_actions = compile preprocessFile "scripts\client\actions\add_player_actions.sqf";
 dog_bark = compileFinal preprocessFileLineNumbers "scripts\client\actions\dog_bark.sqf";
 respawn_lhd = compileFinal preprocessFileLineNumbers "scripts\client\spawn\respawn_lhd.sqf";
