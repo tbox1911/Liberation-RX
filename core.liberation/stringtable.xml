@@ -2103,8 +2103,8 @@
 			<Czech>Velikost sektoru (radius)</Czech>
 		</Key>
 		<Key ID="STR_PARAM_PASSIVE_INCOME">
-			<Original>Replace ammo boxes spawns with passive income</Original>
-			<French>Remplacer les caisses de munitions par un revenu passif</French>
+			<Original>Replace ammo boxes spawns with Passive Income</Original>
+			<French>Remplacer les caisses de munitions par un Revenu Passif</French>
 			<German>Ersetzt Munitionskisten durch passives Einkommen</German>
 			<Spanish>Reemplazar cajas de munición por ingresos pasivos</Spanish>
 			<Russian>Заменяет ящики с боеприпасами пассивным доходом</Russian>
@@ -2114,6 +2114,12 @@
 			<Portuguese>Substitua caixas de munição por renda passiva</Portuguese>
 			<Czech>Nahraďte spawny krabic s municí pasivním příjmem</Czech>
 		</Key>
+		<Key ID="STR_PARAM_PASSIVE_INCOME_DELAY">
+			<Original>Passive Income Delay</Original>
+		</Key>
+		<Key ID="STR_PARAM_PASSIVE_INCOME_AMMOUNT">
+			<Original>Passive Income Ammount</Original>
+		</Key>		
 		<Key ID="STR_BUILD1">
 			<Original>Infantry units</Original>
 			<French>Unités d'infanterie</French>
@@ -3077,6 +3083,14 @@
 			<Czech>za 15 minut Vymazat</Czech>
 		</Key>
 		<Key ID="STR_CLEANUP_PARAM2">
+			<Original>20 minutes delay</Original>
+			<French> 20 minutes de délai</French>
+			<Chinesesimp>20分钟间隔</Chinesesimp>
+			<Chinese>20分钟间隔</Chinese>
+			<Portuguese>20 minutos de atraso</Portuguese>
+			<Czech>za 20 minut Vymazat</Czech>
+		</Key>		
+		<Key ID="STR_CLEANUP_PARAM3">
 			<Original>30 minutes delay</Original>
 			<French> 30 minutes de délai</French>
 			<Chinesesimp>30分钟间隔</Chinesesimp>
@@ -3084,7 +3098,7 @@
 			<Portuguese>30 minutos de atraso</Portuguese>
 			<Czech>za 30 minut vymazat</Czech>
 		</Key>
-		<Key ID="STR_CLEANUP_PARAM3">
+		<Key ID="STR_CLEANUP_PARAM4">
 			<Original>1 hour delay</Original>
 			<French>1 heure de délai</French>
 			<Chinesesimp>1小时间隔</Chinesesimp>
@@ -3092,7 +3106,7 @@
 			<Portuguese>1 hora de atraso</Portuguese>
 			<Czech>za 1 hodinu vymazat</Czech>
 		</Key>
-		<Key ID="STR_CLEANUP_PARAM4">
+		<Key ID="STR_CLEANUP_PARAM5">
 			<Original>2 hours delay</Original>
 			<French>2 heures de délai</French>
 			<Chinesesimp>2小时间隔</Chinesesimp>

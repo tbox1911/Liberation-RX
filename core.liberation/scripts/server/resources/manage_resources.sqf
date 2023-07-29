@@ -9,7 +9,7 @@ GRLIB_WaterBarrel_cap = 9;
 GRLIB_FoodBarrel_cap = 6;
 
 while { GRLIB_endgame == 0 } do {
-	sleep 1200;
+	sleep GRLIB_passive_delay;
 
 	_active_players = count (AllPlayers - (entities "HeadlessClient_F"));
 	if ( _active_players > 0 ) then {
@@ -28,7 +28,7 @@ while { GRLIB_endgame == 0 } do {
 		if ( count _blufor_mil_sectors > 0 ) then {
 			if ( GRLIB_passive_income ) then {
 
-				private _income = (100 + floor(random 100));
+				private _income = (GRLIB_passive_ammount + floor(random 30));
 				{
 					[_x, _income, 0] call ammo_add_remote_call;
 				} forEach (AllPlayers - (entities "HeadlessClient_F"));
@@ -92,6 +92,5 @@ while { GRLIB_endgame == 0 } do {
 				};
 			};
 		};
-
 	};
 };

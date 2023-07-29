@@ -52,6 +52,8 @@ LRX_Mission_Params = [
 	["Civilians", 1],				// Cilivilian activity - [default 1] - values = [0,0.5,1,2] - Text {None,Reduced,Normal,Increased}
 	["Wildlife", 1],				// Wildlife Manager - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["PassiveIncome", 0],			// Replace ammo box spawns with passive income - [default 0] - values = [1,0] - Text {Enabled,Disabled}
+	["PassiveIncomeDelay", 1200],	// Passive Income Delay - values = {1200,1800,3600,7200,14400}
+	["PassiveIncomeAmmount", 300],	// Passive Income Ammount - values = {100,200,300,400,500,1000,1500}
 	["HaloJump", 1],				// HALO jump - [default 1] - values = [1,5,10,15,20,30,0] - Text {Enabled - no cooldown,Enabled - 5min cooldown,Enabled - 10min cooldown,Enabled - 15min cooldown,Enabled - 20min cooldown,Enabled - 30min cooldown,Disabled}
 	["BluforDefenders", 1],			// BLUFOR defenders in owned sectors - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["MaximumFobs", 5],				// Maximum number of FOBs allowed - [default 26] - values = [3,5,7,10,15,20,26] - Text {3,5,7,10,15,20,26}
@@ -189,19 +191,36 @@ LRX_Mission_Params_Def = [
 		localize "STR_CLEANUP_PARAM1",
 		localize "STR_CLEANUP_PARAM2",
 		localize "STR_CLEANUP_PARAM3",
-		localize "STR_CLEANUP_PARAM4"
+		localize "STR_CLEANUP_PARAM4",
+		localize "STR_CLEANUP_PARAM5"		
 		],
-		[0, 900, 1800, 3600, 7200]
+		[0, 900, 1200, 1800, 3600, 7200]
 	],
 	["AutoSave", localize "STR_AUTO_SAVE", [
 		localize "STR_PARAMS_DISABLED",
 		localize "STR_CLEANUP_PARAM1",
 		localize "STR_CLEANUP_PARAM2",
 		localize "STR_CLEANUP_PARAM3",
-		localize "STR_CLEANUP_PARAM4"
+		localize "STR_CLEANUP_PARAM4",
+		localize "STR_CLEANUP_PARAM5"		
 		],
-		[0, 900, 1800, 3600, 7200]
+		[0, 900, 1200, 1800, 3600, 7200]
 	],
+
+	["PassiveIncomeDelay", localize "STR_PARAM_PASSIVE_INCOME_DELAY", [
+		localize "STR_CLEANUP_PARAM2",
+		localize "STR_CLEANUP_PARAM3",
+		localize "STR_CLEANUP_PARAM4",
+		localize "STR_CLEANUP_PARAM5"
+		],
+		[1200, 1800, 3600, 7200]
+	],
+
+	["PassiveIncomeAmmount", localize "STR_PARAM_PASSIVE_INCOME_AMMOUNT",
+		["100", "200", "300", "400", "500", "1000", "1500"],
+		[100, 200, 300, 400, 500, 1000, 1500]
+	],
+
 	["FobType", localize "STR_PARAM_FOB_TYPE", ["Huron", "Truck"]],
 	["PlatoonView",localize "STR_GUI_PLATOON", [localize "STR_PARAMS_USER_DEF",localize "STR_PARAMS_ENABLED",localize "STR_PARAMS_DISABLED"]],
 	["NameTags",localize "STR_GUI_NAMETAG", [localize "STR_PARAMS_USER_DEF",localize "STR_PARAMS_ENABLED",localize "STR_PARAMS_DISABLED"]],
