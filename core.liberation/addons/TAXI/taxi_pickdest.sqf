@@ -21,6 +21,12 @@ _target onMapSingleClick {
 		GRLIB_taxi_helipad_created = false;
 		GRLIB_taxi_helipad = selectRandom (nearestObjects [_freepos, ["Helipad_base_F"], 150]);
 		if (isNil "GRLIB_taxi_helipad") then {
+			{
+				if (str _x find "heli" > 0) exitWith { GRLIB_taxi_helipad = _x };
+			} forEach (nearestTerrainObjects [_freepos, ["Hide"], 150]);
+		};
+
+		if (isNil "GRLIB_taxi_helipad") then {
 			GRLIB_taxi_helipad = taxi_helipad_type createVehicle _freepos;
 			GRLIB_taxi_helipad_created = true;	
 		};
