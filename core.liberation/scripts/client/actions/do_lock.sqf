@@ -8,7 +8,8 @@ private _prev_owner = _vehicle getVariable ["GRLIB_vehicle_owner", ""];
 if (local _vehicle) then {
     [_vehicle, "lock"] call F_vehicleLock;
 } else {
-	[_vehicle, "lock", player] remoteExec ["vehicle_lock_remote_call", 2];
+	[_vehicle, "lock"] remoteExec ["vehicle_lock_remote_call", 2];
+    sleep 1;
 };
 
 _vehicle setVariable ["GRLIB_vehicle_owner", _uid, true];
@@ -25,5 +26,5 @@ if (_prev_owner != _uid) then {
     gamelogic globalChat localize "STR_DO_LOCK_MSG";
 };
 
-sleep 1;
+sleep 0.5;
 GRLIB_vehicle_lock = true;

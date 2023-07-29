@@ -6,7 +6,7 @@ GRLIB_vehicle_lock = false;
 if (local _vehicle) then {
 	[_vehicle, "unlock"] call F_vehicleLock;
 } else {
-	[_vehicle, "unlock", player] remoteExec ["vehicle_lock_remote_call", 2];
+	[_vehicle, "unlock"] remoteExec ["vehicle_lock_remote_call", 2];
 };
 _vehicle setVariable ["GRLIB_vehicle_owner", "", true];
 

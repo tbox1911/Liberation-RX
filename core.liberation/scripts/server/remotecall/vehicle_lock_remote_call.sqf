@@ -1,5 +1,5 @@
 if (!isServer && hasInterface) exitWith {};
-params [ "_vehicle", "_cmd", "_player" ];
+params [ "_vehicle", "_cmd"];
 if (isNil "_vehicle") exitWith {};
 
 if (local _vehicle) then {
