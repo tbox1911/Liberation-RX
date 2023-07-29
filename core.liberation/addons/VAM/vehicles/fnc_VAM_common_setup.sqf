@@ -31,9 +31,6 @@ private _getvc = [VAM_targetvehicle] call BIS_fnc_getVehicleCustomization;
 private _check_comp = _getvc select 1;
 {
 	if (typeName _x == "SCALAR") then { comp_class_names pushBack 0 };
-} forEach _check_comp;
-
-{
 	if (typeName _x == "STRING") then {
 		_name = getText (configOf VAM_targetvehicle >> "AnimationSources" >> _x >> "DisplayName");
 		if (_name == "") then { _name = _x };
