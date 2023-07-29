@@ -1,5 +1,4 @@
-[VAM_targetvehicle, true, [true]] call bis_fnc_initVehicle;
-VAM_check_fnc_delay = false;
+[VAM_targetvehicle, true, [true]] spawn bis_fnc_initVehicle;
 
 private _VAM_display = findDisplay 4900;
 (_VAM_display displayCtrl 4910) lbSetCurSel 0;

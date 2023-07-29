@@ -8,26 +8,38 @@ if (!(isNull _VAM_display)) then {
     _list_selection = lbSelection _list_comp select 0;
 };
 
-private _comp_array_total = [];
-if (_list_selection >= 0) then {
-	private _comp_array = current_comp;
-	private "_comp_change";
-	if (_comp_array select _list_selection isEqualTo 0) then {_comp_change = 1;};
-	if (_comp_array select _list_selection isEqualTo 1) then {_comp_change = 0;};
-	_comp_array set [_list_selection, _comp_change];
+if (isNil "_list_selection") exitWith {};
+private _vehicle = VAM_targetvehicle;
+private _compo = comp_class_names;
+private _state = 0;
 
-	{
-		_comp_array_total pushBack (comp_class_names select _forEachIndex);
-		_comp_array_total pushBack (_comp_array select _forEachIndex);
-	} forEach comp_class_names;
-} else {
-	_comp_array_total = comp_class_names;
+if (_list_selection >= 0) then {
+	_state = 1;
+	if ((_compo select _list_selection) == 1) then { _state = 0 };
+	_compo set [_list_selection, _state];
 };
 
-private _vehicle = VAM_targetvehicle;
-[_vehicle,nil,_comp_array_total,nil] call BIS_fnc_initVehicle;
+private _getvc = [_vehicle] call BIS_fnc_getVehicleCustomization;
+private _comp_class_veh = _getvc select 1;
 
-_vehicle setVariable ["GRLIB_vehicle_composant", _comp_array_total, true];
+private _comp_veh_final = [];
+private _comp_class_veh_final = [];
+private _indx = 0;
+private _name = "";
+{
+	if (typeName _x == "SCALAR") then {
+		_state = 0;
+		if (_indx < count _compo) then { _state = _compo select _indx };
+		_comp_class_veh_final pushBack _name;
+		_comp_class_veh_final pushBack _state;
+		_comp_veh_final pushBack _state;
+		_indx = _indx + 1;
+	} else { _name = _x };
+} forEach _comp_class_veh;
+
+[_vehicle, false, _comp_class_veh_final] spawn BIS_fnc_initVehicle;
+
+_vehicle setVariable ["GRLIB_vehicle_composant", _comp_veh_final, true];
 
 if (_list_selection >= 0) then {
 	[] spawn fnc_VAM_common_comp_check;

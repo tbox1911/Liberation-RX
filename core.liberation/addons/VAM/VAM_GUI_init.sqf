@@ -12,7 +12,6 @@ fnc_VAM_GUI_check = compileFinal preprocessFileLineNumbers "addons\VAM\functions
 fnc_VAM_reset = compileFinal preprocessFileLineNumbers "addons\VAM\functions\fnc_VAM_reset.sqf";
 fnc_VAM_add_cargo = compileFinal preprocessFileLineNumbers "addons\VAM\functions\fnc_VAM_add_cargo.sqf";
 fnc_VAM_get_freecargo = compileFinal preprocessFileLineNumbers "addons\VAM\functions\fnc_VAM_get_freecargo.sqf";
-fnc_VAM_variable_cleaner = compileFinal preprocessFileLineNumbers "addons\VAM\functions\fnc_VAM_variable_cleaner.sqf";
 
 //Vehicle Function
 fnc_VAM_common_setup = compileFinal preprocessFileLineNumbers "addons\VAM\vehicles\fnc_VAM_common_setup.sqf";

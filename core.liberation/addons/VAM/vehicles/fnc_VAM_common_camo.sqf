@@ -70,7 +70,7 @@ if ([_selected_camo_class_name, [".#", "./", "LRX_Texture"]] call F_startsWithMu
 
     { _vehicle setObjectTextureGlobal [_x, _camo_class_name] } forEach _selections;
 } else {
-    [_vehicle,[_selected_camo_class_name,1],nil,nil] call BIS_fnc_initVehicle;
+    [_vehicle,[_selected_camo_class_name,1],nil,nil] spawn BIS_fnc_initVehicle;
 };
 
 _vehicle setVariable ["GRLIB_vehicle_color", _selected_camo_class_name, true];

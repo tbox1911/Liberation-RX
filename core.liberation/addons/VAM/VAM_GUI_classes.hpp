@@ -1,8 +1,6 @@
 class VAM_GUI
 {
 	idd = 4900;
-	OnLoad = "[] spawn fnc_VAM_GUI_check;";
-	OnUnload = "[] spawn fnc_VAM_variable_cleaner;";
 	movingEnable = false;
 
 	class controlsBackground {

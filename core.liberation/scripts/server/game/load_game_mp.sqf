@@ -271,7 +271,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 					[_nextbuilding, _color_name] call RPT_fnc_TextureVehicle;
 				};
 				if (count _compo > 0) then {
-					[_nextbuilding, _compo]  call RPT_fnc_CompoVehicle;
+					[_nextbuilding, _compo] call RPT_fnc_CompoVehicle;
 				};
 				if (_nextclass isKindOf "LandVehicle" || _nextclass isKindOf "Air" || _nextclass isKindOf "Ship") then {
 					if (GRLIB_CUPV_enabled) then {

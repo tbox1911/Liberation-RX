@@ -9,4 +9,6 @@ if ([typeOf _vehicle, GRLIB_vehicle_blacklist] call F_itemIsInClass) exitWith { 
 waitUntil { sleep 0.2; local _vehicle };
 
 VAM_targetvehicle = _vehicle;
-createDialog 'VAM_GUI';
+createDialog "VAM_GUI";
+waitUntil { dialog };
+[] spawn fnc_VAM_GUI_check;
