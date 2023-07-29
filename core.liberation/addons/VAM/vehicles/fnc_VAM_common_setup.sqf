@@ -38,6 +38,11 @@ private _check_comp = _getvc select 1;
 	};
 } forEach _check_comp;
 
+private _saved_comp_class = VAM_targetvehicle getVariable ["GRLIB_vehicle_composant", []];
+if (count _saved_comp_class > 0) then {
+	comp_class_names = _saved_comp_class;
+};
+
 // Put camouflages and components in list
 if (camo_class_names isEqualTo []) then {
 	_list_camo lbAdd localize "STR_VAM_NO_CAMOUFLAGE";
