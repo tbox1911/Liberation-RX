@@ -12,7 +12,7 @@ if (!isNull _instigator) then {
 };
 
 if (isPlayer _killer) then {
-	_unit setVariable ["GRLIB_last_killer", _killer];
+	_unit setVariable ["GRLIB_last_killer", _killer, true];
 };
 
 private _ret = _amountOfDamage;
