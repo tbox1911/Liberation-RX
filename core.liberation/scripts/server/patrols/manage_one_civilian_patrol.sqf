@@ -34,6 +34,8 @@ while { GRLIB_endgame == 0 } do {
 				_civ_veh = [markerPos _spawnsector, (selectRandom civilian_vehicles), false, false, GRLIB_side_civilian] call F_libSpawnVehicle;
 				_civ_unit moveInDriver _civ_veh;
 				_civ_unit assignAsDriver _civ_veh;
+				_civ_veh lockDriver true;
+				_civ_veh lockCargo true;
 				_civ_veh addEventHandler ["HandleDamage", {
 					params ["_unit", "_selection", "_damage", "_source"];
 					private _dam = 0;
