@@ -4,7 +4,7 @@ sleep 300;
 while { hasInterface } do {
     _last_pos = getPosATL player;
 	_last_time = round time;
-
+	sleep 5;
     while { (getPosATL player) isEqualTo _last_pos } do {
         _timer = (round time - _last_time);
 
@@ -20,5 +20,4 @@ while { hasInterface } do {
 		};
         sleep 60;
     };
-	sleep 5;
 };
