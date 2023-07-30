@@ -27,7 +27,6 @@ while { GRLIB_endgame == 0 } do {
 
 		if ( count _blufor_mil_sectors > 0 ) then {
 			if ( GRLIB_passive_income ) then {
-
 				private _income = (GRLIB_passive_ammount + floor(random 30));
 				{
 					[_x, _income, 0] call ammo_add_remote_call;
