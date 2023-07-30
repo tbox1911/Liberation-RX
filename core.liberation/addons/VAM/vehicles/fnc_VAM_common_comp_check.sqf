@@ -2,7 +2,6 @@
 private _VAM_display = findDisplay 4900;
 private _list_comp = _VAM_display displayCtrl 4920;
 
-
 //Check current applied components
 {
 	if (_x == 1) then {
