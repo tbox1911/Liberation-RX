@@ -96,11 +96,11 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 		_defensecount = 3;
 		[_sector] spawn {
 			params ["_sector"];
-			private _pos = markerPos _sector;
-			private _sound = "\a3\data_f_curator\sound\cfgsounds\air_raid.wss";
+			private _pos = markerPos [_sector, true];
+			private _sound = "A3\data_f_curator\sound\cfgsounds\air_raid.wss";
 			while { _sector in active_sectors } do {
 				for "_i" from 0 to (floor(random 4)) do {
-					playSound3D [_sound, _pos, false, ATLToASL _pos, 5, 1, 1000];
+					playSound3D [_sound, _pos, false, AGLToASL _pos, 5, 1, 1000];
 					sleep (5 + floor(random 4));
 				};
 				sleep 60;

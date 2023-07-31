@@ -178,7 +178,7 @@ _waitUntilCondition = {
 	if (_ret) then {
 		[_missionPos] spawn {
 			params ["_pos"];
-			private _sound = "\a3\data_f_curator\sound\cfgsounds\air_raid.wss";
+			private _sound = "A3\data_f_curator\sound\cfgsounds\air_raid.wss";
 			for "_i" from 0 to 1 do {
 				playSound3D [_sound, _pos, false, ATLToASL _pos, 5, 1, 1000];
 				sleep 5;
