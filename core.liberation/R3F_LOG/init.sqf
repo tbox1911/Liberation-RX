@@ -166,8 +166,7 @@
 		// Commandes � faire uniquement sur le serveur
 		if (isServer) then
 		{
-			if (_commande == "setOwnerTo") then
-			{
+			if (_commande == "setOwnerTo") then	{
 				_argument setOwner (owner _parametre);
 			};
 		};
