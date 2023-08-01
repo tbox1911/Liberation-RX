@@ -25,6 +25,7 @@ if (count _nearset_cargo > 0) then {
 		sleep 0.1;
 	} forEach _weapons_lst;
 	[_cargo_veh, _target] call save_loadout_cargo;
+	hidebody _target;
 } else {
 	private _msg = localize "STR_LOADOUT_NOCARGO";
 	hintSilent _msg;
