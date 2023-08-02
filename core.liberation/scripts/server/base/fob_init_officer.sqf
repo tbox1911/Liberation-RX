@@ -23,7 +23,6 @@ private _lamp1 = "Land_LampStreet_02_amplion_F" createVehicle zeropos;
 _lamp1 allowDamage false; 
 _lamp1 setDir (_fobdir + 45);
 _lamp1 setPosATL _lampPos; 
-_lamp1 enableSimulationGlobal false; 
 _lamp1 setVariable ["R3F_LOG_disabled", true, true];
 _lamp1 setVariable ["GRLIB_vehicle_owner", "server", true];
 
@@ -32,7 +31,6 @@ private _lamp2 = "Land_LampStreet_02_triple_F" createVehicle zeropos;
 _lamp2 allowDamage false; 
 _lamp2 setDir (_fobdir + 45);
 _lamp2 setPosATL _lampPos; 
-_lamp2 enableSimulationGlobal false; 
 _lamp2 setVariable ["R3F_LOG_disabled", true, true];
 _lamp2 setVariable ["GRLIB_vehicle_owner", "server", true];
 
