@@ -477,16 +477,16 @@
 			<Czech>FOB Nakladní auto</Czech>
 		</Key>
 		<Key ID="STR_RESPAWN_TRUCK">
-			<Original>Mobile respawn</Original>
-			<French>Réapparition mobile</French>
+			<Original>Mobile Respawn</Original>
+			<French>Réapparition Mobile</French>
 			<German>Mobiler Respawn</German>
-			<Spanish>Respawn móvil</Spanish>
+			<Spanish>Respawn Móvil</Spanish>
 			<Russian>Мобильная КШМ</Russian>
 			<Chinesesimp>移动重生点</Chinesesimp>
 			<Chinese>移動重生點</Chinese>
 			<Japanese>モバイルリスポーン</Japanese>
-			<Portuguese>Ressurgimento móvel</Portuguese>
-			<Czech>Mobilní respawn</Czech>
+			<Portuguese>Ressurgimento Móvel</Portuguese>
+			<Czech>Mobilní Respawn</Czech>
 		</Key>
 		<Key ID="STR_ARSENAL_BOX">
 			<Original>Arsenal box</Original>

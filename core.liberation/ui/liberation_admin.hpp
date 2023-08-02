@@ -10,6 +10,7 @@ class liberation_admin {
 	  "Header",
 	  "ArsenalButton",
 	  "AmmoButton",
+    "RespawnButton",
     "BuildButton",
     "BuildList",
 	  "SkipTimeButton",
@@ -85,6 +86,15 @@ class liberation_admin {
     w = 0.0875 * safezoneW;
     h = 0.04 * safezoneH;
   };
+  class RespawnButton: StdButton {
+    idc = 1623;
+    action = "closeDialog 0;buildtype=9;build_unit=[mobile_respawn,[],1,[],[],[]];dobuild=1";
+    text = $STR_RESPAWN_TRUCK;
+    x = 0.3275 * safezoneW + safezoneX;
+    y = 0.208 * safezoneH + safezoneY;
+    w = 0.0875 * safezoneW;
+    h = 0.04 * safezoneH;
+  };  
   class BuildButton: StdButton {
     idc = 1617;
     action = "do_spawn=1";
