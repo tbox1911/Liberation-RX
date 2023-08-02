@@ -64,3 +64,7 @@ if (["UNS_", GRLIB_mod_west, true] call F_startsWith) then {
 if (["IFA_", GRLIB_mod_west, true] call F_startsWith) then {
     [] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_IFA.sqf";
 };
+// Add DLC: Spearhead 1944 (WW2) Weapons
+if (["SPE_", GRLIB_mod_west, true] call F_startsWith) then {
+    [] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_SPE.sqf";
+};

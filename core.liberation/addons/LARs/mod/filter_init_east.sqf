@@ -69,6 +69,9 @@ if (["UNS_", GRLIB_mod_east, true] call F_startsWith) then {
 };
 // Add IFA3 Weapons
 if (["IFA_", GRLIB_mod_east, true] call F_startsWith) then {
-    GRLIB_MOD_signature = GRLIB_MODsignature + ["LIB_","B_LIB_","G_LIB_","H_LIB_","U_LIB_","V_LIB_"];
-
+    GRLIB_MOD_signature = GRLIB_MOD_signature + ["LIB_","B_LIB_","G_LIB_","H_LIB_","U_LIB_","V_LIB_"];
+};
+// Add DLC: Spearhead 1944 (WW2) Weapons
+if (["SPE_", GRLIB_mod_east, true] call F_startsWith) then {
+    GRLIB_MOD_signature = GRLIB_MOD_signature + ["SPE_","U_SPE_","V_SPE_","B_SPE_","H_SPE_","G_SPE_"];
 };
