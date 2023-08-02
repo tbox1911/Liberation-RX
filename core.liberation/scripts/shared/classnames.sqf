@@ -12,6 +12,30 @@ zeropos = [0,0,10000];
 
 // *** FRIENDLIES ***
 [] call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_west.sqf", GRLIB_mod_west];
+
+MFR_Dogs_classname = [];
+if (GRLIB_MFR_enabled) then {
+	MFR_Dogs = [
+		["MFR_C_GermanShepherd",0,0,0,0],
+		["MFR_C_GermanShepherd_Black",0,0,0,GRLIB_perm_inf],
+		["MFR_C_Shepinois",0,0,0,0],
+		["MFR_C_GermanShepherd_IDAP",0,0,0,0],
+		["MFR_C_GermanShepherd_Black_IDAP",0,0,0,GRLIB_perm_log],
+		["MFR_C_Shepinois_IDAP",0,0,0,0],
+		["MFR_C_GermanShepherd_TAN",0,0,0,0],
+		["MFR_C_GermanShepherd_Black_TAN",0,0,0,GRLIB_perm_inf],
+		["MFR_C_Shepinois_TAN",0,0,0,0],
+		["MFR_C_GermanShepherd_BLK",0,0,0,0],
+		["MFR_C_GermanShepherd_Black_BLK",0,0,0,GRLIB_perm_log],
+		["MFR_C_Shepinois_BLK",0,0,0,0],
+		["MFR_C_GermanShepherd_OD",0,0,0,0],
+		["MFR_C_GermanShepherd_Black_OD",0,0,0,GRLIB_perm_inf],
+		["MFR_C_Shepinois_OD",0,0,0,0]
+	];
+	infantry_units_west = MFR_Dogs + infantry_units_west;
+	{ MFR_Dogs_classname pushBack (_x select 0) } forEach MFR_Dogs;
+};
+
 if (isServer) then {
 	[] call F_calcUnitsCost;
 	publicVariable "infantry_units";

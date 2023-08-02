@@ -137,7 +137,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 			};
 
 			if ( buildtype == 1 ) then {
-				if (_build_class in ["Alsatian_Random_F","Fin_random_F"] ) then {
+				if (_build_class in MFR_Dogs_classname + ["Alsatian_Random_F","Fin_random_F"] ) then {
 					if (!(isNil {player getVariable ["my_dog", nil]})) then {
 						_affordable = false;
 					};
