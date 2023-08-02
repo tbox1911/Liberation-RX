@@ -9,6 +9,7 @@ FOB_box_outpost = "Land_Cargo10_grey_F";
 FOB_sign = "SignAd_Sponsor_F";
 Radio_tower = "Land_Communication_F";
 Warehouse_typename = "Land_Warehouse_03_F";
+Warehouse_desk_typename = "Land_PortableDesk_01_black_F";
 Arsenal_typename = "B_supplyCrate_F";
 Box_Weapon_typename = "Box_NATO_Wps_F";
 Box_Ammo_typename = "Box_NATO_Ammo_F";
@@ -127,6 +128,7 @@ buildings_default = [
 	["Land_CampingChair_V1_F",0,0,0,GRLIB_perm_tank],
 	["Land_CampingChair_V2_F",0,0,0,GRLIB_perm_tank],
 	["Land_CampingTable_F",0,0,0,GRLIB_perm_tank],
+	["Land_PortableDesk_01_black_F",0,0,0,GRLIB_perm_tank],
 	["MapBoard_altis_F",0,0,0,GRLIB_perm_tank],
 	["Land_Metal_rack_Tall_F",0,0,0,GRLIB_perm_tank],
 	["Land_DieselGroundPowerUnit_01_F",0,0,0,GRLIB_perm_tank],
