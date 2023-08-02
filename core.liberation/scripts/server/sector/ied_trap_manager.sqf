@@ -27,8 +27,10 @@ private _false_trap = false;
 
 if ( count _ide_pos > 0 ) then {
 	private _ied_obj = createVehicle [_ied_type, _ide_pos, [], 3, "None"];
+	_ied_obj allowDamage false;
 	_ied_obj setVariable ["GRLIB_intel_search", true, true];
 	_ied_obj setPos (getPos _ied_obj);
+	_ied_obj enableSimulationGlobal false;
 
 	if ((random 100) <= 50) then { _false_trap = true };
 
