@@ -603,9 +603,7 @@ GRLIB_Ammobox_keep = [
 	Box_Launcher_typename,
 	Box_Special_typename,
 	basic_weapon_typename,
-	"mission_USLaunchers",
-	"CUP_LocalBasicWeaponsBox",
-	"gm_AmmoBox_1000Rnd_762x51mm_ap_DM151_g3"
+	"mission_USLaunchers"
 ];
 
 GRLIB_player_grave = [
