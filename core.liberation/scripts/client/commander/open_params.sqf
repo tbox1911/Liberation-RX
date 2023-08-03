@@ -1,4 +1,4 @@
-private ["_nextparam", "_idx", "_control", "_selection", "_value", "_value_raw", "_save_data"];
+private ["_nextparam", "_idx", "_control", "_selection", "_value", "_value_raw", "_data", "_save_data"];
 
 waitUntil {!(isNull (findDisplay 46))};
 disableUserInput false;
@@ -18,10 +18,8 @@ if ( !([] call is_admin) && GRLIB_param_open_params == 1) then {
 if !([] call is_admin) exitWith { disableUserInput true };
 
 waitUntil { sleep 0.5; !isNil "GRLIB_LRX_params" };
-private _params_save = GRLIB_LRX_params;
 
 createDialog "liberation_params";
-disableSerialization;
 waitUntil { dialog };
 
 private _display = findDisplay 5119;
@@ -36,17 +34,18 @@ private _lrx_getParamData = {
 	_def;
 };
 
-private _params_array = [];
-private _indx = 1;
-param_id = -1;
-param_value = -1;
-save_changes = 0;
-
 _control = _display ctrlCreate [ "RscText", (100 + 0), _display displayCtrl 9969 ];
 _control ctrlSetPosition [ 0,  (0 * 0.025) * safezoneH, 0.3 * safeZoneW, 0.025  * safezoneH];
 _control ctrlSetText format ["Parameters Profile name: %1", GRLIB_params_save_key];
 _control ctrlSetTextColor [0.5,0.5,0.5,1];
 _control ctrlCommit 0;
+
+private _params_save = [] + GRLIB_LRX_params;
+private _params_array = [];
+private _indx = 1;
+param_id = -1;
+param_value = -1;
+save_changes = 0;
 
 {
 	_data = [_x select 0] call _lrx_getParamData;
@@ -102,39 +101,34 @@ _control ctrlCommit 0;
 } foreach _params_array;
 
 while { dialog && alive player } do {
-
 	if (param_id != -1) then {
 		_value = param_value;
 		_value_raw = _params_array select param_id select 5;
 		if (count _value_raw > 0) then {
 			_value = _value_raw select param_value;
 		};
-		_save_data = _params_save select param_id;
-		_save_data set [1, _value];
-		_params_save set [param_id, _save_data];
+		_save_data = _params_save select param_id select 0;
+		_params_save set [param_id, [_save_data, _value]];
 		param_id = -1;
 	};
-
-	if ( save_changes == 1 ) then {
-		save_changes = 0;
-		[
-			[_params_save],
-			{
-				params ["_params"];
-				profileNamespace setVariable [GRLIB_params_save_key, _params];
-				saveProfileNamespace;
-				GRLIB_LRX_params = _params;
-				publicVariable "GRLIB_LRX_params";
-				GRLIB_param_open_params = 0;
-				publicVariable "GRLIB_param_open_params";
-			}
-		] remoteExec ["bis_fnc_call", 2];
-
-		waitUntil { sleep 0.5; GRLIB_param_open_params == 0 };
-		closeDialog 0;
-	};
-
 	sleep 0.5;
+};
+
+if (save_changes == 1) then {
+	[
+		[_params_save],
+		{
+			params ["_params"];
+			profileNamespace setVariable [GRLIB_params_save_key, _params];
+			saveProfileNamespace;
+			GRLIB_LRX_params = _params;
+			publicVariable "GRLIB_LRX_params";
+			GRLIB_param_open_params = 0;
+			publicVariable "GRLIB_param_open_params";
+		}
+	] remoteExec ["bis_fnc_call", 2];
+
+	waitUntil { sleep 0.5; GRLIB_param_open_params == 0 };
 };
 
 disableUserInput true;
