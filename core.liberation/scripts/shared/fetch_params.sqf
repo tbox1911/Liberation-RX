@@ -7,15 +7,10 @@ GRLIB_east_modder = "Unknow";
 [] call compileFinal preprocessFileLineNUmbers "gameplay_constants.sqf";
 GRLIB_params_save_key = format ["%1-config", GRLIB_save_key];
 
-// Classename MOD source
-[] call compileFinal preprocessFileLineNUmbers "mod_template\mod_init.sqf";
-
-// Mission Parameter constant
-[] call compileFinal preprocessFileLineNUmbers "mission_params.sqf";
-
 // Detect Addons
 GRLIB_LRX_Music_enabled = isClass(configFile >> "cfgPatches" >> "LRX_Music"); // Returns true if LRX Music Pack is enabled
 GRLIB_LRX_Texture_enabled = isClass(configFile >> "cfgPatches" >> "LRX_Texture"); // Returns true if LRX Textture Pack is enabled
+GRLIB_LRX_template_enabled = isClass(configFile >> "cfgPatches" >> "LRX_Template"); // Returns true if LRX Template Pack is enabled
 GRLIB_ACE_enabled = isClass(configFile >> "cfgPatches" >> "ace_main"); // Returns true if ACE is enabled
 GRLIB_ACE_medical_enabled = isClass(configFile >> "cfgPatches" >> "ace_medical"); // Returns true if ACE Medical is enabled
 GRLIB_ACRE_enabled = isClass(configFile >> "cfgPatches" >> "acre_main"); // Returns true if ACRE is enabled
@@ -39,14 +34,25 @@ GRLIB_IFA_enabled = isClass(configFile >> "CfgPatches" >> "LIB_core"); // Return
 GRLIB_TFR_enabled = isClass(configfile >> "CfgPatches" >> "task_force_radio"); // Returns true if TFAR is enabled
 GRLIB_MFR_enabled = isClass(configfile >> "CfgPatches" >> "MFR_Dogs"); // Returns true if MFR Dogs is enabled
 
-//--- Parameters from Lobby ----------------------------------------------
+// Classename MOD source
+[] call compileFinal preprocessFileLineNUmbers "mod_template\mod_init.sqf";
+if (GRLIB_LRX_template_enabled) then {
+	[] call LRX_Template_fnc_loading;
+	GRLIB_mod_list_west append LRX_mod_list_west;
+	GRLIB_mod_list_east append LRX_mod_list_east;
+	GRLIB_mod_list_name append LRX_mod_list_name;
+};
+
+// Mission Parameter constant
+[] call compileFinal preprocessFileLineNUmbers "mission_params.sqf";
+
+// Parameters from Lobby
 GRLIB_use_whitelist = ["Whitelist",1] call bis_fnc_getParamValue;
 GRLIB_use_exclusive = ["Exclusive",0] call bis_fnc_getParamValue;
 GRLIB_param_wipe_savegame_1 = ["WipeSave1",0] call bis_fnc_getParamValue;
 GRLIB_param_wipe_savegame_2 = ["WipeSave2",0] call bis_fnc_getParamValue;
 GRLIB_param_wipe_params = ["WipeSave3",0] call bis_fnc_getParamValue;
 GRLIB_force_load = ["ForceLoading",0] call bis_fnc_getParamValue;
-//------------------------------------------------------------------------
 
 private _lrx_getParamValue = {
 	params ["_param", "_def"];
