@@ -174,7 +174,8 @@ if (abort_loading) exitWith { abort_loading_msg = format [
 	"********************************\n
 	FATAL! - Missing MOD Template !\n\n
 	Template for side West (%1) or East (%2) do not exist.\n
-	you must add LRX_Template Mod to your setup.\n\n
+	you must add LRX_Template Mod to your setup.
+	see: https://steamcommunity.com/sharedfiles/filedetails/?id=3014195090\n\n
 	Loading Aborted to protect data integrity.\n
 	Correct the Mod Template selection.\n
 	*********************************", GRLIB_mod_west, GRLIB_mod_east];

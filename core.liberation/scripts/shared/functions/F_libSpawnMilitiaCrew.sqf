@@ -28,4 +28,4 @@ private _path = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_east, "crewm
 	};
 } foreach (units _grp);
 
-diag_log format [ "Done Spawning militia crew at %1", time ];
+diag_log format ["Done Spawning militia crew at %1", time];
