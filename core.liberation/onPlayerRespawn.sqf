@@ -25,7 +25,8 @@ player setVariable ["GRLIB_action_inuse", false, true];
 player setVariable ["SOG_player_in_tunnel", nil];
 
 if (GRLIB_forced_loadout > 0) then {
-	[player] call compile preprocessFileLineNumbers (format ["mod_template\%1\loadout\player_set%2.sqf", GRLIB_mod_west, GRLIB_forced_loadout]);
+	private _path = format ["mod_template\%1\loadout\player_set%2.sqf", GRLIB_mod_west, GRLIB_forced_loadout];
+	[_path, player] call F_getTemplateFile;
 };
 GRLIB_backup_loadout = getUnitLoadout player;
 player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];

@@ -166,8 +166,8 @@ if (dialog && deploy == 1) then {
 			// init loadout
 			if ( GRLIB_forced_loadout == 0) then {
 				if ( typeOf player in units_loadout_overide ) then {
-					_loadouts_folder = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, toLower (typeOf player)];
-					[player] call compileFinal preprocessFileLineNumbers _loadouts_folder;
+					private _path = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, toLower (typeOf player)];
+					[_path, player] call F_getTemplateFile;
 				} else {
 					[player, configOf player] call BIS_fnc_loadInventory;
 				};

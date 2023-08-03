@@ -36,6 +36,9 @@ GRLIB_MFR_enabled = isClass(configfile >> "CfgPatches" >> "MFR_Dogs"); // Return
 
 // Classename MOD source
 [] call compileFinal preprocessFileLineNUmbers "mod_template\mod_init.sqf";
+LRX_mod_list_west = [];
+LRX_mod_list_east = [];
+LRX_mod_list_name = [];
 if (GRLIB_LRX_template_enabled) then {
 	[] call LRX_Template_fnc_loading;
 	GRLIB_mod_list_west append LRX_mod_list_west;
@@ -164,6 +167,17 @@ GRLIB_mod_east = GRLIB_mod_list_east select GRLIB_mod_preset_east;
 GRLIB_r1 = "&#108;&#105;&#98;&#101;&#114;&#97;&#116;&#105;&#111;&#110;";
 GRLIB_r2 = "&#114;&#120;";
 GRLIB_r3 = "&#76;&#82;&#88;&#32;&#73;&#110;&#102;&#111;";
+
+if ( !(GRLIB_mod_west in GRLIB_mod_list_west) || !(GRLIB_mod_east in GRLIB_mod_list_east)) then { abort_loading = true };
+if (abort_loading) exitWith { abort_loading_msg = format [
+	"********************************\n
+	FATAL! - Missing MOD Template !\n\n
+	Template for side West (%1) or East (%2) do not exist.\n
+	you must add LRX_Template Mod to your setup.\n\n
+	Loading Aborted to protect data integrity.\n
+	Correct the Mod Template selection.\n
+	*********************************", GRLIB_mod_west, GRLIB_mod_east];
+};
 
 // Check wrong sides
 if (GRLIB_force_load == 0 && GRLIB_mod_west == GRLIB_mod_east) then { abort_loading = true };

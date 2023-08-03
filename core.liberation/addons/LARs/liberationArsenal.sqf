@@ -64,7 +64,8 @@ GRLIB_blacklisted_from_arsenal = [];			// Global blacklist (All objects will be 
 GRLIB_whitelisted_from_arsenal = [];			// whitelist when Arsenal is enabled
 
 // Import list from Mod template
-[] call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\arsenal.sqf", GRLIB_mod_west];
+private _path = format ["mod_template\%1\arsenal.sqf", GRLIB_mod_west];
+[_path] call F_getTemplateFile;
 
 // Default LRX blacklist
 GRLIB_blacklisted_from_arsenal = [

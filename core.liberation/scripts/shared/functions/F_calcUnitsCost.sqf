@@ -11,8 +11,8 @@ infantry_units = [];
 		_unit allowDamage false;
 		[_unit, configOf _unit] call BIS_fnc_loadInventory;
 		if (_unit_class in units_loadout_overide) then {
-			_loadouts_folder = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, toLower _unit_class];
-			[_unit] call compileFinal preprocessFileLineNUmbers _loadouts_folder;
+			private _path = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, toLower _unit_class];
+			[_path, _unit] call F_getTemplateFile;  
 		};
 		_unit_cost = [_unit] call F_loadoutPrice;
 		deleteVehicle _unit;

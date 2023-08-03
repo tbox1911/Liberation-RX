@@ -11,7 +11,8 @@ zeropos = [0,0,10000];
 [] call compileFinal preprocessFileLineNUmbers format ["scripts\shared\default_classnames.sqf"];
 
 // *** FRIENDLIES ***
-[] call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_west.sqf", GRLIB_mod_west];
+private _path = format ["mod_template\%1\classnames_west.sqf", GRLIB_mod_west];
+[_path] call F_getTemplateFile;  
 
 MFR_Dogs_classname = [];
 if (GRLIB_MFR_enabled) then {
@@ -42,7 +43,8 @@ if (isServer) then {
 } else { waitUntil {sleep 0.1; !isNil "infantry_units"} };
 
 // *** BADDIES ***
-[] call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_east.sqf", GRLIB_mod_east];
+private _path = format ["mod_template\%1\classnames_east.sqf", GRLIB_mod_east];
+[_path] call F_getTemplateFile;  
 
 if (GRLIB_side_friendly == GRLIB_side_enemy) exitWith {
 abort_loading_msg = format [
@@ -80,7 +82,8 @@ if (GRLIB_side_enemy == INDEPENDENT) then {
 };
 
 // *** CIVILIAN ***
-[] call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_civ.sqf", GRLIB_mod_west];
+private _path = format ["mod_template\%1\classnames_civ.sqf", GRLIB_mod_west];
+[_path] call F_getTemplateFile;  
 
 // *** INDEPENDENT ***
 ind_recyclable = [
@@ -331,8 +334,10 @@ vehicle_repair_sources = [
 box_transport_config = [];
 box_transport_offset = [];
 
-[] call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_transport.sqf", GRLIB_mod_west];
-[] call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_transport.sqf", GRLIB_mod_east];
+private _path = format ["mod_template\%1\classnames_transport.sqf", GRLIB_mod_west];
+[_path] call F_getTemplateFile;  
+private _path = format ["mod_template\%1\classnames_transport.sqf", GRLIB_mod_east];
+[_path] call F_getTemplateFile;  
 
 // Configuration for ammo boxes transport
 // First entry: classname

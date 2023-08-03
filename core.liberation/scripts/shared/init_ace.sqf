@@ -9,8 +9,10 @@ R3F_LOG_CFG_can_be_transported_cargo = [];
 R3F_LOG_CFG_can_be_moved_by_player = [];
 
 call compileFinal preprocessFileLineNUmbers format ["R3F_LOG\addons_config\Liberation.sqf"];
-call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_r3f.sqf", GRLIB_mod_west];
-call compileFinal preprocessFileLineNUmbers format ["mod_template\%1\classnames_r3f.sqf", GRLIB_mod_east];
+private _path = format ["mod_template\%1\classnames_r3f.sqf", GRLIB_mod_west];
+[_path] call F_getTemplateFile;  
+private _path = format ["mod_template\%1\classnames_r3f.sqf", GRLIB_mod_east];
+[_path] call F_getTemplateFile;  
 
 // return cargo space or cargo size
 ACE_getSize = {

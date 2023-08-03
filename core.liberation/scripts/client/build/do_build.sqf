@@ -134,8 +134,8 @@ while { true } do {
 
 			[_unit, configOf _unit] call BIS_fnc_loadInventory;
 			if (_classname in units_loadout_overide) then {
-				_loadouts_folder = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, toLower _classname];
-				[_unit] call compileFinal preprocessFileLineNUmbers _loadouts_folder;
+				private _path = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, toLower _classname];
+				[_path, _unit] call F_getTemplateFile;
 			};
 
 			stats_blufor_soldiers_recruited = stats_blufor_soldiers_recruited + 1; publicVariable "stats_blufor_soldiers_recruited";

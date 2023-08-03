@@ -40,6 +40,7 @@ F_getNextSector = compileFinal preprocessFileLineNumbers "scripts\shared\functio
 F_getRND = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getRND.sqf";
 F_getScore = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getScore.sqf";
 F_getSectorPath = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getSectorPath.sqf";
+F_getTemplateFile = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getTemplateFile.sqf";
 F_getUnitPositionId = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getUnitPositionId.sqf";
 F_getUnitsCount = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getUnitsCount.sqf";
 F_getValid = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getValid.sqf";
