@@ -83,6 +83,7 @@ if ( GRLIB_param_wipe_savegame_1 == 1 && GRLIB_param_wipe_savegame_2 == 1 ) then
 private _lrx_liberation_savegame = profileNamespace getVariable [GRLIB_save_key, nil];
 private _side_west = "";
 private _side_east = "";
+private _warehouse = [];
 private _buildings_created = [];
 
 if ( !isNil "_lrx_liberation_savegame" ) then {
@@ -96,7 +97,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 	GRLIB_garage = _lrx_liberation_savegame select 5;
 	_side_west = _lrx_liberation_savegame select 6;
 	_side_east = _lrx_liberation_savegame select 7;
-	GRLIB_warehouse = _lrx_liberation_savegame select 8;
+	_warehouse = _lrx_liberation_savegame select 8;
 	_stats = _lrx_liberation_savegame select 9;
 	stats_opfor_soldiers_killed = _stats select 0;
 	stats_opfor_killed_by_players = _stats select 1;
@@ -151,7 +152,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 		};
 	};
 
-	if (typeName GRLIB_warehouse != "ARRAY") exitWith {
+	if (typeName _warehouse != "ARRAY") exitWith {
 		abort_loading_msg = format [
 		"********************************\n
 		FATAL! - The savegame is incompatible with this version of LRX\n\n
@@ -322,11 +323,11 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 		};
 
 		if (_nextclass == Warehouse_typename) then {
-			[_nextbuilding] call warehouse_init_remote_call;
+			[_nextbuilding] spawn warehouse_init_remote_call;
 		};
 
 		if (_nextclass == FOB_typename) then {
-			[_nextbuilding] call fob_init_officer;
+			[_nextbuilding] spawn fob_init_officer;
 		};		
         //diag_log format [ "--- LRX Load Game %1 loaded at %2.", typeOf _nextbuilding, time];
 	} foreach (_s1 + _s2 + _s3);
@@ -375,6 +376,26 @@ if ( count GRLIB_vehicle_to_military_base_links == 0 ) then {
 {
 	if (count (_x nearObjects [FOB_outpost, 20]) > 0) then { GRLIB_all_outposts pushBack _x };
 } forEach GRLIB_all_fobs;
+
+if (count _warehouse > 0) then {
+	if (typeName (_warehouse select 0) == "STRING") then {
+		GRLIB_warehouse = _warehouse;
+	} else {
+		GRLIB_warehouse = [
+			[waterbarrel_typename, (_warehouse select 0)],
+			[fuelbarrel_typename, (_warehouse select 1)],
+			[foodbarrel_typename, (_warehouse select 2)],
+			[basic_weapon_typename, (_warehouse select 3)]
+		];
+	};
+} else {
+	GRLIB_warehouse = [
+		[waterbarrel_typename, 2],
+		[fuelbarrel_typename, 2],
+		[foodbarrel_typename, 1],
+		[basic_weapon_typename, 0]
+	];
+};
 
 publicVariable "GRLIB_garage";
 publicVariable "GRLIB_warehouse";

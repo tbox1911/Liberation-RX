@@ -192,6 +192,9 @@ if ( GRLIB_endgame == 1 ) then {
     _stats pushback stats_fobs_lost;
     _stats pushback stats_readiness_earned;
 
+    private _warehouse = [];
+    {_warehouse pushBack (_x select 1)} forEach GRLIB_warehouse;
+
     // Save Blob
     private _lrx_liberation_savegame = [
         blufor_sectors,
@@ -202,7 +205,7 @@ if ( GRLIB_endgame == 1 ) then {
         GRLIB_garage,
         GRLIB_mod_west,
         GRLIB_mod_east,
-        GRLIB_warehouse,
+        _warehouse,
         _stats,
         [ round infantry_weight max 33, round armor_weight max 33, round air_weight max 33 ],
         GRLIB_vehicle_to_military_base_links,

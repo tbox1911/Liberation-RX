@@ -3,14 +3,7 @@
 
 params ["_warehouse"];
 
-if (count GRLIB_warehouse == 0) then {
-	GRLIB_warehouse = [
-		[waterbarrel_typename, 2],
-		[fuelbarrel_typename, 2],
-		[foodbarrel_typename, 1],
-		[basic_weapon_typename, 0]
-	];
-};
+waitUntil { sleep 1; count GRLIB_warehouse > 0 };
 
 if (isNil "GRLIB_WHS_Group") then {
 	GRLIB_WHS_Group = createGroup [GRLIB_side_civilian, true];
@@ -34,7 +27,7 @@ private _row2 = [
 private _row3 = [
 	// row 3 (Food)
 	[[-7,1,0], 0],
-	[[0,0,0],[2,0,0],[3,-1.5,0],[1,-1.5,0],[1,-0.5,0.9],[2.5,-1.3,0.9]]
+	[[0,0,0],[2,0,0],[3,-1.5,0],[1,-1.5,0],[0,1.5,0],[1,-0.5,0.9],[2.5,-1.3,0.9]]
 ];
 
 private _row4 = [
