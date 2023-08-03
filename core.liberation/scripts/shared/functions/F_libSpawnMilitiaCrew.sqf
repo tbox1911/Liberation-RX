@@ -14,11 +14,12 @@ private _commander = _grp createUnit [(selectRandom militia_squad), getpos _vehi
 _commander moveInCommander _vehicle;
 sleep 1;
 
+private _path = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_east, "crewman"];
 {
 	if ( vehicle _x == _x ) then {
 		deleteVehicle _x;
 	} else {
-		[_x] call loadout_crewman;
+		[_path, _x] call F_getTemplateFile; 
 		[_x] call reammo_ai;
 		_x addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
 		_x addMPEventHandler ["MPKilled", { _this spawn kill_manager }];

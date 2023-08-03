@@ -20,6 +20,7 @@ GRLIB_GM_enabled = isClass(configFile >> "cfgPatches" >> "gm_Core"); // Returns 
 GRLIB_CUPW_enabled = isClass(configFile >> "CfgPatches" >> "CUP_Weapons_AK"); // Returns true if CUP Weapons is enabled
 GRLIB_CUPU_enabled = isClass(configFile >> "CfgPatches" >> "CUP_Creatures_Extra"); // Returns true if CUP Units is enabled
 GRLIB_CUPV_enabled = isClass(configFile >> "CfgPatches" >> "CUP_AirVehciles_AH1Z"); // Returns true if CUP Vehicles is enabled
+GRLIB_CUP_enabled = (GRLIB_CUPU_enabled || GRLIB_CUPV_enabled); // Returns true if CUP is enabled
 GRLIB_EJW_enabled = isClass(configFile >> "CfgPatches" >> "Ej_u100"); // Returns true if EricJ Weapons is enabled
 GRLIB_RHSUS_enabled = isClass(configFile >> "CfgMods" >> "RHS_USAF"); // Returns true if RHS US is enabled
 GRLIB_RHSAF_enabled = isClass(configFile >> "CfgMods" >> "RHS_AFRF"); // Returns true if RHS AF is enabled
@@ -201,7 +202,7 @@ private _startsWithMultipleInv = {
 	_ret; 
 };
 
-if ( (!GRLIB_CUPU_enabled || !GRLIB_CUPV_enabled) && ["CP_", [GRLIB_mod_west, GRLIB_mod_east]] call _startsWithMultipleInv) then { abort_loading = true };
+if ( !GRLIB_CUP_enabled && ["CP_", [GRLIB_mod_west, GRLIB_mod_east]] call _startsWithMultipleInv) then { abort_loading = true };
 if ( !GRLIB_EJW_enabled && ["EJW_", [GRLIB_mod_west, GRLIB_mod_east]] call _startsWithMultipleInv) then { abort_loading = true };
 if ( !GRLIB_R3F_enabled && ["R3F_", [GRLIB_mod_west, GRLIB_mod_east]] call _startsWithMultipleInv) then { abort_loading = true };
 if ( !GRLIB_RHSUS_enabled && ["RHS_USAF", [GRLIB_mod_west, GRLIB_mod_east]] call _startsWithMultipleInv) then { abort_loading = true };
@@ -218,9 +219,9 @@ if ( !GRLIB_IFA_enabled && ["IFA_", [GRLIB_mod_west, GRLIB_mod_east]] call _star
 if (abort_loading) exitWith { abort_loading_msg = format [
 	"********************************\n
 	FATAL! - Invalid Side selection !\n\n
-	Missing MOD Addons for side West (%1) or side East (%2)\n\n
+	Missing MOD Addons for side West (%1) or East (%2)\n\n
 	Loading Aborted to protect data integrity.\n
-	Correct the Side selection.\n
+	Correct the Side selection or add needed Addons.\n
 	*********************************", GRLIB_mod_west, GRLIB_mod_east];
 };
 

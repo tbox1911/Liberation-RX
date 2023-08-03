@@ -42,7 +42,7 @@ private _grp = createGroup [_side, true];
 			_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 			[_unit] joinSilent _grp;
 			if (_type in ["militia", "guard"]) then {[ _unit ] call loadout_militia};
-			[ _unit ] call reammo_ai;
+			[_unit] call reammo_ai;
             _unit switchMove "AmovPercMwlkSrasWrflDf";
 			_unit playMoveNow "AmovPercMwlkSrasWrflDf";
             sleep 0.1;
