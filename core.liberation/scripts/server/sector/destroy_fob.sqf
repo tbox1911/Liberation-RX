@@ -2,13 +2,7 @@ _fobpos = _this select 0;
 
 GRLIB_all_fobs = GRLIB_all_fobs - [_fobpos];
 
-private _classnames_to_destroy = [];
-if (_fobpos in GRLIB_all_outposts) then {
-	_classnames_to_destroy = [FOB_outpost, FOB_sign];
-	GRLIB_all_outposts = GRLIB_all_outposts - [_fobpos];
-} else {
-	_classnames_to_destroy = [FOB_typename, FOB_sign];
-};
+private _classnames_to_destroy = [FOB_typename, FOB_outpost, FOB_sign, Warehouse_desk_typename];
 _classnames_to_destroy append all_buildings_classnames;
 
 publicVariable "GRLIB_all_fobs";
