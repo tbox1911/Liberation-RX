@@ -2,10 +2,9 @@ if ( isNil "active_sectors" ) then { active_sectors = [] };
 private [
 	"_usable_sectors",
 	"_spawnsector",
-	"_grp",
+	"_civ_grp",
 	"_civ_veh",
-	"_civ_unit",
-	"_civ_unit_ttl"
+	"_unit_ttl"
 ];
 
 while { GRLIB_endgame == 0 } do {
@@ -25,15 +24,12 @@ while { GRLIB_endgame == 0 } do {
 
 	if ( count _usable_sectors > 0 ) then {
 		_spawnsector = selectRandom _usable_sectors;
-		_civ_unit = [_spawnsector] call F_spawnCivilians;
-		if (!isNil "_civ_unit") then {
-			_grp = group _civ_unit;
-
-			// 40% in vehicles
+		_civ_grp = [_spawnsector] call F_spawnCivilians;
+		if (!isNull _civ_grp) then {
+				// 40% in vehicles
 			if ( floor(random 100) > 60 ) then {
 				_civ_veh = [markerPos _spawnsector, (selectRandom civilian_vehicles), false, false, GRLIB_side_civilian] call F_libSpawnVehicle;
-				_civ_unit moveInDriver _civ_veh;
-				_civ_unit assignAsDriver _civ_veh;
+				{ _x moveInAny _civ_veh } forEach (units _civ_grp);
 				_civ_veh lockDriver true;
 				_civ_veh lockCargo true;
 				_civ_veh addEventHandler ["HandleDamage", {
@@ -62,19 +58,19 @@ while { GRLIB_endgame == 0 } do {
 				};
 			};
 
-			[_grp] spawn add_civ_waypoints;
+			[_civ_grp] spawn add_civ_waypoints;
 
-			if ( local _grp ) then {
+			if (local _civ_grp) then {
 				_headless_client = [] call F_lessLoadedHC;
-				if ( !isNull _headless_client ) then {
-					_grp setGroupOwner ( owner _headless_client );
+				if (!isNull _headless_client) then {
+					_civ_grp setGroupOwner ( owner _headless_client );
 				};
 			};
 
-			_civ_unit_ttl = round(time + 1800);
+			_unit_ttl = round (time + 1800);
 			waitUntil {
 				sleep 30;
-				( (diag_fps < 25) || (!alive _civ_unit) || (round (speed vehicle _civ_unit) == 0) || (count ([getPosATL _civ_unit , 4000] call F_getNearbyPlayers) == 0) || (time > _civ_unit_ttl) )
+				( (diag_fps < 25) || ({alive _x} count (units _civ_grp) == 0) || (round (speed (leader _civ_grp)) == 0) || (count ([getPosATL (leader _civ_grp), 4000] call F_getNearbyPlayers) == 0) || (time > _unit_ttl) )
 			};
 
 			// Cleanup
@@ -84,8 +80,8 @@ while { GRLIB_endgame == 0 } do {
 					deleteVehicle _civ_veh;
 				};
 			};
-			deletevehicle _civ_unit;
-			deleteGroup _grp;
+			{ deleteVehicle _x } forEach (units _civ_grp);
+			deleteGroup _civ_grp;
 		};
 	};
 };
