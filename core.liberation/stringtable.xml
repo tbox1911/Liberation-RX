@@ -2000,6 +2000,9 @@
 			<Portuguese>200% - Servidor dedicado com vários clientes headless recomendados</Portuguese>
 			<Czech>200% - Doporučujeme dedikovaný server s několika headless klienty</Czech>
 		</Key>
+		<Key ID="STR_PARAMS_PATROLS">
+			<Original>Enable the Patrols Manager</Original>
+		</Key>		
 		<Key ID="STR_PARAMS_CIVILIANS">
 			<Original>Enable the Civilian Manager</Original>
 			<French>Activer le Gestionnaire de Civils</French>

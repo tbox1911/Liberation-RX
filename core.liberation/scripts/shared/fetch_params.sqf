@@ -140,6 +140,7 @@ GRLIB_max_spawn_point = ["MaxSpawnPoint",3] call _lrx_getParamValue;
 GRLIB_permissions_param = ["Permissions",1] call _lrx_getParamValue;
 GRLIB_permission_vehicles = ["EnableLock",1] call _lrx_getParamValue;
 GRLIB_civilian_activity = ["Civilians",1] call _lrx_getParamValue;
+GRLIB_patrols_activity = ["Patrols",1] call _lrx_getParamValue;
 GRLIB_wildlife_manager = ["Wildlife",1] call _lrx_getParamValue;
 GRLIB_civ_penalties = [ "CivPenalties",0] call _lrx_getParamValue;
 GRLIB_halo_param = ["HaloJump",1] call _lrx_getParamValue;

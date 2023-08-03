@@ -50,6 +50,7 @@ LRX_Mission_Params = [
 	["TK_mode", 1],					// Teamkill Mode [default 0] - values = [0,1,2] - Text {Strict,Relax,Disabled}
 	["TK_count", 4],				// Teamkill Warning Count [default 4] - values = [3, 4, 5, 6, 7, 8, 9, 10] - Text {3, 4, 5, 6, 7, 8, 9, 10}
 	["Civilians", 1],				// Cilivilian activity - [default 1] - values = [0,0.5,1,2] - Text {None,Reduced,Normal,Increased}
+	["Patrols", 1],					// Cilivilian activity - [default 1] - values = [0,0.5,1,2] - Text {None,Reduced,Normal,Increased}	
 	["Wildlife", 1],				// Wildlife Manager - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["PassiveIncome", 0],			// Replace ammo box spawns with passive income - [default 0] - values = [1,0] - Text {Enabled,Disabled}
 	["PassiveIncomeDelay", 1200],	// Passive Income Delay - values = {1200,1800,3600,7200,14400}
@@ -162,6 +163,14 @@ LRX_Mission_Params_Def = [
 		],
 		[0, 0.5, 1, 2]
 	],
+	["Patrols", localize "STR_PARAMS_PATROLS", [
+		localize "STR_PARAMS_DISABLED",
+		localize "STR_PARAMS_CIVILIANS1",
+		localize "STR_PARAMS_CIVILIANS2",
+		localize "STR_PARAMS_CIVILIANS3"
+		],
+		[0, 0.5, 1, 2]
+	],	
 	["HaloJump", localize "STR_HALO_PARAM", [
 		localize "STR_PARAMS_DISABLED",
 		localize "STR_HALO_PARAM1",

@@ -132,6 +132,7 @@ if (abort_loading) exitWith {
 [] execVM "scripts\server\resources\unit_cap.sqf";
 [] execVM "scripts\server\resources\manage_resources.sqf";
 [] execVM "scripts\server\patrols\civilian_patrols.sqf";
+[] execVM "scripts\server\patrols\enemy_patrols.sqf";
 [] execVM "scripts\server\sector\manage_sectors.sqf";
 [] execVM "scripts\server\sector\lose_sectors.sqf";
 [] execVM "scripts\server\game\manage_score.sqf";
