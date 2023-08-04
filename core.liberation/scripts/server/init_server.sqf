@@ -70,7 +70,6 @@ check_victory_conditions = compileFinal preprocessFileLineNumbers "scripts\serve
 attach_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\attach_object_direct.sqf";
 load_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\load_object_direct.sqf";
 get_rank = compileFinal preprocessFileLineNumbers "scripts\server\game\get_rank.sqf";
-launch_firework = compileFinal preprocessFileLineNumbers "scripts\server\game\launch_firework.sqf";
 
 // Bases
 fob_init = compileFinal preprocessFileLineNumbers "scripts\server\base\fob_init.sqf";

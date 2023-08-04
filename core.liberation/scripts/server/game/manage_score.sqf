@@ -110,7 +110,9 @@ while { true } do {
 					};
 
 					// fireworks !!
-					if (_firework) then { [getPosATL _x, _rounds] spawn launch_firework };
+					if (_firework) then { 
+						[getPosATL _x, _rounds] remoteExec ["remote_call_fireworks", 0];
+					};
 				};
 			};
 			_x setVariable ["GREUH_score_last", _cur];

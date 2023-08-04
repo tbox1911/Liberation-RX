@@ -3,14 +3,7 @@ diag_log format ["Sector %1 liberated", _liberated_sector];
 private _combat_readiness_increase = 0;
 
 if (_liberated_sector in (sectors_capture + sectors_bigtown) && (call is_night)) then {
-	for "_i" from 1 to 10 do {
-		_fire_pos = (markerPos _liberated_sector) findEmptyPosition [0, GRLIB_capture_size, "B_Quadbike_01_F"];
-		_fire_pos = [_fire_pos, random 50, random 360] call BIS_fnc_relPos;
-		[_fire_pos] spawn {
-			sleep (1 + random 3);
-			[_this select 0, 10] spawn launch_firework;
-		};
-	};
+	[markerPos _liberated_sector, 15] remoteExec ["remote_call_fireworks", 0];
 };
 
 if ( _liberated_sector in sectors_bigtown ) then {

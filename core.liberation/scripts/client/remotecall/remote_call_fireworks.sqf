@@ -1,6 +1,8 @@
 params ["_pos", ["_rounds", 1]];
 
+if (player distance2D _pos > GRLIB_sector_size) exitWith {};
 if (!(call is_night)) exitWith {};
+
 private _colors = [
 	[1,1,1],[1,0,0],[1,0,1],[1,1,0],
 	[0,1,0],[0,1,1],[1,0.5,0],
@@ -11,8 +13,8 @@ private _colors = [
 _pos = _pos vectorAdd [0,0, 25];
 playSound3D [getMissionPath "res\launch01.ogg", _pos, false, ATLtoASL _pos, 5, 1, 600];
 
-private _launcher = createVehicle ["CMflare_Chaff_Ammo", _pos, [], 0, "FLY"];
-private _light = "#lightpoint" createVehicle [0,0,0];
+private _launcher = "CMflare_Chaff_Ammo" createVehicleLocal _pos;
+private _light = "#lightpoint" createVehicleLocal [0,0,0];
 _light setLightBrightness 1;
 _light setLightAmbient [1,1,1];
 _light setLightColor [1,1,1];
@@ -30,8 +32,8 @@ for "_i" from 1 to _rounds do {
 		playSound3D [getMissionPath "res\bang01.ogg", _pos, false, ATLToASL _pos, 5, 1, 1800];
 		sleep 0.5;
 
-		private _flare = createVehicle ["CMflare_Chaff_Ammo", _pos, [], 2, "FLY"];
-		private _light = "#lightpoint" createVehicle [0,0,0];
+		private _flare = "CMflare_Chaff_Ammo" createVehicleLocal _pos;
+		private _light = "#lightpoint" createVehicleLocal [0,0,0];
 		_light setLightBrightness 2;
 		_light setLightAmbient _color;
 		_light setLightColor _color;
