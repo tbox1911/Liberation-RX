@@ -17,6 +17,9 @@ private _addContainerCargo = {
 // headgear
 _box addItemCargoGlobal [(headgear _unit), 1];
 
+// hmd
+_box addItemCargoGlobal [(hmd _unit), 1];
+
 // items
 //{_box addItemCargoGlobal [_x, 1]} forEach (assignedItems _unit - [binocular _unit]);
 
