@@ -163,6 +163,22 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 	};
 	if (abort_loading) exitWith {};
 
+	if (count _warehouse > 0) then {
+		GRLIB_warehouse = [
+			[waterbarrel_typename, (_warehouse select 0)],
+			[fuelbarrel_typename, (_warehouse select 1)],
+			[foodbarrel_typename, (_warehouse select 2)],
+			[basic_weapon_typename, (_warehouse select 3)]
+		];
+	} else {
+		GRLIB_warehouse = [
+			[waterbarrel_typename, 2],
+			[fuelbarrel_typename, 2],
+			[foodbarrel_typename, 1],
+			[basic_weapon_typename, 0]
+		];
+	};	
+
 	setDate [ GRLIB_date_year, GRLIB_date_month, GRLIB_date_day, time_of_day, 0];
 
 	stats_saves_loaded = stats_saves_loaded + 1;
@@ -376,26 +392,6 @@ if ( count GRLIB_vehicle_to_military_base_links == 0 ) then {
 {
 	if (count (_x nearObjects [FOB_outpost, 20]) > 0) then { GRLIB_all_outposts pushBack _x };
 } forEach GRLIB_all_fobs;
-
-if (count _warehouse > 0) then {
-	if (typeName (_warehouse select 0) == "STRING") then {
-		GRLIB_warehouse = _warehouse;
-	} else {
-		GRLIB_warehouse = [
-			[waterbarrel_typename, (_warehouse select 0)],
-			[fuelbarrel_typename, (_warehouse select 1)],
-			[foodbarrel_typename, (_warehouse select 2)],
-			[basic_weapon_typename, (_warehouse select 3)]
-		];
-	};
-} else {
-	GRLIB_warehouse = [
-		[waterbarrel_typename, 2],
-		[fuelbarrel_typename, 2],
-		[foodbarrel_typename, 1],
-		[basic_weapon_typename, 0]
-	];
-};
 
 publicVariable "GRLIB_garage";
 publicVariable "GRLIB_warehouse";
