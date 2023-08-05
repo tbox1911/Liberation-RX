@@ -11,7 +11,7 @@ private ["_nbUnits", "_townName"];
 _setupVars =
 {
 	_missionType = "STR_INSURGENCY";
-	_nbUnits = [] call getNbUnits;
+	_nbUnits = 16;
 
 	// settings for this mission
 	_missionLocation = [sectors_capture] call getMissionLocation;
@@ -34,17 +34,10 @@ _setupObjects =
 	// spawn some enemies
 	[_missionPos, 30] call createlandmines;
 	[_missionPos, 150, floor (random 6)] spawn ied_trap_manager;
-	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	_managed_units = (["militia", (_nbUnits - 4), _buildingpositions, _missionPos] call F_spawnBuildingSquad);
+	_aiGroup = [_missionPos, (_nbUnits - (count _managed_units)), "militia"] call createCustomGroup;
 	_managed_units joinSilent _aiGroup;
-
-	[_aiGroup, _missionPos, (_nbUnits - (count _managed_units)) , "militia"] call createCustomGroup;
-
-	{
-		_x setSkill ["courage", 1];
-		_x setVariable ["GRLIB_mission_AI", nil, true];
-	} forEach (units _aiGroup);
-
+	{ _x setVariable ["GRLIB_mission_AI", nil, true] } forEach (units _aiGroup);
 	_missionHintText = ["STR_INSURGENCY_MESSAGE1", sideMissionColor, _townName];
 	A3W_sectors_in_use = A3W_sectors_in_use + [_missionLocation];
 	true;

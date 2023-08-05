@@ -37,9 +37,7 @@ _setupObjects =
 	_vehicle allowDamage true;
 
 	[_missionPos, 30] call createlandmines;
-	_aiGroup = createGroup [GRLIB_side_enemy, true];
-	[_aiGroup, _missionPos, _nbUnits, "infantry"] call createCustomGroup;
-
+	_aiGroup = [_missionPos, _nbUnits, "infantry"] call createCustomGroup;
 	_missionPicture = getText (configOf _vehicle >> "picture");
 	_vehicleName = getText (configOf _vehicle >> "displayName");
 	_missionHintText = ["STR_HELI_CAP_MSG", _vehicleName, sideMissionColor];

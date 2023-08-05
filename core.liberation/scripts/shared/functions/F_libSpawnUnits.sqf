@@ -5,20 +5,17 @@ params [
     ["_type", "infantry"]           // type of unit
 ];
 
-private ["_unit", "_nb_unit", "_validpos", "_max_try"];
-if (count _classname == 0) exitWith {diag_log ["DBG: Error libunit ", _this]; grpNull};
-
-if (_type in ["divers", "para", "defender", "guard"]) then {
-	_nb_unit = count _classname;
-} else {
-	_nb_unit = round ((count _classname) * ([] call F_adaptiveOpforFactor));
-};
+private _nb_unit = count _classname;
+if (_nb_unit == 0) exitWith {diag_log ["--- LRX Error: no unit to create.", _this]; grpNull};
 
 if (_type != "civilian") then {
 	diag_log format [ "Spawn (%1) %2 Units (%3) at %4", _nb_unit, _type, _side, time ];
 };
 
 private _grp = createGroup [_side, true];
+if (isNull _grp) exitWith { diag_log "--- LRX Error: cannot create group."; grpNull};
+
+private ["_unit", "_validpos", "_max_try", "_backpack"];
 {
 	if ( (count units _grp) < _nb_unit) then {
 		_validpos = zeropos;

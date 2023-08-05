@@ -46,7 +46,7 @@ _setupObjects =
 	_chair1 setDir random 90;
 	_chair2 = createVehicle ["Land_CampingChair_V2_F", _missionPos, [], 2, "None"];
 	_chair2 setDir random 180;
-	_fire1	= createVehicle ["Campfire_burning_F", _missionPos, [], 2, "None"];
+	_fire1 = createVehicle ["Campfire_burning_F", _missionPos, [], 2, "None"];
 
 	// R3F disable
 	{ _x setVariable ["R3F_LOG_disabled", true, true] } forEach [_tent1, _chair1, _chair2, _fire1];
@@ -60,12 +60,8 @@ _setupObjects =
 
 	// spawn some resistance
 	_managed_units = (["resistance", 4, _buildingpositions, _missionPos] call F_spawnBuildingSquad);
-	if (count _managed_units > 0) then {
-		_aiGroupRes = group leader (_managed_units select 0);
-	} else {
-		_aiGroupRes = createGroup [GRLIB_side_resistance, true];
-	};
-	[_aiGroupRes, _missionPos, (_nbUnits - (count _managed_units)), "resistance"] call createCustomGroup;
+	_aiGroupRes = [_missionPos, (_nbUnits - (count _managed_units)), "resistance"] call createCustomGroup;
+	_managed_units joinSilent _aiGroup;
 
 	// create static weapons + crew
 	_veh1 = createVehicle [resistance_squad_static, _missionPos, [], 100, "None"];

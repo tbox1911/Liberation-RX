@@ -25,19 +25,18 @@ _setupObjects =
 	_missionPos = _missionPos getPos [80, random 360];
 	_vehicleClass = opfor_mrap_hmg;
 
-	// Spawn HVT
-	_grp_hvt = createGroup [GRLIB_side_enemy, true];
+	// Add guards
+	_grp_hvt = [_missionPos, 3, "guard", false] call createCustomGroup;
+	_grp_hvt setCombatMode "RED"; // Aggresive behaviour
+	_grp_hvt setBehaviour "AWARE";
+
+	// Add HVT
 	private _hvt = _grp_hvt createUnit [ opfor_officer, _missionPos, [], 0, "NONE"];
 	_hvt setVariable ["GRLIB_mission_AI", true, true];
 	_hvt addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage }];
 	_hvt addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	[_hvt] joinSilent _grp_hvt;
 	_hvt setrank "COLONEL";
-	
-	// Add guards
-	[_grp_hvt, _missionPos, 3, "guard", false] call createCustomGroup;
-	_grp_hvt setCombatMode "RED"; // Aggresive behaviour
-	_grp_hvt setBehaviour "AWARE";
 
 	sleep 1;
 	private _building = nearestBuilding (getPosATL _hvt) buildingPos -1;
@@ -65,8 +64,7 @@ _setupObjects =
 	(crew _vehicle1) joinSilent _grp_hmg;
 
 	// Patrolgroup
-	_aiGroup = createGroup [GRLIB_side_enemy, true];
-	[_aiGroup, _hvt_pos, _nbUnits, "infantry", true, 40] call createCustomGroup;
+	_aiGroup = [_hvt_pos, _nbUnits, "infantry", true, 40] call createCustomGroup;
 	_aiGroup setCombatMode "WHITE"; // Defensive behaviour
 	_aiGroup setBehaviour "AWARE";
 	_aiGroup setFormation "WEDGE";

@@ -91,9 +91,8 @@ _setupObjects =
 	_veh2 setPos _veh2_pos;
 
 	//----- spawn units ---------------------------------
-	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	_nbUnits = 3;
-	[_aiGroup, _missionPos, _nbUnits, "guard"] call createCustomGroup;
+	_aiGroup = [_missionPos, _nbUnits, "guard"] call createCustomGroup;
 
 	_guard = (units _aiGroup) select 0;
 	_guard setPos (getPos _bunker);
@@ -112,7 +111,8 @@ _setupObjects =
 	_veh2 setVariable ["GRLIB_vehicle_gunner", [_gunner]];
 
 	_nbUnits = [] call getNbUnits;
-	[_aiGroup, _missionPos, _nbUnits, "infantry"] call createCustomGroup;
+	_grp = [_missionPos, _nbUnits, "infantry"] call createCustomGroup;
+	{ [_x] joinSilent _aiGroup } forEach (units _grp);
 
 	_missionPicture = "\A3\Static_f_gamma\data\ui\gear_StaticTurret_GMG_CA.paa";
 	_missionHintText = "STR_ROADBLOCK_MESSAGE1";

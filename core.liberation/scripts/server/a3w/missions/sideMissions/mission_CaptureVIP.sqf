@@ -27,8 +27,7 @@ _setupObjects =
 	_vehicle1 allowCrewInImmobile [true, true];
 	_vehicle1 setVariable ["GRLIB_mission_AI", true, true];
 	_vehicle1 addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage }];
-	_grp = createGroup [GRLIB_side_enemy, true];
-	[_grp, _missionPos, 5, "guard"] call createCustomGroup;
+	_grp = [_missionPos, 5, "guard"] call createCustomGroup;
 	{ _x moveInAny _vehicle1; [_x] joinSilent _aiGroup } forEach (units _grp);
 	(driver _vehicle1) limitSpeed 50;
 	sleep 2;
@@ -39,8 +38,7 @@ _setupObjects =
 	_vehicle2 setVariable ["GRLIB_mission_AI", true, true];
 	_vehicle2 addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage }];
 	_vehicle2 setConvoySeparation 30;
-	_grp = createGroup [GRLIB_side_enemy, true];
-	[_grp, _missionPos, 4, "guard"] call createCustomGroup;
+	_grp = [_missionPos, 4, "guard"] call createCustomGroup;
 	{ _x moveInAny _vehicle2; [_x] joinSilent _aiGroup } forEach (units _grp);
 
 	// VIP
@@ -60,8 +58,7 @@ _setupObjects =
 	_vehicle3 setVariable ["GRLIB_mission_AI", true, true];
 	_vehicle3 addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage }];
 	_vehicle3 setConvoySeparation 30;
-	_grp = createGroup [GRLIB_side_enemy, true];
-	[_grp, _missionPos, 5, "guard"] call createCustomGroup;
+	_grp = [_missionPos, 5, "guard"] call createCustomGroup;
 	{ _x moveInAny _vehicle3; [_x] joinSilent _aiGroup } forEach (units _grp);
 	sleep 2;
 

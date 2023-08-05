@@ -27,11 +27,8 @@ _setupObjects =
 	_vehicle setHit [getText (configFile >> "cfgVehicles" >> (typeOf _vehicle) >> "HitPoints" >> "HitEngine" >> "name"), 1];
 	_smoke = "test_EmptyObjectForSmoke" createVehicle _vehiclePos;
 	_smoke attachTo [_vehicle, [0, 1.5, 0]];
-
 	[_missionPos, 30] call createlandmines;
-	_aiGroup = createGroup [GRLIB_side_enemy, true];
-	[_aiGroup, _missionPos, _nbUnits, "infantry"] call createCustomGroup;
-
+	_aiGroup = [_missionPos, _nbUnits, "infantry"] call createCustomGroup;
 	_missionPicture = getText (configOf _vehicle >> "picture");
 	_vehicleName = getText (configOf _vehicle >> "displayName");
 	_missionHintText = ["STR_VEHICLECAP_MESSAGE1", _vehicleName, sideMissionColor];
