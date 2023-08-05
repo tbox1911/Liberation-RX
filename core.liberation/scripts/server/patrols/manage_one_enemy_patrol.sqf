@@ -63,15 +63,17 @@ while { GRLIB_endgame == 0 } do {
 			( (diag_fps < 25) || ({alive _x} count (units _opfor_grp) == 0) || (count ([getPosATL (leader _opfor_grp) , 3000] call F_getNearbyPlayers) == 0) || (time > _unit_ttl) )
 		};
 
-		// Cleanup
-		if (!isNull _opfor_veh) then {
-			if ( ({(alive _x) && (side group _x == GRLIB_side_friendly)} count (crew _opfor_veh) == 0) || [_opfor_veh] call is_abandoned ) then {
-				[_opfor_veh] call clean_vehicle;
-				deleteVehicle _opfor_veh;
+		if ({alive _x} count (units _opfor_grp) > 0) then {
+			// Cleanup
+			if (!isNull _opfor_veh) then {
+				if ( ({(alive _x) && (side group _x == GRLIB_side_friendly)} count (crew _opfor_veh) == 0) || [_opfor_veh] call is_abandoned ) then {
+					[_opfor_veh] call clean_vehicle;
+					deleteVehicle _opfor_veh;
+				};
 			};
-		};
 
-		{ deleteVehicle _x } forEach (units _opfor_grp);
-		deleteGroup _opfor_grp;
+			{ deleteVehicle _x } forEach (units _opfor_grp);
+			deleteGroup _opfor_grp;
+		};
 	};
 };
