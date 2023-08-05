@@ -155,6 +155,7 @@ _successExec = {
 			[gamelogic, _text] remoteExec ["globalChat", owner _x];
 		};
 	} forEach (AllPlayers - (entities "HeadlessClient_F"));
+	{ deleteVehicle _x } forEach [_bunker, _def1, _def2];
 
 	_successHintMessage = "STR_ROADBLOCK_MESSAGE2";
 };
