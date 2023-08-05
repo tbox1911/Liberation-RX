@@ -111,7 +111,6 @@ air_vehicles = [
 	["C_Plane_Civil_01_F",1,50,5,GRLIB_perm_air],
 	["B_Heli_Light_01_F",1,50,15,GRLIB_perm_log],
 	["B_Heli_Light_01_dynamicLoadout_F",1,150,15,GRLIB_perm_tank],
-	["B_Heli_Transport_03_unarmed_F",10,1500,35,GRLIB_perm_tank],
 	["B_Heli_Transport_03_F",10,1700,35,GRLIB_perm_air],
 	["B_Heli_Transport_01_F",10,2000,35,GRLIB_perm_tank],
 	["B_T_VTOL_01_infantry_F",10,1300,40,GRLIB_perm_air],
