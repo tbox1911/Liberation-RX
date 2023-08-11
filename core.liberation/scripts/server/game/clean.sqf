@@ -145,8 +145,7 @@ while {deleteManagerPublic} do {
 				if (_x isKindOf "CAManBase") then {
 					deleteVehicle _x;
 				} else {
-					[_x] call clean_vehicle;
-					deleteVehicle _x;
+					[_x] spawn clean_vehicle;
 				};
 				_stats = _stats + 1;
 			};
@@ -191,8 +190,7 @@ while {deleteManagerPublic} do {
 			if (_vehicleDistCheck) then {
 				{
 					if ([_x,_vehicleDist,(playableUnits + switchableUnits)] call _isHidden) then {
-						[_x] call clean_vehicle;
-						deleteVehicle _x;
+						[_x] spawn clean_vehicle;
 						_stats = _stats + 1;
 					};
 				} count (_nbVehicles);
@@ -200,8 +198,7 @@ while {deleteManagerPublic} do {
 
 			while {(( (count (_nbVehicles)) - _vehiclesLimit) > 0)} do {
 				_veh = selectRandom (_nbVehicles);
-				[_veh] call clean_vehicle;
-				deleteVehicle _veh;
+				[_veh] spawn clean_vehicle;
 				_stats = _stats + 1;
 				sleep 0.2;
 			};
@@ -214,8 +211,7 @@ while {deleteManagerPublic} do {
 			if (_deadVehicleDistCheck) then {
 				{
 					if ([_x,_deadVehicleDist,(playableUnits + switchableUnits)] call _isHidden) then {
-						[_x] call clean_vehicle;
-						deleteVehicle _x;
+						[_x] spawn clean_vehicle;
 						_stats = _stats + 1;
 					};
 				} count (allDead - allDeadMen);
@@ -223,8 +219,7 @@ while {deleteManagerPublic} do {
 
 			while {(((count (allDead - allDeadMen)) - _deadVehiclesLimit) > 0)} do {
 				_veh = selectRandom (allDead - allDeadMen);
-				[_veh] call clean_vehicle;
-				deleteVehicle _veh;
+				[_veh] spawn clean_vehicle;
 				_stats = _stats + 1;
 				sleep 0.2;
 			};

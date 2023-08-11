@@ -1,6 +1,8 @@
 params ["_vehicle"];
 if (isNull _vehicle) exitWith {};
 if (!isNull (_vehicle getVariable ["R3F_LOG_est_transporte_par", objNull])) exitWith {};
+if (!((_vehicle getVariable ["GRLIB_vehicle_owner", ""]) in ["", "server"])) exitWith {};
+if ({(side group _x == GRLIB_side_friendly)} count (crew _vehicle) > 0) exitWith {};
 
 diag_log format [ "Cleanup vehicle %1 at %2", typeOf _vehicle, time ];
 
@@ -9,7 +11,7 @@ detach _vehicle;
 sleep 0.2;
 
 // Delete R3F Cargo
-{[_x] remoteExec ["deleteVehicle", 0]} forEach (_vehicle getVariable ["R3F_LOG_objets_charges", []]);
+{ deleteVehicle _x } forEach (_vehicle getVariable ["R3F_LOG_objets_charges", []]);
 _vehicle setVariable ["R3F_LOG_objets_charges", [], true];
 sleep 0.2;
 
@@ -37,5 +39,8 @@ clearItemCargoGlobal _vehicle;
 clearBackpackCargoGlobal _vehicle;
 
 // Delete Crew
-{if (! alive _x) then {[_x] remoteExec ["deleteVehicle", 0]}} forEach crew _vehicle;
+{ moveOut _x; deleteVehicle _x } forEach (crew _vehicle);
 _vehicle removeAllEventHandlers "HandleDamage";
+
+// Delete Vehicle
+if (alive _vehicle) then { deleteVehicle _vehicle };

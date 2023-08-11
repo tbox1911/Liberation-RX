@@ -74,12 +74,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 			};
 
 			// Cleanup
-			if (!isNull _civ_veh) then {
-				if ( ({(alive _x) && (side group _x == GRLIB_side_friendly)} count (crew _civ_veh) == 0) || [_civ_veh] call is_abandoned ) then {
-					[_civ_veh] call clean_vehicle;
-					deleteVehicle _civ_veh;
-				};
-			};
+			if (!isNull _civ_veh) then { [_civ_veh] spawn clean_vehicle };
 			{ deleteVehicle _x } forEach (units _civ_grp);
 			deleteGroup _civ_grp;
 		};

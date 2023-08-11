@@ -17,8 +17,7 @@ if (_cmd == 1) then {
 	private _lst_r3f = [];
 	{ _lst_r3f pushback (typeOf _x)} forEach (_veh getVariable ["R3F_LOG_objets_charges", []]);
 	GRLIB_garage append [[typeOf _veh, _color, _ammo, _owner, _lst_a3, _lst_r3f, _compo]];
-	[_veh] call clean_vehicle;
-	deleteVehicle _veh;
+	[_veh] spawn clean_vehicle;
 };
 
 // Unload

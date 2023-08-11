@@ -184,7 +184,8 @@ if ( isServer ) then {
 			deleteVehicle _unit;
 		};
 
-		if ((_unit iskindof "LandVehicle") || (_unit iskindof "Air") || (_unit iskindof "Ship") ) then {
+		 if (typeOf _unit isKindOf "AllVehicles") then {
+			_unit setVariable ["GRLIB_vehicle_owner", "", true];
 			[_unit] spawn clean_vehicle;
 		};
 
