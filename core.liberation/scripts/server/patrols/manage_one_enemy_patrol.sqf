@@ -7,7 +7,7 @@ private [
 	"_unit_ttl"
 ];
 
-while { GRLIB_endgame == 0 } do {
+while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	sleep (30 + floor(random 30));
 	while { [] call F_opforCap > GRLIB_patrol_cap || (diag_fps < 35.0) || combat_readiness < 30} do {
 		sleep (30 + floor(random 30));
@@ -60,7 +60,7 @@ while { GRLIB_endgame == 0 } do {
 		_unit_ttl = round (time + 1800);
 		waitUntil {
 			sleep 30;
-			( (diag_fps < 25) || ({alive _x} count (units _opfor_grp) == 0) || (count ([getPosATL (leader _opfor_grp) , 3000] call F_getNearbyPlayers) == 0) || (time > _unit_ttl) )
+			( GRLIB_global_stop == 1 || (diag_fps < 25) || ({alive _x} count (units _opfor_grp) == 0) || (count ([getPosATL (leader _opfor_grp) , 3000] call F_getNearbyPlayers) == 0) || (time > _unit_ttl) )
 		};
 
 		// Cleanup

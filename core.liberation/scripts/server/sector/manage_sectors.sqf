@@ -4,8 +4,7 @@ publicVariable "active_sectors";
 waitUntil {sleep 1; !isNil "blufor_sectors" };
 waitUntil {sleep 1; !isNil "sectors_allSectors" };
 
-while { GRLIB_endgame == 0 } do {
-
+while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	{
 		private [ "_nextsector", "_corrected_sector_size", "_opforcount" ];
 

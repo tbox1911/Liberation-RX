@@ -4987,78 +4987,6 @@
 					&lt;t size='10'&gt;&lt;img image='res\secondary\convoy_obj.jpg'/&gt;&lt;/t&gt;
 			</Czech>
 		</Key>
-
-		<!-- Added in v0.922 -->
-		<Key ID="STR_PARAM_BLUFOR_DEFENDERS">
-			<Original>BLUFOR defenders in owned sectors</Original>
-			<French>Défenseurs BLUFOR dans les secteurs capturés</French>
-			<German>BLUFOR Verteidiger in besetzten Sektoren</German>
-			<Russian>BLUFOR защитники в захваченных зонах</Russian>
-			<Chinesesimp>BLUFOR所属地区的保护者</Chinesesimp>
-			<Chinese>BLUFOR所屬地區的保護者</Chinese>
-			<Japanese>友軍の守備隊が解放した街に常駐</Japanese>
-			<Portuguese>Defensores do BLUFOR em setores próprios</Portuguese>
-			<Czech>Obránci ve vlastněných sektorech</Czech>
-		</Key>
-		<Key ID="STR_PARAM_FOBS_COUNT">
-			<Original>Maximum number of FOBs allowed</Original>
-			<French>Nombre maximal de FOBs autorisées</French>
-			<German>Maximale Anzahl an erlaubten FOBs</German>
-			<Russian>Максимальное количество FOB</Russian>
-			<Chinesesimp>允许的最大FOB数</Chinesesimp>
-			<Chinese>允許的最大FOB數</Chinese>
-			<Japanese>最大建設可能FOB</Japanese>
-			<Portuguese>Número máximo de FOBs permitido</Portuguese>
-			<Czech>Maximální povolený počet FOB</Czech>
-		</Key>
-		<Key ID="STR_PARAM_FOB_TYPE">
-			<Original>Startup FOB Vehicle</Original>
-			<French>Type du vehicle de FOB</French>
-			<Chinesesimp>启动FOB车辆</Chinesesimp>
-			<Chinese>啟動FOB車輛</Chinese>
-			<Japanese>ミッション開始時のFOBタイプ</Japanese>
-			<Portuguese>Veículo FOBS de Inicialização</Portuguese>
-			<Czech>FOB Vozidlo</Czech>
-		</Key>
-		<Key ID="STR_PARAM_HURON_TYPE">
-			<Original>The type of Huron</Original>
-			<French>Le type de Huron</French>
-			<Chinesesimp>移动重生直升机类型</Chinesesimp>
-			<Chinese>移動重生直升機類型</Chinese>
-			<Japanese>Huronのタイプ</Japanese>
-			<Portuguese>O tipo de Huron</Portuguese>
-			<Czech>FOB Kontejnér</Czech>
-		</Key>
-		<Key ID="STR_HINT_FOB_WRONG_OWNER">
-			<Original>You are NOT the Owner of the FOB!</Original>
-			<French>Vous n'êtes PAS le propriétaire de la FOB!</French>
-		</Key>
-		<Key ID="STR_HINT_OUTPOST_WRONG_OWNER">
-			<Original>You are NOT the Owner of the Outpost!</Original>
-			<French>Vous n'êtes PAS le propriétaire du Poste Avancé FOB!</French>
-		</Key>
-		<Key ID="STR_HINT_FOBS_EXCEEDED">
-			<Original>You are NOT allowed to deploy more than %1 FOBs at the same time.</Original>
-			<French>Vous n'êtes pas autorisé à déployer plus de %1 FOBs en même temps.</French>
-			<German>Sie haben nicht die Erlaubnis mehr als %1 FOBs zur selben Zeit zu errichten.</German>
-			<Russian>Вам не разрешено развертывать более %1 FOB одновременно.</Russian>
-			<Chinesesimp>不允许同时部署超过 %1 个FOB。</Chinesesimp>
-			<Chinese>不允許同時部署超過 %1 個FOB。</Chinese>
-			<Japanese>あなたは同時に %1 以上のFOBを建設する事は出来ません。</Japanese>
-			<Portuguese>Você não tem permissão para implantar mais de %1 FOBs ao mesmo tempo.</Portuguese>
-			<Czech>Není povoleno nasadit více než %1 FOB současně.</Czech>
-		</Key>
-		<Key ID="STR_HINT_LOADOUT_LOADED">
-			<Original>%1 loadout successfully loaded.</Original>
-			<French>Equipement %1 chargé avec succès.</French>
-			<German>Ausrüstungsset %1 erfolgreich geladen.</German>
-			<Russian>Снаряжение %1 успешно загружено.</Russian>
-			<Chinesesimp>%1 装备成功加载。</Chinesesimp>
-			<Chinese>%1 裝備成功加載。</Chinese>
-			<Japanese>%1 装備が正常に呼び出されました。</Japanese>
-			<Portuguese>Carregamento %1 carregado com sucesso.</Portuguese>
-			<Czech>Vybavení %1 bylo úspěšně načteno.</Czech>
-		</Key>
 		<Key ID="STR_SECONDARY_MISSION2">
 			<Original>Search and Rescue</Original>
 			<Russian>Поиск и спасение</Russian>
@@ -5206,8 +5134,116 @@
 					&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
 			</Czech>
 		</Key>
-
-		<!-- Added in v0.924 -->
+<Key ID="STR_SECONDARY_MISSION3">
+			<Original>Armageddon</Original>
+			<French>Armageddon</French>
+		</Key>
+		<Key ID="STR_SECONDARY_BRIEFING3">
+			<Original>
+					&lt;t size='1.3' color='#ffa000'&gt;ARMAGEDDON&lt;/t&gt;
+					&lt;br/&gt;&lt;br/&gt;
+					&lt;t size='1'&gt;
+					OPFOR forces has developed a monstrous weapon, if they manage to use it it will be the end of our presence in this region.&lt;/t&gt;
+					&lt;br/&gt;&lt;br/&gt;
+					&lt;t size='1'&gt;
+					Your mission is to destroy this weapon before it goes off. All soldiers must join forces for the ultimate battle between good and the forces of evil.&lt;/t&gt;
+					&lt;br/&gt;
+					There will be no second chance...
+					&lt;br/&gt;&lt;br/&gt;
+					&lt;t size='1.15' color='#00a0ff'&gt;Cost: 100&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
+					&lt;br/&gt;
+					&lt;t size='1.15' color='#ffa000'&gt;Reward: Immediate victory for our side.&lt;/t&gt;
+					&lt;br/&gt;&lt;br/&gt;
+					&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
+			</Original>
+			<French>
+					&lt;t size='1.3' color='#ffa000'&gt;ARMAGEDDON&lt;/t&gt;
+					&lt;br/&gt;&lt;br/&gt;
+					&lt;t size='1'&gt;
+					Les forces de l'OPFOR ont developpé une arme monstrueuse, s'ils arrivent à l'utiliser ce sera la fin de notre presence dans cette region.&lt;/t&gt;
+					&lt;br/&gt;&lt;br/&gt;
+					&lt;t size='1'&gt;
+					Votre mission est de détruire cette arme avant son declenchement. Tous les soldats doivent unir leur force pour l'utime combat entre le bien et les forces du mal.&lt;/t&gt;
+					&lt;br/&gt;
+					Il n'y aura pas de seconde chance...
+					&lt;br/&gt;&lt;br/&gt;
+					&lt;t size='1.15' color='#00a0ff'&gt;Coût: 800&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
+					&lt;br/&gt;
+					&lt;t size='1.15' color='#ffa000'&gt;Récompense: Victoire immédiate de notre camp.&lt;/t&gt;
+					&lt;br/&gt;&lt;br/&gt;
+					&lt;t size='10'&gt;&lt;img image='res\secondary\final_situation.jpg'/&gt;&lt;/t&gt;
+			</French>
+		</Key>
+		<Key ID="STR_PARAM_BLUFOR_DEFENDERS">
+			<Original>BLUFOR defenders in owned sectors</Original>
+			<French>Défenseurs BLUFOR dans les secteurs capturés</French>
+			<German>BLUFOR Verteidiger in besetzten Sektoren</German>
+			<Russian>BLUFOR защитники в захваченных зонах</Russian>
+			<Chinesesimp>BLUFOR所属地区的保护者</Chinesesimp>
+			<Chinese>BLUFOR所屬地區的保護者</Chinese>
+			<Japanese>友軍の守備隊が解放した街に常駐</Japanese>
+			<Portuguese>Defensores do BLUFOR em setores próprios</Portuguese>
+			<Czech>Obránci ve vlastněných sektorech</Czech>
+		</Key>
+		<Key ID="STR_PARAM_FOBS_COUNT">
+			<Original>Maximum number of FOBs allowed</Original>
+			<French>Nombre maximal de FOBs autorisées</French>
+			<German>Maximale Anzahl an erlaubten FOBs</German>
+			<Russian>Максимальное количество FOB</Russian>
+			<Chinesesimp>允许的最大FOB数</Chinesesimp>
+			<Chinese>允許的最大FOB數</Chinese>
+			<Japanese>最大建設可能FOB</Japanese>
+			<Portuguese>Número máximo de FOBs permitido</Portuguese>
+			<Czech>Maximální povolený počet FOB</Czech>
+		</Key>
+		<Key ID="STR_PARAM_FOB_TYPE">
+			<Original>Startup FOB Vehicle</Original>
+			<French>Type du vehicle de FOB</French>
+			<Chinesesimp>启动FOB车辆</Chinesesimp>
+			<Chinese>啟動FOB車輛</Chinese>
+			<Japanese>ミッション開始時のFOBタイプ</Japanese>
+			<Portuguese>Veículo FOBS de Inicialização</Portuguese>
+			<Czech>FOB Vozidlo</Czech>
+		</Key>
+		<Key ID="STR_PARAM_HURON_TYPE">
+			<Original>The type of Huron</Original>
+			<French>Le type de Huron</French>
+			<Chinesesimp>移动重生直升机类型</Chinesesimp>
+			<Chinese>移動重生直升機類型</Chinese>
+			<Japanese>Huronのタイプ</Japanese>
+			<Portuguese>O tipo de Huron</Portuguese>
+			<Czech>FOB Kontejnér</Czech>
+		</Key>
+		<Key ID="STR_HINT_FOB_WRONG_OWNER">
+			<Original>You are NOT the Owner of the FOB!</Original>
+			<French>Vous n'êtes PAS le propriétaire de la FOB!</French>
+		</Key>
+		<Key ID="STR_HINT_OUTPOST_WRONG_OWNER">
+			<Original>You are NOT the Owner of the Outpost!</Original>
+			<French>Vous n'êtes PAS le propriétaire du Poste Avancé FOB!</French>
+		</Key>
+		<Key ID="STR_HINT_FOBS_EXCEEDED">
+			<Original>You are NOT allowed to deploy more than %1 FOBs at the same time.</Original>
+			<French>Vous n'êtes pas autorisé à déployer plus de %1 FOBs en même temps.</French>
+			<German>Sie haben nicht die Erlaubnis mehr als %1 FOBs zur selben Zeit zu errichten.</German>
+			<Russian>Вам не разрешено развертывать более %1 FOB одновременно.</Russian>
+			<Chinesesimp>不允许同时部署超过 %1 个FOB。</Chinesesimp>
+			<Chinese>不允許同時部署超過 %1 個FOB。</Chinese>
+			<Japanese>あなたは同時に %1 以上のFOBを建設する事は出来ません。</Japanese>
+			<Portuguese>Você não tem permissão para implantar mais de %1 FOBs ao mesmo tempo.</Portuguese>
+			<Czech>Není povoleno nasadit více než %1 FOB současně.</Czech>
+		</Key>
+		<Key ID="STR_HINT_LOADOUT_LOADED">
+			<Original>%1 loadout successfully loaded.</Original>
+			<French>Equipement %1 chargé avec succès.</French>
+			<German>Ausrüstungsset %1 erfolgreich geladen.</German>
+			<Russian>Снаряжение %1 успешно загружено.</Russian>
+			<Chinesesimp>%1 装备成功加载。</Chinesesimp>
+			<Chinese>%1 裝備成功加載。</Chinese>
+			<Japanese>%1 装備が正常に呼び出されました。</Japanese>
+			<Portuguese>Carregamento %1 carregado com sucesso.</Portuguese>
+			<Czech>Vybavení %1 bylo úspěšně načteno.</Czech>
+		</Key>
 		<Key ID="STR_CIV_PENALTIES">
 			<Original>Penalty for killing civilians</Original>
 			<Russian>Штраф за убийство гражданских</Russian>

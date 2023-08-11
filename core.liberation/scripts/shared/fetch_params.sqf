@@ -155,6 +155,7 @@ GRLIB_server_persistent = ["Persistent",0] call _lrx_getParamValue;
 
 // Hardcoded
 GRLIB_endgame = 0;
+GRLIB_global_stop = 0;
 GRLIB_min_score_player = 20;	// Minimal player score to be saved
 GRLIB_blufor_cap = GRLIB_blufor_cap * GRLIB_unitcap;
 GRLIB_sector_cap = GRLIB_sector_cap * GRLIB_unitcap;

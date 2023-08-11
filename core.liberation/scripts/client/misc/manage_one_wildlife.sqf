@@ -1,7 +1,7 @@
 waitUntil {sleep 1; !isNil "sectors_allSectors" };
 waitUntil {sleep 1; GRLIB_player_spawned};
 
-while { GRLIB_endgame == 0 } do {
+while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	sleep (30 + floor(random 30));
 
 	private _spawn_life = (
@@ -17,7 +17,7 @@ while { GRLIB_endgame == 0 } do {
 
 		waitUntil {
 			sleep 20;
-			( (diag_fps < 20) || (!alive _unit) || ({alive _x} count _managed_units) == 0 || ({_unit distance2D _x > GRLIB_sector_size || surfaceIsWater (getPos _x)} count _managed_units) > 0 )
+			( GRLIB_global_stop == 1 || (diag_fps < 20) || (!alive _unit) || ({alive _x} count _managed_units) == 0 || ({_unit distance2D _x > GRLIB_sector_size || surfaceIsWater (getPos _x)} count _managed_units) > 0 )
 		};
 
 		{ deleteVehicle _x } forEach _managed_units;
