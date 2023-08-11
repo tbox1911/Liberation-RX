@@ -163,6 +163,7 @@ GRLIB_battlegroup_cap = GRLIB_battlegroup_cap * (sqrt GRLIB_unitcap) * (sqrt GRL
 GRLIB_patrol_cap = GRLIB_patrol_cap * GRLIB_unitcap;
 GRLIB_battlegroup_size = GRLIB_battlegroup_size * GRLIB_unitcap;
 GRLIB_civilians_amount = GRLIB_civilians_amount * GRLIB_civilian_activity;
+GRLIB_secondary_missions_costs = [ 100, 50, 10, 800 ];
 
 // Select MOD name
 GRLIB_mod_west = "";
