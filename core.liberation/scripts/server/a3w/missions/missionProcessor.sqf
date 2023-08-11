@@ -112,8 +112,10 @@ waitUntil {
 		_complete = true;
 	};
 
-	(GRLIB_endgame == 1 || _failed || _complete || (!_ignoreAiDeaths && {alive _x} count units _aiGroup == 0))
+	(GRLIB_endgame == 1 || GRLIB_global_stop == 1 || _failed || _complete || (!_ignoreAiDeaths && {alive _x} count units _aiGroup == 0))
 };
+
+if (GRLIB_endgame == 1 || GRLIB_global_stop == 1) then { _failed = true };
 
 if (_failed) then {
 	// Mission failed
