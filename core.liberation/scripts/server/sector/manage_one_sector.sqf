@@ -160,7 +160,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 		};
 	};
 
-	_managed_units = _managed_units + ( [ _sectorpos ] call F_spawnMilitaryPostSquad );
+	_managed_units = _managed_units + ([_sectorpos] call F_spawnMilitaryPostSquad);
 
 	if ( count _squad1 > 0 ) then {
 		_grp = [ _sector, _infsquad, _squad1 ] call F_spawnRegularSquad;
@@ -190,11 +190,9 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 		private _nbcivs = round ((5 + (floor (random 5))) * GRLIB_civilian_activity);
 		if ( _sector in sectors_bigtown ) then { _nbcivs = _nbcivs + 10 };
 		for "_i" from 1 to _nbcivs do {
-			private _civ_unit = [_sector] call F_spawnCivilians;
-			if (!isNil "_civ_unit") then {
-				[group _civ_unit] spawn add_civ_waypoints;
-				_managed_units pushBack _civ_unit;
-			};
+			_grp = [_sector] call F_spawnCivilians;
+			[_grp] spawn add_civ_waypoints;
+			_managed_units = _managed_units + (units _grp);
 		};
 	};
 
@@ -232,13 +230,6 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 			};
 
 			if ( _sector_despawn_tickets <= 0 ) then {
-				{
-					if (_x isKindOf "CAManBase") then {
-						deleteVehicle _x;
-					} else {
-						if (count(crew _x) > 0) then { deleteVehicle _x	};
-					};
-				} foreach _managed_units;
 				_stopit = true;
 				active_sectors = active_sectors - [ _sector ];
 				publicVariable "active_sectors";
@@ -253,3 +244,13 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 };
 
 diag_log format ["End Defend Sector %1 at %2", _sector, time];
+
+// Cleanup
+waitUntil { sleep 10; [markerpos _sector, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0 };
+{
+	if (_x isKindOf "CAManBase") then {
+		deleteVehicle _x;
+	} else {
+		[_x] spawn clean_vehicle;
+	};
+} foreach _managed_units;
