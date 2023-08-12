@@ -24,7 +24,6 @@ opfor_engineer = "I_engineer_F";
 opfor_pilot = "I_Pilot_F";
 opfor_crew = "I_crew_F";
 opfor_paratrooper = "I_soldier_F";
-opfor_mrap = "I_MRAP_02_F";
 opfor_mrap_hmg = "I_MRAP_02_hmg_F";
 opfor_mrap_gmg = "I_MRAP_02_gmg_F";
 opfor_transport_helo = "I_Heli_Transport_04_bench_F";

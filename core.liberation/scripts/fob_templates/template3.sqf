@@ -28,7 +28,6 @@ _objects_to_build = [
     [ "Land_HBarrierBig_F", [21.1, -16.14, 0], 90.4 ],
     [ "Land_HBarrierBig_F", [15.97, -21.41, 0], 1.39 ],
     [ opfor_flag, [18.67, -19.05, 0], 90 ],
-    [ opfor_mrap, [11.09, 25.14, 0.01], 268.69 ],
     [ opfor_flag, [-20.66, -18.6, 0], 90 ],
     [ "Land_HBarrierBig_F", [-23.05, -15.49, 0], 271.36 ],
     [ "Land_HBarrierBig_F", [20.55, 19.13, 0], 89.37 ],

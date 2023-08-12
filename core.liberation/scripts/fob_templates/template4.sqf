@@ -1,5 +1,4 @@
 _objects_to_build = [
-    [ opfor_mrap, [13.31, 0, 0.01], 268.69 ],
     [ opfor_hq, [11.47, -12.17, 0], 89.97 ],
     [ "Land_CncBarrierMedium4_F", [-15.55, -1.69, 0], 90.88 ],
     [ "Land_HBarrierBig_F", [-13.27, -8.61, 0], 91.24 ],

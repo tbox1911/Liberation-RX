@@ -22,7 +22,6 @@ opfor_sniper = "O_T_sniper_F";
 opfor_spotter = "O_T_spotter_F";
 opfor_engineer = "O_T_engineer_F";
 opfor_paratrooper = "O_T_soldier_PG_F";
-opfor_mrap = "O_T_MRAP_02_F";
 opfor_mrap_hmg = "O_T_MRAP_02_hmg_ghex_F";
 opfor_mrap_gmg = "O_T_MRAP_02_gmg_ghex_F";
 opfor_transport_helo = "O_Heli_Transport_04_covered_F";
