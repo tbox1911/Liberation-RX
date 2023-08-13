@@ -2,7 +2,7 @@ params ["_vehicle", ["_delete", true]];
 if (isNull _vehicle) exitWith {};
 if (!isNull (_vehicle getVariable ["R3F_LOG_est_transporte_par", objNull])) exitWith {};
 if (!((_vehicle getVariable ["GRLIB_vehicle_owner", ""]) in ["", "server"])) exitWith {};
-if ({(side group _x == GRLIB_side_friendly)} count (crew _vehicle) > 0) exitWith {};
+if ({(alive _x && side group _x == GRLIB_side_friendly)} count (crew _vehicle) > 0) exitWith {};
 
 diag_log format [ "Cleanup vehicle %1 at %2", typeOf _vehicle, time ];
 
