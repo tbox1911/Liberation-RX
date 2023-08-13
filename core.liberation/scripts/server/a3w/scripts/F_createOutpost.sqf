@@ -28,6 +28,7 @@ diag_log format ["--- LRX Spawn Outpost %1 pos %2 at %3", _template_name, _base_
 	_nextdir = _x select 2;
 
 	_nextobject = _nextclass createVehicle _nextpos;
+    _nextobject allowDamage false;
     _nextobject setPosATL _nextpos;
     if (_nextclass isKindOf "HBarrier_base_F") then {
         _nextobject setVectorDirAndUp [[-cos _nextdir, sin _nextdir, 0] vectorCrossProduct surfaceNormal _nextpos, surfaceNormal _nextpos];
