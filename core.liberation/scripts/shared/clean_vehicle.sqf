@@ -1,4 +1,4 @@
-params ["_vehicle"];
+params ["_vehicle", ["_delete", true]];
 if (isNull _vehicle) exitWith {};
 if (!isNull (_vehicle getVariable ["R3F_LOG_est_transporte_par", objNull])) exitWith {};
 if (!((_vehicle getVariable ["GRLIB_vehicle_owner", ""]) in ["", "server"])) exitWith {};
@@ -43,4 +43,4 @@ clearBackpackCargoGlobal _vehicle;
 _vehicle removeAllEventHandlers "HandleDamage";
 
 // Delete Vehicle
-if (alive _vehicle) then { deleteVehicle _vehicle };
+if (_delete) then { deleteVehicle _vehicle };

@@ -186,7 +186,7 @@ if ( isServer ) then {
 
 		 if (typeOf _unit isKindOf "AllVehicles") then {
 			_unit setVariable ["GRLIB_vehicle_owner", "", true];
-			[_unit] spawn clean_vehicle;
+			[_unit, false] spawn clean_vehicle;
 		};
 
 		if ( isPlayer _killer ) then {
