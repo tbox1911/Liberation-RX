@@ -34,7 +34,7 @@ while { GRLIB_global_stop == 0 && ({alive _x} count (units _grp) > 0) && time < 
 };
 
 // Cleanup
-waitUntil { sleep 10; [markerpos _sector, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0 };
+waitUntil { sleep 10; [markerpos _sector, GRLIB_spawn_max, GRLIB_side_friendly] call F_getUnitsCount == 0 };
 { deleteVehicle _x } foreach (units _grp);
 deleteGroup _grp;
 deleteVehicle _vehicle;

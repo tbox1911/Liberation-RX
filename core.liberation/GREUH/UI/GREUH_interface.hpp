@@ -164,6 +164,21 @@
 
 #define BASE_Y 			0.075
 
+class GREUH_Progress {
+	idc = -1;
+    type = CT_PROGRESS;
+    style = ST_BACKGROUND;
+	shadow = 2;
+	colorBar[] = {0.8,0,0,1};
+	colorExtBar[] = {1,1,1,1};
+	colorFrame[] = {1,1,1,1};	
+    texture = "#(argb,8,8,3)color(1,1,1,1)";
+	x = 0;
+	y = 0;
+    w = 0.4;
+    h = 0.05;
+};
+
 class RscListBox {
 	idc = -1;
 	type = 5;
@@ -928,7 +943,6 @@ class GREUH_respawn {
 		action = "[player] spawn PAR_fn_death";
 		colorDisabled[] = { 1, 1, 1, 1 };
 	};
-
 	class GREUH_RecallMedic : GreuhButton {
 		idc = 679;
 		x = 0.45 * safezoneW + safezoneX;
@@ -939,7 +953,6 @@ class GREUH_respawn {
 		action = "[] spawn PAR_fn_medicRecall";
 		colorDisabled[] = { 1, 1, 1, 1 };
 	};
-
 	class GREUH_RscStructuredText{
 		type = 13;
 		idc = -1;

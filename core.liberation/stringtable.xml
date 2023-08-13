@@ -5135,12 +5135,12 @@
 			</Czech>
 		</Key>
 <Key ID="STR_SECONDARY_MISSION3">
-			<Original>Armageddon</Original>
-			<French>Armageddon</French>
+			<Original>Start the Armageddon</Original>
+			<French>Démarrer l'Armageddon</French>
 		</Key>
 		<Key ID="STR_SECONDARY_BRIEFING3">
 			<Original>
-					&lt;t size='1.3' color='#ffa000'&gt;ARMAGEDDON&lt;/t&gt;
+					&lt;t size='1.3' color='#ffa000'&gt;START THE ARMAGEDDON&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
 					&lt;t size='1'&gt;
 					OPFOR forces has developed a monstrous weapon, if they manage to use it it will be the end of our presence in this region.&lt;/t&gt;
@@ -5157,7 +5157,7 @@
 					&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
 			</Original>
 			<French>
-					&lt;t size='1.3' color='#ffa000'&gt;ARMAGEDDON&lt;/t&gt;
+					&lt;t size='1.3' color='#ffa000'&gt;DÉMARRER L'ARMAGEDDON&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
 					&lt;t size='1'&gt;
 					Les forces de l'OPFOR ont developpé une arme monstrueuse, s'ils arrivent à l'utiliser ce sera la fin de notre presence dans cette region.&lt;/t&gt;

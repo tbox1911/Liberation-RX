@@ -2,7 +2,6 @@ if ( GRLIB_endgame == 1 || GRLIB_global_stop == 1 ) exitWith {};
 params ["_liberated_sector"];
 diag_log format ["Spawn BattlegGroup at %1", time];
 
-private ["_target_size", "_selected_opfor_battlegroup", "_para_pos"];
 private _bg_groups = [];
 private _spawn_marker = "";
 private _objectivepos = [];
@@ -24,11 +23,10 @@ if ( combat_readiness < 50 ) then {
 };
 
 if (_spawn_marker != "") then {
-
 	GRLIB_last_battlegroup_time = time;
 
-	_selected_opfor_battlegroup = [];
-	_target_size = GRLIB_battlegroup_size * (combat_readiness /100);
+	private _selected_opfor_battlegroup = [];
+	private _target_size = GRLIB_battlegroup_size * (combat_readiness /100);
 	if ( count (AllPlayers - (entities "HeadlessClient_F")) <= 2 ) then { _target_size = round (_target_size * 0.65) };
 	if ( _target_size > 8 ) then { _target_size = 8; };
 	if ( _target_size < 3 ) then { _target_size = 3; };
@@ -81,6 +79,7 @@ if (_spawn_marker != "") then {
 	} foreach _bg_groups;
 } else {
 	if (count blufor_sectors > 5) then {
+		private _para_pos = [];
 		if (isNil "_liberated_sector" ) then {
 			_para_pos = markerPos (selectRandom blufor_sectors);
 		} else {
