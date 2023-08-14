@@ -88,6 +88,7 @@ while { _continue } do {
 			};
 			[_int] remoteExec ["BIS_fnc_earthquake", 0];
 		};
+		sleep 60;
 	};
 
 	if (time > _timer) then { _continue = false };

@@ -54,7 +54,6 @@ _unit addEventHandler ["Take", {
 
 _unit addEventHandler ["FiredMan",	{
 	params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_vehicle"];
-	//diag_log format ["DBG: %1", _this];
 
 	// No mines in the base zone (Chimera + FOB)
 	if (([_unit, "LHD", GRLIB_fob_range] call F_check_near) && _weapon == "Put") then { deleteVehicle _projectile };
