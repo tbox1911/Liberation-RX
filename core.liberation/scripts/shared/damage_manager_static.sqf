@@ -13,9 +13,6 @@ if (!isNull _instigator) then {
 
 private _ret = _amountOfDamage;
 if (!isNull _killer && _unit != _killer) then {
-	private _veh_unit = vehicle _unit;
-	private _veh_killer = vehicle _killer;
-
 	// Static AI
 	if ( typeOf _unit in static_vehicles_AI ) then {
 		if ( _unit getVariable ["GRLIB_isProtected", 0] < time ) then {
