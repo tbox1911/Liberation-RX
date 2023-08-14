@@ -72,12 +72,24 @@
 #define SL_DIR            0x400
 #define SL_VERT           0
 #define SL_HORZ           0x400
-
 #define SL_TEXTURES       0x10
 
 // Listbox styles
 #define LB_TEXTURES       0x10
 #define LB_MULTI          0x20
+
+// progress bar
+#define ST_VERTICAL       0x01
+#define ST_HORIZONTAL     0
+
+// Tree styles
+#define TR_SHOWROOT       1
+#define TR_AUTOCOLLAPSE   2
+
+// MessageBox styles
+#define MB_BUTTON_OK      1
+#define MB_BUTTON_CANCEL  2
+#define MB_BUTTON_USER    4
 
 #define FONTM             "puristaMedium"
 
@@ -161,7 +173,6 @@
 #define COLOR_BRIGHTGREEN { 0.2,1,0.2,1 }
 
 #define BORDERSIZE      0.01
-
 #define BASE_Y 			0.075
 
 class GREUH_Progress {
