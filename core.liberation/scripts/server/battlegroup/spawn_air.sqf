@@ -1,4 +1,5 @@
 params ["_targetpos", "_side", "_count"];
+private ["_vehicle", "_unit"];
 
 if (isNil "_side") then {_side = GRLIB_side_enemy};
 private _planeType = opfor_air;
@@ -40,11 +41,15 @@ _waypoint setWaypointType "CYCLE";
 
 sleep 60;
 
-while {	sleep 5; {( alive _x )} count (units _air_grp) > 0 } do {
-
+while {	{( alive _x )} count (units _air_grp) > 0 } do {
 	{
-		private _unit = _x;
-		if ( alive _unit && vehicle _unit == _unit ) then {
+		_unit = _x;
+		_vehicle = vehicle _unit;
+		if ( alive _vehicle && driver _vehicle == _unit) then {
+			_vehicle setVehicleAmmo 1;
+		};
+
+		if ( alive _unit && _vehicle == _unit ) then {
 			private _sectors = (sectors_allSectors - blufor_sectors);
 			if (_side == GRLIB_side_friendly) then {_sectors = blufor_sectors};
 			private _nearest_sector = [_sectors, _unit] call F_nearestPosition;
@@ -73,6 +78,7 @@ while {	sleep 5; {( alive _x )} count (units _air_grp) > 0 } do {
 				{ deleteVehicle _x } forEach _flee_grp;
 			};
 		};
+		sleep 1;
 	} foreach units _air_grp;
-
+	sleep 5;
 };
