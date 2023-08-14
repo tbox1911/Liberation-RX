@@ -38,7 +38,7 @@ while { true } do {
 			_attacked_string = [ markerpos "opfor_capture_marker" ] call F_getLocationName;
 			(_overlay displayCtrl (401)) ctrlShow true;
 			(_overlay displayCtrl (402)) ctrlSetText _attacked_string;
-			(_overlay displayCtrl (403)) ctrlSetText (markerText "opfor_capture_marker");
+			(_overlay displayCtrl (403)) ctrlSetText ([sector_timer] call F_secondsToTimer);
 		} else {
 			(_overlay displayCtrl (401)) ctrlShow false;
 			(_overlay displayCtrl (402)) ctrlSetText "";

@@ -1,5 +1,9 @@
+if (isDedicated || (!hasInterface && !isServer)) exitWith {};
+
 private _msg = format ["%1, the <t color='#800000'>ARMAGEDDON</t> has begun...<br/><br/>Be ready for the <t color='#000080'>Final FIGHT</t> !<br/>", name player];
 [_msg, 0, 0, 10, 0, 0, 90] spawn BIS_fnc_dynamicText;
+
+//opfor_capture_marker
 
 sleep 3;
 
@@ -30,5 +34,6 @@ while {sector_timer > 0 && _progress < 1} do {
 };
 
 sector_timer = 0;
+"opfor_capture_marker" setMarkerPosLocal markers_reset;
 ctrlDelete _final_progressBar;
 ctrlDelete _final_text;
