@@ -1,9 +1,9 @@
-private  ["_cargo_seat_free", "_cargo_idx"];
 waitUntil {sleep 1; GRLIB_player_spawned};
 if (!(player diarySubjectExists str(parseText GRLIB_r3))) exitWith {};
 
-while { true } do {
+private _cargo_seat_free = 0;
 
+while { true } do {
 	// If Squad
 	private _my_squad = player getVariable ["my_squad", nil];
 	if (!isNil "_my_squad") then {
@@ -13,34 +13,19 @@ while { true } do {
 		//get in
 		if ( _veh_player != player && _leader distance2D player <= 15 && count (waypoints _my_squad) == 0 ) then {
 			{
-				_cargo_seat_free = (
-					(fullCrew [_veh_player, "cargo", true] - fullCrew [_veh_player, "cargo", false]) +
-					(fullCrew [_veh_player, "turret", true] - fullCrew [_veh_player, "turret", false])
-				);
-
-				if (vehicle _x != _veh_player && count _cargo_seat_free > 0 ) then {
-
-					if (_cargo_seat_free select 0 select 1 == "cargo" ) then {
-						_cargo_idx = _cargo_seat_free select 0 select 2;
-						_x action ["getInCargo", _veh_player, _cargo_idx];
-						_x assignAsCargo _veh_player;
-						[_x] orderGetIn true;
-					};
-
-					if (_cargo_seat_free select 0 select 1 == "Turret" ) then {
-						_cargo_idx = _cargo_seat_free select 0 select 3 select 0;
-						_x action ["getInTurret", _veh_player, [_cargo_idx]];
-						_x assignAsTurret [_veh_player, [_cargo_idx] ];
-						[_x] orderGetIn true ;
-					};
-					sleep 0.5;
+				_cargo_seat_free = _veh_player emptyPositions "Cargo";
+				if (vehicle _x != _veh_player && _cargo_seat_free > 0) then {
+					_x assignAsCargo _veh_player;
+					_x moveInCargo _veh_player;
+					[_x] orderGetIn true;
 				};
-				if (vehicle _x == _x && count _cargo_seat_free == 0 ) then {
-					_x doMove (getPos player);
+
+				if (vehicle _x == _x && _cargo_seat_free == 0) then {
+					_x doMove (getPosATL player);
 				};
+				sleep 0.5;
 			} forEach units _my_squad;
 		} else {
-
 			//para drop
 			if (_veh_player iskindof "Steerable_Parachute_F") then {
 				{
