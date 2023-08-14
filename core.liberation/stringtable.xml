@@ -478,7 +478,7 @@
 		</Key>
 		<Key ID="STR_RESPAWN_TRUCK">
 			<Original>Mobile Respawn</Original>
-			<French>Réapparition Mobile</French>
+			<French>Respawn Mobile</French>
 			<German>Mobiler Respawn</German>
 			<Spanish>Respawn Móvil</Spanish>
 			<Russian>Мобильная КШМ</Russian>
@@ -5571,6 +5571,10 @@
 			<Original>Add a cooldown if the player respawn too fast</Original>
 			<French>Ajoute une attente si le joueur respawn trop rapidement</French>
 		</Key>
+		<Key ID="STR_REDEPLOY">
+			<Original>Allow Redeploy to all mobile Respawn</Original>
+			<French>Autoriser le redéploiement sur tous les mobiles Respawn</French>
+		</Key>		
 		<Key ID="STR_KICK_IDLE">
 			<Original>Kick player if idle for too long</Original>
 			<French>Eject le joueur si inactif trop longtemps</French>

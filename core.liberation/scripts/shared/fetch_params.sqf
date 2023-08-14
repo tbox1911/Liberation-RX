@@ -137,6 +137,7 @@ GRLIB_tk_count = ["TK_count",4] call _lrx_getParamValue;
 GRLIB_squad_size = ["SquadSize",2] call _lrx_getParamValue;
 GRLIB_max_squad_size = ["MaxSquadSize",7] call _lrx_getParamValue;
 GRLIB_max_spawn_point = ["MaxSpawnPoint",3] call _lrx_getParamValue;
+GRLIB_allow_redeploy = ["Redeploy",1] call _lrx_getParamValue;
 GRLIB_permissions_param = ["Permissions",1] call _lrx_getParamValue;
 GRLIB_permission_vehicles = ["EnableLock",1] call _lrx_getParamValue;
 GRLIB_civilian_activity = ["Civilians",1] call _lrx_getParamValue;

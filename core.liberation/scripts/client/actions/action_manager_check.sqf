@@ -25,7 +25,13 @@ GRLIB_checkHalo = {
 };
 
 GRLIB_checkRedeploy = {
-	(GRLIB_player_is_menuok && (GRLIB_player_near_spawn || GRLIB_player_near_lhd))
+	private _ret = false;
+	if (GRLIB_allow_redeploy == 0) then {
+		_ret = (GRLIB_player_is_menuok && (GRLIB_player_fobdistance < GRLIB_ActionDist_10 || GRLIB_player_near_lhd));
+	} else {
+		_ret = (GRLIB_player_is_menuok && (GRLIB_player_near_spawn || GRLIB_player_near_lhd));
+	};
+	_ret;
 };
 
 GRLIB_checkSendAmmo = {

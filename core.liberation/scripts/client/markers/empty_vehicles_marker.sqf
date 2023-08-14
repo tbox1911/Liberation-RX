@@ -8,8 +8,6 @@ waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 waitUntil {sleep 1; !isNil "GRLIB_mobile_respawn"};
 
 private _no_marker_classnames = [
-	Respawn_truck_typename,
-	huron_typename,
 	playerbox_typename,
 	GRLIB_player_gravebox,
 	GRLIB_sar_wreck,
@@ -19,6 +17,10 @@ private _no_marker_classnames = [
 	"Land_HumanSkull_F",
 	"Land_HumanSkeleton_F"
 ] + GRLIB_ide_traps + GRLIB_intel_items + all_buildings_classnames;
+
+if (GRLIB_allow_redeploy == 1) then {
+	_no_marker_classnames = _no_marker_classnames + [Respawn_truck_typename, huron_typename];
+};
 
 while { true } do {
 	_veh_list = [vehicles, {
