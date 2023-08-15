@@ -14,7 +14,8 @@
 "filmGrain" ppEffectCommit 5;
 
 // sleep 5;
-// "colorCorrections" ppEffectAdjust [1, 1, 0, [0.0, 0.0, 0.0, 0.0], [1, 1, 1, 1], [1, 1, 1, 0.0]]; // change to normal colors within a time of 100 sec
+// change to normal colors within a time of 100 sec
+// "colorCorrections" ppEffectAdjust [1, 1, 0, [0.0, 0.0, 0.0, 0.0], [1, 1, 1, 1], [1, 1, 1, 0.0]];
 // "colorCorrections" ppEffectCommit 100;
 
 // sleep 100; // time to reset colors

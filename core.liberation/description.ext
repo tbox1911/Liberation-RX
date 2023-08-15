@@ -39,11 +39,6 @@ class cfgSounds {
  		sound[] = {"res\c130.ogg", 1, 1};
 		titles[] = {"parasound"};
  	};
-	class nuke {
-		name = "nuke";
-		sound[] = {"nuke\nuke.ogg", 1, 1};
-		titles[] = {"nuke"};
-	};
 };
 
 class CfgDebriefing {

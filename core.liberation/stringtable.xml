@@ -5134,7 +5134,7 @@
 					&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
 			</Czech>
 		</Key>
-<Key ID="STR_SECONDARY_MISSION3">
+		<Key ID="STR_SECONDARY_MISSION3">
 			<Original>Start the Armageddon</Original>
 			<French>Démarrer l'Armageddon</French>
 		</Key>
@@ -5154,7 +5154,7 @@
 					&lt;br/&gt;
 					&lt;t size='1.15' color='#ffa000'&gt;Reward: Immediate victory for our side.&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
-					&lt;t size='10'&gt;&lt;img image='res\secondary\fob_obj.jpg'/&gt;&lt;/t&gt;
+					&lt;t size='10'&gt;&lt;img image='res\secondary\final_situation.jpg'/&gt;&lt;/t&gt;
 			</Original>
 			<French>
 					&lt;t size='1.3' color='#ffa000'&gt;DÉMARRER L'ARMAGEDDON&lt;/t&gt;
@@ -5174,6 +5174,10 @@
 					&lt;t size='10'&gt;&lt;img image='res\secondary\final_situation.jpg'/&gt;&lt;/t&gt;
 			</French>
 		</Key>
+		<Key ID="STR_MISSION3_FAILED">
+			<Original>YOU LOST THE WAR...</Original>
+			<French>VOUS AVEZ PERDU LA GUERRE...</French>
+		</Key>		
 		<Key ID="STR_PARAM_BLUFOR_DEFENDERS">
 			<Original>BLUFOR defenders in owned sectors</Original>
 			<French>Défenseurs BLUFOR dans les secteurs capturés</French>
