@@ -1,4 +1,6 @@
 params [ "_fobpos" ];
+if (GRLIB_global_stop == 1) exitWith {};
+
 sleep 30;
 private _ownership = [ _fobpos ] call F_sectorOwnership;
 if ( _ownership != GRLIB_side_enemy ) exitWith {};

@@ -7,7 +7,7 @@ addMissionEventHandler ['HandleDisconnect', {
 		[] call save_game_mp;
 		diag_log "--- LRX Mission End!";
 		if (!GRLIB_server_persistent) then {
-			endMission "END1";
+			endMission "END";
 			forceEnd;
 		};
 	};

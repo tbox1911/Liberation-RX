@@ -1,4 +1,5 @@
 params [ "_sector" ];
+if (GRLIB_global_stop == 1) exitWith {};
 
 private _sector_pos = markerpos _sector;
 sleep 20;
