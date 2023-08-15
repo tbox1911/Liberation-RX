@@ -4,7 +4,7 @@ waitUntil {sleep 1; (count (blufor_sectors) > 0 || count (GRLIB_all_fobs) > 0)};
 
 attack_in_progress = [];
 
-while { GRLIB_endgame == 0 } do {
+while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	{
 		_ownership = [ markerpos _x ] call F_sectorOwnership;
 		if ( _ownership == GRLIB_side_enemy ) then {
