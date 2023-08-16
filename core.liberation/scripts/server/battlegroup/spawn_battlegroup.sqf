@@ -30,7 +30,6 @@ if (_spawn_marker != "") then {
 	if ( count (AllPlayers - (entities "HeadlessClient_F")) <= 2 ) then { _target_size = round (_target_size * 0.65) };
 	if ( _target_size > 8 ) then { _target_size = 8; };
 	if ( _target_size < 3 ) then { _target_size = 3; };
-	diag_log format ["Spawn BattlegGroup (%1) on sector %2 at %3", _target_size, _spawn_marker, time];
 
 	for "_i" from 1 to _target_size do {
 		_selected_opfor_battlegroup pushback (selectRandom _vehicle_pool);
@@ -66,8 +65,6 @@ if (_spawn_marker != "") then {
 	combat_readiness = combat_readiness - (_target_size * 1.75);
 	if ( combat_readiness < 0 ) then { combat_readiness = 0 };
 
-	stats_hostile_battlegroups = stats_hostile_battlegroups + 1;
-	diag_log format ["Done Spawning BattlegGroup at %1", time];
 	{
 		if ( local _x ) then {
 			_headless_client = [] call F_lessLoadedHC;
@@ -77,6 +74,9 @@ if (_spawn_marker != "") then {
 		};
 		sleep 3;
 	} foreach _bg_groups;
+
+	stats_hostile_battlegroups = stats_hostile_battlegroups + 1;
+	diag_log format ["Spawn BattlegGroup (%1) objective %2 at %3", _target_size, _objectivepos, time];
 } else {
 	if (count blufor_sectors > 5) then {
 		private _para_pos = [];
@@ -88,6 +88,6 @@ if (_spawn_marker != "") then {
 		[_para_pos] spawn send_paratroopers;
 		sleep 15;
 		[_para_pos] spawn send_paratroopers;	
-		diag_log format ["Done Spawning Default BattlegGroup at %1", time];
+		diag_log format ["Done Spawning Paratrooper BattlegGroup at %1", time];
 	};
 };
