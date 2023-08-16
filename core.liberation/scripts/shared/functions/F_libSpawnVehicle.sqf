@@ -11,7 +11,7 @@ diag_log format [ "Spawn vehicle %1 at %2", _classname , time ];
 private _vehicle = objNull;
 private _spawnpos = [];
 private _vehcrew = [];
-private _airveh_alt = 300;
+private _airveh_alt = 200;
 private _radius = GRLIB_capture_size;
 private _max_try = 10;
 
@@ -35,7 +35,7 @@ if ( count _spawnpos == 0 ) exitWith { diag_log format ["--- LRX Error: No place
 if ( _classname isKindOf "Air" ) then {
 	if ( _side == GRLIB_side_civilian ) then { _airveh_alt = 200 };
 	_spawnpos set [2, _airveh_alt];
-	_vehicle = createVehicle [_classname, _spawnpos, [], 0, "FLY"];
+	_vehicle = createVehicle [_classname, _spawnpos, [], 200, "FLY"];
 } else {
 	_spawnpos set [2, 0.5];
 	if (surfaceIsWater _spawnpos && !(_classname isKindOf "Ship")) then {
@@ -50,10 +50,10 @@ waitUntil {sleep 0.1; !isNull _vehicle};
 _vehicle allowDamage false;
 
 if ( _vehicle isKindOf "Air" ) then {
-	if (GRLIB_SOG_enabled) then { _airveh_alt = 100 };
+	if (GRLIB_SOG_enabled) then { _airveh_alt = 50 };
 	_vehicle engineOn true;
 	_vehicle flyInHeight _airveh_alt;
-	_vehicle flyInHeightASL [_airveh_alt, 50, 300];
+	//_vehicle flyInHeightASL [_airveh_alt, 50, 300];
 };
 
 if ( _random_rotate ) then {
