@@ -209,8 +209,8 @@ all_buildings_classnames = [];
 all_hostile_classnames = [];
 { all_hostile_classnames pushback (_x select 0) } foreach opfor_recyclable;
 
-all_firendly_classnames = [];
-{ all_firendly_classnames pushback (_x select 0) } foreach (light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles);
+all_friendly_classnames = [];
+{ all_friendly_classnames pushback (_x select 0) } foreach (light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles);
 
 // *** ELITES ***
 elite_vehicles = [];

@@ -117,7 +117,7 @@ player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'>-20<
 player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'>-20</font> pts  :  Killing Prisoners"]]];
 player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'>-10</font> pts  :  Killing Civilians"]]];
 player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'> -5</font> pts  :  Eject Civilian from Vehicle"]]];
-player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'> -5</font> pts  :  Firendly Fires"]]];
+player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'> -5</font> pts  :  Friendly Fires"]]];
 player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'> -5</font> pts  :  Respawn (Sergeant and above)"]]];
 player createDiaryRecord ["Table", ["Table", format ["<font color='#ff4000'> -1</font> pts  :  Wounded (Sergeant and above)"]]];
 

@@ -5,7 +5,7 @@ if (time < 300 && !hasInterface) exitWith {diag_log format ["--- LRX MP Warmup (
 diag_log format ["--- LRX Save start at %1", time];
 
 private _classnames_to_save = [] + all_buildings_classnames;
-private _classnames_to_save_blu = [FOB_typename, FOB_outpost, FOB_sign, huron_typename] + all_firendly_classnames;
+private _classnames_to_save_blu = [FOB_typename, FOB_outpost, FOB_sign, huron_typename] + all_friendly_classnames;
 {
 	_classnames_to_save_blu pushback (_x select 0);
 } foreach ind_recyclable;
