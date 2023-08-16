@@ -197,7 +197,7 @@ if ( GRLIB_endgame == 1 ) then {
 
     // Save Blob
     private _lrx_liberation_savegame = [
-        blufor_sectors,
+        (blufor_sectors - ["final_fight"]),
         GRLIB_all_fobs,
         buildings_to_save,
         time_of_day,

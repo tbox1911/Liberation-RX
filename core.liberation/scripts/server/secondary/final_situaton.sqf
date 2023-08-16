@@ -1,16 +1,19 @@
-params [ ["_mission_cost", 0] ];
-GRLIB_global_stop = 1;
-publicVariable "GRLIB_global_stop";
+params [ ["_mission_cost", 0], "_caller" ];
 
 private _spawnpos = [];
 private _spawnlist = [];
-{ 
+{
 	_spawnpos = [markerPos _x, 0, GRLIB_sector_size, 30, 0, 15, 0, [], [zeropos, zeropos]] call BIS_fnc_findSafePos;
 	if !(_spawnpos isEqualTo zeropos) then {_spawnlist pushBack _spawnpos};
 } foreach sectors_allSectors;
 if (count _spawnlist == 0) exitWith {[gamelogic, "Could not find enough free space for Armageddon mission"] remoteExec ["globalChat", 0]};
 
-//resources_intel = resources_intel - _mission_cost;
+diag_log format ["--- LRX: %2 start static mission: Armageddon at %1", time, _caller];
+resources_intel = resources_intel - _mission_cost;
+
+GRLIB_global_stop = 1;
+publicVariable "GRLIB_global_stop";
+
 [] remoteExec ["remote_call_final_fight", 0];
 
 // weather cloudy
@@ -20,7 +23,7 @@ if (count _spawnlist == 0) exitWith {[gamelogic, "Could not find enough free spa
 		publicVariable "chosen_weather";
 		0 setOvercast chosen_weather;
 		forceWeatherChange;
-		sleep 30;
+		sleep 20;
 	};
 };
 
@@ -31,10 +34,11 @@ _marker setMarkerTypeLocal "mil_destroy";
 _marker setMarkerSizeLocal [1.25, 1.25];
 _marker setMarkerColorLocal GRLIB_color_enemy_bright;
 _marker setMarkerText "FINAL FIGHT";
+blufor_sectors = blufor_sectors + [_marker];
 
 // spawn nuclear device + static + def squad
 private _base_output = [_spawnpos, false, true] call createOutpost;
-opfor_target = createVehicle ["Land_Device_disassembled_F", _spawnpos, [], 1, "None"];  //Land_Device_assembled_F
+opfor_target = createVehicle ["Land_Device_disassembled_F", _spawnpos, [], 1, "CAN_COLLIDE"];
 opfor_target addEventHandler ["HandleDamage", {
 	params ["_unit", "_selection", "_damage", "_killer"];
 	private _ret = damage _unit;
@@ -52,10 +56,9 @@ publicVariable "opfor_target";
 
 private _grp = _base_output select 2;
 private _vehicle = [_spawnpos, (selectRandom opfor_vehicles)] call F_libSpawnVehicle;
-(crew _vehicle) joinSilent _grp;
+(driver _vehicle) doFollow leader _grp;
 
-// 1 hour delay
-private _mission_delay = (60 * 60);
+private _mission_delay = (45 * 60);
 private _timer = round (time + _mission_delay);
 private _continue = true;
 private _success = false;
@@ -67,11 +70,10 @@ sleep 60;
 while { _continue } do {
 	combat_readiness = 100;
 	_opfor_count = [] call F_opforCap;
-	if (time > _last_send || _opfor_count <= 20) then {
+	if ((time > _last_send || _opfor_count < 30) && _opfor_count < GRLIB_sector_cap ) then {
 		_last_send = round (time + 600);
-		//_target = selectRandom (AllPlayers - (entities "HeadlessClient_F"));  // (units GRLIB_side_friendly);
-		_target = selectRandom ((units GRLIB_side_friendly) select {_x distance2D lhd > GRLIB_fob_range});
-		diag_log _target;
+		_target = selectRandom ((units GRLIB_side_friendly) select {_x distance2D lhd > GRLIB_fob_range && !(typeOf (vehicle _x) in uavs) });
+		if (isNil "_target") then { _target = selectRandom (units GRLIB_FOB_Group) };
 
 		if (_target distance2D opfor_target > GRLIB_spawn_max) then {
 			if (floor random 2 == 0) then {
@@ -81,7 +83,6 @@ while { _continue } do {
 			};
 		} else {
 			_int = floor random 3;
-			systemchat str _int;
 			if (_int == 0) then {
 				[getPosATL _target] spawn send_paratroopers;
 			} else {
@@ -89,7 +90,7 @@ while { _continue } do {
 			};
 			[_int] remoteExec ["BIS_fnc_earthquake", 0];
 		};
-		sleep 60;
+		sleep 5;
 	};
 
 	if (time > _timer) then { _continue = false };
@@ -100,21 +101,26 @@ while { _continue } do {
 deleteMarker _marker;
 
 if (_success) then {
-	systemchat "success";
-	// clear enemy 
-	{ deleteVehicle _x } foreach (units GRLIB_side_enemy);
-	// sunny
+	{ _x setDamage 1 } foreach (units GRLIB_side_enemy);
 	0 setOvercast 0;
 	forceWeatherChange;
-	// end success
-	//blufor_sectors = sectors_allSectors;
-	//[] spawn check_victory_conditions;
+	blufor_sectors = sectors_allSectors;
+	[] spawn check_victory_conditions;
 } else {
-	systemchat "failed";
-	// show cam target assembled
-	// anime nuclear Explosion
-	// kill all blu unit
-	//{ deleteVehicle _x } foreach (units GRLIB_side_friendly);
-	// end fail
+	{ deleteVehicle _x } foreach (units GRLIB_side_enemy);
+	0 setFog 0;
+	0 setRain 0;
+	forceWeatherChange;
+	sleep 6;
+	private _savedpos = getPosWorld opfor_target;
+    private _nextdir = [vectorDir opfor_target, vectorUp opfor_target];
+	opfor_target hideObjectGlobal true;
+	private _opfor_target_assembled = createVehicle ["Land_Device_assembled_F", _savedpos, [], 1, "CAN_COLLIDE"];
+	_opfor_target_assembled setVectorDirAndUp [_nextdir select 0, _nextdir select 1];
+	_opfor_target_assembled setPosWorld _savedpos;
+	profileNamespace setVariable [ GRLIB_save_key, nil ];
+	saveProfileNamespace;
+	sleep 100;
+	endMission "END";
+	forceEnd;
 };
-
