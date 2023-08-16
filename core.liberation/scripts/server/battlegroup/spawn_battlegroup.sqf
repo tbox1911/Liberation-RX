@@ -4,18 +4,20 @@ diag_log format ["Spawn BattlegGroup at %1", time];
 
 private _bg_groups = [];
 private _spawn_marker = "";
-private _objectivepos = [];
+private _objective_pos = [];
 if ( isNil "_liberated_sector" ) then {
 	_spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max] call F_findOpforSpawnPoint;
-	_objectivepos = ([markerpos _spawn_marker] call F_getNearestBluforObjective) select 0;
+	_objective_pos = ([markerpos _spawn_marker] call F_getNearestBluforObjective) select 0;
 } else {
 	_spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max, true, _liberated_sector] call F_findOpforSpawnPoint;
-	_objectivepos = markerPos _liberated_sector;
-	if ((markerPos _spawn_marker) distance2D _objectivepos > GRLIB_spawn_max) then {
+	_objective_pos = markerPos _liberated_sector;
+	if ((markerPos _spawn_marker) distance2D _objective_pos > GRLIB_spawn_max) then {
 		_spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max] call F_findOpforSpawnPoint;
-		_objectivepos = ([markerPos _spawn_marker] call F_getNearestBluforObjective) select 0;
+		_objective_pos = ([markerPos _spawn_marker] call F_getNearestBluforObjective) select 0;
 	};
 };
+
+if (_objective_pos isEqualType zeropos) exitWith {};
 
 private _vehicle_pool = opfor_battlegroup_vehicles;
 if ( combat_readiness < 50 ) then {
@@ -42,11 +44,11 @@ if (_spawn_marker != "") then {
 		_vehicle = [markerpos _spawn_marker, _x] call F_libSpawnVehicle;
 		_vehicle setVariable ["GRLIB_counter_TTL", round(time + 3600)];  // 60 minutes TTL
 		(crew _vehicle) joinSilent _nextgrp;
-		[_nextgrp, _objectivepos] spawn battlegroup_ai;
+		[_nextgrp, _objective_pos] spawn battlegroup_ai;
 		{ _x setVariable ["GRLIB_counter_TTL", round(time + 3600)] } forEach (units _nextgrp);
 		_bg_groups pushback _nextgrp;
 		if ( ( _x in opfor_troup_transports_truck + opfor_troup_transports_heli) && ([] call F_opforCap < GRLIB_battlegroup_cap)) then {
-			[_vehicle, _objectivepos] spawn troup_transport;
+			[_vehicle, _objective_pos] spawn troup_transport;
 		};
 		sleep 2;
 	} foreach _selected_opfor_battlegroup;
@@ -54,9 +56,9 @@ if (_spawn_marker != "") then {
 	sleep 5;
 	if ( GRLIB_csat_aggressivity > 0.7 ) then {
 		if (floor random 2 == 0) then {
-			[_objectivepos, GRLIB_side_enemy, 4] spawn spawn_air;
+			[_objective_pos, GRLIB_side_enemy, 4] spawn spawn_air;
 		} else {
-			[_objectivepos] spawn send_paratroopers;
+			[_objective_pos] spawn send_paratroopers;
 		};
 	};
 
@@ -76,7 +78,7 @@ if (_spawn_marker != "") then {
 	} foreach _bg_groups;
 
 	stats_hostile_battlegroups = stats_hostile_battlegroups + 1;
-	diag_log format ["Spawn BattlegGroup (%1) objective %2 at %3", _target_size, _objectivepos, time];
+	diag_log format ["Spawn BattlegGroup (%1) objective %2 at %3", _target_size, _objective_pos, time];
 } else {
 	if (count blufor_sectors > 5) then {
 		private _para_pos = [];

@@ -1,6 +1,6 @@
 params [ "_startpos", ["_include_fob", true] ];
 
-private _sector_pos = [];
+private _sector_pos = zeropos;
 private _refdistance = 99999;
 private _currentnearest = [_startpos, _refdistance];
 

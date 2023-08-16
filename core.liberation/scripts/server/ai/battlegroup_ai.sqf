@@ -11,19 +11,16 @@ while { ({alive _x} count (units _grp) > 0) && ( GRLIB_endgame == 0 ) } do {
 	};
 	diag_log format["Battlegroup %1 - Objective %2 %3",_grp, _objective_sector, _objective_pos];
 
-	if (_objective_sector != "" && !isNull _grp) then {
-		_objective_pos = markerPos _objective_sector;
+	if (!isNull _grp && _objective_sector != "") then {
 		[_objective_pos] remoteExec ["remote_call_incoming", 0];
 
 		[_grp] call F_deleteWaypoints;
-
 		_waypoint = _grp addWaypoint [_objective_pos, 100];
 		_waypoint setWaypointType "MOVE";
 		_waypoint setWaypointSpeed "NORMAL";
 		_waypoint setWaypointBehaviour "AWARE";
 		_waypoint setWaypointCombatMode "RED";
 		_waypoint setWaypointCompletionRadius 50;
-
 		_waypoint = _grp addWaypoint [_objective_pos, 100];
 		_waypoint setWaypointType "SAD";
 		_waypoint = _grp addWaypoint [_objective_pos, 100];
@@ -38,10 +35,11 @@ while { ({alive _x} count (units _grp) > 0) && ( GRLIB_endgame == 0 ) } do {
 
 		_timer = round (time + (15 * 60));
 		waitUntil {sleep 5; ({alive _x} count (units _grp) == 0) || time > _timer };
+		_objective_pos = ([_objective_pos, true] call F_getNearestBluforObjective) select 0;
 	};
 
 	sleep 5;
-	if (getPosATL (leader _grp) distance2D _objective_pos > GRLIB_spawn_max || _objective_sector == "") then {
+	if (_objective_pos isEqualType zeropos || getPosATL (leader _grp) distance2D _objective_pos > GRLIB_spawn_max || _objective_sector == "") then {
 		{
 			if (!isNull objectParent _x) then { deleteVehicle (objectParent _x) };
 			deleteVehicle _x;

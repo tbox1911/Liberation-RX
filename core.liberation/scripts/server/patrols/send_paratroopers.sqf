@@ -54,20 +54,19 @@ _waypoint setWaypointCompletionRadius 20;
 	};
 
 	{ [_newvehicle, _x] spawn F_ejectUnit } forEach (units _para_group);
-	sleep 2;
-
+	sleep 5;
 	[_para_group, _targetpos] spawn battlegroup_ai;
 
 	[_pilot_group] call F_deleteWaypoints;
 	private _waypoint = _pilot_group addWaypoint [ _targetpos, 300];
+	_waypoint setWaypointType "SAD";
+	_waypoint setWaypointSpeed "NORMAL";
 	_waypoint setWaypointBehaviour "COMBAT";
 	_waypoint setWaypointCombatMode "RED";
 	_waypoint setWaypointType "SAD";
-	_waypoint = _pilot_group addWaypoint [ _targetpos, 300];
+	_waypoint = _pilot_group addWaypoint [_targetpos, 300];
 	_waypoint setWaypointType "SAD";
-	_waypoint = _pilot_group addWaypoint [ _targetpos, 300];
-	_waypoint setWaypointType "SAD";
-	_waypoint = _pilot_group addWaypoint [ _targetpos, 300];
+	_waypoint = _pilot_group addWaypoint [_targetpos, 300];
 	_waypoint setWaypointType "CYCLE";
 	{_x doFollow (leader _pilot_group)} foreach units _pilot_group;
 
