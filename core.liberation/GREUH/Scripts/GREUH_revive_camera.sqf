@@ -30,11 +30,11 @@ while { true } do {
 
 	"filmGrain" ppEffectAdjust [0.3, 2, 4, 0.5, 0.5, true];
 	"filmGrain" ppEffectCommit 0;
-	"filmGrain" ppEffectEnable TRUE;
+	"filmGrain" ppEffectEnable true;
 
 	"colorCorrections" ppEffectAdjust [1, 1.6, -0.35, [1, 1, 1, 0], [1, 1, 1, 0], [0.75, 0.25, 0, 1.0]];
 	"colorCorrections" ppEffectCommit 0;
-	"colorCorrections" ppEffectEnable TRUE;
+	"colorCorrections" ppEffectEnable true;
 
 	_cam camCommit 0;
 	_cam camSetPos _destpos;
