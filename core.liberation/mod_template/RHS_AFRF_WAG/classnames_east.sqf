@@ -136,11 +136,9 @@ opfor_troup_transports_heli = [
 ];
 
 opfor_air = [
+	"RHS_Mi24V_UPK23_vdv",
 	"RHS_Ka52_vvsc",
 	"RHS_Ka52_UPK23_vvsc",
-	"rhs_mi28n_s13_vvsc",
-	"rhs_mi28n_vvsc",
-	"RHS_T50_vvs_052",
 	"RHS_Su25SM_KH29_vvsc",
 	"RHS_TU95MS_vvs_irkutsk"
 ];
