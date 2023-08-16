@@ -16,7 +16,6 @@ if (side _grp == GRLIB_side_civilian && !([_player, _vehicle] call is_owner)) th
 
 	if (typeName _nearest_sector == "STRING") then {
 		[_grp] call F_deleteWaypoints;
-		{_x doFollow leader _grp} foreach units _grp;
 
 		_waypoint = _grp addWaypoint [markerPos _nearest_sector, 0];
 		_waypoint setWaypointType "MOVE";
@@ -29,6 +28,7 @@ if (side _grp == GRLIB_side_civilian && !([_player, _vehicle] call is_owner)) th
 		_waypoint setWaypointType "MOVE";
 		_waypoint setWaypointCompletionRadius 50;
 		_waypoint setWaypointStatements ["true", "deleteVehicle this"];
+		{_x doFollow leader _grp} foreach units _grp;
 		sleep 10;
 	} else {
 		sleep 60;

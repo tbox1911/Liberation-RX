@@ -40,8 +40,6 @@ waitUntil {
 	_basepos = (leader _grp) findNearestEnemy (leader _grp);
 	if (!isNull _basepos) then {
 		[_grp] call F_deleteWaypoints;
-		{_x doFollow leader _grp} foreach units _grp;
-
 		_waypoint = _grp addWaypoint [_basepos, _radius];
 		_waypoint setWaypointType "SAD";
 		_waypoint setWaypointBehaviour "COMBAT";
@@ -55,6 +53,7 @@ waitUntil {
 		_waypoint setWaypointType "SAD";
 		_waypoint = _grp addWaypoint [_basepos, _radius];
 		_waypoint setWaypointType "CYCLE";
+		{_x doFollow leader _grp} foreach units _grp;
 		sleep 60;
 	};	
 

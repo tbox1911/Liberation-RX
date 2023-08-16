@@ -95,7 +95,6 @@ while {alive _unit || !_unit_captured } do {
 			private _nearest_sector = [(sectors_allSectors - blufor_sectors), _unit] call F_nearestPosition;
 			if (typeName _nearest_sector == "STRING") then {
 				[_flee_grp] call F_deleteWaypoints;
-				{_x doFollow leader _flee_grp} foreach units _flee_grp;
 
 				_waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];
 				_waypoint setWaypointType "MOVE";
@@ -107,6 +106,7 @@ while {alive _unit || !_unit_captured } do {
 				_waypoint setWaypointType "MOVE";
 				_waypoint setWaypointCompletionRadius 50;
 				_waypoint setWaypointStatements ["true", "deleteVehicle this"];
+				{_x doFollow leader _flee_grp} foreach units _flee_grp;
 				sleep 5;
 			} else {
 				{ deleteVehicle _x } forEach (units _flee_grp);

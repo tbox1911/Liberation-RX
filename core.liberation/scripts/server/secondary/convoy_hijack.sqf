@@ -57,8 +57,6 @@ sleep 2;
 //-----------------------------------------
 // Waypoints
 [_convoy_group] call F_deleteWaypoints;
-{_x doFollow leader _convoy_group} foreach units _convoy_group;
-
 for "_i" from 1 to ((count _convoy_destinations) -1) do {
 	_waypoint = _convoy_group addWaypoint [_convoy_destinations select _i, 0];
 	_waypoint setWaypointType "MOVE";
@@ -71,6 +69,7 @@ for "_i" from 1 to ((count _convoy_destinations) -1) do {
 _waypoint = _convoy_group addWaypoint [_convoy_destinations select 0, 0];
 _waypoint setWaypointType "CYCLE";
 _waypoint setWaypointCompletionRadius 200;
+{_x doFollow leader _convoy_group} foreach units _convoy_group;
 
 //-----------------------------------------
 // ammo transport

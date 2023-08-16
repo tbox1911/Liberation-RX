@@ -3,7 +3,6 @@ private ["_waypoint", "_basepos", "_nearestroad"];
 if (isNull _grp) exitWith {};
 
 [_grp] call F_deleteWaypoints;
-{_x doFollow leader _grp} foreach units _grp;
 
 _civveh = objectParent (leader _grp);
 if (isNull _civveh) then {
@@ -59,3 +58,4 @@ if (isNull _civveh) then {
 	_waypoint = _grp addWaypoint [ _basepos, 100 ];
 	_waypoint setWaypointType "CYCLE";
 };
+{_x doFollow leader _grp} foreach units _grp;

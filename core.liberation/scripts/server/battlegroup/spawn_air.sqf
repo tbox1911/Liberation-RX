@@ -20,14 +20,11 @@ for "_i" from 1 to _count do {
 		_msg = format ["Air support %1 incoming...", [typeOf _vehicle] call F_getLRXName];
 		[gamelogic, _msg] remoteExec ["globalChat", 0];
 	};
-	diag_log format [ "Spawn Air vehicle %1 at %2", typeOf _vehicle, time ];
+	diag_log format [ "Spawn Air vehicle %1 on %2 at %3", typeOf _vehicle, _targetpos, time ];
 	sleep 5;
 };
 
 [_air_grp] call F_deleteWaypoints;
-{_x doFollow leader _air_grp} foreach units _air_grp;
-sleep 1;
-
 _waypoint = _air_grp addWaypoint [ _targetpos, 200];
 _waypoint setWaypointBehaviour "COMBAT";
 _waypoint setWaypointCombatMode "RED";
@@ -38,7 +35,7 @@ _waypoint = _air_grp addWaypoint [ _targetpos, 200];
 _waypoint setWaypointType "SAD";
 _waypoint = _air_grp addWaypoint [ _targetpos, 200];
 _waypoint setWaypointType "CYCLE";
-
+{_x doFollow leader _air_grp} foreach units _air_grp;
 sleep 60;
 
 while {	{( alive _x )} count (units _air_grp) > 0 } do {
@@ -60,7 +57,6 @@ while {	{( alive _x )} count (units _air_grp) > 0 } do {
 				[_unit] joinSilent _flee_grp;
 
 				[_flee_grp] call F_deleteWaypoints;
-				{_x doFollow leader _flee_grp} foreach units _flee_grp;
 
 				_waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];
 				_waypoint setWaypointType "MOVE";
@@ -73,6 +69,7 @@ while {	{( alive _x )} count (units _air_grp) > 0 } do {
 				_waypoint setWaypointType "MOVE";
 				_waypoint setWaypointCompletionRadius 50;
 				_waypoint setWaypointStatements ["true", "deleteVehicle this"];
+				{_x doFollow leader _flee_grp} foreach units _flee_grp;
 				sleep 10;
 			} else {
 				sleep 60;
