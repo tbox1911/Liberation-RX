@@ -1,48 +1,42 @@
 // *** FRIENDLIES ***
-GRLIB_side_friendly = EAST;
+GRLIB_side_friendly = WEST;
 GRLIB_west_modder = "pSiKO";
 
 // Default classname: scripts\shared\default_classnames.sqf
 // Advanced definition: scripts\shared\classnames.sqf
 
 FOB_typename = "Land_Cargo_HQ_V3_F";
-huron_typename = "RHS_Mi8mt_vv";
+huron_typename = "UA_2020_CUP_Mi8_01";
 FOB_box_typename = "Land_Pod_Heli_Transport_04_box_black_F";
-FOB_truck_typename = "O_T_Truck_03_device_ghex_F";
-Respawn_truck_typename = "rhs_gaz66_ap2_msv" ;
-ammo_truck_typename = "O_Truck_03_ammo_F";
-fuel_truck_typename = "O_Truck_03_fuel_F";
-repair_truck_typename = "O_Truck_03_Repair_F";
+FOB_truck_typename = "rhsgref_cdf_gaz66_r142";
+Respawn_truck_typename = "UA_M113";
+ammo_truck_typename = "rhsusf_M977A4_AMMO_BKIT_usarmy_wd";
+fuel_truck_typename = "UA_2020_CUP_KRAZ_6322_PALN";
+repair_truck_typename = "rhsusf_M977A4_REPAIR_usarmy_wd";
 repair_sling_typename = "Land_Pod_Heli_Transport_04_repair_F";
 fuel_sling_typename = "Land_Pod_Heli_Transport_04_fuel_F";
 ammo_sling_typename = "Land_Pod_Heli_Transport_04_ammo_F";
 medic_sling_typename = "Land_Pod_Heli_Transport_04_medevac_F";
-pilot_classname = "rhs_pilot_combat_heli";
-crewman_classname = "rhs_msv_emr_combatcrew";
+pilot_classname = "UA_2020_CUP_B_HeliPilot_mm14";
+crewman_classname = "UA_2020_CUP_crew_mm14";
 basic_weapon_typename = "Box_Syndicate_Ammo_F";
 
 chimera_vehicle_overide = [
-  ["B_Heli_Transport_01_F", "rhs_ka60_grey"]
+  ["B_Heli_Transport_01_F", "UA_2020_CUP_Mi8_01"]
 ];
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 infantry_units_west = [
 	["Alsatian_Random_F",0,0,0,GRLIB_perm_max],
 	["Fin_random_F",0,0,0,0],
-	["rhs_msv_emr_rifleman",1,0,0,0],
-	["rhs_msv_emr_medic",1,0,0,0],
-	["rhs_msv_emr_engineer",1,0,0,0],
-	["rhs_msv_emr_grenadier",1,0,0,GRLIB_perm_inf],
-	["rhs_msv_emr_marksman",1,0,0,GRLIB_perm_inf],
-	["rhs_msv_emr_grenadier_rpg",1,0,0,0],
-	["rhs_msv_emr_arifleman",1,0,0,GRLIB_perm_inf],
-	["rhs_msv_emr_machinegunner",1,0,0,GRLIB_perm_inf],
-	["rhs_msv_emr_aa",1,0,0,GRLIB_perm_log],
-	["rhs_msv_emr_at",1,0,0,GRLIB_perm_log],
-	["rhs_vdv_recon_rifleman_ak103",1,0,0,GRLIB_perm_log],
-	["rhs_vdv_recon_arifleman_rpk",1,0,0,GRLIB_perm_log],
-	["rhs_vdv_recon_rifleman_lat",1,0,0,GRLIB_perm_log],
-	["rhs_vdv_recon_marksman",1,0,0,GRLIB_perm_log],
+	["B_UKR_Army_Rifleman_01",1,0,0,0],
+	["B_UKR_Army_Medic_01",1,0,0,0],
+	["B_UKR_Army_Sapeur_01",1,0,0,0],
+	["B_UKR_Army_Team_Leader_01",1,0,0,GRLIB_perm_inf],
+	["B_UKR_Army_Grenadier_01",1,0,0,0],
+	["B_UKR_Army_MachineGunner_01",1,0,0,GRLIB_perm_inf],
+	["UA_2020_CUP_soldier_AA_F",1,0,0,GRLIB_perm_log],
+	["B_UKR_Army_AT_01",1,0,0,GRLIB_perm_log],
 	[crewman_classname,1,0,0,GRLIB_perm_inf],
 	[pilot_classname,1,0,0,GRLIB_perm_log]
 ];
@@ -50,83 +44,70 @@ infantry_units_west = [
 units_loadout_overide = [];
 
 
-// *** RHS NAPA ***
+// *** Territorial defense ***
 resistance_squad = [
-	"rhsgref_nat_pmil_commander",
-	"rhsgref_nat_pmil_specialist_aa",
-	"rhsgref_nat_pmil_machinegunner",
-	"rhsgref_nat_pmil_grenadier_rpg",
-	"rhsgref_nat_pmil_saboteur",
-	"rhsgref_nat_pmil_medic",
-	"rhsgref_nat_pmil_rifleman_akm",
-	"rhsgref_nat_pmil_rifleman_aksu",
-	"rhsgref_nat_pmil_grenadier",
-	"rhsgref_nat_pmil_rifleman",
-	"rhsgref_nat_pmil_hunter"
+    "UA_2020_CUP_Soldier_SL_tro_mm14",
+    "UA_2020_CUP_Soldier2_tro_mm14",
+    "UA_2020_CUP_Soldier_AT_tro_mm14",
+    "UA_2020_CUP_Soldier3_tro_mm14",
+    "UA_2020_CUP_Soldier_tro_mm14",
+    "UA_2020_CUP_medic_tro_mm14",
+    "UA_2020_CUP_Marksman_tro_mm14",
+    "UA_2020_CUP_Soldier_GL_tro_mm14",
+    "UA_2020_CUP_Soldier_AR_tro_mm14"
 ];
 
-resistance_squad_static = "rhs_Igla_AA_pod_msv";
+resistance_squad_static = "UA_2020_CUP_DSHKM_01";
 
+// TODO add US-supplied vehicles
 light_vehicles = [
 	["O_Boat_Transport_01_F",1,25,1,GRLIB_perm_inf],
 	["O_Boat_Armed_01_hmg_F",5,30,5,GRLIB_perm_log],
-	["RHS_UAZ_MSV_01",1,10,1,0],
-	["O_G_Offroad_01_armed_F",1,50,1,GRLIB_perm_inf],
-	["rhs_gaz66_msv",1,15,1,0],
-	["rhs_kamaz5350_open_msv",1,50,1,GRLIB_perm_inf],
-	["RHS_Ural_Open_MSV_01",1,50,1,GRLIB_perm_log],
-	["rhs_kraz255b1_cargo_open_msv",1,50,1,GRLIB_perm_tank],
-	["rhs_tigr_m_msv",2,25,2,0],
-	["rhs_btr70_msv",5,100,2,GRLIB_perm_inf],
-	["rhs_btr80_msv",5,125,2,GRLIB_perm_log],
-	["rhs_btr80a_msv",5,145,2,GRLIB_perm_log],	
-	["rhs_kamaz5350_msv",5,10,5,GRLIB_perm_inf],
-	["RHS_Ural_Zu23_MSV_01",10,400,10,GRLIB_perm_tank]
+	["C_Offroad_01_covered_F",1,10,1,0],
+	["CUP_C_Octavia_CIV",1,10,1,0],
+	["C_Tractor_01_F",1,25,3,0],
+	["CUP_C_Golf4_kitty_Civ",1,11,1,0],
+	["C_Quadbike_01_F",1,5,1,0],
+	["C_Van_02_vehicle_F",1,10,1,0],
+	["UA_2020_cup_Hilux_unarmed_01",1,10,1,0],
+	["UA_2020_cup_Hilux_DSHKM_01",1,50,1,GRLIB_perm_inf],
+	["UA_2020_cup_Hilux_metis_01",1,75,1,GRLIB_perm_inf],
+	["UA_2020_cup_Hilux_AGS30_01",1,75,GRLIB_perm_inf],
+	["UA_2020_cup_Hilux_SPG9_01",1,75,1,GRLIB_perm_inf],
+	["UA_2020_cup_Kraz_Spartan_01",1,15,1,0],
+	["Kraz_spartan_camo_gs",1,15,1,0],
+	["rhsgref_cdf_btr60",5,75,2,GRLIB_perm_inf],
+	["UA_btr80",5,125,2,GRLIB_perm_log],
+	["UA_btr80a",5,145,2,GRLIB_perm_log],
+	["UA_2020_CUP_KRAZ_6322_TENT",5,10,5,GRLIB_perm_inf],
+	["UA_2020_CUP_KRAZ_6322_BORT",5,10,5,GRLIB_perm_inf],
+	["UA_2020_cup_Hilux_zu23_01",10,350,10,GRLIB_perm_tank]
+	["UA_2020_cup_Hilux_podnos_01",10,500,10,GRLIB_perm_tank]
 ];
 
 heavy_vehicles = [
-	["rhs_brm1k_msv",10,150,10,GRLIB_perm_tank],
-	["rhs_bmp1_msv",10,150,10,GRLIB_perm_tank],
-	["rhs_bmp1k_msv",10,160,10,GRLIB_perm_tank],	
-	["rhs_bmp1p_msv",10,160,10,GRLIB_perm_air],
-	["rhs_prp3_msv",10,170,10,GRLIB_perm_tank],
-	["rhs_bmp3mera_msv",180,80,10,GRLIB_perm_tank],                     
-	["rhs_bmp2k_msv",15,200,20,GRLIB_perm_air],
-	["rhs_t72bb_tv",15,500,20,GRLIB_perm_tank],
-	["rhs_t72be_tv",20,600,25,GRLIB_perm_air],
-	["rhs_t80bvk",20,500,25,GRLIB_perm_tank],
-	["rhs_t80u45m",20,500,25,GRLIB_perm_air],
-	["rhs_t90sab_tv",20,1500,25,GRLIB_perm_tank],
-	["rhs_t90saa_tv",20,1550,25,GRLIB_perm_air],
-	["rhs_zsu234_aa",20,750,25,GRLIB_perm_air],
-	["rhs_t14_tv",150,1500,300,GRLIB_perm_max],
-	["rhs_2s1_tv",50,2000,100,GRLIB_perm_max],
-	["rhs_2s3_tv",50,2300,100,GRLIB_perm_max]
+	["UA_bmp1",10,150,10,GRLIB_perm_tank],
+	["BTR4E_AFU",180,80,10,GRLIB_perm_tank],
+	["UA_bmp2",15,200,20,GRLIB_perm_air],
+	["mkk_t64_bv_ua",15,500,20,GRLIB_perm_tank],
+	["ssr_Leopard2a4",20,500,25,GRLIB_perm_tank],
+	["UA_2020_CUP_2S6_01",20,750,25,GRLIB_perm_air],
+	["UA_HIMARS",50,2300,100,GRLIB_perm_max]
 ];
 
 air_vehicles = [
-	["rhs_ka60_c",10,300,20,GRLIB_perm_tank],
-	["RHS_Mi8mt_vv",10,500,20,GRLIB_perm_tank],
-	["RHS_Mi8AMTSh_vvsc",10,1500,20,GRLIB_perm_air],
-	["RHS_Mi24P_vdv",20,700,30,GRLIB_perm_air],
-	["RHS_Mi8MTV3_vdv",20,800,30,GRLIB_perm_inf],
-    ["rhs_mi28n_vvsc",20,1000,30,GRLIB_perm_air],
-    ["RHS_Mi24V_vdv",10,500,20,GRLIB_perm_air],
-    ["RHS_Mi8mtv3_Cargo_vdv",10,800,20,GRLIB_perm_air],
-    ["RHS_Mi8MTV3_heavy_vdv",10,800,20,GRLIB_perm_air],
-    ["RHS_Ka52_vvsc",10,1500,20,GRLIB_perm_air],
-	["rhs_mig29sm_vmf",20,2000,40,GRLIB_perm_max],
-	["RHS_Su25SM_vvsc",20,2000,40,GRLIB_perm_max],
-	["rhs_mig29sm_vvsc",20,2000,40,GRLIB_perm_max],
-	["RHS_T50_vvs_blueonblue",20,2000,40,GRLIB_perm_max]
+	["UA_2020_CUP_Mi8_VIV_01",10,500,20,GRLIB_perm_tank],
+	["UA_2020_CUP_Mi24_P_01",20,700,30,GRLIB_perm_air],
+    ["UA_2020_CUP_Mi8_01",10,800,20,GRLIB_perm_air],
+	["UA_2020_CUP_Su25_01",20,2000,40,GRLIB_perm_max],
+	["rhsgref_cdf_mig29s",20,2000,40,GRLIB_perm_max]
 ];
 
 blufor_air = [
-	"rhs_mi28n_vvsc",
-	"RHS_Ka52_vvsc",
-	"RHS_Mi8AMTSh_vvsc",
-	"RHS_Su25SM_vvsc",
-	"rhs_mig29sm_vmf"
+	"UA_2020_CUP_Mi24_P_01",
+	"UA_2020_CUP_Mi8_01",
+	"UA_2020_CUP_Su25_01",
+	"rhsgref_cdf_mig29s"
 ];
 
 static_vehicles = [
@@ -138,8 +119,8 @@ static_vehicles = [
 	["rhs_Metis_9k115_2_msv",0,50,0,GRLIB_perm_tank],
 	["rhs_Kornet_9M133_2_msv",0,50,0,GRLIB_perm_tank],
 	["RHS_ZU23_MSV",0,500,0,GRLIB_perm_air],
-	["RHS_M119_WD",10,600,0,GRLIB_perm_air],
-	["RHS_BM21_MSV_01",10,2600,0,GRLIB_perm_max]
+	["rhsgref_cdf_reg_BM21",10,2600,0,GRLIB_perm_max],
+	["HIMARS",10,3000,0,GRLIB_perm_max]
 ];
 
 // *** Static Weapon with AI ***
@@ -157,9 +138,10 @@ buildings_west = [
 	["Land_Cargo_Tower_V3_F",0,0,0,GRLIB_perm_tank],
 	["Land_Cargo_House_V3_F",0,0,0,GRLIB_perm_inf],
 	["Land_Cargo_Patrol_V3_F",0,0,0,GRLIB_perm_log],
-	["rhs_Flag_Russia_F",0,0,0,0]
+	["FA_UAF_FlagTrident",0,0,0,0]
 ];
 
+// TODO change squads
 blufor_squad_inf_light = [
 	"rhs_vmf_emr_medic",
 	"rhs_vmf_emr_at",
@@ -257,28 +239,27 @@ GRLIB_vehicle_blacklist_west = [
 	"rhs_Igla_AA_pod_msv",
 	"rhs_Metis_9k115_2_msv",
 	"rhs_Kornet_9M133_2_msv",
-	"RHS_ZU23_MSV",
-	"RHS_M119_WD"
+	"RHS_ZU23_MSV"
 ];
 
 GRLIB_AirDrop_1 = [			// Unarmed Offroader 50
-	"RHS_UAZ_MSV_01"
+	"UA_2020_cup_Hilux_unarmed_01"
 ];
 
 GRLIB_AirDrop_2 = [			// Armed Offroader 100
-	"rhs_tigr_sts_msv"
+	"UA_2020_cup_Hilux_DSHKM_01"
 ];
 
 GRLIB_AirDrop_3 = [			// MRAP 200
-	"rhsgref_BRDM2UM_msv"
+	"UA_2020_CUP_BRDM2_01"
 ];
 
 GRLIB_AirDrop_4 = [			// Large Truck 300
-	"rhs_gaz66_msv"
+	"UA_2020_CUP_KRAZ_6322_TENT"
 ];
 
 GRLIB_AirDrop_5 = [			// APC 750
-	"rhs_btr60_msv"
+	"rhsgref_cdf_btr60"
 ];
 
 GRLIB_AirDrop_6 = [			// Boat 250
