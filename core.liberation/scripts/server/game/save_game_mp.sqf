@@ -1,7 +1,10 @@
 //--- LRX Savegame
+params [["_force", false]];
 if (!isServer) exitWith {};
 if (!isNil "GRLIB_server_stopped") exitWith {};
-if (time < 300 && !hasInterface) exitWith {diag_log format ["--- LRX MP Warmup (no save done), %1sec remaining...", round (300 - time)];};
+
+private _save_warmup = 300;
+if (time < _save_warmup && !_force) exitWith {diag_log format ["--- LRX MP Warmup (no save done), %1sec remaining...", round (_save_warmup - time)];};
 diag_log format ["--- LRX Save start at %1", time];
 
 private _classnames_to_save = [] + all_buildings_classnames;
