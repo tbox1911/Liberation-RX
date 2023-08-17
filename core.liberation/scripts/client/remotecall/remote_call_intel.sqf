@@ -13,7 +13,7 @@ if ( _notiftype == 1 ) then {
 if ( _notiftype == 2 ) then {
 	waitUntil {sleep 1; !isNil "secondary_objective_position_marker" };
 	waitUntil {sleep 1; count secondary_objective_position_marker > 0 };
-	waitUntil {sleep 1; secondary_objective_position_marker distance zeropos > 1000 };
+	waitUntil {sleep 1; secondary_objective_position_marker distance2D zeropos > 1000 };
 	[ "lib_intel_fob", [ markertext ( [ 10000, secondary_objective_position_marker ] call F_getNearestSector ) ] ] call BIS_fnc_showNotification;
 	_secondary_marker = createMarkerLocal ["secondarymarker", secondary_objective_position_marker];
 	_secondary_marker setMarkerColorLocal GRLIB_color_enemy_bright;
@@ -44,7 +44,7 @@ if ( _notiftype == 5 ) then {
 if ( _notiftype == 6 ) then {
 	waitUntil {sleep 1; !isNil "secondary_objective_position_marker" };
 	waitUntil {sleep 1; count secondary_objective_position_marker > 0 };
-	waitUntil {sleep 1; secondary_objective_position_marker distance zeropos > 1000 };
+	waitUntil {sleep 1; secondary_objective_position_marker distance2D zeropos > 1000 };
 	[ "lib_intel_sar", [ markertext ( [ 10000, secondary_objective_position_marker ] call F_getNearestSector ) ] ] call BIS_fnc_showNotification;
 	_secondary_marker = createMarkerLocal ["secondarymarker", secondary_objective_position_marker];
 	_secondary_marker setMarkerColorLocal GRLIB_color_enemy_bright;
