@@ -41,7 +41,9 @@ infantry_units_west = [
 	[pilot_classname,1,0,0,GRLIB_perm_log]
 ];
 
-units_loadout_overide = [];
+units_loadout_overide = [
+    "UA_2020_CUP_soldier_AA_F"
+];
 
 
 // *** Territorial defense ***
