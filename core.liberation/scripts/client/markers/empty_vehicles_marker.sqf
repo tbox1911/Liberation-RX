@@ -42,11 +42,13 @@ while { true } do {
 		_nextmarker = format ["markedveh%1" ,_nextvehicle];
 		// in cache
 		if (_vehmarkers find _nextmarker < 0) then {
-			_marker = createMarkerLocal [format ["markedveh%1", _nextvehicle], markers_reset];
-			_marker setMarkerSizeLocal [ 0.75, 0.75 ];
-			_marker setMarkerPosLocal (getPosATL _nextvehicle);
-			_marker setMarkerTextLocal ([(typeOf _nextvehicle)] call F_getLRXName);
-			_vehmarkers_bak pushback _marker;
+			if (!isNull _nextvehicle) then {
+				_marker = createMarkerLocal [format ["markedveh%1", _nextvehicle], markers_reset];
+				_marker setMarkerSizeLocal [ 0.75, 0.75 ];
+				_marker setMarkerPosLocal (getPosATL _nextvehicle);
+				_marker setMarkerTextLocal ([(typeOf _nextvehicle)] call F_getLRXName);
+				_vehmarkers_bak pushback _marker;
+			};
 		} else {
 			_nextmarker setMarkerPosLocal (getPosATL _nextvehicle);
 			_vehmarkers_bak pushback _nextmarker;
@@ -60,7 +62,7 @@ while { true } do {
 		_nextvehicle_owner = _nextvehicle getVariable ["GRLIB_vehicle_owner", ""];
 		_nextvehicle_disabled = _nextvehicle getVariable ['R3F_LOG_disabled', false];
 
-		if (typeOf _nextvehicle in ai_resupply_sourcesl) then {
+		if (typeOf _nextvehicle in ai_resupply_sources) then {
 			_marker_color = "ColorOrange";
 			_marker_type = "loc_Rifle";
 		};
