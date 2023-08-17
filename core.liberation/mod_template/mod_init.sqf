@@ -16,7 +16,7 @@ GRLIB_mod_list_east = [
 	"A3_OPF_PAC",
 	"A3_OPF_UB",
 	"A3_BLU_PAC",
-	"RHS_AFRF_WAG"
+	"RHS_AFRF"
 ];
 
 GRLIB_mod_list_name = [
@@ -27,5 +27,5 @@ GRLIB_mod_list_name = [
 	["A3_OPF_PAC", "ArmA3 CSAT Pacific"],
 	["A3_OPF_UB", "ArmA3 CSAT Urban"],
 	["RHS_AFU", "Armed Forces of Ukraine"],
-	["RHS_AFRF_WAG", "Russian Federation + Wagner PMC"]
+	["RHS_AFRF", "Russian Federation"]
 ];

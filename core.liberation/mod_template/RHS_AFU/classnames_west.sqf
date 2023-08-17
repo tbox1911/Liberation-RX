@@ -1,12 +1,12 @@
 // *** FRIENDLIES ***
 GRLIB_side_friendly = WEST;
-GRLIB_west_modder = "pSiKO";
+GRLIB_west_modder = "mixed authors";
 
 // Default classname: scripts\shared\default_classnames.sqf
 // Advanced definition: scripts\shared\classnames.sqf
 
 FOB_typename = "Land_Cargo_HQ_V3_F";
-huron_typename = "UA_2020_CUP_Mi8_01";
+huron_typename = "UA_2020_CUP_Mi8AMT_01";
 FOB_box_typename = "Land_Pod_Heli_Transport_04_box_black_F";
 FOB_truck_typename = "rhsgref_cdf_gaz66_r142";
 Respawn_truck_typename = "UA_M113";
@@ -22,7 +22,7 @@ crewman_classname = "UA_2020_CUP_crew_mm14";
 basic_weapon_typename = "Box_Syndicate_Ammo_F";
 
 chimera_vehicle_overide = [
-  ["B_Heli_Transport_01_F", "UA_2020_CUP_Mi8_01"]
+  ["B_Heli_Transport_01_F", "UA_2020_CUP_Mi8AMT_01"]
 ];
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
@@ -81,7 +81,7 @@ light_vehicles = [
 	["UA_btr80a",5,145,2,GRLIB_perm_log],
 	["UA_2020_CUP_KRAZ_6322_TENT",5,10,5,GRLIB_perm_inf],
 	["UA_2020_CUP_KRAZ_6322_BORT",5,10,5,GRLIB_perm_inf],
-	["UA_2020_cup_Hilux_zu23_01",10,350,10,GRLIB_perm_tank]
+	["UA_2020_cup_Hilux_zu23_01",10,350,10,GRLIB_perm_tank],
 	["UA_2020_cup_Hilux_podnos_01",10,500,10,GRLIB_perm_tank]
 ];
 
@@ -99,6 +99,7 @@ air_vehicles = [
 	["UA_2020_CUP_Mi8_VIV_01",10,500,20,GRLIB_perm_tank],
 	["UA_2020_CUP_Mi24_P_01",20,700,30,GRLIB_perm_air],
     ["UA_2020_CUP_Mi8_01",10,800,20,GRLIB_perm_air],
+    ["UA_2020_CUP_Mi8_VIV_01",10,400,20,GRLIB_perm_air],
 	["UA_2020_CUP_Su25_01",20,2000,40,GRLIB_perm_max],
 	["rhsgref_cdf_mig29s",20,2000,40,GRLIB_perm_max]
 ];
@@ -106,21 +107,22 @@ air_vehicles = [
 blufor_air = [
 	"UA_2020_CUP_Mi24_P_01",
 	"UA_2020_CUP_Mi8_01",
+	"UA_2020_CUP_Mi8AMT_01",
+	"UA_2020_CUP_Mi8_VIV_01",
 	"UA_2020_CUP_Su25_01",
 	"rhsgref_cdf_mig29s"
 ];
 
 static_vehicles = [
-	["rhs_KORD_MSV",0,15,0,0],
-	["RHS_AGS30_TriPod_MSV",0,15,0,GRLIB_perm_inf],
-	["rhs_KORD_high_MSV",0,25,0,GRLIB_perm_log],
-	["rhs_SPG9M_MSV",0,15,0,GRLIB_perm_log],
+	["UA_2020_CUP_DSHKM_01",0,15,0,0],
+	["UA_2020_CUP_AGS_01",0,15,0,GRLIB_perm_inf],
+	["UA_2020_CUP_DSHkM_MiniTriPod_01",0,25,0,GRLIB_perm_log],
+	["UA_2020_CUP_SPG9_01",0,15,0,GRLIB_perm_log],
 	["rhs_Igla_AA_pod_msv",0,50,0,GRLIB_perm_air],
-	["rhs_Metis_9k115_2_msv",0,50,0,GRLIB_perm_tank],
+	["UA_2020_CUP_Metis_01",0,50,0,GRLIB_perm_tank],
 	["rhs_Kornet_9M133_2_msv",0,50,0,GRLIB_perm_tank],
-	["RHS_ZU23_MSV",0,500,0,GRLIB_perm_air],
-	["rhsgref_cdf_reg_BM21",10,2600,0,GRLIB_perm_max],
-	["HIMARS",10,3000,0,GRLIB_perm_max]
+	["UA_2020_CUP_ZU23_01",0,500,0,GRLIB_perm_air],
+	["rhsgref_cdf_reg_BM21",10,2600,0,GRLIB_perm_max]
 ];
 
 // *** Static Weapon with AI ***
@@ -128,9 +130,9 @@ static_vehicles_AI = [
 ];
 
 support_vehicles_west = [
-	["RHS_Ural_Repair_VV_01",1,30,1,GRLIB_perm_inf],
-	["RHS_Ural_Ammo_VV_01",1,30,1,GRLIB_perm_inf],
-	["RHS_Ural_Fuel_VV_01",1,30,1,GRLIB_perm_inf],
+	["rhsusf_M977A4_REPAIR_usarmy_wd",1,30,1,GRLIB_perm_inf],
+	["rhsusf_M977A4_AMMO_BKIT_usarmy_wd",1,30,1,GRLIB_perm_inf],
+	["UA_2020_CUP_KRAZ_6322_PALN",1,30,1,GRLIB_perm_inf],
 	["rhs_launcher_crate",0,150,0,GRLIB_perm_tank]
 ];
 
@@ -143,53 +145,53 @@ buildings_west = [
 
 // TODO change squads
 blufor_squad_inf_light = [
-	"rhs_vmf_emr_medic",
-	"rhs_vmf_emr_at",
-	"rhs_vmf_emr_efreitor",
-	"rhs_vmf_emr_junior_sergeant",
-	"rhs_vmf_emr_rifleman",
-	"rhs_vmf_emr_grenadier",
-	"rhs_vmf_emr_rifleman",
-	"rhs_vmf_emr_rifleman"		
+	"B_UKR_Army_Medic_01",
+	"B_UKR_Army_AT_01",
+	"B_UKR_Army_Team_Leader_01",
+	"B_UKR_Army_Team_Leader_01",
+	"B_UKR_Army_Rifleman_01",
+	"B_UKR_Army_Grenadier_01",
+	"B_UKR_Army_Rifleman_01",
+	"B_UKR_Army_Rifleman_01"
  ];
 blufor_squad_inf = [
-    "rhs_vmf_emr_medic",
-    "rhs_vmf_emr_at",
-    "rhs_vmf_emr_efreitor",
-    "rhs_vmf_emr_at",
-    "rhs_vmf_emr_junior_sergeant",
-    "rhs_vmf_emr_rifleman",
-    "rhs_vmf_emr_grenadier",
-    "rhs_vmf_emr_machinegunner",
-	"rhs_vmf_emr_rifleman",
-	"rhs_vmf_emr_rifleman"
+    "B_UKR_Army_Medic_01",
+    "B_UKR_Army_AT_01",
+    "B_UKR_Army_Team_Leader_01",
+    "B_UKR_Army_AT_01",
+    "B_UKR_Army_Team_Leader_01",
+    "B_UKR_Army_Rifleman_01",
+    "B_UKR_Army_Grenadier_01",
+    "B_UKR_Army_MachineGunner_01",
+	"B_UKR_Army_Rifleman_01",
+	"UA_2020_CUP_B_Marksman_2"
  ];
 blufor_squad_at = [
-    "rhs_vmf_emr_medic",
-    "rhs_vmf_emr_at",
-    "rhs_vmf_emr_at",
-	"rhs_vmf_emr_at",
-    "rhs_vmf_emr_aa",
-    "rhs_vmf_emr_rifleman",
-    "rhs_vmf_emr_marksman"
+    "B_UKR_Army_Medic_01",
+    "B_UKR_Army_AT_01",
+    "B_UKR_Army_AT_01",
+	"B_UKR_Army_AT_01",
+    "UA_2020_CUP_soldier_AA_F",
+    "B_UKR_Army_Rifleman_01",
+    "UA_2020_CUP_B_Marksman_2"
  ];
 blufor_squad_aa = [
-    "rhs_vmf_emr_medic",
-    "rhs_vmf_emr_aa",
-    "rhs_vmf_emr_aa",
-	"rhs_vmf_emr_aa",
-    "rhs_vmf_emr_at",
-    "rhs_vmf_emr_rifleman",
-    "rhs_vmf_emr_marksman"
+    "B_UKR_Army_Medic_01",
+    "UA_2020_CUP_soldier_AA_F",
+    "UA_2020_CUP_soldier_AA_F",
+	"UA_2020_CUP_soldier_AA_F",
+    "B_UKR_Army_AT_01",
+    "B_UKR_Army_Rifleman_01",
+    "UA_2020_CUP_B_Marksman_2"
  ];
 blufor_squad_mix = [
-    "rhs_vmf_emr_medic",
-    "rhs_vmf_emr_aa",
-    "rhs_vmf_emr_aa",
-	"rhs_vmf_emr_at",
-    "rhs_vmf_emr_at",
-    "rhs_vmf_emr_rifleman",
-    "rhs_vmf_emr_marksman"
+    "B_UKR_Army_Medic_01",
+    "UA_2020_CUP_soldier_AA_F",
+    "UA_2020_CUP_soldier_AA_F",
+	"B_UKR_Army_AT_01",
+    "B_UKR_Army_AT_01",
+    "B_UKR_Army_Rifleman_01",
+    "UA_2020_CUP_B_Marksman_2"
  ];
 
 squads = [
@@ -232,14 +234,14 @@ GRLIB_vehicle_whitelist_west = [
 ];
 
 GRLIB_vehicle_blacklist_west = [
-	"rhs_KORD_MSV",
-	"RHS_AGS30_TriPod_MSV",
-	"rhs_KORD_high_MSV",
-	"rhs_SPG9M_MSV",
+	"UA_2020_CUP_DSHKM_01",
+	"UA_2020_CUP_AGS_01",
+	"UA_2020_CUP_DSHkM_MiniTriPod_01",
+	"UA_2020_CUP_SPG9_01",
 	"rhs_Igla_AA_pod_msv",
-	"rhs_Metis_9k115_2_msv",
+	"UA_2020_CUP_Metis_01",
 	"rhs_Kornet_9M133_2_msv",
-	"RHS_ZU23_MSV"
+	"UA_2020_CUP_ZU23_01"
 ];
 
 GRLIB_AirDrop_1 = [			// Unarmed Offroader 50
