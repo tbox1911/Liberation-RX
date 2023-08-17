@@ -28,6 +28,7 @@ _unit addEventHandler ["InventoryOpened", {
 	params ["_unit", "_container"];
 	_ret = false;
 	playsound "ZoomIn";
+	if (!alive _container) exitWith { _ret };
 	if (GRLIB_permission_vehicles) then {
 		if (!([_unit, _container] call is_owner) || locked _container > 1) then {
 			closeDialog 106;
