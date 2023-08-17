@@ -142,7 +142,7 @@ if ( isNil "militia_vehicles" ) then {
 // *** SUPPORT ***
 support_vehicles = [];
 if (GRLIB_enable_arsenal == 1) then {
-	support_vehicles append [Arsenal_typename,0,35,0,0];
+	support_vehicles append [[Arsenal_typename,0,35,0,0]];
 };
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
