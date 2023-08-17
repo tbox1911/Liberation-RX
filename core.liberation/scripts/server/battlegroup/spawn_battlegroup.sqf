@@ -17,7 +17,7 @@ if ( isNil "_liberated_sector" ) then {
 	};
 };
 
-if (_objective_pos isEqualType zeropos) exitWith {};
+if (_objective_pos isEqualTo zeropos) exitWith {};
 
 private _vehicle_pool = opfor_battlegroup_vehicles;
 if ( combat_readiness < 50 ) then {

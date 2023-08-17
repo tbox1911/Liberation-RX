@@ -1,17 +1,29 @@
 params ["_grp", "_objective_pos"];
-private ["_waypoint", "_objective_sector", "_nearset_fob_name"];
+private ["_waypoint", "_nearset_fob_name"];
 
 while { ({alive _x} count (units _grp) > 0) && ( GRLIB_endgame == 0 ) } do {
-	sleep 5;
-	_objective_sector = [GRLIB_sector_size, _objective_pos, blufor_sectors] call F_getNearestSector;
-	_nearset_fob_name = [_objective_pos] call F_getFobName;
-
-	if (_nearset_fob_name != "") then {
-		_objective_sector = _nearset_fob_name;
+	_objective_pos = zeropos;
+	if (GRLIB_global_stop == 0) then {
+		private _info = [_objective_pos, true] call F_getNearestBluforObjective;
+		if ((_info select 1) <= GRLIB_spawn_max) then { _objective_pos = (_info select 0) };
 	};
-	diag_log format["Battlegroup %1 - Objective %2 %3",_grp, _objective_sector, _objective_pos];
 
-	if (!isNull _grp && _objective_sector != "") then {
+	if (GRLIB_global_stop == 1) then {
+		private _target = selectRandom ((units GRLIB_side_friendly) select { _x distance2D lhd > GRLIB_fob_range && !(typeOf (vehicle _x) in uavs) });
+		if !(isNil "_target") then { _objective_pos = getPosATL _target };
+	};
+
+	if (_objective_pos isEqualTo zeropos) then {	
+		{ 
+			if (!isNull objectParent _x) then { [vehicle _x] spawn clean_vehicle };
+			deleteVehicle _x 
+		} forEach (units _grp);
+		deleteGroup _grp;
+		sleep 1;
+	};
+
+	if (!isNull _grp) then {
+		//diag_log format["Battlegroup %1 - Objective %2",_grp, _objective_pos];
 		[_objective_pos] remoteExec ["remote_call_incoming", 0];
 
 		[_grp] call F_deleteWaypoints;
@@ -33,18 +45,8 @@ while { ({alive _x} count (units _grp) > 0) && ( GRLIB_endgame == 0 ) } do {
 
 		sleep 30;
 
-		_timer = round (time + (15 * 60));
+		_timer = round (time + (5 * 60));
 		waitUntil {sleep 5; ({alive _x} count (units _grp) == 0) || time > _timer };
-		_objective_pos = ([_objective_pos, true] call F_getNearestBluforObjective) select 0;
 	};
-
-	sleep 5;
-	if (_objective_pos isEqualType zeropos || getPosATL (leader _grp) distance2D _objective_pos > GRLIB_spawn_max || _objective_sector == "") then {
-		{
-			if (!isNull objectParent _x) then { deleteVehicle (objectParent _x) };
-			deleteVehicle _x;
-			sleep 0.1;
-		} foreach units _grp;
-		deleteGroup _grp;
-	};
+	sleep 1;
 };

@@ -1,5 +1,5 @@
 params ["_vehicle", "_unit", ["_slow", true]];
-if (isNull _unit || !alive _unit) exitWith {};
+if (isNull _unit) exitWith {};
 if (!local _unit) exitWith {
 	if (isServer) then {
 		[_vehicle, _unit] remoteExec ["F_ejectUnit", owner _unit];
@@ -14,8 +14,8 @@ if (_slow) then { sleep (random 2) };
 _unit action ["eject", _vehicle];
 _unit action ["getout", _vehicle];
 sleep 1;
-if (isNull _unit || !alive _unit) exitWith {};
 if (!isNull objectParent _unit) then { moveOut _unit };
+if (!alive _unit) exitWith {};
 
 if (getPos _unit select 2 >= 20) then {
 	_unit setPos (getPosATL _vehicle vectorAdd [([[-15,0,15], 2] call F_getRND), ([[-15,0,15], 2] call F_getRND), 0]);

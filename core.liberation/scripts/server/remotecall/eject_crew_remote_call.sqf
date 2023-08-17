@@ -2,11 +2,11 @@ if (!isServer && hasInterface) exitWith {};
 params ["_player", "_vehicle"];
 
 private _crew = crew _vehicle;
-if (count _crew == 0) exitWith {};
+private _grp = group (_crew select 0);
 
+if (count _crew == 0) exitWith {};
 { [_vehicle, _x] spawn F_ejectUnit } forEach _crew;
 
-private _grp = group (_crew select 0);
 if (side _grp == GRLIB_side_civilian && !([_player, _vehicle] call is_owner)) then {
     [localize "STR_DO_EJECT"] remoteExec ["hintSilent", owner _player];
     ["vtolAlarm"] remoteExec ["playSound", owner _player];

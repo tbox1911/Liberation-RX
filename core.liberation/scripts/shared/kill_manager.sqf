@@ -69,8 +69,7 @@ if ( isServer ) then {
 
 	if (_unit isKindOf "Man") then {
 		if ( vehicle _unit != _unit ) then {
-			_unit action ["Eject", vehicle _unit];
-			//moveOut _unit;
+			[vehicle _unit, _unit, false] spawn F_ejectUnit;
 		};
 
 		if (isNull _killer) exitWith {};

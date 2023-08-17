@@ -53,7 +53,7 @@ _waypoint setWaypointCompletionRadius 20;
 		!(alive _newvehicle) || (damage _newvehicle > 0.2 ) || (_newvehicle distance2D _targetpos < 300)
 	};
 
-	{ [_newvehicle, _x] spawn F_ejectUnit } forEach (units _para_group);
+	{ [_newvehicle, _x, false] spawn F_ejectUnit } forEach (units _para_group);
 	sleep 5;
 	[_para_group, _targetpos] spawn battlegroup_ai;
 
@@ -63,6 +63,8 @@ _waypoint setWaypointCompletionRadius 20;
 	_waypoint setWaypointSpeed "NORMAL";
 	_waypoint setWaypointBehaviour "COMBAT";
 	_waypoint setWaypointCombatMode "RED";
+	_waypoint setWaypointType "SAD";
+	_waypoint = _pilot_group addWaypoint [_targetpos, 300];
 	_waypoint setWaypointType "SAD";
 	_waypoint = _pilot_group addWaypoint [_targetpos, 300];
 	_waypoint setWaypointType "SAD";

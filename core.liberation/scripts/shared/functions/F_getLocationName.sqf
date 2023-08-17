@@ -1,7 +1,5 @@
 params [ "_attacked_position" ];
 
-if (GRLIB_global_stop == 1) exitWith { "FINAL FIGHT" };
-
 private _attacked_string = [_attacked_position] call F_getFobName;
 if ( _attacked_string == "" ) then {
 	_attacked_string = markerText  ( [GRLIB_sector_size, _attacked_position ] call F_getNearestSector );

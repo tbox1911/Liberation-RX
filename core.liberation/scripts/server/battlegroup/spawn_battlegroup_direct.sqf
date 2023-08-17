@@ -1,7 +1,7 @@
 if ( GRLIB_endgame == 1 ) exitWith {};
 params ["_objectivepos", "_intensity"];
 
-diag_log format ["Spawn Direct BattlegGroup at %1", time];
+diag_log format ["Spawn Direct BattlegGroup level %1 at %2", _intensity, time];
 
 private _bg_groups = [];
 private _spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max, true] call F_findOpforSpawnPoint;
@@ -13,10 +13,7 @@ if ( _intensity == 1 ) then {
 if (_spawn_marker != "") then {
 
 	private _selected_opfor_battlegroup = [];
-	private _target_size = GRLIB_battlegroup_size * (combat_readiness /100);
-	if ( count (AllPlayers - (entities "HeadlessClient_F")) <= 2 ) then { _target_size = round (_target_size * 0.65) };
-	if ( _target_size > 8 ) then { _target_size = 8; };
-	if ( _target_size < 3 ) then { _target_size = 3; };
+	private _target_size = GRLIB_battlegroup_size;
 
 	for "_i" from 1 to _target_size do {
 		_selected_opfor_battlegroup pushback (selectRandom _vehicle_pool);
