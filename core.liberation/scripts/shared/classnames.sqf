@@ -140,24 +140,9 @@ if ( isNil "militia_vehicles" ) then {
 };
 
 // *** SUPPORT ***
-support_box_noArsenal = [
-	Box_Ammo_typename,
-	Box_Weapon_typename,
-	Box_Support_typename,
-	Box_Special_typename
-];
-support_vehicles = [
-	[Arsenal_typename,0,35,0,0]
-];
-
-if (!GRLIB_enable_arsenal) then {
-	Arsenal_typename = Box_Ammo_typename;
-	support_vehicles = [
-		[Box_Ammo_typename,0,0,0,0],
-		[Box_Weapon_typename,0,180,0,0],
-		[Box_Support_typename,0,250,0,GRLIB_perm_inf],
-		[Box_Special_typename,0,325,0,GRLIB_perm_tank]
-	];
+support_vehicles = [];
+if (GRLIB_enable_arsenal == 1) then {
+	support_vehicles append [Arsenal_typename,0,35,0,0];
 };
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
@@ -166,7 +151,11 @@ support_vehicles = support_vehicles + [
 	[mobile_respawn,10,50,0,0],
 	[canister_fuel_typename,0,25,0,0],
 	[playerbox_typename,0,0,0,20],
-	[Box_Launcher_typename,0,300,0,GRLIB_perm_log],
+	[Box_Weapon_typename,0,180,0,0],
+	[Box_Ammo_typename,0,0,0,0],
+	[Box_Support_typename,0,250,0,GRLIB_perm_inf],
+	[Box_Special_typename,0,325,0,GRLIB_perm_log],
+	[Box_Launcher_typename,0,300,0,GRLIB_perm_tank],
 	[Respawn_truck_typename,10,450,15,GRLIB_perm_log],
 	[huron_typename,10,1550,35,GRLIB_perm_tank],
 	["Land_RepairDepot_01_civ_F",10,300,0,GRLIB_perm_log],
@@ -301,7 +290,8 @@ ai_resupply_sources = [
 	Arsenal_typename,
 	ammo_truck_typename,
 	ammo_sling_typename,
-	Box_Ammo_typename
+	Box_Ammo_typename,
+	Box_Support_typename
 ] + ai_resupply_sources_west;
 
 // Everything the AI troups should be able to healing from

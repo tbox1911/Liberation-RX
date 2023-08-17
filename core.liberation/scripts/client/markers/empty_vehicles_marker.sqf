@@ -60,7 +60,7 @@ while { true } do {
 		_nextvehicle_owner = _nextvehicle getVariable ["GRLIB_vehicle_owner", ""];
 		_nextvehicle_disabled = _nextvehicle getVariable ['R3F_LOG_disabled', false];
 
-		if (typeOf _nextvehicle in [Arsenal_typename] + support_box_noArsenal) then {
+		if (typeOf _nextvehicle in ai_resupply_sourcesl) then {
 			_marker_color = "ColorOrange";
 			_marker_type = "loc_Rifle";
 		};

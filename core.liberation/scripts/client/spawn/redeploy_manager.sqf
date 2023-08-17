@@ -60,7 +60,7 @@ if ( GRLIB_player_spawned ) then {
 	_saved_loadouts = profileNamespace getVariable ["bis_fnc_saveInventory_data", []];
 	_counter = 0;
 
-	if ( GRLIB_enable_arsenal && !isNil "_saved_loadouts" ) then {
+	if ( GRLIB_enable_arsenal > 0 && !isNil "_saved_loadouts" ) then {
 		{
 			if ( _counter % 2 == 0 && _counter < 40) then {
 				_loadouts_data pushback _x;

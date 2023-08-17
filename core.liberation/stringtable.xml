@@ -1852,6 +1852,10 @@
 			<Portuguese>Posição cinematográfica</Portuguese>
 			<Czech>Filmová scéna</Czech>
 		</Key>
+		<Key ID="STR_PARAMS_ARSENAL_FOB">
+			<Original>Enabled at FOB Only.</Original>
+			<French>Activé à FOB uniquement.</French>
+		</Key>
 		<Key ID="STR_PARAMS_ENABLED">
 			<Original>Enabled</Original>
 			<French>Activé</French>
