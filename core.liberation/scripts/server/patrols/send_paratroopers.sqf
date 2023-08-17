@@ -53,10 +53,10 @@ _waypoint setWaypointCompletionRadius 20;
 		!(alive _newvehicle) || (damage _newvehicle > 0.2 ) || (_newvehicle distance2D _targetpos < 300)
 	};
 
-	{ [_newvehicle, _x, false] spawn F_ejectUnit } forEach (units _para_group);
-	sleep 5;
+	{ [_newvehicle, _x, false] spawn F_ejectUnit; sleep 1.5 } forEach (units _para_group);
 	[_para_group, _targetpos] spawn battlegroup_ai;
 
+	sleep 5;
 	[_pilot_group] call F_deleteWaypoints;
 	private _waypoint = _pilot_group addWaypoint [ _targetpos, 300];
 	_waypoint setWaypointType "SAD";

@@ -44,10 +44,10 @@ if (typeOf _troup_transport isKindOf "Truck_F") then {
 	sleep 2;
 };
 
-{ [_troup_transport, _x, false] spawn F_ejectUnit } forEach (units _troupgrp);
-sleep 5;
+{ [_troup_transport, _x, false] spawn F_ejectUnit; sleep 1.5 } forEach (units _troupgrp);
 [_troupgrp, _objective_pos] spawn battlegroup_ai;
 
+sleep 10;
 [_transport_group] call F_deleteWaypoints;
 private _waypoint = _transport_group addWaypoint [ _objective_pos, 300];
 _waypoint setWaypointType "SAD";
