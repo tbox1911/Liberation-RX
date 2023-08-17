@@ -10,10 +10,9 @@ removeBackpack _unit;
 removeHeadgear _unit;
 
 //  "Add weapons";
-_unit addWeapon "Ltf_EFT_uk_1_rvg_74s_fh";
-_unit addPrimaryWeaponItem "rhs_acc_1p87";
-_unit addPrimaryWeaponItem "DTKWORN_F";
-_unit addPrimaryWeaponItem "30Rnd_545x39_Mag_F";
+_unit addWeapon "rhs_weap_svdp";
+_unit addPrimaryWeaponItem "rhs_acc_pso1m21";
+_unit addPrimaryWeaponItem "rhs_10Rnd_762x54mmR_7N1";
 
 _unit addWeapon "rhs_weap_igla";
 _unit addSecondaryWeaponItem "rhs_mag_9k38_rocket";
@@ -35,13 +34,8 @@ _unit addItemToUniform "SmokeShellGreen";
 
 for "_i" from 1 to 2 do {_unit addItemToVest "FirstAidKit";};
 for "_i" from 1 to 2 do {_unit addItemToVest "HandGrenade";};
-for "_i" from 1 to 6 do {_unit addItemToVest "30Rnd_545x39_Mag_F";};
+for "_i" from 1 to 8 do {_unit addItemToVest "rhs_10Rnd_762x54mmR_7N1";};
 _unit addItemToVest "SmokeShellRed";
-
-
-_unit addItemToBackpack "MineDetector";
-for "_i" from 1 to 3 do {_unit addItemToUniform "rhs_mag_m67";};
-for "_i" from 1 to 2 do {_unit addItemToVest "rhs_mag_9k38_rocket";};
 
 _unit addHeadgear "H2";
 

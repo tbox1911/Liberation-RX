@@ -1,6 +1,6 @@
 // *** FRIENDLIES ***
 GRLIB_side_friendly = WEST;
-GRLIB_west_modder = "mixed authors";
+GRLIB_west_modder = "fugasjunior";
 
 // Default classname: scripts\shared\default_classnames.sqf
 // Advanced definition: scripts\shared\classnames.sqf
@@ -42,7 +42,8 @@ infantry_units_west = [
 ];
 
 units_loadout_overide = [
-    "UA_2020_CUP_soldier_AA_F"
+    "UA_2020_CUP_soldier_AA_F",
+    "UA_2020_CUP_B_Marksman_2",
 ];
 
 
