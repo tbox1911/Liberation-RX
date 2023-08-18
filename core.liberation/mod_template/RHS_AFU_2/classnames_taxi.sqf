@@ -5,9 +5,9 @@ overide_taxi_type_2 = ["rhs_ka60_grey"];
 
 overide_taxi_type_6 = ["rhs_ka60_grey"];
 
-overide_taxi_type_8 = ["RHS_Mi8mtv3_Cargo_vdv"];
+overide_taxi_type_8 = ["b_afougf_Mi8MTV3_Cargo"];
 
-overide_taxi_type_14 = ["RHS_Mi8mtv3_Cargo_vdv"];
+overide_taxi_type_14 = ["b_afougf_Mi8MTV3_Cargo"];
 
 
 

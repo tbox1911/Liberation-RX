@@ -105,28 +105,27 @@ heavy_vehicles = [
 ];
 
 air_vehicles = [
-	["rhs_ka60_c",10,300,20,GRLIB_perm_tank],
-	["RHS_Mi8mt_vv",10,500,20,GRLIB_perm_tank],
-	["RHS_Mi8AMTSh_vvsc",10,1500,20,GRLIB_perm_air],
-	["RHS_Mi24P_vdv",20,700,30,GRLIB_perm_air],
-	["RHS_Mi8MTV3_vdv",20,800,30,GRLIB_perm_inf],
-    ["rhs_mi28n_vvsc",20,1000,30,GRLIB_perm_air],
-    ["RHS_Mi24V_vdv",10,500,20,GRLIB_perm_air],
-    ["RHS_Mi8mtv3_Cargo_vdv",10,800,20,GRLIB_perm_air],
-    ["RHS_Mi8MTV3_heavy_vdv",10,800,20,GRLIB_perm_air],
-    ["RHS_Ka52_vvsc",10,1500,20,GRLIB_perm_air],
-	["rhs_mig29sm_vmf",20,2000,40,GRLIB_perm_max],
-	["RHS_Su25SM_vvsc",20,2000,40,GRLIB_perm_max],
-	["rhs_mig29sm_vvsc",20,2000,40,GRLIB_perm_max],
-	["RHS_T50_vvs_blueonblue",20,2000,40,GRLIB_perm_max]
+	["rhs_ka60_c",10,300,20,GRLIB_perm_tank], // TODO
+	["RHS_Mi8mt_vv",10,500,20,GRLIB_perm_tank], // TODO
+	["RHS_Mi8AMTSh_vvsc",10,1500,20,GRLIB_perm_air], // TODO
+	["RHS_Mi24P_vdv",20,700,30,GRLIB_perm_air], // TODO
+	["b_afougf_Mi8MTV3_UPK23",20,800,30,GRLIB_perm_inf],
+    ["rhs_mi28n_vvsc",20,1000,30,GRLIB_perm_air], // TODO
+    ["b_afougf_Mi24V_AT",10,500,20,GRLIB_perm_air],
+    ["b_afougf_Mi8MTV3_Cargo",10,800,20,GRLIB_perm_air],
+    ["RHS_Mi8MTV3_heavy_vdv",10,800,20,GRLIB_perm_air], // TODO
+    ["RHS_Ka52_vvsc",10,1500,20,GRLIB_perm_air], // TODO
+	["b_afougf_mig29s",20,2000,40,GRLIB_perm_max],
+	["b_afougf_Su25SM",20,2000,40,GRLIB_perm_max],
+	["RHS_T50_vvs_blueonblue",20,2000,40,GRLIB_perm_max] // TODO
 ];
 
 blufor_air = [
-	"rhs_mi28n_vvsc",
-	"RHS_Ka52_vvsc",
-	"RHS_Mi8AMTSh_vvsc",
-	"RHS_Su25SM_vvsc",
-	"rhs_mig29sm_vmf"
+	"rhs_mi28n_vvsc", // TODO
+	"RHS_Ka52_vvsc", // TODO
+	"RHS_Mi8AMTSh_vvsc", // TODO
+	"b_afougf_Su25SM",
+	"b_afougf_mig29s"
 ];
 
 static_vehicles = [
