@@ -85,23 +85,23 @@ light_vehicles = [
 ];
 
 heavy_vehicles = [
-	["rhs_brm1k_msv",10,150,10,GRLIB_perm_tank],
-	["rhs_bmp1_msv",10,150,10,GRLIB_perm_tank],
-	["rhs_bmp1k_msv",10,160,10,GRLIB_perm_tank],	
-	["rhs_bmp1p_msv",10,160,10,GRLIB_perm_air],
-	["rhs_prp3_msv",10,170,10,GRLIB_perm_tank],
-	["rhs_bmp3mera_msv",180,80,10,GRLIB_perm_tank],                     
-	["rhs_bmp2k_msv",15,200,20,GRLIB_perm_air],
-	["rhs_t72bb_tv",15,500,20,GRLIB_perm_tank],
-	["rhs_t72be_tv",20,600,25,GRLIB_perm_air],
-	["rhs_t80bvk",20,500,25,GRLIB_perm_tank],
-	["rhs_t80u45m",20,500,25,GRLIB_perm_air],
-	["rhs_t90sab_tv",20,1500,25,GRLIB_perm_tank],
-	["rhs_t90saa_tv",20,1550,25,GRLIB_perm_air],
-	["rhs_zsu234_aa",20,750,25,GRLIB_perm_air],
-	["rhs_t14_tv",150,1500,300,GRLIB_perm_max],
-	["rhs_2s1_tv",50,2000,100,GRLIB_perm_max],
-	["rhs_2s3_tv",50,2300,100,GRLIB_perm_max]
+	["b_afougf_brm1k_Base",10,150,10,GRLIB_perm_tank],
+	["UA_bmp1",10,150,10,GRLIB_perm_tank],
+	["rhs_bmp1k_msv",10,160,10,GRLIB_perm_tank], // TODO
+	["b_afougf_bmp1p",10,160,10,GRLIB_perm_air],
+	["b_afougf_prp3_Base",10,170,10,GRLIB_perm_tank],
+	["rhs_bmp3mera_msv",180,80,10,GRLIB_perm_tank],  // TODO
+	["UA_bmp2",15,200,20,GRLIB_perm_air],
+	["b_afougf_t72bb",15,500,20,GRLIB_perm_tank],
+	["UA_T72BA",20,600,25,GRLIB_perm_air],
+	["b_afougf_t80bv",20,500,25,GRLIB_perm_tank],
+	["b_afougf_t80u",20,500,25,GRLIB_perm_air],
+	["rhs_t90sab_tv",20,1500,25,GRLIB_perm_tank], // TODO
+	["rhs_t90saa_tv",20,1550,25,GRLIB_perm_air], // TODO
+	["b_afougf_zsu234_aa",20,750,25,GRLIB_perm_air],
+	["rhs_t14_tv",150,1500,300,GRLIB_perm_max], // TODO
+	["b_afougf_2s1tank",50,2000,100,GRLIB_perm_max],
+	["b_afougf_2s3",50,2300,100,GRLIB_perm_max]
 ];
 
 air_vehicles = [

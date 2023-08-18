@@ -58,7 +58,7 @@ R3F_LOG_CFG_can_tow = R3F_LOG_CFG_can_tow +
 	"rhs_tank_base",
 	"rhs_tigr_base",
 	"rhs_t14_tv",
-	"rhs_2s3_tv",
+	"b_afougf_2s3",
 	"rhs_sprut_vdv"
 ];
 
@@ -78,7 +78,7 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 	"rhs_tank_base",
 	"rhs_tigr_base",
 	"rhs_t14_tv",
-	"rhs_2s3_tv",
+	"b_afougf_2s3",
 	"rhs_sprut_vdv"
 ];
 
@@ -102,7 +102,7 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 	"rhs_tank_base",
 	"rhs_tigr_base",
 	"rhs_t14_tv",
-	"rhs_2s3_tv",
+	"b_afougf_2s3",
 	"rhs_sprut_vdv"
 ];
 
@@ -122,7 +122,7 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["rhs_tank_base",60],
 	["rhs_tigr_base",50],
 	["rhs_t14_tv",25],
-	["rhs_2s3_tv",25],
+	["b_afougf_2s3",25],
 	["rhs_sprut_vdv",50]
 ];
 
