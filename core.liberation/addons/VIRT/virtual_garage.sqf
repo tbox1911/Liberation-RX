@@ -1,6 +1,8 @@
 // LRX Virtual Garage
 // by pSiKO
 
+if ( !isNil "GRLIB_garage_in_use" ) exitWith { hintSilent "Garage is busy !!\nPlease wait..." };
+
 private _cfg = configFile >> "cfgVehicles";
 private _myveh = [];
 private _myveh_info = [];
@@ -17,8 +19,6 @@ createDialog "VIRT_vehicle_garage";
 waitUntil { dialog };
 
 private _display = findDisplay 2301;
-ctrlEnable [ 120, false ];
-ctrlEnable [ 121, false ];
 
 while { dialog && alive player } do {
 	if ( _refresh ) then {
@@ -73,10 +73,11 @@ while { dialog && alive player } do {
 		ctrlEnable [ 120, false ];
 		ctrlEnable [ 121, false ];
 		_refresh = true;
-		sleep 1;
-	} else {
+		sleep 3;
 		hintSilent "";
-
+	} else {
+		ctrlEnable [ 120, false ];
+		ctrlEnable [ 121, false ];		
 		if (count(_myveh) > 0) then {
 			// Enable Button
 			private _selected_item = lbCurSel 110;
@@ -108,7 +109,9 @@ while { dialog && alive player } do {
 					private _result = [localize "STR_ONLY_WEAPONS",localize "STR_WARNING", true, true] call BIS_fnc_guiMessage;
 					if (_result) then {
 						ctrlEnable [ 120, false ];
+						(_display displayCtrl (110)) lnbDeleteRow _selected_item;
 						[_vehicle, load_veh, _guid] remoteExec ["vehicle_garage_remote_call", 2];
+						sleep 2;
 						hintSilent (format [localize "STR_LOADED", _vehicle_name]);
 					};
 				};
@@ -136,7 +139,6 @@ while { dialog && alive player } do {
 						hintSilent (format ["Vehicle %1\nUnloaded from Garage.", [_veh_class] call F_getLRXName]);
 					};
 				};
-				sleep 2;
 				_refresh = true;
 				load_veh = 0;
 			};
