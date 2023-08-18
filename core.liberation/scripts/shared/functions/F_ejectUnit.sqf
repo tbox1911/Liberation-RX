@@ -1,5 +1,5 @@
 params ["_vehicle", "_unit", ["_slow", true]];
-if (isNull _unit || !alive _unit) exitWith {};
+if (isNull _unit) exitWith {};
 if (!local _unit) exitWith {
 	if (isServer) then {
 		[_vehicle, _unit] remoteExec ["F_ejectUnit", owner _unit];
@@ -10,15 +10,15 @@ if (!local _unit) exitWith {
 
 _unit allowDamage false;
 unAssignVehicle _unit;
-if (_slow) then { sleep (random 2) };
 _unit action ["eject", _vehicle];
 _unit action ["getout", _vehicle];
+if (_slow) then { sleep random 3 };
 sleep 1;
-if (isNull _unit || !alive _unit) exitWith {};
 if (!isNull objectParent _unit) then { moveOut _unit };
+if (!alive _unit) exitWith {};
 
 if (getPos _unit select 2 >= 20) then {
-	_unit setPos (getPosATL _vehicle vectorAdd [([[-15,0,15], 2] call F_getRND), ([[-15,0,15], 2] call F_getRND), 0]);
+	_unit setPos (getPosATL _vehicle vectorAdd [([[-20,0,20], 3] call F_getRND), ([[-20,0,20], 3] call F_getRND), 0]);
 	if (_unit getVariable ["GRLIB_para_backpack", ""] != "") then {
 		[_unit] spawn {
 			params ["_unit"];
@@ -33,7 +33,8 @@ if (getPos _unit select 2 >= 20) then {
 	_unit moveInDriver _para;
 	sleep 2;
 	if (isNull (driver _para)) then { deleteVehicle _para };
+	sleep 5;
 };
 
-sleep 1;
+sleep 2;
 _unit allowDamage true;

@@ -34,6 +34,7 @@ _setupObjects =
 	_aiGroup selectLeader _leader;
 
 	// behaviour on waypoints
+	[_aiGroup] call F_deleteWaypoints;
 	{
 		_waypoint = _aiGroup addWaypoint [markerPos (_x select 0), 0];
 		_waypoint setWaypointType "MOVE";

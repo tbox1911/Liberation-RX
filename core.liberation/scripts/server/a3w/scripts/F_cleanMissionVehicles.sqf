@@ -11,9 +11,7 @@ params [["_vehicles",[]], ["_wait", 5], ["_force", false]];
         sleep _wait;
         if (typeOf _vehicle isKindOf "AllVehicles") then {
             if ( (count (crew _vehicle) == 0 || _force) && (_vehicle getVariable ["GRLIB_vehicle_owner", ""]) in ["", "server"]) then {
-                { moveOut _x; deleteVehicle _x } forEach (crew _vehicle);
-                [_vehicle] call clean_vehicle;
-                deleteVehicle _vehicle;
+                [_vehicle] spawn clean_vehicle;
             };
         } else {
             deleteVehicle _vehicle;

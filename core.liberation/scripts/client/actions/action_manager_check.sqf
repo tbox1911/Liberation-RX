@@ -25,7 +25,13 @@ GRLIB_checkHalo = {
 };
 
 GRLIB_checkRedeploy = {
-	(GRLIB_player_is_menuok && (GRLIB_player_near_spawn || GRLIB_player_near_lhd))
+	private _ret = false;
+	if (GRLIB_allow_redeploy == 0) then {
+		_ret = (GRLIB_player_is_menuok && (GRLIB_player_fobdistance < GRLIB_ActionDist_10 || GRLIB_player_near_lhd));
+	} else {
+		_ret = (GRLIB_player_is_menuok && (GRLIB_player_near_spawn || GRLIB_player_near_lhd));
+	};
+	_ret;
 };
 
 GRLIB_checkSendAmmo = {
@@ -53,7 +59,9 @@ GRLIB_checkAirDrop = {
 
 GRLIB_checkArsenal = {
 	private _near_arsenal = [player, "ARSENAL", GRLIB_ActionDist_15, true] call F_check_near;
-	(GRLIB_player_is_menuok && GRLIB_enable_arsenal && (_near_arsenal || GRLIB_player_near_lhd) && LRX_arsenal_init_done)
+	private _mode1 = (GRLIB_enable_arsenal == 1 && (_near_arsenal || GRLIB_player_near_lhd));
+	private _mode2 = (GRLIB_enable_arsenal == 2 && (GRLIB_player_fobdistance < GRLIB_ActionDist_15 || GRLIB_player_near_lhd));
+	(GRLIB_player_is_menuok && (_mode1 || _mode2) && LRX_arsenal_init_done)
 };
 
 GRLIB_checkGarage = {

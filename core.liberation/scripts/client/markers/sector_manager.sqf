@@ -32,7 +32,7 @@ private _sector_left = 0;
 
 sleep 1;
 
-while { true } do {
+while { GRLIB_endgame == 0 } do {
 	waitUntil {sleep 1; (count blufor_sectors + count GRLIB_all_fobs) != _sector_count};
 	_sector_left = count (sectors_allSectors - blufor_sectors);
 

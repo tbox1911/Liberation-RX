@@ -137,6 +137,7 @@ GRLIB_tk_count = ["TK_count",4] call _lrx_getParamValue;
 GRLIB_squad_size = ["SquadSize",2] call _lrx_getParamValue;
 GRLIB_max_squad_size = ["MaxSquadSize",7] call _lrx_getParamValue;
 GRLIB_max_spawn_point = ["MaxSpawnPoint",3] call _lrx_getParamValue;
+GRLIB_allow_redeploy = ["Redeploy",1] call _lrx_getParamValue;
 GRLIB_permissions_param = ["Permissions",1] call _lrx_getParamValue;
 GRLIB_permission_vehicles = ["EnableLock",1] call _lrx_getParamValue;
 GRLIB_civilian_activity = ["Civilians",1] call _lrx_getParamValue;
@@ -155,6 +156,7 @@ GRLIB_server_persistent = ["Persistent",0] call _lrx_getParamValue;
 
 // Hardcoded
 GRLIB_endgame = 0;
+GRLIB_global_stop = 0;
 GRLIB_min_score_player = 20;	// Minimal player score to be saved
 GRLIB_blufor_cap = GRLIB_blufor_cap * GRLIB_unitcap;
 GRLIB_sector_cap = GRLIB_sector_cap * GRLIB_unitcap;
@@ -162,6 +164,7 @@ GRLIB_battlegroup_cap = GRLIB_battlegroup_cap * (sqrt GRLIB_unitcap) * (sqrt GRL
 GRLIB_patrol_cap = GRLIB_patrol_cap * GRLIB_unitcap;
 GRLIB_battlegroup_size = GRLIB_battlegroup_size * GRLIB_unitcap;
 GRLIB_civilians_amount = GRLIB_civilians_amount * GRLIB_civilian_activity;
+GRLIB_secondary_missions_costs = [ 100, 50, 10, 800 ];
 
 // Select MOD name
 GRLIB_mod_west = "";
@@ -249,7 +252,6 @@ if ( GRLIB_introduction == 1 ) then { GRLIB_introduction = true } else { GRLIB_i
 if ( GRLIB_deployment_cinematic == 1 ) then { GRLIB_deployment_cinematic = true } else { GRLIB_deployment_cinematic = false };
 if ( GRLIB_admin_menu == 1 ) then { GRLIB_admin_menu = true } else { GRLIB_admin_menu = false };
 if ( GRLIB_hide_opfor == 1 ) then { GRLIB_hide_opfor = true } else { GRLIB_hide_opfor = false };
-if ( GRLIB_enable_arsenal == 1 ) then { GRLIB_enable_arsenal = true } else { GRLIB_enable_arsenal = false };
 if ( GRLIB_permission_vehicles == 1 ) then { GRLIB_permission_vehicles = true } else { GRLIB_permission_vehicles = false };
 if ( GRLIB_adaptive_opfor == 1 ) then { GRLIB_adaptive_opfor = true } else { GRLIB_adaptive_opfor = false };
 if ( GRLIB_passive_income == 1 ) then { GRLIB_passive_income = true } else { GRLIB_passive_income = false };

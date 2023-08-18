@@ -28,13 +28,15 @@ diag_log format ["--- LRX Spawn Outpost %1 pos %2 at %3", _template_name, _base_
 	_nextdir = _x select 2;
 
 	_nextobject = _nextclass createVehicle _nextpos;
+    _nextobject allowDamage false;
     _nextobject setPosATL _nextpos;
     if (_nextclass isKindOf "HBarrier_base_F") then {
         _nextobject setVectorDirAndUp [[-cos _nextdir, sin _nextdir, 0] vectorCrossProduct surfaceNormal _nextpos, surfaceNormal _nextpos];
      } else {
         _nextobject setVectorDirAndUp [[_nextdir, _nextdir, 0], [0,0,1]];
     };
-	_base_objects = _base_objects + [_nextobject];
+
+	_base_objects pushBack _nextobject;
 } foreach _objects_to_build;
 sleep 1;
 
@@ -47,19 +49,21 @@ if (_enable_objectives) then {
         _nextdir = _x select 2;
 
         _nextobject = _nextclass createVehicle [(_nextpos select 0) + floor(random 500),(_nextpos select 1) + floor(random 500),0.5];
+        _nextobject allowDamage false;
         _nextobject setVectorUp [0,0,1];
         _nextobject setpos _nextpos;
         _nextobject setdir _nextdir;
 
         _base_objectives pushBack _nextobject;
     } foreach _objectives_to_build;
-    sleep 1;
+    sleep 4;
 };
 
 {
     _x setDamage 0;
     _x setVariable ["R3F_LOG_disabled", true, true];
-    if (typeOf _x isKindof "AllVehicles") then {
+    if (typeOf _x isKindof "AllVehicles" || _x in _base_objectives) then {
+        _x allowDamage true;
         _x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
         _x setVariable ["GRLIB_vehicle_owner", "server", true];
         _x lock 2;

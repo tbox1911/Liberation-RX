@@ -208,7 +208,7 @@ while { alive player && dialog } do {
 	if (do_export == 1) then {
 		do_export = 0;
 		if (isServer) then {
-			[] call save_game_mp;
+			[true] call save_game_mp;
 			copyToClipboard str (profileNamespace getVariable [GRLIB_save_key, []]);
 			_msg = format ["Savegame %1 Exported to clipboard.", GRLIB_save_key];
 			hint _msg;
@@ -217,15 +217,15 @@ while { alive player && dialog } do {
 			{ ctrlShow [_x, true] } foreach _output_controls;
 			output_save = [];
 			[player, {
-				[] call save_game_mp;
+				[true] call save_game_mp;
 				[missionNamespace, ["output_save", (profileNamespace getVariable GRLIB_save_key)]] remoteExec ["setVariable", owner _this];
 				["Copy the Savegame from Text Field."] remoteExec ["hint", owner _this];
 			}] remoteExec ["bis_fnc_call", 2];
-			if (!isNil "output_save") then {
-				waitUntil {uiSleep 0.3; ((count output_save > 0) || !(dialog) || !(alive player))};
-				ctrlSetText [ 536, str output_save ];
-				waitUntil {uiSleep 0.3; (!(dialog) || !(alive player)) };
-			};
+
+			waitUntil {uiSleep 0.3; ((count output_save > 0) || !(dialog) || !(alive player))};
+			ctrlSetText [ 536, str output_save ];
+			waitUntil {uiSleep 0.3; (!(dialog) || !(alive player)) };
+
 			{ ctrlShow [_x, false] } foreach _output_controls;
 			{ ctrlEnable  [_x, true] } foreach _button_controls;
 		};

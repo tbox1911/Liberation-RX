@@ -1,6 +1,6 @@
 params [ "_attacked_position" ];
 
-private _attacked_string = [ _attacked_position ] call F_getFobName;
+private _attacked_string = [_attacked_position] call F_getFobName;
 if ( _attacked_string == "" ) then {
 	_attacked_string = markerText  ( [GRLIB_sector_size, _attacked_position ] call F_getNearestSector );
 } else {

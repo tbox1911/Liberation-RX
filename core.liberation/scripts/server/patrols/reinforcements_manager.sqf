@@ -1,6 +1,6 @@
 params [ "_targetsector" ];
 
-if (combat_readiness < 25 || GRLIB_csat_aggressivity < 1 || diag_fps < 30) exitWith {};
+if ( GRLIB_endgame == 1 || GRLIB_global_stop == 1 || combat_readiness < 25 || GRLIB_csat_aggressivity < 1 || diag_fps < 30) exitWith {};
 
 private _targetsector_pos = markerPos _targetsector;
 private _active_players = count ([_targetsector_pos, GRLIB_spawn_max] call F_getNearbyPlayers);

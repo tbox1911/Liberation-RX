@@ -1,4 +1,5 @@
 params ["_playerId"];
+if (GRLIB_allow_redeploy == 0) exitWith {[[], true]};
 private _max_respawn_reached = false;
 
 private _respawn_trucks_unsorted = [entities [[Respawn_truck_typename, huron_typename], [], false, true], {

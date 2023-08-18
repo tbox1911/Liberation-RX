@@ -77,62 +77,68 @@ _getTTLunits = {
 
 //================================================================ CONFIG
 
-deleteManagerPublic = TRUE;								// To terminate script via debug console
+deleteManagerPublic = true;								// To terminate script via debug console
 
-private _checkPlayerCount = TRUE;						// dynamic sleep. Set TRUE to have sleep automatically adjust based on # of players.
+private _checkPlayerCount = true;						// dynamic sleep. Set TRUE to have sleep automatically adjust based on # of players.
 private _playerThreshold = 4;							// How many players before accelerated cycle kicks in?
 private _checkFrequencyDefault = GRLIB_cleanup_vehicles;	        // sleep default
 private _checkFrequencyAccelerated = (_checkFrequencyDefault/2);	// sleep accelerated
 
 private _vehiclesLimit = 20;							// Vehicles Set -1 to disable.
-private _vehicleDistCheck = TRUE;						// TRUE to delete any vehicles that are far from players.
+private _vehicleDistCheck = true;						// TRUE to delete any vehicles that are far from players.
 private _vehicleDist = (GRLIB_sector_size * 2);			// Distance (meters) from players that vehicles are not deleted if below max.
 
 private _deadMenLimit = 30;								// Bodies. Set -1 to disable.
-private _deadMenDistCheck = TRUE;						// TRUE to delete any bodies that are far from players.
+private _deadMenDistCheck = true;						// TRUE to delete any bodies that are far from players.
 private _deadMenDist = (GRLIB_sector_size * 2);			// Distance (meters) from players that bodies are not deleted if below max.
 
 private _deadVehiclesLimit = 20;						// Wrecks. Set -1 to disable.
-private _deadVehicleDistCheck = TRUE;					// TRUE to delete any destroyed vehicles that are far from players.
+private _deadVehicleDistCheck = true;					// TRUE to delete any destroyed vehicles that are far from players.
 private _deadVehicleDist = (GRLIB_sector_size * 2);		// Distance (meters) from players that destroyed vehicles are not deleted if below max.
 
 private _craterLimit = -1;								// Craters. Set -1 to disable.
-private _craterDistCheck = TRUE;						// TRUE to delete any craters that are far from players.
+private _craterDistCheck = true;						// TRUE to delete any craters that are far from players.
 private _craterDist = (GRLIB_sector_size * 2);			// Distance (meters) from players that craters are not deleted if below max.
 
 private _weaponHolderLimit = 30;						// Weapon Holders. Set -1 to disable.
-private _weaponHolderDistCheck = TRUE;					// TRUE to delete any weapon holders that are far from players.
+private _weaponHolderDistCheck = true;					// TRUE to delete any weapon holders that are far from players.
 private _weaponHolderDist = (GRLIB_sector_size * 2);	// Distance (meters) from players that ground garbage is not deleted if below max.
 
 private _minesLimit = 30;								// Land mines. Set -1 to disable.
-private _minesDistCheck = TRUE;							// TRUE to delete any mines that are far from ANY UNIT (not just players).
+private _minesDistCheck = true;							// TRUE to delete any mines that are far from ANY UNIT (not just players).
 private _minesDist = (GRLIB_sector_size * 2);			// Distance (meters) from players that land mines are not deleted if below max.
 
 private _staticsLimit = -1;								// Static weapons. Set -1 to disable.
-private _staticsDistCheck = TRUE;						// TRUE to delete any static weapon that is far from ANY UNIT (not just players).
+private _staticsDistCheck = true;						// TRUE to delete any static weapon that is far from ANY UNIT (not just players).
 private _staticsDist = (GRLIB_sector_size * 2);			// Distance (meters) from players that static weapons are not deleted if below max.
 
 private _ruinsLimit = 20;								// Ruins. Set -1 to disable.
-private _ruinsDistCheck = TRUE;							// TRUE to delete any ruins that are far from players.
+private _ruinsDistCheck = true;							// TRUE to delete any ruins that are far from players.
 private _ruinsDist = (GRLIB_sector_size * 2);			// Distance (meters) from players that ruins are not deleted if below max.
 
-private _orphanedTriggers = TRUE;						// Clean orphaned triggers in MP.
-private _emptyGroups = TRUE;							// Set FALSE to not delete empty groups.
+private _orphanedTriggers = true;						// Clean orphaned triggers in MP.
+private _emptyGroups = true;							// Set FALSE to not delete empty groups.
 
 //================================================================ LOOP
 
 while {deleteManagerPublic} do {
 	private _stats = 0;
 	//================================= SLEEP
+	private _sleep = _checkFrequencyDefault;
 	if (_checkPlayerCount) then {
 		if ((count (playableUnits + switchableUnits)) >= _playerThreshold) then {
-			sleep _checkFrequencyAccelerated;
-		} else {
-			sleep _checkFrequencyDefault;
+			_sleep = _checkFrequencyAccelerated;
 		};
-	} else {
-		sleep _checkFrequencyDefault;
 	};
+	if (GRLIB_global_stop == 1) then {
+		_sleep = _checkFrequencyAccelerated/2;
+		_vehiclesLimit = 10;
+		_vehicleDistCheck = false;
+		_deadVehiclesLimit = 10;
+		_deadVehicleDistCheck = false;
+	};
+	sleep _sleep;
+
 	//================================= FORCE DELETE
 	{ if ([typeOf _x, _force_cleanup_classnames] call F_itemIsInClass) then { deleteVehicle _x; _stats = _stats + 1 } } forEach (allMissionObjects "All");
 	sleep 1;
@@ -145,8 +151,7 @@ while {deleteManagerPublic} do {
 				if (_x isKindOf "CAManBase") then {
 					deleteVehicle _x;
 				} else {
-					[_x] call clean_vehicle;
-					deleteVehicle _x;
+					[_x] spawn clean_vehicle;
 				};
 				_stats = _stats + 1;
 			};
@@ -191,8 +196,7 @@ while {deleteManagerPublic} do {
 			if (_vehicleDistCheck) then {
 				{
 					if ([_x,_vehicleDist,(playableUnits + switchableUnits)] call _isHidden) then {
-						[_x] call clean_vehicle;
-						deleteVehicle _x;
+						[_x] spawn clean_vehicle;
 						_stats = _stats + 1;
 					};
 				} count (_nbVehicles);
@@ -200,8 +204,7 @@ while {deleteManagerPublic} do {
 
 			while {(( (count (_nbVehicles)) - _vehiclesLimit) > 0)} do {
 				_veh = selectRandom (_nbVehicles);
-				[_veh] call clean_vehicle;
-				deleteVehicle _veh;
+				[_veh] spawn clean_vehicle;
 				_stats = _stats + 1;
 				sleep 0.2;
 			};
@@ -214,8 +217,7 @@ while {deleteManagerPublic} do {
 			if (_deadVehicleDistCheck) then {
 				{
 					if ([_x,_deadVehicleDist,(playableUnits + switchableUnits)] call _isHidden) then {
-						[_x] call clean_vehicle;
-						deleteVehicle _x;
+						[_x] spawn clean_vehicle;
 						_stats = _stats + 1;
 					};
 				} count (allDead - allDeadMen);
@@ -223,8 +225,7 @@ while {deleteManagerPublic} do {
 
 			while {(((count (allDead - allDeadMen)) - _deadVehiclesLimit) > 0)} do {
 				_veh = selectRandom (allDead - allDeadMen);
-				[_veh] call clean_vehicle;
-				deleteVehicle _veh;
+				[_veh] spawn clean_vehicle;
 				_stats = _stats + 1;
 				sleep 0.2;
 			};

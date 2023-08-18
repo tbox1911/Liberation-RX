@@ -77,7 +77,7 @@ if ( _ownership == GRLIB_side_enemy ) then {
 		sleep 3;
 	};
 
-	if ( GRLIB_endgame == 0 ) then {
+	if ( GRLIB_endgame == 0 && GRLIB_global_stop == 0) then {
 		if ( _ownership == GRLIB_side_enemy ) then {
 			blufor_sectors = blufor_sectors - [ _sector ];
 			publicVariable "blufor_sectors";

@@ -15,7 +15,7 @@ private _missionsFolder = "sideMissions";
 [SideMissions, _missionsFolder] call attemptCompileMissions;
 
 while {true} do {
-	if (GRLIB_endgame == 1) exitWith {};
+	if (GRLIB_endgame == 1 || GRLIB_global_stop == 1) exitWith {};
 
 	// Select Mission
 	_nextMission = nil;

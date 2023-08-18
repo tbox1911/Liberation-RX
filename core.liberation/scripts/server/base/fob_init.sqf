@@ -26,7 +26,7 @@ if (count GRLIB_all_fobs == 0) then {
 	_sign setVariable ["GRLIB_vehicle_owner", "public", true];
 };
 
-if (!GRLIB_enable_arsenal) then {
+if (GRLIB_enable_arsenal == 0) then {
 	sleep 1;
 	private _ammo_pos = (getposATL _sign) vectorAdd ([[10, 0, 0], -(getDir _sign) - 90] call BIS_fnc_rotateVector2D);
 	{
@@ -36,5 +36,5 @@ if (!GRLIB_enable_arsenal) then {
 		_ammo1 setVariable ["R3F_LOG_disabled", true, true];
 		if (_x == Arsenal_typename) then { _ammo1 addItemCargoGlobal ["SatchelCharge_Remote_Mag", 2] };
 		sleep 0.5;
-	} forEach [Arsenal_typename, Box_Weapon_typename];
+	} forEach [Box_Weapon_typename, Box_Ammo_typename];
 };

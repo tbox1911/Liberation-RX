@@ -33,9 +33,9 @@ if ( count _spawnpos == 0 ) then {
 if ( count _spawnpos == 0 ) exitWith { diag_log format ["--- LRX Error: No place to build vehicle %1 at position %2", _classname, _sectorpos]; objNull };
 
 if ( _classname isKindOf "Air" ) then {
-	if ( _side == GRLIB_side_civilian ) then { _airveh_alt = 200 };
+	if ( _side == GRLIB_side_civilian ) then { _airveh_alt = 150 };
 	_spawnpos set [2, _airveh_alt];
-	_vehicle = createVehicle [_classname, _spawnpos, [], 0, "FLY"];
+	_vehicle = createVehicle [_classname, _spawnpos, [], 200, "FLY"];
 } else {
 	_spawnpos set [2, 0.5];
 	if (surfaceIsWater _spawnpos && !(_classname isKindOf "Ship")) then {
@@ -46,14 +46,13 @@ if ( _classname isKindOf "Air" ) then {
 	};
 	_vehicle = createVehicle [_classname, _spawnpos, [], 0, "NONE"];
 };
-waitUntil {sleep 0.1; !isNull _vehicle};
 _vehicle allowDamage false;
 
 if ( _vehicle isKindOf "Air" ) then {
-	if (GRLIB_SOG_enabled) then { _airveh_alt = 100 };
+	if (GRLIB_SOG_enabled) then { _airveh_alt = 50 };
 	_vehicle engineOn true;
 	_vehicle flyInHeight _airveh_alt;
-	_vehicle flyInHeightASL [_airveh_alt, 50, 300];
+	_vehicle flyInHeightASL [_airveh_alt, 100, 300];
 };
 
 if ( _random_rotate ) then {

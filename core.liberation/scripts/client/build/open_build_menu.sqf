@@ -165,6 +165,9 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 				if (_build_class == playerbox_typename && _has_box) then {
 					_affordable = false;
 				};
+				if (_build_class in [Respawn_truck_typename, huron_typename] && GRLIB_allow_redeploy == 0) then {
+					_affordable = false;
+				};
 			};
 
 			if ( buildtype == 8 ) then {
@@ -264,4 +267,4 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 };
 
 hintSilent "";
-if (!alive player || dobuild != 0) then {closeDialog 0 };
+if (!alive player || dobuild != 0) then { closeDialog 0 };

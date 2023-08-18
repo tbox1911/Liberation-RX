@@ -1,6 +1,6 @@
 waitUntil { !isNil "huron_typename" };
 
-_vehicleClassnames = [huron_typename] + all_firendly_classnames;
+_vehicleClassnames = [huron_typename] + all_friendly_classnames;
 
 while { true } do {
 

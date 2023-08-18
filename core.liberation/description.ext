@@ -37,7 +37,7 @@ class cfgSounds {
  	class parasound {
  		name = "parasound";
  		sound[] = {"res\c130.ogg", 1, 1};
- 		titles[] = {};
+		titles[] = {"parasound"};
  	};
 };
 
@@ -63,6 +63,5 @@ class CfgDebriefing {
 #include "addons\WHS\warehouse.hpp"
 #include "addons\SDB_DALE\RscLoadout.hpp"
 #include "addons\JKB\JKB_dialog.hpp"
-#include "addons\VAM\defines.hpp"
 #include "addons\VAM\VAM_GUI_controls.hpp"
 #include "addons\VAM\VAM_GUI_classes.hpp"

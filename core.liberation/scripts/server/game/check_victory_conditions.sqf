@@ -4,7 +4,7 @@ _blufor_bigtowns = [ blufor_sectors, { _x in sectors_bigtown } ] call BIS_fnc_co
 
 if ( (count _blufor_bigtowns == count sectors_bigtown) && (count (sectors_allSectors - blufor_sectors) == 0) ) then {
 	diag_log format ["Blufor Victory at %1 !!", time];
-	{ _x allowDamage false; (vehicle _x) allowDamage false; } foreach allPlayers;
+	{ _x setDamage 1 } foreach (units GRLIB_side_enemy);
 
 	publicstats = [];
 	publicstats pushback stats_opfor_soldiers_killed;
@@ -36,11 +36,10 @@ if ( (count _blufor_bigtowns == count sectors_bigtown) && (count (sectors_allSec
 	publicstats pushback stats_fobs_lost;
 	publicstats pushback (round stats_readiness_earned);
 
-	sleep 5;
+	sleep 2;
 	[publicstats] remoteExec ["remote_call_endgame", 0];
 
 	GRLIB_endgame = 1;
 	publicVariable "GRLIB_endgame";
 	[] call save_game_mp;
-	{ if ( !(isPlayer _x) && !([_x, "LHD", GRLIB_sector_size] call F_check_near) ) then { deleteVehicle _x } } foreach allUnits;
 };

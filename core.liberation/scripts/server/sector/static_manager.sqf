@@ -31,13 +31,12 @@ if ( local _grp ) then {
 
 // Wait
 private _timeout = round (time + _duration);
-while { count (units _grp) > 0 && time < _timeout } do {
-    sleep 60;
+while { GRLIB_global_stop == 0 && ({alive _x} count (units _grp) > 0) && time < _timeout } do {
+    sleep 30;
 };
 
 // Cleanup
-if ( [markerpos _sector, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0 ) then {
-    { deleteVehicle _x } foreach (units _grp);
-    deleteGroup _grp;
-    deleteVehicle _vehicle;
-};
+waitUntil { sleep 10; [markerpos _sector, GRLIB_spawn_max, GRLIB_side_friendly] call F_getUnitsCount == 0 };
+{ deleteVehicle _x } foreach (units _grp);
+deleteGroup _grp;
+deleteVehicle _vehicle;

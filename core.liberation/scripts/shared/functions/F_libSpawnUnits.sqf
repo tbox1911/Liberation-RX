@@ -19,7 +19,7 @@ private ["_unit", "_validpos", "_max_try", "_backpack"];
 {
 	if ( (count units _grp) < _nb_unit) then {
 		_validpos = zeropos;
-		_max_try = 10;
+		_max_try = 20;
 
         if (_type == "divers") then {
             _validpos = _spawnpos vectorAdd [floor(random 20), floor(random 20), -5];
@@ -29,12 +29,17 @@ private ["_unit", "_validpos", "_max_try", "_backpack"];
             _validpos = _spawnpos vectorAdd [floor(random 20), floor(random 20), 0];
         };
 
+		private _range = GRLIB_capture_size;
 		while { (_validpos isEqualTo zeropos) && _max_try > 0 } do {
-			_validpos = [_spawnpos, 0, GRLIB_capture_size, 1, 0, 0, 0, [], [zeropos, zeropos]] call BIS_fnc_findSafePos;
+			_validpos = [_spawnpos, 0, _range, 1, 0, 0, 0, [], [zeropos, zeropos]] call BIS_fnc_findSafePos;
 			_max_try = _max_try - 1;
+			_range = _range + 5;
+			sleep 1;
 		};
 
-		if (!(_validpos isEqualTo zeropos)) then {
+		if (_validpos isEqualTo zeropos) then {
+			diag_log format ["--- LRX Error: No place to build unit %1 at position %2", _x, _spawnpos];
+		} else {
 			_unit = _grp createUnit [_x, _validpos, [], 5, "NONE"];
 			_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 			[_unit] joinSilent _grp;
@@ -42,9 +47,7 @@ private ["_unit", "_validpos", "_max_try", "_backpack"];
 			[_unit] call reammo_ai;
             _unit switchMove "AmovPercMwlkSrasWrflDf";
 			_unit playMoveNow "AmovPercMwlkSrasWrflDf";
-            sleep 0.1;
-		} else {
-			diag_log format ["--- LRX Error: No place to build unit %1 at position %2", _x, _spawnpos];
+            sleep 0.1;			
 		};
 
 		if (!isNil "_unit") then {

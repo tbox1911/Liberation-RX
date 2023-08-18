@@ -7,7 +7,7 @@ private [
 	"_unit_ttl"
 ];
 
-while { GRLIB_endgame == 0 } do {
+while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	sleep (30 + floor(random 30));
 	while { [] call F_opforCap > GRLIB_patrol_cap || (diag_fps < 35.0) } do {
 		sleep (30 + floor(random 30));
@@ -70,16 +70,11 @@ while { GRLIB_endgame == 0 } do {
 			_unit_ttl = round (time + 1800);
 			waitUntil {
 				sleep 30;
-				( (diag_fps < 25) || ({alive _x} count (units _civ_grp) == 0) || (round (speed (leader _civ_grp)) == 0) || (count ([getPosATL (leader _civ_grp), 4000] call F_getNearbyPlayers) == 0) || (time > _unit_ttl) )
+				( GRLIB_global_stop == 1 || (diag_fps < 25) || ({alive _x} count (units _civ_grp) == 0) || (round (speed (leader _civ_grp)) == 0) || (count ([getPosATL (leader _civ_grp), 3000] call F_getNearbyPlayers) == 0) || (time > _unit_ttl) )
 			};
 
 			// Cleanup
-			if (!isNull _civ_veh) then {
-				if ( ({(alive _x) && (side group _x == GRLIB_side_friendly)} count (crew _civ_veh) == 0) || [_civ_veh] call is_abandoned ) then {
-					[_civ_veh] call clean_vehicle;
-					deleteVehicle _civ_veh;
-				};
-			};
+			if (!isNull _civ_veh) then { [_civ_veh] spawn clean_vehicle };
 			{ deleteVehicle _x } forEach (units _civ_grp);
 			deleteGroup _civ_grp;
 		};

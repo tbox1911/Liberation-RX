@@ -1,4 +1,5 @@
 params [ "_fobpos" ];
+
 sleep 30;
 private _ownership = [ _fobpos ] call F_sectorOwnership;
 if ( _ownership != GRLIB_side_enemy ) exitWith {};
@@ -37,13 +38,10 @@ if ( _ownership == GRLIB_side_enemy ) then {
 
 	[_fobpos] spawn {
 		params ["_pos"];
-		private _sound = "A3\data_f_curator\sound\cfgsounds\air_raid.wss";
+		private _sound = "A3\Sounds_F\sfx\alarm_blufor.wss";
 		while { ([_pos] call F_sectorOwnership) == GRLIB_side_enemy } do {
-			for "_i" from 0 to 1 do {
-				playSound3D [_sound, _pos, false, ATLToASL _pos, 5, 1, 1000];
-				sleep (5 + floor(random 4));
-			};
-			sleep 120;
+			playSound3D [_sound, _pos, false, ATLToASL _pos, 5, 1, 1000];
+			sleep (60 + (floor(random 4) * 45));
 		};
 	};
 

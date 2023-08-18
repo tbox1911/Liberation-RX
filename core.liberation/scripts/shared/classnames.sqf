@@ -140,24 +140,9 @@ if ( isNil "militia_vehicles" ) then {
 };
 
 // *** SUPPORT ***
-support_box_noArsenal = [
-	Box_Ammo_typename,
-	Box_Weapon_typename,
-	Box_Support_typename,
-	Box_Special_typename
-];
-support_vehicles = [
-	[Arsenal_typename,0,35,0,0]
-];
-
-if (!GRLIB_enable_arsenal) then {
-	Arsenal_typename = Box_Ammo_typename;
-	support_vehicles = [
-		[Box_Ammo_typename,0,0,0,0],
-		[Box_Weapon_typename,0,180,0,0],
-		[Box_Support_typename,0,250,0,GRLIB_perm_inf],
-		[Box_Special_typename,0,325,0,GRLIB_perm_tank]
-	];
+support_vehicles = [];
+if (GRLIB_enable_arsenal == 1) then {
+	support_vehicles append [[Arsenal_typename,0,35,0,0]];
 };
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
@@ -166,9 +151,13 @@ support_vehicles = support_vehicles + [
 	[mobile_respawn,10,50,0,0],
 	[canister_fuel_typename,0,25,0,0],
 	[playerbox_typename,0,0,0,20],
-	[Box_Launcher_typename,0,300,0,GRLIB_perm_log],
-	[Respawn_truck_typename,15,150,5,GRLIB_perm_tank],
-	[huron_typename,15,150,5,GRLIB_perm_air],
+	[Box_Weapon_typename,0,180,0,0],
+	[Box_Ammo_typename,0,0,0,0],
+	[Box_Support_typename,0,250,0,GRLIB_perm_inf],
+	[Box_Special_typename,0,325,0,GRLIB_perm_log],
+	[Box_Launcher_typename,0,300,0,GRLIB_perm_tank],
+	[Respawn_truck_typename,10,450,15,GRLIB_perm_log],
+	[huron_typename,10,1550,35,GRLIB_perm_tank],
 	["Land_RepairDepot_01_civ_F",10,300,0,GRLIB_perm_log],
 	["Land_MedicalTent_01_MTP_closed_F",5,100,0,GRLIB_perm_log],
 	[repair_sling_typename,0,200,0,GRLIB_perm_log],
@@ -178,9 +167,9 @@ support_vehicles = support_vehicles + [
 	[ammo_truck_typename,5,400,10,GRLIB_perm_tank],
 	[repair_truck_typename,5,200,30,GRLIB_perm_tank],
 	[fuel_truck_typename,5,150,70,GRLIB_perm_tank],
-	[FOB_box_outpost,5,500,20,GRLIB_perm_log],
-	[FOB_box_typename,5,1500,80,GRLIB_perm_max],
-	[FOB_truck_typename,5,1500,150,GRLIB_perm_max],
+	[FOB_box_outpost,0,500,0,GRLIB_perm_log],
+	[FOB_box_typename,0,1500,0,GRLIB_perm_max],
+	[FOB_truck_typename,5,1500,10,GRLIB_perm_max],
 	[ammobox_b_typename,0,round(300 / GRLIB_recycling_percentage),0,GRLIB_perm_hidden],
 	[ammobox_o_typename,0,round(300 / GRLIB_recycling_percentage),0,GRLIB_perm_hidden],
 	[ammobox_i_typename,0,round(300 / GRLIB_recycling_percentage),0,GRLIB_perm_hidden],
@@ -209,8 +198,8 @@ all_buildings_classnames = [];
 all_hostile_classnames = [];
 { all_hostile_classnames pushback (_x select 0) } foreach opfor_recyclable;
 
-all_firendly_classnames = [];
-{ all_firendly_classnames pushback (_x select 0) } foreach (light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles);
+all_friendly_classnames = [];
+{ all_friendly_classnames pushback (_x select 0) } foreach (light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles);
 
 // *** ELITES ***
 elite_vehicles = [];
@@ -301,7 +290,8 @@ ai_resupply_sources = [
 	Arsenal_typename,
 	ammo_truck_typename,
 	ammo_sling_typename,
-	Box_Ammo_typename
+	Box_Ammo_typename,
+	Box_Support_typename
 ] + ai_resupply_sources_west;
 
 // Everything the AI troups should be able to healing from

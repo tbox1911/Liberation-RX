@@ -1,8 +1,8 @@
 params ["_grp"];
 private ["_waypoint", "_basepos", "_nearestroad"];
+if (isNull _grp) exitWith {};
 
 [_grp] call F_deleteWaypoints;
-{_x doFollow leader _grp} foreach units _grp;
 
 _civveh = objectParent (leader _grp);
 if (isNull _civveh) then {
@@ -25,7 +25,7 @@ if (isNull _civveh) then {
 	_basepos = getPosATL _civveh;
 	private _sectors_patrol = [];
 	{
-		if ( (_basepos distance (markerpos _x) < 5000 ) && ( count ( [ getmarkerpos _x , 4000 ] call F_getNearbyPlayers ) > 0 ) ) then {
+		if ( (_basepos distance (markerpos _x) < 5000) && (count ([markerPos _x, 4000] call F_getNearbyPlayers) > 0) ) then {
 			_sectors_patrol pushback _x;
 		};
 	} foreach (sectors_bigtown + sectors_capture + sectors_factory);
@@ -42,7 +42,7 @@ if (isNull _civveh) then {
 
 	// todo: water waypoints
 	{
-		_nearestroad = [ [ markerpos (_x), floor(random 100), random 360 ] call BIS_fnc_relPos, 200, [] ] call BIS_fnc_nearestRoad;
+		_nearestroad = [ [markerPos _x, floor(random 100), random 360] call BIS_fnc_relPos, 200, [] ] call BIS_fnc_nearestRoad;
 		if ( isNull _nearestroad ) then {
 			_waypoint = _grp addWaypoint [ markerpos _x, 100 ];
 		} else {
@@ -58,3 +58,4 @@ if (isNull _civveh) then {
 	_waypoint = _grp addWaypoint [ _basepos, 100 ];
 	_waypoint setWaypointType "CYCLE";
 };
+{_x doFollow leader _grp} foreach units _grp;

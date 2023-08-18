@@ -13,7 +13,6 @@ _objects_to_build = [
     [ "Land_HBarrierBig_F", [-22.99, -3.72, 0], 89.34 ],
     [ "CamoNet_OPFOR_open_F", [14.88, -18.51, 0], 0 ],
     [ "Land_HBarrierBig_F", [22.88, 3.58, 0], 89.34 ],
-    [ opfor_mrap, [17.18, 16.24, 0.01], 326.13 ],
     [ "Land_HBarrierBig_F", [23.08, -5.21, 0], 89.34 ],
     [ "Land_HBarrierBig_F", [0.66, -24.24, 0], 0.36 ],
     [ "Land_HBarrierBig_F", [-8.2, -24.3, 0], 0.36 ],

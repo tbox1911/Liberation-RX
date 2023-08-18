@@ -69,8 +69,7 @@ if ( isServer ) then {
 
 	if (_unit isKindOf "Man") then {
 		if ( vehicle _unit != _unit ) then {
-			_unit action ["Eject", vehicle _unit];
-			//moveOut _unit;
+			[vehicle _unit, _unit, false] spawn F_ejectUnit;
 		};
 
 		if (isNull _killer) exitWith {};
@@ -184,8 +183,9 @@ if ( isServer ) then {
 			deleteVehicle _unit;
 		};
 
-		if ((_unit iskindof "LandVehicle") || (_unit iskindof "Air") || (_unit iskindof "Ship") ) then {
-			[_unit] spawn clean_vehicle;
+		 if (typeOf _unit isKindOf "AllVehicles") then {
+			_unit setVariable ["GRLIB_vehicle_owner", "", true];
+			[_unit, false] spawn clean_vehicle;
 		};
 
 		if ( isPlayer _killer ) then {

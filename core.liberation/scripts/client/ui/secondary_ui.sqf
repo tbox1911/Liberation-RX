@@ -1,34 +1,42 @@
 waitUntil {	sleep 0.1; !isNil "GRLIB_secondary_starting"};
 waitUntil {	sleep 0.1; !isNil "GRLIB_secondary_in_progress"};
 
-createDialog "liberation_secondary";
-dostartsecondary = 0;
+private _mission_list = [
+	"STR_SECONDARY_MISSION0",
+	"STR_SECONDARY_MISSION1",
+	"STR_SECONDARY_MISSION2",
+	"STR_SECONDARY_MISSION3"
+];
 
+if (GRLIB_secondary_in_progress >= 0 ) exitWith {
+	gamelogic globalChat format [localize "STR_SECONDARY_MISSION_IN_PROGRESS", localize (_mission_list select GRLIB_secondary_in_progress)];
+};
+
+createDialog "liberation_secondary";
 waitUntil { dialog };
 
 {
 	lbAdd [ 101, localize _x ];
-} foreach [
-	"STR_SECONDARY_MISSION0",
-	"STR_SECONDARY_MISSION1",
-	"STR_SECONDARY_MISSION2"
-];
+} foreach _mission_list;
 
 private [ "_oldchoice", "_images", "_briefings", "_missioncost" ];
 
-_images = [
+private _images = [
 	"res\secondary\fob_hunting.jpg",
 	"res\secondary\convoy_hijack.jpg",
-	"res\secondary\sar.jpg"
+	"res\secondary\sar.jpg",
+	"res\secondary\final_situation.jpg"
 ];
 
-_briefings = [
+private _briefings = [
 	"STR_SECONDARY_BRIEFING0",
 	"STR_SECONDARY_BRIEFING1",
-	"STR_SECONDARY_BRIEFING2"
+	"STR_SECONDARY_BRIEFING2",
+	"STR_SECONDARY_BRIEFING3"
 ];
 
-_oldchoice = -1;
+dostartsecondary = 0;
+private _oldchoice = -1;
 lbSetCurSel [ 101, 0 ];
 
 while { dialog && alive player && dostartsecondary == 0 } do {
@@ -66,7 +74,8 @@ while { dialog && alive player && dostartsecondary == 0 } do {
 };
 
 if ( dostartsecondary == 1 ) then {
-	[lbCurSel 101] remoteExec ["start_secondary_remote_call", 2];
+	[lbCurSel 101, false, getPlayerUID player] remoteExec ["start_secondary_remote_call", 2];
+	gamelogic globalChat format ["Starting Side Mission: %1.", localize (_mission_list select (lbCurSel 101))];
 };
 
 if ( dialog ) then {

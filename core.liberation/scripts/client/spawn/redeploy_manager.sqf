@@ -23,7 +23,7 @@ if (!GRLIB_player_spawned) then {
 };
 
 fullmap = 0;
-_old_fullmap = 0;
+private _old_fullmap = 0;
 waitUntil {
 	sleep 0.1;
 	( vehicle player == player && alive player && !dialog )
@@ -33,12 +33,12 @@ createDialog "liberation_deploy";
 waitUntil { dialog };
 titleText ["","BLACK IN", 5];
 ((findDisplay 5201) displayCtrl 201) ctrlAddEventHandler [ "mouseButtonDblClick" , { deploy = 1; } ];
-_noesckey = (findDisplay 5201) displayAddEventHandler ["KeyDown", "if ((_this select 1) == 1) then { true }"];
+private _noesckey = (findDisplay 5201) displayAddEventHandler ["KeyDown", "if ((_this select 1) == 1) then { true }"];
 disableUserInput false;
 disableUserInput true;
 disableUserInput false;
 deploy = 0;
-_oldsel = -1;
+private _oldsel = -1;
 
 showCinemaBorder false;
 camUseNVG false;
@@ -60,7 +60,7 @@ if ( GRLIB_player_spawned ) then {
 	_saved_loadouts = profileNamespace getVariable ["bis_fnc_saveInventory_data", []];
 	_counter = 0;
 
-	if ( GRLIB_enable_arsenal && !isNil "_saved_loadouts" ) then {
+	if ( GRLIB_enable_arsenal > 0 && !isNil "_saved_loadouts" ) then {
 		{
 			if ( _counter % 2 == 0 && _counter < 40) then {
 				_loadouts_data pushback _x;
@@ -94,12 +94,8 @@ while { dialog && alive player && deploy == 0} do {
 	_respawn_trucks = [] call F_getMobileRespawns;
 
 	for "_idx" from 0 to ((count _respawn_trucks) -1) do {
-		private _owner = (_respawn_trucks select _idx) getVariable ["GRLIB_vehicle_owner", "public"];
-		private _name = "";
-		if (_owner != "public") then {
-			_name = format ["(%1)", name ([_owner] call BIS_fnc_getUnitByUID)];
-		};
-		_choiceslist = _choiceslist + [[format [ "%1 - %2 %3", localize "STR_RESPAWN_TRUCK", mapGridPosition (getpos (_respawn_trucks select _idx)), _name], getpos (_respawn_trucks select _idx), (_respawn_trucks select _idx)]];
+		_vehicle = _respawn_trucks select _idx;
+		_choiceslist = _choiceslist + [[format ["%1 - %2", [_vehicle] call F_getLRXName, mapGridPosition (getpos _vehicle)], getpos _vehicle, _vehicle]];
 	};
 
 	lbClear 201;

@@ -40,8 +40,7 @@ _objects_to_build = [
     [opfor_flag,[-14,5,0],180],
     [opfor_flag,[14,-5,0],90],
     ["Land_BarGate_F",[20,0,0],90],
-    ["Land_BarGate_F",[-13,0,0],270],
-    [opfor_mrap,[7,-7,0],60]
+    ["Land_BarGate_F",[-13,0,0],270]
 ];
 
 _objectives_to_build = [

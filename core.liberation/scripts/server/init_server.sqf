@@ -7,7 +7,7 @@ addMissionEventHandler ['HandleDisconnect', {
 		[] call save_game_mp;
 		diag_log "--- LRX Mission End!";
 		if (!GRLIB_server_persistent) then {
-			endMission "END1";
+			endMission "END";
 			forceEnd;
 		};
 	};
@@ -60,6 +60,7 @@ troup_transport = compileFinal preprocessFileLineNumbers "scripts\server\ai\trou
 // Battlegroup
 spawn_air = compileFinal preprocessFileLineNumbers "scripts\server\battlegroup\spawn_air.sqf";
 spawn_battlegroup = compileFinal preprocessFileLineNumbers "scripts\server\battlegroup\spawn_battlegroup.sqf";
+spawn_battlegroup_direct = compileFinal preprocessFileLineNumbers "scripts\server\battlegroup\spawn_battlegroup_direct.sqf";
 
 // Game
 load_game_mp = compileFinal preprocessFileLineNumbers "scripts\server\game\load_game_mp.sqf";
@@ -83,6 +84,7 @@ send_paratroopers = compileFinal preprocessFileLineNumbers "scripts\server\patro
 fob_hunting = compileFinal preprocessFileLineNumbers "scripts\server\secondary\fob_hunting.sqf";
 convoy_hijack = compileFinal preprocessFileLineNumbers "scripts\server\secondary\convoy_hijack.sqf";
 search_and_rescue = compileFinal preprocessFileLineNumbers "scripts\server\secondary\search_and_rescue.sqf";
+final_situaton = compileFinal preprocessFileLineNumbers "scripts\server\secondary\final_situaton.sqf";
 
 // Sector
 attack_in_progress_fob = compileFinal preprocessFileLineNumbers "scripts\server\sector\attack_in_progress_fob.sqf";
