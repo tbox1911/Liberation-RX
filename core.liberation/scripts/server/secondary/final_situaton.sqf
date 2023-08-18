@@ -34,6 +34,7 @@ _marker setMarkerTypeLocal "mil_destroy";
 _marker setMarkerSizeLocal [1.25, 1.25];
 _marker setMarkerColorLocal GRLIB_color_enemy_bright;
 _marker setMarkerText "FINAL FIGHT";
+sectors_allSectors = sectors_allSectors + [_marker];
 blufor_sectors = blufor_sectors + [_marker];
 
 // spawn nuclear device + static + def squad
@@ -63,6 +64,7 @@ private _timer = round (time + _mission_delay);
 private _continue = true;
 private _success = false;
 private _last_send = 0;
+private _target = objNull;
 
 [_marker, 1, _mission_delay] remoteExec ["remote_call_sector", 0];
 sleep 60;
@@ -72,8 +74,12 @@ while { _continue } do {
 	_opfor_count = [] call F_opforCap;
 	if ((time > _last_send || _opfor_count < 30) && _opfor_count < GRLIB_sector_cap ) then {
 		_last_send = round (time + 600);
-		_target = selectRandom ((units GRLIB_side_friendly) select {_x distance2D lhd > GRLIB_fob_range && !(typeOf (vehicle _x) in uavs) });
-		if (isNil "_target") then { _target = selectRandom (units GRLIB_FOB_Group) };
+		_target = objNull;
+		while { isNull _target } do {
+			_target = selectRandom ((units GRLIB_side_friendly) select { _x distance2D lhd > GRLIB_fob_range && !(typeOf (vehicle _x) in uavs) });
+			if (isNil "_target") then { sleep 10; _target = objNull };
+			//if (isNil "_target") then { _target = selectRandom (units GRLIB_FOB_Group) };
+		};
 
 		if (_target distance2D opfor_target > GRLIB_spawn_max) then {
 			if (floor random 2 == 0) then {
@@ -111,15 +117,16 @@ if (_success) then {
 	0 setFog 0;
 	0 setRain 0;
 	forceWeatherChange;
-	sleep 6;
+	sleep 9;
 	private _savedpos = getPosWorld opfor_target;
     private _nextdir = [vectorDir opfor_target, vectorUp opfor_target];
 	opfor_target hideObjectGlobal true;
 	private _opfor_target_assembled = createVehicle ["Land_Device_assembled_F", _savedpos, [], 1, "CAN_COLLIDE"];
 	_opfor_target_assembled setVectorDirAndUp [_nextdir select 0, _nextdir select 1];
 	_opfor_target_assembled setPosWorld _savedpos;
-	profileNamespace setVariable [ GRLIB_save_key, nil ];
-	saveProfileNamespace;
+	GRLIB_endgame = 2;
+	publicVariable "GRLIB_endgame";
+	[] call save_game_mp;
 	sleep 100;
 	endMission "END";
 	forceEnd;

@@ -34,13 +34,17 @@ ctrlDelete _final_text;
 
 // Mission failed
 if (sector_timer <= 0) then {
-	disableUserInput true;	
+	disableUserInput true;
 	player allowDamage false;
 	closeDialog 0;
 	if (lifestate player == "INCAPACITATED") then {
 		"colorCorrections" ppEffectEnable false;
 		"filmGrain" ppEffectEnable false;
 	};
+
+	cinematic_camera_started = true;
+	sector_timer = 0;
+	"opfor_capture_marker" setMarkerPosLocal markers_reset;
 
 	camUseNVG false;
 	showCinemaBorder false;
@@ -94,31 +98,20 @@ if (sector_timer <= 0) then {
 
 	sleep 3;
 	[opfor_target] execVM "addons\NUKE\nuke.sqf";
-	playSound3D [getMissionPath "res\nuke.ogg", _spawn_camera, false, getPosASL _spawn_camera, 5, 1, 1000, 0, true];
-	playSound3D [getMissionPath "res\nuke.ogg", _spawn_camera, false, getPosASL _spawn_camera, 5, 1, 1000, 0, true];
+	_id1 = playSoundUI [getMissionPath "res\nuke.ogg", 5];
 	sleep 6;
-	playSound3D [getMissionPath "res\nuke.ogg", _spawn_camera, false, getPosASL _spawn_camera, 4, 1, 1000, 0, true];
-	playSound3D [getMissionPath "res\nuke.ogg", _spawn_camera, false, getPosASL _spawn_camera, 4, 1, 1000, 0, true];
 
-	_spawn_camera camSetRelPos [ 0, 1400, 500];
-	_spawn_camera camcommit 15;
-	[_spawn_camera] spawn {
-		params ["_source"];
-		sleep 10;
-		for "_i" from 0 to 3 do {
- 			playSound3D [getMissionPath "res\nuke.ogg", _source, false, getPosASL _source, 3, 1, 500, 9.3, true]; 
-			sleep 2;
-			playSound3D [getMissionPath "res\nuke.ogg", _source, false, getPosASL _source, 3, 1, 500, 9.3, true]; 
-			sleep 2.5;
-		};
-	};
-	waitUntil { camCommitted _spawn_camera };
+	_spawn_camera camSetRelPos [ 0, 2000, 400];
+	_spawn_camera camcommit 22;
+	_id2 = playSoundUI [getMissionPath "res\nuke.ogg", 5];
+	sleep 15;
+	//waitUntil { camCommitted _spawn_camera };
 
-	_spawn_camera camSetRelPos [ 0, 1800, 500];
-	_spawn_camera camcommit 15;
+	playSoundUI  ["\a3\Music_F_Oldman\music\radio\rock\Track_R_11.ogg", 1];
 	titleText [localize "STR_MISSION3_FAILED" ,"BLACK", 5];
+
 	waitUntil { camCommitted _spawn_camera };
-	sleep 2;
+	sleep 10;
 
 	_spawn_camera cameraEffect ["Terminate","back"];
 	camDestroy _spawn_camera;
@@ -127,12 +120,9 @@ if (sector_timer <= 0) then {
 	endMission "LOSER";
 	disableUserInput false;
 	disableUserInput true;
-	disableUserInput false;	
+	disableUserInput false;
 	player allowDamage true;
 
 	"colorCorrections" ppEffectEnable false; // disable effect
 	"filmGrain" ppEffectEnable false; // disable effect
 };
-
-sector_timer = 0;
-"opfor_capture_marker" setMarkerPosLocal markers_reset;
