@@ -7,6 +7,7 @@ params [
 
 private _ret = false;
 private _only_outpost = false;
+private _use_fast = true;
 private _classlist = [];
 private _obj_list = [];
 private _near = [];
@@ -33,7 +34,7 @@ switch ( _list ) do {
 	case "REAMMO_AI" : { _classlist = ai_resupply_sources};
 	case "REPAIR_AI" : { _classlist = vehicle_repair_sources};
 	case "REPAINT" : { _classlist = [repair_offroad, "Land_RepairDepot_01_civ_F"]};
-	case "WAREHOUSE" : { _classlist = [Warehouse_typename]};
+	case "WAREHOUSE" : { _classlist = [Warehouse_typename]; _use_fast = false};
 	default { _classlist = [] };
 };
 
@@ -48,11 +49,13 @@ if (count(_classlist) == 0) exitWith {false};
 
 if (typeName (_classlist select 0) == "STRING") then {
 	// From Objects classname
-	_obj_list = _vehpos nearEntities [_classlist, _dist];
-	// if (count _obj_list == 0) then {
-	//	// powerfull but slow
-	// 	_obj_list = nearestObjects [_vehpos, _classlist, _dist];
-	// };
+	if (_use_fast) then {
+		// fast but don't detect everything		
+		_obj_list = _vehpos nearEntities [_classlist, _dist];
+	} else {
+		// powerfull but slower		
+		_obj_list = nearestObjects [_vehpos, _classlist, _dist];
+	};
 	if (count _obj_list > 0) then {
 		_near = [ _obj_list, {
 			alive _x && getObjectType _x >= 8 &&
