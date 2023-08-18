@@ -27,5 +27,6 @@ GRLIB_mod_list_name = [
 	["A3_OPF_PAC", "ArmA3 CSAT Pacific"],
 	["A3_OPF_UB", "ArmA3 CSAT Urban"],
 	["RHS_AFU", "Armed Forces of Ukraine"],
-	["RHS_AFRF", "Russian Federation"]
+	["RHS_AFU_2", "Armed Forces of Ukraine ALTERNATIVE"],
+	["RHS_AFRF", "Russian Federation in Ukraine"]
 ];
