@@ -10,9 +10,9 @@ if (!local _unit) exitWith {
 
 _unit allowDamage false;
 unAssignVehicle _unit;
-if (_slow) then { sleep 1.5 };
 _unit action ["eject", _vehicle];
 _unit action ["getout", _vehicle];
+if (_slow) then { sleep random 3 };
 sleep 1;
 if (!isNull objectParent _unit) then { moveOut _unit };
 if (!alive _unit) exitWith {};
