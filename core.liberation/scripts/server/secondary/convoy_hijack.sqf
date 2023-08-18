@@ -20,7 +20,7 @@ private _boxes_amount = 0;
 } foreach box_transport_config;
 if ( _boxes_amount == 0 ) exitWith { diag_log "Opfor ammobox truck classname doesn't allow for ammobox transport, correct your classnames.sqf"; };
 
-diag_log format ["--- LRX: %2 start static mission: Convoy Hijack at %1", time, _caller];
+diag_log format ["--- LRX: %1 start static mission: Convoy Hijack at %2", _caller, time];
 resources_intel = resources_intel - _mission_cost;
 
 GRLIB_secondary_in_progress = 1;

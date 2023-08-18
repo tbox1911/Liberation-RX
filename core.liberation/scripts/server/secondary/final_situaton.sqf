@@ -8,7 +8,7 @@ private _spawnlist = [];
 } foreach sectors_allSectors;
 if (count _spawnlist == 0) exitWith {[gamelogic, "Could not find enough free space for Armageddon mission"] remoteExec ["globalChat", 0]};
 
-diag_log format ["--- LRX: %2 start static mission: Armageddon at %1", time, _caller];
+diag_log format ["--- LRX: %1 start static mission: Armageddon at %2", _caller, time];
 resources_intel = resources_intel - _mission_cost;
 
 GRLIB_global_stop = 1;

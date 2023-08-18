@@ -4,7 +4,7 @@ private _spawn_marker = [GRLIB_spawn_min, 99999, false] call F_findOpforSpawnPoi
 if ( _spawn_marker == "" ) exitWith { [gamelogic, "Could not find position for fob hunting mission"] remoteExec ["globalChat", 0] };
 GRLIB_secondary_used_positions pushbackUnique _spawn_marker;
 
-diag_log format ["--- LRX: %2 start static mission: Fob Hunting at %1", time, _caller];
+diag_log format ["--- LRX: %1 start static mission: Fob Hunting at %2", _caller, time];
 resources_intel = resources_intel - _mission_cost;
 
 private _base_position = markerpos _spawn_marker;

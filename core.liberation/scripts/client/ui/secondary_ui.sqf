@@ -69,7 +69,7 @@ while { dialog && alive player && dostartsecondary == 0 } do {
 };
 
 if ( dostartsecondary == 1 ) then {
-	[lbCurSel 101, false, getPlayerID player] remoteExec ["start_secondary_remote_call", 2];
+	[lbCurSel 101, false, getPlayerUID player] remoteExec ["start_secondary_remote_call", 2];
 };
 
 if ( dialog ) then {
