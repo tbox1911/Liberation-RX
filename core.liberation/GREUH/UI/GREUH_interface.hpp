@@ -166,6 +166,9 @@
 #define COLOR_WHITE_TRANSP { 1, 1, 1, 0.5 }
 #define COLOR_BLACK { 0, 0, 0, 1 }
 #define COLOR_BLACK_ALPHA { 0, 0, 0, 0.85 }
+#define COLOR_GREEN_ALPHA { 0.2, 0.23, 0.18, 0.4 }
+#define COLOR_GREEN_NOALPHA { 0.2, 0.23, 0.18, 1 }
+#define COLOR_LIGHTGRAY_ALPHA { 0.6, 0.6, 0.6, 0.55 }
 #define COLOR_BLUFOR_NOALPHA { 0, 0, 1, 1 }
 #define COLOR_OPFOR_NOALPHA { 1, 0, 0, 1 }
 #define COLOR_RED_DISABLED { 1,0,0,0.4 }
