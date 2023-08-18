@@ -1,3 +1,5 @@
+// TODO
+
 //--------------- Air ---------------
 R3F_LOG_CFG_can_tow = R3F_LOG_CFG_can_tow +
 [
@@ -9,11 +11,6 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 
 R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
 [
-	"RHS_Ka52_base",
-	"RHS_Mi24_base",
-	"RHS_Mi8_base",
-	"rhs_mi28_base",
-	"rhs_mi28n_base",
 	"b_afougf_Mi24V_AT",
 	"b_afougf_Mi8MTV3_Cargo",
 	"b_afougf_Mi8MTV3_UPK23"
@@ -26,16 +23,8 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 [
 	["b_afougf_Mi24V_AT",25],
-	["RHS_Mi24_base",25],
-	["RHS_Mi8_base",40],
-	["rhs_mi28_base",50],
-	["rhs_mi28n_base",55],
-	["RHS_Mi8MTV3_heavy_vdv",100],
-	["RHS_Ka52_base",50],
-	["RHS_C130J_Cargo",1550],
-	["RHS_C130J",1550],
-	["b_afougf_Mi8MTV3_UPK23",25],
-    ["b_afougf_Mi8MTV3_Cargo",40]
+	["b_afougf_Mi8MTV3_Cargo",40],
+	["b_afougf_Mi8MTV3_UPK23",40]
 ];
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
@@ -63,21 +52,8 @@ R3F_LOG_CFG_can_tow = R3F_LOG_CFG_can_tow +
 	"RHS_ZU23_base",
 	"rhs_tank_base",
 	"rhs_tigr_base",
-	"rhs_t14_tv",
-	"rhs_2s3_tv",
-
-	"rhs_sprut_vdv",
-	"UA_bmp1",
-	"BTR4E_AFU",
-	"UA_bmp2",
-	"mkk_t64_bv_ua",
-	"ssr_Leopard2a4",
-	"b_afougf_zsu234_aa",
-    "UA_HIMARS",
-    "Kraz_spartan_camo_gs",
-    "UA_btr80",
-    "UA_btr80",
-    "UA_btr80a"
+	"b_afougf_2s3",
+	"rhs_sprut_vdv"
 ];
 
 R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
@@ -95,21 +71,8 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 	"RHS_ZU23_base",
 	"rhs_tank_base",
 	"rhs_tigr_base",
-	"rhs_t14_tv",
-	"rhs_2s3_tv",
-	"rhs_sprut_vdv",
-
-    "UA_bmp1",
-    "BTR4E_AFU",
-    "UA_bmp2",
-    "mkk_t64_bv_ua",
-    "ssr_Leopard2a4",
-    "b_afougf_zsu234_aa",
-    "UA_HIMARS",
-    "Kraz_spartan_camo_gs",
-    "UA_btr80",
-    "UA_btr80",
-    "UA_btr80a"
+	"b_afougf_2s3",
+	"rhs_sprut_vdv"
 ];
 
 R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
@@ -131,8 +94,7 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 	"RHS_ZU23_base",
 	"rhs_tank_base",
 	"rhs_tigr_base",
-	"rhs_t14_tv",
-	"rhs_2s3_tv",
+	"b_afougf_2s3",
 	"rhs_sprut_vdv"
 ];
 
@@ -151,8 +113,7 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["RHS_ZU23_base",50],
 	["rhs_tank_base",60],
 	["rhs_tigr_base",50],
-	["rhs_t14_tv",25],
-	["rhs_2s3_tv",25],
+	["b_afougf_2s3",25],
 	["rhs_sprut_vdv",50]
 ];
 
@@ -206,37 +167,25 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 [
-	["rhs_KORD_MSV",10],
-	["RHS_AGS30_TriPod_MSV",10],
-	["rhs_KORD_high_MSV",10],
-	["rhs_SPG9M_MSV",10],
-	["rhs_Igla_AA_pod_msv",15],
-	["rhs_Metis_9k115_2_msv",15],
-	["rhs_Kornet_9M133_2_msv",15],
-	["RHS_ZU23_MSV",20],
-
-	["b_afougf_AGS30_TriPod",10],
 	["b_afougf_DSHkM_Mini_TriPod",10],
-	["b_afougf_SPG9",10],
+	["b_afougf_AGS30_TriPod",10],
+	["b_afougf_DSHKM",10],
+	["b_afougf_SPG9M",10],
+	["RHS_Stinger_AA_pod_WD",15],
+	["RHS_TOW_TriPod_WD",15],
 	["b_afougf_ZU23",20]
 ];
 
 R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 [
-	"rhs_KORD_MSV",
-	"RHS_AGS30_TriPod_MSV",
-	"rhs_KORD_high_MSV",
-	"rhs_SPG9M_MSV",
-	"rhs_Igla_AA_pod_msv",
-	"rhs_Metis_9k115_2_msv",
-	"rhs_Kornet_9M133_2_msv",
-	"RHS_ZU23_MSV",
-	"RHS_M119_WD",
-
-    "b_afougf_AGS30_TriPod",
-    "b_afougf_DSHkM_Mini_TriPod",
-    "b_afougf_SPG9",
-    "b_afougf_ZU23"
+	"b_afougf_DSHkM_Mini_TriPod",
+	"b_afougf_AGS30_TriPod",
+	"b_afougf_DSHKM",
+	"b_afougf_SPG9M",
+	"RHS_Stinger_AA_pod_WD",
+	"RHS_TOW_TriPod_WD",
+	"b_afougf_ZU23",
+	"b_afougf_m119"
 ];
 
 //--------------- Camping ---------------
