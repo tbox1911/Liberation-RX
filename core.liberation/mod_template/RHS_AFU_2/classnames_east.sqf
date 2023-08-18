@@ -75,7 +75,7 @@ opfor_vehicles = [
 	"b_afougf_zsu234_aa",
 	"rhs_t90a_tv",
 	"rhs_t80a",
-	"rhs_bmp3mera_msv",
+	"BTR4E_AFU",
 	"rhs_bmd4_vdv",
 	"rhs_bmd4_vdv"
 ];
@@ -101,13 +101,10 @@ opfor_battlegroup_vehicles = [
 	"rhs_bmd4_vdv",
 	"rhs_t90a_tv",
 	"rhs_t80a",
-	"rhs_bmp3mera_msv",
+	"BTR4E_AFU",
 	"rhs_bmd2",
 	"rhs_kamaz5350_msv",
-	"RHS_Mi24V_UPK23_vdv",
-	"RHS_Mi8AMTSh_vvsc",
-	"RHS_Ka52_vvsc",
-	"rhs_mi28n_vvsc"
+	"RHS_Mi24V_UPK23_vdv"
 ];
 
 opfor_battlegroup_vehicles_low_intensity = [
@@ -131,24 +128,21 @@ opfor_troup_transports_truck = [
 opfor_troup_transports_heli = [
 	"RHS_Mi24V_UPK23_vdv",
 	"RHS_Mi8AMT_vdv",
-	"RHS_Mi8AMTSh_vvsc",
 	"RHS_Mi8AMTSh_UPK23_vvsc"
 ];
 
 opfor_air = [
-	"RHS_Ka52_vvsc",
 	"RHS_Ka52_UPK23_vvsc",
 	"rhs_mi28n_s13_vvsc",
-	"rhs_mi28n_vvsc",
 	"RHS_T50_vvs_052",
 	"RHS_Su25SM_KH29_vvsc",
 	"RHS_TU95MS_vvs_irkutsk"
 ];
 
 opfor_statics = [
-	"rhs_KORD_high_MSV",
-	"rhs_Igla_AA_pod_msv",
-	"rhs_Metis_9k115_2_msv",
+	"b_afougf_DSHKM",
+	"RHS_Stinger_AA_pod_WD",
+	"RHS_TOW_TriPod_WD",
 	"b_afougf_ZU23"
 ];
 
@@ -156,9 +150,9 @@ opfor_recyclable = [
 	["O_Boat_Armed_01_hmg_F",2,round (100 / GRLIB_recycling_percentage),2],
 	["b_afougf_offroad_01_dshkm",2,round (80 / GRLIB_recycling_percentage),2],
 	["O_G_Offroad_01_AT_F",2,round (100 / GRLIB_recycling_percentage),2],
-	["rhs_KORD_high_MSV",0,round (80 / GRLIB_recycling_percentage),0],
-	["rhs_Igla_AA_pod_msv",0,round (180 / GRLIB_recycling_percentage),0],
-	["rhs_Metis_9k115_2_msv",0,round (180 / GRLIB_recycling_percentage),0],
+	["b_afougf_DSHKM",0,round (80 / GRLIB_recycling_percentage),0],
+	["RHS_Stinger_AA_pod_WD",0,round (180 / GRLIB_recycling_percentage),0],
+	["RHS_TOW_TriPod_WD",0,round (180 / GRLIB_recycling_percentage),0],
 	["b_afougf_ZU23",0,round (300 / GRLIB_recycling_percentage),0],
 	["rhs_tigr_msv",5,round (150 / GRLIB_recycling_percentage),5],
 	["rhs_tigr_sts_msv",5,round (350 / GRLIB_recycling_percentage),5],
@@ -178,7 +172,7 @@ opfor_recyclable = [
 	["rhs_bmd1",10,round (150 / GRLIB_recycling_percentage),10],
 	["rhs_t90a_tv",10,round (2450 / GRLIB_recycling_percentage),10],
 	["rhs_t80a",10,round (1150 / GRLIB_recycling_percentage),10],
-	["rhs_bmp3mera_msv",10,round (350 / GRLIB_recycling_percentage),10],
+	["BTR4E_AFU",10,round (350 / GRLIB_recycling_percentage),10],
 	["RHS_Mi8mt_Cargo_vdv",10,round (450 / GRLIB_recycling_percentage),10],
 	["rhs_kamaz5350_msv",10,round (150 / GRLIB_recycling_percentage),10],
 	["rhs_kamaz5350_open_msv",10,round (150 / GRLIB_recycling_percentage),10],
@@ -186,12 +180,9 @@ opfor_recyclable = [
 	["RHS_Mi24P_CAS_vdv",10,round (550 / GRLIB_recycling_percentage),10],
 	["RHS_Mi24V_UPK23_vdv",10,round (570 / GRLIB_recycling_percentage),10],
 	["RHS_Mi8AMT_vdv",10,round (550 / GRLIB_recycling_percentage),10],
-	["RHS_Mi8AMTSh_vvsc",10,round (650 / GRLIB_recycling_percentage),10],
 	["RHS_Mi8AMTSh_UPK23_vvsc",10,round (650 / GRLIB_recycling_percentage),10],
-	["RHS_Ka52_vvsc",10,round (850 / GRLIB_recycling_percentage),10],
 	["RHS_Ka52_UPK23_vvsc",10,round (850 / GRLIB_recycling_percentage),10],
 	["rhs_mi28n_s13_vvsc",10,round (550 / GRLIB_recycling_percentage),10],
-	["rhs_mi28n_vvsc",10,round (550 / GRLIB_recycling_percentage),10],
 	["RHS_T50_vvs_052",15,round (800 / GRLIB_recycling_percentage),50],
 	["RHS_Su25SM_KH29_vvsc",15,round (1200 / GRLIB_recycling_percentage),50],
 	["RHS_TU95MS_vvs_irkutsk",15,round (1500 / GRLIB_recycling_percentage),50],
