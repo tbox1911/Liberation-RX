@@ -1,55 +1,55 @@
 // *** FRIENDLIES ***
-GRLIB_side_friendly = EAST;
-GRLIB_west_modder = "pSiKO";
+GRLIB_side_friendly = WEST;
+GRLIB_west_modder = "fugasjunior";
 
 // Default classname: scripts\shared\default_classnames.sqf
 // Advanced definition: scripts\shared\classnames.sqf
 
 FOB_typename = "Land_Cargo_HQ_V3_F";
-huron_typename = "RHS_Mi8mt_vv";
+huron_typename = "b_afougf_Mi8MTV3_Cargo";
 FOB_box_typename = "Land_Pod_Heli_Transport_04_box_black_F";
-FOB_truck_typename = "O_T_Truck_03_device_ghex_F";
-Respawn_truck_typename = "rhs_gaz66_ap2_msv" ;
-ammo_truck_typename = "O_Truck_03_ammo_F";
-fuel_truck_typename = "O_Truck_03_fuel_F";
-repair_truck_typename = "O_Truck_03_Repair_F";
+FOB_truck_typename = "O_T_Truck_03_device_ghex_F"; // TODO
+Respawn_truck_typename = "rhs_gaz66_ap2_msv" ; // TODO
+ammo_truck_typename = "O_Truck_03_ammo_F"; // TODO
+fuel_truck_typename = "O_Truck_03_fuel_F"; // TODO
+repair_truck_typename = "O_Truck_03_Repair_F"; // TODO
 repair_sling_typename = "Land_Pod_Heli_Transport_04_repair_F";
 fuel_sling_typename = "Land_Pod_Heli_Transport_04_fuel_F";
 ammo_sling_typename = "Land_Pod_Heli_Transport_04_ammo_F";
 medic_sling_typename = "Land_Pod_Heli_Transport_04_medevac_F";
-pilot_classname = "rhs_pilot_combat_heli";
-crewman_classname = "rhs_msv_emr_combatcrew";
+pilot_classname = "b_afougf_pilot_F";
+crewman_classname = "b_afougf_tankist_F";
 basic_weapon_typename = "Box_Syndicate_Ammo_F";
 
 chimera_vehicle_overide = [
-  ["B_Heli_Transport_01_F", "rhs_ka60_grey"]
+  ["B_Heli_Transport_01_F", "b_afougf_Mi8MTV3_Cargo"]
 ];
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
 infantry_units_west = [
 	["Alsatian_Random_F",0,0,0,GRLIB_perm_max],
 	["Fin_random_F",0,0,0,0],
-	["rhs_msv_emr_rifleman",1,0,0,0],
-	["rhs_msv_emr_medic",1,0,0,0],
-	["rhs_msv_emr_engineer",1,0,0,0],
-	["rhs_msv_emr_grenadier",1,0,0,GRLIB_perm_inf],
-	["rhs_msv_emr_marksman",1,0,0,GRLIB_perm_inf],
-	["rhs_msv_emr_grenadier_rpg",1,0,0,0],
-	["rhs_msv_emr_arifleman",1,0,0,GRLIB_perm_inf],
-	["rhs_msv_emr_machinegunner",1,0,0,GRLIB_perm_inf],
-	["rhs_msv_emr_aa",1,0,0,GRLIB_perm_log],
-	["rhs_msv_emr_at",1,0,0,GRLIB_perm_log],
-	["rhs_vdv_recon_rifleman_ak103",1,0,0,GRLIB_perm_log],
-	["rhs_vdv_recon_arifleman_rpk",1,0,0,GRLIB_perm_log],
-	["rhs_vdv_recon_rifleman_lat",1,0,0,GRLIB_perm_log],
-	["rhs_vdv_recon_marksman",1,0,0,GRLIB_perm_log],
+	["b_afougf_rifleman_ak74",1,0,0,0],
+	["b_afougf_medic",1,0,0,0],
+	["b_afougf_sapper",1,0,0,0],
+	["b_afougf_rifleman_gp25",1,0,0,GRLIB_perm_inf],
+	["b_afougf_marksman_svdm",1,0,0,GRLIB_perm_inf],
+	["b_afougf_pt_rpg7",1,0,0,0],
+	["b_afougf_mg_rpk74",1,0,0,GRLIB_perm_inf],
+	["b_afougf_mg_pkm",1,0,0,GRLIB_perm_inf],
+	["b_afougf_aa_igla_specialist",1,0,0,GRLIB_perm_log],
+	["b_afougf_pt_nlaw",1,0,0,GRLIB_perm_log],
+//	["rhs_vdv_recon_rifleman_ak103",1,0,0,GRLIB_perm_log],
+//	["rhs_vdv_recon_arifleman_rpk",1,0,0,GRLIB_perm_log],
+//	["rhs_vdv_recon_rifleman_lat",1,0,0,GRLIB_perm_log],
+//	["rhs_vdv_recon_marksman",1,0,0,GRLIB_perm_log],
 	[crewman_classname,1,0,0,GRLIB_perm_inf],
 	[pilot_classname,1,0,0,GRLIB_perm_log]
 ];
 
 units_loadout_overide = [];
 
-
+// TODO
 // *** RHS NAPA ***
 resistance_squad = [
 	"rhsgref_nat_pmil_commander",
@@ -160,53 +160,53 @@ buildings_west = [
 ];
 
 blufor_squad_inf_light = [
-	"rhs_vmf_emr_medic",
-	"rhs_vmf_emr_at",
-	"rhs_vmf_emr_efreitor",
-	"rhs_vmf_emr_junior_sergeant",
-	"rhs_vmf_emr_rifleman",
-	"rhs_vmf_emr_grenadier",
-	"rhs_vmf_emr_rifleman",
-	"rhs_vmf_emr_rifleman"		
+	"b_afougf_medic",
+	"b_afougf_pt_rpg7",
+	"b_afougf_teamleader_gp25",
+	"b_afougf_sergeant_gp25",
+	"b_afougf_rifleman_ak74",
+	"b_afougf_rifleman_gp25",
+	"b_afougf_rifleman_ak74",
+	"b_afougf_rifleman_ak74"
  ];
 blufor_squad_inf = [
-    "rhs_vmf_emr_medic",
-    "rhs_vmf_emr_at",
-    "rhs_vmf_emr_efreitor",
-    "rhs_vmf_emr_at",
-    "rhs_vmf_emr_junior_sergeant",
-    "rhs_vmf_emr_rifleman",
-    "rhs_vmf_emr_grenadier",
-    "rhs_vmf_emr_machinegunner",
-	"rhs_vmf_emr_rifleman",
-	"rhs_vmf_emr_rifleman"
+    "b_afougf_medic",
+    "b_afougf_pt_rpg7",
+    "b_afougf_teamleader_gp25",
+    "b_afougf_pt_rpg7",
+    "b_afougf_sergeant_gp25",
+    "b_afougf_rifleman_ak74",
+    "b_afougf_rifleman_gp25",
+    "b_afougf_mg_pkm",
+	"b_afougf_rifleman_ak74",
+	"b_afougf_rifleman_ak74"
  ];
 blufor_squad_at = [
-    "rhs_vmf_emr_medic",
-    "rhs_vmf_emr_at",
-    "rhs_vmf_emr_at",
-	"rhs_vmf_emr_at",
-    "rhs_vmf_emr_aa",
-    "rhs_vmf_emr_rifleman",
+    "b_afougf_medic",
+    "b_afougf_pt_nlaw",
+    "b_afougf_pt_nlaw",
+	"b_afougf_pt_fgm148",
+    "b_afougf_aa_stinger_specialist",
+    "b_afougf_rifleman_ak74",
     "rhs_vmf_emr_marksman"
  ];
 blufor_squad_aa = [
-    "rhs_vmf_emr_medic",
-    "rhs_vmf_emr_aa",
-    "rhs_vmf_emr_aa",
-	"rhs_vmf_emr_aa",
-    "rhs_vmf_emr_at",
-    "rhs_vmf_emr_rifleman",
-    "rhs_vmf_emr_marksman"
+    "b_afougf_medic",
+    "b_afougf_aa_igla_specialist",
+    "b_afougf_aa_igla_specialist",
+	"b_afougf_aa_igla_specialist",
+    "b_afougf_pt_rpg7",
+    "b_afougf_rifleman_ak74",
+    "b_afougf_marksman_m14"
  ];
 blufor_squad_mix = [
-    "rhs_vmf_emr_medic",
-    "rhs_vmf_emr_aa",
-    "rhs_vmf_emr_aa",
-	"rhs_vmf_emr_at",
-    "rhs_vmf_emr_at",
-    "rhs_vmf_emr_rifleman",
-    "rhs_vmf_emr_marksman"
+    "b_afougf_medic",
+    "b_afougf_aa_igla_specialist",
+    "b_afougf_aa_igla_specialist",
+	"b_afougf_pt_nlaw",
+    "b_afougf_pt_nlaw",
+    "b_afougf_rifleman_ak74",
+    "b_afougf_marksman_m14"
  ];
 
 squads = [
@@ -249,13 +249,13 @@ GRLIB_vehicle_whitelist_west = [
 ];
 
 GRLIB_vehicle_blacklist_west = [
-	"rhs_KORD_MSV",
+	"rhs_KORD_MSV", // TODO
 	"b_afougf_AGS30_TriPod",
-	"rhs_KORD_high_MSV",
+	"rhs_KORD_high_MSV", // TODO
 	"b_afougf_SPG9M",
-	"rhs_Igla_AA_pod_msv",
-	"rhs_Metis_9k115_2_msv",
-	"rhs_Kornet_9M133_2_msv",
+	"rhs_Igla_AA_pod_msv", // TODO
+	"rhs_Metis_9k115_2_msv", // TODO
+	"rhs_Kornet_9M133_2_msv", // TODO
 	"b_afougf_ZU23",
 	"b_afougf_m119"
 ];
@@ -265,11 +265,11 @@ GRLIB_AirDrop_1 = [			// Unarmed Offroader 50
 ];
 
 GRLIB_AirDrop_2 = [			// Armed Offroader 100
-	"rhs_tigr_sts_msv"
+	"rhs_tigr_sts_msv" // TODO
 ];
 
 GRLIB_AirDrop_3 = [			// MRAP 200
-	"rhsgref_BRDM2UM_msv"
+	"rhsgref_BRDM2UM_msv" // TODO
 ];
 
 GRLIB_AirDrop_4 = [			// Large Truck 300
@@ -277,7 +277,7 @@ GRLIB_AirDrop_4 = [			// Large Truck 300
 ];
 
 GRLIB_AirDrop_5 = [			// APC 750
-	"rhs_btr60_msv"
+	"rhs_btr60_msv" // TODO
 ];
 
 GRLIB_AirDrop_6 = [			// Boat 250
