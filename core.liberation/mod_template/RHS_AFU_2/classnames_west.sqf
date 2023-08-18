@@ -70,18 +70,18 @@ resistance_squad_static = "rhs_Igla_AA_pod_msv";
 light_vehicles = [
 	["O_Boat_Transport_01_F",1,25,1,GRLIB_perm_inf],
 	["O_Boat_Armed_01_hmg_F",5,30,5,GRLIB_perm_log],
-	["RHS_UAZ_MSV_01",1,10,1,0],
-	["O_G_Offroad_01_armed_F",1,50,1,GRLIB_perm_inf],
-	["rhs_gaz66_msv",1,15,1,0],
-	["rhs_kamaz5350_open_msv",1,50,1,GRLIB_perm_inf],
-	["RHS_Ural_Open_MSV_01",1,50,1,GRLIB_perm_log],
-	["rhs_kraz255b1_cargo_open_msv",1,50,1,GRLIB_perm_tank],
-	["rhs_tigr_m_msv",2,25,2,0],
-	["rhs_btr70_msv",5,100,2,GRLIB_perm_inf],
-	["rhs_btr80_msv",5,125,2,GRLIB_perm_log],
-	["rhs_btr80a_msv",5,145,2,GRLIB_perm_log],	
-	["rhs_kamaz5350_msv",5,10,5,GRLIB_perm_inf],
-	["RHS_Ural_Zu23_MSV_01",10,400,10,GRLIB_perm_tank]
+	["b_afougf_UAZ_Base",1,10,1,0],
+	["b_afougf_offroad_01_dshkm",1,50,1,GRLIB_perm_inf],
+	["b_afougf_gaz66_truck",1,15,1,0],
+	["rhs_kamaz5350_open_msv",1,50,1,GRLIB_perm_inf], // TODO
+	["b_afougf_Ural_open",1,50,1,GRLIB_perm_log],
+	["rhs_kraz255b1_cargo_open_msv",1,50,1,GRLIB_perm_tank], // TODO
+	["rhs_tigr_m_msv",2,25,2,0], // TODO
+	["b_afougf_btr70",5,100,2,GRLIB_perm_inf],
+	["UA_btr80",5,125,2,GRLIB_perm_log],
+	["UA_btr80a",5,145,2,GRLIB_perm_log],
+	["rhs_kamaz5350_msv",5,10,5,GRLIB_perm_inf], // TODO
+	["b_afougf_Ural_Zu23",10,400,10,GRLIB_perm_tank]
 ];
 
 heavy_vehicles = [
@@ -262,7 +262,7 @@ GRLIB_vehicle_blacklist_west = [
 ];
 
 GRLIB_AirDrop_1 = [			// Unarmed Offroader 50
-	"RHS_UAZ_MSV_01"
+	"b_afougf_UAZ_Base"
 ];
 
 GRLIB_AirDrop_2 = [			// Armed Offroader 100
@@ -274,7 +274,7 @@ GRLIB_AirDrop_3 = [			// MRAP 200
 ];
 
 GRLIB_AirDrop_4 = [			// Large Truck 300
-	"rhs_gaz66_msv"
+	"b_afougf_gaz66_truck"
 ];
 
 GRLIB_AirDrop_5 = [			// APC 750
