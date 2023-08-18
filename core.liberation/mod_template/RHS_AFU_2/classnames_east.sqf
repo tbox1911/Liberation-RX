@@ -149,7 +149,7 @@ opfor_statics = [
 	"rhs_KORD_high_MSV",
 	"rhs_Igla_AA_pod_msv",
 	"rhs_Metis_9k115_2_msv",
-	"RHS_ZU23_MSV"
+	"b_afougf_ZU23"
 ];
 
 opfor_recyclable = [
@@ -159,7 +159,7 @@ opfor_recyclable = [
 	["rhs_KORD_high_MSV",0,round (80 / GRLIB_recycling_percentage),0],
 	["rhs_Igla_AA_pod_msv",0,round (180 / GRLIB_recycling_percentage),0],
 	["rhs_Metis_9k115_2_msv",0,round (180 / GRLIB_recycling_percentage),0],
-	["RHS_ZU23_MSV",0,round (300 / GRLIB_recycling_percentage),0],
+	["b_afougf_ZU23",0,round (300 / GRLIB_recycling_percentage),0],
 	["rhs_tigr_msv",5,round (150 / GRLIB_recycling_percentage),5],
 	["rhs_tigr_sts_msv",5,round (350 / GRLIB_recycling_percentage),5],
 	["rhs_sprut_vdv",5,round (520 / GRLIB_recycling_percentage),5],
@@ -196,5 +196,5 @@ opfor_recyclable = [
 	["RHS_Su25SM_KH29_vvsc",15,round (1200 / GRLIB_recycling_percentage),50],
 	["RHS_TU95MS_vvs_irkutsk",15,round (1500 / GRLIB_recycling_percentage),50],
 	["b_afougf_2s3",15,round (2300 / GRLIB_recycling_percentage),35],
-	["RHS_BM21_MSV_01",15,round (2600 / GRLIB_recycling_percentage),15]
+	["b_afougf_BM21",15,round (2600 / GRLIB_recycling_percentage),15]
 ];

@@ -129,16 +129,16 @@ blufor_air = [
 ];
 
 static_vehicles = [
-	["rhs_KORD_MSV",0,15,0,0],
-	["RHS_AGS30_TriPod_MSV",0,15,0,GRLIB_perm_inf],
-	["rhs_KORD_high_MSV",0,25,0,GRLIB_perm_log],
-	["rhs_SPG9M_MSV",0,15,0,GRLIB_perm_log],
-	["rhs_Igla_AA_pod_msv",0,50,0,GRLIB_perm_air],
-	["rhs_Metis_9k115_2_msv",0,50,0,GRLIB_perm_tank],
-	["rhs_Kornet_9M133_2_msv",0,50,0,GRLIB_perm_tank],
-	["RHS_ZU23_MSV",0,500,0,GRLIB_perm_air],
-	["RHS_M119_WD",10,600,0,GRLIB_perm_air],
-	["RHS_BM21_MSV_01",10,2600,0,GRLIB_perm_max]
+	["rhs_KORD_MSV",0,15,0,0], // TODO
+	["b_afougf_AGS30_TriPod",0,15,0,GRLIB_perm_inf],
+	["rhs_KORD_high_MSV",0,25,0,GRLIB_perm_log], // TODO
+	["b_afougf_SPG9M",0,15,0,GRLIB_perm_log],
+	["rhs_Igla_AA_pod_msv",0,50,0,GRLIB_perm_air], // TODO
+	["rhs_Metis_9k115_2_msv",0,50,0,GRLIB_perm_tank], // TODO
+	["rhs_Kornet_9M133_2_msv",0,50,0,GRLIB_perm_tank], // TODO
+	["b_afougf_ZU23",0,500,0,GRLIB_perm_air],
+	["b_afougf_m119",10,600,0,GRLIB_perm_air],
+	["b_afougf_BM21",10,2600,0,GRLIB_perm_max]
 ];
 
 // *** Static Weapon with AI ***
@@ -250,14 +250,14 @@ GRLIB_vehicle_whitelist_west = [
 
 GRLIB_vehicle_blacklist_west = [
 	"rhs_KORD_MSV",
-	"RHS_AGS30_TriPod_MSV",
+	"b_afougf_AGS30_TriPod",
 	"rhs_KORD_high_MSV",
-	"rhs_SPG9M_MSV",
+	"b_afougf_SPG9M",
 	"rhs_Igla_AA_pod_msv",
 	"rhs_Metis_9k115_2_msv",
 	"rhs_Kornet_9M133_2_msv",
-	"RHS_ZU23_MSV",
-	"RHS_M119_WD"
+	"b_afougf_ZU23",
+	"b_afougf_m119"
 ];
 
 GRLIB_AirDrop_1 = [			// Unarmed Offroader 50

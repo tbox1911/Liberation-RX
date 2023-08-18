@@ -177,26 +177,26 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 [
 	["rhs_KORD_MSV",10],
-	["RHS_AGS30_TriPod_MSV",10],
+	["b_afougf_AGS30_TriPod",10],
 	["rhs_KORD_high_MSV",10],
-	["rhs_SPG9M_MSV",10],
+	["b_afougf_SPG9M",10],
 	["rhs_Igla_AA_pod_msv",15],
 	["rhs_Metis_9k115_2_msv",15],
 	["rhs_Kornet_9M133_2_msv",15],
-	["RHS_ZU23_MSV",20]
+	["b_afougf_ZU23",20]
 ];
 
 R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 [
 	"rhs_KORD_MSV",
-	"RHS_AGS30_TriPod_MSV",
+	"b_afougf_AGS30_TriPod",
 	"rhs_KORD_high_MSV",
-	"rhs_SPG9M_MSV",
+	"b_afougf_SPG9M",
 	"rhs_Igla_AA_pod_msv",
 	"rhs_Metis_9k115_2_msv",
 	"rhs_Kornet_9M133_2_msv",
-	"RHS_ZU23_MSV",
-	"RHS_M119_WD"
+	"b_afougf_ZU23",
+	"b_afougf_m119"
 ];
 
 //--------------- Camping ---------------
