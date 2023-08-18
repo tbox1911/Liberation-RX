@@ -21,7 +21,7 @@ private _vehicles_light = GRLIB_vehicle_blacklist + list_static_weapons + uavs +
 { _vehicles_light pushback (_x select 0) } foreach support_vehicles;
 _vehicles_light = _vehicles_light arrayIntersect _vehicles_light;
 
-if ( GRLIB_endgame == 1 ) then {
+if ( GRLIB_endgame >= 1 ) then {
     if (GRLIB_param_wipe_keepscore == 1) then {
         GRLIB_permissions = profileNamespace getVariable GRLIB_save_key select 12;
         GRLIB_player_scores = [];
