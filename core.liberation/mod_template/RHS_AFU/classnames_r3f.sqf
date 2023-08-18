@@ -14,9 +14,9 @@ R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
 	"RHS_Mi8_base",
 	"rhs_mi28_base",
 	"rhs_mi28n_base",
-	"UA_2020_CUP_Mi24_P_01",
-	"UA_2020_CUP_Mi8_VIV_01",
-	"UA_2020_CUP_Mi8_01"
+	"b_afougf_Mi24V_AT",
+	"b_afougf_Mi8MTV3_Cargo",
+	"b_afougf_Mi8MTV3_UPK23"
 ];
 
 R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
@@ -25,7 +25,7 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 
 R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 [
-	["UA_2020_CUP_Mi24_P_01",25],
+	["b_afougf_Mi24V_AT",25],
 	["RHS_Mi24_base",25],
 	["RHS_Mi8_base",40],
 	["rhs_mi28_base",50],
@@ -34,8 +34,8 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["RHS_Ka52_base",50],
 	["RHS_C130J_Cargo",1550],
 	["RHS_C130J",1550],
-	["UA_2020_CUP_Mi8_01",25],
-    ["UA_2020_CUP_Mi8_VIV_01",40]
+	["b_afougf_Mi8MTV3_UPK23",25],
+    ["b_afougf_Mi8MTV3_Cargo",40]
 ];
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
@@ -72,21 +72,10 @@ R3F_LOG_CFG_can_tow = R3F_LOG_CFG_can_tow +
 	"UA_bmp2",
 	"mkk_t64_bv_ua",
 	"ssr_Leopard2a4",
-	"UA_2020_CUP_2S6_01",
+	"b_afougf_zsu234_aa",
     "UA_HIMARS",
-    "UA_2020_cup_Hilux_unarmed_01",
-    "UA_2020_cup_Hilux_unarmed_01",
-    "UA_2020_cup_Hilux_unarmed_01",
-    "UA_2020_cup_Hilux_unarmed_01",
-    "UA_2020_cup_Hilux_unarmed_01",
-    "UA_2020_cup_Hilux_unarmed_01",
-    "UA_2020_cup_Hilux_DSHKM_01",
-    "UA_2020_cup_Hilux_metis_01",
-    "UA_2020_cup_Hilux_AGS30_01",
-    "UA_2020_cup_Hilux_SPG9_01",
-    "UA_2020_cup_Kraz_Spartan_01",
     "Kraz_spartan_camo_gs",
-    "rhsgref_cdf_btr60",
+    "UA_btr80",
     "UA_btr80",
     "UA_btr80a"
 ];
@@ -115,21 +104,10 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
     "UA_bmp2",
     "mkk_t64_bv_ua",
     "ssr_Leopard2a4",
-    "UA_2020_CUP_2S6_01",
+    "b_afougf_zsu234_aa",
     "UA_HIMARS",
-    "UA_2020_cup_Hilux_unarmed_01",
-    "UA_2020_cup_Hilux_unarmed_01",
-    "UA_2020_cup_Hilux_unarmed_01",
-    "UA_2020_cup_Hilux_unarmed_01",
-    "UA_2020_cup_Hilux_unarmed_01",
-    "UA_2020_cup_Hilux_unarmed_01",
-    "UA_2020_cup_Hilux_DSHKM_01",
-    "UA_2020_cup_Hilux_metis_01",
-    "UA_2020_cup_Hilux_AGS30_01",
-    "UA_2020_cup_Hilux_SPG9_01",
-    "UA_2020_cup_Kraz_Spartan_01",
     "Kraz_spartan_camo_gs",
-    "rhsgref_cdf_btr60",
+    "UA_btr80",
     "UA_btr80",
     "UA_btr80a"
 ];
@@ -237,12 +215,10 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 	["rhs_Kornet_9M133_2_msv",15],
 	["RHS_ZU23_MSV",20],
 
-	["UA_2020_CUP_DSHKM_01",10],
-	["UA_2020_CUP_AGS_01",10],
-	["UA_2020_CUP_DSHkM_MiniTriPod_01",10],
-	["UA_2020_CUP_SPG9_01",10],
-	["UA_2020_CUP_Metis_01",20],
-	["UA_2020_CUP_ZU23_01",20]
+	["b_afougf_AGS30_TriPod",10],
+	["b_afougf_DSHkM_Mini_TriPod",10],
+	["b_afougf_SPG9",10],
+	["b_afougf_ZU23",20]
 ];
 
 R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
@@ -257,12 +233,10 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	"RHS_ZU23_MSV",
 	"RHS_M119_WD",
 
-	"UA_2020_CUP_DSHKM_01",
-    "UA_2020_CUP_AGS_01",
-    "UA_2020_CUP_DSHkM_MiniTriPod_01",
-    "UA_2020_CUP_SPG9_01",
-    "UA_2020_CUP_Metis_01",
-    "UA_2020_CUP_ZU23_01"
+    "b_afougf_AGS30_TriPod",
+    "b_afougf_DSHkM_Mini_TriPod",
+    "b_afougf_SPG9",
+    "b_afougf_ZU23"
 ];
 
 //--------------- Camping ---------------
