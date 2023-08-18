@@ -56,20 +56,19 @@ infantry_units_west = [
 
 units_loadout_overide = [];
 
-// TODO
-// *** RHS NAPA ***
+// *** Ukraine National Guard ***
 resistance_squad = [
-	"rhsgref_nat_pmil_commander",
-	"rhsgref_nat_pmil_specialist_aa",
-	"rhsgref_nat_pmil_machinegunner",
-	"rhsgref_nat_pmil_grenadier_rpg",
-	"rhsgref_nat_pmil_saboteur",
-	"rhsgref_nat_pmil_medic",
-	"rhsgref_nat_pmil_rifleman_akm",
-	"rhsgref_nat_pmil_rifleman_aksu",
-	"rhsgref_nat_pmil_grenadier",
-	"rhsgref_nat_pmil_rifleman",
-	"rhsgref_nat_pmil_hunter"
+    "b_ngu_sapper",
+    "b_ngu_teamleader_gp25",
+    "b_ngu_sergeant_gp25",
+    "b_ngu_pt_rpg7",
+    "b_ngu_rifleman_ak74",
+    "b_ngu_rifleman_ak74",
+    "b_ngu_medic",
+    "b_ngu_mg_rpk74",
+    "b_ngu_pt_rpg7",
+    "b_ngu_rifleman_gp25",
+    "b_ngu_marksman_svdm"
 ];
 
 resistance_squad_static = "RHS_Stinger_AA_pod_WD";

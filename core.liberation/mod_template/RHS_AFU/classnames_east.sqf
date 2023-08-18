@@ -38,17 +38,17 @@ opfor_patrol = "Land_Cargo_Patrol_V3_F";
 opfor_hq = "Land_Cargo_HQ_V3_F";
 
 militia_squad = [
-	"rhs_vdv_mflora_junior_sergeant",
-	"rhs_vdv_mflora_marksman",
-	"rhs_vdv_mflora_rifleman_lite",
-	"rhs_vdv_mflora_rifleman_lite",
-	"rhs_vdv_mflora_medic",
-	"rhs_vdv_mflora_grenadier_rpg",
-	"rhs_vdv_mflora_rifleman",
-	"rhs_vdv_mflora_rifleman",
-	"rhs_vdv_mflora_at",
-	"rhs_vdv_mflora_grenadier",
-	"rhs_vdv_mflora_arifleman_rpk"
+    "b_ngu_sapper",
+    "b_ngu_teamleader_gp25",
+    "b_ngu_sergeant_gp25",
+    "b_ngu_pt_rpg7",
+    "b_ngu_rifleman_ak74",
+    "b_ngu_rifleman_ak74",
+    "b_ngu_medic",
+    "b_ngu_mg_rpk74",
+    "b_ngu_pt_rpg7",
+    "b_ngu_rifleman_gp25",
+    "b_ngu_marksman_svdm"
 ];
 
 militia_loadout_overide = [
