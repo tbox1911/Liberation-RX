@@ -4669,6 +4669,10 @@
 				- Své vybavení můžete zkopírovat do AI pomocí tlačítka (Like Me) v Squad Management.&lt;/t&gt;
 			</Czech>
 		</Key>
+		<Key ID="STR_SECONDARY_MISSION_IN_PROGRESS">
+			<Original>A Secondary Mission (%1) is already in progress...</Original>
+			<French>Une Mission Secondaire (%1) est déjà en cours...</French>	
+		</Key>				
 		<Key ID="STR_SECONDARY_MISSION0">
 			<Original>FOB Hunting</Original>
 			<French>Chasse à la FOB</French>

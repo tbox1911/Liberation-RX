@@ -10,6 +10,8 @@ if (count _spawnlist == 0) exitWith {[gamelogic, "Could not find enough free spa
 
 diag_log format ["--- LRX: %1 start static mission: Armageddon at %2", _caller, time];
 resources_intel = resources_intel - _mission_cost;
+GRLIB_secondary_in_progress = 3;
+publicVariable "GRLIB_secondary_in_progress";
 
 GRLIB_global_stop = 1;
 publicVariable "GRLIB_global_stop";
@@ -105,6 +107,8 @@ while { _continue } do {
 };
 
 deleteMarker _marker;
+GRLIB_secondary_in_progress = -1;
+publicVariable "GRLIB_secondary_in_progress";
 
 if (_success) then {
 	{ _x setDamage 1 } foreach (units GRLIB_side_enemy);

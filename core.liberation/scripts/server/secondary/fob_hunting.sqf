@@ -6,6 +6,10 @@ GRLIB_secondary_used_positions pushbackUnique _spawn_marker;
 
 diag_log format ["--- LRX: %1 start static mission: Fob Hunting at %2", _caller, time];
 resources_intel = resources_intel - _mission_cost;
+GRLIB_secondary_in_progress = 0;
+publicVariable "GRLIB_secondary_in_progress";
+
+[2] remoteExec ["remote_call_intel", 0];
 
 private _base_position = markerpos _spawn_marker;
 private _base_output = [_base_position, true, true] call createOutpost;
@@ -19,11 +23,7 @@ secondary_objective_position_marker = [(((secondary_objective_position select 0)
 publicVariable "secondary_objective_position_marker";
 sleep 1;
 
-GRLIB_secondary_in_progress = 0;
-publicVariable "GRLIB_secondary_in_progress";
-
-[2] remoteExec ["remote_call_intel", 0];
-
+diag_log _base_objectives;
 waitUntil {
 	sleep 5;
 	( { alive _x } count _base_objectives == 0 )
@@ -53,6 +53,7 @@ stats_secondary_objectives = stats_secondary_objectives + 1;
 	{ deleteVehicle _x } forEach units (_this select 2);
 	{ deleteVehicle _x } forEach units (_this select 3);
 
-	GRLIB_secondary_in_progress = -1; publicVariable "GRLIB_secondary_in_progress";
+	GRLIB_secondary_in_progress = -1; 
+	publicVariable "GRLIB_secondary_in_progress";
 	GRLIB_secondary_used_positions = [];
 }; 

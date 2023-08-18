@@ -46,7 +46,6 @@ if ( _classname isKindOf "Air" ) then {
 	};
 	_vehicle = createVehicle [_classname, _spawnpos, [], 0, "NONE"];
 };
-waitUntil {sleep 0.1; !isNull _vehicle};
 _vehicle allowDamage false;
 
 if ( _vehicle isKindOf "Air" ) then {
