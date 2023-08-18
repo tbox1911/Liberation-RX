@@ -1,5 +1,5 @@
 // *** CIVILIAN ***
-
+// TODO
 civilians = [
 	"C_Orestes",
 	"C_Nikos",
