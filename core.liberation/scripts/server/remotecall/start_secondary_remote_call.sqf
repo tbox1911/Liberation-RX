@@ -10,8 +10,8 @@ if (_mission_free) then { _mission_cost = 0 };
 
 private _caller = "LRX Server";
 if !(isNil "_caller_id") then {
-	_name = _caller_id call BIS_fnc_getUnitByUID;
-	_caller = format ["Player: %1(%2)", _name, _caller];
+	_name = name (_caller_id call BIS_fnc_getUnitByUID);
+	_caller = format ["Player: %1(%2)", _name, _caller_id];
 };
 
 if ( _mission_index == 0 ) then { [_mission_cost, _caller] call fob_hunting };
