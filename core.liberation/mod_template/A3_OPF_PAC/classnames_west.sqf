@@ -154,9 +154,9 @@ blufor_squad_inf_light = [
 	"O_T_Soldier_GL_F",
 	"O_T_soldier_AR_F",
 	"O_T_soldier_LAT_F",
-	"O_T_Soldier_lite_F",
-	"O_T_Soldier_lite_F",
-	"O_T_Soldier_lite_F"
+	"O_T_Soldier_F",
+	"O_T_Soldier_F",
+	"O_T_Soldier_F"
 ];
 blufor_squad_inf = [
 	"O_T_Soldier_SL_F",
