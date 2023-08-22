@@ -59,7 +59,7 @@ for "_i" from 1 to ((count _convoy_destinations) -1) do {
 	_waypoint setWaypointType "MOVE";
 	_waypoint setWaypointSpeed "LIMITED";
 	_waypoint setWaypointBehaviour "SAFE";
-	_waypoint setWaypointCombatMode "BLUE";
+	_waypoint setWaypointCombatMode "WHITE";
 	_waypoint setWaypointCompletionRadius 200;
 };
 _waypoint = _convoy_group addWaypoint [_convoy_destinations select 1, 0];
@@ -102,8 +102,8 @@ private _troops_group = [_spawnpos, ([] call F_getAdaptiveSquadComp), GRLIB_side
 (driver _transport_vehicle) MoveTo (_convoy_destinations select 1);
 
 _convoy_group setFormation "COLUMN";
-_convoy_group setBehaviour "SAFE";
-_convoy_group setCombatMode "BLUE";
+_convoy_group setBehaviour "AWARE";
+_convoy_group setCombatMode "WHITE";
 _convoy_group setSpeedMode "LIMITED";
 
 //-----------------------------------------
@@ -149,14 +149,14 @@ while { _mission_in_progress } do {
 	if ( _convoy_attacked && !_disembark_troops) then {
 		_disembark_troops = true;
 		{ [_troop_vehicle, _x] spawn F_ejectUnit } forEach (units _troops_group);
-		_troops_group setBehaviour "COMBAT";
+		_troops_group setCombatBehaviour "COMBAT";
 		_troops_group setCombatMode "RED";
 		[_troops_group, getPosATL _troop_vehicle, 30] spawn add_defense_waypoints;
 	};
 
 	if ( _convoy_attacked && !_convoy_flee) then {
 		_convoy_flee = true;
-		_convoy_group setBehaviour "COMBAT";
+		_convoy_group setCombatBehaviour "COMBAT";
 		_convoy_group setSpeedMode "FULL";
 	};
 

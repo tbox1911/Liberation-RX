@@ -62,7 +62,7 @@ while {	{( alive _x )} count (units _air_grp) > 0 } do {
 				_waypoint setWaypointType "MOVE";
 				_waypoint setWaypointSpeed "FULL";
 				_waypoint setWaypointBehaviour "SAFE";
-				_waypoint setWaypointCombatMode "GREEN";
+				_waypoint setWaypointCombatMode "WHITE";
 				_waypoint setWaypointCompletionRadius 50;
 
 				_waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];

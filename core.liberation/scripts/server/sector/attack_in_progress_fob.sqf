@@ -18,8 +18,7 @@ if ( GRLIB_blufor_defenders ) then {
 		_x allowFleeing 0;
 		_x addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
 	} foreach (units _grp);
-	_grp setCombatMode "GREEN";
-	_grp setBehaviour "COMBAT";
+	_grp setCombatBehaviour "COMBAT";
 	[_grp, _fobpos] spawn add_defense_waypoints;
 
 	private _defenders_timer = round (time + 120);

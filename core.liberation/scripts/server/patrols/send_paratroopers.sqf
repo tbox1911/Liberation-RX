@@ -35,7 +35,7 @@ private _waypoint = _pilot_group addWaypoint [ _targetpos, 300];
 _waypoint setWaypointType "MOVE";
 _waypoint setWaypointSpeed "FULL";
 _waypoint setWaypointBehaviour "CARELESS";
-_waypoint setWaypointCombatMode "BLUE";
+_waypoint setWaypointCombatMode "WHITE";
 _waypoint setWaypointCompletionRadius 20;
 _waypoint = _pilot_group addWaypoint [ _targetpos, 150];
 _waypoint setWaypointType "MOVE";

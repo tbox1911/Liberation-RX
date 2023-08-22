@@ -25,7 +25,7 @@ private _waypoint = _transport_group addWaypoint [ _objective_pos, 300];
 _waypoint setWaypointType "MOVE";
 _waypoint setWaypointSpeed "FULL";
 _waypoint setWaypointBehaviour "CARELESS";
-_waypoint setWaypointCombatMode "BLUE";
+_waypoint setWaypointCombatMode "GREEN";
 _waypoint setWaypointCompletionRadius 20;
 _waypoint = _transport_group addWaypoint [ _objective_pos, 150];
 _waypoint setWaypointType "MOVE";

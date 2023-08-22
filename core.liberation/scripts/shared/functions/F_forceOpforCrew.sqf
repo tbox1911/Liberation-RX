@@ -15,5 +15,5 @@ _grp = createGroup [GRLIB_side_enemy, true];
 _veh allowCrewInImmobile [true, false];
 _veh setUnloadInCombat [true, false];
 
-_grp setCombatMode "GREEN";
-_grp setBehaviour "SAFE";
+_grp setCombatMode "WHITE";
+_grp setCombatBehaviour "AWARE";

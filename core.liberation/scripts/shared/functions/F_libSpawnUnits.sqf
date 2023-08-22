@@ -70,5 +70,8 @@ private ["_unit", "_validpos", "_max_try", "_backpack"];
 	sleep 0.1;
 } foreach _classname;
 
+_grp setCombatMode "WHITE";
+_grp setCombatBehaviour "COMBAT";
+
 [_grp] call F_deleteWaypoints;
 _grp;
