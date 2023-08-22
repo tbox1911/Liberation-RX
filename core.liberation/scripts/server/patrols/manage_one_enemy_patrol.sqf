@@ -27,7 +27,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 
 		// 40% in vehicles
 		if ( floor(random 100) > 60 ) then {
-			_opfor_veh = [markerPos _spawnsector, (selectRandom (opfor_vehicles_low_intensity + [opfor_transport_truck])), false, false, GRLIB_side_enemy] call F_libSpawnVehicle;
+			_opfor_veh = [markerPos _spawnsector, (selectRandom (militia_vehicles + [opfor_transport_truck])), false, false, GRLIB_side_enemy] call F_libSpawnVehicle;
 			_opfor_veh setVariable ["GRLIB_mission_AI", true, true];
 			_opfor_grp = group (driver _opfor_veh);
 			_opfor_veh addEventHandler ["Fuel", { if (!(_this select 1)) then {(_this select 0) setFuel 1}}];
@@ -44,11 +44,13 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 				};
 			};
 		} else {
-			_opfor_grp = [_spawnsector, "csat", ([] call F_getAdaptiveSquadComp)] call F_spawnRegularSquad;
+			_opfor_grp = [_spawnsector, "militia", ([] call F_getAdaptiveSquadComp)] call F_spawnRegularSquad;
 		};
 
 		{ _x setVariable ["GRLIB_mission_AI", true, true] } forEach (units _opfor_grp);
 		[_opfor_grp] spawn add_civ_waypoints;
+		//[_opfor_grp, _targetpos] spawn battlegroup_ai;
+		//[_opfor_grp, _spawnsector, 200] spawn add_defense_waypoints;
 
 		if ( local _opfor_grp ) then {
 			_headless_client = [] call F_lessLoadedHC;

@@ -2,6 +2,13 @@ params ["_grp"];
 private ["_waypoint", "_basepos", "_nearestroad"];
 if (isNull _grp) exitWith {};
 
+private _behaviour =  "SAFE";
+private _combat_mode = "BLUE";
+if (side _grp == GRLIB_side_enemy) then {
+	_behaviour =  "AWARE";
+	_combat_mode = "WHITE";
+};
+
 [_grp] call F_deleteWaypoints;
 
 _civveh = objectParent (leader _grp);
@@ -9,9 +16,9 @@ if (isNull _civveh) then {
 	_basepos = getPosATL (leader _grp);
 	_waypoint = _grp addWaypoint [_basepos, GRLIB_sector_size];
 	_waypoint setWaypointType "MOVE";
-	_waypoint setWaypointBehaviour "SAFE";
 	_waypoint setWaypointSpeed "LIMITED";
-	_waypoint setWaypointCombatMode "BLUE";
+	_waypoint setWaypointBehaviour _behaviour;
+	_waypoint setWaypointCombatMode _combat_mode;
 	_waypoint setWaypointCompletionRadius 10;
 	_waypoint = _grp addWaypoint [_basepos, GRLIB_sector_size];
 	_waypoint setWaypointType "MOVE";
@@ -50,8 +57,8 @@ if (isNull _civveh) then {
 		};
 		_waypoint setWaypointType "MOVE";
 		_waypoint setWaypointSpeed "LIMITED";
-		_waypoint setWaypointBehaviour "SAFE";
-		_waypoint setWaypointCombatMode "BLUE";
+		_waypoint setWaypointBehaviour _behaviour;
+		_waypoint setWaypointCombatMode _combat_mode;
 		_waypoint setWaypointCompletionRadius 100;
 	} foreach _sectors_patrol_random;
 
