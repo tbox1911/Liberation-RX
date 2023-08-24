@@ -34,28 +34,30 @@ if (isNull _civveh) then {
 	private _sectorcount = count _sectors_patrol;
 	if (_sectorcount > 5) then { _sectorcount = 5 };
 
-	while { count _sectors_patrol_random < _sectorcount } do {
-		private _nextsector = selectRandom _sectors_patrol;
-		_sectors_patrol_random pushback _nextsector;
-		_sectors_patrol = _sectors_patrol - [_nextsector];
-	};
-
-	// todo: water waypoints
-	{
-		_nearestroad = [ [markerPos _x, floor(random 100), random 360] call BIS_fnc_relPos, 200, [] ] call BIS_fnc_nearestRoad;
-		if ( isNull _nearestroad ) then {
-			_waypoint = _grp addWaypoint [ markerpos _x, 100 ];
-		} else {
-			_waypoint = _grp addWaypoint [ getPosATL _nearestroad, 0 ];
+	if (_sectorcount > 0) then {
+		while { count _sectors_patrol_random < _sectorcount } do {
+			private _nextsector = selectRandom _sectors_patrol;
+			_sectors_patrol_random pushback _nextsector;
+			_sectors_patrol = _sectors_patrol - [_nextsector];
 		};
-		_waypoint setWaypointType "MOVE";
-		_waypoint setWaypointSpeed "LIMITED";
-		_waypoint setWaypointBehaviour "SAFE";
-		_waypoint setWaypointCombatMode "BLUE";
-		_waypoint setWaypointCompletionRadius 100;
-	} foreach _sectors_patrol_random;
 
-	_waypoint = _grp addWaypoint [ _basepos, 100 ];
-	_waypoint setWaypointType "CYCLE";
+		// todo: water waypoints
+		{
+			_nearestroad = [ [markerPos _x, floor(random 100), random 360] call BIS_fnc_relPos, 200, [] ] call BIS_fnc_nearestRoad;
+			if ( isNull _nearestroad ) then {
+				_waypoint = _grp addWaypoint [ markerpos _x, 100 ];
+			} else {
+				_waypoint = _grp addWaypoint [ getPosATL _nearestroad, 0 ];
+			};
+			_waypoint setWaypointType "MOVE";
+			_waypoint setWaypointSpeed "LIMITED";
+			_waypoint setWaypointBehaviour "SAFE";
+			_waypoint setWaypointCombatMode "BLUE";
+			_waypoint setWaypointCompletionRadius 100;
+		} foreach _sectors_patrol_random;
+
+		_waypoint = _grp addWaypoint [ _basepos, 100 ];
+		_waypoint setWaypointType "CYCLE";
+	};
 };
 {_x doFollow leader _grp} foreach units _grp;
