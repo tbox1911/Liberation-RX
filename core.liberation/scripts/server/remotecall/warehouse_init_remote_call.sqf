@@ -3,8 +3,6 @@
 
 params ["_warehouse"];
 
-waitUntil { sleep 1; count GRLIB_warehouse > 0 };
-
 if (isNil "GRLIB_WHS_Group") then {
 	GRLIB_WHS_Group = createGroup [GRLIB_side_civilian, true];
 };

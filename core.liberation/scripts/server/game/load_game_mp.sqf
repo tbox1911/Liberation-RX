@@ -48,7 +48,12 @@ GRLIB_player_context = [];
 resources_intel = 0;
 GRLIB_player_scores = [];
 GRLIB_garage = [];
-GRLIB_warehouse = [];
+GRLIB_warehouse = [
+	[waterbarrel_typename, 2],
+	[fuelbarrel_typename, 2],
+	[foodbarrel_typename, 1],
+	[basic_weapon_typename, 0]
+];
 
 private _no_kill_handler_classnames = [FOB_typename, FOB_outpost] + all_buildings_classnames;
 
@@ -163,21 +168,12 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 	};
 	if (abort_loading) exitWith {};
 
-	if (count _warehouse > 0) then {
-		GRLIB_warehouse = [
-			[waterbarrel_typename, (_warehouse select 0)],
-			[fuelbarrel_typename, (_warehouse select 1)],
-			[foodbarrel_typename, (_warehouse select 2)],
-			[basic_weapon_typename, (_warehouse select 3)]
-		];
-	} else {
-		GRLIB_warehouse = [
-			[waterbarrel_typename, 2],
-			[fuelbarrel_typename, 2],
-			[foodbarrel_typename, 1],
-			[basic_weapon_typename, 0]
-		];
-	};	
+	GRLIB_warehouse = [
+		[waterbarrel_typename, (_warehouse select 0)],
+		[fuelbarrel_typename, (_warehouse select 1)],
+		[foodbarrel_typename, (_warehouse select 2)],
+		[basic_weapon_typename, (_warehouse select 3)]
+	];
 
 	setDate [ GRLIB_date_year, GRLIB_date_month, GRLIB_date_day, time_of_day, 0];
 
