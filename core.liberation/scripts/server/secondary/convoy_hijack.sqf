@@ -148,7 +148,7 @@ while { _mission_in_progress } do {
 
 	if ( _convoy_attacked && !_disembark_troops) then {
 		_disembark_troops = true;
-		{ [_troop_vehicle, _x] spawn F_ejectUnit } forEach (units _troops_group);
+		{ [_x] spawn F_ejectUnit } forEach (units _troops_group);
 		_troops_group setCombatBehaviour "COMBAT";
 		_troops_group setCombatMode "RED";
 		[_troops_group, getPosATL _troop_vehicle, 30] spawn add_defense_waypoints;

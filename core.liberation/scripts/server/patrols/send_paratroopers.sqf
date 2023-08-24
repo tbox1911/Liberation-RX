@@ -53,7 +53,7 @@ _waypoint setWaypointCompletionRadius 20;
 		!(alive _newvehicle) || (damage _newvehicle > 0.2 ) || (_newvehicle distance2D _targetpos < 300)
 	};
 
-	{ [_newvehicle, _x] spawn F_ejectUnit } forEach (units _para_group);
+	{ [_x] spawn F_ejectUnit } forEach (units _para_group);
 	[_para_group, _targetpos] spawn battlegroup_ai;
 
 	sleep 5;

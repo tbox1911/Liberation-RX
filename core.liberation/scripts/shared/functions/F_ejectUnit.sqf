@@ -1,24 +1,24 @@
-params ["_vehicle", "_unit", ["_slow", true]];
+params ["_unit", ["_slow", true]];
 if (isNull _unit) exitWith {};
 if (!local _unit) exitWith {
 	if (isServer) then {
-		[_vehicle, _unit] remoteExec ["F_ejectUnit", owner _unit];
+		[_unit] remoteExec ["F_ejectUnit", owner _unit];
 	} else {
-		[_vehicle, _unit] remoteExec ["F_ejectUnit", 2];
+		[_unit] remoteExec ["F_ejectUnit", 2];
 	};
 };
 
 _unit allowDamage false;
 unAssignVehicle _unit;
-_unit action ["eject", _vehicle];
-_unit action ["getout", _vehicle];
+_unit action ["eject", vehicle _unit];
+_unit action ["getout", vehicle _unit];
 if (_slow) then { sleep random 3 };
 sleep 1;
 if (!isNull objectParent _unit) then { moveOut _unit };
 if (!alive _unit) exitWith {};
 
 if (getPos _unit select 2 >= 20) then {
-	_unit setPos (getPosATL _vehicle vectorAdd [([[-20,0,20], 3] call F_getRND), ([[-20,0,20], 3] call F_getRND), 0]);
+	_unit setPos (getPos _unit vectorAdd [([[-20,0,20], 3] call F_getRND), ([[-20,0,20], 3] call F_getRND), 0]);
 	if (_unit getVariable ["GRLIB_para_backpack", ""] != "") then {
 		[_unit] spawn {
 			params ["_unit"];

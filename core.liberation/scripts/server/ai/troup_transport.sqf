@@ -44,7 +44,7 @@ if (typeOf _troup_transport isKindOf "Truck_F") then {
 	sleep 2;
 };
 
-{ [_troup_transport, _x] spawn F_ejectUnit } forEach (units _troupgrp);
+{ [_x] spawn F_ejectUnit } forEach (units _troupgrp);
 [_troupgrp, _objective_pos] spawn battlegroup_ai;
 
 sleep 10;

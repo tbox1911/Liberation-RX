@@ -129,7 +129,7 @@ _waitUntilCondition = {
 				params ["_vehicle"];
 				doStop (driver _vehicle);
 				sleep 2;
-				{ [_vehicle, _x] spawn F_ejectUnit } foreach (crew _vehicle);
+				{ [_x] spawn F_ejectUnit } foreach (crew _vehicle);
 			};
 		} foreach [_vehicle1, _vehicle2, _vehicle3];
 
