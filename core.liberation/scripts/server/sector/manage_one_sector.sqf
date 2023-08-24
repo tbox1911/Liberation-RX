@@ -57,6 +57,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 		if(floor(random 100) > (33 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback ( [] call F_getAdaptiveVehicle ); };
 		_spawncivs = true;
 
+		_defensecount = 2;
 		_building_ai_max = round (15 * _popfactor) ;
 		_building_range = 300;
 		_local_capture_size = _local_capture_size * 1.4;
@@ -203,6 +204,14 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 	sleep 10;
 
 	diag_log format ["Sector %1 wait attack to finish", _sector];
+
+	[_sectorpos] spawn {
+		params ["_pos"];
+		sleep (300 + floor(random 60));
+		if ([_pos, GRLIB_capture_size] call F_sectorOwnership != GRLIB_side_friendly) exitWith {};
+		[_pos, true] spawn send_paratroopers;
+	};
+
 	while { !_stopit } do {
 
 		if ([_sectorpos, _local_capture_size] call F_sectorOwnership == GRLIB_side_friendly) then {

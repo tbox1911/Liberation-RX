@@ -63,10 +63,9 @@ if ( _targetsector in active_sectors ) then {
 		if (_sector2 != "" && _active_players > 1) then {
 			sleep (60 + floor(random 60));
 			diag_log format ["Spawn Defense on Sector %1 at %2", _sector2, time];
+			[_sector2, (1 + floor (random 2))] spawn patrol_manager;
 			if ( _sector2 in (sectors_tower + sectors_military)) then {
 				[_sector2, 2] spawn static_manager;
-			} else {
-				[_sector2, (1 + floor (random 2))] spawn patrol_manager;
 			};
 			stats_reinforcements_called = stats_reinforcements_called + 1;
 		};
