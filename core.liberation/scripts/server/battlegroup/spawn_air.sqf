@@ -25,7 +25,7 @@ for "_i" from 1 to _count do {
 };
 
 [_air_grp] call F_deleteWaypoints;
-_waypoint = _air_grp addWaypoint [ _targetpos, 200];
+private _waypoint = _air_grp addWaypoint [ _targetpos, 200];
 _waypoint setWaypointType "MOVE";
 _waypoint setWaypointSpeed "NORMAL";
 _waypoint setWaypointBehaviour "COMBAT";
@@ -59,16 +59,11 @@ while {	{( alive _x )} count (units _air_grp) > 0 } do {
 				[_unit] joinSilent _flee_grp;
 
 				[_flee_grp] call F_deleteWaypoints;
-
 				_waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];
 				_waypoint setWaypointType "MOVE";
 				_waypoint setWaypointSpeed "FULL";
 				_waypoint setWaypointBehaviour "SAFE";
 				_waypoint setWaypointCombatMode "WHITE";
-				_waypoint setWaypointCompletionRadius 50;
-
-				_waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];
-				_waypoint setWaypointType "MOVE";
 				_waypoint setWaypointCompletionRadius 50;
 				_waypoint setWaypointStatements ["true", "deleteVehicle this"];
 				{_x doFollow leader _flee_grp} foreach units _flee_grp;
