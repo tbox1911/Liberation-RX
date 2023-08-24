@@ -89,7 +89,6 @@ while {alive _unit || !_unit_captured } do {
 			_unit setVariable ["GRLIB_is_prisonner", true, true];
 			unAssignVehicle _unit;
 			[_unit] spawn F_ejectUnit;
-			sleep 2;
 			_unit switchMove "AmovPercMwlkSrasWrflDf";
 			_unit playMoveNow "AmovPercMwlkSrasWrflDf";
 			sleep 2;

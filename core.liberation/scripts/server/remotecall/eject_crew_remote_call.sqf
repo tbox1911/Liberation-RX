@@ -5,7 +5,7 @@ private _crew = crew _vehicle;
 private _grp = group (_crew select 0);
 
 if (count _crew == 0) exitWith {};
-{ [_x] spawn F_ejectUnit } forEach _crew;
+{ [_x, false] spawn F_ejectUnit; sleep 0.1 } forEach _crew;
 
 if (side _grp == GRLIB_side_civilian && !([_player, _vehicle] call is_owner)) then {
     [localize "STR_DO_EJECT"] remoteExec ["hintSilent", owner _player];
