@@ -1133,16 +1133,16 @@
 			<Czech>NEPŘÁTELSKÝ POSILY ÚTOČÍ %1.</Czech>
 		</Key>
 		<Key ID="STR_VICTORY_TITLE">
-			<Original>BLUFOR VICTORY</Original>
-			<French>VICTOIRE BLUFOR</French>
-			<German>BLUFOR SIEGREICH</German>
-			<Spanish>VICTORIA DE BLUFOR</Spanish>
+			<Original>VICTORY</Original>
+			<French>VICTOIRE</French>
+			<German>SIEGREICH</German>
+			<Spanish>VICTORIA</Spanish>
 			<Russian>СИНИЕ ПОБЕДИЛИ</Russian>
-			<Chinesesimp>BLUFOR获胜</Chinesesimp>
-			<Chinese>BLUFOR獲勝</Chinese>
+			<Chinesesimp>获胜</Chinesesimp>
+			<Chinese>獲勝</Chinese>
 			<Japanese>我々の勝利です</Japanese>
-			<Portuguese>VITÓRIA BLUFOR</Portuguese>
-			<Czech>ZVÍTĚZILY JSME</Czech>
+			<Portuguese>VITÓRIA</Portuguese>
+			<Czech>ZVÍTĚZILY</Czech>
 		</Key>
 		<Key ID="STR_VICTORY_TEXT">
 			<Original>You have liberated this country from the OPFOR oppression.</Original>
