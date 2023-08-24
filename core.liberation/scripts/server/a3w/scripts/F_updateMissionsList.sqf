@@ -197,7 +197,7 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 _mission_name = "mission_KillOfficer";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
 	private _blufor_city = sectors_bigtown select {(_x in blufor_sectors)};
-	if (count _blufor_city >= 1) then {
+	if (count _blufor_city > 1) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;
