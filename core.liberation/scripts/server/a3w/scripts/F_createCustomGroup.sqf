@@ -40,8 +40,11 @@ private _grp = [_pos, _unitclass, _side, _type] call F_libSpawnUnits;
 	_x setVariable ["GRLIB_mission_AI", true, true];
 } forEach (units _grp);
 
-[_grp] call F_deleteWaypoints;
-sleep 1;
-if (_patrol) then { [_grp, _pos, _radius] spawn add_defense_waypoints };
+
+if (_patrol) then {
+	[_grp, _pos, _radius] spawn add_defense_waypoints;
+} else {
+	[_grp] call F_deleteWaypoints;
+};
 
 _grp;

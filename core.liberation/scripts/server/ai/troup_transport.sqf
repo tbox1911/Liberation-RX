@@ -21,18 +21,12 @@ private _troupgrp = [_start_pos, _unitclass, GRLIB_side_enemy, "infantry"] call 
 } foreach (units _troupgrp);
 
 [_transport_group] call F_deleteWaypoints;
-private _waypoint = _transport_group addWaypoint [ _objective_pos, 300];
+private _waypoint = _transport_group addWaypoint [ _objective_pos, 50];
 _waypoint setWaypointType "MOVE";
 _waypoint setWaypointSpeed "FULL";
 _waypoint setWaypointBehaviour "CARELESS";
-_waypoint setWaypointCombatMode "GREEN";
-_waypoint setWaypointCompletionRadius 20;
-_waypoint = _transport_group addWaypoint [ _objective_pos, 150];
-_waypoint setWaypointType "MOVE";
-_waypoint setWaypointCompletionRadius 20;
-_waypoint = _transport_group addWaypoint [ _objective_pos, 1];
-_waypoint setWaypointType "MOVE";
-_waypoint setWaypointCompletionRadius 20;
+_waypoint setWaypointCombatMode "WHITE";
+_waypoint setWaypointCompletionRadius 200;
 {_x doFollow (leader _transport_group)} foreach units _transport_group;
 
 waitUntil { sleep 1;
@@ -44,21 +38,8 @@ if (typeOf _troup_transport isKindOf "Truck_F") then {
 	sleep 2;
 };
 
-{ [_x] spawn F_ejectUnit } forEach (units _troupgrp);
+[_troupgrp, _troup_transport] spawn F_ejectGroup;
 [_troupgrp, _objective_pos] spawn battlegroup_ai;
 
 sleep 10;
-[_transport_group] call F_deleteWaypoints;
-private _waypoint = _transport_group addWaypoint [ _objective_pos, 300];
-_waypoint setWaypointType "SAD";
-_waypoint setWaypointSpeed "NORMAL";
-_waypoint setWaypointBehaviour "COMBAT";
-_waypoint setWaypointCombatMode "RED";
-_waypoint setWaypointType "SAD";
-_waypoint = _transport_group addWaypoint [_objective_pos, 300];
-_waypoint setWaypointType "SAD";
-_waypoint = _transport_group addWaypoint [_objective_pos, 300];
-_waypoint setWaypointType "SAD";
-_waypoint = _transport_group addWaypoint [_objective_pos, 300];
-_waypoint setWaypointType "CYCLE";
-{_x doFollow (leader _transport_group)} foreach units _transport_group;
+[_transport_group, _objective_pos, 300] spawn add_defense_waypoints;

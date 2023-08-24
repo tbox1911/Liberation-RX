@@ -27,8 +27,7 @@ private _patrolcorners = [
 	_waypoint setWaypointBehaviour "AWARE";
 	_waypoint setWaypointCombatMode "WHITE";
 	_waypoint setWaypointSpeed "LIMITED";
-	_waypoint setWaypointBehaviour "SAFE";
-	_waypoint setWaypointCompletionRadius 10;
+	_waypoint setWaypointCompletionRadius 50;
 } foreach _patrolcorners;
 
 _waypoint = _grp addWaypoint [(_patrolcorners select 0), 0];
@@ -36,17 +35,15 @@ _waypoint setWaypointType "CYCLE";
 {_x doFollow (leader _grp)} foreach units _grp;
 
 waitUntil {
-	sleep 10;
+	sleep 30;
 	_basepos = (leader _grp) findNearestEnemy (leader _grp);
 	if (!isNull _basepos) then {
 		[_grp] call F_deleteWaypoints;
 		_waypoint = _grp addWaypoint [_basepos, _radius];
-		_waypoint setWaypointType "SAD";
-		_waypoint setWaypointBehaviour "COMBAT";
+		_waypoint setWaypointType "MOVE";
+		_waypoint setWaypointBehaviour "AWARE";
 		_waypoint setWaypointCombatMode "WHITE";
 		_waypoint setWaypointSpeed "LIMITED";
-		_waypoint = _grp addWaypoint [_basepos, _radius];
-		_waypoint setWaypointType "SAD";
 		_waypoint = _grp addWaypoint [_basepos, _radius];
 		_waypoint setWaypointType "SAD";
 		_waypoint = _grp addWaypoint [_basepos, _radius];

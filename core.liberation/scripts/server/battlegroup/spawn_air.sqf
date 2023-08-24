@@ -26,6 +26,8 @@ for "_i" from 1 to _count do {
 
 [_air_grp] call F_deleteWaypoints;
 _waypoint = _air_grp addWaypoint [ _targetpos, 200];
+_waypoint setWaypointType "MOVE";
+_waypoint setWaypointSpeed "NORMAL";
 _waypoint setWaypointBehaviour "COMBAT";
 _waypoint setWaypointCombatMode "RED";
 _waypoint setWaypointType "SAD";
