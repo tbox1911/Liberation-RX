@@ -7,50 +7,47 @@ if (!isServer) exitwith {};
 if (!isNil "GRLIB_A3W_Mission_SD") exitWith {};
 #include "sideMissionDefines.sqf"
 
-private ["_missionPosEnd", "_missionStart", "_house"];
+private ["_missionEnd", "_house"];
 
 _setupVars =
 {
 	_missionType = "STR_SPECIALDELI";
 	_ignoreAiDeaths = true;
-	_locationsArray = nil;
+	_locationsArray = [SpawnMissionMarkers] call checkSpawn;
 };
 
 _setupObjects =
 {
-	private _missionPos2 = [];
-	private _missionPos3 = [];
+	_missionEnd = (markerPos _missionLocation) getPos [100, random 360];
 
-	private _missionEnd = selectRandom ([SpawnMissionMarkers, { ([markerpos _x, false] call F_getNearestBluforObjective) select 1 > GRLIB_sector_size }] call BIS_fnc_conditionalSelect) select 0;
-	if (!isNil "_missionEnd") then {	
-		private _missionLocationList = [blufor_sectors, { (_x in sectors_capture) && (markerpos _x) distance2D (markerpos _missionEnd) < (GRLIB_spawn_max*2) }] call BIS_fnc_conditionalSelect;
-		if (count _missionLocationList >= 3) then {
-			private _m1 = selectRandom _missionLocationList;
-			_missionPos = (markerpos _m1) getPos [100, random 360];
-			_missionStart = _m1;
-			_missionLocationList = _missionLocationList - [ _m1 ];
-			_m1 = selectRandom _missionLocationList;
-			_missionPos2 = (markerpos _m1) getPos [100, random 360];
-			_missionLocationList = _missionLocationList - [ _m1 ];
-			_m1 = selectRandom _missionLocationList;
-			_missionPos3 = (markerpos _m1) getPos [100, random 360];
-			_missionPosEnd = (markerpos _missionEnd);
-		};
+	private _convoy_destinations = [];
+	private _sector_list = (blufor_sectors - sectors_tower);
+	private _max_try = 20;
+	private _max_waypoints = 3;
+
+	while { count _convoy_destinations < _max_waypoints && _max_try > 0} do {
+		_start_pos = selectRandom _sector_list;
+		_convoy_destinations = [_start_pos, 4000, _sector_list, _max_waypoints] call F_getSectorPath;
+		_max_try = _max_try - 1;
 	};
 
-	if (isnil "_missionPos" || isnil "_missionPos2" || isnil "_missionPos3" || isnil "_missionPosEnd") exitWith {
-		diag_log format ["--- LRX Error: side mission SD, cannot find location from marker %1", _missionEnd];
+	if (count _convoy_destinations < _max_waypoints) exitWith { 
+		diag_log format ["--- LRX Error: side mission SD, cannot find path"];
 		GRLIB_A3W_Mission_SD = [];
 		publicVariable "GRLIB_A3W_Mission_SD";
 		false;
 	};
+
+	_missionPos =  markerPos (_convoy_destinations select 0) getPos [100, random 360];
+	_missionPos2 = markerPos (_convoy_destinations select 1) getPos [100, random 360];
+	_missionPos3 = markerPos (_convoy_destinations select 2) getPos [100, random 360];
 
 	// create Nikos units
 	private _mission_grp = createGroup [GRLIB_side_civilian, true];
 	private _man1 = _mission_grp createUnit ["C_Nikos", _missionPos, [], 0, "NONE"];
 	private _man2 = _mission_grp createUnit ["C_Orestes", _missionPos2, [], 0, "NONE"];
 	private _man3 = _mission_grp createUnit ["C_Orestes", _missionPos3, [], 0, "NONE"];
-	private _man4 = _mission_grp createUnit ["C_Nikos_aged", _missionPosEnd, [], 0, "NONE"];
+	private _man4 = _mission_grp createUnit ["C_Nikos_aged", _missionEnd, [], 0, "NONE"];
 
 	GRLIB_A3W_Mission_SD = [_man1, _man2, _man3, _man4];
 	publicVariable "GRLIB_A3W_Mission_SD";
@@ -64,16 +61,16 @@ _setupObjects =
 	} forEach GRLIB_A3W_Mission_SD;
 
 	_man4 enableAI "Cover";
-	_house = createVehicle ["Land_i_House_Small_01_V1_F", _missionPosEnd, [], 2, "None"];
-	_house setVectorDirAndUp [[0, 0, 0] vectorCrossProduct surfaceNormal _missionPosEnd, surfaceNormal _missionPosEnd];
+	_house = createVehicle ["Land_i_House_Small_01_V1_F", _missionEnd, [], 2, "None"];
+	_house setVectorDirAndUp [[0, 0, 0] vectorCrossProduct surfaceNormal _missionEnd, surfaceNormal _missionEnd];
 	_man4 setPosATL (getposATL _house);
 
-	private _marker = createMarker ["side_mission_A3W_Mission_SD", _missionPosEnd];
+	private _marker = createMarker ["side_mission_A3W_Mission_SD", _missionEnd];
 	_marker setMarkerShape "ICON";
 	_marker setMarkerType "Empty";
 
 	_missionPicture = getText (configFile >> "CfgVehicles" >> "C_Hatchback_01_F" >> "picture");
-	_missionHintText = ["STR_SPECIALDELI_MESSAGE1", sideMissionColor, markerText _missionStart];	
+	_missionHintText = ["STR_SPECIALDELI_MESSAGE1", sideMissionColor, markerText _missionLocation];	
 	true;
 };
 
@@ -118,7 +115,7 @@ _successExec = {
 	_successHintMessage = ["STR_SPECIALDELI_MESSAGE3", sideMissionColor];
 
 	for "_i" from 1 to (selectRandom [1,2]) do {
-		[ammobox_i_typename, _missionPosEnd, false] call boxSetup;
+		[ammobox_i_typename, _missionEnd, false] call boxSetup;
 		sleep 0.2;
 	};
 };

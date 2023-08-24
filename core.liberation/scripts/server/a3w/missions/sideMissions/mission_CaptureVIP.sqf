@@ -6,20 +6,24 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private [ "_citylist", "_vip", "_vehicle1", "_vehicle2", "_vehicle3", "_numWaypoints", "_convoy_attacked", "_disembark_troops"];
+private [ "_vip", "_vehicle1", "_vehicle2", "_vehicle3", "_numWaypoints", "_convoy_attacked", "_disembark_troops"];
 
 _setupVars =
 {
 	_missionType = "STR_VIP_CAP";
-	_citylist = [] call cityList;
 	_locationsArray = nil; // locations are generated on the fly from towns
 };
 
 _setupObjects =
 {
+	private _citylist = ((sectors_bigtown select {(_x in blufor_sectors)}) apply {[_x, -1, markerText _x]});
 	_missionPos = markerPos ((selectRandom _citylist) select 0);
-	_vehicleClass = "C_Offroad_01_covered_F";
+	if (isNil "_missionPos") exitWith { 
+		diag_log format ["--- LRX Error: side mission VIP, cannot find spawn"];
+		false;
+	};
 
+	private _vehicleClass = "C_Offroad_01_covered_F";
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 
 	// veh1 + squad
@@ -69,6 +73,8 @@ _setupObjects =
 
 	// behaviour on waypoints
 	[_aiGroup] call F_deleteWaypoints;
+	_citylist = (_citylist call BIS_fnc_arrayShuffle) select [0, 3];
+
 	{
 		_waypoint = _aiGroup addWaypoint [markerPos (_x select 0), 0];
 		_waypoint setWaypointType "MOVE";
@@ -76,7 +82,7 @@ _setupObjects =
 		_waypoint setWaypointCombatMode "GREEN";
 		_waypoint setWaypointBehaviour "SAFE";
 		_waypoint setWaypointFormation "COLUMN";
-	} forEach (_citylist call BIS_fnc_arrayShuffle);
+	} forEach _citylist;
 
 	sleep 15;
 	_missionPos = getPosATL leader _aiGroup;
@@ -90,7 +96,7 @@ _setupObjects =
 	true;
 };
 
-_waitUntilMarkerPos = {getPosATL _vip};
+_waitUntilMarkerPos = { getPosATL _vip };
 _waitUntilExec = nil;
 _waitUntilCondition = {
 	if ( !_convoy_attacked ) then {
