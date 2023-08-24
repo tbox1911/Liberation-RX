@@ -19,7 +19,6 @@ private _troup_group = [_start_pos, _unitclass, GRLIB_side_enemy, "infantry"] ca
 	_x allowFleeing 0;
 	_x setVariable ["GRLIB_counter_TTL", round(time + 1800)];
 } foreach (units _troup_group);
-[_troup_group, _objective_pos] spawn battlegroup_ai;
 
 [_transport_group] call F_deleteWaypoints;
 private _waypoint = _transport_group addWaypoint [ _objective_pos, 50];
@@ -41,4 +40,5 @@ if (typeOf _troup_transport isKindOf "Truck_F") then {
 
 [_troup_group, _troup_transport] spawn F_ejectGroup;
 sleep 10;
+[_troup_group, _objective_pos] spawn battlegroup_ai;
 [_transport_group, _objective_pos, 300] spawn add_defense_waypoints;

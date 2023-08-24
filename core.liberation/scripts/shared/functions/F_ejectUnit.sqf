@@ -10,6 +10,8 @@ if (!local _unit) exitWith {
 
 _unit allowDamage false;
 unAssignVehicle _unit;
+[_unit] orderGetIn false;
+
 if (_slow) then { sleep 2 };
 moveOut _unit;
 if (!alive _unit) exitWith {};

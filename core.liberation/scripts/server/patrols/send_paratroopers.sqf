@@ -19,6 +19,7 @@ _newvehicle setVariable ["GRLIB_counter_TTL", round(time + 3600)];
 	_x setVariable ["GRLIB_counter_TTL", round(time + 3600)];
 } foreach (crew _newvehicle);
 sleep 1;
+_newvehicle flyInHeight 150;
 
 [_pilot_group] call F_deleteWaypoints;
 private _waypoint = _pilot_group addWaypoint [ _targetpos, 50];
@@ -46,7 +47,6 @@ private _para_group = [markerpos _spawnsector, _unitclass, GRLIB_side_enemy, "pa
 	_x allowFleeing 0;
 	_x setVariable ["GRLIB_counter_TTL", round(time + 3600)];
 } foreach (units _para_group);
-[_para_group, _targetpos] spawn battlegroup_ai;
 
 [_newvehicle, _targetpos, _pilot_group, _para_group, _unload_dist] spawn {
 	params [ "_newvehicle", "_targetpos", "_pilot_group", "_para_group", "_unload_dist"];
@@ -56,7 +56,9 @@ private _para_group = [markerpos _spawnsector, _unitclass, GRLIB_side_enemy, "pa
 	};
 
 	[_para_group, _newvehicle] spawn F_ejectGroup;
-	sleep 5;
+	sleep 10;
+	_newvehicle flyInHeight 300;
+	[_para_group, _targetpos] spawn battlegroup_ai;
 	[_pilot_group, _targetpos, 400] spawn add_defense_waypoints;
 };
 
