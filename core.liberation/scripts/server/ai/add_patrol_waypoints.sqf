@@ -10,8 +10,8 @@ if (isNull _civveh) then {
 	_waypoint = _grp addWaypoint [_basepos, GRLIB_sector_size];
 	_waypoint setWaypointType "MOVE";
 	_waypoint setWaypointSpeed "LIMITED";
-	_waypoint setWaypointBehaviour "SAFE";
-	_waypoint setWaypointCombatMode "BLUE";
+	_waypoint setWaypointBehaviour "AWARE";
+	_waypoint setWaypointCombatMode "WHITE";
 	_waypoint setWaypointCompletionRadius 10;
 	_waypoint = _grp addWaypoint [_basepos, GRLIB_sector_size];
 	_waypoint setWaypointType "MOVE";
@@ -25,7 +25,7 @@ if (isNull _civveh) then {
 	_basepos = getPosATL _civveh;
 	private _sectors_patrol = [];
 	{
-		if ( (_basepos distance (markerpos _x) < 5000) && (count ([markerPos _x, 4000] call F_getNearbyPlayers) > 0) ) then {
+		if ( (_basepos distance (markerpos _x) < 5000) && (count ([markerPos _x, 4000] call F_getNearbyPlayers) > 0) && (count ([markerPos _x, 200] call F_getNearbyPlayers) == 0) ) then {
 			_sectors_patrol pushback _x;
 		};
 	} foreach (sectors_bigtown + sectors_capture + sectors_factory);
@@ -50,8 +50,8 @@ if (isNull _civveh) then {
 		};
 		_waypoint setWaypointType "MOVE";
 		_waypoint setWaypointSpeed "LIMITED";
-		_waypoint setWaypointBehaviour "SAFE";
-		_waypoint setWaypointCombatMode "BLUE";
+		_waypoint setWaypointBehaviour "AWARE";
+		_waypoint setWaypointCombatMode "WHITE";
 		_waypoint setWaypointCompletionRadius 100;
 	} foreach _sectors_patrol_random;
 

@@ -48,9 +48,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 		};
 
 		{ _x setVariable ["GRLIB_mission_AI", true, true] } forEach (units _opfor_grp);
-		[_opfor_grp] spawn add_civ_waypoints;
-		//[_opfor_grp, _targetpos] spawn battlegroup_ai;
-		//[_opfor_grp, _spawnsector, 200] spawn add_defense_waypoints;
+		[_opfor_grp] spawn add_patrol_waypoints;
 
 		if ( local _opfor_grp ) then {
 			_headless_client = [] call F_lessLoadedHC;
