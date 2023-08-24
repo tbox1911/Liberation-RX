@@ -46,21 +46,18 @@ private _para_group = [markerpos _spawnsector, _unitclass, GRLIB_side_enemy, "pa
 	_x allowFleeing 0;
 	_x setVariable ["GRLIB_counter_TTL", round(time + 3600)];
 } foreach (units _para_group);
+[_para_group, _targetpos] spawn battlegroup_ai;
 
 [_newvehicle, _targetpos, _pilot_group, _para_group, _unload_dist] spawn {
 	params [ "_newvehicle", "_targetpos", "_pilot_group", "_para_group", "_unload_dist"];
 
 	waitUntil { sleep 0.5;
-		//if (_newvehicle distance2D _targetpos < 600) then { _newvehicle flyInHeight 100 };
 		!(alive _newvehicle) || (damage _newvehicle > 0.2 ) || (_newvehicle distance2D _targetpos <= _unload_dist)
 	};
 
 	[_para_group, _newvehicle] spawn F_ejectGroup;
-	[_para_group, _targetpos] spawn battlegroup_ai;
-
 	sleep 5;
-	[_pilot_group, _targetpos, 300] spawn add_defense_waypoints;
-	_newvehicle flyInHeight 300;
+	[_pilot_group, _targetpos, 400] spawn add_defense_waypoints;
 };
 
 _para_group;

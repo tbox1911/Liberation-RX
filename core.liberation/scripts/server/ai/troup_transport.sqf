@@ -10,7 +10,7 @@ private _cargo_seat_free = _troup_transport emptyPositions "Cargo";
 if (_cargo_seat_free > 8) then {_cargo_seat_free = 8};
 while { (count _unitclass) < _cargo_seat_free } do { _unitclass pushback (selectRandom opfor_squad_8_standard) };
 
-private _troupgrp = [_start_pos, _unitclass, GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
+private _troup_group = [_start_pos, _unitclass, GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
 {
 	_x assignAsCargoIndex [_troup_transport, _forEachIndex];
 	_x moveInCargo _troup_transport;
@@ -18,7 +18,8 @@ private _troupgrp = [_start_pos, _unitclass, GRLIB_side_enemy, "infantry"] call 
 	_x setSkill ["courage", 1];
 	_x allowFleeing 0;
 	_x setVariable ["GRLIB_counter_TTL", round(time + 1800)];
-} foreach (units _troupgrp);
+} foreach (units _troup_group);
+[_troup_group, _objective_pos] spawn battlegroup_ai;
 
 [_transport_group] call F_deleteWaypoints;
 private _waypoint = _transport_group addWaypoint [ _objective_pos, 50];
@@ -38,8 +39,6 @@ if (typeOf _troup_transport isKindOf "Truck_F") then {
 	sleep 2;
 };
 
-[_troupgrp, _troup_transport] spawn F_ejectGroup;
-[_troupgrp, _objective_pos] spawn battlegroup_ai;
-
+[_troup_group, _troup_transport] spawn F_ejectGroup;
 sleep 10;
 [_transport_group, _objective_pos, 300] spawn add_defense_waypoints;
