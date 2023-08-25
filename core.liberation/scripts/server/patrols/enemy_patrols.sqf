@@ -1,4 +1,4 @@
-if (GRLIB_civilian_activity == 0) exitWith {};
+if (GRLIB_patrols_activity == 0) exitWith {};
 waitUntil {sleep 1; !isNil "GRLIB_A3W_Init"};
 diag_log "--- LRX Starting Patrols Manager";
 sleep 400;
