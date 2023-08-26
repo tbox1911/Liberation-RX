@@ -9,25 +9,24 @@ private [
 
 while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	sleep (30 + floor(random 30));
-	while { [] call F_opforCap > GRLIB_patrol_cap || (diag_fps < 35.0) || combat_readiness < 30} do {
+	while { [] call F_opforCap > GRLIB_patrol_cap || (diag_fps < 35.0) || combat_readiness < 30 } do {
 		sleep (30 + floor(random 30));
 	};
 
 	_opfor_veh = objNull;
 	_usable_sectors = [];
 	{
-		//(([getmarkerpos _x, 1000, GRLIB_side_friendly] call F_getUnitsCount) == 0) &&
-		if ( (count ([getmarkerpos _x, 2500] call F_getNearbyPlayers) > 0) ) then {
+		if ( (count ([getmarkerpos _x, 3500] call F_getNearbyPlayers) > 0) && (count ([getmarkerpos _x, GRLIB_sector_size] call F_getNearbyPlayers) == 0) ) then {
 			_usable_sectors pushback _x;
-		}
+		};
 	} foreach (sectors_bigtown + sectors_capture + sectors_factory - active_sectors);
 
 	if ( count _usable_sectors > 0 ) then {
 		_spawnsector = selectRandom _usable_sectors;
 
-		// 40% in vehicles
-		if ( floor(random 100) > 60 ) then {
-			_opfor_veh = [markerPos _spawnsector, (selectRandom (militia_vehicles + [opfor_transport_truck])), false, false, GRLIB_side_enemy] call F_libSpawnVehicle;
+		// 50% in vehicles
+		if ( floor(random 100) >= 50 ) then {
+			_opfor_veh = [markerPos _spawnsector, (selectRandom (militia_vehicles)), false, false, GRLIB_side_enemy] call F_libSpawnVehicle;
 			_opfor_veh setVariable ["GRLIB_mission_AI", true, true];
 			_opfor_grp = group (driver _opfor_veh);
 			_opfor_veh addEventHandler ["Fuel", { if (!(_this select 1)) then {(_this select 0) setFuel 1}}];

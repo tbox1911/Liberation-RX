@@ -16,10 +16,9 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	_civ_veh = objNull;
 	_usable_sectors = [];
 	{
-		//(([getmarkerpos _x, 1000, GRLIB_side_friendly] call F_getUnitsCount) == 0) &&
 		if ( (count ([getmarkerpos _x, 3500] call F_getNearbyPlayers) > 0) ) then {
 			_usable_sectors pushback _x;
-		}
+		};
 	} foreach (sectors_bigtown + sectors_capture + sectors_factory - active_sectors);
 
 	if ( count _usable_sectors > 0 ) then {
