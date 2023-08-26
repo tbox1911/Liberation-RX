@@ -7,12 +7,10 @@
 //   define parameter full name, list of choice, (optinal) custom value
 
 private _lrx_getParamValue = {
-	params ["_param"];
-	_def = "Unknown!";
-	{
-		if (_x select 0 == _param) exitWith { _def = _x select 1 };
-	} forEach GRLIB_mod_list_name;
-	_def;
+	params ["_name"];
+	private _ret = GRLIB_mod_list_name select {_x select 0 == _name} select 0;
+	if (count _ret == 0) exitWith {"Unknown!"};
+	(_ret select 1);
 };
 
 private _list_west = [];
