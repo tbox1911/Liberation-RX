@@ -219,7 +219,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 			_stopit = true;
 			_enemy_left = [units GRLIB_side_enemy, {(alive _x) && (vehicle _x == _x) && !(_x getVariable ["GRLIB_mission_AI", false]) && (((getmarkerpos _sector) distance2D _x) < _local_capture_size * 1.2)}] call BIS_fnc_conditionalSelect;
 			{
-				if ( _max_prisonners > 0 && ((random 100) < GRLIB_surrender_chance) ) then {
+				if ( _max_prisonners > 0 && ((floor random 100) < GRLIB_surrender_chance) ) then {
 					[_x] spawn prisonner_ai;
 					_max_prisonners = _max_prisonners - 1;
 				} else {
@@ -255,7 +255,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 diag_log format ["End Defend Sector %1 at %2", _sector, time];
 
 // Cleanup
-waitUntil { sleep 10; [markerpos _sector, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0 };
+waitUntil { sleep 10; GRLIB_global_stop == 1 || [markerpos _sector, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0 };
 {
 	if (_x isKindOf "CAManBase") then {
 		deleteVehicle _x;
