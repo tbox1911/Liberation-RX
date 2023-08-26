@@ -59,7 +59,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 		_unit_ttl = round (time + 1800);
 		waitUntil {
 			sleep 30;
-			( GRLIB_global_stop == 1 || (diag_fps < 25) || ({alive _x} count (units _opfor_grp) == 0) || (count ([getPosATL (leader _opfor_grp), 3000] call F_getNearbyPlayers) == 0) || (time > _unit_ttl) )
+			( GRLIB_global_stop == 1 || (diag_fps < 25) || ({alive _x} count (units _opfor_grp) == 0) || (count ([getPos (leader _opfor_grp), 4000] call F_getNearbyPlayers) == 0) || (time > _unit_ttl) )
 		};
 
 		// Cleanup
