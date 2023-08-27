@@ -142,7 +142,20 @@ if ( isNil "militia_vehicles" ) then {
 // *** SUPPORT ***
 support_vehicles = [];
 if (GRLIB_enable_arsenal == 1) then {
-	support_vehicles append [[Arsenal_typename,0,35,0,0]];
+	support_vehicles append [
+		[Arsenal_typename,0,35,0,0]
+	];
+} else {
+	support_vehicles append [
+		[Box_Weapon_typename,0,180,0,0],
+		[Box_Ammo_typename,0,0,0,0],
+		[Box_Grenades_typename,0,100,0,0],
+		[Box_Explosives_typename,0,180,0,0],
+		[Box_Equipment_typename,0,350,0,GRLIB_perm_inf],
+		[Box_Support_typename,0,270,0,GRLIB_perm_inf],
+		[Box_Special_typename,0,365,0,GRLIB_perm_log],
+		[Box_Launcher_typename,0,370,0,GRLIB_perm_tank]
+	];
 };
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
@@ -151,11 +164,6 @@ support_vehicles = support_vehicles + [
 	[mobile_respawn,10,50,0,0],
 	[canister_fuel_typename,0,25,0,0],
 	[playerbox_typename,0,0,0,20],
-	[Box_Weapon_typename,0,180,0,0],
-	[Box_Ammo_typename,0,0,0,0],
-	[Box_Support_typename,0,250,0,GRLIB_perm_inf],
-	[Box_Special_typename,0,325,0,GRLIB_perm_log],
-	[Box_Launcher_typename,0,300,0,GRLIB_perm_tank],
 	[Respawn_truck_typename,10,450,15,GRLIB_perm_log],
 	[huron_typename,10,1550,35,GRLIB_perm_tank],
 	["Land_RepairDepot_01_civ_F",10,300,0,GRLIB_perm_log],
@@ -600,6 +608,9 @@ GRLIB_Ammobox_keep = [
 	Box_Support_typename,
 	Box_Launcher_typename,
 	Box_Special_typename,
+	Box_Grenades_typename,
+	Box_Explosives_typename,
+	Box_Equipment_typename,
 	basic_weapon_typename,
 	"mission_USLaunchers"
 ];
