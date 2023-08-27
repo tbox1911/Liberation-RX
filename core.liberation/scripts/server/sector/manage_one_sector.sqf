@@ -258,6 +258,6 @@ diag_log format ["End Defend Sector %1 at %2", _sector, time];
 waitUntil { sleep 10; GRLIB_global_stop == 1 || [markerpos _sector, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0 };
 { 
 	if (!isNull objectParent _x) then { [vehicle _x] call clean_vehicle };
-	deleteVehicle _x 
+	deleteVehicle _x;
 	sleep 0.1;
 } forEach _managed_units;
