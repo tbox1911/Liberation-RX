@@ -256,10 +256,8 @@ diag_log format ["End Defend Sector %1 at %2", _sector, time];
 
 // Cleanup
 waitUntil { sleep 10; GRLIB_global_stop == 1 || [markerpos _sector, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0 };
-{
-	if (_x isKindOf "CAManBase") then {
-		deleteVehicle _x;
-	} else {
-		[_x] spawn clean_vehicle;
-	};
-} foreach _managed_units;
+{ 
+	if (!isNull objectParent _x) then { [vehicle _x] call clean_vehicle };
+	deleteVehicle _x 
+	sleep 0.1;
+} forEach _managed_units;

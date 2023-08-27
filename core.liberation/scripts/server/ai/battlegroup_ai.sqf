@@ -18,9 +18,11 @@ while { ({alive _x} count (units _grp) > 0) && ( GRLIB_endgame == 0 ) } do {
 	};
 
 	if (_objective_pos isEqualTo zeropos) then {	
+		// Cleanup
 		{ 
-			if (!isNull objectParent _x) then { [vehicle _x] spawn clean_vehicle };
+			if (!isNull objectParent _x) then { [vehicle _x] call clean_vehicle };
 			deleteVehicle _x 
+			sleep 0.1;
 		} forEach (units _grp);
 		deleteGroup _grp;
 		sleep 1;
