@@ -57,7 +57,10 @@ opfor_target addEventHandler ["HandleDamage", {
 
 publicVariable "opfor_target";
 
-private _grp = _base_output select 2;
+[_marker, 4] spawn static_manager;
+private _grp = [_marker, "csat", ([] call F_getAdaptiveSquadComp)] call F_spawnRegularSquad;
+[_grp, _spawnpos, 200] spawn add_defense_waypoints;
+
 private _vehicle = [_spawnpos, (selectRandom opfor_vehicles)] call F_libSpawnVehicle;
 (driver _vehicle) doFollow leader _grp;
 
@@ -111,9 +114,13 @@ GRLIB_secondary_in_progress = -1;
 publicVariable "GRLIB_secondary_in_progress";
 
 if (_success) then {
+	[5] remoteExec ["BIS_fnc_earthquake", 0];
+	private _smoke = "test_EmptyObjectForSmoke" createVehicle (getPos opfor_target);
+	_smoke attachTo [opfor_target, [0, 1.5, 0]];
 	{ _x setDamage 1 } foreach (units GRLIB_side_enemy);
 	0 setOvercast 0;
 	forceWeatherChange;
+	sleep 5;
 	blufor_sectors = sectors_allSectors;
 	[] spawn check_victory_conditions;
 } else {
