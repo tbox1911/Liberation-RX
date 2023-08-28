@@ -45,18 +45,18 @@ if ( GRLIB_endgame >= 1 ) then {
             [],
             GRLIB_mod_west,
             GRLIB_mod_east,
-            [],
+            [2,2,1,0],
             [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-            [33, 33, 33],
+            [33,33,33],
             [],
             GRLIB_permissions,
             [],
             0,
             GRLIB_player_scores
         ];
-        profileNamespace setVariable [ GRLIB_save_key, _savegame ];
+        profileNamespace setVariable [GRLIB_save_key, _savegame];
     } else {
-        profileNamespace setVariable [ GRLIB_save_key, nil ];
+        profileNamespace setVariable [GRLIB_save_key, nil];
     };
     saveProfileNamespace;
 } else {

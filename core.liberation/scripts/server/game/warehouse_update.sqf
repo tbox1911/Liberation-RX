@@ -2,7 +2,7 @@ params ["_owner"];
 private _warehouse = _owner getVariable ["GRLIB_Warehouse", objNull];
 if (isNull _warehouse) exitWith {};
 private _warehouse_pos = getPosATL _warehouse;
-
+private ["_typename", "_box_count", "_indx"];
 {
 	_typename = _x select 0;
 	_box_count = _x select 1;
