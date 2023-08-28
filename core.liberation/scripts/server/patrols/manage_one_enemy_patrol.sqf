@@ -70,5 +70,6 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 			sleep 0.1;
 		} forEach (units _opfor_grp);
 		deleteGroup _opfor_grp;
+		[_opfor_veh] call clean_vehicle;
 	};
 };

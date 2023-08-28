@@ -43,11 +43,8 @@ stats_secondary_objectives = stats_secondary_objectives + 1;
 
 [_base_objectives + _base_objects, _base_position, _grpdefenders, _grpsentry] spawn { 
 	sleep 300; 
-	{
-		if (count (crew _x) == 0 && (_x getVariable ["GRLIB_vehicle_owner", ""] == "")) then {
-			deleteVehicle _x;
-		};		
-	} forEach (_this select 0);
+	private _vehicles = (_this select 0);
+	[_vehicles, 5] call cleanMissionVehicles;	
 
 	{ deleteVehicle _x } forEach ([nearestObjects [(_this select 1), ["Ruins_F"], 100], { getObjectType _x == 8 }] call BIS_fnc_conditionalSelect);
 	{ deleteVehicle _x } forEach units (_this select 2);

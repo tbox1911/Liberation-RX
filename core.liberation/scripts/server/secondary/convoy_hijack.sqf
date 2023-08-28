@@ -175,11 +175,15 @@ sleep 5;
 //-----------------------------------------
 // Mission cleanup
 { deleteMarker _x } foreach _convoy_marker_list;
-{ moveOut _x; deleteVehicle _x } forEach units _troops_group;
 
 combat_readiness = round (combat_readiness * 0.85);
 stats_secondary_objectives = stats_secondary_objectives + 1;
 [ 5 ] remoteExec ["remote_call_intel", 0];
+
+sleep 300; 
+private _vehicles = [_scout_vehicle, _transport_vehicle, _troop_vehicle];
+[_vehicles, 5] spawn cleanMissionVehicles;
+
 GRLIB_secondary_in_progress = -1;
 publicVariable "GRLIB_secondary_in_progress";
 sleep 1;

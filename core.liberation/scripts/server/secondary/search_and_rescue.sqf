@@ -88,7 +88,7 @@ private _alive_crew_count = { alive _x } count _pilotUnits;
 if ( _alive_crew_count == 0 ) then {
 	// failed
 	[ 7 ] remoteExec ["remote_call_intel", 0];
-	[_vehicle_list, 10, true] spawn cleanMissionVehicles;
+	[_vehicle_list] spawn cleanMissionVehicles;
 } else {
 	// success
 	[ 8 ] remoteExec ["remote_call_intel", 0];
