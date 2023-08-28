@@ -157,6 +157,8 @@ opfor_air = [
 opfor_statics = [
 	"B_T_HMG_01_F",
 	"B_T_GMG_01_F",
+	"B_T_HMG_01_F",
+	"B_T_GMG_01_F",	
 	"B_T_Mortar_01_F",
 	"B_T_Static_AA_F",
 	"B_T_Static_AT_F"

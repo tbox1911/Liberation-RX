@@ -152,6 +152,8 @@ opfor_air = [
 opfor_statics = [
 	"O_HMG_01_high_F",
 	"O_GMG_01_high_F",
+	"O_HMG_01_high_F",
+	"O_GMG_01_high_F",	
 	"O_static_AA_F",
 	"O_static_AT_F",
 	"O_Mortar_01_F"
