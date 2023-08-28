@@ -18,6 +18,7 @@ if ( isNil "_liberated_sector" ) then {
 };
 
 if (_objective_pos isEqualTo zeropos) exitWith {};
+[markerPos _spawn_marker] remoteExec ["remote_call_battlegroup", 0];
 
 private _vehicle_pool = opfor_battlegroup_vehicles;
 if ( combat_readiness < 50 ) then {
@@ -36,8 +37,6 @@ if (_spawn_marker != "") then {
 	for "_i" from 1 to _target_size do {
 		_selected_opfor_battlegroup pushback (selectRandom _vehicle_pool);
 	};
-
-	[ _spawn_marker ] remoteExec ["remote_call_battlegroup", 0];
 
 	{
 		_nextgrp = createGroup [GRLIB_side_enemy, true];

@@ -1,9 +1,10 @@
-params [ "_battlegroup_position" ];
+params ["_battlegroup_position"];
 
 if (isDedicated || (!hasInterface && !isServer)) exitWith {};
 
-"opfor_bg_marker" setMarkerPosLocal ( getMarkerPos _battlegroup_position );
-[ "lib_battlegroup", [ markerText ( [ 10000, getMarkerPos _battlegroup_position ] call F_getNearestSector ) ] ] call BIS_fnc_showNotification;
+"opfor_bg_marker" setMarkerPosLocal _battlegroup_position;
+private _location_name = [_battlegroup_position] call F_getLocationName;
+["lib_battlegroup", [_location_name]] call BIS_fnc_showNotification;
 
 sleep 600;
 
