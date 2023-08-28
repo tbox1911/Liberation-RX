@@ -66,10 +66,18 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 				};
 			};
 
+			// Wait
 			_unit_ttl = round (time + 1800);
 			waitUntil {
 				sleep 30;
-				( GRLIB_global_stop == 1 || (diag_fps < 25) || ({alive _x} count (units _civ_grp) == 0) || (round (speed (leader _civ_grp)) == 0) || (count ([getPos (leader _civ_grp), 4000] call F_getNearbyPlayers) == 0) || (time > _unit_ttl) )
+				(
+					GRLIB_global_stop == 1 ||
+					(diag_fps < 25) ||
+					({alive _x} count (units _civ_grp) == 0) ||
+					(round (speed (leader _civ_grp)) == 0) ||
+					([getPos (leader _civ_grp), 3500, GRLIB_side_friendly] call F_getUnitsCount == 0) ||
+					(time > _unit_ttl)
+				)
 			};
 
 			// Cleanup

@@ -3,7 +3,6 @@ params [ "_sector", "_patrol_type" ];
 if (_sector in active_sectors) exitWith {};
 private _grp = grpNull;
 private _vehicle = objNull;
-private _duration = 45 * 60;
 
 // Create Infantry
 if (_patrol_type == 1) then {
@@ -28,13 +27,20 @@ if ( local _grp ) then {
 };
 
 // Wait
-private _timeout = round (time + _duration);
-while { GRLIB_global_stop == 0 && ({alive _x} count (units _grp) > 0) && time < _timeout } do {
+private _unit_ttl = round (time + 1800);
+waitUntil {
     sleep 30;
+    (
+        GRLIB_global_stop == 1 ||
+        (diag_fps < 25) ||
+        ({alive _x} count (units _grp) == 0) ||
+        ([getPos (leader _grp), 3500, GRLIB_side_friendly] call F_getUnitsCount == 0) ||
+        (time > _unit_ttl)
+    )
 };
 
 // Cleanup
-waitUntil { sleep 10; GRLIB_global_stop == 1 || [markerpos _sector, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0 };
+waitUntil { sleep 10; (GRLIB_global_stop == 1 || [markerPos _sector, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
 { 
     if (!isNull objectParent _x) then { [vehicle _x] call clean_vehicle };
     deleteVehicle _x;
