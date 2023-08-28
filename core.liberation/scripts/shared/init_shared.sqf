@@ -52,7 +52,8 @@ remote_call_fireworks = compileFinal preprocessFileLineNumbers "scripts\client\r
 
 // Vehicle Color
 [] execVM "addons\VAM\RPT_init.sqf";
-RPT_fnc_TextureVehicle = compileFinal preprocessFileLineNumbers "addons\VAM\fn_textureVehicle.sqf";
+RPT_fnc_ResetVehicle = compileFinal preprocessFileLineNumbers "addons\VAM\fn_resetVehicle.sqf";
 RPT_fnc_CompoVehicle = compileFinal preprocessFileLineNumbers "addons\VAM\fn_compVehicle.sqf";
+RPT_fnc_TextureVehicle = compileFinal preprocessFileLineNumbers "addons\VAM\fn_textureVehicle.sqf";
 fnc_VAM_common_camo = compileFinal preprocessFileLineNumbers "addons\VAM\vehicles\fnc_VAM_common_camo.sqf";
 fnc_VAM_common_comp = compileFinal preprocessFileLineNumbers "addons\VAM\vehicles\fnc_VAM_common_comp.sqf";

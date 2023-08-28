@@ -31,5 +31,6 @@ switch (_cmd) do {
 		_vehicle setVehicleLock "UNLOCKED";
 		_vehicle setVariable ["R3F_LOG_disabled", false, true];
 		_vehicle setVariable ["GRLIB_vehicle_owner", "", true];
+		[_vehicle] call RPT_fnc_ResetVehicle;
 	};
 };

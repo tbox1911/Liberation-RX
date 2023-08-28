@@ -1,4 +1,5 @@
 params ["_vehicle"];
+
 if (isNil "_vehicle") exitWith {};
 
 if (!([player, _vehicle] call is_owner)) exitWith { hintSilent "Wrong Vehicle Owner.\nAccess is Denied !" };

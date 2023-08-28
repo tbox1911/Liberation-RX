@@ -16,16 +16,13 @@ if !(isNull _unit) then {
 	private _my_dog = _unit getVariable ["my_dog", nil];
 	if (!isNil "_my_dog") then { deleteVehicle _my_dog };
 
-	// Unlock Car too Far
+	// Abandon Car too Far
 	private _cleanveh = [vehicles, {
 		_x getVariable ["GRLIB_vehicle_owner", ""] == _uid &&
 		!([_x, "FOB", GRLIB_fob_range] call F_check_near)
 	}] call BIS_fnc_conditionalSelect;
 
-	{
-		_x setVariable ["GRLIB_vehicle_owner", "", true];
-		[_x, "unlock"] call F_vehicleLock;
-	} forEach _cleanveh;
+	{ [_x, "abandon"] call F_vehicleLock } forEach _cleanveh;
 
 	// Untow vehicle near FOB
 	private _towveh = [vehicles, {
