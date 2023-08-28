@@ -6,14 +6,11 @@ private _uid = getPlayerUID player;
 private _prev_owner = _vehicle getVariable ["GRLIB_vehicle_owner", ""];
 
 if (local _vehicle) then {
-    [_vehicle, "lock"] call F_vehicleLock;
+    [_vehicle, "lock", _uid] call F_vehicleLock;
 } else {
-	[_vehicle, "lock"] remoteExec ["vehicle_lock_remote_call", 2];
+	[_vehicle, "lock", _uid] remoteExec ["vehicle_lock_remote_call", 2];
     sleep 1;
 };
-
-_vehicle setVariable ["GRLIB_vehicle_owner", _uid, true];
-_vehicle setVariable ["GRLIB_counter_TTL", nil, true];
 
 {
     if !(_x getVariable ["GRLIB_vehicle_owner", ""] in ["", "public", "server"]) then {
