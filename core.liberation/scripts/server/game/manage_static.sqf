@@ -17,12 +17,6 @@ while { true } do {
             [_static, false] remoteExec ["allowDamage", _owner];
         };
 
-        // OPFor infinite Ammo
-        if (side _static == GRLIB_side_enemy) then {
-            //_ammo = [_veh] call F_getVehicleAmmoDef;
-            _static setVehicleAmmo 1;
-        };
-
         // Correct static position
         if ((vectorUp _static) select 2 < 0.60) then {
             _static setpos [(getposATL _static) select 0,(getposATL _static) select 1, 0.5];
@@ -36,34 +30,24 @@ while { true } do {
         };
 
         // Keep gunner
-        if (side group _static == GRLIB_side_enemy) then {
-            private _gunner = gunner _static;
-            private _gunner_list = _static getVariable ["GRLIB_vehicle_gunner", []];
-            if (isNull _gunner) then {
-                {
-                    if (alive _x) exitWith {
-                        [_x] orderGetIn true ;
-                        _x assignAsGunner _static;
-                        _x moveInGunner _static;
-                    };
-                } forEach _gunner_list;
-            } else {
-                // Nearest enemy
-                [_gunner] spawn F_getNearestEnemy;
-            };
+        private _gunner = gunner _static;
+        private _gunner_list = _static getVariable ["GRLIB_vehicle_gunner", []];
+        if (isNull _gunner) then {
+            {
+                if (alive _x) exitWith {
+                    [_x] orderGetIn true;
+                    _x assignAsGunner _static;
+                    _x moveInGunner _static;
+                    sleep 1;
+                };
+            } forEach _gunner_list;
         };
 
-        if (side group _static == GRLIB_side_resistance) then {
-            private _gunner = gunner _static;
-            private _gunner_list = _static getVariable ["GRLIB_vehicle_gunner", []];
-            if (isNull _gunner) then {
-                {
-                    if (alive _x) exitWith {
-                        [_x] orderGetIn true;
-                        _x assignAsGunner _static;
-                        _x moveInGunner _static;
-                    };
-                } forEach _gunner_list;
+        // OPFor infinite Ammo
+        if (typeOf _static in opfor_statics) then {
+            _static setVehicleAmmo 1;
+            if !(isNull _gunner) then {
+                [_gunner] spawn F_getNearestEnemy;
             };
         };
 
