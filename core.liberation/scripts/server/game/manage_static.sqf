@@ -49,7 +49,7 @@ while { true } do {
                 } forEach _gunner_list;
             } else {
                 // Nearest enemy
-                [_gunner] call F_getNearestEnemy;
+                [_gunner] spawn F_getNearestEnemy;
             };
         };
 
@@ -93,5 +93,6 @@ while { true } do {
         } forEach _all_light;
         _old_day = _day;
     };
+
 	sleep 20;
 };

@@ -1,9 +1,6 @@
 params ["_unit"];
 
-private _enemy_side = GRLIB_side_enemy;
-if (side group _unit == GRLIB_side_enemy) then {
-    _enemy_side = GRLIB_side_friendly;
-};
+if (_unit getVariable ["last_engage_time", 0] > time) exitWith {};
 
 private _vehicle = objectParent _unit;
 private _vehicle_class = typeOf _vehicle;
@@ -12,7 +9,7 @@ private _scan_target = [];
 
 if (isNull _vehicle || (_vehicle_class isKindOf "StaticMortar")) then {
     // Default Mortar
-    _scan_target = [(units _enemy_side), { alive _x && _x distance2D _unit <= 2000 && isNull (objectParent _x)}] call BIS_fnc_conditionalSelect;
+    _scan_target = [(units GRLIB_side_friendly), { alive _x && _x distance2D _unit <= 2000 && isNull (objectParent _x)}] call BIS_fnc_conditionalSelect;
     _vehicle = _unit;
 } else {
     // Default for HMG, GMG
@@ -25,7 +22,7 @@ if (isNull _vehicle || (_vehicle_class isKindOf "StaticMortar")) then {
 
     _scan_target = [ ((getPosATL _vehicle) nearEntities [ _kind, _dist]), {
         alive _x &&
-        side group _x == _enemy_side &&
+        side group _x == GRLIB_side_friendly &&
         !(_x getVariable ['R3F_LOG_disabled', false])
     } ] call BIS_fnc_conditionalSelect;
 };
@@ -45,10 +42,12 @@ if (count (_scan_target) > 0) then {
     _unit doTarget _next_target;
     if (_vehicle_class isKindOf "StaticMortar") then {
         _vehicle fireAtTarget [_next_target];
-        sleep 15;
+        sleep 5;
+        _vehicle fireAtTarget [_next_target];
+        sleep 5;
+        _vehicle fireAtTarget [_next_target];
     };
+    _unit setVariable ["last_engage_time", round (time + (5 * 60))];
 } else {
     _unit doTarget objNull;
 };
-
-_next_target;
