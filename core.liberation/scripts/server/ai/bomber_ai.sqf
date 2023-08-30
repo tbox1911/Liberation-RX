@@ -56,9 +56,10 @@ while {alive _unit} do {
 			sleep 2.5;
 			playSound3D [getMissionPath "res\shout.ogg", _unit, false, getPosASL _unit, 5, 1, 500];
 			sleep 0.5;
-			{ deleteVehicle _x } forEach [_expl1,_expl2,_expl3];
 			if (alive _unit) then {
-				"Rocket_04_HE_F" createVehicle (getPosATL _unit);
+				{ _x setDamage 1 } forEach [_expl1,_expl2,_expl3];
+				"R_PG32V_F" createVehicle (getPosATL _unit);
+				{ deleteVehicle _x } forEach [_expl1,_expl2,_expl3];
 				deleteVehicle _unit;
 			};
 		};
