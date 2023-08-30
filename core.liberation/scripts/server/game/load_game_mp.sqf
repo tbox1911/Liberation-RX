@@ -230,26 +230,17 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
         };
 
         if ( _owner != "" ) then {
-            _nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
+			[_nextbuilding, "lock", _owner] call F_vehicleLock;
 			if ( _nextclass == huron_typename ) then {
             	_nextbuilding setVariable ["GRLIB_vehicle_ishuron", true, true];
 			};
         };
 
-		if ( _owner == "public" && _nextclass in GRLIB_Ammobox_keep ) then {
-			_nextbuilding setVariable ["R3F_LOG_disabled", true, true];
-		};
-
         if ( _nextclass in _vehicles_light ) then {
-			if (_nextclass iskindof "LandVehicle") then {
-				_nextbuilding setVehicleLock "LOCKED";
-				_nextbuilding setVariable ["R3F_LOG_disabled", true, true];
-			};
-
 			if ( _nextclass in list_static_weapons ) then {
-            	_nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
             	_nextbuilding setVariable ["R3F_LOG_disabled", false, true];
 				_nextbuilding setVehicleLock "DEFAULT";
+
 				if (_nextclass in static_vehicles_AI) then {
 					_nextbuilding setVehicleLock "LOCKEDPLAYER";
 					_nextbuilding addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1 }];
@@ -259,8 +250,6 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 				};
 			};
 			if ( _nextclass == playerbox_typename ) then {
-				_nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
-				_nextbuilding setVariable ["R3F_LOG_disabled", false, true];
 				_nextbuilding setVehicleLock "DEFAULT";
 				[_nextbuilding, _x select 5] call F_setCargo;
 			};
@@ -278,7 +267,6 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 
 				_nextbuilding allowCrewInImmobile [true, false];
 				_nextbuilding setUnloadInCombat [true, false];
-				[_nextbuilding, "lock"] call F_vehicleLock;
 
 				if (_color_name != "") then {
 					[_nextbuilding, _color_name] call RPT_fnc_TextureVehicle;
@@ -305,11 +293,6 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 				};
 			};
 		};
-
-        if ( _nextclass in uavs ) then {
-            _nextbuilding setVehicleLock "LOCKED";
-            _nextbuilding setVariable ["R3F_LOG_disabled", true, true];
-        };
 
         if ( _hascrew ) then {
             [ _nextbuilding ] call F_forceBluforCrew;
