@@ -4,18 +4,18 @@ if (isNull _vehicle) exitWith {};
 
 // Tracted
 private _tractor = _vehicle getVariable ["R3F_LOG_est_transporte_par", objNull];;
-if (!isNull _tractor) then {
+if (!isNull _tractor) exitWith {
 	_vehicle setVariable ["R3F_LOG_est_transporte_par", objNull, true];
 	_tractor setVariable ["R3F_LOG_remorque", objNull, true];
-	[_vehicle, "detachSetVelocity", [0, 0, 0.1]] call R3F_LOG_FNCT_exec_commande_MP;
-	//waitUntil { sleep 0.1; (isNull attachedTo _vehicle) };
+	detach _vehicle;
+	_vehicle setVelocity [0, 0, 0.1];
 };
 
 // Tractor
 private _tracted = _vehicle getVariable ["R3F_LOG_remorque", objNull];
-if (!isNull _tracted) then {
+if (!isNull _tracted) exitWith {
 	_tracted setVariable ["R3F_LOG_est_transporte_par", objNull, true];
 	_vehicle setVariable ["R3F_LOG_remorque", objNull, true];
-	[_tracted, "detachSetVelocity", [0, 0, 0.1]] call R3F_LOG_FNCT_exec_commande_MP;
-	//waitUntil { sleep 0.1; (isNull attachedTo _vehicle) };
+	detach _tracted;
+	_tracted setVelocity [0, 0, 0.1];
 };
