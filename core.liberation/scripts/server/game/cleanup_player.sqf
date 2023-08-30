@@ -31,13 +31,7 @@ if !(isNull _unit) then {
 		([_x, "FOB", GRLIB_sector_size] call F_check_near)
 	}] call BIS_fnc_conditionalSelect;
 
-	{
-		_towed = _x getVariable ["R3F_LOG_remorque", objNull];
-		_towed setVariable ["R3F_LOG_est_transporte_par", objNull, true];
-		_x setVariable ["R3F_LOG_remorque", objNull, true];
-		detach _towed;
-		_towed setVelocity [0, 0, 0.1];
-	} forEach _towveh;
+	{ [_x] call untow_vehicle } forEach _towveh;
 
 	// Remove Marker
 	deletemarker format ["PAR_marker_%1", _name];

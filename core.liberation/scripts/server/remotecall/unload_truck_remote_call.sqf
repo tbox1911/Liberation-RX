@@ -24,6 +24,7 @@ private [ "_next_box", "_next_pos" ];
 	_next_box = _x;
 	if (!isNull _next_box) then {
 		detach _next_box;
+		_next_box setVelocity [ 0,0,0 ];
 		waitUntil {sleep 0.1; isNull (attachedTo _x)};
 
 		_next_pos = [getPosATL _truck_to_unload, _offset, getdir _truck_to_unload] call BIS_fnc_relPos;

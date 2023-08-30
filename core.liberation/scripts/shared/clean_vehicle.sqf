@@ -8,14 +8,12 @@ if (_towed || _server_owned || (_blu_inside && !(typeOf _vehicle in uavs))) exit
 
 diag_log format [ "Cleanup vehicle %1 at %2", typeOf _vehicle, time ];
 
-// Detach
-detach _vehicle;
-sleep 0.2;
+// unTow
+[_vehicle] call untow_vehicle;
 
 // Delete R3F Cargo
 { deleteVehicle _x } forEach (_vehicle getVariable ["R3F_LOG_objets_charges", []]);
 _vehicle setVariable ["R3F_LOG_objets_charges", [], true];
-sleep 0.2;
 
 // Delete GRLIB Cargo
 private _truck_load = _vehicle getVariable ["GRLIB_ammo_truck_load", []];
@@ -32,7 +30,6 @@ if ( count _truck_load >= 1 ) then {
 		};
 	} foreach _truck_load;
 };
-sleep 0.2;
 
 //Delete A3 Cargo
 clearWeaponCargoGlobal _vehicle;
