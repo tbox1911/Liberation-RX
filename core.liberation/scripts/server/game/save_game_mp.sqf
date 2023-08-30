@@ -104,7 +104,7 @@ if ( GRLIB_endgame >= 1 ) then {
         private _compo = [];
 
         if ( _nextclass in _classnames_to_save_blu + all_hostile_classnames ) then {
-            if (side _x != GRLIB_side_enemy) then {
+            if (side group _x != GRLIB_side_enemy) then {
                 _owner = _x getVariable ["GRLIB_vehicle_owner", ""];
                 _hascrew = _x getVariable ["GRLIB_vehicle_manned", false];
                 if (_owner == "") then {
@@ -150,8 +150,6 @@ if ( GRLIB_endgame >= 1 ) then {
     private _buffer = [];
     {
         _uid = _x;
-        _unit = _uid call BIS_fnc_getUnitByUID;
-        [_unit, _uid] call save_context;
         _buffer = localNamespace getVariable [format ["player_context_%1", _uid], []];
         if (count _buffer > 0) then {
             _player_context pushBack _buffer;
