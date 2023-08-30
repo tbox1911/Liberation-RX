@@ -2,7 +2,7 @@ diag_log "--- Server Init start ---";
 
 // EventHandler
 addMissionEventHandler ['HandleDisconnect', {
-	params ["_unit", "_id", "_uid", "_name"];
+	params ["_unit"];
 	[_unit, true] call save_context;
 	[_unit] call cleanup_player;
 	if (count (AllPlayers - (entities "HeadlessClient_F")) == 0) then {
