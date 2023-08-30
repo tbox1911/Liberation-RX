@@ -151,10 +151,8 @@ if ( isServer ) then {
 		};
 
 	} else {
-		if (!GRLIB_ACE_enabled) then {
-			// unTow
-			[_unit] spawn untow_vehicle;
-		};
+		// unTow
+		[_unit] spawn untow_vehicle;
 
 		if ( (typeof _unit) in [Arsenal_typename, FOB_box_typename, FOB_truck_typename, foodbarrel_typename, waterbarrel_typename] ) exitWith {
 			sleep 30;
