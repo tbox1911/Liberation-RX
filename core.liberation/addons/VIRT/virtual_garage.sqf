@@ -28,6 +28,7 @@ while { dialog && alive player } do {
 			alive _x && (count (crew _x) == 0 || typeOf _x in uavs) &&
 			(_x distance2D lhd > GRLIB_fob_range) &&
 			_x getVariable ["GRLIB_vehicle_owner", ""] == _guid &&
+			(isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull])) &&
 			!(typeOf _x in _recycleable_blacklist)
 		}] call BIS_fnc_conditionalSelect;
 
