@@ -1,4 +1,4 @@
-params ["_unit"];
+params ["_unit", "_uid"];
 
 if (isNull _unit) exitWith {};
 
@@ -11,7 +11,6 @@ if (_name in ["HC1","HC2","HC3" ]) exitWith {
 	false;
 };
 
-private _uid = getPlayerUID _unit;
 diag_log format ["--- LRX Cleanup player %1 (%2)", _name, _uid];
 
 // Untow vehicle near FOB

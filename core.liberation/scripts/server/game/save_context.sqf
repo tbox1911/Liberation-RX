@@ -1,14 +1,12 @@
 //--- LRX Save player context (Stuff + Ais)
 if (!isServer) exitWith {};
-params ["_player", ["_delete",false]];
+params ["_player", "_uid", ["_delete",false]];
 
 if (isNull _player) exitWith {};
 
-private _uid = getPlayerUID _player;
 private _ai_group = [];
 private _loadout = [];
-private _puid = _player getVariable ["PAR_Grp_ID","1"];
-private _bros = (units _player + units GRLIB_side_civilian) select { (_x != _player) && (_x getVariable ["PAR_Grp_ID", "0"]) == _puid };
+private _bros = (units _player + units GRLIB_side_civilian) select { (_x != _player) && (_x getVariable ["PAR_Grp_ID", "0"]) == _uid };
 private _score = 0;
 {if ((_x select 0) == _uid) exitWith {_score = (_x select 1)}} forEach GRLIB_player_scores; 
 
