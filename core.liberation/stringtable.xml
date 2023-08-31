@@ -2006,6 +2006,7 @@
 		</Key>
 		<Key ID="STR_PARAMS_PATROLS">
 			<Original>Enable the Patrols Manager</Original>
+			<French>Activer le Gestionnaire de Patrouilles</French>
 		</Key>		
 		<Key ID="STR_PARAMS_CIVILIANS">
 			<Original>Enable the Civilian Manager</Original>
