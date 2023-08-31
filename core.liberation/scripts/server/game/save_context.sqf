@@ -6,7 +6,7 @@ if (isNull _player) exitWith {};
 
 private _ai_group = [];
 private _loadout = [];
-private _bros = (units _player + units GRLIB_side_civilian) select { (_x != _player) && (_x getVariable ["PAR_Grp_ID", "0"]) == _uid };
+private _bros = (units _player + units GRLIB_side_civilian) select { !(isPlayer _x) && (_x getVariable ["PAR_Grp_ID", "0"]) == format ["Bros_%1",_uid] };
 private _score = 0;
 {if ((_x select 0) == _uid) exitWith {_score = (_x select 1)}} forEach GRLIB_player_scores; 
 
