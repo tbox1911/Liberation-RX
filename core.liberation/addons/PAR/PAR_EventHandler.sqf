@@ -90,11 +90,13 @@ if (_unit == player) then {
 	};
 
 	// Unblock units
-	missionNamespace setVariable [
-	"BIS_fnc_addCommMenuItem_menu", [
+	private _actions = missionNamespace getVariable ["BIS_fnc_addCommMenuItem_menu", []];
+	private _id = (count _actions / 2) + 1;
+	_actions = _actions + [
 		["Do it !", true],
-		["Unblock unit.", [2], "", -5, [["expression", "[groupSelectedUnits player] spawn PAR_unblock_AI"]], "1", "1"]
-	]];
+		["Unblock unit.", [_id + 1], "", -5, [["expression", "[groupSelectedUnits player] spawn PAR_unblock_AI"]], str _id, str _id]
+	];
+	missionNamespace setVariable ["BIS_fnc_addCommMenuItem_menu", _actions];
 
 	// UI actions
 	inGameUISetEventHandler ["Action", "
