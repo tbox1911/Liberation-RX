@@ -32,7 +32,10 @@ _setupObjects =
 	_vehicle1 setVariable ["GRLIB_mission_AI", true, true];
 	_vehicle1 addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage }];
 	_grp = [_missionPos, 5, "guard"] call createCustomGroup;
-	{ _x moveInAny _vehicle1; [_x] joinSilent _aiGroup } forEach (units _grp);
+	{
+		_x moveInAny _vehicle1;
+		[_x] joinSilent _aiGroup;
+	} forEach (units _grp);
 	(driver _vehicle1) limitSpeed 50;
 	sleep 2;
 
@@ -124,15 +127,9 @@ _waitUntilCondition = {
 
 	if (_convoy_attacked && !_disembark_troops) then {
 		_disembark_troops = true;
-		{
-			[_x] spawn {
-				params ["_vehicle"];
-				doStop (driver _vehicle);
-				sleep 2;
-				[_aiGroup, _vehicle] spawn F_ejectGroup;
-			};
-		} foreach [_vehicle1, _vehicle2, _vehicle3];
-
+		{ doStop (driver _x) } foreach [_vehicle1, _vehicle2, _vehicle3];
+		sleep 2;
+		[_aiGroup, _vehicle] spawn F_ejectGroup;
 		_aiGroup setBehaviour "COMBAT";
 		_aiGroup setCombatMode "RED";
 		[_aiGroup, getPosATL _vip, 30] spawn add_defense_waypoints;
