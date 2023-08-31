@@ -45,7 +45,7 @@ waitUntil {sleep 1; !isNil "save_is_loaded" };
 
 for "_i" from 1 to 4 do {
 	// Start Permanent controller
-	private _init_sleep = ((2 + floor random 14) * 60);
+	private _init_sleep = ((5 + floor random 14) * 60);
 	while {_init_sleep > 0 && isNil "A3W_debug"} do { sleep 1; _init_sleep = _init_sleep - 1 };
 	diag_log format ["--- LRX A3W Starting Mission Controller #%1 at %2", _i, time];
 	if ((_i == 1) || (_i > 1 && isNil "A3W_debug")) then {
