@@ -13,8 +13,10 @@ if (!isPlayer _medic) then {
   _wnded setVariable ["PAR_BleedOutTimer", _bleedOut + PAR_BleedOutExtra, true];
   _medic setDir (_medic getDir _wnded);
   if (stance _medic == "PRONE") then {
+    _medic switchMove "ainvppnemstpslaywrfldnon_medicother";
     _medic playMoveNow "ainvppnemstpslaywrfldnon_medicother";
   } else {
+    _medic switchMove "ainvpknlmstpslaywrfldnon_medicother";
     _medic playMoveNow "ainvpknlmstpslaywrfldnon_medicother";
   };
   private _grbg = createVehicle [(selectRandom PAR_MedGarbage), getPos _wnded, [], 0, "CAN_COLLIDE"];
@@ -63,8 +65,8 @@ if (_wnded == player) then {
 };
 [_medic, _wnded] call PAR_fn_medicRelease;
 
-if (underwater vehicle _medic) then {_medic switchMove "";_medic playMoveNow ""};
-if (underwater vehicle _wnded) then {_wnded switchMove "";_wnded playMoveNow ""};
+if (underwater vehicle _medic) then {_medic switchMove ""};
+if (underwater vehicle _wnded) then {_wnded switchMove ""};
 
 [_wnded] spawn {
     params ["_unit"];

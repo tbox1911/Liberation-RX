@@ -14,7 +14,6 @@ if (isPlayer _unit) then {
 if (!isNil {_unit getVariable "PAR_busy"} || !isNil {_unit getVariable "PAR_heal"}) then {
   _unit setVariable ["PAR_busy", nil];
   _unit setVariable ["PAR_heal", nil];
-  _unit switchMove "";
 };
 
 _unit setVariable ["PAR_healed", nil];
@@ -26,9 +25,10 @@ if (GRLIB_disable_death_chat && isPlayer _unit) then {
     _channel enableChannel false;
   };
 };
+
+_unit switchMove "";
 _unit switchMove "AinjPpneMstpSnonWrflDnon";  // lay down
 _unit playMoveNow "AinjPpneMstpSnonWrflDnon";
- 
 sleep 7;
 
 [
