@@ -50,7 +50,7 @@ GRLIB_checkAction_Halo = {
 
 GRLIB_checkAction_Wreck = {
 	params ["_target", "_unit"];
-	(GRLIB_player_is_menuok && !(_target getVariable ['wreck_in_use', false]) && !(player getVariable ['salvage_wreck', false]))
+	(GRLIB_player_is_menuok && !(_target getVariable ['wreck_in_use', false]) && ({alive _x} count (crew _target) == 0) && !(player getVariable ['salvage_wreck', false]))
 };
 
 GRLIB_checkAction_Box = {
