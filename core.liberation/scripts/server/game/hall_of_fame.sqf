@@ -2,7 +2,7 @@ if (!isServer) exitWith {};
 private ["_HoF", "_max", "_info"];
 
 while {true} do {
-	sleep 1800;
+	sleep (25 * 60);
 	_max = 5;
 	if (count GRLIB_player_scores < _max) then {
 		_max = count GRLIB_player_scores;
