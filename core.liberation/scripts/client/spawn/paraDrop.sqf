@@ -28,5 +28,5 @@ if ( _backpack != "" && _backpack != "B_Parachute" ) then {
 		(backpackContainer _unit) setVariable ["GRLIB_mobile_respawn_bag", true, true];
 	};
 };
-_unit allowDamage true;
+
 _unit doFollow leader player;

@@ -135,8 +135,9 @@ if (_unit == player) then {
 		3 fadeMusic 0;
 		NRE_EarplugsActive = 0;
 		if (!GRLIB_ACE_enabled) then {
-			if ( (getPos _unit) select 2 >= 20 && !(_unit getVariable ["AR_Is_Rappelling",false]) ) then {
-				[_unit] spawn F_ejectUnit;
+			if ( (getPos _unit) select 2 >= 50 && !(_unit getVariable ["AR_Is_Rappelling",false]) && (backpack _unit != "B_Parachute")) then {
+				private _para = createVehicle ["Steerable_Parachute_F",(getPos _unit),[],0,'none'];
+				_unit moveInDriver _para;
 			};
 		};
 		[_unit] spawn {
