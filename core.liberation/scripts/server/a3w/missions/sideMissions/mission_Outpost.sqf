@@ -38,7 +38,14 @@ _setupObjects = {
 
 _waitUntilMarkerPos = nil;
 _waitUntilExec = nil;
-_waitUntilCondition = { ({alive _x} count (units _grpprisonners) == 0) };
+_waitUntilCondition = { 
+	private _ret = false;
+	if ({alive _x} count (units _grpprisonners) == 0) then {
+		_failedHintMessage = ["STR_OUTPOST_MESSAGE_FAIL", sideMissionColor];
+		_ret = true;
+	};
+	_ret;	
+};
 _waitUntilSuccessCondition = { ({side group _x == GRLIB_side_friendly} count (units _grpprisonners) > 0) };
 
 _failedExec = {

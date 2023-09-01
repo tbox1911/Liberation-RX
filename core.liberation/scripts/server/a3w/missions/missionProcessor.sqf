@@ -69,7 +69,7 @@ diag_log format ["A3W Side Mission%1 waiting to be finished: %2", _controllerSuf
 
 _failed = false;
 _complete = false;
-_startTime = diag_tickTime;
+_startTime = time;
 _oldAiCount = 0;
 
 if (isNil "_ignoreAiDeaths") then { _ignoreAiDeaths = false };
@@ -94,7 +94,7 @@ waitUntil {
 	if (_newAiCount < _oldAiCount) then {
 		// some units were killed, mission expiry will be reset to 20 mins if it's currently lower than that
 		_adjustTime = if (_missionTimeout < MISSION_TIMER_EXTENSION) then { MISSION_TIMER_EXTENSION - _missionTimeout } else { 0 };
-		_startTime = _startTime max (diag_tickTime - ((MISSION_TIMER_EXTENSION - _adjustTime) max 0));
+		_startTime = _startTime max (time - ((MISSION_TIMER_EXTENSION - _adjustTime) max 0));
 	};
 
 	_oldAiCount = _newAiCount;
@@ -102,9 +102,9 @@ waitUntil {
 	if (!isNull _leaderTemp) then { _leader = _leaderTemp }; // Update current leader
 	if (!isNil "_waitUntilMarkerPos") then { _marker setMarkerPos (call _waitUntilMarkerPos) };
 	if (!isNil "_waitUntilExec") then { call _waitUntilExec };
-	_marker setMarkerText format ["%1 - %2 min left", localize _missionType, round ((_missionTimeout - (diag_tickTime - _startTime)) /60)];
+	_marker setMarkerText format ["%1 - %2 min left", localize _missionType, round ((_missionTimeout - (time - _startTime)) /60)];
 
-	_expired = (diag_tickTime - _startTime >= _missionTimeout && ([_missionPos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount) == 0);
+	_expired = (time - _startTime >= _missionTimeout && ([_missionPos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount) == 0);
 	_failed = ((!isNil "_waitUntilCondition" && {call _waitUntilCondition}) || _expired);
 
 	if (!isNil "_waitUntilSuccessCondition" && {call _waitUntilSuccessCondition}) then {
@@ -178,3 +178,5 @@ deleteMarker _marker_zone;
 if (!isNil "_locationsArray") then {
 	[_locationsArray, _missionLocation, false] call setLocationState;
 };
+
+sleep 20;

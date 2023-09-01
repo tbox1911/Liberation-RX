@@ -7258,9 +7258,11 @@
 			<Original>Neutralize HVT</Original>
 		</Key>
 		<Key ID="STR_HOSTILE_OFFICER_MESSAGE1">
-			<Original>An enemy &lt;t color='%2'&gt;Officer&lt;/t&gt; makes ready to fly to their HQ in %1.&lt;br/&gt;He has vital information about us. We need to elimiate him!</Original>
+			<Original>An enemy &lt;t color='%2'&gt;Officer&lt;/t&gt; makes ready to fly to their HQ in %1.&lt;br/&gt;He has vital information about us. We need to elimiate him and his guards!</Original>
 		</Key>
-
+		<Key ID="STR_HOSTILE_OFFICER_MESSAGE2">
+			<Original>Congratualtion! The Officer has been eliminated, our informations are safe.</Original>
+		</Key>
 		<!-- mission_MeetResistance.sqf -->
 		<Key ID="STR_RESISTANCE">
 			<Original>The Resistance</Original>
@@ -7319,6 +7321,9 @@
 			<Chinesesimp>前哨站已被占领，干得好。</Chinesesimp>
 			<Chinese>前哨站已被佔領，幹得好。</Chinese>
 			<Czech>Základna byla dobyta, dobrá práce.</Czech>
+		</Key>
+		<Key ID="STR_OUTPOST_MESSAGE_FAIL">
+			<Original>&lt;t color='%1'&gt;FAILURE!&lt;/t&gt;&lt;br/&gt;You killed all the Prisoners...</Original>
 		</Key>
 
 		<!-- mission_SpecialDelivery.sqf -->
