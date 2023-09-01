@@ -101,8 +101,10 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 			private _sound = "A3\data_f_curator\sound\cfgsounds\air_raid.wss";
 			while { _sector in active_sectors } do {
 				for "_i" from 0 to (floor(random 4)) do {
-					playSound3D [_sound, _pos, false, AGLToASL _pos, 5, 1, 1000];
-					sleep (5 + floor(random 4));
+					if !(_sector in blufor_sectors) then {
+						playSound3D [_sound, _pos, false, AGLToASL _pos, 5, 1, 1000];
+						sleep (5 + floor(random 4));
+					};
 				};
 				sleep 60;
 			};
@@ -225,10 +227,11 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 				} else {
 					if ( ((random 100) <= 50) ) then { [_x] spawn bomber_ai };
 				};
+				_managed_units = _managed_units - [_x];
 			} foreach _enemy_left;
 			sleep 60;
 
-			active_sectors = active_sectors - [ _sector ];
+			active_sectors = active_sectors - [_sector];
 			publicVariable "active_sectors";
 			[ _sector ] spawn reinforcements_manager;
 		} else {

@@ -72,7 +72,10 @@ _isHidden = {
 
 // Get CounterStrik units
 _getTTLunits = {
-	[((units GRLIB_side_enemy) + vehicles), {alive _x && !(isNil {_x getVariable "GRLIB_counter_TTL"})}] call BIS_fnc_conditionalSelect;
+	[((units GRLIB_side_enemy) + vehicles), {
+		alive _x && 
+		!(isNil {_x getVariable "GRLIB_counter_TTL"})
+	}] call BIS_fnc_conditionalSelect;
 };
 
 //================================================================ CONFIG
