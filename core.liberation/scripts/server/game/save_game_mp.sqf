@@ -7,20 +7,6 @@ private _save_warmup = 300;
 if (time < _save_warmup && !_force) exitWith {diag_log format ["--- LRX MP Warmup (no save done), %1sec remaining...", round (_save_warmup - time)];};
 diag_log format ["--- LRX Save start at %1", time];
 
-private _classnames_to_save = [] + all_buildings_classnames;
-private _classnames_to_save_blu = [FOB_typename, FOB_outpost, FOB_sign, huron_typename] + all_friendly_classnames;
-{
-	_classnames_to_save_blu pushback (_x select 0);
-} foreach ind_recyclable;
-
-_classnames_to_save_blu = _classnames_to_save_blu arrayIntersect _classnames_to_save_blu;
-_classnames_to_save append (_classnames_to_save_blu + all_hostile_classnames);
-_classnames_to_save = _classnames_to_save arrayIntersect _classnames_to_save;
-
-private _vehicles_light = GRLIB_vehicle_blacklist + list_static_weapons + uavs + [mobile_respawn];
-{ _vehicles_light pushback (_x select 0) } foreach support_vehicles;
-_vehicles_light = _vehicles_light arrayIntersect _vehicles_light;
-
 if ( GRLIB_endgame >= 1 ) then {
     if (GRLIB_param_wipe_keepscore == 1) then {
         GRLIB_permissions = profileNamespace getVariable GRLIB_save_key select 12;
@@ -67,7 +53,7 @@ if ( GRLIB_endgame >= 1 ) then {
         _nextbuildings = [ _fobpos nearobjects (GRLIB_fob_range * 2), {
             ( getObjectType _x >= 8 ) &&
             ( !isSimpleObject _x ) &&
-            ((typeof _x) in _classnames_to_save ) &&
+            ((typeof _x) in GRLIB_classnames_to_save ) &&
             ( alive _x) &&
             ( speed vehicle _x < 5 ) &&
             ( isNull attachedTo _x ) &&
@@ -103,7 +89,7 @@ if ( GRLIB_endgame >= 1 ) then {
         private	_lst_grl = [];
         private _compo = [];
 
-        if ( _nextclass in _classnames_to_save_blu + all_hostile_classnames ) then {
+        if ( _nextclass in GRLIB_classnames_to_save_blu + all_hostile_classnames ) then {
             if (side group _x != GRLIB_side_enemy) then {
                 _owner = _x getVariable ["GRLIB_vehicle_owner", ""];
                 _hascrew = _x getVariable ["GRLIB_vehicle_manned", false];
@@ -115,7 +101,7 @@ if ( GRLIB_endgame >= 1 ) then {
                 };
 
                 if (_owner in _keep_score_id) then {
-                    if (_nextclass in _vehicles_light) then {
+                    if (_nextclass in GRLIB_vehicles_light) then {
                         if ( _nextclass == playerbox_typename ) then {
                             buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner, [_x] call F_getCargo ];
                         } else {
