@@ -250,6 +250,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 				};
 			};
 			if ( _nextclass == playerbox_typename ) then {
+				_nextbuilding setVariable ["R3F_LOG_disabled", false, true];
 				_nextbuilding setVehicleLock "DEFAULT";
 				[_nextbuilding, _x select 5] call F_setCargo;
 			};
