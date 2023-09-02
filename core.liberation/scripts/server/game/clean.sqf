@@ -74,6 +74,7 @@ _isHidden = {
 _getTTLunits = {
 	[((units GRLIB_side_enemy) + vehicles), {
 		alive _x && 
+		[_x] call is_abandoned &&
 		!(isNil {_x getVariable "GRLIB_counter_TTL"})
 	}] call BIS_fnc_conditionalSelect;
 };

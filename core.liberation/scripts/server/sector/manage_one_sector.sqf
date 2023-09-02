@@ -39,10 +39,7 @@ if ( GRLIB_adaptive_opfor ) then {
 if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector_size, GRLIB_side_friendly ] call F_getUnitsCount ) > 0 ) ) then {
 
 	if ( _sector in sectors_bigtown ) then {
-		_vehtospawn =
-		[ ( [] call F_getAdaptiveVehicle ) ,
-		(selectRandom militia_vehicles),
-		(selectRandom militia_vehicles)];
+		_vehtospawn = [ ([] call F_getAdaptiveVehicle), (selectRandom militia_vehicles), (selectRandom militia_vehicles)];
 		_infsquad = "militia";
 		_squad1 = ([] call F_getAdaptiveSquadComp);
 		_squad2 = ([] call F_getAdaptiveSquadComp);
@@ -52,9 +49,9 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 		if ( GRLIB_unitcap >= 1.5) then {
 			_squad4 = ([] call F_getAdaptiveSquadComp);
 		};
-		if(floor(random 100) > (66 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback (selectRandom militia_vehicles); };
-		if(floor(random 100) > (50 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback (selectRandom militia_vehicles); };
-		if(floor(random 100) > (33 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback ( [] call F_getAdaptiveVehicle ); };
+		if(floor(random 100) > (66 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback (selectRandom militia_vehicles) };
+		if(floor(random 100) > (50 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback (selectRandom militia_vehicles) };
+		if(floor(random 100) > (33 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback ([] call F_getAdaptiveVehicle) };
 		_spawncivs = true;
 
 		_defensecount = 2;
@@ -259,8 +256,10 @@ diag_log format ["End Defend Sector %1 at %2", _sector, time];
 
 // Cleanup
 waitUntil { sleep 10; (GRLIB_global_stop == 1 || [markerpos _sector, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
-{ 
-	if (!isNull objectParent _x) then { [vehicle _x] call clean_vehicle };
-	deleteVehicle _x;
-	sleep 0.1;
+{
+	if (_x isKindOf "CAManBase") then {
+		deleteVehicle _x;
+	} else {
+		[_x] call clean_vehicle;
+	};
 } forEach _managed_units;
