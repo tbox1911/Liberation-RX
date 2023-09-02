@@ -8,7 +8,6 @@ while { true } do {
 	closeDialog 0;
 	waitUntil {!dialog};
 
-	//_camobj = player;
 	_pos = positionCameraToWorld [0,0,-0.2];
 	_destpos = [getpos player select 0, getpos player select 1, (getpos player select 2) + 150];
 	_cam = "camera" camCreate _pos;
@@ -16,7 +15,7 @@ while { true } do {
 	_cam camSetFOV 1.0;
 	showCinemaBorder false;
 	if ( (date select 3) < 4 || (date select 3) >= 20 ) then { camUseNVG true; } else { camUseNVG false; };
-	//_cam camSetTarget _camobj;   //follow player
+	//_cam camSetTarget player;   		//follow player
 	_cam camSetTarget getpos player;	//static view
 
 	createDialog "deathscreen";
