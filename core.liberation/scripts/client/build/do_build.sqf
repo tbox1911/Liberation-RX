@@ -455,6 +455,8 @@ while { true } do {
 				if ( _classname in ["I_E_Truck_02_MRL_F"] ) then {
 					[_vehicle, ["EAF",1], true ] call BIS_fnc_initVehicle;
 				};
+
+				_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
 			};
 
 			// Automatic ReAmmo
