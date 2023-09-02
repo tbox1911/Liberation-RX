@@ -16,10 +16,10 @@ if (isPlayer _killer) then {
 };
 
 private _ret = _amountOfDamage;
-if (isPlayer _killer && _unit != _killer) then {
-	private _veh_unit = vehicle _unit;
-	private _veh_killer = vehicle _killer;
+private _veh_unit = vehicle _unit;
+private _veh_killer = vehicle _killer;
 
+if (isPlayer _killer && _unit != _killer) then {
 	// OpFor in vehicle
 	if (_veh_unit != _unit && _veh_killer == _killer && round (_killer distance2D _unit) <= 2) then {
 		if ( _unit getVariable ["GRLIB_isProtected", 0] < time ) then {
@@ -32,6 +32,10 @@ if (isPlayer _killer && _unit != _killer) then {
 		};
 		_ret = 0;
 	};
+};
+
+if (_veh_unit isKindOf "AllVehicles" && damage _veh_unit >= 0.80) then {
+	{ [_x, false] spawn F_ejectUnit} forEach (crew _veh_unit);	
 };
 
 _ret;
