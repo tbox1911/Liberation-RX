@@ -169,13 +169,12 @@ if (_unit == player) then {
 		_unit addEventHandler ["HandleDamage", {
 			params ["_unit","","_dam"];
 			_veh = objectParent _unit;
-			if (!(isNull _veh) && damage _veh > 0.8) then {[_veh, _unit, true] spawn PAR_fn_eject};
 
 			private _isNotWounded = !(_unit getVariable ["PAR_wounded", false]);
 			if (_isNotWounded && _dam >= 0.86) then {
-				if (!isNull _veh) then {[_veh, _unit] spawn PAR_fn_eject};
-				_unit allowDamage false;
 				_unit setVariable ["PAR_wounded", true];
+				if (!isNull _veh) then {[_unit, _veh] spawn PAR_fn_eject};
+				_unit allowDamage false;
 				_unit setUnconscious true;
 				_unit setVariable ["PAR_BleedOutTimer", round(time + PAR_BleedOut), true];
 				[_unit] spawn PAR_fn_unconscious;

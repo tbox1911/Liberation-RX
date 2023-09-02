@@ -1,5 +1,8 @@
 params ["_unit", ["_slow", true]];
 if (isNull _unit) exitWith {};
+if ((vehicle _unit) iskindof "Steerable_Parachute_F") exitWith {};
+if (isNull objectParent _unit) exitWith {};
+
 if (!local _unit) exitWith {
 	if (isServer) then {
 		[_unit] remoteExec ["F_ejectUnit", owner _unit];
@@ -15,7 +18,6 @@ if (_slow) then { sleep 2 };
 moveOut _unit;
 sleep 1;
 if (!alive _unit) exitWith {};
-if ((vehicle _unit) iskindof "Steerable_Parachute_F") exitWith {};
 
 if (getPos _unit select 2 >= 50) then {
 	_unit setPos (getPos _unit vectorAdd [([[-10,0,10], 3] call F_getRND), ([[-10,0,10], 3] call F_getRND), 0]);

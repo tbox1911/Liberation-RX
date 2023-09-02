@@ -178,10 +178,8 @@ PAR_HandleDamage_EH = {
 		};
 	};
 
-	if (!(isNull _veh_unit) && damage _veh_unit > 0.8) then {[_veh_unit, _unit, true] spawn PAR_fn_eject};
-
 	if ( _isNotWounded && _amountOfDamage >= 0.86) then {
-		if (!(isNull _veh_unit)) then {[_veh_unit, _unit] spawn PAR_fn_eject};		
+		if (!(isNull _veh_unit)) then {[_unit, _veh_unit] spawn PAR_fn_eject};		
 		_unit setVariable ["PAR_wounded", true];
 		_unit setVariable ["PAR_isUnconscious", 1, true];
 		_unit setCaptive true;
