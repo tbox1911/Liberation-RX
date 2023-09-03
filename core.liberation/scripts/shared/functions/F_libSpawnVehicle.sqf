@@ -30,7 +30,7 @@ if ( count _spawnpos == 0 ) then {
 	_spawnpos = _sectorpos findEmptyPosition [0, _radius, _classname];
 };
 
-if ( count _spawnpos == 0 ) exitWith { diag_log format ["--- LRX Error: No place to build vehicle %1 at position %2", _classname, _sectorpos]; objNull };
+if ( count _spawnpos == 0 ) exitWith { diag_log format ["--- LRX Error: Cannot find place to build vehicle %1 at position %2", _classname, _sectorpos]; objNull };
 
 if ( _classname isKindOf "Air" ) then {
 	if ( _side == GRLIB_side_civilian ) then { _airveh_alt = 150 };
@@ -44,8 +44,13 @@ if ( _classname isKindOf "Air" ) then {
 			_classname = selectRandom civilian_boats;
 		};
 	};
-	_vehicle = createVehicle [_classname, _spawnpos, [], 0, "NONE"];
+	if (!isNull _classname) then {
+		_vehicle = createVehicle [_classname, _spawnpos, [], 0, "NONE"];
+	};
 };
+
+if ( isNull _vehicle ) exitWith { diag_log format ["--- LRX Error: Cannot build vehicle %1 at position %2", _classname, _sectorpos]; objNull };
+
 _vehicle allowDamage false;
 
 if ( _vehicle isKindOf "Air" ) then {

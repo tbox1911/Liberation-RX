@@ -33,7 +33,7 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 //Sunken Supply
 _mission_name = "mission_SunkenSupplies";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
-	if (_spawn_place_water >= 1) then {
+	if (_spawn_place_water >= 1 && count opfor_boats >= 1) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;
