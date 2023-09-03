@@ -9,7 +9,7 @@ if ( isNil "_liberated_sector" ) then {
 	_spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max] call F_findOpforSpawnPoint;
 	_objective_pos = ([markerpos _spawn_marker] call F_getNearestBluforObjective) select 0;
 } else {
-	_spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max, true, _liberated_sector] call F_findOpforSpawnPoint;
+	_spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max, true, markerPos _liberated_sector] call F_findOpforSpawnPoint;
 	_objective_pos = markerPos _liberated_sector;
 	if ((markerPos _spawn_marker) distance2D _objective_pos > GRLIB_spawn_max) then {
 		_spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max] call F_findOpforSpawnPoint;

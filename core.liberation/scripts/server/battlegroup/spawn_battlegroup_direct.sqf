@@ -4,7 +4,7 @@ params ["_objectivepos", "_intensity"];
 diag_log format ["Spawn Direct BattlegGroup level %1 at %2", _intensity, time];
 
 private _bg_groups = [];
-private _spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max, true] call F_findOpforSpawnPoint;
+private _spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max, true, _objectivepos] call F_findOpforSpawnPoint;
 private _vehicle_pool = opfor_battlegroup_vehicles;
 if ( _intensity == 1 ) then {
 	_vehicle_pool = opfor_battlegroup_vehicles_low_intensity;

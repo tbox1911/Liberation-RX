@@ -1,4 +1,4 @@
-params [ "_mindist", "_maxdist", ["_try_nearest", true], ["_spawn_target", ""] ];
+params [ "_mindist", "_maxdist", ["_try_nearest", true], ["_spawn_target", zeropos] ];
 private [ "_increment", "_opfor_spawn_point", "_all_possible_sectors", "_filtered_possible_sectors", "_current_sector", "_accept_current_sector", "_current_sector_distance", "_nearest_possible_sectors" ];
 
 _increment = 500;
@@ -58,7 +58,7 @@ _filtered_possible_sectors = [];
 	};
 
 	if ( _accept_current_sector ) then {
-		if ( ( [markerpos _current_sector, _mindist, GRLIB_side_friendly ] call F_getUnitsCount ) != 0 ) then {
+		if ( ([markerpos _current_sector, _mindist, GRLIB_side_friendly] call F_getUnitsCount) != 0 ) then {
 			_accept_current_sector = false;
 		};
 	};
@@ -95,10 +95,10 @@ if ( count _filtered_possible_sectors != 0 ) then {
 	};
 
 	if ( count _nearest_possible_sectors != 0 ) then {
-		if ( _spawn_target == '' ) then {
+		if (_spawn_target isEqualTo zeropos)  then {
 			_opfor_spawn_point = selectRandom _nearest_possible_sectors;
 		} else {
-			_opfor_spawn_point = ( [ _nearest_possible_sectors , [ _spawn_target ] , { ( getmarkerpos _input0 ) distance ( getmarkerpos _x ) } , 'ASCEND' ] call BIS_fnc_sortBy ) select 0;
+			_opfor_spawn_point = ([_nearest_possible_sectors, [_spawn_target], {_input0 distance2D (getmarkerPos _x)}, 'ASCEND'] call BIS_fnc_sortBy) select 0;
 		};
 	};
 };
