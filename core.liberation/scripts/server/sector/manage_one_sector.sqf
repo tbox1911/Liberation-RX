@@ -207,12 +207,14 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 	[_sectorpos] spawn {
 		params ["_pos"];
 		sleep (300 + floor(random 60));
-		if ([_pos, GRLIB_capture_size] call F_sectorOwnership != GRLIB_side_friendly) exitWith {};
-		[_pos, true] spawn send_paratroopers;
+		if (([_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount) == 0) exitWith {};
+		if ( combat_readiness > 50 ) then { [_pos, true] spawn send_paratroopers };
+		sleep 100;
+		if (([_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount) == 0) exitWith {};
+		if ( combat_readiness > 80 ) then { [_pos, true] spawn send_paratroopers };
 	};
 
 	while { !_stopit } do {
-
 		if ([_sectorpos, _local_capture_size] call F_sectorOwnership == GRLIB_side_friendly) then {
 			[ _sector ] spawn sector_liberated_remote_call;
 			_stopit = true;
