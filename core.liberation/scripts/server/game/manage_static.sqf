@@ -37,7 +37,7 @@ while { true } do {
                 if (alive _x) exitWith {
                     [_x] orderGetIn true;
                     _x assignAsGunner _static;
-                    _x moveInGunner _static;
+                    //_x moveInGunner _static;
                     sleep 1;
                 };
             } forEach _gunner_list;
