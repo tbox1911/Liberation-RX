@@ -98,8 +98,6 @@ _successExec =
 {	
 	// Mission completed
 	_successHintMessage = "STR_HOSTILE_OFFICER_MESSAGE2";
-	[_vehicles] spawn cleanMissionVehicles;
-	//{if (alive _x) then { deleteVehicle _x }} forEach units _aiGroup;
 	{{deleteVehicle _x} forEach (units _x)} forEach _civilians;
 	if (combat_readiness > 20) then { combat_readiness = combat_readiness - 15 };
 };
