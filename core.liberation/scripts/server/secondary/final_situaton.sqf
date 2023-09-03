@@ -18,6 +18,9 @@ publicVariable "GRLIB_global_stop";
 
 [] remoteExec ["remote_call_final_fight", 0];
 
+{ deleteVehicle _x } foreach (units GRLIB_SELL_Group);
+{ deleteVehicle _x } foreach (units GRLIB_SHOP_Group);
+
 // weather cloudy
 [] spawn {
 	while { overcast <= 0.85 } do {
@@ -37,7 +40,8 @@ _marker setMarkerSizeLocal [1.25, 1.25];
 _marker setMarkerColorLocal GRLIB_color_enemy_bright;
 _marker setMarkerText "FINAL FIGHT";
 sectors_allSectors = sectors_allSectors + [_marker];
-blufor_sectors = blufor_sectors + [_marker];
+blufor_sectors = [_marker];
+GRLIB_secondary_used_positions pushbackUnique _marker;
 
 // spawn nuclear device + static + def squad
 private _base_output = [_spawnpos, false, true] call createOutpost;
@@ -77,8 +81,8 @@ sleep 60;
 while { _continue } do {
 	combat_readiness = 100;
 	_opfor_count = [] call F_opforCap;
-	if ((time > _last_send || _opfor_count < 30) && _opfor_count < GRLIB_sector_cap ) then {
-		_last_send = round (time + 600);
+	if ((time > _last_send || _opfor_count < 50) && _opfor_count < GRLIB_sector_cap ) then {
+		_last_send = round (time + 300);
 		_target = objNull;
 		while { isNull _target } do {
 			_target = selectRandom ((units GRLIB_side_friendly) select { _x distance2D lhd > GRLIB_fob_range && !(typeOf (vehicle _x) in uavs) });
@@ -86,21 +90,20 @@ while { _continue } do {
 			//if (isNil "_target") then { _target = selectRandom (units GRLIB_FOB_Group) };
 		};
 
+		[getPosATL _target] spawn send_paratroopers;
 		if (_target distance2D opfor_target > GRLIB_spawn_max) then {
-			if (floor random 2 == 0) then {
-				[getPosATL _target] spawn send_paratroopers;
-			} else {
-				[getPosATL _target, GRLIB_side_enemy, 3] spawn spawn_air;
-			};
-		} else {
-			_int = floor random 3;
-			if (_int == 0) then {
-				[getPosATL _target] spawn send_paratroopers;
-			} else {
-				[getPosATL _target, _int] spawn spawn_battlegroup_direct;
-			};
-			[_int] remoteExec ["BIS_fnc_earthquake", 0];
+			[getPosATL _target, GRLIB_side_enemy, 3] spawn spawn_air;
 		};
+
+		_int = floor random 3;
+		switch (_int) do {
+			case 0: { [_spawnpos] spawn send_paratroopers };
+			case 1: { [_spawnpos, _int] spawn spawn_battlegroup_direct };
+			case 2: { [_spawnpos, GRLIB_side_enemy, 3] spawn spawn_air };
+		};
+
+		[_int] remoteExec ["BIS_fnc_earthquake", 0];
+
 		sleep 5;
 	};
 
@@ -137,7 +140,6 @@ if (_success) then {
 	_opfor_target_assembled setPosWorld _savedpos;
 	GRLIB_endgame = 2;
 	publicVariable "GRLIB_endgame";
-	[] call save_game_mp;
 	sleep 100;
 	endMission "END";
 	forceEnd;
