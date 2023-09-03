@@ -17,7 +17,7 @@ taxi_land = {
 			_vehicle setPos (getPosATL _vehicle vectorAdd [0, 0, -2]);
 			_vehicle land "LAND";
 			hintSilent localize "STR_TAXI_LANDING";
-			sleep 5;
+			sleep 10;
 		};
 		(_alt <= 3 || time > _stop);
 	};
