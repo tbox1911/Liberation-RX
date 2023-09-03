@@ -13,5 +13,5 @@ while { true } do {
 		if ( overcast > 0.8 ) then { 0 setRain 0.4; 0 setGusts 0.4 }; // Removed heavy rain due to severe fps issues
 		_old_weather = chosen_weather;
 	};
-	sleep 60;
+	sleep 300;
 };
