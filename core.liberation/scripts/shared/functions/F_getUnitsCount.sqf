@@ -18,7 +18,7 @@ _infantrycount2 = {
 } count units GRLIB_side_civilian;
 
 _countedvehicles =  [
-    (_position nearEntities [ ["Car", "Tank", "Air", "Ship"], _distance]), 
+    (_position nearEntities [["Car", "Tank", "Air", "Ship", "StaticWeapon"], _distance]), 
     {
         (alive _x) &&
         (_x distance2D lhd > GRLIB_fob_range) &&
