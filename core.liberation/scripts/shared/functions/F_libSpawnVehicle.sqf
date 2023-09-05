@@ -39,17 +39,20 @@ if ( _classname isKindOf "Air" ) then {
 } else {
 	_spawnpos set [2, 0.5];
 	if (surfaceIsWater _spawnpos && !(_classname isKindOf "Ship")) then {
-		_classname = selectRandom opfor_boats;
-		if ( _side == GRLIB_side_civilian ) then {
+		_classname = "";
+		if (count opfor_boats >= 1 && _side == GRLIB_side_enemy) then {
+			_classname = selectRandom opfor_boats;
+		};
+		if (count civilian_boats >= 1 && _side == GRLIB_side_civilian) then {
 			_classname = selectRandom civilian_boats;
 		};
 	};
-	if (!isNull _classname) then {
+	if (_classname != "") then {
 		_vehicle = createVehicle [_classname, _spawnpos, [], 0, "NONE"];
 	};
 };
 
-if ( isNull _vehicle ) exitWith { diag_log format ["--- LRX Error: Cannot build vehicle %1 at position %2", _classname, _sectorpos]; objNull };
+if ( isNull _vehicle ) exitWith { diag_log format ["--- LRX Error: Cannot build vehicle at position %1", _sectorpos]; objNull };
 
 _vehicle allowDamage false;
 
