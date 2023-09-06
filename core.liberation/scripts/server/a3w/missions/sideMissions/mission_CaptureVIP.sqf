@@ -16,13 +16,14 @@ _setupVars =
 
 _setupObjects =
 {
-	private _citylist = ((sectors_bigtown select {(_x in blufor_sectors)}) apply {[_x, -1, markerText _x]});
-	_missionPos = markerPos ((selectRandom _citylist) select 0);
-	if (isNil "_missionPos") exitWith { 
-		diag_log format ["--- LRX Error: side mission VIP, cannot find spawn"];
+	private _citylist = (([] call cityList) call BIS_fnc_arrayShuffle) select [0, 3];
+
+	if (count _citylist < 3) exitWith { 
+		diag_log format ["--- LRX Error: side mission VIP, cannot find spawn or path"];
 		false;
 	};
 
+	_missionPos = markerPos (_citylist select 0 select 0);
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 
 	// veh1 + squad
@@ -76,7 +77,6 @@ _setupObjects =
 
 	// behaviour on waypoints
 	[_aiGroup] call F_deleteWaypoints;
-	_citylist = (_citylist call BIS_fnc_arrayShuffle) select [0, 3];
 
 	{
 		_waypoint = _aiGroup addWaypoint [markerPos (_x select 0), 0];
@@ -86,6 +86,8 @@ _setupObjects =
 		_waypoint setWaypointBehaviour "SAFE";
 		_waypoint setWaypointFormation "COLUMN";
 	} forEach _citylist;
+	_waypoint = _aiGroup addWaypoint [_missionPos, 0];
+	_waypoint setWaypointType "CYCLE";
 
 	sleep 15;
 	_missionPos = getPosATL leader _aiGroup;
