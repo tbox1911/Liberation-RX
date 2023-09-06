@@ -4,7 +4,7 @@ private ["_waypoint", "_nearset_fob_name"];
 while { ({alive _x} count (units _grp) > 0) && ( GRLIB_endgame == 0 ) } do {
 
 	if (GRLIB_global_stop == 0) then {
-		private _blufor = [_objective_pos, GRLIB_capture_size, GRLIB_side_friendly] call F_getUnitsCount;
+		private _blufor = [_objective_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount;
 
 		if (_blufor == 0) then {
 			private _info = [_objective_pos, true] call F_getNearestBluforObjective;
