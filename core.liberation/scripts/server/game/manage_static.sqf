@@ -44,7 +44,7 @@ while { true } do {
         };
 
         // OPFor infinite Ammo
-        if (typeOf _static in opfor_statics) then {
+        if (typeOf _static in opfor_statics && side group _gunner == GRLIB_side_enemy) then {
             _static setVehicleAmmo 1;
             if !(isNull _gunner) then {
                 [_gunner] spawn F_getNearestEnemy;
