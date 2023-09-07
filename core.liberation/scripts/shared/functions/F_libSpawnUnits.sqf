@@ -49,7 +49,7 @@ private ["_unit", "_backpack"];
 			};
 
 			if (_type == "defender") then {
-				_unit setVariable ["GRLIB_mission_AI", true, true];
+				_unit setVariable ["PAR_Grp_ID", "server", true];
 			};
 		} else {
 			diag_log format ["--- LRX Error: Cannot create unit %1 at position %2", _x, _spawnpos];
