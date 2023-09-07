@@ -27,12 +27,8 @@ if ( _countblufor_ownership == 0 ) then {
 
 //radio is down
 if ( [_thatpos, GRLIB_side_enemy, GRLIB_capture_size] call F_getNearestTower != "" ) then {
-	private _towers = [ nearestObjects [ _thatpos, [Radio_tower], 25], {
-		alive _x &&
-		(_x getVariable ['GRLIB_Radio_Tower', false]) 
-	}] call BIS_fnc_conditionalSelect;
-
-	if (count _towers > 0) then {
+	private _towers = { (alive _x) && (_x getVariable ['GRLIB_Radio_Tower', false]) } count (nearestObjects [_thatpos, [Radio_tower], 25]);
+	if (_towers > 0) then {
 		_sectorside = GRLIB_side_enemy;
 	};
 };
