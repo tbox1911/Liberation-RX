@@ -9,7 +9,7 @@ private [
 
 while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	sleep (30 + floor(random 30));
-	while { [] call F_opforCap > GRLIB_patrol_cap || (diag_fps < 35.0) } do {
+	while { opforcap > GRLIB_patrol_cap || (diag_fps < 35.0) } do {
 		sleep (30 + floor(random 30));
 	};
 

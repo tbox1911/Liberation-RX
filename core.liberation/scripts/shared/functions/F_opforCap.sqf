@@ -1,1 +1,0 @@
-count (units GRLIB_side_enemy)

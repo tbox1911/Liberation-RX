@@ -80,8 +80,8 @@ sleep 60;
 
 while { _continue } do {
 	combat_readiness = 100;
-	_opfor_count = [] call F_opforCap;
-	if ((time > _last_send || _opfor_count < 50) && _opfor_count < GRLIB_sector_cap ) then {
+
+	if ((time > _last_send || opforcap < 50) && opforcap < GRLIB_sector_cap ) then {
 		_last_send = round (time + 300);
 		_target = objNull;
 		while { isNull _target } do {

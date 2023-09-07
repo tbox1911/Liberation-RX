@@ -46,7 +46,7 @@ if (_spawn_marker != "") then {
 		[_nextgrp, _objective_pos] spawn battlegroup_ai;
 		{ _x setVariable ["GRLIB_counter_TTL", round(time + 3600)] } forEach (units _nextgrp);
 		_bg_groups pushback _nextgrp;
-		if ( ( _x in opfor_troup_transports_truck + opfor_troup_transports_heli) && ([] call F_opforCap < GRLIB_battlegroup_cap)) then {
+		if ( ( _x in opfor_troup_transports_truck + opfor_troup_transports_heli) && (opforcap < GRLIB_battlegroup_cap)) then {
 			[_vehicle, _objective_pos] spawn troup_transport;
 		};
 		sleep 2;

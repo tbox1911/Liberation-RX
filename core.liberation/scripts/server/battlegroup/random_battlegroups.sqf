@@ -13,7 +13,7 @@ while { GRLIB_csat_aggressivity > 0.9 && GRLIB_endgame == 0 && GRLIB_global_stop
 		waitUntil { sleep 5; time > ( GRLIB_last_battlegroup_time + (2100 / GRLIB_csat_aggressivity)) };
 	};
 
-	if (([] call F_opforCap < GRLIB_battlegroup_cap) && (combat_readiness >= 75) && (diag_fps > 30.0))  then {
+	if ((opforcap < GRLIB_battlegroup_cap) && (combat_readiness >= 75) && (diag_fps > 30.0))  then {
 		[] spawn spawn_battlegroup;
 	};
 };

@@ -56,7 +56,6 @@ F_libSpawnUnits = compileFinal preprocessFileLineNumbers "scripts\shared\functio
 F_libSpawnVehicle = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_libSpawnVehicle.sqf";
 F_loadoutPrice = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_loadoutPrice.sqf";
 F_nearestPosition = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_nearestPosition.sqf";
-F_opforCap = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_opforCap.sqf";
 F_pay = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_pay.sqf";
 F_payLoadout = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_payLoadout.sqf";
 F_secondsToTimer = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_secondsToTimer.sqf";

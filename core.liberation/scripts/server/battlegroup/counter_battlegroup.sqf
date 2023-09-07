@@ -23,7 +23,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 
 	_target_lst = [allPlayers, {[_x] call F_getScore >= GRLIB_perm_tank && rating _x > 1000 }] call BIS_fnc_conditionalSelect;
 	if ( GRLIB_endgame == 1 || GRLIB_global_stop == 1 ) exitWith {};
-	if ( (count _target_lst > 1) && ([] call F_opforCap < GRLIB_battlegroup_cap) && (diag_fps > 30.0)) then {
+	if ( (count _target_lst > 1) && (opforcap < GRLIB_battlegroup_cap) && (diag_fps > 30.0)) then {
 		_target_player = selectRandom _target_lst;
 		if (_target_player getVariable ["GRLIB_BN_timer", 0] < time) then {
 			_target_player setVariable ["GRLIB_BN_timer", round (time + (30 * 60))];
