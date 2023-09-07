@@ -29,12 +29,19 @@ if ( _building_ai_max > 0 ) then {
 
 	_idxposit = 0;
 	{
-		_x setpos (_buildingpositions select (_position_indexes select _idxposit));
+		_x allowDamage false;
+		_x setPos (_buildingpositions select (_position_indexes select _idxposit));
 		_spawned_units_local pushback _x;
 		[_x, _sector] spawn building_defence_ai;
 		_idxposit = _idxposit + 1;
 	} foreach (units _grp);
+	sleep 2;
+	{
+		_x setDamage 0;
+		_x allowDamage true;
+	} foreach (units _grp);
 };
+
 diag_log format ["Done Spawning building squad (%1) at %2", count _spawned_units_local, time];
 
 _spawned_units_local;

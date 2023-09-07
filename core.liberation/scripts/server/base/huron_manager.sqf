@@ -46,5 +46,5 @@ while { true } do {
 		};
 		deletevehicle huron;	
 	};
-	sleep 10;
+	sleep 16;
 };

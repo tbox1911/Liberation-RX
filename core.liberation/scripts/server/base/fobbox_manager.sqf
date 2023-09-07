@@ -35,5 +35,5 @@ while { true } do {
 		sleep 30;
 		deleteVehicle _fobbox;
 	};
-	sleep 10;
+	sleep 18;
 };

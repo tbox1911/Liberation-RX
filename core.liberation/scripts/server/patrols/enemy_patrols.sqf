@@ -5,5 +5,5 @@ sleep 400;
 
 for "_i" from 1 to 5 do {
 	[] execVM "scripts\server\patrols\manage_one_enemy_patrol.sqf";
-	sleep 2;
+	sleep 14;
 };

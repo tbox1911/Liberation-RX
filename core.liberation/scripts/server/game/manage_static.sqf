@@ -2,9 +2,10 @@ private [ "_all_static", "_static", "_all_light" ];
 
 private _day = call is_night;
 private _old_day = !_day;
+private _static_classname = list_static_weapons - static_vehicles_AI;
 
 while { true } do {
-    _all_static = [vehicles, { alive _x && (typeOf _x) in (list_static_weapons - static_vehicles_AI)}] call BIS_fnc_conditionalSelect;
+    _all_static = [vehicles, { alive _x && (typeOf _x) in _static_classname }] call BIS_fnc_conditionalSelect;
 
     {
         _static = _x;
@@ -78,5 +79,5 @@ while { true } do {
         _old_day = _day;
     };
 
-	sleep 20;
+	sleep 23;
 };

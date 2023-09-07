@@ -1,12 +1,17 @@
-groups_list = [];
 squadaction = "";
 squadname = "";
+
 if (isNil "global_group_ids") then { global_group_ids = [] };
 if (isNil "global_groups_renamed") then { global_groups_renamed = [] };
-waitUntil {sleep 1;! isNil "global_locked_group"};
+waitUntil {sleep 1; !isNil "global_locked_group"};
 global_new_leader = [];
 
 while { true } do {
+	groups_list = [];
+	{ 
+		if (isplayer leader _x) then { groups_list pushBack _x }; 
+	} foreach (groups GRLIB_side_friendly);
+
 	if(lbCurSel 515 != -1) then {
 		_grp = objNull;
 		_grp = groups_list select (lbCurSel 515);
@@ -109,9 +114,6 @@ while { true } do {
 		squadaction = "";
 	};
 
-	{ if ( (isplayer leader _x) && (side _x == side player) && !(_x in groups_list)) then { groups_list = groups_list + [_x] }; } foreach allGroups;
-	{ if (!(_x in allGroups) || (!isplayer leader _x)) then { groups_list = groups_list - [_x] }; } foreach groups_list;
-
 	{
 		if (count global_groups_renamed != 0) then {
 			if (_x in global_groups_renamed) then {
@@ -130,6 +132,6 @@ while { true } do {
 		};
 	};
 
-	sleep 1;
+	sleep 3;
 };
 
