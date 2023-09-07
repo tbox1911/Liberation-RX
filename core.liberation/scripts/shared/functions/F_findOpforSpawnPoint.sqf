@@ -53,7 +53,7 @@ _filtered_possible_sectors = [];
 			if ( (( markerpos _current_sector ) distance (markerpos _x)) < 2000 ) then {
 				_one_opfor_sector_in_range = true;
 			}
-		} foreach (sectors_allSectors - blufor_sectors);
+		} foreach opfor_sectors;
 		_accept_current_sector = _one_opfor_sector_in_range;
 	};
 

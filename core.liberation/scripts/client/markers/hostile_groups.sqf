@@ -2,7 +2,7 @@ private [ "_marker", "_nextgroup" ];
 if (GRLIB_fancy_info == 0) exitWith {};
 
 waitUntil {sleep 1; !isNil "GRLIB_init_server"};
-waitUntil {sleep 1;	!isNil "blufor_sectors"};
+
 private _hostile_markers = [];
 
 while { true } do {

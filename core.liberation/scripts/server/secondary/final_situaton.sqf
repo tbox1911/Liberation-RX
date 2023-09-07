@@ -125,6 +125,7 @@ if (_success) then {
 	forceWeatherChange;
 	sleep 5;
 	blufor_sectors = sectors_allSectors;
+	opfor_sectors = [];
 	[] spawn check_victory_conditions;
 } else {
 	{ deleteVehicle _x } foreach (units GRLIB_side_enemy);

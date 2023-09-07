@@ -2,6 +2,7 @@ private [ "_marker", "_nextbase", "_nextvehicle", "_nextmarker", "_sector_pos", 
 
 waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 waitUntil {sleep 1; !isNil "blufor_sectors"};
+waitUntil {sleep 1; !isNil "opfor_sectors" };
 
 private _getMarkerType = {
 	params ["_marker"];
@@ -34,7 +35,7 @@ sleep 1;
 
 while { GRLIB_endgame == 0 } do {
 	waitUntil {sleep 1; (count blufor_sectors + count GRLIB_all_fobs) != _sector_count};
-	_sector_left = count (sectors_allSectors - blufor_sectors);
+	_sector_left = count opfor_sectors;
 
 	if (GRLIB_hide_opfor && _sector_left > 3) then {
 		{ 
@@ -51,13 +52,13 @@ while { GRLIB_endgame == 0 } do {
 			} else {
 				_x setMarkerTypeLocal "Empty";
 			};
-		} foreach (sectors_allSectors - blufor_sectors);
+		} foreach opfor_sectors;
 		{
 			_x setMarkerColorLocal GRLIB_color_friendly;
 			_x setMarkerTypeLocal ([_x] call _getMarkerType);
 		 } foreach blufor_sectors;
 	} else {
-		{ _x setMarkerColorLocal GRLIB_color_enemy; } foreach (sectors_allSectors - blufor_sectors);
+		{ _x setMarkerColorLocal GRLIB_color_enemy; } foreach opfor_sectors;
 		{ _x setMarkerColorLocal GRLIB_color_friendly; } foreach blufor_sectors;
 	};
 

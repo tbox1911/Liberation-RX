@@ -20,7 +20,7 @@ _setupObjects =
 {
 	// find a pos near a road, between opfor sector and blufor
 	_missionPos = [];
-	//private _sectors = (sectors_allSectors - blufor_sectors);
+	//private _sectors = opfor_sectors;
 	private _sectors = sectors_allSectors;
 	{
 		_sector_pos = markerpos _x;

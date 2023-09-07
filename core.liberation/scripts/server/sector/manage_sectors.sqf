@@ -1,7 +1,7 @@
 active_sectors = [];
 publicVariable "active_sectors";
 
-waitUntil {sleep 1; !isNil "blufor_sectors" };
+waitUntil {sleep 1; !isNil "opfor_sectors" };
 waitUntil {sleep 1; !isNil "sectors_allSectors" };
 
 private ["_nextsector", "_hc"];
@@ -25,7 +25,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 			};
 		};
 		sleep 0.25;
-	} foreach ( sectors_allSectors - blufor_sectors );
+	} foreach opfor_sectors;
 
 	//diag_log format [ "Full sector scan at %1, active sectors: %2", time, active_sectors ];
 	sleep 4;

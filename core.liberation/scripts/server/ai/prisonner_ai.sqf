@@ -97,7 +97,7 @@ while {alive _unit || !_unit_captured } do {
 			_unit switchMove "AmovPercMwlkSrasWrflDf";
 			_unit playMoveNow "AmovPercMwlkSrasWrflDf";
 			sleep 2;
-			private _nearest_sector = [(sectors_allSectors - blufor_sectors), _unit] call F_nearestPosition;
+			private _nearest_sector = [opfor_sectors, _unit] call F_nearestPosition;
 			if (typeName _nearest_sector == "STRING") then {
 				[_flee_grp] call F_deleteWaypoints;
 				private _waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];

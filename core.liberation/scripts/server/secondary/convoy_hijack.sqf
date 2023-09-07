@@ -1,10 +1,10 @@
 params [ ["_mission_cost", 0], "_caller" ];
-if ( count (sectors_allSectors - blufor_sectors - sectors_tower) < 4) exitWith { [gamelogic, "Could not find enough free sectors for convoy hijack mission"] remoteExec ["globalChat", 0] };
+if ( count (opfor_sectors - sectors_tower) < 4) exitWith { [gamelogic, "Could not find enough free sectors for convoy hijack mission"] remoteExec ["globalChat", 0] };
 
 private _convoy_destinations_markers = [];
 private _max_try = 20;
 private _max_waypoints = 6;
-private _sector_list = (sectors_allSectors - blufor_sectors - sectors_tower);
+private _sector_list = (opfor_sectors - sectors_tower);
 
 while { count _convoy_destinations_markers < _max_waypoints && _max_try > 0} do {
 	_start_pos = selectRandom _sector_list;

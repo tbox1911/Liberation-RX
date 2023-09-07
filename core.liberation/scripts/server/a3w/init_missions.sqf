@@ -37,8 +37,6 @@ A3W_Mission_timeout = 60*60;		// Time in seconds that a Side Mission will run fo
 // A3W_Mission_delay = 1*60;
 // A3W_Mission_timeout = 5*60;
 
-waitUntil {sleep 1; !isNil "blufor_sectors" };
-waitUntil {sleep 1; !isNil "sectors_allSectors" };
 waitUntil {sleep 1; !isNil "save_is_loaded" };
 
 [] call compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionArrays.sqf";

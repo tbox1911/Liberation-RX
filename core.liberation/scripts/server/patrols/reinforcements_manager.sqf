@@ -46,7 +46,7 @@ if ( _targetsector in active_sectors ) then {
 	private _sector2 = "";
 
 	if ( combat_readiness > 45 ) then {
-		_sector1 = [GRLIB_spawn_max, _targetsector_pos, (sectors_allSectors - blufor_sectors - active_sectors)] call F_getNearestSector;
+		_sector1 = [GRLIB_spawn_max, _targetsector_pos, (opfor_sectors - active_sectors)] call F_getNearestSector;
 		if (_sector1 != "") then {
 			diag_log format ["Spawn Defense on Sector %1 at %2", _sector1, time];
 			[_sector1, (1 + floor (random 2))] spawn patrol_manager;
@@ -55,7 +55,7 @@ if ( _targetsector in active_sectors ) then {
 	};
 
 	if ( combat_readiness > 80 ) then {
-		_sector2 = [GRLIB_spawn_max, _targetsector_pos, (sectors_allSectors - blufor_sectors - active_sectors - [_sector1])] call F_getNearestSector;
+		_sector2 = [GRLIB_spawn_max, _targetsector_pos, (opfor_sectors - active_sectors - [_sector1])] call F_getNearestSector;
 		if (_sector2 != "" && _active_players > 1) then {
 			sleep (60 + floor(random 60));
 			diag_log format ["Spawn Defense on Sector %1 at %2", _sector2, time];

@@ -7,9 +7,7 @@ if (isNil "_grp") exitWith {};
 private _grp_veh = objectParent (leader _grp);
 private _unarmed = (currentWeapon _grp_veh == "");
 if (!isNull _grp_veh && _unarmed) exitWith {
-	private _sectors = (sectors_allSectors - blufor_sectors);
-	private _nearest_sector = [(sectors_allSectors - blufor_sectors), _grp_veh] call F_nearestPosition;
-
+	private _nearest_sector = [opfor_sectors, _grp_veh] call F_nearestPosition;
 	private _waypoint = _grp addWaypoint [markerPos _nearest_sector, 0];
 	_waypoint setWaypointType "MOVE";
 	_waypoint setWaypointSpeed "FULL";

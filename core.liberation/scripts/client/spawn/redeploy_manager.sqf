@@ -10,7 +10,6 @@ private _basenamestr = "BASE CHIMERA";
 
 if (!GRLIB_player_spawned) then {
 	waitUntil {sleep 0.2; !isNil "GRLIB_all_fobs" };
-	waitUntil {sleep 0.2; !isNil "blufor_sectors" };
 	waitUntil {sleep 0.2; !isNil "save_is_loaded" };
 	waitUntil {sleep 0.2; !isNil "introDone" };
 	waitUntil {sleep 0.2; introDone };

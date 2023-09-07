@@ -66,8 +66,13 @@ stats_readiness_earned = stats_readiness_earned + _combat_readiness_increase;
 publicVariable "stats_readiness_earned";
 
 [ _liberated_sector, 0 ] remoteExec ["remote_call_sector", 0];
-blufor_sectors pushback _liberated_sector; publicVariable "blufor_sectors";
+
+blufor_sectors pushback _liberated_sector;
+publicVariable "blufor_sectors";
+opfor_sectors = (sectors_allSectors - blufor_sectors);
+publicVariable "opfor_sectors";
 stats_sectors_liberated = stats_sectors_liberated + 1;
+sleep 1;
 
 if (isServer) then {
 	[] spawn check_victory_conditions;
