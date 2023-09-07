@@ -41,7 +41,7 @@ while { true } do {
 	_myfps = diag_fps;
 
 	_units_blu = { alive _x && (_x distance2D lhd) >= 500 } count units GRLIB_side_friendly;
-	_units_civ = { alive _x && !(typeOf _x in [SHOP_Man, SELL_Man])} count units GRLIB_side_civilian;
+	_units_civ = { alive _x && !(typeOf _x in [SHOP_Man, SELL_Man, WRHS_Man])} count units GRLIB_side_civilian;
 
 	_myfpsmarker setMarkerColor "ColorGREEN";
 	if ( _myfps < 30 ) then { _myfpsmarker setMarkerColor "ColorYELLOW"; };

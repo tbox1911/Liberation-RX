@@ -5,7 +5,7 @@ private [ "_blufor_ai_groups", "_localgroup", "_is_ai_only", "_commander" ];
 while { GRLIB_endgame == 0 } do {
 	_commander = [] call F_getCommander;
 
-	if ( !(isNull _commander ) ) then {
+	if ( !(isNull _commander) ) then {
 		_blufor_ai_groups = [];
 
 		{
