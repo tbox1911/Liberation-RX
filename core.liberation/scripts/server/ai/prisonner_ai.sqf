@@ -23,8 +23,9 @@ if (!_canmove) then {
 	sleep 1;
 	_unit disableAI "ANIM";
 	_unit disableAI "MOVE";
-	_unit switchMove "AmovPercMstpSnonWnonDnon_AmovPercMstpSsurWnonDnon";
-	_unit playMoveNow "AmovPercMstpSnonWnonDnon_AmovPercMstpSsurWnonDnon";
+	_anim = "AmovPercMstpSnonWnonDnon_AmovPercMstpSsurWnonDnon";
+	[_unit, _anim] remoteExec ["switchMove", 0];
+	[_unit, _anim] remoteExec ["playMoveNow", 0];
 	sleep 3;
 };
 
@@ -41,8 +42,9 @@ if (!alive _unit) exitWith {};
 // Follow
 _unit enableAI "ANIM";
 _unit enableAI "MOVE";
-_unit switchMove "AmovPercMstpSsurWnonDnon_AmovPercMstpSnonWnonDnon";
-_unit playMoveNow "AmovPercMstpSsurWnonDnon_AmovPercMstpSnonWnonDnon";
+_anim = "AmovPercMstpSsurWnonDnon_AmovPercMstpSnonWnonDnon";
+[_unit, _anim] remoteExec ["switchMove", 0];
+[_unit, _anim] remoteExec ["playMoveNow", 0];
 sleep 3;
 
 private _unit_captured = false;
@@ -65,13 +67,15 @@ while {alive _unit || !_unit_captured } do {
 
 		_grp = createGroup [GRLIB_side_friendly, true];
 		[_unit] joinSilent _grp;
-		_unit switchMove "AmovPercMstpSnonWnonDnon_AmovPsitMstpSnonWnonDnon_ground";
-		_unit playMoveNow "AmovPercMstpSnonWnonDnon_AmovPsitMstpSnonWnonDnon_ground";
+		_anim = "AmovPercMstpSnonWnonDnon_AmovPsitMstpSnonWnonDnon_ground";
+		[_unit, _anim] remoteExec ["switchMove", 0];
+		[_unit, _anim] remoteExec ["playMoveNow", 0];
+		sleep 3;
+		_anim = "AidlPsitMstpSnonWnonDnon_ground00";
+		[_unit, _anim] remoteExec ["switchMove", 0];
+		[_unit, _anim] remoteExec ["playMoveNow", 0];
 		_unit disableAI "ANIM";
 		_unit disableAI "MOVE";
-		sleep 3;
-		_unit switchMove "AidlPsitMstpSnonWnonDnon_ground00";
-		_unit playMoveNow "AidlPsitMstpSnonWnonDnon_ground00";		
 		[_unit, _unit_owner] call prisonner_captured;
 		sleep 300;
 		deleteVehicle _unit;
@@ -111,7 +115,7 @@ while {alive _unit || !_unit_captured } do {
 				sleep 5;
 			} else {
 				{ deleteVehicle _x } forEach (units _flee_grp);
-			};	
+			};
 		};
 	};
 	sleep 5;
