@@ -1,8 +1,7 @@
 params ["_fob", "_owner"];
 
-_fob addEventHandler ["HandleDamage", {0}];
 _fob allowDamage false;
-
+_fob addEventHandler ["HandleDamage", {0}];
 private _fob_class = typeOf _fob;
 
 // Add owner sign
@@ -11,8 +10,9 @@ private _offset = [[-6, -5, -0.2], -_fobdir];
 if (_fob_class == FOB_outpost ) then { _offset = [[5, -3, -0.2], -_fobdir] };
 private _sign_pos = (getposATL _fob) vectorAdd (_offset call BIS_fnc_rotateVector2D);
 private _sign = createVehicle [FOB_sign, _sign_pos, [], 0, "CAN_COLLIDE"];
-
 _sign allowDamage false;
+_sign addEventHandler ["HandleDamage", { 0 }];
+
 if (_fob_class == FOB_outpost ) then {
 	_sign setDir (_fobdir - 90);
 } else {
