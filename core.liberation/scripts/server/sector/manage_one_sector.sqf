@@ -20,7 +20,8 @@ private _squad3 = [];
 private _squad4 = [];
 private _minimum_building_positions = 5;
 private _max_prisonners = 5;
-private _sector_despawn_tickets = 24;
+private _sector_despawn_tickets_def = 40;
+private _sector_despawn_tickets = _sector_despawn_tickets_def;
 private _popfactor = 1;
 
 diag_log format ["Spawn Defend Sector %1 at %2", _sector, time];
@@ -242,7 +243,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 			if ( ([_sectorpos, (GRLIB_sector_size + 300), GRLIB_side_friendly] call F_getUnitsCount) == 0 ) then {
 				_sector_despawn_tickets = _sector_despawn_tickets - 1;
 			} else {
-				_sector_despawn_tickets = 24;
+				_sector_despawn_tickets = _sector_despawn_tickets_def;
 			};
 
 			if ( _sector_despawn_tickets <= 0 ) then {
