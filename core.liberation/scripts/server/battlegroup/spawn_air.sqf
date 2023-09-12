@@ -63,7 +63,7 @@ while {	{( alive _x )} count (units _air_grp) > 0 } do {
 				_waypoint setWaypointType "MOVE";
 				_waypoint setWaypointSpeed "FULL";
 				_waypoint setWaypointBehaviour "SAFE";
-				_waypoint setWaypointCombatMode "WHITE";
+				_waypoint setWaypointCombatMode "BLUE";
 				_waypoint setWaypointCompletionRadius 50;
 				_waypoint setWaypointStatements ["true", "deleteVehicle this"];
 				{_x doFollow leader _flee_grp} foreach units _flee_grp;
