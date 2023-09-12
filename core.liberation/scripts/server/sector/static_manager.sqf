@@ -1,8 +1,8 @@
 params [ "_sector", "_number" ];
 
-//if (_sector in active_sectors) exitWith {};
 if (_number == 0) exitWith {};
 if (_number >= 1) then {
+	sleep 2;    
 	[ _sector, _number - 1 ] spawn static_manager;
 };
 

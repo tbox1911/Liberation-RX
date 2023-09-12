@@ -2,6 +2,7 @@ params [ "_sector_pos", "_radius", "_number" ];
 
 if (_number == 0) exitWith {};
 if (_number >= 1) then {
+	sleep 2;
 	[ _sector_pos, _radius, _number - 1 ] spawn ied_manager;
 };
 
