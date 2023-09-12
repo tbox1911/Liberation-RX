@@ -25,7 +25,7 @@ if ( _building_ai_max > 0 ) then {
 			_position_indexes pushback _nextposit;
 		};
 	};
-	_grp = [_sectorpos, _unitclass, _default_side, _infsquad] call F_libSpawnUnits;
+	_grp = [_sectorpos, _unitclass, _default_side, _infsquad, false] call F_libSpawnUnits;
 
 	_idxposit = 0;
 	{

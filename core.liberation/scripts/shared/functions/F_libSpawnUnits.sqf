@@ -2,7 +2,8 @@ params [
     "_spawnpos",                    // position to spawn
     ["_classname", []],             // array of classname to create
     ["_side", GRLIB_side_enemy],    // side of units group
-    ["_type", "infantry"]           // type of unit
+    ["_type", "infantry"],          // type of unit
+	["_onground", true]				// unit on ground
 ];
 
 private _nb_unit = count _classname;
@@ -30,6 +31,7 @@ private ["_unit", "_backpack"];
 
 		_unit = _grp createUnit [_x, _spawnpos, [], 20, "NONE"];
 		if (!isNil "_unit") then {
+			_unit allowDamage false;
 			_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 			[_unit] joinSilent _grp;
 			if (_type in ["militia", "guard"]) then {[ _unit ] call loadout_militia};
@@ -51,14 +53,33 @@ private ["_unit", "_backpack"];
 			if (_type == "defender") then {
 				_unit setVariable ["PAR_Grp_ID", "server", true];
 			};
+
+			if (_onground && !(_type in ["divers", "para"]) ) then {
+				// try to fix pos on rock/object (thanks Larrow)
+				_spawnpos = getPosATL _unit;
+				_start = +_spawnpos;
+				_start set [2, 50];
+				while { (lineIntersects [ATLToASL _start, ATLToASL _spawnpos]) } do {
+					_spawnpos set [2, ((_spawnpos select 2) + 0.25)]
+				};
+				_unit setPosATL _spawnpos;
+			};
 		} else {
 			diag_log format ["--- LRX Error: Cannot create unit %1 at position %2", _x, _spawnpos];
 		};
 	};
 } foreach _classname;
 
-_grp setCombatMode "WHITE";
-_grp setCombatBehaviour "COMBAT";
+[_grp] spawn {
+	params ["_grp"];
+	[_grp] call F_deleteWaypoints;
+	_grp setCombatMode "WHITE";
+	_grp setCombatBehaviour "COMBAT";
+	sleep 3;
+	{
+		_x setDamage 0;
+		_x allowDamage true;
+	} foreach (units _grp);
+};
 
-[_grp] call F_deleteWaypoints;
 _grp;

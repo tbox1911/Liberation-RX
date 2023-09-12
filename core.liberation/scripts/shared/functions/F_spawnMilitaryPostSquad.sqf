@@ -20,7 +20,7 @@ if ( count _allposts > 0 ) then {
 		if (_garnison > 0) then {
 			_unitclass = [];
 			while { (count _unitclass) < _garnison } do { _unitclass pushback (selectRandom opfor_infantry) };	
-			_grp = [_squadpos, _unitclass, GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
+			_grp = [_squadpos, _unitclass, GRLIB_side_enemy, "infantry", false] call F_libSpawnUnits;
 			{
 				_x setPos (_building_positions select _forEachIndex);
 				_spawned_units_local pushback _x;
