@@ -7,10 +7,10 @@ if (_number >= 1) then {
 };
 
 // Create
-private _grp = createGroup [GRLIB_side_enemy, true];
 private _spawn_pos = [markerPos _sector, floor(random 50), random 360] call BIS_fnc_relPos;
-private _vehicle = [_spawn_pos, selectRandom opfor_statics] call F_libSpawnVehicle;
-
+if (surfaceIsWater _spawn_pos) exitWith {};
+private _grp = createGroup [GRLIB_side_enemy, true];
+private _vehicle = [_spawn_pos, selectRandom opfor_statics, true] call F_libSpawnVehicle;
 _vehicle setVariable ["GRLIB_counter_TTL", round(time + 900)];
 opfor_spotter createUnit [ getposATL _vehicle, _grp, 'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.5, "PRIVATE"];
 opfor_spotter createUnit [ getposATL _vehicle, _grp, 'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.5, "PRIVATE"];
