@@ -112,7 +112,7 @@ while { dialog && alive player } do {
 	ctrlSetText [ 1103, format [ "%1%2", round (desired_vehvolume), "%" ] ];
 	desired_fps = parseNumber (ctrlText 960);
 
-	uiSleep 0.2;
+	uiSleep 0.5;
 };
 
 if (!alive player) then { closeDialog 0 };
