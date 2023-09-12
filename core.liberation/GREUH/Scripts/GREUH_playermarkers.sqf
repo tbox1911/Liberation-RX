@@ -50,14 +50,14 @@ while { true } do {
 
 		private _stuff_to_unmark = [];
 		{
-			if ( (vehicle _x != _x) || !(alive _x) ) then {
+			if ( (vehicle _x != _x) || !(alive _x) || (side group _x != GRLIB_side_friendly) ) then {
 				_stuff_to_unmark pushback _x;
 				_marked_players = _marked_players - [_x];
 			};
 		} foreach _marked_players;
 
 		{
-			if ( (vehicle _x != _x) || !(alive _x) ) then {
+			if ( (vehicle _x != _x) || !(alive _x) || (side group _x != GRLIB_side_friendly) ) then {
 				_stuff_to_unmark pushback _x;
 				_marked_squadmates = _marked_squadmates - [_x];
 			};
