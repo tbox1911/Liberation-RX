@@ -11,11 +11,8 @@ while { true } do {
         _static = _x;
   
         // No damage
-        private _owner = owner _static;
-        if (_owner == 0) then {
+        if (local _static && isDamageAllowed _static) then {
             _static allowDamage false;
-        } else {
-            [_static, false] remoteExec ["allowDamage", _owner];
         };
 
         // Correct static position

@@ -487,6 +487,11 @@ while { true } do {
 			};
 
 			// Static Weapon
+			if (_classname in (list_static_weapons - static_vehicles_AI)) then {
+				_allow_damage = false;
+			};
+
+			// AI Static Weapon
 			if (_classname in static_vehicles_AI) then {
 				_vehicle setMass 5000;
 				[ _vehicle ] call F_forceBluforCrew;
@@ -515,9 +520,7 @@ while { true } do {
 			};
 
 			sleep 0.3;
-			if (_allow_damage) then {
-				_vehicle allowDamage true;
-			};
+			if (_allow_damage) then { _vehicle allowDamage true };
 			_vehicle setDamage 0;
 			build_vehicle = _vehicle;
 

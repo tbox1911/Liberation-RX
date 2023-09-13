@@ -333,7 +333,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 	{
 		_allow_damage = true;
 		if ( (typeOf _x) in [FOB_typename,FOB_outpost,FOB_sign,Warehouse_typename,playerbox_typename] ) then {
-			_x addEventHandler ["HandleDamage", { 0 }];
+			//_x addEventHandler ["HandleDamage", { 0 }];
 			_allow_damage = false;
 		};
 		if ( (typeOf _x) in GRLIB_Ammobox_keep && [_x] call is_public ) then {
@@ -341,6 +341,9 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 		};
 		if ((typeOf _x) isKindOf "Land_PortableHelipadLight_01_F") then {
 			_allow_damage = false;
+		};
+		if ((typeOf _x) in (list_static_weapons - static_vehicles_AI)) then {
+			_allow_damage = false;	
 		};
 		if ( _allow_damage ) then { _x allowDamage true };
 	} foreach _buildings_created;
