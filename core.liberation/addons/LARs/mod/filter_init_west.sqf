@@ -68,3 +68,7 @@ if (["IFA_", GRLIB_mod_west, true] call F_startsWith) then {
 if (["SPE_", GRLIB_mod_west, true] call F_startsWith) then {
     [] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_SPE.sqf";
 };
+// Add UFP (Ukrainian Faction Project) Weapons
+if (["UFP_BLU", GRLIB_mod_west, true] call F_startsWith) then {
+	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_UFP.sqf";
+};
