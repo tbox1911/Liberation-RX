@@ -8,9 +8,9 @@ private [
 ];
 
 while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
-	sleep (30 + floor(random 30));
+	sleep (300 + floor(random 300));
 	while { opforcap > GRLIB_patrol_cap || (diag_fps < 35.0) || combat_readiness < 30 } do {
-		sleep (30 + floor(random 30));
+		sleep 60;
 	};
 
 	_opfor_veh = objNull;
