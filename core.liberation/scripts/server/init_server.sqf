@@ -66,6 +66,7 @@ spawn_battlegroup = compileFinal preprocessFileLineNumbers "scripts\server\battl
 spawn_battlegroup_direct = compileFinal preprocessFileLineNumbers "scripts\server\battlegroup\spawn_battlegroup_direct.sqf";
 
 // Game
+[] call compileFinal preprocessFileLineNumbers "scripts\server\game\save_game_mp_init.sqf";
 load_game_mp = compileFinal preprocessFileLineNumbers "scripts\server\game\load_game_mp.sqf";
 save_game_mp  = compileFinal preprocessFileLineNumbers "scripts\server\game\save_game_mp.sqf";
 load_context = compileFinal preprocessFileLineNumbers "scripts\server\game\load_context.sqf";
@@ -148,7 +149,6 @@ if (abort_loading) exitWith {
 [] execVM "scripts\server\game\zeus_synchro.sqf";
 [] execVM "scripts\server\game\clean.sqf";
 [] execVM "scripts\server\game\periodic_save.sqf";
-[] execVM "scripts\server\game\save_game_mp_init.sqf";
 [] execVM "scripts\server\a3w\init_missions.sqf";
 [] execVM "scripts\server\ar\fn_advancedRappellingInit.sqf";
 [] execVM "scripts\server\offloading\show_fps.sqf";

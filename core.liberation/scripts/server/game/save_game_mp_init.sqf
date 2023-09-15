@@ -13,3 +13,5 @@ GRLIB_classnames_to_save = GRLIB_classnames_to_save arrayIntersect GRLIB_classna
 GRLIB_vehicles_light = [mobile_respawn] + GRLIB_vehicle_blacklist + list_static_weapons + uavs;
 { GRLIB_vehicles_light pushback (_x select 0) } foreach support_vehicles;
 GRLIB_vehicles_light = GRLIB_vehicles_light arrayIntersect GRLIB_vehicles_light;
+
+GRLIB_no_kill_handler_classnames = [FOB_typename, FOB_outpost] + all_buildings_classnames;

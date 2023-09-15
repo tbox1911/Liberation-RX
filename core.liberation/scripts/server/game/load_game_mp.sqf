@@ -55,12 +55,6 @@ GRLIB_warehouse = [
 	[basic_weapon_typename, 0]
 ];
 
-private _no_kill_handler_classnames = [FOB_typename, FOB_outpost] + all_buildings_classnames;
-
-private _vehicles_light = list_static_weapons + [mobile_respawn];
-{ _vehicles_light pushback (_x select 0) } foreach support_vehicles;
-_vehicles_light = _vehicles_light arrayIntersect _vehicles_light;
-
 // Wipe Savegame
 if ( GRLIB_param_wipe_savegame_1 == 1 && GRLIB_param_wipe_savegame_2 == 1 ) then {
 	if (GRLIB_param_wipe_keepscore == 1) then {
@@ -186,7 +180,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 	private _s3 = [];
 	{
 		_nextclass = _x select 0;
-		if (_nextclass in _no_kill_handler_classnames) then {
+		if (_nextclass in GRLIB_no_kill_handler_classnames) then {
 			_s1 pushBack _x;
 		} else {
 			if (_nextclass iskindOf "AllVehicles") then {
@@ -230,13 +224,17 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
         };
 
         if ( _owner != "" ) then {
-			[_nextbuilding, "lock", _owner] call F_vehicleLock;
+			if (_owner == "public") then {
+				_nextbuilding setVariable ["GRLIB_vehicle_owner", "public", true];
+			} else {
+				[_nextbuilding, "lock", _owner] call F_vehicleLock;
+			};
 			if ( _nextclass == huron_typename ) then {
             	_nextbuilding setVariable ["GRLIB_vehicle_ishuron", true, true];
 			};
         };
 
-        if ( _nextclass in _vehicles_light ) then {
+        if ( _nextclass in GRLIB_vehicles_light ) then {
 			if ( _nextclass in list_static_weapons ) then {
             	_nextbuilding setVariable ["R3F_LOG_disabled", false, true];
 				_nextbuilding setVehicleLock "DEFAULT";
@@ -249,6 +247,11 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 					_nextbuilding allowCrewInImmobile [true, false];
 					_nextbuilding setUnloadInCombat [true, false];
 				};
+			};
+			if ( _nextclass in uavs ) then {
+            	_nextbuilding setVariable ["R3F_LOG_disabled", false, true];
+				_nextbuilding setVehicleLock "LOCKEDPLAYER";
+				{ _nextbuilding lockTurret [_x, false] } forEach (allTurrets _nextbuilding);
 			};
 			if ( _nextclass == playerbox_typename ) then {
 				_nextbuilding setVariable ["R3F_LOG_disabled", false, true];
@@ -315,7 +318,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 			{_x hideObjectGlobal true} forEach (nearestTerrainObjects [_nextpos, GRLIB_clutter_cutter, 20]);
 		};
 
-        if ( !(_nextclass in _no_kill_handler_classnames) ) then {
+        if ( !(_nextclass in GRLIB_no_kill_handler_classnames) ) then {
             _nextbuilding addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		};
 
