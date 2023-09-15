@@ -79,6 +79,7 @@ _setupObjects =
 	_veh1_class = selectRandom (opfor_statics select {!(_x isKindOf "StaticMortar")});
 	_veh1_pos = (getPosATL _def1) vectorAdd ([[0, -1, 0.1], - _bunker_dir] call BIS_fnc_rotateVector2D);
 	_veh1 = createVehicle [_veh1_class, _veh1_pos, [], 0, "None"];
+	_veh1 setVariable ["GRLIB_vehicle_owner", "server", true];
 	_veh1 disableCollisionWith _def1;
 	_veh1 setDir _bunker_dir;
 	_veh1 setPos _veh1_pos;
@@ -86,6 +87,7 @@ _setupObjects =
 	_veh2_class = selectRandom (opfor_statics select {!(_x isKindOf "StaticMortar")});
 	_veh2_pos = (getPosATL _def2) vectorAdd ([[0, 1, 0.1], - _bunker_dir] call BIS_fnc_rotateVector2D);
 	_veh2 = createVehicle [_veh2_class, _veh2_pos, [], 0, "None"];
+	_veh2 setVariable ["GRLIB_vehicle_owner", "server", true];
 	_veh2 disableCollisionWith _def2;
 	_veh2 setDir (_bunker_dir -180);
 	_veh2 setPos _veh2_pos;

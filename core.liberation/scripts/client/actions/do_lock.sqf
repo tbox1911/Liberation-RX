@@ -13,7 +13,7 @@ if (local _vehicle) then {
 };
 
 {
-    if !(_x getVariable ["GRLIB_vehicle_owner", ""] in ["", "public", "server"]) then {
+    if !(_x getVariable ["GRLIB_vehicle_owner", ""] in ["public", "server"]) then {
         _x setVariable ["GRLIB_vehicle_owner", _uid, true];
     };
 } forEach (_vehicle getVariable ["R3F_LOG_objets_charges", []]) + (_vehicle getVariable ["GRLIB_ammo_truck_load", []]);

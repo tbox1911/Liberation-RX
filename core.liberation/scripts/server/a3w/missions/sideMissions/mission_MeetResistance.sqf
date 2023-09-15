@@ -71,6 +71,7 @@ _setupObjects =
 	_gunner moveInGunner _veh1;
 	[_gunner] orderGetIn true;
 	_veh1 setVariable ["GRLIB_vehicle_gunner", [_gunner]];
+	_veh1 setVariable ["GRLIB_vehicle_owner", "server", true];
 	sleep 1;
 
 	_veh2 = createVehicle [resistance_squad_static, _missionPos, [], 100, "None"];
@@ -80,6 +81,7 @@ _setupObjects =
 	_gunner moveInGunner _veh2;
 	[_gunner] orderGetIn true;
 	_veh2 setVariable ["GRLIB_vehicle_gunner", [_gunner]];
+	_veh2 setVariable ["GRLIB_vehicle_owner", "server", true];
 
 	// remove dead body to let the leader change
 	//{_x addEventHandler ["Killed", {_this spawn {sleep 20;hidebody (_this select 0);sleep 5;deleteVehicle (_this select 0)}}]} forEach units _aiGroupRes;
