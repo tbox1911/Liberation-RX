@@ -42,9 +42,10 @@ if ( count _ide_pos > 0 ) then {
 		if (!_false_trap) then {
 			_hostilecount = { _x distance2D _ied_obj < _activation_radius } count (allPlayers);
 			if (_hostilecount >= _infantry_trigger) then {
-				[] spawn {
+				[_ied_obj] spawn {
+					params ["_obj"];
 					for "_i" from 1 to 5 do {
-						playSound3D ["A3\Missions_F_Oldman\Data\sound\beep.ogg", _ied_obj, false, ATLToASL (getPosATL _ied_obj), 4, 1, 100];
+						playSound3D ["A3\Missions_F_Oldman\Data\sound\beep.ogg", _obj, false, ATLToASL (getPosATL _obj), 4, 1, 100];
 						sleep 0.5;
 					};
 				};
