@@ -39,8 +39,9 @@ switch (GREUH_allow_nametags) do {
 [] call compile preprocessFileLineNumbers "GREUH\scripts\GREUH_version.sqf";
 [] spawn compile preprocessFileLineNumbers "GREUH\scripts\GREUH_revive_camera.sqf";
 [] spawn compile preprocessFileLineNumbers "GREUH\scripts\GREUH_cache_units.sqf";
-if ( show_platoon || show_nametags ) then { [] spawn compile preprocessFileLineNumbers "GREUH\scripts\GREUH_platoonoverlay.sqf"; };
-if ( show_teammates ) then { [] spawn compile preprocessFileLineNumbers "GREUH\scripts\GREUH_playermarkers.sqf"; };
+[] spawn compile preprocessFileLineNumbers "GREUH\scripts\GREUH_platoonoverlay.sqf";
+[] spawn compile preprocessFileLineNumbers "GREUH\scripts\GREUH_playermarkers.sqf";
+
 if ( GREUH_allow_customsquads ) then { [] spawn compile preprocessFileLineNumbers "GREUH\scripts\GREUH_squadmanagement.sqf"; };
 if ( GREUH_allow_viewdistance ) then {
 	[] spawn compile preprocessFileLineNumbers "GREUH\scripts\GREUH_view_distance_management.sqf";

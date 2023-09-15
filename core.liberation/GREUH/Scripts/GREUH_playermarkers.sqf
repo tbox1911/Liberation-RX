@@ -64,7 +64,7 @@ while { true } do {
 		} foreach _marked_squadmates;
 
 		{
-			if ( (count (crew _x) == 0) || !(alive _x) ) then {
+			if ( (count (crew _x) == 0) || !(alive _x) || typeOf _x in uavs) then {
 				_stuff_to_unmark pushback _x;
 				_marked_vehicles = _marked_vehicles - [_x];
 			};
@@ -133,7 +133,7 @@ while { true } do {
 				if (isPlayer _x) then {
 					_vehiclename = _vehiclename + (name _x);
 				} else {
-					_vehiclename = _vehiclename + (format [ "%1. %2", [_x] call F_getUnitPositionId, name _x]);
+					_vehiclename = _vehiclename + (format [ "%1", [_x] call F_getUnitPositionId]);
 				};
 
 				if( (_datcrew find _x) != ((count _datcrew) - 1) ) then {
