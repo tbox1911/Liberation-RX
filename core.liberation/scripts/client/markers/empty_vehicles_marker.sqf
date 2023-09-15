@@ -12,6 +12,8 @@ private _no_marker_classnames = [
 	GRLIB_player_gravebox,
 	GRLIB_sar_wreck,
 	Warehouse_desk_typename,
+	"GroundWeaponHolder",
+	"WeaponHolderSimulated",
 	"Kart_01_Base_F",
 	"Land_CashDesk_F",
 	"Land_HumanSkull_F",
@@ -25,15 +27,10 @@ if (GRLIB_allow_redeploy == 1) then {
 while { true } do {
 	_veh_list = [vehicles, {
 		alive _x &&
+		(count (crew _x) == 0 || typeOf _x in (uavs + static_vehicles_AI)) &&
 		(_x distance2D lhd > GRLIB_fob_range) &&
-		!(_x isKindOf "CAManBase") &&
-		!(_x isKindOf "WeaponHolderSimulated") &&
 		!([typeOf _x, _no_marker_classnames] call F_itemIsInClass) &&
-		(isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull])) &&
-		(
-			(side _x == GRLIB_side_friendly) ||
-			(side _x == GRLIB_side_civilian && count (crew _x) == 0)
-		)
+		(isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]))
 	}] call BIS_fnc_conditionalSelect;
 
 	_vehmarkers_bak = [];

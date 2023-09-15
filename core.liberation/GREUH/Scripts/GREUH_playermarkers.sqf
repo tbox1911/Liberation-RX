@@ -64,7 +64,7 @@ while { true } do {
 		} foreach _marked_squadmates;
 
 		{
-			if ( (count (crew _x) == 0) || !(alive _x) || typeOf _x in uavs) then {
+			if ( !(alive _x) || (count (crew _x) == 0) || (typeOf _x in (uavs + static_vehicles_AI)) ) then {
 				_stuff_to_unmark pushback _x;
 				_marked_vehicles = _marked_vehicles - [_x];
 			};
