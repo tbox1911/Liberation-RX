@@ -1,17 +1,16 @@
 private [ "_all_static", "_static", "_all_light" ];
-
 private _day = call is_night;
 private _old_day = !_day;
 private _static_classname = list_static_weapons - static_vehicles_AI;
 
 while { true } do {
-    _all_static = [vehicles, { alive _x && (typeOf _x) in _static_classname }] call BIS_fnc_conditionalSelect;
+    _all_static = [vehicles, { local _x && alive _x && (typeOf _x) in _static_classname }] call BIS_fnc_conditionalSelect;
 
     {
         _static = _x;
   
         // No damage
-        if (local _static && isDamageAllowed _static) then {
+        if (isDamageAllowed _static) then {
             _static allowDamage false;
         };
 

@@ -110,9 +110,9 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 [] execVM "scripts\client\misc\permissions_warning.sqf";
 [] execVM "scripts\client\misc\secondary_jip.sqf";
 [] execVM "scripts\client\misc\stop_renegade.sqf";
-[] execVM "scripts\client\misc\manage_weather.sqf";
 [] execVM "scripts\client\misc\manage_wildlife.sqf";
 [] execVM "scripts\client\misc\manage_manpower.sqf";
+[] execVM "scripts\client\misc\manage_static.sqf";
 [] execVM "scripts\client\misc\no_thermic.sqf";
 [] execVM "scripts\client\misc\init_markers.sqf";
 //[] execVM "scripts\client\misc\logs_markers.sqf";
