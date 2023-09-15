@@ -59,9 +59,10 @@ _setupObjects =
 	} foreach _allbuildings;
 
 	// spawn some resistance
-	_managed_units = (["resistance", 4, _buildingpositions, _missionPos] call F_spawnBuildingSquad);
 	_aiGroupRes = [_missionPos, (_nbUnits - (count _managed_units)), "resistance"] call createCustomGroup;
+	_managed_units = (["resistance", 4, _buildingpositions, _missionPos] call F_spawnBuildingSquad);
 	_managed_units joinSilent _aiGroup;
+	{_x setVariable ["GRLIB_can_speak", true, true]} foreach units _aiGroupRes;
 
 	// create static weapons + crew
 	_veh1 = createVehicle [resistance_squad_static, _missionPos, [], 100, "None"];
@@ -85,7 +86,6 @@ _setupObjects =
 
 	// remove dead body to let the leader change
 	//{_x addEventHandler ["Killed", {_this spawn {sleep 20;hidebody (_this select 0);sleep 5;deleteVehicle (_this select 0)}}]} forEach units _aiGroupRes;
-	{_x setVariable ['GRLIB_can_speak', true, true]} foreach units _aiGroupRes;
 
 	GRLIB_A3W_Mission_MRR = _aiGroupRes;
 	publicVariable "GRLIB_A3W_Mission_MRR";
