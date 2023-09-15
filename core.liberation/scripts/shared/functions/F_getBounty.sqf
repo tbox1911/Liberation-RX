@@ -42,4 +42,7 @@ if (typeOf _vehicle in _heavy_blu) then {
 	_bonus = 0;
 };
 
+_bounty = _bounty + floor random 6;
+_bonus = _bonus + floor random 3;
+
 [_bounty, _bonus];
