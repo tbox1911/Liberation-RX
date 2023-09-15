@@ -24,9 +24,8 @@ publicVariable "GRLIB_global_stop";
 // weather cloudy
 [] spawn {
 	while { overcast <= 0.85 } do {
-		chosen_weather = (overcast + 0.10);
-		publicVariable "chosen_weather";
-		0 setOvercast chosen_weather;
+		_chosen_weather = (overcast + 0.10);
+		0 setOvercast _chosen_weather;
 		forceWeatherChange;
 		sleep 20;
 	};
