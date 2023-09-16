@@ -69,9 +69,11 @@ while {alive _unit || !_unit_captured } do {
 
 		_grp = createGroup [GRLIB_side_civilian, true];
 		[_unit] joinSilent _grp;
+		_unit playMoveNow "AmovPercMstpSnonWnonDnon_AmovPsitMstpSnonWnonDnon_ground";
 		_unit disableAI "ANIM";
 		_unit disableAI "MOVE";
-		_anim = "AmovPercMstpSnonWnonDnon_AmovPsitMstpSnonWnonDnon_ground";
+		sleep 3;
+		_anim = "AidlPsitMstpSnonWnonDnon_ground00";
 		[_unit, _anim] remoteExec ["switchMove", 0];
 		[_unit, _anim] remoteExec ["playMoveNow", 0];
 		[_unit, _unit_owner] call prisonner_captured;
