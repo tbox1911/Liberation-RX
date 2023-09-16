@@ -36,6 +36,8 @@ _myfpsmarker = createMarker [ format ["fpsmarker%1", _sourcestr ], [ 200, 200 + 
 _myfpsmarker setMarkerType "mil_start";
 _myfpsmarker setMarkerSize [ 0.7, 0.7 ];
 
+waitUntil{ sleep 1; !isNil "opforcap" };
+
 while { true } do {
 
 	_myfps = diag_fps;
