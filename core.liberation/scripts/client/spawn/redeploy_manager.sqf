@@ -106,11 +106,9 @@ while { dialog && alive player && deploy == 0} do {
 
 	if ( lbCurSel 201 != _oldsel ) then {
 		_oldsel = lbCurSel 201;
-		_objectpos = [0,0,0];
-		if ( dialog ) then {
-			_objectpos = ((_choiceslist select _oldsel) select 1);
-		};
-		if ( surfaceIsWater _objectpos) then {
+		_objectpos = ((_choiceslist select _oldsel) select 1);
+		if ( isNil "_objectpos" ) then { _objectpos = [0,0,0] };
+		if ( surfaceIsWater _objectpos ) then {
 			respawn_object setposasl [_objectpos select 0, _objectpos select 1, 15];
 		} else {
 			respawn_object setpos ((_choiceslist select _oldsel) select 1);
