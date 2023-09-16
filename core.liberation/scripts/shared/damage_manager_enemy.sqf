@@ -35,7 +35,7 @@ if (isPlayer _killer && _unit != _killer) then {
 };
 
 if (_veh_unit isKindOf "AllVehicles" && damage _veh_unit >= 0.80) then {
-	{ [_x, false] spawn F_ejectUnit} forEach (crew _veh_unit);	
+	{ [_x, false] spawn F_ejectUnit } forEach (crew _veh_unit);	
 };
 
 _ret;
