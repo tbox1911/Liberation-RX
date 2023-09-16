@@ -1,9 +1,11 @@
 params [ "_targetpos", ["_qrf", false] ];
 
+private _name = "";
 private _unload_dist = 400;
 private _unit_skill = 0.65;
 private _para_squad = [opfor_paratrooper,opfor_paratrooper,opfor_paratrooper,opfor_paratrooper,opfor_paratrooper,opfor_paratrooper,opfor_paratrooper,opfor_rpg];
 if (_qrf == true) then {
+	_name = "QRF-";
 	_unload_dist = 1000;
 	_unit_skill = 0.75;
 	_para_squad = [opfor_squad_leader,opfor_sniper,opfor_marksman,opfor_marksman,opfor_machinegunner,opfor_rpg,opfor_rpg,opfor_at,opfor_grenadier];
@@ -33,7 +35,7 @@ _waypoint setWaypointCompletionRadius 200;
 private _cargo_seat_free = _newvehicle emptyPositions "Cargo";
 if (_cargo_seat_free > 8) then { _cargo_seat_free = 8 };
 if (_cargo_seat_free == 0) exitWith { _pilot_group };
-diag_log format ["Spawn (%1) ParaTroopers (%2) objective %3 at %4", _cargo_seat_free, _qrf, _targetpos, time];
+diag_log format ["Spawn (%1) %2ParaTroopers objective %3 at %4", _cargo_seat_free, _name, _targetpos, time];
 
 private _unitclass = [];
 while { (count _unitclass) < _cargo_seat_free } do { _unitclass pushback (selectRandom _para_squad) };
