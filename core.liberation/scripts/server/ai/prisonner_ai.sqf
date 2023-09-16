@@ -9,6 +9,7 @@ if (!alive _unit) exitWith {};
 _unit setCaptive true;
 _unit setVariable ["GRLIB_is_prisonner", true, true];
 _unit setVariable ["GRLIB_can_speak", true, true];
+_unit switchMove "";
 
 if (!_canmove) then {
 	// Init priso
@@ -23,9 +24,7 @@ if (!_canmove) then {
 	sleep 1;
 	_unit disableAI "ANIM";
 	_unit disableAI "MOVE";
-	_anim = "AmovPercMstpSnonWnonDnon_AmovPercMstpSsurWnonDnon";
-	[_unit, _anim] remoteExec ["switchMove", 0];
-	[_unit, _anim] remoteExec ["playMoveNow", 0];
+	_unit playMoveNow "AmovPercMstpSnonWnonDnon_AmovPercMstpSsurWnonDnon";
 	sleep 3;
 };
 
@@ -42,9 +41,7 @@ if (!alive _unit) exitWith {};
 // Follow
 _unit enableAI "ANIM";
 _unit enableAI "MOVE";
-_anim = "AmovPercMstpSsurWnonDnon_AmovPercMstpSnonWnonDnon";
-[_unit, _anim] remoteExec ["switchMove", 0];
-[_unit, _anim] remoteExec ["playMoveNow", 0];
+_unit playMoveNow "AmovPercMstpSsurWnonDnon_AmovPercMstpSnonWnonDnon";
 sleep 3;
 
 private _unit_captured = false;
@@ -69,13 +66,10 @@ while {alive _unit || !_unit_captured } do {
 
 		_grp = createGroup [GRLIB_side_civilian, true];
 		[_unit] joinSilent _grp;
-		_unit playMoveNow "AmovPercMstpSnonWnonDnon_AmovPsitMstpSnonWnonDnon_ground";
 		_unit disableAI "ANIM";
 		_unit disableAI "MOVE";
-		sleep 3;
-		_anim = "AidlPsitMstpSnonWnonDnon_ground00";
-		[_unit, _anim] remoteExec ["switchMove", 0];
-		[_unit, _anim] remoteExec ["playMoveNow", 0];
+		_unit playMoveNow "AmovPercMstpSnonWnonDnon_AmovPsitMstpSnonWnonDnon_ground";
+		_unit playMove "AidlPsitMstpSnonWnonDnon_ground00";
 		[_unit, _unit_owner] call prisonner_captured;
 		sleep 300;
 		deleteVehicle _unit;
@@ -95,18 +89,15 @@ while {alive _unit || !_unit_captured } do {
 
 			private _flee_grp = createGroup [GRLIB_side_enemy, true];
 			[_unit] joinSilent _flee_grp;
+			[_flee_grp] call F_deleteWaypoints;
 
 			_unit setUnitPos "AUTO";
 			unAssignVehicle _unit;
 			[_unit] spawn F_ejectUnit;
 			sleep 2;
-			_anim = "AmovPercMwlkSrasWrflDf";
-			[_unit, _anim] remoteExec ["switchMove", 0];
-			[_unit, _anim] remoteExec ["playMoveNow", 0];			
-			sleep 2;
+			_unit playMoveNow "AmovPercMwlkSrasWrflDf";
 			private _nearest_sector = [opfor_sectors, _unit] call F_nearestPosition;
-			if (typeName _nearest_sector == "STRING") then {
-				[_flee_grp] call F_deleteWaypoints;
+			if (typeName _nearest_sector == "STRING") then {	
 				private _waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];
 				_waypoint setWaypointType "MOVE";
 				_waypoint setWaypointSpeed "FULL";
