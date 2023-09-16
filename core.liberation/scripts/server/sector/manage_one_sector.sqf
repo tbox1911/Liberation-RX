@@ -165,28 +165,28 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 
 	if ( count _squad1 > 0 ) then {
 		_grp = [ _sector, _infsquad, _squad1 ] call F_spawnRegularSquad;
-		[ _grp, _sectorpos, 100 ] spawn add_defense_waypoints;
+		[ _grp, _sectorpos, 50 ] spawn add_defense_waypoints;
 		_managed_units = _managed_units + (units _grp);
 		sleep 3;
 	};
 
 	if ( count _squad2 > 0 ) then {
 		_grp = [ _sector, _infsquad, _squad2 ] call F_spawnRegularSquad;
-		[ _grp, _sectorpos, 200 ] spawn add_defense_waypoints;
+		[ _grp, _sectorpos, 100 ] spawn add_defense_waypoints;
 		_managed_units = _managed_units + (units _grp);
 		sleep 3;
 	};
 
 	if ( count _squad3 > 0 ) then {
 		_grp = [ _sector, _infsquad, _squad3 ] call F_spawnRegularSquad;
-		[ _grp, _sectorpos, 300 ] spawn add_defense_waypoints;
+		[ _grp, _sectorpos, 200 ] spawn add_defense_waypoints;
 		_managed_units = _managed_units + (units _grp);
 		sleep 3;
 	};
 
 	if ( count _squad4 > 0 ) then {
 		_grp = [ _sector, _infsquad, _squad4 ] call F_spawnRegularSquad;
-		[ _grp, _sectorpos, 400 ] spawn add_defense_waypoints;
+		[ _grp, _sectorpos, 300 ] spawn add_defense_waypoints;
 		_managed_units = _managed_units + (units _grp);
 		sleep 3;
 	};
@@ -206,11 +206,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 	[ markerPos _sector, _building_range, round (_iedcount) ] spawn ied_manager;
 	[ markerPos _sector, _building_range, round (_iedcount) ] spawn ied_trap_manager;
 	[ _sector ] spawn reinforcements_manager;
-	sleep 10;
-
-	diag_log format ["Sector %1 wait attack to finish", _sector];
-
-	[_sectorpos] spawn {
+	[ _sectorpos ] spawn {
 		params ["_pos"];
 		sleep (300 + floor(random 60));
 		if (([_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount) == 0) exitWith {};
@@ -219,9 +215,13 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 		if (([_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount) == 0) exitWith {};
 		if ( combat_readiness > 80 ) then { [_pos, true] spawn send_paratroopers };
 	};
+	sleep 10;
+
+	diag_log format ["Sector %1 wait attack to finish", _sector];
 
 	while { !_stopit } do {
-		if ([_sectorpos, _local_capture_size] call F_sectorOwnership == GRLIB_side_friendly) then {
+		_sector_ownership = [_sectorpos, _local_capture_size] call F_sectorOwnership;
+		if (_sector_ownership == GRLIB_side_friendly) then {
 			[ _sector ] spawn sector_liberated_remote_call;
 			_stopit = true;
 			_enemy_left = [units GRLIB_side_enemy, {(alive _x) && (vehicle _x == _x) && !(_x getVariable ["GRLIB_mission_AI", false]) && (((getmarkerpos _sector) distance2D _x) < _local_capture_size * 1.2)}] call BIS_fnc_conditionalSelect;

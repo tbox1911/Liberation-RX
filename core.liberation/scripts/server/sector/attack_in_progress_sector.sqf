@@ -80,8 +80,10 @@ if ( _ownership == GRLIB_side_enemy ) then {
 		if ( _ownership == GRLIB_side_enemy ) then {
 			blufor_sectors = blufor_sectors - [ _sector ];
 			publicVariable "blufor_sectors";
-			[ _sector, 2 ] remoteExec ["remote_call_sector", 0];
+			opfor_sectors = (sectors_allSectors - blufor_sectors);
+			publicVariable "opfor_sectors";
 			stats_sectors_lost = stats_sectors_lost + 1;
+			[ _sector, 2 ] remoteExec ["remote_call_sector", 0];
 			diag_log format ["Sector %1 Lost at %2", _sector, time];
 		} else {
 			[ _sector, 3 ] remoteExec ["remote_call_sector", 0];
