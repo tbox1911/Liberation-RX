@@ -6,7 +6,7 @@ private _addContainerCargo = {
 	params ["_box", "_item"];
 	private _old_content = everyContainer _box;
 	if (_item isKindOf "Bag_Base") then {
-		_box addBackpackCargo [_item, 1];
+		_box addBackpackCargoGlobal [_item, 1];
 	} else {
 		_box addItemCargoGlobal [_item, 1];
 	};
@@ -43,13 +43,12 @@ if (vest _unit != "") then {
 
 // backpack
 if (backpack _unit != "") then {
-	private _backpack = [_box, (Backpack _unit)] call _addContainerCargo;
+	private _backpack = [_box, (backpack _unit)] call _addContainerCargo;
 	clearItemCargo _backpack;
 	clearWeaponCargo _backpack;
 	clearMagazineCargo _backpack;
-	clearItemCargo _backpack;
 	{_backpack addItemCargoGlobal [_x, 1]} forEach (backpackItems _unit);
-	removeBackpack _unit;
+	removeBackpackGlobal _unit;
 };
 
 // Cleanup
