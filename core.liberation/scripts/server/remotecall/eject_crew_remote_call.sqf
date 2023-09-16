@@ -2,9 +2,9 @@ if (!isServer && hasInterface) exitWith {};
 params ["_player", "_vehicle"];
 
 private _crew = crew _vehicle;
-private _grp = group (_crew select 0);
-
 if (count _crew == 0) exitWith {};
+
+private _grp = group (_crew select 0);
 { [_x, false] spawn F_ejectUnit; sleep 0.1 } forEach _crew;
 
 if (side _grp == GRLIB_side_civilian && !([_player, _vehicle] call is_owner)) then {

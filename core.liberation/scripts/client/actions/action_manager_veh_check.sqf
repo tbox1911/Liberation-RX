@@ -20,7 +20,7 @@ GRLIB_checkAction_Paint = {
 
 GRLIB_checkAction_Eject = {
 	params ["_target", "_unit"];
-	(GRLIB_player_is_menuok && !(typeOf _target in uavs) && count (crew _target) > 0 && [_unit, _target] call is_owner && vehicle _unit == _unit)
+	(GRLIB_player_is_menuok && !(typeOf _target in uavs) && count (crew _target) > 0 && [_unit, _target] call is_owner)
 };
 
 GRLIB_checkAction_Unload = {
