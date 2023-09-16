@@ -45,7 +45,7 @@ GRLIB_checkAction_ReFuel = {
 
 GRLIB_checkAction_Halo = {
 	params ["_target", "_unit"];
-	(GRLIB_player_is_menuok && count (_target getVariable ["GRLIB_ammo_truck_load", []]) == 0 && [_unit, _target] call is_owner && [_target, 'FOB', GRLIB_fob_range] call F_check_near && ([_target, ['LandVehicle','Ship']] call F_itemIsInClass) && locked _target < 2)
+	(GRLIB_player_is_menuok && [_unit, _target] call is_owner && [_target, 'FOB', GRLIB_fob_range] call F_check_near && ([_target, ['LandVehicle','Ship']] call F_itemIsInClass) && locked _target < 2)
 };
 
 GRLIB_checkAction_Wreck = {

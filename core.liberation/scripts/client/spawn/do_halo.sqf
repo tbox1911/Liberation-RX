@@ -7,6 +7,10 @@ if (player getVariable ["GRLIB_action_inuse", false]) exitWith {};
 private _result = true;
 private _cost = GRLIB_AirDrop_Vehicle_cost;
 if (_unit isKindOf "LandVehicle") then {
+	if ( count (_unit getVariable ["GRLIB_ammo_truck_load", []]) > 0 ) exitWith {
+		hintSilent "Loaded Vehicles cannot be dropped!";
+		_result = false;
+	};
 	if ( _unit isKindOf "Truck_F" ) then { _cost = _cost * 1.3 };
 	if ( _unit isKindOf "Wheeled_APC_F" ) then { _cost = _cost * 1.7 };
 	if ( _unit isKindOf "Tank_F" ) then { _cost = _cost * 2 };
