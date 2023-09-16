@@ -11,7 +11,10 @@ if (!local _unit) exitWith {
 	};
 };
 
-if (side group _unit == GRLIB_side_enemy) then { _unit allowDamage false };
+private _backpack = backpack _unit;
+private _unit_side = side group _unit;
+
+if (_unit_side == GRLIB_side_enemy) then { _unit allowDamage false };
 unAssignVehicle _unit;
 [_unit] orderGetIn false;
 
@@ -20,17 +23,11 @@ moveOut _unit;
 sleep 1;
 if (!alive _unit) exitWith {};
 
-if (getPos _unit select 2 >= 50) then {
+if (getPos _unit select 2 >= 50 && _backpack != "B_Parachute") then {
 	_unit setPos (getPos _unit vectorAdd [([[-10,0,10], 3] call F_getRND), ([[-10,0,10], 3] call F_getRND), 0]);
 	
-	private _backpack = backpack _unit;
-	if (_backpack != "B_Parachute") then {
-		private _para = createVehicle ["Steerable_Parachute_F",(getPos _unit),[],0,'none'];
-		_unit moveInDriver _para;
-		sleep 2;
-		if (!alive _unit) then { deleteVehicle _para };
-	};
-
+	private _para = createVehicle ["Steerable_Parachute_F",(getPos _unit),[],0,'none'];
+	_unit moveInDriver _para;
 	[_unit] spawn {
 		params ["_unit"];
 		waituntil {sleep 2; !(alive _unit) || (isTouchingGround _unit)};
@@ -45,7 +42,9 @@ if (getPos _unit select 2 >= 50) then {
 			_unit setVariable ["GRLIB_para_backpack_contents", nil];
 		};
 	};
-	sleep 5;
+	sleep 3;
+	if (!alive _unit) then { deleteVehicle _para };
+	sleep 3;
 };
 
-if (side group _unit == GRLIB_side_enemy) then { sleep 3; _unit allowDamage true };
+if (_unit_side == GRLIB_side_enemy) then { sleep 3; _unit allowDamage true };
