@@ -71,7 +71,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 
 		// Cleanup
 		waitUntil { sleep 10; (GRLIB_global_stop == 1 || [markerpos _spawnsector, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
-		if (!isNull _opfor_veh) then { [_opfor_veh] call clean_vehicle };
+		if (!isNull _opfor_veh) then { [_opfor_veh] spawn clean_vehicle };
 		{ deleteVehicle _x } forEach (units _opfor_grp);
 		deleteGroup _opfor_grp;		
 	};
