@@ -18,7 +18,7 @@ _setupVars =
 
 _setupObjects =
 {
-	_missionPos = (markerpos _missionLocation) getPos [100, random 360];
+	_missionPos = markerpos _missionLocation;
 	_box1 = [ammobox_o_typename, _missionPos, true] call boxSetup;
 	_box2 = [ammobox_o_typename, _missionPos, true] call boxSetup;
 	_vehicle = [_missionPos, selectRandom opfor_boats, true] call F_libSpawnVehicle;
