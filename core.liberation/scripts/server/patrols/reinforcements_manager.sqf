@@ -2,11 +2,11 @@ params [ "_targetsector" ];
 
 if ( GRLIB_endgame == 1 || GRLIB_global_stop == 1 || combat_readiness < 25 || GRLIB_csat_aggressivity < 1 || diag_fps < 30) exitWith {};
 
+diag_log format ["Spawn Reinforcement on Sector %1 at %2", _targetsector, time];
+
 private _targetsector_pos = markerPos _targetsector;
 private _active_players = count ([_targetsector_pos, GRLIB_spawn_max] call F_getNearbyPlayers);
 if (_active_players == 0) exitWith {};
-
-diag_log format ["Spawn Reinforcement on Sector %1 at %2", _targetsector, time];
 
 if ( _targetsector in active_sectors ) then {
 	// before attack

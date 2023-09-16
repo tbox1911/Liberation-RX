@@ -1,22 +1,10 @@
 params ["_grp", "_flagpos", ["_radius", 100]];
-private ["_basepos", "_waypoint"];
 if (isNil "_grp") exitWith {};
 
+private ["_basepos", "_waypoint"];
 [_grp] call F_deleteWaypoints;
 
 private _grp_veh = objectParent (leader _grp);
-private _unarmed = (currentWeapon _grp_veh == "");
-if (!isNull _grp_veh && _unarmed) exitWith {
-	private _nearest_sector = [opfor_sectors, _grp_veh] call F_nearestPosition;
-	private _waypoint = _grp addWaypoint [markerPos _nearest_sector, 0];
-	_waypoint setWaypointType "MOVE";
-	_waypoint setWaypointSpeed "FULL";
-	_waypoint setWaypointBehaviour "SAFE";
-	_waypoint setWaypointCombatMode "WHITE";
-	_waypoint setWaypointCompletionRadius 200;
-	_waypoint setWaypointStatements ["true", "[vehicle this] spawn clean_vehicle"];
-	{_x doFollow leader _grp} foreach units _grp;
-};
 
 private _patrol_in_water = false;
 if (surfaceIsWater _flagpos) then { _patrol_in_water = true; _radius = 60 };
@@ -55,7 +43,8 @@ _waypoint setWaypointType "CYCLE";
 waitUntil {
 	sleep 60;
 	_basepos = (leader _grp) findNearestEnemy (leader _grp);
-	if (!isNull _basepos) then {
+	if (!isNull _basepos && !_patrol_in_water) then {
+		if (_grp_veh isKindOf "Truck_F") then { [_grp] spawn F_ejectGroup };
 		[_grp] call F_deleteWaypoints;
 		_waypoint = _grp addWaypoint [_basepos, _radius];
 		_waypoint setWaypointType "MOVE";
