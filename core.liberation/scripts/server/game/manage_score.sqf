@@ -84,7 +84,7 @@ while { true } do {
 					if (_x getVariable ["GRLIB_player_last_notif", 0] < time) then {
 						_msg = format ["Congratulation <t color='#00ff00'>%1</t> !!<br />You have been promoted to : <t color='#ff0000'>%2</t>.<br /><br />%3", name _x, _new_rank, _msg2];
 						[_msg, 0, 0, 5, 0, 0, 90] remoteExec ["BIS_fnc_dynamicText", owner _x];
-						["FD_Finish_F"] remoteExec ["playSound", owner _x];
+						["FD_Finish_F"] remoteExec ["playSoundNow", owner _x];
 					} else {
 						_msg = format ["You have been promoted to %1.", _new_rank];
 						[gamelogic, _msg] remoteExec ["globalChat", owner _x];
@@ -98,7 +98,7 @@ while { true } do {
 
 					// if rank colonel global greet
 					if (_new_rank == "Colonel") then {
-						["FD_Finish_F"] remoteExec ["playSound", 0];
+						["FD_Finish_F"] remoteExec ["playSoundNow", 0];
 						_text = "Good news soldiers...";
 						[gamelogic, _text] remoteExec ["globalChat", 0];
 						_text = "We have a new Colonel !!";

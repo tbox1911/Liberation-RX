@@ -1,7 +1,7 @@
 if (!isServer && hasInterface) exitWith {};
 params [ "_unit", "_class", "_forced_pos" ];
 {
-	if ((_unit distance2D _x) <= 500) then {["parasound"] remoteExec ["playSound", owner _x]};
+	if ((_unit distance2D _x) <= 500) then {["parasound"] remoteExec ["playSoundNow", owner _x]};
 } forEach (AllPlayers - (entities "HeadlessClient_F"));
 
 private _pos = zeropos;
