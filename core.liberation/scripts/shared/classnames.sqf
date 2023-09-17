@@ -436,7 +436,6 @@ GRLIB_recycleable_classnames = ["LandVehicle","Air","Ship","StaticWeapon","Sling
 } foreach (support_vehicles + buildings + opfor_recyclable);
 GRLIB_recycleable_classnames = GRLIB_recycleable_classnames arrayIntersect GRLIB_recycleable_classnames;
 GRLIB_recycleable_classnames = GRLIB_recycleable_classnames - GRLIB_recycleable_blacklist;
-
 GRLIB_recycleable_info = (light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles + buildings + opfor_recyclable + ind_recyclable);
 
 // Filter Mods
