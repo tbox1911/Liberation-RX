@@ -9,7 +9,7 @@ if (!alive _unit) exitWith {};
 _unit setCaptive true;
 _unit setVariable ["GRLIB_is_prisonner", true, true];
 _unit setVariable ["GRLIB_can_speak", true, true];
-_unit switchMove "";
+[_unit, ""] remoteExec ["switchMove", 0];
 
 if (!_canmove) then {
 	// Init priso
@@ -24,7 +24,9 @@ if (!_canmove) then {
 	sleep 1;
 	_unit disableAI "ANIM";
 	_unit disableAI "MOVE";
-	_unit playMoveNow "AmovPercMstpSnonWnonDnon_AmovPercMstpSsurWnonDnon";
+	_anim = "AmovPercMstpSnonWnonDnon_AmovPercMstpSsurWnonDnon";
+	[_unit, _anim] remoteExec ["switchMove", 0];
+	[_unit, _anim] remoteExec ["playMoveNow", 0];
 	sleep 3;
 };
 
@@ -41,16 +43,17 @@ if (!alive _unit) exitWith {};
 // Follow
 _unit enableAI "ANIM";
 _unit enableAI "MOVE";
-_unit playMoveNow "AmovPercMstpSsurWnonDnon_AmovPercMstpSnonWnonDnon";
+_anim = "AmovPercMstpSsurWnonDnon_AmovPercMstpSnonWnonDnon";
+[_unit, _anim] remoteExec ["switchMove", 0];
+[_unit, _anim] remoteExec ["playMoveNow", 0];
 sleep 3;
 
-private _unit_captured = false;
-while {alive _unit || !_unit_captured } do {
-	_unit_captured = _unit getVariable ["GRLIB_is_prisonner", false];
+private ["_unit_captured", "_no_blufor_near", "_player", "_player_in_action"];
+
+while {alive _unit} do {
 
 	// Captured
-	if ([_unit, "FOB", 30] call F_check_near && isTouchingGround (vehicle _unit)) then {
-		//_unit_captured = true;
+	if ([_unit, "FOB", 30] call F_check_near && isTouchingGround (vehicle _unit)) exitWith {
 		sleep (2 + floor(random 4));
 		private _unit_owner = leader group _unit;
 
@@ -68,49 +71,59 @@ while {alive _unit || !_unit_captured } do {
 		[_unit] joinSilent _grp;
 		_unit disableAI "ANIM";
 		_unit disableAI "MOVE";
-		_unit playMoveNow "AmovPercMstpSnonWnonDnon_AmovPsitMstpSnonWnonDnon_ground";
-		_unit playMove "AidlPsitMstpSnonWnonDnon_ground00";
+		_anim = "AmovPercMstpSnonWnonDnon_AmovPsitMstpSnonWnonDnon_ground";
+		[_unit, _anim] remoteExec ["switchMove", 0];
+		[_unit, _anim] remoteExec ["playMoveNow", 0];
+		sleep 3;
+		_anim = "AidlPsitMstpSnonWnonDnon_ground00";
+		[_unit, _anim] remoteExec ["switchMove", 0];
+		[_unit, _anim] remoteExec ["playMoveNow", 0];
 		[_unit, _unit_owner] call prisonner_captured;
 		sleep 300;
 		deleteVehicle _unit;
 	};
 
 	// Flee
-	waituntil { sleep 1; !(player getVariable ["GRLIB_action_inuse", false]) };
-	if (!_unit_captured) then {
-		private _is_near_blufor = { (alive _x) && !(captive _x) && (_x distance2D _unit <= 100) } count (units GRLIB_side_friendly);
-		if ( _is_near_blufor == 0 && !_friendly ) then {
-			_unit setVariable ["GRLIB_is_prisonner", true, true];
+	_unit_captured = (_unit getVariable ["GRLIB_is_prisonner", false]);
+	_no_blufor_near = ({ (alive _x) && !(captive _x) && (_x distance2D _unit <= 100) } count (units GRLIB_side_friendly) == 0);
+	_player = (_unit getVariable ["GRLIB_captured_by", objNull]);
+	_player_in_action = (_player getVariable ["GRLIB_action_inuse", false]);
 
-			if (side group _unit == GRLIB_side_friendly) then {
-				private _text = format ["Alert! prisonner %1 is escaping!", name _unit];
-				[gamelogic, _text] remoteExec ["globalChat", (owner _unit)];
-			};
+	if ( _no_blufor_near && !_friendly && !_player_in_action && !_unit_captured) then {
+		_unit setVariable ["GRLIB_is_prisonner", true, true];
+		_unit setVariable ["GRLIB_captured_by", nil, true];
 
-			private _flee_grp = createGroup [GRLIB_side_enemy, true];
-			[_unit] joinSilent _flee_grp;
-			[_flee_grp] call F_deleteWaypoints;
+		if (side group _unit == GRLIB_side_friendly) then {
+			private _text = format ["Alert! prisonner %1 is escaping!", name _unit];
+			[gamelogic, _text] remoteExec ["globalChat", (owner _unit)];
+		};
 
-			_unit setUnitPos "AUTO";
-			unAssignVehicle _unit;
-			[_unit] spawn F_ejectUnit;
-			sleep 2;
-			_unit playMoveNow "AmovPercMwlkSrasWrflDf";
-			private _nearest_sector = [opfor_sectors, _unit] call F_nearestPosition;
-			if (typeName _nearest_sector == "STRING") then {	
-				private _waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];
-				_waypoint setWaypointType "MOVE";
-				_waypoint setWaypointSpeed "FULL";
-				_waypoint setWaypointBehaviour "SAFE";
-				_waypoint setWaypointCombatMode "BLUE";
-				_waypoint setWaypointCompletionRadius 50;
-				_waypoint setWaypointStatements ["true", "deleteVehicle this"];
-				{_x doFollow leader _flee_grp} foreach units _flee_grp;
-				sleep 5;
-			} else {
-				{ deleteVehicle _x } forEach (units _flee_grp);
-			};
+		private _flee_grp = createGroup [GRLIB_side_enemy, true];
+		[_unit] joinSilent _flee_grp;
+		[_flee_grp] call F_deleteWaypoints;
+
+		_unit setUnitPos "AUTO";
+		unAssignVehicle _unit;
+		[_unit] spawn F_ejectUnit;
+		sleep 2;
+		_anim = "AmovPercMwlkSrasWrflDf";
+		[_unit, _anim] remoteExec ["switchMove", 0];
+		[_unit, _anim] remoteExec ["playMoveNow", 0];
+		private _nearest_sector = [opfor_sectors, _unit] call F_nearestPosition;
+		if (typeName _nearest_sector == "STRING") then {	
+			private _waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];
+			_waypoint setWaypointType "MOVE";
+			_waypoint setWaypointSpeed "FULL";
+			_waypoint setWaypointBehaviour "SAFE";
+			_waypoint setWaypointCombatMode "BLUE";
+			_waypoint setWaypointCompletionRadius 50;
+			_waypoint setWaypointStatements ["true", "deleteVehicle this"];
+			{_x doFollow leader _flee_grp} foreach units _flee_grp;
+			sleep 5;
+		} else {
+			{ deleteVehicle _x } forEach (units _flee_grp);
 		};
 	};
+
 	sleep 5;
 };

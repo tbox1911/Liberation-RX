@@ -85,6 +85,7 @@ if ( dojump > 0 ) then {
 				[_x, halo_position] spawn paraDrop;
 			} forEach _list;
 		};
+		sleep 3;
 		player setVariable ["GRLIB_action_inuse", false, true];
 	};
 };

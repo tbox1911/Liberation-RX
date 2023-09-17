@@ -232,6 +232,7 @@ if (dialog && deploy == 1) then {
 				_x doFollow leader player;
 				sleep 0.5;
 			} forEach _list;
+			sleep 3;
 			player setVariable ["GRLIB_action_inuse", false, true];
 		};
 		GRLIB_player_spawned = ([] call F_getValid);
