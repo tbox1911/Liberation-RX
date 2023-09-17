@@ -12,7 +12,7 @@ if (_side == GRLIB_side_friendly) then {
     _count = {
         (alive _x) &&
         (_x distance2D _position <= _distance) &&
-        ((getPosATL _x) select 2 < 200) && (speed (vehicle _x) <= 100) &&
+        ((getPosATL _x) select 2 < 150) && (speed (vehicle _x) <= 80) &&
         ((vehicle _x) getVariable ["GRLIB_vehicle_owner", ""] != "server" || (getPosATL _x) select 2 < 100) &&
         (_x getVariable ["PAR_Grp_ID", ""] != "")
     } count _units;
