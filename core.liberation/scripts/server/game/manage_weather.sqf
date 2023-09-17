@@ -28,7 +28,7 @@ while { GRLIB_endgame == 0 } do {
 		if ( _chosen_weather <= 0.5 ) then { 0 setRain 0; 0 setFog 0 };
 		if ( _chosen_weather > 0.5 && _chosen_weather <= 0.8 ) then { 0 setRain 0.2; 0 setFog 0.2 };
 		if ( _chosen_weather > 0.8 ) then { 0 setRain 0.4; 0 setFog 0.4 }; // Removed heavy rain due to severe fps issues
-		setWind [2, 2, true];
+		setWind [(floor random 4), (floor random 4), true];
 		//forceWeatherChange;
 	};
 	sleep _weathertime;
