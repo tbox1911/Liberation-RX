@@ -1,17 +1,12 @@
 params ["_fob", "_owner"];
 
 _fob allowDamage false;
-_fob addEventHandler ["HandleDamage", {0}];
 private _fob_class = typeOf _fob;
 
 // Add owner sign
 private _fobdir = getDir _fob;
-private _offset = [[-6, -5, -0.2], -_fobdir];
-if (_fob_class == FOB_outpost ) then { _offset = [[5, -3, -0.2], -_fobdir] };
-private _sign_pos = (getposATL _fob) vectorAdd (_offset call BIS_fnc_rotateVector2D);
-private _sign = createVehicle [FOB_sign, _sign_pos, [], 0, "CAN_COLLIDE"];
+private _sign = createVehicle [FOB_sign, zeropos, [], 0, "CAN_COLLIDE"];
 _sign allowDamage false;
-_sign addEventHandler ["HandleDamage", { 0 }];
 
 if (_fob_class == FOB_outpost ) then {
 	_sign setDir (_fobdir - 90);
@@ -20,8 +15,13 @@ if (_fob_class == FOB_outpost ) then {
 	[_fob] call fob_init_officer;
 };
 
+private _offset = [[-6, -5, -0.2], -_fobdir];
+if (_fob_class == FOB_outpost ) then { _offset = [[5, -3, -0.2], -_fobdir] };
+private _sign_pos = (getposATL _fob) vectorAdd (_offset call BIS_fnc_rotateVector2D);
+_sign setPosATL _sign_pos;
 _sign setObjectTextureGlobal [0, getMissionPath "res\splash_libe2.paa"];
 _sign setVariable ["GRLIB_vehicle_owner", _owner, true];
+
 if (count GRLIB_all_fobs == 0) then {
 	_sign setVariable ["GRLIB_vehicle_owner", "public", true];
 };

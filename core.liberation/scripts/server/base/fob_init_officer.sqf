@@ -8,7 +8,7 @@ if (isNull GRLIB_FOB_Group) then {
 };
 
 private _fobdir = getDir _fob; 
-private _deskPos = (getPosATL _fob) vectorAdd ([[1, 2, 0.5], -_fobdir] call BIS_fnc_rotateVector2D); 
+private _deskPos = (getPosATL _fob) vectorAdd ([[1, 2, 0.6], -_fobdir] call BIS_fnc_rotateVector2D); 
 private _desk = "MapBoard_seismic_F" createVehicle zeropos; 
 _desk allowDamage false; 
 _desk setDir (_fobdir + 55);
