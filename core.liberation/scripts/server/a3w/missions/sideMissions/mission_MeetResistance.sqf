@@ -123,9 +123,7 @@ _failedExec = {
 
 _successExec = {
 	// Mission completed
-	{ 	_x setVariable ["R3F_LOG_disabled", false, true];
-		_x setVariable ["GRLIB_vehicle_owner", nil, true];
-	} forEach [_box1, _box2];
+	{ [_x, "abandon"] call F_vehicleLock } forEach [_box1, _box2];
 	_successHintMessage = ["STR_RESISTANCE_MESSAGE3", sideMissionColor, _townName];
 	{ deleteVehicle _x } forEach [_tent1, _chair1, _chair2, _fire1, _veh1, _veh2];
 	{ deleteVehicle _x } forEach units _aiGroupRes;

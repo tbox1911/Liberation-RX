@@ -65,8 +65,7 @@ if (_enable_objectives) then {
     if (typeOf _x isKindof "AllVehicles" || _x in _base_objectives) then {
         _x allowDamage true;
         _x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-        _x setVariable ["GRLIB_vehicle_owner", "server", true];
-        _x lock 2;
+        [_x, "lock", "server"] call F_vehicleLock;  
     };
 } foreach (_base_objectives + _base_objects);
 

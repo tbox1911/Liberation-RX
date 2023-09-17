@@ -43,10 +43,7 @@ _failedExec = {
 
 _successExec = {
 	// Mission completed
-	{
-		_x setVariable ["R3F_LOG_disabled", false, true];
-		_x setVariable ["GRLIB_vehicle_owner", nil, true];
-	} forEach [_box1, _box2, _box3];
+	{ [_x, "abandon"] call F_vehicleLock } forEach [_box1, _box2, _box3];
 	_successHintMessage = "STR_WEAPCACHE_MESSAGE2";
 	[_missionPos] call showlandmines;
 	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];

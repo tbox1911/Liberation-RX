@@ -25,8 +25,7 @@ _setupObjects =
 	_vehicle allowDamage false;
 	_vehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	_vehicle setPos (getPos _vehicle);
-	[_vehicle, "lock"] call F_vehicleLock;
-	_vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
+	[_vehicle, "lock", "server"] call F_vehicleLock;
 	_vehicle setFuel 0.1;
 	_vehicle setVehicleAmmo 0.1;
 	_vehicle engineOn false;
@@ -58,8 +57,7 @@ _failedExec = {
 
 _successExec = {
 	// Mission completed
-	[_vehicle, "unlock"] call F_vehicleLock;
-	_vehicle setVariable ["GRLIB_vehicle_owner", nil, true];
+	[_vehicle, "abandon"] call F_vehicleLock;
 	deleteVehicle _smoke;
 	_successHintMessage = format ["The %1 has been captured, well done.", _vehicleName];
 	[_missionPos] call showlandmines;

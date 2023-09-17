@@ -20,8 +20,7 @@ _setupObjects =
 	_missionPos = (markerpos _missionLocation) getPos [100, random 360];
 	_vehiclePos = _missionPos findEmptyPosition [1, 60, "B_Heli_Transport_03_unarmed_F"];
 	_vehicle = [_vehiclePos, selectRandom opfor_vehicles, true, false, GRLIB_side_civilian] call F_libSpawnVehicle;
-	_vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
-	[_vehicle, "lock"] call F_vehicleLock;
+	[_vehicle, "lock", "server"] call F_vehicleLock;
 	_vehicle setFuel 0.1;
 	_vehicle setVehicleAmmo 0.1;
 	_vehicle setHit [getText (configFile >> "cfgVehicles" >> (typeOf _vehicle) >> "HitPoints" >> "HitEngine" >> "name"), 1];
@@ -49,8 +48,7 @@ _failedExec = {
 
 _successExec = {
 	// Mission completed
-	[_vehicle, "unlock"] call F_vehicleLock;
-	_vehicle setVariable ["GRLIB_vehicle_owner", nil, true];
+	[_vehicle, "abandon"] call F_vehicleLock;
 	deleteVehicle _smoke;
 	_successHintMessage = ["STR_VEHICLECAP_MESSAGE2", _vehicleName];
 	[_missionPos] call showlandmines;

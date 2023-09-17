@@ -65,8 +65,7 @@ _successExec = {
 
 	{
 		if (typeOf _x isKindof "AllVehicles") then {
-			_x setVariable ["GRLIB_vehicle_owner", nil, true];
-			_x lock 0;
+			[_x, "abandon"] call F_vehicleLock;
 		};
 	} foreach _vehicles;
 
