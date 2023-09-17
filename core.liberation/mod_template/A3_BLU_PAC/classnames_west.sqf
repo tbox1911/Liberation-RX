@@ -37,7 +37,7 @@ infantry_units_west = [
 	["B_T_Diver_F",1,20,0,GRLIB_perm_log],
 	["B_T_ghillie_tna_F",1,40,0,GRLIB_perm_log],
 	["B_T_Soldier_AA_F",1,50,0,GRLIB_perm_log],
-	["B_T_Soldier_AA_F",1,50,0,GRLIB_perm_log],
+	["B_T_Soldier_AT_F",1,50,0,GRLIB_perm_log],
 	[crewman_classname,1,10,0,GRLIB_perm_inf],
 	[pilot_classname,1,10,0,GRLIB_perm_log]
 ];
