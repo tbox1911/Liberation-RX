@@ -82,12 +82,6 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
         private _nextdir = [vectorDir _x, vectorUp _x];
         private _hascrew = false;
         private _owner = "";
-        private _color = "";
-        private _color_name = "";
-        private _lst_a3 = [];
-        private	_lst_r3f = [];
-        private	_lst_grl = [];
-        private _compo = [];
 
         if ( _nextclass in GRLIB_classnames_to_save_blu + all_hostile_classnames ) then {
             if (side group _x != GRLIB_side_enemy) then {
@@ -109,10 +103,12 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
                         };
                     } else {
                         //_color = _x getVariable ["GRLIB_vehicle_color", ""];
-                        _color = "";
-                        _color_name = _x getVariable ["GRLIB_vehicle_color_name", ""];
-                        _compo = _x getVariable ["GRLIB_vehicle_composant", []];
-                        _lst_a3 = [_x] call F_getCargo;
+                        private _color = "";
+                        private _color_name = _x getVariable ["GRLIB_vehicle_color_name", ""];
+                        private _compo = _x getVariable ["GRLIB_vehicle_composant", []];
+                        private _lst_a3 = [_x] call F_getCargo;
+                        private	_lst_r3f = [];
+                        private	_lst_grl = [];
                         {_lst_r3f pushback (typeOf _x)} forEach (_x getVariable ["R3F_LOG_objets_charges", []]);
                         {_lst_grl pushback (typeOf _x)} forEach (_x getVariable ["GRLIB_ammo_truck_load", []]);
                         buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner, _color, _color_name, _lst_a3, _lst_r3f, _lst_grl, _compo];
