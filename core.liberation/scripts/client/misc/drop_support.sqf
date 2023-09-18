@@ -113,6 +113,7 @@ if (do_action == 1) then {
 	};
 
 	if ([_cost] call F_pay) then {
+		playSound "parasound";
 		[player, _class] remoteExec ["airdrop_remote_call", 2];
 	};
 };

@@ -7,10 +7,6 @@ if (player getVariable ["GRLIB_action_inuse", false]) exitWith {};
 private _result = true;
 private _cost = GRLIB_AirDrop_Vehicle_cost;
 if (_unit isKindOf "LandVehicle") then {
-	if ( count (_unit getVariable ["GRLIB_ammo_truck_load", []]) > 0 ) exitWith {
-		hintSilent "Loaded Vehicles cannot be dropped!";
-		_result = false;
-	};
 	if ( _unit isKindOf "Truck_F" ) then { _cost = _cost * 1.3 };
 	if ( _unit isKindOf "Wheeled_APC_F" ) then { _cost = _cost * 1.7 };
 	if ( _unit isKindOf "Tank_F" ) then { _cost = _cost * 2 };
@@ -58,6 +54,7 @@ if ( dojump > 0 ) then {
 	halo_position = [ halo_position, floor(random 100), floor(random 360) ] call BIS_fnc_relPos;
 	if (_unit isKindOf "LandVehicle" || _unit isKindOf "Ship") then {
 		if ([_cost] call F_pay) then {
+			playSound "parasound";
 			halo_position set [2, 1000];
 			[player, _unit, halo_position] remoteExec ["airdrop_remote_call", 2];
 		};
