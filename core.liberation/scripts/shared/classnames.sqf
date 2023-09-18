@@ -242,6 +242,7 @@ if ( isNil "guard_squad" ) then {
 		"O_GEN_Soldier_F"
 	];
 };
+
 if ( isNil "guard_loadout_overide" ) then {
 	guard_loadout_overide = [
 		"O_GEN_Commander_F"
@@ -282,6 +283,10 @@ if ( isNil "resistance_squad" ) then {
 
 if ( isNil "resistance_squad_static" ) then {
 	resistance_squad_static = "I_static_AA_F";
+};
+
+if ( isNil "vip_vehicle" ) then {
+	vip_vehicle = "C_Offroad_01_covered_F";
 };
 
 // *** SOURCES ***

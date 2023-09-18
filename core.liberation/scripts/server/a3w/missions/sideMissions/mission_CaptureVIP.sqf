@@ -27,7 +27,7 @@ _setupObjects =
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 
 	// veh1 + squad
-	_vehicle1 = [_missionPos, opfor_mrap_hmg, false, false, GRLIB_side_civilian] call F_libSpawnVehicle;
+	_vehicle1 = [_missionPos, vip_vehicle, false, false, GRLIB_side_civilian] call F_libSpawnVehicle;
 	_vehicle1 allowCrewInImmobile [true, true];
 	_vehicle1 setVariable ["GRLIB_mission_AI", true, true];
 	_vehicle1 addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage }];
@@ -40,8 +40,7 @@ _setupObjects =
 	sleep 2;
 
 	// veh2 + vip + squad
-	private _vehicleClass = "C_Offroad_01_covered_F"; // opfor_mrap_hmg
-	_vehicle2 = [_missionPos, _vehicleClass, false, false, GRLIB_side_civilian] call F_libSpawnVehicle;
+	_vehicle2 = [_missionPos, vip_vehicle, false, false, GRLIB_side_civilian] call F_libSpawnVehicle;
 	_vehicle2 allowCrewInImmobile [true, true];
 	_vehicle2 setVariable ["GRLIB_mission_AI", true, true];
 	_vehicle2 addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage }];
@@ -61,7 +60,7 @@ _setupObjects =
 	sleep 2;
 
 	// veh3 + squad
-	_vehicle3 = [_missionPos, opfor_mrap_hmg, false, false, GRLIB_side_civilian] call F_libSpawnVehicle;
+	_vehicle3 = [_missionPos, vip_vehicle, false, false, GRLIB_side_civilian] call F_libSpawnVehicle;
 	_vehicle3 allowCrewInImmobile [true, true];
 	_vehicle3 setVariable ["GRLIB_mission_AI", true, true];
 	_vehicle3 addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage }];
