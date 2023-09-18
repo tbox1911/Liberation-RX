@@ -46,8 +46,6 @@ units_loadout_overide = [
 	"B_crew_F"
 ];
 
-
-
 // *** RESISTANCE - FIA Blu
 resistance_squad = [
 	"B_G_Soldier_AR_F",
@@ -63,9 +61,6 @@ resistance_squad = [
 	"B_G_Soldier_TL_F",
 	"B_G_Soldier_exp_F"
 ];
-
-resistance_squad_static = "B_G_HMG_02_high_F";
-
 
 light_vehicles = [
 	["B_T_Quadbike_01_F",1,5,1,0],
@@ -143,10 +138,6 @@ static_vehicles = [
 
 // *** Static Weapon with AI ***
 static_vehicles_AI = [
-	"B_T_HMG_01_F",
-	"B_T_GMG_01_F",
-	"B_T_Static_AA_F",
-	"B_T_Static_AT_F",
 	"B_SAM_System_03_F",
 	"B_SAM_System_01_F",
 	"B_SAM_System_02_F",
