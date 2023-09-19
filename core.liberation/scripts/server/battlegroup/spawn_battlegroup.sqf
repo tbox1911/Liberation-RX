@@ -39,8 +39,8 @@ if (_spawn_marker != "") then {
 	};
 
 	{
-		_nextgrp = createGroup [GRLIB_side_enemy, true];
-		_vehicle = [markerpos _spawn_marker, _x] call F_libSpawnVehicle;
+		private _nextgrp = createGroup [GRLIB_side_enemy, true];
+		private _vehicle = [markerpos _spawn_marker, _x] call F_libSpawnVehicle;
 		_vehicle setVariable ["GRLIB_counter_TTL", round(time + 3600)];  // 60 minutes TTL
 		(crew _vehicle) joinSilent _nextgrp;
 		[_nextgrp, _objective_pos] spawn battlegroup_ai;
@@ -49,10 +49,10 @@ if (_spawn_marker != "") then {
 		if ( ( _x in opfor_troup_transports_truck + opfor_troup_transports_heli) && (opforcap < GRLIB_battlegroup_cap)) then {
 			[_vehicle, _objective_pos] spawn troup_transport;
 		};
-		sleep 2;
+		sleep 10;
 	} foreach _selected_opfor_battlegroup;
 
-	sleep 5;
+	sleep 15;
 	if ( GRLIB_csat_aggressivity > 0.7 ) then {
 		if (floor random 2 == 0) then {
 			[_objective_pos, GRLIB_side_enemy, 4] spawn spawn_air;
@@ -61,7 +61,7 @@ if (_spawn_marker != "") then {
 		};
 	};
 
-	sleep 5;
+	sleep 15;
 
 	combat_readiness = combat_readiness - (_target_size * 1.75);
 	if ( combat_readiness < 0 ) then { combat_readiness = 0 };

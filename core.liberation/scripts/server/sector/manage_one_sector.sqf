@@ -148,6 +148,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 		[group ((crew _vehicle) select 0), _sectorpos] spawn add_defense_waypoints;
 		_managed_units pushback _vehicle;
 		{ _managed_units pushback _x } foreach (crew _vehicle);
+		sleep 3;
 	} foreach _vehtospawn;
 
 	if ( _building_ai_max > 0 ) then {
