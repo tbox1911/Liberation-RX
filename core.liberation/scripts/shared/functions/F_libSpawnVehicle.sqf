@@ -15,46 +15,51 @@ private _airveh_alt = 300;
 private _radius = GRLIB_capture_size;
 private _max_try = 10;
 
-if ( _precise_position ) then {
-	_spawnpos = _sectorpos;
-} else {
-	while { count _spawnpos == 0 && _max_try > 0 } do {
-		_spawnpos = [4, _sectorpos, _radius, 30, true] call R3F_LOG_FNCT_3D_tirer_position_degagee_sol;
-		_radius = _radius + 20;
-		_max_try = _max_try -1;
-		sleep 0.5;
-	};
-};
-
-if ( count _spawnpos == 0 ) then {
-	_spawnpos = _sectorpos findEmptyPosition [0, _radius, _classname];
-};
-
-if ( count _spawnpos == 0 ) exitWith { diag_log format ["--- LRX Error: Cannot find place to build vehicle %1 at position %2", _classname, _sectorpos]; objNull };
-
 if ( _classname isKindOf "Air" ) then {
+	private _spawn_sector = ([sectors_airspawn, [_sectorpos], { (markerpos _x) distance2D _input0 }, "ASCEND"] call BIS_fnc_sortBy) select 0;
+	_spawnpos = markerPos _spawn_sector;
 	if ( _side == GRLIB_side_civilian ) then { _airveh_alt = 150 };
 	_spawnpos set [2, _airveh_alt];
 	_vehicle = createVehicle [_classname, _spawnpos, [], 200, "FLY"];
+	_vehicle allowDamage false;
 } else {
-	_spawnpos set [2, 0.5];
-	if (surfaceIsWater _spawnpos && !(_classname isKindOf "Ship")) then {
-		_classname = "";
-		if (count opfor_boats >= 1 && _side == GRLIB_side_enemy) then {
-			_classname = selectRandom opfor_boats;
-		};
-		if (count civilian_boats >= 1 && _side == GRLIB_side_civilian) then {
-			_classname = selectRandom civilian_boats;
+	if ( _precise_position ) then {
+		_spawnpos = _sectorpos;
+	} else {
+		while { count _spawnpos == 0 && _max_try > 0 } do {
+			_spawnpos = [6, _sectorpos, _radius, 30, true] call R3F_LOG_FNCT_3D_tirer_position_degagee_sol;
+			_radius = _radius + 20;
+			_max_try = _max_try -1;
+			sleep 0.2;
 		};
 	};
+	if ( count _spawnpos == 0 ) then {
+		_spawnpos = _sectorpos findEmptyPosition [0, _radius, _classname];
+	};
+
+	if ( count _spawnpos == 0 ) exitWith { diag_log format ["--- LRX Error: Cannot find place to build vehicle %1 at position %2", _classname, _sectorpos]; objNull };
+
+	if (_classname isKindOf "LandVehicle") then {
+		_spawnpos set [2, 0.5];
+		if (surfaceIsWater _spawnpos && !(_classname isKindOf "Ship")) then {
+			_classname = "";
+			if (count opfor_boats >= 1 && _side == GRLIB_side_enemy) then {
+				_classname = selectRandom opfor_boats;
+			};
+			if (count civilian_boats >= 1 && _side == GRLIB_side_civilian) then {
+				_classname = selectRandom civilian_boats;
+			};
+		};
+	};
+
 	if (_classname != "") then {
-		_vehicle = createVehicle [_classname, _spawnpos, [], 0, "NONE"];
+		_vehicle = createVehicle [_classname, zeropos, [], 0, "NONE"];
+		_vehicle allowDamage false;
+		_vehicle setPos _spawnpos;
 	};
 };
 
 if ( isNull _vehicle ) exitWith { diag_log format ["--- LRX Error: Cannot build vehicle at position %1", _sectorpos]; objNull };
-
-_vehicle allowDamage false;
 
 if ( _vehicle isKindOf "Air" ) then {
 	if (GRLIB_SOG_enabled) then { _airveh_alt = 50 };
