@@ -74,7 +74,7 @@ while {alive _unit} do {
 		_anim = "AmovPercMstpSnonWnonDnon_AmovPsitMstpSnonWnonDnon_ground";
 		[_unit, _anim] remoteExec ["switchMove", 0];
 		[_unit, _anim] remoteExec ["playMoveNow", 0];
-		sleep 3;
+		sleep 2.5;
 		_anim = "AidlPsitMstpSnonWnonDnon_ground00";
 		[_unit, _anim] remoteExec ["switchMove", 0];
 		[_unit, _anim] remoteExec ["playMoveNow", 0];
@@ -101,7 +101,8 @@ while {alive _unit} do {
 		private _flee_grp = createGroup [GRLIB_side_enemy, true];
 		[_unit] joinSilent _flee_grp;
 		[_flee_grp] call F_deleteWaypoints;
-
+		_unit enableAI "ANIM";
+		_unit enableAI "MOVE";
 		_unit setUnitPos "AUTO";
 		unAssignVehicle _unit;
 		[_unit] spawn F_ejectUnit;
