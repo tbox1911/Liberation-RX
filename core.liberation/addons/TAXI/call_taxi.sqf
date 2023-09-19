@@ -35,13 +35,9 @@ if (_nb_unit > 8) then {_taxi_type = selectRandom taxi_type_14};
 hintSilent format [localize "STR_TAXI_CALLED", getText(configFile >> "cfgVehicles" >> _taxi_type >> "DisplayName")];
 
 // Create Taxi
-private _air_spawnpos = [] call F_getNearestFob;
-if (isNil "GRLIB_all_fobs" || count GRLIB_all_fobs == 0) then {
-	_air_spawnpos = getPos lhd;
-};
-
-private _air_spawnpos = [(((_air_spawnpos select 0) + 125) - floor(random 250)),(((_air_spawnpos select 1) + 125) - floor(random 250)), 120];
-private _vehicle = createVehicle [_taxi_type, _air_spawnpos, [], 0, "FLY"];
+private _spawn_sector = ([sectors_airspawn, [_dest], {(markerpos _x) distance2D _input0}, "ASCEND"] call BIS_fnc_sortBy) select 0;
+private _spawn_pos = markerPos _spawn_sector;
+private _vehicle = createVehicle [_taxi_type, _spawn_pos, [], 0, "FLY"];
 if (isNil "_vehicle") exitWith { diag_log format ["--- LRX Error: Taxi %1 create failed!", _taxi_type]};
 if (_taxi_type isKindOf "Heli_Light_01_civil_base_F") then {
 	[_vehicle, false, ["AddDoors",1,"AddBackseats",1,"AddTread",1,"AddTread_Short",0]] call BIS_fnc_initVehicle;

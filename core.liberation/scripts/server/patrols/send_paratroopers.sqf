@@ -11,8 +11,7 @@ if (_qrf == true) then {
 	_para_squad = [opfor_squad_leader,opfor_sniper,opfor_marksman,opfor_marksman,opfor_machinegunner,opfor_rpg,opfor_rpg,opfor_at,opfor_grenadier];
 };
 
-private _spawnsector = ( [ sectors_airspawn , [ _targetpos ] , { (markerpos _x) distance2D _input0 }, "ASCEND"] call BIS_fnc_sortBy ) select 0;
-private _newvehicle = [markerpos _spawnsector, selectRandom opfor_troup_transports_heli] call F_libSpawnVehicle;
+private _newvehicle = [_targetpos, selectRandom opfor_troup_transports_heli] call F_libSpawnVehicle;
 private _pilot_group = createGroup [GRLIB_side_enemy, true];
 (crew _newvehicle) joinSilent _pilot_group;
 
@@ -39,7 +38,7 @@ diag_log format ["Spawn (%1) %2ParaTroopers objective %3 at %4", _cargo_seat_fre
 
 private _unitclass = [];
 while { (count _unitclass) < _cargo_seat_free } do { _unitclass pushback (selectRandom _para_squad) };
-private _para_group = [markerpos _spawnsector, _unitclass, GRLIB_side_enemy, "para"] call F_libSpawnUnits;
+private _para_group = [zeropos, _unitclass, GRLIB_side_enemy, "para"] call F_libSpawnUnits;
 {
 	_x assignAsCargoIndex [_newvehicle, _forEachIndex + 1];
 	_x moveInCargo _newvehicle;
