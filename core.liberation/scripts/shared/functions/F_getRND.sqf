@@ -9,6 +9,5 @@ private _rnd = 0;
 
 while {!(_rnd != 0) || !(abs _rnd > _min)} do {
 	_rnd = (floor random _range);
-	sleep 0.1;
 };   
 _rnd;

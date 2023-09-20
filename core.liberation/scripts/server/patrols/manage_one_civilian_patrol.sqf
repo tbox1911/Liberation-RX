@@ -4,7 +4,8 @@ private [
 	"_spawnsector",
 	"_civ_grp",
 	"_civ_veh",
-	"_unit_ttl"
+	"_unit_ttl",
+	"_unit_pos"
 ];
 
 while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
@@ -25,7 +26,8 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 		_spawnsector = selectRandom _usable_sectors;
 		_civ_grp = [_spawnsector] call F_spawnCivilians;
 		if (!isNull _civ_grp) then {
-				// 40% in vehicles
+			_unit_pos = getPos (leader _civ_grp);
+			// 40% in vehicles
 			if ( floor(random 100) > 60 ) then {
 				_civ_veh = [markerPos _spawnsector, (selectRandom civilian_vehicles), false, false, GRLIB_side_civilian] call F_libSpawnVehicle;
 				{ _x moveInAny _civ_veh } forEach (units _civ_grp);

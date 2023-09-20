@@ -9,7 +9,11 @@ if ( _sector in sectors_bigtown ) then {
 };
 
 private _spawnpos = [(((_sectorpos select 0) + (75 * _spread)) - (random (150 * _spread))),(((_sectorpos select 1) + (75 * _spread)) - (random (150 * _spread))),0.3];
-private _grp = [_spawnpos, [selectRandom civilians], GRLIB_side_civilian, "civilian"] call F_libSpawnUnits;
+private _class_civ = [];
+for "_i" from 1 to (1 + (floor (random 2))) do {
+	_class_civ pushBack (selectRandom civilians);
+};
+private _grp = [_spawnpos, _class_civ, GRLIB_side_civilian, "civilian"] call F_libSpawnUnits;
 {
 	_x setVariable ['GRLIB_can_speak', true, true];
 	_x addEventHandler ["HandleDamage", {
