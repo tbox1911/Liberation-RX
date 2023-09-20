@@ -1,8 +1,8 @@
-params ["_group"];
-if (isNull _group) exitWith {};
+params ["_grp"];
+if (isNull _grp) exitWith {};
 
-while {(count (waypoints _group)) != 0} do {
-	deleteWaypoint ((waypoints _group) select 0);
-	sleep 0.1;
+for "_i" from count (waypoints _grp) to 0 step -1 do {
+	deleteWaypoint ((waypoints _grp) select _i);
 };
-sleep 1;
+
+sleep 0.5;

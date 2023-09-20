@@ -10,7 +10,7 @@ private _max_try = 100;
 if (isNull _civveh) then {
 	_basepos = getPosATL (leader _grp);
 	while { (count (waypoints _grp) <= 4) && _max_try > 0} do {
-		_radius = GRLIB_capture_size + ([[-50,0,50], 3] call F_getRND);
+		_radius = GRLIB_capture_size + ([[-50,0,50], 0] call F_getRND);
 		_nextpos = _basepos getPos [_radius, random 360];
 		if !(surfaceIsWater _nextpos) then {
 			_waypoint = _grp addWaypoint [_nextpos, 0];
@@ -41,7 +41,6 @@ if (isNull _civveh) then {
 		if (_civveh isKindOf "Ship") then {
 			{
 				if (count (waypoints _grp) <= 5) then {
-					diag_log ["scan sector", _x];
 					_markerpos = markerPos _x;
 					_nextpos = _markerpos;
 					_max_try = 100;
