@@ -7,7 +7,7 @@ if (local _medic && (_my_medic != _medic)) exitWith { [_medic, _wnded] call PAR_
 if (lifeState _wnded != "INCAPACITATED" || (!alive _wnded)) exitWith { [_medic, _wnded] call PAR_fn_medicRelease };
 
 if (!isPlayer _medic) then {
-  _msg = format [localize "STR_PAR_ST_01", name _medic, name _wnded];
+  private _msg = format [localize "STR_PAR_ST_01", name _medic, name _wnded];
   [_wnded, _msg] call PAR_fn_globalchat;
   _bleedOut = _wnded getVariable ["PAR_BleedOutTimer", 0];
   _wnded setVariable ["PAR_BleedOutTimer", _bleedOut + PAR_BleedOutExtra, true];
@@ -65,8 +65,10 @@ if (_wnded == player) then {
 };
 [_medic, _wnded] call PAR_fn_medicRelease;
 
-if (underwater vehicle _medic) then {_medic switchMove ""};
-if (underwater vehicle _wnded) then {_wnded switchMove ""};
+private _pos = getPos _medic;
+if (surfaceIsWater _pos) then { _pos set [2, -2]; _medic setPosASL _pos; _medic switchMove "" };
+private _pos = getPos _wnded;
+if (surfaceIsWater _pos) then { _pos set [2, -2]; _wnded setPosASL _pos; _wnded switchMove "" };
 
 [_wnded] spawn {
     params ["_unit"];

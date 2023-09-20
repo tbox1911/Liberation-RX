@@ -2,7 +2,7 @@ params ["_medic"];
 
 _search_radius = 30;
 
-private _wounded_list = PAR_AI_bros select {
+private _wnded_list = PAR_AI_bros select {
   round (_x distance2D _medic) < _search_radius &&
   vehicle _x == _x &&
   alive _x &&
@@ -13,38 +13,38 @@ private _wounded_list = PAR_AI_bros select {
   isNil {_x getVariable 'PAR_healed'}
 };
 
-if (count (_wounded_list) > 0) then {
-	_wounded = _wounded_list select 0;
-	if (_medic != _wounded) then {
-		_medic groupchat format [localize "STR_PAR_CW_01", name _wounded];
+if (count (_wnded_list) > 0) then {
+	_wnded = _wnded_list select 0;
+	if (_medic != _wnded) then {
+		_medic groupchat format [localize "STR_PAR_CW_01", name _wnded];
 	};
 	_medic setVariable ['PAR_heal', true];
-	_wounded setVariable ['PAR_healed', true];
+	_wnded setVariable ['PAR_healed', true];
 
-	if (!isplayer _wounded && _medic != _wounded) then {
-		doStop _wounded;
+	if (!isplayer _wnded && _medic != _wnded) then {
+		doStop _wnded;
 	};
 
 	while {
-		alive _wounded &&
+		alive _wnded &&
 		alive _medic &&
-		isNil {_wounded getVariable 'PAR_busy'} &&
+		isNil {_wnded getVariable 'PAR_busy'} &&
 		isNil {_medic getVariable 'PAR_busy'} &&
-		lifeState _wounded != 'INCAPACITATED' &&
+		lifeState _wnded != 'INCAPACITATED' &&
 		lifeState _medic != 'INCAPACITATED' &&
-		damage _wounded  >= 0.1 &&
+		damage _wnded  >= 0.1 &&
 		vehicle _medic == _medic &&
-		vehicle _wounded == _wounded &&
+		vehicle _wnded == _wnded &&
 		(behaviour _medic) != "COMBAT" &&
-		(behaviour _wounded) != "COMBAT" &&
-		(round (_medic distance2D _wounded) > 3 && round (_medic distance2D _wounded) < _search_radius)
+		(behaviour _wnded) != "COMBAT" &&
+		(round (_medic distance2D _wnded) > 3 && round (_medic distance2D _wnded) < _search_radius)
 	} do {
-		_medic doMove (getPosATL _wounded);
-		sleep 4;
+		_medic doMove (getPosATL _wnded);
+		sleep 5;
 	};
 
-	if (lifeState _medic != 'INCAPACITATED' && lifeState _wounded != 'INCAPACITATED' && round (_medic distance2D _wounded) <= 3) then {
-		_azimuth = _medic getDir _wounded;
+	if (lifeState _medic != 'INCAPACITATED' && lifeState _wnded != 'INCAPACITATED' && round (_medic distance2D _wnded) <= 3) then {
+		_azimuth = _medic getDir _wnded;
 		_medic setDir _azimuth;
 
 		if (stance _medic == 'PRONE') then {
@@ -53,14 +53,18 @@ if (count (_wounded_list) > 0) then {
 			_medic playMoveNow 'ainvpknlmstpslaywrfldnon_medicother';
 		};
 		sleep 7;
-		if (lifeState _medic != 'INCAPACITATED' && lifeState _wounded != 'INCAPACITATED' && round (_medic distance2D _wounded) <= 3) then {
-			_wounded setDamage 0;
+		if (lifeState _medic != 'INCAPACITATED' && lifeState _wnded != 'INCAPACITATED' && round (_medic distance2D _wnded) <= 3) then {
+			_wnded setDamage 0;
 		};
+		private _pos = getPos _medic;
+		if (surfaceIsWater _pos) then { _pos set [2, -2]; _medic setPosASL _pos; _medic switchMove "" };
+		private _pos = getPos _wnded;
+		if (surfaceIsWater _pos) then { _pos set [2, -2]; _wnded setPosASL _pos; _wnded switchMove "" };		
 	};
 
 	sleep 2;
 	_medic setVariable ['PAR_heal', nil];
 	_medic doFollow leader player;
-	_wounded setVariable ['PAR_healed', nil];
-	_wounded doFollow leader player;
+	_wnded setVariable ['PAR_healed', nil];
+	_wnded doFollow leader player;
 };
