@@ -2,6 +2,7 @@ params [ "_unit", ["_friendly", false], ["_canmove", false] ];
 
 if (_unit getVariable ["GRLIB_mission_AI", false]) exitWith {};
 if (_unit getVariable ["GRLIB_is_prisonner", false]) exitWith {};
+if (_unit skill "courage" == 1) exitWith {};
 
 sleep 3;
 if (!alive _unit) exitWith {};
@@ -77,7 +78,7 @@ while {alive _unit} do {
 		sleep 2.5;
 		_anim = "AidlPsitMstpSnonWnonDnon_ground00";
 		[_unit, _anim] remoteExec ["switchMove", 0];
-		[_unit, _anim] remoteExec ["playMoveNow", 0];
+		//[_unit, _anim] remoteExec ["playMoveNow", 0];
 		[_unit, _unit_owner] call prisonner_captured;
 		sleep 300;
 		deleteVehicle _unit;
@@ -100,7 +101,6 @@ while {alive _unit} do {
 
 		private _flee_grp = createGroup [GRLIB_side_enemy, true];
 		[_unit] joinSilent _flee_grp;
-		[_flee_grp] call F_deleteWaypoints;
 		_unit enableAI "ANIM";
 		_unit enableAI "MOVE";
 		_unit setUnitPos "AUTO";
@@ -110,6 +110,8 @@ while {alive _unit} do {
 		_anim = "AmovPercMwlkSrasWrflDf";
 		[_unit, _anim] remoteExec ["switchMove", 0];
 		[_unit, _anim] remoteExec ["playMoveNow", 0];
+
+		[_flee_grp] call F_deleteWaypoints;
 		private _nearest_sector = [opfor_sectors, _unit] call F_nearestPosition;
 		if (typeName _nearest_sector == "STRING") then {	
 			private _waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];

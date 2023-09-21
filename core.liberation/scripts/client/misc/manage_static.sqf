@@ -1,4 +1,4 @@
-if (isServer) exitWith {};
+waitUntil {sleep 1; GRLIB_player_spawned};
 
 private [ "_all_static", "_static" ];
 private _static_classname = list_static_weapons - static_vehicles_AI;

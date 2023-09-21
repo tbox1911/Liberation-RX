@@ -225,7 +225,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 		if (_sector_ownership == GRLIB_side_friendly) then {
 			[ _sector ] spawn sector_liberated_remote_call;
 			_stopit = true;
-			_enemy_left = [units GRLIB_side_enemy, {(alive _x) && (vehicle _x == _x) && !(_x getVariable ["GRLIB_mission_AI", false]) && (((getmarkerpos _sector) distance2D _x) < _local_capture_size * 1.2)}] call BIS_fnc_conditionalSelect;
+			_enemy_left = [units GRLIB_side_enemy, {(alive _x) && (vehicle _x == _x) && (((getmarkerpos _sector) distance2D _x) < _local_capture_size * 1.2)}] call BIS_fnc_conditionalSelect;
 			{
 				if ( _max_prisonners > 0 && ((floor random 100) < GRLIB_surrender_chance) ) then {
 					[_x] spawn prisonner_ai;
