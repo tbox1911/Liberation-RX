@@ -10,9 +10,7 @@ private _nb_unit = count _classname;
 if (_nb_unit == 0) exitWith {diag_log ["--- LRX Error: no unit to create.", _this]; grpNull};
 _nb_unit = _nb_unit min round (16 * ([] call F_adaptiveOpforFactor));
 
-if (_type != "civilian") then {
-	diag_log format [ "Spawn (%1) %2 Units (%3) at %4", _nb_unit, _type, _side, time ];
-};
+diag_log format [ "Spawn (%1) %2 Units (%3) at %4", _nb_unit, _type, _side, time ];
 
 private _grp = createGroup [_side, true];
 if (isNull _grp) exitWith { diag_log "--- LRX Error: cannot create group."; grpNull};
@@ -72,7 +70,6 @@ private ["_unit", "_backpack"];
 
 [_grp] spawn {
 	params ["_grp"];
-	[_grp] call F_deleteWaypoints;
 	_grp setCombatMode "WHITE";
 	_grp setCombatBehaviour "COMBAT";
 	sleep 3;

@@ -8,7 +8,7 @@ if (!isServer) exitWith {};
 if (!isNil "GRLIB_A3W_Mission_MR") exitWith {};
 #include "sideMissionDefines.sqf"
 
-private ["_fobList", "_aiGroup", "_grp_hvt", "_civilians", "_nbUnits"];
+private ["_fobList", "_aiGroup", "_grp_hvt", "_grp_civ", "_nbUnits"];
 
 _setupVars =
 {
@@ -71,12 +71,8 @@ _setupObjects =
 	_aiGroup setSpeedMode "NORMAL";
 
 	// Spawn civvies
-	_civilians = [];
-	for "_i" from 0 to (5 + random(5)) do {
-		_civ_grp = [_hvt_pos, [selectRandom civilians], GRLIB_side_civilian, "civilian"] call F_libSpawnUnits;
-		[_civ_grp, _hvt_pos, 50] call BIS_fnc_taskPatrol;
-		_civilians pushBack _civ_grp;
-	};
+	_grp_civ = [_hvt_pos, (5 + random(5))] call F_spawnCivilians;
+	[_grp_civ] spawn add_civ_waypoints;
 
 	_missionPos = _hvt_pos;
 	_missionPicture = getText (configFile >> "CfgVehicles" >> (_vehicleClass param [0, ""]) >> "picture");
@@ -90,7 +86,7 @@ _waitUntilSuccessCondition = { ({alive _x} count (units _grp_hvt) == 0) };
 
 _failedExec = {
 	// Mission failed
-	{{deleteVehicle _x} forEach (units _x)} forEach _civilians;
+	{ deleteVehicle _x } forEach units _grp_civ;
 	{ deleteVehicle _x } forEach units _grp_hvt;
 };
 
@@ -98,7 +94,7 @@ _successExec =
 {	
 	// Mission completed
 	_successHintMessage = "STR_HOSTILE_OFFICER_MESSAGE2";
-	{{deleteVehicle _x} forEach (units _x)} forEach _civilians;
+	{ deleteVehicle _x } forEach _grp_civ;
 	if (combat_readiness > 20) then { combat_readiness = combat_readiness - 15 };
 };
 

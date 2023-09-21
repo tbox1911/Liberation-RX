@@ -1,7 +1,5 @@
-params [ "_sector" ];
-private _sectorpos = getMarkerPos _sector;
-private _units_civ = { alive _x && !(typeOf _x in [SHOP_Man, SELL_Man, commander_classname])} count units GRLIB_side_civilian;
-if (_units_civ >= (GRLIB_civilians_amount * 3)) exitWith {grpNull};
+params [ "_sectorpos", ["_nbunit", 1] ];
+private ["_unit"];
 
 private _spread = 1;
 if ( _sector in sectors_bigtown ) then {
@@ -10,13 +8,16 @@ if ( _sector in sectors_bigtown ) then {
 
 private _spawnpos = [(((_sectorpos select 0) + (75 * _spread)) - (random (150 * _spread))),(((_sectorpos select 1) + (75 * _spread)) - (random (150 * _spread))),0.3];
 private _class_civ = [];
-for "_i" from 1 to (1 + (floor (random 2))) do {
+for "_i" from 1 to _nbunit do {
 	_class_civ pushBack (selectRandom civilians);
 };
-private _grp = [_spawnpos, _class_civ, GRLIB_side_civilian, "civilian"] call F_libSpawnUnits;
+
+private _grp = createGroup [GRLIB_side_civilian, true];
 {
-	_x setVariable ['GRLIB_can_speak', true, true];
-	_x addEventHandler ["HandleDamage", {
+	_unit = _grp createUnit [_x, _spawnpos, [], 20, "NONE"];
+	_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+	_unit setVariable ['GRLIB_can_speak', true, true];
+	_unit addEventHandler ["HandleDamage", {
 		params ["_unit", "_selection", "_damage", "_source"];
 		private _dam = 0;
 		if ( side _source == GRLIB_side_friendly ) then {
@@ -27,6 +28,7 @@ private _grp = [_spawnpos, _class_civ, GRLIB_side_civilian, "civilian"] call F_l
 		};
 		_dam;
 	}];
-} forEach (units _grp);
+} foreach _class_civ;
+
 //diag_log format [ "Done Spawning civilian %1 at %2", typeOf _civ_unit, time ];
 _grp;

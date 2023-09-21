@@ -7,7 +7,7 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_nbUnits", "_intels", "_civilians"];
+private ["_nbUnits", "_intels", "_grp_civ"];
 
 _setupVars =
 {
@@ -142,12 +142,8 @@ _setupObjects =
 	} forEach (units _aiGroup);
 
 	//----- spawn civilians ---------------------------------
-	_civilians = [];
-	for "_i" from 0 to (5 + random(5)) do {
-		_civ_grp = [_missionPos, [selectRandom civilians], GRLIB_side_civilian, "civilian"] call F_libSpawnUnits;
-		[_civ_grp, _missionPos, 75] call BIS_fnc_taskPatrol;
-		_civilians pushBack _civ_grp;
-	};
+	_grp_civ = [_hvt_pos, (5 + random(5))] call F_spawnCivilians;
+	[_grp_civ] spawn add_civ_waypoints;
 
 	//----- spawn mines ---------------------------------
 	[_missionPos, 30] call createlandmines;
@@ -201,7 +197,7 @@ _waitUntilCondition = {
 
 _failedExec = {
 	// Mission failed
-	{{deleteVehicle _x} forEach (units _x)} forEach _civilians;
+	{ deleteVehicle _x } forEach units _grp_civ;
 	[_missionPos] call clearlandmines;
 	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
@@ -218,7 +214,7 @@ _successExec = {
 	} forEach (AllPlayers - (entities "HeadlessClient_F"));
 
 	_successHintMessage = "STR_SEARCH_INTEL_MESSAGE2";
-	{{deleteVehicle _x} forEach (units _x)} forEach _civilians;
+	{ deleteVehicle _x } forEach units _grp_civ;
 	[_missionPos] call showlandmines;
 	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };

@@ -37,7 +37,7 @@ _setupObjects =
 	_managed_units = (["militia", (_nbUnits - 4), _buildingpositions, _missionPos] call F_spawnBuildingSquad);
 	_aiGroup = [_missionPos, (_nbUnits - (count _managed_units)), "militia"] call createCustomGroup;
 	_managed_units joinSilent _aiGroup;
-	{ _x setVariable ["GRLIB_mission_AI", nil, true] } forEach (units _aiGroup);
+	{ _x setVariable ["GRLIB_mission_AI", false, true] } forEach (units _aiGroup);
 	_missionHintText = ["STR_INSURGENCY_MESSAGE1", sideMissionColor, _townName];
 	A3W_sectors_in_use = A3W_sectors_in_use + [_missionLocation];
 	true;

@@ -48,15 +48,11 @@ _setupObjects =
 	_managed_units = (["militia", (_nbUnits - 4), _buildingpositions, _missionPos] call F_spawnBuildingSquad);
 	_aiGroup = [_missionPos, (_nbUnits - (count _managed_units)), "militia"] call createCustomGroup;
 	_managed_units joinSilent _aiGroup;
-	{ _x setVariable ["GRLIB_mission_AI", nil, true] } forEach (units _aiGroup);	
+	{ _x setVariable ["GRLIB_mission_AI", false, true] } forEach (units _aiGroup);	
 
 	// Spawn civvies
-	_civilians = [];
-	for "_i" from 0 to (5 + random(5)) do {
-		_civ_grp = [_missionPos, [selectRandom civilians], GRLIB_side_civilian, "civilian"] call F_libSpawnUnits;
-		[_civ_grp, _missionPos, 75] call BIS_fnc_taskPatrol;
-		_civilians pushBack _civ_grp;
-	};
+	_grp_civ = [_hvt_pos, (5 + random(5))] call F_spawnCivilians;
+	[_grp_civ] spawn add_civ_waypoints;
 
 	_missionHintText = ["STR_INVASION_MESSAGE1", sideMissionColor, _townName, _nbUnits];
 	A3W_sectors_in_use = A3W_sectors_in_use + [_missionLocation];
@@ -70,7 +66,7 @@ _waitUntilCondition = { !(_missionLocation in blufor_sectors) };
 _failedExec = {
 	// Mission failed
 	{ deleteVehicle _x } forEach [_tent1, _chair1, _chair2, _fire1];
-	{{deleteVehicle _x} forEach (units _x)} forEach _civilians;
+	{ deleteVehicle _x } forEach units _grp_civ;
 	[_missionPos] call clearlandmines;
 	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
@@ -91,7 +87,7 @@ _successExec = {
 
 	_successHintMessage = ["STR_INVASION_MESSAGE2", sideMissionColor, _townName];
 	{ deleteVehicle _x } forEach [_tent1, _chair1, _chair2, _fire1];
-	{{deleteVehicle _x} forEach (units _x)} forEach _civilians;
+	{ deleteVehicle _x } forEach units _grp_civ;
 	[_missionPos] call showlandmines;
 	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
