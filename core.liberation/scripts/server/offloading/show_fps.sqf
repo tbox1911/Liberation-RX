@@ -40,8 +40,6 @@ _myfpsmarker setMarkerSize [ 0.7, 0.7 ];
 
 while { true } do {
 	_myfps = diag_fps;
-	_units_civ = { alive _x && !(typeOf _x in [SHOP_Man, SELL_Man, WRHS_Man])} count units GRLIB_side_civilian;
-
 	_myfpsmarker setMarkerColor "ColorGREEN";
 	if ( _myfps < 30 ) then { _myfpsmarker setMarkerColor "ColorYELLOW"; };
 	if ( _myfps < 20 ) then { _myfpsmarker setMarkerColor "ColorORANGE"; };
@@ -49,7 +47,7 @@ while { true } do {
 
 	_myfpsmarker setMarkerText format [ "%1: %2 fps - Up: %6 - civ:%3 blu:%4 red:%5",
 		_sourcestr, ( round ( _myfps * 100.0 ) ) / 100.0 ,
-		_units_civ, unitcap, opforcap,
+		civcap, unitcap, opforcap,
 		[time/3600,"HH:MM:SS"] call BIS_fnc_timeToString];
 
 	sleep 15;
