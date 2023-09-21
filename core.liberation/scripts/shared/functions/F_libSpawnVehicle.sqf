@@ -16,8 +16,12 @@ private _radius = GRLIB_capture_size;
 private _max_try = 10;
 
 if ( _classname isKindOf "Air" ) then {
-	private _spawn_sector = ([sectors_airspawn, [_sectorpos], { (markerpos _x) distance2D _input0 }, "ASCEND"] call BIS_fnc_sortBy) select 0;
-	_spawnpos = markerPos _spawn_sector;
+	private _spawn_sectors = ([sectors_airspawn, [_sectorpos], { (markerpos _x) distance2D _input0 }, "ASCEND"] call BIS_fnc_sortBy);
+	{
+		_spawnpos = markerPos _x;
+		if (_spawnpos distance2D _sectorpos > GRLIB_spawn_min) exitWith {};
+	} foreach _spawn_sectors;
+
 	if ( _side == GRLIB_side_civilian ) then { _airveh_alt = 150 };
 	_spawnpos set [2, _airveh_alt];
 	_vehicle = createVehicle [_classname, _spawnpos, [], 200, "FLY"];
