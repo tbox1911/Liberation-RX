@@ -11,7 +11,6 @@ if (!isNull _instigator) then {
 	};
 };
 
-private _ret = _amountOfDamage;
 private _veh_unit = vehicle _unit;
 private _veh_killer = vehicle _killer;
 
@@ -19,17 +18,14 @@ if ((_unit isKindOf "CAManBase") && (isPlayer _killer) && !(isPlayer _unit) && (
 	// Friendly fires penalty
 	if (_veh_unit != _veh_killer && _amountOfDamage > 0.15) then {
 		if ( _unit getVariable ["GRLIB_isProtected", 0] < time ) then {
-			private _msg = format ["%1 - Hey %2! Watch your fire!", localize "STR_FRIENDLY_FIRE", name _killer];
+			private _msg = format ["%1 (%2)", localize "STR_FRIENDLY_FIRE", name _killer];
 			[gamelogic, _msg] remoteExec ["globalChat", 0];
 			[_killer, -5] remoteExec ["F_addScore", 2];
 			_unit setVariable ["GRLIB_isProtected", round(time + 3), true];
 		};
-		if (GRLIB_revive != 0) then { _ret = _amountOfDamage min 0.86 };
 	};
 };
 
 if ((_unit isKindOf "AllVehicles") && (damage _unit >= 0.80)) then {
 	{ [_x, false] spawn F_ejectUnit} forEach (crew _unit);	
 };
-
-_ret;
