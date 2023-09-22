@@ -1,6 +1,11 @@
 params ["_grp", "_objective_pos"];
-private ["_waypoint", "_nearset_fob_name"];
+private ["_waypoint", "_wp0", "_nearset_fob_name"];
 diag_log format ["Battlegroup %1 - Objective %2", _grp, _objective_pos];
+
+private _civveh = objectParent (leader _grp);
+if (_civveh isKindOf "Ship") exitWith {
+	[_grp, getPosATL _civveh] spawn add_defense_waypoints;
+};
 
 while { ({alive _x} count (units _grp) > 0) && ( GRLIB_endgame == 0 ) } do {
 
@@ -20,7 +25,7 @@ while { ({alive _x} count (units _grp) > 0) && ( GRLIB_endgame == 0 ) } do {
 
 	if (_objective_pos isEqualTo zeropos) exitWith {
 		// Cleanup
-		{ 
+		{
 			if (!isNull objectParent _x) then { [vehicle _x] call clean_vehicle };
 			deleteVehicle _x;
 			sleep 0.1;
@@ -31,6 +36,7 @@ while { ({alive _x} count (units _grp) > 0) && ( GRLIB_endgame == 0 ) } do {
 	[_objective_pos] remoteExec ["remote_call_incoming", 0];
 
 	[_grp] call F_deleteWaypoints;
+
 	_waypoint = _grp addWaypoint [_objective_pos, 100];
 	_waypoint setWaypointType "MOVE";
 	_waypoint setWaypointSpeed "NORMAL";
@@ -42,8 +48,10 @@ while { ({alive _x} count (units _grp) > 0) && ( GRLIB_endgame == 0 ) } do {
 	_waypoint = _grp addWaypoint [_objective_pos, 100];
 	_waypoint setWaypointType "SAD";
 	_waypoint = _grp addWaypoint [_objective_pos, 100];
-	_waypoint setWaypointType "SAD";		
-	_waypoint = _grp addWaypoint [_objective_pos, 100];
+	_waypoint setWaypointType "SAD";
+
+	_wp0 = waypointPosition [_grp, 0];
+	_waypoint = _grp addWaypoint [_wp0, 0];
 	_waypoint setWaypointType "CYCLE";
 	{_x doFollow (leader _grp)} foreach units _grp;
 	sleep 30;

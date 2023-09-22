@@ -29,7 +29,7 @@ if ( local _grp ) then {
 // Wait
 private _unit_ttl = round (time + 1800);
 waitUntil {
-    sleep 30;
+    sleep 60;
     (
         GRLIB_global_stop == 1 ||
         (diag_fps < 25) ||
@@ -40,7 +40,7 @@ waitUntil {
 };
 
 // Cleanup
-waitUntil { sleep 10; (GRLIB_global_stop == 1 || [markerPos _sector, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+waitUntil { sleep 30; (GRLIB_global_stop == 1 || [markerPos _sector, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
 if (!isNull _vehicle) then { [_vehicle] spawn clean_vehicle };
 { deleteVehicle _x } forEach (units _grp);
 deleteGroup _grp;

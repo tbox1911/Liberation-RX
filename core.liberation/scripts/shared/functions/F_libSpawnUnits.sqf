@@ -1,8 +1,8 @@
 params [
-    "_spawnpos",                    // position to spawn
-    ["_classname", []],             // array of classname to create
-    ["_side", GRLIB_side_enemy],    // side of units group
-    ["_type", "infantry"],          // type of unit
+	"_spawnpos",                    // position to spawn
+	["_classname", []],             // array of classname to create
+	["_side", GRLIB_side_enemy],    // side of units group
+	["_type", "infantry"],          // type of unit
 	["_onground", true]				// unit on ground
 ];
 
@@ -19,13 +19,13 @@ private ["_unit", "_backpack"];
 {
 	if ( (count units _grp) < _nb_unit) then {
 
-        if (_type == "divers") then {
-            _spawnpos = _spawnpos vectorAdd [floor(random 20), floor(random 20), -5];
-        };
+		if (_type == "divers") then {
+			_spawnpos = _spawnpos vectorAdd [floor(random 20), floor(random 20), -5];
+		};
 
-        if (_type == "para") then {
-            _spawnpos = _spawnpos vectorAdd [floor(random 20), floor(random 20), 0];
-        };
+		if (_type == "para") then {
+			_spawnpos = _spawnpos vectorAdd [floor(random 20), floor(random 20), 0];
+		};
 
 		_unit = _grp createUnit [_x, _spawnpos, [], 20, "NONE"];
 		if (!isNil "_unit") then {
@@ -56,7 +56,7 @@ private ["_unit", "_backpack"];
 				// try to fix pos on rock/object (thanks Larrow)
 				_spawnpos = getPosATL _unit;
 				_start = +_spawnpos;
-				_start set [2, 50];
+				_start set [2, 80];
 				while { (lineIntersects [ATLToASL _start, ATLToASL _spawnpos]) } do {
 					_spawnpos set [2, ((_spawnpos select 2) + 0.25)]
 				};
