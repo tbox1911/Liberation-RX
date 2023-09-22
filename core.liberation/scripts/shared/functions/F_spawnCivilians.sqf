@@ -1,20 +1,25 @@
-params [ "_sectorpos", ["_nbunit", 1] ];
+params [ "_sectorpos", ["_nb_unit", 1] ];
 private ["_unit"];
 
-private _spread = 1;
-if ( _sector in sectors_bigtown ) then {
-	_spread = 2.5;
-};
+private _spread = 2;
+if ( _nb_unit > 10 ) then { _spread = 3 };
 
-private _spawnpos = [(((_sectorpos select 0) + (75 * _spread)) - (random (150 * _spread))),(((_sectorpos select 1) + (75 * _spread)) - (random (150 * _spread))),0.3];
 private _class_civ = [];
-for "_i" from 1 to _nbunit do {
+for "_i" from 1 to _nb_unit do {
 	_class_civ pushBack (selectRandom civilians);
 };
 
+private _spawnpos = [];
 private _grp = createGroup [GRLIB_side_civilian, true];
 {
-	_unit = _grp createUnit [_x, _spawnpos, [], 20, "NONE"];
+	_spawnpos = [(((_sectorpos select 0) + (75 * _spread)) - (random (150 * _spread))),(((_sectorpos select 1) + (75 * _spread)) - (random (150 * _spread))),0.3];
+	while { (surfaceIsWater _spawnpos) } do {
+		_spawnpos = [(((_sectorpos select 0) + (75 * _spread)) - (random (150 * _spread))),(((_sectorpos select 1) + (75 * _spread)) - (random (150 * _spread))),0.3];
+		sleep 0.1;
+	};
+
+	_unit = _grp createUnit [_x, _spawnpos, [], 100, "NONE"];
+	_unit allowDamage false;
 	_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	_unit setVariable ['GRLIB_can_speak', true, true];
 	_unit addEventHandler ["HandleDamage", {
@@ -28,6 +33,18 @@ private _grp = createGroup [GRLIB_side_civilian, true];
 		};
 		_dam;
 	}];
+
+	_spawnpos = getPosATL _unit;
+	_start = +_spawnpos;
+	_start set [2, 80];
+	while { (lineIntersects [ATLToASL _start, ATLToASL _spawnpos]) } do {
+		_spawnpos set [2, ((_spawnpos select 2) + 0.25)]
+	};
+	_unit setPosATL _spawnpos;
+	_unit switchMove "AmovPercMwlkSrasWrflDf";
+	_unit playMoveNow "AmovPercMwlkSrasWrflDf";
+	sleep 1;
+	_unit allowDamage true;
 } foreach _class_civ;
 
 //diag_log format [ "Done Spawning civilian %1 at %2", typeOf _civ_unit, time ];

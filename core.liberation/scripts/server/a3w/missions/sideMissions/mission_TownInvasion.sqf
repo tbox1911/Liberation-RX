@@ -52,7 +52,7 @@ _setupObjects =
 
 	// Spawn civvies
 	_grp_civ = [_hvt_pos, (5 + random(5))] call F_spawnCivilians;
-	[_grp_civ] spawn add_civ_waypoints;
+	[_grp_civ, _missionPos] spawn add_civ_waypoints;
 
 	_missionHintText = ["STR_INVASION_MESSAGE1", sideMissionColor, _townName, _nbUnits];
 	A3W_sectors_in_use = A3W_sectors_in_use + [_missionLocation];

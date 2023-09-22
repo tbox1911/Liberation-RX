@@ -143,7 +143,7 @@ _setupObjects =
 
 	//----- spawn civilians ---------------------------------
 	_grp_civ = [_hvt_pos, (5 + random(5))] call F_spawnCivilians;
-	[_grp_civ] spawn add_civ_waypoints;
+	[_grp_civ, _missionPos] spawn add_civ_waypoints;
 
 	//----- spawn mines ---------------------------------
 	[_missionPos, 30] call createlandmines;
