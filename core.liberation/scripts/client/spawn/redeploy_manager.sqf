@@ -149,7 +149,6 @@ while { dialog && alive player && deploy == 0} do {
 };
 
 if (dialog && deploy == 1) then {
-
 	// Manage Player Loadout
 	if ( !GRLIB_player_spawned ) then {
 		// respawn loadout
@@ -184,12 +183,13 @@ if (dialog && deploy == 1) then {
 	// Redeploy
 	_idxchoice = lbCurSel 201;
 	_spawn_str = (_choiceslist select _idxchoice) select 0;
+	player setVariable ["GRLIB_action_inuse", true, true];
 
 	if (((_choiceslist select _idxchoice) select 0) == _basenamestr) then {
 		// LHD (Chimera)
 		call respawn_lhd;
+		player setVariable ["GRLIB_action_inuse", false, true];
 	} else {
-		player setVariable ["GRLIB_action_inuse", true, true];
 		private _destpos = zeropos;
 		private _destdir = random 360;
 		private _destdist = 4;
@@ -246,10 +246,8 @@ deleteVehicle respawn_object;
 camUseNVG false;
 "spawn_marker" setMarkerPosLocal markers_reset;
 
-if (dialog) then {
-	closeDialog 0;
-	(findDisplay 5201) displayRemoveEventHandler ["KeyDown", _noesckey];
-};
+closeDialog 0;
+(findDisplay 5201) displayRemoveEventHandler ["KeyDown", _noesckey];
 
 if (alive player && deploy == 1) then {
 	if (isNil "_spawn_str") then {_spawn_str = "Somewhere."};
