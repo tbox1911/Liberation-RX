@@ -29,7 +29,6 @@ _setupObjects =
 	// veh1 + squad
 	_vehicle1 = [_missionPos, vip_vehicle, false, false, GRLIB_side_civilian] call F_libSpawnVehicle;
 	_vehicle1 allowCrewInImmobile [true, true];
-	_vehicle1 setVariable ["GRLIB_mission_AI", true, true];
 	_vehicle1 addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage }];
 	_grp = [_missionPos, 5, "guard"] call createCustomGroup;
 	{
@@ -42,7 +41,6 @@ _setupObjects =
 	// veh2 + vip + squad
 	_vehicle2 = [_missionPos, vip_vehicle, false, false, GRLIB_side_civilian] call F_libSpawnVehicle;
 	_vehicle2 allowCrewInImmobile [true, true];
-	_vehicle2 setVariable ["GRLIB_mission_AI", true, true];
 	_vehicle2 addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage }];
 	_vehicle2 setConvoySeparation 30;
 	_grp = [_missionPos, 4, "guard"] call createCustomGroup;
@@ -62,7 +60,6 @@ _setupObjects =
 	// veh3 + squad
 	_vehicle3 = [_missionPos, vip_vehicle, false, false, GRLIB_side_civilian] call F_libSpawnVehicle;
 	_vehicle3 allowCrewInImmobile [true, true];
-	_vehicle3 setVariable ["GRLIB_mission_AI", true, true];
 	_vehicle3 addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage }];
 	_vehicle3 setConvoySeparation 30;
 	_grp = [_missionPos, 5, "guard"] call createCustomGroup;
@@ -142,14 +139,14 @@ _waitUntilSuccessCondition = { side group _vip == GRLIB_side_friendly };
 
 _failedExec = {
 	// Mission failed
-	_failedHintMessage = format ["The V.I.P is <br/><t color='%1'>DEAD</t>!!.<br/>We have lost a valuable source of information.<br/><br/>Better luck next time!", sideMissionColor];
+	_failedHintMessage = format ["The V.I.P is <br/><t color='%1'>ESCAPED</t>!<br/>We have lost a valuable source of information.<br/><br/>Better luck next time!", sideMissionColor];
 	deleteVehicle _vip;
 };
 
 _successExec =
 {
 	// Mission completed
-	_successHintMessage = "Congratulation the V.I.P has been captured!<br/>Bring him back to any FOB for interrogation.";
+	_successHintMessage = "Congratulation the V.I.P has been <t color='%1'>CAPTURED</t>!<br/>Bring him back to any FOB for interrogation.";
 };
 
 _this call sideMissionProcessor;

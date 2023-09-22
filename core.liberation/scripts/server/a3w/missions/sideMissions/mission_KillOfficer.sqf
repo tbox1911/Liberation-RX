@@ -20,8 +20,7 @@ _setupVars =
 _setupObjects =
 {
 	if (count _fobList == 0) exitWith { false };
-	_sector = selectRandom _fobList;
-	_missionPos = markerPos _sector;
+	_missionPos = markerPos (selectRandom _fobList);
 	_missionPos = _missionPos getPos [80, random 360];
 	_vehicleClass = opfor_mrap_hmg;
 
@@ -57,7 +56,6 @@ _setupObjects =
 	private _vehicle1_pos = getPos (selectRandom _roads);
 	if (isNil "_vehicle1_pos") then { _vehicle1_pos = _hvt_pos; precise = false };
 	private _vehicle1 = [_vehicle1_pos, _vehicleClass, _precise] call F_libSpawnVehicle;
-	_vehicle1 setVariable ["GRLIB_mission_AI", true, true];
 	_vehicle1 allowCrewInImmobile true;
 	createVehicleCrew _vehicle1;
 	sleep 1;
@@ -72,7 +70,7 @@ _setupObjects =
 
 	// Spawn civvies
 	_grp_civ = [_hvt_pos, (5 + random(5))] call F_spawnCivilians;
-	[_grp_civ] spawn add_civ_waypoints;
+	[_grp_civ, _missionPos] spawn add_civ_waypoints;
 
 	_missionPos = _hvt_pos;
 	_missionPicture = getText (configFile >> "CfgVehicles" >> (_vehicleClass param [0, ""]) >> "picture");
