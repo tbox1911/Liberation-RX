@@ -75,7 +75,7 @@ while {alive _unit} do {
 		_anim = "AmovPercMstpSnonWnonDnon_AmovPsitMstpSnonWnonDnon_ground";
 		[_unit, _anim] remoteExec ["switchMove", 0];
 		[_unit, _anim] remoteExec ["playMoveNow", 0];
-		sleep 2.5;
+		sleep 2;
 		_anim = "AidlPsitMstpSnonWnonDnon_ground00";
 		[_unit, _anim] remoteExec ["switchMove", 0];
 		//[_unit, _anim] remoteExec ["playMoveNow", 0];
