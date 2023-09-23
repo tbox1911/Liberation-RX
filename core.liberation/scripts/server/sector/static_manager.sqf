@@ -7,7 +7,10 @@ if (_number >= 1) then {
 };
 
 // Create
-private _spawn_pos = [markerPos _sector, floor(random 80), random 360] call BIS_fnc_relPos;
+private _radius = GRLIB_capture_size - 20;
+if (_sector in sectors_bigtown) then { _radius = _radius * 1.4 };
+
+private _spawn_pos = [markerPos _sector, _radius, random 360] call BIS_fnc_relPos;
 if (surfaceIsWater _spawn_pos) exitWith {};
 
 private _grp = createGroup [GRLIB_side_enemy, true];
