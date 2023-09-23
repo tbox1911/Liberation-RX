@@ -57,9 +57,7 @@ _setupObjects =
 	if (isNil "_vehicle1_pos") then { _vehicle1_pos = _hvt_pos; precise = false };
 	private _vehicle1 = [_vehicle1_pos, _vehicleClass, _precise] call F_libSpawnVehicle;
 	_vehicle1 allowCrewInImmobile true;
-	createVehicleCrew _vehicle1;
-	sleep 1;
-	(crew _vehicle1) joinSilent _grp_hmg;
+	_grp_hmg createVehicleCrew _vehicle1;
 
 	// Patrolgroup
 	_aiGroup = [_hvt_pos, _nbUnits, "infantry", true, 40] call createCustomGroup;

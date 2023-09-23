@@ -60,16 +60,14 @@ private _idact_cancel = _vehicle addAction [format ["<t color='#FF0080'>%1</t>",
 private _idact_eject = _vehicle addAction [format ["<t color='#FF0080'>%1</t>", localize "STR_TAXI_ACTION3"], "addons\TAXI\taxi_eject.sqf","",997,false,true,"","vehicle _this == _target && (getPos _target select 2) > 50 && (getPosATL _target) distance2D GRLIB_taxi_helipad > 300"];
 player setVariable ["GRLIB_taxi_called", _vehicle, true];
 
-private _air_grp = createGroup [GRLIB_side_civilian, true];
-createVehicleCrew _vehicle;
-sleep 0.5;
+private _air_grp = GRLIB_side_civilian createVehicleCrew _vehicle;
+sleep 0.1;
 if (count (crew _vehicle) == 0) exitWith { diag_log format ["--- LRX Error: Taxi %1 create crew failed!", _taxi_type]};
 {
-	[_x] joinSilent _air_grp;	
     [_x] orderGetIn true;
 	_x allowDamage false;
 	_x allowFleeing 0;
- } foreach (crew _vehicle);
+ } foreach (units _air_grp);
 _vehicle setVariable ["GRLIB_vehicle_group", _air_grp];
 
 _air_grp setBehaviour "CARELESS";
