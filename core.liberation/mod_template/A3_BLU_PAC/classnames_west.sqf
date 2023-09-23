@@ -162,6 +162,13 @@ buildings_west = [
 	["Flag_NATO_F",0,0,0,0]
 ];
 
+
+// Boats
+boats_west = [
+	"B_Boat_Transport_01_F",
+	"B_Boat_Armed_01_minigun_F"
+];
+
 blufor_squad_inf_light = [
 	"B_T_Soldier_TL_F",
 	"B_T_Soldier_F",
@@ -247,8 +254,6 @@ GRLIB_vehicle_whitelist_west = [
 GRLIB_vehicle_blacklist_west = [
 ];
 
-
-
 GRLIB_AirDrop_1 = [			// cost = 50 Unarmed Offroad
 	"B_T_LSV_01_unarmed_F"
 ];
@@ -268,7 +273,6 @@ GRLIB_AirDrop_4 = [			// cost 300 Large Truck
 GRLIB_AirDrop_5 = [			// cost 750 APC (Armoured personnel carrier)
 	"B_T_APC_Wheeled_01_cannon_F"
 ];
-
 
 GRLIB_AirDrop_6 = [			// cost 250 Boat
 	"B_T_Boat_Transport_01_F"

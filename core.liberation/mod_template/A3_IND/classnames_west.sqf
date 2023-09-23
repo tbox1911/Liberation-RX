@@ -134,6 +134,12 @@ buildings_west = [
 	["Flag_FIA_F",0,0,0,0]
 ];
 
+// Boats
+boats_west = [
+	"I_Boat_Transport_01_F",
+	"I_Boat_Armed_01_minigun_F"
+];
+
 blufor_squad_inf_light = [
 	"I_Soldier_SL_F",
 	"I_medic_F",

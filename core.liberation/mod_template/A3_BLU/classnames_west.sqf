@@ -153,6 +153,12 @@ buildings_west = [
 	["Flag_NATO_F",0,0,0,0]
 ];
 
+// Boats
+boats_west = [
+	"B_Boat_Transport_01_F",
+	"B_Boat_Armed_01_minigun_F"
+];
+
 blufor_squad_inf_light = [
 	"B_Soldier_SL_F",
 	"B_medic_F",

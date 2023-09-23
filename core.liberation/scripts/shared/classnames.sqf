@@ -217,9 +217,7 @@ elite_vehicles = [];
 boats_names = [
 	"C_Scooter_Transport_01_F",
 	"C_Boat_Civil_01_F",
-	"C_Boat_Transport_02_F",
-	"B_Boat_Transport_01_F",
-	"B_Boat_Armed_01_minigun_F"
+	"C_Boat_Transport_02_F"
 ] + opfor_boats + boats_west;
 
 if ( isNil "civilian_boats" ) then {

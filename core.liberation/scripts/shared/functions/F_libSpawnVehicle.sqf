@@ -50,6 +50,9 @@ if ( _classname isKindOf "Air" ) then {
 			if (count opfor_boats >= 1 && _side == GRLIB_side_enemy) then {
 				_classname = selectRandom opfor_boats;
 			};
+			if (count boats_west >= 1 && _side == GRLIB_side_friendly) then {
+				_classname = selectRandom boats_west;
+			};			
 			if (count civilian_boats >= 1 && _side == GRLIB_side_civilian) then {
 				_classname = selectRandom civilian_boats;
 			};
@@ -63,7 +66,7 @@ if ( _classname isKindOf "Air" ) then {
 	};
 };
 
-if ( isNull _vehicle ) exitWith { diag_log format ["--- LRX Error: Cannot build vehicle at position %1", _sectorpos]; objNull };
+if ( isNull _vehicle ) exitWith { diag_log format ["--- LRX Error: Cannot build vehicle (%1) at position %2", _classname, _sectorpos]; objNull };
 
 if ( _vehicle isKindOf "Air" ) then {
 	if (GRLIB_SOG_enabled) then { _airveh_alt = 50 };

@@ -148,6 +148,12 @@ buildings_west = [
 	["Flag_CSAT_F",0,0,0,0]
 ];
 
+// Boats
+boats_west = [
+	"O_Boat_Transport_01_F",
+	"O_Boat_Armed_01_minigun_F"
+];
+
 blufor_squad_inf_light = [
 	"O_Soldier_SL_F",
 	"O_medic_F",
