@@ -6,7 +6,7 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_nbUnits", "_townName", "_tent1", "_chair1", "_chair2", "_fire1", "_civilians"];
+private ["_nbUnits", "_grp_civ", "_townName", "_tent1", "_chair1", "_chair2", "_fire1", "_civilians"];
 
 _setupVars =
 {
@@ -51,7 +51,7 @@ _setupObjects =
 	{ _x setVariable ["GRLIB_mission_AI", false, true] } forEach (units _aiGroup);	
 
 	// Spawn civvies
-	_grp_civ = [_hvt_pos, (5 + random(5))] call F_spawnCivilians;
+	_grp_civ = [_missionPos, (5 + random(5))] call F_spawnCivilians;
 	[_grp_civ, _missionPos] spawn add_civ_waypoints;
 
 	_missionHintText = ["STR_INVASION_MESSAGE1", sideMissionColor, _townName, _nbUnits];

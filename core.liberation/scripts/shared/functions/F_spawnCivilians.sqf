@@ -1,4 +1,5 @@
 params [ "_sectorpos", ["_nb_unit", 1] ];
+if (isNil "_sectorpos") exitWith { grpNull };
 private ["_unit"];
 
 private _spread = 2;
