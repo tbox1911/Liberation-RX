@@ -1,5 +1,5 @@
 params ["_targetpos", "_side", "_count"];
-private ["_vehicle", "_unit"];
+private ["_vehicle", "_unit", "_priso"];
 
 if (isNil "_side") then {_side = GRLIB_side_enemy};
 private _planeType = opfor_air;
@@ -42,35 +42,15 @@ sleep 60;
 while {	{( alive _x )} count (units _air_grp) > 0 } do {
 	{
 		_unit = _x;
-		_vehicle = vehicle _unit;
+		_vehicle = objectParent _unit;
 		if ( alive _vehicle && driver _vehicle == _unit) then {
 			_vehicle setVehicleAmmo 1;
 			_vehicle setFuel 1;
 		};
 
-		if ( alive _unit && _vehicle == _unit ) then {
-			private _sectors = opfor_sectors;
-			if (_side == GRLIB_side_friendly) then {_sectors = blufor_sectors};
-			private _nearest_sector = [_sectors, _unit] call F_nearestPosition;
-
-			if (typeName _nearest_sector == "STRING") then {
-				private _flee_grp = createGroup [_side, true];
-				[_unit] joinSilent _flee_grp;
-
-				[_flee_grp] call F_deleteWaypoints;
-				_waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];
-				_waypoint setWaypointType "MOVE";
-				_waypoint setWaypointSpeed "FULL";
-				_waypoint setWaypointBehaviour "SAFE";
-				_waypoint setWaypointCombatMode "BLUE";
-				_waypoint setWaypointCompletionRadius 50;
-				_waypoint setWaypointStatements ["true", "deleteVehicle this"];
-				{_x doFollow leader _flee_grp} foreach units _flee_grp;
-				sleep 10;
-			} else {
-				sleep 60;
-				{ deleteVehicle _x } forEach _flee_grp;
-			};
+		if ( alive _unit && isNull _vehicle && !(_unit getVariable ["GRLIB_is_prisonner", false])) then {
+			[_unit, false, true] spawn prisonner_ai;
+			sleep 4;
 		};
 		sleep 1;
 	} foreach units _air_grp;
