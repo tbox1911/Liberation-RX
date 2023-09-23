@@ -13,6 +13,8 @@ private _combatMode = "BLUE";
 if (side _grp == GRLIB_side_enemy) then {
 	_behaviour = "AWARE";
 	_combatMode = "WHITE";
+	_grp setCombatMode _combatMode;
+	_grp setBehaviour _behaviour;
 };
 
 if (isNull _civ_veh) then {
