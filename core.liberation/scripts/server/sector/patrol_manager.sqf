@@ -13,10 +13,12 @@ if (_patrol_type == 1) then {
 
 // Create Armored
 if (_patrol_type == 2) then {
-    _vehicle = [ markerpos _sector, [] call F_getAdaptiveVehicle ] call F_libSpawnVehicle;
-    _grp = group ((crew _vehicle) select 0);
-    [_grp, markerpos _sector, 250] spawn add_defense_waypoints;
-    diag_log format [ "Spawn Armored Patrol on sector %1 at %2", _sector, time ];
+    _vehicle = [markerpos _sector, ([] call F_getAdaptiveVehicle)] call F_libSpawnVehicle;
+    if (!isNull _vehicle) then {
+        _grp = group ((crew _vehicle) select 0);
+        [_grp, markerpos _sector, 250] spawn add_defense_waypoints;
+        diag_log format [ "Spawn Armored Patrol on sector %1 at %2", _sector, time ];
+    };
 };
 
 if ( local _grp ) then {
