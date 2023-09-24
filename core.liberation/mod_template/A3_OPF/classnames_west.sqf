@@ -80,6 +80,7 @@ heavy_vehicles = [
 	["O_APC_Tracked_02_cannon_F",10,800,10,GRLIB_perm_log],
 	["O_APC_Tracked_02_AA_F",10,1500,10,GRLIB_perm_tank],
 	["O_MBT_02_cannon_F",15,1500,15,GRLIB_perm_tank],
+	["O_MBT_02_railgun_F",15,1800,15,GRLIB_perm_air],
 	["O_MBT_04_cannon_F",15,2500,15,GRLIB_perm_air],
 	["O_MBT_04_command_F",15,2500,15,GRLIB_perm_air],
 	["I_MBT_03_cannon_F",15,3500,15,GRLIB_perm_max],
