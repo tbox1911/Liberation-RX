@@ -16,7 +16,7 @@ params [["_vehicles",[]], ["_wait", 5]];
             private _no_blu_inside = ({(alive _x && side group _x == GRLIB_side_friendly)} count (crew _vehicle) == 0);
 
             if ( _no_blu_inside && _server_owned && _not_towed) then {
-                { moveOut _x; deleteVehicle _x } forEach (crew _vehicle);
+                { deleteVehicle _x } forEach (crew _vehicle);
                 deleteVehicle _vehicle;
             };
         } else {

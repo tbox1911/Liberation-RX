@@ -120,7 +120,7 @@ if (GRLIB_endgame == 1 || GRLIB_global_stop == 1) then { _failed = true };
 if (_failed) then {
 	// Mission failed
 
-	{ moveOut _x; deleteVehicle _x } forEach units _aiGroup;
+	{ deleteVehicle _x } forEach units _aiGroup;
 	if (!isNil "_failedExec") then { call _failedExec };
 	if (!isNil "_vehicle") then	{ [_vehicle] spawn cleanMissionVehicles };
 	if (!isNil "_vehicles") then { [_vehicles] spawn cleanMissionVehicles };

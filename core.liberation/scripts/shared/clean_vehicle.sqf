@@ -35,7 +35,7 @@ clearItemCargoGlobal _vehicle;
 clearBackpackCargoGlobal _vehicle;
 
 // Delete Crew
-{ moveOut _x; deleteVehicle _x } forEach (crew _vehicle);
+{ deleteVehicle _x } forEach (crew _vehicle);
 _vehicle removeAllEventHandlers "HandleDamage";
 
 // Delete Vehicle

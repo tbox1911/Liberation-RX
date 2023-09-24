@@ -100,8 +100,8 @@ if ( _alive_crew_count == 0 ) then {
 };
 
 sleep 5;
-{ moveOut _x; deleteVehicle _x } forEach units _grppatrol;
-{ moveOut _x; deleteVehicle _x } forEach units _grpsentry;
+{ deleteVehicle _x } forEach units _grppatrol;
+{ deleteVehicle _x } forEach units _grpsentry;
 deleteVehicle _helowreck;
 deleteVehicle _helofire;
 
