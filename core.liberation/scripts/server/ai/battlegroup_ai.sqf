@@ -1,4 +1,6 @@
 params ["_grp", "_objective_pos"];
+if (isNil "_grp" || isNil "_objective_pos") exitWith {};
+
 private ["_waypoint", "_wp0", "_nearset_fob_name"];
 diag_log format ["Battlegroup %1 - Objective %2", _grp, _objective_pos];
 

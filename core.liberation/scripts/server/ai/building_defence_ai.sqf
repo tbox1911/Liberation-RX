@@ -1,4 +1,4 @@
-params [ "_unit", [ "_sector", "" ] ];
+params [ "_unit", ["_sector", ""] ];
 
 _unit setUnitPos "UP";
 _unit disableAI "MOVE";
