@@ -55,7 +55,7 @@ if ( dojump > 0 ) then {
 	if (_unit isKindOf "LandVehicle" || _unit isKindOf "Ship") then {
 		if ([_cost] call F_pay) then {
 			playSound "parasound";
-			halo_position set [2, 1000];
+			halo_position set [2, 500];
 			[player, _unit, halo_position] remoteExec ["airdrop_remote_call", 2];
 		};
 	} else {
