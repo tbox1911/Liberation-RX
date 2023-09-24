@@ -66,11 +66,11 @@ private _lrx_getParamValue = {
 	_def;
 };
 
-if (GRLIB_param_wipe_params == 1 && isServer) then { 
-	profileNamespace setVariable [GRLIB_params_save_key, LRX_Mission_Params]; 
+if (GRLIB_param_wipe_params == 1 && isServer) then {
+	profileNamespace setVariable [GRLIB_params_save_key, LRX_Mission_Params];
 };
 
-if (GRLIB_param_wipe_params == 1 && !isDedicated && hasInterface) then { 
+if (GRLIB_param_wipe_params == 1 && !isDedicated && hasInterface) then {
 	profileNamespace setVariable ["GREUH_OPTIONS_PROFILE", nil];
 };
 
@@ -143,9 +143,9 @@ GRLIB_permission_vehicles = ["EnableLock",1] call _lrx_getParamValue;
 GRLIB_civilian_activity = ["Civilians",1] call _lrx_getParamValue;
 GRLIB_patrols_activity = ["Patrols",1] call _lrx_getParamValue;
 GRLIB_wildlife_manager = ["Wildlife",1] call _lrx_getParamValue;
-GRLIB_civ_penalties = [ "CivPenalties",0] call _lrx_getParamValue;
+GRLIB_civ_penalties = ["CivPenalties",1] call _lrx_getParamValue;
 GRLIB_halo_param = ["HaloJump",1] call _lrx_getParamValue;
-GRLIB_blufor_defenders = [ "BluforDefenders",1] call _lrx_getParamValue;
+GRLIB_blufor_defenders = ["BluforDefenders",1] call _lrx_getParamValue;
 GRLIB_admin_menu = ["AdminMenu",1] call _lrx_getParamValue;
 GRLIB_cleanup_vehicles = ["CleanupVehicles",1800] call _lrx_getParamValue;
 GRLIB_autosave_timer = ["AutoSave",1800] call _lrx_getParamValue;
@@ -205,12 +205,12 @@ diag_log format ["--- LRX Mod Detection: %1 vs %2", GRLIB_mod_west, GRLIB_mod_ea
 
 // Check side Addon
 private _startsWithMultipleInv = {
-	params ["_item", "_list"]; 
-	private _ret = false; 
-	{ 
-		if ([_item, _x] call F_startsWith) exitWith { _ret = true }; 
+	params ["_item", "_list"];
+	private _ret = false;
+	{
+		if ([_item, _x] call F_startsWith) exitWith { _ret = true };
 	} foreach _list;
-	_ret; 
+	_ret;
 };
 
 if ( !GRLIB_CUP_enabled && ["CP_", [GRLIB_mod_west, GRLIB_mod_east]] call _startsWithMultipleInv) then { abort_loading = true };

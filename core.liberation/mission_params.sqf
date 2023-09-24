@@ -1,7 +1,7 @@
 // All Liberation RX Mission Parameters here
 //
-// in LRX_Mission_Params, 
-//   define parameter name and default value 
+// in LRX_Mission_Params,
+//   define parameter name and default value
 //
 // in LRX_Mission_Params_Def,
 //   define parameter full name, list of choice, (optinal) custom value
@@ -14,14 +14,14 @@ private _lrx_getParamValue = {
 };
 
 private _list_west = [];
-{ 
-  _list_west pushback ([_x] call _lrx_getParamValue); 
-} foreach GRLIB_mod_list_west; 
+{
+  _list_west pushback ([_x] call _lrx_getParamValue);
+} foreach GRLIB_mod_list_west;
 
 private _list_east = [];
-{ 
-  _list_east pushback ([_x] call _lrx_getParamValue); 
-} foreach GRLIB_mod_list_east; 
+{
+  _list_east pushback ([_x] call _lrx_getParamValue);
+} foreach GRLIB_mod_list_east;
 
 LRX_Mission_Params = [
 	["Introduction", 1],			// Introduction - [default 1] - values = [1,0] - Text {Enabled,Disabled}
@@ -47,8 +47,9 @@ LRX_Mission_Params = [
 	["Revive", 3],					// PAR revive - [default 3] - values = [3,2,1,0] - Text {Enabled - Everyone can revive,Enabled - Everyone can revive using Medikit/FAK,Enabled - Only medics can revive,Disabled}
 	["TK_mode", 1],					// Teamkill Mode [default 0] - values = [0,1,2] - Text {Strict,Relax,Disabled}
 	["TK_count", 4],				// Teamkill Warning Count [default 4] - values = [3, 4, 5, 6, 7, 8, 9, 10] - Text {3, 4, 5, 6, 7, 8, 9, 10}
+	["CivPenalties", 1],			// Enable Civilian Penalty [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["Civilians", 1],				// Cilivilian Manager - [default 1] - values = [0,0.5,1,2] - Text {None,Reduced,Normal,Increased}
-	["Patrols", 1],					// Patrols Manager - [default 1] - values = [1,0] - Text {Enabled,Disabled}	
+	["Patrols", 1],					// Patrols Manager - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["Wildlife", 1],				// Wildlife Manager - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["PassiveIncome", 0],			// Replace ammo box spawns with passive income - [default 0] - values = [1,0] - Text {Enabled,Disabled}
 	["PassiveIncomeDelay", 1200],	// Passive Income Delay - values = {1200,1800,3600,7200,14400}
@@ -115,7 +116,7 @@ LRX_Mission_Params_Def = [
 		[localize "STR_PARAMS_DISABLED", "300", "400", "600", "800", "1000", "1200", "1500"],
 		[0, 300, 400, 600, 800, 1000, 1200, 1500]
 	],
-	["DayDuration", localize "STR_PARAMS_DAYDURATION", 
+	["DayDuration", localize "STR_PARAMS_DAYDURATION",
 		["0.25", "0.5", "1", "1.5", "2", "2.5", "3", "5", "10", "20", "30", "60"],
 		[0.25, 0.5, 1, 1.5, 2, 2.5, 3, 5, 10, 20, 30, 60]
 	],
@@ -193,7 +194,7 @@ LRX_Mission_Params_Def = [
 		localize "STR_CLEANUP_PARAM2",
 		localize "STR_CLEANUP_PARAM3",
 		localize "STR_CLEANUP_PARAM4",
-		localize "STR_CLEANUP_PARAM5"		
+		localize "STR_CLEANUP_PARAM5"
 		],
 		[0, 900, 1200, 1800, 3600, 7200]
 	],
@@ -203,7 +204,7 @@ LRX_Mission_Params_Def = [
 		localize "STR_CLEANUP_PARAM2",
 		localize "STR_CLEANUP_PARAM3",
 		localize "STR_CLEANUP_PARAM4",
-		localize "STR_CLEANUP_PARAM5"		
+		localize "STR_CLEANUP_PARAM5"
 		],
 		[0, 900, 1200, 1800, 3600, 7200]
 	],
@@ -228,7 +229,7 @@ LRX_Mission_Params_Def = [
 		localize "STR_CLEANUP_PARAM2",
 		localize "STR_CLEANUP_PARAM3",
 		localize "STR_CLEANUP_PARAM4",
-		localize "STR_CLEANUP_PARAM5"		
+		localize "STR_CLEANUP_PARAM5"
 		],
 		[0, 900, 1200, 1800, 3600, 7200]
 	],
@@ -238,7 +239,7 @@ LRX_Mission_Params_Def = [
 	["NameTags",localize "STR_GUI_NAMETAG", [localize "STR_PARAMS_USER_DEF",localize "STR_PARAMS_ENABLED",localize "STR_PARAMS_DISABLED"]],
 	["MapMarkers",localize "STR_GUI_TEAM", [localize "STR_PARAMS_USER_DEF",localize "STR_PARAMS_ENABLED",localize "STR_PARAMS_DISABLED"]],
 	["HuronType", localize "STR_PARAM_HURON_TYPE", [localize "STR_PARAMS_DISABLED","CH-67 Huron","CH-49 Mohawk","UH-80 Ghost Hawk"]],
-	["TK_mode", localize "STR_TK_MODE", [localize "STR_PARAMS_DISABLED",localize "STR_TK_MODE_RELAX",localize "STR_TK_MODE_STRICT"]],	
+	["TK_mode", localize "STR_TK_MODE", [localize "STR_PARAMS_DISABLED",localize "STR_TK_MODE_RELAX",localize "STR_TK_MODE_STRICT"]],
 	["DeploymentCinematic", localize "STR_PARAMS_DEPLOYMENTCAMERA", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["AdaptToPlayercount", localize "STR_PARAM_ADAPT_TO_PLAYERCOUNT", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["BluforDefenders", localize "STR_PARAM_BLUFOR_DEFENDERS", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
@@ -249,8 +250,9 @@ LRX_Mission_Params_Def = [
 	["Patrols", localize "STR_PARAMS_PATROLS", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["PassiveIncome", localize "STR_PARAM_PASSIVE_INCOME", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["Thermic", localize "STR_THERMAL", [localize "STR_PARAMS_DISABLED","Only at night",localize "STR_PARAMS_ENABLED"]],
-	["EnableArsenal", localize "STR_ARSENAL", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED",localize "STR_PARAMS_ARSENAL_FOB"]],	
-	["EnableLock", localize "STR_VEH_LOCK", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],	
+	["EnableArsenal", localize "STR_ARSENAL", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED",localize "STR_PARAMS_ARSENAL_FOB"]],
+	["EnableLock", localize "STR_VEH_LOCK", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
+	["CivPenalties", localize "STR_CIV_PENALTIES", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["AdminMenu", "Enable the Admin Menu", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["HideOpfor", localize "STR_OPFORMARK", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["ShowBlufor", localize "STR_BLUFORMARK", [localize "STR_PARAMS_DISABLED","Player only",localize "STR_PARAMS_ENABLED"]],
