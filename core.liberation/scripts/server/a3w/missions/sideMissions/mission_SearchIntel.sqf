@@ -142,7 +142,7 @@ _setupObjects =
 	} forEach (units _aiGroup);
 
 	//----- spawn civilians ---------------------------------
-	_grp_civ = [_hvt_pos, (5 + random(5))] call F_spawnCivilians;
+	_grp_civ = [_missionPos, (5 + random(5))] call F_spawnCivilians;
 	[_grp_civ, _missionPos] spawn add_civ_waypoints;
 
 	//----- spawn mines ---------------------------------
