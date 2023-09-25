@@ -33,8 +33,14 @@
 
 if (isDedicated) exitWith {};
 
-// Init flag
+// Init
 LRX_arsenal_init_done = false;
+
+// Initalize Blacklist
+GRLIB_blacklisted_from_arsenal = [];			// Global blacklist (All objects will be removed from Arsenal)
+
+// Initalize Withelist
+GRLIB_whitelisted_from_arsenal = [];			// Global whitelist when Arsenal is enabled
 
 // Filters disabled
 waitUntil { sleep 1; !isNil "GRLIB_filter_arsenal" };
@@ -56,12 +62,6 @@ LARs_fnc_overrideVATemplateOK = compileFinal preprocessFileLineNumbers "addons\L
 
 // LARs Init
 [] call LARs_fnc_initOverride;
-
-// Initalize Blacklist
-GRLIB_blacklisted_from_arsenal = [];			// Global blacklist (All objects will be removed from Arsenal)
-
-// Initalize Withelist
-GRLIB_whitelisted_from_arsenal = [];			// whitelist when Arsenal is enabled
 
 // Import list from Mod template
 private _path = format ["mod_template\%1\arsenal.sqf", GRLIB_mod_west];

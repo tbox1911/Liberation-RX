@@ -131,6 +131,6 @@ if (VAM_arsenal_enable_glasses) then {
 };
 _arsenal_enable_glasses sort true;
 
-VAM_arsenal_class_names = (_arsenal_enable_weapons + _arsenal_enable_magazines + _arsenal_enable_uniforms + _arsenal_enable_backpacks + _arsenal_enable_glasses) - whitelisted_from_arsenal;
+VAM_arsenal_class_names = (_arsenal_enable_weapons + _arsenal_enable_magazines + _arsenal_enable_uniforms + _arsenal_enable_backpacks + _arsenal_enable_glasses) - GRLIB_whitelisted_from_arsenal;
 VAM_arsenal_class_names = VAM_arsenal_class_names arrayIntersect VAM_arsenal_class_names;
-VAM_arsenal_class_names = whitelisted_from_arsenal + VAM_arsenal_class_names;
+VAM_arsenal_class_names = GRLIB_whitelisted_from_arsenal + VAM_arsenal_class_names;
