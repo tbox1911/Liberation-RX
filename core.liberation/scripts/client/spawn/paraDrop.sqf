@@ -16,7 +16,6 @@ _unit allowDamage true;
 halojumping = false;
 
 while {!isTouchingGround _unit} do {
-	if ((getPosATL _unit) select 2 <= 50 && !(isPlayer _unit)) then {_unit allowDamage false};
 	sleep 1;
 };
 

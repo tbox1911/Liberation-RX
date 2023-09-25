@@ -12,10 +12,10 @@ if (isNil "_forced_pos") then {
 	_vehicle setPosATL _pos;
 	_vehicle addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
 	[_vehicle, "lock", (getPlayerUID _unit)] call F_vehicleLock;
-
 } else {
 	_text = format ["Player %1 Air Drop Vehicle.", name _unit];
 	_vehicle = _class;
+	_forced_pos set [2, 500];
 	_vehicle setPosATL _forced_pos;
 };
 [gamelogic, _text] remoteExec ["globalChat", 0];
