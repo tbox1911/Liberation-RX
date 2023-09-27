@@ -53,7 +53,7 @@ if (isNull _civ_veh) then {
 		_sectors_patrol = _sectors_patrol call BIS_fnc_arrayShuffle;
 		{
 			if (count (waypoints _grp) <= 4) then {
-				_nearestroad = [[markerPos _x, floor(random 100), random 360] call BIS_fnc_relPos, 200, []] call BIS_fnc_nearestRoad;
+				_nearestroad = [markerPos _x, 100] call BIS_fnc_nearestRoad;
 				if !(surfaceIsWater (getPosATL _nearestroad)) then {
 					if ( isNull _nearestroad ) then {
 						_waypoint = _grp addWaypoint [ markerpos _x, 100 ];

@@ -28,9 +28,8 @@ private _ied_power = selectRandom [
 	"Bomb_03_F",
 	"Bomb_04_F"
 ];
-private _roadobj = [[_sector_pos, floor(random _radius), random(360)] call BIS_fnc_relPos, _radius, []] call BIS_fnc_nearestRoad;
-
-if ( !(isnull _roadobj) ) then {
+private _roadobj = [_sector_pos, _radius] call BIS_fnc_nearestRoad;
+if !(isNull _roadobj) then {
 	private _ied_obj = createMine [ _ied_type, [getposATL _roadobj, _spread, random(360)] call BIS_fnc_relPos, [], 0];
 	_ied_obj setPos (getPos _ied_obj);
 

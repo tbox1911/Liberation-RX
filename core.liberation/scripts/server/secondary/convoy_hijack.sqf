@@ -27,7 +27,7 @@ publicVariable "GRLIB_secondary_in_progress";
 
 private _convoy_destinations = [];
 {
-	private _nearestroad = [ markerpos _x, 200, [] ] call BIS_fnc_nearestRoad;
+	private _nearestroad = [markerpos _x, 100] call BIS_fnc_nearestRoad;
 	if ( isNull _nearestroad ) then {
 		_convoy_destinations pushback (markerPos _x);
 	} else {
