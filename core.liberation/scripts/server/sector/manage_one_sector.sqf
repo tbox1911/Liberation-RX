@@ -207,7 +207,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 	[ _sector, _defensecount ] spawn static_manager;
 	[ markerPos _sector, _building_range, round (_iedcount) ] spawn ied_manager;
 	[ markerPos _sector, _building_range, round (_iedcount) ] spawn ied_trap_manager;
-	[ _sector ] spawn reinforcements_manager;
+	//[ _sector ] spawn reinforcements_manager;
 	[ _sectorpos ] spawn {
 		params ["_pos"];
 		sleep (300 + floor(random 60));
@@ -240,7 +240,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 
 			active_sectors = active_sectors - [_sector];
 			publicVariable "active_sectors";
-			[ _sector ] spawn reinforcements_manager;
+			//[ _sector ] spawn reinforcements_manager;
 		} else {
 			if ( ([_sectorpos, (GRLIB_sector_size + 300), GRLIB_side_friendly] call F_getUnitsCount) == 0 ) then {
 				_sector_despawn_tickets = _sector_despawn_tickets - 1;
