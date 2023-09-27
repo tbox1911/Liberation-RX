@@ -1,5 +1,6 @@
 params ["_grp", "_basepos"];
 if (isNil "_grp" || isNil "_basepos") exitWith {};
+if (isNull _grp) exitWith {};
 
 private ["_waypoint", "_wp0", "_nearestroad", "_radius", "_nextpos"];
 private _civ_veh = objectParent (leader _grp);

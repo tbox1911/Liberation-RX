@@ -1,5 +1,6 @@
 params ["_grp", "_flagpos", ["_radius", 100]];
 if (isNil "_grp" || isNil "_flagpos") exitWith {};
+if (isNull _grp) exitWith {};
 
 private ["_basepos", "_waypoint", "_wp0"];
 private _grp_veh = objectParent (leader _grp);

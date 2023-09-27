@@ -1,5 +1,6 @@
 params [ "_unit", ["_sector", ""] ];
 
+if (isNull _unit) exitWith {};
 _unit setUnitPos "UP";
 _unit disableAI "MOVE";
 
