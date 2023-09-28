@@ -56,11 +56,16 @@ private _para_group = [zeropos, _unitclass, GRLIB_side_enemy, "para"] call F_lib
 		!(alive _newvehicle) || (damage _newvehicle > 0.2 ) || (_newvehicle distance2D _targetpos <= _unload_dist)
 	};
 
-	[_para_group, _newvehicle] spawn F_ejectGroup;
-	sleep 10;
-	_newvehicle flyInHeight 300;
-	[_para_group, _targetpos] spawn battlegroup_ai;
-	[_pilot_group, _targetpos, 400] spawn add_defense_waypoints;
+	if ( { alive _x } count (units _para_group) > 0 ) then {
+		[_para_group, _newvehicle] spawn F_ejectGroup;
+		sleep 10;
+		[_para_group, _targetpos] spawn battlegroup_ai;
+	};
+
+	if ( { alive _x } count (units _pilot_group) == 0 ) then {
+		_newvehicle flyInHeight 300;
+		[_pilot_group, _targetpos, 400] spawn add_defense_waypoints;
+	};
 };
 
 _para_group;

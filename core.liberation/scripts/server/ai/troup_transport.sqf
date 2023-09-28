@@ -38,7 +38,12 @@ if (typeOf _troup_transport isKindOf "Truck_F") then {
 	sleep 2;
 };
 
-[_troup_group, _troup_transport] spawn F_ejectGroup;
-sleep 10;
-[_troup_group, _objective_pos] spawn battlegroup_ai;
-[_transport_group, _objective_pos, 300] spawn add_defense_waypoints;
+if ( { alive _x } count (units _troup_group) > 0 ) then {
+	[_troup_group, _troup_transport] spawn F_ejectGroup;
+	sleep 10;
+	[_troup_group, _objective_pos] spawn battlegroup_ai;
+};
+
+if ( { alive _x } count (units _transport_group) > 0 ) then {
+	[_transport_group, _objective_pos, 300] spawn add_defense_waypoints;
+};
