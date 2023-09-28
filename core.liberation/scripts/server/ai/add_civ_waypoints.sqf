@@ -72,7 +72,7 @@ if (isNull _civ_veh) then {
 	};
 };
 
-if (count (waypoints _grp) > 0) then {
+if (count (waypoints _grp) > 1) then {
 	_wp0 = waypointPosition [_grp, 0];
 	_waypoint = _grp addWaypoint [_wp0, 0];
 	_waypoint setWaypointType "CYCLE";
