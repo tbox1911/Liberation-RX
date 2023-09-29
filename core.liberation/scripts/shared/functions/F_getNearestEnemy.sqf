@@ -35,13 +35,15 @@ if (count (_scan_target) > 0) then {
         _vehicle setDir _enemy_dir;
     };
 
+    _unit doWatch _next_target;
     _unit doTarget _next_target;
     if (_vehicle_class isKindOf "StaticMortar") then {
-        _vehicle fireAtTarget [_next_target];
+        _vehicle fireAtTarget [_next_target, currentWeapon _vehicle];
         sleep 5;
-        _vehicle fireAtTarget [_next_target];        
+        _vehicle fireAtTarget [_next_target, currentWeapon _vehicle];
     };
     _unit setVariable ["last_engage_time", round (time + (3 * 60))];
 } else {
     _unit doTarget objNull;
+    _unit doWatch objNull;
 };
