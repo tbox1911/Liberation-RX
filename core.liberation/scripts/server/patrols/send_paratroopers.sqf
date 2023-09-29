@@ -62,7 +62,7 @@ private _para_group = [zeropos, _unitclass, GRLIB_side_enemy, "para"] call F_lib
 		[_para_group, _targetpos] spawn battlegroup_ai;
 	};
 
-	if ( { alive _x } count (units _pilot_group) == 0 ) then {
+	if ( { alive _x } count (units _pilot_group) > 0 ) then {
 		_newvehicle flyInHeight 300;
 		[_pilot_group, _targetpos, 400] spawn add_defense_waypoints;
 	};
