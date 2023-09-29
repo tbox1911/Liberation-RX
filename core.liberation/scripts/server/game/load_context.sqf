@@ -39,6 +39,7 @@ if (count _context >= 1) then {
                                 private _unit = (group player) createUnit [_class, (getPosATL player), [], 10, "NONE"];
                                 [_unit] joinSilent (group player);
                                 _unit setVariable ["PAR_Grp_ID", format["Bros_%1", (getPlayerUID player)], true];
+                                _unit setVariable ["PAR_AI_score", ((GRLIB_rank_level find _rank) + 1) * 5, true];
                                 [_unit] spawn PAR_fn_AI_Damage_EH;
                                 _unit setUnitLoadout _loadout;
                                 _unit setUnitRank _rank;
