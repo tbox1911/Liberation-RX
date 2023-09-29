@@ -23,11 +23,13 @@ moveOut _unit;
 sleep 1;
 if (!alive _unit) exitWith {};
 
-if (getPos _unit select 2 >= 50 && _backpack != "B_Parachute") then {
+if (getPos _unit select 2 >= 50) then {
 	_unit setPos (getPos _unit vectorAdd [([[-10,0,10], 3] call F_getRND), ([[-10,0,10], 3] call F_getRND), 0]);
-	
-	private _para = createVehicle ["Steerable_Parachute_F",(getPos _unit),[],0,'none'];
-	_unit moveInDriver _para;
+	private _para = objNull;
+	if (_backpack != "B_Parachute") then {
+		_para = createVehicle ["Steerable_Parachute_F",(getPos _unit),[],0,'none'];
+		_unit moveInDriver _para;
+	};
 	[_unit] spawn {
 		params ["_unit"];
 		waituntil {sleep 2; !(alive _unit) || (isTouchingGround _unit)};
@@ -43,7 +45,7 @@ if (getPos _unit select 2 >= 50 && _backpack != "B_Parachute") then {
 		};
 	};
 	sleep 3;
-	if (!alive _unit) then { deleteVehicle _para };
+	if (!alive _unit && !isNull _para) then { deleteVehicle _para };
 	sleep 3;
 };
 
