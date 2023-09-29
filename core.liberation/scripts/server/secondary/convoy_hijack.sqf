@@ -181,7 +181,7 @@ stats_secondary_objectives = stats_secondary_objectives + 1;
 [ 5 ] remoteExec ["remote_call_intel", 0];
 
 sleep 300; 
-private _vehicles = [_scout_vehicle, _transport_vehicle, _troop_vehicle];
+private _vehicles = [_scout_vehicle, _troop_vehicle];
 [_vehicles, 5] spawn cleanMissionVehicles;
 
 GRLIB_secondary_in_progress = -1;
