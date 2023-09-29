@@ -8,20 +8,20 @@ if (_unit skill "courage" == 1) exitWith {};
 sleep 3;
 if (!alive _unit) exitWith {};
 
+// Init priso
+removeAllWeapons _unit;
+//removeHeadgear _unit;
+removeBackpack _unit;
+removeVest _unit;
+_hmd = (hmd _unit);
+_unit unassignItem _hmd;
+_unit removeItem _hmd;
 _unit setCaptive true;
 _unit setVariable ["GRLIB_is_prisonner", true, true];
 _unit setVariable ["GRLIB_can_speak", true, true];
 [_unit, ""] remoteExec ["switchMove", 0];
 
 if (!_canmove) then {
-	// Init priso
-	removeAllWeapons _unit;
-	//removeHeadgear _unit;
-	removeBackpack _unit;
-	removeVest _unit;
-	_hmd = (hmd _unit);
-	_unit unassignItem _hmd;
-	_unit removeItem _hmd;
 	_unit setUnitPos "UP";
 	sleep 1;
 	_unit disableAI "ANIM";
