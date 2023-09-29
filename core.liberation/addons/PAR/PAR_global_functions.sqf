@@ -118,7 +118,7 @@ PAR_fn_AI_Damage_EH = {
 	_unit setVariable ["PAR_busy", nil];
 	_unit setVariable ["PAR_heal", nil];
 	_unit setVariable ["PAR_healed", nil];
-	_unit setVariable ["PAR_AI_score", 5, true];
+	_unit setVariable ["PAR_AI_score", ((GRLIB_rank_level find (rank _unit)) + 1) * 5, true];
 };
 
 // Player Section
