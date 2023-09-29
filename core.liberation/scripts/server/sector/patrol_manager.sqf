@@ -1,6 +1,6 @@
 params [ "_sector", "_patrol_type" ];
 
-if (_sector in active_sectors) exitWith {};
+if (_sector in blufor_sectors) exitWith {};
 private _grp = grpNull;
 private _vehicle = objNull;
 

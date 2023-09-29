@@ -41,7 +41,6 @@ if ( _targetsector in active_sectors ) then {
 	};
 } else {
 	// after attack
-	if !(_targetsector in blufor_sectors) exitWith {};
 	private _sector1 = "";
 	private _sector2 = "";
 
