@@ -87,7 +87,7 @@ if ( GRLIB_endgame == 0 ) then {
 	   (!( _liberated_sector in sectors_tower )) &&
 	   ((combat_readiness > 70) || (_liberated_sector in sectors_bigtown)) &&
 	   (opforcap < GRLIB_battlegroup_cap) &&
-	   (diag_fps > 30.0) && (floor random 2 == 0)
+	   (diag_fps > 30.0) && (floor random 3 > 0)
 	) then {
 		diag_log format ["Spawn Sector Captured BattlegGroup at %1", time];
 		[_liberated_sector] spawn spawn_battlegroup;
