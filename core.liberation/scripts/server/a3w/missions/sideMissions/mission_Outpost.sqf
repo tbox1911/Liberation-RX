@@ -49,9 +49,9 @@ _waitUntilCondition = {
 _waitUntilSuccessCondition = { ({side group _x == GRLIB_side_friendly} count (units _grpprisonners) > 0) };
 
 _failedExec = {
-	{ deleteVehicle _x } forEach units _grpdefenders;
-	{ deleteVehicle _x } forEach units _grpsentry;
-	{ deleteVehicle _x } forEach units _grpprisonners;
+	{ deleteVehicle _x } forEach (units _grpdefenders);
+	{ deleteVehicle _x } forEach (units _grpsentry);
+	{ deleteVehicle _x } forEach (units _grpprisonners);
 	[_missionPos] call clearlandmines;
 };
 

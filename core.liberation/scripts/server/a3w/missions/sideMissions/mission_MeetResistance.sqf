@@ -126,7 +126,7 @@ _successExec = {
 	{ [_x, "abandon"] call F_vehicleLock } forEach [_box1, _box2];
 	_successHintMessage = ["STR_RESISTANCE_MESSAGE3", sideMissionColor, _townName];
 	{ deleteVehicle _x } forEach [_tent1, _chair1, _chair2, _fire1, _veh1, _veh2];
-	{ deleteVehicle _x } forEach units _aiGroupRes;
+	{ deleteVehicle _x } forEach (units _aiGroupRes);
 	GRLIB_A3W_Mission_MR = nil;
 	publicVariable "GRLIB_A3W_Mission_MR";
 	GRLIB_A3W_Mission_MRR = nil;

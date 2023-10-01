@@ -69,7 +69,7 @@ _successExec =
 	{
 		_veh = _this;
 		//Delete pilots
-		{ deleteVehicle _x } forEach crew _veh;
+		{ deleteVehicle _x } forEach (crew _veh);
 		waitUntil
 		{
 			sleep 0.1;
