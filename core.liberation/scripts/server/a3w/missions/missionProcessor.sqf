@@ -11,7 +11,7 @@ if (!isServer) exitwith {};
 
 private [
 	"_controllerSuffix", "_missionTimeout", "_availableLocations", "_missionLocation", "_leader", 
-	"_marker", "_marker_zone",
+	"_marker", "_marker_zone", "_time_left",
 	"_failed", "_complete", "_startTime", "_oldAiCount", "_leaderTemp", 
 	"_newAiCount", "_adjustTime", "_lastPos", "_floorHeight"
 ];
@@ -102,7 +102,12 @@ waitUntil {
 	if (!isNull _leaderTemp) then { _leader = _leaderTemp }; // Update current leader
 	if (!isNil "_waitUntilMarkerPos") then { _marker setMarkerPos (call _waitUntilMarkerPos) };
 	if (!isNil "_waitUntilExec") then { call _waitUntilExec };
-	_marker setMarkerText format ["%1 - %2 min left", localize _missionType, round ((_missionTimeout - (time - _startTime)) /60)];
+	_time_left = round ((_missionTimeout - (time - _startTime)) /60);
+	if (_time_left > 0) then {
+		_marker setMarkerText format ["%1 - %2 min left", localize _missionType, _time_left];
+	} else {
+		_marker setMarkerText format ["%1 - time over ", localize _missionType];
+	};
 
 	_expired = (time - _startTime >= _missionTimeout && ([_missionPos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount) == 0);
 	_failed = ((!isNil "_waitUntilCondition" && {call _waitUntilCondition}) || _expired);
