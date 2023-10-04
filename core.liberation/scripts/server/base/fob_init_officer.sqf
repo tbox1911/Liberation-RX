@@ -37,7 +37,7 @@ _lamp2 setVariable ["GRLIB_vehicle_owner", "server", true];
 private _manPos = (getposATL _fob) vectorAdd ([[1, 0, 1], -_fobdir] call BIS_fnc_rotateVector2D);  
 private _man = GRLIB_FOB_Group createUnit [commander_classname, zeropos, [], 0, "NONE"];  
 [_man] joinSilent GRLIB_FOB_Group;  
-_man setVariable ["acex_headless_blacklist", true];
+_man setVariable ["acex_headless_blacklist", true, true];
 _man setVariable ["GRLIB_vehicle_owner", "server", true];
 _man allowDamage false; 
 _man disableCollisionWith _desk;  
