@@ -26,7 +26,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	if ( count _usable_sectors > 0 ) then {
 		_sectorpos = markerPos (selectRandom _usable_sectors);
 		// 40% in vehicles
-		if ( floor(random 100) >= 60 ) then {
+		if ( floor(random 100) >= 60  && count civilian_vehicles > 0) then {
 			_veh_class = selectRandom civilian_vehicles;
 			_civ_veh = [_sectorpos, _veh_class, false, false, GRLIB_side_civilian] call F_libSpawnVehicle;
 			_civ_grp = [_sectorpos, 1] call F_spawnCivilians;

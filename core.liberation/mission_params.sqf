@@ -9,7 +9,7 @@
 private _lrx_getParamValue = {
 	params ["_name"];
 	private _ret = GRLIB_mod_list_name select {_x select 0 == _name} select 0;
-	if (count _ret == 0) exitWith {"Unknown!"};
+	if (isNil "_ret") exitWith {"Unknown!"};
 	(_ret select 1);
 };
 

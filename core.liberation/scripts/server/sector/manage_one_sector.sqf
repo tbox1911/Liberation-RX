@@ -9,7 +9,7 @@ private _spawncivs = false;
 private _building_ai_max = 0;
 private _infsquad = "militia";
 private _building_range = 200;
-private _local_capture_size = GRLIB_capture_size;
+private _local_capture_size = GRLIB_capture_size * 1.4;
 private _iedcount = 0;
 private _defensecount = 0;
 private _vehtospawn = [];
@@ -66,9 +66,9 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 	if ( _sector in sectors_capture ) then {
 		_vehtospawn = [];
 		_infsquad = "militia";
-		while { count _squad1 < ( 20 * _popfactor) } do { _squad1 pushback ( selectRandom militia_squad ) };
-		if(floor(random 100) > (66 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback (selectRandom militia_vehicles); };
+		while { count _squad1 < ( 20 * _popfactor) } do { _squad1 pushback (selectRandom militia_squad) };
 		if(floor(random 100) > (33 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback (selectRandom militia_vehicles); };
+		if(floor(random 100) > (66 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback (selectRandom militia_vehicles); };
 		_spawncivs = true;
 		_building_ai_max = round ((floor (10 + (round (combat_readiness / 10 )))) * _popfactor);
 		_building_range = 200;
@@ -86,9 +86,9 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 		if ( GRLIB_unitcap >= 2) then {
 			_squad4 = ([] call F_getAdaptiveSquadComp);
 		};
-		_vehtospawn = [( [] call F_getAdaptiveVehicle ),( [] call F_getAdaptiveVehicle )];
-		if(floor(random 100) > (33 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback ( [] call F_getAdaptiveVehicle ); };
-		if(floor(random 100) > (66 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback ( [] call F_getAdaptiveVehicle ); };
+		_vehtospawn = [([] call F_getAdaptiveVehicle),([] call F_getAdaptiveVehicle)];
+		if(floor(random 100) > (33 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback ([] call F_getAdaptiveVehicle) };
+		if(floor(random 100) > (66 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback ([] call F_getAdaptiveVehicle) };
 		_spawncivs = false;
 		_building_ai_max = round ((floor (8 + (round (combat_readiness / 10 )))) * _popfactor);
 		_building_range = 110;
@@ -117,8 +117,8 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 		if ( GRLIB_unitcap >= 1.25) then {
 			_squad3 = ([] call F_getAdaptiveSquadComp);
 		};
-		if(floor(random 100) > 66) then { _vehtospawn pushback ( [] call F_getAdaptiveVehicle ); };
 		if(floor(random 100) > 33) then { _vehtospawn pushback (selectRandom militia_vehicles); };
+		if(floor(random 100) > 66) then { _vehtospawn pushback ([] call F_getAdaptiveVehicle) };
 		_spawncivs = true;
 		_building_ai_max = round ((floor (10 + (round (combat_readiness / 10 )))) * _popfactor);
 		_building_range = 100;
@@ -134,7 +134,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 			_squad2 = ([] call F_getAdaptiveSquadComp);
 		};
 		_building_ai_max = 0;
-		if(floor(random 100) > 75) then { _vehtospawn pushback ( [] call F_getAdaptiveVehicle ); };
+		if(floor(random 100) > 75) then { _vehtospawn pushback ([] call F_getAdaptiveVehicle) };
 		[markerPos _sector, 50] call createlandmines;
 		_defensecount = 4;
 	};
@@ -143,13 +143,24 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 		_building_ai_max = round ( _building_ai_max * ([] call F_adaptiveOpforFactor));
 	};
 
-	{
-		_vehicle = [_sectorpos, _x] call F_libSpawnVehicle;
-		[group ((crew _vehicle) select 0), _sectorpos] spawn add_defense_waypoints;
-		_managed_units pushback _vehicle;
-		{ _managed_units pushback _x } foreach (crew _vehicle);
-		sleep 2;
-	} foreach _vehtospawn;
+	if (count _vehtospawn > 0) then {
+		{
+			_vehicle = [_sectorpos, _x] call F_libSpawnVehicle;
+			[group ((crew _vehicle) select 0), _sectorpos] spawn add_defense_waypoints;
+			_managed_units pushback _vehicle;
+			{ _managed_units pushback _x } foreach (crew _vehicle);
+			sleep 2;
+		} foreach _vehtospawn;
+	} else {
+		if (count _squad1 == 0) then { _squad1 = ([] call F_getAdaptiveSquadComp) };
+		if (count _squad2 == 0) then { _squad2 = ([] call F_getAdaptiveSquadComp) };
+		if(floor(random 100) > (33 / GRLIB_difficulty_modifier)) then {
+			if (count _squad3 == 0) then { _squad3 = ([] call F_getAdaptiveSquadComp) };
+		};
+		if(floor(random 100) > (66 / GRLIB_difficulty_modifier)) then {
+			if (count _squad4 == 0) then { _squad4 = ([] call F_getAdaptiveSquadComp) };
+		};
+	};
 
 	if ( _building_ai_max > 0 ) then {
 		_allbuildings = [ nearestObjects [_sectorpos, ["House"], _building_range ], { alive _x } ] call BIS_fnc_conditionalSelect;

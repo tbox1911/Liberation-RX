@@ -29,7 +29,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 		_sectorpos = markerPos _spawnsector;
 
 		// 50% in vehicles
-		if ( floor(random 100) > 50 ) then {
+		if ( floor(random 100) > 50 && count militia_vehicles > 0 ) then {
 			_opfor_veh = [_sectorpos, (selectRandom militia_vehicles), false, false, GRLIB_side_enemy] call F_libSpawnVehicle;
 			_opfor_grp = group (driver _opfor_veh);
 			_opfor_veh addEventHandler ["Fuel", { if (!(_this select 1)) then {(_this select 0) setFuel 1}}];

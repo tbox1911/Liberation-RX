@@ -37,14 +37,13 @@ if ( GRLIB_blufor_defenders && !_defenders_cooldown) then {
 		_x addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
 	} foreach (units _grp);
 
-	if (_sector in sectors_military) then {
-		private _vehicleClass = selectRandom (heavy_vehicles select {(_x select 0) isKindOf "Wheeled_APC_F"}) select 0;
-		private _vehiclePos = _sector_pos findEmptyPosition [5, 120, "B_Heli_Transport_03_unarmed_F"];
-		_vehicle = [_vehiclePos, _vehicleClass, false, false, GRLIB_side_friendly] call F_libSpawnVehicle;
-	};
-	(crew _vehicle) joinSilent _grp;
-
-	[_grp, _sector_pos] spawn add_defense_waypoints;
+	// if (_sector in sectors_military) then {
+	// 	private _vehicleClass = selectRandom (heavy_vehicles select {(_x select 0) isKindOf "Wheeled_APC_F"}) select 0;
+	// 	private _vehiclePos = _sector_pos findEmptyPosition [5, 120, "B_Heli_Transport_03_unarmed_F"];
+	// 	_vehicle = [_vehiclePos, _vehicleClass, false, false, GRLIB_side_friendly] call F_libSpawnVehicle;
+	// };
+	// (crew _vehicle) joinSilent _grp;
+	// [_grp, _sector_pos] spawn add_defense_waypoints;
 
 	private _defenders_timer = round (time + 120);
 	while { time < _defenders_timer && ({alive _x} count (units _grp) > 0) && _ownership == GRLIB_side_enemy } do {

@@ -6,6 +6,7 @@ params [
 	["_side", GRLIB_side_enemy]
 ];
 
+if (isNil "_classname") exitWith {};
 diag_log format [ "Spawn vehicle %1 at %2", _classname , time ];
 
 private _vehicle = objNull;
