@@ -148,7 +148,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 		[group ((crew _vehicle) select 0), _sectorpos] spawn add_defense_waypoints;
 		_managed_units pushback _vehicle;
 		{ _managed_units pushback _x } foreach (crew _vehicle);
-		sleep 3;
+		sleep 2;
 	} foreach _vehtospawn;
 
 	if ( _building_ai_max > 0 ) then {
@@ -168,48 +168,49 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 		_grp = [ _sector, _infsquad, _squad1 ] call F_spawnRegularSquad;
 		[ _grp, _sectorpos, 50 ] spawn add_defense_waypoints;
 		_managed_units = _managed_units + (units _grp);
-		sleep 3;
+		sleep 2;
 	};
 
 	if ( count _squad2 > 0 ) then {
 		_grp = [ _sector, _infsquad, _squad2 ] call F_spawnRegularSquad;
 		[ _grp, _sectorpos, 100 ] spawn add_defense_waypoints;
 		_managed_units = _managed_units + (units _grp);
-		sleep 3;
+		sleep 2;
 	};
 
 	if ( count _squad3 > 0 ) then {
 		_grp = [ _sector, _infsquad, _squad3 ] call F_spawnRegularSquad;
 		[ _grp, _sectorpos, 200 ] spawn add_defense_waypoints;
 		_managed_units = _managed_units + (units _grp);
-		sleep 3;
+		sleep 2;
 	};
 
 	if ( count _squad4 > 0 ) then {
 		_grp = [ _sector, _infsquad, _squad4 ] call F_spawnRegularSquad;
 		[ _grp, _sectorpos, 300 ] spawn add_defense_waypoints;
 		_managed_units = _managed_units + (units _grp);
-		sleep 3;
+		sleep 2;
 	};
 
 	if ( _spawncivs && GRLIB_civilian_activity > 0) then {
 		private _nbcivs = round ((6 + (floor (random 7))) * GRLIB_civilian_activity);
 		if ( _sector in sectors_bigtown ) then { _nbcivs = _nbcivs + 12 };
 		while { _nbcivs > 0 } do {
-			_maxcivs = 5 min _nbcivs;
+			_maxcivs = 3 min _nbcivs;
 			_grp = [_sectorpos, _maxcivs] call F_spawnCivilians;
 			[_grp, _sectorpos] spawn add_civ_waypoints;
 			_managed_units = _managed_units + (units _grp);
 			_nbcivs = _nbcivs - _maxcivs;
+			sleep 0.5;
 		};
 	};
 
 	[ _sector, _defensecount ] spawn static_manager;
-	sleep 3;
+	sleep 2;
 	[ markerPos _sector, _building_range, round (_iedcount) ] spawn ied_manager;
-	sleep 3;
+	sleep 2;
 	[ markerPos _sector, _building_range, round (_iedcount) ] spawn ied_trap_manager;
-	sleep 3;
+	sleep 2;
 	//[ _sector ] spawn reinforcements_manager;
 
 	[ _sectorpos ] spawn {
