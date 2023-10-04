@@ -24,7 +24,7 @@ private _arsenal_box = objNull;
 if ( GRLIB_blufor_defenders && !_defenders_cooldown) then {
 	private _squad_type = blufor_squad_inf_light;
 	if (_sector in (sectors_military + sectors_bigtown)) then {
-		_squad_type = blufor_squad_inf + blufor_squad_mix;
+		_squad_type = blufor_squad_inf;
 	};
 
 	_grp = [_sector_pos, _squad_type, GRLIB_side_friendly, "defender"] call F_libSpawnUnits;
