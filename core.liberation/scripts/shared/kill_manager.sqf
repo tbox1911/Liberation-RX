@@ -76,13 +76,14 @@ if ( isServer ) then {
 		if ( _unit != _killer ) then {
 			_isPrisonner = _unit getVariable ["GRLIB_is_prisonner", false];
 			_isKamikaz = _unit getVariable ["GRLIB_is_kamikaze", false];
+			_isZombie = ((typeOf _unit) select [0,10] == "RyanZombie");
 			if ( _isKamikaz ) then { 
 				_msg = format ["%1 kill a Kamikaze !! +10 XP", name _killer] ;
 				[gamelogic, _msg] remoteExec ["globalChat", 0];
 				[_killer, 11] call F_addScore;
 			};
-
-			if ( !_isKamikaz && side (group _unit) == GRLIB_side_civilian || _isPrisonner ) then {
+			if ( _isZombie ) then { [_killer, 5] call F_addScore };
+			if ( !_isKamikaz && !_isZombie && side (group _unit) == GRLIB_side_civilian || _isPrisonner ) then {
 				stats_civilians_killed = stats_civilians_killed + 1;
 				if ( isPlayer _killer ) then {
 					stats_civilians_killed_by_players = stats_civilians_killed_by_players + 1;
