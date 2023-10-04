@@ -39,6 +39,11 @@ waterbarrel_typename = "Land_BarrelWater_F";
 fuelbarrel_typename = "Land_MetalBarrel_F";
 foodbarrel_typename = "Land_FoodSacks_01_large_brown_idap_F";
 opfor_transport_truck = "O_Truck_03_transport_F";
+opfor_crew = "O_crew_F";
+opfor_gun_crew = "O_crew_F";
+opfor_tank_crew = "O_crew_F";
+opfor_heli_pilots = "O_helicrew_F";
+opfor_plane_pilots = "O_Pilot_F";
 repair_offroad = "C_Offroad_01_repair_F";
 commander_classname = "B_officer_F";
 crewman_classname = "B_crew_F";
@@ -107,7 +112,7 @@ buildings_default = [
 	["Land_Medevac_HQ_V1_F",0,0,0,GRLIB_perm_air],
 	["Land_PortableLight_double_F",0,0,0,GRLIB_perm_log],
 	["Land_TentLamp_01_suspended_F",0,0,0,GRLIB_perm_log],
-    ["Land_TentLamp_01_suspended_red_F",0,0,0,GRLIB_perm_log],
+	["Land_TentLamp_01_suspended_red_F",0,0,0,GRLIB_perm_log],
 	["Land_LampHalogen_F",0,0,0,GRLIB_perm_tank],
 	["Land_LampStreet_02_triple_F",0,0,0,GRLIB_perm_inf],
 	["Land_HelipadSquare_F",0,0,0,GRLIB_perm_log],

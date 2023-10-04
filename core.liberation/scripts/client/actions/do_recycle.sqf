@@ -56,7 +56,10 @@ if ( dorecycle == 1 && !(isNull _vehicle) && (alive _vehicle || _veh_class in al
 	if (_veh_class == mobile_respawn) exitWith {
 		[_vehicle, "del"] remoteExec ["addel_beacon_remote_call", 2];
 	};
-	[_vehicle] remoteExec ["deleteVehicle", 2];
+
+	{ deleteVehicle _x } forEach (crew _vehicle);
+	deleteVehicle _vehicle;
+
 	stats_vehicles_recycled = stats_vehicles_recycled + 1;
 	publicVariable "stats_vehicles_recycled";
 };
