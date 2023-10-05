@@ -151,7 +151,7 @@ if (GRLIB_enable_arsenal == 1) then {
 		[Box_Ammo_typename,0,0,0,0],
 		[Box_Grenades_typename,0,100,0,0],
 		[Box_Explosives_typename,0,180,0,0],
-		[Box_Equipment_typename,0,350,0,GRLIB_perm_inf],
+		[Box_Equipment_typename,0,250,0,GRLIB_perm_inf],
 		[Box_Support_typename,0,270,0,GRLIB_perm_inf],
 		[Box_Special_typename,0,365,0,GRLIB_perm_log],
 		[Box_Launcher_typename,0,370,0,GRLIB_perm_tank]
@@ -613,8 +613,19 @@ GRLIB_Ammobox_keep = [
 	Box_Grenades_typename,
 	Box_Explosives_typename,
 	Box_Equipment_typename,
-	basic_weapon_typename,
-	"mission_USLaunchers"
+	basic_weapon_typename
+];
+
+// Ammobox when Arsenal is disabled (not saved)
+GRLIB_disabled_arsenal = [
+	Box_Weapon_typename,
+	Box_Ammo_typename,
+	Box_Grenades_typename,
+	Box_Explosives_typename,
+	Box_Equipment_typename,
+	Box_Support_typename,
+	Box_Special_typename,
+	Box_Launcher_typename	
 ];
 
 GRLIB_player_grave = [

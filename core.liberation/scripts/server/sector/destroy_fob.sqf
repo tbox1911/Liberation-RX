@@ -10,7 +10,6 @@ publicVariable "GRLIB_all_outposts";
 
 private _all_buildings_to_destroy = [];
 _all_buildings_to_destroy = [(_fobpos nearobjects 200), { getObjectType _x >= 8 && (typeOf _x) in _classnames_to_destroy }] call BIS_fnc_conditionalSelect;
-_all_buildings_to_destroy = _all_buildings_to_destroy + ([(_fobpos nearobjects 200), { (typeOf _x) in GRLIB_Ammobox_keep && [_x] call is_public }] call BIS_fnc_conditionalSelect);
 
 {
 	sleep 0.2;
