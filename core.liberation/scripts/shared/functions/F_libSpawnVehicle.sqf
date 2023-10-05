@@ -94,7 +94,7 @@ if ( _side != GRLIB_side_civilian ) then {
 		_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
 	} else {
 		if ( _classname in militia_vehicles ) then {
-			[_vehicle] call F_libSpawnMilitiaCrew;
+			[_vehicle] call F_forceMilitiaCrew;
 		} else {
 			[_vehicle] call F_forceOpforCrew;
 		};
