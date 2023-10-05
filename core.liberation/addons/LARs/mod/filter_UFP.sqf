@@ -5,7 +5,6 @@ GRLIB_MOD_signature = GRLIB_MOD_signature + ["afou_weap_","U_B_afou_","vest_afou
 // Weapons + Equipements (uniforms, etc..)
 (
 	"
-	([(configName _x), GRLIB_MOD_signature] call F_startsWithMultiple) &&
 	getNumber (_x >> 'scope') > 1 &&
 	([(configName _x)] call is_allowed_item)
 	"
@@ -15,7 +14,6 @@ GRLIB_MOD_signature = GRLIB_MOD_signature + ["afou_weap_","U_B_afou_","vest_afou
 // Others object (backpack, etc..)
 (
 	"
-	([(configName _x), GRLIB_MOD_signature] call F_startsWithMultiple) &&
 	([(configName _x)] call is_allowed_item) &&
 	((configName _x) iskindof 'Bag_Base')
 	"
@@ -25,7 +23,6 @@ GRLIB_MOD_signature = GRLIB_MOD_signature + ["afou_weap_","U_B_afou_","vest_afou
 // Glasses
 (
 	"
-	([(configName _x), GRLIB_MOD_signature] call F_startsWithMultiple) &&
 	([(configName _x)] call is_allowed_item)
 	"
 	configClasses (configfile >> "CfgGlasses" )
@@ -37,7 +34,6 @@ GRLIB_MOD_signature = GRLIB_MOD_signature + ["afou_weap_","U_B_afou_","vest_afou
 	getNumber (_x >> 'scope') > 1 &&
 	(getNumber (_x >> 'type') == 256 || (getText (_x >> 'type') find '256') >= 0) &&
 	tolower (configName _x) find '_tracer' < 0 &&
-	([(configName _x), GRLIB_MOD_signature] call F_startsWithMultiple) &&
 	([(configName _x)] call is_allowed_item)
 	"
 	configClasses (configfile >> "CfgMagazines")
