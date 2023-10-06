@@ -118,7 +118,7 @@ while { dialog && alive player } do {
                 if (_result) then {
                     if ((GRLIB_warehouse select (lbCurSel 111) select 1) <= 0) exitWith {};
                     buildtype = 9;
-                    build_unit = [_box,[],1,[],[],[]];
+                    build_unit = [_box,[],1,[],[],[],[]];
                     dobuild = 1;
                     closeDialog 0;
                     waitUntil { sleep 0.5; dobuild == 0};

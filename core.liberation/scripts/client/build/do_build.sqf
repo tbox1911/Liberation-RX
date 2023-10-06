@@ -14,6 +14,7 @@ private _compo = [];
 private _ammo = 0;
 private _lst_a3 = [];
 private _lst_r3f = [];
+private _lst_grl = [];
 
 GRLIB_build_force_mode = [
 	FOB_typename,
@@ -66,9 +67,10 @@ while { true } do {
 		_classname = build_unit select 0;
 		_color = build_unit select 1;
 		_ammo = build_unit select 2;
-		_lst_a3 = build_unit select 3;
-		_lst_r3f = build_unit select 4;
-		_compo = build_unit select 5;
+		_compo = build_unit select 3;
+		_lst_a3 = build_unit select 4;
+		_lst_r3f = build_unit select 5;
+		_lst_grl = build_unit select 6;
 		build_altitude = 0.6;
 	};
 
@@ -85,6 +87,9 @@ while { true } do {
 		_color = [];
 		_compo = [];
 		_ammo = 0;
+		_lst_a3 = [];
+		_lst_r3f = [];
+		_lst_grl = [];
 	};
 
 	// Build 
@@ -386,7 +391,7 @@ while { true } do {
 			};
 
 			// Ammo Box clean inventory
-			if ( !(_classname in GRLIB_Ammobox_keep) ) then {
+			if ( !(_classname in GRLIB_Ammobox_keep + GRLIB_disabled_arsenal) ) then {
 				clearWeaponCargoGlobal _vehicle;
 				clearMagazineCargoGlobal _vehicle;
 				clearItemCargoGlobal _vehicle;
@@ -443,14 +448,6 @@ while { true } do {
 					_vehicle setVehicleAmmo _ammo;
 				};
 
-				// A3 / R3F Inventory
-				if ( buildtype == 10 && !(_classname in GRLIB_vehicle_whitelist) ) then {
-					[_vehicle, _lst_a3] call F_setCargo;
-					if (!GRLIB_ACE_enabled) then {
-						[_vehicle, _lst_r3f] call R3F_LOG_FNCT_transporteur_charger_auto;
-					};
-				};
-
 				// Default Paint
 				if ( _classname in ["I_E_Truck_02_MRL_F"] ) then {
 					[_vehicle, ["EAF",1], true ] call BIS_fnc_initVehicle;
@@ -473,6 +470,19 @@ while { true } do {
 			if ( _classname == playerbox_typename ) then {
 				_vehicle setMaxLoad playerbox_cargospace;
 				_allow_damage = false;
+			};
+
+			// A3 / R3F Inventory
+			if ( count _lst_a3 > 0 ) then {
+				[_vehicle, _lst_a3] call F_setCargo;
+			};
+
+			if ( count _lst_r3f > 0 && !GRLIB_ACE_enabled ) then {
+				[_vehicle, _lst_r3f] call R3F_LOG_FNCT_transporteur_charger_auto;
+			};
+
+			if ( count _lst_grl > 0 ) then {
+				{[_vehicle, _x] call attach_object_direct} forEach _lst_grl;
 			};
 
 			// Ammobox (add Charge)

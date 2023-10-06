@@ -59,7 +59,7 @@ speak_mission_delivery_1 = {
 	_quest_item = player getVariable ["GRLIB_A3W_Mission_Item", objNull];
 	if (isNull _quest_item) then {
 		buildtype = 9;
-		build_unit = ["Land_Suitcase_F",[],1,[],[],[]];
+		build_unit = ["Land_Suitcase_F",[],1,[],[],[],[]];
 		dobuild = 1;
 		waitUntil { sleep 0.5; dobuild == 0 };
 		if (build_confirmed == 3) exitWith {};

@@ -38,7 +38,7 @@ while { dialog && alive player } do {
 
 		_i = 0;
 		{
-			if (_guid == _x select 3) then {
+			if (_guid == _x select 1) then {
 				_myveh pushBack [(_x select 0), 1, _i];
 				_myveh_info pushBack _x;
 				_i = _i + 1;
@@ -101,9 +101,9 @@ while { dialog && alive player } do {
 					private _timer = _vehicle getVariable ["GREUH_rearm_timer", 0];
 					private _msg = format [ "%1\nRearming Cooldown (%2 sec)\nPlease Wait...", _vehicle_name, round (_timer - time) ];
 
-					if (count ([_myveh_info, {(_guid == _x select 3)}] call BIS_fnc_conditionalSelect) >= _max_vehicle) exitWith { hintSilent (format [localize "STR_FULL_GARAGE", _max_vehicle]); sleep 2 };
+					if (count ([_myveh_info, {(_guid == _x select 1)}] call BIS_fnc_conditionalSelect) >= _max_vehicle) exitWith { hintSilent (format [localize "STR_FULL_GARAGE", _max_vehicle]); sleep 2 };
 					if (damage _vehicle != 0) exitWith { hintSilent "Damaged Vehicles cannot be Parked !"; sleep 2 };
-					if (count (_vehicle getVariable ["GRLIB_ammo_truck_load", []]) > 0) exitWith { hintSilent localize "STR_CANT_PARK"; sleep 2 };
+					//if (count (_vehicle getVariable ["GRLIB_ammo_truck_load", []]) > 0) exitWith { hintSilent localize "STR_CANT_PARK"; sleep 2 };
 					if (count (crew _vehicle) > 0 && !(typeOf _vehicle in uavs)) exitWith { hintSilent localize "STR_CANT_PARKUAV"; sleep 2 };
 					if (_timer >= time) exitWith { hintSilent _msg; sleep 2 };
 
@@ -125,13 +125,15 @@ while { dialog && alive player } do {
 
 					_veh_info = _myveh_info select _vehicle;
 					_veh_class = _veh_info select 0;
-					_color = _veh_info select 1;
-					_ammo = _veh_info select 2;
-					_lst_a3 = _veh_info select 4;
-					_lst_r3f = _veh_info select 5;
-					_compo = _veh_info select 6;
+					_owner = _veh_info select 1;
+					_color = _veh_info select 2;
+					_ammo = _veh_info select 3;
+					_compo = _veh_info select 4;					
+					_lst_a3 = _veh_info select 5;
+					_lst_r3f = _veh_info select 6;
+					_lst_grl = _veh_info select 7;
 					buildtype = 10;
-					build_unit = [_veh_class,_color,_ammo,_lst_a3,_lst_r3f,_compo];
+					build_unit = [_veh_class,_color,_ammo,_compo,_lst_a3,_lst_r3f,_lst_grl];
 					dobuild = 1;
 
 					waitUntil {sleep 0.5; dobuild == 0};

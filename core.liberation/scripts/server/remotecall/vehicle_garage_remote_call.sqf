@@ -16,7 +16,9 @@ if (_cmd == 1) then {
 	private _lst_a3 = [_vehicle] call F_getCargo;
 	private _lst_r3f = [];
 	{ _lst_r3f pushback (typeOf _x)} forEach (_vehicle getVariable ["R3F_LOG_objets_charges", []]);
-	GRLIB_garage append [[typeOf _vehicle, _color, _ammo, _owner, _lst_a3, _lst_r3f, _compo]];
+	private _lst_grl = [];
+	{_lst_grl pushback (typeOf _x)} forEach (_vehicle getVariable ["GRLIB_ammo_truck_load", []]);
+	GRLIB_garage append [[typeOf _vehicle, _owner, _color, _ammo, _compo, _lst_a3, _lst_r3f, _lst_grl]];
 	{ deleteVehicle _x } forEach (_vehicle getVariable ["R3F_LOG_objets_charges", []]);
 	{ deleteVehicle _x } foreach (_vehicle getVariable ["GRLIB_ammo_truck_load", []]);
 	deleteVehicle _vehicle;
@@ -26,7 +28,7 @@ if (_cmd == 1) then {
 if (_cmd == 2) then {
 	private _veh_lst = [];
 	{
-		if ( (_x select 3) == _owner ) then { _veh_lst pushback _foreachIndex };
+		if ( (_x select 1) == _owner ) then { _veh_lst pushback _foreachIndex };
 	} foreach GRLIB_garage;
 	GRLIB_garage deleteAt (_veh_lst select _vehicle);
 };

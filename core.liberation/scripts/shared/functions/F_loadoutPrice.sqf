@@ -1,6 +1,7 @@
 params [ "_unit" ];
 if (isNil "_unit") exitWith {0};
 if (isNil "GRLIB_Ammobox_keep") then { GRLIB_Ammobox_keep = [] };
+if (isNil "GRLIB_disabled_arsenal") then { GRLIB_disabled_arsenal = [] };
 
 // item name MUST be lowercase
 private _fixed_price = LOADOUT_fixed_price + [
@@ -135,7 +136,7 @@ if (typeName _unit == "OBJECT") then {
 		_val = _val + (2 * count(assignedItems _unit));
 	};
 
-	if (_unit iskindof "LandVehicle" || typeOf _unit in GRLIB_Ammobox_keep) then {
+	if (_unit iskindof "LandVehicle" || typeOf _unit in GRLIB_Ammobox_keep + GRLIB_disabled_arsenal) then {
 		_weap_cargo = weaponCargo _unit;
 		if (count _weap_cargo > 0) then {
 			{
