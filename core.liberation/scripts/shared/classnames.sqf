@@ -605,15 +605,7 @@ GRLIB_ignore_colisions = [
 GRLIB_Ammobox_keep = [
 	playerbox_typename,
 	medicalbox_typename,
-	Box_Weapon_typename,
-	Box_Ammo_typename,
-	Box_Support_typename,
-	Box_Launcher_typename,
-	Box_Special_typename,
-	Box_Grenades_typename,
-	Box_Explosives_typename,
-	Box_Equipment_typename,
-	basic_weapon_typename
+	Box_Ammo_typename
 ];
 
 // Ammobox when Arsenal is disabled (not saved)
@@ -625,7 +617,8 @@ GRLIB_disabled_arsenal = [
 	Box_Equipment_typename,
 	Box_Support_typename,
 	Box_Special_typename,
-	Box_Launcher_typename	
+	Box_Launcher_typename,
+	basic_weapon_typename
 ];
 
 GRLIB_player_grave = [

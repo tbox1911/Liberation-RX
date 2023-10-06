@@ -254,6 +254,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 				{ _nextbuilding lockTurret [_x, false] } forEach (allTurrets _nextbuilding);
 			};
 			if ( _nextclass == playerbox_typename ) then {
+				_nextbuilding setMaxLoad playerbox_cargospace;
 				_nextbuilding setVariable ["R3F_LOG_disabled", false, true];
 				_nextbuilding setVehicleLock "DEFAULT";
 				[_nextbuilding, _x select 5] call F_setCargo;

@@ -21,11 +21,12 @@ private _price = 0;
 while { dialog && alive player } do {
 	if (_refresh) then {
 		// Init SELL list
-		private _sell_classnames = ["LandVehicle","Air","Ship"] + GRLIB_Ammobox_keep;
+		private _sell_classnames = ["LandVehicle","Air","Ship","ReammoBox_F"] + GRLIB_Ammobox_keep;
 		_sell_list = [getPosATL player nearEntities [_sell_classnames, 50], {
 			alive _x &&
 			(_x distance2D lhd > GRLIB_fob_range) &&
 			!(typeOf _x in list_static_weapons) &&
+			!(_x getVariable ['R3F_LOG_disabled', false]) &&
 			[player, _x] call is_owner && locked _x != 2
 		}] call BIS_fnc_conditionalSelect;
 
@@ -80,7 +81,7 @@ while { dialog && alive player } do {
 					[player, _price, 0] remoteExec ["ammo_add_remote_call", 2];
 					hintSilent format [localize "STR_CARGO_SOLD", _vehicle_name, name player, _price];
 					playSound "taskSucceeded";
-					if (typeOf _vehicle in GRLIB_Ammobox_keep) then {deleteVehicle _vehicle};
+					if (typeOf _vehicle in GRLIB_disabled_arsenal) then {deleteVehicle _vehicle};
 				};
 			_refresh = true;
 			};
