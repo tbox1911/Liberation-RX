@@ -30,19 +30,21 @@ if ( local _grp ) then {
 
 // Wait
 private _unit_ttl = round (time + 1800);
+private _pos = getPosATL (leader _grp);
 waitUntil {
     sleep 60;
+    _pos = getPosATL (leader _grp);
     (
         GRLIB_global_stop == 1 ||
         (diag_fps < 25) ||
         ({alive _x} count (units _grp) == 0) ||
-        ([getPos (leader _grp), 3500, GRLIB_side_friendly] call F_getUnitsCount == 0) ||
+        ([_pos, GRLIB_spawn_max, GRLIB_side_friendly] call F_getUnitsCount == 0) ||
         (time > _unit_ttl)
     )
 };
 
 // Cleanup
-waitUntil { sleep 30; (GRLIB_global_stop == 1 || [markerPos _sector, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
 if (!isNull _vehicle) then { [_vehicle] spawn clean_vehicle };
 { deleteVehicle _x } forEach (units _grp);
 deleteGroup _grp;
