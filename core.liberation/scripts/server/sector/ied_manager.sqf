@@ -33,7 +33,7 @@ if !(isNull _roadobj) then {
 	private _ied_obj = createMine [ _ied_type, [getposATL _roadobj, _spread, random(360)] call BIS_fnc_relPos, [], 0];
 	_ied_obj setPos (getPos _ied_obj);
 
-	private _timeout = time + (30 * 60);
+	private _timeout = time + (60 * 60);
 	while {alive _ied_obj && time < _timeout && mineActive _ied_obj && !_goes_boom } do {
 		sleep 1;
 		_hostilecount = { alive _x && _x distance2D _ied_obj < _activation_radius } count (units GRLIB_side_friendly);
@@ -41,7 +41,8 @@ if !(isNull _roadobj) then {
 			_round = _ied_power createVehicle (getposATL _ied_obj);
 			[_round, -90, 0] call BIS_fnc_setPitchBank;
 			_round setVelocity [0,0,-100];
-			stats_ieds_detonated = stats_ieds_detonated + 1; publicVariable "stats_ieds_detonated";
+			stats_ieds_detonated = stats_ieds_detonated + 1;
+			publicVariable "stats_ieds_detonated";
 			_goes_boom = true;
 		};
 	};
