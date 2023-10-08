@@ -36,10 +36,13 @@ waitUntil { dialog };
 private _ammount_ammo = round (((_objectinfo select 2) * GRLIB_recycling_percentage) * (1 - damage _vehicle));
 private _ammount_fuel = _objectinfo select 3;
 if (_veh_class == fuelbarrel_typename) then { _ammount_ammo = 0 };
-ctrlSetText [ 134, format [ localize "STR_RECYCLING_YIELD",  [(_objectinfo select 0)] call F_getLRXName ] ];
-ctrlSetText [ 131, format [ "%1", _objectinfo select 1 ] ];
-ctrlSetText [ 132, format [ "%1", _ammount_ammo ] ];
-ctrlSetText [ 133, format [ "%1", _ammount_fuel ] ];
+if (_veh_class in GRLIB_Ammobox_keep + GRLIB_disabled_arsenal) then { 
+	_ammount_ammo = round (([_vehicle] call F_loadoutPrice) * GRLIB_recycling_percentage);
+};
+ctrlSetText [131, format ["%1", _objectinfo select 1]];
+ctrlSetText [132, format ["%1", _ammount_ammo]];
+ctrlSetText [133, format ["%1", _ammount_fuel]];
+ctrlSetText [134, format [localize "STR_RECYCLING_YIELD", [(_objectinfo select 0)] call F_getLRXName]];
 
 while { dialog && (alive player) && dorecycle == 0 } do { sleep 0.5 };
 if ( dialog ) then { closeDialog 0 };
