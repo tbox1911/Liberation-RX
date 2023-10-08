@@ -12,7 +12,7 @@ for "_i" from 1 to _count do {
 	_vehicle setVariable ["GRLIB_counter_TTL", round(time + 1800), true];  // 30 minutes TTL
 	(crew _vehicle) joinSilent _air_grp;
 	{
-		_x addBackpack "O_Parachute";
+		_x addBackpack "B_Parachute";
 		_x setVariable ["GRLIB_counter_TTL", round(time + 1800), true];  // 30 minutes TTL	
 	} forEach (crew _vehicle);
 	if (_side == GRLIB_side_friendly) then {

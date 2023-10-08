@@ -39,13 +39,13 @@ private ["_unit", "_backpack"];
 
 			if (_type == "para") then {
 				_backpack = backpack _unit;
-				if ( _backpack != "" && _backpack != "O_Parachute" ) then {
+				if ( _backpack != "" && _backpack != "B_Parachute" ) then {
 					_unit setVariable ["GRLIB_para_backpack", _backpack];
 					_unit setVariable ["GRLIB_para_backpack_contents", (backpackItems _unit)];
 					removeBackpack _unit;
 					sleep 0.1;
 				};
-				_unit addBackpack "O_Parachute";
+				_unit addBackpack "B_Parachute";
 			};
 
 			if (_type == "defender") then {

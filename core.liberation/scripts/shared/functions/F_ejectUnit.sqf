@@ -16,7 +16,7 @@ private _backpack = backpack _unit;
 private _unit_side = side group _unit;
 if (_unit_side == GRLIB_side_enemy) then { 
 	_unit allowDamage false;
-	_parachute = "O_Parachute";
+	_parachute = "B_Parachute";
 };
 unAssignVehicle _unit;
 [_unit] orderGetIn false;
