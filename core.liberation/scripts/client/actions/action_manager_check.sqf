@@ -1,4 +1,8 @@
 GRLIB_checkAdmin = {
+	(GRLIB_player_is_menuok && [] call is_admin && GRLIB_admin_menu)
+};
+
+GRLIB_checkOperator = {
 	(GRLIB_player_is_menuok && ([] call is_admin || getPlayerUID player in GRLIB_whitelisted_moderators) && GRLIB_admin_menu)
 };
 

@@ -6,7 +6,7 @@ private _icon_tuto = "\a3\ui_f\data\map\markers\handdrawn\unknown_ca.paa";
 player addAction ["<t color='#80FF80'>" + localize "STR_TUTO_ACTION" + "</t> <img size='1' image='" + _icon_tuto + "'/>","[] execVM 'scripts\client\ui\tutorial_manager.sqf'","",-740,false,true,"","(_target distance2D lhd < GRLIB_fob_range)"];
 
 // Admin Menu
-player addAction ["<t color='#0000F8'>" + localize "STR_ADMIN_MENU" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Use_ca.paa'/>","scripts\client\commander\admin_menu.sqf","",999,false,true,"","call GRLIB_checkAdmin"];
+player addAction ["<t color='#0000F8'>" + localize "STR_ADMIN_MENU" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Use_ca.paa'/>","scripts\client\commander\admin_menu.sqf","",999,false,true,"","call GRLIB_checkOperator"];
 player addAction ["<t color='#008080'>-- CONFIGURE MISSION</t> <img size='1' image='\a3\Ui_f\data\GUI\Rsc\RscDisplayArcadeMap\icon_saveas_ca.paa'/>","scripts\client\commander\open_params.sqf","",998,false,true,"","call GRLIB_checkAdmin"];
 player addAction ["<t color='#FF8000'>" + localize "STR_COMMANDER_ACTION" + "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\commander\open_permissions.sqf","",997,false,true,"","call GRLIB_checkCommander"];
 
