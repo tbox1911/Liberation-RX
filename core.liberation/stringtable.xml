@@ -476,6 +476,10 @@
 			<Portuguese>Caminhão FOB</Portuguese>
 			<Czech>FOB Nakladní auto</Czech>
 		</Key>
+		<Key ID="STR_FOBBOAT">
+			<Original>FOB Boat</Original>
+			<French>Bateau FOB</French>
+		</Key>		
 		<Key ID="STR_RESPAWN_TRUCK">
 			<Original>Mobile Respawn</Original>
 			<French>Respawn Mobile</French>

@@ -178,6 +178,7 @@ support_vehicles = support_vehicles + [
 	[FOB_box_outpost,0,500,0,GRLIB_perm_log],
 	[FOB_box_typename,0,1500,0,GRLIB_perm_max],
 	[FOB_truck_typename,5,1500,10,GRLIB_perm_max],
+	[FOB_boat_typename,5,1500,10,GRLIB_perm_max],
 	[ammobox_b_typename,0,round(300 / GRLIB_recycling_percentage),0,GRLIB_perm_hidden],
 	[ammobox_o_typename,0,round(300 / GRLIB_recycling_percentage),0,GRLIB_perm_hidden],
 	[ammobox_i_typename,0,round(300 / GRLIB_recycling_percentage),0,GRLIB_perm_hidden],
@@ -572,6 +573,7 @@ GRLIB_ide_traps = [
 GRLIB_ignore_colisions = [
 	FOB_box_typename,
 	FOB_truck_typename,
+	FOB_boat_typename,
 	FOB_box_outpost,
 	huron_typename,
 	Arsenal_typename,

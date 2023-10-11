@@ -32,6 +32,9 @@ if ( _class == Arsenal_typename ) then {
 if ( _class == FOB_truck_typename ) then {
 	_text = localize "STR_FOBTRUCK";
 };
+if ( _class == FOB_boat_typename ) then {
+	_text = localize "STR_FOBBOAT";
+};
 if ( _class == Respawn_truck_typename ) then {
 	_text = format ["%1 %2", localize "STR_RESPAWN_TRUCK", "(Truck)"];
 };

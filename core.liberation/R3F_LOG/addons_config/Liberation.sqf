@@ -178,6 +178,7 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	[FOB_box_outpost, 0],
 	[playerbox_typename, 0],
  	[FOB_truck_typename, 0],
+	[FOB_boat_typename, 0],
 	[ammo_truck_typename, 0],
 	[fuel_truck_typename, 0],
 	[repair_truck_typename, 0]

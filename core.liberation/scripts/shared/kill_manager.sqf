@@ -155,7 +155,7 @@ if ( isServer ) then {
 		// unTow
 		[_unit] spawn untow_vehicle;
 
-		if ( (typeof _unit) in [Arsenal_typename, FOB_box_typename, FOB_truck_typename, foodbarrel_typename, waterbarrel_typename] ) exitWith {
+		if ( (typeof _unit) in [Arsenal_typename, FOB_box_typename, FOB_truck_typename, FOB_boat_typename, foodbarrel_typename, waterbarrel_typename] ) exitWith {
 			sleep 30;
 			deleteVehicle _unit;
 		};

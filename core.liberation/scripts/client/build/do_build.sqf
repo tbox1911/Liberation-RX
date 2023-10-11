@@ -61,6 +61,13 @@ while { true } do {
 		buildtype = 99;
 	};
 
+	if ( buildtype == 97 ) then {
+		_classname = FOB_carrier;
+		_price = 0;
+		_price_fuel = 0;
+		buildtype = 99;
+	};
+
 	if ( buildtype in [9,10] ) then {
 		_price = 0;
 		_price_fuel = 0;

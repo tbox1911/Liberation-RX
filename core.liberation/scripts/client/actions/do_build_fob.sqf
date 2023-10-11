@@ -42,13 +42,14 @@ if (!_clearedtobuildfob) then {
 	if ( !_clearedtobuildsector ) then {
 		hint format [localize "STR_FOB_BUILDING_IMPOSSIBLE_SECTOR",floor _minsectordist,floor _distsector];
 	} else {
+		buildtype = 99;
 		if (typeOf _box == FOB_box_outpost) then {
 			buildtype = 98;
-			dobuild = 1;
-		} else {
-			buildtype = 99;
-			dobuild = 1;
 		};
+		if (typeOf _box == FOB_boat_typename) then {
+			buildtype = 97;
+		};
+		dobuild = 1;
 		waitUntil { sleep 0.5; dobuild == 0};
 		if (build_confirmed != 3) then { 
 			deleteVehicle _box;
