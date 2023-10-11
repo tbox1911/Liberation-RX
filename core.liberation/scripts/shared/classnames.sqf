@@ -215,6 +215,7 @@ elite_vehicles = [];
 { if (_x select 4 == GRLIB_perm_max) then { elite_vehicles pushback (_x select 0)} } foreach (heavy_vehicles + air_vehicles + static_vehicles);
 
 // *** Boats ***
+boats_west = [FOB_boat_typename, FOB_carrier] + boats_west;
 boats_names = [
 	"C_Scooter_Transport_01_F",
 	"C_Boat_Civil_01_F",
@@ -600,7 +601,8 @@ GRLIB_ignore_colisions = [
  	"Land_PowLine_wire_BB_EP1",
  	"Land_PowLine_wire_AB_EP1",
  	"Land_PowLine_wire_A_left_EP1",
- 	"Land_PowLine_wire_A_right_EP1"
+ 	"Land_PowLine_wire_A_right_EP1",
+	"Land_Carrier_01_hull_base_F"
 ];
 
 // Ammobox you want keep contents

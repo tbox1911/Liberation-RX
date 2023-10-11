@@ -1,10 +1,12 @@
-private _box = cursorObject;
+private _box = (objectParent player);
+if (isNull _box) then { _box = cursorObject };
+private _box_type = typeOf _box;
 
 sleep random 0.3;
 
 //only one at time
 if ((_box getVariable ["box_in_use", false])) exitWith {};
-if ( count (GRLIB_all_fobs select {count (_x nearObjects [FOB_typename, 50]) > 0}) >= GRLIB_maximum_fobs && typeOf _box != FOB_box_outpost ) exitWith {
+if ( count (GRLIB_all_fobs select {count (_x nearObjects [FOB_typename, 50]) > 0}) >= GRLIB_maximum_fobs && _box_type != FOB_box_outpost ) exitWith {
 	hint format [ localize "STR_HINT_FOBS_EXCEEDED", GRLIB_maximum_fobs ];
 };
 _box setVariable ["box_in_use", true, true];
@@ -43,18 +45,14 @@ if (!_clearedtobuildfob) then {
 		hint format [localize "STR_FOB_BUILDING_IMPOSSIBLE_SECTOR",floor _minsectordist,floor _distsector];
 	} else {
 		buildtype = 99;
-		if (typeOf _box == FOB_box_outpost) then {
-			buildtype = 98;
-		};
-		if (typeOf _box == FOB_boat_typename) then {
-			buildtype = 97;
-		};
+		if (_box_type == FOB_box_outpost) then { buildtype = 98 };
+		if (_box_type == FOB_boat_typename) then { buildtype = 97 };
 		dobuild = 1;
 		waitUntil { sleep 0.5; dobuild == 0};
-		if (build_confirmed != 3) then { 
+		if (build_confirmed != 3) then {
 			deleteVehicle _box;
 			sleep 2;
-			playsound "Land_Carrier_01_blast_deflector_up_sound";			
+			playsound "Land_Carrier_01_blast_deflector_up_sound";
 		};
 	};
 };

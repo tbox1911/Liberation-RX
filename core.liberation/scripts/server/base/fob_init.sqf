@@ -1,24 +1,33 @@
 params ["_fob", "_owner"];
 
-_fob allowDamage false;
 private _fob_class = typeOf _fob;
 
 // Add owner sign
-private _fobdir = getDir _fob;
-private _sign = createVehicle [FOB_sign, zeropos, [], 0, "CAN_COLLIDE"];
-_sign allowDamage false;
+private _fob_dir = getDir _fob;
+private _offset = [0,0,0];
 
-if (_fob_class == FOB_outpost ) then {
-	_sign setDir (_fobdir - 90);
-} else {
-	_sign setDir (_fobdir + 90);
+diag_log [typeof _fob, getpos _fob];
+
+if (_fob_class == FOB_typename ) then {
+	_offset = [5, -6, -0.2];
+	_fob_dir = _fob_dir + 90;
 	[_fob] call fob_init_officer;
 };
+if (_fob_class == FOB_outpost ) then {
+	_offset = [4, -4, -0.2];
+	_fob_dir = _fob_dir - 90;
+};
+if (_fob_class == FOB_carrier_center) then {
+	_offset = [0, -8, -1.2];
+	_fob_dir = _fob_dir - 90;
+};
 
-private _offset = [[-6, -5, -0.2], -_fobdir];
-if (_fob_class == FOB_outpost ) then { _offset = [[5, -3, -0.2], -_fobdir] };
-private _sign_pos = (getposATL _fob) vectorAdd (_offset call BIS_fnc_rotateVector2D);
-_sign setPosATL _sign_pos;
+private _sign_pos = (getposASL _fob) vectorAdd ([_offset, -_fob_dir] call BIS_fnc_rotateVector2D);
+private _sign = FOB_sign createVehicle zeropos;
+_sign allowDamage false;
+_sign setDir _fob_dir;
+_sign setPosASL _sign_pos;
+_sign enableSimulationGlobal false;
 _sign setObjectTextureGlobal [0, getMissionPath "res\splash_libe2.paa"];
 _sign setVariable ["GRLIB_vehicle_owner", _owner, true];
 
