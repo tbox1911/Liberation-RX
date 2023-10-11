@@ -1,6 +1,7 @@
 params [ "_vehicle", "_objects" ];
-
+if (count _objects == 0) exitWith {};
 if (GRLIB_ACE_enabled) exitWith {};
+
 private _vehicle_owner = _vehicle getVariable ["GRLIB_vehicle_owner", ""];
 private _object_created = [];
 
