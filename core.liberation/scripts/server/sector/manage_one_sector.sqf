@@ -45,7 +45,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 		_infsquad = "militia";
 		_squad1 = ([] call F_getAdaptiveSquadComp);
 		_squad2 = ([] call F_getAdaptiveSquadComp);
-		if (combat_readiness >= 50) then {
+		if (combat_readiness >= 70) then {
 			_squad3 = ([] call F_getAdaptiveSquadComp);
 		};
 		if (GRLIB_unitcap >= 1) then {
@@ -72,7 +72,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 		_infsquad = "militia";
 		while { count _squad1 < ( 20 * _popfactor) } do { _squad1 pushback (selectRandom militia_squad) };
 		if (combat_readiness >= 50) then {
-			_squad2 = ([] call F_getAdaptiveSquadComp);
+			while { count _squad2 < ( 15 * _popfactor) } do { _squad2 pushback (selectRandom militia_squad) };
 		};
 		if(floor(random 100) > (33 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback (selectRandom militia_vehicles); };
 		if(floor(random 100) > (66 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback (selectRandom militia_vehicles); };
@@ -87,7 +87,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 		_infsquad = "csat";
 		_squad1 = ([] call F_getAdaptiveSquadComp);
 		_squad2 = ([] call F_getAdaptiveSquadComp);
-		if (combat_readiness >= 50) then {
+		if (combat_readiness >= 70) then {
 			_squad3 = ([] call F_getAdaptiveSquadComp);
 		};		
 		if (GRLIB_unitcap >= 1.5) then {
@@ -124,7 +124,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 		_infsquad = "militia";
 		_squad1 = ([] call F_getAdaptiveSquadComp);
 		_squad2 = ([] call F_getAdaptiveSquadComp);
-		if (combat_readiness >= 50) then {
+		if (combat_readiness >= 70) then {
 			_squad3 = ([] call F_getAdaptiveSquadComp);
 		};		
 		if (GRLIB_unitcap >= 1.25) then {
@@ -143,7 +143,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 		_spawncivs = false;
 		_squad1 = ([] call F_getAdaptiveSquadComp);
 		_squad2 = ([] call F_getAdaptiveSquadComp);
-		if (combat_readiness >= 50) then {
+		if (combat_readiness >= 70) then {
 			_squad3 = ([] call F_getAdaptiveSquadComp);
 		};		
 		if (GRLIB_unitcap >= 1.5) then {
