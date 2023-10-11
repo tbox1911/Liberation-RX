@@ -5,7 +5,14 @@ _ctrl_chkd = (_array select 2 == 1);
 
 if (_ctrl_chkd) then {
 	hint "Teleport ON !";
-	player onMapSingleClick "if (_alt) then {player setPosATL _pos}";
+	player onMapSingleClick "
+	if (_alt) then {
+		if (surfaceIsWater _pos) then {
+			player setPosASL _pos
+		} else {
+			player setPosATL _pos
+		};
+	}";
     do_teleport = 1;
 } else {
 	hint "Teleport OFF !";
