@@ -14,7 +14,7 @@ removeAllWeapons _unit;
 //removeHeadgear _unit;
 removeBackpack _unit;
 removeVest _unit;
-_hmd = (hmd _unit);
+private _hmd = (hmd _unit);
 _unit unassignItem _hmd;
 _unit removeItem _hmd;
 _unit setCaptive true;
@@ -51,7 +51,8 @@ _anim = "AmovPercMstpSsurWnonDnon_AmovPercMstpSnonWnonDnon";
 [_unit, _anim] remoteExec ["playMoveNow", 0];
 sleep 3;
 
-private ["_unit_captured", "_no_blufor_near", "_player", "_player_in_action"];
+private ["_unit_captured", "_no_blufor_near", "_player", "_player_in_action", "_waypoint", "_nearest_sector"];
+private _flee_grp = grpNull;
 
 while {alive _unit} do {
 
@@ -101,34 +102,35 @@ while {alive _unit} do {
 			[gamelogic, _text] remoteExec ["globalChat", (owner _unit)];
 		};
 
-		private _flee_grp = createGroup [GRLIB_side_enemy, true];
+		_flee_grp = createGroup [GRLIB_side_enemy, true];
 		[_unit] joinSilent _flee_grp;
 		_unit enableAI "ANIM";
 		_unit enableAI "MOVE";
 		_unit setUnitPos "AUTO";
-		unAssignVehicle _unit;
 		[_unit] spawn F_ejectUnit;
 		sleep 2;
 		_anim = "AmovPercMwlkSrasWrflDf";
 		[_unit, _anim] remoteExec ["switchMove", 0];
 		[_unit, _anim] remoteExec ["playMoveNow", 0];
+	};
 
-		[_flee_grp] call F_deleteWaypoints;
-		private _nearest_sector = [opfor_sectors, _unit] call F_nearestPosition;
-		if (typeName _nearest_sector == "STRING") then {	
-			private _waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];
+	_nearest_sector = [opfor_sectors, _unit] call F_nearestPosition;
+	if (typeName _nearest_sector == "STRING") then {
+		if (_unit distance2D (markerPos _nearest_sector) > 50 && !_unit_captured && !isNull _flee_grp) then {
+			[_flee_grp] call F_deleteWaypoints;
+			_waypoint = _flee_grp addWaypoint [markerPos _nearest_sector, 0];
 			_waypoint setWaypointType "MOVE";
 			_waypoint setWaypointSpeed "FULL";
 			_waypoint setWaypointBehaviour "SAFE";
 			_waypoint setWaypointCombatMode "BLUE";
 			_waypoint setWaypointCompletionRadius 50;
 			_waypoint setWaypointStatements ["true", "deleteVehicle this"];
-			{_x doFollow leader _flee_grp} foreach units _flee_grp;
+			//{_x doFollow leader _flee_grp} foreach units _flee_grp;
 			sleep 5;
-		} else {
-			{ deleteVehicle _x } forEach (units _flee_grp);
 		};
-	};
+	} else {
+		deleteVehicle _unit;
+	};	
 
 	sleep 5;
 };

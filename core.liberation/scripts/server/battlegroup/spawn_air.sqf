@@ -37,22 +37,3 @@ _waypoint setWaypointType "SAD";
 _waypoint = _air_grp addWaypoint [ _targetpos, 200];
 _waypoint setWaypointType "CYCLE";
 {_x doFollow leader _air_grp} foreach units _air_grp;
-sleep 60;
-
-while {	{( alive _x )} count (units _air_grp) > 0 } do {
-	{
-		_unit = _x;
-		_vehicle = objectParent _unit;
-		if ( alive _vehicle && driver _vehicle == _unit) then {
-			_vehicle setVehicleAmmo 1;
-			_vehicle setFuel 1;
-		};
-
-		if ( alive _unit && isNull _vehicle && !(_unit getVariable ["GRLIB_is_prisonner", false])) then {
-			[_unit, false, true] spawn prisonner_ai;
-			sleep 4;
-		};
-		sleep 1;
-	} foreach units _air_grp;
-	sleep 5;
-};
