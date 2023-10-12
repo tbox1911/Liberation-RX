@@ -9,8 +9,14 @@ if ((_box getVariable ["box_in_use", false])) exitWith {};
 if ( count (GRLIB_all_fobs select {count (_x nearObjects [FOB_typename, 50]) > 0}) >= GRLIB_maximum_fobs && _box_type != FOB_box_outpost ) exitWith {
 	hint format [ localize "STR_HINT_FOBS_EXCEEDED", GRLIB_maximum_fobs ];
 };
-_box setVariable ["box_in_use", true, true];
 
+private _sea_deep = round ((getPosATL player select 2) - (getPosASL player select 2));
+private _min_deep = 30;
+if (_box_type == FOB_boat_typename && _sea_deep < _min_deep) exitWith {
+	hint format ["Not enough draft!\nActual: %1m\nNeeded: %2m", _sea_deep, _min_deep];
+};
+
+_box setVariable ["box_in_use", true, true];
 private _minfobdist = 1000;
 private _minsectordist = GRLIB_capture_size + GRLIB_fob_range;
 private _distfob = 1;

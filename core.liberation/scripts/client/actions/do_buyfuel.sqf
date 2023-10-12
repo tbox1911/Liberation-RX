@@ -7,7 +7,6 @@ build_unit = [canister_fuel_typename,[],1,[],[],[],[]];
 dobuild = 1;
 
 waitUntil { sleep 0.5; dobuild == 0 };
-
 if (build_confirmed == 0) then {
 	if (!([_cost] call F_pay)) then {
 		deleteVehicle build_vehicle;

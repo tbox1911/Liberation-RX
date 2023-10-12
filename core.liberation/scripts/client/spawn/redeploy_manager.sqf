@@ -201,20 +201,14 @@ if (dialog && deploy == 1) then {
 		} else {
 			// FOB / Outpost
 			_destpos = ((_choiceslist select _idxchoice) select 1);
-			private _attacked = ([_destpos] call F_sectorOwnership == GRLIB_side_enemy);
-			private _near_sign = nearestObjects [_destpos, [FOB_sign], 10] select 0;
-			private _near_outpost = (_destpos in GRLIB_all_outposts);
-			if (!isNull _near_sign) then {
-				_destdir = (getDir _near_sign) + 180;
-			};
 			_destdist = 12;
-			if (_near_outpost) then { _destdist = 8 };
-			if (!_near_outpost && _attacked) then {
-				_destdir = random 360;
-				_destdist = 4;
-				_destpos = _destpos vectorAdd [0,0,0.6];
-			};
-			player setDir (getDir _near_sign);
+			if ( surfaceIsWater _destpos ) then { _destpos = ATLtoASL _destpos };
+			private _near_sign = nearestObjects [_destpos, [FOB_sign], 20] select 0;
+			if !(isNil "_near_sign") then {
+				_destpos = getPosATL _near_sign;
+				_destdir = getDir _near_sign;
+				_destdist = 8;
+			};		
 		};
 
 		private _unit_list = units group player;
@@ -223,12 +217,13 @@ if (dialog && deploy == 1) then {
 			{ _unit_list pushBack _x } forEach units _my_squad;
 		};
 		private _unit_list_redep = [_unit_list, { !(isPlayer _x) && (isNull objectParent _x) && (_x distance2D (getPosATL player)) < 30 && lifestate _x != 'INCAPACITATED' }] call BIS_fnc_conditionalSelect;
-		player setPos ([_destpos, _destdist, _destdir] call BIS_fnc_relPos);
+		player setDir _destdir;
+		player setPosATL ([_destpos, _destdist, (_destdir-180)] call BIS_fnc_relPos);
 		[_unit_list_redep] spawn {
 			params ["_list"];
 			sleep 1;
 			{
-				_x setPos ([getPos player, 10, random 360] call BIS_fnc_relPos);
+				_x setPosATL ([getPosATL player, 10, random 360] call BIS_fnc_relPos);
 				_x doFollow leader player;
 				sleep 0.5;
 			} forEach _list;
