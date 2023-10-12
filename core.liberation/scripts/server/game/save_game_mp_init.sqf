@@ -1,7 +1,7 @@
 if (!isServer) exitWith {};
 
 GRLIB_classnames_to_save = [] + all_buildings_classnames;
-GRLIB_classnames_to_save_blu = [FOB_typename, FOB_outpost, FOB_sign, huron_typename] + all_friendly_classnames;
+GRLIB_classnames_to_save_blu = [FOB_typename, FOB_outpost, FOB_carrier, FOB_sign, huron_typename] + all_friendly_classnames;
 {
 	GRLIB_classnames_to_save_blu pushBackUnique (_x select 0);
 } foreach ind_recyclable;

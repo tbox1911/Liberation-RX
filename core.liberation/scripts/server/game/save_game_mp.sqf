@@ -57,7 +57,6 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
             ( alive _x) &&
             ( speed vehicle _x < 5 ) &&
             ( isNull attachedTo _x ) &&
-            (((getPosATL _x) select 2) < 10 ) &&
             (_x getVariable ["GRLIB_vehicle_owner", ""] != "server")
         }] call BIS_fnc_conditionalSelect;
         _all_buildings = _all_buildings + _nextbuildings;
