@@ -190,7 +190,7 @@ while { true } do {
 	if ( buildtype in [2,3,4,5,6,7,9,10,99,98,97] ) then {
 		if !(buildtype in [99,98,97]) then {
 			_pos = [] call F_getNearestFob;
-			if (surfaceIsWater _pos) then {
+			if (surfaceIsWater _pos && (getPosASL player select 2) > 2) then {
 				build_altitude = (getPosASL player select 2) + 0.5;
 				build_mode = 1;
 				build_water = 1;
@@ -333,8 +333,8 @@ while { true } do {
 				GRLIB_conflicting_objects = [];
 			};
 
-			if ( count _near_objects == 0 && ((_truepos distance2D _pos) < _maxdist || buildtype == 9) && (((!surfaceIsWater _truepos) && (!surfaceIsWater getpos player)) || (_classname in boats_names)) ) then {
-				if ( _classname in boats_names && surfaceIsWater _truepos ) then {
+			if ( count _near_objects == 0 && ((_truepos distance2D _pos) < _maxdist || buildtype == 9) && (((!surfaceIsWater _truepos) && (!surfaceIsWater getpos player)) || _classname in boats_names || build_water == 1) ) then {
+				if ( (_classname in boats_names || build_water == 1) && surfaceIsWater _truepos ) then {
 					_vehicle setposASL _truepos;
 				} else {
 					_vehicle setposATL _truepos;
@@ -366,12 +366,13 @@ while { true } do {
 						{ _objs_classnames pushback (typeof _x) } foreach _near_objects;
 						hint format [ "Colisions : %1", _objs_classnames ];
 					};
-				};
-				if( ((surfaceIsWater _truepos) || (surfaceIsWater getpos player)) && !(_classname in boats_names)) then {
-					GRLIB_ui_notif = localize "STR_BUILD_ERROR_WATER";
-				};
-				if( (_truepos distance2D _pos) > _maxdist && buildtype != 9) then {
-					GRLIB_ui_notif = format [localize "STR_BUILD_ERROR_DISTANCE",_maxdist];
+				} else {
+					if( ((surfaceIsWater _truepos) || (surfaceIsWater getpos player)) && !(_classname in boats_names)) then {
+						GRLIB_ui_notif = localize "STR_BUILD_ERROR_WATER";
+					};
+					if( (_truepos distance2D _pos) > _maxdist && buildtype != 9) then {
+						GRLIB_ui_notif = format [localize "STR_BUILD_ERROR_DISTANCE",_maxdist];
+					};
 				};
 			};
 			sleep 0.05;

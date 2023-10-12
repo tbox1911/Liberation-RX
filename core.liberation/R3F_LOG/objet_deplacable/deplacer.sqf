@@ -106,6 +106,7 @@ else
 				// D�termination du mode d'alignement initial en fonction du type d'objet, de ses dimensions, ...
 				R3F_LOG_deplace_mode_alignement = switch (true) do
 				{
+					case (surfaceIsWater getPos _objet): {"horizon"};							
 					case !(_objet isKindOf "Static"): {"sol"};
 					// Objet statique allong�
 					case (

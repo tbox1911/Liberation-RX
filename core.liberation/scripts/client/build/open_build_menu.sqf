@@ -37,6 +37,7 @@ if (count squads == 0) then {
 };
 
 private _near_outpost = ([player, "OUTPOST", GRLIB_fob_range] call F_check_near);
+private _water_fob = surfaceIsWater ([] call F_getNearestFob);
 private _squad_leader = (player == leader group player);
 private _has_box = false;
 { if ((_x select 0) == playerbox_typename && (_x select 1) == getPlayerUID player) exitWith {_has_box = true} } foreach GRLIB_garage;
@@ -63,7 +64,7 @@ private _is_linked = {
 
 	if ( _linked ) then {
 		if ( !(_base_link in blufor_sectors) ) then { _linked_unlocked = false };
-	};	
+	};
 	[_linked, _linked_unlocked, _base_link];
 };
 
@@ -71,7 +72,7 @@ ctrlEnable [120, false];
 ctrlEnable [121, false];
 
 while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
-	if (_old_buildtype != buildtype) then { build_refresh = true }; 
+	if (_old_buildtype != buildtype) then { build_refresh = true };
 
 	if (build_refresh) then {
 		build_refresh = false;
@@ -80,6 +81,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 		{
 			if (!_squad_leader && buildtype in [1,8]) exitWith {};
 			if (_near_outpost && buildtype in [3,4,8]) exitWith {};
+			if (_water_fob && buildtype in [3,6,8]) exitWith {};
 			if (buildtype == 8 ) then {
 				_build_list pushback _x;
 			} else {
@@ -89,6 +91,12 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 
 		if (_near_outpost && _squad_leader && count _build_list == 0) then {
 			_row = (_display displayCtrl (110)) lnbAddRow [ "       Unavailable at Outpost.","-","-","-"];
+			(_display displayCtrl (110)) lnbSetData  [[_row, 0], "false"];
+			(_display displayCtrl (162)) ctrlSetText getMissionPath "res\preview\unavailable.jpg";
+		};
+
+		if (_water_fob && _squad_leader && count _build_list == 0) then {
+			_row = (_display displayCtrl (110)) lnbAddRow [ "       Unavailable at Carrier.","-","-","-"];
 			(_display displayCtrl (110)) lnbSetData  [[_row, 0], "false"];
 			(_display displayCtrl (162)) ctrlSetText getMissionPath "res\preview\unavailable.jpg";
 		};
@@ -198,7 +206,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 
 		_old_selected_item = -1;
 	};
-	
+
 	_selected_item = lbCurSel 110;
 	_affordable = (lnbData [110, [_selected_item, 0]] == "true");
 

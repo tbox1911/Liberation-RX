@@ -73,7 +73,7 @@ GRLIB_checkGarage = {
 };
 
 GRLIB_checkBuild = {
-	(GRLIB_player_is_menuok && GRLIB_player_fobdistance < GRLIB_fob_range && !GRLIB_player_near_lhd && (([player, 3] call fetch_permission) || GRLIB_player_admin))
+	(GRLIB_player_is_menuok && GRLIB_player_fobdistance < GRLIB_fob_range && !GRLIB_player_near_lhd && (getPos player select 2) < 30 && (([player, 3] call fetch_permission) || GRLIB_player_admin))
 };
 
 GRLIB_checkSquadMgmt = {
