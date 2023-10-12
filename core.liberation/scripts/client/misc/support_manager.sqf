@@ -41,7 +41,7 @@ while { true } do {
 				_needammo1 = false;
 				_needammo2 = false;
 				_needmedic = false;
-				_near_arsenal = [_x, "REAMMO_AI", _distarsenal, true] call F_check_near;
+				_near_arsenal = [_x, "REAMMO_AI", _distarsenal] call F_check_near;
 				_primary_weapon = primaryWeapon _x;
 				if (_near_arsenal && _primary_weapon != "")  then {
 					_maxpri = _maxpri_def;
@@ -67,7 +67,7 @@ while { true } do {
 				};
 
 				// Medic
-				_near_medic = [_x, "MEDIC", _distarsenal, true] call F_check_near;
+				_near_medic = [_x, "MEDIC", _distarsenal] call F_check_near;
 
 				if (_near_medic) then {
 					if (damage _x > 0.1 && (behaviour _x) != "COMBAT") then {
@@ -104,7 +104,7 @@ while { true } do {
 				_vehicle_name = [_vehicle_class] call F_getLRXName;
 
 				// REAMMO
-				_near_arsenal = [_vehicle, "REAMMO", _distarsenal, true] call F_check_near;
+				_near_arsenal = [_vehicle, "REAMMO", _distarsenal] call F_check_near;
 				_is_enabled = !(_vehicle getVariable ["R3F_LOG_disabled", false]);
 				_vehicle_need_ammo = (([_vehicle] call F_getVehicleAmmoDef) <= 0.85);
 
@@ -133,7 +133,7 @@ while { true } do {
 				};
 
 				// REPAIR
-				_near_repair = [_vehicle, "REPAIR_AI", _distarsenal, true] call F_check_near;
+				_near_repair = [_vehicle, "REPAIR_AI", _distarsenal] call F_check_near;
 				_is_enabled = !(_vehicle getVariable ["R3F_LOG_disabled", false]);
 				_vehicle_need_repair = false;
 				_vehicle_hitpoints = getAllHitPointsDamage _vehicle;

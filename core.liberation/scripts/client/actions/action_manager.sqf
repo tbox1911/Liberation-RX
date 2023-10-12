@@ -12,9 +12,10 @@ while { true } do {
 	GRLIB_player_fobdistance = round (player distance2D ([] call F_getNearestFob));
 	GRLIB_player_near_outpost = [player, "OUTPOST", GRLIB_fob_range] call F_check_near;
 	GRLIB_player_admin = (player == ([] call F_getCommander) || [] call is_admin);
-	_near_spawn = [player, "SPAWNV", GRLIB_ActionDist_10, true] call F_check_near;
-	_near_spawnt = [player, "SPAWNT", GRLIB_ActionDist_5, true] call F_check_near;
-	GRLIB_player_near_spawn = (_near_spawn || _near_spawnt);
+	_near_spawn = [player, "SPAWNV", GRLIB_ActionDist_10] call F_check_near;
+	_near_spawnt = [player, "SPAWNT", GRLIB_ActionDist_5] call F_check_near;
+	GRLIB_player_near_base = (GRLIB_player_fobdistance < GRLIB_ActionDist_15 || GRLIB_player_near_lhd);
+	GRLIB_player_near_spawn = (GRLIB_player_near_base || _near_spawn || _near_spawnt);
 	GRLIB_player_owner_fob = (getPlayerUID player == ([getPosATL player] call F_getFobOwner));
 
 	// FOB Sign Actions

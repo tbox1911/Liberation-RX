@@ -25,22 +25,22 @@ GRLIB_check_DogRelax = {
 };
 
 GRLIB_checkHalo = {
-	(GRLIB_player_is_menuok && (GRLIB_player_near_spawn || GRLIB_player_near_lhd) && GRLIB_halo_param > 0)
+	(GRLIB_player_is_menuok && GRLIB_player_near_spawn && GRLIB_halo_param > 0)
 };
 
 GRLIB_checkRedeploy = {
 	private _ret = false;
 	if (GRLIB_allow_redeploy == 0) then {
-		_ret = (GRLIB_player_is_menuok && (GRLIB_player_fobdistance < GRLIB_ActionDist_10 || GRLIB_player_near_lhd));
+		_ret = (GRLIB_player_is_menuok && GRLIB_player_near_base);
 	} else {
-		_ret = (GRLIB_player_is_menuok && (GRLIB_player_near_spawn || GRLIB_player_near_lhd));
+		_ret = (GRLIB_player_is_menuok && GRLIB_player_near_spawn);
 	};
 	_ret;
 };
 
 GRLIB_checkSendAmmo = {
-	private _near_atm = [player, "ATM", GRLIB_ActionDist_5, true] call F_check_near;
-	(GRLIB_player_is_menuok && ( GRLIB_player_near_lhd || _near_atm ) && count (AllPlayers - (entities "HeadlessClient_F")) > 1)
+	private _near_atm = [player, "ATM", GRLIB_ActionDist_5, false] call F_check_near;
+	(GRLIB_player_is_menuok && (GRLIB_player_near_base || _near_atm) && count (AllPlayers - (entities "HeadlessClient_F")) > 1)
 };
 
 GRLIB_checkFuel = {
@@ -50,7 +50,7 @@ GRLIB_checkFuel = {
 };
 
 GRLIB_checkHeal = {
-	(GRLIB_player_is_menuok && (GRLIB_player_fobdistance < GRLIB_ActionDist_15 || GRLIB_player_near_lhd) && damage player >= 0.02)
+	(GRLIB_player_is_menuok && GRLIB_player_near_base && damage player >= 0.02)
 };
 
 GRLIB_checkLeader = {
@@ -63,17 +63,17 @@ GRLIB_checkAirDrop = {
 
 GRLIB_checkArsenal = {
 	private _near_arsenal = [player, "ARSENAL", GRLIB_ActionDist_5, false] call F_check_near;
-	private _mode1 = (GRLIB_enable_arsenal == 1 && (_near_arsenal || GRLIB_player_fobdistance < GRLIB_ActionDist_15 || GRLIB_player_near_lhd));
-	private _mode2 = (GRLIB_enable_arsenal == 2 && (GRLIB_player_fobdistance < GRLIB_ActionDist_15 || GRLIB_player_near_lhd));
+	private _mode1 = (GRLIB_enable_arsenal == 1 && (_near_arsenal || GRLIB_player_near_base));
+	private _mode2 = (GRLIB_enable_arsenal == 2 && GRLIB_player_near_base);
 	(GRLIB_player_is_menuok && (_mode1 || _mode2) && LRX_arsenal_init_done)
 };
 
 GRLIB_checkGarage = {
-	(GRLIB_player_is_menuok && GRLIB_player_fobdistance > 15 && GRLIB_player_fobdistance < GRLIB_fob_range && !GRLIB_player_near_outpost && !GRLIB_player_near_lhd && GRLIB_player_score >= GRLIB_perm_inf)
+	(GRLIB_player_is_menuok && !(surfaceIsWater getPos player) &&GRLIB_player_fobdistance > 15 && GRLIB_player_fobdistance < GRLIB_fob_range && !GRLIB_player_near_outpost && GRLIB_player_score >= GRLIB_perm_inf)
 };
 
 GRLIB_checkBuild = {
-	(GRLIB_player_is_menuok && GRLIB_player_fobdistance < GRLIB_fob_range && !GRLIB_player_near_lhd && (getPos player select 2) < 30 && (([player, 3] call fetch_permission) || GRLIB_player_admin))
+	(GRLIB_player_is_menuok && GRLIB_player_fobdistance < GRLIB_fob_range && (getPos player select 2) < 30 && (([player, 3] call fetch_permission) || GRLIB_player_admin))
 };
 
 GRLIB_checkSquadMgmt = {
@@ -101,7 +101,7 @@ GRLIB_checkOnboardShip = {
 };
 
 GRLIB_checkPackFOB = {
-	(GRLIB_player_is_menuok && (GRLIB_player_fobdistance < GRLIB_ActionDist_10 && !GRLIB_player_near_lhd) && (!GRLIB_player_near_outpost) && ((GRLIB_player_score >= GRLIB_perm_max) || GRLIB_player_admin))
+	(GRLIB_player_is_menuok && GRLIB_player_fobdistance < GRLIB_ActionDist_10 && (!GRLIB_player_near_outpost) && ((GRLIB_player_score >= GRLIB_perm_max) || GRLIB_player_admin))
 };
 
 GRLIB_checkPackBeacon = {
@@ -117,9 +117,9 @@ GRLIB_checkBuildOutpost = {
 };
 
 GRLIB_checkDelOutpost = {
-	(GRLIB_player_is_menuok && (GRLIB_player_fobdistance < GRLIB_ActionDist_10 && !GRLIB_player_near_lhd) && GRLIB_player_near_outpost && (GRLIB_player_owner_fob || GRLIB_player_admin))
+	(GRLIB_player_is_menuok && GRLIB_player_fobdistance < GRLIB_ActionDist_10 && GRLIB_player_near_outpost && (GRLIB_player_owner_fob || GRLIB_player_admin))
 };
 
 GRLIB_checkUpgradeOutpost = {
-	(GRLIB_player_is_menuok && (GRLIB_player_fobdistance < GRLIB_ActionDist_10 && !GRLIB_player_near_lhd) && GRLIB_player_near_outpost && ((GRLIB_player_owner_fob && (GRLIB_player_score >= GRLIB_perm_max)) || GRLIB_player_admin))
+	(GRLIB_player_is_menuok && GRLIB_player_fobdistance < GRLIB_ActionDist_10 && GRLIB_player_near_outpost && ((GRLIB_player_owner_fob && (GRLIB_player_score >= GRLIB_perm_max)) || GRLIB_player_admin))
 };
