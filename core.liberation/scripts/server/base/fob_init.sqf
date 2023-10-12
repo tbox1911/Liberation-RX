@@ -6,8 +6,6 @@ private _fob_class = typeOf _fob;
 private _fob_dir = getDir _fob;
 private _offset = [0,0,0];
 
-diag_log [typeof _fob, getpos _fob];
-
 if (_fob_class == FOB_typename ) then {
 	_offset = [5, -6, -0.2];
 	_fob_dir = _fob_dir + 90;

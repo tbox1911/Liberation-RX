@@ -11,7 +11,7 @@ GRLIB_classnames_to_save append (GRLIB_classnames_to_save_blu + all_hostile_clas
 GRLIB_classnames_to_save = GRLIB_classnames_to_save - GRLIB_disabled_arsenal;
 GRLIB_classnames_to_save = GRLIB_classnames_to_save arrayIntersect GRLIB_classnames_to_save;
 
-GRLIB_vehicles_light = [mobile_respawn, FOB_truck_typename, FOB_boat_typename] + GRLIB_vehicle_blacklist + list_static_weapons + uavs;
+GRLIB_vehicles_light = [mobile_respawn] + GRLIB_vehicle_blacklist + list_static_weapons + uavs;
 {
 	if !((_x select 0) isKindOf "AllVehicles") then { GRLIB_vehicles_light pushBackUnique (_x select 0) };
 } foreach support_vehicles;
