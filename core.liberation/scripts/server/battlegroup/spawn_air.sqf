@@ -4,6 +4,7 @@ private ["_vehicle", "_unit", "_priso"];
 if (isNil "_side") then {_side = GRLIB_side_enemy};
 private _planeType = opfor_air;
 if (_side == GRLIB_side_friendly) then {_planeType = blufor_air};
+if (count _planeType == 0) exitWith { objNull };
 
 private _air_grp = createGroup [_side, true];
 

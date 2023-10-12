@@ -1,4 +1,5 @@
 params [ "_targetpos", ["_qrf", false] ];
+if (count opfor_troup_transports_heli == 0) exitWith { objNull };
 
 private _name = "";
 private _unload_dist = 400;
