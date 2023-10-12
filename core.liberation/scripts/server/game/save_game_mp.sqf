@@ -50,7 +50,7 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
     private _all_buildings = [];
     {
         _fobpos = _x;
-        _nextbuildings = [ _fobpos nearobjects (GRLIB_fob_range * 2), {
+        _nextbuildings = [ _fobpos nearObjects (GRLIB_fob_range * 2), {
             ( getObjectType _x >= 8 ) &&
             ( !isSimpleObject _x ) &&
             ((typeof _x) in GRLIB_classnames_to_save ) &&

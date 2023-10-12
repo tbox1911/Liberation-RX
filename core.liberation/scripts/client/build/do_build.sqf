@@ -1,7 +1,11 @@
-private [ "_unit", "_pos", "_grp", "_classname", "_idx", "_unitrank", "_ghost_spot", "_vehicle", "_allow_damage", "_dist", "_actualdir", "_near_objects", "_near_objects_25"];
+private ["_unit", "_pos", "_grp", "_classname", "_fob_box",
+		 "_idx", "_unitrank", "_ghost_spot", "_vehicle", "_allow_damage",
+		 "_dist", "_actualdir", "_near_objects", "_near_objects_25"
+];
 
 build_confirmed = 0;
 build_unit = [];
+build_vehicle = objNull;
 build_mode = 0;
 build_water = 0;
 
@@ -44,8 +48,8 @@ while { true } do {
 
 	build_confirmed = 1;
 	build_invalid = 0;
-	build_vehicle = objNull;
 	_classname = "";
+	_fob_box = objNull;
 
 	// Init build properties
 	if ( buildtype == 6 ) then { build_altitude = building_altitude } else { build_altitude = 0.2 };
@@ -54,18 +58,21 @@ while { true } do {
 		_classname = FOB_typename;
 		_price = 0;
 		_price_fuel = 0;
+		_fob_box = build_vehicle;
 	};
 
 	if ( buildtype == 98 ) then {
 		_classname = FOB_outpost;
 		_price = 0;
 		_price_fuel = 0;
+		_fob_box = build_vehicle;
 	};
 
 	if ( buildtype == 97 ) then {
 		_classname = FOB_carrier;
 		_price = 0;
 		_price_fuel = 0;
+		_fob_box = build_vehicle;
 	};
 
 	if ( buildtype in [9,10] ) then {
@@ -552,6 +559,8 @@ while { true } do {
 			// FOB
 			if(buildtype in [99,98,97]) then {
 				playsound "Land_Carrier_01_blast_deflector_up_sound";
+				deleteVehicle _fob_box;
+				sleep 1;
 				if (_classname == FOB_carrier) then {
 					_vehicle = nearestObjects [_truepos, [FOB_carrier_center], 120] select 0;
 					[_truepos] spawn {
@@ -564,6 +573,7 @@ while { true } do {
 					};
 				};
 				[_vehicle, getPlayerUID player] remoteExec ["build_fob_remote_call", 2];
+				playsound "Land_Carrier_01_blast_deflector_up_sound";
 				_allow_damage = false;
 			};
 

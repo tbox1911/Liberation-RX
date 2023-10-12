@@ -53,15 +53,12 @@ if (!_clearedtobuildfob) then {
 		hint format [localize "STR_FOB_BUILDING_IMPOSSIBLE_SECTOR",floor _minsectordist,floor _distsector];
 	} else {
 		buildtype = 99;
+		build_vehicle = _box;
 		if (_box_type == FOB_box_outpost) then { buildtype = 98 };
 		if (_box_type == FOB_boat_typename) then { buildtype = 97 };
 		dobuild = 1;
-		waitUntil { sleep 0.5; dobuild == 0};
-		if (build_confirmed != 3) then {
-			deleteVehicle _box;
-			sleep 2;
-			playsound "Land_Carrier_01_blast_deflector_up_sound";
-		};
+		sleep 3;
+		playsound "Land_Carrier_01_blast_deflector_up_sound";
 	};
 };
 _box setVariable ["box_in_use", false, true];

@@ -2,7 +2,7 @@ class liberation_repackage_fob {
 	idd = 5755;
 	movingEnable = false;
 	controlsBackground[] = { "OuterBG", "RecycleBG", "OuterBG_F", "InnerBG", "InnerBG_F" };
-	controls[] = { "Header", "ButtonClose", "Infotext","TruckButton","BoxButton","CancelButton"};
+	controls[] = { "Header", "ButtonClose", "Infotext","TruckButton","BoxButton","BoatButton"};
 	objects[] = {};
 
 	class RecycleBG : BgPicture {
@@ -59,9 +59,9 @@ class liberation_repackage_fob {
 	};
 
 	class BoxButton : StdButton{
-		idc = 120;
+		idc = 121;
 		x = (0.38 * safezoneW + safezoneX) - (BORDERSIZE);
-		y = (0.55 * safezoneH + safezoneY);
+		y = (0.50 * safezoneH + safezoneY);
 		w = (0.08 * safezoneW) - (BORDERSIZE);
 		h = (0.045 * safezoneH);
 		sizeEx = 0.023 * safezoneH;
@@ -69,24 +69,34 @@ class liberation_repackage_fob {
 		action = "dorepackage = 1;";
 	};
 	class TruckButton : StdButton{
-		idc = 120;
+		idc = 122;
 		x = (0.46 * safezoneW + safezoneX);
-		y = (0.55 * safezoneH + safezoneY);
+		y = (0.50 * safezoneH + safezoneY);
 		w = (0.08 * safezoneW) - (BORDERSIZE);
 		h = (0.045 * safezoneH);
 		sizeEx = 0.023 * safezoneH;
 		text = $STR_FOBTRUCK;
 		action = "dorepackage = 2;";
 	};
-	class CancelButton : StdButton{
-		idc = 121;
+	class BoatButton : StdButton{
+		idc = 123;
 		x = (0.54 * safezoneW + safezoneX) + (BORDERSIZE);
-		y = (0.55 * safezoneH + safezoneY);
+		y = (0.50 * safezoneH + safezoneY);
 		w = (0.08 * safezoneW);
 		h = (0.045 * safezoneH);
 		sizeEx = 0.023 * safezoneH;
-		text = $STR_RECYCLING_CANCEL;
-		action = "closeDialog 0";
-	};
+		text = $STR_FOBBOAT;
+		action = "dorepackage = 3;";
+	};	
+	// class CancelButton : StdButton{
+	// 	idc = -1;
+	// 	x = (0.54 * safezoneW + safezoneX) + (BORDERSIZE);
+	// 	y = (0.55 * safezoneH + safezoneY);
+	// 	w = (0.08 * safezoneW);
+	// 	h = (0.045 * safezoneH);
+	// 	sizeEx = 0.023 * safezoneH;
+	// 	text = $STR_RECYCLING_CANCEL;
+	// 	action = "closeDialog 0";
+	// };
 
 };
