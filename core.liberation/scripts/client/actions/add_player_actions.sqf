@@ -84,3 +84,6 @@ player addAction ["<t color='#FF6F00'>" + localize "STR_DESTROY_OUTPOST" + "</t>
 
 // Upgrade Outpost
 player addAction ["<t color='#006F80'>" + localize "STR_UPGRADE_OUTPOST" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_upgrade_outpost.sqf","",-981,false,true,"","call GRLIB_checkUpgradeOutpost"];
+
+// Onboard Ship
+player addAction ["<t color='#00206F'>" + localize "STR_ONBOARD_SHIP" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_onboard.sqf","",-981,false,true,"","call GRLIB_checkOnboardShip"];

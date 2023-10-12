@@ -428,6 +428,10 @@
 			<Portuguese>Não pode construir sobre a água.</Portuguese>
 			<Czech>Na vodě se stavět nedá.</Czech>
 		</Key>
+		<Key ID="STR_BUILD_ERROR_WATER_DEEP">
+			<Original>Not enough depth!\nActual: %1m\nNeeded: %2m</Original>
+			<French>Pas assez de profondeur!\nActuel: %1m\nMinimum: %2m</French>
+		</Key>					
 		<Key ID="STR_BUILD_ERROR_DISTANCE">
 			<Original>Can't build further than %1 meters away from the FOB.</Original>
 			<French>Impossible de construire à plus de %1 mètres de la FOB.</French>
@@ -5955,6 +5959,10 @@
 			<Original>-- UPGRADE OUTPOST</Original>
 			<French>-- AMÉLIORER AVANT-POSTE</French>
 		</Key>
+		<Key ID="STR_ONBOARD_SHIP">
+			<Original>-- CLIMB ON BOARD</Original>
+			<French>-- MONTER À BORD</French>
+		</Key>		
 		<Key ID="STR_UPGRADE_OUTPOST_HINT">
 			<Original>upgraded.</Original>
 			<French>amélioré.</French>

@@ -205,7 +205,7 @@ if (dialog && deploy == 1) then {
 			if ( surfaceIsWater _destpos ) then { _destpos = ATLtoASL _destpos };
 			private _near_sign = nearestObjects [_destpos, [FOB_sign], 20] select 0;
 			if !(isNil "_near_sign") then {
-				_destpos = getPosATL _near_sign;
+				_destpos = (getPosATL _near_sign) vectorAdd [0, 0, 0.3];;
 				_destdir = getDir _near_sign;
 				_destdist = 8;
 			};		

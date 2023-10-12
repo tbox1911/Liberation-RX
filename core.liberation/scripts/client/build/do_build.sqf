@@ -3,6 +3,7 @@ private [ "_unit", "_pos", "_grp", "_classname", "_idx", "_unitrank", "_ghost_sp
 build_confirmed = 0;
 build_unit = [];
 build_mode = 0;
+build_water = 0;
 
 private _maxdist = GRLIB_fob_range;
 private _truepos = [];
@@ -189,9 +190,10 @@ while { true } do {
 	if ( buildtype in [2,3,4,5,6,7,9,10,99,98,97] ) then {
 		if !(buildtype in [99,98,97]) then {
 			_pos = [] call F_getNearestFob;
-			if ( surfaceIsWater _pos ) then {
-				build_altitude = (getPosASL player select 2) + 0.2;
+			if (surfaceIsWater _pos) then {
+				build_altitude = (getPosASL player select 2) + 0.5;
 				build_mode = 1;
+				build_water = 1;
 			};
 		};
 
@@ -204,20 +206,22 @@ while { true } do {
 		_idactmode = -1;
 		_idactplacebis = -1;
 
-		if ( buildtype == 6 && !(_classname in GRLIB_build_force_mode) ) then {
-			_idactplacebis = player addAction ["<t color='#B0FF00'>" + localize "STR_PLACEMENT_BIS" + "</t> <img size='1' image='res\ui_confirm.paa'/>","scripts\client\build\build_place_bis.sqf","",-752,false,false,"","build_invalid == 0 && build_confirmed == 1"];
-			_idactmode = player addAction ["<t color='#B0FF00'>" + localize "STR_MODE" + "</t> <img size='1' image='R3F_LOG\icons\r3f_drop.paa'/>","scripts\client\build\build_mode.sqf","",-755,false,false,"","build_confirmed == 1"];
-		};
+		if (build_water == 0) then {
+			if ( buildtype == 6 && !(_classname in GRLIB_build_force_mode) ) then {
+				_idactplacebis = player addAction ["<t color='#B0FF00'>" + localize "STR_PLACEMENT_BIS" + "</t> <img size='1' image='res\ui_confirm.paa'/>","scripts\client\build\build_place_bis.sqf","",-752,false,false,"","build_invalid == 0 && build_confirmed == 1"];
+				_idactmode = player addAction ["<t color='#B0FF00'>" + localize "STR_MODE" + "</t> <img size='1' image='R3F_LOG\icons\r3f_drop.paa'/>","scripts\client\build\build_mode.sqf","",-755,false,false,"","build_confirmed == 1"];
+			};
 
-		if ( buildtype in [6,99,98] ) then {
-			_idactview = player addAction ["<t color='#B0FF00'>" + "-- Build view" + "</t>","scripts\client\build\build_view.sqf","",-755,false,false,"","build_confirmed == 1"];
-			_idactsnap = player addAction ["<t color='#B0FF00'>" + localize "STR_GRID" + "</t>","scripts\client\build\do_grid.sqf","",-755,false,false,"","build_confirmed == 1"];
-		};
+			if ( buildtype in [6,99,98] ) then {
+				_idactview = player addAction ["<t color='#B0FF00'>" + "-- Build view" + "</t>","scripts\client\build\build_view.sqf","",-755,false,false,"","build_confirmed == 1"];
+				_idactsnap = player addAction ["<t color='#B0FF00'>" + localize "STR_GRID" + "</t>","scripts\client\build\do_grid.sqf","",-755,false,false,"","build_confirmed == 1"];
+			};
 
-		if ( buildtype in [2,3,4,5,6,7,9,10,99,98] ) then {
-			_idactupper = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEUP" + "</t> <img size='1' image='R3F_LOG\icons\r3f_lift.paa'/>","scripts\client\build\build_up.sqf","",-755,false,false,"","build_confirmed == 1"];
-			_idactlower = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEDOWN" + "</t> <img size='1' image='R3F_LOG\icons\r3f_release.paa'/>","scripts\client\build\build_down.sqf","",-755,false,false,"","build_confirmed == 1"];
-			_idactrotate = player addAction ["<t color='#B0FF00'>" + localize "STR_ROTATION" + "</t> <img size='1' image='res\ui_rotation.paa'/>","scripts\client\build\build_rotate.sqf","",-756,false,false,"","build_confirmed == 1"];
+			if ( buildtype in [2,3,4,5,6,7,9,10,99,98] ) then {
+				_idactupper = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEUP" + "</t> <img size='1' image='R3F_LOG\icons\r3f_lift.paa'/>","scripts\client\build\build_up.sqf","",-755,false,false,"","build_confirmed == 1"];
+				_idactlower = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEDOWN" + "</t> <img size='1' image='R3F_LOG\icons\r3f_release.paa'/>","scripts\client\build\build_down.sqf","",-755,false,false,"","build_confirmed == 1"];
+				_idactrotate = player addAction ["<t color='#B0FF00'>" + localize "STR_ROTATION" + "</t> <img size='1' image='res\ui_rotation.paa'/>","scripts\client\build\build_rotate.sqf","",-756,false,false,"","build_confirmed == 1"];
+			};
 		};
 
 		_idactplace = player addAction ["<t color='#B0FF00'>" + localize "STR_PLACEMENT" + "</t> <img size='1' image='res\ui_confirm.paa'/>","scripts\client\build\build_place.sqf","",-750,false,true,"","build_invalid == 0 && build_confirmed == 1"];
@@ -396,6 +400,7 @@ while { true } do {
 			if (_classname == FOB_carrier) then {
 				titleText ["Carrier Incoming..." ,"BLACK FADED", 30];
 				player allowDamage false;
+				player setPos zeropos;
 			};
 			sleep 0.1;
 
@@ -548,15 +553,11 @@ while { true } do {
 				playsound "Land_Carrier_01_blast_deflector_up_sound";
 				if (_classname == FOB_carrier) then {
 					_vehicle = nearestObjects [_truepos, [FOB_carrier_center], 120] select 0;
-					[_vehicle] spawn {
-						params ["_vehicle"];
+					[_truepos] spawn {
+						params ["_pos"];
 						sleep 2;
-						_near_sign = nearestObjects [getPosASL _vehicle, [FOB_sign], 20] select 0;
 						titleText ["" ,"BLACK IN", 3];
-						_destpos = getPosATL _near_sign;
-						_destdir = getDir _near_sign;
-						player setDir _destdir;
-						player setPosATL ([_destpos, 8, (_destdir-180)] call BIS_fnc_relPos);
+						[_pos] execVM "scripts\client\actions\do_onboard.sqf";
 						sleep 0.5;
 						player allowDamage true;
 					};
@@ -604,6 +605,7 @@ while { true } do {
 		build_rotation = 0;
 		building_altitude = 0;
 		build_mode = 0;
+		build_water = 0;
 	};
 	manned = false;
 };

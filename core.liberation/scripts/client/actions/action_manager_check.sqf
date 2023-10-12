@@ -96,6 +96,10 @@ GRLIB_checkBuildFOBWater = {
 	(alive player && surfaceIsWater getPos player && (GRLIB_player_fobdistance > GRLIB_sector_size && !GRLIB_player_near_lhd) && (typeOf (vehicle player) == FOB_boat_typename) && driver (vehicle player) == player && round (speed vehicle player) == 0 && !((vehicle player) getVariable ["box_in_use", false]))
 };
 
+GRLIB_checkOnboardShip = {
+	(alive player && ((surfaceIsWater ([] call F_getNearestFob) && GRLIB_player_fobdistance < GRLIB_fob_range) || (GRLIB_player_near_lhd && surfaceIsWater getPos lhd)) && (getPosASL player select 2) < 2)
+};
+
 GRLIB_checkPackFOB = {
 	(GRLIB_player_is_menuok && (GRLIB_player_fobdistance < GRLIB_ActionDist_10 && !GRLIB_player_near_lhd) && (!GRLIB_player_near_outpost) && ((GRLIB_player_score >= GRLIB_perm_max) || GRLIB_player_admin))
 };
