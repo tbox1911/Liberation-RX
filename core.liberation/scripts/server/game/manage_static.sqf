@@ -32,8 +32,8 @@ while { true } do {
         if (isNull _gunner) then {
             {
                 if (alive _x) exitWith {
-                    [_x] orderGetIn true;
                     _x assignAsGunner _static;
+                    [_x] orderGetIn true;
                     //_x moveInGunner _static;
                     sleep 1;
                 };

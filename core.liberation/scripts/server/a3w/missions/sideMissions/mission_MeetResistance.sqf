@@ -70,7 +70,6 @@ _setupObjects =
 	_gunner = (units _aiGroupRes) select ((count (units _aiGroupRes)) -1);
 	_gunner assignAsGunner _veh1;
 	_gunner moveInGunner _veh1;
-	[_gunner] orderGetIn true;
 	_veh1 setVariable ["GRLIB_vehicle_gunner", [_gunner]];
 	_veh1 setVariable ["GRLIB_vehicle_owner", "server", true];
 	sleep 1;
@@ -80,7 +79,6 @@ _setupObjects =
 	_gunner = (units _aiGroupRes) select ((count (units _aiGroupRes)) -2);
 	_gunner assignAsGunner _veh2;
 	_gunner moveInGunner _veh2;
-	[_gunner] orderGetIn true;
 	_veh2 setVariable ["GRLIB_vehicle_gunner", [_gunner]];
 	_veh2 setVariable ["GRLIB_vehicle_owner", "server", true];
 

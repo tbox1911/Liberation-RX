@@ -12,9 +12,8 @@ while { (count _unitclass) < _cargo_seat_free } do { _unitclass pushback (select
 
 private _troup_group = [_start_pos, _unitclass, GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
 {
-	_x assignAsCargoIndex [_troup_transport, _forEachIndex];
+	_x assignAsCargoIndex [_troup_transport, (_forEachIndex + 1)];
 	_x moveInCargo _troup_transport;
-	[_x] orderGetIn true;
 	_x setSkill ["courage", 1];
 	_x allowFleeing 0;
 	_x setVariable ["GRLIB_counter_TTL", round(time + 1800)];

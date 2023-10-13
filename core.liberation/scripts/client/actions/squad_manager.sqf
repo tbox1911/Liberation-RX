@@ -12,12 +12,13 @@ while { true } do {
 
 		//get in
 		if ( _veh_player != player && _leader distance2D player <= 15 && count (waypoints _my_squad) == 0 ) then {
+			private _indx = 1;
 			{
 				_cargo_seat_free = _veh_player emptyPositions "Cargo";
 				if (vehicle _x != _veh_player && _cargo_seat_free > 0) then {
-					_x assignAsCargo _veh_player;
+					_x assignAsCargoIndex [_veh_player, _indx];
 					_x moveInCargo _veh_player;
-					[_x] orderGetIn true;
+					_indx =_indx + 1;
 				};
 
 				if (vehicle _x == _x && _cargo_seat_free == 0) then {

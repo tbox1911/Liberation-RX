@@ -103,13 +103,11 @@ _setupObjects =
 	_gunner = (units _aiGroup) select 1;
 	_gunner assignAsGunner _veh1;
 	_gunner moveInGunner _veh1;
-	[_gunner] orderGetIn true;
 	_veh1 setVariable ["GRLIB_vehicle_gunner", [_gunner]];
 
 	_gunner = (units _aiGroup) select 2;
 	_gunner assignAsGunner _veh2;
 	_gunner moveInGunner _veh2;
-	[_gunner] orderGetIn true;
 	_veh2 setVariable ["GRLIB_vehicle_gunner", [_gunner]];
 
 	_nbUnits = [] call getNbUnits;

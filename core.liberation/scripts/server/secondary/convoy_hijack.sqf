@@ -93,7 +93,7 @@ _troop_vehicle allowCrewInImmobile [true, true];
 _troop_vehicle addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage } ];
 private _troops_group = [_spawnpos, ([] call F_getAdaptiveSquadComp), GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
 {
-	_x assignAsCargoIndex [_troop_vehicle, _forEachIndex + 1];
+	_x assignAsCargoIndex [_troop_vehicle, (_forEachIndex + 1)];
 	_x moveInCargo _troop_vehicle;
 	_x setSkill 0.65;
 	_x setSkill ["courage", 1];

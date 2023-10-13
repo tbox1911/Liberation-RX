@@ -61,13 +61,10 @@ while {alive _unit} do {
 		sleep (2 + floor(random 4));
 		private _unit_owner = leader group _unit;
 
-		if (!isnull objectParent _unit) then {
-			unassignVehicle _unit;
-			[_unit] orderGetIn false;
-			[_unit] allowGetIn false;
-			doGetOut _unit;
-			sleep 3;
-		};
+		doGetOut _unit;
+		unassignVehicle _unit;
+		[_unit] orderGetIn false;
+		[_unit] allowGetIn false;
 		doStop _unit;
 		sleep 2;
 
@@ -106,9 +103,14 @@ while {alive _unit} do {
 		[_unit] joinSilent _flee_grp;
 		_unit enableAI "ANIM";
 		_unit enableAI "MOVE";
+
+		doGetOut _unit;
+		unassignVehicle _unit;
+		[_unit] orderGetIn false;
+		[_unit] allowGetIn false;
 		_unit setUnitPos "AUTO";
-		[_unit] spawn F_ejectUnit;
 		sleep 2;
+
 		_anim = "AmovPercMwlkSrasWrflDf";
 		[_unit, _anim] remoteExec ["switchMove", 0];
 		[_unit, _anim] remoteExec ["playMoveNow", 0];
@@ -125,7 +127,7 @@ while {alive _unit} do {
 			_waypoint setWaypointCombatMode "BLUE";
 			_waypoint setWaypointCompletionRadius 50;
 			_waypoint setWaypointStatements ["true", "deleteVehicle this"];
-			//{_x doFollow leader _flee_grp} foreach units _flee_grp;
+			{ _x doFollow (leader _flee_grp) } foreach (units _flee_grp);
 			sleep 5;
 		};
 	} else {

@@ -64,7 +64,6 @@ private _air_grp = GRLIB_side_civilian createVehicleCrew _vehicle;
 sleep 0.1;
 if (count (crew _vehicle) == 0) exitWith { diag_log format ["--- LRX Error: Taxi %1 create crew failed!", _taxi_type]};
 {
-    [_x] orderGetIn true;
 	_x allowDamage false;
 	_x allowFleeing 0;
  } foreach (units _air_grp);
