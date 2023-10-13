@@ -89,20 +89,25 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 			};
 		} forEach (build_lists select buildtype);
 
-		if (_near_outpost && _squad_leader && count _build_list == 0) then {
-			_row = (_display displayCtrl (110)) lnbAddRow [ "       Unavailable at Outpost.","-","-","-"];
-			(_display displayCtrl (110)) lnbSetData  [[_row, 0], "false"];
-			(_display displayCtrl (162)) ctrlSetText getMissionPath "res\preview\unavailable.jpg";
-		};
+		private _limited = false;
+		private _msg = "";
+		if (count _build_list == 0) then {
+			_msg = "       Score too low!";
+			if (_near_outpost && buildtype in [3,4,8]) then {
+				_msg = "       Unavailable at Outpost.";
+			};
 
-		if (_water_fob && _squad_leader && count _build_list == 0) then {
-			_row = (_display displayCtrl (110)) lnbAddRow [ "       Unavailable at Carrier.","-","-","-"];
-			(_display displayCtrl (110)) lnbSetData  [[_row, 0], "false"];
-			(_display displayCtrl (162)) ctrlSetText getMissionPath "res\preview\unavailable.jpg";
-		};
+			if (_water_fob && buildtype in [3,6,8]) then {
+				_msg = "       Unavailable at Carrier.";
+			};
 
-		if (!_squad_leader && count _build_list == 0) then {
-			_row = (_display displayCtrl (110)) lnbAddRow [ "       Only for Squad Leader.","-","-","-"];
+			if (!_squad_leader && buildtype in [1,8]) then {
+				_msg = "       Only for Squad Leader.";
+			};
+			_limited = true;			
+		};
+		if (_limited) then {
+			_row = (_display displayCtrl (110)) lnbAddRow [_msg,"-","-","-"];
 			(_display displayCtrl (110)) lnbSetData  [[_row, 0], "false"];
 			(_display displayCtrl (162)) ctrlSetText getMissionPath "res\preview\unavailable.jpg";
 		};
