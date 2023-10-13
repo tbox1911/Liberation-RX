@@ -208,6 +208,7 @@ if (dialog && deploy == 1) then {
 				_destpos = (getPosATL _near_sign) vectorAdd [0, 0, 0.2];
 				_destdir = getDir _near_sign;
 				_destdist = 8;
+				if (surfaceIsWater _destpos) then { _destdist = 5};
 			};
 		};
 
@@ -219,11 +220,11 @@ if (dialog && deploy == 1) then {
 		private _unit_list_redep = [_unit_list, { !(isPlayer _x) && (isNull objectParent _x) && (_x distance2D player < 30) && lifestate _x != 'INCAPACITATED' }] call BIS_fnc_conditionalSelect;
 		player setDir _destdir;
 		player setPosATL ([_destpos, _destdist, (_destdir-180)] call BIS_fnc_relPos);
-		[_unit_list_redep, _destpos] spawn {
-			params ["_list", "_pos"];
+		[_unit_list_redep, _destpos, _destdist] spawn {
+			params ["_list", "_pos", "_dist"];
 			sleep 1;
 			{
-				_x setPosATL ([_pos, 10, random 360] call BIS_fnc_relPos);
+				_x setPosATL ([_pos, _dist, random 360] call BIS_fnc_relPos);
 				_x doFollow player;
 				sleep 0.5;
 			} forEach _list;

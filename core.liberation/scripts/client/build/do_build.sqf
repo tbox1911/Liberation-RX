@@ -224,12 +224,12 @@ while { true } do {
 				_idactview = player addAction ["<t color='#B0FF00'>" + "-- Build view" + "</t>","scripts\client\build\build_view.sqf","",-755,false,false,"","build_confirmed == 1"];
 				_idactsnap = player addAction ["<t color='#B0FF00'>" + localize "STR_GRID" + "</t>","scripts\client\build\do_grid.sqf","",-755,false,false,"","build_confirmed == 1"];
 			};
+		};
 
-			if ( buildtype in [2,3,4,5,6,7,9,10,99,98] ) then {
-				_idactupper = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEUP" + "</t> <img size='1' image='R3F_LOG\icons\r3f_lift.paa'/>","scripts\client\build\build_up.sqf","",-755,false,false,"","build_confirmed == 1"];
-				_idactlower = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEDOWN" + "</t> <img size='1' image='R3F_LOG\icons\r3f_release.paa'/>","scripts\client\build\build_down.sqf","",-755,false,false,"","build_confirmed == 1"];
-				_idactrotate = player addAction ["<t color='#B0FF00'>" + localize "STR_ROTATION" + "</t> <img size='1' image='res\ui_rotation.paa'/>","scripts\client\build\build_rotate.sqf","",-756,false,false,"","build_confirmed == 1"];
-			};
+		if ( buildtype in [2,3,4,5,6,7,9,10,99,98] ) then {
+			_idactupper = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEUP" + "</t> <img size='1' image='R3F_LOG\icons\r3f_lift.paa'/>","scripts\client\build\build_up.sqf","",-755,false,false,"","build_confirmed == 1"];
+			_idactlower = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEDOWN" + "</t> <img size='1' image='R3F_LOG\icons\r3f_release.paa'/>","scripts\client\build\build_down.sqf","",-755,false,false,"","build_confirmed == 1"];
+			_idactrotate = player addAction ["<t color='#B0FF00'>" + localize "STR_ROTATION" + "</t> <img size='1' image='res\ui_rotation.paa'/>","scripts\client\build\build_rotate.sqf","",-756,false,false,"","build_confirmed == 1"];
 		};
 
 		_idactplace = player addAction ["<t color='#B0FF00'>" + localize "STR_PLACEMENT" + "</t> <img size='1' image='res\ui_confirm.paa'/>","scripts\client\build\build_place.sqf","",-750,false,true,"","build_invalid == 0 && build_confirmed == 1"];
@@ -237,7 +237,11 @@ while { true } do {
 		_ghost_spot = (markerPos "ghost_spot") findEmptyPosition [1,150,"B_Heli_Transport_03_unarmed_F"];
 		_ghost_spot = _ghost_spot vectorAdd [0, 0, build_altitude];
 
-		_vehicle = _classname createVehicleLocal _ghost_spot;
+		if (_classname == FOB_carrier) then {
+			_vehicle = "VR_3DSelector_01_default_F" createVehicleLocal _ghost_spot;
+		} else {
+			_vehicle = _classname createVehicleLocal _ghost_spot;
+		};
 		_vehicle allowdamage false;
 		_vehicle setVehicleLock "LOCKED";
 		_vehicle enableSimulationGlobal false;
@@ -405,14 +409,12 @@ while { true } do {
 			private _veh_vup = vectorUp _vehicle;
 			private _veh_pos = getPosWorld _vehicle;
 			deleteVehicle _vehicle;
+			sleep 0.1;
 
 			if (_classname == FOB_carrier) then {
 				titleText ["Aircraft Carrier Incoming..." ,"BLACK FADED", 30];
-				player allowDamage false;
-				player setPos zeropos;
+				{ _x allowDamage false } forEach (units player);
 			};
-			sleep 0.1;
-
 			_vehicle = _classname createVehicle _truepos;
 			_vehicle allowDamage false;
 			_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
@@ -566,11 +568,11 @@ while { true } do {
 					_vehicle = nearestObjects [_truepos, [FOB_carrier_center], 120] select 0;
 					[_truepos] spawn {
 						params ["_pos"];
-						sleep 2;
+						sleep 3;
 						titleText ["" ,"BLACK IN", 3];
 						[_pos] execVM "scripts\client\actions\do_onboard.sqf";
 						sleep 0.5;
-						player allowDamage true;
+						{ _x allowDamage true } forEach (units player);
 					};
 				};
 				[_vehicle, getPlayerUID player] remoteExec ["build_fob_remote_call", 2];

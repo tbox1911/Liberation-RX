@@ -13,7 +13,7 @@ private _classnames_to_destroy = [
 	Warehouse_desk_typename,
 	"Land_RepairDepot_01_civ_F",
 	"Land_MedicalTent_01_MTP_closed_F",
-	"Land_HelipadSquare_F",
+	"Helipad_base_F",
 	"Land_Carrier_01_hull_base_F"
 ];
 _classnames_to_destroy append all_buildings_classnames + list_static_weapons + static_vehicles_AI;
@@ -43,5 +43,9 @@ _all_buildings_to_destroy = [(_fobpos nearObjects (GRLIB_fob_range * 3)), { getO
 	deleteVehicle _building;
 	sleep 0.05;
 } foreach _all_buildings_to_destroy;
+
+
+_all_buildings_to_destroy = [(_fobpos nearObjects (GRLIB_fob_range * 3)), { getObjectType _x >= 8 && (getPos _x select 2) > 3 }] call BIS_fnc_conditionalSelect;
+{ _x setPos (getPos _x)} forEach _all_buildings_to_destroy;
 
 stats_fobs_lost = stats_fobs_lost + 1;
