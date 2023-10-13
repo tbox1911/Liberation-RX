@@ -5,6 +5,7 @@ diag_log format ["Spawn BattlegGroup at %1", time];
 private _bg_groups = [];
 private _spawn_marker = "";
 private _objective_pos = [];
+
 if ( isNil "_liberated_sector" ) then {
 	_spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max] call F_findOpforSpawnPoint;
 	_objective_pos = ([markerpos _spawn_marker] call F_getNearestBluforObjective) select 0;
@@ -28,29 +29,40 @@ if ( combat_readiness < 50 ) then {
 if (_spawn_marker != "") then {
 	GRLIB_last_battlegroup_time = time;
 
-	private _selected_opfor_battlegroup = [];
 	private _target_size = GRLIB_battlegroup_size * (combat_readiness /100);
 	if ( count (AllPlayers - (entities "HeadlessClient_F")) <= 2 ) then { _target_size = round (_target_size * 0.65) };
 	if ( _target_size > 8 ) then { _target_size = 8; };
 	if ( _target_size < 3 ) then { _target_size = 3; };
 
+	private ["_nextgrp", "_vehicle", "_vehicle_class", "_squad"];
 	for "_i" from 1 to _target_size do {
-		_selected_opfor_battlegroup pushback (selectRandom _vehicle_pool);
-	};
-
-	{
-		private _nextgrp = createGroup [GRLIB_side_enemy, true];
-		private _vehicle = [markerpos _spawn_marker, _x] call F_libSpawnVehicle;
+		_vehicle_class = (selectRandom _vehicle_pool);
+		_vehicle = [markerpos _spawn_marker, _vehicle_class] call F_libSpawnVehicle;
 		_vehicle setVariable ["GRLIB_counter_TTL", round(time + 3600)];  // 60 minutes TTL
-		(crew _vehicle) joinSilent _nextgrp;
-		[_nextgrp, _objective_pos] spawn battlegroup_ai;
+
+		_nextgrp = group driver _vehicle;
 		{ _x setVariable ["GRLIB_counter_TTL", round(time + 3600)] } forEach (units _nextgrp);
-		_bg_groups pushback _nextgrp;
-		if ( ( _x in opfor_troup_transports_truck + opfor_troup_transports_heli) && (opforcap < GRLIB_battlegroup_cap)) then {
+
+		if ( (_vehicle_class in opfor_troup_transports_truck + opfor_troup_transports_heli) && (opforcap < GRLIB_battlegroup_cap)) then {
 			[_vehicle, _objective_pos] spawn troup_transport;
 		};
+
+		[_nextgrp, _objective_pos] spawn battlegroup_ai;
+		_bg_groups pushback _nextgrp;
 		sleep 10;
-	} foreach _selected_opfor_battlegroup;
+	};
+
+	private _nb_squad = 1;
+	if (combat_readiness > 80) then { _nb_squad = 2 };
+
+	for "_i" from 1 to _nb_squad do {
+		_squad = [] call F_getAdaptiveSquadComp;
+		_nextgrp = [_spawn_marker, "csat", _squad] call F_spawnRegularSquad;
+		[_nextgrp, _objective_pos] spawn battlegroup_ai;
+		_bg_groups pushback _nextgrp;
+		_target_size = _target_size + 1;
+		sleep 10;
+	};
 
 	sleep 15;
 	if ( GRLIB_csat_aggressivity > 0.7 ) then {
@@ -88,7 +100,7 @@ if (_spawn_marker != "") then {
 		};
 		[_para_pos] spawn send_paratroopers;
 		sleep 15;
-		[_para_pos] spawn send_paratroopers;	
+		[_para_pos] spawn send_paratroopers;
 		diag_log format ["Done Spawning Paratrooper BattlegGroup at %1", time];
 	};
 };
