@@ -99,7 +99,7 @@ if (_spawn_marker != "") then {
 			_para_pos = markerPos _liberated_sector;
 		};
 		[_para_pos] spawn send_paratroopers;
-		sleep 15;
+		sleep 20;
 		[_para_pos] spawn send_paratroopers;
 		diag_log format ["Done Spawning Paratrooper BattlegGroup at %1", time];
 	};
