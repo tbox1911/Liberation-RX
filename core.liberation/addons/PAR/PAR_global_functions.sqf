@@ -38,7 +38,7 @@ PAR_unblock_AI = {
 				_unit setPosATL (getPosATL player vectorAdd [([] call F_getRND), ([] call F_getRND), 0.5]);
 				[_unit] joinSilent (group player);
 				_unit enableAI "ALL";
-				_unit doFollow leader player;
+				_unit doFollow player;
 				_unit switchMove "AmovPercMwlkSrasWrflDf";
 				_unit playMoveNow "AmovPercMwlkSrasWrflDf";
 			} else {

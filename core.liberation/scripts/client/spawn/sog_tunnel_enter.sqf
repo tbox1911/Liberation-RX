@@ -18,7 +18,7 @@ if (_ai_follow) then {
             params ["_list"];
             {
                 _x setpos ([getPosATL player, 1, random 360] call BIS_fnc_relPos);
-                _x doFollow leader player;
+                _x doFollow player;
                 sleep 0.3;
             } forEach _list;
         };

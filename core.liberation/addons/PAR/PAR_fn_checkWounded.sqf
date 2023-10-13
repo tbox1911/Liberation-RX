@@ -61,7 +61,6 @@ if (count (_wnded_list) > 0) then {
 
 	sleep 2;
 	_medic setVariable ['PAR_heal', nil];
-	_medic doFollow leader player;
 	_wnded setVariable ['PAR_healed', nil];
-	_wnded doFollow leader player;
+	[_medic, _wnded] doFollow player;
 };
