@@ -40,11 +40,11 @@ sleep 7;
   _wnded,
   "<t color='#00C900'>" + localize "STR_PAR_AC_01" + "</t>",
   "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_reviveMedic_ca.paa","\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_reviveMedic_ca.paa",
-   "round(_this distance2D _target) < 3 &&
-    lifeState _target == 'INCAPACITATED' &&
-    _target getVariable ['PAR_isDragged',0] == 0 &&
-    ( [_this] call PAR_has_medikit || [_this] call PAR_is_medic )",
-  "round(_caller distance2D _target) < 3",
+   "(_this distance2D _target < 3) &&
+    (lifeState _target == 'INCAPACITATED') &&
+    (_target getVariable ['PAR_isDragged',0] == 0) &&
+    ([_this] call PAR_has_medikit || [_this] call PAR_is_medic)",
+  "(_caller distance2D _target < 3)",
   {
     [(_target getVariable ["PAR_myMedic", objNull]), _target] call PAR_fn_medicRelease;
     if (local _caller) then { _target setVariable ["PAR_myMedic", _caller] };

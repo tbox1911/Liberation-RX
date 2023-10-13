@@ -56,10 +56,7 @@ if (count (_wnded_list) > 0) then {
 		if (lifeState _medic != 'INCAPACITATED' && lifeState _wnded != 'INCAPACITATED' && round (_medic distance2D _wnded) <= 3) then {
 			_wnded setDamage 0;
 		};
-		private _pos = getPos _medic;
-		if (surfaceIsWater _pos) then { _pos set [2, -2]; _medic setPosASL _pos; _medic switchMove "" };
-		private _pos = getPos _wnded;
-		if (surfaceIsWater _pos) then { _pos set [2, -2]; _wnded setPosASL _pos; _wnded switchMove "" };		
+		[_medic, _wnded] call PAR_fn_fixPos;
 	};
 
 	sleep 2;

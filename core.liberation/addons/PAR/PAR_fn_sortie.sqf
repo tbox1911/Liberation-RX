@@ -64,11 +64,7 @@ if (_wnded == player) then {
   _wnded doFollow player;
 };
 [_medic, _wnded] call PAR_fn_medicRelease;
-
-private _pos = getPos _medic;
-if (surfaceIsWater _pos) then { _pos set [2, -2]; _medic setPosASL _pos; _medic switchMove "" };
-private _pos = getPos _wnded;
-if (surfaceIsWater _pos) then { _pos set [2, -2]; _wnded setPosASL _pos; _wnded switchMove "" };
+[_medic, _wnded] call PAR_fn_fixPos;
 
 [_wnded] spawn {
     params ["_unit"];

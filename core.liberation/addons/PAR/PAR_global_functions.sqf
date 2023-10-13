@@ -55,6 +55,22 @@ PAR_fn_globalchat = {
     gamelogic globalChat _msg;
   };
 };
+PAR_fn_fixPos = {
+	params ["_medic", "_wnded"];
+	{ 
+		private _pos = getPosATL _x; 
+		if (surfaceIsWater _pos) then { 
+			_pos = getPosASL _x; 
+			_zpos = _pos select 2; 
+			if (_zpos < -3) then { 
+				_pos set [2, -1 max _zpos];
+				_x setPosASL _pos;
+				_x switchMove ""; 
+				_x playMoveNow "";
+			}; 
+		}; 
+	} forEach [_medic, _wnded];
+};
 PAR_is_medic = {
 	params ["_unit"];
 	private _ret = false;
