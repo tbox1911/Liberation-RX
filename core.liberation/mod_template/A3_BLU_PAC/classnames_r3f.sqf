@@ -289,28 +289,18 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 
 R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 [
-	["B_T_Boat_Transport_01_F", 15],
 	["B_T_Lifeboat", 15],
 	["B_T_Boat_Armed_01_minigun_F", 75],
-	["B_SDV_01_F", 15],
-	["C_Scooter_Transport_01_F", 15]
+	["B_SDV_01_F", 15]
 ];
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 [
-	["B_T_Boat_Transport_01_F", 5],
-	["B_T_Lifeboat", 5],
-	["B_SDV_01_F", 5],
-	["C_Scooter_Transport_01_F", 5]
+	["B_T_Lifeboat", 15]
 ];
 
 R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 [
-	"B_T_Boat_Transport_01_F",
-	"B_T_Lifeboat",
-	"B_T_Boat_Armed_01_minigun_F",
-	"B_SDV_01_F",
-	"C_Scooter_Transport_01_F"
 ];
 
 R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +

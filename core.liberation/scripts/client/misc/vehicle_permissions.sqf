@@ -1,7 +1,7 @@
 params ["_unit1", "_unit2", "_vehicle"];
 
 if (_vehicle iskindof "Steerable_Parachute_F") exitWith { true };
-if (count GRLIB_all_fobs == 0 && typeOf _vehicle in [FOB_truck_typename,huron_typename]) exitWith { true }; // Allowed at start
+if (count GRLIB_all_fobs == 0 && typeOf _vehicle in [FOB_truck_typename,FOB_boat_typename,huron_typename]) exitWith { true }; // Allowed at start
 
 private _doeject = false;
 private _info = (assignedVehicleRole _unit1);

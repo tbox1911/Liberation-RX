@@ -151,7 +151,7 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 [
-	["B_Boat_Transport_01_F", 5],
+	["B_Boat_Transport_01_F", 15],
 	["C_Scooter_Transport_01_F", 5],
 	["B_SDV_01_F", 50]
 ];
