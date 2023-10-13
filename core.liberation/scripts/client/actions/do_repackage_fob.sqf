@@ -26,14 +26,14 @@ if ( dorepackage > 0 ) then {
 
 	if (surfaceIsWater _fob_pos) then {
 		titleText ["Aircraft Carrier Leaves..." ,"BLACK FADED", 30];
-		player allowDamage false;
-		player setPos zeropos;
+		{ _x allowDamage false } forEach (units player);
 	};
 	playsound "Land_Carrier_01_blast_deflector_down_sound";
 	[_fob_pos] remoteExec ["destroy_fob_remote_call", 2];
 	sleep 3;
 	playsound "Land_Carrier_01_blast_deflector_down_sound";
-
+	sleep 3;
+	
 	private _box_typename = "";
 	if (dorepackage == 1) then { _box_typename = FOB_box_typename };
 	if (dorepackage == 2) then { _box_typename = FOB_truck_typename };
@@ -52,7 +52,17 @@ if ( dorepackage > 0 ) then {
 	if (dorepackage == 3) then {
 		titleText ["" ,"BLACK IN", 3];
 		player moveInDriver _fob_box;
-		player allowDamage true;
+		private _unit_list_redep = [(units player), { !(isPlayer _x) && (isNull objectParent _x) && (_x distance2D player < 40) && lifestate _x != 'INCAPACITATED' }] call BIS_fnc_conditionalSelect;
+		private _destpos = (getPosASL player);
+		sleep 1;
+		{
+			_x doFollow player;
+			_x setPosASL ([_destpos, 10, random 360] call BIS_fnc_relPos);
+			_x assignAsCargoIndex [_fob_box, (_forEachIndex + 1)];
+			_x moveInCargo _fob_box;
+			sleep 0.5;
+		} forEach _unit_list_redep;
+		{ _x allowDamage true } forEach (units player);
 	};
 };
 
