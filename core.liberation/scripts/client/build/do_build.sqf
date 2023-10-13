@@ -107,7 +107,8 @@ while { true } do {
 	};
 
 	// Build
-	_pos = getPosASL player;
+	_pos = getPosATL player;
+	if (surfaceIsWater _pos) then { _pos = getPosASL player };
 
 	if ( buildtype == 1 ) then {
 		if (_classname isKindOf "Dog_Base_F" || _classname in MFR_Dogs_classname) then {

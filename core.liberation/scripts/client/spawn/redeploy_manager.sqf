@@ -208,7 +208,7 @@ if (dialog && deploy == 1) then {
 				_destpos = (getPosATL _near_sign) vectorAdd [0, 0, 0.3];
 				_destdir = getDir _near_sign;
 				_destdist = 8;
-			};		
+			};
 		};
 
 		private _unit_list = units group player;
@@ -216,14 +216,14 @@ if (dialog && deploy == 1) then {
 		if (!isNil "_my_squad") then {
 			{ _unit_list pushBack _x } forEach units _my_squad;
 		};
-		private _unit_list_redep = [_unit_list, { !(isPlayer _x) && (isNull objectParent _x) && (_x distance2D (getPosATL player)) < 30 && lifestate _x != 'INCAPACITATED' }] call BIS_fnc_conditionalSelect;
+		private _unit_list_redep = [_unit_list, { !(isPlayer _x) && (isNull objectParent _x) && (_x distance2D player < 30) && lifestate _x != 'INCAPACITATED' }] call BIS_fnc_conditionalSelect;
 		player setDir _destdir;
 		player setPosATL ([_destpos, _destdist, (_destdir-180)] call BIS_fnc_relPos);
-		[_unit_list_redep] spawn {
-			params ["_list"];
+		[_unit_list_redep, _destpos] spawn {
+			params ["_list", "_pos"];
 			sleep 1;
 			{
-				_x setPosATL ([getPosATL player, 10, random 360] call BIS_fnc_relPos);
+				_x setPosATL ([_pos, 10, random 360] call BIS_fnc_relPos);
 				_x doFollow leader player;
 				sleep 0.5;
 			} forEach _list;
