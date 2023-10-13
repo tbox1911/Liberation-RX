@@ -1,5 +1,5 @@
 params [ "_targetpos", ["_qrf", false] ];
-if (count opfor_troup_transports_heli == 0) exitWith { objNull };
+if (count opfor_troup_transports_heli == 0) exitWith { grpNull };
 
 private _name = "";
 private _unload_dist = 400;
@@ -13,9 +13,7 @@ if (_qrf == true) then {
 };
 
 private _newvehicle = [_targetpos, selectRandom opfor_troup_transports_heli] call F_libSpawnVehicle;
-private _pilot_group = createGroup [GRLIB_side_enemy, true];
-(crew _newvehicle) joinSilent _pilot_group;
-
+private _pilot_group = group driver _newvehicle;
 _newvehicle setVariable ["GRLIB_counter_TTL", round(time + 3600)];
 {
 	_x setVariable ["GRLIB_counter_TTL", round(time + 3600)];
@@ -40,14 +38,16 @@ diag_log format ["Spawn (%1) %2ParaTroopers objective %3 at %4", _cargo_seat_fre
 private _unitclass = [];
 while { (count _unitclass) < _cargo_seat_free } do { _unitclass pushback (selectRandom _para_squad) };
 private _para_group = [zeropos, _unitclass, GRLIB_side_enemy, "para"] call F_libSpawnUnits;
+private _indx = 1;
 {
-	_x assignAsCargoIndex [_newvehicle, _forEachIndex + 1];
-	_x moveInCargo _newvehicle;
+	_x assignAsCargoIndex [_newvehicle, _indx];
+	_x moveInCargo [_newvehicle, _indx];
 	[_x] orderGetIn true;
 	_x setSkill _unit_skill;
 	_x setSkill ["courage", 1];
 	_x allowFleeing 0;
 	_x setVariable ["GRLIB_counter_TTL", round(time + 3600)];
+	_indx = _indx + 1;
 } foreach (units _para_group);
 
 [_newvehicle, _targetpos, _pilot_group, _para_group, _unload_dist] spawn {
