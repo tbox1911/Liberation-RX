@@ -57,8 +57,6 @@ if (!_clearedtobuildfob) then {
 		if (_box_type == FOB_box_outpost) then { buildtype = 98 };
 		if (_box_type == FOB_boat_typename) then { buildtype = 97 };
 		dobuild = 1;
-		sleep 3;
-		playsound "Land_Carrier_01_blast_deflector_up_sound";
 	};
 };
 _box setVariable ["box_in_use", false, true];
