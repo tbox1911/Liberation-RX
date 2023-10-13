@@ -3,6 +3,7 @@ params [ "_vehicle" ];
 private _path = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, "crewman"];
 private _grp = GRLIB_side_friendly createVehicleCrew _vehicle;
 sleep 0.2;
+(crew _vehicle) joinSilent _grp;
 {
 	[_path, _x] call F_getTemplateFile; 
 	[_x] call reammo_ai;
