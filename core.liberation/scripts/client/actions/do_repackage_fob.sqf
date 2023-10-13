@@ -24,17 +24,23 @@ if ( dorepackage > 0 ) then {
 	closeDialog 0;
 	waitUntil { !dialog };
 
+	if (surfaceIsWater _fob_pos) then {
+		titleText ["Aircraft Carrier Leaves..." ,"BLACK FADED", 30];
+		player allowDamage false;
+		player setPos zeropos;
+	};
 	playsound "Land_Carrier_01_blast_deflector_down_sound";
 	[_fob_pos] remoteExec ["destroy_fob_remote_call", 2];
 	sleep 3;
 	playsound "Land_Carrier_01_blast_deflector_down_sound";
-	sleep 3;
 
 	private _box_typename = "";
 	if (dorepackage == 1) then { _box_typename = FOB_box_typename };
 	if (dorepackage == 2) then { _box_typename = FOB_truck_typename };
 	if (dorepackage == 3) then { _box_typename = FOB_boat_typename };
 	private _fob_box = _box_typename createVehicle _fob_pos;
+	sleep 1;
+
 	clearWeaponCargoGlobal _fob_box;
 	clearMagazineCargoGlobal _fob_box;
 	clearItemCargoGlobal _fob_box;
@@ -42,6 +48,12 @@ if ( dorepackage > 0 ) then {
 	_fob_box addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
 	_fob_box setVariable ["GRLIB_vehicle_owner", getPlayerUID player, true];
 	hintSilent format ["%1 %2 "+ localize "STR_FOB_REPACKAGE_HINT", "FOB", _fob_name];
+
+	if (dorepackage == 3) then {
+		titleText ["" ,"BLACK IN", 3];
+		player moveInDriver _fob_box;
+		player allowDamage true;
+	};
 };
 
 sleep 2;

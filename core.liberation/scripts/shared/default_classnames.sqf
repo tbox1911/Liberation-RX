@@ -68,6 +68,7 @@ GRLIB_vehicle_whitelist = [];
 GRLIB_vehicle_blacklist = [];
 opfor_texture_overide = [];
 opfor_statics = [];
+static_vehicles_AI = [];
 units_loadout_overide = [];
 sticky_bombs_typename = ["SatchelCharge_Remote_Ammo", "DemoCharge_Remote_Ammo"];
 LOADOUT_fixed_price = [];

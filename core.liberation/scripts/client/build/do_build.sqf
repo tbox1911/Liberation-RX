@@ -406,7 +406,7 @@ while { true } do {
 			deleteVehicle _vehicle;
 
 			if (_classname == FOB_carrier) then {
-				titleText ["Carrier Incoming..." ,"BLACK FADED", 30];
+				titleText ["Aircraft Carrier Incoming..." ,"BLACK FADED", 30];
 				player allowDamage false;
 				player setPos zeropos;
 			};

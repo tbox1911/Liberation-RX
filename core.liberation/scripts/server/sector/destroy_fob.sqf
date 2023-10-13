@@ -1,18 +1,31 @@
 _fobpos = _this select 0;
 
 GRLIB_all_fobs = GRLIB_all_fobs - [_fobpos];
-
-private _classnames_to_destroy = [FOB_typename, FOB_outpost, FOB_sign, Warehouse_desk_typename];
-_classnames_to_destroy append all_buildings_classnames;
-
 publicVariable "GRLIB_all_fobs";
+GRLIB_all_outposts = GRLIB_all_outposts - [_fobpos];
 publicVariable "GRLIB_all_outposts";
 
+private _classnames_to_destroy = [
+	FOB_typename,
+	FOB_outpost,
+	FOB_carrier,
+	FOB_sign,
+	Warehouse_desk_typename,
+	"Land_RepairDepot_01_civ_F",
+	"Land_MedicalTent_01_MTP_closed_F",
+	"Land_HelipadSquare_F",
+	"Land_Carrier_01_hull_base_F"
+];
+_classnames_to_destroy append all_buildings_classnames + list_static_weapons + static_vehicles_AI;
+
+if (surfaceIsWater _fobpos) then {
+	{ _classnames_to_destroy pushback (_x select 0) } foreach support_vehicles;
+};
+
 private _all_buildings_to_destroy = [];
-_all_buildings_to_destroy = [(_fobpos nearobjects 200), { getObjectType _x >= 8 && (typeOf _x) in _classnames_to_destroy }] call BIS_fnc_conditionalSelect;
+_all_buildings_to_destroy = [(_fobpos nearObjects (GRLIB_fob_range * 3)), { getObjectType _x >= 8 && ([_x, _classnames_to_destroy] call F_itemIsInClass) }] call BIS_fnc_conditionalSelect;
 
 {
-	sleep 0.2;
 	_building = _x;
 	if (typeOf _building == Warehouse_typename) then {
 		{
@@ -27,9 +40,8 @@ _all_buildings_to_destroy = [(_fobpos nearobjects 200), { getObjectType _x >= 8 
 		deleteVehicle (_building getVariable ["GRLIB_FOB_Officer", objNull]);
 		{ deleteVehicle _x } forEach (_building getVariable ["GRLIB_FOB_Objects", []]);
 	};
-
 	deleteVehicle _building;
+	sleep 0.05;
 } foreach _all_buildings_to_destroy;
 
 stats_fobs_lost = stats_fobs_lost + 1;
-sleep 1;
