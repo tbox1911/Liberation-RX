@@ -1,7 +1,7 @@
 params ["_unit", ["_slow", true]];
 if (isNull _unit) exitWith {};
 if (isNull objectParent _unit) exitWith {};
-if (!local _unit) exitWith {};
+if (!local _unit && isServer) exitWith {[_unit, _slow] remoteExec ["F_ejectUnit", owner _unit]};
 
 private _backpack_save = _unit getVariable "GRLIB_para_backpack";
 if (!isNil "_backpack_save") then {
