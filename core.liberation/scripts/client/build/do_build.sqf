@@ -416,6 +416,7 @@ while { true } do {
 				{ _x allowDamage false } forEach (units player);
 			};
 			_vehicle = _classname createVehicle _truepos;
+			if (isNull _vehicle) exitWith {};
 			_vehicle allowDamage false;
 			_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
 			_vehicle setPosWorld _veh_pos;

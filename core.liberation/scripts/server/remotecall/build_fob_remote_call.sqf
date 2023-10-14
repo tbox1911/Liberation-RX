@@ -1,5 +1,6 @@
 if (!isServer && hasInterface) exitWith {};
 params ["_fob", "_owner"];
+if (isNull _fob) exitWith {};
 
 [_fob, _owner] call fob_init;
 
