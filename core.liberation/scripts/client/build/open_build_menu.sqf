@@ -98,7 +98,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
 			};
 
 			if (_water_fob && buildtype in [3,6,8]) then {
-				_msg = "       Unavailable at Carrier.";
+				_msg = "       Unavailable at Naval.";
 			};
 
 			if (!_squad_leader && buildtype in [1,8]) then {

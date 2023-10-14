@@ -14,6 +14,7 @@ private _classnames_to_destroy = [
 	"Land_RepairDepot_01_civ_F",
 	"Land_MedicalTent_01_MTP_closed_F",
 	"Helipad_base_F",
+	"Land_Destroyer_01_hull_base_F",
 	"Land_Carrier_01_hull_base_F"
 ];
 _classnames_to_destroy append all_buildings_classnames + list_static_weapons + static_vehicles_AI;

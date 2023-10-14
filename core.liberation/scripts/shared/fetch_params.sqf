@@ -111,6 +111,7 @@ GRLIB_show_blufor = ["ShowBlufor",2] call _lrx_getParamValue;
 GRLIB_thermic = ["Thermic",1] call _lrx_getParamValue;
 GRLIB_fob_type = [ "FobType",0] call _lrx_getParamValue;
 GRLIB_huron_type = [ "HuronType", 0] call _lrx_getParamValue;
+GRLIB_naval_type = [ "NavalFobType", 0] call _lrx_getParamValue;
 GRLIB_maximum_fobs = [ "MaximumFobs",5] call _lrx_getParamValue;
 GRLIB_passive_income = ["PassiveIncome",0] call _lrx_getParamValue;
 GRLIB_passive_delay = ["PassiveIncomeDelay",1200] call _lrx_getParamValue;
@@ -237,12 +238,17 @@ if (abort_loading) exitWith { abort_loading_msg = format [
 };
 
 // Overide Huron type
-if ( GRLIB_mod_west in ["A3_BLU", "A3_IND"]) then {
-	switch (GRLIB_huron_type) do {
-		case 1: {huron_typename = "B_Heli_Transport_03_unarmed_F" };
-		case 2: {huron_typename = "I_Heli_Transport_02_F" };
-		case 3: {huron_typename = "B_Heli_Transport_01_F" };
-	};
+switch (GRLIB_huron_type) do {
+	case 0: {huron_typename = "B_Heli_Transport_03_unarmed_F" };
+	case 1: {huron_typename = "I_Heli_Transport_02_F" };
+	case 2: {huron_typename = "B_Heli_Transport_01_F" };
+};
+
+// Overide Naval FOB
+switch (GRLIB_naval_type) do {
+	case 0: {FOB_carrier = "Land_Destroyer_01_base_F"; FOB_carrier_center = "Land_Destroyer_01_hull_04_F" };
+	case 1: {FOB_carrier = "Land_Carrier_01_base_F"; FOB_carrier_center = "Land_Carrier_01_island_02_F" };
+	case 2: {FOB_carrier = ""; FOB_carrier_center = "" };
 };
 
 if ( GRLIB_ACE_enabled ) then { GRLIB_fancy_info = 0 };		// Disable Fancy if ACE present

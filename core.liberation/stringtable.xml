@@ -5235,6 +5235,10 @@
 			<Portuguese>O tipo de Huron</Portuguese>
 			<Czech>FOB Kontejnér</Czech>
 		</Key>
+		<Key ID="STR_PARAM_NAVAL_TYPE">
+			<Original>The type of Naval FOB</Original>
+			<French>Le type de FOB Maritime</French>
+		</Key>
 		<Key ID="STR_HINT_FOB_WRONG_OWNER">
 			<Original>You are NOT the Owner of the FOB!</Original>
 			<French>Vous n'êtes PAS le propriétaire de la FOB!</French>

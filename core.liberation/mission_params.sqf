@@ -58,7 +58,8 @@ LRX_Mission_Params = [
 	["BluforDefenders", 1],			// BLUFOR defenders in owned sectors - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["MaximumFobs", 5],				// Maximum number of FOBs allowed - [default 26] - values = [3,5,7,10,15,20,26] - Text {3,5,7,10,15,20,26}
 	["FobType", 0],					// The Startup Fob Vehicle - [default 0] - values = [1,0] - Text {Huron,Truck,Boat}
-	["HuronType", 0],				// The type of Huron - [default 0] - values = [0,1,2,3] - Text {Disabled, "CH-67 Huron", "CH-49 Mohawk", "UH-80 Ghost Hawk"}
+	["HuronType", 0],				// The type of Huron - [default 0] - values = [0,1,2] - Text {"CH-67 Huron", "CH-49 Mohawk", "UH-80 Ghost Hawk"}
+	["NavalFobType", 0],			// The type of Naval FOB - [default 0] - values = [0,1,2] - Text {"Carrier", "Fregate", "Offshare plateform"}
 	["SquadSize", 2],				// AI per squad at startup [default 2]  - values = {0,1,2,3,4,5,6}
 	["MaxSquadSize", 7],			// AI recruitment limit per squad [default 7] - values = {0,1,2,3,4,5,6,7}
 	["MaxSpawnPoint", 3],			// Spawn Point limit per player. [default 3] - values = {1,2,3,4}
@@ -238,7 +239,8 @@ LRX_Mission_Params_Def = [
 	["PlatoonView",localize "STR_GUI_PLATOON", [localize "STR_PARAMS_USER_DEF",localize "STR_PARAMS_ENABLED",localize "STR_PARAMS_DISABLED"]],
 	["NameTags",localize "STR_GUI_NAMETAG", [localize "STR_PARAMS_USER_DEF",localize "STR_PARAMS_ENABLED",localize "STR_PARAMS_DISABLED"]],
 	["MapMarkers",localize "STR_GUI_TEAM", [localize "STR_PARAMS_USER_DEF",localize "STR_PARAMS_ENABLED",localize "STR_PARAMS_DISABLED"]],
-	["HuronType", localize "STR_PARAM_HURON_TYPE", [localize "STR_PARAMS_DISABLED","CH-67 Huron","CH-49 Mohawk","UH-80 Ghost Hawk"]],
+	["HuronType", localize "STR_PARAM_HURON_TYPE", ["CH-67 Huron","CH-49 Mohawk","UH-80 Ghost Hawk"]],
+	["NavalFobType", localize "STR_PARAM_NAVAL_TYPE", ["Fregate","Aircraft Carrier","Offshore Plateform"]],
 	["TK_mode", localize "STR_TK_MODE", [localize "STR_PARAMS_DISABLED",localize "STR_TK_MODE_RELAX",localize "STR_TK_MODE_STRICT"]],
 	["DeploymentCinematic", localize "STR_PARAMS_DEPLOYMENTCAMERA", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["AdaptToPlayercount", localize "STR_PARAM_ADAPT_TO_PLAYERCOUNT", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],

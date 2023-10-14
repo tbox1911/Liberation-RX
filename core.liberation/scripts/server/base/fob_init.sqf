@@ -1,21 +1,25 @@
-params ["_fob", "_owner"];
+params ["_fob","_owner"];
 
 private _fob_class = typeOf _fob;
 
 // Add owner sign
-private _fob_dir = getDir _fob;
 private _offset = [0,0,0];
+private _fob_dir = getDir _fob;
 
-if (_fob_class == FOB_typename ) then {
+if (_fob_class isKindOf "Cargo_HQ_base_F" ) then {
 	_offset = [5, -6, -0.2];
 	_fob_dir = _fob_dir + 90;
 	[_fob] call fob_init_officer;
 };
-if (_fob_class == FOB_outpost ) then {
+if (_fob_class isKindOf "Land_BagBunker_Tower_F") then {
 	_offset = [4, -4, -0.2];
 	_fob_dir = _fob_dir - 90;
 };
-if (_fob_class == FOB_carrier_center) then {
+if (_fob_class == "Land_Destroyer_01_hull_04_F") then {
+	_offset = [-2, 13, 9.5]; 
+	_fob_dir = _fob_dir + 180; 
+};
+if (_fob_class == "Land_Carrier_01_island_02_F") then {
 	_offset = [0, -8, -1.2];
 	_fob_dir = _fob_dir - 90;
 };

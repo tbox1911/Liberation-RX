@@ -198,7 +198,7 @@ while { true } do {
 	if ( buildtype in [2,3,4,5,6,7,9,10,99,98,97] ) then {
 		if !(buildtype in [99,98,97]) then {
 			_pos = [] call F_getNearestFob;
-			if (surfaceIsWater _pos && (getPosASL player select 2) > 2) then {
+			if (player distance2D _pos < GRLIB_fob_range && surfaceIsWater _pos && (getPosASL player select 2) > 2) then {
 				build_altitude = (getPosASL player select 2) + 0.5;
 				build_mode = 1;
 				build_water = 1;
@@ -412,7 +412,7 @@ while { true } do {
 			sleep 0.1;
 
 			if (_classname == FOB_carrier) then {
-				titleText ["Aircraft Carrier Incoming..." ,"BLACK FADED", 30];
+				titleText ["Naval FOB Incoming..." ,"BLACK FADED", 30];
 				{ _x allowDamage false } forEach (units player);
 			};
 			_vehicle = _classname createVehicle _truepos;

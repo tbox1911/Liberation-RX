@@ -25,7 +25,7 @@ if ( dorepackage > 0 ) then {
 	waitUntil { !dialog };
 
 	if (surfaceIsWater _fob_pos) then {
-		titleText ["Aircraft Carrier Leaves..." ,"BLACK FADED", 30];
+		titleText ["Naval FOB Leaves..." ,"BLACK FADED", 30];
 		{ _x allowDamage false } forEach (units player);
 	};
 	playsound "Land_Carrier_01_blast_deflector_down_sound";

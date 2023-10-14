@@ -603,6 +603,9 @@ GRLIB_ignore_colisions = [
  	"Land_PowLine_wire_AB_EP1",
  	"Land_PowLine_wire_A_left_EP1",
  	"Land_PowLine_wire_A_right_EP1",
+	"Land_Destroyer_01_base_F",
+	"Land_Destroyer_01_hull_base_F",
+	"Land_Carrier_01_base_F",
 	"Land_Carrier_01_hull_base_F"
 ];
 
