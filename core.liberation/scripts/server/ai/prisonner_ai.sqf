@@ -20,9 +20,9 @@ _unit removeItem _hmd;
 _unit setCaptive true;
 _unit setVariable ["GRLIB_is_prisonner", true, true];
 _unit setVariable ["GRLIB_can_speak", true, true];
-[_unit, ""] remoteExec ["switchMove", 0];
 
 if (!_canmove) then {
+	_unit switchMove "";
 	_unit setUnitPos "UP";
 	sleep 1;
 	_unit disableAI "ANIM";
@@ -37,7 +37,7 @@ if (!_canmove) then {
 if (_friendly) then {
 	waitUntil { sleep 1; !alive _unit || side group _unit == GRLIB_side_friendly};
 } else {
-	private _timeout = time + (20 * 60);
+	private _timeout = time + (60 * 60);
 	waitUntil { sleep 1; !alive _unit || side group _unit == GRLIB_side_friendly || time > _timeout };
 };
 
@@ -116,6 +116,7 @@ while {alive _unit} do {
 		[_unit, _anim] remoteExec ["playMoveNow", 0];
 	};
 
+	_unit_captured = (_unit getVariable ["GRLIB_is_prisonner", false]);
 	_nearest_sector = [opfor_sectors, _unit] call F_nearestPosition;
 	if (typeName _nearest_sector == "STRING") then {
 		if (_unit distance2D (markerPos _nearest_sector) > 50 && !_unit_captured && !isNull _flee_grp) then {
