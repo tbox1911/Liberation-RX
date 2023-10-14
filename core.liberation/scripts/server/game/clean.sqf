@@ -39,7 +39,7 @@ sleep 15;
 
 if (GRLIB_cleanup_vehicles == 0) exitWith {};
 
-//==================== FORCE DELETE
+// FORCE DELETE
 private _force_cleanup_classnames = [
 	"Blood_01_Base_F",
 	"MedicalGarbage_01_Base_F",
@@ -56,12 +56,12 @@ private _force_cleanup_classnames = [
 	"rhs_mi28_door_pilot"
 ];
 
-//==================== IGNORE VEHICLES
+// IGNORE VEHICLES
 
 private _no_cleanup_classnames = [] + GRLIB_vehicle_blacklist;
 { _no_cleanup_classnames pushback (_x select 0) } foreach (support_vehicles + static_vehicles + opfor_recyclable);
 
-//==================== HIDDEN-FROM-PLAYERS FUNCTION
+// HIDDEN-FROM-PLAYERS FUNCTION
 
 _isHidden = {
 	params ["_unit", "_dist", "_list"];
@@ -73,13 +73,13 @@ _isHidden = {
 // Get CounterStrik units
 _getTTLunits = {
 	[((units GRLIB_side_enemy) + vehicles), {
-		alive _x && 
+		alive _x &&
 		[_x] call is_abandoned &&
 		!(isNil {_x getVariable "GRLIB_counter_TTL"})
 	}] call BIS_fnc_conditionalSelect;
 };
 
-//================================================================ CONFIG
+// CONFIG
 
 deleteManagerPublic = true;								// To terminate script via debug console
 
@@ -123,11 +123,11 @@ private _ruinsDist = (GRLIB_sector_size * 2);			// Distance (meters) from player
 private _orphanedTriggers = true;						// Clean orphaned triggers in MP.
 private _emptyGroups = true;							// Set FALSE to not delete empty groups.
 
-//================================================================ LOOP
+// LOOP
 
 while {deleteManagerPublic} do {
 	private _stats = 0;
-	//================================= SLEEP
+	// SLEEP
 	private _sleep = _checkFrequencyDefault;
 	if (_checkPlayerCount) then {
 		if ((count (playableUnits + switchableUnits)) >= _playerThreshold) then {
@@ -145,10 +145,16 @@ while {deleteManagerPublic} do {
 
 	diag_log format ["--- LRX Garbage Collector --- Start at: %1 - %2 fps", round(time), diag_fps];
 
-	//================================= FORCE DELETE
-	{ if ([typeOf _x, _force_cleanup_classnames] call F_itemIsInClass) then { deleteVehicle _x; _stats = _stats + 1 } } forEach (allMissionObjects "All");
+	// FORCE DELETE
+	{
+		if ([typeOf _x, _force_cleanup_classnames] call F_itemIsInClass) then {
+			deleteVehicle _x;
+			_stats = _stats + 1;
+			sleep 0.1;
+		};
+	} forEach (allMissionObjects "All");
 	sleep 1;
-	//================================= LRX TTL UNITS
+	// LRX TTL UNITS
 	private _units_ttl = [] call _getTTLunits;
 	if (count _units_ttl > 0) then {
 		{
@@ -160,18 +166,20 @@ while {deleteManagerPublic} do {
 					[_x] spawn clean_vehicle;
 				};
 				_stats = _stats + 1;
+				sleep 0.1;
 			};
 		} count _units_ttl;
 	};
 	sleep 1;
-	//================================= DEAD MEN
-	if (!(_deadMenLimit isEqualTo -1)) then {
+	// DEAD MEN
+	if (!(_deadMenLimit == -1)) then {
 		if ((count allDeadMen) > _deadMenLimit) then {
 			if (_deadMenDistCheck) then {
 				{
 					if ([_x,_deadMenDist,(playableUnits + switchableUnits)] call _isHidden) then {
 						deleteVehicle _x;
 						_stats = _stats + 1;
+						sleep 0.1;
 					};
 				} count allDeadMen;
 			};
@@ -181,14 +189,14 @@ while {deleteManagerPublic} do {
 				if (!isNil "_unit") then {
 					deleteVehicle _unit;
 					_stats = _stats + 1;
-					sleep 0.2;
+					sleep 0.1;
 				};
 			};
 		};
 	};
 	sleep 1;
-	//================================= VEHICLES
-	if (!(_vehiclesLimit isEqualTo -1)) then {
+	// VEHICLES
+	if (!(_vehiclesLimit == -1)) then {
 		private _nbVehicles = [vehicles, {
 			alive _x &&
 			[_x] call is_abandoned &&
@@ -204,6 +212,7 @@ while {deleteManagerPublic} do {
 					if ([_x,_vehicleDist,(playableUnits + switchableUnits)] call _isHidden) then {
 						[_x] spawn clean_vehicle;
 						_stats = _stats + 1;
+						sleep 0.1;						
 					};
 				} count (_nbVehicles);
 			};
@@ -212,40 +221,42 @@ while {deleteManagerPublic} do {
 				_veh = selectRandom (_nbVehicles);
 				[_veh] spawn clean_vehicle;
 				_stats = _stats + 1;
-				sleep 0.2;
+				sleep 0.1;				
 			};
 		};
 	};
 	sleep 1;
-	//================================= WRECKS
-	if (!(_deadVehiclesLimit isEqualTo -1)) then {
+	// WRECKS
+	if (!(_deadVehiclesLimit == -1)) then {
 		if ((count (allDead - allDeadMen)) > _deadVehiclesLimit) then {
 			if (_deadVehicleDistCheck) then {
 				{
 					if ([_x,_deadVehicleDist,(playableUnits + switchableUnits)] call _isHidden) then {
-						[_x] spawn clean_vehicle;
+						deleteVehicle _unit;
 						_stats = _stats + 1;
+						sleep 0.1;
 					};
 				} count (allDead - allDeadMen);
 			};
 
 			while {(((count (allDead - allDeadMen)) - _deadVehiclesLimit) > 0)} do {
 				_veh = selectRandom (allDead - allDeadMen);
-				[_veh] spawn clean_vehicle;
+				deleteVehicle _unit;
 				_stats = _stats + 1;
-				sleep 0.2;
+				sleep 0.1;				
 			};
 		};
 	};
 	sleep 1;
-	//================================= CRATERS
-	if (!(_craterLimit isEqualTo -1)) then {
+	// CRATERS
+	if (!(_craterLimit == -1)) then {
 		if ((count (allMissionObjects "CraterLong")) > _craterLimit) then {
 			if (_craterDistCheck) then {
 				{
 					if ([_x,_craterDist,(playableUnits + switchableUnits)] call _isHidden) then {
 						deleteVehicle _x;
 						_stats = _stats + 1;
+						sleep 0.1;						
 					};
 				} count (allMissionObjects "CraterLong");
 			};
@@ -253,19 +264,20 @@ while {deleteManagerPublic} do {
 			while {(((count (allMissionObjects "CraterLong")) - _craterLimit) > 0)} do {
 				deleteVehicle (selectRandom (allMissionObjects "CraterLong"));
 				_stats = _stats + 1;
-				sleep 0.2;
+				sleep 0.1;
 			};
 		};
 	};
 	sleep 1;
-	//================================= WEAPON HOLDERS
-	if (!(_weaponHolderLimit isEqualTo -1)) then {
+	// WEAPON HOLDERS
+	if (!(_weaponHolderLimit == -1)) then {
 		if ((count (allMissionObjects "WeaponHolder")) > _weaponHolderLimit) then {
 			if (_weaponHolderDistCheck) then {
 				{
 					if ([_x,_weaponHolderDist,(playableUnits + switchableUnits)] call _isHidden) then {
 						deleteVehicle _x;
 						_stats = _stats + 1;
+						sleep 0.1;						
 					};
 				} count (allMissionObjects "WeaponHolder");
 			};
@@ -273,23 +285,23 @@ while {deleteManagerPublic} do {
 			while {(((count (allMissionObjects "WeaponHolder")) - _weaponHolderLimit) > 0)} do {
 				deleteVehicle (selectRandom (allMissionObjects "WeaponHolder"));
 				_stats = _stats + 1;
-				sleep 0.2;
+				sleep 0.1;
 			};
 		};
 	};
 	sleep 1;
-
 	// Object WeaponHolderSimulated can't have zero or negative mass!
 	{ if (round (getMass _x) <= 0) then { _x setMass 1 } } forEach (entities "WeaponHolderSimulated");
 	sleep 1;
-	//================================= MINES
-	if (!(_minesLimit isEqualTo -1)) then {
+	// MINES
+	if (!(_minesLimit == -1)) then {
 		if ((count allMines) > _minesLimit) then {
 			if (_minesDistCheck) then {
 				{
 					if ([_x,_minesDist,allUnits] call _isHidden) then {
 						deleteVehicle _x;
 						_stats = _stats + 1;
+						sleep 0.1;						
 					};
 				} count allMines;
 			};
@@ -297,13 +309,13 @@ while {deleteManagerPublic} do {
 			while {(((count allMines) - _minesLimit) > 0)} do {
 				deleteVehicle (selectRandom allMines);
 				_stats = _stats + 1;
-				sleep 0.2;
+				sleep 0.1;
 			};
 		};
 	};
 	sleep 1;
-	//================================= STATIC WEAPONS
-	if (!(_staticsLimit isEqualTo -1)) then {
+	// STATIC WEAPONS
+	if (!(_staticsLimit == -1)) then {
 		if ((count (allMissionObjects "StaticWeapon")) > _staticsLimit) then {
 			if (_staticsDistCheck) then {
 				{
@@ -317,13 +329,13 @@ while {deleteManagerPublic} do {
 			while {(((count (allMissionObjects "StaticWeapon")) - _staticsLimit) > 0)} do {
 				deleteVehicle (selectRandom (allMissionObjects "StaticWeapon"));
 				_stats = _stats + 1;
-				sleep 0.2;
+				sleep 0.1;
 			};
 		};
 	};
 	sleep 1;
-	//================================= RUINS
-	if (!(_ruinsLimit isEqualTo -1)) then {
+	// RUINS
+	if (!(_ruinsLimit == -1)) then {
 		private _ruins = [];
 		{
 			if ((_x distance [0,0,0]) > 100) then {
@@ -346,12 +358,12 @@ while {deleteManagerPublic} do {
 				_ruins resize (count _ruins - 1);
 				deleteVehicle (selectRandom _ruins);
 				_stats = _stats + 1;
-				sleep 0.2;
+				sleep 0.1;
 			};
 		};
 	};
 	sleep 1;
-	//================================= ORPHANED MP TRIGGERS.
+	// ORPHANED MP TRIGGERS.
 	if (_orphanedTriggers) then {
 		{
 			if ((_x distance [0,0,0]) < 1) then {
@@ -360,10 +372,10 @@ while {deleteManagerPublic} do {
 		} count (allMissionObjects "EmptyDetector");
 	};
 	sleep 1;
-	//================================= EMPTY GROUPS
+	// EMPTY GROUPS
 	if (_emptyGroups) then {
 		{
-			if ((count units _x) isEqualTo 0) then {
+			if ((count units _x) == 0) then {
 				deleteGroup _x;
 			};
 		} count allGroups;
