@@ -1,7 +1,7 @@
 params ["_unit", ["_slow", true]];
 if (isNull _unit) exitWith {};
 if (isNull objectParent _unit) exitWith {};
-if (!local _unit && isServer) exitWith {[_unit, _slow] remoteExec ["F_ejectUnit", owner _unit]};
+if (!local _unit) exitWith {if (isServer) then {[_unit, _slow] remoteExec ["F_ejectUnit", owner _unit]}};
 
 private _backpack_save = _unit getVariable "GRLIB_para_backpack";
 if (!isNil "_backpack_save") then {
@@ -39,6 +39,8 @@ if (getPos _unit select 2 >= 50) then {
 	if (backpack _unit != "B_Parachute") then {
 		_para = createVehicle ["Steerable_Parachute_F",_pos,[],0,"FLY"];
 		_unit moveInDriver _para;
+		sleep 2;
+		if (isNull (driver _para)) then { deleteVehicle _para };
 	};
 };
 
