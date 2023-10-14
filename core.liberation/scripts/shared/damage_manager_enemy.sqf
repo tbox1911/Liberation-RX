@@ -36,7 +36,9 @@ if (isPlayer _killer && _unit != _killer) then {
 	};
 };
 
-if (_veh_unit isKindOf "AllVehicles" && damage _veh_unit >= 0.80) then {
+private _evac_in_progress = (_veh_unit getVariable ["GRLIB_vehicle_evac", false]);
+if (_veh_unit isKindOf "AllVehicles" && damage _veh_unit >= 0.80 && !_evac_in_progress) then {
+	_veh_unit setVariable ["GRLIB_vehicle_evac", true];
 	{ [_x, false] spawn F_ejectUnit } forEach (crew _veh_unit);	
 };
 
