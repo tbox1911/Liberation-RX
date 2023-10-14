@@ -143,6 +143,8 @@ while {deleteManagerPublic} do {
 	};
 	sleep _sleep;
 
+	diag_log format ["--- LRX Garbage Collector --- Start at: %1 - %2 fps", round(time), diag_fps];
+
 	//================================= FORCE DELETE
 	{ if ([typeOf _x, _force_cleanup_classnames] call F_itemIsInClass) then { deleteVehicle _x; _stats = _stats + 1 } } forEach (allMissionObjects "All");
 	sleep 1;
@@ -368,5 +370,5 @@ while {deleteManagerPublic} do {
 	};
     sleep 1;
 
-	diag_log format ["--- LRX Garbage Collector --- Run at: %1 - Delete: %2 objects - %3 fps", round(time), _stats, diag_fps];
+	diag_log format ["--- LRX Garbage Collector --- End at: %1 - Delete: %2 objects - %3 fps", round(time), _stats, diag_fps];
 };
