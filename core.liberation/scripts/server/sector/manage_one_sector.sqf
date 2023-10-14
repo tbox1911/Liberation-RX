@@ -101,7 +101,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 		if(floor(random 100) > (66 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback ([] call F_getAdaptiveVehicle) };
 		_spawncivs = false;
 		_building_ai_max = round ((floor (8 + (round (combat_readiness / 10 )))) * _popfactor);
-		_building_range = 110;
+		_building_range = 150;
 		_defensecount = 3;
 		[_sector] spawn {
 			params ["_sector"];
@@ -241,9 +241,9 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [getmarkerpos _sector , GRLIB_sector
 
 	[ _sector, _defensecount ] spawn static_manager;
 	sleep 2;
-	[ markerPos _sector, _building_range, round (_iedcount) ] spawn ied_manager;
+	[ _sector, _building_range, round (_iedcount) ] spawn ied_manager;
 	sleep 2;
-	[ markerPos _sector, _building_range, round (_iedcount) ] spawn ied_trap_manager;
+	[ _sector, _building_range, round (_iedcount) ] spawn ied_trap_manager;
 	sleep 2;
 	//[ _sector ] spawn reinforcements_manager;
 

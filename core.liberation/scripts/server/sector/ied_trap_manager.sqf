@@ -1,9 +1,9 @@
-params [ "_sector_pos", "_radius", "_number" ];
+params [ "_sector", "_radius", "_number" ];
 
 if (_number == 0) exitWith {};
 if (_number >= 1) then {
 	sleep 2;	
-	[ _sector_pos, _radius, _number - 1 ] spawn ied_trap_manager;
+	[ _sector, _radius, _number - 1 ] spawn ied_trap_manager;
 };
 
 private _activation_radius = 3;
@@ -23,6 +23,7 @@ private _ied_power = selectRandom [
 	//"Rocket_04_HE_F"
 ];
 
+private _sector_pos = markerPos _sector;
 private _ide_pos = ([_sector_pos, floor(random _radius), random(360)] call BIS_fnc_relPos) findEmptyPosition [0,20,"B_Quadbike_01_F"];
 private _goes_boom = false;
 private _false_trap = false;

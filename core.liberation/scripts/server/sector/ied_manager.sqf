@@ -1,13 +1,12 @@
-params [ "_sector_pos", "_radius", "_number" ];
+params [ "_sector", "_radius", "_number" ];
 
 if (_number == 0) exitWith {};
 if (_number >= 1) then {
 	sleep 2;
-	[ _sector_pos, _radius, _number - 1 ] spawn ied_manager;
+	[ _sector, _radius, _number - 1 ] spawn ied_manager;
 };
 
 private _activation_radius = 6.66;
-private _spread = 7;
 private _trigger = 2 + (floor (random 3));
 private _hostilecount = 0;
 private _goes_boom = false;
@@ -28,9 +27,12 @@ private _ied_power = selectRandom [
 	"Bomb_03_F",
 	"Bomb_04_F"
 ];
-private _roadobj = [_sector_pos, _radius] call BIS_fnc_nearestRoad;
+
+private _sector_pos = markerPos _sector;
+private _roadobj = selectRandom (_sector_pos nearRoads _radius);
+
 if !(isNull _roadobj) then {
-	private _ied_obj = createMine [ _ied_type, [getposATL _roadobj, _spread, random(360)] call BIS_fnc_relPos, [], 0];
+	private _ied_obj = createMine [ _ied_type, [getposATL _roadobj, 1, random(360)] call BIS_fnc_relPos, [], 0];
 	_ied_obj setPos (getPos _ied_obj);
 
 	private _timeout = time + (60 * 60);
