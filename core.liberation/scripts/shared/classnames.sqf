@@ -596,6 +596,7 @@ GRLIB_ignore_colisions = [
 	"Land_NavigLight",
 	"Lamps_base_F",
 	"Helipad_base_F",
+	"Land_VASICore",
 	"PowerLines_base_F",
 	"PowerLines_Small_base_F",
 	"PowerLines_Wires_base_F",
