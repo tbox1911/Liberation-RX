@@ -54,11 +54,11 @@ if ( dojump > 0 ) then {
 	halo_position = [ halo_position, floor(random 100), floor(random 360) ] call BIS_fnc_relPos;
 	if (_unit isKindOf "LandVehicle" || _unit isKindOf "Ship") then {
 		if ([_cost] call F_pay) then {
-			playSound "parasound";
+			[player, "parasound"] remoteExec ["sound_range_remote_call", 2];
 			[player, _unit, halo_position] remoteExec ["airdrop_remote_call", 2];
 		};
 	} else {
-		playSound "parasound";
+		[player, "parasound"] remoteExec ["sound_range_remote_call", 2];
 		halo_position set [2, GRLIB_halo_altitude];
 		GRLIB_last_halo_jump = round (time);
 		halojumping = true;

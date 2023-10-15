@@ -295,11 +295,11 @@ while { true } do {
 				_sphere_idx = _sphere_idx + 1;
 			} foreach GRLIB_preview_spheres;
 
-			_near_objects = (_truepos nearobjects ["AllVehicles", _dist]) ;
+			_near_objects = (_truepos nearobjects ["AllVehicles", _dist]);
 			_near_objects = _near_objects + (_truepos nearobjects [FOB_box_typename, _dist]);
 			_near_objects = _near_objects + (_truepos nearobjects [FOB_box_outpost, _dist]);
 
-			_near_objects_25 = (_truepos nearobjects ["AllVehicles", 50]) ;
+			_near_objects_25 = (_truepos nearobjects ["AllVehicles", 50]);
 			_near_objects_25 = _near_objects_25 + (_truepos nearobjects [FOB_box_typename, 50]);
 			_near_objects_25 = _near_objects_25 + (_truepos nearobjects [FOB_box_outpost, 50]);
 
@@ -562,7 +562,7 @@ while { true } do {
 
 			// FOB
 			if(buildtype in [99,98,97]) then {
-				playsound "Land_Carrier_01_blast_deflector_up_sound";
+				[player, "Land_Carrier_01_blast_deflector_up_sound"] remoteExec ["sound_range_remote_call", 2];
 				deleteVehicle _fob_box;
 				sleep 1;
 				if (_classname == FOB_carrier) then {
@@ -577,7 +577,7 @@ while { true } do {
 					};
 				};
 				[_vehicle, getPlayerUID player] remoteExec ["build_fob_remote_call", 2];
-				playsound "Land_Carrier_01_blast_deflector_up_sound";
+				[player, "Land_Carrier_01_blast_deflector_up_sound"] remoteExec ["sound_range_remote_call", 2];
 				_allow_damage = false;
 			};
 

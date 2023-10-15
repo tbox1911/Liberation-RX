@@ -28,10 +28,10 @@ if ( dorepackage > 0 ) then {
 		titleText ["Naval FOB Leaves..." ,"BLACK FADED", 30];
 		{ _x allowDamage false } forEach (units player);
 	};
-	playsound "Land_Carrier_01_blast_deflector_down_sound";
+	[player, "Land_Carrier_01_blast_deflector_down_sound"] remoteExec ["sound_range_remote_call", 2];
 	[_fob_pos] remoteExec ["destroy_fob_remote_call", 2];
 	sleep 3;
-	playsound "Land_Carrier_01_blast_deflector_down_sound";
+		[player, "Land_Carrier_01_blast_deflector_down_sound"] remoteExec ["sound_range_remote_call", 2];
 	sleep 3;
 	
 	private _box_typename = "";
