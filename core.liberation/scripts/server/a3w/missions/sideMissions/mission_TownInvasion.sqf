@@ -65,6 +65,7 @@ _waitUntilCondition = { !(_missionLocation in blufor_sectors) };
 
 _failedExec = {
 	// Mission failed
+	_failedHintMessage = ["STR_INVASION_FAILED", sideMissionColor, _townName];
 	{ deleteVehicle _x } forEach [_tent1, _chair1, _chair2, _fire1];
 	{ deleteVehicle _x } forEach (units _grp_civ);
 	[_missionPos] call clearlandmines;

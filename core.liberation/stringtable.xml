@@ -7427,7 +7427,9 @@
 			<Chinese>幹得漂亮！ &lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;又是個安全的地方了！ &lt;br/&gt;他們的武器現在是你的了！</Chinese>
 			<Czech>Pěkná práce!&lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;je opět bezpečno!&lt;br/&gt;Jejich věci jsou nyní na váše!</Czech>
 		</Key>
-
+		<Key ID="STR_INVASION_FAILED">
+			<Original>You have &lt;br/&gt;&lt;t color='%1'&gt;FAILED&lt;/t&gt;!!&lt;br/&gt;to defende %2 from the aggression.&lt;br/&gt;We have lost this sector...</Original>
+		</Key>
 		<!-- mission_TownInsurgency.sqf -->
 		<Key ID="STR_INSURGENCY">
 			<Original>Town Insurgency</Original>

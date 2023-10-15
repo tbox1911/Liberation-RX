@@ -49,6 +49,7 @@ _waitUntilCondition = { !(_missionLocation in blufor_sectors) };
 
 _failedExec = {
 	// Mission failed
+	_failedHintMessage = ["STR_INVASION_FAILED", sideMissionColor, _townName];
 	[_missionPos] call clearlandmines;
 	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
