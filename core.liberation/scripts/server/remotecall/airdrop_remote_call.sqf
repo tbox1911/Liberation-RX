@@ -18,11 +18,13 @@ if (isNil "_forced_pos") then {
 };
 
 _pos set [2, 500];
-_vehicle setPosATL _pos;
-sleep 0.2;
 
 while { _vehicle distance _pos > 50 } do {
-	_vehicle setPosATL _pos;
+	if (surfaceIsWater _pos) then {
+		_vehicle setPosASL _pos;
+	} else {
+		_vehicle setPosATL _pos;
+	};
 	sleep 0.2;
 };
 
