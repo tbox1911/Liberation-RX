@@ -9,6 +9,7 @@ private _spawn_place_forest = count ([ForestMissionMarkers] call checkSpawn);
 private _spawn_place_water = count ([SunkenMissionMarkers] call checkSpawn);
 private _opfor_sectors = (count sectors_allSectors) - (count blufor_sectors);
 private _opfor_factor = round ((_opfor_sectors / (count sectors_allSectors)) * 100);
+private _opfor_chopper = { !(_x isKindOf "Plane") } count (opfor_air);
 
 // Air Wreck
 _mission_name = "mission_AirWreck";
@@ -73,7 +74,7 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 // Helicopter Capture
 _mission_name = "mission_HeliCapture";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
-	if (_spawn_place >= 1 && _opfor_factor > 60) then {
+	if (_spawn_place >= 1 && _opfor_factor > 60 && _opfor_chopper > 0) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;
@@ -84,7 +85,7 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 _mission_name = "mission_HostileHelicopter";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
 	private _opfor_city = count ([] call cityList);
-	if (_opfor_city < 2) then {
+	if (_opfor_city < 2 && count opfor_troup_transports_heli > 0) then {
 		[_missionsList, _mission_name, true] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, false] call setMissionState;
