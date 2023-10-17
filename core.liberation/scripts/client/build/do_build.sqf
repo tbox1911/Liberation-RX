@@ -411,22 +411,35 @@ while { true } do {
 			deleteVehicle _vehicle;
 			sleep 0.1;
 
-			if (_classname == FOB_carrier) then {
-				titleText ["Naval FOB Incoming..." ,"BLACK FADED", 30];
-				{ _x allowDamage false } forEach (units player);
+			// FOB
+			if(buildtype in [99,98,97]) exitWith {
+				if (_classname == FOB_carrier) then {
+					titleText ["Naval FOB Incoming..." ,"BLACK FADED", 30];
+					{ _x allowDamage false } forEach (units player);
+				};
+
+				[_classname, _truepos, _veh_dir, _veh_vup, _veh_pos, getPlayerUID player] remoteExec ["build_fob_remote_call", 2];
+
+				[player, "Land_Carrier_01_blast_deflector_up_sound"] remoteExec ["sound_range_remote_call", 2];
+				if (_classname == FOB_carrier) then {
+					[_truepos] call do_onboard;
+					titleText ["" ,"BLACK IN", 3];
+					{ _x allowDamage true } forEach (units player);
+				};
 			};
+
 			_vehicle = _classname createVehicle _truepos;
 			if (isNull _vehicle) exitWith {};
 			_vehicle allowDamage false;
 			_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
 			_vehicle setPosWorld _veh_pos;
-			_allow_damage = true;
-			sleep 0.1;
 
 			if ( _classname in boats_names && surfaceIsWater _truepos ) then {
 				_vehicle setposASL _truepos;
-				if (_classname == FOB_carrier) then { [_vehicle] call BIS_fnc_Carrier01PosUpdate };
 			};
+
+			_allow_damage = true;
+			sleep 0.1;
 
 			// Ammo Box clean inventory
 			if ( !(_classname in GRLIB_Ammobox_keep + GRLIB_disabled_arsenal) ) then {
@@ -557,27 +570,6 @@ while { true } do {
 			// WareHouse
 			if (_classname == Warehouse_typename) then {
 				[_vehicle] remoteExec ["warehouse_init_remote_call", 2];
-				_allow_damage = false;
-			};
-
-			// FOB
-			if(buildtype in [99,98,97]) then {
-				[player, "Land_Carrier_01_blast_deflector_up_sound"] remoteExec ["sound_range_remote_call", 2];
-				deleteVehicle _fob_box;
-				sleep 1;
-				if (_classname == FOB_carrier) then {
-					_vehicle = nearestObjects [_truepos, [FOB_carrier_center], 120] select 0;
-					[_truepos] spawn {
-						params ["_pos"];
-						sleep 3;
-						titleText ["" ,"BLACK IN", 3];
-						[_pos] execVM "scripts\client\actions\do_onboard.sqf";
-						sleep 0.5;
-						{ _x allowDamage true } forEach (units player);
-					};
-				};
-				[_vehicle, getPlayerUID player] remoteExec ["build_fob_remote_call", 2];
-				[player, "Land_Carrier_01_blast_deflector_up_sound"] remoteExec ["sound_range_remote_call", 2];
 				_allow_damage = false;
 			};
 
