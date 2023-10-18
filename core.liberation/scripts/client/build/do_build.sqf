@@ -1,6 +1,6 @@
 private ["_unit", "_pos", "_grp", "_classname", "_fob_box",
-		 "_idx", "_unitrank", "_ghost_spot", "_vehicle", "_allow_damage",
-		 "_dist", "_actualdir", "_near_objects", "_near_objects_25"
+		"_idx", "_unitrank", "_ghost_spot", "_vehicle", "_allow_damage",
+		"_dist", "_radius", "_actualdir", "_near_objects", "_near_objects_25"
 ];
 
 build_confirmed = 0;
@@ -251,10 +251,12 @@ while { true } do {
 		clearItemCargoGlobal _vehicle;
 		clearBackpackCargoGlobal _vehicle;
 
-		_dist = 0.5 * (sizeOf _classname);
-		if (_dist < 3.5) then { _dist = 3.5 };
-		if (_dist > 20) then { _dist = 20 };
-		_dist = _dist + 1.5;
+		_radius = 0.5 * (sizeOf _classname);
+		if (_radius < 3.5) then { _radius = 3.5 };
+		if (_radius > 20) then { _radius = 20 };
+		_dist = (_radius / 2) + 1.5;;
+		if (_classname == FOB_carrier) then { _dist = 35 };
+		_dist = 3 max _dist;
 
 		for [{_i=0}, {_i<5}, {_i=_i+1}] do {
 			_vehicle setObjectTextureGlobal [_i, '#(rgb,8,8,3)color(0,1,0,0.8)'];
@@ -265,7 +267,7 @@ while { true } do {
 		// Wait for building
 		while { build_confirmed == 1 && alive player } do {
 			_truedir = 90 - (getdir player);
-			_truepos = [((getpos player) select 0) + (_dist * (cos _truedir)), ((getpos player) select 1) + (_dist * (sin _truedir)), build_altitude];
+			_truepos = [((getpos player) select 0) + ((_dist + _radius) * (cos _truedir)), ((getpos player) select 1) + ((_dist + _radius) * (sin _truedir)), build_altitude];
 			_actualdir = ((getdir player) + build_rotation);
 			if (_classname == "Land_Cargo_Patrol_V1_F") then { _actualdir = _actualdir + 180 };
 			if (_classname == FOB_typename) then { _actualdir = _actualdir + 270 };
@@ -288,23 +290,23 @@ while { true } do {
 			_sphere_idx = 0;
 			{
 				if ( surfaceIsWater _truepos ) then {
-					_x setposASL ( [ _truepos, _dist, _sphere_idx * 10 ] call BIS_fnc_relPos );
+					_x setposASL ( [ _truepos, _radius, _sphere_idx * 10 ] call BIS_fnc_relPos );
 				} else {
-					_x setposATL ( [ _truepos, _dist, _sphere_idx * 10 ] call BIS_fnc_relPos );
+					_x setposATL ( [ _truepos, _radius, _sphere_idx * 10 ] call BIS_fnc_relPos );
 				};
 				_sphere_idx = _sphere_idx + 1;
 			} foreach GRLIB_preview_spheres;
 
-			_near_objects = (_truepos nearobjects ["AllVehicles", _dist]);
-			_near_objects = _near_objects + (_truepos nearobjects [FOB_box_typename, _dist]);
-			_near_objects = _near_objects + (_truepos nearobjects [FOB_box_outpost, _dist]);
+			_near_objects = (_truepos nearobjects ["AllVehicles", _radius]);
+			_near_objects = _near_objects + (_truepos nearobjects [FOB_box_typename, _radius]);
+			_near_objects = _near_objects + (_truepos nearobjects [FOB_box_outpost, _radius]);
 
 			_near_objects_25 = (_truepos nearobjects ["AllVehicles", 50]);
 			_near_objects_25 = _near_objects_25 + (_truepos nearobjects [FOB_box_typename, 50]);
 			_near_objects_25 = _near_objects_25 + (_truepos nearobjects [FOB_box_outpost, 50]);
 
 			if(	buildtype != 6 ) then {
-				_near_objects = _near_objects + (_truepos nearobjects ["Static", _dist]);
+				_near_objects = _near_objects + (_truepos nearobjects ["Static", _radius]);
 				_near_objects_25 = _near_objects_25 + (_truepos nearobjects ["Static", 50]);
 			};
 
@@ -370,7 +372,7 @@ while { true } do {
 				_vehicle setposATL _ghost_spot;
 				build_invalid = 1;
 				if(count _near_objects > 0) then {
-					GRLIB_ui_notif = format [localize "STR_PLACEMENT_IMPOSSIBLE",count _near_objects, round _dist];
+					GRLIB_ui_notif = format [localize "STR_PLACEMENT_IMPOSSIBLE",count _near_objects, round _radius];
 
 					if (_debug_colisions) then {
 						private [ "_objs_classnames" ];
@@ -414,17 +416,23 @@ while { true } do {
 			// FOB
 			if(buildtype in [99,98,97]) exitWith {
 				if (_classname == FOB_carrier) then {
-					titleText ["Naval FOB Incoming..." ,"BLACK FADED", 30];
+					//titleText ["Naval FOB Incoming..." ,"BLACK FADED", 30];
 					{ _x allowDamage false } forEach (units player);
+					//disableUserInput true;
 				};
 
-				[_classname, _truepos, _veh_dir, _veh_vup, _veh_pos, getPlayerUID player] remoteExec ["build_fob_remote_call", 2];
+				[_classname, _veh_pos, _veh_dir, _veh_vup, player] remoteExec ["build_fob_remote_call", 2];
 
 				[player, "Land_Carrier_01_blast_deflector_up_sound"] remoteExec ["sound_range_remote_call", 2];
 				if (_classname == FOB_carrier) then {
-					[_truepos] call do_onboard;
+					_old_fobs = count GRLIB_all_fobs;
+					waitUntil { sleep 2; count GRLIB_all_fobs > _old_fobs };
+					[([_truepos] call F_getNearestFob)] call do_onboard;
 					titleText ["" ,"BLACK IN", 3];
 					{ _x allowDamage true } forEach (units player);
+					disableUserInput false;
+					disableUserInput true;
+					disableUserInput false;					
 				};
 			};
 
