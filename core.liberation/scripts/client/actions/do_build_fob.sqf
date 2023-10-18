@@ -58,9 +58,6 @@ if (!_clearedtobuildfob) then {
 		if (_box_type == FOB_boat_typename) then { buildtype = 97 };
 		dobuild = 1;
 		waitUntil { sleep 1; dobuild == 0 };
-		if (build_confirmed != 3) then { 
-			deleteVehicle _box;	
-		};		
 	};
 };
 _box setVariable ["box_in_use", false, true];

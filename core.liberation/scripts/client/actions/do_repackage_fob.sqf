@@ -24,16 +24,18 @@ if ( dorepackage > 0 ) then {
 	closeDialog 0;
 	waitUntil { !dialog };
 
+	private _unit_list_redep = [(units player), { !(isPlayer _x) && (isNull objectParent _x) && (_x distance2D player < 40) && lifestate _x != 'INCAPACITATED' }] call BIS_fnc_conditionalSelect;
 	if (surfaceIsWater _fob_pos) then {
 		titleText ["Naval FOB Leaves..." ,"BLACK FADED", 30];
-		{ _x allowDamage false } forEach (units player);
+		disableUserInput true;
+		{ _x allowDamage false; _x enableSimulationGlobal false } forEach _unit_list_redep;
 	};
 	[player, "Land_Carrier_01_blast_deflector_down_sound"] remoteExec ["sound_range_remote_call", 2];
 	[_fob_pos] remoteExec ["destroy_fob_remote_call", 2];
 	sleep 3;
 		[player, "Land_Carrier_01_blast_deflector_down_sound"] remoteExec ["sound_range_remote_call", 2];
 	sleep 3;
-	
+
 	private _box_typename = "";
 	if (dorepackage == 1) then { _box_typename = FOB_box_typename };
 	if (dorepackage == 2) then { _box_typename = FOB_truck_typename };
@@ -50,11 +52,14 @@ if ( dorepackage > 0 ) then {
 	hintSilent format ["%1 %2 "+ localize "STR_FOB_REPACKAGE_HINT", "FOB", _fob_name];
 
 	if (dorepackage == 3) then {
-		titleText ["" ,"BLACK IN", 3];
+		{ _x enableSimulationGlobal true } forEach _unit_list_redep;
 		player moveInDriver _fob_box;
-		private _unit_list_redep = [(units player), { !(isPlayer _x) && (isNull objectParent _x) && (_x distance2D player < 40) && lifestate _x != 'INCAPACITATED' }] call BIS_fnc_conditionalSelect;
-		private _destpos = (getPosASL player);
+		disableUserInput false;
+		disableUserInput true;
+		disableUserInput false;
+		titleText ["" ,"BLACK IN", 3];
 		sleep 1;
+		private _destpos = (getPosASL player);
 		{
 			_x doFollow player;
 			_x setPosASL ([_destpos, 10, random 360] call BIS_fnc_relPos);
@@ -62,7 +67,7 @@ if ( dorepackage > 0 ) then {
 			_x moveInCargo _fob_box;
 			sleep 0.5;
 		} forEach _unit_list_redep;
-		{ _x allowDamage true } forEach (units player);
+		{ _x allowDamage true } forEach _unit_list_redep;
 	};
 };
 

@@ -330,6 +330,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 		};
 
 		if (_nextclass == FOB_carrier) then {
+			[_nextbuilding] call BIS_fnc_carrier01Init;
 			[_nextbuilding] call BIS_fnc_Carrier01PosUpdate;
 		};
         //diag_log format [ "--- LRX Load Game %1 loaded at %2.", typeOf _nextbuilding, time];

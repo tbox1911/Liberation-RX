@@ -255,7 +255,7 @@ while { true } do {
 		if (_radius < 3.5) then { _radius = 3.5 };
 		if (_radius > 20) then { _radius = 20 };
 		_dist = (_radius / 2) + 1.5;;
-		if (_classname == FOB_carrier) then { _dist = 35 };
+		if (_classname == FOB_carrier) then { _dist = 35; build_rotation = 90 };
 		_dist = 3 max _dist;
 
 		for [{_i=0}, {_i<5}, {_i=_i+1}] do {
@@ -415,25 +415,29 @@ while { true } do {
 
 			// FOB
 			if(buildtype in [99,98,97]) exitWith {
+				[player, "Land_Carrier_01_blast_deflector_up_sound"] remoteExec ["sound_range_remote_call", 2];
+				private _unit_list_redep = [(units player), { !(isPlayer _x) && (_x distance2D player < 40) && lifestate _x != 'INCAPACITATED' }] call BIS_fnc_conditionalSelect;
 				if (_classname == FOB_carrier) then {
-					//titleText ["Naval FOB Incoming..." ,"BLACK FADED", 30];
-					{ _x allowDamage false } forEach (units player);
-					//disableUserInput true;
+					titleText ["Naval FOB Incoming..." ,"BLACK FADED", 30];
+					{ _x allowDamage false } forEach _unit_list_redep;
+					disableUserInput true;
 				};
 
 				[_classname, _veh_pos, _veh_dir, _veh_vup, player] remoteExec ["build_fob_remote_call", 2];
+				_old_fobs = count GRLIB_all_fobs;
+				waitUntil { sleep 1; count GRLIB_all_fobs > _old_fobs };
+				deleteVehicle _fob_box;
 
-				[player, "Land_Carrier_01_blast_deflector_up_sound"] remoteExec ["sound_range_remote_call", 2];
 				if (_classname == FOB_carrier) then {
-					_old_fobs = count GRLIB_all_fobs;
-					waitUntil { sleep 2; count GRLIB_all_fobs > _old_fobs };
 					[([_truepos] call F_getNearestFob)] call do_onboard;
 					titleText ["" ,"BLACK IN", 3];
-					{ _x allowDamage true } forEach (units player);
+					{ _x allowDamage true } forEach _unit_list_redep;
 					disableUserInput false;
 					disableUserInput true;
-					disableUserInput false;					
+					disableUserInput false;
 				};
+				sleep 2;
+				[player, "Land_Carrier_01_blast_deflector_up_sound"] remoteExec ["sound_range_remote_call", 2];
 			};
 
 			_vehicle = _classname createVehicle _truepos;

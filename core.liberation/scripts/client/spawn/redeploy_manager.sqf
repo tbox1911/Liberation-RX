@@ -202,7 +202,7 @@ if (dialog && deploy == 1) then {
 			// FOB / Outpost
 			_destpos = ((_choiceslist select _idxchoice) select 1);
 			_destdist = 12;
-			if (surfaceIsWater _destpos) then { _destpos = (ATLtoASL _destpos) vectorAdd [0, 0, 0.5] };
+			if (surfaceIsWater _destpos) then { _destpos = (ATLtoASL _destpos) vectorAdd [0, 0, 0.8] };
 			private _near_sign = nearestObjects [_destpos, [FOB_sign], 20] select 0;
 			if !(isNil "_near_sign") then {
 				_destpos = (getPosATL _near_sign) vectorAdd [0, 0, 0.2];
@@ -225,7 +225,6 @@ if (dialog && deploy == 1) then {
 			sleep 1;
 			{
 				_x setPosATL ([_pos, _dist, random 360] call BIS_fnc_relPos);
-				_x doFollow player;
 				sleep 0.5;
 			} forEach _list;
 			sleep 3;
