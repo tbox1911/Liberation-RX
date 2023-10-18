@@ -137,8 +137,7 @@ LRX_Mission_Params_Def = [
 		localize "STR_WEATHER_PARAM1",
 		localize "STR_WEATHER_PARAM2",
 		localize "STR_WEATHER_PARAM3",
-		localize "STR_WEATHER_PARAM4",
-		localize "STR_WEATHER_PARAM5"
+		localize "STR_WEATHER_PARAM4"
 		]
 	],
 	["ResourcesMultiplier", localize "STR_PARAMS_RESOURCESMULTIPLIER",

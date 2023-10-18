@@ -3367,18 +3367,6 @@
 			<Portuguese>Random</Portuguese>
 			<Czech>Náhodný</Czech>
 		</Key>
-		<Key ID="STR_WEATHER_PARAM5">
-			<Original>Dynamic (WIP)</Original>
-			<French>Dynamic (WIP)</French>
-			<German>Dynamic (WIP)</German>
-			<Spanish>Dynamic (WIP)</Spanish>
-			<Russian>Dynamic (WIP)</Russian>
-			<Chinesesimp>Dynamic (WIP)</Chinesesimp>
-			<Chinese>Dynamic (WIP)</Chinese>
-			<Japanese>Dynamic (WIP)</Japanese>
-			<Portuguese>Dynamic (WIP)</Portuguese>
-			<Czech>Dynamic (WIP)</Czech>
-		</Key>
 		<Key ID="STR_REPAIRING">
 			<Original>Repairing</Original>
 			<French>Réparation</French>

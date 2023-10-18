@@ -1,8 +1,3 @@
-// Dynamic Weather enabled (thx to:  sturmalex)
-if (GRLIB_weather_param == 4) exitWith {
-	[] execVM "scripts\server\game\manage_weather_dynamic.sqf";
-};
-
 //Classic Weather
 private _weathers = [0];
 private _chosen_weather = 0;
