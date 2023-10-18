@@ -121,6 +121,7 @@ if ( isServer ) then {
 					stats_opfor_soldiers_killed = stats_opfor_soldiers_killed + 1;
 					if ( isplayer _killer ) then {
 						stats_opfor_killed_by_players = stats_opfor_killed_by_players + 1;
+						_killer = (getPlayerUID _killer) call BIS_fnc_getUnitByUID;
 						[_killer, 1] call F_addScore;
 					};
 
