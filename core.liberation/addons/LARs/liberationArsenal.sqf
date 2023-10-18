@@ -20,6 +20,8 @@
 //
 // - FilterArsenal = 4    Only Whitelist and Blacklist - no autofill
 //
+// - FilterArsenal = 5    AntiStasi style - no autofill
+//
 // The Whitelist and Blacklist apply from FilterArsenal = 1 and up
 //
 // customize Arsenal:
