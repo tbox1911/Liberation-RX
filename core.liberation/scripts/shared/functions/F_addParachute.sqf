@@ -31,16 +31,20 @@ _parachute setvelocity (velocity _vehicle);
 _vehicle attachTo [_parachute,[0,0,0.6]];
 
 private _timeout = time + 150;
-waitUntil {sleep 0.1;((getPosATL _vehicle select 2) < _start_smoke || time > _timeout)};
-private _smoke1 = (_shell_smoke select _one) createVehicle _pos;
-_smoke1 attachTo [_vehicle,[0,0,0.6]];
-private _smoke2 = (_shell_smoke select _two) createVehicle _pos;
-_smoke2 attachTo [_vehicle,[0,0,0.6]];
+if (surfaceIsWater _pos) then {
+	waitUntil {sleep 0.1;((getPosASL _vehicle select 2) < 10 || time > _timeout)};
+} else {
+	waitUntil {sleep 0.1;((getPosATL _vehicle select 2) < _start_smoke || time > _timeout)};
+	private _smoke1 = (_shell_smoke select _one) createVehicle _pos;
+	_smoke1 attachTo [_vehicle,[0,0,0.6]];
+	private _smoke2 = (_shell_smoke select _two) createVehicle _pos;
+	_smoke2 attachTo [_vehicle,[0,0,0.6]];
 
-waitUntil {sleep 0.1;((getPosATL _vehicle select 2) < 7 || time > _timeout)};
+	waitUntil {sleep 0.1;((getPosATL _vehicle select 2) < 7 || time > _timeout)};
+	detach _smoke1;
+	detach _smoke2;
+};
 detach _vehicle;
-detach _smoke1;
-detach _smoke2;
 sleep 4;
 deleteVehicle _parachute;
 
