@@ -46,6 +46,7 @@ if (!isNil "_setupObjects") then { _continue_mission = call _setupObjects };
 if (!_continue_mission) exitWith {
 	diag_log format ["--- LRX Error: A3W Side Mission%1 failed to setup: %2", _controllerSuffix, localize _missionType];
 };
+publicVariable "A3W_sectors_in_use";
 
 ["lib_secondary_a3w_mission", [localize _missionType]] remoteExec ["bis_fnc_shownotification", 0];
 diag_log format ["A3W Side Mission% started: %2", _controllerSuffix, localize _missionType];
