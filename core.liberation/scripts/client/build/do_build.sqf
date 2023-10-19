@@ -255,6 +255,7 @@ while { true } do {
 		if (_radius < 3.5) then { _radius = 3.5 };
 		if (_radius > 20) then { _radius = 20 };
 		_dist = (_radius / 2) + 1.5;;
+		if (_dist > 5) then { _dist = 5 };
 		if (_classname == FOB_carrier) then { _dist = 35; build_rotation = 90 };
 		_dist = 3 max _dist;
 
