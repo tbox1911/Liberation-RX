@@ -25,7 +25,7 @@ _setupObjects =
 	_vehicleClass = opfor_mrap_hmg;
 
 	// Add guards
-	_grp_hvt = [_missionPos, 3, "guard", false] call createCustomGroup;
+	_grp_hvt = [_missionPos, 3, "infantry", false] call createCustomGroup;
 	_grp_hvt setCombatMode "RED"; // Aggresive behaviour
 	_grp_hvt setBehaviour "AWARE";
 
