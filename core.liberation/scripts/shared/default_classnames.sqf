@@ -61,6 +61,7 @@ SELL_Man = "C_Story_Mechanic_01_F";
 WRHS_Man = "B_RangeMaster_F";
 uavs = [];
 opfor_boats = [];
+boats_west = [];
 ai_resupply_sources = [];
 ai_healing_sources = [];
 vehicle_rearm_sources = [];
