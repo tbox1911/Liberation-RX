@@ -49,9 +49,7 @@ taxi_dest = {
 			};
 		};
 
-		if (_dest distance2D zeropos > 100) then {
-			hintSilent format [localize _msg, round (_vehicle distance2D _dest)];
-		};
+		hintSilent format [localize _msg, round (_vehicle distance2D _dest)];
 
 		_alt = (getPosATL _vehicle) select 2;
 		_speed = round (abs speed vehicle _vehicle);

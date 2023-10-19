@@ -139,7 +139,7 @@ deleteMarkerLocal "taxi_dz";
 if (GRLIB_taxi_helipad_created) then { deleteVehicle GRLIB_taxi_helipad };
 GRLIB_taxi_eject = nil;
 GRLIB_taxi_helipad = nil;
-[_vehicle, _air_grp, zeropos, "STR_TAXI_RETURN"] call taxi_dest;
+[_vehicle, _air_grp, _spawn_pos, "STR_TAXI_RETURN"] call taxi_dest;
 
 // Cleanup
 hintSilent "";
