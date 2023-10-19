@@ -15,7 +15,8 @@ if ( _sector == attack_in_progress select 0 ) then {
 	};
 };
 
-if (_sector in A3W_sectors_in_use || diag_fps < 35) then { _defenders_cooldown = true };
+private _sideMission = (_sector in A3W_sectors_in_use);
+if (_sideMission || diag_fps < 35) then { _defenders_cooldown = true };
 
 private _grp = grpNull;
 private _vehicle = objNull;
@@ -71,7 +72,7 @@ if ( _ownership == GRLIB_side_enemy ) then {
 	private _activeplayers = 0;
 	while { (time < _sector_timer || _activeplayers > 0) && _ownership == GRLIB_side_enemy } do {
 		_ownership = [_sector_pos, (GRLIB_capture_size * 2)] call F_sectorOwnership;
-		_activeplayers = count ([allPlayers, {alive _x && (_x distance2D (_sector_pos)) < GRLIB_sector_size}] call BIS_fnc_conditionalSelect);
+		_activeplayers = count ([allPlayers, {alive _x && (_x distance2D _sector_pos) < GRLIB_sector_size}] call BIS_fnc_conditionalSelect);
 		sleep 3;
 	};
 
@@ -88,7 +89,7 @@ if ( _ownership == GRLIB_side_enemy ) then {
 			[ _sector, 3 ] remoteExec ["remote_call_sector", 0];
 			_enemy_left = [(units GRLIB_side_enemy), {(alive _x) && (vehicle _x == _x) && (((getmarkerpos _sector) distance2D _x) < GRLIB_capture_size * 0.8)}] call BIS_fnc_conditionalSelect;
 			{
-				if ( _max_prisonners > 0 && ((random 100) < GRLIB_surrender_chance) ) then {
+				if ( !_sideMission && _max_prisonners > 0 && ((random 100) < GRLIB_surrender_chance) ) then {
 					[_x] spawn prisonner_ai;
 					_max_prisonners = _max_prisonners - 1;
 				} else {
