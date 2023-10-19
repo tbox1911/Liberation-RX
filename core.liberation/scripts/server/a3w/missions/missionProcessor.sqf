@@ -178,6 +178,7 @@ if (_failed) then {
 	A3W_mission_success = A3W_mission_success + 1;
 };
 
+publicVariable "A3W_sectors_in_use";
 deleteGroup _aiGroup;
 deleteMarker _marker;
 deleteMarker _marker_zone;
