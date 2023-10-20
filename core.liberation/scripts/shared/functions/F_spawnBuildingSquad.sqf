@@ -1,9 +1,10 @@
 params [ "_infsquad", "_building_ai_max", "_buildingpositions", "_sectorpos", [ "_sector", "" ] ];
-private [ "_unitclass", "_infsquad_classnames", "_grp", "_position_indexes", "_position_count", "_idxposit" ];
+
 diag_log format ["Spawn building squad type %1 at %2", _infsquad, time];
 
 private _spawned_units_local = [];
 private _default_side = GRLIB_side_enemy;
+private _infsquad_classnames = [];
 
 switch (_infsquad) do {
 	case ("infantry"): { _infsquad_classnames = opfor_infantry };
@@ -14,20 +15,20 @@ switch (_infsquad) do {
 
 if ( _building_ai_max > floor ((count _buildingpositions) * GRLIB_defended_buildingpos_part)) then { _building_ai_max = floor ((count _buildingpositions) * GRLIB_defended_buildingpos_part)};
 if ( _building_ai_max > 0 ) then {
-	_unitclass = [];
+	private _unitclass = [];
 	while { (count _unitclass) < _building_ai_max } do { _unitclass pushback (selectRandom _infsquad_classnames) };
 
-	_position_indexes = [];
-	_position_count = count _buildingpositions;
+	private _position_indexes = [];
+	private _position_count = count _buildingpositions;
 	while { count _position_indexes < count _unitclass } do {
 		_nextposit = floor (random _position_count);
 		if ( !(_nextposit in _position_indexes) ) then {
 			_position_indexes pushback _nextposit;
 		};
 	};
-	_grp = [_sectorpos, _unitclass, _default_side, _infsquad, false] call F_libSpawnUnits;
+	private _grp = [_sectorpos, _unitclass, _default_side, _infsquad, false] call F_libSpawnUnits;
 
-	_idxposit = 0;
+	private _idxposit = 0;
 	{
 		_x allowDamage false;
 		_x setPos (_buildingpositions select (_position_indexes select _idxposit));
