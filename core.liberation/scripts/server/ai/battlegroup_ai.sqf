@@ -28,7 +28,7 @@ while { ({alive _x} count (units _grp) > 0) && ( GRLIB_endgame == 0 ) } do {
 
 	if (_objective_pos isEqualTo zeropos) exitWith {
 		// Cleanup
-		waitUntil { sleep 30; (GRLIB_global_stop == 1 || [(getPosATL (leader _grp)), GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+		waitUntil { sleep 30; (GRLIB_global_stop == 1 || [((leader _grp)), GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
 		{
 			if (!isNull objectParent _x) then { [vehicle _x] call clean_vehicle };
 			deleteVehicle _x;

@@ -7,8 +7,7 @@ private [
 	"_sector_pos",
 	"_opfor_grp",
 	"_opfor_veh",
-	"_unit_ttl",
-	"_current_pos"
+	"_unit_ttl"
 ];
 
 while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
@@ -64,19 +63,18 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 		_unit_ttl = round (time + 1800);
 		waitUntil {
 			sleep 60;
-			_current_pos = getPosATL (leader _opfor_grp);
 			(
 				GRLIB_global_stop == 1 ||
 				(diag_fps < 25) ||
 				({alive _x} count (units _opfor_grp) == 0) ||
 				//(round (speed (leader _opfor_grp)) == 0) ||
-				([getPos (leader _opfor_grp), GRLIB_spawn_max, GRLIB_side_friendly] call F_getUnitsCount == 0) ||
+				([(leader _opfor_grp), GRLIB_spawn_max, GRLIB_side_friendly] call F_getUnitsCount == 0) ||
 				(time > _unit_ttl)
 			)
 		};
 
 		// Cleanup
-		waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_current_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+		waitUntil { sleep 30; (GRLIB_global_stop == 1 || (diag_fps < 25) || [(leader _opfor_grp), GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
 		if (!isNull _opfor_veh) then { [_opfor_veh] spawn clean_vehicle };
 		{ deleteVehicle _x } forEach (units _opfor_grp);
 		deleteGroup _opfor_grp;
