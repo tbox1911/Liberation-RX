@@ -10,6 +10,11 @@ sleep 3;
 if (!alive _unit) exitWith {};
 
 // Init priso
+private _grp = createGroup [GRLIB_side_enemy, true];
+[_unit] joinSilent _grp;
+[_grp] call F_deleteWaypoints;
+
+_unit setCaptive true;
 removeAllWeapons _unit;
 //removeHeadgear _unit;
 removeBackpack _unit;
@@ -17,7 +22,6 @@ removeVest _unit;
 private _hmd = (hmd _unit);
 _unit unassignItem _hmd;
 _unit removeItem _hmd;
-_unit setCaptive true;
 _unit setVariable ["GRLIB_is_prisonner", true, true];
 _unit setVariable ["GRLIB_can_speak", true, true];
 
@@ -73,12 +77,10 @@ while {alive _unit} do {
 		_unit disableAI "ANIM";
 		_unit disableAI "MOVE";
 		_anim = "AmovPercMstpSnonWnonDnon_AmovPsitMstpSnonWnonDnon_ground";
-		[_unit, _anim] remoteExec ["switchMove", 0];
 		[_unit, _anim] remoteExec ["playMoveNow", 0];
 		sleep 2;
 		_anim = "AidlPsitMstpSnonWnonDnon_ground00";
 		[_unit, _anim] remoteExec ["switchMove", 0];
-		//[_unit, _anim] remoteExec ["playMoveNow", 0];
 		[_unit, _unit_owner] call prisonner_captured;
 		sleep 300;
 		deleteVehicle _unit;
