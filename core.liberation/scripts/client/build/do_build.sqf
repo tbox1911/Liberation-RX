@@ -4,6 +4,7 @@ private ["_unit", "_pos", "_grp", "_classname", "_fob_box",
 ];
 
 build_confirmed = 0;
+buildindex = 0;
 build_unit = [];
 build_vehicle = objNull;
 build_mode = 0;
