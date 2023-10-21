@@ -19,8 +19,15 @@ private _camo_path = "true" configClasses (configOf VAM_targetvehicle >> "Textur
 
 // Get LRX camouflages (static, custom textures set)
 {
-	camo_display_names pushBack (_x select 0);
-	camo_class_names pushBack (_x select 1);
+	if (count _x > 2) then {
+		if (getPlayerUID player in (_x select 2)) then {
+			camo_display_names pushBack (_x select 0);
+			camo_class_names pushBack (_x select 1);
+		};
+	} else {
+		camo_display_names pushBack (_x select 0);
+		camo_class_names pushBack (_x select 1);
+	};
 } forEach RPT_colorList;
 
 // Get all components(animations)
