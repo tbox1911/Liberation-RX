@@ -1,10 +1,11 @@
 params ["_wnded"];
 
-private _medics = PAR_AI_bros select {
+private _bros = [_wnded] call PAR_medic_units;
+private _medics = _bros select {
   speed vehicle _x <= 20 &&
-  _x distance2D _wnded <= 600 && getPos _x select 2 <= 20 &&
+  _x distance2D _wnded <= 500 &&
+  getPos _x select 2 <= 20 &&
   (!(objectParent _x iskindof "Steerable_Parachute_F")) &&
-  lifeState _x != "INCAPACITATED" &&
   isNil {_x getVariable "PAR_busy"}
 };
 

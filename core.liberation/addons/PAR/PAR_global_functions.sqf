@@ -12,6 +12,10 @@ PAR_fn_unconscious = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_u
 PAR_fn_eject = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_eject.sqf";
 PAR_fn_checkWounded = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_checkWounded.sqf";
 
+PAR_medic_units = {
+	params ["_medic"];
+	(units GRLIB_side_friendly) select { !isPlayer _x && alive _x && lifeState _x != "INCAPACITATED" && (_x getVariable ["PAR_Grp_ID","0"]) == (_medic getVariable ["PAR_Grp_ID","1"])};
+};
 PAR_unblock_AI = {
 	// Unblock unit(s) 0-8-1
 	params ["_unit_array"];

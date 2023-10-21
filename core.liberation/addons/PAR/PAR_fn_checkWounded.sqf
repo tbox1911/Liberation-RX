@@ -1,16 +1,14 @@
 params ["_medic"];
 
 _search_radius = 30;
-
-private _wnded_list = PAR_AI_bros select {
-  round (_x distance2D _medic) < _search_radius &&
-  vehicle _x == _x &&
-  alive _x &&
-  damage _x >= 0.1 &&
-  behaviour _x != "COMBAT" &&
-  lifeState _x != 'INCAPACITATED' &&
-  isNil {_x getVariable 'PAR_busy'} &&
-  isNil {_x getVariable 'PAR_healed'}
+private _bros = [_medic] call PAR_medic_units;
+private _wnded_list = _bros select {
+	round (_x distance2D _medic) < _search_radius &&
+	isNull objectParent _x &&
+	damage _x >= 0.1 &&
+	behaviour _x != "COMBAT" &&
+	isNil {_x getVariable 'PAR_busy'} &&
+	isNil {_x getVariable 'PAR_healed'}
 };
 
 if (count (_wnded_list) > 0) then {
