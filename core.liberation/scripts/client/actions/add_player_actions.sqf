@@ -17,24 +17,24 @@ player addAction ["<t color='#FF8000'>" + localize "STR_EXTENDED_OPTIONS" + "</t
 player addAction ["<t color='#ffffff'>" + localize "STR_JKB_ACTION" + "</t>","addons\JKB\fn_openJukeBox.sqf","",0,false,true,"","!(isNull objectParent player)"];
 
 // Dog - Actions
-player addAction ["<t color='#80FF80'>" + localize "STR_DOG_FIND" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","find",-640,false,true,"","call GRLIB_check_Dog && call GRLIB_check_DogRelax"];
-player addAction ["<t color='#80FF80'>" + localize "STR_DOG_FIND_GUN" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","find_gun",-640,false,true,"","call GRLIB_check_Dog && call GRLIB_check_DogRelax"];
-player addAction ["<t color='#80FF80'>" + localize "STR_DOG_PATROL" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","patrol",-640,false,true,"","call GRLIB_check_Dog && call GRLIB_check_DogRelax"];
-player addAction ["<t color='#80FF80'>" + localize "STR_DOG_RECALL" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","recall",-640,false,true,"","call GRLIB_check_Dog && call GRLIB_check_DogOnDuty"];
-player addAction ["<t color='#80FF80'>" + localize "STR_DOG_STOP" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","stop",-641,false,true,"","call GRLIB_check_Dog && call GRLIB_check_DogRelax"];
-player addAction ["<t color='#FF8080'>" + localize "STR_DOG_DISMISS" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","del",-642,false,true,"","call GRLIB_check_Dog && call GRLIB_check_Dog"];
+player addAction ["<t color='#FF8000'>" + localize "STR_DOG_FIND" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","find",-640,false,true,"","call GRLIB_check_Dog && call GRLIB_check_DogRelax"];
+player addAction ["<t color='#FF8000'>" + localize "STR_DOG_FIND_GUN" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","find_gun",-640,false,true,"","call GRLIB_check_Dog && call GRLIB_check_DogRelax"];
+player addAction ["<t color='#FF8000'>" + localize "STR_DOG_PATROL" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","patrol",-640,false,true,"","call GRLIB_check_Dog && call GRLIB_check_DogRelax"];
+player addAction ["<t color='#FF8000'>" + localize "STR_DOG_RECALL" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","recall",-640,false,true,"","call GRLIB_check_Dog && call GRLIB_check_DogOnDuty"];
+player addAction ["<t color='#FF8000'>" + localize "STR_DOG_STOP" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","stop",-641,false,true,"","call GRLIB_check_Dog && call GRLIB_check_DogRelax"];
+player addAction ["<t color='#F02000'>" + localize "STR_DOG_DISMISS" + "</t> <img size='1' image='" + _icon_dog + "'/>","scripts\client\actions\do_dog.sqf","del",-642,false,true,"","call GRLIB_check_Dog && call GRLIB_check_Dog"];
 
 // Squad - Actions
-player addAction ["<t color='#80FF80'>" + localize "STR_SQUAD_MOVE" + "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\actions\do_squad.sqf","move",-635,false,true,"","call GRLIB_checkSquad"];
-player addAction ["<t color='#80FF80'>" + localize "STR_SQUAD_FOLLOW" + "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\actions\do_squad.sqf","follow",-635,false,true,"","call GRLIB_checkSquad"];
-player addAction ["<t color='#80FF80'>" + localize "STR_SQUAD_STOP" + "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\actions\do_squad.sqf","stop",-635,false,true,"","call GRLIB_checkSquad"];
-player addAction ["<t color='#80FF80'>" + localize "STR_SQUAD_DISMISS" + "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\actions\do_squad.sqf","del",-635,false,true,"","call GRLIB_checkSquad"];
+player addAction ["<t color='#8080FF'>" + localize "STR_SQUAD_MOVE" + "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\actions\do_squad.sqf","move",-935,false,true,"","call GRLIB_checkSquad"];
+player addAction ["<t color='#8080FF'>" + localize "STR_SQUAD_FOLLOW" + "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\actions\do_squad.sqf","follow",-935,false,true,"","call GRLIB_checkSquad"];
+player addAction ["<t color='#8080FF'>" + localize "STR_SQUAD_STOP" + "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\actions\do_squad.sqf","stop",-935,false,true,"","call GRLIB_checkSquad"];
+player addAction ["<t color='#F02000'>" + localize "STR_SQUAD_DISMISS" + "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\actions\do_squad.sqf","del",-935,false,true,"","call GRLIB_checkSquad"];
 
 // Redeploy
-player addAction ["<t color='#80FF80'>" + localize "STR_DEPLOY_ACTION" + "</t> <img size='1' image='res\ui_redeploy.paa'/>","scripts\client\spawn\redeploy_manager.sqf","",-750,true,true,"","call GRLIB_checkRedeploy"];
+player addAction ["<t color='#80FF80'>" + localize "STR_DEPLOY_ACTION" + "</t> <img size='1' image='res\ui_redeploy.paa'/>","scripts\client\spawn\redeploy_manager.sqf","",-502,true,true,"","call GRLIB_checkRedeploy"];
 
 // Halo Jump
-player addAction ["<t color='#80FF80'>" + localize "STR_HALO_ACTION" + "</t> <img size='1' image='res\ui_redeploy.paa'/>","scripts\client\spawn\do_halo.sqf","",-749,false,true,"","call GRLIB_checkHalo"];
+player addAction ["<t color='#80FF80'>" + localize "STR_HALO_ACTION" + "</t> <img size='1' image='res\ui_redeploy.paa'/>","scripts\client\spawn\do_halo.sqf","",-503,false,true,"","call GRLIB_checkHalo"];
 
 // Send Ammo
 player addAction ["<t color='#80FF00'>" + localize "STR_SEND_AMMO" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\misc\send_ammo.sqf","",-981,true,true,"","call GRLIB_checkSendAmmo"];
@@ -58,7 +58,7 @@ player addAction ["<t color='#FFFF00'>" + localize "STR_ARSENAL_ACTION" + "</t> 
 player addAction ["<t color='#0080FF'>" + localize "STR_VIRTUAL_GARAGE" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\truck_ca.paa'/>","addons\VIRT\virtual_garage.sqf","",-984,false,true,"","call GRLIB_checkGarage"];
 
 // Build Menu
-player addAction ["<t color='#FFFF00'>" + localize "STR_BUILD_ACTION" + "</t> <img size='1' image='res\ui_build.paa'/>","scripts\client\build\open_build_menu.sqf","",-985,false,true,"","call GRLIB_checkBuild"];
+player addAction ["<t color='#FFFF00'>" + localize "STR_BUILD_ACTION" + "</t> <img size='1' image='res\ui_build.paa'/>","scripts\client\build\open_build_menu.sqf","",-501,false,true,"","call GRLIB_checkBuild"];
 
 // Squad Management
 player addAction ["<t color='#80FF80'>" + localize "STR_SQUAD_MANAGEMENT_ACTION" + "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\ui\squad_management.sqf","",-760,false,true,"","call GRLIB_checkSquadMgmt"];
