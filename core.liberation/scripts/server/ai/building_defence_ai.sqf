@@ -23,7 +23,7 @@ while { _move_is_disabled && local _unit && alive _unit && !(captive _unit) } do
 			_unit setUnitPos "AUTO";
 			_unit switchMove "AmovPercMwlkSrasWrflDf";
 			_unit playMoveNow "AmovPercMwlkSrasWrflDf";
-			(group _unit) setCombatMode "RED";
+			if (floor(random 100) > 50) then { (group _unit) setCombatMode "RED" } else { (group _unit) setCombatMode "YELLOW" };
 			(group _unit) setCombatBehaviour "COMBAT";
 		};
 	};

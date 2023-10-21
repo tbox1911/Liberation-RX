@@ -29,7 +29,7 @@ if ( GRLIB_blufor_defenders && !_defenders_cooldown) then {
 	};
 
 	_grp = [_sector_pos, _squad_type, GRLIB_side_friendly, "defender"] call F_libSpawnUnits;
-	_grp setCombatMode "RED";
+	if (floor (random 100) < 35) then {_grp setCombatMode "RED"} else { _grp setCombatMode "YELLOW" };
 	_grp setCombatBehaviour "COMBAT";
 	{
 		_x setSkill 0.65;
