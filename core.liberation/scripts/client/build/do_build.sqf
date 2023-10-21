@@ -9,6 +9,8 @@ build_vehicle = objNull;
 build_mode = 0;
 build_water = 0;
 
+private _buildtype = 0;
+private _buildindex = 0;
 private _maxdist = GRLIB_fob_range;
 private _truepos = [];
 private _debug_colisions = false;
@@ -50,32 +52,34 @@ while { true } do {
 	build_invalid = 0;
 	_classname = "";
 	_fob_box = objNull;
+	_buildtype = buildtype;
+	_buildindex = buildindex;
 
 	// Init build properties
-	if ( buildtype == 6 ) then { build_altitude = building_altitude } else { build_altitude = 0.2 };
+	if ( _buildtype == 6 ) then { build_altitude = building_altitude } else { build_altitude = 0.2 };
 
-	if ( buildtype == 99 ) then {
+	if ( _buildtype == 99 ) then {
 		_classname = FOB_typename;
 		_price = 0;
 		_price_fuel = 0;
 		_fob_box = build_vehicle;
 	};
 
-	if ( buildtype == 98 ) then {
+	if ( _buildtype == 98 ) then {
 		_classname = FOB_outpost;
 		_price = 0;
 		_price_fuel = 0;
 		_fob_box = build_vehicle;
 	};
 
-	if ( buildtype == 97 ) then {
+	if ( _buildtype == 97 ) then {
 		_classname = FOB_carrier;
 		_price = 0;
 		_price_fuel = 0;
 		_fob_box = build_vehicle;
 	};
 
-	if ( buildtype in [9,10] ) then {
+	if ( _buildtype in [9,10] ) then {
 		_price = 0;
 		_price_fuel = 0;
 		_classname = build_unit select 0;
@@ -88,16 +92,16 @@ while { true } do {
 		build_altitude = 0.4;
 	};
 
-	if ( buildtype in [1,2,3,4,5,6,7,8] ) then {
+	if ( _buildtype in [1,2,3,4,5,6,7,8] ) then {
 		_score = [player] call F_getScore;
 		_build_list = [];
 		{
 			if ( _score >= (_x select 4) ) then {_build_list pushback _x};
-		} forEach (build_lists select buildtype);
+		} forEach (build_lists select _buildtype);
 
-		_classname = (_build_list select buildindex) select 0;
-		_price = (_build_list select buildindex) select 2;
-		_price_fuel = (_build_list select buildindex) select 3;
+		_classname = (_build_list select _buildindex) select 0;
+		_price = (_build_list select _buildindex) select 2;
+		_price_fuel = (_build_list select _buildindex) select 3;
 		_color = [];
 		_compo = [];
 		_ammo = 0;
@@ -110,7 +114,9 @@ while { true } do {
 	_pos = getPosATL player;
 	if (surfaceIsWater _pos) then { _pos = getPosASL player };
 
-	if ( buildtype == 1 ) then {
+	//diag_log format ["--- LRX: Build Called: %1 bt:%2 bi:%3 pos:%4", _classname, _buildtype, _buildindex, _pos];
+
+	if ( _buildtype == 1 ) then {
 		if (_classname isKindOf "Dog_Base_F" || _classname in MFR_Dogs_classname) then {
 			_unit = createAgent [_classname, _pos, [], 5, "CAN_COLLIDE"];
 			_unit setVariable ["BIS_fnc_animalBehaviour_disable", true];
@@ -165,11 +171,12 @@ while { true } do {
 		build_refresh = true;
 	};
 
-	if ( buildtype == 8 ) then {
+	if ( _buildtype == 8 ) then {
 		if (!([_price] call F_pay)) exitWith {};
+		diag_log _classname;
 		_grp = createGroup [GRLIB_side_friendly, true];
 		player setVariable ["my_squad", _grp, true];
-		_grp setGroupId [format ["%1 %2",squads_names select buildindex, groupId _grp]];
+		_grp setGroupId [format ["%1 %2",squads_names select _buildindex, groupId _grp]];
 		_idx = 0;
 		{
 			_unitrank = "PRIVATE";
@@ -195,8 +202,8 @@ while { true } do {
 		build_confirmed = 0;
 	};
 
-	if ( buildtype in [2,3,4,5,6,7,9,10,99,98,97] ) then {
-		if !(buildtype in [99,98,97]) then {
+	if ( _buildtype in [2,3,4,5,6,7,9,10,99,98,97] ) then {
+		if !(_buildtype in [99,98,97]) then {
 			_pos = [] call F_getNearestFob;
 			if (player distance2D _pos < GRLIB_fob_range && surfaceIsWater _pos && (getPosASL player select 2) > 2) then {
 				build_altitude = (getPosASL player select 2) + 0.5;
@@ -215,18 +222,18 @@ while { true } do {
 		_idactplacebis = -1;
 
 		if (build_water == 0) then {
-			if ( buildtype == 6 && !(_classname in GRLIB_build_force_mode) ) then {
+			if ( _buildtype == 6 && !(_classname in GRLIB_build_force_mode) ) then {
 				_idactplacebis = player addAction ["<t color='#B0FF00'>" + localize "STR_PLACEMENT_BIS" + "</t> <img size='1' image='res\ui_confirm.paa'/>","scripts\client\build\build_place_bis.sqf","",-752,false,false,"","build_invalid == 0 && build_confirmed == 1"];
 				_idactmode = player addAction ["<t color='#B0FF00'>" + localize "STR_MODE" + "</t> <img size='1' image='R3F_LOG\icons\r3f_drop.paa'/>","scripts\client\build\build_mode.sqf","",-755,false,false,"","build_confirmed == 1"];
 			};
 
-			if ( buildtype in [6,99,98] ) then {
+			if ( _buildtype in [6,99,98] ) then {
 				_idactview = player addAction ["<t color='#B0FF00'>" + "-- Build view" + "</t>","scripts\client\build\build_view.sqf","",-755,false,false,"","build_confirmed == 1"];
 				_idactsnap = player addAction ["<t color='#B0FF00'>" + localize "STR_GRID" + "</t>","scripts\client\build\do_grid.sqf","",-755,false,false,"","build_confirmed == 1"];
 			};
 		};
 
-		if ( buildtype in [2,3,4,5,6,7,9,10,99,98] ) then {
+		if ( _buildtype in [2,3,4,5,6,7,9,10,99,98] ) then {
 			_idactupper = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEUP" + "</t> <img size='1' image='R3F_LOG\icons\r3f_lift.paa'/>","scripts\client\build\build_up.sqf","",-755,false,false,"","build_confirmed == 1"];
 			_idactlower = player addAction ["<t color='#B0FF00'>" + localize "STR_MOVEDOWN" + "</t> <img size='1' image='R3F_LOG\icons\r3f_release.paa'/>","scripts\client\build\build_down.sqf","",-755,false,false,"","build_confirmed == 1"];
 			_idactrotate = player addAction ["<t color='#B0FF00'>" + localize "STR_ROTATION" + "</t> <img size='1' image='res\ui_rotation.paa'/>","scripts\client\build\build_rotate.sqf","",-756,false,false,"","build_confirmed == 1"];
@@ -277,7 +284,7 @@ while { true } do {
 
 			while { _actualdir > 360 } do { _actualdir = _actualdir - 360 };
 			while { _actualdir < 0 } do { _actualdir = _actualdir + 360 };
-			if (  (buildtype in [6,99,98]) && ((gridmode % 2) == 1) ) then {
+			if (  (_buildtype in [6,99,98]) && ((gridmode % 2) == 1) ) then {
 				if ( _actualdir >= 22.5 && _actualdir <= 67.5 ) then { _actualdir = 45 };
 				if ( _actualdir >= 67.5 && _actualdir <= 112.5 ) then { _actualdir = 90 };
 				if ( _actualdir >= 112.5 && _actualdir <= 157.5 ) then { _actualdir = 135 };
@@ -306,7 +313,7 @@ while { true } do {
 			_near_objects_25 = _near_objects_25 + (_truepos nearobjects [FOB_box_typename, 50]);
 			_near_objects_25 = _near_objects_25 + (_truepos nearobjects [FOB_box_outpost, 50]);
 
-			if(	buildtype != 6 ) then {
+			if(	_buildtype != 6 ) then {
 				_near_objects = _near_objects + (_truepos nearobjects ["Static", _radius]);
 				_near_objects_25 = _near_objects_25 + (_truepos nearobjects ["Static", 50]);
 			};
@@ -348,7 +355,7 @@ while { true } do {
 				GRLIB_conflicting_objects = [];
 			};
 
-			if ( count _near_objects == 0 && ((_truepos distance2D _pos) < _maxdist || buildtype == 9) && (((!surfaceIsWater _truepos) && (!surfaceIsWater getpos player)) || _classname in boats_names || build_water == 1) ) then {
+			if ( count _near_objects == 0 && ((_truepos distance2D _pos) < _maxdist || _buildtype == 9) && (((!surfaceIsWater _truepos) && (!surfaceIsWater getpos player)) || _classname in boats_names || build_water == 1) ) then {
 				if ( (_classname in boats_names || build_water == 1) && surfaceIsWater _truepos ) then {
 					_vehicle setposASL _truepos;
 				} else {
@@ -385,7 +392,7 @@ while { true } do {
 					if( ((surfaceIsWater _truepos) || (surfaceIsWater getpos player)) && !(_classname in boats_names)) then {
 						GRLIB_ui_notif = localize "STR_BUILD_ERROR_WATER";
 					};
-					if( (_truepos distance2D _pos) > _maxdist && buildtype != 9) then {
+					if( (_truepos distance2D _pos) > _maxdist && _buildtype != 9) then {
 						GRLIB_ui_notif = format [localize "STR_BUILD_ERROR_DISTANCE",_maxdist];
 					};
 				};
@@ -415,7 +422,7 @@ while { true } do {
 			sleep 0.1;
 
 			// FOB
-			if(buildtype in [99,98,97]) exitWith {
+			if(_buildtype in [99,98,97]) exitWith {
 				[player, "Land_Carrier_01_blast_deflector_up_sound"] remoteExec ["sound_range_remote_call", 2];
 				private _unit_list_redep = [(units player), { !(isPlayer _x) && (_x distance2D player < 40) && lifestate _x != 'INCAPACITATED' }] call BIS_fnc_conditionalSelect;
 				if (_classname == FOB_carrier) then {
@@ -463,7 +470,7 @@ while { true } do {
 			};
 
 			// Vehicle owner
-			if ( buildtype in [2,3,4,5,7,9,10] ) then {
+			if ( _buildtype in [2,3,4,5,7,9,10] ) then {
 				if (!([typeOf _vehicle, GRLIB_vehicle_blacklist] call F_itemIsInClass)) then {
 					_vehicle setVariable ["GRLIB_vehicle_owner", getPlayerUID player, true];
 					_vehicle allowCrewInImmobile [true, false];
@@ -591,7 +598,7 @@ while { true } do {
 			_vehicle setDamage 0;
 			build_vehicle = _vehicle;
 
-			if(buildtype != 6) then {
+			if(_buildtype != 6) then {
 				_vehicle addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
 			};
 

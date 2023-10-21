@@ -71,7 +71,7 @@ private _is_linked = {
 ctrlEnable [120, false];
 ctrlEnable [121, false];
 
-while { dialog && alive player && (dobuild == 0 || buildtype == 1)} do {
+while { dialog && alive player && (dobuild == 0 || buildtype == 1 || buildtype == 8)} do {
 	if (_old_buildtype != buildtype) then { build_refresh = true };
 
 	if (build_refresh) then {
