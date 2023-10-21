@@ -27,7 +27,7 @@ private _popfactor = 1;
 
 diag_log format ["Spawn Defend Sector %1 at %2", _sector, time];
 
-if (GRLIB_adaptive_opfor ) then {
+if (GRLIB_adaptive_opfor) then {
 	private _active_players = count ([getmarkerpos _sector, GRLIB_sector_size] call F_getNearbyPlayers);
 	switch (true) do {
 		case (_active_players > 6) : { _popfactor = 1.4 };
