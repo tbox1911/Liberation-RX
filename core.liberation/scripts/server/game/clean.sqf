@@ -232,7 +232,7 @@ while {deleteManagerPublic} do {
 			if (_deadVehicleDistCheck) then {
 				{
 					if ([_x,_deadVehicleDist,(playableUnits + switchableUnits)] call _isHidden) then {
-						deleteVehicle _unit;
+						deleteVehicle _x;
 						_stats = _stats + 1;
 						sleep 0.1;
 					};
@@ -241,7 +241,7 @@ while {deleteManagerPublic} do {
 
 			while {(((count (allDead - allDeadMen)) - _deadVehiclesLimit) > 0)} do {
 				_veh = selectRandom (allDead - allDeadMen);
-				deleteVehicle _unit;
+				deleteVehicle _veh;
 				_stats = _stats + 1;
 				sleep 0.1;				
 			};
