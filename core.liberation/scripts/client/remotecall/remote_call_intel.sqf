@@ -30,7 +30,7 @@ if ( _notiftype == 3 ) then {
 	[ "lib_secondary_fob_destroyed" ] call BIS_fnc_showNotification;
 	deleteMarkerLocal "secondarymarker";
 	deleteMarkerLocal "secondarymarkerzone";
-	secondary_objective_position_marker = [];
+	secondary_objective_position_marker = zeropos;
 };
 
 if ( _notiftype == 4 ) then {
@@ -67,5 +67,5 @@ if (_notiftype == 7 || _notiftype == 8) then {
 	};
 	deleteMarkerLocal "secondarymarker";
 	deleteMarkerLocal "secondarymarkerzone";
-	secondary_objective_position_marker = [];
+	secondary_objective_position_marker = zeropos;
 };

@@ -10,7 +10,6 @@ private _hostile_markers = [];
 while { true } do {
 	{ deleteMarkerLocal _x } foreach _hostile_markers;
 	_hostile_markers = [];
-	if (count secondary_objective_position_marker == 0) then { secondary_objective_position_marker = zeropos };
 
 	{
 		_nextgroup = _x;
