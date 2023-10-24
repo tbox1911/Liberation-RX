@@ -38,7 +38,7 @@ while {true} do
 						}
 						else
 						{
-							_pos_respawn = getMarkerPos (_objet getVariable "R3F_LOG_pos_respawn");
+							_pos_respawn = markerPos  (_objet getVariable "R3F_LOG_pos_respawn");
 						};
 					};
 					

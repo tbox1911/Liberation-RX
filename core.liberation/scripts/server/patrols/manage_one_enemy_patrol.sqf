@@ -19,7 +19,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	_opfor_veh = objNull;
 	_usable_sectors = [];
 	{
-		if ( (count ([getmarkerpos _x, GRLIB_spawn_max] call F_getNearbyPlayers) > 0) && (count ([getmarkerpos _x, GRLIB_sector_size] call F_getNearbyPlayers) == 0) ) then {			
+		if ( (count ([markerPos  _x, GRLIB_spawn_max] call F_getNearbyPlayers) > 0) && (count ([markerPos  _x, GRLIB_sector_size] call F_getNearbyPlayers) == 0) ) then {			
 			_usable_sectors pushback _x;
 		};
 	} foreach (sectors_bigtown + sectors_capture + sectors_factory - active_sectors);

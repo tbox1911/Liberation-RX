@@ -91,7 +91,7 @@ R3F_LOG_CFG_language = switch (language) do
  * Or based on the profile name : "profileName in [""john"", ""jack"", ""james""]"
  * Or only for the server admin : "serverCommandAvailable "#kick"""
  * The condition is evaluted in real time, so it can use condition depending on the mission progress : "alive officer && taskState task1 == ""Succeeded"""
- * Or to deny logistics in a circular area defined by a marker : "player distance getMarkerPos ""markerName"" > getMarkerSize ""markerName"" select 0"
+ * Or to deny logistics in a circular area defined by a marker : "player distance markerPos  ""markerName"" > getMarkerSize ""markerName"" select 0"
  * Note that quotes of the strings inside the string condition must be doubled.
  * Note : if the condition depends of the aimed objects/vehicle, you can use the command cursorTarget
  * To allow the logistics to everyone, just set the condition to "true".

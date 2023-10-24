@@ -4,7 +4,7 @@ params ["_unit"];
 private _plane_count = 6;
 if (count blufor_air <= 3) then { _plane_count = 3 };
 private _targetsector = [sectors_allSectors, _unit] call F_nearestPosition;
-[getMarkerPos _targetsector, GRLIB_side_friendly, _plane_count] spawn spawn_air;
+[markerPos  _targetsector, GRLIB_side_friendly, _plane_count] spawn spawn_air;
 
 _msg = format ["Commander <t color='#00008f'>%1</t>, ask for<br/><br/>
 <t color='#0000F0'>Air</t> <t color='#F00000'>Suppremacy</t><br/><br/>

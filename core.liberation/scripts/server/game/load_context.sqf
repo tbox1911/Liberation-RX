@@ -59,7 +59,7 @@ if (count _context >= 1) then {
                     _wait = false;
                     //diag_log format ["--- LRX Loading %1 unit(s) for %2 Squad.", count (_context select 2), name _player];
                 } else {
-                    if (_player distance2D (markerPos "respawn_west") > 100) then {
+                    if (_player distance2D (markerPos GRLIB_respawn_marker) > 100) then {
                         [localize "$STR_SQUAD_WAIT"] remoteExec ["hintSilent", owner _player];
                     };
                 };

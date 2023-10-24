@@ -7,8 +7,8 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	private _spawn_life = (
 		diag_fps > 35 && alive player && vehicle player == player &&
 		!([player, "LHD", GRLIB_sector_size] call F_check_near) &&
-		(player distance2D (getmarkerpos GRLIB_respawn_marker)) > GRLIB_sector_size &&
-		!(([ GRLIB_sector_size, getPosATL player ] call F_getNearestSector) in sectors_bigtown)
+		(player distance2D (markerPos  GRLIB_respawn_marker)) > GRLIB_sector_size &&
+		!(([ GRLIB_sector_size ] call F_getNearestSector) in sectors_bigtown)
 	);
 
 	if (_spawn_life) then {

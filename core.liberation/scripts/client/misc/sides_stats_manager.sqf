@@ -26,7 +26,7 @@ while { true } do {
 
 		// Others
 		if ( _default ) then {
-			_opf = [(getMarkerPos _sector) nearEntities ["Man", (GRLIB_sector_size/2)], {(alive _x) && (side _x == GRLIB_side_enemy)}] call BIS_fnc_conditionalSelect;
+			_opf = [(markerPos  _sector) nearEntities ["Man", (GRLIB_sector_size/2)], {(alive _x) && (side _x == GRLIB_side_enemy)}] call BIS_fnc_conditionalSelect;
 			if (count _opf > 0) then {_msg = format ["Status:\nEnemy squad: %1", count _opf]};
 		};
 
