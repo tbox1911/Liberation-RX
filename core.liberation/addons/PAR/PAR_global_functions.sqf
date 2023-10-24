@@ -14,7 +14,7 @@ PAR_fn_checkWounded = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_
 
 PAR_medic_units = {
 	params ["_medic"];
-	(units GRLIB_side_friendly + units GRLIB_side_civilian) select { !isPlayer _x && alive _x && lifeState _x != "INCAPACITATED" && (_x getVariable ["PAR_Grp_ID","0"]) == (_medic getVariable ["PAR_Grp_ID","1"])};
+	(units player + units GRLIB_side_civilian) select { !isPlayer _x && alive _x && lifeState _x != "INCAPACITATED" && (_x getVariable ["PAR_Grp_ID","0"]) == (_medic getVariable ["PAR_Grp_ID","1"])};
 };
 PAR_unblock_AI = {
 	// Unblock unit(s) 0-8-1
