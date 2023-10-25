@@ -10,7 +10,7 @@ if (GRLIB_ACE_medical_enabled) then {
 	[player] call ACE_medical_statemachine_fnc_resetStateDefault;
 	player setvariable ["ace_medical_causeofdeath", nil];
 };
-player setPosATL ((markerPos  GRLIB_respawn_marker) vectorAdd [floor(random 5), floor(random 5), 1]); 
+player setPosATL ((markerPos GRLIB_respawn_marker) vectorAdd [floor(random 5), floor(random 5), 1]); 
 
 GRLIB_player_spawned = false;
 removeAllWeapons player;
