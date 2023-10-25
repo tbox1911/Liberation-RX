@@ -10,9 +10,7 @@ sleep 3;
 if (!alive _unit) exitWith {};
 
 // Init priso
-private _grp = createGroup [GRLIB_side_enemy, true];
-[_unit] joinSilent _grp;
-[_grp] call F_deleteWaypoints;
+private ["_grp", "_flee_grp", "_anim"];
 
 _unit setCaptive true;
 removeAllWeapons _unit;
@@ -87,10 +85,10 @@ while {alive _unit} do {
 	};
 
 	// Flee
-	_unit_captured = (_unit getVariable ["GRLIB_is_prisonner", false]);
-	_no_blufor_near = ({ (alive _x) && !(captive _x) && (_x distance2D _unit <= 100) } count (units GRLIB_side_friendly) == 0);
-	_player = (_unit getVariable ["GRLIB_captured_by", objNull]);
-	_player_in_action = (_player getVariable ["GRLIB_action_inuse", false]);
+	private _unit_captured = (_unit getVariable ["GRLIB_is_prisonner", false]);
+	private _no_blufor_near = ({ (alive _x) && !(captive _x) && (_x distance2D _unit <= 100) } count (units GRLIB_side_friendly) == 0);
+	private _player = (_unit getVariable ["GRLIB_captured_by", objNull]);
+	private _player_in_action = (_player getVariable ["GRLIB_action_inuse", false]);
 
 	if ( _no_blufor_near && !_friendly && !_player_in_action && !_unit_captured) then {
 		_unit setVariable ["GRLIB_is_prisonner", true, true];
