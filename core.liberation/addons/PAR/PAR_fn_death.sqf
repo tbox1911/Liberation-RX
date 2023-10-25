@@ -12,7 +12,7 @@ if (_unit == player) then {
 		!([_unit, "LHD", GRLIB_capture_size] call F_check_near) &&
 		round (_pos select 2) == 0 && !(surfaceIsWater _pos)
 	) then {
-		_unit setPos zeropos;
+		_unit setPosATL ((markerPos  GRLIB_respawn_marker) vectorAdd [floor(random 5), floor(random 5), 1]);
 		// create grave
 		_grave = (selectRandom GRLIB_player_grave) createVehicle _pos;
 		_grave setPosATL _pos;
