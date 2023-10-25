@@ -2,7 +2,6 @@ if (player getVariable ["GRLIB_action_inuse", false]) exitWith {};
 if (count (attachedObjects player) > 0) then {{detach _x} forEach attachedObjects player};
 R3F_LOG_joueur_deplace_objet = objNull;
 
-private _choiceslist = [];
 private _standard_map_pos = [];
 private _frame_pos = [];
 private _spawn_str = "";
@@ -76,50 +75,51 @@ if ( GRLIB_player_spawned ) then {
 	{ ctrlShow [_x, false] } foreach _loadout_controls;
 };
 
+private _choiceslist = [[_basenamestr, getPosATL lhd]];
+for [{_idx=0},{_idx < count GRLIB_all_fobs},{_idx=_idx+1}] do {
+	_fobpos = GRLIB_all_fobs select _idx;
+	_near_outpost = (_fobpos in GRLIB_all_outposts);
+	if (_near_outpost) then {
+		_choiceslist = _choiceslist + [[format [ "Outpost %1 - %2", (military_alphabet select _idx),mapGridPosition (GRLIB_all_fobs select _idx) ],GRLIB_all_fobs select _idx]];
+	} else {
+		_choiceslist = _choiceslist + [[format [ "FOB %1 - %2", (military_alphabet select _idx), mapGridPosition (GRLIB_all_fobs select _idx) ],GRLIB_all_fobs select _idx]];
+	};
+};
+
+private _respawn_trucks = [] call F_getMobileRespawns;
+for "_idx" from 0 to ((count _respawn_trucks) -1) do {
+	_vehicle = _respawn_trucks select _idx;
+	_choiceslist = _choiceslist + [[format ["%1 - %2", [_vehicle] call F_getLRXName, mapGridPosition (getpos _vehicle)], getpos _vehicle, _vehicle]];
+};
+
+lbClear 201;
+{
+	lbAdd [201, (_x select 0)];
+} foreach _choiceslist;
+
 while { dialog && alive player && deploy == 0} do {
 	if (!alive player) exitWith {};
-	_choiceslist = [ [ _basenamestr, getpos lhd ] ];
-
-	for [{_idx=0},{_idx < count GRLIB_all_fobs},{_idx=_idx+1}] do {
-		_fobpos = GRLIB_all_fobs select _idx;
-		_near_outpost = (_fobpos in GRLIB_all_outposts);
-		if (_near_outpost) then {
-			_choiceslist = _choiceslist + [[format [ "Outpost %1 - %2", (military_alphabet select _idx),mapGridPosition (GRLIB_all_fobs select _idx) ],GRLIB_all_fobs select _idx]];
-		} else {
-			_choiceslist = _choiceslist + [[format [ "FOB %1 - %2", (military_alphabet select _idx), mapGridPosition (GRLIB_all_fobs select _idx) ],GRLIB_all_fobs select _idx]];
-		};
-	};
-
-	_respawn_trucks = [] call F_getMobileRespawns;
-
-	for "_idx" from 0 to ((count _respawn_trucks) -1) do {
-		_vehicle = _respawn_trucks select _idx;
-		_choiceslist = _choiceslist + [[format ["%1 - %2", [_vehicle] call F_getLRXName, mapGridPosition (getpos _vehicle)], getpos _vehicle, _vehicle]];
-	};
-
-	lbClear 201;
-	{
-		lbAdd [201, (_x select 0)];
-	} foreach _choiceslist;
 
 	if ( lbCurSel 201 == -1 ) then { lbSetCurSel [201,0] };
 
 	if ( lbCurSel 201 != _oldsel ) then {
 		_oldsel = lbCurSel 201;
 		_objectpos = ((_choiceslist select _oldsel) select 1);
-		if ( isNil "_objectpos" ) then { _objectpos = [0,0,0] };
-		if ( surfaceIsWater _objectpos ) then {
-			respawn_object setposasl [_objectpos select 0, _objectpos select 1, 15];
-		} else {
-			respawn_object setpos ((_choiceslist select _oldsel) select 1);
-		};
 		_startdist = 120;
 		_enddist = 120;
 		_alti = 35;
 
-		"spawn_marker" setMarkerPosLocal (getpos respawn_object);
+		if ( isNil "_objectpos" ) then { _objectpos = zeropos };
+
+		if ( surfaceIsWater _objectpos ) then {
+			respawn_object setposasl [_objectpos select 0, _objectpos select 1, _alti];
+		} else {
+			respawn_object setpos ((_choiceslist select _oldsel) select 1);
+		};
+
+		"spawn_marker" setMarkerPosLocal (getPosATL respawn_object);
 		ctrlMapAnimClear ((findDisplay 5201) displayCtrl 251);
-		private _transition_map_pos = getpos respawn_object;
+		private _transition_map_pos = getPosATL respawn_object;
 		private _fullscreen_map_offset = round (worldsize / 7);
 		if (_fullscreen_map_offset < 500) then {_fullscreen_map_offset = 4500};
 		if(fullmap % 2 == 1) then {
@@ -128,9 +128,9 @@ while { dialog && alive player && deploy == 0} do {
 		((findDisplay 5201) displayCtrl 251) ctrlMapAnimAdd [0, 0.3,_transition_map_pos];
 		ctrlMapAnimCommit ((findDisplay 5201) displayCtrl 251);
 
-		respawn_camera camSetPos [(getpos respawn_object select 0) - 70, (getpos respawn_object select 1) + _startdist, (getpos respawn_object select 2) + _alti];
+		respawn_camera camSetPos [(getPosATL respawn_object select 0) - 70, (getPosATL respawn_object select 1) + _startdist, (getPosATL respawn_object select 2) + _alti];
 		respawn_camera camcommit 0;
-		respawn_camera camSetPos [(getpos respawn_object select 0) - 70, (getpos respawn_object select 1) - _enddist, (getpos respawn_object select 2) + _alti];
+		respawn_camera camSetPos [(getPosATL respawn_object select 0) - 70, (getPosATL respawn_object select 1) - _enddist, (getPosATL respawn_object select 2) + _alti];
 		respawn_camera camcommit 90;
 	};
 
@@ -202,10 +202,10 @@ if (dialog && deploy == 1) then {
 			// FOB / Outpost
 			_destpos = ((_choiceslist select _idxchoice) select 1);
 			_destdist = 12;
-			if (surfaceIsWater _destpos) then { _destpos = (ATLtoASL _destpos) vectorAdd [0, 0, 0.8] };
+			if (surfaceIsWater _destpos) then { _destpos = (ATLtoASL _destpos) vectorAdd [0, 0, 1] };
 			private _near_sign = nearestObjects [_destpos, [FOB_sign], 20] select 0;
 			if !(isNil "_near_sign") then {
-				_destpos = (getPosATL _near_sign) vectorAdd [0, 0, 0.2];
+				_destpos = (getPosATL _near_sign) vectorAdd [0, 0, 0.5];
 				_destdir = getDir _near_sign;
 				_destdist = 8;
 				if (surfaceIsWater _destpos) then { _destdist = 5};
