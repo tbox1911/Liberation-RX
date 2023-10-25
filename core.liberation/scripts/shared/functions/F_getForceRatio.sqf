@@ -9,7 +9,7 @@ if ( _sector in sectors_bigtown ) then {
 private _red_forces = [(markerpos _sector), _actual_capture_size, GRLIB_side_enemy] call F_getUnitsCount;
 private _blue_forces = [(markerpos _sector), _actual_capture_size, GRLIB_side_friendly] call F_getUnitsCount;
 
-if (_red_forces + _blue_forces == 0) exitWith {
+if (_blue_forces == 0 || _red_forces == 0) exitWith {
 	private _ret = 0;
 	if (_sector in blufor_sectors) then { _ret = 1 };
 	_ret; 
