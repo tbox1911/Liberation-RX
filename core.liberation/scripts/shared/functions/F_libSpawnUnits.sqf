@@ -68,15 +68,16 @@ private ["_unit", "_backpack"];
 	};
 } foreach _classname;
 
-[_grp] spawn {
-	params ["_grp"];
-	_grp setCombatMode "WHITE";
-	_grp setCombatBehaviour "COMBAT";
+_grp setCombatMode "WHITE";
+_grp setCombatBehaviour "COMBAT";
+
+[units _grp] spawn {
+	params ["_units"];
 	sleep 3;
 	{
 		_x setDamage 0;
 		_x allowDamage true;
-	} foreach (units _grp);
+	} foreach _units;
 };
 
 _grp;
