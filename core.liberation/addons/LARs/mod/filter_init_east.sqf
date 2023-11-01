@@ -53,7 +53,7 @@ if (["3CB_", GRLIB_mod_east, true] call F_startsWith) then {
 };
 // Add CWR Weapons
 if (["CWR3_", GRLIB_mod_east, true] call F_startsWith) then {
-	GRLIB_MOD_signature = GRLIB_MOD_signature + ["cwr3"];
+    GRLIB_MOD_signature = GRLIB_MOD_signature + ["cwr3"] + ["CUP_"];
 };
 // Add FFAA Weapons
 if (["FFAA_", GRLIB_mod_east, true] call F_startsWith) then {
