@@ -105,8 +105,7 @@ if ( isServer ) then {
 					if (_owner_id == "") then {
 						_owner_id = (_killer getVariable ["PAR_Grp_ID", "0_0"]) splitString "_" select 1;
 					};
-
-					if (_owner_id != "0") then {
+					if (_owner_id != "0" && GRLIB_civ_penalties) then {
 						_owner_player = _owner_id call BIS_fnc_getUnitByUID;
 						[_owner_player, -GRLIB_civ_killing_penalty] call F_addScore;
 						_msg = format ["%1, Your AI kill Civilian !!", name _owner_player] ;
