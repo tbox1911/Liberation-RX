@@ -293,11 +293,13 @@ if ( isNil "vip_vehicle" ) then {
 // *** SOURCES ***
 
 // Static Weapons
-list_static_weapons = [resistance_squad_static] + opfor_statics;
+blufor_statics = [];
 {
 	private _veh = _x select 0;
-	if (!(_veh in uavs)) then { list_static_weapons pushback _veh };
+	if (!(_veh in uavs)) then { blufor_statics pushback _veh };
 } foreach static_vehicles;
+
+list_static_weapons = [resistance_squad_static] + blufor_statics + opfor_statics;
 
 // Everything the AI troups should be able to resupply from
 ai_resupply_sources = [

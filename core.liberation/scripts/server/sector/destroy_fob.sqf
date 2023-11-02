@@ -18,7 +18,7 @@ private _classnames_to_destroy = [
 	"Land_Destroyer_01_hull_base_F",
 	"Land_Carrier_01_hull_base_F"
 ];
-_classnames_to_destroy append all_buildings_classnames + list_static_weapons + static_vehicles_AI;
+_classnames_to_destroy append all_buildings_classnames + list_static_weapons;
 
 if (surfaceIsWater _fobpos) then {
 	{ _classnames_to_destroy pushback (_x select 0) } foreach support_vehicles;
