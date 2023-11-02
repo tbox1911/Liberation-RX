@@ -2,7 +2,7 @@ params ["_grp", "_objective_pos"];
 if (isNil "_grp" || isNil "_objective_pos") exitWith {};
 if (isNull _grp) exitWith {};
 
-private ["_waypoint", "_wp0", "_nearset_fob_name"];
+private ["_in_water", "_waypoint", "_wp0", "_nearset_fob_name"];
 diag_log format ["Battlegroup %1 - Objective %2", _grp, _objective_pos];
 
 private _civveh = objectParent (leader _grp);
@@ -26,9 +26,10 @@ while { ({alive _x} count (units _grp) > 0) && ( GRLIB_endgame == 0 ) } do {
 		if !(isNil "_target") then { _objective_pos = getPosATL _target } else { _objective_pos = zeropos };
 	};
 
-	if (_objective_pos isEqualTo zeropos) exitWith {
+	_in_water = ({(alive _x && underWater _x && _x distance2D _objective_pos > 250)} count (units _grp) > 2);
+	if (_objective_pos isEqualTo zeropos || _in_water) exitWith {
 		// Cleanup
-		waitUntil { sleep 30; (GRLIB_global_stop == 1 || [((leader _grp)), GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+		waitUntil { sleep 30; (GRLIB_global_stop == 1 || [leader _grp, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
 		{
 			if (!isNull objectParent _x) then { [vehicle _x] call clean_vehicle };
 			deleteVehicle _x;
