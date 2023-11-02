@@ -56,7 +56,6 @@ if (count (waypoints _grp) > 1) then {
 if (_grp_veh isKindOf "Ship") exitWith {};
 
 waitUntil {
-	sleep 60;
 	_basepos = (leader _grp) findNearestEnemy (leader _grp);
 	if (!isNull _basepos && !_patrol_in_water) then {
 		if (_grp_veh isKindOf "Truck_F") then { [_grp] spawn F_ejectGroup };
@@ -77,6 +76,6 @@ waitUntil {
 		{_x doFollow leader _grp} foreach units _grp;
 		sleep 300;
 	};
-
+	sleep 30;
 	( { alive _x } count (units _grp) == 0 )
 };
