@@ -121,7 +121,7 @@ _setupObjects =
 	//----- spawn intels ---------------------------------
 	_intels = [getPosATL (_build_list select 0)] call manage_intels;
 	{ _x setVariable ["R3F_LOG_disabled", true, true] } forEach ([_statue] + _build_list + _vrac_list);
-	_vehicles =  [_statue] + _build_list + _vrac_list + _intels;
+	_vehicles =  [_statue] + _build_list + _vrac_list;
 	sleep 0.5;
 
 	//----- spawn units ---------------------------------
@@ -156,12 +156,7 @@ _setupObjects =
 
 _waitUntilMarkerPos = nil;
 _waitUntilExec = nil;
-_waitUntilSuccessCondition = {
-	_ret = false;
-	_intel_left = count (_intels select { alive _x });
-	if (_intel_left == 0) then { _ret = true };
-	_ret;
-};
+_waitUntilSuccessCondition = { (count (_intels select { alive _x }) == 0) };
 
 _waitUntilCondition = {
 	_ret = false;
@@ -197,8 +192,13 @@ _waitUntilCondition = {
 
 _failedExec = {
 	// Mission failed
-	{ deleteVehicle _x } forEach (units _grp_civ);
-	[_missionPos] call clearlandmines;
+	{ deleteVehicle _x } forEach _intels;
+	[_missionPos, _grp_civ] spawn {
+		params ["_missionPos","_grp1"];
+		waitUntil { sleep 5; (GRLIB_global_stop == 1 || [_missionPos, GRLIB_capture_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+		{ deleteVehicle _x } forEach (units _grp1);
+		[_missionPos] call clearlandmines;
+	};
 	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
 

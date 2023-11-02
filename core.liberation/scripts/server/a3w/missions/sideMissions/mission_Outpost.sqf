@@ -38,21 +38,23 @@ _setupObjects = {
 
 _waitUntilMarkerPos = nil;
 _waitUntilExec = nil;
-_waitUntilCondition = { 
+_waitUntilCondition = {
 	private _ret = false;
 	if ({alive _x} count (units _grpprisonners) == 0) then {
 		_failedHintMessage = ["STR_OUTPOST_MESSAGE_FAIL", sideMissionColor];
 		_ret = true;
 	};
-	_ret;	
+	_ret;
 };
 _waitUntilSuccessCondition = { ({side group _x == GRLIB_side_friendly} count (units _grpprisonners) > 0) };
 
 _failedExec = {
-	{ deleteVehicle _x } forEach (units _grpdefenders);
-	{ deleteVehicle _x } forEach (units _grpsentry);
-	{ deleteVehicle _x } forEach (units _grpprisonners);
-	[_missionPos] call clearlandmines;
+	[_missionPos, _grpdefenders, _grpsentry, _grpprisonners] spawn {
+		params ["_missionPos","_grp1","_grp2","_grp3"];
+		waitUntil { sleep 5; (GRLIB_global_stop == 1 || [_missionPos, GRLIB_capture_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+		{ deleteVehicle _x } forEach (units _grp1) + (units _grp2) + (units _grp3);
+		[_missionPos] call clearlandmines;
+	};
 };
 
 _successExec = {

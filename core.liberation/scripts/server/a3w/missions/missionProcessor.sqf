@@ -123,14 +123,13 @@ waitUntil {
 
 if (GRLIB_endgame == 1 || GRLIB_global_stop == 1) then { _failed = true };
 
+deleteMarker _marker;
+deleteMarker _marker_zone;
+
 if (_failed) then {
 	// Mission failed
 
-	{ deleteVehicle _x } forEach units _aiGroup;
 	if (!isNil "_failedExec") then { call _failedExec };
-	if (!isNil "_vehicle") then	{ [_vehicle] spawn cleanMissionVehicles };
-	if (!isNil "_vehicles") then { [_vehicles] spawn cleanMissionVehicles };
-
 	[
 		"Objective Failed",
 		_missionType,
@@ -138,8 +137,15 @@ if (_failed) then {
 		if (!isNil "_failedHintMessage") then { _failedHintMessage } else { "Better luck next time!" },
 		failMissionColor
 	] remoteExec ["remote_call_showinfo", 0];
-
 	["lib_secondary_a3w_mission_fail", [localize _missionType]] remoteExec ["bis_fnc_shownotification", 0];
+
+	// Cleanup
+	_missionPos = getPos (leader _aiGroup);
+	waitUntil { sleep 5; (GRLIB_global_stop == 1 || [_missionPos, GRLIB_capture_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+	{ deleteVehicle _x } forEach (units _aiGroup);
+	if (!isNil "_vehicle") then	{ [_vehicle] spawn cleanMissionVehicles };
+	if (!isNil "_vehicles") then { [_vehicles] spawn cleanMissionVehicles };
+
 	diag_log format ["A3W Side Mission%1 failed: %2", _controllerSuffix, localize _missionType];
 	A3W_mission_failed = A3W_mission_failed + 1;
 } else {
@@ -180,8 +186,7 @@ if (_failed) then {
 
 publicVariable "A3W_sectors_in_use";
 deleteGroup _aiGroup;
-deleteMarker _marker;
-deleteMarker _marker_zone;
+
 if (!isNil "_locationsArray") then {
 	[_locationsArray, _missionLocation, false] call setLocationState;
 };

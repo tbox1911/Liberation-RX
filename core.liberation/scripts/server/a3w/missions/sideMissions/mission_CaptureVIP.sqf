@@ -18,7 +18,7 @@ _setupObjects =
 {
 	private _citylist = (([] call cityList) call BIS_fnc_arrayShuffle) select [0, 3];
 
-	if (count _citylist < 3) exitWith { 
+	if (count _citylist < 3) exitWith {
 		diag_log format ["--- LRX Error: side mission VIP, cannot find spawn or path"];
 		false;
 	};
@@ -28,20 +28,13 @@ _setupObjects =
 
 	// veh1 + squad
 	_vehicle1 = [_missionPos, vip_vehicle, false, false, GRLIB_side_civilian] call F_libSpawnVehicle;
-	_vehicle1 allowCrewInImmobile [true, true];
-	_vehicle1 addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage }];
-	_grp = [_missionPos, 5, "guard"] call createCustomGroup;
-	{
-		_x moveInAny _vehicle1;
-		[_x] joinSilent _aiGroup;
-	} forEach (units _grp);
+	private _grp = [_missionPos, 5, "guard"] call createCustomGroup;
+	{ _x moveInAny _vehicle1; [_x] joinSilent _aiGroup } forEach (units _grp);
 	(driver _vehicle1) limitSpeed 50;
 	sleep 2;
 
 	// veh2 + vip + squad
 	_vehicle2 = [_missionPos, vip_vehicle, false, false, GRLIB_side_civilian] call F_libSpawnVehicle;
-	_vehicle2 allowCrewInImmobile [true, true];
-	_vehicle2 addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage }];
 	_vehicle2 setConvoySeparation 30;
 	_grp = [_missionPos, 4, "guard"] call createCustomGroup;
 	{ _x moveInAny _vehicle2; [_x] joinSilent _aiGroup } forEach (units _grp);
@@ -52,6 +45,8 @@ _setupObjects =
 	_vip addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage }];
 	_vip addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	[_vip] joinSilent _grp_vip;
+	_vip setVariable ["GRLIB_mission_AI", false, true];
+	_vip setSkill ["courage", 0.9];
 	[_vip, false, true] spawn prisonner_ai;
 	_vip setrank "COLONEL";
 	_vip moveInAny _vehicle2;
@@ -59,8 +54,6 @@ _setupObjects =
 
 	// veh3 + squad
 	_vehicle3 = [_missionPos, vip_vehicle, false, false, GRLIB_side_civilian] call F_libSpawnVehicle;
-	_vehicle3 allowCrewInImmobile [true, true];
-	_vehicle3 addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage }];
 	_vehicle3 setConvoySeparation 30;
 	_grp = [_missionPos, 5, "guard"] call createCustomGroup;
 	{ _x moveInAny _vehicle3; [_x] joinSilent _aiGroup } forEach (units _grp);
@@ -84,6 +77,7 @@ _setupObjects =
 	} forEach _citylist;
 	_waypoint = _aiGroup addWaypoint [_missionPos, 0];
 	_waypoint setWaypointType "CYCLE";
+	{_x doFollow (leader _aiGroup)} foreach units _aiGroup;
 
 	sleep 15;
 	_missionPos = getPosATL leader _aiGroup;
@@ -103,7 +97,10 @@ _waitUntilCondition = {
 	if ( !_convoy_attacked ) then {
 		{
 			// Attacked ?
-			if ( !(alive _x) || (damage _x > 0.2) || !(alive driver _x) && (count ([getPosATL _x, 1000] call F_getNearbyPlayers) > 0) ) exitWith { _convoy_attacked = true; };
+			_killed = ({!(alive _x)} count (units _aiGroup) > 0);
+			if ( !(alive _x) || (damage _x > 0.2) || _killed && (count ([getPosATL _x, 1000] call F_getNearbyPlayers) > 0) ) then {
+				_convoy_attacked = true;
+			};
 
 			// Unflip ?
 			if ((vectorUp _x) select 2 < 0.60) then {
@@ -116,6 +113,7 @@ _waitUntilCondition = {
 			_veh_leader = vehicle (leader _aiGroup);
 			if  (speed _x < 5 && (speed _veh_leader > 5 || _x == _veh_leader) && !_convoy_attacked) then {
 				_x setFuel 1;
+				_x setDamage 0;
 				[_x] execVM "scripts\client\actions\do_unflip.sqf";
 				if (_x != _veh_leader) then { (driver _x) doFollow (leader _aiGroup) };
 				sleep 10;
@@ -126,10 +124,9 @@ _waitUntilCondition = {
 	if (_convoy_attacked && !_disembark_troops) then {
 		_disembark_troops = true;
 		{ doStop (driver _x) } foreach [_vehicle1, _vehicle2, _vehicle3];
-		sleep 2;
-		[_aiGroup] spawn F_ejectGroup;
-		_aiGroup setBehaviour "COMBAT";
-		_aiGroup setCombatMode "RED";
+		sleep 1;
+		{ [_x, false] spawn F_ejectUnit; sleep 0.2 } forEach (units _aiGroup) + [_vip];
+		waitUntil {sleep 1; ({vehicle _x != _x} count (units _aiGroup) == 0)};
 		[_aiGroup, getPosATL _vip, 30] spawn add_defense_waypoints;
 	};
 
@@ -143,8 +140,7 @@ _failedExec = {
 	deleteVehicle _vip;
 };
 
-_successExec =
-{
+_successExec = {
 	// Mission completed
 	_successHintMessage = "Congratulation the V.I.P has been <t color='%1'>CAPTURED</t>!<br/>Bring him back to any FOB for interrogation.";
 };
