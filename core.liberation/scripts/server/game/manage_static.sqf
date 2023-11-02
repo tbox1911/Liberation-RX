@@ -1,4 +1,4 @@
-private [ "_all_static", "_static", "_all_light" ];
+private [ "_all_static", "_static", "_static_class", "_all_light" , "_side", "_gunner", "_next_gunner", "_gunner_list" ];
 private _day = call is_night;
 private _old_day = !_day;
 private _static_classname = list_static_weapons - static_vehicles_AI;
@@ -8,7 +8,8 @@ while { true } do {
 
     {
         _static = _x;
-  
+        _static_class = typeOf _static;
+
         // No damage
         if (isDamageAllowed _static) then {
             _static allowDamage false;
@@ -27,9 +28,23 @@ while { true } do {
         };
 
         // Keep gunner
-        private _gunner = gunner _static;
-        private _gunner_list = _static getVariable ["GRLIB_vehicle_gunner", []];
+        _gunner = gunner _static;
+        _gunner_list = _static getVariable ["GRLIB_vehicle_gunner", []];
         if (isNull _gunner) then {
+            if ({alive _x} count _gunner_list == 0) then {
+                _gunner_list = [];
+                _side = GRLIB_side_enemy;
+                if (_static_class in (blufor_statics - static_vehicles_AI)) then {
+                    _side = GRLIB_side_friendly;
+                };
+                if (_static_class in resistance_squad_static) then {
+                    _side = GRLIB_side_resistance;
+                };
+                _next_gunner = (units _side) select {(alive _x) && (isNull objectParent _x) && (secondaryWeapon _x == "") && (_x distance2D _static < 50) && !(isPlayer (leader _x))} select 0;
+                if (!isNil "_next_gunner") then { _gunner_list = [_next_gunner] };
+                _static setVariable ["GRLIB_vehicle_gunner", _gunner_list];
+            };
+
             {
                 if (alive _x) exitWith {
                     _x assignAsGunner _static;
@@ -41,7 +56,7 @@ while { true } do {
         };
 
         // OPFor infinite Ammo
-        if (typeOf _static in opfor_statics && side group _gunner == GRLIB_side_enemy) then {
+        if (_static_class in opfor_statics && side group _gunner == GRLIB_side_enemy) then {
             _static setVehicleAmmo 1;
             if !(isNull _gunner) then {
                 [_gunner] spawn F_getNearestEnemy;
@@ -51,29 +66,29 @@ while { true } do {
         sleep 0.5;
     } forEach _all_static;
 
-    _day = call is_night;
-    if (_day != _old_day) then {
-        _all_light =  [vehicles, { alive _x && (typeOf _x) isKindOf "Land_PortableHelipadLight_01_F"}] call BIS_fnc_conditionalSelect;
-        {
-            _static = _x;
+    // _day = call is_night;
+    // if (_day != _old_day) then {
+    //     _all_light =  [vehicles, { alive _x && (typeOf _x) isKindOf "Land_PortableHelipadLight_01_F"}] call BIS_fnc_conditionalSelect;
+    //     {
+    //         _static = _x;
 
-            // No damage
-            private _owner = owner _static;
-            if (_owner == 0) then {
-                _static allowDamage false;
-            } else {
-                [_static, false] remoteExec ["allowDamage", _owner];
-            };
+    //         // No damage
+    //         private _owner = owner _static;
+    //         if (_owner == 0) then {
+    //             _static allowDamage false;
+    //         } else {
+    //             [_static, false] remoteExec ["allowDamage", _owner];
+    //         };
 
-            if (call is_night) then {
-                _static enableSimulationGlobal true;
-            } else {
-                _static enableSimulationGlobal false;
-            };
-            sleep 0.5;
-        } forEach _all_light;
-        _old_day = _day;
-    };
+    //         if (call is_night) then {
+    //             _static enableSimulationGlobal true;
+    //         } else {
+    //             _static enableSimulationGlobal false;
+    //         };
+    //         sleep 0.5;
+    //     } forEach _all_light;
+    //     _old_day = _day;
+    // };
 
-	sleep 23;
+	sleep 33;
 };
