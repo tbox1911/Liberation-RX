@@ -3,7 +3,7 @@
 //
 // [0] : Dump process 
 // [1] : Dump GameSave dump
-// [2] : Dump Profile Variables
+// [2] : Dump Server Variables
 
 params [["_save", 0]];
 diag_log "--------------------- LRX Diag -----------------------";
@@ -42,11 +42,10 @@ if (_save == 1 && isServer) then {
 diag_log "-----------------------------------------------------";
 
 if (_save == 2) then {
-  diag_log "--- LRX Profile Variables ---------------------------";
+  diag_log "--- LRX Server Variables ---------------------------";
   {
-    diag_log  format ["  %1", _x];
-
-  } foreach (allVariables profileNamespace);
+    diag_log  format ["  %1 = %2", _x, serverNamespace getVariable _x ];
+  } foreach (allVariables serverNamespace);
 
   diag_log "-----------------------------------------------------";
 };
