@@ -54,6 +54,17 @@ if (GRLIB_kick_idle > 0) then {
 	[] execVM "scripts\client\misc\kick_idle.sqf";
 };
 
+if (GRLIB_respawn_cooldown) then {
+	if (isServer) exitWith {};
+	private _cooldown = profileNamespace getVariable ["GRLIB_last_respawn", 0];
+	while { time < _cooldown } do {
+		private _msg = format ["You Reconnect or Respawn too fast!\nPlease Wait %1 sec.", round (_cooldown - time)];
+		titleText [_msg, "BLACK FADED", 100];
+		sleep 2;
+	};
+	titleText ["", "BLACK FADED", 100];
+};
+
 add_player_actions = compile preprocessFile "scripts\client\actions\add_player_actions.sqf";
 dog_bark = compileFinal preprocessFileLineNumbers "scripts\client\actions\dog_bark.sqf";
 do_onboard = compileFinal preprocessFileLineNumbers "scripts\client\actions\do_onboard.sqf";
@@ -225,6 +236,12 @@ onPlayerDisconnected {
 
 	// Remove AI
 	{ deleteVehicle _x } forEach PAR_AI_bros;
+
+	// Respawn Cooldown
+	private _cooldown =	player getVariable ["GRLIB_last_respawn", 0];
+	if (time > _cooldown) then { _cooldown = 0 };
+	profileNamespace setVariable ["GRLIB_last_respawn", _cooldown];
+	saveProfileNamespace;
 };
 
 initAmbientLife;
