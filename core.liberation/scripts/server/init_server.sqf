@@ -171,6 +171,10 @@ if (GRLIB_side_enemy == INDEPENDENT) then {
 	GRLIB_side_enemy setFriend [resistance, 0];
 };
 
+// Low = 50 (NoGrass), Normal = 25, High = 12.5, Very High = 6.25, Ultra = 3.125
+setTerrainGrid 12.5;
+setViewDistance 2500;
+
 sleep 3;
 GRLIB_init_server = true;
 publicVariable "GRLIB_init_server";
