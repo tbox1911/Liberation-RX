@@ -5577,12 +5577,16 @@
 			<French>Serveur en Mode Persistant.</French>
 		</Key>
 		<Key ID="STR_KEEP_SCORE">
-			<Original>Keep Players score on map restart</Original>
-			<French>Garder le score du joueurs au redemarage de la Map</French>
+			<Original>Keep players score on map restart</Original>
+			<French>Garder le score des joueurs au redemarage de la Map</French>
 		</Key>
+		<Key ID="STR_RESPAWN">
+			<Original>Waiting before player can respawn (sec)</Original>
+			<French>Attente avant que le joueur puisse réapparaître (sec)</French>
+		</Key>		
 		<Key ID="STR_RESPAWN_CD">
-			<Original>Add a cooldown if the player respawn too fast</Original>
-			<French>Ajoute une attente si le joueur respawn trop rapidement</French>
+			<Original>Cooldown if player respawn too fast (min)</Original>
+			<French>Attente si le joueur réapparaît trop rapidement (min)</French>
 		</Key>
 		<Key ID="STR_REDEPLOY">
 			<Original>Allow Redeploy to all mobile Respawn</Original>

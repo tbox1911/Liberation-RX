@@ -75,7 +75,8 @@ LRX_Mission_Params = [
 	["DeathChat", 0],				// Disable chat/voice if wounded  [default 0] - values = [1,0] - Text {Enabled,Disabled}
 	["FancyInfo", 1],				// Enable colorfull, fancy Informations [default 2] - values = [2,1,0] - Text {Enabled,Info,Disabled}
 	["KeepScore", 0],				// Keep the Players datas (score/permissions) - [default 0] - values = [0,1] - Text {Disabled,Enabled}
-	["RespawnCD", 0],				// Cooldown if player respawn too fast - [default 0] - values = [0,1] - Text {Disabled,Enabled}
+	["Respawn", 20],				// Cooldown before can player respawn - [default 20] - values = [0,xxx] - Text {Disabled,Enabled}
+	["RespawnCD", 0],				// Cooldown if player respawn too fast - [default 0] - values = [0,xxx] - Text {Disabled,Enabled}
 	["KickIdle", 0],				// Kick player if idle too long - [default 0] - values = {0,900,1200,1800,3600,7200}
 	["Persistent", 0]				// Server start with Persistent Mode - [default 0] - values = [0,1] - Text {Disabled,Enabled}
 ];
@@ -150,6 +151,14 @@ LRX_Mission_Params_Def = [
 		localize "STR_PARAMS_REVIVE2",
 		localize "STR_PARAMS_REVIVE3"
 		]
+	],
+	["Respawn", localize "STR_RESPAWN", 
+		["5", "10", "20", "25", "30", "60"],
+		[5, 10, 20, 25, 30, 60]
+	],	
+	["RespawnCD", localize "STR_RESPAWN_CD", 
+		[localize "STR_PARAMS_DISABLED", "4", "5", "6", "7", "8", "9", "10"],
+		[0, 240, 300, 360, 420, 480, 540, 600]
 	],
 	["TK_count", localize "STR_TK_COUNT",
 		["3", "4", "5", "6", "7", "8", "9", "10"],
@@ -260,7 +269,6 @@ LRX_Mission_Params_Def = [
 	["ForcedLoadout", localize "STR_FORCE_LOADOUT", [localize "STR_PARAMS_DISABLED","Preset 1","Preset 2"]],
 	["DeathChat", localize "STR_DEATHCHAT", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["FancyInfo", localize "STR_FANCY", [localize "STR_PARAMS_DISABLED","Info",localize "STR_PARAMS_ENABLED"]],
-	["RespawnCD", localize "STR_RESPAWN_CD", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["Redeploy", localize "STR_REDEPLOY", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["KeepScore", localize "STR_KEEP_SCORE", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["Persistent", localize "STR_PERSISTENT_MODE", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]]

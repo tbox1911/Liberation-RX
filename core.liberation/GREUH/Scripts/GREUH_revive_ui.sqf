@@ -6,12 +6,15 @@ private _noesckey = _display displayAddEventHandler ["KeyDown", "if ((_this sele
 private _labelwidth = -1;
 private _labelpos = [];
 private _tick = 0;
-private _respawn_delay = 80;
+private _respawn_delay = (GRLIB_respawn_timer * 4);
 
-if (GRLIB_respawn_cooldown) then {
-	if (time < (player getVariable ["GRLIB_last_respawn", 0])) then {
+// Respawn Cooldown
+if (GRLIB_respawn_cooldown > 0) then {
+	private _cooldown = player getVariable ["GRLIB_last_respawn", 0];
+	if (_cooldown > time) then {
 		count_death = count_death + 1;
 		_respawn_delay = round (count_death * _respawn_delay);
+		BTC_logic setVariable [format ["%1_last_respawn", PAR_Grp_ID], _cooldown, true];
 	} else {
 		count_death = 1;
 	};

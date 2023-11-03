@@ -151,6 +151,7 @@ GRLIB_admin_menu = ["AdminMenu",1] call _lrx_getParamValue;
 GRLIB_cleanup_vehicles = ["CleanupVehicles",1800] call _lrx_getParamValue;
 GRLIB_autosave_timer = ["AutoSave",1800] call _lrx_getParamValue;
 GRLIB_param_wipe_keepscore = ["KeepScore",0] call _lrx_getParamValue;
+GRLIB_respawn_timer = ["Respawn",20] call _lrx_getParamValue;
 GRLIB_respawn_cooldown = ["RespawnCD",0] call _lrx_getParamValue;
 GRLIB_kick_idle = ["KickIdle",0] call _lrx_getParamValue;
 GRLIB_server_persistent = ["Persistent",0] call _lrx_getParamValue;
@@ -268,7 +269,6 @@ if ( GRLIB_civ_penalties == 1 ) then { GRLIB_civ_penalties = true } else { GRLIB
 if ( GRLIB_blufor_defenders == 1 ) then { GRLIB_blufor_defenders = true } else { GRLIB_blufor_defenders = false };
 if ( GRLIB_opfor_english == 1 ) then { GRLIB_opfor_english = true } else { GRLIB_opfor_english = false };
 if ( GRLIB_disable_death_chat == 1 ) then { GRLIB_disable_death_chat = true } else { GRLIB_disable_death_chat = false };
-if ( GRLIB_respawn_cooldown == 1 ) then { GRLIB_respawn_cooldown = true } else { GRLIB_respawn_cooldown = false };
 if ( GRLIB_server_persistent == 1 ) then { GRLIB_server_persistent = true } else { GRLIB_server_persistent = false };
 
 // Overide sector radius
