@@ -1,7 +1,7 @@
 //Classic Weather
 private _weathers = [0];
 private _chosen_weather = 0;
-private _weathertime = (30 * 60); // Delay between weather change
+private _weathertime = (25 * 60); // Delay between weather change
 private _rain = 0;
 private _fog = 0;
 private _windx = (floor random 4);
