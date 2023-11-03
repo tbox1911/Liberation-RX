@@ -1,6 +1,4 @@
 private [ "_all_static", "_static", "_static_class", "_all_light" , "_side", "_gunner", "_next_gunner", "_gunner_list" ];
-private _day = call is_night;
-private _old_day = !_day;
 private _static_classname = list_static_weapons - static_vehicles_AI;
 
 while { true } do {
@@ -40,7 +38,11 @@ while { true } do {
                 if (_static_class in resistance_squad_static) then {
                     _side = GRLIB_side_resistance;
                 };
-                _next_gunner = (units _side) select {(alive _x) && (isNull objectParent _x) && (secondaryWeapon _x == "") && (_x distance2D _static < 50) && !(isPlayer (leader _x))} select 0;
+                _next_gunner = (units _side) select {
+                    (alive _x) && (isNull objectParent _x) &&
+                    (secondaryWeapon _x == "") && (_x distance2D _static < 50) &&
+                    isNil {_x getVariable "PAR_Grp_ID"}
+                } select 0;
                 if (!isNil "_next_gunner") then { _gunner_list = [_next_gunner] };
                 _static setVariable ["GRLIB_vehicle_gunner", _gunner_list];
             };
@@ -65,30 +67,6 @@ while { true } do {
 
         sleep 0.5;
     } forEach _all_static;
-
-    // _day = call is_night;
-    // if (_day != _old_day) then {
-    //     _all_light =  [vehicles, { alive _x && (typeOf _x) isKindOf "Land_PortableHelipadLight_01_F"}] call BIS_fnc_conditionalSelect;
-    //     {
-    //         _static = _x;
-
-    //         // No damage
-    //         private _owner = owner _static;
-    //         if (_owner == 0) then {
-    //             _static allowDamage false;
-    //         } else {
-    //             [_static, false] remoteExec ["allowDamage", _owner];
-    //         };
-
-    //         if (call is_night) then {
-    //             _static enableSimulationGlobal true;
-    //         } else {
-    //             _static enableSimulationGlobal false;
-    //         };
-    //         sleep 0.5;
-    //     } forEach _all_light;
-    //     _old_day = _day;
-    // };
 
 	sleep 33;
 };
