@@ -29,12 +29,12 @@ if ( GREUH_allow_platoonview ) then {
 
 if ( GREUH_allow_viewdistance ) then {
 	ctrlShow [701, false];
-	sliderSetRange [712, 500, 10000];
+	sliderSetRange [712, 250, 10000];
 	sliderSetPosition [712, desiredviewdistance_inf];
-	sliderSetSpeed [712, 500, 500];
-	sliderSetRange [722, 1000, 10000];
+	sliderSetSpeed [712, 250, 250];
+	sliderSetRange [722, 500, 10000];
 	sliderSetPosition [722, desiredviewdistance_veh];
-	sliderSetSpeed [722, 500, 500];
+	sliderSetSpeed [722, 250, 250];
 	sliderSetRange [732, 30, 100];
 	sliderSetPosition [732, desiredviewdistance_obj];
 	sliderSetSpeed [732, 5, 5];
