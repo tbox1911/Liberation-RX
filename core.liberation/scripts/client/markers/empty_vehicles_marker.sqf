@@ -6,6 +6,7 @@ private _vehmarkers_bak = [];
 
 waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 waitUntil {sleep 1; !isNil "GRLIB_mobile_respawn"};
+waitUntil {sleep 1; !isNil "GRLIB_force_cleanup_classnames"};
 
 private _no_marker_classnames = [
 	playerbox_typename,
@@ -19,7 +20,7 @@ private _no_marker_classnames = [
 	"Land_CashDesk_F",
 	"Land_HumanSkull_F",
 	"Land_HumanSkeleton_F"
-] + GRLIB_ide_traps + GRLIB_intel_items + all_buildings_classnames;
+] + GRLIB_force_cleanup_classnames + GRLIB_ide_traps + GRLIB_intel_items + all_buildings_classnames;
 
 if (GRLIB_allow_redeploy == 1) then {
 	_no_marker_classnames = _no_marker_classnames + [Respawn_truck_typename, huron_typename];
