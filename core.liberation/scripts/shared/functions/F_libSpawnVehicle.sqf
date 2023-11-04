@@ -138,10 +138,7 @@ _vehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
 _vehicle allowCrewInImmobile [true, false];
 _vehicle setUnloadInCombat [true, false];
 
-clearWeaponCargoGlobal _vehicle;
-clearMagazineCargoGlobal _vehicle;
-clearItemCargoGlobal _vehicle;
-clearBackpackCargoGlobal _vehicle;
+[_vehicle] call F_clearCargo;
 
 if ( _side == GRLIB_side_civilian ) then { _vehicle allowDamage true };
 

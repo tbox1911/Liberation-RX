@@ -213,10 +213,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 		_buildings_created pushback _nextbuilding;
 
 		if (!(_nextclass in GRLIB_Ammobox_keep)) then {
-			clearWeaponCargoGlobal _nextbuilding;
-			clearMagazineCargoGlobal _nextbuilding;
-			clearItemCargoGlobal _nextbuilding;
-			clearBackpackCargoGlobal _nextbuilding;
+			[_nextbuilding] call F_clearCargo;
 		};
 
         if ( _nextclass in vehicle_rearm_sources ) then {

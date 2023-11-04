@@ -60,6 +60,7 @@ F_pay = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_pay.s
 F_payLoadout = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_payLoadout.sqf";
 F_secondsToTimer = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_secondsToTimer.sqf";
 F_sectorOwnership = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_sectorOwnership.sqf";
+F_clearCargo = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_clearCargo.sqf";
 F_setCargo = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_setCargo.sqf";
 F_spawnBuildingSquad = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_spawnBuildingSquad.sqf";
 F_spawnCivilians = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_spawnCivilians.sqf";

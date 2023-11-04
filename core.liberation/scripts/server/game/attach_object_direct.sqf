@@ -21,10 +21,7 @@ if ( count _truck_load < _maxload ) then {
 
 	// Clear Cargo
 	if (!(_object_type in GRLIB_Ammobox_keep)) then {
-		clearWeaponCargoGlobal _object;
-		clearMagazineCargoGlobal _object;
-		clearItemCargoGlobal _object;
-		clearBackpackCargoGlobal _object;
+		[_object] call F_clearCargo;
 	};
 
 	// MPKilled

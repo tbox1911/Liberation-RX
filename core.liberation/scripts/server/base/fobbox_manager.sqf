@@ -22,10 +22,7 @@ while { true } do {
 		_fobbox setPosATL (getPosATL base_boxspawn);
 		_fobbox setdir (getdir base_boxspawn);
 		_fobbox setMass 1000;
-		clearWeaponCargoGlobal _fobbox;
-		clearMagazineCargoGlobal _fobbox;
-		clearItemCargoGlobal _fobbox;
-		clearBackpackCargoGlobal _fobbox;
+		[_fobbox] call F_clearCargo;
 		_fobbox enableSimulationGlobal true;
 		_fobbox setVariable ["GRLIB_vehicle_owner", "public", true];
 		sleep 3;

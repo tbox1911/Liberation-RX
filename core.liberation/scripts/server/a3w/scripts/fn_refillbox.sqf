@@ -17,10 +17,7 @@ _box = _this select 0;
 _boxType = _this select 1;
 
 // Clear pre-existing cargo first
-//clearBackpackCargoGlobal _box;
-clearMagazineCargoGlobal _box;
-clearWeaponCargoGlobal _box;
-clearItemCargoGlobal _box;
+[_box] call F_clearCargo;
 
 switch (_boxType) do
 {

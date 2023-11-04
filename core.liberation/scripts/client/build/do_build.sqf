@@ -254,10 +254,7 @@ while { true } do {
 		_vehicle setVehicleLock "LOCKED";
 		_vehicle enableSimulationGlobal false;
 		_vehicle setVariable ["R3F_LOG_disabled", true];
-		clearWeaponCargoGlobal _vehicle;
-		clearMagazineCargoGlobal _vehicle;
-		clearItemCargoGlobal _vehicle;
-		clearBackpackCargoGlobal _vehicle;
+		[_vehicle] call F_clearCargo;
 
 		_radius = 0.5 * (sizeOf _classname);
 		if (_radius < 3.5) then { _radius = 3.5 };
@@ -464,10 +461,7 @@ while { true } do {
 
 			// Ammo Box clean inventory
 			if ( !(_classname in GRLIB_Ammobox_keep + GRLIB_disabled_arsenal) ) then {
-				clearWeaponCargoGlobal _vehicle;
-				clearMagazineCargoGlobal _vehicle;
-				clearItemCargoGlobal _vehicle;
-				clearBackpackCargoGlobal _vehicle;
+				[_vehicle] call F_clearCargo;
 			};
 
 			// Vehicle owner

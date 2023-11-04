@@ -29,10 +29,7 @@ _vehicle setVariable ["R3F_LOG_objets_charges", [], true];
 } foreach (_vehicle getVariable ["GRLIB_ammo_truck_load", []]);
 
 //Delete A3 Cargo
-clearWeaponCargoGlobal _vehicle;
-clearMagazineCargoGlobal _vehicle;
-clearItemCargoGlobal _vehicle;
-clearBackpackCargoGlobal _vehicle;
+[_vehicle] call F_clearCargo;
 
 // Delete Crew
 { deleteVehicle _x } forEach (crew _vehicle);

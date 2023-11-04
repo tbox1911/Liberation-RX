@@ -10,10 +10,7 @@ private _object_created = [];
 
 	// Clear Cargo
 	if (!(_x in GRLIB_Ammobox_keep)) then {
-		clearWeaponCargoGlobal _object;
-		clearMagazineCargoGlobal _object;
-		clearItemCargoGlobal _object;
-		clearBackpackCargoGlobal _object;
+		[_object] call F_clearCargo;
 	};
 
 	// Mobile respawn

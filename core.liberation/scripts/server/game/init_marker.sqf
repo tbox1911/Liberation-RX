@@ -37,10 +37,7 @@ private ["_vehicle", "_spawnpos", "_startpos", "_radius", "_max_try"];
     _vehicle lockCargo true;
     _vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
     _vehicle setVariable ["R3F_LOG_disabled", true, true];
-    clearWeaponCargoGlobal _vehicle;
-    clearMagazineCargoGlobal _vehicle;
-    clearItemCargoGlobal _vehicle;
-    clearBackpackCargoGlobal _vehicle;
+    [_vehicle] call F_clearCargo;
   } else {
     diag_log format ["--- LRX Error: No place to build %1 at sector %2", repair_offroad, _x];
   };

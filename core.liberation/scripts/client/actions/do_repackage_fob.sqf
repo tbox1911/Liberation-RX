@@ -43,10 +43,7 @@ if ( dorepackage > 0 ) then {
 	private _fob_box = _box_typename createVehicle _fob_pos;
 	sleep 1;
 
-	clearWeaponCargoGlobal _fob_box;
-	clearMagazineCargoGlobal _fob_box;
-	clearItemCargoGlobal _fob_box;
-	clearBackpackCargoGlobal _fob_box;
+	[_fob_box] call F_clearCargo;
 	_fob_box addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
 	_fob_box setVariable ["GRLIB_vehicle_owner", getPlayerUID player, true];
 	hintSilent format ["%1 %2 "+ localize "STR_FOB_REPACKAGE_HINT", "FOB", _fob_name];

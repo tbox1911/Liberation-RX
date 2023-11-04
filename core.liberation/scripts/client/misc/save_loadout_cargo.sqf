@@ -44,9 +44,7 @@ if (vest _unit != "") then {
 // backpack
 if (backpack _unit != "") then {
 	private _backpack = [_box, (backpack _unit)] call _addContainerCargo;
-	clearItemCargo _backpack;
-	clearWeaponCargo _backpack;
-	clearMagazineCargo _backpack;
+	[_backpack] call F_clearCargo;
 	{_backpack addItemCargoGlobal [_x, 1]} forEach (backpackItems _unit);
 	removeBackpackGlobal _unit;
 };

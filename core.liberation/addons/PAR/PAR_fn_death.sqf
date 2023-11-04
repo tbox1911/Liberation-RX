@@ -44,11 +44,7 @@ if (_unit == player) then {
 		"player_grave_box" setMarkerPosLocal _grave_box;
 
 		// clear box
-		clearWeaponCargo _grave_box;
-		clearMagazineCargo _grave_box;
-		clearItemCargo _grave_box;
-		clearBackpackCargo _grave_box;
-
+		[_grave_box] call F_clearCargo;
 		[_grave_box, _unit] call save_loadout_cargo;
 	};
 

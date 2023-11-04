@@ -126,10 +126,7 @@ _vehicle_owner = _transporteur getVariable ["GRLIB_vehicle_owner", ""];
 
 				// Clear Cargo
 				if (!(_classe in GRLIB_Ammobox_keep)) then {
-					clearWeaponCargoGlobal _objet;
-					clearMagazineCargoGlobal _objet;
-					clearItemCargoGlobal _objet;
-					clearBackpackCargoGlobal _objet;
+					[_objet] call F_clearCargo;
 				};
 
 				// MPKilled

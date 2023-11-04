@@ -19,10 +19,7 @@ if ( !( _sector in GRLIB_military_sectors_already_activated )) then {
 
 		for "_i" from 1 to _crates_amount do {
 			_newbox = [ammobox_o_typename, markerpos _sector, true] call boxSetup;
-			clearWeaponCargoGlobal _newbox;
-			clearMagazineCargoGlobal _newbox;
-			clearItemCargoGlobal _newbox;
-			clearBackpackCargoGlobal _newbox;
+			[_newbox] call F_clearCargo;
 		};
 	};
 	[markerPos _sector] spawn manage_intels;

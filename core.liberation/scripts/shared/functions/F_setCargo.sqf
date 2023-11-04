@@ -2,10 +2,7 @@ params ["_vehicle", "_lst_a3"];
 if (count _lst_a3 == 0) exitWith {};
 
 private ["_items_list", "_magazine_list", "_last", "_containers"];
-clearWeaponCargoGlobal _vehicle;
-clearMagazineCargoGlobal _vehicle;
-clearItemCargoGlobal _vehicle;
-clearBackpackCargoGlobal _vehicle;
+[_vehicle] call F_clearCargo;
 _vehicle setMaxLoad playerbox_cargospace;
 
 {_vehicle addWeaponWithAttachmentsCargoGlobal [ _x, 1]} forEach (_lst_a3 select 0);

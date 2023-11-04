@@ -24,10 +24,7 @@ while { true } do {
 		sleep 0.5;
 		huron AnimateDoor ["Door_rear_source", 1, true];
 		publicVariable "huron";
-		clearWeaponCargoGlobal huron;
-		clearMagazineCargoGlobal huron;
-		clearItemCargoGlobal huron;
-		clearBackpackCargoGlobal huron;
+		[huron] call F_clearCargo;
 		huron enableSimulationGlobal true;
 		sleep 3;
 		huron setDamage 0;
