@@ -18,9 +18,7 @@
 // - FilterArsenal = 3    Strict Mode + MOD: The player can ONLY use items present in the Arsenal.
 //                        plus items from the current MOD.
 //
-// - FilterArsenal = 4    Only Whitelist and Blacklist - no autofill
-//
-// - FilterArsenal = 5    AntiStasi style - no autofill
+// - FilterArsenal = 4    Personal Arsenal - no autofill
 //
 // The Whitelist and Blacklist apply from FilterArsenal = 1 and up
 //
@@ -43,6 +41,9 @@ GRLIB_blacklisted_from_arsenal = [];			// Global blacklist (All objects will be 
 
 // Initalize Withelist
 GRLIB_whitelisted_from_arsenal = [];			// Global whitelist when Arsenal is enabled
+
+// Initalize Arsenal
+GRLIB_personal_arsenal = [];
 
 // Filters disabled
 waitUntil { sleep 1; !isNil "GRLIB_filter_arsenal" };
@@ -82,6 +83,36 @@ GRLIB_blacklisted_from_arsenal = [
 // Default LRX whitelist
 GRLIB_whitelisted_from_arsenal = [mobile_respawn_bag, "B_Parachute"] + whitelisted_from_arsenal;
 
+// Default Personal Arsenal
+private _default_personal_arsenal = [
+	["FirstAidKit", 10],
+	["Medikit", 2],
+	["ToolKit", 2]
+];
+if (isNil "personal_arsenal") then {personal_arsenal = _default_personal_arsenal};
+
+// Personal Arsenal
+if (GRLIB_filter_arsenal == 4) exitWith {
+	private _player_arsenal = profileNamespace getVariable ["GRLIB_personal_arsenal", []];
+	GRLIB_personal_arsenal = personal_arsenal;
+	if (count _player_arsenal > 0) then {
+		GRLIB_personal_arsenal = _player_arsenal;
+ 	};
+
+	GRLIB_personal_box = Arsenal_typename createVehicle (markerPos GRLIB_respawn_marker); // Arsenal_typename
+	GRLIB_personal_box allowDamage false;
+	hideObjectGlobal GRLIB_personal_box;
+	clearWeaponCargo GRLIB_personal_box;
+	clearMagazineCargo GRLIB_personal_box;
+	clearItemCargo GRLIB_personal_box;
+	clearBackpackCargo GRLIB_personal_box;
+	GRLIB_personal_box setMaxLoad 50000;
+	GRLIB_personal_box setVariable ["GRLIB_personal_box_pos", getPos GRLIB_personal_box];
+	[] call load_personal_arsenal;
+	LRX_arsenal_init_done = true;
+	diag_log format ["--- LRX Personal Arsenal initialized. (%1)", count GRLIB_personal_arsenal];
+};
+
 // TFAR radio
 GRLIB_TFR_radios = [];
 if (GRLIB_TFR_enabled) then {
@@ -93,10 +124,8 @@ if (GRLIB_TFR_enabled) then {
 GRLIB_MOD_signature = [];
 
 // Add Mod Items (Weapons,Uniform,etc.)
-if (GRLIB_filter_arsenal != 4) then {
-	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_init_west.sqf";
-	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_init_east.sqf";
-};
+[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_init_west.sqf";
+[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_init_east.sqf";
 
 // Dedup list
 GRLIB_MOD_signature = GRLIB_MOD_signature arrayIntersect GRLIB_MOD_signature;

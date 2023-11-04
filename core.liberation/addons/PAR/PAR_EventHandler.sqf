@@ -17,10 +17,11 @@ _unit addEventHandler ["GetOutMan", {
 }];
 
 _unit addEventHandler ["InventoryClosed", {
-	params ["_unit"];
+	params ["_unit", "_container"];
 	[_unit] call F_filterLoadout;
 	if (_unit == player) then {
 		hintSilent format ["Inventory value:\n%1 AMMO.", ([_unit] call F_loadoutPrice)];
+		if (GRLIB_filter_arsenal == 4 && _container == GRLIB_personal_box) then { [] spawn save_personal_arsenal };
 	};
 }];
 

@@ -5655,7 +5655,7 @@
 			<Portuguese>Strict + MOD: Rígido + itens do Mod atual</Portuguese>
 		</Key>
 		<Key ID="STR_LIMIT_ARSENAL_PARAM4">
-			<Original>Only items defined in Whitelist</Original>
+			<Original>Personal Arsenal</Original>
 		</Key>
 		<Key ID="STR_VEH_LOCK">
 			<Original>Enable Vehicles Ownership</Original>

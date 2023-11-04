@@ -62,10 +62,15 @@ GRLIB_checkAirDrop = {
 };
 
 GRLIB_checkArsenal = {
+	if (GRLIB_filter_arsenal == 4) exitWith { false };
 	private _near_arsenal = [player, "ARSENAL", GRLIB_ActionDist_5, false] call F_check_near;
 	private _mode1 = (GRLIB_enable_arsenal == 1 && (_near_arsenal || GRLIB_player_near_base));
 	private _mode2 = (GRLIB_enable_arsenal == 2 && GRLIB_player_near_base);
 	(GRLIB_player_is_menuok && (_mode1 || _mode2) && LRX_arsenal_init_done)
+};
+
+GRLIB_checkArsenalPerso = {
+	(GRLIB_filter_arsenal == 4 && typeOf cursorObject == Arsenal_typename && cursorObject distance2D player <= GRLIB_ActionDist_5)
 };
 
 GRLIB_checkGarage = {

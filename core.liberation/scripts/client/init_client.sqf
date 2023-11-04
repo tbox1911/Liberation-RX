@@ -88,6 +88,8 @@ is_neartransport = compileFinal preprocessFileLineNumbers "scripts\client\misc\i
 is_allowed_item = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_allowed_item.sqf";
 get_player_name = compileFinal preprocessFileLineNumbers "scripts\client\misc\get_player_name.sqf";
 save_loadout_cargo = compileFinal preprocessFileLineNumbers "scripts\client\misc\save_loadout_cargo.sqf";
+save_personal_arsenal = compileFinal preprocessFileLineNumbers "scripts\client\actions\save_personal_arsenal.sqf";
+load_personal_arsenal = compileFinal preprocessFileLineNumbers "scripts\client\actions\load_personal_arsenal.sqf";
 
 private _grp = createGroup [GRLIB_side_friendly, true];
 waitUntil {
