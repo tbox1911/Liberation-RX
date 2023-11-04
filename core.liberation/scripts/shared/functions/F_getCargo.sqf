@@ -7,6 +7,14 @@ private _lst_a3 = [];
 	_lst_a3 pushBack _x;
 } foreach (weaponsItemsCargo _vehicle);
 
+// Magazines
+private _mag_cargo = getMagazineCargo _vehicle;
+private _indx = 0;
+{
+	_lst_a3 pushBack [_x, (_mag_cargo select 1) select _indx];
+	_indx = _indx + 1;
+} forEach (_mag_cargo select 0);
+
 if (_full) then {
 	// All Containers
 	private _containers = [];
@@ -24,14 +32,6 @@ if (_full) then {
 		};
 		_indx = _indx + 1;
 	} forEach (_item_cargo select 0);
-
-	// Magazines
-	private _mag_cargo = getMagazineCargo _vehicle;
-	private _indx = 0;
-	{
-		_lst_a3 pushBack [_x, (_mag_cargo select 1) select _indx];
-		_indx = _indx + 1;
-	} forEach (_mag_cargo select 0);
 };
 
 _lst_a3;
