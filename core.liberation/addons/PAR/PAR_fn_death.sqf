@@ -15,6 +15,8 @@ if (_unit == player) then {
 		_unit setPosATL ((markerPos GRLIB_respawn_marker) vectorAdd [floor(random 5), floor(random 5), 1]);
 		// create grave
 		_grave = (selectRandom GRLIB_player_grave) createVehicle _pos;
+		_grave allowDamage false;
+		_grave setMaxLoad playerbox_cargospace;
 		_grave setPosATL _pos;
 		_grave setvariable ["GRLIB_grave_message", format ["%1 - R.I.P -", name player], true];
 		_grave_dir = getDir _grave;
