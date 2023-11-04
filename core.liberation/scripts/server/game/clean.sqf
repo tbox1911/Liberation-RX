@@ -79,7 +79,7 @@ deleteManagerPublic = true;								// To terminate script via debug console
 
 private _checkPlayerCount = true;						// dynamic sleep. Set TRUE to have sleep automatically adjust based on # of players.
 private _playerThreshold = 4;							// How many players before accelerated cycle kicks in?
-private _checkFrequencyDefault = 60; //  GRLIB_cleanup_vehicles;	        // sleep default
+private _checkFrequencyDefault = GRLIB_cleanup_vehicles;	        // sleep default
 private _checkFrequencyAccelerated = (_checkFrequencyDefault/2);	// sleep accelerated
 
 private _vehiclesLimit = 10;							// Vehicles Set -1 to disable.
