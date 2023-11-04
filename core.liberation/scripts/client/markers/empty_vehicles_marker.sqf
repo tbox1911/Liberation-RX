@@ -28,7 +28,7 @@ if (GRLIB_allow_redeploy == 1) then {
 
 while { true } do {
 	_veh_list = [vehicles, {
-		alive _x && !(isObjectHidden _x) &&
+		(alive _x) && !(isObjectHidden _x) &&
 		(count (crew _x) == 0 || typeOf _x in (uavs + static_vehicles_AI)) &&
 		(_x distance2D lhd > GRLIB_fob_range) &&
 		!([typeOf _x, _no_marker_classnames] call F_itemIsInClass) &&

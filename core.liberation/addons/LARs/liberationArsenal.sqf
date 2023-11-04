@@ -85,17 +85,22 @@ GRLIB_whitelisted_from_arsenal = [mobile_respawn_bag, "B_Parachute"] + whitelist
 
 // Default Personal Arsenal
 private _default_personal_arsenal = [
-	["FirstAidKit", 10],
+	["FirstAidKit", 15],
 	["Medikit", 2],
-	["ToolKit", 2]
+	["ToolKit", 2],
+	["arifle_MX_Hamr_pointer_F", 2],
+	["30Rnd_65x39_caseless_mag", 20],
+	["launch_RPG32_F", 1],
+	["RPG32_F",4],
+	["HandGrenade", 6],
+	["SatchelCharge_Remote_Mag", 2]
 ];
 if (isNil "personal_arsenal") then {personal_arsenal = _default_personal_arsenal};
 
 // TFAR radio
-GRLIB_TFR_radios = [];
 if (GRLIB_TFR_enabled) then {
-	GRLIB_TFR_radios = ["TFAR_anprc152","TFAR_anprc148jem","TFAR_fadak","TFAR_anprc154","TFAR_rf7800str","TFAR_pnr1000a"];
-	GRLIB_whitelisted_from_arsenal append GRLIB_TFR_radios;
+	private _TFR_radios = ["TFAR_anprc152","TFAR_anprc148jem","TFAR_fadak","TFAR_anprc154","TFAR_rf7800str","TFAR_pnr1000a"];
+	GRLIB_whitelisted_from_arsenal append _TFR_radios;
 };
 
 // Personal Arsenal
@@ -108,9 +113,8 @@ if (GRLIB_filter_arsenal == 4) exitWith {
 
 	GRLIB_personal_box = Arsenal_typename createVehicle (markerPos GRLIB_respawn_marker); // Arsenal_typename
 	GRLIB_personal_box allowDamage false;
-	hideObjectGlobal GRLIB_personal_box;
+	[GRLIB_personal_box] remoteExec ["hide_object_remote_call", 2];
 	[GRLIB_personal_box] call F_clearCargo;
-	GRLIB_personal_box setMaxLoad 50000;
 	GRLIB_personal_box setVariable ["GRLIB_personal_box_pos", getPos GRLIB_personal_box];
 	[] call load_personal_arsenal;
 	diag_log format ["--- LRX Personal Arsenal initialized. (%1)", count GRLIB_personal_arsenal];

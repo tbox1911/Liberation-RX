@@ -53,8 +53,8 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
         _nextbuildings = [ _fobpos nearObjects (GRLIB_fob_range * 2), {
             ( getObjectType _x >= 8 ) &&
             ( !isSimpleObject _x ) &&
+            ( alive _x) && !(isObjectHidden _x) &&
             ((typeof _x) in GRLIB_classnames_to_save ) &&
-            ( alive _x) &&
             ( speed vehicle _x < 5 ) &&
             ( isNull attachedTo _x ) &&
             (_x getVariable ["GRLIB_vehicle_owner", ""] != "server")
