@@ -1,38 +1,36 @@
 params ["_vehicle", "_lst_a3"];
 if (count _lst_a3 == 0) exitWith {};
 
-private ["_items_list", "_magazine_list", "_last", "_containers"];
-[_vehicle] call F_clearCargo;
-_vehicle setMaxLoad playerbox_cargospace;
-
-{_vehicle addWeaponWithAttachmentsCargoGlobal [ _x, 1]} forEach (_lst_a3 select 0);
-
-if ( (typeOf _vehicle) == playerbox_typename) then {
-    _containers = [];
-    {
-        _name = _x select 0;
-        _containers pushback _name;
-        if (_name isKindOf "Bag_Base") then {
-            _vehicle addBackpackCargoGlobal [_name, 1];
-        } else {
-            _vehicle addItemCargoGlobal [_name, 1];
-        };
-        _last = (everyContainer _vehicle) select (count everyContainer _vehicle) - 1 select 1;
-        _items_list = _x select 1 select 0;
-        if (!isNil "_items_list") then {
-            {_last addItemCargoGlobal [_x, (_items_list select 1) select _forEachIndex]} forEach (_items_list select 0);
-        };
-        _magazine_list = _x select 1 select 1;
-        if (!isNil "_magazine_list") then {
-            {_last addItemCargoGlobal [_x, (_magazine_list select 1) select _forEachIndex]} forEach (_magazine_list select 0);
-        };
-    } foreach (_lst_a3 select 3);
-
-    _items_list = (_lst_a3 select 1);
-    {
-        if (!(_x in _containers)) then { _vehicle addItemCargoGlobal [_x, (_items_list select 1) select _forEachIndex] };
-    } forEach (_items_list select 0);
-
-    _magazine_list = (_lst_a3 select 2);
-    {_vehicle addMagazineCargoGlobal [_x, (_magazine_list select 1) select _forEachIndex] } forEach (_magazine_list select 0);
+private _addContainerCargo = {
+	params ["_box", "_item"];
+	private _old_content = everyContainer _box;
+	if (_item isKindOf "Bag_Base") then {
+		_box addBackpackCargo [_item, 1];
+	} else {
+		_box addItemCargo [_item, 1];
+	};
+	sleep 0.1;
+	((everyContainer _box) - _old_content) select 0 select 1; 
 };
+
+{ 
+	if (count _x == 2) then {
+		_vehicle addItemCargo [(_x select 0), (_x select 1)];
+	};
+	if (count _x == 3) then {
+		private _class = (_x select 0);	
+		private _container = [_vehicle, _class] call _addContainerCargo;
+		[_container] call F_clearCargo;
+		private _items = (_x select 1) select 0;
+		{
+			_container addItemCargo [_x, (_items select 1) select (_forEachIndex - 1)];
+		} forEach (_items select 0);
+		private _mag = (_x select 1) select 1;
+		{
+			_container addItemCargo [_x, (_mag select 1) select (_forEachIndex - 1)];
+		} forEach (_mag select 0);		
+	};
+	if (count _x == 7) then {
+		_vehicle addWeaponWithAttachmentsCargo [_x, 1];
+	};
+} forEach _lst_a3;
