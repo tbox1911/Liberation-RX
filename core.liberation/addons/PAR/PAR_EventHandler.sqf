@@ -157,7 +157,6 @@ if (_unit == player) then {
 	// Player Handle Damage EH
 	if (GRLIB_revive != 0) then {
 		player addEventHandler ["HandleDamage", { _this call PAR_HandleDamage_EH }];
-		[] spawn PAR_AI_Manager;
 	};
 } else {
 	// AI killed EH

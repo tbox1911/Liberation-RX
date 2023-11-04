@@ -6,37 +6,38 @@ while {true} do {
         {
             // Set EH
             //[_x] spawn PAR_fn_AI_Damage_EH;
+            if (GRLIB_revive != 0) then {
+                // Medic can heal
+                _isMedic = [_x] call PAR_is_medic;
+                _hasMedikit = [_x] call PAR_has_medikit;
+                if ( _isMedic && _hasMedikit &&
+                    isNull objectParent _x &&
+                    (behaviour _x) != "COMBAT" &&
+                    lifeState _x != 'INCAPACITATED' &&
+                    isNil {_x getVariable 'PAR_busy'} &&
+                    isNil {_x getVariable 'PAR_heal'}
+                    ) then {
+                    [_x] spawn PAR_fn_checkWounded;
+                };
 
-            // Medic can heal
-            _isMedic = [_x] call PAR_is_medic;
-            _hasMedikit = [_x] call PAR_has_medikit;
-            if ( _isMedic && _hasMedikit &&
-                isNull objectParent _x &&
-                (behaviour _x) != "COMBAT" &&
-                lifeState _x != 'INCAPACITATED' &&
-                isNil {_x getVariable 'PAR_busy'} &&
-                isNil {_x getVariable 'PAR_heal'}
+                // AI stop doing shit !
+                if ( leader group player != player &&
+                    lifeState player == 'INCAPACITATED' &&
+                    lifeState _x != 'INCAPACITATED' &&
+                    isNil {_x getVariable 'PAR_busy'} &&
+                    isNil {_x getVariable 'PAR_heal'}
                 ) then {
-                [_x] spawn PAR_fn_checkWounded;
-            };
-
-            // AI stop doing shit !
-            if ( leader group player != player &&
-                lifeState player == 'INCAPACITATED' &&
-                lifeState _x != 'INCAPACITATED' &&
-                isNil {_x getVariable 'PAR_busy'} &&
-                isNil {_x getVariable 'PAR_heal'}
-            ) then {
-                if (_x distance2D player <= 500) then {
-                    doStop _x;
-                    unassignVehicle _x;
-                    [_x] orderGetIn false;
-                    if (!isnull objectParent _x) then {
-                        doGetOut _x;
-                        sleep 3;
-                    };
-                    _x doMove (getPos player);
-                } else {doStop _x};
+                    if (_x distance2D player <= 500) then {
+                        doStop _x;
+                        unassignVehicle _x;
+                        [_x] orderGetIn false;
+                        if (!isnull objectParent _x) then {
+                            doGetOut _x;
+                            sleep 3;
+                        };
+                        _x doMove (getPos player);
+                    } else {doStop _x};
+                };
             };
 
             // Blood trail

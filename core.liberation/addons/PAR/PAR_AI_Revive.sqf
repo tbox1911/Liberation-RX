@@ -65,5 +65,8 @@ _marker setMarkerShapeLocal "ICON";
 _marker setMarkerTypeLocal "KIA";
 _marker setMarkerTextlocal format ["%1's Grave.", name player];
 
+// AI Manager
+[] spawn PAR_AI_Manager;
+
 waitUntil {!(isNull (findDisplay 46))};
 systemChat "-------- pSiKo AI Revive Initialized --------";
