@@ -6084,6 +6084,10 @@
 		<Key ID="STR_LOOT_BODY">
 			<Original>-- LOOT BODY</Original>
 			<French>-- LOOTER CORPS</French>
+		</Key>	
+		<Key ID="STR_SEND_ARSENAL">
+			<Original>-- CARGO TO ARSENAL</Original>
+			<French>-- CARGO VERS ARSENAL</French>
 		</Key>
 		<Key ID="STR_LOADOUT_CARGO_STORED">
 			<Original>%1's gear stored in %2.</Original>

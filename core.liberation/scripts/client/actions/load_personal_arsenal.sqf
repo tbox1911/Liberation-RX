@@ -1,3 +1,5 @@
+// Load Arsenal from user profile and fill the Arsenal box
+
 private _addContainerCargo = {
 	params ["_box", "_item"];
 	private _old_content = everyContainer _box;
@@ -17,6 +19,7 @@ private _addContainerCargo = {
 	if (count _x == 3) then {
 		private _class = (_x select 0);	
 		private _container = [GRLIB_personal_box, _class] call _addContainerCargo;
+		[_container] call F_clearCargo;
 		private _items = (_x select 1) select 0;
 		{
 			_container addItemCargo [_x, (_items select 1) select (_forEachIndex - 1)];

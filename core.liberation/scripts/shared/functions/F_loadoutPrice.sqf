@@ -136,7 +136,7 @@ if (typeName _unit == "OBJECT") then {
 		_val = _val + (2 * count(assignedItems _unit));
 	};
 
-	if (_unit iskindof "LandVehicle" || typeOf _unit in GRLIB_Ammobox_keep + GRLIB_disabled_arsenal) then {
+	if (_unit iskindof "LandVehicle" || typeOf _unit in [Arsenal_typename] + GRLIB_Ammobox_keep + GRLIB_disabled_arsenal) then {
 		_weap_cargo = weaponCargo _unit;
 		if (count _weap_cargo > 0) then {
 			{
@@ -150,6 +150,14 @@ if (typeName _unit == "OBJECT") then {
 				_val = _val + ([_x] call _fn_getprice);
 			} forEach _item_cargo;
 		};
+
+		_mag_cargo = magazineCargo _unit;
+		if (count _mag_cargo > 0) then {
+			{
+				_val = _val + 1;
+			} forEach _mag_cargo;
+		};
+		
 	};
 };
 

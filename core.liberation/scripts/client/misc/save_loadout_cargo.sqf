@@ -26,6 +26,7 @@ _box addItemCargoGlobal [(hmd _unit), 1];
 // uniform
 if (uniform _unit != "" && isPlayer _unit) then {
 	private _uniform = [_box, (uniform _unit)] call _addContainerCargo;
+	[_uniform] call F_clearCargo;
 	{_uniform addItemCargoGlobal [_x, 1]} forEach (uniformItems _unit);
 	removeUniform _unit;
 };
@@ -33,6 +34,7 @@ if (uniform _unit != "" && isPlayer _unit) then {
 // vest
 if (vest _unit != "") then {
 	private _vest = [_box, (vest _unit)] call _addContainerCargo;
+	[_vest] call F_clearCargo;
 	{_vest addItemCargoGlobal [_x, 1]} forEach (vestItems _unit);
 	removeVest _unit;
 };

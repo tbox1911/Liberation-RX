@@ -57,3 +57,8 @@ GRLIB_checkAction_Box = {
 	params ["_target", "_unit"];
 	(GRLIB_player_is_menuok && alive _target && [] call is_neartransport && [_unit, _target] call is_owner && !(_target getVariable ['R3F_LOG_disabled', false]))
 };
+
+GRLIB_checkAction_SendArsenal = {
+	params ["_target", "_unit"];
+	(GRLIB_filter_arsenal == 4 && loadAbs _target > 0 && [_unit, "ARSENAL", GRLIB_ActionDist_10, false] call F_check_near)
+};
