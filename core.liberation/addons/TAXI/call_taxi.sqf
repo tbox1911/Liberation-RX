@@ -128,7 +128,7 @@ if (isNil "GRLIB_taxi_eject") then {
 	if (count _cargo > 0) then {
 		[_vehicle] call taxi_land;
 		[_vehicle, _cargo] call taxi_outboard;
-		sleep 3;
+		sleep 10;
 		{ _x allowDamage true } forEach _cargo;
 	};
 };
