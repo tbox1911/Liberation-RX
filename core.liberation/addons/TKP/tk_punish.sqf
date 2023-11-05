@@ -1,8 +1,10 @@
 params ["_target", "_caller", "_actionId", "_killer_uid"];
 
 private _killer = _killer_uid call BIS_fnc_getUnitByUID;
-private _killer_name = name _killer;
-if (_killer_name == "") then { _killer_name = _killer_uid };
+private _killer_name = _killer_uid;
+if (!isNull _killer) then {
+	_killer_name = name _killer;
+};
 
 private _msg = format ["<t align='center'>" + localize "STR_TK_ASK1" + "</t>", _killer_name];
 private _result = [_msg, localize "STR_TK_COUNT", localize "STR_TK_PUNISH", localize "STR_TK_FORGIVE"] call BIS_fnc_guiMessage;
