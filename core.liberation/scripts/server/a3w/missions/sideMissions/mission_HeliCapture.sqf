@@ -30,7 +30,7 @@ _setupObjects =
 	_vehicle setVehicleAmmo 0.1;
 	_vehicle engineOn false;
 	_vehicle setHit [getText (configFile >> "cfgVehicles" >> (typeOf _vehicle) >> "HitPoints" >> "HitEngine" >> "name"), 1];
-	_smoke = "test_EmptyObjectForSmoke" createVehicle _vehiclePos;
+	_smoke = GRLIB_sar_fire createVehicle _vehiclePos;
 	_smoke attachTo [_vehicle, [0, 1.5, 0]];
 	sleep 2;
 	_vehicle allowDamage true;

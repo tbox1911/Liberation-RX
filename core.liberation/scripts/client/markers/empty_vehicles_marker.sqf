@@ -11,6 +11,7 @@ private _no_marker_classnames = [
 	playerbox_typename,
 	GRLIB_player_gravebox,
 	GRLIB_sar_wreck,
+	GRLIB_sar_fire,
 	Warehouse_desk_typename,
 	"Land_Campfire_F",
 	"GroundWeaponHolder",

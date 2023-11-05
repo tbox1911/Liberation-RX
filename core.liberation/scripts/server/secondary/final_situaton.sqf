@@ -117,7 +117,7 @@ publicVariable "GRLIB_secondary_in_progress";
 
 if (_success) then {
 	[5] remoteExec ["BIS_fnc_earthquake", 0];
-	private _smoke = "test_EmptyObjectForSmoke" createVehicle (getPos opfor_target);
+	private _smoke = GRLIB_sar_fire createVehicle (getPos opfor_target);
 	_smoke attachTo [opfor_target, [0, 1.5, 0]];
 	{ _x setDamage 1 } foreach (units GRLIB_side_enemy);
 	0 setOvercast 0;
