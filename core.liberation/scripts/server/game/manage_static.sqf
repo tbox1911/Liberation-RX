@@ -32,19 +32,24 @@ while { true } do {
             if ({alive _x} count _gunner_list == 0) then {
                 _gunner_list = [];
                 _side = GRLIB_side_enemy;
+                _enemy = [_static, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount;
                 if (_static_class in (blufor_statics - static_vehicles_AI)) then {
+                    _enemy = [_static, GRLIB_sector_size, GRLIB_side_enemy] call F_getUnitsCount;
                     _side = GRLIB_side_friendly;
                 };
                 if (_static_class in resistance_squad_static) then {
                     _side = GRLIB_side_resistance;
+                    _enemy = 1;
                 };
-                _next_gunner = (units _side) select {
-                    (alive _x) && (isNull objectParent _x) &&
-                    (secondaryWeapon _x == "") && (_x distance2D _static < 50) &&
-                    isNil {_x getVariable "PAR_Grp_ID"}
-                } select 0;
-                if (!isNil "_next_gunner") then { _gunner_list = [_next_gunner] };
-                _static setVariable ["GRLIB_vehicle_gunner", _gunner_list];
+                if (_enemy > 0) then {
+                    _next_gunner = (units _side) select {
+                        (alive _x) && (isNull objectParent _x) &&
+                        (secondaryWeapon _x == "") && (_x distance2D _static < 50) &&
+                        isNil {_x getVariable "PAR_Grp_ID"}
+                    } select 0;
+                    if (!isNil "_next_gunner") then { _gunner_list = [_next_gunner] };
+                    _static setVariable ["GRLIB_vehicle_gunner", _gunner_list];
+                };
             };
 
             {
