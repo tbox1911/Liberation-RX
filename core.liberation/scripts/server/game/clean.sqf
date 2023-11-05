@@ -38,21 +38,6 @@ sleep 15;
 
 if (GRLIB_cleanup_vehicles == 0) exitWith {};
 
-// FORCE DELETE
-GRLIB_force_cleanup_classnames = [
-	"Plane_Canopy_Base_F",
-	"Ejection_Seat_Base_F",
-	"CUP_A10_Ejection_Seat",
-	"CUP_A10_Canopy",
-	"rhs_k36d5_seat",
-	"rhs_ka52_blade",
-	"rhs_ka52_ejection_vest",
-	"rhs_mi28_wing_right",
-	"rhs_mi28_wing_left",
-	"rhs_mi28_door_gunner",
-	"rhs_mi28_door_pilot"
-];
-
 // IGNORE VEHICLES
 private _no_cleanup_classnames = [] + GRLIB_vehicle_blacklist;
 { _no_cleanup_classnames pushback (_x select 0) } foreach (support_vehicles + static_vehicles + opfor_recyclable);

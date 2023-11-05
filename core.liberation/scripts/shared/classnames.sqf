@@ -438,6 +438,21 @@ GRLIB_recycleable_blacklist = [
 	basic_weapon_typename
 ];
 
+// FORCE DELETE (used by GC)
+GRLIB_force_cleanup_classnames = [
+	"Plane_Canopy_Base_F",
+	"Ejection_Seat_Base_F",
+	"CUP_A10_Ejection_Seat",
+	"CUP_A10_Canopy",
+	"rhs_k36d5_seat",
+	"rhs_ka52_blade",
+	"rhs_ka52_ejection_vest",
+	"rhs_mi28_wing_right",
+	"rhs_mi28_wing_left",
+	"rhs_mi28_door_gunner",
+	"rhs_mi28_door_pilot"
+];
+
 GRLIB_recycleable_classnames = ["LandVehicle","Air","Ship","StaticWeapon","Slingload_01_Base_F","Pod_Heli_Transport_04_base_F"];
 {
 	GRLIB_recycleable_classnames pushBackUnique (_x select 0);
@@ -561,9 +576,9 @@ GRLIB_ide_traps = [
 	"Land_GarbageWashingMachine_F",
 	"Land_GarbageBarrel_01_F",
 	"Land_Sacks_heap_F",
-	"Land_CanisterFuel_White_F",
 	"Land_CanisterFuel_Blue_F",
-	"Land_CanisterFuel_Red_F",
+    "Land_CanisterFuel_White_F",
+	"Land_BarrelTrash_F",
 	"Land_GasTank_01_khaki_F",
 	"Land_FirstAidKit_01_closed_F",
 	"Box_C_UAV_06_Swifd_F",

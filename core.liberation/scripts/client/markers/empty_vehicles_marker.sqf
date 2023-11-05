@@ -6,7 +6,6 @@ private _vehmarkers_bak = [];
 
 waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 waitUntil {sleep 1; !isNil "GRLIB_mobile_respawn"};
-waitUntil {sleep 1; !isNil "GRLIB_force_cleanup_classnames"};
 
 private _no_marker_classnames = [
 	playerbox_typename,
