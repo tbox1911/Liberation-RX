@@ -1,7 +1,7 @@
 // LRX Virtual Garage
 // by pSiKO
 
-if ( !isNil "GRLIB_garage_in_use" ) exitWith { hintSilent "Garage is busy !!\nPlease wait..." };
+//if ( !isNil "GRLIB_garage_in_use" ) exitWith { hintSilent "Garage is busy !!\nPlease wait..." };
 
 private _cfg = configFile >> "cfgVehicles";
 private _myveh = [];
@@ -43,7 +43,7 @@ while { dialog && alive player } do {
 				_myveh_info pushBack _x;
 				_i = _i + 1;
 			};
-		} forEach GRLIB_garage;  // veh list inside
+		} forEach GRLIB_virtual_garage;  // veh list inside
 
 		lbClear 110;
 		{
@@ -111,9 +111,26 @@ while { dialog && alive player } do {
 					if (_result) then {
 						ctrlEnable [ 120, false ];
 						(_display displayCtrl (110)) lnbDeleteRow _selected_item;
-						[_vehicle, load_veh, _guid] remoteExec ["vehicle_garage_remote_call", 2];
-						sleep 2;
+						//[_vehicle, load_veh, _guid] remoteExec ["vehicle_garage_remote_call", 2];
+						//
+						private _color = _vehicle getVariable ["GRLIB_vehicle_color", ""];
+						private _compo = _vehicle getVariable ["GRLIB_vehicle_composant", []];
+						private _ammo = [_vehicle] call F_getVehicleAmmoDef;
+						private _lst_a3 = [_vehicle] call F_getCargo;
+						private _lst_r3f = [];
+						{ _lst_r3f pushback (typeOf _x)} forEach (_vehicle getVariable ["R3F_LOG_objets_charges", []]);
+						private _lst_grl = [];
+						{_lst_grl pushback (typeOf _x)} forEach (_vehicle getVariable ["GRLIB_ammo_truck_load", []]);
+						//GRLIB_virtual_garage append [[typeOf _vehicle, _guid, _color, _ammo, _compo, _lst_a3, _lst_r3f, _lst_grl]];
+						GRLIB_virtual_garage append [[typeOf _vehicle,_color,_ammo,_compo,_lst_a3,_lst_r3f,_lst_grl]];
+
+						{ deleteVehicle _x } forEach (_vehicle getVariable ["R3F_LOG_objets_charges", []]);
+						{ deleteVehicle _x } foreach (_vehicle getVariable ["GRLIB_ammo_truck_load", []]);
+						deleteVehicle _vehicle;
 						hintSilent (format [localize "STR_LOADED", _vehicle_name]);
+						profileNamespace setVariable ["GRLIB_personal_arsenal", GRLIB_virtual_garage]; 
+						saveProfileNamespace;
+
 					};
 				};
 
@@ -125,21 +142,23 @@ while { dialog && alive player } do {
 
 					_veh_info = _myveh_info select _vehicle;
 					_veh_class = _veh_info select 0;
-					_owner = _veh_info select 1;
-					_color = _veh_info select 2;
-					_ammo = _veh_info select 3;
-					_compo = _veh_info select 4;					
-					_lst_a3 = _veh_info select 5;
-					_lst_r3f = _veh_info select 6;
-					_lst_grl = _veh_info select 7;
+					//_guid = _veh_info select 1;
+					_color = _veh_info select 1;
+					_ammo = _veh_info select 2;
+					_compo = _veh_info select 3;					
+					_lst_a3 = _veh_info select 4;
+					_lst_r3f = _veh_info select 5;
+					_lst_grl = _veh_info select 6;
 					buildtype = 10;
 					build_unit = [_veh_class,_color,_ammo,_compo,_lst_a3,_lst_r3f,_lst_grl];
 					dobuild = 1;
 
 					waitUntil {sleep 0.5; dobuild == 0};
 					if (build_confirmed == 0) then {
-						[_vehicle, load_veh, _guid] remoteExec ["vehicle_garage_remote_call", 2];
+						//[_vehicle, load_veh, _guid] remoteExec ["vehicle_garage_remote_call", 2];
 						hintSilent (format ["Vehicle %1\nUnloaded from Garage.", [_veh_class] call F_getLRXName]);
+						profileNamespace setVariable ["GRLIB_personal_arsenal", GRLIB_virtual_garage]; 
+						saveProfileNamespace;
 					};
 				};
 				_refresh = true;

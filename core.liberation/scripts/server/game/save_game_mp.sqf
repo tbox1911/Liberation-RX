@@ -184,7 +184,7 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
         buildings_to_save,
         time_of_day,
         round combat_readiness,
-        GRLIB_garage,
+        [],
         GRLIB_mod_west,
         GRLIB_mod_east,
         _warehouse,
