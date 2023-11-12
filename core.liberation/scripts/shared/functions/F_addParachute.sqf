@@ -1,10 +1,11 @@
 // Automatic Parachute System for LRX
+
 params ["_vehicle", ["_source", objNull]];
 if (isNil "_vehicle") exitWith {};
 
 private _shell_smoke_code = ["Withe", "Red", "Green", "Yellow", "Purple", "Blue", "Orange"];
 private _shell_smoke = ["SmokeShell", "SmokeShellRed", "SmokeShellGreen", "SmokeShellYellow", "SmokeShellPurple", "SmokeShellBlue", "SmokeShellOrange"];
-private _open_parachute = 270;
+private _open_parachute = 240;
 private _start_smoke = 80;
 private _one = floor (random (count _shell_smoke_code));
 private _two = floor (random (count _shell_smoke_code));
@@ -21,40 +22,51 @@ private	_lst_grl = [];
 } forEach (_vehicle getVariable ["GRLIB_ammo_truck_load", []]);
 _vehicle setVariable ["GRLIB_ammo_truck_load", [], true];
 
-waitUntil {sleep 0.1; (getPosATL _vehicle select 2) <= _open_parachute};
+waitUntil {sleep 0.1; (getPos _vehicle select 2) <= _open_parachute};
 
-private _pos = getPosATL _vehicle;
-private _parachute = createVehicle ["B_Parachute_02_F", _pos, [], 0, "CAN_COLLIDE"];
+private _pos = getPos _vehicle;
+private _parachute = createVehicle ["B_Parachute_02_F", _pos, [], 0, "NONE"];
+_parachute setPos _pos;
 _parachute disableCollisionWith _vehicle;
 _parachute disableCollisionWith _source;
-_parachute setvelocity (velocity _vehicle);
-_vehicle attachTo [_parachute,[0,0,0.6]];
+_parachute setVelocity (velocity _vehicle);
+_vehicle attachTo [_parachute, [0,0,0.6]];
 
 private _timeout = time + 150;
-if (surfaceIsWater _pos) then {
-	waitUntil {sleep 0.1;((getPosASL _vehicle select 2) < 10 || time > _timeout)};
-} else {
-	waitUntil {sleep 0.1;((getPosATL _vehicle select 2) < _start_smoke || time > _timeout)};
-	private _smoke1 = (_shell_smoke select _one) createVehicle _pos;
-	_smoke1 attachTo [_vehicle,[0,0,0.6]];
-	private _smoke2 = (_shell_smoke select _two) createVehicle _pos;
-	_smoke2 attachTo [_vehicle,[0,0,0.6]];
+waitUntil {sleep 0.1;((getPos _vehicle select 2) < _start_smoke || time > _timeout)};
+private _smoke1 = (_shell_smoke select _one) createVehicle _pos;
+_smoke1 attachTo [_vehicle,[0,0,0.6]];
+private _smoke2 = (_shell_smoke select _two) createVehicle _pos;
+_smoke2 attachTo [_vehicle,[0,0,0.6]];
 
-	waitUntil {sleep 0.1;((getPosATL _vehicle select 2) < 7 || time > _timeout)};
-	detach _smoke1;
-	detach _smoke2;
-};
+waitUntil {sleep 0.1;((getPos _vehicle select 2) < 7 || time > _timeout)};
+detach _smoke1;
+detach _smoke2;
 detach _vehicle;
 sleep 4;
 deleteVehicle _parachute;
 
 { [_vehicle, _x] call attach_object_direct } forEach _lst_grl;
 
+sleep 1;
 if ((vectorUp _vehicle) select 2 < 0.70) then {
-	_vehicle setpos [(getPosATL _vehicle) select 0,(getPosATL _vehicle) select 1, 0.5];
+	_vehicle setpos [(getPos _vehicle) select 0,(getPos _vehicle) select 1, 0.5];
 	_vehicle setVectorUp surfaceNormal position _vehicle;
 };
 sleep 3;
 _vehicle allowDamage true;
 
-if (underwater _vehicle) then { [_vehicle] spawn clean_vehicle };
+sleep 20;
+if (underwater _vehicle) then {
+	// Delete R3F Cargo
+	{ deleteVehicle _x } forEach (_vehicle getVariable ["R3F_LOG_objets_charges", []]);
+
+	// Delete GRLIB Cargo
+	{ deleteVehicle _x } foreach (_vehicle getVariable ["GRLIB_ammo_truck_load", []]);
+
+	//Delete A3 Cargo
+	[_vehicle] call F_clearCargo;
+
+	// Delete Vehicle
+	deleteVehicle _vehicle;
+};
