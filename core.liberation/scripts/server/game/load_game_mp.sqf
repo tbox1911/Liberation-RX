@@ -47,7 +47,7 @@ GRLIB_permissions = [];
 GRLIB_player_context = [];
 resources_intel = 0;
 GRLIB_player_scores = [];
-GRLIB_garage = [];
+GRLIB_game_ID = 0;
 GRLIB_warehouse = [
 	[waterbarrel_typename, 2],
 	[fuelbarrel_typename, 2],
@@ -93,7 +93,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 	buildings_to_load = _lrx_liberation_savegame select 2;
 	time_of_day = _lrx_liberation_savegame select 3;
 	combat_readiness = _lrx_liberation_savegame select 4;
-	GRLIB_garage = _lrx_liberation_savegame select 5;
+	GRLIB_game_ID = _lrx_liberation_savegame select 5;
 	_side_west = _lrx_liberation_savegame select 6;
 	_side_east = _lrx_liberation_savegame select 7;
 	_warehouse = _lrx_liberation_savegame select 8;
@@ -377,7 +377,8 @@ if ( count GRLIB_vehicle_to_military_base_links == 0 ) then {
 	if (count (_x nearObjects [FOB_outpost, 20]) > 0) then { GRLIB_all_outposts pushBack _x };
 } forEach GRLIB_all_fobs;
 
-publicVariable "GRLIB_garage";
+if (typeName GRLIB_game_ID == "ARRAY") then { GRLIB_game_ID = round random floor 65535 };
+publicVariable "GRLIB_game_ID";
 publicVariable "GRLIB_warehouse";
 publicVariable "blufor_sectors";
 publicVariable "GRLIB_all_fobs";

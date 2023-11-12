@@ -28,7 +28,7 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
             [],
             time_of_day,
             0,
-            [],
+            GRLIB_game_ID,
             GRLIB_mod_west,
             GRLIB_mod_east,
             [2,2,1,0],
@@ -43,6 +43,7 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
         profileNamespace setVariable [GRLIB_save_key, _savegame];
     } else {
         profileNamespace setVariable [GRLIB_save_key, nil];
+        GRLIB_game_ID = round random floor 65535;
     };
     saveProfileNamespace;
 } else {
@@ -184,7 +185,7 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
         buildings_to_save,
         time_of_day,
         round combat_readiness,
-        GRLIB_garage,
+        GRLIB_game_ID,
         GRLIB_mod_west,
         GRLIB_mod_east,
         _warehouse,

@@ -6517,7 +6517,11 @@
 			<Czech>-- VYLOŽIT --</Czech>
 		</Key>
 
-		<!-- virtual_garage.sqf -->
+		<!-- virtual_garage.sqf -->		
+		<Key ID="STR_PARAM_GARAGE_SIZE">
+			<Original>Virtual Garage vehicle limit.</Original>
+			<French>Limite de véhicules du garage virtuel.</French>
+		</Key>
 		<Key ID="STR_FULL_GARAGE">
 			<Original>Garage is Full !!\nMax %1 vehicles.</Original>
 			<Russian>Гараж полон !!\nМаксимум %1 транспортных средств.</Russian>
@@ -6528,16 +6532,6 @@
 			<Portuguese>A garagem está cheia !!\nMax %1 veículos.</Portuguese>
 			<Czech>Garáž je plná!!\nMaximálně %1 vozidel.</Czech>
 		</Key>
-		<Key ID="STR_CANT_PARK">
-			<Original>Loaded Vehicles cannot be Parked !</Original>
-			<Russian>Загруженные автомобили нельзя парковать!</Russian>
-			<French>Les Véhicules Chargés ne peuvent pas rentrer dans le Garage Virt. !</French>
-			<Japanese>その乗り物はガレージに入れられません！</Japanese>
-			<Chinesesimp>不能停放已装载的车辆！</Chinesesimp>
-			<Chinese>不能停放已裝載的車輛！</Chinese>
-			<Portuguese>Veículos carregados não podem ser estacionados!</Portuguese>
-			<Czech>Naložená vozidla nelze zaparkovat!</Czech>
-		</Key>
 		<Key ID="STR_CANT_PARKUAV">
 			<Original>Vehicles with crew cannot be Parked !</Original>
 			<Russian>Машины с экипажем парковать нельзя!</Russian>
@@ -6547,16 +6541,6 @@
 			<Chinese>不能停放有乘員的載具！</Chinese>
 			<Portuguese>Veículos com tripulação não podem ser estacionados!</Portuguese>
 			<Czech>Vozidla s posádkou nelze zaparkovat!</Czech>
-		</Key>
-		<Key ID="STR_ONLY_WEAPONS">
-			<Original>&lt;t align='center'&gt;Only Weapons and Cargo is Saved !!&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
-			<Russian>&lt;t align='center'&gt;Сохраняется только оружие и груз !!&lt;br/&gt;Вы уверены ?&lt;/t&gt;</Russian>
-			<French>&lt;t align='center'&gt;Uniquement Armes et Cargo sont sauvegardés !!&lt;br/&gt;Es tu sûr ?&lt;/t&gt;</French>
-			<Japanese>&lt;t align='center'&gt;武器と荷物だけが保存されます！！&lt;br/&gt;よろしいですか？&lt;/t&gt;</Japanese>
-			<Chinesesimp>&lt;t align='center'&gt;只保存武器和库存！&lt;br/&gt;你确定吗？&lt;/t&gt;</Chinesesimp>
-			<Chinese>&lt;t align='center'&gt;只保存武器和庫存！ &lt;br/&gt;你確定嗎？ &lt;/t&gt;</Chinese>
-			<Portuguese>&lt;t align='center'&gt;Apenas armas e carga são salvas !!&lt;br/&gt;Tem certeza ?&lt;/t&gt;</Portuguese>
-			<Czech>&lt;t align='center'&gt;Zachráněny jsou pouze zbraně a náklad!!&lt;br/&gt;Jsi si jistý ?&lt;/t&gt;</Czech>
 		</Key>
 		<Key ID="STR_WARNING">
 			<Original>Warning !</Original>
