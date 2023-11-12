@@ -21,6 +21,6 @@ if ( _tent_cost > (infantry_cap - resources_infantry)) then {
 	if (build_confirmed == 3) then {
 		player addBackpack mobile_respawn_bag;
 		(backpackContainer player) setVariable ["GRLIB_mobile_respawn_bag", true, true];
-		(backpackContainer player) setMaxLoad 0;
+		[(backpackContainer player), 0] remoteExec ["setMaxLoad", 2];
 	};
 };

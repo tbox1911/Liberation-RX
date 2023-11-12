@@ -19,12 +19,12 @@ sleep 2;
 if (backpack player == "") then {
 	player addBackpack mobile_respawn_bag;
 	(backpackContainer player) setVariable ["GRLIB_mobile_respawn_bag", true, true];
-	(backpackContainer player) setMaxLoad 0;
+	[(backpackContainer player), 0] remoteExec ["setMaxLoad", 2];
 } else {
 	sleep 1;
 	private _backpack = createVehicle [mobile_respawn_bag, (player getRelPos[3, 0]), [], 0, "NONE"];
 	_backpack setVariable ["GRLIB_mobile_respawn_bag", true, true];
-	_backpack setMaxLoad 0;
+	[_backpack, 0] remoteExec ["setMaxLoad", 2];
 };
 disableUserInput false;
 disableUserInput true;
