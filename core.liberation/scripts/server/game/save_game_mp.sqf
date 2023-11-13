@@ -97,7 +97,7 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
                 if (_owner in _keep_score_id) then {
                     if (_nextclass in GRLIB_vehicles_light) then {
                         if ( _nextclass == playerbox_typename ) then {
-                            buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner, [_x] call F_getCargo ];
+                            buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner, [_x, true] call F_getCargo ];
                         } else {
                             buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner ];
                         };
