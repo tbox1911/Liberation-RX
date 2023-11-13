@@ -136,6 +136,7 @@ GRLIB_revive = ["Revive",3] call _lrx_getParamValue;
 GRLIB_tk_mode = ["TK_mode",1] call _lrx_getParamValue;
 GRLIB_tk_count = ["TK_count",4] call _lrx_getParamValue;
 GRLIB_squad_size = ["SquadSize",2] call _lrx_getParamValue;
+GRLIB_garage_size = ["MaxGarageSize",5] call _lrx_getParamValue;
 GRLIB_max_squad_size = ["MaxSquadSize",7] call _lrx_getParamValue;
 GRLIB_max_spawn_point = ["MaxSpawnPoint",3] call _lrx_getParamValue;
 GRLIB_allow_redeploy = ["Redeploy",1] call _lrx_getParamValue;

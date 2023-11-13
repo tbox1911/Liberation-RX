@@ -61,7 +61,8 @@ LRX_Mission_Params = [
 	["HuronType", 0],				// The type of Huron - [default 0] - values = [0,1,2] - Text {"CH-67 Huron", "CH-49 Mohawk", "UH-80 Ghost Hawk"}
 	["NavalFobType", 0],			// The type of Naval FOB - [default 0] - values = [0,1,2] - Text {"USS Liberty", "USS Freedom", "Offshare plateform"}
 	["SquadSize", 2],				// AI per squad at startup [default 2]  - values = {0,1,2,3,4,5,6}
-	["MaxSquadSize", 7],			// AI recruitment limit per squad [default 7] - values = {0,1,2,3,4,5,6,7}
+	["MaxSquadSize", 7],			// AI recruitment limit per squad [default 7] - values = {0,1,2,3,4,5,6,7,8,9,10}
+	["MaxGarageSize", 5],			// Virtual Garage vehicle limit [default 5] - values = {0,1,2,3,4,5,6,7,8,9,10}
 	["MaxSpawnPoint", 3],			// Spawn Point limit per player. [default 3] - values = {1,2,3,4}
 	["Redeploy", 1],				// Allow Redeploy to all mobile Respawn - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["Permissions", 1],				// Permissions management - [default 1] - values = [1,0] - Text {Enabled,Disabled}
@@ -193,6 +194,9 @@ LRX_Mission_Params_Def = [
 	["MaxSquadSize", localize "STR_PARAM_SQUAD_SIZE",
 		["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
 	],
+	["MaxGarageSize", localize "STR_PARAM_GARAGE_SIZE",
+		["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+	],	
 	["MaxSpawnPoint", localize "STR_PARAM_SPAWN_MAX",
 		["1", "2", "3", "4", "5", "6"],
 		[1, 2, 3, 4, 5, 6]

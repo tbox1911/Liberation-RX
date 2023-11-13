@@ -10,18 +10,26 @@ params [["_vehicles",[]], ["_wait", 5]];
         if (isNil "_vehicle") exitWith {};
         sleep _wait;
 
-        if (typeOf _vehicle isKindOf "AllVehicles") then {
-            private _not_towed = (isNull (_vehicle getVariable ["R3F_LOG_est_transporte_par", objNull]));
-            private _server_owned = (_vehicle getVariable ["GRLIB_vehicle_owner", ""] in ["", "server"]);
-            private _no_blu_inside = ({(alive _x && side group _x == GRLIB_side_friendly)} count (crew _vehicle) == 0);
+        // if (typeOf _vehicle isKindOf "AllVehicles") then {
+        //     private _not_towed = (isNull (_vehicle getVariable ["R3F_LOG_est_transporte_par", objNull]));
+        //     private _server_owned = (_vehicle getVariable ["GRLIB_vehicle_owner", ""] in ["", "server"]);
+        //     private _no_blu_inside = ({(alive _x && side group _x == GRLIB_side_friendly)} count (crew _vehicle) == 0);
 
-            if ( _no_blu_inside && _server_owned && _not_towed) then {
-                { deleteVehicle _x } forEach (crew _vehicle);
-                deleteVehicle _vehicle;
-            };
+        //     if ( _no_blu_inside && _server_owned && _not_towed) then {
+        //         { deleteVehicle _x } forEach (crew _vehicle);
+        //         deleteVehicle _vehicle;
+        //     };
+        // } else {
+        //     deleteVehicle _vehicle;
+        // };
+        if (_vehicle isKindOf "AllVehicles") then {
+             if (_vehicle getVariable ["GRLIB_vehicle_owner", ""] == "server") then {
+                _vehicle setVariable ["GRLIB_vehicle_owner", ""];
+             };
+            [_vehicle] spawn clean_vehicle;            
         } else {
             deleteVehicle _vehicle;
-        };
+        };        
     };   
 
     sleep 0.3;

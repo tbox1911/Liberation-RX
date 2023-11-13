@@ -9,7 +9,7 @@ if (isNil "_forced_pos") then {
 	_text = format ["Player %1 call Air Drop Support.", name _unit];
 	_vehicle = createVehicle [_class, _pos, [], 0, "NONE"];
 	_vehicle addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
-	[_vehicle, "lock", (getPlayerUID _unit)] call F_vehicleLock;
+	//[_vehicle, "lock", (getPlayerUID _unit)] call F_vehicleLock;
 	_pos = getPosATL _unit;
 } else {
 	_text = format ["Player %1 Air Drop Vehicle.", name _unit];
@@ -17,18 +17,17 @@ if (isNil "_forced_pos") then {
 	_pos = _forced_pos;
 };
 
-_pos set [2, 500];
+_pos set [2, 500];	// launch altitude
+if (surfaceIsWater _pos) then { _pos = ATLtoASL _pos };
 
+_vehicle allowDamage false;
 while { _vehicle distance _pos > 50 } do {
-	if (surfaceIsWater _pos) then {
-		_vehicle setPosASL _pos;
-	} else {
-		_vehicle setPosATL _pos;
-	};
+	_vehicle setPos _pos;
 	sleep 0.2;
 };
+_vehicle allowDamage true;
 
 [gamelogic, _text] remoteExec ["globalChat", 0];
 [_vehicle] spawn F_addParachute;
 
-diag_log format [ "Done Airdrop vehicle %1 at %2", (typeOf _vehicle), time ];
+diag_log format [ "Done Airdrop vehicle %1 on %2 at %3", (typeOf _vehicle), _pos, time ];

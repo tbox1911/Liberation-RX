@@ -534,7 +534,7 @@ while { true } do {
 
 			// Personal Box
 			if ( _classname == playerbox_typename ) then {
-				_vehicle setMaxLoad playerbox_cargospace;
+				[_vehicle, playerbox_cargospace] remoteExec ["setMaxLoad", 2];
 				_allow_damage = false;
 			};
 
