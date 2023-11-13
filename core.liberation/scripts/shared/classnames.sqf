@@ -190,7 +190,10 @@ support_vehicles = support_vehicles + [
 ] + support_vehicles_west;
 
 // *** BUILDINGS ***
-buildings = [[FOB_sign,0,0,0,GRLIB_perm_hidden]];
+buildings = [
+	[FOB_sign,0,0,0,GRLIB_perm_hidden],
+	[Warehouse_typename,0,0,0,GRLIB_perm_inf]	
+];
 if (isNil "buildings_west_overide") then {
 	buildings append buildings_default + buildings_west;
 } else {
@@ -198,7 +201,6 @@ if (isNil "buildings_west_overide") then {
 };
 
 buildings append [
-	[Warehouse_typename,0,0,0,GRLIB_perm_inf],
 	[land_cutter_typename,0,0,0,GRLIB_perm_inf]
 ];
 

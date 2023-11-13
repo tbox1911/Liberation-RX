@@ -3,8 +3,8 @@ params ["_vehicle", ["_delete", true]];
 if (isNull _vehicle) exitWith {};
 private _towed = !(isNull (_vehicle getVariable ["R3F_LOG_est_transporte_par", objNull]));
 private _owned = !([_vehicle] call is_abandoned);
-private _blu_inside = ({(alive _x && side group _x == GRLIB_side_friendly)} count (crew _vehicle) > 0);
-if (_towed || _owned || _blu_inside) exitWith { false };
+//private _blu_inside = ({(alive _x && side group _x == GRLIB_side_friendly)} count (crew _vehicle) > 0);
+if (_towed || _owned) exitWith { false };
 
 diag_log format [ "Cleanup vehicle %1 at %2", typeOf _vehicle, time ];
 
