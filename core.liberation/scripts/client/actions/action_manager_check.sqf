@@ -74,7 +74,7 @@ GRLIB_checkArsenalPerso = {
 };
 
 GRLIB_checkGarage = {
-	(GRLIB_player_is_menuok && !(surfaceIsWater getPos player) &&GRLIB_player_fobdistance > 15 && GRLIB_player_fobdistance < GRLIB_fob_range && !GRLIB_player_near_outpost && GRLIB_player_score >= GRLIB_perm_inf)
+	(GRLIB_garage_size > 0 && GRLIB_player_is_menuok && !(surfaceIsWater getPos player) &&GRLIB_player_fobdistance > 15 && GRLIB_player_fobdistance < GRLIB_fob_range && !GRLIB_player_near_outpost && GRLIB_player_score >= GRLIB_perm_inf)
 };
 
 GRLIB_checkBuild = {

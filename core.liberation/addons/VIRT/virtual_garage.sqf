@@ -90,7 +90,7 @@ while { dialog && alive player } do {
 				private _msg = format [ "%1\nRearming Cooldown (%2 sec)\nPlease Wait...", _vehicle_name, round (_timer - time) ];
 
 				if (_timer >= time) exitWith { hintSilent _msg; sleep 2 };
-				if (count GRLIB_virtual_garage >= GRLIB_vgarage_size) exitWith { hintSilent (format [localize "STR_FULL_GARAGE", GRLIB_vgarage_size]); sleep 2 };
+				if (count GRLIB_virtual_garage >= GRLIB_garage_size) exitWith { hintSilent (format [localize "STR_FULL_GARAGE", GRLIB_garage_size]); sleep 2 };
 				if (damage _vehicle != 0) exitWith { hintSilent "Damaged Vehicles cannot be Parked !"; sleep 2 };
 				if (count (crew _vehicle) > 0 && !(typeOf _vehicle in uavs)) exitWith { hintSilent localize "STR_CANT_PARKUAV"; sleep 2 };
 
@@ -99,8 +99,7 @@ while { dialog && alive player } do {
 				private _color = _vehicle getVariable ["GRLIB_vehicle_color", ""];
 				private _compo = _vehicle getVariable ["GRLIB_vehicle_composant", []];
 				private _ammo = [_vehicle] call F_getVehicleAmmoDef;
-				private _lst_a3 = [_vehicle] call F_getCargo;
-				if (typeOf _vehicle == playerbox_typename) then { _lst_a3 = [_vehicle, true] call F_getCargo };
+				private _lst_a3 = [_vehicle, true] call F_getCargo;
 				private _lst_r3f = [];
 				{ _lst_r3f pushback (typeOf _x)} forEach (_vehicle getVariable ["R3F_LOG_objets_charges", []]);
 				private _lst_grl = [];
