@@ -72,6 +72,12 @@ class Params
 		texts[] = { $STR_NO,$STR_YES };
 		default = 0;
 	};
+	class LogSettings {
+		title = "Log Mission Settings at startup";
+		values[] = {0,1};
+		texts[] = { $STR_NO,$STR_YES };
+		default = 0;
+	};	
 	class Space99 {
 		title = "";
 		values[] = { "" };
