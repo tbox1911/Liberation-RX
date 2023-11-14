@@ -57,12 +57,21 @@ GRLIB_param_wipe_savegame_1 = ["WipeSave1",0] call bis_fnc_getParamValue;
 GRLIB_param_wipe_savegame_2 = ["WipeSave2",0] call bis_fnc_getParamValue;
 GRLIB_param_wipe_params = ["WipeSave3",0] call bis_fnc_getParamValue;
 GRLIB_force_load = ["ForceLoading",0] call bis_fnc_getParamValue;
+GRLIB_log_settings = ["LogSettings",0] call bis_fnc_getParamValue;
 
 private _lrx_getParamValue = {
 	params ["_param", "_def"];
 	{
 		if (_x select 0 == _param) exitWith { _def = _x select 1 };
 	} forEach GRLIB_LRX_params;
+	_def;
+};
+private _lrx_getParamData = {
+	params ["_param"];
+	private _def = [];
+	{
+		if (_x select 0 == _param) exitWith { _def = [_x select 1, _x select 2, _x select 3] };
+	} forEach LRX_Mission_Params_Def;
 	_def;
 };
 
@@ -82,6 +91,24 @@ if (isServer) then {
 		profileNamespace setVariable [GRLIB_params_save_key, GRLIB_LRX_params];
 	};
 	publicVariable "GRLIB_LRX_params";
+	if (GRLIB_log_settings > 0) then {
+		diag_log "--- LRX Mission Settings: ";
+		{
+			_param = (_x select 0);
+			_param_val = (_x select 1);
+			_data = [_param] call _lrx_getParamData;
+			_name = _data select 0;
+			_values = _data select 1;
+			_values_raw = _data select 2;
+			_param_val_text = "";
+			if (isNil "_values_raw") then {
+				_param_val_text = _values select _param_val;
+			} else {
+				_param_val_text = _values select (_values_raw find _param_val);
+			};
+			diag_log format ["   %1: %2", _name, _param_val_text ];
+		} forEach GRLIB_LRX_params;
+	};
 } else {
 	waitUntil { sleep 1; !isNil "GRLIB_LRX_params" };
 };
