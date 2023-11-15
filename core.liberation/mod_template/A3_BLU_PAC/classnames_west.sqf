@@ -119,7 +119,7 @@ air_vehicles = [
 
 blufor_air = [
 	"B_Heli_Attack_01_dynamicLoadout_F",
-	"B_Plane_CAS_01_F",
+	"B_Plane_CAS_01_dynamicLoadout_F",
 	"B_Heli_Light_01_dynamicLoadout_F",
 	"B_Heli_Attack_01_dynamicLoadout_F"
 ];

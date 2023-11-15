@@ -154,10 +154,10 @@ opfor_troup_transports_heli = [
 
 // used by battlegroup air attack
 opfor_air = [
-	"B_Heli_Light_01_armed_F",
+	"B_Heli_Light_01_dynamicLoadout_F",
 	"B_Heli_Attack_01_F",
 	"B_T_VTOL_01_infantry_F",
-	"B_Plane_CAS_01_F",
+	"B_Plane_CAS_01_dynamicLoadout_F",
 	"B_Plane_Fighter_01_F"
 ];
 
@@ -196,7 +196,7 @@ opfor_recyclable = [
 	["B_AFV_Wheeled_01_up_cannon_F",15,round (3500 / GRLIB_recycling_percentage),15],
 	["B_MBT_01_arty_F",15,round (3500 / GRLIB_recycling_percentage),20],
 	["B_Heli_Light_01_F",10,round (150 / GRLIB_recycling_percentage),18],
-	["B_Heli_Light_01_armed_F",10,round (250 / GRLIB_recycling_percentage),20],
+	["B_Heli_Light_01_dynamicLoadout_F",10,round (250 / GRLIB_recycling_percentage),20],
 	["B_Heli_Transport_01_F",10,round (300 / GRLIB_recycling_percentage),20],
 	["B_Heli_Transport_03_F",10,round (400 / GRLIB_recycling_percentage),20],
 	["B_CTRG_Heli_Transport_01_sand_F",10,round (350 / GRLIB_recycling_percentage),20],

@@ -109,7 +109,6 @@ opfor_battlegroup_vehicles = [
 	"B_T_MRAP_01_gmg_F",
 	"B_T_APC_Wheeled_01_cannon_F",
 	"B_T_APC_Tracked_01_rcws_F",
-	"B_T_Boat_Armed_01_minigun_F",
 	"B_Heli_Light_01_dynamicLoadout_F",
 	"B_Heli_Attack_01_dynamicLoadout_F",
 	"B_T_APC_Tracked_01_rcws_F",
@@ -126,7 +125,6 @@ opfor_battlegroup_vehicles_low_intensity = [
 	"B_T_MRAP_01_gmg_F",
 	"B_T_APC_Wheeled_01_cannon_F",
 	"B_T_APC_Tracked_01_rcws_F",
-	"B_T_Boat_Armed_01_minigun_F",
 	"B_Heli_Light_01_dynamicLoadout_F",
 	"B_T_APC_Tracked_01_rcws_F",
 	"B_T_AFV_Wheeled_01_cannon_F",
@@ -149,10 +147,12 @@ opfor_troup_transports_heli = [
 
 // used by battlegroup air attack
 opfor_air = [
-	"B_Heli_Transport_01_F",
 	"B_Heli_Light_01_dynamicLoadout_F",
+	"B_Heli_Attack_01_F",
+	"B_T_VTOL_01_infantry_F",
 	"B_Plane_CAS_01_dynamicLoadout_F",
-	"B_UAV_02_dynamicLoadout_F"];
+	"B_Plane_Fighter_01_F"
+];
 
 opfor_statics = [
 	"B_T_HMG_01_F",
