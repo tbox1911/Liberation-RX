@@ -149,7 +149,7 @@ opfor_troup_transports_heli = [
 opfor_air = [
 	"B_Heli_Light_01_dynamicLoadout_F",
 	"B_Heli_Attack_01_F",
-	"B_T_VTOL_01_infantry_F",
+	"B_Heli_Attack_01_F",	
 	"B_Plane_CAS_01_dynamicLoadout_F",
 	"B_Plane_Fighter_01_F"
 ];
