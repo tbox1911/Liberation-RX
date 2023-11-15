@@ -101,6 +101,7 @@ if (isServer) then {
 			_values = _data select 1;
 			_values_raw = _data select 2;
 			_param_val_text = "";
+			if (_param_val > count _values) then { _param_val = 0 };
 			if (isNil "_values_raw") then {
 				_param_val_text = _values select _param_val;
 			} else {
