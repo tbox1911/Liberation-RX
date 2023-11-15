@@ -753,4 +753,4 @@ publicVariable "AR_Advanced_Rappelling_Install";
 [] call AR_Advanced_Rappelling_Install;
 
 // Install Advanced Rappelling on all clients (plus JIP) //
-remoteExecCall ["AR_Advanced_Rappelling_Install", -2,true];
+remoteExecCall ["AR_Advanced_Rappelling_Install", -2, true];
