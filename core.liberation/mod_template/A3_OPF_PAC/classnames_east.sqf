@@ -134,6 +134,7 @@ opfor_troup_transports_truck = [
 ];
 
 opfor_troup_transports_heli = [
+	"O_Heli_Light_02_dynamicLoadout_F",	
 	"O_Heli_Attack_02_dynamicLoadout_F",
 	"O_Heli_Transport_04_covered_F",
 	"O_T_VTOL_02_infantry_F"
