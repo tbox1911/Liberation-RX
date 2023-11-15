@@ -32,7 +32,11 @@ while { true } do {
 		(count (crew _x) == 0 || typeOf _x in (uavs + static_vehicles_AI)) &&
 		(_x distance2D lhd > GRLIB_fob_range) &&
 		!([typeOf _x, _no_marker_classnames] call F_itemIsInClass) &&
-		(isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]))
+		(isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull])) &&
+		(
+			(side _x == GRLIB_side_friendly) ||
+			(side _x == GRLIB_side_civilian && count (crew _x) == 0)
+		)		
 	}] call BIS_fnc_conditionalSelect;
 
 	_vehmarkers_bak = [];
