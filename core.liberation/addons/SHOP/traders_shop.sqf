@@ -79,7 +79,10 @@ while { dialog && alive player } do {
 
 		private _sell_list_dlg = [];
 		{
-			_sell_list_dlg pushBack [(typeOf _x), round ((([typeOf _x] call _getPrice) * GRLIB_recycling_percentage) * _ratio)];			
+			_sell_list_dlg pushBack [
+				(typeOf _x),
+				round ((([typeOf _x] call _getPrice) * GRLIB_recycling_percentage) * _ratio * (1 - damage _x))
+			];			
 		} forEach _sell_list;
 
 		lbClear 110;
