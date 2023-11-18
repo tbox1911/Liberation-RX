@@ -55,9 +55,8 @@ private ["_unit", "_backpack"];
 			if (_onground && !(_type in ["divers", "para"]) ) then {
 				// try to fix pos on rock/object (thanks Larrow)
 				_spawnpos = getPosATL _unit;
-				_maxpos = +_spawnpos;
-				_maxpos set [2, 120];
-				while { (lineIntersects [ATLToASL _maxpos, ATLToASL _spawnpos, _unit]) } do {
+				private _maxpos = _spawnpos vectorAdd [0,0,150];
+				while { (lineIntersects [ATLToASL _maxpos, ATLToASL _spawnpos, _unit]) && (_spawnpos select 2) <= 150 } do {
 					_spawnpos set [2, ((_spawnpos select 2) + 0.25)];
 				};
 				_unit setPosATL _spawnpos;
