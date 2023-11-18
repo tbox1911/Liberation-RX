@@ -1,6 +1,6 @@
 //--- LRX Save player context (Stuff + Ais)
 if (!isServer) exitWith {};
-params ["_player", "_uid", ["_delete",false]];
+params ["_player", "_uid", ["_delete",false], ["_notify", false]];
 
 if (isNull _player) exitWith {};
 
@@ -35,9 +35,11 @@ if (_score >= GRLIB_min_score_player) then {
 if (_delete) then {
 	{ deleteVehicle _x } forEach _bros;
 } else {
-	private _msg = format [localize "STR_SAVE_PLAYER_MSG", count _ai_group];
-	if (_score < GRLIB_min_score_player) then {
-		_msg = format [localize "STR_NO_SAVE_PLAYER_MSG", _score, GRLIB_min_score_player];
+	if (_notify) then {
+		private _msg = format [localize "STR_SAVE_PLAYER_MSG", count _ai_group];
+		if (_score < GRLIB_min_score_player) then {
+			_msg = format [localize "STR_NO_SAVE_PLAYER_MSG", _score, GRLIB_min_score_player];
+		};
+		[_msg ] remoteExec ["hintSilent", owner _player];
 	};
-	[_msg ] remoteExec ["hintSilent", owner _player]
-}
+};
