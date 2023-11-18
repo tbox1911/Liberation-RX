@@ -59,7 +59,4 @@ if (_unit == player) then {
 };
 
 removeAllWeapons _unit;
-hidebody _unit;
-_unit setDamage 1;
-if (!isPlayer _unit) then { sleep 30 };
 deleteVehicle _unit;

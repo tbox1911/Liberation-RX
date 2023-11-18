@@ -954,7 +954,7 @@ class GREUH_respawn {
 		w = 0.1 * safezoneW;
 		h = 0.04 * safezoneH;
 		text = "Respawn";
-		action = "[player] spawn PAR_fn_death";
+		action = "player setDamage 1";
 		colorDisabled[] = { 1, 1, 1, 1 };
 	};
 	class GREUH_RecallMedic : GreuhButton {
