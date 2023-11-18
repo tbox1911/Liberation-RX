@@ -39,7 +39,7 @@ sleep 15;
 if (GRLIB_cleanup_vehicles == 0) exitWith {};
 
 // IGNORE VEHICLES
-private _no_cleanup_classnames = [] + GRLIB_vehicle_blacklist;
+private _no_cleanup_classnames = ["Steerable_Parachute_F"] + GRLIB_vehicle_blacklist;
 { _no_cleanup_classnames pushback (_x select 0) } foreach (support_vehicles + static_vehicles + opfor_recyclable);
 
 // HIDDEN-FROM-PLAYERS FUNCTION
