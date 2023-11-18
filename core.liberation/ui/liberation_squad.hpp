@@ -5,8 +5,9 @@ class liberation_squad {
 
 	controls[] = {"OuterBG", "RecycleBG","OuterBG_F", "InnerBG", "InnerBG_F", "OuterCenterPanel","Header","SquadList","DeployMap", "ButtonClose",
 	"NameLabel", "ClassLabel", "HealthLabel", "DistanceLabel", "PrimaryLabel", "PrimaryMagsLabel", "SecondaryLabel", "SecondaryMagsLabel", "LoadoutLabel",
-	"VehicleLabel","ResupplyButton", "LikeMeButton", "ReplaceButton", "RenameButton", "RemoveButton", "ConfirmButton", "CancelButton", "PiPZone",
-	 "GREUH_Squad_OuterBG","GREUH_Squad_InnerBG","GREUH_Squad_OuterBG_F","GREUH_Squad_InnerBG_F","GREUH_ButtonName_Rename","GREUH_ButtonName_Abort","GREUH_Squad_TextField"};
+	"GREUH_Squad_OuterBG","GREUH_Squad_InnerBG","GREUH_Squad_OuterBG_F","GREUH_Squad_InnerBG_F","GREUH_ButtonName_Rename","GREUH_ButtonName_Abort","GREUH_Squad_TextField",
+	"VehicleLabel","ResupplyButton", "LikeMeButton", "ReplaceButton", "RenameButton", "RemoveButton", "ConfirmButton", "CancelButton", "PiPZone"
+	};
 
 	objects[] = {};
 
