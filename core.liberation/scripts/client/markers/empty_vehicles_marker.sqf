@@ -14,8 +14,6 @@ private _no_marker_classnames = [
 	GRLIB_sar_fire,
 	Warehouse_desk_typename,
 	"Land_Campfire_F",
-	"GroundWeaponHolder",
-	"WeaponHolderSimulated",
 	"Kart_01_Base_F",
 	"Land_CashDesk_F",
 	"Land_HumanSkull_F",
@@ -109,6 +107,5 @@ while { true } do {
 	
 	{ deleteMarkerLocal _x} foreach (_vehmarkers - _vehmarkers_bak);
 	_vehmarkers = _vehmarkers_bak;
-
-	sleep 5;
+	sleep 6;
 };
