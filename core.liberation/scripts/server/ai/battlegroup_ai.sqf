@@ -3,7 +3,7 @@ if (isNil "_grp" || isNil "_objective_pos") exitWith {};
 if (isNull _grp) exitWith {};
 
 private ["_in_water", "_waypoint", "_wp0", "_nearset_fob_name"];
-diag_log format ["Battlegroup %1 - Objective %2", _grp, _objective_pos];
+diag_log format ["Group %1 - Objective: %2", _grp, _objective_pos];
 
 private _vehicle = objectParent (leader _grp);
 if (_vehicle isKindOf "Ship") exitWith {
