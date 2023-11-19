@@ -91,7 +91,7 @@ _successExec =
 	// Mission completed
 	_successHintMessage = "STR_HOSTILE_OFFICER_MESSAGE2";
 	{ deleteVehicle _x } forEach (units _grp_civ);
-	if (combat_readiness > 20) then { combat_readiness = combat_readiness - 15 };
+	if (combat_readiness > 20) then { combat_readiness = combat_readiness - 7 };
 };
 
 _this call sideMissionProcessor;
