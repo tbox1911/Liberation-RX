@@ -544,7 +544,7 @@ while { true } do {
 			};
 
 			if ( count _lst_r3f > 0 && !GRLIB_ACE_enabled ) then {
-				[_vehicle, _lst_r3f] call R3F_LOG_FNCT_transporteur_charger_auto;
+				[_vehicle, _lst_r3f] call load_object_direct;
 			};
 
 			if ( count _lst_grl > 0 ) then {
