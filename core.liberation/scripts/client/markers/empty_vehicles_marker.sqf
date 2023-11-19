@@ -13,12 +13,13 @@ private _no_marker_classnames = [
 	GRLIB_sar_wreck,
 	GRLIB_sar_fire,
 	Warehouse_desk_typename,
-	"WeaponHolderSimulated",	
+	"Module_F",
 	"Land_Campfire_F",
 	"Kart_01_Base_F",
 	"Land_CashDesk_F",
 	"Land_HumanSkull_F",
-	"Land_HumanSkeleton_F"
+	"Land_HumanSkeleton_F",
+	"WeaponHolderSimulated"	
 ] + GRLIB_force_cleanup_classnames + GRLIB_ide_traps + GRLIB_intel_items + all_buildings_classnames;
 
 if (GRLIB_allow_redeploy == 1) then {
