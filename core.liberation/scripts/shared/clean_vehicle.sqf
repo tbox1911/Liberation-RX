@@ -1,6 +1,8 @@
 params ["_vehicle", ["_delete", true]];
 
 if (isNull _vehicle) exitWith {};
+if (_vehicle isKindOf "Steerable_Parachute_F") exitWith {};
+
 private _towed = !(isNull (_vehicle getVariable ["R3F_LOG_est_transporte_par", objNull]));
 private _owned = !([_vehicle] call is_abandoned);
 //private _blu_inside = ({(alive _x && side group _x == GRLIB_side_friendly)} count (crew _vehicle) > 0);
