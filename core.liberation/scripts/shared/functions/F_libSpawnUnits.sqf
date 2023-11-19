@@ -15,7 +15,7 @@ diag_log format [ "Spawn (%1) %2 Units (%3) at %4", _nb_unit, _type, _side, time
 private _grp = createGroup [_side, true];
 if (isNull _grp) exitWith { diag_log "--- LRX Error: cannot create group."; grpNull};
 
-private ["_unit", "_backpack"];
+private ["_unit", "_backpack", "_maxpos"];
 {
 	if ( (count units _grp) < _nb_unit) then {
 
@@ -32,7 +32,7 @@ private ["_unit", "_backpack"];
 			_unit allowDamage false;
 			_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 			[_unit] joinSilent _grp;
-			if (_type in ["militia", "guard"]) then {[ _unit ] call loadout_militia};
+			if (_type in ["militia", "guard"]) then {[_unit] call loadout_militia};
 			[_unit] call reammo_ai;
 			_unit switchMove "AmovPercMwlkSrasWrflDf";
 			_unit playMoveNow "AmovPercMwlkSrasWrflDf";
@@ -55,8 +55,8 @@ private ["_unit", "_backpack"];
 			if (_onground && !(_type in ["divers", "para"]) ) then {
 				// try to fix pos on rock/object (thanks Larrow)
 				_spawnpos = getPosATL _unit;
-				private _maxpos = _spawnpos vectorAdd [0,0,150];
-				while { (lineIntersects [ATLToASL _maxpos, ATLToASL _spawnpos, _unit]) && (_spawnpos select 2) <= 150 } do {
+				_maxpos = _spawnpos vectorAdd [0,0,150];
+				while { (lineIntersects [ATLToASL _maxpos, ATLToASL _spawnpos]) && (_spawnpos select 2) <= 150 } do {
 					_spawnpos set [2, ((_spawnpos select 2) + 0.25)];
 				};
 				_unit setPosATL _spawnpos;
