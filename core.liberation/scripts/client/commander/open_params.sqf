@@ -25,15 +25,6 @@ waitUntil { dialog };
 private _display = findDisplay 5119;
 private _noesckey = _display displayAddEventHandler ["KeyDown", "if ((_this select 1) == 1) then { true }"];
 
-private _lrx_getParamData = {
-	params ["_param"];
-	private _def = [];
-	{
-		if (_x select 0 == _param) exitWith { _def = [_x select 1, _x select 2, _x select 3] };
-	} forEach LRX_Mission_Params_Def;
-	_def;
-};
-
 _control = _display ctrlCreate [ "RscText", (100 + 0), _display displayCtrl 9969 ];
 _control ctrlSetPosition [ 0,  (0 * 0.025) * safezoneH, 0.3 * safeZoneW, 0.025  * safezoneH];
 _control ctrlSetText format ["Parameters Profile name: %1", GRLIB_params_save_key];
@@ -48,7 +39,7 @@ param_value = -1;
 save_changes = 0;
 
 {
-	_data = [_x select 0] call _lrx_getParamData;
+	_data = [_x select 0] call lrx_getParamData;
 	if (count _data > 0) then {
 		_name = _data select 0;
 		_values =  _data select 1;

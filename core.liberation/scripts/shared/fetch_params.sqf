@@ -66,14 +66,6 @@ private _lrx_getParamValue = {
 	} forEach GRLIB_LRX_params;
 	_def;
 };
-private _lrx_getParamData = {
-	params ["_param"];
-	private _def = [];
-	{
-		if (_x select 0 == _param) exitWith { _def = [_x select 1, _x select 2, _x select 3] };
-	} forEach LRX_Mission_Params_Def;
-	_def;
-};
 
 if (GRLIB_param_wipe_params == 1 && isServer) then {
 	profileNamespace setVariable [GRLIB_params_save_key, LRX_Mission_Params];
@@ -94,21 +86,22 @@ if (isServer) then {
 	if (GRLIB_log_settings > 0) then {
 		diag_log "--- LRX Mission Settings: ";
 		{
-			_param = (_x select 0);
-			_param_val = (_x select 1);
-			_data = [_param] call _lrx_getParamData;
-			_name = _data select 0;
-			_values = _data select 1;
-			_values_raw = _data select 2;
-			_param_val_text = "";
-			if (_param_val > count _values) then { _param_val = 0 };
-			if (isNil "_values_raw") then {
-				_param_val_text = _values select _param_val;
-			} else {
-				_param_val_text = _values select (_values_raw find _param_val);
+			_name = _x select 0;
+			_data = [_name] call lrx_getParamData;
+			_value_text = "Error!";
+
+			if (count _data > 0) then {
+				_name = _data select 0;
+				_values_raw = _data select 2;
+				if (isNil "_values_raw") then { _values_raw = [] };
+				if (count (_values_raw) > 0) then {
+					_value_text = (_data select 1) select (_values_raw find (_x select 1));
+				} else {
+					_value_text = (_data select 1) select (_x select 1);
+				};
 			};
-			diag_log format ["   %1: %2", _name, _param_val_text ];
-		} forEach GRLIB_LRX_params;
+			diag_log format ["   %1: %2", _name, _value_text ];
+		} foreach GRLIB_LRX_params;		
 	};
 } else {
 	waitUntil { sleep 1; !isNil "GRLIB_LRX_params" };

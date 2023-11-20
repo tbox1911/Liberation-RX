@@ -13,15 +13,6 @@ private _getkeyName = {
 	_ret;
 };
 
-private _getParamData = {
-	params ["_param"];
-	private _def = [];
-	{
-		if (_x select 0 == _param) exitWith { _def = [_x select 1, _x select 2, _x select 3] };
-	} forEach LRX_Mission_Params_Def;
-	_def;
-};
-
 player createDiarySubject ["LRX Info", "LRX Info"];
 player createDiarySubject ["LRX Info", "Thanks"];
 private _all_friends = "";
@@ -69,7 +60,7 @@ player createDiarySubject ["LRX Info", "Settings"];
 private _diary = [];
 {
 	_name = _x select 0;
-	_data = [_name] call _getParamData;
+	_data = [_name] call lrx_getParamData;
 	_value_text = "Error!";
 
 	if (count _data > 0) then {
