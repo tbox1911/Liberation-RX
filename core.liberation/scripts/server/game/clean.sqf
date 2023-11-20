@@ -137,7 +137,6 @@ while {deleteManagerPublic} do {
 		deleteVehicle _x;
 		_stats = _stats + 1;
 	} forEach _list;
-	sleep 1;
 
 	// LRX TTL UNITS
 	private _units_ttl = [] call _getTTLunits;
@@ -154,7 +153,6 @@ while {deleteManagerPublic} do {
 			};
 		} count _units_ttl;
 	};
-	sleep 1;
 
 	// DEAD MEN
 	if (!(_deadMenLimit == -1)) then {
@@ -177,7 +175,6 @@ while {deleteManagerPublic} do {
 			};
 		};
 	};
-	sleep 1;
 
 	// VEHICLES
 	if (!(_vehiclesLimit == -1)) then {
@@ -207,7 +204,6 @@ while {deleteManagerPublic} do {
 			};
 		};
 	};
-	sleep 1;
 
 	// WRECKS
 	if (!(_deadVehiclesLimit == -1)) then {
@@ -228,7 +224,6 @@ while {deleteManagerPublic} do {
 			};
 		};
 	};
-	sleep 1;
 
 	// CRATERS
 	if (!(_craterLimit == -1)) then {
@@ -256,7 +251,6 @@ while {deleteManagerPublic} do {
 			};
 		};
 	};
-	sleep 1;
 
 	// WEAPON HOLDERS
 	if (!(_weaponHolderLimit == -1)) then {
@@ -284,7 +278,6 @@ while {deleteManagerPublic} do {
 			};
 		};
 	};
-	sleep 1;
 
 	// Object WeaponHolderSimulated can't have zero or negative mass!
 	//{ if (round (getMass _x) <= 0) then { _x setMass 1 } } forEach (entities "WeaponHolderSimulated");
@@ -308,7 +301,6 @@ while {deleteManagerPublic} do {
 			};
 		};
 	};
-	sleep 1;
 
 	// STATIC WEAPONS
 	if (!(_staticsLimit == -1)) then {
@@ -335,7 +327,6 @@ while {deleteManagerPublic} do {
 			};
 		};
 	};
-	sleep 1;
 
 	// RUINS
 	if (!(_ruinsLimit == -1)) then {
@@ -362,7 +353,6 @@ while {deleteManagerPublic} do {
 			};
 		};
 	};
-	sleep 1;
 
 	// EMPTY GROUPS
 	if (_emptyGroups) then {
@@ -372,7 +362,7 @@ while {deleteManagerPublic} do {
 			};
 		} count allGroups;
 	};
-    sleep 1;
+
 
 	diag_log format ["--- LRX Garbage Collector --- End at: %1 - Delete: %2 objects - %3 fps", round(time), _stats, diag_fps];
 };
