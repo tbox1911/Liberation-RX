@@ -22,7 +22,7 @@ sleep 1;
 _vehicle flyInHeight 150;
 
 [_pilot_group] call F_deleteWaypoints;
-private _waypoint = _pilot_group addWaypoint [ _targetpos, 50];
+private _waypoint = _pilot_group addWaypoint [_targetpos, 50];
 _waypoint setWaypointType "MOVE";
 _waypoint setWaypointSpeed "FULL";
 _waypoint setWaypointBehaviour "AWARE";
