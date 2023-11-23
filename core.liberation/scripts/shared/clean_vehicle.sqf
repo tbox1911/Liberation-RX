@@ -1,4 +1,4 @@
-params ["_vehicle", ["_delete", true], ["_force", false]];
+params ["_vehicle", ["_delete", true], ["_force", false], ["_anim", false]];
 
 if (isNull _vehicle) exitWith {};
 if (_vehicle isKindOf "Steerable_Parachute_F") exitWith {};
@@ -17,13 +17,16 @@ diag_log format [ "Cleanup vehicle %1 at %2", typeOf _vehicle, time ];
 // unTow
 [_vehicle] call untow_vehicle;
 
+//Delete A3 Cargo
+[_vehicle] call F_clearCargo;
+
 // Delete R3F Cargo
 { deleteVehicle _x } forEach (_vehicle getVariable ["R3F_LOG_objets_charges", []]);
 _vehicle setVariable ["R3F_LOG_objets_charges", [], true];
 
 // Delete GRLIB Cargo
 {
-	if (typeOf _x in [ammobox_b_typename, ammobox_o_typename, ammobox_i_typename, fuelbarrel_typename]) then {
+	if (_anim && typeOf _x in [ammobox_b_typename, ammobox_o_typename, ammobox_i_typename, fuelbarrel_typename]) then {
 		detach _x;
 		sleep 0.2;
 		_x setVelocity [([] call F_getRND), ([] call F_getRND), 10];
@@ -33,15 +36,12 @@ _vehicle setVariable ["R3F_LOG_objets_charges", [], true];
 		deleteVehicle _x;
 	};
 } foreach (_vehicle getVariable ["GRLIB_ammo_truck_load", []]);
+_vehicle setVariable ["GRLIB_ammo_truck_load", [], true];
 
-//Delete A3 Cargo
-[_vehicle] call F_clearCargo;
-
-// Delete Crew
-{ deleteVehicle _x } forEach (crew _vehicle);
-_vehicle removeAllEventHandlers "HandleDamage";
-
-// Delete Vehicle
-if (_delete) then { deleteVehicle _vehicle };
+// Delete Vehicle and Crew
+if (_delete) then {
+	{ deleteVehicle _x } forEach (crew _vehicle);
+	deleteVehicle _vehicle;
+};
 
 true;

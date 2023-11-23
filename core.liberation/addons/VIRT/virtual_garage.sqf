@@ -104,17 +104,12 @@ while { dialog && alive player } do {
 				{ _lst_r3f pushback (typeOf _x)} forEach (_vehicle getVariable ["R3F_LOG_objets_charges", []]);
 				private _lst_grl = [];
 				{_lst_grl pushback (typeOf _x)} forEach (_vehicle getVariable ["GRLIB_ammo_truck_load", []]);
-
 				GRLIB_virtual_garage append [[typeOf _vehicle,_color,_ammo,_compo,_lst_a3,_lst_r3f,_lst_grl]];
-
-				{ deleteVehicle _x } forEach (_vehicle getVariable ["R3F_LOG_objets_charges", []]);
-				{ deleteVehicle _x } foreach (_vehicle getVariable ["GRLIB_ammo_truck_load", []]);
-				deleteVehicle _vehicle;
+				[_vehicle, true, true] call clean_vehicle;
 
 				hintSilent (format [localize "STR_LOADED", _vehicle_name]);
 				profileNamespace setVariable [format ["GRLIB_virtual_garage_%1", GRLIB_game_ID], GRLIB_virtual_garage];
 				saveProfileNamespace;
-
 			};
 
 			// Unload

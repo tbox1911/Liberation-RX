@@ -58,15 +58,5 @@ _vehicle allowDamage true;
 
 sleep 20;
 if (underwater _vehicle) then {
-	// Delete R3F Cargo
-	{ deleteVehicle _x } forEach (_vehicle getVariable ["R3F_LOG_objets_charges", []]);
-
-	// Delete GRLIB Cargo
-	{ deleteVehicle _x } foreach (_vehicle getVariable ["GRLIB_ammo_truck_load", []]);
-
-	//Delete A3 Cargo
-	[_vehicle] call F_clearCargo;
-
-	// Delete Vehicle
-	deleteVehicle _vehicle;
+	[_vehicle, true, true] call clean_vehicle;
 };
