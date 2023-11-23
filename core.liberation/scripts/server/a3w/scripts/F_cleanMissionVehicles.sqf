@@ -14,7 +14,7 @@ params [["_vehicles",[]], ["_wait", 5]];
              if (_vehicle getVariable ["GRLIB_vehicle_owner", ""] == "server") then {
                 _vehicle setVariable ["GRLIB_vehicle_owner", ""];
              };
-            [_vehicle] spawn clean_vehicle;            
+            [_vehicle] call clean_vehicle;            
         } else {
             deleteVehicle _vehicle;
         };        

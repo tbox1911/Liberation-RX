@@ -147,7 +147,7 @@ while {deleteManagerPublic} do {
 				if (_x isKindOf "CAManBase") then {
 					deleteVehicle _x;
 				} else {
-					[_x] spawn clean_vehicle;
+					[_x] call clean_vehicle;
 				};
 				_stats = _stats + 1;
 			};
@@ -191,7 +191,7 @@ while {deleteManagerPublic} do {
 			if (_vehicleDistCheck) then {
 				{
 					if ([_x,_vehicleDist,(playableUnits + switchableUnits)] call _isHidden) then {
-						[_x] spawn clean_vehicle;
+						[_x] call clean_vehicle;
 						_stats = _stats + 1;
 					};
 				} count (_nbVehicles);
@@ -199,7 +199,7 @@ while {deleteManagerPublic} do {
 
 			while {(( (count (_nbVehicles)) - _vehiclesLimit) > 0)} do {
 				_veh = selectRandom (_nbVehicles);
-				[_veh] spawn clean_vehicle;
+				[_veh] call clean_vehicle;
 				_stats = _stats + 1;
 			};
 		};

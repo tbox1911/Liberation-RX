@@ -152,9 +152,6 @@ if ( isServer ) then {
 		};
 
 	} else {
-		// unTow
-		[_unit] spawn untow_vehicle;
-
 		if ( (typeof _unit) in [Arsenal_typename, FOB_box_typename, FOB_truck_typename, FOB_boat_typename, foodbarrel_typename, waterbarrel_typename] ) exitWith {
 			sleep 30;
 			deleteVehicle _unit;
@@ -166,11 +163,6 @@ if ( isServer ) then {
 			sleep random 2;
 			( "R_80mm_HE" createVehicle (getPosATL _unit) ) setVelocity [0, 0, -200];
 			deleteVehicle _unit;
-		};
-
-		 if (typeOf _unit isKindOf "AllVehicles") then {
-			_unit setVariable ["GRLIB_vehicle_owner", "", true];
-			[_unit, false] spawn clean_vehicle;
 		};
 
 		if ( isPlayer _killer ) then {
@@ -197,6 +189,8 @@ if ( isServer ) then {
 		} else {
 			stats_blufor_vehicles_killed = stats_blufor_vehicles_killed + 1;
 		};
+
+		[_unit, false, true] spawn clean_vehicle;
 
 	};
 

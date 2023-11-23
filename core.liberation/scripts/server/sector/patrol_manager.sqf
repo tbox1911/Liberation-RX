@@ -43,6 +43,6 @@ waitUntil {
 
 // Cleanup
 waitUntil { sleep 30; (GRLIB_global_stop == 1 || [(leader _grp), GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
-if (!isNull _vehicle) then { [_vehicle] spawn clean_vehicle };
+[_vehicle] call clean_vehicle;
 { deleteVehicle _x } forEach (units _grp);
 deleteGroup _grp;
