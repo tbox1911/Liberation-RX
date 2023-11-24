@@ -13,13 +13,14 @@ private _no_marker_classnames = [
 	GRLIB_sar_wreck,
 	GRLIB_sar_fire,
 	Warehouse_desk_typename,
-	"Module_F",
+	"NVTarget",
+	"LaserTarget",
 	"Land_Campfire_F",
 	"Kart_01_Base_F",
 	"Land_CashDesk_F",
 	"Land_HumanSkull_F",
 	"Land_HumanSkeleton_F",
-	"WeaponHolderSimulated"	
+	"WeaponHolderSimulated"
 ] + GRLIB_force_cleanup_classnames + GRLIB_ide_traps + GRLIB_intel_items + all_buildings_classnames;
 
 if (GRLIB_allow_redeploy == 1) then {
@@ -36,7 +37,7 @@ while { true } do {
 		(
 			(side _x == GRLIB_side_friendly) ||
 			(side _x == GRLIB_side_civilian && count (crew _x) == 0)
-		)		
+		)
 	}] call BIS_fnc_conditionalSelect;
 
 	_vehmarkers_bak = [];
@@ -106,7 +107,7 @@ while { true } do {
 		_nextmarker setMarkerTypeLocal _marker_type;
 		_nextmarker setMarkerAlphaLocal _marker_show;
 	} foreach _veh_list;
-	
+
 	{ deleteMarkerLocal _x} foreach (_vehmarkers - _vehmarkers_bak);
 	_vehmarkers = _vehmarkers_bak;
 	sleep 6;
