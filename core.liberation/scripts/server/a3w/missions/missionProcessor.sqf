@@ -7,13 +7,10 @@
 
 if (!isServer) exitwith {};
 
-#define MISSION_TIMER_EXTENSION (20*60)
-
 private [
 	"_controllerSuffix", "_missionTimeout", "_availableLocations", "_missionLocation", "_leader", 
-	"_marker", "_marker_zone", "_time_left",
-	"_failed", "_complete", "_startTime", "_oldAiCount", "_leaderTemp", 
-	"_newAiCount", "_adjustTime", "_lastPos", "_floorHeight"
+	"_marker", "_marker_zone", "_time_left", "_failed", "_complete", "_startTime", "_leaderTemp", 
+	"_lastPos", "_floorHeight"
 ];
 
 // Variables that can be defined in the mission script :
@@ -71,7 +68,6 @@ diag_log format ["A3W Side Mission%1 waiting to be finished: %2", _controllerSuf
 _failed = false;
 _complete = false;
 _startTime = time;
-_oldAiCount = 0;
 
 if (isNil "_ignoreAiDeaths") then { _ignoreAiDeaths = false };
 
@@ -90,16 +86,6 @@ waitUntil {
 		} forEach units _aiGroup;
 	};
 
-	_newAiCount = count units _aiGroup;
-
-	if (_newAiCount < _oldAiCount) then {
-		// some units were killed, mission expiry will be reset to 20 mins if it's currently lower than that
-		_adjustTime = if (_missionTimeout < MISSION_TIMER_EXTENSION) then { MISSION_TIMER_EXTENSION - _missionTimeout } else { 0 };
-		_startTime = _startTime max (time - ((MISSION_TIMER_EXTENSION - _adjustTime) max 0));
-	};
-
-	_oldAiCount = _newAiCount;
-
 	if (!isNull _leaderTemp) then { _leader = _leaderTemp }; // Update current leader
 	if (!isNil "_waitUntilMarkerPos") then { _marker setMarkerPos (call _waitUntilMarkerPos) };
 	if (!isNil "_waitUntilExec") then { call _waitUntilExec };
@@ -107,7 +93,7 @@ waitUntil {
 	if (_time_left > 0) then {
 		_marker setMarkerText format ["%1 - %2 min left", localize _missionType, _time_left];
 	} else {
-		_marker setMarkerText format ["%1 - time over ", localize _missionType];
+		_marker setMarkerText format ["%1 - time over", localize _missionType];
 	};
 
 	_expired = (time - _startTime >= _missionTimeout && ([_missionPos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount) == 0);
