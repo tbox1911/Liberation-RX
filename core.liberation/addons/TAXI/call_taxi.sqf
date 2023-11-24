@@ -80,7 +80,7 @@ _marker setMarkerTypeLocal "mil_pickup";
 _marker setMarkerTextlocal "Taxi PickUp";
 
 // Goto Pickup Point
-[_vehicle, _air_grp, _dest, "STR_TAXI_MOVE"] call taxi_dest;
+[_vehicle, _dest, "STR_TAXI_MOVE"] call taxi_dest;
 [_vehicle] call taxi_land;
 deleteVehicle GRLIB_taxi_helipad;
 _vehicle setVehicleLock "UNLOCKED";
@@ -113,13 +113,13 @@ if (time < _stop) then {
 		{ _x allowDamage false } forEach _cargo;
 
 		_dest = markerPos "taxi_dz";
-		[_vehicle, _air_grp, _dest, "STR_TAXI_PROGRESS"] call taxi_dest;
+		[_vehicle, _dest, "STR_TAXI_PROGRESS"] call taxi_dest;
 		_vehicle removeAction _idact_dest;
 		_vehicle removeAction _idact_eject;
 	};
 } else {
 	_vehicle setVehicleLock "LOCKED";
-	_vehicle lockCargo true;	
+	_vehicle lockCargo true;
 };
 
 // Board Out
@@ -139,7 +139,7 @@ deleteMarkerLocal "taxi_dz";
 if (GRLIB_taxi_helipad_created) then { deleteVehicle GRLIB_taxi_helipad };
 GRLIB_taxi_eject = nil;
 GRLIB_taxi_helipad = nil;
-[_vehicle, _air_grp, _spawn_pos, "STR_TAXI_RETURN"] call taxi_dest;
+[_vehicle, _spawn_pos, "STR_TAXI_RETURN", true] call taxi_dest;
 
 // Cleanup
 hintSilent "";

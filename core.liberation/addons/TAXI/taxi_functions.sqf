@@ -27,7 +27,7 @@ taxi_land = {
 };
 
 taxi_dest = {
-	params ["_vehicle", "_air_grp", "_dest", "_msg"];
+	params ["_vehicle", "_dest", "_msg", ["_silent", false]];
 	_vehicle setFuel 1;
 	_vehicle engineOn true;
 
@@ -49,7 +49,9 @@ taxi_dest = {
 			};
 		};
 
-		hintSilent format [localize _msg, round (_vehicle distance2D _dest)];
+		if !(_silent) then {
+			hintSilent format [localize _msg, round (_vehicle distance2D _dest)];
+		};
 
 		_alt = (getPosATL _vehicle) select 2;
 		_speed = round (abs speed vehicle _vehicle);
@@ -92,5 +94,5 @@ taxi_outboard = {
 		(_bailout);
 	};
 	_vehicle setVehicleLock "LOCKED";
-	_vehicle lockCargo true;		
+	_vehicle lockCargo true;
 };
