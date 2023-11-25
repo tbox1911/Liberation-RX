@@ -16,6 +16,7 @@ F_ejectUnit = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F
 F_filterLoadout = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_filterLoadout.sqf";
 F_filterMods = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_filterMods.sqf";
 F_findOpforSpawnPoint = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_findOpforSpawnPoint.sqf";
+F_fixPosUnit = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_fixPosUnit.sqf";
 F_forceBluforCrew = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_forceBluforCrew.sqf";
 F_forceMilitiaCrew = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_forceMilitiaCrew.sqf";
 F_forceOpforCrew = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_forceOpforCrew.sqf";

@@ -14,9 +14,8 @@ while { ({alive _x} count (units _grp) > 0) && ( GRLIB_endgame == 0 ) } do {
 
 	if (GRLIB_global_stop == 0) then {
 		private _blufor = [_objective_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount;
-
 		if (_blufor == 0) then {
-			private _info = [_objective_pos, true] call F_getNearestBluforObjective;
+			private _info = [_objective_pos] call F_getNearestBluforObjective;
 			if ((_info select 1) <= GRLIB_spawn_max) then { _objective_pos = (_info select 0) } else { _objective_pos = zeropos };
 		};
 	};
@@ -59,12 +58,16 @@ while { ({alive _x} count (units _grp) > 0) && ( GRLIB_endgame == 0 ) } do {
 	_waypoint = _grp addWaypoint [_wp0, 0];
 	_waypoint setWaypointType "CYCLE";
 	sleep 1;
-	{_x doFollow (leader _grp)} foreach units _grp;
+	{
+		_x doFollow (leader _grp);
+		[_x] call F_fixPosUnit;
+	} foreach units _grp;
+
 	if (_vehicle isKindOf "AllVehicles") then {
 		(driver _vehicle) doMove _objective_pos;
 	};
 	sleep 30;
 
-	_timer = round (time + (15 * 60));
+	_timer = round (time + (5 * 60));
 	waitUntil {sleep 5; ({alive _x} count (units _grp) == 0) || time > _timer };
 };

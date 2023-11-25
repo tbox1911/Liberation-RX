@@ -81,7 +81,7 @@ if ( _random_rotate ) then {
 };
 
 if ( _vehicle isKindOf "LandVehicle" ) then {
-	sleep 1;
+	[_vehicle] call F_fixPosUnit;
 	if ((vectorUp _vehicle) select 2 < 0.70 || (getPosATL _vehicle) select 2 < 0) then {
 		_vehicle setpos [(getPosATL _vehicle) select 0, (getPosATL _vehicle) select 1, 0.5];
 		_vehicle setVectorUp surfaceNormal position _vehicle;

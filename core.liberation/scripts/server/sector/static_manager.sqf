@@ -40,7 +40,7 @@ waitUntil {
 		GRLIB_global_stop == 1 ||
 		(diag_fps < 25) ||
 		({alive _x} count (units _grp) == 0) ||
-		([(leader _grp), 3500, GRLIB_side_friendly] call F_getUnitsCount == 0) ||
+		([(leader _grp), (GRLIB_sector_size * 2), GRLIB_side_friendly] call F_getUnitsCount == 0) ||
 		(time > _unit_ttl)
 	)
 };

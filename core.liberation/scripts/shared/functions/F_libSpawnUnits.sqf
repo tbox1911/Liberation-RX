@@ -53,13 +53,7 @@ private ["_unit", "_backpack", "_maxpos"];
 			};
 
 			if (_onground && !(_type in ["divers", "para"]) ) then {
-				// try to fix pos on rock/object (thanks Larrow)
-				_spawnpos = getPosATL _unit;
-				_maxpos = _spawnpos vectorAdd [0,0,150];
-				while { (lineIntersects [ATLToASL _maxpos, ATLToASL _spawnpos]) && (_spawnpos select 2) <= 150 } do {
-					_spawnpos set [2, ((_spawnpos select 2) + 0.25)];
-				};
-				_unit setPosATL _spawnpos;
+				[_unit] call F_fixPosUnit;
 			};
 		} else {
 			diag_log format ["--- LRX Error: Cannot create unit %1 at position %2", _x, _spawnpos];
@@ -72,7 +66,7 @@ _grp setCombatBehaviour "COMBAT";
 
 [units _grp] spawn {
 	params ["_units"];
-	sleep 3;
+	sleep 4;
 	{
 		_x setDamage 0;
 		_x allowDamage true;
