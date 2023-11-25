@@ -14,6 +14,10 @@ private _addContainerCargo = {
 	((everyContainer _box) - _old_content) select 0 select 1; 
 };
 
+// weapons + attachment
+{_box addWeaponWithAttachmentsCargo [_x, 1]} forEach weaponsItems _unit;
+//{_box addItemCargoGlobal [_x, 1]} forEach (assignedItems _unit);
+
 // headgear
 _box addItemCargoGlobal [(headgear _unit), 1];
 
@@ -38,10 +42,6 @@ if (vest _unit != "") then {
 	{_vest addItemCargoGlobal [_x, 1]} forEach (vestItems _unit);
 	removeVest _unit;
 };
-
-// weapons + attachment
-{_box addWeaponWithAttachmentsCargo [_x, 1]} forEach weaponsItems _unit;
-//{_box addItemCargoGlobal [_x, 1]} forEach (assignedItems _unit);
 
 // backpack
 if (backpack _unit != "") then {
