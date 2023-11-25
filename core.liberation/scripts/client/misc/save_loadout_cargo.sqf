@@ -1,18 +1,6 @@
-params ["_box", "_unit"];
-
 // store player stuff in the box
 
-private _addContainerCargo = {
-	params ["_box", "_item"];
-	private _old_content = everyContainer _box;
-	if (_item isKindOf "Bag_Base") then {
-		_box addBackpackCargoGlobal [_item, 1];
-	} else {
-		_box addItemCargoGlobal [_item, 1];
-	};
-	sleep 0.1;
-	((everyContainer _box) - _old_content) select 0 select 1; 
-};
+params ["_box", "_unit"];
 
 // weapons + attachment
 {_box addWeaponWithAttachmentsCargo [_x, 1]} forEach weaponsItems _unit;
@@ -29,7 +17,7 @@ _box addItemCargoGlobal [(hmd _unit), 1];
 
 // uniform
 if (uniform _unit != "" && isPlayer _unit) then {
-	private _uniform = [_box, (uniform _unit)] call _addContainerCargo;
+	private _uniform = [_box, (uniform _unit)] call F_addContainerCargo;
 	[_uniform] call F_clearCargo;
 	{_uniform addItemCargoGlobal [_x, 1]} forEach (uniformItems _unit);
 	removeUniform _unit;
@@ -37,7 +25,7 @@ if (uniform _unit != "" && isPlayer _unit) then {
 
 // vest
 if (vest _unit != "") then {
-	private _vest = [_box, (vest _unit)] call _addContainerCargo;
+	private _vest = [_box, (vest _unit)] call F_addContainerCargo;
 	[_vest] call F_clearCargo;
 	{_vest addItemCargoGlobal [_x, 1]} forEach (vestItems _unit);
 	removeVest _unit;
@@ -45,7 +33,7 @@ if (vest _unit != "") then {
 
 // backpack
 if (backpack _unit != "") then {
-	private _backpack = [_box, (backpack _unit)] call _addContainerCargo;
+	private _backpack = [_box, (backpack _unit)] call F_addContainerCargo;
 	[_backpack] call F_clearCargo;
 	{_backpack addItemCargoGlobal [_x, 1]} forEach (backpackItems _unit);
 	removeBackpackGlobal _unit;

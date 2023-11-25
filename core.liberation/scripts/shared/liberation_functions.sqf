@@ -1,4 +1,5 @@
 F_adaptiveOpforFactor = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_adaptiveOpforFactor.sqf";
+F_addContainerCargo = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_addContainerCargo.sqf";
 F_addParachute = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_addParachute.sqf";
 F_addPlayerAmmo = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_addPlayerAmmo.sqf";
 F_addPlayerScore = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_addPlayerScore.sqf";
@@ -60,7 +61,7 @@ F_loadoutPrice = compileFinal preprocessFileLineNumbers "scripts\shared\function
 F_nearestPosition = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_nearestPosition.sqf";
 F_pay = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_pay.sqf";
 F_payLoadout = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_payLoadout.sqf";
-F_replaceWith  = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_replaceWith.sqf";
+F_replaceWith = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_replaceWith.sqf";
 F_secondsToTimer = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_secondsToTimer.sqf";
 F_sectorOwnership = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_sectorOwnership.sqf";
 F_setCargo = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_setCargo.sqf";
