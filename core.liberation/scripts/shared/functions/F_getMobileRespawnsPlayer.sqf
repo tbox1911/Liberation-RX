@@ -21,7 +21,7 @@ if (!isNil "GRLIB_mobile_respawn") then {
 };
 
 private _player_respawn_unsorted = _respawn_trucks_unsorted + _respawn_tent_unsorted;
-if (count _player_respawn_unsorted > GRLIB_max_spawn_point && getPlayerUID player == _playerId) then {
+if (count _player_respawn_unsorted > GRLIB_max_spawn_point && PAR_Grp_ID == _playerId) then {
 	hintSilent localize "STR_TOO_MANY_SPAWN";
 	_player_respawn_unsorted = _player_respawn_unsorted select [0, GRLIB_max_spawn_point];
 	_max_respawn_reached = true;

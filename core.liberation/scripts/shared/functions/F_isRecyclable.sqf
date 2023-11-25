@@ -18,7 +18,7 @@ if ( _alive && _onfoot && _R3F_move && _far_lhd && _nearfob && _noflight && _r3f
 	if (([player, _vehicle] call is_owner) && ([typeOf _vehicle, GRLIB_recycleable_classnames] call F_itemIsInClass) && ([player, 4] call fetch_permission)) exitWith { _ret = true };
 	private _owner_id = _vehicle getVariable ["GRLIB_vehicle_owner", ""];
 	private _manned = _vehicle getVariable ["GRLIB_vehicle_manned", false];
-	if (getPlayerUID player == _owner_id && ((count crew _vehicle) == 0 || _manned)) exitWith { _ret = true };
+	if (PAR_Grp_ID == _owner_id && ((count crew _vehicle) == 0 || _manned)) exitWith { _ret = true };
 	if ([_vehicle] call F_getBuildPerm) exitWith { _ret = true };
 };
 

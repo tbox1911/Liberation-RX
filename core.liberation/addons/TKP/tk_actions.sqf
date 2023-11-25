@@ -1,7 +1,7 @@
 params ["_killer", "_unit"];
 if (isServer) exitWith {};
 if (player != _killer || ([] call is_admin)) exitWith {};
-private _kill = BTC_logic getVariable [getPlayerUID player, 0];
+private _kill = BTC_logic getVariable [PAR_Grp_ID, 0];
 
 if (!isNil "_unit") then {
 	private _msg = format [localize "STR_TK_INFO2", name _unit];

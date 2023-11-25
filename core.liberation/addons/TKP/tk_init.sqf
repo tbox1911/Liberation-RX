@@ -17,7 +17,7 @@ heavily modified by pSiKO
 */
 
 LRX_tk_actions = compileFinal preprocessFileLineNumbers "addons\TKP\tk_actions.sqf";
-if ((BTC_logic getVariable [getPlayerUID player, 0]) > GRLIB_tk_count) exitWith {[player] spawn LRX_tk_actions};
+if ((BTC_logic getVariable [PAR_Grp_ID, 0]) > GRLIB_tk_count) exitWith {[player] spawn LRX_tk_actions};
 if (!([] call F_getValid)) exitWith {endMission "LOSER"};
 if (GRLIB_tk_mode == 0) exitWith {};
 
@@ -33,7 +33,7 @@ LRX_tk_check = {
 	if (player == _killer) then {
 		if (GRLIB_tk_mode == 2) then {
 			_kill = BTC_logic getVariable [_killer_uid, 0];
-			BTC_logic setVariable [getPlayerUID player, (_kill + 1), true];
+			BTC_logic setVariable [PAR_Grp_ID, (_kill + 1), true];
 		};
 		[player] spawn LRX_tk_actions;
 	};

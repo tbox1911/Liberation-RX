@@ -25,7 +25,7 @@ while { dialog && alive player } do {
 		_vehicles_out = [getPosATL player nearEntities [["LandVehicle","Air","Ship",playerbox_typename], 150], {
 			alive _x && (count (crew _x) == 0 || typeOf _x in uavs) &&
 			(_x distance2D lhd > GRLIB_fob_range) &&
-			_x getVariable ["GRLIB_vehicle_owner", ""] == getPlayerUID player &&
+			(_x getVariable ["GRLIB_vehicle_owner", ""] == PAR_Grp_ID) &&
 			(isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull])) &&
 			!(typeOf _x in list_static_weapons)
 		}] call BIS_fnc_conditionalSelect;
