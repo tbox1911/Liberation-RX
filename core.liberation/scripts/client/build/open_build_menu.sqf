@@ -171,7 +171,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1 || buildtype =
 
 			if ( buildtype == 7 ) then {
 				if (_build_class == mobile_respawn) then {
-					if (([getPlayerUID player] call F_getMobileRespawnsPlayer) select 1) then {
+					if (([PAR_Grp_ID] call F_getMobileRespawnsPlayer) select 1) then {
 						_affordable = false;
 					};
 				};

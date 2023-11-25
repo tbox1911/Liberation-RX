@@ -3,7 +3,7 @@ GRLIB_checkAdmin = {
 };
 
 GRLIB_checkOperator = {
-	(GRLIB_player_is_menuok && ([] call is_admin || getPlayerUID player in GRLIB_whitelisted_moderators) && GRLIB_admin_menu)
+	(GRLIB_player_is_menuok && ([] call is_admin || PAR_Grp_ID in GRLIB_whitelisted_moderators) && GRLIB_admin_menu)
 };
 
 GRLIB_checkSquad = {

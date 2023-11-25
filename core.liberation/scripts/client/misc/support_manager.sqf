@@ -11,7 +11,7 @@ private _maxpri_def = 10;            // maximum magazines unit can take (primary
 private _minpri_def = 3;             // minimal magazines before unit need to reload
 private _maxsec_def = 3;             // maximum magazines unit can take (secondary weapon)
 private _minsec_def = 1;             // minimal magazines before unit need to reload
-private _guid = getPlayerUID player;
+
 private _artillery = [
 	"MBT_01_base_F",
 	"MBT_02_base_F",
@@ -31,7 +31,7 @@ while { true } do {
 		{_unitList append units _x} foreach hcAllGroups player;
 		_static_ai =  [vehicles, {
 			typeOf _x in static_vehicles_AI &&
-			_x getVariable ["GRLIB_vehicle_owner", ""] == _guid
+			_x getVariable ["GRLIB_vehicle_owner", ""] == PAR_Grp_ID
 		}] call BIS_fnc_conditionalSelect;
 		{_unitList append crew _x} foreach _static_ai;
 

@@ -131,7 +131,7 @@ _score_combo lbSetCurSel 0;
 _build_combo lbSetCurSel last_build;
 
 // Limit Moderators Menu
-if (getPlayerUID player in GRLIB_whitelisted_moderators) then {
+if (PAR_Grp_ID in GRLIB_whitelisted_moderators) then {
 	{
 		ctrlEnable  [_x, false];
 		ctrlShow [_x, false];

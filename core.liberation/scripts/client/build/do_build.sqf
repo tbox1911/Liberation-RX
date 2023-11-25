@@ -467,7 +467,7 @@ while { true } do {
 			// Vehicle owner
 			if ( _buildtype in [2,3,4,5,7,9,10] ) then {
 				if (!([typeOf _vehicle, GRLIB_vehicle_blacklist] call F_itemIsInClass)) then {
-					_vehicle setVariable ["GRLIB_vehicle_owner", getPlayerUID player, true];
+					_vehicle setVariable ["GRLIB_vehicle_owner", PAR_Grp_ID, true];
 					_vehicle allowCrewInImmobile [true, false];
 					_vehicle setUnloadInCombat [true, false];
 				};

@@ -1,7 +1,7 @@
 private _fob_pos = [] call F_getNearestFob;
 private _fob_owner = [_fob_pos] call F_getFobOwner;
 private _fob_name = [_fob_pos] call F_getFobName;
-if ((getPlayerUID player != _fob_owner) && !([] call is_admin)) exitWith { hintSilent localize "STR_HINT_OUTPOST_WRONG_OWNER" };
+if ((PAR_Grp_ID != _fob_owner) && !([] call is_admin)) exitWith { hintSilent localize "STR_HINT_OUTPOST_WRONG_OWNER" };
 if (player distance2D _fob_pos > 20) exitWith {};
 
 build_confirmed = 1;
