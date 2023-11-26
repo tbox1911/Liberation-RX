@@ -18,7 +18,6 @@ _unit setPosATL ((markerPos GRLIB_respawn_marker) vectorAdd [floor(random 5), fl
 
 GRLIB_player_spawned = false;
 removeAllWeapons _unit;
-removeAllItems _unit;
 removeAllAssignedItems _unit;
 removeUniform _unit;
 removeVest _unit;

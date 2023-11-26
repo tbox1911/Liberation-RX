@@ -40,10 +40,9 @@ if (backpack _unit != "") then {
 };
 
 // Cleanup
-removeAllWeapons _unit;
-removeAllItems _unit;
-removeAllAssignedItems _unit;
-removeHeadgear _unit;
+removeAllWeapons _unit; 
+removeAllAssignedItems _unit; 
+removeHeadgear _unit; 
 removeGoggles _unit;
 
 private _msg = format [localize "STR_LOADOUT_CARGO_STORED", name _unit, ([_box] call F_getLRXName)];
