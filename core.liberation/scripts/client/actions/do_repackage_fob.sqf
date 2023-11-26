@@ -16,6 +16,10 @@ if (surfaceIsWater _fob_pos) then {
 	ctrlEnable [123, true];
 };
 
+if (GRLIB_naval_type == 0) then {
+	ctrlEnable [123, false];
+};
+
 while { dialog && alive player && dorepackage == 0 } do {
 	sleep 0.5;
 };
