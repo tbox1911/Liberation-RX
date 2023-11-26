@@ -65,6 +65,15 @@ _marker setMarkerShapeLocal "ICON";
 _marker setMarkerTypeLocal "KIA";
 _marker setMarkerTextlocal format ["%1's Grave.", name player];
 
+// Grave Box
+GRLIB_grave = createVehicle [GRLIB_player_gravebox, ([] call R3F_LOG_FNCT_3D_tirer_position_degagee_ciel), [], 0, "NONE"];
+[GRLIB_grave, playerbox_cargospace] remoteExec ["setMaxLoad", 2];
+GRLIB_grave allowDamage false;
+GRLIB_grave enableSimulationGlobal false;
+GRLIB_grave setVariable ["R3F_LOG_disabled", true, true];
+GRLIB_grave setVariable ["GRLIB_vehicle_owner", PAR_Grp_ID, true];
+player setvariable ["GRLIB_player_grave", GRLIB_grave, true];
+
 // AI Manager
 [] spawn PAR_AI_Manager;
 

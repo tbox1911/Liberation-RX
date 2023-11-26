@@ -39,11 +39,9 @@ deletemarker format ["PAR_marker_%1", _name];
 private _my_squad = _unit getVariable ["my_squad", nil];
 if (!isNil "_my_squad") then { {deleteVehicle _x} forEach units _my_squad };
 
-// remove last grave box
-private _old_graves = _unit getVariable ["GRLIB_grave", []];
-if (count _old_graves > 0) then {
-	{ deleteVehicle _x } forEach (attachedObjects (_old_graves select (count _old_graves)-1));
-};
+// remove Grave Box
+private _grave = _unit getVariable ["GRLIB_player_grave", nil];
+if (!isNil "_grave") then { deleteVehicle _grave };
 
 // Remove Taxi
 private _taxi = _unit getVariable ["GRLIB_taxi_called", nil];

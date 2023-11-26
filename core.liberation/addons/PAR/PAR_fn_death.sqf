@@ -6,46 +6,32 @@ _unit connectTerminalToUAV objNull;
 _unit setVariable ['PAR_wounded', false];
 
 if (_unit == player) then {
-	// Grave + stuff box
+	// Grave + Save Stuff
 	_pos = getPosATL _unit;
 	if ( isNull objectParent player &&
 		!([_unit, "LHD", GRLIB_capture_size] call F_check_near) &&
 		round (_pos select 2) == 0 && !(surfaceIsWater _pos)
 	) then {
-		_unit setPosATL ((markerPos GRLIB_respawn_marker) vectorAdd [floor(random 5), floor(random 5), 1]);
+		_unit hideObject true;
+		//_unit setPosATL ((markerPos GRLIB_respawn_marker) vectorAdd [floor(random 5), floor(random 5), 1]);
+
+		// Save Stuff
+		[GRLIB_grave] call F_clearCargo;
+		[GRLIB_grave, _unit] call save_loadout_cargo;
+
 		// create grave
 		_grave = (selectRandom GRLIB_player_grave) createVehicle _pos;
 		_grave allowDamage false;
-		[_grave, playerbox_cargospace] remoteExec ["setMaxLoad", 2];
 		_grave setPosATL _pos;
 		_grave setvariable ["GRLIB_grave_message", format ["%1 - R.I.P -", name player], true];
 		_grave_dir = getDir _grave;
 
-		// create grave box
+		// attach grave box
 		_grave_box_pos = (getposATL _grave) vectorAdd ([[-1.75, 0, 0], -_grave_dir] call BIS_fnc_rotateVector2D);
-		_grave_box = GRLIB_player_gravebox createVehicle _grave_box_pos;
-		_grave_box setPosATL _grave_box_pos;
-		_grave_box attachto [_grave];
-		_grave_box setVariable ["R3F_LOG_disabled", true, true];
-		_grave_box setVariable ["GRLIB_vehicle_owner", getPlayerUID player, true];
-
-		// remove old grave and box
-		_old_graves_max = 3;
-		_old_graves = _unit getVariable ["GRLIB_grave", []];
-		if (count _old_graves > 0) then {
-			{ deleteVehicle _x } forEach (attachedObjects (_old_graves select (count _old_graves)-1));
-			if (count _old_graves >= _old_graves_max) then {
-				deleteVehicle (_old_graves select 0);
-				_old_graves deleteAt 0;
-			};
-		};
-		_old_graves pushback _grave;
-		_unit setvariable ["GRLIB_grave", _old_graves, true];
-		"player_grave_box" setMarkerPosLocal _grave_box;
-
-		// clear box
-		[_grave_box] call F_clearCargo;
-		[_grave_box, _unit] call save_loadout_cargo;
+		GRLIB_grave enableSimulationGlobal true;
+		GRLIB_grave setPosATL _grave_box_pos;
+		GRLIB_grave attachto [_grave];
+		"player_grave_box" setMarkerPosLocal GRLIB_grave;
 	};
 
 	// respawn penalty
