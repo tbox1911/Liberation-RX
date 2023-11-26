@@ -1,7 +1,7 @@
 if (player diarySubjectExists "LRX Info") exitWith {};
 private _getRandomColor = {
 	private _str = "#";
-	private _mColors = ["ff","30","40","60","6f","80","8f","B0"];
+	private _mColors = ["19","03","73","ff","30","40","58","60","6f","80","8f","B0"];
 	for "_i" from 0 to 2 do { _str = _str + selectRandom _mColors };
 	_str;
 };
@@ -14,6 +14,19 @@ private _getkeyName = {
 };
 
 player createDiarySubject ["LRX Info", "LRX Info"];
+
+player createDiarySubject ["LRX Info", "Support LRX !"];
+player createDiaryRecord ["LRX Info", ["Support LRX !", "<br/>  Thank you !"]];
+player createDiaryRecord ["LRX Info", ["Support LRX !", "<img image='res\mail.paa' height='32' width='25'/>  <img image='res\paypal.paa' height='32' width='32'/>     <font color='#0080ff'>https://paypal.me/LiberationRX</font><br/>"]];
+player createDiaryRecord ["LRX Info", ["Support LRX !", "or you just want to offer me a beer ?!<br/><br/>You can use my payPal account:<br/>"]];
+player createDiaryRecord ["LRX Info", ["Support LRX !", "You want to contribute to the mission development ?<br/><br/>or contribute to the server hosting fee ?"]];
+player createDiaryRecord ["LRX Info", ["Support LRX !", "<br/>You like Liberation RX ?<br/>"]];
+
+player createDiarySubject ["LRX Info", "Original Liberation"];
+player createDiaryRecord ["LRX Info", ["Original Liberation", format ["Last version 0.927"]]];
+player createDiaryRecord ["LRX Info", ["Original Liberation", format ["Website: <font color='#ff8000'>arma.greuh.org</font>"]]];
+player createDiaryRecord ["LRX Info", ["Original Liberation", format ["Original version coded by: <font color='#ff8000'>[GREUH] Zbug</font> and <font color='#ff8000'>[GREUH] McKeewa</font>"]]];
+
 player createDiarySubject ["LRX Info", "Thanks"];
 private _all_friends = "";
 {
@@ -23,39 +36,35 @@ private _all_friends = "";
 player createDiaryRecord ["LRX Info", ["Thanks", format ["... And You !!"]]];
 player createDiaryRecord ["LRX Info", ["Thanks", format ["And to all the good friends:<br/> %1", _all_friends]]];
 player createDiaryRecord ["LRX Info", ["Thanks", format ["<font color='%1'>Bohemia's Forum Community</font> for all the support and code tricks.", call _getRandomColor, call _getRandomColor]]];
-player createDiaryRecord ["LRX Info", ["Thanks", format ["<font color='%1'>Arturo</font> for additional work.", call _getRandomColor]]];
+player createDiaryRecord ["LRX Info", ["Thanks", format ["<font color='%1'>GREUH Team</font> for the original work.", call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["Thanks", format ["<font color='%1'>Mihuan</font>, <font color='%2'>O360_A1AD</font> for langage translation.", call _getRandomColor, call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["Thanks", format ["<font color='%1'>Varrkan</font>, <font color='%2'>Polox</font> for MP testing and much more.", call _getRandomColor, call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["Thanks", format ["<font color='%1'>AgentRev</font>, <font color='%2'>Larrow Zurb</font>, <font color='%3'>KillZoneKid</font>, <font color='%4'>Quiksilver</font> for code scripting.", call _getRandomColor,call _getRandomColor,call _getRandomColor,call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["Thanks", format ["<font color='%1'>Isa</font> for all the love and patience.", "#f80000"]]];
 player createDiaryRecord ["LRX Info", ["Thanks", "Thanks to all the people who contribute to the mission:"]];
 
-player createDiaryRecord ["LRX Info", ["Modders", format ["<font color='%1'>Z-Warrior</font> for CUPS templates.", call _getRandomColor]]];
-player createDiaryRecord ["LRX Info", ["Modders", format ["<font color='%1'>C0br4</font> for lots of templates.", call _getRandomColor]]];
-player createDiaryRecord ["LRX Info", ["Modders", "Thanks to the Mod Template Master:"]];
+player createDiaryRecord ["LRX Info", ["Modders", format ["<font color='%1'>Dark Demon</font> for Templates and Maps.", call _getRandomColor]]];
+player createDiaryRecord ["LRX Info", ["Modders", format ["<font color='%1'>Z-Warrior</font> for Templates and Maps.", call _getRandomColor]]];
+player createDiaryRecord ["LRX Info", ["Modders", format ["<font color='%1'>C0br4</font> for Templates.", call _getRandomColor]]];
+player createDiaryRecord ["LRX Info", ["Modders", "Thanks to the Mod Template Team:"]];
 
-player createDiarySubject ["LRX Info", "Support LRX !"];
-player createDiaryRecord ["LRX Info", ["Support LRX !", "<img image='res\mail.paa' height='32' width='25'/>  <img image='res\paypal.paa' height='32' width='32'/>     <font color='#0080ff'>https://paypal.me/LiberationRX</font><br/><br/> Thank you !"]];
-player createDiaryRecord ["LRX Info", ["Support LRX !", "or just buy me a beer ?!<br/><br/>You can use my payPal account:<br/>"]];
-player createDiaryRecord ["LRX Info", ["Support LRX !", "You want to contribute to the mission dev ?<br/><br/>or contribute to the server hosting ?"]];
-player createDiaryRecord ["LRX Info", ["Support LRX !", "<br/>You like Liberation RX ?<br/>"]];
+player createDiarySubject ["LRX Info", "Contributors"];
+player createDiaryRecord ["LRX Info", ["Contributors", format ["<img image='\a3\ui_f\data\map\markers\flags\france_ca.paa' height='20' width='20'/>&#160;&#160;This version (%1) was build on %2 at %3 in France, with love ;)", GRLIB_build_version, GRLIB_build_date, GRLIB_build_time]]];
+player createDiaryRecord ["LRX Info", ["Contributors", format ["All the rest and Scripting Integration<br/>by <font color='#0080ff'>-pSiKO-</font>"]]];
+player createDiaryRecord ["LRX Info", ["Contributors", format ["Nuke Script v1.00<br/>by <font color='%1'>-Moerderhoschi-</font>", call _getRandomColor]]];
+player createDiaryRecord ["LRX Info", ["Contributors", format ["Advanced Rappelling v1.00<br/>by <font color='%1'>-Seth Duda-</font>", call _getRandomColor]]];
+player createDiaryRecord ["LRX Info", ["Contributors", format ["Vehicle Appearance Manager v1.41<br/>by <font color='%1'>-UNIT_normal-</font>", call _getRandomColor]]];
+player createDiaryRecord ["LRX Info", ["Contributors", format ["DALE Pylons v1.00<br/>by <font color='%1'>-Sgt. Dennenboom-</font>", call _getRandomColor]]];
+player createDiaryRecord ["LRX Info", ["Contributors", format ["Dynamic Animal v.1.00<br/>by <font color='%1'>-Vandeanson-</font>", call _getRandomColor]]];
+player createDiaryRecord ["LRX Info", ["Contributors", format ["Mag Repack v3.13<br/>by <font color='%1'>-Outlawled-</font>", call _getRandomColor]]];
+player createDiaryRecord ["LRX Info", ["Contributors", format ["A3W Missions and so much!!<br/>by <font color='%1'>-AgentRev-</font>", call _getRandomColor]]];
+player createDiaryRecord ["LRX Info", ["Contributors", format ["R3F Logistics v3.10<br/>by <font color='%1'>-Team-R3F.org-</font>", call _getRandomColor]]];
+player createDiaryRecord ["LRX Info", ["Contributors", format ["Robust Air Taxi v1.05<br/>by <font color='%1'>-pSiKO-</font>", call _getRandomColor]]];
+player createDiaryRecord ["LRX Info", ["Contributors", format ["pSiKO AI Revive v2.04<br/>by <font color='%1'>-pSiKO-</font>", call _getRandomColor]]];
+player createDiaryRecord ["LRX Info", ["Contributors", format ["LARs Arsenal v1.05<br/>by <font color='%1'>-Larrow Zurb-</font>", call _getRandomColor]]];
+player createDiaryRecord ["LRX Info", ["Contributors", format ["LRX Community Manager<br/>by <font color='%1'>-Legend_TS13-</font>", call _getRandomColor]]];
 
-player createDiarySubject ["LRX Info", "pSiKO Tweaks"];
-player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["<img image='\a3\ui_f\data\map\markers\flags\france_ca.paa' height='20' width='20'/>&#160;&#160;This version (%1) was build on %2 at %3 in France, with love ;)", GRLIB_build_version, GRLIB_build_date, GRLIB_build_time]]];
-player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["All the rest and Scripting Integration<br/>by <font color='#0080ff'>-pSiKO-</font>"]]];
-player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["Nuke Script v1.00<br/>by <font color='%1'>-Moerderhoschi-</font>", call _getRandomColor]]];
-player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["Advanced Rappelling v1.00<br/>by <font color='%1'>-Seth Duda-</font>", call _getRandomColor]]];
-player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["Vehicle Appearance Manager v1.41<br/>by <font color='%1'>-UNIT_normal-</font>", call _getRandomColor]]];
-player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["DALE Pylons v1.00<br/>by <font color='%1'>-Sgt. Dennenboom-</font>", call _getRandomColor]]];
-player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["Dynamic Animal v.1.00<br/>by <font color='%1'>-Vandeanson-</font>", call _getRandomColor]]];
-player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["Mag Repack v3.13<br/>by <font color='%1'>-Outlawled-</font>", call _getRandomColor]]];
-player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["A3W Missions and so much!!<br/>by <font color='%1'>-AgentRev-</font>", call _getRandomColor]]];
-player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["R3F Logistics v3.10<br/>by <font color='%1'>-Team-R3F.org-</font>", call _getRandomColor]]];
-player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["Robust Air Taxi v1.05<br/>by <font color='%1'>-pSiKO-</font>", call _getRandomColor]]];
-player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["pSiKO AI Revive v2.04<br/>by <font color='%1'>-pSiKO-</font>", call _getRandomColor]]];
-player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", format ["LARs Arsenal v1.05<br/>by <font color='%1'>-Larrow Zurb-</font>", call _getRandomColor]]];
-player createDiaryRecord ["LRX Info", ["pSiKO Tweaks", localize "STR_MISSION_TITLE"]];
-
+player createDiaryRecord ["LRX Info", ["Contributors", localize "STR_MISSION_TITLE"]];
 player createDiarySubject ["LRX Info", "Settings"];
 private _diary = [];
 {
@@ -142,8 +151,3 @@ player createDiaryRecord ["MapInfo", ["MapInfo", format ["This Map: %1<br/>was p
 player createDiaryRecord ["MapInfo", ["MapInfo", format ["The East faction <font color='#f80000'>%1</font><br/>was made by: <font color='%3'>%2</font>.", GRLIB_mod_east, GRLIB_east_modder, call _getRandomColor]]];
 player createDiaryRecord ["MapInfo", ["MapInfo", format ["The West faction <font color='#0000f8'>%1</font><br/>was made by: <font color='%3'>%2</font>.", GRLIB_mod_west, GRLIB_west_modder, call _getRandomColor]]];
 player createDiaryRecord ["MapInfo", ["MapInfo", format ["-= Map Information =-"]]];
-
-player createDiarySubject ["Original", "Original"];
-player createDiaryRecord ["Original", ["Original", format ["Last version 0.927"]]];
-player createDiaryRecord ["Original", ["Original", format ["Website: <font color='#ff8000'>arma.greuh.org</font>"]]];
-player createDiaryRecord ["Original", ["Original", format ["Original version coded by: <font color='#ff8000'>[GREUH] Zbug</font> and <font color='#ff8000'>[GREUH] McKeewa</font>"]]];
