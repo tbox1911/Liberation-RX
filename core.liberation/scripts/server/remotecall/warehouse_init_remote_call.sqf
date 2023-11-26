@@ -55,7 +55,7 @@ private _warehouse_offset = [_row1,	_row2, _row3, _row4];
 // build desk + man
 private _warehouse_dir = (90 + getdir _warehouse);
 private _deskPos = (getposASL _warehouse) vectorAdd ([[2, 1, 0], -_warehouse_dir] call BIS_fnc_rotateVector2D);
-private _desk = Warehouse_desk_typename createVehicle zeropos;
+private _desk = createVehicle [Warehouse_desk_typename, ([] call R3F_LOG_FNCT_3D_tirer_position_degagee_ciel), [], 0, "NONE"];
 _desk allowDamage false;
 _desk setDir _warehouse_dir;
 _desk setPosASL _deskPos;
@@ -64,7 +64,7 @@ _desk setVariable ["R3F_LOG_disabled", true, true];
 _desk setVariable ["GRLIB_vehicle_owner", "server", true];
 _warehouse_dir = (180 + _warehouse_dir);
 private _manPos = (ASLToATL _deskPos) vectorAdd ([[0, -0.7, 0.1], -_warehouse_dir] call BIS_fnc_rotateVector2D);
-private _man = GRLIB_WHS_Group createUnit [WRHS_Man, zeropos, [], 0, "NONE"];
+private _man = GRLIB_WHS_Group createUnit [WRHS_Man, ([] call R3F_LOG_FNCT_3D_tirer_position_degagee_ciel), [], 0, "NONE"];
 [_man] joinSilent GRLIB_WHS_Group;
 _man setVariable ["acex_headless_blacklist", true, true];
 _man setVariable ["GRLIB_vehicle_owner", "server", true];

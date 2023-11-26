@@ -16,9 +16,8 @@ private _truck_load = _truck getVariable ["GRLIB_ammo_truck_load", []];
 private _truck_owner = _truck getVariable ["GRLIB_vehicle_owner", ""];
 
 if ( count _truck_load < _maxload ) then {
-	_truck_to_load = _truck;
-	_truck_offset = (_offsets select (count _truck_load)) vectorAdd _box_offset;
-	private _object = _object_type createVehicle zeropos;
+	private _truck_offset = (_offsets select (count _truck_load)) vectorAdd _box_offset;
+	private _object = createVehicle [_object_type, ([] call R3F_LOG_FNCT_3D_tirer_position_degagee_ciel), [], 0, "NONE"];
 
 	// Mobile respawn
 	if (_object_type == mobile_respawn) then {
@@ -38,9 +37,9 @@ if ( count _truck_load < _maxload ) then {
 	// MPKilled
 	_object addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 
-	_object attachTo [ _truck_to_load, _truck_offset ];
+	_object attachTo [ _truck, _truck_offset ];
 	_object setVariable ["R3F_LOG_disabled", true, true];
 	_object allowDamage false;
 	_truck_load pushback _object;
-	_truck_to_load setVariable ["GRLIB_ammo_truck_load", _truck_load, true];
+	_truck setVariable ["GRLIB_ammo_truck_load", _truck_load, true];
 };

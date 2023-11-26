@@ -513,31 +513,20 @@ R3F_LOG_FNCT_3D_mesh_collision_objs =
 
 /**
  * Retourne une position dégagée dans le ciel
- * @param 0 (optionnel) offset 3D du cube dans lequel chercher une position (défaut [0,0,0])
  * @return position dégagée (sphère de 50m de rayon) dans le ciel
+ * pSiKo rewrite
  */
 R3F_LOG_FNCT_3D_tirer_position_degagee_ciel =
 {
-	private ["_offset", "_nb_tirages", "_position_degagee"];
+	private _nb_tirages = 1;
+	private _position_degagee = [([[-300,0,300]] call F_getRND), ([[-300,0,300]] call F_getRND), (10000 + random 20000)];
 	
-	_offset = if (count _this > 0) then {_this select 0} else {[0,0,0]};
-	
-	// Trouver une position dégagée (sphère de 50m de rayon) dans le ciel
-	for [
-		{
-			_position_degagee = [random 3000, random 3000, 10000 + (random 20000)] vectorAdd _offset;
-			_nb_tirages = 1;
-		},
-		{
-			!isNull (nearestObject _position_degagee) && _nb_tirages < 25
-		},
-		{
-			_position_degagee = [random 3000, random 3000, 10000 + (random 20000)] vectorAdd _offset;
-			_nb_tirages = _nb_tirages+1;
-		}
-	] do {};
-	
-	_position_degagee
+	while { !isNull (nearestObject _position_degagee) && _nb_tirages < 25 } do {
+		_position_degagee = [([[-300,0,300]] call F_getRND), ([[-300,0,300]] call F_getRND), (10000 + random 20000)];
+		_nb_tirages = _nb_tirages + 1;
+	};
+
+	_position_degagee;
 };
 
 /**

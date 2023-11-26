@@ -14,7 +14,7 @@
 R3F_LOG_VIS_FNCT_demarrer_visualisation =
 {
 	// Cr�ation d'une cam�ra
-	R3F_LOG_VIS_cam = "camera" camCreate ([[5000, 5000, 0]] call R3F_LOG_FNCT_3D_tirer_position_degagee_ciel);
+	R3F_LOG_VIS_cam = "camera" camCreate ([] call R3F_LOG_FNCT_3D_tirer_position_degagee_ciel);
 	R3F_LOG_VIS_cam cameraEffect ["Internal", "BACK"];
 	R3F_LOG_VIS_cam camSetFocus [-1, -1];
 	showCinemaBorder false;
@@ -97,7 +97,7 @@ R3F_LOG_VIS_FNCT_voir_objet =
 		if (isNull R3F_LOG_VIS_objet || {_classe_a_visualiser != typeOf R3F_LOG_VIS_objet}) then
 		{
 			// Cr�er et placer l'objet dans le ciel
-			_position_attache = [[5000, 5000, 0]] call R3F_LOG_FNCT_3D_tirer_position_degagee_ciel;
+			_position_attache = [] call R3F_LOG_FNCT_3D_tirer_position_degagee_ciel;
 			_objet = _classe_a_visualiser createVehicleLocal _position_attache;
 			_objet attachTo [R3F_LOG_PUBVAR_point_attache, _position_attache];
 
