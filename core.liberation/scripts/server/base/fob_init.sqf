@@ -25,7 +25,7 @@ if (_fob_class == "Land_Carrier_01_island_02_F") then {
 };
 
 private _sign_pos = (getposASL _fob) vectorAdd ([_offset, -_fob_dir] call BIS_fnc_rotateVector2D);
-private _sign = createVehicle [FOB_sign, ([] call R3F_LOG_FNCT_3D_tirer_position_degagee_ciel), [], 0, "NONE"];
+private _sign = createVehicle [FOB_sign, ([] call F_getFreePos), [], 0, "NONE"];
 _sign allowDamage false;
 _sign setDir _fob_dir;
 _sign setPosASL _sign_pos;

@@ -17,7 +17,7 @@ private _truck_owner = _truck getVariable ["GRLIB_vehicle_owner", ""];
 
 if ( count _truck_load < _maxload ) then {
 	private _truck_offset = (_offsets select (count _truck_load)) vectorAdd _box_offset;
-	private _object = createVehicle [_object_type, ([] call R3F_LOG_FNCT_3D_tirer_position_degagee_ciel), [], 0, "NONE"];
+	private _object = createVehicle [_object_type, ([] call F_getFreePos), [], 0, "NONE"];
 
 	// Mobile respawn
 	if (_object_type == mobile_respawn) then {
