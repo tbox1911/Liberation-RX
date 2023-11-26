@@ -40,8 +40,8 @@ private _my_squad = _unit getVariable ["my_squad", nil];
 if (!isNil "_my_squad") then { {deleteVehicle _x} forEach units _my_squad };
 
 // remove Grave Box
-private _grave = _unit getVariable ["GRLIB_player_grave", nil];
-if (!isNil "_grave") then { deleteVehicle _grave };
+private _grave_box = _unit getVariable ["PAR_grave_box", nil];
+if (!isNil "_grave_box") then { deleteVehicle _grave_box };
 
 // Remove Taxi
 private _taxi = _unit getVariable ["GRLIB_taxi_called", nil];

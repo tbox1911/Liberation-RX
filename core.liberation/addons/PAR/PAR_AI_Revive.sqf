@@ -50,6 +50,14 @@ PAR_MedGarbage = [
   "MedicalGarbage_01_3x3_v2_F"
 ];
 
+PAR_graves = [
+	"Land_Grave_rocks_F",
+	"Land_Grave_forest_F",
+	"Land_Grave_dirt_F"
+];
+
+PAR_grave_box = "Land_PlasticCase_01_small_black_F";
+
 waituntil {sleep 1; GRLIB_player_spawned};
 waituntil {sleep 1; !isNil {player getVariable ["GRLIB_Rank", nil]}};
 
@@ -66,13 +74,23 @@ _marker setMarkerTypeLocal "KIA";
 _marker setMarkerTextlocal format ["%1's Grave.", name player];
 
 // Grave Box
-GRLIB_grave = createVehicle [GRLIB_player_gravebox, ([] call F_getFreePos), [], 0, "NONE"];
-[GRLIB_grave, playerbox_cargospace] remoteExec ["setMaxLoad", 2];
-GRLIB_grave allowDamage false;
-GRLIB_grave enableSimulationGlobal false;
-GRLIB_grave setVariable ["R3F_LOG_disabled", true, true];
-GRLIB_grave setVariable ["GRLIB_vehicle_owner", PAR_Grp_ID, true];
-player setvariable ["GRLIB_player_grave", GRLIB_grave, true];
+PAR_grave_box = createVehicle [PAR_grave_box, ([] call F_getFreePos), [], 0, "NONE"];
+[PAR_grave_box, playerbox_cargospace] remoteExec ["setMaxLoad", 2];
+PAR_grave_box allowDamage false;
+PAR_grave_box enableSimulationGlobal false;
+PAR_grave_box setVariable ["R3F_LOG_disabled", true, true];
+PAR_grave_box setVariable ["GRLIB_vehicle_owner", PAR_Grp_ID, true];
+player setvariable ["PAR_grave_box", PAR_grave_box, true];
+
+// Grave Name
+addMissionEventHandler ["Draw3D",{
+	private _near_grave = nearestObjects [player, PAR_graves, 2];
+	if (count (_near_grave) > 0) then {
+		private _grave = _near_grave select 0;
+		private _grave_pos = ASLToAGL getPosASL _grave;
+		drawIcon3D [getMissionPath "res\skull.paa", [1,1,1,1], _grave_pos vectorAdd [0, 0, 1], 2, 2, 0, (_grave getVariable ["PAR_grave_message", ""]), 2, 0.05, "RobotoCondensed", "center"];
+	};
+}];
 
 // AI Manager
 [] spawn PAR_AI_Manager;

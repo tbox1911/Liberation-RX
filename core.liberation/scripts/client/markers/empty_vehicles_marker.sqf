@@ -9,7 +9,7 @@ waitUntil {sleep 1; !isNil "GRLIB_mobile_respawn"};
 
 private _no_marker_classnames = [
 	playerbox_typename,
-	GRLIB_player_gravebox,
+	PAR_grave_box,
 	GRLIB_sar_wreck,
 	GRLIB_sar_fire,
 	Warehouse_desk_typename,

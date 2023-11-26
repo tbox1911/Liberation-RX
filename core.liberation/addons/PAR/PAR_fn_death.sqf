@@ -13,25 +13,33 @@ if (_unit == player) then {
 		round (_pos select 2) == 0 && !(surfaceIsWater _pos)
 	) then {
 		_unit hideObject true;
-		//_unit setPosATL ((markerPos GRLIB_respawn_marker) vectorAdd [floor(random 5), floor(random 5), 1]);
 
 		// Save Stuff
-		[GRLIB_grave] call F_clearCargo;
-		[GRLIB_grave, _unit] call save_loadout_cargo;
+		[PAR_grave_box] call F_clearCargo;
+		[PAR_grave_box, _unit] call save_loadout_cargo;
 
 		// create grave
-		_grave = (selectRandom GRLIB_player_grave) createVehicle _pos;
+		_grave = (selectRandom PAR_graves) createVehicle _pos;
 		_grave allowDamage false;
 		_grave setPosATL _pos;
-		_grave setvariable ["GRLIB_grave_message", format ["%1 - R.I.P -", name player], true];
+		_grave setvariable ["PAR_grave_message", format ["- R.I.P - %1", name player], true];
 		_grave_dir = getDir _grave;
+
+		// remove old grave (max: 3)
+		_old_graves = _unit getVariable ["PAR_player_graves", []];
+		_old_graves pushback _grave;
+		if (count _old_graves > 3) then {
+			deleteVehicle (_old_graves select 0);
+			_old_graves deleteAt 0;
+		}; 
+		_unit setvariable ["PAR_player_graves", _old_graves];
 
 		// attach grave box
 		_grave_box_pos = (getposATL _grave) vectorAdd ([[-1.75, 0, 0], -_grave_dir] call BIS_fnc_rotateVector2D);
-		GRLIB_grave enableSimulationGlobal true;
-		GRLIB_grave setPosATL _grave_box_pos;
-		GRLIB_grave attachto [_grave];
-		"player_grave_box" setMarkerPosLocal GRLIB_grave;
+		PAR_grave_box enableSimulationGlobal true;
+		PAR_grave_box setPosATL _grave_box_pos;
+		PAR_grave_box attachto [_grave];
+		"player_grave_box" setMarkerPosLocal _grave;
 	};
 
 	// respawn penalty
