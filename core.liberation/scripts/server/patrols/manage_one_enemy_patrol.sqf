@@ -11,7 +11,7 @@ private [
 ];
 
 while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
-	//sleep (300 + floor(random 300));
+	sleep (300 + floor(random 300));
 	while { opforcap > GRLIB_patrol_cap || (diag_fps < 35.0) || combat_readiness < _readiness } do {
 		sleep 60;
 	};
