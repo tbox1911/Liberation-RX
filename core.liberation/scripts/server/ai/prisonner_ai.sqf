@@ -11,6 +11,7 @@ if (!alive _unit) exitWith {};
 
 // Init priso
 private ["_grp", "_flee_grp", "_anim"];
+[_unit] call F_fixPosUnit;
 
 _unit setCaptive true;
 removeAllWeapons _unit;
