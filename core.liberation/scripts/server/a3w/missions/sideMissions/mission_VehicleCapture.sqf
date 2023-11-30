@@ -24,6 +24,7 @@ _setupObjects =
 	_vehicle setFuel 0.1;
 	_vehicle setVehicleAmmo 0.1;
 	_vehicle setHit [getText (configFile >> "cfgVehicles" >> (typeOf _vehicle) >> "HitPoints" >> "HitEngine" >> "name"), 1];
+	_vehicle setDamage 0.15;
 	_smoke = GRLIB_sar_fire createVehicle _vehiclePos;
 	_smoke attachTo [_vehicle, [0, 1.5, 0]];
 	[_missionPos, 30] call createlandmines;
@@ -37,7 +38,7 @@ _setupObjects =
 
 _waitUntilMarkerPos = nil;
 _waitUntilExec = nil;
-_waitUntilCondition = {!(alive _vehicle)};
+_waitUntilCondition = { !(alive _vehicle) };
 
 _failedExec = {
 	// Mission failed
