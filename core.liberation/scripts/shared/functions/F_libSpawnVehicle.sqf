@@ -69,6 +69,16 @@ if ( _classname isKindOf "Air" ) then {
 
 if ( isNull _vehicle ) exitWith { diag_log format ["--- LRX Error: Cannot build vehicle (%1) at position %2", _classname, _sectorpos]; objNull };
 
+// CUP remove tank panel
+if (GRLIB_CUPV_enabled) then {
+	[_vehicle, false, ["hide_front_ti_panels",1,"hide_cip_panel_rear",1,"hide_cip_panel_bustle",1]] call BIS_fnc_initVehicle;
+};
+
+// RHS remove tank panel
+if (GRLIB_RHS_enabled) then {
+	[_vehicle, false, ["IFF_Panels_Hide",1,"Miles_Hide",1]] call BIS_fnc_initVehicle;
+};
+
 if ( _vehicle isKindOf "Air" ) then {
 	if (GRLIB_SOG_enabled) then { _airveh_alt = 50 };
 	_vehicle engineOn true;
@@ -99,31 +109,21 @@ if ( _side != GRLIB_side_civilian ) then {
 			[_vehicle] call F_forceOpforCrew;
 		};
 		_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
+
+		// LRX textures
+		if (count opfor_texture_overide > 0) then {
+			_texture_name = selectRandom opfor_texture_overide;
+			[_vehicle, _texture_name] call RPT_fnc_TextureVehicle;
+		};
+
+		// A3 textures
+		if ( _classname in ["I_E_Truck_02_MRL_F"] ) then {
+			[_vehicle, ["Opfor",1], true ] call BIS_fnc_initVehicle;
+		};
 	};
 		
 	_vehcrew = crew _vehicle;
 	{ _x allowDamage false } forEach _vehcrew;
-
-	// A3 textures
-	if ( _classname in ["I_E_Truck_02_MRL_F"] ) then {
-		[_vehicle, ["Opfor",1], true ] call BIS_fnc_initVehicle;
-	};
-
-	// CUP remove tank panel
-	if (GRLIB_CUPV_enabled) then {
-		[_vehicle, false, ["hide_front_ti_panels",1,"hide_cip_panel_rear",1,"hide_cip_panel_bustle",1]] call BIS_fnc_initVehicle;
-	};
-
-	// RHS remove tank panel
-	if (GRLIB_RHS_enabled) then {
-		[_vehicle, false, ["IFF_Panels_Hide",1,"Miles_Hide",1]] call BIS_fnc_initVehicle;
-	};
-
-	// LRX textures
-	if (count opfor_texture_overide > 0) then {
-		_texture_name = selectRandom opfor_texture_overide;
-		[_vehicle, _texture_name] call RPT_fnc_TextureVehicle;
-	};
 
 	[_vehicle, _vehcrew] spawn {
 		params ["_veh", "_crew"];
