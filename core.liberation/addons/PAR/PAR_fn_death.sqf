@@ -14,10 +14,6 @@ if (_unit == player) then {
 	) then {
 		_unit hideObject true;
 
-		// Save Stuff
-		[PAR_grave_box] call F_clearCargo;
-		[PAR_grave_box, _unit] call save_loadout_cargo;
-
 		// create grave
 		_grave = (selectRandom PAR_graves) createVehicle _pos;
 		_grave allowDamage false;
