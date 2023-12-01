@@ -7,7 +7,7 @@ private _posts_classname = [
 	"Cargo_Tower_base_F",
 	"Cargo_House_base_F"
 ];
-private _spawned_units_local = [];
+
 private _garnison_max = 5;
 private _allposts = ([nearestObjects [_squadpos, _posts_classname, GRLIB_capture_size], {alive _x}] call BIS_fnc_conditionalSelect) select [0, 4];
 
@@ -23,7 +23,7 @@ if ( count _allposts > 0 ) then {
 			_grp = [_squadpos, _unitclass, GRLIB_side_enemy, "infantry", false] call F_libSpawnUnits;
 			{
 				_x setPos (_building_positions select _forEachIndex);
-				_spawned_units_local pushback _x;
+				_x setVariable ["GRLIB_in_building", true];
 			} foreach (units _grp);
 		};
 	} foreach _allposts;
@@ -48,7 +48,7 @@ if ( count _allposts > 0 ) then {
 		_x setdir (_newdir2);
 	} foreach (units _grp);
 	
-	diag_log format ["Done spawning military post squad (%1) at %2", count _spawned_units_local, time];
+	diag_log format ["Done spawning military post squad (%1) at %2", count (units _grp), time];
 };
 
-_spawned_units_local;
+(units _grp);

@@ -27,7 +27,9 @@ removeGoggles _unit;
 _unit forceAddUniform _cloth;
 _unit setHitPointDamage ["hitLegs", 0];
 {_unit disableAI _x} count ["TARGET","AUTOTARGET","AUTOCOMBAT","SUPPRESSION"];
-[_unit] call F_fixPosUnit;
+if !(_unit getVariable ["GRLIB_in_building", false]) then {
+	[_unit] call F_fixPosUnit;
+};
 _unit setUnitPos "UP";
 _unit switchMove "";
 sleep 1;

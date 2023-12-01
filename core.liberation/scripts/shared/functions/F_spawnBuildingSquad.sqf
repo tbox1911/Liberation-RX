@@ -2,7 +2,6 @@ params [ "_infsquad", "_building_ai_max", "_buildingpositions", "_sectorpos", [ 
 
 diag_log format ["Spawn building squad type %1 at %2", _infsquad, time];
 
-private _spawned_units_local = [];
 private _default_side = GRLIB_side_enemy;
 private _infsquad_classnames = [];
 
@@ -30,19 +29,13 @@ if ( _building_ai_max > 0 ) then {
 
 	private _idxposit = 0;
 	{
-		_x allowDamage false;
 		_x setPos (_buildingpositions select (_position_indexes select _idxposit));
-		_spawned_units_local pushback _x;
 		[_x, _sector] spawn building_defence_ai;
+		_x setVariable ["GRLIB_in_building", true];
 		_idxposit = _idxposit + 1;
-	} foreach (units _grp);
-	sleep 2;
-	{
-		_x setDamage 0;
-		_x allowDamage true;
 	} foreach (units _grp);
 };
 
-diag_log format ["Done Spawning building squad (%1) at %2", count _spawned_units_local, time];
+diag_log format ["Done Spawning building squad (%1) at %2", count (units _grp), time];
 
-_spawned_units_local;
+(units _grp);
