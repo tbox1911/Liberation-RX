@@ -60,7 +60,6 @@ while { ({alive _x} count (units _grp) > 0) && ( GRLIB_endgame == 0 ) } do {
 	sleep 1;
 	{
 		_x doFollow (leader _grp);
-		[_x] call F_fixPosUnit;
 	} foreach units _grp;
 
 	if (_vehicle isKindOf "AllVehicles") then {

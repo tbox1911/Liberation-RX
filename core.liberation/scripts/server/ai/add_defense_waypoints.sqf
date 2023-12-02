@@ -83,7 +83,6 @@ while { ({alive _x} count (units _grp) > 0) && ( GRLIB_endgame == 0 ) } do {
 	_waypoint setWaypointType "CYCLE";
 	{
 		_x doFollow leader _grp;
-		[_x] call F_fixPosUnit;
 	} foreach units _grp;
 
 	_timer = round (time + (5 * 60));
