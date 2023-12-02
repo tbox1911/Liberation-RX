@@ -35,13 +35,7 @@ private _grp = createGroup [GRLIB_side_civilian, true];
 		_dam;
 	}];
 
-	_spawnpos = getPosATL _unit;
-	_start = +_spawnpos;
-	_start set [2, 80];
-	while { (lineIntersects [ATLToASL _start, ATLToASL _spawnpos]) } do {
-		_spawnpos set [2, ((_spawnpos select 2) + 0.25)]
-	};
-	_unit setPosATL _spawnpos;
+	[_unit] call F_fixPosUnit;
 	_unit switchMove "AmovPercMwlkSrasWrflDf";
 	_unit playMoveNow "AmovPercMwlkSrasWrflDf";
 	sleep 1;
