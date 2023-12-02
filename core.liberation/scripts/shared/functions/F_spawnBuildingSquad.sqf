@@ -2,6 +2,7 @@ params [ "_infsquad", "_building_ai_max", "_buildingpositions", "_sectorpos", [ 
 
 diag_log format ["Spawn building squad type %1 at %2", _infsquad, time];
 
+private _grp = grpNull;
 private _default_side = GRLIB_side_enemy;
 private _infsquad_classnames = [];
 
@@ -25,7 +26,7 @@ if ( _building_ai_max > 0 ) then {
 			_position_indexes pushback _nextposit;
 		};
 	};
-	private _grp = [_sectorpos, _unitclass, _default_side, _infsquad, false] call F_libSpawnUnits;
+	_grp = [_sectorpos, _unitclass, _default_side, _infsquad, false] call F_libSpawnUnits;
 
 	private _idxposit = 0;
 	{

@@ -1,5 +1,5 @@
 params [ "_squadpos" ];
-private [ "_grp", "_building_positions", "_unitclass", "_unit", "_totalx2", "_totaly2", "_avgx2", "_avgy2", "_vd2", "_newdir2" ];
+private [ "_building_positions", "_unitclass", "_unit", "_totalx2", "_totaly2", "_avgx2", "_avgy2", "_vd2", "_newdir2" ];
 
 private _posts_classname = [
 	"Cargo_HQ_base_F",
@@ -8,6 +8,7 @@ private _posts_classname = [
 	"Cargo_House_base_F"
 ];
 
+private _grp = grpNull;
 private _garnison_max = 5;
 private _allposts = ([nearestObjects [_squadpos, _posts_classname, GRLIB_capture_size], {alive _x}] call BIS_fnc_conditionalSelect) select [0, 4];
 
