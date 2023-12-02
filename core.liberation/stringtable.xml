@@ -7962,6 +7962,10 @@
 			<Original>Hey %1, All your units are down, Help them!</Original>
 			<French>Hé %1, Toutes tes unités sont à terre, Aide-les !</French>
 		</Key>
+		<Key ID="STR_PAR_DE_01">
+			<Original>Bad news, we lost soldier %1...</Original>
+			<French>Mauvaise nouvelle, on as perdu le soldat %1...</French>
+		</Key>
 	</Package>
 
 	<!-- pSiKO LRX Taxi -->

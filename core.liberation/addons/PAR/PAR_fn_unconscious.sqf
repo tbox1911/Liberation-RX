@@ -7,9 +7,6 @@ waituntil {sleep 0.5; lifeState _unit == "INCAPACITATED" && (isTouchingGround (v
 if (isPlayer _unit) then {
   [] call PAR_show_marker;
   if ( [_unit] call F_getScore > GRLIB_perm_log + 5) then { [_unit, -1] remoteExec ["F_addScore", 2] };
-  // Save Stuff
-  [PAR_grave_box] call F_clearCargo;
-  [PAR_grave_box, _unit] call save_loadout_cargo;
 } else {
   [_unit] call F_deathSound;
 };

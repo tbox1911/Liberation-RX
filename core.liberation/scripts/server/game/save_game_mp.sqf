@@ -106,7 +106,7 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
                         private _color = "";
                         private _color_name = _x getVariable ["GRLIB_vehicle_color_name", ""];
                         private _compo = _x getVariable ["GRLIB_vehicle_composant", []];
-                        private _lst_a3 = [_x] call F_getCargo;
+                        private _lst_a3 = [];
                         private	_lst_r3f = [];
                         private	_lst_grl = [];
                         {_lst_r3f pushback (typeOf _x)} forEach (_x getVariable ["R3F_LOG_objets_charges", []]);

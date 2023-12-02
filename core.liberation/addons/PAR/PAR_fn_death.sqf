@@ -12,7 +12,12 @@ if (_unit == player) then {
 		!([_unit, "LHD", GRLIB_capture_size] call F_check_near) &&
 		round (_pos select 2) == 0 && !(surfaceIsWater _pos)
 	) then {
-		_unit hideObject true;
+		// Save Stuff
+		[PAR_grave_box] call F_clearCargo;
+		[PAR_grave_box, _unit] call save_loadout_cargo;
+
+		//_unit hideObject true;
+		_unit setPosATL ((markerPos GRLIB_respawn_marker) vectorAdd [floor(random 5), floor(random 5), 1]);
 
 		// create grave
 		_grave = (selectRandom PAR_graves) createVehicle _pos;
@@ -27,7 +32,7 @@ if (_unit == player) then {
 		if (count _old_graves > 3) then {
 			deleteVehicle (_old_graves select 0);
 			_old_graves deleteAt 0;
-		}; 
+		};
 		_unit setvariable ["PAR_player_graves", _old_graves];
 
 		// attach grave box
@@ -46,6 +51,8 @@ if (_unit == player) then {
 		player setVariable ["GRLIB_last_respawn", round (time + GRLIB_respawn_cooldown)];
 	};
 	titleText ["" ,"BLACK FADED", 100];
+} else {
+	gamelogic globalChat (format [localize "STR_PAR_DE_01", name _unit]);
 };
 
 removeAllWeapons _unit;
