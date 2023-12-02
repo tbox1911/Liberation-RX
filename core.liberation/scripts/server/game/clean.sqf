@@ -33,8 +33,7 @@ Instructions:
 	[] execVM "clean.sqf";				// If you put the file in mission directory
 	[] execVM "scripts\clean.sqf";		// If you put the file in a folder, in this case called "scripts"
 _________________________________________________________________________*/
-
-sleep 15;
+GRLIB_GC_Running = false;
 
 if (GRLIB_cleanup_vehicles == 0) exitWith {};
 
@@ -128,6 +127,7 @@ while {deleteManagerPublic} do {
 	sleep _sleep;
 
 	diag_log format ["--- LRX Garbage Collector --- Start at: %1 - %2 fps", round(time), diag_fps];
+	GRLIB_GC_Running = true;
 
 	// FORCE DELETE
 	_list = entities [GRLIB_force_cleanup_classnames, []];
@@ -364,5 +364,6 @@ while {deleteManagerPublic} do {
 	};
 
 	sleep 2;
+	GRLIB_GC_Running = false;
 	diag_log format ["--- LRX Garbage Collector --- End at: %1 - Delete: %2 objects - %3 fps", round(time), _stats, diag_fps];
 };

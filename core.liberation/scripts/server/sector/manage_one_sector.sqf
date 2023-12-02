@@ -1,5 +1,6 @@
 params [ "_sector" ];
 
+waitUntil {sleep 0.5; !GRLIB_GC_Running };
 active_sectors pushback _sector;
 publicVariable "active_sectors";
 

@@ -1,6 +1,7 @@
 params [ "_sector", "_patrol_type" ];
 
 if (_sector in blufor_sectors) exitWith {};
+waitUntil {sleep 0.5; !GRLIB_GC_Running };
 private _grp = grpNull;
 private _vehicle = objNull;
 

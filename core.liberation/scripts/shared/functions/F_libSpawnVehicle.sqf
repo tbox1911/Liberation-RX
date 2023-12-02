@@ -7,6 +7,7 @@ params [
 ];
 
 if (isNil "_classname") exitWith {};
+waitUntil {sleep 0.5; !GRLIB_GC_Running };
 diag_log format [ "Spawn vehicle %1 at %2", _classname , time ];
 
 private _vehicle = objNull;

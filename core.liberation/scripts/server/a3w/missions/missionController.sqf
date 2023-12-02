@@ -46,6 +46,8 @@ while {true} do {
 		};
 	};
 
+	waitUntil {sleep 2; !GRLIB_GC_Running };
+
 	// Mission start + lock
 	[SideMissions, _nextMission, true] call setMissionState;
 	

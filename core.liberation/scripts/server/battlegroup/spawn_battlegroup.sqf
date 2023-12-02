@@ -1,5 +1,6 @@
 if ( GRLIB_endgame == 1 || GRLIB_global_stop == 1 ) exitWith {};
 params ["_liberated_sector"];
+waitUntil {sleep 0.5; !GRLIB_GC_Running };
 diag_log format ["Spawn BattlegGroup at %1", time];
 
 private _bg_groups = [];

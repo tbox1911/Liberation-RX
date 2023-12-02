@@ -22,6 +22,7 @@ private _sector_pos = markerPos _sector;
 private _roadobj = selectRandom (_sector_pos nearRoads _radius);
 
 if !(isNil "_roadobj") then {
+	waitUntil {sleep 0.5; !GRLIB_GC_Running };
 	private _ied_obj = createMine [ _ied_type, [getposATL _roadobj, 1, random(360)] call BIS_fnc_relPos, [], 0];
 	_ied_obj setPos (getPos _ied_obj);
 

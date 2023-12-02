@@ -7,6 +7,7 @@ if (_number >= 1) then {
 };
 
 // Create
+waitUntil {sleep 0.5; !GRLIB_GC_Running };
 private _radius = GRLIB_capture_size - 20;
 if (_sector in sectors_bigtown) then { _radius = _radius * 1.4 };
 

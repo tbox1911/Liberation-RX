@@ -30,6 +30,7 @@ if (count _context >= 1) then {
                 _wait = false
             } else {
                 if ([_player, "FOB", GRLIB_fob_range] call F_check_near && isTouchingGround vehicle _player) then {
+                    waitUntil {sleep 0.5; !GRLIB_GC_Running };
                     {
                         [
                             [_x select 0, _x select 1, _x select 2],
