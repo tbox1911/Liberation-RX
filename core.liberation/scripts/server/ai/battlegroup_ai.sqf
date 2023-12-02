@@ -58,9 +58,7 @@ while { ({alive _x} count (units _grp) > 0) && ( GRLIB_endgame == 0 ) } do {
 	_waypoint = _grp addWaypoint [_wp0, 0];
 	_waypoint setWaypointType "CYCLE";
 	sleep 1;
-	{
-		_x doFollow (leader _grp);
-	} foreach units _grp;
+	{ _x doFollow (leader _grp) } foreach units _grp;
 
 	if (_vehicle isKindOf "AllVehicles") then {
 		(driver _vehicle) doMove _objective_pos;
