@@ -15,19 +15,13 @@ if (isNil "_forced_pos") then {
 	_text = format ["Player %1 Air Drop Vehicle.", name _unit];
 	_vehicle = _class;
 	_pos = _forced_pos;
+	if (!local _vehicle) then { waitUntil {sleep 0.1; _vehicle setOwner 2} };
 };
-
-_pos set [2, 500];	// launch altitude
-if (surfaceIsWater _pos) then { _pos = ATLtoASL _pos };
-
-_vehicle allowDamage false;
-while { _vehicle distance _pos > 50 } do {
-	_vehicle setPos _pos;
-	sleep 0.2;
-};
-_vehicle allowDamage true;
 
 [gamelogic, _text] remoteExec ["globalChat", 0];
+_pos set [2, 500];	// launch altitude
+if (surfaceIsWater _pos) then { _pos = ATLtoASL _pos };
+_vehicle setPos _pos;
 [_vehicle] spawn F_addParachute;
 
 diag_log format [ "Done Airdrop vehicle %1 on %2 at %3", (typeOf _vehicle), _pos, time ];

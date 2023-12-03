@@ -26,7 +26,6 @@ waitUntil {sleep 0.1; (getPos _vehicle select 2) <= _open_parachute};
 
 private _pos = getPos _vehicle;
 private _parachute = createVehicle ["B_Parachute_02_F", _pos, [], 0, "NONE"];
-_parachute setPos _pos;
 _parachute disableCollisionWith _vehicle;
 _parachute disableCollisionWith _source;
 _parachute setVelocity (velocity _vehicle);
