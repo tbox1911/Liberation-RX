@@ -77,6 +77,12 @@ _unit addEventHandler ["FiredMan",	{
 	// 		};
 	// 	};
 	// };
+
+	// Limit artillery fire
+	if (isNumber (configFile >> "CfgVehicles" >> typeOf _vehicle >> "artilleryScanner")) then {
+		private _res = getNumber (configFile >> "CfgVehicles" >> typeOf _vehicle >> "artilleryScanner");
+		if (_res == 1) then { [] spawn artillery_cooldown };	
+	};
 }];
 
 // Player
