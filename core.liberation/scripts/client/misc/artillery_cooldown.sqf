@@ -7,7 +7,7 @@ private _cooldown = (1800/_max_shot);
 GRLIB_artillery_shot = GRLIB_artillery_shot + 1;
 
 if (GRLIB_artillery_shot >= _max_shot)  then {
-	hint "Artillery Cooldown!\nYou are overusing artillery fire, slow down!"
+	hint "Artillery Cooldown!\nYou are overusing artillery fire, slow down!";
 	enableEngineArtillery false;
 	waitUntil { sleep 2; GRLIB_artillery_shot < _max_shot };
 	enableEngineArtillery true;
