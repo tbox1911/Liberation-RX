@@ -74,7 +74,7 @@ if ( isServer ) then {
 
 		if (isNull _killer) exitWith {};
 		if ( _unit != _killer ) then {
-			_isPrisonner = _unit getVariable ["GRLIB_is_prisonner", false];
+			_isPrisonner = _unit getVariable ["GRLIB_is_prisoner", false];
 			_isKamikaz = _unit getVariable ["GRLIB_is_kamikaze", false];
 			_isZombie = ((typeOf _unit) select [0,10] == "RyanZombie");
 			if ( _isKamikaz ) then { 

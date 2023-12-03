@@ -3,7 +3,7 @@ params [ "_unit", ["_friendly", false], ["_canmove", false] ];
 if (isNull _unit) exitWith {};
 if ((typeOf _unit) select [0,10] == "RyanZombie") exitWith {};
 if (_unit getVariable ["GRLIB_mission_AI", false]) exitWith {};
-if (_unit getVariable ["GRLIB_is_prisonner", false]) exitWith {};
+if (_unit getVariable ["GRLIB_is_prisoner", false]) exitWith {};
 if (_unit skill "courage" == 1) exitWith {};
 
 sleep 3;
@@ -23,7 +23,7 @@ removeVest _unit;
 private _hmd = (hmd _unit);
 _unit unassignItem _hmd;
 _unit removeItem _hmd;
-_unit setVariable ["GRLIB_is_prisonner", true, true];
+_unit setVariable ["GRLIB_is_prisoner", true, true];
 _unit setVariable ["GRLIB_can_speak", true, true];
 
 if (!_canmove) then {
@@ -101,7 +101,7 @@ while {alive _unit} do {
 		_player_in_action = ((leader group _unit) getVariable ["GRLIB_action_inuse", false]);
 
 		if (_no_blufor_near && !_player_in_action && !_fleeing) then {
-			_unit setVariable ["GRLIB_is_prisonner", true, true];
+			_unit setVariable ["GRLIB_is_prisoner", true, true];
 			_fleeing = true;
 
 			if (side group _unit == GRLIB_side_friendly) then {
@@ -147,7 +147,7 @@ while {alive _unit} do {
 	};
 
 	// Stopped
-	if !(_unit getVariable ["GRLIB_is_prisonner", true]) then {
+	if !(_unit getVariable ["GRLIB_is_prisoner", true]) then {
 		_fleeing = false;
 	};
 

@@ -2,7 +2,7 @@ params ["_unit", ["_side", west]];
 
 if (isNull _unit) exitWith {};
 if (_unit getVariable ["GRLIB_mission_AI", false]) exitWith {};
-if (_unit getVariable ["GRLIB_is_prisonner", false]) exitWith {};
+if (_unit getVariable ["GRLIB_is_prisoner", false]) exitWith {};
 
 sleep 3;
 if (!alive _unit) exitWith {};

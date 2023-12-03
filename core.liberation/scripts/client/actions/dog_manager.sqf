@@ -40,7 +40,7 @@ while { true } do {
 				};
 				// detect enemy
 				_enemy_lst = (getPosATL _my_dog) nearEntities ["Man", 50];
-				_enemy_lst = _enemy_lst select {alive _x && (side _x == GRLIB_side_enemy || {_x getVariable ["GRLIB_is_prisonner", false]})};	
+				_enemy_lst = _enemy_lst select {alive _x && (side _x == GRLIB_side_enemy || {_x getVariable ["GRLIB_is_prisoner", false]})};	
 				if (count _enemy_lst > 0) then {
 					_enemy_lst = _enemy_lst apply {[_x distance2D player, _x]};
 					_enemy_lst sort true;
@@ -56,7 +56,7 @@ while { true } do {
 			} else {
 				// Find men
 				if (_man isKindOf "CAManBase") then {
-					private _is_captured = !(_man getVariable ["GRLIB_is_prisonner", true]);
+					private _is_captured = !(_man getVariable ["GRLIB_is_prisoner", true]);
 					if (!alive _man || (_man != player && side _man == GRLIB_side_friendly) || _is_captured) then {
 						_my_dog setVariable ["do_find", nil];
 					} else {

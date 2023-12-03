@@ -1,5 +1,8 @@
 // PAR Manage AI
 
+private _comm_id1 = 0;
+private _have_priso = 0;
+
 while {true} do {
     PAR_AI_bros = ((units player) + (units GRLIB_side_civilian)) select {!isplayer _x && alive _x && (_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1", PAR_Grp_ID]};
     if (count PAR_AI_bros > 0 ) then {
@@ -62,5 +65,18 @@ while {true} do {
             sleep 0.3;
         } forEach PAR_AI_bros;
     };
+
+    _have_priso = {(!isNil {_x getVariable "GRLIB_is_prisoner"})} count (units player);
+    if (_have_priso > 0) then { 
+        if (_comm_id1 == 0) then {
+            _comm_id1 = [player,"LRX_Abandon",nil,nil,""] call BIS_fnc_addCommMenuItem;
+        };
+    } else {
+        if (_comm_id1 != 0) then {
+            [player, _comm_id1] call BIS_fnc_removeCommMenuItem;
+            _comm_id1 = 0;
+        };
+    };
+
     sleep 5;
 };

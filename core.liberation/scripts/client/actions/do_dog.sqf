@@ -19,7 +19,7 @@ if (!isNil "_my_dog") then {
 
 	if (_cmd == "find") then {
 		_enemy_lst = (getPos player) nearEntities ["Man", 300];
-		_enemy_lst = _enemy_lst select {alive _x && (side _x == GRLIB_side_enemy || {_x getVariable ["GRLIB_is_prisonner", false]})};
+		_enemy_lst = _enemy_lst select {alive _x && (side _x == GRLIB_side_enemy || {_x getVariable ["GRLIB_is_prisoner", false]})};
 
 		_msg = localize "STR_DOG_FOUND_NOTHING";
 		if (count _enemy_lst > 0) then {

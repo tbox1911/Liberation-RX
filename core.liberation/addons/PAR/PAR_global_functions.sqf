@@ -19,14 +19,14 @@ PAR_medic_units = {
 PAR_unblock_AI = {
 	// Unblock unit(s) 0-8-1
 	params ["_unit_array"];
+	private _grp = grpNull;
 	if (player getVariable ["SOG_player_in_tunnel", false]) exitWith {};
 	if ( isNull (objectParent player) && count _unit_array == 0 ) then {
-		private _grp = group player;
 		player setPosATL (getPosATL player vectorAdd [([] call F_getRND), ([] call F_getRND), 0.5]);
 	} else {
 		{
 			_unit = _x;
-			if (isNull (objectParent _unit) && round (player distance2D _unit) < 50 && (lifeState _unit != 'INCAPACITATED') && vehicle _unit == _unit) then {
+			if (isNull (objectParent _unit) && (player distance2D _unit) < 50 && (lifeState _unit != 'INCAPACITATED')) then {
 				doStop _unit;
 				sleep 1;
 				_unit doWatch objNull;
@@ -47,6 +47,27 @@ PAR_unblock_AI = {
 				_unit playMoveNow "AmovPercMwlkSrasWrflDf";
 			} else {
 				hintSilent "Unit is in a vehicle or is unconscious,\n or is too far. (max 50m)";
+			};
+		} forEach _unit_array;
+	};
+};
+PAR_abandon_priso = {
+	// Abandon selected prisoners 0-8-1
+	params ["_unit_array"];
+	private _grp = grpNull;
+	if (player getVariable ["SOG_player_in_tunnel", false]) exitWith {};
+	if ( count _unit_array > 0 ) then {
+		{
+			_unit = _x;
+			if (!isNil {_unit getVariable "GRLIB_is_prisoner"}) then {
+				if (isNull (objectParent _unit) && (player distance2D _unit) < 50) then {
+					doStop _unit;
+					_grp = createGroup [GRLIB_side_enemy, true];
+					[_unit] joinSilent _grp;
+					[_unit] remoteExec ["prisonner_ai", 2];
+				} else {
+					hintSilent "Prisoner is in a vehicle or is too far. (max 50m)";
+				};
 			};
 		} forEach _unit_array;
 	};

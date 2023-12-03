@@ -55,6 +55,7 @@ class CfgDebriefing {
 #include "ui\liberation_interface.hpp"
 #include "ui\liberation_notifications.hpp"
 #include "ui\mission_params.hpp"
+#include "ui\liberation_comm.hpp"
 #include "R3F_LOG\desc_include.h"
 #include "addons\MGR\MagRepack_Config.hpp"
 #include "addons\VIRT\virtual_garage.hpp"
