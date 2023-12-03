@@ -3,6 +3,7 @@ params [ "_fobpos" ];
 sleep 30;
 private _ownership = [ _fobpos ] call F_sectorOwnership;
 if ( _ownership != GRLIB_side_enemy ) exitWith {};
+if ( GRLIB_endgame == 1 || GRLIB_global_stop == 1 ) exitWith {};
 
 diag_log format ["Spawn Attack FOB %1 at %2", _fobpos, time];
 private _max_prisonners = 4;

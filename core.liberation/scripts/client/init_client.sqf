@@ -7,7 +7,7 @@ GRLIB_player_spawned = false;
 GRLIB_player_is_menuok = false;
 GRLIB_vehicle_lock = true;
 
-waitUntil {!isNil "abort_loading" };
+waitUntil {!isNil "abort_loading"};
 if (abort_loading) exitWith {
 	private _msg = format ["Sorry, An error occured on Server startup.\nPlease check the error logs.\n\n%1", abort_loading_msg];
 	titleText [_msg, "BLACK FADED", 100];
@@ -50,13 +50,21 @@ if (toLower _name in GRLIB_blacklisted_names || (_name == str parseNumber _name)
 	endMission "LOSER";
 };
 
+waitUntil {!isNil "GRLIB_global_stop"};
+if (GRLIB_global_stop == 1) exitWith {
+	private _msg = "The Final Mission is running...\nNew connections are prohibited until the end!";
+	titleText [_msg, "BLACK FADED", 100];
+	uisleep 10;
+	endMission "LOSER";
+};
+
 if (GRLIB_kick_idle > 0) then {
 	[] execVM "scripts\client\misc\kick_idle.sqf";
 };
 
 if (GRLIB_respawn_cooldown > 0) then {
 	if (isServer) exitWith {};
-	waitUntil { sleep 1; !isNil "BTC_logic"};
+	waitUntil {sleep 1; !isNil "BTC_logic"};
 	private _cooldown = BTC_logic getVariable [format ["%1_last_respawn", PAR_Grp_ID], 0];
 	if (_cooldown > time) then {
 		while { time < _cooldown } do {

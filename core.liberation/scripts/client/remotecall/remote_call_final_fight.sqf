@@ -112,7 +112,8 @@ if (sector_timer <= 0) then {
 
 	waitUntil { camCommitted _spawn_camera };
 	sleep 10;
-
+	titleText ["" ,"BLACK IN", 3];
+	sleep 60;
 	_spawn_camera cameraEffect ["Terminate","back"];
 	camDestroy _spawn_camera;
 	camUseNVG false;

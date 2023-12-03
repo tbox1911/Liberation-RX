@@ -4,6 +4,7 @@ private _sector_pos = markerpos _sector;
 sleep 20;
 private _ownership = [_sector_pos] call F_sectorOwnership;
 if ( _ownership != GRLIB_side_enemy ) exitWith {};
+if ( GRLIB_endgame == 1 || GRLIB_global_stop == 1 ) exitWith {};
 
 diag_log format ["Spawn Attack Sector %1 at %2", _sector, time];
 private _max_prisonners = 4;
