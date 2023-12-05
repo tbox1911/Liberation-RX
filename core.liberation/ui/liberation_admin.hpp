@@ -35,6 +35,7 @@ class liberation_admin {
 	  "Item02Button",
     "Item03Button",
     "Item04Button",
+    "Item05Button",
     "Item05Input",
     "Item06Button",
     "Item07Button",    
@@ -181,11 +182,20 @@ class liberation_admin {
     h = 0.04 * safezoneH;
   };
   class Item04Button: RscActiveText {
-    idc = 1616;
-    action = "do_change=1";
+    idc = 1624;
+    action = "do_fuel=1";
     text = "";
     x = 0.2859 * safezoneW + safezoneX;
     y = 0.416 * safezoneH + safezoneY;
+    w = 0.0290 * safezoneW;
+    h = 0.04 * safezoneH;
+  };
+  class Item05Button: RscActiveText {
+    idc = 1616;
+    action = "do_rejoin=1";
+    text = "";
+    x = 0.2859 * safezoneW + safezoneX;
+    y = 0.466 * safezoneH + safezoneY;
     w = 0.0290 * safezoneW;
     h = 0.04 * safezoneH;
   };

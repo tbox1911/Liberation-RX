@@ -15,7 +15,8 @@ do_unban = 0;
 do_score = 0;
 do_spawn = 0;
 do_ammo = 0;
-do_change = 0;
+do_fuel = 0;
+do_rejoin = 0;
 do_export = 0;
 do_import = 0;
 do_kick = 0;
@@ -79,13 +80,15 @@ private _output_controls = [531,532,533,534,535,536];
 { ctrlShow [_x, false] } foreach _output_controls;
 
 // Action buttons
-private _button_controls = [1600,1601,1602,1603,1604,1609,1610,1611,1612,1613,1614,1615,1616,1617,1618,1619];
+private _button_controls = [1600,1601,1602,1603,1604,1609,1610,1611,1612,1613,1614,1615,1616,1617,1618,1619,1624];
 private _disabled_controls = [1606,1607,1608,1609,1610,1613,1614,1620];
 
 (_display displayCtrl 1603) ctrlSetText getMissionPath "res\ui_confirm.paa";
 (_display displayCtrl 1603) ctrlSetToolTip "Add XP Score";
 (_display displayCtrl 1615) ctrlSetText getMissionPath "res\ui_arsenal.paa";
 (_display displayCtrl 1615) ctrlSetToolTip "Add Ammo credit";
+(_display displayCtrl 1624) ctrlSetText getMissionPath "res\ui_wfuel.paa";
+(_display displayCtrl 1624) ctrlSetToolTip "Add Fuel";
 (_display displayCtrl 1616) ctrlSetText getMissionPath "res\ui_rotation.paa";
 (_display displayCtrl 1616) ctrlSetToolTip "Rejoin player";
 (_display displayCtrl 1619) ctrlSetToolTip "Amount of Ammo or Experience Points to add";
@@ -184,21 +187,40 @@ while { alive player && dialog } do {
 		_name = _score_combo lbText (lbCurSel _score_combo);
 		_uid = _score_combo lbData (lbCurSel _score_combo);
 		_amount = parseNumber (ctrlText _ammount_edit);
-		[_uid, _amount] remoteExec ["F_addPlayerAmmo", 2];
+		_player = _uid call BIS_fnc_getUnitByUID;
+		[_player, _amount, 0] remoteExec ["ammo_add_remote_call", 2];
 		_msg = format ["Add %1 Ammo to player: %2.", _amount, _name];
 		hint _msg;
 		systemchat _msg;
 		sleep 1;
 	};
 
-	if (do_change == 1) then {
-		do_change = 0;
+	if (do_fuel == 1) then {
+		do_fuel = 0;
+		_name = _score_combo lbText (lbCurSel _score_combo);
+		_uid = _score_combo lbData (lbCurSel _score_combo);
+		_amount = parseNumber (ctrlText _ammount_edit);
+		_player = _uid call BIS_fnc_getUnitByUID;
+		[_player, 0, _amount] remoteExec ["ammo_add_remote_call", 2];
+		_msg = format ["Add %1 Fuel to player: %2.", _amount, _name];
+		hint _msg;
+		systemchat _msg;
+		sleep 1;
+	};
+
+	if (do_rejoin == 1) then {
+		do_rejoin = 0;
 		_name = _score_combo lbText (lbCurSel _score_combo);
 		_uid = _score_combo lbData (lbCurSel _score_combo);
 		_player = _uid call BIS_fnc_getUnitByUID;
 		if (!isNull _player) then {
-			hint format ["Teleport to player: %1.", _name];
-			player setPos (_player getRelPos [3, 0]);
+			hint format ["Teleport near player: %1.", _name];
+			_pos = getPos _player;
+			if (surfaceIsWater _pos) then {
+				player setPosASL _pos;
+			} else {
+				player setPosATL (_player getRelPos [3, 0]);
+			};
 			closeDialog 0;
 		} else {
 			hint "Player must be online!";
