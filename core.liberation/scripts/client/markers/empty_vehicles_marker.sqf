@@ -13,6 +13,7 @@ private _no_marker_classnames = [
 	GRLIB_sar_wreck,
 	GRLIB_sar_fire,
 	Warehouse_desk_typename,
+	"ParachuteBase",
 	"NVTarget",
 	"LaserTarget",
 	"Land_Campfire_F",
