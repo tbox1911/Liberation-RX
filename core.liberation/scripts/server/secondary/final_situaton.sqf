@@ -20,18 +20,6 @@ publicVariable "GRLIB_global_stop";
 { deleteVehicle _x } foreach (units GRLIB_SHOP_Group);
 { deleteVehicle _x } foreach (units GRLIB_side_enemy);
 
-// weather cloudy
-[] spawn {
-	while { overcast <= 0.85 } do {
-		_chosen_weather = (overcast + 0.10);
-		0 setOvercast _chosen_weather;
-		forceWeatherChange;
-		sleep 20;
-	};
-};
-
-skipTime ((21 - dayTime + 24) % 24);
-setTimeMultiplier 0;
 sleep 30;
 
 // create marker
@@ -77,17 +65,34 @@ private _success = false;
 private _last_send = 0;
 private _target = objNull;
 
+// weather cloudy
+[] spawn {
+	while { overcast <= 0.85 } do {
+		_chosen_weather = (overcast + 0.10);
+		0 setOvercast _chosen_weather;
+		forceWeatherChange;
+		sleep 20;
+	};
+};
+
+skipTime ((10 - dayTime + 24) % 24);
+setTimeMultiplier 0;
+
 [_marker, 1, _mission_delay] remoteExec ["remote_call_sector", 0];
 sleep 10;
 [] remoteExec ["remote_call_final_fight", 0];
 sleep 30;
 
+private _last = 0;
 while { _continue } do {
 	combat_readiness = 100;
 
 	if ({alive _x} count (units _grp) == 0) then {
-		_grp = [_marker, "csat", ([] call F_getAdaptiveSquadComp)] call F_spawnRegularSquad;
-		[_grp, _spawnpos, 200] spawn add_defense_waypoints;
+		if (time > _last) then {
+			_grp = [_marker, "csat", ([] call F_getAdaptiveSquadComp)] call F_spawnRegularSquad;
+			[_grp, _spawnpos, 200] spawn add_defense_waypoints;
+			_last = round (time + 180);
+		};
 	};
 
 	if ((time > _last_send || opforcap < 50) && opforcap < GRLIB_sector_cap ) then {
@@ -126,7 +131,6 @@ GRLIB_secondary_in_progress = -1;
 publicVariable "GRLIB_secondary_in_progress";
 
 if (_success) then {
-	skipTime ((10 - dayTime + 24) % 24);
 	[5] remoteExec ["BIS_fnc_earthquake", 0];
 	{ _x setDamage 1 } foreach (units GRLIB_side_enemy);
 	private _smoke = GRLIB_sar_fire createVehicle (getPos opfor_target);

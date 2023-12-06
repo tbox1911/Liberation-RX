@@ -89,7 +89,8 @@ if (sector_timer <= 0) then {
 	_spawn_camera camcommit 2;
 	waitUntil { camCommitted _spawn_camera };
 
-	waitUntil { sleep 1; isObjectHidden opfor_target };
+	waitUntil { sleep 0.5; isObjectHidden opfor_target };
+	playSoundUI ["a3\missions_f_exp\data\sounds\exp_m05_dramatic.wss", 2];
 	sleep 1;
 
 	_spawn_camera camSetRelPos _startpos1;
@@ -107,23 +108,20 @@ if (sector_timer <= 0) then {
 	sleep 15;
 	//waitUntil { camCommitted _spawn_camera };
 
-	playSoundUI  ["\a3\Music_F_Oldman\music\radio\rock\Track_R_11.ogg", 1];
-	titleText [localize "STR_MISSION3_FAILED" ,"BLACK", 5];
-
+	playSoundUI ["\a3\Music_F_Oldman\music\radio\rock\Track_R_11.ogg", 1];
+	titleText [localize "STR_MISSION3_FAILED" ,"BLACK", 3];
 	waitUntil { camCommitted _spawn_camera };
-	sleep 10;
-	titleText ["" ,"BLACK IN", 3];
-	sleep 60;
-	_spawn_camera cameraEffect ["Terminate","back"];
-	camDestroy _spawn_camera;
-	camUseNVG false;
-
-	endMission "LOSER";
+	sleep 5;
 	disableUserInput false;
 	disableUserInput true;
 	disableUserInput false;
+	titleText ["" ,"BLACK FADED", 100];
+	sleep 15;
+	_spawn_camera cameraEffect ["Terminate","back"];
+	camDestroy _spawn_camera;
+	camUseNVG false;
+	endMission "LOSER";
 	player allowDamage true;
-
 	"colorCorrections" ppEffectEnable false; // disable effect
 	"filmGrain" ppEffectEnable false; // disable effect
 };
