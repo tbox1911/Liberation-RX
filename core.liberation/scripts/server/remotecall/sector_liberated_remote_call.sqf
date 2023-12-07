@@ -57,6 +57,7 @@ private _text = format ["Reward Received: %1 Ammo and %2 Fuel", _rwd_ammo, _rwd_
 
 combat_readiness = combat_readiness + _combat_readiness_increase;
 if ( combat_readiness > 100 && GRLIB_difficulty_modifier < 2.0 ) then { combat_readiness = 100 };
+publicVariable "combat_readiness";
 stats_readiness_earned = stats_readiness_earned + _combat_readiness_increase;
 publicVariable "stats_readiness_earned";
 

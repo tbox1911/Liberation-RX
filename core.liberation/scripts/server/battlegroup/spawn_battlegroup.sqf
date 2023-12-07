@@ -78,6 +78,7 @@ if (_spawn_marker != "") then {
 
 	combat_readiness = combat_readiness - (_target_size * 1.75);
 	if ( combat_readiness < 0 ) then { combat_readiness = 0 };
+	publicVariable "combat_readiness";
 
 	{
 		if ( local _x ) then {

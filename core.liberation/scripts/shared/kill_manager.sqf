@@ -96,6 +96,9 @@ if ( isServer ) then {
 						if ( _score > GRLIB_perm_max ) then { _penalty = 60 };
 						[_killer, -_penalty] call F_addScore;
 						[name _unit, _penalty, _killer] remoteExec ["remote_call_civ_penalty", 0];
+						combat_readiness = combat_readiness + (0.5 * GRLIB_difficulty_modifier);
+						stats_readiness_earned = stats_readiness_earned + (0.5 * GRLIB_difficulty_modifier);
+						if ( combat_readiness > 100 && GRLIB_difficulty_modifier < 2 ) then { combat_readiness = 100 };
 					};
 				};
 				_isDriver = (driver (vehicle _killer) == _killer);
