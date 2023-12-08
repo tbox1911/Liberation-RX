@@ -70,9 +70,9 @@ light_vehicles = [
 	["O_Truck_03_covered_F",5,50,5,GRLIB_perm_log],
 	["I_LT_01_cannon_F",2,200,2,GRLIB_perm_log],
 	["O_LSV_02_unarmed_F",2,25,2,GRLIB_perm_inf],
-	["O_LSV_02_armed_F",5,100,2,GRLIB_perm_log],
-	["O_UGV_01_F",5,10,5,GRLIB_perm_inf],
-	["O_UGV_01_rcws_F",5,250,5,GRLIB_perm_log]
+	["O_LSV_02_armed_F",5,100,2,GRLIB_perm_log]
+	// ["O_UGV_01_F",5,10,5,GRLIB_perm_inf],
+	// ["O_UGV_01_rcws_F",5,250,5,GRLIB_perm_log]
 ];
 
 heavy_vehicles = [
