@@ -21,4 +21,15 @@ class CfgCommunicationMenu
 		enable = "1";
 		removeAfterExpressionCall = 0;
 	};
+
+	class LRX_Taxi
+	{
+		text = "Call Heli Taxi";
+		submenu = "";
+		expression = "[] execVM 'addons\TAXI\call_taxi.sqf'";
+		icon = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\transport_ca.paa";
+		cursor = "\a3\Ui_f\data\IGUI\Cfg\Cursors\iconCursorSupport_ca.paa";
+		enable = "1";
+		removeAfterExpressionCall = 0;
+	};	
 };

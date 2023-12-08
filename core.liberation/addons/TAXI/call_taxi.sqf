@@ -1,4 +1,5 @@
 // Heli Taxi Script
+if (GRLIB_player_fobdistance < (2 * GRLIB_fob_range) || GRLIB_player_near_lhd) exitWith {hintSilent localize "STR_TAXI_TOO_CLOSE"};
 private _taxi = player getVariable ["GRLIB_taxi_called", nil];
 if (!isNil "_taxi") exitWith {hintSilent localize "STR_TAXI_ONLY_ONE"};
 
@@ -97,7 +98,6 @@ hintSilent "";
 
 if (time < _stop) then {
 	_stop = time + (5 * 60); // wait 5min max
-	gamelogic globalChat "Taxi auto return to base in 5 min.";
 	waitUntil {
 		sleep 0.5;
 		( (markerPos "taxi_dz") distance2D zeropos > 100 || isNil {player getVariable ["GRLIB_taxi_called", nil]} || time > _stop )

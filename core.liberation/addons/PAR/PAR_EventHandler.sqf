@@ -98,6 +98,7 @@ if (_unit == player) then {
 
 	// Unblock units
 	[player,"LRX_Unstuck",nil,nil,""] call BIS_fnc_addCommMenuItem;
+	[player,"LRX_Taxi",nil,nil,""] call BIS_fnc_addCommMenuItem;
 
 	// UI actions
 	inGameUISetEventHandler ["Action", "
