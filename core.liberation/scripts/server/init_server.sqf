@@ -26,6 +26,24 @@ addMissionEventHandler ['HandleDisconnect', {
  ]
 ] call BIS_fnc_EXP_camp_dynamicAISkill;
 
+// Relationship
+civilian setFriend [GRLIB_side_friendly, 1];
+GRLIB_side_friendly setFriend [civilian, 1];
+civilian setFriend [GRLIB_side_enemy, 1];
+GRLIB_side_enemy setFriend [civilian, 1];
+
+if (GRLIB_side_enemy == INDEPENDENT) then {
+	resistance setFriend [GRLIB_side_enemy, 1];
+	GRLIB_side_enemy setFriend [resistance, 1];
+	resistance setFriend [GRLIB_side_friendly, 0];
+	GRLIB_side_friendly setFriend [resistance, 0];
+} else {
+	resistance setFriend [GRLIB_side_friendly, 1];
+	GRLIB_side_friendly setFriend [resistance, 1];
+	resistance setFriend [GRLIB_side_enemy, 0];
+	GRLIB_side_enemy setFriend [resistance, 0];
+};
+
 // Init owner on map vehicles
 {
 	if (_x isKindOf "AllVehicles") then {
@@ -158,18 +176,6 @@ if (abort_loading) exitWith {
 
 global_locked_group = [];
 publicVariable "global_locked_group";
-
-if (GRLIB_side_enemy == INDEPENDENT) then {
-	resistance setFriend [GRLIB_side_enemy, 1];
-	GRLIB_side_enemy setFriend [resistance, 1];
-	resistance setFriend [GRLIB_side_friendly, 0];
-	GRLIB_side_friendly setFriend [resistance, 0];
-} else {
-	resistance setFriend [GRLIB_side_friendly, 1];
-	GRLIB_side_friendly setFriend [resistance, 1];
-	resistance setFriend [GRLIB_side_enemy, 0];
-	GRLIB_side_enemy setFriend [resistance, 0];
-};
 
 // Low = 50 (NoGrass), Normal = 25, High = 12.5, Very High = 6.25, Ultra = 3.125
 setTerrainGrid 25;
