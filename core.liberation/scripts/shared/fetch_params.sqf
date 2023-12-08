@@ -177,6 +177,8 @@ GRLIB_respawn_timer = ["Respawn",20] call _lrx_getParamValue;
 GRLIB_respawn_cooldown = ["RespawnCD",0] call _lrx_getParamValue;
 GRLIB_kick_idle = ["KickIdle",0] call _lrx_getParamValue;
 GRLIB_server_persistent = ["Persistent",0] call _lrx_getParamValue;
+GRLIB_air_support = ["AirSupport",1] call _lrx_getParamValue;
+GRLIB_despawn_tickets = ["SectorDespawn",40] call _lrx_getParamValue;
 
 // Hardcoded
 GRLIB_endgame = 0;
@@ -294,6 +296,7 @@ if ( GRLIB_blufor_defenders == 1 ) then { GRLIB_blufor_defenders = true } else {
 if ( GRLIB_opfor_english == 1 ) then { GRLIB_opfor_english = true } else { GRLIB_opfor_english = false };
 if ( GRLIB_disable_death_chat == 1 ) then { GRLIB_disable_death_chat = true } else { GRLIB_disable_death_chat = false };
 if ( GRLIB_server_persistent == 1 ) then { GRLIB_server_persistent = true } else { GRLIB_server_persistent = false };
+if ( GRLIB_air_support == 1 ) then { GRLIB_air_support = true } else { GRLIB_air_support = false };
 
 // Overide sector radius
 if (GRLIB_sector_radius != 0) then { GRLIB_sector_size = GRLIB_sector_radius };
