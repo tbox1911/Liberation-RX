@@ -5587,7 +5587,7 @@
 			<Original>Allow Redeploy to all mobile Respawn</Original>
 			<French>Autoriser le redéploiement sur tous les mobiles Respawn</French>
 		</Key>			
-		<Key ID="STR_AIR_SUPPORT">
+		<Key ID="STR_ENABLE_AIR_SUPPORT">
 			<Original>Allow Air Support</Original>
 			<French>Autoriser le Support Aerien</French>
 		</Key>		

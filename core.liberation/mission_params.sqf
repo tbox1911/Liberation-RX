@@ -279,7 +279,7 @@ LRX_Mission_Params_Def = [
 	["ForcedLoadout", localize "STR_FORCE_LOADOUT", [localize "STR_PARAMS_DISABLED","Preset 1","Preset 2"]],
 	["DeathChat", localize "STR_DEATHCHAT", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["FancyInfo", localize "STR_FANCY", [localize "STR_PARAMS_DISABLED","Info",localize "STR_PARAMS_ENABLED"]],
-	["AirSupport", localize "STR_AIR_SUPPORT", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
+	["AirSupport", localize "STR_ENABLE_AIR_SUPPORT", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["Redeploy", localize "STR_REDEPLOY", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["KeepScore", localize "STR_KEEP_SCORE", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["Persistent", localize "STR_PERSISTENT_MODE", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]]
