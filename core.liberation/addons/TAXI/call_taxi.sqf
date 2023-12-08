@@ -106,6 +106,11 @@ if (time < _stop) then {
 	_vehicle removeAction _idact_cancel;
 	deleteMarkerLocal "taxi_lz";
 
+	if ( isNil {player getVariable ["GRLIB_taxi_called", nil]}) exitWith {
+		_vehicle removeAction _idact_dest;
+		_vehicle removeAction _idact_eject;
+	};
+
 	if ( (markerPos "taxi_dz") distance2D zeropos > 100 ) then {
 		hintSilent "Ok, let's go...";
 		_vehicle setVehicleLock "LOCKED";
@@ -118,10 +123,10 @@ if (time < _stop) then {
 		_vehicle removeAction _idact_dest;
 		_vehicle removeAction _idact_eject;
 	};
-} else {
-	_vehicle setVehicleLock "LOCKED";
-	_vehicle lockCargo true;
 };
+
+_vehicle setVehicleLock "LOCKED";
+_vehicle lockCargo true;
 
 // Board Out
 if (isNil "GRLIB_taxi_eject") then {
