@@ -3076,16 +3076,7 @@
 			<Czech>Nelze stavět: nepřátelské síly poblíž.</Czech>
 		</Key>
 		<Key ID="STR_CLEANUP_PARAM">
-			<Original>Cleanup abandonned vehicles outside FOBs</Original>
-			<French>Nettoyer les véhicules abandonnés loin des FOB</French>
-			<German>Räumt verlassene Fahrzeuge auserhalb von FOBs weg</German>
-			<Spanish>Limpieza de vehículos abandonados fuera de FOBs</Spanish>
-			<Russian>Удаление брошенной техники вне FOB.</Russian>
-			<Chinesesimp>清理FOB以外的被遗弃车辆</Chinesesimp>
-			<Chinese>清理FOB以外的被遺棄車輛</Chinese>
-			<Japanese>FOB外に放棄された車両を削除</Japanese>
-			<Portuguese>Limpeza de veículos abandonados fora dos FOBs</Portuguese>
-			<Czech>Čištění opuštěných vozidel mimo FOB</Czech>
+			<Original>Garbage Collector Timer</Original>
 		</Key>
 		<Key ID="STR_AUTO_SAVE">
 			<Original>AutoSave Timer</Original>
@@ -5588,9 +5579,17 @@
 			<Original>Cooldown if player respawn too fast (min)</Original>
 			<French>Attente si le joueur réapparaît trop rapidement (min)</French>
 		</Key>
+		<Key ID="STR_PARAM_SECTOR_DESPAWN">
+			<Original>Clear unattacked Sectors (min)</Original>
+			<French>Nettoyer secteurs non attaqués (min)</French>
+		</Key>
 		<Key ID="STR_REDEPLOY">
 			<Original>Allow Redeploy to all mobile Respawn</Original>
 			<French>Autoriser le redéploiement sur tous les mobiles Respawn</French>
+		</Key>			
+		<Key ID="STR_AIR_SUPPORT">
+			<Original>Allow Air Support</Original>
+			<French>Autoriser le Support Aerien</French>
 		</Key>		
 		<Key ID="STR_KICK_IDLE">
 			<Original>Kick player if idle for too long</Original>
@@ -7994,6 +7993,10 @@
 			<Original>-- TAXI Ejection</Original>
 			<French>-- TAXI Éjection</French>
 		</Key>
+		<Key ID="STR_TAXI_TOO_CLOSE">
+			<Original>Sorry, too close from HQ, no Taxi.</Original>
+			<French>Désolé, trop proche d'un HQ, pas de Taxi.</French>
+		</Key>		
 		<Key ID="STR_TAXI_ONLY_ONE">
 			<Original>Sorry, only one Taxi at time.</Original>
 			<Russian>Извините, только один вертолет за раз.</Russian>
