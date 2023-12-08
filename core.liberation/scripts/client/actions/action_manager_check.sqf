@@ -58,7 +58,7 @@ GRLIB_checkLeader = {
 };
 
 GRLIB_checkAirDrop = {
-	(GRLIB_player_is_menuok && (player distance2D ([] call F_getNearestFob)) >= (2 * GRLIB_fob_range) && !GRLIB_player_near_lhd)
+	(GRLIB_player_is_menuok && GRLIB_air_support && GRLIB_player_fobdistance >= (2 * GRLIB_fob_range) && !GRLIB_player_near_lhd)
 };
 
 GRLIB_checkArsenal = {
