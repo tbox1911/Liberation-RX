@@ -61,8 +61,9 @@ private _idact_eject = _vehicle addAction [format ["<t color='#FF0080'>%1</t>", 
 player setVariable ["GRLIB_taxi_called", _vehicle, true];
 
 private _air_grp = GRLIB_side_civilian createVehicleCrew _vehicle;
-sleep 0.1;
+sleep 0.2;
 if (count (crew _vehicle) == 0) exitWith { diag_log format ["--- LRX Error: Taxi %1 create crew failed!", _taxi_type]};
+(crew _vehicle) joinSilent _air_grp;
 {
 	_x allowDamage false;
 	_x allowFleeing 0;
