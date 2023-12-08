@@ -8,7 +8,7 @@ private _sell_list = [];
 private _display = findDisplay 2305;
 private _cfg = configFile >> "cfgVehicles";
 
-private _nearfob = ((player distance2D ([] call F_getNearestFob)) < 100);
+private _nearfob = (GRLIB_player_fobdistance < 100);
 if (_nearfob) then {
 	gamelogic globalChat localize "STR_SELL_WELCOME_FOB";
 } else {
