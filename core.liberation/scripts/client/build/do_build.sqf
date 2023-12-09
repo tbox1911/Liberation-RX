@@ -119,88 +119,17 @@ while { true } do {
 
 	if ( _buildtype == 1 ) then {
 		if (_classname isKindOf "Dog_Base_F" || _classname in MFR_Dogs_classname) then {
-			_unit = createAgent [_classname, _pos, [], 5, "CAN_COLLIDE"];
-			_unit setVariable ["BIS_fnc_animalBehaviour_disable", true];
-			_unit allowDamage false;
-			player setVariable ["my_dog", _unit, true];
-			_dog_snd = selectRandom ["dog1.wss", "dog2.wss", "dog3.wss"];
-			_tone = [_dog_snd, random [0.7, 1, 1.5]];
-			_unit setVariable ["my_dog_tone", _tone];
-			_unit setDir (_unit getDir player);
-			[_unit, _tone] spawn dog_bark;
-			_id = (findDisplay 12 displayCtrl 51) ctrlAddEventHandler [
-				"Draw",
-				"
-					private _map = _this select 0;
-					private _icon = 'a3\animals_f\data\ui\map_animals_ca.paa';
-					private _size = 16;
-					private _my_dog = player getVariable ['my_dog', nil];
-					if (!isNil '_my_dog') then {
-						_map drawIcon [_icon, [0.85,0.4,0,1], (getPosATL _my_dog), _size, _size, 0];
-					};
-				"
-			];
-			_unit setVariable ["my_dog_marker", _id];
+			[0,0,0,"add",_classname] execVM "scripts\client\actions\do_dog.sqf";
 		} else {
 			if (!([_price] call F_pay)) exitWith {};
-			_grp = group player;
-			_unit = _grp createUnit [_classname, _pos, [], 5, "NONE"];
-			[_unit] joinSilent _grp;
-			_unit setVariable ["PAR_Grp_ID", format["Bros_%1", PAR_Grp_ID], true];
-			PAR_AI_bros = PAR_AI_bros + [_unit];
-			[_unit] spawn PAR_fn_AI_Damage_EH;
-			_unit enableIRLasers true;
-			_unit enableGunLights "Auto";
-			_unit setUnitRank "PRIVATE";
-			_unit setSkill 0.6;
-
-			if (GRLIB_opfor_english) then {
-				//[_unit, _spk] remoteExec ["setSpeaker", 0];
-				_unit setSpeaker (format ["Male0%1ENG",selectRandom [2,3,4,5,6,7,8,9]]);
-			};
-
-			[_unit, configOf _unit] call BIS_fnc_loadInventory;
-			if (_classname in units_loadout_overide) then {
-				private _path = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, toLower _classname];
-				[_path, _unit] call F_getTemplateFile;
-			};
-
-			stats_blufor_soldiers_recruited = stats_blufor_soldiers_recruited + 1; publicVariable "stats_blufor_soldiers_recruited";
+			[_classname] execVM "scripts\client\actions\do_build_unit.sqf";
 		};
-		sleep 1;
-		build_confirmed = 0;
 		build_refresh = true;
 	};
 
 	if ( _buildtype == 8 ) then {
 		if (!([_price] call F_pay)) exitWith {};
-		diag_log _classname;
-		_grp = createGroup [GRLIB_side_friendly, true];
-		player setVariable ["my_squad", _grp, true];
-		_grp setGroupId [format ["%1 %2",squads_names select _buildindex, groupId _grp]];
-		_idx = 0;
-		{
-			_unitrank = "PRIVATE";
-			if(_idx == 0) then { _unitrank = "SERGEANT"; };
-			if(_idx == 1) then { _unitrank = "CORPORAL"; };
-			_unit = _grp createUnit [_x, _pos, [], 5, "NONE"];
-			[_unit] joinSilent _grp;
-			_unit setUnitRank _unitrank;
-			_unit setSkill 0.6;
-			_unit enableIRLasers true;
-			_unit enableGunLights "Auto";
-			_unit setVariable ["PAR_Grp_ID", format["AI_%1",PAR_Grp_ID], true];
-			//_unit forceAddUniform (uniform player);
-			[_unit] spawn PAR_fn_AI_Damage_EH;
-			_idx = _idx + 1;
-			sleep 0.1;
-		} foreach _classname;
-		_grp setCombatMode "GREEN";
-		_grp setBehaviour "AWARE";
-
-		stats_blufor_soldiers_recruited = stats_blufor_soldiers_recruited + count (units _grp); publicVariable "stats_blufor_soldiers_recruited";
-		player hcSetGroup [_grp];
-		build_confirmed = 0;
+		[_classname] execVM "scripts\client\actions\do_build_squad.sqf";
 	};
 
 	if ( _buildtype in [2,3,4,5,6,7,9,10,99,98,97] ) then {
@@ -616,6 +545,7 @@ while { true } do {
 		player removeAction _idactplace;
 	};
 
+	sleep 1;
 	build_confirmed = 0;
 
 	if ( repeatbuild ) then {

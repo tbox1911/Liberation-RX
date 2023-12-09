@@ -1,6 +1,32 @@
-private _cmd = _this select 3;
-private _my_dog = player getVariable ["my_dog", nil];
+params ["",	"",	"",	"_cmd",	["_classname",""]];
 
+if (_cmd == "add" && _classname != "") exitWith {
+	private _pos = getPosATL player;
+	private _my_dog = createAgent [_classname, _pos, [], 5, "CAN_COLLIDE"];
+	_my_dog setVariable ["BIS_fnc_animalBehaviour_disable", true];
+	_my_dog allowDamage false;
+	player setVariable ["my_dog", _my_dog, true];
+	private _dog_snd = selectRandom ["dog1.wss", "dog2.wss", "dog3.wss"];
+	private _tone = [_dog_snd, random [0.7, 1, 1.5]];
+	_my_dog setVariable ["my_dog_tone", _tone];
+	_my_dog setDir (_my_dog getDir player);
+	[_my_dog, _tone] spawn dog_bark;
+	private _id = (findDisplay 12 displayCtrl 51) ctrlAddEventHandler [
+		"Draw",
+		"
+			private _map = _this select 0;
+			private _icon = 'a3\animals_f\data\ui\map_animals_ca.paa';
+			private _size = 16;
+			private _my_dog = player getVariable ['my_dog', nil];
+			if (!isNil '_my_dog' && isNull objectParent player) then {
+				_map drawIcon [_icon, [0.85,0.4,0,1], (getPosATL _my_dog), _size, _size, 0];
+			};
+		"
+	];
+	_my_dog setVariable ["my_dog_marker", _id];
+};
+
+private _my_dog = player getVariable ["my_dog", nil];
 if (!isNil "_my_dog") then {
 
 	if (_cmd == "del") then {
