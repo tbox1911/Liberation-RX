@@ -74,7 +74,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 		};
 
 		// Cleanup
-		waitUntil { sleep 30; (GRLIB_global_stop == 1 || (diag_fps < 25) || [(leader _opfor_grp), GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+		waitUntil { sleep 30; (GRLIB_global_stop == 1 || [(leader _opfor_grp), GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
 		[_opfor_veh] call clean_vehicle;
 		{ deleteVehicle _x } forEach (units _opfor_grp);
 		deleteGroup _opfor_grp;
