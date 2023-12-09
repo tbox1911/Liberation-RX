@@ -1,5 +1,5 @@
 desiredviewdistance_inf = viewDistance;
-desiredviewdistance_veh = (viewDistance + 500);
+desiredviewdistance_veh = (viewDistance + 1000);
 desiredviewdistance_obj = 75;
 desired_fps = 0;
 show_teammates = true;
