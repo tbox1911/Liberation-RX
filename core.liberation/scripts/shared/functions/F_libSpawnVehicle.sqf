@@ -72,7 +72,7 @@ if ( isNull _vehicle ) exitWith { diag_log format ["--- LRX Error: Cannot build 
 
 // CUP remove tank panel
 if (GRLIB_CUPV_enabled) then {
-	[_vehicle, false, ["hide_front_ti_panels",1,"hide_cip_panel_rear",1,"hide_cip_panel_bustle",1]] call BIS_fnc_initVehicle;
+	[_vehicle, false, ["hide_front_ti_panels",1,"hide_cip_panel_rear",1,"hide_cip_panel_bustle",1,"Filters_Hide",1]] call BIS_fnc_initVehicle;
 };
 
 // RHS remove tank panel
