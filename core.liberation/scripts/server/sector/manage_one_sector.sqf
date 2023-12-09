@@ -4,7 +4,7 @@ waitUntil {sleep 0.5; !GRLIB_GC_Running };
 active_sectors pushback _sector;
 publicVariable "active_sectors";
 
-private _sectorpos = markerPos  _sector;
+private _sectorpos = markerPos _sector;
 private _stopit = false;
 private _spawncivs = false;
 private _building_ai_max = 0;
@@ -28,7 +28,7 @@ private _popfactor = 1;
 diag_log format ["Spawn Defend Sector %1 at %2", _sector, time];
 
 if (GRLIB_adaptive_opfor) then {
-	private _active_players = count ([markerPos  _sector, GRLIB_sector_size] call F_getNearbyPlayers);
+	private _active_players = count ([_sectorpos, GRLIB_sector_size] call F_getNearbyPlayers);
 	switch (true) do {
 		case (_active_players > 6) : { _popfactor = 1.4 };
 		case (_active_players > 4) : { _popfactor = 1.3 };
@@ -38,7 +38,7 @@ if (GRLIB_adaptive_opfor) then {
 	};
 };
 
-if ( (!(_sector in blufor_sectors)) &&  ( ( [markerPos  _sector , GRLIB_sector_size, GRLIB_side_friendly ] call F_getUnitsCount ) > 0 ) ) then {
+if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount) > 0)) then {
 
 	if ( _sector in sectors_bigtown ) then {
 		_vehtospawn = [([] call F_getAdaptiveVehicle), (selectRandom militia_vehicles), (selectRandom militia_vehicles)];
@@ -151,7 +151,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [markerPos  _sector , GRLIB_sector_s
 		};
 		_building_ai_max = 0;
 		if(floor(random 100) > 75) then { _vehtospawn pushback ([] call F_getAdaptiveVehicle) };
-		[markerPos _sector, 50] call createlandmines;
+		[_sectorpos, 50] call createlandmines;
 		_defensecount = 4;
 	};
 
@@ -265,7 +265,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [markerPos  _sector , GRLIB_sector_s
 		if (_sector_ownership == GRLIB_side_friendly) then {
 			[ _sector ] spawn sector_liberated_remote_call;
 			_stopit = true;
-			_enemy_left = [units GRLIB_side_enemy, {(alive _x) && (vehicle _x == _x) && (((markerPos  _sector) distance2D _x) < _local_capture_size * 1.2)}] call BIS_fnc_conditionalSelect;
+			_enemy_left = [units GRLIB_side_enemy, {(alive _x) && (vehicle _x == _x) && ((_sectorpos distance2D _x) < _local_capture_size * 1.2)}] call BIS_fnc_conditionalSelect;
 			{
 				if ( _max_prisonners > 0 && ((floor random 100) < GRLIB_surrender_chance) ) then {
 					[_x] spawn prisonner_ai;
@@ -304,7 +304,7 @@ if ( (!(_sector in blufor_sectors)) &&  ( ( [markerPos  _sector , GRLIB_sector_s
 diag_log format ["End Defend Sector %1 at %2", _sector, time];
 
 // Cleanup
-waitUntil { sleep 30; (GRLIB_global_stop == 1 || [markerpos _sector, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_sectorpos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
 diag_log format ["Cleanup Defend Sector %1 at %2", _sector, time];
 {
 	if (_x isKindOf "CAManBase") then {

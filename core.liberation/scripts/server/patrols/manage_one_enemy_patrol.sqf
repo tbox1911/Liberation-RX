@@ -7,7 +7,8 @@ private [
 	"_sector_pos",
 	"_opfor_grp",
 	"_opfor_veh",
-	"_unit_ttl"
+	"_unit_ttl",
+	"_unit_pos"
 ];
 
 while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
@@ -61,7 +62,10 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 
 		// Wait
 		_unit_ttl = round (time + 1800);
+		_unit_pos = getPosATL (leader _opfor_grp);
+
 		waitUntil {
+			if (alive (leader _opfor_grp)) then { _unit_pos = getPosATL (leader _opfor_grp) };
 			sleep 60;
 			(
 				GRLIB_global_stop == 1 ||
@@ -74,7 +78,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 		};
 
 		// Cleanup
-		waitUntil { sleep 30; (GRLIB_global_stop == 1 || [(leader _opfor_grp), GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+		waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_unit_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
 		[_opfor_veh] call clean_vehicle;
 		{ deleteVehicle _x } forEach (units _opfor_grp);
 		deleteGroup _opfor_grp;
