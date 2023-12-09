@@ -54,6 +54,13 @@ if ( dojump > 0 ) then {
 	halo_position = [ halo_position, floor(random 100), floor(random 360) ] call BIS_fnc_relPos;
 	if (_unit isKindOf "LandVehicle" || _unit isKindOf "Ship") then {
 		if ([_cost] call F_pay) then {
+			titleText ["", "PLAIN"];
+			sleep 1;
+			for "_i" from 3 to 0 step -1 do { 
+				titleText [format ["Airdrop vehicle in %1 seconds", _i], "PLAIN"];
+				sleep 1;
+			};
+			titleText ["", "PLAIN"]; 
 			[player, "parasound"] remoteExec ["sound_range_remote_call", 2];
 			[player, _unit, halo_position] remoteExec ["airdrop_remote_call", 2];
 		};
