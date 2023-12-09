@@ -176,8 +176,8 @@ while { dialog && alive player } do {
 			private _pl_rank = (GRLIB_rank_level find (rank player));
 			private _ai_score = _selectedmember getVariable ["PAR_AI_score", nil];
 			if (!isNil "_ai_score") then {
-				if (_ai_rank < _pl_rank) then {
-					private _cost = (_ai_score * 15);
+				if (_ai_rank < (_pl_rank - 1)) then {
+					private _cost = (_ai_score * 17);
 					private _msg = format ["<t align='center'>Promote %1 for %2 Ammo<br/>Are you sure ?</t>", name _selectedmember, _cost];
 					private _result = [_msg, "Warning !", true, true] call BIS_fnc_guiMessage;
 					if (_result) then {
