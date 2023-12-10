@@ -158,6 +158,7 @@ blacklisted_weapon = [
 	"H_PilotHelmetFighter_O",
 	"H_PilotHelmetHeli_O",
 	"H_CrewHelmetHeli_O",
+	"launch_O_Vorona_",
 	"Pylon",
 	"_missiles",
 	"_Leaflets",

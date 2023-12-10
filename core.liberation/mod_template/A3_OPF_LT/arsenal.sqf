@@ -149,6 +149,7 @@ blacklisted_weapon = [
 	"U_O_V_Soldier_Viper_F",
 	"O_V_Soldier_Viper_F",
 	"O_V_Soldier_Viper_hex_F",
+	"launch_O_Vorona_",
 	"Pylon",
 	"_missiles",
 	"_Leaflets",
