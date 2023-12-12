@@ -43,7 +43,7 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
         profileNamespace setVariable [GRLIB_save_key, _savegame];
     } else {
         profileNamespace setVariable [GRLIB_save_key, nil];
-        GRLIB_game_ID = round random floor 65535;
+        GRLIB_game_ID = round floor random 65535;
     };
     saveProfileNamespace;
 } else {

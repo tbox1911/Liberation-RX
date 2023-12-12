@@ -377,8 +377,8 @@ if ( count GRLIB_vehicle_to_military_base_links == 0 ) then {
 	if (count (_x nearObjects [FOB_outpost, 20]) > 0) then { GRLIB_all_outposts pushBack _x };
 } forEach GRLIB_all_fobs;
 
-if (typeName GRLIB_game_ID == "ARRAY") then { GRLIB_game_ID = round random floor 65535 };
-if (GRLIB_game_ID == 0) then { GRLIB_game_ID = round random floor 65535 };
+if (typeName GRLIB_game_ID == "ARRAY") then { GRLIB_game_ID = round floor random 65535 };
+if (GRLIB_game_ID == 0) then { GRLIB_game_ID = round floor random 65535 };
 publicVariable "GRLIB_game_ID";
 publicVariable "GRLIB_warehouse";
 publicVariable "blufor_sectors";
