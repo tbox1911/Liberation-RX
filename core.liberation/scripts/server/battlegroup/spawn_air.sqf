@@ -1,17 +1,16 @@
 params ["_targetpos", "_side", "_count"];
-private ["_vehicle", "_unit", "_priso"];
 
 if (isNil "_side") then {_side = GRLIB_side_enemy};
 private _planeType = opfor_air;
 if (_side == GRLIB_side_friendly) then {_planeType = blufor_air};
 if (count _planeType == 0) exitWith { objNull };
 
-private _air_grp = createGroup [_side, true];
-
+private _grp = createGroup [_side, true];
+private ["_vehicle"];
 for "_i" from 1 to _count do {
-	_vehicle = [_targetpos, selectRandom _planeType, false, false, _side] call F_libSpawnVehicle;
+	_vehicle = [zeropos, selectRandom _planeType, false, false, _side] call F_libSpawnVehicle;
 	_vehicle setVariable ["GRLIB_counter_TTL", round(time + 1800), true];  // 30 minutes TTL
-	(crew _vehicle) joinSilent _air_grp;
+	(crew _vehicle) joinSilent _grp;
 	{
 		_x addBackpack "B_Parachute";
 		_x setVariable ["GRLIB_counter_TTL", round(time + 1800), true];  // 30 minutes TTL	
@@ -24,17 +23,47 @@ for "_i" from 1 to _count do {
 	sleep 5;
 };
 
-[_air_grp] call F_deleteWaypoints;
-private _waypoint = _air_grp addWaypoint [ _targetpos, 200];
+[_grp] call F_deleteWaypoints;
+private _waypoint = _grp addWaypoint [ _targetpos, 200];
 _waypoint setWaypointType "MOVE";
-_waypoint setWaypointSpeed "NORMAL";
+_waypoint setWaypointSpeed "FULL";
 _waypoint setWaypointBehaviour "COMBAT";
 _waypoint setWaypointCombatMode "RED";
 _waypoint setWaypointType "SAD";
-_waypoint = _air_grp addWaypoint [ _targetpos, 200];
+_waypoint = _grp addWaypoint [ _targetpos, 200];
 _waypoint setWaypointType "SAD";
-_waypoint = _air_grp addWaypoint [ _targetpos, 200];
+_waypoint = _grp addWaypoint [ _targetpos, 200];
 _waypoint setWaypointType "SAD";
-_waypoint = _air_grp addWaypoint [ _targetpos, 200];
+_waypoint = _grp addWaypoint [ _targetpos, 200];
 _waypoint setWaypointType "CYCLE";
-{_x doFollow leader _air_grp} foreach units _air_grp;
+{_x doFollow leader _grp} foreach units _grp;
+
+sleep 300;
+
+while { ({alive _x} count (units _grp) > 0) && ( GRLIB_endgame == 0 ) } do {
+
+	_targetpos = (leader _grp) findNearestEnemy (leader _grp);
+	if (isNull _targetpos) then {
+		_pilots = allPlayers select { (objectParent _x) isKindOf "Air" && (driver vehicle _x) == _x };
+		if (count _pilots > 0) then { _targetpos = getPos (selectRandom _pilots) };
+	};
+	if (!isNull _targetpos) then {
+		[_grp] call F_deleteWaypoints;
+		_waypoint = _grp addWaypoint [_targetpos, _radius];
+		_waypoint setWaypointType "MOVE";
+		_waypoint setWaypointBehaviour "COMBAT";
+		_waypoint setWaypointCombatMode "RED";
+		_waypoint setWaypointSpeed "FULL";
+		_waypoint = _grp addWaypoint [_targetpos, _radius];
+		_waypoint setWaypointType "SAD";
+		_waypoint = _grp addWaypoint [_targetpos, _radius];
+		_waypoint setWaypointType "SAD";
+		_waypoint = _grp addWaypoint [_targetpos, _radius];
+		_waypoint setWaypointType "SAD";
+		_waypoint = _grp addWaypoint [_targetpos, _radius];
+		_waypoint setWaypointType "CYCLE";
+		{ _x doFollow leader _grp } foreach units _grp;
+		sleep 300;
+	};
+	sleep 60;
+};

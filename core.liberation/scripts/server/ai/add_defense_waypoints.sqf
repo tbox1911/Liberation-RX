@@ -110,5 +110,5 @@ while { ({alive _x} count (units _grp) > 0) && ( GRLIB_endgame == 0 ) } do {
 		{ _x doFollow leader _grp } foreach units _grp;
 		sleep 300;
 	};
-	sleep 5;
+	sleep 30;
 };

@@ -1,4 +1,4 @@
-private [ "_sleeptime", "_target_lst", "_target_player" ];
+private [ "_sleeptime", "_target_lst", "_target" ];
 
 if ( isNil "infantry_weight" ) then { infantry_weight = 33 };
 if ( isNil "armor_weight" ) then { armor_weight = 33 };
@@ -24,17 +24,17 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	_target_lst = [allPlayers, {[_x] call F_getScore >= GRLIB_perm_tank && rating _x > 1000 }] call BIS_fnc_conditionalSelect;
 	if ( GRLIB_endgame == 1 || GRLIB_global_stop == 1 ) exitWith {};
 	if ( (count _target_lst > 1) && (opforcap < GRLIB_battlegroup_cap) && (diag_fps > 30.0)) then {
-		_target_player = selectRandom _target_lst;
-		if (_target_player getVariable ["GRLIB_BN_timer", 0] < time) then {
-			_target_player setVariable ["GRLIB_BN_timer", round (time + (30 * 60))];
-			_msg = format ["<img size='1' image='%2'/> - <img size='1' image='%2'/> - <img size='1' image='%2'/><br/><t color='#0000FF'>%1</t> is now the <t color='#808080'>'Bete Noire'</t> of the <t color='#F00000'>OPFor</t>!<br/><br/>You better take cover...<br/><img size='1' image='%2'/> - <img size='1' image='%2'/> - <img size='1' image='%2'/>", name _target_player, getMissionPath "res\skull.paa"];
+		_target = selectRandom _target_lst;
+		if (_target getVariable ["GRLIB_BN_timer", 0] < time) then {
+			_target setVariable ["GRLIB_BN_timer", round (time + (30 * 60))];
+			_msg = format ["<img size='1' image='%2'/> - <img size='1' image='%2'/> - <img size='1' image='%2'/><br/><t color='#0000FF'>%1</t> is now the <t color='#808080'>'Bete Noire'</t> of the <t color='#F00000'>OPFor</t>!<br/><br/>You better take cover...<br/><img size='1' image='%2'/> - <img size='1' image='%2'/> - <img size='1' image='%2'/>", name _target, getMissionPath "res\skull.paa"];
 			[_msg, 0, 0, 10, 0, 0, 90] remoteExec ["BIS_fnc_dynamicText", 0];
 
-			waitUntil {sleep 2; isNull objectParent _target_player};
-			diag_log format [ "Spawn Attack on player %1 at %2", name _target_player, time ];
-			[getPosATL _target_player, GRLIB_side_enemy, 3] spawn spawn_air;
+			waitUntil {sleep 2; isNull objectParent _target};
+			diag_log format [ "Spawn Attack on player %1 at %2", name _target, time ];
+			[getPosATL _target, GRLIB_side_enemy, 3] spawn spawn_air;
 			sleep 20;
-			[getPosATL _target_player] spawn send_paratroopers;
+			[getPosATL _target] spawn send_paratroopers;
 		};
 	};
 };

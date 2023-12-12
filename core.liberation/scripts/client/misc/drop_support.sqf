@@ -98,7 +98,7 @@ if (do_action == 1) then {
 
 		if ( dojump > 0) then {
 			private _sector = [300, halo_position ] call F_getNearestSector;
-			private _near_blu = [allPlayers, {_x distance2D halo_position < (GRLIB_sector_size/2)}] call BIS_fnc_conditionalSelect;
+			private _near_blu = allPlayers select { _x distance2D halo_position < GRLIB_sector_size };
 			private _near_fob = ([halo_position, "FOB", GRLIB_sector_size, true] call F_check_near);
 			if (_sector in blufor_sectors || count _near_blu != 0 || _near_fob) then {
 				hintSilent "Cannot fire!\nToo close from friendly units";

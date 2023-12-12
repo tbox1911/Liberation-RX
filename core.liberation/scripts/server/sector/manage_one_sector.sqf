@@ -239,6 +239,13 @@ if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_s
 		};
 	};
 
+	if (floor random 100 < combat_readiness) then {
+		private _pilots = allPlayers select { (objectParent _x) isKindOf "Air" && (driver vehicle _x) == _x };
+		if (count _pilots > 0 ) then {
+			[getPosATL (selectRandom _pilots), GRLIB_side_enemy, 3] spawn spawn_air;
+		};
+	};
+
 	[ _sector, _defensecount ] spawn static_manager;
 	sleep 2;
 	[_sector, _building_range, round (_iedcount)] spawn ied_manager;

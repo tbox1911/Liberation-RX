@@ -66,5 +66,5 @@ while { ({alive _x} count (units _grp) > 0) && ( GRLIB_endgame == 0 ) } do {
 	sleep 30;
 
 	_timer = round (time + (5 * 60));
-	waitUntil {sleep 5; ({alive _x} count (units _grp) == 0) || time > _timer };
+	waitUntil {sleep 30; ({alive _x} count (units _grp) == 0) || time > _timer };
 };
