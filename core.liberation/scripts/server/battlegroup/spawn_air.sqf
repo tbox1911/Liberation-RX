@@ -23,18 +23,19 @@ for "_i" from 1 to _count do {
 	sleep 5;
 };
 
+private _radius = 400;
 [_grp] call F_deleteWaypoints;
-private _waypoint = _grp addWaypoint [ _targetpos, 200];
+private _waypoint = _grp addWaypoint [ _targetpos, _radius];
 _waypoint setWaypointType "MOVE";
 _waypoint setWaypointSpeed "FULL";
 _waypoint setWaypointBehaviour "COMBAT";
 _waypoint setWaypointCombatMode "RED";
 _waypoint setWaypointType "SAD";
-_waypoint = _grp addWaypoint [ _targetpos, 200];
+_waypoint = _grp addWaypoint [ _targetpos, _radius];
 _waypoint setWaypointType "SAD";
-_waypoint = _grp addWaypoint [ _targetpos, 200];
+_waypoint = _grp addWaypoint [ _targetpos, _radius];
 _waypoint setWaypointType "SAD";
-_waypoint = _grp addWaypoint [ _targetpos, 200];
+_waypoint = _grp addWaypoint [ _targetpos, _radius];
 _waypoint setWaypointType "CYCLE";
 {_x doFollow leader _grp} foreach units _grp;
 
@@ -43,12 +44,15 @@ sleep 300;
 
 while { ({alive _x} count (units _grp) > 0) && ( GRLIB_endgame == 0 ) } do {
 
-	_targetpos = (leader _grp) findNearestEnemy (leader _grp);
-	if (isNull _targetpos) then {
+	_target = (leader _grp) findNearestEnemy (leader _grp);
+	if (isNull _target) then {
 		_pilots = allPlayers select { (objectParent _x) isKindOf "Air" && (driver vehicle _x) == _x };
 		if (count _pilots > 0) then { _targetpos = getPos (selectRandom _pilots) };
+	} else {
+		_targetpos = getPos _target;
 	};
-	if (!isNull _targetpos) then {
+
+	if (count _targetpos > 0) then {
 		[_grp] call F_deleteWaypoints;
 		_waypoint = _grp addWaypoint [_targetpos, _radius];
 		_waypoint setWaypointType "MOVE";
