@@ -89,17 +89,14 @@ if (isServer) then {
 			_name = _x select 0;
 			_data = [_name] call lrx_getParamData;
 			_value_text = "Error!";
-
-			if (!isNil "_data") then {
-				if (count _data > 0) then {
-					_name = _data select 0;
-					_values_raw = _data select 2;
-					if (isNil "_values_raw") then { _values_raw = [] };
-					if (count (_values_raw) > 0) then {
-						_value_text = (_data select 1) select (_values_raw find (_x select 1));
-					} else {
-						_value_text = (_data select 1) select (_x select 1);
-					};
+			if (count _data > 0) then {
+				_name = _data select 0;
+				_values_raw = _data select 2;
+				if (isNil "_values_raw") then { _values_raw = [] };
+				if (count (_values_raw) > 0) then {
+					_value_text = (_data select 1) select (_values_raw find (_x select 1));
+				} else {
+					_value_text = (_data select 1) select (_x select 1);
 				};
 			};
 			diag_log format ["   %1: %2", _name, _value_text ];
