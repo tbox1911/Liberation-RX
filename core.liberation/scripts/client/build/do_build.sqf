@@ -418,16 +418,9 @@ while { true } do {
 					_vehicle addWeaponTurret ["TruckHorn3", [-1]];
 				};
 
-				// CUP remove tank panel
-				if (GRLIB_CUPV_enabled) then {
-					[_vehicle, false, ["hide_front_ti_panels",1,"hide_cip_panel_rear",1,"hide_cip_panel_bustle",1]] call BIS_fnc_initVehicle;
-				};
-
-				// RHS remove tank panel
-				if (GRLIB_RHS_enabled) then {
-					[_vehicle, false, ["IFF_Panels_Hide",1,"Miles_Hide",1]] call BIS_fnc_initVehicle;
-				};
-
+				// CUP/RHS remove panel
+				[_vehicle] call F_fixModVehicle;
+		
 				// Color
 				if ( count _color > 0 ) then {
 					[_vehicle, _color] call RPT_fnc_TextureVehicle;
@@ -445,7 +438,7 @@ while { true } do {
 
 				// Default Paint
 				if ( _classname in ["I_E_Truck_02_MRL_F"] ) then {
-					[_vehicle, ["EAF",1], true ] call BIS_fnc_initVehicle;
+					[_vehicle, ["EAF",1], true ] spawn BIS_fnc_initVehicle;
 				};
 
 				_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
