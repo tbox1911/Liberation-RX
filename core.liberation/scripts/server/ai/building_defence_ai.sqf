@@ -10,7 +10,7 @@ private _target = objNull;
 private _hostilecount = 0;
 
 while { _move_is_disabled && local _unit && alive _unit && !(captive _unit) } do {
-	_hostilecount = { alive _x && _x distance2D (getPosATL _unit) < 50 } count (units GRLIB_side_friendly);
+	_hostilecount = { alive _x && (_x distance2D _unit) < 50 } count (units GRLIB_side_friendly);
 
 	if ( _hostilecount > 0 || ( damage _unit > 0.25 ) || _sector in blufor_sectors ) then {
 		_resume_movement = true;
@@ -38,5 +38,5 @@ while { _move_is_disabled && local _unit && alive _unit && !(captive _unit) } do
 		};
 	};
 
-	sleep 3;
+	sleep 5;
 };

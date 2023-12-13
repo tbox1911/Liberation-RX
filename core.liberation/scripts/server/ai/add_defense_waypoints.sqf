@@ -2,6 +2,7 @@ params ["_grp", "_flagpos", ["_radius", 100]];
 if (isNil "_grp" || isNil "_flagpos") exitWith {};
 if (isNull _grp) exitWith {};
 
+_flagpos = _flagpos getPos [5, 360];
 diag_log format ["Group %1 - Defend: %2", _grp, _flagpos];
 
 private ["_basepos", "_waypoint", "_wp0"];

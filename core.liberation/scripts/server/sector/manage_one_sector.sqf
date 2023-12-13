@@ -14,6 +14,7 @@ private _local_capture_size = GRLIB_capture_size * 1.4;
 private _iedcount = 0;
 private _defensecount = 0;
 private _vehtospawn = [];
+private _vehicle = objNull;
 private _managed_units = [];
 private _squad1 = [];
 private _squad2 = [];
@@ -165,7 +166,7 @@ if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_s
 			[group ((crew _vehicle) select 0), _sectorpos] spawn add_defense_waypoints;
 			_managed_units pushback _vehicle;
 			{ _managed_units pushback _x } foreach (crew _vehicle);
-			sleep 2;
+			sleep 5;
 		} foreach _vehtospawn;
 	} else {
 		if (count _squad1 == 0) then { _squad1 = ([] call F_getAdaptiveSquadComp) };

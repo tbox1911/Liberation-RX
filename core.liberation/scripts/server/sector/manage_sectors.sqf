@@ -10,8 +10,8 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	{
 		_nextsector = _x;
 
-		if ( opforcap < GRLIB_sector_cap ) then {
-			if ( ( [markerPos  _nextsector , GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount > 0 ) && !( _nextsector in active_sectors ) ) then {
+		if ( opforcap < GRLIB_sector_cap && count active_sectors <= 3 && !(_nextsector in active_sectors) ) then {
+			if ( ([markerPos  _nextsector, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount > 0) ) then {
 				_hc = [] call F_lessLoadedHC;
 				if ( isNull _hc ) then {
 					[ _nextsector ] spawn manage_one_sector;
@@ -22,6 +22,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 				if ( _nextsector in sectors_military ) then {
 					[ _nextsector ] call manage_ammoboxes;
 				};
+				sleep 60;
 			};
 		};
 		sleep 0.25;

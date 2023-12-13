@@ -57,7 +57,7 @@ if ( GRLIB_blufor_defenders && !_defenders_cooldown) then {
 attack_in_progress = [_sector, round (time)];
 
 if ( _ownership == GRLIB_side_enemy ) then {
-	if (!(_sector in sectors_tower) && !_defenders_cooldown) then {
+	if (!(_sector in sectors_tower)) then {
 		_arsenal_box = createVehicle [Arsenal_typename, _sector_pos, [], 20, "NONE"];
 	};
 
@@ -74,7 +74,7 @@ if ( _ownership == GRLIB_side_enemy ) then {
 	while { (time < _sector_timer || _activeplayers > 0) && _ownership == GRLIB_side_enemy } do {
 		_ownership = [_sector_pos, (GRLIB_capture_size * 2)] call F_sectorOwnership;
 		_activeplayers = count ([units GRLIB_side_friendly, {alive _x && (_x distance2D _sector_pos) < GRLIB_sector_size}] call BIS_fnc_conditionalSelect);
-		sleep 3;
+		sleep 5;
 	};
 
 	if ( GRLIB_endgame == 0 && GRLIB_global_stop == 0) then {

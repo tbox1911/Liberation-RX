@@ -102,7 +102,7 @@ if (_enable_defenders) then {
         _unit setpos _nextpos;
         [_unit] spawn building_defence_ai;
         [_unit] spawn reammo_ai;
-        sleep 0.1;
+        sleep 0.3;
     } foreach _idxselected;
 
     private _sentry = ceil ((5 + (floor (random 4))) * (sqrt (GRLIB_unitcap)) );

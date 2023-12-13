@@ -37,6 +37,7 @@ if ( count _allposts > 0 ) then {
 		_x setUnitPos 'UP';
 		_totalx2 = _totalx2 + ((getpos _x) select 0);
 		_totaly2 = _totaly2 + ((getpos _x) select 1);
+		sleep 0.3;
 	} foreach (units _grp);
 
 	_avgx2 = _totalx2 / ( count (units _grp) );
