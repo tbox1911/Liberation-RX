@@ -1,16 +1,21 @@
-private [ "_last_transition", "_last_position", "_cinematic_camera", "_cinematic_pointer", "_positions", "_last_position", "_nearentities", "_camtarget", "_startpos", "_endpos", "_startfov", "_endfov", "_nearest_sector", "_unitname", "_position" ];
+private [ 
+	"_positions", "_position",
+	"_nearentities", "_camtarget", "_activeplayers",
+	"_startpos", "_endpos", "_startfov", "_endfov", 
+	"_nearest_sector", "_unitname"
+];
 
 if ( isNil "active_sectors" ) then { active_sectors = [] };
 if ( isNil "GRLIB_all_fobs" ) then { GRLIB_all_fobs = [] };
 
 titleText ["" ,"BLACK IN", 3];
 cinematic_camera_started = true;
-_last_transition = -1;
-_last_position = [ -1, -1, -1 ];
+private _last_transition = -1;
+private _last_position = [ -1, -1, -1 ];
 
 showCinemaBorder true;
-_cinematic_camera = "camera" camCreate [0,0,0];
-_cinematic_pointer = "Sign_Arrow_Blue_F" createVehicleLocal [0,0,0];
+private _cinematic_camera = "camera" camCreate [0,0,0];
+private _cinematic_pointer = "Sign_Arrow_Blue_F" createVehicleLocal [0,0,0];
 _cinematic_pointer hideObject true;
 _cinematic_camera camSetTarget _cinematic_pointer;
 _cinematic_camera cameraEffect ["internal","back"];
@@ -28,17 +33,17 @@ while { cinematic_camera_started } do {
 		if ( !first_camera_round ) then {
 
 			if ( count GRLIB_all_fobs > 0 ) then {
-				for [ {_idx=0},{_idx < 2},{_idx=_idx+1} ] do {
+				for "_i" from 0 to 2 do {
 					_positions pushback (selectRandom GRLIB_all_fobs);
 				};
 			};
 
 			if ( count active_sectors > 0 ) then {
-				for [ {_idx=0},{_idx < 5},{_idx=_idx+1} ] do {
+				for "_i" from 0 to 5 do {
 					_positions pushback (markerPos  (selectRandom active_sectors));
 				};
 			} else {
-				for [ {_idx=0},{_idx < 5},{_idx=_idx+1} ] do {
+				for "_i" from 0 to 5 do {
 					_positions pushback (markerPos  (selectRandom sectors_allSectors));
 				};
 			};
@@ -46,14 +51,14 @@ while { cinematic_camera_started } do {
 			if ( GRLIB_endgame == 0 ) then {
 				 _activeplayers = ( [allPlayers , { alive _x && _x distance2D (markerPos GRLIB_respawn_marker) > 100 }] call BIS_fnc_conditionalSelect );
 				 if ( count _activeplayers > 0 ) then {
-				 	for [ {_idx=0},{_idx < 3},{_idx=_idx+1} ] do {
+					for "_i" from 0 to 3 do {
 						_positions pushback (getpos (selectRandom _activeplayers));
 					};
 				};
 			};
 
 		};
-		_position = selectRandom  ( _positions - [ _last_position ] );
+		_position = selectRandom  (_positions - [_last_position]);
 		_last_position = _position;
 		_cinematic_pointer setpos [ _position select 0, _position select 1, (_position select 2) + 7 ];
 		_nearentities = _position nearEntities [ "Man", 100 ];
@@ -266,7 +271,7 @@ while { cinematic_camera_started } do {
 					};
 				};
 
-				[ format [ "<t size='0.7' align='left'>%1<br/>%2</t>", _unitname, _nearest_sector ],1,0.8,6,1 ] spawn BIS_fnc_dynamictext;
+				[format [ "<t size='0.7' align='left'>%1<br/>%2</t>", _unitname, _nearest_sector ],1,0.8,6,1] spawn BIS_fnc_dynamictext;
 			};
 		};
 	};
