@@ -95,7 +95,7 @@ while { _continue } do {
 		};
 	};
 
-	if ((time > _last_send || opforcap < 50) && opforcap < GRLIB_sector_cap ) then {
+	if ((time > _last_send || opforcap < 50) && opforcap < GRLIB_opfor_cap ) then {
 		_last_send = round (time + 300);
 		_target = objNull;
 		while { isNull _target } do {

@@ -180,10 +180,10 @@ if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_s
 	};
 
 	if ( _building_ai_max > 0 ) then {
-		_allbuildings = [ nearestObjects [_sectorpos, ["House"], _building_range ], { alive _x } ] call BIS_fnc_conditionalSelect;
+		_allbuildings = [nearestObjects [_sectorpos, ["House"], _building_range], {alive _x}] call BIS_fnc_conditionalSelect;
 		_buildingpositions = [];
 		{
-			_buildingpositions = _buildingpositions + ( [_x] call BIS_fnc_buildingPositions );
+			_buildingpositions = _buildingpositions + ([_x] call BIS_fnc_buildingPositions);
 		} foreach _allbuildings;
 		if ( count _buildingpositions > _minimum_building_positions ) then {
 			_managed_units = _managed_units + ( [ _infsquad, _building_ai_max, _buildingpositions, _sectorpos, _sector ] call F_spawnBuildingSquad );
@@ -264,9 +264,9 @@ if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_s
 		if (([_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount) == 0) exitWith {};
 		if ( combat_readiness > 80 ) then { [_pos, true] spawn send_paratroopers };
 	};
-	sleep 10;
 
 	diag_log format ["Sector %1 wait attack to finish", _sector];
+	sleep 300;
 
 	while { !_stopit } do {
 		_sector_ownership = [_sectorpos, _local_capture_size] call F_sectorOwnership;
