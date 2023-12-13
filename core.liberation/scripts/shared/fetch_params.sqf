@@ -182,9 +182,10 @@ GRLIB_despawn_tickets = ["SectorDespawn",40] call _lrx_getParamValue;
 // Hardcoded
 GRLIB_endgame = 0;
 GRLIB_global_stop = 0;
-GRLIB_min_score_player = 20;	// Minimal player score to be saved
-GRLIB_opfor_cap = 180 * GRLIB_unitcap;
-GRLIB_blufor_cap = 50;
+GRLIB_min_score_player = 20;				// Minimal player score to be saved
+GRLIB_opfor_cap = 180 * GRLIB_unitcap;		// Maximal number of enemies units
+GRLIB_blufor_cap = 50;						// Maximal number of friendly units
+GRLIB_max_active_sectors = 3;				// Maximal active sectors at the same time
 GRLIB_battlegroup_cap = GRLIB_battlegroup_cap * (sqrt GRLIB_unitcap) * (sqrt GRLIB_csat_aggressivity);
 GRLIB_patrol_cap = GRLIB_patrol_cap * GRLIB_unitcap;
 GRLIB_battlegroup_size = GRLIB_battlegroup_size * GRLIB_unitcap;

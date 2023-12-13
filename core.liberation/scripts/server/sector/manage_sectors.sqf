@@ -9,8 +9,7 @@ private ["_nextsector", "_hc"];
 while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	{
 		_nextsector = _x;
-
-		if ( opforcap < GRLIB_opfor_cap && count active_sectors < 3 && !(_nextsector in active_sectors) ) then {
+		if ( opforcap < GRLIB_opfor_cap && count active_sectors < GRLIB_max_active_sectors && !(_nextsector in active_sectors) ) then {
 			if ( ([markerPos  _nextsector, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount > 0) ) then {
 				_hc = [] call F_lessLoadedHC;
 				if ( isNull _hc ) then {

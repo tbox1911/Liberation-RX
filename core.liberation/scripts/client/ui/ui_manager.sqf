@@ -65,7 +65,7 @@ while { true } do {
 		};
 
 		if ( _uiticks % 25 == 0 ) then {
-			if (opforcap >= GRLIB_opfor_cap || count active_sectors >= 3) then {
+			if (opforcap >= GRLIB_opfor_cap || count active_sectors >= GRLIB_max_active_sectors) then {
 				(_overlay displayCtrl (517)) ctrlShow true;
 
 				if ( !_active_sectors_hint ) then {
