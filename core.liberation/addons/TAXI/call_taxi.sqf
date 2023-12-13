@@ -41,7 +41,7 @@ private _spawn_pos = markerPos _spawn_sector;
 private _vehicle = createVehicle [_taxi_type, _spawn_pos, [], 0, "FLY"];
 if (isNil "_vehicle") exitWith { diag_log format ["--- LRX Error: Taxi %1 create failed!", _taxi_type]};
 if (_taxi_type isKindOf "Heli_Light_01_civil_base_F") then {
-	[_vehicle, false, ["AddDoors",1,"AddBackseats",1,"AddTread",1,"AddTread_Short",0]] call BIS_fnc_initVehicle;
+	[_vehicle, false, ["AddDoors",1,"AddBackseats",1,"AddTread",1,"AddTread_Short",0]] spawn BIS_fnc_initVehicle;
 };
 _vehicle flyInHeight 70;
 _vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
