@@ -38,6 +38,7 @@ _waypoint = _grp addWaypoint [ _targetpos, 200];
 _waypoint setWaypointType "CYCLE";
 {_x doFollow leader _grp} foreach units _grp;
 
+if (_side == GRLIB_side_friendly) exitWith {};
 sleep 300;
 
 while { ({alive _x} count (units _grp) > 0) && ( GRLIB_endgame == 0 ) } do {

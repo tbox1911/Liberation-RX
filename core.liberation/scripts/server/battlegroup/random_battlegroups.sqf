@@ -16,4 +16,10 @@ while { GRLIB_csat_aggressivity > 0.9 && GRLIB_endgame == 0 && GRLIB_global_stop
 	if ((opforcap < GRLIB_battlegroup_cap) && (combat_readiness >= 75) && (diag_fps > 30.0))  then {
 		[] spawn spawn_battlegroup;
 	};
+	
+	private _pilots = allPlayers select { (objectParent _x) isKindOf "Air" && (driver vehicle _x) == _x };
+	if (count _pilots > 0 ) then {
+		[getPosATL (selectRandom _pilots), GRLIB_side_enemy, 3] spawn spawn_air;
+	};
+		
 };
