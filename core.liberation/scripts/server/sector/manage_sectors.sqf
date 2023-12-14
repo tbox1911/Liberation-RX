@@ -19,7 +19,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 					[_nextsector] remoteExec ["manage_one_sector", _hc];
 				};
 				if ( _nextsector in sectors_military ) then {
-					[ _nextsector ] call manage_ammoboxes;
+					[ _nextsector ] spawn manage_ammoboxes;
 				};
 				sleep 60;
 			};
