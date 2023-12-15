@@ -16,7 +16,7 @@ for "_i" from 1 to _count do {
 		_x setVariable ["GRLIB_counter_TTL", round(time + 1800), true];  // 30 minutes TTL	
 	} forEach (crew _vehicle);
 	if (_side == GRLIB_side_friendly) then {
-		_msg = format ["Air support %1 incoming...", [typeOf _vehicle] call F_getLRXName];
+		private _msg = format ["Air support %1 incoming...", [typeOf _vehicle] call F_getLRXName];
 		[gamelogic, _msg] remoteExec ["globalChat", 0];
 	};
 	diag_log format [ "Spawn Air vehicle %1 on %2 at %3", typeOf _vehicle, _targetpos, time ];
@@ -70,5 +70,7 @@ while { ({alive _x} count (units _grp) > 0) && ( GRLIB_endgame == 0 ) } do {
 		{ _x doFollow leader _grp } foreach units _grp;
 		sleep 300;
 	};
-	sleep 60;
+	_vehicle setFuel 1;
+	_vehicle setAmmo 1;
+	sleep 30;
 };
