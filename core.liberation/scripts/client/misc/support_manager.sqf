@@ -20,6 +20,7 @@ private _artillery = [
 
 while { true } do {
 	waitUntil {sleep 1; GRLIB_player_spawned};
+	waitUntil {sleep 1; (player getVariable ["GRLIB_squad_context_loaded", false])};
 
 	if (count(units group player) >= 1) then {
 		_needammo1 = false;
@@ -68,7 +69,6 @@ while { true } do {
 
 				// Medic
 				_near_medic = [_x, "MEDIC", _distarsenal] call F_check_near;
-
 				if (_near_medic) then {
 					if (damage _x > 0.1 && (behaviour _x) != "COMBAT") then {
 						_needmedic = true;
