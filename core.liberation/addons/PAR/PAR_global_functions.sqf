@@ -10,7 +10,7 @@ PAR_fn_sortie = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_sortie
 PAR_fn_death = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_death.sqf";
 PAR_fn_unconscious = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_unconscious.sqf";
 PAR_fn_eject = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_eject.sqf";
-PAR_fn_checkWounded = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_checkWounded.sqf";
+PAR_fn_heal = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_heal.sqf";
 
 PAR_medic_units = {
 	params ["_medic"];
@@ -82,18 +82,18 @@ PAR_fn_globalchat = {
 };
 PAR_fn_fixPos = {
 	params ["_medic", "_wnded"];
-	{ 
-		private _pos = getPosATL _x; 
-		if (surfaceIsWater _pos) then { 
-			_pos = getPosASL _x; 
-			_zpos = _pos select 2; 
-			if (_zpos < -3) then { 
+	{
+		private _pos = getPosATL _x;
+		if (surfaceIsWater _pos) then {
+			_pos = getPosASL _x;
+			_zpos = _pos select 2;
+			if (_zpos < -3) then {
 				_pos set [2, -1 max _zpos];
 				_x setPosASL _pos;
-				_x switchMove ""; 
+				_x switchMove "";
 				_x playMoveNow "";
-			}; 
-		}; 
+			};
+		};
 	} forEach [_medic, _wnded];
 };
 PAR_is_medic = {
@@ -220,7 +220,7 @@ PAR_HandleDamage_EH = {
 	};
 
 	if ( _isNotWounded && _amountOfDamage >= 0.86) then {
-		if (!(isNull _veh_unit)) then {[_unit, _veh_unit] spawn PAR_fn_eject};		
+		if (!(isNull _veh_unit)) then {[_unit, _veh_unit] spawn PAR_fn_eject};
 		_unit setVariable ["PAR_wounded", true];
 		_unit setVariable ["PAR_isUnconscious", 1, true];
 		_unit setCaptive true;
