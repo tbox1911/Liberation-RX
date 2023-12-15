@@ -1,7 +1,9 @@
 diag_log format ["Check Victory condition at %1", time];
 
 if ( count opfor_sectors == 0 ) then {
-	diag_log format ["Blufor Victory at %1 !!", time];
+	diag_log "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=";
+	diag_log format ["  Blufor Victory at %1 !!", time];
+	diag_log "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=";
 	{ _x setDamage 1 } foreach (units GRLIB_side_enemy);
 
 	publicstats = [];
