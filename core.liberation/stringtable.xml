@@ -5600,14 +5600,8 @@
 			<French>Vous êtes inactif depuis %1min, vous devez vous déplacer avant %2min ou vous serez expulsé.</French>
 		</Key>
 		<Key ID="STR_OPFORMARK">
-			<Original>Dynamic Opfor sector markers</Original>
-			<Russian>Скрыть маркеры секторов противника</Russian>
-			<French>Marqueurs OPFOR dynamiques</French>
-			<Chinesesimp>隐藏Opfor地区标记</Chinesesimp>
-			<Chinese>隱藏Opfor地區標記</Chinese>
-			<Japanese>敵占領区域のマーカーを表示する</Japanese>
-			<Portuguese>Ocultar marcadores do setor Opfor</Portuguese>
-			<Czech>Skryjte značky sektorů Nepřítele</Czech>
+			<Original>Dynamic Opfor Markers (fog of war)</Original>
+			<French>Marqueurs OPFOR dynamiques (fog of war)</French>
 		</Key>
 		<Key ID="STR_BLUFORMARK">
 			<Original>Show BLUFOR markers</Original>

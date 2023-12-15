@@ -103,39 +103,11 @@ while {!isNull _dlg_contenu_vehicule} do
 				_classe = _tab_objets select _i;
 				_quantite = _tab_quantite select _i;
 				_cout_chargement = _tab_cout_chargement select _i;
-				_icone = getText (configFile >> "CfgVehicles" >> _classe >> "icon");
-
-				// Ic�ne par d�faut
-				if (_icone == "") then
-				{
-					_icone = "\A3\ui_f\data\map\VehicleIcons\iconObject_ca.paa";
+				_icone = getText ( configFile >> "cfgVehicles" >> _classe >> "icon");
+				if(isText (configFile >> "CfgVehicleIcons" >> _icone)) then {
+					_icone = (getText (configFile >> "CfgVehicleIcons" >> _icone));
 				};
-
-				// Si le chemin commence par A3\ ou a3\, on rajoute un \ au d�but
-				_tab_icone = toArray toLower _icone;
-				if (count _tab_icone >= 3 &&
-					{
-						_tab_icone select 0 == (toArray "a" select 0) &&
-						_tab_icone select 1 == (toArray "3" select 0) &&
-						_tab_icone select 2 == (toArray "\" select 0)
-					}) then
-				{
-					_icone = "\" + _icone;
-				};
-
-				// Si ic�ne par d�faut, on rajoute le chemin de base par d�faut
-				_tab_icone = toArray _icone;
-				if (_tab_icone select 0 != (toArray "\" select 0)) then
-				{
-					_icone = format ["\A3\ui_f\data\map\VehicleIcons\%1_ca.paa", _icone];
-				};
-
-				// Si pas d'extension de fichier, on rajoute ".paa"
-				_tab_icone = toArray _icone;
-				if (count _tab_icone >= 4 && {_tab_icone select (count _tab_icone - 4) != (toArray "." select 0)}) then
-				{
-					_icone = _icone + ".paa";
-				};
+				if (_icone == "") then { _icone = "\A3\ui_f\data\map\VehicleIcons\iconObject_ca.paa" };
 
 				_index = _ctrl_liste lbAdd (([_classe] call F_getLRXName) + format [" (%1x %2pl.)", _quantite, _cout_chargement]);
 				_ctrl_liste lbSetPicture [_index, _icone];
