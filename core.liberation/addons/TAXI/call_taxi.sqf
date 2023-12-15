@@ -81,7 +81,6 @@ _marker setMarkerTypeLocal "mil_pickup";
 _marker setMarkerTextlocal "Taxi PickUp";
 
 // Goto Pickup Point
-sleep 3;
 [_vehicle, _dest, "STR_TAXI_MOVE"] call taxi_dest;
 [_vehicle] call taxi_land;
 deleteVehicle GRLIB_taxi_helipad;
