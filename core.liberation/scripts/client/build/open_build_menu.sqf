@@ -126,7 +126,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1 || buildtype =
 				if(isText  (configFile >> "CfgVehicleIcons" >> _icon)) then {
 					_icon = (getText (configFile >> "CfgVehicleIcons" >> _icon));
 				};
-				lnbSetPicture  [110, [((lnbSize 110) select 0) - 1, 0],_icon];
+				lnbSetPicture  [110, [((lnbSize 110) select 0) - 1, 0], _icon];
 			} else {
 				if ( ((lnbSize  110) select 0) <= count squads_names ) then {
 					_squadname = squads_names select ((lnbSize  110) select 0);

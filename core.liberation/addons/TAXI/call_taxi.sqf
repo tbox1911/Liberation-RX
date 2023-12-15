@@ -33,16 +33,14 @@ if (_nb_unit > 2 && _nb_unit <= 6) then {_taxi_type = selectRandom taxi_type_6};
 if (_nb_unit > 6 && _nb_unit <= 8) then {_taxi_type = selectRandom taxi_type_8};
 if (_nb_unit > 8) then {_taxi_type = selectRandom taxi_type_14};
 
-hintSilent format [localize "STR_TAXI_CALLED", getText(configFile >> "cfgVehicles" >> _taxi_type >> "DisplayName")];
-
 // Create Taxi
 private _spawn_sector = ([sectors_airspawn, [_dest], {(markerpos _x) distance2D _input0}, "ASCEND"] call BIS_fnc_sortBy) select 0;
 private _spawn_pos = markerPos _spawn_sector;
 private _vehicle = createVehicle [_taxi_type, _spawn_pos, [], 0, "FLY"];
 if (isNil "_vehicle") exitWith { diag_log format ["--- LRX Error: Taxi %1 create failed!", _taxi_type]};
-if (_taxi_type isKindOf "Heli_Light_01_civil_base_F") then {
-	[_vehicle, false, ["AddDoors",1,"AddBackseats",1,"AddTread",1,"AddTread_Short",0]] spawn BIS_fnc_initVehicle;
-};
+hintSilent format [localize "STR_TAXI_CALLED", getText(configFile >> "cfgVehicles" >> _taxi_type >> "DisplayName")];
+[_vehicle] call F_fixModVehicle;
+
 _vehicle flyInHeight 70;
 _vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
 _vehicle setVariable ["R3F_LOG_disabled", true, true];
@@ -54,12 +52,6 @@ _vehicle lockCargo true;
 _vehicle lockDriver true;
 _vehicle lockTurret [[0], true];
 _vehicle lockTurret [[0,0], true];
-
-GRLIB_taxi_cooldown = 0;
-private _idact_dest = _vehicle addAction [format ["<t color='#8000FF'>%1</t>", localize "STR_TAXI_ACTION1"], "addons\TAXI\taxi_pickdest.sqf","",999,false,true,"","vehicle _this == _target && (getPosATL _target) distance2D GRLIB_taxi_helipad > 300"];
-private _idact_cancel = _vehicle addAction [format ["<t color='#FF0080'>%1</t>", localize "STR_TAXI_ACTION2"], {player setVariable ["GRLIB_taxi_called", nil, true]},"",998,false,true,"","vehicle _this == _target"];
-private _idact_eject = _vehicle addAction [format ["<t color='#FF0080'>%1</t>", localize "STR_TAXI_ACTION3"], "addons\TAXI\taxi_eject.sqf","",997,false,true,"","vehicle _this == _target && (getPos _target select 2) > 50 && (getPosATL _target) distance2D GRLIB_taxi_helipad > 300"];
-player setVariable ["GRLIB_taxi_called", _vehicle, true];
 
 private _air_grp = GRLIB_side_civilian createVehicleCrew _vehicle;
 sleep 0.2;
@@ -75,6 +67,13 @@ _air_grp setBehaviour "CARELESS";
 _air_grp setCombatMode "GREEN";
 _air_grp setSpeedMode "FULL";
 
+// Actions
+GRLIB_taxi_cooldown = 0;
+private _idact_dest = _vehicle addAction [format ["<t color='#8000FF'>%1</t>", localize "STR_TAXI_ACTION1"], "addons\TAXI\taxi_pickdest.sqf","",999,false,true,"","vehicle _this == _target && (getPosATL _target) distance2D GRLIB_taxi_helipad > 300"];
+private _idact_cancel = _vehicle addAction [format ["<t color='#FF0080'>%1</t>", localize "STR_TAXI_ACTION2"], {player setVariable ["GRLIB_taxi_called", nil, true]},"",998,false,true,"","vehicle _this == _target"];
+private _idact_eject = _vehicle addAction [format ["<t color='#FF0080'>%1</t>", localize "STR_TAXI_ACTION3"], "addons\TAXI\taxi_eject.sqf","",997,false,true,"","vehicle _this == _target && (getPos _target select 2) > 50 && (getPosATL _target) distance2D GRLIB_taxi_helipad > 300"];
+player setVariable ["GRLIB_taxi_called", _vehicle, true];
+
 // Pickup Marker
 _marker = createMarkerLocal ["taxi_lz", _dest];
 _marker setMarkerShapeLocal "ICON";
@@ -82,6 +81,7 @@ _marker setMarkerTypeLocal "mil_pickup";
 _marker setMarkerTextlocal "Taxi PickUp";
 
 // Goto Pickup Point
+sleep 3;
 [_vehicle, _dest, "STR_TAXI_MOVE"] call taxi_dest;
 [_vehicle] call taxi_land;
 deleteVehicle GRLIB_taxi_helipad;
@@ -134,7 +134,6 @@ if (isNil "GRLIB_taxi_eject") then {
 	if (count _cargo > 0) then {
 		[_vehicle] call taxi_land;
 		[_vehicle, _cargo] call taxi_outboard;
-		sleep 10;
 		{ _x allowDamage true } forEach _cargo;
 	};
 };
