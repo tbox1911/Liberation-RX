@@ -59,7 +59,7 @@ if (_wnded == player) then {
   _wnded doFollow player;
 };
 [_medic, _wnded] call PAR_fn_medicRelease;
-[_medic, _wnded] call PAR_fn_fixPos;
+[[_medic, _wnded]] call PAR_fn_fixPos;
 
 [_wnded] spawn {
     params ["_unit"];

@@ -8,13 +8,15 @@ while {true} do {
     if (count PAR_AI_bros > 0 ) then {
         {
             _unit = _x;
-            // Set EH
+            // Set PAR EventHandler
             //[_x] spawn PAR_fn_AI_Damage_EH;
+
             if (GRLIB_revive != 0) then {
 
                 // Medic can heal auto
                 _wnded_list = (units player) select {
                     (_x distance2D _unit) < 30 &&
+                    !(surfaceIsWater (getPos _x)) &&
                     isNull objectParent _x &&
                     damage _x >= 0.1 &&
                     behaviour _x != "COMBAT" &&
@@ -29,10 +31,11 @@ while {true} do {
                     if (_is_medic && _has_medikit &&
                         isNull objectParent _unit &&
                         (behaviour _unit) != "COMBAT" &&
+                        (currentCommand _unit != "STOP") &&
                         lifeState _unit != 'INCAPACITATED' &&
                         isNil {_unit getVariable 'PAR_busy'} &&
                         isNil {_unit getVariable 'PAR_heal'}
-                        ) then {
+                    ) then {
                         [_unit, _wnded] spawn PAR_fn_heal;
                     };
                 };
@@ -44,22 +47,24 @@ while {true} do {
                     isNil {_unit getVariable 'PAR_busy'} &&
                     isNil {_unit getVariable 'PAR_heal'}
                 ) then {
-                    doStop _unit;
-                    if (_unit distance2D player <= 500) then {
-                        unassignVehicle _unit;
-                        [_unit] orderGetIn false;
-                        if (!isnull objectParent _unit) then {
-                            doGetOut _unit;
-                            sleep 3;
+                    if (currentCommand _unit != "STOP") then {
+                        doStop _unit;
+                        if (_unit distance2D player <= 500) then {
+                            unassignVehicle _unit;
+                            [_unit] orderGetIn false;
+                            if (!isnull objectParent _unit) then {
+                                doGetOut _unit;
+                                sleep 3;
+                            };
+                            _unit doMove (getPos player);
+                            [_unit] doFollow (leader group player);;
                         };
-                        _unit doMove (getPos player);
-                        [_unit] doFollow (leader group player);;
                     };
                 };
             };
 
             // Blood trail
-            if (damage _unit > 0.6 && isNull objectParent _unit) then {
+            if (damage _unit > 0.6 && isNull objectParent _unit && !(surfaceIsWater (getPos _unit))) then {
                 private _spray = createVehicle ["BloodSpray_01_New_F", getPos _unit, [], 0, "CAN_COLLIDE"];
                 _spray spawn {sleep (10 + floor(random 5)); deleteVehicle _this};
             };

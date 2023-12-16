@@ -23,7 +23,11 @@ PAR_unblock_AI = {
 	private _grp = grpNull;
 	if (player getVariable ["SOG_player_in_tunnel", false]) exitWith {};
 	if ( isNull (objectParent player) && count _unit_array == 0 ) then {
-		player setPosATL (getPosATL player vectorAdd [([] call F_getRND), ([] call F_getRND), 0.5]);
+		if (surfaceIsWater (getPos player)) then {
+			[[player]] spawn PAR_fn_fixPos;
+		} else {
+			player setPosATL (getPosATL player vectorAdd [([] call F_getRND), ([] call F_getRND), 0.5]);
+		};
 	} else {
 		{
 			_unit = _x;
@@ -40,7 +44,11 @@ PAR_unblock_AI = {
 				[_unit] orderGetIn false;
 				[_unit] allowGetIn false;
 				sleep 1;
-				_unit setPosATL (getPosATL player vectorAdd [([] call F_getRND), ([] call F_getRND), 0.5]);
+				if (surfaceIsWater (getPos _unit)) then {
+					[[_unit]] spawn PAR_fn_fixPos;
+				} else {
+					_unit setPosATL (getPosATL player vectorAdd [([] call F_getRND), ([] call F_getRND), 0.5]);
+				};			
 				[_unit] joinSilent (group player);
 				_unit enableAI "ALL";
 				_unit doFollow player;
@@ -82,7 +90,7 @@ PAR_fn_globalchat = {
   };
 };
 PAR_fn_fixPos = {
-	params ["_medic", "_wnded"];
+	params ["_list"];
 	{
 		private _pos = getPosATL _x;
 		if (local _x && surfaceIsWater _pos) then {
@@ -95,7 +103,7 @@ PAR_fn_fixPos = {
 				_x playMoveNow "";
 			};
 		};
-	} forEach [_medic, _wnded];
+	} forEach _list;
 };
 PAR_is_medic = {
 	params ["_unit"];

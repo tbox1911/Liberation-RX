@@ -11,6 +11,7 @@ if (!isplayer _wnded && _medic != _wnded) then {
 };
 
 while {
+	(currentCommand _medic != "STOP") &&
 	alive _wnded &&
 	alive _medic &&
 	isNil {_wnded getVariable 'PAR_busy'} &&
@@ -29,13 +30,14 @@ while {
 		_medic doMove (getPosATL _wnded);
 	} else {
 		_medic doMove (getPos _wnded);
-		sleep 7;
-		if (speed _medic < 1) then {
-			[[_medic]] spawn PAR_unblock_AI;
-			sleep 3;
-		};
 	};
-	sleep 3;
+	sleep 7;
+	if (speed _medic < 1 && (_medic distance2D _wnded) > 5) then {
+		_medic setPosATL (getPosATL _medic vectorAdd [([] call F_getRND), ([] call F_getRND), 0.5]);
+		_medic switchMove "AmovPercMwlkSrasWrflDf";
+		_medic playMoveNow "AmovPercMwlkSrasWrflDf";
+		sleep 3;
+	};
 };
 
 if (lifeState _medic != 'INCAPACITATED' && lifeState _wnded != 'INCAPACITATED' && (_medic distance2D _wnded) <= 3) then {
@@ -49,7 +51,7 @@ if (lifeState _medic != 'INCAPACITATED' && lifeState _wnded != 'INCAPACITATED' &
 	if (lifeState _medic != 'INCAPACITATED' && lifeState _wnded != 'INCAPACITATED' && (_medic distance2D _wnded) <= 3) then {
 		_wnded setDamage 0;
 	};
-	[_medic, _wnded] call PAR_fn_fixPos;
+	[[_medic, _wnded]] call PAR_fn_fixPos;
 };
 
 sleep 2;

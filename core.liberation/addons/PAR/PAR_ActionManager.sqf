@@ -15,7 +15,6 @@ while {true} do {
     if (count _wnded_list > 0) then {
         {
             _unit = _x;
-            systemchat str (name _unit);
             _unit setVariable ["PAR_isMenuActive", true];
             _unit addAction ["<t color='#C90000'>" + localize "STR_PAR_AC_02" + "</t>", "addons\PAR\PAR_fn_drag.sqf", ["action_drag"], 9, false, true, "", "(_target getVariable ['PAR_isUnconscious', false]) && !PAR_isDragging", 3];
             _unit addAction ["<t color='#C90000'>" + localize "STR_PAR_AC_03" + "</t>", { PAR_isDragging = false }, ["action_release"], 10, true, true, "", "PAR_isDragging"];
