@@ -25,19 +25,22 @@ while {
 	(behaviour _wnded) != "COMBAT" &&
 	((_medic distance2D _wnded) > 3 && (_medic distance2D _wnded) < 30)
 } do {
-	[_medic] doFollow (leader group player);
-	if ((_wnded distance2D _medic) < 25) then {
-		_medic doMove (getPosATL _wnded);
-	} else {
-		_medic doMove (getPos _wnded);
+	if (currentCommand _medic != "STOP") then {
+		[_medic] doFollow (leader group player);
+		if ((_wnded distance2D _medic) < 25) then {
+			_medic doMove (getPosATL _wnded);
+		} else {
+			_medic doMove (getPos _wnded);
+		};
+		sleep 7;
+		if (speed _medic < 1 && (_medic distance2D _wnded) > 5 && (currentCommand _medic != "STOP")) then {
+			_medic setPosATL (getPosATL _medic vectorAdd [([] call F_getRND), ([] call F_getRND), 0.5]);
+			_medic switchMove "AmovPercMwlkSrasWrflDf";
+			_medic playMoveNow "AmovPercMwlkSrasWrflDf";
+			sleep 3;
+		};
 	};
-	sleep 7;
-	if (speed _medic < 1 && (_medic distance2D _wnded) > 5) then {
-		_medic setPosATL (getPosATL _medic vectorAdd [([] call F_getRND), ([] call F_getRND), 0.5]);
-		_medic switchMove "AmovPercMwlkSrasWrflDf";
-		_medic playMoveNow "AmovPercMwlkSrasWrflDf";
-		sleep 3;
-	};
+	sleep 3;	
 };
 
 if (lifeState _medic != 'INCAPACITATED' && lifeState _wnded != 'INCAPACITATED' && (_medic distance2D _wnded) <= 3) then {
