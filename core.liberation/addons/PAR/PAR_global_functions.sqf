@@ -249,7 +249,7 @@ PAR_Player_Unconscious = {
 		case 1 : { _medic_message = localize "STR_PAR_Need_Medic2"; };
 		case 2 : { _medic_message = localize "STR_PAR_Need_Medic3"; };
 	};
-	[_medic_message] remoteExec ["sidechat", -2];
+	[_medic_message] remoteExec ["sidechat", 0];
 
 	disableUserInput false;
 	disableUserInput true;
