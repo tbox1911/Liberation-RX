@@ -2,6 +2,8 @@ params ["_unit"];
 
 if (rating _unit < -2000) exitWith {_unit setDamage 1};
 if (!([] call F_getValid)) exitWith {_unit setDamage 1};
+
+_unit setUnconscious true;
 waituntil {sleep 0.5; lifeState _unit == "INCAPACITATED" && (isTouchingGround (vehicle _unit) || (round (getPos _unit select 2) <= 1))};
 
 if (isPlayer _unit) then {
@@ -34,6 +36,7 @@ _unit setVariable ["PAR_isUnconscious", true, true];
 
 private _bld = createVehicle [(selectRandom PAR_BloodSplat), getPos _unit, [], 0, "CAN_COLLIDE"];
 private _cnt = 0;
+private ["_medic", "_msg"];
 while {lifeState _unit == "INCAPACITATED" && time <= _unit getVariable ["PAR_BleedOutTimer", 0]} do {
   if (_cnt == 0) then {
     _unit setOxygenRemaining 1;

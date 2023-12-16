@@ -47,7 +47,7 @@ PAR_unblock_AI = {
 					[[_unit]] spawn PAR_fn_fixPos;
 				} else {
 					_unit setPosATL (getPosATL player vectorAdd [([] call F_getRND), ([] call F_getRND), 0.5]);
-				};			
+				};
 				[_unit] joinSilent (group player);
 				_unit stop false;
 				_unit enableAI "ALL";
@@ -163,6 +163,7 @@ PAR_fn_AI_Damage_EH = {
 	_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	_unit setVariable ["PAR_wounded", false, true];
 	_unit setVariable ["PAR_isUnconscious", false, true];
+	_unit setVariable ["PAR_isDragged", 0, true];
 	_unit setVariable ["PAR_myMedic", nil];
 	_unit setVariable ["PAR_busy", nil];
 	_unit setVariable ["PAR_heal", nil];
@@ -173,8 +174,8 @@ PAR_fn_AI_Damage_EH = {
 // Player Section
 PAR_Player_Init = {
 	player addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-	player setVariable ["PAR_isUnconscious", false, true];
 	player setVariable ["PAR_wounded", false, true];
+	player setVariable ["PAR_isUnconscious", false, true];
 	player setVariable ["PAR_isDragged", 0, true];
 	player setVariable ["ace_sys_wounds_uncon", false];
 	player setVariable ["PAR_Grp_ID",format["Bros_%1", PAR_Grp_ID], true];
@@ -263,10 +264,6 @@ PAR_Player_Unconscious = {
 	disableUserInput true;
 	disableUserInput false;
 
-	// PAR AI Revive Call
-	_unit setVariable ["GREUH_isUnconscious", 1];
-	_unit setUnconscious true;
-
 	// Mute Radio
 	5 fadeRadio 0;
 
@@ -274,7 +271,7 @@ PAR_Player_Unconscious = {
 	_my_dog = player getVariable ["my_dog", nil];
 	if (!isNil "_my_dog") then { _my_dog setVariable ["do_find", player] };
 
-	_unit switchMove "";
+	// PAR AI Revive Call
 	[_unit] spawn PAR_fn_unconscious;
 
 	while { !isNull _unit && alive _unit && (_unit getVariable ["PAR_isUnconscious", false])} do {

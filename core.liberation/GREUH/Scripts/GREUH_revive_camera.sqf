@@ -4,7 +4,7 @@ count_death = 1;
 private ["_pos", "_destpos", "_cam", "_noesckey"];
 
 while { true } do {
-	waitUntil {sleep 0.5; (player getVariable ["GREUH_isUnconscious", 0]) == 1};
+	waitUntil {sleep 0.5; (player getVariable ["PAR_isUnconscious", false])};
 	closeDialog 0;
 	waitUntil {!dialog};
 
@@ -46,7 +46,6 @@ while { true } do {
 	[] spawn revive_ui;
 	waitUntil { sleep 0.5; (!(player getVariable ["PAR_isUnconscious", true]) || !alive player) };
 	closeDialog 5566;
-	player setVariable ["GREUH_isUnconscious", 0];
 
 	"colorCorrections" ppEffectEnable FALSE;
 	"filmGrain" ppEffectEnable FALSE;
