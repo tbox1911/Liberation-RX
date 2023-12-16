@@ -32,14 +32,13 @@ PAR_unblock_AI = {
 		{
 			_unit = _x;
 			if (isNull (objectParent _unit) && (player distance2D _unit) < 50 && (lifeState _unit != 'INCAPACITATED')) then {
-				doStop _unit;
+				_unit stop true;
 				sleep 1;
 				_unit doWatch objNull;
 				_unit switchmove "";
 				_unit disableAI "ALL";
 				_grp = createGroup [GRLIB_side_friendly, true];
 				[_unit] joinSilent _grp;
-				doStop _unit;
 				unAssignVehicle _unit;
 				[_unit] orderGetIn false;
 				[_unit] allowGetIn false;
@@ -50,6 +49,7 @@ PAR_unblock_AI = {
 					_unit setPosATL (getPosATL player vectorAdd [([] call F_getRND), ([] call F_getRND), 0.5]);
 				};			
 				[_unit] joinSilent (group player);
+				_unit stop false;
 				_unit enableAI "ALL";
 				_unit doFollow player;
 				_unit switchMove "AmovPercMwlkSrasWrflDf";
@@ -70,7 +70,6 @@ PAR_abandon_priso = {
 			_unit = _x;
 			if (!isNil {_unit getVariable "GRLIB_is_prisoner"}) then {
 				if (isNull (objectParent _unit) && (player distance2D _unit) < 50) then {
-					doStop _unit;
 					_grp = createGroup [GRLIB_side_enemy, true];
 					[_unit] joinSilent _grp;
 					[_unit] remoteExec ["prisonner_ai", 2];

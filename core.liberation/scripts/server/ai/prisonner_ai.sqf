@@ -27,6 +27,7 @@ _unit setVariable ["GRLIB_is_prisoner", true, true];
 _unit setVariable ["GRLIB_can_speak", true, true];
 
 if (!_canmove) then {
+	_unit stop true;
 	_unit switchMove "";
 	_unit setUnitPos "UP";
 	sleep 1;
@@ -55,6 +56,7 @@ if (!alive _unit) exitWith {};
 
 // Follow
 if (!_canmove) then {
+	_unit stop false;
 	_unit enableAI "ANIM";
 	_unit enableAI "MOVE";
 	_anim = "AmovPercMstpSsurWnonDnon_AmovPercMstpSnonWnonDnon";
@@ -78,7 +80,7 @@ while {alive _unit} do {
 		unassignVehicle _unit;
 		[_unit] orderGetIn false;
 		[_unit] allowGetIn false;
-		doStop _unit;
+		_unit stop true;
 		sleep 2;
 
 		_grp = createGroup [GRLIB_side_civilian, true];
@@ -113,6 +115,7 @@ while {alive _unit} do {
 			[_unit] joinSilent _flee_grp;
 			_unit enableAI "ANIM";
 			_unit enableAI "MOVE";
+			_unit stop false;
 
 			doGetOut _unit;
 			unassignVehicle _unit;

@@ -7,3 +7,4 @@ _prisonner addEventHandler ["SeatSwitchedMan", {_this spawn vehicle_permissions}
 _prisonner addEventHandler ["Take", {removeAllWeapons (_this select 0)}];
 _prisonner setVariable ["GRLIB_is_prisoner", false, true];
 _prisonner setVariable ["GRLIB_counter_TTL", nil, true];
+_prisonner stop false;
