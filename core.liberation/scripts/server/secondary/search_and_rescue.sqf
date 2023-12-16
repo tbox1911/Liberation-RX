@@ -25,7 +25,7 @@ pilot_classname createUnit [ _pilotsPos, _pilotsGrp,'this addMPEventHandler ["MP
 pilot_classname createUnit [ _pilotsPos, _pilotsGrp,'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.5, "private"];
 private _pilotUnits = units _pilotsGrp;
 {
-	[ _x, true, false ] spawn prisonner_ai;
+	[ _x, true, false ] spawn prisoner_ai;
 	_x setDir (random 360);
 } foreach (_pilotUnits);
 sleep 5;

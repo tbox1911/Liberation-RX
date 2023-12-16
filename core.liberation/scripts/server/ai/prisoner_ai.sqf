@@ -75,23 +75,20 @@ while {alive _unit} do {
 	if ([_unit, "FOB", 30] call F_check_near && isTouchingGround (vehicle _unit)) exitWith {
 		sleep (2 + floor(random 4));
 		private _unit_owner = leader group _unit;
-
 		doGetOut _unit;
 		unassignVehicle _unit;
 		[_unit] orderGetIn false;
 		[_unit] allowGetIn false;
-		_unit stop true;
 		sleep 2;
-
+		_unit stop true;
 		_grp = createGroup [GRLIB_side_civilian, true];
 		[_unit] joinSilent _grp;
 		_unit disableAI "ANIM";
 		_unit disableAI "MOVE";
 		_anim = "AmovPercMstpSnonWnonDnon_AmovPsitMstpSnonWnonDnon_ground";
+		[_unit, _anim] remoteExec ["switchMove", 0];
 		[_unit, _anim] remoteExec ["playMoveNow", 0];
 		sleep 2;
-		_anim = "AidlPsitMstpSnonWnonDnon_ground00";
-		[_unit, _anim] remoteExec ["switchMove", 0];
 		[_unit, _unit_owner] call prisonner_captured;
 		sleep 300;
 		deleteVehicle _unit;
@@ -116,17 +113,15 @@ while {alive _unit} do {
 			_unit enableAI "ANIM";
 			_unit enableAI "MOVE";
 			_unit stop false;
-
 			doGetOut _unit;
 			unassignVehicle _unit;
 			[_unit] orderGetIn false;
 			[_unit] allowGetIn false;
 			_unit setUnitPos "AUTO";
-			sleep 2;
-
 			_anim = "AmovPercMwlkSrasWrflDf";
 			[_unit, _anim] remoteExec ["switchMove", 0];
 			[_unit, _anim] remoteExec ["playMoveNow", 0];
+			sleep 2;
 
 			_nearest_sector = [opfor_sectors, _unit] call F_nearestPosition;
 			if (typeName _nearest_sector == "STRING") then {

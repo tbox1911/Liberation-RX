@@ -276,7 +276,7 @@ if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_s
 			_enemy_left = [units GRLIB_side_enemy, {(alive _x) && (vehicle _x == _x) && ((_sectorpos distance2D _x) < _local_capture_size * 1.2)}] call BIS_fnc_conditionalSelect;
 			{
 				if ( _max_prisonners > 0 && ((floor random 100) < GRLIB_surrender_chance) ) then {
-					[_x] spawn prisonner_ai;
+					[_x] spawn prisoner_ai;
 					_max_prisonners = _max_prisonners - 1;
 				} else {
 					if ( ((random 100) <= 50) ) then { [_x] spawn bomber_ai };

@@ -47,7 +47,7 @@ _setupObjects =
 	[_vip] joinSilent _grp_vip;
 	_vip setVariable ["GRLIB_mission_AI", false, true];
 	_vip setSkill ["courage", 0.9];
-	[_vip, false, true] spawn prisonner_ai;
+	[_vip, false, true] spawn prisoner_ai;
 	_vip setrank "COLONEL";
 	_vip moveInAny _vehicle2;
 	sleep 2;

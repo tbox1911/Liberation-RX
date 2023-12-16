@@ -32,7 +32,7 @@ _setupObjects = {
 		pilot_classname createUnit [_pilotsPos, _grpprisonners, 'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.5, "private"];
 		sleep 0.3;
 	};
-	{ [_x, true, false] spawn prisonner_ai } foreach (units _grpprisonners);
+	{ [_x, true, false] spawn prisoner_ai } foreach (units _grpprisonners);
 	true;
 };
 
