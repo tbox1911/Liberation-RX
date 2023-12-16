@@ -104,7 +104,7 @@ waitUntil {sleep 1; !isNil "GRLIB_nametag_units" };
 			};
 
 			_drawicon = soldier_icon;
-			if ( _nextunit getVariable [ "PAR_isUnconscious", 0 ] == 1 ) then {
+			if (_nextunit getVariable ["PAR_isUnconscious", false]) then {
 				_drawicon = wounded_icon;
 			} else {
 				if ( _nextunit == [] call F_getCommander ) then {

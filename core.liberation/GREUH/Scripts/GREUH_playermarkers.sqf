@@ -93,7 +93,7 @@ while { true } do {
 			};
 
 			private _markertype = "mil_start";
-			if ( _nextplayer getVariable [ "PAR_isUnconscious", 0 ] == 1 ) then {
+			if (_nextplayer getVariable ["PAR_isUnconscious", false]) then {
 				_markertype = "MinefieldAP";
 			};
 			_marker setMarkerTypeLocal _markertype;
@@ -154,7 +154,7 @@ while { true } do {
 				_marker setMarkerPosLocal (getPosATL _nextunit);
 				private _mrkdir = getDir _nextunit;
 				if ( isPlayer _nextunit ) then {
-					if (  _nextunit getVariable ["PAR_isUnconscious", 0 ] == 1 ) then {
+					if (_nextunit getVariable ["PAR_isUnconscious", false]) then {
 						_mrkdir = 0;
 					};
 				};
