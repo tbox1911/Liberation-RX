@@ -173,7 +173,7 @@ if (_unit == player) then {
 
 			private _isNotWounded = !(_unit getVariable ["PAR_wounded", false]);
 			if (_isNotWounded && _dam >= 0.86) then {
-				_unit setVariable ["PAR_wounded", true];
+				_unit setVariable ["PAR_wounded", true, true];
 				if (!isNull _veh) then {[_unit, _veh] spawn PAR_fn_eject};
 				_unit allowDamage false;
 				_unit setUnconscious true;

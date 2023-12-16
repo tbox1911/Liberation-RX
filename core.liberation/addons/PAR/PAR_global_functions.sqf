@@ -1,5 +1,6 @@
 PAR_EventHandler = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_EventHandler.sqf";
 PAR_AI_Manager = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_AI_Manager.sqf";
+PAR_Action_Manager = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_Action_Manager.sqf";
 PAR_fn_nearestMedic = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_nearestMedic.sqf";
 PAR_fn_medic = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_medic.sqf";
 PAR_fn_medicRelease = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_medicRelease.sqf";
@@ -154,7 +155,8 @@ PAR_fn_AI_Damage_EH = {
 	_unit setVariable ["PAR_EH_Installed", true];
 	[_unit] call PAR_EventHandler;
 	_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-	_unit setVariable ["PAR_wounded", false];
+	_unit setVariable ["PAR_wounded", false, true];
+	_unit setVariable ["PAR_isUnconscious", false, true];
 	_unit setVariable ["PAR_myMedic", nil];
 	_unit setVariable ["PAR_busy", nil];
 	_unit setVariable ["PAR_heal", nil];
@@ -165,8 +167,8 @@ PAR_fn_AI_Damage_EH = {
 // Player Section
 PAR_Player_Init = {
 	player addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-	player setVariable ["PAR_isUnconscious", 0, true];
-	player setVariable ["PAR_wounded", false];
+	player setVariable ["PAR_isUnconscious", false, true];
+	player setVariable ["PAR_wounded", false, true];
 	player setVariable ["PAR_isDragged", 0, true];
 	player setVariable ["ace_sys_wounds_uncon", false];
 	player setVariable ["PAR_Grp_ID",format["Bros_%1", PAR_Grp_ID], true];
@@ -221,8 +223,8 @@ PAR_HandleDamage_EH = {
 
 	if ( _isNotWounded && _amountOfDamage >= 0.86) then {
 		if (!(isNull _veh_unit)) then {[_unit, _veh_unit] spawn PAR_fn_eject};
-		_unit setVariable ["PAR_wounded", true];
-		_unit setVariable ["PAR_isUnconscious", 1, true];
+		_unit setVariable ["PAR_wounded", true, true];
+		_unit setVariable ["PAR_isUnconscious", true, true];
 		_unit setCaptive true;
 		_unit allowDamage false;
 		_unit setVariable ["PAR_BleedOutTimer", round(time + PAR_BleedOut), true];
@@ -269,14 +271,14 @@ PAR_Player_Unconscious = {
 	_unit switchMove "";
 	[_unit] spawn PAR_fn_unconscious;
 
-	while { !isNull _unit && alive _unit && _unit getVariable ["PAR_isUnconscious", 0] == 1 } do {
+	while { !isNull _unit && alive _unit && (_unit getVariable ["PAR_isUnconscious", false])} do {
 		_bleedOut = player getVariable ["PAR_BleedOutTimer", 0];
 		public_bleedout_message = format [localize "STR_BLEEDOUT_MESSAGE", round (_bleedOut - time)];
 		public_bleedout_timer = round (_bleedOut - time);
 		sleep 0.5;
 	};
 
-	if (alive _unit && _unit getVariable ["PAR_isUnconscious", 0] == 0) then {
+	if (alive _unit && !(_unit getVariable ["PAR_isUnconscious", false])) then {
 		// Player got revived
 		_unit switchMove "amovppnemstpsraswrfldnon";
 		_unit playMoveNow "amovppnemstpsraswrfldnon";

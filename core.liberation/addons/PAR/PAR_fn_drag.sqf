@@ -13,14 +13,14 @@ sleep 1;
 // Wait until release action is used
 waitUntil {
 	sleep 0.1;
-	!alive player || player getVariable ["PAR_isUnconscious", 1] == 1 ||
-	!alive _target || _target getVariable ["PAR_isUnconscious", 1] == 0 ||
-	_target getVariable ["PAR_isDragged", 0] == 0 || lifeState _target != 'INCAPACITATED' ||
+	!alive player || !alive _target ||
+	lifeState _target != 'INCAPACITATED' ||
+	lifeState player == 'INCAPACITATED' ||
+	_target getVariable ["PAR_isDragged", 0] == 0 || 
 	!PAR_isDragging
 };
 
-if (!isNull _target && alive _target) then
-{
+if (!isNull _target && alive _target) then {
 	_target switchMove "AinjPpneMstpSnonWrflDnon";
 	_target playMoveNow  "AinjPpneMstpSnonWrflDnon";
 	_target setVariable ["PAR_isDragged", 0, true];
@@ -28,8 +28,10 @@ if (!isNull _target && alive _target) then
 };
 
 // Switch back to default animation
-player switchMove "amovpknlmstpsraswrfldnon";
-player playMoveNow "amovpknlmstpsraswrfldnon";
+if !(player getVariable ['PAR_isUnconscious', false]) then {
+	player switchMove "amovpknlmstpsraswrfldnon";
+	player playMoveNow "amovpknlmstpsraswrfldnon";
+};
 sleep 1;
 
 // Handle release action

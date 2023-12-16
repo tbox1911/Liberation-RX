@@ -43,8 +43,8 @@ if ([_medic] call PAR_is_medic) then {
   _wnded setDamage 0.25;
 };
 
+_wnded setVariable ["PAR_isUnconscious", false, true];
 if (_wnded == player) then {
-  _wnded setVariable ["PAR_isUnconscious", 0, true];
   _wnded setVariable ["PAR_isDragged", 0, true];
   group _wnded selectLeader _wnded;
   private _bounty_ok = (([(GRLIB_capture_size * 2), getPosATL _medic] call F_getNearestSector) in opfor_sectors && _medic getVariable ["PAR_lastRevive",0] < time);
@@ -53,9 +53,11 @@ if (_wnded == player) then {
     [_medic, _bonus] remoteExec ["F_addScore", 2];
     _medic setVariable ["PAR_lastRevive", round(time + 5*60), true];
     private _text = format [localize "STR_PAR_ST_02", name _wnded, _bonus];
+
     [[_medic, _text], {
       if (player == (_this select 0)) then { hintSilent (_this select 1) };
     }] remoteExec ["bis_fnc_call", -2];
+    
   };
 } else {
   _wnded switchMove "amovpknlmstpsraswrfldnon"; //go up
@@ -70,6 +72,6 @@ if (_wnded == player) then {
     params ["_unit"];
     uIsleep 10;   //time to recover
     _unit setCaptive false;
-    _unit setVariable ["PAR_wounded", false];
+    _unit setVariable ["PAR_wounded", false, true];
     _unit allowDamage true;
 };

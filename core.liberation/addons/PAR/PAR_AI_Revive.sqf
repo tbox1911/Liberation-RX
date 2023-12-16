@@ -95,5 +95,8 @@ addMissionEventHandler ["Draw3D",{
 // AI Manager
 [] spawn PAR_AI_Manager;
 
+// Action Manager
+[] spawn PAR_Action_Manager;
+
 waitUntil {!(isNull (findDisplay 46))};
 systemChat "-------- pSiKo AI Revive Initialized --------";
