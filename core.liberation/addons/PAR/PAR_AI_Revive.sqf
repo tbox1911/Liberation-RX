@@ -1,5 +1,6 @@
 /*
-     pSiKO AI Revive - v2.04 - SP/MP - AI
+  pSiKO AI Revive - v3.05 - SP/MP - AI
+  aka: PAR Revive
 
 Author:
 
@@ -12,19 +13,23 @@ Description:
 
 Instructions:
 
-	ExecVM from initclient.sqf or init.sqf in your mission directory.
+	ExecVM from init.sqf in your mission directory.
+  [] execVM "addons\PAR\PAR_AI_Revive.sqf";
 
-Based on: 
+Based on:
   AI REVIVE HEAL SCRIPT SP/MP by Pierre MGI
   at : https://forums.bohemia.net/forums/topic/207522-ai-revive-heal-script-spmp/
 
   Farooq's Revive by farooqaaa
   at : https://forums.bohemia.net/forums/topic/146926-farooqs-revive/
 _________________________________________________________________________*/
-if (isDedicated) exitWith {};
 
-call compile preprocessFile "addons\TKP\tk_init.sqf";
-call compile preprocessFile "addons\PAR\PAR_global_functions.sqf";
+if (!isDedicated && !hasInterface && isMultiplayer) exitWith {};
+if (isDedicated) exitWith {
+  // PAR Remote Call - Server Side
+  PAR_remote_bounty = compileFinal preprocessFileLineNumbers "addons\PAR\server\PAR_remote_bounty.sqf";
+  PAR_remote_sortie = compileFinal preprocessFileLineNumbers "addons\PAR\server\PAR_remote_sortie.sqf";
+};
 
 // Seconds until unconscious unit bleeds out and dies.
 PAR_BleedOut = 300;
@@ -58,8 +63,13 @@ PAR_graves = [
 
 PAR_grave_box = "Land_PlasticCase_01_small_black_F";
 
+waituntil {sleep 1; !isNil "GRLIB_player_spawned"};
 waituntil {sleep 1; GRLIB_player_spawned};
 waituntil {sleep 1; !isNil {player getVariable ["GRLIB_Rank", nil]}};
+
+// Init functions
+call compile preprocessFile "addons\TKP\tk_init.sqf";
+call compile preprocessFile "addons\PAR\PAR_global_functions.sqf";
 
 // Init player
 [] call PAR_Player_Init;

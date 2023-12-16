@@ -38,7 +38,7 @@ while {
 		} else {
 			_medic doMove (getPos _wnded);
 		};
-		sleep 7;
+		sleep 5;
 		if (speed vehicle _medic < 1 && (_medic distance2D _wnded) > 5 && (currentCommand _medic != "STOP")) then {
 			_medic setPosATL (getPosATL _medic vectorAdd [([] call F_getRND), ([] call F_getRND), 0.5]);
 			_medic switchMove "AmovPercMwlkSrasWrflDf";
@@ -46,7 +46,7 @@ while {
 			sleep 3;
 		};
 	};
-	sleep 3;	
+	sleep 1;	
 };
 
 if (lifeState _medic != 'INCAPACITATED' && lifeState _wnded != 'INCAPACITATED' && (_medic distance2D _wnded) <= 3) then {

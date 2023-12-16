@@ -59,8 +59,8 @@ player createDiaryRecord ["LRX Info", ["Contributors", format ["Dynamic Animal v
 player createDiaryRecord ["LRX Info", ["Contributors", format ["Mag Repack v3.13<br/>by <font color='%1'>-Outlawled-</font>", call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["Contributors", format ["A3W Missions and so much!!<br/>by <font color='%1'>-AgentRev-</font>", call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["Contributors", format ["R3F Logistics v3.10<br/>by <font color='%1'>-Team-R3F.org-</font>", call _getRandomColor]]];
-player createDiaryRecord ["LRX Info", ["Contributors", format ["Robust Air Taxi v1.05<br/>by <font color='%1'>-pSiKO-</font>", call _getRandomColor]]];
-player createDiaryRecord ["LRX Info", ["Contributors", format ["pSiKO AI Revive v2.04<br/>by <font color='%1'>-pSiKO-</font>", call _getRandomColor]]];
+player createDiaryRecord ["LRX Info", ["Contributors", format ["Robust Air Taxi v2.05<br/>by <font color='%1'>-pSiKO-</font>", call _getRandomColor]]];
+player createDiaryRecord ["LRX Info", ["Contributors", format ["pSiKO AI Revive v3.05<br/>by <font color='%1'>-pSiKO-</font>", call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["Contributors", format ["LARs Arsenal v1.05<br/>by <font color='%1'>-Larrow Zurb-</font>", call _getRandomColor]]];
 player createDiaryRecord ["LRX Info", ["Contributors", format ["LRX Community Manager<br/>by <font color='%1'>-Legend_TS13-</font>", call _getRandomColor]]];
 
