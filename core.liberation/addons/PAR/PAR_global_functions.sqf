@@ -72,7 +72,16 @@ PAR_abandon_priso = {
 				if (isNull (objectParent _unit) && (player distance2D _unit) < 50) then {
 					_grp = createGroup [GRLIB_side_enemy, true];
 					[_unit] joinSilent _grp;
-					[_unit] remoteExec ["prisoner_ai", 2];
+					_unit stop true;
+					_unit switchMove "";
+					_unit setUnitPos "UP";
+					sleep 1;
+					_unit disableAI "ANIM";
+					_unit disableAI "MOVE";
+					_anim = "AmovPercMstpSnonWnonDnon_AmovPercMstpSsurWnonDnon";
+					[_unit, _anim] remoteExec ["switchMove", 0];
+					[_unit, _anim] remoteExec ["playMoveNow", 0];
+					_unit setVariable ["GRLIB_is_prisoner", true, true];
 				} else {
 					hintSilent "Prisoner is in a vehicle or is too far. (max 50m)";
 				};
