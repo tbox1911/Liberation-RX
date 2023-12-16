@@ -68,8 +68,8 @@ waituntil {sleep 1; GRLIB_player_spawned};
 waituntil {sleep 1; !isNil {player getVariable ["GRLIB_Rank", nil]}};
 
 // Init functions
-call compile preprocessFile "addons\TKP\tk_init.sqf";
-call compile preprocessFile "addons\PAR\PAR_global_functions.sqf";
+[] call compile preprocessFile "addons\TKP\tk_init.sqf";
+[] call compile preprocessFile "addons\PAR\PAR_global_functions.sqf";
 
 // Init player
 [] call PAR_Player_Init;
