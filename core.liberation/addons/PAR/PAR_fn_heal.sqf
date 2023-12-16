@@ -1,14 +1,18 @@
 params ["_medic", "_wnded"];
 
-if (_medic != _wnded) then {
-	_medic groupchat format [localize "STR_PAR_CW_01", name _wnded];
-};
-_medic setVariable ['PAR_heal', true];
 _wnded setVariable ['PAR_healed', true];
-
-if (!isplayer _wnded && _medic != _wnded) then {
-	doStop _wnded;
+if (_wnded == _medic) exitWith {
+	_wnded playMoveNow 'ainvpknlmstpslaywrfldnon_medicother';
+	sleep 7;
+	if (lifeState _wnded != 'INCAPACITATED') then {
+		_wnded setDamage 0;
+	};
+	sleep 2;
+	_wnded setVariable ['PAR_healed', nil];
 };
+
+_medic groupchat format [localize "STR_PAR_CW_01", name _wnded];
+_medic setVariable ['PAR_heal', true];
 
 while {
 	(currentCommand _medic != "STOP") &&
@@ -25,6 +29,8 @@ while {
 	(behaviour _wnded) != "COMBAT" &&
 	((_medic distance2D _wnded) > 3 && (_medic distance2D _wnded) < 30)
 } do {
+	if (!isPlayer _wnded) then { _wnded stop true};
+
 	if (currentCommand _medic != "STOP") then {
 		[_medic] doFollow (leader group player);
 		if ((_wnded distance2D _medic) < 25) then {
@@ -33,7 +39,7 @@ while {
 			_medic doMove (getPos _wnded);
 		};
 		sleep 7;
-		if (speed _medic < 1 && (_medic distance2D _wnded) > 5 && (currentCommand _medic != "STOP")) then {
+		if (speed vehicle _medic < 1 && (_medic distance2D _wnded) > 5 && (currentCommand _medic != "STOP")) then {
 			_medic setPosATL (getPosATL _medic vectorAdd [([] call F_getRND), ([] call F_getRND), 0.5]);
 			_medic switchMove "AmovPercMwlkSrasWrflDf";
 			_medic playMoveNow "AmovPercMwlkSrasWrflDf";
@@ -58,6 +64,7 @@ if (lifeState _medic != 'INCAPACITATED' && lifeState _wnded != 'INCAPACITATED' &
 };
 
 sleep 2;
+_wnded stop false;
 _medic setVariable ['PAR_heal', nil];
 _wnded setVariable ['PAR_healed', nil];
 [_medic, _wnded] doFollow (leader group player);
