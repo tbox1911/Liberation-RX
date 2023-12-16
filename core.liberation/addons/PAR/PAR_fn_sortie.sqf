@@ -1,7 +1,7 @@
 params ["_wnded", "_medic"];
 
 if (isDedicated) exitWith {};
-if (!(local _wnded)) exitWith {};
+if !(local _wnded) exitWith {};
 private _my_medic = _wnded getVariable ["PAR_myMedic", objNull];
 if (local _medic && (_my_medic != _medic)) exitWith { [_medic, _wnded] call PAR_fn_medicRelease };
 if (lifeState _wnded != "INCAPACITATED" || (!alive _wnded)) exitWith { [_medic, _wnded] call PAR_fn_medicRelease };
@@ -50,14 +50,7 @@ if (_wnded == player) then {
   private _bounty_ok = (([(GRLIB_capture_size * 2), getPosATL _medic] call F_getNearestSector) in opfor_sectors && _medic getVariable ["PAR_lastRevive",0] < time);
   if (isPlayer _medic && _bounty_ok) then {
     private _bonus = 5;
-    [_medic, _bonus] remoteExec ["F_addScore", 2];
-    _medic setVariable ["PAR_lastRevive", round(time + 5*60), true];
-    private _text = format [localize "STR_PAR_ST_02", name _wnded, _bonus];
-
-    [[_medic, _text], {
-      if (player == (_this select 0)) then { hintSilent (_this select 1) };
-    }] remoteExec ["bis_fnc_call", -2];
-    
+    [_medic, _wnded, _bonus] remoteExec ["PAR_remote_bounty", 2];
   };
 } else {
   _wnded switchMove "amovpknlmstpsraswrfldnon"; //go up

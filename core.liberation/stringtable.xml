@@ -7931,6 +7931,10 @@
 			<Portuguese>%1 está curando %2 agora...</Portuguese>
 			<Czech>%1 se nyní léčí %2...</Czech>
 		</Key>
+		<Key ID="STR_PAR_ST_02">
+			<Original>%1 XP reward for %2's healing.</Original>
+			<French>%1 XP bonus pour la guérison de %2.</French>
+		</Key>			
 		<Key ID="STR_PAR_UC_01">
 			<Original>I need a Medic !!</Original>
 			<Russian>Мне нужен Медик!!</Russian>

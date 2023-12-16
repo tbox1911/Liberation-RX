@@ -1,6 +1,6 @@
 // PAR Manage Action
 
-private ["_unit", "_is_medic", "_has_medikit", "_wnded_list", "_wnded", "_have_priso"];
+private ["_unit", "_wnded_list"];
 
 while {true} do {
     _wnded_list = (units GRLIB_side_friendly) select {
@@ -12,7 +12,7 @@ while {true} do {
         isNil {_x getVariable 'PAR_healed'}
     };
 
-    if (count (_wnded_list) > 0) then {
+    if (count _wnded_list > 0) then {
         {
             _unit = _x;
             systemchat str (name _unit);
@@ -52,14 +52,7 @@ while {true} do {
                     if (local _target) then {
                         [_target, _caller] call PAR_fn_sortie;
                     } else {
-                        [[_target, _caller], {
-                            if (isDedicated) exitWith {};
-                            if (!isNil "GRLIB_player_spawned") then {
-                            if (GRLIB_player_spawned) then {
-                                [(_this select 0),(_this select 1)] call PAR_fn_sortie;
-                            };
-                            };
-                        }] remoteExec ["bis_fnc_call", 0];
+                        [_target, _caller] remoteExec ["PAR_remote_sortie", 2];
                     };
                 },
                 {

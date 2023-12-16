@@ -22,7 +22,7 @@ while {true} do {
                     isNil {_x getVariable 'PAR_healed'}
                 };
 
-                if (count (_wnded_list) > 0) then {
+                if (count _wnded_list > 0) then {
                     _is_medic = [_unit] call PAR_is_medic;
                     _has_medikit = [_unit] call PAR_has_medikit;
                 	_wnded = _wnded_list select 0;

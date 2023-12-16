@@ -1,6 +1,6 @@
 PAR_EventHandler = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_EventHandler.sqf";
 PAR_AI_Manager = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_AI_Manager.sqf";
-PAR_Action_Manager = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_Action_Manager.sqf";
+PAR_ActionManager = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_ActionManager.sqf";
 PAR_fn_nearestMedic = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_nearestMedic.sqf";
 PAR_fn_medic = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_medic.sqf";
 PAR_fn_medicRelease = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_medicRelease.sqf";
@@ -85,7 +85,7 @@ PAR_fn_fixPos = {
 	params ["_medic", "_wnded"];
 	{
 		private _pos = getPosATL _x;
-		if (surfaceIsWater _pos) then {
+		if (local _x && surfaceIsWater _pos) then {
 			_pos = getPosASL _x;
 			_zpos = _pos select 2;
 			if (_zpos < -3) then {
@@ -99,21 +99,11 @@ PAR_fn_fixPos = {
 };
 PAR_is_medic = {
 	params ["_unit"];
-	private _ret = false;
-
-	if ( getNumber (configOf _unit >> "attendant") == 1 ) then {
-		_ret = true;
-	};
-	_ret
+	(getNumber (configOf _unit >> "attendant") == 1);
 };
 PAR_has_medikit = {
 	params ["_unit"];
-	private _ret = false;
-
-	if ( PAR_AidKit in (items _unit) || PAR_Medikit in (items _unit) ) then {
-		_ret = true;
-	};
-	_ret
+	(PAR_AidKit in (items _unit) || PAR_Medikit in (items _unit));
 };
 PAR_public_EH = {
 	params ["_EH", "_target"];
