@@ -70,7 +70,7 @@ save_changes = 0;
 	_control ctrlCommit 0;
 
 	_control = _display ctrlCreate [ "RscCombo", (200 + _idx), _display displayCtrl 9969 ];
-	_control ctrlSetPosition [ ((0.072 * 7) - 0.02) * safeZoneW, ((_idx * 0.025) * safezoneH) + 0.0025, (0.095 * safeZoneW), 0.022  * safezoneH];
+	_control ctrlSetPosition [ ((0.072 * 6.5) - 0.02) * safeZoneW, ((_idx * 0.025) * safezoneH) + 0.0025, ((0.072 * 2) * safeZoneW), 0.022  * safezoneH];
 	_control ctrlSetBackgroundColor [0.2,0.23,0.18,0.85];
 	if ( _idx % 2 == 0 ) then {
 		 _control ctrlSetBackgroundColor [0.27,0.30,0.23,0.85];
