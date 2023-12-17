@@ -22,9 +22,9 @@ if (_needammo1) then {
 };
 
 if (!isNull (unitBackpack _unit) && _secondary_weapon != "") then {
-    private _needammo2 = [_unit, _secondary_weapon, _minsec_def] call F_UnitNeedAmmo;
+    private _needammo2 = [_unit, _secondary_weapon, _minsec] call F_UnitNeedAmmo;
     if (_needammo2) then {
         clearAllItemsFromBackpack _unit;
-        [_unit, _secondary_weapon, _maxsec_def] call F_UnitAddAmmo;
+        [_unit, _secondary_weapon, _maxsec] call F_UnitAddAmmo;
     };
 };
