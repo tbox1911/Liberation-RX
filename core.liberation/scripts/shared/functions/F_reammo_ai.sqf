@@ -2,9 +2,13 @@ params ["_unit"];
 if (isNil "_unit") exitWith {};
 
 private _primary_weapon = primaryWeapon _unit;
+private _secondary_weapon = secondaryWeapon _unit;
 if (_primary_weapon == "") exitWith {};
 private _maxpri = 10;           // maximum magazines unit can take (primary weapon)
 private _minpri = 6;            // minimal magazines before unit need to reload
+private _maxsec = 3;            // maximum magazines unit can take (secondary weapon)
+private _minsec = 1;            // minimal magazines before unit need to reload
+
 private _remove_items = [
     "R3F_FlashBang_mag"
 ];
@@ -15,4 +19,12 @@ if ( _primary_weapon find "LMG" >= 0 || _primary_weapon find "MMG" >= 0 || _prim
 private _needammo1 = [_unit, _primary_weapon, _minpri] call F_UnitNeedAmmo;
 if (_needammo1) then {
     [_unit, _primary_weapon, _maxpri] call F_UnitAddAmmo;
+};
+
+if (!isNull (unitBackpack _x) && _secondary_weapon != "") then {
+    private _needammo2 = [_x, _secondary_weapon, _minsec_def] call F_UnitNeedAmmo;
+    if (_needammo2) then {
+        clearAllItemsFromBackpack _x;
+        [_x, _secondary_weapon, _maxsec_def] call F_UnitAddAmmo;
+    };
 };
