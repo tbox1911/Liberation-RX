@@ -25,6 +25,7 @@ while { true } do {
 		huron AnimateDoor ["Door_rear_source", 1, true];
 		publicVariable "huron";
 		[huron] call F_clearCargo;
+		[huron] call F_fixModVehicle;
 		huron enableSimulationGlobal true;
 		sleep 3;
 		huron setDamage 0;
