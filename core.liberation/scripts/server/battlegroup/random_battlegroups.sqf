@@ -14,7 +14,13 @@ while { GRLIB_csat_aggressivity > 0.9 && GRLIB_endgame == 0 && GRLIB_global_stop
 	};
 
 	if ((opforcap < GRLIB_battlegroup_cap) && (combat_readiness >= 75) && (diag_fps > 30.0))  then {
-		[] spawn spawn_battlegroup;
+		_hc = [] call F_lessLoadedHC;
+		if ( isNull _hc ) then {
+			[] spawn spawn_battlegroup;
+		} else {
+			diag_log format [ "Spawn BattleGroup at %1 on %2", time, _hc ];
+			[] remoteExec ["spawn_battlegroup", _hc];
+		};
 	};
 	
 	private _pilots = allPlayers select { (objectParent _x) isKindOf "Air" && (driver vehicle _x) == _x };

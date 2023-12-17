@@ -89,7 +89,7 @@ while {alive _unit} do {
 		[_unit, _anim] remoteExec ["switchMove", 0];
 		[_unit, _anim] remoteExec ["playMoveNow", 0];
 		sleep 2;
-		[_unit, _unit_owner] call prisonner_captured;
+		[_unit, _unit_owner] remoteExec ["prisonner_captured", 2];
 		sleep 300;
 		deleteVehicle _unit;
 	};
@@ -105,7 +105,7 @@ while {alive _unit} do {
 
 			if (side group _unit == GRLIB_side_friendly) then {
 				private _text = format ["Alert! prisonner %1 is escaping!", name _unit];
-				[gamelogic, _text] remoteExec ["globalChat", (owner _unit)];
+				[gamelogic, _text] remoteExec ["globalChat", 0];
 			};
 
 			_flee_grp = createGroup [GRLIB_side_enemy, true];

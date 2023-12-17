@@ -253,7 +253,6 @@ if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_s
 	sleep 2;
 	[_sector, _building_range, round (_iedcount)] spawn ied_trap_manager;
 	sleep 2;
-	//[ _sector ] spawn reinforcements_manager;
 
 	[ _sectorpos ] spawn {
 		params ["_pos"];
@@ -271,7 +270,8 @@ if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_s
 	while { !_stopit } do {
 		_sector_ownership = [_sectorpos, _local_capture_size] call F_sectorOwnership;
 		if (_sector_ownership == GRLIB_side_friendly) then {
-			[ _sector ] spawn sector_liberated_remote_call;
+			//[ _sector ] spawn sector_liberated_remote_call; //rc
+			[_sector] remoteExec ["sector_liberated_remote_call", 2];
 			_stopit = true;
 			_enemy_left = [units GRLIB_side_enemy, {(alive _x) && (vehicle _x == _x) && ((_sectorpos distance2D _x) < _local_capture_size * 1.2)}] call BIS_fnc_conditionalSelect;
 			{
@@ -308,7 +308,6 @@ if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_s
 	publicVariable "active_sectors";
 };
 
-//[ _sector ] spawn reinforcements_manager;
 diag_log format ["End Defend Sector %1 at %2", _sector, time];
 
 // Cleanup

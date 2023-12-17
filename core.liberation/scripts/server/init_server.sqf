@@ -99,7 +99,6 @@ fob_init = compileFinal preprocessFileLineNumbers "scripts\server\base\fob_init.
 fob_init_officer = compileFinal preprocessFileLineNumbers "scripts\server\base\fob_init_officer.sqf";
 
 // Patrol
-reinforcements_manager = compileFinal preprocessFileLineNumbers "scripts\server\patrols\reinforcements_manager.sqf";
 send_paratroopers = compileFinal preprocessFileLineNumbers "scripts\server\patrols\send_paratroopers.sqf";
 
 // Secondary objectives
@@ -115,7 +114,6 @@ destroy_fob = compileFinal preprocessFileLineNumbers "scripts\server\sector\dest
 ied_manager = compileFinal preprocessFileLineNumbers "scripts\server\sector\ied_manager.sqf";
 ied_trap_manager = compileFinal preprocessFileLineNumbers "scripts\server\sector\ied_trap_manager.sqf";
 static_manager = compileFinal preprocessFileLineNumbers "scripts\server\sector\static_manager.sqf";
-patrol_manager = compileFinal preprocessFileLineNumbers "scripts\server\sector\patrol_manager.sqf";
 manage_ammoboxes = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_ammoboxes.sqf";
 manage_intels = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_intels.sqf";
 manage_one_sector = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_one_sector.sqf";

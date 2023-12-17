@@ -24,12 +24,6 @@ opfor_spotter createUnit [ getposATL _vehicle, _grp, 'this addMPEventHandler ["M
 _vehicle setVariable ["GRLIB_vehicle_gunner", units _grp];
 
 diag_log format [ "Spawn Static Patrol on sector %1 at %2", _sector, time ];
-if ( local _grp ) then {
-	_headless_client = [] call F_lessLoadedHC;
-	if ( !isNull _headless_client ) then {
-		_grp setGroupOwner ( owner _headless_client );
-	};
-};
 
 // AI (managed by manage_static.sqf)
 
