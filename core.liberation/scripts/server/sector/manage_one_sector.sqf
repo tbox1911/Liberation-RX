@@ -10,7 +10,7 @@ private _spawncivs = false;
 private _building_ai_max = 0;
 private _infsquad = "militia";
 private _building_range = 200;
-private _local_capture_size = GRLIB_capture_size * 1.4;
+private _local_capture_size = GRLIB_capture_size;
 private _iedcount = 0;
 private _defensecount = 0;
 private _vehtospawn = [];
@@ -284,9 +284,6 @@ if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_s
 				_managed_units = _managed_units - [_x];
 			} foreach _enemy_left;
 			sleep 60;
-
-			active_sectors = active_sectors - [_sector];
-			publicVariable "active_sectors";
 		} else {
 			if ( ([_sectorpos, (GRLIB_sector_size + 300), GRLIB_side_friendly] call F_getUnitsCount) == 0 ) then {
 				_sector_despawn_tickets = _sector_despawn_tickets - 1;
@@ -296,18 +293,16 @@ if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_s
 
 			if ( _sector_despawn_tickets <= 0 ) then {
 				_stopit = true;
-				active_sectors = active_sectors - [ _sector ];
-				publicVariable "active_sectors";
 			};
 		};
 		sleep 5;
 	};
 } else {
 	sleep 40;
-	active_sectors = active_sectors - [ _sector ];
-	publicVariable "active_sectors";
 };
 
+active_sectors = active_sectors - [_sector];
+publicVariable "active_sectors";
 diag_log format ["End Defend Sector %1 at %2", _sector, time];
 
 // Cleanup

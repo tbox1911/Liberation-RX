@@ -15,5 +15,5 @@ while { true } do {
 	publicVariable "opfor_sectors";
 	publicVariable "combat_readiness";
 	publicVariable "resources_intel";
-	sleep 5;
+	sleep 2;
 };
