@@ -50,6 +50,7 @@ if (count _context >= 1) then {
                                 //_unit setpos (getpos _unit);
                                 _unit switchMove "AmovPercMwlkSrasWrflDf";
 				                _unit playMoveNow "AmovPercMwlkSrasWrflDf";
+                                [_unit] spawn F_fixModUnit;
                                 [_unit] spawn PAR_fn_AI_Damage_EH;
                                 gamelogic globalChat format ["Adds %1 (%2) to your squad.", name _unit, rank _unit];
                             }

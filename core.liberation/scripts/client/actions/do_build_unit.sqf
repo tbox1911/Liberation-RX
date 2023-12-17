@@ -22,7 +22,7 @@ if (_classname in units_loadout_overide) then {
     private _path = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, toLower _classname];
     [_path, _unit] call F_getTemplateFile;
 };
-
+[_unit] spawn F_fixModUnit;
 stats_blufor_soldiers_recruited = stats_blufor_soldiers_recruited + 1;
 publicVariable "stats_blufor_soldiers_recruited";
 build_refresh = true;

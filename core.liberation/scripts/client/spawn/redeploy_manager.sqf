@@ -163,6 +163,7 @@ if (dialog && deploy == 1) then {
 				} else {
 					[player, configOf player] call BIS_fnc_loadInventory;
 				};
+				[player] spawn F_fixModUnit;
 				player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
 				GRLIB_backup_loadout = getUnitLoadout player;
 			};
