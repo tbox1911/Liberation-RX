@@ -31,6 +31,10 @@ if (isDedicated) exitWith {
   PAR_remote_sortie = compileFinal preprocessFileLineNumbers "addons\PAR\server\PAR_remote_sortie.sqf";
 };
 
+// Init functions
+[] call compile preprocessFile "addons\TKP\tk_init.sqf";
+[] call compile preprocessFile "addons\PAR\PAR_global_functions.sqf";
+
 // Seconds until unconscious unit bleeds out and dies.
 PAR_BleedOut = 300;
 PAR_BleedOutExtra = 60;
@@ -66,10 +70,6 @@ PAR_grave_box = "Land_PlasticCase_01_small_black_F";
 waituntil {sleep 1; !isNil "GRLIB_player_spawned"};
 waituntil {sleep 1; GRLIB_player_spawned};
 waituntil {sleep 1; !isNil {player getVariable ["GRLIB_Rank", nil]}};
-
-// Init functions
-[] call compile preprocessFile "addons\TKP\tk_init.sqf";
-[] call compile preprocessFile "addons\PAR\PAR_global_functions.sqf";
 
 // Init player
 [] call PAR_Player_Init;
