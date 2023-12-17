@@ -7,7 +7,7 @@ private [
 ];
 
 private _distarsenal = 30;           // minimal distance from source (ammo/repair)
-private _maxpri_def = 10;            // maximum magazines unit can take (primary weapon)
+private _maxpri_def = 8;            // maximum magazines unit can take (primary weapon)
 private _minpri_def = 3;             // minimal magazines before unit need to reload
 private _maxsec_def = 3;             // maximum magazines unit can take (secondary weapon)
 private _minsec_def = 1;             // minimal magazines before unit need to reload
@@ -48,14 +48,6 @@ while { true } do {
 					_maxpri = _maxpri_def;
 					_minpri = _minpri_def;
 
-					// check primary Weapon
-					if ( _primary_weapon find "LMG" >= 0 || _primary_weapon find "MMG" >= 0 || _primary_weapon find "RPK12" >= 0 ) then { _minpri = 1; _maxpri = 3 };
-					_needammo1 = [_x, _primary_weapon, _minpri] call F_UnitNeedAmmo;
-					if (_needammo1) then {
-						_x groupchat "Rearming Primary Weapon.";
-						[_x, _primary_weapon, _maxpri] call F_UnitAddAmmo;
-					};
-
 					// check secondary Weapon if backpack present
 					if (!isNull (unitBackpack _x)) then {
 						_needammo2 = [_x, secondaryWeapon _x, _minsec_def] call F_UnitNeedAmmo;
@@ -64,6 +56,14 @@ while { true } do {
 							_x groupchat "Rearming Secondary Weapon.";
 							[_x, secondaryWeapon _x, _maxsec_def] call F_UnitAddAmmo;
 						};
+					};
+
+					// check primary Weapon
+					if ( _primary_weapon find "LMG" >= 0 || _primary_weapon find "MMG" >= 0 || _primary_weapon find "RPK12" >= 0 ) then { _minpri = 1; _maxpri = 3 };
+					_needammo1 = [_x, _primary_weapon, _minpri] call F_UnitNeedAmmo;
+					if (_needammo1) then {
+						_x groupchat "Rearming Primary Weapon.";
+						[_x, _primary_weapon, _maxpri] call F_UnitAddAmmo;
 					};
 				};
 
