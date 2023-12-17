@@ -28,7 +28,13 @@ while { ({alive _x} count (units _grp) > 0) && ( GRLIB_endgame == 0 ) } do {
 	private _in_water = ({(alive _x && surfaceIsWater (getPos _x) && _x distance2D _objective_pos > 250)} count (units _grp) > 2);
 	if (_objective_pos isEqualTo zeropos || _in_water) exitWith {
 		// Cleanup
-		waitUntil { sleep 30; (GRLIB_global_stop == 1 || [leader _grp, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+		waitUntil { 
+			sleep 30; 
+			(
+				GRLIB_global_stop == 1 || 
+				(([leader _grp, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) && (([GRLIB_sector_size, leader _grp] call F_getNearestSector) != attack_in_progress select 0))
+			)
+		};
 		{
 			_veh = objectParent _x;
 			if (!isNull _veh) then { [_veh] call clean_vehicle };
