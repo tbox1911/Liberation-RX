@@ -204,8 +204,8 @@ LRX_Mission_Params_Def = [
 		[1, 2, 3, 4, 5, 6]
 	],
 	["SectorDespawn", localize "STR_PARAM_SECTOR_DESPAWN",
-		["6", "8", "12", "16", "20"],
-		[30, 40, 60, 80, 100]
+		["3", "6", "8", "12", "16", "20"],
+		[(3*12), (6*12), (8*12), (12*12), (16*12), (20*12)]
 	],
 	["LRX_Cleanup", localize "STR_CLEANUP_PARAM", [
 		localize "STR_PARAMS_DISABLED",

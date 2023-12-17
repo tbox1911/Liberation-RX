@@ -166,7 +166,7 @@ if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_s
 			[group ((crew _vehicle) select 0), _sectorpos] spawn add_defense_waypoints;
 			_managed_units pushback _vehicle;
 			{ _managed_units pushback _x } foreach (crew _vehicle);
-			sleep 5;
+			sleep 1;
 		} foreach _vehtospawn;
 	} else {
 		if (count _squad1 == 0) then { _squad1 = ([] call F_getAdaptiveSquadComp) };
@@ -186,7 +186,7 @@ if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_s
 			_buildingpositions = _buildingpositions + ([_x] call BIS_fnc_buildingPositions);
 		} foreach _allbuildings;
 		if ( count _buildingpositions > _minimum_building_positions ) then {
-			_managed_units = _managed_units + ( [ _infsquad, _building_ai_max, _buildingpositions, _sectorpos, _sector ] call F_spawnBuildingSquad );
+			_managed_units = _managed_units + ([_infsquad, _building_ai_max, _buildingpositions, _sectorpos, _sector] call F_spawnBuildingSquad);
 		};
 	};
 
@@ -196,35 +196,35 @@ if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_s
 		_grp = [ _sector, _infsquad, _squad1 ] call F_spawnRegularSquad;
 		[ _grp, _sectorpos, 50 ] spawn add_defense_waypoints;
 		_managed_units = _managed_units + (units _grp);
-		sleep 2;
+		sleep 1;
 	};
 
 	if ( count _squad2 > 0 ) then {
 		_grp = [ _sector, _infsquad, _squad2 ] call F_spawnRegularSquad;
 		[ _grp, _sectorpos, 100 ] spawn add_defense_waypoints;
 		_managed_units = _managed_units + (units _grp);
-		sleep 2;
+		sleep 1;
 	};
 
 	if ( count _squad3 > 0 ) then {
 		_grp = [ _sector, _infsquad, _squad3 ] call F_spawnRegularSquad;
 		[ _grp, _sectorpos, 100 ] spawn add_defense_waypoints;
 		_managed_units = _managed_units + (units _grp);
-		sleep 2;
+		sleep 1;
 	};
 
 	if ( count _squad4 > 0 ) then {
 		_grp = [ _sector, _infsquad, _squad4 ] call F_spawnRegularSquad;
 		[ _grp, _sectorpos, 200 ] spawn add_defense_waypoints;
 		_managed_units = _managed_units + (units _grp);
-		sleep 2;
+		sleep 1;
 	};
 
 	if ( count _squad5 > 0 ) then {
 		_grp = [ _sector, _infsquad, _squad5 ] call F_spawnRegularSquad;
 		[ _grp, _sectorpos, 300 ] spawn add_defense_waypoints;
 		_managed_units = _managed_units + (units _grp);
-		sleep 2;
+		sleep 1;
 	};
 
 	if ( _spawncivs && GRLIB_civilian_activity > 0) then {
@@ -248,11 +248,11 @@ if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_s
 	};
 
 	[ _sector, _defensecount ] spawn static_manager;
-	sleep 2;
+	sleep 1;
 	[_sector, _building_range, round (_iedcount)] spawn ied_manager;
-	sleep 2;
+	sleep 1;
 	[_sector, _building_range, round (_iedcount)] spawn ied_trap_manager;
-	sleep 2;
+	sleep 1;
 
 	[ _sectorpos ] spawn {
 		params ["_pos"];
@@ -265,12 +265,9 @@ if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_s
 	};
 
 	diag_log format ["Sector %1 wait attack to finish", _sector];
-	sleep 300;
-
 	while { !_stopit } do {
 		_sector_ownership = [_sectorpos, _local_capture_size] call F_sectorOwnership;
 		if (_sector_ownership == GRLIB_side_friendly) then {
-			//[ _sector ] spawn sector_liberated_remote_call; //rc
 			[_sector] remoteExec ["sector_liberated_remote_call", 2];
 			_stopit = true;
 			_enemy_left = [units GRLIB_side_enemy, {(alive _x) && (vehicle _x == _x) && ((_sectorpos distance2D _x) < _local_capture_size * 1.2)}] call BIS_fnc_conditionalSelect;
@@ -278,10 +275,10 @@ if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_s
 				if ( _max_prisonners > 0 && ((floor random 100) < GRLIB_surrender_chance) ) then {
 					[_x] spawn prisoner_ai;
 					_max_prisonners = _max_prisonners - 1;
+					_managed_units = _managed_units - [_x];
 				} else {
 					if ( ((random 100) <= 50) ) then { [_x] spawn bomber_ai };
 				};
-				_managed_units = _managed_units - [_x];
 			} foreach _enemy_left;
 			sleep 60;
 		} else {
@@ -291,7 +288,7 @@ if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_s
 				_sector_despawn_tickets = GRLIB_despawn_tickets;
 			};
 
-			if ( _sector_despawn_tickets <= 0 ) then {
+			if ( _sector_despawn_tickets <= 1 ) then {
 				_stopit = true;
 			};
 		};
