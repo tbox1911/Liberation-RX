@@ -1,12 +1,19 @@
 // PAR Manage Action
 
-private ["_unit", "_wnded_list"];
+private ["_unit", "_wnded_list", "_id1", "_id2", "_id3"];
+
+private _checkAction = {
+    params ["_unit"];
+    private _act = _unit getVariable ["PAR_isMenuActive", []];
+    private _cnt = { _x in _act } count (actionIDs _unit);
+    (_cnt < 3);
+};
 
 while {true} do {
     _wnded_list = (units GRLIB_side_friendly) select {
         (_x distance2D player) < 30 &&
         (_x getVariable ["PAR_wounded", false]) &&
-        (count (actionIDs _x) == 0) &&
+        ([_x] call _checkAction) &&
         isNull objectParent _x &&
         isNil {_x getVariable 'PAR_busy'} &&
         isNil {_x getVariable 'PAR_healed'}
@@ -15,9 +22,9 @@ while {true} do {
     if (count _wnded_list > 0) then {
         {
             _unit = _x;
-            _unit addAction ["<t color='#C90000'>" + localize "STR_PAR_AC_02" + "</t>", "addons\PAR\PAR_fn_drag.sqf", ["action_drag"], 9, false, true, "", "(_target getVariable ['PAR_isUnconscious', false]) && !PAR_isDragging", 3];
-            _unit addAction ["<t color='#C90000'>" + localize "STR_PAR_AC_03" + "</t>", { PAR_isDragging = false }, ["action_release"], 10, true, true, "", "PAR_isDragging"];
-            [
+            _id1 = _unit addAction ["<t color='#C90000'>" + localize "STR_PAR_AC_02" + "</t>", "addons\PAR\PAR_fn_drag.sqf", ["action_drag"], 9, false, true, "", "(_target getVariable ['PAR_isUnconscious', false]) && !PAR_isDragging", 3];
+            _id2 = _unit addAction ["<t color='#C90000'>" + localize "STR_PAR_AC_03" + "</t>", { PAR_isDragging = false }, ["action_release"], 10, true, true, "", "PAR_isDragging"];
+            _id3 = [
                 _unit,
                 "<t color='#00C900'>" + localize "STR_PAR_AC_01" + "</t>",
                 "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_reviveMedic_ca.paa","\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_reviveMedic_ca.paa",
@@ -65,6 +72,7 @@ while {true} do {
                 },
                 [time],6,12,false
             ] call BIS_fnc_holdActionAdd;
+            _unit setVariable ["PAR_isMenuActive", [_id1, _id2, _id3]];
             sleep 0.1;
         } forEach  _wnded_list;
 
