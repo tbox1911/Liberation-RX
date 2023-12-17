@@ -156,7 +156,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1 || buildtype =
 						_affordable = false;
 					};
 				} else {
-					if ((count PAR_AI_bros >= GRLIB_squad_size + GRLIB_squad_size_bonus || !(player getVariable ["GRLIB_squad_context_loaded", false]))) then {
+					if ((count PAR_AI_bros >= (GRLIB_squad_size + GRLIB_squad_size_bonus) || !(player getVariable ["GRLIB_squad_context_loaded", false]))) then {
 						_affordable = false;
 					};
 				};

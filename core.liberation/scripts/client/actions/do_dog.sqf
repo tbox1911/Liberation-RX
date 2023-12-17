@@ -24,6 +24,7 @@ if (_cmd == "add" && _classname != "") exitWith {
 		"
 	];
 	_my_dog setVariable ["my_dog_marker", _id];
+	build_refresh = true;
 };
 
 private _my_dog = player getVariable ["my_dog", nil];

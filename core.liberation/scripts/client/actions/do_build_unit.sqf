@@ -25,3 +25,4 @@ if (_classname in units_loadout_overide) then {
 
 stats_blufor_soldiers_recruited = stats_blufor_soldiers_recruited + 1;
 publicVariable "stats_blufor_soldiers_recruited";
+build_refresh = true;

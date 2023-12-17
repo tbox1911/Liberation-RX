@@ -28,3 +28,4 @@ _grp setBehaviour "AWARE";
 stats_blufor_soldiers_recruited = stats_blufor_soldiers_recruited + count (units _grp);
 publicVariable "stats_blufor_soldiers_recruited";
 player hcSetGroup [_grp];
+build_refresh = true;

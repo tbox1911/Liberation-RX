@@ -124,7 +124,6 @@ while { true } do {
 			if (!([_price] call F_pay)) exitWith {};
 			[_classname] execVM "scripts\client\actions\do_build_unit.sqf";
 		};
-		build_refresh = true;
 	};
 
 	if ( _buildtype == 8 ) then {
@@ -538,8 +537,8 @@ while { true } do {
 		player removeAction _idactplace;
 	};
 
-	sleep 1;
 	build_confirmed = 0;
+	sleep 1;
 
 	if ( repeatbuild ) then {
 		dobuild = 1;
