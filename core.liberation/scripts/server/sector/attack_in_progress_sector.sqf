@@ -55,7 +55,6 @@ if ( GRLIB_blufor_defenders && !_defenders_cooldown) then {
 };
 
 attack_in_progress = [_sector, round (time)];
-publicVariable "attack_in_progress";
 
 if ( _ownership == GRLIB_side_enemy ) then {
 	if (!(_sector in sectors_tower)) then {
