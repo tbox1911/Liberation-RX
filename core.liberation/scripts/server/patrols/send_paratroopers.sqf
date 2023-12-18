@@ -28,8 +28,6 @@ _waypoint setWaypointSpeed "FULL";
 _waypoint setWaypointBehaviour "AWARE";
 _waypoint setWaypointCombatMode "RED";
 _waypoint setWaypointCompletionRadius 200;
-_waypoint = _pilot_group addWaypoint [_targetpos, 1050];
-_waypoint setWaypointType "SAD";
 {_x doFollow (leader _pilot_group)} foreach units _pilot_group;
 
 private _cargo_seat_free = _vehicle emptyPositions "Cargo";
@@ -64,7 +62,6 @@ if (_vehicle isKindOf "Plane_Base_F") then { _unload_dist = _unload_dist * 2 };
 		[_para_group, _targetpos] spawn battlegroup_ai;
 	};
 
-	sleep 10;
 	private _spawnpos = [];
 	private _spawn_sectors = ([sectors_airspawn, [_targetpos], { (markerpos _x) distance2D _input0 }, "ASCEND"] call BIS_fnc_sortBy);
 	{
@@ -76,8 +73,8 @@ if (_vehicle isKindOf "Plane_Base_F") then { _unload_dist = _unload_dist * 2 };
 	_waypoint = _pilot_group addWaypoint [_spawnpos, 0];
 	_waypoint setWaypointType "MOVE";
 	_waypoint setWaypointSpeed "FULL";
-	_waypoint setWaypointBehaviour "SAFE";
-	_waypoint setWaypointCombatMode "BLUE";
+	_waypoint setWaypointBehaviour "AWARE";
+	_waypoint setWaypointCombatMode "RED";
 	_waypoint setWaypointCompletionRadius 500;
 	_waypoint setWaypointStatements ["true", "[vehicle this] spawn clean_vehicle"];
 	{ _x doFollow (leader _pilot_group) } foreach (units _pilot_group);	
