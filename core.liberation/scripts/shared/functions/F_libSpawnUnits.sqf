@@ -33,6 +33,7 @@ private ["_unit", "_backpack", "_maxpos"];
 			_unit allowDamage false;
 			_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 			[_unit] joinSilent _grp;
+			[_unit] spawn F_fixModUnit;
 			if (_type in ["militia", "guard"]) then {[_unit] call loadout_militia};
 			[_unit] call reammo_ai;
 			_unit switchMove "AmovPercMwlkSrasWrflDf";
