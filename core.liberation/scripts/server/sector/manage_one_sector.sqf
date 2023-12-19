@@ -31,11 +31,14 @@ diag_log format ["Spawn Defend Sector %1 at %2", _sector, time];
 if (GRLIB_adaptive_opfor) then {
 	private _active_players = count ([_sectorpos, GRLIB_sector_size] call F_getNearbyPlayers);
 	switch (true) do {
-		case (_active_players > 6) : { _popfactor = 1.4 };
-		case (_active_players > 4) : { _popfactor = 1.3 };
-		case (_active_players > 2) : { _popfactor = 1.2 };
-		case (_active_players > 1) : { _popfactor = 1.1 };
+		case (_active_players > 6) : { _popfactor = 1.8 };
+		case (_active_players > 4) : { _popfactor = 1.6 };
+		case (_active_players > 2) : { _popfactor = 1.4 };
+		case (_active_players > 1) : { _popfactor = 1.2 };
 		default { _popfactor = GRLIB_unitcap };
+	};
+	if (GRLIB_difficulty_modifier > 1.5 && count (entities "HeadlessClient_F") > 1) then {
+		_popfactor = _popfactor + 0.45;
 	};
 };
 
@@ -166,7 +169,6 @@ if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_s
 			[group ((crew _vehicle) select 0), _sectorpos] spawn add_defense_waypoints;
 			_managed_units pushback _vehicle;
 			{ _managed_units pushback _x } foreach (crew _vehicle);
-			sleep 1;
 		} foreach _vehtospawn;
 	} else {
 		if (count _squad1 == 0) then { _squad1 = ([] call F_getAdaptiveSquadComp) };
@@ -196,35 +198,30 @@ if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_s
 		_grp = [ _sector, _infsquad, _squad1 ] call F_spawnRegularSquad;
 		[ _grp, _sectorpos, 50 ] spawn add_defense_waypoints;
 		_managed_units = _managed_units + (units _grp);
-		sleep 1;
 	};
 
 	if ( count _squad2 > 0 ) then {
 		_grp = [ _sector, _infsquad, _squad2 ] call F_spawnRegularSquad;
 		[ _grp, _sectorpos, 100 ] spawn add_defense_waypoints;
 		_managed_units = _managed_units + (units _grp);
-		sleep 1;
 	};
 
 	if ( count _squad3 > 0 ) then {
 		_grp = [ _sector, _infsquad, _squad3 ] call F_spawnRegularSquad;
 		[ _grp, _sectorpos, 100 ] spawn add_defense_waypoints;
 		_managed_units = _managed_units + (units _grp);
-		sleep 1;
 	};
 
 	if ( count _squad4 > 0 ) then {
 		_grp = [ _sector, _infsquad, _squad4 ] call F_spawnRegularSquad;
 		[ _grp, _sectorpos, 200 ] spawn add_defense_waypoints;
 		_managed_units = _managed_units + (units _grp);
-		sleep 1;
 	};
 
 	if ( count _squad5 > 0 ) then {
 		_grp = [ _sector, _infsquad, _squad5 ] call F_spawnRegularSquad;
 		[ _grp, _sectorpos, 300 ] spawn add_defense_waypoints;
 		_managed_units = _managed_units + (units _grp);
-		sleep 1;
 	};
 
 	if ( _spawncivs && GRLIB_civilian_activity > 0) then {
@@ -236,7 +233,6 @@ if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_s
 			[_grp, _sectorpos] spawn add_civ_waypoints;
 			_managed_units = _managed_units + (units _grp);
 			_nbcivs = _nbcivs - _maxcivs;
-			sleep 0.5;
 		};
 	};
 
@@ -247,12 +243,9 @@ if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_s
 		};
 	};
 
-	[ _sector, _defensecount ] spawn static_manager;
-	sleep 1;
+	[_sector, _defensecount] spawn static_manager;
 	[_sector, _building_range, round (_iedcount)] spawn ied_manager;
-	sleep 1;
 	[_sector, _building_range, round (_iedcount)] spawn ied_trap_manager;
-	sleep 1;
 
 	[ _sectorpos ] spawn {
 		params ["_pos"];

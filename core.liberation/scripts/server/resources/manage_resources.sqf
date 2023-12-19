@@ -3,10 +3,17 @@ waitUntil { !isNil "blufor_sectors" };
 private [ "_spawnsector", "_newbox"];
 
 // maximum number of ressource by type
-GRLIB_AmmoBox_cap = 12;
-GRLIB_FuelBarrel_cap = 9;
-GRLIB_WaterBarrel_cap = 9;
-GRLIB_FoodBarrel_cap = 6;
+GRLIB_AmmoBox_cap = 6;
+GRLIB_FuelBarrel_cap = 8;
+GRLIB_WaterBarrel_cap = 8;
+GRLIB_FoodBarrel_cap = 7;
+
+if (GRLIB_difficulty_modifier > 1.5) then {
+	GRLIB_AmmoBox_cap = 4;
+	GRLIB_FuelBarrel_cap = 6;
+	GRLIB_WaterBarrel_cap = 6;
+	GRLIB_FoodBarrel_cap = 5;
+};
 
 while { GRLIB_endgame == 0 } do {
 	sleep GRLIB_passive_delay;
