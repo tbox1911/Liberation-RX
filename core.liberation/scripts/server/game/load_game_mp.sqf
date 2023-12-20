@@ -212,6 +212,10 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 		_nextbuilding setPosWorld _nextpos;
 		_buildings_created pushback _nextbuilding;
 
+		if (_nextclass iskindOf "AllVehicles") then {
+			[_nextbuilding] call F_fixModVehicle;
+		};
+
 		if (!(_nextclass in GRLIB_Ammobox_keep)) then {
 			[_nextbuilding] call F_clearCargo;
 		};
@@ -276,7 +280,6 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 					[_nextbuilding, _compo] call RPT_fnc_CompoVehicle;
 				};
 				if (_nextclass isKindOf "LandVehicle" || _nextclass isKindOf "Air" || _nextclass isKindOf "Ship") then {
-					[_nextbuilding] call F_fixModVehicle;
 					if (count _lst_a3 > 0) then {
 						[_nextbuilding, _lst_a3] call F_setCargo;
 					};
