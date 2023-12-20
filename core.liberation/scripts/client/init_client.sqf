@@ -6,6 +6,7 @@ R3F_LOG_joueur_deplace_objet = objNull;
 GRLIB_player_spawned = false;
 GRLIB_player_is_menuok = false;
 GRLIB_vehicle_lock = true;
+GRLIB_arsenal_open = false;
 
 waitUntil {!isNil "abort_loading"};
 if (abort_loading) exitWith {

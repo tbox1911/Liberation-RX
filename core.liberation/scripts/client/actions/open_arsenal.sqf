@@ -4,6 +4,8 @@ respawn_loadout = 0;
 load_from_player = -1;
 exit_on_load = 0;
 
+if (GRLIB_arsenal_open) exitWith {};
+GRLIB_arsenal_open = true;
 GRLIB_backup_loadout = getUnitLoadout player;
 player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
 
@@ -162,3 +164,5 @@ if ( edit_loadout > 0 ) then {
 	[player] call F_filterLoadout;
 	[player] call F_payLoadout;
 };
+sleep 1;
+GRLIB_arsenal_open = false;
