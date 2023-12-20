@@ -1,10 +1,11 @@
-params [ "_mindist", "_maxdist", ["_try_nearest", true], ["_spawn_target", zeropos] ];
-private [ "_increment", "_opfor_spawn_point", "_all_possible_sectors", "_filtered_possible_sectors", "_current_sector", "_accept_current_sector", "_current_sector_distance", "_nearest_possible_sectors" ];
+params ["_mindist", "_maxdist", ["_try_nearest", true], ["_spawn_target", zeropos]];
+private [ "_current_sector", "_accept_current_sector", "_current_sector_distance", "_nearest_possible_sectors"];
 
-_increment = 500;
-_opfor_spawn_point = '';
-_all_possible_sectors = sectors_opfor;
-_filtered_possible_sectors = [];
+private _increment = 500;
+private _opfor_spawn_point = "";
+private _all_possible_sectors = sectors_opfor;
+{ _all_possible_sectors pushBack (_x select 0) } forEach SpawnMissionMarkers;
+private _filtered_possible_sectors = [];
 
 {
 	_current_sector = _x;
@@ -13,7 +14,7 @@ _filtered_possible_sectors = [];
 
 	if ( !isNil 'secondary_objective_position' ) then {
 		if ( count secondary_objective_position != 0 ) then {
-			if ( (( markerpos _current_sector ) distance secondary_objective_position) < 500 ) then {
+			if ( ((markerpos _current_sector) distance2D secondary_objective_position) < 500 ) then {
 				_accept_current_sector = false;
 			};
 		};
@@ -25,23 +26,31 @@ _filtered_possible_sectors = [];
 		};
 	};
 
+	if !(_spawn_target isEqualTo zeropos)  then {
+		if ([markerpos _current_sector, _spawn_target] call F_isWaterBetween) then {
+			_accept_current_sector = false;
+		};		
+	};
+
+	// too close from FOB
 	{
-		if ( (( markerpos _current_sector ) distance _x) < _mindist ) then {
+		if ( (( markerpos _current_sector ) distance2D _x) < _mindist ) then {
 			_accept_current_sector = false;
 		} else {
-			if ( (( markerpos _current_sector ) distance (_x)) < _current_sector_distance ) then {
-				_current_sector_distance = (( markerpos _current_sector ) distance (_x));
+			if ( (( markerpos _current_sector ) distance2D _x) < _current_sector_distance ) then {
+				_current_sector_distance = (( markerpos _current_sector ) distance2D _x);
 			};
 		};
 	} foreach GRLIB_all_fobs;
 
+	// too close from Friendly sector
 	if ( _accept_current_sector ) then {
 		{
-			if ( (( markerpos _current_sector ) distance (markerpos _x)) < _mindist ) then {
+			if ( ((markerpos _current_sector) distance2D (markerpos _x)) < _mindist ) then {
 				_accept_current_sector = false;
 			} else {
-				if ( (( markerpos _current_sector ) distance (markerpos _x)) < _current_sector_distance ) then {
-					_current_sector_distance = (( markerpos _current_sector ) distance (markerpos _x));
+				if ( (( markerpos _current_sector ) distance2D (markerpos _x)) < _current_sector_distance ) then {
+					_current_sector_distance = (( markerpos _current_sector ) distance2D (markerpos _x));
 				};
 			};
 		} foreach blufor_sectors;
@@ -50,7 +59,7 @@ _filtered_possible_sectors = [];
 	if ( _accept_current_sector ) then {
 		_one_opfor_sector_in_range = false;
 		{
-			if ( (( markerpos _current_sector ) distance (markerpos _x)) < 2000 ) then {
+			if ( ((markerpos _current_sector) distance2D (markerpos _x)) < 2000 ) then {
 				_one_opfor_sector_in_range = true;
 			}
 		} foreach opfor_sectors;
@@ -69,9 +78,7 @@ _filtered_possible_sectors = [];
 } foreach _all_possible_sectors;
 
 if ( count _filtered_possible_sectors != 0 ) then {
-
 	_nearest_possible_sectors = [];
-
 	if ( _try_nearest ) then {
 		_maxsearchdist = _mindist + _increment;
 		while { (count _nearest_possible_sectors == 0) && (_maxsearchdist <= _maxdist) } do {

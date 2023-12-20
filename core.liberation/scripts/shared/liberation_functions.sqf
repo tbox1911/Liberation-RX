@@ -56,6 +56,7 @@ F_getVehicleAmmoDef = compileFinal preprocessFileLineNumbers "scripts\shared\fun
 F_hof_msg = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_hof_msg.sqf";
 F_invertArray = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_invertArray.sqf";
 F_isBigtownActive = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_isBigtownActive.sqf";
+F_isWaterBetween = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_isWaterBetween.sqf";
 F_itemIsInClass = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_itemIsInClass.sqf";
 F_lessLoadedHC = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_lessLoadedHC.sqf";
 F_libSpawnUnits = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_libSpawnUnits.sqf";
