@@ -35,7 +35,7 @@ if (GRLIB_adaptive_opfor) then {
 		case (_active_players > 4) : { _popfactor = 1.6 };
 		case (_active_players > 2) : { _popfactor = 1.4 };
 		case (_active_players > 1) : { _popfactor = 1.2 };
-		default { _popfactor = GRLIB_unitcap };
+		default { _popfactor = 1 };
 	};
 	if (GRLIB_difficulty_modifier > 1.5 && count (entities "HeadlessClient_F") > 1) then {
 		_popfactor = _popfactor + 0.45;
@@ -160,7 +160,7 @@ if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_s
 	};
 
 	if ( _building_ai_max > 0 && GRLIB_adaptive_opfor ) then {
-		_building_ai_max = round ( _building_ai_max * ([] call F_adaptiveOpforFactor));
+		_building_ai_max = round ( _building_ai_max * _popfactor);
 	};
 
 	if (count _vehtospawn > 0) then {
@@ -225,7 +225,7 @@ if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_s
 	};
 
 	if ( _spawncivs && GRLIB_civilian_activity > 0) then {
-		private _nbcivs = round ((6 + (floor (random 7))) * GRLIB_civilian_activity);
+		private _nbcivs = round ((6 + (floor random 8)) * GRLIB_civilian_activity);
 		if ( _sector in sectors_bigtown ) then { _nbcivs = _nbcivs + 12 };
 		while { _nbcivs > 0 } do {
 			_maxcivs = 3 min _nbcivs;

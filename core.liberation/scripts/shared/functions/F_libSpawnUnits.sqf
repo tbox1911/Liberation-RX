@@ -9,7 +9,7 @@ params [
 waitUntil {sleep 0.5; !GRLIB_GC_Running };
 private _nb_unit = count _classname;
 if (_nb_unit == 0) exitWith {diag_log ["--- LRX Error: no unit to create.", _this]; grpNull};
-_nb_unit = _nb_unit min round (16 * ([] call F_adaptiveOpforFactor));
+//_nb_unit = _nb_unit min round (16 * ([] call F_adaptiveOpforFactor));
 
 diag_log format [ "Spawn (%1) %2 Units (%3) at %4", _nb_unit, _type, _side, time ];
 
