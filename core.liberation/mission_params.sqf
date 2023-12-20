@@ -84,6 +84,8 @@ LRX_Mission_Params = [
 	["Persistent", 0]				// Server start with Persistent Mode - [default 0] - values = [0,1] - Text {Disabled,Enabled}
 ];
 
+//add sec,min,hour translation
+
 LRX_Mission_Params_Def = [
 	["ModPresetWest", "MOD Preset - Friendly", _list_west],
 	["ModPresetEast", "MOD Preset - Enemy", _list_east],
