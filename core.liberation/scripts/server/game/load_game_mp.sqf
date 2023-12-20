@@ -375,12 +375,15 @@ if ( count GRLIB_vehicle_to_military_base_links == 0 ) then {
 if (typeName GRLIB_game_ID == "ARRAY") then { GRLIB_game_ID = round floor random 65535 };
 if (GRLIB_game_ID == 0) then { GRLIB_game_ID = round floor random 65535 };
 publicVariable "GRLIB_game_ID";
+if (count GRLIB_permissions == 0) then {
+	GRLIB_permissions = [["Default",[true,false,false,true,false,true]]];
+};
+publicVariable "GRLIB_permissions";
 publicVariable "GRLIB_warehouse";
 publicVariable "blufor_sectors";
 publicVariable "GRLIB_all_fobs";
 publicVariable "GRLIB_all_outposts";
 publicVariable "GRLIB_mobile_respawn";
 publicVariable "GRLIB_vehicle_to_military_base_links";
-publicVariable "GRLIB_permissions";
 publicVariable "GRLIB_player_scores";
 save_is_loaded = ([] call F_getValid); publicVariable "save_is_loaded";

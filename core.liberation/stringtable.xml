@@ -2802,15 +2802,6 @@
 			<Portuguese>Sua pontuação é muito BAIXA para usar veículos aéreos.</Portuguese>
 			<Czech>Vaše skóre je příliš NÍZKÉ na to, abyste mohli používat Letectvo.</Czech>
 		</Key>
-		<Key ID="STR_PERMISSION_WARNING">
-			<Original>Automatic creation of default permissions.</Original>
-			<Russian>Автоматическое создание разрешений по умолчанию.</Russian>
-			<French>Création automatique des permissions par defaut.</French>
-			<Chinesesimp>自动创建默认权限。</Chinesesimp>
-			<Chinese>自动创建默认权限。</Chinese>
-			<Portuguese>Criação automática de permissões padrão.</Portuguese>
-			<Czech>Automatické vytváření výchozích oprávnění.</Czech>
-		</Key>
 		<Key ID="STR_ARSENAL_TITLE">
 			<Original>ARSENAL</Original>
 			<French>ARSENAL</French>
