@@ -120,7 +120,7 @@ _setupObjects =
 
 	//----- spawn intels ---------------------------------
 	_intels = [getPosATL (_build_list select 0)] call manage_intels;
-	{ _x setVariable ["R3F_LOG_disabled", true, true] } forEach ([_statue] + _build_list + _vrac_list);
+	{ _x setVariable ["R3F_LOG_disabled", true, true] } forEach ([_statue] + _build_list + _vrac_list + _intels);
 	_vehicles =  [_statue] + _build_list + _vrac_list;
 	sleep 0.5;
 
