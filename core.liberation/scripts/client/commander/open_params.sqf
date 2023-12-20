@@ -120,6 +120,9 @@ if (save_changes == 1) then {
 	] remoteExec ["bis_fnc_call", 2];
 
 	waitUntil { sleep 0.5; GRLIB_param_open_params == 0 };
+	if !(isNil "GRLIB_init_server") then {
+		["Mission need to be restarted, to take effect.", "LRX Settings", true] call BIS_fnc_guiMessage;
+	};
 };
 
 disableUserInput true;
