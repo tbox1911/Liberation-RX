@@ -3,8 +3,14 @@ if (GRLIB_fancy_info == 0) exitWith {};
 
 waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 
-A3W_sectors_in_use = [];
-secondary_objective_position_marker = zeropos;
+if (isNil "A3W_sectors_in_use") then {
+	A3W_sectors_in_use = [];
+};
+
+if (isNil "secondary_objective_position_marker") then {
+	secondary_objective_position_marker = zeropos;
+};
+
 private _hostile_markers = [];
 
 while { true } do {
