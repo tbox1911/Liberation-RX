@@ -11,6 +11,8 @@ private _maxpri_def = 8;            // maximum magazines unit can take (primary 
 private _minpri_def = 3;             // minimal magazines before unit need to reload
 private _maxsec_def = 3;             // maximum magazines unit can take (secondary weapon)
 private _minsec_def = 1;             // minimal magazines before unit need to reload
+private _added_pri = 0;
+private _added_sec = 0;
 
 private _artillery = [
 	"MBT_01_base_F",
@@ -54,7 +56,7 @@ while { true } do {
 						if (_needammo2) then {
 							//clearAllItemsFromBackpack _x;
 							_x groupchat "Rearming Secondary Weapon.";
-							[_x, secondaryWeapon _x, _maxsec_def] call F_UnitAddAmmo;
+							_added_sec = [_x, secondaryWeapon _x, _maxsec_def] call F_UnitAddAmmo;
 						};
 					};
 
@@ -63,7 +65,7 @@ while { true } do {
 					_needammo1 = [_x, _primary_weapon, _minpri] call F_UnitNeedAmmo;
 					if (_needammo1) then {
 						_x groupchat "Rearming Primary Weapon.";
-						[_x, _primary_weapon, _maxpri] call F_UnitAddAmmo;
+						_added_pri = [_x, _primary_weapon, _maxpri] call F_UnitAddAmmo;
 					};
 				};
 
@@ -78,16 +80,20 @@ while { true } do {
 
 				// Animation
 				if (_needammo1 || _needammo2 || _needmedic ) then {
-					[_x, _needmedic] spawn {
-						params ["_target", "_needmedic"];
-						_target setVariable ['PAR_heal', true];
-						_target playMove "AinvPknlMstpSlayWrflDnon_medic";
-						sleep 6;
-						if (_needmedic && lifeState _target != 'INCAPACITATED') then {
-							_target setDamage 0;
+					if ((_added_pri + _added_sec) == 0) then {
+						_x groupchat "Cannot Rearming! Inventory is full!!";
+					} else {
+						[_x, _needmedic] spawn {
+							params ["_target", "_needmedic"];
+							_target setVariable ['PAR_heal', true];
+							_target playMove "AinvPknlMstpSlayWrflDnon_medic";
+							sleep 6;
+							if (_needmedic && lifeState _target != 'INCAPACITATED') then {
+								_target setDamage 0;
+							};
+							sleep 4;
+							_target setVariable ['PAR_heal', nil];
 						};
-						sleep 4;
-						_target setVariable ['PAR_heal', nil];
 					};
 				};
 
