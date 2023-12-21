@@ -66,7 +66,6 @@ if (!_canmove) then {
 };
 
 private ["_no_blufor_near", "_player", "_player_in_action", "_waypoint", "_nearest_sector"];
-private _flee_grp = grpNull;
 private _fleeing = false;
 
 while {alive _unit} do {
@@ -108,7 +107,7 @@ while {alive _unit} do {
 				[gamelogic, _text] remoteExec ["globalChat", 0];
 			};
 
-			_flee_grp = createGroup [GRLIB_side_enemy, true];
+			private _flee_grp = createGroup [GRLIB_side_enemy, true];
 			[_unit] joinSilent _flee_grp;
 			_unit enableAI "ANIM";
 			_unit enableAI "MOVE";

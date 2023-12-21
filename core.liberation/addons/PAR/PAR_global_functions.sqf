@@ -25,7 +25,6 @@ PAR_medic_units = {
 PAR_unblock_AI = {
 	// Unblock unit(s) 0-8-1
 	params ["_unit_array"];
-	private _grp = grpNull;
 	if (player getVariable ["SOG_player_in_tunnel", false]) exitWith {};
 	if ( isNull (objectParent player) && count _unit_array == 0 ) then {
 		if (surfaceIsWater (getPos player)) then {
@@ -42,7 +41,7 @@ PAR_unblock_AI = {
 				_unit doWatch objNull;
 				_unit switchmove "";
 				_unit disableAI "ALL";
-				_grp = createGroup [GRLIB_side_friendly, true];
+				private _grp = createGroup [GRLIB_side_friendly, true];
 				[_unit] joinSilent _grp;
 				unAssignVehicle _unit;
 				[_unit] orderGetIn false;
@@ -66,16 +65,15 @@ PAR_unblock_AI = {
 	};
 };
 PAR_abandon_priso = {
-	// Abandon selected prisoners 0-8-1
+	// Abandon selected prisoners 0-8-2
 	params ["_unit_array"];
-	private _grp = grpNull;
 	if (player getVariable ["SOG_player_in_tunnel", false]) exitWith {};
 	if ( count _unit_array > 0 ) then {
 		{
 			_unit = _x;
 			if (!isNil {_unit getVariable "GRLIB_is_prisoner"}) then {
 				if (isNull (objectParent _unit) && (player distance2D _unit) < 50) then {
-					_grp = createGroup [GRLIB_side_enemy, true];
+					private _grp = createGroup [GRLIB_side_enemy, true];
 					[_unit] joinSilent _grp;
 					_unit stop true;
 					_unit switchMove "";
