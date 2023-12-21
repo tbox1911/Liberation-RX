@@ -1,9 +1,9 @@
 waitUntil { sleep 1; !isNil "blufor_sectors" };
 private [
 	"_unitList", "_my_squad", "_static_ai",
-	"_near_arsenal", "_primary_weapon", "_needammo1", "_needammo2", "_maxpri", "_minpri", "_magType",
+	"_near_arsenal", "_primary_weapon", "_needammo1", "_needammo2", "_maxpri", "_minpri",
 	"_near_medic", "_needmedic",
-	"_near_repair", "_list_vehicles", "_vehicle_need_repair", "_vehicle_hitpoints"
+	"_near_repair", "_list_vehicles", "_vehicle_need_repair", "_vehicle_hitpoints", "_vehicle_damage"
 ];
 
 private _distarsenal = 30;           // minimal distance from source (ammo/repair)
@@ -81,7 +81,7 @@ while { true } do {
 				// Animation
 				if (_needammo1 || _needammo2 || _needmedic ) then {
 					if ((_added_pri + _added_sec) == 0) then {
-						_x groupchat "Cannot Rearming! Inventory is full!!";
+						_x groupchat "Cannot Rearm! my Inventory is full!";
 					} else {
 						[_x, _needmedic] spawn {
 							params ["_target", "_needmedic"];
@@ -143,10 +143,11 @@ while { true } do {
 				_is_enabled = !(_vehicle getVariable ["R3F_LOG_disabled", false]);
 				_vehicle_need_repair = false;
 				_vehicle_hitpoints = getAllHitPointsDamage _vehicle;
+				_vehicle_damage = 0;
 				if (count _vehicle_hitpoints == 3) then {
-					{ if (_x == 1) exitWith { _vehicle_need_repair = true }} forEach (_vehicle_hitpoints select 2);
+					{ _vehicle_damage = _vehicle_damage + _x } forEach (_vehicle_hitpoints select 2);
 				};
-
+ 				if (_vehicle_damage >= 0.2 || damage _vehicle >= 0.2) then { _vehicle_need_repair = true };
 				if (!isNil "GRLIB_LRX_debug") then {
 					diag_log format ["DBG: %1: need Repair:%2 - near Repair source:%3", _vehicle_class, _vehicle_need_repair, _near_repair];
 				};
