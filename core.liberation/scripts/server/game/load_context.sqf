@@ -42,6 +42,7 @@ if (count _context >= 1) then {
                                 private _unit = (group player) createUnit [_class, _pos, [], 10, "NONE"];
                                 [_unit] joinSilent (group player);
                                 _unit setVariable ["PAR_Grp_ID", format["Bros_%1", PAR_Grp_ID], true];
+	                            clearAllItemsFromBackpack _unit;
                                 _unit setUnitLoadout _loadout;
                                 _unit setUnitRank _rank;
                                 _unit setSkill (0.6 + (GRLIB_rank_level find _rank) * 0.05);
