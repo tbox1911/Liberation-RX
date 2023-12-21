@@ -189,6 +189,13 @@ support_vehicles = support_vehicles + [
 	[foodbarrel_typename,0,130,0,GRLIB_perm_hidden]
 ] + support_vehicles_west;
 
+// RESPAWN VEHICLES
+if (isNil "respawn_vehicles_west") then { respawn_vehicles_west = [] };
+respawn_vehicles = [
+	Respawn_truck_typename,
+	huron_typename
+] + respawn_vehicles_west;
+
 // *** BUILDINGS ***
 buildings = [
 	[FOB_sign,0,0,0,GRLIB_perm_hidden],
@@ -314,7 +321,7 @@ ai_resupply_sources = [
 
 // Everything the AI troups should be able to healing from
 ai_healing_sources = [
-	Respawn_truck_typename,
+	medic_truck_typename,
 	medicalbox_typename,
 	medic_sling_typename,
 	"Land_MedicalTent_01_MTP_closed_F"

@@ -26,7 +26,7 @@ switch ( _list ) do {
 	case "REPAIR" : { _classlist = [repair_offroad]};
 	case "SHOP" : { _classlist = GRLIB_Marker_SHOP};
 	case "SPAWNT" : { _classlist = GRLIB_mobile_respawn};
-	case "SPAWNV" : { _classlist = [Respawn_truck_typename, huron_typename]};
+	case "SPAWNV" : { _classlist = respawn_vehicles};
 	case "MEDIC" : { _classlist = ai_healing_sources};
 	case "ARSENAL" : { _classlist = [Arsenal_typename]};
 	case "REFUEL" : { _classlist = [canister_fuel_typename, fuelbarrel_typename]};

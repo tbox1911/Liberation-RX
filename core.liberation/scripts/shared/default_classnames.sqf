@@ -19,6 +19,7 @@ Box_Explosives_typename = "Box_NATO_AmmoOrd_F";
 Box_Grenades_typename = "Box_NATO_Grenades_F";
 Box_Equipment_typename = "Box_NATO_Equip_F";
 Respawn_truck_typename = "B_Truck_01_medical_F";
+medic_truck_typename = "B_Truck_01_medical_F";
 ammo_truck_typename = "B_Truck_01_ammo_F";
 fuel_truck_typename = "B_Truck_01_fuel_F";
 repair_truck_typename = "B_Truck_01_Repair_F";

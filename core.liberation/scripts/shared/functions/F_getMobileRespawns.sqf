@@ -16,6 +16,6 @@ if (GRLIB_allow_redeploy == 1) then {
 	} forEach (AllPlayers - (entities "HeadlessClient_F"));
 };
 
-private _respawn_trucks_sorted = [ _respawn_huron_unsorted + _allplayer_respawn_unsorted , [] , { (getpos _x) select 0 } , 'ASCEND' ] call BIS_fnc_sortBy;
+private _respawn_trucks_sorted = [_respawn_huron_unsorted + _allplayer_respawn_unsorted, [], {(getpos _x) select 0}, 'ASCEND'] call BIS_fnc_sortBy;
 
 _respawn_trucks_sorted;

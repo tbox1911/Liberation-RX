@@ -179,7 +179,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1 || buildtype =
 				if (_build_class == playerbox_typename && _has_box) then {
 					_affordable = false;
 				};
-				if (_build_class in [Respawn_truck_typename, huron_typename] && GRLIB_allow_redeploy == 0) then {
+				if (_build_class in respawn_vehicles && GRLIB_allow_redeploy == 0) then {
 					_affordable = false;
 				};
 				if (_build_class == FOB_boat_typename && GRLIB_naval_type == 0) then {
