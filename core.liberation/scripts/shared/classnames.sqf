@@ -169,6 +169,7 @@ support_vehicles = support_vehicles + [
 	["Land_RepairDepot_01_civ_F",10,300,0,GRLIB_perm_log],
 	["Land_MedicalTent_01_MTP_closed_F",5,100,0,GRLIB_perm_log],
 	[helipad_typename,0,0,0,GRLIB_perm_inf],
+	["Land_fs_feed_F",0,200,50,GRLIB_perm_tank],
 	[repair_sling_typename,0,200,0,GRLIB_perm_log],
 	[fuel_sling_typename,0,150,60,GRLIB_perm_log],
 	[ammo_sling_typename,0,400,0,GRLIB_perm_log],
