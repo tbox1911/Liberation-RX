@@ -5661,6 +5661,10 @@
 			<Portuguese>Forçar equipamento padrão</Portuguese>
 			<Czech>Vynutit výchozí vybavení</Czech>
 		</Key>
+		<Key ID="STR_FREE_LOADOUT">
+			<Original>Equipment is worthless</Original>
+			<French>L'équipement ne vaut rien</French>		
+		</Key>
 		<Key ID="STR_THERMAL">
 			<Original>Enable Thermal equipments</Original>
 			<Russian>Использовать Термальное снаряжение</Russian>

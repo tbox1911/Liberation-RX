@@ -142,6 +142,7 @@ GRLIB_mod_preset_east = ["ModPresetEast", 0] call _lrx_getParamValue;
 GRLIB_enable_arsenal = ["EnableArsenal",1] call _lrx_getParamValue;
 GRLIB_filter_arsenal = ["FilterArsenal",1] call _lrx_getParamValue;
 GRLIB_forced_loadout = ["ForcedLoadout",1] call _lrx_getParamValue;
+GRLIB_free_loadout = ["FreeLoadout",0] call _lrx_getParamValue;
 GRLIB_opfor_english = ["EnglishOpfor", 0] call _lrx_getParamValue;
 GRLIB_difficulty_modifier = ["Difficulty",1] call _lrx_getParamValue;
 GRLIB_csat_aggressivity = ["Aggressivity",1] call _lrx_getParamValue;
@@ -297,6 +298,7 @@ if ( GRLIB_opfor_english == 1 ) then { GRLIB_opfor_english = true } else { GRLIB
 if ( GRLIB_disable_death_chat == 1 ) then { GRLIB_disable_death_chat = true } else { GRLIB_disable_death_chat = false };
 if ( GRLIB_server_persistent == 1 ) then { GRLIB_server_persistent = true } else { GRLIB_server_persistent = false };
 if ( GRLIB_air_support == 1 ) then { GRLIB_air_support = true } else { GRLIB_air_support = false };
+if ( GRLIB_free_loadout == 1 ) then { GRLIB_free_loadout = true } else { GRLIB_free_loadout = false };
 
 // Overide sector radius
 if (GRLIB_sector_radius != 0) then { GRLIB_sector_size = GRLIB_sector_radius };

@@ -1,5 +1,6 @@
 params [ "_unit" ];
 if (isNil "_unit") exitWith {0};
+if (GRLIB_free_loadout) exitWith {0};
 if (isNil "GRLIB_Ammobox_keep") then { GRLIB_Ammobox_keep = [] };
 if (isNil "GRLIB_disabled_arsenal") then { GRLIB_disabled_arsenal = [] };
 
