@@ -51,7 +51,9 @@ if (toLower _name in GRLIB_blacklisted_names || (_name == str parseNumber _name)
 	endMission "LOSER";
 };
 
-waitUntil {!isNil "GRLIB_global_stop"};
+playMusic GRLIB_music_startup;
+
+waitUntil {sleep 1; !isNil "GRLIB_global_stop"};
 if (GRLIB_global_stop == 1) exitWith {
 	private _msg = "The Final Mission is running...\nNew connections are prohibited until the end!";
 	titleText [_msg, "BLACK FADED", 100];
@@ -77,7 +79,6 @@ if (GRLIB_respawn_cooldown > 0) then {
 	};
 };
 
-playMusic GRLIB_music_startup;
 add_player_actions = compile preprocessFile "scripts\client\actions\add_player_actions.sqf";
 dog_bark = compileFinal preprocessFileLineNumbers "scripts\client\actions\dog_bark.sqf";
 do_onboard = compileFinal preprocessFileLineNumbers "scripts\client\actions\do_onboard.sqf";
@@ -158,7 +159,6 @@ GRLIB_ActionDist_15 = 15;
 [] execVM "scripts\client\actions\man_manager.sqf";
 [] execVM "scripts\client\actions\squad_manager.sqf";
 [] execVM "scripts\client\misc\support_manager.sqf";
-[] execVM "addons\MGR\MagRepack_init.sqf";
 [] execVM "addons\KEY\shortcut_init.sqf";
 [] execVM "addons\PAR\PAR_AI_Revive.sqf";
 [] execVM "addons\LARs\liberationArsenal.sqf";
@@ -175,6 +175,7 @@ GRLIB_ActionDist_15 = 15;
 // ACE inCompatible addons
 if (!GRLIB_ACE_enabled) then {
 	[] execVM "addons\NRE\NRE_init.sqf";
+	[] execVM "addons\MGR\MagRepack_init.sqf";	
 };
 
 // Init Tips Tables from XML
