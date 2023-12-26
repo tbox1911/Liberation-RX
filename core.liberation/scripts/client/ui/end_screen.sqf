@@ -10,7 +10,7 @@ if (lifestate player == "INCAPACITATED") then {
 };
 
 ["<t size = '2.5'>" + localize "STR_VICTORY_TITLE" + "</t>", 0, 0, 15, 0, 0, 90] spawn BIS_fnc_dynamicText;
-playSound "worship";
+playMusic GRLIB_music_endgame;
 sleep 20;
 
 if ( isNil "cinematic_camera_started" ) then { cinematic_camera_started = false };

@@ -28,6 +28,7 @@ if(!isNull (findDisplay 2306)) then {
 			};
 			_title = lbText [231, _selected];
 			_classname = lbData[231, _selected];
+			diag_log format ["--- LRX JKB: %1 (%2)", _title, _classname];
 
 			[JKB_current_sound] call JKB_stopMusic;
 			if (_classname find 'vn_drmm_song_' >= 0) then {

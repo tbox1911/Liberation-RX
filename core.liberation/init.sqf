@@ -8,6 +8,7 @@ disableMapIndicators [false,true,false,false];
 setGroupIconsVisible [false,false];
 disableRemoteSensors true;
 
+{ deleteVehicle _x } forEach [startup, endgame]; // remove logic sound
 abort_loading = false;
 abort_loading_msg = "Unkwon Error";
 GRLIB_ACE_enabled = false;

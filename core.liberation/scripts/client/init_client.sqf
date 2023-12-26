@@ -77,6 +77,7 @@ if (GRLIB_respawn_cooldown > 0) then {
 	};
 };
 
+playMusic GRLIB_music_startup;
 add_player_actions = compile preprocessFile "scripts\client\actions\add_player_actions.sqf";
 dog_bark = compileFinal preprocessFileLineNumbers "scripts\client\actions\dog_bark.sqf";
 do_onboard = compileFinal preprocessFileLineNumbers "scripts\client\actions\do_onboard.sqf";
