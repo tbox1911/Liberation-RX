@@ -21,7 +21,7 @@ if (!isNil "_backpack_save") then {
 	};
 };
 
-if ((vehicle _unit) iskindof "ParachuteBase") exitWith {};
+if ((vehicle _unit) isKindOf "ParachuteBase") exitWith {};
 
 private _unit_side = side group _unit;
 if (_unit_side == GRLIB_side_enemy) then { _unit allowDamage false };
