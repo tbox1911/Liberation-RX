@@ -148,6 +148,7 @@ GRLIB_ActionDist_5 = 5;
 GRLIB_ActionDist_10 = 10;
 GRLIB_ActionDist_15 = 15;
 
+[] execVM "GREUH\scripts\GREUH_activate.sqf";
 [] execVM "scripts\client\actions\action_manager.sqf";
 [] execVM "scripts\client\actions\action_manager_veh.sqf";
 [] execVM "scripts\client\actions\recycle_manager.sqf";
@@ -155,15 +156,9 @@ GRLIB_ActionDist_15 = 15;
 [] execVM "scripts\client\actions\dog_manager.sqf";
 [] execVM "scripts\client\actions\man_manager.sqf";
 [] execVM "scripts\client\actions\squad_manager.sqf";
-[] execVM "GREUH\scripts\GREUH_activate.sqf";
-
-if (!GRLIB_ACE_enabled) then {
-	[] execVM "addons\MGR\MagRepack_init.sqf";
-	[] execVM "addons\NRE\NRE_init.sqf";
-	[] execVM "addons\KEY\shortcut_init.sqf";
-	[] execVM "scripts\client\misc\support_manager.sqf";
-};
-
+[] execVM "scripts\client\misc\support_manager.sqf";
+[] execVM "addons\MGR\MagRepack_init.sqf";
+[] execVM "addons\KEY\shortcut_init.sqf";
 [] execVM "addons\PAR\PAR_AI_Revive.sqf";
 [] execVM "addons\LARs\liberationArsenal.sqf";
 [] execVM "addons\VAM\VAM_GUI_init.sqf";
@@ -175,6 +170,11 @@ if (!GRLIB_ACE_enabled) then {
 [] execVM "addons\JKB\JKB_init.sqf";
 [] execVM "addons\WHS\warehouse_init.sqf";
 [] execVM "addons\FOB\officer_init.sqf";
+
+// ACE inCompatible addons
+if (!GRLIB_ACE_enabled) then {
+	[] execVM "addons\NRE\NRE_init.sqf";
+};
 
 // Init Tips Tables from XML
 GREUH_TipsText = [];
