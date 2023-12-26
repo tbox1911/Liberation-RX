@@ -126,6 +126,7 @@ while {deleteManagerPublic} do {
 		_deadVehicleDistCheck = false;
 	};
 	sleep _sleep;
+	waitUntil {sleep 1; (count active_sectors == 0) };
 
 	diag_log format ["--- LRX Garbage Collector --- Start at: %1 - %2 fps", round(time), diag_fps];
 	GRLIB_GC_Running = true;
