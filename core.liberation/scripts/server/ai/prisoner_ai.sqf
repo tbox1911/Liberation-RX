@@ -34,8 +34,8 @@ if (!_canmove) then {
 	_unit disableAI "ANIM";
 	_unit disableAI "MOVE";
 	_anim = "AmovPercMstpSnonWnonDnon_AmovPercMstpSsurWnonDnon";
-	[_unit, _anim] remoteExec ["switchMove", 0];
-	[_unit, _anim] remoteExec ["playMoveNow", 0];
+	_unit switchMove _anim;
+	_unit playMoveNow _anim;
 	sleep 3;
 
 	// Wait
@@ -56,12 +56,11 @@ if (!alive _unit) exitWith {};
 
 // Follow
 if (!_canmove) then {
-	_unit stop false;
-	_unit enableAI "ANIM";
-	_unit enableAI "MOVE";
-	_anim = "AmovPercMstpSsurWnonDnon_AmovPercMstpSnonWnonDnon";
-	[_unit, _anim] remoteExec ["switchMove", 0];
-	[_unit, _anim] remoteExec ["playMoveNow", 0];
+	if (local _unit) then {
+		[_unit, "move"] call remote_call_prisoner;
+	} else {
+		[_unit, "move"] remoteExec ["remote_call_prisoner", owner _unit];
+	};
 	sleep 3;
 };
 
@@ -72,23 +71,11 @@ while {alive _unit} do {
 
 	// Captured
 	if ([_unit, "FOB", 30] call F_check_near && isTouchingGround (vehicle _unit)) exitWith {
-		sleep (2 + floor(random 4));
-		private _unit_owner = leader group _unit;
-		doGetOut _unit;
-		unassignVehicle _unit;
-		[_unit] orderGetIn false;
-		[_unit] allowGetIn false;
-		sleep 2;
-		_unit stop true;
-		_grp = createGroup [GRLIB_side_civilian, true];
-		[_unit] joinSilent _grp;
-		_unit disableAI "ANIM";
-		_unit disableAI "MOVE";
-		_anim = "AmovPercMstpSnonWnonDnon_AmovPsitMstpSnonWnonDnon_ground";
-		[_unit, _anim] remoteExec ["switchMove", 0];
-		[_unit, _anim] remoteExec ["playMoveNow", 0];
-		sleep 2;
-		[_unit, _unit_owner] remoteExec ["prisonner_captured", 2];
+		if (local _unit) then {
+			[_unit, "stop"] call remote_call_prisoner;
+		} else {
+			[_unit, "stop"] remoteExec ["remote_call_prisoner", owner _unit];
+		};
 		sleep 300;
 		deleteVehicle _unit;
 	};
@@ -109,6 +96,7 @@ while {alive _unit} do {
 
 			private _flee_grp = createGroup [GRLIB_side_enemy, true];
 			[_unit] joinSilent _flee_grp;
+			if (!local _unit) then { waitUntil {sleep 0.5; _unit setOwner 2} };
 			_unit enableAI "ANIM";
 			_unit enableAI "MOVE";
 			_unit stop false;
@@ -118,8 +106,8 @@ while {alive _unit} do {
 			[_unit] allowGetIn false;
 			_unit setUnitPos "AUTO";
 			_anim = "AmovPercMwlkSrasWrflDf";
-			[_unit, _anim] remoteExec ["switchMove", 0];
-			[_unit, _anim] remoteExec ["playMoveNow", 0];
+			_unit switchMove _anim;
+			_unit playMoveNow _anim;
 			sleep 2;
 
 			_nearest_sector = [opfor_sectors, _unit] call F_nearestPosition;
