@@ -29,7 +29,6 @@ private _goes_boom = false;
 private _false_trap = false;
 
 if ( count _ide_pos > 0 ) then {
-	waitUntil {sleep 0.5; !GRLIB_GC_Running };
 	private _ied_obj = createVehicle [_ied_type, _ide_pos, [], 3, "None"];
 	_ied_obj allowDamage false;
 	_ied_obj setVariable ["GRLIB_intel_search", true, true];

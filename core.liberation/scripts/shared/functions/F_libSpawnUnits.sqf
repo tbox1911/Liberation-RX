@@ -6,7 +6,6 @@ params [
 	["_onground", true]				// unit on ground
 ];
 
-waitUntil {sleep 0.5; !GRLIB_GC_Running };
 private _nb_unit = count _classname;
 if (_nb_unit == 0) exitWith {diag_log ["--- LRX Error: no unit to create.", _this]; grpNull};
 //_nb_unit = _nb_unit min round (16 * ([] call F_adaptiveOpforFactor));
