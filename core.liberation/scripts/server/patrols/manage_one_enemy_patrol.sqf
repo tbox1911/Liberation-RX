@@ -54,9 +54,9 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 		[_opfor_grp, _sector_pos] spawn add_civ_waypoints;
 
 		if (local _opfor_grp) then {
-			_headless_client = [] call F_lessLoadedHC;
-			if (!isNull _headless_client) then {
-				_opfor_grp setGroupOwner ( owner _headless_client );
+			private _hc = [] call F_lessLoadedHC;
+			if (!isNull _hc) then {
+				_opfor_grp setGroupOwner (owner _hc);
 			};
 		};
 

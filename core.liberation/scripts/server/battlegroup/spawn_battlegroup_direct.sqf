@@ -38,9 +38,9 @@ if (_spawn_marker != "") then {
 
 	{
 		if ( local _x ) then {
-			_headless_client = [] call F_lessLoadedHC;
-			if ( !isNull _headless_client ) then {
-				_x setGroupOwner ( owner _headless_client );
+			private _hc = [] call F_lessLoadedHC;
+			if (!isNull _hc) then {
+				_x setGroupOwner (owner _hc);
 			};
 		};
 		sleep 3;
