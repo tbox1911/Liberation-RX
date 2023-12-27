@@ -70,8 +70,8 @@ _air_grp setSpeedMode "FULL";
 // Actions
 GRLIB_taxi_cooldown = 0;
 private _idact_dest = _vehicle addAction [format ["<t color='#8000FF'>%1</t>", localize "STR_TAXI_ACTION1"], "addons\TAXI\taxi_pickdest.sqf","",999,false,true,"","vehicle _this == _target && (getPosATL _target) distance2D GRLIB_taxi_helipad > 300"];
-private _idact_cancel = _vehicle addAction [format ["<t color='#FF0080'>%1</t>", localize "STR_TAXI_ACTION2"], {player setVariable ["GRLIB_taxi_called", nil, true]},"",998,false,true,"","vehicle _this == _target"];
-private _idact_eject = _vehicle addAction [format ["<t color='#FF0080'>%1</t>", localize "STR_TAXI_ACTION3"], "addons\TAXI\taxi_eject.sqf","",997,false,true,"","vehicle _this == _target && (getPos _target select 2) > 50 && (getPosATL _target) distance2D GRLIB_taxi_helipad > 300"];
+private _idact_cancel = _vehicle addAction [format ["<t color='#FF0080'>%1</t>", localize "STR_TAXI_ACTION2"], "addons\TAXI\taxi_cancel.sqf","",998,false,true,"","vehicle _this == _target && !(isNil {player getVariable ['GRLIB_taxi_called', nil]})"];
+private _idact_eject = _vehicle addAction [format ["<t color='#FF0080'>%1</t>", localize "STR_TAXI_ACTION3"], "addons\TAXI\taxi_eject.sqf","",997,false,true,"","vehicle _this == _target && !GRLIB_taxi_eject && (getPos _target select 2) > 50 && (getPosATL _target) distance2D GRLIB_taxi_helipad > 300"];
 player setVariable ["GRLIB_taxi_called", _vehicle, true];
 
 // Pickup Marker
@@ -105,12 +105,14 @@ if (time < _stop) then {
 	_vehicle removeAction _idact_cancel;
 	deleteMarkerLocal "taxi_lz";
 
-	if ( isNil {player getVariable ["GRLIB_taxi_called", nil]}) exitWith {
-		_vehicle removeAction _idact_dest;
-		_vehicle removeAction _idact_eject;
-	};
-
 	if ( (markerPos "taxi_dz") distance2D zeropos > 100 ) then {
+		titleText ["", "PLAIN"];
+		sleep 1;
+		for "_i" from 3 to 0 step -1 do {
+			titleText [format ["Taxi take off in %1 seconds", _i], "PLAIN"];
+			sleep 1;
+		};
+		titleText ["Ok, let's go...", "PLAIN"];
 		hintSilent "Ok, let's go...";
 		_vehicle setVehicleLock "LOCKED";
 		_vehicle lockCargo true;
@@ -121,21 +123,22 @@ if (time < _stop) then {
 		[_vehicle, _dest, "STR_TAXI_PROGRESS"] call taxi_dest;
 		_vehicle removeAction _idact_dest;
 		_vehicle removeAction _idact_eject;
+
+		// Board Out
+		[_vehicle] call taxi_land;
+		[_vehicle] call taxi_outboard;
+		sleep 2;
+		{ _x allowDamage true } forEach _cargo;
 	};
 };
 
 _vehicle setVehicleLock "LOCKED";
 _vehicle lockCargo true;
+sleep 1;
 
-// Board Out
-if (isNil "GRLIB_taxi_eject") then {
-	_cargo = [_vehicle] call taxi_cargo;
-	if (count _cargo > 0) then {
-		[_vehicle] call taxi_land;
-		[_vehicle, _cargo] call taxi_outboard;
-		{ _x allowDamage true } forEach _cargo;
-	};
-};
+// Eject cargo
+[_vehicle] execVM "addons\TAXI\taxi_eject.sqf";
+sleep 1;
 
 // Go back
 deleteMarkerLocal "taxi_lz";
@@ -143,10 +146,10 @@ deleteMarkerLocal "taxi_dz";
 if (GRLIB_taxi_helipad_created) then { deleteVehicle GRLIB_taxi_helipad };
 GRLIB_taxi_eject = nil;
 GRLIB_taxi_helipad = nil;
-[_vehicle, _spawn_pos, "STR_TAXI_RETURN", true] call taxi_dest;
+hintSilent localize "STR_TAXI_RETURN";
+[_vehicle, _spawn_pos, ""] call taxi_dest;
 
 // Cleanup
-hintSilent "";
 {deletevehicle _x} forEach (crew _vehicle);
 deleteVehicle _vehicle;
 deleteGroup _air_grp;

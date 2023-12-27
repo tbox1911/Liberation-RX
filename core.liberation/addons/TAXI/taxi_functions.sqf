@@ -27,7 +27,7 @@ taxi_land = {
 };
 
 taxi_dest = {
-	params ["_vehicle", "_dest", "_msg", ["_silent", false]];
+	params ["_vehicle", "_dest", "_msg"];
 	_vehicle setFuel 1;
 	_vehicle engineOn true;
 
@@ -47,7 +47,7 @@ taxi_dest = {
 			};
 		};
 
-		if !(_silent) then {
+		if (count _msg > 0) then {
 			hintSilent format [localize _msg, round (_vehicle distance2D _dest)];
 		};
 
@@ -75,7 +75,8 @@ taxi_cargo = {
 };
 
 taxi_outboard = {
-	params ["_vehicle", "_cargo"];
+	params ["_vehicle"];
+	private _cargo = [_vehicle] call taxi_cargo;
 	_vehicle setVehicleLock "UNLOCKED";
 	_vehicle lockCargo false;
 	waitUntil {
@@ -87,7 +88,7 @@ taxi_outboard = {
 				moveOut _x;
 				sleep 0.3;
 			};
-		} forEach (_cargo);
+		} forEach _cargo;
 		sleep 1;
 		(_bailout);
 	};
