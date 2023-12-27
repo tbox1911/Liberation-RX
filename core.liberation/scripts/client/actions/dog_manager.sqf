@@ -56,13 +56,11 @@ while { true } do {
 			} else {
 				// Find men
 				if (_man isKindOf "CAManBase") then {
-					private _is_captured = !(_man getVariable ["GRLIB_is_prisoner", true]);
-					if (!alive _man || (_man != player && side _man == GRLIB_side_friendly) || _is_captured) then {
+					if (!alive _man || (side group _man == GRLIB_side_friendly && _man != player)) then {
 						_my_dog setVariable ["do_find", nil];
 					} else {
 						private _dist = round (_dog_pos distance2D _man);
 						if (_dist <= 3) then {
-							if (isPlayer _man) exitWith { _my_dog setVariable ["do_find", nil] };
 							_my_dog setDir (_my_dog getDir _man);
 							_tone = _my_dog getVariable "my_dog_tone";
 							[_my_dog, _tone] spawn dog_bark;
