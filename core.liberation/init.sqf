@@ -8,7 +8,6 @@ disableMapIndicators [false,true,false,false];
 setGroupIconsVisible [false,false];
 disableRemoteSensors true;
 
-{ deleteVehicle _x } forEach [startup, endgame]; // remove logic sound
 abort_loading = false;
 abort_loading_msg = "Unkwon Error";
 GRLIB_ACE_enabled = false;
@@ -19,6 +18,8 @@ GRLIB_ACE_enabled = false;
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\classnames.sqf";
 
 if (!abort_loading) then {
+	if (!isNil "startup") then { deleteVehicle startup }; // remove logic sound
+	if (!isNil "endgame") then { deleteVehicle endgame }; // remove logic sound
 	[] call compileFinal preprocessfilelinenumbers "scripts\shared\init_shared.sqf";
 	[] call compileFinal preprocessFileLineNUmbers "scripts\shared\init_sectors.sqf";
 	if (!GRLIB_ACE_enabled) then {
