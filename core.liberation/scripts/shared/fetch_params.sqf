@@ -178,7 +178,7 @@ GRLIB_respawn_cooldown = ["RespawnCD",0] call _lrx_getParamValue;
 GRLIB_kick_idle = ["KickIdle",0] call _lrx_getParamValue;
 GRLIB_server_persistent = ["Persistent",0] call _lrx_getParamValue;
 GRLIB_air_support = ["AirSupport",1] call _lrx_getParamValue;
-GRLIB_despawn_tickets = ["SectorDespawn",40] call _lrx_getParamValue;
+GRLIB_despawn_tickets = ["SectorDespawn",72] call _lrx_getParamValue;
 
 // Hardcoded
 GRLIB_endgame = 0;
