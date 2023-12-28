@@ -4,7 +4,6 @@ private ["_pos", "_destpos", "_cam", "_noesckey"];
 while { true } do {
 	waitUntil {sleep 0.5; (GRLIB_player_spawned && (player getVariable ["PAR_isUnconscious", false])) };
 	closeDialog 0;
-	waitUntil {!dialog};
 
 	_pos = positionCameraToWorld [0,0,-0.2];
 	_destpos = [getpos player select 0, getpos player select 1, (getpos player select 2) + 150];
