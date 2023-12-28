@@ -69,7 +69,7 @@ while {true} do {
 		sideMissionColor
 	] remoteExec ["remote_call_showinfo", 0];
 
-	_timer = round (time + _missionDelay);
+	private _timer = round (time + _missionDelay);
 	waitUntil {sleep 5; (time > _timer)};
 
 	// Mission unlock
