@@ -5,6 +5,7 @@ if ((typeOf _unit) select [0,10] == "RyanZombie") exitWith {};
 if (_unit getVariable ["GRLIB_mission_AI", false]) exitWith {};
 if (_unit getVariable ["GRLIB_is_prisoner", false]) exitWith {};
 if (_unit skill "courage" == 1) exitWith {};
+if !(isNull objectParent _unit) exitWith {};
 
 sleep 3;
 if (!alive _unit) exitWith {};
@@ -44,14 +45,9 @@ if (!_canmove) then {
 	} else {
 		private _timeout = time + (45 * 60);
 		waitUntil { sleep 1; !alive _unit || side group _unit == GRLIB_side_friendly || time > _timeout };
-		doGetOut _unit;
-		unassignVehicle _unit;
-		[_unit] orderGetIn false;
-		[_unit] allowGetIn false;
+		if (time > _timeout) then { _canmove = true };
 	};
 };
-
-waitUntil { sleep 1; isNull objectParent _unit };
 if (!alive _unit) exitWith {};
 
 // Follow
