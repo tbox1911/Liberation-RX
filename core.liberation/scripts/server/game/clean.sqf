@@ -126,7 +126,6 @@ while {deleteManagerPublic} do {
 		_deadVehicleDistCheck = false;
 	};
 	sleep _sleep;
-	waitUntil {sleep 1; (count active_sectors == 0) };
 
 	diag_log format ["--- LRX Garbage Collector --- Start at: %1 - %2 fps", round(time), diag_fps];
 	GRLIB_GC_Running = true;
@@ -141,12 +140,16 @@ while {deleteManagerPublic} do {
 		_stats = _stats + 1;
 	} forEach _list;
 
+	private _hidden_from = []; 	// (playableUnits + switchableUnits)
+	{ _hidden_from pushBack (getPosATL _x)} forEach (AllPlayers - (entities "HeadlessClient_F"));
+	{ _hidden_from pushBack (markerPos _x)} forEach active_sectors;
+
 	// LRX TTL UNITS
 	private _units_ttl = [] call _getTTLunits;
 	if (count _units_ttl > 0) then {
 		{
 			private _ttl = _x getVariable "GRLIB_counter_TTL";
-			if ([_x,_deadMenDist,(playableUnits + switchableUnits)] call _isHidden && time > _ttl ) then {
+			if ([_x, _deadMenDist, _hidden_from] call _isHidden && time > _ttl ) then {
 				if (_x isKindOf "CAManBase") then {
 					deleteVehicle _x;
 				} else {
@@ -162,7 +165,7 @@ while {deleteManagerPublic} do {
 		if ((count allDeadMen) > _deadMenLimit) then {
 			if (_deadMenDistCheck) then {
 				{
-					if ([_x,_deadMenDist,(playableUnits + switchableUnits)] call _isHidden) then {
+					if ([_x, _deadMenDist, _hidden_from] call _isHidden) then {
 						deleteVehicle _x;
 						_stats = _stats + 1;
 					};
@@ -193,7 +196,7 @@ while {deleteManagerPublic} do {
 		if ((count (_nbVehicles)) > _vehiclesLimit) then {
 			if (_vehicleDistCheck) then {
 				{
-					if ([_x,_vehicleDist,(playableUnits + switchableUnits)] call _isHidden) then {
+					if ([_x, _vehicleDist, _hidden_from] call _isHidden) then {
 						[_x] call clean_vehicle;
 						_stats = _stats + 1;
 					};
@@ -213,7 +216,7 @@ while {deleteManagerPublic} do {
 		if ((count (allDead - allDeadMen)) > _deadVehiclesLimit) then {
 			if (_deadVehicleDistCheck) then {
 				{
-					if ([_x,_deadVehicleDist,(playableUnits + switchableUnits)] call _isHidden) then {
+					if ([_x, _deadVehicleDist, _hidden_from] call _isHidden) then {
 						deleteVehicle _x;
 						_stats = _stats + 1;
 					};
@@ -236,7 +239,7 @@ while {deleteManagerPublic} do {
 		if (_count > _craterLimit) then {
 			if (_craterDistCheck) then {
 				{
-					if ([_x,_craterDist,(playableUnits + switchableUnits)] call _isHidden) then {
+					if ([_x, _craterDist, _hidden_from] call _isHidden) then {
 						deleteVehicle _x;
 						_stats = _stats + 1;
 						_count = _count - 1;
@@ -263,7 +266,7 @@ while {deleteManagerPublic} do {
 		if (_count > _weaponHolderLimit) then {
 			if (_weaponHolderDistCheck) then {
 				{
-					if ([_x,_weaponHolderDist,(playableUnits + switchableUnits)] call _isHidden) then {
+					if ([_x, _weaponHolderDist, _hidden_from] call _isHidden) then {
 						deleteVehicle _x;
 						_stats = _stats + 1;
 						_count = _count - 1;
@@ -291,7 +294,7 @@ while {deleteManagerPublic} do {
 		if ((count allMines) > _minesLimit) then {
 			if (_minesDistCheck) then {
 				{
-					if ([_x,_minesDist,allUnits] call _isHidden) then {
+					if ([_x, _minesDist ,_hidden_from] call _isHidden) then {
 						deleteVehicle _x;
 						_stats = _stats + 1;
 					};
@@ -312,7 +315,7 @@ while {deleteManagerPublic} do {
 		if (_count > _staticsLimit) then {
 			if (_staticsDistCheck) then {
 				{
-					if ([_x,_staticsDist,allUnits] call _isHidden) then {
+					if ([_x, _staticsDist, _hidden_from] call _isHidden) then {
 						deleteVehicle _x;
 						_stats = _stats + 1;
 						_count = _count - 1;
@@ -338,7 +341,7 @@ while {deleteManagerPublic} do {
 		if (_count > _ruinsLimit) then {
 			if (_ruinsDistCheck) then {
 				{
-					if ([_x,_ruinsDist,(playableUnits + switchableUnits)] call _isHidden) then {
+					if ([_x, _ruinsDist, _hidden_from] call _isHidden) then {
 						deleteVehicle _x;
 						_stats = _stats + 1;
 						_count = _count - 1;
