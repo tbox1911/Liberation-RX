@@ -63,6 +63,7 @@ if ( dojump > 0 ) then {
 			titleText ["", "PLAIN"]; 
 			[player, "parasound"] remoteExec ["sound_range_remote_call", 2];
 			[player, _unit, halo_position] remoteExec ["airdrop_remote_call", 2];
+			[halo_position, "parasound"] remoteExec ["sound_range_remote_call", 2];
 		};
 	} else {
 		[player, "parasound"] remoteExec ["sound_range_remote_call", 2];
