@@ -1,6 +1,8 @@
 diag_log "--- Liberation RX by pSiKO ---";
 [] call compileFinal preprocessFileLineNUmbers "build_info.sqf";
 diag_log "--- Init start ---";
+if (!isNil "startup") then { deleteVehicle startup }; // remove logic sound
+if (!isNil "endgame") then { deleteVehicle endgame }; // remove logic sound
 
 profileNamespace setVariable ["BIS_SupportDevelopment", nil];
 enableSaving [false, false];
@@ -18,8 +20,6 @@ GRLIB_ACE_enabled = false;
 [] call compileFinal preprocessFileLineNUmbers "scripts\shared\classnames.sqf";
 
 if (!abort_loading) then {
-	if (!isNil "startup") then { deleteVehicle startup }; // remove logic sound
-	if (!isNil "endgame") then { deleteVehicle endgame }; // remove logic sound
 	[] call compileFinal preprocessfilelinenumbers "scripts\shared\init_shared.sqf";
 	[] call compileFinal preprocessFileLineNUmbers "scripts\shared\init_sectors.sqf";
 	if (!GRLIB_ACE_enabled) then {
