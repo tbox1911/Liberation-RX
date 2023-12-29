@@ -67,20 +67,24 @@ private _checkFrequencyDefault = GRLIB_cleanup_vehicles;	        // sleep defaul
 private _checkFrequencyAccelerated = (_checkFrequencyDefault/2);	// sleep accelerated
 
 private _deadMenLimit = 30;							// Bodies. Set -1 to disable.
+private _deadMenLimitMax = 80;						// Bodies Max.
 private _deadMenDistCheck = true;					// TRUE to delete any bodies that are far from players.
 private _deadMenDist = GRLIB_sector_size;			// Distance (meters) from players that bodies are not deleted if below max.
 
 private _weaponHolderLimit = 30;					// Weapon Holders. Set -1 to disable.
+private _weaponHolderLimitMax = 80;					// Weapon Holders Max.
 private _weaponHolderDistCheck = true;				// TRUE to delete any weapon holders that are far from players.
 private _weaponHolderDist = GRLIB_sector_size;		// Distance (meters) from players that ground garbage is not deleted if below max.
 
 private _vehiclesLimit = 10;						// Vehicles Set -1 to disable.
+private _vehiclesLimitMax = 20;						// Vehicles max.
 private _vehicleDistCheck = true;					// TRUE to delete any vehicles that are far from players.
-private _vehicleDist = GRLIB_sector_size;			// Distance (meters) from players that vehicles are not deleted if below max.
+private _vehicleDist = (GRLIB_sector_size * 2);		// Distance (meters) from players that vehicles are not deleted if below max.
 
-private _deadVehiclesLimit = 20;					// Wrecks. Set -1 to disable.
+private _deadVehiclesLimit = 10;					// Wrecks. Set -1 to disable.
+private _deadVehiclesLimitMax = 20;					// Wrecks Max.
 private _deadVehicleDistCheck = true;				// TRUE to delete any destroyed vehicles that are far from players.
-private _deadVehicleDist = GRLIB_sector_size;		// Distance (meters) from players that destroyed vehicles are not deleted if below max.
+private _deadVehicleDist = (GRLIB_sector_size * 2);	// Distance (meters) from players that destroyed vehicles are not deleted if below max.
 
 private _craterLimit = 3;							// Craters. Set -1 to disable.
 private _craterDistCheck = true;					// TRUE to delete any craters that are far from players.
@@ -88,7 +92,7 @@ private _craterDist = GRLIB_sector_size;			// Distance (meters) from players tha
 
 private _minesLimit = 35;							// Land mines. Set -1 to disable.
 private _minesDistCheck = true;						// TRUE to delete any mines that are far from ANY UNIT (not just players).
-private _minesDist = GRLIB_sector_size;				// Distance (meters) from players that land mines are not deleted if below max.
+private _minesDist = (GRLIB_sector_size * 2);		// Distance (meters) from players that land mines are not deleted if below max.
 
 private _staticsLimit = -1;							// Static weapons. Set -1 to disable.
 private _staticsDistCheck = true;					// TRUE to delete any static weapon that is far from ANY UNIT (not just players).
@@ -170,6 +174,11 @@ while {deleteManagerPublic} do {
 						sleep 0.1;
 					};
 				} count allDeadMen;
+				while {(((count allDeadMen) - _deadMenLimitMax) > 0)} do {
+					deleteVehicle (selectRandom allDeadMen);
+					_stats = _stats + 1;
+					sleep 0.1;
+				};
 			} else {
 				while {(((count allDeadMen) - _deadMenLimit) > 0)} do {
 					deleteVehicle (selectRandom allDeadMen);
@@ -200,10 +209,52 @@ while {deleteManagerPublic} do {
 						sleep 0.1;
 					};
 				} count (_nbVehicles);
+				sleep 0.1;
+				_list = _nbVehicles select {!isNull _x};
+				_count = count _list;
+				while {((_count - _vehiclesLimitMax) > 0)} do {
+					deleteVehicle (selectRandom _list);
+					_stats = _stats + 1;
+					_count = _count - 1;
+				};
 			} else {
 				while {(( (count (_nbVehicles)) - _vehiclesLimit) > 0)} do {
 					[selectRandom _nbVehicles] call clean_vehicle;
 					_stats = _stats + 1;
+					sleep 0.1;
+				};
+			};
+		};
+	};
+
+	// WEAPON HOLDERS
+	if (!(_weaponHolderLimit == -1)) then {
+		_list = (allMissionObjects "WeaponHolder");
+		_list append (allMissionObjects "WeaponHolderSimulated");
+		_count = count _list;
+		if (_count > _weaponHolderLimit) then {
+			if (_weaponHolderDistCheck) then {
+				{
+					if ([_x, _weaponHolderDist, _hidden_from] call _isHidden) then {
+						deleteVehicle _x;
+						_stats = _stats + 1;
+						_count = _count - 1;
+						sleep 0.1;
+					};
+				} count _list;
+				sleep 0.1;
+				_list = _list select {!isNull _x};
+				_count = count _list;
+				while {((_count - _weaponHolderLimitMax) > 0)} do {
+					deleteVehicle (selectRandom _list);
+					_stats = _stats + 1;
+					_count = _count - 1;
+				};
+			} else {
+				while {((_count - _weaponHolderLimit) > 0)} do {
+					deleteVehicle (selectRandom _list);
+					_stats = _stats + 1;
+					_count = _count - 1;
 					sleep 0.1;
 				};
 			};
@@ -221,6 +272,11 @@ while {deleteManagerPublic} do {
 						sleep 0.1;
 					};
 				} count (allDead - allDeadMen);
+				while {(((count (allDead - allDeadMen)) - _deadMenLimitMax) > 0)} do {
+					deleteVehicle (selectRandom (allDead - allDeadMen));
+					_stats = _stats + 1;
+					sleep 0.1;
+				};
 			} else {
 				while {(((count (allDead - allDeadMen)) - _deadVehiclesLimit) > 0)} do {
 					deleteVehicle selectRandom (allDead - allDeadMen);
@@ -248,32 +304,6 @@ while {deleteManagerPublic} do {
 				} count _list;
 			} else {
 				while {((_count - _craterLimit) > 0)} do {
-					deleteVehicle (selectRandom _list);
-					_stats = _stats + 1;
-					_count = _count - 1;
-					sleep 0.1;
-				};
-			};
-		};
-	};
-
-	// WEAPON HOLDERS
-	if (!(_weaponHolderLimit == -1)) then {
-		_list = (allMissionObjects "WeaponHolder");
-		_list append (allMissionObjects "WeaponHolderSimulated");
-		_count = count _list;
-		if (_count > _weaponHolderLimit) then {
-			if (_weaponHolderDistCheck) then {
-				{
-					if ([_x, _weaponHolderDist, _hidden_from] call _isHidden) then {
-						deleteVehicle _x;
-						_stats = _stats + 1;
-						_count = _count - 1;
-						sleep 0.1;
-					};
-				} count _list;
-			} else {
-				while {((_count - _weaponHolderLimit) > 0)} do {
 					deleteVehicle (selectRandom _list);
 					_stats = _stats + 1;
 					_count = _count - 1;
