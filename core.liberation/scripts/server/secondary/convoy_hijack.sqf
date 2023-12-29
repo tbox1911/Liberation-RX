@@ -127,13 +127,14 @@ for "_i" from 0 to ((count _convoy_destinations) -1) do {
 
 //-----------------------------------------
 // Mission loop
+private _mission_timeout = time + (2*3600);	// 2 hours tiemout
 private _mission_in_progress = true;
 private _convoy_attacked = false;
 private _convoy_flee = false;
 private _disembark_troops = false;
 
 while { _mission_in_progress } do {
-	if ( !(alive _transport_vehicle) || (side group _transport_vehicle == GRLIB_side_friendly) ) then {
+	if ( !(alive _transport_vehicle) || (side group _transport_vehicle == GRLIB_side_friendly) || time >= _mission_timeout) then {
 		_mission_in_progress = false;
 	};
 
@@ -163,11 +164,13 @@ while { _mission_in_progress } do {
 
 	_veh_leader = vehicle (leader _convoy_group);
 	{
-		if (speed vehicle _x < 5 && (speed vehicle _veh_leader > 5 || vehicle _x == vehicle _veh_leader) && behaviour _x != "COMBAT") then {
-			(vehicle _x) setFuel 1;
-			(vehicle _x) setDamage 0;
-			[vehicle _x] execVM "scripts\client\actions\do_unflip.sqf";
-			if (vehicle _x != _veh_leader) then { _x doFollow (leader _convoy_group) };
+		_veh = vehicle _x;
+		if (_x == driver _veh && speed _veh < 2 && (_x distance2D _veh_leader > 50 || _veh == vehicle _veh_leader) && behaviour _x != "COMBAT") then {
+			_veh setFuel 1;
+			_veh setDamage 0;
+			[_veh] execVM "scripts\client\actions\do_unflip.sqf";
+			if (_veh != _veh_leader) then { _x doFollow (leader _convoy_group) };
+			sleep 60;
 		};
 	} forEach (units _convoy_group);
 	sleep 5;
@@ -176,21 +179,21 @@ while { _mission_in_progress } do {
 //-----------------------------------------
 // Mission cleanup
 { deleteMarker _x } foreach _convoy_marker_list;
-
-if (side group _transport_vehicle == GRLIB_side_friendly) then {
-	combat_readiness = combat_readiness - 0.25;
-	if ( combat_readiness < 0 ) then { combat_readiness = 0 };
-	stats_secondary_objectives = stats_secondary_objectives + 1;
-} else {
-	combat_readiness = combat_readiness + 0.25;
-	if ( combat_readiness > 100 && GRLIB_difficulty_modifier < 2 ) then { combat_readiness = 100 };
+if (time < _mission_timeout) then {
+	if (side group _transport_vehicle == GRLIB_side_friendly) then {
+		combat_readiness = combat_readiness - 0.25;
+		if ( combat_readiness < 0 ) then { combat_readiness = 0 };
+		stats_secondary_objectives = stats_secondary_objectives + 1;
+	} else {
+		combat_readiness = combat_readiness + 0.25;
+		if ( combat_readiness > 100 && GRLIB_difficulty_modifier < 2 ) then { combat_readiness = 100 };
+	};
+	[ 5 ] remoteExec ["remote_call_intel", 0];
 };
-
-[ 5 ] remoteExec ["remote_call_intel", 0];
-sleep 300; 
 private _vehicles = [_scout_vehicle, _troop_vehicle];
 [_vehicles, 5] spawn cleanMissionVehicles;
 
+sleep 120;
 GRLIB_secondary_in_progress = -1;
 publicVariable "GRLIB_secondary_in_progress";
 sleep 1;
