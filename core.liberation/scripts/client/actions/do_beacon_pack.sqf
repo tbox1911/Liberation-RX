@@ -6,7 +6,7 @@ sleep random 0.3;
 if ((_tent getVariable ["tent_in_use", false])) exitWith {};
 if (player getVariable ["GRLIB_action_inuse", false]) exitWith {};
 
-player setVariable ["GRLIB_action_inuse", true];
+player setVariable ["GRLIB_action_inuse", true, true];
 _tent setVariable ["tent_in_use", true, true];
 _tent setVariable ["R3F_LOG_disabled", true, true];
 
@@ -30,4 +30,4 @@ disableUserInput false;
 disableUserInput true;
 disableUserInput false;
 sleep 3;
-player setVariable ["GRLIB_action_inuse", false];
+player setVariable ["GRLIB_action_inuse", false, true];
