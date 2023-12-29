@@ -80,6 +80,8 @@ if (_doeject) then {
 } else {
 	[_vehicle] spawn vehicle_defense;
 	[_unit1, _vehicle] spawn vehicle_fuel;
+	_vehicle setVariable ["GRLIB_counter_TTL", nil, true];
+	_vehicle setVariable ["GRLIB_last_killer", nil, true];	
 };
 
 _doeject;

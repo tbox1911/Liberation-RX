@@ -1,6 +1,6 @@
 params ["_unit"];
 
-// For all
+// for All units
 // Cannot DisAssemble
 _unit enableWeaponDisassembly false;
 
@@ -85,7 +85,7 @@ _unit addEventHandler ["FiredMan",	{
 	};
 }];
 
-// Player
+// for Player only
 if (_unit == player) then {
 
 	// ACE specific

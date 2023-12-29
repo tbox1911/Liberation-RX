@@ -11,8 +11,9 @@ switch (_cmd) do {
 		{ _vehicle lockTurret [_x, true] } forEach (allTurrets _vehicle);
 		_vehicle setVehicleLock "LOCKED";
 		_vehicle setVariable ["R3F_LOG_disabled", true, true];
-		_vehicle setVariable ["GRLIB_counter_TTL", nil, true];
 		_vehicle setVariable ["GRLIB_vehicle_owner", _uid, true];
+		_vehicle setVariable ["GRLIB_counter_TTL", nil, true];
+		_vehicle setVariable ["GRLIB_last_killer", nil, true];
 		_vehicle engineOn false;
 	 };
 	case "unlock" : {
