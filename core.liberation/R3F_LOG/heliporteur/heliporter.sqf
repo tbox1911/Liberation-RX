@@ -122,8 +122,8 @@ else
 							_heliporteur setVariable ["R3F_LOG_heliporte", _objet, true];
 							_objet setVariable ["R3F_LOG_est_transporte_par", _heliporteur, true];
 
-							// Attacher sous l'h�liporteur au ras du sol
-							_objet attachTo [_heliporteur, [0, 0, -4.5]];
+							// Attacher sous l'h�liporteur (-5m)
+							_objet attachTo [_heliporteur, [0, 0, -5]];
 							
 							// R�-aligner dans le sens de la longueur si besoin
 							if (((boundingBoxReal _objet select 1 select 0) - (boundingBoxReal _objet select 0 select 0)) >
