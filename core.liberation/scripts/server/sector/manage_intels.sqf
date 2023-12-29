@@ -21,26 +21,29 @@ private _compatible_classnames = [
 	"Land_Research_house_V1_F"
 ];
 private _intel_created = [];
-private _nearbuildings = [nearestObjects [_pos, _compatible_classnames, _intel_range], { alive _x }] call BIS_fnc_conditionalSelect;
+private _nearbuildings = (nearestObjects [_pos, _compatible_classnames, _intel_range]) select { alive _x };
 
 if ( count _nearbuildings > 0 ) then {
-	_building_positions = [];
-	{ _building_positions = _building_positions + ( [_x] call BIS_fnc_buildingPositions ); } foreach _nearbuildings;
-	_building_positions = [ _building_positions, { _x select 2 < 2 } ] call BIS_fnc_conditionalSelect;
+	private _building_positions = [];
+	{ _building_positions append ([_x] call BIS_fnc_buildingPositions) } foreach _nearbuildings;
+	_building_positions = _building_positions select { _x select 2 < 2 };
 	if ( count _building_positions >= 3 ) then {
-		_used_positions = [];
+		private ["_pos", "_intelclassname", "_intelobject", "_marker"];
+		private _used_positions = [];
 
-		for "_i" from 1 to _nbintel do {
-			_buildingposition = selectRandom _building_positions;
-			while { _buildingposition in _used_positions } do {
-				_buildingposition = selectRandom _building_positions;
+		for "_i" from 1 to (_nbintel min (count _building_positions)) do {
+			_pos = selectRandom _building_positions;			
+			while { _pos in _used_positions } do {
+				_pos = selectRandom _building_positions;
+				sleep 0.5;
+				diag_log "bad loop!"
 			};
-			_used_positions pushback _buildingposition;
+			_used_positions pushback _pos;
 
 			_intelclassname = selectRandom GRLIB_intel_items;
-			_intelobject = _intelclassname createVehicle _buildingposition;
+			_intelobject = _intelclassname createVehicle _pos;
 			_intelobject setVariable ["GRLIB_intel_search", true, true];
-			_intelobject setPosATL [_buildingposition select 0, _buildingposition select 1, (_buildingposition select 2) - 0.15];
+			_intelobject setPosATL [_pos select 0, _pos select 1, (_pos select 2) - 0.15];
 			_intelobject allowDamage false;
 			_intelobject setdir (random 360);
 			_intel_created pushBack _intelobject;
@@ -52,4 +55,5 @@ if ( count _nearbuildings > 0 ) then {
 		};
 	};
 };
+
 _intel_created;
