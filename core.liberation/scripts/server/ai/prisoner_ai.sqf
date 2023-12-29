@@ -26,6 +26,7 @@ _unit unassignItem _hmd;
 _unit removeItem _hmd;
 _unit setVariable ["GRLIB_is_prisoner", true, true];
 _unit setVariable ["GRLIB_can_speak", true, true];
+_unit removeAllEventHandlers "HandleDamage";
 
 if (!_canmove) then {
 	_unit stop true;
