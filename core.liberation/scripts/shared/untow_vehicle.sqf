@@ -3,7 +3,7 @@ params ["_vehicle"];
 if (isNull _vehicle) exitWith {};
 
 // Tracted
-private _tractor = _vehicle getVariable ["R3F_LOG_est_transporte_par", objNull];;
+private _tractor = _vehicle getVariable ["R3F_LOG_est_transporte_par", objNull];
 if (!isNull _tractor) exitWith {
 	_vehicle setVariable ["R3F_LOG_est_transporte_par", objNull, true];
 	_tractor setVariable ["R3F_LOG_remorque", objNull, true];
