@@ -1,11 +1,11 @@
-params ["_start", "_end", ["_interval",5]];
+// thanks to soldierXXXX
+params ["_start", "_end", ["_precision", 0.05]];
 
-private _dir = _start vectorFromTo _end;
-private _dist = _start distance2D _end;
+private ["_pos"];
 private _ret = false;
 
-for "_i" from 0 to _dist / _interval do {
-    _pos = _start vectorAdd (_dir vectorMultiply (_interval * _i));
+for "_i" from 0 to 1 step _precision do {
+    _pos = vectorLinearConversion [0, 1, _i, _start, _end, true];
     if (surfaceIsWater _pos) exitWith { _ret = true };
 };
 _ret;
