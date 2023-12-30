@@ -34,11 +34,11 @@ infantry_units_west = [
 	["B_HeavyGunner_F",1,0,0,GRLIB_perm_inf],
 	["B_recon_F",1,0,0,GRLIB_perm_log],
 	["B_diver_F",1,0,0,GRLIB_perm_log],
-	["B_Recon_Sharpshooter_F",1,0,0,GRLIB_perm_log],
-	["B_soldier_AA_F",1,0,0,GRLIB_perm_log],
-	["B_soldier_AT_F",1,0,0,GRLIB_perm_log],
-	["B_sniper_F",1,0,0,GRLIB_perm_log],
-	["B_soldier_PG_F",1,0,0,GRLIB_perm_log],
+	// ["B_Recon_Sharpshooter_F",1,0,0,GRLIB_perm_log],
+	// ["B_soldier_AA_F",1,0,0,GRLIB_perm_log],
+	// ["B_soldier_AT_F",1,0,0,GRLIB_perm_log],
+	// ["B_sniper_F",1,0,0,GRLIB_perm_log],
+	// ["B_soldier_PG_F",1,0,0,GRLIB_perm_log],
 	[crewman_classname,1,0,0,GRLIB_perm_inf],
 	[pilot_classname,1,0,0,GRLIB_perm_log]
 ];
@@ -60,8 +60,7 @@ light_vehicles = [
 	["C_SUV_01_F",1,10,3,GRLIB_perm_inf],
 	["C_Van_01_transport_F",1,15,7,0],
 	["B_MRAP_01_F",2,25,12,0],
-	["B_MRAP_01_hmg_F",5,100,12,GRLIB_perm_inf],
-	["B_MRAP_01_gmg_F",5,125,12,GRLIB_perm_log],
+	["B_LSV_01_unarmed_F",2,25,10,GRLIB_perm_inf],
 	//["I_MRAP_03_F",2,25,2,0],
 	//["I_MRAP_03_hmg_F",5,100,2,GRLIB_perm_inf],
 	//["I_MRAP_03_gmg_F",5,125,2,GRLIB_perm_log],
@@ -69,15 +68,16 @@ light_vehicles = [
 	["B_Truck_01_transport_F",5,30,15,GRLIB_perm_log],
 	["B_Truck_01_covered_F",5,30,15,GRLIB_perm_tank],
 	["I_Truck_02_transport_F",5,30,15,GRLIB_perm_log],
-	["I_Truck_02_covered_F",5,30,15,GRLIB_perm_tank],
-	["B_LSV_01_unarmed_F",2,25,10,GRLIB_perm_inf],
-	["B_LSV_01_armed_F",5,100,10,GRLIB_perm_log]
+	["I_Truck_02_covered_F",5,30,15,GRLIB_perm_tank]
 	// ["B_UGV_01_F",5,10,5,GRLIB_perm_inf],
 	// ["B_UGV_01_rcws_F",5,250,5,GRLIB_perm_tank]
 ];
 
 heavy_vehicles = [
-	["B_APC_Tracked_01_rcws_F",10,500,20,GRLIB_perm_log]
+	["B_LSV_01_armed_F",5,100,10,GRLIB_perm_log]
+	["B_MRAP_01_hmg_F",5,100,12,GRLIB_perm_inf],
+	["B_MRAP_01_gmg_F",5,125,12,GRLIB_perm_log],
+	["B_APC_Tracked_01_rcws_F",10,500,20,GRLIB_perm_tank]
 	// ["B_APC_Wheeled_01_cannon_F",10,500,20,GRLIB_perm_log],
 	// ["B_APC_Tracked_01_AA_F",10,500,20,GRLIB_perm_tank],
 	// ["I_APC_Wheeled_03_cannon_F",10,500,20,GRLIB_perm_tank],
