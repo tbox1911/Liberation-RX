@@ -56,24 +56,24 @@ if ( dojump > 0 ) then {
 		if ([_cost] call F_pay) then {
 			titleText ["", "PLAIN"];
 			sleep 1;
-			for "_i" from 3 to 0 step -1 do { 
+			for "_i" from 3 to 0 step -1 do {
 				titleText [format ["Airdrop vehicle in %1 seconds", _i], "PLAIN"];
 				sleep 1;
 			};
-			titleText ["", "PLAIN"]; 
-			[player, "parasound"] remoteExec ["sound_range_remote_call", 2];
+			titleText ["", "PLAIN"];
 			[player, _unit, halo_position] remoteExec ["airdrop_remote_call", 2];
+			sleep 1;
 			[halo_position, "parasound"] remoteExec ["sound_range_remote_call", 2];
 		};
 	} else {
-		[player, "parasound"] remoteExec ["sound_range_remote_call", 2];
 		halo_position set [2, GRLIB_halo_altitude];
 		GRLIB_last_halo_jump = round (time);
 		halojumping = true;
 		cutRsc ["fasttravel", "PLAIN", 1];
 		[_unit, "hide"] remoteExec ["dog_action_remote_call", 2];
-		sleep 2;
 		[_unit, halo_position] spawn paraDrop;
+		[halo_position, "parasound"] remoteExec ["sound_range_remote_call", 2];
+		sleep 2;
 
 		private _player_pos = getPosATL _unit;
 		private _units = units group _unit;
