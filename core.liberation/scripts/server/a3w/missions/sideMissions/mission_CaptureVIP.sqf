@@ -130,7 +130,7 @@ _waitUntilCondition = {
 		[_aiGroup, getPosATL _vip, 30] spawn add_defense_waypoints;
 	};
 
-	!(alive _vip) || currentWaypoint _aiGroup >= _numWaypoints;
+	(!alive _vip || currentWaypoint _aiGroup >= _numWaypoints);
 };
 _waitUntilSuccessCondition = { side group _vip == GRLIB_side_friendly };
 
