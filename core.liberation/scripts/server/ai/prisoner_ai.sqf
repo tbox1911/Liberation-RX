@@ -46,13 +46,13 @@ if (!_canmove) then {
 	} else {
 		private _timeout = time + (45 * 60);
 		waitUntil { sleep 1; !alive _unit || side group _unit == GRLIB_side_friendly || time > _timeout };
-		if (time > _timeout) then { _canmove = true };
 	};
+	_canmove = true
 };
 if (!alive _unit) exitWith {};
 
 // Follow
-if (!_canmove) then {
+if (_canmove) then {
 	if (local _unit) then {
 		[_unit, "move"] call remote_call_prisoner;
 	} else {
@@ -93,19 +93,12 @@ while {alive _unit} do {
 
 			private _flee_grp = createGroup [GRLIB_side_enemy, true];
 			[_unit] joinSilent _flee_grp;
-			if (!local _unit) then { waitUntil {sleep 0.5; _unit setOwner 2} };
-			_unit enableAI "ANIM";
-			_unit enableAI "MOVE";
-			_unit stop false;
-			doGetOut _unit;
-			unassignVehicle _unit;
-			[_unit] orderGetIn false;
-			[_unit] allowGetIn false;
-			_unit setUnitPos "AUTO";
-			_anim = "AmovPercMwlkSrasWrflDf";
-			_unit switchMove _anim;
-			_unit playMoveNow _anim;
-			sleep 2;
+			if (local _unit) then {
+				[_unit, "flee"] call remote_call_prisoner;
+			} else {
+				[_unit, "flee"] remoteExec ["remote_call_prisoner", owner _unit];
+			};			
+			sleep 3;
 
 			_nearest_sector = [opfor_sectors, _unit] call F_nearestPosition;
 			if (typeName _nearest_sector == "STRING") then {
