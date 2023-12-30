@@ -20,4 +20,5 @@ if (_vehicle isKindOf "Heli_Light_01_civil_base_F") then {
 // Apply changes
 if (count _init > 0) then {
 	[_vehicle, false, _init] spawn BIS_fnc_initVehicle;
+	sleep 0.5;
 };
