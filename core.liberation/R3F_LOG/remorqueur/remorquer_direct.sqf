@@ -18,7 +18,7 @@ else
 {
 	R3F_LOG_mutex_local_verrou = true;
 
-	private ["_objet", "_remorqueur", "_offset_attach_x", "_offset_attach_y", "_offset_attach_z", "_pos_x", "_pos_y", "_pos_z"];
+	private ["_objet", "_remorqueur"];
 
 	_objet = _this select 0;
 
@@ -65,30 +65,45 @@ else
 			_remorqueur setVariable ["R3F_LOG_remorque", _objet, true];
 			_objet setVariable ["R3F_LOG_est_transporte_par", _remorqueur, true];
 
+			// Quelques corrections visuelles pour des classes sp�cifiques
+			private _offset_attach_y = 0.2;
+			private _offset_attach_z = 0.2;
+
+			if !(_objet isKindOf (typeOf _remorqueur)) then {
+				//A3
+				if (_remorqueur isKindOf "B_Truck_01_mover_F") then {_offset_attach_y = 1 };
+
+				// CUP
+				if (_remorqueur isKindOf "CUP_UAZ_Base") then {_offset_attach_z = _offset_attach_z + 2.4};
+				if (_objet isKindOf "CUP_UAZ_Base") then {_offset_attach_z = _offset_attach_z - 2.4};
+
+				// RHS
+				if (_remorqueur isKindOf "RHS_Ural_Base") then { _offset_attach_z = _offset_attach_z + 2.0 };
+				if (_objet isKindOf "RHS_Ural_Base") then { _offset_attach_z = _offset_attach_z - 2.0 };	
+				if (_remorqueur isKindOf "RHS_Ural_Zu23_Base") then { _offset_attach_z = _offset_attach_z + 2.0 };
+				if (_objet isKindOf "RHS_Ural_Zu23_Base") then { _offset_attach_z = _offset_attach_z - 2.0 };
+				if (_remorqueur isKindOf "rhs_a3t72tank_base") then { _offset_attach_z = _offset_attach_z + 1.2 };
+				if (_objet isKindOf "rhs_a3t72tank_base") then { _offset_attach_z = _offset_attach_z - 0.8 };				
+			};
+
 			// On place le joueur sur le c�t� du v�hicule en fonction qu'il se trouve � sa gauche ou droite
-			if ((_remorqueur worldToModel (player modelToWorld [0,0,0])) select 0 > 0) then
-			{
+			if ((_remorqueur worldToModel (player modelToWorld [0,0,0])) select 0 > 0) then	{
 				player attachTo [_remorqueur, [
 					(boundingBoxReal _remorqueur select 1 select 0) + 0.5,
 					(boundingBoxReal _remorqueur select 0 select 1),
-					(boundingBoxReal _remorqueur select 0 select 2) - (boundingBoxReal player select 0 select 2)
+					((boundingBoxReal _remorqueur select 0 select 2) - (boundingBoxReal player select 0 select 2)) + _offset_attach_z
 				]];
-
 				player setDir 270;
-			}
-			else
-			{
+			} else {
 				player attachTo [_remorqueur, [
 					(boundingBoxReal _remorqueur select 0 select 0) - 0.5,
 					(boundingBoxReal _remorqueur select 0 select 1),
-					(boundingBoxReal _remorqueur select 0 select 2) - (boundingBoxReal player select 0 select 2)
+					((boundingBoxReal _remorqueur select 0 select 2) - (boundingBoxReal player select 0 select 2)) + _offset_attach_z
 				]];
-
 				player setDir 90;
 			};
 
-			player playMove format ["AinvPknlMstpSlay%1Dnon_medic", switch (currentWeapon player) do
-			{
+			player playMove format ["AinvPknlMstpSlay%1Dnon_medic", switch (currentWeapon player) do {
 				case "": {"Wnon"};
 				case primaryWeapon player: {"Wrfl"};
 				case secondaryWeapon player: {"Wlnr"};
@@ -97,16 +112,10 @@ else
 			}];
 			sleep 2;
 
-			// Quelques corrections visuelles pour des classes sp�cifiques
-			_offset_attach_x = 0;
-			_offset_attach_y = 0.2;
-			_offset_attach_z = 0.2;
-			if (typeOf _remorqueur == "B_Truck_01_mover_F") then {_offset_attach_y = 1.0};
-
 			// Attacher � l'arri�re du v�hicule au ras du sol
-			_pos_x = (boundingCenter _objet select 0) + _offset_attach_x;
-			_pos_y = (boundingBoxReal _remorqueur select 0 select 1) + (boundingBoxReal _objet select 0 select 1) + _offset_attach_y;
-			_pos_z = (boundingBoxReal _remorqueur select 0 select 2) - (boundingBoxReal _objet select 0 select 2) + _offset_attach_z;
+			private _pos_x = (boundingCenter _objet select 0);
+			private _pos_y = ((boundingBoxReal _remorqueur select 0 select 1) + (boundingBoxReal _objet select 0 select 1)) + _offset_attach_y;
+			private _pos_z = ((boundingBoxReal _remorqueur select 0 select 2) - (boundingBoxReal _objet select 0 select 2)) + _offset_attach_z;
 			_objet attachTo [_remorqueur, [_pos_x, _pos_y, _pos_z]];
 
 			R3F_LOG_objet_selectionne = objNull;
