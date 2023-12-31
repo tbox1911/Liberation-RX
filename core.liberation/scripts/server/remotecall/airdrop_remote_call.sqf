@@ -15,7 +15,7 @@ if (isNil "_forced_pos") then {
 	_text = format ["Player %1 Air Drop Vehicle.", name _unit];
 	_vehicle = _class;
 	_pos = _forced_pos;
-	if (!local _vehicle) then { waitUntil {sleep 0.5; _vehicle setOwner 2} };
+	if (!local _vehicle) then { waitUntil {sleep 0.5; _vehicle setOwner 2} }; //setGroupOwner
 };
 
 [gamelogic, _text] remoteExec ["globalChat", 0];
