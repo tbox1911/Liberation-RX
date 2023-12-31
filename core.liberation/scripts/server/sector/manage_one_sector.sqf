@@ -229,7 +229,7 @@ if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_s
 		private _nbcivs = round ((6 + (floor random 8)) * GRLIB_civilian_activity);
 		if ( _sector in sectors_bigtown ) then { _nbcivs = _nbcivs + 12 };
 		while { _nbcivs > 0 } do {
-			_maxcivs = 3 min _nbcivs;
+			_maxcivs = (1 + floor random 3) min _nbcivs;
 			_grp = [_sectorpos, _maxcivs] call F_spawnCivilians;
 			[_grp, _sectorpos] spawn add_civ_waypoints;
 			_managed_units = _managed_units + (units _grp);
