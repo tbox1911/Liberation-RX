@@ -90,40 +90,42 @@ if ( _vehicle isKindOf "LandVehicle" ) then {
 	};
 };
 
-if ( _side != GRLIB_side_civilian ) then {
-	if ( _side == GRLIB_side_friendly ) then {
-		[_vehicle] call F_forceBluforCrew;
-		_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
+if ( _side == GRLIB_side_civilian ) then { };
+
+if ( _side == GRLIB_side_friendly ) then {
+	[_vehicle] call F_forceBluforCrew;
+	_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
+};
+
+if ( _side == GRLIB_side_enemy ) then {
+	if ( _classname in militia_vehicles ) then {
+		[_vehicle] call F_forceMilitiaCrew;
 	} else {
-		if ( _classname in militia_vehicles ) then {
-			[_vehicle] call F_forceMilitiaCrew;
-		} else {
-			[_vehicle] call F_forceOpforCrew;
-		};
-		_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
-
-		// LRX textures
-		if (count opfor_texture_overide > 0) then {
-			_texture_name = selectRandom opfor_texture_overide;
-			[_vehicle, _texture_name] spawn RPT_fnc_TextureVehicle;
-		};
-
-		// A3 textures
-		if ( _classname in ["I_E_Truck_02_MRL_F"] ) then {
-			[_vehicle, ["Opfor",1], true ] spawn BIS_fnc_initVehicle;
-		};
+		[_vehicle] call F_forceOpforCrew;
 	};
-		
-	_vehcrew = crew _vehicle;
-	{ _x allowDamage false } forEach _vehcrew;
+	_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
 
-	[_vehicle, _vehcrew] spawn {
-		params ["_veh", "_crew"];
-		sleep 5;
-		_veh setDamage 0;
-		_veh allowDamage true;
-		{ _x setDamage 0; _x allowDamage true } forEach _crew;
+	// LRX textures
+	if (count opfor_texture_overide > 0) then {
+		_texture_name = selectRandom opfor_texture_overide;
+		[_vehicle, _texture_name] spawn RPT_fnc_TextureVehicle;
 	};
+
+	// A3 textures
+	if ( _classname in ["I_E_Truck_02_MRL_F"] ) then {
+		[_vehicle, ["Opfor",1], true ] spawn BIS_fnc_initVehicle;
+	};
+};
+	
+_vehcrew = crew _vehicle;
+{ _x allowDamage false } forEach _vehcrew;
+
+[_vehicle, _vehcrew] spawn {
+	params ["_veh", "_crew"];
+	sleep 5;
+	_veh setDamage 0;
+	_veh allowDamage true;
+	{ _x setDamage 0; _x allowDamage true } forEach _crew;
 };
 
 _vehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
@@ -131,8 +133,6 @@ _vehicle allowCrewInImmobile [true, false];
 _vehicle setUnloadInCombat [true, false];
 
 [_vehicle] spawn F_clearCargo;
-
-if ( _side == GRLIB_side_civilian ) then { _vehicle allowDamage true };
 
 diag_log format [ "Done Spawning vehicle %1 at %2", _classname , time ];
 
