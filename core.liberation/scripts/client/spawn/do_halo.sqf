@@ -72,7 +72,9 @@ if ( dojump > 0 ) then {
 		halo_position set [2, GRLIB_halo_altitude];
 		GRLIB_last_halo_jump = round (time);
 		halojumping = true;
+		playSound "parasound";
 		cutRsc ["fasttravel", "PLAIN", 1];
+		sleep 2;
 		[_unit, "hide"] remoteExec ["dog_action_remote_call", 2];
 
 		private _player_pos = getPosATL _unit;
@@ -83,7 +85,6 @@ if ( dojump > 0 ) then {
 		// Jump!
 		player setVariable ["GRLIB_action_inuse", true, true];
 		private _unit_list_halo = [_units, { !(isPlayer _x) && (isNull objectParent _x) && (_x distance2D _player_pos) < 40 && lifestate _x != 'INCAPACITATED' }] call BIS_fnc_conditionalSelect;
-		playSound "parasound";
 		[_unit, halo_position] spawn paraDrop;
 		sleep 1;
 		[_unit_list_halo] spawn {
