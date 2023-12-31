@@ -30,7 +30,7 @@ _setupObjects =
 	// veh1 + squad
 	_vehicle1 = [_missionPos, vip_vehicle, false, false, GRLIB_side_civilian] call F_libSpawnVehicle;
 	private _grp = [_missionPos, 5, "guard", false] call createCustomGroup;
-	{ _x moveInAny _vehicle1 } forEach (units _grp);
+	{ _x moveInAny _vehicle1; sleep 0.1 } forEach (units _grp);
 	(units _grp) joinSilent _aiGroup;
 	(driver _vehicle1) limitSpeed 50;
 	sleep 3;
@@ -39,7 +39,7 @@ _setupObjects =
 	_vehicle2 = [_missionPos, vip_vehicle, false, false, GRLIB_side_civilian] call F_libSpawnVehicle;
 	_vehicle2 setConvoySeparation 30;
 	_grp = [_missionPos, 4, "guard", false] call createCustomGroup;
-	{ _x moveInAny _vehicle2 } forEach (units _grp);
+	{ _x moveInAny _vehicle2; sleep 0.1 } forEach (units _grp);
 	(units _grp) joinSilent _aiGroup;
 	sleep 3;
 
@@ -54,12 +54,13 @@ _setupObjects =
 	[_vip, false, true] spawn prisoner_ai;
 	_vip setrank "COLONEL";
 	_vip moveInAny _vehicle2;
+	sleep 2;
 
 	// veh3 + squad
 	_vehicle3 = [_missionPos, vip_vehicle, false, false, GRLIB_side_civilian] call F_libSpawnVehicle;
 	_vehicle3 setConvoySeparation 30;
 	_grp = [_missionPos, 5, "guard", false] call createCustomGroup;
-	{ _x moveInAny _vehicle3 } forEach (units _grp);
+	{ _x moveInAny _vehicle3; sleep 0.1 } forEach (units _grp);
 	(units _grp) joinSilent _aiGroup;
 	sleep 3;
 
@@ -137,27 +138,7 @@ _waitUntilCondition = {
 		sleep 1;
 		{ [_x, false] spawn F_ejectUnit; sleep 0.2 } forEach (units _aiGroup) + [_vip];
 		sleep 1;
-		_aiGroup setFormation "WEDGE";
-		_aiGroup setBehaviour "COMBAT";
-		_aiGroup setCombatMode "RED";
-		_aiGroup setSpeedMode "FULL";
-		private _radius = 50;
-		private _basepos = getPosATL _vip;
-		[_aiGroup] call F_deleteWaypoints;
-		_waypoint = _aiGroup addWaypoint [_basepos, _radius];
-		_waypoint setWaypointType "MOVE";
-		_waypoint setWaypointBehaviour "COMBAT";
-		_waypoint setWaypointCombatMode "RED";
-		_waypoint setWaypointSpeed "FULL";
-		_waypoint = _aiGroup addWaypoint [_basepos, _radius];
-		_waypoint setWaypointType "SAD";
-		_waypoint = _aiGroup addWaypoint [_basepos, _radius];
-		_waypoint setWaypointType "SAD";
-		_waypoint = _aiGroup addWaypoint [_basepos, _radius];
-		_waypoint setWaypointType "SAD";
-		_waypoint = _aiGroup addWaypoint [_basepos, _radius];
-		_waypoint setWaypointType "CYCLE";
-		{ _x doFollow leader _aiGroup } foreach units _aiGroup;
+		[_aiGroup, getPosATL _vip] spawn add_defense_waypoints;
 	};
 	(!(alive _vip) || (_vip distance2D _last_waypoint) < 100);
 };
