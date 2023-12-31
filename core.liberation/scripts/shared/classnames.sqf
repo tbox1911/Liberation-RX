@@ -12,7 +12,7 @@ zeropos = [0,0,10000];
 
 // *** FRIENDLIES ***
 private _path = format ["mod_template\%1\classnames_west.sqf", GRLIB_mod_west];
-[_path] call F_getTemplateFile;  
+[_path] call F_getTemplateFile; 
 
 MFR_Dogs_classname = [];
 if (GRLIB_MFR_enabled) then {
@@ -44,7 +44,7 @@ if (isServer) then {
 
 // *** BADDIES ***
 private _path = format ["mod_template\%1\classnames_east.sqf", GRLIB_mod_east];
-[_path] call F_getTemplateFile;  
+[_path] call F_getTemplateFile; 
 
 if (GRLIB_side_friendly == GRLIB_side_enemy) exitWith {
 abort_loading_msg = format [
@@ -83,7 +83,7 @@ if (GRLIB_side_enemy == INDEPENDENT) then {
 
 // *** CIVILIAN ***
 private _path = format ["mod_template\%1\classnames_civ.sqf", GRLIB_mod_west];
-[_path] call F_getTemplateFile;  
+[_path] call F_getTemplateFile; 
 
 // *** INDEPENDENT ***
 ind_recyclable = [
@@ -352,9 +352,9 @@ box_transport_config = [];
 box_transport_offset = [];
 
 private _path = format ["mod_template\%1\classnames_transport.sqf", GRLIB_mod_west];
-[_path] call F_getTemplateFile;  
+[_path] call F_getTemplateFile; 
 private _path = format ["mod_template\%1\classnames_transport.sqf", GRLIB_mod_east];
-[_path] call F_getTemplateFile;  
+[_path] call F_getTemplateFile; 
 
 // Configuration for ammo boxes transport
 // First entry: classname
@@ -367,7 +367,7 @@ box_transport_config = [
 	[ "C_Van_01_transport_F", -5.3, [0, -1.05, 0.2], [0, -2.6, 0.2] ],
 	[ "C_Van_02_transport_F", -5, [0,-1.75,0]],
 	[ "C_Van_02_vehicle_F", -5, [0,0.5,0], [0,-1.75,0]],
-    [ "C_IDAP_Van_02_vehicle_F", -5, [0,0.5,0], [0,-1.75,0]],
+  [ "C_IDAP_Van_02_vehicle_F", -5, [0,0.5,0], [0,-1.75,0]],
 	[ "C_IDAP_Van_02_transport_F", -5, [0,-1.75,0]],
 	[ "C_Truck_02_transport_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
 	[ "C_Truck_02_covered_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
@@ -484,17 +484,17 @@ support_vehicles = [ support_vehicles ] call F_filterMods;
 static_vehicles = [ static_vehicles ] call F_filterMods;
 buildings = [ buildings ] call F_filterMods;
 build_lists = [[],infantry_units,light_vehicles,heavy_vehicles,air_vehicles,static_vehicles,buildings,support_vehicles,squads];
-militia_squad = [ militia_squad , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
-militia_vehicles = [ militia_vehicles , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
-opfor_vehicles = [ opfor_vehicles , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
-opfor_vehicles_low_intensity = [ opfor_vehicles_low_intensity , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
-opfor_battlegroup_vehicles = [ opfor_battlegroup_vehicles , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
-opfor_battlegroup_vehicles_low_intensity = [ opfor_battlegroup_vehicles_low_intensity , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
-opfor_troup_transports_truck = [ opfor_troup_transports_truck , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
-opfor_troup_transports_heli = [ opfor_troup_transports_heli , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
-opfor_air = [ opfor_air , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
-civilians = [ civilians , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
-civilian_vehicles = [ civilian_vehicles , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
+militia_squad = [ militia_squad , { [ _x ] call F_checkClass } ] call BIS_fnc_conditionalSelect;
+militia_vehicles = [ militia_vehicles , { [ _x ] call F_checkClass } ] call BIS_fnc_conditionalSelect;
+opfor_vehicles = [ opfor_vehicles , { [ _x ] call F_checkClass } ] call BIS_fnc_conditionalSelect;
+opfor_vehicles_low_intensity = [ opfor_vehicles_low_intensity , { [ _x ] call F_checkClass } ] call BIS_fnc_conditionalSelect;
+opfor_battlegroup_vehicles = [ opfor_battlegroup_vehicles , { [ _x ] call F_checkClass } ] call BIS_fnc_conditionalSelect;
+opfor_battlegroup_vehicles_low_intensity = [ opfor_battlegroup_vehicles_low_intensity , { [ _x ] call F_checkClass } ] call BIS_fnc_conditionalSelect;
+opfor_troup_transports_truck = [ opfor_troup_transports_truck , { [ _x ] call F_checkClass } ] call BIS_fnc_conditionalSelect;
+opfor_troup_transports_heli = [ opfor_troup_transports_heli , { [ _x ] call F_checkClass } ] call BIS_fnc_conditionalSelect;
+opfor_air = [ opfor_air , { [ _x ] call F_checkClass } ] call BIS_fnc_conditionalSelect;
+civilians = [ civilians , { [ _x ] call F_checkClass } ] call BIS_fnc_conditionalSelect;
+civilian_vehicles = [ civilian_vehicles , { [ _x ] call F_checkClass } ] call BIS_fnc_conditionalSelect;
 military_alphabet = ["Alpha","Bravo","Charlie","Delta","Echo","Foxtrot","Golf","Hotel","India","Juliet","Kilo","Lima","Mike","November","Oscar","Papa","Quebec","Romeo","Sierra","Tango","Uniform","Victor","Whiskey","X-Ray","Yankee","Zulu"];
 
 // Enemies adaptative squad definition
@@ -562,7 +562,7 @@ squads_names = [
 	localize "STR_AA_SQUAD",
 	localize "STR_MIXED_SQUAD"
 ];
-elite_vehicles = [ elite_vehicles , { [ _x ] call F_checkClass } ]  call BIS_fnc_conditionalSelect;
+elite_vehicles = [ elite_vehicles , { [ _x ] call F_checkClass } ] call BIS_fnc_conditionalSelect;
 opfor_infantry = [opfor_sentry,opfor_rifleman,opfor_grenadier,opfor_squad_leader,opfor_team_leader,opfor_marksman,opfor_machinegunner,opfor_heavygunner,opfor_medic,opfor_rpg,opfor_at,opfor_aa,opfor_officer,opfor_sharpshooter,opfor_sniper,opfor_engineer];
 GRLIB_rank_level = ["PRIVATE", "CORPORAL", "SERGEANT", "LIEUTENANT", "CAPTAIN", "MAJOR", "COLONEL"];
 GRLIB_intel_table = "Land_CampingTable_small_F";
@@ -591,7 +591,7 @@ GRLIB_ide_traps = [
 	"Land_GarbageBarrel_01_F",
 	"Land_Sacks_heap_F",
 	"Land_CanisterFuel_Blue_F",
-    "Land_CanisterFuel_White_F",
+  "Land_CanisterFuel_White_F",
 	"Land_BarrelTrash_F",
 	"Land_GasTank_01_khaki_F",
 	"Land_FirstAidKit_01_closed_F",
@@ -618,7 +618,7 @@ GRLIB_ignore_colisions = [
 	"Helper_Base_F",
 	"Blood_01_Base_F",
 	"MedicalGarbage_01_Base_F",
-  	"ReammoBox_F",
+ 	"ReammoBox_F",
 	"StaticMGWeapon",
 	"StaticGrenadeLauncher",
 	"StaticMortar",
