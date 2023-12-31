@@ -101,11 +101,11 @@ while { ({alive _x} count (units _grp) > 0) && ( GRLIB_endgame == 0 ) } do {
 		_waypoint setWaypointCombatMode "RED";
 		_waypoint setWaypointSpeed "FULL";
 		_waypoint = _grp addWaypoint [_basepos, _radius];
-		_waypoint setWaypointType "SAD";
+		_waypoint setWaypointType "MOVE";
 		_waypoint = _grp addWaypoint [_basepos, _radius];
-		_waypoint setWaypointType "SAD";
+		_waypoint setWaypointType "MOVE";
 		_waypoint = _grp addWaypoint [_basepos, _radius];
-		_waypoint setWaypointType "SAD";
+		_waypoint setWaypointType "MOVE";
 		_waypoint = _grp addWaypoint [_basepos, _radius];
 		_waypoint setWaypointType "CYCLE";
 		{ _x doFollow leader _grp } foreach units _grp;

@@ -42,14 +42,14 @@ while { ({alive _x} count (units _grp) > 0) } do {
 	_waypoint setWaypointType "MOVE";
 	_waypoint setWaypointSpeed "FULL";
 	_waypoint setWaypointBehaviour "COMBAT";
-	_waypoint setWaypointCombatMode "WHITE";
+	_waypoint setWaypointCombatMode "RED";
 	_waypoint setWaypointCompletionRadius 50;
 	_waypoint = _grp addWaypoint [_objective_pos, 100];
-	_waypoint setWaypointType "SAD";
+	_waypoint setWaypointType "MOVE";
 	_waypoint = _grp addWaypoint [_objective_pos, 100];
-	_waypoint setWaypointType "SAD";
+	_waypoint setWaypointType "MOVE";
 	_waypoint = _grp addWaypoint [_objective_pos, 100];
-	_waypoint setWaypointType "SAD";
+	_waypoint setWaypointType "MOVE";
 
 	_wp0 = waypointPosition [_grp, 0];
 	_waypoint = _grp addWaypoint [_wp0, 0];
