@@ -53,6 +53,7 @@ closeDialog 0;
 if ( dojump > 0 ) then {
 	halo_position = [ halo_position, floor(random 100), floor(random 360) ] call BIS_fnc_relPos;
 	if (_unit isKindOf "LandVehicle" || _unit isKindOf "Ship") then {
+		// Vehicle HALO
 		if ([_cost] call F_pay) then {
 			titleText ["", "PLAIN"];
 			sleep 1;
@@ -61,27 +62,30 @@ if ( dojump > 0 ) then {
 				sleep 1;
 			};
 			titleText ["", "PLAIN"];
+			playSound "parasound";
 			[player, _unit, halo_position] remoteExec ["airdrop_remote_call", 2];
 			sleep 2;
 			[halo_position, "parasound"] remoteExec ["sound_range_remote_call", 2];
 		};
 	} else {
+		// Units HALO
 		halo_position set [2, GRLIB_halo_altitude];
 		GRLIB_last_halo_jump = round (time);
 		halojumping = true;
 		cutRsc ["fasttravel", "PLAIN", 1];
 		[_unit, "hide"] remoteExec ["dog_action_remote_call", 2];
-		[_unit, halo_position] spawn paraDrop;
-		sleep 1;
-		[halo_position, "parasound"] remoteExec ["sound_range_remote_call", 2];
 
 		private _player_pos = getPosATL _unit;
 		private _units = units group _unit;
 		private _my_squad = _unit getVariable ["my_squad", nil];
 		if (!isNil "_my_squad") then { { _units pushBack _x } forEach units _my_squad };
 
+		// Jump!
 		player setVariable ["GRLIB_action_inuse", true, true];
 		private _unit_list_halo = [_units, { !(isPlayer _x) && (isNull objectParent _x) && (_x distance2D _player_pos) < 40 && lifestate _x != 'INCAPACITATED' }] call BIS_fnc_conditionalSelect;
+		playSound "parasound";
+		[_unit, halo_position] spawn paraDrop;
+		sleep 1;
 		[_unit_list_halo] spawn {
 			params ["_list"];
 			{
@@ -89,6 +93,7 @@ if ( dojump > 0 ) then {
 				[_x, halo_position] spawn paraDrop;
 			} forEach _list;
 		};
+		[halo_position, "parasound"] remoteExec ["sound_range_remote_call", 2];
 		sleep 3;
 		player setVariable ["GRLIB_action_inuse", false, true];
 	};
