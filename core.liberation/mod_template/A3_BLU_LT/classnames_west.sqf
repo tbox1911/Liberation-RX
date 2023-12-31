@@ -74,7 +74,7 @@ light_vehicles = [
 ];
 
 heavy_vehicles = [
-	["B_LSV_01_armed_F",5,100,10,GRLIB_perm_log]
+	["B_LSV_01_armed_F",5,100,10,GRLIB_perm_log],
 	["B_MRAP_01_hmg_F",5,100,12,GRLIB_perm_inf],
 	["B_MRAP_01_gmg_F",5,125,12,GRLIB_perm_log],
 	["B_APC_Tracked_01_rcws_F",10,500,20,GRLIB_perm_tank]
