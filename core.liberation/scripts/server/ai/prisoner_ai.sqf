@@ -5,7 +5,6 @@ if ((typeOf _unit) select [0,10] == "RyanZombie") exitWith {};
 if (_unit getVariable ["GRLIB_mission_AI", false]) exitWith {};
 if (_unit getVariable ["GRLIB_is_prisoner", false]) exitWith {};
 if (_unit skill "courage" == 1) exitWith {};
-if !(isNull objectParent _unit) exitWith {};
 
 sleep 3;
 if (!alive _unit) exitWith {};
@@ -39,27 +38,24 @@ if (!_canmove) then {
 	_unit switchMove _anim;
 	_unit playMoveNow _anim;
 	sleep 3;
+};
 
-	// Wait
-	if (_friendly) then {
-		waitUntil { sleep 1; !alive _unit || side group _unit == GRLIB_side_friendly};
-	} else {
-		private _timeout = time + (45 * 60);
-		waitUntil { sleep 1; !alive _unit || side group _unit == GRLIB_side_friendly || time > _timeout };
-	};
-	_canmove = true
+// Wait
+if (_friendly) then {
+	waitUntil { sleep 1; !alive _unit || side group _unit == GRLIB_side_friendly};
+} else {
+	private _timeout = time + (45 * 60);
+	waitUntil { sleep 1; !alive _unit || side group _unit == GRLIB_side_friendly || time > _timeout };
 };
 if (!alive _unit) exitWith {};
 
 // Follow
-if (_canmove) then {
-	if (local _unit) then {
-		[_unit, "move"] call remote_call_prisoner;
-	} else {
-		[_unit, "move"] remoteExec ["remote_call_prisoner", owner _unit];
-	};
-	sleep 3;
+if (local _unit) then {
+	[_unit, "move"] call remote_call_prisoner;
+} else {
+	[_unit, "move"] remoteExec ["remote_call_prisoner", owner _unit];
 };
+sleep 3;
 
 private ["_no_blufor_near", "_player", "_player_in_action", "_waypoint", "_nearest_sector"];
 private _fleeing = false;
