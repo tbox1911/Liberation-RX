@@ -6,12 +6,13 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private [ "_vip", "_vehicle1", "_vehicle2", "_vehicle3", "_numWaypoints", "_convoy_attacked", "_disembark_troops"];
+private [ "_vip", "_vehicle1", "_vehicle2", "_vehicle3", "_last_waypoint", "_convoy_attacked", "_disembark_troops"];
 
 _setupVars =
 {
 	_missionType = "STR_VIP_CAP";
 	_locationsArray = nil; // locations are generated on the fly from towns
+	_ignoreAiDeaths = true;
 };
 
 _setupObjects =
@@ -28,16 +29,19 @@ _setupObjects =
 
 	// veh1 + squad
 	_vehicle1 = [_missionPos, vip_vehicle, false, false, GRLIB_side_civilian] call F_libSpawnVehicle;
-	private _grp = [_missionPos, 5, "guard"] call createCustomGroup;
-	{ _x moveInAny _vehicle1; [_x] joinSilent _aiGroup } forEach (units _grp);
+	private _grp = [_missionPos, 5, "guard", false] call createCustomGroup;
+	{ _x moveInAny _vehicle1 } forEach (units _grp);
+	(units _grp) joinSilent _aiGroup;
 	(driver _vehicle1) limitSpeed 50;
-	sleep 2;
+	sleep 3;
 
 	// veh2 + vip + squad
 	_vehicle2 = [_missionPos, vip_vehicle, false, false, GRLIB_side_civilian] call F_libSpawnVehicle;
 	_vehicle2 setConvoySeparation 30;
-	_grp = [_missionPos, 4, "guard"] call createCustomGroup;
-	{ _x moveInAny _vehicle2; [_x] joinSilent _aiGroup } forEach (units _grp);
+	_grp = [_missionPos, 4, "guard", false] call createCustomGroup;
+	{ _x moveInAny _vehicle2 } forEach (units _grp);
+	(units _grp) joinSilent _aiGroup;
+	sleep 3;
 
 	// VIP
 	_grp_vip = createGroup [GRLIB_side_civilian, true];
@@ -50,14 +54,14 @@ _setupObjects =
 	[_vip, false, true] spawn prisoner_ai;
 	_vip setrank "COLONEL";
 	_vip moveInAny _vehicle2;
-	sleep 2;
 
 	// veh3 + squad
 	_vehicle3 = [_missionPos, vip_vehicle, false, false, GRLIB_side_civilian] call F_libSpawnVehicle;
 	_vehicle3 setConvoySeparation 30;
-	_grp = [_missionPos, 5, "guard"] call createCustomGroup;
-	{ _x moveInAny _vehicle3; [_x] joinSilent _aiGroup } forEach (units _grp);
-	sleep 2;
+	_grp = [_missionPos, 5, "guard", false] call createCustomGroup;
+	{ _x moveInAny _vehicle3 } forEach (units _grp);
+	(units _grp) joinSilent _aiGroup;
+	sleep 3;
 
 	_aiGroup setFormation "COLUMN";
 	_aiGroup setBehaviour "SAFE";
@@ -70,21 +74,24 @@ _setupObjects =
 	{
 		_waypoint = _aiGroup addWaypoint [markerPos (_x select 0), 0];
 		_waypoint setWaypointType "MOVE";
-		_waypoint setWaypointCompletionRadius 100;
-		_waypoint setWaypointCombatMode "GREEN";
-		_waypoint setWaypointBehaviour "SAFE";
 		_waypoint setWaypointFormation "COLUMN";
+		_waypoint setWaypointBehaviour "SAFE";
+		_waypoint setWaypointCombatMode "GREEN";
+		_waypoint setWaypointSpeed "LIMITED";
+		_waypoint setWaypointCompletionRadius 200;
 	} forEach _citylist;
+
+	_last_waypoint = waypointPosition [_aiGroup, count _citylist];
 	_waypoint = _aiGroup addWaypoint [_missionPos, 0];
 	_waypoint setWaypointType "CYCLE";
-	{_x doFollow (leader _aiGroup)} foreach units _aiGroup;
+	_aiGroup selectLeader (driver _vehicle1);
+	{_x doFollow (leader _aiGroup)} foreach (units _aiGroup);
 
-	sleep 15;
+	sleep 10;
 	_missionPos = getPosATL leader _aiGroup;
 	_missionPicture = getText (configFile >> "CfgVehicles" >> (vip_vehicle param [0,""]) >> "picture");
 	_vehicleName = getText (configFile >> "CfgVehicles" >> (vip_vehicle param [0,""]) >> "displayName");
 	_missionHintText = ["STR_VIP_CAP_MSG", sideMissionColor];
-	_numWaypoints = count waypoints _aiGroup;
 	_convoy_attacked = false;
 	_disembark_troops = false;
 	_vehicles = [_vehicle1, _vehicle2, _vehicle3];
@@ -98,7 +105,7 @@ _waitUntilCondition = {
 		{
 			// Attacked ?
 			_killed = ({!(alive _x)} count (units _aiGroup) > 0);
-			if ( !(alive _x) || (damage _x > 0.2) || _killed && (count ([getPosATL _x, 1000] call F_getNearbyPlayers) > 0) ) then {
+			if ( !(alive _x) || (damage _x > 0.2) || _killed && (count ([_x, GRLIB_sector_size] call F_getNearbyPlayers) > 0) ) then {
 				_convoy_attacked = true;
 			};
 
@@ -115,8 +122,11 @@ _waitUntilCondition = {
 				_x setFuel 1;
 				_x setDamage 0;
 				[_x] execVM "scripts\client\actions\do_unflip.sqf";
-				if (_x != _veh_leader) then { (driver _x) doFollow (leader _aiGroup) };
-				sleep 10;
+				if (_x != _veh_leader) then {
+					(driver _x) doFollow (leader _aiGroup);
+					(driver _x) doMove getPosATL (leader _aiGroup);
+				};
+				sleep 3;
 			};
 		} foreach [_vehicle1, _vehicle2, _vehicle3];
 	};
@@ -126,11 +136,30 @@ _waitUntilCondition = {
 		{ doStop (driver _x) } foreach [_vehicle1, _vehicle2, _vehicle3];
 		sleep 1;
 		{ [_x, false] spawn F_ejectUnit; sleep 0.2 } forEach (units _aiGroup) + [_vip];
-		waitUntil {sleep 1; ({vehicle _x != _x} count (units _aiGroup) == 0)};
-		[_aiGroup, getPosATL _vip, 30] spawn add_defense_waypoints;
+		sleep 1;
+		_aiGroup setFormation "WEDGE";
+		_aiGroup setBehaviour "COMBAT";
+		_aiGroup setCombatMode "RED";
+		_aiGroup setSpeedMode "FULL";
+		private _radius = 50;
+		private _basepos = getPosATL _vip;
+		[_aiGroup] call F_deleteWaypoints;
+		_waypoint = _aiGroup addWaypoint [_basepos, _radius];
+		_waypoint setWaypointType "MOVE";
+		_waypoint setWaypointBehaviour "COMBAT";
+		_waypoint setWaypointCombatMode "RED";
+		_waypoint setWaypointSpeed "FULL";
+		_waypoint = _aiGroup addWaypoint [_basepos, _radius];
+		_waypoint setWaypointType "SAD";
+		_waypoint = _aiGroup addWaypoint [_basepos, _radius];
+		_waypoint setWaypointType "SAD";
+		_waypoint = _aiGroup addWaypoint [_basepos, _radius];
+		_waypoint setWaypointType "SAD";
+		_waypoint = _aiGroup addWaypoint [_basepos, _radius];
+		_waypoint setWaypointType "CYCLE";
+		{ _x doFollow leader _aiGroup } foreach units _aiGroup;
 	};
-
-	(!alive _vip || currentWaypoint _aiGroup >= _numWaypoints);
+	(!(alive _vip) || (_vip distance2D _last_waypoint) < 100);
 };
 _waitUntilSuccessCondition = { side group _vip == GRLIB_side_friendly };
 

@@ -8,7 +8,7 @@
 if (!isServer) exitwith {};
 
 private [
-	"_controllerSuffix", "_missionTimeout", "_availableLocations", "_missionLocation", "_leader", 
+	"_controllerSuffix", "_missionTimeout", "_availableLocations", "_missionLocation",
 	"_marker", "_marker_zone", "_time_left", "_failed", "_complete", "_startTime", "_leaderTemp", 
 	"_lastPos", "_floorHeight"
 ];
@@ -49,7 +49,6 @@ publicVariable "A3W_sectors_in_use";
 diag_log format ["A3W Side Mission% started: %2", _controllerSuffix, localize _missionType];
 
 sleep 5;
-_leader = leader _aiGroup;
 ([localize _missionType, _missionPos, _precise_marker] call createMissionMarker) params ["_marker", "_marker_zone"];
 _aiGroup setVariable ["A3W_missionMarkerName", _marker, true];
 
@@ -68,6 +67,7 @@ diag_log format ["A3W Side Mission%1 waiting to be finished: %2", _controllerSuf
 _failed = false;
 _complete = false;
 _startTime = time;
+_lastPos = getPos (leader _aiGroup);
 
 if (isNil "_ignoreAiDeaths") then { _ignoreAiDeaths = false };
 
@@ -84,9 +84,10 @@ waitUntil {
 				_leaderTemp = _x;
 			};
 		} forEach units _aiGroup;
+	} else {
+		_lastPos = getPosATL _leaderTemp;
 	};
 
-	if (!isNull _leaderTemp) then { _leader = _leaderTemp }; // Update current leader
 	if (!isNil "_waitUntilMarkerPos") then { _marker setMarkerPos (call _waitUntilMarkerPos) };
 	if (!isNil "_waitUntilExec") then { call _waitUntilExec };
 	_time_left = round ((_missionTimeout - (time - _startTime)) /60);
@@ -96,7 +97,7 @@ waitUntil {
 		_marker setMarkerText format ["%1 - time over", localize _missionType];
 	};
 
-	_expired = (time - _startTime >= _missionTimeout && ([_missionPos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount) == 0);
+	_expired = (_time_left <= 0 && ([_lastPos, GRLIB_capture_size, GRLIB_side_friendly] call F_getUnitsCount) == 0);
 	_failed = ((!isNil "_waitUntilCondition" && {call _waitUntilCondition}) || _expired);
 
 	if (!isNil "_waitUntilSuccessCondition" && {call _waitUntilSuccessCondition}) then {
@@ -114,7 +115,6 @@ deleteMarker _marker_zone;
 
 if (_failed) then {
 	// Mission failed
-
 	if (!isNil "_failedExec") then { call _failedExec };
 	[
 		"Objective Failed",
@@ -126,8 +126,6 @@ if (_failed) then {
 	["lib_secondary_a3w_mission_fail", [localize _missionType]] remoteExec ["bis_fnc_shownotification", 0];
 
 	// Cleanup
-	_missionPos = getPos (leader _aiGroup);
-	waitUntil { sleep 5; (GRLIB_global_stop == 1 || [_missionPos, GRLIB_capture_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
 	{ deleteVehicle _x } forEach (units _aiGroup);
 	if (!isNil "_vehicle") then	{ [_vehicle] spawn cleanMissionVehicles };
 	if (!isNil "_vehicles") then { [_vehicles] spawn cleanMissionVehicles };
@@ -136,15 +134,6 @@ if (_failed) then {
 	A3W_mission_failed = A3W_mission_failed + 1;
 } else {
 	// Mission completed
-
-	if (isNull _leader) then {
-		_lastPos = markerPos _marker;
-	} else {
-		_lastPos = ASLToAGL getPosASL _leader;
-		_floorHeight = (getPos _leader) select 2;
-		_lastPos set [2, (_lastPos select 2) - _floorHeight];
-	};
-
 	if (!isNil "_successExec") then { call _successExec };
 
 	if (!isNil "_vehicle") then {
