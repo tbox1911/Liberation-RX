@@ -62,7 +62,7 @@ if ( dojump > 0 ) then {
 			};
 			titleText ["", "PLAIN"];
 			[player, _unit, halo_position] remoteExec ["airdrop_remote_call", 2];
-			sleep 1;
+			sleep 2;
 			[halo_position, "parasound"] remoteExec ["sound_range_remote_call", 2];
 		};
 	} else {
@@ -72,8 +72,8 @@ if ( dojump > 0 ) then {
 		cutRsc ["fasttravel", "PLAIN", 1];
 		[_unit, "hide"] remoteExec ["dog_action_remote_call", 2];
 		[_unit, halo_position] spawn paraDrop;
+		sleep 1;
 		[halo_position, "parasound"] remoteExec ["sound_range_remote_call", 2];
-		sleep 2;
 
 		private _player_pos = getPosATL _unit;
 		private _units = units group _unit;
