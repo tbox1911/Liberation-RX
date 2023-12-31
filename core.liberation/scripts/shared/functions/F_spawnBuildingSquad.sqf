@@ -32,7 +32,7 @@ if ( _building_ai_max > 0 ) then {
 	{
 		_x setPos (_buildingpositions select (_position_indexes select _idxposit));
 		[_x, _sector] spawn building_defence_ai;
-		_x setVariable ["GRLIB_in_building", true];
+		_x setVariable ["GRLIB_in_building", true, true];
 		_idxposit = _idxposit + 1;
 		sleep 0.3;
 	} foreach (units _grp);

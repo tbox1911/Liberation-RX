@@ -25,7 +25,7 @@ if ( count _allposts > 0 ) then {
 			_grp = [_squadpos, _unitclass, GRLIB_side_enemy, "infantry", false] call F_libSpawnUnits;
 			{
 				_x setPos (_building_positions select _forEachIndex);
-				_x setVariable ["GRLIB_in_building", true];
+				_x setVariable ["GRLIB_in_building", true, true];
 				_spawned_units pushback _x;
 			} foreach (units _grp);
 
