@@ -39,7 +39,8 @@ A3W_Mission_timeout = 60*60;		// Time in seconds that a Side Mission will run fo
 
 waitUntil {sleep 1; !isNil "save_is_loaded" };
 
-[] call compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionArrays.sqf";
+// move to shared init (HC)
+//[] call compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionArrays.sqf";
 
 for "_i" from 1 to 4 do {
 	// Start Permanent controller

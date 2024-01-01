@@ -22,6 +22,8 @@ GRLIB_ACE_enabled = false;
 if (!abort_loading) then {
 	[] call compileFinal preprocessfilelinenumbers "scripts\shared\init_shared.sqf";
 	[] call compileFinal preprocessFileLineNUmbers "scripts\shared\init_sectors.sqf";
+	[] call compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionArrays.sqf";
+
 	if (!GRLIB_ACE_enabled) then {
 		[] execVM "R3F_LOG\init.sqf";
 	} else {
