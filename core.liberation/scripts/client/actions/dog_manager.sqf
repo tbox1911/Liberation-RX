@@ -61,11 +61,13 @@ while { true } do {
 					} else {
 						private _dist = round (_dog_pos distance2D _man);
 						if (_dist <= 3) then {
+							_my_dog stop true;
 							_my_dog setDir (_my_dog getDir _man);
 							_tone = _my_dog getVariable "my_dog_tone";
 							[_my_dog, _tone] spawn dog_bark;
-							sleep selectRandom [3,4,5];
+							sleep (4 + floor random 8);
 							_my_dog playMoveNow "Dog_Stop";
+							_my_dog stop false;
 						} else {
 							_my_dog moveTo (getPos _man);
 							_dog_move = "Dog_Walk";
