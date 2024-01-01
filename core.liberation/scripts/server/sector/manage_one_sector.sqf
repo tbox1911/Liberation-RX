@@ -267,7 +267,11 @@ if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_s
 			private _enemy_left = (units GRLIB_side_enemy) select {(alive _x) && (isNull objectParent _x) && ((_x distance2D _sectorpos) < _local_capture_size * 1.2)};
 			{
 				if ( _max_prisonners > 0 && ((floor random 100) < GRLIB_surrender_chance) ) then {
-					[_x] spawn prisoner_ai;
+					if (isServer) then {
+						[_x] spawn prisoner_ai;
+					} else {
+						[_x] remoteExec ["prisoner_ai", 2];
+					};
 					_max_prisonners = _max_prisonners - 1;
 					_managed_units = _managed_units - [_x];
 				} else {

@@ -61,11 +61,7 @@ while {alive _unit} do {
 	// Captured
 	if ([_unit, "FOB", 30] call F_check_near && isTouchingGround (vehicle _unit)) exitWith {
 		[_unit, "stop"] remoteExec ["remote_call_prisoner", 0];
-		if (isServer) then {
-			[_unit, (leader group _unit)] spawn prisonner_captured;
-		} else {
-			[_unit, (leader group _unit)] remoteExec ["prisonner_captured", 2];
-		};
+		[_unit, (leader group _unit)] spawn prisonner_captured;
 		sleep 300;
 		deleteVehicle _unit;
 	};
