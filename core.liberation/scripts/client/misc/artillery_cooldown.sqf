@@ -1,7 +1,7 @@
 if (isNil "GRLIB_artillery_shot") then { GRLIB_artillery_shot = 0 };
 
-// max 15 shot in 30 min 
-private _max_shot = 15;
+// max 10 shot in 30 min 
+private _max_shot = 10;
 private _cooldown = (1800/_max_shot);
 
 GRLIB_artillery_shot = GRLIB_artillery_shot + 1;
