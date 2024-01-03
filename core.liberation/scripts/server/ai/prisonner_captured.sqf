@@ -11,7 +11,7 @@ publicVariable "resources_intel";
 stats_prisonners_captured = stats_prisonners_captured + 1;
 publicVariable "stats_prisonners_captured";
 
-[ 0 ] remoteExec ["remote_call_intel", 0];
+[0] remoteExec ["remote_call_intel", 0];
 
 if (isPlayer _unit_owner) then {
 	private _bonus = 10;
