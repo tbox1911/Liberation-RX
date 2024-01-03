@@ -10,15 +10,14 @@ private _nb_unit = count _classname;
 if (_nb_unit == 0) exitWith {diag_log ["--- LRX Error: no unit to create.", _this]; grpNull};
 //_nb_unit = _nb_unit min round (16 * ([] call F_adaptiveOpforFactor));
 
-diag_log format [ "Spawn (%1) %2 Units (%3) at %4", _nb_unit, _type, _side, time ];
-
 private _grp = createGroup [_side, true];
 if (isNull _grp) exitWith { diag_log "--- LRX Error: cannot create group."; grpNull};
+
+diag_log format [ "Spawn (%1) %2 Units (%3-%4) at %5", _nb_unit, _type, _side, _grp, time ];
 
 private ["_unit", "_backpack", "_maxpos"];
 {
 	if ( (count units _grp) < _nb_unit) then {
-
 		if (_type == "divers") then {
 			_spawnpos = _spawnpos vectorAdd [floor(random 20), floor(random 20), -5];
 		};
@@ -59,6 +58,7 @@ private ["_unit", "_backpack", "_maxpos"];
 		} else {
 			diag_log format ["--- LRX Error: Cannot create unit %1 at position %2", _x, _spawnpos];
 		};
+		sleep 0.1;
 	};
 } foreach _classname;
 

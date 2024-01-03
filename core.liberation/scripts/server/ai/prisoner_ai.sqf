@@ -42,10 +42,10 @@ if (!_canmove) then {
 
 // Wait
 if (_friendly) then {
-	waitUntil { sleep 1; !alive _unit || side group _unit == GRLIB_side_friendly};
+	waitUntil { sleep 1; (!alive _unit || side group _unit == GRLIB_side_friendly) };
 } else {
 	private _timeout = time + (45 * 60);
-	waitUntil { sleep 1; !alive _unit || side group _unit == GRLIB_side_friendly || time > _timeout };
+	waitUntil { sleep 1; (!alive _unit || side group _unit == GRLIB_side_friendly || time > _timeout) };
 };
 if (!alive _unit) exitWith {};
 

@@ -224,7 +224,7 @@ if (dialog && deploy == 1) then {
 		private _unit_list_redep = [_unit_list, { !(isPlayer _x) && (isNull objectParent _x) && (_x distance2D player < 30) && lifestate _x != 'INCAPACITATED' }] call BIS_fnc_conditionalSelect;
 		player setDir _destdir;
 		player setPosATL ([_destpos, _destdist, (_destdir-180)] call BIS_fnc_relPos);
-		sleep 1;
+		sleep 0.5;
 		[_unit_list_redep, _destpos, _destdist] spawn {
 			params ["_list", "_pos", "_dist"];
 			sleep 1;
