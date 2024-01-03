@@ -32,7 +32,8 @@ else
 		_objet setVariable ["R3F_LOG_est_transporte_par", objNull, true];
 
 		// Le l�ger setVelocity vers le haut sert � defreezer les objets qui pourraient flotter.
-		[_objet, "detachSetVelocity", [0, 0, 0.1]] call R3F_LOG_FNCT_exec_commande_MP;
+		detach _objet;
+		_objet setVelocity [0, 0, 0.1];
 
 		player playMove format ["AinvPknlMstpSlay%1Dnon_medic", switch (currentWeapon player) do
 		{

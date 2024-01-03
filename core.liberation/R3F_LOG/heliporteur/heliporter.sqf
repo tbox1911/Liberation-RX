@@ -129,7 +129,7 @@ else
 							if (((boundingBoxReal _objet select 1 select 0) - (boundingBoxReal _objet select 0 select 0)) >
 								((boundingBoxReal _objet select 1 select 1) - (boundingBoxReal _objet select 0 select 1))) then
 							{
-								[_objet, "setDir", 90] call R3F_LOG_FNCT_exec_commande_MP;
+								_objet setDir 90;
 							};
 							
 							systemChat format [STR_R3F_LOG_action_heliporter_fait, [_objet] call F_getLRXName];
@@ -159,7 +159,8 @@ else
 										_objet setVariable ["R3F_LOG_est_transporte_par", objNull, true];
 										
 										// D�tacher l'objet et lui appliquer la vitesse de l'h�liporteur (inertie)
-										[_objet, "detachSetVelocity", velocity _heliporteur] call R3F_LOG_FNCT_exec_commande_MP;
+										detach _objet;
+										_objet setVelocity (velocity _heliporteur);
 										
 										systemChat format [STR_R3F_LOG_action_heliport_larguer_fait, [_objet] call F_getLRXName];
 									};

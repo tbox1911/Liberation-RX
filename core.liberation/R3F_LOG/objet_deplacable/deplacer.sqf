@@ -220,7 +220,9 @@ else
 					_objet attachTo [_joueur, _pos_rel_objet_initial];
 
 					// Si �chec transfert local, mode d�grad� : on conserve la direction de l'objet par rapport au joueur
-					if (!local _objet) then {[_objet, "setDir", R3F_LOG_deplace_dir_rel_objet] call R3F_LOG_FNCT_exec_commande_MP;};
+					if (!local _objet) then {
+						_objet setDir R3F_LOG_deplace_dir_rel_objet;
+					};
 
 					R3F_LOG_mutex_local_verrou = false;
 
@@ -429,7 +431,8 @@ else
 					{
 						// L'objet n'est plus port�, on le repose. Le l�ger setVelocity vers le haut sert � defreezer les objets qui pourraient flotter.
 						// TODO gestion collision, en particulier si le joueur meurt
-						[_objet, "detachSetVelocity", [0, 0, 0.1]] call R3F_LOG_FNCT_exec_commande_MP;
+						detach _objet;
+						_objet setVelocity [0, 0, 0.1];
 					};
 
 					_joueur removeEventHandler ["Fired", _idx_eh_fired];

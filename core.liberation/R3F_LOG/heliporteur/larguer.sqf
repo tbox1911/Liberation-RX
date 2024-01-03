@@ -28,10 +28,16 @@ else
 
 	if ( R3F_LOG_action_heliport_paradrop_valide ) then {
 		// Parachuter l'objet et lui appliquer la vitesse de l'h�liporteur (inertie)
-		[_objet, "paraDrop", _heliporteur] call R3F_LOG_FNCT_exec_commande_MP;
+		_objet disableCollisionWith _heliporteur;
+		detach _objet;
+		_objet setVelocity (velocity _heliporteur);
+		sleep 3;
+		[_objet, _heli] spawn F_addParachute;
+		_objet enableCollisionWith _heli;
 	} else {
 		// D�tacher l'objet et lui appliquer la vitesse de l'h�liporteur (inertie)
-		[_objet, "detachSetVelocity", velocity _heliporteur] call R3F_LOG_FNCT_exec_commande_MP;
+		detach _objet;
+		_objet setVelocity (velocity _heliporteur);
 	};
 
 	systemChat format [STR_R3F_LOG_action_heliport_larguer_fait, [_objet] call F_getLRXName];

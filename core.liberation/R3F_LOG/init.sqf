@@ -119,7 +119,9 @@
 		R3F_LOG_liste_objets_a_proteger = [];
 
 		/* Prot�ge les objets pr�sents dans R3F_LOG_liste_objets_a_proteger */
-		[] execVM "R3F_LOG\surveiller_objets_a_proteger.sqf";
+		if (count R3F_LOG_liste_objets_a_proteger > 0) then {
+			[] execVM "R3F_LOG\surveiller_objets_a_proteger.sqf";
+		};
 	};
 
 	/**
@@ -141,28 +143,6 @@
 		{
 			// Aucune pour l'instant
 			// ex : case "switchMove": {_argument switchMove _parametre;};
-		};
-
-		// Commandes � argument local et effet global
-		if (local _argument) then
-		{
-			switch (_commande) do
-			{
-				case "setDir": {_argument setDir _parametre;};
-				case "setVelocity": {_argument setVelocity _parametre;};
-				case "detachSetVelocity": {detach _argument; _argument setVelocity _parametre;};
-				case "paraDrop": {
-					[_argument, _parametre] spawn {
-						params ["_objet", "_heli"];
-						_objet disableCollisionWith _heli;
-						detach _objet;
-						_objet setVelocity (velocity _heli);
-						sleep 2;
-						_objet enableCollisionWith _heli;
-						[_objet, _heli] spawn F_addParachute;
-					};
-				};
-			};
 		};
 
 		// Commandes � faire uniquement sur le serveur

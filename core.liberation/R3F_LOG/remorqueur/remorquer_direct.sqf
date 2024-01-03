@@ -135,7 +135,7 @@ else
 					_azimut_canon = _azimut_canon + 180;
 				};
 
-				[_objet, "setDir", (getDir _objet)-_azimut_canon] call R3F_LOG_FNCT_exec_commande_MP;
+				_objet setDir ((getDir _objet)-_azimut_canon);
 			};
 
 			sleep 7;
