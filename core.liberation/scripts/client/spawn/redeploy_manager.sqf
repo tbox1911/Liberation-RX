@@ -191,7 +191,6 @@ if (dialog && deploy == 1) then {
 		call respawn_lhd;
 		player setVariable ["GRLIB_action_inuse", false, true];
 	} else {
-		diag_log [_choiceslist, _idxchoice];
 		private _destpos = zeropos;
 		private _destdir = random 360;
 		private _destdist = 4;
