@@ -178,6 +178,13 @@ if (!GRLIB_ACE_enabled) then {
 	[] execVM "addons\MGR\MagRepack_init.sqf";	
 };
 
+// GM Snow error
+if (GRLIB_GM_enabled) then {
+	private _r1 = rainParams;
+	_r1 set [15, true];  // Snow enabled
+	setRain _r1;
+};
+
 // Init Tips Tables from XML
 GREUH_TipsText = [];
 {
