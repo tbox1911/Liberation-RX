@@ -41,12 +41,12 @@ if (!isNil "_locationsArray") then {
 _continue_mission = true;
 if (!isNil "_setupObjects") then { _continue_mission = call _setupObjects };
 if (!_continue_mission) exitWith {
-	diag_log format ["--- LRX Error: A3W Side Mission%1 failed to setup: %2", _controllerSuffix, localize _missionType];
+	diag_log format ["--- LRX Error: A3W Side Mission %1 failed to setup: %2", _controllerSuffix, localize _missionType];
 };
 publicVariable "A3W_sectors_in_use";
 
 ["lib_secondary_a3w_mission", [localize _missionType]] remoteExec ["bis_fnc_shownotification", 0];
-diag_log format ["A3W Side Mission% started: %2", _controllerSuffix, localize _missionType];
+diag_log format ["A3W Side Mission %1 started: %2", _controllerSuffix, localize _missionType];
 
 sleep 5;
 ([localize _missionType, _missionPos, _precise_marker] call createMissionMarker) params ["_marker", "_marker_zone"];
@@ -62,7 +62,7 @@ if (isNil "_missionPicture") then { _missionPicture = "" };
 	sideMissionColor
 ] remoteExec ["remote_call_showinfo", 0];
 
-diag_log format ["A3W Side Mission%1 waiting to be finished: %2", _controllerSuffix, localize _missionType];
+diag_log format ["A3W Side Mission %1 waiting to be finished: %2", _controllerSuffix, localize _missionType];
 
 _failed = false;
 _complete = false;
@@ -130,7 +130,7 @@ if (_failed) then {
 	if (!isNil "_vehicle") then	{ [_vehicle] spawn cleanMissionVehicles };
 	if (!isNil "_vehicles") then { [_vehicles] spawn cleanMissionVehicles };
 
-	diag_log format ["A3W Side Mission%1 failed: %2", _controllerSuffix, localize _missionType];
+	diag_log format ["A3W Side Mission %1 failed: %2", _controllerSuffix, localize _missionType];
 	A3W_mission_failed = A3W_mission_failed + 1;
 } else {
 	// Mission completed

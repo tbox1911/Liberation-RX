@@ -7,7 +7,9 @@ params [
 ];
 
 if (isNil "_classname") exitWith {};
-diag_log format [ "Spawn vehicle %1 at %2", _classname , time ];
+if (_side != GRLIB_side_civilian) then {
+	diag_log format [ "Spawn vehicle %1 at %2", _classname , time ];
+};
 
 private _vehicle = objNull;
 private _spawnpos = [];
@@ -132,8 +134,10 @@ _vehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
 _vehicle allowCrewInImmobile [true, false];
 _vehicle setUnloadInCombat [true, false];
 
-[_vehicle] spawn F_clearCargo;
+[_vehicle] call F_clearCargo;
 
-diag_log format [ "Done Spawning vehicle %1 at %2", _classname , time ];
+if (_side != GRLIB_side_civilian) then {
+	diag_log format [ "Done Spawning vehicle %1 at %2", _classname , time ];
+};
 
 _vehicle;

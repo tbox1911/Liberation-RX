@@ -59,7 +59,7 @@ if (_grp_veh isKindOf "Ship") exitWith {};
 sleep 60;
 
 private _patrol = true;
-while { ({alive _x} count (units _grp) > 0) && ( GRLIB_endgame == 0 ) } do {
+while { GRLIB_endgame == 0 && ({alive _x} count (units _grp) > 0) } do {
 	_basepos = (leader _grp) findNearestEnemy (leader _grp);
 	if (isNull _basepos) then {
 		if (!_patrol) then {

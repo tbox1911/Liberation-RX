@@ -40,8 +40,8 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 				while { alive _vehicle } do {
 					// Correct static position
 					if ((vectorUp _vehicle) select 2 < 0.70) then {
-						_vehicle setpos [(getposATL _vehicle) select 0, (getposATL _vehicle) select 1, 0.5];
-						_vehicle setVectorUp surfaceNormal position _vehicle;
+						_vehicle setPos [(getposATL _vehicle) select 0, (getposATL _vehicle) select 1, 0.5];
+						_vehicle setVectorUp (surfaceNormal getPos _vehicle);
 					};
 					sleep 5;
 				};

@@ -36,7 +36,7 @@ if (_spawn_marker != "") then {
 
 	private ["_nextgrp", "_vehicle", "_vehicle_class", "_squad"];
 	for "_i" from 1 to _target_size do {
-		_vehicle_class = (selectRandom _vehicle_pool);
+		_vehicle_class = selectRandom _vehicle_pool;
 		_vehicle = [markerpos _spawn_marker, _vehicle_class] call F_libSpawnVehicle;
 		_vehicle setVariable ["GRLIB_counter_TTL", round(time + 3600)];  // 60 minutes TTL
 
@@ -45,9 +45,9 @@ if (_spawn_marker != "") then {
 
 		if ( (_vehicle_class in opfor_troup_transports_truck + opfor_troup_transports_heli) && (opforcap < GRLIB_battlegroup_cap)) then {
 			[_vehicle, _objective_pos] spawn troup_transport;
+		} else {
+			[_nextgrp, _objective_pos] spawn battlegroup_ai;
 		};
-
-		[_nextgrp, _objective_pos] spawn battlegroup_ai;
 		sleep 10;
 	};
 

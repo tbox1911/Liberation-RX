@@ -104,7 +104,7 @@ while { dialog && alive player && deploy == 0} do {
 
 	if ( lbCurSel 201 != _oldsel ) then {
 		_oldsel = lbCurSel 201;
-		_objectpos = ((_choiceslist select _oldsel) select 1);
+		_objectpos = (_choiceslist select _oldsel) select 1;
 		_startdist = 120;
 		_enddist = 120;
 		_alti = 35;
@@ -191,6 +191,7 @@ if (dialog && deploy == 1) then {
 		call respawn_lhd;
 		player setVariable ["GRLIB_action_inuse", false, true];
 	} else {
+		diag_log [_choiceslist, _idxchoice];
 		private _destpos = zeropos;
 		private _destdir = random 360;
 		private _destdist = 4;
@@ -201,7 +202,7 @@ if (dialog && deploy == 1) then {
 			_is_mobile_respawn = true;
 		} else {
 			// FOB / Outpost
-			_destpos = ((_choiceslist select _idxchoice) select 1);
+			_destpos = (_choiceslist select _idxchoice) select 1;
 			_destdist = 12;
 			if (surfaceIsWater _destpos) then { _destpos = (ATLtoASL _destpos) vectorAdd [0, 0, 1] };
 			private _near_sign = nearestObjects [_destpos, [FOB_sign], 20] select 0;
@@ -214,6 +215,7 @@ if (dialog && deploy == 1) then {
 			};
 		};
 
+		if (_destpos isEqualTo zeropos) exitWith {};
 		private _unit_list = units group player;
 		private _my_squad = player getVariable ["my_squad", nil];
 		if (!isNil "_my_squad") then {
@@ -222,6 +224,7 @@ if (dialog && deploy == 1) then {
 		private _unit_list_redep = [_unit_list, { !(isPlayer _x) && (isNull objectParent _x) && (_x distance2D player < 30) && lifestate _x != 'INCAPACITATED' }] call BIS_fnc_conditionalSelect;
 		player setDir _destdir;
 		player setPosATL ([_destpos, _destdist, (_destdir-180)] call BIS_fnc_relPos);
+		sleep 1;
 		[_unit_list_redep, _destpos, _destdist] spawn {
 			params ["_list", "_pos", "_dist"];
 			sleep 1;

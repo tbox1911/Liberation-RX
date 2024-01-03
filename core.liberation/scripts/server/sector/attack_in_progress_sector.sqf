@@ -41,6 +41,7 @@ if ( GRLIB_blufor_defenders && !_defenders_cooldown) then {
 
 	if (!(_sector in sectors_tower)) then {
 		_arsenal_box = createVehicle [Arsenal_typename, _sector_pos, [], 20, "NONE"];
+		[_arsenal_box] call F_clearCargo;
 	};
 
 	private _defenders_timer = round (time + 120);
