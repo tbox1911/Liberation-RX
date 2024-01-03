@@ -1,4 +1,4 @@
-params [ "_vehicle" ];
+params ["_vehicle"];
 
 private _path = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, "crewman"];
 private _grp = GRLIB_side_friendly createVehicleCrew _vehicle;
