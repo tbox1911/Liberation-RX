@@ -65,8 +65,8 @@ private ["_shop", "_deskDir", "_deskPos", "_desk", "_man", "_offset", "_str"];
 GRLIB_SHOP_Group = createGroup [GRLIB_side_civilian, true];
 {
     _shop = nearestObjects [_x, ["House"], 10] select 0;
-    _deskDir = getdir _shop;
-    _offset = [-0.7, 1, 0.25];  // Default shop_01_v1_f
+    _deskDir = getDir _shop;
+    _offset = [-0.7, 1, 0.25];      // Default shop_01_v1_f
     _str =  toLower str _shop;
     if (_str find "warehouse_03" > 0) then { _offset = [-2, 0, 0]};             // Tanoa
     if (_str find "metalshelter_02" > 0) then { _deskDir = (180 + _deskDir); _offset = [2, 0, 0]};  // Tanoa
@@ -82,6 +82,7 @@ GRLIB_SHOP_Group = createGroup [GRLIB_side_civilian, true];
     _deskPos = (getposASL _shop) vectorAdd ([_offset, -_deskDir] call BIS_fnc_rotateVector2D);
     _desk = createVehicle ["Land_CashDesk_F", ([] call F_getFreePos), [], 0, "NONE"];
     _desk allowDamage false;
+    _desk enableSimulationGlobal false;
     _desk setDir _deskDir;
     _desk setPosASL _deskPos;
     _deskDir = (180 + _deskDir);

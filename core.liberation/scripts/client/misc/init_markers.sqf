@@ -25,9 +25,6 @@ GRLIB_Marker_SHOP = [];
 // Objects too long to search (atm, phone, etc ..)
 [] call compileFinal preprocessFileLineNUmbers "fixed_position.sqf";
 
-// Search Objects by classname (only when dev)
-//[] execVM "compute_position.sqf";
-
 waituntil {sleep 1; !isNil "GRLIB_sectors_init"};
 waituntil {sleep 1; !isNil "GRLIB_marker_init"};
 
@@ -64,7 +61,7 @@ waituntil {sleep 1; !isNil "GRLIB_marker_init"};
   _marker setMarkerTypeLocal "mil_dot";
   if (_marker_debug) then {
     _marker setMarkerTextLocal format ["FUEL %1", _x];
-  } else {    
+  } else {
     _marker setMarkerTextLocal "FUEL";
   };
   _marker setMarkerSizeLocal [ 0.75, 0.75 ];
@@ -77,7 +74,7 @@ waituntil {sleep 1; !isNil "GRLIB_marker_init"};
   _marker setMarkerTypeLocal "mil_dot";
   if (_marker_debug) then {
     _marker setMarkerTextLocal format ["SHOP %1", _x];
-  } else {    
+  } else {
     _marker setMarkerTextLocal "SHOP";
   };
   _marker setMarkerSizeLocal [ 0.75, 0.75 ];
