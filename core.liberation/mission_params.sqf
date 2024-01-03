@@ -141,6 +141,7 @@ LRX_Mission_Params_Def = [
 		]
 	],
 	["Weather", localize "STR_WEATHER_PARAM", [
+		localize "STR_PARAMS_DISABLED",
 		localize "STR_WEATHER_PARAM1",
 		localize "STR_WEATHER_PARAM2",
 		localize "STR_WEATHER_PARAM3",
