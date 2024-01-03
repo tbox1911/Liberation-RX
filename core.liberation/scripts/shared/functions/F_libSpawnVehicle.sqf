@@ -100,11 +100,7 @@ if ( _side == GRLIB_side_friendly ) then {
 };
 
 if ( _side == GRLIB_side_enemy ) then {
-	if ( _classname in militia_vehicles ) then {
-		[_vehicle] call F_forceMilitiaCrew;
-	} else {
-		[_vehicle] call F_forceOpforCrew;
-	};
+	[_vehicle] call F_forceOpforCrew;
 	_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
 
 	// LRX textures

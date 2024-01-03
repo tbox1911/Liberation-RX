@@ -21,7 +21,6 @@ F_fixPosUnit = compileFinal preprocessFileLineNumbers "scripts\shared\functions\
 F_fixModUnit = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_fixModUnit.sqf";
 F_fixModVehicle = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_fixModVehicle.sqf";
 F_forceBluforCrew = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_forceBluforCrew.sqf";
-F_forceMilitiaCrew = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_forceMilitiaCrew.sqf";
 F_forceOpforCrew = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_forceOpforCrew.sqf";
 F_getAdaptiveSquadComp = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getAdaptiveSquadComp.sqf";
 F_getAdaptiveVehicle = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getAdaptiveVehicle.sqf";

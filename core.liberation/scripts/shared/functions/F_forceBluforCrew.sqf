@@ -5,7 +5,7 @@ private _grp = GRLIB_side_friendly createVehicleCrew _vehicle;
 sleep 0.2;
 (crew _vehicle) joinSilent _grp;
 {
-	[_path, _x] call F_getTemplateFile; 
+	[_path, _x] call F_getTemplateFile;
 	[_x] call reammo_ai;
 	_x addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
 	_x addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
