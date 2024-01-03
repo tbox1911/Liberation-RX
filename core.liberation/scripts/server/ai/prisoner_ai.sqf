@@ -87,7 +87,9 @@ while {alive _unit} do {
 
 			private _flee_grp = createGroup [GRLIB_side_enemy, true];
 			[_unit] joinSilent _flee_grp;
-			sleep 1;
+			private _timer = time + 1.5;
+			_flee_grp setGroupOwner 2;
+			waitUntil {local _unit || time > _timer};
 			[_unit, "flee"] remoteExec ["remote_call_prisoner", 0];
 			sleep 2;
 
