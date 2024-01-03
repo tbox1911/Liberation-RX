@@ -54,7 +54,7 @@ if ( _classname isKindOf "Air" ) then {
 			};
 			if (count boats_west >= 1 && _side == GRLIB_side_friendly) then {
 				_classname = selectRandom boats_west;
-			};			
+			};
 			if (count civilian_boats >= 1 && _side == GRLIB_side_civilian) then {
 				_classname = selectRandom civilian_boats;
 			};

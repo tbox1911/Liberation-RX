@@ -40,7 +40,7 @@ if ((_unit isKindOf "AllVehicles") && (damage _unit >= 0.80)) then {
 	private _evac_in_progress = (_unit getVariable ["GRLIB_vehicle_evac", false]);
 	if (!_evac_in_progress) then {
 		_unit setVariable ["GRLIB_vehicle_evac", true];
-		{ [_x, false] spawn F_ejectUnit} forEach (crew _unit);	
+		{ [_x, false] spawn F_ejectUnit} forEach (crew _unit);
 	};
 };
 
