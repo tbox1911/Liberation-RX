@@ -40,8 +40,8 @@ _unit addEventHandler ["InventoryOpened", {
 }];
 
 _unit addEventHandler ["WeaponAssembled", {
-	params ["_unit", "_staticWeapon"];
-	if ((typeOf _staticWeapon) in uavs) then { [_staticWeapon] spawn F_forceBluforCrew };
+	params ["_unit", "_weapon"];
+	if ((typeOf _weapon) in uavs) then { [_weapon, GRLIB_side_friendly] spawn F_forceCrew };
 }];
 
 _unit addEventHandler ["Take", {

@@ -13,7 +13,6 @@ if (_side != GRLIB_side_civilian) then {
 
 private _vehicle = objNull;
 private _spawnpos = [];
-private _vehcrew = [];
 private _airveh_alt = 300;
 private _radius = GRLIB_capture_size;
 private _max_try = 10;
@@ -92,17 +91,12 @@ if ( _vehicle isKindOf "LandVehicle" ) then {
 	};
 };
 
-if ( _side == GRLIB_side_civilian ) then { };
+private _vehcrew = [_vehicle, _side] call F_forceCrew;
+{ _x allowDamage false } forEach _vehcrew;
 
-if ( _side == GRLIB_side_friendly ) then {
-	[_vehicle] call F_forceBluforCrew;
-	_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
-};
-
+if ( _side == GRLIB_side_civilian ) then {};
+if ( _side == GRLIB_side_friendly ) then {};
 if ( _side == GRLIB_side_enemy ) then {
-	[_vehicle] call F_forceOpforCrew;
-	_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
-
 	// LRX textures
 	if (count opfor_texture_overide > 0) then {
 		_texture_name = selectRandom opfor_texture_overide;
@@ -114,9 +108,6 @@ if ( _side == GRLIB_side_enemy ) then {
 		[_vehicle, ["Opfor",1], true ] spawn BIS_fnc_initVehicle;
 	};
 };
-	
-_vehcrew = crew _vehicle;
-{ _x allowDamage false } forEach _vehcrew;
 
 [_vehicle, _vehcrew] spawn {
 	params ["_veh", "_crew"];
