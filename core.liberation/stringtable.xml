@@ -5952,8 +5952,8 @@
 			<French>amélioré.</French>
 		</Key>
  		<Key ID="STR_UPGRADE_OUTPOST_PAY">
-			<Original>&lt;t align='center'&gt;Upgrade the Outpost for %1 Ammo&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
-			<French>&lt;t align='center'&gt;Améliorer l'Outpost pour %1 Ammo&lt;br/&gt;Êtes-vous sûr ?&lt;/t&gt;</French>
+			<Original>&lt;t align='center'&gt;Upgrade the Outpost for %1 Ammo&lt;br/&gt;Be sure there is enough space!&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
+			<French>&lt;t align='center'&gt;Améliorer l'Outpost pour %1 Ammo&lt;br/&gt;Soyez sûr qu'il y a assez de place!&lt;br/&gt;Êtes-vous sûr ?&lt;/t&gt;</French>
 		</Key>
 		<!-- action_manager_veh.sqf -->
 		<Key ID="STR_SELL_CARGO">
