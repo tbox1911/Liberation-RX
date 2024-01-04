@@ -32,7 +32,7 @@ else
 		detach _objet;
 		_objet setVelocity (velocity _heliporteur);
 		sleep 3;
-		[_objet, _heli] spawn F_addParachute;
+		[_objet, _heliporteur] spawn F_addParachute;
 		_objet enableCollisionWith _heli;
 	} else {
 		// D�tacher l'objet et lui appliquer la vitesse de l'h�liporteur (inertie)
