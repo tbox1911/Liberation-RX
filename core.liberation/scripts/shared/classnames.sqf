@@ -465,7 +465,9 @@ GRLIB_force_cleanup_classnames = [
 	"rhs_mi28_wing_right",
 	"rhs_mi28_wing_left",
 	"rhs_mi28_door_gunner",
-	"rhs_mi28_door_pilot"
+	"rhs_mi28_door_pilot",
+	"gm_fim43_spent_oli",
+	"gm_1rnd_60mm_empty_pzf3"
 ];
 
 GRLIB_recycleable_classnames = ["LandVehicle","Air","Ship","StaticWeapon","Slingload_01_Base_F","Pod_Heli_Transport_04_base_F"];
