@@ -1,5 +1,7 @@
 params ["_vehicle", "_side"];
 
+if (_side == GRLIB_side_civilian) exitWith {[]};
+
 private _mod = GRLIB_mod_east;
 if (_side == GRLIB_side_friendly) then {
 	_mod = GRLIB_mod_west;
