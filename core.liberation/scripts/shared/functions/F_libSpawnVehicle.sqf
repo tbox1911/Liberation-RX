@@ -123,6 +123,10 @@ _vehicle setUnloadInCombat [true, false];
 
 [_vehicle] call F_clearCargo;
 
+if !(GRLIB_permission_enemy) then {
+	[_vehicle, "lock", "server"] call F_vehicleLock;
+};
+
 if (_side != GRLIB_side_civilian) then {
 	diag_log format [ "Done Spawning vehicle %1 at %2", _classname , time ];
 };

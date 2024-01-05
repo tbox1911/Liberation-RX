@@ -71,6 +71,7 @@ LRX_Mission_Params = [
 	["Permissions", 1],				// Permissions management - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["AirSupport", 1],				// Enable Air Support - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["EnableLock", 1],				// Enable Vehicles Ownership - [default 1] - values = [1,0] - Text {Enabled,Disabled}
+	["EnemyLock", 1],			// Enemy Vehicles Ownership - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["LRX_Cleanup", 1800],			// Cleanup abandoned vehicles outside FOBs - values = {0,900,1800,3600,7200,14400}
 	["AutoSave", 1800],				// LRX Game Auto Save Delay - values = {0,900,1800,3600,7200}
 	["AdminMenu", 1],				// Enable the Admin Cheat Menu [default 1] - values = [1,0] - Text {Enabled,Disabled}
@@ -276,6 +277,7 @@ LRX_Mission_Params_Def = [
 	["Thermic", localize "STR_THERMAL", [localize "STR_PARAMS_DISABLED","Only at night",localize "STR_PARAMS_ENABLED"]],
 	["EnableArsenal", localize "STR_ARSENAL", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED",localize "STR_PARAMS_ARSENAL_FOB"]],
 	["EnableLock", localize "STR_VEH_LOCK", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
+	["EnemyLock", localize "STR_OPFOR_VEH_LOCK", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],	
 	["CivPenalties", localize "STR_CIV_PENALTIES", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["AdminMenu", "Enable the Admin Menu", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["HideOpfor", localize "STR_OPFORMARK", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],

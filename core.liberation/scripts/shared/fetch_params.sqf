@@ -155,6 +155,7 @@ GRLIB_max_spawn_point = ["MaxSpawnPoint",3] call lrx_getParamValue;
 GRLIB_allow_redeploy = ["Redeploy",1] call lrx_getParamValue;
 GRLIB_permissions_param = ["Permissions",1] call lrx_getParamValue;
 GRLIB_permission_vehicles = ["EnableLock",1] call lrx_getParamValue;
+GRLIB_permission_enemy = ["EnemyLock",1] call lrx_getParamValue;
 GRLIB_civilian_activity = ["Civilians",1] call lrx_getParamValue;
 GRLIB_patrols_activity = ["Patrols",1] call lrx_getParamValue;
 GRLIB_wildlife_manager = ["Wildlife",1] call lrx_getParamValue;
@@ -279,6 +280,7 @@ if ( GRLIB_deployment_cinematic == 1 ) then { GRLIB_deployment_cinematic = true 
 if ( GRLIB_admin_menu == 1 ) then { GRLIB_admin_menu = true } else { GRLIB_admin_menu = false };
 if ( GRLIB_hide_opfor == 1 ) then { GRLIB_hide_opfor = true } else { GRLIB_hide_opfor = false };
 if ( GRLIB_permission_vehicles == 1 ) then { GRLIB_permission_vehicles = true } else { GRLIB_permission_vehicles = false };
+if ( GRLIB_permission_enemy == 1 ) then { GRLIB_permission_enemy = true } else { GRLIB_permission_enemy = false };
 if ( GRLIB_adaptive_opfor == 1 ) then { GRLIB_adaptive_opfor = true } else { GRLIB_adaptive_opfor = false };
 if ( GRLIB_passive_income == 1 ) then { GRLIB_passive_income = true } else { GRLIB_passive_income = false };
 if ( GRLIB_permissions_param == 1 ) then { GRLIB_permissions_param = true } else { GRLIB_permissions_param = false };

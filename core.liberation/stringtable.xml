@@ -5651,6 +5651,10 @@
 			<Portuguese>Ativar propriedade de veículos</Portuguese>
 			<Czech>Povolit vlastnictví vozidel</Czech>
 		</Key>
+		<Key ID="STR_OPFOR_VEH_LOCK">
+			<Original>Enemy Vehicles can be captured</Original>
+			<French>Les Véhicules Enemies peuvent être capturés</French>
+		</Key>		
 		<Key ID="STR_FORCE_LOADOUT">
 			<Original>Force default equipment</Original>
 			<Russian>Принудительное стандартное снаряжение</Russian>
