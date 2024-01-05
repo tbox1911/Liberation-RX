@@ -67,7 +67,12 @@ _successExec = {
 	} forEach (AllPlayers - (entities "HeadlessClient_F"));
 
 	_successHintMessage = ["STR_INSURGENCY_MESSAGE2", sideMissionColor, _townName];
-	[_missionPos] call showlandmines;
+	[_missionPos] spawn {
+		params ["_pos"];
+		[_pos] call showlandmines;
+		sleep 300;
+		[_pos] call clearlandmines;
+	};
 	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
 

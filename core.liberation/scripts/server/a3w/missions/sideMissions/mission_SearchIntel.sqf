@@ -215,7 +215,12 @@ _successExec = {
 
 	_successHintMessage = "STR_SEARCH_INTEL_MESSAGE2";
 	{ deleteVehicle _x } forEach (units _grp_civ);
-	[_missionPos] call showlandmines;
+	[_missionPos] spawn {
+		params ["_pos"];
+		[_pos] call showlandmines;
+		sleep 300;
+		[_pos] call clearlandmines;
+	};
 	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
 

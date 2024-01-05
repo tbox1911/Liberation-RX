@@ -80,7 +80,12 @@ _successExec = {
 		{ _x setPos (getPos _x) } forEach ([allDeadMen, { _x distance2D _pos <= _radius }] call BIS_fnc_conditionalSelect);
 		{ _x setPos (getPos _x) } forEach ([nearestObjects [_pos, ["GroundWeaponHolder", "WeaponHolderSimulated"], _radius], { getObjectType _x == 8 }] call BIS_fnc_conditionalSelect);
 	};
-	[_missionPos] call showlandmines;
+	[_missionPos] spawn {
+		params ["_pos"];
+		[_pos] call showlandmines;
+		sleep 300;
+		[_pos] call clearlandmines;
+	};
 };
 
 _this call sideMissionProcessor;

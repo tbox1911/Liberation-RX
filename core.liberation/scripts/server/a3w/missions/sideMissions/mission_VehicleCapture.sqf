@@ -52,7 +52,12 @@ _successExec = {
 	[_vehicle, "abandon"] call F_vehicleLock;
 	deleteVehicle _smoke;
 	_successHintMessage = ["STR_VEHICLECAP_MESSAGE2", _vehicleName];
-	[_missionPos] call showlandmines;
+	[_missionPos] spawn {
+		params ["_pos"];
+		[_pos] call showlandmines;
+		sleep 300;
+		[_pos] call clearlandmines;
+	};
 	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
 

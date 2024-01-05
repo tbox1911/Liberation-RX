@@ -45,7 +45,12 @@ _successExec = {
 	// Mission completed
 	{ [_x, "abandon"] call F_vehicleLock } forEach [_box1, _box2, _box3];
 	_successHintMessage = "STR_WEAPCACHE_MESSAGE2";
-	[_missionPos] call showlandmines;
+	[_missionPos] spawn {
+		params ["_pos"];
+		[_pos] call showlandmines;
+		sleep 300;
+		[_pos] call clearlandmines;
+	};
 	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
 

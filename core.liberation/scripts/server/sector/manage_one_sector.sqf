@@ -310,3 +310,4 @@ diag_log format ["Cleanup Defend Sector %1 at %2", _sector, time];
 		[_x] call clean_vehicle;
 	};
 } forEach _managed_units;
+[_sectorpos] call clearlandmines;
