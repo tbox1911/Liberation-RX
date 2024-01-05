@@ -1,7 +1,7 @@
 if ( GRLIB_endgame == 1 ) exitWith {};
 params ["_objectivepos", "_intensity"];
 
-diag_log format ["Spawn Direct BattlegGroup level %1 at %2", _intensity, time];
+diag_log format ["Spawn Direct BattlegGroup level %1 to %2 at %3", _intensity, _objectivepos, time];
 
 private _bg_groups = [];
 private _spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max, true, _objectivepos] call F_findOpforSpawnPoint;

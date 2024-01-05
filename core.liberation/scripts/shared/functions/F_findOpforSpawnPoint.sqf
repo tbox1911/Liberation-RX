@@ -26,8 +26,8 @@ private _filtered_possible_sectors = [];
 		};
 	};
 
-	if !(_spawn_target isEqualTo zeropos)  then {
-		if ([_spawn_target, markerpos _current_sector] call F_isWaterBetween) then {
+	if !( _spawn_target isEqualTo zeropos ) then {
+		if ([markerpos _current_sector, _spawn_target] call F_isWaterBetween) then {
 			_accept_current_sector = false;
 		};		
 	};

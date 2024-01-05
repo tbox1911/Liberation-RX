@@ -4,7 +4,7 @@ private _spawnpos = [];
 private _spawnlist = [];
 {
 	_spawnpos = [markerPos _x, 0, GRLIB_sector_size, 30, 0, 15, 0, [], [zeropos, zeropos]] call BIS_fnc_findSafePos;
-	if !(_spawnpos isEqualTo zeropos) then {_spawnlist pushBack _spawnpos};
+	if !(_spawnpos isEqualTo zeropos) then {_spawnlist pushBack [_spawnpos select 0, _spawnpos select 1, 0]};
 } foreach sectors_allSectors;
 if (count _spawnlist == 0) exitWith {[gamelogic, "Could not find enough free space for Armageddon mission"] remoteExec ["globalChat", 0]};
 
@@ -105,8 +105,10 @@ while { _continue } do {
 		};
 
 		[getPosATL _target] spawn send_paratroopers;
+		sleep 5;
 		if (_target distance2D opfor_target > GRLIB_spawn_max) then {
 			[getPosATL _target, GRLIB_side_enemy, 3] spawn spawn_air;
+			sleep 5;
 		};
 
 		_int = floor random 3;
@@ -115,9 +117,8 @@ while { _continue } do {
 			case 1: { [_spawnpos, _int] spawn spawn_battlegroup_direct };
 			case 2: { [_spawnpos, GRLIB_side_enemy, 3] spawn spawn_air };
 		};
-
+		sleep 5;
 		[_int] remoteExec ["BIS_fnc_earthquake", 0];
-
 		sleep 5;
 	};
 
