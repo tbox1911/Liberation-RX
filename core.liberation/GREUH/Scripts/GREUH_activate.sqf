@@ -35,6 +35,11 @@ switch (GREUH_allow_nametags) do {
 	case 2: { show_nametags = false; GREUH_allow_nametags = false };
 };
 
+private _group_name = profileNamespace getVariable ["GRLIB_group_name", ""];
+if (_group_name != "") then {
+	(group player) setGroupId [_group_name];
+};
+
 [] call compile preprocessFileLineNumbers "GREUH\GREUH_config.sqf";
 [] call compile preprocessFileLineNumbers "GREUH\scripts\GREUH_version.sqf";
 [] spawn compile preprocessFileLineNumbers "GREUH\scripts\GREUH_revive_camera.sqf";

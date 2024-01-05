@@ -117,8 +117,10 @@ while { true } do {
 	{
 		if (count global_groups_renamed != 0) then {
 			if (_x in global_groups_renamed) then {
-				if (groupid _x != global_group_ids select (global_groups_renamed find _x)) then {
-					_x setgroupid [(global_group_ids select (global_groups_renamed find _x))];
+				private _group_name = global_group_ids select (global_groups_renamed find _x);
+				if (groupid _x != _group_name) then {
+					_x setgroupid [_group_name];
+					profileNamespace setVariable ["GRLIB_group_name", _group_name];
 				};
 			};
 		};
