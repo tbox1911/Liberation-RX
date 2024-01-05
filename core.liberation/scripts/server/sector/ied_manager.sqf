@@ -22,13 +22,15 @@ private _sector_pos = markerPos _sector;
 private _roadobj = selectRandom (_sector_pos nearRoads _radius);
 
 if !(isNil "_roadobj") then {
-	private _ied_obj = createMine [ _ied_type, [getposATL _roadobj, 1, random(360)] call BIS_fnc_relPos, [], 0];
-	_ied_obj setPos (getPos _ied_obj);
+	private _ied_obj = createMine [_ied_type, [getposATL _roadobj, 1, random(360)] call BIS_fnc_relPos, [], 0];
+	private _ied_pos = (getPos _ied_obj);
+	_ied_obj setPos _ied_pos;
 
+	private ["_nearinfantry", "_nearvehicles"];
 	private _timeout = time + (60 * 60);
 	while { alive _ied_obj && time < _timeout && mineActive _ied_obj } do {
-		_nearinfantry = [(getposATL _ied_obj) nearEntities ["Man", _activation_radius_infantry], { side _x == GRLIB_side_friendly }] call BIS_fnc_conditionalSelect;
-		_nearvehicles = [(getposATL _ied_obj) nearEntities [["Car", "Tank", "Air"], _activation_radius_vehicles], { side _x == GRLIB_side_friendly }] call BIS_fnc_conditionalSelect;
+		_nearinfantry = [_ied_pos nearEntities ["Man", _activation_radius_infantry], { side _x == GRLIB_side_friendly }] call BIS_fnc_conditionalSelect;
+		_nearvehicles = [_ied_pos nearEntities [["Car", "Tank", "Air"], _activation_radius_vehicles], { side _x == GRLIB_side_friendly }] call BIS_fnc_conditionalSelect;
 		if ( count _nearinfantry >= _infantry_trigger || count _nearvehicles >= _vehicle_trigger ) then {
 			sleep 0.5;
 			_ied_obj setDamage 1;
@@ -36,5 +38,14 @@ if !(isNil "_roadobj") then {
 			publicVariable "stats_ieds_detonated";
 		};
 		sleep 1;
+	};
+
+	sleep 1;
+	if (time <= _timeout) then {
+		private _player = ([_ied_pos, 3] call F_getNearbyPlayers) select 0;
+		if !(isNil "_player") then {
+			[_player, 1] call F_addScore;
+			["Deactivating the mine +1XP!"] remoteExec ["hintSilent", owner _player];
+		};
 	};
 };
