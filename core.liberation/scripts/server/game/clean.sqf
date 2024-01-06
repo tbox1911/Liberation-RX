@@ -38,7 +38,11 @@ publicVariable "GRLIB_GC_Running";
 if (GRLIB_cleanup_vehicles == 0) exitWith {};
 
 // IGNORE VEHICLES
-private _no_cleanup_classnames = ["Steerable_Parachute_F"] + GRLIB_vehicle_blacklist;
+private _no_cleanup_classnames = [
+	"Steerable_Parachute_F",
+	"Land_Device_assembled_F",
+	"Land_Device_disassembled_F"
+] + GRLIB_vehicle_blacklist;
 { _no_cleanup_classnames pushback (_x select 0) } foreach (support_vehicles + static_vehicles + opfor_recyclable);
 
 // HIDDEN-FROM-PLAYERS FUNCTION
@@ -191,14 +195,14 @@ while {deleteManagerPublic} do {
 
 	// VEHICLES
 	if (!(_vehiclesLimit == -1)) then {
-		private _nbVehicles = [vehicles, {
+		private _nbVehicles = vehicles select {
 			alive _x &&
 			[_x] call is_abandoned &&
 			isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) &&
 			!(_x getVariable ['R3F_LOG_disabled', true]) &&
 			!([_x, "LHD", GRLIB_sector_size] call F_check_near) &&
 			!([typeOf _x, _no_cleanup_classnames] call F_itemIsInClass)
-		}] call BIS_fnc_conditionalSelect;
+		};
 
 		if ((count _nbVehicles) > _vehiclesLimit) then {
 			if (_vehicleDistCheck) then {
@@ -263,24 +267,32 @@ while {deleteManagerPublic} do {
 
 	// WRECKS
 	if (!(_deadVehiclesLimit == -1)) then {
-		if ((count (allDead - allDeadMen)) > _deadVehiclesLimit) then {
+		_list = (allDead - allDeadMen) select { !([typeOf _x, _no_cleanup_classnames] call F_itemIsInClass) };
+		_count = count _list;
+		if (_count > _deadVehiclesLimit) then {
 			if (_deadVehicleDistCheck) then {
 				{
 					if ([_x, _deadVehicleDist, _hidden_from] call _isHidden) then {
 						deleteVehicle _x;
 						_stats = _stats + 1;
+						_count = _count - 1;
 						sleep 0.1;
 					};
-				} count (allDead - allDeadMen);
-				while {(((count (allDead - allDeadMen)) - _deadMenLimitMax) > 0)} do {
-					deleteVehicle (selectRandom (allDead - allDeadMen));
+				} count _list;
+				sleep 0.1;
+				_list = _list select {!isNull _x};
+				_count = count _list;
+				while {((_count - _deadMenLimitMax) > 0)} do {
+					deleteVehicle (selectRandom _list);
 					_stats = _stats + 1;
+					_count = _count - 1;
 					sleep 0.1;
 				};
 			} else {
-				while {(((count (allDead - allDeadMen)) - _deadVehiclesLimit) > 0)} do {
+				while {((_count - _deadVehiclesLimit) > 0)} do {
 					deleteVehicle selectRandom (allDead - allDeadMen);
 					_stats = _stats + 1;
+					_count = _count - 1;
 					sleep 0.1;
 				};
 			};
