@@ -7,7 +7,7 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_grpdefenders", "_grpsentry", "_grpprisonners"];
+private ["_grp_defenders", "_grp_sentry", "_prisonners"];
 
 _setupVars = {
 	_missionType = "STR_OUTPOST";
@@ -20,19 +20,20 @@ _setupObjects = {
 	_base_output = [_missionPos, false, true] call createOutpost;
 	_vehicles = _base_output select 0;
 	//_objectives = _base_output select 1;
-	_grpdefenders = _base_output select 2;
-	_grpsentry = _base_output select 3;
-	_aiGroup = _grpdefenders;
+	_grp_defenders = _base_output select 2;
+	_grp_sentry = _base_output select 3;
+	_aiGroup = _grp_defenders;
 	[_missionPos, 30] call createlandmines;
 	_missionHintText = ["STR_OUTPOST_MESSAGE1", sideMissionColor];
 
-	_grpprisonners = createGroup [GRLIB_side_enemy, true];
+	private _grp_prisonners = createGroup [GRLIB_side_enemy, true];
 	for "_i" from 0 to 3 do {
 		_pilotsPos = _missionPos getPos [10, random 360];
-		pilot_classname createUnit [_pilotsPos, _grpprisonners, 'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.5, "private"];
+		pilot_classname createUnit [_pilotsPos, _grp_prisonners, 'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.5, "private"];
 		sleep 0.3;
 	};
-	{ [_x, true, false] spawn prisoner_ai } foreach (units _grpprisonners);
+	_prisonners = (units _grp_prisonners);
+	{ [_x, true, false] spawn prisoner_ai } foreach _prisonners;
 	true;
 };
 
@@ -40,27 +41,23 @@ _waitUntilMarkerPos = nil;
 _waitUntilExec = nil;
 _waitUntilCondition = {
 	private _ret = false;
-	if ({alive _x} count (units _grpprisonners) == 0) then {
+	if ({alive _x} count _prisonners == 0) then {
 		_failedHintMessage = ["STR_OUTPOST_MESSAGE_FAIL", sideMissionColor];
 		_ret = true;
 	};
 	_ret;
 };
-_waitUntilSuccessCondition = { ({side group _x == GRLIB_side_friendly} count (units _grpprisonners) > 0) };
+_waitUntilSuccessCondition = { ({side group _x == GRLIB_side_friendly} count _prisonners > 0) };
 
 _failedExec = {
-	[_missionPos, _grpdefenders, _grpsentry, _grpprisonners] spawn {
-		params ["_missionPos","_grp1","_grp2","_grp3"];
-		waitUntil { sleep 5; (GRLIB_global_stop == 1 || [_missionPos, GRLIB_capture_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
-		{ deleteVehicle _x } forEach (units _grp1) + (units _grp2) + (units _grp3);
-		[_missionPos] call clearlandmines;
-	};
+	{ deleteVehicle _x } forEach _prisonners + (units _grp_defenders) + (units _grp_sentry);
+	[_missionPos] call clearlandmines;
 };
 
 _successExec = {
 	// Mission complete
 	_successHintMessage = "STR_OUTPOST_MESSAGE2";
-	for "_i" from 1 to 2 do {
+	for "_i" from 0 to 1 do {
 		_box = selectRandom [fuelbarrel_typename, ammobox_b_typename, ammobox_o_typename, ammobox_i_typename, fuelbarrel_typename];
 		[_box, _missionPos, false] call boxSetup;
 	};
