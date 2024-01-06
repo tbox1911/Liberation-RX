@@ -58,13 +58,6 @@ private _grp = [_marker, "csat", ([] call F_getAdaptiveSquadComp)] call F_spawnR
 private _vehicle = [_spawnpos, (selectRandom opfor_vehicles)] call F_libSpawnVehicle;
 (driver _vehicle) doFollow leader _grp;
 
-private _mission_delay = (40 * 60);
-private _timer = round (time + _mission_delay);
-private _continue = true;
-private _success = false;
-private _last_send = 0;
-private _target = objNull;
-
 // weather cloudy
 [] spawn {
 	while { overcast <= 0.85 } do {
@@ -78,12 +71,19 @@ private _target = objNull;
 skipTime ((10 - dayTime + 24) % 24);
 setTimeMultiplier 0;
 
+private _mission_delay = (35 * 60);
 [_marker, 1, _mission_delay] remoteExec ["remote_call_sector", 0];
 sleep 10;
 [] remoteExec ["remote_call_final_fight", 0];
 sleep 30;
 
+private _timer = round (time + _mission_delay);
+private _last_send = 0;
+private _target = objNull;
+private _continue = true;
+private _success = false;
 private _last = 0;
+
 while { _continue } do {
 	combat_readiness = 100;
 
@@ -123,13 +123,11 @@ while { _continue } do {
 	};
 
 	if (time > _timer) then { _continue = false };
-	if (damage opfor_target == 1) then { _success = true; _continue = false };
+	if (damage opfor_target >= 1) then { _success = true; _continue = false };
 	sleep 2;
 };
 
 deleteMarker _marker;
-GRLIB_secondary_in_progress = -1;
-publicVariable "GRLIB_secondary_in_progress";
 
 if (_success) then {
 	[5] remoteExec ["BIS_fnc_earthquake", 0];
@@ -160,3 +158,6 @@ if (_success) then {
 	endMission "END";
 	forceEnd;
 };
+
+GRLIB_secondary_in_progress = -1;
+publicVariable "GRLIB_secondary_in_progress";
