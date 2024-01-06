@@ -47,7 +47,7 @@ _waitUntilCondition = {
 	};
 	_ret;
 };
-_waitUntilSuccessCondition = { ({side group _x == GRLIB_side_friendly} count _prisonners > 0) };
+_waitUntilSuccessCondition = { ({side group _x == GRLIB_side_friendly} count _prisonners) == ({alive _x } count _prisonners) };
 
 _failedExec = {
 	{ deleteVehicle _x } forEach _prisonners + (units _grp_defenders) + (units _grp_sentry);
