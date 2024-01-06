@@ -42,10 +42,10 @@ if !(isNil "_roadobj") then {
 
 	sleep 1;
 	if (time <= _timeout) then {
-		private _player = ([_ied_pos, 3] call F_getNearbyPlayers) select 0;
-		if !(isNil "_player") then {
-			[_player, 1] call F_addScore;
-			["Deactivating the mine +1XP!"] remoteExec ["hintSilent", owner _player];
+		if (isServer) then {
+			[_ied_pos] spawn ied_remote_call;
+		} else {
+			[_ied_pos] remoteExec ["ied_remote_call", 2];
 		};
 	};
 };
