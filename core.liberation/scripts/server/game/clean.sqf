@@ -290,7 +290,7 @@ while {deleteManagerPublic} do {
 				};
 			} else {
 				while {((_count - _deadVehiclesLimit) > 0)} do {
-					deleteVehicle selectRandom (allDead - allDeadMen);
+					deleteVehicle (selectRandom _list);
 					_stats = _stats + 1;
 					_count = _count - 1;
 					sleep 0.1;
