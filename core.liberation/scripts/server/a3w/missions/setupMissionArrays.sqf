@@ -5,7 +5,7 @@
 //	@file Author: AgentRev
 //	LRX Integration: pSiKO
 
-if (!isServer) exitWith {};
+if (!isServer || (!isDedicated && !hasInterface && isMultiplayer)) exitWith {};
 
 SideMissions = [
 	// Mission filename, weight
