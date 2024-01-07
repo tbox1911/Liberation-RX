@@ -20,7 +20,7 @@ _setupObjects =
 	private _citylist = (([] call cityList) call BIS_fnc_arrayShuffle) select [0, 3];
 
 	if (count _citylist < 3) exitWith {
-		diag_log format ["--- LRX Error: side mission VIP, cannot find spawn or path"];
+		diag_log format ["--- LRX Error: side mission VIP, cannot find spawn or path!"];
 		false;
 	};
 
@@ -29,7 +29,13 @@ _setupObjects =
 
 	// veh1 + squad
 	_vehicle1 = [_missionPos, vip_vehicle, false, false, GRLIB_side_civilian] call F_libSpawnVehicle;
-	private _grp = [_missionPos, 5, "guard", false] call createCustomGroup;
+	private _vehicle_seat = (_vehicle1 emptyPositions "") max 5;
+	if (count _vehicle_seat < 3) exitWith {
+		diag_log format ["--- LRX Error: side mission VIP, vehicle %1, no enough seat!", typeOf _vehicle1];
+		deleteVehicle _vehicle1;
+		false;
+	};
+	private _grp = [_missionPos, _vehicle_seat, "guard", false] call createCustomGroup;
 	{ _x moveInAny _vehicle1; sleep 0.1 } forEach (units _grp);
 	(units _grp) joinSilent _aiGroup;
 	(driver _vehicle1) limitSpeed 50;
@@ -38,7 +44,7 @@ _setupObjects =
 	// veh2 + vip + squad
 	_vehicle2 = [_missionPos, vip_vehicle, false, false, GRLIB_side_civilian] call F_libSpawnVehicle;
 	_vehicle2 setConvoySeparation 30;
-	_grp = [_missionPos, 4, "guard", false] call createCustomGroup;
+	_grp = [_missionPos, (_vehicle_seat-1), "guard", false] call createCustomGroup;
 	{ _x moveInAny _vehicle2; sleep 0.1 } forEach (units _grp);
 	(units _grp) joinSilent _aiGroup;
 	sleep 3;
@@ -59,7 +65,7 @@ _setupObjects =
 	// veh3 + squad
 	_vehicle3 = [_missionPos, vip_vehicle, false, false, GRLIB_side_civilian] call F_libSpawnVehicle;
 	_vehicle3 setConvoySeparation 30;
-	_grp = [_missionPos, 5, "guard", false] call createCustomGroup;
+	_grp = [_missionPos, _vehicle_seat, "guard", false] call createCustomGroup;
 	{ _x moveInAny _vehicle3; sleep 0.1 } forEach (units _grp);
 	(units _grp) joinSilent _aiGroup;
 	sleep 3;
