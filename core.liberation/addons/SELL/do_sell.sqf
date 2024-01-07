@@ -69,6 +69,7 @@ while { dialog && alive player } do {
 			private _selected_item = lbCurSel 110;
 			private _vehicle_name = (_display displayCtrl (110)) lnbText [_selected_item, 0];
 			_price = parseNumber ((_display displayCtrl (110)) lnbText [_selected_item, 1]);
+			_price = _price min 999;
 			if (_price == 0) then {
 				gamelogic globalChat localize "STR_NOTHING_TO_SELL";			
 			} else {
