@@ -13,6 +13,10 @@ private _target = objNull;
 
 private _grp = createGroup [GRLIB_side_civilian, true];
 [_unit] joinSilent _grp;
+private _timer = time + 1.5;
+_grp setGroupOwner 2;
+waitUntil {local _unit || time > _timer};
+
 [_grp] call F_deleteWaypoints;
 _unit setVariable ["GRLIB_is_kamikaze", true, true];
 

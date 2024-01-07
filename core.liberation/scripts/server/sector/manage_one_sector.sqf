@@ -94,7 +94,7 @@ if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_s
 		_squad2 = ([] call F_getAdaptiveSquadComp);
 		if (combat_readiness >= 70) then {
 			_squad3 = ([] call F_getAdaptiveSquadComp);
-		};		
+		};
 		if (GRLIB_unitcap >= 1.5) then {
 			_squad4 = ([] call F_getAdaptiveSquadComp);
 		};
@@ -131,7 +131,7 @@ if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_s
 		_squad2 = ([] call F_getAdaptiveSquadComp);
 		if (combat_readiness >= 70) then {
 			_squad3 = ([] call F_getAdaptiveSquadComp);
-		};		
+		};
 		if (GRLIB_unitcap >= 1.25) then {
 			_squad4 = ([] call F_getAdaptiveSquadComp);
 		};
@@ -150,7 +150,7 @@ if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_s
 		_squad2 = ([] call F_getAdaptiveSquadComp);
 		if (combat_readiness >= 70) then {
 			_squad3 = ([] call F_getAdaptiveSquadComp);
-		};		
+		};
 		if (GRLIB_unitcap >= 1.5) then {
 			_squad2 = ([] call F_getAdaptiveSquadComp);
 		};
@@ -275,7 +275,13 @@ if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_s
 					_max_prisonners = _max_prisonners - 1;
 					_managed_units = _managed_units - [_x];
 				} else {
-					if ( ((random 100) <= 50) ) then { [_x] spawn bomber_ai };
+					if ( ((random 100) <= 50) ) then {
+						if (isServer) then {
+							[_x] spawn bomber_ai;
+						} else {
+							[_x] remoteExec ["bomber_ai", 2];
+						};
+					};
 				};
 			} foreach _enemy_left;
 			sleep 60;
