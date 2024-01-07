@@ -370,7 +370,6 @@ while { true } do {
 					disableUserInput true;
 					disableUserInput false;
 				};
-				sleep 2;
 				[player, "Land_Carrier_01_blast_deflector_up_sound"] remoteExec ["sound_range_remote_call", 2];
 			};
 
