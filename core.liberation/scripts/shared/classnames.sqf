@@ -448,28 +448,6 @@ GRLIB_recycleable_blacklist = [
 	basic_weapon_typename
 ];
 
-// FORCE DELETE (used by GC)
-GRLIB_force_cleanup_classnames = [
-	"Plane_Canopy_Base_F",
-	"Ejection_Seat_Base_F",
-	"CUP_A10_Ejection_Seat",
-	"CUP_A10_Canopy",
-	"rhs_a10_acesII_seat",
-	"rhs_a10_canopy",
-	"rhs_f22_canopy",
-	"rhs_su25_canopy",
-	"rhs_t50_canopy",
-	"rhs_k36d5_seat",
-	"rhs_ka52_blade",
-	"rhs_ka52_ejection_vest",
-	"rhs_mi28_wing_right",
-	"rhs_mi28_wing_left",
-	"rhs_mi28_door_gunner",
-	"rhs_mi28_door_pilot",
-	"gm_fim43_spent_oli",
-	"gm_1rnd_60mm_empty_pzf3"
-];
-
 GRLIB_recycleable_classnames = ["LandVehicle","Air","Ship","StaticWeapon","Slingload_01_Base_F","Pod_Heli_Transport_04_base_F"];
 {
 	GRLIB_recycleable_classnames pushBackUnique (_x select 0);
@@ -606,6 +584,7 @@ GRLIB_ide_traps = [
 	"Box_Syndicate_WpsLaunch_F",
 	"VirtualReammoBox_camonet_F"
 ];
+
 GRLIB_ignore_colisions = [
 	FOB_box_typename,
 	FOB_truck_typename,
@@ -642,6 +621,29 @@ GRLIB_ignore_colisions = [
 	"Land_Destroyer_01_hull_base_F",
 	"Land_Carrier_01_base_F",
 	"Land_Carrier_01_hull_base_F"
+];
+
+// FORCE DELETE (used by GC)
+GRLIB_force_cleanup_classnames = [
+	"Plane_Canopy_Base_F",
+	"Ejection_Seat_Base_F",
+	"CUP_A10_Ejection_Seat",
+	"CUP_A10_Canopy",
+	"rhs_a10_acesII_seat",
+	"rhs_a10_canopy",
+	"rhs_f22_canopy",
+	"rhs_su25_canopy",
+	"rhs_t50_canopy",
+	"rhs_k36d5_seat",
+	"rhs_ka52_blade",
+	"rhs_ka52_ejection_vest",
+	"rhs_mi28_wing_right",
+	"rhs_mi28_wing_left",
+	"rhs_mi28_door_gunner",
+	"rhs_mi28_door_pilot",
+	"gm_fim43_spent_oli",
+	"gm_1rnd_60mm_empty_pzf3",
+	"gm_missile_milan_heat_dm92_empty"
 ];
 
 // Ammobox you want keep contents
