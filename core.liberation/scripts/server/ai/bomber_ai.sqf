@@ -1,6 +1,7 @@
 params ["_unit", ["_side", west]];
 
 if (isNull _unit) exitWith {};
+if !(isNull objectParent _unit) exitWith {};
 if (_unit getVariable ["GRLIB_mission_AI", false]) exitWith {};
 if (_unit getVariable ["GRLIB_is_prisoner", false]) exitWith {};
 
