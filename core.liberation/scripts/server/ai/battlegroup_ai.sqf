@@ -22,8 +22,8 @@ while { ({alive _x} count (units _grp) > 0) } do {
 
 	if (_objective_pos isEqualTo zeropos || _in_water) exitWith {
 		// Cleanup
-		waitUntil { 
-			sleep 30; 
+		waitUntil {
+			sleep 30;
 			(GRLIB_global_stop == 1 || ([_objective_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0))
 		};
 		{
