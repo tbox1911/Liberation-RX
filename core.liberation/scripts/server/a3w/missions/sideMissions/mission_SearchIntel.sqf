@@ -195,7 +195,7 @@ _failedExec = {
 	{ deleteVehicle _x } forEach _intels;
 	[_missionPos, _grp_civ] spawn {
 		params ["_missionPos","_grp1"];
-		waitUntil { sleep 5; (GRLIB_global_stop == 1 || [_missionPos, GRLIB_capture_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+		waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_missionPos, GRLIB_capture_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
 		{ deleteVehicle _x } forEach (units _grp1);
 		[_missionPos] call clearlandmines;
 	};

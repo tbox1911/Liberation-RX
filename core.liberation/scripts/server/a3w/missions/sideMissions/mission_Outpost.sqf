@@ -72,13 +72,10 @@ _successExec = {
 		params ["_pos"];
 		sleep 300;
 		private _radius = 150;
-		{ deleteVehicle _x } forEach ([nearestObjects [_pos, ["Ruins_F"], _radius], { getObjectType _x == 8 }] call BIS_fnc_conditionalSelect);
+		{ deleteVehicle _x } forEach (nearestObjects [_pos, ["Ruins_F"], _radius] select { getObjectType _x == 8 });
 		sleep 3;
-		{ _x setPos (getPos _x) } forEach ([allDeadMen, { _x distance2D _pos <= _radius }] call BIS_fnc_conditionalSelect);
-		{ _x setPos (getPos _x) } forEach ([nearestObjects [_pos, ["GroundWeaponHolder", "WeaponHolderSimulated"], _radius], { getObjectType _x == 8 }] call BIS_fnc_conditionalSelect);
-	};
-	[_missionPos] spawn {
-		params ["_pos"];
+		{ _x setPos (getPos _x) } forEach (allDeadMen select { _x distance2D _pos <= _radius });
+		{ _x setPos (getPos _x) } forEach (nearestObjects [_pos, ["GroundWeaponHolder", "WeaponHolderSimulated"], _radius] select { getObjectType _x == 8 });
 		[_pos] call showlandmines;
 		sleep 300;
 		[_pos] call clearlandmines;
