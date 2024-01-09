@@ -2,7 +2,7 @@ params ["_vehicle"];
 
 private _ret = false;
 
-private _alive = alive player;
+private _alive = (alive player && alive _vehicle);
 private _onfoot = isNull objectParent player;
 private _R3F_move = isNull R3F_LOG_joueur_deplace_objet;
 private _noflight = (isTouchingGround player || getPos player select 2 <= 1);
