@@ -3,8 +3,8 @@ private _fob_owner = [_fob_pos] call F_getFobOwner;
 private _fob_name = [_fob_pos] call F_getFobName;
 if (PAR_Grp_ID != _fob_owner) exitWith { hintSilent "Error!\nYour are NOT the owner of the Outpost!" };
 
-if (count (GRLIB_all_fobs select {count (_x nearObjects [FOB_typename, 50]) > 0}) >= GRLIB_maximum_fobs) exitWith {
-	hint format [localize "STR_HINT_FOBS_EXCEEDED", GRLIB_maximum_fobs];
+if (count (GRLIB_all_fobs - GRLIB_all_outposts) >= GRLIB_max_fobs) exitWith {
+	hint format [localize "STR_HINT_FOBS_EXCEEDED", GRLIB_max_fobs];
 };
 
 private _cost = 1500;

@@ -59,7 +59,8 @@ LRX_Mission_Params = [
 	["PassiveIncomeAmmount", 300],	// Passive Income Ammount - values = {100,200,300,400,500,1000,1500}
 	["HaloJump", 1],				// HALO jump - [default 1] - values = [1,5,10,15,20,30,0] - Text {Enabled - no cooldown,Enabled - 5min cooldown,Enabled - 10min cooldown,Enabled - 15min cooldown,Enabled - 20min cooldown,Enabled - 30min cooldown,Disabled}
 	["BluforDefenders", 1],			// BLUFOR defenders in owned sectors - [default 1] - values = [1,0] - Text {Enabled,Disabled}
-	["MaximumFobs", 5],				// Maximum number of FOBs allowed - [default 26] - values = [3,5,7,10,15,20,26] - Text {3,5,7,10,15,20,26}
+	["MaxFobs", 3],					// Maximum number of FOBs allowed - [default 26] - values = [3,5,7,10,15,20,26] - Text {3,5,7,10,15,20,26}
+	["MaxOutpost", 4],				// Maximum number of FOBs allowed - [default 26] - values = [3,5,7,10,15,20,26] - Text {3,5,7,10,15,20,26}	
 	["FobType", 0],					// The Startup Fob Vehicle - [default 0] - values = [1,0] - Text {Huron,Truck,Boat}
 	["HuronType", 0],				// The type of Huron - [default 0] - values = [0,1,2] - Text {"CH-67 Huron", "CH-49 Mohawk", "UH-80 Ghost Hawk"}
 	["NavalFobType", 0],			// The type of Naval FOB - [default 0] - values = [0,1,2] - Text {"USS Liberty", "USS Freedom", "Offshare plateform"}
@@ -191,10 +192,12 @@ LRX_Mission_Params_Def = [
 		],
 		[0, 1, 5, 10, 15, 20, 30]
 	],
-	["MaximumFobs", localize "STR_PARAM_FOBS_COUNT",
-		["3", "5", "7", "10", "15", "20"],
-		[3, 5, 7, 10, 15, 20]
+	["MaxFobs", localize "STR_PARAM_FOBS_COUNT",
+		["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
 	],
+	["MaxOutpost", localize "STR_PARAM_FOBS_COUNT",
+		["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+	],	
 	["SquadSize", localize "STR_PARAM_SQUAD_SIZE_START",
 		["0", "1", "2", "3", "4", "5", "6"]
 	],

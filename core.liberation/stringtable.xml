@@ -5187,6 +5187,17 @@
 			<Portuguese>Número máximo de FOBs permitido</Portuguese>
 			<Czech>Maximální povolený počet FOB</Czech>
 		</Key>
+		<Key ID="STR_PARAM_OUTPOST_COUNT">
+			<Original>Maximum number of Outpost allowed</Original>
+			<French>Nombre maximal d'Outpost autorisées</French>
+			<German>Maximale Anzahl an erlaubten Outpost</German>
+			<Russian>Максимальное количество Outpost</Russian>
+			<Chinesesimp>允许的最大Outpost数</Chinesesimp>
+			<Chinese>允許的最大Outpost數</Chinese>
+			<Japanese>最大建設可能Outpost</Japanese>
+			<Portuguese>Número máximo de Outpost permitido</Portuguese>
+			<Czech>Maximální povolený počet Outpost</Czech>			
+		</Key>		
 		<Key ID="STR_PARAM_FOB_TYPE">
 			<Original>Startup FOB Vehicle</Original>
 			<French>Type du vehicle de FOB</French>
@@ -5228,6 +5239,17 @@
 			<Portuguese>Você não tem permissão para implantar mais de %1 FOBs ao mesmo tempo.</Portuguese>
 			<Czech>Není povoleno nasadit více než %1 FOB současně.</Czech>
 		</Key>
+		<Key ID="STR_HINT_OUTPOST_EXCEEDED">
+			<Original>You are NOT allowed to deploy more than %1 Outpost at the same time.</Original>
+			<French>Vous n'êtes pas autorisé à déployer plus de %1 Outpost en même temps.</French>
+			<German>Sie haben nicht die Erlaubnis mehr als %1 Outpost zur selben Zeit zu errichten.</German>
+			<Russian>Вам не разрешено развертывать более %1 Outpost одновременно.</Russian>
+			<Chinesesimp>不允许同时部署超过 %1 个Outpost。</Chinesesimp>
+			<Chinese>不允許同時部署超過 %1 個Outpost。</Chinese>
+			<Japanese>あなたは同時に %1 以上のOutpostを建設する事は出来ません。</Japanese>
+			<Portuguese>Você não tem permissão para implantar mais de %1 Outpost ao mesmo tempo.</Portuguese>
+			<Czech>Není povoleno nasadit více než %1 Outpost současně.</Czech>
+		</Key>		
 		<Key ID="STR_HINT_LOADOUT_LOADED">
 			<Original>%1 loadout successfully loaded.</Original>
 			<French>Equipement %1 chargé avec succès.</French>

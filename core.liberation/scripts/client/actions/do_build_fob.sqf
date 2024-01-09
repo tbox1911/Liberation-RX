@@ -6,11 +6,15 @@ sleep random 0.3;
 
 //only one at time
 if ((_box getVariable ["box_in_use", false])) exitWith {};
-if (count (GRLIB_all_fobs select {count (_x nearObjects [FOB_typename, 50]) > 0}) >= GRLIB_maximum_fobs && _box_type != FOB_box_outpost) exitWith {
-	hint format [localize "STR_HINT_FOBS_EXCEEDED", GRLIB_maximum_fobs];
+
+if (_box_type == FOB_box_typename && count (GRLIB_all_fobs - GRLIB_all_outposts) >= GRLIB_max_fobs) exitWith {
+	hint format [localize "STR_HINT_FOBS_EXCEEDED", GRLIB_max_fobs];
+};
+if (_box_type == FOB_box_outpost && count (GRLIB_all_outposts) >= GRLIB_max_outpost) exitWith {
+	hint format [localize "STR_HINT_OUTPOST_EXCEEDED", GRLIB_max_outpost];
 };
 if (count (GRLIB_all_fobs select { surfaceIsWater _x }) > 0 && _box_type == FOB_boat_typename) exitWith {
-	hint format ["Only one Naval FOB Allowed!", GRLIB_maximum_fobs];
+	hint format ["Only one Naval FOB Allowed!"];
 };
 private _sea_deep = round ((getPosATL player select 2) - (getPosASL player select 2));
 private _min_deep = 30;
