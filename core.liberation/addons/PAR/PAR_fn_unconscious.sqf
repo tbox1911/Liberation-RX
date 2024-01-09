@@ -33,6 +33,7 @@ _unit switchMove "AinjPpneMstpSnonWrflDnon";  // lay down
 _unit playMoveNow "AinjPpneMstpSnonWrflDnon";
 sleep 7;
 _unit setVariable ["PAR_isUnconscious", true, true];
+if !(isPlayer _unit) then { sleep 3 };
 
 private _bld = createVehicle [(selectRandom PAR_BloodSplat), getPos _unit, [], 0, "CAN_COLLIDE"];
 private _cnt = 0;
