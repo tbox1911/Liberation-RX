@@ -8,7 +8,7 @@ private _refuel_cost = 5;
 
 if (_vehicle isKindOf "Wheeled_APC_F") then { _conso = 0.003 };
 if (_vehicle isKindOf "Tank") then { _conso = 0.004 };
-if (_vehicle isKindOf "Air") then { _conso = 0.005 };
+if (_vehicle isKindOf "Air") then { _conso = 0.0045 };
 
 while {true} do {
     _role = (assignedVehicleRole _unit) select 0;
