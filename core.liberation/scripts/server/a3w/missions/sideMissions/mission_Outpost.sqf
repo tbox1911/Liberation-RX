@@ -28,12 +28,14 @@ _setupObjects = {
 
 	private _grp_prisonners = createGroup [GRLIB_side_enemy, true];
 	for "_i" from 0 to 3 do {
-		_pilotsPos = _missionPos getPos [10, random 360];
-		pilot_classname createUnit [_pilotsPos, _grp_prisonners, 'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.5, "private"];
+		private _pilotsPos = _missionPos getPos [10, random 360];
+		private _unit = _grp_prisonners createUnit [pilot_classname, _pilotsPos, [], 0, "NONE"];
+		_vip addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+		[_unit] joinSilent _grp_prisonners;
+		[_unit, true, false] spawn prisoner_ai;
 		sleep 0.3;
 	};
 	_prisonners = (units _grp_prisonners);
-	{ [_x, true, false] spawn prisoner_ai } foreach _prisonners;
 	true;
 };
 
