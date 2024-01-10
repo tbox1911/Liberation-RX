@@ -195,7 +195,7 @@ LRX_Mission_Params_Def = [
 	["MaxFobs", localize "STR_PARAM_FOBS_COUNT",
 		["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
 	],
-	["MaxOutpost", localize "STR_PARAM_FOBS_COUNT",
+	["MaxOutpost", localize "STR_PARAM_OUTPOST_COUNT",
 		["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
 	],	
 	["SquadSize", localize "STR_PARAM_SQUAD_SIZE_START",
@@ -208,8 +208,7 @@ LRX_Mission_Params_Def = [
 		["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
 	],	
 	["MaxSpawnPoint", localize "STR_PARAM_SPAWN_MAX",
-		["1", "2", "3", "4", "5", "6"],
-		[1, 2, 3, 4, 5, 6]
+		["1", "2", "3", "4", "5", "6"]
 	],
 	["SectorDespawn", localize "STR_PARAM_SECTOR_DESPAWN",
 		["3", "6", "8", "12", "16", "20"],
