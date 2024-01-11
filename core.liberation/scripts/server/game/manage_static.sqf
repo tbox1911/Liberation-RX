@@ -44,6 +44,7 @@ while { true } do {
                 if (_enemy > 0) then {
                     _next_gunner = (units _side) select {
                         (alive _x) && (isNull objectParent _x) &&
+                        !(_x getVariable ["GRLIB_is_prisoner", false]) &&
                         (secondaryWeapon _x == "") && (_x distance2D _static < 50) &&
                         isNil {_x getVariable "PAR_Grp_ID"}
                     } select 0;
