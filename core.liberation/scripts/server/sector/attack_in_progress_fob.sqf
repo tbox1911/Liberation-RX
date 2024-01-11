@@ -63,8 +63,9 @@ if ( _ownership == GRLIB_side_enemy ) then {
 				[_fobpos, 250] remoteExec ["remote_call_penalty", 0];
 				sleep 3;
 			};
+			[_fobpos, 2] remoteExec ["remote_call_fob", 0];
+			sleep 1;
 			[_fobpos] call destroy_fob;
-			[_fobpos , 2] remoteExec ["remote_call_fob", 0];
 		} else {
 			[ _fobpos , 3 ] remoteExec ["remote_call_fob", 0];
 			_enemy_left = [(units GRLIB_side_enemy), {(alive _x) && (vehicle _x == _x) && ((_fobpos distance2D _x) < GRLIB_capture_size * 0.8)}] call BIS_fnc_conditionalSelect;
