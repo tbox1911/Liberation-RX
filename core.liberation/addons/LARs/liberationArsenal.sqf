@@ -97,12 +97,6 @@ private _default_personal_arsenal = [
 ];
 if (isNil "personal_arsenal") then {personal_arsenal = _default_personal_arsenal};
 
-// TFAR radio
-if (GRLIB_TFR_enabled) then {
-	private _TFR_radios = ["TFAR_anprc152","TFAR_anprc148jem","TFAR_fadak","TFAR_anprc154","TFAR_rf7800str","TFAR_pnr1000a"];
-	GRLIB_whitelisted_from_arsenal append _TFR_radios;
-};
-
 // Personal Arsenal
 if (GRLIB_filter_arsenal == 4) exitWith {
 	private _player_arsenal = profileNamespace getVariable ["GRLIB_personal_arsenal", nil];
