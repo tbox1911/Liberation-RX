@@ -16,7 +16,6 @@ if !(_unit getVariable ["GRLIB_in_building", false]) then {
 	[_unit] call F_fixPosUnit;
 };
 
-_unit setCaptive true;
 removeAllWeapons _unit;
 //removeHeadgear _unit;
 removeBackpack _unit;
@@ -24,8 +23,6 @@ removeVest _unit;
 private _hmd = (hmd _unit);
 _unit unassignItem _hmd;
 _unit removeItem _hmd;
-_unit setVariable ["GRLIB_is_prisoner", true, true];
-_unit setVariable ["GRLIB_can_speak", true, true];
 _unit removeAllEventHandlers "HandleDamage";
 
 if (!_canmove) then {
@@ -40,6 +37,10 @@ if (!_canmove) then {
 	_unit playMoveNow _anim;
 	sleep 3;
 };
+
+_unit setCaptive true;
+_unit setVariable ["GRLIB_is_prisoner", true, true];
+_unit setVariable ["GRLIB_can_speak", true, true];
 
 // Wait
 if (_friendly) then {
