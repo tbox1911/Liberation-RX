@@ -5,8 +5,6 @@
 //	@file Author: AgentRev
 //	LRX Integration: pSiKO
 
-if (!isServer || (!isDedicated && !hasInterface && isMultiplayer)) exitWith {};
-
 SideMissions = [
 	// Mission filename, weight
 	["mission_CaptureVIP", 1],
@@ -47,5 +45,3 @@ if !(SunkenMissionMarkers isEqualTo []) then {
 };
 
 { _x set [2, false] } forEach SideMissions;
-
-GRLIB_A3W_Init = true;
