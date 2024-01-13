@@ -27,14 +27,6 @@ sleep 0.2;
 	_x allowFleeing 0;
 } foreach (units _grp);
 
-_vehicle allowCrewInImmobile [true, false];
-_vehicle setUnloadInCombat [true, false];
-if (_side == GRLIB_side_enemy) then {
-	_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
-};
-if (_side == GRLIB_side_friendly) then {
-	_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
-};
 _grp setCombatMode "WHITE";
 _grp setBehaviour "AWARE";
 (crew _vehicle);

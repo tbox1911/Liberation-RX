@@ -34,18 +34,6 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 			_unit assignAsDriver _civ_veh;
 			_unit moveInDriver _civ_veh;
 			[_unit] orderGetIn true;
-			_civ_veh addEventHandler ["HandleDamage", {
-				params ["_unit", "_selection", "_damage", "_source"];
-				private _dam = 0;
-				if ( side _source == GRLIB_side_friendly ) then {
-					_dam = _damage;
-				};
-				if ( side(driver _unit) == GRLIB_side_friendly ) then {
-					_dam = _damage;
-				};
-				_dam;
-			}];
-			_civ_veh addEventHandler ["Fuel", { if (!(_this select 1)) then {(_this select 0) setFuel 1}}];
 			[_civ_veh] spawn {
 				params ["_vehicle"];
 				if (typeOf _vehicle isKindOf "Air") exitWith {};

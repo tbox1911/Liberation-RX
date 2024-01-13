@@ -94,9 +94,27 @@ if ( _vehicle isKindOf "LandVehicle" ) then {
 private _vehcrew = [_vehicle, _side] call F_forceCrew;
 { _x allowDamage false } forEach _vehcrew;
 
-if ( _side == GRLIB_side_civilian ) then {};
-if ( _side == GRLIB_side_friendly ) then {};
+if ( _side == GRLIB_side_civilian ) then {
+	_vehicle addEventHandler ["Fuel", { if (!(_this select 1)) then {(_this select 0) setFuel 1}}];
+	_vehicle addEventHandler ["HandleDamage", {
+		params ["_unit", "_selection", "_damage", "_source"];
+		private _dam = 0;
+		if ( side _source == GRLIB_side_friendly ) then {
+			_dam = _damage;
+		};
+		if ( side(driver _unit) == GRLIB_side_friendly ) then {
+			_dam = _damage;
+		};
+		_dam;
+	}];
+};
+if ( _side == GRLIB_side_friendly ) then {
+	_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
+};
 if ( _side == GRLIB_side_enemy ) then {
+	_vehicle addEventHandler ["Fuel", { if (!(_this select 1)) then {(_this select 0) setFuel 1}}];
+	_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
+
 	// LRX textures
 	if (count opfor_texture_overide > 0) then {
 		_texture_name = selectRandom opfor_texture_overide;
