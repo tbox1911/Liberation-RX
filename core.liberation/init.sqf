@@ -8,7 +8,7 @@ profileNamespace setVariable ["BIS_SupportDevelopment", nil];
 enableSaving [false, false];
 disableMapIndicators [false,true,false,false];
 setGroupIconsVisible [false,false];
-disableRemoteSensors true;
+disableRemoteSensors false;
 
 abort_loading = false;
 abort_loading_msg = "Unkwon Error";
