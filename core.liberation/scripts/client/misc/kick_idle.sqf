@@ -5,7 +5,7 @@ while { hasInterface } do {
 	waitUntil {sleep 1; GRLIB_player_spawned};
     _last_pos = getPosATL player;
 	_timer = 1;
-    while { (getPosATL player) distance2D _last_pos < 2 } do {
+    while { (player distance2D _last_pos) < 2 && lifeState player != "INCAPACITATED" } do {
 		_time_left = round ((GRLIB_kick_idle - (_timer*_sleep))/60);
 		if (_timer % 5 == 0) then {
 			systemchat format [localize "STR_KICK_IDLE_MSG", round ((_timer*_sleep)/60), _time_left];
