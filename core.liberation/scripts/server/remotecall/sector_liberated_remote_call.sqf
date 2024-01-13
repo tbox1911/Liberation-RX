@@ -1,5 +1,5 @@
 params [ "_liberated_sector" ];
-diag_log format ["Sector %1 liberated", _liberated_sector];
+diag_log format ["Sector %1 Liberated!", _liberated_sector];
 private _combat_readiness_increase = 0;
 
 if ( _liberated_sector in sectors_bigtown ) then {
@@ -85,7 +85,7 @@ if ( GRLIB_endgame == 0 ) then {
 	   (opforcap < GRLIB_battlegroup_cap) &&
 	   (diag_fps > 30.0) && (floor random 3 > 0)
 	) then {
-		diag_log format ["Spawn Sector Captured BattlegGroup at %1", time];
+		diag_log format ["Spawn Revenge BattlegGroup at %1", time];
 		[_liberated_sector] spawn spawn_battlegroup;
 	};
 };
