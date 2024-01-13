@@ -519,7 +519,6 @@ while { true } do {
 
 			stats_blufor_vehicles_built = stats_blufor_vehicles_built + 1;
 			publicVariable "stats_blufor_vehicles_built";
-			sleep 1;
 		};
 
 		// Remove Actions
