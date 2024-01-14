@@ -12,7 +12,8 @@ while { true } do {
 	publicVariable "unitcap";
 	publicVariable "opforcap";
 	publicVariable "civcap";
-	publicVariable "opfor_sectors";
+	publicVariable "blufor_sectors";
+	publicVariable "opfor_sectors";	
 	publicVariable "combat_readiness";
 	publicVariable "resources_intel";
 	sleep 2;
