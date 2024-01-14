@@ -68,9 +68,11 @@ while {alive _unit} do {
 		sleep 1;
 		[_unit, "stop"] remoteExec ["remote_call_prisoner", 0];
 		sleep 2;
-		[_unit, _leader] spawn prisonner_captured;
-		sleep 300;
-		deleteVehicle _unit;
+		if (isServer) then {
+			[_unit, _leader] spawn prisonner_captured;
+		} else {
+			[_unit, _leader] remoteExec ["prisonner_captured", 2];
+		};
 	};
 
 	// Flee
@@ -89,9 +91,6 @@ while {alive _unit} do {
 
 			private _flee_grp = createGroup [GRLIB_side_enemy, true];
 			[_unit] joinSilent _flee_grp;
-			private _timer = time + 1.5;
-			_flee_grp setGroupOwner 2;
-			waitUntil {local _unit || time > _timer};
 			[_unit, "flee"] remoteExec ["remote_call_prisoner", 0];
 			sleep 2;
 

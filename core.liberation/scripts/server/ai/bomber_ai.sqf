@@ -9,19 +9,6 @@ if (surfaceIsWater (getPosATl _unit)) exitWith {};
 sleep 3;
 if (!alive _unit) exitWith {};
 
-private _cloth = getText(configfile >> "CfgVehicles" >> selectRandom civilians >> "uniformClass");
-private _targets = [];
-private _target = objNull;
-
-private _grp = createGroup [GRLIB_side_civilian, true];
-[_unit] joinSilent _grp;
-private _timer = time + 1.5;
-_grp setGroupOwner 2;
-waitUntil {local _unit || time > _timer};
-
-[_grp] call F_deleteWaypoints;
-_unit setVariable ["GRLIB_is_kamikaze", true, true];
-
 // Init bomber
 removeAllWeapons _unit;
 removeHeadgear _unit;
@@ -30,6 +17,7 @@ removeVest _unit;
 removeGoggles _unit;
 { _unit unlinkItem _x } forEach (assignedItems _unit);
 
+private _cloth = getText(configfile >> "CfgVehicles" >> selectRandom civilians >> "uniformClass");
 _unit forceAddUniform _cloth;
 _unit setHitPointDamage ["hitLegs", 0];
 {_unit disableAI _x} count ["TARGET","AUTOTARGET","AUTOCOMBAT","SUPPRESSION"];
@@ -40,10 +28,14 @@ _unit setUnitPos "UP";
 _unit switchMove "";
 sleep 1;
 
+private _grp = createGroup [GRLIB_side_civilian, true];
+[_unit] joinSilent _grp;
+[_grp] call F_deleteWaypoints;
+_unit setVariable ["GRLIB_is_kamikaze", true, true];
 _grp setCombatMode "BLUE";
 _grp setBehaviour "SAFE";
 
-private ["_expl1","_expl2","_expl3"];
+private ["_targets", "_target", "_expl1","_expl2","_expl3"];
 while {alive _unit} do {
 	_targets = [getpos _unit , 150] call F_getNearbyPlayers;
 	if (count _targets > 0) then {

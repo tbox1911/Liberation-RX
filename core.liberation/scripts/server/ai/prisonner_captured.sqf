@@ -23,3 +23,6 @@ if (isPlayer _unit_owner) then {
 	private _msg = format ["Well done %1!\n\nIntel Stars + %2\nBonus Score + %3 XP", name _unit_owner, _yield, _bonus];
 	[_msg] remoteExec ["hint", owner _unit_owner];
 };
+
+sleep 300;
+deleteVehicle _unit;
