@@ -48,7 +48,7 @@ waitUntil {sleep 0.5;!(isNull (findDisplay 46))};
 }];
 
 // LRX Diag
-if (PAR_Grp_ID in GRLIB_whitelisted_steamids) then {
+if (GRLIB_Player_VIP) then {
 	(findDisplay 46) displayAddEventHandler ["KeyDown", {
 		if (_this select 1 == (actionKeys 'User20') select 0) then {
 			_save = 0;  // Dump savegame: 0 = no, 1 = yes
