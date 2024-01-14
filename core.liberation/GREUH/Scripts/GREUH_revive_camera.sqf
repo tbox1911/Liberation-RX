@@ -3,6 +3,7 @@ private ["_pos", "_destpos", "_cam", "_noesckey"];
 
 while { true } do {
 	waitUntil {sleep 0.5; (GRLIB_player_spawned && (player getVariable ["PAR_isUnconscious", false])) };
+	openMap false;
 	closeDialog 0;
 
 	_pos = positionCameraToWorld [0,0,-0.2];
