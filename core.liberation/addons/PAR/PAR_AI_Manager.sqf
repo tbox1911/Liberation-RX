@@ -40,27 +40,27 @@ while {true} do {
                     };
                 };
 
-                // AI stop doing shit !
-                if ( leader group player != player &&
-                    lifeState player == 'INCAPACITATED' &&
-                    lifeState _unit != 'INCAPACITATED' &&
-                    isNil {_unit getVariable 'PAR_busy'} &&
-                    isNil {_unit getVariable 'PAR_heal'}
-                ) then {
-                    if (currentCommand _unit != "STOP") then {
-                        doStop _unit;
-                        if (_unit distance2D player <= 500) then {
-                            unassignVehicle _unit;
-                            [_unit] orderGetIn false;
-                            if (!isnull objectParent _unit) then {
-                                doGetOut _unit;
-                                sleep 3;
-                            };
-                            _unit doMove (getPos player);
-                            [_unit] doFollow (leader group player);;
-                        };
-                    };
-                };
+                // // AI stop doing shit !
+                // if ( leader group player != player &&
+                //     lifeState player == 'INCAPACITATED' &&
+                //     lifeState _unit != 'INCAPACITATED' &&
+                //     isNil {_unit getVariable 'PAR_busy'} &&
+                //     isNil {_unit getVariable 'PAR_heal'}
+                // ) then {
+                //     if (currentCommand _unit != "STOP") then {
+                //         doStop _unit;
+                //         if (_unit distance2D player <= 500) then {
+                //             unassignVehicle _unit;
+                //             [_unit] orderGetIn false;
+                //             if (!isnull objectParent _unit) then {
+                //                 doGetOut _unit;
+                //                 sleep 3;
+                //             };
+                //             _unit doMove (getPos player);
+                //             [_unit] doFollow (leader group player);;
+                //         };
+                //     };
+                // };
             };
 
             // Blood trail
