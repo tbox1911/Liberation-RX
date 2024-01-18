@@ -18,8 +18,11 @@ if (GRLIB_revive == 2) then { _medics = _medics select {[_x] call PAR_has_mediki
 
 if (count _medics == 0) exitWith {};
 
-private _medics_lst = _medics apply {[_x distance2D _wnded, _x]};
-_medics_lst sort true;
-private _medic = _medics_lst select 0 select 1;
+// (try to) keep gunner
+private _medics_lst = _medics select { !("turret" in (assignedVehicleRole _x)) };
+if (count _medics_lst == 0) then { _medics_lst = _medics };
 
-_medic;
+private _medics_sorted = _medics_lst apply {[_x distance2D _wnded, _x]};
+_medics_sorted sort true;
+
+(_medics_sorted select 0 select 1);
