@@ -34,6 +34,7 @@ private _cargo_seat_free = _vehicle emptyPositions "Cargo";
 if (_cargo_seat_free > 8) then { _cargo_seat_free = 8 };
 if (_cargo_seat_free == 0) exitWith { _pilot_group };
 diag_log format ["Spawn (%1) %2ParaTroopers objective %3 at %4", _cargo_seat_free, _name, _targetpos, time];
+stats_reinforcements_called = stats_reinforcements_called + 1;
 
 private _unitclass = [];
 while { (count _unitclass) < _cargo_seat_free } do { _unitclass pushback (selectRandom _para_squad) };

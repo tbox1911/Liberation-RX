@@ -21,6 +21,7 @@ while { GRLIB_csat_aggressivity > 0.9 && GRLIB_endgame == 0 && GRLIB_global_stop
 			diag_log format [ "Spawn BattleGroup at %1 on %2", time, _hc ];
 			[] remoteExec ["spawn_battlegroup", owner _hc];
 		};
+		stats_hostile_battlegroups = stats_hostile_battlegroups + 1;
 	};
 	
 	private _pilots = allPlayers select { (objectParent _x) isKindOf "Air" && (driver vehicle _x) == _x };
