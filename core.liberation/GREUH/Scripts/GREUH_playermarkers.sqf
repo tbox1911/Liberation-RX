@@ -12,7 +12,9 @@ if ( side player == GRLIB_side_friendly ) then {
 };
 
 while { true } do {
-	waitUntil { sleep 0.5; show_teammates };
+	disableMapIndicators [true,true,false,false];
+	waitUntil { sleep 1; show_teammates };
+	disableMapIndicators [false,true,false,false];
 	while { show_teammates } do {
 
 		{

@@ -117,11 +117,6 @@ while { dialog && alive player } do {
 
 if (!alive player) then { closeDialog 0 };
 
-if (show_teammates) then {
-	disableMapIndicators [false,true,false,false];
-} else {
-	disableMapIndicators [true,true,false,false];
-};
 greuh_options_profile = [desiredviewdistance_inf,desiredviewdistance_veh,desiredviewdistance_obj,show_teammates,show_platoon,show_nametags,desired_vehvolume,desired_fps];
 profileNamespace setVariable ["GREUH_OPTIONS_PROFILE", greuh_options_profile];
 saveProfileNamespace;
