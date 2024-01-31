@@ -2,7 +2,7 @@ private [ "_all_static", "_static", "_static_class", "_all_light" , "_side", "_g
 private _static_classname = list_static_weapons - static_vehicles_AI;
 
 while { true } do {
-    _all_static = [vehicles, { local _x && alive _x && (typeOf _x) in _static_classname }] call BIS_fnc_conditionalSelect;
+    _all_static = vehicles select { local _x && alive _x && (typeOf _x) in _static_classname };
 
     {
         _static = _x;

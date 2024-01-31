@@ -36,7 +36,7 @@ while { true } do {
 		_cleanup_counter = 2;
 	};
 
-	if (underwater vehicle player && _msg != "") then {
+	if (underwater vehicle player) then {
 		hintSilent format ["Oxygen Remaining: %1%2", round(100 * getOxygenRemaining player), "%"];
 		_cleanup_counter = 2;
 	};

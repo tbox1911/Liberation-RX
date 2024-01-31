@@ -1,16 +1,16 @@
 private  ["_unit"];
 private _distvehclose = 5;
-private _searchradius = 100;
+private _searchradius = 50;
 
 waitUntil {sleep 1; !isNil "build_confirmed" };
 
 while { true } do {
 	// Man
-	private _near_man = [player nearEntities ["CAManBase", _searchradius], {
- 		(alive _x) && vehicle _x == _x &&
+	private _near_man = (player nearEntities ["CAManBase", _searchradius]) select {
+ 		(alive _x) && isNull objectParent _x &&
 		(_x getVariable ["GRLIB_can_speak", false]) &&
 		isNil {_x getVariable "GRLIB_speak_action"}
-	}] call BIS_fnc_conditionalSelect;
+	};
 
 	{
 		_unit = _x;
