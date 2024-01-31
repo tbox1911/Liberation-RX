@@ -22,21 +22,14 @@ speak_civil_AI = {
 	player globalChat localize "STR_SPEAKMANAGER1";
 	sleep 2;
 	private _reputation = [player] call F_getReput;
-	if (_reputation >= 25) then {
-		private _opfor_list = (units GRLIB_side_enemy) select {alive _x && _x distance2D getPos _unit < 500};
-		if (count _opfor_list > 0) then {
-			_opfor = _opfor_list select 0;
-			_unit globalChat (format [localize "STR_SPEAKMANAGER2", round(_unit distance2D _opfor), round(_unit getDir _opfor)]);
-		};
+	if (_reputation >= 25) exitWith {
+		[_unit] call speak_info_unit
 	};
-	if (isNil "_opfor_list") then {
-		_msg = selectRandom [localize "STR_SPEAKMANAGER3",localize "STR_SPEAKMANAGER4",localize "STR_SPEAKMANAGER5", "Anerríphthô kúbos ?"];
-		_unit globalChat _msg;
-	};
-	if (_reputation <= -25) then {
-		sleep 2;
+	if (_reputation <= -25) exitWith {
 		[_unit] call speak_insult_unit;
 	};
+	_msg = selectRandom [localize "STR_SPEAKMANAGER3",localize "STR_SPEAKMANAGER4",localize "STR_SPEAKMANAGER5", "Anerríphthô kúbos ?"];
+	_unit globalChat _msg;
 };
 
 speak_info_unit = {
@@ -55,7 +48,9 @@ speak_info_unit = {
 	if (count _opfor_list > 0) then {
 		_opfor = _opfor_list select 0;
 		_unit globalChat (format [localize "STR_SPEAKMANAGER2", round(_unit distance2D _opfor), round(_unit getDir _opfor)]);
-	}
+	} else {
+		_unit globalChat "I'm sorry, I have no informations.";
+	};
 };
 
 speak_insult_unit = {
@@ -282,6 +277,8 @@ speak_mission_heal_doctor = {
 	_unit globalChat format ["Please help us to treat %1 sick villagers.", _wnded];
 	sleep 3;
 	_unit globalChat "Bring them all to the nearby Medical tent.";
+	sleep 3;
+	_unit globalChat "Hurry up !";
 };
 
 // Wounded
@@ -291,4 +288,6 @@ speak_mission_heal_wounded = {
 	sleep 3;
 	_unit globalChat "I can follow you a little, I'm weak...";
 	[_unit, player, 20] remoteExec ["a3w_follow_player", 2];
+	sleep 4;
+	_unit globalChat "Where are the Doctors ??";
 };
