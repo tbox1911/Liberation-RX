@@ -2,17 +2,8 @@ waitUntil {sleep 1; !isNil "GRLIB_player_scores"};
 if (!([] call F_getValid)) exitWith {};
 
 private [ "_nextplayer", "_nextplayer_uid", "_newscores", "_knownplayers", "_playerindex", "_score", "_ammo", "_fuel" ];
-private _all_players = [];
-private _old_count = 0;
 
 while { true } do {
-	waitUntil {
-		sleep 1;
-		_all_players = (AllPlayers - (entities "HeadlessClient_F"));
-		(count _all_players != _old_count)
-	};
-	_old_count = count _all_players;
-
 	_knownplayers = [];
 	_newscores = GRLIB_player_scores;
 	{ _knownplayers pushback (_x select 0) } foreach GRLIB_player_scores;
@@ -68,9 +59,9 @@ while { true } do {
 			_score = _nextplayer getVariable ["GREUH_score_count", 0];
 			_nextplayer addScore (_score - score _nextplayer);
 		};
-	} foreach _all_players;
+	} foreach (AllPlayers - (entities "HeadlessClient_F"));
 
 	GRLIB_player_scores = _newscores;
 	publicVariable "GRLIB_player_scores";
-	sleep 1;
+	sleep 5;
 };
