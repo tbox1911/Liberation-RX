@@ -10,6 +10,13 @@ private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
 // first time notice
 if (_score == 0) then {	createDialog "liberation_notice" };
 
+// disable UAVs
+player connectTerminalToUAV objNull;
+private _my_uavs = allUnitsUAV select { [player, _x] call is_owner };
+{
+    player disableUAVConnectability [_x, true];
+} forEach _my_uavs;
+
 // set Rank
 [] call set_rank;
 private _reput = [player] call F_getReputText;
