@@ -1,0 +1,68 @@
+class Header {
+	gameType = CTI;
+	minPlayers = 1;
+	maxPlayers = 10;
+};
+
+author = $STR_MISSION_AUTHOR;
+onLoadName = $STR_MISSION_TITLE;
+briefingName = $STR_MISSION_TITLE;
+onLoadMission = $STR_MISSION_DESCRIPTION;
+overviewText = $STR_MISSION_DESCRIPTION;
+overviewPicture = "res\liberation.paa";
+loadScreen = "res\liberation.paa";
+onLoadIntro = "Welcome on the Liberaton RX planet.";
+
+respawn = 3;
+respawndelay = 5;
+respawnButton = 0;
+respawnOnStart = 0;
+reviveMode = 0;
+disabledAI = true;
+enableDebugConsole = 1;
+allowFunctionsLog = 0;
+forceRotorLibSimulation = 2;
+
+saving = 0;
+briefing = 0;
+joinUnassigned = 0;
+LARs_calculateSideGear = 1;
+cba_settings_hasSettingsFile = 1;
+
+class CfgFunctions {
+	#include "addons\SDB_DALE\CfgFunctions.hpp"
+};
+
+class cfgSounds {
+ 	class parasound {
+ 		name = "parasound";
+ 		sound[] = {"res\c130.ogg", 1, 1};
+		titles[] = {"parasound"};
+ 	};
+};
+
+class CfgDebriefing {
+	class End1
+	{
+		title =	$STR_SORRY;
+		subtitle = "";
+		description = $STR_COMMANDER_NOT_AUTHORIZED;
+		pictureBackground = "";
+	};
+};
+
+#include "GREUH\UI\GREUH_interface.hpp"
+#include "ui\liberation_interface.hpp"
+#include "ui\liberation_notifications.hpp"
+#include "ui\mission_params.hpp"
+#include "ui\liberation_comm.hpp"
+#include "R3F_LOG\desc_include.h"
+#include "addons\MGR\MagRepack_Config.hpp"
+#include "addons\VIRT\virtual_garage.hpp"
+#include "addons\SHOP\traders_shop.hpp"
+#include "addons\SELL\sell_shop.hpp"
+#include "addons\WHS\warehouse.hpp"
+#include "addons\SDB_DALE\RscLoadout.hpp"
+#include "addons\JKB\JKB_dialog.hpp"
+#include "addons\VAM\VAM_GUI_controls.hpp"
+#include "addons\VAM\VAM_GUI_classes.hpp"

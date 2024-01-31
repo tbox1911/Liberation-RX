@@ -1,0 +1,80 @@
+name: Missions build on release tag
+
+# on: workflow_dispatch
+# Controls when the action will run.
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  # push:
+  #   branches: [ master ]
+  # pull_request:
+  #   branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  push:
+      # Sequence of patterns matched against refs/heads
+    # branches:
+    #   - master
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - v2*
+
+# Need permission to write to the Releases tab now.
+permissions:
+  contents: write
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3.1.0
+
+      - name: Install dependencies
+        run: sudo apt-get install -y liblzo2-2 libvorbis0a libvorbisfile3 libvorbisenc2 libogg0 libuchardet0 wget
+
+      # Runs a single command using the runners shell
+      - name: Download Mikero PBO tool
+        run: wget https://mikero.bytex.digital/$(curl -Ls https://mikero.bytex.digital/Downloads | grep api | grep linux | cut -d "/" -f 2,3 | cut -d "\"" -f 1) -O ../depbo-tools.tgz
+
+      # Runs a set of commands using the runners shell
+      - name: Extract PBO tool
+        run: |
+          cd ../
+          tar xvf depbo-tools.tgz
+          mv -v depbo-*/* $HOME/
+
+      - name: Build missions
+        run: |
+          cd build
+          export PATH=$PATH:$HOME/bin
+          export LD_LIBRARY_PATH=$HOME/lib
+          bash build.sh
+
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          name: PBO_files
+          path: |
+            build/*.pbo
+
+      - name: Create a Release
+        uses: ncipollo/release-action@v1.12.0
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          artifacts: "build/*.pbo"
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Delete old releases
+        uses: Varrkan82/delete-older-releases@v0.2.1
+        with:
+          # repo: <owner>/<repoName> # defaults to current repo
+          keep_latest: 4
+          delete_tags: true
+          delete_tag_pattern: "^v2..*"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
