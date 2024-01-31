@@ -92,7 +92,7 @@ while { dialog && alive player } do {
 				if (_timer >= time) exitWith { hintSilent _msg; sleep 2 };
 				if (count GRLIB_virtual_garage >= GRLIB_garage_size) exitWith { hintSilent (format [localize "STR_FULL_GARAGE", GRLIB_garage_size]); sleep 2 };
 				if (damage _vehicle != 0) exitWith { hintSilent "Damaged Vehicles cannot be Parked !"; sleep 2 };
-				if (count (crew _vehicle) > 0 && !([_x, uavs] call F_itemIsInClass)) exitWith { hintSilent localize "STR_CANT_PARKUAV"; sleep 2 };
+				if (count (crew _vehicle) > 0 && !([_vehicle, uavs] call F_itemIsInClass)) exitWith { hintSilent localize "STR_CANT_PARKUAV"; sleep 2 };
 
 				ctrlEnable [ 120, false ];
 
