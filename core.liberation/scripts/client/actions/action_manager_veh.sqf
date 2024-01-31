@@ -8,6 +8,7 @@ private _nearboxes = [];
 private _nearcargo = [];
 private _neardead = [];
 private _nearstatics = [];
+private _nearsign = [];
 
 private _wreck_class = [
 	"Air",
@@ -115,5 +116,17 @@ while { true } do {
 		] call BIS_fnc_holdActionAdd;
 		_unit setVariable ["GRLIB_static_action", true];
 	} forEach _nearstatics;
+
+	// FOB Sign Actions
+	_nearsign = (player nearEntities [FOB_sign, _searchradius]) select { (GRLIB_player_near_lhd || GRLIB_player_fobdistance < GRLIB_fob_range) && isNil {_x getVariable "GRLIB_sign_action"} };
+	{
+		_unit = _x;
+		_unit addAction ["<t color='#FFFFFF'>" + "-= Hall of Fame =-" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Talk_ca.paa'/>",{([5] call F_notice_hof) spawn BIS_fnc_dynamicText},"",989,true,true,"","GRLIB_player_is_menuok",5];
+		_unit addAction ["<t color='#FFFFFF'>" + localize "STR_READ_ME" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Talk_ca.paa'/>",{createDialog "liberation_notice"},"",988,true,true,"","GRLIB_player_is_menuok",5];
+		_unit addAction ["<t color='#FFFFFF'>" + localize "STR_TIPS" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Talk_ca.paa'/>",{createDialog "liberation_tips"},"",987,true,true,"","GRLIB_player_is_menuok",5];
+		_unit addAction ["<t color='#FFFFFF'>" + localize "STR_NEWS" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Talk_ca.paa'/>",{([] call F_notice_news) spawn BIS_fnc_dynamicText},"",986,true,true,"","GRLIB_player_is_menuok",5];
+		_unit addAction ["<t color='#FFFFFF'>" + localize "STR_METEO" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Talk_ca.paa'/>",{([] call F_notice_weather) spawn BIS_fnc_dynamicText},"",985,true,true,"","GRLIB_player_is_menuok",5];
+		_unit setVariable ["GRLIB_sign_action", true];
+	} foreach _nearsign;
 	sleep 3;
 };

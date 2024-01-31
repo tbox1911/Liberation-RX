@@ -17,16 +17,5 @@ while { true } do {
 	GRLIB_player_near_base = (GRLIB_player_fobdistance < GRLIB_ActionDist_15 || GRLIB_player_near_lhd);
 	GRLIB_player_near_spawn = (GRLIB_player_near_base || _near_spawn || _near_spawnt);
 	GRLIB_player_owner_fob = (PAR_Grp_ID == ([getPosATL player] call F_getFobOwner));
-
-	// FOB Sign Actions
-	if ( (GRLIB_player_near_lhd || GRLIB_player_fobdistance < GRLIB_fob_range) && cursorObject isKindof FOB_sign) then {
-		if (count (actionIDs cursorObject) == 0) then {
-			cursorObject addAction ["<t color='#FFFFFF'>" + "-= Hall of Fame =-" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Talk_ca.paa'/>",{([5] call F_notice_hof) spawn BIS_fnc_dynamicText},"",989,true,true,"","GRLIB_player_is_menuok",5];
-			cursorObject addAction ["<t color='#FFFFFF'>" + localize "STR_READ_ME" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Talk_ca.paa'/>",{createDialog "liberation_notice"},"",988,true,true,"","GRLIB_player_is_menuok",5];
-			cursorObject addAction ["<t color='#FFFFFF'>" + localize "STR_TIPS" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Talk_ca.paa'/>",{createDialog "liberation_tips"},"",987,true,true,"","GRLIB_player_is_menuok",5];
-			cursorObject addAction ["<t color='#FFFFFF'>" + localize "STR_NEWS" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Talk_ca.paa'/>",{([] call F_notice_news) spawn BIS_fnc_dynamicText},"",986,true,true,"","GRLIB_player_is_menuok",5];
-			cursorObject addAction ["<t color='#FFFFFF'>" + localize "STR_METEO" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Talk_ca.paa'/>",{([] call F_notice_weather) spawn BIS_fnc_dynamicText},"",985,true,true,"","GRLIB_player_is_menuok",5];
-		};
-	};
 	sleep 1;
 };
