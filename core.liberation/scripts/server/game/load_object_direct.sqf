@@ -19,9 +19,9 @@ private _object_created = [];
 	};
 
 	// UAVs
-	if ([_x, uavs] call F_itemIsInClass) then {
-		[ _x, GRLIB_side_friendly] call F_forceCrew;
-        _x setVariable ["GRLIB_vehicle_manned", true, true];
+	if ([_object, uavs] call F_itemIsInClass) then {
+		[_object, GRLIB_side_friendly] call F_forceCrew;
+        _object setVariable ["GRLIB_vehicle_manned", true, true];
 	};
 
 	// MPKilled
