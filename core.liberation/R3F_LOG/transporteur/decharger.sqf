@@ -44,10 +44,7 @@ else
 		// Recherche d'un objet du type demand�
 		_objet_a_decharger = objNull;
 		{
-			if (typeOf _x == _type_objet_a_decharger) exitWith
-			{
-				_objet_a_decharger = _x;
-			};
+			if (typeOf _x == _type_objet_a_decharger) exitWith { _objet_a_decharger = _x };
 		} forEach _objets_charges;
 
 		// On m�morise sur le r�seau le nouveau contenu du transporteur (c�d avec cet objet en moins)
@@ -72,6 +69,8 @@ else
 			if (!(_objet_a_decharger isKindOf "AllVehicles") || _est_deplacable) then
 			{
 				R3F_LOG_mutex_local_verrou = false;
+				_objet_a_decharger enableSimulationGlobal true;
+				if ([_objet_a_decharger, uavs] call F_itemIsInClass) then { player enableUAVConnectability [_objet_a_decharger, true] };
 				[_objet_a_decharger, player, 0, true] spawn R3F_LOG_FNCT_objet_deplacer;
 			}
 			else
@@ -95,9 +94,10 @@ else
 					] call R3F_LOG_FNCT_3D_tirer_position_degagee_sol;
 				};
 
-				if (count _pos_degagee > 0) then
-				{
+				if (count _pos_degagee > 0) then {
+					_objet_a_decharger enableSimulationGlobal true;
 					detach _objet_a_decharger;
+					if ([_objet_a_decharger, uavs] call F_itemIsInClass) then { player enableUAVConnectability [_objet_a_decharger, true] };
 					_objet_a_decharger setPos _pos_degagee;
 					_objet_a_decharger setVectorDirAndUp [[-cos getDir _transporteur, sin getDir _transporteur, 0] vectorCrossProduct surfaceNormal _pos_degagee, surfaceNormal _pos_degagee];
 					_objet_a_decharger setVelocity [0, 0, 0];
@@ -105,15 +105,12 @@ else
 					sleep 0.4; // Car la nouvelle position n'est pas prise en compte instantann�ment
 
 					// Si l'objet a �t� cr�� assez loin, on indique sa position relative
-					if (_objet_a_decharger distance _transporteur > 40) then
-					{
+					if (_objet_a_decharger distance _transporteur > 40) then {
 						systemChat format [STR_R3F_LOG_action_decharger_fait + " (%2)",
 							[_objet_a_decharger] call F_getLRXName,
 							format ["%1m %2deg", round (_objet_a_decharger distance _transporteur), round ([_transporteur, _objet_a_decharger] call BIS_fnc_dirTo)]
 						];
-					}
-					else
-					{
+					} else {
 						systemChat format [STR_R3F_LOG_action_decharger_fait, [_objet_a_decharger] call F_getLRXName];
 					};
 					R3F_LOG_mutex_local_verrou = false;

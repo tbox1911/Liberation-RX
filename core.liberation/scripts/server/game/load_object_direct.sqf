@@ -18,6 +18,12 @@ private _object_created = [];
 		[_object, "add"] remoteExec ["addel_beacon_remote_call", 2];
 	};
 
+	// UAVs
+	if ([_x, uavs] call F_itemIsInClass) then {
+		[ _x, GRLIB_side_friendly] call F_forceCrew;
+        _x setVariable ["GRLIB_vehicle_manned", true, true];
+	};
+
 	// MPKilled
 	_object addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 
