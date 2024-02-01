@@ -7,6 +7,7 @@ waitUntil {sleep 1; !isNil "global_locked_group"};
 global_new_leader = [];
 
 while { true } do {
+	waitUntil {sleep 1; 5565 in allDisplays};
 	groups_list = [];
 	{ 
 		if (isplayer leader _x) then { groups_list pushBack _x }; 

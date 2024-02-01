@@ -16,7 +16,7 @@ while { true } do {
 	waitUntil { sleep 1; show_teammates };
 	disableMapIndicators [false,true,false,false];
 	while { show_teammates } do {
-
+		waitUntil {sleep 1; GRLIB_MapOpen };
 		{
 			private _nextmarker = _x select 0;
 			private _nextobj = _x select 1;
@@ -175,4 +175,5 @@ while { true } do {
 			_nextunit setVariable [ "spotmarker", "" ];
 		};
 	} forEach ((units GRLIB_side_friendly) + vehicles);
+	sleep 5;
 };

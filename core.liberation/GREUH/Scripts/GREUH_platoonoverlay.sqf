@@ -13,9 +13,7 @@ waitUntil {sleep 1; !isNil "GRLIB_overlay_groups" };
 waitUntil {sleep 1; !isNil "GRLIB_nametag_units" };
 
 ["platoon_overlay", "onEachFrame", {
-
 	if ( show_platoon ) then {
-
 		{
 			if ( count units _x > 0 ) then {
 				_totalx = 0;
@@ -119,5 +117,4 @@ waitUntil {sleep 1; !isNil "GRLIB_nametag_units" };
 
 		} foreach GRLIB_nametag_units;
 	};
-
 }] call BIS_fnc_addStackedEventHandler;
