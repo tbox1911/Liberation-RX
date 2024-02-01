@@ -20,7 +20,7 @@ _setupObjects =
 	};	
 
 	private _convoy_destinations = [];
-	private _sector_list = (blufor_sectors - sectors_tower);
+	private _sector_list = [(blufor_sectors - sectors_tower)] call checkSpawn;
 	private _max_try = 20;
 	private _max_waypoints = 3;
 

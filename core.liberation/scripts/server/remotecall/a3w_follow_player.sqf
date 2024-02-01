@@ -30,7 +30,7 @@ _unit playMoveNow _anim;
 _unit setDamage 0.50;
 _unit setVariable ["GRLIB_can_speak", true, true];
 
-if (count (_unit nearobjects ["Land_MedicalTent_01_white_IDAP_open_F", 10]) > 0) then {
+if (count (_unit nearobjects ["Land_MedicalTent_01_white_IDAP_open_F", 12]) > 0) then {
     _unit setDamage 0;
     _unit setVariable ["GRLIB_can_speak", false, true];
     _unit setVariable ["GRLIB_A3W_Mission_HC2", nil, true];
