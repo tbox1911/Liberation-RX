@@ -3,8 +3,9 @@
 private ["_unit", "_wnded_list", "_id1", "_id2", "_id3"];
 
 while {true} do {
-    _wnded_list = (units GRLIB_side_friendly) select {
-        (_x distance2D player) < 30 &&
+    _wnded_list = (getPos player) nearEntities ["CAManBase", 30];
+    _wnded_list = _wnded_list select {
+        side _x == GRLIB_side_civilian &&
         (_x getVariable ["PAR_wounded", false]) &&
         isNull objectParent _x &&
         isNil {_x getVariable 'PAR_isMenuActive'} &&

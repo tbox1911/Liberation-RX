@@ -1,4 +1,4 @@
-private ["_msg", "_all_sectors", "_sector", "_opf", "_res", "_default"];
+private ["_msg", "_all_sectors", "_sector", "_list", "_opf", "_res", "_default"];
 private	_cleanup_counter = 0;
 
 while { true } do {
@@ -19,7 +19,8 @@ while { true } do {
 
 		// Others
 		if ( _default ) then {
-			_opf = (units GRLIB_side_enemy) select {(alive _x) && (_x distance2D (markerPos  _sector) < GRLIB_capture_size)};
+			_list = (markerPos  _sector) nearEntities ["CAManBase", GRLIB_capture_size];
+			_opf = _list select { side _x == GRLIB_side_enemy };
 			if (count _opf > 0) then {_msg = format ["Status:\nEnemy squad: %1", count _opf]};
 		};
 	};
@@ -27,7 +28,8 @@ while { true } do {
 	// Special Delivery
 	if ( !isNil "GRLIB_A3W_Mission_SD" ) then {
 		_res = (GRLIB_A3W_Mission_SD select 1) select 3;
-		_opf = (units GRLIB_side_enemy) select {(alive _x) && (_x distance2D _res < GRLIB_capture_size)};
+		_list = _res nearEntities ["CAManBase", GRLIB_capture_size];
+		_opf = _list select { side _x == GRLIB_side_enemy };
 		if (count _opf > 0) then {_msg = format ["Status:\nEnemy squad: %1", count _opf]};
 	};
 
