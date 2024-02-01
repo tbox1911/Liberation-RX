@@ -2,19 +2,12 @@
 
 private ["_unit", "_wnded_list", "_id1", "_id2", "_id3"];
 
-private _checkAction = {
-    params ["_unit"];
-    private _act = _unit getVariable ["PAR_isMenuActive", []];
-    private _cnt = { _x in _act } count (actionIDs _unit);
-    (_cnt < 3);
-};
-
 while {true} do {
     _wnded_list = (units GRLIB_side_friendly) select {
         (_x distance2D player) < 30 &&
         (_x getVariable ["PAR_wounded", false]) &&
-        ([_x] call _checkAction) &&
         isNull objectParent _x &&
+        isNil {_x getVariable 'PAR_isMenuActive'} &&
         isNil {_x getVariable 'PAR_busy'} &&
         isNil {_x getVariable 'PAR_healed'}
     };
@@ -75,7 +68,6 @@ while {true} do {
             _unit setVariable ["PAR_isMenuActive", [_id1, _id2, _id3]];
             sleep 0.1;
         } forEach  _wnded_list;
-
     };
 
     sleep 2;
