@@ -43,7 +43,6 @@ if (_group_name != "") then {
 [] call compile preprocessFileLineNumbers "GREUH\GREUH_config.sqf";
 [] call compile preprocessFileLineNumbers "GREUH\scripts\GREUH_version.sqf";
 [] spawn compile preprocessFileLineNumbers "GREUH\scripts\GREUH_revive_camera.sqf";
-[] spawn compile preprocessFileLineNumbers "GREUH\scripts\GREUH_cache_units.sqf";
 [] spawn compile preprocessFileLineNumbers "GREUH\scripts\GREUH_platoonoverlay.sqf";
 [] spawn compile preprocessFileLineNumbers "GREUH\scripts\GREUH_playermarkers.sqf";
 
