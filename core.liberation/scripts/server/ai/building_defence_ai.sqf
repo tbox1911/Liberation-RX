@@ -11,7 +11,7 @@ private _hostilecount = 0;
 
 sleep (10 + floor random 50);
 while { _move_is_disabled && alive _unit } do {
-	_hostilecount = { alive _x && (_x distance2D _unit) < 50 } count (units GRLIB_side_friendly);
+	_hostilecount = count (((getPos _unit) nearEntities ["CAManBase", 50]) select { (side _x == GRLIB_side_friendly) });
 
 	if ( _hostilecount > 0 || ( damage _unit > 0.25 ) || _sector in blufor_sectors ) then {
 		_resume_movement = true;

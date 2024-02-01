@@ -12,14 +12,18 @@ while { true } do {
 		// Resistance
 		if ( _sector find "Resistance" > 0 && !isNil "GRLIB_A3W_Mission_MR") then {
 			{_opf = _opf + count (units _x select {alive _x})} forEach GRLIB_A3W_Mission_MR;
-			_res = count (units GRLIB_side_friendly select { alive _x && (_x distance2D (markerPos _sector) <= GRLIB_capture_size) && (_x getVariable ["GRLIB_A3W_Mission_MR1", false])});
-			_msg = format ["Status:\nResistance: %1\nEnemy squad: %2", _res, _opf];
+			_list = (markerPos _sector) nearEntities ["CAManBase", GRLIB_capture_size];
+			_res = _list select {
+				side _x == GRLIB_side_friendly &&
+				(_x getVariable ["GRLIB_A3W_Mission_MR1", false])
+			};
+			_msg = format ["Status:\nResistance: %1\nEnemy squad: %2", count _res, _opf];
 			_default = false;
 		};
 
 		// Others
 		if ( _default ) then {
-			_list = (markerPos  _sector) nearEntities ["CAManBase", GRLIB_capture_size];
+			_list = (markerPos _sector) nearEntities ["CAManBase", GRLIB_capture_size];
 			_opf = _list select { side _x == GRLIB_side_enemy };
 			if (count _opf > 0) then {_msg = format ["Status:\nEnemy squad: %1", count _opf]};
 		};

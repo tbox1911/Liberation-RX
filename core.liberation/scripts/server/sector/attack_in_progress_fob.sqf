@@ -68,7 +68,8 @@ if ( _ownership == GRLIB_side_enemy ) then {
 			[_fobpos] call destroy_fob;
 		} else {
 			[ _fobpos , 3 ] remoteExec ["remote_call_fob", 0];
-			_enemy_left = [(units GRLIB_side_enemy), {(alive _x) && (vehicle _x == _x) && ((_fobpos distance2D _x) < GRLIB_capture_size * 0.8)}] call BIS_fnc_conditionalSelect;
+			private _enemy_left = (_fobpos nearEntities ["CAManBase", GRLIB_capture_size * 0.8]);
+			_enemy_left = _enemy_left select { (side _x == GRLIB_side_enemy) && (isNull objectParent _x) };
 			{
 				if ( _max_prisonners > 0 && ((random 100) < GRLIB_surrender_chance) ) then {
 					[_x] spawn prisoner_ai;
