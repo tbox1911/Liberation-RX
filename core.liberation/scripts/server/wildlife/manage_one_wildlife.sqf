@@ -5,6 +5,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	sleep (30 + floor(random 30));
 
 	_unit = selectRandom (AllPlayers - (entities "HeadlessClient_F"));
+	if (isNil "_unit") exitWith {};
 	_spawn_life = (
 		diag_fps > 35 && alive _unit && isNull objectParent _unit &&
 		!([_unit, "LHD", GRLIB_sector_size] call F_check_near) &&
