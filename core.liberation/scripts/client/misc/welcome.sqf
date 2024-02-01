@@ -17,6 +17,23 @@ private _my_uavs = allUnitsUAV select { [player, _x] call is_owner };
     player disableUAVConnectability [_x, true];
 } forEach _my_uavs;
 
+// HCI Command IA
+hcRemoveAllGroups player;
+if (player == ([] call F_getCommander)) then {
+	private _my_veh = vehicles select {
+		!([_x, "LHD", GRLIB_sector_size] call F_check_near) &&
+		[player, _x] call is_owner &&
+		_x getVariable ["GRLIB_vehicle_manned", false] &&
+		count (crew _x) > 0
+	};
+	{ player hcSetGroup [group _x] } foreach _my_veh;
+};
+
+private _my_squad = player getVariable ["my_squad", nil];
+if (!isNil "_my_squad") then { player hcSetGroup [_my_squad] };
+private _my_veh = vehicles select {([_x, uavs] call F_itemIsInClass) && [player, _x] call is_owner};
+{player hcSetGroup [group _x]} forEach _my_veh;
+
 // set Rank
 [] call set_rank;
 private _reput = [player] call F_getReputText;
@@ -32,3 +49,5 @@ private _msg = format [
     name player, _rank, _score, _ammo_collected, _color, _text
 ];
 [_msg, 0, 0, 10, 0, 0, 90] spawn BIS_fnc_dynamicText;
+
+[player] remoteExec ["load_context_remote_call", 2];

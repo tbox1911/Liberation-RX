@@ -14,8 +14,6 @@ while {	(player getVariable ["GRLIB_score_set", 0] == 0) } do {
 };
 titleText ["", "BLACK FADED", 100];
 
-[player] remoteExec ["load_context_remote_call", 2];
-
 if ( isNil "cinematic_camera_started" ) then { cinematic_camera_started = false };
 
 [] spawn cinematic_camera;
