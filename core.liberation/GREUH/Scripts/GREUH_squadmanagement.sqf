@@ -7,11 +7,11 @@ waitUntil {sleep 1; !isNil "global_locked_group"};
 global_new_leader = [];
 
 while { true } do {
-	waitUntil {sleep 1; 5565 in allDisplays};
 	groups_list = [];
 	{ 
 		if (isplayer leader _x) then { groups_list pushBack _x }; 
 	} foreach (groups GRLIB_side_friendly);
+	waitUntil {sleep 1; !isNull (findDisplay 5565)};
 
 	if(lbCurSel 515 != -1) then {
 		_grp = objNull;
@@ -135,6 +135,6 @@ while { true } do {
 		};
 	};
 
-	sleep 3;
+	sleep 1;
 };
 
