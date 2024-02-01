@@ -97,7 +97,7 @@ if ( _random_rotate ) then {
 if ( _side == GRLIB_side_civilian ) then {
 	_vehicle addEventHandler ["Fuel", { if (!(_this select 1)) then {(_this select 0) setFuel 1}}];
 	_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_civilian }];
-	//[_vehicle, "lock", "server"] call F_vehicleLock;
+	[_vehicle, "lock", "public"] call F_vehicleLock;
 };
 
 if ( _side == GRLIB_side_friendly ) then {

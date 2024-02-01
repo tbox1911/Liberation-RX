@@ -67,7 +67,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 		};
 
 		// Cleanup
-		[_civ_veh, true, true] call clean_vehicle;
+		[_civ_veh] call clean_vehicle;
 		{ deleteVehicle _x } forEach (units _civ_grp);
 		deleteGroup _civ_grp;	
 	};

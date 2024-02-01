@@ -6,11 +6,13 @@ if !(_vehicle isKindOf "AllVehicles") exitWith {};
 
 private _towed = false;
 private _owned = false;
+private _maned = false;
 if (!_force) then {
 	_towed = !(isNull (_vehicle getVariable ["R3F_LOG_est_transporte_par", objNull]));
 	_owned = !([_vehicle] call is_abandoned);
+	_maned = ({side group _x == GRLIB_side_friendly} count (crew _vehicle) > 0);
 };
-if (_towed || _owned) exitWith { false };
+if (_towed || _owned || _maned) exitWith { false };
 
 diag_log format [ "Cleanup vehicle %1 at %2", typeOf _vehicle, time ];
 
