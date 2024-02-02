@@ -63,5 +63,5 @@ while { true } do {
 
 	GRLIB_player_scores = _newscores;
 	publicVariable "GRLIB_player_scores";
-	sleep 5;
+	sleep 4;
 };

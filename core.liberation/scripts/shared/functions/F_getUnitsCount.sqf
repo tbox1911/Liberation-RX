@@ -1,21 +1,20 @@
 params [ "_position", "_distance", "_side" ];
 
-private _list = (_position nearEntities ["CAManBase", _distance]);
-
+private _count = 0;
 if (_side == GRLIB_side_friendly) then {
-   _list = _list select {
-        (side _x == GRLIB_side_friendly || side _x == GRLIB_side_civilian) &&
+    _count = {
+        (_x distance2D _position < _distance) &&
         ((getPosATL _x) select 2 < 150) && (speed (vehicle _x) <= 80) &&
-        (_x getVariable ["PAR_Grp_ID", ""] != "")
-    };
+        !(isNil {_x getVariable "PAR_Grp_ID"})
+    } count (units GRLIB_side_friendly);
 };
 
 if (_side == GRLIB_side_enemy) then {
-    _list = _list select {
-        (side _x == GRLIB_side_enemy) &&
+    _count = {
+        (_x distance2D _position < _distance) &&
         ((getPosATL _x) select 2 < 150) && (speed (vehicle _x) <= 80) &&
         !(_x getVariable ["GRLIB_mission_AI", false])
-    };
+    } count (units GRLIB_side_enemy);    
 };
 
-(count _list);
+_count;

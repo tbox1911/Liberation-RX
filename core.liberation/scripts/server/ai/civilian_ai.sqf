@@ -180,7 +180,7 @@ while {alive _unit && _continue} do {
 
                     [_unit] spawn {
                         params ["_unit"];
-                        waitUntil {sleep 5; !(alive _unit) || ([_unit, GRLIB_capture_size, GRLIB_side_enemy] call F_getUnitsCount == 0) };
+                        waitUntil {sleep 10; !(alive _unit) || ([_unit, GRLIB_capture_size, GRLIB_side_enemy] call F_getUnitsCount == 0) };
                         deleteVehicle _unit;
                     };
                     _continue = false;
@@ -239,7 +239,7 @@ while {alive _unit && _continue} do {
 
                 [_unit] spawn {
                     params ["_unit"];
-                    waitUntil {sleep 5; !(alive _unit) || ([_unit, GRLIB_capture_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+                    waitUntil {sleep 10; !(alive _unit) || ([_unit, GRLIB_capture_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
                     deleteVehicle _unit;
                 };
                 _continue = false;
