@@ -14,9 +14,9 @@ if ( GRLIB_fob_type == 2 ) then {
 
 while { true } do {
 
-	_foblist = [entities _fob_type, {[_x] call is_public}] call BIS_fnc_conditionalSelect;
+	_foblist = {[_x] call is_public} count (entities _fob_type);
 
-	if ( count _foblist == 0 && count GRLIB_all_fobs == 0 ) then {
+	if ( _foblist == 0 && count GRLIB_all_fobs == 0 ) then {
 		_fobbox = _fob_type createVehicle (getPosATL base_boxspawn);
 		_fobbox allowdamage false;
 		_fobbox setPosATL (getPosATL base_boxspawn);
