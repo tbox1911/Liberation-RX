@@ -41,7 +41,6 @@ while { true } do {
 				// detect enemy
 				private _all_men = (getPos player) nearEntities ["CAManBase", 300];
 				private _enemy_lst = _all_men select {
-					alive _x && 
 					(side _x == GRLIB_side_enemy || (_x getVariable ["GRLIB_is_prisoner", false]) || (_x getVariable ["GRLIB_A3W_Mission_HC2", false]))
 				};
 

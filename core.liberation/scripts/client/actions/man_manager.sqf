@@ -7,7 +7,7 @@ waitUntil {sleep 1; !isNil "build_confirmed" };
 while { true } do {
 	// Man
 	private _near_man = (player nearEntities ["CAManBase", _searchradius]) select {
- 		(alive _x) && isNull objectParent _x &&
+ 		isNull objectParent _x &&
 		(_x getVariable ["GRLIB_can_speak", false]) &&
 		isNil {_x getVariable "GRLIB_speak_action"}
 	};
