@@ -14,19 +14,15 @@ if (_name in ["HC1","HC2","HC3" ]) exitWith {
 diag_log format ["--- LRX Cleanup player %1 (%2)", _name, _uid];
 
 // Untow vehicle near FOB
-private _towveh = [vehicles, {
-	_x getVariable ["GRLIB_vehicle_owner", ""] == _uid &&
-	!isNull (_x getVariable ["R3F_LOG_remorque", objNull]) &&
-	([_x, "FOB", GRLIB_sector_size] call F_check_near)
-}] call BIS_fnc_conditionalSelect;
-{ [_x] call untow_vehicle } forEach _towveh;
-
 // Abandon Car too Far
-private _cleanveh = [vehicles, {
-	_x getVariable ["GRLIB_vehicle_owner", ""] == _uid &&
-	!([_x, "FOB", GRLIB_fob_range] call F_check_near)
-}] call BIS_fnc_conditionalSelect;
-{ [_x, "abandon"] call F_vehicleLock } forEach _cleanveh;
+private _my_veh = vehicles select { _x getVariable ["GRLIB_vehicle_owner", ""] == _uid };
+{ 
+	if ([_x, "FOB", GRLIB_fob_range] call F_check_near) then {
+		 [_x] spawn untow_vehicle;
+	} else {
+		[_x, "abandon"] spawn F_vehicleLock;
+	};
+} forEach _my_veh;
 
 // Remove Dog
 private _my_dog = _unit getVariable ["my_dog", nil];
