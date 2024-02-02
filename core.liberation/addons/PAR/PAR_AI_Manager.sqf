@@ -62,8 +62,8 @@ while {true} do {
             };
 
             // AI stop doing shit !
-            private _leader = (leader (group player) == player);
-            if (lifeState player == 'INCAPACITATED' && !_leader) then {
+            private _not_leader = !(leader (group player) == player);
+            if (lifeState player == 'INCAPACITATED' && _not_leader) then {
                 if (_unit distance2D player <= 500) then {
                     unassignVehicle _unit;
                     [_unit] orderGetIn false;
