@@ -72,7 +72,7 @@ _failedExec = {
 _successExec = {
 	sleep 3;
 	// Mission completed
-	private _winner = ([_man1, 10] call F_getNearbyPlayers) select 0;
+	private _winner = ([_man1, 50] call F_getNearbyPlayers) select 0;
 	if (!isNil "_winner") then { [_winner, 5] call F_addReput };
 	_successHintMessage = ["STR_FUELDELI_MESSAGE3", sideMissionColor];
 	deleteVehicle _man1;
