@@ -86,6 +86,7 @@ while { alive _vehicle && !(isNull _driver)} do {
                         [_driver, (_incd+1), _winner] spawn speak_manager_remote_call;
                         [_winner, _bonus] call F_addScore;
                         [_winner, 5] call F_addReput;
+                        sleep 5;
                     } else {
                         [_driver, (_incd+1), _winner] remoteExec ["speak_manager_remote_call", 2];
                         [_winner, _bonus] remoteExec ["F_addScore", 2];
