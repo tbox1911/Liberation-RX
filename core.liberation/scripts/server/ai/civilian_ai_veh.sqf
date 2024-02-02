@@ -40,7 +40,7 @@ while { alive _vehicle && !(isNull _driver)} do {
         _vehicle allowCrewInImmobile [true, true];
         doStop _driver;
         sleep 3;
-        _driver stop true;
+
         _vehicle engineOn false;
         _marker = createMarkerLocal [format ["civ_ai_veh_%1", (_vehicle call BIS_fnc_netId)], getPosATL _vehicle];
         _marker setMarkerTypeLocal "loc_car";
@@ -103,7 +103,7 @@ while { alive _vehicle && !(isNull _driver)} do {
             _event_stared = false;
             deleteVehicle _smoke;
             deleteMarker _marker;
-            _driver stop false;
+
             _trigger = (time + _delay);
         };
     };

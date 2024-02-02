@@ -12,13 +12,14 @@ private _max_try = 100;
 private _behaviour = "SAFE";
 private _combatMode = "BLUE";
 private _speed = "LIMITED";
+
 if (side _grp == GRLIB_side_enemy) then {
 	_behaviour = "AWARE";
 	_combatMode = "WHITE";
 	_speed = "NORMAL";
 };
 _grp setCombatMode _combatMode;
-_grp setBehaviour _behaviour;
+_grp setBehaviourStrong  _behaviour;
 _grp setSpeedMode _speed;
 
 if (isNull _civ_veh) then {
@@ -36,6 +37,11 @@ if (isNull _civ_veh) then {
 		_max_try = _max_try - 1;
 	};
 } else {
+	if (side _grp == GRLIB_side_civilian) then {
+		_behaviour = "CARELESS";
+		_grp setBehaviourStrong _behaviour;	
+	};
+
 	private _pos = getPosATL _civ_veh;
 	private _radius = GRLIB_spawn_max;
 
