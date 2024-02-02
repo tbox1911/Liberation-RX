@@ -7,7 +7,7 @@ if (count _planeType == 0) exitWith { objNull };
 
 private _grp = createGroup [_side, true];
 _grp setFormation "WEDGE";
-_grp setBehaviour "COMBAT";
+_grp setBehaviourStrong  "COMBAT";
 _grp setCombatMode "RED";
 _grp setSpeedMode "FULL";
 

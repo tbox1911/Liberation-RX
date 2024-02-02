@@ -32,8 +32,6 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 			_civ_grp = group (driver _civ_veh);
 			[_civ_grp, _sectorpos] spawn add_civ_waypoints;
 			[_civ_veh] spawn civilian_ai_veh;
-			_civ_grp setCombatMode "BLUE";
-			_civ_grp setBehaviour "CARELESS";
 		} else {
 			private _rndciv = [1,1,1,1,2,3];
 			_civ_grp = [_sectorpos, (selectRandom _rndciv)] call F_spawnCivilians;

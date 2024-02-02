@@ -46,7 +46,7 @@ AR_Advanced_Rappelling_Install = {
 				_gameLogicLeader = _heliGroup createUnit ["LOGIC", ASLToAGL _positionASL, [], 0, ""];
 				_heliGroup selectLeader _gameLogicLeader;
 
-				_heliGroup setBehaviour "Careless";
+				_heliGroup setBehaviourStrong  "Careless";
 				_heliGroup setCombatMode "Blue";
 				_heliGroup setFormation "File";
 				
@@ -116,7 +116,7 @@ AR_Advanced_Rappelling_Install = {
 				
 				deleteVehicle _gameLogicLeader;
 				
-				_heliGroup setBehaviour _heliGroupOriginalBehaviour;
+				_heliGroup setBehaviourStrong  _heliGroupOriginalBehaviour;
 				_heliGroup setCombatMode _heliGroupOriginalCombatMode;
 				_heliGroup setFormation _heliGroupOriginalFormation;
 

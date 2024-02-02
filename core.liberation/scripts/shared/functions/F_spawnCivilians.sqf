@@ -32,7 +32,7 @@ private _grp = createGroup [GRLIB_side_civilian, true];
 } foreach _class_civ;
 
 _grp setCombatMode "BLUE";
-_grp setBehaviour "SAFE";
+_grp setBehaviourStrong  "SAFE";
 
 [_grp, _sectorpos] spawn add_civ_waypoints;
 [_grp, _sectorpos] spawn civilian_ai;

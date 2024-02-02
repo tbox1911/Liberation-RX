@@ -63,7 +63,7 @@ if (count (crew _vehicle) == 0) exitWith { diag_log format ["--- LRX Error: Taxi
  } foreach (units _air_grp);
 _vehicle setVariable ["GRLIB_vehicle_group", _air_grp];
 
-_air_grp setBehaviour "CARELESS";
+_air_grp setBehaviourStrong  "CARELESS";
 _air_grp setCombatMode "GREEN";
 _air_grp setSpeedMode "FULL";
 

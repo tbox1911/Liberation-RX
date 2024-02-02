@@ -33,19 +33,6 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 		if ( floor(random 100) > 50 && count militia_vehicles > 0 ) then {
 			_opfor_veh = [_sector_pos, (selectRandom militia_vehicles), false, false, GRLIB_side_enemy] call F_libSpawnVehicle;
 			_opfor_grp = group (driver _opfor_veh);
-			_opfor_veh addEventHandler ["Fuel", { if (!(_this select 1)) then {(_this select 0) setFuel 1}}];
-			[_opfor_veh] spawn {
-				params ["_vehicle"];
-				if (typeOf _vehicle isKindOf "Air") exitWith {};
-				while { alive _vehicle } do {
-					// Correct static position
-					if ((vectorUp _vehicle) select 2 < 0.70) then {
-						_vehicle setPos [(getposATL _vehicle) select 0, (getposATL _vehicle) select 1, 0.5];
-						_vehicle setVectorUp (surfaceNormal getPos _vehicle);
-					};
-					sleep 5;
-				};
-			};
 		} else {
 			_opfor_grp = [_spawnsector, "militia", ([] call F_getAdaptiveSquadComp)] call F_spawnRegularSquad;
 		};
@@ -71,7 +58,6 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 				GRLIB_global_stop == 1 ||
 				(diag_fps < 25) ||
 				({alive _x} count (units _opfor_grp) == 0) ||
-				//(round (speed (leader _opfor_grp)) == 0) ||
 				([(leader _opfor_grp), GRLIB_spawn_max, GRLIB_side_friendly] call F_getUnitsCount == 0) ||
 				(time > _unit_ttl)
 			)

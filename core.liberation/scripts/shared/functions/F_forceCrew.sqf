@@ -42,5 +42,5 @@ sleep 0.2;
 
 (group _vehicle) addVehicle _vehicle;
 _grp setCombatMode "WHITE";
-_grp setBehaviour "AWARE";
+_grp setBehaviourStrong  "AWARE";
 (crew _vehicle);

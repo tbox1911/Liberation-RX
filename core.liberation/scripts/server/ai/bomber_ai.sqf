@@ -33,7 +33,7 @@ private _grp = createGroup [GRLIB_side_civilian, true];
 [_grp] call F_deleteWaypoints;
 _unit setVariable ["GRLIB_is_kamikaze", true, true];
 _grp setCombatMode "BLUE";
-_grp setBehaviour "SAFE";
+_grp setBehaviourStrong  "SAFE";
 
 private ["_targets", "_target", "_expl1","_expl2","_expl3"];
 while {alive _unit} do {

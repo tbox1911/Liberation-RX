@@ -6,7 +6,7 @@ _medic setCaptive true;
 
 private _grpmedic = createGroup [GRLIB_side_civilian, true];
 [_medic] joinSilent _grpmedic;
-_grpmedic setBehaviour "AWARE";
+_grpmedic setBehaviourStrong  "AWARE";
 
 unassignVehicle _medic;
 if (!isnull objectParent _medic) then {
