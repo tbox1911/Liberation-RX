@@ -1,6 +1,5 @@
-params [ "_sector", "_status", ["_sector_timer", 0] ];
-
 if (isDedicated || (!hasInterface && !isServer)) exitWith {};
+params [ "_sector", "_status", ["_sector_timer", 0] ];
 
 private _marker_pos = markerpos _sector;
 private _location_name = [_marker_pos] call F_getLocationName;

@@ -1,6 +1,7 @@
 if (!isServer && hasInterface) exitWith {};
-params [ "_intel", "_unit_owner" ];
-if ( isNil "_intel" ) exitWith {};
+params ["_intel", "_unit_owner"];
+
+if (isNil "_intel") exitWith {};
 
 private _found = 0;
 private _rwd_xp = 0;

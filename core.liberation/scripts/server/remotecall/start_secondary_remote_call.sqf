@@ -1,6 +1,6 @@
+if (!isServer && hasInterface) exitWith {};
 params [ "_mission_index", ["_mission_free", false], "_caller_id"];
 
-if (!isServer && hasInterface) exitWith {};
 if ( GRLIB_secondary_starting ) exitWith { diag_log "-- LRX Error: Multiple calls to start secondary mission !!" };
 
 GRLIB_secondary_starting = true; publicVariable "GRLIB_secondary_starting";

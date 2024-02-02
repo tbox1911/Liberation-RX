@@ -1,3 +1,4 @@
+if (!isServer && hasInterface) exitWith {};
 params ["_pos", "_sound"];
 
 {

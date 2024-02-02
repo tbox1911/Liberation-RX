@@ -1,5 +1,6 @@
 if (!isServer && hasInterface) exitWith {};
 params ["_fob_pos", "_owner"];
+
 [_fob_pos, "Land_Carrier_01_blast_deflector_up_sound"] spawn sound_range_remote_call;
 
 private _outpost = nearestObjects [_fob_pos, [FOB_outpost], 30] select 0;

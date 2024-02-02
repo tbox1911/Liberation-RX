@@ -1,4 +1,6 @@
+if (isDedicated || (!hasInterface && !isServer)) exitWith {};
 params [ "_unit", "_cmd" ];
+
 if !(local _unit) exitWith {};
 
 private _anim = "";

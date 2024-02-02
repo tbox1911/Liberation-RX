@@ -1,6 +1,5 @@
-params [ "_fobpos", "_status", ["_sector_timer", 0] ];
-
 if (isDedicated || (!hasInterface && !isServer)) exitWith {};
+params [ "_fobpos", "_status", ["_sector_timer", 0] ];
 
 private _fob_name = [_fobpos] call F_getFobName;
 private _fob_type = "FOB";

@@ -1,6 +1,5 @@
-params [ "_position", "_bonus" ];
-
 if (isDedicated || (!hasInterface && !isServer)) exitWith {};
+params [ "_position", "_bonus" ];
 
 private _msg = format ["You Win !<br/>The <t color='#008f00'>Guerrilla</t> tunnel no <t color='#008f00'>%1</t>,<br/><br/>
 Has been successfully <t color='#00008f'>CLEANED</t> !!<br/>

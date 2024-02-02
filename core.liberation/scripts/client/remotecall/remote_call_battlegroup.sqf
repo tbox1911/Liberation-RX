@@ -1,6 +1,5 @@
-params ["_battlegroup_position"];
-
 if (isDedicated || (!hasInterface && !isServer)) exitWith {};
+params ["_battlegroup_position"];
 
 "opfor_bg_marker" setMarkerPosLocal _battlegroup_position;
 private _location_name = [_battlegroup_position] call F_getLocationName;

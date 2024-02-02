@@ -37,6 +37,7 @@ sog_tunnel_enter_remotecall = compileFinal preprocessFileLineNumbers "scripts\se
 sound_range_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\sound_range_remote_call.sqf";
 hide_object_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\hide_object_remote_call.sqf";
 speak_manager_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\speak_manager_remote_call.sqf";
+vehicle_unflip_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\vehicle_unflip_remote_call.sqf";
 
 // A3W Side Mission - Server Side
 a3w_create_enemy = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\a3w_create_enemy.sqf";
@@ -65,6 +66,7 @@ remote_call_a3w_info = compileFinal preprocessFileLineNumbers "scripts\client\re
 remote_call_tunnel_success = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_tunnel_success.sqf";
 remote_call_fireworks = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_fireworks.sqf";
 remote_call_load_context = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_load_context.sqf";
+remote_call_vehicle_unflip = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_vehicle_unflip.sqf";
 
 // Vehicle Color
 RPT_fnc_ResetVehicle = compileFinal preprocessFileLineNumbers "addons\VAM\fn_resetVehicle.sqf";

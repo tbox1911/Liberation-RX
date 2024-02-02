@@ -1,6 +1,7 @@
 // LRX Warehouse
 // by pSiKO
 
+if (!isServer && hasInterface) exitWith {};
 params ["_warehouse"];
 
 if (isNil "GRLIB_WHS_Group") then {

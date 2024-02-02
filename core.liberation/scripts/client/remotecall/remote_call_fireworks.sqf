@@ -1,3 +1,4 @@
+if (isDedicated || (!hasInterface && !isServer)) exitWith {};
 params ["_pos", ["_rounds", 1]];
 
 if (player distance2D _pos > GRLIB_sector_size) exitWith {};

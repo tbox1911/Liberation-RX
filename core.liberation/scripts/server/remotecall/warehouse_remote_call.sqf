@@ -1,5 +1,6 @@
 if (!isServer && hasInterface) exitWith {};
-params [ "_box", "_cmd", "_unit" ];
+params ["_box", "_cmd", "_unit"];
+
 if (isNil "_box") exitWith {};
 
 sleep random 0.3;

@@ -1,6 +1,6 @@
+if (!isServer && hasInterface) exitWith {};
 params [ "_vehicle", "_cmd", ["_uid",""]];
 
-if (!isServer && hasInterface) exitWith {};
 if (isNil "_vehicle") exitWith {};
 
 if (local _vehicle) then {

@@ -1,6 +1,5 @@
-params ["_class", "_rank", "_loadout"];
-
 if (isDedicated || (!hasInterface && !isServer)) exitWith {};
+params ["_class", "_rank", "_loadout"];
 
 if (count units player > (GRLIB_squad_size + GRLIB_squad_size_bonus)) exitWith {};
 private _pos = getPosATL player;

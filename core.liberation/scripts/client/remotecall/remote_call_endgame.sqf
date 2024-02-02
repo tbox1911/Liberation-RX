@@ -1,7 +1,6 @@
 if (isDedicated || (!hasInterface && !isServer)) exitWith {};
 
 publicstats = _this select 0;
-
 stats_opfor_soldiers_killed = publicstats select 0;
 stats_opfor_killed_by_players = publicstats select 1;
 stats_blufor_soldiers_killed = publicstats select 2;

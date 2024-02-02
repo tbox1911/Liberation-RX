@@ -1,4 +1,6 @@
+if (!isServer && hasInterface) exitWith {};
 params [ "_liberated_sector" ];
+
 diag_log format ["Sector %1 Liberated!", _liberated_sector];
 private _combat_readiness_increase = 0;
 
