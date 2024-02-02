@@ -41,7 +41,7 @@ private ["_medic", "_msg"];
 while {lifeState _unit == "INCAPACITATED" && time <= _unit getVariable ["PAR_BleedOutTimer", 0]} do {
   if (_cnt == 0) then {
     _unit setOxygenRemaining 1;
-    private _bros = [_unit] call PAR_medic_units;
+    private _bros = [] call PAR_medic_units;
     if ( count _bros > 0 ) then {
       _medic = _unit getVariable ["PAR_myMedic", nil];
       if (isNil "_medic") then {

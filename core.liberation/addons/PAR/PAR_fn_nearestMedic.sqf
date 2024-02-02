@@ -1,12 +1,10 @@
 params ["_wnded"];
 
-private _bros = [_wnded] call PAR_medic_units;
-private _medics = _bros select {
+private _medics = ([] call PAR_medic_units) select {
   speed vehicle _x <= 20 &&
   _x distance2D _wnded <= 500 &&
   getPos _x select 2 <= 20 &&
-  (!(objectParent _x iskindof "Steerable_Parachute_F")) &&
-  isNil {_x getVariable "PAR_busy"}
+  (!(objectParent _x iskindof "Steerable_Parachute_F"))
 };
 
 if (count _medics == 0) exitWith {};

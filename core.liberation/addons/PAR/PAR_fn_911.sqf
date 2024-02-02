@@ -4,7 +4,7 @@ _medic setHitPointDamage ["hitLegs",0];
 _medic allowDamage false;
 _medic setCaptive true;
 
-_grpmedic = createGroup [GRLIB_side_civilian, true];
+private _grpmedic = createGroup [GRLIB_side_civilian, true];
 [_medic] joinSilent _grpmedic;
 _grpmedic setBehaviour "AWARE";
 

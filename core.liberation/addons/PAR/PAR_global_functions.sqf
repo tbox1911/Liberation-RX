@@ -19,8 +19,7 @@ PAR_fn_eject = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_eject.s
 PAR_fn_heal = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_heal.sqf";
 
 PAR_medic_units = {
-	params ["_medic"];
-	(units player + units GRLIB_side_civilian) select { !isPlayer _x && alive _x && lifeState _x != "INCAPACITATED" && (_x getVariable ["PAR_Grp_ID","0"]) == (_medic getVariable ["PAR_Grp_ID","1"])};
+	PAR_AI_bros select { lifeState _x != "INCAPACITATED" && isNil {_x getVariable 'PAR_busy'} };
 };
 PAR_unblock_AI = {
 	// Unblock unit(s) 0-8-1
