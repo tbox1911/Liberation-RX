@@ -127,8 +127,9 @@ if ( _side == GRLIB_side_enemy ) then {
 
 [_vehicle, _vehcrew] spawn {
 	params ["_vehicle", "_crew"];
-	sleep 5;
+	sleep 1;
 	[_vehicle] call F_vehicleUnflip;
+	sleep 3;
 	_vehicle setDamage 0;
 	_vehicle allowDamage true;
 	{ _x setDamage 0; _x allowDamage true } forEach _crew;

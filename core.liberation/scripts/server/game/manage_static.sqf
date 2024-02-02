@@ -2,8 +2,7 @@ private [ "_all_static", "_static", "_static_class", "_all_light" , "_side", "_g
 private _static_classname = list_static_weapons - static_vehicles_AI;
 
 while { true } do {
-    _all_static = vehicles select { local _x && alive _x && (typeOf _x) in _static_classname };
-
+    _all_static = vehicles select { local _x && alive _x && (typeOf _x) in _static_classname  };
     {
         _static = _x;
         _static_class = typeOf _static;
@@ -14,16 +13,7 @@ while { true } do {
         };
 
         // Correct static position
-        if ((vectorUp _static) select 2 < 0.60) then {
-            _static setpos [(getposATL _static) select 0,(getposATL _static) select 1, 0.5];
-            _static setVectorUp surfaceNormal position _static;
-            sleep 1;
-        };
-
-        if (getPosATL _static select 2 < -0.02) then {
-            _static setpos (getpos _static);
-            sleep 1;
-        };
+        [_static] call F_vehicleUnflip;
 
         // Keep gunner
         _gunner = gunner _static;
