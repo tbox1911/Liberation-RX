@@ -122,7 +122,7 @@ _waitUntilCondition = {
 				};
 				_x setFuel 1;
 				_x setDamage 0;
-				[_x] execVM "scripts\client\actions\do_unflip.sqf";
+				[_x] call F_vehicleUnflip;
 				if (_x != _veh_leader) then {
 					(driver _x) doFollow (leader _aiGroup);
 					(driver _x) doMove getPosATL (leader _aiGroup);

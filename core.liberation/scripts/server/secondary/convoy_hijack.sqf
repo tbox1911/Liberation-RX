@@ -168,7 +168,7 @@ while { _mission_in_progress } do {
 		if (_x == driver _veh && speed _veh < 2 && (_x distance2D _veh_leader > 50 || _veh == vehicle _veh_leader) && behaviour _x != "COMBAT") then {
 			_veh setFuel 1;
 			_veh setDamage 0;
-			[_veh] execVM "scripts\client\actions\do_unflip.sqf";
+			[_veh] call F_vehicleUnflip;
 			if (_veh != _veh_leader) then { _x doFollow (leader _convoy_group) };
 			sleep 60;
 		};
