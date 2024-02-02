@@ -36,14 +36,12 @@ speak_info_unit = {
 	params ["_unit"];
 	private _greetings = [
 		"Hey, I love you !",
-		"Hello, You are doing a great job here !",
-		"Hi, we're all glad to see you here !",
+		"You are doing a great job here !",
+		"We're all glad to see you here !",
 		"Good morning, God bless your army !",
 		"I would like my daughter to marry you.",
 		"Hey, kill them all for us !"
 	];
-	_unit globalChat (selectRandom _greetings);
-	sleep 2;
 	private _opfor_list = (units GRLIB_side_enemy) select {alive _x && _x distance2D getPos _unit < 500};
 	if (count _opfor_list > 0) then {
 		_opfor = _opfor_list select 0;
@@ -51,6 +49,8 @@ speak_info_unit = {
 	} else {
 		_unit globalChat "I'm sorry, I have no informations.";
 	};
+	sleep 2;
+	_unit globalChat (selectRandom _greetings);
 };
 
 speak_insult_unit = {
