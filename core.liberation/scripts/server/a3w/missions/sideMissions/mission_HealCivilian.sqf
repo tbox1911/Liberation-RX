@@ -64,7 +64,7 @@ _setupObjects = {
 	};
 	if (count _pos == 0) exitWith { false };
 
-	_tent = createVehicle ["Land_MedicalTent_01_white_IDAP_open_F", _pos, [], 1, "None"];
+	_tent = createVehicle [a3w_heal_tent, _pos, [], 1, "None"];
 	_tent allowDamage false;
 	_tent setVectorDirAndUp [[-cos _dir, sin _dir, 0] vectorCrossProduct surfaceNormal _pos, surfaceNormal _pos];
 	_vehicles = [_tent];

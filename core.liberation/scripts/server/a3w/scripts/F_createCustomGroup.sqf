@@ -19,7 +19,7 @@ switch (_type) do {
 	case ("divers"): { _unitTypes = divers_squad };
 	case ("guard"): { _unitTypes = guard_squad };
 	case ("medics"): { 
-		_unitTypes = civ_medics;
+		_unitTypes = a3w_heal_medics;
 		_side = GRLIB_side_civilian;
 	};
 	case ("resistance"): {

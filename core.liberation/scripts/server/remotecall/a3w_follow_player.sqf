@@ -1,6 +1,11 @@
 if (!isServer && hasInterface) exitWith {};
 params ["_unit", "_follow", "_second"];
 
+private _near_tent = {
+    params ["_unit"];
+    (count (_unit nearobjects [a3w_heal_tent, 12]) > 0);
+};
+
 // start
 _unit setVariable ["GRLIB_can_speak", false, true];
 _unit stop false;
@@ -17,7 +22,7 @@ private _timer = time + _second;
 waitUntil {
     _unit doMove (getPos _follow);
     sleep 5;
-    (time > _timer)
+    (time > _timer || ([_unit] call _near_tent))
 };
 
 // stop
@@ -30,7 +35,7 @@ _unit playMoveNow _anim;
 _unit setDamage 0.50;
 _unit setVariable ["GRLIB_can_speak", true, true];
 
-if (count (_unit nearobjects ["Land_MedicalTent_01_white_IDAP_open_F", 12]) > 0) then {
+if ([_unit] call _near_tent) then {
     _unit setDamage 0;
     _unit setVariable ["GRLIB_can_speak", false, true];
     _unit setVariable ["GRLIB_A3W_Mission_HC2", nil, true];
