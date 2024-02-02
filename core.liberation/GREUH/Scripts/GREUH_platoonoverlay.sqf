@@ -9,8 +9,8 @@ nametags_distance = 40;
 
 private [ "_groups", "_unitstocount", "_totalx", "_totaly", "_totalz", "_alpha", "_textalpha", "_size", "_screenpos", "_grouppos", "_distlabel", "_dist", "_nextunit", "_color", "_drawicon", "_playername", "_iconpos" ];
 
-waitUntil {sleep 1; !isNil "GRLIB_overlay_groups" };
-waitUntil {sleep 1; !isNil "GRLIB_nametag_units" };
+GRLIB_overlay_groups = [];
+GRLIB_nametag_units = [];
 
 ["platoon_overlay", "onEachFrame", {
 	if ( show_platoon ) then {
