@@ -27,6 +27,6 @@ if (count _player_respawn_unsorted > GRLIB_max_spawn_point && PAR_Grp_ID == _pla
 	_max_respawn_reached = true;
 };
 
-private _respawn_trucks_sorted = [ _player_respawn_unsorted , [] , { (getpos _x) select 0 } , 'ASCEND' ] call BIS_fnc_sortBy;
+private _respawn_trucks_sorted = [_player_respawn_unsorted, [], {(getpos _x) select 0}, 'ASCEND'] call BIS_fnc_sortBy;
 
 [_respawn_trucks_sorted, _max_respawn_reached];
