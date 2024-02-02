@@ -69,7 +69,7 @@ _setupObjects =
 
 	sleep 10;
 	_aiGroup setFormation "COLUMN";
-	_aiGroup setBehaviourStrong  "SAFE";
+	_aiGroup setBehaviourStrong "SAFE";
 	_aiGroup setCombatMode "GREEN";
 	_aiGroup setSpeedMode "LIMITED";
 	

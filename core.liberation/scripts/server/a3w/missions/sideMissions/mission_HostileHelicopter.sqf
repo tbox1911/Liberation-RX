@@ -17,7 +17,7 @@ _setupObjects = {
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	//_aiGroup setCombatMode "WHITE"; // Defensive behaviour
 	_aiGroup setCombatMode "RED"; // Agressive behaviour
-	_aiGroup setBehaviourStrong  "AWARE";
+	_aiGroup setBehaviourStrong "AWARE";
 	_speedMode = if (count AllPlayers > 2) then { "FULL" } else { "NORMAL" };
 	_aiGroup setSpeedMode _speedMode;
 

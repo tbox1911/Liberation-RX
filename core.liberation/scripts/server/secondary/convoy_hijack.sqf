@@ -102,7 +102,7 @@ private _troops_group = [_spawnpos, ([] call F_getAdaptiveSquadComp), GRLIB_side
 (driver _transport_vehicle) MoveTo (_convoy_destinations select 1);
 
 _convoy_group setFormation "COLUMN";
-_convoy_group setBehaviourStrong  "AWARE";
+_convoy_group setBehaviourStrong "AWARE";
 _convoy_group setCombatMode "WHITE";
 _convoy_group setSpeedMode "LIMITED";
 
