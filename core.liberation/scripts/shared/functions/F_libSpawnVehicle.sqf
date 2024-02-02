@@ -128,13 +128,7 @@ if ( _side == GRLIB_side_enemy ) then {
 [_vehicle, _vehcrew] spawn {
 	params ["_vehicle", "_crew"];
 	sleep 5;
-	if ( _vehicle isKindOf "LandVehicle" ) then {
-		if ((vectorUp _vehicle) select 2 < 0.70) then {
-			_vehicle setpos [(getPosATL _vehicle) select 0, (getPosATL _vehicle) select 1, 0.5];
-			_vehicle setVectorUp surfaceNormal position _vehicle;
-			sleep 2;
-		};
-	};	
+	[_vehicle] call F_vehicleUnflip;
 	_vehicle setDamage 0;
 	_vehicle allowDamage true;
 	{ _x setDamage 0; _x allowDamage true } forEach _crew;

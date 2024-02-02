@@ -38,20 +38,15 @@ _smoke1 attachTo [_vehicle,[0,0,0.6]];
 private _smoke2 = (_shell_smoke select _two) createVehicle _pos;
 _smoke2 attachTo [_vehicle,[0,0,0.6]];
 
-waitUntil {sleep 0.1;((getPos _vehicle select 2) < 7 || time > _timeout)};
+waitUntil {sleep 0.1; ((getPos _vehicle select 2) < 7 || time > _timeout)};
 detach _smoke1;
 detach _smoke2;
 detach _vehicle;
 sleep 4;
 deleteVehicle _parachute;
-
 { [_vehicle, _x] call attach_object_direct } forEach _lst_grl;
-
 sleep 1;
-if ((vectorUp _vehicle) select 2 < 0.70) then {
-	_vehicle setpos [(getPos _vehicle) select 0,(getPos _vehicle) select 1, 0.5];
-	_vehicle setVectorUp surfaceNormal position _vehicle;
-};
+[_vehicle] call F_vehicleUnflip;
 sleep 3;
 _vehicle allowDamage true;
 

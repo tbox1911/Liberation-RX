@@ -56,11 +56,7 @@ taxi_dest = {
 		_vspeed = round (abs (_alt - _alt_old));
 		_alt_old = _alt;
 		if (_speed == 0 && _vspeed == 0) then {
-			if ((vectorUp _vehicle) select 2 < 0.70) then {
-				_vehicle setPosATL [(getposATL _vehicle) select 0, (getposATL _vehicle) select 1, ((getposATL _vehicle) select 2) + 2];
-				_vehicle setVectorUp surfaceNormal position _vehicle;
-				sleep 1;
-			};
+			[_vehicle] call F_vehicleUnflip;
 			_vehicle setPos ((getPosATL _vehicle) vectorAdd [0, 0, 3]);
 			sleep 1;
 		};

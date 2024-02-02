@@ -112,11 +112,7 @@ _waitUntilCondition = {
 			};
 
 			// Unflip ?
-			if ((vectorUp _x) select 2 < 0.60) then {
-				_x setpos [(getposATL _x) select 0,(getposATL _x) select 1, 0.5];
-				_x setVectorUp surfaceNormal position _x;
-				sleep 10;
-			};
+			[_x] call F_vehicleUnflip;
 
 			// Follow
 			_veh_leader = vehicle (leader _aiGroup);
