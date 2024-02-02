@@ -23,10 +23,10 @@ while { true } do {
 		if (GRLIB_ACE_enabled) then { [_huron, 200] call ace_cargo_fnc_setSpace };
 		GRLIB_vehicle_huron = _huron;
 		publicVariable "GRLIB_vehicle_huron";
-		waitUntil { sleep 1; !alive _huron };
-		stats_spartan_respawns = stats_spartan_respawns + 1;
-		sleep 10;
-		deletevehicle _huron;	
 	};
+	waitUntil { sleep 1; !alive GRLIB_vehicle_huron };
+	stats_spartan_respawns = stats_spartan_respawns + 1;
+	sleep 10;
+	deleteVehicle GRLIB_vehicle_huron;	
 	sleep 3;
 };

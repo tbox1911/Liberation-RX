@@ -1,10 +1,11 @@
 // Public Hurron
 private _respawn_huron_unsorted = [];
 if (
-	!([GRLIB_vehicle_huron, "LHD", GRLIB_sector_size] call F_check_near) &&
+	(alive GRLIB_vehicle_huron) &&
  	!surfaceIsWater (getPos GRLIB_vehicle_huron) &&
 	((getPos GRLIB_vehicle_huron) select 2) < 5 &&
-	speed vehicle GRLIB_vehicle_huron < 5
+	speed vehicle GRLIB_vehicle_huron < 5 &&	
+	!([GRLIB_vehicle_huron, "LHD", GRLIB_sector_size] call F_check_near)
    ) then { _respawn_huron_unsorted pushBack GRLIB_vehicle_huron };
 
 // Truck / Tent
