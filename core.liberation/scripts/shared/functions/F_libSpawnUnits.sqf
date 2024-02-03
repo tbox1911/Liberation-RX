@@ -2,8 +2,7 @@ params [
 	"_spawnpos",                    // position to spawn
 	["_classname", []],             // array of classname to create
 	["_side", GRLIB_side_enemy],    // side of units group
-	["_type", "infantry"],          // type of unit
-	["_onground", true]				// unit on ground
+	["_type", "infantry"]           // type of unit
 ];
 
 private _nb_unit = count _classname;

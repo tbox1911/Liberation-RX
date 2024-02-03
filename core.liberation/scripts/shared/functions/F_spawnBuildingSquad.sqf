@@ -26,7 +26,7 @@ while { count _position_indexes < count _unitclass } do {
 		_position_indexes pushback _nextposit;
 	};
 };
-private _grp = [_sectorpos, _unitclass, _default_side, _infsquad, false] call F_libSpawnUnits;
+private _grp = [_sectorpos, _unitclass, _default_side, _infsquad] call F_libSpawnUnits;
 
 private _idxposit = 0;
 {
