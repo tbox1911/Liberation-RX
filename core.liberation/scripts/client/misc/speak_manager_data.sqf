@@ -271,7 +271,7 @@ speak_mission_delivery = {
 // Doctor
 speak_mission_heal_doctor = {
 	params ["_unit"];
-	private _wnded = ({alive _x && damage _x > 0} count (units GRLIB_side_civilian));
+	private _wnded = ({alive _x && !isNil {_x getVariable "GRLIB_A3W_Mission_HC2"}} count (units GRLIB_side_civilian));
 	_unit globalChat "Hello, I'm a Doctor, we have a situation here !!";
 	sleep 3;
 	_unit globalChat format ["Please help us to treat %1 sick villagers.", _wnded];
