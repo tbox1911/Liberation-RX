@@ -4,8 +4,8 @@ if (typeOf _vehicle isKindOf "Air") exitWith {};
 if (typeOf _vehicle isKindOf "Boat_F") exitWith {};
 if (count (crew _vehicle) == 0) exitWith {};
 
-#define _incd_repair 5
-#define _incd_fuel 7
+#define _incd_repair 20     // must match speak_manger.sqf (_msg)
+#define _incd_fuel 22
 
 private _driver = driver _vehicle;
 private _grp = group _driver;

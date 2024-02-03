@@ -44,9 +44,9 @@ while {alive _unit && _continue} do {
         _target_veh = vehicles select { (alive _x) && ([_target, _x, true] call is_owner) && (_x distance2D _unit < _radius) };
         _reputation = [_target] call F_getReput;
         if ( _reputation >= 25 ) then { _list_actions = [0,1,2] };
-        if ( _reputation >= 50 ) then { _list_actions = [1,2,2,3] };
-        if ( _reputation >= 75 ) then { _list_actions = [2,3,3,4] };
-        if ( _reputation >= 100 ) then { _list_actions = [2,3,4,4] };
+        if ( _reputation >= 50 ) then { _list_actions = [1,2,2,3,3] };
+        if ( _reputation >= 75 ) then { _list_actions = [2,2,3,3,4,4,5] };
+        if ( _reputation >= 100 ) then { _list_actions = [2,3,4,5,5] };
         if ( _reputation <= -25 ) then { _list_actions = [0,10] };
         if ( _reputation <= -50 ) then { _list_actions = [10,11] };
         if ( _reputation <= -75 ) then { _list_actions = [11,11,12,14] };
@@ -117,8 +117,39 @@ while {alive _unit && _continue} do {
             };
         };
 
-        //--- Reammo
+        //--- Heal
         case 3: {
+            _target_veh = _target_veh select { ([_x] call F_VehicleNeedRepair) };
+            if (count _target_veh > 0) then {
+                [_grp] call F_deleteWaypoints;
+                waitUntil {
+                    _unit doMove (getPos _target);
+                    sleep 5;
+                    (!alive _unit || _unit distance2D _target <= 7 || _unit distance2D _target > _radius)
+                };
+                if (alive _unit && _unit distance2D _target <= 7) then {
+                    if (isServer) then {
+                        [_unit, _action, _target] spawn speak_manager_remote_call;
+                    } else {
+                        [_unit, _action, _target] remoteExec ["speak_manager_remote_call", 2];
+                    };
+                    sleep 6;
+                    _unit stop true;
+                    _unit setDir (_unit getDir _target);
+                    _unit switchMove "ainvpknlmstpslaywrfldnon_medicother";
+                    _unit playMoveNow "ainvpknlmstpslaywrfldnon_medicother";
+                    _target setDamage 0;
+                    _unit stop false;
+				    _unit switchMove "AmovPercMwlkSrasWrflDf";
+				    _unit playMoveNow "AmovPercMwlkSrasWrflDf";
+                };
+                [_grp, getPosATL _unit] spawn add_civ_waypoints;
+                sleep _delay;
+            };
+        };
+
+        //--- Reammo
+        case 4: {
             _danger = ([_unit, GRLIB_capture_size, GRLIB_side_enemy] call F_getUnitsCount >= 5);
             if (_danger) then {
                 [_grp] call F_deleteWaypoints;
@@ -153,7 +184,7 @@ while {alive _unit && _continue} do {
         };
 
         //--- Help (armed)
-        case 4: {
+        case 5: {
             _danger = ([_unit, GRLIB_capture_size, GRLIB_side_enemy] call F_getUnitsCount >= 5);
             if (_danger && count (units group _target) < 8) then {
                 [_grp] call F_deleteWaypoints;
