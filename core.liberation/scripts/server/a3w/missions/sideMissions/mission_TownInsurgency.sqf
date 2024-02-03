@@ -20,17 +20,10 @@ _setupObjects = {
     	false;
 	};
 
-	// get Houses nearbby
-	private _allbuildings = [ nearestObjects [_missionPos, ["House"], 100 ], { alive _x } ] call BIS_fnc_conditionalSelect;
-	private _buildingpositions = [];
-	{
-		_buildingpositions = _buildingpositions + ( [_x] call BIS_fnc_buildingPositions );
-	} foreach _allbuildings;
-
 	// spawn some enemies
 	[_missionPos, 30] call createlandmines;
 	[_missionLocation, 150, floor (random 6)] spawn ied_trap_manager;
-	private _managed_units = (["militia", (_nbUnits - 4), _buildingpositions, _missionPos] call F_spawnBuildingSquad);
+	private _managed_units = (["militia", (_nbUnits - 4), _missionPos] call F_spawnBuildingSquad);
 	_aiGroup = [_missionPos, (_nbUnits - (count _managed_units)), "militia"] call createCustomGroup;
 	_managed_units joinSilent _aiGroup;
 	{ _x setVariable ["GRLIB_mission_AI", false, true] } forEach (units _aiGroup);

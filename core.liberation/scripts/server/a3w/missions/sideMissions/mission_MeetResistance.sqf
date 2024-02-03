@@ -47,12 +47,7 @@ _setupObjects = {
 	sleep 0.5;
 
 	// get Houses nearbby
-	_allbuildings = (nearestObjects [_missionPos, ["House"], 100 ]) select { alive _x };
-	_buildingpositions = [];
-	{
-		_buildingpositions = _buildingpositions + ( [_x] call BIS_fnc_buildingPositions );
-	} foreach _allbuildings;
-	_managed_units append (["resistance", 2, _buildingpositions, _missionPos] call F_spawnBuildingSquad);
+	_managed_units append (["resistance", 2, _missionPos] call F_spawnBuildingSquad);
 	sleep 0.5;
 	private _grp = [_missionPos, _nbUnits, "resistance"] call createCustomGroup;
 	_managed_units append (units _grp);

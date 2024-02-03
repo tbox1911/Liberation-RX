@@ -121,14 +121,8 @@ _setupObjects =
 	sleep 0.5;
 
 	//----- spawn units ---------------------------------
-	private _allbuildings = [ nearestObjects [_missionPos, ["House"], 200 ], { alive _x } ] call BIS_fnc_conditionalSelect;
-	private _buildingpositions = [];
-	{
-		_buildingpositions = _buildingpositions + ([_x] call BIS_fnc_buildingPositions);
-	} foreach _allbuildings;
-
 	private _nbUnits = [] call getNbUnits;
-	private _managed_units = (["infantry", _nbUnits, _buildingpositions, _missionPos] call F_spawnBuildingSquad);
+	private _managed_units = (["infantry", _nbUnits, _missionPos] call F_spawnBuildingSquad);
 	_aiGroup = group (_managed_units select 0);
 	{
 		_x setSkill 0.70;
