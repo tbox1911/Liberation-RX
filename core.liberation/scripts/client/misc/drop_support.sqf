@@ -70,10 +70,11 @@ if (do_action == 1) then {
 	};
 	if (air_type == 10) exitWith {[] execVM "addons\TAXI\call_taxi.sqf"};
 
-	player setVariable ["AirCoolDown", round(time + 15*60)];
-
 	if (air_type == 7) exitWith {
-		if ([_cost] call F_pay) then { [player] remoteExec ["send_aircraft_remote_call", 2] };
+		if ([_cost] call F_pay) then {
+			[player] remoteExec ["send_aircraft_remote_call", 2]
+			player setVariable ["AirCoolDown", round(time + 20*60)];
+		};
 	};
 
 	if (air_type == 8) exitWith {
@@ -106,6 +107,7 @@ if (do_action == 1) then {
 			} else {
 				if ([_cost] call F_pay) then {
 					[player, halo_position] remoteExec ["call_artillery_remote_call", 2];
+					player setVariable ["AirCoolDown", round(time + 20*60)];
 				};
 			};
 		} else {
@@ -116,5 +118,6 @@ if (do_action == 1) then {
 	if ([_cost] call F_pay) then {
 		[player, "parasound"] remoteExec ["sound_range_remote_call", 2];
 		[player, _class] remoteExec ["airdrop_remote_call", 2];
+		player setVariable ["AirCoolDown", round(time + 15*60)];
 	};
 };
