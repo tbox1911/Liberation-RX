@@ -51,8 +51,8 @@ militia_squad = [
 	"O_G_Soldier_lite_F",
 	"O_G_Sharpshooter_F",
 	"O_G_Soldier_TL_F",
-	"O_Soldier_AA_F",
-	"O_Soldier_AT_F"
+	"O_T_Soldier_AA_F",
+	"O_T_Soldier_AT_F"
 ];
 
 militia_loadout_overide = [
