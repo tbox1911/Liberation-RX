@@ -45,7 +45,7 @@ while { GRLIB_endgame == 0 && ({alive _x} count (units _grp) > 0) } do {
 	};
 
 	{
-		if (isNull objectParent _x && round (speed vehicle _x) == 0) then {
+		if (isNull objectParent _x && speed vehicle _x == 0) then {
 			[_x] call F_fixPosUnit;
 			_x switchMove "AmovPercMwlkSrasWrflDf";
 			_x playMoveNow "AmovPercMwlkSrasWrflDf";

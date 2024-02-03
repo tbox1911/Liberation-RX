@@ -235,7 +235,7 @@ while {alive _unit && _continue} do {
                 sleep 1;
                 _new_grp = createGroup [GRLIB_side_enemy, true];
                 [_unit] joinSilent _new_grp;
-                [_new_grp, getPosATL _target] spawn defense_ai;
+                [_new_grp, getPosATL _target] spawn defence_ai;
 
                 [_unit] spawn {
                     params ["_unit"];

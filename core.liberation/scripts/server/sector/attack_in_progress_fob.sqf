@@ -20,7 +20,7 @@ if ( GRLIB_blufor_defenders ) then {
 		_x addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
 	} foreach (units _grp);
 	_grp setCombatBehaviour "COMBAT";
-	[_grp, _fobpos] spawn defense_ai;
+	[_grp, _fobpos] spawn defence_ai;
 
 	private _defenders_timer = round (time + 120);
 	while { time < _defenders_timer && ({alive _x} count (units _grp) > 0) && _ownership == GRLIB_side_enemy } do {

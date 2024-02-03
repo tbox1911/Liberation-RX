@@ -7,7 +7,7 @@ diag_log format ["Group %1 - Attack: %2", _grp, _objective_pos];
 
 private _vehicle = objectParent (leader _grp);
 if (_vehicle isKindOf "Ship") exitWith {
-	[_grp, getPosATL _vehicle] spawn defense_ai;
+	[_grp, getPosATL _vehicle] spawn defence_ai;
 };
 
 sleep (5 + floor random 10);
@@ -70,7 +70,7 @@ while { ({alive _x} count (units _grp) > 0) } do {
 	};
 
 	{
-		if (isNull objectParent _x && round (speed vehicle _x) == 0) then {
+		if (isNull objectParent _x && speed vehicle _x == 0) then {
 			[_x] call F_fixPosUnit;
 			_x switchMove "AmovPercMwlkSrasWrflDf";
 			_x playMoveNow "AmovPercMwlkSrasWrflDf";

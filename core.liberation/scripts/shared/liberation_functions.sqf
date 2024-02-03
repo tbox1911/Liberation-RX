@@ -71,7 +71,6 @@ F_sectorOwnership = compileFinal preprocessFileLineNumbers "scripts\shared\funct
 F_setCargo = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_setCargo.sqf";
 F_spawnBuildingSquad = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_spawnBuildingSquad.sqf";
 F_spawnCivilians = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_spawnCivilians.sqf";
-F_spawnMilitaryPostSquad = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_spawnMilitaryPostSquad.sqf";
 F_spawnRegularSquad = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_spawnRegularSquad.sqf";
 F_spawnWildLife = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_spawnWildLife.sqf";
 F_startAnimMP = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_startAnimMP.sqf";

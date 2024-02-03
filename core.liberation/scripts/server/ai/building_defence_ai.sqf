@@ -1,17 +1,18 @@
-params [ "_unit", ["_sector", ""] ];
+params ["_unit"];
 
 if (isNull _unit) exitWith {};
-_unit setUnitPos "UP";
-_unit disableAI "MOVE";
 
 private _move_is_disabled = true;
 private _resume_movement = false;
 private _target = objNull;
 private _hostilecount = 0;
+private _sector = "";
 
 sleep (10 + floor random 50);
 while { _move_is_disabled && alive _unit } do {
 	_hostilecount = count ([_unit, 50] call F_getNearbyPlayers);
+	_sector = [GRLIB_sector_size, _unit] call F_getNearestSector; 
+
 	if ( _hostilecount > 0 || ( damage _unit > 0.25 ) || _sector in blufor_sectors ) then {
 		_resume_movement = true;
 	};

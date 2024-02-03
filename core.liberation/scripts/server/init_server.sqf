@@ -72,7 +72,7 @@ cleanup_player = compileFinal preprocessFileLineNumbers "scripts\server\game\cle
 
 // AI
 add_civ_waypoints = compileFinal preprocessFileLineNumbers "scripts\server\ai\add_civ_waypoints.sqf";
-defense_ai = compileFinal preprocessFileLineNumbers "scripts\server\ai\defense_ai.sqf";
+defence_ai = compileFinal preprocessFileLineNumbers "scripts\server\ai\defence_ai.sqf";
 battlegroup_ai = compileFinal preprocessFileLineNumbers "scripts\server\ai\battlegroup_ai.sqf";
 building_defence_ai = compileFinal preprocessFileLineNumbers "scripts\server\ai\building_defence_ai.sqf";
 prisoner_ai = compileFinal preprocessFileLineNumbers "scripts\server\ai\prisoner_ai.sqf";
