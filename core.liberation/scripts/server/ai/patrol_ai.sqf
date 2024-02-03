@@ -2,6 +2,7 @@ params ["_grp", "_flagpos", "_radius"];
 if (isNil "_grp" || isNil "_flagpos") exitWith {};
 if (isNull _grp) exitWith {};
 
+private ["_waypoint"];
 private _completion_radius = (_radius/3);
 private _grp_veh = objectParent (leader _grp);
 if (_grp_veh isKindOf "Air") then { _completion_radius = 250 };

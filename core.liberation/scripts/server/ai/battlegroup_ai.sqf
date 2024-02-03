@@ -10,7 +10,7 @@ if (_vehicle isKindOf "Ship") exitWith {
 	[_grp, getPosATL _vehicle] spawn defense_ai;
 };
 
-sleep (33 + floor random 33);
+sleep (5 + floor random 10);
 private _timer = 0;
 
 while { ({alive _x} count (units _grp) > 0) } do {

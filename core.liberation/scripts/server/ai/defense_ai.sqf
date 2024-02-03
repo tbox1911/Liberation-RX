@@ -12,7 +12,7 @@ if (_grp_veh isKindOf "Ship") exitWith { [_grp, getPosATL _grp_veh, _radius] spa
 private _completion_radius = (_radius/3);
 if (_grp_veh isKindOf "Air") then { _completion_radius = 250 };
 
-sleep (33 + floor random 33);
+sleep (5 + floor random 10);
 private _timer = 0;
 private _patrol = false;
 
