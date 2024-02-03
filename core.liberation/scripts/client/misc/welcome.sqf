@@ -49,5 +49,3 @@ private _msg = format [
     name player, _rank, _score, _ammo_collected, _color, _text
 ];
 [_msg, 0, 0, 10, 0, 0, 90] spawn BIS_fnc_dynamicText;
-
-[player] remoteExec ["load_context_remote_call", 2];
