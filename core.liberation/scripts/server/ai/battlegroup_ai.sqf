@@ -7,7 +7,7 @@ diag_log format ["Group %1 - Attack: %2", _grp, _objective_pos];
 
 private _vehicle = objectParent (leader _grp);
 if (_vehicle isKindOf "Ship") exitWith {
-	[_grp, getPosATL _vehicle] spawn add_defense_waypoints;
+	[_grp, getPosATL _vehicle] spawn defense_ai;
 };
 
 sleep (33 + floor random 33);

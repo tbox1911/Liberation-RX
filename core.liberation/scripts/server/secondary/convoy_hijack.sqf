@@ -153,7 +153,7 @@ while { _mission_in_progress } do {
 		[_troops_group, _troop_vehicle] spawn F_ejectGroup;
 		_troops_group setCombatBehaviour "COMBAT";
 		_troops_group setCombatMode "RED";
-		[_troops_group, getPosATL _troop_vehicle, 30] spawn add_defense_waypoints;
+		[_troops_group, getPosATL _troop_vehicle, 30] spawn defense_ai;
 	};
 
 	if ( _convoy_attacked && !_convoy_flee) then {

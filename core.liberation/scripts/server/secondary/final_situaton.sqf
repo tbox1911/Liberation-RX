@@ -53,7 +53,7 @@ publicVariable "opfor_target";
 
 [_marker, 4] spawn static_manager;
 private _grp = [_marker, "csat", ([] call F_getAdaptiveSquadComp)] call F_spawnRegularSquad;
-[_grp, _spawnpos, 200] spawn add_defense_waypoints;
+[_grp, _spawnpos, 200] spawn defense_ai;
 
 private _vehicle = [_spawnpos, (selectRandom opfor_vehicles)] call F_libSpawnVehicle;
 (driver _vehicle) doFollow leader _grp;
@@ -90,7 +90,7 @@ while { _continue } do {
 	if ({alive _x} count (units _grp) == 0) then {
 		if (time > _last) then {
 			_grp = [_marker, "csat", ([] call F_getAdaptiveSquadComp)] call F_spawnRegularSquad;
-			[_grp, _spawnpos, 200] spawn add_defense_waypoints;
+			[_grp, _spawnpos, 200] spawn defense_ai;
 			_last = round (time + 180);
 		};
 	};

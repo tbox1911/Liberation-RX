@@ -138,7 +138,7 @@ _waitUntilCondition = {
 		sleep 1;
 		{ [_x, false] spawn F_ejectUnit; sleep 0.2 } forEach (units _aiGroup) + [_vip];
 		sleep 1;
-		[_aiGroup, getPosATL _vip] spawn add_defense_waypoints;
+		[_aiGroup, getPosATL _vip] spawn defense_ai;
 	};
 	(!(alive _vip) || (_vip distance2D _last_waypoint) < 100);
 };

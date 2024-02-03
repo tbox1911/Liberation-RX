@@ -59,7 +59,7 @@ private _grp = [_pos, _unitclass, _side, _type] call F_libSpawnUnits;
 
 
 if (_patrol) then {
-	[_grp, _pos, _radius] spawn add_defense_waypoints;
+	[_grp, _pos, _radius] spawn defense_ai;
 } else {
 	[_grp] call F_deleteWaypoints;
 };

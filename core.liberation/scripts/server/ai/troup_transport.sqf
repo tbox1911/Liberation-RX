@@ -45,5 +45,5 @@ if ( { alive _x } count (units _troup_group) > 0 ) then {
 };
 
 if ( { alive _x } count (units _transport_group) > 0 ) then {
-	[_transport_group, _objective_pos, 300] spawn add_defense_waypoints;
+	[_transport_group, _objective_pos, 300] spawn defense_ai;
 };
