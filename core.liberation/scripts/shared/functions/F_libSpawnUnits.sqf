@@ -50,9 +50,6 @@ private ["_unit", "_backpack", "_maxpos"];
 				_unit setVariable ["PAR_Grp_ID", "server", true];
 			};
 
-			if (_onground && !(_type in ["divers", "para"]) ) then {
-				[_unit] call F_fixPosUnit;
-			};
 		} else {
 			diag_log format ["--- LRX Error: Cannot create unit %1 at position %2", _x, _spawnpos];
 		};

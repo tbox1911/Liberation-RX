@@ -72,6 +72,7 @@ if ( _classname isKindOf "Air" ) then {
 		_vehicle setPos _spawnpos;
 	};
 };
+sleep 1;
 
 if ( isNull _vehicle ) exitWith { diag_log format ["--- LRX Error: Cannot build vehicle (%1) at position %2", _classname, _sectorpos]; objNull };
 
