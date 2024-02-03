@@ -7,7 +7,7 @@ params [
 	["_crewed", true]
 ];
 
-if (isNil "_classname") exitWith {};
+if (isNil "_classname") exitWith {objNull};
 if (_side != GRLIB_side_civilian) then {
 	diag_log format [ "Spawn vehicle %1 at %2", _classname , time ];
 };
@@ -48,7 +48,10 @@ if ( _classname isKindOf "Air" ) then {
 		_spawnpos = _sectorpos findEmptyPosition [0, _radius, _classname];
 	};
 
-	if ( count _spawnpos == 0 ) exitWith { diag_log format ["--- LRX Error: Cannot find place to build vehicle %1 at position %2", _classname, _sectorpos]; objNull };
+	if ( count _spawnpos == 0 ) exitWith {
+		diag_log format ["--- LRX Error: Cannot find place to build vehicle %1 at position %2", _classname, _sectorpos];
+		objNull;
+	};
 
 	if (_classname isKindOf "LandVehicle") then {
 		_spawnpos set [2, 0.5];
@@ -74,7 +77,10 @@ if ( _classname isKindOf "Air" ) then {
 };
 sleep 1;
 
-if ( isNull _vehicle ) exitWith { diag_log format ["--- LRX Error: Cannot build vehicle (%1) at position %2", _classname, _sectorpos]; objNull };
+if ( isNull _vehicle ) exitWith {
+	diag_log format ["--- LRX Error: Cannot build vehicle (%1) at position %2", _classname, _sectorpos];
+	objNull;
+};
 
 private _vehcrew = [];
 if (_crewed) then {

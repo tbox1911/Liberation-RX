@@ -1,6 +1,16 @@
 params [ "_infsquad", "_building_ai_max", "_sectorpos", ["_building_range", 100] ];
 
 if (_building_ai_max == 0) exitWith  {[]};
+
+private _side = GRLIB_side_enemy;
+private _squad_comp = [];
+switch (_infsquad) do {
+	case ("infantry"): { _squad_comp = opfor_infantry };
+	case ("militia"): { _squad_comp = militia_squad };
+	case ("resistance"): { _squad_comp = resistance_squad; _side = GRLIB_side_friendly};
+	default { _squad_comp = [] call F_getAdaptiveSquadComp };
+};
+
 private _building_classname = [
 	"House",
 	"Cargo_HQ_base_F",
@@ -21,14 +31,6 @@ if (_position_count < _minimum_building_positions) exitWith  {[]};
 
 diag_log format ["Spawn building squad type %1 at %2", _infsquad, time];
 
-private _default_side = GRLIB_side_enemy;
-private _squad_comp = [];
-switch (_infsquad) do {
-	case ("infantry"): { _squad_comp = opfor_infantry };
-	case ("militia"): { _squad_comp = militia_squad };
-	case ("resistance"): { _squad_comp = resistance_squad; _default_side = GRLIB_side_friendly};
-	default { _squad_comp = [] call F_getAdaptiveSquadComp };
-};
 
 private _unitclass = [];
 _building_ai_max = _position_count min _building_ai_max;
@@ -41,7 +43,7 @@ while { count _position_indexes < count _unitclass } do {
 		_position_indexes pushback _nextposit;
 	};
 };
-private _grp = [_sectorpos, _unitclass, _default_side, _infsquad] call F_libSpawnUnits;
+private _grp = [_sectorpos, _unitclass, _side, _infsquad] call F_libSpawnUnits;
 private _idxposit = 0;
 {
 	_x setUnitPos "UP";
