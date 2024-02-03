@@ -25,9 +25,8 @@ private _squad5 = [];
 private _max_prisonners = 5;
 private _sector_despawn_tickets = GRLIB_despawn_tickets;
 
-diag_log format ["Spawn Defend Sector %1 at %2", _sector, time];
-
-private _active_players = count ([_sectorpos, GRLIB_sector_size] call F_getNearbyPlayers);
+private _active_players = count ([_sectorpos, (GRLIB_sector_size * 2)] call F_getNearbyPlayers);
+diag_log format ["Spawn Defend Sector %1 - player in combat %2 at %3", _sector, _active_players, time];
 
 if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount) > 0)) then {
 
