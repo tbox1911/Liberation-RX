@@ -51,7 +51,7 @@ private ["_unit", "_backpack", "_maxpos"];
 			};
 
 			if (_onground && !(_type in ["divers", "para"]) ) then {
-				[_unit] spawn F_fixPosUnit;
+				[_unit] call F_fixPosUnit;
 			};
 		} else {
 			diag_log format ["--- LRX Error: Cannot create unit %1 at position %2", _x, _spawnpos];
