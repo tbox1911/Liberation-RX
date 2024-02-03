@@ -9,7 +9,7 @@ if (!isServer) exitwith {};
 
 private [
 	"_controllerSuffix", "_availableLocations", "_missionLocation",
-	"_marker", "_marker_zone", "_time_left", "_failed", "_complete", "_startTime", "_leaderTemp", 
+	"_marker", "_marker_zone", "_time_left", "_failed", "_complete", "_startTime", "_leaderTemp",
 	"_lastPos", "_floorHeight"
 ];
 
@@ -23,6 +23,8 @@ private [
 _controllerSuffix = param [0, "", [""]];
 _aiGroup = grpNull;
 _precise_marker = true;
+_continue_mission = true;
+
 if (!isNil "_setupVars") then { call _setupVars };
 
 if (isNil "_missionTimeout" || !(isNil "A3W_debug")) then {
@@ -37,11 +39,11 @@ if (!isNil "_locationsArray") then {
 	};
 
 	_missionLocation = (selectRandom _availableLocations) select 0;
+	if (isNil "_missionLocation") exitWith { _continue_mission = false };
 	[_locationsArray, _missionLocation, true] call setLocationState;
 };
 
-_continue_mission = true;
-if (!isNil "_setupObjects") then { _continue_mission = call _setupObjects };
+if (!isNil "_setupObjects" && _continue_mission) then { _continue_mission = call _setupObjects };
 if (!_continue_mission) exitWith {
 	diag_log format ["--- LRX Error: A3W Side Mission %1 failed to setup: %2", _controllerSuffix, localize _missionType];
 };
