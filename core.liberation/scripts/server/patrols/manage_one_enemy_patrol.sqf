@@ -3,6 +3,10 @@ params ["_readiness"];
 if ( isNil "active_sectors" ) then { active_sectors = [] };
 private [
 	"_usable_sectors",
+	"_all_players",
+	"_sector",
+	"_player_nearby",
+	"_dist",
 	"_spawnsector",
 	"_sector_pos",
 	"_opfor_grp",
@@ -19,10 +23,16 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 
 	_opfor_veh = objNull;
 	_usable_sectors = [];
+	_all_players = (AllPlayers - (entities "HeadlessClient_F"));
 	{
-		if ( (count ([markerPos  _x, GRLIB_spawn_max] call F_getNearbyPlayers) > 0) && (count ([markerPos  _x, GRLIB_sector_size] call F_getNearbyPlayers) == 0) ) then {			
-			_usable_sectors pushback _x;
-		};
+		_sector =_x;
+		_player_nearby = {
+			_dist = (_x distance2D (markerPos _sector));
+			if (_dist > GRLIB_spawn_min && _dist < GRLIB_spawn_max ) exitWith {1};
+		} count _all_players;
+
+		if (_player_nearby > 0) then { _usable_sectors pushback _sector };
+		sleep 0.1;
 	} foreach (sectors_bigtown + sectors_capture + sectors_factory - active_sectors);
 
 	if ( count _usable_sectors > 0 ) then {
