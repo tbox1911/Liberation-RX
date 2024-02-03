@@ -47,7 +47,7 @@ _setupObjects = {
 		_plane = [_missionPos, _vehicleClass] call F_libSpawnVehicle;
 		_plane addEventHandler ["Fuel",  { (_this select 0) setFuel 1 }];
 		_plane addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1 }];
-		_plane flyInHeightASL [600, 600, 600];
+		_plane flyInHeightASL [800, 800, 800];
 		_vehicles pushBack _plane;
 		(crew _plane) joinSilent _aiGroup;
 		sleep 2;

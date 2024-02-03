@@ -69,7 +69,7 @@ _setupObjects = {
 	true;
 };
 
-_waitUntilSuccessCondition = { (alive _hvt) };
+_waitUntilSuccessCondition = { !(alive _hvt) };
 
 _failedExec = {
 	// Mission failed
