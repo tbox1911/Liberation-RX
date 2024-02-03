@@ -1,14 +1,12 @@
 params ["_vehicle"];
 if (isNil "_vehicle") exitWith {};
 
-[
-	[_vehicle],
-{
-	params ["_vehicle"];
+if (local _vehicle) then {
 	_vehicle allowDamage false;
 	sleep 1;
-	_vehicle setpos [(getposATL _vehicle) select 0, (getposATL _vehicle) select 1, 0.5];
-	_vehicle setVectorUp surfaceNormal position _vehicle;
-	sleep 4;
+	[_vehicle] call F_vehicleUnflip;
+	sleep 1;
 	_vehicle allowDamage true;
-}] remoteExec ["bis_fnc_call", 2];
+} else {
+	[_vehicle] remoteExec ["vehicle_unflip_remote_call", 2];
+};
