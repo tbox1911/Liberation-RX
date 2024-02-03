@@ -157,6 +157,7 @@ if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_s
 		_static_count = 4;
 	};
 
+	if (opforcap >= GRLIB_opfor_cap) then { _vehtospawn = [] };
 	if (count _vehtospawn > 0) then {
 		{
 			_vehicle = [_sectorpos, _x] call F_libSpawnVehicle;
@@ -178,6 +179,7 @@ if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_s
 		};
 	};
 
+	if (opforcap >= GRLIB_opfor_cap) then { _building_ai_max = 0 };
 	if ( _building_ai_max > 0 ) then {
 		_managed_units = _managed_units + ([_infsquad, _building_ai_max, _sectorpos, _building_range] call F_spawnBuildingSquad);
 		sleep 5;

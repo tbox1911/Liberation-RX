@@ -1,5 +1,7 @@
 params [ "_sector", "_infsquad", "_squadies_to_spawn" ];
 
+if (opforcap >= GRLIB_opfor_cap) exitWith {grpNull};
+
 diag_log format [ "Spawn regular squad type %1 (%2) at %3", _infsquad, count _squadies_to_spawn, time ];
 private _pos = (markerpos _sector) getPos [(40 + floor random 80), random 360];
 _pos set [2, 0.5];
