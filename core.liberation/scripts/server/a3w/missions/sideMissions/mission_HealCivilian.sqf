@@ -125,7 +125,8 @@ _waitUntilCondition = { ({ alive _x } count (units _grp_wnded) == 0) };
 _waitUntilSuccessCondition = {
 	private _alive_wnded = { alive _x } count (units _grp_wnded);
 	if (_alive_wnded == 0) exitWith { false };
-	({stopped _x && alive _x && isNil {_x getVariable "GRLIB_A3W_Mission_HC2"}} count (units _grp_wnded) == _alive_wnded)
+	private _rescued = { stopped _x && alive _x && isNil {_x getVariable "GRLIB_A3W_Mission_HC2"} } count (units _grp_wnded);
+	(_rescued == _alive_wnded);
 };
 
 _failedExec = {
