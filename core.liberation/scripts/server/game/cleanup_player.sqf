@@ -24,6 +24,16 @@ private _my_veh = vehicles select { _x getVariable ["GRLIB_vehicle_owner", ""] =
 	};
 } forEach _my_veh;
 
+// Remove tents too far
+private _my_tent = [];
+if (!isNil "GRLIB_mobile_respawn") then {
+	_my_tent = GRLIB_mobile_respawn select {
+		!([_x, "FOB", GRLIB_fob_range] call F_check_near) &&
+		(_x getVariable ["GRLIB_vehicle_owner", ""] == _uid)
+	};
+	{ deleteVehicle _x } forEach _my_tent;
+};
+
 // Remove Dog
 private _my_dog = _unit getVariable ["my_dog", nil];
 if (!isNil "_my_dog") then { deleteVehicle _my_dog };
