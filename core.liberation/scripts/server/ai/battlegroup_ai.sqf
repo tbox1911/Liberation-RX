@@ -67,7 +67,6 @@ while { ({alive _x} count (units _grp) > 0) } do {
 			(driver _vehicle) doMove _objective_pos;
 		};
 		_timer = round (time + (5 * 60));
-		sleep 33;
 	};
 
 	{

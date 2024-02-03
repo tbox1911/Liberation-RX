@@ -9,9 +9,6 @@ private ["_basepos", "_waypoint", "_wp0"];
 private _grp_veh = objectParent (leader _grp);
 if (_grp_veh isKindOf "Ship") exitWith { [_grp, getPosATL _grp_veh, _radius] spawn patrol_ai };
 
-private _completion_radius = (_radius/3);
-if (_grp_veh isKindOf "Air") then { _completion_radius = 250 };
-
 sleep (5 + floor random 10);
 private _timer = 0;
 private _patrol = false;
@@ -21,8 +18,7 @@ while { GRLIB_endgame == 0 && ({alive _x} count (units _grp) > 0) } do {
 	if (isNull _basepos) then {
 		if (!_patrol) then {
 			_patrol = true;
-			[_grp, getPosATL _grp_veh, _radius] spawn patrol_ai;
-			sleep 33;
+			[_grp, _flagpos, _radius] spawn patrol_ai;
 		};
 	} else {
 		if ( time > _timer) then {
@@ -45,7 +41,6 @@ while { GRLIB_endgame == 0 && ({alive _x} count (units _grp) > 0) } do {
 			_waypoint setWaypointType "CYCLE";
 			{ _x doFollow leader _grp } foreach units _grp;
 			_timer = round (time + (5 * 60));
-			sleep 33;
 		};
 	};
 
