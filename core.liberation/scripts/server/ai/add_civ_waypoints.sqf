@@ -4,7 +4,7 @@ if (isNull _grp) exitWith {};
 
 private ["_waypoint", "_wp0", "_nearestroad", "_radius", "_nextpos"];
 private _civ_veh = objectParent (leader _grp);
-if (_civ_veh isKindOf "Ship") exitWith { [_grp, getPosATL _civ_veh, 80] spawn add_defense_waypoints };
+if (_civ_veh isKindOf "Ship") exitWith { [_grp, getPosATL _civ_veh, 80] spawn patrol_ai };
 
 [_grp] call F_deleteWaypoints;
 private _max_try = 100;

@@ -30,27 +30,8 @@ private _pilotUnits = units _pilotsGrp;
 } foreach (_pilotUnits);
 sleep 5;
 
-private _patrolcorners = [
-	[ (getpos _helowreck select 0) - 40, (getpos _helowreck select 1) - 40, 0 ],
-	[ (getpos _helowreck select 0) + 40, (getpos _helowreck select 1) - 40, 0 ],
-	[ (getpos _helowreck select 0) + 40, (getpos _helowreck select 1) + 40, 0 ],
-	[ (getpos _helowreck select 0) - 40, (getpos _helowreck select 1) + 40, 0 ]
-];
-
-private _grppatrol = [_patrolcorners select 0, ([] call F_getAdaptiveSquadComp), GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
-
-[_grppatrol] call F_deleteWaypoints;
-{
-	_waypoint = _grppatrol addWaypoint [_x, 0];
-	_waypoint setWaypointType "MOVE";
-	_waypoint setWaypointSpeed "LIMITED";
-	_waypoint setWaypointBehaviour "SAFE";
-	_waypoint setWaypointCompletionRadius 5;
-} foreach _patrolcorners;
-
-_waypoint = _grppatrol addWaypoint [(_patrolcorners select 0), 0];
-_waypoint setWaypointType "CYCLE";
-{_x doFollow (leader _grppatrol)} foreach units _grppatrol;
+private _grppatrol = [_helopos, ([] call F_getAdaptiveSquadComp), GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
+[_grppatrol, _helopos, 50] spawn patrol_ai;
 
 private _nbsentry = 2 + (floor (random 3));
 private _unitclass = [];

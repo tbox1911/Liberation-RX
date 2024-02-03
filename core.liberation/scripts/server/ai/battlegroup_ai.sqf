@@ -10,6 +10,9 @@ if (_vehicle isKindOf "Ship") exitWith {
 	[_grp, getPosATL _vehicle] spawn add_defense_waypoints;
 };
 
+sleep (33 + floor random 33);
+private _timer = 0;
+
 while { ({alive _x} count (units _grp) > 0) } do {
 	_in_water = ({(alive _x && surfaceIsWater (getPos _x) && _x distance2D _objective_pos > 300)} count (units _grp) > 3);
 	_next_objective = [_objective_pos, true, GRLIB_sector_size] call F_getNearestBluforObjective;
@@ -34,37 +37,47 @@ while { ({alive _x} count (units _grp) > 0) } do {
 		deleteGroup _grp;
 	};
 
-	[_objective_pos] remoteExec ["remote_call_incoming", 0];
+	if ( time > _timer) then {
+		[_objective_pos] remoteExec ["remote_call_incoming", 0];
 
-	[_grp] call F_deleteWaypoints;
+		[_grp] call F_deleteWaypoints;
+		_waypoint = _grp addWaypoint [_objective_pos, 100];
+		_waypoint setWaypointType "MOVE";
+		_waypoint setWaypointSpeed "FULL";
+		_waypoint setWaypointBehaviour "COMBAT";
+		_waypoint setWaypointCombatMode "RED";
+		_waypoint setWaypointCompletionRadius 50;
+		_waypoint = _grp addWaypoint [_objective_pos, 100];
+		_waypoint setWaypointType "MOVE";
+		_waypoint = _grp addWaypoint [_objective_pos, 100];
+		_waypoint setWaypointType "MOVE";
+		_waypoint = _grp addWaypoint [_objective_pos, 100];
+		_waypoint setWaypointType "MOVE";
 
-	_waypoint = _grp addWaypoint [_objective_pos, 100];
-	_waypoint setWaypointType "MOVE";
-	_waypoint setWaypointSpeed "FULL";
-	_waypoint setWaypointBehaviour "COMBAT";
-	_waypoint setWaypointCombatMode "RED";
-	_waypoint setWaypointCompletionRadius 50;
-	_waypoint = _grp addWaypoint [_objective_pos, 100];
-	_waypoint setWaypointType "MOVE";
-	_waypoint = _grp addWaypoint [_objective_pos, 100];
-	_waypoint setWaypointType "MOVE";
-	_waypoint = _grp addWaypoint [_objective_pos, 100];
-	_waypoint setWaypointType "MOVE";
+		_wp0 = waypointPosition [_grp, 0];
+		_waypoint = _grp addWaypoint [_wp0, 0];
+		_waypoint setWaypointType "CYCLE";
+		sleep 1;
+		_grp setSpeedMode "FULL";
+		_grp setBehaviourStrong "COMBAT";
+		_grp setCombatMode "RED";
+		{ _x doFollow (leader _grp) } foreach units _grp;
 
-	_wp0 = waypointPosition [_grp, 0];
-	_waypoint = _grp addWaypoint [_wp0, 0];
-	_waypoint setWaypointType "CYCLE";
-	sleep 1;
-	_grp setSpeedMode "FULL";
-	_grp setBehaviourStrong "COMBAT";
-	_grp setCombatMode "RED";		
-	{ _x doFollow (leader _grp) } foreach units _grp;
-
-	if (_vehicle isKindOf "AllVehicles") then {
-		(driver _vehicle) doMove _objective_pos;
+		if (_vehicle isKindOf "AllVehicles") then {
+			(driver _vehicle) doMove _objective_pos;
+		};
+		_timer = round (time + (5 * 60));
+		sleep 33;
 	};
-	sleep 30;
 
-	_timer = round (time + (5 * 60));
-	waitUntil {sleep 33; ({alive _x} count (units _grp) == 0) || time > _timer };
+	{
+		if (isNull objectParent _x && round (speed vehicle _x) == 0) then {
+			[_x] call F_fixPosUnit;
+			_x switchMove "AmovPercMwlkSrasWrflDf";
+			_x playMoveNow "AmovPercMwlkSrasWrflDf";
+			sleep 3;
+		};
+	} forEach (units _grp);
+
+	sleep 33;
 };
