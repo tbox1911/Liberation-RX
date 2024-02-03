@@ -14,7 +14,7 @@ while { true } do {
         };
 
         // Correct static position
-        [_vehicle] call F_vehicleUnflip;
+        [_static] call F_vehicleUnflip;
 
         sleep 0.5;
     } forEach _all_static;
