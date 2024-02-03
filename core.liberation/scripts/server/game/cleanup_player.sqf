@@ -31,7 +31,11 @@ if (!isNil "GRLIB_mobile_respawn") then {
 		!([_x, "FOB", GRLIB_fob_range] call F_check_near) &&
 		(_x getVariable ["GRLIB_vehicle_owner", ""] == _uid)
 	};
-	{ deleteVehicle _x } forEach _my_tent;
+	{
+		GRLIB_mobile_respawn = GRLIB_mobile_respawn - [_x];
+		deleteVehicle _x;
+	} forEach _my_tent;
+	publicVariable "GRLIB_mobile_respawn";
 };
 
 // Remove Dog
