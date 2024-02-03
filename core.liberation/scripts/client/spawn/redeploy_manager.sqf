@@ -227,10 +227,14 @@ if (deploy == 1) then {
 		private _my_squad = player getVariable ["my_squad", nil];
 		{ doStop _x } forEach _unit_list;
 		if (!isNil "_my_squad") then { { _unit_list pushBack _x } forEach units _my_squad };
-		private _unit_list_redep = _unit_list select { !(isPlayer _x) && (isNull objectParent _x) && (_x distance2D player < 30) && lifestate _x != 'INCAPACITATED' };
-		player setDir _destdir;
+		private _unit_list_redep = _unit_list select {
+			!(isPlayer _x) && (isNull objectParent _x) &&
+			(_x distance2D player < 30) &&
+			lifestate _x != 'INCAPACITATED'
+		};
 		player setPosATL ([_destpos, _destdist, (_destdir-180)] call BIS_fnc_relPos);
-		sleep 0.5;
+		sleep 1;
+
 		[_unit_list_redep, _destpos, _destdist] spawn {
 			params ["_list", "_pos", "_dist"];
 			sleep 1;

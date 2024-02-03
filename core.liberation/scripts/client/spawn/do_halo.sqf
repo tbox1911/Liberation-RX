@@ -77,25 +77,26 @@ if ( dojump > 0 ) then {
 		sleep 2;
 		[_unit, "hide"] remoteExec ["dog_action_remote_call", 2];
 
-		private _player_pos = getPosATL _unit;
 		private _units = units group _unit;
 		private _my_squad = _unit getVariable ["my_squad", nil];
 		if (!isNil "_my_squad") then { { _units pushBack _x } forEach units _my_squad };
 
 		// Jump!
 		player setVariable ["GRLIB_action_inuse", true, true];
-		private _unit_list_halo = [_units, { !(isPlayer _x) && (isNull objectParent _x) && (_x distance2D _player_pos) < 40 && lifestate _x != 'INCAPACITATED' }] call BIS_fnc_conditionalSelect;
-		[_unit, halo_position] spawn paraDrop;
-		sleep 1;
-		[_unit_list_halo] spawn {
-			params ["_list"];
-			{
-				sleep 1;
-				[_x, halo_position] spawn paraDrop;
-			} forEach _list;
+		private _unit_list_halo = _units select {
+			!(isPlayer _x) && (isNull objectParent _x) &&
+			(_x distance2D player < 30) &&
+			lifestate _x != 'INCAPACITATED'
 		};
+
+		[player, halo_position] spawn paraDrop;
+		sleep 1;
+
 		[halo_position, "parasound"] remoteExec ["sound_range_remote_call", 2];
-		sleep 3;
+		{
+			[_x, halo_position] spawn paraDrop;
+			sleep 1;
+		} forEach _unit_list_halo;
 		player setVariable ["GRLIB_action_inuse", false, true];
 	};
 };
