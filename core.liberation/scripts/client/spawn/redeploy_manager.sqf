@@ -225,7 +225,6 @@ if (deploy == 1) then {
 		if (_destpos isEqualTo zeropos) exitWith {};
 		private _unit_list = units group player;
 		private _my_squad = player getVariable ["my_squad", nil];
-		{ doStop _x } forEach _unit_list;
 		if (!isNil "_my_squad") then { { _unit_list pushBack _x } forEach units _my_squad };
 		private _unit_list_redep = _unit_list select {
 			!(isPlayer _x) && (isNull objectParent _x) &&
