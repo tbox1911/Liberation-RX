@@ -160,10 +160,12 @@ if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_s
 	if (count _vehtospawn > 0) then {
 		{
 			_vehicle = [_sectorpos, _x] call F_libSpawnVehicle;
-			[group ((crew _vehicle) select 0), _sectorpos] spawn defence_ai;
-			_managed_units pushback _vehicle;
-			{ _managed_units pushback _x } foreach (crew _vehicle);
-			sleep 2;
+			if (!isNull _vehicle) then {
+				[group ((crew _vehicle) select 0), _sectorpos] spawn defence_ai;
+				_managed_units pushback _vehicle;
+				{ _managed_units pushback _x } foreach (crew _vehicle);
+				sleep 2;
+			};
 		} foreach _vehtospawn;
 	} else {
 		if (count _squad1 == 0) then { _squad1 = ([] call F_getAdaptiveSquadComp) };
