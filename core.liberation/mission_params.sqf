@@ -32,7 +32,6 @@ LRX_Mission_Params = [
 	["Unitcap", 1],					// Maximum amount AI units - [default 1] - values = [0.5,0.75,1,1.25,1.5,2] - Text {50%,%75,%100,%125,%150,%200}
 	["Difficulty", 1],				// Difficulty - [default 1] - values = [0.5,0.75,1,1.25,1.5,2,4,10] - Text {Tourist,Easy,Normal,Moderate,Hard,Extreme,Ludicrous,Oh god oh god we are all going to die}
 	["Aggressivity",1],				// CSAT aggression - [default 1] - values = [0.25,0.5,1,2,4] - Text {Anemic,Weak,Normal,Strong,Extreme}
-	["AdaptToPlayercount", 1],		// Hostile presence adapts to player count - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["SectorRadius", 0],			// The size of the sector - [default 0] - values = {0,300,400,500,600,700,800,900,1000,1200,1500};
 	["SectorDespawn", 72], 			// Time for a sector to Despawn if no attackers - [default 72] - values = [(3*12), (6*12), (8*12), (12*12), (16*12), (20*12)]
 	["DayDuration", 1],				// Day duration (multiplier) - [default 1] - values = [0.25, 0.5, 1, 1.5, 2, 2.5, 3, 5, 10, 20, 30, 60]
@@ -268,7 +267,6 @@ LRX_Mission_Params_Def = [
 	["NavalFobType", localize "STR_PARAM_NAVAL_TYPE", [localize "STR_PARAMS_DISABLED","USS Liberty","USS Freedom","(not yet)Offshore Plateform"]],
 	["TK_mode", localize "STR_TK_MODE", [localize "STR_PARAMS_DISABLED",localize "STR_TK_MODE_RELAX",localize "STR_TK_MODE_STRICT"]],
 	["DeploymentCinematic", localize "STR_PARAMS_DEPLOYMENTCAMERA", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
-	["AdaptToPlayercount", localize "STR_PARAM_ADAPT_TO_PLAYERCOUNT", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["BluforDefenders", localize "STR_PARAM_BLUFOR_DEFENDERS", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["Introduction", localize "STR_PARAMS_INTRO", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["Fatigue", localize "STR_PARAMS_FATIGUE", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],

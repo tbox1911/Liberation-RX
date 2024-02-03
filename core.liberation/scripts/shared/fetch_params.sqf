@@ -152,7 +152,6 @@ GRLIB_free_loadout = ["FreeLoadout",0] call lrx_getParamValue;
 GRLIB_opfor_english = ["EnglishOpfor", 0] call lrx_getParamValue;
 GRLIB_difficulty_modifier = ["Difficulty",1] call lrx_getParamValue;
 GRLIB_csat_aggressivity = ["Aggressivity",1] call lrx_getParamValue;
-GRLIB_adaptive_opfor = ["AdaptToPlayercount",1] call lrx_getParamValue;
 GRLIB_sector_radius = ["SectorRadius",0] call lrx_getParamValue;
 GRLIB_day_factor = ["DayDuration",1] call lrx_getParamValue;
 GRLIB_night_factor = ["NightDuration",1] call lrx_getParamValue;
@@ -295,7 +294,6 @@ if ( GRLIB_admin_menu == 1 ) then { GRLIB_admin_menu = true } else { GRLIB_admin
 if ( GRLIB_hide_opfor == 1 ) then { GRLIB_hide_opfor = true } else { GRLIB_hide_opfor = false };
 if ( GRLIB_permission_vehicles == 1 ) then { GRLIB_permission_vehicles = true } else { GRLIB_permission_vehicles = false };
 if ( GRLIB_permission_enemy == 1 ) then { GRLIB_permission_enemy = true } else { GRLIB_permission_enemy = false };
-if ( GRLIB_adaptive_opfor == 1 ) then { GRLIB_adaptive_opfor = true } else { GRLIB_adaptive_opfor = false };
 if ( GRLIB_passive_income == 1 ) then { GRLIB_passive_income = true } else { GRLIB_passive_income = false };
 if ( GRLIB_permissions_param == 1 ) then { GRLIB_permissions_param = true } else { GRLIB_permissions_param = false };
 if ( GRLIB_use_whitelist == 1 ) then { GRLIB_use_whitelist = true } else { GRLIB_use_whitelist = false };
