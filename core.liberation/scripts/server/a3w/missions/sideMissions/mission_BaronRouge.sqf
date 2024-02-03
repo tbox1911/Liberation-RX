@@ -5,13 +5,17 @@ private [ "_citylist", "_leader"];
 
 _setupVars = {
 	_missionType = "STR_BARON_ROUGE";
-	_citylist = [] call cityList;
+	_citylist = sectors_bigtown;
 	_locationsArray = nil; // locations are generated on the fly from towns
 	_missionTimeout = (30 * 60);
 };
 
 _setupObjects = {
 	_missionPos = markerPos ((selectRandom _citylist) select 0);
+	if (count _missionPos == 0) exitWith { 
+    	diag_log format ["--- LRX Error: side mission BR, cannot find spawn point!"];
+    	false;
+	};
 	_vehicleClass = "";
 	if (count a3w_br_planes == 0) then {
 		_vehicleClass = selectRandom (opfor_air select { _x isKindOf "Plane" });

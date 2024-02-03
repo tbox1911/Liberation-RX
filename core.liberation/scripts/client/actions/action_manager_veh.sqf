@@ -25,6 +25,7 @@ private _wreck_class = [
 
 [] call compile preprocessFile "scripts\client\actions\action_manager_veh_check.sqf";
 
+waituntil { sleep 1; !isNil "GRLIB_player_near_lhd"};
 waituntil { sleep 1; GRLIB_player_spawned && (player getVariable ["GRLIB_score_set", 0] == 1)};
 if (!(player diarySubjectExists str(parseText GRLIB_r3))) exitWith {};
 
@@ -118,7 +119,7 @@ while { true } do {
 	} forEach _nearstatics;
 
 	// FOB Sign Actions
-	_nearsign = (player nearEntities [FOB_sign, _searchradius]) select { (GRLIB_player_near_lhd || GRLIB_player_fobdistance < GRLIB_fob_range) && isNil {_x getVariable "GRLIB_sign_action"} };
+	_nearsign = (nearestObjects [player, [FOB_sign], _searchradius]) select { (GRLIB_player_near_lhd || GRLIB_player_fobdistance < GRLIB_fob_range) && isNil {_x getVariable "GRLIB_sign_action"} };
 	{
 		_unit = _x;
 		_unit addAction ["<t color='#FFFFFF'>" + "-= Hall of Fame =-" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Talk_ca.paa'/>",{([5] call F_notice_hof) spawn BIS_fnc_dynamicText},"",989,true,true,"","GRLIB_player_is_menuok",5];

@@ -12,6 +12,10 @@ _setupVars = {
 
 _setupObjects = {
 	_missionPos = markerPos ((selectRandom _citylist) select 0);
+	if (count _missionPos == 0) exitWith { 
+    	diag_log format ["--- LRX Error: side mission HH, cannot find spawn point!"];
+    	false;
+	};	
 	_vehicleClass = selectRandom opfor_troup_transports_heli;
 
 	_aiGroup = createGroup [GRLIB_side_enemy, true];

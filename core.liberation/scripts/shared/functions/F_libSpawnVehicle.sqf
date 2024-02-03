@@ -7,7 +7,7 @@ params [
 	["_crewed", true]
 ];
 
-if (isNil "_classname") exitWith {objNull};
+if (isNil "_sectorpos" || isNil "_classname") exitWith {objNull};
 if (_side != GRLIB_side_civilian) then {
 	diag_log format [ "Spawn vehicle %1 at %2", _classname , time ];
 };

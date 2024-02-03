@@ -72,7 +72,7 @@ if (do_action == 1) then {
 
 	if (air_type == 7) exitWith {
 		if ([_cost] call F_pay) then {
-			[player] remoteExec ["send_aircraft_remote_call", 2]
+			[player] remoteExec ["send_aircraft_remote_call", 2];
 			player setVariable ["AirCoolDown", round(time + 20*60)];
 		};
 	};
