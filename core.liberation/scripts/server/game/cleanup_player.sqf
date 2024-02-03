@@ -69,7 +69,7 @@ if (!isNil "_taxi") then {
 };
 
 // Delete Body
-deleteVehicle _unit;
+// deleteVehicle _unit;
 
 private _text = format ["Bye bye %1, see you soon...", _name];
 [gamelogic, _text] remoteExec ["globalChat", -2];
