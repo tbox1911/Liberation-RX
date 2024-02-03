@@ -189,6 +189,7 @@ if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_s
 		if ( count _buildingpositions > _minimum_building_positions ) then {
 			_building_ai_max = _building_ai_max min count _buildingpositions;
 			_managed_units = _managed_units + ([_infsquad, _building_ai_max, _buildingpositions, _sectorpos, _sector] call F_spawnBuildingSquad);
+			sleep 5;
 		};
 	};
 
@@ -198,35 +199,35 @@ if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_s
 		_grp = [ _sector, _infsquad, _squad1 ] call F_spawnRegularSquad;
 		[ _grp, _sectorpos, 50 ] spawn add_defense_waypoints;
 		_managed_units = _managed_units + (units _grp);
-		sleep 3;
+		sleep 5;
 	};
 
 	if ( count _squad2 > 0 ) then {
 		_grp = [ _sector, _infsquad, _squad2 ] call F_spawnRegularSquad;
 		[ _grp, _sectorpos, 100 ] spawn add_defense_waypoints;
 		_managed_units = _managed_units + (units _grp);
-		sleep 3;
+		sleep 5;
 	};
 
 	if ( count _squad3 > 0 ) then {
 		_grp = [ _sector, _infsquad, _squad3 ] call F_spawnRegularSquad;
 		[ _grp, _sectorpos, 100 ] spawn add_defense_waypoints;
 		_managed_units = _managed_units + (units _grp);
-		sleep 3;
+		sleep 5;
 	};
 
 	if ( count _squad4 > 0 ) then {
 		_grp = [ _sector, _infsquad, _squad4 ] call F_spawnRegularSquad;
 		[ _grp, _sectorpos, 200 ] spawn add_defense_waypoints;
 		_managed_units = _managed_units + (units _grp);
-		sleep 3;
+		sleep 5;
 	};
 
 	if ( count _squad5 > 0 ) then {
 		_grp = [ _sector, _infsquad, _squad5 ] call F_spawnRegularSquad;
 		[ _grp, _sectorpos, 300 ] spawn add_defense_waypoints;
 		_managed_units = _managed_units + (units _grp);
-		sleep 3;
+		sleep 5;
 	};
 
 	if ( _spawncivs && GRLIB_civilian_activity > 0) then {
