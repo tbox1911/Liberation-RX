@@ -28,4 +28,3 @@ if ( _backpack != "" && _backpack != "B_Parachute" ) then {
 	};
 };
 
-_unit doFollow player;

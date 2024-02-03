@@ -45,15 +45,16 @@ PAR_unblock_AI = {
 				unAssignVehicle _unit;
 				[_unit] orderGetIn false;
 				[_unit] allowGetIn false;
-				sleep 1;
+				sleep 0.5;
 				if (surfaceIsWater (getPos _unit)) then {
 					[[_unit]] spawn PAR_fn_fixPos;
 				} else {
 					_unit setPosATL (getPosATL player vectorAdd [([] call F_getRND), ([] call F_getRND), 0.5]);
 				};
-				[_unit] joinSilent (group player);
+				sleep 0.5;
 				_unit stop false;
 				_unit enableAI "ALL";
+				[_unit] joinSilent (group player);
 				_unit doFollow player;
 				_unit switchMove "AmovPercMwlkSrasWrflDf";
 				_unit playMoveNow "AmovPercMwlkSrasWrflDf";
