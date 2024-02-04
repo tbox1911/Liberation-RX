@@ -145,6 +145,5 @@ uiSleep _line_delay;
 titleText [localize "STR_VICTORY_TITLE" ,"BLACK", 5];
 waitUntil { !dialog };
 cinematic_camera_started = false;
-sleep 10;
 endMission "END";
 forceEnd;
