@@ -250,9 +250,6 @@ onPlayerDisconnected {
 	{ deleteVehicle _x } forEach PAR_AI_bros;
 };
 
-// Load Player Context (+Ai)
-[player] remoteExec ["load_context_remote_call", 2];
-
 initAmbientLife;
 enableEnvironment [true, true];
 

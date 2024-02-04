@@ -108,5 +108,8 @@ addMissionEventHandler ["Draw3D",{
 // Action Manager
 [] spawn PAR_ActionManager;
 
+// Load Player Context (+Ai)
+[player] remoteExec ["load_context_remote_call", 2];
+
 waitUntil {!(isNull (findDisplay 46))};
 systemChat "-------- pSiKo AI Revive Initialized --------";
