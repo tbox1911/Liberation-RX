@@ -60,6 +60,7 @@ SHOP_Man = "C_Man_formal_1_F";
 SELL_Man = "C_Story_Mechanic_01_F";
 WRHS_Man = "B_RangeMaster_F";
 uavs_def = ["UAV_01_base_F","UAV_02_base_F","UAV_03_base_F","UAV_04_base_F","UAV_05_Base_F","UAV_06_base_F","UGV_01_base_F"];
+uavs_west = [];
 boats_west = [];
 ai_resupply_sources = [];
 ai_healing_sources = [];
