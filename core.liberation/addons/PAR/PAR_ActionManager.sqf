@@ -1,12 +1,19 @@
 // PAR Manage Action
 
 private ["_unit", "_wnded_list", "_id1", "_id2", "_id3"];
+private _checkAction = {
+    params ["_unit"];
+    private _act = _unit getVariable ["PAR_isMenuActive", []];
+    private _cnt = { _x in _act } count (actionIDs _unit);
+    (_cnt < 3);
+};
 
 while {true} do {
     _wnded_list = (getPos player) nearEntities ["CAManBase", 30];
     _wnded_list = _wnded_list select {
         side _x == GRLIB_side_civilian &&
         (_x getVariable ["PAR_wounded", false]) &&
+        ([_x] call _checkAction) &&
         isNull objectParent _x &&
         isNil {_x getVariable 'PAR_isMenuActive'} &&
         isNil {_x getVariable 'PAR_busy'} &&
