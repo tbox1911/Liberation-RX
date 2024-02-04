@@ -10,5 +10,7 @@ if ( isClass (configFile >> "CfgWeapons" >> _item) && count (getArray (configFil
             _ret = _ret + 1;
         };
     };
+} else {
+    diag_log format ["--- LRX Error : Check Magazines - soldier %1 - weapon %2", typeOf _unit, _item];
 };
 _ret;
