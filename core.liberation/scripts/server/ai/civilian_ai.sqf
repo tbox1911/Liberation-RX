@@ -109,8 +109,8 @@ while {alive _unit && _continue} do {
                     sleep 3;
                     _target setDamage 0;
                     _unit stop false;
-				    _unit switchMove "AmovPercMwlkSrasWrflDf";
-				    _unit playMoveNow "AmovPercMwlkSrasWrflDf";
+				    _unit switchMove "AmovPercMwlkSnonWnonDf";
+				    _unit playMoveNow "AmovPercMwlkSnonWnonDf";
                 };
                 [_grp, getPosATL _unit] spawn add_civ_waypoints;
                 sleep _delay;
@@ -140,8 +140,8 @@ while {alive _unit && _continue} do {
                     _unit playMoveNow "ainvpknlmstpslaywrfldnon_medicother";
                     _target setDamage 0;
                     _unit stop false;
-				    _unit switchMove "AmovPercMwlkSrasWrflDf";
-				    _unit playMoveNow "AmovPercMwlkSrasWrflDf";
+				    _unit switchMove "AmovPercMwlkSnonWnonDf";
+				    _unit playMoveNow "AmovPercMwlkSnonWnonDf";
                 };
                 [_grp, getPosATL _unit] spawn add_civ_waypoints;
                 sleep _delay;
@@ -246,8 +246,8 @@ while {alive _unit && _continue} do {
                     };
                     sleep 5;
                     _unit stop false;
-				    _unit switchMove "AmovPercMwlkSrasWrflDf";
-				    _unit playMoveNow "AmovPercMwlkSrasWrflDf";
+				    _unit switchMove "AmovPercMwlkSnonWnonDf";
+				    _unit playMoveNow "AmovPercMwlkSnonWnonDf";
                 };
                 [_grp, getPosATL _unit] spawn add_civ_waypoints;
                 sleep _delay;
@@ -305,8 +305,8 @@ while {alive _unit && _continue} do {
                     [_ied] spawn { sleep 40; (_this select 0) setDamage 1 };
                     sleep 5;
                     _unit stop false;
-				    _unit switchMove "AmovPercMwlkSrasWrflDf";
-				    _unit playMoveNow "AmovPercMwlkSrasWrflDf";
+				    _unit switchMove "AmovPercMwlkSnonWnonDf";
+				    _unit playMoveNow "AmovPercMwlkSnonWnonDf";
                 };
                 [_grp, getPosATL _unit] spawn add_civ_waypoints;
                 sleep _delay;

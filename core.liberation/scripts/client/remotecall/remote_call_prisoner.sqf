@@ -44,7 +44,7 @@ if (_cmd == "flee") exitWith {
         [_unit] allowGetIn false;
         sleep 3;
     };
-    _anim = "AmovPercMwlkSrasWrflDf";
+    _anim = "AmovPercMwlkSnonWnonDf";  // "AmovPercMwlkSrasWrflDf"; // "AmovPercMwlkSnonWnonDf"
     _unit switchMove _anim;
     _unit playMoveNow _anim;
 };
