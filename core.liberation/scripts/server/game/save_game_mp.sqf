@@ -20,7 +20,7 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
 			};
             _x set [3, GREUH_start_fuel];  		// fuel
             GRLIB_player_scores pushback _x;
-        } foreach (profileNamespace getVariable GRLIB_save_key select 15);
+        } foreach (profileNamespace getVariable GRLIB_save_key select 16);
 
         private _savegame = [
             [],
