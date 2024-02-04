@@ -159,29 +159,6 @@ closeDialog 0;
 if (deploy == 1) then {
 	titleText ["","BLACK IN", 5];
 	
-	// Manage Player Loadout
-	if ( !GRLIB_player_spawned ) then {
-		// respawn loadout
-		if ( !isNil "GRLIB_respawn_loadout" ) then {
-			player setUnitLoadout GRLIB_respawn_loadout;
-		} else {
-			// init loadout
-			if ( GRLIB_forced_loadout > 0) then {
-				if ( typeOf player in units_loadout_overide ) then {
-					private _path = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, toLower (typeOf player)];
-					[_path, player] call F_getTemplateFile;
-				} else {
-					[player, configOf player] call BIS_fnc_loadInventory;
-				};
-				[player] spawn F_fixModUnit;
-				player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
-				GRLIB_backup_loadout = getUnitLoadout player;
-			};
-		};
-		[player] call F_filterLoadout;
-		[player] call F_payLoadout;
-	};
-
 	// choosen loadout
 	if ( _loadoutchoice > 0 ) then {
 		player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];

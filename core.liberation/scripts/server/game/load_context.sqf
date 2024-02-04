@@ -4,6 +4,7 @@ params [ "_player", "_uid"];
 private ["_grp", "_pos", "_unit", "_class", "_rank", "_loadout"];
 
 if (isNull _player) exitWith {};
+if (_player getVariable ["GRLIB_squad_context_loaded", false]) exitWith {};
 
 private _context = localNamespace getVariable [format ["player_context_%1", _uid], []];
 if (count _context == 0) then {
