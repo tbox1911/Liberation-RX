@@ -5280,6 +5280,10 @@
 			<Portuguese>Pena por matar civis</Portuguese>
 			<Czech>Trest za zabití civilistů</Czech>
 		</Key>
+		<Key ID="STR_CIV_PENALTIES_AMMOUNT">
+			<Original>Ammount of Penalty for killing civilians</Original>
+			<French>Combien de Pénalité pour les pertes civiles</French>
+		</Key>
 		<Key ID="STR_CIV_PENALTY_MESSAGE">
 			<Original>Penalty of %1 for killing of civilian named %2 by %3</Original>
 			<Russian>Штраф %1 за убийство гражданского по имени %2 %3</Russian>

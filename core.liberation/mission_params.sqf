@@ -50,6 +50,7 @@ LRX_Mission_Params = [
 	["TK_mode", 1],					// Teamkill Mode [default 0] - values = [0,1,2] - Text {Strict,Relax,Disabled}
 	["TK_count", 4],				// Teamkill Warning Count [default 4] - values = [3, 4, 5, 6, 7, 8, 9, 10] - Text {3, 4, 5, 6, 7, 8, 9, 10}
 	["CivPenalties", 1],			// Enable Civilian Penalty [default 1] - values = [1,0] - Text {Enabled,Disabled}
+	["CivPenaltiesAmmount", 20],	// Civilian Penalty Ammount  values = [4, 6, 10, 15, 20, 30, 40]
 	["Civilians", 1],				// Cilivilian Manager - [default 1] - values = [0,0.5,1,2] - Text {None,Reduced,Normal,Increased}
 	["Patrols", 1],					// Patrols Manager - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["Wildlife", 1],				// Wildlife Manager - [default 1] - values = [1,0] - Text {Enabled,Disabled}
@@ -171,6 +172,11 @@ LRX_Mission_Params_Def = [
 	["TK_count", localize "STR_TK_COUNT",
 		["3", "4", "5", "6", "7", "8", "9", "10"],
 		[3, 4, 5, 6, 7, 8, 9, 10]
+	],
+	["CivPenaltiesAmmount", 20],
+	["CivPenaltiesAmmount", localize "STR_CIV_PENALTIES_AMMOUNT",
+		[ "4", "6", "8", "10", "20", "25", "30", "40", "50"],
+		[ 4, 6, 8, 10, 20, 25, 30, 40, 50]
 	],
 	["Civilians", localize "STR_PARAMS_CIVILIANS", [
 		localize "STR_PARAMS_DISABLED",

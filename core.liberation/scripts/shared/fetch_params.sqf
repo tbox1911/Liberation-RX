@@ -173,6 +173,7 @@ GRLIB_civilian_activity = ["Civilians",1] call lrx_getParamValue;
 GRLIB_patrols_activity = ["Patrols",1] call lrx_getParamValue;
 GRLIB_wildlife_manager = ["Wildlife",1] call lrx_getParamValue;
 GRLIB_civ_penalties = ["CivPenalties",1] call lrx_getParamValue;
+GRLIB_civ_penalties_ammount = ["CivPenaltiesAmmount",20] call lrx_getParamValue;
 GRLIB_halo_param = ["HaloJump",1] call lrx_getParamValue;
 GRLIB_blufor_defenders = ["BluforDefenders",1] call lrx_getParamValue;
 GRLIB_admin_menu = ["AdminMenu",1] call lrx_getParamValue;

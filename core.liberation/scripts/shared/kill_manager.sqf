@@ -88,12 +88,12 @@ if ( isServer ) then {
 				if ( isPlayer _killer ) then {
 					stats_civilians_killed_by_players = stats_civilians_killed_by_players + 1;
 					if ( GRLIB_civ_penalties ) then {
-						private _penalty = GRLIB_civ_killing_penalty;
+						private _penalty = GRLIB_civ_penalties_ammount;
 						private _score = [_killer] call F_getScore;
-						if ( _score < GRLIB_perm_inf ) then { _penalty = 10};
-						if ( _score > GRLIB_perm_inf ) then { _penalty = 20 };
-						if ( _score > GRLIB_perm_air ) then { _penalty = 40 };
-						if ( _score > GRLIB_perm_max ) then { _penalty = 60 };
+						if ( _score < GRLIB_perm_inf ) then { _penalty = GRLIB_civ_penalties_ammount/2};
+						if ( _score > GRLIB_perm_inf ) then { _penalty = GRLIB_civ_penalties_ammount };
+						if ( _score > GRLIB_perm_air ) then { _penalty = GRLIB_civ_penalties_ammount*2 };
+						if ( _score > GRLIB_perm_max ) then { _penalty = GRLIB_civ_penalties_ammount*3 };
 						[_killer, -_penalty] call F_addScore;
 						[_killer, -5] call F_addReput;
 						[name _unit, _penalty, _killer] remoteExec ["remote_call_civ_penalty", 0];
@@ -111,10 +111,11 @@ if ( isServer ) then {
 					};
 					if (_owner_id != "0" && GRLIB_civ_penalties) then {
 						_owner_player = _owner_id call BIS_fnc_getUnitByUID;
-						[_owner_player, -GRLIB_civ_killing_penalty] call F_addScore;
+						[_owner_player, -GRLIB_civ_penalties_ammount] call F_addScore;
+						[_owner_player, -1] call F_addReput;
 						_msg = format ["%1, Your AI kill Civilian !!", name _owner_player] ;
 						[gamelogic, _msg] remoteExec ["globalChat", 0];
-						[name _unit, GRLIB_civ_killing_penalty, _owner_player] remoteExec ["remote_call_civ_penalty", 0];
+						[name _unit, GRLIB_civ_penalties_ammount, _owner_player] remoteExec ["remote_call_civ_penalty", 0];
 					};
 				};
 			};
