@@ -1,21 +1,20 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private [ "_citylist", "_leader"];
+private ["_leader"];
 
 _setupVars = {
 	_missionType = "STR_BARON_ROUGE";
-	_citylist = sectors_bigtown;
 	_locationsArray = nil; // locations are generated on the fly from towns
 	_missionTimeout = (30 * 60);
 };
 
 _setupObjects = {
-	_missionPos = markerPos ((selectRandom _citylist) select 0);
-	if (count _missionPos == 0) exitWith { 
+	if (count sectors_bigtown > 1) exitWith { 
     	diag_log format ["--- LRX Error: side mission BR, cannot find spawn point!"];
     	false;
 	};
+	_missionPos = markerPos (selectRandom sectors_bigtown);
 	_vehicleClass = "";
 	if (count a3w_br_planes == 0) then {
 		_vehicleClass = selectRandom (opfor_air select { _x isKindOf "Plane" });
@@ -31,7 +30,7 @@ _setupObjects = {
 	_aiGroup setSpeedMode "FULL";
 
 	[_aiGroup] call F_deleteWaypoints;
-	_path = (_citylist call BIS_fnc_arrayShuffle) select [0,5];
+	_path = (sectors_bigtown call BIS_fnc_arrayShuffle) select [0,5];
 	{
 		_waypoint = _aiGroup addWaypoint [markerPos (_x select 0), 0];
 		_waypoint setWaypointType "MOVE";

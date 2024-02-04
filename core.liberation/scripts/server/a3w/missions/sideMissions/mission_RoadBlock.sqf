@@ -49,8 +49,10 @@ _setupObjects =
 		if (_found) exitWith { _missionPos };
 	} foreach (_sectors call BIS_fnc_arrayShuffle);
 
-	if (count _missionPos == 0) exitWith { false };		// no location found
-
+	if (count _missionPos == 0) exitWith { 
+    	diag_log format ["--- LRX Error: side mission RB, cannot find spawn point!"];
+    	false;
+	};
 	//----- build Check point ---------------------------------
 	_road_dir = _missionPos getDir ((_missionPos nearRoads 35) select 0);
 	_bunker_typename = selectRandom ["Land_BagBunker_Small_F"];
