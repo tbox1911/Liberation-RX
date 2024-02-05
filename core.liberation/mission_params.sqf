@@ -173,7 +173,6 @@ LRX_Mission_Params_Def = [
 		["3", "4", "5", "6", "7", "8", "9", "10"],
 		[3, 4, 5, 6, 7, 8, 9, 10]
 	],
-	["CivPenaltiesAmmount", 20],
 	["CivPenaltiesAmmount", localize "STR_CIV_PENALTIES_AMMOUNT",
 		[ "4", "6", "8", "10", "20", "25", "30", "40", "50"],
 		[ 4, 6, 8, 10, 20, 25, 30, 40, 50]
