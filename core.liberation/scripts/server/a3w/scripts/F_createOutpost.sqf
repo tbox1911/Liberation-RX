@@ -100,6 +100,8 @@ if (_enable_defenders) then {
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
         [_unit] joinSilent _grpdefenders;
         _unit setpos _nextpos;
+        _unit setUnitPos "UP";
+	    _unit disableAI "MOVE";
         [_unit] spawn building_defence_ai;
         [_unit] spawn reammo_ai;
         sleep 0.3;

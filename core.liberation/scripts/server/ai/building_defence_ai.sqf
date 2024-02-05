@@ -2,6 +2,8 @@ params ["_unit"];
 
 if (isNull _unit) exitWith {};
 
+_unit setVariable ["GRLIB_in_building", true, true];
+
 private _move_is_disabled = true;
 private _resume_movement = false;
 private _target = objNull;

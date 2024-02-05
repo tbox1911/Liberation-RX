@@ -95,7 +95,9 @@ _setupObjects =
 
 	_guard = (units _aiGroup) select 0;
 	_guard setPos (getPos _bunker);
-	[_guard, ""] spawn building_defence_ai;
+	_guard setUnitPos "UP";
+	_guard disableAI "MOVE";	
+	[_guard] spawn building_defence_ai;
 
 	_gunner = (units _aiGroup) select 1;
 	_gunner assignAsGunner _veh1;

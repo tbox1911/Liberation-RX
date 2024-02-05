@@ -46,11 +46,11 @@ while { count _position_indexes < count _unitclass } do {
 private _grp = [_sectorpos, _unitclass, _side, _infsquad] call F_libSpawnUnits;
 private _idxposit = 0;
 {
-	_x setUnitPos "UP";
-	_x disableAI "MOVE";
-	_x setPos (_buildingpositions select (_position_indexes select _idxposit));
-	[_x, _sector] spawn building_defence_ai;
-	_x setVariable ["GRLIB_in_building", true, true];
+	_unit = _x;
+	_unit setPos (_buildingpositions select (_position_indexes select _idxposit));
+	_unit setUnitPos "UP";
+	_unit disableAI "MOVE";
+	[_unit] spawn building_defence_ai;
 	_idxposit = _idxposit + 1;
 	sleep 0.1;
 } foreach (units _grp);
