@@ -14,6 +14,7 @@ class liberation_admin {
     "BuildButton",
     "BuildList",
 	  "SkipTimeButton",
+    "ZeusModeButton",
     "UnlockButton",
     "ExportButton",
     "ImportButton",
@@ -247,6 +248,16 @@ class liberation_admin {
     w = 0.0875 * safezoneW;
     h = 0.04 * safezoneH;
   };
+  class ZeusModeButton: StdButton {
+    idc = 1625;
+    action = "GRLIB_active_commander = player; publicVariable 'GRLIB_active_commander'; hint 'You're Zeus now...'";
+    text = $STR_ADMIN_ZEUSMODE;
+    x = 0.3275 * safezoneW + safezoneX;
+    y = 0.520 * safezoneH + safezoneY;
+    w = 0.0875 * safezoneW;
+    h = 0.04 * safezoneH;
+  };
+  
   class UnlockButton: StdButton {
     idc = 1609;
     action = "_x = cursorobject;if (isNull _x) exitWith {};_x setvariable ['R3F_LOG_disabled', false, true];_x setvariable ['GRLIB_vehicle_owner', '', true];hint format ['%1 Unlocked.',typeOf _x]";

@@ -6932,6 +6932,9 @@
 			<Portuguese>Pular tempo 10h</Portuguese>
 			<Czech>SkipTime 10hrs</Czech>
 		</Key>
+		<Key ID="STR_ADMIN_ZEUSMODE">
+			<Original>Zeus Mode</Original>
+		</Key>		
 		<Key ID="STR_ADMIN_UNLOCK">
 			<Original>Unlock Vehicle</Original>
 			<Russian>Открыть машину</Russian>
