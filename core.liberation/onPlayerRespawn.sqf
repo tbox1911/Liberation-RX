@@ -33,3 +33,4 @@ _unit allowDamage true;
 [] execVM "scripts\client\spawn\player_loadout.sqf";
 [] execVM "scripts\client\spawn\redeploy_manager.sqf";
 [] execVM "scripts\client\misc\welcome.sqf";
+[] execVM "scripts\client\commander\enforce_whitelist.sqf";

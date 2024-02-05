@@ -18,7 +18,6 @@ if (abort_loading) exitWith {
 };
 
 PAR_Grp_ID = getPlayerUID player;
-GRLIB_Player_VIP = (PAR_Grp_ID in GRLIB_whitelisted_steamids);
 if (PAR_Grp_ID == "" || !(isPlayer player)) exitWith {
 	private _msg = format ["ARMA3 Multiplayer Initialization Error!\nPlease reconnect to the server..."];
 	titleText [_msg, "BLACK FADED", 100];
@@ -33,6 +32,7 @@ if (!isMultiplayer) exitWith {
 	endMission "LOSER";
 };
 
+GRLIB_Player_VIP = (PAR_Grp_ID in GRLIB_whitelisted_steamids);
 if (GRLIB_use_exclusive && !([] call is_admin || GRLIB_Player_VIP)) exitWith {
 	private _msg = format ["Sorry, Invalid SteamID!\nDue to server configuration, you MUST be authorized to connect.\nPlease contact the server administrator."];
 	titleText [_msg, "BLACK FADED", 100];
@@ -185,6 +185,7 @@ GREUH_TipsText = [];
 	};
 } forEach ((localize "STR_TUTO_TEXT12") splitString "></");
 
+// Draw Zeus
 {
 	[_x] call BIS_fnc_drawCuratorLocations;
 } foreach allCurators;

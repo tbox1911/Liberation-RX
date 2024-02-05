@@ -34,15 +34,21 @@ while { true } do {
 
 	{
 		_zgm = _x;
-		_zgm addCuratorEditableObjects [_zeusunits,true];
-		_zgm removeCuratorEditableObjects [_units_to_remove,true];
-
+		_zgm addCuratorEditableObjects [_zeusunits, true];
+		_zgm removeCuratorEditableObjects [_units_to_remove, true];
 		_zgm  setCuratorCoef ["edit", 0];
 		_zgm  setCuratorCoef ["place", 0];
 		_zgm  setCuratorCoef ["synchronize", 0];
 		_zgm  setCuratorCoef ["delete", 0];
 		_zgm  setCuratorCoef ["destroy", 0];
 	} foreach allCurators;
+
+
+	if (!isNil "GRLIB_active_commander") then {
+		if !(GRLIB_active_commander in (call BIS_fnc_listCuratorPlayers)) then {
+			GRLIB_active_commander assignCurator (allCurators select 0);
+		};
+	};
 
 	sleep 10;
 };
