@@ -26,6 +26,7 @@ removeVest _unit;
 removeBackpack _unit;
 removeHeadgear _unit;
 removeGoggles _unit;
+_unit setVariable ["GREUH_stuff_price", nil];
 _unit setVariable ["GRLIB_action_inuse", false, true];
 _unit setVariable ["SOG_player_in_tunnel", nil];
 _unit allowDamage true;

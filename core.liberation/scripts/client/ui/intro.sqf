@@ -59,3 +59,6 @@ if ( howtoplay == 1 ) then {
 cinematic_camera_started = false;
 introDone = true;
 dostartgame = 1;
+
+waitUntil {sleep 0.1; GRLIB_player_spawned };
+[player] remoteExec ["load_context_remote_call", 2];
