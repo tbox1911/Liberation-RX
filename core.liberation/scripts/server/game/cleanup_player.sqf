@@ -29,6 +29,7 @@ private _my_tent = [];
 if (!isNil "GRLIB_mobile_respawn") then {
 	_my_tent = GRLIB_mobile_respawn select {
 		!([_x, "FOB", GRLIB_fob_range] call F_check_near) &&
+		isNil {_x getVariable "R3F_LOG_est_transporte_par"} &&
 		(_x getVariable ["GRLIB_vehicle_owner", ""] == _uid)
 	};
 	{
@@ -69,7 +70,14 @@ if (!isNil "_taxi") then {
 };
 
 // Delete Body
-// deleteVehicle _unit;
+removeAllWeapons _unit;
+removeAllAssignedItems _unit;
+removeUniform _unit;
+removeVest _unit;
+removeBackpack _unit;
+removeHeadgear _unit;
+removeGoggles _unit;
+deleteVehicle _unit;
 
 private _text = format ["Bye bye %1, see you soon...", _name];
 [gamelogic, _text] remoteExec ["globalChat", -2];
