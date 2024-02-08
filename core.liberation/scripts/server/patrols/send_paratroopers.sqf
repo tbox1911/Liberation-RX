@@ -71,6 +71,7 @@ if (_vehicle isKindOf "Plane_Base_F") then { _unload_dist = _unload_dist * 2 };
 	_waypoint setWaypointCombatMode "WHITE";
 	_waypoint setWaypointCompletionRadius 500;
 	_waypoint setWaypointStatements ["true", "[vehicle this] spawn clean_vehicle"];
+	{_x doFollow (leader _pilot_group)} foreach units _pilot_group;
 };
 
 _para_group;
