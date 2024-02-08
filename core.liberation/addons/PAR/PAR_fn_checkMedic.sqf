@@ -2,8 +2,10 @@ params ["_wnded","_medic"];
 private _cnt = 3;
 private _fail = 0;
 private _old = 999;
+private _dist = 0;
+private _msg = "";
 
-_check_sortie = {
+private _check_sortie = {
   params ["_wnded","_medic"];
   private _ret = false;
   //systemchat format ["dbg: wnded 2D dist : %1 sqr dist %2   speed %3", _wnded distance2D _medic, _wnded distanceSqr _medic, round (speed vehicle _medic) ];
@@ -33,25 +35,17 @@ while {lifeState _wnded == "INCAPACITATED" || lifeState _medic != "INCAPACITATED
     [_medic,_wnded] call PAR_fn_medicRelease;
   };
 
-  if ([_wnded, _medic] call _check_sortie) exitWith {[_wnded,_medic] call PAR_fn_sortie};
-  if (_fail == 99) exitWith {[_medic,_wnded] call PAR_fn_medicRelease};
+  if ([_wnded, _medic] call _check_sortie) exitWith {[_wnded, _medic] call PAR_fn_sortie};
+  if (_fail == 99) exitWith {[_medic, _wnded] call PAR_fn_medicRelease};
 
   _msg = "";
   _dist = round (_wnded distance2D _medic);
-  if (_dist > 500) exitWith {[_medic,_wnded] call PAR_fn_medicRelease};
-  if (_dist >= _old && round (speed vehicle _medic) == 0) then {
+  if (_dist > 500) exitWith {[_medic, _wnded] call PAR_fn_medicRelease};
+  if (_dist == _old && round (speed vehicle _medic) == 0) then {
     _fail = _fail + 1;
-    _medic stop true;
     _medic setDir (_medic getDir _wnded);
-    sleep 0.5;
-    unassignVehicle _medic;
-    if (!isnull objectParent _medic) then {
-      doGetOut _medic;
-      sleep 3;
-    };
-    _medic stop false;
-    if ([_wnded,_medic] call _check_sortie) exitWith {[_wnded,_medic] call PAR_fn_sortie};
-    if (_fail == 99) exitWith {[_medic,_wnded] call PAR_fn_medicRelease};
+    _medic switchMove "AmovPercMwlkSrasWrflDf";
+		_medic playMoveNow "AmovPercMwlkSrasWrflDf";
 
     if (_fail < 3) then {
       if (_wnded distance2D _medic < 25) then {
@@ -68,10 +62,6 @@ while {lifeState _wnded == "INCAPACITATED" || lifeState _medic != "INCAPACITATED
       _medic setPos _newpos;
       sleep 1;
       _medic allowDamage true;
-      if ([_wnded,_medic] call _check_sortie) exitWith {[_wnded,_medic] call PAR_fn_sortie};
-      if (_fail == 99) exitWith {[_medic,_wnded] call PAR_fn_medicRelease};
-
-      _dist = round (_wnded distance2D _medic);
     };
 
     if (_fail == 3) then {
@@ -84,11 +74,14 @@ while {lifeState _wnded == "INCAPACITATED" || lifeState _medic != "INCAPACITATED
   } else {
     _fail = 0;
   };
-  _old = _dist;
+
+  _old = round (_wnded distance2D _medic);
+  if ([_wnded, _medic] call _check_sortie) exitWith {[_wnded, _medic] call PAR_fn_sortie};
+  if (_fail == 99) exitWith {[_medic,_wnded] call PAR_fn_medicRelease};
 
   if (_cnt == 0 && !isNull _wnded) then {
     if (_fail == 0) then {
-      _msg = format [localize "STR_PAR_CM_02", name _wnded, name _medic, _dist, round (speed vehicle _medic)];
+      _msg = format [localize "STR_PAR_CM_02", name _wnded, name _medic, _old, round (speed vehicle _medic)];
     };
     [_wnded, _msg] call PAR_fn_globalchat;
     _cnt = 3;
