@@ -63,8 +63,10 @@ _grp setCombatBehaviour "COMBAT";
 	params ["_units"];
 	sleep 4;
 	{
-		_x switchMove "AmovPercMwlkSrasWrflDf";
-		_x playMoveNow "AmovPercMwlkSrasWrflDf";		
+		if (isNull objectParent _x) then {
+			_x switchMove "AmovPercMwlkSrasWrflDf";
+			_x playMoveNow "AmovPercMwlkSrasWrflDf";
+		};
 		_x setDamage 0;
 		_x allowDamage true;
 	} foreach _units;

@@ -12,7 +12,7 @@ while { count _convoy_destinations_markers < _max_waypoints && _max_try > 0} do 
     _max_try = _max_try - 1;
 };
 
-if ( count _convoy_destinations_markers < 4) exitWith { [gamelogic, "Could not find enough free sectors for convoy hijack mission"] remoteExec ["globalChat", 0] };
+if ( count _convoy_destinations_markers < 3) exitWith { [gamelogic, "Could not find enough free sectors for convoy hijack mission"] remoteExec ["globalChat", 0] };
 
 private _boxes_amount = 0;
 {
@@ -53,19 +53,24 @@ sleep 2;
 
 //-----------------------------------------
 // Waypoints
+_convoy_group setFormation "COLUMN";
+_convoy_group setBehaviourStrong "SAFE";
+_convoy_group setCombatMode "GREEN";
+_convoy_group setSpeedMode "LIMITED";
+
 [_convoy_group] call F_deleteWaypoints;
-for "_i" from 1 to ((count _convoy_destinations) -1) do {
-	private _waypoint = _convoy_group addWaypoint [ _convoy_destinations select _i, 100];
+{
+	_waypoint = _convoy_group addWaypoint [_x, 0];
 	_waypoint setWaypointType "MOVE";
-	_waypoint setWaypointSpeed "LIMITED";
+	_waypoint setWaypointFormation "COLUMN";
 	_waypoint setWaypointBehaviour "SAFE";
-	_waypoint setWaypointCombatMode "WHITE";
+	_waypoint setWaypointCombatMode "GREEN";
+	_waypoint setWaypointSpeed "LIMITED";
 	_waypoint setWaypointCompletionRadius 200;
-};
-_waypoint = _convoy_group addWaypoint [_convoy_destinations select 1, 0];
+} forEach _convoy_destinations;
+
+_waypoint = _convoy_group addWaypoint [_spawnpos, 0];
 _waypoint setWaypointType "CYCLE";
-_waypoint setWaypointCompletionRadius 200;
-{_x doFollow (leader _convoy_group)} foreach units _convoy_group;
 
 (driver _scout_vehicle) MoveTo (_convoy_destinations select 1);
 
@@ -169,7 +174,10 @@ while { _mission_in_progress } do {
 			_veh setFuel 1;
 			_veh setDamage 0;
 			[_veh] call F_vehicleUnflip;
-			if (_veh != _veh_leader) then { _x doFollow (leader _convoy_group) };
+			if (_veh != _veh_leader) then { 
+				(driver _veh) doFollow (leader _convoy_group);
+				(driver _veh) doMove getPosATL (leader _convoy_group);				
+			};
 			sleep 60;
 		};
 	} forEach (units _convoy_group);
@@ -181,14 +189,15 @@ while { _mission_in_progress } do {
 { deleteMarker _x } foreach _convoy_marker_list;
 if (time < _mission_timeout) then {
 	if (side group _transport_vehicle == GRLIB_side_friendly) then {
-		combat_readiness = combat_readiness - 0.25;
+		combat_readiness = combat_readiness - 10;
 		if ( combat_readiness < 0 ) then { combat_readiness = 0 };
 		stats_secondary_objectives = stats_secondary_objectives + 1;
+		[ 5 ] remoteExec ["remote_call_intel", 0];
 	} else {
-		combat_readiness = combat_readiness + 0.25;
+		combat_readiness = combat_readiness + 5;
 		if ( combat_readiness > 100 && GRLIB_difficulty_modifier < 2 ) then { combat_readiness = 100 };
+		[ 51 ] remoteExec ["remote_call_intel", 0];
 	};
-	[ 5 ] remoteExec ["remote_call_intel", 0];
 };
 private _vehicles = [_scout_vehicle, _troop_vehicle];
 [_vehicles, 5] spawn cleanMissionVehicles;

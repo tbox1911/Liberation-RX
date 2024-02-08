@@ -41,7 +41,11 @@ if ( _notiftype == 4 ) then {
 };
 
 if ( _notiftype == 5 ) then {
-	["lib_secondary_convoy_destroyed"] call BIS_fnc_showNotification;
+	["lib_secondary_convoy_success"] call BIS_fnc_showNotification;
+};
+
+if ( _notiftype == 51 ) then {
+	["lib_secondary_convoy_failed"] call BIS_fnc_showNotification;
 };
 
 if ( _notiftype == 6 ) then {

@@ -150,10 +150,16 @@ class CfgNotifications
 		color[] = {0,1,0,1};
 		sound = "taskSucceeded";
     };
-    class lib_secondary_convoy_destroyed : lib_secondary_fob_destroyed
+    class lib_secondary_convoy_success : lib_secondary_fob_destroyed
     {
-		description = $STR_NOTIFICATION_CONVOY_DESTROYED_TEXT;
+		description = $STR_NOTIFICATION_CONVOY_SUCCESS_TEXT;
     };
+    class lib_secondary_convoy_failed : lib_secondary_fob_destroyed
+    {
+		description = $STR_NOTIFICATION_CONVOY_FAILED_TEXT;
+    	color[] = {1,0,0,1};
+		sound = "taskFailed";		
+    };	
 	class lib_secondary_a3w_mission : lib_secondary_fob_destroyed
 	{
 		description = $STR_SIDE_START;

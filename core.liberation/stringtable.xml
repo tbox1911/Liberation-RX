@@ -3530,7 +3530,7 @@
 			<Portuguese>Ponto de passagem</Portuguese>
 			<Czech>Waypoint</Czech>
 		</Key>
-		<Key ID="STR_NOTIFICATION_CONVOY_DESTROYED_TEXT">
+		<Key ID="STR_NOTIFICATION_CONVOY_SUCCESS_TEXT">
 			<Original>OPFOR Convoy neutralized.</Original>
 			<French>Convoi OPFOR neutralisé.</French>
 			<German>OPFOR Konvoi neutralisiert.</German>
@@ -3541,6 +3541,10 @@
 			<Portuguese>Comboio OPFOR neutralizado.</Portuguese>
 			<Czech>Konvoj neutralizován.</Czech>
 		</Key>
+		<Key ID="STR_NOTIFICATION_CONVOY_FAILED_TEXT">
+			<Original>Cargo from Convoy OPFOR is lost.</Original>
+			<French>Cargaison du Convoi OPFOR est perdu.</French>
+		</Key>		
 		<Key ID="STR_NOTIFICATION_CONVOY_SPOTTED_TEXT">
 			<Original>OPFOR Convoy near %1.</Original>
 			<French>Convoi OPFOR près de %1.</French>
