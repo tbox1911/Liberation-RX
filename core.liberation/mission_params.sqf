@@ -49,9 +49,9 @@ LRX_Mission_Params = [
 	["Revive", 3],					// PAR revive - [default 3] - values = [3,2,1,0] - Text {Enabled - Everyone can revive,Enabled - Everyone can revive using Medikit/FAK,Enabled - Only medics can revive,Disabled}
 	["TK_mode", 1],					// Teamkill Mode [default 0] - values = [0,1,2] - Text {Strict,Relax,Disabled}
 	["TK_count", 4],				// Teamkill Warning Count [default 4] - values = [3, 4, 5, 6, 7, 8, 9, 10] - Text {3, 4, 5, 6, 7, 8, 9, 10}
+	["Civilians", 1],				// Cilivilian Manager - [default 1] - values = [0,0.5,1,2] - Text {None,Reduced,Normal,Increased}
 	["CivPenalties", 1],			// Enable Civilian Penalty [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["CivPenaltiesAmmount", 20],	// Civilian Penalty Ammount  values = [4, 6, 10, 15, 20, 30, 40]
-	["Civilians", 1],				// Cilivilian Manager - [default 1] - values = [0,0.5,1,2] - Text {None,Reduced,Normal,Increased}
 	["Patrols", 1],					// Patrols Manager - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["Wildlife", 1],				// Wildlife Manager - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["PassiveIncome", 0],			// Replace ammo box spawns with passive income - [default 0] - values = [1,0] - Text {Enabled,Disabled}
@@ -60,7 +60,7 @@ LRX_Mission_Params = [
 	["HaloJump", 1],				// HALO jump - [default 1] - values = [1,5,10,15,20,30,0] - Text {Enabled - no cooldown,Enabled - 5min cooldown,Enabled - 10min cooldown,Enabled - 15min cooldown,Enabled - 20min cooldown,Enabled - 30min cooldown,Disabled}
 	["BluforDefenders", 1],			// BLUFOR defenders in owned sectors - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["MaxFobs", 3],					// Maximum number of FOBs allowed - [default 26] - values = [3,5,7,10,15,20,26] - Text {3,5,7,10,15,20,26}
-	["MaxOutpost", 4],				// Maximum number of FOBs allowed - [default 26] - values = [3,5,7,10,15,20,26] - Text {3,5,7,10,15,20,26}	
+	["MaxOutpost", 4],				// Maximum number of FOBs allowed - [default 26] - values = [3,5,7,10,15,20,26] - Text {3,5,7,10,15,20,26}
 	["FobType", 0],					// The Startup Fob Vehicle - [default 0] - values = [1,0] - Text {Huron,Truck,Boat}
 	["HuronType", 0],				// The type of Huron - [default 0] - values = [0,1,2] - Text {"CH-67 Huron", "CH-49 Mohawk", "UH-80 Ghost Hawk"}
 	["NavalFobType", 0],			// The type of Naval FOB - [default 0] - values = [0,1,2] - Text {"USS Liberty", "USS Freedom", "Offshare plateform"}
@@ -161,11 +161,11 @@ LRX_Mission_Params_Def = [
 		localize "STR_PARAMS_REVIVE3"
 		]
 	],
-	["Respawn", localize "STR_RESPAWN", 
+	["Respawn", localize "STR_RESPAWN",
 		["5", "10", "20", "25", "30", "60"],
 		[5, 10, 20, 25, 30, 60]
-	],	
-	["RespawnCD", localize "STR_RESPAWN_CD", 
+	],
+	["RespawnCD", localize "STR_RESPAWN_CD",
 		[localize "STR_PARAMS_DISABLED", "4", "5", "6", "7", "8", "9", "10"],
 		[0, 240, 300, 360, 420, 480, 540, 600]
 	],
@@ -178,6 +178,14 @@ LRX_Mission_Params_Def = [
 		[ 4, 6, 8, 10, 20, 25, 30, 40, 50]
 	],
 	["Civilians", localize "STR_PARAMS_CIVILIANS", [
+		localize "STR_PARAMS_DISABLED",
+		localize "STR_PARAMS_CIVILIANS1",
+		localize "STR_PARAMS_CIVILIANS2",
+		localize "STR_PARAMS_CIVILIANS3"
+		],
+		[0, 0.5, 1, 2]
+	],
+	["Patrols", localize "STR_PARAMS_PATROLS", [
 		localize "STR_PARAMS_DISABLED",
 		localize "STR_PARAMS_CIVILIANS1",
 		localize "STR_PARAMS_CIVILIANS2",
@@ -201,7 +209,7 @@ LRX_Mission_Params_Def = [
 	],
 	["MaxOutpost", localize "STR_PARAM_OUTPOST_COUNT",
 		["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
-	],	
+	],
 	["SquadSize", localize "STR_PARAM_SQUAD_SIZE_START",
 		["0", "1", "2", "3", "4", "5", "6"]
 	],
@@ -210,7 +218,7 @@ LRX_Mission_Params_Def = [
 	],
 	["MaxGarageSize", localize "STR_PARAM_GARAGE_SIZE",
 		["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
-	],	
+	],
 	["MaxSpawnPoint", localize "STR_PARAM_SPAWN_MAX",
 		["1", "2", "3", "4", "5", "6"]
 	],
@@ -277,12 +285,11 @@ LRX_Mission_Params_Def = [
 	["Fatigue", localize "STR_PARAMS_FATIGUE", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["Permissions", localize "STR_PERMISSIONS_PARAM", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["Wildlife", localize "STR_PARAM_WILDLIFE", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
-	["Patrols", localize "STR_PARAMS_PATROLS", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["PassiveIncome", localize "STR_PARAM_PASSIVE_INCOME", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["Thermic", localize "STR_THERMAL", [localize "STR_PARAMS_DISABLED","Only at night",localize "STR_PARAMS_ENABLED"]],
 	["EnableArsenal", localize "STR_ARSENAL", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED",localize "STR_PARAMS_ARSENAL_FOB"]],
 	["EnableLock", localize "STR_VEH_LOCK", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
-	["EnemyLock", localize "STR_OPFOR_VEH_LOCK", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],	
+	["EnemyLock", localize "STR_OPFOR_VEH_LOCK", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["CivPenalties", localize "STR_CIV_PENALTIES", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["AdminMenu", "Enable the Admin Menu", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["HideOpfor", localize "STR_OPFORMARK", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],

@@ -105,7 +105,7 @@ if (isServer) then {
 				};
 			};
 			diag_log format ["   %1: %2", _name, _value_text ];
-		} foreach GRLIB_LRX_params;		
+		} foreach GRLIB_LRX_params;
 	};
 } else {
 	waitUntil { sleep 1; !isNil "GRLIB_LRX_params" };
@@ -196,8 +196,12 @@ GRLIB_blufor_cap = 50;						// Maximal number of friendly units
 GRLIB_max_active_sectors = 4;				// Maximal active sectors at the same time
 GRLIB_battlegroup_cap = GRLIB_battlegroup_cap * (sqrt GRLIB_unitcap) * (sqrt GRLIB_csat_aggressivity);
 GRLIB_patrol_cap = GRLIB_patrol_cap * GRLIB_unitcap;
+GRLIB_battlegroup_size = 8;
 GRLIB_battlegroup_size = GRLIB_battlegroup_size * GRLIB_unitcap;
+GRLIB_civilians_amount = 12;
 GRLIB_civilians_amount = GRLIB_civilians_amount * GRLIB_civilian_activity;
+GRLIB_patrol_amount = 7;
+GRLIB_patrol_amount = GRLIB_patrol_amount * GRLIB_patrols_activity;
 GRLIB_secondary_missions_costs = [ 100, 50, 10, 800 ];
 
 // Select MOD name
