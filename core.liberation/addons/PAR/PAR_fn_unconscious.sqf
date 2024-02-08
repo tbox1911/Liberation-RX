@@ -28,12 +28,8 @@ if (GRLIB_disable_death_chat && isPlayer _unit) then {
   };
 };
 
-waitUntil {
-  _unit switchMove "AinjPpneMstpSnonWrflDnon";  // lay down
-  _unit playMoveNow "AinjPpneMstpSnonWrflDnon";
-  sleep 0.5; 
-  (animationState _unit == "AinjPpneMstpSnonWrflDnon");
-};
+_unit switchMove "AinjPpneMstpSnonWrflDnon";  // lay down
+_unit playMoveNow "AinjPpneMstpSnonWrflDnon";
 sleep 7;
 
 _unit setVariable ["PAR_isUnconscious", true, true];
