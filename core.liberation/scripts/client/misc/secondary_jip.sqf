@@ -12,7 +12,3 @@ if (GRLIB_secondary_in_progress == 1) then {
 if (GRLIB_secondary_in_progress == 2) then {
 	[6] spawn remote_call_intel;
 };
-
-{
-	if !(simulationEnabled _x) then { _x setVariable ["R3F_LOG_disabled", true, true] };
-} forEach vehicles;
