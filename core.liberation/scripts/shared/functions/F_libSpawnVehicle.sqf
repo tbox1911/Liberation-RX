@@ -9,7 +9,7 @@ params [
 
 if (isNil "_sectorpos" || isNil "_classname") exitWith {objNull};
 if (_side != GRLIB_side_civilian) then {
-	diag_log format [ "Spawn vehicle %1 at %2", _classname , time ];
+	diag_log format [ "Spawn Vehicle %1 at %2", _classname, time ];
 };
 
 private _vehicle = objNull;
@@ -82,6 +82,10 @@ if ( isNull _vehicle ) exitWith {
 	objNull;
 };
 
+if (_side != GRLIB_side_civilian) then {
+	diag_log format [ "Spawn Vehicle %1 Pos %2 at %3", _classname, getPosATL _vehicle, time ];
+};
+
 private _vehcrew = [];
 if (_crewed) then {
 	_vehcrew = [_vehicle, _side] call F_forceCrew;
@@ -149,7 +153,7 @@ _vehicle setUnloadInCombat [true, false];
 [_vehicle] call F_clearCargo;
 
 if (_side != GRLIB_side_civilian) then {
-	diag_log format [ "Done Spawning vehicle %1 at %2", _classname , time ];
+	diag_log format [ "Done Spawning Vehicle %1 at %2", _classname , time ];
 };
 
 _vehicle;
