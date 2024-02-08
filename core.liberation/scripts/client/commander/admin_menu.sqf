@@ -60,7 +60,9 @@ if (do_admin == 1) then { (_display displayCtrl 1607) ctrlSetChecked true };
 if (do_teleport == 1) then { (_display displayCtrl 1620) ctrlSetChecked true };
 
 // Zeus mode ?
-if (GRLIB_active_commander in (call BIS_fnc_listCuratorPlayers)) then { ctrlEnable [1625, false] };
+if (!isNil "GRLIB_active_commander") then {
+	if (GRLIB_active_commander in (call BIS_fnc_listCuratorPlayers)) then { ctrlEnable [1625, false] };
+};
 
 // Clear listbox
 _ban_combo = _display displayCtrl 1611;
