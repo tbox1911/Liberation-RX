@@ -36,7 +36,6 @@ if ( count _nearbuildings > 0 ) then {
 			while { _pos in _used_positions } do {
 				_pos = selectRandom _building_positions;
 				sleep 0.5;
-				diag_log "bad loop!"
 			};
 			_used_positions pushback _pos;
 
