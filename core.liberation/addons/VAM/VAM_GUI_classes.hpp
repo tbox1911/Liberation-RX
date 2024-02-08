@@ -91,6 +91,7 @@ class VAM_GUI
 			style = LB_TEXTURES + LB_MULTI;
 			sizeEx = 0.035;
 			tooltip = "Info";
+			onLBDblClick = "[] spawn fnc_VAM_add_cargo;";
 			x = 0.506562 * safezoneW + safezoneX;
 			y = 0.560 * safezoneH + safezoneY;
 			w = 0.150937 * safezoneW;
