@@ -1,7 +1,7 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_location_name", "_tent", "_grp_medic", "_grp_wnded"];
+private ["_location_name", "_objects", "_grp_medic", "_grp_wnded"];
 
 _setupVars = {
 	_missionType = "STR_HEAL_CIV";
@@ -67,18 +67,19 @@ _setupObjects = {
 	_tent = createVehicle [a3w_heal_tent, _pos, [], 1, "None"];
 	_tent allowDamage false;
 	_tent setVectorDirAndUp [[-cos _dir, sin _dir, 0] vectorCrossProduct surfaceNormal _pos, surfaceNormal _pos];
-	_vehicles = [_tent];
+	_vehicle = _tent;
 	sleep 0.2;
 
 	_tent_pos = getPosATL _tent;
 	// add garbage
+	_objects = [];
 	for "_i" from 1 to 12 do {
 		_grbg = createVehicle [selectRandom _garbage, _tent_pos, [], 15, "None"];
 		_dir = random 360;
 		_grbg setVectorDirAndUp [[-cos _dir, sin _dir, 0] vectorCrossProduct surfaceNormal _pos, surfaceNormal _pos];
 		_grbg setVariable ["R3F_LOG_disabled", true, true];
 		_grbg enableSimulationGlobal false;
-		_vehicles pushBack _grbg;
+		_objects pushBack _grbg;
 		sleep 0.2;
 	};
 
@@ -134,6 +135,7 @@ _failedExec = {
 	{ [_x, -5] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
 	{ deleteVehicle _x } forEach (units _grp_medic);
 	{ deleteVehicle _x } forEach (units _grp_wnded);
+	{ deleteVehicle _x } forEach (_objects);
 	_successHintMessage = "STR_HEAL_CIV_MESSAGE3";
 	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
@@ -142,6 +144,7 @@ _successExec = {
 	// Mission complete
 	{ deleteVehicle _x } forEach (units _grp_medic);
 	{ deleteVehicle _x } forEach (units _grp_wnded);
+	{ deleteVehicle _x } forEach (_objects);
 	{ [_x, 5] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
 	_successHintMessage = "STR_HEAL_CIV_MESSAGE2";
 	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
