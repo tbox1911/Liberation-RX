@@ -3,6 +3,7 @@ if (!isServer) exitWith {};
 params ["_player", "_uid", ["_delete",false], ["_notify", false]];
 
 if (isNull _player) exitWith {};
+if !(_player getVariable ["GRLIB_player_context_loaded", false]) exitWith {};
 
 private _ai_group = [];
 private _loadout = [];
