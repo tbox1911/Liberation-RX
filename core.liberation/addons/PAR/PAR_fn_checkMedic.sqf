@@ -1,7 +1,6 @@
 params ["_wnded","_medic"];
 private _cnt = 3;
 private _fail = 0;
-private _old = 999;
 private _dist = 0;
 private _msg = "";
 
@@ -40,19 +39,27 @@ while {lifeState _wnded == "INCAPACITATED" || lifeState _medic != "INCAPACITATED
 
   _msg = "";
   _dist = round (_wnded distance2D _medic);
+  // systemchat format ["dbg: wnded 2D dist : %1 dist speed %2 fail %3", _wnded distance2D _medic, round (speed vehicle _medic), _fail];
+
   if (_dist > 500) exitWith {[_medic, _wnded] call PAR_fn_medicRelease};
-  if ((_old - _dist <= 3) && round (speed vehicle _medic) == 0) then {
+  if (round (speed vehicle _medic) == 0) then {
     _fail = _fail + 1;
     _medic setDir (_medic getDir _wnded);
     _medic switchMove "AmovPercMwlkSrasWrflDf";
 		_medic playMoveNow "AmovPercMwlkSrasWrflDf";
 
     if (_fail < 3) then {
-      if (_wnded distance2D _medic < 25) then {
+      if (_dist < 25) then {
         _medic doMove (getPosATL _wnded);
       } else {
         _medic doMove (getPos _wnded);
       };
+    };
+
+    if (_fail in [3, 4]) then {
+      _medic setDir (_medic getDir _wnded);
+      _relpos = _medic getRelPos [_dist/2, 0];
+      _medic doMove _relpos;
     };
 
     if (_fail > 4) then {
@@ -64,24 +71,18 @@ while {lifeState _wnded == "INCAPACITATED" || lifeState _medic != "INCAPACITATED
       _medic allowDamage true;
     };
 
-    if (_fail == 3) then {
-      _medic setDir (_medic getDir _wnded);
-      _relpos = _medic getRelPos [_dist/2, 0];
-      _medic doMove _relpos;
-    };
-
     _msg = format [localize "STR_PAR_CM_01", name _wnded, name _medic, _dist, _fail];
+    sleep 3;
   } else {
     _fail = 0;
   };
 
-  _old = round (_wnded distance2D _medic);
   if ([_wnded, _medic] call _check_sortie) exitWith {[_wnded, _medic] call PAR_fn_sortie};
   if (_fail == 99) exitWith {[_medic,_wnded] call PAR_fn_medicRelease};
 
   if (_cnt == 0 && !isNull _wnded) then {
     if (_fail == 0) then {
-      _msg = format [localize "STR_PAR_CM_02", name _wnded, name _medic, _old, round (speed vehicle _medic)];
+      _msg = format [localize "STR_PAR_CM_02", name _wnded, name _medic, _dist, round (speed vehicle _medic)];
     };
     [_wnded, _msg] call PAR_fn_globalchat;
     _cnt = 3;

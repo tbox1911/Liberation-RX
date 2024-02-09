@@ -72,7 +72,6 @@ while {true} do {
                             [_unit, false] spawn F_ejectUnit;
                         };
                     };
-                    [_unit] doFollow (leader group _unit);
                 };
             };
             sleep 0.3;
