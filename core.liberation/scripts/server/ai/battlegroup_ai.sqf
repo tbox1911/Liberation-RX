@@ -23,12 +23,8 @@ while { ({alive _x} count (units _grp) > 0) } do {
 		if !(isNil "_target") then { _objective_pos = getPosATL _target } else { _objective_pos = zeropos };
 	};
 
-	if (_objective_pos isEqualTo zeropos || _in_water) exitWith {
+	if (_objective_pos distance2D zeropos < 100 || _in_water) exitWith {
 		// Cleanup
-		waitUntil {
-			sleep 30;
-			(GRLIB_global_stop == 1 || _in_water || ([_objective_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0))
-		};
 		{
 			_veh = objectParent _x;
 			if (!isNull _veh) then { [_veh] call clean_vehicle };
@@ -70,7 +66,7 @@ while { ({alive _x} count (units _grp) > 0) } do {
 	};
 
 	{
-		if (isNull objectParent _x && speed vehicle _x == 0) then {
+		if (isNull objectParent _x && round (speed vehicle _x) == 0) then {
 			[_x] call F_fixPosUnit;
 			_x switchMove "AmovPercMwlkSrasWrflDf";
 			_x playMoveNow "AmovPercMwlkSrasWrflDf";

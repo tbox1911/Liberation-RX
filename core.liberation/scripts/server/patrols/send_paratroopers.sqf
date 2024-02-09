@@ -61,8 +61,10 @@ if (_vehicle isKindOf "Plane_Base_F") then { _unload_dist = _unload_dist * 2 };
 	if ({alive _x} count (units _para_group) > 0) then {
 		[_para_group, _vehicle] spawn F_ejectGroup;
 		[_para_group, _targetpos] spawn battlegroup_ai;
+		sleep 3;
 	};
 
+	if (!alive _vehicle) exitWith {};
 	[_pilot_group] call F_deleteWaypoints;
 	private _waypoint = _pilot_group addWaypoint [_spawnpos, 1];
 	_waypoint setWaypointType "MOVE";
