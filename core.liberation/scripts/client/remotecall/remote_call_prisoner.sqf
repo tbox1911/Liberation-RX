@@ -5,6 +5,15 @@ if !(local _unit) exitWith {};
 
 private _anim = "";
 
+if (_cmd == "init") exitWith {
+	_unit stop true;
+	_unit disableAI "ANIM";
+	_unit disableAI "MOVE";
+	_anim = "AmovPercMstpSnonWnonDnon_AmovPercMstpSsurWnonDnon";
+	_unit switchMove _anim;
+	_unit playMoveNow _anim;
+};
+
 if (_cmd == "stop") exitWith {
     sleep (3 + floor(random 4));
 
