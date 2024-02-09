@@ -7,8 +7,6 @@ private _msg = "";
 private _check_sortie = {
   params ["_wnded","_medic"];
   private _ret = false;
-  //systemchat format ["dbg: wnded 2D dist : %1 sqr dist %2   speed %3", _wnded distance2D _medic, _wnded distanceSqr _medic, round (speed vehicle _medic) ];
-
   if ( !alive _medic || !alive _wnded ||
        isNil {_wnded getVariable ["PAR_myMedic", nil]} ||
        vehicle _medic != _medic || vehicle _wnded != _wnded
