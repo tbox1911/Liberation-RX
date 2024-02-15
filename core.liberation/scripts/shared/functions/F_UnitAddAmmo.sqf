@@ -1,6 +1,7 @@
 params ["_unit", "_item", "_max"];
 
 private _ret = 0;
+if (_item == "") exitWith { _ret };
 
 if ( isClass (configFile >> "CfgWeapons" >> _item) && count (getArray (configFile >> "CfgWeapons" >> _item >> "magazines")) > 0 ) then {
     private _magType = getArray (configFile >> "CfgWeapons" >> _item >> "magazines") select 0;
