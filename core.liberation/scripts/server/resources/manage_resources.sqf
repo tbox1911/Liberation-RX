@@ -1,99 +1,102 @@
 waitUntil { !isNil "save_is_loaded" };
 waitUntil { !isNil "blufor_sectors" };
-private [ "_spawnsector", "_newbox"];
+private ["_spawnsector", "_newbox", "_sectors"];
 
 // maximum number of ressource by type
-GRLIB_AmmoBox_cap = 6;
-GRLIB_FuelBarrel_cap = 8;
-GRLIB_WaterBarrel_cap = 8;
-GRLIB_FoodBarrel_cap = 7;
+GRLIB_AmmoBox_cap = 5 * GRLIB_resources_multiplier;
+GRLIB_FuelBarrel_cap = 6 * GRLIB_resources_multiplier;
+GRLIB_WaterBarrel_cap = 6 * GRLIB_resources_multiplier;
+GRLIB_FoodBarrel_cap = 5 * GRLIB_resources_multiplier;
 
+// It should not be too easy...
 if (GRLIB_difficulty_modifier > 1.5) then {
-	GRLIB_AmmoBox_cap = 4;
-	GRLIB_FuelBarrel_cap = 6;
-	GRLIB_WaterBarrel_cap = 6;
-	GRLIB_FoodBarrel_cap = 5;
+	GRLIB_AmmoBox_cap = 3;
+	GRLIB_FuelBarrel_cap = 4;
+	GRLIB_WaterBarrel_cap = 4;
+	GRLIB_FoodBarrel_cap = 3;
 };
 
 while { GRLIB_endgame == 0 } do {
 	sleep GRLIB_passive_delay;
 
 	_active_players = count (AllPlayers - (entities "HeadlessClient_F"));
-	if ( _active_players > 0 ) then {
-
-		private _AmmoBox_cap = (_active_players * 3) min GRLIB_AmmoBox_cap;
+	if (_active_players > 0) then {
+		diag_log format ["--- LRX Resources Manager start at %1", time];
+		private _AmmoBox_cap = (_active_players * 2) min GRLIB_AmmoBox_cap;
 		private _FuelBarrel_cap = (_active_players * 3) min GRLIB_FuelBarrel_cap;
 		private _WaterBarrel_cap = (_active_players * 3) min GRLIB_WaterBarrel_cap;
-		private _FoodBarrel_cap = (_active_players * 3) min GRLIB_FoodBarrel_cap;
+		private _FoodBarrel_cap = (_active_players * 4) min GRLIB_FoodBarrel_cap;
 
 		// AmmoBox
-		private _blufor_mil_sectors = [];
-		{
-			if ( _x in sectors_military ) then { _blufor_mil_sectors pushback _x };
-		} foreach blufor_sectors;
-
-		if ( count _blufor_mil_sectors > 0 ) then {
-			if ( GRLIB_passive_income ) then {
-				private _income = (GRLIB_passive_ammount + floor(random 30));
-				private _fuel = 5 + floor(random 20);
+		if (GRLIB_passive_income) then {
+			private _captured_military = { _x in sectors_military } count blufor_sectors;
+			if (_captured_military > 0) then {
+				private _income = (GRLIB_passive_ammount * (_captured_military min GRLIB_AmmoBox_cap) * GRLIB_resources_multiplier);
 				{
-					[_x, _income, _fuel] call ammo_add_remote_call;
+					[_x, _income, 0] call ammo_add_remote_call;
 				} forEach (AllPlayers - (entities "HeadlessClient_F"));
-				_text = format ["Passive Income Received: + %1 Ammo.", _income];
+				private _text = format ["Passive Income you receive %1 Ammo.", _income];
 				[gamelogic, _text] remoteExec ["globalChat", 0];
-			} else {
-				if ( ([ammobox_b_typename] call count_box) <= _AmmoBox_cap ) then {
-					_spawnsector = (selectRandom _blufor_mil_sectors);
-					if ( ([ammobox_b_typename, _spawnsector] call count_box) < 3 ) then {
-						_newbox = [ammobox_b_typename,  markerpos _spawnsector, false] call boxSetup;
-						[_newbox] call F_clearCargo;
-					};
-				};
+				diag_log format ["Passive Income %1 Ammo to all players", _income];
+			};
+		};
+
+		if (!GRLIB_passive_income && ([ammobox_b_typename] call count_box) < _AmmoBox_cap ) then {
+			_sectors = [];
+			{
+				if (_x in sectors_military && (([ammobox_b_typename, _x] call count_box) < 3)) then { _sectors pushback _x };
+			} foreach blufor_sectors;
+
+			if ( count _sectors > 0 ) then {
+				_spawnsector = selectRandom _sectors;
+				_newbox = [ammobox_b_typename, markerpos _spawnsector, false] call boxSetup;
+				[_newbox] call F_clearCargo;
+				diag_log format ["Spawn Resources %1 at %2", ([ammobox_b_typename] call F_getLRXName), _spawnsector];
 			};
 		};
 
 		// Fuel Barrel
-		private _blufor_fuel_sectors = [];
-		{
-			if ( _x in sectors_factory ) then { _blufor_fuel_sectors pushback _x };
-		} foreach blufor_sectors;
+		if ( ([fuelbarrel_typename] call count_box) < _FuelBarrel_cap ) then {
+			_sectors = [];
+			{
+				if ( _x in sectors_factory && ([fuelbarrel_typename, _x] call count_box) < 3) then { _sectors pushback _x };
+			} foreach blufor_sectors;
 
-		if ( count _blufor_fuel_sectors > 0 ) then {
-			if ( ([fuelbarrel_typename] call count_box) <= _FuelBarrel_cap ) then {
-				_spawnsector = ( selectRandom _blufor_fuel_sectors );
-				if ( ([fuelbarrel_typename, _spawnsector] call count_box) < 3 ) then {
-					_newbox = [fuelbarrel_typename, markerpos _spawnsector, false] call boxSetup;
-				};
+			if ( count _sectors > 0 ) then {
+				_spawnsector = selectRandom _sectors;
+				_newbox = [fuelbarrel_typename, markerpos _spawnsector, false] call boxSetup;
+				[_newbox] call F_clearCargo;
+				diag_log format ["Spawn Resources %1 at %2", ([fuelbarrel_typename] call F_getLRXName), _spawnsector];
 			};
 		};
 
 		// Water Barrel
-		private _blufor_water_sectors = [];
-		{
-			if ( _x in sectors_tower ) then { _blufor_water_sectors pushback _x };
-		} foreach blufor_sectors;
+		if ( ([waterbarrel_typename] call count_box) < _WaterBarrel_cap ) then {
+			_sectors = [];
+			{
+				if ( _x in sectors_tower && ([waterbarrel_typename, _x] call count_box) < 3) then { _sectors pushback _x };
+			} foreach blufor_sectors;
 
-		if ( count _blufor_water_sectors > 0 ) then {
-			if ( ([waterbarrel_typename] call count_box) <= _WaterBarrel_cap ) then {
-				_spawnsector = ( selectRandom _blufor_water_sectors );
-				if ( ([waterbarrel_typename, _spawnsector] call count_box) < 3 ) then {
-					_newbox = [waterbarrel_typename, markerpos _spawnsector, false] call boxSetup;
-				};
+			if ( count _sectors > 0 ) then {
+				_spawnsector = selectRandom _sectors;
+				_newbox = [waterbarrel_typename, markerpos _spawnsector, false] call boxSetup;
+				[_newbox] call F_clearCargo;
+				diag_log format ["Spawn Resources %1 at %2", ([waterbarrel_typename] call F_getLRXName), _spawnsector];
 			};
 		};
 
 		// Food Barrel
-		private _blufor_food_sectors = [];
-		{
-			if ( _x in sectors_bigtown ) then {	_blufor_food_sectors pushback _x };
-		} foreach blufor_sectors;
+		if ( ([foodbarrel_typename] call count_box) < _FoodBarrel_cap ) then {
+			_sectors = [];
+			{
+				if ( _x in sectors_bigtown && ([foodbarrel_typename, _x] call count_box) < 4) then { _sectors pushback _x };
+			} foreach blufor_sectors;
 
-		if ( count _blufor_food_sectors > 0 ) then {
-			if ( ([foodbarrel_typename] call count_box) <= _FoodBarrel_cap ) then {
-				_spawnsector = ( selectRandom _blufor_food_sectors );
-				if ( ([foodbarrel_typename, _spawnsector] call count_box) < 3 ) then {
-					_newbox = [foodbarrel_typename, markerpos _spawnsector, false] call boxSetup;
-				};
+			if ( count _sectors > 0 ) then {
+				_spawnsector = selectRandom _sectors;
+				_newbox = [foodbarrel_typename, markerpos _spawnsector, false] call boxSetup;
+				[_newbox] call F_clearCargo;
+				diag_log format ["Spawn Resources %1 at %2", ([foodbarrel_typename] call F_getLRXName), _spawnsector];
 			};
 		};
 	};
