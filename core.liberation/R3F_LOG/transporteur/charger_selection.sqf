@@ -59,10 +59,10 @@ else
 							if (_objet getVariable "R3F_LOG_est_transporte_par" == _transporteur && _objet in (_transporteur getVariable "R3F_LOG_objets_charges")) then
 							{
 								_objet attachTo [R3F_LOG_PUBVAR_point_attache, [] call R3F_LOG_FNCT_3D_tirer_position_degagee_ciel];
-								_objet enableSimulationGlobal false;
 								if ([_objet, uavs] call F_itemIsInClass) then {
 									player connectTerminalToUAV objNull;
 									player disableUAVConnectability [_objet, true];
+									_objet enableSimulationGlobal false;
 								};
 
 								systemChat format [STR_R3F_LOG_action_charger_fait,

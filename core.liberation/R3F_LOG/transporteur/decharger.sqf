@@ -69,8 +69,10 @@ else
 			if (!(_objet_a_decharger isKindOf "AllVehicles") || _est_deplacable) then
 			{
 				R3F_LOG_mutex_local_verrou = false;
-				_objet_a_decharger enableSimulationGlobal true;
-				if ([_objet_a_decharger, uavs] call F_itemIsInClass) then { player enableUAVConnectability [_objet_a_decharger, true] };
+				if ([_objet_a_decharger, uavs] call F_itemIsInClass) then {
+					player enableUAVConnectability [_objet_a_decharger, true];
+					_objet enableSimulationGlobal true;
+				};
 				[_objet_a_decharger, player, 0, true] spawn R3F_LOG_FNCT_objet_deplacer;
 			}
 			else
@@ -95,7 +97,6 @@ else
 				};
 
 				if (count _pos_degagee > 0) then {
-					_objet_a_decharger enableSimulationGlobal true;
 					detach _objet_a_decharger;
 					if ([_objet_a_decharger, uavs] call F_itemIsInClass) then { player enableUAVConnectability [_objet_a_decharger, true] };
 					_objet_a_decharger setPos _pos_degagee;
