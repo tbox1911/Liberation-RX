@@ -47,13 +47,10 @@ ERROR( isNil { _box getVariable [ format[ "LARs_arsenal_%1_data", _arsenalName ]
 	diag_log format[ "WARNING - Overwriting LARs Arsenal %1 on %2", _arsenalName, str _box ];
 };
 
-[ _box ] call BIS_fnc_objectVar;
-
 if !( _target isEqualType false ) exitWith {
 	_this set [ 2, false ];
 	_this remoteExec [ "LARs_fnc_blacklistArsenal", _target, format[ "%1_%2", _box, _arsenalName ] ]
 };
-
 
 _thread = _this spawn {
 
