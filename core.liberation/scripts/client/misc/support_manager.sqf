@@ -25,7 +25,6 @@ if (GRLIB_ACE_enabled) then { _vehicle_enabled = false };
 
 while { true } do {
 	waitUntil {sleep 1; GRLIB_player_spawned};
-	waitUntil {sleep 1; (player getVariable ["GRLIB_squad_context_loaded", false])};
 
 	_unitList = (units group player) select {!isPlayer _x && lifeState _x != 'INCAPACITATED'};
 	if (count _unitList >= 1) then {
