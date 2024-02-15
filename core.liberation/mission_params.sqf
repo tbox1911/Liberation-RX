@@ -44,7 +44,6 @@ LRX_Mission_Params = [
 	["ModPresetWest", 0],			// Select MOD Preset for Friendly side - value =  { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25 } Text = "A3_BLU", "A3_OPF",  etc...
 	["ModPresetEast", 0],			// Select MOD Preset for Enemy side - values = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25 } text "A3_OPF", "A3_BLU", "A3_IND",  etc...
 	["Weather", 1],					// Weather - [default 4] - values = [1,2,3,4] - Text {Always Sunny,Random without rain,Random Cloudy,Random}
-	["ResourcesMultiplier", 1],		// Resource multiplier - [default 1] - values = [0.25,0.5,0.75,1,1.25,1.5,2,3,5,10,20,50] - Text {x0.25,x0.5,x1,x1.25,x1.5,x2,x3,x5,x10,x20,x50}
 	["Fatigue", 0],					// Stamina - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["Revive", 3],					// PAR revive - [default 3] - values = [3,2,1,0] - Text {Enabled - Everyone can revive,Enabled - Everyone can revive using Medikit/FAK,Enabled - Only medics can revive,Disabled}
 	["TK_mode", 1],					// Teamkill Mode [default 0] - values = [0,1,2] - Text {Strict,Relax,Disabled}
@@ -57,6 +56,7 @@ LRX_Mission_Params = [
 	["PassiveIncome", 0],			// Replace ammo box spawns with passive income - [default 0] - values = [1,0] - Text {Enabled,Disabled}
 	["PassiveIncomeDelay", 1200],	// Passive Income Delay - values = {1200,1800,3600,7200,14400}
 	["PassiveIncomeAmmount", 300],	// Passive Income Ammount - values = {100,200,300,400,500,1000,1500}
+	["ResourcesMultiplier", 1],		// Resource multiplier - [default 1] - values = [0.25,0.5,0.75,1,1.25,1.5,2,3,5,10,20,50] - Text {x0.25,x0.5,x1,x1.25,x1.5,x2,x3,x5,x10,x20,x50}
 	["HaloJump", 1],				// HALO jump - [default 1] - values = [1,5,10,15,20,30,0] - Text {Enabled - no cooldown,Enabled - 5min cooldown,Enabled - 10min cooldown,Enabled - 15min cooldown,Enabled - 20min cooldown,Enabled - 30min cooldown,Disabled}
 	["BluforDefenders", 1],			// BLUFOR defenders in owned sectors - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["MaxFobs", 3],					// Maximum number of FOBs allowed - [default 26] - values = [3,5,7,10,15,20,26] - Text {3,5,7,10,15,20,26}
