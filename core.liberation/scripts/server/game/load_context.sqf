@@ -46,8 +46,8 @@ if (count _context >= 1) then {
             sleep 3;
         };
         [""] remoteExec ["hintSilent", owner _player];
-        _player setVariable ["GRLIB_squad_context_loaded", true, true];
     };
+    _player setVariable ["GRLIB_squad_context_loaded", true, true];
 };
 _player setVariable ["GRLIB_player_context_loaded", true, true];
 diag_log format ["--- LRX player %1 profile Loaded.", name _player];
