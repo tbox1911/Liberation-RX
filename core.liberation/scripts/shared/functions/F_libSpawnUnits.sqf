@@ -31,7 +31,7 @@ private ["_unit", "_backpack", "_maxpos"];
 			_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 			[_unit] joinSilent _grp;
 			[_unit] spawn F_fixModUnit;
-			if (_type in ["militia", "guard"]) then {[_unit] call loadout_militia};
+			if (_type == "militia") then {[_unit] call loadout_militia};
 			[_unit] spawn reammo_ai;
 
 			if (_type == "para") then {
@@ -48,7 +48,6 @@ private ["_unit", "_backpack", "_maxpos"];
 			if (_type == "defender") then {
 				_unit setVariable ["PAR_Grp_ID", "server", true];
 			};
-
 		} else {
 			diag_log format ["--- LRX Error: Cannot create unit %1 at position %2", _x, _spawnpos];
 		};

@@ -241,12 +241,6 @@ if ( isNil "guard_squad" ) then {
 	];
 };
 
-if ( isNil "guard_loadout_overide" ) then {
-	guard_loadout_overide = [
-		"O_GEN_Commander_F"
-	];
-};
-
 if ( isNil "divers_squad" ) then {
 	divers_squad = [
 		"O_diver_TL_F",

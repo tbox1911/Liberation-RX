@@ -57,6 +57,14 @@ private _grp = [_pos, _unitclass, _side, _type] call F_libSpawnUnits;
 	_x setVariable ["acex_headless_blacklist", true, true];
 } forEach (units _grp);
 
+if (_type == "guard") then {
+	private _unit = selectRandom (units _grp);
+	removeBackpack _unit;
+	_unit addBackpack "B_AssaultPack_blk";
+	_unit addWeapon "launch_MRAWS_green_F";
+	_unit addSecondaryWeaponItem "MRAWS_HEAT_F";
+	for "_i" from 1 to 2 do { _unit addItemToBackpack "MRAWS_HEAT_F" };
+};
 
 if (_patrol) then {
 	[_grp, _pos, _radius] spawn defence_ai;
