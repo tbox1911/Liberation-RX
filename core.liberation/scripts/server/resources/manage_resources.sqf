@@ -3,10 +3,10 @@ waitUntil { !isNil "blufor_sectors" };
 private ["_spawnsector", "_newbox", "_sectors"];
 
 // maximum number of ressource by type
-GRLIB_AmmoBox_cap = 5 * GRLIB_resources_multiplier;
-GRLIB_FuelBarrel_cap = 6 * GRLIB_resources_multiplier;
-GRLIB_WaterBarrel_cap = 6 * GRLIB_resources_multiplier;
-GRLIB_FoodBarrel_cap = 5 * GRLIB_resources_multiplier;
+GRLIB_AmmoBox_cap = round (5 * GRLIB_resources_multiplier);
+GRLIB_FuelBarrel_cap = round (6 * GRLIB_resources_multiplier);
+GRLIB_WaterBarrel_cap = round (6 * GRLIB_resources_multiplier);
+GRLIB_FoodBarrel_cap = round (5 * GRLIB_resources_multiplier);
 
 // It should not be too easy...
 if (GRLIB_difficulty_modifier > 1.5) then {
@@ -22,7 +22,7 @@ while { GRLIB_endgame == 0 } do {
 	_active_players = count (AllPlayers - (entities "HeadlessClient_F"));
 	if (_active_players > 0) then {
 		diag_log format ["--- LRX Resources Manager start at %1", time];
-		private _AmmoBox_cap = (_active_players * 2) min GRLIB_AmmoBox_cap;
+		private _AmmoBox_cap = (_active_players * 3) min GRLIB_AmmoBox_cap;
 		private _FuelBarrel_cap = (_active_players * 3) min GRLIB_FuelBarrel_cap;
 		private _WaterBarrel_cap = (_active_players * 3) min GRLIB_WaterBarrel_cap;
 		private _FoodBarrel_cap = (_active_players * 4) min GRLIB_FoodBarrel_cap;
@@ -31,7 +31,7 @@ while { GRLIB_endgame == 0 } do {
 		if (GRLIB_passive_income) then {
 			private _captured_military = { _x in sectors_military } count blufor_sectors;
 			if (_captured_military > 0) then {
-				private _income = (GRLIB_passive_ammount * (_captured_military min GRLIB_AmmoBox_cap) * GRLIB_resources_multiplier);
+				private _income = round (GRLIB_passive_ammount * (_captured_military min GRLIB_AmmoBox_cap) * GRLIB_resources_multiplier);
 				{
 					[_x, _income, 0] call ammo_add_remote_call;
 				} forEach (AllPlayers - (entities "HeadlessClient_F"));
