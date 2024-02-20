@@ -131,20 +131,26 @@ while {deleteManagerPublic} do {
 		_deadVehiclesLimit = 10;
 		_deadVehicleDistCheck = false;
 	};
-	sleep _sleep;
+
+	waitUntil {
+		sleep 60;
+		if (_sleep % 300 == 0) then {
+			// FORCE DELETE
+			_list = entities [GRLIB_force_cleanup_classnames, []];
+			{ deleteVehicle _x } forEach _list;			
+		};
+		_sleep = _sleep - 60;
+		(_sleep <= 0)
+	};
 
 	diag_log format ["--- LRX Garbage Collector --- Start at: %1 - %2 fps", round(time), diag_fps];
 	GRLIB_GC_Running = true;
 	publicVariable "GRLIB_GC_Running";
 
 	// FORCE DELETE
-	_list = entities [GRLIB_force_cleanup_classnames, []];
-	_list append (allMissionObjects "Blood_01_Base_F");
+	_list = (allMissionObjects "Blood_01_Base_F");
 	_list append (allMissionObjects "MedicalGarbage_01_Base_F");
-	{
-		deleteVehicle _x;
-		_stats = _stats + 1;
-	} forEach _list;
+	{ deleteVehicle _x } forEach _list;	
 
 	private _hidden_from = []; 	// (playableUnits + switchableUnits)
 	{ _hidden_from pushBack (getPosATL _x)} forEach (AllPlayers - (entities "HeadlessClient_F"));
