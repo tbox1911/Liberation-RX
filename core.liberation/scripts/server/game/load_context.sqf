@@ -34,8 +34,10 @@ if (count _context >= 1) then {
             } else {
                 if ([_player, "FOB", GRLIB_fob_range] call F_check_near && isTouchingGround vehicle _player) then {
                     {
-                        [_x select 0, _x select 1, _x select 2] remoteExec ["remote_call_load_context", owner _player];
-                        sleep 1;
+                        if (isPlayer _player) then {
+                            [_x select 0, _x select 1, _x select 2] remoteExec ["remote_call_load_context", owner _player];
+                            sleep 1;
+                        };
                     } foreach (_context select 2);
                     _wait = false;
                     //diag_log format ["--- LRX Loading %1 unit(s) for %2 Squad.", count (_context select 2), name _player];
