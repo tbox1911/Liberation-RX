@@ -8,7 +8,15 @@ if (_side == GRLIB_side_friendly) then {
 private _not_aircraft = !(_vehicle isKindOf "Air");
 private _path = format ["mod_template\%1\loadout\%2.sqf", _mod, "crewman"];
 private _grp = _side createVehicleCrew _vehicle;
-sleep 0.2;
+sleep 0.5;
+
+if (count (crew _vehicle) == 0) then {
+	_grp = createGroup [_side, true];
+	_unit = _grp createUnit [crewman_classname, (getPosATL _vehicle), [], 5, "NONE"];
+	_unit assignAsDriver _vehicle;
+	_unit moveInDriver _vehicle;
+};
+
 (units _grp) joinSilent _grp;
 (units _grp) allowGetIn true;
 (units _grp) orderGetIn true;
