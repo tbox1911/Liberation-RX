@@ -129,7 +129,10 @@ if ( _side == GRLIB_side_enemy ) then {
 [_vehicle, _vehcrew] spawn {
 	params ["_vehicle", "_crew"];
 	sleep 1;
-	[_vehicle] call F_vehicleUnflip;
+	if (_vehicle isKindOf "LandVehicle") then {
+		[_vehicle] call F_vehicleUnflip;
+		[_vehicle] call F_fixPosUnit;
+	};
 	sleep 3;
 	_vehicle setDamage 0;
 	_vehicle allowDamage true;
