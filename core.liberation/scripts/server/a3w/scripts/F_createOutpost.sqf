@@ -21,6 +21,7 @@ private _defenders_to_build = _template select 3;
 private _base_corners =  _template select 4;
 diag_log format ["--- LRX Spawn Outpost %1 pos %2 at %3", _template_name, _base_position, time];
 
+private ["_nextclass", "_nextobject", "_nextpos", "_nextdir"];
 {
 	_nextclass = _x select 0;
 	_nextpos = _x select 1;
@@ -37,6 +38,7 @@ diag_log format ["--- LRX Spawn Outpost %1 pos %2 at %3", _template_name, _base_
     };
 
 	_base_objects pushBack _nextobject;
+    sleep 0.1;
 } foreach _objects_to_build;
 sleep 1;
 

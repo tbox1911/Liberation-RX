@@ -1,4 +1,4 @@
-_objects_to_build = [
+private _objects_to_build = [
     [ "Land_HBarrierWall_corridor_F", [-0.11, 4.98, 0], 270.45 ],
     [ "Land_HBarrierBig_F", [-3.24, 5.12, 0], 90.35 ],
     [ "CamoNet_OPFOR_open_F", [-1.91, 5.06, 0], 0 ],
@@ -35,14 +35,14 @@ _objects_to_build = [
     [ "Land_HBarrierBig_F", [-23.27, 18.53, 0], 89.68 ]
 ];
 
-_objectives_to_build = [
+private _objectives_to_build = [
     [ opfor_fuel_container, [2.64, -13.76, -0.04], 0.35 ],
     [ opfor_ammo_container, [-3.69, -14.92, 0], 180.33 ],
     [ opfor_fuel_container, [2.7, -5.53, -0.04], 358.03 ],
     [ opfor_ammo_container, [-3.96, -5.86, 0], 180.38 ]
 ];
 
-_defenders_to_build = [
+private _defenders_to_build = [
     [ opfor_rifleman, [-6.54, 2.05, 0], 157.41 ],
     [ opfor_sentry, [6.66, 2.1, 0], 192.72 ],
     [ opfor_rifleman, [-3.64, 12.06, 0], 339.29 ],
@@ -70,11 +70,10 @@ _defenders_to_build = [
     [ opfor_rpg, [12.44, 18.69, 3.13], 16.72 ]
 ];
 
-_base_corners = [
+private _base_corners = [
     [35,35,0],
     [35,-35,0],
     [-35,-35,0],
     [-35,35,0]
 ];
-
-[ "Model 3", _objects_to_build, _objectives_to_build, _defenders_to_build, _base_corners ]
+["Model 3", _objects_to_build, _objectives_to_build, _defenders_to_build, _base_corners];

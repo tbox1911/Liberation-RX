@@ -6517,6 +6517,10 @@
 			<Original>-- SAVE PLAYER PROFILE</Original>
 			<French>-- SAUVEGARDER LE JOUEUR</French>
 		</Key>
+		<Key ID="STR_BUILD_DEFENSE">
+			<Original>-- BUILD FOB DEFENSE</Original>
+			<French>-- CONSTRUIRE DEFENSE FOB</French>
+		</Key>		
 		<Key ID="STR_SAVE_PLAYER_MSG">
 			<Original>Player Profile and\n%1 Squad unit(s)\nSaved!</Original>
 			<French>Profil du Joueur et\n%1 unitée(s) d'escouade\nEnregistré !</French>

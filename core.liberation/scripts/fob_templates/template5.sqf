@@ -1,4 +1,4 @@
-_objects_to_build = [
+private _objects_to_build = [
     [ "Land_HelipadCircle_F", [-1.31, 11.44, 0], 0 ],
     [ opfor_transport_helo, [-1.31, 11.45, 0], 134.19 ],
     [ opfor_patrol, [17.36, 1.08, 0], 269.81 ],
@@ -26,14 +26,14 @@ _objects_to_build = [
     [ "Land_HBarrierBig_F", [22.45, -21.48, 0], 103.04 ]
 ];
 
-_objectives_to_build = [
+private _objectives_to_build = [
     [ opfor_fuel_container, [-16.82, 17.67, -0.01], 47.97 ],
     [ opfor_ammo_container, [-0.42, -3.26, 0.02], 104.66 ],
     [ opfor_fuel_container, [-9.52, -0.47, -0.04], 295.86 ],
     [ opfor_ammo_container, [2.85, -14.48, 0], 0.69 ]
 ];
 
-_defenders_to_build = [
+private _defenders_to_build = [
     [ opfor_engineer, [2.32, 3.25, 0], 10.12 ],
     [ opfor_engineer, [3.59, 3.89, 0], 288.05 ],
     [ opfor_engineer, [2.31, 4.93, 0], 158.22 ],
@@ -61,11 +61,10 @@ _defenders_to_build = [
     [ opfor_rifleman, [14.76, 20.92, 0], 288.05 ]
 ];
 
-_base_corners = [
+private _base_corners = [
     [30,40,0],
     [30,-40,0],
     [-30,-40,0],
     [-30,40,0]
 ];
-
-[ "Model 5", _objects_to_build, _objectives_to_build, _defenders_to_build, _base_corners ]
+["Model 5", _objects_to_build, _objectives_to_build, _defenders_to_build, _base_corners];
