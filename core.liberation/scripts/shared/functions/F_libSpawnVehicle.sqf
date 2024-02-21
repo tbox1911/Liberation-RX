@@ -38,7 +38,7 @@ if ( _classname isKindOf "Air" ) then {
 		_spawnpos = _sectorpos;
 	} else {
 		while { count _spawnpos == 0 && _max_try > 0 } do {
-			_spawnpos = [_sectorpos, 1, _radius, 3, 1, 20, 0] call BIS_fnc_findSafePos;
+			_spawnpos = [_sectorpos, 0, _radius, 5, 1, 0.25, 0] call BIS_fnc_findSafePos;
 			_radius = _radius + 20;
 			_max_try = _max_try -1;
 			sleep 0.2;
