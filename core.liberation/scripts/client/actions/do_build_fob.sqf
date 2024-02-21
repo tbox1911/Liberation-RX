@@ -32,9 +32,9 @@ private _clearedtobuildsector = true;
 
 private _idx = 0;
 while { (_idx < (count GRLIB_all_fobs)) && _clearedtobuildfob } do {
-	if ( player distance (GRLIB_all_fobs select _idx) < _minfobdist ) then {
+	if ( player distance2D (GRLIB_all_fobs select _idx) < _minfobdist ) then {
 		_clearedtobuildfob = false;
-		_distfob = player distance (GRLIB_all_fobs select _idx);
+		_distfob = player distance2D (GRLIB_all_fobs select _idx);
 	};
 	_idx = _idx + 1;
 };
@@ -42,9 +42,9 @@ while { (_idx < (count GRLIB_all_fobs)) && _clearedtobuildfob } do {
 _idx = 0;
 if(_clearedtobuildfob) then {
 	while { (_idx < (count sectors_allSectors)) && _clearedtobuildsector } do {
-		if ( player distance (markerPos  (sectors_allSectors select _idx)) < _minsectordist ) then {
+		if ( player distance2D (markerPos (sectors_allSectors select _idx)) < _minsectordist ) then {
 			_clearedtobuildsector = false;
-			_distsector = player distance (markerPos  (sectors_allSectors select _idx));
+			_distsector = player distance2D (markerPos (sectors_allSectors select _idx));
 		};
 		_idx = _idx + 1;
 	};
