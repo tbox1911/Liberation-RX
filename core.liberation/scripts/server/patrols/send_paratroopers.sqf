@@ -19,7 +19,6 @@ _vehicle setVariable ["GRLIB_counter_TTL", round(time + 3600)];
 } foreach (crew _vehicle);
 sleep 1;
 private _spawnpos = getPosATL _vehicle;
-_spawnpos set [2,0];
 
 [_pilot_group] call F_deleteWaypoints;
 private _waypoint = _pilot_group addWaypoint [_targetpos, 1];
@@ -60,8 +59,8 @@ if (_vehicle isKindOf "Plane_Base_F") then { _unload_dist = _unload_dist * 2 };
 	if (!alive _vehicle) exitWith {};
 	if ({alive _x} count (units _para_group) > 0) then {
 		[_para_group, _vehicle] spawn F_ejectGroup;
+		sleep 10;
 		[_para_group, _targetpos] spawn battlegroup_ai;
-		sleep 3;
 	};
 
 	if (!alive _vehicle) exitWith {};
@@ -71,7 +70,7 @@ if (_vehicle isKindOf "Plane_Base_F") then { _unload_dist = _unload_dist * 2 };
 	_waypoint setWaypointSpeed "FULL";
 	_waypoint setWaypointBehaviour "SAFE";
 	_waypoint setWaypointCombatMode "WHITE";
-	_waypoint setWaypointCompletionRadius 500;
+	_waypoint setWaypointCompletionRadius 400;
 	_waypoint setWaypointStatements ["true", "[vehicle this] spawn clean_vehicle"];
 	{_x doFollow (leader _pilot_group)} foreach units _pilot_group;
 };
