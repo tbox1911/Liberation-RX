@@ -23,7 +23,6 @@ processItems = compileFinal preprocessFileLineNumbers "scripts\server\a3w\script
 updateMissionsList = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_updateMissionsList.sqf";
 getNbUnits = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_getNbUnits.sqf";
 createOutpost = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_createOutpost.sqf";
-findSafePlace = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_findSafePlace.sqf";
 
 A3W_sectors_in_use = [];
 A3W_delivery_failed = 0;

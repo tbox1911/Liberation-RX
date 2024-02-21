@@ -3,7 +3,7 @@ params [ ["_mission_cost", 0], "_caller" ];
 private _spawnpos = [];
 private _spawnlist = [];
 {
-	_spawnpos = [markerPos _x, 0, GRLIB_sector_size, 30, 0, 15, 0, [], [zeropos, zeropos]] call BIS_fnc_findSafePos;
+	_spawnpos = [(markerpos _x), 15] call F_findSafePlace;
 	if !(_spawnpos isEqualTo zeropos) then {_spawnlist pushBack [_spawnpos select 0, _spawnpos select 1, 0]};
 } foreach sectors_allSectors;
 if (count _spawnlist == 0) exitWith {[gamelogic, "Could not find enough free space for Armageddon mission"] remoteExec ["globalChat", 0]};

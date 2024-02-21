@@ -12,7 +12,7 @@ if ( !( _sector in GRLIB_military_sectors_already_activated )) then {
 		if (GRLIB_difficulty_modifier > 1.5) then {
 			_crates_amount = (1 + floor random 3);
 		};
-		_spawnpos = [(markerpos _sector), 1, 100, 3, 1, 20, 0] call BIS_fnc_findSafePos;
+		_spawnpos = [(markerpos _sector), 3] call F_findSafePlace;
 		if (count _spawnpos > 0) then {
 			_vehicle = opfor_transport_truck createVehicle _spawnpos;
 			_vehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];

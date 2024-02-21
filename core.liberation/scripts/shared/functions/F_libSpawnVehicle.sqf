@@ -15,8 +15,6 @@ if (_side != GRLIB_side_civilian) then {
 private _vehicle = objNull;
 private _spawnpos = [];
 private _airveh_alt = 300;
-private _radius = GRLIB_capture_size;
-private _max_try = 10;
 
 if ( _classname isKindOf "Air" ) then {
 	private _spawn_sectors = ([sectors_airspawn, [_sectorpos], { (markerpos _x) distance2D _input0 }, "ASCEND"] call BIS_fnc_sortBy);
@@ -37,15 +35,7 @@ if ( _classname isKindOf "Air" ) then {
 	if ( _precise_position ) then {
 		_spawnpos = _sectorpos;
 	} else {
-		while { count _spawnpos == 0 && _max_try > 0 } do {
-			_spawnpos = [_sectorpos, 0, _radius, 5, 1, 0.25, 0] call BIS_fnc_findSafePos;
-			_radius = _radius + 20;
-			_max_try = _max_try -1;
-			sleep 0.2;
-		};
-	};
-	if ( count _spawnpos == 0 ) then {
-		_spawnpos = _sectorpos findEmptyPosition [0, _radius, _classname];
+		_spawnpos = [_sectorpos, 5, 1] call F_findSafePlace;
 	};
 
 	if ( count _spawnpos == 0 ) exitWith {
