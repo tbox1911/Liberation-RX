@@ -58,10 +58,16 @@ if (!_clearedtobuildfob) then {
 	} else {
 		buildtype = 99;
 		build_vehicle = _box;
+		[_box, true] remoteExec ["hideObjectGlobal", 2];
 		if (_box_type == FOB_box_outpost) then { buildtype = 98 };
 		if (_box_type == FOB_boat_typename) then { buildtype = 97 };
 		dobuild = 1;
 		waitUntil { sleep 1; dobuild == 0 };
+		if (build_confirmed == 0) then {
+			deleteVehicle _box;
+		} else {
+			[_box, false] remoteExec ["hideObjectGlobal", 2];
+		};
 	};
 };
 _box setVariable ["box_in_use", false, true];

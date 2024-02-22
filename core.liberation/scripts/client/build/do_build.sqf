@@ -220,6 +220,7 @@ while { true } do {
 				if ( _actualdir >= 292.5 && _actualdir <= 337.5 ) then { _actualdir = 315 };
 				if ( _actualdir <= 22.5 || _actualdir >= 337.5 ) then { _actualdir = 0 };
 			};
+			if ([] call is_admin) then { hintSilent format ["%1 - %2", _truepos, _truedir] };
 
 			_sphere_idx = 0;
 			{
@@ -323,7 +324,7 @@ while { true } do {
 					};
 				};
 			};
-			sleep 0.05;
+			sleep 0.15;
 		};
 
 		if ( !alive player ) then { build_confirmed = 3 };
@@ -358,9 +359,6 @@ while { true } do {
 				};
 
 				[_classname, _veh_pos, _veh_dir, _veh_vup, player] remoteExec ["build_fob_remote_call", 2];
-				_old_fobs = count GRLIB_all_fobs;
-				waitUntil { sleep 1; count GRLIB_all_fobs > _old_fobs };
-				deleteVehicle _fob_box;
 
 				if (_classname == FOB_carrier) then {
 					[([_truepos] call F_getNearestFob)] call do_onboard;

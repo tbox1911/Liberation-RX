@@ -1,4 +1,4 @@
-private _objects_to_build = [
+[
     [ "Land_HBarrierWall_corridor_F", [-0.11, 4.98, 0], 270.45 ],
     [ "Land_HBarrierBig_F", [-3.24, 5.12, 0], 90.35 ],
     [ "CamoNet_OPFOR_open_F", [-1.91, 5.06, 0], 0 ],
@@ -28,4 +28,3 @@ private _objects_to_build = [
     [ "Flag_NATO_F", [18.67, -19.05, 0], 90 ],
     [ "Flag_NATO_F", [-20.66, -18.6, 0], 90 ]    
 ];
-["Defense 3", _objects_to_build];

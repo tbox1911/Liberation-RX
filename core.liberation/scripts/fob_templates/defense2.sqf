@@ -1,4 +1,4 @@
-private _objects_to_build = [
+[
     [ "Land_HBarrierBig_F", [-0.8, -6.62, 0], 0.11 ],
     [ "Land_HBarrierBig_F", [7.84, -6.52, 0], 359.62 ],
     [ "Land_HBarrierBig_F", [-9.22, -6.62, 0], 0.11 ],
@@ -39,4 +39,3 @@ private _objects_to_build = [
     [ "Flag_NATO_F", [-11.36, -21.78, 0], 90 ],
     [ "Flag_NATO_F", [20.64, 16.83, 0], 90 ]
 ];
-["Defense 2", _objects_to_build];
