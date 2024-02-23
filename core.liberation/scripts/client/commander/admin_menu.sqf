@@ -101,6 +101,8 @@ private _disabled_controls = [1606,1607,1608,1609,1610,1613,1614,1620];
 (_display displayCtrl 1621) ctrlSetToolTip "Kick player!";
 (_display displayCtrl 1622) ctrlSetText getMissionPath "res\skull.paa";
 (_display displayCtrl 1622) ctrlSetToolTip "BAN player!";
+(_display displayCtrl 1610) ctrlSetToolTip "Delete object on cursor";
+(_display displayCtrl 1626) ctrlSetToolTip "Call Magic Mower";
 
 // Build Banned
 [_ban_combo] call _getBannedUID;

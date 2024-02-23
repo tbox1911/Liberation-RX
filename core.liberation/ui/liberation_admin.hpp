@@ -30,8 +30,9 @@ class liberation_admin {
     "Output_OuterBG_F",
     "Output_InnerBG_F",
     "Output_ButtonName_Abort",
-    "Output_TextField",    
+    "Output_TextField",
     "DeleteButton",
+    "MowerButton",
 	  "Item01Button",
 	  "Item02Button",
     "Item03Button",
@@ -39,7 +40,7 @@ class liberation_admin {
     "Item05Button",
     "Item05Input",
     "Item06Button",
-    "Item07Button",    
+    "Item07Button",
 	  "CancelButton",
     "teleport_cb_text",
     "godmod_cb_text",
@@ -96,7 +97,7 @@ class liberation_admin {
     y = 0.208 * safezoneH + safezoneY;
     w = 0.0875 * safezoneW;
     h = 0.04 * safezoneH;
-  };  
+  };
   class BuildButton: StdButton {
     idc = 1617;
     action = "do_spawn=1";
@@ -207,7 +208,7 @@ class liberation_admin {
     x = 0.3275 * safezoneW + safezoneX;
     y = 0.466 * safezoneH + safezoneY;
     w = 0.09 * safezoneW;
-    h = 0.04 * safezoneH;    
+    h = 0.04 * safezoneH;
 		text = "";
 		action = "";
 		colorText[] = COLOR_WHITE;
@@ -257,7 +258,7 @@ class liberation_admin {
     w = 0.0875 * safezoneW;
     h = 0.04 * safezoneH;
   };
-  
+
   class UnlockButton: StdButton {
     idc = 1609;
     action = "_x = cursorobject;if (isNull _x) exitWith {};_x setvariable ['R3F_LOG_disabled', false, true];_x setvariable ['GRLIB_vehicle_owner', '', true];hint format ['%1 Unlocked.',typeOf _x]";
@@ -270,10 +271,19 @@ class liberation_admin {
   class DeleteButton: StdButton {
     idc = 1610;
     action = "deleteVehicle (cursorObject);closeDialog 0;";
-    text = $STR_ADMIN_DELETEOBJ;
+    text = $STR_ADMIN_DELETE;
     x = 0.2275 * safezoneW + safezoneX;
     y = 0.624 * safezoneH + safezoneY;
-    w = 0.0875 * safezoneW;
+    w = 0.042 * safezoneW;
+    h = 0.04 * safezoneH;
+  };
+  class MowerButton: StdButton {
+    idc = 1626;
+    action = "closeDialog 0;buildtype=9;build_unit=[land_cutter_typename,[],1,[],[],[],[]];dobuild=1";
+    text = $STR_ADMIN_MOWER;
+    x = 0.2725 * safezoneW + safezoneX;
+    y = 0.624 * safezoneH + safezoneY;
+    w = 0.042 * safezoneW;
     h = 0.04 * safezoneH;
   };
   class ExportButton: StdButton {
@@ -302,7 +312,7 @@ class liberation_admin {
 		y = ((BASE_Y + 0.31) * safezoneH) + safezoneY - (1.5 * BORDERSIZE);
 		w = 0.17 * safezoneW +  (2 * BORDERSIZE);
 		h = 0.35 * safezoneH  + (3 * BORDERSIZE);
-	};  
+	};
 	class Input_InnerBG : InnerBG {
 		idc = 522;
 		colorBackground[] = COLOR_GREEN;
@@ -331,7 +341,7 @@ class liberation_admin {
 		idc = 526;
 		x = 0.58 * safezoneW + safezoneX;
     y = ((BASE_Y + 0.36) * safezoneH) + safezoneY;
-		w = ((0.2 * safezoneW) / 5) - BORDERSIZE;    
+		w = ((0.2 * safezoneW) / 5) - BORDERSIZE;
 		text = "Cancel";
 		action = "input_save = 'null';";
 	};
@@ -340,7 +350,7 @@ class liberation_admin {
 		type = CT_EDIT;
 		style = ST_MULTI;
 		x = (0.46 * safezoneW + safezoneX) + BORDERSIZE;
-    y = ((BASE_Y + 0.32) * safezoneH) + safezoneY;    
+    y = ((BASE_Y + 0.32) * safezoneH) + safezoneY;
 		w = 0.11 * safezoneW;
     h = 0.33 * safezoneH;
 		text = "";
@@ -357,7 +367,7 @@ class liberation_admin {
 		y = ((BASE_Y + 0.31) * safezoneH) + safezoneY - (1.5 * BORDERSIZE);
 		w = 0.17 * safezoneW +  (2 * BORDERSIZE);
 		h = 0.35 * safezoneH  + (3 * BORDERSIZE);
-	};  
+	};
 	class Output_InnerBG : InnerBG {
 		idc = 532;
 		colorBackground[] = COLOR_GREEN;
@@ -387,7 +397,7 @@ class liberation_admin {
 		type = CT_EDIT;
 		style = ST_MULTI;
 		x = (0.46 * safezoneW + safezoneX) + BORDERSIZE;
-    y = ((BASE_Y + 0.32) * safezoneH) + safezoneY;    
+    y = ((BASE_Y + 0.32) * safezoneH) + safezoneY;
 		w = 0.11 * safezoneW;
     h = 0.33 * safezoneH;
 		text = "";
