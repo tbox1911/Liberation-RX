@@ -12,6 +12,11 @@ _unit enableGunLights "Auto";
 _unit setUnitRank "PRIVATE";
 _unit setSkill 0.6;
 
+// Add heal capabilities to player's group's medic when ACE is present
+if (GRLIB_ACE_medical_enabled && ([_unit] call PAR_is_medic)) then {
+	[_unit] execVM "scripts\client\ace_medic_heal.sqf";
+};
+
 if (GRLIB_opfor_english) then {
     //[_unit, _spk] remoteExec ["setSpeaker", 0];
     _unit setSpeaker (format ["Male0%1ENG",selectRandom [2,3,4,5,6,7,8,9]]);
