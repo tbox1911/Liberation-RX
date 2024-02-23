@@ -1,5 +1,5 @@
 // Dump FOB defense buildings position to Clipboard
-// FOB must be north (azh 0) oriented
+// FOB must be north (azh 0) oriented (use grid mode in build menu)
 
 private _fob = (player nearObjects [FOB_typename, 150] select 0);
 if (isNil "_fob") exitWith {};
