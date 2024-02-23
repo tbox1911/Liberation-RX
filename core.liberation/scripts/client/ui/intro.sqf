@@ -62,4 +62,5 @@ dostartgame = 1;
 
 // Load Player Context (+Ai)
 waitUntil {sleep 0.1; GRLIB_player_spawned };
+player setVariable ["GRLIB_player_context_loaded", false, true];
 [player] remoteExec ["load_context_remote_call", 2];
