@@ -324,7 +324,7 @@ while { true } do {
 					};
 				};
 			};
-			sleep 0.15;
+			sleep 0.05;
 		};
 
 		if ( !alive player ) then { build_confirmed = 3 };

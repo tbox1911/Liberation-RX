@@ -11,7 +11,6 @@ if ((PAR_Grp_ID != _fob_owner) && !([] call is_admin)) exitWith { hintSilent loc
 createDialog "FOB_Defense";
 waitUntil { dialog };
 
-build_action = 0;
 private _display = findDisplay 2309;
 private _icon = getMissionPath "res\ui_build.paa";
 private ["_selected_item", "_entrytext", "_defense_template", "_defense_name", "_defense_price"];
@@ -19,13 +18,14 @@ private ["_selected_item", "_entrytext", "_defense_template", "_defense_name", "
 lbClear 110;
 {
     _entrytext = (_x select 0);
-    _defense_price = 50;
-    if (count _entrytext > 25) then { _entrytext = _entrytext select [0,25] };	
+    _defense_price = (_x select 2);
+    if (count _entrytext > 25) then { _entrytext = _entrytext select [0,25] };
     (_display displayCtrl (110)) lnbAddRow [_entrytext, str _defense_price];
     lnbSetPicture  [110, [((lnbSize 110) select 0) - 1, 0], _icon];
 } foreach GRLIB_FOB_Defense;
 lbSetCurSel [110, -1];
 
+build_action = 0;
 while { dialog && alive player } do {
     if (build_action != 0) then {
         _selected_item = lbCurSel 110;
@@ -37,7 +37,9 @@ while { dialog && alive player } do {
     sleep 0.2;
 };
 
-systemchat str _defense_template;
+if (build_action == 0) exitWith {};
+if (!([parseNumber _defense_price] call F_pay)) exitWith {};
+
 private _objects_to_build = ([] call compile preprocessFileLineNumbers _defense_template);
 gamelogic globalChat format ["Build %1 cost %2 on FOB %3 ", _defense_name, _defense_price, ([_fob_pos] call F_getFobName)];
 
@@ -45,6 +47,9 @@ gamelogic globalChat format ["Build %1 cost %2 on FOB %3 ", _defense_name, _defe
 private ["_nextclass", "_nextobject", "_nextpos", "_nextdir"];
 _fob_pos set [2, 0];
 {
+    if (_forEachIndex % 12 == 0) then {
+        [player, "Land_Carrier_01_blast_deflector_up_sound"] remoteExec ["sound_range_remote_call", 2];
+    };
 	_nextclass = (_x select 0);
 	_nextpos = (_x select 1);
 	_nextdir = (_x select 2) + _fob_dir;

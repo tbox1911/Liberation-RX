@@ -1,6 +1,8 @@
 waitUntil { !isNil "huron_typename" };
 
 private _vehicleClassnames = [huron_typename] + all_friendly_classnames;
+private _objects_to_mark = [];
+{ _objects_to_mark pushBackUnique (_x select 0) } forEach (buildings + support_vehicles);
 private _zeusunits = [];
 private _units_to_remove = [];
 
@@ -20,6 +22,13 @@ while { true } do {
 			_zeusunits pushback _x;
 		};
 	} foreach vehicles;
+
+	//all building around fob
+	private _buildings = [];
+	{
+		_buildings = (nearestObjects [_x, _objects_to_mark, GRLIB_fob_range]);
+		_zeusunits = _zeusunits + _buildings;
+	} forEach GRLIB_all_fobs;
 
 	_zeusunits = _zeusunits + switchableUnits;
 	_zeusunits = _zeusunits + playableUnits;
@@ -50,5 +59,5 @@ while { true } do {
 		};
 	};
 
-	sleep 10;
+	sleep 20;
 };
