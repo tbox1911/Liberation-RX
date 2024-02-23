@@ -41,7 +41,7 @@ if (build_action == 0) exitWith {};
 if (!([parseNumber _defense_price] call F_pay)) exitWith {};
 
 private _objects_to_build = ([] call compile preprocessFileLineNumbers _defense_template);
-gamelogic globalChat format ["Build %1 cost %2 on FOB %3 ", _defense_name, _defense_price, ([_fob_pos] call F_getFobName)];
+gamelogic globalChat format ["Build %1 (%2 objects) on FOB %3 ", _defense_name, count _objects_to_build, ([_fob_pos] call F_getFobName)];
 
 // Build defense in FOB direction
 private ["_nextclass", "_nextobject", "_nextpos", "_nextdir"];

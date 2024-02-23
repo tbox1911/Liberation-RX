@@ -220,7 +220,7 @@ while { true } do {
 				if ( _actualdir >= 292.5 && _actualdir <= 337.5 ) then { _actualdir = 315 };
 				if ( _actualdir <= 22.5 || _actualdir >= 337.5 ) then { _actualdir = 0 };
 			};
-			if ([] call is_admin) then { hintSilent format ["%1 - %2", _truepos, _truedir] };
+			if ([] call is_admin) then { hintSilent format ["%1 - %2", _truepos, round _truedir] };
 
 			_sphere_idx = 0;
 			{

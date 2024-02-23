@@ -6518,7 +6518,7 @@
 			<French>-- SAUVEGARDER LE JOUEUR</French>
 		</Key>
 		<Key ID="STR_BUILD_DEFENSE">
-			<Original>-- BUILD FOB DEFENSE</Original>
+			<Original>-- BUILD FOB DEFENSES</Original>
 			<French>-- CONSTRUIRE DEFENSE FOB</French>
 		</Key>		
 		<Key ID="STR_SAVE_PLAYER_MSG">
