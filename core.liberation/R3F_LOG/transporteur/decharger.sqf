@@ -71,7 +71,6 @@ else
 				R3F_LOG_mutex_local_verrou = false;
 				if ([_objet_a_decharger, uavs] call F_itemIsInClass) then {
 					player enableUAVConnectability [_objet_a_decharger, true];
-					_objet enableSimulationGlobal true;
 				};
 				[_objet_a_decharger, player, 0, true] spawn R3F_LOG_FNCT_objet_deplacer;
 			}

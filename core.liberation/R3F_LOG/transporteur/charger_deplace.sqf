@@ -57,7 +57,6 @@ else
 				if ([_objet, uavs] call F_itemIsInClass) then {	
 					player connectTerminalToUAV objNull;
 					player disableUAVConnectability [_objet, true];
-					_objet enableSimulationGlobal false;
 				};
 				
 				systemChat format [STR_R3F_LOG_action_charger_fait,
