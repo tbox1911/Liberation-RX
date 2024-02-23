@@ -38,6 +38,7 @@ while { dialog && alive player } do {
             _defense_template = GRLIB_FOB_Defense select _selected_item select 1;
             _objects_to_build = ([] call compile preprocessFileLineNumbers _defense_template);
         } else {
+            if !([] call is_admin) exitWith { systemchat "Error: Only admin can do that!" };
             { ctrlShow [_x, true] } foreach _input_controls;	
             input_save = "";
             waitUntil {uiSleep 0.3; ((input_save != "") || !(dialog) || !(alive player))};
