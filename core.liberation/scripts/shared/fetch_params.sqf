@@ -10,7 +10,7 @@ GRLIB_params_save_key = format ["%1-config", GRLIB_save_key];
 // Detect Addons
 GRLIB_LRX_Music_enabled = isClass(configFile >> "cfgPatches" >> "LRX_Music"); // Returns true if LRX Music Pack is enabled
 GRLIB_LRX_Texture_enabled = isClass(configFile >> "cfgPatches" >> "LRX_Texture"); // Returns true if LRX Textture Pack is enabled
-GRLIB_LRX_template_enabled = isClass(configFile >> "cfgPatches" >> "LRX_Template"); // Returns true if LRX Template Pack is enabled
+GRLIB_LRX_Template_enabled = isClass(configFile >> "cfgPatches" >> "LRX_Template"); // Returns true if LRX Template Pack is enabled
 GRLIB_ACE_enabled = isClass(configFile >> "cfgPatches" >> "ace_main"); // Returns true if ACE is enabled
 GRLIB_ACE_medical_enabled = isClass(configFile >> "cfgPatches" >> "ace_medical"); // Returns true if ACE Medical is enabled
 GRLIB_ACRE_enabled = isClass(configFile >> "cfgPatches" >> "acre_main"); // Returns true if ACRE is enabled
@@ -40,7 +40,7 @@ GRLIB_MFR_enabled = isClass(configfile >> "CfgPatches" >> "MFR_Dogs"); // Return
 LRX_mod_list_west = [];
 LRX_mod_list_east = [];
 LRX_mod_list_name = [];
-if (GRLIB_LRX_template_enabled) then {
+if (GRLIB_LRX_Template_enabled) then {
 	_version = getNumber (configFile >> "cfgPatches" >> "LRX_Template" >> "version");
 	if (_version >= 2 ) then {
 		[] call LRX_Template_fnc_loading;
