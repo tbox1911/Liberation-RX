@@ -3544,7 +3544,7 @@
 		<Key ID="STR_NOTIFICATION_CONVOY_FAILED_TEXT">
 			<Original>Cargo from Convoy OPFOR is lost.</Original>
 			<French>Cargaison du Convoi OPFOR est perdu.</French>
-		</Key>		
+		</Key>
 		<Key ID="STR_NOTIFICATION_CONVOY_SPOTTED_TEXT">
 			<Original>OPFOR Convoy near %1.</Original>
 			<French>Convoi OPFOR près de %1.</French>
@@ -6520,6 +6520,14 @@
 		<Key ID="STR_BUILD_DEFENSE">
 			<Original>-- BUILD FOB DEFENSES</Original>
 			<French>-- CONSTRUIRE DEFENSE FOB</French>
+		</Key>
+		<Key ID="STR_CLEAR_DEFENSE">
+			<Original>-- REMOVE ALL FOB DEFENSES</Original>
+			<French>-- SUPPRIMER DEFENSE FOB</French>
+		</Key>
+		<Key ID="STR_CLEAR_DEFENSE_MSG">
+			<Original>&lt;t align='center'&gt;Remove ALL Defenses&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
+			<French>&lt;t align='center'&gt;Supprimer TOUTES les Defenses&lt;br/&gt;Es tu sûr ?&lt;/t&gt;</French>
 		</Key>		
 		<Key ID="STR_SAVE_PLAYER_MSG">
 			<Original>Player Profile and\n%1 Squad unit(s)\nSaved!</Original>
@@ -6942,7 +6950,7 @@
 		</Key>
 		<Key ID="STR_ADMIN_ZEUSMODE">
 			<Original>Zeus Mode</Original>
-		</Key>		
+		</Key>
 		<Key ID="STR_ADMIN_UNLOCK">
 			<Original>Unlock Vehicle</Original>
 			<Russian>Открыть машину</Russian>
@@ -6952,15 +6960,12 @@
 			<Portuguese>Desbloquear veículo</Portuguese>
 			<Czech>Odemknout vozidlo</Czech>
 		</Key>
-		<Key ID="STR_ADMIN_DELETEOBJ">
-			<Original>Delete Object</Original>
-			<Russian>Удалить Объект</Russian>
-			<Japanese>オブジェクトを消す</Japanese>
-			<Chinesesimp>删除物体</Chinesesimp>
-			<Chinese>刪除物體</Chinese>
-			<Portuguese>Excluir objeto</Portuguese>
-			<Czech>Smazat objekt</Czech>
+		<Key ID="STR_ADMIN_DELETE">
+			<Original>DELETE</Original>
 		</Key>
+		<Key ID="STR_ADMIN_MOWER">
+			<Original>MOWER</Original>
+		</Key>		
 		<Key ID="STR_ADMIN_EXPORT">
 			<Original>Export Game</Original>
 			<Russian>Сохранить Игру</Russian>

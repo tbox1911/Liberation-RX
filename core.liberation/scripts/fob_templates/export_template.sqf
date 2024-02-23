@@ -24,5 +24,5 @@ private _clipboard = "";
 } foreach (nearestObjects [_fob_pos, _objects_to_save, GRLIB_fob_range]);
 
 private _msg = [_clipboard, 0, (count _clipboard)-2] call BIS_fnc_trimString;
-copyToClipboard ("[" + _msg + "];");
+copyToClipboard ("[" + _msg + "]");
 hintSilent "Template dumped to Clipboard!"

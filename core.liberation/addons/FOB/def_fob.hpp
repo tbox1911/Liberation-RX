@@ -25,7 +25,6 @@ class FOB_Defense {
 		class InnerBG_F1: InnerBG1 {
 			style = ST_FRAME;
 		};
-
 	};
 
 	class controls {
@@ -73,5 +72,61 @@ class FOB_Defense {
 			h = 0.035 * safezoneH;
 		};
 
+		//----------------
+		class Input_OuterBG : StdBG {
+			idc = 521;
+			style = ST_SINGLE;
+			colorBackground[] = COLOR_BROWN;
+			x = (0.46 * safezoneW + safezoneX) - (BORDERSIZE);
+			y = ((BASE_Y + 0.31) * safezoneH) + safezoneY - (1.5 * BORDERSIZE);
+			w = 0.17 * safezoneW +  (2 * BORDERSIZE);
+			h = 0.35 * safezoneH  + (3 * BORDERSIZE);
+		};
+		class Input_InnerBG : StdBG {
+			idc = 522;
+			colorBackground[] = COLOR_GREEN;
+			x = (0.46 * safezoneW + safezoneX);
+			y = ((BASE_Y + 0.31) * safezoneH) + safezoneY;
+			w = 0.17 * safezoneW;
+			h = 0.35 * safezoneH;
+		};
+		class Input_OuterBG_F : Input_OuterBG {
+			idc = 523;
+			style = ST_FRAME;
+		};
+		class Input_InnerBG_F : Input_InnerBG {
+			idc = 524;
+			style = ST_FRAME;
+		};
+		class Input_ButtonName_Ok : StdButton {
+			idc = 525;
+			x = 0.58 * safezoneW + safezoneX;
+			y = ((BASE_Y + 0.32) * safezoneH) + safezoneY;
+			w = ((0.2 * safezoneW) / 5) - BORDERSIZE;
+			text = "OK";
+			action = "input_save = ctrlText 527;";
+		};
+		class Input_ButtonName_Abort : StdButton {
+			idc = 526;
+			x = 0.58 * safezoneW + safezoneX;
+			y = ((BASE_Y + 0.36) * safezoneH) + safezoneY;
+			w = ((0.2 * safezoneW) / 5) - BORDERSIZE;
+			text = "Cancel";
+			action = "input_save = 'null';";
+		};
+		class Input_TextField : StdButton {
+			idc = 527;
+			type = CT_EDIT;
+			style = ST_MULTI;
+			x = (0.46 * safezoneW + safezoneX) + BORDERSIZE;
+			y = ((BASE_Y + 0.32) * safezoneH) + safezoneY;
+			w = 0.11 * safezoneW;
+			h = 0.33 * safezoneH;
+			text = "";
+			action = "";
+			colorText[] = COLOR_WHITE;
+			colorSelection[] = COLOR_BRIGHTGREEN;
+			autocomplete = "";
+		};
 	};
 };

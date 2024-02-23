@@ -107,7 +107,7 @@ GRLIB_checkOnboardShip = {
 };
 
 GRLIB_checkPackFOB = {
-	(GRLIB_player_is_menuok && GRLIB_player_fobdistance < GRLIB_ActionDist_10 && (!GRLIB_player_near_outpost) && ((GRLIB_player_score >= GRLIB_perm_max) || GRLIB_player_admin))
+	(GRLIB_player_is_menuok && GRLIB_player_fobdistance < GRLIB_ActionDist_10 && (!GRLIB_player_near_outpost) && (GRLIB_player_owner_fob || GRLIB_player_admin))
 };
 
 GRLIB_checkPackBeacon = {

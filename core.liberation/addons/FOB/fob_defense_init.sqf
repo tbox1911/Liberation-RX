@@ -1,5 +1,5 @@
 GRLIB_FOB_Defense = [
-    //["DBG", "scripts\fob_templates\defense0.sqf", 0],
+    ["From Clipboard.", "", 0],
     ["Small Defense 1", "scripts\fob_templates\defense1.sqf", 50],
     ["Small Defense 2", "scripts\fob_templates\defense2.sqf", 55],
     ["Medium Defense 1", "scripts\fob_templates\defense3.sqf", 80],

@@ -5,11 +5,12 @@ private _fob = (player nearObjects [FOB_typename, 20] select 0);
 if (isNil "_fob") exitWith {};
 private _fob_pos = getPosATL _fob;
 private _fob_dir = getDir _fob;
-private _fob_owner = [_fob_pos] call F_getFobOwner;
-if ((PAR_Grp_ID != _fob_owner) && !([] call is_admin)) exitWith { hintSilent localize "STR_HINT_FOB_WRONG_OWNER" };
 
 createDialog "FOB_Defense";
 waitUntil { dialog };
+
+private _input_controls = [521,522,523,524,525,526,527];
+{ ctrlShow [_x, false] } foreach _input_controls;
 
 private _display = findDisplay 2309;
 private _icon = getMissionPath "res\ui_build.paa";
@@ -26,21 +27,33 @@ lbClear 110;
 lbSetCurSel [110, -1];
 
 build_action = 0;
+private _objects_to_build = [];
+
 while { dialog && alive player } do {
     if (build_action != 0) then {
         _selected_item = lbCurSel 110;
         _defense_name = (_display displayCtrl (110)) lnbText [_selected_item, 0];
         _defense_price = (_display displayCtrl (110)) lnbText [_selected_item, 1];
-        _defense_template = GRLIB_FOB_Defense select _selected_item select 1;
+        if (_selected_item > 0) then {
+            _defense_template = GRLIB_FOB_Defense select _selected_item select 1;
+            _objects_to_build = ([] call compile preprocessFileLineNumbers _defense_template);
+        } else {
+            { ctrlShow [_x, true] } foreach _input_controls;	
+            input_save = "";
+            waitUntil {uiSleep 0.3; ((input_save != "") || !(dialog) || !(alive player))};
+            if ( input_save select [0,1] == "[" && input_save select [(count input_save)-1,(count input_save)] == "]") then {
+                _objects_to_build = (parseSimpleArray input_save);
+            } else { systemchat "Error: Invalid data!" };
+            { ctrlShow [_x, false] } foreach _input_controls;
+        };
         closeDialog 0;
     };
     sleep 0.2;
 };
 
 if (build_action == 0) exitWith {};
+if (count _objects_to_build == 0) exitWith {};
 if (!([parseNumber _defense_price] call F_pay)) exitWith {};
-
-private _objects_to_build = ([] call compile preprocessFileLineNumbers _defense_template);
 gamelogic globalChat format ["Build %1 (%2 objects) on FOB %3 ", _defense_name, count _objects_to_build, ([_fob_pos] call F_getFobName)];
 
 // Build defense in FOB direction
