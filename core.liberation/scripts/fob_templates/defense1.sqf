@@ -29,4 +29,4 @@
     ["Land_HBarrierBig_F", [15.76, 30.4, 0], 0],
     ["Land_HBarrierBig_F", [-18.56, -30.08, 0], 0],
     ["Land_HBarrierBig_F", [-19.01, 29.99, 0], 0]
-    ]
+]
