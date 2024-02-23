@@ -4,7 +4,8 @@
 private _fob = (player nearObjects [FOB_typename, 150] select 0);
 if (isNil "_fob") exitWith {};
 private _fob_pos = getPosATL _fob;
-private _fob_dir = getDir _fob;
+private _fob_dir = round (getDir _fob);
+if (_fob_dir != 0) exitWith { systemchat format ["Error: Incorect FOB azimuth (%1) must be 0.", _fob_dir] };
 
 private _objects_to_save = [];
 { _objects_to_save pushBackUnique (_x select 0) } forEach (buildings + support_vehicles);
@@ -17,7 +18,7 @@ private _clipboard = "";
             [(getPosATL _x select 0) - (_fob_pos select 0), 2] call BIS_fnc_cutDecimals,
             [(getPosATL _x select 1) - (_fob_pos select 1), 2] call BIS_fnc_cutDecimals,
             round (getPosATL _x select 2),
-            round (getDir _x - _fob_dir)
+            round (getDir _x)
         ];
         _clipboard = _clipboard + _msg;
     };
