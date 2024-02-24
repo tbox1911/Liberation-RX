@@ -12,9 +12,6 @@ _unit stop false;
 _unit setUnitPos "AUTO";
 _unit enableAI "ANIM";
 _unit enableAI "MOVE";
-// _anim = "AmovPercMwlkSrasWrflDf";
-// _unit switchMove _anim;
-// _unit playMoveNow _anim;
 _unit setDamage 0.50;
 
 // follow
@@ -38,7 +35,7 @@ _unit stop true;
 if ([_unit] call _near_tent) then {
     _unit setDamage 0;
     _unit setVariable ["GRLIB_can_speak", false, true];
+    sleep 3;
     _unit setVariable ["GRLIB_A3W_Mission_HC2", nil, true];
     [_follow, 5] call F_addReput;
-    _unit stop true;
 };
