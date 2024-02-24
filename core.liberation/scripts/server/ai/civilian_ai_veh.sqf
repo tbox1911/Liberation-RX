@@ -1,7 +1,6 @@
 params ["_vehicle"];
 if (isNull _vehicle) exitWith {};
-if (typeOf _vehicle isKindOf "Air") exitWith {};
-if (typeOf _vehicle isKindOf "Boat_F") exitWith {};
+if (([_vehicle, ["Air", "Boat_F", "Motorcycle"]] call F_itemIsInClass)) exitWith {};
 if (count (crew _vehicle) == 0) exitWith {};
 
 #define _incd_repair 20     // must match speak_manger.sqf (_msg)
@@ -59,7 +58,7 @@ while { alive _vehicle && !(isNull _driver)} do {
             };
 
             // refuel
-            case _incd_fuel: {
+            case _incd_fuel: {              
                 _vehicle setFuel 0;
             };
 

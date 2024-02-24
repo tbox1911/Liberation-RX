@@ -86,7 +86,7 @@ while {alive _unit && _continue} do {
             _target_veh = _target_veh select { ([_x] call F_VehicleNeedRepair) };
             if (count _target_veh > 0) then {
                 _target = selectRandom _target_veh;
-                if (damage _target_veh < 0.1) exitWith {};
+                if (damage _target < 0.1) exitWith {};
                 [_grp] call F_deleteWaypoints;
                 waitUntil {
                     _unit doMove (getPos _target);
