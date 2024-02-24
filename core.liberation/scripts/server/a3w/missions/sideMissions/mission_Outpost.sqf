@@ -7,6 +7,7 @@ _setupVars = {
 	_missionType = "STR_OUTPOST";
 	_locationsArray = [SpawnMissionMarkers] call checkSpawn;
 	_precise_marker = false;
+	_missionTimeout = (45 * 60);	
 };
 
 _setupObjects = {

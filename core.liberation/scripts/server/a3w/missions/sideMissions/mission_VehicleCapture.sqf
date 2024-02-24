@@ -3,15 +3,14 @@ if (!isServer) exitwith {};
 
 private ["_nbUnits", "_vehicleName", "_smoke"];
 
-_setupVars =
-{
+_setupVars = {
 	_missionType = "STR_VEHICLECAP";
 	_locationsArray = [SpawnMissionMarkers] call checkSpawn;
 	_nbUnits = [] call getNbUnits;
+	_missionTimeout = (30 * 60);	
 };
 
-_setupObjects =
-{
+_setupObjects = {
 	_missionPos = [(markerpos _missionLocation)] call F_findSafePlace;
 	if (count _missionPos == 0) exitWith { 
     	diag_log format ["--- LRX Error: side mission VC, cannot find spawn point!"];
