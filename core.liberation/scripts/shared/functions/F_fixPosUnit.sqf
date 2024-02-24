@@ -1,8 +1,10 @@
 params ["_unit"];
+// try to fix pos on rock/object (thanks Larrow)
 
 if (!isNull objectParent _unit) exitWith {};
+private _forest = count (nearestTerrainObjects [_unit, ["Tree","Small Tree", "House","Building"], 5]);
+if (_forest > 0) exitWith {};
 
-// try to fix pos on rock/object (thanks Larrow)
 private _spawnpos = getPosASL _unit;
 private _curalt = _spawnpos select 2;
 private _maxalt = 80;
