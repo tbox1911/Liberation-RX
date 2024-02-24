@@ -1,8 +1,10 @@
 params ["_unit"];
 
 if (isNil "_unit") exitWith {};
-if (count (attachedObjects _unit) > 0 && _unit isKindOf "CAManBase") exitWith {};
 if (player getVariable ["GRLIB_action_inuse", false]) exitWith {};
+if (_unit isKindOf "CAManBase") then {
+	{ detach _x } forEach (attachedObjects _unit); 
+};
 
 private _result = true;
 private _cost = GRLIB_AirDrop_Vehicle_cost;
