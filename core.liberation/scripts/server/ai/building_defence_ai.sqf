@@ -11,8 +11,8 @@ private _hostilecount = 0;
 private _sector = "";
 
 sleep (10 + floor random 50);
-while { _move_is_disabled && alive _unit } do {
-	_hostilecount = count ([_unit, 50] call F_getNearbyPlayers);
+while { _move_is_disabled && alive _unit && !(captive _unit) } do {
+	_hostilecount = count ([_unit, 80] call F_getNearbyPlayers);
 	_sector = [GRLIB_sector_size, _unit] call F_getNearestSector; 
 
 	if ( _hostilecount > 0 || ( damage _unit > 0.25 ) || _sector in blufor_sectors ) then {
@@ -38,5 +38,5 @@ while { _move_is_disabled && alive _unit } do {
 		};
 	};
 
-	sleep 27;
+	sleep 7;
 };

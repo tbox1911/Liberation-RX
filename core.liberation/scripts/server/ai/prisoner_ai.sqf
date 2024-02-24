@@ -11,35 +11,38 @@ sleep (1 + floor random 4);
 if (!alive _unit) exitWith {};
 
 // Init priso
-private ["_grp", "_flee_grp", "_anim"];
-if !(_unit getVariable ["GRLIB_in_building", false]) then {
-	[_unit] call F_fixPosUnit;
-};
+private _grp = createGroup [GRLIB_side_enemy, true];
+[_unit] joinSilent _grp;
 
+doStop _unit;
 removeAllWeapons _unit;
-removeHeadgear _unit;
+//removeHeadgear _unit;
 removeBackpack _unit;
 removeVest _unit;
 private _hmd = (hmd _unit);
 _unit unassignItem _hmd;
 _unit removeItem _hmd;
-_unit removeAllEventHandlers "HandleDamage";
-
-if (!_canmove) then {
-	[_unit, "init"] remoteExec ["remote_call_prisoner", 0];
-};
-
-_unit setCaptive true;
 _unit setVariable ["GRLIB_is_prisoner", true, true];
 _unit setVariable ["GRLIB_can_speak", true, true];
+_unit removeAllEventHandlers "HandleDamage";
+_unit setCaptive true;
+
+if !(_unit getVariable ["GRLIB_in_building", false]) then {
+	[_unit] call F_fixPosUnit;
+};
 
 // Wait
-if (_friendly) then {
-	waitUntil { sleep 1; (!alive _unit || side group _unit == GRLIB_side_friendly) };
-} else {
-	private _timeout = time + (45 * 60);
-	waitUntil { sleep 1; (!alive _unit || side group _unit == GRLIB_side_friendly || time > _timeout) };
+if (!_canmove) then {
+	[_unit, "init"] remoteExec ["remote_call_prisoner", 0];
+	if (_friendly) then {
+		waitUntil { sleep 1; (!alive _unit || side group _unit == GRLIB_side_friendly) };
+	} else {
+		private _timeout = time + (45 * 60);
+		waitUntil { sleep 1; (!alive _unit || side group _unit == GRLIB_side_friendly || time > _timeout) };
+	};
 };
+
+waitUntil { sleep 1; isNull objectParent _unit };
 if (!alive _unit) exitWith {};
 
 // Follow
