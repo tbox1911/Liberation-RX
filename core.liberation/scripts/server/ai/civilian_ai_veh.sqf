@@ -37,6 +37,7 @@ while { alive _vehicle && !(isNull _driver)} do {
 
         _event_stared = true;
         diag_log format ["Civilian vehicle %1 incident %2 at %3", typeOf _vehicle, _incd , time];
+        _vehicle setVariable ["GRLIB_civ_incd", _incd, true];
         _vehicle allowCrewInImmobile [true, true];
         doStop _driver;
         sleep 3;
@@ -59,13 +60,11 @@ while { alive _vehicle && !(isNull _driver)} do {
 
             // refuel
             case _incd_fuel: {
-                _vehicle removeAllEventHandlers "Fuel";
                 _vehicle setFuel 0;
             };
 
             default {};
         };
-        _vehicle setVariable ["GRLIB_civ_incd", _incd, true];
         _wait_max = time + (15*60);
     };
 
