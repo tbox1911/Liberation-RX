@@ -252,6 +252,7 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	fuel_sling_typename,
 	ammo_sling_typename,
 	medic_sling_typename,
+	basic_weapon_typename,
 	canister_fuel_typename,
 	a3w_sd_item,
 	"ReammoBox_F",
@@ -281,7 +282,8 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 	ammobox_i_typename,
 	waterbarrel_typename,
 	fuelbarrel_typename,
-	foodbarrel_typename	
+	foodbarrel_typename,
+	basic_weapon_typename
 ];
 //--------------- Static ---------------
 
