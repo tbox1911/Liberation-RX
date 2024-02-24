@@ -85,8 +85,9 @@ while {alive _unit && _continue} do {
         case 2: {
             _target_veh = _target_veh select { ([_x] call F_VehicleNeedRepair) };
             if (count _target_veh > 0) then {
-                [_grp] call F_deleteWaypoints;
                 _target = selectRandom _target_veh;
+                if (damage _target_veh < 0.1) exitWith {};
+                [_grp] call F_deleteWaypoints;
                 waitUntil {
                     _unit doMove (getPos _target);
                     sleep 5;
@@ -113,14 +114,14 @@ while {alive _unit && _continue} do {
 				    _unit playMoveNow "AmovPercMwlkSnonWnonDf";
                 };
                 [_grp, getPosATL _unit] spawn add_civ_waypoints;
-                sleep _delay;
             };
+            sleep _delay;            
         };
 
         //--- Heal
         case 3: {
-            _target_veh = _target_veh select { ([_x] call F_VehicleNeedRepair) };
-            if (count _target_veh > 0) then {
+            if (count _target > 0) then {
+                if (damage _target < 0.1) exitWith {};
                 [_grp] call F_deleteWaypoints;
                 waitUntil {
                     _unit doMove (getPos _target);
@@ -144,8 +145,8 @@ while {alive _unit && _continue} do {
 				    _unit playMoveNow "AmovPercMwlkSnonWnonDf";
                 };
                 [_grp, getPosATL _unit] spawn add_civ_waypoints;
-                sleep _delay;
             };
+            sleep _delay;            
         };
 
         //--- Reammo
