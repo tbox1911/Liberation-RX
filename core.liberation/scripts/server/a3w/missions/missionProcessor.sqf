@@ -54,7 +54,6 @@ diag_log format ["A3W Side Mission %1 started: %2", _controllerSuffix, localize 
 
 sleep 5;
 ([localize _missionType, _missionPos, _precise_marker] call createMissionMarker) params ["_marker", "_marker_zone"];
-_aiGroup setVariable ["A3W_missionMarkerName", _marker, true];
 
 if (isNil "_missionPicture") then { _missionPicture = "" };
 
