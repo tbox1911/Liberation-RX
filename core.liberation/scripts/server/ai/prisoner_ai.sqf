@@ -34,6 +34,7 @@ if !(_unit getVariable ["GRLIB_in_building", false]) then {
 // Wait
 if (!_canmove) then {
 	[_unit, "init"] remoteExec ["remote_call_prisoner", 0];
+	sleep 3;	
 	if (_friendly) then {
 		waitUntil { sleep 1; (!alive _unit || side group _unit == GRLIB_side_friendly) };
 	} else {
@@ -61,7 +62,7 @@ while {alive _unit} do {
     	[_unit] joinSilent _grp;
 		sleep 1;
 		[_unit, "stop"] remoteExec ["remote_call_prisoner", 0];
-		sleep 2;
+		sleep 3;
 		if (isServer) then {
 			[_unit, _leader] spawn prisonner_captured;
 		} else {
@@ -86,7 +87,7 @@ while {alive _unit} do {
 			private _flee_grp = createGroup [GRLIB_side_enemy, true];
 			[_unit] joinSilent _flee_grp;
 			[_unit, "flee"] remoteExec ["remote_call_prisoner", 0];
-			sleep 2;
+			sleep 3;
 
 			private _nearest_sector = [opfor_sectors, _unit] call F_nearestPosition;
 			if (_nearest_sector != "") then {

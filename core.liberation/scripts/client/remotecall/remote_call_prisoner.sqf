@@ -1,4 +1,3 @@
-if (isDedicated || (!hasInterface && !isServer)) exitWith {};
 params [ "_unit", "_cmd" ];
 
 if !(local _unit) exitWith {};
@@ -16,7 +15,6 @@ if (_cmd == "init") exitWith {
 
 if (_cmd == "stop") exitWith {
     sleep (3 + floor(random 4));
-
     if (!isNull objectParent _unit) then {
         doGetOut _unit;
         unassignVehicle _unit;
