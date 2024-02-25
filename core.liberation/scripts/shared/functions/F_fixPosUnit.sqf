@@ -2,7 +2,7 @@ params ["_unit"];
 // try to fix pos on rock/object (thanks Larrow)
 
 if (!isNull objectParent _unit) exitWith {};
-private _forest = count (nearestTerrainObjects [_unit, ["Tree","Small Tree", "House","Building"], 5]);
+private _forest = count (nearestTerrainObjects [_unit, ["Tree","Small Tree","House","Building"], 5]);
 if (_forest > 0) exitWith {};
 
 private _spawnpos = getPosASL _unit;
