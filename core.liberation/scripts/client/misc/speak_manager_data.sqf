@@ -199,9 +199,9 @@ speak_mission_sdelivery4 = {
 	private _next_unit = (GRLIB_A3W_Mission_SD select 1) select (GRLIB_A3W_Mission_SD select 0);
 	if (_unit != _next_unit) exitWith {[_unit] call speak_another_time};
 
-	private _near_case = getPosATL _unit nearEntities [a3w_sd_item, 10];
+	private _near_case = getPosATL _unit nearEntities [a3w_sd_item, 3];
 	if (count _near_case > 0) then {
-		deleteVehicle (_near_case select 0);
+		(_near_case select 0) setVariable ["R3F_LOG_disabled", true, true];
 		deleteMarker "GRLIB_A3W_Mission_SD_Marker";
 		_unit switchMove "AmovPercMstpSnonWnonDnon_Salute";
 		_unit playMoveNow "AmovPercMstpSnonWnonDnon_Salute";
