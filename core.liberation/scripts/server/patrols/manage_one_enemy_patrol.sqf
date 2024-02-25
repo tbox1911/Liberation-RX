@@ -67,7 +67,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 			(
 				GRLIB_global_stop == 1 ||
 				(diag_fps < 25) ||
-				({alive _x} count (units _opfor_grp) == 0) ||
+				({alive _x} count (units _opfor_grp) < 2) ||
 				([(leader _opfor_grp), GRLIB_spawn_max, GRLIB_side_friendly] call F_getUnitsCount == 0) ||
 				(time > _unit_ttl)
 			)
