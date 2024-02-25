@@ -291,6 +291,7 @@ speak_mission_heal_doctor = {
 speak_mission_heal_wounded = {
 	params ["_unit"];
 	_unit globalChat "Please help me, I'm sick I need a Doctor...";
+	[_unit] call F_fixPosUnit;
 	sleep 3;
 	_unit globalChat "I can follow you a little, I'm weak...";
 	[_unit, player, 20] remoteExec ["a3w_follow_player", 2];
