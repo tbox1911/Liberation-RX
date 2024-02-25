@@ -164,7 +164,7 @@ speak_mission_sdelivery2 = {
 	publicVariable "GRLIB_A3W_Mission_SD";
 
 	_next_unit = (GRLIB_A3W_Mission_SD select 1) select (GRLIB_A3W_Mission_SD select 0);
-	"GRLIB_A3W_Mission_SD_Marker" setMarkerPos (getPosATL _next_unit);
+	"GRLIB_A3W_Mission_SD_Marker" setMarkerPosLocal (getPosATL _next_unit);
 	"GRLIB_A3W_Mission_SD_Marker" setMarkerTextlocal (name _next_unit);
 	_unit globalChat localize "STR_SPEAKMANAGER20";
 	sleep 3;
@@ -183,7 +183,7 @@ speak_mission_sdelivery3 = {
 	publicVariable "GRLIB_A3W_Mission_SD";
 
 	_next_unit = (GRLIB_A3W_Mission_SD select 1) select (GRLIB_A3W_Mission_SD select 0);
-	"GRLIB_A3W_Mission_SD_Marker" setMarkerPos (getPosATL _next_unit);
+	"GRLIB_A3W_Mission_SD_Marker" setMarkerPosLocal (getPosATL _next_unit);
 	"GRLIB_A3W_Mission_SD_Marker" setMarkerTextlocal (name _next_unit);
 	_unit globalChat localize "STR_SPEAKMANAGER17";
 	sleep 3;
