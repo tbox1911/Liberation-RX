@@ -17,7 +17,7 @@ speak_civil_AI = {
 	if (_unit getVariable ["GRLIB_A3W_Mission_DL4", false]) exitWith {[_unit] call speak_mission_delivery_ammo};
 	if (_unit getVariable ["GRLIB_A3W_Mission_HC1", false]) exitWith {[_unit] call speak_mission_heal_doctor};
 	if (_unit getVariable ["GRLIB_A3W_Mission_HC2", false]) exitWith {[_unit] call speak_mission_heal_wounded};
-	if (damage _unit > 0.2) exitWith {[_unit] call speak_heal_civ};
+	if (damage _unit > 0.02) exitWith {[_unit] call speak_heal_civ};
 
 	player globalChat localize "STR_SPEAKMANAGER1";
 	sleep 2;
@@ -118,7 +118,7 @@ speak_heal_civ = {
 	params ["_unit"];
 	_unit globalChat "Hey, I'm wounded, please help me ...";
 	sleep 10;
-	if (damage _unit < 0.2) then {
+	if (damage _unit < 0.02) then {
 		_unit globalChat "Thank you very much !!";
 		[player, 5] remoteExec ["F_addReput", 2];
 	};
