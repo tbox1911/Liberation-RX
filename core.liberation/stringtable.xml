@@ -1802,7 +1802,7 @@
 			<Portuguese>Reduzido - 1.5 vezes mais energia</Portuguese>
 			<Czech>Snížená – 1,5krát větší výdrž</Czech>
 		</Key>
-		<Key ID="STR_PARAMS_REVIVE">
+		<Key ID="STR_PARAMS_PAR_REVIVE">
 			<Original>PsiKO AI Revive</Original>
 			<French>PsiKO AI Résurection</French>
 			<German>PAR Revive (Wiederbelebungen)</German>
@@ -1814,6 +1814,10 @@
 			<Portuguese>PsiKO AI Revive</Portuguese>
 			<Czech>PsiKO oživit AI</Czech>
 		</Key>
+		<Key ID="STR_PARAMS_PAR_BLEEDOUT">
+			<Original>PsiKO AI Bleedout Timer</Original>
+			<French>PsiKO AI Durée Attente</French>
+		</Key>		
 		<Key ID="STR_PARAMS_REVIVE1">
 			<Original>Enabled - Only medics can revive</Original>
 			<French>Activé - Seuls les medics peuvent ressusciter</French>

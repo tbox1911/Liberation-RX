@@ -158,7 +158,8 @@ GRLIB_day_factor = ["DayDuration",1] call lrx_getParamValue;
 GRLIB_night_factor = ["NightDuration",1] call lrx_getParamValue;
 GRLIB_weather_param = ["Weather",1] call lrx_getParamValue;
 GRLIB_fatigue = ["Fatigue",0] call lrx_getParamValue;
-GRLIB_revive = ["Revive",3] call lrx_getParamValue;
+GRLIB_PAR_revive = ["PAR_Revive",3] call lrx_getParamValue;
+GRLIB_PAR_bleedout = ["PAR_BleedOut",300] call lrx_getParamValue;
 GRLIB_tk_mode = ["TK_mode",1] call lrx_getParamValue;
 GRLIB_tk_count = ["TK_count",4] call lrx_getParamValue;
 GRLIB_garage_size = ["MaxGarageSize",5] call lrx_getParamValue;
@@ -291,7 +292,7 @@ switch (GRLIB_naval_type) do {
 };
 
 if ( GRLIB_ACE_enabled ) then { GRLIB_fancy_info = 0 };		// Disable Fancy if ACE present
-if ( GRLIB_ACE_medical_enabled ) then { GRLIB_revive = 0; GRLIB_fatigue = 1 };		// Disable PAR/Fatigue if ACE Medical is present
+if ( GRLIB_ACE_medical_enabled ) then { GRLIB_PAR_revive = 0; GRLIB_fatigue = 1 };		// Disable PAR/Fatigue if ACE Medical is present
 if ( GRLIB_fatigue == 1 ) then { GRLIB_fatigue = true } else { GRLIB_fatigue = false };
 if ( GRLIB_introduction == 1 ) then { GRLIB_introduction = true } else { GRLIB_introduction = false };
 if ( GRLIB_deployment_cinematic == 1 ) then { GRLIB_deployment_cinematic = true } else { GRLIB_deployment_cinematic = false };

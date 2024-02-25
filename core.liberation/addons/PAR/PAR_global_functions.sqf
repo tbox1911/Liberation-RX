@@ -237,7 +237,7 @@ PAR_HandleDamage_EH = {
 		_unit setVariable ["PAR_isUnconscious", true, true];
 		_unit setCaptive true;
 		_unit allowDamage false;
-		_unit setVariable ["PAR_BleedOutTimer", round(time + PAR_BleedOut), true];
+		_unit setVariable ["PAR_BleedOutTimer", round(time + GRLIB_PAR_bleedout), true];
 		[_unit, _killer] spawn PAR_Player_Unconscious;
 	};
 

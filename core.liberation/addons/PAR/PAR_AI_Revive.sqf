@@ -36,7 +36,7 @@ if (isDedicated) exitWith {
 [] call compile preprocessFile "addons\PAR\PAR_global_functions.sqf";
 
 // Seconds until unconscious unit bleeds out and dies.
-PAR_BleedOut = 300;
+// GRLIB_PAR_bleedout = 300;    // from settings
 PAR_BleedOutExtra = 60;
 
 // Enable info killer message

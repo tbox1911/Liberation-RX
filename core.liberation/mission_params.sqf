@@ -45,7 +45,8 @@ LRX_Mission_Params = [
 	["ModPresetEast", 0],			// Select MOD Preset for Enemy side - values = { 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25 } text "A3_OPF", "A3_BLU", "A3_IND",  etc...
 	["Weather", 1],					// Weather - [default 4] - values = [1,2,3,4] - Text {Always Sunny,Random without rain,Random Cloudy,Random}
 	["Fatigue", 0],					// Stamina - [default 1] - values = [1,0] - Text {Enabled,Disabled}
-	["Revive", 3],					// PAR revive - [default 3] - values = [3,2,1,0] - Text {Enabled - Everyone can revive,Enabled - Everyone can revive using Medikit/FAK,Enabled - Only medics can revive,Disabled}
+	["PAR_Revive", 3],				// PAR revive - [default 3] - values = [3,2,1,0] - Text {Enabled - Everyone can revive,Enabled - Everyone can revive using Medikit/FAK,Enabled - Only medics can revive,Disabled}
+	["PAR_BleedOut", 300],			// PAR revive Bleedout timer- [default 300] - values = [100,200,300,400,500,600] 
 	["TK_mode", 1],					// Teamkill Mode [default 0] - values = [0,1,2] - Text {Strict,Relax,Disabled}
 	["TK_count", 4],				// Teamkill Warning Count [default 4] - values = [3, 4, 5, 6, 7, 8, 9, 10] - Text {3, 4, 5, 6, 7, 8, 9, 10}
 	["Civilians", 1],				// Cilivilian Manager - [default 1] - values = [0,0.5,1,2] - Text {None,Reduced,Normal,Increased}
@@ -154,12 +155,16 @@ LRX_Mission_Params_Def = [
 		["x0.25", "x0.5", "x0.75", "x1", "x1.25","x1.5","x2","x3","x5","x10","x20","x50"],
 		[0.25, 0.5, 0.75, 1, 1.25, 1.5, 2, 3, 5, 10, 20, 50]
 	],
-	["Revive", localize "STR_PARAMS_REVIVE", [
+	["PAR_Revive", localize "STR_PARAMS_PAR_REVIVE", [
 		localize "STR_PARAMS_DISABLED",
 		localize "STR_PARAMS_REVIVE1",
 		localize "STR_PARAMS_REVIVE2",
 		localize "STR_PARAMS_REVIVE3"
 		]
+	],
+	["PAR_BleedOut", localize "STR_PARAMS_PAR_BLEEDOUT",
+		["100", "200", "300", "400", "500", "600"],
+		[100, 200, 300, 400, 500, 600]
 	],
 	["Respawn", localize "STR_RESPAWN",
 		["5", "10", "20", "25", "30", "60"],

@@ -157,7 +157,7 @@ if (_unit == player) then {
 	player addEventHandler ["Respawn", { [] spawn PAR_Player_Init }];
 
 	// Player Handle Damage EH
-	if (GRLIB_revive != 0) then {
+	if (GRLIB_PAR_revive != 0) then {
 		player addEventHandler ["HandleDamage", { _this call PAR_HandleDamage_EH }];
 	};
 } else {
@@ -166,7 +166,7 @@ if (_unit == player) then {
 
 	// AI Handle Damage EH
 	_unit addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
-	if (GRLIB_revive != 0) then {
+	if (GRLIB_PAR_revive != 0) then {
 		_unit addEventHandler ["HandleDamage", {
 			params ["_unit","","_dam"];
 			_veh = objectParent _unit;
@@ -176,7 +176,7 @@ if (_unit == player) then {
 				_unit setVariable ["PAR_wounded", true, true];
 				if (!isNull _veh) then {[_unit, _veh] spawn PAR_fn_eject};
 				_unit allowDamage false;
-				_unit setVariable ["PAR_BleedOutTimer", round(time + PAR_BleedOut), true];
+				_unit setVariable ["PAR_BleedOutTimer", round(time + GRLIB_PAR_bleedout), true];
 				[_unit] spawn PAR_fn_unconscious;
 			};
 			_dam min 0.86;

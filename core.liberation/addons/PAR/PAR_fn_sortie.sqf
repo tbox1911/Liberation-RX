@@ -34,7 +34,7 @@ if (lifeState _medic == "INCAPACITATED" || (!alive _wnded)) exitWith { [_medic, 
 // Revived
 _wnded setUnconscious false;
 
-if (GRLIB_revive == 2) then { 
+if (GRLIB_PAR_revive == 2) then { 
   _medic removeItem "FirstAidKit";
 };
 if ([_medic] call PAR_is_medic) then {
