@@ -10,6 +10,7 @@ ied_manager = compileFinal preprocessFileLineNumbers "scripts\server\sector\ied_
 ied_trap_manager = compileFinal preprocessFileLineNumbers "scripts\server\sector\ied_trap_manager.sqf";
 static_manager = compileFinal preprocessFileLineNumbers "scripts\server\sector\static_manager.sqf";
 manage_one_sector = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_one_sector.sqf";
+escape_ai = compileFinal preprocessFileLineNumbers "scripts\server\ai\escape_ai.sqf";
 prisoner_ai = compileFinal preprocessFileLineNumbers "scripts\server\ai\prisoner_ai.sqf";
 civilian_ai = compileFinal preprocessFileLineNumbers "scripts\server\ai\civilian_ai.sqf";
 civilian_ai_veh = compileFinal preprocessFileLineNumbers "scripts\server\ai\civilian_ai_veh.sqf";

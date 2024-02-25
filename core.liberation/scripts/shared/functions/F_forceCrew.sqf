@@ -5,7 +5,7 @@ if (_side == GRLIB_side_friendly) then {
 	_mod = GRLIB_mod_west;
 };
 
-private _not_aircraft = !(_vehicle isKindOf "Air");
+private _aircraft = (_vehicle isKindOf "Air");
 private _path = format ["mod_template\%1\loadout\%2.sqf", _mod, "crewman"];
 private _grp = _side createVehicleCrew _vehicle;
 sleep 0.5;
@@ -24,7 +24,9 @@ if (count (crew _vehicle) == 0) then {
 {
 	if (_side == GRLIB_side_enemy) then {
 		_x addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
-		if (_not_aircraft) then {
+		if (_aircraft) then {
+			[_x] spawn escape_ai;
+		} else {
 			[_path, _x] call F_getTemplateFile;
 			[_x] call reammo_ai;
 		};
@@ -32,7 +34,9 @@ if (count (crew _vehicle) == 0) then {
 
 	if (_side == GRLIB_side_friendly) then {
 		_x addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
-		if (_not_aircraft) then {
+		if (_aircraft) then {
+			[_x] spawn escape_ai;
+		} else {
 			[_path, _x] call F_getTemplateFile;
 			[_x] call reammo_ai;
 		};
