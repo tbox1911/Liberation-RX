@@ -228,8 +228,7 @@ speak_mission_resitance = {
 		_unit globalChat localize "STR_SPEAKMANAGER10";
 		sleep 3;
 		_unit globalChat localize "STR_SPEAKMANAGER11";
-		private _sector = [200, _unit] call F_getNearestSector;
-		[markerPos _sector] remoteExec ["a3w_mr_send_para", 2];
+		[getPosATL _unit] remoteExec ["a3w_mr_send_para", 2];
 	} else {
 		player globalChat localize "STR_SPEAKMANAGER6";
 		sleep 2;
