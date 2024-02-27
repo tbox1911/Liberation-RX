@@ -120,8 +120,7 @@ while {alive _unit && _continue} do {
 
         //--- Heal
         case 3: {
-            if (count _target > 0) then {
-                if (damage _target < 0.1) exitWith {};
+            if (damage _target < 0.1) then {
                 [_grp] call F_deleteWaypoints;
                 waitUntil {
                     _unit doMove (getPos _target);
@@ -141,8 +140,8 @@ while {alive _unit && _continue} do {
                     _unit playMoveNow "ainvpknlmstpslaywrfldnon_medicother";
                     _target setDamage 0;
                     _unit stop false;
-				    _unit switchMove "AmovPercMwlkSnonWnonDf";
-				    _unit playMoveNow "AmovPercMwlkSnonWnonDf";
+                    _unit switchMove "AmovPercMwlkSnonWnonDf";
+                    _unit playMoveNow "AmovPercMwlkSnonWnonDf";
                 };
                 [_grp, getPosATL _unit] spawn add_civ_waypoints;
             };
