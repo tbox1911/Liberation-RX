@@ -34,7 +34,7 @@ if ( count _ide_pos > 0 ) then {
 	_ide_pos = getPosATL _ied_obj;
 
 	private _timeout = time + (60 * 60);
-	if ((floor random 2) == 0) exitWith {
+	if (floor random 2 == 0) exitWith {
 		waitUntil { sleep 1; (alive _ied_obj && time < _timeout) };
 		deleteVehicle _ied_obj;
 	};
