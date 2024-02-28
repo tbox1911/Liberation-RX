@@ -46,7 +46,9 @@ LRX_Mission_Params = [
 	["Weather", 1],					// Weather - [default 4] - values = [1,2,3,4] - Text {Always Sunny,Random without rain,Random Cloudy,Random}
 	["Fatigue", 0],					// Stamina - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["PAR_Revive", 3],				// PAR revive - [default 3] - values = [3,2,1,0] - Text {Enabled - Everyone can revive,Enabled - Everyone can revive using Medikit/FAK,Enabled - Only medics can revive,Disabled}
-	["PAR_BleedOut", 300],			// PAR revive Bleedout timer- [default 300] - values = [100,200,300,400,500,600] 
+	["PAR_AI_Revive", 10],			// PAR AI revive limit - [default 0] - values = [0,5,10,15,20]
+	["PAR_BleedOut", 300],			// PAR revive Bleedout timer - [default 300] - values = [100,200,300,400,500,600]
+	["Respawn", 20],				// Cooldown before can player respawn - [default 20] - values = [0,xxx] - Text {Disabled,Enabled}	
 	["TK_mode", 1],					// Teamkill Mode [default 0] - values = [0,1,2] - Text {Strict,Relax,Disabled}
 	["TK_count", 4],				// Teamkill Warning Count [default 4] - values = [3, 4, 5, 6, 7, 8, 9, 10] - Text {3, 4, 5, 6, 7, 8, 9, 10}
 	["Civilians", 1],				// Cilivilian Manager - [default 1] - values = [0,0.5,1,2] - Text {None,Reduced,Normal,Increased}
@@ -73,7 +75,7 @@ LRX_Mission_Params = [
 	["Permissions", 1],				// Permissions management - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["AirSupport", 1],				// Enable Air Support - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["EnableLock", 1],				// Enable Vehicles Ownership - [default 1] - values = [1,0] - Text {Enabled,Disabled}
-	["EnemyLock", 1],			// Enemy Vehicles Ownership - [default 1] - values = [1,0] - Text {Enabled,Disabled}
+	["EnemyLock", 1],				// Enemy Vehicles Ownership - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["LRX_Cleanup", 1800],			// Cleanup abandoned vehicles outside FOBs - values = {0,900,1800,3600,7200,14400}
 	["AutoSave", 1800],				// LRX Game Auto Save Delay - values = {0,900,1800,3600,7200}
 	["AdminMenu", 1],				// Enable the Admin Cheat Menu [default 1] - values = [1,0] - Text {Enabled,Disabled}
@@ -82,7 +84,6 @@ LRX_Mission_Params = [
 	["DeathChat", 0],				// Disable chat/voice if wounded  [default 0] - values = [1,0] - Text {Enabled,Disabled}
 	["FancyInfo", 2],				// Enable colorfull, fancy Informations [default 2] - values = [2,1,0] - Text {Enabled,Info,Disabled}
 	["KeepScore", 0],				// Keep the Players datas (score/permissions) - [default 0] - values = [0,1] - Text {Disabled,Enabled}
-	["Respawn", 20],				// Cooldown before can player respawn - [default 20] - values = [0,xxx] - Text {Disabled,Enabled}
 	["RespawnCD", 0],				// Cooldown if player respawn too fast - [default 0] - values = [0,xxx] - Text {Disabled,Enabled}
 	["KickIdle", 0],				// Kick player if idle too long - [default 0] - values = {0,900,1200,1800,3600,7200}
 	["Persistent", 0]				// Server start with Persistent Mode - [default 0] - values = [0,1] - Text {Disabled,Enabled}
@@ -162,6 +163,10 @@ LRX_Mission_Params_Def = [
 		localize "STR_PARAMS_REVIVE3"
 		]
 	],
+	["PAR_AI_Revive", localize "STR_PARAMS_PAR_AI_REVIVE",
+		["Unlimited", "5", "10", "15", "20"],
+		[0, 5, 10, 15, 20]
+	],	
 	["PAR_BleedOut", localize "STR_PARAMS_PAR_BLEEDOUT",
 		["100", "200", "300", "400", "500", "600"],
 		[100, 200, 300, 400, 500, 600]

@@ -9,7 +9,7 @@ _msg = _msg + "<t color='#777777'>------------------------------</t><br/>";
 _msg = _msg + format ["Latest Fresh Meteo from <t color='#008000'>%1</t> at %2<br/><br/>", worldname, _datestring];
 
 private _data = ["Weather"] call lrx_getParamData select 1;
-private _value = _data select (["Weather",0] call lrx_getParamValue);
+private _value = _data select (["Weather"] call lrx_getParamValue);
 _msg = _msg + format ["<t color='#FFFFFF' size='1.0'>Global Weather is <t color='#000080'>%1</t></t><br/>", _value];
 _msg = _msg + format ["<t color='#FFFFFF' size='1.0'>The day Start at <t color='#000080'>0%1</t> AM</t><br/>", GRLIB_nights_stop];
 _msg = _msg + format ["<t color='#FFFFFF' size='1.0'>The day Ends at <t color='#008000'>%1</t> PM</t><br/>", GRLIB_nights_start];

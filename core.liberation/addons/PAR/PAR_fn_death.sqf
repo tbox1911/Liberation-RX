@@ -57,4 +57,5 @@ if (_unit == player) then {
 };
 
 removeAllWeapons _unit;
+sleep 5;
 deleteVehicle _unit;

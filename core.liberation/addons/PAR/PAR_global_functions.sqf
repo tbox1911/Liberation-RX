@@ -96,7 +96,7 @@ PAR_fn_globalchat = {
   params ["_speaker", "_msg"];
   if (isDedicated) exitWith {};
   if (!(local _speaker)) exitWith {};
-  if ((_speaker getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1",PAR_Grp_ID] || isPlayer _speaker) then {
+  if ((_speaker getVariable ["PAR_Grp_ID","0"]) == format ["Bros_%1", PAR_Grp_ID] || isPlayer _speaker) then {
     gamelogic globalChat _msg;
   };
 };
@@ -237,7 +237,7 @@ PAR_HandleDamage_EH = {
 		_unit setVariable ["PAR_isUnconscious", true, true];
 		_unit setCaptive true;
 		_unit allowDamage false;
-		_unit setVariable ["PAR_BleedOutTimer", round(time + GRLIB_PAR_bleedout), true];
+		_unit setVariable ["PAR_BleedOutTimer", round(time + PAR_bleedout), true];
 		[_unit, _killer] spawn PAR_Player_Unconscious;
 	};
 

@@ -1814,6 +1814,10 @@
 			<Portuguese>PsiKO AI Revive</Portuguese>
 			<Czech>PsiKO oživit AI</Czech>
 		</Key>
+		<Key ID="STR_PARAMS_PAR_AI_REVIVE">
+			<Original>Limit AI Revive</Original>
+			<French>Limite AI Résurection</French>
+		</Key>		
 		<Key ID="STR_PARAMS_PAR_BLEEDOUT">
 			<Original>PsiKO AI Bleedout Timer</Original>
 			<French>PsiKO AI Durée Attente</French>
@@ -5605,8 +5609,8 @@
 			<French>Garder le score des joueurs au redemarage de la Map</French>
 		</Key>
 		<Key ID="STR_RESPAWN">
-			<Original>Waiting before player can respawn (sec)</Original>
-			<French>Attente avant que le joueur puisse réapparaître (sec)</French>
+			<Original>Respawn button Timer (sec)</Original>
+			<French>Attente Bouton Respawn (sec)</French>
 		</Key>
 		<Key ID="STR_RESPAWN_CD">
 			<Original>Cooldown if player respawn too fast (min)</Original>

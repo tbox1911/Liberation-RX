@@ -12,7 +12,7 @@ while {true} do {
             // Set PAR EventHandler
             //[_x] spawn PAR_fn_AI_Damage_EH;
 
-            if (GRLIB_PAR_revive != 0) then {
+            if (PAR_revive != 0) then {
                 // Medic can heal auto
                 _wnded_list = (units player) select {
                     (_x distance2D _unit) < 30 &&
@@ -74,6 +74,18 @@ while {true} do {
                     };
                 };
             };
+
+            // AI revive
+            if (PAR_ai_revive > 0) then {
+                private _timer = _unit getVariable ["PAR_revive_msg_timer", 0];
+                if (time > _timer) then {
+                    if (_unit getVariable ["PAR_revive_max", PAR_ai_revive] == 0) then {
+                        private _msg = format ["%1 will not revive anymore !!", name _unit];
+                        [_unit, _msg] call PAR_fn_globalchat;
+                        _unit setVariable ["PAR_revive_msg_timer", round (time + (3 * 60))];
+                    };
+                };
+            };            
             sleep 0.3;
         } forEach PAR_AI_bros;
     };

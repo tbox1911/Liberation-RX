@@ -9,7 +9,7 @@ if (isNil "_medic") exitWith {
   _msg = format [localize "STR_PAR_MD_01", name _wnded];
   [_wnded, _msg] call PAR_fn_globalchat;
 
-  if (GRLIB_PAR_revive in [1,2]) then {
+  if (PAR_revive in [1,2]) then {
     _msg = localize "STR_PAR_MD_04";
     [_wnded, _msg] call PAR_fn_globalchat;
   };
