@@ -19,7 +19,7 @@ if (typeName _vehicle == "OBJECT" ) then {
 if (isNil "_list") exitWith {_ret};
 
 switch ( _list ) do {
-	case "LHD" : { _classlist = [lhd]};	
+	case "LHD" : { _classlist = [lhd]};
 	case "SRV" : { _classlist = GRLIB_Marker_SRV};
 	case "ATM" : { _classlist = GRLIB_Marker_ATM};
 	case "FUEL" : { _classlist = GRLIB_Marker_FUEL};
@@ -29,7 +29,7 @@ switch ( _list ) do {
 	case "SPAWNV" : { _classlist = respawn_vehicles};
 	case "MEDIC" : { _classlist = ai_healing_sources};
 	case "ARSENAL" : { _classlist = [Arsenal_typename]};
-	case "REFUEL" : { _classlist = [canister_fuel_typename, fuelbarrel_typename]};
+	case "REFUEL" : { _classlist = vehicle_refuel_sources};
 	case "REAMMO" : { _classlist = vehicle_rearm_sources};
 	case "REAMMO_AI" : { _classlist = ai_resupply_sources};
 	case "REPAIR_AI" : { _classlist = vehicle_repair_sources};
@@ -50,17 +50,17 @@ if (count(_classlist) == 0) exitWith {false};
 if (typeName (_classlist select 0) == "STRING") then {
 	// From Objects classname
 	if (_use_fast) then {
-		// fast but don't detect everything		
+		// fast but don't detect everything
 		_obj_list = _vehpos nearEntities [_classlist, _dist];
 	} else {
-		// powerfull but slower		
+		// powerfull but slower
 		_obj_list = nearestObjects [_vehpos, _classlist, _dist];
 	};
 	if (count _obj_list > 0) then {
 		_near = [ _obj_list, {
 			alive _x && getObjectType _x >= 8 &&
-			( 
-				isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) || 
+			(
+				isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) ||
 				!(_x getVariable ['R3F_LOG_disabled', true])
 			)
 		}] call BIS_fnc_conditionalSelect;

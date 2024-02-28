@@ -352,6 +352,16 @@ vehicle_repair_sources = [
 	"Land_RepairDepot_01_civ_F"
 ];
 
+// Everything the AI vehicle should be able to repair from
+vehicle_refuel_sources = [
+	fuel_sling_typename,
+	fuel_truck_typename,
+	opfor_fuel_truck,
+	opfor_fuel_container,
+	"Land_fs_feed_F",
+	"C_Van_01_fuel_F"
+];
+
 // *** TRANSPORT CONFIG ***
 box_transport_config = [];
 box_transport_offset = [];
