@@ -3,15 +3,12 @@ if (!isServer) exitwith {};
 
 private ["_intels", "_grp_civ"];
 
-_setupVars =
-{
+_setupVars = {
 	_missionType = "STR_SEARCH_INTEL";
 	_locationsArray = [SpawnMissionMarkers] call checkSpawn;
 };
 
-_setupObjects =
-{
-	//_missionPos = (markerpos _missionLocation) getPos [100, random 360];
+_setupObjects = {
 	_missionPos = (markerpos _missionLocation);
 
 	private _buildings = [

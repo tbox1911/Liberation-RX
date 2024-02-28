@@ -10,8 +10,8 @@ _setupVars = {
 };
 
 _setupObjects = {
-	if (count sectors_bigtown > 1) exitWith { 
-    	diag_log format ["--- LRX Error: side mission BR, cannot find spawn point!"];
+	if (count sectors_bigtown <= 1) exitWith { 
+    	diag_log format ["--- LRX Error: side mission BR, cannot find patrol point!"];
     	false;
 	};
 	_missionPos = markerPos (selectRandom sectors_bigtown);
@@ -21,7 +21,10 @@ _setupObjects = {
 	} else {
 		_vehicleClass = selectRandom a3w_br_planes;
 	};
-	if (isNil "_vehicleClass") exitWith { false };
+	if (isNil "_vehicleClass") exitWith { 
+    	diag_log format ["--- LRX Error: side mission BR, cannot find vehicle class!"];
+    	false;
+	};
 
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	_aiGroup setFormation "WEDGE";
@@ -30,7 +33,7 @@ _setupObjects = {
 	_aiGroup setSpeedMode "FULL";
 
 	[_aiGroup] call F_deleteWaypoints;
-	_path = (sectors_bigtown call BIS_fnc_arrayShuffle) select [0,5];
+	private _path = (sectors_bigtown call BIS_fnc_arrayShuffle) select [0,5];
 	{
 		_waypoint = _aiGroup addWaypoint [markerPos (_x select 0), 0];
 		_waypoint setWaypointType "MOVE";

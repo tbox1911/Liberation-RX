@@ -1,16 +1,27 @@
-private ["_msg", "_all_sectors", "_sector", "_list", "_opf", "_res", "_default"];
+private ["_msg", "_all_sectors", "_sector", "_list", "_opf", "_res", "_mission"];
 private	_cleanup_counter = 0;
+private _stats_marker = [
+	"STR_AIRWRECK",
+	"STR_HOSTILE_OFFICER",
+	"STR_OUTPOST",
+	"STR_ROADBLOCK",
+	"STR_SEARCH_INTEL",
+	"STR_INSURGENCY",
+	"STR_INVASION",
+	"STR_VEHICLECAP",
+	"STR_WEAPCACHE"
+];
 
 while { true } do {
 	_msg = "";
-	_all_sectors = (allMapMarkers select {_x select [0,12] == "side_mission" && ((markerPos _x) distance2D player) <= GRLIB_capture_size});
+	_all_sectors = (allMapMarkers select {_x select [0,13] == "side_mission_" && ((markerPos _x) distance2D player) <= GRLIB_capture_size});
 	_sector = [_all_sectors, player] call F_nearestPosition;
 	if (_sector != "") then {
-		_default = true;
+		_mission = _sector select [13];
 		_opf = 0;
 
 		// Resistance
-		if ( _sector find "Resistance" > 0 && !isNil "GRLIB_A3W_Mission_MR") then {
+		if (_mission == "STR_RESISTANCE" && !isNil "GRLIB_A3W_Mission_MR") then {
 			{_opf = _opf + count (units _x select {alive _x})} forEach GRLIB_A3W_Mission_MR;
 			_list = (markerPos _sector) nearEntities ["CAManBase", GRLIB_capture_size];
 			_res = _list select {
@@ -18,11 +29,10 @@ while { true } do {
 				(_x getVariable ["GRLIB_A3W_Mission_MR1", false])
 			};
 			_msg = format ["Status:\nResistance: %1\nEnemy squad: %2", count _res, _opf];
-			_default = false;
 		};
 
 		// Others
-		if ( _default ) then {
+		if (_mission in _stats_marker) then {
 			_list = (markerPos _sector) nearEntities ["CAManBase", GRLIB_capture_size];
 			_opf = _list select { side _x == GRLIB_side_enemy };
 			if (count _opf > 0) then {_msg = format ["Status:\nEnemy squad: %1", count _opf]};

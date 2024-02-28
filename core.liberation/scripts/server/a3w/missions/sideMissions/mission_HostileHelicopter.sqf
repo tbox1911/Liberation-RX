@@ -35,7 +35,7 @@ _setupObjects = {
 
 	// behaviour on waypoints
 	[_aiGroup] call F_deleteWaypoints;
-	_path = (_citylist call BIS_fnc_arrayShuffle) select [0,5];
+	private _path = (_citylist call BIS_fnc_arrayShuffle) select [0,5];
 	{
 		_waypoint = _aiGroup addWaypoint [markerPos (_x select 0), 0];
 		_waypoint setWaypointType "MOVE";

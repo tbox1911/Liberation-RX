@@ -18,7 +18,7 @@ if (_precise) then {
 };
 
 _marker setMarkerShadowLocal true;
-_marker setMarkerTextLocal _text;
+_marker setMarkerTextLocal (localize _text);
 _marker setMarkerColor "ColorRed";
 
 [_marker, _marker_zone];

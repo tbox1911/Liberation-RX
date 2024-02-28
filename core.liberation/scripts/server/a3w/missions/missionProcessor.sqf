@@ -53,7 +53,7 @@ publicVariable "A3W_sectors_in_use";
 diag_log format ["A3W Side Mission %1 started: %2", _controllerSuffix, localize _missionType];
 
 sleep 5;
-([localize _missionType, _missionPos, _precise_marker] call createMissionMarker) params ["_marker", "_marker_zone"];
+([_missionType, _missionPos, _precise_marker] call createMissionMarker) params ["_marker", "_marker_zone"];
 
 if (isNil "_missionPicture") then { _missionPicture = "" };
 

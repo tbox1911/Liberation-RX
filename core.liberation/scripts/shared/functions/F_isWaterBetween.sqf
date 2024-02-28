@@ -3,9 +3,6 @@ params ["_start", "_end", ["_precision", 0.05]];
 
 private ["_pos"];
 private _ret = false;
-private _dist = _start distance2D _end;
-
-if (_dist < 500) then { _precision = 0.10 };
 
 for "_i" from 0 to 1 step _precision do {
     _pos = vectorLinearConversion [0, 1, _i, _start, _end, true];

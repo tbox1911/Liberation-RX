@@ -15,7 +15,7 @@ private _timer = 0;
 
 while { ({alive _x} count (units _grp) > 0) } do {
 	_in_water = ({(alive _x && surfaceIsWater (getPos _x) && _x distance2D _objective_pos > 300)} count (units _grp) > 3);
-	_next_objective = [_objective_pos, true, GRLIB_sector_size] call F_getNearestBluforObjective;
+	_next_objective = [_objective_pos] call F_getNearestBluforObjective;
 	if ((_next_objective select 1) <= GRLIB_spawn_max) then { _objective_pos = (_next_objective select 0) } else { _objective_pos = zeropos };
 
 	if (GRLIB_global_stop == 1) then {
