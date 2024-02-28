@@ -168,7 +168,7 @@ while { true } do {
 						};
 					};
 
-					// RE FUEL
+					// REFUEL
 					_near_refuel = ([_vehicle, "REFUEL", _distarsenal] call F_check_near || _near_lhd);
 					_vehicle_need_refuel = (fuel _vehicle < 0.5);
 					if (!isNil "GRLIB_LRX_debug") then {
