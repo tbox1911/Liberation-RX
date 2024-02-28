@@ -13,8 +13,18 @@ if (!isNull _instigator) then {
 	};
 };
 
-if (isPlayer _killer) then {
-	_unit setVariable ["GRLIB_last_killer", _killer, true];
+if (_unit isKindOf "AllVehicles") then {
+	if (isPlayer _killer) then {
+		_unit setVariable ["GRLIB_last_killer", _killer, true];
+	};
+
+	if (damage _unit >= 0.75) then {
+		private _evac_in_progress = (_unit getVariable ["GRLIB_vehicle_evac", false]);
+		if (!_evac_in_progress) then {
+			_unit setVariable ["GRLIB_vehicle_evac", true];
+			{ [_x, false] spawn F_ejectUnit} forEach (crew _unit);
+		};
+	};
 };
 
 private _ret = _amountOfDamage;
@@ -33,14 +43,6 @@ if (isPlayer _killer && _unit != _killer) then {
 			_unit setVariable ["GRLIB_isProtected", round(time + 3), true];
 		};
 		_ret = 0;
-	};
-};
-
-if ((_unit isKindOf "AllVehicles") && (damage _unit >= 0.80)) then {
-	private _evac_in_progress = (_unit getVariable ["GRLIB_vehicle_evac", false]);
-	if (!_evac_in_progress) then {
-		_unit setVariable ["GRLIB_vehicle_evac", true];
-		{ [_x, false] spawn F_ejectUnit} forEach (crew _unit);
 	};
 };
 
