@@ -1,8 +1,8 @@
 disableSerialization;
 private [ 
 	"_overlay", "_hide_HUD", "_attacked_string", "_active_sectors_string",
-	"_color_readiness", "_nearest_active_sector", "_zone_size", "_colorzone",
-	"_bar", "_barwidth", "_reputation"
+	"_color_readiness", "_color_reput", "_reput_icon", "_nearest_active_sector",
+	"_zone_size", "_colorzone", "_bar", "_barwidth", "_reputation"
 ];
 private _overlayshown = false;
 private _sectorcontrols = [201,202,203,244,205];
@@ -67,16 +67,18 @@ while { true } do {
 			(_overlay displayCtrl (105)) ctrlSetTextColor _color_readiness;
 			(_overlay displayCtrl (135)) ctrlSetTextColor _color_readiness;
 
-			_color_readiness = [0.8,0.8,0.8,1];
-			if ( _reputation >= 25 ) then { _color_readiness = [0.0,0.3,0,1] };
-			if ( _reputation >= 50 ) then { _color_readiness = [0.0,0.6,0,1] };
-			if ( _reputation >= 75 ) then { _color_readiness = [0.0,0.8,0,1] };
-			if ( _reputation >= 100 ) then { _color_readiness = [0,0.8,0.6,1] };
-			if ( _reputation <= -25 ) then { _color_readiness = [0.8,0.8,0,1] };
-			if ( _reputation <= -50 ) then { _color_readiness = [0.8,0.6,0,1] };
-			if ( _reputation <= -75 ) then { _color_readiness = [0.8,0.3,0,1] };
-			if ( _reputation <= -100 ) then { _color_readiness = [0.8,0,0,1] };
-			(_overlay displayCtrl (104)) ctrlSetTextColor _color_readiness;
+			_color_reput = [0.8,0.8,0.8,1];
+			_reput_icon = "res\rep\rep3.paa";
+			if ( _reputation >= 25 ) then { _color_reput = [0.8,0.8,0,1]; _reput_icon = "res\rep\rep4.paa" };
+			if ( _reputation >= 50 ) then { _color_reput = [0.0,0.6,0,1]; _reput_icon = "res\rep\rep5.paa" };
+			if ( _reputation >= 75 ) then { _color_reput = [0.0,0.8,0,1]; _reput_icon = "res\rep\rep6.paa" };
+			if ( _reputation >= 100 ) then { _color_reput = [0,0.8,0.6,1]; _reput_icon = "res\rep\rep6.paa" };
+			if ( _reputation <= -25 ) then { _color_reput = [0.8,0.8,0,1]; _reput_icon = "res\rep\rep2.paa" };
+			if ( _reputation <= -50 ) then { _color_reput = [0.8,0.6,0,1]; _reput_icon = "res\rep\rep1.paa" };
+			if ( _reputation <= -75 ) then { _color_reput = [0.8,0.3,0,1]; _reput_icon = "res\rep\rep0.paa" };
+			if ( _reputation <= -100 ) then { _color_reput = [0.8,0,0,1]; _reput_icon = "res\rep\rep0.paa" };
+			(_overlay displayCtrl (104)) ctrlSetTextColor _color_reput;
+			(_overlay displayCtrl (1041)) ctrlSetText (getMissionPath _reput_icon);
 		};
 
 		if ( _uiticks % 25 == 0 ) then {

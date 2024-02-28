@@ -203,7 +203,7 @@ class RscTitles
       movingEnable = true;
 	  onLoad = "uiNamespace setVariable ['GUI_OVERLAY', _this select 0];";
 	  controls[] = { BGPicture,LabelScore,LabelAmmo,LabelManpower,LabelFuel,LabelCap,PictureAmmoShadow,PictureScoreShadow,PictureManpowerShadow,
-		BGPictureActiveSectors,PictureFuelShadow,PictureCapShadow,PictureScore,PictureAmmo,PictureManpower,PictureFuel,PictureCap,PictureCombatReadinessShadow,
+		BGPictureActiveSectors,PictureFuelShadow,PictureScore,PictureAmmo,PictureManpower,PictureFuel,PictureCap,PictureCombatReadinessShadow,
 		PictureCombatReadiness,PictureIntelShadow,PictureIntel,LabelIntel,BGPictureSector,CaptureFrame_OPFOR,CaptureFrame_BLUFOR,CaptureFrame,LabelPoint,
 	  LabelCombatReadiness,CentralShadow,CentralLabel,ActiveSectors,AlertBGPicture,AlertLabel,AlertTimer };
 	  class BGPicture {
@@ -287,8 +287,9 @@ class RscTitles
 		text = "res\ui_manpo.paa";
 	  };
 	  class PictureCap : GenericPicture69 {
-		y = (0.4 + ( ICONE_SPACY * 4 ) ) * safezoneH + safezoneY;
-		text = "\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa";
+		idc = 1041;
+		y = (0.4 + ( ICONE_SPACY * 4 ) ) * safezoneH + safezoneY;	
+		text = "res\rep\rep3.paa";
 	  };
 	  class PictureCombatReadiness : GenericPicture69 {
 		idc = 135;
@@ -318,11 +319,6 @@ class RscTitles
 	  };
 	  class PictureManpowerShadow : PictureManpower {
 		y = (0.4 + SHADOW_Y + ( ICONE_SPACY * 3 ) ) * safezoneH + safezoneY;
-		x = (0.985 + SHADOW_X) * safezoneW + safezoneX;
-		colorText[] = {0,0,0,0.7};
-	  };
-	  class PictureCapShadow : PictureCap {
-		y = (0.4 + SHADOW_Y + ( ICONE_SPACY * 4 ) ) * safezoneH + safezoneY;
 		x = (0.985 + SHADOW_X) * safezoneW + safezoneX;
 		colorText[] = {0,0,0,0.7};
 	  };
