@@ -48,7 +48,7 @@ if (PAR_ai_revive > 0) then {
 	_wnded setVariable ["PAR_revive_max", _cur_revive];
 	[_wnded] spawn {
 		params ["_unit"];
-		sleep (15 * 60);
+		sleep (25 * 60);
 		if (!alive _unit) exitWith {};
 		private _revive = _unit getVariable ["PAR_revive_max", PAR_ai_revive];
 		_revive = _revive + 1;
