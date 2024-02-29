@@ -13,13 +13,13 @@ while { true } do {
 	// BLU / RED units
 	_zeusunits = [];
 	{
-		if ( ( _x distance lhd > 500 ) && alive _x ) then {
+		if ((_x distance2D lhd > 500) && alive _x) then {
 			_zeusunits pushback _x;
 		};
 	} foreach (units GRLIB_side_friendly) + (units GRLIB_side_enemy);
 
 	{
-		if ((typeof _x in _vehicleClassnames ) && (typeof _x != ammobox_o_typename) && (( _x distance lhd > 500 ) || (typeof _x == huron_typename)) && alive _x ) then {
+		if ((typeof _x in _vehicleClassnames ) && (typeof _x != ammobox_o_typename) && (( _x distance2D lhd > 500 ) || (typeof _x == huron_typename)) && alive _x ) then {
 			_zeusunits pushback _x;
 		};
 	} foreach vehicles;

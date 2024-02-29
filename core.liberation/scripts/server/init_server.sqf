@@ -17,6 +17,13 @@ addMissionEventHandler ['HandleDisconnect', {
 	false;
 }];
 
+addMissionEventHandler ["OnUserAdminStateChanged", {
+	params ["_networkId", "_loggedIn", "_votedIn"];
+	if (!_loggedIn) then {
+		unassignCurator (allCurators select 0);
+	};
+}];
+
 // AI Skill
 // skillMin, skillAimMin, skillMax, skillAimMax
 [
