@@ -47,7 +47,7 @@ PAR_unblock_AI = {
 				[_unit] allowGetIn false;
 				sleep 0.5;
 				if (surfaceIsWater (getPos _unit)) then {
-					[[_unit]] spawn PAR_fn_fixPos;
+					[[_unit]] call PAR_fn_fixPos;
 				} else {
 					_unit setPosATL (getPosATL player vectorAdd [([] call F_getRND), ([] call F_getRND), 0.5]);
 				};
@@ -56,8 +56,13 @@ PAR_unblock_AI = {
 				_unit enableAI "ALL";
 				[_unit] joinSilent (group player);
 				_unit doFollow player;
-				_unit switchMove "AmovPercMwlkSrasWrflDf";
-				_unit playMoveNow "AmovPercMwlkSrasWrflDf";
+				if (surfaceIsWater (getPos _unit)) then {
+					_unit switchMove "";
+					_unit playMoveNow "";
+				} else {
+					_unit switchMove "AmovPercMwlkSrasWrflDf";
+					_unit playMoveNow "AmovPercMwlkSrasWrflDf";
+				};
 			} else {
 				hintSilent "Unit is in a vehicle or is unconscious,\n or is too far. (max 50m)";
 			};
@@ -103,16 +108,11 @@ PAR_fn_globalchat = {
 PAR_fn_fixPos = {
 	params ["_list"];
 	{
-		private _pos = getPosATL _x;
+		private _pos = getPosASL _x;
 		if (local _x && surfaceIsWater _pos) then {
-			_pos = getPosASL _x;
 			_zpos = _pos select 2;
-			if (_zpos < -3) then {
-				_pos set [2, -1 max _zpos];
-				_x setPosASL _pos;
-				_x switchMove "";
-				_x playMoveNow "";
-			};
+			if (_zpos < -2) then { _pos set [2, -2 max _zpos] };
+			_x setPosASL _pos;
 		};
 	} forEach _list;
 };
