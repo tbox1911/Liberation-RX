@@ -1,8 +1,7 @@
 diag_log "--- Liberation RX by pSiKO ---";
+if (!isNil "GRLIB_build_version") exitWith {};
 [] call compileFinal preprocessFileLineNUmbers "build_info.sqf";
 diag_log "--- Init start ---";
-if (!isNil "startup") then { deleteVehicle startup }; // remove logic sound
-if (!isNil "endgame") then { deleteVehicle endgame }; // remove logic sound
 
 profileNamespace setVariable ["BIS_SupportDevelopment", nil];
 enableSaving [false, false];
