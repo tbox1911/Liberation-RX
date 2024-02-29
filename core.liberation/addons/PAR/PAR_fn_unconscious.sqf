@@ -26,11 +26,11 @@ if (GRLIB_disable_death_chat && isPlayer _unit) then {
 	for "_channel" from 0 to 4 do { _channel enableChannel false };
 };
 
-_unit switchMove "AinjPpneMstpSnonWrflDnon";  // lay down
+_unit switchMove "AinjPpneMstpSnonWrflDnon";	// lay down
 _unit playMoveNow "AinjPpneMstpSnonWrflDnon";
 sleep 7;
 
-if (PAR_ai_revive > 0) then {
+if (PAR_ai_revive > 0 && !isPlayer _unit && local _unit) then {
 	private _cur_revive = _unit getVariable ["PAR_revive_max", PAR_ai_revive];
 	if (_cur_revive == 0) then { _unit setDamage 1; sleep 3 };
 };
@@ -53,7 +53,7 @@ while {lifeState _unit == "INCAPACITATED" && time <= _unit getVariable ["PAR_Ble
 			if (!isNil "_medic") then { [_unit, _medic] call PAR_fn_911 };
 		};
 		} else {
-			_msg = format [localize "STR_PAR_UC_03", name player];      
+			_msg = format [localize "STR_PAR_UC_03", name player];
 			if (lifeState player == "INCAPACITATED") then {
 				_msg = format [localize "STR_PAR_UC_02", name player];
 			};

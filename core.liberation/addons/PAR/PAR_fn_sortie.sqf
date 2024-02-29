@@ -38,9 +38,8 @@ if (PAR_revive == 2) then {
 	_medic removeItem "FirstAidKit";
 };
 
-if (PAR_ai_revive > 0) then {
-	private _cur_revive = _wnded getVariable ["PAR_revive_max", PAR_ai_revive];
-	_cur_revive = _cur_revive - 1;
+if (PAR_ai_revive > 0 && !isPlayer _wnded && local _wnded) then {
+	private _cur_revive = (_wnded getVariable ["PAR_revive_max", PAR_ai_revive]) - 1;
 	if (_cur_revive < 3) then {
 		private _msg = format ["%1 last revive (%2) !!", name _wnded, _cur_revive];
 		[_wnded, _msg] call PAR_fn_globalchat;
@@ -50,8 +49,7 @@ if (PAR_ai_revive > 0) then {
 		params ["_unit"];
 		sleep (25 * 60);
 		if (!alive _unit) exitWith {};
-		private _revive = _unit getVariable ["PAR_revive_max", PAR_ai_revive];
-		_revive = _revive + 1;
+		private _revive = (_unit getVariable ["PAR_revive_max", PAR_ai_revive]) + 1;
 		_unit setVariable ["PAR_revive_max", _revive];
 		private _msg = format ["%1 revive restored (%2) !!", name _unit, _revive];
 		[_unit, _msg] call PAR_fn_globalchat;
