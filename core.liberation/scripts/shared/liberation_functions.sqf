@@ -30,6 +30,7 @@ F_getBounty = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F
 F_getBuildPerm = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getBuildPerm.sqf";
 F_getCargo = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getCargo.sqf";
 F_getCommander = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getCommander.sqf";
+F_getDefenseType = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getDefenseType.sqf";
 F_getFobName = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getFobName.sqf";
 F_getFobOwner = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getFobOwner.sqf";
 F_getForceRatio = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getForceRatio.sqf";

@@ -180,7 +180,7 @@ blufor_squad_at = [
 	"B_medic_F",
 	"B_soldier_AT_F",
 	"B_soldier_AT_F",
-	"B_Soldier_F",
+	"B_soldier_LAT_F",
 	"B_Soldier_F"
 ];
 
@@ -189,15 +189,16 @@ blufor_squad_aa = [
 	"B_medic_F",
 	"B_soldier_AA_F",
 	"B_soldier_AA_F",
-	"B_Soldier_F",
+	"B_soldier_AA_F",
 	"B_Soldier_F"
 ];
 blufor_squad_mix = [
 	"B_Soldier_SL_F",
 	"B_medic_F",
 	"B_soldier_AA_F",
+	"B_soldier_LAT_F",
+	"B_soldier_AA_F",
 	"B_soldier_AT_F",
-	"B_Soldier_F",
 	"B_Soldier_F"
 ];
 

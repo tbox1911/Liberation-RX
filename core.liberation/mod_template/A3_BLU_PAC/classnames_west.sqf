@@ -114,7 +114,7 @@ air_vehicles = [
 	["B_Heli_Attack_01_dynamicLoadout_F",10,2250,30,GRLIB_perm_air],
 	["B_Plane_CAS_01_dynamicLoadout_F",20,3000,50,GRLIB_perm_max],
 	["B_Plane_Fighter_01_F",20,4500,50,GRLIB_perm_max],
-	["B_Plane_Fighter_01_Stealth_F",20,2000,50,GRLIB_perm_max]	
+	["B_Plane_Fighter_01_Stealth_F",20,2000,50,GRLIB_perm_max]
 ];
 
 blufor_air = [
@@ -168,25 +168,27 @@ boats_west = [
 
 blufor_squad_inf_light = [
 	"B_T_Soldier_TL_F",
-	"B_T_Soldier_F",
-	"B_T_Medic_F",
-	"B_T_Support_MG_F"
-];
-blufor_squad_inf = [
-	"B_T_Soldier_TL_F",
-	"B_T_Soldier_F",
 	"B_T_Medic_F",
 	"B_T_Support_MG_F",
-	"B_T_Soldier_Repair_F",
+	"B_T_Soldier_F",
+	"B_T_Soldier_F",
+	"B_T_Soldier_F"
+];
+
+blufor_squad_inf = [
+	"B_T_Soldier_TL_F",
+	"B_T_Medic_F",
+	"B_T_Support_MG_F",
 	"B_T_Soldier_GL_F",
-	"B_T_Support_GMG_F"
+	"B_T_Support_GMG_F",
+	"B_T_Soldier_F"
 ];
 blufor_squad_at = [
 	"B_T_Soldier_TL_F",
 	"B_T_Soldier_F",
 	"B_T_Medic_F",
-	"B_T_Soldier_GL_F",
-	"B_T_Soldier_LAT_F",
+	"B_T_Soldier_AT_F",
+	"B_T_Soldier_AT_F",
 	"B_T_Soldier_LAT_F"
 ];
 
@@ -194,17 +196,17 @@ blufor_squad_aa = [
 	"B_T_Soldier_TL_F",
 	"B_T_Soldier_F",
 	"B_T_Medic_F",
-	"B_T_Soldier_GL_F",
+	"B_T_Soldier_AA_F",
 	"B_T_Soldier_AA_F",
 	"B_T_Soldier_AA_F"
 ];
 blufor_squad_mix = [
 	"B_T_Soldier_TL_F",
 	"B_T_Medic_F",
-	"B_T_Soldier_GL_F",
+	"B_T_Soldier_AA_F",
+	"B_T_Soldier_LAT_F",
 	"B_T_Soldier_AA_F",
 	"B_T_Soldier_AT_F",
-	"B_T_Soldier_GL_F",
 	"B_T_Soldier_AR_F"
 ];
 

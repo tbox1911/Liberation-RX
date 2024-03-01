@@ -174,7 +174,6 @@ GRLIB_wildlife_manager = ["Wildlife"] call lrx_getParamValue;
 GRLIB_civ_penalties = ["CivPenalties"] call lrx_getParamValue;
 GRLIB_civ_penalties_ammount = ["CivPenaltiesAmmount"] call lrx_getParamValue;
 GRLIB_halo_param = ["HaloJump"] call lrx_getParamValue;
-GRLIB_blufor_defenders = ["BluforDefenders"] call lrx_getParamValue;
 GRLIB_admin_menu = ["AdminMenu"] call lrx_getParamValue;
 GRLIB_cleanup_vehicles = ["CleanupVehicles"] call lrx_getParamValue;
 GRLIB_autosave_timer = ["AutoSave"] call lrx_getParamValue;
@@ -308,7 +307,6 @@ if ( GRLIB_permissions_param == 1 ) then { GRLIB_permissions_param = true } else
 if ( GRLIB_use_whitelist == 1 ) then { GRLIB_use_whitelist = true } else { GRLIB_use_whitelist = false };
 if ( GRLIB_use_exclusive == 1 ) then { GRLIB_use_exclusive = true } else { GRLIB_use_exclusive = false };
 if ( GRLIB_civ_penalties == 1 ) then { GRLIB_civ_penalties = true } else { GRLIB_civ_penalties = false };
-if ( GRLIB_blufor_defenders == 1 ) then { GRLIB_blufor_defenders = true } else { GRLIB_blufor_defenders = false };
 if ( GRLIB_opfor_english == 1 ) then { GRLIB_opfor_english = true } else { GRLIB_opfor_english = false };
 if ( GRLIB_disable_death_chat == 1 ) then { GRLIB_disable_death_chat = true } else { GRLIB_disable_death_chat = false };
 if ( GRLIB_server_persistent == 1 ) then { GRLIB_server_persistent = true } else { GRLIB_server_persistent = false };
