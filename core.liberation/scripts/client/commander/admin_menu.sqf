@@ -21,6 +21,7 @@ do_export = 0;
 do_import = 0;
 do_kick = 0;
 do_ban = 0;
+do_zeus = 0;
 
 private _msg = "";
 private _getBannedUID = {
@@ -263,7 +264,7 @@ while { alive player && dialog } do {
 	if (do_import == 1) then {
 		do_import = 0;
 		{ ctrlEnable  [_x, false] } foreach _button_controls;
-		{ ctrlShow [_x, true] } foreach _input_controls;	
+		{ ctrlShow [_x, true] } foreach _input_controls;
 		input_save = "";
 		waitUntil {uiSleep 0.3; ((input_save != "") || !(dialog) || !(alive player))};
 		if ( input_save select [0,1] == "[" && input_save select [(count input_save)-1,(count input_save)] == "]") then {
@@ -281,6 +282,7 @@ while { alive player && dialog } do {
 		{ ctrlShow [_x, false] } foreach _input_controls;
 		{ ctrlEnable  [_x, true] } foreach _button_controls;
 	};
+
 	if (do_kick == 1) then {
 		do_kick = 0;
 		_name = _score_combo lbText (lbCurSel _score_combo);
@@ -289,13 +291,14 @@ while { alive player && dialog } do {
 			_player = _this call BIS_fnc_getUnitByUID;
 			if (isPlayer _player) then {
 				["LOSER"] remoteExec ["endMission", owner _player];
-				_msg = format ["Admin kick player %1.", name _player];				
+				_msg = format ["Admin kick player %1.", name _player];
 				[_msg] remoteExec ["systemchat", -2];
 				serverCommand format ["#kick %1", name _player];
 			};
 		}] remoteExec ["bis_fnc_call", 2];
 		sleep 1;
 	};
+
 	if (do_ban == 1) then {
 		do_ban = 0;
 		_name = _score_combo lbText (lbCurSel _score_combo);
@@ -310,7 +313,17 @@ while { alive player && dialog } do {
 			};
 		}] remoteExec ["bis_fnc_call", 2];
 		sleep 1;
-	};		
+	};
+
+	if (do_zeus == 1) then {
+		do_zeus = 0;
+		GRLIB_active_commander = player;
+		publicVariable 'GRLIB_active_commander';
+		hint "You are Zeus now...";
+		ctrlEnable [1625, false];
+		sleep 1;
+	};
+
 	sleep 0.5;
 };
 closeDialog 0;
