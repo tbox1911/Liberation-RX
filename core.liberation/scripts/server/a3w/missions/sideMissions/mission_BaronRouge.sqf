@@ -35,7 +35,7 @@ _setupObjects = {
 	[_aiGroup] call F_deleteWaypoints;
 	private _path = (sectors_bigtown call BIS_fnc_arrayShuffle) select [0,5];
 	{
-		_waypoint = _aiGroup addWaypoint [markerPos (_x select 0), 0];
+		_waypoint = _aiGroup addWaypoint [markerPos _x, 0];
 		_waypoint setWaypointType "MOVE";
 		_waypoint setWaypointSpeed "FULL";
 		_waypoint setWaypointBehaviour "COMBAT";
