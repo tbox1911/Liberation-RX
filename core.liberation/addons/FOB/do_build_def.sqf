@@ -14,14 +14,14 @@ private _input_controls = [521,522,523,524,525,526,527];
 
 private _display = findDisplay 2309;
 private _icon = getMissionPath "res\ui_build.paa";
-private ["_selected_item", "_entrytext", "_defense_template", "_defense_name", "_defense_price"];
+private ["_selected_item", "_text", "_defense_template", "_defense_name", "_defense_price"];
 
 lbClear 110;
 {
-    _entrytext = (_x select 0);
+    _text = (_x select 0);
     _defense_price = (_x select 2);
-    if (count _entrytext > 25) then { _entrytext = _entrytext select [0,25] };
-    (_display displayCtrl (110)) lnbAddRow [_entrytext, str _defense_price];
+    if (count _text > 25) then { _text = _text select [0,25] };
+    (_display displayCtrl (110)) lnbAddRow [_text, str _defense_price];
     lnbSetPicture  [110, [((lnbSize 110) select 0) - 1, 0], _icon];
 } foreach GRLIB_FOB_Defense;
 lbSetCurSel [110, -1];

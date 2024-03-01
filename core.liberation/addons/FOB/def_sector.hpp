@@ -94,7 +94,7 @@ class Sector_Defense {
 
 		class Button3 : StdButton {
 			idc = 123;
-			text = "High";
+			text = "Heavy";
 			action = "build_type = 3; build_action = 1";
 			x = 0.3572 * safezoneW + safezoneX;
 			y = 0.3274 * safezoneH + safezoneY;
