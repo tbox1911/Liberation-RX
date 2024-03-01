@@ -6529,6 +6529,10 @@
 			<Original>-- BUILD FOB DEFENSES</Original>
 			<French>-- CONSTRUIRE DEFENSE FOB</French>
 		</Key>
+		<Key ID="STR_BUILD_DEFENSE_SEC">
+			<Original>-- BUILD SECTOR DEFENSES</Original>
+			<French>-- CONSTRUIRE DEFENSE SECTEUR</French>
+		</Key>		
 		<Key ID="STR_CLEAR_DEFENSE">
 			<Original>-- REMOVE ALL FOB DEFENSES</Original>
 			<French>-- SUPPRIMER DEFENSE FOB</French>

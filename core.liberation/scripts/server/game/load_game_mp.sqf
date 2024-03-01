@@ -55,6 +55,7 @@ GRLIB_warehouse = [
 	[foodbarrel_typename, 1],
 	[basic_weapon_typename, 0]
 ];
+GRLIB_sector_defense = [];
 
 // Wipe Savegame
 if ( GRLIB_param_wipe_savegame_1 == 1 && GRLIB_param_wipe_savegame_2 == 1 ) then {
@@ -402,7 +403,6 @@ publicVariable "stats_prisonners_captured";
 publicVariable "stats_vehicles_recycled";
 publicVariable "stats_ammo_spent";
 publicVariable "stats_readiness_earned";
-
 publicVariable "GRLIB_vehicle_huron";
 publicVariable "GRLIB_permissions";
 publicVariable "GRLIB_warehouse";
@@ -412,6 +412,6 @@ publicVariable "GRLIB_all_outposts";
 publicVariable "GRLIB_mobile_respawn";
 publicVariable "GRLIB_vehicle_to_military_base_links";
 publicVariable "GRLIB_player_scores";
-
+publicVariable "GRLIB_sector_defense";
 save_is_loaded = ([] call F_getValid);
 publicVariable "save_is_loaded";
