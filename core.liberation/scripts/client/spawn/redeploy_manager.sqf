@@ -209,6 +209,7 @@ if (deploy == 1) then {
 			lifestate _x != 'INCAPACITATED'
 		};
 		player setPosATL ([_destpos, _destdist, (_destdir-180)] call BIS_fnc_relPos);
+		player setDir _destdir;
 		sleep 1;
 
 		[_unit_list_redep, _destpos, _destdist] spawn {
