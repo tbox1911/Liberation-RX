@@ -251,7 +251,7 @@ class liberation_admin {
   };
   class ZeusModeButton: StdButton {
     idc = 1625;
-    action = "GRLIB_active_commander = player; publicVariable 'GRLIB_active_commander'; hint 'You're Zeus now...'";
+    action = "GRLIB_active_commander = player; publicVariable 'GRLIB_active_commander'; hint 'You are Zeus now...'";
     text = $STR_ADMIN_ZEUSMODE;
     x = 0.3275 * safezoneW + safezoneX;
     y = 0.520 * safezoneH + safezoneY;
