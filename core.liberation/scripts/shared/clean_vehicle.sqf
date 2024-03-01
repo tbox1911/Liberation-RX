@@ -8,7 +8,7 @@ private _owned = false;
 private _maned = false;
 if (!_force) then {
 	_towed = !(isNull (_vehicle getVariable ["R3F_LOG_est_transporte_par", objNull]));
-	_owned = !([_vehicle] call is_abandoned);
+	_owned = !([_vehicle] call is_abandoned || [_vehicle] call is_public);
 	_maned = ({side group _x == GRLIB_side_friendly} count (crew _vehicle) > 0);
 };
 if (_towed || _owned || _maned) exitWith { false };
