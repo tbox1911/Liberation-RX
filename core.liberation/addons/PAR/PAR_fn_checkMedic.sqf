@@ -15,7 +15,7 @@ private _check_sortie = {
 		//_ret = true;
 	};
 
-	if (_wnded distance2D _medic <= 6 && _fail != 99) then {
+	if (_wnded distance _medic <= 6 && _fail != 99) then {
 		if ((getPosATL _wnded) select 2 > 5) then {
 			_medic doMove (getPosATL _wnded);
 			sleep 3;
