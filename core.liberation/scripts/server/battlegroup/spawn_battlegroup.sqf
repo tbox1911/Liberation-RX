@@ -16,7 +16,7 @@ if ( isNil "_liberated_sector" ) then {
 	_spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max, true, _objective_pos] call F_findOpforSpawnPoint;
 };
 
-if (_objective_pos isEqualTo zeropos) exitWith { diag_log format ["--- LRX could not find objective %1 (%2) - %3 %4", _objective_pos, _liberated_sector, _spawn_marker, GRLIB_spawn_max] };
+if (_objective_pos isEqualTo zeropos) exitWith { diag_log format ["--- LRX could not find objective %1  - %3 %4", _liberated_sector, _spawn_marker, GRLIB_spawn_max] };
 [markerPos _spawn_marker] remoteExec ["remote_call_battlegroup", 0];
 
 private _vehicle_pool = opfor_battlegroup_vehicles;
