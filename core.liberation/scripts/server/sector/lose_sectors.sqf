@@ -6,17 +6,17 @@ attack_in_progress = ["none", 0];
 
 while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	{
-		_ownership = [ markerpos _x ] call F_sectorOwnership;
+		_ownership = [markerpos _x] call F_sectorOwnership;
 		if ( _ownership == GRLIB_side_enemy ) then {
-			[ _x ] call attack_in_progress_sector;
+			[_x] call attack_in_progress_sector;
 		};
 		sleep 0.1;
 	} foreach blufor_sectors;
 
 	{
-		_ownership = [ _x ] call F_sectorOwnership;
+		_ownership = [_x] call F_sectorOwnership;
 		if ( _ownership == GRLIB_side_enemy ) then {
-			[ _x ] call attack_in_progress_fob;
+			[_x] call attack_in_progress_fob;
 		};
 		sleep 0.1;
 	} foreach GRLIB_all_fobs;

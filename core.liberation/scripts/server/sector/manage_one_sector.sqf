@@ -257,9 +257,17 @@ if ( (!(_sector in blufor_sectors)) && (([_sectorpos, GRLIB_sector_size, GRLIB_s
 	private _building_alive = count ((nearestObjects [_sectorpos, ["House"], _local_capture_size]) select { alive _x });
 	diag_log format ["Sector %1 wait attack to finish", _sector];
 	sleep 3;
+
+	private ["_sector_ownership", "_sector_objective"];
 	while { !_stopit } do {
 		_sector_ownership = [_sectorpos, _local_capture_size] call F_sectorOwnership;
-		if (_sector_ownership == GRLIB_side_friendly) then {
+		_sector_objective = true;
+		if (_sector in sectors_tower) then {
+			private _towers = { (alive _x) && (_x getVariable ['GRLIB_Radio_Tower', false]) } count (nearestObjects [_sectorpos, [Radio_tower], 50]);
+			if (_towers > 0) then { _sector_objective = false };
+		};
+
+		if (_sector_ownership == GRLIB_side_friendly && _sector_objective) then {
 			[_sector] remoteExec ["sector_liberated_remote_call", 2];
 			_stopit = true;
 			private _enemy_left = (_sectorpos nearEntities ["CAManBase", _local_capture_size * 1.2]);
