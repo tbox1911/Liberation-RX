@@ -7,10 +7,17 @@ if ( GRLIB_endgame == 1 || GRLIB_global_stop == 1 ) exitWith {};
 
 diag_log format ["Spawn Attack FOB %1 at %2", _fobpos, time];
 private _max_prisonners = 4;
-
+private _defense_type = [str _fobpos] call F_getDefenseType;
 private _grp = grpNull;
-if ( GRLIB_blufor_defenders ) then {
-	_grp = [_fobpos, blufor_squad_mix, GRLIB_side_friendly, "defender"] call F_libSpawnUnits;
+if (_defense_type > 0) then {
+	private _squad_type = blufor_squad_inf_light;
+	if (_defense_type == 2) then {
+		_squad_type = blufor_squad_inf;
+	};
+	if (_defense_type == 3) then {
+		_squad_type = blufor_squad_mix;
+	};	
+	_grp = [_fobpos, _squad_type, GRLIB_side_friendly, "defender"] call F_libSpawnUnits;
 	_grp setCombatMode "RED";
 	_grp setCombatBehaviour "COMBAT";
 	{
@@ -25,7 +32,7 @@ if ( GRLIB_blufor_defenders ) then {
 	private _defenders_timer = round (time + 120);
 	while { time < _defenders_timer && ({alive _x} count (units _grp) > 0) && _ownership == GRLIB_side_enemy } do {
 		_ownership = [ _fobpos ] call F_sectorOwnership;
-		sleep 3;
+		sleep 5;
 	};
 };
 
@@ -89,12 +96,6 @@ if ( _ownership == GRLIB_side_enemy ) then {
 	};
 };
 
-if ( count (units _grp) > 0 ) then {
-	[_grp] spawn {
-		params ["_grp"];
-		sleep 60;
-		{ deleteVehicle _x } foreach (units _grp);
-		deleteGroup _grp;
-	};
-};
+if (count (units _grp) > 0) then {_grp spawn {sleep 60; {deleteVehicle _x} foreach (units _this); deleteGroup _this}};
+
 diag_log format ["End Attack FOB %1 at %2", _fobpos, time];

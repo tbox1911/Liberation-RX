@@ -22,15 +22,21 @@ if (_sideMission || diag_fps < 35) then { _defenders_cooldown = true };
 private _grp = grpNull;
 private _vehicle = objNull;
 private _arsenal_box = objNull;
+private _defense_type = [_sector] call F_getDefenseType;
 
-if ( GRLIB_blufor_defenders && !_defenders_cooldown) then {
+if (_defense_type > 0 && !_defenders_cooldown) then {
+	private _cost = round ((GRLIB_defense_costs select _defense_type) / count (AllPlayers - (entities "HeadlessClient_F")));
+	{ [_x, _cost, 0] call ammo_add_remote_call } forEach (AllPlayers - (entities "HeadlessClient_F"));
+	private _msg = format ["Defenders spawn at %1, Each players pays %2 Ammo.", ([_sector_pos] call F_getLocationName), _cost];
+	[gamelogic, _msg] remoteExec ["globalChat", 0];
+
 	private _squad_type = blufor_squad_inf_light;
-	if (_sector in (sectors_military + sectors_bigtown)) then {
-		_squad_type = blufor_squad_inf;
+	if (_defense_type == 2) then {
+		_squad_type = blufor_squad_mix;
 	};
 
 	_grp = [_sector_pos, _squad_type, GRLIB_side_friendly, "defender"] call F_libSpawnUnits;
-	if (floor (random 100) < 35) then {_grp setCombatMode "RED"} else { _grp setCombatMode "YELLOW" };
+	_grp setCombatMode "RED";
 	_grp setCombatBehaviour "COMBAT";
 	{
 		_x setSkill 0.65;
@@ -38,16 +44,31 @@ if ( GRLIB_blufor_defenders && !_defenders_cooldown) then {
 		_x allowFleeing 0;
 		_x addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
 	} foreach (units _grp);
+	[_grp, _sector_pos, 50] spawn defence_ai;
+
+	if (_defense_type == 3) then {
+		private _vehicleClass = [];
+		{
+			if ((_x select 0) isKindOf "Wheeled_APC_F") then { _vehicleClass pushBack (_x select 0) };
+		} forEach (light_vehicles + heavy_vehicles);
+
+		if (count _vehicleClass > 0) then {
+			private _vehiclePos = _sector_pos findEmptyPosition [5, 120, "B_Heli_Transport_03_unarmed_F"];
+			_vehicle = [_vehiclePos, selectRandom _vehicleClass, false, false, GRLIB_side_friendly] call F_libSpawnVehicle;
+			_vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
+			[(group driver _vehicle), _sector_pos] spawn defence_ai;
+		};
+	};
 
 	if (!(_sector in sectors_tower)) then {
 		_arsenal_box = createVehicle [Arsenal_typename, _sector_pos, [], 20, "NONE"];
 		[_arsenal_box] call F_clearCargo;
 	};
 
-	private _defenders_timer = round (time + 120);
+	private _defenders_timer = round (time + 180);
 	while { time < _defenders_timer && ({alive _x} count (units _grp) > 0) && _ownership == GRLIB_side_enemy } do {
-		_ownership = [ _sector_pos ] call F_sectorOwnership;
-		sleep 3;
+		_ownership = [_sector_pos] call F_sectorOwnership;
+		sleep 5;
 	};
 };
 
@@ -76,6 +97,7 @@ if ( _ownership == GRLIB_side_enemy ) then {
 			publicVariable "blufor_sectors";
 			opfor_sectors = (sectors_allSectors - blufor_sectors);
 			publicVariable "opfor_sectors";
+			[_sector, 0] call sector_defenses_remote_call;
 			stats_sectors_lost = stats_sectors_lost + 1;
 			[ _sector, 2 ] remoteExec ["remote_call_sector", 0];
 			diag_log format ["Sector %1 Lost at %2", _sector, time];
@@ -107,16 +129,8 @@ if ( _ownership == GRLIB_side_enemy ) then {
 	};
 };
 
-if (!isNull _arsenal_box) then { _arsenal_box spawn {sleep 120; deleteVehicle _this} };
-if (!isNull _vehicle) then { _vehicle spawn {sleep 60; deleteVehicle _this} };
-
-if ( count (units _grp) > 0 ) then {
-	[_grp] spawn {
-		params ["_grp"];
-		sleep 60;
-		{ deleteVehicle _x } foreach (units _grp);
-		deleteGroup _grp;
-	};
-};
+if (!isNull _arsenal_box) then {_arsenal_box spawn {sleep 120; deleteVehicle _this}};
+if (!isNull _vehicle) then {_vehicle spawn {sleep 60; [_this, true, true] call clean_vehicle}};
+if (count (units _grp) > 0) then {_grp spawn {sleep 60; {deleteVehicle _x} foreach (units _this); deleteGroup _this}};
 
 diag_log format ["End Attack Sector %1 at %2", _sector, time];
