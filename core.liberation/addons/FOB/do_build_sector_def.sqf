@@ -8,6 +8,7 @@ private _display = findDisplay 2310;
 private _icon = "\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa";
 private ["_selected_item", "_text", "_defense_type", "_sector", "_sector_name"];
 private _defense_list = ["None", "Light", "Medium", "Heavy"];
+private _max_defense = 6;
 
 (_display displayCtrl 120) ctrlSetToolTip "Remove Defenses.";
 (_display displayCtrl 121) ctrlSetToolTip format ["Set Light Defenses for %1 Ammo.", GRLIB_defense_costs select 1];
@@ -51,10 +52,17 @@ while { dialog && alive player } do {
         _sector = (_display displayCtrl (110)) lnbData [_selected_item, 0];
         _sector_name = (_display displayCtrl (110)) lnbText [_selected_item, 0];
         [_sector, build_type] remoteExec ["sector_defenses_remote_call", 2];
+
         if (build_type == 0) then {
+            [_sector, build_type] remoteExec ["sector_defenses_remote_call", 2];
             gamelogic globalChat format ["You Remove Defenses from %1.", _sector_name];
         } else {
-            gamelogic globalChat format ["You Set %1 Defenses on %2.", (_defense_list select build_type), _sector_name];
+            if (count GRLIB_sector_defense < _max_defense ) then {
+                [_sector, build_type] remoteExec ["sector_defenses_remote_call", 2];
+                gamelogic globalChat format ["You Set %1 Defenses on %2.", (_defense_list select build_type), _sector_name];
+            } else {
+                gamelogic globalChat format ["You reach the Maximum Defenses limit (%1)!", _max_defense];
+            };
         };
         sleep 0.3;
         build_action = 0;
