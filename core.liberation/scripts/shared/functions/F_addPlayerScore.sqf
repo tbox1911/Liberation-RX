@@ -1,6 +1,8 @@
 params ["_uid", "_score"];
 
+private _cur_score = 0;
 private _p1 = _uid call BIS_fnc_getUnitByUID;
+
 if (!isNull _p1) exitWith {
     [_p1, _score] call F_addScore;
 };

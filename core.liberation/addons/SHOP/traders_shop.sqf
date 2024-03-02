@@ -38,7 +38,7 @@ lbClear 111;
 {
 	_entrytext = [(_x select 0)] call F_getLRXName;
 	if (count _entrytext > 25) then { _entrytext = _entrytext select [0,25] };
-	(_display displayCtrl (111)) lnbAddRow [_entrytext, str(_x select 1)];
+	lnbAddRow [111, [_entrytext, str (_x select 1)]];
 
 	_icon = getText ( _cfg >> (_x select 0) >> "icon");
 	if(isText  (configFile >> "CfgVehicleIcons" >> _icon)) then {
@@ -85,7 +85,7 @@ while { dialog && alive player } do {
 		{
 			_entrytext = [(_x select 0)] call F_getLRXName;
 			if (count _entrytext > 25) then { _entrytext = _entrytext select [0,25] };	
-			(_display displayCtrl (110)) lnbAddRow [_entrytext, str(_x select 1)];
+			lnbAddRow [110, [_entrytext, str (_x select 1)]];
 
 			_icon = getText ( _cfg >> (_x select 0) >> "icon");
 			if(isText  (configFile >> "CfgVehicleIcons" >> _icon)) then {

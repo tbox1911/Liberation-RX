@@ -205,7 +205,8 @@ GRLIB_civilians_amount = 12;
 GRLIB_civilians_amount = GRLIB_civilians_amount * GRLIB_civilian_activity;
 GRLIB_patrol_amount = 7;
 GRLIB_patrol_amount = GRLIB_patrol_amount * GRLIB_patrols_activity;
-GRLIB_secondary_missions_costs = [ 100, 50, 10, 800 ];
+GRLIB_secondary_missions_costs = [100, 50, 10, 800];
+GRLIB_defense_costs = [0, 100, 200, 300];
 
 // Select MOD name
 GRLIB_mod_west = "";

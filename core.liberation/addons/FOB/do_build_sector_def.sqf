@@ -10,17 +10,13 @@ private ["_selected_item", "_text", "_defense_type", "_sector", "_sector_name"];
 private _defense_list = ["None", "Light", "Medium", "Heavy"];
 
 (_display displayCtrl 120) ctrlSetToolTip "Remove Defenses.";
-(_display displayCtrl 121) ctrlSetToolTip "Set Light Defenses for 100 Ammo.";
-(_display displayCtrl 122) ctrlSetToolTip "Set Medium Defenses for 200 Ammo.";
-(_display displayCtrl 123) ctrlSetToolTip "Set Heavy Defenses for 300 Ammo.";
+(_display displayCtrl 121) ctrlSetToolTip format ["Set Light Defenses for %1 Ammo.", GRLIB_defense_costs select 1];
+(_display displayCtrl 122) ctrlSetToolTip format ["Set Medium Defenses for %1 Ammo.", GRLIB_defense_costs select 2];
+(_display displayCtrl 123) ctrlSetToolTip format ["Set Heavy Defenses for %1 Ammo.", GRLIB_defense_costs select 3];
 
 private _score = [player] call F_getScore;
-if (_score < GRLIB_perm_log ) then {
-    ctrlEnable [122, false];
-};
-if (_score < GRLIB_perm_air ) then {
-    ctrlEnable [123, false];
-};
+if (_score < GRLIB_perm_log) then { ctrlEnable [122, false] };
+if (_score < GRLIB_perm_air) then { ctrlEnable [123, false] };
 
 build_action = 0;
 build_type = 0;
@@ -32,7 +28,7 @@ while { dialog && alive player } do {
         {
             _text = [_x] call F_getLocationName;
             _defense_type = [str _x] call F_getDefenseType;
-            (_display displayCtrl (110)) lnbAddRow [_text, (_defense_list select _defense_type)];
+            lnbAddRow [110, [_text, (_defense_list select _defense_type)]];
             lnbSetPicture  [110, [((lnbSize 110) select 0) - 1, 0], _icon];
             lnbSetData [110, [((lnbSize 110) select 0) - 1, 0], str _x];
         } forEach GRLIB_all_fobs;
@@ -41,7 +37,7 @@ while { dialog && alive player } do {
             if !(_x in active_sectors) then {
                 _text = (markerText _x);
                 _defense_type = [_x] call F_getDefenseType;
-                (_display displayCtrl (110)) lnbAddRow [_text, (_defense_list select _defense_type)];
+                lnbAddRow [110, [_text, (_defense_list select _defense_type)]];
                 lnbSetPicture  [110, [((lnbSize 110) select 0) - 1, 0], _icon];
                 lnbSetData [110, [((lnbSize 110) select 0) - 1, 0], _x];
             };                

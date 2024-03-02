@@ -195,8 +195,7 @@ while { alive player && dialog } do {
 		_name = _score_combo lbText (lbCurSel _score_combo);
 		_uid = _score_combo lbData (lbCurSel _score_combo);
 		_amount = parseNumber (ctrlText _ammount_edit);
-		_player = _uid call BIS_fnc_getUnitByUID;
-		[_player, _amount, 0] remoteExec ["ammo_add_remote_call", 2];
+		[_uid, _amount] remoteExec ["F_addPlayerAmmo", 2];
 		_msg = format ["Add %1 Ammo to player: %2.", _amount, _name];
 		hint _msg;
 		systemchat _msg;

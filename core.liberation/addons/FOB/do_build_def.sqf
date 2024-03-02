@@ -21,7 +21,7 @@ lbClear 110;
     _text = (_x select 0);
     _defense_price = (_x select 2);
     if (count _text > 25) then { _text = _text select [0,25] };
-    (_display displayCtrl (110)) lnbAddRow [_text, str _defense_price];
+    lnbAddRow [110, [_text, str _defense_price]];
     lnbSetPicture  [110, [((lnbSize 110) select 0) - 1, 0], _icon];
 } foreach GRLIB_FOB_Defense;
 lbSetCurSel [110, -1];
