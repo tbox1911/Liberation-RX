@@ -1,24 +1,22 @@
 if ( GRLIB_endgame == 1 || GRLIB_global_stop == 1 ) exitWith {};
 params ["_liberated_sector"];
 waitUntil {sleep 0.5; !GRLIB_GC_Running };
-diag_log format ["Spawn BattlegGroup at %1", time];
+diag_log format ["Spawn BattlegGroup target %1 at %2", _liberated_sector, time];
 
 private _spawn_marker = "";
-private _objective_pos = [];
+private _objective_pos = zeropos;
 
 if ( isNil "_liberated_sector" ) then {
 	_spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max] call F_findOpforSpawnPoint;
-	_objective_pos = ([markerpos _spawn_marker] call F_getNearestBluforObjective) select 0;
-} else {
-	_spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max, true, markerPos _liberated_sector] call F_findOpforSpawnPoint;
-	_objective_pos = markerPos _liberated_sector;
-	if ((markerPos _spawn_marker) distance2D _objective_pos > GRLIB_spawn_max) then {
-		_spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max] call F_findOpforSpawnPoint;
-		_objective_pos = ([markerPos _spawn_marker] call F_getNearestBluforObjective) select 0;
+	if (_spawn_marker != "") then {
+		_objective_pos = ([markerpos _spawn_marker] call F_getNearestBluforObjective) select 0;
 	};
+} else {
+	_objective_pos = markerPos _liberated_sector;
+	_spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max, true, _objective_pos] call F_findOpforSpawnPoint;
 };
 
-if (_objective_pos isEqualTo zeropos) exitWith {};
+if (_objective_pos isEqualTo zeropos) exitWith { diag_log format ["--- LRX could not find objective %1 (%2) - %3 %4", _objective_pos, _liberated_sector, _spawn_marker, GRLIB_spawn_max] };
 [markerPos _spawn_marker] remoteExec ["remote_call_battlegroup", 0];
 
 private _vehicle_pool = opfor_battlegroup_vehicles;
