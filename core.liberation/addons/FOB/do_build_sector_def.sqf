@@ -51,13 +51,12 @@ while { dialog && alive player } do {
         _selected_item = lbCurSel 110;
         _sector = (_display displayCtrl (110)) lnbData [_selected_item, 0];
         _sector_name = (_display displayCtrl (110)) lnbText [_selected_item, 0];
-        [_sector, build_type] remoteExec ["sector_defenses_remote_call", 2];
 
         if (build_type == 0) then {
             [_sector, build_type] remoteExec ["sector_defenses_remote_call", 2];
             gamelogic globalChat format ["You Remove Defenses from %1.", _sector_name];
         } else {
-            if (count GRLIB_sector_defense < _max_defense ) then {
+            if (count GRLIB_sector_defense < _max_defense) then {
                 [_sector, build_type] remoteExec ["sector_defenses_remote_call", 2];
                 gamelogic globalChat format ["You Set %1 Defenses on %2.", (_defense_list select build_type), _sector_name];
             } else {
