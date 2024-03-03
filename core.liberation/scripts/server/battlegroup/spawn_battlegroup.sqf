@@ -17,7 +17,6 @@ if ( isNil "_liberated_sector" ) then {
 };
 
 if (_objective_pos isEqualTo zeropos) exitWith { diag_log format ["--- LRX could not find objective %1  - %3 %4", _liberated_sector, _spawn_marker, GRLIB_spawn_max] };
-[markerPos _spawn_marker] remoteExec ["remote_call_battlegroup", 0];
 
 private _vehicle_pool = opfor_battlegroup_vehicles;
 if ( combat_readiness < 50 ) then {
@@ -25,8 +24,8 @@ if ( combat_readiness < 50 ) then {
 };
 
 if (_spawn_marker != "") then {
+	[markerPos _spawn_marker] remoteExec ["remote_call_battlegroup", 0];
 	GRLIB_last_battlegroup_time = time;
-
 	private _target_size = GRLIB_battlegroup_size * (combat_readiness /100);
 	if ( count (AllPlayers - (entities "HeadlessClient_F")) <= 2 ) then { _target_size = round (_target_size * 0.65) };
 	if ( _target_size > 8 ) then { _target_size = 8; };
