@@ -19,7 +19,7 @@ if (["GM_", GRLIB_mod_west, true] call F_startsWith) then {
 	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_GM.sqf";
 };
 // Add OPTRE Weapons
-if (["OPTRE_", GRLIB_mod_west, true] call F_startsWith) then {
+if (["OPTRE", GRLIB_mod_west, true] call F_startsWith) then {
 	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_OPTRE.sqf";
 };
 // Add EricJ Weapons

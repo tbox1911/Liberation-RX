@@ -28,7 +28,7 @@ if (["GM_", GRLIB_mod_east, true] call F_startsWith) then {
 	GRLIB_MOD_signature = GRLIB_MOD_signature + ["gm_"];
 };
 // Add OPTRE Weapons
-if (["OPTRE_", GRLIB_mod_east, true] call F_startsWith) then {
+if (["OPTRE", GRLIB_mod_east, true] call F_startsWith) then {
 	GRLIB_MOD_signature = GRLIB_MOD_signature + ["optre_"];
 };
 // Add EricJ Weapons
