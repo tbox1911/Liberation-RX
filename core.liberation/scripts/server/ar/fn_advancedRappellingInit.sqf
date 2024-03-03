@@ -51,7 +51,7 @@ AR_Advanced_Rappelling_Install = {
 				_heliGroup setFormation "File";
 				
 				// Wait for heli to slow down
-				waitUntil { (vectorMagnitude (velocity _vehicle)) < 10 && _vehicle distance2d _gameLogicLeader < 50  };
+				waitUntil { sleep 1; (vectorMagnitude (velocity _vehicle)) < 10 && _vehicle distance2d _gameLogicLeader < 50  };
 				
 				// Force heli to specific position
 				[_vehicle, _positionASL] spawn {
@@ -290,7 +290,7 @@ AR_Advanced_Rappelling_Install = {
 		if(local _player) then {
 			[_player] orderGetIn false;
 			moveOut _player;
-			waitUntil { vehicle _player == _player};
+			waitUntil { sleep 1; vehicle _player == _player};
 			_playerStartPosition = AGLtoASL (_heli modelToWorldVisual _rappelPoint);
 			_playerStartPosition set [2,(_playerStartPosition select 2) - 1];
 			_playerStartPosition set [1,(_playerStartPosition select 1) - ((((random 100)-50))/25)];
@@ -589,7 +589,7 @@ AR_Advanced_Rappelling_Install = {
 			};
 		};
 		
-		waitUntil {!(_player getVariable ["AR_Is_Rappelling",false])};
+		waitUntil { sleep 1; !(_player getVariable ["AR_Is_Rappelling",false])};
 		
 		if(_animationEventHandler != -1) then {
 			_player removeEventHandler ["AnimChanged", _animationEventHandler];
