@@ -27,7 +27,12 @@ if ( isServer ) then {
 
 	if (isNull _killer) then {
 		_killer = _unit getVariable ["GRLIB_last_killer", objNull];
-	};	
+	};
+
+	// Fast exit
+	if (isNull _killer && _unit isKindOf "AllVehicles") exitWith {
+		[_unit, false, true, true] spawn clean_vehicle;
+	};
 	if (isNull _killer) exitWith {};
 
 	if (isNil "infantry_weight") then { infantry_weight = 33 };
