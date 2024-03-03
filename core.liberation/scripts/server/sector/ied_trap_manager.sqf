@@ -3,7 +3,7 @@ params [ "_sector", "_radius", "_number" ];
 if (_number == 0) exitWith {};
 if (_number >= 1) then {
 	sleep 2;	
-	[ _sector, _radius, _number - 1 ] spawn ied_trap_manager;
+	[_sector, _radius, _number - 1] spawn ied_trap_manager;
 };
 
 private _activation_radius = 3;
@@ -34,29 +34,29 @@ if ( count _ide_pos > 0 ) then {
 	_ide_pos = getPosATL _ied_obj;
 
 	private _timeout = time + (60 * 60);
-	if (floor random 3 > 0) exitWith {
+	if (floor random 3 > 0) then {
 		waitUntil { sleep 1; (alive _ied_obj && time < _timeout) };
-		deleteVehicle _ied_obj;
-	};
-
-	while {alive _ied_obj && time < _timeout && !_goes_boom } do {
-		sleep 1;
-		_hostilecount = [_ide_pos, _activation_radius] call F_getNearbyPlayers;
-		if (count _hostilecount >= _infantry_trigger) then {
-			[_ied_obj] spawn {
-				params ["_obj"];
-				for "_i" from 1 to 5 do {
-					playSound3D ["A3\Missions_F_Oldman\Data\sound\beep.ogg", _obj, false, ATLToASL (getPosATL _obj), 4, 1, 100];
-					sleep 0.5;
+	} else {
+		while {alive _ied_obj && time < _timeout && !_goes_boom } do {
+			sleep 1;
+			_hostilecount = [_ide_pos, _activation_radius] call F_getNearbyPlayers;
+			if (count _hostilecount >= _infantry_trigger) then {
+				[_ied_obj] spawn {
+					params ["_obj"];
+					for "_i" from 1 to 5 do {
+						playSound3D ["A3\Missions_F_Oldman\Data\sound\beep.ogg", _obj, false, ATLToASL (getPosATL _obj), 4, 1, 100];
+						sleep 0.5;
+					};
 				};
+				sleep 2;
+				_round = _ied_power createVehicle _ide_pos;
+				[_round, -90, 0] call BIS_fnc_setPitchBank;
+				_round setVelocity [0,0,-100];
+				stats_ieds_detonated = stats_ieds_detonated + 1;
+				publicVariable "stats_ieds_detonated";
+				_goes_boom = true;
 			};
-			sleep 3;
-			_round = _ied_power createVehicle _ide_pos;
-			[_round, -90, 0] call BIS_fnc_setPitchBank;
-			_round setVelocity [0,0,-100];
-			stats_ieds_detonated = stats_ieds_detonated + 1; publicVariable "stats_ieds_detonated";
-			_goes_boom = true;
 		};
 	};
-	deleteVehicle _ied_obj;
+	deleteVehicle _ied_obj;	
 };
