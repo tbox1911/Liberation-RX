@@ -1819,8 +1819,8 @@
 			<French>Limite AI Résurection</French>
 		</Key>		
 		<Key ID="STR_PARAMS_PAR_BLEEDOUT">
-			<Original>PsiKO AI Bleedout Timer</Original>
-			<French>PsiKO AI Durée Attente</French>
+			<Original>Bleedout Timer</Original>
+			<French>Durée Attente Blessé</French>
 		</Key>		
 		<Key ID="STR_PARAMS_REVIVE1">
 			<Original>Enabled - Only medics can revive</Original>
