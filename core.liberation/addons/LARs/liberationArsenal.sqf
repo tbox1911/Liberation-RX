@@ -88,6 +88,10 @@ private _default_personal_arsenal = [
 	["FirstAidKit", 15],
 	["Medikit", 2],
 	["ToolKit", 2],
+	// container: ["class", [[[items],[nb]],[[magazine],[nb]]],0]
+	["B_AssaultPack_blk", [[[],[]],[[],[]]],0],
+	["B_AssaultPack_blk",[[["FirstAidKit"],[1]],[["11Rnd_45ACP_Mag","30Rnd_65x39_caseless_mag"],[2,2]]],0],
+	["V_Chestrig_blk", [[[],[]],[[],[]]],0],
 	["arifle_MX_Hamr_pointer_F", 2],
 	["30Rnd_65x39_caseless_mag", 20],
 	["launch_RPG32_F", 1],
@@ -108,7 +112,6 @@ if (GRLIB_filter_arsenal == 4) exitWith {
 	GRLIB_personal_box = Arsenal_typename createVehicle (markerPos GRLIB_respawn_marker); // Arsenal_typename
 	GRLIB_personal_box allowDamage false;
 	[GRLIB_personal_box] remoteExec ["hide_object_remote_call", 2];
-	[GRLIB_personal_box] call F_clearCargo;
 	GRLIB_personal_box setVariable ["GRLIB_personal_box_pos", getPos GRLIB_personal_box];
 	[] call load_personal_arsenal;
 	diag_log format ["--- LRX Personal Arsenal initialized. (%1)", count GRLIB_personal_arsenal];
