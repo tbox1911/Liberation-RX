@@ -1,39 +1,48 @@
 params [ ["_mission_cost", 0], "_caller" ];
 if ( count (opfor_sectors - sectors_tower) < 4) exitWith { [gamelogic, "Could not find enough free sectors for convoy hijack mission"] remoteExec ["globalChat", 0] };
 
+// Get Path & Check
+private ["_start_marker", "_pos", "_nearestroad", "_land"];
 private _convoy_destinations_markers = [];
-private _max_try = 20;
-private _max_waypoints = 6;
+private _convoy_destinations = [];
+private _max_try = 10;
+private _max_waypoints = 5;
 private _sector_list = (opfor_sectors - sectors_tower);
 
 while { count _convoy_destinations_markers < _max_waypoints && _max_try > 0} do {
-	_start_pos = selectRandom _sector_list;
-	_convoy_destinations_markers = [_start_pos, 4000, _sector_list, _max_waypoints] call F_getSectorPath;
+	_start_marker = selectRandom _sector_list;
+	_convoy_destinations_markers = [_start_marker, 4000, _sector_list, _max_waypoints] call F_getSectorPath;
     _max_try = _max_try - 1;
 };
 
-if ( count _convoy_destinations_markers < 3) exitWith { [gamelogic, "Could not find enough free sectors for convoy hijack mission"] remoteExec ["globalChat", 0] };
+{
+	_pos = (markerPos _x);
+	_nearestroad = [_pos, 100] call BIS_fnc_nearestRoad;
+	_land = !(surfaceIsWater _pos);
+	if (_land) then {
+		if (isNull _nearestroad) then {
+			_convoy_destinations pushback _pos;
+		} else {
+			_convoy_destinations pushback (getpos _nearestroad);
+		};
+	};
+ } foreach _convoy_destinations_markers;
 
+if ( count _convoy_destinations < 3) exitWith { [gamelogic, "Could not find enough free sectors for convoy hijack mission"] remoteExec ["globalChat", 0] };
+
+// Check Box
 private _boxes_amount = 0;
 {
 	if ( _x select 0 == opfor_transport_truck ) exitWith { _boxes_amount = (count _x) - 2 };
 } foreach box_transport_config;
 if ( _boxes_amount == 0 ) exitWith { diag_log "Opfor ammobox truck classname doesn't allow for ammobox transport, correct your classnames.sqf"; };
 
+//-----------------------------------------
+// Start Mission
 diag_log format ["--- LRX: %1 start static mission: Convoy Hijack at %2", _caller, time];
 resources_intel = resources_intel - _mission_cost;
 GRLIB_secondary_in_progress = 1;
 publicVariable "GRLIB_secondary_in_progress";
-
-private _convoy_destinations = [];
-{
-	private _nearestroad = [markerpos _x, 100] call BIS_fnc_nearestRoad;
-	if ( isNull _nearestroad ) then {
-		_convoy_destinations pushback (markerPos _x);
-	} else {
-		_convoy_destinations pushback (getpos _nearestroad);
-	};
- } foreach _convoy_destinations_markers;
 
 private _spawnpos = _convoy_destinations select 0;
 private _convoy_group = createGroup [GRLIB_side_enemy, true];
