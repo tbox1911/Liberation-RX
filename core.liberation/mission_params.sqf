@@ -46,7 +46,7 @@ LRX_Mission_Params = [
 	["Weather", 1],					// Weather - [default 4] - values = [1,2,3,4] - Text {Always Sunny,Random without rain,Random Cloudy,Random}
 	["Fatigue", 0],					// Stamina - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["PAR_Revive", 3],				// PAR revive - [default 3] - values = [3,2,1,0] - Text {Enabled - Everyone can revive,Enabled - Everyone can revive using Medikit/FAK,Enabled - Only medics can revive,Disabled}
-	["PAR_AI_Revive", 10],			// PAR AI revive limit - [default 0] - values = [0,5,10,15,20]
+	["PAR_AI_Revive", 7],			// PAR AI revive limit - [default 0] - values = [0,3,5,7,10,15,20]
 	["PAR_BleedOut", 300],			// PAR revive Bleedout timer - [default 300] - values = [100,200,300,400,500,600]
 	["Respawn", 20],				// Cooldown before can player respawn - [default 20] - values = [0,xxx] - Text {Disabled,Enabled}	
 	["TK_mode", 1],					// Teamkill Mode [default 0] - values = [0,1,2] - Text {Strict,Relax,Disabled}
@@ -163,8 +163,8 @@ LRX_Mission_Params_Def = [
 		]
 	],
 	["PAR_AI_Revive", localize "STR_PARAMS_PAR_AI_REVIVE",
-		["Unlimited", "5", "10", "15", "20"],
-		[0, 5, 10, 15, 20]
+		["Unlimited", "3", "5", "7", "10", "15", "20"],
+		[0, 3, 5, 7, 10, 15, 20]
 	],	
 	["PAR_BleedOut", localize "STR_PARAMS_PAR_BLEEDOUT",
 		["100", "200", "300", "400", "500", "600"],
