@@ -58,7 +58,8 @@ while { dialog && alive player } do {
         } else {
             if (count GRLIB_sector_defense < _max_defense) then {
                 [_sector, build_type] remoteExec ["sector_defenses_remote_call", 2];
-                gamelogic globalChat format ["You Set %1 Defenses on %2.", (_defense_list select build_type), _sector_name];
+                private _msg = format ["Player %1 Set %2 Defenses on %3.", name player, (_defense_list select build_type), _sector_name];
+                [gamelogic, _msg] remoteExec ["globalChat", 0];
             } else {
                 gamelogic globalChat format ["You reach the Maximum Defenses limit (%1)!", _max_defense];
             };
