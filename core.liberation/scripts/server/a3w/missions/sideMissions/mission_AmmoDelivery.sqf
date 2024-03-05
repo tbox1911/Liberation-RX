@@ -57,7 +57,7 @@ _waitUntilSuccessCondition = {
 
 _failedExec = {
 	// Mission failed
-	{ [_x, -2] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
+	{ [_x, -1] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
 	deleteVehicle _man1;
 	deleteMarker _marker_mission;
 	_failedHintMessage = ["STR_AMMODELI_MESSAGE2", sideMissionColor, _townName];

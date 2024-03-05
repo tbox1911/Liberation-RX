@@ -94,7 +94,7 @@ _waitUntilSuccessCondition = { ((GRLIB_A3W_Mission_SD select 0) == -1) };
 
 _failedExec = {
 	// Mission failed
-	{ [_x, -5] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
+	{ [_x, -3] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
 	["GRLIB_A3W_Mission_SD_Marker"] remoteExec ["GRLIB_A3W_Mission_SD_Marker", 0];
 	{ deleteVehicle _x} forEach [_quest_item] + (GRLIB_A3W_Mission_SD select 1);
 	GRLIB_A3W_Mission_SD = nil;
