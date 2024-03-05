@@ -28,6 +28,7 @@ if (_unit_side == GRLIB_side_enemy) then { _unit allowDamage false };
 
 unAssignVehicle _unit;
 [_unit] orderGetIn false;
+[_unit] allowGetIn false;
 
 if (_slow) then { sleep 2 };
 moveOut _unit;

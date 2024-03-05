@@ -18,9 +18,8 @@ private _path = format ["mod_template\%1\classnames_r3f.sqf", GRLIB_mod_east];
 ACE_getSize = {
     params ["_object", "_list"];
 	private _ret = 0;
-    private _class = (typeOf _object);
 	{
-	  if (_class isKindOf _x) then { _ret = (_list select 1) select _forEachIndex };
+	    if (_object isKindOf _x) then { _ret = (_list select 1) select _forEachIndex };
 	} foreach (_list select 0);
 	_ret;
 };
