@@ -1,17 +1,18 @@
 if ( GRLIB_endgame == 1 || GRLIB_global_stop == 1 ) exitWith {};
 params ["_liberated_sector"];
 waitUntil {sleep 0.5; !GRLIB_GC_Running };
-diag_log format ["Spawn BattlegGroup target %1 at %2", _liberated_sector, time];
 
 private _spawn_marker = "";
 private _objective_pos = zeropos;
 
 if ( isNil "_liberated_sector" ) then {
+	diag_log format ["Spawn BattlegGroup no target at %1", time];
 	_spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max] call F_findOpforSpawnPoint;
 	if (_spawn_marker != "") then {
 		_objective_pos = ([markerpos _spawn_marker] call F_getNearestBluforObjective) select 0;
 	};
 } else {
+	diag_log format ["Spawn BattlegGroup target %1 at %2", _liberated_sector, time];	
 	_objective_pos = markerPos _liberated_sector;
 	_spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max, true, _objective_pos] call F_findOpforSpawnPoint;
 };
