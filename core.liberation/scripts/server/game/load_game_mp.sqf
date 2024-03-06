@@ -74,7 +74,7 @@ if ( GRLIB_param_wipe_savegame_1 == 1 && GRLIB_param_wipe_savegame_2 == 1 ) then
 			_keep_players pushback _x;
 		} foreach (profileNamespace getVariable GRLIB_save_key select 16);
 		GRLIB_player_scores = _keep_players;
-	};²
+	};
 	diag_log format ["--- LRX Savegame %1 Erased!", GRLIB_save_key] ;
 	profileNamespace setVariable [ GRLIB_save_key, nil ];
 	saveProfileNamespace;
