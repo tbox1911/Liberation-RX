@@ -9,7 +9,9 @@ if (_unit isKindOf "CAManBase") then {
 	[_unit, true] remoteExec ["stop", 2];
 };
 
-if (side _unit == GRLIB_side_civilian) then {
+if (_unit in (units player)) then {
+	[_unit] call speak_squad_AI;
+} else {
 	if (_msg > 0) then {
 		switch (_msg) do {
 			// unit
@@ -30,10 +32,6 @@ if (side _unit == GRLIB_side_civilian) then {
 	} else {
 		[_unit] call speak_civil_AI;
 	};
-};
-
-if (side _unit == GRLIB_side_friendly) then {
-	[_unit] call speak_squad_AI;
 };
 
 sleep 3;
