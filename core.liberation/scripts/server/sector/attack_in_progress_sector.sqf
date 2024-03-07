@@ -28,7 +28,11 @@ if (_defense_type > 0 && !_defenders_cooldown) then {
 	private _players = (AllPlayers - (entities "HeadlessClient_F"));
 	if (count _players == 0) exitWith {};
 	private _cost = round ((GRLIB_defense_costs select _defense_type) / (count _players));
-	{ [_x, -_cost, 0] call ammo_add_remote_call } forEach _players;
+	{
+		if (_x getVariable ["GREUH_ammo_count", 0] > GREUH_start_ammo) then {
+			[_x, -_cost, 0] call ammo_add_remote_call;
+		};
+	} forEach _players;
 	private _msg = format ["Defenders spawn at %1, Each players pays %2 Ammo.", ([_sector_pos] call F_getLocationName), _cost];
 	[gamelogic, _msg] remoteExec ["globalChat", 0];
 
