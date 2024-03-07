@@ -977,16 +977,13 @@
 			<Czech>Vysoká priorita – %1 NAPADNUTO</Czech>
 		</Key>
 		<Key ID="STR_NOTIFICATION_FOBATTACKED_TEXT">
-			<Original>%1 %2&lt;br/&gt;is under attack!&lt;br/&gt;You &lt;t color='#ff0000'&gt;MUST&lt;/t&gt; defend the FOB!</Original>
-			<French>%1 %2&lt;br/&gt;est attaqué !&lt;br/&gt;Vous &lt;t color='#ff0000'&gt;DEVEZ&lt;/t&gt; défendre la FOB !</French>
-			<German>%1 %2&lt;br/&gt;wird angegriffen !</German>
-			<Spanish>%1 %2&lt;br/&gt;está bajo ataque!</Spanish>
-			<Russian>%1 %2&lt;br/&gt;атакована!</Russian>
-			<Chinesesimp>%1 %2&lt;br/&gt;受到了攻击!&lt;br/&gt;你 &lt;t color='#ff0000'&gt;必须&lt;/t&gt; 保卫这个 FOB!</Chinesesimp>
-			<Chinese>%1 %2&lt;br/&gt;受到了攻擊!&lt;br/&gt;你 &lt;t color='#ff0000'&gt;必須&lt;/t&gt; 保衛這個 FOB!</Chinese>
-			<Japanese>%1 %2&lt;br/&gt;が攻撃されています！&lt;br/&gt;あなた &lt;t color='#ff0000'&gt;は&lt;/t&gt; FOBを守ってください！</Japanese>
-			<Portuguese>%1 %2&lt;br/&gt;está sob ataque!&lt;br/&gt;Você &lt;t color='#ff0000'&gt;DEVE&lt;/t&gt; defenda a FOB!</Portuguese>
-			<Czech>%1 %2&lt;br/&gt;pod útokem!&lt;br/&gt;Vy &lt;t color='#ff0000'&gt;MUSÍTE&lt;/t&gt; bránit FOB!</Czech>
+			<Original>%1 %2 is under attack!&lt;br/&gt;You &lt;t color='#ff0000'&gt;MUST&lt;/t&gt; defend the FOB!</Original>
+			<French>%1 %2 est attaqué !&lt;br/&gt;Vous &lt;t color='#ff0000'&gt;DEVEZ&lt;/t&gt; défendre la FOB !</French>
+			<Chinesesimp>%1 %2 受到了攻击!&lt;br/&gt;你 &lt;t color='#ff0000'&gt;必须&lt;/t&gt; 保卫这个 FOB!</Chinesesimp>
+			<Chinese>%1 %2 受到了攻擊!&lt;br/&gt;你 &lt;t color='#ff0000'&gt;必須&lt;/t&gt; 保衛這個 FOB!</Chinese>
+			<Japanese>%1 %2 が攻撃されています！&lt;br/&gt;あなた &lt;t color='#ff0000'&gt;は&lt;/t&gt; FOBを守ってください！</Japanese>
+			<Portuguese>%1 %2 está sob ataque!&lt;br/&gt;Você &lt;t color='#ff0000'&gt;DEVE&lt;/t&gt; defenda a FOB!</Portuguese>
+			<Czech>%1 %2 pod útokem!&lt;br/&gt;Vy &lt;t color='#ff0000'&gt;MUSÍTE&lt;/t&gt; bránit FOB!</Czech>
 		</Key>
 		<Key ID="STR_NOTIFICATION_FOBLOST_TITLE">
 			<Original>%1 DESTROYED</Original>

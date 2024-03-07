@@ -1,9 +1,9 @@
 params [ "_fobpos" ];
 
 sleep 30;
-private _ownership = [ _fobpos ] call F_sectorOwnership;
-if ( _ownership != GRLIB_side_enemy ) exitWith {};
-if ( GRLIB_endgame == 1 || GRLIB_global_stop == 1 ) exitWith {};
+private _ownership = [_fobpos] call F_sectorOwnership;
+if (_ownership != GRLIB_side_enemy) exitWith {};
+if (GRLIB_endgame == 1 || GRLIB_global_stop == 1) exitWith {};
 
 diag_log format ["Spawn Attack FOB %1 at %2", _fobpos, time];
 private _max_prisonners = 4;
@@ -31,7 +31,7 @@ if (_defense_type > 0) then {
 
 	private _defenders_timer = round (time + 120);
 	while { time < _defenders_timer && ({alive _x} count (units _grp) > 0) && _ownership == GRLIB_side_enemy } do {
-		_ownership = [ _fobpos ] call F_sectorOwnership;
+		_ownership = [_fobpos] call F_sectorOwnership;
 		sleep 5;
 	};
 };
@@ -41,12 +41,11 @@ if ( _ownership == GRLIB_side_enemy ) then {
 	private _near_outpost = (_fobpos in GRLIB_all_outposts);
 	private _activeplayers = 0;
 
-	[_fobpos, 1, _sector_timer] remoteExec ["remote_call_fob", 0];
-
 	[_fobpos] spawn {
 		params ["_pos"];
 		private _sound = "A3\Sounds_F\sfx\alarm_blufor.wss";
 		while { ([_pos] call F_sectorOwnership) == GRLIB_side_enemy } do {
+			[_fobpos, 1, _sector_timer] remoteExec ["remote_call_fob", 0];			
 			playSound3D [_sound, _pos, false, ATLToASL _pos, 5, 1, 1000];
 			sleep (60 + (floor(random 4) * 45));
 		};
@@ -56,10 +55,10 @@ if ( _ownership == GRLIB_side_enemy ) then {
 	_sector_timer = round (time + _sector_timer);
 
 	while { (time < _sector_timer || _activeplayers > 0) && _ownership == GRLIB_side_enemy } do {
-		_ownership = [_fobpos] call F_sectorOwnership;
+		_ownership = [_fobpos, (GRLIB_capture_size * 2)] call F_sectorOwnership;
 		_activeplayers = count ([allPlayers, {alive _x && (_x distance2D (_fobpos)) < GRLIB_sector_size}] call BIS_fnc_conditionalSelect);
 		if (_sector_timer mod 60 == 0 && !_near_outpost) then {
-			[ _fobpos , 4 ] remoteExec ["remote_call_fob", 0];
+			[_fobpos, 4] remoteExec ["remote_call_fob", 0];
 		};
 		sleep 3;
 	};
@@ -74,7 +73,7 @@ if ( _ownership == GRLIB_side_enemy ) then {
 			sleep 1;
 			[_fobpos] call destroy_fob;
 		} else {
-			[ _fobpos , 3 ] remoteExec ["remote_call_fob", 0];
+			[_fobpos, 3] remoteExec ["remote_call_fob", 0];
 			private _enemy_left = (_fobpos nearEntities ["CAManBase", GRLIB_capture_size * 0.8]);
 			_enemy_left = _enemy_left select { (side _x == GRLIB_side_enemy) && (isNull objectParent _x) };
 			{
