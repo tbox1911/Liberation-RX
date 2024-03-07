@@ -11,10 +11,6 @@ if (_cmd == "add" && _classname != "") exitWith {
 	_my_dog setVariable ["my_dog_tone", _tone];
 	_my_dog setDir (_my_dog getDir player);
 	[_my_dog, _tone] spawn dog_bark;
-	_my_dog setIdentity "Gunner";
-	if (_my_dog isKindOf "MFR_C_GermanShepherd_Black_TAN") then { _my_dog setIdentity "Rocket" };
-	if (_my_dog isKindOf "MFR_C_GermanShepherd_OD") then { _my_dog setIdentity "ShitHead" };
-	if (_my_dog isKindOf "MFR_C_Roxie") then { _my_dog setIdentity "Roxie" };
 	private _id = (findDisplay 12 displayCtrl 51) ctrlAddEventHandler [
 		"Draw",
 		"
