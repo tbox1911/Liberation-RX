@@ -1,3 +1,8 @@
+// TFAR Radio
+if (GRLIB_TFR_enabled) then {
+	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_TFAR.sqf";
+};
+
 // Add ACE Weapons
 if (GRLIB_ACE_enabled) then {
 	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_ACE.sqf";

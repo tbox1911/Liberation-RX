@@ -2,8 +2,9 @@ params ["_item"];
 if (isNil "_item") exitWith { false };
 if (_item == "") exitWith { true };
 
-// TFAR radio
+// TFAR Radio
 if (GRLIB_TFR_enabled && (["TF_", _item] call F_startsWith)) exitWith { true };
+if (GRLIB_TFR_enabled && (["TFAR_", _item] call F_startsWith)) exitWith { true };
 
 private _ret = true; 
 if (GRLIB_blacklisted_from_arsenal find _item >= 0) then {
