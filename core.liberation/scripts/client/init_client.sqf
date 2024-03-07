@@ -243,14 +243,6 @@ if (isServer && hasInterface) then {
 	 }];
 };
 
-onPlayerDisconnected {
-	// Remove Marker
-	deletemarker format ["PAR_marker_%1", _name];
-
-	// Remove AI
-	{ deleteVehicle _x } forEach PAR_AI_bros;
-};
-
 initAmbientLife;
 enableEnvironment [true, true];
 
