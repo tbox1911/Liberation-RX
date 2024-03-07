@@ -88,6 +88,7 @@ _setupObjects =
 	_wp0 = waypointPosition [_aiGroup, 0];
 	_waypoint = _aiGroup addWaypoint [_wp0, 0];
 	_waypoint setWaypointType "CYCLE";
+	_last_waypoint = waypointPosition [_aiGroup, count _citylist];
 
 	_missionPos = getPosATL leader _aiGroup;
 	_missionPicture = getText (configFile >> "CfgVehicles" >> (a3w_vip_vehicle param [0,""]) >> "picture");
