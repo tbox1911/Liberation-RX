@@ -44,8 +44,8 @@ _setupObjects = {
 		_waypoint setWaypointFormation "WEDGE";
 	} forEach _path;
 
-	_last_waypoint = waypointPosition [_aiGroup, count _path];
-	_waypoint = _aiGroup addWaypoint [_missionPos, 0];
+	_wp0 = waypointPosition [_aiGroup, 0];
+	_waypoint = _aiGroup addWaypoint [_wp0, 0];
 	_waypoint setWaypointType "CYCLE";
 
 	_vehicles = [];

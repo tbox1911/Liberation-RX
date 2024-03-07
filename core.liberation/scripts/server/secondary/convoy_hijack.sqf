@@ -78,7 +78,8 @@ _convoy_group setSpeedMode "LIMITED";
 	_waypoint setWaypointCompletionRadius 200;
 } forEach _convoy_destinations;
 
-_waypoint = _convoy_group addWaypoint [_spawnpos, 0];
+_wp0 = waypointPosition [_convoy_group, 0];
+_waypoint = _convoy_group addWaypoint [_wp0, 0];
 _waypoint setWaypointType "CYCLE";
 
 (driver _scout_vehicle) MoveTo (_convoy_destinations select 1);
