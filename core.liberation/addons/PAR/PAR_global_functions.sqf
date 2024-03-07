@@ -172,6 +172,7 @@ PAR_fn_AI_Damage_EH = {
 	_unit setVariable ["PAR_heal", nil];
 	_unit setVariable ["PAR_healed", nil];
 	_unit setVariable ["PAR_AI_score", ((GRLIB_rank_level find (rank _unit)) + 1) * 5, true];
+	_unit setVariable ["GRLIB_can_speak", true, true];
 };
 
 // Player Section
@@ -181,7 +182,7 @@ PAR_Player_Init = {
 	player setVariable ["PAR_isUnconscious", false, true];
 	player setVariable ["PAR_isDragged", 0, true];
 	player setVariable ["ace_sys_wounds_uncon", false];
-	player setVariable ["PAR_Grp_ID",format["Bros_%1", PAR_Grp_ID], true];
+	player setVariable ["PAR_Grp_ID", format["Bros_%1", PAR_Grp_ID], true];
 	player setVariable ["PAR_myMedic", nil];
 	player setVariable ["PAR_busy", nil];
 	player setVariable ["PAR_heal", nil];

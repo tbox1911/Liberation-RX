@@ -9,25 +9,31 @@ if (_unit isKindOf "CAManBase") then {
 	[_unit, true] remoteExec ["stop", 2];
 };
 
-if (_msg > 0) then {
-	switch (_msg) do {
-		// unit
-		case 1 :  {[_unit] call speak_info_unit};
-		case 10 : {[_unit] call speak_insult_unit};
-		case 2 :  {[_unit] call speak_repair_vehicle};
-		case 3 :  {[_unit] call speak_heal_player};
-		case 4 :  {[_unit] call speak_reammo_player};
-		case 5 :  {[_unit] call speak_join_player};
+if (side _unit == GRLIB_side_civilian) then {
+	if (_msg > 0) then {
+		switch (_msg) do {
+			// unit
+			case 1 :  {[_unit] call speak_info_unit};
+			case 10 : {[_unit] call speak_insult_unit};
+			case 2 :  {[_unit] call speak_repair_vehicle};
+			case 3 :  {[_unit] call speak_heal_player};
+			case 4 :  {[_unit] call speak_reammo_player};
+			case 5 :  {[_unit] call speak_join_player};
 
-		// vehicle
-		case 20 :  {[_unit] call speak_repair};
-		case 21 :  {[_unit] call speak_player_repair};
-		case 22 :  {[_unit] call speak_refuel};
-		case 23 :  {[_unit] call speak_player_refuel};
-		default {};
+			// vehicle
+			case 20 :  {[_unit] call speak_repair};
+			case 21 :  {[_unit] call speak_player_repair};
+			case 22 :  {[_unit] call speak_refuel};
+			case 23 :  {[_unit] call speak_player_refuel};
+			default {};
+		};
+	} else {
+		[_unit] call speak_civil_AI;
 	};
-} else {
-	[_unit] call speak_civil_AI;
+};
+
+if (side _unit == GRLIB_side_friendly) then {
+	[_unit] call speak_squad_AI;
 };
 
 sleep 3;

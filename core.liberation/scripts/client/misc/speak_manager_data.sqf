@@ -3,6 +3,25 @@ speak_another_time = {
 	_unit globalChat localize "STR_SPEAKMANAGER12";
 };
 
+speak_squad_AI = {
+	params ["_unit"];
+	player globalChat format ["Hey %1, how are you ?", name _unit];
+	sleep 2;	
+	private _cur_revive = _unit getVariable ["PAR_revive_max", -1];
+	if (_cur_revive > 0) then { 
+		_msg = "I'm all good, let's go to kick their ass !!";
+		if (_cur_revive < PAR_ai_revive/2) then {
+			_msg = format ["I'm tired of all this, I was wounded %1 times today !", _cur_revive];
+		};
+		if (_cur_revive <= 3) then {
+			_msg = format ["Bad, It's not going well at all, I need a rest. (Revive left %1)", _cur_revive];
+		};		
+		_unit globalChat _msg;
+	} else {
+		_unit globalChat "Fine, not much to say...";
+	};
+};
+
 speak_civil_AI = {
 	params ["_unit"];
 
