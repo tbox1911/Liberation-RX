@@ -85,7 +85,9 @@ if (GRLIB_side_enemy == INDEPENDENT) then {
 };
 
 // *** CIVILIAN ***
-private _path = format ["mod_template\%1\classnames_civ.sqf", GRLIB_mod_west];
+private _civ_source = GRLIB_mod_west;
+if (GRLIB_mod_preset_civ == 1) then { _civ_source = GRLIB_mod_east };
+private _path = format ["mod_template\%1\classnames_civ.sqf", _civ_source];
 [_path] call F_getTemplateFile;
 
 // *** INDEPENDENT ***
