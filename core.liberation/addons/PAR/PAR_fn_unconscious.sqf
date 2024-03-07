@@ -8,8 +8,10 @@ waituntil {sleep 0.5; lifeState _unit == "INCAPACITATED" && (isTouchingGround (v
 
 if (isPlayer _unit) then {
 	[] call PAR_show_marker;
-	if ( [_unit] call F_getScore > GRLIB_perm_log + 5) then { [_unit, -1] remoteExec ["F_addScore", 2] };
+	if ([_unit] call F_getScore > GRLIB_perm_log + 5) then { [_unit, -1] remoteExec ["F_addScore", 2] };
+	if (GRLIB_disable_death_chat) then { for "_channel" from 0 to 4 do { _channel enableChannel false } };	
 } else {
+	_unit setVariable ["GRLIB_can_speak", false, true];
 	[_unit] call F_deathSound;
 };
 
@@ -21,10 +23,6 @@ if (!isNil {_unit getVariable "PAR_busy"} || !isNil {_unit getVariable "PAR_heal
 _unit setVariable ["PAR_healed", nil];
 [(_unit getVariable ["PAR_myMedic", objNull]), _unit] call PAR_fn_medicRelease;
 _unit setCaptive true;
-
-if (GRLIB_disable_death_chat && isPlayer _unit) then {
-	for "_channel" from 0 to 4 do { _channel enableChannel false };
-};
 
 _unit switchMove "AinjPpneMstpSnonWrflDnon";	// lay down
 _unit playMoveNow "AinjPpneMstpSnonWrflDnon";
@@ -76,8 +74,10 @@ _unit setCaptive false;
 
 if (isPlayer _unit) then {
 	if (primaryWeapon _unit != "") then { _unit selectWeapon primaryWeapon _unit };
+	if (GRLIB_disable_death_chat) then { for "_channel" from 0 to 4 do { _channel enableChannel true } };	
 	[] call PAR_del_marker;
-	for "_channel" from 0 to 4 do { _channel enableChannel true };
+} else {
+	_unit setVariable ["GRLIB_can_speak", true, true];
 };
 
 if (lifeState _unit == "INCAPACITATED" && time > _unit getVariable ["PAR_BleedOutTimer", 0]) then {
