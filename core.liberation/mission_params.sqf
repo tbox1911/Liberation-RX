@@ -49,7 +49,7 @@ LRX_Mission_Params = [
 	["PAR_Revive", 3],				// PAR revive - [default 3] - values = [3,2,1,0] - Text {Enabled - Everyone can revive,Enabled - Everyone can revive using Medikit/FAK,Enabled - Only medics can revive,Disabled}
 	["PAR_AI_Revive", 7],			// PAR AI revive limit - [default 0] - values = [0,3,5,7,10,15,20]
 	["PAR_BleedOut", 300],			// PAR revive Bleedout timer - [default 300] - values = [100,200,300,400,500,600]
-	["Respawn", 20],				// Cooldown before can player respawn - [default 20] - values = [0,xxx] - Text {Disabled,Enabled}	
+	["Respawn", 20],				// Cooldown before can player respawn - [default 20] - values = [0,xxx] - Text {Disabled,Enabled}
 	["TK_mode", 1],					// Teamkill Mode [default 0] - values = [0,1,2] - Text {Strict,Relax,Disabled}
 	["TK_count", 4],				// Teamkill Warning Count [default 4] - values = [3, 4, 5, 6, 7, 8, 9, 10] - Text {3, 4, 5, 6, 7, 8, 9, 10}
 	["Civilians", 1],				// Cilivilian Manager - [default 1] - values = [0,0.5,1,2] - Text {None,Reduced,Normal,Increased}
@@ -95,8 +95,8 @@ LRX_Mission_Params_Def = [
 	["ModPresetWest", "MOD Preset Friendly", _list_west],
 	["ModPresetEast", "MOD Preset Enemy", _list_east],
 	["ModPresetCiv",  "MOD Preset Civilian", [
-		"WEST",
-		"EAST"
+		"Friendly",
+		"Enemy"
 		]
 	],
 	["Unitcap", localize "STR_PARAMS_UNITCAP", [
@@ -171,7 +171,7 @@ LRX_Mission_Params_Def = [
 	["PAR_AI_Revive", localize "STR_PARAMS_PAR_AI_REVIVE",
 		["Unlimited", "3", "5", "7", "10", "15", "20"],
 		[0, 3, 5, 7, 10, 15, 20]
-	],	
+	],
 	["PAR_BleedOut", localize "STR_PARAMS_PAR_BLEEDOUT",
 		["100", "200", "300", "400", "500", "600"],
 		[100, 200, 300, 400, 500, 600]
