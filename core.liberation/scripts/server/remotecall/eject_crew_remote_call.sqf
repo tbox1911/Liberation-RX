@@ -11,6 +11,7 @@ if (side _grp == GRLIB_side_civilian && !([_player, _vehicle] call is_owner)) th
     [localize "STR_DO_EJECT"] remoteExec ["hintSilent", owner _player];
     ["vtolAlarm"] remoteExec ["playSoundNow", owner _player];
 	[_player, -5] call F_addScore;
+	[_player, -5] call F_addReput;
 	[_vehicle, "abandon"] call F_vehicleLock;
 
 	private _sector = [sectors_allSectors, _vehicle] call F_nearestPosition;
