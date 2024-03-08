@@ -104,6 +104,7 @@ if ( _ownership == GRLIB_side_enemy ) then {
 			opfor_sectors = (sectors_allSectors - blufor_sectors);
 			publicVariable "opfor_sectors";
 			[_sector, 0] call sector_defenses_remote_call;
+			deleteMarker format ["defense_%1", _sector];
 			stats_sectors_lost = stats_sectors_lost + 1;
 			[ _sector, 2 ] remoteExec ["remote_call_sector", 0];
 			diag_log format ["Sector %1 Lost at %2", _sector, time];
