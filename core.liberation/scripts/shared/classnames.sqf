@@ -12,7 +12,8 @@ zeropos = [0,0,10000];
 
 // *** FRIENDLIES ***
 private _path = format ["mod_template\%1\classnames_west.sqf", GRLIB_mod_west];
-[_path] call F_getTemplateFile;
+private _ret = [_path] call F_getTemplateFile;
+if (!_ret) exitWith { abort_loading = true };
 
 MFR_Dogs_classname = [];
 if (GRLIB_MFR_enabled) then {
@@ -47,7 +48,8 @@ uavs = uavs_def + uavs_west;
 
 // *** BADDIES ***
 private _path = format ["mod_template\%1\classnames_east.sqf", GRLIB_mod_east];
-[_path] call F_getTemplateFile;
+private _ret = [_path] call F_getTemplateFile;
+if (!_ret) exitWith { abort_loading = true };
 
 if (GRLIB_side_friendly == GRLIB_side_enemy) exitWith {
 abort_loading_msg = format [
@@ -88,7 +90,8 @@ if (GRLIB_side_enemy == INDEPENDENT) then {
 private _civ_source = GRLIB_mod_west;
 if (GRLIB_mod_preset_civ == 1) then { _civ_source = GRLIB_mod_east };
 private _path = format ["mod_template\%1\classnames_civ.sqf", _civ_source];
-[_path] call F_getTemplateFile;
+private _ret = [_path] call F_getTemplateFile;
+if (!_ret) exitWith { abort_loading = true };
 
 // *** INDEPENDENT ***
 
