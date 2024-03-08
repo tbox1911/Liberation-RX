@@ -10,6 +10,16 @@ removeHeadgear _unit;
 removeGoggles _unit;
 
 #include "loadout_init.sqf"
+private _pmc_weapon = [ 
+    "srifle_DMR_03_tan_F",
+    "srifle_DMR_03_khaki_F",
+    "srifle_DMR_03_F"
+];
+
+private _pmc_optic = [ 
+    "optic_SOS_khk_F",
+    "optic_SOS"
+];
 
 _unit addGoggles (selectRandom _pmc_goggles);
 _unit addWeapon (selectRandom _pmc_weapon);
