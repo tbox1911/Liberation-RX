@@ -15,7 +15,7 @@ _unit addGoggles (selectRandom _pmc_goggles);
 _unit addWeapon (selectRandom _pmc_weapon);
 _unit addPrimaryWeaponItem (selectRandom _pmc_optic);
 _unit addPrimaryWeaponItem "acc_flashlight";
-_unit addWeapon "launch_B_Titan_short_F";
+_unit addWeapon "launch_NLAW_F";
 _unit forceAddUniform (selectRandom _pmc_uniforms);
 _unit addVest (selectRandom _pmc_vest);
 _unit addBackpack (selectRandom _pmc_backpack);

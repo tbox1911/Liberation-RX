@@ -30,21 +30,27 @@ infantry_units_west = [
 	["B_Soldier_GL_F",1,0,0,GRLIB_perm_inf],
 	["B_soldier_M_F",1,0,0,GRLIB_perm_inf],
 	["B_soldier_LAT_F",1,0,0,0],
-	["B_Sharpshooter_F",1,0,0,GRLIB_perm_inf],
 	["B_HeavyGunner_F",1,0,0,GRLIB_perm_inf],
-	["B_recon_F",1,0,0,GRLIB_perm_log],
 	["B_diver_F",1,0,0,GRLIB_perm_log],
-	// ["B_Recon_Sharpshooter_F",1,0,0,GRLIB_perm_log],
-	// ["B_soldier_AA_F",1,0,0,GRLIB_perm_log],
-	// ["B_soldier_AT_F",1,0,0,GRLIB_perm_log],
-	// ["B_sniper_F",1,0,0,GRLIB_perm_log],
-	// ["B_soldier_PG_F",1,0,0,GRLIB_perm_log],
+	["B_soldier_AA_F",1,0,0,GRLIB_perm_log],
+	["B_soldier_AT_F",1,0,0,GRLIB_perm_log],
+	//["B_sniper_F",1,0,0,GRLIB_perm_log],
+	//["B_soldier_PG_F",1,0,0,GRLIB_perm_log],
 	[crewman_classname,1,0,0,GRLIB_perm_inf],
 	[pilot_classname,1,0,0,GRLIB_perm_log]
 ];
 
 units_loadout_overide = [
-	"B_medic_F"
+	"B_medic_F",
+	"B_engineer_F",
+	"B_Soldier_GL_F",
+	"B_soldier_M_F",
+	"B_soldier_LAT_F",
+	"B_HeavyGunner_F",
+	"B_soldier_AA_F",
+	"B_soldier_AT_F",
+	"B_sniper_F",
+	"B_soldier_PG_F"
 ];
 
 light_vehicles = [
