@@ -48,25 +48,29 @@ default_taxi_type_14 = [
 	"O_Heli_Transport_04_covered_F"
 ];
 
-// *** FRIENDLIES ***
-private _path = format ["mod_template\%1\classnames_taxi.sqf", GRLIB_mod_west];
-[_path] call F_getTemplateFile;
-if ( count overide_taxi_type_2 == 0 ) then { overide_taxi_type_2 = default_taxi_type_2 };
-taxi_type_2 append overide_taxi_type_2;
-if ( count overide_taxi_type_6 == 0 ) then { overide_taxi_type_6 = default_taxi_type_6 };
-taxi_type_6 append overide_taxi_type_6;
-if ( count overide_taxi_type_8 == 0 ) then { overide_taxi_type_8 = default_taxi_type_8 };
-taxi_type_8 append overide_taxi_type_8;
-if ( count overide_taxi_type_14 == 0 ) then { overide_taxi_type_14 = default_taxi_type_14 };
-taxi_type_14 append overide_taxi_type_14;
+if (GRLIB_mod_preset_taxi in [0,1]) then {
+	// *** FRIENDLIES ***
+	private _path = format ["mod_template\%1\classnames_taxi.sqf", GRLIB_mod_west];
+	[_path] call F_getTemplateFile;
+	if ( count overide_taxi_type_2 == 0 ) then { overide_taxi_type_2 = default_taxi_type_2 };
+	taxi_type_2 append overide_taxi_type_2;
+	if ( count overide_taxi_type_6 == 0 ) then { overide_taxi_type_6 = default_taxi_type_6 };
+	taxi_type_6 append overide_taxi_type_6;
+	if ( count overide_taxi_type_8 == 0 ) then { overide_taxi_type_8 = default_taxi_type_8 };
+	taxi_type_8 append overide_taxi_type_8;
+	if ( count overide_taxi_type_14 == 0 ) then { overide_taxi_type_14 = default_taxi_type_14 };
+	taxi_type_14 append overide_taxi_type_14;
+};
 
-// *** BADDIES ***
-private _path = format ["mod_template\%1\classnames_taxi.sqf", GRLIB_mod_east];
-[_path] call F_getTemplateFile;
-taxi_type_2 append overide_taxi_type_2;
-taxi_type_6 append overide_taxi_type_6;
-taxi_type_8 append overide_taxi_type_8;
-taxi_type_14 append overide_taxi_type_14;
+if (GRLIB_mod_preset_taxi in [0,2]) then {
+	// *** BADDIES ***
+	private _path = format ["mod_template\%1\classnames_taxi.sqf", GRLIB_mod_east];
+	[_path] call F_getTemplateFile;
+	taxi_type_2 append overide_taxi_type_2;
+	taxi_type_6 append overide_taxi_type_6;
+	taxi_type_8 append overide_taxi_type_8;
+	taxi_type_14 append overide_taxi_type_14;
+};
 
 // Filter (remove dup)
 taxi_type_2 = taxi_type_2 arrayIntersect taxi_type_2;

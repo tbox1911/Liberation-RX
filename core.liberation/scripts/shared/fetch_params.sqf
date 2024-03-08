@@ -147,6 +147,7 @@ GRLIB_disable_death_chat = ["DeathChat"] call lrx_getParamValue;
 GRLIB_mod_preset_west = ["ModPresetWest"] call lrx_getParamValue;
 GRLIB_mod_preset_east = ["ModPresetEast"] call lrx_getParamValue;
 GRLIB_mod_preset_civ = ["ModPresetCiv"] call lrx_getParamValue;
+GRLIB_mod_preset_taxi = ["ModPresetTaxi"] call lrx_getParamValue;
 GRLIB_enable_arsenal = ["EnableArsenal"] call lrx_getParamValue;
 GRLIB_filter_arsenal = ["FilterArsenal"] call lrx_getParamValue;
 GRLIB_forced_loadout = ["ForcedLoadout"] call lrx_getParamValue;

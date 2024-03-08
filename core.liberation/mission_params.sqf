@@ -41,9 +41,10 @@ LRX_Mission_Params = [
 	["FilterArsenal", 1],			// Arsenal Filter Mode [default 1] - values = [0,1,2,3,4] - Text {Disabled,"Soft","Strict","Strict+MOD",Whitelist only}
 	["ForcedLoadout", 1],			// Force player default equipment  [default 0] - values = [0,1,2] - Text {Disabled,Preset1,Preset2}
 	["FreeLoadout", 0],				// All equipment is worthless [default 0] - values = [1,0] - Text {Enabled,Disabled}
-	["ModPresetWest", 0],			// Select MOD Preset for Friendly side - value = computed
-	["ModPresetEast", 0],			// Select MOD Preset for Enemy side - values = computed
-	["ModPresetCiv", 0],			// Select MOD Preset for Civilian side - values = West / East
+	["ModPresetWest", 0],			// Select MOD Preset for Friendly - value = computed
+	["ModPresetEast", 0],			// Select MOD Preset for Enemy - values = computed
+	["ModPresetCiv", 1],			// Select MOD Preset for Civilian - values = "All", "Friendly", "Enemy"
+	["ModPresetTaxi", 1],			// Select MOD Preset for Taxi - values = "All", "Friendly", "Enemy"	
 	["Weather", 1],					// Weather - [default 4] - values = [1,2,3,4] - Text {Always Sunny,Random without rain,Random Cloudy,Random}
 	["Fatigue", 0],					// Stamina - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["PAR_Revive", 3],				// PAR revive - [default 3] - values = [3,2,1,0] - Text {Enabled - Everyone can revive,Enabled - Everyone can revive using Medikit/FAK,Enabled - Only medics can revive,Disabled}
@@ -95,10 +96,17 @@ LRX_Mission_Params_Def = [
 	["ModPresetWest", "MOD Preset Friendly", _list_west],
 	["ModPresetEast", "MOD Preset Enemy", _list_east],
 	["ModPresetCiv",  "MOD Preset Civilian", [
+		"All",
 		"Friendly",
 		"Enemy"
 		]
 	],
+	["ModPresetTaxi",  "MOD Preset Taxi", [
+		"All",
+		"Friendly",
+		"Enemy"
+		]
+	],	
 	["Unitcap", localize "STR_PARAMS_UNITCAP", [
 		localize "STR_PARAMS_UNITCAP1",
 		localize "STR_PARAMS_UNITCAP2",

@@ -3,7 +3,16 @@ if (GRLIB_player_fobdistance < (2 * GRLIB_fob_range) || GRLIB_player_near_lhd) e
 private _taxi = player getVariable ["GRLIB_taxi_called", nil];
 if (!isNil "_taxi") exitWith {hintSilent localize "STR_TAXI_ONLY_ONE"};
 
-//check dest place
+// Check Taxi exist
+private _nb_unit = count (units group player);
+private _taxi_type = "";
+if (_nb_unit <= 2) then {_taxi_type = selectRandom taxi_type_2};
+if (_nb_unit > 2 && _nb_unit <= 6) then {_taxi_type = selectRandom taxi_type_6};
+if (_nb_unit > 6 && _nb_unit <= 8) then {_taxi_type = selectRandom taxi_type_8};
+if (_nb_unit > 8) then {_taxi_type = selectRandom taxi_type_14};
+if (isNil "_taxi_type") exitWith {hintSilent format ["No Taxi exist for this group size (%1)", _nb_unit]};
+
+// Check dest place
 buildtype = 9;
 build_unit = [taxi_helipad_type,[],1,[],[],[],[]];
 dobuild = 1;
@@ -23,15 +32,6 @@ if (!([GRLIB_AirDrop_Taxi_cost] call F_pay)) exitWith {deleteVehicle GRLIB_taxi_
 
 deleteMarkerLocal "taxi_lz";
 deleteMarkerLocal "taxi_dz";
-
-private _nb_unit = count (units group player);
-private _taxi_type = "";
-private _cargo = [];
-
-if (_nb_unit <= 2) then {_taxi_type = selectRandom taxi_type_2};
-if (_nb_unit > 2 && _nb_unit <= 6) then {_taxi_type = selectRandom taxi_type_6};
-if (_nb_unit > 6 && _nb_unit <= 8) then {_taxi_type = selectRandom taxi_type_8};
-if (_nb_unit > 8) then {_taxi_type = selectRandom taxi_type_14};
 
 // Create Taxi
 private _spawn_sector = ([sectors_airspawn, [_dest], {(markerpos _x) distance2D _input0}, "ASCEND"] call BIS_fnc_sortBy) select 0;
@@ -95,6 +95,7 @@ waitUntil {
 };
 hintSilent "";
 
+private _cargo = [];
 if (time < _stop) then {
 	_stop = time + (5 * 60); // wait 5min max
 	waitUntil {

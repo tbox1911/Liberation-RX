@@ -10,9 +10,11 @@ zeropos = [0,0,10000];
 // *** DEFAULT ***
 [] call compileFinal preprocessFileLineNUmbers format ["scripts\shared\default_classnames.sqf"];
 
+private ["_ret", "_path"];
+
 // *** FRIENDLIES ***
-private _path = format ["mod_template\%1\classnames_west.sqf", GRLIB_mod_west];
-private _ret = [_path] call F_getTemplateFile;
+_path = format ["mod_template\%1\classnames_west.sqf", GRLIB_mod_west];
+_ret = [_path] call F_getTemplateFile;
 if (!_ret) exitWith { abort_loading = true };
 
 MFR_Dogs_classname = [];
@@ -47,8 +49,8 @@ if (isServer) then {
 uavs = uavs_def + uavs_west;
 
 // *** BADDIES ***
-private _path = format ["mod_template\%1\classnames_east.sqf", GRLIB_mod_east];
-private _ret = [_path] call F_getTemplateFile;
+_path = format ["mod_template\%1\classnames_east.sqf", GRLIB_mod_east];
+_ret = [_path] call F_getTemplateFile;
 if (!_ret) exitWith { abort_loading = true };
 
 if (GRLIB_side_friendly == GRLIB_side_enemy) exitWith {
@@ -87,13 +89,32 @@ if (GRLIB_side_enemy == INDEPENDENT) then {
 };
 
 // *** CIVILIAN ***
-private _civ_source = GRLIB_mod_west;
-if (GRLIB_mod_preset_civ == 1) then { _civ_source = GRLIB_mod_east };
-private _path = format ["mod_template\%1\classnames_civ.sqf", _civ_source];
-private _ret = [_path] call F_getTemplateFile;
+civilians = [];
+civilian_vehicles = [];
+
+if (GRLIB_mod_preset_civ in [0,1]) then {
+	_path = format ["mod_template\%1\classnames_civ.sqf", GRLIB_mod_west];
+	_ret = [_path] call F_getTemplateFile;
+};
 if (!_ret) exitWith { abort_loading = true };
 
+if (GRLIB_mod_preset_civ in [0,2]) then {
+	private _civilians_bak = civilians;
+	private _civilian_vehicles_bak = civilian_vehicles;
+	_path = format ["mod_template\%1\classnames_civ.sqf", GRLIB_mod_east];
+	_ret = [_path] call F_getTemplateFile;
+	civilians append _civilians_bak;
+	civilian_vehicles append _civilian_vehicles_bak;	
+	civilians = civilians arrayIntersect civilians;
+	civilian_vehicles = civilian_vehicles arrayIntersect civilian_vehicles;	
+};
+if (!_ret) exitWith { abort_loading = true };
+if (count civilians == 0) then { civilians = "C_man_1" };
+if (count civilian_vehicles == 0) then { civilian_vehicles = "C_SUV_01_F" };
+
 // *** INDEPENDENT ***
+
+
 
 // *** MILITIA ***
 [] call compileFinal preprocessFileLineNumbers "scripts\loadouts\init_loadouts.sqf";
@@ -371,9 +392,9 @@ vehicle_refuel_sources = [
 box_transport_config = [];
 box_transport_offset = [];
 
-private _path = format ["mod_template\%1\classnames_transport.sqf", GRLIB_mod_west];
+_path = format ["mod_template\%1\classnames_transport.sqf", GRLIB_mod_west];
 [_path] call F_getTemplateFile;
-private _path = format ["mod_template\%1\classnames_transport.sqf", GRLIB_mod_east];
+_path = format ["mod_template\%1\classnames_transport.sqf", GRLIB_mod_east];
 [_path] call F_getTemplateFile;
 
 // Configuration for ammo boxes transport
