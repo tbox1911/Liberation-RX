@@ -40,7 +40,7 @@ while { GRLIB_endgame == 0 && ({alive _x} count (units _grp) > 0) } do {
 			_waypoint = _grp addWaypoint [_basepos, _radius];
 			_waypoint setWaypointType "CYCLE";
 			{ _x doFollow leader _grp } foreach units _grp;
-			_timer = round (time + (5 * 60));
+			_timer = round (time + (10 * 60));
 		};
 	};
 

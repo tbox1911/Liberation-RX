@@ -2,7 +2,7 @@ params ["_grp", "_objective_pos"];
 if (isNil "_grp" || isNil "_objective_pos") exitWith {};
 if (isNull _grp) exitWith {};
 
-private ["_in_water", "_waypoint", "_wp0", "_next_objective", "_timer"];
+private ["_waypoint", "_wp0", "_next_objective", "_timer"];
 diag_log format ["Group %1 - Attack: %2", _grp, _objective_pos];
 
 private _vehicle = objectParent (leader _grp);
@@ -14,7 +14,7 @@ sleep (5 + floor random 10);
 private _timer = 0;
 
 while { ({alive _x} count (units _grp) > 0) } do {
-	_in_water = ({(alive _x && surfaceIsWater (getPos _x) && _x distance2D _objective_pos > 300)} count (units _grp) > 3);
+
 	_next_objective = [_objective_pos] call F_getNearestBluforObjective;
 	if ((_next_objective select 1) <= GRLIB_spawn_max) then { _objective_pos = (_next_objective select 0) } else { _objective_pos = zeropos };
 
@@ -23,15 +23,7 @@ while { ({alive _x} count (units _grp) > 0) } do {
 		if !(isNil "_target") then { _objective_pos = getPosATL _target } else { _objective_pos = zeropos };
 	};
 
-	if (_objective_pos distance2D zeropos < 100 || _in_water) exitWith {
-		// Cleanup
-		{
-			_veh = objectParent _x;
-			if (!isNull _veh) then { [_veh] call clean_vehicle };
-			deleteVehicle _x;
-		} forEach (units _grp);
-		deleteGroup _grp;
-	};
+	if (_objective_pos distance2D zeropos < 100) exitWith {};
 
 	if ( time > _timer) then {
 		[_objective_pos] remoteExec ["remote_call_incoming", 0];
@@ -62,7 +54,7 @@ while { ({alive _x} count (units _grp) > 0) } do {
 		if (_vehicle isKindOf "AllVehicles") then {
 			(driver _vehicle) doMove _objective_pos;
 		};
-		_timer = round (time + (5 * 60));
+		_timer = round (time + (10 * 60));
 	};
 
 	{
@@ -72,7 +64,15 @@ while { ({alive _x} count (units _grp) > 0) } do {
 			_x playMoveNow "AmovPercMwlkSrasWrflDf";
 			sleep 3;
 		};
+		if (surfaceIsWater (getPos _x) && _x distance2D _objective_pos > 400) then {
+			deleteVehicle _x;
+		};
 	} forEach (units _grp);
 
 	sleep 33;
 };
+
+// Cleanup
+[_vehicle] call clean_vehicle;
+{ deleteVehicle _x } forEach (units _grp);
+deleteGroup _grp;
