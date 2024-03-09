@@ -101,13 +101,13 @@ waitUntil {
 	};
 
 	_expired = (_time_left <= 0 && ([_lastPos, GRLIB_capture_size, GRLIB_side_friendly] call F_getUnitsCount) == 0);
-	_failed = ((!isNil "_waitUntilCondition" && {call _waitUntilCondition}) || _expired);
+	_failed = ((!isNil "_waitUntilCondition" && (call _waitUntilCondition)) || _expired);
 
-	if (!isNil "_waitUntilSuccessCondition" && {call _waitUntilSuccessCondition}) then {
-		_failed = false;
-		_complete = true;
+	if (!_failed) then {
+		if (!isNil "_waitUntilSuccessCondition" && (call _waitUntilSuccessCondition)) then {
+			_complete = true;
+		};
 	};
-
 	(GRLIB_endgame == 1 || GRLIB_global_stop == 1 || _failed || _complete || (!_ignoreAiDeaths && {alive _x} count (units _aiGroup) == 0))
 };
 
