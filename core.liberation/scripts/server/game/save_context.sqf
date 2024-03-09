@@ -30,9 +30,9 @@ if (_score >= GRLIB_min_score_player) then {
 			};
 			_ai_group = _context select 2;
 		};
-		localNamespace setVariable [format ["player_context_%1", _uid], [_uid, _loadout, _ai_group]];
-		diag_log format ["--- LRX player %1 profile Saved.", name _player];
 	};
+	localNamespace setVariable [format ["player_context_%1", _uid], [_uid, _loadout, _ai_group]];
+	diag_log format ["--- LRX player %1 profile Saved.", name _player];
 };
 
 // Remove AI
