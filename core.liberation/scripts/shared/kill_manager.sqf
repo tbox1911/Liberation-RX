@@ -1,4 +1,6 @@
 params [ "_unit", "_killer", "_instigator"];
+
+if (isNull _unit) exitWith {};
 private [ "_nearby_bigtown","_msg" ];
 
 if ( isServer ) then {
@@ -29,16 +31,10 @@ if ( isServer ) then {
 		_killer = _unit getVariable ["GRLIB_last_killer", objNull];
 	};
 
-	// Fast exit
-	if (isNull _killer && _unit isKindOf "AllVehicles") exitWith {
-		[_unit, false, true, true] spawn clean_vehicle;
-	};
-	if (isNull _killer) exitWith {};
-
 	if (isNil "infantry_weight") then { infantry_weight = 33 };
 	if (isNil "armor_weight") then { armor_weight = 33 };
 	if (isNil "air_weight") then { air_weight = 33 };
-	if ( isPlayer _unit ) then { stats_player_deaths = stats_player_deaths + 1 };
+	if (isPlayer _unit) then { stats_player_deaths = stats_player_deaths + 1 };
 
 	if ( side _killer == GRLIB_side_friendly ) then {
 
@@ -73,15 +69,17 @@ if ( isServer ) then {
 		if ( air_weight < 0 ) then { air_weight = 0 };
 	};
 
-	if (_unit isKindOf "CAManBase") then {
+	private _unit_class = typeOf _unit;
+	if (_unit_class isKindOf "CAManBase") then {
 		if ( vehicle _unit != _unit ) then {
 			[_unit, false] spawn F_ejectUnit;
 		};
 
+		if (isNull _killer) exitWith {};
 		if ( _unit != _killer ) then {
 			_isPrisonner = _unit getVariable ["GRLIB_is_prisoner", false];
 			_isKamikaz = _unit getVariable ["GRLIB_is_kamikaze", false];
-			_isZombie = ((typeOf _unit) select [0,10] == "RyanZombie");
+			_isZombie = (_unit_class select [0,10] == "RyanZombie");
 			if ( _isKamikaz ) then { 
 				_msg = format ["%1 kill a Kamikaze !! +10 XP", name _killer] ;
 				[gamelogic, _msg] remoteExec ["globalChat", 0];
@@ -162,20 +160,25 @@ if ( isServer ) then {
 		};
 
 	} else {
-		if ( (typeof _unit) in [Arsenal_typename, FOB_box_typename, FOB_truck_typename, FOB_boat_typename, foodbarrel_typename, waterbarrel_typename] ) exitWith {
-			sleep 30;
+		if (_unit_class in GRLIB_quick_delete) exitWith {
+			_unit setDamage 1;
+			sleep 20;
 			deleteVehicle _unit;
 		};
 
-		if ( typeof _unit == mobile_respawn ) exitWith { [_unit, "del"] remoteExec ["addel_beacon_remote_call", 2] };
+		if (_unit_class == mobile_respawn) exitWith { [_unit, "del"] remoteExec ["addel_beacon_remote_call", 2] };
 
-		if ( ((typeof _unit) in [ammobox_o_typename, ammobox_b_typename, ammobox_i_typename, fuelbarrel_typename]) && ((getPosATL _unit) select 2 < 10) ) exitWith {
-			sleep random 2;
+		if (_unit_class in GRLIB_explo_delete && (getPosATL _unit) select 2 < 10) exitWith {
+			detach _unit;
+			sleep 0.1;
+			_unit setVelocity [([] call F_getRND), ([] call F_getRND), 10];
+			sleep 2;
+			_unit setDamage 1;
 			( "R_80mm_HE" createVehicle (getPosATL _unit) ) setVelocity [0, 0, -200];
 			deleteVehicle _unit;
 		};
 
-		if ( isPlayer _killer ) then {
+		if (isPlayer _killer) then {
 			_owner_id = getPlayerUID _killer;
 			if ( !(_unit getVariable ["GRLIB_vehicle_owner", ""] in ["", "public", "server", _owner_id]) ) then {
 				_penalty = 50;
@@ -183,19 +186,18 @@ if ( isServer ) then {
 				[gamelogic, _msg] remoteExec ["globalChat", 0];
 				[_killer, -_penalty] call F_addScore;
 			};
+
+			if (_unit_class in all_hostile_classnames) then {
+				_bounty = [_unit] call F_getBounty;
+				[_unit_class, _bounty, _killer] remoteExec ["remote_call_ammo_bounty", 0];
+				[_killer, (_bounty select 0), 0] call ammo_add_remote_call;
+				[_killer, (_bounty select 1)] call F_addScore;
+				stats_opfor_vehicles_killed_by_players = stats_opfor_vehicles_killed_by_players + 1;
+			};
 		};
 		
-		if ( typeof _unit in all_hostile_classnames ) then {
+		if (_unit_class in all_hostile_classnames) then {
 			stats_opfor_vehicles_killed = stats_opfor_vehicles_killed + 1;
-			if ( isplayer _killer ) then {
-				stats_opfor_vehicles_killed_by_players = stats_opfor_vehicles_killed_by_players + 1;
-				_bounty = [_unit] call F_getBounty;
-				[typeOf _unit, _bounty, _killer] remoteExec ["remote_call_ammo_bounty", 0];
-				if (isPlayer _killer) then {
-					[_killer, (_bounty select 0), 0] call ammo_add_remote_call;
-					[_killer, (_bounty select 1)] call F_addScore;
-				};
-			};
 		} else {
 			stats_blufor_vehicles_killed = stats_blufor_vehicles_killed + 1;
 		};

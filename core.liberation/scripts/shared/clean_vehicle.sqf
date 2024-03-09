@@ -26,17 +26,7 @@ diag_log format [ "Cleanup vehicle %1 at %2", typeOf _vehicle, time ];
 _vehicle setVariable ["R3F_LOG_objets_charges", [], true];
 
 // Delete GRLIB Cargo
-{
-	if (_anim && typeOf _x in [ammobox_b_typename, ammobox_o_typename, ammobox_i_typename, fuelbarrel_typename]) then {
-		detach _x;
-		sleep 0.2;
-		_x setVelocity [([] call F_getRND), ([] call F_getRND), 10];
-		sleep (0.5 + floor(random 3));
-		_x setDamage 1;
-	} else {
-		deleteVehicle _x;
-	};
-} foreach (_vehicle getVariable ["GRLIB_ammo_truck_load", []]);
+{ deleteVehicle _x } foreach (_vehicle getVariable ["GRLIB_ammo_truck_load", []]);
 _vehicle setVariable ["GRLIB_ammo_truck_load", [], true];
 
 // Delete Vehicle and Crew
