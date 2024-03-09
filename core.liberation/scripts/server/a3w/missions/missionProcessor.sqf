@@ -101,10 +101,10 @@ waitUntil {
 	};
 
 	_expired = (_time_left <= 0 && ([_lastPos, GRLIB_capture_size, GRLIB_side_friendly] call F_getUnitsCount) == 0);
-	_failed = ((!isNil "_waitUntilCondition" && (call _waitUntilCondition)) || _expired);
+	_failed = ((!isNil "_waitUntilCondition" && {call _waitUntilCondition}) || _expired);
 
 	if (!_failed) then {
-		if (!isNil "_waitUntilSuccessCondition" && (call _waitUntilSuccessCondition)) then {
+		if (!isNil "_waitUntilSuccessCondition" && {call _waitUntilSuccessCondition}) then {
 			_complete = true;
 		};
 	};
@@ -135,7 +135,9 @@ if (_failed) then {
 
 	diag_log format ["A3W Side Mission %1 failed: %2", _controllerSuffix, localize _missionType];
 	A3W_mission_failed = A3W_mission_failed + 1;
-} else {
+};
+
+if (_complete) then {
 	// Mission completed
 	if (!isNil "_successExec") then { call _successExec };
 
