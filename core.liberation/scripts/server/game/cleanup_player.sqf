@@ -18,9 +18,9 @@ diag_log format ["--- LRX Cleanup player %1 (%2)", _name, _uid];
 private _my_veh = vehicles select { _x getVariable ["GRLIB_vehicle_owner", ""] == _uid };
 { 
 	if ([_x, "FOB", GRLIB_fob_range] call F_check_near) then {
-		 [_x] spawn untow_vehicle;
+		[_x] call untow_vehicle;
 	} else {
-		[_x, "abandon"] spawn F_vehicleLock;
+		[_x, "abandon"] call F_vehicleLock;
 	};
 } forEach _my_veh;
 
