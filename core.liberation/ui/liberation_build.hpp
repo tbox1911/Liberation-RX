@@ -9,7 +9,8 @@ class liberation_build {
 	"BuildSupportButton","BuildSquadButton","BuildBuildingButton","BuildInfantryImage",
 	"BuildTransportVehicleImage","BuildCombatVehicleImage","BuildAerialImage","ManpowerImageShadow","AmmoImageShadow","FuelImageShadow",
 	"BuildDefenceImage","BuildSupportImage","BuildSquadImage","BuildBuildingImage","ListBG","ManpowerImage","AmmoImage","FuelImage",
-	"BuildList","BuildButton","LabelManpower","LabelAmmo","LabelFuel","LabelCap","BuildMannedButton","PageLabel", "BuildPreview", "LinkedSector"
+	"BuildList","BuildButton","LabelManpower","LabelAmmo","LabelFuel","LabelCap","BuildMannedButton","PageLabel",
+	"BuildPreview", "LinkedSector"
 	};
 
 	objects[] = {};
@@ -319,6 +320,6 @@ class liberation_build {
 		sizeEx = 0.02 * safezoneH;
 		shadow = 2;
 		font = FONTM;
-		color = "#e0e000";		
-	};	
+		color = "#e0e000";
+	};
 };

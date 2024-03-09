@@ -54,10 +54,18 @@ lbClear 111;
 		(_display displayCtrl (111)) lnbSetColor [[((lnbSize 111) select 0) - 1, 1], [0.4,0.4,0.4,1]];
 	};
 } foreach _buy_list_dlg;
+lbSetCurSel [111, 0];
 
 gamelogic globalChat "Welcome to my shop, stranger";
 shop_action = 0;
 private _refresh = true;
+
+private _selected_item = 0;
+private _selected_item_bak = -1;
+private _price = 0;
+private _picture = getMissionPath "res\preview\no_image.jpg";
+private _veh_class = "";
+private _vehicle_name = "";
 
 while { dialog && alive player } do {
 	if (_refresh) then {
@@ -98,11 +106,20 @@ while { dialog && alive player } do {
 		_refresh = false;
 	};
 
-	private _selected_item = lbCurSel 110;
+	_selected_item = lbCurSel 110;
 	if (_selected_item != -1) then { ctrlEnable [120, true] } else { ctrlEnable [120, false] };
+
 	_selected_item = lbCurSel 111;
-	private _price = parseNumber ((_display displayCtrl (111)) lnbText [_selected_item, 1]);
-	if (_selected_item != -1 && _price <= _ammo_collected) then { ctrlEnable [121, true] } else { ctrlEnable [121, false] };
+	if (_selected_item != _selected_item_bak) then {
+		_price = parseNumber ((_display displayCtrl (111)) lnbText [_selected_item, 1]);
+		if (_selected_item != -1 && _price <= _ammo_collected) then { ctrlEnable [121, true] } else { ctrlEnable [121, false] };
+
+		_veh_class = _buy_list_dlg select _selected_item select 0;
+		_picture = getText (configFile >> "CfgVehicles" >> _veh_class >> "editorPreview");
+		if (_picture == "") then { _picture = getMissionPath "res\preview\no_image.jpg" };
+		(_display displayCtrl (122)) ctrlSetText _picture;
+		_selected_item_bak = _selected_item;
+	};
 
 	if (shop_action != 0) then {
 
@@ -128,12 +145,12 @@ while { dialog && alive player } do {
 		if (shop_action == 2) then {
 			ctrlEnable [121, false];
 			_selected_item = lbCurSel 111;
-			private _vehicle_name = (_display displayCtrl (111)) lnbText [_selected_item, 0];
-			private _price = parseNumber ((_display displayCtrl (111)) lnbText [_selected_item, 1]);
+			_vehicle_name = (_display displayCtrl (111)) lnbText [_selected_item, 0];
+			_price = parseNumber ((_display displayCtrl (111)) lnbText [_selected_item, 1]);
 			private _msg = format [localize "STR_SHOP_BUY_MSG", _vehicle_name, _price];
 			private _result = [_msg, localize "STR_SHOP_BUY", true, true] call BIS_fnc_guiMessage;
 			if (_result) then {
-				private _veh_class = _buy_list_dlg select _selected_item select 0;
+				_veh_class = _buy_list_dlg select _selected_item select 0;
 				buildtype = 9;
 				build_unit = [_veh_class,[],1,[],[],[],[]];
 				dobuild = 1;

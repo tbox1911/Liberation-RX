@@ -104,7 +104,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1 || buildtype =
 			if (!_squad_leader && buildtype in [1,8]) then {
 				_msg = "       Only for Squad Leader.";
 			};
-			_limited = true;			
+			_limited = true;
 		};
 		if (_limited) then {
 			_row = (_display displayCtrl (110)) lnbAddRow [_msg,"-","-","-"];
@@ -184,7 +184,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1 || buildtype =
 				};
 				if (_build_class == FOB_boat_typename && GRLIB_naval_type == 0) then {
 					_affordable = false;
-				};		
+				};
 			};
 
 			if ( buildtype == 8 ) then {

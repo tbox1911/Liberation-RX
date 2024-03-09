@@ -25,13 +25,12 @@ class Traders_Shop {
 		class InnerBG_F1: InnerBG1 {
 			style = ST_FRAME;
 		};
-
 		class InnerBG2: OuterBG1 {
 			colorBackground[] = COLOR_GREEN;
 			x = 0.3630 * safezoneW + safezoneX;
 			y = 0.1916 * safezoneH + safezoneY;
 			w = 0.1515 * safezoneW;
-			h = 0.512 * safezoneH;
+			h = 0.378 * safezoneH;
 		};
 		class InnerBG_F2: InnerBG2 {
 			style = ST_FRAME;
@@ -74,7 +73,30 @@ class Traders_Shop {
 			x = 0.3679 * safezoneW + safezoneX;
 			y = 0.2074 * safezoneH + safezoneY;
 			w = 0.1444 * safezoneW;
-			h = 0.484 * safezoneH;
+			h = 0.350 * safezoneH;
+		};
+
+		class BuildPreview {
+			idc = 122;
+			type = CT_STATIC;
+			style = ST_PICTURE + ST_KEEP_ASPECT_RATIO;
+			x = 0.390 * safezoneW + safezoneX;
+			y = 0.585 * safezoneH + safezoneY;
+			w = 0.27;
+			h = 0.20;
+			colorBackground[] = {0,0,0,0};
+			colorText[] = {1,1,1,1};
+			text = "";
+			size = 0.02 * safezoneH;
+			sizeEx = 0.02 * safezoneH;
+			shadow = 2;
+			font = FONTM;
+			color = "#e0e000";
+		};
+
+		class BuildPreview_F: BuildPreview {
+			style = ST_FRAME;
+			colorText[] = {0.8,0.8,0.8,1};
 		};
 
 		class CancelButton : StdButton {
@@ -97,6 +119,7 @@ class Traders_Shop {
 			w = 0.09 * safezoneW;
 			h = 0.035 * safezoneH;
 		};
+
 		class BuyButton : StdButton {
 			idc = 121;
 			text = "$STR_SHOP_ACTION2";
