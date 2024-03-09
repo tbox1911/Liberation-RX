@@ -41,7 +41,7 @@ _unit addEventHandler ["InventoryOpened", {
 
 _unit addEventHandler ["WeaponAssembled", {
 	params ["_unit", "_weapon"];
-	if ([_weapon, uavs] call F_itemIsInClass) then { [_weapon, GRLIB_side_friendly] spawn F_forceCrew };
+	if ([_weapon, uavs] call F_itemIsInClass) then { [_weapon] spawn F_forceCrew };
 }];
 
 _unit addEventHandler ["Take", {

@@ -1,12 +1,5 @@
-params ["_vehicle", "_side"];
+params ["_vehicle", ["_side", GRLIB_side_friendly]];
 
-private _mod = GRLIB_mod_east;
-if (_side == GRLIB_side_friendly) then {
-	_mod = GRLIB_mod_west;
-};
-
-private _aircraft = (_vehicle isKindOf "Air");
-private _path = format ["mod_template\%1\loadout\%2.sqf", _mod, "crewman"];
 private _grp = _side createVehicleCrew _vehicle;
 sleep 0.5;
 
@@ -15,18 +8,22 @@ if (count (crew _vehicle) == 0) then {
 	_unit = _grp createUnit [crewman_classname, (getPosATL _vehicle), [], 5, "NONE"];
 	_unit assignAsDriver _vehicle;
 	_unit moveInDriver _vehicle;
+	sleep 0.3;
 };
 
 (units _grp) joinSilent _grp;
 (units _grp) allowGetIn true;
 (units _grp) orderGetIn true;
 
+private _path = "";
+private _aircraft = (_vehicle isKindOf "Air");
 {
 	if (_side == GRLIB_side_enemy) then {
 		_x addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
 		if (_aircraft) then {
 			[_x] spawn escape_ai;
 		} else {
+			_path = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_east, "crewman"];
 			[_path, _x] call F_getTemplateFile;
 			[_x] call reammo_ai;
 		};
@@ -37,6 +34,7 @@ if (count (crew _vehicle) == 0) then {
 		if (_aircraft) then {
 			[_x] spawn escape_ai;
 		} else {
+			_path = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, "crewman"];
 			[_path, _x] call F_getTemplateFile;
 			[_x] call reammo_ai;
 		};

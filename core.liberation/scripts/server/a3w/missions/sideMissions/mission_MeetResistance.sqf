@@ -35,13 +35,13 @@ _setupObjects = {
 
 	// create static weapons + crew
 	_veh1 = createVehicle [resistance_squad_static, _missionPos, [], 100, "None"];
-	_managed_units append ([_veh1, GRLIB_side_friendly] call F_forceCrew);
+	_managed_units append ([_veh1] call F_forceCrew);
 	_veh1 setVariable ["GRLIB_vehicle_gunner", [gunner _veh1]];
 	_veh1 setVariable ["GRLIB_vehicle_owner", "server", true];
 	sleep 0.5;
 
 	_veh2 = createVehicle [resistance_squad_static, _missionPos, [], 100, "None"];
-	_managed_units append ([_veh2, GRLIB_side_friendly] call F_forceCrew);
+	_managed_units append ([_veh2] call F_forceCrew);
 	_veh2 setVariable ["GRLIB_vehicle_gunner", [gunner _veh2]];
 	_veh2 setVariable ["GRLIB_vehicle_owner", "server", true];
 	sleep 0.5;
