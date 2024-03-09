@@ -10,6 +10,8 @@ addMissionEventHandler ['HandleDisconnect', {
 		diag_log "--- LRX Mission End!";
 		if (!GRLIB_server_persistent) then {
 			{ deleteMarker _x } forEach allMapMarkers;
+			{ deleteVehicle _x } forEach allUnits;
+			{ deleteVehicle _x } forEach vehicles;
 			endMission "END";
 			forceEnd;
 		};
@@ -20,7 +22,7 @@ addMissionEventHandler ['HandleDisconnect', {
 addMissionEventHandler ["OnUserAdminStateChanged", {
 	params ["_networkId", "_loggedIn", "_votedIn"];
 	if (!_loggedIn) then {
-		unassignCurator (allCurators select 0);
+		{unassignCurator _x} forEach allCurators;
 	};
 }];
 
