@@ -40,20 +40,20 @@ if (_unit isKindOf "LandVehicle") then {
 	ctrlSetText [202, (localize "STR_HALO_PARAM_VEH")];
 };
 
-[ "halo_map_event", "onMapSingleClick", { halo_position = _pos } ] call BIS_fnc_addStackedEventHandler;
-
+["halo_map_event", "onMapSingleClick", { halo_position = _pos }] call BIS_fnc_addStackedEventHandler;
 while { dialog && alive _unit && dojump == 0 } do {
 	"spawn_marker" setMarkerPosLocal halo_position;
 	sleep 0.2;
 };
 closeDialog 0;
+["halo_map_event", "onMapSingleClick"] call BIS_fnc_removeStackedEventHandler;
 
+diag_log format [ "Airdrop %1 on %2 at %3", (typeOf _unit), halo_position, time ];
 "spawn_marker" setMarkerPosLocal markers_reset;
 "spawn_marker" setMarkerTextLocal "";
-[ "halo_map_event", "onMapSingleClick" ] call BIS_fnc_removeStackedEventHandler;
 
 if ( dojump > 0 ) then {
-	halo_position = [ halo_position, floor(random 100), floor(random 360) ] call BIS_fnc_relPos;
+	halo_position = [halo_position, floor(random 100), floor(random 360)] call BIS_fnc_relPos;
 	if (_unit isKindOf "LandVehicle" || _unit isKindOf "Ship") then {
 		// Vehicle HALO
 		if ([_cost] call F_pay) then {

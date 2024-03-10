@@ -15,13 +15,13 @@ if (isNil "_forced_pos") then {
 	_text = format ["Player %1 Air Drop Vehicle.", name _unit];
 	_vehicle = _class;
 	_pos = _forced_pos;
-	if (!local _vehicle) then { waitUntil {sleep 0.5; _vehicle setOwner 2} }; //setGroupOwner
 };
 
 [gamelogic, _text] remoteExec ["globalChat", 0];
 _pos set [2, 500];	// launch altitude
 if (surfaceIsWater _pos) then { _pos = ATLtoASL _pos };
-while { _vehicle distance _pos > 50 } do {
+
+while { _vehicle distance _pos > 100 } do {
 	_vehicle setPos _pos;
 	sleep 1;
 };
