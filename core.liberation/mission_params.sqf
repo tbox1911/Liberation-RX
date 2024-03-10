@@ -77,7 +77,7 @@ LRX_Mission_Params = [
 	["AirSupport", 1],				// Enable Air Support - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["EnableLock", 1],				// Enable Vehicles Ownership - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["EnemyLock", 1],				// Enemy Vehicles Ownership - [default 1] - values = [1,0] - Text {Enabled,Disabled}
-	["LRX_Cleanup", 1800],			// Cleanup abandoned vehicles outside FOBs - values = {0,900,1800,3600,7200,14400}
+	["CleanupVehicles", 1800],		// Cleanup abandoned vehicles outside FOBs - values = {0,900,1800,3600,7200,14400}
 	["AutoSave", 1800],				// LRX Game Auto Save Delay - values = {0,900,1800,3600,7200}
 	["AdminMenu", 1],				// Enable the Admin Cheat Menu [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["HideOpfor", 1],				// Hide Opfor marker - [default 1] - values = [1,0] - Text {Enabled,Disabled}
@@ -249,7 +249,7 @@ LRX_Mission_Params_Def = [
 		["3", "6", "8", "12", "16", "20"],
 		[(3*12), (6*12), (8*12), (12*12), (16*12), (20*12)]
 	],
-	["LRX_Cleanup", localize "STR_CLEANUP_PARAM", [
+	["CleanupVehicles", localize "STR_CLEANUP_PARAM", [
 		localize "STR_PARAMS_DISABLED",
 		localize "STR_CLEANUP_PARAM1",
 		localize "STR_CLEANUP_PARAM2",
