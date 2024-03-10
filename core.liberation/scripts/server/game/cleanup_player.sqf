@@ -69,6 +69,9 @@ if (!isNil "_taxi") then {
 	deleteVehicle _taxi;
 };
 
+// Backup Position
+gamelogic setVariable [format ["player_lastpos_%1", _uid], getPosATL _unit, true];
+
 // Delete Body
 removeAllWeapons _unit;
 removeAllAssignedItems _unit;

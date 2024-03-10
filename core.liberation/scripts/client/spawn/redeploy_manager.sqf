@@ -7,24 +7,20 @@ private _frame_pos = [];
 private _spawn_str = "";
 private _basenamestr = "BASE CHIMERA";
 
-if (!GRLIB_player_spawned) then {
-	waitUntil {sleep 0.2; !isNil "GRLIB_all_fobs" };
-	waitUntil {sleep 0.2; !isNil "save_is_loaded" };
-	waitUntil {sleep 0.2; !isNil "introDone" };
-	waitUntil {sleep 0.2; introDone };
-	waitUntil {sleep 0.2; !isNil "cinematic_camera_stop" };
-	waitUntil {sleep 0.2; cinematic_camera_stop };
-	waitUntil {sleep 0.2; !(isNil "dostartgame")};
-	waitUntil {sleep 0.2; dostartgame == 1};
-	waitUntil {sleep 0.2; !(isNil "LRX_arsenal_init_done")};
-	waitUntil {sleep 0.2; LRX_arsenal_init_done };
+private _last_pos = gamelogic getVariable [format ["player_lastpos_%1", PAR_Grp_ID], []];
+if (!GRLIB_player_spawned && count _last_pos > 0) exitWith {
+	titleText ["","BLACK IN", 5];
+	[_last_pos] call respawn_lhd;
+	disableUserInput false;
+	disableUserInput true;
+	disableUserInput false;	
 };
 
 fullmap = 0;
 private _old_fullmap = 0;
 waitUntil {
 	sleep 0.1;
-	( vehicle player == player && alive player && !dialog )
+	(vehicle player == player && alive player && !dialog)
 };
 
 createDialog "liberation_deploy";
@@ -54,7 +50,7 @@ private _is_mobile_respawn = false;
 private _loadouts_data = [];
 private _loadout_controls = [101,203,205];
 
-if ( GRLIB_player_spawned ) then {
+if (GRLIB_player_spawned) then {
 	_saved_loadouts = profileNamespace getVariable ["bis_fnc_saveInventory_data", []];
 	_counter = 0;
 
@@ -173,7 +169,7 @@ if (deploy == 1) then {
 	player setVariable ["GRLIB_action_inuse", true, true];
 	if ( _spawn_str == _basenamestr) then {
 		// LHD (Chimera)
-		call respawn_lhd;
+		[getPosATL lhd] call respawn_lhd;
 		player setVariable ["GRLIB_action_inuse", false, true];
 	} else {
 		private _destpos = zeropos;

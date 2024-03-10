@@ -1,6 +1,6 @@
 params ["_pos"];
 if (GRLIB_player_near_lhd) then {
-	call respawn_lhd;
+	[getposATL lhd] call respawn_lhd;
 } else {
 	private _near_sign = nearestObjects [(ATLtoASL _pos), [FOB_sign], 20] select 0;
 	if (isNil "_near_sign") exitWith {};

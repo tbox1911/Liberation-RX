@@ -34,7 +34,10 @@ if ( isServer ) then {
 	if (isNil "infantry_weight") then { infantry_weight = 33 };
 	if (isNil "armor_weight") then { armor_weight = 33 };
 	if (isNil "air_weight") then { air_weight = 33 };
-	if (isPlayer _unit) then { stats_player_deaths = stats_player_deaths + 1 };
+	if (isPlayer _unit) then {
+		gamelogic setVariable [format ["player_lastpos_%1", getPlayerUID _unit], [], true];
+		stats_player_deaths = stats_player_deaths + 1
+	};
 
 	if ( side _killer == GRLIB_side_friendly ) then {
 

@@ -1,6 +1,7 @@
 waitUntil {sleep 0.1; GRLIB_player_spawned };
+
 // Allow time for load_context
-sleep 1;
+WaitUntil {sleep 0.1; (player getVariable ["GRLIB_player_context_loaded", false])};
 
 // Fix player pos
 [player] spawn F_fixModUnit;
