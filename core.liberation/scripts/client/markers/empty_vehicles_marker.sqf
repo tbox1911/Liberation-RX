@@ -29,7 +29,7 @@ if (GRLIB_allow_redeploy == 1) then {
 };
 
 while { true } do {
-	waitUntil {sleep 1; GRLIB_MapOpen };
+	waitUntil {sleep 0.5; GRLIB_MapOpen };
 	_veh_list = [vehicles, {
 		(alive _x) && !(isObjectHidden _x) &&
 		(count (crew _x) == 0 || typeOf _x in (uavs + static_vehicles_AI)) &&
