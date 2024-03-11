@@ -142,6 +142,7 @@ while { dialog && alive player && deploy == 0} do {
 	};
 	uiSleep 0.2;
 };
+
 GRLIB_MapOpen = false;
 private _idxchoice = lbCurSel 201;
 private _loadoutchoice = lbCurSel 203;
@@ -150,11 +151,15 @@ camDestroy respawn_camera;
 deleteVehicle respawn_object;
 camUseNVG false;
 "spawn_marker" setMarkerPosLocal markers_reset;
-
 closeDialog 0;
+(findDisplay 5201) displayRemoveEventHandler ["KeyDown", _noesckey];
+if (!alive player) exitWith {};
+
+
 if (deploy == 1) then {
 	titleText ["","BLACK IN", 5];
-	
+	player setVariable ["GRLIB_action_inuse", true, true];
+
 	// choosen loadout
 	if ( _loadoutchoice > 0 ) then {
 		player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
@@ -166,13 +171,12 @@ if (deploy == 1) then {
 
 	// Redeploy
 	_spawn_str = (_choiceslist select _idxchoice) select 0;
-	player setVariable ["GRLIB_action_inuse", true, true];
 	if ( _spawn_str == _basenamestr) then {
 		// LHD (Chimera)
 		[getPosATL lhd] call respawn_lhd;
 		player setVariable ["GRLIB_action_inuse", false, true];
 	} else {
-		private _destpos = zeropos;
+		private _destpos = [];
 		private _destdir = random 360;
 		private _destdist = 4;
 		if (count (_choiceslist select _idxchoice) == 3) then {
@@ -195,7 +199,6 @@ if (deploy == 1) then {
 			};
 		};
 
-		if (_destpos isEqualTo zeropos) exitWith {};
 		private _unit_list = units group player;
 		private _my_squad = player getVariable ["my_squad", nil];
 		if (!isNil "_my_squad") then { { _unit_list pushBack _x } forEach units _my_squad };
@@ -228,7 +231,6 @@ if (alive player && deploy == 1) then {
 	[_spawn_str, _is_mobile_respawn] spawn spawn_camera;
 };
 
-(findDisplay 5201) displayRemoveEventHandler ["KeyDown", _noesckey];
 1 fadeSound 1;
 10 fadeMusic 0;
 sleep 10;

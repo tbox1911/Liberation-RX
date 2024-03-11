@@ -72,7 +72,8 @@ while {alive _unit} do {
 	// Flee
 	if (!_friendly) then {
 		_no_blufor_near = ({ (alive _x) && !(captive _x) && (_x distance2D _unit <= 100) } count (units GRLIB_side_friendly) == 0);
-		_player_in_action = ((leader group _unit) getVariable ["GRLIB_action_inuse", false]);
+		_player = _unit getVariable ["GRLIB_prisoner_owner", objNull];
+		_player_in_action = _player getVariable ["GRLIB_action_inuse", false];
 
 		if (_no_blufor_near && !_player_in_action && !_fleeing) then {
 			_unit setVariable ["GRLIB_is_prisoner", true, true];
