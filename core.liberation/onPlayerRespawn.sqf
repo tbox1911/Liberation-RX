@@ -2,16 +2,16 @@ if (isDedicated || !hasInterface) exitWith {};
 
 params ["_unit", "_oldUnit", "_respawn", "_respawnDelay"];
 
-disableUserInput true;
 titleText ["" ,"BLACK FADED", 100];
 1 fadeSound 0;
+
+waitUntil {sleep 0.1; !isNil "GRLIB_init_server"};
+if (!GRLIB_init_server) exitWith {};
+waitUntil {sleep 0.1; !isNil "GRLIB_LRX_params_loaded"};
 
 deleteVehicle _oldUnit;
 _unit allowDamage false;
 _unit setPosATL ((markerPos GRLIB_respawn_marker) vectorAdd [floor(random 5), floor(random 5), 1]);
-waitUntil {sleep 0.1; !isNil "GRLIB_init_server"};
-if (!GRLIB_init_server) exitWith {};
-waitUntil {sleep 0.1; !isNil "GRLIB_LRX_params_loaded"};
 
 if (GRLIB_ACE_medical_enabled) then {
 	[_unit] call ACE_medical_treatment_fnc_fullHealLocal;

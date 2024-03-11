@@ -1,4 +1,7 @@
 diag_log "--- Liberation RX by pSiKO ---";
+if ((isServer || isDedicated) && !isNil "GRLIB_init_server") exitWith { diag_log "--- LRX Error: Mission restart too fast!" };
+disableUserInput true;
+
 [] call compileFinal preprocessFileLineNUmbers "build_info.sqf";
 diag_log "--- Init start ---";
 
@@ -47,7 +50,7 @@ if (!abort_loading) then {
 if (!isDedicated && hasInterface) then {
 	titleText ["-- Liberation RX --","BLACK FADED", 100];
 	waitUntil { sleep 1; !isNil "GRLIB_init_server" };
- 	sleep 5;
+	disableUserInput false;
 	[] execVM "scripts\client\init_client.sqf";
 };
 
