@@ -133,11 +133,11 @@ while {alive _unit && _continue} do {
                     } else {
                         [_unit, _action, _target] remoteExec ["speak_manager_remote_call", 2];
                     };
-                    sleep 6;
                     _unit stop true;
                     _unit setDir (_unit getDir _target);
                     _unit switchMove "ainvpknlmstpslaywrfldnon_medicother";
                     _unit playMoveNow "ainvpknlmstpslaywrfldnon_medicother";
+                    sleep 6;
                     _target setDamage 0;
                     _unit stop false;
                     _unit switchMove "AmovPercMwlkSnonWnonDf";
@@ -194,21 +194,18 @@ while {alive _unit && _continue} do {
                     (!alive _unit || _unit distance2D _target <= 7 || _unit distance2D _target > _radius)
                 };
                 if (alive _unit && _unit distance2D _target <= 7) then {
-                    removeAllAssignedItems _unit;
-                    _unit addWeapon (selectRandom _weapons_light);
-                    _unit addVest "V_Rangemaster_belt";
-                    [_unit] call reammo_ai;
-                    _unit setSkill ["courage", 1];
-                    _grp setCombatMode "RED";
-                    sleep 1;
-                    [_unit] joinSilent (group _target);
-
                     if (isServer) then {
                         [_unit, _action, _target] spawn speak_manager_remote_call;
                     } else {
                         [_unit, _action, _target] remoteExec ["speak_manager_remote_call", 2];
                     };
-
+                    removeAllAssignedItems _unit;
+                    _unit addWeapon (selectRandom _weapons_light);
+                    _unit addVest "V_Rangemaster_belt";
+                    [_unit] call reammo_ai;
+                    _unit setSkill ["courage", 1];
+                    sleep 1;
+                    [_unit] joinSilent (group _target);
                     [_unit] spawn {
                         params ["_unit"];
                         waitUntil {sleep 10; !(alive _unit) || ([_unit, GRLIB_capture_size, GRLIB_side_enemy] call F_getUnitsCount == 0) };
