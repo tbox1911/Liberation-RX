@@ -236,8 +236,6 @@ PAR_HandleDamage_EH = {
 		if (!(isNull _veh_unit)) then {[_unit, _veh_unit] spawn PAR_fn_eject};
 		_unit setVariable ["PAR_wounded", true, true];
 		_unit setVariable ["PAR_isUnconscious", true, true];
-		_unit setCaptive true;
-		_unit allowDamage false;
 		_unit setVariable ["PAR_BleedOutTimer", round(time + PAR_bleedout), true];
 		[_unit, _killer] spawn PAR_Player_Unconscious;
 	};

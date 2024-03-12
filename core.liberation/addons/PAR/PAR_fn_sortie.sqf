@@ -81,9 +81,9 @@ if (_wnded == player) then {
 [[_medic, _wnded]] call PAR_fn_fixPos;
 
 [_wnded] spawn {
-		params ["_unit"];
-		uIsleep 10;   //time to recover
-		_unit setCaptive false;
-		_unit setVariable ["PAR_wounded", false, true];
-		_unit allowDamage true;
+	params ["_unit"];
+	uIsleep 10;   //time to recover
+	_unit setVariable ["PAR_wounded", false, true];
+	_unit allowDamage true;
+	_unit setCaptive false;		
 };
