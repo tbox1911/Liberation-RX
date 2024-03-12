@@ -7,7 +7,7 @@ if (_unit getVariable ["GRLIB_is_prisoner", false]) exitWith {};
 if (surfaceIsWater (getPosATl _unit)) exitWith {};
 if (_unit skill "courage" == 1) exitWith {};
 
-sleep (1 + floor random 4);
+sleep 5;
 if (!alive _unit) exitWith {};
 
 // Init priso
@@ -22,7 +22,6 @@ removeVest _unit;
 private _hmd = (hmd _unit);
 _unit unassignItem _hmd;
 _unit removeItem _hmd;
-_unit setVariable ["GRLIB_is_prisoner", true, true];
 _unit setVariable ["GRLIB_can_speak", true, true];
 _unit removeAllEventHandlers "HandleDamage";
 _unit setCaptive true;
@@ -34,7 +33,8 @@ if !(_unit getVariable ["GRLIB_in_building", false]) then {
 // Wait
 if (!_canmove) then {
 	[_unit, "init"] remoteExec ["remote_call_prisoner", 0];
-	sleep 3;	
+	sleep 3;
+	_unit setVariable ["GRLIB_is_prisoner", true, true];
 	if (_friendly) then {
 		waitUntil { sleep 1; (!alive _unit || side group _unit == GRLIB_side_friendly) };
 	} else {
@@ -43,6 +43,7 @@ if (!_canmove) then {
 	};
 };
 
+_unit setVariable ["GRLIB_is_prisoner", true, true];
 waitUntil { sleep 1; isNull objectParent _unit };
 if (!alive _unit) exitWith {};
 
