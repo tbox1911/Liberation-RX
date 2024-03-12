@@ -9,4 +9,4 @@ if (_price > _oldprice) then {
 		_price = _oldprice;
 	};
 };
-_unit setVariable ["GREUH_stuff_price", _price];
+_unit setVariable ["GREUH_stuff_price", _price, true];

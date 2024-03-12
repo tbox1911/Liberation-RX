@@ -162,7 +162,7 @@ if (deploy == 1) then {
 
 	// choosen loadout
 	if ( _loadoutchoice > 0 ) then {
-		player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
+		player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice), true];
 		GRLIB_backup_loadout = getUnitLoadout player;
 		[player, [profileNamespace, _loadouts_data select (_loadoutchoice - 1)]] call bis_fnc_loadInventory;
 		[player] call F_filterLoadout;

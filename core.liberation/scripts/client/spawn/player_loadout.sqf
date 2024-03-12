@@ -31,5 +31,5 @@ if (isNil {player getVariable "GREUH_stuff_price"}) then {
 	[player] call F_payLoadout;
 
 	GRLIB_backup_loadout = getUnitLoadout player;
-	player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
+	player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice), true];
 };

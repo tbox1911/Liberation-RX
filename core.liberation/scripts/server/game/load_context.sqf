@@ -12,17 +12,11 @@ if (count _context == 0) then {
 };
 if (count _context >= 1) then {
     // Player loadout
-    [
-        [_context select 1],
-        {
-            params ["_loadout"];
-            player setUnitLoadout _loadout;
-            player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice)];
-        }
-    ] remoteExec ["bis_fnc_call", owner _player];
-    sleep 1;
+    _player setUnitLoadout (_context select 1);
+    _player setVariable ["GREUH_stuff_price", ([_player] call F_loadoutPrice), true];
     _player setVariable ["GRLIB_player_context_loaded", true, true];
     diag_log format ["--- LRX Loaded player %1 profile.", name _player];
+    sleep 1;
 
     // AIs loadout
     if (count (_context select 2) >= 1 ) then {
@@ -33,11 +27,22 @@ if (count _context >= 1) then {
                 _wait = false
             } else {
                 if ([_player, "FOB", GRLIB_fob_range] call F_check_near && isTouchingGround vehicle _player) then {
-                    {
-                        if (isPlayer _player) then {
-                            [_x select 0, _x select 1, _x select 2] remoteExec ["remote_call_load_context", owner _player];
-                            sleep 1;
-                        };
+                    {                      
+                        _class = _x select 0;
+                        _rank = _x select 1;
+                        _loadout = _x select 2;
+                        if (count units _player > (GRLIB_squad_size + GRLIB_squad_size_bonus)) exitWith {};
+                        private _pos = getPosATL _player;
+                        if (surfaceIsWater _pos) then { _pos = getPosASL _player };
+                        private _unit = (group _player) createUnit [_class, _pos, [], 10, "NONE"];
+                        [_unit] joinSilent (group _player);
+                        _unit setVariable ["PAR_Grp_ID", format["Bros_%1", PAR_Grp_ID], true];
+                        clearAllItemsFromBackpack _unit;
+                        _unit setUnitLoadout _loadout;
+                        _unit setUnitRank _rank;
+                        _unit setSkill (0.6 + (GRLIB_rank_level find _rank) * 0.05);
+                        [_unit] remoteExec ["remote_call_load_context", owner _player];
+                        sleep 0.5;
                     } foreach (_context select 2);
                     _wait = false;
                     //diag_log format ["--- LRX Loading %1 unit(s) for %2 Squad.", count (_context select 2), name _player];

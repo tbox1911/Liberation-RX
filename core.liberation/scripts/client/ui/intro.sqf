@@ -60,7 +60,7 @@ cinematic_camera_started = false;
 introDone = true;
 dostartgame = 1;
 
-// Load Player Context (+Ai)
+// Load Player Context
 waitUntil {sleep 0.1; (!alive player || GRLIB_player_spawned) };
 if (GRLIB_player_spawned) then {
 	player setVariable ["GRLIB_player_context_loaded", false, true];
