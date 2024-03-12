@@ -33,9 +33,8 @@ _unit setVariable ["GRLIB_action_inuse", false, true];
 _unit setVariable ["SOG_player_in_tunnel", nil];
 _unit allowDamage true;
 
+[] execVM "scripts\client\spawn\player_loadout.sqf";
 waitUntil {sleep 0.1; !(isNil "dostartgame")};
 waitUntil {sleep 0.1; dostartgame == 1};
-
-[] execVM "scripts\client\spawn\player_loadout.sqf";
 [] execVM "scripts\client\spawn\redeploy_manager.sqf";
 [] execVM "scripts\client\misc\welcome.sqf";

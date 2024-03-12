@@ -7,7 +7,6 @@ exit_on_load = 0;
 if (GRLIB_arsenal_open) exitWith {};
 GRLIB_arsenal_open = true;
 GRLIB_backup_loadout = getUnitLoadout player;
-player setVariable ["GREUH_stuff_price", ([player] call F_loadoutPrice), true];
 
 private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
 private _saved_loadouts = profileNamespace getVariable ["bis_fnc_saveInventory_data", []];
