@@ -14,7 +14,7 @@ private _input_controls = [521,522,523,524,525,526,527];
 
 private _display = findDisplay 2309;
 private _icon = getMissionPath "res\ui_build.paa";
-private ["_selected_item", "_text", "_defense_template", "_defense_name", "_defense_price"];
+private ["_selected_item", "_text", "_defense_template", "_template_creator", "_defense_name", "_defense_price"];
 
 lbClear 110;
 {
@@ -36,10 +36,11 @@ while { dialog && alive player } do {
         _defense_price = (_display displayCtrl (110)) lnbText [_selected_item, 1];
         if (_selected_item > 0) then {
             _defense_template = GRLIB_FOB_Defense select _selected_item select 1;
+            _template_creator = GRLIB_FOB_Defense select _selected_item select 3;
             _objects_to_build = ([] call compile preprocessFileLineNumbers _defense_template);
         } else {
             if !([] call is_admin) exitWith { systemchat "Error: Only admin can do that!" };
-            { ctrlShow [_x, true] } foreach _input_controls;	
+            { ctrlShow [_x, true] } foreach _input_controls;
             input_save = "";
             waitUntil {uiSleep 0.3; ((input_save != "") || !(dialog) || !(alive player))};
             if ( input_save select [0,1] == "[" && input_save select [(count input_save)-1,(count input_save)] == "]") then {
@@ -53,16 +54,23 @@ while { dialog && alive player } do {
 };
 
 if (build_action == 0) exitWith {};
-if (count _objects_to_build == 0) exitWith {};
+
+private _count_objects = count _objects_to_build;
+if (_count_objects == 0) exitWith {};
 if (!([parseNumber _defense_price] call F_pay)) exitWith {};
-gamelogic globalChat format ["Build %1 (%2 objects) on FOB %3 ", _defense_name, count _objects_to_build, ([_fob_pos] call F_getFobName)];
+
+private _msg = format ["%1 Build %2 (%3 objects) on FOB %4 ", name player, _defense_name, _count_objects, ([_fob_pos] call F_getFobName)];
+[gamelogic, _msg] remoteExec ["globalChat", 0];
+_msg = format ["FOB Template: %1\nCreated by: %2\nTanks to him !!", _defense_name, _template_creator];
+[_msg] remoteExec ["hint", 0];
 
 // Build defense in FOB direction
 private ["_nextclass", "_nextobject", "_nextpos", "_nextdir"];
 _fob_pos set [2, 0];
 {
-    if (_forEachIndex % 12 == 0) then {
+    if (_forEachIndex % 20 == 0) then {
         [player, "Land_Carrier_01_blast_deflector_up_sound"] remoteExec ["sound_range_remote_call", 2];
+        gamelogic globalChat format ["Construction in progress, %1 objects left...", (_count_objects - _forEachIndex)];
     };
 	_nextclass = (_x select 0);
 	_nextpos = (_x select 1);
@@ -73,11 +81,9 @@ _fob_pos set [2, 0];
         _nextobject = _nextclass createVehicle _nextpos;
         _nextobject allowDamage false;
         _nextobject setPosATL _nextpos;
-        if ([_nextclass, ["Wall_F", "HBarrier_base_F"]] call F_itemIsInClass)  then {
-            _nextobject setVectorDirAndUp [[-cos _nextdir, sin _nextdir, 0] vectorCrossProduct surfaceNormal _nextpos, surfaceNormal _nextpos];
-        } else {
-            _nextobject setVectorDirAndUp [[_nextdir, _nextdir, 0], [0,0,1]];
-        };
-        sleep 0.3;
+        _nextobject setVectorDirAndUp [[-cos _nextdir, sin _nextdir, 0] vectorCrossProduct surfaceNormal _nextpos, surfaceNormal _nextpos];
+        sleep 0.1;
     };
 } foreach _objects_to_build;
+
+gamelogic globalChat format ["Construction completed."];
