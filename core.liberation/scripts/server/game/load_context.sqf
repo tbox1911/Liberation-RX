@@ -27,14 +27,13 @@ if (count _context >= 1) then {
                 _wait = false
             } else {
                 if ([_player, "FOB", GRLIB_fob_range] call F_check_near && isTouchingGround vehicle _player) then {
+                    private _pos = markerPos GRLIB_respawn_marker;
                     private _grp = createGroup GRLIB_side_friendly;
                     {                      
                         _class = _x select 0;
                         _rank = _x select 1;
                         _loadout = _x select 2;
                         if (count units _player > (GRLIB_squad_size + GRLIB_squad_size_bonus)) exitWith {};
-                        private _pos = getPosATL _player;
-                        if (surfaceIsWater _pos) then { _pos = getPosASL _player };
                         private _unit = _grp createUnit [_class, _pos, [], 10, "NONE"];
                         clearAllItemsFromBackpack _unit;
                         _unit setUnitLoadout _loadout;
