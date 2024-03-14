@@ -39,9 +39,11 @@ if (count _context >= 1) then {
                         _unit setUnitLoadout _loadout;
                         _unit setUnitRank _rank;
                         _unit setSkill (0.6 + (GRLIB_rank_level find _rank) * 0.05);
-                        sleep 0.5;
+                        _unit setPos (_player getRelPos [5, 360]);
+                        sleep 0.2;
                     } foreach (_context select 2);
                     _grp setGroupOwner (owner _player);
+                    sleep 0.5;
                     [_grp] remoteExec ["remote_call_load_context", owner _player];     
                     _wait = false;
                     //diag_log format ["--- LRX Loading %1 unit(s) for %2 Squad.", count (_context select 2), name _player];
