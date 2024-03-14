@@ -1800,24 +1800,24 @@
 			<Czech>Snížená – 1,5krát větší výdrž</Czech>
 		</Key>
 		<Key ID="STR_PARAMS_PAR_REVIVE">
-			<Original>PsiKO AI Revive</Original>
-			<French>PsiKO AI Résurection</French>
+			<Original>pSiKO AI Revive</Original>
+			<French>pSiKO AI Résurection</French>
 			<German>PAR Revive (Wiederbelebungen)</German>
 			<Spanish>PAR Revive</Spanish>
 			<Russian>PAR Возрождение</Russian>
 			<Chinesesimp>PAR复活模式</Chinesesimp>
 			<Chinese>PAR復活模式</Chinese>
-			<Japanese>PsiKO AI 蘇生</Japanese>
-			<Portuguese>PsiKO AI Revive</Portuguese>
-			<Czech>PsiKO oživit AI</Czech>
+			<Japanese>pSiKO AI 蘇生</Japanese>
+			<Portuguese>pSiKO AI Revive</Portuguese>
+			<Czech>pSiKO oživit AI</Czech>
 		</Key>
 		<Key ID="STR_PARAMS_PAR_AI_REVIVE">
-			<Original>Limit AI Revive</Original>
-			<French>Limite AI Résurection</French>
+			<Original>PAR: Limit AI Revive</Original>
+			<French>PAR: Limite AI Résurection</French>
 		</Key>		
 		<Key ID="STR_PARAMS_PAR_BLEEDOUT">
-			<Original>Bleedout Timer</Original>
-			<French>Durée Attente Blessé</French>
+			<Original>PAR: Bleedout Timer</Original>
+			<French>PAR: Durée Attente Blessé</French>
 		</Key>		
 		<Key ID="STR_PARAMS_REVIVE1">
 			<Original>Enabled - Only medics can revive</Original>
@@ -5606,8 +5606,8 @@
 			<French>Garder le score des joueurs au redemarage de la Map</French>
 		</Key>
 		<Key ID="STR_RESPAWN">
-			<Original>Respawn button Timer (sec)</Original>
-			<French>Attente Bouton Respawn (sec)</French>
+			<Original>PAR: Respawn button Timer (sec)</Original>
+			<French>PAR: Attente Bouton Respawn (sec)</French>
 		</Key>
 		<Key ID="STR_RESPAWN_CD">
 			<Original>Cooldown if player respawn too fast (min)</Original>
