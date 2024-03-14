@@ -1,5 +1,5 @@
 params ["_unit", ["_slow", true]];
-if (isNull _unit) exitWith {};
+if (!alive _unit) exitWith {};
 if (isNull objectParent _unit) exitWith {};
 if (!local _unit) exitWith {if (isServer) then {[_unit, _slow] remoteExec ["F_ejectUnit", owner _unit]}};
 
@@ -7,8 +7,8 @@ private _backpack_save = _unit getVariable "GRLIB_para_backpack";
 if (!isNil "_backpack_save") then {
 	[_unit, _backpack_save] spawn {
 		params ["_unit", "_backpack"];
-		waituntil {sleep 2; !(alive _unit) || (isTouchingGround _unit)};
-		if !(alive _unit) exitWith {};
+		waituntil {sleep 2; (!alive _unit) || (isTouchingGround _unit)};
+		if (!alive _unit) exitWith {};
 		removeBackpack _unit;
 		_unit addBackpack _backpack;
 		clearAllItemsFromBackpack _unit;
@@ -36,11 +36,11 @@ sleep 1;
 if (!alive _unit) exitWith {};
 
 if (getPos _unit select 2 >= 50) then {
-	_pos = _unit getPos [50, 360];
+	private _pos = _unit getPos [50, 360];
 	if (backpack _unit != "B_Parachute") then {
-		_para = createVehicle ["Steerable_Parachute_F",_pos,[],0,"FLY"];
+		private _para = createVehicle ["Steerable_Parachute_F",_pos,[],0,"FLY"];
 		_unit moveInDriver _para;
-		sleep 2;
+		sleep 3;
 		if (isNull (driver _para)) then { deleteVehicle _para };
 	};
 };
