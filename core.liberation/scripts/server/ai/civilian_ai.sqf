@@ -204,6 +204,7 @@ while {alive _unit && _continue} do {
                     _unit addVest "V_Rangemaster_belt";
                     [_unit] call reammo_ai;
                     _unit setSkill ["courage", 1];
+                    (group _unit) setCombatMode "YELLOW";
                     sleep 1;
                     [_unit] joinSilent (group _target);
                     [_unit] spawn {
