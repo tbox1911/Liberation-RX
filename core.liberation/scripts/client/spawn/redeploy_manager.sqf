@@ -7,14 +7,14 @@ private _frame_pos = [];
 private _spawn_str = "";
 private _basenamestr = "BASE CHIMERA";
 
-// private _last_pos = gamelogic getVariable [format ["player_lastpos_%1", PAR_Grp_ID], []];
-// if (!GRLIB_player_spawned && count _last_pos > 0) exitWith {
-// 	titleText ["","BLACK IN", 5];
-// 	[_last_pos] call respawn_lhd;
-// 	disableUserInput false;
-// 	disableUserInput true;
-// 	disableUserInput false;	
-// };
+private _last_pos = gamelogic getVariable [format ["player_lastpos_%1", PAR_Grp_ID], []];
+if (!GRLIB_player_spawned && count _last_pos > 0) exitWith {
+	titleText ["","BLACK IN", 5];
+	[_last_pos] call respawn_lhd;
+	disableUserInput false;
+	disableUserInput true;
+	disableUserInput false;	
+};
 
 fullmap = 0;
 private _old_fullmap = 0;
