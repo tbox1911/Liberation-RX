@@ -107,8 +107,11 @@ waitUntil {
 		if (!isNil "_waitUntilSuccessCondition" && {call _waitUntilSuccessCondition}) then {
 			_complete = true;
 		};
+		if (!_ignoreAiDeaths && {alive _x} count (units _aiGroup) == 0) then {
+			_complete = true;
+		};
 	};
-	(GRLIB_endgame == 1 || GRLIB_global_stop == 1 || _failed || _complete || (!_ignoreAiDeaths && {alive _x} count (units _aiGroup) == 0))
+	(GRLIB_endgame == 1 || GRLIB_global_stop == 1 || _failed || _complete)
 };
 
 if (GRLIB_endgame == 1 || GRLIB_global_stop == 1) then { _failed = true };
