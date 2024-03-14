@@ -32,6 +32,7 @@ if !(_unit getVariable ["GRLIB_in_building", false]) then {
 
 // Wait
 if (!_canmove) then {
+	// Halt
 	[_unit, "init"] remoteExec ["remote_call_prisoner", 0];
 	sleep 3;
 	_unit setVariable ["GRLIB_is_prisoner", true, true];
@@ -41,15 +42,14 @@ if (!_canmove) then {
 		private _timeout = time + (45 * 60);
 		waitUntil { sleep 1; (!alive _unit || side group _unit == GRLIB_side_friendly || time > _timeout) };
 	};
+	// Follow
+	[_unit, "move"] remoteExec ["remote_call_prisoner", 0];
+	sleep 3;
 };
 
 _unit setVariable ["GRLIB_is_prisoner", true, true];
 waitUntil { sleep 1; isNull objectParent _unit };
 if (!alive _unit) exitWith {};
-
-// Follow
-[_unit, "move"] remoteExec ["remote_call_prisoner", 0];
-sleep 3;
 
 private ["_no_blufor_near", "_player", "_player_in_action", "_waypoint", "_nearest_sector"];
 private _fleeing = false;

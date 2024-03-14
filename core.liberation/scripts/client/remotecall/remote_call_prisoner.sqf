@@ -1,6 +1,7 @@
 params [ "_unit", "_cmd" ];
 
-if !(local _unit) exitWith {};
+if (!local _unit) exitWith {};
+if (!alive _unit) exitWith {};
 
 private _anim = "";
 
