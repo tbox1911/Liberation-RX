@@ -3,7 +3,7 @@
 if (!isServer) exitWith {};
 params ["_type", "_pos", "_locked"];
 
-private _spawnpos = [_pos, 3] call F_findSafePlace;
+private _spawnpos = [_pos, 3, 1] call F_findSafePlace;
 if ( count _spawnpos == 0 ) exitWith { diag_log format ["--- LRX Error: No place to build box %1 at position %2", _type, _pos]; objNull };
 _spawnpos set [2, 0.5];
 
