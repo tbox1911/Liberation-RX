@@ -35,7 +35,6 @@ if (count _context >= 1) then {
                         _loadout = _x select 2;
                         if (count units _player > (GRLIB_squad_size + GRLIB_squad_size_bonus)) exitWith {};
                         private _unit = _grp createUnit [_class, _pos, [], 10, "NONE"];
-                        clearAllItemsFromBackpack _unit;
                         _unit setUnitLoadout _loadout;
                         _unit setUnitRank _rank;
                         _unit setSkill (0.6 + (GRLIB_rank_level find _rank) * 0.05);
