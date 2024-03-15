@@ -33,7 +33,7 @@ private _patrolcorners = [
 			_waypoint setWaypointCompletionRadius _completion_radius;
 		};
 	} else {
-		if !(surfaceIsWater _x) then {
+		if (!surfaceIsWater _x) then {
 			_waypoint = _grp addWaypoint [_x, 20];
 			_waypoint setWaypointType "MOVE";
 			_waypoint setWaypointBehaviour "AWARE";
@@ -49,4 +49,13 @@ if (count (waypoints _grp) > 1) then {
 	_waypoint = _grp addWaypoint [_wp0, 0];
 	_waypoint setWaypointType "CYCLE";
 };
-{_x doFollow (leader _grp)} foreach units _grp;
+
+{
+	_x doFollow (leader _grp);
+	if (isNull objectParent _x && (!surfaceIsWater getPos _x)) then {
+		[_x] call F_fixPosUnit;
+		_x switchMove "AmovPercMwlkSrasWrflDf";
+		_x playMoveNow "AmovPercMwlkSrasWrflDf";
+		sleep 3;
+	};
+} forEach (units _grp);
