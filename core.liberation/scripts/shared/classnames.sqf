@@ -320,9 +320,6 @@ if ( isNil "a3w_br_planes" ) then {
 
 if ( isNil "a3w_heal_medics" ) then {
 	a3w_heal_medics = [
-		"C_IDAP_Man_AidWorker_06_F",
-		"C_IDAP_Man_AidWorker_07_F",
-		"C_IDAP_Man_AidWorker_09_F",
 		"C_IDAP_Man_Paramedic_01_F",
 		"C_scientist_F"
 	];
