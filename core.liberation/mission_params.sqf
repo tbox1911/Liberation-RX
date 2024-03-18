@@ -138,7 +138,7 @@ LRX_Mission_Params_Def = [
 		[0.25, 0.5, 1, 2, 4]
 	],
 	["SectorRadius", localize "STR_PARAM_SECTOR_RADIUS",
-		[localize "STR_PARAMS_DISABLED", "300", "400", "600", "800", "1000", "1200", "1500"],
+		["AUTO", "300", "400", "600", "800", "1000", "1200", "1500"],
 		[0, 300, 400, 600, 800, 1000, 1200, 1500]
 	],
 	["DayDuration", localize "STR_PARAMS_DAYDURATION",
