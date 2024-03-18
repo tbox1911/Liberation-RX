@@ -12,6 +12,7 @@ GRLIB_ui_notif = "";
 
 waituntil {sleep 1; GRLIB_player_spawned};
 waituntil {sleep 1; !isNil "resources_infantry"};
+infantry_cap = 0;
 
 if ( isNil "cinematic_camera_started" ) then { cinematic_camera_started = false };
 if ( isNil "halojumping" ) then { halojumping = false };
@@ -52,7 +53,7 @@ while { true } do {
 			(_overlay displayCtrl (107)) ctrlSetText format [ "%1", (player getVariable ["GREUH_score_count",0]) ];
 			(_overlay displayCtrl (102)) ctrlSetText format [ "%1", (player getVariable ["GREUH_ammo_count",0]) ];
 			(_overlay displayCtrl (103)) ctrlSetText format [ "%1", (player getVariable ["GREUH_fuel_count",0]) ];
-			(_overlay displayCtrl (101)) ctrlSetText format [ "%1/%2", resources_infantry,infantry_cap ];
+			(_overlay displayCtrl (101)) ctrlSetText format [ "%1/%2", resources_infantry, infantry_cap ];
 			_reputation = [player] call F_getReput;
 			(_overlay displayCtrl (104)) ctrlSetText format [ "%1", round(_reputation) ];
 			(_overlay displayCtrl (105)) ctrlSetText format [ "%1%2", round(combat_readiness),"%" ];
