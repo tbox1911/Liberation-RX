@@ -9,8 +9,8 @@ if (!isServer) exitwith {};
 
 private [
 	"_controllerSuffix", "_availableLocations", "_missionLocation",
-	"_marker", "_marker_zone", "_time_left", "_failed", "_complete", "_startTime", "_leaderTemp",
-	"_lastPos", "_floorHeight"
+	"_marker", "_marker_zone", "_time_left", "_leaderTemp",
+	"_lastPos"
 ];
 
 // Variables that can be defined in the mission script :
@@ -67,10 +67,11 @@ if (isNil "_missionPicture") then { _missionPicture = "" };
 
 diag_log format ["A3W Side Mission %1 waiting to be finished: %2", _controllerSuffix, localize _missionType];
 
-_failed = false;
-_complete = false;
-_startTime = time;
-_lastPos = _missionPos;
+private _failed = false;
+private _complete = false;
+private _startTime = time;
+private _lastPos = _missionPos;
+private _count_blu = false;
 
 if (isNil "_ignoreAiDeaths") then { _ignoreAiDeaths = false };
 
@@ -100,7 +101,8 @@ waitUntil {
 		_marker setMarkerText format ["%1 - time over", localize _missionType];
 	};
 
-	_expired = (_time_left <= 0 && ([_lastPos, GRLIB_capture_size, GRLIB_side_friendly] call F_getUnitsCount) == 0);
+	_count_blu = [_lastPos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount;
+	_expired = (_time_left <= 0 && _count_blu == 0);
 	_failed = ((!isNil "_waitUntilCondition" && {call _waitUntilCondition}) || _expired);
 
 	if (!_failed) then {
@@ -108,7 +110,11 @@ waitUntil {
 			_complete = true;
 		};
 		if (!_ignoreAiDeaths && {alive _x} count (units _aiGroup) == 0) then {
-			_complete = true;
+			if (_count_blu == 0) then {
+				_failed = true;
+			} else {
+				_complete = true;
+			};
 		};
 	};
 	(GRLIB_endgame == 1 || GRLIB_global_stop == 1 || _failed || _complete)
