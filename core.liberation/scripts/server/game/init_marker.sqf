@@ -6,31 +6,46 @@ waituntil {sleep 1; !isNil "GRLIB_sectors_init"};
 [] call compileFinal preprocessFileLineNUmbers "fixed_position.sqf";
 
 // REPAIR
-private ["_vehicle", "_spawnpos", "_startpos", "_radius", "_max_try"];
+private ["_vehicle"];
 {
-  // Add repair pickup
-  _spawnpos = [];
-  _max_try = 10;
-  _radius = 20;
-  _startpos = markerPos _x;
+  // // Add repair pickup
+  // _spawnpos = [];
+  // _max_try = 10;
+  // _radius = 20;
+  // _startpos = markerPos _x;
 
-  while {count _spawnpos == 0 && _max_try > 0} do {
-    _spawnpos = _startpos findEmptyPosition [0, _radius, "B_Truck_01_covered_F"];
-    if (count _spawnpos == 3) then {
-      if (isOnRoad _spawnpos) then {
-        _startpos = [_spawnpos , random 50 , random 360] call BIS_fnc_relPos;
-        _spawnpos = [];
-      };
-    };
-    _max_try = _max_try - 1;
-    _radius = _radius + 10;
-    sleep 0.1;
-  };
+  // while {count _spawnpos == 0 && _max_try > 0} do {
+  //   _spawnpos = _startpos findEmptyPosition [0, _radius, "B_Truck_01_covered_F"];
+  //   if (count _spawnpos == 3) then {
+  //     if (isOnRoad _spawnpos) then {
+  //       _startpos = [_spawnpos , random 50 , random 360] call BIS_fnc_relPos;
+  //       _spawnpos = [];
+  //     };
+  //   };
+  //   _max_try = _max_try - 1;
+  //   _radius = _radius + 10;
+  //   sleep 0.1;
+  // };
 
-  //diag_log format ["DBG: sector:%4 - pos:%1 try:%2 rad:%3", _spawnpos, _max_try, _radius, _x];
+  // //diag_log format ["DBG: sector:%4 - pos:%1 try:%2 rad:%3", _spawnpos, _max_try, _radius, _x];
 
-  if (count _spawnpos > 0) then {
-    _vehicle = createVehicle [repair_offroad, _spawnpos, [], 10, "NONE"];
+  // if (count _spawnpos > 0) then {
+  //   _vehicle = createVehicle [repair_offroad, _spawnpos, [], 10, "NONE"];
+  //   _vehicle allowDamage false;
+  //   _vehicle setVehicleLock "LOCKED";
+  //   _vehicle lockDriver true;
+  //   _vehicle lockCargo true;
+  //   _vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
+  //   _vehicle setVariable ["R3F_LOG_disabled", true, true];
+  //   [_vehicle] call F_clearCargo;
+  // } else {
+  //   diag_log format ["--- LRX Error: No place to build %1 at sector %2", repair_offroad, _x];
+  // };
+  // sleep 0.1;
+  _vehicle = [markerPos _x, repair_offroad, false, false, GRLIB_side_civilian, false] call F_libSpawnVehicle;
+  if (isNull _vehicle) then {
+    diag_log format ["--- LRX Error: No place to build %1 at sector %2", repair_offroad, _x];
+  } else {
     _vehicle allowDamage false;
     _vehicle setVehicleLock "LOCKED";
     _vehicle lockDriver true;
@@ -38,10 +53,7 @@ private ["_vehicle", "_spawnpos", "_startpos", "_radius", "_max_try"];
     _vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
     _vehicle setVariable ["R3F_LOG_disabled", true, true];
     [_vehicle] call F_clearCargo;
-  } else {
-    diag_log format ["--- LRX Error: No place to build %1 at sector %2", repair_offroad, _x];
   };
-  sleep 0.1;
 } forEach sectors_factory;
 
 // SELL
