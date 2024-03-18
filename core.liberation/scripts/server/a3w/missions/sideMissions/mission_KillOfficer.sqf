@@ -45,10 +45,9 @@ _setupObjects = {
 	// Vehicle
 	_grp_hmg = createGroup [GRLIB_side_enemy, true];
 	private _roads = _hvt_pos nearRoads 50;
-	private _precise = true;
 	private _vehicle1_pos = getPos (selectRandom _roads);
 	if (isNil "_vehicle1_pos") then { _vehicle1_pos = _hvt_pos; precise = false };
-	_vehicle = [_vehicle1_pos, _vehicleClass, _precise] call F_libSpawnVehicle;
+	_vehicle = [_vehicle1_pos, _vehicleClass, 0] call F_libSpawnVehicle;
 	_vehicle allowCrewInImmobile true;
 	_grp_hmg createVehicleCrew _vehicle;
 

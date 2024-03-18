@@ -60,7 +60,7 @@ if (_defense_type > 0 && !_defenders_cooldown) then {
 
 		if (count _vehicleClass > 0) then {
 			private _vehiclePos = _sector_pos findEmptyPosition [5, 120, "B_Heli_Transport_03_unarmed_F"];
-			_vehicle = [_vehiclePos, selectRandom _vehicleClass, false, false, GRLIB_side_friendly] call F_libSpawnVehicle;
+			_vehicle = [_vehiclePos, selectRandom _vehicleClass, 3, false, GRLIB_side_friendly] call F_libSpawnVehicle;
 			_vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
 			[(group driver _vehicle), _sector_pos] spawn defence_ai;
 		};

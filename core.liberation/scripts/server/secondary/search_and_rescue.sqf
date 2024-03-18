@@ -49,7 +49,7 @@ private _spawnchances = [75,50,15];
 
 private _vehicle_list = [];
 { 
-	_vehicle = [[getpos _helowreck, 30 + (random 30), random 360] call BIS_fnc_relPos, _x, true] call F_libSpawnVehicle;
+	_vehicle = [[getpos _helowreck, 30 + (random 30), random 360] call BIS_fnc_relPos, _x, 0] call F_libSpawnVehicle;
 	_vehicle setVariable ["GRLIB_vehicle_owner", "server"];
 	_vehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}]; 
 	_vehicle_list pushBack _vehicle;

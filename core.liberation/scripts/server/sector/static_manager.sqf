@@ -14,7 +14,7 @@ private _spawn_pos = [markerPos _sector, _radius, random 360] call BIS_fnc_relPo
 if (surfaceIsWater _spawn_pos) exitWith {};
 
 private _grp = createGroup [GRLIB_side_enemy, true];
-private _vehicle = [_spawn_pos, selectRandom opfor_statics, true] call F_libSpawnVehicle;
+private _vehicle = [_spawn_pos, selectRandom opfor_statics, 0] call F_libSpawnVehicle;
 _vehicle setVariable ["GRLIB_counter_TTL", round(time + 900)];
 _vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
 opfor_spotter createUnit [ getposATL _vehicle, _grp, 'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.5, "PRIVATE"];

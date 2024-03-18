@@ -41,7 +41,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 
 		// 50% in vehicles
 		if ( floor(random 100) > 50 && count militia_vehicles > 0 ) then {
-			_opfor_veh = [_sector_pos, (selectRandom militia_vehicles), false, false, GRLIB_side_enemy] call F_libSpawnVehicle;
+			_opfor_veh = [_sector_pos, (selectRandom militia_vehicles)] call F_libSpawnVehicle;
 			_opfor_grp = group (driver _opfor_veh);
 		} else {
 			_opfor_grp = [_spawnsector, "militia", ([] call F_getAdaptiveSquadComp)] call F_spawnRegularSquad;

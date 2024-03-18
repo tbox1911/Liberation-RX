@@ -16,14 +16,13 @@ _setupObjects = {
     	diag_log format ["--- LRX Error: side mission VC, cannot find spawn point!"];
     	false;
 	};
-	_vehiclePos = _missionPos findEmptyPosition [1, 60, "B_Heli_Transport_03_unarmed_F"];
-	_vehicle = [_vehiclePos, selectRandom opfor_vehicles, true, false, GRLIB_side_enemy, false] call F_libSpawnVehicle;
+	_vehicle = [_missionPos, selectRandom opfor_vehicles, 3, false, GRLIB_side_enemy, false] call F_libSpawnVehicle;
 	[_vehicle, "lock", "server"] call F_vehicleLock;
 	_vehicle setFuel 0.1;
 	_vehicle setVehicleAmmo 0.1;
 	_vehicle setHit [getText (configFile >> "cfgVehicles" >> (typeOf _vehicle) >> "HitPoints" >> "HitEngine" >> "name"), 1];
 	_vehicle setDamage 0.15;
-	_smoke = GRLIB_sar_fire createVehicle _vehiclePos;
+	_smoke = GRLIB_sar_fire createVehicle (getPos _vehicle);
 	_smoke attachTo [_vehicle, [0, 1.5, 0]];
 	[_missionPos, 30] call createlandmines;
 	_aiGroup = [_missionPos, _nbUnits, "infantry"] call createCustomGroup;

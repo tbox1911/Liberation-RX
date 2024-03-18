@@ -23,7 +23,7 @@ _setupObjects =
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 
 	// veh1 + squad
-	_vehicle1 = [_missionPos, a3w_vip_vehicle, false, false, GRLIB_side_enemy, false] call F_libSpawnVehicle;
+	_vehicle1 = [_missionPos, a3w_vip_vehicle, 3, false, GRLIB_side_enemy, false] call F_libSpawnVehicle;
 	private _vehicle_seat = (_vehicle1 emptyPositions "") min 5;
 	if (_vehicle_seat < 3) exitWith {
 		diag_log format ["--- LRX Error: side mission VIP, vehicle %1, no enough seat!", typeOf _vehicle1];
@@ -38,7 +38,7 @@ _setupObjects =
 	sleep 1;
 
 	// veh2 + vip + squad
-	_vehicle2 = [_missionPos, a3w_vip_vehicle, false, false, GRLIB_side_enemy, false] call F_libSpawnVehicle;
+	_vehicle2 = [_missionPos, a3w_vip_vehicle, 3, false, GRLIB_side_enemy, false] call F_libSpawnVehicle;
 	_vehicle2 setConvoySeparation 30;
 	_grp = [_missionPos, (_vehicle_seat-1), "guard", false] call createCustomGroup;
 	[_vehicle2, _grp] call F_manualCrew;
@@ -56,7 +56,7 @@ _setupObjects =
 	_vip setrank "COLONEL";
 
 	// veh3 + squad
-	_vehicle3 = [_missionPos, a3w_vip_vehicle, false, false, GRLIB_side_enemy, false] call F_libSpawnVehicle;
+	_vehicle3 = [_missionPos, a3w_vip_vehicle, 3, false, GRLIB_side_enemy, false] call F_libSpawnVehicle;
 	_vehicle3 setConvoySeparation 30;
 	_grp = [_missionPos, _vehicle_seat, "guard", false] call createCustomGroup;
 	[_vehicle3, _grp] call F_manualCrew;

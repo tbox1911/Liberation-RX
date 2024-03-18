@@ -1,7 +1,7 @@
 params [
 	"_sectorpos",
 	"_classname",
-	["_precise_position", false],
+	["_size", 3],
 	["_random_rotate", false],
 	["_side", GRLIB_side_enemy],
 	["_crewed", true]
@@ -26,16 +26,16 @@ if ( _classname isKindOf "Air" ) then {
 	if ( _side == GRLIB_side_civilian ) then { _airveh_alt = 150 };
 	_spawnpos = _spawnpos getPos [300, 360];
 	_spawnpos set [2, _airveh_alt];
-	_vehicle = createVehicle [_classname, _spawnpos, [], 1, "FLY"];
+	_vehicle = createVehicle [_classname, _spawnpos, [], 50, "FLY"];
 	_vehicle allowDamage false;
 	_vehicle setDir (_vehicle getDir _sectorpos);
 	_vehicle setPos _spawnpos;
 	_vehicle setVelocityModelSpace [0, 80, 0];
 } else {
-	if ( _precise_position ) then {
+	if ( _size == 0 ) then {
 		_spawnpos = _sectorpos;
 	} else {
-		_spawnpos = [_sectorpos, 10, 1] call F_findSafePlace;
+		_spawnpos = [_sectorpos, _size, 1] call F_findSafePlace;
 	};
 
 	if ( count _spawnpos == 0 ) exitWith {

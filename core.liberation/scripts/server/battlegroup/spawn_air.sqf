@@ -29,7 +29,7 @@ _waypoint setWaypointType "CYCLE";
 
 private ["_vehicle"];
 for "_i" from 1 to _count do {
-	_vehicle = [zeropos, selectRandom _planeType, false, false, _side] call F_libSpawnVehicle;
+	_vehicle = [zeropos, selectRandom _planeType, 0, false, _side] call F_libSpawnVehicle;
 	_vehicle setVariable ["GRLIB_counter_TTL", round(time + 1800), true];  // 30 minutes TTL
 	(crew _vehicle) joinSilent _grp;
 	{

@@ -49,7 +49,7 @@ private _convoy_group = createGroup [GRLIB_side_enemy, true];
 
 //-----------------------------------------
 // Scout Vehicles
-private _scout_vehicle = [_spawnpos, selectRandom (opfor_vehicles_low_intensity - opfor_troup_transports_truck), true] call F_libSpawnVehicle;
+private _scout_vehicle = [_spawnpos, selectRandom (opfor_vehicles_low_intensity - opfor_troup_transports_truck), 0] call F_libSpawnVehicle;
 (crew _scout_vehicle) joinSilent _convoy_group;
 (driver _scout_vehicle) limitSpeed 40;
 
@@ -88,7 +88,7 @@ _waypoint setWaypointType "CYCLE";
 // ammo transport
 private _timout = round (time + (3 * 60));
 waitUntil {sleep 1; _scout_vehicle distance2D _spawnpos > 30 || time > _timout};
-private _transport_vehicle = [_spawnpos, opfor_transport_truck, true] call F_libSpawnVehicle;
+private _transport_vehicle = [_spawnpos, opfor_transport_truck, 0] call F_libSpawnVehicle;
 (crew _transport_vehicle) joinSilent _convoy_group;
 
 _transport_vehicle setConvoySeparation 40;
@@ -100,7 +100,7 @@ for "_n" from 1 to _boxes_amount do { [_transport_vehicle, ammobox_o_typename] c
 // troop transport
 private _timout = round (time + (3 * 60));
 waitUntil {sleep 1; _transport_vehicle distance2D _spawnpos > 30 || time > _timout};
-private _troop_vehicle = [_spawnpos, opfor_transport_truck, true] call F_libSpawnVehicle;
+private _troop_vehicle = [_spawnpos, opfor_transport_truck, 0] call F_libSpawnVehicle;
 (crew _troop_vehicle) joinSilent _convoy_group;
 
 _troop_vehicle setConvoySeparation 40;
