@@ -1,7 +1,7 @@
 params [ "_unit", "_killer", "_instigator"];
 
 if (isNull _unit) exitWith {};
-private [ "_nearby_bigtown","_msg" ];
+private ["_msg"];
 
 if ( isServer ) then {
 	if (_unit getVariable ["GRLIB_mp_kill", false]) exitWith {};
@@ -17,8 +17,10 @@ if ( isServer ) then {
 		};
 	};
 
-	//diag_log format ["DBG: Killer: %1 %2", name _killer, side (group _killer)];
-	//diag_log format ["DBG: Killed: %1 %2", name _unit, side (group _unit)];
+	private _unit_side = side group _unit;
+	private _killer_side = side group _killer;
+	//diag_log format ["DBG: Killer: %1 %2", name _killer, _killer_side];
+	//diag_log format ["DBG: Killed: %1 %2", name _unit, _unit_side];
 
 	// ACE
 	if (GRLIB_ACE_medical_enabled && local _unit) then {
@@ -39,14 +41,14 @@ if ( isServer ) then {
 		stats_player_deaths = stats_player_deaths + 1
 	};
 
-	if ( side _killer == GRLIB_side_friendly ) then {
+	if ( _killer_side == GRLIB_side_friendly ) then {
+		private _readiness = (0.1 * GRLIB_difficulty_modifier);
+		if (_unit isKindOf "AllVehicles") then { _readiness = (0.3 * GRLIB_difficulty_modifier) };
+		if (_unit isKindOf "Air") then { _readiness = (0.4 * GRLIB_difficulty_modifier) };
 
-		_nearby_bigtown = [ sectors_bigtown, {  (!(_x in blufor_sectors)) && ( _unit distance (markerpos _x) < 250 ) } ] call BIS_fnc_conditionalSelect;
-		if ( count _nearby_bigtown > 0 ) then {
-			combat_readiness = combat_readiness + (0.5 * GRLIB_difficulty_modifier);
-			stats_readiness_earned = stats_readiness_earned + (0.5 * GRLIB_difficulty_modifier);
-			if ( combat_readiness > 100 && GRLIB_difficulty_modifier < 2 ) then { combat_readiness = 100 };
-		};
+		combat_readiness = combat_readiness + _readiness;
+		stats_readiness_earned = stats_readiness_earned + _readiness;
+		if ( combat_readiness > 100 && GRLIB_difficulty_modifier < 2 ) then { combat_readiness = 100 };
 
 		if ( (vehicle _killer) isKindOf "CAManBase" ) then {
 			infantry_weight = infantry_weight + 1;
@@ -74,9 +76,7 @@ if ( isServer ) then {
 
 	private _unit_class = typeOf _unit;
 	if (_unit_class isKindOf "CAManBase") then {
-		if ( vehicle _unit != _unit ) then {
-			[_unit, false] spawn F_ejectUnit;
-		};
+		if ( !isNull objectParent _unit ) then { [_unit, false] spawn F_ejectUnit };
 
 		if (isNull _killer) exitWith {};
 		if ( _unit != _killer ) then {
@@ -89,7 +89,7 @@ if ( isServer ) then {
 				[_killer, 11] call F_addScore;
 			};
 			if ( _isZombie ) then { [_killer, 5] call F_addScore };
-			if ( !_isKamikaz && !_isZombie && side (group _unit) == GRLIB_side_civilian || _isPrisonner ) then {
+			if ( !_isKamikaz && !_isZombie && _unit_side == GRLIB_side_civilian || _isPrisonner ) then {
 				stats_civilians_killed = stats_civilians_killed + 1;
 				if ( isPlayer _killer ) then {
 					stats_civilians_killed_by_players = stats_civilians_killed_by_players + 1;
@@ -110,7 +110,7 @@ if ( isServer ) then {
 				};
 				_isDriver = (driver (vehicle _killer) == _killer);
 
-				if ( side (group _killer) == GRLIB_side_friendly && (!isPlayer _killer) && (!_isDriver) ) then {
+				if ( _killer_side == GRLIB_side_friendly && (!isPlayer _killer) && (!_isDriver) ) then {
 					_owner_id = (vehicle _killer) getVariable ["GRLIB_vehicle_owner", ""];
 					if (_owner_id == "") then {
 						_owner_id = (_killer getVariable ["PAR_Grp_ID", "0_0"]) splitString "_" select 1;
@@ -126,8 +126,8 @@ if ( isServer ) then {
 				};
 			};
 
-			if ( side _killer == GRLIB_side_friendly ) then {
-				if ( side (group _unit) == GRLIB_side_enemy ) then {
+			if ( _killer_side == GRLIB_side_friendly ) then {
+				if ( _unit_side == GRLIB_side_enemy ) then {
 					stats_opfor_soldiers_killed = stats_opfor_soldiers_killed + 1;
 					if ( isplayer _killer ) then {
 						stats_opfor_killed_by_players = stats_opfor_killed_by_players + 1;
@@ -146,17 +146,17 @@ if ( isServer ) then {
 					};
 					if (floor random 2 == 0) then { 
 						private _deathsound = format ["A3\sounds_f\characters\human-sfx\P%1\hit_max_%2.wss", selectRandom ["03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18"], selectRandom [1,2,3]];
-						playSound3D [_deathsound, _unit, false, getPosASL _unit, 4, 1, 300];
+						playSound3D [_deathsound, _unit, false, getPosASL _unit, 5, 1, 300];
 					};
 				};
-				if ( side (group _unit) == GRLIB_side_friendly ) then {
+				if ( _unit_side == GRLIB_side_friendly ) then {
 					stats_blufor_teamkills = stats_blufor_teamkills + 1;
 					[_killer, -20] call F_addScore;
 					_msg = localize "STR_FRIENDLY_FIRE";
 					[gamelogic, _msg] remoteExec ["globalChat", 0];
 				};
 			} else {
-				if ( side (group _unit) == GRLIB_side_friendly ) then {
+				if ( _unit_side == GRLIB_side_friendly ) then {
 					stats_blufor_soldiers_killed = stats_blufor_soldiers_killed + 1;
 				};
 			};
