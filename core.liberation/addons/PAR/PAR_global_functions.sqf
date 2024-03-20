@@ -148,13 +148,13 @@ PAR_public_EH = {
 	};
 };
 PAR_show_marker = {
-	_mk1 = createMarker [format ["PAR_marker_%1", name player], position player];
-	_mk1 setMarkerType "loc_Hospital";
+	private _mk1 = createMarkerLocal [format ["PAR_marker_%1", PAR_Grp_ID], getPosATL player];
+	_mk1 setMarkerTypeLocal "loc_Hospital";
+	_mk1 setMarkerTextLocal format ["%1 Injured", name player];	
 	_mk1 setMarkerColor "ColorRed";
-	_mk1 setMarkerText format ["%1 Injured", name player];
 };
 PAR_del_marker = {
-	deletemarker format ["PAR_marker_%1", name player];
+	deletemarker format ["PAR_marker_%1", PAR_Grp_ID];
 };
 
 // AI Section
@@ -292,9 +292,7 @@ PAR_Player_Unconscious = {
 		5 fadeRadio 1;
 
 		// Unmute ACRE
-		if (isPlayer _unit) then {
-			_unit setVariable ["ace_sys_wounds_uncon", false];
-		};
+		_unit setVariable ["ace_sys_wounds_uncon", false];
 
 		// Dog stop
 		if (!isNil "_my_dog") then { _my_dog setVariable ["do_find", nil] };

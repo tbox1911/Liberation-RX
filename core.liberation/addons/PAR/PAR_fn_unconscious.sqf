@@ -73,14 +73,19 @@ while {lifeState _unit == "INCAPACITATED" && time <= _unit getVariable ["PAR_Ble
 _bld spawn {sleep (30 + floor(random 30)); deleteVehicle _this};
 [(_unit getVariable ["PAR_myMedic", objNull]), _unit] call PAR_fn_medicRelease;
 
+if (isPlayer _unit) then { 
+	[] call PAR_del_marker;
+	if (GRLIB_disable_death_chat) then { for "_channel" from 0 to 4 do { _channel enableChannel true } };		
+};
+
+// Bad end
 if (lifeState _unit == "INCAPACITATED" && time > _unit getVariable ["PAR_BleedOutTimer", 0]) exitWith {
 	_unit setDamage 1;
 };
 
+// Good end
 if (isPlayer _unit) then {
 	if (primaryWeapon _unit != "") then { _unit selectWeapon primaryWeapon _unit };
-	if (GRLIB_disable_death_chat) then { for "_channel" from 0 to 4 do { _channel enableChannel true } };	
-	[] call PAR_del_marker;
 } else {
 	_unit setVariable ["GRLIB_can_speak", true, true];
 };
