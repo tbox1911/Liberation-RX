@@ -1,25 +1,6 @@
 params ["_unit", ["_slow", true]];
-if (!alive _unit) exitWith {};
 if (isNull objectParent _unit) exitWith {};
-if (!local _unit) exitWith {if (isServer) then {[_unit, _slow] remoteExec ["F_ejectUnit", owner _unit]}};
-
-private _backpack_save = _unit getVariable "GRLIB_para_backpack";
-if (!isNil "_backpack_save") then {
-	[_unit, _backpack_save] spawn {
-		params ["_unit", "_backpack"];
-		waituntil {sleep 2; (!alive _unit) || (isTouchingGround _unit)};
-		if (!alive _unit) exitWith {};
-		removeBackpack _unit;
-		_unit addBackpack _backpack;
-		clearAllItemsFromBackpack _unit;
-		_backpack_content = _unit getVariable ["GRLIB_para_backpack_contents", []];
-		if (count _backpack_content > 0) then {
-			{_unit addItemToBackpack _x} foreach _backpack_content;
-		};
-		_unit setVariable ["GRLIB_para_backpack", nil];
-		_unit setVariable ["GRLIB_para_backpack_contents", nil];	
-	};
-};
+//if (!local _unit) exitWith {if (isServer) then {[_unit, _slow] remoteExec ["F_ejectUnit", owner _unit]}};
 
 if ((vehicle _unit) isKindOf "ParachuteBase") exitWith {};
 
@@ -43,6 +24,24 @@ if (getPos _unit select 2 >= 50) then {
 		sleep 3;
 		if (isNull (driver _para)) then { deleteVehicle _para };
 	};
+
+	private _backpack_save = _unit getVariable "GRLIB_para_backpack";
+	if (!isNil "_backpack_save") then {
+		[_unit, _backpack_save] spawn {
+			params ["_unit", "_backpack"];
+			waituntil {sleep 2; (!alive _unit) || (isTouchingGround _unit)};
+			if (!alive _unit) exitWith {};
+			removeBackpack _unit;
+			_unit addBackpack _backpack;
+			clearAllItemsFromBackpack _unit;
+			_backpack_content = _unit getVariable ["GRLIB_para_backpack_contents", []];
+			if (count _backpack_content > 0) then {
+				{_unit addItemToBackpack _x} foreach _backpack_content;
+			};
+			_unit setVariable ["GRLIB_para_backpack", nil];
+			_unit setVariable ["GRLIB_para_backpack_contents", nil];	
+		};
+	};	
 };
 
 if (_unit_side == GRLIB_side_enemy) then { sleep 3; _unit allowDamage true };
