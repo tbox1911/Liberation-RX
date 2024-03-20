@@ -12,7 +12,7 @@ GRLIB_ui_notif = "";
 
 waituntil {sleep 1; GRLIB_player_spawned};
 waituntil {sleep 1; !isNil "resources_infantry"};
-infantry_cap = 0;
+waituntil {sleep 1; !isNil "infantry_cap"};
 
 if ( isNil "cinematic_camera_started" ) then { cinematic_camera_started = false };
 if ( isNil "halojumping" ) then { halojumping = false };
