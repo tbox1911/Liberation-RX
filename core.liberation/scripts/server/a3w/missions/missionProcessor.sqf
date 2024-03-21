@@ -101,7 +101,7 @@ waitUntil {
 		_marker setMarkerText format ["%1 - time over", localize _missionType];
 	};
 
-	_count_blu = [_lastPos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount;
+	_count_blu = [_lastPos, (GRLIB_sector_size * 1.3), GRLIB_side_friendly] call F_getUnitsCount;
 	_expired = (_time_left <= 0 && _count_blu == 0);
 	_failed = ((!isNil "_waitUntilCondition" && {call _waitUntilCondition}) || _expired);
 
