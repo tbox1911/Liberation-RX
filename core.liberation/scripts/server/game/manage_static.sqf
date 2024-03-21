@@ -43,12 +43,8 @@ while { true } do {
             // OPFor infinite Ammo
             if (side group _gunner == GRLIB_side_enemy) then {
                 _static setVehicleAmmo 1;
+                [_gunner, GRLIB_side_friendly] spawn F_getNearestEnemy;
             };
-
-            // Find enemy
-            _side = GRLIB_side_friendly;
-            if (side group _gunner == GRLIB_side_friendly) then { _side = GRLIB_side_enemy };
-            [_gunner, _side] spawn F_getNearestEnemy;
         };
 
         sleep 0.5;
