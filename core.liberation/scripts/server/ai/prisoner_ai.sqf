@@ -45,9 +45,10 @@ if (!_canmove) then {
 	// Follow
 	[_unit, "move"] remoteExec ["remote_call_prisoner", 0];
 	sleep 3;
+} else {
+	_unit setVariable ["GRLIB_is_prisoner", true, true];
 };
 
-_unit setVariable ["GRLIB_is_prisoner", true, true];
 waitUntil { sleep 1; isNull objectParent _unit };
 if (!alive _unit) exitWith {};
 
