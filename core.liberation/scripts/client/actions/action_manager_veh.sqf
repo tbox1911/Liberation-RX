@@ -100,7 +100,7 @@ while { true } do {
 			"<t color='#FFFF00'>" + localize "STR_NEUTRALIZE" + "</t>",
 			"\a3\ui_f_oldman\data\IGUI\Cfg\holdactions\destroy_ca.paa",
 			"\a3\ui_f_oldman\data\IGUI\Cfg\holdactions\destroy_ca.paa",
-			"!(isActionMenuVisible) && _this distance2D _target < 3 && count (crew _target) == 0",
+			"!(isActionMenuVisible) && alive _target && _this distance2D _target < 3 && count (crew _target) == 0",
 			"_caller distance2D _target < 3 && count (crew _target) == 0",
 			{ },
 			{ },
