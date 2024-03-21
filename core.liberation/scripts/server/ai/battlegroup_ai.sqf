@@ -2,31 +2,21 @@ params ["_grp", "_objective_pos"];
 if (isNil "_grp" || isNil "_objective_pos") exitWith {};
 if (isNull _grp) exitWith {};
 
-private ["_waypoint", "_wp0", "_next_objective", "_timer"];
-diag_log format ["Group %1 - Attack: %2", _grp, _objective_pos];
-
 private _vehicle = objectParent (leader _grp);
 if (_vehicle isKindOf "Ship") exitWith {
 	[_grp, getPosATL _vehicle] spawn defence_ai;
 };
 
+waitUntil { sleep 2; isTouchingGround (leader _grp) };
 sleep (5 + floor random 10);
+
 private _timer = 0;
+private ["_waypoint", "_wp0", "_next_objective", "_timer"];
 
 while { ({alive _x} count (units _grp) > 0) } do {
-
-	_next_objective = [_objective_pos] call F_getNearestBluforObjective;
-	if ((_next_objective select 1) <= GRLIB_spawn_max) then { _objective_pos = (_next_objective select 0) } else { _objective_pos = zeropos };
-
-	if (GRLIB_global_stop == 1) then {
-		private _target = selectRandom ((units GRLIB_side_friendly) select { _x distance2D lhd > GRLIB_fob_range && !([_x, uavs] call F_itemIsInClass) });
-		if !(isNil "_target") then { _objective_pos = getPosATL _target } else { _objective_pos = zeropos };
-	};
-
-	if (_objective_pos distance2D zeropos < 100) exitWith {};
-
 	if ( time > _timer) then {
 		[_objective_pos] remoteExec ["remote_call_incoming", 0];
+		diag_log format ["Group %1 - Attack: %2", _grp, _objective_pos];
 
 		[_grp] call F_deleteWaypoints;
 		_waypoint = _grp addWaypoint [_objective_pos, 100];
@@ -68,6 +58,17 @@ while { ({alive _x} count (units _grp) > 0) } do {
 			deleteVehicle _x;
 		};
 	} forEach (units _grp);
+
+	if ([_objective_pos, (GRLIB_sector_size * 2), GRLIB_side_friendly] call F_getUnitsCount == 0) then {
+		_next_objective = [_objective_pos] call F_getNearestBluforObjective;
+		if ((_next_objective select 1) <= GRLIB_spawn_max) then { _objective_pos = (_next_objective select 0) } else { _objective_pos = zeropos };
+
+		if (GRLIB_global_stop == 1) then {
+			private _target = selectRandom ((units GRLIB_side_friendly) select { _x distance2D lhd > GRLIB_fob_range && !([_x, uavs] call F_itemIsInClass) });
+			if !(isNil "_target") then { _objective_pos = getPosATL _target } else { _objective_pos = zeropos };
+		};
+	};
+	if (_objective_pos distance2D zeropos < 100) exitWith {};
 
 	sleep 33;
 };
