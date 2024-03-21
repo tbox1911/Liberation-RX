@@ -23,7 +23,7 @@ while { GRLIB_endgame == 0 && ({alive _x} count (units _grp) > 0) } do {
 	} else {
 		if ( time > _timer) then {
 			_patrol = false;
-			if (_grp_veh isKindOf "Truck_F" && count (crew _grp_veh) > 0 ) then { [_grp] spawn F_ejectGroup };
+			if (_grp_veh isKindOf "Truck_F" && count (crew _grp_veh) > 0 ) then { [_grp] call F_ejectGroup };
 
 			[_grp] call F_deleteWaypoints;
 			_waypoint = _grp addWaypoint [_basepos, _radius];

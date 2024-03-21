@@ -165,7 +165,7 @@ while { _mission_in_progress } do {
 	if ( _convoy_attacked && !_disembark_troops) then {
 		_disembark_troops = true;
 		{ _x removeAllEventHandlers "HandleDamage" } foreach [_scout_vehicle, _transport_vehicle, _troop_vehicle];
-		[_troops_group, _troop_vehicle] spawn F_ejectGroup;
+		[_troops_group, _troop_vehicle] call F_ejectGroup;
 		_troops_group setCombatBehaviour "COMBAT";
 		_troops_group setCombatMode "RED";
 		[_troops_group, getPosATL _troop_vehicle, 30] spawn defence_ai;

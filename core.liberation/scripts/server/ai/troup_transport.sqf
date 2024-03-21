@@ -40,7 +40,7 @@ if (typeOf _troup_transport isKindOf "Truck_F") then {
 };
 
 if ( { alive _x } count (units _troup_group) > 0 ) then {
-	[_troup_group, _troup_transport] spawn F_ejectGroup;
+	[_troup_group, _troup_transport] call F_ejectGroup;
 	[_troup_group, _objective_pos] spawn battlegroup_ai;
 };
 

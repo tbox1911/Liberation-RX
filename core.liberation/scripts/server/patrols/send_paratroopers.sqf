@@ -47,7 +47,7 @@ private _para_group = [zeropos, _unitclass, GRLIB_side_enemy, "para"] call F_lib
 	_x setVariable ["GRLIB_counter_TTL", round(time + 3600)];
 } foreach (units _para_group);
 
-if (_vehicle isKindOf "Plane_Base_F") then { _unload_dist = _unload_dist * 2 };
+if (_vehicle isKindOf "Plane_Base_F") then { _unload_dist = _unload_dist * 1.5 };
 
 [_vehicle, _spawnpos, _targetpos, _pilot_group, _para_group, _unload_dist] spawn {
 	params [ "_vehicle", "_spawnpos", "_targetpos", "_pilot_group", "_para_group", "_unload_dist"];
@@ -58,8 +58,7 @@ if (_vehicle isKindOf "Plane_Base_F") then { _unload_dist = _unload_dist * 2 };
 	};
 	if (!alive _vehicle) exitWith {};
 	if ({alive _x} count (units _para_group) > 0) then {
-		[_para_group, _vehicle] spawn F_ejectGroup;
-		sleep 10;
+		[_para_group, _vehicle] call F_ejectGroup;
 		[_para_group, _targetpos] spawn battlegroup_ai;
 	};
 
