@@ -1,4 +1,4 @@
-params ["_unit"];
+params ["_unit", "_side"];
 
 private _vehicle = objectParent _unit;
 private _vehicle_class = typeOf _vehicle;
@@ -18,8 +18,7 @@ if (_vehicle_class isKindOf "AA_01_base_F") then {_dist = 2000; _kind = ["Air"]}
 if (_vehicle_class isKindOf "StaticMortar") then {_dist = 1800; _kind = ["CAManBase", "Car"]};
 
 private _scan_target = [ ((getPosATL _vehicle) nearEntities [ _kind, _dist]), {
-    alive _x &&
-    side group _x == GRLIB_side_friendly &&
+    alive _x && side group _x == _side &&
     !(_x getVariable ['R3F_LOG_disabled', false])
 } ] call BIS_fnc_conditionalSelect;
 

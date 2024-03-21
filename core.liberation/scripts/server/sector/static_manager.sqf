@@ -2,7 +2,7 @@ params [ "_sector", "_number" ];
 
 if (_number == 0) exitWith {};
 if (_number >= 1) then {
-	sleep 2;
+	sleep 1;
 	[ _sector, _number - 1 ] spawn static_manager;
 };
 
@@ -13,13 +13,21 @@ if (_sector in sectors_bigtown) then { _radius = _radius * 1.4 };
 private _spawn_pos = [markerPos _sector, _radius, random 360] call BIS_fnc_relPos;
 if (surfaceIsWater _spawn_pos) exitWith {};
 
-private _vehicle = [_spawn_pos, selectRandom opfor_statics, 0] call F_libSpawnVehicle;
-if (isNull _vehicle) exitWith {};
+private _vehicle = createVehicle [selectRandom opfor_statics, _spawn_pos, [], 0, "None"];
+_vehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_static }];
 
 private _grp = createGroup [GRLIB_side_enemy, true];
-(crew _vehicle) joinSilent _grp;
-opfor_spotter createUnit [ getposATL _vehicle, _grp, 'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.65, "PRIVATE"];
-opfor_spotter createUnit [ getposATL _vehicle, _grp, 'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.65, "PRIVATE"];
+_unit = _grp createUnit [opfor_squad_leader, _vehicle, [], 3, "None"];
+_unit assignAsGunner _vehicle;
+[_unit] orderGetIn true;
+_unit moveInGunner _vehicle;
+_unit = _grp createUnit [opfor_spotter, _vehicle, [], 3, "None"];
+_unit = _grp createUnit [opfor_spotter, _vehicle, [], 3, "None"];
+
+{
+    _x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+} foreach (units _grp);
 
 _vehicle setVariable ["GRLIB_counter_TTL", round(time + 900)];
 _vehicle setVariable ["GRLIB_vehicle_owner", "server", true];

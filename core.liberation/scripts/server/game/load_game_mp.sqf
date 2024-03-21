@@ -250,11 +250,10 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 			if ( _nextclass in list_static_weapons ) then {
 				_nextbuilding setVehicleLock "DEFAULT";
 				{ _nextbuilding lockTurret [_x, false] } forEach (allTurrets _nextbuilding);
-
+				_nextbuilding addEventHandler ["HandleDamage", { _this call damage_manager_static }];
 				if (_nextclass in static_vehicles_AI) then {
 					_nextbuilding setVehicleLock "LOCKEDPLAYER";
 					_nextbuilding addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1 }];
-					_nextbuilding addEventHandler ["HandleDamage", { _this call damage_manager_static }];
 					_nextbuilding allowCrewInImmobile [true, false];
 					_nextbuilding setUnloadInCombat [true, false];
 				};
@@ -348,9 +347,6 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 			_allow_damage = false;
 		};
 		if ((typeOf _x) isKindOf "Land_PortableHelipadLight_01_F") then {
-			_allow_damage = false;
-		};
-		if ((typeOf _x) in (list_static_weapons - static_vehicles_AI)) then {
 			_allow_damage = false;
 		};
 		if ( _allow_damage ) then { _x allowDamage true };

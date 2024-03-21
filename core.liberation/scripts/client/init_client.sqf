@@ -137,7 +137,6 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 [] execVM "scripts\client\misc\secondary_jip.sqf";
 [] execVM "scripts\client\misc\stop_renegade.sqf";
 [] execVM "scripts\client\misc\manage_manpower.sqf";
-[] execVM "scripts\client\misc\manage_static.sqf";
 [] execVM "scripts\client\misc\no_thermic.sqf";
 [] execVM "scripts\client\misc\init_markers.sqf";
 [] execVM "scripts\client\misc\speak_manager_data.sqf";
