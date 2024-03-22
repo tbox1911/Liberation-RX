@@ -1,9 +1,9 @@
-params [ "_sector", "_number" ];
+params [ "_sector", "_count" ];
 
-if (_number == 0) exitWith {};
-if (_number >= 1) then {
+if (_count == 0) exitWith {};
+if (_count >= 1) then {
 	sleep 1;
-	[ _sector, _number - 1 ] spawn static_manager;
+	[_sector, _count - 1] spawn static_manager;
 };
 
 // Create

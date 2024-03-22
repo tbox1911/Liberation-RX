@@ -1,63 +1,60 @@
 params ["_targetpos", "_side", "_count"];
 
+if (_count == 0) exitWith {};
+if (_count >= 1) then {
+	sleep 1;
+	[_targetpos, _side, _count - 1] spawn spawn_air;
+};
+
 if (isNil "_side") then {_side = GRLIB_side_enemy};
 private _planeType = opfor_air;
 if (_side == GRLIB_side_friendly) then {_planeType = blufor_air};
 if (count _planeType == 0) exitWith { objNull };
 
 private _grp = createGroup [_side, true];
-_grp setFormation "WEDGE";
+private _vehicle = [zeropos, selectRandom _planeType, 0, false, _side] call F_libSpawnVehicle;
+_vehicle setVariable ["GRLIB_counter_TTL", round(time + 1800), true];  // 30 minutes TTL
+(crew _vehicle) joinSilent _grp;
 _grp setBehaviourStrong "COMBAT";
 _grp setCombatMode "RED";
 _grp setSpeedMode "FULL";
 
-private _radius = 500;
+private _radius = 350;
 [_grp] call F_deleteWaypoints;
 private _waypoint = _grp addWaypoint [ _targetpos, _radius];
 _waypoint setWaypointType "MOVE";
 _waypoint setWaypointSpeed "FULL";
 _waypoint setWaypointBehaviour "COMBAT";
 _waypoint setWaypointCombatMode "RED";
-_waypoint setWaypointFormation "WEDGE";
 _waypoint setWaypointType "MOVE";
 _waypoint = _grp addWaypoint [ _targetpos, _radius];
 _waypoint setWaypointType "MOVE";
 _waypoint = _grp addWaypoint [ _targetpos, _radius];
 _waypoint setWaypointType "MOVE";
-_waypoint = _grp addWaypoint [ _targetpos, _radius];
+_wp0 = waypointPosition [_grp, 0];
+_waypoint = _grp addWaypoint [_wp0, 0];
 _waypoint setWaypointType "CYCLE";
-
-private ["_vehicle"];
-for "_i" from 1 to _count do {
-	_vehicle = [zeropos, selectRandom _planeType, 0, false, _side] call F_libSpawnVehicle;
-	_vehicle setVariable ["GRLIB_counter_TTL", round(time + 1800), true];  // 30 minutes TTL
-	(crew _vehicle) joinSilent _grp;
-	{
-		_x addBackpack "B_Parachute";
-		_x setVariable ["GRLIB_counter_TTL", round(time + 1800), true];  // 30 minutes TTL
-	} forEach (crew _vehicle);
-	if (_side == GRLIB_side_friendly) then {
-		private _msg = format ["Air support %1 incoming...", [typeOf _vehicle] call F_getLRXName];
-		[gamelogic, _msg] remoteExec ["globalChat", 0];
-	};
-	diag_log format [ "Spawn Air vehicle %1 on %2 at %3", typeOf _vehicle, _targetpos, time ];
-	sleep 5;
-};
-
 {_x doFollow leader _grp} foreach units _grp;
 
-if (_side == GRLIB_side_friendly) exitWith {};
-sleep 300;
+if (_side == GRLIB_side_friendly) exitWith {
+	private _msg = format ["Air support %1 incoming...", [typeOf _vehicle] call F_getLRXName];
+	[gamelogic, _msg] remoteExec ["globalChat", 0];
+};
+diag_log format ["Spawn Air vehicle %1 onobjective %2 at %3", typeOf _vehicle, _targetpos, time];
+sleep 500;
 
-while { ({alive _x} count (units _grp) > 0) && ( GRLIB_endgame == 0 ) } do {
-
-	_target = (leader _grp) findNearestEnemy (leader _grp);
-	if (isNull _target) then {
-		_pilots = allPlayers select { (objectParent _x) isKindOf "Air" && (driver vehicle _x) == _x };
-		if (count _pilots > 0) then { _targetpos = getPos (selectRandom _pilots) };
+while { ({alive _x} count (units _grp) > 0) && (GRLIB_endgame == 0) } do {
+	_targetpos = [];
+	_pilots = allPlayers select { (objectParent _x) isKindOf "Air" && (driver vehicle _x) == _x };
+	if (count _pilots > 0) then {
+		_targetpos = getPos (selectRandom _pilots);
 	} else {
-		_targetpos = getPos _target;
+		if ([_vehicle, (GRLIB_sector_size * 2), GRLIB_side_friendly] call F_getUnitsCount == 0) then {
+			_next_objective = [getPos _vehicle] call F_getNearestBluforObjective;
+			if ((_next_objective select 1) <= GRLIB_spawn_max) then { _targetpos = (_next_objective select 0) } else { _targetpos = zeropos };
+		};
 	};
+	if (_targetpos isEqualTo zeropos) exitWith {};
 
 	if (count _targetpos > 0) then {
 		[_grp] call F_deleteWaypoints;
@@ -72,12 +69,19 @@ while { ({alive _x} count (units _grp) > 0) && ( GRLIB_endgame == 0 ) } do {
 		_waypoint setWaypointType "MOVE";
 		_waypoint = _grp addWaypoint [_targetpos, _radius];
 		_waypoint setWaypointType "MOVE";
-		_waypoint = _grp addWaypoint [_targetpos, _radius];
-		_waypoint setWaypointType "CYCLE";
+		_wp0 = waypointPosition [_grp, 0];
+		_waypoint = _grp addWaypoint [_wp0, 0];
+		_waypoint setWaypointType "CYCLE";		
 		{ _x doFollow leader _grp } foreach units _grp;
 		sleep 300;
 	};
 	_vehicle setFuel 1;
 	_vehicle setVehicleAmmo 1;
-	sleep 30;
+	sleep 60;
 };
+
+// Cleanup
+waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_vehicle, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+[_vehicle] call clean_vehicle;
+{ deleteVehicle _x } forEach (units _grp);
+deleteGroup _grp;

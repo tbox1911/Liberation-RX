@@ -13,7 +13,7 @@ sleep (5 + floor random 10);
 private _timer = 0;
 private ["_waypoint", "_wp0", "_next_objective", "_timer"];
 
-while { ({alive _x} count (units _grp) > 0) } do {
+while { ({alive _x} count (units _grp) > 0) && (GRLIB_endgame == 0)} do {
 	if ( time > _timer) then {
 		[_objective_pos] remoteExec ["remote_call_incoming", 0];
 		diag_log format ["Group %1 - Attack: %2", _grp, _objective_pos];
@@ -31,7 +31,6 @@ while { ({alive _x} count (units _grp) > 0) } do {
 		_waypoint setWaypointType "MOVE";
 		_waypoint = _grp addWaypoint [_objective_pos, 100];
 		_waypoint setWaypointType "MOVE";
-
 		_wp0 = waypointPosition [_grp, 0];
 		_waypoint = _grp addWaypoint [_wp0, 0];
 		_waypoint setWaypointType "CYCLE";
@@ -59,6 +58,12 @@ while { ({alive _x} count (units _grp) > 0) } do {
 		};
 	} forEach (units _grp);
 
+	if (!isNull _vehicle) then {
+		[_vehicle] call F_vehicleUnflip;
+		_vehicle setFuel 1;
+		_vehicle setVehicleAmmo 1;
+	};
+
 	if ([_objective_pos, (GRLIB_sector_size * 2), GRLIB_side_friendly] call F_getUnitsCount == 0) then {
 		_next_objective = [_objective_pos] call F_getNearestBluforObjective;
 		if ((_next_objective select 1) <= GRLIB_spawn_max) then { _objective_pos = (_next_objective select 0) } else { _objective_pos = zeropos };
@@ -68,7 +73,7 @@ while { ({alive _x} count (units _grp) > 0) } do {
 			if !(isNil "_target") then { _objective_pos = getPosATL _target } else { _objective_pos = zeropos };
 		};
 	};
-	if (_objective_pos distance2D zeropos < 100) exitWith {};
+	if (_objective_pos isEqualTo zeropos) exitWith {};
 
 	sleep 33;
 };
