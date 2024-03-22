@@ -270,6 +270,9 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 			if ( _nextclass == Box_Ammo_typename ) then {
 				_nextbuilding addItemCargoGlobal ["SatchelCharge_Remote_Mag", 2];
 			};
+			if ( _nextclass == Arsenal_typename ) then {
+				_nextbuilding setMaxLoad 0;
+			};			
         } else {
 			if ( !(_owner in ["", "public"]) && count _x > 5 ) then {
 				//[_x select 5] params [["_color", ""]];

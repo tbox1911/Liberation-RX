@@ -100,7 +100,6 @@ get_player_name = compileFinal preprocessFileLineNumbers "scripts\client\misc\ge
 save_loadout_cargo = compileFinal preprocessFileLineNumbers "scripts\client\misc\save_loadout_cargo.sqf";
 speak_manager = compileFinal preprocessFileLineNumbers "scripts\client\misc\speak_manager.sqf";
 save_personal_arsenal = compileFinal preprocessFileLineNumbers "scripts\client\actions\save_personal_arsenal.sqf";
-load_personal_arsenal = compileFinal preprocessFileLineNumbers "scripts\client\actions\load_personal_arsenal.sqf";
 
 private _grp = createGroup [GRLIB_side_friendly, true];
 waitUntil {

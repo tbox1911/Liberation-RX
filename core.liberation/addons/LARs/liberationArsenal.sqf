@@ -99,13 +99,14 @@ private _default_personal_arsenal = [
 	["HandGrenade", 6],
 	["SatchelCharge_Remote_Mag", 2]
 ];
-if (isNil "personal_arsenal") then {personal_arsenal = _default_personal_arsenal};
+if (isNil "personal_arsenal") then { personal_arsenal = _default_personal_arsenal };
 
 // Personal Arsenal
 if (GRLIB_filter_arsenal == 4) exitWith {
 	private _player_arsenal = profileNamespace getVariable ["GRLIB_personal_arsenal", nil];
-	GRLIB_personal_arsenal = personal_arsenal;
-	if (!isNil "_player_arsenal") then {
+	if (isNil "_player_arsenal") then {
+		GRLIB_personal_arsenal = personal_arsenal;
+	} else {
 		GRLIB_personal_arsenal = _player_arsenal;
  	};
 
@@ -113,7 +114,9 @@ if (GRLIB_filter_arsenal == 4) exitWith {
 	GRLIB_personal_box allowDamage false;
 	[GRLIB_personal_box] remoteExec ["hide_object_remote_call", 2];
 	GRLIB_personal_box setVariable ["GRLIB_personal_box_pos", getPos GRLIB_personal_box];
-	[] call load_personal_arsenal;
+	[GRLIB_personal_box] call F_clearCargo;
+	[GRLIB_personal_box, GRLIB_personal_arsenal] call F_setCargo;
+
 	diag_log format ["--- LRX Personal Arsenal initialized. (%1)", count GRLIB_personal_arsenal];
 	LRX_arsenal_init_done = true;
 };

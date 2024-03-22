@@ -470,6 +470,11 @@ while { true } do {
 				{[_vehicle, _x] call attach_object_direct} forEach _lst_grl;
 			};
 
+			// Arsenalbox
+			if ( _classname == Arsenal_typename ) then {
+				[_vehicle, 0] remoteExec ["setMaxLoad", 2];
+			};
+
 			// Ammobox (add Charge)
 			if ( _classname == Box_Ammo_typename ) then {
 				_vehicle addItemCargoGlobal ["SatchelCharge_Remote_Mag", 2];
