@@ -40,6 +40,7 @@ if (!abort_loading) then {
 	};
 } else {
 	GRLIB_init_server = false;
+	disableUserInput false;
 	publicVariable "GRLIB_init_server";
 	publicVariable "abort_loading";
 	publicVariable "abort_loading_msg";
@@ -50,7 +51,6 @@ if (!abort_loading) then {
 if (!isDedicated && hasInterface) then {
 	titleText ["-- Liberation RX --","BLACK FADED", 100];
 	waitUntil { sleep 1; !isNil "GRLIB_init_server" };
-	disableUserInput false;
 	[] execVM "scripts\client\init_client.sqf";
 };
 

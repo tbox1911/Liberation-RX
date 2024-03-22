@@ -5,6 +5,7 @@ params ["_unit", "_oldUnit", "_respawn", "_respawnDelay"];
 titleText ["" ,"BLACK FADED", 100];
 1 fadeSound 0;
 
+waitUntil {sleep 0.1; (alive _unit)};
 waitUntil {sleep 0.1; !isNil "GRLIB_init_server"};
 if (!GRLIB_init_server) exitWith {};
 waitUntil {sleep 0.1; !isNil "GRLIB_LRX_params_loaded"};
@@ -34,7 +35,5 @@ _unit setVariable ["SOG_player_in_tunnel", nil];
 _unit allowDamage true;
 
 [] execVM "scripts\client\spawn\player_loadout.sqf";
-waitUntil {sleep 0.1; !(isNil "dostartgame")};
-waitUntil {sleep 0.1; dostartgame == 1};
 [] execVM "scripts\client\spawn\redeploy_manager.sqf";
 [] execVM "scripts\client\misc\welcome.sqf";

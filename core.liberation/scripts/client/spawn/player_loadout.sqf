@@ -1,5 +1,13 @@
-// Allow time for load_context
-WaitUntil {sleep 0.5; (player getVariable ["GRLIB_player_context_loaded", false])};
+waitUntil {sleep 0.1; (!alive player || GRLIB_player_spawned) };
+if (!alive player) exitWith {};
+
+// Load Player Context
+if (GRLIB_player_spawned && !(player getVariable ["GRLIB_player_context_loaded", false])) then {
+	[player] remoteExec ["load_context_remote_call", 2];
+	// Allow time for load_context
+	sleep 2;
+	waitUntil {sleep 0.1; (player getVariable ["GRLIB_player_context_loaded", false])};
+};
 
 // Fix player pos
 [player] spawn F_fixModUnit;
