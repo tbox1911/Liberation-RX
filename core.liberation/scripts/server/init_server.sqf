@@ -162,7 +162,7 @@ if (abort_loading) exitWith {
 [] execVM "scripts\server\game\hall_of_fame.sqf";
 [] execVM "scripts\server\battlegroup\counter_battlegroup.sqf";
 [] execVM "scripts\server\battlegroup\random_battlegroups.sqf";
-[] execVM "scripts\server\battlegroup\readiness_increase.sqf";
+[] execVM "scripts\server\battlegroup\readiness_decrease.sqf";
 [] execVM "scripts\server\resources\manage_resources.sqf";
 [] execVM "scripts\server\patrols\civilian_patrols.sqf";
 [] execVM "scripts\server\patrols\enemy_patrols.sqf";
