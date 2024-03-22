@@ -34,7 +34,7 @@ while { GRLIB_endgame == 0 } do {
 		0 setRain _rain;
 		0 setFog _fog;
 		setWind [_windx, _windy, true];
-		//forceWeatherChange;
+		forceWeatherChange;
 		diag_log format ["--- LRX Weather changed to %1 - rain %2 - fog %3 - wind %4/%5", _chosen_weather, _rain, _fog, _windx, _windy];
 	};
 	sleep _weathertime;
