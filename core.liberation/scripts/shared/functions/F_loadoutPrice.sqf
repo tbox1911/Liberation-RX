@@ -138,27 +138,22 @@ if (typeName _unit == "OBJECT") then {
 	};
 
 	if (_unit iskindof "LandVehicle" || typeOf _unit in [Arsenal_typename] + GRLIB_Ammobox_keep + GRLIB_disabled_arsenal) then {
-		_weap_cargo = weaponCargo _unit;
-		if (count _weap_cargo > 0) then {
-			{
-				_val = _val + ([_x] call _fn_getprice);
-			} forEach _weap_cargo;
-		};
-
-		_item_cargo = itemCargo _unit;
-		if (count _item_cargo > 0) then {
-			{
-				_val = _val + ([_x] call _fn_getprice);
-			} forEach _item_cargo;
-		};
-
-		_mag_cargo = magazineCargo _unit;
-		if (count _mag_cargo > 0) then {
-			{
-				_val = _val + 1;
-			} forEach _mag_cargo;
-		};
-		
+		private ["_count"];
+		{
+			if (typeName (_x select 1) == "ARRAY") then {
+				{
+					_count = (_x select 1);
+					{ 
+						//diag_log [_x, _count select _foreachIndex];
+						_val = _val + (([_x] call _fn_getprice) * (_count select _foreachIndex));
+					} forEach (_x select 0);
+				} forEach (_x select 1);
+			} else {
+				_count = 1;
+				if (typeName (_x select 1) == "SCALAR") then { _count = (_x select 1) };
+				_val = _val + (([(_x select 0)] call _fn_getprice) * _count);
+			};
+		} forEach ([_unit, true] call F_getCargo);
 	};
 };
 
