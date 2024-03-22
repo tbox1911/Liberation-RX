@@ -20,7 +20,7 @@ if ( count GRLIB_all_fobs > 0 || count blufor_sectors > 0 ) then {
 		} foreach GRLIB_all_fobs;
 	};
 
-	// if nearset FOB too far, search sectors
+	// if nearest FOB too far, search sectors
 	if (_refdistance > _radius) then {
 		{
 			_sector_pos = markerPos _x;

@@ -41,10 +41,10 @@ while { GRLIB_endgame == 0 } do {
 		{ 
 			_sector_pos = markerPos _x;
 			_nearest_sector = [(GRLIB_sector_size * 3), _sector_pos, blufor_sectors] call F_getNearestSector;
-			_nearset_fob = [_sector_pos] call F_getNearestFob;
+			_nearest_fob = [_sector_pos] call F_getNearestFob;
 			_near_fob = false;
-			if !(_nearset_fob isEqualTo zeropos) then {
-				_near_fob = (_nearset_fob distance2D _sector_pos < (GRLIB_sector_size * 3));
+			if !(_nearest_fob isEqualTo zeropos) then {
+				_near_fob = (_nearest_fob distance2D _sector_pos < (GRLIB_sector_size * 3));
 			};
 			if (_nearest_sector != "" || _near_fob) then {
 				_x setMarkerColorLocal GRLIB_color_enemy;
