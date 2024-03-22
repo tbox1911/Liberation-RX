@@ -71,5 +71,8 @@ if ( _class == Warehouse_typename ) then {
 if ( _class == basic_weapon_typename ) then {
 	_text = "Basic Weapons";
 };
+if ( _class == medic_heal_typename ) then {
+	_text = "Medical Support";
+};
 
 _text;

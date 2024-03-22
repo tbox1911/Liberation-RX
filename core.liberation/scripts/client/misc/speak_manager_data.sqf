@@ -14,7 +14,7 @@ speak_squad_AI = {
 			_msg = format ["I'm tired of all this, I was wounded %1 times today !", _cur_revive];
 		};
 		if (_cur_revive <= 3) then {
-			_msg = format ["Bad, It's not going well at all, I need a rest. (Revive left %1)", _cur_revive];
+			_msg = format ["Bad, It's not going well at all, I need Medical Support. (Revive left %1)", _cur_revive];
 		};		
 		_unit globalChat _msg;
 	} else {

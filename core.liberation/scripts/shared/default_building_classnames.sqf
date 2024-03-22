@@ -22,7 +22,6 @@ buildings_default = [
 	["Land_Bunker_01_tall_F",0,0,0,GRLIB_perm_tank],
 	["Land_PillboxBunker_01_big_F",0,0,0,GRLIB_perm_tank],
 	["Land_GuardTower_01_F",0,0,0,GRLIB_perm_tank],
-	["Land_MedicalTent_01_NATO_generic_open_F",0,0,0,GRLIB_perm_inf],
 	//["Land_BagBunker_Tower_F",0,0,0,GRLIB_perm_tank],
 	["Land_SandbagBarricade_01_F",0,0,0,GRLIB_perm_log],
 	["Land_SandbagBarricade_01_hole_F",0,0,0,GRLIB_perm_log],

@@ -27,6 +27,7 @@ repair_sling_typename = "B_Slingload_01_Repair_F";
 fuel_sling_typename = "B_Slingload_01_Fuel_F";
 ammo_sling_typename = "B_Slingload_01_Ammo_F";
 medic_sling_typename = "B_Slingload_01_Medevac_F";
+medic_heal_typename = "Land_MedicalTent_01_NATO_generic_open_F";
 mobile_respawn = "Land_TentDome_F";
 mobile_respawn_bag = "B_Kitbag_Base";
 medicalbox_typename = "Box_B_UAV_06_medical_F";

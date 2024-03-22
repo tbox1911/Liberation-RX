@@ -102,7 +102,9 @@ PAR_fn_globalchat = {
   if (isDedicated) exitWith {};
   if (!(local _speaker)) exitWith {};
   if ((_speaker getVariable ["PAR_Grp_ID","0"]) == format ["Bros_%1", PAR_Grp_ID] || isPlayer _speaker) then {
-    gamelogic globalChat _msg;
+	if (_speaker distance2D player < GRLIB_sector_size) then {
+		gamelogic globalChat _msg;
+	};
   };
 };
 PAR_fn_fixPos = {
@@ -150,11 +152,45 @@ PAR_public_EH = {
 PAR_show_marker = {
 	private _mk1 = createMarkerLocal [format ["PAR_marker_%1", PAR_Grp_ID], getPosATL player];
 	_mk1 setMarkerTypeLocal "loc_Hospital";
-	_mk1 setMarkerTextLocal format ["%1 Injured", name player];	
+	_mk1 setMarkerTextLocal format ["%1 Injured", name player];
 	_mk1 setMarkerColor "ColorRed";
 };
 PAR_del_marker = {
 	deletemarker format ["PAR_marker_%1", PAR_Grp_ID];
+};
+PAR_revive_max = {
+	params ["_unit"];
+
+	private _cur_revive = (_unit getVariable ["PAR_revive_max", PAR_ai_revive]) - 1;
+	_unit setVariable ["PAR_revive_max", _cur_revive];
+	if (_cur_revive <= 3) then {
+		private _msg = format ["%1 last revive (%2) !!", name _unit, _cur_revive];
+		[_unit, _msg] call PAR_fn_globalchat;
+	};
+
+	private _timer = 20;
+	while { _timer >= 0 && alive _unit } do {
+		private _near_medical = (count (nearestObjects [_unit, [medic_heal_typename], 10]) > 0);
+		if (_cur_revive <= 3 && !_near_medical) then {
+			private _msg = format ["%1 need Medical Support Now !!", name _unit];
+			[_unit, _msg] call PAR_fn_globalchat;
+		};
+		if (_near_medical) then {
+			private _msg = format ["%1 is healing faster...", name _unit];
+			[_unit, _msg] call PAR_fn_globalchat;
+			sleep 25;
+		} else {
+			sleep 60;
+		};
+		_timer = _timer - 1;
+	};
+
+	if (!alive _unit) exitWith {};
+	private _revive = (_unit getVariable ["PAR_revive_max", PAR_ai_revive]) + 1;
+	_unit setVariable ["PAR_revive_max", _revive];
+	private _msg = format ["%1 revive restored (%2) !!", name _unit, _revive];
+	[_unit, _msg] call PAR_fn_globalchat;
+
 };
 
 // AI Section
@@ -208,7 +244,7 @@ PAR_HandleDamage_EH = {
 	if (isNull _unit) exitWith {0};
 	if (!isNull _instigator) then {
 		if (isNull (getAssignedCuratorLogic _instigator)) then {
-	    	_killer = _instigator;
+			_killer = _instigator;
 		};
 	} else {
 		if (!(_killer isKindOf "CAManBase")) then {
