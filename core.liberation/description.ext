@@ -1,3 +1,5 @@
+__EXEC(GRLIB_Player_variables = allVariables profileNamespace)
+
 class Header {
 	gameType = CTI;
 	minPlayers = 1;

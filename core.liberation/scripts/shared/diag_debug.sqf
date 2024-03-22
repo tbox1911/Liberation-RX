@@ -48,6 +48,11 @@ if (_save == 2) then {
     diag_log  format ["  %1 = %2", _x, serverNamespace getVariable _x ];
   } foreach (allVariables serverNamespace);
 
+  diag_log "--- LRX Player Variables ---------------------------";
+  {
+    diag_log  format ["  %1", _x];
+  } foreach (parsingNamespace getVariable "GRLIB_Player_variables");
+
   diag_log "-----------------------------------------------------";
 };
 diag_log "------------------- LRX Diag End ----------------------";
