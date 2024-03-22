@@ -98,14 +98,12 @@ PAR_abandon_priso = {
 	};
 };
 PAR_fn_globalchat = {
-  params ["_speaker", "_msg"];
-  if (isDedicated) exitWith {};
-  if (!(local _speaker)) exitWith {};
-  if ((_speaker getVariable ["PAR_Grp_ID","0"]) == format ["Bros_%1", PAR_Grp_ID] || isPlayer _speaker) then {
-	if (_speaker distance2D player < GRLIB_sector_size) then {
+	params ["_speaker", "_msg"];
+	if (isDedicated) exitWith {};
+	if (!(local _speaker)) exitWith {};
+	if ((_speaker getVariable ["PAR_Grp_ID","0"]) == format ["Bros_%1", PAR_Grp_ID] || isPlayer _speaker) then {
 		gamelogic globalChat _msg;
 	};
-  };
 };
 PAR_fn_fixPos = {
 	params ["_list"];
@@ -176,8 +174,10 @@ PAR_revive_max = {
 			[_unit, _msg] call PAR_fn_globalchat;
 		};
 		if (_near_medical) then {
-			private _msg = format ["%1 is healing faster...", name _unit];
-			[_unit, _msg] call PAR_fn_globalchat;
+			if (_unit distance2D player < 100) then {
+				private _msg = format ["%1 is healing faster...", name _unit];
+				[_unit, _msg] call PAR_fn_globalchat;
+			};
 			sleep 25;
 		} else {
 			sleep 60;
