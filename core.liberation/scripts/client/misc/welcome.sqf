@@ -8,9 +8,9 @@ private _rank = player getVariable ["GRLIB_Rank", "Private"];
 private _ammo_collected = player getVariable ["GREUH_ammo_count",0];
 
 // first time notice
-if (_score == 0) then {	
+if (_score == 0) then {
     createDialog "liberation_notice";
-    profileNamespace setVariable ["GRLIB_personal_arsenal", nil];
+    profileNamespace setVariable [format ["GRLIB_personal_arsenal_%1", GRLIB_game_ID], nil];
 };
 
 // disable UAVs

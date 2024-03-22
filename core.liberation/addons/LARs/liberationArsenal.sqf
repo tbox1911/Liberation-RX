@@ -103,7 +103,7 @@ if (isNil "personal_arsenal") then { personal_arsenal = _default_personal_arsena
 
 // Personal Arsenal
 if (GRLIB_filter_arsenal == 4) exitWith {
-	private _player_arsenal = profileNamespace getVariable ["GRLIB_personal_arsenal", nil];
+	private _player_arsenal = profileNamespace getVariable [format ["GRLIB_personal_arsenal_%1", GRLIB_game_ID], nil];
 	if (isNil "_player_arsenal") then {
 		GRLIB_personal_arsenal = personal_arsenal;
 	} else {

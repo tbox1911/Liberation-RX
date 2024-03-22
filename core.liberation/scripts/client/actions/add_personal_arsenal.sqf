@@ -7,7 +7,7 @@ private _cargo = [_vehicle, true] call F_getCargo;
 [GRLIB_personal_box, _cargo] call F_setCargo;
 
 GRLIB_personal_arsenal = [GRLIB_personal_box, true] call F_getCargo;
-profileNamespace setVariable ["GRLIB_personal_arsenal", GRLIB_personal_arsenal]; 
+profileNamespace setVariable [format ["GRLIB_personal_arsenal_%1", GRLIB_game_ID], GRLIB_personal_arsenal];
 saveProfileNamespace;
 
 hintSilent format ["Transfer %1 cargo,\nto your Arsenal.", [_vehicle] call F_getLRXName];
