@@ -1,3 +1,6 @@
+waitUntil {sleep 0.1; !(isNil "dostartgame")};
+waitUntil {sleep 0.1; dostartgame == 1};
+
 if (player getVariable ["GRLIB_action_inuse", false]) exitWith {};
 if (count (attachedObjects player) > 0) then {{detach _x} forEach attachedObjects player};
 R3F_LOG_joueur_deplace_objet = objNull;
@@ -10,7 +13,9 @@ private _basenamestr = "BASE CHIMERA";
 private _last_pos = gamelogic getVariable [format ["player_lastpos_%1", PAR_Grp_ID], []];
 if (!GRLIB_player_spawned && count _last_pos > 0) exitWith {
 	titleText ["","BLACK IN", 5];
-	[_last_pos] call respawn_lhd;
+	player setPosATL (_last_pos vectorAdd [floor(random 5), floor(random 5), 1]);
+	GRLIB_player_spawned = ([] call F_getValid);
+	cinematic_camera_started = false;	
 	disableUserInput false;
 	disableUserInput true;
 	disableUserInput false;	
@@ -172,7 +177,7 @@ if (deploy == 1) then {
 	_spawn_str = (_choiceslist select _idxchoice) select 0;
 	if ( _spawn_str == _basenamestr) then {
 		// LHD (Chimera)
-		[getPosATL lhd] call respawn_lhd;
+		player setPosATL ((getPosATL lhd) vectorAdd [floor(random 5), floor(random 5), 1]);
 		player setVariable ["GRLIB_action_inuse", false, true];
 	} else {
 		private _destpos = [];
@@ -220,9 +225,9 @@ if (deploy == 1) then {
 			sleep 3;
 			player setVariable ["GRLIB_action_inuse", false, true];
 		};
-		GRLIB_player_spawned = ([] call F_getValid);
-		cinematic_camera_started = false;
 	};
+	GRLIB_player_spawned = ([] call F_getValid);
+	cinematic_camera_started = false;
 };
 
 if (alive player && deploy == 1) then {
