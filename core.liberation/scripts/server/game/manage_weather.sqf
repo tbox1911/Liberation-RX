@@ -13,7 +13,7 @@ if (GRLIB_weather_param == 2) then {
 };
 
 if (GRLIB_weather_param == 3) then {
-	_weathers = [0.4, 0.42, 0.44, 0.46, 0.48, 0.5, 0.53, 0.56, 0.6, 0.63, 0.66, 0.7, 0.73, 0.76];
+	_weathers = [0.46, 0.48, 0.5, 0.53, 0.56, 0.6, 0.63, 0.66, 0.7, 0.73, 0.76, 0.8];
 };
 
 if (GRLIB_weather_param == 4) then {
@@ -26,11 +26,11 @@ while { GRLIB_endgame == 0 } do {
 		_chosen_weather = selectRandom _weathers;
 		_rain = 0;
 		_fog = 0;
+		if (_chosen_weather >= 0.5) then { _rain = 0.2; _fog = 0.2 };
+		if (_chosen_weather >= 0.7) then { _rain = 0.4; _fog = 0.4 }; // Removed heavy rain due to severe fps issues
 		_windx = (floor random 4);
 		_windy = (floor random 4);
 		0 setOvercast _chosen_weather;
-		if ( _chosen_weather > 0.5 && _chosen_weather <= 0.8 ) then { _rain = 0.2; _fog = 0.2 };
-		if ( _chosen_weather > 0.8 ) then { _rain = 0.4; _fog = 0.4 }; // Removed heavy rain due to severe fps issues
 		0 setRain _rain;
 		0 setFog _fog;
 		setWind [_windx, _windy, true];
