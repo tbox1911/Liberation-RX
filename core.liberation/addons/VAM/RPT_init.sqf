@@ -63,6 +63,11 @@ VAM_arsenal_enable_uniforms = true;
 VAM_arsenal_enable_backpacks = false;
 VAM_arsenal_enable_glasses = false;
 
+if (GRLIB_filter_arsenal == 4) then {
+	VAM_arsenal_enable_weapons = false;
+	VAM_arsenal_enable_magazines = false;
+};
+
 // Get Arsenal items
 waitUntil {sleep 1; !isNil "LRX_arsenal_init_done"};
 waitUntil {sleep 1; LRX_arsenal_init_done};
