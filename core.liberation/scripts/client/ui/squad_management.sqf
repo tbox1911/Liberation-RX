@@ -17,9 +17,6 @@ private _renamed = false;
 createDialog "liberation_squad";
 waitUntil { dialog };
 
-if (GRLIB_filter_arsenal == 4) then {
-	ctrlEnable [215, false];
-};
 { ctrlShow [_x, false] } foreach _rename_controls;
 private _targetobject = "Sign_Sphere100cm_F" createVehicleLocal [ 0, 0, 0 ];
 hideObject _targetobject;
@@ -141,12 +138,11 @@ while { dialog && alive player } do {
 	if ( GRLIB_squadaction == -1 ) then {
 		ctrlEnable [ 213, false ];
 		ctrlEnable [ 214, false ];
+		ctrlEnable [ 215, false ];		
 		if ( (vehicle _selectedmember == _selectedmember) && (side _selectedmember == GRLIB_side_friendly) ) then {
 			ctrlEnable [ 210, true ];
-			ctrlEnable [ 215, true ];
-			if ( leader group player == player ) then {
-				ctrlEnable [ 211, true ];
-			};
+			if (GRLIB_filter_arsenal != 4) then { ctrlEnable [ 215, true ] };
+			if (leader group player == player) then { ctrlEnable [ 211, true ] };
 			ctrlEnable [ 212, false ]; //ReplaceButton disabled
 			ctrlEnable [ 217, true ];
 		} else {
