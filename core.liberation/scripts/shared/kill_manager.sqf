@@ -41,7 +41,7 @@ if ( isServer ) then {
 		stats_player_deaths = stats_player_deaths + 1
 	};
 
-	if ( _killer_side == GRLIB_side_friendly ) then {
+	if ( _killer_side == GRLIB_side_friendly && !(_unit getVariable ["GRLIB_mission_AI", false]) ) then {
 		private _readiness = (0.1 * GRLIB_difficulty_modifier);
 		if (_unit isKindOf "AllVehicles") then { _readiness = (0.3 * GRLIB_difficulty_modifier) };
 		if (_unit isKindOf "Air") then { _readiness = (0.4 * GRLIB_difficulty_modifier) };
