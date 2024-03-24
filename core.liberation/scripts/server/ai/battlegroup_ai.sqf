@@ -7,8 +7,7 @@ if (_vehicle isKindOf "Ship") exitWith {
 	[_grp, getPosATL _vehicle] spawn defence_ai;
 };
 
-waitUntil { sleep 2; isTouchingGround (leader _grp) };
-sleep (5 + floor random 10);
+sleep (1 + floor random 10);
 
 private _timer = 0;
 private ["_waypoint", "_wp0", "_next_objective", "_timer"];
