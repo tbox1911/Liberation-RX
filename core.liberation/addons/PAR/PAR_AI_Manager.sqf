@@ -79,8 +79,16 @@ while {true} do {
             if (PAR_ai_revive > 0) then {
                 private _timer = _unit getVariable ["PAR_revive_msg_timer", 0];
                 if (time > _timer) then {
-                    if (_unit getVariable ["PAR_revive_max", PAR_ai_revive] == 0) then {
-                        private _msg = format ["%1 will not revive anymore !!", name _unit];
+                    private _msg = "";
+                    private _cur_revive = _unit getVariable ["PAR_revive_max", PAR_ai_revive];
+                    private _near_medical = (count (nearestObjects [_unit, [medic_heal_typename], 10]) > 0);
+                    if (_cur_revive <= 3 && !_near_medical) then {
+                        _msg = format ["WARN: %1 need Medical Support Now !!", name _unit];
+                    };
+                    if (_cur_revive == 1) then {
+                        _msg = format ["CRITICAL: %1 will NOT Revive anymore !!", name _unit];
+                    };
+                    if (_msg != "") then {
                         [_unit, _msg] call PAR_fn_globalchat;
                         _unit setVariable ["PAR_revive_msg_timer", round (time + (3 * 60))];
                     };
