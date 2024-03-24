@@ -130,9 +130,9 @@ else
 				};
 
 				// On pr�vient tout le monde qu'un nouveau objet va �tre d�place pour ingorer les �ventuelles blessures
-				R3F_LOG_PV_nouvel_objet_en_deplacement = _objet;
-				publicVariable "R3F_LOG_PV_nouvel_objet_en_deplacement";
-				["R3F_LOG_PV_nouvel_objet_en_deplacement", R3F_LOG_PV_nouvel_objet_en_deplacement] call R3F_LOG_FNCT_PVEH_nouvel_objet_en_deplacement;
+				// R3F_LOG_PV_nouvel_objet_en_deplacement = _objet;
+				// publicVariable "R3F_LOG_PV_nouvel_objet_en_deplacement";
+				// ["R3F_LOG_PV_nouvel_objet_en_deplacement", R3F_LOG_PV_nouvel_objet_en_deplacement] call R3F_LOG_FNCT_PVEH_nouvel_objet_en_deplacement;
 
 				// M�morisation de l'arme courante et de son mode de tir
 				_arme_courante = currentWeapon _joueur;
@@ -472,17 +472,17 @@ else
 				};
 
 				sleep 5; // D�lai de 5 secondes pour attendre la chute/stabilisation
-				if (!isNull _objet) then
-				{
-					if (isNull (_objet getVariable ["R3F_LOG_est_deplace_par", objNull]) ||
-						{(!alive (_objet getVariable "R3F_LOG_est_deplace_par")) || (!isPlayer (_objet getVariable "R3F_LOG_est_deplace_par"))}
-					) then
-					{
-						R3F_LOG_PV_fin_deplacement_objet = _objet;
-						publicVariable "R3F_LOG_PV_fin_deplacement_objet";
-						["R3F_LOG_PV_fin_deplacement_objet", R3F_LOG_PV_fin_deplacement_objet] call R3F_LOG_FNCT_PVEH_fin_deplacement_objet;
-					};
-				};
+				// if (!isNull _objet) then
+				// {
+				// 	if (isNull (_objet getVariable ["R3F_LOG_est_deplace_par", objNull]) ||
+				// 		{(!alive (_objet getVariable "R3F_LOG_est_deplace_par")) || (!isPlayer (_objet getVariable "R3F_LOG_est_deplace_par"))}
+				// 	) then
+				// 	{
+				// 		R3F_LOG_PV_fin_deplacement_objet = _objet;
+				// 		publicVariable "R3F_LOG_PV_fin_deplacement_objet";
+				// 		["R3F_LOG_PV_fin_deplacement_objet", R3F_LOG_PV_fin_deplacement_objet] call R3F_LOG_FNCT_PVEH_fin_deplacement_objet;
+				// 	};
+				// };
 			}
 			else
 			{

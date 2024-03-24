@@ -115,13 +115,13 @@
 		// Partage du point d'attache avec tous les joueurs
 		publicVariable "R3F_LOG_PUBVAR_point_attache";
 
-		/** Liste des objets � ne pas perdre dans un vehicule/cargo d�truit */
-		R3F_LOG_liste_objets_a_proteger = [];
+		// /** Liste des objets � ne pas perdre dans un vehicule/cargo d�truit */
+		// R3F_LOG_liste_objets_a_proteger = [];
 
-		/* Prot�ge les objets pr�sents dans R3F_LOG_liste_objets_a_proteger */
-		if (count R3F_LOG_liste_objets_a_proteger > 0) then {
-			[] execVM "R3F_LOG\surveiller_objets_a_proteger.sqf";
-		};
+		// /* Prot�ge les objets pr�sents dans R3F_LOG_liste_objets_a_proteger */
+		// if (count R3F_LOG_liste_objets_a_proteger > 0) then {
+		// 	[] execVM "R3F_LOG\surveiller_objets_a_proteger.sqf";
+		// };
 	};
 
 	/**
@@ -324,7 +324,7 @@
 		 * Seuls les joueurs et les IA command�es par les joueurs (locales) seront prot�g�s.
 		 * Les IA n'�tant pas command�es par un joueur ne seront pas prot�g�es, ce qui est un moindre mal.
 		 */
-		[] execVM "R3F_LOG\systeme_protection_blessures.sqf";
+		//[] execVM "R3F_LOG\systeme_protection_blessures.sqf";
 	};
 
 	R3F_LOG_active = true;
