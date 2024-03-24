@@ -2,7 +2,7 @@ params [ "_sector", "_count" ];
 
 if (_count == 0) exitWith {};
 if (_count >= 1) then {
-	sleep 1;
+	sleep 3;
 	[_sector, _count - 1] spawn static_manager;
 };
 
@@ -26,6 +26,8 @@ _unit = _grp createUnit [opfor_spotter, _vehicle, [], 3, "None"];
 _unit = _grp createUnit [opfor_spotter, _vehicle, [], 3, "None"];
 
 {
+	_x switchMove "AmovPercMwlkSrasWrflDf";
+	_x playMoveNow "AmovPercMwlkSrasWrflDf";	
     _x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 } foreach (units _grp);
 
