@@ -13,20 +13,19 @@ private _offset = 0;
 _truck_to_unload allowDamage false;
 private _all_objects = _truck_to_unload getVariable ["GRLIB_ammo_truck_load", []];
 { 
-	_x enableSimulationGlobal false;
+	//_x enableSimulationGlobal false;
 	_x disableCollisionWith _truck_to_unload;
 	_x allowDamage false;
 } foreach _all_objects;
-sleep 0.5;
+sleep 1;
 
 private [ "_next_box", "_next_pos" ];
 {
 	_next_box = _x;
 	if (!isNull _next_box) then {
 		detach _next_box;
-		_next_box setVelocity [ 0,0,0 ];
 		waitUntil {sleep 0.1; isNull (attachedTo _x)};
-
+		_next_box setVelocity [ 0,0,0 ];
 		_next_pos = [getPosATL _truck_to_unload, _offset, getdir _truck_to_unload] call BIS_fnc_relPos;
 		_next_box setPosATL (_next_pos vectorAdd [0, 0, 0.2]);
 		_next_box setdir (getdir _truck_to_unload);
@@ -36,10 +35,10 @@ private [ "_next_box", "_next_pos" ];
 		sleep 0.5;
 	};
 } foreach _all_objects;
-sleep 1;
+sleep 2;
 
 { 
-	_x enableSimulationGlobal true;
+	//_x enableSimulationGlobal true;
 	_x enableCollisionWith _truck_to_unload;
 	_x allowDamage true;
 	_x setVariable ["R3F_LOG_disabled", false, true];
