@@ -191,8 +191,8 @@ global_locked_group = [];
 publicVariable "global_locked_group";
 
 // Low = 50 (NoGrass), Normal = 25, High = 12.5, Very High = 6.25, Ultra = 3.125
-setTerrainGrid 25;
-setViewDistance 1600;
+setTerrainGrid 12.5;
+setViewDistance 2600;
 
 sleep 3;
 GRLIB_init_server = true;
