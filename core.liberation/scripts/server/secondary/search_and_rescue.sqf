@@ -35,7 +35,7 @@ private _grppatrol = [_helopos, ([] call F_getAdaptiveSquadComp), GRLIB_side_ene
 
 private _nbsentry = 2 + (floor (random 3));
 private _unitclass = [];
-while { (count _unitclass) < _nbsentry } do { _unitclass pushback opfor_sentry };	
+while { (count _unitclass) < _nbsentry } do { _unitclass pushback opfor_sentry };
 _grpsentry = [_pilotsPos, _unitclass, GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
 
 private _vehicle_pool = opfor_vehicles;
@@ -48,10 +48,10 @@ private _spawnchances = [75,50,15];
 { if (random 100 < _x ) then { _vehtospawn pushBack (selectRandom _vehicle_pool); }; } foreach _spawnchances;
 
 private _vehicle_list = [];
-{ 
+{
 	_vehicle = [[getpos _helowreck, 30 + (random 30), random 360] call BIS_fnc_relPos, _x, 0] call F_libSpawnVehicle;
 	_vehicle setVariable ["GRLIB_vehicle_owner", "server"];
-	_vehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}]; 
+	_vehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
 	_vehicle_list pushBack _vehicle;
 } foreach _vehtospawn;
 
@@ -75,7 +75,7 @@ if ( _alive_crew_count == 0 ) then {
 	// success
 	[ 8 ] remoteExec ["remote_call_intel", 0];
 	{ _x setVariable ["GRLIB_vehicle_owner", ""] } foreach _vehicle_list;
-	[_vehicle_list, 300] spawn cleanMissionVehicles;
+	[_vehicle_list, true] spawn cleanMissionVehicles;
 	resources_intel = resources_intel + (25 * _alive_crew_count);
 	combat_readiness = combat_readiness - 10;
 	stats_secondary_objectives = stats_secondary_objectives + 1;

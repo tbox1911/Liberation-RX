@@ -184,9 +184,9 @@ while { _mission_in_progress } do {
 			_veh setFuel 1;
 			_veh setDamage 0;
 			[_veh] call F_vehicleUnflip;
-			if (_veh != _veh_leader) then { 
+			if (_veh != _veh_leader) then {
 				(driver _veh) doFollow (leader _convoy_group);
-				(driver _veh) doMove getPosATL (leader _convoy_group);				
+				(driver _veh) doMove getPosATL (leader _convoy_group);
 			};
 			sleep 60;
 		};
@@ -210,7 +210,7 @@ if (time < _mission_timeout) then {
 	};
 };
 private _vehicles = [_scout_vehicle, _troop_vehicle];
-[_vehicles, 5] spawn cleanMissionVehicles;
+[_vehicles, true] spawn cleanMissionVehicles;
 
 sleep 120;
 GRLIB_secondary_in_progress = -1;
