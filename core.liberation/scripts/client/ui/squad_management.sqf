@@ -17,6 +17,9 @@ private _renamed = false;
 createDialog "liberation_squad";
 waitUntil { dialog };
 
+if (GRLIB_filter_arsenal == 4) then {
+	ctrlEnable [215, false];
+};
 { ctrlShow [_x, false] } foreach _rename_controls;
 private _targetobject = "Sign_Sphere100cm_F" createVehicleLocal [ 0, 0, 0 ];
 hideObject _targetobject;
