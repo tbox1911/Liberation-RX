@@ -22,3 +22,8 @@ if (GRLIB_GM_enabled) then {
         ["(todo) GM Template", "scripts\fob_templates\defense0.sqf", 0, ""]
     ];
 };
+
+GRLIB_FOB_Defense_Sea_level = [
+    "PortableHelipadLight_01_green_F",
+    "Land_Cargo_Tower_V1_F"
+];

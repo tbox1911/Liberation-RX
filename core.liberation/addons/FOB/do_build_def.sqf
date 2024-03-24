@@ -61,7 +61,7 @@ if (!([parseNumber _defense_price] call F_pay)) exitWith {};
 
 private _msg = format ["%1 Build %2 (%3 objects) on FOB %4 ", name player, _defense_name, _count_objects, ([_fob_pos] call F_getFobName)];
 [gamelogic, _msg] remoteExec ["globalChat", 0];
-_msg = format ["FOB Template: %1\nCreated by: %2\nTanks to him !!", _defense_name, _template_creator];
+_msg = format ["FOB Template: %1\nCreated by: %2\nThanks to him !!", _defense_name, _template_creator];
 [_msg] remoteExec ["hint", 0];
 
 // Build defense in FOB direction
@@ -81,7 +81,11 @@ _fob_pos set [2, 0];
         _nextobject = _nextclass createVehicle _nextpos;
         _nextobject allowDamage false;
         _nextobject setPosATL _nextpos;
-        _nextobject setVectorDirAndUp [[-cos _nextdir, sin _nextdir, 0] vectorCrossProduct surfaceNormal _nextpos, surfaceNormal _nextpos];
+        if (_nextobject in GRLIB_FOB_Defense_Sea_level) then { 
+            _nextobject setVectorDirAndUp [[_nextdir, _nextdir, 0], [0,0,1]];
+        } else {
+            _nextobject setVectorDirAndUp [[-cos _nextdir, sin _nextdir, 0] vectorCrossProduct surfaceNormal _nextpos, surfaceNormal _nextpos];
+        };
         sleep 0.1;
     };
 } foreach _objects_to_build;
