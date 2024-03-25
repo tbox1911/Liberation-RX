@@ -4,9 +4,9 @@ class liberation_squad {
 	controlsBackground[] = {};
 
 	controls[] = {"OuterBG", "RecycleBG","OuterBG_F", "InnerBG", "InnerBG_F", "OuterCenterPanel","Header","SquadList","DeployMap", "ButtonClose",
-	"NameLabel", "ClassLabel", "HealthLabel", "DistanceLabel", "PrimaryLabel", "PrimaryMagsLabel", "SecondaryLabel", "SecondaryMagsLabel", "LoadoutLabel",
-	"GREUH_Squad_OuterBG","GREUH_Squad_InnerBG","GREUH_Squad_OuterBG_F","GREUH_Squad_InnerBG_F","GREUH_ButtonName_Rename","GREUH_ButtonName_Abort","GREUH_Squad_TextField",
-	"VehicleLabel","ResupplyButton", "LikeMeButton", "ReplaceButton", "RenameButton", "RemoveButton", "ConfirmButton", "CancelButton", "PiPZone"
+	"NameLabel", "ClassLabel", "HealthLabel", "ReviveLabel", "DistanceLabel", "PrimaryLabel", "PrimaryMagsLabel", "SecondaryLabel", "SecondaryMagsLabel", "LoadoutLabel",
+	"VehicleLabel","ResupplyButton", "LikeMeButton", "ReplaceButton", "RenameButton", "RemoveButton", "ConfirmButton", "PiPZone",
+	"GREUH_Squad_OuterBG", "GREUH_Squad_InnerBG", "GREUH_Squad_OuterBG_F", "GREUH_Squad_InnerBG_F", "GREUH_ButtonName_Rename", "GREUH_ButtonName_Abort", "GREUH_Squad_TextField"
 	};
 
 	objects[] = {};
@@ -126,7 +126,7 @@ class liberation_squad {
 		y = 0.25 * safezoneH + safezoneY;
 		h = (0.35 * safezoneH) - (1.5 * BORDERSIZE);
 		shadow = 2;
-		onLBSelChanged="";
+		onLBSelChanged = "call F_UpdateSquadInfo";
 	};
 
 	class ResupplyButton : StdButton{
@@ -187,24 +187,24 @@ class liberation_squad {
 	};
 	class ConfirmButton : StdButton{
 		idc = 213;
-		x = (0.2 * safezoneW + safezoneX);
-		y = (0.75 * safezoneH + safezoneY);
-		w = (0.055 * safezoneW);
-		h = (0.04 * safezoneH);
-		sizeEx = 0.025 * safezoneH;
-		text = $STR_CONFIRM;
-		action = "GRLIB_squadconfirm = 1";
-	};
-	class CancelButton : StdButton{
-		idc = 214;
-		x = (0.265 * safezoneW + safezoneX);
-		y = (0.75 * safezoneH + safezoneY);
+		x = (0.23 * safezoneW + safezoneX);
+		y = (0.76 * safezoneH + safezoneY);
 		w = (0.055 * safezoneW);
 		h = (0.04 * safezoneH);
 		sizeEx = 0.025 * safezoneH;
 		text = $STR_RECYCLING_CANCEL;
-		action = "GRLIB_squadconfirm = 0";
+		action = "closeDialog 0";
 	};
+	// class CancelButton : StdButton{
+	// 	idc = 214;
+	// 	x = (0.265 * safezoneW + safezoneX);
+	// 	y = (0.75 * safezoneH + safezoneY);
+	// 	w = (0.055 * safezoneW);
+	// 	h = (0.04 * safezoneH);
+	// 	sizeEx = 0.025 * safezoneH;
+	// 	text = $STR_RECYCLING_CANCEL;
+	// 	action = "GRLIB_squadconfirm = 0";
+	// };
 	class ButtonClose : StdButton{
 		x = 0.785 * safezoneW + safezoneX;
 		w = 0.015 * safezoneW;
@@ -235,9 +235,13 @@ class liberation_squad {
 		idc = 203;
 		y = 0.325 * safezoneH + safezoneY;
 	};
+	class ReviveLabel : StdSquadLabel{
+		idc = 2031;
+		y = 0.35 * safezoneH + safezoneY;
+	};
 	class DistanceLabel : StdSquadLabel{
 		idc = 204;
-		y = 0.35 * safezoneH + safezoneY;
+		y = 0.375 * safezoneH + safezoneY;
 	};
 	class PrimaryLabel : StdSquadLabel{
 		idc = 205;

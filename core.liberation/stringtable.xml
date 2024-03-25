@@ -308,6 +308,10 @@
 			<Portuguese>Arsenal</Portuguese>
 			<Czech>-- ARZENÁL</Czech>
 		</Key>
+		<Key ID="STR_UNPACK_ARSENAL_ACTION">
+			<Original>-- ARSENAL UNPACK</Original>
+			<French>-- ARSENAL UNPACK</French>
+		</Key>		
 		<Key ID="STR_ACTION_LOAD_BOX">
 			<Original>-- LOAD</Original>
 			<French>-- CHARGER</French>
@@ -2399,6 +2403,10 @@
 			<Portuguese>Saúde:</Portuguese>
 			<Czech>Zdraví:</Czech>
 		</Key>
+		<Key ID="STR_REVIVE">
+			<Original>Revive left:</Original>
+			<French>Ranimation Dispo:</French>
+		</Key>		
 		<Key ID="STR_DISTANCE">
 			<Original>Distance:</Original>
 			<French>Distance :</French>
@@ -7076,7 +7084,7 @@
 		<Key ID="STR_RENAME_BUTTON">
 			<Original>Rename</Original>
 			<Russian>Имя</Russian>
-			<French>Renomer</French>
+			<French>Renommer</French>
 			<Japanese>リネーム</Japanese>
 			<Chinesesimp>重命名</Chinesesimp>
 			<Chinese>重命名</Chinese>
