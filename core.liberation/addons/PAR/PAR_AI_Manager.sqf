@@ -5,7 +5,7 @@ private ["_unit", "_is_medic", "_has_medikit", "_wnded_list", "_wnded", "_have_p
 
 while {true} do {
     waitUntil { sleep 1; count (units player) > 0 };
-    
+
     if ( count PAR_AI_bros > 0) then {
         {
             _unit = _x;
@@ -58,6 +58,8 @@ while {true} do {
                     _msg = format ["%1 was promoted to the rank of %2 !", name _unit, _ai_rank];
                     [_unit, _msg] call PAR_fn_globalchat;
                     _unit setVariable ["PAR_AI_score", ((GRLIB_rank_level find (rank _unit)) + 1) * 5, true];
+                    private _cur_revive = _unit getVariable ["PAR_revive_max", PAR_ai_revive];
+                    _unit setVariable ["PAR_revive_max", (_cur_revive + 1)];
                 };
             };
 
@@ -93,7 +95,7 @@ while {true} do {
                         _unit setVariable ["PAR_revive_msg_timer", round (time + (3 * 60))];
                     };
                 };
-            };            
+            };
             sleep 0.3;
         } forEach PAR_AI_bros;
     };
