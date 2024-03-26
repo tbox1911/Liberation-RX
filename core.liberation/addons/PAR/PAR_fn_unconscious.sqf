@@ -12,7 +12,7 @@ waituntil {sleep 0.5; lifeState _unit == "INCAPACITATED" && (isTouchingGround (v
 if (isPlayer _unit) then {
 	[] call PAR_show_marker;
 	if ([_unit] call F_getScore > GRLIB_perm_log + 5) then { [_unit, -1] remoteExec ["F_addScore", 2] };
-	if (GRLIB_disable_death_chat) then { for "_channel" from 0 to 4 do { _channel enableChannel false } };	
+	if (GRLIB_disable_death_chat) then { for "_channel" from 0 to 4 do { _channel enableChannel false } };
 } else {
 	_unit setVariable ["GRLIB_can_speak", false, true];
 	[_unit] call F_deathSound;
@@ -44,14 +44,14 @@ private _cnt = 0;
 private ["_medic", "_msg"];
 while {lifeState _unit == "INCAPACITATED" && time <= _unit getVariable ["PAR_BleedOutTimer", 0]} do {
 	if (_cnt == 0) then {
-	_unit setOxygenRemaining 1;
-	if ( {alive _x} count PAR_AI_bros > 0 ) then {
-		_medic = _unit getVariable ["PAR_myMedic", nil];
-		if (isNil "_medic") then {
-			_unit groupchat localize "STR_PAR_UC_01";
-			_medic = [_unit] call PAR_fn_medic;
-			if (!isNil "_medic") then { [_unit, _medic] call PAR_fn_911 };
-		};
+		_unit setOxygenRemaining 1;
+		if ( {alive _x} count PAR_AI_bros > 0 ) then {
+			_medic = _unit getVariable ["PAR_myMedic", nil];
+			if (isNil "_medic") then {
+				_unit groupchat localize "STR_PAR_UC_01";
+				_medic = [_unit] call PAR_fn_medic;
+				if (!isNil "_medic") then { [_unit, _medic] call PAR_fn_911 };
+			};
 		} else {
 			_msg = format [localize "STR_PAR_UC_03", name player];
 			if (lifeState player == "INCAPACITATED") then {
@@ -73,9 +73,9 @@ while {lifeState _unit == "INCAPACITATED" && time <= _unit getVariable ["PAR_Ble
 _bld spawn {sleep (30 + floor(random 30)); deleteVehicle _this};
 [(_unit getVariable ["PAR_myMedic", objNull]), _unit] call PAR_fn_medicRelease;
 
-if (isPlayer _unit) then { 
+if (isPlayer _unit) then {
 	[] call PAR_del_marker;
-	if (GRLIB_disable_death_chat) then { for "_channel" from 0 to 4 do { _channel enableChannel true } };		
+	if (GRLIB_disable_death_chat) then { for "_channel" from 0 to 4 do { _channel enableChannel true } };
 };
 
 // Bad end
