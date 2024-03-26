@@ -138,7 +138,7 @@ if (typeName _unit == "OBJECT") then {
 	};
 
 	if (_unit iskindof "LandVehicle" || typeOf _unit in [Arsenal_typename] + GRLIB_Ammobox_keep + GRLIB_disabled_arsenal) then {
-		private ["_count"];
+		private _count= 0;
 		{
 			if (typeName (_x select 1) == "ARRAY") then {
 				{

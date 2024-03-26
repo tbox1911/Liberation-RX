@@ -1,7 +1,7 @@
 private _selection = 0;
 private _selectedmember = objNull;
 private _rename_controls = [521,522,523,524,525,526,527];
-private _renamed = false;
+private _update = false;
 
 createDialog "liberation_squad";
 waitUntil { dialog };
@@ -33,7 +33,7 @@ private _membercount = 0;
 lbSetCurSel [101, 0];
 
 while { dialog && alive player && _membercount > 0 } do {
-	_renamed = false;
+	_update = false;
 	GRLIB_squadaction = -1;
 	waitUntil { sleep 0.2; (!dialog || GRLIB_squadaction != -1) };
 	if (!dialog) exitWith {};
@@ -87,6 +87,7 @@ while { dialog && alive player && _membercount > 0 } do {
 			PAR_AI_bros = PAR_AI_bros - [_selectedmember];
 			deleteVehicle _selectedmember;
 			hint localize 'STR_REMOVE_OK';
+			_update = true;
 		};
 		sleep 0.5;
 		ctrlEnable [211, true];
@@ -133,11 +134,11 @@ while { dialog && alive player && _membercount > 0 } do {
 		{ ctrlShow [_x, false] } foreach _rename_controls;
 		sleep 0.5;
 		ctrlEnable [217, true];
-		_renamed = true;
+		_update = true;
 	};
 
 	// Update unit list
-	if (count PAR_AI_bros != _membercount || _renamed) then {
+	if (_update) then {
 		_membercount = 0;
 		lbClear 101;
 		{
