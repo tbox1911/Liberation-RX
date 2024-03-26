@@ -321,3 +321,4 @@ if (GRLIB_sector_radius != 0) then { GRLIB_sector_size = GRLIB_sector_radius };
 
 // Params loaded
 GRLIB_LRX_params_loaded = true;
+publicVariable "GRLIB_LRX_params_loaded";
