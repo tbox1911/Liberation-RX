@@ -57,6 +57,7 @@ player addAction ["<t color='#FFFF00'>" + localize "STR_ARSENAL_ACTION" + "</t> 
 
 // Personal Arsenal
 player addAction ["<t color='#FFFF00'>" + localize "STR_ARSENAL_ACTION" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\open_personal_arsenal.sqf","",-500,true,true,"","call GRLIB_checkArsenalPerso"];
+player addAction ["<t color='#00FFFF'>" + localize "STR_UNPACK_ARSENAL_ACTION" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\unpack_personal_arsenal.sqf","",-499,false,true,"","call GRLIB_checkArsenalPerso"];
 
 // Virtual Garage
 player addAction ["<t color='#0080FF'>" + localize "STR_VIRTUAL_GARAGE" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\truck_ca.paa'/>","addons\VIRT\virtual_garage.sqf","",-984,false,true,"","call GRLIB_checkGarage"];
