@@ -22,13 +22,13 @@ while { dialog && alive player } do {
 		_refresh = false;
 
 		// list outside
-		_vehicles_out = [getPosATL player nearEntities [["LandVehicle","Air","Ship",playerbox_typename], 150], {
+		_vehicles_out = (player nearEntities [["LandVehicle","Air","Ship",playerbox_typename], 150]) select {
 			alive _x && (count (crew _x) == 0 || ([_x, uavs] call F_itemIsInClass)) &&
 			(_x distance2D lhd > GRLIB_fob_range) &&
 			(_x getVariable ["GRLIB_vehicle_owner", ""] == PAR_Grp_ID) &&
 			(isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull])) &&
 			!(typeOf _x in list_static_weapons)
-		}] call BIS_fnc_conditionalSelect;
+		};
 
 		lbClear 110;
 		{
@@ -95,7 +95,6 @@ while { dialog && alive player } do {
 				if (count (crew _vehicle) > 0 && !([_vehicle, uavs] call F_itemIsInClass)) exitWith { hintSilent localize "STR_CANT_PARKUAV"; sleep 2 };
 
 				ctrlEnable [ 120, false ];
-
 				private _color = _vehicle getVariable ["GRLIB_vehicle_color", ""];
 				private _compo = _vehicle getVariable ["GRLIB_vehicle_composant", []];
 				private _ammo = [_vehicle] call F_getVehicleAmmoDef;
@@ -131,6 +130,8 @@ while { dialog && alive player } do {
 					saveProfileNamespace;
 				};
 			};
+
+			sleep 0.5;
 			_refresh = true;
 			load_veh = 0;
 		};

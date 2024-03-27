@@ -19,8 +19,6 @@ publicVariable "GRLIB_warehouse_in_use";
 private _cfg = configFile >> "cfgVehicles";
 private _mybox = [];
 private _refresh = true;
-private _old_sel1 = -1;
-private _old_sel2 = -1;
 load_box = 0;
 
 createDialog "Warehouse";
