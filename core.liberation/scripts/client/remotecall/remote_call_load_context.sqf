@@ -1,6 +1,7 @@
 if (isDedicated || (!hasInterface && !isServer)) exitWith {};
 params ["_grp"];
 
+waitUNtil { sleep 0.1; local _grp };
 {
     [_x] joinSilent (group player);
     [_x] spawn F_fixModUnit;

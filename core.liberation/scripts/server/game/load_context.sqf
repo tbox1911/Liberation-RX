@@ -28,8 +28,8 @@ if (count _context >= 1) then {
             } else {
                 if ([_player, "FOB", GRLIB_fob_range] call F_check_near && isTouchingGround vehicle _player) then {
                     private _pos = getPos _player;
-                    private _grp = createGroup GRLIB_side_friendly;
-                    {                      
+                    private _grp = createGroup [GRLIB_side_friendly, true];
+                    {
                         _class = _x select 0;
                         _rank = _x select 1;
                         _loadout = _x select 2;
@@ -41,7 +41,8 @@ if (count _context >= 1) then {
                         sleep 0.3;
                     } foreach (_context select 2);
                     _grp setGroupOwner (owner _player);
-                    [_grp] remoteExec ["remote_call_load_context", owner _player];     
+                    sleep 0.5;
+                    [_grp] remoteExec ["remote_call_load_context", owner _player];
                     _wait = false;
                     //diag_log format ["--- LRX Loading %1 unit(s) for %2 Squad.", count (_context select 2), name _player];
                 } else {
@@ -55,7 +56,7 @@ if (count _context >= 1) then {
         [""] remoteExec ["hintSilent", owner _player];
         diag_log format ["--- LRX Loaded %1 unit(s) for %2 Squad.", count (_context select 2), name _player];
     };
-    _player setVariable ["GRLIB_squad_context_loaded", true, true];    
+    _player setVariable ["GRLIB_squad_context_loaded", true, true];
 } else {
     _player setVariable ["GRLIB_player_context_loaded", true, true];
     _player setVariable ["GRLIB_squad_context_loaded", true, true];
