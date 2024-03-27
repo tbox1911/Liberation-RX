@@ -80,7 +80,7 @@ while { dialog && alive player } do {
             lbSetCurSel [111, 0];
         } else {
             lbSetCurSel [111, -1];
-        };        
+        };
     };
 
     // button
