@@ -25,6 +25,6 @@ while { _vehicle distance _pos > 100 } do {
 	_vehicle setPos _pos;
 	sleep 1;
 };
-[_vehicle] spawn F_addParachute;
+[_vehicle] remoteExec ["F_addParachute", 2];
 
 diag_log format [ "Done Airdrop vehicle %1 on %2 at %3", (typeOf _vehicle), _pos, time ];

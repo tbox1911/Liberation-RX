@@ -32,8 +32,8 @@ else
 		detach _objet;
 		_objet setVelocity (velocity _heliporteur);
 		sleep 3;
-		[_objet, _heliporteur] spawn F_addParachute;
 		_objet enableCollisionWith _heliporteur;
+		[_objet, _heliporteur] remoteExec ["F_addParachute", 2];
 	} else {
 		// D�tacher l'objet et lui appliquer la vitesse de l'h�liporteur (inertie)
 		detach _objet;

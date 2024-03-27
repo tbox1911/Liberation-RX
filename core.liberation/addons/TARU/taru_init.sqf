@@ -94,7 +94,7 @@ HALV_detachTarupods = {
 	_pod enableCollisionWith _heli;
 
 	if (_pos select 2 > 25) then {
-		[_pod, _heli] spawn F_addParachute;
+		[_pod, _heli] remoteExec ["F_addParachute", 2];
 	};
 };
 
