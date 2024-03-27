@@ -1,8 +1,10 @@
 if (isDedicated || (!hasInterface && !isServer)) exitWith {};
 params ["_grp"];
 
+hintSilent "Your squad is coming\nPlease wait...";
 waitUNtil { sleep 0.1; local _grp };
 {
+    _x setPos (player getPos [3, 360]);
     [_x] joinSilent (group player);
     [_x] spawn F_fixModUnit;
     [_x] spawn PAR_fn_AI_Damage_EH;

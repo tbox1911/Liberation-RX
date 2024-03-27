@@ -27,7 +27,7 @@ if (count _context >= 1) then {
                 _wait = false
             } else {
                 if ([_player, "FOB", GRLIB_fob_range] call F_check_near && isTouchingGround vehicle _player) then {
-                    private _pos = getPos _player;
+                    private _pos = markerPos GRLIB_respawn_marker;
                     private _grp = createGroup [GRLIB_side_friendly, true];
                     {
                         _class = _x select 0;
