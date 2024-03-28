@@ -28,7 +28,9 @@ private _is_desert = (worldname in ["SefrouRamal", "Takistan", "Isladuala3"] && 
 private _count = (3 + floor(random 4));
 private _type = selectRandom _type_random;
 if (_is_desert) then { _type = selectRandom (_type_random + _type_desert) };
+
 private _is_dromedary = (_type select [0,11] == "Dromedary_");
+if (_is_dromedary) then { _count = 3 };
 if (_type in ["Alsatian_Random_F","Fin_random_F"]) then { _count = 2 };
 if (_type in ["Cock_random_F","Hen_random_F"]) then { _count = _count + 2 };
 
