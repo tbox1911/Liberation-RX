@@ -87,6 +87,11 @@ while { dialog && alive player && _membercount > 0 } do {
 			PAR_AI_bros = PAR_AI_bros - [_selectedmember];
 			deleteVehicle _selectedmember;
 			hint localize 'STR_REMOVE_OK';
+			if (count PAR_AI_bros == 0) then {
+				lbSetCurSel [101, -1];
+			} else {
+				lbSetCurSel [101, 0];
+			};
 			_update = true;
 		};
 		sleep 0.5;
@@ -146,9 +151,6 @@ while { dialog && alive player && _membercount > 0 } do {
 			lbAdd [101, _unitname];
 			_membercount = _membercount + 1;
 		} foreach PAR_AI_bros;
-		lbSetCurSel [101, 0];
-	} else {
-		lbSetCurSel [101, _selection];
 	};
 
 	uiSleep 0.5;
