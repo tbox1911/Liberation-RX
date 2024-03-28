@@ -33,7 +33,8 @@ else
 			
 			_chargement = [_transporteur] call R3F_LOG_FNCT_calculer_chargement_vehicule;
 			_cout_chargement_objet = _objet getVariable "R3F_LOG_fonctionnalites" select R3F_LOG_IDX_can_be_transported_cargo_cout;
-			
+			if (isNil "_cout_chargement_objet") exitWith {};
+
 			// Si l'objet loge dans le v�hicule
 			if ((_chargement select 0) + _cout_chargement_objet <= (_chargement select 1)) then
 			{
