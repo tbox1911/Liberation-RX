@@ -58,6 +58,10 @@ while { true } do {
 			_vehicle addAction ["<t color='#0080F0'>" + localize "STR_SEND_ARSENAL" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\add_personal_arsenal.sqf","",-508,false,true,"","[_target, _this] call GRLIB_checkAction_SendArsenal", GRLIB_ActionDist_5];
 		};
 
+		if (maxLoad _vehicle > 1500) then {
+			_vehicle addAction ["<t color='#00FFFF'>" + localize "STR_ARSENAL_PICKUP" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\do_loot_veh.sqf","",-502,false,true,"","[_target, _this] call GRLIB_checkAction_Pickup_Weapons", GRLIB_ActionDist_5];
+		};
+
 		if (typeOf _vehicle in transport_vehicles) then {
 			_vehicle addAction ["<t color='#FFFF00'>" + localize "STR_ACTION_UNLOAD_BOX" + "</t>","scripts\client\ammoboxes\do_unload_truck.sqf","",-500,false,true,"","[_target, _this] call GRLIB_checkAction_Unload", GRLIB_ActionDist_10];
 		};

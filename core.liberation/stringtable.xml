@@ -296,7 +296,7 @@
 			<Portuguese>Esta posição é válida.</Portuguese>
 			<Czech>Tato pozice je platná.</Czech>
 		</Key>
-		<Key ID="STR_ARSENAL_ACTION">
+		<Key ID="STR_ARSENAL_OPEN1">
 			<Original>-- ARSENAL</Original>
 			<French>-- ARSENAL</French>
 			<German>-- ARSENAL</German>
@@ -308,10 +308,14 @@
 			<Portuguese>Arsenal</Portuguese>
 			<Czech>-- ARZENÁL</Czech>
 		</Key>
-		<Key ID="STR_UNPACK_ARSENAL_ACTION">
+		<Key ID="STR_ARSENAL_UNPACK">
 			<Original>-- ARSENAL UNPACK</Original>
 			<French>-- ARSENAL UNPACK</French>
 		</Key>		
+		<Key ID="STR_ARSENAL_PICKUP">
+			<Original>-- PICK UP GROUND WEAPONS</Original>
+			<French>-- RAMASSER ARMES AU SOL</French>
+		</Key>			
 		<Key ID="STR_ACTION_LOAD_BOX">
 			<Original>-- LOAD</Original>
 			<French>-- CHARGER</French>

@@ -53,11 +53,11 @@ player addAction ["<t color='#80FF80'>" + localize "STR_TAKE_LEADRSHIP" + "</t> 
 player addAction ["<t color='#00F0F0'>" + localize "STR_AIR_SUPPORT" + "</t> <img size='1' image='R3F_LOG\icons\r3f_drop.paa'/>","scripts\client\misc\drop_support.sqf","",-980,false,true,"","call GRLIB_checkAirDrop"];
 
 // Arsenal
-player addAction ["<t color='#FFFF00'>" + localize "STR_ARSENAL_ACTION" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\open_arsenal.sqf","",-500,true,true,"","call GRLIB_checkArsenal"];
+player addAction ["<t color='#FFFF00'>" + localize "STR_ARSENAL_OPEN" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\open_arsenal.sqf","",-500,true,true,"","call GRLIB_checkArsenal"];
 
 // Personal Arsenal
-player addAction ["<t color='#FFFF00'>" + localize "STR_ARSENAL_ACTION" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\open_personal_arsenal.sqf","",-500,true,true,"","call GRLIB_checkArsenalPerso"];
-player addAction ["<t color='#00FFFF'>" + localize "STR_UNPACK_ARSENAL_ACTION" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\unpack_personal_arsenal.sqf","",-501,false,true,"","call GRLIB_checkArsenalPerso"];
+player addAction ["<t color='#FFFF00'>" + localize "STR_ARSENAL_OPEN" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\open_personal_arsenal.sqf","",-500,true,true,"","call GRLIB_checkArsenalPerso"];
+player addAction ["<t color='#00FFFF'>" + localize "STR_ARSENAL_UNPACK" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\unpack_personal_arsenal.sqf","",-501,false,true,"","call GRLIB_checkArsenalPerso"];
 
 // Virtual Garage
 player addAction ["<t color='#0080FF'>" + localize "STR_VIRTUAL_GARAGE" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\truck_ca.paa'/>","addons\VIRT\virtual_garage.sqf","",-984,false,true,"","call GRLIB_checkGarage"];
