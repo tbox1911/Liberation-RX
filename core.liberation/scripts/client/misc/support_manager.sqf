@@ -79,29 +79,33 @@ while { true } do {
 				if (_near_medic) then {
 					if (damage _unit > 0.1 && (behaviour _unit) != "COMBAT") then {
 						_needmedic = true;
-						_unit groupchat format ["Healing myself."];
 					};
 				};
 
 				// Animation
-				if (_needammo1 || _needammo2 || _needmedic ) then {
+				if (_needammo1 || _needammo2) then {
 					if ((_added_pri + _added_sec) == 0) then {
 						_unit groupchat "Cannot Rearm! my Inventory is full!";
 					} else {
-						[_unit, _needmedic] spawn {
-							params ["_target", "_needmedic"];
-							_target setVariable ["PAR_heal", true];
-							_target playMove "AinvPknlMstpSlayWrflDnon_medic";
-							sleep 6;
-							if (_needmedic && lifeState _target != "INCAPACITATED") then {
-								_target setDamage 0;
-							};
-							sleep 4;
-							_target setVariable ["PAR_heal", nil];
-						};
+						_unit switchMove 'WeaponMagazineReloadStand';
+						_unit playMoveNow 'WeaponMagazineReloadStand';
 					};
 				};
-
+				if (_needmedic) then {
+					[_unit] spawn {
+						params ["_target"];
+						_target groupchat format ["Healing myself."];
+						_target setVariable ["PAR_heal", true];
+						_target switchMove 'AinvPknlMstpSlayWrflDnon_medic';
+						_target playMoveNow 'AinvPknlMstpSlayWrflDnon_medic';
+						sleep 6;
+						if (lifeState _target != "INCAPACITATED") then {
+							_target setDamage 0;
+						};
+						sleep 4;
+						_target setVariable ["PAR_heal", nil];
+					};
+				};
 			};
 
 			// In vehicle
