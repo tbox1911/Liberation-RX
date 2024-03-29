@@ -65,6 +65,18 @@ while { true } do {
 						if (_dist <= 3) then {
 							_my_dog stop true;
 							_my_dog setDir (_my_dog getDir _man);
+							if (count (attachedObjects _my_dog) > 0 && isPLayer _man) then {
+								sleep 0.3;
+								{
+									detach _x;
+									sleep 0.1;
+									_x attachTo [_my_dog];
+									detach _x;
+									sleep 0.1;
+									_x setPos (_x getPos [0.5, (getDir _x)]);
+								} forEach (attachedObjects _my_dog);
+								sleep 0.5;
+							};
 							_tone = _my_dog getVariable "my_dog_tone";
 							[_my_dog, _tone] spawn dog_bark;
 							sleep (4 + floor random 8);
@@ -125,21 +137,6 @@ while { true } do {
 			// Relax
 			if (_onfoot && _dist <= 5 && !(stopped _my_dog)) then {
 				_my_dog playMove "Dog_Idle_Stop";
-				if (count (attachedObjects _my_dog) > 0) then {
-					_my_dog setDir (_my_dog getDir player);
-					sleep 0.5;
-					{
-						detach _x;
-						sleep 0.1;
-						_x attachTo [_my_dog];
-						detach _x;
-						sleep 0.1;
-						_x setPos (_x getPos [0.5, (getDir _x)]);
-					} forEach (attachedObjects _my_dog);
-					sleep 0.5;
-					_tone = _my_dog getVariable "my_dog_tone";
-					[_my_dog, _tone] spawn dog_bark;
-				};
 			};
 
 			// Return
