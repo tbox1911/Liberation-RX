@@ -197,18 +197,22 @@ while { _mission_in_progress } do {
 //-----------------------------------------
 // Mission cleanup
 { deleteMarker _x } foreach _convoy_marker_list;
-if (time < _mission_timeout) then {
+
+if (time > _mission_timeout) then {
+	[51] remoteExec ["remote_call_intel", 0];
+} else {
 	if (side group _transport_vehicle == GRLIB_side_friendly) then {
 		combat_readiness = combat_readiness - 10;
 		if ( combat_readiness < 0 ) then { combat_readiness = 0 };
 		stats_secondary_objectives = stats_secondary_objectives + 1;
-		[ 5 ] remoteExec ["remote_call_intel", 0];
+		[5] remoteExec ["remote_call_intel", 0];
 	} else {
 		combat_readiness = combat_readiness + 5;
 		if ( combat_readiness > 100 && GRLIB_difficulty_modifier < 2 ) then { combat_readiness = 100 };
-		[ 51 ] remoteExec ["remote_call_intel", 0];
+		[51] remoteExec ["remote_call_intel", 0];
 	};
 };
+
 private _vehicles = [_scout_vehicle, _troop_vehicle];
 [_vehicles, true] spawn cleanMissionVehicles;
 
