@@ -438,7 +438,6 @@ while { true } do {
 				};
 
 				_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
-				_vehicle addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
 			};
 
 			// Automatic ReAmmo
@@ -515,9 +514,9 @@ while { true } do {
 			_vehicle setDamage 0;
 			build_vehicle = _vehicle;
 
-			// if(_buildtype != 6) then {
-			// 	_vehicle addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
-			// };
+			if ( !(_classname in GRLIB_no_kill_handler_classnames) || (_classname in GRLIB_quick_delete) ) then {
+				_vehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+			};
 
 			stats_blufor_vehicles_built = stats_blufor_vehicles_built + 1;
 			publicVariable "stats_blufor_vehicles_built";

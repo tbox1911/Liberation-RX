@@ -17,10 +17,18 @@ if ( isServer ) then {
 		};
 	};
 
+	private _unit_class = typeOf _unit;
 	private _unit_side = side group _unit;
 	private _killer_side = side group _killer;
 	//diag_log format ["DBG: Killer: %1 %2", name _killer, _killer_side];
 	//diag_log format ["DBG: Killed: %1 %2", name _unit, _unit_side];
+
+	// Quick Delete
+	if (_unit_class in GRLIB_quick_delete) exitWith {
+		_unit setDamage 1;
+		sleep 5;
+		deleteVehicle _unit;
+	};	
 
 	// ACE
 	if (GRLIB_ACE_medical_enabled && local _unit) then {
@@ -73,7 +81,6 @@ if ( isServer ) then {
 		if ( air_weight < 0 ) then { air_weight = 0 };
 	};
 
-	private _unit_class = typeOf _unit;
 	if (_unit_class isKindOf "CAManBase") then {
 		if ( !isNull objectParent _unit ) then { [_unit, false] spawn F_ejectUnit };
 
@@ -162,12 +169,6 @@ if ( isServer ) then {
 		};
 
 	} else {
-		if (_unit_class in GRLIB_quick_delete) exitWith {
-			_unit setDamage 1;
-			sleep 20;
-			deleteVehicle _unit;
-		};
-
 		if (_unit_class == mobile_respawn) exitWith { [_unit, "del"] remoteExec ["addel_beacon_remote_call", 2] };
 
 		if (_unit_class in GRLIB_explo_delete && (getPosATL _unit) select 2 < 10) exitWith {

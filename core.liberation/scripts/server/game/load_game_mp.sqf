@@ -272,7 +272,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 			};
 			if ( _nextclass == Arsenal_typename ) then {
 				_nextbuilding setMaxLoad 0;
-			};			
+			};
         } else {
 			if ( !(_owner in ["", "public"]) && count _x > 5 ) then {
 				//[_x select 5] params [["_color", ""]];
@@ -324,7 +324,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 			{_x hideObjectGlobal true} forEach (nearestTerrainObjects [_nextpos, GRLIB_clutter_cutter, 20]);
 		};
 
-        if ( !(_nextclass in GRLIB_no_kill_handler_classnames) ) then {
+        if ( !(_nextclass in GRLIB_no_kill_handler_classnames) || (_nextclass in GRLIB_quick_delete) ) then {
             _nextbuilding addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		};
 

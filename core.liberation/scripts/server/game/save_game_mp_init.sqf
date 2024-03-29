@@ -12,6 +12,13 @@ GRLIB_vehicles_light = [mobile_respawn] + GRLIB_vehicle_blacklist + list_static_
 } foreach support_vehicles;
 GRLIB_vehicles_light = GRLIB_vehicles_light arrayIntersect GRLIB_vehicles_light;
 GRLIB_no_kill_handler_classnames = [FOB_typename, FOB_outpost, FOB_carrier] + all_buildings_classnames;
-
-GRLIB_quick_delete = [Arsenal_typename, FOB_box_typename, FOB_truck_typename, FOB_boat_typename, foodbarrel_typename, waterbarrel_typename];
+GRLIB_quick_delete = [Arsenal_typename, FOB_box_typename, foodbarrel_typename, waterbarrel_typename, medic_heal_typename];
+private _quick_delete = ["Land_MedicalTent_01_base_F", "CargoNet_01_base_F", "Shelter_base_F"];
+{
+	if ([_x, _quick_delete] call F_itemIsInClass) then {
+		GRLIB_quick_delete pushBackUnique _x;
+	};
+} foreach all_buildings_classnames;
 GRLIB_explo_delete = [ammobox_o_typename, ammobox_b_typename, ammobox_i_typename, fuelbarrel_typename];
+publicVariable "GRLIB_quick_delete";
+publicVariable "GRLIB_no_kill_handler_classnames";
