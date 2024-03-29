@@ -51,10 +51,11 @@ private ["_unit", "_backpack", "_maxpos"];
 		} else {
 			diag_log format ["--- LRX Error: Cannot create unit %1 at position %2", _x, _spawnpos];
 		};
-		sleep 0.1;
+		sleep 0.2;
 	};
 } foreach _classname;
 
+sleep 1;
 _grp setCombatMode "WHITE";
 _grp setCombatBehaviour "COMBAT";
 
@@ -68,6 +69,7 @@ _grp setCombatBehaviour "COMBAT";
 		};
 		_x setDamage 0;
 		_x allowDamage true;
+		sleep 0.2;
 	} foreach _units;
 };
 

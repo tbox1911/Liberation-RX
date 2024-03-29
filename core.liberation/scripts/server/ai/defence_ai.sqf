@@ -51,6 +51,7 @@ while { GRLIB_endgame == 0 && ({alive _x} count (units _grp) > 0) } do {
 			_x playMoveNow "AmovPercMwlkSrasWrflDf";
 			sleep 3;
 		};
+		sleep 0.2;
 	} forEach (units _grp);
 
 	sleep 33;

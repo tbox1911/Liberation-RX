@@ -41,7 +41,7 @@ if ( _ownership == GRLIB_side_enemy ) then {
 	private _near_outpost = (_fobpos in GRLIB_all_outposts);
 	private _activeplayers = 0;
 
-	[_pos, 1, _sector_timer] remoteExec ["remote_call_fob", 0];		
+	[_fobpos, 1, _sector_timer] remoteExec ["remote_call_fob", 0];		
 	[_fobpos] spawn {
 		params ["_pos"];
 		private _sound = "A3\Sounds_F\sfx\alarm_blufor.wss";
