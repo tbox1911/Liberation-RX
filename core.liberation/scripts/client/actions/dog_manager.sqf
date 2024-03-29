@@ -70,12 +70,13 @@ while { true } do {
 								{
 									detach _x;
 									sleep 0.1;
-									_x attachTo [_my_dog];
-									detach _x;
-									sleep 0.1;
-									_x setPos (_x getPos [0.5, (getDir _x)]);
+									// _x attachTo [_my_dog];
+									// detach _x;
+									// sleep 0.1;
+									_x setPos (getPos _x);
 								} forEach (attachedObjects _my_dog);
 								sleep 0.5;
+								_my_dog setVariable ["do_find", nil];
 							};
 							_tone = _my_dog getVariable "my_dog_tone";
 							[_my_dog, _tone] spawn dog_bark;
