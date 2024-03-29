@@ -12,12 +12,12 @@ if ( isNil "_liberated_sector" ) then {
 		_objective_pos = ([markerpos _spawn_marker] call F_getNearestBluforObjective) select 0;
 	};
 } else {
-	diag_log format ["Spawn BattlegGroup target %1 at %2", _liberated_sector, time];	
+	diag_log format ["Spawn BattlegGroup target %1 at %2", _liberated_sector, time];
 	_objective_pos = markerPos _liberated_sector;
 	_spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max, true, _objective_pos] call F_findOpforSpawnPoint;
 };
 
-if (_objective_pos isEqualTo zeropos) exitWith { diag_log format ["--- LRX could not find objective %1  - %3 %4", _liberated_sector, _spawn_marker, GRLIB_spawn_max] };
+if (_objective_pos isEqualTo zeropos) exitWith { diag_log "BattlegGroup could not find accessible Objective." };
 
 private _vehicle_pool = opfor_battlegroup_vehicles;
 if ( combat_readiness < 50 ) then {
