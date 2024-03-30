@@ -29,18 +29,15 @@ if ( _status == 3 ) then {
 if ( _status == 4 ) then {
 	if (player distance2D _fobpos > GRLIB_sector_size) then {
 		[ "lib_fob_attacked", [ _fob_type, _fob_name ] ] call BIS_fnc_showNotification;
-		"opfor_capture_marker" setMarkerPosLocal _fobpos;
 	};
 };
 
 if ( _status == 5 ) then {
 	sleep 4;
 	[ "lib_fob_repacked", [ _fob_type, _fob_name ] ] call BIS_fnc_showNotification;
-	"opfor_capture_marker" setMarkerPosLocal markers_reset;
 };
 
 if ( _status == 6 ) then {
 	[ "lib_fob_upgraded", [ _fob_type, _fob_name ] ] call BIS_fnc_showNotification;
-	"opfor_capture_marker" setMarkerPosLocal markers_reset;
 	GRLIB_redraw_marker_fob = true; 
 };
