@@ -107,7 +107,6 @@ while { dialog && alive player } do {
                 hintSilent format ["%1 Stored to Warehouse,\n for %2 AMMO.", _box_name, _price];
                 [_box, load_box, player] remoteExec ["warehouse_remote_call", 2];
                 playSound "taskSucceeded";
-                //sleep 1;
             };
         };
 
@@ -138,7 +137,6 @@ while { dialog && alive player } do {
                         playSound "taskSucceeded";
                     };
                 };
-                //sleep 1;
             };
         };
 

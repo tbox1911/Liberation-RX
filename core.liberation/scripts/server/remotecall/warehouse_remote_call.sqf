@@ -27,3 +27,5 @@ if (_cmd == 2) then {
         };
     };
 } forEach (units GRLIB_WHS_Group);
+
+publicVariable "GRLIB_warehouse";
