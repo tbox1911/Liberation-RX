@@ -55,6 +55,7 @@ while { ({alive _x} count (units _grp) > 0) && (GRLIB_endgame == 0)} do {
 		if (surfaceIsWater (getPos _x) && _x distance2D _objective_pos > 400) then {
 			deleteVehicle _x;
 		};
+		sleep 0.2;		
 	} forEach (units _grp);
 
 	if (!isNull _vehicle) then {
