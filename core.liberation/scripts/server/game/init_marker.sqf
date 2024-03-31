@@ -9,7 +9,7 @@ waituntil {sleep 1; !isNil "GRLIB_sectors_init"};
 private ["_vehicle"];
 {
 	// Add repair pickup
-	_vehicle = [markerPos _x, repair_offroad, 0, false, GRLIB_side_civilian, false] call F_libSpawnVehicle;
+	_vehicle = createVehicle [repair_offroad, (markerPos _x), [], 20, "NONE"];
 	if (isNull _vehicle) then {
 		diag_log format ["--- LRX Error: No place to build %1 at sector %2", repair_offroad, _x];
 	} else {
