@@ -1,6 +1,6 @@
 params [ "_spawn_str", "_mobile_respawn" ];
 
-private _nearest_sector = [2000] call F_getNearestSector;
+private _nearest_sector = [GRLIB_sector_size] call F_getNearestSector;
 if ( _nearest_sector != "" ) then { _nearest_sector = format ["%1 %2",localize "STR_SPAWN_NEAR", markertext _nearest_sector]; };
 private _leadingzero_hour = "";
 private _leadingzero_minute = "";
@@ -11,7 +11,6 @@ private _datestring = format [ "%3/%2/%1 %4%5:%6%7", date select 0, date select 
 private [ "_spawn_camera","_startpos0","_startpos1","_endpos1","_startpos2","_endpos2","_startpos3","_endpos3"];
 
 if ( GRLIB_deployment_cinematic && !_mobile_respawn) then {
-
 	camUseNVG false;
 	showCinemaBorder false;
 	_startpos0 = [ 0, 500, 3000];
@@ -33,7 +32,6 @@ if ( GRLIB_deployment_cinematic && !_mobile_respawn) then {
 	_spawn_camera camcommit 0.5;
 
 	waitUntil { camCommitted _spawn_camera };
-
 };
 
 //[ format [ "<t size='0.7' align='left'>%1<br/>%2<br/>%3<br/>%4</t>", name player, _spawn_str, _datestring, _nearest_sector ],1.4,1,8,1 ] spawn BIS_fnc_dynamictext;
