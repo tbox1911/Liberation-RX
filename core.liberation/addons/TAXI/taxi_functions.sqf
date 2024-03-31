@@ -60,7 +60,7 @@ taxi_dest = {
 			_vehicle setPos ((getPosATL _vehicle) vectorAdd [0, 0, 3]);
 			sleep 1;
 		};
-		(((_vehicle distance2D _dest < _landing_range || time > _stop) && unitReady (driver _vehicle)) || !(isNil "GRLIB_taxi_eject"))
+		(((_vehicle distance2D _dest <= _landing_range || time > _stop) && unitReady (driver _vehicle)) || !(isNil "GRLIB_taxi_eject"))
 	};
 };
 

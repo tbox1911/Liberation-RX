@@ -30,8 +30,8 @@ if (surfaceIsWater _dest || _degree > 8) exitWith {deleteVehicle GRLIB_taxi_heli
 // Pay
 if (!([GRLIB_AirDrop_Taxi_cost] call F_pay)) exitWith {deleteVehicle GRLIB_taxi_helipad};
 
+// Marker
 deleteMarkerLocal "taxi_lz";
-deleteMarkerLocal "taxi_dz";
 
 // Create Taxi
 private _spawn_sector = ([sectors_airspawn, [_dest], {(markerpos _x) distance2D _input0}, "ASCEND"] call BIS_fnc_sortBy) select 0;
@@ -100,13 +100,14 @@ if (time < _stop) then {
 	_stop = time + (5 * 60); // wait 5min max
 	waitUntil {
 		sleep 0.5;
-		( (markerPos "taxi_dz") distance2D zeropos > 100 || isNil {player getVariable ["GRLIB_taxi_called", nil]} || time > _stop )
+		( (!isNull GRLIB_taxi_helipad) || isNil {player getVariable ["GRLIB_taxi_called", nil]} || time > _stop )
 	};
 
 	_vehicle removeAction _idact_cancel;
-	deleteMarkerLocal "taxi_lz";
+	_marker setMarkerPosLocal (getPosATL GRLIB_taxi_helipad);
+	_marker setMarkerTextlocal "Taxi DZ";
 
-	if ( (markerPos "taxi_dz") distance2D zeropos > 100 ) then {
+	if (!isNull GRLIB_taxi_helipad) then {
 		titleText ["", "PLAIN"];
 		sleep 1;
 		for "_i" from 3 to 0 step -1 do {
@@ -120,7 +121,7 @@ if (time < _stop) then {
 		_cargo = [_vehicle] call taxi_cargo;
 		{ _x allowDamage false } forEach _cargo;
 
-		_dest = markerPos "taxi_dz";
+		_dest = getPos GRLIB_taxi_helipad;
 		[_vehicle, _dest, "STR_TAXI_PROGRESS"] call taxi_dest;
 		_vehicle removeAction _idact_dest;
 		_vehicle removeAction _idact_eject;
@@ -143,7 +144,6 @@ sleep 1;
 
 // Go back
 deleteMarkerLocal "taxi_lz";
-deleteMarkerLocal "taxi_dz";
 if (GRLIB_taxi_helipad_created) then { deleteVehicle GRLIB_taxi_helipad };
 GRLIB_taxi_eject = nil;
 GRLIB_taxi_helipad = nil;
