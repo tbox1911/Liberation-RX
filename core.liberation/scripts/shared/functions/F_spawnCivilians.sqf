@@ -24,7 +24,6 @@ private _grp = createGroup [GRLIB_side_civilian, true];
 	_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	_unit setVariable ['GRLIB_can_speak', true, true];
 	_unit addEventHandler ["HandleDamage", { _this call damage_manager_civilian }];
-	[_unit] call F_fixPosUnit;
 	_unit switchMove "AmovPercMwlkSnonWnonDf";
 	_unit playMoveNow "AmovPercMwlkSnonWnonDf";
 	sleep 1;
