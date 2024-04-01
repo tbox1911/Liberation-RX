@@ -32,12 +32,12 @@ while { alive _vehicle && !(isNull _driver)} do {
         _incd = selectRandom [0,0,_incd_repair,_incd_repair,_incd_fuel];
 
         // lucky ?
-        if (_incd == 0) exitWith { _trigger = (time + _delay) };
+        if (_incd == 0 || surfaceIsWater (getposATL _vehicle)) exitWith { _trigger = (time + _delay) };
 
         _event_stared = true;
         diag_log format ["Civilian vehicle %1 incident %2 at %3", typeOf _vehicle, _incd , time];
         _vehicle setVariable ["GRLIB_civ_incd", _incd, true];
-        _vehicle allowCrewInImmobile [true, true];
+        //_vehicle allowCrewInImmobile [true, true];
         doStop _driver;
         sleep 3;
 
