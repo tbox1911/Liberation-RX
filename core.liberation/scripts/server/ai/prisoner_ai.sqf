@@ -1,7 +1,7 @@
 params [ "_unit", ["_friendly", false], ["_canmove", false] ];
 
 if (isNull _unit) exitWith {};
-if ((typeOf _unit) select [0,10] == "RyanZombie") exitWith {};
+if !(isNull objectParent _unit) exitWith {};
 if (_unit getVariable ["GRLIB_mission_AI", false]) exitWith {};
 if (_unit getVariable ["GRLIB_is_prisoner", false]) exitWith {};
 if (surfaceIsWater (getPosATl _unit)) exitWith {};
