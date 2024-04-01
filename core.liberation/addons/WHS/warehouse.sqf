@@ -99,28 +99,30 @@ while { dialog && alive player } do {
 		if (load_box == 1) then {
 			ctrlEnable [120, false];
 			_box = _mybox select (lbCurSel 110);
-			_box_name = [typeOf _box] call F_getLRXName;
-			_price = support_vehicles select {(_x select 0) == (typeOf _box)} select 0 select 2;
-			_msg = format [localize "STR_WAREHOUSE_LOAD_MSG", _box_name, _price];
-			_result = [_msg, localize "STR_WAREHOUSE_LOAD", true, true] call BIS_fnc_guiMessage;
+			if (isNull _box) exitWith {};
+			private _box_class = typeOf _box;
+			private _box_name = [_box_class] call F_getLRXName;
+			private _price = support_vehicles select {(_x select 0) == _box_class} select 0 select 2;
+			private _msg = format [localize "STR_WAREHOUSE_LOAD_MSG", _box_name, _price];
+			private _result = [_msg, localize "STR_WAREHOUSE_LOAD", true, true] call BIS_fnc_guiMessage;
 
 			if (_result) then {
 				hintSilent format ["%1 Stored to Warehouse,\n for %2 AMMO.", _box_name, _price];
 				[_box, load_box, player] remoteExec ["warehouse_remote_call", 2];
 				playSound "taskSucceeded";
-				sleep 0.5;
+				waitUntil {sleep 0.1; isNull _box };
 			};
 		};
 
 		// unload
 		if (load_box == 2) then {
 			ctrlEnable [121, false];
-			_box = GRLIB_warehouse select (lbCurSel 111) select 0;
-			_box_name = [_box] call F_getLRXName;
-			_price = support_vehicles select {(_x select 0) == (_box)} select 0 select 2;
-			_price = round (_price / GRLIB_recycling_percentage);
-			_msg = format [localize "STR_WAREHOUSE_UNLOAD_MSG", _box_name, _price];
-			_result = [_msg, localize "STR_WAREHOUSE_UNLOAD", true, true] call BIS_fnc_guiMessage;
+			private _box = GRLIB_warehouse select (lbCurSel 111) select 0;
+			private _box_name = [_box] call F_getLRXName;
+			private _price = support_vehicles select {(_x select 0) == (_box)} select 0 select 2;
+			private _price = round (_price / GRLIB_recycling_percentage);
+			private _msg = format [localize "STR_WAREHOUSE_UNLOAD_MSG", _box_name, _price];
+			private _result = [_msg, localize "STR_WAREHOUSE_UNLOAD", true, true] call BIS_fnc_guiMessage;
 
 			if (_result) then {
 				if ((GRLIB_warehouse select (lbCurSel 111) select 1) <= 0) exitWith {};
