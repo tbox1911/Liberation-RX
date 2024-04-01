@@ -27,6 +27,7 @@ if (GRLIB_fancy_info == 2 && _safe_display) then {
 	];
 	[_msg, 0, 0, 6, 0, -1, 90] spawn BIS_fnc_dynamicText;
 } else {
+	waitUntil { sleep 0.5; (isNil {uinamespace getvariable ["BIS_InfoText", nil]}) };
 	private _info = [
 		format ["%1", _title],
 		"",
