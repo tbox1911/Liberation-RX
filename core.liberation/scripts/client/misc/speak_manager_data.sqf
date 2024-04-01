@@ -140,6 +140,7 @@ speak_heal_civ = {
 	if (damage _unit < 0.02) then {
 		_unit globalChat "Thank you very much !!";
 		[player, 5] remoteExec ["F_addReput", 2];
+		_unit setDamage 0;
 	};
 };
 
