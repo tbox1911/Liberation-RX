@@ -12,5 +12,5 @@ if ( _attacked_string == "" ) then {
 	};
 };
 
-if (_attacked_string == "") then { _attacked_string = str _attacked_position };
+if (_attacked_string == "") then { _attacked_string = mapGridPosition _attacked_position };
 _attacked_string
