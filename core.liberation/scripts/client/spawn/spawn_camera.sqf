@@ -35,38 +35,33 @@ if ( GRLIB_deployment_cinematic && !_mobile_respawn) then {
 };
 
 //[ format [ "<t size='0.7' align='left'>%1<br/>%2<br/>%3<br/>%4</t>", name player, _spawn_str, _datestring, _nearest_sector ],1.4,1,8,1 ] spawn BIS_fnc_dynamictext;
+waitUntil { sleep 0.5; (isNil {uinamespace getvariable ["BIS_InfoText", nil]}) };
 [name player, _spawn_str, _datestring, _nearest_sector] spawn BIS_fnc_infoText;
 
 if ( GRLIB_deployment_cinematic && !_mobile_respawn) then {
 
 	_spawn_camera camSetRelPos _endpos1;
 	_spawn_camera camcommit 1.75;
-
 	waitUntil { camCommitted _spawn_camera };
 
 	_spawn_camera camSetRelPos _startpos2;
 	_spawn_camera camcommit 0.25;
-
 	waitUntil { camCommitted _spawn_camera };
 
 	_spawn_camera camSetRelPos _endpos2;
 	_spawn_camera camcommit 1.75;
-
 	waitUntil { camCommitted _spawn_camera };
 
 	_spawn_camera camSetRelPos _startpos3;
 	_spawn_camera camcommit 0.25;
-
 	waitUntil { camCommitted _spawn_camera };
 
 	_spawn_camera camSetRelPos _endpos3;
 	_spawn_camera camcommit 1.75;
-
 	waitUntil { camCommitted _spawn_camera };
 
 	_spawn_camera camSetRelPos [0,0.4,1.75];
 	_spawn_camera camcommit 1;
-
 	waitUntil { camCommitted _spawn_camera };
 
 	_spawn_camera cameraEffect ["Terminate","back"];
