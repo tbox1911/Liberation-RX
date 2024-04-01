@@ -21,6 +21,7 @@ if (isNil "_forced_pos") then {
 _pos set [2, 500];	// launch altitude
 if (surfaceIsWater _pos) then { _pos = ATLtoASL _pos };
 
+_vehicle allowDamage false;
 while { _vehicle distance _pos > 100 } do {
 	_vehicle setPos _pos;
 	sleep 1;
