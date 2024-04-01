@@ -15,7 +15,7 @@ if (_veh_class == ammobox_i_typename && [player] call F_getScore <= GRLIB_perm_l
 	private _msg = format [localize "STR_DO_RECYCLE"];
 	_result = [_msg, localize "STR_SP_BOX", localize "STR_PTS", localize "STR_AMMORWD"] call BIS_fnc_guiMessage;
 	if (_result && !(isNull _vehicle) && alive _vehicle) then {
-		[_vehicle] remoteExec ["deleteVehicle", 2];
+		deleteVehicle _vehicle;
 		[player, 50] remoteExec ["F_addScore", 2];
 		playSound "taskSucceeded";
 		hint format [localize "STR_AMMO_SELL", name player, 50];

@@ -132,7 +132,7 @@ while { dialog && alive player } do {
 			private _msg = format [localize "STR_SHOP_SELL_MSG", _vehicle_name, _price];
 			private _result = [_msg, localize "STR_SHOP_SELL", true, true] call BIS_fnc_guiMessage;
 			if (_result && !(isNull _vehicle) && alive _vehicle) then {
-				[_vehicle] remoteExec ["deleteVehicle", 2];
+				deleteVehicle _vehicle;
 				[player, _price, 0] remoteExec ["ammo_add_remote_call", 2];
 				hintSilent format ["%1 Sold for %2 AMMO !", _vehicle_name, _price];
 				ctrlEnable [120, false];

@@ -40,7 +40,7 @@ if (lifeState player == 'INCAPACITATED' || !isNull objectParent player) exitWith
 	player setVariable ["salvage_wreck", false, true];
 };
 
-[_vehicle] remoteExec ["deleteVehicle", 2];
+deleteVehicle _vehicle;
 sleep 0.5;
 
 if (_vehicle_class in _valuable_veh) then {
