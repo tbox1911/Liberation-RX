@@ -10,13 +10,19 @@ if (_cmd == 1) then {
     [_unit, _price, 0] call ammo_add_remote_call;
     private _r1 = GRLIB_warehouse select {(_x select 0) == (typeOf _box)} select 0;
     _r1 set [1, (_r1 select 1) + 1];
+    private _msg = format ["Player %1 Add %2 to WareHouse.", name _unit, [_box] call F_getLRXName];
+    [gamelogic, _msg] remoteExec ["globalChat", 0];
     deleteVehicle _box;
 };
 
 if (_cmd == 2) then {
     if (_box == "") exitWith {};
     private _r1 = GRLIB_warehouse select { (_x select 0) == _box } select 0;
-    if ((_r1 select 1) > 0) then { _r1 set [1, (_r1 select 1) - 1] };
+    if ((_r1 select 1) > 0) then {
+        _r1 set [1, (_r1 select 1) - 1];
+        private _msg = format ["Player %1 Take %2 from WareHouse.", name _unit, [_box] call F_getLRXName];
+        [gamelogic, _msg] remoteExec ["globalChat", 0];
+    };
 };
 
 // update all warehouse
