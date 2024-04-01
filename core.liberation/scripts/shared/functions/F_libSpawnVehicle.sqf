@@ -143,7 +143,7 @@ if ( _side == GRLIB_side_enemy ) then {
 };
 
 _vehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
-_vehicle allowCrewInImmobile [true, false];
+_vehicle allowCrewInImmobile [true, true];
 _vehicle setUnloadInCombat [true, false];
 
 [_vehicle] call F_clearCargo;

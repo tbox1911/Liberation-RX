@@ -51,6 +51,11 @@ private _aircraft = (_vehicle isKindOf "Air");
 } foreach (units _grp);
 
 (group _vehicle) addVehicle _vehicle;
-_grp setCombatMode "WHITE";
-_grp setBehaviourStrong "AWARE";
+if (_side == GRLIB_side_civilian) then {
+	_grp setCombatMode "BLUE";
+	_grp setBehaviourStrong "CARELESS";
+} else {
+	_grp setCombatMode "WHITE";
+	_grp setBehaviourStrong "AWARE";
+};
 (crew _vehicle);
