@@ -47,7 +47,7 @@ PAR_unblock_AI = {
 				[_unit] allowGetIn false;
 				sleep 0.5;
 				if (surfaceIsWater (getPos _unit)) then {
-					[[_unit]] call PAR_fn_fixPos;
+					_unit setPosASL (getPosASL player vectorAdd [([] call F_getRND), ([] call F_getRND), -2]);
 				} else {
 					_unit setPosATL (getPosATL player vectorAdd [([] call F_getRND), ([] call F_getRND), 0.5]);
 				};

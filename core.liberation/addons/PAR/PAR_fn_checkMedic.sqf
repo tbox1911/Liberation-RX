@@ -16,11 +16,13 @@ private _check_sortie = {
 	};
 
 	if (_wnded distance _medic <= 6 && _fail != 99) then {
-		if ((getPosATL _wnded) select 2 > 5) then {
-			_medic doMove (getPosATL _wnded);
-			sleep 3;
+		if !(surfaceIsWater (getPos _wnded)) then {
+			if ((getPosATL _wnded) select 2 > 5) then {
+				_medic doMove (getPosATL _wnded);
+				sleep 3;
+			};
+			waitUntil {sleep 0.5; round (speed vehicle _medic) == 0};
 		};
-		waitUntil {sleep 0.5; round (speed vehicle _medic) == 0};
 		_ret = true;
 	};
 	_ret;
