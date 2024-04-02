@@ -139,6 +139,7 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 [] execVM "scripts\client\misc\init_markers.sqf";
 [] execVM "scripts\client\misc\speak_manager_data.sqf";
 //[] execVM "scripts\client\misc\logs_markers.sqf";
+[] execVM "scripts\client\misc\updateRadioTowers.sqf";
 
 GRLIB_ActionDist_3 = 3;
 GRLIB_ActionDist_5 = 5;
