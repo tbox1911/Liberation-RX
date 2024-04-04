@@ -16,7 +16,6 @@ private _wait_max = 0;
 private _incd = 0;
 private _marker = "";
 private _helped = false;
-private _veh_damage = 0;
 
 sleep (60 + floor random 60);
 
@@ -50,15 +49,15 @@ while { alive _vehicle && !(isNull _driver)} do {
         switch (_incd) do {
             // breakdown
             case _incd_repair: {
-                _hit_index = selectRandom ["HitLFWheel", "HitLBWheel", "HitRFWheel", "HitRBWheel"];  // "HitBody"
+                _hit_index = selectRandom ["HitEngine", "HitLFWheel", "HitLBWheel", "HitRFWheel", "HitRBWheel"];  // "HitBody"
                 _vehicle setHit [getText (configFile >> "cfgVehicles" >> (typeOf _vehicle) >> "HitPoints" >> _hit_index >> "name"), 1];
-                _vehicle setHit [getText (configFile >> "cfgVehicles" >> (typeOf _vehicle) >> "HitPoints" >> "HitEngine" >> "name"), 1];
+                _vehicle setDamage 0.6;
                 _smoke = GRLIB_sar_fire createVehicle (getPos _vehicle);
                 _smoke attachTo [_vehicle, [0, 1.5, 0]];
             };
 
             // refuel
-            case _incd_fuel: {              
+            case _incd_fuel: {
                 _vehicle setFuel 0;
             };
 
@@ -70,8 +69,7 @@ while { alive _vehicle && !(isNull _driver)} do {
     // Rescued
     if (_event_stared) then {
         _helped = false;
-        _veh_damage = _vehicle getHit (getText (configFile >> "cfgVehicles" >> (typeOf _vehicle) >> "HitPoints" >> "HitEngine" >> "name"));
-        if (_incd == _incd_repair && _veh_damage < 0.8 ) then { _helped = true };
+        if (_incd == _incd_repair && damage _vehicle < 0.5 ) then { _helped = true };
         if (_incd == _incd_fuel && fuel _vehicle >= 0.5) then { _helped = true };
         if (time > _wait_max) then { _helped = true };
 
