@@ -158,6 +158,11 @@ if ( isNil "militia_vehicles" ) then {
 	];
 };
 
+// *** TFAR RADIO ***
+if (GRLIB_TFR_enabled) then {
+	Radio_tower = "TFAR_Land_Communication_F";
+};
+
 // *** SUPPORT ***
 support_vehicles = [];
 if (GRLIB_enable_arsenal == 1) then {
