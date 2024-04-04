@@ -12,11 +12,12 @@ private _check_sortie = {
 		vehicle _medic != _medic || vehicle _wnded != _wnded
 	) then {
 		_fail = 99;
-		//_ret = true;
 	};
 
-	if (_wnded distance _medic <= 6 && _fail != 99) then {
-		if !(surfaceIsWater (getPos _wnded)) then {
+	if (_wnded distance2D _medic <= 6 && _fail != 99) then {
+		if (surfaceIsWater (getPos _wnded)) then {
+			_medic setPosASL (getPosASL _wnded);
+		} else {
 			if ((getPosATL _wnded) select 2 > 5) then {
 				_medic doMove (getPosATL _wnded);
 				sleep 3;

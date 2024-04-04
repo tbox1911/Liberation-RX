@@ -39,7 +39,7 @@ if (!alive _unit) exitWith {};
 _unit setVariable ["PAR_isUnconscious", true, true];
 if !(isPlayer _unit) then { sleep 3 };
 
-private _bld = createVehicle [(selectRandom PAR_BloodSplat), getPos _unit, [], 0, "CAN_COLLIDE"];
+private _bld = [_unit] call PAR_spawn_blood;
 private _cnt = 0;
 private ["_medic", "_msg"];
 while {lifeState _unit == "INCAPACITATED" && time <= _unit getVariable ["PAR_BleedOutTimer", 0]} do {
@@ -70,7 +70,7 @@ while {lifeState _unit == "INCAPACITATED" && time <= _unit getVariable ["PAR_Ble
 	sleep 1;
 };
 
-_bld spawn {sleep (30 + floor(random 30)); deleteVehicle _this};
+if (!isNull _bld) then { _bld spawn {sleep (30 + floor(random 30)); deleteVehicle _this} };
 [(_unit getVariable ["PAR_myMedic", objNull]), _unit] call PAR_fn_medicRelease;
 
 if (isPlayer _unit) then {
