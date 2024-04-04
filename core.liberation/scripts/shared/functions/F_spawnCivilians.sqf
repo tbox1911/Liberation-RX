@@ -14,10 +14,6 @@ private _spawnpos = [];
 private _grp = createGroup [GRLIB_side_civilian, true];
 {
 	_spawnpos = [(((_sectorpos select 0) + (75 * _spread)) - (random (150 * _spread))),(((_sectorpos select 1) + (75 * _spread)) - (random (150 * _spread))),0.3];
-	while { (surfaceIsWater _spawnpos) } do {
-		_spawnpos = [(((_sectorpos select 0) + (75 * _spread)) - (random (150 * _spread))),(((_sectorpos select 1) + (75 * _spread)) - (random (150 * _spread))),0.3];
-		sleep 0.1;
-	};
 	_unit = _grp createUnit [_x, _spawnpos, [], 100, "NONE"];
 	sleep 0.1;
 	_unit allowDamage false;
