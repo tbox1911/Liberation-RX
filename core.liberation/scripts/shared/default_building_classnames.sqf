@@ -80,5 +80,6 @@ buildings_default = [
 	["Land_PaperBox_open_full_F",0,0,0,GRLIB_perm_tank],
 	["Land_CzechHedgehog_01_new_F",0,0,0,GRLIB_perm_inf],
 	["Land_ConcreteHedgehog_01_F",0,0,0,GRLIB_perm_log],
-	["Land_DragonsTeeth_01_4x2_old_redwhite_F",0,0,0,GRLIB_perm_tank]
+	["Land_DragonsTeeth_01_4x2_old_redwhite_F",0,0,0,GRLIB_perm_tank],
+	["TFAR_Land_Communication_F",0,0,0,GRLIB_perm_max]
 ];
