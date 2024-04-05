@@ -26,6 +26,7 @@ private ["_unit", "_backpack", "_maxpos"];
 		};
 
 		_unit = _grp createUnit [_x, _spawnpos, [], 20, "NONE"];
+		sleep 0.1;
 		if (!isNil "_unit") then {
 			_unit allowDamage false;
 			_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
@@ -51,7 +52,7 @@ private ["_unit", "_backpack", "_maxpos"];
 		} else {
 			diag_log format ["--- LRX Error: Cannot create unit %1 at position %2", _x, _spawnpos];
 		};
-		sleep 0.2;
+		sleep 0.1;
 	};
 } foreach _classname;
 

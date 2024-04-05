@@ -100,4 +100,7 @@ if ( _liberated_sector in sectors_tower ) then {
 	_nextower setpos _pos;
 	_nextower setVectorUp [0,0,1];
 	_nextower setVariable ["GRLIB_Radio_Tower", true, true];
+	if (GRLIB_TFR_enabled) then {
+		[_nextower, 10000] call TFAR_antennas_fnc_initRadioTower;
+	};	
 };

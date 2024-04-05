@@ -12,15 +12,18 @@ private _check_sortie = {
 		vehicle _medic != _medic || vehicle _wnded != _wnded
 	) then {
 		_fail = 99;
-		//_ret = true;
 	};
 
-	if (_wnded distance _medic <= 6 && _fail != 99) then {
-		if ((getPosATL _wnded) select 2 > 5) then {
-			_medic doMove (getPosATL _wnded);
-			sleep 3;
+	if (_wnded distance2D _medic <= 6 && _fail != 99) then {
+		if (surfaceIsWater (getPos _wnded)) then {
+			_medic setPosASL (getPosASL _wnded);
+		} else {
+			if ((getPosATL _wnded) select 2 > 5) then {
+				_medic doMove (getPosATL _wnded);
+				sleep 3;
+			};
+			waitUntil {sleep 0.5; round (speed vehicle _medic) == 0};
 		};
-		waitUntil {sleep 0.5; round (speed vehicle _medic) == 0};
 		_ret = true;
 	};
 	_ret;

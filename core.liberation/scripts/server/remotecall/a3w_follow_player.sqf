@@ -7,6 +7,7 @@ private _near_tent = {
 };
 
 // start
+_unit allowDamage false;
 _unit setVariable ["GRLIB_can_speak", false, true];
 _unit stop false;
 _unit setUnitPos "AUTO";
@@ -31,6 +32,7 @@ _unit playMoveNow _anim;
 _unit setDamage 0.50;
 _unit setVariable ["GRLIB_can_speak", true, true];
 _unit stop true;
+_unit allowDamage true;
 
 if ([_unit] call _near_tent) then {
     _unit setDamage 0;

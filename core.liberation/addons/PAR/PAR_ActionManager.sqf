@@ -42,8 +42,7 @@ while {true} do {
                     [_target, _msg] remoteExec ["PAR_fn_globalchat", 0];
                     _bleedOut = _target getVariable ["PAR_BleedOutTimer", 0];
                     _target setVariable ["PAR_BleedOutTimer", _bleedOut + PAR_bleedout_extra, true];
-                    _grbg = createVehicle [(selectRandom PAR_MedGarbage), getPos _target, [], 0, "CAN_COLLIDE"];
-                    _grbg spawn {sleep (60 + floor(random 30)); deleteVehicle _this};
+                    [_target] call PAR_spawn_gargbage;
                     if (stance _caller == "PRONE") then {
                     _caller switchMove 'ainvppnemstpslaywrfldnon_medicother';
                     _caller playMoveNow 'ainvppnemstpslaywrfldnon_medicother';

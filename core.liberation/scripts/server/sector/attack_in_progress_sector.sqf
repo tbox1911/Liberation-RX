@@ -92,7 +92,7 @@ if ( _ownership == GRLIB_side_enemy ) then {
 
 	private _activeplayers = 0;
 	while { (time < _sector_timer || _activeplayers > 0) && _ownership == GRLIB_side_enemy } do {
-		_ownership = [_sector_pos, (GRLIB_capture_size * 2)] call F_sectorOwnership;
+		_ownership = [_sector_pos, GRLIB_capture_size] call F_sectorOwnership;
 		_activeplayers = { alive _x && (_x distance2D _sector_pos) < GRLIB_sector_size } count (units GRLIB_side_friendly);
 		sleep 3;
 	};

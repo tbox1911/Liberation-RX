@@ -10,7 +10,7 @@ private [
 
 while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	sleep (30 + floor(random 150));
-	while { civcap > GRLIB_civilians_amount || (diag_fps < 35.0) } do {
+	while { civcap > GRLIB_civilians_amount || (diag_fps < 25) } do {
 		sleep 60;
 	};
 
@@ -67,6 +67,6 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 		// Cleanup
 		[_civ_veh] call clean_vehicle;
 		{ deleteVehicle _x } forEach (units _civ_grp);
-		deleteGroup _civ_grp;	
+		deleteGroup _civ_grp;
 	};
 };

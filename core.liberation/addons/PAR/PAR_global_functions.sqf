@@ -27,9 +27,14 @@ PAR_unblock_AI = {
 	if (player getVariable ["SOG_player_in_tunnel", false]) exitWith {};
 	if ( isNull (objectParent player) && count _unit_array == 0 ) then {
 		if (surfaceIsWater (getPos player)) then {
-			[[player]] spawn PAR_fn_fixPos;
+			private _pos = getPosASL player;
+			private _zpos = _pos select 2;
+			if (_zpos < -1.4) then { _pos set [2, -1.4 max _zpos] };
+			player setPosASL _pos;
+			player switchMove "";
+			player playMoveNow "";				
 		} else {
-			player setPosATL (getPosATL player vectorAdd [([] call F_getRND), ([] call F_getRND), 0.5]);
+			player setPosATL (getPosATL player vectorAdd [([] call F_getRND), ([] call F_getRND), 0.3]);
 		};
 	} else {
 		{
@@ -42,19 +47,21 @@ PAR_unblock_AI = {
 				_unit disableAI "ALL";
 				private _grp = createGroup [GRLIB_side_friendly, true];
 				[_unit] joinSilent _grp;
+				sleep 0.2;
 				unAssignVehicle _unit;
 				[_unit] orderGetIn false;
 				[_unit] allowGetIn false;
-				sleep 0.5;
+				sleep 0.2;
 				if (surfaceIsWater (getPos _unit)) then {
-					[[_unit]] call PAR_fn_fixPos;
+					_unit setPosASL (getPosASL player vectorAdd [([] call F_getRND), ([] call F_getRND), 0]);
 				} else {
-					_unit setPosATL (getPosATL player vectorAdd [([] call F_getRND), ([] call F_getRND), 0.5]);
+					_unit setPosATL (getPosATL player vectorAdd [([] call F_getRND), ([] call F_getRND), 0.3]);
 				};
-				sleep 0.5;
+				sleep 0.2;
 				_unit stop false;
 				_unit enableAI "ALL";
 				[_unit] joinSilent (group player);
+				sleep 0.2;
 				_unit doFollow player;
 				if (surfaceIsWater (getPos _unit)) then {
 					_unit switchMove "";
@@ -109,10 +116,15 @@ PAR_fn_fixPos = {
 	params ["_list"];
 	{
 		private _pos = getPosASL _x;
-		if (local _x && surfaceIsWater _pos) then {
-			_zpos = _pos select 2;
-			if (_zpos < -2) then { _pos set [2, -2 max _zpos] };
-			_x setPosASL _pos;
+		if (surfaceIsWater _pos) then {
+			if (isPlayer _x) then {
+				_x switchMove ""; // reset
+				_x playMoveNow "";
+			} else {
+				private _zpos = _pos select 2;
+				if (_zpos < -1.2) then { _pos set [2, -1.2 max _zpos] };
+				_x setPosASL _pos;
+			};
 		};
 	} forEach _list;
 };
@@ -187,6 +199,22 @@ PAR_revive_max = {
 	private _msg = format ["%1 revive restored (%2) !!", name _unit, _revive];
 	[_unit, _msg] call PAR_fn_globalchat;
 
+};
+PAR_spawn_gargbage = {
+	params ["_target"];
+	private _pos = getPos _target;
+	if (surfaceIsWater _pos) exitWith {};
+	if (_pos select 2 > 10) exitWith {};
+	private _grbg = createVehicle [(selectRandom PAR_MedGarbage), _pos, [], 0, "CAN_COLLIDE"];
+	_grbg spawn {sleep (60 + floor(random 30)); deleteVehicle _this};
+};
+PAR_spawn_blood = {
+	params ["_target"];
+	private _pos = getPos _target;
+	if (surfaceIsWater _pos) exitWith {objNull};
+	if (_pos select 2 > 10) exitWith {objNull};
+	private _grbg = createVehicle [(selectRandom PAR_BloodSplat), _pos, [], 0, "CAN_COLLIDE"];
+	_grbg;
 };
 
 // AI Section
