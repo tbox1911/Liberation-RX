@@ -36,16 +36,16 @@ while { true } do {
 	_zeusunits = _zeusunits - (curatorEditableObjects (allCurators select 0));
 
 	_units_to_remove = [];
-	{
-		if ( !(alive _x) ) then {
-			_units_to_remove pushback _x;
-		};
-	} foreach (curatorEditableObjects (allCurators select 0));
+//	{
+//		if ( !(alive _x) ) then {
+//			_units_to_remove pushback _x;
+//		};
+//	} foreach (curatorEditableObjects (allCurators select 0));
 
 	{
 		_zgm = _x;
 		_zgm addCuratorEditableObjects [_zeusunits, true];
-		_zgm removeCuratorEditableObjects [_units_to_remove, true];
+//		_zgm removeCuratorEditableObjects [_units_to_remove, true];
 		_zgm  setCuratorCoef ["edit", 0];
 		_zgm  setCuratorCoef ["place", 0];
 		_zgm  setCuratorCoef ["synchronize", 0];
