@@ -5,10 +5,16 @@
 // For example: "76561198085724439"
 // To know that information: https://steamid.io/
 GRLIB_whitelisted_steamids = [
+    "76561198001438454",
+    "76561198100039575",
+    "76561198063769897"
 ];
 
 // Allow player to use the Light Admin Menu (aka Moderators)
 GRLIB_whitelisted_moderators = [
+    "76561198001438454",
+    "76561198100039575",
+    "76561198063769897"
 ];
 
 // Forbiden player names.
@@ -31,7 +37,9 @@ GRLIB_blacklisted_names = [
     "windows",
     "dell",
     "acer",
-    "asus"
+    "asus",
+    "hp",
+    "dy"
 ];
 
 // Here you can allow people to connect to the mission based on their SteamID64.
