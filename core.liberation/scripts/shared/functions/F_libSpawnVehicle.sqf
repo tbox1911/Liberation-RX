@@ -96,10 +96,12 @@ if ( _random_rotate ) then {
 };
 
 if ( _side == GRLIB_side_civilian ) then {
-	_vehicle addEventHandler ["Fuel", { 
-		if ((_this select 0) getVariable ["GRLIB_civ_incd", 0] > 0) exitWith {};
-		if (!(_this select 1)) then {(_this select 0) setFuel 1}}
-	];
+	_vehicle addEventHandler ["Fuel", {
+		params ["_vehicle", "_hasFuel"];
+		if (_vehicle getVariable ["GRLIB_civ_incd", 0] > 0) exitWith {};
+		if (count (crew _vehicle) == 0) exitWith {};
+		if (!_hasFuel) then { _vehicle setFuel 1 };
+	}];
 	_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_civilian }];
 	[_vehicle, "lock", "public"] call F_vehicleLock;
 };
@@ -111,11 +113,15 @@ if ( _side == GRLIB_side_friendly ) then {
 	if (count blufor_texture_overide > 0) then {
 		_texture_name = selectRandom blufor_texture_overide;
 		[_vehicle, _texture_name] spawn RPT_fnc_TextureVehicle;
-	};	
+	};
 };
 
 if ( _side == GRLIB_side_enemy ) then {
-	_vehicle addEventHandler ["Fuel", { if (!(_this select 1)) then {(_this select 0) setFuel 1}}];
+	_vehicle addEventHandler ["Fuel", {
+		params ["_vehicle", "_hasFuel"];
+		if (count (crew _vehicle) == 0) exitWith {};
+		if (!_hasFuel) then { _vehicle setFuel 1 };
+	}];	
 	_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
 
 	// LRX textures
