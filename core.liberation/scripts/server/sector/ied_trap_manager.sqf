@@ -43,9 +43,9 @@ if ( count _ide_pos > 0 ) then {
 		sleep 1;
 		_hostilecount = [_ide_pos, _activation_radius] call F_getNearbyPlayers;
 		if (count _hostilecount >= _infantry_trigger) then {
-			sleep (floor random 2);
 			[_ied_obj] spawn {
 				params ["_obj"];
+				sleep (floor random 1);
 				for "_i" from 1 to 5 do {
 					playSound3D ["A3\Missions_F_Oldman\Data\sound\beep.ogg", _obj, false, ATLToASL (getPosATL _obj), 4, 1, 100];
 					sleep 0.5;
