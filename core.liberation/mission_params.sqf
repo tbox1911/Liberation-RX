@@ -142,7 +142,7 @@ LRX_Mission_Params_Def = [
 		["AUTO", "300", "400", "600", "800", "1000", "1200", "1500"],
 		[0, 300, 400, 600, 800, 1000, 1200, 1500]
 	],
-	["TFRadioRange", localize "STR_PARAM_SECTOR_RADIUS",
+	["TFRadioRange", localize "STR_PARAM_TFAR_RADIUS",
 		["2.5km", "5km", "7.5km", "10km", "15km", "20km", "50km"],
 		[2500, 5000, 7500, 10000, 15000, 20000, 50000]
 	],

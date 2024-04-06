@@ -2139,6 +2139,10 @@
 			<Portuguese>O tamanho de um setor (raio)</Portuguese>
 			<Czech>Velikost sektoru (radius)</Czech>
 		</Key>
+		<Key ID="STR_PARAM_TFAR_RADIUS">
+			<Original>Task Force Radio Relay distance</Original>
+			<French>Task Force Radio distance du Relais</French>
+		</Key>		
 		<Key ID="STR_PARAM_PASSIVE_INCOME">
 			<Original>Replace ammo boxes spawns with Passive Income</Original>
 			<French>Remplacer les caisses de munitions par un Revenu Passif</French>
