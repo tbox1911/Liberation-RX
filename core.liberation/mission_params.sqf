@@ -51,6 +51,10 @@ LRX_Mission_Params = [
 	["PAR_AI_Revive", 7],			// PAR AI revive limit - [default 0] - values = [0,3,5,7,10,15,20]
 	["PAR_BleedOut", 300],			// PAR revive Bleedout timer - [default 300] - values = [100,200,300,400,500,600]
 	["Respawn", 20],				// Cooldown before can player respawn - [default 20] - values = [0,xxx] - Text {Disabled,Enabled}
+	["SquadSize", 2],				// AI per squad at startup [default 2]  - values = {0,1,2,3,4,5,6}
+	["MaxSquadSize", 5],			// AI recruitment limit per squad [default 5] - values = {0,1,2,3,4,5,6,7,8,9,10}
+	["MaxGarageSize", 6],			// Virtual Garage vehicle limit [default 6] - values = {0,1,2,3,4,5,6,7,8,9,10}
+	["MaxSpawnPoint", 3],			// Spawn Point limit per player. [default 3] - values = {1,2,3,4}
 	["TK_mode", 1],					// Teamkill Mode [default 0] - values = [0,1,2] - Text {Strict,Relax,Disabled}
 	["TK_count", 4],				// Teamkill Warning Count [default 4] - values = [3, 4, 5, 6, 7, 8, 9, 10] - Text {3, 4, 5, 6, 7, 8, 9, 10}
 	["Civilians", 1],				// Cilivilian Manager - [default 1] - values = [0,0.5,1,2] - Text {None,Reduced,Normal,Increased}
@@ -68,10 +72,6 @@ LRX_Mission_Params = [
 	["FobType", 0],					// The Startup Fob Vehicle - [default 0] - values = [1,0] - Text {Huron,Truck,Boat}
 	["HuronType", 0],				// The type of Huron - [default 0] - values = [0,1,2] - Text {"CH-67 Huron", "CH-49 Mohawk", "UH-80 Ghost Hawk"}
 	["NavalFobType", 0],			// The type of Naval FOB - [default 0] - values = [0,1,2] - Text {"USS Liberty", "USS Freedom", "Offshare plateform"}
-	["SquadSize", 2],				// AI per squad at startup [default 2]  - values = {0,1,2,3,4,5,6}
-	["MaxSquadSize", 5],			// AI recruitment limit per squad [default 5] - values = {0,1,2,3,4,5,6,7,8,9,10}
-	["MaxGarageSize", 6],			// Virtual Garage vehicle limit [default 6] - values = {0,1,2,3,4,5,6,7,8,9,10}
-	["MaxSpawnPoint", 3],			// Spawn Point limit per player. [default 3] - values = {1,2,3,4}
 	["Redeploy", 1],				// Allow Redeploy to all mobile Respawn - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["Permissions", 1],				// Permissions management - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["AirSupport", 1],				// Enable Air Support - [default 1] - values = [1,0] - Text {Enabled,Disabled}
@@ -79,6 +79,7 @@ LRX_Mission_Params = [
 	["EnemyLock", 1],				// Enemy Vehicles Ownership - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["CleanupVehicles", 1800],		// Cleanup abandoned vehicles outside FOBs - values = {0,900,1800,3600,7200,14400}
 	["AutoSave", 1800],				// LRX Game Auto Save Delay - values = {0,900,1800,3600,7200}
+	["TFRadioRange", 5000],			// The radius of TFAR relay - [default 5000] - values = {2500, 5000, 7500, 10000, 15000, 20000};
 	["AdminMenu", 1],				// Enable the Admin Cheat Menu [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["HideOpfor", 1],				// Hide Opfor marker - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["ShowBlufor", 2],				// Hide Blufor marker - [default 1] - values = [0,1,2] - Text {Disabled,"player only",Enabled}
@@ -140,6 +141,10 @@ LRX_Mission_Params_Def = [
 	["SectorRadius", localize "STR_PARAM_SECTOR_RADIUS",
 		["AUTO", "300", "400", "600", "800", "1000", "1200", "1500"],
 		[0, 300, 400, 600, 800, 1000, 1200, 1500]
+	],
+	["TFRadioRange", localize "STR_PARAM_SECTOR_RADIUS",
+		["2.5km", "5km", "7.5km", "10km", "15km", "20km", "50km"],
+		[2500, 5000, 7500, 10000, 15000, 20000, 50000]
 	],
 	["DayDuration", localize "STR_PARAMS_DAYDURATION",
 		["0.25", "0.5", "1", "1.5", "2", "2.5", "3", "5", "7", "10", "20", "30", "40", "50"],

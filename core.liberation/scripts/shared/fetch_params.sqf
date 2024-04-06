@@ -156,6 +156,7 @@ GRLIB_opfor_english = ["EnglishOpfor"] call lrx_getParamValue;
 GRLIB_difficulty_modifier = ["Difficulty"] call lrx_getParamValue;
 GRLIB_csat_aggressivity = ["Aggressivity"] call lrx_getParamValue;
 GRLIB_sector_radius = ["SectorRadius"] call lrx_getParamValue;
+GRLIB_TFR_radius = ["TFRadioRange"] call lrx_getParamValue;
 GRLIB_day_factor = ["DayDuration"] call lrx_getParamValue;
 GRLIB_night_factor = ["NightDuration"] call lrx_getParamValue;
 GRLIB_weather_param = ["Weather"] call lrx_getParamValue;
