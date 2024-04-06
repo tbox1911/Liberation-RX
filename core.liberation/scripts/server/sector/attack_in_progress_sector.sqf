@@ -104,7 +104,10 @@ if ( _ownership == GRLIB_side_enemy ) then {
 			opfor_sectors = (sectors_allSectors - blufor_sectors);
 			publicVariable "opfor_sectors";
 			[_sector, 0] call sector_defenses_remote_call;
-			deleteMarker format ["defense_%1", _sector];
+			if (GRLIB_TFR_enabled && _sector in sectors_tower) then {
+				private _tower = (nearestObjects [_sector_pos, [Radio_tower], 20]) select { (alive _x) && (_x getVariable ['GRLIB_Radio_Tower', false])} select 0;
+				_tower call TFAR_fnc_deleteRadioTower;
+			};
 			stats_sectors_lost = stats_sectors_lost + 1;
 			[ _sector, 2 ] remoteExec ["remote_call_sector", 0];
 			diag_log format ["Sector %1 Lost at %2", _sector, time];
