@@ -2,7 +2,7 @@ params [ "_sector", "_radius", "_number" ];
 
 if (_number == 0) exitWith {};
 if (_number >= 1) then {
-	sleep 2;	
+	sleep 4;	
 	[_sector, _radius, _number - 1] spawn ied_trap_manager;
 };
 

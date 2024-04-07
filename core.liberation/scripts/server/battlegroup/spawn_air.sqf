@@ -2,7 +2,7 @@ params ["_targetpos", "_side", "_count"];
 
 if (_count == 0) exitWith {};
 if (_count >= 1) then {
-	sleep 1;
+	sleep 10;
 	[_targetpos, _side, _count - 1] spawn spawn_air;
 };
 

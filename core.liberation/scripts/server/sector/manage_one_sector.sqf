@@ -237,7 +237,6 @@ if ( (!(_sector in blufor_sectors)) && (([_sector_pos, GRLIB_sector_size, GRLIB_
 		private _pilots = allPlayers select { (objectParent _x) isKindOf "Air" && (driver vehicle _x) == _x };
 		if (count _pilots > 0 ) then {
 			[getPosATL (selectRandom _pilots), GRLIB_side_enemy, 3] spawn spawn_air;
-			sleep 2;
 		};
 	};
 
@@ -247,7 +246,7 @@ if ( (!(_sector in blufor_sectors)) && (([_sector_pos, GRLIB_sector_size, GRLIB_
 
 	[ _sector_pos ] spawn {
 		params ["_pos"];
-		sleep (300 + floor(random 60));
+		sleep (300 + floor(random 120));
 		if (([_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount) == 0) exitWith {};
 		if ( combat_readiness > 50 ) then { [_pos, true] spawn send_paratroopers };
 		sleep 100;
