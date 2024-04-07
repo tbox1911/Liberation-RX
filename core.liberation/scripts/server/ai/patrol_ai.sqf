@@ -50,4 +50,14 @@ if (count (waypoints _grp) > 1) then {
 	_waypoint setWaypointType "CYCLE";
 };
 
-{_x doFollow (leader _grp)} foreach units _grp;
+sleep 10;
+{
+	_x doFollow (leader _grp);
+	if (alive _x && isNull objectParent _x && round (speed vehicle _x) == 0 && (!surfaceIsWater getPos _x)) then {
+		[_x] call F_fixPosUnit;
+		_x switchMove "AmovPercMwlkSrasWrflDf";
+		_x playMoveNow "AmovPercMwlkSrasWrflDf";
+		sleep 3;
+	};
+	sleep 0.2;
+} forEach (units _grp);

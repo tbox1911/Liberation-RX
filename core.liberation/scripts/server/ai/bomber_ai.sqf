@@ -44,7 +44,7 @@ while {alive _unit} do {
 		_target = _targets select 0;
 		_unit doMove (getPos _target);
 		_unit setSpeedMode "FULL";
-		if ((speed vehicle _unit) == 0) then {
+		if (speed vehicle _unit == 0) then {
 			_unit switchMove "AmovPercMwlkSrasWrflDf";
 			_unit playMoveNow "AmovPercMwlkSrasWrflDf";
 		};
