@@ -1,5 +1,5 @@
 params [
-	"_spawnpos",                    // position to spawn
+	"_spawn_pos",                    // position to spawn
 	["_classname", []],             // array of classname to create
 	["_side", GRLIB_side_enemy],    // side of units group
 	["_type", "infantry"]           // type of unit
@@ -12,24 +12,23 @@ if (isNull _grp) exitWith { diag_log "--- LRX Error: cannot create group."; grpN
 _grp setCombatMode "WHITE";
 _grp setCombatBehaviour "COMBAT";
 
-if (_type == "divers") then {
-	_spawnpos set [2, -5];
-} else {
-	_spawnpos set [2, 0.5];
-};
+diag_log format ["Spawn (%1) %2 Units (%3-%4) Pos %5", count _classname, _type, _side, _grp, _spawn_pos];
 
-diag_log format ["Spawn (%1) %2 Units (%3-%4) Pos %5", count _classname, _type, _side, _grp, _spawnpos];
-
-// if (_type == "para") then {
-// 	_spawnpos = _spawnpos vectorAdd [floor(random 20), floor(random 20), 0];
-// };
-
-private ["_unit", "_backpack", "_maxpos"];
+private ["_unit", "_pos", "_backpack"];
 {
-	_unit = _grp createUnit [_x, _spawnpos, [], 30, "NONE"];
+	_pos = _spawn_pos getPos [2 + (floor random 25), random 360];
+	_unit = _grp createUnit [_x, _pos, [], 10, "NONE"];
 	sleep 0.1;
 	if (!isNil "_unit") then {
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+		if (_type == "divers") then {
+			_pos set [2, -6];
+			_unit setPosASL _pos;
+		} else {
+			_pos set [2, 0.5];
+			_unit setPosATL _pos;
+		};
+		// diag_log format ["DBG: Create unit %1 at position %2", _unit, _pos];
 		[_unit] joinSilent _grp;
 		[_unit] spawn F_fixModUnit;
 		if (_type == "militia") then {[_unit] call loadout_militia};
@@ -50,7 +49,7 @@ private ["_unit", "_backpack", "_maxpos"];
 			_unit setVariable ["PAR_Grp_ID", "server", true];
 		};
 	} else {
-		diag_log format ["--- LRX Error: Cannot create unit %1 at position %2", _x, _spawnpos];
+		diag_log format ["--- LRX Error: Cannot create unit %1 at position %2", _x, _pos];
 	};
 	sleep 0.2;
 } foreach _classname;

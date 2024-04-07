@@ -1,14 +1,16 @@
 params ["_vehicle", ["_side", GRLIB_side_friendly]];
 
 private _grp = _side createVehicleCrew _vehicle;
-sleep 0.5;
+{ _x allowDamage false } foreach (units _grp);
+sleep 0.2;
 
 if (count (crew _vehicle) == 0) then {
 	_grp = createGroup [_side, true];
-	_unit = _grp createUnit [crewman_classname, (getPosATL _vehicle), [], 5, "NONE"];
+	_unit = _grp createUnit [crewman_classname, (getPosATL _vehicle), [], 20, "NONE"];
+	_unit allowDamage false;
 	_unit assignAsDriver _vehicle;
 	_unit moveInDriver _vehicle;
-	sleep 0.3;
+	sleep 0.2;
 };
 
 (units _grp) joinSilent _grp;
@@ -25,7 +27,7 @@ private _aircraft = (_vehicle isKindOf "Air");
 		} else {
 			_path = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_east, "crewman"];
 			[_path, _x] call F_getTemplateFile;
-			[_x] call reammo_ai;
+			[_x] spawn reammo_ai;
 		};
 	};
 
@@ -36,7 +38,7 @@ private _aircraft = (_vehicle isKindOf "Air");
 		} else {
 			_path = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, "crewman"];
 			[_path, _x] call F_getTemplateFile;
-			[_x] call reammo_ai;
+			[_x] spawn reammo_ai;
 		};
 	};
 
@@ -58,4 +60,6 @@ if (_side == GRLIB_side_civilian) then {
 	_grp setCombatMode "WHITE";
 	_grp setBehaviourStrong "AWARE";
 };
+sleep 1;
+{ _x setDamage 0; _x allowDamage true } foreach (units _grp);
 (crew _vehicle);

@@ -1,5 +1,7 @@
 params ["_vehicle"];
 
+if ( _vehicle isKindOf "Air" ) exitWith {};
+if ( _vehicle isKindOf "Ship" ) exitWith {};
 if ( _vehicle isKindOf "LandVehicle" ) then {
     if ((vectorUp _vehicle) select 2 < 0.60) then {
         _vehicle setpos [(getPosATL _vehicle) select 0, (getPosATL _vehicle) select 1, 0.5];
