@@ -7223,8 +7223,8 @@
 			<Original>Fuel Delivery at &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Talk&lt;/t&gt; to the &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; to get information.</Original>
 			<Russian>Доставка топлива в &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Поговори&lt;/t&gt; с &lt;t color='#0000F0'&gt;Маршалом&lt;/t&gt; чтобы получить информацию.</Russian>
 			<Japanese>燃料配達: &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;係の者&lt;/t&gt;に&lt;t color='#0000F0'&gt;聞いて&lt;/t&gt;情報を得てください。</Japanese>
-			<Chinesesimp>运送燃料：在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt; 与 &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; &lt;t color='#00F000'&gt;交谈</t&gt; 获取任务信息。</Chinesesimp>
-			<Chinese>運送燃料：在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt; 與 &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; &lt;t color='#00F000'&gt;交談</t&gt; 獲取任務信息。</Chinese>
+			<Chinesesimp>运送燃料：在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt; 与 &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; &lt;t color='#00F000'&gt;交谈/t&gt; 获取任务信息。</Chinesesimp>
+			<Chinese>運送燃料：在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt; 與 &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; &lt;t color='#00F000'&gt;交談/t&gt; 獲取任務信息。</Chinese>
 			<Czech>Donážka paliva &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Mluvit&lt;/t&gt; k &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; získat informace.</Czech>
 		</Key>
 		<Key ID="STR_FUELDELI_MESSAGE2">
