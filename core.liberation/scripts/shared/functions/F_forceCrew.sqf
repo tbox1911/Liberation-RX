@@ -6,7 +6,7 @@ sleep 0.2;
 
 if (count (crew _vehicle) == 0) then {
 	_grp = createGroup [_side, true];
-	_unit = _grp createUnit [crewman_classname, (getPosATL _vehicle), [], 20, "NONE"];
+	_unit = _grp createUnit [crewman_classname, _vehicle, [], 20, "NONE"];
 	_unit allowDamage false;
 	_unit assignAsDriver _vehicle;
 	_unit moveInDriver _vehicle;

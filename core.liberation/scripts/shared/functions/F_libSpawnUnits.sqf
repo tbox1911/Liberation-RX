@@ -11,7 +11,7 @@ private _grp = createGroup [_side, true];
 if (isNull _grp) exitWith { diag_log "--- LRX Error: cannot create group."; grpNull };
 _grp setCombatMode "WHITE";
 _grp setCombatBehaviour "COMBAT";
-
+_spawn_pos set [2, 0.5];
 diag_log format ["Spawn (%1) %2 Units (%3-%4) Pos %5", count _classname, _type, _side, _grp, _spawn_pos];
 
 private ["_unit", "_pos", "_backpack"];
@@ -25,7 +25,6 @@ private ["_unit", "_pos", "_backpack"];
 			_pos set [2, -6];
 			_unit setPosASL _pos;
 		} else {
-			_pos set [2, 0.5];
 			_unit setPosATL _pos;
 		};
 		// diag_log format ["DBG: Create unit %1 at position %2", _unit, _pos];
@@ -47,6 +46,11 @@ private ["_unit", "_pos", "_backpack"];
 
 		if (_type == "defender") then {
 			_unit setVariable ["PAR_Grp_ID", "server", true];
+		};
+
+		if !(_type in ["divers", "para"]) then {
+			_unit switchMove "AmovPercMwlkSnonWnonDf";
+			_unit playMoveNow "AmovPercMwlkSnonWnonDf";
 		};
 	} else {
 		diag_log format ["--- LRX Error: Cannot create unit %1 at position %2", _x, _pos];

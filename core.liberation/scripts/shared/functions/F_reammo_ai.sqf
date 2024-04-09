@@ -1,5 +1,5 @@
 params ["_unit"];
-if (isNil "_unit") exitWith {};
+if (isNull _unit) exitWith {};
 
 private _hand_weapon = handgunWeapon _unit;
 private _primary_weapon = primaryWeapon _unit;
