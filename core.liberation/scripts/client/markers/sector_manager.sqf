@@ -29,16 +29,13 @@ if (!GRLIB_hide_opfor) then {
 };
 
 private _sector_count = -1;
-private _sector_left = 0;
-
 sleep 1;
 
 while { GRLIB_endgame == 0 } do {
 	waitUntil {sleep 1; GRLIB_MapOpen && (count blufor_sectors + count GRLIB_all_fobs) != _sector_count};
-	_sector_left = count opfor_sectors;
 
-	if (GRLIB_hide_opfor && _sector_left > 3) then {
-		{ 
+	if (GRLIB_hide_opfor && count opfor_sectors > 3) then {
+		{
 			_sector_pos = markerPos _x;
 			_nearest_sector = [(GRLIB_sector_size * 3), _sector_pos, blufor_sectors] call F_getNearestSector;
 			_nearest_fob = [_sector_pos] call F_getNearestFob;
@@ -56,10 +53,16 @@ while { GRLIB_endgame == 0 } do {
 		{
 			_x setMarkerColorLocal GRLIB_color_friendly;
 			_x setMarkerTypeLocal ([_x] call _getMarkerType);
-		 } foreach blufor_sectors;
+		} foreach blufor_sectors;
 	} else {
-		{ _x setMarkerColorLocal GRLIB_color_enemy; } foreach opfor_sectors;
-		{ _x setMarkerColorLocal GRLIB_color_friendly; } foreach blufor_sectors;
+		{
+			_x setMarkerColorLocal GRLIB_color_enemy;
+			_x setMarkerTypeLocal ([_x] call _getMarkerType);
+		} foreach opfor_sectors;
+		{
+			_x setMarkerColorLocal GRLIB_color_friendly;
+			_x setMarkerTypeLocal ([_x] call _getMarkerType);
+		} foreach blufor_sectors;
 	};
 
 	{

@@ -39,7 +39,6 @@ respawn_camera camcommit 0;
 
 private _standard_map_pos = ctrlPosition ((findDisplay 5201) displayCtrl 251);
 private _frame_pos = ctrlPosition ((findDisplay 5201) displayCtrl 198);
-
 private _is_mobile_respawn = false;
 private _loadouts_data = [];
 private _loadout_controls = [101,203,205];
@@ -191,6 +190,7 @@ if (deploy == 1) then {
 				if (surfaceIsWater _destpos) then { _destdist = 5};
 			};
 		};
+		if (_destpos isEqualTo zeropos) exitWith {};
 
 		private _unit_list = units group player;
 		private _my_squad = player getVariable ["my_squad", nil];
