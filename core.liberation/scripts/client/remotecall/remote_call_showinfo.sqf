@@ -1,4 +1,6 @@
 if (isDedicated || (!hasInterface && !isServer)) exitWith {};
+if (GRLIB_endgame == 1) exitWith {};
+
 params ["_title", "_sub", "_picture", "_text", "_titleColor"];
 
 private _subtitle = _sub call BIS_fnc_localize;
