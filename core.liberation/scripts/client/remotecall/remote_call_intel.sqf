@@ -11,7 +11,7 @@ if ( _notiftype == 1 ) then {
 
 if ( _notiftype == 2 ) then {
 	waitUntil { !isNil "secondary_objective_position_marker" };
-	waitUntil { secondary_objective_position_marker distance2D zeropos > 100 };
+	waitUntil { secondary_objective_position_marker distance2D zeropos > 300 };
 
 	private _location_name = [secondary_objective_position_marker] call F_getLocationName;
 	["lib_intel_fob", [_location_name]] call BIS_fnc_showNotification;
@@ -35,7 +35,7 @@ if ( _notiftype == 3 ) then {
 };
 
 if ( _notiftype == 4 ) then {
-	waitUntil {_obj_position distance2D zeropos > 100 };
+	waitUntil {_obj_position distance2D zeropos > 300 };
 	private _location_name = [_obj_position] call F_getLocationName;
 	["lib_intel_convoy", [_location_name]] call BIS_fnc_showNotification;
 };
@@ -51,7 +51,7 @@ if ( _notiftype == 51 ) then {
 if ( _notiftype == 6 ) then {
 	waitUntil {!isNil "secondary_objective_position_marker" };
 	waitUntil {count secondary_objective_position_marker > 0 };
-	waitUntil {secondary_objective_position_marker distance2D zeropos > 1000 };
+	waitUntil {secondary_objective_position_marker distance2D zeropos > 300 };
 
 	private _location_name = [secondary_objective_position_marker] call F_getLocationName;
 	["lib_intel_sar", [_location_name]] call BIS_fnc_showNotification;

@@ -22,7 +22,7 @@ private _ied_power = selectRandom [
 ];
 
 private _sector_pos = markerPos _sector;
-private _ide_pos = ([_sector_pos, floor(random _radius), random(360)] call BIS_fnc_relPos) findEmptyPosition [0,20,"B_Quadbike_01_F"];
+private _ide_pos = (_sector_pos getPos [floor(random _radius), random(360)]) findEmptyPosition [0,20,"B_Quadbike_01_F"];
 private _goes_boom = false;
 
 if ( count _ide_pos > 0 ) then {

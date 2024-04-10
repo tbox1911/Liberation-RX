@@ -53,7 +53,7 @@ diag_log format [ "Airdrop %1 on %2 at %3", (typeOf _unit), halo_position, time 
 "spawn_marker" setMarkerTextLocal "";
 
 if ( dojump > 0 ) then {
-	halo_position = [halo_position, floor(random 100), floor(random 360)] call BIS_fnc_relPos;
+	halo_position = halo_position getPos [floor(random 100), floor(random 360)];	
 	if (_unit isKindOf "LandVehicle" || _unit isKindOf "Ship") then {
 		// Vehicle HALO
 		if ([_cost] call F_pay) then {

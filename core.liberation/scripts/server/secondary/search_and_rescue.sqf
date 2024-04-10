@@ -20,7 +20,7 @@ private _helofire = GRLIB_sar_fire createVehicle _helopos;
 _helofire attachTo [_helowreck, [0, 1.5, 0]];
 
 private _pilotsGrp = createGroup [GRLIB_side_enemy, true];
-private _pilotsPos = [ getpos _helowreck, 25, random 360 ] call BIS_fnc_relPos;
+private _pilotsPos = _helowreck getPos [25, random 360];
 pilot_classname createUnit [ _pilotsPos, _pilotsGrp,'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.5, "private"];
 pilot_classname createUnit [ _pilotsPos, _pilotsGrp,'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.5, "private"];
 private _pilotUnits = units _pilotsGrp;
@@ -49,14 +49,14 @@ private _spawnchances = [75,50,15];
 
 private _vehicle_list = [];
 {
-	_vehicle = [[getpos _helowreck, 30 + (random 30), random 360] call BIS_fnc_relPos, _x, 0] call F_libSpawnVehicle;
+	_vehicle = [(_helowreck getPos [30 + (random 30), random 360]), _x, 0] call F_libSpawnVehicle;
 	_vehicle setVariable ["GRLIB_vehicle_owner", "server"];
 	_vehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
 	_vehicle_list pushBack _vehicle;
 } foreach _vehtospawn;
 
 secondary_objective_position = getpos _helowreck;
-secondary_objective_position_marker = [ secondary_objective_position, 800, random 360 ] call BIS_fnc_relPos;
+secondary_objective_position_marker = secondary_objective_position getPos [800, random 360];
 publicVariable "secondary_objective_position_marker";
 
 waitUntil {

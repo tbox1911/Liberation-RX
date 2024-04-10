@@ -190,7 +190,7 @@ if (deploy == 1) then {
 				if (surfaceIsWater _destpos) then { _destdist = 5};
 			};
 		};
-		if (_destpos isEqualTo zeropos) exitWith {};
+		if (_destpos distance2D zeropos < 300) exitWith {};
 
 		private _unit_list = units group player;
 		private _my_squad = player getVariable ["my_squad", nil];
@@ -200,7 +200,7 @@ if (deploy == 1) then {
 			(_x distance2D player < 30) &&
 			lifestate _x != 'INCAPACITATED'
 		};
-		player setPosATL ([_destpos, _destdist, (_destdir-180)] call BIS_fnc_relPos);
+		player setPosATL (_destpos getPos [_destdist, (_destdir-180)]);
 		player setDir _destdir;
 		sleep 1;
 
@@ -208,7 +208,7 @@ if (deploy == 1) then {
 			params ["_list", "_pos", "_dist"];
 			sleep 1;
 			{
-				_x setPosATL ([_pos, _dist, random 360] call BIS_fnc_relPos);
+				_x setPosATL (_pos getPos [_dist, random 360]);
 				sleep 0.5;
 			} forEach _list;
 			sleep 3;

@@ -301,7 +301,7 @@ while {alive _unit && _continue} do {
 					_unit switchMove "ainvpknlmstpslaywrfldnon_medicother";
 					_unit playMoveNow "ainvpknlmstpslaywrfldnon_medicother";
 					sleep 3;
-					_ied = createMine ["IEDUrbanSmall_F", [getposATL _target, 1, random(360)] call BIS_fnc_relPos, [], 0];
+					_ied = createMine ["IEDUrbanSmall_F", (_target getPos [1, random(360)]), [], 0];					
 					_ied setPos (getPos _ied);
 					[_ied] spawn { sleep 40; (_this select 0) setDamage 1 };
 					sleep 5;

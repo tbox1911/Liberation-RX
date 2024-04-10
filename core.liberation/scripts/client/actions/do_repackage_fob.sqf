@@ -63,7 +63,7 @@ if ( dorepackage > 0 ) then {
 		private _destpos = (getPosASL player);
 		{
 			_x doFollow player;
-			_x setPosASL ([_destpos, 10, random 360] call BIS_fnc_relPos);
+			_x setPosASL (_destpos getPos [10, random 360]);
 			_x assignAsCargoIndex [_fob_box, (_forEachIndex + 1)];
 			_x moveInCargo _fob_box;
 			sleep 0.5;

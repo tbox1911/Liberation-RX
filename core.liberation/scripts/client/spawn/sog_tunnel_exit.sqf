@@ -9,7 +9,7 @@ private _unit_list = player getVariable ["SOG_unit_list", []];
         if (lifestate _x == 'INCAPACITATED') then { 
             deleteVehicle _x;
         } else {
-            _x setpos ([getPosATL player, 1, random 360] call BIS_fnc_relPos);
+            _x setpos (player getPos [1, random 360]);
             _x doFollow player;
             sleep 0.3;
         }
