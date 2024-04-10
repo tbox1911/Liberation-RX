@@ -17,7 +17,9 @@ if ((_medic getVariable ["isLeader",false]) && (isplayer _medic)) then {
   [group _medic, _medic] selectLeader groupOwner (_medic getVariable "PAR_AIgrp");
 };
 
-_medic doFollow leader _medic;
-_medic setSpeedMode (speedMode group player);
 _medic setVariable ["PAR_busy", nil];
-_medic setCaptive false;
+if (lifeState _medic != "INCAPACITATED") then {
+  _medic doFollow leader _medic;
+  _medic setSpeedMode (speedMode group player);
+  _medic setCaptive false;
+};
