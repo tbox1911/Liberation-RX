@@ -74,6 +74,7 @@ if (_side != GRLIB_side_civilian) then {
 };
 
 [_vehicle] call F_fixModVehicle;
+if (GRLIB_ACE_enabled) then { [_vehicle] call F_aceInitVehicle };
 
 if ( _vehicle isKindOf "Air" ) then {
 	if (GRLIB_SOG_enabled) then { _airveh_alt = 50 };

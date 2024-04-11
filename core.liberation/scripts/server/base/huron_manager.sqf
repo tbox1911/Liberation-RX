@@ -1,6 +1,7 @@
 if ( GRLIB_fob_type == 1 ) exitWith {};
 waitUntil {sleep 1; !isNil "GRLIB_all_fobs" };
 waitUntil {sleep 1; !isNil "save_is_loaded" };
+waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 sleep 8;
 
 private ["_huron"];
@@ -20,7 +21,10 @@ while { true } do {
 		sleep 3;
 		_huron setDamage 0;
 		_huron allowdamage true;
-		if (GRLIB_ACE_enabled) then { [_huron, 200] call ace_cargo_fnc_setSpace };
+		if (GRLIB_ACE_enabled) then {
+			_huron setVariable ["ace_cargo_hasCargo", true, true];
+			_huron setVariable ["ace_cargo_space", 200, true];
+		};
 		GRLIB_vehicle_huron = _huron;
 		publicVariable "GRLIB_vehicle_huron";
 	};

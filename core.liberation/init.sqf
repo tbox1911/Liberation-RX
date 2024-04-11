@@ -2,7 +2,7 @@ diag_log "--- Liberation RX by pSiKO ---";
 if ((isServer || isDedicated) && !isNil "GRLIB_init_server") exitWith { diag_log "--- LRX Error: Mission restart too fast!" };
 disableUserInput true;
 
-[] call compileFinal preprocessFileLineNUmbers "build_info.sqf";
+[] call compileFinal preprocessFile "build_info.sqf";
 diag_log "--- Init start ---";
 
 profileNamespace setVariable ["BIS_SupportDevelopment", nil];
@@ -14,21 +14,21 @@ abort_loading = false;
 abort_loading_msg = "Unkwon Error";
 GRLIB_ACE_enabled = false;
 
-[] call compileFinal preprocessFileLineNUmbers "whitelist.sqf";
-[] call compileFinal preprocessFileLineNUmbers "scripts\shared\liberation_functions.sqf";
-[] call compileFinal preprocessFileLineNUmbers "scripts\shared\fetch_params.sqf";
-[] call compileFinal preprocessFileLineNUmbers "scripts\shared\classnames.sqf";
+[] call compileFinal preprocessFile "whitelist.sqf";
+[] call compileFinal preprocessFile "scripts\shared\liberation_functions.sqf";
+[] call compileFinal preprocessFile "scripts\shared\fetch_params.sqf";
+[] call compileFinal preprocessFile "scripts\shared\classnames.sqf";
 
 if (!abort_loading) then {
-	[] call compileFinal preprocessfilelinenumbers "scripts\shared\init_shared.sqf";
-	[] call compileFinal preprocessFileLineNUmbers "scripts\shared\init_sectors.sqf";
-	[] call compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionArrays.sqf";
+	[] call compileFinal preprocessFile "scripts\shared\init_shared.sqf";
+	[] call compileFinal preprocessFile "scripts\shared\init_sectors.sqf";
+	[] call compileFinal preprocessFile "scripts\server\a3w\missions\setupMissionArrays.sqf";
 	[] execVM "addons\VAM\RPT_init.sqf";
 
-	if (!GRLIB_ACE_enabled) then {
-		[] execVM "R3F_LOG\init.sqf";
+	if (GRLIB_ACE_enabled) then {
+		[] execVM "scripts\shared\init_ace.sqf";
 	} else {
-		[] call compileFinal preprocessFileLineNUmbers "scripts\shared\init_ace.sqf";
+		[] execVM "R3F_LOG\init.sqf";
 	};
 
 	if (isServer) then {

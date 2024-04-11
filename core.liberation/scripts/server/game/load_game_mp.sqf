@@ -222,6 +222,10 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 		_nextbuilding setPosWorld _nextpos;
 		_buildings_created pushback _nextbuilding;
 
+		if (GRLIB_ACE_enabled) then {
+			[_nextbuilding] call F_aceInitVehicle;
+		};
+
 		if (_nextclass iskindOf "AllVehicles") then {
 			[_nextbuilding] call F_fixModVehicle;
 		};

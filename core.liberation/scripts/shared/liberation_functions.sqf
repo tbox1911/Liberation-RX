@@ -57,6 +57,7 @@ F_getUnitsCount = compileFinal preprocessFileLineNumbers "scripts\shared\functio
 F_getValid = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getValid.sqf";
 F_getVehicleAmmoDef = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getVehicleAmmoDef.sqf";
 F_notice_hof = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_notice_hof.sqf";
+F_aceInitVehicle = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_aceInitVehicle.sqf";
 F_invertArray = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_invertArray.sqf";
 F_isWaterBetween = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_isWaterBetween.sqf";
 F_itemIsInClass = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_itemIsInClass.sqf";
