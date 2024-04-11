@@ -24,3 +24,6 @@ force force ace_medical_statemachine_fatalInjuriesAI = 0; // fatalInjuries AI: A
 // ACE Logistique
 force force ace_cargo_loadTimeCoefficient = 1;
 force force ace_cargo_paradropTimeCoefficent = 1;
+
+// Repair
+force force ace_repair_addSpareParts = false;
