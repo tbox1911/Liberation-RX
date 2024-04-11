@@ -33,6 +33,8 @@ _vehicle setVariable ["GRLIB_counter_TTL", round(time + 900)];
 _vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
 _vehicle setVariable ["GRLIB_vehicle_gunner", units _grp];
 
+[_vehicle] call F_aceLockVehicle;
+
 diag_log format [ "Spawn Static Weapon on sector %1 at %2", _sector, time ];
 
 // AI (managed by manage_static.sqf)

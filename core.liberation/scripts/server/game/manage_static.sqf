@@ -5,7 +5,7 @@ waitUntil {sleep 1; !isNil "blufor_sectors"};
 waitUntil {sleep 1; !isNil "opfor_sectors" };
 
 while { true } do {
-    _all_static = vehicles select { alive _x && (typeOf _x) in _static_classname  };
+    _all_static = vehicles select { alive _x && (typeOf _x) in _static_classname };
     {
         _static = _x;
         _static_class = typeOf _static;
@@ -16,7 +16,7 @@ while { true } do {
         // Keep gunner
         _gunner = gunner _static;
         if (isNull _gunner) then {
-            _sector = [GRLIB_sector_size, _static] call F_getNearestSector; 
+            _sector = [GRLIB_sector_size, _static] call F_getNearestSector;
             if (_sector in opfor_sectors && _static getVariable ["GRLIB_vehicle_owner", ""] == "server") then {
                 _gunner_list = (_static getVariable ["GRLIB_vehicle_gunner", []]) select { alive _x };
                 if (count _gunner_list > 0) then {
