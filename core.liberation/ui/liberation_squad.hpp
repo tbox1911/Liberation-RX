@@ -192,7 +192,7 @@ class liberation_squad {
 		w = (0.055 * safezoneW);
 		h = (0.04 * safezoneH);
 		sizeEx = 0.025 * safezoneH;
-		text = $STR_RECYCLING_CANCEL;
+		text = "EXIT";
 		action = "closeDialog 0";
 	};
 	// class CancelButton : StdButton{

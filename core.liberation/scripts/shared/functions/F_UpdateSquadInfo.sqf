@@ -1,6 +1,8 @@
 params ["_control", "_lbCurSel", "_lbSelection"];
 
 if (_lbCurSel == -1) exitWith {};
+if (count PAR_AI_bros == 0) exitWith {};
+
 private ["_primary_mags", "_secondary_mags", "_vehstring"];
 private _cfgVehicles = configFile >> "cfgVehicles";
 private _cfgWeapons = configFile >> "cfgWeapons";
