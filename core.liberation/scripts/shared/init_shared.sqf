@@ -79,3 +79,5 @@ fnc_VAM_common_comp = compileFinal preprocessFileLineNumbers "addons\VAM\vehicle
 // Load Objects
 attach_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\attach_object_direct.sqf";
 load_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\load_object_direct.sqf";
+save_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\save_object_direct.sqf";
+init_object_direct = compileFinal preprocessFileLineNumbers "scripts\server\game\init_object_direct.sqf";

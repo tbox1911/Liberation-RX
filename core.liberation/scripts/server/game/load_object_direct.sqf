@@ -1,40 +1,21 @@
-params [ "_vehicle", "_objects" ];
+params ["_vehicle", "_objects"];
 if (count _objects == 0) exitWith {};
-if (GRLIB_ACE_enabled) exitWith {};
 
-private _vehicle_owner = _vehicle getVariable ["GRLIB_vehicle_owner", ""];
 private _object_created = [];
+private _object = objNull;
 
 {
-	private _object = createVehicle [_x, ([] call F_getFreePos), [], 0, "NONE"];
-
-	// Clear Cargo
-	if (!(_x in GRLIB_Ammobox_keep)) then {
-		[_object] call F_clearCargo;
+	_object = createVehicle [_x, ([] call F_getFreePos), [], 0, "NONE"];
+	if (GRLIB_ACE_enabled) then {
+		[_object] call F_aceInitVehicle;
+		[_object, _vehicle, true] call ace_cargo_fnc_loadItem;
+	} else {
+		_object attachTo [R3F_LOG_PUBVAR_point_attache, ([] call F_getFreePos)];
+		_object setVariable ["R3F_LOG_est_transporte_par", _vehicle, true];
 	};
-
-	// Mobile respawn
-	if (_x == mobile_respawn) then {
-		[_object, "add"] remoteExec ["addel_beacon_remote_call", 2];
-	};
-
-	// UAVs
-	if ([_object, uavs] call F_itemIsInClass) then {
-		[_object] call F_forceCrew;
-        _object setVariable ["GRLIB_vehicle_manned", true, true];
-	};
-
-	// MPKilled
-	_object addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-
-	// Set Owner
-	if (!(_x in GRLIB_vehicle_blacklist)) then {
-		_object setVariable ["GRLIB_vehicle_owner", _vehicle_owner, true];
-	};
-
-	_object attachTo [R3F_LOG_PUBVAR_point_attache, ([] call F_getFreePos)];
-	_object setVariable ["R3F_LOG_est_transporte_par", _vehicle, true];
+	[_object, _vehicle] call init_object_direct;
 	_object_created pushback _object;
 } forEach _objects;
 
 _vehicle setVariable ["R3F_LOG_objets_charges", _object_created, true];
+//diag_log (_vehicle getVariable ["ace_cargo_loaded", []]);

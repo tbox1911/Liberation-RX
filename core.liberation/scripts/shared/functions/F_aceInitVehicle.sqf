@@ -35,3 +35,6 @@ if ([_vehicle_class, (GRLIB_ACE_cargoSpace select 0)] call F_itemIsInClass) then
 if ([_vehicle_class, ai_healing_sources] call F_itemIsInClass) then {
     _vehicle setVariable ["ace_medical_isMedicalFacility", true, true];
 };
+
+// Clean ACE Cargo
+{ [_x, _vehicle] call ace_cargo_fnc_removeCargoItem } forEach (_vehicle getVariable ["ace_cargo_loaded", []]);
