@@ -197,7 +197,7 @@ if (deploy == 1) then {
 		if (!isNil "_my_squad") then { { _unit_list pushBack _x } forEach units _my_squad };
 		private _unit_list_redep = _unit_list select {
 			!(isPlayer _x) && (isNull objectParent _x) &&
-			(_x distance2D player < 30) &&
+			(_x distance2D player <= 30) &&
 			lifestate _x != 'INCAPACITATED'
 		};
 		player setPosATL (_destpos getPos [_destdist, (_destdir-180)]);
