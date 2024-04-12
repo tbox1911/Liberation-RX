@@ -7388,12 +7388,12 @@
 			<Czech>Všichni členové Odboje jsou...&lt;br/&gt;&lt;t color='%1'&gt;MRTVÝ&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;Příště víc štěstí!</Czech>
 		</Key>
 		<Key ID="STR_RESISTANCE_MESSAGE3">
-			<Original>Nice work!&lt;br/&gt;&lt;br/&gt;&LT;t color='%1'&gt;%2&LT;/t&gt;&lt;br/&gt;is a safe place again!&lt;br/&gt;Take your reward!</Original>
-			<Russian>Отличная работа!&lt;br/&gt;&lt;br/&gt;&LT;t color='%1'&gt;%2&LT;/t&gt;&lt;br/&gt;безопасно снова!&lt;br/&gt;Получите свою награду!</Russian>
-			<Japanese>よくやった！&lt;br/&gt;&lt;br/&gt;&LT;t color='%1'&gt;%2&LT;/t&gt;&lt;br/&gt;は再び安全な場所になった！&lt;br/&gt;報酬を受け取ってくれ！</Japanese>
+			<Original>Nice work!&lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;is a safe place again!&lt;br/&gt;Take your reward!</Original>
+			<Russian>Отличная работа!&lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;безопасно снова!&lt;br/&gt;Получите свою награду!</Russian>
+			<Japanese>よくやった！&lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;は再び安全な場所になった！&lt;br/&gt;報酬を受け取ってくれ！</Japanese>
 			<Chinesesimp>干得好！&lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;又是个安全的地方了！&lt;br/&gt;接受你的奖励吧！</Chinesesimp>
 			<Chinese>幹得好！ &lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;又是個安全的地方了！ &lt;br/&gt;接受你的獎勵吧！</Chinese>
-			<Czech>Pěkná práce!&lt;br/&gt;&lt;br/&gt;&LT;t color='%1'&gt;%2&LT;/t&gt;&lt;br/&gt;je opět bezpečné místo!&lt;br/&gt;Vezměte si odměnu!</Czech>
+			<Czech>Pěkná práce!&lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;je opět bezpečné místo!&lt;br/&gt;Vezměte si odměnu!</Czech>
 		</Key>
 
 		<!-- mission_Outpost.sqf -->
