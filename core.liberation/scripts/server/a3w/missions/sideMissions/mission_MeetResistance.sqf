@@ -75,7 +75,7 @@ _waitUntilSuccessCondition = {
 	};
 	_ret;
  };
-_waitUntilCondition = { {alive _x && _x distance2D _missionPos < 400} count (_managed_units) == 0 };
+_waitUntilCondition = { {alive _x && _x distance2D _missionPos < 400} count _managed_units == 0 };
 
 _failedExec = {
 	// Mission failed
