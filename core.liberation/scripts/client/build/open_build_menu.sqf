@@ -156,9 +156,13 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1 || buildtype =
 						_affordable = false;
 					};
 				} else {
-					if ((count PAR_AI_bros >= (GRLIB_squad_size + GRLIB_squad_size_bonus) || !(player getVariable ["GRLIB_squad_context_loaded", false]))) then {
+					PAR_AI_bros = ((units player) + (units GRLIB_side_civilian)) select {!isPlayer _x && alive _x && (_x getVariable ["PAR_Grp_ID","0"]) == format["Bros_%1", PAR_Grp_ID]};
+					if (count PAR_AI_bros >= (GRLIB_squad_size + GRLIB_squad_size_bonus)) then {
 						_affordable = false;
 					};
+					if (!(player getVariable ["GRLIB_squad_context_loaded", false])) then {
+						_affordable = false;
+					};					
 				};
 			};
 

@@ -57,8 +57,9 @@ if (count _context >= 1) then {
         };
         [""] remoteExec ["hintSilent", owner _player];
         diag_log format ["--- LRX Loaded %1 unit(s) for %2 Squad.", count (_context select 2), name _player];
+    } else {
+        _player setVariable ["GRLIB_squad_context_loaded", true, true];
     };
-    _player setVariable ["GRLIB_squad_context_loaded", true, true];
 } else {
     _player setVariable ["GRLIB_player_context_loaded", true, true];
     _player setVariable ["GRLIB_squad_context_loaded", true, true];

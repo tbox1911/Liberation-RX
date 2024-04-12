@@ -53,7 +53,6 @@ if (_unit == player) then {
 	titleText ["" ,"BLACK FADED", 100];
 } else {
 	gamelogic globalChat (format [localize "STR_PAR_DE_01", name _unit]);
-	PAR_AI_bros = PAR_AI_bros - [_unit];
 };
 
 removeAllWeapons _unit;
