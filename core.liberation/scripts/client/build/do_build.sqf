@@ -385,9 +385,7 @@ while { true } do {
 			sleep 0.1;
 
 			// ACE Support
-			if (GRLIB_ACE_enabled) then {
-				[_vehicle] call F_aceInitVehicle;
-			};
+			[_vehicle] call F_aceInitVehicle;
 
 			// Ammo Box clean inventory
 			if ( !(_classname in GRLIB_Ammobox_keep + GRLIB_disabled_arsenal) ) then {
