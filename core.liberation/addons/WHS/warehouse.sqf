@@ -17,6 +17,7 @@ GRLIB_warehouse_in_use = player;
 publicVariable "GRLIB_warehouse_in_use";
 
 private _cfg = configFile >> "cfgVehicles";
+private _allbox = [];
 private _mybox = [];
 private _refresh = true;
 load_box = 0;
@@ -37,7 +38,8 @@ while { dialog && alive player } do {
 		// Box outside
 		_control = _display displayCtrl (110);
 		lbClear 110;
-		_mybox = getPosATL player nearEntities [[waterbarrel_typename,fuelbarrel_typename,foodbarrel_typename,basic_weapon_typename], 20];
+		_allbox = getPosATL player nearEntities [[waterbarrel_typename,fuelbarrel_typename,foodbarrel_typename,basic_weapon_typename], 20];
+		_mybox = _allbox select { alive _x && isNull attachedTo _x };
 		{
 			_entrytext = [typeOf _x] call F_getLRXName;
 			_control lnbAddRow [_entrytext];
