@@ -8,6 +8,7 @@ _setupVars =
 	_missionType = "STR_VIP_CAP";
 	_locationsArray = nil; // locations are generated on the fly from towns
 	_ignoreAiDeaths = true;
+	_missionTimeout = (30 * 60);
 };
 
 _setupObjects =
@@ -49,6 +50,7 @@ _setupObjects =
 	_vip = _aiGroup createUnit ["O_Officer_Parade_Veteran_F", _missionPos, [], 0, "NONE"];
 	_vip addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage }];
 	_vip addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+	_vip setVariable ["GRLIB_mission_AI", true, true];
 	_vip assignAsCargo _vehicle2;
 	_vip moveInCargo _vehicle2;
 	_vip setSkill ["courage", 0.9];
@@ -61,13 +63,8 @@ _setupObjects =
 	_grp = [_missionPos, _vehicle_seat, "guard", false] call createCustomGroup;
 	[_vehicle3, _grp] call F_manualCrew;
 	(units _grp) joinSilent _aiGroup;
+
 	sleep 1;
-
-	{
-		_x setVariable ["GRLIB_mission_AI", false, true];
-	} foreach (units _aiGroup);
-
-	sleep 10;
 	_aiGroup setFormation "COLUMN";
 	_aiGroup setBehaviourStrong "SAFE";
 	_aiGroup setCombatMode "GREEN";
@@ -85,9 +82,6 @@ _setupObjects =
 		_waypoint setWaypointCompletionRadius 200;
 	} forEach _citylist;
 
-	_wp0 = waypointPosition [_aiGroup, 0];
-	_waypoint = _aiGroup addWaypoint [_wp0, 0];
-	_waypoint setWaypointType "CYCLE";
 	_last_waypoint = waypointPosition [_aiGroup, count _citylist];
 
 	_missionPos = getPosATL leader _aiGroup;
@@ -142,6 +136,7 @@ _waitUntilCondition = {
 	};
 	(!(alive _vip) || (_vip distance2D _last_waypoint) < 100);
 };
+
 _waitUntilSuccessCondition = { side group _vip == GRLIB_side_friendly };
 
 _failedExec = {
