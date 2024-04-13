@@ -20,7 +20,7 @@ private ["_items", "_src_name", "_src_obj"];
 	{ _target addItemCargoGlobal [_x, 1] } forEach _items;
 
 	// Weapons
-	{_target addWeaponWithAttachmentsCargo [_x, 1]} forEach (weaponsItems _x);
+	{_target addWeaponWithAttachmentsCargoGlobal [_x, 1]} forEach (weaponsItems _x);
 
 	// Magazine
 	{ _target addMagazineCargoGlobal [_x, 1] } forEach (magazineCargo _x);

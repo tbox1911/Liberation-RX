@@ -4,6 +4,9 @@ if (count _objects == 0) exitWith {};
 private _object_created = [];
 private _object = objNull;
 
+private _lock = locked _vehicle;
+_vehicle lock 0;
+
 {
 	_object = createVehicle [_x, ([] call F_getFreePos), [], 0, "NONE"];
 	if (GRLIB_ACE_enabled) then {
@@ -18,4 +21,5 @@ private _object = objNull;
 } forEach _objects;
 
 _vehicle setVariable ["R3F_LOG_objets_charges", _object_created, true];
+_vehicle lock _lock;
 //diag_log (_vehicle getVariable ["ace_cargo_loaded", []]);

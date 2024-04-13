@@ -1,6 +1,9 @@
 params ["_vehicle", "_lst_a3"];
 if (count _lst_a3 == 0) exitWith {};
 
+private _lock = locked _vehicle;
+_vehicle lock 0;
+
 { 
 	if (count _x == 2) then {
 		_vehicle addItemCargoGlobal [(_x select 0), (_x select 1)];
@@ -19,6 +22,8 @@ if (count _lst_a3 == 0) exitWith {};
 		} forEach (_mag select 0);		
 	};
 	if (count _x == 7) then {
-		_vehicle addWeaponWithAttachmentsCargo [_x, 1];
+		_vehicle addWeaponWithAttachmentsCargoGlobal [_x, 1];
 	};
 } forEach _lst_a3;
+
+_vehicle lock _lock;

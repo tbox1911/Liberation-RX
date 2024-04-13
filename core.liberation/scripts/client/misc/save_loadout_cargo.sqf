@@ -3,7 +3,7 @@
 params ["_box", "_unit"];
 
 // weapons + attachment
-{_box addWeaponWithAttachmentsCargo [_x, 1]} forEach weaponsItems _unit;
+{_box addWeaponWithAttachmentsCargoGlobal [_x, 1]} forEach weaponsItems _unit;
 //{_box addItemCargoGlobal [_x, 1]} forEach (assignedItems _unit);
 
 // headgear

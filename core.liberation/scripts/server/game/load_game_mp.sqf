@@ -238,6 +238,17 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
             _nextbuilding setAmmoCargo 0;
         };
 
+        if ( _owner != "" ) then {
+			if (_owner == "public") then {
+				_nextbuilding setVariable ["GRLIB_vehicle_owner", "public", true];
+				if ( _nextclass == huron_typename ) then {
+					GRLIB_vehicle_huron = _nextbuilding;
+				};
+			} else {
+				[_nextbuilding, "lock", _owner] call F_vehicleLock;
+			};
+        };
+
         if ( _nextclass in GRLIB_vehicles_light ) then {
 			_nextbuilding setVariable ["R3F_LOG_disabled", false, true];
 			if ( _nextclass in list_static_weapons ) then {
@@ -297,17 +308,6 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 				};
 			};
 		};
-
-        if ( _owner != "" ) then {
-			if (_owner == "public") then {
-				_nextbuilding setVariable ["GRLIB_vehicle_owner", "public", true];
-				if ( _nextclass == huron_typename ) then {
-					GRLIB_vehicle_huron = _nextbuilding;
-				};
-			} else {
-				[_nextbuilding, "lock", _owner] call F_vehicleLock;
-			};
-        };
 
         if ( _hascrew ) then {
             [ _nextbuilding] call F_forceCrew;
