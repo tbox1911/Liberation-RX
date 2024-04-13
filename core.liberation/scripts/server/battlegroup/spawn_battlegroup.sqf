@@ -32,7 +32,7 @@ if (_spawn_marker != "") then {
 	if ( _target_size > 8 ) then { _target_size = 8; };
 	if ( _target_size < 3 ) then { _target_size = 3; };
 
-	private ["_nextgrp", "_vehicle", "_vehicle_class", "_squad"];
+	private ["_nextgrp", "_vehicle", "_vehicle_class"];
 	for "_i" from 1 to _target_size do {
 		_vehicle_class = selectRandom _vehicle_pool;
 		_vehicle = [markerpos _spawn_marker, _vehicle_class] call F_libSpawnVehicle;
@@ -53,8 +53,7 @@ if (_spawn_marker != "") then {
 	if (combat_readiness > 80) then { _nb_squad = 2 };
 
 	for "_i" from 1 to _nb_squad do {
-		_squad = [] call F_getAdaptiveSquadComp;
-		_nextgrp = [_spawn_marker, "csat", _squad] call F_spawnRegularSquad;
+		_nextgrp = [_spawn_marker, "csat", ([] call F_getAdaptiveSquadComp)] call F_spawnRegularSquad;
 		[_nextgrp, _objective_pos] spawn battlegroup_ai;
 		_target_size = _target_size + 1;
 		sleep 10;
