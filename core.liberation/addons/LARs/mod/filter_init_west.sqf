@@ -2,7 +2,6 @@
 if (GRLIB_TFR_enabled) then {
 	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_TFAR.sqf";
 };
-
 // Add ACE Weapons
 if (GRLIB_ACE_enabled) then {
 	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_ACE.sqf";
@@ -10,6 +9,10 @@ if (GRLIB_ACE_enabled) then {
 // Add ArmA3 Weapons
 if (["A3_", GRLIB_mod_west, true] call F_startsWith) then {
 	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_A3.sqf";
+};
+// Add AMF Weapons
+if (GRLIB_AMF_enabled) then {
+	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_AMF.sqf";
 };
 // Add Western Sahara
 if (["WS_", GRLIB_mod_west, true] call F_startsWith) then {
