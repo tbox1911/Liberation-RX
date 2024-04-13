@@ -10,7 +10,7 @@ if (_vehicle isKindOf "Ship") exitWith {
 sleep (1 + floor random 10);
 
 private _timer = 0;
-private _last_pos = _objective_pos;
+private _last_pos = getPosATL (leader _grp);
 private ["_waypoint", "_wp0", "_next_objective", "_timer"];
 
 while { ({alive _x} count (units _grp) > 0) && (GRLIB_endgame == 0)} do {
@@ -65,7 +65,7 @@ while { ({alive _x} count (units _grp) > 0) && (GRLIB_endgame == 0)} do {
 		_vehicle setVehicleAmmo 1;
 	};
 
-	_last_pos = _objective_pos;
+	_last_pos = getPosATL (leader _grp);
 	if ([_objective_pos, (GRLIB_sector_size * 2), GRLIB_side_friendly] call F_getUnitsCount == 0) then {
 		_next_objective = [_objective_pos] call F_getNearestBluforObjective;
 		if ((_next_objective select 1) <= GRLIB_spawn_max) then { _objective_pos = (_next_objective select 0) } else { _objective_pos = zeropos };
