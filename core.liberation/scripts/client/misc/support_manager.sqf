@@ -70,6 +70,11 @@ while { true } do {
 							//clearAllItemsFromBackpack _unit;
 							_unit groupchat "Rearming Secondary Weapon.";
 							_added_sec = [_unit, _secondary_weapon, _maxsec_def] call F_UnitAddAmmo;
+							if (_added_sec > 0 && count (secondaryWeaponMagazine _unit) == 0) then {
+								_unit removeWeapon _secondary_weapon;
+								sleep 0.1;
+								_unit addWeapon _secondary_weapon;
+							};
 						};
 					};
 				};
