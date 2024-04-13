@@ -44,10 +44,8 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 			_opfor_veh = [_sector_pos, (selectRandom militia_vehicles)] call F_libSpawnVehicle;
 			_opfor_grp = group (driver _opfor_veh);
 		} else {
-			_opfor_grp = [_spawnsector, "militia", ([] call F_getAdaptiveSquadComp)] call F_spawnRegularSquad;
+			_opfor_grp = [_sector_pos, (4 + floor random 6), "militia"] call createCustomGroup;
 		};
-
-		{ _x setVariable ["GRLIB_mission_AI", true, true] } forEach (units _opfor_grp);
 		[_opfor_grp, _sector_pos] spawn add_civ_waypoints;
 
 		if (local _opfor_grp) then {
