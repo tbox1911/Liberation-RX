@@ -8,7 +8,6 @@ private _sector_pos = markerPos _sector;
 private _stopit = false;
 private _spawncivs = false;
 private _building_ai_max = 0;
-private _infsquad = "militia";
 private _building_range = 200;
 private _local_capture_size = GRLIB_capture_size;
 private _ied_count = 0;
@@ -18,10 +17,15 @@ private _vehicle = objNull;
 private _grp = grpNull;
 private _managed_units = [];
 private _squad1 = [];
+private _infsquad1 = "militia";
 private _squad2 = [];
+private _infsquad2 = "militia";
 private _squad3 = [];
+private _infsquad3 = "infantry";
 private _squad4 = [];
+private _infsquad4 = "infantry";
 private _squad5 = [];
+private _infsquad5 = "infantry";
 private _max_prisonners = 5;
 private _sector_despawn_tickets = GRLIB_despawn_tickets;
 
@@ -32,23 +36,15 @@ if ( (!(_sector in blufor_sectors)) && (([_sector_pos, GRLIB_sector_size, GRLIB_
 
 	if ( _sector in sectors_bigtown ) then {
 		_vehtospawn = [([] call F_getAdaptiveVehicle), (selectRandom militia_vehicles), (selectRandom militia_vehicles)];
-		_infsquad = "militia";
-		_squad1 = ([] call F_getAdaptiveSquadComp);
-		_squad2 = ([] call F_getAdaptiveSquadComp);
-		if (combat_readiness >= 70) then {
-			_squad3 = ([] call F_getAdaptiveSquadComp);
-		};
-		if (_active_players > 2) then {
-			_squad4 = ([] call F_getAdaptiveSquadComp);
-		};
-		if (_active_players > 4) then {
-			_squad5 = ([] call F_getAdaptiveSquadComp);
-		};
+		while { count _squad1 < 10 } do { _squad1 pushback (selectRandom militia_squad) };
+		while { count _squad2 < 8 } do { _squad2 pushback (selectRandom militia_squad) };
+		if (combat_readiness >= 60) then { _squad3 = ([] call F_getAdaptiveSquadComp) };
+		if (_active_players > 2) then { _squad4 = ([] call F_getAdaptiveSquadComp) };
+		if (_active_players > 4) then { _squad5 = ([] call F_getAdaptiveSquadComp) };
 		if(floor(random 100) > (66 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback (selectRandom militia_vehicles) };
 		if(floor(random 100) > (50 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback (selectRandom militia_vehicles) };
 		if(floor(random 100) > (33 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback ([] call F_getAdaptiveVehicle) };
 		_spawncivs = true;
-
 		_building_ai_max = 12;
 		_building_range = 300;
 		_local_capture_size = _local_capture_size * 1.4;
@@ -57,21 +53,11 @@ if ( (!(_sector in blufor_sectors)) && (([_sector_pos, GRLIB_sector_size, GRLIB_
 
 	if ( _sector in sectors_capture ) then {
 		_vehtospawn = [];
-		_infsquad = "militia";
 		while { count _squad1 < 12 } do { _squad1 pushback (selectRandom militia_squad) };
-		if (combat_readiness >= 50) then {
-			while { count _squad2 < 6 } do { _squad2 pushback (selectRandom militia_squad) };
-		};
-		if (combat_readiness >= 70) then {
-			while { count _squad3 < 8 } do { _squad3 pushback (selectRandom militia_squad) };
-		};
-		if (_active_players > 2) then {
-			while { count _squad4 < 8 } do { _squad4 pushback (selectRandom militia_squad) };
-		};
-		if (_active_players > 4) then {
-			while { count _squad5 < 8 } do { _squad5 pushback (selectRandom militia_squad) };
-		};
-
+		if (combat_readiness >= 50) then { while { count _squad2 < 8 } do { _squad2 pushback (selectRandom militia_squad)} };
+		if (combat_readiness >= 70) then { while { count _squad3 < 8 } do { _squad3 pushback (selectRandom militia_squad)}; _infsquad3 = "militia" };
+		if (_active_players > 2) then { while { count _squad4 < 8 } do { _squad4 pushback (selectRandom militia_squad)}; _infsquad4 = "militia"};
+		if (_active_players > 4) then { _squad5 = ([] call F_getAdaptiveSquadComp) };
 		if(floor(random 100) > (33 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback (selectRandom militia_vehicles); };
 		if(floor(random 100) > (66 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback (selectRandom militia_vehicles); };
 		_spawncivs = true;
@@ -81,19 +67,14 @@ if ( (!(_sector in blufor_sectors)) && (([_sector_pos, GRLIB_sector_size, GRLIB_
 	};
 
 	if ( _sector in sectors_military ) then {
-		_infsquad = "infantry";
+		_infsquad1 = "infantry";
 		_squad1 = ([] call F_getAdaptiveSquadComp);
+		_infsquad2 = "infantry";
 		_squad2 = ([] call F_getAdaptiveSquadComp);
-		if (combat_readiness >= 70) then {
-			_squad3 = ([] call F_getAdaptiveSquadComp);
-		};
-		if (_active_players > 2) then {
-			_squad4 = ([] call F_getAdaptiveSquadComp);
-		};
-		if (_active_players > 4) then {
-			_squad5 = ([] call F_getAdaptiveSquadComp);
-		};
-		_vehtospawn = [([] call F_getAdaptiveVehicle),([] call F_getAdaptiveVehicle)];
+		if (combat_readiness >= 70) then { _squad3 = ([] call F_getAdaptiveSquadComp) };
+		if (_active_players > 2) then { _squad4 = ([] call F_getAdaptiveSquadComp) };
+		if (_active_players > 4) then { _squad5 = ([] call F_getAdaptiveSquadComp) };
+		_vehtospawn = [([] call F_getAdaptiveVehicle), ([] call F_getAdaptiveVehicle)];
 		if(floor(random 100) > (33 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback ([] call F_getAdaptiveVehicle) };
 		if(floor(random 100) > (66 / GRLIB_difficulty_modifier)) then { _vehtospawn pushback ([] call F_getAdaptiveVehicle) };
 		_spawncivs = false;
@@ -120,18 +101,12 @@ if ( (!(_sector in blufor_sectors)) && (([_sector_pos, GRLIB_sector_size, GRLIB_
 
 	if ( _sector in sectors_factory ) then {
 		_vehtospawn = [];
-		_infsquad = "militia";
-		_squad1 = ([] call F_getAdaptiveSquadComp);
+		while { count _squad1 < 10 } do { _squad1 pushback (selectRandom militia_squad) };
+		_infsquad2 = "infantry";
 		_squad2 = ([] call F_getAdaptiveSquadComp);
-		if (combat_readiness >= 70) then {
-			_squad3 = ([] call F_getAdaptiveSquadComp);
-		};
-		if (_active_players > 2) then {
-			_squad4 = ([] call F_getAdaptiveSquadComp);
-		};
-		if (_active_players > 4) then {
-			_squad5 = ([] call F_getAdaptiveSquadComp);
-		};
+		if (combat_readiness >= 70) then { _squad3 = ([] call F_getAdaptiveSquadComp) };
+		if (_active_players > 2) then { _squad4 = ([] call F_getAdaptiveSquadComp) };
+		if (_active_players > 4) then { _squad5 = ([] call F_getAdaptiveSquadComp) };
 		if(floor(random 100) > 33) then { _vehtospawn pushback (selectRandom militia_vehicles); };
 		if(floor(random 100) > 66) then { _vehtospawn pushback ([] call F_getAdaptiveVehicle) };
 		_spawncivs = true;
@@ -142,14 +117,12 @@ if ( (!(_sector in blufor_sectors)) && (([_sector_pos, GRLIB_sector_size, GRLIB_
 
 	if ( _sector in sectors_tower ) then {
 		_spawncivs = false;
+		_infsquad1 = "infantry";
 		_squad1 = ([] call F_getAdaptiveSquadComp);
+		_infsquad2 = "infantry";
 		_squad2 = ([] call F_getAdaptiveSquadComp);
-		if (combat_readiness >= 70) then {
-			_squad3 = ([] call F_getAdaptiveSquadComp);
-		};
-		if (_active_players > 2) then {
-			_squad4 = ([] call F_getAdaptiveSquadComp);
-		};
+		if (combat_readiness >= 70) then { _squad3 = ([] call F_getAdaptiveSquadComp) };
+		if (_active_players > 2) then { _squad4 = ([] call F_getAdaptiveSquadComp) };
 		_building_ai_max = 0;
 		if(floor(random 100) > 75) then { _vehtospawn pushback ([] call F_getAdaptiveVehicle) };
 		[_sector_pos, 50] call createlandmines;
@@ -181,40 +154,40 @@ if ( (!(_sector in blufor_sectors)) && (([_sector_pos, GRLIB_sector_size, GRLIB_
 
 	if ( opforcap >= GRLIB_opfor_cap ) then { _building_ai_max = 0 };
 	if ( _building_ai_max > 0 ) then {
-		_managed_units = _managed_units + ([_infsquad, _building_ai_max, _sector_pos, _building_range] call F_spawnBuildingSquad);
+		_managed_units = _managed_units + ([_infsquad1, _building_ai_max, _sector_pos, _building_range] call F_spawnBuildingSquad);
 		sleep 5;
 	};
 
 	if ( count _squad1 > 0 ) then {
-		_grp = [ _sector, _infsquad, _squad1 ] call F_spawnRegularSquad;
+		_grp = [ _sector, _infsquad1, _squad1 ] call F_spawnRegularSquad;
 		[ _grp, _sector_pos, 50 ] spawn defence_ai;
 		_managed_units = _managed_units + (units _grp);
 		sleep 5;
 	};
 
 	if ( count _squad2 > 0 ) then {
-		_grp = [ _sector, _infsquad, _squad2 ] call F_spawnRegularSquad;
+		_grp = [ _sector, _infsquad2, _squad2 ] call F_spawnRegularSquad;
 		[ _grp, _sector_pos, 100 ] spawn defence_ai;
 		_managed_units = _managed_units + (units _grp);
 		sleep 5;
 	};
 
 	if ( count _squad3 > 0 ) then {
-		_grp = [ _sector, _infsquad, _squad3 ] call F_spawnRegularSquad;
+		_grp = [ _sector, _infsquad3, _squad3 ] call F_spawnRegularSquad;
 		[ _grp, _sector_pos, 100 ] spawn defence_ai;
 		_managed_units = _managed_units + (units _grp);
 		sleep 5;
 	};
 
 	if ( count _squad4 > 0 ) then {
-		_grp = [ _sector, _infsquad, _squad4 ] call F_spawnRegularSquad;
+		_grp = [ _sector, _infsquad4, _squad4 ] call F_spawnRegularSquad;
 		[ _grp, _sector_pos, 200 ] spawn defence_ai;
 		_managed_units = _managed_units + (units _grp);
 		sleep 5;
 	};
 
 	if ( count _squad5 > 0 ) then {
-		_grp = [ _sector, _infsquad, _squad5 ] call F_spawnRegularSquad;
+		_grp = [ _sector, _infsquad5, _squad5 ] call F_spawnRegularSquad;
 		[ _grp, _sector_pos, 300 ] spawn defence_ai;
 		_managed_units = _managed_units + (units _grp);
 		sleep 5;
