@@ -4013,14 +4013,6 @@
 					- &lt;t color='#ff0000'&gt;MUNICIÓN:&lt;/t&gt; La munición sirve para desplegar vehículos blindados, tanques y tropas de élite. Puede ser almacenada y usarse cuando sea necesario. La munición se encuentra en cajas que pueden ser sacadas de bases militares. Estas cajas deberán llevarse a una FOB mediante camiones o las eslingas del helicóptero. Una vez allí, hay que reciclarla para conseguir la munición. &lt;br/&gt; &lt;br/&gt;
 					- &lt;t color='#ffff00'&gt;COMBUSTIBLE:&lt;/t&gt; El combustible es consumido por todos los vehículos, en diferente cantidad. El nivel de combustible disponible depende de la cantidad de fábricas que se encuentren bajo el control de la OTAN. &lt;br/&gt; &lt;br/&gt;
 			</Spanish>
-			<Original>&lt;br/&gt;&lt;br/&gt;
-					&lt;t size='10'&gt;&lt;img image='res\tuto\ress.jpg'/&gt;&lt;/t&gt;
-					&lt;br/&gt;&lt;br/&gt;
-					In this campaign you have to manage three types of resources:&lt;br/&gt; &lt;br/&gt;
-					- &lt;t color='#00ff00'&gt;MANPOWER:&lt;/t&gt; manpower is linked to the number of points of interest you control. A bigger manpower allows you to raise the quality and quantity of your ground troops. &lt;br/&gt; &lt;br/&gt;
-					- &lt;t color='#ff0000'&gt;AMMO:&lt;/t&gt; ammunition is used to deploy armed vehicles, tanks and elite soldiers. It can be stocked forever and used only when necessary. Ammunition is contained in boxes that can be retrieved from military bases. Those crates have to be moved back to a FOB by truck or sling load, then recycled to increase your ammunition stockpile.&lt;br/&gt; &lt;br/&gt;
-					- &lt;t color='#ffff00'&gt;FUEL:&lt;/t&gt; fuel is used by every vehicle, some being more thirsty than others. The fuel levels depends on how many factories are controlled by NATO forces.&lt;br/&gt; &lt;br/&gt;
-			</Original>
 			<Russian>&lt;br/&gt;
 					&lt;t size='10'&gt;&lt;img image='res\tuto\ress.jpg'/&gt;&lt;/t&gt;
 					&lt;br/&gt;&lt;br/&gt;
