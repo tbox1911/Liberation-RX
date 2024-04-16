@@ -5904,6 +5904,13 @@
 			<Portuguese>-- ENVIAR MUNIÇÃO</Portuguese>
 			<Czech>-- DARUJ AMMO</Czech>
 		</Key>
+		<Key ID="STR_SEND_FUEL">
+			<Original>-- SEND FUEL</Original>
+			<Russian>-- ОТПРАВИТЬ FUEL</Russian>
+			<French>-- DONNER FUEL</French>
+			<Portuguese>-- ENVIAR FUEL</Portuguese>
+			<Czech>-- DARUJ FUEL</Czech>
+		</Key>		
 		<Key ID="STR_BUY_FUEL">
 			<Original>-- BUY FUEL</Original>
 			<Russian>-- КУПИТЬ ТОПЛИВО</Russian>
