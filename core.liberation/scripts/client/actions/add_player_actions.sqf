@@ -41,7 +41,7 @@ player addAction ["<t color='#80FF80'>" + localize "STR_HALO_ACTION" + "</t> <im
 player addAction ["<t color='#80FF00'>" + localize "STR_SEND_AMMO" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\misc\do_send_ammo.sqf","",-981,true,true,"","call GRLIB_checkSendAmmo"];
 
 // Send Fuel
-player addAction ["<t color='#00F080'>" + localize "STR_SEND_FUEL" + "</t> <img size='1' image='\A3\ui_f\data\map\mapcontrol\Fuelstation_CA.paa'/>", "scripts\client\actions\do_send_fuel.sqf","",-900,true,true,"","call GRLIB_checkSendFuel"];
+//player addAction ["<t color='#00F080'>" + localize "STR_SEND_FUEL" + "</t> <img size='1' image='\A3\ui_f\data\map\mapcontrol\Fuelstation_CA.paa'/>", "scripts\client\actions\do_send_fuel.sqf","",-900,true,true,"","call GRLIB_checkSendFuel"];
 
 // Buy Fuel
 player addAction ["<t color='#00F080'>" + localize "STR_BUY_FUEL" + "</t> <img size='1' image='\A3\ui_f\data\map\mapcontrol\Fuelstation_CA.paa'/>", "scripts\client\actions\do_buy_fuel.sqf","",-900,true,true,"","call GRLIB_checkBuyFuel"];

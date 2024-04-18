@@ -10,14 +10,20 @@ diag_log format ["Spawn Attack Sector %1 at %2", _sector, time];
 private _max_prisonners = 4;
 
 private _defenders_cooldown = false;
-if ( _sector == attack_in_progress select 0 ) then {
-	if (time < ((attack_in_progress select 1) + 900)) then {
-		_defenders_cooldown = true;
+if (_sector in attack_in_progress_cooldown) then {
+	_defenders_cooldown = true;
+} else {
+	_defenders_cooldown = false;
+	attack_in_progress_cooldown pushBack _sector;
+	[_sector] spawn {
+		params ["_sector"];
+		sleep (15 * 60);
+		attack_in_progress_cooldown = attack_in_progress_cooldown - [_sector];
 	};
 };
 
 private _sideMission = (_sector in A3W_sectors_in_use);
-if (_sideMission || diag_fps < 35) then { _defenders_cooldown = true };
+if (_sideMission) then { _defenders_cooldown = true };
 
 private _grp = grpNull;
 private _vehicle = objNull;
@@ -78,8 +84,6 @@ if (_defense_type > 0 && !_defenders_cooldown) then {
 	};
 };
 
-attack_in_progress = [_sector, round (time)];
-
 if ( _ownership == GRLIB_side_enemy ) then {
 	private _sector_timer = GRLIB_vulnerability_timer;
 	if (_sector in sectors_bigtown) then {
@@ -124,7 +128,7 @@ if ( _ownership == GRLIB_side_enemy ) then {
 				};
 			} foreach _enemy_left;
 
-			if (time > ((attack_in_progress select 1) + 300)) then {
+			if ((_sector_timer - time) <= 300 && !_defenders_cooldown) then {
 				private _rwd_xp = round (15 + random 10);
 				private _text = format ["Glory to the Defenders! +%1 XP", _rwd_xp];
 				{
