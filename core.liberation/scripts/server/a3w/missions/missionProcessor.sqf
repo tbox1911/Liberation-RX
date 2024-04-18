@@ -33,7 +33,7 @@ if (isNil "_missionTimeout" || !(isNil "A3W_debug")) then {
 
 if (!isNil "_locationsArray") then {
 	while {true} do	{
-		_availableLocations = _locationsArray select {!(_x select 1) && ((_x param [2, 0]) <= time) };
+		_availableLocations = _locationsArray select {!(_x select 1) && ((_x select 2) <= time) };
 		if (count _availableLocations > 0) exitWith {};
 		sleep 60;
 	};
@@ -91,6 +91,7 @@ waitUntil {
 		};
 		_lastPos = getPosATL _leaderTemp;
 	};
+	if (_missionType == "STR_SPECIALDELI") then { _lastPos = _missionEnd };
 
 	if (!isNil "_waitUntilMarkerPos") then { _marker setMarkerPos (call _waitUntilMarkerPos) };
 	if (!isNil "_waitUntilExec") then { call _waitUntilExec };

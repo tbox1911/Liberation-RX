@@ -4,34 +4,37 @@ if (!isNil "GRLIB_A3W_Mission_SD") exitWith {};
 
 private ["_missionEnd", "_house", "_quest_item"];
 
-_setupVars =
-{
+_setupVars = {
 	_missionType = "STR_SPECIALDELI";
 	_ignoreAiDeaths = true;
 	_locationsArray = [SpawnMissionMarkers] call checkSpawn;
 };
 
-_setupObjects =
-{
+_setupObjects = {
 	_missionEnd = [(markerpos _missionLocation)] call F_findSafePlace;
 	if (count _missionEnd == 0) exitWith { 
-    	diag_log format ["--- LRX Error: side mission SD, cannot find spawn point!"];
+    	diag_log format ["--- LRX Error: side mission SD, cannot find spawn point - %1", _missionLocation];
     	false;
 	};	
 
 	private _convoy_destinations = [];
-	private _sector_list = [(blufor_sectors - sectors_tower)] call checkSpawn;
+	private _sector_list = (blufor_sectors - sectors_tower);
 	private _max_try = 20;
 	private _max_waypoints = 3;
 
+	if (count _sector_list < _max_waypoints) exitWith {
+		diag_log format ["--- LRX Error: side mission SD, not enough sectors - %1 %2", _missionLocation, _sector_list];
+		false;
+	};
+
 	while { count _convoy_destinations < _max_waypoints && _max_try > 0} do {
 		_start_pos = selectRandom _sector_list;
-		_convoy_destinations = [_start_pos, 4000, _sector_list, _max_waypoints] call F_getSectorPath;
+		_convoy_destinations = [_start_pos, 3500, _sector_list, _max_waypoints] call F_getSectorPath;
 		_max_try = _max_try - 1;
 	};
 
 	if (count _convoy_destinations < _max_waypoints) exitWith {
-		diag_log format ["--- LRX Error: side mission SD, cannot find path"];
+		diag_log format ["--- LRX Error: side mission SD, cannot find path - %1", _convoy_destinations];
 		false;
 	};
 	
@@ -82,6 +85,7 @@ _setupObjects =
 	publicVariable "GRLIB_A3W_Mission_SD";
 
 	_vehicle = _house;
+	_vehicles = [_quest_item] + (GRLIB_A3W_Mission_SD select 1);
 	_missionPicture = getText (configFile >> "CfgVehicles" >> "C_Hatchback_01_F" >> "picture");
 	_missionHintText = ["STR_SPECIALDELI_MESSAGE1", sideMissionColor, markerText _missionLocation];
 	true;
@@ -95,8 +99,7 @@ _waitUntilSuccessCondition = { ((GRLIB_A3W_Mission_SD select 0) == -1) };
 _failedExec = {
 	// Mission failed
 	{ [_x, -3] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
-	["GRLIB_A3W_Mission_SD_Marker"] remoteExec ["GRLIB_A3W_Mission_SD_Marker", 0];
-	{ deleteVehicle _x} forEach [_quest_item] + (GRLIB_A3W_Mission_SD select 1);
+	["GRLIB_A3W_Mission_SD_Marker"] remoteExec ["deleteMarkerLocal", 0];
 	GRLIB_A3W_Mission_SD = nil;
 	publicVariable "GRLIB_A3W_Mission_SD";
 	_failedHintMessage = ["STR_SPECIALDELI_MESSAGE2", sideMissionColor];
@@ -105,12 +108,10 @@ _failedExec = {
 _successExec = {
 	// Mission completed
 	{ [_x, 7] call F_addReput } forEach ([_quest_item, 10] call F_getNearbyPlayers);
-	["GRLIB_A3W_Mission_SD_Marker"] remoteExec ["GRLIB_A3W_Mission_SD_Marker", 0];
-	{ deleteVehicle _x} forEach [_quest_item] + (GRLIB_A3W_Mission_SD select 1);
+	["GRLIB_A3W_Mission_SD_Marker"] remoteExec ["deleteMarkerLocal", 0];
 	GRLIB_A3W_Mission_SD = nil;
 	publicVariable "GRLIB_A3W_Mission_SD";	
 	_successHintMessage = ["STR_SPECIALDELI_MESSAGE3", sideMissionColor];
-
 	for "_i" from 1 to (selectRandom [1,2]) do {
 		[ammobox_i_typename, _missionEnd, false] call boxSetup;
 		sleep 0.2;

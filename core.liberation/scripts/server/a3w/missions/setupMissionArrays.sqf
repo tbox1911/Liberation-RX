@@ -24,12 +24,12 @@ SideMissions = [
 	["mission_SearchIntel", 1],
 	["mission_KillOfficer", 1],
 	["mission_BaronRouge", 1],
-	["mission_HealCivilian", 1]		
+	["mission_HealCivilian", 1]
 ];
 
-SpawnMissionMarkers = ((allMapMarkers select {["Mission_", _x] call F_startsWith}) + sectors_opfor) apply {[_x, false]};
-ForestMissionMarkers = ((allMapMarkers select {["ForestMission_", _x] call F_startsWith})) apply {[_x, false]};
-SunkenMissionMarkers = (allMapMarkers select {["SunkenMission_", _x] call F_startsWith}) apply {[_x, false]};
+SpawnMissionMarkers = (allMapMarkers select {["Mission_", _x] call F_startsWith}) apply {[_x, false, 0]};
+ForestMissionMarkers = (allMapMarkers select {["ForestMission_", _x] call F_startsWith}) apply {[_x, false, 0]};
+SunkenMissionMarkers = (allMapMarkers select {["SunkenMission_", _x] call F_startsWith}) apply {[_x, false, 0]};
 
 if !(ForestMissionMarkers isEqualTo []) then {
 	SideMissions append

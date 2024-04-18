@@ -42,9 +42,11 @@ while { true } do {
 	// Special Delivery
 	if ( !isNil "GRLIB_A3W_Mission_SD" ) then {
 		_res = (GRLIB_A3W_Mission_SD select 1) select 3;
-		_list = _res nearEntities ["CAManBase", GRLIB_capture_size];
-		_opf = _list select { side _x == GRLIB_side_enemy };
-		if (count _opf > 0) then {_msg = format ["Status:\nEnemy squad: %1", count _opf]};
+		if (_res distance2D player < GRLIB_capture_size) then {
+			_list = _res nearEntities ["CAManBase", GRLIB_capture_size];
+			_opf = _list select { side _x == GRLIB_side_enemy };
+			if (count _opf > 0) then {_msg = format ["Status:\nEnemy squad: %1", count _opf]};
+		};
 	};
 
 	if (_msg != "") then {
