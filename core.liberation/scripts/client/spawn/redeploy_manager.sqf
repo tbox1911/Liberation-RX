@@ -39,7 +39,7 @@ respawn_camera camcommit 0;
 
 private _standard_map_pos = ctrlPosition ((findDisplay 5201) displayCtrl 251);
 private _frame_pos = ctrlPosition ((findDisplay 5201) displayCtrl 198);
-private _is_mobile_respawn = false;
+private _mobile = false;
 private _loadouts_data = [];
 private _loadout_controls = [101,203,205];
 
@@ -175,45 +175,14 @@ if (deploy == 1) then {
 			// Mobile Respawn
 			_destpos = (_choiceslist select _idxchoice) select 2;
 			_destdist = 6;
-			_is_mobile_respawn = true;
+			_mobile = true;
 		} else {
 			// FOB / Outpost
 			_destpos = (_choiceslist select _idxchoice) select 1;
 			_destdist = 12;
-			if (surfaceIsWater _destpos) then { _destpos = (ATLtoASL _destpos) vectorAdd [0, 0, 1] };
-			private _near_sign = nearestObjects [_destpos, [FOB_sign], 20] select 0;
-			if !(isNil "_near_sign") then {
-				_destpos = getPosATL _near_sign;
-				if (_destpos select 2 < 0) then { _destpos set [2, 0.5] };
-				_destdir = getDir _near_sign;
-				_destdist = 8;
-				if (surfaceIsWater _destpos) then { _destdist = 5};
-			};
 		};
 		if (_destpos distance2D zeropos < 300) exitWith {};
-
-		private _unit_list = units group player;
-		private _my_squad = player getVariable ["my_squad", nil];
-		if (!isNil "_my_squad") then { { _unit_list pushBack _x } forEach units _my_squad };
-		private _unit_list_redep = _unit_list select {
-			!(isPlayer _x) && (isNull objectParent _x) &&
-			(_x distance2D player <= 30) &&
-			lifestate _x != 'INCAPACITATED'
-		};
-		player setPosATL (_destpos getPos [_destdist, (_destdir-180)]);
-		player setDir _destdir;
-		sleep 1;
-
-		[_unit_list_redep, _destpos, _destdist] spawn {
-			params ["_list", "_pos", "_dist"];
-			sleep 1;
-			{
-				_x setPosATL (_pos getPos [_dist, random 360]);
-				sleep 0.5;
-			} forEach _list;
-			sleep 3;
-			player setVariable ["GRLIB_action_inuse", false, true];
-		};
+		[_destpos, _destdist, _mobile] spawn do_redeploy;
 	};
 	GRLIB_player_spawned = ([] call F_getValid);
 	cinematic_camera_started = false;
@@ -221,9 +190,10 @@ if (deploy == 1) then {
 
 if (alive player && deploy == 1) then {
 	if (isNil "_spawn_str") then {_spawn_str = "Somewhere."};
-	[_spawn_str, _is_mobile_respawn] spawn spawn_camera;
+	[_spawn_str, _mobile] spawn spawn_camera;
 };
 
 10 fadeMusic 0;
 sleep 10;
 playMusic "";
+player setVariable ["GRLIB_action_inuse", false, true];

@@ -3,9 +3,17 @@ params ["_grp"];
 
 hintSilent "Your squad is coming\nPlease wait...";
 waitUNtil { sleep 0.1; local _grp };
+private _pos = getPosATL player;
+private _alt = _pos select 2;
 { _x allowDamage false} foreach (units _grp);
 {
-    _x setPos (player getPos [3, 360]);
+    if (surfaceIsWater _pos) then {
+        private _destpos = _pos getPos [3, random 360];
+        _destpos set [2, _alt];
+	    _x setPosASL (ATLtoASL _destpos);
+    } else {
+        _x setPosATL (_pos getPos [5, random 360]);
+    };
     [_x] joinSilent (group player);
     [_x] spawn F_fixModUnit;
     [_x] spawn PAR_fn_AI_Damage_EH;

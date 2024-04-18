@@ -81,6 +81,7 @@ if (GRLIB_respawn_cooldown > 0) then {
 add_player_actions = compile preprocessFile "scripts\client\actions\add_player_actions.sqf";
 dog_bark = compileFinal preprocessFileLineNumbers "scripts\client\actions\dog_bark.sqf";
 do_onboard = compileFinal preprocessFileLineNumbers "scripts\client\actions\do_onboard.sqf";
+do_redeploy = compileFinal preprocessFileLineNumbers "scripts\client\actions\do_redeploy.sqf";
 spawn_camera = compileFinal preprocessFileLineNumbers "scripts\client\spawn\spawn_camera.sqf";
 paraDrop = compileFinal preprocessFileLineNumbers "scripts\client\spawn\paraDrop.sqf";
 cinematic_camera = compileFinal preprocessFileLineNumbers "scripts\client\ui\cinematic_camera.sqf";
