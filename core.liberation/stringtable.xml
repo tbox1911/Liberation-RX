@@ -311,11 +311,15 @@
 		<Key ID="STR_ARSENAL_UNPACK">
 			<Original>-- ARSENAL UNPACK</Original>
 			<French>-- ARSENAL UNPACK</French>
-		</Key>		
+		</Key>
+		<Key ID="STR_INVENTORY_UNPACK">
+			<Original>-- INVENTORY UNPACK</Original>
+			<French>-- INVENTAIRE UNPACK</French>
+		</Key>
 		<Key ID="STR_ARSENAL_PICKUP">
 			<Original>-- PICK UP GROUND WEAPONS</Original>
 			<French>-- RAMASSER ARMES AU SOL</French>
-		</Key>			
+		</Key>
 		<Key ID="STR_ACTION_LOAD_BOX">
 			<Original>-- LOAD</Original>
 			<French>-- CHARGER</French>
@@ -1822,11 +1826,11 @@
 		<Key ID="STR_PARAMS_PAR_AI_REVIVE">
 			<Original>PAR: Limit AI Revive</Original>
 			<French>PAR: Limite AI Résurection</French>
-		</Key>		
+		</Key>
 		<Key ID="STR_PARAMS_PAR_BLEEDOUT">
 			<Original>PAR: Bleedout Timer</Original>
 			<French>PAR: Durée Attente Blessé</French>
-		</Key>		
+		</Key>
 		<Key ID="STR_PARAMS_REVIVE1">
 			<Original>Enabled - Only medics can revive</Original>
 			<French>Activé - Seuls les medics peuvent ressusciter</French>
@@ -2142,7 +2146,7 @@
 		<Key ID="STR_PARAM_TFAR_RADIUS">
 			<Original>Task Force Radio Relay distance</Original>
 			<French>Task Force Radio distance du Relais</French>
-		</Key>		
+		</Key>
 		<Key ID="STR_PARAM_PASSIVE_INCOME">
 			<Original>Replace ammo boxes spawns with Passive Income</Original>
 			<French>Remplacer les caisses de munitions par un Revenu Passif</French>
@@ -2414,7 +2418,7 @@
 		<Key ID="STR_REVIVE">
 			<Original>Revive left:</Original>
 			<French>Ranimation Dispo:</French>
-		</Key>		
+		</Key>
 		<Key ID="STR_DISTANCE">
 			<Original>Distance:</Original>
 			<French>Distance :</French>
@@ -5910,7 +5914,7 @@
 			<French>-- DONNER FUEL</French>
 			<Portuguese>-- ENVIAR FUEL</Portuguese>
 			<Czech>-- DARUJ FUEL</Czech>
-		</Key>		
+		</Key>
 		<Key ID="STR_BUY_FUEL">
 			<Original>-- BUY FUEL</Original>
 			<Russian>-- КУПИТЬ ТОПЛИВО</Russian>
@@ -6544,7 +6548,7 @@
 		<Key ID="STR_BUILD_DEFENSE_SEC">
 			<Original>-- BUILD SECTOR DEFENSES</Original>
 			<French>-- CONSTRUIRE DEFENSE SECTEUR</French>
-		</Key>		
+		</Key>
 		<Key ID="STR_CLEAR_DEFENSE">
 			<Original>-- REMOVE ALL FOB DEFENSES</Original>
 			<French>-- SUPPRIMER DEFENSE FOB</French>
@@ -6552,7 +6556,7 @@
 		<Key ID="STR_CLEAR_DEFENSE_MSG">
 			<Original>&lt;t align='center'&gt;Remove ALL Defenses&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
 			<French>&lt;t align='center'&gt;Supprimer TOUTES les Defenses&lt;br/&gt;Es tu sûr ?&lt;/t&gt;</French>
-		</Key>		
+		</Key>
 		<Key ID="STR_SAVE_PLAYER_MSG">
 			<Original>Player Profile and\n%1 Squad unit(s)\nSaved!</Original>
 			<French>Profil du Joueur et\n%1 unitée(s) d'escouade\nEnregistré !</French>
@@ -6989,7 +6993,7 @@
 		</Key>
 		<Key ID="STR_ADMIN_MOWER">
 			<Original>MOWER</Original>
-		</Key>		
+		</Key>
 		<Key ID="STR_ADMIN_EXPORT">
 			<Original>Export Game</Original>
 			<Russian>Сохранить Игру</Russian>

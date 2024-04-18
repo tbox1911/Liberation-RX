@@ -1,3 +1,7 @@
+params ["_vehicle"];
+if (isNil "_vehicle") exitWith {};
+
+private _cargo = [_vehicle, true] call F_getCargo;
 private _arsenal = [];
 private _count = 0;
 {
@@ -16,7 +20,7 @@ private _count = 0;
 			_arsenal pushBack _x;
 		};
 	};
-} forEach (GRLIB_personal_arsenal);
+} forEach _cargo;
 
-[GRLIB_personal_box] call F_clearCargo;
-[GRLIB_personal_box, _arsenal] call F_setCargo;
+[_vehicle] call F_clearCargo;
+[_vehicle, _arsenal] call F_setCargo;

@@ -72,6 +72,11 @@ GRLIB_checkAction_Pickup_Weapons = {
 	(GRLIB_player_is_menuok && alive _target && load _target < 0.8)
 };
 
+GRLIB_checkAction_UnpackInventory = {
+	params ["_target", "_unit"];
+	(GRLIB_player_is_menuok && alive _target && load _target > 0.2)
+};
+
 GRLIB_checkAction_Speak = {
 	params ["_target", "_unit"];
 	(_target getVariable ["GRLIB_civ_incd", 0] > 0)
