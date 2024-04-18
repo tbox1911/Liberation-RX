@@ -27,7 +27,6 @@ _setupObjects = {
 	_marker_mission = ["DEL3", _missionPos] call createMissionMarkerCiv;
 
 	_missionHintText = ["STR_FUELDELI_MESSAGE1", sideMissionColor, _townName];
-	A3W_sectors_in_use = A3W_sectors_in_use + [_missionLocation];
 	true;
 };
 
@@ -62,7 +61,6 @@ _failedExec = {
 	deleteMarker _marker_mission;
 	_failedHintMessage = ["STR_FUELDELI_MESSAGE2", sideMissionColor, _townName];
 	A3W_delivery_failed = A3W_delivery_failed + 1;
-	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
 
 _successExec = {
@@ -74,7 +72,6 @@ _successExec = {
 	deleteVehicle _man1;
 	deleteMarker _marker_mission;
 	A3W_delivery_failed = 0;
-	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
 
 _this call sideMissionProcessor;

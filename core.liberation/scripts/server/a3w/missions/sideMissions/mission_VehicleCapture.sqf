@@ -28,7 +28,6 @@ _setupObjects = {
 	_missionPicture = getText (configOf _vehicle >> "picture");
 	_vehicleName = getText (configOf _vehicle >> "displayName");
 	_missionHintText = ["STR_VEHICLECAP_MESSAGE1", _vehicleName, sideMissionColor];
-	A3W_sectors_in_use = A3W_sectors_in_use + [_missionLocation];
 	true;
 };
 
@@ -40,7 +39,6 @@ _failedExec = {
 	// Mission failed
 	deleteVehicle _smoke;
 	[_missionPos] call clearlandmines;
-	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
 
 _successExec = {
@@ -54,7 +52,6 @@ _successExec = {
 		sleep 300;
 		[_pos] call clearlandmines;
 	};
-	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
 
 _this call sideMissionProcessor;

@@ -136,7 +136,6 @@ _setupObjects = {
 
 	//_missionPicture = getText (configFile >> "CfgVehicles" >> "Land_i_Barracks_V1_F" >> "picture");
 	_missionHintText = ["STR_SEARCH_INTEL_MESSAGE1", count _intels]; ;
-	A3W_sectors_in_use = A3W_sectors_in_use + [_missionLocation];
 	true;
 };
 
@@ -183,7 +182,6 @@ _failedExec = {
 		{ deleteVehicle _x } forEach (units _grp1);
 		[_pos] call clearlandmines;
 	};
-	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
 
 _successExec = {
@@ -203,7 +201,6 @@ _successExec = {
 		sleep 300;
 		[_pos] call clearlandmines;
 	};
-	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
 
 _this call sideMissionProcessor;

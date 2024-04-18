@@ -47,7 +47,11 @@ if (!isNil "_setupObjects" && _continue_mission) then { _continue_mission = call
 if (!_continue_mission) exitWith {
 	diag_log format ["--- LRX Error: A3W Side Mission %1 failed to setup: %2", _controllerSuffix, localize _missionType];
 };
-publicVariable "A3W_sectors_in_use";
+
+if (!isNil "_missionlocation") then {
+	A3W_sectors_in_use = A3W_sectors_in_use + [_missionLocation];
+	publicVariable "A3W_sectors_in_use";
+};
 
 ["lib_secondary_a3w_mission", [localize _missionType]] remoteExec ["bis_fnc_shownotification", 0];
 diag_log format ["A3W Side Mission %1 started: %2", _controllerSuffix, localize _missionType];
@@ -138,11 +142,6 @@ if (_failed) then {
 	] remoteExec ["remote_call_showinfo", 0];
 	["lib_secondary_a3w_mission_fail", [localize _missionType]] remoteExec ["bis_fnc_shownotification", 0];
 
-	// Cleanup
-	{ deleteVehicle _x } forEach (units _aiGroup);
-	if (!isNil "_vehicle") then	{ [_vehicle] spawn cleanMissionVehicles };
-	if (!isNil "_vehicles") then { [_vehicles] spawn cleanMissionVehicles };
-
 	diag_log format ["A3W Side Mission %1 failed: %2", _controllerSuffix, localize _missionType];
 	A3W_mission_failed = A3W_mission_failed + 1;
 };
@@ -150,17 +149,6 @@ if (_failed) then {
 if (_complete) then {
 	// Mission completed
 	if (!isNil "_successExec") then { call _successExec };
-
-	if (!isNil "_vehicle") then {
-		_vehicle setVariable ["R3F_LOG_disabled", false, true];
-		[_vehicle, true] spawn cleanMissionVehicles;
-	};
-
-	if (!isNil "_vehicles") then {
-		{ _x setVariable ["R3F_LOG_disabled", false, true] } forEach _vehicles;
-		[_vehicles, true] spawn cleanMissionVehicles;
-	};
-
 	[
 		"Objective Complete",
 		_missionType,
@@ -174,8 +162,26 @@ if (_complete) then {
 	A3W_mission_success = A3W_mission_success + 1;
 };
 
-publicVariable "A3W_sectors_in_use";
-deleteGroup _aiGroup;
+// Cleanup
+if (_count_blu == 0) then {
+	{ deleteVehicle _x } forEach (units _aiGroup);
+	deleteGroup _aiGroup;
+};
+
+if (!isNil "_vehicle") then {
+	_vehicle setVariable ["R3F_LOG_disabled", false, true];
+	[_vehicle] spawn cleanMissionVehicles;
+};
+
+if (!isNil "_vehicles") then {
+	{ _x setVariable ["R3F_LOG_disabled", false, true] } forEach _vehicles;
+	[_vehicles] spawn cleanMissionVehicles;
+};
+
+if (!isNil "_missionlocation") then {
+	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
+	publicVariable "A3W_sectors_in_use";
+};
 
 if (!isNil "_locationsArray") then {
 	[_locationsArray, _missionLocation, false] call setLocationState;

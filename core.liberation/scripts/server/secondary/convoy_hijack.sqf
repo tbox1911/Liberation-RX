@@ -214,7 +214,7 @@ if (time > _mission_timeout) then {
 };
 
 private _vehicles = [_scout_vehicle, _troop_vehicle];
-[_vehicles, true] spawn cleanMissionVehicles;
+[_vehicles] spawn cleanMissionVehicles;
 
 sleep 120;
 GRLIB_secondary_in_progress = -1;

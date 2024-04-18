@@ -70,16 +70,15 @@ private _alive_crew_count = { alive _x } count _pilotUnits;
 if ( _alive_crew_count == 0 ) then {
 	// failed
 	[ 7 ] remoteExec ["remote_call_intel", 0];
-	[_vehicle_list] spawn cleanMissionVehicles;
 } else {
 	// success
 	[ 8 ] remoteExec ["remote_call_intel", 0];
 	{ _x setVariable ["GRLIB_vehicle_owner", ""] } foreach _vehicle_list;
-	[_vehicle_list, true] spawn cleanMissionVehicles;
 	resources_intel = resources_intel + (25 * _alive_crew_count);
 	combat_readiness = combat_readiness - 10;
 	stats_secondary_objectives = stats_secondary_objectives + 1;
 };
+[_vehicle_list] spawn cleanMissionVehicles;
 
 sleep 5;
 { deleteVehicle _x } forEach units _grppatrol;

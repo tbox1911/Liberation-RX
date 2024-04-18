@@ -11,8 +11,8 @@ private _list = [];
 	_timer = _x select 2;
 	if !(_sector in (A3W_sectors_in_use + active_sectors)) then {
 		{		
-			if ( (markerPos _x) distance2d (markerPos _sector) < GRLIB_sector_size) exitWith { _ret = false };
-		} foreach blufor_sectors;
+			if ( (markerPos _x) distance2d (markerPos _sector) < (GRLIB_sector_size + 200)) exitWith { _ret = false };
+		} foreach sectors_allSectors;
 		if (_ret) then { _list pushBack [_sector, _state, _timer] };
 	};
 } forEach _markers;

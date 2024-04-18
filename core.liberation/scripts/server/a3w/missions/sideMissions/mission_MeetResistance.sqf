@@ -58,7 +58,6 @@ _setupObjects = {
 
 	_vehicles = [_tent1, _chair1, _chair2, _fire1, _veh1, _veh2];
 	_missionHintText = ["STR_RESISTANCE_MESSAGE1", sideMissionColor, _location_name];
-	A3W_sectors_in_use = A3W_sectors_in_use + [_missionLocation];
 	true;
 };
 
@@ -84,7 +83,6 @@ _failedExec = {
 	GRLIB_A3W_Mission_MR = nil;
 	publicVariable "GRLIB_A3W_Mission_MR";
 	_failedHintMessage = ["STR_RESISTANCE_MESSAGE2", sideMissionColor, _location_name];
-	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
 
 _successExec = {
@@ -97,7 +95,6 @@ _successExec = {
 	[basic_weapon_typename, _missionPos, false] call boxSetup;
 	[ammobox_i_typename, _missionPos, false] call boxSetup;
 	_successHintMessage = ["STR_RESISTANCE_MESSAGE3", sideMissionColor, _location_name];
-	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
 
 _this call sideMissionProcessor;

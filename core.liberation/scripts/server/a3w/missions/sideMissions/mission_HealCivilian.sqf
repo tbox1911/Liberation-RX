@@ -116,7 +116,6 @@ _setupObjects = {
 	_grp_wnded setCombatMode "GREEN";	
 
 	_missionHintText = ["STR_HEAL_CIV_MESSAGE1", sideMissionColor, _location_name];
-	A3W_sectors_in_use = A3W_sectors_in_use + [_missionLocation];
 	true;
 };
 
@@ -137,7 +136,6 @@ _failedExec = {
 	{ deleteVehicle _x } forEach (units _grp_wnded);
 	{ deleteVehicle _x } forEach (_objects);
 	_successHintMessage = "STR_HEAL_CIV_MESSAGE3";
-	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
 
 _successExec = {
@@ -147,7 +145,6 @@ _successExec = {
 	{ deleteVehicle _x } forEach (_objects);
 	{ [_x, 5] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
 	_successHintMessage = "STR_HEAL_CIV_MESSAGE2";
-	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
 
 _this call sideMissionProcessor;

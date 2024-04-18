@@ -43,7 +43,6 @@ _setupObjects = {
 	_grp_civ = [_missionPos, (5 + random(5))] call F_spawnCivilians;
 
 	_missionHintText = ["STR_INVASION_MESSAGE1", sideMissionColor, _townName, _nbUnits];
-	A3W_sectors_in_use = A3W_sectors_in_use + [_missionLocation];
 	true;
 };
 
@@ -58,7 +57,6 @@ _failedExec = {
 	{ deleteVehicle _x } forEach [_tent1, _chair1, _chair2, _fire1];
 	{ deleteVehicle _x } forEach (units _grp_civ);
 	[_missionPos] call clearlandmines;
-	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
 
 _successExec = {
@@ -83,7 +81,6 @@ _successExec = {
 		sleep 300;
 		[_pos] call clearlandmines;
 	};
-	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
 
 _this call sideMissionProcessor;

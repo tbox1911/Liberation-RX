@@ -28,7 +28,6 @@ _setupObjects = {
 	_managed_units joinSilent _aiGroup;
 	{ _x setVariable ["GRLIB_mission_AI", false, true] } forEach (units _aiGroup);
 	_missionHintText = ["STR_INSURGENCY_MESSAGE1", sideMissionColor, _townName];
-	A3W_sectors_in_use = A3W_sectors_in_use + [_missionLocation];
 	true;
 };
 
@@ -41,7 +40,6 @@ _failedExec = {
 	{ [_x, -5] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
 	_failedHintMessage = ["STR_INVASION_FAILED", sideMissionColor, _townName];
 	[_missionPos] call clearlandmines;
-	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
 
 _successExec = {
@@ -62,7 +60,6 @@ _successExec = {
 		sleep 300;
 		[_pos] call clearlandmines;
 	};
-	A3W_sectors_in_use = A3W_sectors_in_use - [_missionLocation];
 };
 
 _this call sideMissionProcessor;
