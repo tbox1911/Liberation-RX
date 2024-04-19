@@ -1,4 +1,7 @@
 params ["_vehicles"];
+if (typeName _vehicles != "ARRAY") then {
+	_vehicles = [_vehicles];
+};
 
 {
 	[_x] spawn {
