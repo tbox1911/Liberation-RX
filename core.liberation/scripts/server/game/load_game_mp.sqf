@@ -105,7 +105,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 	buildings_to_load = _lrx_liberation_savegame select 2;
 	time_of_day = _lrx_liberation_savegame select 3;
 	combat_readiness = _lrx_liberation_savegame select 4;
-	//unused = _lrx_liberation_savegame select 5;
+	GRLIB_sector_defense = _lrx_liberation_savegame select 5;
 	GRLIB_game_ID = _lrx_liberation_savegame select 6;
 	_side_west = _lrx_liberation_savegame select 7;
 	_side_east = _lrx_liberation_savegame select 8;
@@ -390,9 +390,13 @@ if ( count GRLIB_vehicle_to_military_base_links == 0 ) then {
 } forEach GRLIB_all_fobs;
 
 if (typeName GRLIB_game_ID == "ARRAY" || GRLIB_game_ID == 0) then { GRLIB_game_ID = round floor random 65535 };
-publicVariable "GRLIB_game_ID";
+
 if (count GRLIB_permissions == 0) then {
 	GRLIB_permissions = [["Default",[true,false,false,true,false,true]]];
+};
+
+if (typeName GRLIB_sector_defense != "ARRAY") then {
+	GRLIB_sector_defense = [];
 };
 
 publicVariable "stats_blufor_soldiers_recruited";
@@ -409,6 +413,7 @@ publicVariable "GRLIB_vehicle_huron";
 publicVariable "GRLIB_permissions";
 publicVariable "GRLIB_warehouse";
 publicVariable "blufor_sectors";
+publicVariable "GRLIB_game_ID";
 publicVariable "GRLIB_all_fobs";
 publicVariable "GRLIB_all_outposts";
 publicVariable "GRLIB_mobile_respawn";

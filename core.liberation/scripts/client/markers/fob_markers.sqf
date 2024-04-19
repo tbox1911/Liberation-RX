@@ -1,6 +1,7 @@
 private [ "_marker", "_idx", "_respawn_trucks", "_markers_mobilespawns", "_vehicle" ];
 private _markers = [];
 private _markers_mobilespawns = [];
+private _markers_defense = [];
 
 waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 waitUntil {sleep 1; !isNil "GRLIB_all_fobs"};
@@ -34,7 +35,7 @@ while { true } do {
 
 	_respawn_trucks = [] call F_getMobileRespawns;
 	if ( count _markers_mobilespawns != count _respawn_trucks ) then {
-		{ deleteMarkerLocal _x; } foreach _markers_mobilespawns;
+		{ deleteMarkerLocal _x } foreach _markers_mobilespawns;
 		_markers_mobilespawns = [];
 		for [ {_idx=0} , {_idx < (count _respawn_trucks)} , {_idx=_idx+1} ] do {
 			_marker = createMarkerLocal [format ["mobilespawn%1",_idx], markers_reset];
@@ -50,6 +51,19 @@ while { true } do {
 			(_markers_mobilespawns select _idx) setMarkerPosLocal getpos _vehicle;
 			(_markers_mobilespawns select _idx) setMarkerTextLocal format ["%1 %2", [_vehicle] call F_getLRXName, mapGridPosition _vehicle];
 		};
+	};
+
+	if ( count _markers_defense != count GRLIB_sector_defense ) then {
+		{ deleteMarkerLocal _x } foreach _markers_defense;
+		{
+			private _sector = (_x select 0);
+			private _marker = createMarkerLocal [format ["defense_%1", _sector], (markerPos _sector)];
+			_marker setMarkerShapeLocal "ICON";
+			_marker setMarkerTypeLocal "loc_defend";
+			_marker setMarkerColorLocal "ColorGrey";
+			//_marker setMarkerSizeLocal [100, 200];
+			_markers_defense pushback _marker;
+		} forEach GRLIB_sector_defense;
 	};
 
 	sleep 5;
