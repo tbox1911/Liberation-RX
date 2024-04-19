@@ -1,6 +1,6 @@
-class liberation_sendammo_menu {
+class liberation_send_resources {
   	idd = 2337;
-	name = "liberation_sendammo_menu";
+	name = "liberation_send_resources";
 	movingEnable = false;
 	enableSimulation = true;
 	class controlsBackground {
@@ -28,7 +28,7 @@ class liberation_sendammo_menu {
 
 	class controls {
 		class Header: StdHeader {
-			text = $STR_SENDAMMO_MENU;
+			text = $STR_SEND_MENU;
 			x = 0.1985 * safezoneW + safezoneX;
 			y = 0.1444 * safezoneH + safezoneY;
 			w = 0.2375 * safezoneW;
@@ -91,9 +91,31 @@ class liberation_sendammo_menu {
 			size = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 			shadow = 1;
 		};
+		class FuelImageShadow : IconImage {
+			x = (0.306094 * safezoneW + safezoneX) + 0.003;
+			y = (0.2294 * safezoneH + safezoneY) + 0.005;
+			text = "res\ui_fuel.paa";
+			colorText[] = {0, 0, 0, 1};
+		};
+		class FuelImage : IconImage {
+			x = (0.306094 * safezoneW + safezoneX);
+			y = 0.2294 * safezoneH + safezoneY;
+			text = "res\ui_fuel.paa";
+		};
+		class PlayerFuelText: StdText {
+			idc = 234;
+			x = 0.326094 * safezoneW + safezoneX;
+			y = 0.2294 * safezoneH + safezoneY;
+			w = 0.071875 * safezoneW;
+			h = 0.033 * safezoneH;
+			font = "PuristaMedium";
+			colorText[] = {0.75, 0.75, 0, 1};
+			size = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+			shadow = 1;
+		};
 		class PlayerText: GREUH_RscStructuredText {
 			idc = -1;
-			text = $STR_SENDAMMO_PLAYER;
+			text = $STR_SEND_PLAYER;
 			x = 0.206094 * safezoneW + safezoneX;
 			y = 0.2976 * safezoneH + safezoneY;
 			w = 0.061875 * safezoneW;
@@ -110,7 +132,7 @@ class liberation_sendammo_menu {
 		};
 		class AmmoText: GREUH_RscStructuredText {
 			idc = -1;
-			text = $STR_SENDAMMO_AMMO;
+			text = $STR_SEND_AMMO;
 			x = 0.206094 * safezoneW + safezoneX;
 			y = 0.3658 * safezoneH + safezoneY;
 			w = 0.061875 * safezoneW;
@@ -120,6 +142,21 @@ class liberation_sendammo_menu {
 			idc = 232;
 			x = 0.263437 * safezoneW + safezoneX;
 			y = 0.3658 * safezoneH + safezoneY;
+			w = 0.149531 * safezoneW;
+			h = 0.033 * safezoneH;
+		};
+		class FuelText: GREUH_RscStructuredText {
+			idc = -1;
+			text = $STR_SEND_FUEL;
+			x = 0.206094 * safezoneW + safezoneX;
+			y = 0.4340 * safezoneH + safezoneY;
+			w = 0.061875 * safezoneW;
+			h = 0.033 * safezoneH;
+		};
+		class FuelList: StdCombo {
+			idc = 233;
+			x = 0.263437 * safezoneW + safezoneX;
+			y = 0.4340 * safezoneH + safezoneY;
 			w = 0.149531 * safezoneW;
 			h = 0.033 * safezoneH;
 		};
@@ -135,7 +172,7 @@ class liberation_sendammo_menu {
 		};
 		class SendAmmo : StdButton {
 			idc = -1;
-			text = $STR_SENDAMMO_SEND;
+			text = $STR_SEND_ACTION;
 			onButtonClick = "send_ammo = 1";
 			x = 0.3300 * safezoneW + safezoneX;
 			y = 0.71 * safezoneH + safezoneY;

@@ -5898,22 +5898,9 @@
 			<Portuguese>-- DISPENSAR O ESQUADRÃO</Portuguese>
 			<Czech>-- SQUAD PROPUŠTĚN</Czech>
 		</Key>
-		<Key ID="STR_SEND_AMMO">
-			<Original>-- SEND AMMO</Original>
-			<Russian>-- ОТПРАВИТЬ AMMO</Russian>
-			<French>-- DONNER AMMO</French>
-			<Japanese>-- 弾薬を送る</Japanese>
-			<Chinesesimp>-- 发送弹药 --</Chinesesimp>
-			<Chinese>-- 發送彈藥 --</Chinese>
-			<Portuguese>-- ENVIAR MUNIÇÃO</Portuguese>
-			<Czech>-- DARUJ AMMO</Czech>
-		</Key>
-		<Key ID="STR_SEND_FUEL">
-			<Original>-- SEND FUEL</Original>
-			<Russian>-- ОТПРАВИТЬ FUEL</Russian>
-			<French>-- DONNER FUEL</French>
-			<Portuguese>-- ENVIAR FUEL</Portuguese>
-			<Czech>-- DARUJ FUEL</Czech>
+		<Key ID="STR_SEND_RSC">
+			<Original>-- SEND RESOURCES</Original>
+			<French>-- ENVOYER RESSOURCES</French>
 		</Key>
 		<Key ID="STR_BUY_FUEL">
 			<Original>-- BUY FUEL</Original>
@@ -6888,18 +6875,12 @@
 			<Original>Call Artillery Fire.\nCost: %1 Ammo</Original>
 			<French>Demander un Tir d'Artillerie.\nPrix: %1 Ammo</French>
 		</Key>
-		<!-- liberation_sendammo.hpp -->
-		<Key ID="STR_SENDAMMO_MENU">
-			<Original>-- Send Ammo Menu --</Original>
-			<Russian>-- Меню отправки Ammo</Russian>
-			<French>-- Menu Envoyer Ammo --</French>
-			<Japanese>-- 弾薬譲渡メニュー --</Japanese>
-			<Chinesesimp>-- 发送弹药菜单 --</Chinesesimp>
-			<Chinese>-- 發送彈藥菜單 --</Chinese>
-			<Portuguese>-- Enviar Menu de Munição --</Portuguese>
-			<Czech>-- Nabídka Odeslat munici --</Czech>
+		<!-- liberation_send_resources.hpp -->
+		<Key ID="STR_SEND_MENU">
+			<Original>-- Send Resources --</Original>
+			<French>-- Envoyer Ressources --</French>
 		</Key>
-		<Key ID="STR_SENDAMMO_PLAYER">
+		<Key ID="STR_SEND_PLAYER">
 			<Original>Player:</Original>
 			<Russian>Игрок:</Russian>
 			<French>Joueur:</French>
@@ -6909,7 +6890,7 @@
 			<Portuguese>Jogador:</Portuguese>
 			<Czech>Hráč:</Czech>
 		</Key>
-		<Key ID="STR_SENDAMMO_AMMO">
+		<Key ID="STR_SEND_AMMO">
 			<Original>Ammo:</Original>
 			<Russian>Ammo:</Russian>
 			<French>Ammo:</French>
@@ -6919,10 +6900,17 @@
 			<Portuguese>Ammo:</Portuguese>
 			<Czech>Ammo:</Czech>
 		</Key>
-		<Key ID="STR_SENDAMMO_SEND">
+		<Key ID="STR_SEND_FUEL">
+			<Original>Fuel::</Original>
+			<Russian>Fuel:</Russian>
+			<French>Fuel:</French>
+			<Portuguese>Fuel:</Portuguese>
+			<Czech>Fuel:</Czech>
+		</Key>		
+		<Key ID="STR_SEND_ACTION">
 			<Original>Send</Original>
 			<Russian>Отправить</Russian>
-			<French>Donner</French>
+			<French>Envoyer</French>
 			<Japanese>送る</Japanese>
 			<Chinesesimp>发送</Chinesesimp>
 			<Chinese>發送</Chinese>

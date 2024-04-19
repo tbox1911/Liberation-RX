@@ -17,6 +17,6 @@
 #include "liberation_secondary.hpp"
 #include "liberation_admin.hpp"
 #include "liberation_airdrop.hpp"
-#include "liberation_sendammo.hpp"
+#include "liberation_send_resources.hpp"
 #include "liberation_notice.hpp"
 #include "liberation_tips.hpp"
