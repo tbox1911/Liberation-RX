@@ -59,3 +59,8 @@ if ( howtoplay == 1 ) then {
 cinematic_camera_started = false;
 introDone = true;
 dostartgame = 1;
+
+waituntil {sleep 1; !isNil "GRLIB_player_spawned"};
+10 fadeMusic 0;
+sleep 10;
+playMusic "";

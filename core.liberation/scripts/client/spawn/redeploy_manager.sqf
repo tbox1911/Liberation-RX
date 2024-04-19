@@ -193,7 +193,5 @@ if (alive player && deploy == 1) then {
 	[_spawn_str, _mobile] spawn spawn_camera;
 };
 
-10 fadeMusic 0;
 sleep 10;
-playMusic "";
 player setVariable ["GRLIB_action_inuse", false, true];
