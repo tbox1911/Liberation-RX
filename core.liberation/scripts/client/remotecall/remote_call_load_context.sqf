@@ -7,14 +7,17 @@ private _pos = getPosATL player;
 private _alt = _pos select 2;
 { _x allowDamage false} foreach (units _grp);
 {
-    if (surfaceIsWater _pos) then {
-        private _destpos = _pos getPos [3, random 360];
-        _destpos set [2, _alt];
-	    _x setPosASL (ATLtoASL _destpos);
-    } else {
-        _x setPosATL (_pos getPos [5, random 360]);
-    };
     [_x] joinSilent (group player);
+    while { _x distance2D _pos > 100 } do {
+        if (surfaceIsWater _pos) then {
+            private _destpos = _pos getPos [3, random 360];
+            _destpos set [2, _alt];
+            _x setPosASL (ATLtoASL _destpos);
+        } else {
+            _x setPosATL (_pos getPos [5, random 360]);
+        };
+        sleep 0.5;
+    };
     [_x] spawn F_fixModUnit;
     [_x] spawn PAR_fn_AI_Damage_EH;
     _x enableIRLasers true;
