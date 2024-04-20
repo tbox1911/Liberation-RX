@@ -45,13 +45,11 @@ if (_cmd == "flee") exitWith {
     _unit setUnitPos "AUTO";
     _unit enableAI "ANIM";
     _unit enableAI "MOVE";
-    if (!isNull objectParent _unit) then {
-        doGetOut _unit;
-        unassignVehicle _unit;
-        [_unit] orderGetIn false;
-        [_unit] allowGetIn false;
-        sleep 3;
-    };
+    unassignVehicle _unit;
+    [_unit] orderGetIn false;
+    [_unit] allowGetIn false;
+    doGetOut _unit;
+    sleep 2;
     _anim = "AmovPercMwlkSnonWnonDf";  // "AmovPercMwlkSrasWrflDf"; // "AmovPercMwlkSnonWnonDf"
     _unit switchMove _anim;
     _unit playMoveNow _anim;

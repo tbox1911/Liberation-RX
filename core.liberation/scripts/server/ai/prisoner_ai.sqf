@@ -4,7 +4,7 @@ if (isNull _unit) exitWith {};
 if !(isNull objectParent _unit) exitWith {};
 if (_unit getVariable ["GRLIB_mission_AI", false]) exitWith {};
 if (_unit getVariable ["GRLIB_is_prisoner", false]) exitWith {};
-if (surfaceIsWater (getPosATl _unit)) exitWith {};
+if (surfaceIsWater (getPosATL _unit)) exitWith {};
 if (_unit skill "courage" == 1) exitWith {};
 
 sleep 5;
@@ -86,9 +86,11 @@ while {alive _unit} do {
 				private _text = format ["Alert! prisonner %1 is escaping!", name _unit];
 				[gamelogic, _text] remoteExec ["globalChat", 0];
 			};
+			_grp = createGroup [GRLIB_side_enemy, true];
+			[_unit] joinSilent _grp;
 
 			[_unit, "flee"] remoteExec ["remote_call_prisoner", 0];
-			sleep 3;
+			sleep 4;
 			[_unit] spawn escape_ai;
 			sleep 120;
 		};
