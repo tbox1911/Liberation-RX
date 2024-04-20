@@ -2,7 +2,7 @@ count_death = 1;
 private ["_pos", "_destpos", "_cam", "_noesckey"];
 
 while { true } do {
-	waitUntil {sleep 0.5; (GRLIB_player_spawned && (player getVariable ["PAR_isUnconscious", false])) };
+	waitUntil { sleep 0.5; alive player && GRLIB_player_spawned && (player getVariable ["PAR_isUnconscious", false]) };
 	openMap false;
 	closeDialog 0;
 
@@ -12,7 +12,7 @@ while { true } do {
 	_cam cameraEffect ["internal", "BACK"];
 	_cam camSetFOV 1.0;
 	showCinemaBorder false;
-	if ( (date select 3) < 4 || (date select 3) >= 20 ) then { camUseNVG true; } else { camUseNVG false; };
+	if ( call is_night ) then { camUseNVG true } else { camUseNVG false };
 	//_cam camSetTarget player;   		//follow player
 	_cam camSetTarget getpos player;	//static view
 
@@ -37,19 +37,15 @@ while { true } do {
 	_cam camSetPos _destpos;
 	_cam camCommit 900;
 	uiSleep 2;
-
 	closeDialog 0;
-	waitUntil {!dialog};
 
-	[] execVM "GREUH\scripts\GREUH_revive_ui.sqf";
-	waitUntil { sleep 0.5; (!(player getVariable ["PAR_isUnconscious", true]) || !alive player) };
-	player setVariable ["PAR_isUnconscious", false, true];
-	closeDialog 5566;
+	[] call compile preprocessFileLineNumbers "GREUH\scripts\GREUH_revive_ui.sqf";
 
-	"colorCorrections" ppEffectEnable FALSE;
-	"filmGrain" ppEffectEnable FALSE;
+	"colorCorrections" ppEffectEnable false;
+	"filmGrain" ppEffectEnable false;
 	_cam cameraEffect ["Terminate", "BACK"];
 	camDestroy _cam;
 	camUseNVG false;
 	(findDisplay 5651) displayRemoveEventHandler ["KeyDown", _noesckey];
+	sleep 5;
 };

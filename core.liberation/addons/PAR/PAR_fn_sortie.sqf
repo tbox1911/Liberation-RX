@@ -32,6 +32,7 @@ if (lifeState _medic == "INCAPACITATED" || (!alive _wnded)) exitWith { [_medic, 
 
 // Revived
 _wnded setUnconscious false;
+_wnded setVariable ["PAR_isUnconscious", false, true];
 
 if (PAR_revive == 2) then {
 	_medic removeItem "FirstAidKit";
@@ -47,7 +48,6 @@ if ([_medic] call PAR_is_medic) then {
 	_wnded setDamage 0.25;
 };
 
-_wnded setVariable ["PAR_isUnconscious", false, true];
 if (_wnded == player) then {
 	_wnded setVariable ["PAR_isDragged", 0, true];
 	group _wnded selectLeader _wnded;

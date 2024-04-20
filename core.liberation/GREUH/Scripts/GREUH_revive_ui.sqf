@@ -23,8 +23,7 @@ if (GRLIB_respawn_cooldown > 0) then {
 (_display displayCtrl 677) ctrlEnable false; 	//disable restart button
 (_display displayCtrl 679) ctrlEnable false; 	//disable recall button
 
-while { dialog && alive player } do {
-
+while { alive player && (player getVariable ["PAR_isUnconscious", false]) } do {
 	if ( !isNil "public_bleedout_message" && !isNil "public_bleedout_timer") then {
 		if (_labelwidth == -1) then { _labelwidth = (ctrlPosition (_display displayCtrl 6699)) select 2 };
 		if (public_bleedout_timer > PAR_bleedout) then {public_bleedout_timer = PAR_bleedout};
@@ -66,3 +65,4 @@ while { dialog && alive player } do {
 	uiSleep 0.25;
 };
 _display displayRemoveEventHandler ["KeyDown", _noesckey];
+closeDialog 0;

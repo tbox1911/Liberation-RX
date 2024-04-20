@@ -43,7 +43,7 @@ if (_unit == player) then {
 		"player_grave_box" setMarkerPosLocal _grave;
 	};
 
-	// respawn penalty
+	// Respawn Penalty
 	if ([_unit] call F_getScore > (GRLIB_perm_log + 50)) then { [_unit, -10] remoteExec ["F_addScore", 2] };
 
 	// Respawn Cooldown
