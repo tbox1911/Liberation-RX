@@ -27,10 +27,11 @@ if ( combat_readiness < 50 ) then {
 if (_spawn_marker != "") then {
 	[markerPos _spawn_marker] remoteExec ["remote_call_battlegroup", 0];
 	GRLIB_last_battlegroup_time = time;
-	private _target_size = GRLIB_battlegroup_size * (combat_readiness /100);
+	private _target_size = round ((GRLIB_battlegroup_size * GRLIB_csat_aggressivity) * (1+(combat_readiness / 100)));
 	if ( count (AllPlayers - (entities "HeadlessClient_F")) <= 2 ) then { _target_size = round (_target_size * 0.65) };
-	if ( _target_size > 8 ) then { _target_size = 8; };
-	if ( _target_size < 3 ) then { _target_size = 3; };
+	if ( _target_size > 10 && GRLIB_csat_aggressivity >= 2 ) then { _target_size = 10 };	
+	if ( _target_size > 8 && GRLIB_csat_aggressivity < 2 ) then { _target_size = 8 };
+	if ( _target_size < 2 ) then { _target_size = 2 };
 
 	private ["_nextgrp", "_vehicle", "_vehicle_class"];
 	for "_i" from 1 to _target_size do {
@@ -51,7 +52,6 @@ if (_spawn_marker != "") then {
 
 	private _nb_squad = 1;
 	if (combat_readiness > 80) then { _nb_squad = 2 };
-
 	for "_i" from 1 to _nb_squad do {
 		_nextgrp = [_spawn_marker, "csat", ([] call F_getAdaptiveSquadComp)] call F_spawnRegularSquad;
 		[_nextgrp, _objective_pos] spawn battlegroup_ai;
@@ -60,20 +60,16 @@ if (_spawn_marker != "") then {
 	};
 
 	sleep 15;
-	if ( GRLIB_csat_aggressivity > 0.7 ) then {
+	if ( GRLIB_csat_aggressivity > 1 && combat_readiness > 70 ) then {
 		if (floor random 2 == 0) then {
 			[_objective_pos, GRLIB_side_enemy, 4] spawn spawn_air;
 		} else {
 			[_objective_pos] spawn send_paratroopers;
 		};
+		_target_size = _target_size + 2;
 	};
 
-	sleep 15;
-
 	combat_readiness = combat_readiness - (_target_size * 1.75);
-	if ( combat_readiness < 0 ) then { combat_readiness = 0 };
-	publicVariable "combat_readiness";
-
 	stats_hostile_battlegroups = stats_hostile_battlegroups + 1;
 	diag_log format ["Spawn BattlegGroup (%1) objective %2 at %3", _target_size, _objective_pos, time];
 } else {
@@ -87,6 +83,11 @@ if (_spawn_marker != "") then {
 		[_para_pos] spawn send_paratroopers;
 		sleep 20;
 		[_para_pos] spawn send_paratroopers;
+
+		combat_readiness = combat_readiness - 10;
 		diag_log format ["Done Spawning Paratrooper BattlegGroup at %1", time];
-	};
+	};	
 };
+
+if ( combat_readiness < 0 ) then { combat_readiness = 0 };
+publicVariable "combat_readiness";
