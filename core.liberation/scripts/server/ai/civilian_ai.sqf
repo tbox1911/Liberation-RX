@@ -43,14 +43,14 @@ while {alive _unit && _continue} do {
 		_target = selectRandom _nearby_players;
 		_target_veh = vehicles select { (alive _x) && ([_target, _x, true] call is_owner) && (_x distance2D _unit < _radius) };
 		_reputation = [_target] call F_getReput;
-		if ( _reputation >= 25 ) then { _list_actions = [0,1,2] };
-		if ( _reputation >= 50 ) then { _list_actions = [1,2,2,3,3] };
+		if ( _reputation >= 25 ) then { _list_actions = [0,1,1,2] };
+		if ( _reputation >= 50 ) then { _list_actions = [1,2,2,3] };
 		if ( _reputation >= 75 ) then { _list_actions = [2,2,3,3,4,4,5] };
 		if ( _reputation >= 100 ) then { _list_actions = [2,3,4,5,5] };
 		if ( _reputation <= -25 ) then { _list_actions = [0,10] };
-		if ( _reputation <= -50 ) then { _list_actions = [10,11] };
-		if ( _reputation <= -75 ) then { _list_actions = [11,11,12,14] };
-		if ( _reputation <= -100 ) then { _list_actions = [11,12,12,13,14,14] };
+		if ( _reputation <= -50 ) then { _list_actions = [10,11,11] };
+		if ( _reputation <= -75 ) then { _list_actions = [11,11,12,12,14] };
+		if ( _reputation <= -100 ) then { _list_actions = [11,12,12,13,13,14] };
 	};
 
 	_action = selectRandom _list_actions;
@@ -83,8 +83,39 @@ while {alive _unit && _continue} do {
 			sleep _delay;
 		};
 
-		//--- Repair
+		//--- Heal
 		case 2: {
+			if (damage _target > 0.25) then {
+				[_grp] call F_deleteWaypoints;
+				waitUntil {
+					_unit doMove (getPos _target);
+					sleep 5;
+					(!alive _unit || !(isNull objectParent _unit) || _unit distance2D _target <= 7 || _unit distance2D _target > _radius)
+				};
+
+				if (alive _unit && isNull objectParent _unit && _unit distance2D _target <= 7 && damage _target > 0.25 ) then {
+					if (isServer) then {
+						[_unit, _action, _target] spawn speak_manager_remote_call;
+					} else {
+						[_unit, _action, _target] remoteExec ["speak_manager_remote_call", 2];
+					};
+					_unit stop true;
+					_unit setDir (_unit getDir _target);
+					_unit switchMove "ainvpknlmstpslaywrfldnon_medicother";
+					_unit playMoveNow "ainvpknlmstpslaywrfldnon_medicother";
+					sleep 6;
+					_target setDamage 0;
+					_unit stop false;
+					_unit switchMove "AmovPercMwlkSnonWnonDf";
+					_unit playMoveNow "AmovPercMwlkSnonWnonDf";
+				};
+				[_grp, getPosATL _unit] spawn add_civ_waypoints;
+			};
+			sleep _delay;
+		};
+
+		//--- Repair
+		case 3: {
 			_target_veh = _target_veh select { ([_x] call F_VehicleNeedRepair) };
 			if (count _target_veh > 0) then {
 				_target = selectRandom _target_veh;
@@ -110,37 +141,6 @@ while {alive _unit && _continue} do {
 					sleep 3;
 					playSound3D ["a3\sounds_f\sfx\ui\vehicles\vehicle_repair.wss", _target, false, getPosASL _target, 3, 1, 250];
 					sleep 3;
-					_target setDamage 0;
-					_unit stop false;
-					_unit switchMove "AmovPercMwlkSnonWnonDf";
-					_unit playMoveNow "AmovPercMwlkSnonWnonDf";
-				};
-				[_grp, getPosATL _unit] spawn add_civ_waypoints;
-			};
-			sleep _delay;
-		};
-
-		//--- Heal
-		case 3: {
-			if (damage _target > 0.25) then {
-				[_grp] call F_deleteWaypoints;
-				waitUntil {
-					_unit doMove (getPos _target);
-					sleep 5;
-					(!alive _unit || _unit distance2D _target <= 7 || _unit distance2D _target > _radius)
-				};
-
-				if (alive _unit && _unit distance2D _target <= 7 && damage _target > 0.25 ) then {
-					if (isServer) then {
-						[_unit, _action, _target] spawn speak_manager_remote_call;
-					} else {
-						[_unit, _action, _target] remoteExec ["speak_manager_remote_call", 2];
-					};
-					_unit stop true;
-					_unit setDir (_unit getDir _target);
-					_unit switchMove "ainvpknlmstpslaywrfldnon_medicother";
-					_unit playMoveNow "ainvpknlmstpslaywrfldnon_medicother";
-					sleep 6;
 					_target setDamage 0;
 					_unit stop false;
 					_unit switchMove "AmovPercMwlkSnonWnonDf";
