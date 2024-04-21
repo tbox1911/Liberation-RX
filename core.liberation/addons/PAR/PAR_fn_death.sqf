@@ -5,12 +5,13 @@ _unit connectTerminalToUAV objNull;
 [(_unit getVariable ['PAR_myMedic', objNull]), _unit] call PAR_fn_medicRelease;
 _unit setVariable ['PAR_wounded', false];
 
+removeAllWeapons _unit;
 if (_unit == player) then {
 	// Grave + Save Stuff
 	_pos = getPosATL _unit;
 	if ( isNull objectParent player &&
 		!([_unit, "LHD", GRLIB_capture_size] call F_check_near) &&
-		round (_pos select 2) == 0 && !(surfaceIsWater _pos)
+		(_pos select 2) <= 2 && !(surfaceIsWater _pos)
 	) then {
 		// Save Stuff
 		[PAR_grave_box] call F_clearCargo;
@@ -55,6 +56,6 @@ if (_unit == player) then {
 	gamelogic globalChat (format [localize "STR_PAR_DE_01", name _unit]);
 };
 
-removeAllWeapons _unit;
+hideBody _unit;
 sleep 5;
 deleteVehicle _unit;
