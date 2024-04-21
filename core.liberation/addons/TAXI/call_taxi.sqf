@@ -42,6 +42,7 @@ hintSilent format [localize "STR_TAXI_CALLED", getText(configFile >> "cfgVehicle
 [_vehicle] call F_fixModVehicle;
 
 _vehicle flyInHeight 70;
+_vehicle setVariable ["GRLIB_taxi_helipad", GRLIB_taxi_helipad, true];
 _vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
 _vehicle setVariable ["R3F_LOG_disabled", true, true];
 _vehicle allowDamage false;
@@ -61,7 +62,7 @@ if (count (crew _vehicle) == 0) exitWith { diag_log format ["--- LRX Error: Taxi
 	_x allowDamage false;
 	_x allowFleeing 0;
  } foreach (units _air_grp);
-_vehicle setVariable ["GRLIB_vehicle_group", _air_grp];
+_vehicle setVariable ["GRLIB_taxi_crew", (units _air_grp), true];
 
 _air_grp setBehaviourStrong "CARELESS";
 _air_grp setCombatMode "GREEN";
@@ -75,10 +76,10 @@ private _idact_eject = _vehicle addAction [format ["<t color='#FF0080'>%1</t>", 
 player setVariable ["GRLIB_taxi_called", _vehicle, true];
 
 // Pickup Marker
-_marker = createMarkerLocal ["taxi_lz", _dest];
-_marker setMarkerShapeLocal "ICON";
-_marker setMarkerTypeLocal "mil_pickup";
-_marker setMarkerTextlocal "Taxi PickUp";
+GRLIB_taxi_marker = createMarkerLocal ["taxi_lz", _dest];
+GRLIB_taxi_marker setMarkerShapeLocal "ICON";
+GRLIB_taxi_marker setMarkerTypeLocal "mil_pickup";
+GRLIB_taxi_marker setMarkerTextlocal "Taxi PickUp";
 
 // Goto Pickup Point
 [_vehicle, _dest, "STR_TAXI_MOVE"] call taxi_dest;
@@ -104,8 +105,6 @@ if (time < _stop) then {
 	};
 
 	_vehicle removeAction _idact_cancel;
-	_marker setMarkerPosLocal (getPosATL GRLIB_taxi_helipad);
-	_marker setMarkerTextlocal "Taxi DZ";
 
 	if (!isNull GRLIB_taxi_helipad) then {
 		titleText ["", "PLAIN"];

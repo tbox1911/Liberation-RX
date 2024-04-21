@@ -66,8 +66,7 @@ taxi_dest = {
 
 taxi_cargo = {
 	params ["_vehicle"];
-	private _grp = _vehicle getVariable ["GRLIB_vehicle_group", grpNull];
-	(crew _vehicle - (units _grp));
+	(crew _vehicle - (_vehicle getVariable ["GRLIB_taxi_crew", []]));
 };
 
 taxi_outboard = {

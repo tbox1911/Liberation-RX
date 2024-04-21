@@ -20,9 +20,12 @@ _target onMapSingleClick {
 		};
 		if (isNil "GRLIB_taxi_helipad") then {
 			GRLIB_taxi_helipad = taxi_helipad_type createVehicle _freepos;
-			GRLIB_taxi_helipad_created = true;	
+			GRLIB_taxi_helipad_created = true;
+			_this setVariable ["GRLIB_taxi_helipad", GRLIB_taxi_helipad, true];
 		};
-		GRLIB_taxi_cooldown = round (time + 30);
+		GRLIB_taxi_cooldown = round (time + 15);
+		GRLIB_taxi_marker setMarkerPosLocal (getPosATL GRLIB_taxi_helipad);
+		GRLIB_taxi_marker setMarkerTextlocal "Taxi DZ";
 	};
 	onMapSingleClick "";
 	openMap false;

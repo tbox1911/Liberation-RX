@@ -57,15 +57,8 @@ if (!isNil "_my_squad") then { {deleteVehicle _x} forEach units _my_squad };
 // Remove Taxi
 private _taxi = _unit getVariable ["GRLIB_taxi_called", nil];
 if (!isNil "_taxi") then {
-	if (getMarkerColor "taxi_lz" != "") then {
-		deleteVehicle (nearestObjects [markerPos "taxi_lz", [taxi_helipad_type], 50] select 0);
-		deleteMarkerLocal "taxi_lz";
-	};
-	if (getMarkerColor "taxi_dz" != "") then {
-		deleteVehicle (nearestObjects [markerPos "taxi_dz", [taxi_helipad_type], 50] select 0);
-		deleteMarkerLocal "taxi_dz";
-	};
-	{ deletevehicle _x } forEach (crew _taxi);
+	deletevehicle (_taxi getVariable ["GRLIB_taxi_helipad", objNull]);
+	{ deletevehicle _x } forEach (_taxi getVariable ["GRLIB_taxi_crew", []]);
 	deleteVehicle _taxi;
 };
 
