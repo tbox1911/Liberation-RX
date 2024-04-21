@@ -1,7 +1,5 @@
 params [ "_vehicle", "_cmd", ["_uid",""]];
-
-if (isNil "_vehicle") exitWith {};
-if (!local _vehicle) exitWith {};
+if (isNull _vehicle) exitWith {};
 
 switch (_cmd) do {
 	case "lock" : {
