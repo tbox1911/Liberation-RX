@@ -3,20 +3,21 @@ params ["_unit"];
 if (rating _unit < -2000) exitWith {_unit setDamage 1};
 if (!([] call F_getValid)) exitWith {_unit setDamage 1};
 
+if (isPlayer _unit) then {
+	[] call PAR_show_marker;
+	if ([_unit] call F_getScore > GRLIB_perm_log + 5) then { [_unit, -1] remoteExec ["F_addScore", 2] };
+	if (GRLIB_disable_death_chat) then { for "_channel" from 0 to 4 do { _channel enableChannel false } };
+	PAR_backup_loadout = [player] call F_getCargoUnit;
+} else {
+	_unit setVariable ["GRLIB_can_speak", false, true];
+	[_unit] call F_deathSound;
+};
+
 _unit setUnconscious true;
 _unit setCaptive true;
 _unit allowDamage false;
 
 waituntil {sleep 0.5; lifeState _unit == "INCAPACITATED" && (isTouchingGround (vehicle _unit) || (round (getPos _unit select 2) <= 1))};
-
-if (isPlayer _unit) then {
-	[] call PAR_show_marker;
-	if ([_unit] call F_getScore > GRLIB_perm_log + 5) then { [_unit, -1] remoteExec ["F_addScore", 2] };
-	if (GRLIB_disable_death_chat) then { for "_channel" from 0 to 4 do { _channel enableChannel false } };
-} else {
-	_unit setVariable ["GRLIB_can_speak", false, true];
-	[_unit] call F_deathSound;
-};
 
 if (!isNil {_unit getVariable "PAR_busy"} || !isNil {_unit getVariable "PAR_heal"}) then {
 	_unit setVariable ["PAR_busy", nil];

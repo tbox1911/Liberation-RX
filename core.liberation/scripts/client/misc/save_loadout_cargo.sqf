@@ -1,4 +1,4 @@
-// store player stuff in the box
+// store unit stuff in the box
 
 params ["_box", "_unit"];
 

@@ -14,7 +14,7 @@ if (_unit == player) then {
 	) then {
 		// Save Stuff
 		[PAR_grave_box] call F_clearCargo;
-		[PAR_grave_box, _unit] call save_loadout_cargo;
+		[PAR_grave_box, PAR_backup_loadout] call F_setCargo;
 
 		//_unit hideObject true;
 		_unit setPosATL ((markerPos GRLIB_respawn_marker) vectorAdd [floor(random 5), floor(random 5), 1]);

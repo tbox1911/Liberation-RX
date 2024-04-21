@@ -29,6 +29,7 @@ F_getAdaptiveVehicle = compileFinal preprocessFileLineNumbers "scripts\shared\fu
 F_getBounty = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getBounty.sqf";
 F_getBuildPerm = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getBuildPerm.sqf";
 F_getCargo = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getCargo.sqf";
+F_getCargoUnit = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getCargoUnit.sqf";
 F_getCommander = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getCommander.sqf";
 F_getDefenseType = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getDefenseType.sqf";
 F_getFobName = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getFobName.sqf";
