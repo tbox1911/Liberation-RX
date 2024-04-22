@@ -5,6 +5,7 @@ while { true } do {
 	waitUntil { sleep 0.5; alive player && GRLIB_player_spawned && (player getVariable ["PAR_isUnconscious", false]) };
 	openMap false;
 	closeDialog 0;
+	(uiNamespace getVariable ["RscDisplayArsenal", displayNull]) closeDisplay 1;
 
 	_pos = positionCameraToWorld [0,0,-0.2];
 	_destpos = [getpos player select 0, getpos player select 1, (getpos player select 2) + 150];
