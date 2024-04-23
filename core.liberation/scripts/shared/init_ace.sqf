@@ -48,7 +48,7 @@ R3F_LOG_FNCT_objet_deplacer = compile preprocessFile "R3F_LOG\objet_deplacable\d
 // Add missing objects
 support_vehicles append [
     ["ACE_Wheel",0,0,1,0],
-    ["ACE_Track",0,0,1,0]    
+    ["ACE_Track",0,0,1,0]
 ];
 
 // ACE Items price
