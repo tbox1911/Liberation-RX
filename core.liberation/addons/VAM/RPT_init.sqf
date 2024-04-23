@@ -117,9 +117,9 @@ if (VAM_arsenal_enable_uniforms) then {
 	_arsenal_enable_uniforms sort true;
 };
 
+// Magazines
 private _arsenal_enable_magazines = [];
 if (VAM_arsenal_enable_magazines) then {
-	// Magazines
 	(
 		"
 		getNumber (_x >> 'scope') > 1 &&
@@ -133,9 +133,9 @@ if (VAM_arsenal_enable_magazines) then {
 };
 sleep 0.5;
 
+// Others object (backpack, etc..)
 private _arsenal_enable_backpacks = [];
 if (VAM_arsenal_enable_backpacks) then {
-	// Others object (backpack, etc..)
 	(
 		"
 		((configName _x) iskindof 'Bag_Base') &&
@@ -147,9 +147,9 @@ if (VAM_arsenal_enable_backpacks) then {
 };
 sleep 0.5;
 
+// Glasses
 private _arsenal_enable_glasses = [];
 if (VAM_arsenal_enable_glasses) then {
-	// Glasses
 	(
 		"
 		([(configName _x)] call is_allowed_item)
