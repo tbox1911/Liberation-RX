@@ -110,7 +110,7 @@ if ( _ownership == GRLIB_side_enemy ) then {
 			[_sector, 0] call sector_defenses_remote_call;
 			if (GRLIB_TFR_enabled && _sector in sectors_tower) then {
 				private _tower = (nearestObjects [_sector_pos, [Radio_tower], 20]) select { (alive _x) && (_x getVariable ['GRLIB_Radio_Tower', false])} select 0;
-				_tower call TFAR_fnc_deleteRadioTower;
+				_tower call TFAR_antennas_fnc_deleteRadioTower;
 			};
 			stats_sectors_lost = stats_sectors_lost + 1;
 			[ _sector, 2 ] remoteExec ["remote_call_sector", 0];

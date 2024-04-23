@@ -10,7 +10,7 @@ waitUntil {sleep 1; !isNil "blufor_sectors" };
 		if (_x in blufor_sectors) then {
 			[_nextower, GRLIB_TFR_radius] call TFAR_antennas_fnc_initRadioTower;
 		} else {
-			_nextower call TFAR_fnc_deleteRadioTower;
+			_nextower call TFAR_antennas_fnc_deleteRadioTower;
 		};
 	};
 } foreach sectors_tower;
