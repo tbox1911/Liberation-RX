@@ -55,24 +55,44 @@ if (GRLIB_LRX_Texture_enabled) then {
 
 [] call compileFinal preprocessFileLineNumbers "addons\VAM\RPT_vip_textures.sqf";
 
+// dedicated server need no more
 if (isDedicated) exitWith {};
-
-VAM_arsenal_enable_weapons = true;
-VAM_arsenal_enable_magazines = true;
-VAM_arsenal_enable_uniforms = true;
-VAM_arsenal_enable_backpacks = false;
-VAM_arsenal_enable_glasses = false;
-
-if (GRLIB_filter_arsenal == 4) then {
-	VAM_arsenal_enable_weapons = false;
-	VAM_arsenal_enable_magazines = false;
-};
 
 // Get Arsenal items
 waitUntil {sleep 1; !isNil "LRX_arsenal_init_done"};
 waitUntil {sleep 1; LRX_arsenal_init_done};
 
 VAM_arsenal_class_names = [];
+VAM_arsenal_cargo_class_names = [
+	"Land_CncBarrierMedium4_F",
+	"Land_BagFence_Short_F"
+];
+
+// Default source for Shop
+VAM_arsenal_enable_weapons = true;
+VAM_arsenal_enable_magazines = true;
+VAM_arsenal_enable_uniforms = false;
+VAM_arsenal_enable_backpacks = false;
+VAM_arsenal_enable_glasses = false;
+
+// ACE use only whitelist
+if (GRLIB_ACE_enabled) then {
+	VAM_arsenal_enable_weapons = false;
+	VAM_arsenal_enable_magazines = false;
+	VAM_arsenal_enable_uniforms = false;
+	VAM_arsenal_enable_backpacks = false;
+	VAM_arsenal_enable_glasses = false;
+	// Add missing objects
+	VAM_arsenal_cargo_class_names append  [
+		"ACE_Wheel",
+		"ACE_Track"
+	];
+};
+
+if (GRLIB_filter_arsenal == 4) then {
+	VAM_arsenal_enable_weapons = false;
+	VAM_arsenal_enable_magazines = false;
+};
 
 // Weapons
 private _arsenal_enable_weapons = [];
@@ -85,16 +105,17 @@ if (VAM_arsenal_enable_weapons) then {
 		"
 		configClasses (configfile >> "CfgWeapons" )
 	) apply { _arsenal_enable_weapons pushback (configName _x) };
+	_arsenal_enable_weapons sort true;
 };
-_arsenal_enable_weapons sort true;
 
 // Uniforms
 private _arsenal_enable_uniforms = [];
-private _arsenal_uniforms_sign = ["H_", "U_", "V_"];
-_arsenal_enable_uniforms = _arsenal_enable_weapons select { ([_x, _arsenal_uniforms_sign] call F_startsWithMultiple) };
-_arsenal_enable_weapons = _arsenal_enable_weapons - _arsenal_enable_uniforms;
-if (!VAM_arsenal_enable_uniforms) then { _arsenal_enable_uniforms = [] };
-_arsenal_enable_uniforms sort true;
+if (VAM_arsenal_enable_uniforms) then {
+	private _arsenal_uniforms_sign = ["H_", "U_", "V_"];
+	_arsenal_enable_uniforms = _arsenal_enable_weapons select { ([_x, _arsenal_uniforms_sign] call F_startsWithMultiple) };
+	_arsenal_enable_weapons = _arsenal_enable_weapons - _arsenal_enable_uniforms;
+	_arsenal_enable_uniforms sort true;
+};
 
 private _arsenal_enable_magazines = [];
 if (VAM_arsenal_enable_magazines) then {
@@ -108,8 +129,8 @@ if (VAM_arsenal_enable_magazines) then {
 		"
 		configClasses (configfile >> "CfgMagazines")
 	) apply { _arsenal_enable_magazines pushback (configName _x) };
+	_arsenal_enable_magazines sort true;
 };
-_arsenal_enable_magazines sort true;
 sleep 0.5;
 
 private _arsenal_enable_backpacks = [];
@@ -122,8 +143,8 @@ if (VAM_arsenal_enable_backpacks) then {
 		"
 		configClasses (configfile >> "CfgVehicles" )
 	) apply { _arsenal_enable_backpacks pushback (configName _x) };
+	_arsenal_enable_backpacks sort true;
 };
-_arsenal_enable_backpacks sort true;
 sleep 0.5;
 
 private _arsenal_enable_glasses = [];
@@ -135,9 +156,9 @@ if (VAM_arsenal_enable_glasses) then {
 		"
 		configClasses (configfile >> "CfgGlasses" )
 	) apply { _arsenal_enable_glasses pushback (configName _x) };
+	_arsenal_enable_glasses sort true;
 };
-_arsenal_enable_glasses sort true;
 
-VAM_arsenal_class_names = (_arsenal_enable_weapons + _arsenal_enable_magazines + _arsenal_enable_uniforms + _arsenal_enable_backpacks + _arsenal_enable_glasses) - GRLIB_whitelisted_from_arsenal;
+VAM_arsenal_class_names = (_arsenal_enable_weapons + _arsenal_enable_magazines + _arsenal_enable_uniforms + _arsenal_enable_backpacks + _arsenal_enable_glasses + VAM_arsenal_cargo_class_names) - whitelisted_from_arsenal;
 VAM_arsenal_class_names = VAM_arsenal_class_names arrayIntersect VAM_arsenal_class_names;
-VAM_arsenal_class_names = GRLIB_whitelisted_from_arsenal + VAM_arsenal_class_names;
+VAM_arsenal_class_names = whitelisted_from_arsenal + VAM_arsenal_class_names;
