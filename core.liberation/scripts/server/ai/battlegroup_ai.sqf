@@ -8,6 +8,7 @@ if (_vehicle isKindOf "Ship") exitWith {
 };
 
 sleep (1 + floor random 10);
+if ({alive _x} count (units _grp) == 0) exitWith {};
 
 private _timer = 0;
 private _last_pos = getPosATL (leader _grp);
@@ -56,7 +57,7 @@ while { ({alive _x} count (units _grp) > 0) && (GRLIB_endgame == 0) && !(_object
 		if (surfaceIsWater (getPos _x) && _x distance2D _objective_pos > 400) then {
 			deleteVehicle _x;
 		};
-		sleep 0.2;		
+		sleep 0.2;
 	} forEach (units _grp);
 
 	if (!isNull _vehicle) then {

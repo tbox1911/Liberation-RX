@@ -9,7 +9,9 @@ private ["_target", "_basepos", "_waypoint", "_wp0"];
 private _grp_veh = objectParent (leader _grp);
 if (_grp_veh isKindOf "Ship") exitWith { [_grp, getPosATL _grp_veh, _radius] spawn patrol_ai };
 
-sleep (5 + floor random 10);
+sleep (1 + floor random 10);
+if ({alive _x} count (units _grp) == 0) exitWith {};
+
 private _timer = 0;
 private _patrol = false;
 
