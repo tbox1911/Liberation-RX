@@ -1,6 +1,7 @@
 params ["_item"];
 if (isNil "_item") exitWith { false };
 if (_item == "") exitWith { true };
+if (GRLIB_filter_arsenal == 0) exitWith { true };
 
 // TFAR Radio
 if (GRLIB_TFR_enabled && (["TF_", _item] call F_startsWith)) exitWith { true };
