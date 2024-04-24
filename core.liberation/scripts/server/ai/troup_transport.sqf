@@ -12,6 +12,7 @@ if (_cargo_seat_free > 8) then {_cargo_seat_free = 8};
 private _unitclass = [];
 while { (count _unitclass) < _cargo_seat_free } do { _unitclass pushback (selectRandom opfor_squad_8_standard) };
 
+// Board in
 private _troup_group = [_start_pos, _unitclass, GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
 {
 	_x assignAsCargoIndex [_troup_transport, (_forEachIndex + 1)];
@@ -24,6 +25,7 @@ private _troup_group = [_start_pos, _unitclass, GRLIB_side_enemy, "infantry"] ca
 (units _troup_group) orderGetIn true;
 sleep 1;
 
+// Move to obj
 [_transport_group] call F_deleteWaypoints;
 private _waypoint = _transport_group addWaypoint [ _objective_pos, 50];
 _waypoint setWaypointType "MOVE";
@@ -37,6 +39,7 @@ waitUntil { sleep 1;
 	!(alive _troup_transport) || (damage _troup_transport > 0.2) || (_troup_transport distance2D _objective_pos < 300)
 };
 
+// Board out
 doStop (driver _troup_transport);
 sleep 1;
 if ({alive _x} count (units _troup_transport) == 0) exitWith {};
@@ -48,3 +51,7 @@ if ({alive _x} count (units _troup_transport) == 0) exitWith {};
 
 if ({alive _x} count (units _transport_group) == 0) exitWith {};
 [_transport_group, getPosATL _troup_transport, 30] spawn defence_ai;
+
+// Cleanup
+waitUntil { sleep 30; (GRLIB_global_stop == 1 || [getPosATL _troup_transport, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+[_troup_transport] call clean_vehicle;
