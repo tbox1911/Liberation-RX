@@ -159,6 +159,7 @@ if (VAM_arsenal_enable_glasses) then {
 	_arsenal_enable_glasses sort true;
 };
 
+waitUntil {sleep 1; !isNil "whitelisted_from_arsenal"};
 VAM_arsenal_class_names = (_arsenal_enable_weapons + _arsenal_enable_magazines + _arsenal_enable_uniforms + _arsenal_enable_backpacks + _arsenal_enable_glasses + VAM_arsenal_cargo_class_names) - whitelisted_from_arsenal;
 VAM_arsenal_class_names = VAM_arsenal_class_names arrayIntersect VAM_arsenal_class_names;
 VAM_arsenal_class_names = whitelisted_from_arsenal + VAM_arsenal_class_names;
