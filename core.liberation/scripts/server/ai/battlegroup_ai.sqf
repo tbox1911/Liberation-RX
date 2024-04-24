@@ -13,7 +13,7 @@ private _timer = 0;
 private _last_pos = getPosATL (leader _grp);
 private ["_waypoint", "_wp0", "_next_objective", "_timer"];
 
-while { ({alive _x} count (units _grp) > 0) && (GRLIB_endgame == 0)} do {
+while { ({alive _x} count (units _grp) > 0) && (GRLIB_endgame == 0) && !(_objective_pos isEqualTo zeropos)} do {
 	if ( time > _timer) then {
 		[_objective_pos] remoteExec ["remote_call_incoming", 0];
 		diag_log format ["Group %1 - Attack: %2", _grp, _objective_pos];
@@ -47,7 +47,7 @@ while { ({alive _x} count (units _grp) > 0) && (GRLIB_endgame == 0)} do {
 	};
 
 	{
-		if (alive _x && isNull objectParent _x && round (speed vehicle _x) == 0) then {
+		if (alive _x && isNull objectParent _x && round (speed vehicle _x) <= 1 && !(surfaceIsWater getPos _x)) then {
 			[_x] call F_fixPosUnit;
 			_x switchMove "AmovPercMwlkSrasWrflDf";
 			_x playMoveNow "AmovPercMwlkSrasWrflDf";
@@ -66,16 +66,12 @@ while { ({alive _x} count (units _grp) > 0) && (GRLIB_endgame == 0)} do {
 	};
 
 	_last_pos = getPosATL (leader _grp);
-	if ([_objective_pos, (GRLIB_sector_size * 2), GRLIB_side_friendly] call F_getUnitsCount == 0) then {
-		_next_objective = [_objective_pos] call F_getNearestBluforObjective;
-		if ((_next_objective select 1) <= GRLIB_spawn_max) then { _objective_pos = (_next_objective select 0) } else { _objective_pos = zeropos };
-
-		if (GRLIB_global_stop == 1) then {
-			private _target = selectRandom ((units GRLIB_side_friendly) select { _x distance2D lhd > GRLIB_fob_range && !([_x, uavs] call F_itemIsInClass) });
-			if !(isNil "_target") then { _objective_pos = getPosATL _target } else { _objective_pos = zeropos };
-		};
+	_next_objective = [_objective_pos] call F_getNearestBluforObjective;
+	if ((_next_objective select 1) <= GRLIB_spawn_max) then { _objective_pos = (_next_objective select 0) } else { _objective_pos = zeropos };
+	if (GRLIB_global_stop == 1) then {
+		private _target = selectRandom ((units GRLIB_side_friendly) select { _x distance2D lhd > GRLIB_fob_range && !([_x, uavs] call F_itemIsInClass) });
+		if !(isNil "_target") then { _objective_pos = getPosATL _target } else { _objective_pos = zeropos };
 	};
-	if (_objective_pos isEqualTo zeropos) exitWith {};
 
 	sleep 33;
 };
