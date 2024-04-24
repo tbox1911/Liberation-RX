@@ -12,10 +12,10 @@ _setupVars = {
 
 _setupObjects = {
 	_missionPos = markerPos ((selectRandom _citylist) select 0);
-	if (count _missionPos == 0) exitWith { 
+	if (count _missionPos == 0) exitWith {
     	diag_log format ["--- LRX Error: side mission HH, cannot find spawn point!"];
     	false;
-	};	
+	};
 	_vehicleClass = selectRandom opfor_troup_transports_heli;
 
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
@@ -59,6 +59,7 @@ _setupObjects = {
 _waitUntilMarkerPos = { getPosATL _leader };
 _waitUntilExec = nil;
 _waitUntilCondition = nil;
+_waitUntilSuccessCondition = { !(alive _vehicle) };
 
 _failedExec = nil;
 // _vehicle is automatically deleted or unlocked in missionProcessor depending on the outcome
@@ -69,17 +70,19 @@ _successExec = {
 	[_vehicle] spawn {
 		params ["_veh"];
 
-		//Delete pilots
 		{ deleteVehicle _x } forEach (crew _veh);
+
 		waitUntil {
-			sleep 0.1;
-			_pos = getPos _veh;
-			(isTouchingGround _veh || _pos select 2 < 5) && {vectorMagnitude velocity _veh < [1,5] select surfaceIsWater _pos};
+			sleep 0.5;
+			(isTouchingGround _veh || (getPosATL _veh) select 2 < 5)
 		};
 
-		_wreckPos = getPosATL _veh;
-		_box1 = [ammobox_o_typename, _wreckPos, false] call boxSetup;
-		_box2 = [ammobox_o_typename, _wreckPos, false] call boxSetup;
+		sleep 2;
+		private _wreckPos = getPosATL _veh;
+		if (!surfaceIsWater _wreckPos) then {
+			_box1 = [ammobox_o_typename, _wreckPos, false] call boxSetup;
+			_box2 = [ammobox_o_typename, _wreckPos, false] call boxSetup;
+		};
 	};
 
 	_successHintMessage = "STR_HOSTILE_HELI_MESSAGE2";
