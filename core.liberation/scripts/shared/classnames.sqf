@@ -53,16 +53,9 @@ _path = format ["mod_template\%1\classnames_east.sqf", GRLIB_mod_east];
 _ret = [_path] call F_getTemplateFile;
 if (!_ret) exitWith { abort_loading = true };
 
-if (GRLIB_side_friendly == GRLIB_side_enemy) exitWith {
-abort_loading_msg = format [
-	"********************************\n
-	FATAL! - Invalid Faction selection !\n\n
-	Both faction use the same side (%1)\n\n
-	Loading Aborted to protect data integrity.\n
-	Correct the Side selection.\n
-	*********************************", GRLIB_side_friendly];
-	abort_loading = true;
-};
+// *** SIDES ***
+GRLIB_side_friendly = WEST;
+GRLIB_side_enemy = EAST;
 
 // *** COLORS ***
 // Default WEST
