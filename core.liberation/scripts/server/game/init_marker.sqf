@@ -33,7 +33,7 @@ GRLIB_SELL_Group = createGroup [GRLIB_side_civilian, true];
 	_man setPosATL (_manPos vectorAdd [0, 0, 0.1]);
 	doStop _man;
 	[_man, "LHD_krajPaluby"] spawn F_startAnimMP;
-	sleep 0.1;
+	sleep 0.2;
 } forEach GRLIB_Marker_SRV;
 
 // SHOP
@@ -74,7 +74,7 @@ GRLIB_SHOP_Group = createGroup [GRLIB_side_civilian, true];
 	doStop _man;
 	[_man, "AidlPercMstpSnonWnonDnon_AI"] spawn F_startAnimMP;
 	//_man enableSimulationGlobal false; // disabled to keep animation
-	sleep 0.1;
+	sleep 0.2;
 } forEach GRLIB_Marker_SHOP;
 
 publicVariable "GRLIB_SHOP_Group";

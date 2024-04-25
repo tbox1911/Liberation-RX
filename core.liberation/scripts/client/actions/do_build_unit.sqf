@@ -4,12 +4,12 @@ private _pos = getPosATL player;
 private _alt = _pos select 2;
 private _grp = group player;
 private _unit = _grp createUnit [_classname, _pos, [], 5, "NONE"];
+[_unit] joinSilent _grp;
 if (surfaceIsWater _pos) then {
     _pos = _pos getPos [3, random 360];
     _pos set [2, _alt];
     _unit setPosASL (ATLtoASL _pos);
 };
-[_unit] joinSilent _grp;
 _unit setVariable ["PAR_Grp_ID", format["Bros_%1", PAR_Grp_ID], true];
 [_unit] spawn PAR_fn_AI_Damage_EH;
 _unit enableIRLasers true;

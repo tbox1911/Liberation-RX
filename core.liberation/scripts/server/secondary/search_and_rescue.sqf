@@ -24,6 +24,7 @@ private _pilotsPos = _helowreck getPos [25, random 360];
 pilot_classname createUnit [ _pilotsPos, _pilotsGrp,'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.5, "private"];
 pilot_classname createUnit [ _pilotsPos, _pilotsGrp,'this addMPEventHandler ["MPKilled", {_this spawn kill_manager}]', 0.5, "private"];
 private _pilotUnits = units _pilotsGrp;
+_pilotUnits joinSilent _pilotsGrp;
 {
 	[_x, true] spawn prisoner_ai;
 	_x setDir (random 360);

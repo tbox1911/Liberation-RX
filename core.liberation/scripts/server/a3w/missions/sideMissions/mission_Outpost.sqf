@@ -25,8 +25,8 @@ _setupObjects = {
 	for "_i" from 0 to 3 do {
 		private _pilotsPos = _missionPos getPos [10, random 360];
 		private _unit = _grp_prisonners createUnit [pilot_classname, _pilotsPos, [], 0, "NONE"];
-		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		[_unit] joinSilent _grp_prisonners;
+		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		[_unit, true, false] spawn prisoner_ai;
 		sleep 0.3;
 	};

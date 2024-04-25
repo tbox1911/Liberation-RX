@@ -20,13 +20,18 @@ _vehicle addEventHandler ["HandleDamage", { _this call damage_manager_static }];
 
 private _grp = createGroup [GRLIB_side_enemy, true];
 private _unit = _grp createUnit [opfor_squad_leader, _vehicle, [], 3, "None"];
+[_unit] joinSilent _grp;
 _unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 _unit assignAsGunner _vehicle;
 [_unit] orderGetIn true;
 _unit moveInGunner _vehicle;
+sleep 0.1;
 _unit = _grp createUnit [opfor_spotter, _vehicle, [], 3, "None"];
+[_unit] joinSilent _grp;
 _unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+sleep 0.1;
 _unit = _grp createUnit [opfor_spotter, _vehicle, [], 3, "None"];
+[_unit] joinSilent _grp;
 _unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 
 _vehicle setVariable ["GRLIB_counter_TTL", round(time + 900)];
@@ -38,6 +43,7 @@ _vehicle setVariable ["GRLIB_vehicle_gunner", units _grp];
 diag_log format [ "Spawn Static Weapon on sector %1 at %2", _sector, time ];
 
 // AI (managed by manage_static.sqf)
+[_grp, getPosATL _vehicle, 20] spawn defence_ai;
 
 // Wait
 private _unit_ttl = round (time + 1800);

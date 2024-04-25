@@ -10,7 +10,6 @@ if (count (crew _vehicle) == 0) then {
 	_unit allowDamage false;
 	_unit assignAsDriver _vehicle;
 	_unit moveInDriver _vehicle;
-	sleep 0.2;
 };
 
 (units _grp) joinSilent _grp;

@@ -96,17 +96,17 @@ if (_enable_defenders) then {
         _nextpos = [((_base_position select 0) + (_nextpos select 0)),((_base_position select 1) + (_nextpos select 1)),(_nextpos select 2)];
         _nextdir = _nextentry select 2;
         _unit = _grpdefenders createUnit [_nextclass, _nextpos, [], 5, "NONE"];
+        [_unit] joinSilent _grpdefenders;
         _unit setSkill 0.65;
 		_unit setSkill ["courage", 1];
 		_unit allowFleeing 0;
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-        [_unit] joinSilent _grpdefenders;
         _unit setpos _nextpos;
         _unit setUnitPos "UP";
 	    _unit disableAI "MOVE";
         [_unit] spawn building_defence_ai;
         [_unit] spawn reammo_ai;
-        sleep 0.3;
+        sleep 0.2;
     } foreach _idxselected;
 
     private _sentry = ceil ((5 + (floor (random 4))) * (sqrt (GRLIB_unitcap)) );
