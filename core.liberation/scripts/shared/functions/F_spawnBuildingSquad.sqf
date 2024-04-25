@@ -27,10 +27,9 @@ private _buildingpositions = [];
 
 private _minimum_building_positions = 4;
 private _position_count = count _buildingpositions;
-if (_position_count < _minimum_building_positions) exitWith  {[]};
+if (_position_count < _minimum_building_positions) exitWith {[]};
 
 diag_log format ["Spawn building squad type %1 at %2", _infsquad, time];
-
 
 private _unitclass = [];
 _building_ai_max = _position_count min _building_ai_max;
