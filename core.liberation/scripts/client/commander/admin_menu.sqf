@@ -66,15 +66,15 @@ if (!isNil "GRLIB_active_commander") then {
 };
 
 // Clear listbox
-_ban_combo = _display displayCtrl 1611;
+private _ban_combo = _display displayCtrl 1611;
 lbClear _ban_combo;
-_score_combo = _display displayCtrl 1612;
+private _score_combo = _display displayCtrl 1612;
 lbClear _score_combo;
-_build_combo = _display displayCtrl 1618;
+private _build_combo = _display displayCtrl 1618;
 lbClear _build_combo;
 
 // Input for XP / Ammo
-_ammount_edit = _display displayCtrl 1619;
+private _ammount_edit = _display displayCtrl 1619;
 _ammount_edit ctrlSetText "50";
 
 // Clear input
@@ -287,10 +287,10 @@ while { alive player && dialog } do {
 		_name = _score_combo lbText (lbCurSel _score_combo);
 		_uid = _score_combo lbData (lbCurSel _score_combo);
 		[_uid, {
-			_player = _this call BIS_fnc_getUnitByUID;
+			private _player = _this call BIS_fnc_getUnitByUID;
 			if (isPlayer _player) then {
 				["LOSER"] remoteExec ["endMission", owner _player];
-				_msg = format ["Admin kick player %1.", name _player];
+				private _msg = format ["Admin kick player %1.", name _player];
 				[_msg] remoteExec ["systemchat", -2];
 				serverCommand format ["#kick %1", name _player];
 			};
@@ -303,11 +303,11 @@ while { alive player && dialog } do {
 		_name = _score_combo lbText (lbCurSel _score_combo);
 		_uid = _score_combo lbData (lbCurSel _score_combo);
 		[_uid, {
-			_player = _this call BIS_fnc_getUnitByUID;
+			private _player = _this call BIS_fnc_getUnitByUID;
 			if (isPlayer _player) then {
 				BTC_logic setVariable [_this, 99, true];
 				[_player] remoteExec ["LRX_tk_actions", owner _player];
-				_msg = format ["Admin BAN player %1.", name _player];
+				private _msg = format ["Admin BAN player %1.", name _player];
 				[_msg] remoteExec ["systemchat", -2];
 			};
 		}] remoteExec ["bis_fnc_call", 2];
