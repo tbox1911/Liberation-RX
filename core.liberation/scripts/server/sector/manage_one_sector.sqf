@@ -227,7 +227,7 @@ if ( (!(_sector in blufor_sectors)) && (([_sector_pos, GRLIB_sector_size, GRLIB_
 		if ( combat_readiness > 80 ) then { [_pos, true] spawn send_paratroopers };
 	};
 
-	private _building_alive = count ((nearestObjects [_sector_pos, ["House"], _local_capture_size]) select { alive _x });
+	private _building_alive = count ((nearestObjects [_sector_pos, ["House"], _local_capture_size]) select { alive _x && !([_x, GRLIB_ignore_colisions] call F_itemIsInClass) });
 	diag_log format ["Sector %1 wait attack to finish", _sector];
 	sleep 3;
 
