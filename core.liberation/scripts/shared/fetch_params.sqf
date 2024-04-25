@@ -237,16 +237,6 @@ if (abort_loading) exitWith { abort_loading_msg = format [
 	*********************************"];
 };
 
-// Check wrong sides
-if (GRLIB_force_load == 0 && GRLIB_mod_west == GRLIB_mod_east) then { abort_loading = true };
-if (abort_loading) exitWith { abort_loading_msg = format [
-	"********************************\n
-	FATAL! - Invalid Side selection !\n\n
-	side West (%1) conflict with side East (%2)\n\n
-	Loading Aborted to protect data integrity.\n
-	Correct the Side selection.\n
-	*********************************", GRLIB_mod_west, GRLIB_mod_east];
-};
 diag_log format ["--- LRX Mod Detection: %1 vs %2", GRLIB_mod_west, GRLIB_mod_east];
 
 // Check side Addon
