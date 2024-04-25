@@ -135,7 +135,7 @@ if ( (!(_sector in blufor_sectors)) && (([_sector_pos, GRLIB_sector_size, GRLIB_
 			private _spawn_pos = _sector_pos getPos [2 + (floor random 125), random 360];
 			_vehicle = [_spawn_pos, _x] call F_libSpawnVehicle;
 			if (!isNull _vehicle) then {
-				[group ((crew _vehicle) select 0), _spawn_pos] spawn defence_ai;
+				[group (driver _vehicle), _spawn_pos, GRLIB_capture_size] spawn defence_ai;
 				_managed_units pushback _vehicle;
 				{ _managed_units pushback _x } foreach (crew _vehicle);
 				sleep 2;
