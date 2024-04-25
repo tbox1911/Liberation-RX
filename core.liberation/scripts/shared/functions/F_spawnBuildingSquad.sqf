@@ -43,16 +43,14 @@ while { count _position_indexes < count _unitclass } do {
 		_position_indexes pushback _nextposit;
 	};
 };
-private _grp = [_sectorpos, _unitclass, _side, _infsquad] call F_libSpawnUnits;
+private _grp = [_sectorpos, _unitclass, _side, "building"] call F_libSpawnUnits;
 private _idxposit = 0;
 {
-	_unit = _x;
-	_unit setPos (_buildingpositions select (_position_indexes select _idxposit));
-	_unit setUnitPos "UP";
-	_unit disableAI "MOVE";
-	[_unit] spawn building_defence_ai;
+	_x setPos (_buildingpositions select (_position_indexes select _idxposit));
+	_x setUnitPos "UP";
+	_x disableAI "MOVE";
+	[_x] spawn building_defence_ai;
 	_idxposit = _idxposit + 1;
-	sleep 0.1;
 } foreach (units _grp);
 
 diag_log format ["Done Spawning building squad (%1) at %2", count (units _grp), time];
