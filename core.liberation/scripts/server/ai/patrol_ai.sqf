@@ -34,7 +34,7 @@ private _patrolcorners = [
 		};
 	} else {
 		if (!surfaceIsWater _x) then {
-			_waypoint = _grp addWaypoint [_x, 20];
+			_waypoint = _grp addWaypoint [_x, 30];
 			_waypoint setWaypointType "MOVE";
 			_waypoint setWaypointBehaviour "AWARE";
 			_waypoint setWaypointCombatMode "WHITE";
