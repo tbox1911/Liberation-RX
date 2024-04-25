@@ -5,9 +5,10 @@ hintSilent "Your squad is coming\nPlease wait...";
 waitUNtil { sleep 0.1; local _grp };
 private _pos = getPosATL player;
 private _alt = _pos select 2;
-{ _x allowDamage false} foreach (units _grp);
+
 {
     [_x] joinSilent (group player);
+    _x allowDamage false;
     while { _x distance2D _pos > 100 } do {
         if (surfaceIsWater _pos) then {
             private _destpos = _pos getPos [3, random 360];
@@ -28,8 +29,8 @@ private _alt = _pos select 2;
     _x setVariable ["PAR_revive_max", PAR_ai_revive + (GRLIB_rank_level find (rank _x))];
     gamelogic globalChat format ["Adds %1 (%2) to your squad.", name _x, rank _x];
     sleep 0.3;
+    _x allowDamage true;
 } foreach (units _grp);
 
-sleep 3;
-{ _x allowDamage true} foreach (units _grp);
+sleep 2;
 player setVariable ["GRLIB_squad_context_loaded", true, true];
