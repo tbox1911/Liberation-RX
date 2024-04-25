@@ -18,8 +18,8 @@ private ["_unit", "_pos", "_backpack"];
 {
 	_pos = _spawn_pos getPos [2 + (floor random 25), random 360];
 	_unit = _grp createUnit [_x, _pos, [], 10, "NONE"];
-	sleep 0.1;
 	if (!isNil "_unit") then {
+		[_unit] joinSilent _grp;
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		if (_type == "divers") then {
 			_pos set [2, -6];
@@ -28,7 +28,6 @@ private ["_unit", "_pos", "_backpack"];
 			_unit setPosATL _pos;
 		};
 		// diag_log format ["DBG: Create unit %1 at position %2", _unit, _pos];
-		[_unit] joinSilent _grp;
 		[_unit] spawn F_fixModUnit;
 		if (_type == "militia") then {[_unit] call loadout_militia};
 		[_unit] spawn reammo_ai;
@@ -48,7 +47,7 @@ private ["_unit", "_pos", "_backpack"];
 			_unit setVariable ["PAR_Grp_ID", "server", true];
 		};
 
-		if !(_type in ["divers", "para"]) then {
+		if !(_type in ["divers", "para", "building"]) then {
 			_unit switchMove "AmovPercMwlkSnonWnonDf";
 			_unit playMoveNow "AmovPercMwlkSnonWnonDf";
 		};
