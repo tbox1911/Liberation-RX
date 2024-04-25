@@ -97,12 +97,7 @@ while { _continue } do {
 
 	if ((time > _last_send || opforcap < 50) && opforcap < GRLIB_opfor_cap ) then {
 		_last_send = round (time + 300);
-		_target = objNull;
-		while { isNull _target } do {
-			_target = selectRandom ((units GRLIB_side_friendly) select { _x distance2D lhd > GRLIB_fob_range && !([_x, uavs] call F_itemIsInClass) });
-			if (isNil "_target") then { sleep 10; _target = objNull };
-			//if (isNil "_target") then { _target = selectRandom (units GRLIB_FOB_Group) };
-		};
+		_target = selectRandom (AllPlayers - (entities "HeadlessClient_F"));
 
 		[getPosATL _target] spawn send_paratroopers;
 		sleep 5;

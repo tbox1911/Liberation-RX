@@ -41,6 +41,7 @@ F_getLRXName = compileFinal preprocessFileLineNumbers "scripts\shared\functions\
 F_getMobileRespawns = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getMobileRespawns.sqf";
 F_getMobileRespawnsPlayer = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getMobileRespawnsPlayer.sqf";
 F_getNearbyPlayers = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getNearbyPlayers.sqf";
+F_getNearestBlufor = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getNearestBlufor.sqf";
 F_getNearestBluforObjective = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getNearestBluforObjective.sqf";
 F_getNearestEnemy = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getNearestEnemy.sqf";
 F_getNearestFob = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getNearestFob.sqf";

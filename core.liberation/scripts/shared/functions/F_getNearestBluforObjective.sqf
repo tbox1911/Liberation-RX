@@ -9,7 +9,7 @@ private _is_water = false;
 
 if ( count GRLIB_all_fobs > 0 || count blufor_sectors > 0 ) then {
 	// search units
-	private _target = selectRandom ((units GRLIB_side_friendly) select { _x distance2D lhd > GRLIB_fob_range && _x distance2D _startpos < _radius && !([_x, uavs] call F_itemIsInClass) });
+	private _target = [_startpos, _radius] call F_getNearestBlufor;
 	if (!isNil "_target") then {
 		_sector_pos = getPosATL _target;
 		_refdistance = round (_target distance2D _startpos);

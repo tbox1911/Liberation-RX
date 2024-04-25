@@ -16,7 +16,7 @@ private _timer = 0;
 private _patrol = false;
 
 while { GRLIB_endgame == 0 && ({alive _x} count (units _grp) > 0) } do {
-	_target = selectRandom ((units GRLIB_side_friendly) select { _x distance2D lhd > GRLIB_fob_range && _x distance2D _flagpos < _radius && !([_x, uavs] call F_itemIsInClass) });
+	_target = [_flagpos] call F_getNearestBlufor;
 	if (isNil "_target") then {
 		if (!_patrol) then {
 			_patrol = true;

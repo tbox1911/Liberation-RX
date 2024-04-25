@@ -70,7 +70,7 @@ while { ({alive _x} count (units _grp) > 0) && (GRLIB_endgame == 0) && !(_object
 	_next_objective = [_objective_pos] call F_getNearestBluforObjective;
 	if ((_next_objective select 1) <= GRLIB_spawn_max) then { _objective_pos = (_next_objective select 0) } else { _objective_pos = zeropos };
 	if (GRLIB_global_stop == 1) then {
-		private _target = selectRandom ((units GRLIB_side_friendly) select { _x distance2D lhd > GRLIB_fob_range && !([_x, uavs] call F_itemIsInClass) });
+		private _target = [_last_pos, GRLIB_spawn_max] call F_getNearestBlufor;
 		if !(isNil "_target") then { _objective_pos = getPosATL _target } else { _objective_pos = zeropos };
 	};
 
