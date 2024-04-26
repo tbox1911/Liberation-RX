@@ -48,12 +48,7 @@ while { ({alive _x} count (units _grp) > 0) && (GRLIB_endgame == 0) && !(_object
 	};
 
 	{
-		if (alive _x && isNull objectParent _x && round (speed vehicle _x) <= 1 && !(surfaceIsWater getPos _x)) then {
-			[_x] call F_fixPosUnit;
-			_x switchMove "AmovPercMwlkSrasWrflDf";
-			_x playMoveNow "AmovPercMwlkSrasWrflDf";
-			sleep 3;
-		};
+		[_x] spawn F_fixPosUnit;
 		if (surfaceIsWater (getPos _x) && _x distance2D _objective_pos > 400) then {
 			deleteVehicle _x;
 		};

@@ -48,12 +48,7 @@ while { GRLIB_endgame == 0 && ({alive _x} count (units _grp) > 0) } do {
 	};
 
 	{
-		if (alive _x && isNull objectParent _x && round (speed vehicle _x) <= 1 && !(surfaceIsWater getPos _x)) then {
-			[_x] call F_fixPosUnit;
-			_x switchMove "AmovPercMwlkSrasWrflDf";
-			_x playMoveNow "AmovPercMwlkSrasWrflDf";
-			sleep 3;
-		};
+		[_x] spawn F_fixPosUnit;
 		sleep 0.2;
 	} forEach (units _grp);
 
