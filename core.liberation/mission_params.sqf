@@ -305,7 +305,7 @@ LRX_Mission_Params_Def = [
 	["NameTags",localize "STR_GUI_NAMETAG", [localize "STR_PARAMS_USER_DEF",localize "STR_PARAMS_ENABLED",localize "STR_PARAMS_DISABLED"]],
 	["MapMarkers",localize "STR_GUI_TEAM", [localize "STR_PARAMS_USER_DEF",localize "STR_PARAMS_ENABLED",localize "STR_PARAMS_DISABLED"]],
 	["HuronType", localize "STR_PARAM_HURON_TYPE", ["CH-67 Huron","CH-49 Mohawk","UH-80 Ghost Hawk"]],
-	["NavalFobType", localize "STR_PARAM_NAVAL_TYPE", [localize "STR_PARAMS_DISABLED","USS Liberty","USS Freedom","(not yet)Offshore Plateform"]],
+	["NavalFobType", localize "STR_PARAM_NAVAL_TYPE", [localize "STR_PARAMS_DISABLED","USS Liberty","USS Freedom","Offshore Plateform"]],
 	["TK_mode", localize "STR_TK_MODE", [localize "STR_PARAMS_DISABLED",localize "STR_TK_MODE_RELAX",localize "STR_TK_MODE_STRICT"]],
 	["DeploymentCinematic", localize "STR_PARAMS_DEPLOYMENTCAMERA", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["Introduction", localize "STR_PARAMS_INTRO", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],

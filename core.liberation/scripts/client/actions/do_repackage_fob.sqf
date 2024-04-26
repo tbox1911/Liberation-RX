@@ -37,7 +37,7 @@ if ( dorepackage > 0 ) then {
 	[player, "Land_Carrier_01_blast_deflector_down_sound"] remoteExec ["sound_range_remote_call", 2];
 	[_fob_pos] remoteExec ["destroy_fob_remote_call", 2];
 	sleep 3;
-		[player, "Land_Carrier_01_blast_deflector_down_sound"] remoteExec ["sound_range_remote_call", 2];
+	[player, "Land_Carrier_01_blast_deflector_down_sound"] remoteExec ["sound_range_remote_call", 2];
 	sleep 3;
 
 	private _box_typename = "";
@@ -70,6 +70,7 @@ if ( dorepackage > 0 ) then {
 		} forEach _unit_list_redep;
 		{ _x allowDamage true } forEach _unit_list_redep;
 	};
+	GRLIB_player_fobdistance = (player distance2D ([] call F_getNearestFob));
 };
 
 sleep 2;

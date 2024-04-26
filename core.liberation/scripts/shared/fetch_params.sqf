@@ -281,12 +281,12 @@ switch (GRLIB_huron_type) do {
 };
 
 // Overide Naval FOB
-FOB_carrier = "Land_Destroyer_01_base_F";
-FOB_carrier_center = "Land_Destroyer_01_hull_04_F";
+FOB_carrier = "";
+FOB_carrier_center = "";
 switch (GRLIB_naval_type) do {
-//	case 1: {FOB_carrier = "Land_Destroyer_01_base_F"; FOB_carrier_center = "Land_Destroyer_01_hull_04_F" };
+	case 1: {FOB_carrier = "Land_Destroyer_01_base_F"; FOB_carrier_center = "Land_Destroyer_01_hull_04_F" };
 	case 2: {FOB_carrier = "Land_Carrier_01_base_F"; FOB_carrier_center = "Land_Carrier_01_island_02_F" };
-	case 3: {FOB_carrier = "abcdef"; FOB_carrier_center = "abcdef" };
+	case 3: {FOB_carrier = "fob_water1"; FOB_carrier_center = 7 };
 };
 
 if ( GRLIB_ACE_enabled ) then { GRLIB_fancy_info = 0 };		// Disable Fancy if ACE present
