@@ -6,9 +6,7 @@ if (!isNil "_unit") exitWith {
 	disableUserInput true;
 	private _msg = format [localize "STR_TK_INFO2", name _unit];
 	[_msg, 0, 0, 5, 0, 0, 90] spawn BIS_fnc_dynamicText;
-	sleep 2;
-	private _r1 = createSimpleObject ["Land_ClutterCutter_small_F", getPosASL _killer];
-	[_r1, nil, true] spawn BIS_fnc_moduleLightning;
+	sleep 3;
 	disableUserInput false;
 	disableUserInput true;
 	disableUserInput false;
