@@ -38,15 +38,14 @@ if ( dorepackage > 0 ) then {
 	[_fob_pos] remoteExec ["destroy_fob_remote_call", 2];
 	sleep 3;
 	[player, "Land_Carrier_01_blast_deflector_down_sound"] remoteExec ["sound_range_remote_call", 2];
-	sleep 4;
+	sleep 3;
 
 	private _box_typename = "";
 	if (dorepackage == 1) then { _box_typename = FOB_box_typename };
 	if (dorepackage == 2) then { _box_typename = FOB_truck_typename };
 	if (dorepackage == 3) then { _box_typename = FOB_boat_typename; _fob_pos set [2, 1] };
-	private _fob_box = _box_typename createVehicle _fob_pos;
-	sleep 1;
 
+	private _fob_box = _box_typename createVehicle _fob_pos;
 	[_fob_box] call F_clearCargo;
 	_fob_box addMPEventHandler ["MPKilled", { _this spawn kill_manager }];
 	_fob_box setVariable ["GRLIB_vehicle_owner", PAR_Grp_ID, true];

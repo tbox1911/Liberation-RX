@@ -1,5 +1,4 @@
 params ["_fobpos"];
-diag_log [_fobpos, GRLIB_all_fobs];
 
 private _classnames_to_destroy = [
 	FOB_typename,
@@ -23,7 +22,7 @@ if (surfaceIsWater _fobpos) then {
 };
 
 private _all_buildings_to_destroy = [];
-_all_buildings_to_destroy = [(_fobpos nearObjects (GRLIB_fob_range * 3)), { getObjectType _x >= 8 && ([_x, _classnames_to_destroy] call F_itemIsInClass) }] call BIS_fnc_conditionalSelect;
+_all_buildings_to_destroy = (_fobpos nearObjects (GRLIB_fob_range * 2)) select { getObjectType _x >= 8 && ([_x, _classnames_to_destroy] call F_itemIsInClass) };
 
 if (count _all_buildings_to_destroy > 100 && _sleep > 0) then {
 	_sleep = 0.1;
@@ -49,7 +48,7 @@ if (count _all_buildings_to_destroy > 100 && _sleep > 0) then {
 } foreach _all_buildings_to_destroy;
 
 
-_all_buildings_to_destroy = [(_fobpos nearObjects (GRLIB_fob_range * 3)), { getObjectType _x >= 8 && (getPos _x select 2) > 3 }] call BIS_fnc_conditionalSelect;
+_all_buildings_to_destroy = (_fobpos nearObjects (GRLIB_fob_range * 2)) select { getObjectType _x >= 8 && (getPos _x select 2) >= 2 };
 { _x setPos (getPos _x)} forEach _all_buildings_to_destroy;
 
 GRLIB_all_fobs = GRLIB_all_fobs - [_fobpos];
