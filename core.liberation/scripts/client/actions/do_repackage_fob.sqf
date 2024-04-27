@@ -29,7 +29,7 @@ if ( dorepackage > 0 ) then {
 	waitUntil { !dialog };
 
 	private _unit_list_redep = [(units player), { !(isPlayer _x) && (isNull objectParent _x) && (_x distance2D player < 40) && lifestate _x != 'INCAPACITATED' }] call BIS_fnc_conditionalSelect;
-	if (surfaceIsWater _fob_pos) then {
+	if (dorepackage == 3) then {
 		titleText ["Naval FOB Leaves..." ,"BLACK FADED", 30];
 		disableUserInput true;
 		{ _x allowDamage false; _x enableSimulationGlobal false } forEach _unit_list_redep;
@@ -38,12 +38,12 @@ if ( dorepackage > 0 ) then {
 	[_fob_pos] remoteExec ["destroy_fob_remote_call", 2];
 	sleep 3;
 	[player, "Land_Carrier_01_blast_deflector_down_sound"] remoteExec ["sound_range_remote_call", 2];
-	sleep 3;
+	sleep 4;
 
 	private _box_typename = "";
 	if (dorepackage == 1) then { _box_typename = FOB_box_typename };
 	if (dorepackage == 2) then { _box_typename = FOB_truck_typename };
-	if (dorepackage == 3) then { _box_typename = FOB_boat_typename };
+	if (dorepackage == 3) then { _box_typename = FOB_boat_typename; _fob_pos set [2, 1] };
 	private _fob_box = _box_typename createVehicle _fob_pos;
 	sleep 1;
 

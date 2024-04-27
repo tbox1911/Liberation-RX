@@ -8,6 +8,7 @@ if (isNull GRLIB_FOB_Group) then {
 };
 
 private _fob_class = typeOf _fob;
+private _fobpos = getPosATL _fob;
 private _offset = [0,0,0];
 private _fobdir = getDir _fob;
 
@@ -23,7 +24,7 @@ if (_fob_class isKindOf "Land_vn_bunker_big_02") then {
 	_fobdir = _fobdir + 180;
 };
 
-private _deskPos = (getPosATL _fob) vectorAdd ([_offset, -_fobdir] call BIS_fnc_rotateVector2D);
+private _deskPos = _fobpos vectorAdd ([_offset, -_fobdir] call BIS_fnc_rotateVector2D);
 private _desk = createVehicle ["MapBoard_seismic_F", ([] call F_getFreePos), [], 0, "NONE"];
 _desk allowDamage false;
 _desk enableSimulationGlobal false;
@@ -33,21 +34,25 @@ _desk setVariable ["R3F_LOG_disabled", true, true];
 _desk setVariable ["GRLIB_vehicle_owner", "server", true];
 //_desk setObjectTextureGlobal [0, getMissionPath "res\splash_libe2.paa"];
 
-private _lampPos = (getPosATL _fob) vectorAdd ([[-10, -7, 0], -_fobdir] call BIS_fnc_rotateVector2D);
-private _lamp1 = createVehicle ["Land_LampStreet_02_amplion_F", ([] call F_getFreePos), [], 0, "NONE"];
-_lamp1 allowDamage false;
-_lamp1 setDir (_fobdir + 45);
-_lamp1 setPosATL _lampPos;
-_lamp1 setVariable ["R3F_LOG_disabled", true, true];
-_lamp1 setVariable ["GRLIB_vehicle_owner", "server", true];
+private _lamp1 = objNull;
+private _lamp2 = objNull;
+if !(surfaceIsWater _fobpos) then {
+	private _lampPos = _fobpos vectorAdd ([[-10, -7, 0], -_fobdir] call BIS_fnc_rotateVector2D);
+	_lamp1 = createVehicle ["Land_LampStreet_02_amplion_F", ([] call F_getFreePos), [], 0, "NONE"];
+	_lamp1 allowDamage false;
+	_lamp1 setDir (_fobdir + 45);
+	_lamp1 setPosATL _lampPos;
+	_lamp1 setVariable ["R3F_LOG_disabled", true, true];
+	_lamp1 setVariable ["GRLIB_vehicle_owner", "server", true];
 
-private _lampPos = (getPosATL _fob) vectorAdd ([[10, 7, 0], -_fobdir] call BIS_fnc_rotateVector2D);
-private _lamp2 = createVehicle ["Land_LampStreet_02_triple_F", ([] call F_getFreePos), [], 0, "NONE"];
-_lamp2 allowDamage false;
-_lamp2 setDir (_fobdir + 45);
-_lamp2 setPosATL _lampPos;
-_lamp2 setVariable ["R3F_LOG_disabled", true, true];
-_lamp2 setVariable ["GRLIB_vehicle_owner", "server", true];
+	private _lampPos = _fobpos vectorAdd ([[10, 7, 0], -_fobdir] call BIS_fnc_rotateVector2D);
+	_lamp2 = createVehicle ["Land_LampStreet_02_triple_F", ([] call F_getFreePos), [], 0, "NONE"];
+	_lamp2 allowDamage false;
+	_lamp2 setDir (_fobdir + 45);
+	_lamp2 setPosATL _lampPos;
+	_lamp2 setVariable ["R3F_LOG_disabled", true, true];
+	_lamp2 setVariable ["GRLIB_vehicle_owner", "server", true];
+};
 
 private _deskdir = getDir _desk;
 private _manPos = (getPosATL _desk) vectorAdd ([[0, -2, 0.2], -_deskdir] call BIS_fnc_rotateVector2D);

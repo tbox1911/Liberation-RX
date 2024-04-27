@@ -17,15 +17,17 @@ private _list_redep = _unit_list select {
     lifestate _x != 'INCAPACITATED'
 };
 
+player allowDamage false;
 private _destdir = getDir _near_sign;
-private _destpos = (getPosASL _near_sign) vectorAdd [0, 0, 0.4];
-private _alt = _destpos select 2;
+private _destpos = getPosASL _near_sign;
+private _alt = (_destpos select 2) + 1;
 _destpos = _destpos getPos [6, (_destdir-180)];
 _destpos set [2, _alt];
 player setDir _destdir;
 player setPosASL _destpos;
-
 sleep 1;
+player allowDamage true;
+
 {
     _destpos = player getPos [3, random 360];
     _destpos set [2, _alt];

@@ -359,9 +359,10 @@ while { true } do {
 				};
 
 				[_classname, _veh_pos, _veh_dir, _veh_vup, player] remoteExec ["build_fob_remote_call", 2];
+				sleep 2;
 
 				if (_classname == FOB_carrier) then {
-					[([_truepos] call F_getNearestFob)] call do_onboard;
+					[([player] call F_getNearestFob)] call do_onboard;
 					titleText ["" ,"BLACK IN", 3];
 					{ _x allowDamage true } forEach _unit_list_redep;
 					disableUserInput false;

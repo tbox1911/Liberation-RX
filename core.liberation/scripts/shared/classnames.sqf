@@ -214,17 +214,23 @@ buildings append [
 ];
 
 all_buildings_classnames = [];
-{ all_buildings_classnames pushback (_x select 0) } foreach buildings;
+{ all_buildings_classnames pushBackUnique (_x select 0) } foreach buildings;
+
+fob_buildings_classnames = [];
+if (GRLIB_naval_type == 3) then {
+	private _objects_to_build = ([] call compile preprocessFileLineNumbers format ["scripts\fob_templates\%1.sqf", FOB_carrier]);
+	{ fob_buildings_classnames pushBackUnique (_x select 0) } forEach _objects_to_build;
+};
 
 all_hostile_classnames = [];
-{ all_hostile_classnames pushback (_x select 0) } foreach opfor_recyclable;
+{ all_hostile_classnames pushBackUnique (_x select 0) } foreach opfor_recyclable;
 
 all_friendly_classnames = [];
-{ all_friendly_classnames pushback (_x select 0) } foreach (light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles);
+{ all_friendly_classnames pushBackUnique (_x select 0) } foreach (light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles);
 
 // *** ELITES ***
 elite_vehicles = [];
-{ if (_x select 4 == GRLIB_perm_max) then { elite_vehicles pushback (_x select 0)} } foreach (heavy_vehicles + air_vehicles + static_vehicles);
+{ if (_x select 4 == GRLIB_perm_max) then { elite_vehicles pushBackUnique (_x select 0)} } foreach (heavy_vehicles + air_vehicles + static_vehicles);
 
 // *** Boats ***
 if ( isNil "civilian_boats" ) then {
@@ -631,6 +637,7 @@ GRLIB_ignore_colisions = [
 	"CamoNet_BLUFOR_open_F",
 	"CamoNet_BLUFOR_big_F",
 	"Land_NavigLight",
+	"Piers_base_F",
 	"Lamps_base_F",
 	"Helipad_base_F",
 	"Land_VASICore",
