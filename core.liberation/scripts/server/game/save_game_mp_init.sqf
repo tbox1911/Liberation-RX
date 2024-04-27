@@ -1,6 +1,6 @@
 if (!isServer) exitWith {};
 
-GRLIB_classnames_to_save = [] + all_buildings_classnames;
+GRLIB_classnames_to_save = [] + all_buildings_classnames + fob_buildings_classnames;
 GRLIB_classnames_to_save_blu = [FOB_typename, FOB_outpost, FOB_carrier, FOB_sign, huron_typename] + all_friendly_classnames;
 GRLIB_classnames_to_save_blu = GRLIB_classnames_to_save_blu arrayIntersect GRLIB_classnames_to_save_blu;
 GRLIB_classnames_to_save append (GRLIB_classnames_to_save_blu + all_hostile_classnames);
