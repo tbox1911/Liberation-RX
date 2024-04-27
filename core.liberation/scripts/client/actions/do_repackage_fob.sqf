@@ -55,11 +55,6 @@ if ( dorepackage > 0 ) then {
 	if (dorepackage == 3) then {
 		{ _x enableSimulationGlobal true } forEach _unit_list_redep;
 		player moveInDriver _fob_box;
-		disableUserInput false;
-		disableUserInput true;
-		disableUserInput false;
-		titleText ["" ,"BLACK IN", 3];
-		sleep 1;
 		private _destpos = (getPosASL player);
 		{
 			_x doFollow player;
@@ -68,6 +63,12 @@ if ( dorepackage > 0 ) then {
 			_x moveInCargo _fob_box;
 			sleep 0.5;
 		} forEach _unit_list_redep;
+
+		disableUserInput false;
+		disableUserInput true;
+		disableUserInput false;
+		titleText ["" ,"BLACK IN", 3];
+		sleep 1;
 		{ _x allowDamage true } forEach _unit_list_redep;
 	};
 	GRLIB_player_fobdistance = (player distance2D ([] call F_getNearestFob));
