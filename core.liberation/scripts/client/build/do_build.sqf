@@ -494,7 +494,6 @@ while { true } do {
 				_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_static }];
 				// AI Static Weapon
 				if (_classname in static_vehicles_AI) then {
-					_vehicle setMass 5000;
 					[_vehicle] call F_forceCrew;
 					_vehicle setVariable ["GRLIB_vehicle_manned", true, true];
 					_vehicle setVehicleLock "LOCKEDPLAYER";

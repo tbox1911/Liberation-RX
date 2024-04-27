@@ -44,8 +44,6 @@ HALV_attachTarupods = {
 	_taruweight = (weightRTD _heli)select 3;
 	_set = _taruweight + (_attribs select 1);
 	_heli setCustomWeightRTD _set;
-	_mass = ((getMass _heli)+(getMass _pod));
-	_heli setMass _mass;
 	_pod setVariable ["R3F_LOG_disabled",true,true];
 	_pod enableRopeAttach false;
 	//workaround for ropes not being disabled with above command before ropes has been attached once
@@ -85,8 +83,6 @@ HALV_detachTarupods = {
 	_taruweight = (weightRTD _heli)select 3;
 	_set = _taruweight - _attribs;
 	_heli setCustomWeightRTD _set;
-	_mass = ((getMass _heli)-(getMass _pod));
-	_heli setMass _mass;
 	_pod setVariable ["R3F_LOG_disabled",false,true];
 	_pod enableRopeAttach true;
 	_pos = getPosATL _pod;

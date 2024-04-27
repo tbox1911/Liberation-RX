@@ -21,20 +21,21 @@ while { true } do {
 		_fobbox allowdamage false;
 		_fobbox setPosATL (getPosATL base_boxspawn);
 		_fobbox setdir (getdir base_boxspawn);
-		_fobbox setMass 1000;
 		[_fobbox] call F_clearCargo;
 		_fobbox enableSimulationGlobal true;
 		_fobbox setVariable ["GRLIB_vehicle_owner", "public", true];
 		sleep 3;
 		_fobbox setDamage 0;
 		_fobbox allowdamage true;
-
+		if (GRLIB_ACE_enabled) then {
+			[_fobbox] call F_aceInitVehicle;
+		};
 		waitUntil {
 			sleep 1;
 			!(alive _fobbox) || count GRLIB_all_fobs > 0
 		};
-		sleep 30;
 		deleteVehicle _fobbox;
+		sleep 30;
 	};
 	sleep 18;
 };
