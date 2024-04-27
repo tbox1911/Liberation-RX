@@ -17,7 +17,7 @@ if (count (GRLIB_all_fobs select { surfaceIsWater _x }) > 0 && _box_type == FOB_
 	hint format ["Only one Naval FOB Allowed!"];
 };
 private _sea_deep = round ((getPosATL player select 2) - (getPosASL player select 2));
-private _min_deep = 30;
+private _min_deep = 50;
 if (_box_type == FOB_boat_typename && _sea_deep < _min_deep) exitWith {
 	hint format [localize "STR_BUILD_ERROR_WATER_DEEP", _sea_deep, _min_deep];
 };
