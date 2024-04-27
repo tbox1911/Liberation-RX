@@ -211,7 +211,7 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 	[Arsenal_typename, 5],
 	[FOB_box_typename, 100],
 	[FOB_box_outpost, 50],
-	//[playerbox_typename,7],
+	//[playerbox_typename,7],		// Player box go in virtual garage
 	[ammobox_b_typename, 15],
 	[ammobox_o_typename, 15],
 	[ammobox_i_typename, 15],
