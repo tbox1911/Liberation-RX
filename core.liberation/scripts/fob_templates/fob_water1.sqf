@@ -112,7 +112,7 @@
     ["Land_wpp_Turbine_V1_F", [50.86, -28.12, 4], 270],
     ["Land_LampHarbour_F", [-37.38, 48.26, 4], 270],
     ["Land_Tank_rust_F", [50.56, -34.62, 4], 270],
-    ["Land_FuelStation_Feed_F", [-61.24, -3.58, 0], 270],
+    ["Land_FuelStation_Feed_F", [-61.24, -3.58, 1], 270],
     ["Land_nav_pier_m_F", [-40.68, 39.13, -2], 90],
     ["Land_IndPipe1_90degL_F", [57, -28.85, 4], 0],
     ["Land_Tank_rust_F", [53.84, -34.52, 4], 270],
