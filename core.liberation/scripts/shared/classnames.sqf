@@ -637,7 +637,6 @@ GRLIB_ignore_colisions = [
 	"CamoNet_BLUFOR_open_F",
 	"CamoNet_BLUFOR_big_F",
 	"Land_NavigLight",
-	"Piers_base_F",
 	"Lamps_base_F",
 	"Helipad_base_F",
 	"Land_VASICore",
@@ -652,7 +651,7 @@ GRLIB_ignore_colisions = [
 	"Land_Destroyer_01_hull_base_F",
 	"Land_Carrier_01_base_F",
 	"Land_Carrier_01_hull_base_F"
-];
+] + fob_buildings_classnames;
 
 // FORCE DELETE (used by GC)
 GRLIB_force_cleanup_classnames = [

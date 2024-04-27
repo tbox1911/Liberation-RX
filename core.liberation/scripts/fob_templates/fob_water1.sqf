@@ -1,3 +1,4 @@
+// taken from ReSearchFacility mission by WhyThisSoBroken
 [
     ["Land_Pier_Box_F", [0.66, 0.08, 7], 180],
     ["Land_New_WiredFence_10m_F", [-3.07, 7.92, 7], 180],
@@ -90,7 +91,6 @@
     ["Land_Pier_Box_F", [-28.38, -29.9, 4], 0],
     ["Land_IndPipe1_20m_F", [30.59, -38.67, 3], 270],
     ["Land_LampHarbour_F", [41.55, -27.48, 4], 0],
-    ["Land_TTowerBig_2_F", [-46.79, 8.86, 4], 270],
     ["Land_New_WiredFence_10m_F", [-48.8, 17.85, 4], 181],
     ["Land_spp_Transformer_F", [-51.3, 8.74, 4], 1],
     ["Land_LampAirport_F", [-36.35, -37.18, 4], 208],
@@ -122,19 +122,19 @@
     ["Land_New_WiredFence_10m_F", [58.73, -33.17, 4], 270],
     ["Land_LampAirport_F", [56.27, -37.19, 3], 89],
     ["Land_IndPipe1_90degR_F", [57.01, -37.39, 4], 179],
-    ["PortableHelipadLight_01_blue_F", [-32.1, 60.69, 4], 270],
-    ["PortableHelipadLight_01_blue_F", [-37.5, 60.6, 4], 270],
-    ["PortableHelipadLight_01_blue_F", [-32.14, 67.15, 4], 270],
-    ["PortableHelipadLight_01_blue_F", [-43.66, 60.52, 4], 270],
     ["Land_fs_feed_F", [-47.03, 60.85, 4], 89],
-    ["PortableHelipadLight_01_blue_F", [-49.43, 60.44, 4], 270],
-    ["PortableHelipadLight_01_blue_F", [-32.11, 74.48, 4], 270],
-    ["PortableHelipadLight_01_blue_F", [-49.48, 66.98, 4], 270],
-    ["PortableHelipadLight_01_blue_F", [-32.22, 77.8, 4], 270],
     ["Land_Pier_Box_F", [-41.28, 69.14, 4], 90],
-    ["PortableHelipadLight_01_blue_F", [-38.15, 77.83, 4], 270],
-    ["PortableHelipadLight_01_blue_F", [-49.46, 73.01, 4], 270],
-    ["PortableHelipadLight_01_blue_F", [-43.7, 77.82, 4], 270],
-    ["PortableHelipadLight_01_blue_F", [-49.51, 77.65, 4], 270],
-    ["PortableHelipadLight_01_red_F", [-51.42, 60.36, 4], 157]
+    // ["PortableHelipadLight_01_blue_F", [-32.1, 60.69, 4], 270],
+    // ["PortableHelipadLight_01_blue_F", [-37.5, 60.6, 4], 270],
+    // ["PortableHelipadLight_01_blue_F", [-32.14, 67.15, 4], 270],
+    // ["PortableHelipadLight_01_blue_F", [-43.66, 60.52, 4], 270],
+    // ["PortableHelipadLight_01_blue_F", [-49.43, 60.44, 4], 270],
+    // ["PortableHelipadLight_01_blue_F", [-32.11, 74.48, 4], 270],
+    // ["PortableHelipadLight_01_blue_F", [-49.48, 66.98, 4], 270],
+    // ["PortableHelipadLight_01_blue_F", [-32.22, 77.8, 4], 270],
+    // ["PortableHelipadLight_01_blue_F", [-38.15, 77.83, 4], 270],
+    // ["PortableHelipadLight_01_blue_F", [-49.46, 73.01, 4], 270],
+    // ["PortableHelipadLight_01_blue_F", [-43.7, 77.82, 4], 270],
+    // ["PortableHelipadLight_01_blue_F", [-49.51, 77.65, 4], 270]
+    ["Land_TTowerBig_2_F", [-46.79, 8.86, 4], 270]
 ];
