@@ -162,6 +162,8 @@ if (_complete) then {
 	A3W_mission_success = A3W_mission_success + 1;
 };
 
+sleep 10;
+
 // Cleanup
 if (_count_blu == 0) then {
 	{ deleteVehicle _x } forEach (units _aiGroup);
