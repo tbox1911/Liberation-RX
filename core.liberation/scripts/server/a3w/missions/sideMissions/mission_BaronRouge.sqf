@@ -51,9 +51,10 @@ _setupObjects = {
 	_vehicles = [];
 	for "_i" from 1 to 3 do {
 		_plane = [_missionPos, _vehicleClass] call F_libSpawnVehicle;
+		_plane removeAllEventHandlers "HandleDamage";
 		_plane addEventHandler ["Fuel",  { (_this select 0) setFuel 1 }];
 		_plane addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1 }];
-		_plane flyInHeightASL [1000, 1000, 1000];
+		_plane flyInHeightASL [1200, 1200, 1200];
 		_vehicles pushBack _plane;
 		(crew _plane) joinSilent _aiGroup;
 		sleep 2;
