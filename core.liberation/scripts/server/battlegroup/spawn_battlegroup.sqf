@@ -53,8 +53,12 @@ if (_spawn_marker != "") then {
 	private _nb_squad = 1;
 	if (combat_readiness > 80) then { _nb_squad = 2 };
 	for "_i" from 1 to _nb_squad do {
-		_nextgrp = [_spawn_marker, "csat", ([] call F_getAdaptiveSquadComp)] call F_spawnRegularSquad;
-		[_nextgrp, _objective_pos] spawn battlegroup_ai;
+		if (floor random 2 == 0) then {
+			_nextgrp = [_spawn_marker, "csat", ([] call F_getAdaptiveSquadComp)] call F_spawnRegularSquad;
+			[_nextgrp, _objective_pos] spawn battlegroup_ai;
+		} else {
+			[_objective_pos] spawn send_paratroopers;
+		};
 		_target_size = _target_size + 1;
 		sleep 10;
 	};
