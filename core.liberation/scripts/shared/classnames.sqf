@@ -228,6 +228,11 @@ all_hostile_classnames = [];
 all_friendly_classnames = [];
 { all_friendly_classnames pushBackUnique (_x select 0) } foreach (light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles);
 
+air_vehicles_classnames = [] + opfor_troup_transports_heli;
+{ air_vehicles_classnames pushback (_x select 0); } foreach air_vehicles;
+
+opfor_troup_transports_truck  = opfor_troup_transports_truck  + [opfor_transport_truck];
+
 // *** ELITES ***
 elite_vehicles = [];
 { if (_x select 4 == GRLIB_perm_max) then { elite_vehicles pushBackUnique (_x select 0)} } foreach (heavy_vehicles + air_vehicles + static_vehicles);
@@ -564,8 +569,6 @@ opfor_squad_8_airkillers = [
 	opfor_aa
 ];
 
-air_vehicles_classnames = [] + opfor_troup_transports_heli;
-{ air_vehicles_classnames pushback (_x select 0); } foreach air_vehicles;
 squads_names = [
 	localize "STR_LIGHT_RIFLE_SQUAD",
 	localize "STR_RIFLE_SQUAD",
