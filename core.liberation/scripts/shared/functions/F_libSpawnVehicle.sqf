@@ -20,6 +20,8 @@ if ( _classname isKindOf "Air" ) then {
 		if (_spawnpos distance2D _sectorpos > GRLIB_spawn_min) exitWith {};
 	} foreach _spawn_sectors;
 
+	if ( _classname isKindOf "Plane" ) then { _airveh_alt = 800 };
+	if ( GRLIB_SOG_enabled ) then { _airveh_alt = 150 };
 	if ( _side == GRLIB_side_civilian ) then { _airveh_alt = 150 };
 	_spawnpos = _spawnpos getPos [(floor random 300), random 360];
 	_spawnpos set [2, (_airveh_alt + ([[-50,0,180], 0] call F_getRND))];
@@ -77,10 +79,9 @@ if (_side != GRLIB_side_civilian) then {
 if (GRLIB_ACE_enabled) then { [_vehicle] call F_aceInitVehicle };
 
 if ( _vehicle isKindOf "Air" ) then {
-	if (GRLIB_SOG_enabled) then { _airveh_alt = 50 };
 	_vehicle engineOn true;
 	_vehicle flyInHeight _airveh_alt;
-	_vehicle flyInHeightASL [_airveh_alt, 100, 300];
+	_vehicle flyInHeightASL [_airveh_alt, _airveh_alt, _airveh_alt];
 };
 
 if ( _random_rotate ) then {
