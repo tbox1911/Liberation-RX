@@ -17,17 +17,15 @@ if (_kill < GRLIB_tk_count) then {
 	waitUntil {!(isNull (findDisplay 46))};
 	private _msg = format ["STOP TEAMKILLING !!<br/><br/>%1 Warning left..", (GRLIB_tk_count - _kill)];
 	[_msg, 0, 0, 5, 0, 0, 90] spawn BIS_fnc_dynamicText;
-	_killer setDamage 0.7;
 };
 
 if (_kill == GRLIB_tk_count) then {
 	waitUntil {!(isNull (findDisplay 46))};
 	private _msg = format ["STOP TEAMKILLING, <t color='#ff0000'>LAST WARNING...</t>"];
 	[_msg, 0, 0, 5, 0, 0, 90] spawn BIS_fnc_dynamicText;
-	_killer setDamage 0.7;
 };
 
-if (_kill > GRLIB_tk_count) then {
+if (_kill > GRLIB_tk_count) exitWith {
 	disableUserInput true;
 	closeDialog 0;
 	closeDialog 0;
@@ -58,3 +56,6 @@ if (_kill > GRLIB_tk_count) then {
 	endMission "LOSER";
 	sleep 300;
 };
+
+[_killer, -5] remoteExec ["F_addScore", 2];
+_killer setDamage 0.7;
