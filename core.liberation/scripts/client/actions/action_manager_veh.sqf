@@ -40,7 +40,7 @@ while { true } do {
 	{
 		_vehicle = _x;
 		GRLIB_ActionDist_5 = 5;
-		if (typeOf _vehicle in vehicle_big_units) then {
+		if ([_vehicle, vehicle_big_units] call F_itemIsInClass) then {
 			GRLIB_ActionDist_5 = GRLIB_ActionDist_5 * 3;
 		};
 		_vehicle addAction ["<t color='#00AA00'>" + localize "STR_MAN_MANAGER" + "</t> <img size='1' image='\a3\Ui_F_Curator\Data\Displays\RscDisplayCurator\modeGroups_ca.paa'/>","scripts\client\actions\do_speak.sqf","",-504,false,true,"","[_target, _this] call GRLIB_checkAction_Speak", GRLIB_ActionDist_5];
