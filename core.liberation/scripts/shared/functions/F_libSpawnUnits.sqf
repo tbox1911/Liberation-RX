@@ -11,12 +11,13 @@ private _grp = createGroup [_side, true];
 if (isNull _grp) exitWith { diag_log "--- LRX Error: cannot create group."; grpNull };
 _grp setCombatMode "WHITE";
 _grp setCombatBehaviour "COMBAT";
-_spawn_pos set [2, 0.5];
+
 diag_log format ["Spawn (%1) %2 Units (%3-%4) Pos %5", count _classname, _type, _side, _grp, _spawn_pos];
 
 private ["_unit", "_pos", "_backpack"];
 {
 	_pos = _spawn_pos getPos [2 + (floor random 25), random 360];
+	_pos set [2, 0.5];
 	_unit = _grp createUnit [_x, _pos, [], 10, "NONE"];
 	if (!isNil "_unit") then {
 		[_unit] joinSilent _grp;
@@ -54,7 +55,7 @@ private ["_unit", "_pos", "_backpack"];
 	} else {
 		diag_log format ["--- LRX Error: Cannot create unit %1 at position %2", _x, _pos];
 	};
-	sleep 0.2;
+	sleep 0.1;
 } foreach _classname;
 
 _grp;
