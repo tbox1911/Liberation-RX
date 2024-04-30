@@ -1,7 +1,5 @@
 GRLIB_map_modder = "pSiKO";
 GRLIB_save_key = "LRX_CHERNARUS_SAVEGAME_PSK"; // change this value if you want different savegames on different map
-GRLIB_side_resistance = RESISTANCE;
-GRLIB_side_civilian = CIVILIAN;
 GRLIB_respawn_marker = "respawn_west";
 GRLIB_sector_size = 800;
 GRLIB_capture_size = 175;
