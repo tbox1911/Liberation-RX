@@ -134,6 +134,7 @@ opfor_troup_transports_truck = [
 ];
 
 opfor_troup_transports_heli = [
+	"O_Heli_Light_02_unarmed_F",
 	"O_Heli_Light_02_dynamicLoadout_F",
 	"O_Heli_Attack_02_dynamicLoadout_F",
 	"O_Heli_Transport_04_covered_F",
@@ -186,6 +187,7 @@ opfor_recyclable = [
 	["O_MBT_04_command_F",15,round (2300 / GRLIB_recycling_percentage),15],
 	["O_Heli_Attack_02_dynamicLoadout_black_F",10,round (1700 / GRLIB_recycling_percentage),20],
 	["O_Heli_Attack_02_dynamicLoadout_F",10,round (1700 / GRLIB_recycling_percentage),20],
+	["O_Heli_Light_02_unarmed_F",10,round (1100 / GRLIB_recycling_percentage),20],	
 	["O_Heli_Light_02_dynamicLoadout_F",10,round (1600 / GRLIB_recycling_percentage),20],
 	["O_Heli_Transport_04_covered_F",10,round (1400 / GRLIB_recycling_percentage),20],
 	["O_Plane_CAS_02_F",20,round (2000 / GRLIB_recycling_percentage),30],
