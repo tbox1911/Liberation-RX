@@ -281,8 +281,12 @@ PAR_HandleDamage_EH = {
 
 	if (GRLIB_tk_mode > 0) then {
 		// TK Protect
-		private _veh_killer = vehicle _killer;
-		if (_isNotWounded && isPlayer _killer && _killer != _unit && _veh_killer != _veh_unit && _amountOfDamage > 0.15) then {
+		private _veh_killer = objectParent _killer;
+		private _veh_tk = true;
+		if (!isNull _veh_killer) then {
+			_veh_tk = (_veh_killer distance2D _veh_unit > 10);
+		};
+		if (_isNotWounded && isPlayer _killer && _killer != _unit && _veh_tk && _amountOfDamage > 0.15) then {
 			if ( _unit getVariable ["GRLIB_isProtected", 0] < time ) then {
 				["PAR_tkMessage", [_unit, _killer]] remoteExec ["PAR_public_EH", 0];
 				[_unit, _killer] remoteExec ["LRX_tk_check", 0];
