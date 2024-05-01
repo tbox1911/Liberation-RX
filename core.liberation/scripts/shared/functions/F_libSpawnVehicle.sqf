@@ -17,14 +17,15 @@ if ( _classname isKindOf "Air" ) then {
 	private _spawn_sectors = ([sectors_airspawn, [_sectorpos], { (markerpos _x) distance2D _input0 }, "ASCEND"] call BIS_fnc_sortBy);
 	{
 		_spawnpos = markerPos _x;
-		if (_spawnpos distance2D _sectorpos > GRLIB_spawn_min) exitWith {};
+		private _dist = [_spawnpos, true, false] call F_getNearestBluforObjective select 1;
+		if (_spawnpos distance2D _sectorpos > GRLIB_spawn_max && _dist > GRLIB_spawn_max) exitWith {};
 	} foreach _spawn_sectors;
 
 	if ( _classname isKindOf "Plane" ) then { _airveh_alt = 800 };
 	if ( GRLIB_SOG_enabled ) then { _airveh_alt = 150 };
 	if ( _side == GRLIB_side_civilian ) then { _airveh_alt = 150 };
-	_spawnpos = _spawnpos getPos [(floor random 300), random 360];
-	_spawnpos set [2, (_airveh_alt + ([[-50,0,180], 0] call F_getRND))];
+	_spawnpos = _spawnpos getPos [floor random 300, random 360];
+	_spawnpos set [2, (_airveh_alt + floor random 100)];
 	_vehicle = createVehicle [_classname, _spawnpos, [], 50, "FLY"];
 	_vehicle allowDamage false;
 	_vehicle setDir (_vehicle getDir _sectorpos);
