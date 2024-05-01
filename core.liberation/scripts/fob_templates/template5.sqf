@@ -1,6 +1,6 @@
 private _objects_to_build = [
     [ "Land_HelipadCircle_F", [-1.31, 11.44, 0], 0 ],
-    [ opfor_troup_transports_heli, [-1.31, 11.45, 0], 134.19 ],
+    [ opfor_transport_helo, [-1.31, 11.45, 0], 134.19 ],
     [ opfor_patrol, [17.36, 1.08, 0], 269.81 ],
     [ opfor_house, [15.93, -7.13, 0], 90.12 ],
     [ opfor_hq, [-11.82, -13.91, 0], 89.97 ],
