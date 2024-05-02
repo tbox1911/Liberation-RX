@@ -5646,8 +5646,8 @@
 			<French>Vous êtes inactif depuis %1min, vous devez vous déplacer avant %2min ou vous serez expulsé.</French>
 		</Key>
 		<Key ID="STR_OPFORMARK">
-			<Original>Dynamic Opfor Markers (fog of war)</Original>
-			<French>Marqueurs OPFOR dynamiques (fog of war)</French>
+			<Original>Show Opfor Markers</Original>
+			<French>Affiche les marqueurs OPFOR</French>
 		</Key>
 		<Key ID="STR_BLUFORMARK">
 			<Original>Show BLUFOR markers</Original>

@@ -34,6 +34,8 @@ LRX_Mission_Params = [
 	["Aggressivity",1],				// CSAT aggression - [default 1] - values = [0.25,0.5,1,2,4] - Text {Anemic,Weak,Normal,Strong,Extreme}
 	["SectorRadius", 0],			// The size of the sector - [default 0] - values = {0,300,400,500,600,700,800,900,1000,1200,1500};
 	["SectorDespawn", 72], 			// Time for a sector to Despawn if no attackers - [default 72] - values = [(3*12), (6*12), (8*12), (12*12), (16*12), (20*12)]
+	["HideOpfor", 1],				// Hide Opfor marker - [default 1] - values = [1,0] - Text {Enabled,Disabled}
+	["ShowBlufor", 2],				// Hide Blufor marker - [default 1] - values = [0,1,2] - Text {Disabled,"player only",Enabled}
 	["DayDuration", 1],				// Day duration (multiplier) - [default 1] - values = [0.25, 0.5, 1, 1.5, 2, 2.5, 3, 5, 10, 20, 30, 60]
 	["NightDuration", 1],			// Night duration (multiplier) - [default 1] - values = [0.25, 0.5, 1, 1.5, 2, 2.5, 3, 5, 10, 20, 30, 60]
 	["Thermic", 1],					// Enable Thermal Equipment [default 1] - values = [2,1,0] - Text {Enabled,Only at night,Disabled}
@@ -81,8 +83,6 @@ LRX_Mission_Params = [
 	["AutoSave", 1800],				// LRX Game Auto Save Delay - values = {0,900,1800,3600,7200}
 	["TFRadioRange", 5000],			// The radius of TFAR relay - [default 5000] - values = {2500, 5000, 7500, 10000, 15000, 20000};
 	["AdminMenu", 1],				// Enable the Admin Cheat Menu [default 1] - values = [1,0] - Text {Enabled,Disabled}
-	["HideOpfor", 1],				// Hide Opfor marker - [default 1] - values = [1,0] - Text {Enabled,Disabled}
-	["ShowBlufor", 2],				// Hide Blufor marker - [default 1] - values = [0,1,2] - Text {Disabled,"player only",Enabled}
 	["DeathChat", 0],				// Disable chat/voice if wounded  [default 0] - values = [1,0] - Text {Enabled,Disabled}
 	["FancyInfo", 2],				// Enable colorfull, fancy Informations [default 2] - values = [2,1,0] - Text {Enabled,Info,Disabled}
 	["KeepScore", 0],				// Keep the Players datas (score/permissions) - [default 0] - values = [0,1] - Text {Disabled,Enabled}
@@ -319,7 +319,7 @@ LRX_Mission_Params_Def = [
 	["EnemyLock", localize "STR_OPFOR_VEH_LOCK", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["CivPenalties", localize "STR_CIV_PENALTIES", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["AdminMenu", "Enable the Admin Menu", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
-	["HideOpfor", localize "STR_OPFORMARK", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
+	["HideOpfor", localize "STR_OPFORMARK", ["All","Fog of War"]],
 	["ShowBlufor", localize "STR_BLUFORMARK", [localize "STR_PARAMS_DISABLED","Player only",localize "STR_PARAMS_ENABLED"]],
 	["ForcedLoadout", localize "STR_FORCE_LOADOUT", [localize "STR_PARAMS_DISABLED","Preset 1","Preset 2"]],
 	["FreeLoadout", localize "STR_FREE_LOADOUT", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
