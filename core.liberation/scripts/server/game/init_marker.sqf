@@ -54,6 +54,8 @@ GRLIB_SHOP_Group = createGroup [GRLIB_side_civilian, true];
 	if (_str find "house_c_1_v2_ep1" > 0) then { _offset = [5.5, 1, 0.10]};     // Takistan
 	if (_str find "vn_shop_town_03" > 0) then { _offset = [1.5, -1, 0.10]};     // Cam Lao
 	if (_str find "house_big_02" > 0) then { _deskDir = (180 + _deskDir); _offset = [-0.7, -2, 0.25]};
+	if (_str find "workshop_02_grey" > 0) then { _deskDir = (180 + _deskDir); _offset = [0, 0, 0]};		// Yukalia
+	if (_str find "shop_town_01_f" > 0) then { _deskDir = (270 + _deskDir); _offset = [-0.7, 3, 0]};	// Yukalia
 
 	_deskPos = (getposASL _shop) vectorAdd ([_offset, -_deskDir] call BIS_fnc_rotateVector2D);
 	_desk = createVehicle ["Land_CashDesk_F", ([] call F_getFreePos), [], 0, "NONE"];
@@ -82,3 +84,37 @@ publicVariable "GRLIB_SELL_Group";
 sleep 3;
 GRLIB_marker_init = true;
 publicVariable "GRLIB_marker_init";
+
+/*
+// test desk + man position in building
+
+[] spawn {
+_shop = cursorObject; // point building
+_deskDir = getDir _shop;
+
+_offset = [-0.7, 3, 0];  // edit
+_deskDir = (270 + _deskDir); // edit
+
+_deskPos = (getposASL _shop) vectorAdd ([_offset, -_deskDir] call BIS_fnc_rotateVector2D);
+_desk = createVehicle ["Land_CashDesk_F", ([] call F_getFreePos), [], 0, "NONE"];
+_desk allowDamage false;
+_desk enableSimulationGlobal false;
+_desk setDir _deskDir;
+_desk setPosASL _deskPos;
+_deskDir = (180 + _deskDir);
+_manPos = (ASLToATL _deskPos) vectorAdd ([[0, -0.7, 0.1], -_deskDir] call BIS_fnc_rotateVector2D);
+_man = GRLIB_SHOP_Group createUnit [SHOP_Man, zeropos, [], 0, "NONE"];
+[_man] joinSilent GRLIB_SHOP_Group;
+_man setVariable ["acex_headless_blacklist", true, true];
+_man setVariable ["GRLIB_vehicle_owner", "server", true];
+_man allowDamage false;
+_man disableCollisionWith _desk;
+_man setDir _deskDir;
+_man setPosATL _manPos;
+doStop _man;
+sleep 7;
+deleteVehicle _desk;
+deleteVehicle _man;
+};
+
+*/
