@@ -41,6 +41,7 @@ private ["_shop", "_deskDir", "_deskPos", "_desk", "_man", "_offset", "_str"];
 GRLIB_SHOP_Group = createGroup [GRLIB_side_civilian, true];
 {
 	_shop = nearestObjects [_x, ["House"], 10] select 0;
+	if (isNil "_shop") then { diag_log format ["--- LRX Error: no building found at pos %1", _x]; _shop = objNull };
 	_deskDir = getDir _shop;
 	_offset = [-0.7, 1, 0.25];      // Default shop_01_v1_f
 	_str =  toLower str _shop;
