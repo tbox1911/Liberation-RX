@@ -107,6 +107,8 @@ _troop_vehicle setConvoySeparation 40;
 _troop_vehicle allowCrewInImmobile [true, true];
 _troop_vehicle addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage } ];
 private _troops_group = [_spawnpos, ([] call F_getAdaptiveSquadComp), GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
+private _lock = locked _troop_vehicle;
+_troop_vehicle lock 0;
 {
 	_x assignAsCargoIndex [_troop_vehicle, (_forEachIndex + 1)];
 	_x moveInCargo _troop_vehicle;
@@ -114,8 +116,12 @@ private _troops_group = [_spawnpos, ([] call F_getAdaptiveSquadComp), GRLIB_side
 	_x setSkill ["courage", 1];
 	_x allowFleeing 0;
 } foreach (units _troops_group);
-(driver _transport_vehicle) MoveTo (_convoy_destinations select 1);
+(units _troops_group) allowGetIn true;
+(units _troops_group) orderGetIn true;
+sleep 1;
+_troop_vehicle lock _lock;
 
+(driver _transport_vehicle) MoveTo (_convoy_destinations select 1);
 _convoy_group setFormation "COLUMN";
 _convoy_group setBehaviourStrong "AWARE";
 _convoy_group setCombatMode "WHITE";

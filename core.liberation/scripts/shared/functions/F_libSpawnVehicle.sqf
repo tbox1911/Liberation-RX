@@ -65,7 +65,7 @@ if ( _classname isKindOf "Air" ) then {
 		_vehicle setPos _spawnpos;
 	};
 };
-sleep 1;
+sleep 0.5;
 
 if ( isNull _vehicle ) exitWith {
 	diag_log format ["--- LRX Error: Cannot build vehicle (%1) at position %2", _classname, _sectorpos];
@@ -76,7 +76,11 @@ if (_side != GRLIB_side_civilian) then {
 	diag_log format [ "Spawn Vehicle %1 Pos %2 at %3", _classname, getPosATL _vehicle, time ];
 };
 
+[_vehicle] call F_clearCargo;
 [_vehicle] call F_fixModVehicle;
+
+if (_crewed) then {	[_vehicle, _side] call F_forceCrew };
+
 if (GRLIB_ACE_enabled) then { [_vehicle] call F_aceInitVehicle };
 
 if ( _vehicle isKindOf "Air" ) then {
@@ -142,9 +146,6 @@ _vehicle allowDamage true;
 _vehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
 _vehicle allowCrewInImmobile [true, false];
 _vehicle setUnloadInCombat [true, false];
-
-[_vehicle] call F_clearCargo;
-if (_crewed) then {	[_vehicle, _side] call F_forceCrew };
 
 if (_side != GRLIB_side_civilian) then {
 	diag_log format [ "Done Spawning Vehicle %1 at %2", _classname , time ];

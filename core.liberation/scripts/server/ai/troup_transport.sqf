@@ -13,6 +13,8 @@ private _unitclass = [];
 while { (count _unitclass) < _cargo_seat_free } do { _unitclass pushback (selectRandom opfor_squad_8_standard) };
 
 // Board in
+private _lock = locked _troup_transport;
+_troup_transport lock 0;
 private _troup_group = [_start_pos, _unitclass, GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
 {
 	_x assignAsCargoIndex [_troup_transport, (_forEachIndex + 1)];
@@ -24,6 +26,7 @@ private _troup_group = [_start_pos, _unitclass, GRLIB_side_enemy, "infantry"] ca
 (units _troup_group) allowGetIn true;
 (units _troup_group) orderGetIn true;
 sleep 1;
+_troup_transport lock _lock;
 
 // Move to obj
 [_transport_group] call F_deleteWaypoints;

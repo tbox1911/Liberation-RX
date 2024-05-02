@@ -38,6 +38,8 @@ stats_reinforcements_called = stats_reinforcements_called + 1;
 private _unitclass = [];
 while { (count _unitclass) < _cargo_seat_free } do { _unitclass pushback (selectRandom _para_squad) };
 private _para_group = [zeropos, _unitclass, GRLIB_side_enemy, "para"] call F_libSpawnUnits;
+private _lock = locked _vehicle;
+_vehicle lock 0;
 {
 	_x assignAsCargoIndex [_vehicle, (_forEachIndex + 1)];
 	_x moveInCargo _vehicle;
@@ -46,6 +48,10 @@ private _para_group = [zeropos, _unitclass, GRLIB_side_enemy, "para"] call F_lib
 	_x allowFleeing 0;
 	_x setVariable ["GRLIB_counter_TTL", round(time + 3600)];
 } foreach (units _para_group);
+(units _para_group) allowGetIn true;
+(units _para_group) orderGetIn true;
+sleep 1;
+_vehicle lock _lock;
 
 if (_vehicle isKindOf "Plane_Base_F") then { _unload_dist = _unload_dist * 1.5 };
 
