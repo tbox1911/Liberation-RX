@@ -29,6 +29,7 @@ if (!GRLIB_hide_opfor) then {
 };
 
 private _sector_count = -1;
+private _dist = 0;
 sleep 1;
 
 while { GRLIB_endgame == 0 } do {
@@ -37,13 +38,8 @@ while { GRLIB_endgame == 0 } do {
 	if (GRLIB_hide_opfor && count opfor_sectors > 3) then {
 		{
 			_sector_pos = markerPos _x;
-			_nearest_sector = [(GRLIB_sector_size * 3), _sector_pos, blufor_sectors] call F_getNearestSector;
-			_nearest_fob = [_sector_pos] call F_getNearestFob;
-			_near_fob = false;
-			if !(_nearest_fob isEqualTo zeropos) then {
-				_near_fob = (_nearest_fob distance2D _sector_pos < (GRLIB_sector_size * 3));
-			};
-			if (_nearest_sector != "" || _near_fob) then {
+			_dist = [_sector_pos, true, false] call F_getNearestBluforObjective select 1;
+			if (_dist <= (GRLIB_sector_size * 3)) then {
 				_x setMarkerColorLocal GRLIB_color_enemy;
 				_x setMarkerTypeLocal ([_x] call _getMarkerType);
 			} else {

@@ -30,7 +30,7 @@ if (GRLIB_allow_redeploy == 1) then {
 
 while { true } do {
 	waitUntil {sleep 0.5; GRLIB_MapOpen };
-	_veh_list = [vehicles, {
+	_veh_list = vehicles select {
 		(alive _x) && !(isObjectHidden _x) &&
 		(count (crew _x) == 0 || typeOf _x in (uavs + static_vehicles_AI)) &&
 		(_x distance2D lhd > GRLIB_fob_range) &&
@@ -40,7 +40,7 @@ while { true } do {
 			(side _x == GRLIB_side_friendly) ||
 			(side _x == GRLIB_side_civilian && count (crew _x) == 0)
 		)
-	}] call BIS_fnc_conditionalSelect;
+	};
 
 	_vehmarkers_bak = [];
 	{
@@ -108,6 +108,7 @@ while { true } do {
 		_nextmarker setMarkerColorLocal _marker_color;
 		_nextmarker setMarkerTypeLocal _marker_type;
 		_nextmarker setMarkerAlphaLocal _marker_show;
+		sleep 0.1;
 	} foreach _veh_list;
 
 	{ deleteMarkerLocal _x} foreach (_vehmarkers - _vehmarkers_bak);
