@@ -10,7 +10,7 @@ waitUntil {sleep 0.1; !isNil "GRLIB_init_server"};
 if (!GRLIB_init_server) exitWith {};
 waitUntil {sleep 0.1; !isNil "GRLIB_LRX_params_loaded"};
 
-deleteVehicle _oldUnit;
+if (PAR_grave == 1) then { deleteVehicle _oldUnit };
 _unit allowDamage false;
 _unit setPosATL ((markerPos GRLIB_respawn_marker) vectorAdd [floor(random 5), floor(random 5), 1]);
 

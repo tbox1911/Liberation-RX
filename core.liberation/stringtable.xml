@@ -1831,6 +1831,10 @@
 			<Original>PAR: Bleedout Timer</Original>
 			<French>PAR: Durée Attente Blessé</French>
 		</Key>
+		<Key ID="STR_PARAMS_PAR_GRAVE">
+			<Original>PAR: Grave + Stuff in a box</Original>
+			<French>PAR: Tombe + Stuff dans une boite</French>
+		</Key>		
 		<Key ID="STR_PARAMS_REVIVE1">
 			<Original>Enabled - Only medics can revive</Original>
 			<French>Activé - Seuls les medics peuvent ressusciter</French>

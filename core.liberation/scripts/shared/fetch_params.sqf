@@ -193,6 +193,7 @@ GRLIB_despawn_tickets = ["SectorDespawn"] call lrx_getParamValue;
 PAR_revive = ["PAR_Revive"] call lrx_getParamValue;
 PAR_ai_revive = ["PAR_AI_Revive"] call lrx_getParamValue;
 PAR_bleedout = ["PAR_BleedOut"] call lrx_getParamValue;
+PAR_grave = ["PAR_Grave"] call lrx_getParamValue;
 
 // Hardcoded
 GRLIB_endgame = 0;

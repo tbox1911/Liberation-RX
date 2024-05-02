@@ -52,6 +52,7 @@ LRX_Mission_Params = [
 	["PAR_Revive", 3],				// PAR revive - [default 3] - values = [3,2,1,0] - Text {Enabled - Everyone can revive,Enabled - Everyone can revive using Medikit/FAK,Enabled - Only medics can revive,Disabled}
 	["PAR_AI_Revive", 7],			// PAR AI revive limit - [default 0] - values = [0,3,5,7,10,15,20]
 	["PAR_BleedOut", 300],			// PAR revive Bleedout timer - [default 300] - values = [100,200,300,400,500,600]
+	["PAR_Grave", 1],				// PAR grave with stuuf in box - [default 1] - values [1,0] - Text {Enabled,Disabled}
 	["Respawn", 20],				// Cooldown before can player respawn - [default 20] - values = [0,xxx] - Text {Disabled,Enabled}
 	["SquadSize", 2],				// AI per squad at startup [default 2]  - values = {0,1,2,3,4,5,6}
 	["MaxSquadSize", 5],			// AI recruitment limit per squad [default 5] - values = {0,1,2,3,4,5,6,7,8,9,10}
@@ -189,6 +190,8 @@ LRX_Mission_Params_Def = [
 		["100", "200", "300", "400", "500", "600"],
 		[100, 200, 300, 400, 500, 600]
 	],
+	["PAR_Grave", localize "STR_PARAMS_PAR_GRAVE", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
+	
 	["Respawn", localize "STR_RESPAWN",
 		["5", "10", "20", "25", "30", "60"],
 		[5, 10, 20, 25, 30, 60]

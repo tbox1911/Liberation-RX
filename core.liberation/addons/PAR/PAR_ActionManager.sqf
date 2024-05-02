@@ -11,7 +11,7 @@ private _checkAction = {
 while {true} do {
     _wnded_list = (getPos player) nearEntities ["CAManBase", 30];
     _wnded_list = _wnded_list select {
-        side _x == GRLIB_side_civilian &&
+        alive _x && side _x == GRLIB_side_civilian &&
         (_x getVariable ["PAR_wounded", false]) &&
         ([_x] call _checkAction) &&
         isNull objectParent _x &&
@@ -22,19 +22,19 @@ while {true} do {
     if (count _wnded_list > 0) then {
         {
             _unit = _x;
-            _id1 = _unit addAction ["<t color='#C90000'>" + localize "STR_PAR_AC_02" + "</t>", "addons\PAR\PAR_fn_drag.sqf", ["action_drag"], 9, false, true, "", "(_target getVariable ['PAR_isUnconscious', false]) && !PAR_isDragging", 3];
+            _id1 = _unit addAction ["<t color='#C90000'>" + localize "STR_PAR_AC_02" + "</t>", "addons\PAR\PAR_fn_drag.sqf", ["action_drag"], 9, false, true, "", "alive _target && (_target getVariable ['PAR_isUnconscious', false]) && !PAR_isDragging", 3];
             _id2 = _unit addAction ["<t color='#C90000'>" + localize "STR_PAR_AC_03" + "</t>", { PAR_isDragging = false }, ["action_release"], 10, true, true, "", "PAR_isDragging"];
             _id3 = [
                 _unit,
                 "<t color='#00C900'>" + localize "STR_PAR_AC_01" + "</t>",
                 "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_reviveMedic_ca.paa","\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_reviveMedic_ca.paa",
                 "
-                    (_this distance _target <= 3) &&
+                    (alive _target && _this distance _target <= 3) &&
                     (_target getVariable ['PAR_isUnconscious', false]) &&
                     (_target getVariable ['PAR_isDragged',0] == 0) &&
                     ([_this] call PAR_has_medikit || [_this] call PAR_is_medic)
                 ",
-                "(_caller distance _target < 3)",
+                "(alive _target && _caller distance _target < 3)",
                 {
                     [(_target getVariable ["PAR_myMedic", objNull]), _target] call PAR_fn_medicRelease;
                     if (local _caller) then { _target setVariable ["PAR_myMedic", _caller] };
