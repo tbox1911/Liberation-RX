@@ -54,11 +54,8 @@ _ret = [_path] call F_getTemplateFile;
 if (!_ret) exitWith { abort_loading = true };
 
 // *** SIDES ***
-if (GRLIB_side_friendly == EAST) then {
-	GRLIB_side_enemy = WEST;
-} else {
-	GRLIB_side_enemy = EAST;
-};
+GRLIB_side_friendly = WEST;
+GRLIB_side_enemy = EAST;
 GRLIB_side_civilian = CIVILIAN;
 GRLIB_side_resistance = RESISTANCE;
 
