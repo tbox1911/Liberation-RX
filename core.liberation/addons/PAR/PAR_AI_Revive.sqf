@@ -24,12 +24,7 @@ Based on:
   at : https://forums.bohemia.net/forums/topic/146926-farooqs-revive/
 _________________________________________________________________________*/
 
-if (!isDedicated && !hasInterface && isMultiplayer) exitWith {};
-if (isDedicated) exitWith {
-  // PAR Remote Call - Server Side
-  PAR_remote_bounty = compileFinal preprocessFileLineNumbers "addons\PAR\server\PAR_remote_bounty.sqf";
-  PAR_remote_sortie = compileFinal preprocessFileLineNumbers "addons\PAR\server\PAR_remote_sortie.sqf";
-};
+if (!hasInterface) exitWith {};
 
 // Init functions
 [] call compile preprocessFile "addons\TKP\tk_init.sqf";
