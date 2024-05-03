@@ -36,6 +36,7 @@ if ( _classname isKindOf "Air" ) then {
 		_spawnpos = _sectorpos;
 	} else {
 		_spawnpos = [_sectorpos, _size, 1] call F_findSafePlace;
+		_spawnpos set [2, 0.5];
 	};
 
 	if ( count _spawnpos == 0 ) exitWith {
@@ -44,7 +45,6 @@ if ( _classname isKindOf "Air" ) then {
 	};
 
 	if (_classname isKindOf "LandVehicle") then {
-		_spawnpos set [2, 0.5];
 		if (surfaceIsWater _spawnpos && !(_classname isKindOf "Ship")) then {
 			_classname = "";
 			if (count opfor_boats >= 1 && _side == GRLIB_side_enemy) then {

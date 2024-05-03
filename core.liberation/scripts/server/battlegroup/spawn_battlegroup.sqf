@@ -73,7 +73,7 @@ if (_spawn_marker != "") then {
 		_target_size = _target_size + 2;
 	};
 
-	combat_readiness = combat_readiness - (_target_size * 1.75);
+	combat_readiness = combat_readiness - (10 + (_target_size * 1.75));
 	stats_hostile_battlegroups = stats_hostile_battlegroups + 1;
 	diag_log format ["Spawn BattlegGroup (%1) objective %2 at %3", _target_size, _objective_pos, time];
 } else {
@@ -87,8 +87,9 @@ if (_spawn_marker != "") then {
 		[_para_pos] spawn send_paratroopers;
 		sleep 20;
 		[_para_pos] spawn send_paratroopers;
-
-		combat_readiness = combat_readiness - 10;
+		sleep 30;
+		[_para_pos] spawn spawn_halo_vehicle;
+		combat_readiness = combat_readiness - 15;
 		diag_log format ["Done Spawning Paratrooper BattlegGroup at %1", time];
 	};	
 };

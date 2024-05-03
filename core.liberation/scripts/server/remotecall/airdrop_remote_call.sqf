@@ -3,7 +3,7 @@ params [ "_unit", "_class", "_forced_pos" ];
 
 private _text = "";
 private _vehicle = objNull;
-private _pos = zeropos;
+private _pos = ([] call F_getFreePos);
 
 if (isNil "_forced_pos") then {
 	_text = format ["Player %1 call Air Drop Support.", name _unit];
@@ -20,8 +20,6 @@ if (isNil "_forced_pos") then {
 [gamelogic, _text] remoteExec ["globalChat", 0];
 _pos set [2, 500];	// launch altitude
 if (surfaceIsWater _pos) then { _pos = ATLtoASL _pos };
-
-_vehicle allowDamage false;
 while { _vehicle distance _pos > 100 } do {
 	_vehicle setPos _pos;
 	sleep 1;

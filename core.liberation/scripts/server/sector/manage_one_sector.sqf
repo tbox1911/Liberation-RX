@@ -226,7 +226,13 @@ if ( (!(_sector in blufor_sectors)) && (([_sector_pos, GRLIB_sector_size, GRLIB_
 		if ( combat_readiness > 50 ) then { [_pos, true] spawn send_paratroopers };
 		sleep 100;
 		if (([_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount) == 0) exitWith {};
-		if ( combat_readiness > 80 ) then { [_pos, true] spawn send_paratroopers };
+		if ( combat_readiness > 80 ) then {
+			if (floor random 2 == 0) then {
+				[_pos, true] spawn send_paratroopers;
+			} else {
+				[_pos] spawn spawn_halo_vehicle;
+			};
+		};
 	};
 
 	private _building_alive = count ((nearestObjects [_sector_pos, ["House"], _local_capture_size]) select { alive _x && !([_x, GRLIB_ignore_colisions] call F_itemIsInClass) });
