@@ -21,7 +21,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	 	combat_readiness >= 70 && (armor_weight >= 70 || air_weight >= 70);
 	};
 
-	_target_lst = [allPlayers, {[_x] call F_getScore >= GRLIB_perm_tank && rating _x > 1000 }] call BIS_fnc_conditionalSelect;
+	_target_lst = allPlayers select { [_x] call F_getScore >= GRLIB_perm_tank && rating _x > 1000 && isNull objectParent _x };
 	if ( GRLIB_endgame == 1 || GRLIB_global_stop == 1 ) exitWith {};
 	if ( (count _target_lst > 1) && (opforcap < GRLIB_battlegroup_cap) && (diag_fps > 30.0)) then {
 		_target = selectRandom _target_lst;

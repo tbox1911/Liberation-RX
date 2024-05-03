@@ -12,11 +12,14 @@ if ({alive _x} count (units _grp) == 0) exitWith {};
 
 private _timer = 0;
 private _last_pos = getPosATL (leader _grp);
-private ["_waypoint", "_wp0", "_next_objective", "_timer"];
+private ["_waypoint", "_wp0", "_next_objective", "_sector", "_timer"];
 
 while { ({alive _x} count (units _grp) > 0) && (GRLIB_endgame == 0) && !(_objective_pos isEqualTo zeropos)} do {
 	if ( time > _timer) then {
-		[_objective_pos] remoteExec ["remote_call_incoming", 0];
+		_sector = [GRLIB_sector_size, _objective_pos] call F_getNearestSector;
+		if (_sector in blufor_sectors) then {
+			[_objective_pos] remoteExec ["remote_call_incoming", 0];
+		};
 		diag_log format ["Group %1 - Attack: %2", _grp, _objective_pos];
 
 		[_grp] call F_deleteWaypoints;
