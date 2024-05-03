@@ -9,10 +9,9 @@ if (_unit == player) then {
 
 	// Grave + Save Stuff
 	private _pos = getPosATL _unit;
-	if ( PAR_grave == 1 && isNull objectParent player &&
+	if (PAR_grave == 1 && isNull objectParent player &&
 		!([_unit, "LHD", GRLIB_capture_size] call F_check_near) &&
-		(_pos select 2) <= 2 && !(surfaceIsWater _pos)
-	) then {
+		(_pos select 2) <= 2 && !(surfaceIsWater _pos)) then {
 		// Clean body
 		removeAllActions _unit;
 		removeAllWeapons _unit;
@@ -42,11 +41,12 @@ if (_unit == player) then {
 		PAR_grave_box enableSimulationGlobal true;
 		PAR_grave_box setPosATL _grave_box_pos;
 		PAR_grave_box attachto [_grave];
-		_pos = _grave_box_pos;
+		// Marker
+		"player_grave_box" setMarkerPosLocal PAR_grave_box;
 	};
 
 	// Marker
-	"player_grave_box" setMarkerPosLocal _pos;
+	if (PAR_grave == 0) then { "player_grave_box" setMarkerPosLocal _pos };
 
 	// Respawn Penalty
 	if ([_unit] call F_getScore > (GRLIB_perm_log + 50)) then { [_unit, -10] remoteExec ["F_addScore", 2] };
