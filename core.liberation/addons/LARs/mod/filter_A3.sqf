@@ -4,8 +4,9 @@ if (["A3_OPF", GRLIB_mod_west, true] call F_startsWith) then { _A3_exclude = ["B
 
 // Weapons + Equipements (uniforms, etc..)
 private _A3_Items = [
-	"B_","U_B_","U_BG_","O_","U_O_","U_OG_","I_","U_I_","C_","U_C_","H_","V_",
-	"acc_","hgun_","arifle_","srifle_","MMG_","LMG_","SMG_","bipod_","launch_","optic_","muzzle_",
+	"B_","U_B_","U_BG_","O_","U_O_","U_OG_","I_","U_I_","C_","U_C_","H_","V_","G_",
+	"hgun_","arifle_","srifle_","MMG_","LMG_","SMG_","launch_",
+	"acc_","bipod_","optic_","muzzle_",
 	"Laserdesignator_","NVGoggles"
 ] - _A3_exclude;
 

@@ -59,6 +59,10 @@ if (["CWR3_", GRLIB_mod_west, true] call F_startsWith) then {
 if (["FFAA_", GRLIB_mod_west, true] call F_startsWith) then {
 	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_FFAA.sqf";
 };
+// Add ASZ Weapons
+if (["ASZ_", GRLIB_mod_west, true] call F_startsWith) then {
+	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_ASZ.sqf";
+};
 // Add PO Weapons
 if (["PO_", GRLIB_mod_west, true] call F_startsWith) then {
 	[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_RHS.sqf";
