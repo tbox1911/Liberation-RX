@@ -1,5 +1,5 @@
 params ["_unit", ["_slow", true]];
-if (isNull objectParent _unit || isNull _unit || !alive _unit) exitWith {};
+if (isNull objectParent _unit || isNull _unit) exitWith {};
 if ((vehicle _unit) isKindOf "ParachuteBase") exitWith {};
 
 private _unit_side = side group _unit;
