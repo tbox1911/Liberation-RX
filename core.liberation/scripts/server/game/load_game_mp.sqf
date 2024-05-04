@@ -387,7 +387,7 @@ if ( count GRLIB_vehicle_to_military_base_links == 0 ) then {
 	if (count (_x nearObjects [FOB_outpost, 20]) > 0) then { GRLIB_all_outposts pushBack _x };
 } forEach GRLIB_all_fobs;
 
-if (typeName GRLIB_game_ID == "ARRAY" || GRLIB_game_ID == 0) then { GRLIB_game_ID = round floor random 65535 };
+if (typeName GRLIB_game_ID == "ARRAY" || GRLIB_game_ID == 0) then { GRLIB_game_ID = floor random 65535 };
 
 if (count GRLIB_permissions == 0) then {
 	GRLIB_permissions = [["Default",[true,false,false,true,false,true]]];
