@@ -10,10 +10,10 @@ private _medics = ([] call PAR_medic_units) select {
 if (count _medics == 0) exitWith {};
 
 // PAR Medikit/Firstkit
-if (PAR_revive == 1) then { _medics = _medics select {[_x] call PAR_has_medikit} };
+if (PAR_revive == 2) then { _medics = _medics select {[_x] call PAR_has_medikit} };
 
 // PAR only medic
-if (PAR_revive == 2) then { _medics = _medics select {[_x] call PAR_is_medic} };
+if (PAR_revive == 3) then { _medics = _medics select {[_x] call PAR_is_medic} };
 
 if (count _medics == 0) exitWith {};
 

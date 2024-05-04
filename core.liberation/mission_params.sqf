@@ -49,7 +49,7 @@ LRX_Mission_Params = [
 	["ModPresetTaxi", 1],			// Select MOD Preset for Taxi - values = "All", "Friendly", "Enemy"	
 	["Weather", 1],					// Weather - [default 4] - values = [1,2,3,4] - Text {Always Sunny,Random without rain,Random Cloudy,Random}
 	["Fatigue", 0],					// Stamina - [default 1] - values = [1,0] - Text {Enabled,Disabled}
-	["PAR_Revive", 3],				// PAR revive - [default 3] - values = [3,2,1,0] - Text {Enabled - Everyone can revive,Enabled - Everyone can revive using Medikit/FAK,Enabled - Only medics can revive,Disabled}
+	["PAR_Revive", 1],				// PAR revive - [default 3] - values = [3,2,1,0] - Text {Enabled - Everyone can revive,Enabled - Everyone can revive using Medikit/FAK,Enabled - Only medics can revive,Disabled}
 	["PAR_AI_Revive", 7],			// PAR AI revive limit - [default 0] - values = [0,3,5,7,10,15,20]
 	["PAR_BleedOut", 300],			// PAR revive Bleedout timer - [default 300] - values = [100,200,300,400,500,600]
 	["PAR_Grave", 1],				// PAR grave with stuuf in box - [default 1] - values [1,0] - Text {Enabled,Disabled}

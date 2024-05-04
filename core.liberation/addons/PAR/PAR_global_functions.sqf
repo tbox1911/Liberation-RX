@@ -337,7 +337,7 @@ PAR_Player_Unconscious = {
 	[_unit] spawn PAR_fn_unconscious;
 
 	while { !isNull _unit && alive _unit && (_unit getVariable ["PAR_isUnconscious", false])} do {
-		_bleedOut = player getVariable ["PAR_BleedOutTimer", 0];
+		private _bleedOut = player getVariable ["PAR_BleedOutTimer", 0];
 		public_bleedout_message = format [localize "STR_BLEEDOUT_MESSAGE", round (_bleedOut - time)];
 		public_bleedout_timer = round (_bleedOut - time);
 		sleep 0.5;
