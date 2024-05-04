@@ -25,11 +25,10 @@ private _my_veh = vehicles select { _x getVariable ["GRLIB_vehicle_owner", ""] =
 } forEach _my_veh;
 
 // Remove tents too far
-private _my_tent = [];
 if (!isNil "GRLIB_mobile_respawn") then {
-	_my_tent = GRLIB_mobile_respawn select {
+	private _my_tent = GRLIB_mobile_respawn select {
 		!([_x, "FOB", GRLIB_fob_range] call F_check_near) &&
-		isNil {_x getVariable "R3F_LOG_est_transporte_par"} &&
+		isNull (_x getVariable "R3F_LOG_est_transporte_par") &&
 		(_x getVariable ["GRLIB_vehicle_owner", ""] == _uid)
 	};
 	{
