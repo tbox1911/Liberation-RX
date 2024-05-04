@@ -83,7 +83,7 @@ while {true} do {
                 if (time > _timer) then {
                     private _msg = "";
                     private _cur_revive = _unit getVariable ["PAR_revive_max", PAR_ai_revive];
-                    private _near_medical = (count (nearestObjects [_unit, [medic_heal_typename], 10]) > 0);
+                    private _near_medical = (count (nearestObjects [_unit, [medic_heal_typename], 12]) > 0);
                     if (_cur_revive <= 3 && !_near_medical) then {
                         _msg = format ["WARN: %1 need Medical Support Now !!", name _unit];
                     };

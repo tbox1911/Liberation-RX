@@ -32,7 +32,7 @@ while {true} do {
                     (alive _target && _this distance _target <= 3) &&
                     (_target getVariable ['PAR_isUnconscious', false]) &&
                     (_target getVariable ['PAR_isDragged',0] == 0) &&
-                    ([_this] call PAR_has_medikit || [_this] call PAR_is_medic)
+                    (PAR_revive == 1 || [_this] call PAR_has_medikit || [_this] call PAR_is_medic)
                 ",
                 "(alive _target && _caller distance _target < 3)",
                 {
