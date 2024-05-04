@@ -362,7 +362,7 @@ while { true } do {
 				sleep 2;
 
 				if (_classname == FOB_carrier) then {
-					[([player] call F_getNearestFob)] call do_onboard;
+					[([] call F_getNearestFob)] call do_onboard;
 					titleText ["" ,"BLACK IN", 3];
 					{ _x allowDamage true } forEach _unit_list_redep;
 					disableUserInput false;
