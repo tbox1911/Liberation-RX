@@ -48,6 +48,7 @@ a3w_mr_send_para = compileFinal preprocessFileLineNumbers "scripts\server\remote
 
 // PAR Remote Call - Server Side
 PAR_remote_bounty = compileFinal preprocessFileLineNumbers "addons\PAR\server\PAR_remote_bounty.sqf";
+PAR_remote_sortie = compileFinal preprocessFileLineNumbers "addons\PAR\server\PAR_remote_sortie.sqf";
 
 // Remote Call - Client Side
 remote_call_a3w_info = compileFinal preprocessFileLineNumbers "scripts\client\remotecall\remote_call_a3w_info.sqf";

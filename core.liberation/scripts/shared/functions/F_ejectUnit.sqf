@@ -1,7 +1,5 @@
 params ["_unit", ["_slow", true]];
-if (isNull objectParent _unit) exitWith {};
-//if (!local _unit) exitWith {if (isServer) then {[_unit, _slow] remoteExec ["F_ejectUnit", owner _unit]}};
-
+if (isNull objectParent _unit || isNull _unit || !alive _unit) exitWith {};
 if ((vehicle _unit) isKindOf "ParachuteBase") exitWith {};
 
 private _unit_side = side group _unit;
