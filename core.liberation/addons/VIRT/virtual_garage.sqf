@@ -37,10 +37,10 @@ while { dialog && alive player } do {
 			_control lnbAddRow [_entrytext, "OUT"];
 
 			_icon = getText ( _cfg >> _class >> "icon");
-			if(isText  (configFile >> "CfgVehicleIcons" >> _icon)) then {
+			if(isText (configFile >> "CfgVehicleIcons" >> _icon)) then {
 				_icon = (getText (configFile >> "CfgVehicleIcons" >> _icon));
 			};
-			lnbSetPicture  [110, [((lnbSize 110) select 0) - 1, 0], _icon];
+			lnbSetPicture [110, [((lnbSize 110) select 0) - 1, 0], _icon];
 
 			_control lnbSetColor [[((lnbSize 110) select 0) - 1, 0], [1,1,1,1]];
 			_control lnbSetColor [[((lnbSize 110) select 0) - 1, 1], [1,1,1,1]];
@@ -53,10 +53,10 @@ while { dialog && alive player } do {
 			_control lnbAddRow [_entrytext, "IN"];
 
 			_icon = getText ( _cfg >> _class >> "icon");
-			if(isText  (configFile >> "CfgVehicleIcons" >> _icon)) then {
+			if(isText (configFile >> "CfgVehicleIcons" >> _icon)) then {
 				_icon = (getText (configFile >> "CfgVehicleIcons" >> _icon));
 			};
-			lnbSetPicture  [110, [((lnbSize 110) select 0) - 1, 0], _icon];
+			lnbSetPicture [110, [((lnbSize 110) select 0) - 1, 0], _icon];
 
 			_control lnbSetColor [[((lnbSize 110) select 0) - 1, 0], [0.4,0.4,0.4,1]];
 			_control lnbSetColor [[((lnbSize 110) select 0) - 1, 1], [0.4,0.4,0.4,1]];
