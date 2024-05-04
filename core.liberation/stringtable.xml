@@ -1836,16 +1836,13 @@
 			<French>PAR: Tombe + Stuff dans une boite</French>
 		</Key>		
 		<Key ID="STR_PARAMS_REVIVE1">
-			<Original>Enabled - Only medics can revive</Original>
-			<French>Activé - Seuls les medics peuvent ressusciter</French>
-			<German>Aktiv - Nur Sanitäter können wiederbeleben</German>
-			<Spanish>Activado - Sólo los médicos pueden revivir</Spanish>
-			<Russian>Включено - Только медики могут возрождать</Russian>
-			<Chinesesimp>启用 - 只有医生才能复活他人</Chinesesimp>
-			<Chinese>啟用 - 只有醫生才能複活他人</Chinese>
-			<Japanese>有効 - 衛生兵のみ蘇生可能</Japanese>
-			<Portuguese>Ativado - Apenas médicos podem reviver</Portuguese>
-			<Czech>Povoleno – Oživit mohou pouze medici</Czech>
+			<Original>Enabled - Everyone can revive</Original>
+			<Russian>Включено - Каждый может возрождать</Russian>
+			<French>Activé - Tout le monde peut ressusciter</French>
+			<Chinesesimp>启用——每个人都可以随意复活</Chinesesimp>
+			<Chinese>启用——每个人都可以随意复活</Chinese>
+			<Portuguese>Ativado - Todos podem reviver</Portuguese>
+			<Czech>Povoleno – každý může oživit</Czech>
 		</Key>
 		<Key ID="STR_PARAMS_REVIVE2">
 			<Original>Enabled - Everyone can revive using a MedKit or FAK</Original>
@@ -1857,13 +1854,16 @@
 			<Czech>Povoleno - Každý může oživit pomocí MedKit nebo FAK</Czech>
 		</Key>
 		<Key ID="STR_PARAMS_REVIVE3">
-			<Original>Enabled - Everyone can revive</Original>
-			<Russian>Включено - Каждый может возрождать</Russian>
-			<French>Activé - Tout le monde peut ressusciter</French>
-			<Chinesesimp>启用——每个人都可以随意复活</Chinesesimp>
-			<Chinese>启用——每个人都可以随意复活</Chinese>
-			<Portuguese>Ativado - Todos podem reviver</Portuguese>
-			<Czech>Povoleno – každý může oživit</Czech>
+			<Original>Enabled - Only medics can revive</Original>
+			<French>Activé - Seuls les medics peuvent ressusciter</French>
+			<German>Aktiv - Nur Sanitäter können wiederbeleben</German>
+			<Spanish>Activado - Sólo los médicos pueden revivir</Spanish>
+			<Russian>Включено - Только медики могут возрождать</Russian>
+			<Chinesesimp>启用 - 只有医生才能复活他人</Chinesesimp>
+			<Chinese>啟用 - 只有醫生才能複活他人</Chinese>
+			<Japanese>有効 - 衛生兵のみ蘇生可能</Japanese>
+			<Portuguese>Ativado - Apenas médicos podem reviver</Portuguese>
+			<Czech>Povoleno – Oživit mohou pouze medici</Czech>
 		</Key>
 		<Key ID="STR_PARAMS_INTRO">
 			<Original>Introduction</Original>
