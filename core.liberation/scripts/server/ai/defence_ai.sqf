@@ -16,10 +16,10 @@ private _patrol = false;
 private ["_target", "_basepos", "_waypoint", "_wp0"];
 
 while { GRLIB_endgame == 0 && ({alive _x} count (units _grp) > 0) } do {
-	if (side group _grp == GRLIB_side_enemy) then {
+	if (side _grp == GRLIB_side_enemy) then {
 		_target = [_flagpos] call F_getNearestBlufor;
 	};
-	if (side group _grp == GRLIB_side_friendly) then {
+	if (side _grp == GRLIB_side_friendly) then {
 		_target = (units GRLIB_side_enemy) select { alive _x && (isNull objectParent _x) && (_x distance2D _flagpos < GRLIB_capture_size)} select 0;
 	};
 
