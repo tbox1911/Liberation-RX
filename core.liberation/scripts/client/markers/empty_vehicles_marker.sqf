@@ -108,10 +108,9 @@ while { true } do {
 		_nextmarker setMarkerColorLocal _marker_color;
 		_nextmarker setMarkerTypeLocal _marker_type;
 		_nextmarker setMarkerAlphaLocal _marker_show;
-		sleep 0.1;
 	} foreach _veh_list;
 
 	{ deleteMarkerLocal _x} foreach (_vehmarkers - _vehmarkers_bak);
 	_vehmarkers = _vehmarkers_bak;
-	sleep 3;
+	sleep 1;
 };
