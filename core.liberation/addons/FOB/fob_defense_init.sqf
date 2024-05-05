@@ -27,3 +27,11 @@ GRLIB_FOB_Defense_Sea_level = [
     "PortableHelipadLight_01_green_F",
     "Land_Cargo_Tower_V1_F"
 ];
+
+{
+    private _path = (_x select 1);
+    if (count _path > 0) then {
+	    private _objects_to_build = ([] call compile preprocessFileLineNumbers _path);
+	    { fob_defenses_classnames pushBackUnique (_x select 0) } forEach _objects_to_build;
+    };
+} forEach GRLIB_FOB_Defense;

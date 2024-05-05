@@ -65,6 +65,7 @@ _msg = format ["FOB Template: %1\nCreated by: %2\nThanks to him !!", _defense_na
 [_msg] remoteExec ["hint", 0];
 
 // Build defense in FOB direction
+private _defenses_blacklist = GRLIB_recycleable_blacklist + all_friendly_classnames;
 private ["_nextclass", "_nextobject", "_nextpos", "_nextdir"];
 _fob_pos set [2, 0];
 {
@@ -77,7 +78,7 @@ _fob_pos set [2, 0];
 	_nextdir = (_x select 2) + _fob_dir;
     _nextpos = _fob_pos vectorAdd ([_nextpos, -_fob_dir] call BIS_fnc_rotateVector2D);
 
-    if (!surfaceIsWater _nextpos && !isOnRoad _nextpos) then {
+    if (!surfaceIsWater _nextpos && !isOnRoad _nextpos && !(_nextclass in _defenses_blacklist)) then {
         _nextobject = _nextclass createVehicle _nextpos;
         _nextobject allowDamage false;
         _nextobject setPosATL _nextpos;

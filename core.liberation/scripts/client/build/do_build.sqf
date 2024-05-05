@@ -184,18 +184,16 @@ while { true } do {
 		_vehicle setVariable ["R3F_LOG_disabled", true];
 		[_vehicle] call F_clearCargo;
 
-		_radius = 0.5 * (sizeOf _classname);
+		_radius = (sizeOf _classname)/2;
 		if (_radius < 3.5) then { _radius = 3.5 };
 		if (_radius > 20) then { _radius = 20 };
-		_dist = (_radius / 2) + 1.5;;
+		_dist = (_radius / 2) + 1.5;
 		if (_dist > 5) then { _dist = 5 };
 		if (_classname == FOB_carrier) then { _dist = 35; build_rotation = 90 };
+		if (_classname isKindOf "Slingload_base_F") then { _radius = 5 };
 		_dist = 3 max _dist;
 
-		for "_i" from 0 to 5 do {
-			_vehicle setObjectTextureGlobal [_i, '#(rgb,8,8,3)color(0,1,0,0.8)'];
-		};
-
+		for "_i" from 0 to 5 do { _vehicle setObjectTextureGlobal [_i, '#(rgb,8,8,3)color(0,1,0,0.8)'] };
 		{ _x setObjectTexture [0, "#(rgb,8,8,3)color(0,1,0,1)"]; } foreach GRLIB_preview_spheres;
 
 		// Wait for building
@@ -233,11 +231,13 @@ while { true } do {
 			} foreach GRLIB_preview_spheres;
 
 			_near_objects = (_truepos nearobjects ["AllVehicles", _radius]);
-			_near_objects = _near_objects + (_truepos nearobjects [FOB_box_typename, _radius]);
-			_near_objects = _near_objects + (_truepos nearobjects [FOB_box_outpost, _radius]);
+			_near_objects = _near_objects + (_truepos nearObjects [FOB_typename, 12]);
+			_near_objects = _near_objects + (_truepos nearObjects [FOB_outpost, 10]);
+			_near_objects = _near_objects + (_truepos nearObjects [Warehouse_typename, 12]);
+			_near_objects = _near_objects + (_truepos nearObjects [medic_heal_typename, 8]);
 
 			if(	_buildtype != 6 ) then {
-				_near_objects = _near_objects + (_truepos nearobjects ["Static", _radius]);
+				_near_objects = _near_objects + (_truepos nearobjects ["Static", 5]);
 			};
 
 			private _remove_objects = [];
