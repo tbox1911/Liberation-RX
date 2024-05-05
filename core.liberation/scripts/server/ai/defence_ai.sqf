@@ -5,7 +5,6 @@ if (isNull _grp) exitWith {};
 _flagpos = _flagpos getPos [5, random 360];
 diag_log format ["Group %1 - Defend: %2", _grp, _flagpos];
 
-private ["_target", "_basepos", "_waypoint", "_wp0"];
 private _grp_veh = objectParent (leader _grp);
 if (_grp_veh isKindOf "Ship") exitWith { [_grp, getPosATL _grp_veh, _radius] spawn patrol_ai };
 
@@ -14,9 +13,16 @@ if ({alive _x} count (units _grp) == 0) exitWith {};
 
 private _timer = 0;
 private _patrol = false;
+private ["_target", "_basepos", "_waypoint", "_wp0"];
 
 while { GRLIB_endgame == 0 && ({alive _x} count (units _grp) > 0) } do {
-	_target = [_flagpos] call F_getNearestBlufor;
+	if (side group _grp == GRLIB_side_enemy) then {
+		_target = [_flagpos] call F_getNearestBlufor;
+	};
+	if (side group _grp == GRLIB_side_friendly) then {
+		_target = (units GRLIB_side_enemy) select { alive _x && (isNull objectParent _x) && (_x distance2D _flagpos < GRLIB_capture_size)} select 0;
+	};
+
 	if (isNil "_target") then {
 		if (!_patrol) then {
 			_patrol = true;
