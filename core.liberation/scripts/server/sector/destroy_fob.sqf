@@ -16,16 +16,14 @@ private _classnames_to_destroy = [
 ];
 _classnames_to_destroy append all_buildings_classnames + fob_buildings_classnames + fob_defenses_classnames + list_static_weapons;
 
-private _sleep = 0.1;
+private _sleep = 0.05;
 if (surfaceIsWater _fobpos) then {
 	{ _classnames_to_destroy pushback (_x select 0) } foreach support_vehicles;
 	_sleep = 0;
 };
 
 private _all_buildings_to_destroy = (nearestObjects [_fobpos, _classnames_to_destroy, GRLIB_fob_range * 1.5]) select { getObjectType _x >= 8 };
-if (count _all_buildings_to_destroy > 100 && _sleep > 0) then {
-	_sleep = 0.05;
-};
+if (count _all_buildings_to_destroy > 300) then { _sleep = 0 };
 
 {
 	_building = _x;
@@ -47,7 +45,7 @@ if (count _all_buildings_to_destroy > 100 && _sleep > 0) then {
 } foreach _all_buildings_to_destroy;
 
 
-_all_buildings_to_destroy = (_fobpos nearObjects (GRLIB_fob_range * 2)) select { getObjectType _x >= 8 && (getPos _x select 2) >= 2 };
+_all_buildings_to_destroy = (_fobpos nearObjects (GRLIB_fob_range * 1.5)) select { getObjectType _x >= 8 && (getPos _x select 2) >= 2 };
 { _x setPos (getPos _x)} forEach _all_buildings_to_destroy;
 
 GRLIB_all_fobs = GRLIB_all_fobs - [_fobpos];

@@ -143,3 +143,8 @@ GRLIB_checkCapture = {
 	params ["_target", "_unit"];
 	(GRLIB_player_is_menuok && alive _target && _target getVariable ['GRLIB_is_prisoner', false])
 };
+
+GRLIB_checkDefFOB = {
+	params ["_target", "_unit"];
+	(GRLIB_player_is_menuok && alive _target && GRLIB_player_score >= GRLIB_perm_inf)
+};
