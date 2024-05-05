@@ -36,9 +36,12 @@ if ( dorepackage > 0 ) then {
 	};
 	[player, "Land_Carrier_01_blast_deflector_down_sound"] remoteExec ["sound_range_remote_call", 2];
 	[_fob_pos] remoteExec ["destroy_fob_remote_call", 2];
-	sleep 3;
-	[player, "Land_Carrier_01_blast_deflector_down_sound"] remoteExec ["sound_range_remote_call", 2];
-	sleep 3;
+	private _count_fobs = count GRLIB_all_fobs;
+	waitUntil {
+		sleep 3;
+		[player, "Land_Carrier_01_blast_deflector_down_sound"] remoteExec ["sound_range_remote_call", 2];
+		(count GRLIB_all_fobs != _count_fobs)
+	};
 
 	private _box_typename = "";
 	if (dorepackage == 1) then { _box_typename = FOB_box_typename };

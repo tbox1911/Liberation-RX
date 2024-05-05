@@ -5,6 +5,7 @@ private _classnames_to_destroy = [
 	FOB_outpost,
 	FOB_carrier,
 	FOB_sign,
+	Warehouse_typename,
 	Warehouse_desk_typename,
 	"Land_RepairDepot_01_civ_F",
 	"Land_MedicalTent_01_MTP_closed_F",
@@ -13,19 +14,17 @@ private _classnames_to_destroy = [
 	"Land_Destroyer_01_hull_base_F",
 	"Land_Carrier_01_hull_base_F"
 ];
-_classnames_to_destroy append all_buildings_classnames + fob_buildings_classnames + list_static_weapons;
+_classnames_to_destroy append all_buildings_classnames + fob_buildings_classnames + fob_defenses_classnames + list_static_weapons;
 
-private _sleep = 0.5;
+private _sleep = 0.1;
 if (surfaceIsWater _fobpos) then {
 	{ _classnames_to_destroy pushback (_x select 0) } foreach support_vehicles;
 	_sleep = 0;
 };
 
-private _all_buildings_to_destroy = [];
-_all_buildings_to_destroy = (_fobpos nearObjects (GRLIB_fob_range * 2)) select { getObjectType _x >= 8 && ([_x, _classnames_to_destroy] call F_itemIsInClass) };
-
+private _all_buildings_to_destroy = (nearestObjects [_fobpos, _classnames_to_destroy, GRLIB_fob_range * 1.5]) select { getObjectType _x >= 8 };
 if (count _all_buildings_to_destroy > 100 && _sleep > 0) then {
-	_sleep = 0.1;
+	_sleep = 0.05;
 };
 
 {

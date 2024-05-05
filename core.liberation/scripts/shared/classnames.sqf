@@ -218,6 +218,7 @@ buildings append [
 all_buildings_classnames = [];
 { all_buildings_classnames pushBackUnique (_x select 0) } foreach buildings;
 
+fob_defenses_classnames = [];
 fob_buildings_classnames = [];
 if (GRLIB_naval_type == 3) then {
 	private _objects_to_build = ([] call compile preprocessFileLineNumbers format ["scripts\fob_templates\%1.sqf", FOB_carrier]);
@@ -471,6 +472,8 @@ GRLIB_vehicle_blacklist = [
 
 // Recycleable objects
 GRLIB_recycleable_blacklist = [
+    FOB_typename,
+	FOB_outpost,
 	FOB_sign,
 	Warehouse_typename,
 	canister_fuel_typename,
@@ -628,7 +631,6 @@ GRLIB_ignore_colisions = [
 	canister_fuel_typename,
 	medicalbox_typename,
 	land_cutter_typename,
-	Warehouse_typename,
 	"Helper_Base_F",
 	"Blood_01_Base_F",
 	"MedicalGarbage_01_Base_F",
