@@ -56,7 +56,7 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
 			( getObjectType _x >= 8 ) &&
 			( !isSimpleObject _x ) &&
 			( alive _x) && !(isObjectHidden _x) &&
-			((typeof _x) in GRLIB_classnames_to_save ) &&
+			( tolower (typeof _x) in GRLIB_classnames_to_save ) &&
 			( speed vehicle _x < 5 ) &&
 			( isNull attachedTo _x ) &&
 			(_x getVariable ["GRLIB_vehicle_owner", ""] != "server")
@@ -84,7 +84,7 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
 		private _hascrew = false;
 		private _owner = "";
 
-		if ( _nextclass in GRLIB_classnames_to_save_blu + all_hostile_classnames ) then {
+		if ( tolower _nextclass in GRLIB_classnames_to_save_blu ) then {
 			if (side group _x != GRLIB_side_enemy) then {
 				_owner = _x getVariable ["GRLIB_vehicle_owner", ""];
 				_hascrew = _x getVariable ["GRLIB_vehicle_manned", false];
