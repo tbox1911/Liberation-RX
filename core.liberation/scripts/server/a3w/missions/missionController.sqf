@@ -21,7 +21,7 @@ while {true} do {
 	_nextMission = nil;
 	while {isNil "_nextMission"} do	{
 		[SideMissions] call updateMissionsList;
-		_availableMissions = [SideMissions, { !(_x select 2) }] call BIS_fnc_conditionalSelect;
+		_availableMissions = SideMissions select { !(_x select 2) };
 		// _availableMissions = SideMissions; // If you want to allow multiple missions of the same type running along, uncomment this line and comment the one above
 
 		if (count _availableMissions > 0 && diag_fps > 35.0) then {

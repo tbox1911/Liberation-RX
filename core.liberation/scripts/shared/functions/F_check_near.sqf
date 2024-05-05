@@ -57,13 +57,13 @@ if (typeName (_classlist select 0) == "STRING") then {
 		_obj_list = nearestObjects [_vehpos, _classlist, _dist];
 	};
 	if (count _obj_list > 0) then {
-		_near = [ _obj_list, {
+		_near = _obj_list select {
 			alive _x && getObjectType _x >= 8 &&
 			(
 				isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) ||
 				!(_x getVariable ['R3F_LOG_disabled', true])
 			)
-		}] call BIS_fnc_conditionalSelect;
+		};
 	};
 } else {
 	// From Position

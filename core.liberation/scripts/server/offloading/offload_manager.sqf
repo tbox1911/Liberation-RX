@@ -15,7 +15,7 @@ while { GRLIB_endgame == 0 } do {
 				{ if ( isPlayer _x ) then { _is_ai_only = false } } foreach units _localgroup;
 				if ( _is_ai_only ) then { _blufor_ai_groups pushback _localgroup };
 			};
-		} foreach ( [groups GRLIB_side_friendly, {groupOwner _x != owner _commander} ] call BIS_fnc_conditionalSelect );
+		} foreach (groups GRLIB_side_friendly select { groupOwner _x != owner _commander });
 
 		if ( count _blufor_ai_groups > 0 ) then {
 			{

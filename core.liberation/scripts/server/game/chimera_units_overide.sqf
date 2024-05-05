@@ -31,7 +31,7 @@ private _chimera_soldiers = (allUnits) select {(_x distance2D lhd < GRLIB_fob_ra
 {
 	_src_class = _x select 0;
 	_dst_class = _x select 1;
-	_veh_lst = [ vehicles, { alive _x && (_x distance2D lhd < GRLIB_fob_range) && typeOf _x == _src_class }] call BIS_fnc_conditionalSelect;
+	_veh_lst = vehicles select { alive _x && (_x distance2D lhd < GRLIB_fob_range) && typeOf _x == _src_class };
 	{
 		_src_pos = (getPosATL _x) vectorAdd [0, 0, 0.2];
 		_src_dir = getDir _x;

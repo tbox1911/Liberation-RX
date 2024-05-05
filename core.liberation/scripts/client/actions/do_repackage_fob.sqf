@@ -28,7 +28,7 @@ if ( dorepackage > 0 ) then {
 	closeDialog 0;
 	waitUntil { !dialog };
 
-	private _unit_list_redep = [(units player), { !(isPlayer _x) && (isNull objectParent _x) && (_x distance2D player < 40) && lifestate _x != 'INCAPACITATED' }] call BIS_fnc_conditionalSelect;
+	private _unit_list_redep = (units player) select { !(isPlayer _x) && (isNull objectParent _x) && (_x distance2D player < 40) && lifestate _x != 'INCAPACITATED' };
 	if (dorepackage == 3) then {
 		titleText ["Naval FOB Leaves..." ,"BLACK FADED", 30];
 		disableUserInput true;

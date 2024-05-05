@@ -30,7 +30,7 @@ _setupObjects = {
 	{ _x setVariable ["R3F_LOG_disabled", true, true] } forEach [_tent1, _chair1, _chair2, _fire1];
 
 	// spawn some resistance
-	_nbUnits = 5;
+	_nbUnits = 6;
 	_managed_units = [];
 
 	// create static weapons + crew

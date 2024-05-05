@@ -1,6 +1,6 @@
 private ["_unit", "_pos", "_grp", "_classname", "_fob_box",
 		"_idx", "_unitrank", "_ghost_spot", "_vehicle", "_allow_damage",
-		"_dist", "_radius", "_actualdir", "_near_objects", "_near_objects_25"
+		"_dist", "_radius", "_actualdir", "_near_objects"
 ];
 
 build_confirmed = 0;
@@ -192,7 +192,7 @@ while { true } do {
 		if (_classname == FOB_carrier) then { _dist = 35; build_rotation = 90 };
 		_dist = 3 max _dist;
 
-		for [{_i=0}, {_i<5}, {_i=_i+1}] do {
+		for "_i" from 0 to 5 do {
 			_vehicle setObjectTextureGlobal [_i, '#(rgb,8,8,3)color(0,1,0,0.8)'];
 		};
 
@@ -236,13 +236,8 @@ while { true } do {
 			_near_objects = _near_objects + (_truepos nearobjects [FOB_box_typename, _radius]);
 			_near_objects = _near_objects + (_truepos nearobjects [FOB_box_outpost, _radius]);
 
-			_near_objects_25 = (_truepos nearobjects ["AllVehicles", 50]);
-			_near_objects_25 = _near_objects_25 + (_truepos nearobjects [FOB_box_typename, 50]);
-			_near_objects_25 = _near_objects_25 + (_truepos nearobjects [FOB_box_outpost, 50]);
-
 			if(	_buildtype != 6 ) then {
 				_near_objects = _near_objects + (_truepos nearobjects ["Static", _radius]);
-				_near_objects_25 = _near_objects_25 + (_truepos nearobjects ["Static", 50]);
 			};
 
 			private _remove_objects = [];
@@ -252,18 +247,10 @@ while { true } do {
 				};
 			} foreach _near_objects;
 
-			private _remove_objects_25 = [];
-			{
-				if ((_x isKindOf "Animal") || ([_x, GRLIB_ignore_colisions] call F_itemIsInClass) || (_x == player) || (_x == _vehicle ))  then {
-					_remove_objects_25 pushback _x;
-				};
-			} foreach _near_objects_25;
-
 			_near_objects = _near_objects - _remove_objects;
-			_near_objects_25 = _near_objects_25 - _remove_objects_25;
 
 			if (_classname == land_cutter_typename) then {
-				_near_objects = _near_objects + ([(_truepos nearobjects [land_cutter_typename, 20]), {(_x != _vehicle)}] call BIS_fnc_conditionalSelect);
+				_near_objects = _near_objects + ((_truepos nearobjects [land_cutter_typename, 20]) select { (_x != _vehicle) });
 			};
 
 			if ( count _near_objects == 0 ) then {
@@ -273,7 +260,7 @@ while { true } do {
 					if (_truepos distance2D _x < _dist22) then {
 						_near_objects pushback _x;
 					};
-				} foreach _near_objects_25;
+				} foreach _near_objects;
 			};
 
 			if ( count _near_objects != 0 ) then {
@@ -351,7 +338,7 @@ while { true } do {
 			// FOB
 			if(_buildtype in [99,98,97]) exitWith {
 				[player, "Land_Carrier_01_blast_deflector_up_sound"] remoteExec ["sound_range_remote_call", 2];
-				private _unit_list_redep = [(units player), { !(isPlayer _x) && (_x distance2D player < 40) && lifestate _x != 'INCAPACITATED' }] call BIS_fnc_conditionalSelect;
+				private _unit_list_redep = (units player) select { !(isPlayer _x) && (_x distance2D player < 40) && lifestate _x != 'INCAPACITATED' };
 				if (_classname == FOB_carrier) then {
 					titleText ["Naval FOB Incoming..." ,"BLACK FADED", 30];
 					{ _x allowDamage false } forEach _unit_list_redep;

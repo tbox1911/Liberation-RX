@@ -115,10 +115,10 @@ if (typeName _unit == "OBJECT") then {
 			_val = _val + ([primaryWeapon _unit] call _fn_getprice);
 
 			// Weapon items (scope,pointer,..)
-			_weap_items = ([weaponsItems _unit, {(_x select 0) == (primaryWeapon _unit)}] call BIS_fnc_conditionalSelect) select 0;
+			_weap_items = (weaponsItems _unit select {(_x select 0) == (primaryWeapon _unit)}) select 0;
 			_weap_items deleteAt 0;
 			_weap_items deleteAt 3;
-			_val = _val + (3 * count ([_weap_items, {count _x > 1}] call BIS_fnc_conditionalSelect));
+			_val = _val + (3 * count (_weap_items select {count _x > 1}));
 		};
 
 		if (count(secondaryWeapon _unit) > 0 ) then {

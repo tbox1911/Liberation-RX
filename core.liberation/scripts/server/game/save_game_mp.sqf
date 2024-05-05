@@ -13,12 +13,12 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
 		GRLIB_player_scores = [];
 		{
 			if (_x select 1 > GRLIB_perm_tank) then {
-				_x set [1, GRLIB_perm_tank];  	// score
+				_x set [1, GRLIB_perm_tank];	// score
 			};
 			if (_x select 2 > 3000) then {
-				_x set [2, 3000];  				// ammo
+				_x set [2, 3000];				// ammo
 			};
-			_x set [3, GREUH_start_fuel];  		// fuel
+			_x set [3, GREUH_start_fuel];		// fuel
 			GRLIB_player_scores pushback _x;
 		} foreach (profileNamespace getVariable GRLIB_save_key select 16);
 
@@ -52,7 +52,7 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
 	private _all_buildings = [];
 	{
 		_fobpos = _x;
-		_nextbuildings = [ _fobpos nearObjects (GRLIB_fob_range * 2), {
+		_nextbuildings = _fobpos nearObjects (GRLIB_fob_range * 2) select {
 			( getObjectType _x >= 8 ) &&
 			( !isSimpleObject _x ) &&
 			( alive _x) && !(isObjectHidden _x) &&
@@ -60,7 +60,7 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
 			( speed vehicle _x < 5 ) &&
 			( isNull attachedTo _x ) &&
 			(_x getVariable ["GRLIB_vehicle_owner", ""] != "server")
-		}] call BIS_fnc_conditionalSelect;
+		};
 		_all_buildings = _all_buildings + _nextbuildings;
 	} foreach GRLIB_all_fobs;
 

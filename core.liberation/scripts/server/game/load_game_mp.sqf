@@ -65,12 +65,12 @@ if ( GRLIB_param_wipe_savegame_1 == 1 && GRLIB_param_wipe_savegame_2 == 1 ) then
 		private _keep_players = [];
 		{
 			if (_x select 1 > GRLIB_perm_tank) then {
-				_x set [1, GRLIB_perm_tank];  	// score
+				_x set [1, GRLIB_perm_tank];	// score
 			};
 			if (_x select 2 > 3000) then {
-				_x set [2, 3000];  				// ammo
+				_x set [2, 3000];				// ammo
 			};
-			_x set [3, GREUH_start_fuel];  		// fuel
+			_x set [3, GREUH_start_fuel];		// fuel
 			_keep_players pushback _x;
 		} foreach (profileNamespace getVariable GRLIB_save_key select 16);
 		GRLIB_player_scores = _keep_players;
@@ -201,18 +201,18 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 
 	{
 		_nextclass = _x select 0;
-        _nextpos = _x select 1;
-        _nextdir = _x select 2;
+		_nextpos = _x select 1;
+		_nextdir = _x select 2;
 
-        private _hascrew = false;
-        if (count _x > 3) then {
-            _hascrew = _x select 3;
-        };
+		private _hascrew = false;
+		if (count _x > 3) then {
+			_hascrew = _x select 3;
+		};
 
-        private _owner = "";
-        if (count _x > 4) then {
-            _owner = _x select 4;
-        };
+		private _owner = "";
+		if (count _x > 4) then {
+			_owner = _x select 4;
+		};
 
 		_nextbuilding = createVehicle [_nextclass, zeropos, [], 0, "CAN_COLLIDE"];
 		_nextbuilding allowDamage false;
@@ -232,11 +232,11 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 			[_nextbuilding] call F_clearCargo;
 		};
 
-        if ( _nextclass in vehicle_rearm_sources ) then {
-            _nextbuilding setAmmoCargo 0;
-        };
+		if ( _nextclass in vehicle_rearm_sources ) then {
+			_nextbuilding setAmmoCargo 0;
+		};
 
-        if ( _owner != "" ) then {
+		if ( _owner != "" ) then {
 			if (_owner == "public") then {
 				_nextbuilding setVariable ["GRLIB_vehicle_owner", "public", true];
 				if ( _nextclass == huron_typename ) then {
@@ -245,9 +245,9 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 			} else {
 				[_nextbuilding, "lock", _owner] call F_vehicleLock;
 			};
-        };
+		};
 
-        if ( _nextclass in GRLIB_vehicles_light ) then {
+		if ( _nextclass in GRLIB_vehicles_light ) then {
 			_nextbuilding setVariable ["R3F_LOG_disabled", false, true];
 			if ( _nextclass in list_static_weapons ) then {
 				_nextbuilding setVehicleLock "DEFAULT";
@@ -275,7 +275,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 			if ( _nextclass == Arsenal_typename ) then {
 				_nextbuilding setMaxLoad 0;
 			};
-        } else {
+		} else {
 			if ( !(_owner in ["", "public"]) && count _x > 5 ) then {
 				//[_x select 5] params [["_color", ""]];
 				[_x select 6] params [["_color_name", ""]];
@@ -307,18 +307,18 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 			};
 		};
 
-        if ( _hascrew ) then {
-            [ _nextbuilding] call F_forceCrew;
-            _nextbuilding setVariable ["GRLIB_vehicle_manned", true, true];
-        };
+		if ( _hascrew ) then {
+			[ _nextbuilding] call F_forceCrew;
+			_nextbuilding setVariable ["GRLIB_vehicle_manned", true, true];
+		};
 
-        if ( _nextclass == mobile_respawn ) then {
-            GRLIB_mobile_respawn pushback _nextbuilding;
-        };
+		if ( _nextclass == mobile_respawn ) then {
+			GRLIB_mobile_respawn pushback _nextbuilding;
+		};
 
-        if ( _nextclass == FOB_sign ) then {
-            _nextbuilding setObjectTextureGlobal [0, getMissionPath "res\splash_libe2.paa"];
-        };
+		if ( _nextclass == FOB_sign ) then {
+			_nextbuilding setObjectTextureGlobal [0, getMissionPath "res\splash_libe2.paa"];
+		};
 
 		if (_nextclass == land_cutter_typename) then {
 			_nextpos set [2, 0];
@@ -326,8 +326,8 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 			{_x hideObjectGlobal true} forEach (nearestTerrainObjects [_nextpos, GRLIB_clutter_cutter, 20]);
 		};
 
-        if ( !(_nextclass in GRLIB_no_kill_handler_classnames) || (_nextclass in GRLIB_quick_delete) ) then {
-            _nextbuilding addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+		if ( !(_nextclass in GRLIB_no_kill_handler_classnames) || (_nextclass in GRLIB_quick_delete) ) then {
+			_nextbuilding addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		};
 
 		if (_nextclass == Warehouse_typename) then {
@@ -342,7 +342,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 			[_nextbuilding] call BIS_fnc_carrier01Init;
 			[_nextbuilding] call BIS_fnc_Carrier01PosUpdate;
 		};
-        //diag_log format [ "--- LRX Load Game %1 loaded at %2.", typeOf _nextbuilding, time];
+		//diag_log format [ "--- LRX Load Game %1 loaded at %2.", typeOf _nextbuilding, time];
 	} foreach (_s1 + _s2 + _s3);
 	sleep 1;
 
@@ -368,8 +368,8 @@ if ( count GRLIB_vehicle_to_military_base_links == 0 ) then {
 	_assigned_vehicles = [];
 
 	while { count _assigned_bases < count sectors_military && count _assigned_vehicles < count elite_vehicles } do {
-		_nextbase =  selectRandom ( [ sectors_military, { !(_x in _assigned_bases) } ] call BIS_fnc_conditionalSelect );
-		_nextvehicle =  selectRandom ( [ elite_vehicles, { !(_x in _assigned_vehicles) } ] call BIS_fnc_conditionalSelect );
+		_nextbase = selectRandom (sectors_military select { !(_x in _assigned_bases) });
+		_nextvehicle = selectRandom (elite_vehicles select { !(_x in _assigned_vehicles) });
 		_assigned_bases pushback _nextbase;
 		_assigned_vehicles pushback _nextvehicle;
 		GRLIB_vehicle_to_military_base_links pushback [_nextvehicle, _nextbase];

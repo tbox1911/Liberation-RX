@@ -58,7 +58,7 @@ if ( _ownership == GRLIB_side_enemy ) then {
 
 	while { (time < _sector_timer || _activeplayers > 0) && _ownership == GRLIB_side_enemy } do {
 		_ownership = [_fobpos, GRLIB_capture_size] call F_sectorOwnership;
-		_activeplayers = count ([allPlayers, {alive _x && (_x distance2D (_fobpos)) < GRLIB_sector_size}] call BIS_fnc_conditionalSelect);
+		_activeplayers = count (allPlayers select { alive _x && (_x distance2D (_fobpos)) < GRLIB_sector_size });
 		if (_sector_timer mod 60 == 0 && !_near_outpost) then {
 			[_fobpos, 4] remoteExec ["remote_call_fob", 0];
 		};

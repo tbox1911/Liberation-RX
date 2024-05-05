@@ -46,7 +46,7 @@ stats_secondary_objectives = stats_secondary_objectives + 1;
 	private _vehicles = (_this select 0);
 	[_vehicles] call cleanMissionVehicles;
 
-	{ deleteVehicle _x } forEach ([nearestObjects [(_this select 1), ["Ruins_F"], 100], { getObjectType _x == 8 }] call BIS_fnc_conditionalSelect);
+	{ deleteVehicle _x } forEach ((nearestObjects [(_this select 1), ["Ruins_F"], 100]) select { getObjectType _x == 8 });
 	{ deleteVehicle _x } forEach units (_this select 2);
 	{ deleteVehicle _x } forEach units (_this select 3);
 

@@ -495,6 +495,7 @@ heavy_vehicles = [ heavy_vehicles ] call F_filterMods;
 air_vehicles = [ air_vehicles ] call F_filterMods;
 support_vehicles = [ support_vehicles ] call F_filterMods;
 static_vehicles = [ static_vehicles ] call F_filterMods;
+elite_vehicles = [ elite_vehicles ] call F_filterMods;
 buildings = [ buildings ] call F_filterMods;
 build_lists = [[],infantry_units,light_vehicles,heavy_vehicles,air_vehicles,static_vehicles,buildings,support_vehicles,squads];
 militia_squad = militia_squad select { [_x] call F_checkClass };
@@ -574,7 +575,7 @@ squads_names = [
 	localize "STR_AA_SQUAD",
 	localize "STR_MIXED_SQUAD"
 ];
-elite_vehicles = [ elite_vehicles , { [_x] call F_checkClass } ] call BIS_fnc_conditionalSelect;
+
 opfor_infantry = [opfor_sentry,opfor_rifleman,opfor_grenadier,opfor_squad_leader,opfor_team_leader,opfor_marksman,opfor_machinegunner,opfor_heavygunner,opfor_medic,opfor_rpg,opfor_at,opfor_aa,opfor_officer,opfor_sharpshooter,opfor_sniper,opfor_engineer];
 GRLIB_rank_level = ["PRIVATE", "CORPORAL", "SERGEANT", "LIEUTENANT", "CAPTAIN", "MAJOR", "COLONEL"];
 GRLIB_intel_table = "Land_CampingTable_small_F";
