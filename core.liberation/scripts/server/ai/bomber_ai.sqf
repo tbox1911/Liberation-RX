@@ -27,6 +27,7 @@ if !(_unit getVariable ["GRLIB_in_building", false]) then {
 };
 _unit setUnitPos "UP";
 _unit switchMove "";
+_unit setHitPointDamage ["hitLegs", 0];
 sleep 1;
 
 private _grp = createGroup [GRLIB_side_civilian, true];
