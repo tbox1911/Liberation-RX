@@ -27,10 +27,9 @@ if (["fob_water", _classname] call F_startsWith) then {
 	} foreach _objects_to_build;
 } else {
 	_vehicle = createVehicle [_classname, ([] call F_getFreePos), [], 0, "NONE"];
-	if (isNull _vehicle) exitWith {};
 	_vehicle allowDamage false;
 	_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
-	_vehicle setPosWorld _veh_pos;
+	_vehicle setPosASL _veh_pos;
 
 	if (_classname isKindOf "StaticShip") then {
 		[_vehicle] call BIS_fnc_carrier01Init;
