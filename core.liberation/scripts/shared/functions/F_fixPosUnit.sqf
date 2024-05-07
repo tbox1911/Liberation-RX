@@ -22,7 +22,8 @@ if ((lineIntersects [ATLtoASL _spawnpos, ATLtoASL _maxpos]) && _obstacle == 0) t
 	};
 	_unit setPosATL _spawnpos;
 	_unit switchMove "AmovPercMwlkSrasWrflDf";
-	_unit playMoveNow "AmovPercMwlkSrasWrflDf";	
+	_unit playMoveNow "AmovPercMwlkSrasWrflDf";
 	sleep 2;
-	_unit allowDamage false;	
+	_unit setHitPointDamage ["hitLegs", 0];
+	_unit allowDamage true;	
 };
