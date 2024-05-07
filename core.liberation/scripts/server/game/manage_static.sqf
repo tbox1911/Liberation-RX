@@ -1,4 +1,4 @@
-private [ "_all_static", "_static", "_static_class", "_all_light" , "_sector", "_side", "_gunner", "_gunner_list", "_enemy" ];
+private [ "_all_static", "_static", "_all_light" , "_sector", "_side", "_gunner", "_gunner_list", "_enemy" ];
 private _static_classname = list_static_weapons - static_vehicles_AI;
 
 waitUntil {sleep 1; !isNil "blufor_sectors"};
@@ -8,7 +8,6 @@ while { true } do {
     _all_static = vehicles select { alive _x && (typeOf _x) in _static_classname };
     {
         _static = _x;
-        _static_class = typeOf _static;
 
         // Correct static position
         [_static] call F_vehicleUnflip;
