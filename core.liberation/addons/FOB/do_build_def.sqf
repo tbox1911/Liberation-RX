@@ -34,12 +34,11 @@ while { dialog && alive player } do {
         _selected_item = lbCurSel 110;
         _defense_name = (_display displayCtrl (110)) lnbText [_selected_item, 0];
         _defense_price = (_display displayCtrl (110)) lnbText [_selected_item, 1];
-        if (_selected_item > 0) then {
-            _defense_template = GRLIB_FOB_Defense select _selected_item select 1;
+        _defense_template = GRLIB_FOB_Defense select _selected_item select 1;
+        if (count _defense_template > 0) then {
             _template_creator = GRLIB_FOB_Defense select _selected_item select 3;
             _objects_to_build = ([] call compile preprocessFileLineNumbers _defense_template);
         } else {
-            if !([] call is_admin) exitWith { systemchat "Error: Only admin can do that!" };
             { ctrlShow [_x, true] } foreach _input_controls;
             input_save = "";
             waitUntil {uiSleep 0.3; ((input_save != "") || !(dialog) || !(alive player))};
@@ -54,6 +53,9 @@ while { dialog && alive player } do {
 };
 
 if (build_action == 0) exitWith {};
+private _walls = count (_fob_pos nearObjects ["Wall_F", GRLIB_fob_range]);
+_walls = _walls + count (_fob_pos nearObjects ["HBarrier_base_F", GRLIB_fob_range]);
+if (_walls > 10) exitWith { systemchat "Cannot Start! Defense already present here!" };
 
 private _count_objects = count _objects_to_build;
 if (_count_objects == 0) exitWith {};

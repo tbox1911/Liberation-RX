@@ -1,7 +1,10 @@
 // format: [ Text in menu, template location, price, author]
 
-GRLIB_FOB_Defense = [
-    ["From Clipboard", "", 0, "You!"],
+GRLIB_FOB_Defense = [];
+if ([] call is_admin) then {
+    GRLIB_FOB_Defense = [["From Clipboard", "", 0, "You!"]];
+};
+GRLIB_FOB_Defense = GRLIB_FOB_Defense + [
     ["Small Defense 1", "scripts\fob_templates\defense1.sqf", 50, "-LRX-"],
     ["Small Defense 2", "scripts\fob_templates\defense2.sqf", 55, "-LRX-"],
     ["Medium Defense 1", "scripts\fob_templates\defense3.sqf", 80, "pSiKO"],
