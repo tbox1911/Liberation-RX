@@ -12,7 +12,7 @@ if (count _neartransport == 0) exitWith { hint localize "STR_BOX_CANTLOAD" };
 _neartransport = _neartransport select 0;
 private _maxload = 0;
 {
-	if ( _x select 0 == typeof _neartransport ) then { _maxload = (count _x) - 2 };
+	if ( _x select 0 == typeof _neartransport ) exitWith { _maxload = (count _x) - 2 };
 } foreach box_transport_config;
 
 private _truck_load = _neartransport getVariable ["GRLIB_ammo_truck_load", []];
