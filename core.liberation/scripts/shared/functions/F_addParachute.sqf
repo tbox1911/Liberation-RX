@@ -10,8 +10,10 @@ private _start_smoke = 80;
 private _one = floor (random (count _shell_smoke_code));
 private _two = floor (random (count _shell_smoke_code));
 
-private _text = format ["Air Drop %1 - Code %2 on %3", ([typeOf _vehicle] call F_getLRXName), (_shell_smoke_code select _one), (_shell_smoke_code select _two)];
-[gamelogic, _text] remoteExec ["globalChat", 0];
+if (typeOf _vehicle in all_friendly_classnames) then {
+	private _text = format ["Air Drop %1 - Code %2 on %3", ([typeOf _vehicle] call F_getLRXName), (_shell_smoke_code select _one), (_shell_smoke_code select _two)];
+	[gamelogic, _text] remoteExec ["globalChat", 0];
+};
 
 _vehicle allowDamage false;
 
