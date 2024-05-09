@@ -43,6 +43,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 		if ( floor(random 100) > 50 && count militia_vehicles > 0 ) then {
 			_opfor_veh = [_sector_pos, (selectRandom militia_vehicles)] call F_libSpawnVehicle;
 			_opfor_grp = group (driver _opfor_veh);
+			{ _x setVariable ["GRLIB_mission_AI", true, true] } forEach (units _opfor_grp);
 		} else {
 			_opfor_grp = [_sector_pos, (4 + floor random 6), "militia"] call createCustomGroup;
 		};
