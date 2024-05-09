@@ -117,8 +117,8 @@ if ( isServer ) then {
 				_isDriver = (driver (vehicle _killer) == _killer);
 
 				if ( _killer_side == GRLIB_side_friendly && (!isPlayer _killer) && (!_isDriver) ) then {
-					_owner_id = (vehicle _killer) getVariable ["GRLIB_vehicle_owner", ""];
-					if (_owner_id == "") then {
+					private _owner_id = (vehicle _killer) getVariable ["GRLIB_vehicle_owner", ""];
+					if (_owner_id in ["", "server"]) then {
 						_owner_id = (_killer getVariable ["PAR_Grp_ID", "0_0"]) splitString "_" select 1;
 					};
 					if (_owner_id != "0" && GRLIB_civ_penalties) then {
