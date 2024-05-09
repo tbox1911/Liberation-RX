@@ -5,7 +5,7 @@ private _fob_dir = getDir _fob;
 private _offset = [0,0,0];
 
 // Default
-if (_fob_class isKindOf "Cargo_HQ_base_F" ) then {
+if (_fob_class isKindOf "Cargo_HQ_base_F") then {
 	_offset = [5, -6, -0.2];
 	_fob_dir = _fob_dir + 90;
 };
