@@ -60,7 +60,7 @@ while { alive _vehicle && !(isNull _driver)} do {
 
 			default {};
 		};
-		_wait_max = time + (15*60);
+		_wait_max = time + (20*60);
 	};
 
 	// Rescued
