@@ -6,9 +6,4 @@ private _no_flight = (isTouchingGround player || getPos player select 2 <= 1);
 private _no_tunnel = !(player getVariable ["SOG_player_in_tunnel", false]);
 private _no_selection = (count (groupSelectedUnits player) == 0);
 
-private _ret = false;
-if (_alive && _on_foot && _R3F_move && _no_flight && _no_tunnel && _no_uav && _no_selection && build_confirmed == 0) then {
-	_ret = true;
-};
-
-_ret;
+(_alive && _on_foot && _R3F_move && _no_flight && _no_tunnel && _no_uav && _no_selection && build_confirmed == 0);
