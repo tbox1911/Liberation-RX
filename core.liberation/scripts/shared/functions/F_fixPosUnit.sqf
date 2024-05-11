@@ -24,7 +24,7 @@ if (_obstacle > 0) then { _minalt = 2.3 };
 private _minpos = ATLtoASL (_spawnpos vectorAdd [0,0,_minalt]);
 private _maxpos = ATLtoASL (_spawnpos vectorAdd [0,0,_maxalt]);
 
-if ( (lineIntersects [ATLtoASL _spawnpos, _minpos, _unit])) then {
+if (lineIntersects [ATLtoASL _spawnpos, _minpos, _unit]) then {
 	_unit allowDamage false;
 	while { (lineIntersects [ATLtoASL _spawnpos, _maxpos, _unit]) && _curalt < _maxalt } do {
 		_curalt = _curalt + 0.5;
