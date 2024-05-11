@@ -179,6 +179,9 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1 || buildtype =
 					if (([PAR_Grp_ID] call F_getMobileRespawnsPlayer) select 1) then {
 						_affordable = false;
 					};
+					if (GRLIB_allow_redeploy == 0) then {
+						_affordable = false;
+					};				
 				};
 				if (_build_class == playerbox_typename && _has_box) then {
 					_affordable = false;

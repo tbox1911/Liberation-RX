@@ -29,13 +29,9 @@ GRLIB_checkHalo = {
 };
 
 GRLIB_checkRedeploy = {
-	private _ret = false;
-	if (GRLIB_allow_redeploy == 0) then {
-		_ret = (GRLIB_player_is_menuok && GRLIB_player_near_base);
-	} else {
-		_ret = (GRLIB_player_is_menuok && GRLIB_player_near_spawn);
-	};
-	_ret;
+	if (GRLIB_allow_redeploy == 0) exitWith { false };
+	if (GRLIB_allow_redeploy == 1) exitWith { (GRLIB_player_is_menuok && GRLIB_player_near_spawn) };
+	if (GRLIB_allow_redeploy == 2) exitWith { (GRLIB_player_is_menuok && GRLIB_player_near_base) };
 };
 
 GRLIB_checkSendAmmo = {

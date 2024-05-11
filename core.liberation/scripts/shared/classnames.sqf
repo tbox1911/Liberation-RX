@@ -167,7 +167,7 @@ support_vehicles = support_vehicles + [
 	[mobile_respawn,10,50,0,0],
 	[canister_fuel_typename,0,25,0,0],
 	[playerbox_typename,0,0,0,20],
-	[Respawn_truck_typename,10,450,15,GRLIB_perm_log],
+	[Respawn_truck_typename,10,750,15,GRLIB_perm_log],
 	[huron_typename,10,1550,35,GRLIB_perm_tank],
 	[medic_heal_typename,0,100,0,GRLIB_perm_log],
 	["Land_RepairDepot_01_civ_F",0,300,0,GRLIB_perm_log],

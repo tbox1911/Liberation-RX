@@ -1,4 +1,5 @@
 // Public Hurron
+if (GRLIB_allow_redeploy == 0) exitWith {[]};
 private _respawn_huron_unsorted = [];
 if (
 	(alive GRLIB_vehicle_huron) &&
@@ -9,12 +10,10 @@ if (
    ) then { _respawn_huron_unsorted pushBack GRLIB_vehicle_huron };
 
 // Truck / Tent
-private _player_respawn_unsorted = [];
 private _allplayer_respawn_unsorted = [];
 if (GRLIB_allow_redeploy == 1) then {
 	{
-		_player_respawn_unsorted = ([getPlayerUID _x] call F_getMobileRespawnsPlayer) select 0;
-		_allplayer_respawn_unsorted append _player_respawn_unsorted;
+		_allplayer_respawn_unsorted append ([getPlayerUID _x] call F_getMobileRespawnsPlayer) select 0;
 	} forEach (AllPlayers - (entities "HeadlessClient_F"));
 };
 

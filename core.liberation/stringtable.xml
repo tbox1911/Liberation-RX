@@ -1828,8 +1828,8 @@
 			<French>PAR: Limite AI Résurection</French>
 		</Key>
 		<Key ID="STR_PARAMS_PAR_BLEEDOUT">
-			<Original>PAR: Bleedout Timer</Original>
-			<French>PAR: Durée Attente Blessé</French>
+			<Original>PAR: Bleedout Timer (sec)</Original>
+			<French>PAR: Durée Attente Blessé (sec)</French>
 		</Key>
 		<Key ID="STR_PARAMS_PAR_GRAVE">
 			<Original>PAR: Grave + Stuff in a box</Original>
@@ -5634,9 +5634,17 @@
 			<French>Nettoyer secteurs non attaqués (min)</French>
 		</Key>
 		<Key ID="STR_REDEPLOY">
-			<Original>Allow Redeploy to all mobile Respawn</Original>
-			<French>Autoriser le redéploiement sur tous les mobiles Respawn</French>
+			<Original>Allow Redeploy</Original>
+			<French>Autoriser Redéploiement</French>
 		</Key>
+		<Key ID="STR_PARAM_REDEPLOY_ALL">
+			<Original>Allow Everywhere</Original>
+			<French>Autoriser partout</French>
+		</Key>
+		<Key ID="STR_PARAM_REDEPLOY_FOB">
+			<Original>At FOB only</Original>
+			<French>Aux FOB seulement</French>
+		</Key>				
 		<Key ID="STR_ENABLE_AIR_SUPPORT">
 			<Original>Allow Air Support</Original>
 			<French>Autoriser le Support Aerien</French>
