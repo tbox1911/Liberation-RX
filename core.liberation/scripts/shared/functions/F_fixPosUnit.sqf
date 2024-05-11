@@ -1,21 +1,32 @@
+// Fix unit position when blocked in rock/ruins/object
+// by pSiKO - (thanks Larrow)
+
 params ["_unit"];
-// try to fix pos on rock/object (thanks Larrow)
+
 if (!alive _unit) exitWith {};
 if (!isNull objectParent _unit) exitWith {};
 if (speed vehicle _unit > 1) exitWith {};
 
-private _spawnpos = getPosATL _unit;
+private _spawnpos = (getPosATL _unit) vectorAdd [0,0,1];
 private _curalt = _spawnpos select 2;
-private _maxalt = 50;
+private _minalt = 5;
+private _maxalt = 30;
+
 if (_curalt >= _maxalt) exitWith {};
 if (surfaceIsWater _spawnpos) exitWith {};
 
-private _maxpos = _spawnpos vectorAdd [0,0,_maxalt];
-private _obstacle = count (nearestTerrainObjects [_unit, ["House","Building","Tree","Small Tree","Bush"], 5]);
+private _obstacle = count (nearestTerrainObjects [_unit, ["Tree","Small Tree"], 6]);
+if (_obstacle > 0) exitWith {};
 
-if ((lineIntersects [ATLtoASL _spawnpos, ATLtoASL _maxpos]) && _obstacle == 0) then {
+_obstacle = count (nearestTerrainObjects [_unit, ["House","Building"], 10]);
+if (_obstacle > 0) then { _minalt = 2.3 };
+
+private _minpos = ATLtoASL (_spawnpos vectorAdd [0,0,_minalt]);
+private _maxpos = ATLtoASL (_spawnpos vectorAdd [0,0,_maxalt]);
+
+if ( (lineIntersects [ATLtoASL _spawnpos, _minpos, _unit])) then {
 	_unit allowDamage false;
-	while { (lineIntersects [ATLtoASL _spawnpos, ATLtoASL _maxpos]) && _curalt < _maxalt } do {
+	while { (lineIntersects [ATLtoASL _spawnpos, _maxpos, _unit]) && _curalt < _maxalt } do {
 		_curalt = _curalt + 0.5;
 		_spawnpos set [2, _curalt];
 		sleep 0.1;
@@ -23,7 +34,7 @@ if ((lineIntersects [ATLtoASL _spawnpos, ATLtoASL _maxpos]) && _obstacle == 0) t
 	_unit setPosATL _spawnpos;
 	_unit switchMove "AmovPercMwlkSrasWrflDf";
 	_unit playMoveNow "AmovPercMwlkSrasWrflDf";
-	sleep 2;
+	sleep 3;
 	_unit setHitPointDamage ["hitLegs", 0];
 	_unit allowDamage true;	
 };
