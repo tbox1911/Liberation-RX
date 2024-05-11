@@ -2,6 +2,18 @@ params ["_unit"];
 
 if (rating _unit < -2000) exitWith {_unit setDamage 1};
 if (!([] call F_getValid)) exitWith {_unit setDamage 1};
+if (_unit getVariable ["PAR_isUnconscious", false]) exitWith {};
+
+_unit setUnconscious true;
+_unit setCaptive true;
+_unit allowDamage false;
+_unit setVariable ["PAR_isUnconscious", true, true];
+_unit setVariable ["PAR_BleedOutTimer", round(time + PAR_bleedout), true];
+_unit setVariable ["PAR_busy", nil];
+_unit setVariable ["PAR_heal", nil];
+_unit setVariable ["PAR_healed", nil];
+_unit setVariable ["PAR_myMedic", nil];
+_unit setVariable ["PAR_isDragged", 0, true];
 
 if (isPlayer _unit) then {
 	[] call PAR_show_marker;
@@ -12,33 +24,14 @@ if (isPlayer _unit) then {
 	_unit setVariable ["GRLIB_can_speak", false, true];
 	[_unit] call F_deathSound;
 };
-
-_unit setUnconscious true;
-_unit setCaptive true;
-_unit allowDamage false;
-
-waituntil {sleep 0.5; lifeState _unit == "INCAPACITATED" && (isTouchingGround (vehicle _unit) || (round (getPos _unit select 2) <= 1))};
-
-if (!isNil {_unit getVariable "PAR_busy"} || !isNil {_unit getVariable "PAR_heal"}) then {
-	_unit setVariable ["PAR_busy", nil];
-	_unit setVariable ["PAR_heal", nil];
-};
-
-_unit setVariable ["PAR_healed", nil];
-[(_unit getVariable ["PAR_myMedic", objNull]), _unit] call PAR_fn_medicRelease;
-
-_unit switchMove "AinjPpneMstpSnonWrflDnon";	// lay down
-_unit playMoveNow "AinjPpneMstpSnonWrflDnon";
-sleep 7;
+sleep 10;
+if (!alive _unit) exitWith {};
+waituntil {sleep 0.5; (isTouchingGround (vehicle _unit) || (round (getPos _unit select 2) <= 1))};
 
 if (PAR_ai_revive > 0 && !isPlayer _unit && local _unit) then {
 	private _cur_revive = _unit getVariable ["PAR_revive_max", PAR_ai_revive];
 	if (_cur_revive == 0) then { _unit setDamage 1; sleep 3 };
 };
-if (!alive _unit) exitWith {};
-
-_unit setVariable ["PAR_isUnconscious", true, true];
-if !(isPlayer _unit) then { sleep 3 };
 
 private _bld = [_unit] call PAR_spawn_blood;
 private _cnt = 0;
@@ -72,21 +65,26 @@ while { alive _unit && (_unit getVariable ["PAR_isUnconscious", false]) && time 
 };
 
 if (!isNull _bld) then { _bld spawn {sleep (30 + floor(random 30)); deleteVehicle _this} };
-[(_unit getVariable ["PAR_myMedic", objNull]), _unit] call PAR_fn_medicRelease;
+if (!alive _unit) exitWith {};
+
 if (isPlayer _unit) then {
 	[] call PAR_del_marker;
 	if (GRLIB_disable_death_chat) then { for "_channel" from 0 to 4 do { _channel enableChannel true } };
 };
 
 // Bad end
-if (!alive _unit) exitWith {};
-if (lifeState _unit == "INCAPACITATED" && time > _unit getVariable ["PAR_BleedOutTimer", 0]) exitWith {
+if (time > _unit getVariable ["PAR_BleedOutTimer", 0]) exitWith {
+	[(_unit getVariable ["PAR_myMedic", objNull]), _unit] call PAR_fn_medicRelease;
 	_unit setDamage 1;
 };
 
 // Good end
+_unit setVariable ["PAR_isDragged", 0, true];
 if (isPlayer _unit) then {
+	(group _unit) selectLeader _unit;
 	if (primaryWeapon _unit != "") then { _unit selectWeapon primaryWeapon _unit };
 } else {
 	_unit setVariable ["GRLIB_can_speak", true, true];
+	_unit setSpeedMode (speedMode group player);
+	_unit doFollow player;	
 };

@@ -175,7 +175,6 @@ if (_unit == player) then {
 			if (_isNotWounded && _dam >= 0.86) then {
 				_unit setVariable ["PAR_wounded", true, true];
 				if (!isNull _veh) then {[_unit, _veh] spawn PAR_fn_eject};
-				_unit setVariable ["PAR_BleedOutTimer", round(time + PAR_bleedout), true];
 				[_unit] spawn PAR_fn_unconscious;
 			};
 			_dam min 0.86;

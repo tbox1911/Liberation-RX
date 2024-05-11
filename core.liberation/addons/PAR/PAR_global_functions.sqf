@@ -295,8 +295,6 @@ PAR_HandleDamage_EH = {
 	if ( _isNotWounded && _amountOfDamage >= 0.86) then {
 		if (!(isNull _veh_unit)) then {[_unit, _veh_unit] spawn PAR_fn_eject};
 		_unit setVariable ["PAR_wounded", true, true];
-		_unit setVariable ["PAR_isUnconscious", true, true];
-		_unit setVariable ["PAR_BleedOutTimer", round(time + PAR_bleedout), true];
 		[_unit, _killer] spawn PAR_Player_Unconscious;
 	};
 
@@ -322,10 +320,6 @@ PAR_Player_Unconscious = {
 	};
 	_unit globalChat _medic_message;
 
-	disableUserInput false;
-	disableUserInput true;
-	disableUserInput false;
-
 	// Mute Radio
 	5 fadeRadio 0;
 
@@ -335,19 +329,17 @@ PAR_Player_Unconscious = {
 
 	// PAR AI Revive Call
 	[_unit] spawn PAR_fn_unconscious;
+	sleep 1;
 
-	while { !isNull _unit && alive _unit && (_unit getVariable ["PAR_isUnconscious", false])} do {
+	while { alive _unit && (_unit getVariable ["PAR_isUnconscious", false])} do {
 		private _bleedOut = player getVariable ["PAR_BleedOutTimer", 0];
 		public_bleedout_message = format [localize "STR_BLEEDOUT_MESSAGE", round (_bleedOut - time)];
 		public_bleedout_timer = round (_bleedOut - time);
 		sleep 0.5;
 	};
 
-	if (alive _unit && !(_unit getVariable ["PAR_isUnconscious", false])) then {
-		// Player got revived
-		_unit switchMove "amovppnemstpsraswrfldnon";
-		_unit playMoveNow "amovppnemstpsraswrfldnon";
-
+	// Player got revived
+	if (!(_unit getVariable ["PAR_isUnconscious", false])) then {
 		// Unmute Radio
 		5 fadeRadio 1;
 
