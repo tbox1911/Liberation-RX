@@ -6,14 +6,13 @@ _unit setVariable ['PAR_wounded', false];
 if (_unit == player) then {
 	titleText ["" ,"BLACK FADED", 100];
 	_unit connectTerminalToUAV objNull;
+	removeAllActions _unit;
 
 	// Grave + Save Stuff
 	private _pos = getPosATL _unit;
-	if (PAR_grave == 1 && isNull objectParent player &&
-		!([_unit, "LHD", GRLIB_capture_size] call F_check_near) &&
-		(_pos select 2) <= 2 && !(surfaceIsWater _pos)) then {
+	if (PAR_grave == 1 && isNull objectParent player &&	!([_unit, "LHD", GRLIB_capture_size] call F_check_near) && (_pos select 2) <= 2 && !(surfaceIsWater _pos)) then {
+
 		// Clean body
-		removeAllActions _unit;
 		removeAllWeapons _unit;
 		_unit setPosATL ((markerPos GRLIB_respawn_marker) vectorAdd [floor random 5, floor random 5, 0.5]);
 
