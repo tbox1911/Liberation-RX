@@ -1,6 +1,5 @@
 params ["_readiness"];
 
-if ( isNil "active_sectors" ) then { active_sectors = [] };
 private [
 	"_usable_sectors",
 	"_all_players",

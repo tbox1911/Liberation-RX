@@ -97,7 +97,6 @@ while { true } do {
 				} foreach active_sectors;
 				_active_sectors_string = _active_sectors_string + "</t>";
 				(_overlay displayCtrl (516)) ctrlSetStructuredText parseText _active_sectors_string;
-
 			} else {
 				(_overlay displayCtrl (516)) ctrlSetStructuredText parseText " ";
 				(_overlay displayCtrl (517)) ctrlShow false;

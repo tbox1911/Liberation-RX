@@ -5,7 +5,6 @@ private [
 	"_nearest_sector", "_unitname"
 ];
 
-if ( isNil "active_sectors" ) then { active_sectors = [] };
 if ( isNil "GRLIB_all_fobs" ) then { GRLIB_all_fobs = [] };
 
 titleText ["" ,"BLACK IN", 3];

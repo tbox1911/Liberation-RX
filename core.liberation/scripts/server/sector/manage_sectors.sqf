@@ -1,6 +1,3 @@
-active_sectors = [];
-publicVariable "active_sectors";
-
 waitUntil {sleep 1; !isNil "opfor_sectors" };
 waitUntil {sleep 1; !isNil "sectors_allSectors" };
 

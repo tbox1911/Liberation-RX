@@ -1,4 +1,3 @@
-if ( isNil "active_sectors" ) then { active_sectors = [] };
 private [
 	"_usable_sectors",
 	"_sectorpos",
