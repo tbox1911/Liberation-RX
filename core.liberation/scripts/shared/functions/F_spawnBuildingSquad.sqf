@@ -1,4 +1,4 @@
-params [ "_infsquad", "_building_ai_max", "_sectorpos", ["_building_range", 100] ];
+params [ "_infsquad", "_building_ai_max", "_sectorpos", ["_building_range", GRLIB_capture_size] ];
 
 if (_building_ai_max == 0) exitWith  {[]};
 
@@ -12,7 +12,7 @@ switch (_infsquad) do {
 };
 
 private _building_classname = [
-	"House",
+	"House_F",
 	"Cargo_HQ_base_F",
 	"Cargo_Patrol_base_F",
 	"Cargo_Tower_base_F",
