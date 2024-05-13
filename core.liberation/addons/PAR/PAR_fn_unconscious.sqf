@@ -65,12 +65,13 @@ while { alive _unit && (_unit getVariable ["PAR_isUnconscious", false]) && time 
 };
 
 if (!isNull _bld) then { _bld spawn {sleep (30 + floor(random 30)); deleteVehicle _this} };
-if (!alive _unit) exitWith {};
 
 if (isPlayer _unit) then {
 	[] call PAR_del_marker;
 	if (GRLIB_disable_death_chat) then { for "_channel" from 0 to 4 do { _channel enableChannel true } };
 };
+
+if (!alive _unit) exitWith {};
 
 // Bad end
 if (time > _unit getVariable ["PAR_BleedOutTimer", 0]) exitWith {
