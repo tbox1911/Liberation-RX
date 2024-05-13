@@ -51,7 +51,7 @@ while { true } do {
 				_near_arsenal = [_unit, "REAMMO_AI", _distarsenal] call F_check_near;
 				_primary_weapon = primaryWeapon _unit;
 				_secondary_weapon = secondaryWeapon _unit;
-				if (_near_arsenal && (_primary_weapon != "" || _secondary_weapon != ""))  then {
+				if (_near_arsenal && (_primary_weapon != "" || _secondary_weapon != "")) then {
 					_maxpri = _maxpri_def;
 					_minpri = _minpri_def;
 

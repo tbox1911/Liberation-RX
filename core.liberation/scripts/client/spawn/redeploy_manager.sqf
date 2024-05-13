@@ -20,7 +20,7 @@ waitUntil {
 createDialog "liberation_deploy";
 waitUntil { dialog };
 titleText ["","BLACK IN", 5];
-((findDisplay 5201) displayCtrl 201) ctrlAddEventHandler [ "mouseButtonDblClick" , { deploy = 1; } ];
+((findDisplay 5201) displayCtrl 201) ctrlAddEventHandler ["mouseButtonDblClick", { deploy = 1; }];
 private _noesckey = (findDisplay 5201) displayAddEventHandler ["KeyDown", "if ((_this select 1) == 1) then { true }"];
 disableUserInput false;
 disableUserInput true;
