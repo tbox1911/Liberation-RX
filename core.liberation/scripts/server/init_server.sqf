@@ -42,21 +42,14 @@ GRLIB_side_friendly setFriend [civilian, 1];
 civilian setFriend [GRLIB_side_enemy, 1];
 GRLIB_side_enemy setFriend [civilian, 1];
 
-if (GRLIB_side_enemy == INDEPENDENT) then {
-	resistance setFriend [GRLIB_side_enemy, 1];
-	GRLIB_side_enemy setFriend [resistance, 1];
-	resistance setFriend [GRLIB_side_friendly, 0];
-	GRLIB_side_friendly setFriend [resistance, 0];
-} else {
-	resistance setFriend [GRLIB_side_friendly, 1];
-	GRLIB_side_friendly setFriend [resistance, 1];
-	resistance setFriend [GRLIB_side_enemy, 0];
-	GRLIB_side_enemy setFriend [resistance, 0];
-};
+resistance setFriend [GRLIB_side_friendly, 1];
+GRLIB_side_friendly setFriend [resistance, 1];
+resistance setFriend [GRLIB_side_enemy, 0];
+GRLIB_side_enemy setFriend [resistance, 0];
 
 // Init owner on map vehicles
 {
-	if (_x isKindOf "AllVehicles") then {
+	if (_x iskindof "LandVehicle" || _x iskindof "Air" || _x iskindof "Ship") then {
 		_x removeAllMPEventHandlers "MPKilled";
 		_x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		if (isNil {_x getVariable "GRLIB_vehicle_owner"} ) then {
