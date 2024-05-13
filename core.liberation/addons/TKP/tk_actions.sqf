@@ -38,7 +38,7 @@ if (_kill > GRLIB_tk_count) exitWith {
 	createDialog "deathscreen";
 	waitUntil { dialog };
 	player setpos [0,0,0];
-	_noesckey = (findDisplay 5651) displayAddEventHandler ["KeyDown", "if ((_this select 1) == 1) then { true }"];
+	private _noesckey = (findDisplay 5651) displayAddEventHandler ["KeyDown", "if ((_this select 1) == 1) then { true }"];
 	ctrlSetText [4867, "YOU HAVE BEEN BANNED"];
 	sleep 3;
 	ctrlSetText [4867, "FOR BAD GAMING..."];
