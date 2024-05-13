@@ -61,5 +61,5 @@ while { true } do {
 		} forEach GRLIB_sector_defense;
 	};
 
-	sleep 5;
+	sleep 3;
 };
