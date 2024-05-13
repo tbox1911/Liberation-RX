@@ -13,6 +13,7 @@ switch (_cmd) do {
 		_vehicle setVariable ["GRLIB_counter_TTL", nil, true];
 		_vehicle setVariable ["GRLIB_last_killer", nil, true];
 		_vehicle engineOn false;
+		_vehicle enableSimulationGlobal false;
 	 };
 	case "unlock" : {
 		_vehicle lockCargo false;
@@ -21,6 +22,8 @@ switch (_cmd) do {
 		{ _vehicle lockTurret [_x, false] } forEach (allTurrets _vehicle);
 		_vehicle setVehicleLock "UNLOCKED";
 		_vehicle setVariable ["R3F_LOG_disabled", false, true];
+		_vehicle enableSimulationGlobal true;
+		{_x reveal _vehicle} forEach (units GRLIB_side_friendly);
 	};
 	case "abandon" : {
 		_vehicle lockCargo false;
@@ -31,5 +34,7 @@ switch (_cmd) do {
 		_vehicle setVariable ["R3F_LOG_disabled", false, true];
 		_vehicle setVariable ["GRLIB_vehicle_owner", "", true];
 		[_vehicle] call RPT_fnc_ResetVehicle;
+		_vehicle enableSimulationGlobal true;
+		{_x reveal _vehicle} forEach (units GRLIB_side_friendly);
 	};
 };

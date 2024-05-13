@@ -60,8 +60,8 @@ if (typeName (_classlist select 0) == "STRING") then {
 		_near = _obj_list select {
 			alive _x && getObjectType _x >= 8 &&
 			(
-				isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) ||
-				!(_x getVariable ['R3F_LOG_disabled', true])
+				!(_x getVariable ['R3F_LOG_disabled', false]) ||
+				!(isNull (attachedTo  _x))
 			)
 		};
 	};

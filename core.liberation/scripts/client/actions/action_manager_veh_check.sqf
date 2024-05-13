@@ -69,7 +69,7 @@ GRLIB_checkAction_SendArsenal = {
 
 GRLIB_checkAction_Pickup_Weapons = {
 	params ["_target", "_unit"];
-	(GRLIB_player_is_menuok && alive _target && load _target < 0.8)
+	(GRLIB_player_is_menuok && alive _target && load _target < 0.8 && !(_target getVariable ['R3F_LOG_disabled', false]))
 };
 
 GRLIB_checkAction_UnpackInventory = {
