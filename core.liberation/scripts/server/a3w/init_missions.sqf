@@ -49,7 +49,7 @@ for "_i" from 1 to 4 do {
 	while {_init_sleep > 0 && isNil "A3W_debug"} do { sleep 1; _init_sleep = _init_sleep - 1 };
 	diag_log format ["--- LRX A3W Starting Mission Controller #%1 at %2", _i, time];
 	if ((_i == 1) || (_i > 1 && isNil "A3W_debug")) then {
-		[_i, false] execVM "scripts\server\a3w\missions\sideMissionController.sqf";
+		[_i, false] spawn compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\sideMissionController.sqf";
 	};
 	sleep 60;
 };

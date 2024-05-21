@@ -9,6 +9,6 @@ GRLIB_wildlife_max = 6;
 
 sleep 333;
 for "_i" from 1 to GRLIB_wildlife_max do {
-	[] execVM "scripts\server\wildlife\manage_one_wildlife.sqf";
+	[] spawn compileFinal preprocessFileLineNumbers "scripts\server\wildlife\manage_one_wildlife.sqf";
 	sleep 14;
 };

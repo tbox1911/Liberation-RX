@@ -2,6 +2,8 @@ params [["_full", true]];
 private ["_marker"];
 private _marker_debug = false;
 
+waitUntil { sleep 1; !isNil "opfor_sectors" };
+
 if (_full) then {
 	// Game markers
 	_marker = createMarkerLocal ["zone_capture", markers_reset];
@@ -28,7 +30,7 @@ if (_full) then {
 	GRLIB_Marker_SHOP = [];
 
 	// Objects too long to search (atm, phone, etc ..)
-	[] call compileFinal preprocessFileLineNUmbers "fixed_position.sqf";
+	[] call compileFinal preprocessFileLineNumbers "fixed_position.sqf";
 
 	waituntil {sleep 1; !isNil "GRLIB_sectors_init"};
 	waituntil {sleep 1; !isNil "GRLIB_marker_init"};

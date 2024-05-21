@@ -34,6 +34,6 @@ _unit setVariable ["GRLIB_action_inuse", false, true];
 _unit setVariable ["SOG_player_in_tunnel", nil];
 _unit allowDamage true;
 
-[] execVM "scripts\client\spawn\player_loadout.sqf";
-[] execVM "scripts\client\spawn\redeploy_manager.sqf";
-[] execVM "scripts\client\misc\welcome.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\client\spawn\player_loadout.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\client\spawn\redeploy_manager.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\client\misc\welcome.sqf";

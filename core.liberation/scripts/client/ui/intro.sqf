@@ -54,7 +54,7 @@ disableUserInput true;
 closeDialog 0;
 
 if ( howtoplay == 1 ) then {
-	[] call compileFinal preprocessFileLineNUmbers "scripts\client\ui\tutorial_manager.sqf";
+	[] call compileFinal preprocessFileLineNumbers "scripts\client\ui\tutorial_manager.sqf";
 };
 
 cinematic_camera_started = false;

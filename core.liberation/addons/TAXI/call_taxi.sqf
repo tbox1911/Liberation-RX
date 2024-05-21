@@ -138,7 +138,7 @@ _vehicle lockCargo true;
 sleep 1;
 
 // Eject cargo
-[_vehicle] execVM "addons\TAXI\taxi_eject.sqf";
+[_vehicle] call compileFinal preprocessFileLineNumbers "addons\TAXI\taxi_eject.sqf";
 sleep 1;
 
 // Go back

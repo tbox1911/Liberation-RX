@@ -16,7 +16,7 @@ mdh_nuke_ash				= 1;	// ASH AFTER NUKEDETONATION 1=ON, 0=OFF
 /////////////////////////////////////////////////////////////////////////////////////////
 
 // Usage:
-//[_target] execVM "addons\NUKE\nuke.sqf";
+//[_target] spawn compileFinal preprocessFileLineNumbers "addons\NUKE\nuke.sqf";
 //*******************************************************************
 
 [5] spawn BIS_fnc_earthquake;
@@ -63,16 +63,16 @@ _light setLightColor[1500, 1200, 1000];
 _light setLightBrightness 100000.0;
 
 //*******************************************************************
-[] execVM "addons\NUKE\flash.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "addons\NUKE\flash.sqf";
 sleep 6;
-[] execVM "addons\NUKE\colorcorrection.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "addons\NUKE\colorcorrection.sqf";
 
 //--- Earthquake
 [5] spawn BIS_fnc_earthquake;
 sleep 2;
 
 // ASH
-[] execVM "addons\NUKE\ash.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "addons\NUKE\ash.sqf";
 
 // NUKE DESTRUCTION ZONE, USE ZERO/0 AS PARAMETER TO DEACTIVATE DESTRUCTION
 if (mdh_nuke_destruction_zone > 0) then {

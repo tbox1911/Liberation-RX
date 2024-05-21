@@ -26,17 +26,17 @@ if (!abort_loading) then {
 	[] spawn compileFinal preprocessFileLineNumbers "addons\VAM\RPT_init.sqf";
 
 	if (GRLIB_ACE_enabled) then {
-		[] execVM "scripts\shared\init_ace.sqf";
+		[] spawn compileFinal preprocessFileLineNumbers "scripts\shared\init_ace.sqf";
 	} else {
-		[] execVM "R3F_LOG\init.sqf";
+		[] spawn compileFinal preprocessFileLineNumbers "R3F_LOG\init.sqf";
 	};
 
 	if (isServer) then {
-		[] execVM "scripts\server\init_server.sqf";
+		[] spawn compileFinal preprocessFileLineNumbers "scripts\server\init_server.sqf";
 	};
 
 	if (!isDedicated && !hasInterface && isMultiplayer) then {
-		[] execVM "scripts\server\offloading\hc_manager.sqf";
+		[] spawn compileFinal preprocessFileLineNumbers "scripts\server\offloading\hc_manager.sqf";
 	};
 } else {
 	if (isServer) then {
@@ -53,7 +53,7 @@ if (!abort_loading) then {
 if (!isDedicated && hasInterface) then {
 	titleText ["-- Liberation RX --","BLACK FADED", 100];
 	waitUntil { sleep 1; !isNil "GRLIB_init_server" };
-	[] execVM "scripts\client\init_client.sqf";
+	[] spawn compileFinal preprocessFileLineNumbers "scripts\client\init_client.sqf";
 };
 
 diag_log "--- Init stop ---";

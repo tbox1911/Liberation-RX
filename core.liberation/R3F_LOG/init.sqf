@@ -44,7 +44,7 @@
 	[_path] call F_getTemplateFile;
 
 	// Chargement du fichier de langage
-	call compile preprocessFile format ["R3F_LOG\%1_strings_lang.sqf", R3F_LOG_CFG_language];
+	call compile preprocessFileLineNumbers format ["R3F_LOG\%1_strings_lang.sqf", R3F_LOG_CFG_language];
 
 	// Dedup list
 	R3F_LOG_CFG_can_tow = R3F_LOG_CFG_can_tow arrayIntersect R3F_LOG_CFG_can_tow;
@@ -120,7 +120,7 @@
 
 		// /* Prot�ge les objets pr�sents dans R3F_LOG_liste_objets_a_proteger */
 		// if (count R3F_LOG_liste_objets_a_proteger > 0) then {
-		// 	[] execVM "R3F_LOG\surveiller_objets_a_proteger.sqf";
+		// 	[] spawn compileFinal preprocessFileLineNumbers "R3F_LOG\surveiller_objets_a_proteger.sqf";
 		// };
 	};
 
@@ -172,7 +172,7 @@
 	/** Pseudo-mutex permettant de n'ex�cuter qu'un script de manipulation d'objet � la fois (true : v�rouill�) */
 	R3F_LOG_mutex_local_verrou = false;
 
-	call compile preprocessFile "R3F_LOG\fonctions_generales\lib_geometrie_3D.sqf";
+	call compile preprocessFileLineNumbers "R3F_LOG\fonctions_generales\lib_geometrie_3D.sqf";
 
 	// Indices du tableau des fonctionnalit�s retourn� par R3F_LOG_FNCT_determiner_fonctionnalites_logistique
 	R3F_LOG_IDX_can_be_depl_heli_remorq_transp = 0;
@@ -187,9 +187,9 @@
 	R3F_LOG_IDX_can_be_transported_cargo_cout = 9;
 	R3F_LOG_CST_zero_log = [false, false, false, false, false, false, false, 0, false, 0];
 
-	R3F_LOG_FNCT_determiner_fonctionnalites_logistique = compile preprocessFile "R3F_LOG\fonctions_generales\determiner_fonctionnalites_logistique.sqf";
-	R3F_LOG_FNCT_calculer_chargement_vehicule = compile preprocessFile "R3F_LOG\transporteur\calculer_chargement_vehicule.sqf";
-	R3F_LOG_FNCT_transporteur_charger_auto = compile preprocessFile "R3F_LOG\transporteur\charger_auto.sqf";
+	R3F_LOG_FNCT_determiner_fonctionnalites_logistique = compile preprocessFileLineNumbers "R3F_LOG\fonctions_generales\determiner_fonctionnalites_logistique.sqf";
+	R3F_LOG_FNCT_calculer_chargement_vehicule = compile preprocessFileLineNumbers "R3F_LOG\transporteur\calculer_chargement_vehicule.sqf";
+	R3F_LOG_FNCT_transporteur_charger_auto = compile preprocessFileLineNumbers "R3F_LOG\transporteur\charger_auto.sqf";
 
 	// Un serveur d�di� n'en a pas besoin
 	if !(isDedicated) then
@@ -206,34 +206,34 @@
 		/** Tableau contenant toutes les usines cr��es */
 		R3F_LOG_CF_liste_usines = [];
 
-		call compile preprocessFile "R3F_LOG\fonctions_generales\lib_visualisation_objet.sqf";
+		call compile preprocessFileLineNumbers "R3F_LOG\fonctions_generales\lib_visualisation_objet.sqf";
 
-		R3F_LOG_FNCT_objet_relacher = compile preprocessFile "R3F_LOG\objet_deplacable\relacher.sqf";
-		R3F_LOG_FNCT_objet_deplacer = compile preprocessFile "R3F_LOG\objet_deplacable\deplacer.sqf";
+		R3F_LOG_FNCT_objet_relacher = compile preprocessFileLineNumbers "R3F_LOG\objet_deplacable\relacher.sqf";
+		R3F_LOG_FNCT_objet_deplacer = compile preprocessFileLineNumbers "R3F_LOG\objet_deplacable\deplacer.sqf";
 
-		R3F_LOG_FNCT_heliporteur_heliporter = compile preprocessFile "R3F_LOG\heliporteur\heliporter.sqf";
-		R3F_LOG_FNCT_heliporteur_larguer = compile preprocessFile "R3F_LOG\heliporteur\larguer.sqf";
-		R3F_LOG_FNCT_heliporteur_init = compile preprocessFile "R3F_LOG\heliporteur\heliporteur_init.sqf";
+		R3F_LOG_FNCT_heliporteur_heliporter = compile preprocessFileLineNumbers "R3F_LOG\heliporteur\heliporter.sqf";
+		R3F_LOG_FNCT_heliporteur_larguer = compile preprocessFileLineNumbers "R3F_LOG\heliporteur\larguer.sqf";
+		R3F_LOG_FNCT_heliporteur_init = compile preprocessFileLineNumbers "R3F_LOG\heliporteur\heliporteur_init.sqf";
 
-		R3F_LOG_FNCT_remorqueur_detacher = compile preprocessFile "R3F_LOG\remorqueur\detacher.sqf";
-		R3F_LOG_FNCT_remorqueur_remorquer_deplace = compile preprocessFile "R3F_LOG\remorqueur\remorquer_deplace.sqf";
-		R3F_LOG_FNCT_remorqueur_remorquer_direct = compile preprocessFile "R3F_LOG\remorqueur\remorquer_direct.sqf";
-		R3F_LOG_FNCT_remorqueur_init = compile preprocessFile "R3F_LOG\remorqueur\remorqueur_init.sqf";
+		R3F_LOG_FNCT_remorqueur_detacher = compile preprocessFileLineNumbers "R3F_LOG\remorqueur\detacher.sqf";
+		R3F_LOG_FNCT_remorqueur_remorquer_deplace = compile preprocessFileLineNumbers "R3F_LOG\remorqueur\remorquer_deplace.sqf";
+		R3F_LOG_FNCT_remorqueur_remorquer_direct = compile preprocessFileLineNumbers "R3F_LOG\remorqueur\remorquer_direct.sqf";
+		R3F_LOG_FNCT_remorqueur_init = compile preprocessFileLineNumbers "R3F_LOG\remorqueur\remorqueur_init.sqf";
 
-		R3F_LOG_FNCT_transporteur_charger_deplace = compile preprocessFile "R3F_LOG\transporteur\charger_deplace.sqf";
-		R3F_LOG_FNCT_transporteur_charger_selection = compile preprocessFile "R3F_LOG\transporteur\charger_selection.sqf";
-		R3F_LOG_FNCT_transporteur_decharger = compile preprocessFile "R3F_LOG\transporteur\decharger.sqf";
-		R3F_LOG_FNCT_transporteur_selectionner_objet = compile preprocessFile "R3F_LOG\transporteur\selectionner_objet.sqf";
-		R3F_LOG_FNCT_transporteur_voir_contenu_vehicule = compile preprocessFile "R3F_LOG\transporteur\voir_contenu_vehicule.sqf";
-		R3F_LOG_FNCT_transporteur_init = compile preprocessFile "R3F_LOG\transporteur\transporteur_init.sqf";
+		R3F_LOG_FNCT_transporteur_charger_deplace = compile preprocessFileLineNumbers "R3F_LOG\transporteur\charger_deplace.sqf";
+		R3F_LOG_FNCT_transporteur_charger_selection = compile preprocessFileLineNumbers "R3F_LOG\transporteur\charger_selection.sqf";
+		R3F_LOG_FNCT_transporteur_decharger = compile preprocessFileLineNumbers "R3F_LOG\transporteur\decharger.sqf";
+		R3F_LOG_FNCT_transporteur_selectionner_objet = compile preprocessFileLineNumbers "R3F_LOG\transporteur\selectionner_objet.sqf";
+		R3F_LOG_FNCT_transporteur_voir_contenu_vehicule = compile preprocessFileLineNumbers "R3F_LOG\transporteur\voir_contenu_vehicule.sqf";
+		R3F_LOG_FNCT_transporteur_init = compile preprocessFileLineNumbers "R3F_LOG\transporteur\transporteur_init.sqf";
 
-		R3F_LOG_FNCT_objet_init = compile preprocessFile "R3F_LOG\objet_commun\objet_init.sqf";
-		R3F_LOG_FNCT_objet_est_verrouille = compile preprocessFile "R3F_LOG\objet_commun\objet_est_verrouille.sqf";
-		R3F_LOG_FNCT_deverrouiller_objet = compile preprocessFile "R3F_LOG\objet_commun\deverrouiller_objet.sqf";
-		R3F_LOG_FNCT_definir_proprietaire_verrou = compile preprocessFile "R3F_LOG\objet_commun\definir_proprietaire_verrou.sqf";
+		R3F_LOG_FNCT_objet_init = compile preprocessFileLineNumbers "R3F_LOG\objet_commun\objet_init.sqf";
+		R3F_LOG_FNCT_objet_est_verrouille = compile preprocessFileLineNumbers "R3F_LOG\objet_commun\objet_est_verrouille.sqf";
+		R3F_LOG_FNCT_deverrouiller_objet = compile preprocessFileLineNumbers "R3F_LOG\objet_commun\deverrouiller_objet.sqf";
+		R3F_LOG_FNCT_definir_proprietaire_verrou = compile preprocessFileLineNumbers "R3F_LOG\objet_commun\definir_proprietaire_verrou.sqf";
 
-		R3F_LOG_FNCT_formater_fonctionnalites_logistique = compile preprocessFile "R3F_LOG\fonctions_generales\formater_fonctionnalites_logistique.sqf";
-		R3F_LOG_FNCT_formater_nombre_entier_milliers = compile preprocessFile "R3F_LOG\fonctions_generales\formater_nombre_entier_milliers.sqf";
+		R3F_LOG_FNCT_formater_fonctionnalites_logistique = compile preprocessFileLineNumbers "R3F_LOG\fonctions_generales\formater_fonctionnalites_logistique.sqf";
+		R3F_LOG_FNCT_formater_nombre_entier_milliers = compile preprocessFileLineNumbers "R3F_LOG\fonctions_generales\formater_nombre_entier_milliers.sqf";
 
 		// Liste des variables activant ou non les actions de menu
 		R3F_LOG_action_charger_deplace_valide = false;
@@ -313,10 +313,10 @@
 		R3F_LOG_PUBVAR_nouvel_objet_a_initialiser = false;
 
 		/* V�rification permanente des conditions donnant acc�s aux addAction */
-		[] execVM "R3F_LOG\surveiller_conditions_actions_menu.sqf";
+		[] spawn compileFinal preprocessFileLineNumbers "R3F_LOG\surveiller_conditions_actions_menu.sqf";
 
 		/* Auto-d�tection permanente des objets sur le jeu */
-		[] execVM "R3F_LOG\surveiller_nouveaux_objets.sqf";
+		[] spawn compileFinal preprocessFileLineNumbers "R3F_LOG\surveiller_nouveaux_objets.sqf";
 
 		/*
 		 * Syst�me assurant la protection contre les blessures lors du d�placement d'objets
@@ -324,7 +324,7 @@
 		 * Seuls les joueurs et les IA command�es par les joueurs (locales) seront prot�g�s.
 		 * Les IA n'�tant pas command�es par un joueur ne seront pas prot�g�es, ce qui est un moindre mal.
 		 */
-		//[] execVM "R3F_LOG\systeme_protection_blessures.sqf";
+		//[] spawn compileFinal preprocessFileLineNumbers "R3F_LOG\systeme_protection_blessures.sqf";
 	};
 
 	R3F_LOG_active = true;
