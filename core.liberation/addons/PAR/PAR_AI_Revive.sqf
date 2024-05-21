@@ -27,8 +27,8 @@ _________________________________________________________________________*/
 if (!hasInterface) exitWith {};
 
 // Init functions
-[] call compile preprocessFile "addons\TKP\tk_init.sqf";
-[] call compile preprocessFile "addons\PAR\PAR_global_functions.sqf";
+[] call compile preprocessFileLineNumbers "addons\TKP\tk_init.sqf";
+[] call compile preprocessFileLineNumbers "addons\PAR\PAR_global_functions.sqf";
 
 // Seconds until unconscious unit bleeds out and dies.
 // PAR_bleedout = 300;    // from settings

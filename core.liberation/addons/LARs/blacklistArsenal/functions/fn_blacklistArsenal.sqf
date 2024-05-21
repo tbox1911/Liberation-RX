@@ -25,7 +25,7 @@
 #define PARMS( _var, _index, _count ) [ [], _var select [ _index, _count ] ] select ( count _var >= ( _index + _count ) )
 
 //Arsenal OBJECT
-ERROR ( params [
+ERROR( params [
 	[ "_box", objNull, [ objNull ] ]
 ] ) exitWith {
 	"Invalid OBJECT to attach arsenal to" call BIS_fnc_error;

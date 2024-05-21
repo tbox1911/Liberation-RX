@@ -8,7 +8,7 @@ R3F_LOG_CFG_can_transport_cargo = [];
 R3F_LOG_CFG_can_be_transported_cargo = [];
 R3F_LOG_CFG_can_be_moved_by_player = [];
 
-[] call compileFinal preprocessFile "R3F_LOG\addons_config\Liberation.sqf";
+[] call compileFinal preprocessFileLineNumbers "R3F_LOG\addons_config\Liberation.sqf";
 private _path = format ["mod_template\%1\classnames_r3f.sqf", GRLIB_mod_west];
 [_path] call F_getTemplateFile;
 private _path = format ["mod_template\%1\classnames_r3f.sqf", GRLIB_mod_east];
@@ -39,8 +39,8 @@ GRLIB_ACE_blacklist = [
 ];
 
 // R3F functions
-[] call compile preprocessFile "R3F_LOG\fonctions_generales\lib_geometrie_3D.sqf";
-R3F_LOG_FNCT_objet_deplacer = compile preprocessFile "R3F_LOG\objet_deplacable\deplacer.sqf";
+[] call compile preprocessFileLineNumbers "R3F_LOG\fonctions_generales\lib_geometrie_3D.sqf";
+R3F_LOG_FNCT_objet_deplacer = compile preprocessFileLineNumbers "R3F_LOG\objet_deplacable\deplacer.sqf";
 
 // Force Arsenal Filter Strict mode 3
 //if (GRLIB_filter_arsenal == 2) then {GRLIB_filter_arsenal = 3};

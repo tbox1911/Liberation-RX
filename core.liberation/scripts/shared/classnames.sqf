@@ -8,7 +8,7 @@ zeropos = [0,0,10000];
 // All Object classname used in LRX must be declared here
 
 // *** DEFAULT ***
-[] call compileFinal preprocessFileLineNUmbers format ["scripts\shared\default_classnames.sqf"];
+[] call compileFinal preprocessFileLineNumbers format ["scripts\shared\default_classnames.sqf"];
 
 private ["_ret", "_path"];
 

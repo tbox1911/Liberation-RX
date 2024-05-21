@@ -4,7 +4,7 @@
 GRLIB_map_modder = "Unknow";
 GRLIB_west_modder = "Unknow";
 GRLIB_east_modder = "Unknow";
-[] call compileFinal preprocessFileLineNUmbers "gameplay_constants.sqf";
+[] call compileFinal preprocessFileLineNumbers "gameplay_constants.sqf";
 GRLIB_params_save_key = format ["%1-config", GRLIB_save_key];
 
 // Detect Addons
@@ -38,7 +38,7 @@ GRLIB_WS_enabled = isClass(configFile >> "CfgPatches" >> "data_f_lxWS"); // Retu
 GRLIB_ASZ_enabled = isClass(configFile >> "CfgPatches" >> "mas_itl_lite_weapons"); // Returns true if Italian ASZ is enabled
 
 // Classename MOD source
-[] call compileFinal preprocessFileLineNUmbers "mod_template\mod_init.sqf";
+[] call compileFinal preprocessFileLineNumbers "mod_template\mod_init.sqf";
 LRX_mod_list_west = [];
 LRX_mod_list_east = [];
 LRX_mod_list_name = [];
@@ -63,7 +63,7 @@ if (abort_loading) exitWith { abort_loading_msg = format [
 };
 
 // Mission Parameter constant
-[] call compileFinal preprocessFileLineNUmbers "mission_params.sqf";
+[] call compileFinal preprocessFileLineNumbers "mission_params.sqf";
 
 // Parameters from Lobby
 GRLIB_use_whitelist = ["Whitelist",1] call bis_fnc_getParamValue;

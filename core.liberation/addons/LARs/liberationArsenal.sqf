@@ -128,8 +128,8 @@ if (GRLIB_filter_arsenal == 4) exitWith {
 GRLIB_MOD_signature = [];
 
 // Add Mod Items (Weapons,Uniform,etc.)
-[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_init_west.sqf";
-[] call compileFinal preprocessFileLineNUmbers "addons\LARs\mod\filter_init_east.sqf";
+[] call compileFinal preprocessFileLineNumbers "addons\LARs\mod\filter_init_west.sqf";
+[] call compileFinal preprocessFileLineNumbers "addons\LARs\mod\filter_init_east.sqf";
 
 // Dedup list
 GRLIB_MOD_signature = GRLIB_MOD_signature arrayIntersect GRLIB_MOD_signature;

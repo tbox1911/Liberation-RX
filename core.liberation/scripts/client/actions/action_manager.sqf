@@ -1,4 +1,4 @@
-[] call compile preprocessFile "scripts\client\actions\action_manager_check.sqf";
+[] call compile preprocessFileLineNumbers "scripts\client\actions\action_manager_check.sqf";
 
 waituntil { sleep 1; GRLIB_player_spawned && (player getVariable ["GRLIB_score_set", 0] == 1)};
 if (!(player diarySubjectExists str(parseText GRLIB_r3))) exitWith {};

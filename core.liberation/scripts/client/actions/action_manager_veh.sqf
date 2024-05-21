@@ -23,7 +23,7 @@ private _wreck_class = [
 	"O_SAM_System_04_F"
 ];
 
-[] call compile preprocessFile "scripts\client\actions\action_manager_veh_check.sqf";
+[] call compile preprocessFileLineNumbers "scripts\client\actions\action_manager_veh_check.sqf";
 
 waituntil { sleep 1; !isNil "GRLIB_player_near_lhd"};
 waituntil { sleep 1; GRLIB_player_spawned && (player getVariable ["GRLIB_score_set", 0] == 1)};
