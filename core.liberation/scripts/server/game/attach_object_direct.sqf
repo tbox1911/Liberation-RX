@@ -37,7 +37,7 @@ if ( count _truck_load < _maxload ) then {
 	};
 
 	// Owner
-	if (!(_object_class in GRLIB_vehicle_blacklist)) then {
+	if (!(_object_class in GRLIB_vehicle_blacklist) && !(_truck_owner in ["", "public", "server"])) then {
 		_object setVariable ["GRLIB_vehicle_owner", _truck_owner, true];
 	};
 

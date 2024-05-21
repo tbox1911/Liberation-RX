@@ -17,7 +17,7 @@ private _all_objects = _truck getVariable ["GRLIB_ammo_truck_load", []];
 { _x allowDamage false } foreach _all_objects;
 sleep 1;
 
-private [ "_next_box", "_next_pos" ];
+private ["_next_box", "_next_pos"];
 {
 	_next_box = _x;
 	if (!isNull _next_box) then {
