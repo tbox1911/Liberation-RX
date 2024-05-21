@@ -53,6 +53,7 @@ _setupObjects = {
 
 	_quest_item = createVehicle [a3w_sd_item, getPosATL _man1, [], 1, "NONE"];
 	_quest_item allowDamage false;
+	[_quest_item] call F_aceInitVehicle;
 
 	private _man2 = _mission_grp createUnit ["C_Orestes", _missionPos2, [], 0, "NONE"];
 	_man2 allowDamage false;
