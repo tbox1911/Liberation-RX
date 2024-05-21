@@ -171,7 +171,6 @@ support_vehicles = support_vehicles + [
 	[huron_typename,10,1550,35,GRLIB_perm_tank],
 	[medic_heal_typename,0,100,0,GRLIB_perm_log],
 	["Land_RepairDepot_01_civ_F",0,300,0,GRLIB_perm_log],
-	[helipad_typename,0,0,0,GRLIB_perm_inf],
 	["Land_fs_feed_F",0,200,50,GRLIB_perm_tank],
 	[repair_sling_typename,0,200,0,GRLIB_perm_log],
 	[fuel_sling_typename,0,150,60,GRLIB_perm_log],
@@ -203,6 +202,7 @@ respawn_vehicles = [
 // *** BUILDINGS ***
 buildings = [
 	[FOB_sign,0,0,0,GRLIB_perm_hidden],
+	[helipad_typename,0,0,0,GRLIB_perm_inf],
 	[Warehouse_typename,0,0,0,GRLIB_perm_inf]
 ];
 if (isNil "buildings_west_overide") then {

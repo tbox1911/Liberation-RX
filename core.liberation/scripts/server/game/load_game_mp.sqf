@@ -192,13 +192,127 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 			_s1 pushBack _x;
 		} else {
 			if (_nextclass iskindOf "AllVehicles") then {
-				_s2 pushBack _x;
-			} else {
 				_s3 pushBack _x;
+			} else {
+				_s2 pushBack _x;
 			};
 		};
 	} foreach buildings_to_load;
 
+	// Buildings
+	{
+		_nextclass = _x select 0;
+		_nextpos = _x select 1;
+		_nextdir = _x select 2;
+
+		_nextbuilding = createVehicle [_nextclass, zeropos, [], 0, "CAN_COLLIDE"];
+		_nextbuilding allowDamage false;
+		_nextbuilding setVectorDirAndUp [_nextdir select 0, _nextdir select 1];
+		_nextbuilding setPosWorld _nextpos;
+		_buildings_created pushback _nextbuilding;
+
+		if (_nextclass == FOB_sign) then {
+			_nextbuilding setObjectTextureGlobal [0, getMissionPath "res\splash_libe2.paa"];
+		};
+
+		if (_nextclass == land_cutter_typename) then {
+			_nextpos set [2, 0];
+			_nextbuilding setPosATL _nextpos;
+			{_x hideObjectGlobal true} forEach (nearestTerrainObjects [_nextpos, GRLIB_clutter_cutter, 20]);
+		};
+
+		if (_nextclass == Warehouse_typename) then {
+			[_nextbuilding] call warehouse_init_remote_call;
+		};
+
+		if (_nextclass == FOB_typename) then {
+			[_nextbuilding] call fob_init_officer;
+		};
+
+		if (_nextclass == FOB_carrier) then {
+			[_nextbuilding] call BIS_fnc_carrier01Init;
+			[_nextbuilding] call BIS_fnc_Carrier01PosUpdate;
+		};
+	} foreach _s1;
+	sleep 3;
+
+	// Objects
+	{
+		_nextclass = _x select 0;
+		_nextpos = _x select 1;
+		_nextdir = _x select 2;
+
+		private _owner = "";
+		if (count _x > 4) then {
+			_owner = _x select 4;
+		};
+
+		_nextbuilding = createVehicle [_nextclass, zeropos, [], 0, "CAN_COLLIDE"];
+		_nextbuilding enableSimulationGlobal false;
+		_nextbuilding allowDamage false;
+		_nextbuilding setVectorDirAndUp [_nextdir select 0, _nextdir select 1];
+		_nextbuilding setPosWorld _nextpos;
+		_buildings_created pushback _nextbuilding;
+
+
+		if (GRLIB_ACE_enabled) then {
+			[_nextbuilding] call F_aceInitVehicle;
+		};
+
+		if (getPos _nextbuilding select 2 < 0) then {
+			_nextbuilding setpos (getpos _nextbuilding);
+			_nextbuilding setDamage 0;
+		};
+
+		if ( _nextclass == playerbox_typename ) then {
+			_nextbuilding setMaxLoad playerbox_cargospace;
+			_nextbuilding setVehicleLock "DEFAULT";
+			[_nextbuilding, _x select 5] call F_setCargo;
+		};
+
+		if ( _nextclass == Box_Ammo_typename ) then {
+			_nextbuilding addItemCargoGlobal ["SatchelCharge_Remote_Mag", 2];
+		};
+
+		if ( _nextclass == Arsenal_typename ) then {
+			_nextbuilding setMaxLoad 0;
+		};
+
+		if (!(_nextclass in GRLIB_Ammobox_keep)) then {
+			[_nextbuilding] call F_clearCargo;
+		};
+
+		if ( _nextclass in vehicle_rearm_sources ) then {
+			_nextbuilding setAmmoCargo 0;
+		};
+
+		sleep 0.1;
+		if ( _owner != "" ) then {
+			_nextbuilding enableSimulationGlobal true;
+			if (_owner == "public") then {
+				_nextbuilding setVariable ["GRLIB_vehicle_owner", "public", true];
+				if ( _nextclass == huron_typename ) then {
+					GRLIB_vehicle_huron = _nextbuilding;
+				};
+			} else {
+				_nextbuilding setVehicleLock "LOCKED";
+				_nextbuilding setVariable ["R3F_LOG_disabled", false, true];
+				_nextbuilding setVariable ["GRLIB_vehicle_owner", _owner, true];
+			};
+		};
+
+		if ( _nextclass == mobile_respawn ) then {
+			GRLIB_mobile_respawn pushback _nextbuilding;
+		};
+
+		if (_nextclass in GRLIB_quick_delete) then {
+			_nextbuilding addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+		};
+		sleep 0.1;
+	} foreach _s2;
+	sleep 3;
+
+	// Vehicles
 	{
 		_nextclass = _x select 0;
 		_nextpos = _x select 1;
@@ -215,6 +329,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 		};
 
 		_nextbuilding = createVehicle [_nextclass, zeropos, [], 0, "CAN_COLLIDE"];
+		_nextbuilding enableSimulationGlobal false;
 		_nextbuilding allowDamage false;
 		_nextbuilding setVectorDirAndUp [_nextdir select 0, _nextdir select 1];
 		_nextbuilding setPosWorld _nextpos;
@@ -224,20 +339,21 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 			[_nextbuilding] call F_aceInitVehicle;
 		};
 
-		if (_nextclass iskindOf "AllVehicles") then {
-			[_nextbuilding] call F_fixModVehicle;
+		if (getPos _nextbuilding select 2 < 0) then {
+			_nextbuilding setpos (getpos _nextbuilding);
+			_nextbuilding setDamage 0;
 		};
 
-		if (!(_nextclass in GRLIB_Ammobox_keep)) then {
-			[_nextbuilding] call F_clearCargo;
-		};
+		[_nextbuilding] call F_fixModVehicle;
 
 		if ( _nextclass in vehicle_rearm_sources ) then {
 			_nextbuilding setAmmoCargo 0;
 		};
 
+		sleep 0.1;
 		if ( _owner != "" ) then {
 			if (_owner == "public") then {
+				_nextbuilding enableSimulationGlobal true;
 				_nextbuilding setVariable ["GRLIB_vehicle_owner", "public", true];
 				if ( _nextclass == huron_typename ) then {
 					GRLIB_vehicle_huron = _nextbuilding;
@@ -265,17 +381,6 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 				_nextbuilding setVehicleLock "LOCKEDPLAYER";
 				{ _nextbuilding lockTurret [_x, false] } forEach (allTurrets _nextbuilding);
 			};
-			if ( _nextclass == playerbox_typename ) then {
-				_nextbuilding setMaxLoad playerbox_cargospace;
-				_nextbuilding setVehicleLock "DEFAULT";
-				[_nextbuilding, _x select 5] call F_setCargo;
-			};
-			if ( _nextclass == Box_Ammo_typename ) then {
-				_nextbuilding addItemCargoGlobal ["SatchelCharge_Remote_Mag", 2];
-			};
-			if ( _nextclass == Arsenal_typename ) then {
-				_nextbuilding setMaxLoad 0;
-			};
 		} else {
 			if ( !(_owner in ["", "public"]) && count _x > 5 ) then {
 				//[_x select 5] params [["_color", ""]];
@@ -291,19 +396,21 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 				if (_color_name != "") then {
 					[_nextbuilding, _color_name] call RPT_fnc_TextureVehicle;
 				};
+
 				if (count _compo > 0) then {
 					[_nextbuilding, _compo] call RPT_fnc_CompoVehicle;
 				};
-				if (_nextclass isKindOf "LandVehicle" || _nextclass isKindOf "Air" || _nextclass isKindOf "Ship") then {
-					if (count _lst_a3 > 0) then {
-						[_nextbuilding, _lst_a3] call F_setCargo;
-					};
-					if (count _lst_r3f > 0) then {
-						[_nextbuilding, _lst_r3f] call load_object_direct;
-					};
-					if (count _lst_grl > 0) then {
-						{[_nextbuilding, _x] call attach_object_direct} forEach _lst_grl;
-					};
+
+				if (count _lst_a3 > 0) then {
+					[_nextbuilding, _lst_a3] call F_setCargo;
+				};
+
+				if (count _lst_r3f > 0) then {
+					[_nextbuilding, _lst_r3f] call load_object_direct;
+				};
+
+				if (count _lst_grl > 0) then {
+					{[_nextbuilding, _x] call attach_object_direct} forEach _lst_grl;
 				};
 			};
 		};
@@ -313,39 +420,10 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 			_nextbuilding setVariable ["GRLIB_vehicle_manned", true, true];
 		};
 
-		if ( _nextclass == mobile_respawn ) then {
-			GRLIB_mobile_respawn pushback _nextbuilding;
-		};
-
-		if ( _nextclass == FOB_sign ) then {
-			_nextbuilding setObjectTextureGlobal [0, getMissionPath "res\splash_libe2.paa"];
-		};
-
-		if (_nextclass == land_cutter_typename) then {
-			_nextpos set [2, 0];
-			_nextbuilding setPosATL _nextpos;
-			{_x hideObjectGlobal true} forEach (nearestTerrainObjects [_nextpos, GRLIB_clutter_cutter, 20]);
-		};
-
-		if ( !(_nextclass in GRLIB_no_kill_handler_classnames) || (_nextclass in GRLIB_quick_delete) ) then {
+		if (_nextclass in GRLIB_quick_delete) then {
 			_nextbuilding addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		};
-
-		if (_nextclass == Warehouse_typename) then {
-			[_nextbuilding] call warehouse_init_remote_call;
-		};
-
-		if (_nextclass == FOB_typename) then {
-			[_nextbuilding] call fob_init_officer;
-		};
-
-		if (_nextclass == FOB_carrier) then {
-			[_nextbuilding] call BIS_fnc_carrier01Init;
-			[_nextbuilding] call BIS_fnc_Carrier01PosUpdate;
-		};
-		//diag_log format [ "--- LRX Load Game %1 loaded at %2.", typeOf _nextbuilding, time];
-	} foreach (_s1 + _s2 + _s3);
-	sleep 1;
+	} foreach _s3;
 
 	{
 		_allow_damage = true;
@@ -357,7 +435,6 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 		};
 		if ( _allow_damage ) then { _x allowDamage true };
 	} foreach _buildings_created;
-	sleep 1;
 
 	diag_log format [ "--- LRX Load Game finish at %1", time ];
 };
@@ -421,3 +498,5 @@ publicVariable "GRLIB_player_scores";
 publicVariable "GRLIB_sector_defense";
 save_is_loaded = ([] call F_getValid);
 publicVariable "save_is_loaded";
+
+sleep 2;

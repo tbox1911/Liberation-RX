@@ -39,7 +39,7 @@ if (GRLIB_use_exclusive && !([] call is_admin || GRLIB_Player_VIP)) exitWith {
 	endMission "LOSER";
 };
 
-private _commander_check = [] call compileFinal preprocessFileLineNUmbers "scripts\client\commander\enforce_whitelist.sqf";
+private _commander_check = [] call compileFinal preprocessFileLineNumbers "scripts\client\commander\enforce_whitelist.sqf";
 if (!_commander_check) exitWith { endMission "END1" };
 
 private _name = name player;
@@ -61,7 +61,7 @@ if (GRLIB_global_stop == 1) exitWith {
 };
 
 if (GRLIB_kick_idle > 0) then {
-	[] execVM "scripts\client\misc\kick_idle.sqf";
+	[] spawn compileFinal preprocessFileLineNumbers "scripts\client\misc\kick_idle.sqf";
 };
 
 if (GRLIB_respawn_cooldown > 0) then {
@@ -78,7 +78,12 @@ if (GRLIB_respawn_cooldown > 0) then {
 	};
 };
 
-add_player_actions = compile preprocessFile "scripts\client\actions\add_player_actions.sqf";
+GRLIB_ActionDist_3 = 3;
+GRLIB_ActionDist_5 = 5;
+GRLIB_ActionDist_10 = 10;
+GRLIB_ActionDist_15 = 15;
+
+add_player_actions = compile preprocessFileLineNumbers "scripts\client\actions\add_player_actions.sqf";
 dog_bark = compileFinal preprocessFileLineNumbers "scripts\client\actions\dog_bark.sqf";
 do_onboard = compileFinal preprocessFileLineNumbers "scripts\client\actions\do_onboard.sqf";
 do_redeploy = compileFinal preprocessFileLineNumbers "scripts\client\actions\do_redeploy.sqf";
@@ -102,76 +107,75 @@ save_loadout_cargo = compileFinal preprocessFileLineNumbers "scripts\client\misc
 speak_manager = compileFinal preprocessFileLineNumbers "scripts\client\misc\speak_manager.sqf";
 save_personal_arsenal = compileFinal preprocessFileLineNumbers "scripts\client\actions\save_personal_arsenal.sqf";
 
+if (!([] call F_getValid)) exitWith {endMission "LOSER"};
+if ( typeOf player == "VirtualSpectator_F" ) exitWith {
+	[] spawn compileFinal preprocessFileLineNumbers "scripts\client\markers\empty_vehicles_marker.sqf";
+	[] spawn compileFinal preprocessFileLineNumbers "scripts\client\markers\fob_markers.sqf";
+	[] spawn compileFinal preprocessFileLineNumbers "scripts\client\markers\hostile_groups.sqf";
+	[] spawn compileFinal preprocessFileLineNumbers "scripts\client\markers\huron_marker.sqf";
+	[] spawn compileFinal preprocessFileLineNumbers "scripts\client\markers\sector_manager.sqf";
+	[] spawn compileFinal preprocessFileLineNumbers "scripts\client\markers\spot_timer.sqf";
+	[] spawn compileFinal preprocessFileLineNumbers "scripts\client\ui\ui_manager.sqf";
+};
+
+// Start intro
+[] spawn compileFinal preprocessFileLineNumbers "scripts\client\ui\intro.sqf";
+
 private _grp = createGroup [GRLIB_side_friendly, true];
 waitUntil {
 	[player] joinSilent _grp;
-	sleep 1;
+	sleep 0.5;
 	(side group player == GRLIB_side_friendly);
 };
 
 [_grp, "add"] remoteExec ["addel_group_remote_call", 2];
 
-if (!([] call F_getValid)) exitWith {endMission "LOSER"};
-if ( typeOf player == "VirtualSpectator_F" ) exitWith {
-	[] execVM "scripts\client\markers\empty_vehicles_marker.sqf";
-	[] execVM "scripts\client\markers\fob_markers.sqf";
-	[] execVM "scripts\client\markers\hostile_groups.sqf";
-	[] execVM "scripts\client\markers\huron_marker.sqf";
-	[] execVM "scripts\client\markers\sector_manager.sqf";
-	[] execVM "scripts\client\markers\spot_timer.sqf";
-	[] execVM "scripts\client\ui\ui_manager.sqf";
-};
+// LRX client scripts
+[] spawn compileFinal preprocessFileLineNumbers "GREUH\scripts\GREUH_activate.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\client\ui\ui_manager.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\client\build\do_build.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\client\build\build_overlay.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\client\actions\action_manager.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\client\actions\action_manager_veh.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\client\actions\recycle_manager.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\client\actions\intel_manager.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\client\actions\dog_manager.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\client\actions\man_manager.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\client\actions\squad_manager.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\client\misc\support_manager.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\client\misc\sides_stats_manager.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\client\misc\secondary_jip.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\client\misc\stop_renegade.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\client\misc\manage_manpower.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\client\misc\no_thermic.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\client\misc\init_markers.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\client\misc\speak_manager_data.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\client\markers\empty_vehicles_marker.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\client\markers\fob_markers.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\client\markers\hostile_groups.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\client\markers\huron_marker.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\client\markers\spot_timer.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\client\markers\sector_manager.sqf";
+//[] spawn compileFinal preprocessFileLineNumbers "scripts\client\misc\logs_markers.sqf";
 
-[] execVM "scripts\client\ui\intro.sqf";
-[] execVM "scripts\client\markers\spot_timer.sqf";
-[] execVM "scripts\client\ui\ui_manager.sqf";
-[] execVM "scripts\client\markers\sector_manager.sqf";
-[] execVM "scripts\client\misc\sides_stats_manager.sqf";
-[] execVM "scripts\client\build\build_overlay.sqf";
-[] execVM "scripts\client\build\do_build.sqf";
-[] execVM "scripts\client\markers\empty_vehicles_marker.sqf";
-[] execVM "scripts\client\markers\fob_markers.sqf";
-[] execVM "scripts\client\markers\hostile_groups.sqf";
-[] execVM "scripts\client\markers\huron_marker.sqf";
-[] execVM "scripts\client\misc\secondary_jip.sqf";
-[] execVM "scripts\client\misc\stop_renegade.sqf";
-[] execVM "scripts\client\misc\manage_manpower.sqf";
-[] execVM "scripts\client\misc\no_thermic.sqf";
-[] execVM "scripts\client\misc\init_markers.sqf";
-[] execVM "scripts\client\misc\speak_manager_data.sqf";
-//[] execVM "scripts\client\misc\logs_markers.sqf";
-
-GRLIB_ActionDist_3 = 3;
-GRLIB_ActionDist_5 = 5;
-GRLIB_ActionDist_10 = 10;
-GRLIB_ActionDist_15 = 15;
-
-[] execVM "GREUH\scripts\GREUH_activate.sqf";
-[] execVM "scripts\client\actions\action_manager.sqf";
-[] execVM "scripts\client\actions\action_manager_veh.sqf";
-[] execVM "scripts\client\actions\recycle_manager.sqf";
-[] execVM "scripts\client\actions\intel_manager.sqf";
-[] execVM "scripts\client\actions\dog_manager.sqf";
-[] execVM "scripts\client\actions\man_manager.sqf";
-[] execVM "scripts\client\actions\squad_manager.sqf";
-[] execVM "scripts\client\misc\support_manager.sqf";
-[] execVM "addons\KEY\shortcut_init.sqf";
-[] execVM "addons\PAR\PAR_AI_Revive.sqf";
-[] execVM "addons\LARs\liberationArsenal.sqf";
-[] execVM "addons\VAM\VAM_GUI_init.sqf";
-[] execVM "addons\TARU\taru_init.sqf";
-[] execVM "addons\VIRT\virtual_garage_init.sqf";
-[] execVM "addons\SELL\sell_shop_init.sqf";
-[] execVM "addons\SHOP\traders_shop_init.sqf";
-[] execVM "addons\TAXI\taxi_init.sqf";
-[] execVM "addons\JKB\JKB_init.sqf";
-[] execVM "addons\WHS\warehouse_init.sqf";
-[] execVM "addons\FOB\officer_init.sqf";
+// LRX Addons
+[] spawn compileFinal preprocessFileLineNumbers "addons\PAR\PAR_AI_Revive.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "addons\KEY\shortcut_init.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "addons\VAM\VAM_GUI_init.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "addons\TARU\taru_init.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "addons\VIRT\virtual_garage_init.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "addons\SELL\sell_shop_init.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "addons\SHOP\traders_shop_init.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "addons\TAXI\taxi_init.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "addons\JKB\JKB_init.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "addons\WHS\warehouse_init.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "addons\FOB\officer_init.sqf";
+[] call compileFinal preprocessFileLineNumbers "addons\LARs\liberationArsenal.sqf";
 
 // ACE inCompatible addons
 if (!GRLIB_ACE_enabled) then {
-	[] execVM "addons\NRE\NRE_init.sqf";
-	[] execVM "addons\MGR\MagRepack_init.sqf";
+	[] spawn compileFinal preprocessFileLineNumbers "addons\NRE\NRE_init.sqf";
+	[] spawn compileFinal preprocessFileLineNumbers "addons\MGR\MagRepack_init.sqf";
 };
 
 // Init Tips Tables from XML

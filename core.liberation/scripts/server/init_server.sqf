@@ -96,7 +96,7 @@ spawn_battlegroup_direct = compileFinal preprocessFileLineNumbers "scripts\serve
 // Game
 [] call compileFinal preprocessFileLineNumbers "scripts\server\game\save_game_mp_init.sqf";
 load_game_mp = compileFinal preprocessFileLineNumbers "scripts\server\game\load_game_mp.sqf";
-save_game_mp  = compileFinal preprocessFileLineNumbers "scripts\server\game\save_game_mp.sqf";
+save_game_mp = compileFinal preprocessFileLineNumbers "scripts\server\game\save_game_mp.sqf";
 load_context = compileFinal preprocessFileLineNumbers "scripts\server\game\load_context.sqf";
 save_context = compileFinal preprocessFileLineNumbers "scripts\server\game\save_context.sqf";
 check_victory_conditions = compileFinal preprocessFileLineNumbers "scripts\server\game\check_victory_conditions.sqf";
@@ -148,38 +148,38 @@ if (abort_loading) exitWith {
 	publicVariable "abort_loading_msg";
 };
 
-[] execVM "scripts\server\game\apply_saved_scores.sqf";
-[] execVM "scripts\server\game\apply_default_permissions.sqf";
-[] execVM "scripts\server\base\fobbox_manager.sqf";
-[] execVM "scripts\server\base\huron_manager.sqf";
-[] execVM "scripts\server\game\spawn_radio_towers.sqf";
-[] execVM "scripts\server\game\hall_of_fame.sqf";
-[] execVM "scripts\server\battlegroup\counter_battlegroup.sqf";
-[] execVM "scripts\server\battlegroup\random_battlegroups.sqf";
-[] execVM "scripts\server\battlegroup\readiness_decrease.sqf";
-[] execVM "scripts\server\resources\manage_resources.sqf";
-[] execVM "scripts\server\patrols\civilian_patrols.sqf";
-[] execVM "scripts\server\patrols\enemy_patrols.sqf";
-[] execVM "scripts\server\sector\manage_sectors.sqf";
-[] execVM "scripts\server\sector\lose_sectors.sqf";
-[] execVM "scripts\server\game\manage_score.sqf";
-[] execVM "scripts\server\game\manage_time.sqf";
-[] execVM "scripts\server\game\manage_weather.sqf";
-[] execVM "scripts\server\game\manage_static.sqf";
-[] execVM "scripts\server\game\init_marker.sqf";
-[] execVM "scripts\server\secondary\autostart.sqf";
-[] execVM "scripts\server\game\synchronise_vars.sqf";
-[] execVM "scripts\server\game\zeus_synchro.sqf";
-[] execVM "scripts\server\game\clean.sqf";
-[] execVM "scripts\server\game\periodic_save.sqf";
-[] execVM "scripts\server\a3w\init_missions.sqf";
-[] execVM "scripts\server\ar\fn_advancedRappellingInit.sqf";
-[] execVM "scripts\server\offloading\show_fps.sqf";
-[] execVM "scripts\server\wildlife\manage_wildlife.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\server\game\synchronise_vars.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\server\game\apply_default_permissions.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\server\game\apply_saved_scores.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\server\ar\fn_advancedRappellingInit.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\server\base\fobbox_manager.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\server\base\huron_manager.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\server\game\spawn_radio_towers.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\server\game\hall_of_fame.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\server\battlegroup\counter_battlegroup.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\server\battlegroup\random_battlegroups.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\server\battlegroup\readiness_decrease.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\server\resources\manage_resources.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\server\patrols\civilian_patrols.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\server\patrols\enemy_patrols.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_sectors.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\server\sector\lose_sectors.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\server\game\manage_score.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\server\game\manage_time.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\server\game\manage_weather.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\server\game\manage_static.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\server\game\init_marker.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\server\secondary\autostart.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\server\game\zeus_synchro.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\server\game\clean.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\server\game\periodic_save.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\server\a3w\init_missions.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\server\offloading\show_fps.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\server\wildlife\manage_wildlife.sqf";
 
 // Offloading
-[] execVM "scripts\server\offloading\offload_calculation.sqf";
-[] execVM "scripts\server\offloading\offload_manager.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\server\offloading\offload_calculation.sqf";
+[] spawn compileFinal preprocessFileLineNumbers "scripts\server\offloading\offload_manager.sqf";
 
 global_locked_group = [];
 publicVariable "global_locked_group";
