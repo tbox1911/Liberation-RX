@@ -1,6 +1,8 @@
 diag_log "--- Liberation RX by pSiKO ---";
 if ((isServer || isDedicated) && !isNil "GRLIB_init_server") exitWith { diag_log "--- LRX Error: Mission restart too fast!" };
-//disableUserInput true;
+
+titleText ["","BLACK FADED", 100];
+disableUserInput true;
 
 [] call compileFinal preprocessFileLineNumbers "build_info.sqf";
 diag_log "--- Init start ---";
@@ -26,9 +28,9 @@ if (!abort_loading) then {
 	[] spawn compileFinal preprocessFileLineNumbers "addons\VAM\RPT_init.sqf";
 
 	if (GRLIB_ACE_enabled) then {
-		[] spawn compileFinal preprocessFileLineNumbers "scripts\shared\init_ace.sqf";
+		[] call compileFinal preprocessFileLineNumbers "scripts\shared\init_ace.sqf";
 	} else {
-		[] spawn compileFinal preprocessFileLineNumbers "R3F_LOG\init.sqf";
+		[] call compileFinal preprocessFileLineNumbers "R3F_LOG\init.sqf";
 	};
 
 	if (isServer) then {
@@ -51,8 +53,6 @@ if (!abort_loading) then {
 };
 
 if (!isDedicated && hasInterface) then {
-	titleText ["-- Liberation RX --","BLACK FADED", 100];
-	waitUntil { sleep 1; !isNil "GRLIB_init_server" };
 	[] spawn compileFinal preprocessFileLineNumbers "scripts\client\init_client.sqf";
 };
 

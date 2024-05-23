@@ -1,7 +1,6 @@
 waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 
-if ( isNil "group_owners" ) then { group_owners = []; };
-
+sleep 38;
 private ["_currentgroup", "_group_owner", "_idx_group_owner"];
 
 while { true } do {

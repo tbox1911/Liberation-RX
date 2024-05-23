@@ -216,9 +216,12 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 		};
 
 		if (_nextclass == land_cutter_typename) then {
-			_nextpos set [2, 0];
-			_nextbuilding setPosATL _nextpos;
-			{_x hideObjectGlobal true} forEach (nearestTerrainObjects [_nextpos, GRLIB_clutter_cutter, 20]);
+			[_nextpos] call build_cutter_remote_call;
+			_nextbuilding enableSimulationGlobal false;
+		};
+
+		if (_nextclass == helipad_typename) then {
+			_nextbuilding enableSimulationGlobal false;
 		};
 
 		if (_nextclass == Warehouse_typename) then {
@@ -248,20 +251,14 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 		};
 
 		_nextbuilding = createVehicle [_nextclass, zeropos, [], 0, "CAN_COLLIDE"];
-		_nextbuilding enableSimulationGlobal false;
 		_nextbuilding allowDamage false;
 		_nextbuilding setVectorDirAndUp [_nextdir select 0, _nextdir select 1];
 		_nextbuilding setPosWorld _nextpos;
+		_nextbuilding setVelocity [0, 0, 0];
 		_buildings_created pushback _nextbuilding;
-
 
 		if (GRLIB_ACE_enabled) then {
 			[_nextbuilding] call F_aceInitVehicle;
-		};
-
-		if (getPos _nextbuilding select 2 < 0) then {
-			_nextbuilding setpos (getpos _nextbuilding);
-			_nextbuilding setDamage 0;
 		};
 
 		if ( _nextclass == playerbox_typename ) then {
@@ -286,9 +283,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 			_nextbuilding setAmmoCargo 0;
 		};
 
-		sleep 0.1;
 		if ( _owner != "" ) then {
-			_nextbuilding enableSimulationGlobal true;
 			if (_owner == "public") then {
 				_nextbuilding setVariable ["GRLIB_vehicle_owner", "public", true];
 				if ( _nextclass == huron_typename ) then {
@@ -308,7 +303,6 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 		if (_nextclass in GRLIB_quick_delete) then {
 			_nextbuilding addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		};
-		sleep 0.1;
 	} foreach _s2;
 	sleep 3;
 
@@ -339,24 +333,29 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 			[_nextbuilding] call F_aceInitVehicle;
 		};
 
-		if (getPos _nextbuilding select 2 < 0) then {
-			_nextbuilding setpos (getpos _nextbuilding);
-			_nextbuilding setDamage 0;
-		};
-
 		[_nextbuilding] call F_fixModVehicle;
 
 		if ( _nextclass in vehicle_rearm_sources ) then {
 			_nextbuilding setAmmoCargo 0;
 		};
 
-		sleep 0.1;
 		if ( _owner != "" ) then {
 			if (_owner == "public") then {
 				_nextbuilding enableSimulationGlobal true;
 				_nextbuilding setVariable ["GRLIB_vehicle_owner", "public", true];
 				if ( _nextclass == huron_typename ) then {
 					GRLIB_vehicle_huron = _nextbuilding;
+					[] spawn {
+						private _timer = time + 10;
+						waitUntil {
+							GRLIB_vehicle_huron enableSimulationGlobal false;
+							GRLIB_vehicle_huron setVelocity [0, 0, 0];
+							sleep 3;
+							GRLIB_vehicle_huron enableSimulationGlobal true;
+							GRLIB_vehicle_huron setVelocity [0, 0, 0];
+							(time > _timer);
+						};
+					};
 				};
 			} else {
 				[_nextbuilding, "lock", _owner] call F_vehicleLock;
@@ -425,16 +424,25 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 		};
 	} foreach _s3;
 
-	{
-		_allow_damage = true;
-		if ( (typeOf _x) in [FOB_typename,FOB_outpost,FOB_sign,Warehouse_typename,playerbox_typename] ) then {
-			_allow_damage = false;
-		};
-		if ((typeOf _x) isKindOf "Land_PortableHelipadLight_01_F") then {
-			_allow_damage = false;
-		};
-		if ( _allow_damage ) then { _x allowDamage true };
-	} foreach _buildings_created;
+	[_buildings_created] spawn {
+		params ["_list"];
+		sleep 10;
+		private _no_damage = [
+			FOB_typename,
+			FOB_outpost,
+			FOB_sign,
+			Warehouse_typename,
+			playerbox_typename,
+			"Land_PortableHelipadLight_01_F"
+		];
+		{
+			_allow_damage = true;
+			if ( (typeOf _x) in _no_damage) then { _allow_damage = false };
+			_x setVelocity [0, 0, 0];
+			_x setDamage 0;
+			if ( _allow_damage ) then { _x allowDamage true };
+		} foreach _list;
+	};
 
 	diag_log format [ "--- LRX Load Game finish at %1", time ];
 };
@@ -498,5 +506,4 @@ publicVariable "GRLIB_player_scores";
 publicVariable "GRLIB_sector_defense";
 save_is_loaded = ([] call F_getValid);
 publicVariable "save_is_loaded";
-
 sleep 2;

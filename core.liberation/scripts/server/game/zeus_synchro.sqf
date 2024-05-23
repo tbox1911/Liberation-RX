@@ -1,4 +1,5 @@
-waitUntil { !isNil "huron_typename" };
+waitUntil {sleep 1; !isNil "GRLIB_init_server"};
+waitUntil {sleep 1; !isNil "huron_typename"};
 
 private _vehicleClassnames = [huron_typename] + all_friendly_classnames;
 private _objects_to_mark = [];

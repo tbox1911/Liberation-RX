@@ -1,5 +1,6 @@
 waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 
+sleep 37;
 private [ "_blufor_ai_groups", "_localgroup", "_is_ai_only", "_commander" ];
 
 while { GRLIB_endgame == 0 } do {

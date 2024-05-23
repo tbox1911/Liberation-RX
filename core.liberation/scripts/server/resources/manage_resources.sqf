@@ -1,5 +1,5 @@
-waitUntil { !isNil "save_is_loaded" };
-waitUntil { !isNil "blufor_sectors" };
+waitUntil {sleep 1; !isNil "GRLIB_init_server"};
+waitUntil {sleep 1; !isNil "blufor_sectors"};
 private ["_spawnsector", "_newbox", "_sectors"];
 
 // maximum number of ressource by type

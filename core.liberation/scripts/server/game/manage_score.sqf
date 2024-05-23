@@ -1,7 +1,7 @@
 private [ "_cur", "_last", "_msg", "_msg2", "_rank", "_new_rank", "_uid", "_firework", "_rounds" ];
 
-waitUntil { !isNil "GRLIB_player_scores" };
-waitUntil { !isNil "save_is_loaded" };
+waitUntil {sleep 1; !isNil "GRLIB_init_server"};
+waitUntil {sleep 1; !isNil "GRLIB_player_scores"};
 
 CHG_Perm = {
 	params ["_uid", "_perms"];
@@ -11,6 +11,7 @@ CHG_Perm = {
 	publicVariable "GRLIB_permissions";
 };
 
+sleep 16;
 while { true } do {
 	{
 		_rank = _x getVariable ["GRLIB_Rank", ""];
@@ -116,5 +117,5 @@ while { true } do {
 			_x setVariable ["GREUH_score_last", _cur];
 		};
 	} forEach (AllPlayers - (entities "HeadlessClient_F"));
-	sleep 3.5;
+	sleep 3;
 };

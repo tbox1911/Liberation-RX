@@ -1,6 +1,14 @@
 diag_log "--- Client Init start ---";
 
-titleText ["Loading...","BLACK FADED", 100];
+titleText ["-- Liberation RX --","BLACK FADED", 100];
+waitUntil {
+	sleep 2;
+	titleText ["... Loading ...","BLACK FADED", 100];
+	sleep 2;
+	titleText ["... Please Wait ...", "BLACK FADED", 100];
+	(!isNil "GRLIB_init_server")
+};
+titleText ["", "BLACK FADED", 100];
 
 R3F_LOG_joueur_deplace_objet = objNull;
 GRLIB_player_spawned = false;
@@ -61,7 +69,7 @@ if (GRLIB_global_stop == 1) exitWith {
 };
 
 if (GRLIB_kick_idle > 0) then {
-	[] spawn compileFinal preprocessFileLineNumbers "scripts\client\misc\kick_idle.sqf";
+	[] execVM "scripts\client\misc\kick_idle.sqf";
 };
 
 if (GRLIB_respawn_cooldown > 0) then {
@@ -109,13 +117,13 @@ save_personal_arsenal = compileFinal preprocessFileLineNumbers "scripts\client\a
 
 if (!([] call F_getValid)) exitWith {endMission "LOSER"};
 if ( typeOf player == "VirtualSpectator_F" ) exitWith {
-	[] spawn compileFinal preprocessFileLineNumbers "scripts\client\markers\empty_vehicles_marker.sqf";
-	[] spawn compileFinal preprocessFileLineNumbers "scripts\client\markers\fob_markers.sqf";
-	[] spawn compileFinal preprocessFileLineNumbers "scripts\client\markers\hostile_groups.sqf";
-	[] spawn compileFinal preprocessFileLineNumbers "scripts\client\markers\huron_marker.sqf";
-	[] spawn compileFinal preprocessFileLineNumbers "scripts\client\markers\sector_manager.sqf";
-	[] spawn compileFinal preprocessFileLineNumbers "scripts\client\markers\spot_timer.sqf";
-	[] spawn compileFinal preprocessFileLineNumbers "scripts\client\ui\ui_manager.sqf";
+	[] execVM "scripts\client\markers\empty_vehicles_marker.sqf";
+	[] execVM "scripts\client\markers\fob_markers.sqf";
+	[] execVM "scripts\client\markers\hostile_groups.sqf";
+	[] execVM "scripts\client\markers\huron_marker.sqf";
+	[] execVM "scripts\client\markers\sector_manager.sqf";
+	[] execVM "scripts\client\markers\spot_timer.sqf";
+	[] execVM "scripts\client\ui\ui_manager.sqf";
 };
 
 // Start intro
@@ -127,55 +135,63 @@ waitUntil {
 	sleep 0.5;
 	(side group player == GRLIB_side_friendly);
 };
-
 [_grp, "add"] remoteExec ["addel_group_remote_call", 2];
 
+// Markers
+GRLIB_MapOpen = false;
+addMissionEventHandler ["Map", {
+	params ["_mapIsOpened", "_mapIsForced"];
+	GRLIB_MapOpen = _mapIsOpened;
+}];
+
 // LRX client scripts
-[] spawn compileFinal preprocessFileLineNumbers "GREUH\scripts\GREUH_activate.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "scripts\client\ui\ui_manager.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "scripts\client\build\do_build.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "scripts\client\build\build_overlay.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "scripts\client\actions\action_manager.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "scripts\client\actions\action_manager_veh.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "scripts\client\actions\recycle_manager.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "scripts\client\actions\intel_manager.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "scripts\client\actions\dog_manager.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "scripts\client\actions\man_manager.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "scripts\client\actions\squad_manager.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "scripts\client\misc\support_manager.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "scripts\client\misc\sides_stats_manager.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "scripts\client\misc\secondary_jip.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "scripts\client\misc\stop_renegade.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "scripts\client\misc\manage_manpower.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "scripts\client\misc\no_thermic.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "scripts\client\misc\init_markers.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "scripts\client\misc\speak_manager_data.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "scripts\client\markers\empty_vehicles_marker.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "scripts\client\markers\fob_markers.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "scripts\client\markers\hostile_groups.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "scripts\client\markers\huron_marker.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "scripts\client\markers\spot_timer.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "scripts\client\markers\sector_manager.sqf";
-//[] spawn compileFinal preprocessFileLineNumbers "scripts\client\misc\logs_markers.sqf";
+[] execVM "GREUH\scripts\GREUH_activate.sqf";
+[] execVM "scripts\client\ui\ui_manager.sqf";
+[] execVM "scripts\client\build\do_build.sqf";
+[] execVM "scripts\client\build\build_overlay.sqf";
+[] execVM "scripts\client\actions\action_manager.sqf";
+[] execVM "scripts\client\actions\action_manager_veh.sqf";
+[] execVM "scripts\client\actions\recycle_manager.sqf";
+[] execVM "scripts\client\actions\intel_manager.sqf";
+[] execVM "scripts\client\actions\dog_manager.sqf";
+[] execVM "scripts\client\actions\man_manager.sqf";
+[] execVM "scripts\client\actions\squad_manager.sqf";
+[] execVM "scripts\client\misc\support_manager.sqf";
+[] execVM "scripts\client\misc\sides_stats_manager.sqf";
+[] execVM "scripts\client\misc\secondary_jip.sqf";
+[] execVM "scripts\client\misc\stop_renegade.sqf";
+[] execVM "scripts\client\misc\manage_manpower.sqf";
+[] execVM "scripts\client\misc\no_thermic.sqf";
+[] execVM "scripts\client\misc\init_markers.sqf";
+[] execVM "scripts\client\misc\speak_manager_data.sqf";
+[] execVM "scripts\client\markers\empty_vehicles_marker.sqf";
+[] execVM "scripts\client\markers\fob_markers.sqf";
+[] execVM "scripts\client\markers\hostile_groups.sqf";
+[] execVM "scripts\client\markers\huron_marker.sqf";
+[] execVM "scripts\client\markers\spot_timer.sqf";
+[] execVM "scripts\client\markers\sector_manager.sqf";
+//[] execVM "scripts\client\misc\logs_markers.sqf";
 
 // LRX Addons
-[] spawn compileFinal preprocessFileLineNumbers "addons\PAR\PAR_AI_Revive.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "addons\KEY\shortcut_init.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "addons\VAM\VAM_GUI_init.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "addons\TARU\taru_init.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "addons\VIRT\virtual_garage_init.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "addons\SELL\sell_shop_init.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "addons\SHOP\traders_shop_init.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "addons\TAXI\taxi_init.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "addons\JKB\JKB_init.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "addons\WHS\warehouse_init.sqf";
-[] spawn compileFinal preprocessFileLineNumbers "addons\FOB\officer_init.sqf";
+[] execVM "addons\PAR\PAR_AI_Revive.sqf";
+[] execVM "addons\KEY\shortcut_init.sqf";
+[] execVM "addons\VAM\VAM_GUI_init.sqf";
+[] execVM "addons\TARU\taru_init.sqf";
+[] execVM "addons\VIRT\virtual_garage_init.sqf";
+[] execVM "addons\SELL\sell_shop_init.sqf";
+[] execVM "addons\SHOP\traders_shop_init.sqf";
+[] execVM "addons\TAXI\taxi_init.sqf";
+[] execVM "addons\JKB\JKB_init.sqf";
+[] execVM "addons\WHS\warehouse_init.sqf";
+[] execVM "addons\FOB\officer_init.sqf";
+
+// LRX Arsenal
 [] call compileFinal preprocessFileLineNumbers "addons\LARs\liberationArsenal.sqf";
 
 // ACE inCompatible addons
 if (!GRLIB_ACE_enabled) then {
-	[] spawn compileFinal preprocessFileLineNumbers "addons\NRE\NRE_init.sqf";
-	[] spawn compileFinal preprocessFileLineNumbers "addons\MGR\MagRepack_init.sqf";
+	[] execVM "addons\NRE\NRE_init.sqf";
+	[] execVM "addons\MGR\MagRepack_init.sqf";
 };
 
 // Init Tips Tables from XML
@@ -219,13 +235,6 @@ addMissionEventHandler ["Draw3D",{
 		private _name = GRLIB_player_scores select { _x select 0 == _gid } select 0 select 5;
 		drawIcon3D ["", [1,1,1,1], _box_pos vectorAdd [0, 0, 1], 2, 2, 0, format ["- %1 Personal Box -", _name], 2, 0.05, "RobotoCondensed", "center"];
 	};
-}];
-
-// Markers
-GRLIB_MapOpen = false;
-addMissionEventHandler ["Map", {
-	params ["_mapIsOpened", "_mapIsForced"];
-	GRLIB_MapOpen = _mapIsOpened;
 }];
 
 // kart support
