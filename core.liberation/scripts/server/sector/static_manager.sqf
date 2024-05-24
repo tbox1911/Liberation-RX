@@ -34,7 +34,6 @@ _unit = _grp createUnit [opfor_spotter, _vehicle, [], 3, "None"];
 [_unit] joinSilent _grp;
 _unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 
-_vehicle setVariable ["GRLIB_counter_TTL", round(time + 900)];
 _vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
 _vehicle setVariable ["GRLIB_vehicle_gunner", units _grp];
 

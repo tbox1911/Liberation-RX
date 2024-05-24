@@ -20,16 +20,14 @@ if ( isNil "_liberated_sector" ) then {
 if (_objective_pos isEqualTo zeropos) exitWith { diag_log "BattlegGroup could not find accessible Objective." };
 
 private _vehicle_pool = opfor_battlegroup_vehicles;
-if ( combat_readiness < 50 ) then {
-	_vehicle_pool = opfor_battlegroup_vehicles_low_intensity;
-};
+if ( combat_readiness < 50 ) then {	_vehicle_pool = opfor_battlegroup_vehicles_low_intensity };
 
 if (_spawn_marker != "") then {
 	[markerPos _spawn_marker] remoteExec ["remote_call_battlegroup", 0];
 	GRLIB_last_battlegroup_time = time;
 	private _target_size = round ((GRLIB_battlegroup_size * GRLIB_csat_aggressivity) * (1+(combat_readiness / 100)));
 	if ( count (AllPlayers - (entities "HeadlessClient_F")) <= 2 ) then { _target_size = round (_target_size * 0.65) };
-	if ( _target_size > 10 && GRLIB_csat_aggressivity >= 2 ) then { _target_size = 10 };	
+	if ( _target_size > 10 && GRLIB_csat_aggressivity >= 2 ) then { _target_size = 10 };
 	if ( _target_size > 8 && GRLIB_csat_aggressivity < 2 ) then { _target_size = 8 };
 	if ( _target_size < 2 ) then { _target_size = 2 };
 
@@ -38,10 +36,12 @@ if (_spawn_marker != "") then {
 		_vehicle_class = selectRandom _vehicle_pool;
 		_vehicle = [markerpos _spawn_marker, _vehicle_class] call F_libSpawnVehicle;
 		_vehicle setVariable ["GRLIB_counter_TTL", round(time + 3600)];  // 60 minutes TTL
-
+		_vehicle setVariable ["GRLIB_battlegroup", true];
 		_nextgrp = group driver _vehicle;
-		{ _x setVariable ["GRLIB_counter_TTL", round(time + 3600)] } forEach (units _nextgrp);
-
+		{
+			_x setVariable ["GRLIB_counter_TTL", round(time + 3600)];
+			_x setVariable ["GRLIB_battlegroup", true];
+		} forEach (units _nextgrp);
 		if (typeOf _vehicle in opfor_troup_transports_truck) then {
 			[_vehicle, _objective_pos] spawn troup_transport;
 		} else {
@@ -56,6 +56,10 @@ if (_spawn_marker != "") then {
 		if (floor random 2 == 0) then {
 			_nextgrp = [_spawn_marker, "csat", ([] call F_getAdaptiveSquadComp)] call F_spawnRegularSquad;
 			[_nextgrp, _objective_pos] spawn battlegroup_ai;
+			{
+				_x setVariable ["GRLIB_counter_TTL", round(time + 3600)];
+				_x setVariable ["GRLIB_battlegroup", true];
+			} forEach (units _nextgrp);			
 		} else {
 			[_objective_pos] spawn send_paratroopers;
 		};
@@ -91,7 +95,7 @@ if (_spawn_marker != "") then {
 		[_para_pos] spawn spawn_halo_vehicle;
 		combat_readiness = combat_readiness - 15;
 		diag_log format ["Done Spawning Paratrooper BattlegGroup at %1", time];
-	};	
+	};
 };
 
 if ( combat_readiness < 0 ) then { combat_readiness = 0 };

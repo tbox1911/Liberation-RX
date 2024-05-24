@@ -28,7 +28,7 @@ if ( isServer ) then {
 		_unit setDamage 1;
 		sleep 5;
 		deleteVehicle _unit;
-	};	
+	};
 
 	// ACE
 	if (GRLIB_ACE_medical_enabled && local _unit) then {
@@ -48,7 +48,7 @@ if ( isServer ) then {
 		stats_player_deaths = stats_player_deaths + 1
 	};
 
-	if ( _killer_side == GRLIB_side_friendly && !(_unit getVariable ["GRLIB_mission_AI", false]) ) then {
+	if ( _killer_side == GRLIB_side_friendly && !(_unit getVariable ["GRLIB_mission_AI", false]) && !(_unit getVariable ["GRLIB_battlegroup", false]) ) then {
 		private _readiness = (0.1 * GRLIB_difficulty_modifier);
 		if (_unit isKindOf "AllVehicles") then { _readiness = (0.3 * GRLIB_difficulty_modifier) };
 		if (_unit isKindOf "Air") then { _readiness = (0.4 * GRLIB_difficulty_modifier) };
@@ -62,7 +62,7 @@ if ( isServer ) then {
 			armor_weight = armor_weight - 0.2;
 			air_weight = air_weight - 0.2;
 		};
-		if ( (vehicle _killer) isKindOf "Tank" ) then {
+		if ( (vehicle _killer) isKindOf "LandVehicle" ) then {
 			infantry_weight = infantry_weight - 10;
 			armor_weight = armor_weight + 10;
 			air_weight = air_weight - 1;
@@ -89,7 +89,7 @@ if ( isServer ) then {
 			_isPrisonner = _unit getVariable ["GRLIB_is_prisoner", false];
 			_isKamikaz = _unit getVariable ["GRLIB_is_kamikaze", false];
 			_isZombie = (_unit_class select [0,10] == "RyanZombie");
-			if ( _isKamikaz ) then { 
+			if ( _isKamikaz ) then {
 				_msg = format ["%1 kill a Kamikaze !! +10 XP", name _killer] ;
 				[gamelogic, _msg] remoteExec ["globalChat", 0];
 				[_killer, 11] call F_addScore;
@@ -150,7 +150,7 @@ if ( isServer ) then {
 							[_leader, 1] call F_addScore;
 						};
 					};
-					if (floor random 2 == 0) then { 
+					if (floor random 2 == 0) then {
 						private _deathsound = format ["A3\sounds_f\characters\human-sfx\P%1\hit_max_%2.wss", selectRandom ["03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18"], selectRandom [1,2,3]];
 						playSound3D [_deathsound, _unit, false, getPosASL _unit, 5, 1, 300];
 					};
@@ -198,7 +198,7 @@ if ( isServer ) then {
 				stats_opfor_vehicles_killed_by_players = stats_opfor_vehicles_killed_by_players + 1;
 			};
 		};
-		
+
 		if (_unit_class in all_hostile_classnames) then {
 			stats_opfor_vehicles_killed = stats_opfor_vehicles_killed + 1;
 		} else {

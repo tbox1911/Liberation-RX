@@ -14,8 +14,10 @@ if (_qrf == true) then {
 private _vehicle = [_targetpos, selectRandom opfor_troup_transports_heli] call F_libSpawnVehicle;
 private _pilot_group = group driver _vehicle;
 _vehicle setVariable ["GRLIB_counter_TTL", round(time + 3600)];
+_vehicle setVariable ["GRLIB_battlegroup", true];
 {
 	_x setVariable ["GRLIB_counter_TTL", round(time + 3600)];
+	_x setVariable ["GRLIB_battlegroup", true];
 } foreach (crew _vehicle);
 sleep 1;
 private _spawnpos = getPosATL _vehicle;
@@ -47,6 +49,7 @@ _vehicle lock 0;
 	_x setSkill ["courage", 1];
 	_x allowFleeing 0;
 	_x setVariable ["GRLIB_counter_TTL", round(time + 3600)];
+	_x setVariable ["GRLIB_battlegroup", true];
 } foreach (units _para_group);
 (units _para_group) allowGetIn true;
 (units _para_group) orderGetIn true;
