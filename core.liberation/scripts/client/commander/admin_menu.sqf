@@ -86,7 +86,7 @@ private _output_controls = [531,532,533,534,535,536];
 { ctrlShow [_x, false] } foreach _output_controls;
 
 // Action buttons
-private _button_controls = [1600,1601,1602,1603,1604,1609,1610,1611,1612,1613,1614,1615,1616,1617,1618,1619,1624,1625];
+private _button_controls = [1600,1601,1602,1603,1604,1609,1610,1611,1612,1613,1614,1615,1616,1617,1618,1619,1623,1624,1625,1626];
 private _disabled_controls = [1606,1607,1608,1609,1610,1613,1614,1620];
 
 (_display displayCtrl 1603) ctrlSetText getMissionPath "res\ui_confirm.paa";
