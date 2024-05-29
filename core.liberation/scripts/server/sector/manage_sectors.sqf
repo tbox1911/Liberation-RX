@@ -1,5 +1,5 @@
 waitUntil {sleep 1; !isNil "opfor_sectors" };
-waitUntil {sleep 1; !isNil "sectors_allSectors" };
+waitUntil {sleep 1; !isNil "active_sectors" };
 
 private ["_nextsector", "_hc"];
 
