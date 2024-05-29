@@ -1,5 +1,6 @@
 params [ "_sector" ];
 active_sectors pushback _sector;
+publicVariable "active_sectors";
 
 private _sector_pos = markerPos _sector;
 private _stopit = false;
@@ -288,6 +289,7 @@ if ( (!(_sector in blufor_sectors)) && (([_sector_pos, GRLIB_sector_size, GRLIB_
 };
 
 active_sectors = active_sectors - [_sector];
+publicVariable "active_sectors";
 diag_log format ["End Defend Sector %1 at %2", _sector, time];
 
 // Cleanup
