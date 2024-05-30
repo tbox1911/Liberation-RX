@@ -1,5 +1,5 @@
 if (GRLIB_patrols_activity == 0) exitWith {};
-sleep 400;
+sleep 300;
 diag_log "--- LRX Starting Patrols Manager";
 
 for "_i" from 1 to GRLIB_patrol_amount do {

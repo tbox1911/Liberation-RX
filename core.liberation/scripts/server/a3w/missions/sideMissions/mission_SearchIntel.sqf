@@ -130,6 +130,10 @@ _setupObjects = {
 
 	//----- spawn civilians ---------------------------------
 	_grp_civ = [_missionPos, (5 + random(5))] call F_spawnCivilians;
+	{
+		_x setVariable ["GRLIB_vehicle_owner", "server", true];
+		_x setVariable ["acex_headless_blacklist", true, true];
+	} forEach (units _grp_civ);
 
 	//----- spawn mines ---------------------------------
 	[_missionPos, 30] call createlandmines;

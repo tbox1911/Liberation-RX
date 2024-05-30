@@ -1,15 +1,16 @@
 private [
 	"_usable_sectors",
 	"_sectorpos",
+	"_radius",
 	"_civ_grp",
 	"_civ_veh",
 	"_unit_ttl",
-	"_radius"
+	"_unit_pos"
 ];
 
 while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	sleep (30 + floor(random 150));
-	while { civcap > GRLIB_civilians_amount || (diag_fps < 25) } do {
+	while { civcap > GRLIB_civilians_amount || (diag_fps < 20) } do {
 		sleep 60;
 	};
 
@@ -20,6 +21,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 		if ( (count ([markerPos  _x, GRLIB_spawn_max] call F_getNearbyPlayers) > 0) ) then {
 			_usable_sectors pushback _x;
 		};
+		sleep 0.1;
 	} foreach (sectors_bigtown + sectors_capture + sectors_factory - active_sectors);
 
 	if ( count _usable_sectors > 0 ) then {
@@ -36,8 +38,6 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 			_civ_grp = [_sectorpos, (selectRandom _rndciv)] call F_spawnCivilians;
 		};
 
-		if (isNull _civ_grp) exitWith {};
-
 		if (local _civ_grp) then {
 			private _hc = [] call F_lessLoadedHC;
 			if (!isNull _hc) then {
@@ -52,18 +52,21 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 			_radius = GRLIB_spawn_max * 2;
 		};
 		_unit_ttl = round (time + 1800);
+		_unit_pos = getPosATL (leader _civ_grp);
 		waitUntil {
+			if (alive (leader _civ_grp)) then { _unit_pos = getPosATL (leader _civ_grp) };
 			sleep 60;
 			(
 				GRLIB_global_stop == 1 ||
 				(diag_fps < 25) ||
 				({alive _x} count (units _civ_grp) == 0) ||
-				([(leader _civ_grp), _radius, GRLIB_side_friendly] call F_getUnitsCount == 0) ||
+				([_unit_pos, _radius, GRLIB_side_friendly] call F_getUnitsCount == 0) ||
 				(time > _unit_ttl)
 			)
 		};
 
 		// Cleanup
+		waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_unit_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
 		[_civ_veh] call clean_vehicle;
 		{ deleteVehicle _x } forEach (units _civ_grp);
 		deleteGroup _civ_grp;

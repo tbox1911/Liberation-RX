@@ -252,6 +252,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 
 		_nextbuilding = createVehicle [_nextclass, zeropos, [], 0, "CAN_COLLIDE"];
 		_nextbuilding allowDamage false;
+		_nextbuilding addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		_nextbuilding setVectorDirAndUp [_nextdir select 0, _nextdir select 1];
 		_nextbuilding setPosWorld _nextpos;
 		_nextbuilding setVelocity [0, 0, 0];
@@ -299,10 +300,6 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 		if ( _nextclass == mobile_respawn ) then {
 			GRLIB_mobile_respawn pushback _nextbuilding;
 		};
-
-		if (_nextclass in GRLIB_quick_delete) then {
-			_nextbuilding addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-		};
 	} foreach _s2;
 	sleep 3;
 
@@ -325,6 +322,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 		_nextbuilding = createVehicle [_nextclass, zeropos, [], 0, "CAN_COLLIDE"];
 		_nextbuilding enableSimulationGlobal false;
 		_nextbuilding allowDamage false;
+		_nextbuilding addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		_nextbuilding setVectorDirAndUp [_nextdir select 0, _nextdir select 1];
 		_nextbuilding setPosWorld _nextpos;
 		_buildings_created pushback _nextbuilding;
@@ -417,10 +415,6 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 		if ( _hascrew ) then {
 			[ _nextbuilding] call F_forceCrew;
 			_nextbuilding setVariable ["GRLIB_vehicle_manned", true, true];
-		};
-
-		if (_nextclass in GRLIB_quick_delete) then {
-			_nextbuilding addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		};
 	} foreach _s3;
 

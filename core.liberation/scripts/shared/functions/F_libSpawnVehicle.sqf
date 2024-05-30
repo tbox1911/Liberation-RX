@@ -101,7 +101,7 @@ if ( _side == GRLIB_side_civilian ) then {
 		if (!_hasFuel) then { _vehicle setFuel 1 };
 	}];
 	_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_civilian }];
-	[_vehicle, "lock", "public"] call F_vehicleLock;
+	_vehicle setVariable ["GRLIB_vehicle_owner", "public", true];
 };
 
 if ( _side == GRLIB_side_friendly ) then {
@@ -135,7 +135,7 @@ if ( _side == GRLIB_side_enemy ) then {
 
 	// Lock vehicles
 	if !(GRLIB_permission_enemy) then {
-		[_vehicle, "lock", "server"] call F_vehicleLock;
+		_vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
 	};
 };
 

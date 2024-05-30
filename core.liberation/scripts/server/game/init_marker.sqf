@@ -16,6 +16,7 @@ private ["_vehicle"];
 		_vehicle allowDamage false;
 		[_vehicle, "lock", "server"] call F_vehicleLock;
 		[_vehicle] call F_clearCargo;
+		_vehicle enableSimulationGlobal true; // enable to keep facility
 	};
 	sleep 0.2;
 } forEach sectors_factory;

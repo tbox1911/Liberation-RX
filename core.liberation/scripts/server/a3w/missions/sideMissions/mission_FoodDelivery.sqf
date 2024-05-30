@@ -22,6 +22,7 @@ _setupObjects = {
 	_man1 setVariable ['GRLIB_can_speak', true, true];
 	_man1 setVariable ["GRLIB_A3W_Mission_DL3", true, true];
 	_man1 setVariable ["acex_headless_blacklist", true, true];
+	_man1 setVariable ["GRLIB_vehicle_owner", "server", true];
 	_man1 allowDamage false;
 	[_man1, "LHD_krajPaluby"] spawn F_startAnimMP;
 	_marker_mission = ["DEL2", _missionPos] call createMissionMarkerCiv;	

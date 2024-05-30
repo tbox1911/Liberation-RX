@@ -20,7 +20,7 @@ while { true } do {
 	_civcap = civcap;
 	if (count (entities "HeadlessClient_F") > 0) then {
 		_opforcap = { alive _x && local _x && !(captive _x) } count (units GRLIB_side_enemy);
-		_civcap = { alive _x && local _x && !(typeOf _x in [SHOP_Man, SELL_Man, WRHS_Man, commander_classname])} count (units GRLIB_side_civilian);
+		_civcap = { alive _x && local _x && (isNil {_x getVariable "GRLIB_vehicle_owner"}) } count (units GRLIB_side_civilian);
 	};
 
 	_myfpsmarker setMarkerText format [ "%1: %2 fps - Up: %6 - civ:%3 blu:%4 red:%5",

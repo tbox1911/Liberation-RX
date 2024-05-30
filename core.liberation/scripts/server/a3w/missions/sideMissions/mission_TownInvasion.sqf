@@ -41,6 +41,10 @@ _setupObjects = {
 
 	// Spawn civvies
 	_grp_civ = [_missionPos, (5 + random(5))] call F_spawnCivilians;
+	{
+		_x setVariable ["GRLIB_vehicle_owner", "server", true];
+		_x setVariable ["acex_headless_blacklist", true, true];
+	} forEach (units _grp_civ);
 
 	_missionHintText = ["STR_INVASION_MESSAGE1", sideMissionColor, _townName, _nbUnits];
 	true;

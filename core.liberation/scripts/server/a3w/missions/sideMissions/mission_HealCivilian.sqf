@@ -13,10 +13,10 @@ _setupVars = {
 
 _setupObjects = {
 	_missionPos = [(markerpos _missionLocation)] call F_findSafePlace;
-	if (count _missionPos == 0) exitWith { 
+	if (count _missionPos == 0) exitWith {
     	diag_log format ["--- LRX Error: side mission HCiv, cannot find spawn point!"];
     	false;
-	};	
+	};
 	_location_name = [_missionPos] call F_getLocationName;
 
 	private _medic = [
@@ -85,9 +85,11 @@ _setupObjects = {
 
 	// add medic + patrol
 	_grp_medic = [_tent_pos, 3, "medics", true, 20] call createCustomGroup;
-	{ 
+	{
 		_x setVariable ["GRLIB_can_speak", true, true];
-		_x setVariable ["GRLIB_A3W_Mission_HC1", true, true];		
+		_x setVariable ["GRLIB_A3W_Mission_HC1", true, true];
+		_x setVariable ["GRLIB_vehicle_owner", "server", true];
+		_x setVariable ["acex_headless_blacklist", true, true];
 	} forEach (units _grp_medic);
 
 	// add wounded
@@ -97,6 +99,7 @@ _setupObjects = {
 		[_unit] joinSilent _grp_wnded;
 		_unit setVariable ["GRLIB_can_speak", true, true];
 		_unit setVariable ["GRLIB_A3W_Mission_HC2", true, true];
+		_unit setVariable ["GRLIB_vehicle_owner", "server", true];
 		_unit setVariable ["acex_headless_blacklist", true, true];
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		removeAllAssignedItems _unit;
@@ -113,7 +116,7 @@ _setupObjects = {
 	};
 	_grp_wnded setSpeedMode "LIMITED";
 	_grp_wnded setBehaviourStrong "CARELESS";
-	_grp_wnded setCombatMode "GREEN";	
+	_grp_wnded setCombatMode "GREEN";
 
 	_missionHintText = ["STR_HEAL_CIV_MESSAGE1", sideMissionColor, _location_name];
 	true;

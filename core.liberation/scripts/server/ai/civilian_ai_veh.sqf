@@ -8,7 +8,7 @@ if (count (crew _vehicle) == 0) exitWith {};
 
 private _driver = driver _vehicle;
 private _grp = group _driver;
-private _delay = (600 + floor random 300);
+private _delay = (150 + floor random 200);
 private _trigger = (time + _delay);
 private _event_stared = false;
 private _wait_max = 0;

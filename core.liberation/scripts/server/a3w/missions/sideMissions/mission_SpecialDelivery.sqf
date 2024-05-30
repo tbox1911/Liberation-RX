@@ -47,6 +47,7 @@ _setupObjects = {
 	private _man1 = _mission_grp createUnit ["C_Nikos", _missionPos, [], 0, "NONE"];
 	_man1 allowDamage false;
 	_man1 setVariable ["acex_headless_blacklist", true, true];
+	_man1 setVariable ["GRLIB_vehicle_owner", "server", true];
 	_man1 setVariable ["GRLIB_A3W_Mission_SD1", true, true];
 	_man1 setVariable ['GRLIB_can_speak', true, true];
 	[_man1, "LHD_krajPaluby"] spawn F_startAnimMP;
@@ -58,6 +59,7 @@ _setupObjects = {
 	private _man2 = _mission_grp createUnit ["C_Orestes", _missionPos2, [], 0, "NONE"];
 	_man2 allowDamage false;
 	_man2 setVariable ["acex_headless_blacklist", true, true];
+	_man2 setVariable ["GRLIB_vehicle_owner", "server", true];
 	_man2 setVariable ["GRLIB_A3W_Mission_SD2", true, true];
 	_man2 setVariable ['GRLIB_can_speak', true, true];
 	[_man2, "LHD_krajPaluby"] spawn F_startAnimMP;
@@ -65,6 +67,7 @@ _setupObjects = {
 	private _man3 = _mission_grp createUnit ["C_Orestes", _missionPos3, [], 0, "NONE"];
 	_man3 allowDamage false;
 	_man3 setVariable ["acex_headless_blacklist", true, true];
+	_man3 setVariable ["GRLIB_vehicle_owner", "server", true];
 	_man3 setVariable ["GRLIB_A3W_Mission_SD3", true, true];
 	_man3 setVariable ['GRLIB_can_speak', true, true];
 	[_man3, "LHD_krajPaluby"] spawn F_startAnimMP;
@@ -74,8 +77,9 @@ _setupObjects = {
 	_house setVectorDirAndUp [[0, 0, 0] vectorCrossProduct surfaceNormal _missionEnd, surfaceNormal _missionEnd];
 
 	private _man4 = _mission_grp createUnit ["C_Nikos_aged", _missionEnd, [], 0, "NONE"];
-	_man4 setVariable ["acex_headless_blacklist", true, true];
 	_man4 allowDamage false;
+	_man4 setVariable ["acex_headless_blacklist", true, true];
+	_man4 setVariable ["GRLIB_vehicle_owner", "server", true];
 	_man4 setVariable ["GRLIB_A3W_Mission_SD4", true, true];
 	_man4 setVariable ['GRLIB_can_speak', true, true];
 	[_man4, "LHD_krajPaluby"] spawn F_startAnimMP;
