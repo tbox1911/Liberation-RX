@@ -7,6 +7,7 @@ F_addScore = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_
 F_addReput = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_addReput.sqf";
 F_calcUnitsCost = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_calcUnitsCost.sqf";
 F_check_near = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_check_near.sqf";
+F_getAirSpawn = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getAirSpawn.sqf";
 F_checkClass = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_checkClass.sqf";
 F_clearCargo = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_clearCargo.sqf";
 F_correctHEGL = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_correctHEGL.sqf";

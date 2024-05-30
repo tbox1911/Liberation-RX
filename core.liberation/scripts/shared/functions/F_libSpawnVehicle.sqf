@@ -14,13 +14,7 @@ private _spawnpos = [];
 private _airveh_alt = 300;
 
 if ( _classname isKindOf "Air" ) then {
-	private _spawn_sectors = ([sectors_airspawn, [_sectorpos], { (markerpos _x) distance2D _input0 }, "ASCEND"] call BIS_fnc_sortBy);
-	{
-		_spawnpos = markerPos _x;
-		private _dist = [_spawnpos, true, false] call F_getNearestBluforObjective select 1;
-		if (_spawnpos distance2D _sectorpos > GRLIB_spawn_max && _dist > GRLIB_spawn_max) exitWith {};
-	} foreach _spawn_sectors;
-
+	_spawnpos = [_sectorpos] call F_getAirSpawn;
 	if ( _classname isKindOf "Plane" ) then { _airveh_alt = 800 };
 	if ( GRLIB_SOG_enabled ) then { _airveh_alt = 150 };
 	if ( _side == GRLIB_side_civilian ) then { _airveh_alt = 150 };
@@ -119,7 +113,7 @@ if ( _side == GRLIB_side_enemy ) then {
 		params ["_vehicle", "_hasFuel"];
 		if (count (crew _vehicle) == 0) exitWith {};
 		if (!_hasFuel) then { _vehicle setFuel 1 };
-	}];	
+	}];
 	_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
 
 	// LRX textures
