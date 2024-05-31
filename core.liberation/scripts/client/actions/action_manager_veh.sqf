@@ -111,6 +111,7 @@ while { true } do {
 			{ },
 			{ 
 				_target setVariable ["GRLIB_last_killer", nil, true];
+				[_target, player, player] call kill_manager;
 				_target setDamage 1;
 			},
 			{ },
