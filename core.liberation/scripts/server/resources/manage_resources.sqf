@@ -41,7 +41,7 @@ while { GRLIB_endgame == 0 } do {
 			};
 		};
 
-		if (!GRLIB_passive_income && ([ammobox_b_typename] call count_box) < _AmmoBox_cap ) then {
+		if (!GRLIB_passive_income && ([ammobox_b_typename] call count_box) < _AmmoBox_cap) then {
 			_sectors = [];
 			{
 				if (_x in sectors_military && (([ammobox_b_typename, _x] call count_box) < 3)) then { _sectors pushback _x };
@@ -56,7 +56,7 @@ while { GRLIB_endgame == 0 } do {
 		};
 
 		// Fuel Barrel
-		if ( ([fuelbarrel_typename] call count_box) < _FuelBarrel_cap ) then {
+		if (([fuelbarrel_typename] call count_box) < _FuelBarrel_cap) then {
 			_sectors = [];
 			{
 				if ( _x in sectors_factory && ([fuelbarrel_typename, _x] call count_box) < 3) then { _sectors pushback _x };
@@ -71,7 +71,7 @@ while { GRLIB_endgame == 0 } do {
 		};
 
 		// Water Barrel
-		if ( ([waterbarrel_typename] call count_box) < _WaterBarrel_cap ) then {
+		if (([waterbarrel_typename] call count_box) < _WaterBarrel_cap) then {
 			_sectors = [];
 			{
 				if ( _x in sectors_tower && ([waterbarrel_typename, _x] call count_box) < 3) then { _sectors pushback _x };
@@ -86,7 +86,7 @@ while { GRLIB_endgame == 0 } do {
 		};
 
 		// Food Barrel
-		if ( ([foodbarrel_typename] call count_box) < _FoodBarrel_cap ) then {
+		if (([foodbarrel_typename] call count_box) < _FoodBarrel_cap) then {
 			_sectors = [];
 			{
 				if ( _x in sectors_bigtown && ([foodbarrel_typename, _x] call count_box) < 4) then { _sectors pushback _x };
