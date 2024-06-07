@@ -111,7 +111,7 @@ while { true } do {
 			{ },
 			{ 
 				_target setVariable ["GRLIB_last_killer", nil, true];
-				[_target, player, player] call kill_manager;
+				[_target, player, player] remoteExec ["kill_manager", 2];
 				_target setDamage 1;
 			},
 			{ },
@@ -125,7 +125,7 @@ while { true } do {
 	} forEach _nearstatics;
 
 	// FOB Sign Actions
-	_nearsign = (nearestObjects [player, [FOB_sign], _searchradius]) select { (GRLIB_player_near_lhd || GRLIB_player_fobdistance < GRLIB_fob_range) && isNil {_x getVariable "GRLIB_sign_action"} };
+	_nearsign = (nearestObjects [player, [FOB_sign], _searchradius]) select { (GRLIB_player_near_lhd || GRLIB_player_near_fob) && isNil {_x getVariable "GRLIB_sign_action"} };
 	{
 		_unit = _x;
 		_unit addAction ["<t color='#FFFFFF'>" + "-= Hall of Fame =-" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Talk_ca.paa'/>",{([5] call F_notice_hof) spawn BIS_fnc_dynamicText},"",989,true,true,"","GRLIB_player_is_menuok",5];
@@ -135,5 +135,6 @@ while { true } do {
 		_unit addAction ["<t color='#FFFFFF'>" + localize "STR_METEO" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Talk_ca.paa'/>",{([] call F_notice_weather) spawn BIS_fnc_dynamicText},"",985,true,true,"","GRLIB_player_is_menuok",5];
 		_unit setVariable ["GRLIB_sign_action", true];
 	} foreach _nearsign;
+
 	sleep 3;
 };
