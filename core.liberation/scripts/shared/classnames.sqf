@@ -483,7 +483,7 @@ GRLIB_recycleable_blacklist = [
 	basic_weapon_typename
 ];
 
-GRLIB_recycleable_classnames = ["LandVehicle","Air","Ship","StaticWeapon","Slingload_01_Base_F","Pod_Heli_Transport_04_base_F"];
+GRLIB_recycleable_classnames = ["Air","Ship","LandVehicle","StaticWeapon","Slingload_01_Base_F","Pod_Heli_Transport_04_base_F"];
 {
 	GRLIB_recycleable_classnames pushBackUnique (_x select 0);
 } foreach (support_vehicles + buildings + opfor_recyclable);

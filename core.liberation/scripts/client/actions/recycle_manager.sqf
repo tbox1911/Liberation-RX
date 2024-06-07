@@ -7,6 +7,7 @@ while { true } do {
 	if (GRLIB_player_near_fob) then {
 		private _nearrecycl = (nearestObjects [player, GRLIB_recycleable_classnames + GRLIB_vehicle_whitelist, 30]) select {
 			(_x distance2D lhd > GRLIB_fob_range) &&
+			(getObjectType _x >= 8) &&
 			([player, _x] call is_owner) &&
 			isNil {_x getVariable "GRLIB_recycle_action"}
 		};

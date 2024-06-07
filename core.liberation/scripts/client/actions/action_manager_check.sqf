@@ -75,15 +75,15 @@ GRLIB_checkArsenalPerso = {
 };
 
 GRLIB_checkGarage = {
-	(GRLIB_garage_size > 0 && GRLIB_player_is_menuok && !(surfaceIsWater getPos player) &&GRLIB_player_fobdistance > 15 && GRLIB_player_fobdistance < GRLIB_fob_range && !GRLIB_player_near_outpost && GRLIB_player_score >= GRLIB_perm_inf)
+	(GRLIB_garage_size > 0 && GRLIB_player_is_menuok && !(surfaceIsWater getPos player) && GRLIB_player_fobdistance > 15 && GRLIB_player_near_fob && !GRLIB_player_near_outpost && GRLIB_player_score >= GRLIB_perm_inf)
 };
 
 GRLIB_checkBuild = {
-	(GRLIB_player_is_menuok && GRLIB_player_fobdistance < GRLIB_fob_range && (getPos player select 2) < 30 && (([player, 3] call fetch_permission) || GRLIB_player_admin))
+	(GRLIB_player_is_menuok && GRLIB_player_near_fob && (getPos player select 2) < 30 && (([player, 3] call fetch_permission) || GRLIB_player_admin))
 };
 
 GRLIB_checkSquadMgmt = {
-	(GRLIB_player_is_menuok && (leader group player == player) && (count units group player > 1) && (GRLIB_player_fobdistance < GRLIB_fob_range || GRLIB_player_near_lhd))
+	(GRLIB_player_is_menuok && (leader group player == player) && (count units group player > 1) && (GRLIB_player_near_fob || GRLIB_player_near_lhd))
 };
 
 GRLIB_checkCommander = {
@@ -95,7 +95,7 @@ GRLIB_checkSecObj = {
 };
 
 GRLIB_checkBuildFOB = {
-	(GRLIB_player_is_menuok && (GRLIB_player_fobdistance > GRLIB_sector_size && !GRLIB_player_near_lhd) && (player distance2D cursorObject < GRLIB_ActionDist_5) && (typeOf cursorObject in [FOB_box_typename, FOB_truck_typename]) && !(cursorObject getVariable ['box_in_use', false]))
+	(GRLIB_player_is_menuok && (GRLIB_player_fobdistance > GRLIB_sector_size && !GRLIB_player_near_lhd) && (player distance2D cursorObject <= GRLIB_ActionDist_5) && (typeOf cursorObject in [FOB_box_typename, FOB_truck_typename]) && !(cursorObject getVariable ['box_in_use', false]))
 };
 
 GRLIB_checkBuildFOBWater = {
@@ -103,15 +103,15 @@ GRLIB_checkBuildFOBWater = {
 };
 
 GRLIB_checkOnboardShip = {
-	(alive player && ((surfaceIsWater ([] call F_getNearestFob) && GRLIB_player_fobdistance < GRLIB_fob_range) || (GRLIB_player_near_lhd && surfaceIsWater getPos lhd)) && (getPosASL player select 2) < 2)
+	(alive player && ((surfaceIsWater ([] call F_getNearestFob) && GRLIB_player_near_fob) || (GRLIB_player_near_lhd && surfaceIsWater getPos lhd)) && (getPosASL player select 2) < 2)
 };
 
 GRLIB_checkPackFOB = {
-	(GRLIB_player_is_menuok && GRLIB_player_fobdistance < GRLIB_ActionDist_10 && (!GRLIB_player_near_outpost) && (GRLIB_player_owner_fob || GRLIB_player_admin))
+	(GRLIB_player_is_menuok && GRLIB_player_fobdistance <= GRLIB_ActionDist_10 && (!GRLIB_player_near_outpost) && (GRLIB_player_owner_fob || GRLIB_player_admin))
 };
 
 GRLIB_checkPackBeacon = {
-	(GRLIB_player_is_menuok && !GRLIB_player_near_lhd && (player distance2D cursorObject < GRLIB_ActionDist_3) && (typeOf cursorObject == mobile_respawn) && ([player, cursorObject] call is_owner) && !(cursorObject getVariable ['tent_in_use', false]))
+	(GRLIB_player_is_menuok && !GRLIB_player_near_lhd && (player distance2D cursorObject <= GRLIB_ActionDist_3) && (typeOf cursorObject == mobile_respawn) && ([player, cursorObject] call is_owner) && !(cursorObject getVariable ['tent_in_use', false]))
 };
 
 GRLIB_checkUnpackBeacon = {
@@ -119,15 +119,15 @@ GRLIB_checkUnpackBeacon = {
 };
 
 GRLIB_checkBuildOutpost = {
-	(GRLIB_player_is_menuok && (GRLIB_player_fobdistance > GRLIB_sector_size && !GRLIB_player_near_lhd) && (player distance2D cursorObject < GRLIB_ActionDist_5) && (typeOf cursorObject == FOB_box_outpost) && !(cursorObject getVariable ['box_in_use', false]))
+	(GRLIB_player_is_menuok && (GRLIB_player_fobdistance > GRLIB_sector_size && !GRLIB_player_near_lhd) && (player distance2D cursorObject <= GRLIB_ActionDist_5) && (typeOf cursorObject == FOB_box_outpost) && !(cursorObject getVariable ['box_in_use', false]))
 };
 
 GRLIB_checkDelOutpost = {
-	(GRLIB_player_is_menuok && GRLIB_player_fobdistance < GRLIB_ActionDist_10 && GRLIB_player_near_outpost && (GRLIB_player_owner_fob || GRLIB_player_admin))
+	(GRLIB_player_is_menuok && GRLIB_player_fobdistance <= GRLIB_ActionDist_10 && GRLIB_player_near_outpost && (GRLIB_player_owner_fob || GRLIB_player_admin))
 };
 
 GRLIB_checkUpgradeOutpost = {
-	(GRLIB_player_is_menuok && GRLIB_player_fobdistance < GRLIB_ActionDist_10 && GRLIB_player_near_outpost && ((GRLIB_player_owner_fob && (GRLIB_player_score >= GRLIB_perm_max)) || GRLIB_player_admin))
+	(GRLIB_player_is_menuok && GRLIB_player_fobdistance <= GRLIB_ActionDist_10 && GRLIB_player_near_outpost && ((GRLIB_player_owner_fob && (GRLIB_player_score >= GRLIB_perm_max)) || GRLIB_player_admin))
 };
 
 GRLIB_checkSpeak = {
@@ -143,4 +143,12 @@ GRLIB_checkCapture = {
 GRLIB_checkDefFOB = {
 	params ["_target", "_unit"];
 	(GRLIB_player_is_menuok && alive _target && GRLIB_player_score >= GRLIB_perm_inf)
+};
+
+GRLIB_checkRemoveHelipad = {
+	params ["_target", "_unit"];
+	(
+		GRLIB_player_is_menuok && GRLIB_player_score >= GRLIB_perm_log && GRLIB_player_near_fob &&
+		({ getObjectType _x >= 8 && player distance2D _x <= GRLIB_ActionDist_3 } count (nearestObjects [player, ["Helipad_base_F"], 20]) >= 1) 
+	);
 };

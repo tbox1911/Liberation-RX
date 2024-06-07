@@ -92,3 +92,6 @@ player addAction ["<t color='#006F80'>" + localize "STR_UPGRADE_OUTPOST" + "</t>
 
 // Onboard Ship
 player addAction ["<t color='#00206F'>" + localize "STR_ONBOARD_SHIP" + "</t> <img size='1' image='res\ui_deployfob.paa'/>",{[([] call F_getNearestFob)] call do_onboard;},"",-981,false,true,"","call GRLIB_checkOnboardShip"];
+
+// Remove Helipad
+player addAction ["<t color='#FFFF00'>" + localize "STR_RECYCLE_MANAGER" + "</t> <img size='1' image='res\ui_recycle.paa'/>",{ deleteVehicle (nearestObjects [player, ["Helipad_base_F"], GRLIB_ActionDist_3] select 0) },"",-505,false,true,"","call GRLIB_checkRemoveHelipad"];
