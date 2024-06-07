@@ -43,9 +43,9 @@ while {alive _unit && _continue} do {
 		_target = selectRandom _nearby_players;
 		_target_veh = vehicles select { (alive _x) && ([_target, _x, true] call is_owner) && (_x distance2D _unit < _radius) };
 		_reputation = [_target] call F_getReput;
-		if ( _reputation >= 25 ) then { _list_actions = [0,1,1,2] };
-		if ( _reputation >= 50 ) then { _list_actions = [1,2,2,3] };
-		if ( _reputation >= 75 ) then { _list_actions = [2,2,3,3,4,4,5] };
+		if ( _reputation >= 25 ) then { _list_actions = [0,1,1,1,2] };
+		if ( _reputation >= 50 ) then { _list_actions = [1,2,2,2,3] };
+		if ( _reputation >= 75 ) then { _list_actions = [2,2,3,4,4,5] };
 		if ( _reputation >= 100 ) then { _list_actions = [2,3,4,5,5] };
 		if ( _reputation <= -25 ) then { _list_actions = [0,10] };
 		if ( _reputation <= -50 ) then { _list_actions = [10,11,11] };
@@ -119,7 +119,7 @@ while {alive _unit && _continue} do {
 			_target_veh = _target_veh select { ([_x] call F_VehicleNeedRepair) };
 			if (count _target_veh > 0) then {
 				_target = selectRandom _target_veh;
-				if (damage _target < 0.1) exitWith {};
+				if (damage _target < 0.2) exitWith {};
 				[_grp] call F_deleteWaypoints;
 				waitUntil {
 					_unit doMove (getPos _target);
