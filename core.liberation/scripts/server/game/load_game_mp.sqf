@@ -331,6 +331,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 			[_nextbuilding] call F_aceInitVehicle;
 		};
 
+		[_nextbuilding] call F_clearCargo;
 		[_nextbuilding] call F_fixModVehicle;
 
 		if ( _nextclass in vehicle_rearm_sources ) then {
