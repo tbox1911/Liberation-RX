@@ -48,6 +48,8 @@ if (count _all_buildings_to_destroy > 300) then { _sleep = 0 };
 _all_buildings_to_destroy = (_fobpos nearObjects (GRLIB_fob_range * 1.5)) select { getObjectType _x >= 8 && (getPos _x select 2) >= 2 };
 { _x setPos (getPos _x)} forEach _all_buildings_to_destroy;
 
+diag_log format ["FOB %1 destroyed at %2", _fobpos, time];
+
 GRLIB_all_fobs = GRLIB_all_fobs - [_fobpos];
 publicVariable "GRLIB_all_fobs";
 GRLIB_all_outposts = GRLIB_all_outposts - [_fobpos];
