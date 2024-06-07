@@ -13,7 +13,8 @@ _box addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 
 if (isNil "_locked") then { _locked = false};
 if (_locked) then {
-	[_box, "lock", "server"] call F_vehicleLock;
+	_box setVariable ["R3F_LOG_disabled", true, true];
+	_box setVariable ["GRLIB_vehicle_owner", "server", true];	
 	[_box] call F_aceLockVehicle;
 } else {
 	[_box, "abandon"] call F_vehicleLock;
