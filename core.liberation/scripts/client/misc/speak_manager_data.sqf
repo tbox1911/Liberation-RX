@@ -7,18 +7,14 @@ speak_squad_AI = {
 	params ["_unit"];
 	player globalChat format ["Hey %1, how are you ?", name _unit];
 	sleep 2;
+	private _max_revive = PAR_ai_revive + (GRLIB_rank_level find (rank _unit));
 	private _cur_revive = _unit getVariable ["PAR_revive_max", -1];
-	if (_cur_revive > 0) then {
-		_msg = "I'm all good, let's go to kick their ass !!";
-		if (_cur_revive < PAR_ai_revive/2) then {
-			_msg = format ["I'm tired of all this, I was wounded %1 times today !", _cur_revive];
-		};
-		if (_cur_revive <= 3) then {
-			_msg = format ["Bad, It's not going well at all, I need Medical Support. (Revive left %1)", _cur_revive];
-		};
+	if (_cur_revive >= 0) then {
+		private _msg = "Fine, not much to say...";
+		if (_cur_revive <= (_max_revive * 0.6)) then { _msg = format ["I'm tired of all this, I was wounded %1 times today !", (_max_revive - _cur_revive)] };
+		if (_cur_revive <= 3) then { _msg = format ["Bad, It's not going well at all, I need Medical Support. %1 Revive left.", _cur_revive] };
+		if (_cur_revive == 0) then { _msg = format ["CRITICAL! the next bullet and I'm DEAD !!"] };
 		_unit globalChat _msg;
-	} else {
-		_unit globalChat "Fine, not much to say...";
 	};
 };
 
@@ -128,9 +124,9 @@ speak_reammo_player = {
 };
 
 speak_heal_player = {
-	_unit globalChat "Hey, You're wounded !";
+	_unit globalChat "Hey, You are wounded !";
 	sleep 2;
-	_unit globalChat "Please let's me help you...";
+	_unit globalChat "Please, let's me help you...";
 };
 
 speak_heal_civ = {

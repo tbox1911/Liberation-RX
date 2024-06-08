@@ -10,7 +10,6 @@ if (surfaceIsWater _pos) then {
     _pos set [2, _alt];
     _unit setPosASL (ATLtoASL _pos);
 };
-_unit setVariable ["PAR_Grp_ID", format["Bros_%1", PAR_Grp_ID], true];
 [_unit] spawn PAR_fn_AI_Damage_EH;
 _unit enableIRLasers true;
 _unit enableGunLights "Auto";

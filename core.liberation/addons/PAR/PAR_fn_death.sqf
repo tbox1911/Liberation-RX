@@ -58,8 +58,9 @@ if (_unit == player) then {
 } else {
 	gamelogic globalChat (format [localize "STR_PAR_DE_01", name _unit]);
 	removeAllActions _unit;
-	removeAllWeapons _unit;
+	// removeAllWeapons _unit;
+	sleep 60;
 	hideBody _unit;
-	sleep 5;
+	sleep 10;
 	deleteVehicle _unit;
 };

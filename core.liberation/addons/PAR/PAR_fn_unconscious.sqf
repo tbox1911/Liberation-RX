@@ -2,6 +2,11 @@ params ["_unit"];
 
 if (rating _unit < -2000) exitWith {_unit setDamage 1};
 if (!([] call F_getValid)) exitWith {_unit setDamage 1};
+private _cur_revive = 1;
+if (PAR_ai_revive > 0 && !isPlayer _unit && local _unit) then {
+	_cur_revive = _unit getVariable ["PAR_revive_max", PAR_ai_revive];
+};
+if (_cur_revive <= 0) exitWith {_unit setDamage 1};
 if (_unit getVariable ["PAR_isUnconscious", false]) exitWith {};
 
 _unit setUnconscious true;
@@ -27,11 +32,6 @@ if (isPlayer _unit) then {
 sleep 10;
 if (!alive _unit) exitWith {};
 waituntil {sleep 0.5; (isTouchingGround (vehicle _unit) || (round (getPos _unit select 2) <= 1))};
-
-if (PAR_ai_revive > 0 && !isPlayer _unit && local _unit) then {
-	private _cur_revive = _unit getVariable ["PAR_revive_max", PAR_ai_revive];
-	if (_cur_revive == 0) then { _unit setDamage 1; sleep 3 };
-};
 
 private _bld = [_unit] call PAR_spawn_blood;
 private _cnt = 0;
@@ -87,5 +87,5 @@ if (isPlayer _unit) then {
 } else {
 	_unit setVariable ["GRLIB_can_speak", true, true];
 	_unit setSpeedMode (speedMode group player);
-	_unit doFollow player;	
+	_unit doFollow player;
 };

@@ -25,8 +25,6 @@ private _alt = _pos select 2;
     _x enableGunLights "Auto";
     _x switchMove "AmovPercMwlkSrasWrflDf";
     _x playMoveNow "AmovPercMwlkSrasWrflDf";
-    _x setVariable ["PAR_Grp_ID", format["Bros_%1", PAR_Grp_ID], true];
-    _x setVariable ["PAR_revive_max", PAR_ai_revive + (GRLIB_rank_level find (rank _x))];
     gamelogic globalChat format ["Adds %1 (%2) to your squad.", name _x, rank _x];
     sleep 0.3;
     _x allowDamage true;

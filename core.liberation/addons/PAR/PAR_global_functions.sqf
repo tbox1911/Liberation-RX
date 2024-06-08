@@ -28,7 +28,7 @@ PAR_unblock_AI = {
 			if (_zpos < -1.4) then { _pos set [2, -1.4 max _zpos] };
 			player setPosASL _pos;
 			player switchMove "";
-			player playMoveNow "";				
+			player playMoveNow "";
 		} else {
 			player setPosATL (getPosATL player vectorAdd [([] call F_getRND), ([] call F_getRND), 0.3]);
 		};
@@ -169,17 +169,16 @@ PAR_revive_max = {
 
 	private _cur_revive = (_unit getVariable ["PAR_revive_max", PAR_ai_revive]) - 1;
 	_unit setVariable ["PAR_revive_max", _cur_revive];
-	if (_cur_revive <= 3) then {
-		private _msg = format ["%1 last revive (%2) !!", name _unit, _cur_revive];
-		[_unit, _msg] call PAR_fn_globalchat;
-	};
+	private _msg = format ["%1, %2 Revive left.", name _unit, _cur_revive];
+	if (_cur_revive == 0) then { _msg = format ["CRITICAL! %1 LAST Revive !!", name _unit] };
+	[_unit, _msg] call PAR_fn_globalchat;
 
 	private _timer = 20;
 	while { _timer >= 0 && alive _unit } do {
 		private _near_medical = (count (nearestObjects [_unit, [medic_heal_typename], 12]) > 0);
 		if (_near_medical) then {
 			if (_unit distance2D player < 100) then {
-				private _msg = format ["%1 is healing faster...", name _unit];
+				private _msg = format ["%1 is Healing faster...", name _unit];
 				[_unit, _msg] call PAR_fn_globalchat;
 			};
 			sleep 25;
@@ -194,7 +193,6 @@ PAR_revive_max = {
 	_unit setVariable ["PAR_revive_max", _revive];
 	private _msg = format ["%1 revive restored (%2) !!", name _unit, _revive];
 	[_unit, _msg] call PAR_fn_globalchat;
-
 };
 PAR_spawn_gargbage = {
 	params ["_target"];
@@ -228,6 +226,8 @@ PAR_fn_AI_Damage_EH = {
 	_unit setVariable ["PAR_heal", nil];
 	_unit setVariable ["PAR_healed", nil];
 	_unit setVariable ["PAR_AI_score", ((GRLIB_rank_level find (rank _unit)) + 1) * 5, true];
+	_unit setVariable ["PAR_revive_max", (PAR_ai_revive + (GRLIB_rank_level find (rank _unit)))];
+	_unit setVariable ["PAR_Grp_ID", format["Bros_%1", PAR_Grp_ID], true];
 	_unit setVariable ["GRLIB_can_speak", true, true];
 };
 
