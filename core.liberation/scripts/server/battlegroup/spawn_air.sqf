@@ -40,7 +40,7 @@ if (_side == GRLIB_side_friendly) exitWith {
 	private _msg = format ["Air support %1 incoming...", [typeOf _vehicle] call F_getLRXName];
 	[gamelogic, _msg] remoteExec ["globalChat", 0];
 };
-diag_log format ["Spawn Air vehicle %1 objective %2 at %3", typeOf _vehicle, _targetpos, time];
+diag_log format ["Spawn Air Squad %1 objective %2 at %3", typeOf _vehicle, _targetpos, time];
 sleep 300;
 
 while { ({alive _x} count (units _grp) > 0) && (GRLIB_endgame == 0) } do {
@@ -64,11 +64,11 @@ while { ({alive _x} count (units _grp) > 0) && (GRLIB_endgame == 0) } do {
 		_waypoint setWaypointCombatMode "RED";
 		_waypoint setWaypointSpeed "FULL";
 		_waypoint = _grp addWaypoint [_targetpos, _radius];
-		_waypoint setWaypointType "MOVE";
+		_waypoint setWaypointType "SAD";
 		_waypoint = _grp addWaypoint [_targetpos, _radius];
-		_waypoint setWaypointType "MOVE";
+		_waypoint setWaypointType "SAD";
 		_waypoint = _grp addWaypoint [_targetpos, _radius];
-		_waypoint setWaypointType "MOVE";
+		_waypoint setWaypointType "SAD";
 		_wp0 = waypointPosition [_grp, 0];
 		_waypoint = _grp addWaypoint [_wp0, 0];
 		_waypoint setWaypointType "CYCLE";		

@@ -224,7 +224,9 @@ if ( (!(_sector in blufor_sectors)) && (([_sector_pos, GRLIB_sector_size, GRLIB_
 		if ( combat_readiness > 50 ) then { [_pos, true] spawn send_paratroopers };
 		sleep 100;
 		if (([_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount) == 0) exitWith {};
-		if ( combat_readiness > 80 ) then {
+		if ( combat_readiness > 70 ) then {
+			[_pos, 2] spawn spawn_air;
+			sleep 20;
 			if (floor random 2 == 0) then {
 				[_pos, true] spawn send_paratroopers;
 			} else {
