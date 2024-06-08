@@ -85,7 +85,7 @@ while {alive _unit && _continue} do {
 
 		//--- Heal
 		case 2: {
-			if (damage _target > 0.25) then {
+			if (damage _target > 0.25 && !(_target getVariable ["PAR_isUnconscious", false])) then {
 				[_grp] call F_deleteWaypoints;
 				waitUntil {
 					_unit doMove (getPos _target);

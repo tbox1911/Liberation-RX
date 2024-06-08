@@ -17,8 +17,8 @@ if (_unit in (units player)) then {
 			// unit
 			case 1 :  {[_unit] call speak_info_unit};
 			case 10 : {[_unit] call speak_insult_unit};
-			case 2 :  {[_unit] call speak_repair_vehicle};
-			case 3 :  {[_unit] call speak_heal_player};
+			case 2 :  {[_unit] call speak_heal_player};
+			case 3 :  {[_unit] call speak_repair_vehicle};
 			case 4 :  {[_unit] call speak_reammo_player};
 			case 5 :  {[_unit] call speak_join_player};
 
