@@ -213,6 +213,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 
 		if (_nextclass == FOB_sign) then {
 			_nextbuilding setObjectTextureGlobal [0, getMissionPath "res\splash_libe2.paa"];
+			_nextbuilding setVariable ["GRLIB_vehicle_owner", (_x select 4), true];
 		};
 
 		if (_nextclass == land_cutter_typename) then {
