@@ -17,6 +17,17 @@ if ( isServer ) then {
 		};
 	};
 
+	// ACE
+	if (GRLIB_ACE_medical_enabled && local _unit) then {
+		if (isNull _killer || _killer == _unit) then {
+			_killer = _unit getVariable ["ace_medical_lastDamageSource", objNull];
+		};
+	};
+
+	if (isNull _killer) then {
+		_killer = _unit getVariable ["GRLIB_last_killer", objNull];
+	};
+
 	private _unit_class = typeOf _unit;
 	private _unit_side = side group _unit;
 	private _killer_side = side group _killer;
@@ -28,17 +39,6 @@ if ( isServer ) then {
 		_unit setDamage 1;
 		sleep 5;
 		deleteVehicle _unit;
-	};
-
-	// ACE
-	if (GRLIB_ACE_medical_enabled && local _unit) then {
-		if (isNull _killer || _killer == _unit) then {
-			_killer = _unit getVariable ["ace_medical_lastDamageSource", objNull];
-		};
-	};
-
-	if (isNull _killer) then {
-		_killer = _unit getVariable ["GRLIB_last_killer", objNull];
 	};
 
 	if (isNil "infantry_weight") then { infantry_weight = 33 };
