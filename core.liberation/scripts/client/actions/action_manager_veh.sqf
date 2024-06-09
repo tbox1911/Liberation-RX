@@ -112,6 +112,7 @@ while { true } do {
 			{ 
 				_target setVariable ["GRLIB_last_killer", nil, true];
 				[_target, player, player] remoteExec ["kill_manager", 2];
+				sleep 1;
 				_target setDamage 1;
 			},
 			{ },

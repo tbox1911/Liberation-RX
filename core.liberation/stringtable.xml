@@ -6139,8 +6139,8 @@
 			<French>-- LOOTER CORPS</French>
 		</Key>
 		<Key ID="STR_NEUTRALIZE">
-			<Original>-- NEUTRALIZE</Original>
-			<French>-- NEUTRALIZER</French>
+			<Original>NEUTRALIZE</Original>
+			<French>NEUTRALIZER</French>
 		</Key>
 		<Key ID="STR_SEND_ARSENAL">
 			<Original>-- CARGO TO ARSENAL</Original>
