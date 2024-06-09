@@ -72,7 +72,7 @@ if (_spawn_marker != "") then {
 		if (floor random 2 == 0) then {
 			[_objective_pos, GRLIB_side_enemy, 4] spawn spawn_air;
 		} else {
-			[_objective_pos, 2] spawn spawn_air;
+			[_objective_pos, GRLIB_side_enemy, 2] spawn spawn_air;
 			sleep 15;
 			[_objective_pos] spawn send_paratroopers;
 		};
@@ -90,7 +90,7 @@ if (_spawn_marker != "") then {
 		} else {
 			_para_pos = markerPos _liberated_sector;
 		};
-		[_para_pos, 3] spawn spawn_air;
+		[_para_pos, GRLIB_side_enemy, 3] spawn spawn_air;
 		sleep 20;
 		[_para_pos] spawn send_paratroopers;
 		sleep 20;

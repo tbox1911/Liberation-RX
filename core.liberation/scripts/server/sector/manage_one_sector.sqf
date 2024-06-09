@@ -221,11 +221,17 @@ if ( (!(_sector in blufor_sectors)) && (([_sector_pos, GRLIB_sector_size, GRLIB_
 		params ["_pos"];
 		sleep (300 + floor(random 120));
 		if (([_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount) == 0) exitWith {};
-		if ( combat_readiness > 50 ) then { [_pos, true] spawn send_paratroopers };
+		if ( combat_readiness > 50 ) then { 
+			if (floor random 2 == 0) then {
+				[_pos, true] spawn send_paratroopers;
+			} else {
+				[_pos, GRLIB_side_enemy, 2] spawn spawn_air;
+			};			
+		};
 		sleep 100;
 		if (([_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount) == 0) exitWith {};
 		if ( combat_readiness > 70 ) then {
-			[_pos, 2] spawn spawn_air;
+			[_pos, GRLIB_side_enemy, 2] spawn spawn_air;
 			sleep 20;
 			if (floor random 2 == 0) then {
 				[_pos, true] spawn send_paratroopers;
