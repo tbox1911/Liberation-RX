@@ -8,7 +8,7 @@ GRLIB_FOB_Defense = GRLIB_FOB_Defense + [
     ["Small Defense 1", "scripts\fob_templates\defense1.sqf", 50, "-LRX-"],
     ["Small Defense 2", "scripts\fob_templates\defense2.sqf", 55, "-LRX-"],
     ["Medium Defense 1", "scripts\fob_templates\defense3.sqf", 80, "pSiKO"],
-    ["(todo) Medium Defense 2", "scripts\fob_templates\defense4.sqf", 80, ""],
+    ["Medium Defense 2", "scripts\fob_templates\defense4.sqf", 80, "Max Rocka"],
     ["(todo) Large Defense 1", "scripts\fob_templates\defense5.sqf", 100, ""],
     ["(todo) Large Defense 2", "scripts\fob_templates\defense6.sqf", 100, ""],
     ["Very Large Defense", "scripts\fob_templates\defense7.sqf", 200, "Max Rocka"]
