@@ -49,15 +49,12 @@ if (!_canmove) then {
 	_unit setVariable ["GRLIB_is_prisoner", true, true];
 };
 
-waitUntil { sleep 1; isNull objectParent _unit };
-if (!alive _unit) exitWith {};
-
 private ["_no_blufor_near", "_player", "_player_in_action", "_waypoint", "_nearest_sector"];
 private _fleeing = false;
 
 while {alive _unit} do {
 	// Captured
-	if ([_unit, "FOB", 30] call F_check_near && isTouchingGround (vehicle _unit)) exitWith {
+	if ([_unit, "FOB", 30] call F_check_near && isTouchingGround (vehicle _unit) && round (speed vehicle _unit) == 0) exitWith {
 		_unit setVariable ["GRLIB_can_speak", false, true];
 		private _leader = leader group _unit;
 		 _grp = createGroup [GRLIB_side_civilian, true];

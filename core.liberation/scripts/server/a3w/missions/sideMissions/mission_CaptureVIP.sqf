@@ -52,11 +52,17 @@ _setupObjects =
 	_vip addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage }];
 	_vip addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	_vip setVariable ["GRLIB_mission_AI", true, true];
+	_vip setSkill ["courage", 0.8];
+	_vip setrank "COLONEL";
 	_vip assignAsCargo _vehicle2;
 	_vip moveInCargo _vehicle2;
-	_vip setSkill ["courage", 0.9];
-	[_vip, false, true] spawn prisoner_ai;
-	_vip setrank "COLONEL";
+	[_vip] spawn {
+		params ["_unit"];
+		waitUntil { sleep 1; (isNull objectParent _unit || !alive _unit) };
+		if (!alive _unit) exitWith {};
+		_unit setVariable ["GRLIB_mission_AI", false, true];
+		[_unit, false, true] spawn prisoner_ai;
+	};
 
 	// veh3 + squad
 	_vehicle3 = [_missionPos, a3w_vip_vehicle, 3, false, GRLIB_side_enemy, false] call F_libSpawnVehicle;
@@ -138,7 +144,7 @@ _waitUntilCondition = {
 	(!(alive _vip) || (_vip distance2D _last_waypoint) < 100);
 };
 
-_waitUntilSuccessCondition = { side group _vip == GRLIB_side_friendly };
+_waitUntilSuccessCondition = { side group _vip == GRLIB_side_civilian };
 
 _failedExec = {
 	// Mission failed
