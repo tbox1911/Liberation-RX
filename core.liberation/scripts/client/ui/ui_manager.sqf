@@ -36,7 +36,7 @@ while { true } do {
 		(_overlay displayCtrl (266)) ctrlSetText format [ "%1", GRLIB_ui_notif ];
 		(_overlay displayCtrl (267)) ctrlSetText format [ "%1", GRLIB_ui_notif ];
 
-		if ((markerPos "opfor_capture_marker") distance markers_reset > 100 ) then {
+		if ((markerPos "opfor_capture_marker") distance2D markers_reset > 100 ) then {
 			_attacked_string = [ markerpos "opfor_capture_marker" ] call F_getLocationName;
 			(_overlay displayCtrl (401)) ctrlShow true;
 			(_overlay displayCtrl (402)) ctrlSetText _attacked_string;
