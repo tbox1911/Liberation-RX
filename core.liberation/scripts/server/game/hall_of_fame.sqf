@@ -1,4 +1,5 @@
 if (!isServer) exitWith {};
+if (GRLIB_fancy_info == 0) exitWith {};
 
 while {true} do {
 	sleep (10 * 60);
