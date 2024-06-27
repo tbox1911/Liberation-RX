@@ -119,16 +119,16 @@ while { true } do {
 
 	if ( _buildtype == 1 ) then {
 		if (_classname isKindOf "Dog_Base_F" || _classname in MFR_Dogs_classname) then {
-			[0,0,0,"add",_classname] execVM "scripts\client\actions\do_dog.sqf";
+			[0,0,0, "add", _classname] call compileFinal preprocessFileLineNumbers "scripts\client\actions\do_dog.sqf";
 		} else {
 			if (!([_price] call F_pay)) exitWith {};
-			[_classname] execVM "scripts\client\actions\do_build_unit.sqf";
+			[_classname] call compileFinal preprocessFileLineNumbers "scripts\client\actions\do_build_unit.sqf";
 		};
 	};
 
 	if ( _buildtype == 8 ) then {
 		if (!([_price] call F_pay)) exitWith {};
-		[_classname] execVM "scripts\client\actions\do_build_squad.sqf";
+		[_classname] call compileFinal preprocessFileLineNumbers "scripts\client\actions\do_build_squad.sqf";
 	};
 
 	if ( _buildtype in [2,3,4,5,6,7,9,10,99,98,97] ) then {
@@ -208,7 +208,7 @@ while { true } do {
 
 			while { _actualdir > 360 } do { _actualdir = _actualdir - 360 };
 			while { _actualdir < 0 } do { _actualdir = _actualdir + 360 };
-			if (  (_buildtype in [6,99,98]) && ((gridmode % 2) == 1) ) then {
+			if ( (_buildtype in [6,99,98]) && ((gridmode % 2) == 1) ) then {
 				if ( _actualdir >= 22.5 && _actualdir <= 67.5 ) then { _actualdir = 45 };
 				if ( _actualdir >= 67.5 && _actualdir <= 112.5 ) then { _actualdir = 90 };
 				if ( _actualdir >= 112.5 && _actualdir <= 157.5 ) then { _actualdir = 135 };

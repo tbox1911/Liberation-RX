@@ -26,8 +26,10 @@ private _score = [player] call F_getScore;
 private _rank = player getVariable ["GRLIB_Rank", "Private"];
 private _iscommandant = false;
 if ( _rank in ["Colonel", "Super Colonel"] ) then {	_iscommandant = true };
+
 private _iscommander = false;
 if ( player == ([] call F_getCommander) ) then { _iscommander = true };
+
 ctrlSetText [1011, format ["%1 - %2", _title, _rank]];
 ctrlShow [ 108, _iscommandant ];
 ctrlShow [ 1085, _iscommandant ];
@@ -269,10 +271,10 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1 || buildtype =
 		};
 	};
 
-	ctrlSetText [131, format [ "%1 : %2/%3", localize "STR_MANPOWER", resources_infantry, infantry_cap] ];
-	ctrlSetText [132, format [ "%1 : %2", localize "STR_AMMO", (player getVariable ["GREUH_ammo_count",0])] ];
-	ctrlSetText [133, format [ "%1 : %2", localize "STR_FUEL", (player getVariable ["GREUH_fuel_count",0])] ];
-	ctrlSetText [134, format [ "%1 : %2/%3", localize "STR_UNITCAP", unitcap, GRLIB_blufor_cap] ];
+	ctrlSetText [131, format ["%1 : %2/%3", localize "STR_MANPOWER", resources_infantry, infantry_cap] ];
+	ctrlSetText [132, format ["%1 : %2", localize "STR_AMMO", (player getVariable ["GREUH_ammo_count",0])] ];
+	ctrlSetText [133, format ["%1 : %2", localize "STR_FUEL", (player getVariable ["GREUH_fuel_count",0])] ];
+	ctrlSetText [134, format ["%1 : %2/%3", localize "STR_UNITCAP", unitcap, GRLIB_blufor_cap] ];
 
 	_link_color = "#0040e0";
 	_link_str = localize "STR_VEHICLE_UNLOCKED";
