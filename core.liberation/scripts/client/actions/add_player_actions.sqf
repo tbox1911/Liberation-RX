@@ -84,14 +84,14 @@ player addAction ["<t color='#FF6F00'>" + localize "STR_FOB_REPACKAGE" + "</t> <
 // Build Outpost
 player addAction ["<t color='#FF6F00'>" + localize "STR_OUTPOST_ACTION" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_build_fob.sqf","",-981,false,true,"","call GRLIB_checkBuildOutpost"];
 
-// Destroy Outpost
-player addAction ["<t color='#FF6F00'>" + localize "STR_DESTROY_OUTPOST" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_destroy_outpost.sqf","",-981,false,true,"","call GRLIB_checkDelOutpost"];
-
 // Upgrade Outpost
-player addAction ["<t color='#006F80'>" + localize "STR_UPGRADE_OUTPOST" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_upgrade_outpost.sqf","",-981,false,true,"","call GRLIB_checkUpgradeOutpost"];
+player addAction ["<t color='#00FF8F'>" + localize "STR_UPGRADE_OUTPOST" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_upgrade_outpost.sqf","",-983,false,true,"","call GRLIB_checkUpgradeOutpost"];
+
+// Destroy Outpost
+player addAction ["<t color='#FF6F00'>" + localize "STR_DESTROY_OUTPOST" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_destroy_outpost.sqf","",-984,false,true,"","call GRLIB_checkDelOutpost"];
 
 // Onboard Ship
-player addAction ["<t color='#00206F'>" + localize "STR_ONBOARD_SHIP" + "</t> <img size='1' image='res\ui_deployfob.paa'/>",{[([] call F_getNearestFob)] call do_onboard;},"",-981,false,true,"","call GRLIB_checkOnboardShip"];
+player addAction ["<t color='#00206F'>" + localize "STR_ONBOARD_SHIP" + "</t> <img size='1' image='res\ui_deployfob.paa'/>",{[GRLIB_player_nearest_fob] call do_onboard;},"",-981,false,true,"","call GRLIB_checkOnboardShip"];
 
 // Remove Helipad
 player addAction ["<t color='#FFFF00'>" + localize "STR_RECYCLE_MANAGER" + "</t> <img size='1' image='res\ui_recycle.paa'/>",{ deleteVehicle (nearestObjects [player, ["Helipad_base_F"], GRLIB_ActionDist_3] select 0) },"",-505,false,true,"","call GRLIB_checkRemoveHelipad"];

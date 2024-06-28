@@ -103,7 +103,7 @@ GRLIB_checkBuildFOBWater = {
 };
 
 GRLIB_checkOnboardShip = {
-	(alive player && ((surfaceIsWater ([] call F_getNearestFob) && GRLIB_player_near_fob) || (GRLIB_player_near_lhd && surfaceIsWater getPos lhd)) && (getPosASL player select 2) < 2)
+	(alive player && ((surfaceIsWater GRLIB_player_nearest_fob && GRLIB_player_near_fob) || (GRLIB_player_near_lhd && surfaceIsWater getPos lhd)) && (getPosASL player select 2) < 2)
 };
 
 GRLIB_checkPackFOB = {
@@ -127,7 +127,7 @@ GRLIB_checkDelOutpost = {
 };
 
 GRLIB_checkUpgradeOutpost = {
-	(GRLIB_player_is_menuok && GRLIB_player_fobdistance <= GRLIB_ActionDist_10 && GRLIB_player_near_outpost && ((GRLIB_player_owner_fob && (GRLIB_player_score >= GRLIB_perm_max)) || GRLIB_player_admin))
+	(GRLIB_player_is_menuok && GRLIB_player_fobdistance <= GRLIB_ActionDist_10 && GRLIB_player_near_outpost && ((GRLIB_player_owner_fob && GRLIB_player_score >= GRLIB_perm_max) || GRLIB_player_admin))
 };
 
 GRLIB_checkSpeak = {
@@ -140,9 +140,9 @@ GRLIB_checkCapture = {
 	(GRLIB_player_is_menuok && alive _target && _target getVariable ['GRLIB_is_prisoner', false])
 };
 
-GRLIB_checkDefFOB = {
+GRLIB_checkBuildDef = {
 	params ["_target", "_unit"];
-	(GRLIB_player_is_menuok && alive _target && GRLIB_player_score >= GRLIB_perm_inf)
+	(GRLIB_player_is_menuok && alive _target && GRLIB_player_owner_fob && ([] call F_getFobType) in [0,1])
 };
 
 GRLIB_checkRemoveHelipad = {

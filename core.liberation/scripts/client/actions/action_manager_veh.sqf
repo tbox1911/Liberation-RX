@@ -129,6 +129,8 @@ while { true } do {
 	_nearsign = (nearestObjects [player, [FOB_sign], _searchradius]) select { (GRLIB_player_near_lhd || GRLIB_player_near_fob) && isNil {_x getVariable "GRLIB_sign_action"} };
 	{
 		_unit = _x;
+		_unit addAction ["<t color='#00FF8F'>" + localize "STR_BUILD_FORTIFICATION" + "</t> <img size='1' image='res\ui_build.paa'/>","addons\FOB\do_build_def.sqf","",997,false,true,"","call GRLIB_checkBuildDef", 5];
+		_unit addAction ["<t color='#F80000'>" + localize "STR_CLEAR_FORTIFICATION" + "</t> <img size='1' image='res\ui_build.paa'/>","addons\FOB\do_clean_def.sqf","",996,false,true,"","call GRLIB_checkBuildDef", 5];
 		_unit addAction ["<t color='#FFFFFF'>" + "-= Hall of Fame =-" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Talk_ca.paa'/>",{([5] call F_notice_hof) spawn BIS_fnc_dynamicText},"",989,true,true,"","GRLIB_player_is_menuok",5];
 		_unit addAction ["<t color='#FFFFFF'>" + localize "STR_READ_ME" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Talk_ca.paa'/>",{createDialog "liberation_notice"},"",988,true,true,"","GRLIB_player_is_menuok",5];
 		_unit addAction ["<t color='#FFFFFF'>" + localize "STR_TIPS" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Talk_ca.paa'/>",{createDialog "liberation_tips"},"",987,true,true,"","GRLIB_player_is_menuok",5];

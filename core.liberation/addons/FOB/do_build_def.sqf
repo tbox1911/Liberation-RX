@@ -1,10 +1,19 @@
 // LRX FOB Defense
 // by pSiKO
 
-private _fob = (player nearObjects [FOB_typename, 20] select 0);
+private _fob_sign = player nearObjects [FOB_sign, 20] select 0;
+if (isNil "_fob_sign") exitWith {};
+
+private _fob_class = _fob_sign getVariable ["GRLIB_fob_type", FOB_typename];
+private _fob = (player nearObjects [_fob_class, 20] select 0);
 if (isNil "_fob") exitWith {};
+
 private _fob_pos = getPosATL _fob;
 private _fob_dir = getDir _fob;
+
+private _walls = count (_fob_pos nearObjects ["Wall_F", GRLIB_fob_range]);
+_walls = _walls + count (_fob_pos nearObjects ["HBarrier_base_F", GRLIB_fob_range]);
+if (_walls > 10) exitWith { hint "Cannot start Construction!\nFortification already present here!" };
 
 createDialog "FOB_Defense";
 waitUntil { dialog };
@@ -20,9 +29,11 @@ lbClear 110;
 {
     _text = (_x select 0);
     _defense_price = (_x select 2);
-    if (count _text > 25) then { _text = _text select [0,25] };
-    lnbAddRow [110, [_text, str _defense_price]];
-    lnbSetPicture  [110, [((lnbSize 110) select 0) - 1, 0], _icon];
+    if (GRLIB_player_score >= GRLIB_perm_max || _defense_price < 100) then {
+        if (count _text > 25) then { _text = _text select [0,25] };
+        lnbAddRow [110, [_text, str _defense_price]];
+        lnbSetPicture  [110, [((lnbSize 110) select 0) - 1, 0], _icon];
+    };
 } foreach GRLIB_FOB_Defense;
 lbSetCurSel [110, -1];
 
@@ -53,17 +64,15 @@ while { dialog && alive player } do {
 };
 
 if (build_action == 0) exitWith {};
-private _walls = count (_fob_pos nearObjects ["Wall_F", GRLIB_fob_range]);
-_walls = _walls + count (_fob_pos nearObjects ["HBarrier_base_F", GRLIB_fob_range]);
-if (_walls > 10) exitWith { systemchat "Cannot Start! Defense already present here!" };
 
 private _count_objects = count _objects_to_build;
 if (_count_objects == 0) exitWith {};
 if (!([parseNumber _defense_price] call F_pay)) exitWith {};
 
+build_confirmed = 1;
 private _msg = format ["%1 Build %2 (%3 objects) on FOB %4 ", name player, _defense_name, _count_objects, ([_fob_pos] call F_getFobName)];
 [gamelogic, _msg] remoteExec ["globalChat", 0];
-_msg = format ["FOB Template: %1\nCreated by: %2\nThanks to him !!", _defense_name, _template_creator];
+_msg = format ["Defense Template: %1\nCreated by: %2\nThanks to him !!", _defense_name, _template_creator];
 [_msg] remoteExec ["hint", 0];
 
 // Build defense in FOB direction
@@ -93,4 +102,6 @@ _fob_pos set [2, 0];
     };
 } foreach _objects_to_build;
 
-gamelogic globalChat format ["Construction completed."];
+gamelogic globalChat "Construction completed.";
+sleep 1;
+build_confirmed = 0;

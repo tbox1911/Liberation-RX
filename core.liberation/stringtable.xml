@@ -6540,17 +6540,17 @@
 			<Original>-- SAVE PLAYER PROFILE</Original>
 			<French>-- SAUVEGARDER LE JOUEUR</French>
 		</Key>
-		<Key ID="STR_BUILD_DEFENSE">
-			<Original>-- BUILD FOB DEFENSES</Original>
-			<French>-- CONSTRUIRE DEFENSE FOB</French>
+		<Key ID="STR_BUILD_FORTIFICATION">
+			<Original>-- BUILD FORTIFICATION</Original>
+			<French>-- CONSTRUIRE FORTIFICATION</French>
+		</Key>
+		<Key ID="STR_CLEAR_FORTIFICATION">
+			<Original>-- REMOVE FORTIFICATION</Original>
+			<French>-- SUPPRIMER FORTIFICATION</French>
 		</Key>
 		<Key ID="STR_BUILD_DEFENSE_SEC">
-			<Original>-- BUILD SECTOR DEFENSES</Original>
-			<French>-- CONSTRUIRE DEFENSE SECTEUR</French>
-		</Key>
-		<Key ID="STR_CLEAR_DEFENSE">
-			<Original>-- REMOVE ALL FOB DEFENSES</Original>
-			<French>-- SUPPRIMER DEFENSE FOB</French>
+			<Original>-- MANAGE SECTOR DEFENSES</Original>
+			<French>-- GERER DEFENSE SECTEUR</French>
 		</Key>
 		<Key ID="STR_CLEAR_DEFENSE_MSG">
 			<Original>&lt;t align='center'&gt;Remove ALL Defenses&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
