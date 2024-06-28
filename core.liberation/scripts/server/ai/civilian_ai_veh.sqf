@@ -1,6 +1,14 @@
 params ["_vehicle"];
 if (isNull _vehicle) exitWith {};
-if (([_vehicle, ["Air", "Boat_F", "Motorcycle"]] call F_itemIsInClass)) exitWith {};
+private _blacklist_class = [
+	"Air",
+	"Boat_F",
+	"Bicycle",
+	"Motorcycle"
+];
+if (([_vehicle, _blacklist_class] call F_itemIsInClass)) exitWith {};
+if ((tolower typeOf _vehicle) find "bicycle" > -1) exitWith {};
+
 if (count (crew _vehicle) == 0) exitWith {};
 
 #define _incd_repair 20     // must match speak_manger.sqf (_msg)
