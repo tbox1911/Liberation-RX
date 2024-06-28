@@ -119,16 +119,16 @@ while { true } do {
 
 	if ( _buildtype == 1 ) then {
 		if (_classname isKindOf "Dog_Base_F" || _classname in MFR_Dogs_classname) then {
-			[0,0,0, "add", _classname] call compileFinal preprocessFileLineNumbers "scripts\client\actions\do_dog.sqf";
+			[0,0,0, "add", _classname] call do_dog;
 		} else {
 			if (!([_price] call F_pay)) exitWith {};
-			[_classname] call compileFinal preprocessFileLineNumbers "scripts\client\actions\do_build_unit.sqf";
+			[_classname] call do_build_unit;
 		};
 	};
 
 	if ( _buildtype == 8 ) then {
 		if (!([_price] call F_pay)) exitWith {};
-		[_classname] call compileFinal preprocessFileLineNumbers "scripts\client\actions\do_build_squad.sqf";
+		[_classname] call do_build_squad;
 	};
 
 	if ( _buildtype in [2,3,4,5,6,7,9,10,99,98,97] ) then {
