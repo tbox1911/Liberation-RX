@@ -35,6 +35,7 @@ F_getCommander = compileFinal preprocessFileLineNumbers "scripts\shared\function
 F_getDefenseType = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getDefenseType.sqf";
 F_getFobName = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getFobName.sqf";
 F_getFobOwner = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getFobOwner.sqf";
+F_getFobType = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getFobType.sqf";
 F_getForceRatio = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getForceRatio.sqf";
 F_getFreePos = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getFreePos.sqf";
 F_getLocationName = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getLocationName.sqf";

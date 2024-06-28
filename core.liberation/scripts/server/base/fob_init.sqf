@@ -46,10 +46,11 @@ _sign setDir _fob_dir;
 _sign setPosASL _sign_pos;
 _sign enableSimulationGlobal false;
 _sign setObjectTextureGlobal [0, getMissionPath "res\splash_libe2.paa"];
-_sign setVariable ["GRLIB_vehicle_owner", _owner, true];
-
+_sign setVariable ["GRLIB_fob_type", _fob_class, true];
 if (count GRLIB_all_fobs == 0) then {
 	_sign setVariable ["GRLIB_vehicle_owner", "public", true];
+} else {
+	_sign setVariable ["GRLIB_vehicle_owner", _owner, true];
 };
 
 // if (GRLIB_enable_arsenal == 0) then {

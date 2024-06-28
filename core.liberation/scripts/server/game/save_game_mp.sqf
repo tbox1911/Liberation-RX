@@ -91,6 +91,9 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
 				if (_owner == "") then {
 					buildings_to_save pushback [ _nextclass, _savedpos, _nextdir ];
 				};
+				if (_nextclass == FOB_sign) then {
+					_hascrew = _x getVariable ["GRLIB_fob_type", FOB_typename];
+				};
 				if (_owner == "public") then {
 					buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner ];
 				};

@@ -1,4 +1,4 @@
-params [[ "_source_position", (getPosATL player)]];
+params [[ "_source_position", (getPos player)]];
 
 private _fob_owner = "";
 private _fob_sign = _source_position nearObjects [FOB_sign, 20] select 0;
