@@ -207,7 +207,12 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 // Baron Rouge
 _mission_name = "mission_BaronRouge";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
-	if (count sectors_bigtown > 1) then {
+	private _br_plane = "";
+	if (count a3w_br_planes == 0) then {
+		_br_plane = selectRandom (opfor_air select { _x isKindOf "Plane" });
+	};
+
+	if (count sectors_bigtown > 1 && !isNil "_br_plane") then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;
