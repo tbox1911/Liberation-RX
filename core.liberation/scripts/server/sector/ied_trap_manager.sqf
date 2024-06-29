@@ -41,7 +41,7 @@ if ( count _ide_pos > 0 ) then {
 	};
 
 	while {alive _ied_obj && time < _timeout && !_goes_boom } do {
-		sleep 1;
+		sleep (1 + floor random 3);
 		_hostilecount = [_ide_pos, _activation_radius] call F_getNearbyPlayers;
 		if (count _hostilecount >= _infantry_trigger) then {
 			sleep (floor random 3);
