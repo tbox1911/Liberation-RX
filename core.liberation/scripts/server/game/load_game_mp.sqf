@@ -344,20 +344,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 			if (_owner == "public") then {
 				_nextbuilding enableSimulationGlobal true;
 				_nextbuilding setVariable ["GRLIB_vehicle_owner", "public", true];
-				if ( _nextclass == huron_typename ) then {
-					GRLIB_vehicle_huron = _nextbuilding;
-					[] spawn {
-						private _timer = time + 10;
-						waitUntil {
-							GRLIB_vehicle_huron enableSimulationGlobal false;
-							GRLIB_vehicle_huron setVelocity [0, 0, 0];
-							sleep 3;
-							GRLIB_vehicle_huron enableSimulationGlobal true;
-							GRLIB_vehicle_huron setVelocity [0, 0, 0];
-							(time > _timer);
-						};
-					};
-				};
+				if ( _nextclass == huron_typename ) then { GRLIB_vehicle_huron = _nextbuilding };
 			} else {
 				[_nextbuilding, "lock", _owner] call F_vehicleLock;
 			};
