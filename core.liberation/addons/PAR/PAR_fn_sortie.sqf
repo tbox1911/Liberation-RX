@@ -45,6 +45,10 @@ if ([_medic] call PAR_is_medic) then {
 	_wnded setDamage 0.25;
 };
 
+_wnded setUnconscious false;
+_wnded setVariable ["PAR_isUnconscious", false, true];
+_wnded setVariable ["PAR_isDragged", 0, true];
+
 if (_wnded == player) then {
 	group _wnded selectLeader _wnded;
 	private _bounty_ok = (([(GRLIB_capture_size * 2), getPosATL _medic] call F_getNearestSector) in opfor_sectors && _medic getVariable ["PAR_lastRevive",0] < time);
@@ -52,9 +56,12 @@ if (_wnded == player) then {
 		private _bonus = 5;
 		[_medic, _wnded, _bonus] remoteExec ["PAR_remote_bounty", 2];
 	};
+} else {
+	_wnded switchMove "amovpknlmstpsraswrfldnon"; //go up
+	_wnded playMoveNow "amovpknlmstpsraswrfldnon";
+	_wnded setSpeedMode (speedMode group player);
+	_wnded doFollow player;	
 };
-_wnded setUnconscious false;
-_wnded setVariable ["PAR_isUnconscious", false, true];
 
 [_medic, _wnded] call PAR_fn_medicRelease;
 [[_medic, _wnded]] call PAR_fn_fixPos;
