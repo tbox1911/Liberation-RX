@@ -8,5 +8,5 @@ while { true } do {
 	if (combat_readiness > 35) then { combat_readiness = combat_readiness - _readiness };
 	if (combat_readiness < 0) then { combat_readiness = 0 };
 	publicVariable "combat_readiness";
-	sleep 300;
+	sleep 200;
 };
