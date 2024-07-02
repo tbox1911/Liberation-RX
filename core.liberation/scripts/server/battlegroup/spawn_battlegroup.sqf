@@ -14,15 +14,16 @@ if ( isNil "_liberated_sector" ) then {
 } else {
 	diag_log format ["Spawn BattlegGroup target %1 at %2", _liberated_sector, time];
 	_objective_pos = markerPos _liberated_sector;
-	_spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max, true, _objective_pos] call F_findOpforSpawnPoint;
+	_spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max, _objective_pos] call F_findOpforSpawnPoint;
 };
 
-if (_objective_pos isEqualTo zeropos) exitWith { diag_log "BattlegGroup could not find accessible Objective." };
+if (_objective_pos isEqualTo zeropos) exitWith { diag_log format ["BattlegGroup could not find accessible Objective from %1.", _spawn_marker] };
 
 private _vehicle_pool = opfor_battlegroup_vehicles;
 if ( combat_readiness < 50 ) then {	_vehicle_pool = opfor_battlegroup_vehicles_low_intensity };
 
 if (_spawn_marker != "") then {
+	diag_log format ["Spawn BattlegGroup objective %1 at %2", _objective_pos, time];
 	[markerPos _spawn_marker] remoteExec ["remote_call_battlegroup", 0];
 	GRLIB_last_battlegroup_time = time;
 	private _target_size = round ((GRLIB_battlegroup_size * GRLIB_csat_aggressivity) * (1+(combat_readiness / 100)));
@@ -81,7 +82,7 @@ if (_spawn_marker != "") then {
 
 	combat_readiness = combat_readiness - (10 + (_target_size * 1.75));
 	stats_hostile_battlegroups = stats_hostile_battlegroups + 1;
-	diag_log format ["Spawn BattlegGroup (%1) objective %2 at %3", _target_size, _objective_pos, time];
+	diag_log format ["Done Spawning BattlegGroup (%1) objective %2 at %3", _target_size, _objective_pos, time];
 } else {
 	if (count blufor_sectors > 5) then {
 		private _para_pos = [];

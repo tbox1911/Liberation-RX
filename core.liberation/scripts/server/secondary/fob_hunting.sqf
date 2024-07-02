@@ -1,6 +1,6 @@
 params [ ["_mission_cost", 0], "_caller" ];
 
-private _spawn_marker = [GRLIB_spawn_min, 99999, false] call F_findOpforSpawnPoint;
+private _spawn_marker = [GRLIB_spawn_min, 99999] call F_findOpforSpawnPoint;
 if ( _spawn_marker == "" ) exitWith { [gamelogic, "Could not find position for fob hunting mission"] remoteExec ["globalChat", 0] };
 GRLIB_secondary_used_positions pushbackUnique _spawn_marker;
 
