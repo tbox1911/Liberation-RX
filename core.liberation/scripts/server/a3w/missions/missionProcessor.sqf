@@ -109,19 +109,16 @@ waitUntil {
 	_count_blu = [_lastPos, (GRLIB_sector_size * 1.3), GRLIB_side_friendly] call F_getUnitsCount;
 	_expired = (_time_left <= 0 && _count_blu == 0);
 	_failed = ((!isNil "_waitUntilCondition" && {call _waitUntilCondition}) || _expired);
+	_complete = (!isNil "_waitUntilSuccessCondition" && {call _waitUntilSuccessCondition});
 
-	if (!_failed) then {
-		if (!isNil "_waitUntilSuccessCondition" && {call _waitUntilSuccessCondition}) then {
+	if (!_ignoreAiDeaths && {alive _x} count (units _aiGroup) == 0) then {
+		if (_count_blu == 0) then {
+			_failed = true;
+		} else {
 			_complete = true;
 		};
-		if (!_ignoreAiDeaths && {alive _x} count (units _aiGroup) == 0) then {
-			if (_count_blu == 0) then {
-				_failed = true;
-			} else {
-				_complete = true;
-			};
-		};
 	};
+
 	(GRLIB_endgame == 1 || GRLIB_global_stop == 1 || _failed || _complete)
 };
 
@@ -144,9 +141,7 @@ if (_failed) then {
 
 	diag_log format ["A3W Side Mission %1 failed: %2", _controllerSuffix, localize _missionType];
 	A3W_mission_failed = A3W_mission_failed + 1;
-};
-
-if (_complete) then {
+} else {
 	// Mission completed
 	if (!isNil "_successExec") then { call _successExec };
 	[
