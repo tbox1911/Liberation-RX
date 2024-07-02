@@ -47,7 +47,8 @@ private _idxposit = 0;
 {
 	_x setPos (_buildingpositions select (_position_indexes select _idxposit));
 	_x setUnitPos "UP";
-	_x disableAI "MOVE";
+	//_x disableAI "MOVE";
+	_x disableAI "PATH";
 	[_x] spawn building_defence_ai;
 	_idxposit = _idxposit + 1;
 } foreach (units _grp);
