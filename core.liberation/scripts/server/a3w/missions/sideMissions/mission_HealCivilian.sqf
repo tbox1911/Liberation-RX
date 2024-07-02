@@ -62,11 +62,15 @@ _setupObjects = {
 		_start_pos = _missionPos getPos [100, random 360];
 		sleep 0.1;
 	};
-	if (count _pos == 0) exitWith { false };
+	if (count _pos == 0) exitWith {
+		diag_log format ["--- LRX Error: side mission HC, cannot find spawn point!"];
+		false;
+	};
 
-	_tent = createVehicle [a3w_heal_tent, _pos, [], 1, "None"];
+	_missionPos = _pos;
+	_tent = createVehicle [a3w_heal_tent, _missionPos, [], 1, "None"];
 	_tent allowDamage false;
-	_tent setVectorDirAndUp [[-cos _dir, sin _dir, 0] vectorCrossProduct surfaceNormal _pos, surfaceNormal _pos];
+	_tent setVectorDirAndUp [[-cos _dir, sin _dir, 0] vectorCrossProduct surfaceNormal _missionPos, surfaceNormal _missionPos];
 	_vehicle = _tent;
 	sleep 0.2;
 
@@ -76,7 +80,7 @@ _setupObjects = {
 	for "_i" from 1 to 12 do {
 		_grbg = createVehicle [selectRandom _garbage, _tent_pos, [], 15, "None"];
 		_dir = random 360;
-		_grbg setVectorDirAndUp [[-cos _dir, sin _dir, 0] vectorCrossProduct surfaceNormal _pos, surfaceNormal _pos];
+		_grbg setVectorDirAndUp [[-cos _dir, sin _dir, 0] vectorCrossProduct surfaceNormal _missionPos, surfaceNormal _missionPos];
 		_grbg setVariable ["R3F_LOG_disabled", true, true];
 		_grbg enableSimulationGlobal false;
 		_objects pushBack _grbg;

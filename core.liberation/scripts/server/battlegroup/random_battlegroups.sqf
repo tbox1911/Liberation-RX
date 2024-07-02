@@ -17,9 +17,10 @@ while { GRLIB_csat_aggressivity > 0.9 && GRLIB_endgame == 0 && GRLIB_global_stop
 	if ((opforcap < GRLIB_battlegroup_cap) && (combat_readiness >= 75) && (diag_fps > 30.0) && _countplayers > 1) then {
 		private _hc = [] call F_lessLoadedHC;
 		if (isNull _hc) then {
+			diag_log format ["Spawn Random BattleGroup at %1", time];
 			[] spawn spawn_battlegroup;
 		} else {
-			diag_log format [ "Spawn Random BattleGroup at %1 on %2", time, _hc ];
+			diag_log format ["Spawn Random BattleGroup at %1 on %2", time, _hc];
 			[] remoteExec ["spawn_battlegroup", owner _hc];
 		};
 		stats_hostile_battlegroups = stats_hostile_battlegroups + 1;
