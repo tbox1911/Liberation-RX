@@ -128,7 +128,7 @@ if ( _ownership == GRLIB_side_enemy ) then {
 				};
 			} foreach _enemy_left;
 
-			if ((_sector_timer - time) <= 300 && !_defenders_cooldown) then {
+			if ((_sector_timer - time) <= 300) then {
 				private _rwd_xp = round (15 + random 10);
 				private _text = format ["Glory to the Defenders! +%1 XP", _rwd_xp];
 				{
