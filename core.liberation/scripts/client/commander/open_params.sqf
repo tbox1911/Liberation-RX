@@ -57,38 +57,49 @@ save_changes = 0;
 	_nextparam = _x;
 	_idx = _nextparam select 2;
 
-	if ( _idx % 2 == 0 ) then {
+	if (_nextparam select 0 == "---") then {
 		_control = _display ctrlCreate [ "RscBackground", -1, _display displayCtrl 9969 ];
 		_control ctrlSetPosition [ 0, (_idx * 0.025) * safezoneH, 0.595 * safeZoneW, 0.025 * safezoneH];
-		_control ctrlSetBackgroundColor [0.75,1,0.75,0.12];
+		_control ctrlSetBackgroundColor [0,0,0.80,0.12];
+		_control ctrlCommit 0;
+
+		_control = _display ctrlCreate [ "RscText", (100 + _idx), _display displayCtrl 9969 ];
+		_control ctrlSetPosition [ 0,  (_idx * 0.025) * safezoneH, 0.3 * safeZoneW, 0.025  * safezoneH];
+		_control ctrlSetText format ["%1 %2 %1", (_nextparam select 3), (_nextparam select 1)];
+		_control ctrlCommit 0;
+	} else {
+		if ( _idx % 2 == 0 ) then {
+			_control = _display ctrlCreate [ "RscBackground", -1, _display displayCtrl 9969 ];
+			_control ctrlSetPosition [ 0, (_idx * 0.025) * safezoneH, 0.595 * safeZoneW, 0.025 * safezoneH];
+			_control ctrlSetBackgroundColor [0.75,1,0.75,0.12];
+			_control ctrlCommit 0;
+		};	
+		_control = _display ctrlCreate [ "RscText", (100 + _idx), _display displayCtrl 9969 ];
+		_control ctrlSetPosition [ 0,  (_idx * 0.025) * safezoneH, 0.3 * safeZoneW, 0.025  * safezoneH];
+		_control ctrlSetText (_nextparam select 3);
+		_control ctrlCommit 0;
+
+		_control = _display ctrlCreate [ "RscCombo", (200 + _idx), _display displayCtrl 9969 ];
+		_control ctrlSetPosition [ ((0.072 * 6.5) - 0.02) * safeZoneW, ((_idx * 0.025) * safezoneH) + 0.0025, ((0.072 * 2) * safeZoneW), 0.022  * safezoneH];
+		_control ctrlSetBackgroundColor [0.2,0.23,0.18,0.85];
+		if ( _idx % 2 == 0 ) then {
+			_control ctrlSetBackgroundColor [0.27,0.30,0.23,0.85];
+		};
+		{ _control lbAdd _x } forEach (_nextparam select 4);
+
+		_selection = _nextparam select 1;
+		if (count (_nextparam select 5) > 0) then {
+			_selection = (_nextparam select 5) find _selection;
+		};
+		_control lbSetCurSel _selection;
+
+		_control ctrlAddEventHandler ["LBSelChanged", {
+			params ["_control", "_lbCurSel"];
+			param_id = (ctrlIDC _control) - 201;
+			param_value = _lbCurSel;
+		}];
 		_control ctrlCommit 0;
 	};
-
-	_control = _display ctrlCreate [ "RscText", (100 + _idx), _display displayCtrl 9969 ];
-	_control ctrlSetPosition [ 0,  (_idx * 0.025) * safezoneH, 0.3 * safeZoneW, 0.025  * safezoneH];
-	_control ctrlSetText (_nextparam select 3);
-	_control ctrlCommit 0;
-
-	_control = _display ctrlCreate [ "RscCombo", (200 + _idx), _display displayCtrl 9969 ];
-	_control ctrlSetPosition [ ((0.072 * 6.5) - 0.02) * safeZoneW, ((_idx * 0.025) * safezoneH) + 0.0025, ((0.072 * 2) * safeZoneW), 0.022  * safezoneH];
-	_control ctrlSetBackgroundColor [0.2,0.23,0.18,0.85];
-	if ( _idx % 2 == 0 ) then {
-		 _control ctrlSetBackgroundColor [0.27,0.30,0.23,0.85];
-	};
-	{ _control lbAdd _x } forEach (_nextparam select 4);
-
-	_selection = _nextparam select 1;
-	if (count (_nextparam select 5) > 0) then {
-		_selection = (_nextparam select 5) find _selection;
-	};
-	_control lbSetCurSel _selection;
-
-	_control ctrlAddEventHandler ["LBSelChanged", {
-		params ["_control", "_lbCurSel"];
-		param_id = (ctrlIDC _control) - 201;
-		param_value = _lbCurSel;
-	}];
-	_control ctrlCommit 0;
 } foreach _params_array;
 
 while { dialog && alive player } do {

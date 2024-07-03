@@ -67,21 +67,27 @@ player createDiaryRecord ["LRX Info", ["Contributors", format ["LRX Community Ma
 player createDiaryRecord ["LRX Info", ["Contributors", localize "STR_MISSION_TITLE"]];
 player createDiarySubject ["LRX Info", "Settings"];
 private _diary = [];
+private ["_name", "_value_text"];
 {
 	_name = _x select 0;
-	_data = [_name] call lrx_getParamData;
-	_value_text = "Error!";
-	if (count _data > 0) then {
-		_name = _data select 0;
-		_values_raw = _data select 2;
-		if (isNil "_values_raw") then { _values_raw = [] };
-		if (count (_values_raw) > 0) then {
-			_value_text = (_data select 1) select (_values_raw find (_x select 1));
-		} else {
-			_value_text = (_data select 1) select (_x select 1);
+	if (_name == "---") then {
+		_diary pushBack format ["%1 <font color='#0080f0'>%2</font> %1", _name, (_x select 1)];
+	} else {
+		_value_text = "Error!";
+		_data = [_name] call lrx_getParamData;
+		if (count _data > 0) then {
+			_name = _data select 0;
+			_values_raw = _data select 2;
+			if (isNil "_values_raw") then { _values_raw = [] };
+			if (count (_values_raw) > 0) then {
+				_value_text = (_data select 1) select (_values_raw find (_x select 1));
+			} else {
+				_value_text = (_data select 1) select (_x select 1);
+			};		
 		};
+		_diary pushBack format ["%1: <font color='#ff8000'>%2</font>", _name, _value_text];
 	};
-	_diary pushBack format ["%1: <font color='#ff8000'>%2</font>", _name, _value_text];
+	
 } foreach GRLIB_LRX_params;
 reverse _diary;
 {
