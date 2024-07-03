@@ -93,7 +93,7 @@ _setupObjects = {
 	private _guard = (units _aiGroup) select 0;
 	_guard setPos (getPos _bunker);
 	_guard setUnitPos "UP";
-	_guard disableAI "MOVE";	
+	_guard disableAI "PATH";	
 	[_guard] spawn building_defence_ai;
 
 	private _gunner = (units _aiGroup) select 1;

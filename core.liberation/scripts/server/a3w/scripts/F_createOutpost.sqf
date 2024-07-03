@@ -67,7 +67,7 @@ if (_enable_objectives) then {
     if (_x isKindof "AllVehicles" || _x in _base_objectives) then {
         _x allowDamage true;
         _x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-        [_x, "lock", "server"] call F_vehicleLock;  
+        [_x, "lock", "server"] call F_vehicleLock;
     };
 } foreach (_base_objectives + _base_objects);
 
@@ -97,13 +97,14 @@ if (_enable_defenders) then {
         _nextdir = _nextentry select 2;
         _unit = _grpdefenders createUnit [_nextclass, _nextpos, [], 5, "NONE"];
         [_unit] joinSilent _grpdefenders;
+        _unit setpos _nextpos;
+        _unit setUnitPos "UP";
+        _unit disableAI "PATH";
         _unit setSkill 0.65;
 		_unit setSkill ["courage", 1];
 		_unit allowFleeing 0;
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-        _unit setpos _nextpos;
-        _unit setUnitPos "UP";
-	    _unit disableAI "MOVE";
+        _unit setVariable ["GRLIB_in_building", true, true];
         [_unit] spawn building_defence_ai;
         [_unit] spawn reammo_ai;
         sleep 0.2;

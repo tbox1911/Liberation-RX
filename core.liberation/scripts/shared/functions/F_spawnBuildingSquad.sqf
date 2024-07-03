@@ -25,7 +25,7 @@ private _buildingpositions = [];
 	_buildingpositions = _buildingpositions + ([_x] call BIS_fnc_buildingPositions);
 } foreach _allbuildings;
 
-private _minimum_building_positions = 4;
+private _minimum_building_positions = 2;
 private _position_count = count _buildingpositions;
 if (_position_count < _minimum_building_positions) exitWith {[]};
 
@@ -43,14 +43,13 @@ while { count _position_indexes < count _unitclass } do {
 	};
 };
 private _grp = [_sectorpos, _unitclass, _side, "building"] call F_libSpawnUnits;
-private _idxposit = 0;
 {
-	_x setPos (_buildingpositions select (_position_indexes select _idxposit));
-	_x setUnitPos "UP";
 	//_x disableAI "MOVE";
 	_x disableAI "PATH";
+	_x setPos (_buildingpositions select (_position_indexes select _forEachIndex));
+	_x setUnitPos "UP";
+	_x setVariable ["GRLIB_in_building", true, true];
 	[_x] spawn building_defence_ai;
-	_idxposit = _idxposit + 1;
 } foreach (units _grp);
 
 diag_log format ["Done Spawning building squad (%1) at %2", count (units _grp), time];

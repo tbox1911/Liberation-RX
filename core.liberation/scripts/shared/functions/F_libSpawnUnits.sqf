@@ -30,7 +30,7 @@ private ["_unit", "_pos", "_backpack"];
 		};
 		// diag_log format ["DBG: Create unit %1 at position %2", _unit, _pos];
 		[_unit] spawn F_fixModUnit;
-		if (_type == "militia") then {[_unit] call loadout_militia};
+		if (_type == "militia") then { [_unit] call loadout_militia };
 		[_unit] spawn reammo_ai;
 
 		if (_type == "para") then {
