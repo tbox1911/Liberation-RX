@@ -25,7 +25,7 @@ switch (GRLIB_victory_condition) do {
 	};
 
 	// 2500 Intel points
-	case 5: { _ret = (resources_intel > 2500) };
+	case 5: { _ret = (resources_intel >= 2500) };
 
 	//case 6: { _ret = false };
 };

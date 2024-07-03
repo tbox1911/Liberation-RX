@@ -104,7 +104,7 @@ load_game_mp = compileFinal preprocessFileLineNumbers "scripts\server\game\load_
 save_game_mp = compileFinal preprocessFileLineNumbers "scripts\server\game\save_game_mp.sqf";
 load_context = compileFinal preprocessFileLineNumbers "scripts\server\game\load_context.sqf";
 save_context = compileFinal preprocessFileLineNumbers "scripts\server\game\save_context.sqf";
-check_victory_conditions = compileFinal preprocessFileLineNumbers "scripts\server\game\check_victory_conditions.sqf";
+blufor_victory = compileFinal preprocessFileLineNumbers "scripts\server\game\blufor_victory.sqf";
 get_rank = compileFinal preprocessFileLineNumbers "scripts\server\game\get_rank.sqf";
 
 // Bases

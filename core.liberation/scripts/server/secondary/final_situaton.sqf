@@ -132,9 +132,7 @@ if (_success) then {
 	0 setOvercast 0;
 	forceWeatherChange;
 	sleep 10;
-	blufor_sectors = sectors_allSectors;
-	opfor_sectors = [];
-	[] spawn check_victory_conditions;
+	[] spawn blufor_victory;
 } else {
 	{ deleteVehicle _x } foreach (units GRLIB_side_enemy);
 	0 setFog 0;

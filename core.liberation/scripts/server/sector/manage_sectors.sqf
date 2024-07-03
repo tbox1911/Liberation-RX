@@ -24,5 +24,6 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	} foreach opfor_sectors;
 
 	//diag_log format [ "Full sector scan at %1, active sectors: %2", time, active_sectors ];
-	sleep 3;
+	if ([] call F_checkVictory) then { [] spawn blufor_victory };
+	sleep 5;
 };

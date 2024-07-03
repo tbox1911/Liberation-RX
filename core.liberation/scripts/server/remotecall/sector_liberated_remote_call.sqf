@@ -70,13 +70,6 @@ publicVariable "blufor_sectors";
 opfor_sectors = (sectors_allSectors - blufor_sectors);
 publicVariable "opfor_sectors";
 stats_sectors_liberated = stats_sectors_liberated + 1;
-sleep 1;
-
-if (isServer) then {
-	[] spawn check_victory_conditions;
-} else {
-	[] remoteExec ["check_victory_conditions", 2];
-};
 
 sleep 45;
 
@@ -87,6 +80,7 @@ if ( GRLIB_endgame == 0 ) then {
 	   (opforcap < GRLIB_battlegroup_cap) &&
 	   (diag_fps > 30.0) && (floor random 3 > 0)
 	) then {
+		sleep (floor random 300);
 		diag_log format ["Spawn Revenge BattlegGroup at %1", time];
 		[_liberated_sector] spawn spawn_battlegroup;
 	};
