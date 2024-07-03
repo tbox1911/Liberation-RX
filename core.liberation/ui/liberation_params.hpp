@@ -2,7 +2,7 @@ class liberation_params {
 	idd = 5119;
 	movingEnable = false;
 	controlsBackground[] = {};
-	controls[] = { "OuterBG1", "OuterBG_F1", "InnerBG1", "InnerBG_F1", "Header", "ButtonClose", "ButtonSave", "ButtonCancel", "MissionsControlGroup" };
+	controls[] = { "OuterBG1", "OuterBG_F1", "InnerBG1", "InnerBG_F1", "Header", "ButtonSave", "ButtonCancel", "MissionsControlGroup" };
 	objects[] = {};
 
 	class OuterBG1 : StdBG{
@@ -32,16 +32,6 @@ class liberation_params {
 		w = 0.6 * safezoneW + ( 2 * BORDERSIZE);
 		h = 0.05 * safezoneH - (BORDERSIZE);
 		text = "--- LRX CONFIGURATION ---";
-	};
-
-	class ButtonClose : StdButton{
-		idc = 750;
-		x = 0.785 * safezoneW + safezoneX;
-		y = 0.145 * safezoneH + safezoneY;
-		w = 0.015 * safezoneW;
-		h = 0.02 * safezoneH;
-		text = "X";
-		action = "closeDialog 0";
 	};
 
 	class MissionsControlGroup  {
