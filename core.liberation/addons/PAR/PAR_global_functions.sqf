@@ -311,9 +311,8 @@ PAR_Player_Unconscious = {
 		["PAR_deathMessage", [_unit, _killer]] remoteExec ["PAR_public_EH", 0];
 	};
 
-	private _random_medic_message = floor (random 3);
 	private _medic_message = "";
-	switch (_random_medic_message) do {
+	switch (floor random 3) do {
 		case 0 : { _medic_message = localize "STR_PAR_Need_Medic1"; };
 		case 1 : { _medic_message = localize "STR_PAR_Need_Medic2"; };
 		case 2 : { _medic_message = localize "STR_PAR_Need_Medic3"; };
