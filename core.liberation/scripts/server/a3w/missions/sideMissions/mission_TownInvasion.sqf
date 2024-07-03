@@ -1,12 +1,10 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_nbUnits", "_grp_civ", "_townName", "_tent1", "_chair1", "_chair2", "_fire1", "_civilians"];
+private ["_managed_units", "_grp_civ", "_townName", "_tent1", "_chair1", "_chair2", "_fire1", "_civilians"];
 
 _setupVars = {
 	_missionType = "STR_INVASION";
-	_nbUnits = 16;
-	// settings for this mission
 	_missionLocation = [sectors_capture] call getMissionLocation;
 	_townName = markerText _missionLocation;
 	_locationsArray = nil;
@@ -34,9 +32,9 @@ _setupObjects = {
 	// spawn some enemies
 	[_missionPos, 30] call createlandmines;
 	[_missionLocation, 150, floor (random 6)] spawn ied_trap_manager;
-	_managed_units = (["militia", (_nbUnits - 4), _missionPos] call F_spawnBuildingSquad);
-	_aiGroup = [_missionPos, (_nbUnits - (count _managed_units)), "militia"] call createCustomGroup;
-	_managed_units joinSilent _aiGroup;
+	_managed_units = ["militia", 6, _missionPos] call F_spawnBuildingSquad;
+	{ _x setVariable ["GRLIB_mission_AI", false, true] } forEach _managed_units;
+	_aiGroup = [_missionPos, 12, "militia"] call createCustomGroup;
 	{ _x setVariable ["GRLIB_mission_AI", false, true] } forEach (units _aiGroup);	
 
 	// Spawn civvies
@@ -46,13 +44,16 @@ _setupObjects = {
 		_x setVariable ["acex_headless_blacklist", true, true];
 	} forEach (units _grp_civ);
 
-	_missionHintText = ["STR_INVASION_MESSAGE1", sideMissionColor, _townName, _nbUnits];
+	_missionHintText = ["STR_INVASION_MESSAGE1", sideMissionColor, _townName, (count units _aiGroup + count _managed_units)];
 	true;
 };
 
 _waitUntilMarkerPos = nil;
 _waitUntilExec = nil;
 _waitUntilCondition = { !(_missionLocation in blufor_sectors) };
+_waitUntilSuccessCondition = {
+	({ alive _x } count (units _aiGroup + _managed_units) == 0)
+};
 
 _failedExec = {
 	// Mission failed

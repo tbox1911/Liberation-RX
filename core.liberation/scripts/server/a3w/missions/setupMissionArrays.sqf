@@ -14,7 +14,6 @@ SideMissions = [
 	["mission_FoodDelivery", 1],
 	["mission_FuelDelivery", 1],
 	["mission_TownInvasion", 1],
-	["mission_TownInsurgency", 1],
 	["mission_HostileHelicopter", 1],
 	["mission_MeetResistance", 1],
 	["mission_VehicleCapture", 1],

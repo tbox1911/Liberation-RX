@@ -51,16 +51,6 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 	};
 };
 
-// Town Insurgency
-_mission_name = "mission_TownInsurgency";
-if (!([_missionsList, _mission_name] call getMissionState)) then {
-	if (count blufor_sectors >= 10 && A3W_delivery_failed >= 3) then {
-		[_missionsList, _mission_name, false] call setMissionState;
-	} else {
-		[_missionsList, _mission_name, true] call setMissionState;
-	};
-};
-
 // Vehicle Capture
 _mission_name = "mission_VehicleCapture";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
