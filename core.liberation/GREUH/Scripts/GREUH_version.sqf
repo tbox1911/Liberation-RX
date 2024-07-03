@@ -90,9 +90,7 @@ private ["_name", "_value_text"];
 	
 } foreach GRLIB_LRX_params;
 reverse _diary;
-{
-	player createDiaryRecord ["LRX Info", ["Settings", _x]];
-} forEach _diary;
+{ player createDiaryRecord ["LRX Info", ["Settings", _x]] } forEach _diary;
 player createDiaryRecord ["LRX Info", ["Settings", format ["Game ID: <font color='#ff8000'>%1</font>", GRLIB_game_ID]]];
 player createDiaryRecord ["LRX Info", ["Settings", format ["Build Version: <font color='#ff8000'>%1</font>", GRLIB_build_version]]];
 player createDiaryRecord ["LRX Info", ["Settings", format ["-= LRX Current Settings =-"]]];
