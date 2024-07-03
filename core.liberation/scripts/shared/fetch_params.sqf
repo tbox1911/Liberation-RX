@@ -189,6 +189,8 @@ GRLIB_kick_idle = ["KickIdle"] call lrx_getParamValue;
 GRLIB_server_persistent = ["Persistent"] call lrx_getParamValue;
 GRLIB_air_support = ["AirSupport"] call lrx_getParamValue;
 GRLIB_despawn_tickets = ["SectorDespawn"] call lrx_getParamValue;
+GRLIB_building_ai_ratio = ["BuildingRatio"] call lrx_getParamValue;
+GRLIB_victory_condition = ["VictoryCondition"] call lrx_getParamValue;
 
 // PAR Revive
 PAR_revive = ["PAR_Revive"] call lrx_getParamValue;

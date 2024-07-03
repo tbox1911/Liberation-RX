@@ -1631,6 +1631,42 @@
 			<Portuguese>Duração da noite (multiplicador)</Portuguese>
 			<Czech>Doba trvání noci (násobitel)</Czech>
 		</Key>
+		<Key ID="STR_PARAMS_BUILDING_RATIO">
+			<Original>AI in Buildings (multiplier)</Original>
+			<French>IA dans les batiments (multiplicateur)</French>
+		</Key>
+		<Key ID="STR_VICTORY_CONDITION">
+			<Original>Victory Condition</Original>
+			<French>Condition de Victoire</French>
+		</Key>
+		<Key ID="STR_VICTORY_COND0">
+			<Original>All Sectors captured</Original>
+			<French>Tous les Secteurs capturés</French>
+		</Key>
+		<Key ID="STR_VICTORY_COND1">
+			<Original>80% Sectors captured</Original>
+			<French>80% des Secteurs capturés</French>
+		</Key>		
+		<Key ID="STR_VICTORY_COND2">
+			<Original>All Radio Towers captured</Original>
+			<French>Toutes les Tours Radio capturés</French>
+		</Key>
+		<Key ID="STR_VICTORY_COND3">
+			<Original>All Military Sectors captured</Original>
+			<French>Tout les Secteurs Militaire capturés</French>
+		</Key>
+		<Key ID="STR_VICTORY_COND4">
+			<Original>All Big Cities captured</Original>
+			<French>Toutes les Grandes Villes capturées</French>
+		</Key>
+		<Key ID="STR_VICTORY_COND5">
+			<Original>2500 Intel points</Original>
+			<French>2500 points d'Intel</French>
+		</Key>
+		<Key ID="STR_VICTORY_COND6">
+			<Original>All Military and Radio Sectors captured</Original>
+			<French>Tout les Secteurs Militaire et les tours Radio capturés</French>
+		</Key>
 		<Key ID="STR_PARAMS_DIFFICULTY">
 			<Original>Difficulty</Original>
 			<French>Difficulté</French>
@@ -1834,7 +1870,7 @@
 		<Key ID="STR_PARAMS_PAR_GRAVE">
 			<Original>PAR: Grave + Stuff in a box</Original>
 			<French>PAR: Tombe + Stuff dans une boite</French>
-		</Key>		
+		</Key>
 		<Key ID="STR_PARAMS_REVIVE1">
 			<Original>Enabled - Everyone can revive</Original>
 			<Russian>Включено - Каждый может возрождать</Russian>
@@ -4393,7 +4429,7 @@
 		</Key>
 		<Key ID="STR_TUTO_TEXT11">
 			<Original>&lt;br/&gt;
-					When a player uses the commander slot (the last slot of the list), they get access to a Zeus interface by pressing the corresponding key (U by default).&lt;br/&gt; &lt;br/&gt;
+					When a player uses the commander slot (the last slot of the list), they get access to a Zeus interface by pressing the corresponding Key (U by default).&lt;br/&gt; &lt;br/&gt;
 					This interface allows to command NATO forces in 3d view or map view.&lt;br/&gt; &lt;br/&gt;
 					Moreover the commander gets additional build options that will allow them to obtain crewed vehicles or entire pre-made squads.&lt;br/&gt; &lt;br/&gt;
 					This role is not mandatory, but strongly recommended for smaller groups of players.&lt;br/&gt; &lt;br/&gt;
@@ -5644,7 +5680,7 @@
 		<Key ID="STR_PARAM_REDEPLOY_FOB">
 			<Original>At FOB only</Original>
 			<French>Aux FOB seulement</French>
-		</Key>				
+		</Key>
 		<Key ID="STR_ENABLE_AIR_SUPPORT">
 			<Original>Allow Air Support</Original>
 			<French>Autoriser le Support Aerien</French>
@@ -6918,7 +6954,7 @@
 			<French>Fuel:</French>
 			<Portuguese>Fuel:</Portuguese>
 			<Czech>Fuel:</Czech>
-		</Key>		
+		</Key>
 		<Key ID="STR_SEND_ACTION">
 			<Original>Send</Original>
 			<Russian>Отправить</Russian>

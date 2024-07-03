@@ -1,6 +1,7 @@
 diag_log format ["Check Victory condition at %1", time];
 
-if ( count opfor_sectors == 0 ) then {
+private _victory = [] call F_checkVictory;
+if ( _victory ) then {
 	diag_log "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=";
 	diag_log format ["  Blufor Victory at %1 !!", time];
 	diag_log "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=";
