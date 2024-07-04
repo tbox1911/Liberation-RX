@@ -15,7 +15,6 @@ GRLIB_patrol_cap = 150;
 GRLIB_fob_range = 125;
 GRLIB_surrender_chance = 80;
 GRLIB_halo_altitude = 2000;
-GRLIB_squad_size_bonus = 0;
 GRLIB_perm_ban = -30;
 GRLIB_perm_inf = 100;
 GRLIB_perm_log = 200;
