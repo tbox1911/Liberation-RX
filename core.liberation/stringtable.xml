@@ -5331,19 +5331,15 @@
 			<Czech>Vybavení %1 bylo úspěšně načteno.</Czech>
 		</Key>
 		<Key ID="STR_CIV_PENALTIES">
-			<Original>Penalty for killing civilians</Original>
-			<Russian>Штраф за убийство гражданских</Russian>
-			<French>Pénalité pour les pertes civiles</French>
-			<German>Strafe für zivile Verluste</German>
-			<Chinesesimp>屠杀平民的惩罚</Chinesesimp>
-			<Chinese>屠殺平民的懲罰</Chinese>
-			<Japanese>民間人殺害に対するペナルティ</Japanese>
-			<Portuguese>Pena por matar civis</Portuguese>
-			<Czech>Trest za zabití civilistů</Czech>
-		</Key>
-		<Key ID="STR_CIV_PENALTIES_AMMOUNT">
-			<Original>Ammount of Penalty for killing civilians</Original>
-			<French>Combien de Pénalité pour les pertes civiles</French>
+			<Original>Penalty for killing civilians (XP)</Original>
+			<Russian>Штраф за убийство гражданских (XP)</Russian>
+			<French>Pénalité pour les pertes civiles (XP)</French>
+			<German>Strafe für zivile Verluste (XP)</German>
+			<Chinesesimp>屠杀平民的惩罚 (XP)</Chinesesimp>
+			<Chinese>屠殺平民的懲罰 (XP)</Chinese>
+			<Japanese>民間人殺害に対するペナルティ (XP)</Japanese>
+			<Portuguese>Pena por matar civis (XP)</Portuguese>
+			<Czech>Trest za zabití civilistů (XP)</Czech>
 		</Key>
 		<Key ID="STR_CIV_PENALTY_MESSAGE">
 			<Original>Penalty of %1 for killing of civilian named %2 by %3</Original>

@@ -99,13 +99,13 @@ if ( isServer ) then {
 				stats_civilians_killed = stats_civilians_killed + 1;
 				if ( isPlayer _killer ) then {
 					stats_civilians_killed_by_players = stats_civilians_killed_by_players + 1;
-					if ( GRLIB_civ_penalties ) then {
-						private _penalty = GRLIB_civ_penalties_ammount;
+					if ( GRLIB_civ_penalties > 0 ) then {
+						private _penalty = GRLIB_civ_penalties;
 						private _score = [_killer] call F_getScore;
-						if ( _score < GRLIB_perm_inf ) then { _penalty = GRLIB_civ_penalties_ammount/2};
-						if ( _score > GRLIB_perm_inf ) then { _penalty = GRLIB_civ_penalties_ammount };
-						if ( _score > GRLIB_perm_air ) then { _penalty = GRLIB_civ_penalties_ammount*2 };
-						if ( _score > GRLIB_perm_max ) then { _penalty = GRLIB_civ_penalties_ammount*3 };
+						if ( _score < GRLIB_perm_inf ) then { _penalty = GRLIB_civ_penalties/2};
+						if ( _score > GRLIB_perm_inf ) then { _penalty = GRLIB_civ_penalties };
+						if ( _score > GRLIB_perm_air ) then { _penalty = GRLIB_civ_penalties*2 };
+						if ( _score > GRLIB_perm_max ) then { _penalty = GRLIB_civ_penalties*3 };
 						[_killer, -_penalty] call F_addScore;
 						[_killer, -5] call F_addReput;
 						[name _unit, _penalty, _killer] remoteExec ["remote_call_civ_penalty", 0];
@@ -120,13 +120,13 @@ if ( isServer ) then {
 					if (_owner_id in ["", "server"]) then {
 						_owner_id = (_killer getVariable ["PAR_Grp_ID", "0_0"]) splitString "_" select 1;
 					};
-					if (_owner_id != "0" && GRLIB_civ_penalties) then {
+					if (_owner_id != "0" && GRLIB_civ_penalties > 0) then {
 						_owner_player = _owner_id call BIS_fnc_getUnitByUID;
-						[_owner_player, -GRLIB_civ_penalties_ammount] call F_addScore;
+						[_owner_player, -GRLIB_civ_penalties] call F_addScore;
 						[_owner_player, -1] call F_addReput;
 						_msg = format ["%1, Your AI kill Civilian !!", name _owner_player] ;
 						[gamelogic, _msg] remoteExec ["globalChat", 0];
-						[name _unit, GRLIB_civ_penalties_ammount, _owner_player] remoteExec ["remote_call_civ_penalty", 0];
+						[name _unit, GRLIB_civ_penalties, _owner_player] remoteExec ["remote_call_civ_penalty", 0];
 					};
 				};
 			};

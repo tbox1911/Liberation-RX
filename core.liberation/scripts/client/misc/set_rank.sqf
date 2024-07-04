@@ -1,6 +1,5 @@
 private _score = [player] call F_getScore;
 private _rank = "Private";
-GRLIB_squad_size_bonus = 0;
 GRLIB_perm_zero = 0;
 
 if ((_score < GRLIB_perm_zero)) then {

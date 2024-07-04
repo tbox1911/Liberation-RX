@@ -44,8 +44,7 @@ LRX_Mission_Params = [
 	["Patrols", 1],					// Patrols Manager - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["Wildlife", 1],				// Wildlife Manager - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["Civilians", 1],				// Cilivilian Manager - [default 1] - values = [0,0.5,1,2] - Text {None,Reduced,Normal,Increased}
-	["CivPenalties", 1],			// Enable Civilian Penalty [default 1] - values = [1,0] - Text {Enabled,Disabled}
-	["CivPenaltiesAmmount", 20],	// Civilian Penalty Ammount  values = [4, 6, 10, 15, 20, 30, 40]
+	["CivPenalties", 20],			// Enable Civilian Penalty [default 20] - values = [0, 4, 6, 8, 10, 20, 25, 30, 40, 50 }
 	["AirSupport", 1],				// Enable Air Support - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["EnableLock", 1],				// Enable Vehicles Ownership - [default 1] - values = [1,0] - Text {Enabled,Disabled}
 	["EnemyLock", 1],				// Lock Enemy Vehicles - [default 1] - values = [1,0] - Text {Enabled,Disabled}
@@ -234,9 +233,9 @@ LRX_Mission_Params_Def = [
 		["3", "4", "5", "6", "7", "8", "9", "10"],
 		[3, 4, 5, 6, 7, 8, 9, 10]
 	],
-	["CivPenaltiesAmmount", localize "STR_CIV_PENALTIES_AMMOUNT",
-		[ "4", "6", "8", "10", "20", "25", "30", "40", "50"],
-		[ 4, 6, 8, 10, 20, 25, 30, 40, 50]
+	["CivPenalties", localize "STR_CIV_PENALTIES", 
+		[localize "STR_PARAMS_DISABLED", "4", "6", "8", "10", "20", "25", "30", "40", "50"],
+		[0, 4, 6, 8, 10, 20, 25, 30, 40, 50]		
 	],
 	["Civilians", localize "STR_PARAMS_CIVILIANS", [
 		localize "STR_PARAMS_DISABLED",
@@ -350,7 +349,6 @@ LRX_Mission_Params_Def = [
 	["EnableArsenal", localize "STR_ARSENAL", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED",localize "STR_PARAMS_ARSENAL_FOB"]],
 	["EnableLock", localize "STR_VEH_LOCK", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["EnemyLock", localize "STR_OPFOR_VEH_LOCK", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
-	["CivPenalties", localize "STR_CIV_PENALTIES", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["AdminMenu", "Enable the Admin Menu", [localize "STR_PARAMS_DISABLED",localize "STR_PARAMS_ENABLED"]],
 	["HideOpfor", localize "STR_OPFORMARK", ["All","Fog of War"]],
 	["ShowBlufor", localize "STR_BLUFORMARK", [localize "STR_PARAMS_DISABLED","Player only",localize "STR_PARAMS_ENABLED"]],
