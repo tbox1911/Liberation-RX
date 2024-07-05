@@ -23,8 +23,6 @@ private _vehicle_pool = opfor_battlegroup_vehicles;
 if ( combat_readiness < 50 ) then {	_vehicle_pool = opfor_battlegroup_vehicles_low_intensity };
 
 if (_spawn_marker != "") then {
-	diag_log format ["Spawn BattlegGroup objective %1 at %2", _objective_pos, time];
-	[markerPos _spawn_marker] remoteExec ["remote_call_battlegroup", 0];
 	GRLIB_last_battlegroup_time = time;
 	private _target_size = round ((GRLIB_battlegroup_size * GRLIB_csat_aggressivity) * (1+(combat_readiness / 100)));
 	if ( count (AllPlayers - (entities "HeadlessClient_F")) <= 2 ) then { _target_size = round (_target_size * 0.65) };
@@ -32,6 +30,9 @@ if (_spawn_marker != "") then {
 	if ( _target_size > 8 && GRLIB_csat_aggressivity < 2 ) then { _target_size = 8 };
 	if ( _target_size < 2 ) then { _target_size = 2 };
 
+	diag_log format ["Spawn BattlegGroup objective %1 size %2 at %3", _objective_pos, _target_size, time];
+	[markerPos _spawn_marker] remoteExec ["remote_call_battlegroup", 0];
+	
 	private ["_nextgrp", "_vehicle", "_vehicle_class"];
 	for "_i" from 1 to _target_size do {
 		_vehicle_class = selectRandom _vehicle_pool;
