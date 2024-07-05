@@ -80,7 +80,8 @@ while { true } do {
 							};
 							_tone = _my_dog getVariable "my_dog_tone";
 							[_my_dog, _tone] spawn dog_bark;
-							sleep (4 + floor random 8);
+							private _timer = time + (4 + floor random 8);
+							waitUntil { sleep 1; ( !(alive _man) || !(_man getVariable ["GRLIB_is_prisoner", false]) || time >= _timer) };
 							_my_dog playMoveNow "Dog_Stop";
 							_my_dog stop false;
 						} else {
