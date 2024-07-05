@@ -109,12 +109,7 @@ while { true } do {
 			"_caller distance2D _target < 3 && count (crew _target) == 0",
 			{ },
 			{ },
-			{ 
-				_target setVariable ["GRLIB_last_killer", nil, true];
-				[_target, player, player] remoteExec ["kill_manager", 2];
-				sleep 1;
-				_target setDamage 1;
-			},
+			{ [player, _target] remoteExec ["destroy_static_remote_call", 2] },
 			{ },
 			[],
 			20,
