@@ -56,6 +56,7 @@ while {alive _unit} do {
 	// Captured
 	if ([_unit, "FOB", 30] call F_check_near && isTouchingGround (vehicle _unit) && round (speed vehicle _unit) == 0) exitWith {
 		_unit setVariable ["GRLIB_can_speak", false, true];
+		sleep 3;
 		private _leader = leader group _unit;
 		 _grp = createGroup [GRLIB_side_civilian, true];
     	[_unit] joinSilent _grp;
