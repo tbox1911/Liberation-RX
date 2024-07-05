@@ -39,10 +39,12 @@ _vehicle setVariable ["GRLIB_vehicle_gunner", units _grp];
 
 [_vehicle] call F_aceLockVehicle;
 
-diag_log format [ "Spawn Static Weapon on sector %1 at %2", _sector, time ];
+diag_log format [ "Spawn Static Weapon (%1) on sector %2 at %3", typeOf _vehicle, _sector, time ];
+
+_spawn_pos = getPos _vehicle;
 
 // AI (managed by manage_static.sqf)
-[_grp, getPosATL _vehicle, 20] spawn patrol_ai;
+[_grp, _spawn_pos, 20] spawn patrol_ai;
 
 // Wait
 private _unit_ttl = round (time + 1800);
