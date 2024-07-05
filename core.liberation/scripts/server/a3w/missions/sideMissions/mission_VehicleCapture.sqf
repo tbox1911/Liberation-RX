@@ -18,6 +18,7 @@ _setupObjects = {
 	};
 	_vehicle = [_missionPos, selectRandom opfor_vehicles, 3, false, GRLIB_side_enemy, false] call F_libSpawnVehicle;
 	[_vehicle, "lock", "server"] call F_vehicleLock;
+	_vehicle enableSimulationGlobal true;
 	_vehicle setFuel 0.1;
 	_vehicle setVehicleAmmo 0.1;
 	_vehicle setHitPointDamage ["HitEngine", 1, false];
