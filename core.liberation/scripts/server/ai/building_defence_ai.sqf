@@ -1,6 +1,7 @@
 params ["_unit"];
 
 if (isNull _unit) exitWith {};
+if (floor random 6 == 0) exitWith {};
 
 private _move_is_disabled = true;
 private _resume_movement = false;
