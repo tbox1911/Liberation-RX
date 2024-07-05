@@ -75,7 +75,7 @@ while { alive _vehicle && !(isNull _driver)} do {
 	if (_event_stared) then {
 		_helped = false;
 		if (_incd == _incd_repair && _vehicle getHitPointDamage "HitEngine" < 1) then { _helped = true };
-		if (_incd == _incd_fuel && fuel _vehicle >= 0.5) then { _helped = true };
+		if (_incd == _incd_fuel && fuel _vehicle >= 0.45) then { _helped = true };
 		if (time > _wait_max) then { _helped = true };
 
 		if (_helped) then {
