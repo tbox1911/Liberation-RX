@@ -7,4 +7,4 @@ private _bounty = [_unit] call F_getBounty;
 [_unit, (_bounty select 1)] call F_addScore;
 
 _vehicle setHitPointDamage ["HitHull", 1];
-_vehicle setDamage 1;
+_vehicle setDamage [1, true, _unit];
