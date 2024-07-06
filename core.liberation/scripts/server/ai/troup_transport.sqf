@@ -48,8 +48,10 @@ doStop (driver _troup_transport);
 sleep 1;
 if ({alive _x} count (units _troup_transport) == 0) exitWith {};
 {
-	[_x, false] spawn F_ejectUnit;
-	sleep 0.5;
+	if ("cargo" in (assignedVehicleRole _x)) then {
+		[_x, false] spawn F_ejectUnit;
+		sleep 0.5;
+	};
 } forEach (crew _troup_transport);
 [_troup_group, _objective_pos] spawn battlegroup_ai;
 
