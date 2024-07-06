@@ -48,8 +48,7 @@ save_changes = 0;
 		_params_array pushback [_x select 0, _x select 1, _indx, _name, _values, _values_raw];
 		_indx = _indx + 1;
 	} else {
-		_params_save deleteAt _forEachIndex;
-		diag_log format ["--- LRX Delete unknow parameter: %1", _x select 0];
+		diag_log format ["--- LRX Unknow parameter: %1", _x select 0];
 	}
 } foreach _params_save;
 
