@@ -31,7 +31,7 @@
     ["Land_MedicalTent_01_NATO_generic_open_F", [8.97, -48.56, 0], 0],
     ["Land_Workbench_01_F", [-14.91, -48.07, 0], 180],
     ["Land_DieselGroundPowerUnit_01_F", [-1.17, -51.28, 0], 179],
-    ["Land_ToolTrolley_02_F", [-17.64, -48.5, 0], 91],
+    ["Land_ToolTrolley_01_F", [-17.64, -48.5, 0], 91],
     ["Land_CampingTable_F", [6.64, -51.76, 0], 0],
     ["Land_WeldingTrolley_01_F", [-19.39, -48.59, 0], 0],
     ["Land_Pallet_MilBoxes_F", [21.02, -47.96, 0], 180],
