@@ -76,7 +76,7 @@ _msg = format ["Defense Template: %1\nCreated by: %2\nThanks to him !!", _defens
 [_msg] remoteExec ["hint", 0];
 
 // Build defense in FOB direction
-private _defenses_blacklist = GRLIB_recycleable_blacklist + all_friendly_classnames;
+private _defenses_blacklist = GRLIB_recycleable_blacklist + all_friendly_classnames + all_hostile_classnames;
 private ["_nextclass", "_nextobject", "_nextpos", "_nextdir"];
 _fob_pos set [2, 0];
 {
