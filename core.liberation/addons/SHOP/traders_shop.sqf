@@ -21,8 +21,9 @@ private _getPrice = {
 
 // Init BUY list
 private _buy_list_static = [
-	[Arsenal_typename, 0, 67],
-	[medicalbox_typename, 0, 60]
+	[Arsenal_typename, 0, 157],
+	[medicalbox_typename, 0, 130],
+	[repairbox_typename, 0, 154]
 ];
 private _buy_blacklist = [];
 private _buy_list = opfor_recyclable select { !((_x select 0) isKindOf "Air") && !((_x select 0) in _buy_blacklist)};

@@ -472,7 +472,6 @@ while { true } do {
 
 			// Helipad lights
 			if ( _classname isKindOf "Land_PortableHelipadLight_01_F" ) then {
-				[_vehicle, false] remoteExec ["enableSimulationGlobal", 2];
 				_allow_damage = false;
 			};
 

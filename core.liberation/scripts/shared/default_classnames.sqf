@@ -40,6 +40,7 @@ ammobox_i_typename = "Box_IND_AmmoVeh_F";
 waterbarrel_typename = "Land_BarrelWater_F";
 fuelbarrel_typename = "Land_MetalBarrel_F";
 foodbarrel_typename = "Land_FoodSacks_01_large_brown_idap_F";
+repairbox_typename = "Land_ToolTrolley_02_F";
 opfor_transport_truck = "O_Truck_03_transport_F";
 blufor_texture_overide = [];
 opfor_texture_overide = [];

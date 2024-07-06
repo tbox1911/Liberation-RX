@@ -1646,7 +1646,7 @@
 		<Key ID="STR_VICTORY_COND1">
 			<Original>80% Sectors captured</Original>
 			<French>80% des Secteurs capturés</French>
-		</Key>		
+		</Key>
 		<Key ID="STR_VICTORY_COND2">
 			<Original>All Radio Towers captured</Original>
 			<French>Toutes les Tours Radio capturés</French>
@@ -6079,6 +6079,17 @@
 			<Chinese>-- 加油 --</Chinese>
 			<Portuguese>-- COLOCAR COMBUSTÍVEL</Portuguese>
 			<Czech>-- NATANKOVAT PALIVO</Czech>
+		</Key>
+		<Key ID="STR_REPAIR_VEH">
+			<Original>-- REPAIR VEHICLE</Original>
+		</Key>
+		<Key ID="STR_REPAIR_VEH_MSG">
+			<Original>Complete %1 Repair in progress...</Original>
+			<French>Réparation complète de %1 en cours...</French>
+		</Key>
+		<Key ID="STR_REPAIR_VEH_NAME">
+			<Original>Vehicle Repair Box</Original>
+			<French>Réparation de véhicule (Boîte)</French>
 		</Key>
 		<Key ID="STR_HALO_VEH">
 			<Original>-- HALO DROP VEHICLE</Original>

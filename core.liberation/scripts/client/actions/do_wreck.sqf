@@ -26,13 +26,14 @@ if (_vehicle_class in _valuable_veh) then {
 };
 
 disableUserInput true;
+player setDir (player getDir _vehicle);
 player playMove 'ainvpknlmstpslaywrfldnon_medic';
 playSound3D ["a3\sounds_f\sfx\ui\vehicles\vehicle_repair.wss", _vehicle];
 sleep 5;
-
 disableUserInput false;
 disableUserInput true;
 disableUserInput false;
+
 if (round (getPosASL player select 2) <= -1) then {player switchmove ""};
 
 if (lifeState player == 'INCAPACITATED' || !isNull objectParent player) exitWith {

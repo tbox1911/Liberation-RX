@@ -166,6 +166,7 @@ support_vehicles = support_vehicles + [
 	[medicalbox_typename,5,25,0,0],
 	[mobile_respawn,10,50,0,0],
 	[canister_fuel_typename,0,25,0,0],
+	[repairbox_typename,0,50,0,GRLIB_perm_log],
 	[playerbox_typename,0,0,0,20],
 	[Respawn_truck_typename,10,750,15,GRLIB_perm_log],
 	[huron_typename,10,1550,35,GRLIB_perm_tank],
@@ -199,6 +200,18 @@ respawn_vehicles = [
 	huron_typename
 ] + respawn_vehicles_west;
 
+// *** CLASSNAME LIST ***
+all_hostile_classnames = [];
+{ all_hostile_classnames pushBackUnique (_x select 0) } foreach opfor_recyclable;
+
+all_friendly_classnames = [];
+{ all_friendly_classnames pushBackUnique (_x select 0) } foreach (light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles);
+
+air_vehicles_classnames = [] + opfor_troup_transports_heli;
+{ air_vehicles_classnames pushback (_x select 0); } foreach air_vehicles;
+
+opfor_troup_transports_truck  = opfor_troup_transports_truck  + [opfor_transport_truck];
+
 // *** BUILDINGS ***
 buildings = [
 	[FOB_sign,0,0,0,GRLIB_perm_hidden],
@@ -215,26 +228,22 @@ buildings append [
 	[land_cutter_typename,0,0,0,GRLIB_perm_inf]
 ];
 
+private _buildings_to_delete = [];
+{
+	if (( _x select 0) in (all_friendly_classnames + all_hostile_classnames)) then { _buildings_to_delete pushBack _x };
+} forEach buildings;
+buildings = buildings - _buildings_to_delete;
+
 all_buildings_classnames = [];
 { all_buildings_classnames pushBackUnique (_x select 0) } foreach buildings;
 
+// FOB Defense buildings
 fob_defenses_classnames = [];
 fob_buildings_classnames = [];
 if (GRLIB_naval_type == 3) then {
 	private _objects_to_build = ([] call compile preprocessFileLineNumbers format ["scripts\fob_templates\%1.sqf", FOB_carrier]);
 	{ fob_buildings_classnames pushBackUnique (_x select 0) } forEach _objects_to_build;
 };
-
-all_hostile_classnames = [];
-{ all_hostile_classnames pushBackUnique (_x select 0) } foreach opfor_recyclable;
-
-all_friendly_classnames = [];
-{ all_friendly_classnames pushBackUnique (_x select 0) } foreach (light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles);
-
-air_vehicles_classnames = [] + opfor_troup_transports_heli;
-{ air_vehicles_classnames pushback (_x select 0); } foreach air_vehicles;
-
-opfor_troup_transports_truck  = opfor_troup_transports_truck  + [opfor_transport_truck];
 
 // *** ELITES ***
 elite_vehicles = [];
@@ -450,6 +459,7 @@ GRLIB_vehicle_whitelist = [
 	ammobox_o_typename,
 	ammobox_i_typename,
 	ammobox_i_typename,
+	repairbox_typename,
 	waterbarrel_typename,
 	fuelbarrel_typename,
 	foodbarrel_typename
@@ -462,6 +472,7 @@ GRLIB_vehicle_blacklist = [
 	ammobox_o_typename,
 	ammobox_i_typename,
 	canister_fuel_typename,
+	repairbox_typename,
 	waterbarrel_typename,
 	fuelbarrel_typename,
 	foodbarrel_typename,
@@ -477,6 +488,7 @@ GRLIB_recycleable_blacklist = [
 	FOB_sign,
 	Warehouse_typename,
 	canister_fuel_typename,
+	repairbox_typename,
 	waterbarrel_typename,
 	fuelbarrel_typename,
 	foodbarrel_typename,

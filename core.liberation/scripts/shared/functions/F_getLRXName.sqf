@@ -56,6 +56,9 @@ if ( _class == fuelbarrel_typename ) then {
 if ( _class == foodbarrel_typename ) then {
 	_text = "Food Pallet";
 };
+if ( _class == repairbox_typename ) then {
+	_text = localize "STR_REPAIR_VEH_NAME";
+};
 if ( _class == FOB_box_outpost ) then {
 	_text = localize "STR_OUTPOSTBOX";
 };

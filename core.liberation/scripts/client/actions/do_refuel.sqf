@@ -2,7 +2,7 @@ params ["_vehicle"];
 if (isNil "_vehicle") exitWith {};
 
 private _max_fuel = 1;
-private _jerycan = _vehicle nearEntities [[canister_fuel_typename, fuelbarrel_typename], 15] select 0;
+private _jerycan = (_vehicle nearEntities [[canister_fuel_typename, fuelbarrel_typename], 15]) select { alive _x && getObjectType _x >= 8 } select 0;
 
 if (!isNil "_jerycan") then {
 	if (_jerycan isKindOf canister_fuel_typename) then {_max_fuel = 0.20};

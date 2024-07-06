@@ -40,9 +40,15 @@ GRLIB_checkAction_DeFuel = {
 
 GRLIB_checkAction_ReFuel = {
 	params ["_target", "_unit"];
-	private _near_fuelbarrel = _target nearEntities [[canister_fuel_typename, fuelbarrel_typename], 15];
+	private _near_fuelbarrel = (_target nearEntities [[canister_fuel_typename, fuelbarrel_typename], 15]) select { alive _x && getObjectType _x >= 8 };
 	private _near_fuel = [_target, "REFUEL", 15, false] call F_check_near;
 	(GRLIB_player_is_menuok && alive _target && fuel _target <= 0.75 && (_near_fuel || count _near_fuelbarrel > 0))
+};
+
+GRLIB_checkAction_Repair = {
+	params ["_target", "_unit"];
+	private _near_repairbox = (_target nearEntities [[repairbox_typename], 15]) select { alive _x && getObjectType _x >= 8 };
+	(GRLIB_player_is_menuok && alive _target && damage _target > 0.01 && count _near_repairbox > 0)
 };
 
 GRLIB_checkAction_Halo = {
