@@ -96,6 +96,7 @@ while { alive _vehicle && !(isNull _driver)} do {
 				};
 			};
 			_vehicle setVariable ["GRLIB_civ_incd", 0, true];
+			{ _vehicle setHitPointDamage [_x, 0] } forEach (getAllHitPointsDamage _vehicle select 0);
 			_vehicle setDamage 0;
 			_vehicle allowDamage true;
 			_vehicle setFuel 1;
