@@ -6992,6 +6992,9 @@
 			<Portuguese>Renascer caixa de Ammo</Portuguese>
 			<Czech>Spawn Ammobox</Czech>
 		</Key>
+		<Key ID="STR_ADMIN_CAPTURE">
+			<Original>Capture Sector</Original>
+		</Key>
 		<Key ID="STR_ADMIN_BUILD">
 			<Original>Build</Original>
 			<Russian>Построить</Russian>

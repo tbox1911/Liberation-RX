@@ -22,6 +22,7 @@ do_import = 0;
 do_kick = 0;
 do_ban = 0;
 do_zeus = 0;
+do_capture = 0;
 
 private _msg = "";
 private _getBannedUID = {
@@ -64,6 +65,10 @@ if (do_teleport == 1) then { (_display displayCtrl 1620) ctrlSetChecked true };
 if (!isNil "GRLIB_active_commander") then {
 	if (GRLIB_active_commander in (call BIS_fnc_listCuratorPlayers)) then { ctrlEnable [1625, false] };
 };
+
+// Capture Sector ?
+private _sector = [GRLIB_sector_size, player] call F_getNearestSector;
+if (_sector == "" || _sector in blufor_sectors) then { ctrlEnable [1627, false] };
 
 // Clear listbox
 private _ban_combo = _display displayCtrl 1611;
@@ -157,7 +162,7 @@ while { alive player && dialog } do {
 		if (_dst_id != "") then {
 			BTC_logic setVariable [_dst_id, 0, true];
 			_msg = format ["Unban player UID: %1", _dst_id];
-			hint _msg;
+			hintSilent _msg;
 			systemchat _msg;
 			lbClear _ban_combo;
 			[_ban_combo] call _getBannedUID;
@@ -171,7 +176,7 @@ while { alive player && dialog } do {
 		_amount = parseNumber (ctrlText _ammount_edit);
 		[_uid, _amount] remoteExec ["F_addPlayerScore", 2];
 		_msg = format ["Add %1 XP to player: %2.", _amount, _name];
-		hint _msg;
+		hintSilent _msg;
 		systemchat _msg;
 		sleep 1;
 	};
@@ -181,7 +186,7 @@ while { alive player && dialog } do {
 		_veh_text = _build_combo lbText (lbCurSel _build_combo);
 		_veh_class = _build_combo lbData (lbCurSel _build_combo);
 		_msg = format ["Build Vehicle: %1", _veh_text];
-		hint _msg;
+		hintSilent _msg;
 		systemchat _msg;
 		buildtype = 9;
 		build_unit = [_veh_class,[],1,[],[],[],[]];
@@ -197,7 +202,7 @@ while { alive player && dialog } do {
 		_amount = parseNumber (ctrlText _ammount_edit);
 		[_uid, _amount] remoteExec ["F_addPlayerAmmo", 2];
 		_msg = format ["Add %1 Ammo to player: %2.", _amount, _name];
-		hint _msg;
+		hintSilent _msg;
 		systemchat _msg;
 		sleep 1;
 	};
@@ -210,7 +215,7 @@ while { alive player && dialog } do {
 		_player = _uid call BIS_fnc_getUnitByUID;
 		[_player, 0, _amount] remoteExec ["ammo_add_remote_call", 2];
 		_msg = format ["Add %1 Fuel to player: %2.", _amount, _name];
-		hint _msg;
+		hintSilent _msg;
 		systemchat _msg;
 		sleep 1;
 	};
@@ -221,7 +226,7 @@ while { alive player && dialog } do {
 		_uid = _score_combo lbData (lbCurSel _score_combo);
 		_player = _uid call BIS_fnc_getUnitByUID;
 		if (!isNull _player) then {
-			hint format ["Teleport near player: %1.", _name];
+			hintSilent format ["Teleport near player: %1.", _name];
 			_pos = getPos _player;
 			if (surfaceIsWater _pos) then {
 				player setPosASL _pos;
@@ -230,7 +235,7 @@ while { alive player && dialog } do {
 			};
 			closeDialog 0;
 		} else {
-			hint "Player must be online!";
+			hintSilent "Player must be online!";
 		};
 	};
 
@@ -240,7 +245,7 @@ while { alive player && dialog } do {
 			[true] call save_game_mp;
 			copyToClipboard str (profileNamespace getVariable [GRLIB_save_key, []]);
 			_msg = format ["Savegame %1 Exported to clipboard.", GRLIB_save_key];
-			hint _msg;
+			hintSilent _msg;
 		} else {
 			{ ctrlEnable  [_x, false] } foreach _button_controls;
 			{ ctrlShow [_x, true] } foreach _output_controls;
@@ -248,7 +253,7 @@ while { alive player && dialog } do {
 			[player, {
 				[true] call save_game_mp;
 				[missionNamespace, ["output_save", (profileNamespace getVariable GRLIB_save_key)]] remoteExec ["setVariable", owner _this];
-				["Copy the Savegame from Text Field."] remoteExec ["hint", owner _this];
+				["Copy the Savegame from Text Field."] remoteExec ["hintSilent", owner _this];
 			}] remoteExec ["bis_fnc_call", 2];
 
 			waitUntil {uiSleep 0.3; ((count output_save > 0) || !(dialog) || !(alive player))};
@@ -318,12 +323,26 @@ while { alive player && dialog } do {
 		do_zeus = 0;
 		GRLIB_active_commander = player;
 		publicVariable 'GRLIB_active_commander';
-		hint "You are Zeus now...";
+		hintSilent "You are Zeus now...";
 		ctrlEnable [1625, false];
 		sleep 1;
 	};
 
+	if (do_capture == 1) then {
+		do_capture = 0;
+		if (isServer) then {
+			blufor_sectors pushBackUnique _sector;
+		} else {
+			[_sector, {
+				blufor_sectors pushBackUnique _this;
+				publicVariable "blufor_sectors";
+			}] remoteExec ["bis_fnc_call", 2];
+		};
+		_msg = format ["Sector %1 Forcefully Captured!", markerText _sector];
+		hintSilent _msg;
+		systemchat _msg;
+		closeDialog 0;
+	};
 	sleep 0.5;
 };
 closeDialog 0;
-hintSilent "";

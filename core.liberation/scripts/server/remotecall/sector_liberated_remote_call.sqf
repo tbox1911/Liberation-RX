@@ -65,7 +65,7 @@ publicVariable "stats_readiness_earned";
 
 [ _liberated_sector, 0 ] remoteExec ["remote_call_sector", 0];
 
-blufor_sectors pushback _liberated_sector;
+blufor_sectors pushBackUnique _liberated_sector;
 publicVariable "blufor_sectors";
 opfor_sectors = (sectors_allSectors - blufor_sectors);
 publicVariable "opfor_sectors";

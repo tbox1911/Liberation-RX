@@ -11,6 +11,7 @@ class liberation_admin {
 	  "ArsenalButton",
 	  "AmmoButton",
     "RespawnButton",
+    "CaptureButton",
     "BuildButton",
     "BuildList",
 	  "SkipTimeButton",
@@ -95,6 +96,15 @@ class liberation_admin {
     text = $STR_RESPAWN_TRUCK;
     x = 0.3275 * safezoneW + safezoneX;
     y = 0.208 * safezoneH + safezoneY;
+    w = 0.0875 * safezoneW;
+    h = 0.04 * safezoneH;
+  };
+  class CaptureButton: StdButton {
+    idc = 1627;
+    action = "do_capture=1";
+    text = $STR_ADMIN_CAPTURE;
+    x = 0.3275 * safezoneW + safezoneX;
+    y = 0.26 * safezoneH + safezoneY;
     w = 0.0875 * safezoneW;
     h = 0.04 * safezoneH;
   };
