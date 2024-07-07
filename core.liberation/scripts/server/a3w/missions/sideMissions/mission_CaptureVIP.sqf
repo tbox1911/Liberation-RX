@@ -3,8 +3,7 @@ if (!isServer) exitwith {};
 
 private [ "_vip", "_vehicle1", "_vehicle2", "_vehicle3", "_last_waypoint", "_convoy_attacked", "_disembark_troops"];
 
-_setupVars =
-{
+_setupVars = {
 	_missionType = "STR_VIP_CAP";
 	_locationsArray = nil; // locations are generated on the fly from towns
 	_ignoreAiDeaths = true;

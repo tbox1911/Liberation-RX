@@ -1,20 +1,29 @@
-// Mission spawn trop proche d'un secteur capture
-params ['_markers'];
+// Filter markers list too close from blufor sectors / FOB
+params ["_markers", ["_fob_only", false]];
 
-private ["_ret", "_sector", "_state", "_timer"];
+if (count _markers == 0) exitWith {[]};
+
+private ["_keep_sector", "_sector", "_sector_pos"];
 private _list = [];
 
 {
-	_ret = true;
+	_keep_sector = true;
 	_sector = _x select 0;
-	_state = _x select 1;
-	_timer = _x select 2;
-	if !(_sector in (A3W_sectors_in_use + active_sectors)) then {
-		{		
-			if ( (markerPos _x) distance2d (markerPos _sector) < (GRLIB_sector_size + 200)) exitWith { _ret = false };
-		} foreach sectors_allSectors;
-		if (_ret) then { _list pushBack [_sector, _state, _timer] };
+	_sector_pos = markerPos _sector;
+
+	if (!_fob_only) then {
+		{
+			if (_sector_pos distance2D (markerPos _x) < GRLIB_sector_size) exitWith { _keep_sector = false };
+		} foreach blufor_sectors;
 	};
+
+	{
+		if (_sector_pos distance2D _x < GRLIB_sector_size) exitWith { _keep_sector = false };
+	} foreach GRLIB_all_fobs;
+
+	if (_sector in (A3W_sectors_in_use + active_sectors)) then { _keep_sector = false };
+
+	if (_keep_sector) then { _list pushBack _x };
 } forEach _markers;
 
 _list;

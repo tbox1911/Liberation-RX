@@ -3,16 +3,14 @@ if (!isServer) exitwith {};
 
 private ["_nbUnits", "_box1", "_box2"];
 
-_setupVars =
-{
+_setupVars = {
 	_missionType = "STR_SUNKEN";
 	_locationsArray = [SunkenMissionMarkers] call checkSpawn;
 	_nbUnits = [] call getNbUnits;
 	_precise_marker = false;
 };
 
-_setupObjects =
-{
+_setupObjects = {
 	_missionPos = markerpos _missionLocation;
 	_box1 = [ammobox_o_typename, _missionPos, true] call boxSetup;
 	_box2 = [ammobox_o_typename, _missionPos, true] call boxSetup;

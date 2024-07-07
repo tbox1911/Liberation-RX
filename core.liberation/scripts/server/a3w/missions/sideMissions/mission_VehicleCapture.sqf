@@ -5,7 +5,7 @@ private ["_nbUnits", "_vehicleName", "_smoke"];
 
 _setupVars = {
 	_missionType = "STR_VEHICLECAP";
-	_locationsArray = [SpawnMissionMarkers] call checkSpawn;
+	_locationsArray = [SpawnMissionMarkers, true] call checkSpawn;
 	_nbUnits = [] call getNbUnits;
 	_missionTimeout = (30 * 60);	
 };

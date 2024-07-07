@@ -3,10 +3,9 @@ if (!isServer) exitwith {};
 
 private ["_nbUnits", "_box1", "_box2", "_box3"];
 
-_setupVars =
-{
+_setupVars = {
 	_missionType = "STR_AIRWRECK";
-	_locationsArray = [SpawnMissionMarkers] call checkSpawn;
+	_locationsArray = [SpawnMissionMarkers, true] call checkSpawn;
 	_nbUnits = [] call getNbUnits;
 };
 
