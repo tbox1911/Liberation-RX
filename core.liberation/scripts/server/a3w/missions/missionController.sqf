@@ -40,6 +40,8 @@ while {true} do {
 				diag_log format ["DBG: A3W mission selected: %1", _nextMission];
 				diag_log format ["DBG: A3W mission success: %1 / failed: %2", A3W_mission_success, A3W_mission_failed];
 				diag_log format ["DBG: A3W mission timer: delay: %1 - timeout: %2", A3W_Mission_delay, A3W_Mission_timeout];
+				if (isNil "A3W_debug_marker") then { A3W_debug_marker = false };
+				if (A3W_debug_marker) then { [] call debugSpawnMarkers };
 			};
 		} else {
 			sleep 30;
@@ -50,7 +52,7 @@ while {true} do {
 
 	// Mission start + lock
 	[SideMissions, _nextMission, true] call setMissionState;
-	
+
 	// these should be defined in the mission script
 	private ["_setupVars", "_setupObjects", "_waitUntilMarkerPos", "_waitUntilExec", "_waitUntilCondition", "_waitUntilSuccessCondition", "_ignoreAiDeaths", "_failedExec", "_successExec"];
 	[_controllerSuffix] call compile preprocessFileLineNumbers format ["scripts\server\a3w\missions\%1\%2.sqf", _missionsFolder, _nextMission];

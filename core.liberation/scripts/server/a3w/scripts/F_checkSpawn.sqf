@@ -13,7 +13,7 @@ private _list = [];
 
 	if (!_fob_only) then {
 		{
-			if (_sector_pos distance2D (markerPos _x) < GRLIB_sector_size) exitWith { _keep_sector = false };
+			if (_sector_pos distance2D (markerPos _x) <= GRLIB_sector_size) exitWith { _keep_sector = false };
 		} foreach blufor_sectors;
 	};
 
@@ -23,7 +23,13 @@ private _list = [];
 
 	if (_sector in (A3W_sectors_in_use + active_sectors)) then { _keep_sector = false };
 
-	if (_keep_sector) then { _list pushBack _x };
+	if (_keep_sector) then {
+		_keep_sector = false;
+		{
+			if (_sector_pos distance2D (markerPos _x) <= GRLIB_spawn_max) exitWith { _keep_sector = true };
+		} foreach blufor_sectors;
+		if (_keep_sector) then { _list pushBack _x };
+	};
 } forEach _markers;
 
 _list;
