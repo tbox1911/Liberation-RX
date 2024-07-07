@@ -1,8 +1,6 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_bunker", "_def1", "_def2", "_veh1", "_veh2"];
-
 _setupVars = {
 	_missionType = "STR_ROADBLOCK";
 	_locationsArray = nil;
@@ -11,6 +9,7 @@ _setupVars = {
 };
 
 _setupObjects = {
+	private ["_bunker", "_def1", "_def2", "_veh1", "_veh2"];
 	// find a pos near a road, between opfor sector and blufor
 	_missionPos = [];
 	//private _sectors = opfor_sectors;
@@ -110,6 +109,7 @@ _setupObjects = {
 	_grp = [_missionPos, _nbUnits, "infantry"] call createCustomGroup;
 	{ [_x] joinSilent _aiGroup } forEach (units _grp);
 
+	_vehicles = [_bunker, _def1, _def2, _veh1, _veh2];
 	_missionPicture = "\A3\Static_f_gamma\data\ui\gear_StaticTurret_GMG_CA.paa";
 	_missionHintText = "STR_ROADBLOCK_MESSAGE1";
 	true;
@@ -135,11 +135,6 @@ _waitUntilExec = {
 };
 _waitUntilCondition = nil;
 
-_failedExec = {
-	// Mission failed
-	{ deleteVehicle _x } forEach [_bunker, _def1, _def2, _veh1, _veh2];
-};
-
 _successExec = {
 	// Mission completed
 	private _rwd_ammo = (100 + floor(random 100));
@@ -149,8 +144,6 @@ _successExec = {
 		[_x, _rwd_ammo, _rwd_fuel] call ammo_add_remote_call;
 		[gamelogic, _text] remoteExec ["globalChat", owner _x];
 	} forEach ([_missionPos, GRLIB_capture_size] call F_getNearbyPlayers);
-
-	{ deleteVehicle _x } forEach [_bunker, _def1, _def2];
 
 	_successHintMessage = "STR_ROADBLOCK_MESSAGE2";
 };
