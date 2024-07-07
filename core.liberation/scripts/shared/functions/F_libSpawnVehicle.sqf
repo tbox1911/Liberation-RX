@@ -72,6 +72,7 @@ if (_side != GRLIB_side_civilian) then {
 
 [_vehicle] call F_clearCargo;
 [_vehicle] call F_fixModVehicle;
+[_vehicle] call vehicle_defense;
 
 if (_crewed) then {	[_vehicle, _side] call F_forceCrew };
 

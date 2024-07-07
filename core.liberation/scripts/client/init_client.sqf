@@ -161,6 +161,7 @@ addMissionEventHandler ["Map", {
 [] execVM "scripts\client\actions\man_manager.sqf";
 [] execVM "scripts\client\actions\squad_manager.sqf";
 [] execVM "scripts\client\misc\support_manager.sqf";
+[] execVM "scripts\client\misc\vehicle_fuel_manager.sqf";
 [] execVM "scripts\client\misc\sides_stats_manager.sqf";
 [] execVM "scripts\client\misc\secondary_jip.sqf";
 [] execVM "scripts\client\misc\stop_renegade.sqf";

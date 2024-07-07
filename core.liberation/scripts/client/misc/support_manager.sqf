@@ -27,7 +27,7 @@ if (GRLIB_ACE_enabled) then { _vehicle_support_enabled = false };
 while { true } do {
 	waitUntil {sleep 1; GRLIB_player_spawned};
 
-	_unitList = (units group player) select { lifeState _x != "INCAPACITATED" };
+	_unitList = (units group player) select { local _x && lifeState _x != "INCAPACITATED" };
 	_my_squad = player getVariable ["my_squad", nil];
 	if (!isNil "_my_squad") then { { _unitList pushBack _x } forEach units _my_squad };
 	{_unitList append units _x} foreach hcAllGroups player;
