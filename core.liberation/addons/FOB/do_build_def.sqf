@@ -13,7 +13,7 @@ private _fob_dir = getDir _fob;
 
 private _walls = count (_fob_pos nearObjects ["Wall_F", GRLIB_fob_range]);
 _walls = _walls + count (_fob_pos nearObjects ["HBarrier_base_F", GRLIB_fob_range]);
-if (_walls > 10) exitWith { hint "Cannot start Construction!\nFortification already present here!" };
+if (_walls > 10) exitWith { hint "Cannot start Construction!\nToo many walls/sandbags nearby!" };
 
 createDialog "FOB_Defense";
 waitUntil { dialog };
