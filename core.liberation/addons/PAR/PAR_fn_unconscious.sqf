@@ -30,9 +30,10 @@ if (isPlayer _unit) then {
 	[_unit] call F_deathSound;
 };
 
+sleep 3;
 _unit switchMove "AinjPpneMstpSnonWrflDnon";  // lay down
 _unit playMoveNow "AinjPpneMstpSnonWrflDnon";
-sleep 10;
+sleep 6;
 
 if (!alive _unit) exitWith {};
 waituntil {sleep 0.5; (isTouchingGround (vehicle _unit) || (round (getPos _unit select 2) <= 1))};
