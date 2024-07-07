@@ -88,6 +88,7 @@ F_startsWithMultiple = compileFinal preprocessFileLineNumbers "scripts\shared\fu
 F_UnitAddAmmo = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_UnitAddAmmo.sqf";
 F_UnitNeedAmmo = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_UnitNeedAmmo.sqf";
 F_UpdateSquadInfo = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_UpdateSquadInfo.sqf";
+F_vehicleDefense = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_vehicleDefense.sqf";
 F_VehicleNeedRepair = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_VehicleNeedRepair.sqf";
 F_vehicleUnflip = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_vehicleUnflip.sqf";
 F_vehicleLock = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_vehicleLock.sqf";
