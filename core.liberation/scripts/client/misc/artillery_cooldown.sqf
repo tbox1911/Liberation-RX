@@ -1,3 +1,5 @@
+params ["_unit", "_vehicle"];
+
 if (isNil "GRLIB_artillery_shot") then { GRLIB_artillery_shot = 0 };
 
 // max 10 shot in 30 min 
@@ -9,6 +11,7 @@ GRLIB_artillery_shot = GRLIB_artillery_shot + 1;
 if (GRLIB_artillery_shot >= _max_shot)  then {
 	hint "Artillery Cooldown!\nYou are overusing artillery fire, slow down!";
 	enableEngineArtillery false;
+	if (_unit == gunner _vehicle) then { [_unit, false] spawn F_ejectUnit };
 	waitUntil { sleep 2; GRLIB_artillery_shot < _max_shot };
 	enableEngineArtillery true;
 };
