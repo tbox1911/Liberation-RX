@@ -341,8 +341,8 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 		};
 
 		if ( _owner != "" ) then {
+			_nextbuilding enableSimulationGlobal true;
 			if (_owner == "public") then {
-				_nextbuilding enableSimulationGlobal true;
 				_nextbuilding setVariable ["GRLIB_vehicle_owner", "public", true];
 				if ( _nextclass == huron_typename ) then { GRLIB_vehicle_huron = _nextbuilding };
 			} else {
