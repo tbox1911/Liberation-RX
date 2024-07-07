@@ -1,7 +1,7 @@
 params ["_unit"];
 
 [(_unit getVariable ['PAR_myMedic', objNull]), _unit] call PAR_fn_medicRelease;
-_unit setVariable ['PAR_wounded', false];
+_unit setVariable ['PAR_wounded', false, true];
 
 if (_unit == player) then {
 	titleText ["" ,"BLACK FADED", 100];
