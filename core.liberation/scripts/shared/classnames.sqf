@@ -350,7 +350,8 @@ ai_resupply_sources = [
 	ammo_truck_typename,
 	ammo_sling_typename,
 	Box_Ammo_typename,
-	Box_Support_typename
+	Box_Support_typename,
+	basic_weapon_typename
 ] + ai_resupply_sources_west;
 
 // Everything the AI troups should be able to healing from
