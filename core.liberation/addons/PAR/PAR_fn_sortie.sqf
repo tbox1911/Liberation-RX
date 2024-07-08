@@ -57,11 +57,13 @@ if (_wnded == player) then {
 		[_medic, _wnded, _bonus] remoteExec ["PAR_remote_bounty", 2];
 	};
 } else {
-	_wnded switchMove "amovpknlmstpsraswrfldnon"; //go up
-	_wnded playMoveNow "amovpknlmstpsraswrfldnon";
 	_wnded setSpeedMode (speedMode group player);
 	_wnded doFollow player;	
 };
+
+sleep 3;
+_wnded switchMove "amovpknlmstpsraswrfldnon"; //go up
+_wnded playMoveNow "amovpknlmstpsraswrfldnon";
 
 [_medic, _wnded] call PAR_fn_medicRelease;
 [[_medic, _wnded]] call PAR_fn_fixPos;
