@@ -58,7 +58,7 @@ if ( dojump > 0 ) then {
 		// Vehicle HALO
 		if ([_cost] call F_pay) then {
 			titleText ["", "PLAIN"];
-			sleep 1;
+			sleep 2;
 			for "_i" from 3 to 0 step -1 do {
 				titleText [format ["Airdrop vehicle in %1 seconds", _i], "PLAIN"];
 				sleep 1;
