@@ -11,7 +11,7 @@ private _objects_to_build = [
     [ "CamoNet_OPFOR_open_F", [13.71, -11.54, 0], 270.25 ],
     [ "Land_HBarrierBig_F", [16.94, 5.18, 0], 181.2 ],
     [ opfor_house, [-16.03, -9.69, 0], 269.88 ],
-    [ opfor_transport_truck, [-10.4, 14.9, -0.02], 181.03 ],
+    [ opfor_transport_truck, [-10.4, 14.9, 0], 181.03 ],
     [ "Land_HBarrierBig_F", [-17.6, 5.28, 0], 359.67 ],
     [ opfor_hq, [11.25, 14.59, 0], 89.97 ],
     [ "Land_HBarrierBig_F", [20.42, 1.73, 0], 89.37 ],
@@ -36,9 +36,9 @@ private _objects_to_build = [
 ];
 
 private _objectives_to_build = [
-    [ opfor_fuel_container, [2.64, -13.76, -0.04], 0.35 ],
+    [ opfor_fuel_container, [2.64, -13.76, 0], 0.35 ],
     [ opfor_ammo_container, [-3.69, -14.92, 0], 180.33 ],
-    [ opfor_fuel_container, [2.7, -5.53, -0.04], 358.03 ],
+    [ opfor_fuel_container, [2.7, -5.53, 0], 358.03 ],
     [ opfor_ammo_container, [-3.96, -5.86, 0], 180.38 ]
 ];
 
