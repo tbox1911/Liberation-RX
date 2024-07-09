@@ -6687,14 +6687,7 @@
 
 		<!-- veh_repaint -->
 		<Key ID="STR_PAINT_SHOP">
-			<Original>-- Paint Shop --</Original>
-			<Russian>-- Покрасочная</Russian>
-			<French>-- Choix Peinture --</French>
-			<Japanese>-- ペイントショップ --</Japanese>
-			<Chinesesimp>-- 涂装 --</Chinesesimp>
-			<Chinese>-- 塗裝 --</Chinese>
-			<Portuguese>-- Oficina de pintura --</Portuguese>
-			<Czech>-- Obchod s barvami --</Czech>
+			<Original>-- VEHICLE PAINT and SHOP</Original>
 		</Key>
 		<Key ID="STR_SHOP_PAINT">
 			<Original>Paint</Original>

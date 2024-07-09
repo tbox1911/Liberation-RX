@@ -64,6 +64,7 @@ waitUntil {sleep 1; LRX_arsenal_init_done};
 
 VAM_arsenal_class_names = [];
 VAM_arsenal_cargo_class_names = [
+	Arsenal_typename,
 	repairbox_typename,
 	canister_fuel_typename,
 	"Land_CncBarrierMedium4_F",
@@ -73,7 +74,7 @@ VAM_arsenal_cargo_class_names = [
 // Default source for Shop
 VAM_arsenal_enable_weapons = true;
 VAM_arsenal_enable_magazines = true;
-VAM_arsenal_enable_uniforms = false;
+VAM_arsenal_enable_uniforms = true;
 VAM_arsenal_enable_backpacks = false;
 VAM_arsenal_enable_glasses = false;
 
