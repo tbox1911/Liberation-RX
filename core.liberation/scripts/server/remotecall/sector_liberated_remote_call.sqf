@@ -40,6 +40,8 @@ if ( _liberated_sector in sectors_factory ) then {
 
 if ( _liberated_sector in sectors_tower ) then {
 	_combat_readiness_increase = (2 + (floor (random 4)));
+	private _text = format ["Enemies can no longer call Air Support nearby %1 Sector!", markerText _liberated_sector];
+	[gamelogic, _text] remoteExec ["globalChat", 0];
 };
 
 private _rwd_ammo = (100 + floor(random 100)) * GRLIB_resources_multiplier;
@@ -73,7 +75,8 @@ stats_sectors_liberated = stats_sectors_liberated + 1;
 
 sleep 45;
 
-if ( GRLIB_endgame == 0 ) then {
+private _nearRadioTower = ([markerPos _liberated_sector, GRLIB_side_enemy] call F_getNearestTower != "");
+if ( GRLIB_endgame == 0 && _nearRadioTower ) then {
 	if (
 	   (!( _liberated_sector in sectors_tower )) &&
 	   ((combat_readiness > 70) || (_liberated_sector in sectors_bigtown)) &&
