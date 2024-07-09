@@ -26,7 +26,7 @@ private _squad5 = [];
 private _infsquad5 = "infantry";
 private _max_prisonners = 5;
 private _sector_despawn_tickets = GRLIB_despawn_tickets;
-
+private _nearRadioTower = ([_sector_pos, GRLIB_side_enemy] call F_getNearestTower != "");
 private _active_players = count ([_sector_pos, (GRLIB_sector_size * 2)] call F_getNearbyPlayers);
 diag_log format ["Spawn Defend Sector %1 - player in combat %2 / readiness %3 at %4", _sector, _active_players, combat_readiness, time];
 
@@ -205,7 +205,7 @@ if ( (!(_sector in blufor_sectors)) && (([_sector_pos, GRLIB_sector_size, GRLIB_
 		};
 	};
 
-	if (floor random 100 < combat_readiness) then {
+	if (floor random 100 < combat_readiness && _nearRadioTower) then {
 		private _pilots = allPlayers select { (objectParent _x) isKindOf "Air" && (driver vehicle _x) == _x };
 		if (count _pilots > 0 ) then {
 			[getPosATL (selectRandom _pilots), GRLIB_side_enemy, 3] spawn spawn_air;
@@ -218,28 +218,32 @@ if ( (!(_sector in blufor_sectors)) && (([_sector_pos, GRLIB_sector_size, GRLIB_
 	[_sector, _building_range, round (_ied_count)] spawn ied_manager;
 	[_sector, _building_range, round (_ied_count)] spawn ied_trap_manager;
 
-	[ _sector_pos ] spawn {
-		params ["_pos"];
-		sleep (300 + floor(random 120));
-		if (([_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount) == 0) exitWith {};
-		if ( combat_readiness > 50 ) then { 
-			if (floor random 2 == 0) then {
-				[_pos, true] spawn send_paratroopers;
-			} else {
+	if (_nearRadioTower) then {
+		[ _sector_pos ] spawn {
+			params ["_pos"];
+			sleep (300 + floor(random 120));
+			if (([_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount) == 0) exitWith {};
+			if ( combat_readiness > 50 ) then { 
+				if (floor random 2 == 0) then {
+					[_pos, true] spawn send_paratroopers;
+				} else {
+					[_pos, GRLIB_side_enemy, 2] spawn spawn_air;
+				};			
+			};
+			sleep 100;
+			if (([_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount) == 0) exitWith {};
+			if ( combat_readiness > 70 ) then {
 				[_pos, GRLIB_side_enemy, 2] spawn spawn_air;
-			};			
-		};
-		sleep 100;
-		if (([_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount) == 0) exitWith {};
-		if ( combat_readiness > 70 ) then {
-			[_pos, GRLIB_side_enemy, 2] spawn spawn_air;
-			sleep 20;
-			if (floor random 2 == 0) then {
-				[_pos, true] spawn send_paratroopers;
-			} else {
-				[_pos] spawn spawn_halo_vehicle;
+				sleep 20;
+				if (floor random 2 == 0) then {
+					[_pos, true] spawn send_paratroopers;
+				} else {
+					[_pos] spawn spawn_halo_vehicle;
+				};
 			};
 		};
+	} else {
+		[gamelogic, "Enemies can't call Air support. No radio tower nearby."] remoteExec ["globalChat", 0];
 	};
 
 	private _building_alive = count ((nearestObjects [_sector_pos, ["House"], _local_capture_size]) select { alive _x && !([_x, GRLIB_ignore_colisions] call F_itemIsInClass) });
