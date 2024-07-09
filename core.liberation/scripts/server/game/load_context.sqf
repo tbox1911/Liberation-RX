@@ -35,6 +35,7 @@ if (count _context >= 1) then {
                         _loadout = _x select 2;
                         if (count units _player > (GRLIB_squad_size + GRLIB_squad_size_bonus)) exitWith {};
                         private _unit = _grp createUnit [_class, _pos, [], 10, "NONE"];
+                        _unit allowDamage false;
                         [_unit] joinSilent _grp;
                         clearAllItemsFromBackpack _unit;
                         _unit setUnitLoadout _loadout;

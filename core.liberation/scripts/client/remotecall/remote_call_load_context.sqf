@@ -8,14 +8,13 @@ private _alt = _pos select 2;
 
 {
     [_x] joinSilent (group player);
-    _x allowDamage false;
     while { _x distance2D _pos > 100 } do {
         if (surfaceIsWater _pos) then {
             private _destpos = _pos getPos [3, random 360];
             _destpos set [2, _alt];
             _x setPosASL (ATLtoASL _destpos);
         } else {
-            _x setPosATL (_pos getPos [5, random 360]);
+            _x setPosATL (_pos getPos [4, random 360]);
         };
         sleep 0.5;
     };
@@ -25,9 +24,9 @@ private _alt = _pos select 2;
     _x enableGunLights "Auto";
     _x switchMove "AmovPercMwlkSrasWrflDf";
     _x playMoveNow "AmovPercMwlkSrasWrflDf";
+    _x spawn { sleep 10; _this allowDamage true };
     gamelogic globalChat format ["Adds %1 (%2) to your squad.", name _x, rank _x];
     sleep 0.3;
-    _x allowDamage true;
 } foreach (units _grp);
 
 sleep 2;
