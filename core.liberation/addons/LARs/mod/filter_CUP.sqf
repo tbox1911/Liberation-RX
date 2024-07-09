@@ -25,10 +25,9 @@ if (GRLIB_mod_west == "CWR3_SOV") then { _exclude = ["CUP_B"] };
 (
 	"
 	(tolower (getText (_x >> 'DLC')) == 'cup_weapons' || tolower (getText (_x >> 'DLC')) == 'cup_units') &&
-	!([(configName _x), _exclude] call F_startsWithMultiple) &&
-	([(configName _x)] call is_allowed_item) &&
-	( (configName _x) find '_Bag' == -1 ) &&
-	((configName _x) iskindof 'Bag_Base')
+	((configName _x) iskindof 'Bag_Base') &&
+	((configName _x) find '_Bag' == -1) &&
+	([(configName _x)] call is_allowed_item)
 	"
 	configClasses (configfile >> "CfgVehicles" )
 ) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
@@ -37,7 +36,6 @@ if (GRLIB_mod_west == "CWR3_SOV") then { _exclude = ["CUP_B"] };
 (
 	"
 	(tolower (getText (_x >> 'DLC')) == 'cup_weapons' || tolower (getText (_x >> 'DLC')) == 'cup_units') &&
-	!([(configName _x), _exclude] call F_startsWithMultiple) &&
 	([(configName _x)] call is_allowed_item)
 	"
 	configClasses (configfile >> "CfgGlasses" )
