@@ -119,22 +119,6 @@ if (VAM_arsenal_enable_uniforms) then {
 	_arsenal_enable_uniforms sort true;
 };
 
-// Magazines
-private _arsenal_enable_magazines = [];
-if (VAM_arsenal_enable_magazines) then {
-	(
-		"
-		getNumber (_x >> 'scope') > 1 &&
-		(getNumber (_x >> 'type') == 256 || (getText (_x >> 'type') find '256') >= 0) &&
-		tolower (configName _x) find '_tracer' < 0 &&
-		([(configName _x)] call is_allowed_item)
-		"
-		configClasses (configfile >> "CfgMagazines")
-	) apply { _arsenal_enable_magazines pushback (configName _x) };
-	_arsenal_enable_magazines sort true;
-};
-sleep 0.5;
-
 // Others object (backpack, etc..)
 private _arsenal_enable_backpacks = [];
 if (VAM_arsenal_enable_backpacks) then {
@@ -160,8 +144,24 @@ if (VAM_arsenal_enable_glasses) then {
 	) apply { _arsenal_enable_glasses pushback (configName _x) };
 	_arsenal_enable_glasses sort true;
 };
+sleep 0.5;
+
+// Magazines
+private _arsenal_enable_magazines = [];
+if (VAM_arsenal_enable_magazines) then {
+	(
+		"
+		getNumber (_x >> 'scope') > 1 &&
+		(getNumber (_x >> 'type') == 256 || (getText (_x >> 'type') find '256') >= 0) &&
+		tolower (configName _x) find '_tracer' < 0 &&
+		([(configName _x)] call is_allowed_item)
+		"
+		configClasses (configfile >> "CfgMagazines")
+	) apply { _arsenal_enable_magazines pushback (configName _x) };
+	_arsenal_enable_magazines sort true;
+};
 
 waitUntil {sleep 1; !isNil "whitelisted_from_arsenal"};
-VAM_arsenal_class_names = (_arsenal_enable_weapons + _arsenal_enable_magazines + _arsenal_enable_uniforms + _arsenal_enable_backpacks + _arsenal_enable_glasses + VAM_arsenal_cargo_class_names) - whitelisted_from_arsenal;
+VAM_arsenal_class_names = (VAM_arsenal_cargo_class_names +_arsenal_enable_weapons + _arsenal_enable_uniforms + _arsenal_enable_backpacks + _arsenal_enable_glasses + _arsenal_enable_magazines) - whitelisted_from_arsenal;
 VAM_arsenal_class_names = VAM_arsenal_class_names arrayIntersect VAM_arsenal_class_names;
 VAM_arsenal_class_names = whitelisted_from_arsenal + VAM_arsenal_class_names;
