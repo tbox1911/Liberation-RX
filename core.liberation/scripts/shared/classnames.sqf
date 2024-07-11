@@ -166,7 +166,7 @@ support_vehicles = support_vehicles + [
 	[medicalbox_typename,5,25,0,0],
 	[mobile_respawn,10,50,0,0],
 	[canister_fuel_typename,0,25,0,0],
-	[repairbox_typename,0,50,0,GRLIB_perm_log],
+	[repairbox_typename,0,50,0,0],
 	[playerbox_typename,0,0,0,20],
 	[Respawn_truck_typename,10,750,15,GRLIB_perm_log],
 	[huron_typename,10,1550,35,GRLIB_perm_tank],
