@@ -17,6 +17,7 @@ if ( !( _sector in GRLIB_military_sectors_already_activated )) then {
 			diag_log format ["--- LRX Error: No place to build %1 at sector %2", opfor_transport_truck, _sector];
 		} else {
 			[_vehicle, "lock", "server"] call F_vehicleLock;
+			_vehicle enableSimulationGlobal true;
 		};
 		for "_i" from 1 to _crates_amount do {
 			_newbox = [ammobox_o_typename, markerpos _sector, true] call boxSetup;
