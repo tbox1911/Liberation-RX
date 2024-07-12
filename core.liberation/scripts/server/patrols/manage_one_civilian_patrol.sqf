@@ -22,7 +22,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 			_usable_sectors pushback _x;
 		};
 		sleep 0.1;
-	} foreach (sectors_bigtown + sectors_capture + sectors_factory - active_sectors);
+	} foreach (sectors_bigtown + sectors_capture + sectors_factory + sectors_opfor - active_sectors);
 
 	if ( count _usable_sectors > 0 ) then {
 		_sectorpos = markerPos (selectRandom _usable_sectors);
