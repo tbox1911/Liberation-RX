@@ -7018,6 +7018,9 @@
 		<Key ID="STR_ADMIN_ZEUSMODE">
 			<Original>Zeus Mode</Original>
 		</Key>
+		<Key ID="STR_ADMIN_SAVE">
+			<Original>Save Game</Original>
+		</Key>		
 		<Key ID="STR_ADMIN_UNLOCK">
 			<Original>Unlock Vehicle</Original>
 			<Russian>Открыть машину</Russian>
@@ -7034,20 +7037,19 @@
 			<Original>MOWER</Original>
 		</Key>
 		<Key ID="STR_ADMIN_EXPORT">
-			<Original>Export Game</Original>
-			<Russian>Сохранить Игру</Russian>
+			<Original>Export</Original>
+			<Russian>Сохранить</Russian>
 			<Chinesesimp>导入游戏存档</Chinesesimp>
 			<Chinese>导入游戏存档</Chinese>
-			<Portuguese>Exportar jogo</Portuguese>
-			<Czech>Export Game</Czech>
+			<Portuguese>Exportar</Portuguese>
+			<Czech>Export</Czech>
 		</Key>
 		<Key ID="STR_ADMIN_IMPORT">
-			<Original>Import Game</Original>
-			<Russian>Загрузить Игру</Russian>
+			<Original>Import</Original>
+			<Russian>Загрузить</Russian>
 			<Chinesesimp>导出游戏存档</Chinesesimp>
 			<Chinese>导出游戏存档</Chinese>
-			<Portuguese>Importar jogo</Portuguese>
-			<Czech>Import Game</Czech>
+			<Portuguese>Importar</Portuguese>
 		</Key>
 		<Key ID="STR_ADMIN_GODMODE">
 			<Original>God Mode</Original>

@@ -23,6 +23,7 @@ do_kick = 0;
 do_ban = 0;
 do_zeus = 0;
 do_capture = 0;
+do_save = 0;
 
 private _msg = "";
 private _getBannedUID = {
@@ -330,21 +331,30 @@ while { alive player && dialog } do {
 
 	if (do_capture == 1) then {
 		do_capture = 0;
-		if (isServer) then {
-			blufor_sectors pushBackUnique _sector;
-		} else {
-			[_sector, {
-				blufor_sectors pushBackUnique _this;
-				publicVariable "blufor_sectors";
-				opfor_sectors = (sectors_allSectors - blufor_sectors);
-				publicVariable "opfor_sectors";
-			}] remoteExec ["bis_fnc_call", 2];
-		};
+		[_sector, {
+			blufor_sectors pushBackUnique _this;
+			publicVariable "blufor_sectors";
+			opfor_sectors = (sectors_allSectors - blufor_sectors);
+			publicVariable "opfor_sectors";
+		}] remoteExec ["bis_fnc_call", 2];
+
 		_msg = format ["Sector %1 Forcefully Captured!", markerText _sector];
 		hintSilent _msg;
 		systemchat _msg;
 		closeDialog 0;
 	};
-	sleep 0.5;
+	if (do_save == 1) then {
+		do_save = 0;
+		[{
+			{ [_x, getPlayerUID _x] call save_context } foreach (AllPlayers - (entities "HeadlessClient_F"));
+			[true] call save_game_mp;
+		}] remoteExec ["bis_fnc_call", 2];
+
+		_msg = format ["Game Forcefully Saved in %1" ,GRLIB_save_key];
+		hintSilent _msg;
+		systemchat _msg;
+		closeDialog 0;	
+		sleep 0.5;
+	};
 };
 closeDialog 0;

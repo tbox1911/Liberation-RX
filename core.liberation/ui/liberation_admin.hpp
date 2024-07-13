@@ -34,6 +34,7 @@ class liberation_admin {
     "Output_TextField",
     "DeleteButton",
     "MowerButton",
+    "SaveButton",
 	  "Item01Button",
 	  "Item02Button",
     "Item03Button",
@@ -302,18 +303,27 @@ class liberation_admin {
     text = $STR_ADMIN_EXPORT;
     x = 0.3275 * safezoneW + safezoneX;
     y = 0.572 * safezoneH + safezoneY;
-    w = 0.0875 * safezoneW;
+    w = 0.042 * safezoneW;
     h = 0.04 * safezoneH;
   };
   class ImportButton: StdButton {
     idc = 1614;
     action = "do_import=1";
     text = $STR_ADMIN_IMPORT;
+    x = 0.3725 * safezoneW + safezoneX;
+    y = 0.572 * safezoneH + safezoneY;
+    w = 0.042 * safezoneW;
+    h = 0.04 * safezoneH;
+  };
+  class SaveButton: StdButton {
+    idc = 1628;
+    action = "do_save=1";
+    text = $STR_ADMIN_SAVE;
     x = 0.3275 * safezoneW + safezoneX;
     y = 0.624 * safezoneH + safezoneY;
     w = 0.0875 * safezoneW;
     h = 0.04 * safezoneH;
-  };
+  };  
   //----------------
 	class Input_OuterBG : OuterBG {
 		idc = 521;
