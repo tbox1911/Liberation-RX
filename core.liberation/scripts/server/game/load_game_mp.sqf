@@ -267,7 +267,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 		if ( _nextclass == playerbox_typename ) then {
 			_nextbuilding setMaxLoad playerbox_cargospace;
 			_nextbuilding setVehicleLock "DEFAULT";
-			[_nextbuilding, _x select 5] call F_setCargo;
+			[_nextbuilding, (_x select 5)] call F_setCargo;
 		};
 
 		if ( _nextclass == Box_Ammo_typename ) then {
@@ -284,6 +284,10 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 
 		if ( _nextclass in vehicle_rearm_sources ) then {
 			_nextbuilding setAmmoCargo 0;
+		};
+
+		if ( _nextclass in [storage_medium_typename,storage_large_typename] ) then {
+			{[_nextbuilding, _x] call attach_object_direct} forEach (_x select 5);
 		};
 
 		if ( _owner != "" ) then {

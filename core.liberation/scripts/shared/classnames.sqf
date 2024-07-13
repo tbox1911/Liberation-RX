@@ -173,6 +173,8 @@ support_vehicles = support_vehicles + [
 	[medic_heal_typename,0,100,0,GRLIB_perm_log],
 	["Land_RepairDepot_01_civ_F",0,300,0,GRLIB_perm_log],
 	["Land_fs_feed_F",0,200,50,GRLIB_perm_tank],
+	[storage_medium_typename,0,0,50,GRLIB_perm_inf],
+	[storage_large_typename,0,0,100,GRLIB_perm_log],	
 	[repair_sling_typename,0,200,0,GRLIB_perm_log],
 	[fuel_sling_typename,0,150,60,GRLIB_perm_log],
 	[ammo_sling_typename,0,400,0,GRLIB_perm_log],
@@ -395,50 +397,14 @@ vehicle_refuel_sources = [
 box_transport_config = [];
 box_transport_offset = [];
 
+[] call compileFinal preprocessFileLineNumbers "scripts\shared\classnames_transport.sqf";
 _path = format ["mod_template\%1\classnames_transport.sqf", GRLIB_mod_west];
 [_path] call F_getTemplateFile;
 _path = format ["mod_template\%1\classnames_transport.sqf", GRLIB_mod_east];
 [_path] call F_getTemplateFile;
 
-// Configuration for ammo boxes transport
-// First entry: classname
-// Second entry: how far behind the vehicle the boxes should be unloaded
-// Following entries: attachTo position for each box, the number of boxes that can be loaded is derived from the number of entries
-box_transport_config = [
-	[ "C_Offroad_01_F", -5, [0, -1.55, 0.2] ],
-	[ "C_IDAP_Offroad_01_F", -5, [0, -1.55, 0.2] ],
-	[ "C_Van_01_box_F", -5.3, [0, -1.05, 0.2], [0, -2.6, 0.2] ],
-	[ "C_Van_01_transport_F", -5.3, [0, -1.05, 0.2], [0, -2.6, 0.2] ],
-	[ "C_Van_02_transport_F", -5, [0,-1.75,0]],
-	[ "C_Van_02_vehicle_F", -5, [0,0.5,0], [0,-1.75,0]],
-  	[ "C_IDAP_Van_02_vehicle_F", -5, [0,0.5,0], [0,-1.75,0]],
-	[ "C_IDAP_Van_02_transport_F", -5, [0,-1.75,0]],
-	[ "C_Truck_02_transport_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
-	[ "C_Truck_02_covered_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
-	[ "C_IDAP_Truck_02_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
-	[ "C_IDAP_Truck_02_transport_F", -5.5, [0, 0.3, 0], [0, -1.25, 0], [0, -2.8, 0] ],
-	[ "C_IDAP_Heli_Transport_02_F", -6.5, [0, 4.2, -1.45], [0, 2.5, -1.45], [0, 0.8, -1.45], [0, -0.9, -1.45] ]
-] + box_transport_config;
-
 transport_vehicles = [];
 {transport_vehicles pushBack ( _x select 0 )} foreach (box_transport_config);
-
-// Additional offset per object
-// objects in this list can be loaded on vehicle position defined above
-box_transport_offset = [
-	["B_supplyCrate_F", [0, 0, 0] ],
-	["Box_NATO_Wps_F", [0, 0, -0.6] ],
-	["Box_NATO_Ammo_F", [0, 0, -0.6] ],
-	["Box_NATO_Support_F", [0, 0, -0.6] ],
-	["Box_NATO_WpsSpecial_F", [0, 0, -0.6] ],
-	["Box_NATO_WpsLaunch_F", [0, 0, -0.6] ],
-	["Box_NATO_AmmoVeh_F", [0, 0, 0] ],
-	["Box_East_AmmoVeh_F", [0, 0, 0] ],
-	["Box_IND_AmmoVeh_F", [0, 0, 0] ],
-	["Land_BarrelWater_F", [0, 0, -0.4] ],
-	["Land_MetalBarrel_F", [0, 0, -0.4] ],
-	["Land_FoodSacks_01_large_brown_idap_F", [0, 0, -0.4] ]
-] + box_transport_offset;
 
 box_transport_loadable = [];
 {box_transport_loadable pushBack ( _x select 0 )} foreach (box_transport_offset);
@@ -479,7 +445,9 @@ GRLIB_vehicle_blacklist = [
 	foodbarrel_typename,
 	medicalbox_typename,
 	land_cutter_typename,
-	basic_weapon_typename
+	basic_weapon_typename,
+	storage_medium_typename,
+	storage_large_typename
 ] + GRLIB_vehicle_blacklist_west;
 
 // Recycleable objects

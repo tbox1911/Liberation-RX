@@ -63,11 +63,6 @@ while { true } do {
 			_vehicle addAction ["<t color='#00FFFF'>" + localize "STR_ARSENAL_PICKUP" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\do_loot_veh.sqf","",-502,false,true,"","[_target, _this] call GRLIB_checkAction_Pickup_Weapons", GRLIB_ActionDist_5];
 			_vehicle addAction ["<t color='#00FFFF'>" + localize "STR_INVENTORY_UNPACK" + "</t> <img size='1' image='res\ui_arsenal.paa'/>","scripts\client\actions\unpack_inventory.sqf","",-503,false,true,"","[_target, _this] call GRLIB_checkAction_UnpackInventory", GRLIB_ActionDist_5];
 		};
-
-		if (typeOf _vehicle in transport_vehicles) then {
-			_vehicle addAction ["<t color='#FFFF00'>" + localize "STR_ACTION_UNLOAD_BOX" + "</t>","scripts\client\ammoboxes\do_unload_truck.sqf","",-500,false,true,"","[_target, _this] call GRLIB_checkAction_Unload", GRLIB_ActionDist_10];
-		};
-
 		_vehicle setVariable ["GRLIB_vehicle_action", true];
 	} forEach _nearveh;
 
@@ -79,14 +74,6 @@ while { true } do {
 		_vehicle addAction ["<t color='#FFFF00'>" + localize "STR_SALVAGE" + "</t> <img size='1' image='res\ui_recycle.paa'/>","scripts\client\actions\do_wreck.sqf","",-900,true,true,"","[_target, _this] call GRLIB_checkAction_Wreck", (GRLIB_ActionDist_10 + 5)];
 		_vehicle setVariable ["GRLIB_salvage_action", true];
 	} forEach _nearwreck + _nearruins;
-
-	// Box
-	_nearboxes = (player nearEntities [box_transport_loadable, _searchradius]) select { isNil {_x getVariable "GRLIB_boxes_action"} };
-	{
-		_vehicle = _x;
-		_vehicle addAction ["<t color='#FFFF00'>" + localize "STR_ACTION_LOAD_BOX" + "</t>","scripts\client\ammoboxes\do_load_box.sqf","",-501,true,true,"","[_target, _this] call GRLIB_checkAction_Box", GRLIB_ActionDist_5];
-		_vehicle setVariable ["GRLIB_boxes_action", true];
-	} forEach _nearboxes;
 
 	// Dead Men
 	_neardead = allDeadMen select {!([_x, "LHD", GRLIB_sector_size, false] call F_check_near) && (_x distance2D player < _searchradius) && isNil {_x getVariable "GRLIB_dead_action"}};

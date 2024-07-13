@@ -110,7 +110,6 @@ vehicle_fuel = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehic
 fetch_permission = compileFinal preprocessFileLineNumbers "scripts\client\misc\fetch_permission.sqf";
 is_menuok = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_menuok.sqf";
 is_menuok_veh = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_menuok_veh.sqf";
-is_neartransport = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_neartransport.sqf";
 is_allowed_item = compileFinal preprocessFileLineNumbers "scripts\client\misc\is_allowed_item.sqf";
 get_player_name = compileFinal preprocessFileLineNumbers "scripts\client\misc\get_player_name.sqf";
 save_loadout_cargo = compileFinal preprocessFileLineNumbers "scripts\client\misc\save_loadout_cargo.sqf";
@@ -152,6 +151,7 @@ addMissionEventHandler ["Map", {
 [] execVM "scripts\client\ui\ui_manager.sqf";
 [] execVM "scripts\client\build\do_build.sqf";
 [] execVM "scripts\client\build\build_overlay.sqf";
+[] execVM "scripts\client\ammoboxes\box_manager.sqf";
 [] execVM "scripts\client\actions\action_manager.sqf";
 [] execVM "scripts\client\actions\action_manager_veh.sqf";
 [] execVM "scripts\client\actions\recycle_manager.sqf";

@@ -23,11 +23,6 @@ GRLIB_checkAction_Eject = {
 	(GRLIB_player_is_menuok && alive _target && !([_target, uavs] call F_itemIsInClass) && count (crew _target) > 0 && [_unit, _target] call is_owner)
 };
 
-GRLIB_checkAction_Unload = {
-	params ["_target", "_unit"];
-	(GRLIB_player_is_menuok && alive _target && ([_unit, _target] call is_owner || [_target] call is_public) && locked _target < 2 && isNull (_target getVariable ['R3F_LOG_remorque', objNull]) && count (_target getVariable ['GRLIB_ammo_truck_load', []]) > 0)
-};
-
 GRLIB_checkAction_Flip = {
 	params ["_target", "_unit"];
 	(GRLIB_player_is_menuok && alive _target && !([_target, uavs] call F_itemIsInClass) && side group _target != GRLIB_side_enemy && ((vectorUp _target) select 2 < 0.60) && locked _target < 2)
@@ -61,11 +56,6 @@ GRLIB_checkAction_Halo = {
 GRLIB_checkAction_Wreck = {
 	params ["_target", "_unit"];
 	(GRLIB_player_is_menuok && !(_target getVariable ['wreck_in_use', false]) && ({alive _x} count (crew _target) == 0) && !(player getVariable ['salvage_wreck', false]))
-};
-
-GRLIB_checkAction_Box = {
-	params ["_target", "_unit"];
-	(GRLIB_player_is_menuok && alive _target && [] call is_neartransport && [_unit, _target] call is_owner && !(_target getVariable ['R3F_LOG_disabled', false]))
 };
 
 GRLIB_checkAction_SendArsenal = {

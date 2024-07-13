@@ -77,5 +77,11 @@ if ( _class == basic_weapon_typename ) then {
 if ( _class == medic_heal_typename ) then {
 	_text = "Medical Support";
 };
+if ( _class == storage_medium_typename ) then {
+	_text = "Medium Storage";
+};
+if ( _class == storage_large_typename ) then {
+	_text = "Large Storage";
+};
 
 _text;

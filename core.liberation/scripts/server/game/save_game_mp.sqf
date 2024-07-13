@@ -100,9 +100,18 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
 
 				if (_owner in _keep_score_id) then {
 					if (_nextclass in GRLIB_vehicles_light) then {
-						if ( _nextclass == playerbox_typename ) then {
+						private _default = true;
+						if (_nextclass == playerbox_typename) then {
 							buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner, [_x, true] call F_getCargo ];
-						} else {
+							_default = false;
+						};
+						if (_nextclass in [storage_medium_typename,storage_large_typename]) then {
+							private	_lst_grl = [];
+							{_lst_grl pushback (typeOf _x)} forEach (_x getVariable ["GRLIB_ammo_truck_load", []]);
+							buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner, _lst_grl ];
+							_default = false;
+						};
+						if (_default) then {
 							buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner ];
 						};
 					} else {
