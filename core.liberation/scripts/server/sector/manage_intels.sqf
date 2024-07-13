@@ -16,6 +16,8 @@ private _compatible_classnames = [
 	"Land_u_House_Small_01_V1_F",
 	"Land_u_House_Small_02_V1_F",
 	"Land_i_Stone_HouseSmall_V3_F",
+    "Land_Medevac_house_V1_F",
+    "Land_Medevac_HQ_V1_F",
 	"Land_MilOffices_V1_F",
 	"Land_Research_HQ_F",
 	"Land_Research_house_V1_F"
