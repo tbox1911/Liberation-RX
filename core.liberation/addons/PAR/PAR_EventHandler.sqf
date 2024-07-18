@@ -30,11 +30,9 @@ _unit addEventHandler ["InventoryOpened", {
 	_ret = false;
 	playsound "ZoomIn";
 	if (!alive _container) exitWith { _ret };
-	if (GRLIB_permission_vehicles) then {
-		if (!([_unit, _container] call is_owner) || locked _container > 1) then {
-			closeDialog 106;
-			_ret = true;
-		};
+	if (!([_unit, _container] call is_owner) || locked _container > 1) then {
+		closeDialog 106;
+		_ret = true;
 	};
 	_ret;
 }];
@@ -81,7 +79,7 @@ _unit addEventHandler ["FiredMan",	{
 	// Limit artillery fire
 	if (isNumber (configFile >> "CfgVehicles" >> typeOf _vehicle >> "artilleryScanner")) then {
 		private _res = getNumber (configFile >> "CfgVehicles" >> typeOf _vehicle >> "artilleryScanner");
-		if (_res == 1) then { [_unit, _vehicle] spawn artillery_cooldown };	
+		if (_res == 1) then { [_unit, _vehicle] spawn artillery_cooldown };
 	};
 }];
 
@@ -162,7 +160,7 @@ if (_unit == player) then {
 	};
 } else {
 	// AI killed EH
-	_unit addEventHandler ["Killed", { _this spawn PAR_fn_death }];	
+	_unit addEventHandler ["Killed", { _this spawn PAR_fn_death }];
 
 	// AI Handle Damage EH
 	_unit addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];

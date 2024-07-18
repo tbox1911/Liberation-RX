@@ -4,6 +4,7 @@ if (side group _vehicle == GRLIB_side_enemy)  exitWith { false };
 
 private _owner_id = _vehicle getVariable ["GRLIB_vehicle_owner", ""];
 if (_owner_id in ["server", "public"]) exitWith { false };
+if (!GRLIB_permission_vehicles) exitWith { true };
 
 private _unit_id = getPlayerUID (leader _unit);
 private _list_owner = ["", _unit_id];

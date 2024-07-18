@@ -47,16 +47,14 @@ if (!(_role == "cargo" || _vehicle isKindOf "Steerable_Parachute_F" || typeOf _v
 	};
 
 	if (!_doeject) then {
-		if (GRLIB_permission_vehicles) then {
-			private _owner = [_unit1, _vehicle] call is_owner;
-			private _public = [_vehicle] call is_public;
-			if (!_owner && !_public) then {	
-				_msg = localize "STR_PERMISSION_NO_OWN";
-				if (isPlayer _unit1) then {
-					playSound3D ["A3\Sounds_F\sfx\alarmcar.wss", _vehicle, false, getPosASL _vehicle, 1, 1, 300];
-				};
-				_doeject = true;
+		private _owner = [_unit1, _vehicle] call is_owner;
+		private _public = [_vehicle] call is_public;
+		if (!_owner && !_public) then {
+			_msg = localize "STR_PERMISSION_NO_OWN";
+			if (isPlayer _unit1) then {
+				playSound3D ["A3\Sounds_F\sfx\alarmcar.wss", _vehicle, false, getPosASL _vehicle, 1, 1, 300];
 			};
+			_doeject = true;
 		};
 	};
 
@@ -82,7 +80,7 @@ if (_doeject) then {
 } else {
 	[_vehicle] call F_vehicleDefense;
 	_vehicle setVariable ["GRLIB_counter_TTL", nil, true];
-	_vehicle setVariable ["GRLIB_last_killer", nil, true];	
+	_vehicle setVariable ["GRLIB_last_killer", nil, true];
 };
 
 _doeject;
