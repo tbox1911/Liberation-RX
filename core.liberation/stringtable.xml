@@ -344,6 +344,10 @@
 			<Portuguese>-- DESCARREGAR</Portuguese>
 			<Czech>-- VYLOŽIT</Czech>
 		</Key>
+		<Key ID="STR_ACTION_UNLOAD_ONE_BOX">
+			<Original>-- UNLOAD LAST ONE</Original>
+			<French>-- DECHARGER LE DERNIER</French>
+		</Key>
 		<Key ID="STR_BOX_LOADED">
 			<Original>%1 successfully loaded on the transport vehicle.</Original>
 			<French>%1 a été chargée dans le véhicule de transport.</French>
@@ -379,6 +383,10 @@
 			<Japanese>付近に弾薬箱を積み込める車両がありません。</Japanese>
 			<Portuguese>Não há nenhum veículo próximo capaz de transportar a caixa das munições.</Portuguese>
 			<Czech>V blízkosti není žádné vozidlo, které by dokázalo převézt bednu s municí.</Czech>
+		</Key>
+		<Key ID="STR_BOX_CANTUNLOAD">
+			<Original>Unable to unload, the location is not free.</Original>
+			<French>Impossible de décharger, l'emplacement n'est pas libre.</French>
 		</Key>
 		<Key ID="STR_FOB_ACTION">
 			<Original>-- DEPLOY FOB</Original>
@@ -7020,7 +7028,7 @@
 		</Key>
 		<Key ID="STR_ADMIN_SAVE">
 			<Original>Save Game</Original>
-		</Key>		
+		</Key>
 		<Key ID="STR_ADMIN_UNLOCK">
 			<Original>Unlock Vehicle</Original>
 			<Russian>Открыть машину</Russian>
