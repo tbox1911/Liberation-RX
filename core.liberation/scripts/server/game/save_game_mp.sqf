@@ -122,7 +122,7 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
 						private _lst_a3 = [];
 						private	_lst_r3f = [_x] call save_object_direct;
 						private	_lst_grl = [];
-						{_lst_grl pushback (typeOf _x)} forEach (_x getVariable ["GRLIB_ammo_truck_load", []]);
+						{ if !(isNull _x) then { _lst_grl pushback (typeOf _x) } } forEach (_x getVariable ["GRLIB_ammo_truck_load", []]);
 						buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner, _color, _color_name, _lst_a3, _lst_r3f, _lst_grl, _compo];
 					};
 				};

@@ -498,6 +498,11 @@ while { true } do {
 				_allow_damage = false;
 			};
 
+			// Storage
+			if (_classname in [storage_medium_typename,storage_large_typename]) then {
+				_allow_damage = false;
+			};
+
 			sleep 0.3;
 			if (_allow_damage) then { _vehicle allowDamage true };
 			_vehicle setDamage 0;
