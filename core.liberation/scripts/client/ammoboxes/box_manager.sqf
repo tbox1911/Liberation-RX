@@ -21,7 +21,7 @@ while { true } do {
     _neartransport = (nearestObjects [player, transport_vehicles, _searchradius]) select {
         alive _x && speed vehicle _x < 5 &&
         ((getpos _x) select 2) < 5 &&
-        ([player, _x] call is_owner || [_x] call is_public) &&
+        ([player, _x] call is_owner || [_x] call is_public || typeOf _x in [storage_medium_typename,storage_large_typename]) &&
         !(_x getVariable ['R3F_LOG_disabled', false]) &&
         isNil {_x getVariable "GRLIB_vehicle_transport"}
     };

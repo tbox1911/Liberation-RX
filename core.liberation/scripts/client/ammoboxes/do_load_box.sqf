@@ -3,7 +3,7 @@ params [ "_ammobox" ];
 private _neartransport = (nearestObjects [player, transport_vehicles, 20]) select {
 	alive _x && speed vehicle _x < 5 &&
 	((getpos _x) select 2) < 5 &&
-	([player, _x] call is_owner || [_x] call is_public) &&
+	([player, _x] call is_owner || [_x] call is_public || typeOf _x in [storage_medium_typename,storage_large_typename]) &&
 	!(_x getVariable ['R3F_LOG_disabled', false])
 };
 

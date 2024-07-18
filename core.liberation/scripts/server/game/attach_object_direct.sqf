@@ -41,6 +41,11 @@ if ( count _truck_load < _maxload ) then {
 		_object setVariable ["GRLIB_vehicle_owner", _truck_owner, true];
 	};
 
+	// Storage
+	if (typeOf _truck in [storage_medium_typename,storage_large_typename]) then {
+		_object setVariable ["GRLIB_vehicle_owner", "", true];
+	};
+
 	// Clear Cargo
 	if (!(_object_class in GRLIB_Ammobox_keep)) then {
 		[_object] call F_clearCargo;
