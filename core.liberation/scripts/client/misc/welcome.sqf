@@ -2,6 +2,7 @@
  Say hello, and set Rank/Insigna
 */
 waitUntil {sleep 1; GRLIB_player_spawned};
+waitUntil {sleep 1; (player getVariable ["GRLIB_Rank", "init"] != "init")};
 
 private _score = [player] call F_getScore;
 private _rank = player getVariable ["GRLIB_Rank", "Private"];

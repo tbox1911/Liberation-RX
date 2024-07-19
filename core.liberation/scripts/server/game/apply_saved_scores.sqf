@@ -32,12 +32,8 @@ while { true } do {
 					_nextplayer setVariable ["GREUH_reput_count", 0, true];
 				};
 
-				// set player rank
-				_score = _nextplayer getVariable ["GREUH_score_count",0];
-				_rank = [_score] call get_rank;
-				_nextplayer setVariable ["GRLIB_Rank", _rank, true];
-				[] remoteExec ["set_rank", owner _nextplayer];
-
+				_nextplayer setVariable ["GRLIB_Rank", "init", true];
+				_nextplayer setVariable ["GREUH_score_last", 0, true];
 				_nextplayer setVariable ["GRLIB_score_set", 1, true];
 			};
 
