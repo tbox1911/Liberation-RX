@@ -37,3 +37,4 @@ private _alt = _pos select 2;
 
 sleep 2;
 player setVariable ["GRLIB_squad_context_loaded", true, true];
+hintSilent "";
