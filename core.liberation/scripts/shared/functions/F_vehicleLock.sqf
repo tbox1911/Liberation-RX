@@ -13,6 +13,7 @@ switch (_cmd) do {
 		_vehicle setVariable ["GRLIB_counter_TTL", nil, true];
 		_vehicle setVariable ["GRLIB_last_killer", nil, true];
 		_vehicle engineOn false;
+		if (hasInterface) then { sleep 2 };
 		_vehicle enableSimulationGlobal false;
 	 };
 	case "unlock" : {
