@@ -30,7 +30,7 @@ private _alt = _pos select 2;
         params ["_unit"];
         gamelogic globalChat format ["Adds %1 (%2) to your squad.", name _unit, rank _unit];
         sleep 3;
-        _unit allowDamage true;
+        [_unit, true] remoteExec ["allowDamage", 0];
     };
     sleep 0.3;
 } foreach (units _grp);
