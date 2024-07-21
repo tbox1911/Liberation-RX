@@ -29,7 +29,7 @@ infantry_units_west = [
 	["B_T_Medic_F",1,20,0,0],
 	["B_T_Engineer_F",1,20,0,0],
 	["B_T_Soldier_GL_F",1,30,0,GRLIB_perm_inf],
-	["B_T_soldier_M_F",1,30,0,GRLIB_perm_inf],
+	["B_T_soldier_AR_F",1,30,0,GRLIB_perm_inf],
 	["B_T_Soldier_LAT_F",1,30,0,0],
 	["B_T_soldier_M_F",1,30,0,GRLIB_perm_inf],
 	["B_T_Support_GMG_F",1,30,0,GRLIB_perm_inf],
