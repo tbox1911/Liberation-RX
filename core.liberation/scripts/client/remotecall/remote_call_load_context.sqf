@@ -1,11 +1,8 @@
 if (isDedicated || (!hasInterface && !isServer)) exitWith {};
 params ["_grp"];
 
-waitUNtil { 
-    hintSilent "Your squad is coming\nPlease wait...";
-    sleep 1; 
-    (local _grp)
-};
+hintSilent "Your squad is coming\nPlease wait...";
+waitUNtil { sleep 0.1; (local _grp) };
 
 { _x allowDamage false } foreach (units _grp);
 private _pos = getPosATL player;
