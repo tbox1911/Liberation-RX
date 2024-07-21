@@ -1,9 +1,3 @@
-private ["_marker","_nextvehicle","_nextvehicle_owner","_nextvehicle_disabled","_nextmarker"];
-private ["_marker_color","_marker_type","_marker_show"];
-private _veh_list = [];
-private _vehmarkers = [];
-private _vehmarkers_bak = [];
-
 waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 waitUntil {sleep 1; !isNil "GRLIB_mobile_respawn"};
 
@@ -25,8 +19,12 @@ private _no_marker_classnames = [
 ] + GRLIB_force_cleanup_classnames + GRLIB_ide_traps + GRLIB_intel_items + all_buildings_classnames;
 
 if (GRLIB_allow_redeploy > 0) then {
-	_no_marker_classnames = _no_marker_classnames + respawn_vehicles;
+	_no_marker_classnames append respawn_vehicles;
 };
+
+private ["_veh_list","_nextvehicle","_nextmarker","_nextvehicle_owner","_nextvehicle_disabled"];
+private ["_marker","_marker_color","_marker_type","_marker_show"];
+private _vehmarkers = [];
 
 while { true } do {
 	waitUntil {sleep 0.5; GRLIB_MapOpen };
@@ -43,14 +41,14 @@ while { true } do {
 		)
 	};
 
-	_vehmarkers_bak = [];
+	private _vehmarkers_bak = [];
 	{
 		_nextvehicle = _x;
-		_nextmarker = format ["markedveh%1" ,_nextvehicle];
+		_nextmarker = format ["markedveh_%1", netId _nextvehicle];
 		// in cache
 		if (_vehmarkers find _nextmarker < 0) then {
 			if (!isNull _nextvehicle) then {
-				_marker = createMarkerLocal [format ["markedveh%1", _nextvehicle], markers_reset];
+				_marker = createMarkerLocal [format ["markedveh_%1", netId _nextvehicle], markers_reset];
 				_marker setMarkerSizeLocal [ 0.75, 0.75 ];
 				_marker setMarkerPosLocal (getPosATL _nextvehicle);
 				_marker setMarkerTextLocal ([(typeOf _nextvehicle)] call F_getLRXName);
