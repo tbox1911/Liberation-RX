@@ -22,7 +22,7 @@ while { true } do {
 		GRLIB_player_owner_fob = (PAR_Grp_ID == ([] call F_getFobOwner));
 	} else {
 		GRLIB_player_near_lhd = false;
-		GRLIB_player_nearest_fob = false;
+		GRLIB_player_nearest_fob = [999999,999999,0];
 		GRLIB_player_fobdistance = 99999;
 		GRLIB_player_near_outpost = false;
 		GRLIB_player_admin = false;
