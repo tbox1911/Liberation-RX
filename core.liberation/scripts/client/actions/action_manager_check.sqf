@@ -94,7 +94,7 @@ GRLIB_checkSecObj = {
 };
 
 GRLIB_checkBuildFOB = {
-	(GRLIB_player_is_menuok && (GRLIB_player_fobdistance > GRLIB_sector_size && !GRLIB_player_near_lhd) && (player distance2D cursorObject <= GRLIB_ActionDist_5) && (typeOf cursorObject in [FOB_box_typename, FOB_truck_typename]) && !(cursorObject getVariable ['box_in_use', false]))
+	(GRLIB_player_is_menuok && (GRLIB_player_fobdistance > GRLIB_sector_size && !GRLIB_player_near_lhd) && (player distance2D cursorObject <= GRLIB_ActionDist_5) && (typeOf cursorObject) in [FOB_box_typename, FOB_truck_typename] && !(cursorObject getVariable ['box_in_use', false]))
 };
 
 GRLIB_checkBuildFOBWater = {

@@ -21,6 +21,9 @@ private _min_deep = 50;
 if (_box_type == FOB_boat_typename && _sea_deep < _min_deep) exitWith {
 	hint format [localize "STR_BUILD_ERROR_WATER_DEEP", _sea_deep, _min_deep];
 };
+if (_box_type == FOB_truck_typename && count (crew _box) > 0) exitWith {
+	hint format ["No Crew in %1 Allowed!", ([_box_type] call F_getLRXName)];
+};
 
 _box setVariable ["box_in_use", true, true];
 private _minfobdist = 1000;
