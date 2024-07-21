@@ -48,8 +48,8 @@ if ( count _nearbuildings > 0 ) then {
 			_intelobject allowDamage false;
 			_intelobject setdir (random 360);
 			_intel_created pushBack _intelobject;
-			if ( _debug ) then {
-				_marker = createMarkerLocal [ format ["markedveh%1", (getpos _intelobject) select 0], getpos _intelobject ];
+			if (_debug) then {
+				_marker = createMarkerLocal [ format ["markedintel_%1", (getpos _intelobject) select 0], getpos _intelobject ];
 				_marker setMarkerColorLocal GRLIB_color_enemy_bright;
 				_marker setMarkerTypeLocal "mil_dot";
 			};

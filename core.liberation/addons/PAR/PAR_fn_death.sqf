@@ -3,10 +3,10 @@ params ["_unit"];
 [(_unit getVariable ['PAR_myMedic', objNull]), _unit] call PAR_fn_medicRelease;
 _unit setVariable ['PAR_wounded', false, true];
 
+removeAllActions _unit;
 if (_unit == player) then {
 	titleText ["" ,"BLACK FADED", 100];
 	_unit connectTerminalToUAV objNull;
-	removeAllActions _unit;
 
 	// Grave + Save Stuff
 	private _pos = getPosATL _unit;
@@ -40,6 +40,7 @@ if (_unit == player) then {
 		PAR_grave_box enableSimulationGlobal true;
 		PAR_grave_box setPosATL _grave_box_pos;
 		PAR_grave_box attachto [_grave];
+
 		// Marker
 		"player_grave_box" setMarkerPosLocal PAR_grave_box;
 	};
@@ -57,7 +58,6 @@ if (_unit == player) then {
 	titleText ["" ,"BLACK FADED", 100];
 } else {
 	gamelogic globalChat (format [localize "STR_PAR_DE_01", name _unit]);
-	removeAllActions _unit;
 	// removeAllWeapons _unit;
 	sleep 60;
 	hideBody _unit;
