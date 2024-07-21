@@ -4,10 +4,10 @@ waituntil { sleep 1; GRLIB_player_spawned && (player getVariable ["GRLIB_score_s
 if (!(player diarySubjectExists str(parseText GRLIB_r3))) exitWith {};
 
 private ["_near_spawn", "_near_spawnt"];
-private _count = 1;
+
 while { true } do {
 	GRLIB_player_is_menuok = [] call is_menuok;
-	if (_count % 4 == 0 && GRLIB_player_is_menuok) then {
+	if (GRLIB_player_is_menuok) then {
 		GRLIB_player_score = [player] call F_getScore;
 		GRLIB_player_near_lhd = (player distance2D lhd < GRLIB_fob_range);
 		GRLIB_player_nearest_fob = ([] call F_getNearestFob);
@@ -19,10 +19,17 @@ while { true } do {
 		GRLIB_player_near_fob = (GRLIB_player_fobdistance < GRLIB_fob_range);
 		GRLIB_player_near_base = (GRLIB_player_fobdistance < GRLIB_ActionDist_15 || GRLIB_player_near_lhd);
 		GRLIB_player_near_spawn = (GRLIB_player_near_base || _near_spawn || _near_spawnt);
-		GRLIB_player_owner_fob = (PAR_Grp_ID == ([] call F_getFobOwner));		
-		_count = 0;
-		sleep 0.5;
+		GRLIB_player_owner_fob = (PAR_Grp_ID == ([] call F_getFobOwner));
+	} else {
+		GRLIB_player_near_lhd = false;
+		GRLIB_player_nearest_fob = false;
+		GRLIB_player_fobdistance = 99999;
+		GRLIB_player_near_outpost = false;
+		GRLIB_player_admin = false;
+		GRLIB_player_near_fob = false;
+		GRLIB_player_near_base = false;
+		GRLIB_player_near_spawn = false;
+		GRLIB_player_owner_fob = false;
 	};
 	sleep 0.5;
-	_count = _count + 1;
 };
