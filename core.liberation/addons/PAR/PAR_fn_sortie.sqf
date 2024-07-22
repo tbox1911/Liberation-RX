@@ -49,6 +49,14 @@ _wnded setUnconscious false;
 _wnded setVariable ["PAR_isUnconscious", false, true];
 _wnded setVariable ["PAR_isDragged", 0, true];
 
+_wnded switchMove "AinjPpneMstpSnonWrflDnon_rolltofront";
+_wnded playMoveNow "AinjPpneMstpSnonWrflDnon_rolltofront";
+sleep 2;
+_wnded switchmove "AidlPpneMstpSrasWrflDnon_G01";
+
+[_medic, _wnded] call PAR_fn_medicRelease;
+[[_medic, _wnded]] call PAR_fn_fixPos;
+
 if (_wnded == player) then {
 	group _wnded selectLeader _wnded;
 	private _bounty_ok = (([(GRLIB_capture_size * 2), getPosATL _medic] call F_getNearestSector) in opfor_sectors && _medic getVariable ["PAR_lastRevive",0] < time);
@@ -61,16 +69,9 @@ if (_wnded == player) then {
 	_wnded doFollow player;	
 };
 
-sleep 3;
-_wnded switchMove "amovpknlmstpsraswrfldnon"; //go up
-_wnded playMoveNow "amovpknlmstpsraswrfldnon";
-
-[_medic, _wnded] call PAR_fn_medicRelease;
-[[_medic, _wnded]] call PAR_fn_fixPos;
-
 [_wnded] spawn {
 	params ["_unit"];
-	uIsleep 10;   //time to recover
+	sleep 10;   //time to recover
 	_unit setVariable ["PAR_wounded", false, true];
 	_unit allowDamage true;
 	_unit setCaptive false;

@@ -28,12 +28,12 @@ if (isPlayer _unit) then {
 } else {
 	_unit setVariable ["GRLIB_can_speak", false, true];
 	[_unit] call F_deathSound;
+	sleep 3;
 };
 
-sleep 3;
-_unit switchMove "AinjPpneMstpSnonWrflDnon";  // lay down
-_unit playMoveNow "AinjPpneMstpSnonWrflDnon";
-sleep 6;
+_unit switchMove "AinjPpneMstpSnonWrflDnon_rolltoback";
+_unit playMoveNow "AinjPpneMstpSnonWrflDnon_rolltoback";
+sleep 5;
 
 if (!alive _unit) exitWith {};
 waituntil {sleep 0.5; (isTouchingGround (vehicle _unit) || (round (getPos _unit select 2) <= 1))};
