@@ -29,7 +29,8 @@ private _alt = _pos select 2;
     [_x] spawn {
         params ["_unit"];
         gamelogic globalChat format ["Adds %1 (%2) to your squad.", name _unit, rank _unit];
-        sleep 3;
+        sleep 5;
+        _unit setDamage 0;
         [_unit, true] remoteExec ["allowDamage", 0];
     };
     sleep 0.3;
