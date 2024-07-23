@@ -98,7 +98,6 @@ if ( isServer ) then {
 			if ( !_isKamikaz && !_isZombie && _unit_side == GRLIB_side_civilian || _isPrisonner ) then {
 				stats_civilians_killed = stats_civilians_killed + 1;
 				if ( isPlayer _killer ) then {
-					stats_civilians_killed_by_players = stats_civilians_killed_by_players + 1;
 					if ( GRLIB_civ_penalties > 0 ) then {
 						private _penalty = GRLIB_civ_penalties;
 						private _score = [_killer] call F_getScore;
@@ -113,6 +112,7 @@ if ( isServer ) then {
 						stats_readiness_earned = stats_readiness_earned + (0.5 * GRLIB_difficulty_modifier);
 						if ( combat_readiness > 100 && GRLIB_difficulty_modifier < 2 ) then { combat_readiness = 100 };
 					};
+					stats_civilians_killed_by_players = stats_civilians_killed_by_players + 1;
 				};
 
 				if ( _killer_side == GRLIB_side_friendly && (!isPlayer _killer)) then {
@@ -128,6 +128,7 @@ if ( isServer ) then {
 						[gamelogic, _msg] remoteExec ["globalChat", 0];
 						[name _unit, GRLIB_civ_penalties, _owner_player] remoteExec ["remote_call_civ_penalty", 0];
 					};
+					stats_civilians_killed_by_players = stats_civilians_killed_by_players + 1;
 				};
 			};
 
