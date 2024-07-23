@@ -10,6 +10,7 @@ private _classnames_to_destroy = [
 	"Land_RepairDepot_01_civ_F",
 	"Land_MedicalTent_01_MTP_closed_F",
 	"Helipad_base_F",
+	"Land_fs_feed_F",
 	"FlagCarrier",
 	"Land_Destroyer_01_hull_base_F",
 	"Land_Carrier_01_hull_base_F"

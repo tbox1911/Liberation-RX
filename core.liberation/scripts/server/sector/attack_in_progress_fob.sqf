@@ -46,7 +46,7 @@ if ( _ownership == GRLIB_side_enemy ) then {
 		params ["_pos"];
 		sleep 60;
 		private _sound = "A3\Sounds_F\sfx\alarm_blufor.wss";
-		while { ([_pos] call F_sectorOwnership) == GRLIB_side_enemy } do {
+		while { ([_pos] call F_sectorOwnership) == GRLIB_side_enemy && _pos in GRLIB_all_fobs } do {
 			[_pos, 1] remoteExec ["remote_call_fob", 0];			
 			playSound3D [_sound, _pos, false, ATLToASL _pos, 5, 1, 1000];
 			sleep (60 + (floor(random 4) * 45));			
@@ -67,6 +67,7 @@ if ( _ownership == GRLIB_side_enemy ) then {
 
 	if ( GRLIB_endgame == 0 ) then {
 		if ( _ownership == GRLIB_side_enemy ) then {
+			diag_log format ["FOB %1 Lost at %2", _fobpos, time];
 			if (!_near_outpost) then {
 				[_fobpos, 250] remoteExec ["remote_call_penalty", 0];
 				sleep 3;
@@ -75,6 +76,7 @@ if ( _ownership == GRLIB_side_enemy ) then {
 			sleep 1;
 			[_fobpos] call destroy_fob;
 		} else {
+			diag_log format ["FOB %1 Defended at %2", _fobpos, time];
 			[_fobpos, 3] remoteExec ["remote_call_fob", 0];
 			private _enemy_left = (_fobpos nearEntities ["CAManBase", GRLIB_capture_size * 0.8]);
 			_enemy_left = _enemy_left select { (side _x == GRLIB_side_enemy) && (isNull objectParent _x) };
