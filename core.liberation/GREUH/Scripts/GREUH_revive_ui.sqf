@@ -59,7 +59,7 @@ while { alive player && (player getVariable ["PAR_isUnconscious", false]) } do {
 		[ 10000 ] call BIS_fnc_bloodEffect;
 	};
 	if ( _tick % 50 == 0 ) then {
-		(_display displayCtrl 678) ctrlSetStructuredText parseText format["<t size='0.8' align='center'>Tips:<br/>%1</t>", selectRandom GREUH_TipsText];
+		(_display displayCtrl 678) ctrlSetStructuredText parseText format["<t size='0.8' align='center'>Tips:<br/>%1</t>", selectRandom GRLIB_TipsText];
 	};
 	_tick = _tick + 1;
 	uiSleep 0.25;

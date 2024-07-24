@@ -114,11 +114,14 @@ while { true } do {
 		_unit = _x;
 		_unit addAction ["<t color='#00FF8F'>" + localize "STR_BUILD_FORTIFICATION" + "</t> <img size='1' image='res\ui_build.paa'/>","addons\FOB\do_build_def.sqf","",997,false,true,"","call GRLIB_checkBuildDef", 5];
 		_unit addAction ["<t color='#F80000'>" + localize "STR_CLEAR_FORTIFICATION" + "</t> <img size='1' image='res\ui_build.paa'/>","addons\FOB\do_clean_def.sqf","",996,false,true,"","call GRLIB_checkBuildDef", 5];
-		_unit addAction ["<t color='#FFFFFF'>" + "-= Hall of Fame =-" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Talk_ca.paa'/>",{([5] call F_notice_hof) spawn BIS_fnc_dynamicText},"",989,true,true,"","GRLIB_player_is_menuok",5];
+		_unit addAction ["<t color='#FFFFFF'>" + "-= Hall of Fame =-" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Talk_ca.paa'/>",{[4] call remote_call_showtext},"",989,true,true,"","GRLIB_player_is_menuok",5];
 		_unit addAction ["<t color='#FFFFFF'>" + localize "STR_READ_ME" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Talk_ca.paa'/>",{createDialog "liberation_notice"},"",988,true,true,"","GRLIB_player_is_menuok",5];
 		_unit addAction ["<t color='#FFFFFF'>" + localize "STR_TIPS" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Talk_ca.paa'/>",{createDialog "liberation_tips"},"",987,true,true,"","GRLIB_player_is_menuok",5];
-		_unit addAction ["<t color='#FFFFFF'>" + localize "STR_NEWS" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Talk_ca.paa'/>",{([] call F_notice_news) spawn BIS_fnc_dynamicText},"",986,true,true,"","GRLIB_player_is_menuok",5];
-		_unit addAction ["<t color='#FFFFFF'>" + localize "STR_METEO" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Talk_ca.paa'/>",{([] call F_notice_weather) spawn BIS_fnc_dynamicText},"",985,true,true,"","GRLIB_player_is_menuok",5];
+		_unit addAction ["<t color='#FFFFFF'>" + localize "STR_NEWS" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Talk_ca.paa'/>",{[3] call remote_call_showtext},"",986,true,true,"","GRLIB_player_is_menuok && GRLIB_LastNews == 0",5];
+		_unit addAction ["<t color='#FFFFFF'>" + localize "STR_NEWS_METEO" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Talk_ca.paa'/>",{[2] call remote_call_showtext},"",986,true,true,"","GRLIB_player_is_menuok && GRLIB_LastNews == 1",5];
+		_unit addAction ["<t color='#FFFFFF'>" + localize "STR_NEWS_AMMO" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Talk_ca.paa'/>",{[7] call remote_call_showtext},"",986,true,true,"","GRLIB_player_is_menuok && GRLIB_LastNews == 2",5];
+		_unit addAction ["<t color='#FFFFFF'>" + localize "STR_NEWS_GOOD" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Talk_ca.paa'/>",{[5] call remote_call_showtext},"",986,true,true,"","GRLIB_player_is_menuok && GRLIB_LastNews == 3",5];
+		_unit addAction ["<t color='#FFFFFF'>" + localize "STR_NEWS_BAD" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Talk_ca.paa'/>",{[6] call remote_call_showtext},"",986,true,true,"","GRLIB_player_is_menuok && GRLIB_LastNews == 4",5];
 		_unit setVariable ["GRLIB_sign_action", true];
 	} foreach _nearsign;
 

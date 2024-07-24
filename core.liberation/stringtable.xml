@@ -6584,9 +6584,18 @@
 		<Key ID="STR_NEWS">
 			<Original>-=   NEWS   =-</Original>
 		</Key>
-		<Key ID="STR_METEO">
+		<Key ID="STR_NEWS_METEO">
 			<Original>-=   METEO   =-</Original>
 		</Key>
+		<Key ID="STR_NEWS_AMMO">
+			<Original>-=   The Rich   =-</Original>
+		</Key>
+		<Key ID="STR_NEWS_GOOD">
+			<Original>-=   The Good   =-</Original>
+		</Key>
+		<Key ID="STR_NEWS_BAD">
+			<Original>-=   The Bad   =-</Original>
+		</Key>		
 		<Key ID="STR_SAVE_PLAYER">
 			<Original>-- SAVE PLAYER PROFILE</Original>
 			<French>-- SAUVEGARDER LE JOUEUR</French>

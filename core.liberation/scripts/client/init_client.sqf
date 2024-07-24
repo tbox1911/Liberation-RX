@@ -199,12 +199,13 @@ if (!GRLIB_ACE_enabled) then {
 };
 
 // Init Tips Tables from XML
-GREUH_TipsText = [];
+GRLIB_TipsText = [];
 {
 	if (_x select [0, 1] != "t" && _x != "br") then {
-    	GREUH_TipsText pushback (_x select [7]);
+    	GRLIB_TipsText pushback (_x select [7]);
 	};
 } forEach ((localize "STR_TUTO_TEXT12") splitString "></");
+GRLIB_LastNews = 0;
 
 // Draw Zeus
 {
