@@ -414,7 +414,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 
 	[_buildings_created] spawn {
 		params ["_list"];
-		sleep 10;
+		sleep 30;
 		private _no_damage = [
 			FOB_typename,
 			FOB_outpost,
