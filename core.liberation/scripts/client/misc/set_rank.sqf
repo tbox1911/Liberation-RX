@@ -1,13 +1,12 @@
 private _score = [player] call F_getScore;
 private _rank = "Private";
-GRLIB_perm_zero = 0;
 
-if ((_score < GRLIB_perm_zero)) then {
+if ((_score < 0)) then {
 	GRLIB_squad_size_bonus = 0;
 	infantry_cap = 5 * GRLIB_resources_multiplier;
 };
 
-if ((_score >= GRLIB_perm_zero) && (_score < GRLIB_perm_inf)) then {
+if ((_score >= 0) && (_score < GRLIB_perm_inf)) then {
 	GRLIB_squad_size_bonus = 0;
 	infantry_cap = 15 * GRLIB_resources_multiplier;
 };

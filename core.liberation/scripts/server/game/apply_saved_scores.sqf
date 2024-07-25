@@ -33,7 +33,7 @@ while { true } do {
 				};
 
 				_nextplayer setVariable ["GRLIB_Rank", "init", true];
-				_nextplayer setVariable ["GREUH_score_last", 0, true];
+				_nextplayer setVariable ["GREUH_score_last", -1, true];
 				_nextplayer setVariable ["GRLIB_score_set", 1, true];
 			};
 
