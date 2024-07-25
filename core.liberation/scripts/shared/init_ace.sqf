@@ -19,7 +19,7 @@ ACE_getSize = {
     params ["_object", "_list"];
     private _ret = 0;
     {
-        if (_object isKindOf _x) then { _ret = (_list select 1) select _forEachIndex };
+        if (_object isKindOf _x) exitWith { _ret = (_list select 1) select _forEachIndex };
     } foreach (_list select 0);
     _ret;
 };
