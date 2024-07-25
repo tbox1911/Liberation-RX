@@ -8495,8 +8495,8 @@
 			<French>STOCKER MARCHANDISES</French>
 		</Key>
 		<Key ID="STR_WAREHOUSE_LOAD_MSG">
-			<Original>&lt;t align='center'&gt;Unload %1 to Warehouse&lt;br/&gt;for %2 AMMO.&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
-			<French>&lt;t align='center'&gt;Deposer %1 à l'Entrepôt&lt;br/&gt;pour %2 AMMO.&lt;br/&gt;Êtes-vous sûr ?&lt;/t&gt;</French>
+			<Original>&lt;t align='center'&gt;Store %1 to Warehouse&lt;br/&gt;you get %2 AMMO.&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
+			<French>&lt;t align='center'&gt;Deposer %1 à l'Entrepôt&lt;br/&gt;vous recevez %2 AMMO.&lt;br/&gt;Êtes-vous sûr ?&lt;/t&gt;</French>
 		</Key>
 		<Key ID="STR_WAREHOUSE_UNLOAD">
 			<Original>TAKE GOODS</Original>
