@@ -9,8 +9,6 @@ while {true} do {
     if ( count PAR_AI_bros > 0) then {
         {
             _unit = _x;
-            // Set PAR EventHandler
-            //[_x] spawn PAR_fn_AI_Damage_EH;
 
             if (PAR_revive != 0) then {
                 // Medic can heal auto

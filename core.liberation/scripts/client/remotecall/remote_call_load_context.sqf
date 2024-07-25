@@ -9,6 +9,9 @@ private _pos = getPosATL player;
 private _alt = _pos select 2;
 
 {
+    _x setVariable ["PAR_Grp_ID", format["Bros_%1", PAR_Grp_ID], true];
+    [_x] call PAR_fn_AI_Damage_EH;
+    [_x] call F_fixModUnit;
     [_x] joinSilent (group player);
     while { _x distance2D _pos > 100 } do {
         if (surfaceIsWater _pos) then {
@@ -20,8 +23,6 @@ private _alt = _pos select 2;
         };
         sleep 0.5;
     };
-    [_x] spawn F_fixModUnit;
-    [_x] spawn PAR_fn_AI_Damage_EH;
     _x enableIRLasers true;
     _x enableGunLights "Auto";
     _x switchMove "AmovPercMwlkSrasWrflDf";

@@ -5,28 +5,28 @@ private _medic = [_wnded] call PAR_fn_nearestMedic;
 private _msg = "";
 
 if (isNil "_medic") exitWith {
-  _wnded setVariable ["PAR_myMedic", nil];
-  _msg = format [localize "STR_PAR_MD_01", name _wnded];
-  [_wnded, _msg] call PAR_fn_globalchat;
+	_wnded setVariable ["PAR_myMedic", nil];
+	_msg = format [localize "STR_PAR_MD_01", name _wnded];
+	[_wnded, _msg] call PAR_fn_globalchat;
 
-  if (PAR_revive in [2,3]) then {
-    _msg = localize "STR_PAR_MD_04";
-    [_wnded, _msg] call PAR_fn_globalchat;
-  };
+	if (PAR_revive in [2,3]) then {
+	_msg = localize "STR_PAR_MD_04";
+	[_wnded, _msg] call PAR_fn_globalchat;
+	};
 
-  _lst = PAR_AI_bros select { lifeState _x != "INCAPACITATED" };
-  _msg = format [localize "STR_PAR_MD_02", count (_lst)];
-  [_wnded, _msg] call PAR_fn_globalchat;
+	private _lst = PAR_AI_bros select { lifeState _x != "INCAPACITATED" };
+	_msg = format [localize "STR_PAR_MD_02", count (_lst)];
+	[_wnded, _msg] call PAR_fn_globalchat;
 };
 
-private _msg = format [localize "STR_PAR_MD_03", name _wnded, name _medic, round (_medic distance2D _wnded)];
+_msg = format [localize "STR_PAR_MD_03", name _wnded, name _medic, round (_medic distance2D _wnded)];
 [_wnded, _msg] call PAR_fn_globalchat;
 
 _medic setVariable ["PAR_busy", true];
 _wnded setVariable ["PAR_myMedic", _medic];
 
 if (count (units _medic) > 1) then {
-  _medic setVariable ["PAR_AIgrp", group _medic];
-  _medic setVariable ["isLeader", (leader _medic == _medic)];
+	_medic setVariable ["PAR_AIgrp", group _medic];
+	_medic setVariable ["isLeader", (leader _medic == _medic)];
 };
 _medic

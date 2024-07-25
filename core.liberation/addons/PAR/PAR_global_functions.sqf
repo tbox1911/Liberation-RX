@@ -15,7 +15,14 @@ PAR_fn_eject = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_eject.s
 PAR_fn_heal = compileFinal preprocessFileLineNumbers "addons\PAR\PAR_fn_heal.sqf";
 
 PAR_medic_units = {
-	PAR_AI_bros select { lifeState _x != "INCAPACITATED" && isNil {_x getVariable 'PAR_busy'} };
+	params ["_wnded"];
+	private _grp_id = _wnded getVariable ["PAR_Grp_ID","1"];
+	(units GRLIB_side_friendly) select {
+		!isPlayer _x &&
+		lifeState _x != "INCAPACITATED" &&
+		isNil {_x getVariable 'PAR_busy'} &&
+		(_x getVariable ["PAR_Grp_ID","0"]) == _grp_id
+	};
 };
 PAR_unblock_AI = {
 	// Unblock unit(s) 0-8-1
@@ -227,7 +234,6 @@ PAR_fn_AI_Damage_EH = {
 	_unit setVariable ["PAR_healed", nil];
 	_unit setVariable ["PAR_AI_score", ((GRLIB_rank_level find (rank _unit)) + 1) * 5, true];
 	_unit setVariable ["PAR_revive_max", (PAR_ai_revive + (GRLIB_rank_level find (rank _unit)))];
-	_unit setVariable ["PAR_Grp_ID", format["Bros_%1", PAR_Grp_ID], true];
 	_unit setVariable ["GRLIB_can_speak", true, true];
 };
 

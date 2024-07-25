@@ -1,6 +1,6 @@
 params ["_wnded"];
 
-private _medics = ([] call PAR_medic_units) select {
+private _medics = ([_wnded] call PAR_medic_units) select {
   speed vehicle _x <= 20 &&
   _x distance2D _wnded <= 500 &&
   getPos _x select 2 <= 20 &&
