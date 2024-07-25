@@ -202,7 +202,7 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 		_br_plane = selectRandom (opfor_air select { _x isKindOf "Plane" });
 	};
 
-	if (count sectors_bigtown > 1 && !isNil "_br_plane") then {
+	if (count sectors_bigtown > 1 && !isNil "_br_plane" && combat_readiness > 20) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;
