@@ -1,4 +1,4 @@
-private _pmc_uniforms = [ 
+private _pmc_uniforms = [
     "U_C_ArtTShirt_01_v4_F",
     "U_C_ArtTShirt_01_v3_F",
     "U_Rangemaster",
@@ -17,7 +17,10 @@ private _pmc_uniforms = [
     "U_I_L_Uniform_01_tshirt_black_F"
 ];
 
-private _pmc_headgear = [ 
+private _pmc_headgear = [
+    "",
+    "",
+    "",    
     "H_Cap_oli_hs",
     "H_HeadSet_black_F",
     "H_Cap_blk_ION",
@@ -28,7 +31,7 @@ private _pmc_headgear = [
     "H_Booniehat_khk_hs"
 ];
 
-private _pmc_weapon = [ 
+private _pmc_weapon = [
     "arifle_MSBS65_black_F",
     "arifle_SPAR_01_blk_F",
     "arifle_AK12_F",
@@ -36,14 +39,14 @@ private _pmc_weapon = [
     "arifle_MX_Black_F"
 ];
 
-private _pmc_optic = [ 
+private _pmc_optic = [
     "optic_Holosight_blk_F",
     "optic_ACO_grn",
     "optic_Hamr",
     "optic_Aco_smg"
 ];
 
-private _pmc_vest = [ 
+private _pmc_vest = [
     "V_PlateCarrier2_rgr_noflag_F",
     "V_PlateCarrier1_rgr_noflag_F",
     "V_TacVestIR_blk",
@@ -52,12 +55,9 @@ private _pmc_vest = [
 ];
 
 private _pmc_goggles = [
-    // "",
-    // "",
-    // "",
-    // "",
-    // "",
-    // "",
+    "",
+    "",
+    "",
     "G_Squares_Tinted",
     "G_Spectacles",
     "G_Aviator",
@@ -67,7 +67,7 @@ private _pmc_goggles = [
     "G_Bandanna_beast"
 ];
 
-private _pmc_backpack = [ 
+private _pmc_backpack = [
     "B_CivilianBackpack_01_Everyday_Vrana_F",
     "B_CivilianBackpack_01_Everyday_Black_F",
     "B_AssaultPack_blk",

@@ -5,7 +5,6 @@ GRLIB_west_modder = "pSiKO";
 // Default classname: scripts\shared\default_classnames.sqf
 // Advanced definition: scripts\shared\classnames.sqf
 
-//huron_typename = "B_Heli_Transport_03_unarmed_F";  // // to use value from lobby/server.cfg
 FOB_typename = "Land_Cargo_HQ_V1_F";
 FOB_box_typename = "B_Slingload_01_Cargo_F";
 FOB_truck_typename = "B_Truck_01_box_F" ;
@@ -47,6 +46,7 @@ infantry_units_west = [
 ];
 
 units_loadout_overide = [
+	"B_Soldier_SL_F",
 	"B_Soldier_F",
 	"B_medic_F",
 	"B_engineer_F",
@@ -176,8 +176,8 @@ blufor_squad_inf_light = [
 	"B_medic_F",
 	"B_Soldier_GL_F",
 	"B_soldier_AR_F",
-	"B_Soldier_lite_F",
-	"B_Soldier_lite_F"
+	"B_Soldier_F",
+	"B_Soldier_F"
 ];
 blufor_squad_inf = [
 	"B_Soldier_SL_F",
