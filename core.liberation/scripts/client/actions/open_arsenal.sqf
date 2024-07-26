@@ -144,7 +144,7 @@ if ( edit_loadout > 0 ) then {
 	closeDialog 0;
 	waitUntil {!dialog};
 	if (GRLIB_ACE_enabled) then {
-		// Open Arsenal
+		// Open ACE Arsenal
 		[myLARsBox, player] call ace_arsenal_fnc_openBox;
 	} else {
 		if (GRLIB_filter_arsenal == 0) then {
@@ -152,7 +152,7 @@ if ( edit_loadout > 0 ) then {
 			["Open", [true]] call BIS_fnc_arsenal;
 		} else {
 			// Filters enabled
-			['Open',[nil, myLARsBox]] call BIS_fnc_arsenal;
+			["Open", [false, myLARsBox]] call BIS_fnc_arsenal;
 		};
 	};
 } else {

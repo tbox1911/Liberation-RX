@@ -94,6 +94,7 @@ while { true } do {
 					} else {
 						_unit switchMove 'WeaponMagazineReloadStand';
 						_unit playMoveNow 'WeaponMagazineReloadStand';
+						sleep 4;
 					};
 				};
 				if (_needmedic) then {

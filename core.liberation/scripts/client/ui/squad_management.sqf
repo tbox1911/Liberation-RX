@@ -105,7 +105,7 @@ while { dialog && alive player && _membercount > 0 } do {
 			params ["_unit"];
 			titleText ["", "BLACK FADED", 1];
 			sleep 1;
-			["Open",[false, myLARsBox, _unit]] call bis_fnc_arsenal;
+			["Open", [false, myLARsBox, _unit]] call BIS_fnc_arsenal;
 			[_unit] call F_filterLoadout;
 			[_unit] call F_payLoadout;
 			titleText ["" ,"BLACK IN", 3];
