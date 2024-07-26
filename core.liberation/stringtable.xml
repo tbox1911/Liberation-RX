@@ -2381,29 +2381,13 @@
 			<Portuguese>-- GESTÃO DE ESQUADRÃO</Portuguese>
 			<Czech>-- SQUAD MANAGEMENT</Czech>
 		</Key>
-		<Key ID="STR_DEPLOY_ON_MEMBER">
-			<Original>Replace</Original>
-			<French>Remplacer</French>
-			<German>Ersetzen</German>
-			<Spanish>Reemplazar</Spanish>
-			<Russian>Заменить</Russian>
-			<Chinesesimp>附身</Chinesesimp>
-			<Chinese>附身</Chinese>
-			<Japanese>交代</Japanese>
-			<Portuguese>Substituir</Portuguese>
-			<Czech>Nahradit</Czech>
+		<Key ID="STR_ARSENAL_ON_MEMBER">
+			<Original>Arsenal</Original>
+			<French>Arsenal</French>
 		</Key>
-		<Key ID="STR_DEPLOY_ON_MEMBER_TOOLTIP">
-			<Original>You will deploy on the selected squad member and replace them while keeping your current loadout.</Original>
-			<French>Vous serez déployé sur la zone du membre d'escouade selectionné et en conservant votre équipement actuel.</French>
-			<German>Du wirst das ausgewählte Gruppenmitglied ersetzen, während du deine Ausrüstung behältst.</German>
-			<Spanish>Reaparecerás en el miembro de la escuadra seleccionado, manteniendo tu equipación actual</Spanish>
-			<Russian>Вы будете развёрнуты на выбранном AI-солдате группы, и замените его, сохранив текущее снаряжение.</Russian>
-			<Chinesesimp>您将在选定的班组成员上部署并替换它们，同时保留你当前的装备配置</Chinesesimp>
-			<Chinese>您將在選定的班組成員上部署並替換它們，同時保留你當前的裝備配置</Chinese>
-			<Japanese>貴方は選択された分隊員として展開され、その間現在のロードアウトは維持されます。</Japanese>
-			<Portuguese>Você irá implantar no membro do esquadrão selecionado e substituí-lo, mantendo seu carregamento atual.</Portuguese>
-			<Czech>Nasadíte na vybraného člena družstva a nahradíte je při zachování aktuálního vytížení.</Czech>
+		<Key ID="STR_ARSENAL_ON_MEMBER_TOOLTIP">
+			<Original>Open the Virtual Arsenal for the selected unit.</Original>
+			<French>Ouvrir l'Arsenal Virtuel pour l'unité sélectionnée.</French>
 		</Key>
 		<Key ID="STR_REMOVE_MEMBER">
 			<Original>Remove</Original>

@@ -148,13 +148,10 @@ if ( edit_loadout > 0 ) then {
 		[myLARsBox, player] call ace_arsenal_fnc_openBox;
 	} else {
 		if (GRLIB_filter_arsenal == 0) then {
-			// Filters disabled 
+			// Filters disabled
 			["Open", [true]] call BIS_fnc_arsenal;
 		} else {
-			// Filters enabled 
-			waitUntil {sleep 0.1; !isNil {myLARsBox getVariable "LARs_arsenal_Liberation_cargo"}};
-			private _cargo = myLARsBox getVariable ["LARs_arsenal_Liberation_cargo", []];
-			myLARsBox setVariable ["bis_addVirtualWeaponCargo_cargo", _cargo];
+			// Filters enabled
 			['Open',[nil, myLARsBox]] call BIS_fnc_arsenal;
 		};
 	};

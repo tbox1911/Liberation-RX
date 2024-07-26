@@ -5,7 +5,7 @@ class liberation_squad {
 
 	controls[] = {"OuterBG", "RecycleBG","OuterBG_F", "InnerBG", "InnerBG_F", "OuterCenterPanel","Header","SquadList","DeployMap", "ButtonClose",
 	"NameLabel", "ClassLabel", "HealthLabel", "ReviveLabel", "DistanceLabel", "PrimaryLabel", "PrimaryMagsLabel", "SecondaryLabel", "SecondaryMagsLabel", "LoadoutLabel",
-	"VehicleLabel","ResupplyButton", "LikeMeButton", "ReplaceButton", "RenameButton", "RemoveButton", "ConfirmButton", "PiPZone",
+	"VehicleLabel","ResupplyButton", "LikeMeButton", "ArsenalButton", "RenameButton", "RemoveButton", "ConfirmButton", "PiPZone",
 	"GREUH_Squad_OuterBG", "GREUH_Squad_InnerBG", "GREUH_Squad_OuterBG_F", "GREUH_Squad_InnerBG_F", "GREUH_ButtonName_Rename", "GREUH_ButtonName_Abort", "GREUH_Squad_TextField"
 	};
 
@@ -151,15 +151,15 @@ class liberation_squad {
 		action = "GRLIB_squadaction = 4";
 	};
 
-	class ReplaceButton : StdButton{
+	class ArsenalButton : StdButton{
 		idc = 212;
 		x = (0.2 * safezoneW + safezoneX);
 		y = (0.65 * safezoneH + safezoneY);
 		w = (0.055 * safezoneW);
 		h = (0.04 * safezoneH);
 		sizeEx = 0.025 * safezoneH;
-		text = $STR_DEPLOY_ON_MEMBER;
-		tooltip = $STR_DEPLOY_ON_MEMBER_TOOLTIP;
+		text = $STR_ARSENAL_ON_MEMBER;
+		tooltip = $STR_ARSENAL_ON_MEMBER_TOOLTIP;
 		action = "GRLIB_squadaction = 3";
 	};
 	class RenameButton : StdButton{

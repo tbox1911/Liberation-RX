@@ -15,11 +15,11 @@ GRLIB_Squad_camera camSetTarget GRLIB_Squad_target;
 GRLIB_Squad_camera camcommit 0;
 "rtt" setPiPEffect [0];
 
-// PA LikeMeButton disabled
+// LikeMe Button disabled
 if (GRLIB_filter_arsenal == 4) then { ctrlEnable [ 215, false ] };
 
-//ReplaceButton disabled
-ctrlEnable [ 212, false ];
+// Arsenal Button disabled
+if (GRLIB_enable_arsenal == 0) then { ctrlEnable [ 212, false ] };
 
 // Create unit list
 lbClear 101;
@@ -91,15 +91,25 @@ while { dialog && alive player && _membercount > 0 } do {
 				lbSetCurSel [101, -1];
 			} else {
 				lbSetCurSel [101, 0];
-			};			
+			};
 			_update = true;
 		};
 		sleep 0.5;
 		ctrlEnable [211, true];
 	};
 
-	// None!
+	// Arsenal
 	if (GRLIB_squadaction == 3) then {
+		closeDialog 0;
+		[_selectedmember] spawn {
+			params ["_unit"];
+			titleText ["", "BLACK FADED", 1];
+			sleep 1;
+			["Open",[false, myLARsBox, _unit]] call bis_fnc_arsenal;
+			[_unit] call F_filterLoadout;
+			[_unit] call F_payLoadout;
+			titleText ["" ,"BLACK IN", 3];
+		};
 	};
 
 	// Like Me
