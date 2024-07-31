@@ -404,10 +404,10 @@ _path = format ["mod_template\%1\classnames_transport.sqf", GRLIB_mod_east];
 [_path] call F_getTemplateFile;
 
 transport_vehicles = [];
-{transport_vehicles pushBack ( _x select 0 )} foreach (box_transport_config);
+{transport_vehicles pushBackUnique ( _x select 0 )} foreach (box_transport_config);
 
 box_transport_loadable = [];
-{box_transport_loadable pushBack ( _x select 0 )} foreach (box_transport_offset);
+{box_transport_loadable pushBackUnique ( _x select 0 )} foreach (box_transport_offset);
 
 // Big_units
 vehicle_big_units = [
