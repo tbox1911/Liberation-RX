@@ -1,7 +1,7 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private [ "_citylist", "_leader", "_box1", "_box2"];
+private [ "_citylist", "_leader"];
 
 _setupVars = {
 	_missionType = "STR_HOSTILE_HELI";
@@ -80,8 +80,8 @@ _successExec = {
 		sleep 2;
 		private _wreckPos = getPosATL _veh;
 		if (!surfaceIsWater _wreckPos) then {
-			_box1 = [ammobox_o_typename, _wreckPos, false] call boxSetup;
-			_box2 = [ammobox_o_typename, _wreckPos, false] call boxSetup;
+			[ammobox_o_typename, _wreckPos, false] call boxSetup;
+			[ammobox_o_typename, _wreckPos, false] call boxSetup;
 		};
 	};
 
