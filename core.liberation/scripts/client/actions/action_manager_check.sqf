@@ -70,7 +70,8 @@ GRLIB_checkArsenal = {
 };
 
 GRLIB_checkArsenalPerso = {
-	(GRLIB_player_is_menuok && GRLIB_filter_arsenal == 4 && typeOf cursorObject == Arsenal_typename && cursorObject distance2D player <= GRLIB_ActionDist_5)
+	private _near_arsenal = [player, "ARSENAL", GRLIB_ActionDist_5, false] call F_check_near;
+	(GRLIB_player_is_menuok && GRLIB_filter_arsenal == 4 && _near_arsenal)
 };
 
 GRLIB_checkGarage = {
