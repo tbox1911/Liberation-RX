@@ -18,12 +18,11 @@ private _nearest_cargo = vehicles select {
 
 if (count _nearest_cargo > 0) then {
 	private _cargo_veh = _nearest_cargo select 0;
-	private _weapons_lst = nearestObjects [_target, ["GroundWeaponHolder", "WeaponHolderSimulated"], 4];
 	{ 
-		{ _cargo_veh addItemCargoGlobal [_x, 1] } forEach (getWeaponCargo _x select 0); 
+		{_cargo_veh addWeaponWithAttachmentsCargoGlobal [_x, 1]} forEach (weaponsItems _x);
 		deleteVehicle _x;
 		sleep 0.1;
-	} forEach _weapons_lst;
+	} forEach (nearestObjects [_target, ["GroundWeaponHolder", "WeaponHolderSimulated"], 4]);
 	[_cargo_veh, _target] call save_loadout_cargo;
 	hidebody _target;
 } else {

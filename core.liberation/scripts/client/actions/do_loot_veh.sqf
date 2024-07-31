@@ -1,16 +1,15 @@
 params ["_target", "_caller", "_actionId", "_arguments"];
 if (isNil "_target") exitWith {};
 
-private ["_items", "_src_name", "_src_obj"];
 {
 	// All items
-	_items = (itemCargo _x);
+	private _items = (itemCargo _x);
 
 	// Containers
 	{
-		_src_name = (_x select 0);
-		_src_obj = (_x select 1);
-		_container = [_target, _src_name] call F_addContainerCargo;
+		private _src_name = (_x select 0);
+		private _src_obj = (_x select 1);
+		private _container = [_target, _src_name] call F_addContainerCargo;
 		[_container] call F_clearCargo;
 		{_container addItemCargoGlobal [_x, 1]} forEach (ItemCargo _src_obj + magazineCargo _src_obj + weaponCargo _src_obj);
 		_items = _items - [_src_name];
