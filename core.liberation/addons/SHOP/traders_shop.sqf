@@ -5,6 +5,8 @@ createDialog "Traders_Shop";
 waitUntil { dialog };
 
 private _display = findDisplay 2304;
+private _ctrl_sell = _display displayCtrl (110);
+private _ctrl_buy = _display displayCtrl (111);
 private _ammo_collected = player getVariable ["GREUH_ammo_count", 0];
 private _cfg = configFile >> "cfgVehicles";
 private _ratio = (player nearEntities [SHOP_Man, 10] select 0) getvariable ["SHOP_ratio", 0.75];
@@ -46,15 +48,21 @@ lbClear 111;
 		_icon = (getText (configFile >> "CfgVehicleIcons" >> _icon));
 	};
 	lnbSetPicture  [111, [((lnbSize 111) select 0) - 1, 0],_icon];
+    lnbSetData [111, [((lnbSize 111) select 0) - 1, 0], (_x select 0)];
 
 	if ( (_x select 1) <= _ammo_collected ) then {
-		(_display displayCtrl (111)) lnbSetColor [[((lnbSize 111) select 0) - 1, 0], [1,1,1,1]];
-		(_display displayCtrl (111)) lnbSetColor [[((lnbSize 111) select 0) - 1, 1], [1,1,1,1]];
+		_ctrl_buy lnbSetColor [[((lnbSize 111) select 0) - 1, 0], [1,1,1,1]];
+		_ctrl_buy lnbSetColor [[((lnbSize 111) select 0) - 1, 1], [1,1,1,1]];
 	} else {
-		(_display displayCtrl (111)) lnbSetColor [[((lnbSize 111) select 0) - 1, 0], [0.4,0.4,0.4,1]];
-		(_display displayCtrl (111)) lnbSetColor [[((lnbSize 111) select 0) - 1, 1], [0.4,0.4,0.4,1]];
+		_ctrl_buy lnbSetColor [[((lnbSize 111) select 0) - 1, 0], [0.4,0.4,0.4,1]];
+		_ctrl_buy lnbSetColor [[((lnbSize 111) select 0) - 1, 1], [0.4,0.4,0.4,1]];
 	};
 } foreach _buy_list_dlg;
+
+_ctrl_buy ctrlAddEventHandler ["LBSelChanged", {
+	params ["_control", "_lbCurSel", "_lbSelection"];
+	_control ctrlSetTooltip str (_control lnbData [_lbCurSel, 0]);
+}];
 lbSetCurSel [111, 0];
 
 gamelogic globalChat "Welcome to my shop, stranger";
@@ -112,7 +120,7 @@ while { dialog && alive player } do {
 
 	_selected_item = lbCurSel 111;
 	if (_selected_item != _selected_item_bak) then {
-		_price = parseNumber ((_display displayCtrl (111)) lnbText [_selected_item, 1]);
+		_price = parseNumber (_ctrl_buy lnbText [_selected_item, 1]);
 		if (_selected_item != -1 && _price <= _ammo_collected) then { ctrlEnable [121, true] } else { ctrlEnable [121, false] };
 
 		_veh_class = _buy_list_dlg select _selected_item select 0;
@@ -127,8 +135,8 @@ while { dialog && alive player } do {
 		if (shop_action == 1) then {
 			ctrlEnable [120, false];
 			_selected_item = lbCurSel 110;
-			private _vehicle_name = (_display displayCtrl (110)) lnbText [_selected_item, 0];
-			private _price = parseNumber ((_display displayCtrl (110)) lnbText [_selected_item, 1]);
+			private _vehicle_name = _ctrl_sell lnbText [_selected_item, 0];
+			private _price = parseNumber (_ctrl_sell lnbText [_selected_item, 1]);
 			private _vehicle = _sell_list select _selected_item;
 			private _msg = format [localize "STR_SHOP_SELL_MSG", _vehicle_name, _price];
 			private _result = [_msg, localize "STR_SHOP_SELL", true, true] call BIS_fnc_guiMessage;
@@ -146,8 +154,8 @@ while { dialog && alive player } do {
 		if (shop_action == 2) then {
 			ctrlEnable [121, false];
 			_selected_item = lbCurSel 111;
-			_vehicle_name = (_display displayCtrl (111)) lnbText [_selected_item, 0];
-			_price = parseNumber ((_display displayCtrl (111)) lnbText [_selected_item, 1]);
+			_vehicle_name = _ctrl_buy lnbText [_selected_item, 0];
+			_price = parseNumber (_ctrl_buy lnbText [_selected_item, 1]);
 			private _msg = format [localize "STR_SHOP_BUY_MSG", _vehicle_name, _price];
 			private _result = [_msg, localize "STR_SHOP_BUY", true, true] call BIS_fnc_guiMessage;
 			if (_result) then {
