@@ -38,10 +38,11 @@ _waitUntilCondition = nil;
 _waitUntilSuccessCondition = {
 	_ret = false;
 	private _barrels = (_man1 nearEntities [fuelbarrel_typename, 20]) select {
-		isNil {_x getVariable "R3F_LOG_objets_charges"} &&
+		isNil {_x getVariable "R3F_LOG_objets_charges"} && isNull (attachedTo _x) &&
 		!(_x getVariable ['R3F_LOG_disabled', false])
 	};
 	if (count _barrels == 3) then {
+		sleep 1;
 		{ deleteVehicle _x } forEach _barrels;
 		sleep 1;
 		private _bonus = round (32 + random 10);
