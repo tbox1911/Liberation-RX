@@ -1,3 +1,6 @@
+// LRX Civilian Manager
+// by: pSiKO
+
 if (GRLIB_civilian_activity == 0) exitWith {};
 sleep 200;
 diag_log "--- LRX Starting Civilian Manager";

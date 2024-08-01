@@ -1,3 +1,6 @@
+// LRX Patrols Manager
+// by: pSiKO
+
 if (GRLIB_patrols_activity == 0) exitWith {};
 sleep 300;
 diag_log "--- LRX Starting Patrols Manager";
