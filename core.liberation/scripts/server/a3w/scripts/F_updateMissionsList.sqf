@@ -218,3 +218,23 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 		[_missionsList, _mission_name, true] call setMissionState;
 	};
 };
+
+// Prisoners Convoy
+_mission_name = "mission_PrisonerConvoy";
+if (!([_missionsList, _mission_name] call getMissionState)) then {
+	if (count blufor_sectors >= 10) then {
+		[_missionsList, _mission_name, false] call setMissionState;
+	} else {
+		[_missionsList, _mission_name, true] call setMissionState;
+	};
+};
+
+// Ressource Convoy
+_mission_name = "mission_RessourceConvoy";
+if (!([_missionsList, _mission_name] call getMissionState)) then {
+	if (count blufor_sectors >= 20) then {
+		[_missionsList, _mission_name, false] call setMissionState;
+	} else {
+		[_missionsList, _mission_name, true] call setMissionState;
+	};
+};

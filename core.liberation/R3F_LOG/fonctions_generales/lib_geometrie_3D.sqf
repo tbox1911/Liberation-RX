@@ -596,7 +596,9 @@ R3F_LOG_FNCT_3D_tirer_position_degagee_sol =
 	
 	// Echec, position introuvée
 	if (_nb_tirages >= _nb_tirages_max) then {
-		//diag_log format ["--- LRX Info: No place found for object size %1 at position %2", _rayon_degage, _pos_centre];
+		if (!isNil "GRLIB_LRX_debug") then {
+			diag_log format ["--- LRX Info: No place found for object of size %1 at position %2", _rayon_degage, _pos_centre];
+		};
 		_position_degagee = [];
 	};
 	

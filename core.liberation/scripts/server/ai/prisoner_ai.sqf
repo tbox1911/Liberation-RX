@@ -7,7 +7,7 @@ if (_unit getVariable ["GRLIB_is_prisoner", false]) exitWith {};
 if (surfaceIsWater (getPosATL _unit)) exitWith {};
 if (_unit skill "courage" == 1) exitWith {};
 
-sleep 5;
+sleep 10;
 if (!alive _unit) exitWith {};
 
 // Init priso

@@ -15,6 +15,7 @@ setGroupIconsVisible [false,false];
 abort_loading = false;
 abort_loading_msg = "Unkwon Error";
 GRLIB_ACE_enabled = false;
+//GRLIB_LRX_debug = true;
 
 [] call compileFinal preprocessFileLineNumbers "whitelist.sqf";
 [] call compileFinal preprocessFileLineNumbers "scripts\shared\liberation_functions.sqf";

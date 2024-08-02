@@ -1,6 +1,7 @@
 params [["_full", true]];
 private ["_marker"];
 private _marker_debug = false;
+if (!isNil "GRLIB_LRX_debug") then { _marker_debug = true };
 
 waitUntil { sleep 1; !isNil "opfor_sectors" };
 

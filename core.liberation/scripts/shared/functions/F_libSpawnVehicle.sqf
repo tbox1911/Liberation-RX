@@ -29,8 +29,7 @@ if ( _classname isKindOf "Air" ) then {
 	if ( _size == 0 ) then {
 		_spawnpos = _sectorpos;
 	} else {
-		_spawnpos = [_sectorpos, _size, 1] call F_findSafePlace;
-		_spawnpos set [2, 0.5];
+		_spawnpos = [_sectorpos, _size, true] call F_findSafePlace;
 	};
 
 	if ( count _spawnpos == 0 ) exitWith {
@@ -56,6 +55,7 @@ if ( _classname isKindOf "Air" ) then {
 	if (_classname != "") then {
 		_vehicle = createVehicle [_classname, zeropos, [], 0, "NONE"];
 		_vehicle allowDamage false;
+		_spawnpos set [2, 0.5];
 		_vehicle setPos _spawnpos;
 	};
 };

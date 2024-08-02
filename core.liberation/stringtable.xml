@@ -6579,7 +6579,7 @@
 		</Key>
 		<Key ID="STR_NEWS_BAD">
 			<Original>-=   The Bad   =-</Original>
-		</Key>		
+		</Key>
 		<Key ID="STR_SAVE_PLAYER">
 			<Original>-- SAVE PLAYER PROFILE</Original>
 			<French>-- SAUVEGARDER LE JOUEUR</French>
@@ -7659,6 +7659,20 @@
 		</Key>
 		<Key ID="STR_HELI_CAP_MSG">
 			<Original>A &lt;t color='%2'&gt;%1&lt;/t&gt; has been immobilized, go Repair it and take it for your team!</Original>
+		</Key>
+		<!-- mission_PrisonerConvoy.sqf -->
+		<Key ID="STR_PRI_CONV">
+			<Original>Prisoners Convoy</Original>
+		</Key>
+		<Key ID="STR_PRI_CONV_MSG">
+			<Original>An important &lt;t color='%1'&gt;Prisoner Convoy&lt;/t&gt; is travelling the island.&lt;br/&gt;Intercept the convoy and &lt;t color='%1'&gt;FREE&lt;/t&gt; the prisoners!</Original>
+		</Key>
+		<!-- mission_RessourceConvoy.sqf -->
+		<Key ID="STR_RSC_CONV">
+			<Original>Supplies Convoy</Original>
+		</Key>
+		<Key ID="STR_RSC_CONV_MSG">
+			<Original>An important &lt;t color='%1'&gt;Supplies Convoy&lt;/t&gt; is travelling the island.&lt;br/&gt;Intercept the convoy and capture the &lt;t color='%1'&gt;Supplies&lt;/t&gt;!</Original>
 		</Key>
 		<!-- speak_manager.sqf -->
 		<Key ID="STR_SPEAKMANAGER1">

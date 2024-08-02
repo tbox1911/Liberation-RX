@@ -4,10 +4,10 @@ private _vehicle_roles = [];
 { _vehicle_roles pushBack (_x select 1)} forEach (fullCrew [_vehicle, "", true]);
 if (count (units _grp) > count _vehicle_roles) exitWith { diag_log "--- LRX Error: group too large for vehicle!"};
 
-private _assigned = false;
 {
-    _assigned = false;
-    _role = _vehicle_roles select _forEachIndex;
+    private _assigned = false;
+    private _role = _vehicle_roles select _forEachIndex;
+
     if (_role == "driver") then {
         _x assignAsDriver _vehicle;
         _x moveInDriver _vehicle;
