@@ -4,7 +4,7 @@ if (!isServer) exitwith {};
 private [ "_vip", "_vehicle1", "_vehicle2", "_vehicle3", "_last_waypoint", "_convoy_attacked", "_disembark_troops"];
 
 _setupVars = {
-	_missionType = "STR_VIP_CAP";
+	_missionType = "STR_RSC_CONV";
 	_locationsArray = nil; // locations are generated on the fly from towns
 	_ignoreAiDeaths = true;
 	_missionTimeout = (30 * 60);
@@ -12,21 +12,20 @@ _setupVars = {
 
 _setupObjects =
 {
-	private _citylist = (sectors_bigtown select { _x in opfor_sectors });
-	if (count _citylist < 3) exitWith {
-		diag_log format ["--- LRX Error: side mission VIP, cannot find spawn or path!"];
+	private _sectorlist = ((opfor_sectors call BIS_fnc_arrayShuffle) select [0, 3]);
+	if (count _sectorlist < 3) exitWith {
+		diag_log format ["--- LRX Error: side mission Ressource Convoy, cannot find spawn or path!"];
 		false;
 	};
-	
-	_citylist = ((_citylist call BIS_fnc_arrayShuffle) select [0, 3]);
-	_missionPos = markerPos (_citylist select 0);
+
+	_missionPos = markerPos (_sectorlist select 0);
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
 
 	// veh1 + squad
 	_vehicle1 = [_missionPos, a3w_vip_vehicle, 3, false, GRLIB_side_enemy, false] call F_libSpawnVehicle;
 	private _vehicle_seat = (_vehicle1 emptyPositions "") min 5;
 	if (_vehicle_seat < 3) exitWith {
-		diag_log format ["--- LRX Error: side mission VIP, vehicle %1, no enough seat!", typeOf _vehicle1];
+		diag_log format ["--- LRX Error: side mission Ressource Convoy, vehicle %1, no enough seat!", typeOf _vehicle1];
 		deleteVehicle _vehicle1;
 		false;
 	};
@@ -74,7 +73,7 @@ _setupObjects =
 	_aiGroup setFormation "COLUMN";
 	_aiGroup setBehaviourStrong "SAFE";
 	_aiGroup setCombatMode "GREEN";
-	_aiGroup setSpeedMode "LIMITED";
+	_aiGroup setSpeedMode "NORMAL";
 	
 	// behaviour on waypoints
 	[_aiGroup] call F_deleteWaypoints;
@@ -84,15 +83,15 @@ _setupObjects =
 		_waypoint setWaypointFormation "COLUMN";
 		_waypoint setWaypointBehaviour "SAFE";
 		_waypoint setWaypointCombatMode "GREEN";
-		_waypoint setWaypointSpeed "LIMITED";
+		_waypoint setWaypointSpeed "NORMAL";
 		_waypoint setWaypointCompletionRadius 200;
-	} forEach _citylist;
+	} forEach _sectorlist;
 
-	_last_waypoint = waypointPosition [_aiGroup, (count _citylist)-1];
+	_last_waypoint = waypointPosition [_aiGroup, (count _sectorlist)-1];
 	_missionPos = getPosATL leader _aiGroup;
 	_missionPicture = getText (configFile >> "CfgVehicles" >> (a3w_vip_vehicle param [0,""]) >> "picture");
 	_vehicleName = getText (configFile >> "CfgVehicles" >> (a3w_vip_vehicle param [0,""]) >> "displayName");
-	_missionHintText = ["STR_VIP_CAP_MSG", sideMissionColor];
+	_missionHintText = ["STR_RSC_CONV_MSG", sideMissionColor];
 	_convoy_attacked = false;
 	_disembark_troops = false;
 	_vehicles = [_vehicle1, _vehicle2, _vehicle3];
@@ -135,7 +134,7 @@ _waitUntilCondition = {
 		_disembark_troops = true;
 		{ doStop (driver _x) } foreach [_vehicle1, _vehicle2, _vehicle3];
 		sleep 1;
-		{ [_x, false] spawn F_ejectUnit; sleep 0.2 } forEach (units _aiGroup + [_vip]);
+		{ [_x, false] spawn F_ejectUnit; sleep 0.2 } forEach (units _aiGroup) + [_vip];
 		sleep 1;
 		[_aiGroup, getPosATL _vip] spawn defence_ai;
 	};

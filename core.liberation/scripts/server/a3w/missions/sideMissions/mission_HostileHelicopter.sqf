@@ -8,6 +8,7 @@ _setupVars = {
 	_citylist = [] call cityList;
 	_locationsArray = nil; // locations are generated on the fly from towns
 	_missionTimeout = (30 * 60);
+	_ignoreAiDeaths = true;
 };
 
 _setupObjects = {
@@ -17,21 +18,20 @@ _setupObjects = {
     	false;
 	};
 	_vehicleClass = selectRandom opfor_troup_transports_heli;
-
-	_aiGroup = createGroup [GRLIB_side_enemy, true];
-	//_aiGroup setCombatMode "WHITE"; // Defensive behaviour
-	_aiGroup setCombatMode "RED"; // Agressive behaviour
-	_aiGroup setBehaviourStrong "AWARE";
-	_speedMode = if (count AllPlayers > 2) then { "FULL" } else { "NORMAL" };
-	_aiGroup setSpeedMode _speedMode;
-
 	_vehicle = [_missionPos, _vehicleClass] call F_libSpawnVehicle;
+	_aiGroup = createGroup [GRLIB_side_enemy, true];
 	(crew _vehicle) joinSilent _aiGroup;
 	_leader = driver _vehicle;
 	_leader setSkill 0.70;
 	_leader setSkill ["courage", 1];
 	_leader allowFleeing 0;
 	_aiGroup selectLeader _leader;
+
+	//_aiGroup setCombatMode "WHITE"; // Defensive behaviour
+	_aiGroup setCombatMode "RED"; // Agressive behaviour
+	_aiGroup setBehaviourStrong "AWARE";
+	_speedMode = if (count AllPlayers > 2) then { "FULL" } else { "NORMAL" };
+	_aiGroup setSpeedMode _speedMode;
 
 	// behaviour on waypoints
 	[_aiGroup] call F_deleteWaypoints;
@@ -78,10 +78,10 @@ _successExec = {
 		};
 
 		sleep 2;
-		private _wreckPos = getPosATL _veh;
-		if (!surfaceIsWater _wreckPos) then {
-			[ammobox_o_typename, _wreckPos, false] call boxSetup;
-			[ammobox_o_typename, _wreckPos, false] call boxSetup;
+		private _sea_deep = round ((getPosATL _veh select 2) - (getPosASL _veh select 2));
+		if (_sea_deep <= 20) then {
+			[ammobox_o_typename, getPos _veh, false] call boxSetup;
+			[ammobox_o_typename, getPos _veh, false] call boxSetup;
 		};
 	};
 

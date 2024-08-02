@@ -222,7 +222,8 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 // Prisoners Convoy
 _mission_name = "mission_PrisonerConvoy";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
-	if (count blufor_sectors >= 10) then {
+	private _military = count (sectors_military select { _x in opfor_sectors });
+	if (_military >= 3) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;
@@ -232,7 +233,8 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 // Ressource Convoy
 _mission_name = "mission_RessourceConvoy";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
-	if (count blufor_sectors >= 20) then {
+	private _factory = count (sectors_factory select { _x in opfor_sectors });
+	if (_factory >= 3) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;
