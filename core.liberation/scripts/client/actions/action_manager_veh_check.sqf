@@ -60,20 +60,20 @@ GRLIB_checkAction_Wreck = {
 
 GRLIB_checkAction_SendArsenal = {
 	params ["_target", "_unit"];
-	(GRLIB_filter_arsenal == 4 && loadAbs _target > 0 && [_unit, "ARSENAL", GRLIB_ActionDist_10, false] call F_check_near)
+	(GRLIB_filter_arsenal == 4 && alive _target && [_unit, _target] call is_owner && loadAbs _target > 0 && [_unit, "ARSENAL", GRLIB_ActionDist_10, false] call F_check_near)
 };
 
 GRLIB_checkAction_Pickup_Weapons = {
 	params ["_target", "_unit"];
-	(GRLIB_player_is_menuok && alive _target && load _target < 0.8 && !(_target getVariable ['R3F_LOG_disabled', false]))
+	(GRLIB_player_is_menuok && alive _target && [_unit, _target] call is_owner && load _target < 0.8 && !(_target getVariable ['R3F_LOG_disabled', false]))
 };
 
 GRLIB_checkAction_UnpackInventory = {
 	params ["_target", "_unit"];
-	(GRLIB_player_is_menuok && alive _target && load _target > 0.2)
+	(GRLIB_player_is_menuok && alive _target && [_unit, _target] call is_owner  && load _target > 0.2)
 };
 
 GRLIB_checkAction_Speak = {
 	params ["_target", "_unit"];
-	(_target getVariable ["GRLIB_civ_incd", 0] > 0)
+	(alive _target && _target getVariable ["GRLIB_civ_incd", 0] > 0)
 };
