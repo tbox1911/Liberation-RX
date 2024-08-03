@@ -1,8 +1,12 @@
 if (isDedicated || (!hasInterface && !isServer)) exitWith {};
-params [ "_notiftype", [ "_obj_position", getpos player ] ];
+params ["_notiftype", ["_obj_position", getpos player]];
 
 if ( _notiftype == 0 ) then {
-	["lib_intel_prisoner"] call BIS_fnc_showNotification;
+	if (_obj_position) then {
+		["lib_intel_prisoner_friendly"] call BIS_fnc_showNotification;
+	} else {
+		["lib_intel_prisoner"] call BIS_fnc_showNotification;
+	};
 };
 
 if ( _notiftype == 1 ) then {

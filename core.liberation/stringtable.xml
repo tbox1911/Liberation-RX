@@ -1105,6 +1105,10 @@
 			<Portuguese>Interrogamos um prisioneiro.</Portuguese>
 			<Czech>Vyslechli jsme vězně.</Czech>
 		</Key>
+		<Key ID="STR_NOTIFICATION_PRISONER_FRIENDLY_TEXT">
+			<Original>We freed an Allied prisoner.</Original>
+			<French>Nous avons liberé un prisonnier Allié.</French>
+		</Key>		
 		<Key ID="STR_NOTIFICATION_DOCUMENT_TEXT">
 			<Original>We have found secret documents.</Original>
 			<French>Nous avons trouvé des documents secrets</French>

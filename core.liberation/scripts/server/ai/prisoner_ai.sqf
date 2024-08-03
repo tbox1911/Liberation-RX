@@ -64,9 +64,9 @@ while {alive _unit} do {
 		[_unit, "stop"] remoteExec ["remote_call_prisoner", 0];
 		sleep 3;
 		if (isServer) then {
-			[_unit, _leader] spawn prisonner_captured;
+			[_unit, _leader, _friendly] spawn prisonner_captured;
 		} else {
-			[_unit, _leader] remoteExec ["prisonner_captured", 2];
+			[_unit, _leader, _friendly] remoteExec ["prisonner_captured", 2];
 		};
 	};
 
@@ -99,5 +99,5 @@ while {alive _unit} do {
 		_fleeing = false;
 	};
 
-	sleep 4;
+	sleep 3;
 };

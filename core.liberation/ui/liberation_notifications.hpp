@@ -55,7 +55,7 @@ class CfgNotifications
 		color[] = {0,1,1,1};
 		sound = "taskUpdated";
 		priority = 3;
-    };	
+    };
 	class lib_fob_built : lib_default_notification
     {
 		title = $STR_NOTIFICATION_FOBBUILT_TITLE;
@@ -97,7 +97,7 @@ class CfgNotifications
 		color[] = {0,1,1,1};
 		sound = "taskUpdated";
 		priority = 3;
-    };	
+    };
 	class lib_fob_upgraded : lib_default_notification
     {
 		title = $STR_NOTIFICATION_FOBUPGRADE_TITLE;
@@ -106,7 +106,7 @@ class CfgNotifications
 		color[] = {0,1,1,1};
 		sound = "taskUpdated";
 		priority = 3;
-    };		
+    };
 	class lib_battlegroup : lib_default_notification
     {
 		title = $STR_NOTIFICATION_BATTLEGROUP_TITLE;
@@ -129,6 +129,10 @@ class CfgNotifications
 	class lib_intel_prisoner : lib_intel
 	{
 		description = $STR_NOTIFICATION_PRISONER_TEXT;
+	};
+	class lib_intel_prisoner_friendly : lib_intel
+	{
+		description = $STR_NOTIFICATION_PRISONER_FRIENDLY_TEXT;
 	};
     class lib_intel_document : lib_intel
     {
@@ -158,8 +162,8 @@ class CfgNotifications
     {
 		description = $STR_NOTIFICATION_CONVOY_FAILED_TEXT;
     	color[] = {1,0,0,1};
-		sound = "taskFailed";		
-    };	
+		sound = "taskFailed";
+    };
 	class lib_secondary_a3w_mission : lib_secondary_fob_destroyed
 	{
 		description = $STR_SIDE_START;
