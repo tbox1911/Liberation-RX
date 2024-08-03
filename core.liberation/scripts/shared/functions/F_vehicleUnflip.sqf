@@ -1,6 +1,6 @@
 params ["_vehicle"];
 
-//if ( _vehicle isKindOf "Ship" ) exitWith {};
+if (surfaceIsWater (getPos _vehicle)) exitWith {};
 
 if ((vectorUp _vehicle) select 2 < 0.60) then {
     _vehicle setpos [(getPosATL _vehicle) select 0, (getPosATL _vehicle) select 1, 0.5];
