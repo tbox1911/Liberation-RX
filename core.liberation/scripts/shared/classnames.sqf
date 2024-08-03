@@ -263,7 +263,7 @@ if ( isNil "civilian_boats" ) then {
 };
 boats_names = [FOB_boat_typename, FOB_carrier] + civilian_boats + opfor_boats + boats_west;
 
-// *** LRX - A3W ***
+// *** LRX - A3W Side Mission ***
 if ( isNil "guard_squad" ) then {
 	guard_squad = [
 		"O_GEN_Commander_F",
@@ -333,7 +333,15 @@ if ( isNil "a3w_heal_medics" ) then {
 };
 
 if ( isNil "a3w_heal_tent" ) then {
-	a3w_heal_tent = "Land_MedicalTent_01_white_IDAP_open_F"
+	a3w_heal_tent = "Land_MedicalTent_01_white_IDAP_open_F";
+};
+
+if ( isNil "a3w_truck_covered" ) then {
+	a3w_truck_covered = "C_Truck_02_covered_F";
+};
+
+if ( isNil "a3w_truck_open" ) then {
+	a3w_truck_open = "C_Truck_02_transport_F";
 };
 
 // *** SOURCES ***

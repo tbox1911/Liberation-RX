@@ -12,32 +12,25 @@ _setupVars = {
 
 _setupObjects = {
 	_missionEnd = [(markerpos _missionLocation)] call F_findSafePlace;
-	if (count _missionEnd == 0) exitWith { 
-    	diag_log format ["--- LRX Error: side mission SD, cannot find spawn point - %1", _missionLocation];
+	if (count _missionEnd == 0) exitWith {
+    	diag_log format ["--- LRX Error: side mission SD, cannot find final spawn point - %1", _missionLocation];
     	false;
-	};	
+	};
 
+	private _max_waypoints = 4;
 	private _convoy_destinations = [];
 	private _sector_list = (blufor_sectors - sectors_tower);
-	private _max_try = 20;
-	private _max_waypoints = 3;
-
 	if (count _sector_list < _max_waypoints) exitWith {
 		diag_log format ["--- LRX Error: side mission SD, not enough sectors - %1 %2", _missionLocation, _sector_list];
 		false;
 	};
 
-	while { count _convoy_destinations < _max_waypoints && _max_try > 0} do {
-		_start_pos = selectRandom _sector_list;
-		_convoy_destinations = [_start_pos, 3500, _sector_list, _max_waypoints] call F_getSectorPath;
-		_max_try = _max_try - 1;
-	};
-
+	private _convoy_destinations = [4000, _sector_list, _max_waypoints] call F_getSectorPath;
 	if (count _convoy_destinations < _max_waypoints) exitWith {
 		diag_log format ["--- LRX Error: side mission SD, cannot find path - %1", _convoy_destinations];
 		false;
 	};
-	
+
 	_missionPos =  markerPos (_convoy_destinations select 0) getPos [100, random 360];
 	_missionPos2 = markerPos (_convoy_destinations select 1) getPos [100, random 360];
 	_missionPos3 = markerPos (_convoy_destinations select 2) getPos [100, random 360];
@@ -115,7 +108,7 @@ _successExec = {
 	{ [_x, 7] call F_addReput } forEach ([_quest_item, 10] call F_getNearbyPlayers);
 	["GRLIB_A3W_Mission_SD_Marker"] remoteExec ["deleteMarkerLocal", 0];
 	GRLIB_A3W_Mission_SD = nil;
-	publicVariable "GRLIB_A3W_Mission_SD";	
+	publicVariable "GRLIB_A3W_Mission_SD";
 	_successHintMessage = ["STR_SPECIALDELI_MESSAGE3", sideMissionColor];
 	for "_i" from 1 to (selectRandom [1,2]) do {
 		[ammobox_i_typename, _missionEnd, false] call boxSetup;

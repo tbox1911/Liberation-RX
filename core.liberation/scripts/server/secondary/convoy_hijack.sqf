@@ -2,19 +2,11 @@ params [ ["_mission_cost", 0], "_caller" ];
 if ( count (opfor_sectors - sectors_tower) < 4) exitWith { [gamelogic, "Could not find enough free sectors for convoy hijack mission"] remoteExec ["globalChat", 0] };
 
 // Get Path & Check
-private ["_start_marker", "_pos", "_nearestroad", "_land"];
-private _convoy_destinations_markers = [];
-private _convoy_destinations = [];
-private _max_try = 10;
 private _max_waypoints = 5;
 private _sector_list = (opfor_sectors - sectors_tower);
-
-while { count _convoy_destinations_markers < _max_waypoints && _max_try > 0} do {
-	_start_marker = selectRandom _sector_list;
-	_convoy_destinations_markers = [_start_marker, 4000, _sector_list, _max_waypoints] call F_getSectorPath;
-    _max_try = _max_try - 1;
-};
-
+private _convoy_destinations_markers = [6000, _sector_list, _max_waypoints] call F_getSectorPath;
+private _convoy_destinations = [];
+private ["_pos", "_nearestroad", "_land"];
 {
 	_pos = (markerPos _x);
 	_nearestroad = [_pos, 100] call BIS_fnc_nearestRoad;
@@ -28,14 +20,14 @@ while { count _convoy_destinations_markers < _max_waypoints && _max_try > 0} do 
 	};
  } foreach _convoy_destinations_markers;
 
-if ( count _convoy_destinations < 3) exitWith { [gamelogic, "Could not find enough free sectors for convoy hijack mission"] remoteExec ["globalChat", 0] };
+ if ( count _convoy_destinations < 3) exitWith { [gamelogic, "Could not find enough free sectors for convoy hijack mission"] remoteExec ["globalChat", 0] };
 
 // Check Box
 private _boxes_amount = 0;
 {
 	if ( _x select 0 == opfor_transport_truck ) exitWith { _boxes_amount = (count _x) - 2 };
 } foreach box_transport_config;
-if ( _boxes_amount == 0 ) exitWith { diag_log "Opfor ammobox truck classname doesn't allow for ammobox transport, correct your classnames.sqf"; };
+if ( _boxes_amount == 0 ) exitWith { diag_log "Opfor ammobox truck classname doesn't allow for ammobox transport, correct your classnames.sqf" };
 
 //-----------------------------------------
 // Start Mission
@@ -122,10 +114,6 @@ sleep 1;
 _troop_vehicle lock _lock;
 
 (driver _transport_vehicle) MoveTo (_convoy_destinations select 1);
-_convoy_group setFormation "COLUMN";
-_convoy_group setBehaviourStrong "AWARE";
-_convoy_group setCombatMode "WHITE";
-_convoy_group setSpeedMode "LIMITED";
 
 //-----------------------------------------
 // Markers
@@ -164,7 +152,7 @@ while { _mission_in_progress } do {
 	if ( !_convoy_attacked ) then {
 		{
 			_killed = ({!(alive _x)} count (crew _x) > 0);
-			if ( !(alive _x) || (damage _x > 0.3) || _killed && (count ([getPosATL _x, 3000] call F_getNearbyPlayers) > 0) ) then { _convoy_attacked = true; };
+			if ( !(alive _x) || (damage _x > 0.3) || _killed && (count ([getPosATL _x, 3000] call F_getNearbyPlayers) > 0) ) then { _convoy_attacked = true };
 		} foreach [_scout_vehicle, _transport_vehicle, _troop_vehicle];
 	};
 
