@@ -12,7 +12,7 @@ _setupVars = {
 
 _setupObjects = {
 	private _min_waypoints = 4;
-	private _citylist = (sectors_military select { _x in opfor_sectors });
+	private _citylist = (sectors_military select { _x in opfor_sectors && !(_x in active_sectors) });
 	if (count _citylist < _min_waypoints) exitWith {
 		diag_log format ["--- LRX Error: side mission Priso Convoy, no enough City!"];
 		false;
