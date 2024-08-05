@@ -13,7 +13,7 @@ _setupVars = {
 _setupObjects = {
 	_missionPos = [(markerpos _missionLocation)] call F_findSafePlace;
 	if (count _missionPos == 0) exitWith { 
-    	diag_log format ["--- LRX Error: side mission VC, cannot find spawn point!"];
+    	diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", _missionType];
     	false;
 	};
 	_vehicle = [_missionPos, selectRandom opfor_vehicles, 3, false, GRLIB_side_enemy, false] call F_libSpawnVehicle;

@@ -46,7 +46,7 @@ _setupObjects = {
 	} foreach (_sectors call BIS_fnc_arrayShuffle);
 
 	if (count _missionPos == 0) exitWith { 
-    	diag_log format ["--- LRX Error: side mission RB, cannot find spawn point!"];
+    	diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", _missionType];
     	false;
 	};
 	//----- build Check point ---------------------------------

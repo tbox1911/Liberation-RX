@@ -11,7 +11,7 @@ _setupVars = {
 
 _setupObjects = {
 	if (count sectors_bigtown <= 1) exitWith { 
-    	diag_log format ["--- LRX Error: side mission BR, cannot find patrol point!"];
+    	diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", _missionType];
     	false;
 	};
 	_missionPos = markerPos (selectRandom sectors_bigtown);

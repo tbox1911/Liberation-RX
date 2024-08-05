@@ -12,7 +12,7 @@ _setupVars = {
 _setupObjects = {
 	_missionPos = [(markerpos _missionLocation)] call F_findSafePlace;
 	if (count _missionPos == 0) exitWith { 
-    	diag_log format ["--- LRX Error: side mission AW, cannot find spawn point!"];
+    	diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", _missionType];
     	false;
 	};
 	_vehicle = createVehicle [GRLIB_sar_wreck, _missionPos, [], 0, "NONE"];

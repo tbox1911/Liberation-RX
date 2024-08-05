@@ -15,7 +15,7 @@ _setupObjects =
 {
 	_missionPos = [(markerpos _missionLocation)] call F_findSafePlace;
 	if (count _missionPos == 0) exitWith { 
-    	diag_log format ["--- LRX Error: side mission WC, cannot find spawn point!"];
+    	diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", _missionType];
     	false;
 	};
 	_box1 = [ammobox_o_typename, _missionPos, true] call boxSetup;
