@@ -23,12 +23,12 @@ sleep 1;
 private _spawnpos = getPosATL _vehicle;
 
 [_pilot_group] call F_deleteWaypoints;
-private _waypoint = _pilot_group addWaypoint [_targetpos, 1];
+private _waypoint = _pilot_group addWaypoint [_targetpos, 100];
 _waypoint setWaypointType "MOVE";
 _waypoint setWaypointSpeed "FULL";
 _waypoint setWaypointBehaviour "SAFE";
 _waypoint setWaypointCombatMode "WHITE";
-_waypoint setWaypointCompletionRadius 200;
+_waypoint setWaypointCompletionRadius 300;
 {_x doFollow (leader _pilot_group)} foreach units _pilot_group;
 
 private _cargo_seat_free = _vehicle emptyPositions "Cargo";
@@ -73,12 +73,12 @@ if (_vehicle isKindOf "Plane_Base_F") then { _unload_dist = _unload_dist * 1.5 }
 
 	if (!alive _vehicle) exitWith {};
 	[_pilot_group] call F_deleteWaypoints;
-	private _waypoint = _pilot_group addWaypoint [_spawnpos, 1];
+	private _waypoint = _pilot_group addWaypoint [_spawnpos, 0];
 	_waypoint setWaypointType "MOVE";
 	_waypoint setWaypointSpeed "FULL";
 	_waypoint setWaypointBehaviour "SAFE";
 	_waypoint setWaypointCombatMode "WHITE";
-	_waypoint setWaypointCompletionRadius 150;
+	_waypoint setWaypointCompletionRadius 300;
 	_waypoint setWaypointStatements ["true", "[vehicle this] spawn clean_vehicle"];
 	{_x doFollow (leader _pilot_group)} foreach units _pilot_group;
 };
