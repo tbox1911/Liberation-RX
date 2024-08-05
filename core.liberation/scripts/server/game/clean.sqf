@@ -32,8 +32,6 @@ Instructions:
 	[] execVM "clean.sqf";				// If you put the file in mission directory
 	[] execVM "scripts\clean.sqf";		// If you put the file in a folder, in this case called "scripts"
 _________________________________________________________________________*/
-GRLIB_GC_Running = false;
-publicVariable "GRLIB_GC_Running";
 
 if (GRLIB_cleanup_vehicles == 0) exitWith {};
 
@@ -144,8 +142,6 @@ while {deleteManagerPublic} do {
 	};
 
 	diag_log format ["--- LRX Garbage Collector --- Start at: %1 - %2 fps", round(time), diag_fps];
-	GRLIB_GC_Running = true;
-	publicVariable "GRLIB_GC_Running";
 
 	// FORCE DELETE
 	_list = (allMissionObjects "Blood_01_Base_F");
@@ -181,19 +177,17 @@ while {deleteManagerPublic} do {
 					if ([_x, _deadMenDist, _hidden_from] call _isHidden) then {
 						deleteVehicle _x;
 						_stats = _stats + 1;
-						sleep 0.1;
 					};
 				} count allDeadMen;
+				sleep 0.1;
 				while {(((count allDeadMen) - _deadMenLimitMax) > 0)} do {
 					deleteVehicle (selectRandom allDeadMen);
 					_stats = _stats + 1;
-					sleep 0.1;
 				};
 			} else {
 				while {(((count allDeadMen) - _deadMenLimit) > 0)} do {
 					deleteVehicle (selectRandom allDeadMen);
 					_stats = _stats + 1;
-					sleep 0.1;
 				};
 			};
 		};
@@ -216,7 +210,6 @@ while {deleteManagerPublic} do {
 					if ([_x, _vehicleDist, _hidden_from] call _isHidden) then {
 						[_x] call clean_vehicle;
 						_stats = _stats + 1;
-						sleep 0.1;
 					};
 				} count (_nbVehicles);
 				sleep 0.1;
@@ -231,7 +224,6 @@ while {deleteManagerPublic} do {
 				while {(( (count (_nbVehicles)) - _vehiclesLimit) > 0)} do {
 					[selectRandom _nbVehicles] call clean_vehicle;
 					_stats = _stats + 1;
-					sleep 0.1;
 				};
 			};
 		};
@@ -249,7 +241,6 @@ while {deleteManagerPublic} do {
 						deleteVehicle _x;
 						_stats = _stats + 1;
 						_count = _count - 1;
-						sleep 0.1;
 					};
 				} count _list;
 				sleep 0.1;
@@ -265,7 +256,6 @@ while {deleteManagerPublic} do {
 					deleteVehicle (selectRandom _list);
 					_stats = _stats + 1;
 					_count = _count - 1;
-					sleep 0.1;
 				};
 			};
 		};
@@ -282,7 +272,6 @@ while {deleteManagerPublic} do {
 						deleteVehicle _x;
 						_stats = _stats + 1;
 						_count = _count - 1;
-						sleep 0.1;
 					};
 				} count _list;
 				sleep 0.1;
@@ -292,14 +281,12 @@ while {deleteManagerPublic} do {
 					deleteVehicle (selectRandom _list);
 					_stats = _stats + 1;
 					_count = _count - 1;
-					sleep 0.1;
 				};
 			} else {
 				while {((_count - _deadVehiclesLimit) > 0)} do {
 					deleteVehicle (selectRandom _list);
 					_stats = _stats + 1;
 					_count = _count - 1;
-					sleep 0.1;
 				};
 			};
 		};
@@ -317,7 +304,6 @@ while {deleteManagerPublic} do {
 						deleteVehicle _x;
 						_stats = _stats + 1;
 						_count = _count - 1;
-						sleep 0.1;
 					};
 				} count _list;
 			} else {
@@ -325,7 +311,6 @@ while {deleteManagerPublic} do {
 					deleteVehicle (selectRandom _list);
 					_stats = _stats + 1;
 					_count = _count - 1;
-					sleep 0.1;
 				};
 			};
 		};
@@ -343,14 +328,12 @@ while {deleteManagerPublic} do {
 					if ([_x, _minesDist ,_hidden_from] call _isHidden) then {
 						deleteVehicle _x;
 						_stats = _stats + 1;
-						sleep 0.1;
 					};
 				} count allMines;
 			} else {
 				while {(((count allMines) - _minesLimit) > 0)} do {
 					deleteVehicle (selectRandom allMines);
 					_stats = _stats + 1;
-					sleep 0.1;
 				};
 			};
 		};
@@ -367,7 +350,6 @@ while {deleteManagerPublic} do {
 						deleteVehicle _x;
 						_stats = _stats + 1;
 						_count = _count - 1;
-						sleep 0.1;
 					};
 				} count _list;
 			} else {
@@ -375,7 +357,6 @@ while {deleteManagerPublic} do {
 					deleteVehicle (selectRandom _list);
 					_stats = _stats + 1;
 					_count = _count - 1;
-					sleep 0.1;
 				};
 			};
 		};
@@ -392,7 +373,6 @@ while {deleteManagerPublic} do {
 						deleteVehicle _x;
 						_stats = _stats + 1;
 						_count = _count - 1;
-						sleep 0.1;
 					};
 				} count _list;
 			} else {
@@ -400,14 +380,10 @@ while {deleteManagerPublic} do {
 					deleteVehicle (selectRandom _list);
 					_stats = _stats + 1;
 					_count = _count - 1;
-					sleep 0.1;
 				};
 			};
 		};
 	};
 
-	sleep 2;
-	GRLIB_GC_Running = false;
-	publicVariable "GRLIB_GC_Running";
 	diag_log format ["--- LRX Garbage Collector --- End at: %1 - Delete: %2 objects - %3 fps", round(time), _stats, diag_fps];
 };

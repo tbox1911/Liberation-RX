@@ -1,6 +1,5 @@
 if ( GRLIB_endgame == 1 || GRLIB_global_stop == 1 ) exitWith {};
 params ["_liberated_sector"];
-waitUntil {sleep 0.5; !GRLIB_GC_Running };
 
 private _spawn_marker = "";
 private _objective_pos = zeropos;
