@@ -3,11 +3,18 @@ if (isNil "_vehicle") exitWith {};
 
 sleep random 0.3;
 
-//only one player at time
+// Only one player at time
 if ((_vehicle getVariable ["recycle_in_use", false])) exitWith {};
 _vehicle setVariable ["recycle_in_use", true, true];
 
 private _veh_class = typeOf _vehicle;
+
+// Land Money
+if (_veh_class == money_typename) exitWith {
+	private _ammount_ammo = round (75 + floor random 100);
+	[player, _ammount_ammo, 0] remoteExec ["ammo_add_remote_call", 2];
+	deleteVehicle _vehicle;
+};
 
 // XP AmmoBox
 private _result = false;
@@ -36,7 +43,7 @@ waitUntil { dialog };
 private _ammount_ammo = round (((_objectinfo select 2) * GRLIB_recycling_percentage) * (1 - damage _vehicle));
 private _ammount_fuel = _objectinfo select 3;
 if (_veh_class == fuelbarrel_typename) then { _ammount_ammo = 0 };
-if (_veh_class in GRLIB_Ammobox_keep + GRLIB_disabled_arsenal) then { 
+if (_veh_class in GRLIB_Ammobox_keep + GRLIB_disabled_arsenal) then {
 	_ammount_ammo = round (([_vehicle] call F_loadoutPrice) * GRLIB_recycling_percentage);
 };
 ctrlSetText [131, format ["%1", _objectinfo select 1]];

@@ -49,7 +49,7 @@ _setupObjects = {
 		"b_gen_van",
 		"kart_",
 		"quadbike_"
-	];	
+	];
 	private _allowed = {
 		params ["_item", "_blaklist"];
 		private _ret = true;
@@ -60,7 +60,7 @@ _setupObjects = {
 	if (isNil "_bandits_car") exitWith {
 		diag_log format ["--- LRX Error: side mission %1, cannot find vehicle classname!", _missionType];
 		false;
-	};	
+	};
 
 	// veh1
 	_vehicle1 = [_missionPos, _bandits_car, 0, false, GRLIB_side_enemy, false] call F_libSpawnVehicle;
@@ -125,6 +125,14 @@ _setupObjects = {
 	(units _grp) joinSilent _aiGroup;
 	(driver _vehicle3) MoveTo (_convoy_destinations select 1);
 	sleep 1;
+
+	{
+		_x setSkill 0.86;
+		_x addMPEventHandler ["MPKilled", {
+			_this spawn kill_manager;
+			money_typename createVehicle getPos (_this select 0);
+		}];
+	} forEach (units _aiGroup);
 
 	// define final
 	_missionPos = getPosATL leader _aiGroup;

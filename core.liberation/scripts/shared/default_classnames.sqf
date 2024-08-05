@@ -51,6 +51,7 @@ opfor_ammo_container = "Land_Pod_Heli_Transport_04_ammo_F";
 opfor_texture_overide = [];
 opfor_statics = [];
 opfor_boats = [];
+money_typename = "Land_Money_F";
 repair_offroad = "C_Offroad_01_repair_F";
 commander_classname = "B_officer_F";
 crewman_classname = "B_crew_F";

@@ -437,7 +437,8 @@ GRLIB_vehicle_whitelist = [
 	repairbox_typename,
 	waterbarrel_typename,
 	fuelbarrel_typename,
-	foodbarrel_typename
+	foodbarrel_typename,
+	money_typename
 ] + GRLIB_vehicle_whitelist_west;
 
 // Blacklist Vehicle (lock, paint, delete)
