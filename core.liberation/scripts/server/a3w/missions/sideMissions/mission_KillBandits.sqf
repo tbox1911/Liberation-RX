@@ -1,18 +1,18 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private [ "_vip", "_convoy_attacked", "_disembark_troops"];
+private ["_convoy_attacked", "_disembark_troops"];
 
 _setupVars = {
-	_missionType = "STR_VIP_CAP";
+	_missionType = "STR_KILL_BANDIT";
 	_locationsArray = nil; // locations are generated on the fly from towns
-	_ignoreAiDeaths = true;
+	_ignoreAiDeaths = false;
 	_missionTimeout = (40 * 60);
 };
 
 _setupObjects = {
-	private _min_waypoints = 3;
-	private _citylist = (sectors_bigtown select { _x in opfor_sectors && !(_x in active_sectors) });
+	private _min_waypoints = 5;
+	private _citylist = (sectors_capture select { _x in blufor_sectors && !(_x in active_sectors) });
 	if (count _citylist < _min_waypoints) exitWith {
 		diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", _missionType];
 		false;
@@ -41,17 +41,37 @@ _setupObjects = {
 
 	_missionPos = _convoy_destinations select 0;
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
+	//if ((tolower typeOf _vehicle) find "bicycle" > -1) exitWith {};
+	private _blacklist = [
+		"tractor",
+		"bicycle",
+		"medevac",
+		"b_gen_van",
+		"kart_",
+		"quadbike_"
+	];	
+	private _allowed = {
+		params ["_item", "_blaklist"];
+		private _ret = true;
+		{ if (_item find _x >= 0) exitWith { _ret = false } } foreach _blaklist;
+		_ret;
+	};
+	private _bandits_car = selectRandom (civilian_vehicles select { _x isKindOf "Car" && [tolower _x, _blacklist] call _allowed });
+	if (isNil "_bandits_car") exitWith {
+		diag_log format ["--- LRX Error: side mission %1, cannot find vehicle classname!", _missionType];
+		false;
+	};	
 
-	// veh1 + squad
-	_vehicle1 = [_missionPos, a3w_vip_vehicle, 0, false, GRLIB_side_enemy, false] call F_libSpawnVehicle;
-	private _vehicle_seat = (_vehicle1 emptyPositions "") min 5;
+	// veh1
+	_vehicle1 = [_missionPos, _bandits_car, 0, false, GRLIB_side_enemy, false] call F_libSpawnVehicle;
+	private _vehicle_seat = (_vehicle1 emptyPositions "") min 4;
 	if (_vehicle_seat < 3) exitWith {
 		diag_log format ["--- LRX Error: side mission %1, vehicle %2, no enough seat!", _missionType ,typeOf _vehicle1];
 		deleteVehicle _vehicle1;
 		false;
 	};
 
-	private _grp = [_missionPos, _vehicle_seat, "guard", false] call createCustomGroup;
+	private _grp = [_missionPos, _vehicle_seat, "militia", false] call createCustomGroup;
 	[_vehicle1, _grp] call F_manualCrew;
 	(units _grp) joinSilent _aiGroup;
 	(driver _vehicle1) limitSpeed 50;
@@ -85,56 +105,39 @@ _setupObjects = {
 	private _timout = round (time + (3 * 60));
 	waitUntil {sleep 1; _vehicle1 distance2D _missionPos > 30 || time > _timout};
 
-	// veh2 + vip + squad
-	_vehicle2 = [_missionPos, a3w_vip_vehicle, 0, false, GRLIB_side_enemy, false] call F_libSpawnVehicle;
+	// veh2
+	_vehicle2 = [_missionPos, _bandits_car, 0, false, GRLIB_side_enemy, false] call F_libSpawnVehicle;
 	_vehicle2 setConvoySeparation 50;
-	_grp = [_missionPos, (_vehicle_seat-1), "guard", false] call createCustomGroup;
+	_grp = [_missionPos, _vehicle_seat, "militia", false] call createCustomGroup;
 	[_vehicle2, _grp] call F_manualCrew;
 	(units _grp) joinSilent _aiGroup;
-
-	// VIP
-	_vip = _aiGroup createUnit ["O_Officer_Parade_Veteran_F", _missionPos, [], 0, "NONE"];
-	[_vip] joinSilent _aiGroup;
-	_vip addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage }];
-	_vip addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
-	_vip setVariable ["GRLIB_mission_AI", true, true];
-	_vip setSkill ["courage", 0.8];
-	_vip setrank "COLONEL";
-	_vip assignAsCargo _vehicle2;
-	_vip moveInCargo _vehicle2;
-	[_vip] spawn {
-		params ["_unit"];
-		waitUntil { sleep 1; (isNull objectParent _unit || !alive _unit) };
-		if (!alive _unit) exitWith {};
-		_unit setVariable ["GRLIB_mission_AI", false, true];
-		[_unit, false, true] spawn prisoner_ai;
-	};
 
 	// wait
 	(driver _vehicle2) MoveTo (_convoy_destinations select 1);
 	private _timout = round (time + (3 * 60));
 	waitUntil {sleep 1; _vehicle2 distance2D _missionPos > 30 || time > _timout};
 
-	// veh3 + squad
-	_vehicle3 = [_missionPos, a3w_vip_vehicle, 0, false, GRLIB_side_enemy, false] call F_libSpawnVehicle;
+	// veh3
+	_vehicle3 = [_missionPos, _bandits_car, 0, false, GRLIB_side_enemy, false] call F_libSpawnVehicle;
 	_vehicle3 setConvoySeparation 50;
-	_grp = [_missionPos, _vehicle_seat, "guard", false] call createCustomGroup;
+	_grp = [_missionPos, _vehicle_seat, "militia", false] call createCustomGroup;
 	[_vehicle3, _grp] call F_manualCrew;
 	(units _grp) joinSilent _aiGroup;
 	(driver _vehicle3) MoveTo (_convoy_destinations select 1);
+	sleep 1;
 
 	// define final
 	_missionPos = getPosATL leader _aiGroup;
-	_missionPicture = getText (configFile >> "CfgVehicles" >> (a3w_vip_vehicle param [0,""]) >> "picture");
-	_vehicleName = getText (configFile >> "CfgVehicles" >> (a3w_vip_vehicle param [0,""]) >> "displayName");
-	_missionHintText = ["STR_VIP_CAP_MSG", sideMissionColor];
+	_missionPicture = getText (configFile >> "CfgVehicles" >> (_bandits_car param [0,""]) >> "picture");
+	_vehicleName = getText (configFile >> "CfgVehicles" >> (_bandits_car param [0,""]) >> "displayName");
+	_missionHintText = ["STR_KILL_BANDIT_MSG", sideMissionColor];
 	_convoy_attacked = false;
 	_disembark_troops = false;
 	_vehicles = [_vehicle1, _vehicle2, _vehicle3];
 	true;
 };
 
-_waitUntilMarkerPos = { getPosATL _vip };
+_waitUntilMarkerPos = { getPosATL (_vehicles select 0) };
 _waitUntilExec = nil;
 _waitUntilCondition = {
 	if (!_convoy_attacked) then {
@@ -180,22 +183,21 @@ _waitUntilCondition = {
 			} forEach (crew _veh_cur);
 		} foreach _vehicles;
 		sleep 5;
-		[_aiGroup, getPosATL _vip] spawn defence_ai;
+		[_aiGroup, getPosATL (_vehicles select 0)] spawn defence_ai;
 	};
-	(!alive _vip);
+	false;
 };
 
-_waitUntilSuccessCondition = { alive _vip && side group _vip == GRLIB_side_friendly };
+//_waitUntilSuccessCondition = {};
 
 _failedExec = {
 	// Mission failed
-	_failedHintMessage = format ["The V.I.P is <br/><t color='%1'>ESCAPED</t>!<br/>We have lost a valuable source of Information.<br/><br/>Better luck next time!", sideMissionColor];
-	deleteVehicle _vip;
+	_failedHintMessage = format ["The Bandits are <br/><t color='%1'>ESCAPED</t>!<br/>They will still continue their crimes.<br/><br/>The local Population is unhappy...", sideMissionColor];
 };
 
 _successExec = {
 	// Mission completed
-	_successHintMessage = "Congratulation, the V.I.P has been <t color='%1'>CAPTURED</t>!<br/>Bring him back to any FOB for interrogation.";
+	_successHintMessage = "Congratulation, the Bandits are all <t color='%1'>DEAD</t>!<br/>Bring him back to any FOB for interrogation.";
 };
 
 _this call sideMissionProcessor;

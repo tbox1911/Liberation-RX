@@ -98,6 +98,8 @@ _setupObjects = {
 	};
 	_ressources = _vehicle2 getVariable ["GRLIB_ammo_truck_load", []];
 
+	// wait
+	(driver _vehicle2) MoveTo (_convoy_destinations select 1);
 	private _timout = round (time + (3 * 60));
 	waitUntil {sleep 1; _vehicle2 distance2D _missionPos > 30 || time > _timout};
 
@@ -111,6 +113,7 @@ _setupObjects = {
 		sleep 0.1;
 	} forEach (units _grp);
 	(crew _vehicle3) joinSilent _aiGroup;
+	(driver _vehicle3) MoveTo (_convoy_destinations select 1);
 
 	// define final
 	_missionPos = getPosATL leader _aiGroup;

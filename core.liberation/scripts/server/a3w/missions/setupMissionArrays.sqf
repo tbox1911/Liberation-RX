@@ -25,7 +25,8 @@ SideMissions = [
 	["mission_BaronRouge", 1],
 	["mission_HealCivilian", 1],
 	["mission_PrisonerConvoy", 1],
-	["mission_RessourceConvoy", 1]
+	["mission_RessourceConvoy", 1],
+	["mission_KillBandits", 1]
 ];
 
 SpawnMissionMarkers = (allMapMarkers select {["Mission_", _x] call F_startsWith}) apply {[_x, false, 0]};

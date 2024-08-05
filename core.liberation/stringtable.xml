@@ -7678,6 +7678,13 @@
 		<Key ID="STR_RSC_CONV_MSG">
 			<Original>An important &lt;t color='%1'&gt;Supplies Convoy&lt;/t&gt; is travelling the island.&lt;br/&gt;Intercept the convoy and capture the &lt;t color='%1'&gt;Supplies&lt;/t&gt;!</Original>
 		</Key>
+		<!-- mission_KillBandits.sqf -->
+		<Key ID="STR_KILL_BANDIT">
+			<Original>Kill the Bandits</Original>
+		</Key>
+		<Key ID="STR_KILL_BANDIT_MSG">
+			<Original>A band of ferocious &lt;t color='%1'&gt;Bandits&lt;/t&gt; is robbing the island.&lt;br/&gt;Stop them by all means. You have license to &lt;t color='%1'&gt;KILL&lt;/t&gt;!</Original>
+		</Key>
 		<!-- speak_manager.sqf -->
 		<Key ID="STR_SPEAKMANAGER1">
 			<Original>Hello, you see somes enemies around here ?</Original>
