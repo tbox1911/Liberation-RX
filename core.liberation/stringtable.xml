@@ -1108,7 +1108,7 @@
 		<Key ID="STR_NOTIFICATION_PRISONER_FRIENDLY_TEXT">
 			<Original>We freed an Allied prisoner.</Original>
 			<French>Nous avons liberé un prisonnier Allié.</French>
-		</Key>		
+		</Key>
 		<Key ID="STR_NOTIFICATION_DOCUMENT_TEXT">
 			<Original>We have found secret documents.</Original>
 			<French>Nous avons trouvé des documents secrets</French>
@@ -7569,6 +7569,7 @@
 		<Key ID="STR_INVASION_FAILED">
 			<Original>You have &lt;br/&gt;&lt;t color='%1'&gt;FAILED&lt;/t&gt;!!&lt;br/&gt;to defende %2 from the aggression.&lt;br/&gt;We have lost this sector...</Original>
 		</Key>
+
 		<!-- mission_TownInsurgency.sqf -->
 		<Key ID="STR_INSURGENCY">
 			<Original>Town Insurgency</Original>
@@ -7637,6 +7638,7 @@
 			<Chinese>物資已摧毀，做得很好！</Chinese>
 			<Czech>Zásoby byly shromážděny, dobře provedeno.</Czech>
 		</Key>
+
 		<!-- mission_Roadblock.sqf -->
 		<Key ID="STR_ROADBLOCK">
 			<Original>Random Checkpoints</Original>
@@ -7647,6 +7649,7 @@
 		<Key ID="STR_ROADBLOCK_MESSAGE2">
 			<Original>The Checkpoints have been cleared, well done.</Original>
 		</Key>
+
 		<!-- mission_SearchIntel.sqf -->
 		<Key ID="STR_SEARCH_INTEL">
 			<Original>Search for Intels</Original>
@@ -7657,13 +7660,21 @@
 		<Key ID="STR_SEARCH_INTEL_MESSAGE2">
 			<Original>All the Intels have been found, well done.</Original>
 		</Key>
+
 		<!-- mission_CaptureVIP.sqf -->
 		<Key ID="STR_VIP_CAP">
 			<Original>Capture VIP</Original>
 		</Key>
-		<Key ID="STR_VIP_CAP_MSG">
+		<Key ID="STR_VIP_CAP_MESSAGE1">
 			<Original>An important &lt;t color='%1'&gt;V.I.P&lt;/t&gt; is travelling the island.&lt;br/&gt;Intercept his convoy and capture him &lt;t color='%1'&gt;ALIVE&lt;/t&gt;!</Original>
 		</Key>
+		<Key ID="STR_VIP_CAP_MESSAGE2">
+			<Original>The V.I.P is &lt;t color='%1'&gt;ESCAPED&lt;/t&gt;!&lt;br/&gt;We have lost a valuable source of Information.&lt;br/&gt;&lt;br/&gt;Better luck next time!</Original>
+		</Key>
+		<Key ID="STR_VIP_CAP_MESSAGE3">
+			<Original>Congratulation, the V.I.P has been &lt;t color='%1'&gt;CAPTURED&lt;/t&gt;!&lt;br/&gt;Bring him back to any FOB for interrogation.</Original>
+		</Key>
+
 		<!-- mission_HeliCapture.sqf -->
 		<Key ID="STR_HELI_CAP">
 			<Original>Helicopter Capture</Original>
@@ -7671,27 +7682,49 @@
 		<Key ID="STR_HELI_CAP_MSG">
 			<Original>A &lt;t color='%2'&gt;%1&lt;/t&gt; has been immobilized, go Repair it and take it for your team!</Original>
 		</Key>
+
 		<!-- mission_PrisonerConvoy.sqf -->
 		<Key ID="STR_PRI_CONV">
 			<Original>Prisoners Convoy</Original>
 		</Key>
-		<Key ID="STR_PRI_CONV_MSG">
+		<Key ID="STR_PRI_CONV_MESSAGE1">
 			<Original>An important &lt;t color='%1'&gt;Prisoner Convoy&lt;/t&gt; is travelling the island.&lt;br/&gt;Intercept the convoy and &lt;t color='%1'&gt;FREE&lt;/t&gt; the prisoners!</Original>
 		</Key>
+		<Key ID="STR_PRI_CONV_MESSAGE2">
+			<Original>All the Prisoners in the convoy are &lt;br/&gt;&lt;t color='%1'&gt;DEAD&lt;/t&gt;!&lt;br/&gt;We have lost our brothers in Arms...</Original>
+		</Key>
+		<Key ID="STR_PRI_CONV_MESSAGE3">
+			<Original>Congratulation, Our brothers has been &lt;br/&gt;&lt;t color='%1'&gt;RESCUED&lt;/t&gt;!&lt;br/&gt;Bring them back to any FOB.</Original>
+		</Key>
+
 		<!-- mission_RessourceConvoy.sqf -->
 		<Key ID="STR_RSC_CONV">
 			<Original>Supplies Convoy</Original>
 		</Key>
-		<Key ID="STR_RSC_CONV_MSG">
+		<Key ID="STR_RSC_CONV_MESSAGE1">
 			<Original>An important &lt;t color='%1'&gt;Supplies Convoy&lt;/t&gt; is travelling the island.&lt;br/&gt;Intercept the convoy and capture the &lt;t color='%1'&gt;Supplies&lt;/t&gt;!</Original>
 		</Key>
+		<Key ID="STR_RSC_CONV_MESSAGE2">
+			<Original>All Ressources in the convoy has been &lt;br/&gt;&lt;t color='%1'&gt;DESTROYED&lt;/t&gt;!&lt;br/&gt;We have lost a valuable source of income.&lt;br/&gt;&lt;br/&gt;Better luck next time!</Original>
+		</Key>
+		<Key ID="STR_RSC_CONV_MESSAGE3">
+			<Original>Congratulation, All Ressources has been &lt;t color='%1'&gt;CAPTURED&lt;/t&gt;!&lt;br/&gt;You make uncle pSiKO proud of you!!</Original>
+		</Key>
+
 		<!-- mission_KillBandits.sqf -->
 		<Key ID="STR_KILL_BANDIT">
 			<Original>Kill the Bandits</Original>
 		</Key>
-		<Key ID="STR_KILL_BANDIT_MSG">
+		<Key ID="STR_KILL_BANDIT_MESSAGE1">
 			<Original>A band of ferocious &lt;t color='%1'&gt;Bandits&lt;/t&gt; is robbing the island.&lt;br/&gt;Stop them by all means. You have license to &lt;t color='%1'&gt;KILL&lt;/t&gt;!</Original>
 		</Key>
+		<Key ID="STR_KILL_BANDIT_MESSAGE2">
+			<Original>The Bandits are &lt;t color='%1'&gt;ESCAPED&lt;/t&gt;!&lt;br/&gt;They will still continue their crimes.&lt;br/&gt;&lt;br/&gt;The local Population is unhappy...</Original>
+		</Key>
+		<Key ID="STR_KILL_BANDIT_MESSAGE3">
+			<Original>Congratulation, the Bandits are all &lt;t color='%1'&gt;DEAD&lt;/t&gt;!&lt;br/&gt;The roads are safer now.</Original>
+		</Key>
+
 		<!-- speak_manager.sqf -->
 		<Key ID="STR_SPEAKMANAGER1">
 			<Original>Hello, you see somes enemies around here ?</Original>

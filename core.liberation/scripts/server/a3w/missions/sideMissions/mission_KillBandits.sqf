@@ -14,7 +14,7 @@ _setupObjects = {
 	private _min_waypoints = 5;
 	private _citylist = (sectors_capture select { _x in blufor_sectors && !(_x in active_sectors) });
 	if (count _citylist < _min_waypoints) exitWith {
-		diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", _missionType];
+		diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", localize _missionType];
 		false;
 	};
 
@@ -35,7 +35,7 @@ _setupObjects = {
 	} foreach _convoy_destinations_markers;
 
 	if (count _convoy_destinations < _min_waypoints) exitWith {
-		diag_log format ["--- LRX Error: side mission %1, cannot find sector path!", _missionType];
+		diag_log format ["--- LRX Error: side mission %1, cannot find sector path!", localize _missionType];
 		false;
 	};
 
@@ -48,17 +48,18 @@ _setupObjects = {
 		"medevac",
 		"b_gen_van",
 		"kart_",
-		"quadbike_"
+		"quadbike_",
+		"_van_"
 	];
-	private _allowed = {
+	private _allowed_veh = {
 		params ["_item", "_blaklist"];
 		private _ret = true;
 		{ if (_item find _x >= 0) exitWith { _ret = false } } foreach _blaklist;
 		_ret;
 	};
-	private _bandits_car = selectRandom (civilian_vehicles select { _x isKindOf "Car" && [tolower _x, _blacklist] call _allowed });
+	private _bandits_car = selectRandom (civilian_vehicles select { _x isKindOf "Car" && [tolower _x, _blacklist] call _allowed_veh });
 	if (isNil "_bandits_car") exitWith {
-		diag_log format ["--- LRX Error: side mission %1, cannot find vehicle classname!", _missionType];
+		diag_log format ["--- LRX Error: side mission %1, cannot find vehicle classname!", localize _missionType];
 		false;
 	};
 
@@ -71,7 +72,7 @@ _setupObjects = {
 		false;
 	};
 
-	private _grp = [_missionPos, _vehicle_seat, "militia", false] call createCustomGroup;
+	private _grp = [_missionPos, _vehicle_seat, "bandits", false] call createCustomGroup;
 	[_vehicle1, _grp] call F_manualCrew;
 	(units _grp) joinSilent _aiGroup;
 	(driver _vehicle1) limitSpeed 50;
@@ -108,7 +109,7 @@ _setupObjects = {
 	// veh2
 	_vehicle2 = [_missionPos, _bandits_car, 0, false, GRLIB_side_enemy, false] call F_libSpawnVehicle;
 	_vehicle2 setConvoySeparation 50;
-	_grp = [_missionPos, _vehicle_seat, "militia", false] call createCustomGroup;
+	_grp = [_missionPos, _vehicle_seat, "bandits", false] call createCustomGroup;
 	[_vehicle2, _grp] call F_manualCrew;
 	(units _grp) joinSilent _aiGroup;
 
@@ -120,25 +121,17 @@ _setupObjects = {
 	// veh3
 	_vehicle3 = [_missionPos, _bandits_car, 0, false, GRLIB_side_enemy, false] call F_libSpawnVehicle;
 	_vehicle3 setConvoySeparation 50;
-	_grp = [_missionPos, _vehicle_seat, "militia", false] call createCustomGroup;
+	_grp = [_missionPos, _vehicle_seat, "bandits", false] call createCustomGroup;
 	[_vehicle3, _grp] call F_manualCrew;
 	(units _grp) joinSilent _aiGroup;
 	(driver _vehicle3) MoveTo (_convoy_destinations select 1);
 	sleep 1;
 
-	{
-		_x setSkill 0.86;
-		_x addMPEventHandler ["MPKilled", {
-			_this spawn kill_manager;
-			money_typename createVehicle getPos (_this select 0);
-		}];
-	} forEach (units _aiGroup);
-
 	// define final
 	_missionPos = getPosATL leader _aiGroup;
 	_missionPicture = getText (configFile >> "CfgVehicles" >> (_bandits_car param [0,""]) >> "picture");
 	_vehicleName = getText (configFile >> "CfgVehicles" >> (_bandits_car param [0,""]) >> "displayName");
-	_missionHintText = ["STR_KILL_BANDIT_MSG", sideMissionColor];
+	_missionHintText = ["STR_KILL_BANDIT_MESSAGE1", sideMissionColor];
 	_convoy_attacked = false;
 	_disembark_troops = false;
 	_vehicles = [_vehicle1, _vehicle2, _vehicle3];
@@ -200,12 +193,13 @@ _waitUntilCondition = {
 
 _failedExec = {
 	// Mission failed
-	_failedHintMessage = format ["The Bandits are <br/><t color='%1'>ESCAPED</t>!<br/>They will still continue their crimes.<br/><br/>The local Population is unhappy...", sideMissionColor];
+	_failedHintMessage = ["STR_KILL_BANDIT_MESSAGE2", sideMissionColor];
+	{ [_x, -5] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
 };
 
 _successExec = {
-	// Mission completed
-	_successHintMessage = "Congratulation, the Bandits are all <t color='%1'>DEAD</t>!<br/>Bring him back to any FOB for interrogation.";
+	// Mission completed	
+	_successHintMessage = ["STR_KILL_BANDIT_MESSAGE3", sideMissionColor];
 };
 
 _this call sideMissionProcessor;

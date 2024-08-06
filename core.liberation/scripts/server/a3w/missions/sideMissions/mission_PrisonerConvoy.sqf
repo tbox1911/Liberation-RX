@@ -121,7 +121,7 @@ _setupObjects = {
 	_missionPos = getPosATL leader _aiGroup;
 	_missionPicture = getText (configFile >> "CfgVehicles" >> (a3w_truck_covered param [0,""]) >> "picture");
 	_vehicleName = getText (configFile >> "CfgVehicles" >> (a3w_truck_covered param [0,""]) >> "displayName");
-	_missionHintText = ["STR_PRI_CONV_MSG", sideMissionColor];
+	_missionHintText = ["STR_PRI_CONV_MESSAGE1", sideMissionColor];
 	_convoy_attacked = false;
 	_disembark_troops = false;
 	_vehicles = [_vehicle1, _vehicle2, _vehicle3];
@@ -187,7 +187,7 @@ _waitUntilSuccessCondition = {
 
 _failedExec = {
 	// Mission failed
-	_failedHintMessage = format ["All Prisoners in the convoy are <br/><t color='%1'>DEAD</t>!<br/>We have lost our brothers in Arms.<br/><br/>Better luck next time!", sideMissionColor];
+	_failedHintMessage = ["STR_PRI_CONV_MESSAGE2", sideMissionColor];
 	{ deleteVehicle _x } foreach _prisoners;
 	resources_intel = resources_intel - 50;
 	if (resources_intel < 0) then { resources_intel = 0 };
@@ -196,7 +196,7 @@ _failedExec = {
 
 _successExec = {
 	// Mission completed
-	_successHintMessage = ["Congratulation, the Prisoners has been <t color='%1'>RESCUED</t>!<br/>Bring them back to any FOB.", sideMissionColor];
+	_successHintMessage = ["STR_PRI_CONV_MESSAGE3", sideMissionColor];
 };
 
 _this call sideMissionProcessor;

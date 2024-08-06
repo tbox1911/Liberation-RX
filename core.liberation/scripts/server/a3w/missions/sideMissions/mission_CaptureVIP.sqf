@@ -51,7 +51,7 @@ _setupObjects = {
 		false;
 	};
 
-	private _grp = [_missionPos, _vehicle_seat, "guard", false] call createCustomGroup;
+	private _grp = [_missionPos, _vehicle_seat, "guards", false] call createCustomGroup;
 	[_vehicle1, _grp] call F_manualCrew;
 	(units _grp) joinSilent _aiGroup;
 	(driver _vehicle1) limitSpeed 50;
@@ -88,7 +88,7 @@ _setupObjects = {
 	// veh2 + vip + squad
 	_vehicle2 = [_missionPos, a3w_vip_vehicle, 0, false, GRLIB_side_enemy, false] call F_libSpawnVehicle;
 	_vehicle2 setConvoySeparation 50;
-	_grp = [_missionPos, (_vehicle_seat-1), "guard", false] call createCustomGroup;
+	_grp = [_missionPos, (_vehicle_seat-1), "guards", false] call createCustomGroup;
 	[_vehicle2, _grp] call F_manualCrew;
 	(units _grp) joinSilent _aiGroup;
 
@@ -118,7 +118,7 @@ _setupObjects = {
 	// veh3 + squad
 	_vehicle3 = [_missionPos, a3w_vip_vehicle, 0, false, GRLIB_side_enemy, false] call F_libSpawnVehicle;
 	_vehicle3 setConvoySeparation 50;
-	_grp = [_missionPos, _vehicle_seat, "guard", false] call createCustomGroup;
+	_grp = [_missionPos, _vehicle_seat, "guards", false] call createCustomGroup;
 	[_vehicle3, _grp] call F_manualCrew;
 	(units _grp) joinSilent _aiGroup;
 	(driver _vehicle3) MoveTo (_convoy_destinations select 1);
@@ -127,7 +127,7 @@ _setupObjects = {
 	_missionPos = getPosATL leader _aiGroup;
 	_missionPicture = getText (configFile >> "CfgVehicles" >> (a3w_vip_vehicle param [0,""]) >> "picture");
 	_vehicleName = getText (configFile >> "CfgVehicles" >> (a3w_vip_vehicle param [0,""]) >> "displayName");
-	_missionHintText = ["STR_VIP_CAP_MSG", sideMissionColor];
+	_missionHintText = ["STR_VIP_CAP_MESSAGE1", sideMissionColor];
 	_convoy_attacked = false;
 	_disembark_troops = false;
 	_vehicles = [_vehicle1, _vehicle2, _vehicle3];
@@ -189,13 +189,13 @@ _waitUntilSuccessCondition = { alive _vip && side group _vip == GRLIB_side_frien
 
 _failedExec = {
 	// Mission failed
-	_failedHintMessage = format ["The V.I.P is <br/><t color='%1'>ESCAPED</t>!<br/>We have lost a valuable source of Information.<br/><br/>Better luck next time!", sideMissionColor];
+	_failedHintMessage = ["STR_VIP_CAP_MESSAGE2", sideMissionColor];
 	deleteVehicle _vip;
 };
 
 _successExec = {
 	// Mission completed
-	_successHintMessage = ["Congratulation, the V.I.P has been <t color='%1'>CAPTURED</t>!<br/>Bring him back to any FOB for interrogation.", sideMissionColor];
+	_successHintMessage = ["STR_VIP_CAP_MESSAGE3", sideMissionColor];
 };
 
 _this call sideMissionProcessor;

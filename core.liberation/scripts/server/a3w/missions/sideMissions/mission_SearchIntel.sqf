@@ -180,12 +180,8 @@ _waitUntilCondition = {
 _failedExec = {
 	// Mission failed
 	{ deleteVehicle _x } forEach _intels;
-	[_missionPos, _grp_civ] spawn {
-		params ["_pos","_grp1"];
-		waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_pos, GRLIB_capture_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
-		{ deleteVehicle _x } forEach (units _grp1);
-		[_pos] call clearlandmines;
-	};
+	{ deleteVehicle _x } forEach (units _grp_civ);
+	[_missionPos] call clearlandmines;
 };
 
 _successExec = {

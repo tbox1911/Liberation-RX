@@ -87,7 +87,7 @@ _setupObjects = {
 
 	//----- spawn units ---------------------------------
 	private _nbUnits = 3;
-	_aiGroup = [_missionPos, _nbUnits, "guard"] call createCustomGroup;
+	_aiGroup = [_missionPos, _nbUnits, "guards"] call createCustomGroup;
 
 	private _guard = (units _aiGroup) select 0;
 	_guard setPos (getPos _bunker);

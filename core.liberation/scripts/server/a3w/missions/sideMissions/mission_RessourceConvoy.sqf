@@ -119,7 +119,7 @@ _setupObjects = {
 	_missionPos = getPosATL leader _aiGroup;
 	_missionPicture = getText (configFile >> "CfgVehicles" >> (a3w_truck_open param [0,""]) >> "picture");
 	_vehicleName = getText (configFile >> "CfgVehicles" >> (a3w_truck_open param [0,""]) >> "displayName");
-	_missionHintText = ["STR_RSC_CONV_MSG", sideMissionColor];
+	_missionHintText = ["STR_RSC_CONV_MESSAGE1", sideMissionColor];
 	_convoy_attacked = false;
 	_disembark_troops = false;
 	_vehicles = [_vehicle1, _vehicle2, _vehicle3];
@@ -185,13 +185,13 @@ _waitUntilSuccessCondition = {
 
 _failedExec = {
 	// Mission failed
-	_failedHintMessage = format ["All Ressources in the convoy are <br/><t color='%1'>DESTROYED</t>!<br/>We have lost a valuable source of income.<br/><br/>Better luck next time!", sideMissionColor];
+	_failedHintMessage = ["STR_RSC_CONV_MESSAGE2", sideMissionColor];
 	{ deleteVehicle _x } foreach _ressources;
 };
 
 _successExec = {
 	// Mission completed
-	_successHintMessage = ["Congratulation, All Ressources has been <t color='%1'>CAPTURED</t>!<br/>, well done.", sideMissionColor];
+	_successHintMessage = ["STR_RSC_CONV_MESSAGE3", sideMissionColor];
 };
 
 _this call sideMissionProcessor;
