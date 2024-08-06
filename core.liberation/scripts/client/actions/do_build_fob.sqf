@@ -2,8 +2,6 @@ private _box = (objectParent player);
 if (isNull _box) then { _box = cursorObject };
 private _box_type = typeOf _box;
 
-sleep random 0.3;
-
 //only one at time
 if ((_box getVariable ["box_in_use", false])) exitWith {};
 

@@ -1,8 +1,6 @@
 params ["_vehicle"];
 if (isNil "_vehicle") exitWith {};
 
-sleep random 0.3;
-
 //only one wreck at time
 if ((player getVariable ["salvage_wreck", false])) exitWith {};
 //only one player at time

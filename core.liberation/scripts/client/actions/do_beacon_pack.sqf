@@ -1,7 +1,5 @@
 private _tent = cursorObject;
 
-sleep random 0.3;
-
 //only one at time
 if ((_tent getVariable ["tent_in_use", false])) exitWith {};
 if (player getVariable ["GRLIB_action_inuse", false]) exitWith {};

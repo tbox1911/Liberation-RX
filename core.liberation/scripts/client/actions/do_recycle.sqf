@@ -1,8 +1,6 @@
 params ["_vehicle"];
 if (isNil "_vehicle") exitWith {};
 
-sleep random 0.3;
-
 // Only one player at time
 if ((_vehicle getVariable ["recycle_in_use", false])) exitWith {};
 _vehicle setVariable ["recycle_in_use", true, true];
