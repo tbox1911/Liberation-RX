@@ -16,8 +16,9 @@ private _side = GRLIB_side_enemy;
 switch (_type) do {
 	case ("infantry"): { _unitTypes = opfor_infantry };
 	case ("militia"): { _unitTypes = militia_squad };
+	case ("bandits"): { _unitTypes = militia_squad };
 	case ("divers"): { _unitTypes = divers_squad };
-	case ("guard"): { _unitTypes = guard_squad };
+	case ("guards"): { _unitTypes = guard_squad };
 	case ("medics"): {
 		_unitTypes = a3w_heal_medics;
 		_side = GRLIB_side_civilian;
@@ -42,6 +43,7 @@ private _grp = [_pos, _unitclass, _side, _type] call F_libSpawnUnits;
 //  Veteran > 0.65 and <= 0.85
 //  Expert > 0.85
 {
+	_x setSkill 0.70;
 	// cosmetic change
 	if (typeOf _x == "C_IDAP_Man_Paramedic_01_F") then {
 		//_unit addVest "V_Plain_medical_F";
@@ -52,22 +54,15 @@ private _grp = [_pos, _unitclass, _side, _type] call F_libSpawnUnits;
 		_x addHeadgear "H_Construction_earprot_vrana_F";
 		_x addGoggles "G_Respirator_white_F";
 	};
-
-	_x setSkill 0.70;
+	if (_type == "bandits") then {
+		_x setSkill 0.86;
+		_x addGoggles "G_Balaclava_lowprofile";
+	};
 	_x setSkill ["courage", 1];
 	_x allowFleeing 0;
 	_x setVariable ["GRLIB_mission_AI", true, true];
 	_x setVariable ["acex_headless_blacklist", true, true];
 } forEach (units _grp);
-
-if (_type == "guard") then {
-	private _unit = selectRandom (units _grp);
-	removeBackpack _unit;
-	_unit addBackpack "B_AssaultPack_blk";
-	_unit addWeapon "launch_MRAWS_green_F";
-	_unit addSecondaryWeaponItem "MRAWS_HEAT_F";
-	for "_i" from 1 to 2 do { _unit addItemToBackpack "MRAWS_HEAT_F" };
-};
 
 if (_patrol) then {
 	[_grp, _pos, _radius] spawn defence_ai;

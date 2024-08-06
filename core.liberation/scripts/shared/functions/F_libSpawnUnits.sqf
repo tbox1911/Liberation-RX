@@ -31,6 +31,20 @@ private ["_unit", "_pos", "_backpack"];
 		// diag_log format ["DBG: Create unit %1 at position %2", _unit, _pos];
 		[_unit] spawn F_fixModUnit;
 		if (_type == "militia") then { [_unit] call loadout_militia };
+		if (_type == "bandits") then { 
+			[_unit] call loadout_militia;
+			_unit addMPEventHandler ["MPKilled", {
+				params ["_unit", "_killer", "_instigator", "_useEffects"];
+				if (side group _killer != GRLIB_side_friendly || _killer distance2D _unit > 300) exitWith {};
+				if (floor random 3 == 0) then { money_typename createVehicle getPos _unit };
+			}];			
+		};
+		if (_type == "guards" && _forEachIndex % 4 == 0) then {
+			removeBackpack _unit;
+			_unit addBackpack "B_AssaultPack_blk";
+			_unit addWeapon "launch_MRAWS_green_F";
+		};
+
 		[_unit] spawn reammo_ai;
 
 		if (_type == "para") then {

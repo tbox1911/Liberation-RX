@@ -7,7 +7,7 @@ private _subtitle = _sub call BIS_fnc_localize;
 private _formated_text = "";
 private _safe_display = true;
 private _enemy_nearby = [player, GRLIB_sector_size, GRLIB_side_enemy] call F_getUnitsCount;
-if (_enemy_nearby > 0 || (behaviour player) in [ "COMBAT", "STEALTH"]) then { _safe_display = false };
+if (_enemy_nearby > 0 || (behaviour player) in ["COMBAT", "STEALTH"]) then { _safe_display = false };
 
 if (GRLIB_fancy_info == 2 && _safe_display) then {
 	if (typeName _text == "ARRAY") then {

@@ -9,6 +9,6 @@ if ( (typeOf _unit) in militia_loadout_overide ) then {
     _unit linkItem "ItemCompass";
 };
 
-if ( floor(random 100) < 40 ) then {
+if (floor random 100 < 40) then {
     _unit addPrimaryWeaponItem "acc_flashlight";
 };
