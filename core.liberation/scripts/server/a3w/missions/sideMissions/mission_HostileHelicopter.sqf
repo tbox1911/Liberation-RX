@@ -7,7 +7,7 @@ _setupVars = {
 	_missionType = "STR_HOSTILE_HELI";
 	_citylist = [] call cityList;
 	_locationsArray = nil; // locations are generated on the fly from towns
-	_missionTimeout = (30 * 60);
+	_missionTimeout = (35 * 60);
 	_ignoreAiDeaths = true;
 };
 

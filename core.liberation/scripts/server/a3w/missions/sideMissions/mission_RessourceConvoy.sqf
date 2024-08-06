@@ -191,7 +191,7 @@ _failedExec = {
 
 _successExec = {
 	// Mission completed
-	_successHintMessage = "Congratulation, All Ressources has been <t color='%1'>CAPTURED</t>!<br/>, well done.";
+	_successHintMessage = ["Congratulation, All Ressources has been <t color='%1'>CAPTURED</t>!<br/>, well done.", sideMissionColor];
 };
 
 _this call sideMissionProcessor;

@@ -189,11 +189,14 @@ _failedExec = {
 	// Mission failed
 	_failedHintMessage = format ["All Prisoners in the convoy are <br/><t color='%1'>DEAD</t>!<br/>We have lost our brothers in Arms.<br/><br/>Better luck next time!", sideMissionColor];
 	{ deleteVehicle _x } foreach _prisoners;
+	resources_intel = resources_intel - 50;
+	if (resources_intel < 0) then { resources_intel = 0 };
+	publicVariable "resources_intel";
 };
 
 _successExec = {
 	// Mission completed
-	_successHintMessage = "Congratulation, the Prisoners has been <t color='%1'>RESCUED</t>!<br/>Bring them back to any FOB.";
+	_successHintMessage = ["Congratulation, the Prisoners has been <t color='%1'>RESCUED</t>!<br/>Bring them back to any FOB.", sideMissionColor];
 };
 
 _this call sideMissionProcessor;

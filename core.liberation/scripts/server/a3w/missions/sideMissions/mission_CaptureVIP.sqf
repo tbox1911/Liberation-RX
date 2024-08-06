@@ -195,7 +195,7 @@ _failedExec = {
 
 _successExec = {
 	// Mission completed
-	_successHintMessage = "Congratulation, the V.I.P has been <t color='%1'>CAPTURED</t>!<br/>Bring him back to any FOB for interrogation.";
+	_successHintMessage = ["Congratulation, the V.I.P has been <t color='%1'>CAPTURED</t>!<br/>Bring him back to any FOB for interrogation.", sideMissionColor];
 };
 
 _this call sideMissionProcessor;
