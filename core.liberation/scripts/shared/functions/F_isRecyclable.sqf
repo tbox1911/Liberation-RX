@@ -1,7 +1,6 @@
 params ["_vehicle"];
 
 private _ret = false;
-
 private _alive = alive _vehicle;
 private _r3f_enabled = !(_vehicle getVariable ['R3F_LOG_disabled', false]);
 private _grl_isempty = (count (_vehicle getVariable ["GRLIB_ammo_truck_load", []]) == 0);
