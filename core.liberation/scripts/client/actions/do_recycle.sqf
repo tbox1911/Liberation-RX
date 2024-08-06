@@ -12,6 +12,8 @@ if (_veh_class == money_typename) exitWith {
 	private _ammount_ammo = round (75 + floor random 100);
 	[player, _ammount_ammo, 0] remoteExec ["ammo_add_remote_call", 2];
 	deleteVehicle _vehicle;
+	hint format [localize "STR_ADD_AMMO", name player, _ammount_ammo];
+	playSound "taskSucceeded";
 };
 
 // XP AmmoBox
@@ -23,7 +25,7 @@ if (_veh_class == ammobox_i_typename && [player] call F_getScore <= GRLIB_perm_l
 		deleteVehicle _vehicle;
 		[player, 50] remoteExec ["F_addScore", 2];
 		playSound "taskSucceeded";
-		hint format [localize "STR_AMMO_SELL", name player, 50];
+		hint format [localize "STR_ADD_SCORE", name player, 50];
 		sleep 0.5;
 	};
 };
@@ -55,7 +57,7 @@ if ( dialog ) then { closeDialog 0 };
 if ( dorecycle == 1 && !(isNull _vehicle) && (alive _vehicle || _veh_class in all_buildings_classnames) ) exitWith {
 	if (_veh_class in [ammobox_b_typename, ammobox_o_typename, ammobox_i_typename] && [player] call F_getScore <= GRLIB_perm_tank) then {
 		[player, 10] remoteExec ["F_addScore", 2];
-		hint format [localize "STR_AMMO_SELL", name player, 10];
+		hint format [localize "STR_ADD_SCORE", name player, 10];
 		playSound "taskSucceeded";
 	};
 	[player, _ammount_ammo, _ammount_fuel] remoteExec ["ammo_add_remote_call", 2];

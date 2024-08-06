@@ -6178,8 +6178,12 @@
 			<French>-- LOOTER CORPS</French>
 		</Key>
 		<Key ID="STR_NEUTRALIZE">
-			<Original>NEUTRALIZE</Original>
-			<French>NEUTRALIZER</French>
+			<Original>- NEUTRALIZE -</Original>
+			<French>- NEUTRALIZER -</French>
+		</Key>
+		<Key ID="STR_TAKE_MONEY">
+			<Original>-- TAKE MONEY</Original>
+			<French>-- PRENDRE ARGENT</French>
 		</Key>
 		<Key ID="STR_SEND_ARSENAL">
 			<Original>-- CARGO TO ARSENAL</Original>
@@ -6370,17 +6374,20 @@
 			<Portuguese>AMMO</Portuguese>
 			<Czech>AMMO</Czech>
 		</Key>
-		<Key ID="STR_AMMO_SELL">
-			<Original>%1\nScore + %2 Pts!</Original>
-			<Russian>%1\nScore + %2 Pts!</Russian>
-			<French>%1\nScore + %2 Pts!</French>
-			<Japanese>%1\nスコア + %2 ポイント！</Japanese>
-			<Chinesesimp>%1\n奖励 + %2 军功点！</Chinesesimp>
-			<Chinese>%1\n獎勵 + %2 軍功點！</Chinese>
-			<Portuguese>%1\nPontuação + %2 Pts!</Portuguese>
-			<Czech>%1\nSkóre + %2 bodů!</Czech>
+		<Key ID="STR_ADD_SCORE">
+			<Original>%1\n+ %2 XP!</Original>
+			<Russian>%1\n+ %2 XP!</Russian>
+			<French>%1\n+ %2 XP!</French>
+			<Japanese>%1\n+ %2 ポイント！</Japanese>
+			<Chinesesimp>%1\+ %2 军功点！</Chinesesimp>
+			<Chinese>%1\n+ %2 軍功點！</Chinese>
+			<Portuguese>%1\n+ %2 XP!</Portuguese>
+			<Czech>%1\n+ %2 XP!</Czech>
 		</Key>
-
+		<Key ID="STR_ADD_AMMO">
+			<Original>%1\n+ %2 Ammo!</Original>
+			<French>%1\n+ %2 Ammo!</French>
+		</Key>
 		<!-- do_refuel.sqf -->
 		<Key ID="STR_DO_REFUEL">
 			<Original>Fuel refilling Done.</Original>
