@@ -239,7 +239,6 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 			[_nextbuilding] call BIS_fnc_Carrier01PosUpdate;
 		};
 	} foreach _s1;
-	sleep 3;
 
 	// Objects
 	{
@@ -307,7 +306,6 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 			GRLIB_mobile_respawn pushback _nextbuilding;
 		};
 	} foreach _s2;
-	sleep 3;
 
 	// Vehicles
 	{
