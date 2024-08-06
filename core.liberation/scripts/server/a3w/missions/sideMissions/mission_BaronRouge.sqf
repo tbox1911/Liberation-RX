@@ -12,7 +12,7 @@ _setupVars = {
 
 _setupObjects = {
 	if (count sectors_bigtown <= 1) exitWith { 
-    	diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", _missionType];
+    	diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", localize _missionType];
     	false;
 	};
 	_missionPos = markerPos (selectRandom sectors_bigtown);
@@ -23,7 +23,7 @@ _setupObjects = {
 		_vehicleClass = selectRandom a3w_br_planes;
 	};
 	if (isNil "_vehicleClass") exitWith { 
-    	diag_log format ["--- LRX Error: side mission BR, cannot find vehicle class!"];
+    	diag_log format ["--- LRX Error: side mission %1, cannot find vehicle class!", localize _missionType];
     	false;
 	};
 

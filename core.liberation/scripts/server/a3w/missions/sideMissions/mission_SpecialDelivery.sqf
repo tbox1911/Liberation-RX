@@ -13,7 +13,7 @@ _setupVars = {
 _setupObjects = {
 	_missionEnd = [(markerpos _missionLocation)] call F_findSafePlace;
 	if (count _missionEnd == 0) exitWith {
-    	diag_log format ["--- LRX Error: side mission %1, cannot find final point!", _missionType];
+    	diag_log format ["--- LRX Error: side mission %1, cannot find final point!", localize _missionType];
     	false;
 	};
 
@@ -21,13 +21,13 @@ _setupObjects = {
 	private _convoy_destinations = [];
 	private _sector_list = (blufor_sectors - sectors_tower);
 	if (count _sector_list < _max_waypoints) exitWith {
-		diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", _missionType];
+		diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", localize _missionType];
 		false;
 	};
 
 	private _convoy_destinations = [4000, _sector_list, _max_waypoints] call F_getSectorPath;
 	if (count _convoy_destinations < _max_waypoints) exitWith {
-		diag_log format ["--- LRX Error: side mission %1, cannot find sector path!", _missionType];
+		diag_log format ["--- LRX Error: side mission %1, cannot find sector path!", localize _missionType];
 		false;
 	};
 

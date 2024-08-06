@@ -24,7 +24,7 @@ _setupObjects = {
 	private _min_waypoints = 4;
 	private _citylist = (sectors_military select { _x in opfor_sectors && !(_x in active_sectors) });
 	if (count _citylist < _min_waypoints) exitWith {
-		diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", _missionType];
+		diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", localize _missionType];
 		false;
 	};
 
@@ -45,7 +45,7 @@ _setupObjects = {
 	} foreach _convoy_destinations_markers;
 
 	if (count _convoy_destinations < _min_waypoints) exitWith {
-		diag_log format ["--- LRX Error: side mission %1, cannot find sector path!", _missionType];
+		diag_log format ["--- LRX Error: side mission %1, cannot find sector path!", localize _missionType];
 		false;
 	};
 
