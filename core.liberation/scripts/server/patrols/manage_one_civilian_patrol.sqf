@@ -22,7 +22,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 			_usable_sectors pushback _x;
 		};
 		sleep 0.1;
-	} foreach (sectors_bigtown + sectors_capture + sectors_factory + sectors_opfor - active_sectors);
+	} foreach (sectors_allSectors - active_sectors);
 
 	if ( count _usable_sectors > 0 ) then {
 		_sectorpos = markerPos (selectRandom _usable_sectors);
@@ -59,6 +59,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 			(
 				GRLIB_global_stop == 1 ||
 				(diag_fps < 25) ||
+				(count (waypoints _civ_grp) == 0) ||
 				({alive _x} count (units _civ_grp) == 0) ||
 				([_unit_pos, _radius, GRLIB_side_friendly] call F_getUnitsCount == 0) ||
 				(time > _unit_ttl)
