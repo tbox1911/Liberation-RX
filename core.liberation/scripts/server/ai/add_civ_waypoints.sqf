@@ -2,7 +2,6 @@ params ["_grp", "_basepos"];
 if (isNil "_grp" || isNil "_basepos") exitWith {};
 if (isNull _grp) exitWith {};
 
-private ["_waypoint", "_wp0", "_radius", "_nextpos"];
 private _civ_veh = objectParent (leader _grp);
 if (_civ_veh isKindOf "Ship") exitWith { [_grp, getPosATL _civ_veh, 80] spawn patrol_ai };
 
@@ -21,6 +20,7 @@ _grp setCombatMode _combatMode;
 _grp setBehaviourStrong  _behaviour;
 _grp setSpeedMode _speed;
 
+private ["_waypoint", "_wp0", "_radius", "_nextpos"];
 if (isNull _civ_veh) then {
 	private _max_try = 50;
 	while { (count (waypoints _grp) <= 4) && _max_try > 0} do {
@@ -50,7 +50,7 @@ if (isNull _civ_veh) then {
 	};
 
 	private _min_waypoints = 4;
-	private _citylist = ((sectors_bigtown + sectors_capture + sectors_factory + sectors_military) select { (_pos distance2D (markerPos _x) < _radius) && !(_x in active_sectors) });
+	private _citylist = ((sectors_allSectors - sectors_tower - active_sectors) select { (_pos distance2D (markerPos _x) < _radius) });
 	private _convoy_destinations_markers = [_radius, _citylist, _min_waypoints, 20, _check_water] call F_getSectorPath;
 	private _convoy_destinations = [_convoy_destinations_markers] call F_getPathRoadFilter;
 	if (count _convoy_destinations < _min_waypoints) exitWith {
@@ -67,6 +67,7 @@ if (isNull _civ_veh) then {
 		_waypoint setWaypointCompletionRadius 200;
 	} foreach _convoy_destinations;
 
+	_civ_veh setPos (_convoy_destinations select 0);
 	(driver _civ_veh) MoveTo (_convoy_destinations select 1);
 };
 
