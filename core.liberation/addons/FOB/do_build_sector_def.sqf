@@ -36,16 +36,14 @@ while { dialog && alive player } do {
         } forEach GRLIB_all_fobs;
 
         {
-            if !(_x in active_sectors) then {
-                _text = (markerText _x);
-                _defense_type = [_x] call F_getDefenseType;
-                lnbAddRow [110, [_text, (_defense_list select _defense_type)]];
-                lnbSetPicture  [110, [((lnbSize 110) select 0) - 1, 0], _icon];
-                lnbSetData [110, [((lnbSize 110) select 0) - 1, 0], _x];
-            };                
-        } foreach blufor_sectors;
+            _text = (markerText _x);
+            _defense_type = [_x] call F_getDefenseType;
+            lnbAddRow [110, [_text, (_defense_list select _defense_type)]];
+            lnbSetPicture  [110, [((lnbSize 110) select 0) - 1, 0], _icon];
+            lnbSetData [110, [((lnbSize 110) select 0) - 1, 0], _x];
+        } foreach (blufor_sectors - active_sectors);
         //lbSetCurSel [110, -1];
-        _refresh = false;        
+        _refresh = false;
     };
 
     if (build_action != 0) then {

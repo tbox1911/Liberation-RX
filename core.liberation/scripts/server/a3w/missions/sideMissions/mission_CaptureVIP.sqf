@@ -12,7 +12,7 @@ _setupVars = {
 
 _setupObjects = {
 	private _min_waypoints = 3;
-	private _citylist = (sectors_bigtown select { _x in opfor_sectors && !(_x in active_sectors) });
+	private _citylist = ((sectors_bigtown - active_sectors) select { _x in opfor_sectors });
 	if (count _citylist < _min_waypoints) exitWith {
 		diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", localize _missionType];
 		false;
@@ -54,7 +54,6 @@ _setupObjects = {
 
 	// veh2 + vip + squad
 	_vehicle2 = [_missionPos, a3w_vip_vehicle, 0, false, GRLIB_side_enemy, false] call F_libSpawnVehicle;
-	_vehicle2 setConvoySeparation 50;
 	_grp = [_missionPos, (_vehicle_seat-1), "guards", false] call createCustomGroup;
 	[_vehicle2, _grp] call F_manualCrew;
 	(units _grp) joinSilent _aiGroup;
@@ -84,7 +83,6 @@ _setupObjects = {
 
 	// veh3 + squad
 	_vehicle3 = [_missionPos, a3w_vip_vehicle, 0, false, GRLIB_side_enemy, false] call F_libSpawnVehicle;
-	_vehicle3 setConvoySeparation 50;
 	_grp = [_missionPos, _vehicle_seat, "guards", false] call createCustomGroup;
 	[_vehicle3, _grp] call F_manualCrew;
 	(units _grp) joinSilent _aiGroup;
@@ -98,59 +96,15 @@ _setupObjects = {
 	_convoy_attacked = false;
 	_disembark_troops = false;
 	_vehicles = [_vehicle1, _vehicle2, _vehicle3];
+
+	// Manage convoy
+	[_aiGroup, _vehicles] spawn convoy_ai;
 	true;
 };
 
 _waitUntilMarkerPos = { getPosATL _vip };
 _waitUntilExec = nil;
-_waitUntilCondition = {
-	if (!_convoy_attacked) then {
-		// Attacked ?
-		{
-			_veh_cur = _x;
-			_killed = ({ !alive _x } count (units _aiGroup) > 0);
-			if ( !(alive _veh_cur) || (damage _veh_cur > 0.2) || _killed && (count ([_veh_cur, GRLIB_sector_size] call F_getNearbyPlayers) > 0) ) then {
-				_convoy_attacked = true;
-			};
-		} foreach _vehicles;
-	};
-
-	if (!_convoy_attacked && !_disembark_troops) then {
-		// Drivers Follow
-		{
-			_veh_cur = _x;
-			_veh_leader = vehicle (leader _aiGroup);
-			if (speed _veh_cur < 2 && (_veh_cur distance2D _veh_leader > 50 || _veh_cur == _veh_leader)) then {
-				_veh_cur setFuel 1;
-				_veh_cur setDamage 0;
-				[_veh_cur] call F_vehicleUnflip;
-				_veh_cur setPos (getPos _veh_cur);
-				if (_veh_cur != _veh_leader) then {
-					(driver _veh_cur) doFollow (leader _aiGroup);
-					(driver _veh_cur) doMove getPosATL (leader _aiGroup);
-				};
-			};
-			sleep 1;
-		} foreach _vehicles;
-	};
-
-	if (_convoy_attacked && !_disembark_troops) then {
-		// Eject Troop
-		_disembark_troops = true;
-		{
-			_veh_cur = _x;
-			doStop (driver _veh_cur);
-			sleep 2;
-			{
-				[_x, false] spawn F_ejectUnit;
-				sleep 0.2
-			} forEach (crew _veh_cur);
-		} foreach _vehicles;
-		sleep 5;
-		[_aiGroup, getPosATL _vip] spawn defence_ai;
-	};
-	(!alive _vip);
-};
+_waitUntilCondition = { (!alive _vip) };
 
 _waitUntilSuccessCondition = { alive _vip && side group _vip == GRLIB_side_friendly };
 

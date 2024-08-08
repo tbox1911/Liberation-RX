@@ -24,7 +24,7 @@ private ["_waypoint", "_wp0", "_radius", "_nextpos"];
 if (isNull _civ_veh) then {
 	private _max_try = 50;
 	while { (count (waypoints _grp) <= 4) && _max_try > 0} do {
-		_radius = GRLIB_capture_size + ([[-150,0,80], 0] call F_getRND);
+		_radius = GRLIB_capture_size + ([[-150,0,150], 0] call F_getRND);
 		_nextpos = _basepos getPos [_radius, random 360];
 		if !(surfaceIsWater _nextpos) then {
 			_waypoint = _grp addWaypoint [_nextpos, 0];
@@ -37,15 +37,12 @@ if (isNull _civ_veh) then {
 		_max_try = _max_try - 1;
 	};
 } else {
-	//if (side _grp == GRLIB_side_civilian) then { _grp setBehaviourStrong "CARELESS" };
-
 	private _pos = getPosATL _civ_veh;
-	private _radius = GRLIB_spawn_max;
+	private _radius = GRLIB_spawn_max * 2;
 	private _check_water = true;
 
 	if (_civ_veh isKindOf "Air") then {
 		_pos = _basepos;
-		_radius = GRLIB_spawn_max * 2;
 		_check_water = false;
 	};
 
@@ -67,7 +64,7 @@ if (isNull _civ_veh) then {
 		_waypoint setWaypointCompletionRadius 200;
 	} foreach _convoy_destinations;
 
-	_civ_veh setPos (_convoy_destinations select 0);
+	if (_civ_veh isKindOf "LandVehicle") then {	_civ_veh setPos (_convoy_destinations select 0) };
 	(driver _civ_veh) MoveTo (_convoy_destinations select 1);
 };
 

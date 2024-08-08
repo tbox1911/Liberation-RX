@@ -12,7 +12,7 @@ _setupVars = {
 
 _setupObjects = {
 	private _min_waypoints = 4;
-	private _citylist = ((sectors_military + sectors_factory) select { _x in opfor_sectors && !(_x in active_sectors) });
+	private _citylist = ((sectors_military + sectors_factory - active_sectors) select { _x in opfor_sectors });
 	if (count _citylist < _min_waypoints) exitWith {
 		diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", localize _missionType];
 		false;
@@ -45,44 +45,49 @@ _setupObjects = {
 
 	// veh2 + prisoners
 	_vehicle2 = [_missionPos, a3w_truck_covered, 0] call F_libSpawnVehicle;
-	_vehicle2 setConvoySeparation 50;
 	(crew _vehicle2) joinSilent _aiGroup;
 
-	// Prisoners
 	_prisoners = [];
-	_grp = [_missionPos, 5, "prisoner", false] call createCustomGroup;
-	{
-		_prisoners pushBack _x;
-		removeAllWeapons _x;
-		_x setSkill ["courage", 0.8];
-		_x assignAsCargo _vehicle2;
-        _x moveInCargo _vehicle2;
-		[_x] spawn {
-			params ["_unit"];
-			waitUntil { sleep 1; (isNull objectParent _unit || !alive _unit) };
-			if (!alive _unit) exitWith {};
-			_unit setVariable ["GRLIB_mission_AI", false, true];
-			[_unit, true, false] spawn prisoner_ai;
-		};
-		sleep 0.1;
-	} forEach (units _grp);
+	if !(isNull _vehicle2) then {
+		// Prisoners
+		private _grp = [_missionPos, 5, "prisoner", false] call createCustomGroup;
+		{
+			_prisoners pushBack _x;
+			removeAllWeapons _x;
+			_x setSkill ["courage", 0.8];
+			_x assignAsCargo _vehicle2;
+			_x moveInCargo _vehicle2;
+			[_x] spawn {
+				params ["_unit"];
+				waitUntil { sleep 1; (isNull objectParent _unit || !alive _unit) };
+				if (!alive _unit) exitWith {};
+				_unit setVariable ["GRLIB_mission_AI", false, true];
+				[_unit, true, false] spawn prisoner_ai;
+			};
+			sleep 0.1;
+		} forEach (units _grp);
 
-	// wait
-	(driver _vehicle2) MoveTo (_convoy_destinations select 1);
-	private _timout = round (time + (3 * 60));
-	waitUntil {sleep 1; _vehicle2 distance2D _missionPos > 30 || time > _timout};
+		// wait
+		(driver _vehicle2) MoveTo (_convoy_destinations select 1);
+		private _timout = round (time + (3 * 60));
+		waitUntil {sleep 1; _vehicle2 distance2D _missionPos > 30 || time > _timout};
+	};
 
 	// veh3
 	_vehicle3 = [_missionPos, a3w_truck_covered, 0] call F_libSpawnVehicle;
-	_vehicle3 setConvoySeparation 50;
-	_grp = [_missionPos, 8, "infantry", false] call createCustomGroup;
-	{
-		_x assignAsCargo _vehicle3;
-        _x moveInCargo _vehicle3;
-		sleep 0.1;
-	} forEach (units _grp);
 	(crew _vehicle3) joinSilent _aiGroup;
-	(driver _vehicle3) MoveTo (_convoy_destinations select 1);
+
+	if !(isNull _vehicle3) then {
+		// troops
+		private _grp = [_missionPos, 8, "infantry", false] call createCustomGroup;
+		{
+			_x assignAsCargo _vehicle3;
+			_x moveInCargo _vehicle3;
+			sleep 0.1;
+		} forEach (units _grp);
+		(units _grp) joinSilent _aiGroup;
+		(driver _vehicle3) MoveTo (_convoy_destinations select 1);
+	};
 
 	// define final
 	_missionPos = getPosATL leader _aiGroup;
@@ -92,59 +97,15 @@ _setupObjects = {
 	_convoy_attacked = false;
 	_disembark_troops = false;
 	_vehicles = [_vehicle1, _vehicle2, _vehicle3];
+
+	// Manage convoy
+	[_aiGroup, _vehicles] spawn convoy_ai;
 	true;
 };
 
 _waitUntilMarkerPos = { getPosATL (_prisoners select 0) };
 _waitUntilExec = nil;
-_waitUntilCondition = {
-	if (!_convoy_attacked) then {
-		// Attacked ?
-		{
-			_veh_cur = _x;
-			_killed = ({ !alive _x } count (units _aiGroup) > 0);
-			if ( !(alive _veh_cur) || (damage _veh_cur > 0.2) || _killed && (count ([_veh_cur, GRLIB_sector_size] call F_getNearbyPlayers) > 0) ) then {
-				_convoy_attacked = true;
-			};
-		} foreach _vehicles;
-	};
-
-	if (!_convoy_attacked && !_disembark_troops) then {
-		// Drivers Follow
-		{
-			_veh_cur = _x;
-			_veh_leader = vehicle (leader _aiGroup);
-			if (speed _veh_cur < 2 && (_veh_cur distance2D _veh_leader > 50 || _veh_cur == _veh_leader)) then {
-				_veh_cur setFuel 1;
-				_veh_cur setDamage 0;
-				[_veh_cur] call F_vehicleUnflip;
-				_veh_cur setPos (getPos _veh_cur);
-				if (_veh_cur != _veh_leader) then {
-					(driver _veh_cur) doFollow (leader _aiGroup);
-					(driver _veh_cur) doMove getPosATL (leader _aiGroup);
-				};
-			};
-			sleep 1;
-		} foreach _vehicles;
-	};
-
-	if (_convoy_attacked && !_disembark_troops) then {
-		// Eject Troop
-		_disembark_troops = true;
-		{
-			_veh_cur = _x;
-			doStop (driver _veh_cur);
-			sleep 2;
-			{
-				[_x, false] spawn F_ejectUnit;
-				sleep 0.2
-			} forEach (crew _veh_cur);
-		} foreach _vehicles;
-		sleep 5;
-		[_aiGroup, getPosATL (_vehicles select 1)] spawn defence_ai;
-	};
-	(({ alive _x } count _prisoners) == 0);
-};
+_waitUntilCondition = {	(({ alive _x } count _prisoners) == 0) };
 
 _waitUntilSuccessCondition = {
 	private _alive_units = { alive _x } count _prisoners;

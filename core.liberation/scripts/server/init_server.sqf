@@ -84,6 +84,7 @@ add_convoy_waypoints = compileFinal preprocessFileLineNumbers "scripts\server\ai
 defence_ai = compileFinal preprocessFileLineNumbers "scripts\server\ai\defence_ai.sqf";
 battlegroup_ai = compileFinal preprocessFileLineNumbers "scripts\server\ai\battlegroup_ai.sqf";
 building_defence_ai = compileFinal preprocessFileLineNumbers "scripts\server\ai\building_defence_ai.sqf";
+convoy_ai = compileFinal preprocessFileLineNumbers "scripts\server\ai\convoy_ai.sqf";
 escape_ai = compileFinal preprocessFileLineNumbers "scripts\server\ai\escape_ai.sqf";
 prisoner_ai = compileFinal preprocessFileLineNumbers "scripts\server\ai\prisoner_ai.sqf";
 civilian_ai = compileFinal preprocessFileLineNumbers "scripts\server\ai\civilian_ai.sqf";

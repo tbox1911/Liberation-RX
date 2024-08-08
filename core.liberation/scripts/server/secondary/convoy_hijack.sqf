@@ -52,7 +52,6 @@ waitUntil {sleep 1; _scout_vehicle distance2D _spawnpos > 30 || time > _timout};
 private _transport_vehicle = [_spawnpos, opfor_transport_truck, 0] call F_libSpawnVehicle;
 (crew _transport_vehicle) joinSilent _convoy_group;
 
-_transport_vehicle setConvoySeparation 40;
 _transport_vehicle allowCrewInImmobile [true, true];
 _transport_vehicle addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage } ];
 for "_n" from 1 to _boxes_amount do { [_transport_vehicle, ammobox_o_typename] call attach_object_direct };
@@ -66,7 +65,6 @@ waitUntil {sleep 1; _transport_vehicle distance2D _spawnpos > 30 || time > _timo
 private _troop_vehicle = [_spawnpos, opfor_transport_truck, 0] call F_libSpawnVehicle;
 (crew _troop_vehicle) joinSilent _convoy_group;
 
-_troop_vehicle setConvoySeparation 40;
 _troop_vehicle allowCrewInImmobile [true, true];
 _troop_vehicle addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage } ];
 private _troops_group = [_spawnpos, ([] call F_getAdaptiveSquadComp), GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
@@ -106,12 +104,12 @@ for "_i" from 0 to ((count _convoy_destinations) -1) do {
 [ 4, _spawnpos ] remoteExec ["remote_call_intel", 0];
 
 //-----------------------------------------
+// Manage convoy
+[_convoy_group, [_scout_vehicle, _transport_vehicle, _troop_vehicle]] spawn convoy_ai;
+
 // Mission loop
-private _mission_timeout = time + (2*3600);	// 2 hours tiemout
+private _mission_timeout = time + 3600;	// 1 hours tiemout
 private _mission_in_progress = true;
-private _convoy_attacked = false;
-private _convoy_flee = false;
-private _disembark_troops = false;
 
 while { _mission_in_progress } do {
 	if ( !(alive _transport_vehicle) || (side group _transport_vehicle == GRLIB_side_friendly) || time >= _mission_timeout) then {
@@ -119,43 +117,6 @@ while { _mission_in_progress } do {
 	};
 
 	_convoy_marker setMarkerPos (getpos _transport_vehicle);
-
-	if ( !_convoy_attacked ) then {
-		{
-			_killed = ({!(alive _x)} count (crew _x) > 0);
-			if ( !(alive _x) || (damage _x > 0.3) || _killed && (count ([getPosATL _x, 3000] call F_getNearbyPlayers) > 0) ) then { _convoy_attacked = true };
-		} foreach [_scout_vehicle, _transport_vehicle, _troop_vehicle];
-	};
-
-	if ( _convoy_attacked && !_disembark_troops) then {
-		_disembark_troops = true;
-		{ _x removeAllEventHandlers "HandleDamage" } foreach [_scout_vehicle, _transport_vehicle, _troop_vehicle];
-		[_troops_group, _troop_vehicle] call F_ejectGroup;
-		_troops_group setCombatBehaviour "COMBAT";
-		_troops_group setCombatMode "RED";
-		[_troops_group, getPosATL _troop_vehicle, 30] spawn defence_ai;
-	};
-
-	if ( _convoy_attacked && !_convoy_flee) then {
-		_convoy_flee = true;
-		_convoy_group setCombatBehaviour "COMBAT";
-		_convoy_group setSpeedMode "FULL";
-	};
-
-	_veh_leader = vehicle (leader _convoy_group);
-	{
-		_veh = vehicle _x;
-		if (_x == driver _veh && speed _veh < 2 && (_x distance2D _veh_leader > 50 || _veh == vehicle _veh_leader) && behaviour _x != "COMBAT") then {
-			_veh setFuel 1;
-			_veh setDamage 0;
-			[_veh] call F_vehicleUnflip;
-			if (_veh != _veh_leader) then {
-				(driver _veh) doFollow (leader _convoy_group);
-				(driver _veh) doMove getPosATL (leader _convoy_group);
-			};
-			sleep 60;
-		};
-	} forEach (units _convoy_group);
 	sleep 5;
 };
 
