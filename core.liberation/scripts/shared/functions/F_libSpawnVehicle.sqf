@@ -53,7 +53,7 @@ if ( _classname isKindOf "Air" ) then {
 	};
 
 	if (_classname != "") then {
-		_obstacle = (nearestObjects [_spawnpos, ["All"], 1]);
+		private _obstacle = (nearestObjects [_spawnpos, ["All"], 4, true]);
 		if (count _obstacle == 0) then {
 			_vehicle = createVehicle [_classname, zeropos, [], 0, "NONE"];
 			_vehicle allowDamage false;
