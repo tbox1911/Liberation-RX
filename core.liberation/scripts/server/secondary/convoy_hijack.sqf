@@ -5,22 +5,8 @@ if ( count (opfor_sectors - sectors_tower) < 4) exitWith { [gamelogic, "Could no
 private _max_waypoints = 5;
 private _sector_list = (opfor_sectors - sectors_tower);
 private _convoy_destinations_markers = [6000, _sector_list, _max_waypoints] call F_getSectorPath;
-private _convoy_destinations = [];
-private ["_pos", "_nearestroad", "_land"];
-{
-	_pos = (markerPos _x);
-	_nearestroad = [_pos, 100] call BIS_fnc_nearestRoad;
-	_land = !(surfaceIsWater _pos);
-	if (_land) then {
-		if (isNull _nearestroad) then {
-			_convoy_destinations pushback _pos;
-		} else {
-			_convoy_destinations pushback (getpos _nearestroad);
-		};
-	};
- } foreach _convoy_destinations_markers;
-
- if ( count _convoy_destinations < 3) exitWith { [gamelogic, "Could not find enough free sectors for convoy hijack mission"] remoteExec ["globalChat", 0] };
+private _convoy_destinations = [_convoy_destinations_markers] call F_getPathRoadFilter;
+if (count _convoy_destinations < 3) exitWith { [gamelogic, "Could not find enough free sectors for convoy hijack mission"] remoteExec ["globalChat", 0] };
 
 // Check Box
 private _boxes_amount = 0;
@@ -54,32 +40,15 @@ sleep 2;
 
 //-----------------------------------------
 // Waypoints
-_convoy_group setFormation "COLUMN";
-_convoy_group setBehaviourStrong "SAFE";
-_convoy_group setCombatMode "GREEN";
-_convoy_group setSpeedMode "LIMITED";
-
-[_convoy_group] call F_deleteWaypoints;
-{
-	_waypoint = _convoy_group addWaypoint [_x, 0];
-	_waypoint setWaypointType "MOVE";
-	_waypoint setWaypointFormation "COLUMN";
-	_waypoint setWaypointBehaviour "SAFE";
-	_waypoint setWaypointCombatMode "GREEN";
-	_waypoint setWaypointSpeed "LIMITED";
-	_waypoint setWaypointCompletionRadius 200;
-} forEach _convoy_destinations;
-
-_wp0 = waypointPosition [_convoy_group, 0];
-_waypoint = _convoy_group addWaypoint [_wp0, 0];
-_waypoint setWaypointType "CYCLE";
-
-(driver _scout_vehicle) MoveTo (_convoy_destinations select 1);
+[_convoy_group, _convoy_destinations] call add_convoy_waypoints;
 
 //-----------------------------------------
-// ammo transport
+// wait 
+(driver _scout_vehicle) MoveTo (_convoy_destinations select 1);
 private _timout = round (time + (3 * 60));
 waitUntil {sleep 1; _scout_vehicle distance2D _spawnpos > 30 || time > _timout};
+
+// ammo transport
 private _transport_vehicle = [_spawnpos, opfor_transport_truck, 0] call F_libSpawnVehicle;
 (crew _transport_vehicle) joinSilent _convoy_group;
 
@@ -87,11 +56,13 @@ _transport_vehicle setConvoySeparation 40;
 _transport_vehicle allowCrewInImmobile [true, true];
 _transport_vehicle addEventHandler ["HandleDamage", { private [ "_damage" ]; if ( side (_this select 3) != GRLIB_side_friendly ) then { _damage = 0 } else { _damage = _this select 2 }; _damage } ];
 for "_n" from 1 to _boxes_amount do { [_transport_vehicle, ammobox_o_typename] call attach_object_direct };
-(driver _transport_vehicle) MoveTo (_convoy_destinations select 1);
 
-// troop transport
+// wait
+(driver _transport_vehicle) MoveTo (_convoy_destinations select 1);
 private _timout = round (time + (3 * 60));
 waitUntil {sleep 1; _transport_vehicle distance2D _spawnpos > 30 || time > _timout};
+
+// troop transport
 private _troop_vehicle = [_spawnpos, opfor_transport_truck, 0] call F_libSpawnVehicle;
 (crew _troop_vehicle) joinSilent _convoy_group;
 

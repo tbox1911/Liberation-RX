@@ -22,28 +22,14 @@ _setupObjects = {
 	};
 
 	private _min_waypoints = 4;
-	private _citylist = (sectors_military select { _x in opfor_sectors && !(_x in active_sectors) });
+	private _citylist = ((sectors_military + sectors_factory) select { _x in opfor_sectors && !(_x in active_sectors) });
 	if (count _citylist < _min_waypoints) exitWith {
 		diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", localize _missionType];
 		false;
 	};
 
 	private _convoy_destinations_markers = [6000, _citylist, _min_waypoints] call F_getSectorPath;
-	private _convoy_destinations = [];
-	private ["_pos", "_nearestroad", "_land"];
-	{
-		_pos = (markerPos _x);
-		_nearestroad = [_pos, 100] call BIS_fnc_nearestRoad;
-		_land = !(surfaceIsWater _pos);
-		if (_land) then {
-			if (isNull _nearestroad) then {
-				_convoy_destinations pushback _pos;
-			} else {
-				_convoy_destinations pushback (getpos _nearestroad);
-			};
-		};
-	} foreach _convoy_destinations_markers;
-
+	private _convoy_destinations = [_convoy_destinations_markers] call F_getPathRoadFilter;
 	if (count _convoy_destinations < _min_waypoints) exitWith {
 		diag_log format ["--- LRX Error: side mission %1, cannot find sector path!", localize _missionType];
 		false;
@@ -60,26 +46,7 @@ _setupObjects = {
 	sleep 1;
 
 	// Waypoints
-	_aiGroup setFormation "COLUMN";
-	_aiGroup setBehaviourStrong "SAFE";
-	_aiGroup setCombatMode "GREEN";
-	_aiGroup setSpeedMode "LIMITED";
-
-	// behaviour on waypoints
-	[_aiGroup] call F_deleteWaypoints;
-	{
-		_waypoint = _aiGroup addWaypoint [_x, 0];
-		_waypoint setWaypointType "MOVE";
-		_waypoint setWaypointFormation "COLUMN";
-		_waypoint setWaypointBehaviour "SAFE";
-		_waypoint setWaypointCombatMode "GREEN";
-		_waypoint setWaypointSpeed "LIMITED";
-		_waypoint setWaypointCompletionRadius 200;
-	} forEach _convoy_destinations;
-
-	_wp0 = waypointPosition [_aiGroup, 0];
-	_waypoint = _aiGroup addWaypoint [_wp0, 0];
-	_waypoint setWaypointType "CYCLE";
+	[_aiGroup, _convoy_destinations] call add_convoy_waypoints;
 
 	// wait
 	(driver _vehicle1) MoveTo (_convoy_destinations select 1);

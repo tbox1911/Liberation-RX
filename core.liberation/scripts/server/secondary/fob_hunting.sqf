@@ -23,7 +23,6 @@ secondary_objective_position_marker = [(((secondary_objective_position select 0)
 publicVariable "secondary_objective_position_marker";
 sleep 1;
 
-diag_log _base_objectives;
 waitUntil {
 	sleep 5;
 	( { alive _x } count _base_objectives == 0 )

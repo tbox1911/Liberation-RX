@@ -7,11 +7,12 @@ _setupVars = {
 	_missionType = "STR_AIRWRECK";
 	_locationsArray = [SpawnMissionMarkers, true] call checkSpawn;
 	_nbUnits = [] call getNbUnits;
+	_precise_marker = false;
 };
 
 _setupObjects = {
 	_missionPos = [(markerpos _missionLocation)] call F_findSafePlace;
-	if (count _missionPos == 0) exitWith { 
+	if (count _missionPos == 0) exitWith {
     	diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", localize _missionType];
     	false;
 	};
