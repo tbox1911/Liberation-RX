@@ -56,6 +56,7 @@ F_getScore = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_
 F_getReput = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getReput.sqf";
 F_getReputText = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getReputText.sqf";
 F_getSectorPath = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getSectorPath.sqf";
+F_getPathRoadFilter = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getPathRoadFilter.sqf";
 F_getTemplateFile = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getTemplateFile.sqf";
 F_getUnitPositionId = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getUnitPositionId.sqf";
 F_getUnitsCount = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_getUnitsCount.sqf";

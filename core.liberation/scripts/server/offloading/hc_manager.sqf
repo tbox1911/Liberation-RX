@@ -1,6 +1,7 @@
 [] call compileFinal preprocessFileLineNumbers "scripts\loadouts\init_loadouts.sqf";
 
 add_civ_waypoints = compileFinal preprocessFileLineNumbers "scripts\server\ai\add_civ_waypoints.sqf";
+add_convoy_waypoints = compileFinal preprocessFileLineNumbers "scripts\server\ai\add_convoy_waypoints.sqf";
 defence_ai = compileFinal preprocessFileLineNumbers "scripts\server\ai\defence_ai.sqf";
 battlegroup_ai = compileFinal preprocessFileLineNumbers "scripts\server\ai\battlegroup_ai.sqf";
 building_defence_ai = compileFinal preprocessFileLineNumbers "scripts\server\ai\building_defence_ai.sqf";

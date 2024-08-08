@@ -38,15 +38,16 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 		_spawnsector = (selectRandom _usable_sectors);
 		_sector_pos = markerPos _spawnsector;
 
+		_opfor_grp = grpNull;
 		// 50% in vehicles
-		if ( floor(random 100) > 50 && count militia_vehicles > 0 ) then {
+		if ( floor random 100 > 50 && count militia_vehicles > 0 ) then {
 			_opfor_veh = [_sector_pos, (selectRandom militia_vehicles)] call F_libSpawnVehicle;
 			_opfor_grp = group (driver _opfor_veh);
+			[_opfor_grp, _sector_pos] spawn add_civ_waypoints;
 			{ _x setVariable ["GRLIB_mission_AI", true, true] } forEach (units _opfor_grp);
 		} else {
-			_opfor_grp = [_sector_pos, (4 + floor random 6), "militia"] call createCustomGroup;
+			_opfor_grp = [_sector_pos, (6 + floor random 6), "militia"] call createCustomGroup;
 		};
-		[_opfor_grp, _sector_pos] spawn add_civ_waypoints;
 
 		if (local _opfor_grp) then {
 			private _hc = [] call F_lessLoadedHC;

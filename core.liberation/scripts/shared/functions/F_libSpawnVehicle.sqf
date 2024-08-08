@@ -53,10 +53,13 @@ if ( _classname isKindOf "Air" ) then {
 	};
 
 	if (_classname != "") then {
-		_vehicle = createVehicle [_classname, zeropos, [], 0, "NONE"];
-		_vehicle allowDamage false;
-		_spawnpos set [2, 0.5];
-		_vehicle setPos _spawnpos;
+		_obstacle = (nearestObjects [_spawnpos, ["All"], 1]);
+		if (count _obstacle == 0) then {
+			_vehicle = createVehicle [_classname, zeropos, [], 0, "NONE"];
+			_vehicle allowDamage false;
+			_spawnpos set [2, 0.5];
+			_vehicle setPos _spawnpos;
+		};
 	};
 };
 sleep 0.5;
