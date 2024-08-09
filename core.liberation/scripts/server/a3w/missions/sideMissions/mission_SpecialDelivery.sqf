@@ -103,6 +103,7 @@ _setupObjects = {
 	GRLIB_A3W_Mission_SD = [0, [_man1, _man2, _man3, _man4], _quest_item];  // progression
 	publicVariable "GRLIB_A3W_Mission_SD";
 
+	// manage side
 	[_quest_item] spawn {
 		params ["_item"];
 		sleep 3;
@@ -128,6 +129,9 @@ _setupObjects = {
 
 _waitUntilMarkerPos = nil;
 _waitUntilExec = nil;
+_waitUntilLastPos = {
+	(getPosATL ((GRLIB_A3W_Mission_SD select 1) select (GRLIB_A3W_Mission_SD select 0)));
+};
 _waitUntilCondition = {
 	if (alive _quest_item && !(_quest_item getVariable ['R3F_LOG_disabled', false])) then {
 		"GRLIB_A3W_Mission_SD_Item" setMarkerPosLocal (getPos _quest_item);
@@ -162,7 +166,7 @@ _successExec = {
 	deleteMarker "GRLIB_A3W_Mission_SD_Item";
 	deleteMarker "GRLIB_A3W_Mission_SD_Marker";
 	for "_i" from 1 to 2 do {
-		private _box = selectRandom [ammobox_i_typename, ammobox_o_typename];
+		private _box = selectRandom [ammobox_i_typename, ammobox_b_typename, ammobox_o_typename];
 		[_box, getPosATL _quest_item, false] call boxSetup;
 	};
 	deleteVehicle _quest_item;

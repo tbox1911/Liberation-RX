@@ -98,6 +98,8 @@ waitUntil {
 
 	if (!isNil "_waitUntilMarkerPos") then { _marker setMarkerPos (call _waitUntilMarkerPos) };
 	if (!isNil "_waitUntilExec") then { call _waitUntilExec };
+	if (!isNil "_waitUntilLastPos") then { _lastPos = call _waitUntilLastPos };
+
 	_time_left = round ((_missionTimeout - (time - _startTime)) /60);
 	if (_time_left > 0) then {
 		_marker setMarkerText format ["%1 - %2 min left", localize _missionType, _time_left];
