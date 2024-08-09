@@ -32,7 +32,7 @@ while { true } do {
                     };
                 };
                 if (!isNil "_gunner") then {
-                    [_gunner] spawn F_fixPosUnit;
+                    [_gunner] call F_fixPosUnit;
                     _gunner assignAsGunner _static;
                     [_gunner] orderGetIn true;
                     //_gunner moveInGunner _static;

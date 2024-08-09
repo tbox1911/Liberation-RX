@@ -23,7 +23,7 @@ _unit forceAddUniform _cloth;
 
 {_unit disableAI _x} count ["TARGET","AUTOTARGET","AUTOCOMBAT","SUPPRESSION"];
 if !(_unit getVariable ["GRLIB_in_building", false]) then {
-	[_unit] spawn F_fixPosUnit;
+	[_unit] call F_fixPosUnit;
 };
 _unit setUnitPos "UP";
 _unit switchMove "";

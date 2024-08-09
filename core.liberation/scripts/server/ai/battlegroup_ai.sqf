@@ -51,7 +51,7 @@ while { ({alive _x} count (units _grp) > 0) && (GRLIB_endgame == 0) && !(_object
 	};
 
 	{
-		[_x] spawn F_fixPosUnit;
+		[_x] call F_fixPosUnit;
 		if (surfaceIsWater (getPos _x) && _x distance2D _objective_pos > 400) then {
 			deleteVehicle _x;
 		};
