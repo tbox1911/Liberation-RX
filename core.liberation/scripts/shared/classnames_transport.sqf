@@ -28,6 +28,7 @@ box_transport_offset = box_transport_offset + [
 	["Box_NATO_Support_F", [0, 0, -0.6] ],
 	["Box_NATO_WpsSpecial_F", [0, 0, -0.6] ],
 	["Box_NATO_WpsLaunch_F", [0, 0, -0.6] ],
+	["Box_East_Wps_F", [0, 0, -0.6] ],	
 	["Box_NATO_AmmoVeh_F", [0, 0, 0] ],
 	["Box_East_AmmoVeh_F", [0, 0, 0] ],
 	["Box_IND_AmmoVeh_F", [0, 0, 0] ],
