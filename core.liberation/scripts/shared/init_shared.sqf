@@ -43,7 +43,6 @@ warehouse_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\r
 LRX_tk_server_actions = compileFinal preprocessFileLineNumbers "addons\TKP\tk_server_actions.sqf";
 
 // A3W Side Mission - Server Side
-a3w_create_enemy = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\a3w_create_enemy.sqf";
 a3w_follow_player = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\a3w_follow_player.sqf";
 a3w_mr_send_para = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\a3w_mr_send_para.sqf";
 

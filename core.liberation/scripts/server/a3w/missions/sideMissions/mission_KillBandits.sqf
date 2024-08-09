@@ -26,7 +26,7 @@ _setupObjects = {
 
 	_missionPos = _convoy_destinations select 0;
 	_aiGroup = createGroup [GRLIB_side_enemy, true];
-	//if ((tolower typeOf _vehicle) find "bicycle" > -1) exitWith {};
+
 	private _blacklist = [
 		"tractor",
 		"bicycle",
@@ -36,12 +36,14 @@ _setupObjects = {
 		"quadbike_",
 		"_van_"
 	];
+
 	private _allowed_veh = {
 		params ["_item", "_blaklist"];
 		private _ret = true;
 		{ if (_item find _x >= 0) exitWith { _ret = false } } foreach _blaklist;
 		_ret;
 	};
+
 	private _bandits_car = selectRandom (civilian_vehicles select { _x isKindOf "Car" && [tolower _x, _blacklist] call _allowed_veh });
 	if (isNil "_bandits_car") exitWith {
 		diag_log format ["--- LRX Error: side mission %1, cannot find vehicle classname!", localize _missionType];

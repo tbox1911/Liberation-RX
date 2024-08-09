@@ -49,6 +49,7 @@ _setupObjects = {
     	diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", localize _missionType];
     	false;
 	};
+
 	//----- build Check point ---------------------------------
 	private _road_dir = _missionPos getDir ((_missionPos nearRoads 35) select 0);
 	private _bunker_typename = selectRandom ["Land_BagBunker_Small_F"];
@@ -86,8 +87,7 @@ _setupObjects = {
 	_veh2 setPos _veh2_pos;
 
 	//----- spawn units ---------------------------------
-	private _nbUnits = 3;
-	_aiGroup = [_missionPos, _nbUnits, "guards"] call createCustomGroup;
+	_aiGroup = [_missionPos, 3, "guards"] call createCustomGroup;
 
 	private _guard = (units _aiGroup) select 0;
 	_guard setPos (getPos _bunker);
@@ -100,13 +100,12 @@ _setupObjects = {
 	_gunner moveInGunner _veh1;
 	_veh1 setVariable ["GRLIB_vehicle_gunner", [_gunner]];
 
-	_gunner = (units _aiGroup) select 2;
+	private _gunner = (units _aiGroup) select 2;
 	_gunner assignAsGunner _veh2;
 	_gunner moveInGunner _veh2;
 	_veh2 setVariable ["GRLIB_vehicle_gunner", [_gunner]];
 
-	_nbUnits = [] call getNbUnits;
-	_grp = [_missionPos, _nbUnits, "infantry"] call createCustomGroup;
+	_grp = [_missionPos, ([] call getNbUnits), "infantry"] call createCustomGroup;
 	{ [_x] joinSilent _aiGroup } forEach (units _grp);
 
 	_vehicles = [_bunker, _def1, _def2, _veh1, _veh2];

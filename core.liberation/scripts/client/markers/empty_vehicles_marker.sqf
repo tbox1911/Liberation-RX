@@ -79,7 +79,7 @@ while { true } do {
 			_marker_color = "ColorGrey";
 			_marker_type = "mil_triangle";
 		};
-		if (typeOf _nextvehicle in [money_typename]) then {
+		if (typeOf _nextvehicle == money_typename) then {
 			_marker_color = "ColorGreen";
 			_marker_type = "EmptyIcon";
 			_nextmarker setMarkerTextLocal "$";

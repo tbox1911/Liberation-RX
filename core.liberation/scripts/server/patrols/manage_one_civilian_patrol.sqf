@@ -30,9 +30,11 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 		if ( floor random 100 >= 60) then {
 			_veh_class = selectRandom civilian_vehicles;
 			_civ_veh = [_sectorpos, _veh_class, 3, false, GRLIB_side_civilian] call F_libSpawnVehicle;
-			_civ_grp = group (driver _civ_veh);
-			[_civ_grp, _sectorpos] spawn add_civ_waypoints;
-			[_civ_veh] spawn civilian_ai_veh;
+			if !(isNull _civ_veh) then {
+				_civ_grp = group (driver _civ_veh);
+				[_civ_grp, _sectorpos] spawn add_civ_waypoints;
+				[_civ_veh] spawn civilian_ai_veh;
+			};
 		} else {
 			private _rndciv = [1,1,1,1,2,3];
 			_civ_grp = [_sectorpos, (selectRandom _rndciv)] call F_spawnCivilians;

@@ -95,7 +95,6 @@ waitUntil {
 		};
 		_lastPos = getPosATL _leaderTemp;
 	};
-	if (_missionType == "STR_SPECIALDELI") then { _lastPos = _missionEnd };
 
 	if (!isNil "_waitUntilMarkerPos") then { _marker setMarkerPos (call _waitUntilMarkerPos) };
 	if (!isNil "_waitUntilExec") then { call _waitUntilExec };
