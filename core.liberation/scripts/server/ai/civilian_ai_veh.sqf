@@ -26,11 +26,19 @@ private _helped = false;
 
 sleep (60 + floor random 60);
 
-while { alive _vehicle && !(isNull _driver)} do {
+while { alive _vehicle && alive _driver } do {
 	// Correct static position
 	if ((vectorUp _vehicle) select 2 < 0.70) then {
 		_vehicle setPos [(getposATL _vehicle) select 0, (getposATL _vehicle) select 1, 0.5];
 		_vehicle setVectorUp (surfaceNormal getPos _vehicle);
+		sleep 1;
+	};
+
+	// Check driver
+	if (driver _vehicle != _driver) then {
+		_driver moveInDriver _vehicle;
+		_driver assignAsDriver _vehicle;
+		sleep 1;
 	};
 
 	// Shit happens...
