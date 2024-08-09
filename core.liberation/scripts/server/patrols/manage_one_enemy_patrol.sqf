@@ -59,7 +59,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 		// Wait
 		_unit_ttl = round (time + 1800);
 		_unit_pos = getPosATL (leader _opfor_grp);
-
+		_radius = GRLIB_spawn_max * 2;
 		waitUntil {
 			if (alive (leader _opfor_grp)) then { _unit_pos = getPosATL (leader _opfor_grp) };
 			sleep 60;
@@ -68,7 +68,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 				(diag_fps < 20) ||
 				(count (waypoints _opfor_grp) == 0) ||
 				({alive _x} count (units _opfor_grp) < 2) ||
-				([_unit_pos, GRLIB_spawn_max, GRLIB_side_friendly] call F_getUnitsCount == 0) ||
+				([_unit_pos, _radius, GRLIB_side_friendly] call F_getUnitsCount == 0) ||
 				(time > _unit_ttl)
 			)
 		};

@@ -46,13 +46,9 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 		};
 
 		// Wait
-		_radius = GRLIB_spawn_max;
-		if (_civ_veh isKindOf "Air") then {
-			sleep 120;
-			_radius = GRLIB_spawn_max * 2;
-		};
 		_unit_ttl = round (time + 1800);
 		_unit_pos = getPosATL (leader _civ_grp);
+		_radius = GRLIB_spawn_max * 2;
 		waitUntil {
 			if (alive (leader _civ_grp)) then { _unit_pos = getPosATL (leader _civ_grp) };
 			sleep 60;
