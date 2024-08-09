@@ -21,31 +21,25 @@ while { true } do {
 		_opf = 0;
 
 		// Resistance
-		if (_mission == "STR_RESISTANCE" && !isNil "GRLIB_A3W_Mission_MR") then {
-			{_opf = _opf + count (units _x select {alive _x})} forEach GRLIB_A3W_Mission_MR;
-			_list = (markerPos _sector) nearEntities ["CAManBase", GRLIB_capture_size];
-			_res = _list select {
-				side _x == GRLIB_side_friendly &&
-				(_x getVariable ["GRLIB_A3W_Mission_MR1", false])
-			};
-			_msg = format ["Status:\nResistance: %1\nEnemy squad: %2", count _res, _opf];
+		if (_mission == "STR_RESISTANCE" && !isNil "GRLIB_A3W_Mission_MR_OPFOR") then {
+			_opf = { alive _x && _x distance2D (markerPos _sector) < (GRLIB_sector_size * 2) } count GRLIB_A3W_Mission_MR_OPFOR;
+			_res = { alive _x && _x distance2D (markerPos _sector) < GRLIB_sector_size } count GRLIB_A3W_Mission_MR_BLUFOR;
+			if (_opf > 0) then {_msg = format ["Status:\nResistance: %1\nEnemy squad: %2", _res, _opf]};
 		};
 
 		// Others
 		if (_mission in _stats_marker) then {
-			_list = (markerPos _sector) nearEntities ["CAManBase", GRLIB_capture_size];
-			_opf = _list select { side _x == GRLIB_side_enemy };
-			if (count _opf > 0) then {_msg = format ["Status:\nEnemy squad: %1", count _opf]};
+			_opf = { alive _x && _x distance2D (markerPos _sector) < GRLIB_sector_size } count (units GRLIB_side_enemy);
+			if (_opf > 0) then {_msg = format ["Status:\nEnemy squad: %1", _opf]};
 		};
 	};
 
 	// Special Delivery
 	if ( !isNil "GRLIB_A3W_Mission_SD" ) then {
 		_res = (GRLIB_A3W_Mission_SD select 1) select 3;
-		if (_res distance2D player < GRLIB_capture_size) then {
-			_list = _res nearEntities ["CAManBase", GRLIB_capture_size];
-			_opf = _list select { side _x == GRLIB_side_enemy };
-			if (count _opf > 0) then {_msg = format ["Status:\nEnemy squad: %1", count _opf]};
+		if (player distance2D _res < GRLIB_capture_size) then {
+			_opf = { alive _x && _x distance2D _res < GRLIB_sector_size } count (units GRLIB_side_enemy);
+			if (_opf > 0) then {_msg = format ["Status:\nEnemy squad: %1", _opf]};
 		};
 	};
 

@@ -153,7 +153,6 @@ speak_mission_sdelivery1 = {
 	if (_suitcase_far) exitWith {[_unit] call speak_another_time};
 	private _next_unit = (GRLIB_A3W_Mission_SD select 1) select (GRLIB_A3W_Mission_SD select 0);
 	if (_unit != _next_unit && _suitcase_far) exitWith {[_unit] call speak_another_time};
-
 	_suitcase setVariable ["R3F_LOG_disabled", false, true];
 	_unit globalChat localize "STR_SPEAKMANAGER13";
 	sleep 3;
@@ -162,7 +161,6 @@ speak_mission_sdelivery1 = {
 	_unit globalChat format [localize "STR_SPEAKMANAGER15", name _next_unit];
 	sleep 3;
 	_unit globalChat localize "STR_SPEAKMANAGER16";
-
 	GRLIB_A3W_Mission_SD set [0, 1];
 	publicVariable "GRLIB_A3W_Mission_SD";
 };
@@ -176,13 +174,11 @@ speak_mission_sdelivery2 = {
 	if (_suitcase_far) exitWith {[_unit] call speak_another_time};
 	private _next_unit = (GRLIB_A3W_Mission_SD select 1) select (GRLIB_A3W_Mission_SD select 0);
 	if (_unit != _next_unit && _suitcase_far) exitWith {[_unit] call speak_another_time};
-
 	_unit globalChat localize "STR_SPEAKMANAGER20";
 	sleep 3;
 	_unit globalChat format [localize "STR_SPEAKMANAGER21", name _next_unit];
 	sleep 3;
 	_unit globalChat localize "STR_SPEAKMANAGER22";
-
 	GRLIB_A3W_Mission_SD set [0, 2];
 	publicVariable "GRLIB_A3W_Mission_SD";
 };
@@ -196,13 +192,11 @@ speak_mission_sdelivery3 = {
 	if (_suitcase_far) exitWith {[_unit] call speak_another_time};
 	private _next_unit = (GRLIB_A3W_Mission_SD select 1) select (GRLIB_A3W_Mission_SD select 0);
 	if (_unit != _next_unit && _suitcase_far) exitWith {[_unit] call speak_another_time};
-
 	_unit globalChat localize "STR_SPEAKMANAGER17";
 	sleep 3;
 	_unit globalChat localize "STR_SPEAKMANAGER18";
 	sleep 3;
 	_unit globalChat localize "STR_SPEAKMANAGER19";
-
 	GRLIB_A3W_Mission_SD set [0, 3];
 	publicVariable "GRLIB_A3W_Mission_SD";
 };
@@ -230,11 +224,9 @@ speak_mission_sdelivery4 = {
 // Resistance
 speak_mission_resitance = {
 	params ["_unit"];
-	private _grp = group _unit;
-	private _leader = leader _grp;
+	private _leader = leader group _unit;
 	if (_unit == _leader) then {
-		private _res = (units GRLIB_side_friendly select { alive _x && (_x getVariable ["GRLIB_A3W_Mission_MR1", false])});
-		{_x setVariable ["GRLIB_can_speak", false, true]} foreach _res;
+		{_x setVariable ["GRLIB_can_speak", false, true]} foreach GRLIB_A3W_Mission_MR_BLUFOR;
 		_unit globalChat localize "STR_SPEAKMANAGER8";
 		sleep 3;
 		_unit globalChat localize "STR_SPEAKMANAGER9";
@@ -242,11 +234,12 @@ speak_mission_resitance = {
 		_unit globalChat localize "STR_SPEAKMANAGER10";
 		sleep 3;
 		_unit globalChat localize "STR_SPEAKMANAGER11";
-		[getPosATL _unit] remoteExec ["a3w_mr_send_para", 2];
+		GRLIB_A3W_Mission_MR_START = true;
+		publicVariable "GRLIB_A3W_Mission_MR_START";
 	} else {
 		player globalChat localize "STR_SPEAKMANAGER6";
 		sleep 2;
-		_unit globalChat format [localize "STR_SPEAKMANAGER7", round (_unit distance2D _leader), round(_unit getDir _leader)];
+		_unit globalChat format [localize "STR_SPEAKMANAGER7", round (_unit distance2D _leader), round (_unit getDir _leader)];
 	};
 };
 

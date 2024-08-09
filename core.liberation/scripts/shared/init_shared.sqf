@@ -44,7 +44,6 @@ LRX_tk_server_actions = compileFinal preprocessFileLineNumbers "addons\TKP\tk_se
 
 // A3W Side Mission - Server Side
 a3w_follow_player = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\a3w_follow_player.sqf";
-a3w_mr_send_para = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\a3w_mr_send_para.sqf";
 
 // PAR Remote Call - Server Side
 PAR_remote_bounty = compileFinal preprocessFileLineNumbers "addons\PAR\server\PAR_remote_bounty.sqf";
