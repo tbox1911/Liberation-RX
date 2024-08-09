@@ -385,5 +385,6 @@ while {deleteManagerPublic} do {
 		};
 	};
 
+	sleep 2;
 	diag_log format ["--- LRX Garbage Collector --- End at: %1 - Delete: %2 objects - %3 fps", round(time), _stats, diag_fps];
 };
