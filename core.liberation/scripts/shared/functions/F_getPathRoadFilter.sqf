@@ -6,11 +6,11 @@ private _destinations_markers = [];
 private ["_pos", "_nearestroad", "_land"];
 {
 	_pos = (markerPos _x);
-	_nearestroad = [_pos, 100] call BIS_fnc_nearestRoad;
+	_nearestroad = [_pos, 200] call BIS_fnc_nearestRoad;
 	_land = !(surfaceIsWater _pos);
 	if (_land) then {
 		if (isNull _nearestroad) then {
-			_destinations_markers pushback _pos; //add rnd ?
+			_destinations_markers pushback (_pos getPos [100, 360]);
 		} else {
 			_destinations_markers pushback (getpos _nearestroad);
 		};
