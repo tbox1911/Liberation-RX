@@ -63,7 +63,7 @@ if ( _class == FOB_box_outpost ) then {
 	_text = localize "STR_OUTPOSTBOX";
 };
 if ( _class == a3w_sd_item ) then {
-	_text = "Mission Suitecase";
+	_text = "Mission Suitcase";
 };
 if ( _class == playerbox_typename ) then {
 	_text = "Personal Player Box";

@@ -147,12 +147,14 @@ speak_heal_civ = {
 // Nikos
 speak_mission_sdelivery1 = {
 	params ["_unit"];
+	if (isNil "GRLIB_A3W_Mission_SD") exitWith {[_unit] call speak_another_time};
+	private _suitcase = GRLIB_A3W_Mission_SD select 2;
+	private _suitcase_far = (_unit distance2D _suitcase > 20);
+	if (_suitcase_far) exitWith {[_unit] call speak_another_time};
 	private _next_unit = (GRLIB_A3W_Mission_SD select 1) select (GRLIB_A3W_Mission_SD select 0);
-	if (_unit != _next_unit) exitWith {[_unit] call speak_another_time};
+	if (_unit != _next_unit && _suitcase_far) exitWith {[_unit] call speak_another_time};
 
-	private _near_case = getPosATL _unit nearEntities [a3w_sd_item, 10];
-	if (count _near_case == 0) exitWith {[_unit] call speak_another_time};
-
+	_suitcase setVariable ["R3F_LOG_disabled", false, true];
 	_unit globalChat localize "STR_SPEAKMANAGER13";
 	sleep 3;
 	_unit globalChat format [localize "STR_SPEAKMANAGER14", [a3w_sd_item] call F_getLRXName];
@@ -163,66 +165,58 @@ speak_mission_sdelivery1 = {
 
 	GRLIB_A3W_Mission_SD set [0, 1];
 	publicVariable "GRLIB_A3W_Mission_SD";
-
-	_next_unit = (GRLIB_A3W_Mission_SD select 1) select (GRLIB_A3W_Mission_SD select 0);
-	if (getMarkerColor "GRLIB_A3W_Mission_SD_Marker" == "") then {
-		_marker = createMarkerLocal ["GRLIB_A3W_Mission_SD_Marker", getPosATL _next_unit];
-		_marker setMarkerShapeLocal "ICON";
-		_marker setMarkerTypeLocal "mil_pickup";
-		_marker setMarkerColorLocal "ColorPink";
-		_marker setMarkerTextlocal (name _next_unit);
-	};
 };
 
 // Orestes
 speak_mission_sdelivery2 = {
 	params ["_unit"];
+	if (isNil "GRLIB_A3W_Mission_SD") exitWith {[_unit] call speak_another_time};
+	private _suitcase = GRLIB_A3W_Mission_SD select 2;
+	private _suitcase_far = (_unit distance2D _suitcase > 20);
+	if (_suitcase_far) exitWith {[_unit] call speak_another_time};
 	private _next_unit = (GRLIB_A3W_Mission_SD select 1) select (GRLIB_A3W_Mission_SD select 0);
-	if (_unit != _next_unit) exitWith {[_unit] call speak_another_time};
+	if (_unit != _next_unit && _suitcase_far) exitWith {[_unit] call speak_another_time};
 
-	GRLIB_A3W_Mission_SD set [0, 2];
-	publicVariable "GRLIB_A3W_Mission_SD";
-
-	_next_unit = (GRLIB_A3W_Mission_SD select 1) select (GRLIB_A3W_Mission_SD select 0);
-	"GRLIB_A3W_Mission_SD_Marker" setMarkerPosLocal (getPosATL _next_unit);
-	"GRLIB_A3W_Mission_SD_Marker" setMarkerTextlocal (name _next_unit);
 	_unit globalChat localize "STR_SPEAKMANAGER20";
 	sleep 3;
 	_unit globalChat format [localize "STR_SPEAKMANAGER21", name _next_unit];
 	sleep 3;
 	_unit globalChat localize "STR_SPEAKMANAGER22";
+
+	GRLIB_A3W_Mission_SD set [0, 2];
+	publicVariable "GRLIB_A3W_Mission_SD";
 };
 
 // Orestes
 speak_mission_sdelivery3 = {
 	params ["_unit"];
+	if (isNil "GRLIB_A3W_Mission_SD") exitWith {[_unit] call speak_another_time};
+	private _suitcase = GRLIB_A3W_Mission_SD select 2;
+	private _suitcase_far = (_unit distance2D _suitcase > 20);
+	if (_suitcase_far) exitWith {[_unit] call speak_another_time};
 	private _next_unit = (GRLIB_A3W_Mission_SD select 1) select (GRLIB_A3W_Mission_SD select 0);
-	if (_unit != _next_unit) exitWith {[_unit] call speak_another_time};
+	if (_unit != _next_unit && _suitcase_far) exitWith {[_unit] call speak_another_time};
 
-	GRLIB_A3W_Mission_SD set [0, 3];
-	publicVariable "GRLIB_A3W_Mission_SD";
-
-	_next_unit = (GRLIB_A3W_Mission_SD select 1) select (GRLIB_A3W_Mission_SD select 0);
-	"GRLIB_A3W_Mission_SD_Marker" setMarkerPosLocal (getPosATL _next_unit);
-	"GRLIB_A3W_Mission_SD_Marker" setMarkerTextlocal (name _next_unit);
 	_unit globalChat localize "STR_SPEAKMANAGER17";
 	sleep 3;
 	_unit globalChat localize "STR_SPEAKMANAGER18";
 	sleep 3;
 	_unit globalChat localize "STR_SPEAKMANAGER19";
-	[getPos _next_unit, "militia"] remoteExec ["a3w_create_enemy", 2];
+
+	GRLIB_A3W_Mission_SD set [0, 3];
+	publicVariable "GRLIB_A3W_Mission_SD";
 };
 
 // Nikos Old
 speak_mission_sdelivery4 = {
 	params ["_unit"];
+	if (isNil "GRLIB_A3W_Mission_SD") exitWith {[_unit] call speak_another_time};
+	private _suitcase = GRLIB_A3W_Mission_SD select 2;
+	private _suitcase_far = (_unit distance2D _suitcase > 20);
+	if (_suitcase_far) exitWith {[_unit] call speak_another_time};
 	private _next_unit = (GRLIB_A3W_Mission_SD select 1) select (GRLIB_A3W_Mission_SD select 0);
-	if (_unit != _next_unit) exitWith {[_unit] call speak_another_time};
-
-	private _near_case = getPosATL _unit nearEntities [a3w_sd_item, 3];
-	if (count _near_case > 0) then {
-		(_near_case select 0) setVariable ["R3F_LOG_disabled", true, true];
-		deleteMarker "GRLIB_A3W_Mission_SD_Marker";
+	if (_unit != _next_unit && _suitcase_far) exitWith {[_unit] call speak_another_time};
+	if (_unit distance2D _suitcase <= 3) then {
 		_unit switchMove "AmovPercMstpSnonWnonDnon_Salute";
 		_unit playMoveNow "AmovPercMstpSnonWnonDnon_Salute";
 		_unit globalChat localize "STR_SPEAKMANAGER23";
