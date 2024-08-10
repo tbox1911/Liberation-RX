@@ -182,7 +182,7 @@ PAR_revive_max = {
 
 	private _timer = 20;
 	while { _timer >= 0 && alive _unit } do {
-		private _near_medical = (count (nearestObjects [_unit, [medic_heal_typename], 12]) > 0);
+		private _near_medical = (count (nearestObjects [_unit, [medic_heal_typename, a3w_heal_tent], 12]) > 0);
 		if (_near_medical) then {
 			if (_unit distance2D player < 100) then {
 				private _msg = format ["%1 is Healing faster...", name _unit];
