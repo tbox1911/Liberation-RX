@@ -2,8 +2,6 @@ params ["_grp", "_vehicles"];
 
 if (count _vehicles == 0) exitWith {};
 
-sleep 30;
-
 // Group Behaviour
 _grp setFormation "COLUMN";
 _grp setBehaviourStrong "AWARE";
@@ -15,6 +13,7 @@ _grp setSpeedMode "LIMITED";
 private _convoy_attacked = false;
 private _disembark_troops = false;
 
+sleep 20;
 while { !_disembark_troops && (({ alive _x } count _vehicles) > 0) } do {
 	// Attacked ?
 	if (!_convoy_attacked) then {
@@ -38,13 +37,13 @@ while { !_disembark_troops && (({ alive _x } count _vehicles) > 0) } do {
 				_veh_cur setFuel 1;
 				_veh_cur setDamage 0;
 				[_veh_cur] call F_vehicleUnflip;
-				_veh_cur setPos (getPos _veh_cur);
+				_veh_cur setPos (_veh_cur getPos [1, 360]);
 				if (_veh_cur != _veh_leader) then {
 					(driver _veh_cur) doFollow (leader _grp);
 					(driver _veh_cur) doMove getPosATL (leader _grp);
 				};
+				sleep 2;
 			};
-			sleep 1;
 		} foreach _vehicles;
 	};
 

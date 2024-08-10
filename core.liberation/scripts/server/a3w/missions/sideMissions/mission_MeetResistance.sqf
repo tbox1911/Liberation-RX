@@ -111,8 +111,11 @@ _waitUntilCondition = { {alive _x && _x distance2D _missionPos < GRLIB_sector_si
 _failedExec = {
 	// Mission failed
 	{ [_x, -3] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
-	{ deleteVehicle _x } forEach GRLIB_A3W_Mission_MR_BLUFOR;
-	{ deleteVehicle _x } forEach GRLIB_A3W_Mission_MR_OPFOR;
+	[_missionPos, GRLIB_A3W_Mission_MR_BLUFOR + GRLIB_A3W_Mission_MR_OPFOR] spawn {
+		params ["_pos", "_list"];
+		waitUntil { sleep 30; ([_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+		{ deleteVehicle _x } forEach _list;
+	};
 	GRLIB_A3W_Mission_MR_START = nil;
 	GRLIB_A3W_Mission_MR_BLUFOR = nil;
 	GRLIB_A3W_Mission_MR_OPFOR = nil;
@@ -125,8 +128,11 @@ _failedExec = {
 _successExec = {
 	// Mission completed
 	{ [_x, 5] call F_addReput } forEach ([_missionPos, GRLIB_capture_size] call F_getNearbyPlayers);
-	{ deleteVehicle _x } forEach GRLIB_A3W_Mission_MR_BLUFOR;
-	{ deleteVehicle _x } forEach GRLIB_A3W_Mission_MR_OPFOR;
+	[_missionPos, GRLIB_A3W_Mission_MR_BLUFOR + GRLIB_A3W_Mission_MR_OPFOR] spawn {
+		params ["_pos", "_list"];
+		waitUntil { sleep 30; ([_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+		{ deleteVehicle _x } forEach _list;
+	};
 	GRLIB_A3W_Mission_MR_START = nil;
 	GRLIB_A3W_Mission_MR_BLUFOR = nil;
 	GRLIB_A3W_Mission_MR_OPFOR = nil;

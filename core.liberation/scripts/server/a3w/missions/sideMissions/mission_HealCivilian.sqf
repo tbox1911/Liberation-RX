@@ -1,7 +1,7 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_location_name", "_objects", "_grp_medic", "_grp_wnded"];
+private ["_location_name", "_objects", "_grp_wnded"];
 
 _setupVars = {
 	_missionType = "STR_HEAL_CIV";
@@ -68,15 +68,15 @@ _setupObjects = {
 	};
 
 	_missionPos = _pos;
-	_tent = createVehicle [a3w_heal_tent, _missionPos, [], 1, "None"];
+	private _tent = createVehicle [a3w_heal_tent, _missionPos, [], 1, "None"];
 	_tent allowDamage false;
 	_tent setVectorDirAndUp [[-cos _dir, sin _dir, 0] vectorCrossProduct surfaceNormal _missionPos, surfaceNormal _missionPos];
 	_vehicle = _tent;
 	sleep 0.2;
 
-	_tent_pos = getPosATL _tent;
+	private _tent_pos = getPosATL _tent;
 	// add garbage
-	_objects = [];
+	private _objects = [];
 	for "_i" from 1 to 12 do {
 		_grbg = createVehicle [selectRandom _garbage, _tent_pos, [], 15, "None"];
 		_dir = random 360;
@@ -88,19 +88,20 @@ _setupObjects = {
 	};
 
 	// add medic + patrol
-	_grp_medic = [_tent_pos, 3, "medics", true, 20] call createCustomGroup;
+	_aiGroup = [_tent_pos, 3, "medics", true, 20] call createCustomGroup;
 	{
 		_x setVariable ["GRLIB_can_speak", true, true];
 		_x setVariable ["GRLIB_A3W_Mission_HC1", true, true];
 		_x setVariable ["GRLIB_vehicle_owner", "server", true];
 		_x setVariable ["acex_headless_blacklist", true, true];
-	} forEach (units _grp_medic);
+	} forEach (units _aiGroup);
 
 	// add wounded
 	_grp_wnded = createGroup [GRLIB_side_civilian, true];
 	for "_i" from 1 to 5 do {
 		_unit = _grp_wnded createUnit [(selectRandom civilians), _missionPos, [], 100, "NONE"];
 		[_unit] joinSilent _grp_wnded;
+		if (_unit distance2D _tent_pos <= 30) then { _unit setPos (_tent_pos getPos [50, 360]) };
 		_unit setVariable ["GRLIB_can_speak", true, true];
 		_unit setVariable ["GRLIB_A3W_Mission_HC2", true, true];
 		_unit setVariable ["GRLIB_vehicle_owner", "server", true];
@@ -122,6 +123,7 @@ _setupObjects = {
 	_grp_wnded setBehaviourStrong "CARELESS";
 	_grp_wnded setCombatMode "GREEN";
 
+	_vehicles = _objects;
 	_missionHintText = ["STR_HEAL_CIV_MESSAGE1", sideMissionColor, _location_name];
 	true;
 };
@@ -139,17 +141,13 @@ _waitUntilSuccessCondition = {
 _failedExec = {
 	// Mission failed
 	{ [_x, -5] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
-	{ deleteVehicle _x } forEach (units _grp_medic);
 	{ deleteVehicle _x } forEach (units _grp_wnded);
-	{ deleteVehicle _x } forEach (_objects);
 	_successHintMessage = "STR_HEAL_CIV_MESSAGE3";
 };
 
 _successExec = {
 	// Mission complete
-	{ deleteVehicle _x } forEach (units _grp_medic);
 	{ deleteVehicle _x } forEach (units _grp_wnded);
-	{ deleteVehicle _x } forEach (_objects);
 	{ [_x, 5] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
 	_successHintMessage = "STR_HEAL_CIV_MESSAGE2";
 };
