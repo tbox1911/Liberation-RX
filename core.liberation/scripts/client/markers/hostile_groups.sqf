@@ -26,7 +26,8 @@ while { true } do {
 		_sideMission = (_sector in A3W_sectors_in_use);
 		_permMission = (_leader distance2D secondary_objective_position_marker < GRLIB_sector_size);
 		_nearRadioTower = ([(getPos _leader), GRLIB_side_friendly] call F_getNearestTower != "");
-		if (alive _leader && !_mission_ai && !_sideMission && !_permMission && _nearRadioTower) then {
+		_aircraft = (objectParent _leader isKindOf "Air");
+		if (alive _leader && !_mission_ai && !_sideMission && !_permMission && _nearRadioTower && !_aircraft) then {
 			_marker = createMarkerLocal [format ["hostilegroup%1",_x], markers_reset];
 			_marker setMarkerColorLocal GRLIB_color_enemy_bright;
 			_marker setMarkerTypeLocal "mil_warning";
