@@ -336,7 +336,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 		};
 
 		[_nextbuilding] call F_clearCargo;
-		[_nextbuilding] spawn F_fixModVehicle;
+		[_nextbuilding] call F_fixModVehicle;
 
 		if ( _nextclass in vehicle_rearm_sources ) then {
 			_nextbuilding setAmmoCargo 0;
@@ -383,29 +383,29 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 				_nextbuilding setUnloadInCombat [true, false];
 
 				if (_color_name != "") then {
-					[_nextbuilding, _color_name] spawn RPT_fnc_TextureVehicle;
+					[_nextbuilding, _color_name] call RPT_fnc_TextureVehicle;
 				};
 
 				if (count _compo > 0) then {
-					[_nextbuilding, _compo] spawn RPT_fnc_CompoVehicle;
+					[_nextbuilding, _compo] call RPT_fnc_CompoVehicle;
 				};
 
 				if (count _lst_a3 > 0) then {
-					[_nextbuilding, _lst_a3] spawn F_setCargo;
+					[_nextbuilding, _lst_a3] call F_setCargo;
 				};
 
 				if (count _lst_r3f > 0) then {
-					[_nextbuilding, _lst_r3f] spawn load_object_direct;
+					[_nextbuilding, _lst_r3f] call load_object_direct;
 				};
 
 				if (count _lst_grl > 0) then {
-					{[_nextbuilding, _x] spawn attach_object_direct} forEach _lst_grl;
+					{[_nextbuilding, _x] call attach_object_direct} forEach _lst_grl;
 				};
 			};
 		};
 
 		if ( _hascrew ) then {
-			[_nextbuilding] spawn F_forceCrew;
+			[_nextbuilding] call F_forceCrew;
 			_nextbuilding setVariable ["GRLIB_vehicle_manned", true, true];
 		};
 	} foreach _s3;
@@ -492,5 +492,7 @@ publicVariable "GRLIB_mobile_respawn";
 publicVariable "GRLIB_vehicle_to_military_base_links";
 publicVariable "GRLIB_player_scores";
 publicVariable "GRLIB_sector_defense";
+
+sleep 1;
 save_is_loaded = ([] call F_getValid);
 publicVariable "save_is_loaded";

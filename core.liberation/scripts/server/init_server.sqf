@@ -191,6 +191,7 @@ if (abort_loading) exitWith {
 global_locked_group = [];
 publicVariable "global_locked_group";
 
+sleep 1;
 GRLIB_init_server = true;
 publicVariable "GRLIB_init_server";
 diag_log "--- Server Init stop ---";
