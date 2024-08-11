@@ -67,6 +67,15 @@ _setupObjects = {
 			sleep 0.1;
 		} forEach (units _grp);
 
+		// troops
+		private _grp = [_missionPos, 3, "infantry", false] call createCustomGroup;
+		{
+			_x assignAsCargo _vehicle2;
+			_x moveInCargo _vehicle2;
+			sleep 0.1;
+		} forEach (units _grp);
+		(units _grp) joinSilent _aiGroup;
+
 		// wait
 		(driver _vehicle2) MoveTo (_convoy_destinations select 1);
 		private _timout = round (time + (3 * 60));
