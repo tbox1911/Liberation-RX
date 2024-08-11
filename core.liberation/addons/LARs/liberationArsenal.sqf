@@ -142,12 +142,12 @@ if (GRLIB_ACE_enabled) then {
 	[myLARsBox, GRLIB_whitelisted_from_arsenal, false] call ace_arsenal_fnc_initBox;
 } else {
 	[myLARsBox, ["GRLIB_whitelisted_from_arsenal", "GRLIB_blacklisted_from_arsenal"], false, "Liberation", { false }] call LARs_fnc_blacklistArsenal;
+	waitUntil {sleep 1; !isNil {myLARsBox getVariable "LARs_arsenal_Liberation_cargo"}};
+	private _cargo = myLARsBox getVariable ["LARs_arsenal_Liberation_cargo", []];
+	myLARsBox setVariable ["bis_addVirtualWeaponCargo_cargo", _cargo];
 };
 
 diag_log format ["--- LRX Arsenal initialized. blacklist: %1 - whitelist: %2", count GRLIB_blacklisted_from_arsenal, count GRLIB_whitelisted_from_arsenal];
 diag_log format ["--- LRX MOD %1 use: %2 signatures", GRLIB_mod_west, count GRLIB_MOD_signature];
 
-waitUntil {sleep 1; !isNil {myLARsBox getVariable "LARs_arsenal_Liberation_cargo"}};
-private _cargo = myLARsBox getVariable ["LARs_arsenal_Liberation_cargo", []];
-myLARsBox setVariable ["bis_addVirtualWeaponCargo_cargo", _cargo];
 LRX_arsenal_init_done = true;
