@@ -103,6 +103,8 @@ _setupObjects = {
 	GRLIB_A3W_Mission_SD = [0, [_man1, _man2, _man3, _man4], _quest_item];  // progression
 	publicVariable "GRLIB_A3W_Mission_SD";
 
+	doStop (units _aiGroup);
+
 	// manage side
 	[_quest_item] spawn {
 		params ["_item"];
