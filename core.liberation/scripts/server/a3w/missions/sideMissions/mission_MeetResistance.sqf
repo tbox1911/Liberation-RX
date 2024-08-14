@@ -111,6 +111,7 @@ _waitUntilCondition = { {alive _x && _x distance2D _missionPos < GRLIB_sector_si
 _failedExec = {
 	// Mission failed
 	{ [_x, -3] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
+	if (isNil "GRLIB_A3W_Mission_MR_OPFOR") then { GRLIB_A3W_Mission_MR_OPFOR = [] };
 	[_missionPos, GRLIB_A3W_Mission_MR_BLUFOR + GRLIB_A3W_Mission_MR_OPFOR] spawn {
 		params ["_pos", "_list"];
 		waitUntil { sleep 30; ([_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };

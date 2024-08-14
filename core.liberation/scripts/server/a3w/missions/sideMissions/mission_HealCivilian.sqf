@@ -1,7 +1,7 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_location_name", "_objects", "_grp_wnded"];
+private ["_location_name", "_grp_wnded"];
 
 _setupVars = {
 	_missionType = "STR_HEAL_CIV";
@@ -76,14 +76,14 @@ _setupObjects = {
 
 	private _tent_pos = getPosATL _tent;
 	// add garbage
-	private _objects = [];
+	_vehicles = [];
 	for "_i" from 1 to 12 do {
 		_grbg = createVehicle [selectRandom _garbage, _tent_pos, [], 15, "None"];
 		_dir = random 360;
 		_grbg setVectorDirAndUp [[-cos _dir, sin _dir, 0] vectorCrossProduct surfaceNormal _missionPos, surfaceNormal _missionPos];
 		_grbg setVariable ["R3F_LOG_disabled", true, true];
 		_grbg enableSimulationGlobal false;
-		_objects pushBack _grbg;
+		_vehicles pushBack _grbg;
 		sleep 0.2;
 	};
 
@@ -123,7 +123,6 @@ _setupObjects = {
 	_grp_wnded setBehaviourStrong "CARELESS";
 	_grp_wnded setCombatMode "GREEN";
 
-	_vehicles = _objects;
 	_missionHintText = ["STR_HEAL_CIV_MESSAGE1", sideMissionColor, _location_name];
 	true;
 };

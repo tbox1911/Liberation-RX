@@ -102,12 +102,13 @@ private _disabled_controls = [1606,1607,1608,1609,1610,1613,1614,1620,1626];
 (_display displayCtrl 1624) ctrlSetText getMissionPath "res\ui_wfuel.paa";
 (_display displayCtrl 1624) ctrlSetToolTip "Add Fuel";
 (_display displayCtrl 1616) ctrlSetText getMissionPath "res\ui_rotation.paa";
-(_display displayCtrl 1616) ctrlSetToolTip "Rejoin player";
-(_display displayCtrl 1619) ctrlSetToolTip "Amount of Ammo or Experience Points to add";
+(_display displayCtrl 1616) ctrlSetToolTip "Rejoin Player";
+(_display displayCtrl 1612) ctrlSetToolTip "Selected Player";
+(_display displayCtrl 1619) ctrlSetToolTip "Amount of Ammo or Experience Points to add to Selected Player";
 (_display displayCtrl 1621) ctrlSetText getMissionPath "res\ui_redeploy.paa";
-(_display displayCtrl 1621) ctrlSetToolTip "Kick player!";
+(_display displayCtrl 1621) ctrlSetToolTip "Kick Player!";
 (_display displayCtrl 1622) ctrlSetText getMissionPath "res\skull.paa";
-(_display displayCtrl 1622) ctrlSetToolTip "BAN player!";
+(_display displayCtrl 1622) ctrlSetToolTip "BAN Player!";
 (_display displayCtrl 1610) ctrlSetToolTip "Delete object on cursor";
 (_display displayCtrl 1626) ctrlSetToolTip "Call Magic Mower";
 
@@ -353,7 +354,7 @@ while { alive player && dialog } do {
 		_msg = format ["Game Forcefully Saved in %1" ,GRLIB_save_key];
 		hintSilent _msg;
 		systemchat _msg;
-		closeDialog 0;	
+		closeDialog 0;
 		sleep 0.5;
 	};
 };

@@ -1,7 +1,7 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_managed_units", "_grp_civ", "_townName", "_tent1", "_chair1", "_chair2", "_fire1", "_civilians"];
+private ["_managed_units", "_grp_civ", "_townName"];
 
 _setupVars = {
 	_missionType = "STR_INVASION";
@@ -13,7 +13,7 @@ _setupVars = {
 
 _setupObjects = {
 	_missionPos = [(markerpos _missionLocation)] call F_findSafePlace;
-	if (count _missionPos == 0) exitWith { 
+	if (count _missionPos == 0) exitWith {
     	diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", localize _missionType];
     	false;
 	};
@@ -27,7 +27,8 @@ _setupObjects = {
 	_chair2 setDir random 180;
 	_fire1	= createVehicle ["Campfire_burning_F", _missionPos, [], 2, "None"];
 
-	{ _x setVariable ["R3F_LOG_disabled", true, true] } forEach [_tent1, _chair1, _chair2, _fire1];
+	_vehicles = [_tent1, _chair1, _chair2, _fire1];
+	{ _x setVariable ["R3F_LOG_disabled", true, true] } forEach _vehicles;
 
 	// spawn some enemies
 	[_missionPos, 30] call createlandmines;
@@ -35,7 +36,7 @@ _setupObjects = {
 	_managed_units = ["militia", 6, _missionPos] call F_spawnBuildingSquad;
 	{ _x setVariable ["GRLIB_mission_AI", false, true] } forEach _managed_units;
 	_aiGroup = [_missionPos, 12, "militia"] call createCustomGroup;
-	{ _x setVariable ["GRLIB_mission_AI", false, true] } forEach (units _aiGroup);	
+	{ _x setVariable ["GRLIB_mission_AI", false, true] } forEach (units _aiGroup);
 
 	// Spawn civvies
 	_grp_civ = [_missionPos, (5 + random(5))] call F_spawnCivilians;
@@ -51,15 +52,13 @@ _setupObjects = {
 _waitUntilMarkerPos = nil;
 _waitUntilExec = nil;
 _waitUntilCondition = { !(_missionLocation in blufor_sectors) };
-_waitUntilSuccessCondition = {
-	({ alive _x } count (units _aiGroup + _managed_units) == 0)
-};
+_waitUntilSuccessCondition = { ({ alive _x } count (units _aiGroup + _managed_units) == 0) };
 
 _failedExec = {
 	// Mission failed
 	{ [_x, -5] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
 	_failedHintMessage = ["STR_INVASION_FAILED", sideMissionColor, _townName];
-	{ deleteVehicle _x } forEach [_tent1, _chair1, _chair2, _fire1];
+	//{ deleteVehicle _x } forEach [_tent1, _chair1, _chair2, _fire1];
 	{ deleteVehicle _x } forEach (units _grp_civ);
 	[_missionPos] call clearlandmines;
 };
@@ -78,7 +77,7 @@ _successExec = {
 	} forEach ([_missionPos, GRLIB_capture_size] call F_getNearbyPlayers);
 
 	_successHintMessage = ["STR_INVASION_MESSAGE2", sideMissionColor, _townName];
-	{ deleteVehicle _x } forEach [_tent1, _chair1, _chair2, _fire1];
+	//{ deleteVehicle _x } forEach [_tent1, _chair1, _chair2, _fire1];
 	{ deleteVehicle _x } forEach (units _grp_civ);
 	[_missionPos] spawn {
 		params ["_pos"];

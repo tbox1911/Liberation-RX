@@ -164,15 +164,22 @@ sleep 10;
 if (_count_blu == 0) then {
 	{ deleteVehicle _x } forEach (units _aiGroup);
 	deleteGroup _aiGroup;
+} else {
+	[_lastPos, units _aiGroup] spawn {
+		params ["_pos", "_list"];
+		waitUntil { sleep 30; ([_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+		{ deleteVehicle _x } forEach _list;
+		deleteGroup _aiGroup;
+	};
 };
 
 if (!isNil "_vehicle") then {
-	_vehicle setVariable ["R3F_LOG_disabled", false, true];
+	//_vehicle setVariable ["R3F_LOG_disabled", false, true];
 	[_vehicle] spawn cleanMissionVehicles;
 };
 
 if (!isNil "_vehicles") then {
-	{ _x setVariable ["R3F_LOG_disabled", false, true] } forEach _vehicles;
+	//{ _x setVariable ["R3F_LOG_disabled", false, true] } forEach _vehicles;
 	[_vehicles] spawn cleanMissionVehicles;
 };
 
