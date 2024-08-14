@@ -28,7 +28,6 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 		_sector_pos = markerPos (selectRandom _usable_sectors);
 		// 40% in vehicles
 		if ( floor random 100 >= 60) then {
-			_sector_pos = [_sector_pos,3,true,250] call F_findSafePlace;
 			_civ_veh = [_sector_pos, (selectRandom civilian_vehicles), 3, false, GRLIB_side_civilian] call F_libSpawnVehicle;
 			if !(isNull _civ_veh) then {
 				_civ_grp = group (driver _civ_veh);
@@ -57,7 +56,6 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 			(
 				GRLIB_global_stop == 1 ||
 				(diag_fps < 25) ||
-				(count (waypoints _civ_grp) == 0) ||
 				({alive _x} count (units _civ_grp) == 0) ||
 				([_unit_pos, _radius, GRLIB_side_friendly] call F_getUnitsCount == 0) ||
 				(time > _unit_ttl)
@@ -66,8 +64,11 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 
 		// Cleanup
 		waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_unit_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
-		[_civ_veh] call clean_vehicle;
-		{ deleteVehicle _x } forEach (units _civ_grp);
-		deleteGroup _civ_grp;
+		if (isNull _civ_veh) then {
+			{ deleteVehicle _x } forEach (units _civ_grp);
+			deleteGroup _civ_grp;
+		} else {
+			[_civ_veh] call clean_vehicle;
+		};
 	};
 };
