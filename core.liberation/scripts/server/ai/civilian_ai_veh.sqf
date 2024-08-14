@@ -66,6 +66,7 @@ while { alive _vehicle && alive _driver } do {
 				_hit_index = selectRandom ["HitLFWheel", "HitLBWheel", "HitRFWheel", "HitRBWheel", "HitHull" ];  // "HitBody"
 				_vehicle setHitPointDamage [_hit_index, 1];
 				_vehicle setHitPointDamage ["HitEngine", 1];
+				_vehicle setDamage 0.5;
 				_vehicle allowDamage false;
 			};
 
@@ -83,7 +84,7 @@ while { alive _vehicle && alive _driver } do {
 	if (_event_stared) then {
 		_helped = false;
 		if (_incd == _incd_repair && _vehicle getHitPointDamage "HitEngine" < 1) then { _helped = true };
-		if (_incd == _incd_fuel && fuel _vehicle >= 0.45) then { _helped = true };
+		if (_incd == _incd_fuel && fuel _vehicle >= 0.4) then { _helped = true };
 		if (time > _wait_max) then { _helped = true };
 
 		if (_helped) then {
