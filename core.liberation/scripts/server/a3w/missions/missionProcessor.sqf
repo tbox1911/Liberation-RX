@@ -165,11 +165,11 @@ if (_count_blu == 0) then {
 	{ deleteVehicle _x } forEach (units _aiGroup);
 	deleteGroup _aiGroup;
 } else {
-	[_lastPos, units _aiGroup] spawn {
-		params ["_pos", "_list"];
+	[_lastPos, _aiGroup] spawn {
+		params ["_pos", "_grp"];
 		waitUntil { sleep 30; ([_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
-		{ deleteVehicle _x } forEach _list;
-		deleteGroup _aiGroup;
+		{ deleteVehicle _x } forEach (units _grp);
+		deleteGroup _grp;
 	};
 };
 
