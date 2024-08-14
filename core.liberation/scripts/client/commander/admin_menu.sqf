@@ -128,7 +128,7 @@ private _list = [];
 } foreach (AllPlayers - (entities "HeadlessClient_F"));
 
 {
-	_uid = _x  select 0;
+	_uid = _x select 0;
 	if !(_uid in _list) then {
 		_score_combo lbAdd format["%1", _x select 5];
 		_score_combo lbSetData [_i, _uid];
@@ -151,7 +151,7 @@ _build_combo lbSetCurSel last_build;
 // Limit Moderators Menu
 if (PAR_Grp_ID in GRLIB_whitelisted_moderators) then {
 	{
-		ctrlEnable  [_x, false];
+		ctrlEnable [_x, false];
 		ctrlShow [_x, false];
 	} forEach _disabled_controls;
 	_button_controls = _disabled_controls;
@@ -249,7 +249,7 @@ while { alive player && dialog } do {
 			_msg = format ["Savegame %1 Exported to clipboard.", GRLIB_save_key];
 			hintSilent _msg;
 		} else {
-			{ ctrlEnable  [_x, false] } foreach _button_controls;
+			{ ctrlEnable [_x, false] } foreach _button_controls;
 			{ ctrlShow [_x, true] } foreach _output_controls;
 			output_save = [];
 			[player, {
@@ -263,13 +263,13 @@ while { alive player && dialog } do {
 			waitUntil {uiSleep 0.3; (!(dialog) || !(alive player)) };
 
 			{ ctrlShow [_x, false] } foreach _output_controls;
-			{ ctrlEnable  [_x, true] } foreach _button_controls;
+			{ ctrlEnable [_x, true] } foreach _button_controls;
 		};
 	};
 
 	if (do_import == 1) then {
 		do_import = 0;
-		{ ctrlEnable  [_x, false] } foreach _button_controls;
+		{ ctrlEnable [_x, false] } foreach _button_controls;
 		{ ctrlShow [_x, true] } foreach _input_controls;
 		input_save = "";
 		waitUntil {uiSleep 0.3; ((input_save != "") || !(dialog) || !(alive player))};
@@ -286,7 +286,7 @@ while { alive player && dialog } do {
 			disableUserInput false;
 		} else { systemchat "Error: Invalid data!" };
 		{ ctrlShow [_x, false] } foreach _input_controls;
-		{ ctrlEnable  [_x, true] } foreach _button_controls;
+		{ ctrlEnable [_x, true] } foreach _button_controls;
 	};
 
 	if (do_kick == 1) then {
@@ -344,6 +344,7 @@ while { alive player && dialog } do {
 		systemchat _msg;
 		closeDialog 0;
 	};
+
 	if (do_save == 1) then {
 		do_save = 0;
 		[{
@@ -357,5 +358,6 @@ while { alive player && dialog } do {
 		closeDialog 0;
 		sleep 0.5;
 	};
+	sleep 0.5;
 };
 closeDialog 0;
