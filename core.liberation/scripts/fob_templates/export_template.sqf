@@ -4,7 +4,7 @@
 private _fob = (player nearObjects [FOB_typename, 150] select 0);
 if (isNil "_fob") exitWith {};
 private _fob_dir = round (getDir _fob);
-if (_fob_dir != 0) exitWith { hintSilent format ["Error: Incorect FOB azimuth (%1) must be 0.", _fob_dir] };
+if (_fob_dir != 0) exitWith { hintSilent format ["Error: Incorect FOB azimuth!\ncurrent: (%1) must be zero (0).", _fob_dir] };
 
 private _clipboard = "";
 private _objects_to_save = all_buildings_classnames + fob_buildings_classnames;

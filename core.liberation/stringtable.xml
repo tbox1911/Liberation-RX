@@ -6012,6 +6012,10 @@
 			<Portuguese>-- OPÇÕES ESTENDIDAS</Portuguese>
 			<Czech>-- Rozšířené možnosti</Czech>
 		</Key>
+		<Key ID="STR_ADMIN_CONFIGURE">
+			<Original>-- CONFIGURE MISSION</Original>
+			<French>-- CONFIGURE MISSION</French>
+		</Key>
 		<Key ID="STR_ADMIN_MENU">
 			<Original>-- ADMIN MENU</Original>
 			<Russian>-- АДМИН МЕНЮ</Russian>
@@ -6022,6 +6026,16 @@
 			<Portuguese>-- MENU ADMIN</Portuguese>
 			<Czech>-- ADMIN MENU</Czech>
 		</Key>
+		<Key ID="STR_ADMIN_MENU_MISSION">
+			<Original>-- MISSION ADMIN MENU</Original>
+			<Russian>-- MISSION АДМИН МЕНЮ</Russian>
+			<French>-- MISSION MENU ADMIN</French>
+			<Japanese>-- MISSION 管理者メニュー</Japanese>
+			<Chinesesimp>-- MISSION 管理员菜单 --</Chinesesimp>
+			<Chinese>-- MISSION 管理員菜單 --</Chinese>
+			<Portuguese>-- MISSION MENU ADMIN</Portuguese>
+			<Czech>-- MISSION ADMIN MENU</Czech>
+		</Key>		
 		<Key ID="STR_DESTROY_OUTPOST">
 			<Original>-- DESTROY OUTPOST</Original>
 			<Russian>-- УНИЧТОЖИТЬ АВАНПОСТ</Russian>
@@ -7072,7 +7086,7 @@
 			<Portuguese>Modo Deus</Portuguese>
 			<Czech>Božský mód</Czech>
 		</Key>
-		<Key ID="STR_ADMIN_MENUMENU">
+		<Key ID="STR_ADMIN_MENU_TITLE">
 			<Original>-- Admin Menu --</Original>
 			<Russian>-- Админ Меню --</Russian>
 			<Japanese>-- 管理者メニュー --</Japanese>
@@ -7081,7 +7095,15 @@
 			<Portuguese>-- Menu Admin --</Portuguese>
 			<Czech>-- Admin Menu --</Czech>
 		</Key>
-
+		<Key ID="STR_ADMIN_MENU_TITLE_A3W">
+			<Original>-- Side Mission Admin Menu --</Original>
+			<Russian>-- Side Mission Админ Меню --</Russian>
+			<Japanese>-- Side Mission 管理者メニュー --</Japanese>
+			<Chinesesimp>-- Side Mission 管理员菜单 --</Chinesesimp>
+			<Chinese>-- Side Mission 管理員菜單 --</Chinese>
+			<Portuguese>-- Side Mission Menu Admin --</Portuguese>
+			<Czech>-- Side Mission Admin Menu --</Czech>
+		</Key>
 		<!-- liberation_notification.hpp -->
 		<Key ID="STR_SIDE_START">
 			<Original>Side Mission %1 Started.</Original>

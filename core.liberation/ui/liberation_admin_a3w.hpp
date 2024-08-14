@@ -1,5 +1,5 @@
-class liberation_admin {
-  idd = 5204;
+class liberation_admin_a3w {
+  idd = 5202;
 	movingEnable = false;
 	controlsBackground[] = {};
 	controls[] = {
@@ -481,7 +481,7 @@ class liberation_admin {
     h = 0.035 * safezoneH;
   };
   class Header: StdHeader {
-    text = $STR_ADMIN_MENU_TITLE;
+    text = $STR_ADMIN_MENU_TITLE_A3W;
     x = 0.1985 * safezoneW + safezoneX;
     y = 0.1444 * safezoneH + safezoneY;
     w = 0.2375 * safezoneW;
