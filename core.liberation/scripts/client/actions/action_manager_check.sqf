@@ -131,22 +131,21 @@ GRLIB_checkUpgradeOutpost = {
 };
 
 GRLIB_checkSpeak = {
-	params ["_target", "_unit"];
+	params ["_target"];
 	(GRLIB_player_is_menuok && alive _target && _target getVariable ['GRLIB_can_speak', false] && side group _target != GRLIB_side_enemy)
 };
 
 GRLIB_checkCapture = {
-	params ["_target", "_unit"];
+	params ["_target"];
 	(GRLIB_player_is_menuok && alive _target && _target getVariable ['GRLIB_is_prisoner', false])
 };
 
 GRLIB_checkBuildDef = {
-	params ["_target", "_unit"];
-	(GRLIB_player_is_menuok && alive _target && GRLIB_player_owner_fob && ([] call F_getFobType) in [0,1])
+	params ["_target"];
+	(GRLIB_player_is_menuok && alive _target && (GRLIB_player_owner_fob || _target getVariable ["GRLIB_vehicle_owner", ""] == "public") && ([] call F_getFobType) in [0,1])
 };
 
 GRLIB_checkRemoveHelipad = {
-	params ["_target", "_unit"];
 	(
 		GRLIB_player_is_menuok && GRLIB_player_score >= GRLIB_perm_log && GRLIB_player_near_fob &&
 		({ getObjectType _x >= 8 && player distance2D _x <= GRLIB_ActionDist_3 } count (nearestObjects [player, ["Helipad_base_F"], 20]) >= 1) 
