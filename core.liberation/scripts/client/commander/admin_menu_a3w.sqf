@@ -52,7 +52,6 @@ if (isNil "LRX_A3W_CONFIG") then {
 	_timeout_list lbSetCurSel (LRX_A3W_CONFIG select 4);	
 };
 
-
 // Tooltips
 _debug_list ctrlSetToolTip "Enable the Debug mode.";
 _debug_marker_list ctrlSetToolTip "Enable the Marker Debug mode.";
@@ -98,6 +97,7 @@ while { alive player && dialog } do {
 			(lbCurSel _delay_list),
 			(lbCurSel _timeout_list)
 		];
+		systemchat "LRX A3W Mission config set!"
 		sleep 1;
 		(_display displayCtrl 1610) ctrlEnable true;
 	};

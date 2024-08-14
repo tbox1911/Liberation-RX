@@ -74,7 +74,7 @@ class liberation_admin_a3w {
   // ------------------
   class A3W_debug_txt: GREUH_RscStructuredText {
     idc = 1600;
-    text = "A3W_debug";
+    text = "A3W Debug";
     x = 0.2275 * safezoneW + safezoneX;
     y = 0.208 * safezoneH + safezoneY;
     w = 0.0875 * safezoneW;
@@ -89,7 +89,7 @@ class liberation_admin_a3w {
   };
   class A3W_debug_marker_txt: GREUH_RscStructuredText {
     idc = 1601;
-    text = "A3W_debug_marker";
+    text = "A3W Debug Marker";
     x = 0.2275 * safezoneW + safezoneX;
     y = 0.26 * safezoneH + safezoneY;
     w = 0.0875 * safezoneW;
@@ -104,7 +104,7 @@ class liberation_admin_a3w {
   };
   class A3W_mission_txt: GREUH_RscStructuredText {
     idc = 1617;
-    text = "A3W_mission";
+    text = "A3W Select Mission";
     x = 0.2275 * safezoneW + safezoneX;
     y = 0.312 * safezoneH + safezoneY;
     w = 0.0875 * safezoneW;
@@ -119,7 +119,7 @@ class liberation_admin_a3w {
   };
   class A3W_Mission_timeout_txt: GREUH_RscStructuredText {
     idc = 1602;
-    text = "A3W_Mission_timeout";
+    text = "A3W Mission Timeout";
     x = 0.2275 * safezoneW + safezoneX;
     y = 0.416 * safezoneH + safezoneY;
     w = 0.0875 * safezoneW;
@@ -134,7 +134,7 @@ class liberation_admin_a3w {
   };
   class A3W_Mission_delay_txt: GREUH_RscStructuredText {
     idc = 1602;
-    text = "A3W_Mission_delay";
+    text = "A3W Mission Delay";
     x = 0.2275 * safezoneW + safezoneX;
     y = 0.364 * safezoneH + safezoneY;
     w = 0.0875 * safezoneW;
