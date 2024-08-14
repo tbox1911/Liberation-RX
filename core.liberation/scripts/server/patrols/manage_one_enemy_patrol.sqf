@@ -21,7 +21,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	};
 
 	_opfor_veh = objNull;
-	_opfor_grp = grpNull;	
+	_opfor_grp = grpNull;
 	_usable_sectors = [];
 	_all_players = (AllPlayers - (entities "HeadlessClient_F"));
 	{
@@ -37,10 +37,9 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 
 	if ( count _usable_sectors > 0 ) then {
 		_sector_pos = markerPos (selectRandom _usable_sectors);
-
 		// 50% in vehicles
 		if ( floor random 100 > 50 && count militia_vehicles > 0 ) then {
-			_sector_pos = [_sector_pos] call F_findSafePlace;
+			_sector_pos = [_sector_pos,5,false,250] call F_findSafePlace;
 			_opfor_veh = [_sector_pos, (selectRandom militia_vehicles)] call F_libSpawnVehicle;
 			if !(isNull _opfor_veh) then {
 				_opfor_grp = group (driver _opfor_veh);
