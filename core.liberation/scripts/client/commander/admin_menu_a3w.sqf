@@ -49,7 +49,7 @@ if (isNil "LRX_A3W_CONFIG") then {
 	_debug_marker_list lbSetCurSel (LRX_A3W_CONFIG select 1);
 	_mission_list lbSetCurSel (LRX_A3W_CONFIG select 2);
 	_delay_list lbSetCurSel (LRX_A3W_CONFIG select 3);
-	_timeout_list lbSetCurSel (LRX_A3W_CONFIG select 4);	
+	_timeout_list lbSetCurSel (LRX_A3W_CONFIG select 4);
 };
 
 // Tooltips
@@ -97,7 +97,7 @@ while { alive player && dialog } do {
 			(lbCurSel _delay_list),
 			(lbCurSel _timeout_list)
 		];
-		systemchat "LRX A3W Mission config set!"
+		systemchat "LRX A3W Mission config set!";
 		sleep 1;
 		(_display displayCtrl 1610) ctrlEnable true;
 	};
