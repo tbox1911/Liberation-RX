@@ -3,6 +3,7 @@ params [ "_position", "_distance", "_side" ];
 private _count = 0;
 if (_side == GRLIB_side_friendly) then {
     _count = {
+        (alive _x) &&
         (_x distance2D _position < _distance) &&
         ((getPosATL _x) select 2 < 150) && (speed (vehicle _x) <= 80) &&
         !(isNil {_x getVariable "PAR_Grp_ID"})
@@ -11,6 +12,7 @@ if (_side == GRLIB_side_friendly) then {
 
 if (_side == GRLIB_side_enemy) then {
     _count = {
+        (alive _x) &&
         (_x distance2D _position < _distance) &&
         ((getPosATL _x) select 2 < 150) && (speed (vehicle _x) <= 80) &&
         !(_x getVariable ["GRLIB_mission_AI", false]) &&
