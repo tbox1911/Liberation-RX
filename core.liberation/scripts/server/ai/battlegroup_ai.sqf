@@ -8,7 +8,6 @@ if (_vehicle isKindOf "Ship") exitWith {
 };
 
 sleep (1 + floor random 10);
-if ({alive _x} count (units _grp) == 0) exitWith {};
 
 private _timer = 0;
 private _last_pos = getPosATL (leader _grp);
