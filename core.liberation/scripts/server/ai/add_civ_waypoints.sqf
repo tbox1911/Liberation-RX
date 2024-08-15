@@ -7,7 +7,7 @@ if (_civ_veh isKindOf "Ship") exitWith { [_grp, getPosATL _civ_veh, 80] spawn pa
 
 [_grp] call F_deleteWaypoints;
 
-private _behaviour = "SAFE";
+private _behaviour = "CARELESS";
 private _combatMode = "BLUE";
 private _speed = "LIMITED";
 
