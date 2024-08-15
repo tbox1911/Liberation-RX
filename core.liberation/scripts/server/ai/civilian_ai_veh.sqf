@@ -36,9 +36,14 @@ while { alive _vehicle && alive _driver } do {
 
 	// Check driver
 	if (driver _vehicle != _driver) then {
+		_vehicle lockDriver false;
+		_vehicle setVehicleLock "UNLOCKED";
+		sleep 0.5;
 		_driver moveInDriver _vehicle;
 		_driver assignAsDriver _vehicle;
-		sleep 1;
+		sleep 0.5;
+		_vehicle lockDriver true;
+		_vehicle setVehicleLock "LOCKED";
 	};
 
 	// Shit happens...
