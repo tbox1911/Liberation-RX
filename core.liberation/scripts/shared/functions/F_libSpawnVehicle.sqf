@@ -102,7 +102,7 @@ if ( _side == GRLIB_side_civilian ) then {
 	_vehicle setVariable ["GRLIB_vehicle_owner", "public", true];
 	_vehicle lockCargo true;
 	_vehicle lockDriver true;
-	_vehicle setVehicleLock "LOCKED";	
+	_vehicle setVehicleLock "LOCKED";
 };
 
 if ( _side == GRLIB_side_friendly ) then {
