@@ -69,8 +69,6 @@ if ([_selected_camo_class_name, [".#", "./", "LRX_Texture"]] call F_startsWithMu
     };
 
     {
-        _vehicle setObjectMaterialGlobal [_x, "\a3\data_f\default.rvmat"];
-        sleep 0.1;
         _vehicle setObjectTextureGlobal [_x, _camo_class_name];
     } forEach _selections;
 } else {
