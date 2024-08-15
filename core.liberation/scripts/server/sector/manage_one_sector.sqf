@@ -193,9 +193,11 @@ if ( (!(_sector in blufor_sectors)) && (([_sector_pos, GRLIB_sector_size, GRLIB_
 	};
 
 	if ( _spawncivs && GRLIB_civilian_activity > 0) then {
-		private _nbcivs = round ((6 + (floor random 8)) * GRLIB_civilian_activity);
-		private _rndciv = [1,1,1,1,2,3];
-		if ( _sector in sectors_bigtown ) then { _nbcivs = _nbcivs + 12 };
+		private _nbciv_cur = [_sector_pos, GRLIB_sector_size, GRLIB_side_civilian] call F_getUnitsCount;
+		private _nbcivs = round ((6 + (floor random 6)) * GRLIB_civilian_activity);
+		_nbcivs = _nbcivs min (_nbcivs - _nbciv_cur);
+		private _rndciv = [1,1,1,1,1,2,2,2];
+		if ( _sector in sectors_bigtown ) then { _nbcivs = _nbcivs + 12 };	
 		while { _nbcivs > 0 } do {
 			_maxcivs = (selectRandom _rndciv) min _nbcivs;
 			_grp = [_sector_pos, _maxcivs] call F_spawnCivilians;
