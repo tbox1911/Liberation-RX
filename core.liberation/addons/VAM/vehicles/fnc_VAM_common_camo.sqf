@@ -27,7 +27,7 @@ if ([_selected_camo_class_name, [".#", "./", "LRX_Texture"]] call F_startsWithMu
     private _selections = switch (true) do {
         // Mod first
         case (_vehicle isKindOf "rhsusf_fmtv_base"):              { [0,1,3,4,5] };
-        case (_vehicle isKindOf "rhs_a3spruttank_base"):          { [0,1,2,3] };
+        case (_vehicle isKindOf "rhs_a3spruttank_base"):          { [0,1,2] };
 
         case (_vehicle isKindOf "Van_01_base_F"):                 { [0,1] };
         case (_vehicle isKindOf "Van_02_base_F"):                 { [0] };
