@@ -25,17 +25,16 @@ private _my_uavs = allUnitsUAV select { [player, _x] call is_owner };
 hcRemoveAllGroups player;
 if (player == ([] call F_getCommander)) then {
 	private _my_veh = vehicles select {
-		!([_x, "LHD", GRLIB_sector_size] call F_check_near) &&
-		[player, _x] call is_owner &&
-		_x getVariable ["GRLIB_vehicle_manned", false] &&
-		count (crew _x) > 0
+		(_x getVariable ["GRLIB_vehicle_manned", false]) &&
+		count (crew _x) > 0 &&
+		[player, _x] call is_owner
 	};
 	{ player hcSetGroup [group _x] } foreach _my_veh;
 };
 
 private _my_squad = player getVariable ["my_squad", nil];
 if (!isNil "_my_squad") then { player hcSetGroup [_my_squad] };
-private _my_veh = vehicles select {([_x, uavs] call F_itemIsInClass) && [player, _x] call is_owner};
+private _my_veh = vehicles select {[player, _x] call is_owner && ([_x, uavs] call F_itemIsInClass)};
 {player hcSetGroup [group _x]} forEach _my_veh;
 
 // set Rank
