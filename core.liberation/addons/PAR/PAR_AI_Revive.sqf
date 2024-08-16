@@ -63,15 +63,16 @@ PAR_graves = [
 
 PAR_grave_box = "Land_PlasticCase_01_small_black_F";
 
-waituntil {sleep 1; !isNil "GRLIB_player_spawned"};
-waituntil {sleep 1; GRLIB_player_spawned};
-waituntil {sleep 1; !isNil {player getVariable ["GRLIB_Rank", nil]}};
+waituntil {sleep 1; alive player};
 
 // Init player
 [] call PAR_Player_Init;
 
 // Init player EH
 [player] call PAR_EventHandler;
+
+waituntil {sleep 1; !isNil "GRLIB_player_spawned"};
+waituntil {sleep 1; !isNil {player getVariable ["GRLIB_Rank", nil]}};
 
 // Grave Marker
 _marker = createMarkerLocal ["player_grave_box", markers_reset];

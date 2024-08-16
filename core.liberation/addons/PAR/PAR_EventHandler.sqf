@@ -5,8 +5,10 @@ params ["_unit"];
 _unit enableWeaponDisassembly false;
 
 // Check Veh perms
-_unit addEventHandler ["GetInMan", {_this spawn vehicle_permissions}];
-_unit addEventHandler ["SeatSwitchedMan", {_this spawn vehicle_permissions}];
+_unit removeAllEventHandlers "GetInMan";
+_unit addEventHandler ["GetInMan", { _this spawn vehicle_permissions }];
+_unit removeAllEventHandlers "SeatSwitchedMan";
+_unit addEventHandler ["SeatSwitchedMan", { _this spawn vehicle_permissions }];
 
 _unit addEventHandler ["GetOutMan", {
 	params ["_unit", "_role", "_vehicle"];
@@ -120,8 +122,6 @@ if (_unit == player) then {
 		} else {
 			_vehicle disableTIEquipment false;
 		};
-		_this spawn vehicle_permissions;
-		if (_vehicle iskindof "Steerable_Parachute_F") exitWith {};
 		_fuel = round (fuel _vehicle * 100);
 		_ammo = round (([_vehicle] call F_getVehicleAmmoDef) * 100);
 		_damage = round (damage _vehicle * 100);

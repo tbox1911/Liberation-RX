@@ -254,7 +254,6 @@ PAR_Player_Init = {
 	player setCustomAimCoef 0.35;
 	player setUnitRecoilCoefficient 0.6;
 	player setCaptive false;
-
 	PAR_isDragging = false;
 	[player] call AR_Add_Player_Actions;
 	[player] call add_player_actions;
