@@ -85,7 +85,7 @@ LOADOUT_expensive_items = [];
 LOADOUT_free_items = [];
 
 // see https://community.bistudio.com/wiki/nearestTerrainObjects for list
-GRLIB_clutter_cutter = ["Tree","Bush","Hide","House","Fence","Ruins","Rock","Rocks","Building"];
+GRLIB_clutter_cutter = ["TREE","SMALL TREE","BUSH","HIDE","HOUSE","FENCE","RUINS","ROCK","ROCKS","BUILDING","WALL"];
 
 // *** LRX DEFAULT BUILDINGS CLASSNAMES ***
 [] call compileFinal preprocessFileLineNumbers "scripts\shared\default_building_classnames.sqf";
