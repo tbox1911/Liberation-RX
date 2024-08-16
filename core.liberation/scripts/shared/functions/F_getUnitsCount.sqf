@@ -1,18 +1,17 @@
 params [ "_position", "_distance", "_side" ];
 
-private _count = 0;
-if (_side == GRLIB_side_friendly) then {
-    _count = {
-        (alive _x) &&
+if (_side == GRLIB_side_friendly) exitWith {
+    {
+        (alive _x) && !(captive _x) &&
         (_x distance2D _position < _distance) &&
         ((getPosATL _x) select 2 < 150) && (speed (vehicle _x) <= 80) &&
         !(isNil {_x getVariable "PAR_Grp_ID"})
     } count (units GRLIB_side_friendly);
 };
 
-if (_side == GRLIB_side_enemy) then {
-    _count = {
-        (alive _x) &&
+if (_side == GRLIB_side_enemy) exitWith {
+    {
+        (alive _x) && !(captive _x) &&
         (_x distance2D _position < _distance) &&
         ((getPosATL _x) select 2 < 150) && (speed (vehicle _x) <= 80) &&
         !(_x getVariable ["GRLIB_mission_AI", false]) &&
@@ -21,4 +20,13 @@ if (_side == GRLIB_side_enemy) then {
     } count (units GRLIB_side_enemy);    
 };
 
-_count;
+if (_side == GRLIB_side_civilian) exitWith {
+    {
+        (alive _x) && !(captive _x) &&
+        (_x distance2D _position < _distance) &&
+        (isNil {_x getVariable "GRLIB_vehicle_owner"}) &&
+        (isNil {_x getVariable "PAR_Grp_ID"})
+    } count (units GRLIB_side_civilian);
+};
+
+0;

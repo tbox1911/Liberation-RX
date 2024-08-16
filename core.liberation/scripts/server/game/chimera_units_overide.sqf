@@ -5,7 +5,7 @@ private [ "_unit_model", "_cloth", "_items", "_weapon", "_mag", "_src_class", "_
 // repaint man units
 private _chimera_soldiers = [];
 private _grp = createGroup [GRLIB_side_friendly, true];
-private _chimera_soldiers = (allUnits) select {(_x distance2D lhd < GRLIB_fob_range) };
+private _chimera_soldiers = units group chimeraofficer;
 {
 	_unit_model = selectRandom blufor_squad_inf;
 	_cloth = getText(configfile >> "CfgVehicles" >> _unit_model >> "uniformClass");
