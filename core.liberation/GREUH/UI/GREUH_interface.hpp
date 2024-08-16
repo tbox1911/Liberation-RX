@@ -944,8 +944,8 @@ class GreuhButton {
 class GREUH_respawn {
 	idd = 5566;
 	movingEnable = false;
-	controlsBackground[] = {"GREUH_BleedoutBar_BG"};
-	controls[] = {"GREUH_BleedoutBar","GREUH_BleedoutBar_F","GREUH_Respawn","GREUH_RecallMedic" ,"GREUH_ReviveLabel","GREUH_WoundedLabel","GREUH_Tips"};
+	controlsBackground[] = {};
+	controls[] = {"GREUH_BleedoutBar_BG","GREUH_BleedoutBar","GREUH_BleedoutBar_F","GREUH_Respawn","GREUH_RecallMedic" ,"GREUH_ReviveLabel","GREUH_WoundedLabel","GREUH_Tips"};
 	objects[] = {};
 	class GREUH_Respawn : GreuhButton {
 		idc = 677;
@@ -1041,7 +1041,7 @@ class GREUH_respawn {
 		text = "";
 	};
 	class GREUH_BleedoutBar_BG : GREUH_BleedoutBar {
-		idc = -1;
+		idc = 6697;
 		colorBackground[] = COLOR_BLACK_ALPHA;
 		x = 0.4 * safezoneW + safezoneX - 0.005;
 		y = 0.7 * safezoneH + safezoneY - 0.005;

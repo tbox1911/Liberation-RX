@@ -2,7 +2,7 @@ count_death = 1;
 private ["_pos", "_destpos", "_cam", "_noesckey"];
 
 while { true } do {
-	waitUntil { sleep 0.5; alive player && GRLIB_player_spawned && (player getVariable ["PAR_isUnconscious", false]) };
+	waitUntil { sleep 0.5; alive player && GRLIB_player_spawned && (player getVariable ["PAR_isUnconscious", false] || player getVariable ["ACE_isUnconscious", false]) };
 	openMap false;
 	closeDialog 0;
 	(uiNamespace getVariable ["RscDisplayArsenal", displayNull]) closeDisplay 1;

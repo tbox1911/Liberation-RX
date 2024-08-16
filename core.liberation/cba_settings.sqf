@@ -30,3 +30,4 @@ force force ace_repair_addSpareParts = false;
 
 // ACE Fatigue avancée
 force force ace_advanced_fatigue_enabled = false;
+force force ace_advanced_fatigue_enableStaminaBar = false;
