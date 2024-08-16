@@ -27,3 +27,6 @@ force force ace_cargo_paradropTimeCoefficent = 1;
 
 // Repair
 force force ace_repair_addSpareParts = false;
+
+// ACE Fatigue avancée
+force force ace_advanced_fatigue_enabled = false;
