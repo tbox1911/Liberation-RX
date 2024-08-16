@@ -6,12 +6,12 @@ private ["_leader"];
 _setupVars = {
 	_missionType = "STR_BARON_ROUGE";
 	_locationsArray = nil; // locations are generated on the fly from towns
-	_ignoreAiDeaths = true;	
 	_missionTimeout = (30 * 60);
+	_ignoreAiDeaths = true;
 };
 
 _setupObjects = {
-	if (count sectors_bigtown <= 1) exitWith { 
+	if (count sectors_bigtown <= 1) exitWith {
     	diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", localize _missionType];
     	false;
 	};
@@ -22,7 +22,7 @@ _setupObjects = {
 	} else {
 		_vehicleClass = selectRandom a3w_br_planes;
 	};
-	if (isNil "_vehicleClass") exitWith { 
+	if (isNil "_vehicleClass") exitWith {
     	diag_log format ["--- LRX Error: side mission %1, cannot find vehicle class!", localize _missionType];
     	false;
 	};
@@ -80,6 +80,7 @@ _waitUntilMarkerPos = { getPosATL _leader };
 _waitUntilExec = nil;
 _waitUntilCondition = nil;
 _waitUntilSuccessCondition = { !alive _vehicle };
+
 _failedExec = nil;
 
 _successExec = {

@@ -1,17 +1,17 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private [ "_citylist", "_leader"];
+private ["_leader"];
 
 _setupVars = {
 	_missionType = "STR_HOSTILE_HELI";
-	_citylist = [] call cityList;
 	_locationsArray = nil; // locations are generated on the fly from towns
 	_missionTimeout = (35 * 60);
 	_ignoreAiDeaths = true;
 };
 
 _setupObjects = {
+	private _citylist = [] call cityList;
 	_missionPos = markerPos ((selectRandom _citylist) select 0);
 	if (count _missionPos == 0) exitWith {
     	diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", localize _missionType];
@@ -59,24 +59,15 @@ _setupObjects = {
 _waitUntilMarkerPos = { getPosATL _leader };
 _waitUntilExec = nil;
 _waitUntilCondition = nil;
-_waitUntilSuccessCondition = { !(alive _vehicle) };
+_waitUntilSuccessCondition = { !alive _vehicle };
 
 _failedExec = nil;
-// _vehicle is automatically deleted or unlocked in missionProcessor depending on the outcome
 
 _successExec = {
 	// Mission completed
-	// wait until heli is down to spawn crates
 	[_vehicle] spawn {
 		params ["_veh"];
-
-		{ deleteVehicle _x } forEach (crew _veh);
-
-		waitUntil {
-			sleep 0.5;
-			(isTouchingGround _veh || (getPosATL _veh) select 2 < 5)
-		};
-
+		waitUntil {	sleep 1; (isTouchingGround _veh || (getPosATL _veh) select 2 < 5) };
 		sleep 2;
 		private _sea_deep = round ((getPosATL _veh select 2) - (getPosASL _veh select 2));
 		if (_sea_deep <= 20) then {
@@ -84,7 +75,6 @@ _successExec = {
 			[ammobox_o_typename, getPos _veh, false] call boxSetup;
 		};
 	};
-
 	_successHintMessage = "STR_HOSTILE_HELI_MESSAGE2";
 };
 
