@@ -1,7 +1,7 @@
 params [
 	"_sectorpos",
 	"_classname",
-	["_size", 3],
+	["_size", 5],
 	["_random_rotate", false],
 	["_side", GRLIB_side_enemy],
 	["_crewed", true]
@@ -59,6 +59,7 @@ if ( _classname isKindOf "Air" ) then {
 			_vehicle allowDamage false;
 			_spawnpos set [2, 0.5];
 			_vehicle setPos _spawnpos;
+			_vehicle setVariable ["R3F_LOG_disabled", true, true];
 		};
 	};
 };
@@ -72,6 +73,10 @@ if ( isNull _vehicle ) exitWith {
 if (_side != GRLIB_side_civilian) then {
 	diag_log format [ "Spawn Vehicle %1 Pos %2 at %3", _classname, getPosATL _vehicle, time ];
 };
+
+_vehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
+_vehicle allowCrewInImmobile [true, false];
+_vehicle setUnloadInCombat [true, false];
 
 [_vehicle] call F_clearCargo;
 [_vehicle] call F_fixModVehicle;
@@ -140,13 +145,19 @@ if ( _side == GRLIB_side_enemy ) then {
 	};
 };
 
-if ( _vehicle isKindOf "LandVehicle" ) then { [_vehicle] call F_vehicleUnflip };
-sleep 2;
-_vehicle setDamage 0;
-_vehicle allowDamage true;
-_vehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
-_vehicle allowCrewInImmobile [true, false];
-_vehicle setUnloadInCombat [true, false];
+[_vehicle] spawn {
+	params ["_vehicle"];
+	sleep 1;
+	if (_vehicle isKindOf "LandVehicle") then { [_vehicle] call F_vehicleUnflip };
+	sleep 4;
+	_vehicle setDamage 0;
+	_vehicle allowDamage true;
+	{ 
+		_x setDamage 0;
+		_x allowDamage true
+	} forEach (crew _vehicle);
+	_vehicle setVariable ["R3F_LOG_disabled", false, true];
+};
 
 if (_side != GRLIB_side_civilian) then {
 	diag_log format [ "Done Spawning Vehicle %1 at %2", _classname , time ];
