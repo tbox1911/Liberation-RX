@@ -500,6 +500,7 @@ while { true } do {
 
 			// Storage
 			if (_classname in [storage_medium_typename,storage_large_typename]) then {
+				_vehicle setVariable ["GRLIB_vehicle_owner", PAR_Grp_ID, true];
 				_allow_damage = false;
 			};
 
