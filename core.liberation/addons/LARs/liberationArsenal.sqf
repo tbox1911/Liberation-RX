@@ -139,8 +139,11 @@ GRLIB_blacklisted_from_arsenal = GRLIB_blacklisted_from_arsenal arrayIntersect G
 // Initialize Arsenal
 if (GRLIB_ACE_enabled) then {
 	// Ace compat.
-	[myLARsBox, GRLIB_whitelisted_from_arsenal, false] call ace_arsenal_fnc_initBox;
+	[myLARsBox, false, false] call ace_arsenal_fnc_initBox;
+	[myLARsBox, GRLIB_whitelisted_from_arsenal, false] call ace_arsenal_fnc_addVirtualItems;
+	[myLARsBox, GRLIB_blacklisted_from_arsenal, false] call ace_arsenal_fnc_removeVirtualItems;	
 } else {
+	// Arma VA
 	[myLARsBox, ["GRLIB_whitelisted_from_arsenal", "GRLIB_blacklisted_from_arsenal"], false, "Liberation", { false }] call LARs_fnc_blacklistArsenal;
 	waitUntil {sleep 1; !isNil {myLARsBox getVariable "LARs_arsenal_Liberation_cargo"}};
 	private _cargo = myLARsBox getVariable ["LARs_arsenal_Liberation_cargo", []];
