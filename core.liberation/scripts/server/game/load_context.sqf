@@ -19,7 +19,7 @@ if (count _context >= 1) then {
     sleep 1;
 
     // AIs loadout
-    if (count (_context select 2) >= 1 ) then {
+    if (count (_context select 2) >= 1 && alive _player) then {
         private _wait = true;
         while { _wait } do {
             _player = _uid call BIS_fnc_getUnitByUID;
