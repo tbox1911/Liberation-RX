@@ -193,7 +193,7 @@ if ( (!(_sector in blufor_sectors)) && (([_sector_pos, GRLIB_sector_size, GRLIB_
 	};
 
 	if ( _spawncivs && GRLIB_civilian_activity > 0) then {
-		private _nbciv_cur = [_sector_pos, GRLIB_sector_size, GRLIB_side_civilian] call F_getUnitsCount;
+		private _nbciv_cur = [_sector_pos, GRLIB_capture_size, GRLIB_side_civilian] call F_getUnitsCount;
 		private _nbcivs = round ((6 + (floor random 6)) * GRLIB_civilian_activity);
 		_nbcivs = _nbcivs min (_nbcivs - _nbciv_cur);
 		private _rndciv = [1,1,1,1,1,2,2,2];
