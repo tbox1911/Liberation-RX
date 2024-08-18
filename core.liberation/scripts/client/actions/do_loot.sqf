@@ -8,7 +8,7 @@ _target setVariable ["loot_in_use", true, true];
 private _load_target = loadAbs _target;
 private _nearest_cargo = vehicles select {
 	alive _x && _x isKindOf "AllVehicles" &&
-	_x distance2D _caller <= 20 && locked _x < 2 && 
+	_x distance2D _caller <= 30 && locked _x < 2 && 
 	!(_x getVariable ['R3F_LOG_disabled', false]) &&
 	[_caller, _x] call is_owner &&
 	(maxLoad _x - loadAbs _x) > _load_target
