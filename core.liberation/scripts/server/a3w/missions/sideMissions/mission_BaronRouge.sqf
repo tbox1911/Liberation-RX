@@ -61,8 +61,7 @@ _setupObjects = {
 		sleep 2;
 	};
 
-	_vehicle = (_vehicles select 0);
-	_leader = driver _vehicle;
+	_leader = driver (_vehicles select 0);
 	_leader setSkill 0.70;
 	_leader setSkill ["courage", 1];
 	_leader allowFleeing 0;
@@ -79,13 +78,13 @@ _setupObjects = {
 _waitUntilMarkerPos = { getPosATL _leader };
 _waitUntilExec = nil;
 _waitUntilCondition = nil;
-_waitUntilSuccessCondition = { !alive _vehicle };
+_waitUntilSuccessCondition = { !alive (_vehicles select 0) };
 
 _failedExec = nil;
 
 _successExec = {
 	// Mission completed
-	private _killer = _vehicle getVariable ["GRLIB_last_killer", objNull];
+	private _killer = (_vehicles select 0) getVariable ["GRLIB_last_killer", objNull];
 	if (!isNull _killer) then {
 		private _rwd_xp = 30;
 		private _text = format ["Reward Received: %1 XP", _rwd_xp];
