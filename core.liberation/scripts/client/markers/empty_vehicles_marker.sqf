@@ -21,6 +21,8 @@ private _no_marker_classnames = [
 if (GRLIB_allow_redeploy > 0) then {
 	_no_marker_classnames append respawn_vehicles;
 };
+_no_marker_classnames = _no_marker_classnames arrayIntersect _no_marker_classnames;
+_no_marker_classnames = _no_marker_classnames - ai_resupply_sources;
 
 private ["_veh_list","_nextvehicle","_nextmarker","_nextvehicle_owner","_nextvehicle_disabled"];
 private ["_marker","_marker_color","_marker_type","_marker_show"];
@@ -30,10 +32,10 @@ while { true } do {
 	waitUntil {sleep 0.5; GRLIB_MapOpen };
 	_veh_list = vehicles select {
 		(alive _x) && !(isObjectHidden _x) &&
-		(getObjectType _x >= 8) && (isDamageAllowed _x) &&
-		(count (crew _x) == 0 || typeOf _x in (uavs + static_vehicles_AI)) &&
 		(_x distance2D lhd > GRLIB_fob_range) &&
+		(getObjectType _x >= 8) && (isDamageAllowed _x) &&
 		!([_x, _no_marker_classnames] call F_itemIsInClass) &&
+		(count (crew _x) == 0 || typeOf _x in (uavs + static_vehicles_AI)) &&
 		(isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull])) &&
 		(
 			(side _x == GRLIB_side_friendly) ||
