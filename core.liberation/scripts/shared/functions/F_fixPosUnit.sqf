@@ -6,8 +6,9 @@ params ["_unit"];
 if (!alive _unit) exitWith {};
 if (!isNull objectParent _unit) exitWith {};
 if (speed vehicle _unit > 1) exitWith {};
+if (_unit getVariable ["GRLIB_in_building", false]) exitWith {};
 
-private _spawnpos = (getPosATL _unit) vectorAdd [0,0,1];
+private _spawnpos = getPosATL _unit;
 private _curalt = _spawnpos select 2;
 private _minalt = 5;
 private _maxalt = 30;

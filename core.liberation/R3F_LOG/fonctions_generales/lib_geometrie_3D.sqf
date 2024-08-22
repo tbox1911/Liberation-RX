@@ -574,6 +574,10 @@ R3F_LOG_FNCT_3D_tirer_position_degagee_sol = {
 					) exitWith {_intersect = true;};
 				} forEach ([_position_degagee, _rayon_degage] call R3F_LOG_FNCT_3D_get_objets_genants_rayon);
 
+				// Verifier intersec avec building / rocks
+				private _maxpos = ATLtoASL (_position_degagee vectorAdd [0,0,30]);
+				if (lineIntersects [ATLtoASL _position_degagee, _maxpos]) then { _intersect = true };
+
 				(_intersect && _nb_tirages < _nb_tirages_max)
 			}
 		},

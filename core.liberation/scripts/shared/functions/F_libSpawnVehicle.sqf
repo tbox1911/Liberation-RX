@@ -23,7 +23,7 @@ if ( _classname isKindOf "Air" ) then {
 	_vehicle = createVehicle [_classname, _spawnpos, [], 50, "FLY"];
 	_vehicle allowDamage false;
 	_vehicle setDir (_vehicle getDir _sectorpos);
-	_vehicle setPos _spawnpos;
+	_vehicle setPosATL _spawnpos;
 	_vehicle setVelocityModelSpace [0, 80, 0];
 } else {
 	if ( _size == 0 ) then {
@@ -58,7 +58,7 @@ if ( _classname isKindOf "Air" ) then {
 			_vehicle = createVehicle [_classname, zeropos, [], 0, "NONE"];
 			_vehicle allowDamage false;
 			_spawnpos set [2, 0.5];
-			_vehicle setPos _spawnpos;
+			_vehicle setPosATL _spawnpos;
 			_vehicle setVariable ["R3F_LOG_disabled", true, true];
 		};
 	};
