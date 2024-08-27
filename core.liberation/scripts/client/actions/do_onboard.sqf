@@ -5,7 +5,7 @@ if (_pos distance2D lhd < GRLIB_fob_range) exitWith {
     player setVariable ["GRLIB_action_inuse", false, true];
 };
 
-private _near_sign = nearestObjects [(ATLtoASL _pos), [FOB_sign], 20] select 0;
+private _near_sign = nearestObjects [_pos, [FOB_sign], GRLIB_fob_range] select 0;
 if (isNil "_near_sign") exitWith {};
 
 private _unit_list = units group player;
