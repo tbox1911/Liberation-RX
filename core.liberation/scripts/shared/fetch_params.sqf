@@ -96,7 +96,7 @@ if (isServer) then {
 			_name = _x select 0;
 			if (_name == "---") then {
 				diag_log format ["%1 %2 %1", _name, (_x select 1)];
-			} else {			
+			} else {
 				_data = [_name] call lrx_getParamData;
 				_value_text = "Error!";
 				if (count _data > 0) then {
@@ -284,18 +284,17 @@ if (abort_loading) exitWith { abort_loading_msg = format [
 
 // Overide Huron type
 switch (GRLIB_huron_type) do {
-	case 0: {huron_typename = "B_Heli_Transport_03_unarmed_F" };
-	case 1: {huron_typename = "I_Heli_Transport_02_F" };
-	case 2: {huron_typename = "B_Heli_Transport_01_F" };
+	case 0: { huron_typename = "B_Heli_Transport_03_unarmed_F" };
+	case 1: { huron_typename = "I_Heli_Transport_02_F" };
+	case 2: { huron_typename = "B_Heli_Transport_01_F" };
 };
 
 // Overide Naval FOB
 FOB_carrier = "";
-FOB_carrier_center = "";
 switch (GRLIB_naval_type) do {
-	case 1: {FOB_carrier = "Land_Destroyer_01_base_F"; FOB_carrier_center = "Land_Destroyer_01_hull_04_F" };
-	case 2: {FOB_carrier = "Land_Carrier_01_base_F"; FOB_carrier_center = "Land_Carrier_01_island_02_F" };
-	case 3: {FOB_carrier = "fob_water1"; FOB_carrier_center = 7 };
+	case 1: { FOB_carrier = "Land_Destroyer_01_base_F" };
+	case 2: { FOB_carrier = "Land_Carrier_01_base_F" };
+	case 3: { FOB_carrier = "fob_water1" };
 };
 
 if ( GRLIB_ACE_enabled ) then { GRLIB_fancy_info = 0 };		// Disable Fancy if ACE present
