@@ -8,20 +8,21 @@ if !(_player getVariable ["GRLIB_player_context_loaded", false]) exitWith {};
 private _ai_group = [];
 private _loadout = [];
 private _context = [];
-private _bros = (units _player + units GRLIB_side_civilian) select { (_x != _player) && (_x getVariable ["PAR_Grp_ID", "0"]) == format ["Bros_%1",_uid] };
 private _score = 0;
 private _squad_loaded = false;
 
 {if ((_x select 0) == _uid) exitWith {_score = (_x select 1)}} forEach GRLIB_player_scores;
 
 if (_score >= GRLIB_min_score_player) then {
-	if (alive _player && lifeState _player != "INCAPACITATED") then {
+	if !(_player getVariable ["PAR_isUnconscious", false]) then {
 		_loadout = getUnitLoadout [_player, true];
 		_squad_loaded = _player getVariable ["GRLIB_squad_context_loaded", false];
 		if (_squad_loaded) then {
+			private _bros = (units GRLIB_side_friendly + units GRLIB_side_civilian) select { (_x != _player) && (_x getVariable ["PAR_Grp_ID", "0"]) == format ["Bros_%1",_uid] };
 			{
 				_ai_group pushback [typeOf _x, rank _x, getUnitLoadout [_x, true]];
-			} forEach (_bros select {alive _x && lifeState _x != "INCAPACITATED"});
+				if (_delete) then { deleteVehicle _x };
+				} forEach (_bros select {!(_x getVariable ["PAR_isUnconscious", false])});
 			diag_log format ["--- LRX Saving %1 unit(s) for %2 Squad.", count _ai_group, name _player];
 		} else {
 			_context = localNamespace getVariable [format ["player_context_%1", _uid], []];
@@ -35,15 +36,14 @@ if (_score >= GRLIB_min_score_player) then {
 	diag_log format ["--- LRX player %1 profile Saved.", name _player];
 };
 
-// Remove AI
-if (_delete) then {
-	{ deleteVehicle _x } forEach _bros;
-} else {
-	if (_notify) then {
+// Notify
+if (_notify) then {
+	private _owner = owner _player;
+	if (_owner != 0) then {
 		private _msg = format [localize "STR_SAVE_PLAYER_MSG", count _ai_group];
 		if (_score < GRLIB_min_score_player) then {
 			_msg = format [localize "STR_NO_SAVE_PLAYER_MSG", _score, GRLIB_min_score_player];
 		};
-		[_msg ] remoteExec ["hintSilent", owner _player];
+		[_msg ] remoteExec ["hintSilent", _owner];
 	};
 };
