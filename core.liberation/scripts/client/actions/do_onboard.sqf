@@ -1,12 +1,13 @@
 params ["_pos"];
 
-if (_pos distance2D lhd < GRLIB_fob_range) exitWith {
+if (isNil "_pos") then { _pos = getPosASL player };
+if (_pos distance2D lhd <= 200) exitWith {
     player setPosATL ((getPosATL lhd) vectorAdd [floor(random 5), floor(random 5), 1]);
     player setVariable ["GRLIB_action_inuse", false, true];
 };
 
-private _near_sign = nearestObjects [_pos, [FOB_sign], GRLIB_fob_range] select 0;
-if (isNil "_near_sign") exitWith {};
+private _near_sign = nearestObjects [_pos, [FOB_sign], 200] select 0;
+if (isNil "_near_sign") exitWith { player setVariable ["GRLIB_action_inuse", false, true] };
 
 private _unit_list = units group player;
 private _my_squad = player getVariable ["my_squad", nil];

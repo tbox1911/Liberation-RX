@@ -1,6 +1,7 @@
-private ["_unit", "_pos", "_grp", "_classname", "_fob_box",
-		"_idx", "_unitrank", "_ghost_spot", "_vehicle", "_allow_damage",
-		"_dist", "_radius", "_actualdir", "_near_objects"
+private [
+	"_unit", "_pos", "_grp", "_classname", "_fob_box",
+	"_idx", "_unitrank", "_ghost_spot", "_vehicle", "_allow_damage",
+	"_dist", "_radius", "_actualdir", "_near_objects"
 ];
 
 build_confirmed = 0;
@@ -190,6 +191,8 @@ while { true } do {
 		_dist = (_radius / 2) + 1.5;
 		if (_dist > 5) then { _dist = 5 };
 		if (_classname == FOB_carrier) then { _dist = 35; build_rotation = 90 };
+		if (_classname == "Land_vn_bunker_big_02") then { build_rotation = 270 };
+		if (_classname == "Land_vn_b_trench_bunker_01_02") then { build_rotation = 270; build_altitude = -0.2 };		
 		if (_classname isKindOf "Slingload_base_F") then { _radius = 5 };
 		_dist = 3 max _dist;
 
@@ -344,12 +347,10 @@ while { true } do {
 					{ _x allowDamage false } forEach _unit_list_redep;
 					disableUserInput true;
 				};
-
 				[_classname, _veh_pos, _veh_dir, _veh_vup, player] remoteExec ["build_fob_remote_call", 2];
-				sleep 2;
-
+				sleep 3;
 				if (_classname == FOB_carrier) then {
-					[([] call F_getNearestFob)] call do_onboard;
+					[] spawn do_onboard;
 					titleText ["" ,"BLACK IN", 3];
 					{ _x allowDamage true } forEach _unit_list_redep;
 					disableUserInput false;
