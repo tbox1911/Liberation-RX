@@ -16,7 +16,7 @@ if (_fob_class isKindOf "Land_BagBunker_Tower_F") then {
 
 // SoG
 if (_fob_class isKindOf "Land_vn_bunker_big_02") then {
-	_offset = [-3, -5, -0.2]; 
+	_offset = [-3, -5, -0.2];
 	_fob_dir = _fob_dir - 180;
 };
 if (_fob_class isKindOf "Land_vn_b_trench_bunker_01_02") then {
@@ -25,12 +25,12 @@ if (_fob_class isKindOf "Land_vn_b_trench_bunker_01_02") then {
 };
 
 // Naval FOB
-if (_fob_class == "Land_Destroyer_01_hull_04_F") then {
-	_offset = [-2, 13, 9.5]; 
-	_fob_dir = _fob_dir + 180; 
+if (_fob_class == "Land_Destroyer_01_base_F") then {
+	_offset = [-2, -32, 8.5];
+	_fob_dir = _fob_dir + 180;
 };
-if (_fob_class == "Land_Carrier_01_island_02_F") then {
-	_offset = [0, -8, -1.2];
+if (_fob_class == "Land_Carrier_01_base_F") then {
+	_offset = [110, 20, 23.5];
 	_fob_dir = _fob_dir - 90;
 };
 
