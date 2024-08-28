@@ -86,6 +86,7 @@ _setupObjects = {
 	_quest_item allowDamage false;
 	[_quest_item] call F_aceInitVehicle;
 	_quest_item setVariable ["R3F_LOG_disabled", true, true];
+	[getPos _quest_item, 5] call build_cutter_remote_call;
 
 	// markers
 	_marker = createMarkerLocal ["GRLIB_A3W_Mission_SD_Item", getPosATL _quest_item];
