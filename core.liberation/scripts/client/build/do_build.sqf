@@ -191,8 +191,9 @@ while { true } do {
 		_dist = (_radius / 2) + 1.5;
 		if (_dist > 5) then { _dist = 5 };
 		if (_classname == FOB_carrier) then { _dist = 35; build_rotation = 90 };
+		if (_classname == "Land_BagBunker_Tower_F") then { build_rotation = 90; build_altitude = -0.2  };
 		if (_classname == "Land_vn_bunker_big_02") then { build_rotation = 270 };
-		if (_classname == "Land_vn_b_trench_bunker_01_02") then { build_rotation = 270; build_altitude = -0.2 };		
+		if (_classname == "Land_vn_b_trench_bunker_01_02") then { build_rotation = 270; build_altitude = -0.2 };
 		if (_classname isKindOf "Slingload_base_F") then { _radius = 5 };
 		_dist = 3 max _dist;
 
@@ -408,7 +409,7 @@ while { true } do {
 
 				// CUP/RHS remove panel
 				[_vehicle] call F_fixModVehicle;
-		
+
 				// Color
 				if ( count _color > 0 ) then {
 					[_vehicle, _color] call RPT_fnc_TextureVehicle;
@@ -510,7 +511,7 @@ while { true } do {
 			_vehicle setDamage 0;
 			build_vehicle = _vehicle;
 
-			if ( !(_classname in (all_buildings_classnames + fob_buildings_classnames))) then { 
+			if ( !(_classname in (all_buildings_classnames + fob_buildings_classnames))) then {
 				_vehicle addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 			};
 
