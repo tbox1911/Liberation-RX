@@ -5,9 +5,8 @@ private ["_location_name", "_managed_units"];
 
 _setupVars = {
 	_missionType = "STR_RESISTANCE";
-	_missionLocation = [sectors_capture] call getMissionLocation;
+	_locationsArray = [LRX_MissionMarkersCap, false, true] call checkSpawn;
 	_ignoreAiDeaths = true;
-	_locationsArray = nil;
 	_missionTimeout = (30 * 60);
 };
 

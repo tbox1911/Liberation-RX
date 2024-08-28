@@ -5,6 +5,7 @@ private ["_hvt", "_grp_hvt", "_grp_civ"];
 
 _setupVars = {
 	_missionType = "STR_HOSTILE_OFFICER";
+	_locationsArray = nil; // locations are generated on the fly from towns
 	_ignoreAiDeaths = true;
 };
 
@@ -12,12 +13,12 @@ _setupObjects = {
 	private _fobList = sectors_bigtown select {(_x in blufor_sectors)};
 	private _nbUnits = [] call getNbUnits;
 
-	if (count _fobList == 0) exitWith { 
+	if (count _fobList == 0) exitWith {
 		diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", localize _missionType];
 		false;
 	};
 	_missionPos = markerPos (selectRandom _fobList);
-	_missionPos = _missionPos getPos [80, random 360];
+	_missionPos = _missionPos getPos [50, random 360];
 	_vehicleClass = opfor_mrap_hmg;
 
 	// Add guards
@@ -36,7 +37,7 @@ _setupObjects = {
 	sleep 1;
 	private _building = nearestBuilding (getPosATL _hvt) buildingPos -1;
 	// Move HVT into Building
-	{ 
+	{
 		_x setPos selectRandom _building;
 		_x setUnitPos "UP";
 		_x disableAI "MOVE";
@@ -83,7 +84,7 @@ _failedExec = {
 	{ deleteVehicle _x } forEach (units _grp_hvt);
 };
 
-_successExec = {	
+_successExec = {
 	// Mission completed
 	_successHintMessage = "STR_HOSTILE_OFFICER_MESSAGE2";
 	{ deleteVehicle _x } forEach (units _grp_civ);

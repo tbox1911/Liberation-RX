@@ -5,10 +5,8 @@ private ["_location_name", "_grp_wnded"];
 
 _setupVars = {
 	_missionType = "STR_HEAL_CIV";
-	_missionLocation = [sectors_capture] call getMissionLocation;
-	_locationsArray = nil;
+	_locationsArray = [LRX_MissionMarkersCap, false, true] call checkSpawn;
 	_ignoreAiDeaths = true;
-	//_nbUnits = AI_GROUP_MEDIUM;
 };
 
 _setupObjects = {
@@ -49,36 +47,24 @@ _setupObjects = {
 	];
 
 	//----- build medical Tent ---------------------------------
-	private _dir = random 360;
-	private _max = 100;
-	private _pos = [];
-	private _start_pos = _missionPos;
-	while { count _pos == 0 && _max > 0 } do {
-		_pos = _start_pos findEmptyPosition [10, 200, "B_Heli_Transport_01_F"];
-		if (isOnRoad _pos || surfaceIsWater _pos) then {
-			_pos = [];
-		};
-		_max = _max - 1;
-		_start_pos = _missionPos getPos [100, random 360];
-		sleep 0.1;
-	};
+	_missionPos = _missionPos getPos [100, random 360];
+	private _pos = [_missionPos, 7, false, 80] call F_findSafePlace;
 	if (count _pos == 0) exitWith {
-		diag_log format ["--- LRX Error: side mission HC, cannot find spawn point!"];
+		diag_log format ["--- LRX Error: side mission %1, cannot create buildings at %2!", localize _missionType, _missionPos];
 		false;
 	};
 
+	private _dir = random 360;
+	_vehicle = createVehicle [a3w_heal_tent, _pos, [], 1, "None"];
+	_vehicle allowDamage false;
+	_vehicle setVectorDirAndUp [[-cos _dir, sin _dir, 0] vectorCrossProduct surfaceNormal _pos, surfaceNormal _pos];
 	_missionPos = _pos;
-	private _tent = createVehicle [a3w_heal_tent, _missionPos, [], 1, "None"];
-	_tent allowDamage false;
-	_tent setVectorDirAndUp [[-cos _dir, sin _dir, 0] vectorCrossProduct surfaceNormal _missionPos, surfaceNormal _missionPos];
-	_vehicle = _tent;
 	sleep 0.2;
 
-	private _tent_pos = getPosATL _tent;
 	// add garbage
 	_vehicles = [];
 	for "_i" from 1 to 12 do {
-		_grbg = createVehicle [selectRandom _garbage, _tent_pos, [], 15, "None"];
+		_grbg = createVehicle [selectRandom _garbage, _pos, [], 15, "None"];
 		_dir = random 360;
 		_grbg setVectorDirAndUp [[-cos _dir, sin _dir, 0] vectorCrossProduct surfaceNormal _missionPos, surfaceNormal _missionPos];
 		_grbg setVariable ["R3F_LOG_disabled", true, true];
@@ -88,7 +74,7 @@ _setupObjects = {
 	};
 
 	// add medic + patrol
-	_aiGroup = [_tent_pos, 3, "medics", true, 20] call createCustomGroup;
+	_aiGroup = [_pos, 3, "medics", true, 20] call createCustomGroup;
 	{
 		_x setVariable ["GRLIB_can_speak", true, true];
 		_x setVariable ["GRLIB_A3W_Mission_HC1", true, true];
@@ -101,7 +87,7 @@ _setupObjects = {
 	for "_i" from 1 to 5 do {
 		_unit = _grp_wnded createUnit [(selectRandom civilians), _missionPos, [], 100, "NONE"];
 		[_unit] joinSilent _grp_wnded;
-		if (_unit distance2D _tent_pos <= 30) then { _unit setPos (_tent_pos getPos [50, 360]) };
+		if (_unit distance2D _pos <= 30) then { _unit setPos (_pos getPos [50, 360]) };
 		_unit setVariable ["GRLIB_can_speak", true, true];
 		_unit setVariable ["GRLIB_A3W_Mission_HC2", true, true];
 		_unit setVariable ["GRLIB_vehicle_owner", "server", true];

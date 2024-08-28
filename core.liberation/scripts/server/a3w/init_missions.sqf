@@ -13,7 +13,6 @@ sideMissionProcessor = compileFinal preprocessFileLineNumbers "scripts\server\a3
 generateMissionWeights = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_generateMissionWeights.sqf";
 setMissionState = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_setMissionState.sqf";
 getMissionState = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_getMissionState.sqf";
-getMissionLocation = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_getMissionLocation.sqf";
 setLocationState = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_setLocationState.sqf";
 attemptCompileMissions = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_attemptCompileMissions.sqf";
 cleanMissionVehicles = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_cleanMissionVehicles.sqf";
@@ -52,9 +51,7 @@ for "_i" from 1 to 4 do {
 	private _init_sleep = ((2 + floor random 10) * 60);
 	while {_init_sleep > 0 && isNil "A3W_debug"} do { sleep 1; _init_sleep = _init_sleep - 1 };
 	diag_log format ["--- LRX A3W Starting Mission Controller #%1 at %2", _i, time];
-	if ((_i == 1) || (_i > 1 && isNil "A3W_debug")) then {
-		[_i, false] spawn compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\sideMissionController.sqf";
-	};
+	[_i, false] spawn compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\sideMissionController.sqf";
 	sleep 60;
 };
 

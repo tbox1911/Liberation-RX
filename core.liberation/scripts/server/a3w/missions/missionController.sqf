@@ -19,6 +19,7 @@ while {true} do {
 
 	// Select Mission
 	_nextMission = nil;
+	waitUntil { sleep 1; (_controllerNum == 1 || isNil "A3W_debug") };
 	while {isNil "_nextMission"} do	{
 		[SideMissions] call updateMissionsList;
 		_availableMissions = SideMissions select { !(_x select 2) };

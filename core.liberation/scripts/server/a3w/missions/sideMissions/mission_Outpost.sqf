@@ -7,11 +7,15 @@ _setupVars = {
 	_missionType = "STR_OUTPOST";
 	_locationsArray = [SpawnMissionMarkers] call checkSpawn;
 	_precise_marker = false;
-	_missionTimeout = (45 * 60);	
+	_missionTimeout = (45 * 60);
 };
 
 _setupObjects = {
 	_missionPos = markerpos _missionLocation;  // getPos [100, random 360]
+	if (count _missionPos == 0) exitWith {
+    	diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", localize _missionType];
+    	false;
+	};
 	_base_output = [_missionPos, false, true] call createOutpost;
 	_vehicles = _base_output select 0;
 	//_objectives = _base_output select 1;

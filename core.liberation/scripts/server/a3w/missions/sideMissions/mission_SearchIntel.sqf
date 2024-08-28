@@ -10,6 +10,10 @@ _setupVars = {
 
 _setupObjects = {
 	_missionPos = (markerpos _missionLocation);
+	if (count _missionPos == 0) exitWith {
+    	diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", localize _missionType];
+    	false;
+	};
 
 	private _buildings = [
 		"Land_i_Barracks_V1_F",
@@ -50,7 +54,7 @@ _setupObjects = {
 		"Land_HumanSkeleton_F"
 	];
 
-	private _statue = [
+	private _statues = [
 		"Land_Statue_03_F",
 		"Land_Maroula_F",
 		"Land_Statue_01_F",
@@ -58,31 +62,26 @@ _setupObjects = {
 	];
 
 	//----- build village ---------------------------------
-	_statue = createVehicle [selectRandom _statue, _missionPos, [], 1, "None"];
+	_missionPos = _missionPos getPos [100, random 360];
+	_vehicle = createVehicle [selectRandom _statues, _missionPos, [], 1, "None"];
+	_vehicle setVariable ["R3F_LOG_disabled", true, true];
 
 	private _build_list  = [];
+	private ["_pos", "_dir"];
 	for "_i" from 1 to 5 do {
-		_dir = random 360;
-		_max = 100;
-		_pos = [];
-		_start_pos = _missionPos;
-		while { count _pos == 0 && _max > 0 } do {
-			_pos = _start_pos findEmptyPosition [10, 200, "B_Heli_Transport_01_F"];
-			if (isOnRoad _pos || surfaceIsWater _pos) then {
-				_pos = [];
-			};
-			_max = _max - 1;
-			_start_pos = _missionPos getPos [100, random 360];
-			sleep 0.1;
+		_pos = [getPosATL _vehicle, 20, false, 150] call F_findSafePlace;
+		if (count _pos != 0) then {
+			_dir = random 360;
+			_build = createVehicle [selectRandom _buildings, _pos, [], 1, "None"];
+			_build setVectorDirAndUp [[-cos _dir, sin _dir, 0] vectorCrossProduct surfaceNormal _pos, surfaceNormal _pos];
+			_build_list pushBack _build;
 		};
-		if (count _pos == 0) exitWith { };
-		_build = createVehicle [selectRandom _buildings, _pos, [], 1, "None"];
-		_build setVectorDirAndUp [[-cos _dir, sin _dir, 0] vectorCrossProduct surfaceNormal _pos, surfaceNormal _pos];
-		_build_list pushBack _build;
 		sleep 0.2;
 	};
-	if (count _build_list < 3) exitWith { false };
-
+	if (count _build_list < 3) exitWith {
+    	diag_log format ["--- LRX Error: side mission %1, cannot create buildings at %2!", localize _missionType, _missionPos];
+    	false;
+	};
 	private _vrac_list = [];
 	for "_i" from 1 to 7 do {
 		_pos = (getPosATL (selectRandom _build_list)) findEmptyPosition [10, 50, "B_Heli_Transport_01_F"];
@@ -113,8 +112,8 @@ _setupObjects = {
 
 	//----- spawn intels ---------------------------------
 	_intels = [getPosATL (_build_list select 0)] call manage_intels;
-	{ _x setVariable ["R3F_LOG_disabled", true, true] } forEach ([_statue] + _build_list + _vrac_list + _intels);
-	_vehicles =  [_statue] + _build_list + _vrac_list;
+	{ _x setVariable ["R3F_LOG_disabled", true, true] } forEach (_build_list + _vrac_list + _intels);
+	_vehicles =  _build_list + _vrac_list;
 	sleep 0.5;
 
 	//----- spawn units ---------------------------------

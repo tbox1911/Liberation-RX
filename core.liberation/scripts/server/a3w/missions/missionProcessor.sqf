@@ -35,6 +35,7 @@ if (!isNil "_locationsArray") then {
 	while {true} do	{
 		_availableLocations = _locationsArray select {!(_x select 1) && ((_x select 2) <= time) };
 		if (count _availableLocations > 0) exitWith {};
+		diag_log format ["A3W Side Mission %1 No available location...", _controllerSuffix, localize _missionType];
 		sleep 60;
 	};
 
@@ -46,6 +47,12 @@ if (!isNil "_locationsArray") then {
 if (!isNil "_setupObjects" && _continue_mission) then { _continue_mission = call _setupObjects };
 if (!_continue_mission) exitWith {
 	diag_log format ["--- LRX Error: A3W Side Mission %1 failed to setup: %2", _controllerSuffix, localize _missionType];
+	if (!isNil "_vehicle") then {
+		[_vehicle] spawn cleanMissionVehicles;
+	};
+	if (!isNil "_vehicles") then {
+		[_vehicles] spawn cleanMissionVehicles;
+	};
 };
 
 if (!isNil "_missionlocation") then {
@@ -174,12 +181,10 @@ if (_count_blu == 0) then {
 };
 
 if (!isNil "_vehicle") then {
-	//_vehicle setVariable ["R3F_LOG_disabled", false, true];
 	[_vehicle] spawn cleanMissionVehicles;
 };
 
 if (!isNil "_vehicles") then {
-	//{ _x setVariable ["R3F_LOG_disabled", false, true] } forEach _vehicles;
 	[_vehicles] spawn cleanMissionVehicles;
 };
 

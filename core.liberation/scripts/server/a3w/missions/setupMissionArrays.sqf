@@ -49,3 +49,6 @@ if !(SunkenMissionMarkers isEqualTo []) then {
 };
 
 { _x set [2, false] } forEach SideMissions;
+
+LRX_MissionMarkersCap = sectors_capture apply {[_x, false, 0]};
+LRX_MissionMarkersMil = sectors_military apply {[_x, false, 0]};
