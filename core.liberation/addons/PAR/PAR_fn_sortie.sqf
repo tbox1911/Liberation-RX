@@ -1,7 +1,8 @@
 params ["_wnded", "_medic"];
 
 if (isDedicated) exitWith {};
-if !(local _wnded) exitWith {};
+if !(local _wnded) exitWith { [_wnded, _medic] remoteExec ["PAR_remote_sortie", 2] };
+
 private _my_medic = _wnded getVariable ["PAR_myMedic", objNull];
 if (local _medic && (_my_medic != _medic)) exitWith { [_medic, _wnded] call PAR_fn_medicRelease };
 if (lifeState _wnded != "INCAPACITATED" || (!alive _wnded)) exitWith { [_medic, _wnded] call PAR_fn_medicRelease };

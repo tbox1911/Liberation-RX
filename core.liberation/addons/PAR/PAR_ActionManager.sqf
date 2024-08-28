@@ -53,11 +53,7 @@ while {true} do {
                 },
                 {},
                 {
-                    if (local _target) then {
-                        [_target, _caller] call PAR_fn_sortie;
-                    } else {
-                        [_target, _caller] remoteExec ["PAR_remote_sortie", 2];
-                    };
+                    [_target, _caller] spawn PAR_fn_sortie;
                 },
                 {
                     if (animationState _caller == 'ainvppnemstpslaywrfldnon_medicother') then {
