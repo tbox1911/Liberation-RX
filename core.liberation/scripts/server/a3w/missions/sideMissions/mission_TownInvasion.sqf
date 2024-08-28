@@ -6,17 +6,16 @@ private ["_managed_units", "_grp_civ", "_townName"];
 _setupVars = {
 	_missionType = "STR_INVASION";
 	_locationsArray = [LRX_MissionMarkersCap, false, true] call checkSpawn;
-	_townName = markerText _missionLocation;
 	_missionTimeout = (30 * 60);
 };
 
 _setupObjects = {
+	_townName = markerText _missionLocation;
 	_missionPos = [(markerpos _missionLocation)] call F_findSafePlace;
 	if (count _missionPos == 0) exitWith {
     	diag_log format ["--- LRX Error: side mission %1, cannot find spawn point!", localize _missionType];
     	false;
 	};
-
 	// create some atmosphere around the crates 8)
 	_tent1 = createVehicle ["Land_cargo_addon02_V2_F", _missionPos, [], 3, "None"];
 	_tent1 setDir random 360;
