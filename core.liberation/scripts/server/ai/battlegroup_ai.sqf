@@ -7,18 +7,18 @@ if (_vehicle isKindOf "Ship") exitWith {
 	[_grp, getPosATL _vehicle] spawn defence_ai;
 };
 
-sleep (1 + floor random 10);
+diag_log format ["Group %1 - Attack: %2", _grp, _objective_pos];
+sleep (2 + floor random 10);
 
+private _attack = true;
 private _timer = 0;
 private _last_pos = getPosATL (leader _grp);
-private ["_waypoint", "_wp0", "_next_objective", "_sector", "_timer"];
+private ["_waypoint", "_wp0", "_next_objective", "_sector", "_timer", "_target"];
 
-while { ({alive _x} count (units _grp) > 0) && (GRLIB_endgame == 0) && !(_objective_pos isEqualTo zeropos)} do {
-	if ( time > _timer) then {
-		_sector = [GRLIB_sector_size, _objective_pos] call F_getNearestSector;
-		if (_sector in blufor_sectors) then {
-			[_objective_pos] remoteExec ["remote_call_incoming", 0];
-		};
+while {({alive _x} count (units _grp) > 0) && !(_objective_pos isEqualTo zeropos)} do {
+	if (_attack) then {
+		_attack = false;
+		[_objective_pos] remoteExec ["remote_call_incoming", 0];
 		diag_log format ["Group %1 - Attack: %2", _grp, _objective_pos];
 
 		[_grp] call F_deleteWaypoints;
@@ -46,14 +46,30 @@ while { ({alive _x} count (units _grp) > 0) && (GRLIB_endgame == 0) && !(_object
 		if (_vehicle isKindOf "AllVehicles") then {
 			(driver _vehicle) doMove _objective_pos;
 		};
-		_timer = round (time + (10 * 60));
+		_timer = round (time + (15 * 60));
+	};
+
+	sleep 300;
+
+	if (time > _timer) then {
+		_last_pos = getPosATL (leader _grp);
+		if (GRLIB_global_stop == 1) then {
+			_target = [_last_pos, GRLIB_spawn_max] call F_getNearestBlufor;
+			_next_objective = [getPosATL _target, round (_last_pos distance2D _target)];
+		} else {
+			_next_objective = [_last_pos] call F_getNearestBluforObjective;
+		};
+
+		if ((_next_objective select 1) <= GRLIB_spawn_max) then {
+			_objective_pos = (_next_objective select 0);
+			_attack = true;
+		} else {
+			_objective_pos = zeropos;
+		};
 	};
 
 	{
-		[_x] spawn F_fixPosUnit;
-		if (surfaceIsWater (getPos _x) && _x distance2D _objective_pos > 400) then {
-			deleteVehicle _x;
-		};
+		if (surfaceIsWater (getPosATL _x) && _x distance2D _objective_pos > 400) then { deleteVehicle _x } else { [_x] spawn F_fixPosUnit };
 		sleep 0.2;
 	} forEach (units _grp);
 
@@ -62,16 +78,6 @@ while { ({alive _x} count (units _grp) > 0) && (GRLIB_endgame == 0) && !(_object
 		_vehicle setFuel 1;
 		_vehicle setVehicleAmmo 1;
 	};
-
-	_last_pos = getPosATL (leader _grp);
-	_next_objective = [_objective_pos] call F_getNearestBluforObjective;
-	if ((_next_objective select 1) <= GRLIB_spawn_max) then { _objective_pos = (_next_objective select 0) } else { _objective_pos = zeropos };
-	if (GRLIB_global_stop == 1) then {
-		private _target = [_last_pos, GRLIB_spawn_max] call F_getNearestBlufor;
-		if !(isNil "_target") then { _objective_pos = getPosATL _target } else { _objective_pos = zeropos };
-	};
-
-	sleep 33;
 };
 
 // Cleanup
