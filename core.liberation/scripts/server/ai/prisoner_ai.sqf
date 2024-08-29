@@ -25,10 +25,7 @@ _unit removeItem _hmd;
 _unit setVariable ["GRLIB_can_speak", true, true];
 _unit removeAllEventHandlers "HandleDamage";
 _unit setCaptive true;
-
-if !(_unit getVariable ["GRLIB_in_building", false]) then {
-	[_unit] call F_fixPosUnit;
-};
+[_unit] spawn F_fixPosUnit;
 
 // Wait
 if (!_canmove) then {

@@ -36,7 +36,7 @@ _setupObjects = {
 	//man 1
 	private _missionPos1 = markerPos (_convoy_destinations select 0) getPos [100, random 360];
 	private _man1 = _aiGroup createUnit ["C_Nikos", _missionPos1, [], 0, "NONE"];
-	[_man1]	call F_fixPosUnit;
+	[_man1]	spawn F_fixPosUnit;
 	_man1 allowDamage false;
 	_man1 setVariable ["acex_headless_blacklist", true, true];
 	_man1 setVariable ["GRLIB_vehicle_owner", "server", true];
@@ -47,7 +47,7 @@ _setupObjects = {
 	// man2
 	private _missionPos2 = markerPos (_convoy_destinations select 1) getPos [100, random 360];
 	private _man2 = _aiGroup createUnit ["C_Orestes", _missionPos2, [], 0, "NONE"];
-	[_man2]	call F_fixPosUnit;
+	[_man2]	spawn F_fixPosUnit;
 	_man2 allowDamage false;
 	_man2 setVariable ["acex_headless_blacklist", true, true];
 	_man2 setVariable ["GRLIB_vehicle_owner", "server", true];
@@ -58,7 +58,7 @@ _setupObjects = {
 	// man3
 	private _missionPos3 = markerPos (_convoy_destinations select 2) getPos [100, random 360];
 	private _man3 = _aiGroup createUnit ["C_Orestes", _missionPos3, [], 0, "NONE"];
-	[_man3]	call F_fixPosUnit;
+	[_man3]	spawn F_fixPosUnit;
 	_man3 allowDamage false;
 	_man3 setVariable ["acex_headless_blacklist", true, true];
 	_man3 setVariable ["GRLIB_vehicle_owner", "server", true];
@@ -68,7 +68,7 @@ _setupObjects = {
 
 	// man 4
 	private _man4 = _aiGroup createUnit ["C_Nikos_aged", _missionEnd, [], 0, "NONE"];
-	[_man4]	call F_fixPosUnit;
+	[_man4]	spawn F_fixPosUnit;
 	_man4 allowDamage false;
 	_man4 setVariable ["acex_headless_blacklist", true, true];
 	_man4 setVariable ["GRLIB_vehicle_owner", "server", true];

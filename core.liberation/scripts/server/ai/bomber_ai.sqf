@@ -22,9 +22,7 @@ private _cloth = getText(configfile >> "CfgVehicles" >> selectRandom civilians >
 _unit forceAddUniform _cloth;
 
 {_unit disableAI _x} count ["TARGET","AUTOTARGET","AUTOCOMBAT","SUPPRESSION"];
-if !(_unit getVariable ["GRLIB_in_building", false]) then {
-	[_unit] call F_fixPosUnit;
-};
+[_unit] spawn F_fixPosUnit;
 _unit setUnitPos "UP";
 _unit switchMove "";
 _unit setHitPointDamage ["hitLegs", 0];

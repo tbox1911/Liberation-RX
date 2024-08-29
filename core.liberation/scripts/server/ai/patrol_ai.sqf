@@ -53,6 +53,6 @@ if (count (waypoints _grp) > 1) then {
 sleep 10;
 {
 	_x doFollow (leader _grp);
-	[_x] call F_fixPosUnit;
+	[_x] spawn F_fixPosUnit;
 	sleep 0.2;
 } forEach (units _grp);
