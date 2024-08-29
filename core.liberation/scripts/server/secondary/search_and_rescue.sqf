@@ -56,8 +56,7 @@ private _vehicle_list = [];
 	_vehicle_list pushBack _vehicle;
 } foreach _vehtospawn;
 
-secondary_objective_position = getpos _helowreck;
-secondary_objective_position_marker = secondary_objective_position getPos [800, random 360];
+secondary_objective_position_marker = getpos _helowreck;
 publicVariable "secondary_objective_position_marker";
 
 waitUntil {

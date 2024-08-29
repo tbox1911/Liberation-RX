@@ -18,8 +18,7 @@ private _base_objectives = _base_output select 1;
 private _grpdefenders = _base_output select 2;
 private _grpsentry = _base_output select 3;
 
-secondary_objective_position = _base_position;
-secondary_objective_position_marker = [(((secondary_objective_position select 0) + 800) - random 1600),(((secondary_objective_position select 1) + 800) - random 1600),0];
+secondary_objective_position_marker = _base_position;
 publicVariable "secondary_objective_position_marker";
 sleep 1;
 
