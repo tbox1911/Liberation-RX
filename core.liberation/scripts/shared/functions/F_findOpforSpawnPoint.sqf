@@ -3,8 +3,7 @@ private [ "_current_sector", "_sector_pos", "_accept_current_sector"];
 
 
 private _all_possible_sectors = sectors_opforSpawn;
-private _side_mission_location = [SpawnMissionMarkers] call checkSpawn;
-{ _all_possible_sectors pushBack (_x select 0) } forEach _side_mission_location;
+{ _all_possible_sectors pushBack (_x select 0) } forEach SpawnMissionMarkers;
 _all_possible_sectors append (sectors_military - blufor_sectors);
 
 private _possible_sectors = [];
@@ -25,25 +24,33 @@ private _possible_sectors = [];
 		};
 	};
 
-	if ( surfaceIsWater _sector_pos ) then {
-		_accept_current_sector = false;
-	};
-
-	private _next_objective = [_sector_pos, true, true] call F_getNearestBluforObjective;
-	if ((_next_objective select 1) <= _mindist) then {
+	if (surfaceIsWater _sector_pos) then {
 		_accept_current_sector = false;
 	};
 
 	if !(_spawn_target isEqualTo zeropos) then {
-		if (_sector_pos distance2D _spawn_target < _mindist) then {
-			_accept_current_sector = false;
-		};
-
-		if (_sector_pos distance2D _spawn_target > _maxdist) then {
+		_sector_dist = _sector_pos distance2D _spawn_target;
+		if (_sector_dist < _mindist || _sector_dist > _maxdist) then {
 			_accept_current_sector = false;
 		};
 	};
 
+	if (_accept_current_sector) then {
+		{
+			_sector_dist = _sector_pos distance2D _x;
+			if (_sector_dist < _mindist) exitWith {
+				_accept_current_sector = false;
+			};		
+		} foreach GRLIB_all_fobs;
+	};
+
+	if (_accept_current_sector) then {
+		private _next_objective = [_sector_pos, false] call F_getNearestBluforObjective;
+		if ((_next_objective select 1) < _mindist) then {
+			_accept_current_sector = false;
+		};
+	};
+	
 	if (_accept_current_sector) then {
 		_possible_sectors pushback _current_sector;
 	};
