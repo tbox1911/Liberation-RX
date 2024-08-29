@@ -42,11 +42,12 @@ if (_unit == player) then {
 		PAR_grave_box attachto [_grave];
 
 		// Marker
-		"player_grave_box" setMarkerPosLocal PAR_grave_box;
+		"PAR_grave_box_marker" setMarkerPosLocal PAR_grave_box;
 	};
 
 	// Marker
-	if (PAR_grave == 0) then { "player_grave_box" setMarkerPosLocal _pos };
+	deletemarker format ["PAR_marker_%1", PAR_Grp_ID];
+	if (PAR_grave == 0) then { "PAR_grave_box_marker" setMarkerPosLocal _pos };
 
 	// Respawn Penalty
 	if ([_unit] call F_getScore > (GRLIB_perm_log + 50)) then { [_unit, -10] remoteExec ["F_addScore", 2] };

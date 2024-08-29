@@ -21,7 +21,10 @@ _unit setVariable ["PAR_myMedic", nil];
 _unit setVariable ["PAR_isDragged", 0, true];
 
 if (isPlayer _unit) then {
-	[] call PAR_show_marker;
+	private _mk1 = createMarkerLocal [format ["PAR_marker_%1", PAR_Grp_ID], getPosATL player];
+	_mk1 setMarkerTypeLocal "loc_Hospital";
+	_mk1 setMarkerTextLocal format ["%1 Injured", name player];
+	_mk1 setMarkerColor "ColorRed";
 	if ([_unit] call F_getScore > GRLIB_perm_log + 5) then { [_unit, -1] remoteExec ["F_addScore", 2] };
 	if (GRLIB_disable_death_chat) then { for "_channel" from 0 to 4 do { _channel enableChannel false } };
 	PAR_backup_loadout = [player] call F_getCargoUnit;
@@ -72,7 +75,7 @@ while { alive _unit && (_unit getVariable ["PAR_isUnconscious", false]) && time 
 if (!isNull _bld) then { _bld spawn {sleep (30 + floor(random 30)); deleteVehicle _this} };
 
 if (isPlayer _unit) then {
-	[] call PAR_del_marker;
+	deletemarker format ["PAR_marker_%1", PAR_Grp_ID];
 	if (GRLIB_disable_death_chat) then { for "_channel" from 0 to 4 do { _channel enableChannel true } };
 };
 

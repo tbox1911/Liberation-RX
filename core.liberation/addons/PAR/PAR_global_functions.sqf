@@ -162,15 +162,6 @@ PAR_public_EH = {
 		};
 	};
 };
-PAR_show_marker = {
-	private _mk1 = createMarkerLocal [format ["PAR_marker_%1", PAR_Grp_ID], getPosATL player];
-	_mk1 setMarkerTypeLocal "loc_Hospital";
-	_mk1 setMarkerTextLocal format ["%1 Injured", name player];
-	_mk1 setMarkerColor "ColorRed";
-};
-PAR_del_marker = {
-	deletemarker format ["PAR_marker_%1", PAR_Grp_ID];
-};
 PAR_revive_max = {
 	params ["_unit"];
 

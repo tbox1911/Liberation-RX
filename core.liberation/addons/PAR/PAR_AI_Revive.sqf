@@ -75,7 +75,7 @@ waituntil {sleep 1; !isNil "GRLIB_player_spawned"};
 waituntil {sleep 1; !isNil {player getVariable ["GRLIB_Rank", nil]}};
 
 // Grave Marker
-_marker = createMarkerLocal ["player_grave_box", markers_reset];
+_marker = createMarkerLocal ["PAR_grave_box_marker", markers_reset];
 _marker setMarkerShapeLocal "ICON";
 _marker setMarkerTypeLocal "KIA";
 _marker setMarkerTextlocal format ["%1's Grave.", name player];
