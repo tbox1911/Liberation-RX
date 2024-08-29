@@ -76,7 +76,7 @@ if ( _alive_crew_count == 0 ) then {
 	[ 8 ] remoteExec ["remote_call_intel", 0];
 	{ _x setVariable ["GRLIB_vehicle_owner", ""] } foreach _vehicle_list;
 	resources_intel = resources_intel + (25 * _alive_crew_count);
-	combat_readiness = combat_readiness - 10;
+	combat_readiness = 15 max round (combat_readiness * GRLIB_secondary_objective_impact);
 	stats_secondary_objectives = stats_secondary_objectives + 1;
 };
 [_vehicle_list] spawn cleanMissionVehicles;

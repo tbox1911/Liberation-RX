@@ -128,8 +128,7 @@ if (time > _mission_timeout) then {
 	[51] remoteExec ["remote_call_intel", 0];
 } else {
 	if (side group _transport_vehicle == GRLIB_side_friendly) then {
-		combat_readiness = combat_readiness - 10;
-		if ( combat_readiness < 0 ) then { combat_readiness = 0 };
+		combat_readiness = 15 max (combat_readiness - 10);
 		stats_secondary_objectives = stats_secondary_objectives + 1;
 		[5] remoteExec ["remote_call_intel", 0];
 	} else {

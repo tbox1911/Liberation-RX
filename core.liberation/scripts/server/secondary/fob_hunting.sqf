@@ -30,7 +30,7 @@ waitUntil {
 
 [3] remoteExec ["remote_call_intel", 0];
 
-combat_readiness = round (combat_readiness * GRLIB_secondary_objective_impact);
+combat_readiness = 15 max round (combat_readiness * GRLIB_secondary_objective_impact);
 stats_secondary_objectives = stats_secondary_objectives + 1;
 
 {
