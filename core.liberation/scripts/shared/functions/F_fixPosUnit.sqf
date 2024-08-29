@@ -4,18 +4,18 @@
 params ["_unit"];
 
 if (!alive _unit) exitWith {};
-if (surfaceIsWater getPosATL _unit) exitWith {};
 if (!isNull objectParent _unit) exitWith {};
 if (speed vehicle _unit > 1) exitWith {};
-if (!isTouchingGround (vehicle _unit)) exitWith {};
+//if (!isTouchingGround (vehicle _unit)) exitWith {};
 if (_unit getVariable ["GRLIB_in_building", false]) exitWith {};
 
 private _spawnpos = getPosATL _unit;
 private _curalt = _spawnpos select 2;
 private _minalt = 5;
-private _maxalt = 30;
+private _maxalt = 60;
 
 if (_curalt >= _maxalt) exitWith {};
+if (surfaceIsWater _spawnpos) exitWith {};
 
 private _forest_type = ["forest", "wood"];
 private _typepos = tolower (surfaceType getPosWorld _unit);

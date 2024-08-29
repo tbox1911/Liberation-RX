@@ -37,3 +37,6 @@ while { _move_is_disabled && alive _unit && !(captive _unit) } do {
 
 	sleep 5;
 };
+
+_unit setVariable ["GRLIB_in_building", false, true];
+[_unit] spawn F_fixPosUnit;
