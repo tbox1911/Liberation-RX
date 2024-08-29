@@ -57,5 +57,5 @@ while { GRLIB_endgame == 0 && ({alive _x} count (units _grp) > 0) } do {
 		sleep 0.2;
 	} forEach (units _grp);
 
-	sleep 33;
+	sleep 300;
 };

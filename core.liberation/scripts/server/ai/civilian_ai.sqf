@@ -318,5 +318,5 @@ while {alive _unit && _continue} do {
 		default { };
 	};
 
-	sleep 60;
+	sleep 200;
 };

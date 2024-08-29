@@ -49,10 +49,3 @@ if (count (waypoints _grp) > 1) then {
 	_waypoint = _grp addWaypoint [_wp0, 0];
 	_waypoint setWaypointType "CYCLE";
 };
-
-sleep 10;
-{
-	_x doFollow (leader _grp);
-	[_x] spawn F_fixPosUnit;
-	sleep 0.2;
-} forEach (units _grp);

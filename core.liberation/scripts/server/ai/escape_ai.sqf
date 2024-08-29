@@ -23,8 +23,10 @@ if (_nearest_sector != "") then {
         _waypoint setWaypointStatements ["true", "deleteVehicle this"];
         { _x doFollow (leader _grp) } foreach (units _grp);
     } else {
+        waitUntil { sleep 30; (GRLIB_global_stop == 1 || [getPosATL _unit, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
         deleteVehicle _unit;
     };
 } else {
+    waitUntil { sleep 30; (GRLIB_global_stop == 1 || [getPosATL _unit, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
     deleteVehicle _unit;
 };

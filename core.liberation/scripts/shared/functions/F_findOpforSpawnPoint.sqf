@@ -2,8 +2,10 @@ params ["_mindist", "_maxdist", ["_spawn_target", zeropos]];
 private [ "_current_sector", "_sector_pos", "_accept_current_sector"];
 
 
-private _all_possible_sectors = sectors_opfor;
-{ _all_possible_sectors pushBack (_x select 0) } forEach SpawnMissionMarkers;
+private _all_possible_sectors = sectors_opforSpawn;
+private _side_mission_location = [SpawnMissionMarkers] call checkSpawn;
+{ _all_possible_sectors pushBack (_x select 0) } forEach _side_mission_location;
+_all_possible_sectors append (sectors_military - blufor_sectors);
 
 private _possible_sectors = [];
 {
@@ -11,15 +13,13 @@ private _possible_sectors = [];
 	_sector_pos = markerpos _current_sector;
 	_accept_current_sector = true;
 
-	if ( !isNil 'secondary_objective_position' ) then {
-		if ( count secondary_objective_position != 0 ) then {
-			if ( (_sector_pos distance2D secondary_objective_position) < 500 ) then {
-				_accept_current_sector = false;
-			};
+	if (!isNil "secondary_objective_position_marker") then {
+		if ( (_sector_pos distance2D secondary_objective_position_marker) < 500 ) then {
+			_accept_current_sector = false;
 		};
 	};
 
-	if ( !isNil 'GRLIB_secondary_used_positions' ) then {
+	if (!isNil "GRLIB_secondary_used_positions") then {
 		if ( _current_sector in GRLIB_secondary_used_positions ) then {
 			_accept_current_sector = false;
 		};

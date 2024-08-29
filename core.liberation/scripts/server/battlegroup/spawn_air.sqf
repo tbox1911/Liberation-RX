@@ -77,7 +77,7 @@ while { ({alive _x} count (units _grp) > 0) && (GRLIB_endgame == 0) } do {
 	};
 	_vehicle setFuel 1;
 	_vehicle setVehicleAmmo 1;
-	sleep 60;
+	sleep 360;
 };
 
 // Cleanup

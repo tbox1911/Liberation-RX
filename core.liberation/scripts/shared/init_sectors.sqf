@@ -4,19 +4,19 @@ sectors_bigtown = [];
 sectors_factory = [];
 sectors_military = [];
 sectors_tower = [];
-sectors_opfor = [];
-sectors_airspawn = [];
+sectors_opforSpawn = [];
+sectors_airSpawn = [];
 
 {
 	_ismissionsector = false;
 
 	if (_x select [0,11] == "opfor_point") then {
-		sectors_opfor pushback _x;
+		sectors_opforSpawn pushback _x;
 		_ismissionsector = false;
 	};
 
 	if (_x select [0,14] == "opfor_airspawn") then {
-		sectors_airspawn pushback _x;
+		sectors_airSpawn pushback _x;
 		_ismissionsector = false;
 	};
 

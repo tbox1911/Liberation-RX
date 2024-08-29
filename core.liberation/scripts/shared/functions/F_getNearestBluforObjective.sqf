@@ -1,6 +1,6 @@
 params [ "_startpos", ["_include_fob", true], ["_check_water", true] ];
 
-private _radius = (GRLIB_sector_size * 2.5);
+private _radius = GRLIB_spawn_max;
 private _sector_pos = zeropos;
 private _sector_dist = 0;
 private _refdistance = 99999;
