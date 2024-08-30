@@ -25,9 +25,7 @@ while { true } do {
 					_marker setMarkerSizeLocal [ 0.75, 0.75 ];
 					_marker setMarkerTypeLocal "mil_start";
 				} else {
-					_marker setMarkerTextLocal format ["%1. %2", [_nextunit] call F_getUnitPositionId, name _nextunit];
 					_marker setMarkerSizeLocal [ 0.6, 0.6 ];
-					_marker setMarkerTypeLocal "mil_triangle";
 				};
 				_marker setMarkerColorLocal GRLIB_color_friendly;
 				_marked_players_bak pushback _marker;
@@ -36,6 +34,7 @@ while { true } do {
 				_marked_players_bak pushback _nextmarker;
 			};
  			if (!isPlayer _nextunit) then {
+				_nextmarker setMarkerTextLocal format ["%1. %2", [_nextunit] call F_getUnitPositionId, name _nextunit];
 				if (_nextunit getVariable ["PAR_isUnconscious", false]) then {
 					_nextmarker setMarkerTypeLocal "MinefieldAP";
 					_nextmarker setMarkerColorLocal GRLIB_color_enemy_bright;

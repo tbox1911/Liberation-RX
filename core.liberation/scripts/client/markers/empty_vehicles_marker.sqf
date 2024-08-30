@@ -86,6 +86,16 @@ while { true } do {
 			_marker_type = "EmptyIcon";
 			_nextmarker setMarkerTextLocal "$";
 		};
+		if (typeOf _nextvehicle == repairbox_typename) then {
+			_marker_color = "ColorWEST";
+			_marker_type = "loc_repair";
+			_nextmarker setMarkerSizeLocal [1.4, 1.4];
+		};
+		if (typeOf _nextvehicle == canister_fuel_typename) then {
+			_marker_color = "ColorEAST";
+			_marker_type = "loc_refuel";
+			_nextmarker setMarkerSizeLocal [1.4, 1.4];
+		};
 
 		if (_nextvehicle_disabled || _nextvehicle_owner == "server") then {
 			_marker_show = 0;
