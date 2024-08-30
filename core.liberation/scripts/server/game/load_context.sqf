@@ -50,7 +50,7 @@ if (count _context >= 1) then {
                     sleep 0.5;
                     _grp setGroupOwner _owner;
                     _wait = false;
-                    //diag_log format ["--- LRX Loading %1 unit(s) for %2 Squad.", count (_context select 2), name _player];
+                    diag_log format ["--- LRX Loading %1 unit(s) for %2 Squad.", count (_context select 2), name _player];
                 } else {
                     if (_player distance2D (markerPos GRLIB_respawn_marker) > 100) then {
                         [localize "$STR_SQUAD_WAIT"] remoteExec ["hintSilent", _owner];
@@ -60,7 +60,6 @@ if (count _context >= 1) then {
             };
             sleep 2;
         };
-        diag_log format ["--- LRX Loaded %1 unit(s) for %2 Squad.", count (_context select 2), name _player];
     } else {
         _player setVariable ["GRLIB_squad_context_loaded", true, true];
     };
