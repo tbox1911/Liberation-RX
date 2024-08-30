@@ -38,8 +38,10 @@ addMissionEventHandler ["OnUserAdminStateChanged", {
 
 // Terrain Quality
 // Low = 50 (NoGrass), Normal = 25, High = 12.5, Very High = 6.25, Ultra = 3.125
-setTerrainGrid 12.5;
-setViewDistance 2600;
+if (isDedicated) then {
+	setTerrainGrid 25;
+	setViewDistance 1600;
+};
 
 // Relationship
 civilian setFriend [GRLIB_side_friendly, 1];
