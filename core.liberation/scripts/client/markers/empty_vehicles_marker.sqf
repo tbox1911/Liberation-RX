@@ -29,7 +29,7 @@ private ["_marker","_marker_color","_marker_type","_marker_show"];
 private _vehmarkers = [];
 
 while { true } do {
-	waitUntil {sleep 0.5; GRLIB_MapOpen };
+	waitUntil {sleep 1; GRLIB_MapOpen };
 	_veh_list = vehicles select {
 		(alive _x) && !(isObjectHidden _x) &&
 		(_x distance2D lhd > GRLIB_fob_range) &&
@@ -46,11 +46,11 @@ while { true } do {
 	private _vehmarkers_bak = [];
 	{
 		_nextvehicle = _x;
-		_nextmarker = format ["markedveh_%1", netId _nextvehicle];
-		// in cache
+		_nextmarker = format ["markedveh_%1", (_nextvehicle call BIS_fnc_netId)];
+		// in cache ?
 		if (_vehmarkers find _nextmarker < 0) then {
 			if (!isNull _nextvehicle) then {
-				_marker = createMarkerLocal [format ["markedveh_%1", netId _nextvehicle], markers_reset];
+				_marker = createMarkerLocal [format ["markedveh_%1", (_nextvehicle call BIS_fnc_netId)], markers_reset];
 				_marker setMarkerSizeLocal [ 0.75, 0.75 ];
 				_marker setMarkerPosLocal (getPosATL _nextvehicle);
 				_marker setMarkerTextLocal ([(typeOf _nextvehicle)] call F_getLRXName);
@@ -116,7 +116,7 @@ while { true } do {
 		_nextmarker setMarkerAlphaLocal _marker_show;
 	} foreach _veh_list;
 
-	{ deleteMarkerLocal _x} foreach (_vehmarkers - _vehmarkers_bak);
+	{ deleteMarkerLocal _x } foreach (_vehmarkers - _vehmarkers_bak);
 	_vehmarkers = _vehmarkers_bak;
-	sleep 3;
+	sleep 2;
 };

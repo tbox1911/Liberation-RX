@@ -111,9 +111,9 @@ GRLIB_nametag_units = [];
 			};
 
 			_height = 2 + ((player distance _nextunit) / (0.75 * _local_nametags_distance));
-			_iconpos = [  getPosATL _nextunit select 0,  getPosATL _nextunit select 1,  (getPosATL _nextunit select 2) + _height ];
+			_iconpos = [getPosATL _nextunit select 0,  getPosATL _nextunit select 1,  (getPosATL _nextunit select 2) + _height];
 			_playername = [_nextunit] call get_player_name;
-			drawIcon3D [ _drawicon, _color, _iconpos , 0.75, 0.75,0, format [ "%1", _playername] , 2, 0.032, "puristaMedium"];
+			drawIcon3D [_drawicon, _color, _iconpos , 0.75, 0.75, 0, format ["%1", _playername] , 2, 0.032, "puristaMedium"];
 
 		} foreach GRLIB_nametag_units;
 	};
@@ -122,12 +122,7 @@ GRLIB_nametag_units = [];
 // Loop
 private _list = [];
 while { true } do {
-	_list = (getPos player) nearEntities ["CAManBase", nametags_distance];
-    GRLIB_nametag_units = _list select {
-        (_x != player) &&
-		side _x == GRLIB_side_friendly &&
-		(vehicle _x != vehicle player)
-    };
-	GRLIB_overlay_groups = (groups GRLIB_side_friendly) select {(isPlayer (leader _x)) && (count units _x > 1)};
+	GRLIB_nametag_units = (units GRLIB_side_friendly) select { (_x distance2D player <= nametags_distance) && (_x != player) && (vehicle _x != vehicle player) };
+	GRLIB_overlay_groups = (groups GRLIB_side_friendly) select { (isPlayer (leader _x)) && (count units _x > 1) };
 	sleep 5;
 };

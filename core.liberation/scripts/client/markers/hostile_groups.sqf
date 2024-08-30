@@ -28,7 +28,7 @@ while { true } do {
 		_nearRadioTower = ([(getPos _leader), GRLIB_side_friendly] call F_getNearestTower != "");
 		_aircraft = (objectParent _leader isKindOf "Air");
 		if (alive _leader && !_mission_ai && !_sideMission && !_permMission && _nearRadioTower && !_aircraft) then {
-			_marker = createMarkerLocal [format ["hostilegroup%1",_x], markers_reset];
+			_marker = createMarkerLocal [format ["hostilegroup_%1",_x], markers_reset];
 			_marker setMarkerColorLocal GRLIB_color_enemy_bright;
 			_marker setMarkerTypeLocal "mil_warning";
 			_marker setMarkerSizeLocal [0.65, 0.65];
