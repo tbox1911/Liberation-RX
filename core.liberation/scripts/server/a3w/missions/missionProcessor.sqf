@@ -32,13 +32,8 @@ if (isNil "_missionTimeout" || !(isNil "A3W_debug")) then {
 };
 
 if (!isNil "_locationsArray") then {
-	while {true} do	{
-		_availableLocations = _locationsArray select {!(_x select 1) && ((_x select 2) <= time) };
-		if (count _availableLocations > 0) exitWith {};
-		diag_log format ["A3W Side Mission %1 No available location...", _controllerSuffix, localize _missionType];
-		sleep 60;
-	};
-
+	_availableLocations = _locationsArray select {!(_x select 1) && ((_x select 2) <= time) };
+	if (count _availableLocations == 0) exitWith { _continue_mission = false };
 	_missionLocation = (selectRandom _availableLocations) select 0;
 	if (isNil "_missionLocation") exitWith { _continue_mission = false };
 	[_locationsArray, _missionLocation, true] call setLocationState;
