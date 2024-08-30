@@ -33,7 +33,9 @@ while { true } do {
 				_nextmarker setMarkerPosLocal (getPosATL _nextunit);
 				_marked_players_bak pushback _nextmarker;
 			};
- 			if (!isPlayer _nextunit) then {
+ 			if (isPlayer _nextunit) then {
+				_nextmarker setMarkerDirLocal (getDir _nextunit);
+ 			} else {
 				_nextmarker setMarkerTextLocal format ["%1. %2", [_nextunit] call F_getUnitPositionId, name _nextunit];
 				if (_nextunit getVariable ["PAR_isUnconscious", false]) then {
 					_nextmarker setMarkerTypeLocal "MinefieldAP";
@@ -86,6 +88,7 @@ while { true } do {
 			} foreach  _datcrew;
 			_vehiclename = _vehiclename + "(" + ([_nextvehicle] call F_getLRXName) + ")";
 			_nextmarker setMarkerTextLocal _vehiclename;
+			_nextmarker setMarkerDirLocal (getDir _nextvehicle);
 		} foreach _vehicles_list;
 
 		{ deleteMarkerLocal _x } foreach (_vehicles_markers - _vehicles_markers_bak);
