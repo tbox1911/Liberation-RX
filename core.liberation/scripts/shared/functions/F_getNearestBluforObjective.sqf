@@ -1,4 +1,4 @@
-params [ "_startpos", ["_include_fob", true], ["_check_water", true] ];
+params ["_startpos", ["_check_water", true]];
 
 private _sector_pos = zeropos;
 private _sector_dist = 0;
@@ -15,33 +15,29 @@ if (count GRLIB_all_fobs > 0 || count blufor_sectors > 0) then {
 		_currentnearest = [_sector_pos, _refdistance];
 	};
 
-	// search FOB first
-	if (_refdistance > GRLIB_spawn_max && _include_fob) then {
-		{
-			_sector_pos = _x;
-			_sector_dist = _startpos distance2D _sector_pos;
-			if (_sector_dist < _refdistance) then {
-				_refdistance = round _sector_dist;
-				_currentnearest = [_sector_pos, _refdistance];
-			};
-		} foreach GRLIB_all_fobs;
-	};
+	// search FOB
+	{
+		_sector_pos = _x;
+		_sector_dist = _startpos distance2D _sector_pos;
+		if (_sector_dist < _refdistance) then {
+			_refdistance = round _sector_dist;
+			_currentnearest = [_sector_pos, _refdistance];
+		};
+	} foreach GRLIB_all_fobs;
 
 	// search sectors
-	if (_refdistance > GRLIB_spawn_max) then {
-		{
-			_sector_pos = markerPos _x;
-			_sector_dist = _startpos distance2D _sector_pos;
-			_is_water = false;
-			if (_check_water) then {
-				_is_water = [_startpos, _sector_pos] call F_isWaterBetween;
-			};
-			if (_sector_dist < _refdistance && !_is_water) then {
-				_refdistance = round _sector_dist;
-				_currentnearest = [_sector_pos, _refdistance];
-			};
-		} foreach blufor_sectors;
-	};
+	{
+		_sector_pos = markerPos _x;
+		_sector_dist = _startpos distance2D _sector_pos;
+		_is_water = false;
+		if (_check_water) then {
+			_is_water = [_startpos, _sector_pos] call F_isWaterBetween;
+		};
+		if (_sector_dist < _refdistance && !_is_water) then {
+			_refdistance = round _sector_dist;
+			_currentnearest = [_sector_pos, _refdistance];
+		};
+	} foreach blufor_sectors;
 };
 
 _currentnearest;

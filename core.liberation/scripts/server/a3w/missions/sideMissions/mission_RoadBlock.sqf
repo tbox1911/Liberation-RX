@@ -16,7 +16,7 @@ _setupObjects = {
 	private _sectors = sectors_allSectors;
 	{
 		private _sector_pos = markerpos _x;
-		private _dist = [_sector_pos, false] call F_getNearestBluforObjective select 1;
+		private _dist = [_sector_pos] call F_getNearestBluforObjective select 1;
 		private _found = false;
 		if (_dist > (GRLIB_sector_size + 100) && _dist < 3000) then {
 			_idx = 100;
@@ -25,7 +25,7 @@ _setupObjects = {
 				_no_road = (!isOnRoad _missionPos);
 				_no_water = (!surfaceIsWater _missionPos);
 				_no_build = (count (nearestTerrainObjects [_missionPos, ["BUILDING","HOUSE","QUAY","ROCKS"], 30, false, true]) == 0);
-				_no_blu = (([_missionPos, false] call F_getNearestBluforObjective) select 1 > (GRLIB_sector_size + 100));
+				_no_blu = (([_missionPos] call F_getNearestBluforObjective) select 1 > (GRLIB_sector_size + 100));
 
 				if (_no_road && _no_water && _no_build && _no_blu) then {
 					_roads = _missionPos nearRoads 35;

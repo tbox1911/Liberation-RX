@@ -38,8 +38,8 @@ while { GRLIB_endgame == 0 } do {
 	if (GRLIB_hide_opfor && count opfor_sectors > 3) then {
 		{
 			_sector_pos = markerPos _x;
-			_dist = [_sector_pos, true, false] call F_getNearestBluforObjective select 1;
-			if (_dist <= (GRLIB_sector_size * 3)) then {
+			_dist = [_sector_pos, false] call F_getNearestBluforObjective select 1;
+			if (_dist <= GRLIB_radiotower_size) then {
 				_x setMarkerColorLocal GRLIB_color_enemy;
 				_x setMarkerTypeLocal ([_x] call _getMarkerType);
 			} else {

@@ -6,7 +6,7 @@ _spawn_sectors = ([_spawn_sectors, [_dest_pos], { (markerpos _x) distance2D _inp
 private ["_spawn_pos", "_dist"];
 {
     _spawn_pos = markerPos _x;
-    _dist = [_spawn_pos, true, false] call F_getNearestBluforObjective select 1;
+    _dist = [_spawn_pos, false] call F_getNearestBluforObjective select 1;
     if (_dist > GRLIB_spawn_max) exitWith {};
 } foreach _spawn_sectors;
 

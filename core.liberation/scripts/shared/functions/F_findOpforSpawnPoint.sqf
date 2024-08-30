@@ -35,16 +35,7 @@ private [ "_current_sector", "_sector_pos", "_accept_current_sector"];
 	};
 
 	if (_accept_current_sector) then {
-		{
-			_sector_dist = _sector_pos distance2D _x;
-			if (_sector_dist < _mindist) exitWith {
-				_accept_current_sector = false;
-			};
-		} foreach GRLIB_all_fobs;
-	};
-
-	if (_accept_current_sector) then {
-		private _next_objective = [_sector_pos, false] call F_getNearestBluforObjective;
+		private _next_objective = [_sector_pos] call F_getNearestBluforObjective;
 		if ((_next_objective select 1) < _mindist) then {
 			_accept_current_sector = false;
 		};
