@@ -8,7 +8,11 @@ if ( isNil "_liberated_sector" ) then {
 	diag_log format ["Spawn BattlegGroup no target at %1", time];
 	_spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max] call F_findOpforSpawnPoint;
 	if (_spawn_marker != "") then {
-		_objective_pos = ([markerpos _spawn_marker] call F_getNearestBluforObjective) select 0;
+		private _spawn_marker_pos = markerpos _spawn_marker;
+		_objective_pos = [_spawn_marker_pos] call F_getNearestFob;
+		if (_objective_pos distance2D _spawn_marker_pos > GRLIB_spawn_max) then {
+			_objective_pos = ([_spawn_marker_pos] call F_getNearestBluforObjective) select 0;
+		};
 	};
 } else {
 	diag_log format ["Spawn BattlegGroup target %1 at %2", _liberated_sector, time];
@@ -31,7 +35,7 @@ if (_spawn_marker != "") then {
 
 	diag_log format ["Spawn BattlegGroup objective %1 size %2 at %3", _objective_pos, _target_size, time];
 	[markerPos _spawn_marker] remoteExec ["remote_call_battlegroup", 0];
-	
+
 	private ["_nextgrp", "_vehicle", "_vehicle_class"];
 	for "_i" from 1 to _target_size do {
 		_vehicle_class = selectRandom _vehicle_pool;
@@ -60,7 +64,7 @@ if (_spawn_marker != "") then {
 			{
 				_x setVariable ["GRLIB_counter_TTL", round(time + 3600)];
 				_x setVariable ["GRLIB_battlegroup", true];
-			} forEach (units _nextgrp);			
+			} forEach (units _nextgrp);
 		} else {
 			[_objective_pos] spawn send_paratroopers;
 		};
