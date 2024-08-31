@@ -28,6 +28,8 @@ taxi_land = {
 
 taxi_dest = {
 	params ["_vehicle", "_dest", "_msg"];
+
+	_vehicle setVariable ["GRLIB_taxi_destination", _dest, true];
 	_vehicle setFuel 1;
 	_vehicle engineOn true;
 
@@ -89,4 +91,21 @@ taxi_outboard = {
 	};
 	_vehicle setVehicleLock "LOCKED";
 	_vehicle lockCargo true;
+};
+
+taxi_marker = {
+	params ["_vehicle"];
+	private _nextmarker = format ["taximarker_%1", (_vehicle call BIS_fnc_netId)];
+	private _marker = createMarkerLocal [_nextmarker, getPosATL _vehicle];
+	_marker setMarkerSizeLocal [ 0.85, 0.85 ];
+	_marker setMarkerTypeLocal "loc_heli";
+	_marker setMarkerColorLocal "ColorGUER";
+	_marker setMarkerTextLocal format ["Taxi - %1", [player] call get_player_name];
+
+	while {alive _vehicle} do {
+		_marker setMarkerPosLocal (getPosATL _vehicle);
+		_marker setMarkerDirLocal ((getPosATL _vehicle) getDir (_vehicle getVariable "GRLIB_taxi_destination"));
+		sleep 1;
+	};
+	deleteMarkerLocal _marker;
 };
