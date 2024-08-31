@@ -62,6 +62,7 @@ GRLIB_side_resistance = RESISTANCE;
 // *** COLORS ***
 // Default WEST
 GRLIB_color_friendly = "ColorBLUFOR";
+GRLIB_color_friendly_bright = "ColorBlue";
 
 // Default EAST
 GRLIB_color_enemy = "ColorOPFOR";

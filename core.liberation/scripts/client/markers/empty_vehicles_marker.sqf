@@ -31,10 +31,10 @@ private _vehmarkers = [];
 while { true } do {
 	waitUntil {sleep 1; GRLIB_MapOpen };
 	_veh_list = vehicles select {
-		(alive _x) && !(isObjectHidden _x) &&
 		(_x distance2D lhd > GRLIB_fob_range) &&
 		(getObjectType _x >= 8) && (isDamageAllowed _x) &&
 		!([_x, _no_marker_classnames] call F_itemIsInClass) &&
+		(alive _x) && !(isObjectHidden _x) && isNull (attachedTo _x) &&
 		(count (crew _x) == 0 || typeOf _x in (uavs + static_vehicles_AI)) &&
 		(isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull])) &&
 		(
@@ -92,7 +92,7 @@ while { true } do {
 			_nextmarker setMarkerSizeLocal [1.4, 1.4];
 		};
 		if (typeOf _nextvehicle == canister_fuel_typename) then {
-			_marker_color = "ColorEAST";
+			_marker_color = "Color1_FD_F";
 			_marker_type = "loc_refuel";
 			_nextmarker setMarkerSizeLocal [1.4, 1.4];
 		};

@@ -12,11 +12,12 @@ while { true } do {
 		waitUntil {sleep 1; GRLIB_MapOpen };
 
 		// Players and units
-		private _marked_players_bak = [];
-		private _players_list = (units GRLIB_side_friendly - units group chimeraofficer) select { alive _x && isNull objectParent _x };
+		private _players_markers_bak = [];
+		private _players_list = (units GRLIB_side_friendly + units GRLIB_side_civilian) select { alive _x && isNull objectParent _x && !isNil {_x getVariable "PAR_Grp_ID"} };
 		{
 			private _nextunit = _x;
 			private _nextmarker = format ["playermarker_%1", (_nextunit call BIS_fnc_netId)];
+			private _groupunit = (_nextunit in (units group player));
 			// in cache ?
 			if (_players_markers find _nextmarker < 0) then {
 				_marker = createMarkerLocal [_nextmarker, getPosATL _nextunit];
@@ -28,33 +29,50 @@ while { true } do {
 					_marker setMarkerSizeLocal [ 0.6, 0.6 ];
 				};
 				_marker setMarkerColorLocal GRLIB_color_friendly;
-				_marked_players_bak pushback _marker;
+				_players_markers_bak pushback _marker;
 			} else {
 				_nextmarker setMarkerPosLocal (getPosATL _nextunit);
-				_marked_players_bak pushback _nextmarker;
+				_players_markers_bak pushback _nextmarker;
 			};
  			if (isPlayer _nextunit) then {
 				_nextmarker setMarkerDirLocal (getDir _nextunit);
  			} else {
-				_nextmarker setMarkerTextLocal format ["%1. %2", [_nextunit] call F_getUnitPositionId, name _nextunit];
+				if (side group _nextunit == GRLIB_side_civilian) then {
+					_nextmarker setMarkerTextLocal format ["Medic. %1", name _nextunit];
+				} else {
+					_nextmarker setMarkerTextLocal format ["%1. %2", [_nextunit] call F_getUnitPositionId, name _nextunit];
+				};
 				if (_nextunit getVariable ["PAR_isUnconscious", false]) then {
 					_nextmarker setMarkerTypeLocal "MinefieldAP";
-					_nextmarker setMarkerColorLocal GRLIB_color_enemy_bright;
+					if (_groupunit) then { 
+						_nextmarker setMarkerColorLocal GRLIB_color_enemy_bright;
+					} else {
+						_nextmarker setMarkerColorLocal GRLIB_color_enemy;
+					};
 				} else {
 					_nextmarker setMarkerTypeLocal "mil_triangle";
-					_nextmarker setMarkerColorLocal GRLIB_color_friendly;
+					if (_groupunit) then { 
+						_nextmarker setMarkerColorLocal GRLIB_color_friendly_bright;
+					} else {
+						if (side group _nextunit == GRLIB_side_civilian) then {
+							_nextmarker setMarkerColorLocal "ColorGUER";
+						} else {
+							_nextmarker setMarkerColorLocal GRLIB_color_friendly;
+						};
+					};					
 				};
 			};
 		} foreach _players_list;
 
-		{ deleteMarkerLocal _x } foreach (_players_markers - _marked_players_bak);
-		_players_markers = _marked_players_bak;
+		{ deleteMarkerLocal _x } foreach (_players_markers - _players_markers_bak);
+		_players_markers = _players_markers_bak;
 
 		// Vehicles
 		private _vehicles_markers_bak = [];
 		private _vehicles_list = vehicles select {
 			(alive _x) && !(isObjectHidden _x) &&
 			(count (crew _x) > 0) && (side _x == GRLIB_side_friendly) &&
+			(_x getVariable ["GRLIB_vehicle_owner", ""] != "server") &&
 			!(typeOf _x in (uavs + static_vehicles_AI))
 		};
 		{
