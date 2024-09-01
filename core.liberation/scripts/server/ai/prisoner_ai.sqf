@@ -57,6 +57,7 @@ while {alive _unit} do {
 		private _leader = leader group _unit;
 		 _grp = createGroup [GRLIB_side_civilian, true];
     	[_unit] joinSilent _grp;
+		_unit setVariable ["GRLIB_is_prisoner", nil, true];
 		sleep 1;
 		[_unit, "stop"] remoteExec ["remote_call_prisoner", 0];
 		sleep 3;

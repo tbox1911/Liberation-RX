@@ -13,7 +13,10 @@ while { true } do {
 
 		// Players and units
 		private _players_markers_bak = [];
-		private _players_list = (units GRLIB_side_friendly + units GRLIB_side_civilian) select { alive _x && isNull objectParent _x && !isNil {_x getVariable "PAR_Grp_ID"} };
+		private _players_list = (units GRLIB_side_friendly + units GRLIB_side_civilian) select {
+			alive _x && isNull objectParent _x &&
+			(!isNil {_x getVariable "PAR_Grp_ID"} || !isNil {_x getVariable "GRLIB_is_prisoner"})
+		};
 		{
 			private _nextunit = _x;
 			private _nextmarker = format ["playermarker_%1", (_nextunit call BIS_fnc_netId)];
@@ -35,7 +38,15 @@ while { true } do {
 				_players_markers_bak pushback _nextmarker;
 			};
  			if (isPlayer _nextunit) then {
-				_nextmarker setMarkerDirLocal (getDir _nextunit);
+				if (_nextunit getVariable ["PAR_isUnconscious", false]) then {
+					_nextmarker setMarkerAlphaLocal 0;
+				} else {
+					if (player == _nextunit) then {
+						_nextmarker setMarkerColorLocal GRLIB_color_friendly_bright;
+					};
+					_nextmarker setMarkerDirLocal (getDir _nextunit);
+					_nextmarker setMarkerAlphaLocal 1;
+				};
  			} else {
 				if (side group _nextunit == GRLIB_side_civilian) then {
 					_nextmarker setMarkerTextLocal format ["Medic. %1", name _nextunit];
@@ -44,22 +55,26 @@ while { true } do {
 				};
 				if (_nextunit getVariable ["PAR_isUnconscious", false]) then {
 					_nextmarker setMarkerTypeLocal "MinefieldAP";
-					if (_groupunit) then { 
+					if (_groupunit) then {
 						_nextmarker setMarkerColorLocal GRLIB_color_enemy_bright;
 					} else {
 						_nextmarker setMarkerColorLocal GRLIB_color_enemy;
 					};
 				} else {
 					_nextmarker setMarkerTypeLocal "mil_triangle";
-					if (_groupunit) then { 
-						_nextmarker setMarkerColorLocal GRLIB_color_friendly_bright;
+					if !(_nextunit getVariable ["GRLIB_is_prisoner", true]) then {
+						_nextmarker setMarkerColorLocal "ColorCIV";
 					} else {
-						if (side group _nextunit == GRLIB_side_civilian) then {
-							_nextmarker setMarkerColorLocal "ColorGUER";
+						if (_groupunit) then {
+							_nextmarker setMarkerColorLocal GRLIB_color_friendly_bright;
 						} else {
-							_nextmarker setMarkerColorLocal GRLIB_color_friendly;
+							if (side group _nextunit == GRLIB_side_civilian) then {
+								_nextmarker setMarkerColorLocal "ColorGUER";
+							} else {
+								_nextmarker setMarkerColorLocal GRLIB_color_friendly;
+							};
 						};
-					};					
+					};
 				};
 			};
 		} foreach _players_list;
@@ -112,6 +127,5 @@ while { true } do {
 		{ deleteMarkerLocal _x } foreach (_vehicles_markers - _vehicles_markers_bak);
 		_vehicles_markers = _vehicles_markers_bak;
 	};
-
 	sleep 1;
 };
