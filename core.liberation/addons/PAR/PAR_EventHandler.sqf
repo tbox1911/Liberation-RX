@@ -79,9 +79,17 @@ _unit addEventHandler ["FiredMan",	{
 	// };
 
 	// Limit artillery fire
+	private _free_rounds_typename = [
+		"8Rnd_82mm_Mo_Smoke_white",
+		"8Rnd_82mm_Mo_Flare_white",
+		"vn_mortar_m29_mag_chem_x8",
+		"vn_mortar_m2_mag_lume_x8",
+		"vn_mortar_m29_mag_lume_x8"
+	];
 	if (isNumber (configFile >> "CfgVehicles" >> typeOf _vehicle >> "artilleryScanner")) then {
 		private _res = getNumber (configFile >> "CfgVehicles" >> typeOf _vehicle >> "artilleryScanner");
-		if (_res == 1) then { [_unit, _vehicle] spawn artillery_cooldown };
+		private _free_rounds = (_magazine in _free_rounds_typename);
+		if (_res == 1 && !_free_rounds) then { [_unit, _vehicle] spawn artillery_cooldown };
 	};
 }];
 
