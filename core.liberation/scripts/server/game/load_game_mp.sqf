@@ -348,7 +348,6 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 
 		if ( _nextclass in GRLIB_vehicles_light ) then {
 			_nextbuilding setVariable ["R3F_LOG_disabled", false, true];
-			_nextbuilding enableSimulationGlobal true;
 			if ( _nextclass in list_static_weapons ) then {
 				_nextbuilding setVehicleLock "DEFAULT";
 				{ _nextbuilding lockTurret [_x, false] } forEach (allTurrets _nextbuilding);
@@ -395,7 +394,6 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 				if (count _lst_grl > 0) then {
 					{[_nextbuilding, _x] call attach_object_direct} forEach _lst_grl;
 				};
-				_nextbuilding enableSimulationGlobal false;
 			};
 		};
 
