@@ -109,3 +109,26 @@ taxi_marker = {
 	};
 	deleteMarkerLocal _marker;
 };
+
+taxi_check_dest = {
+	params ["_vehicle", "_freepos"];
+	if (GRLIB_taxi_helipad_created) then {
+		deleteVehicle GRLIB_taxi_helipad;
+		sleep 0.5;
+	};
+	GRLIB_taxi_helipad_created = false;
+	GRLIB_taxi_helipad = selectRandom (nearestObjects [_freepos, ["Helipad_base_F"], 150]);
+	if (isNil "GRLIB_taxi_helipad") then {
+		{
+			if (str _x find "heli" > -1) exitWith { GRLIB_taxi_helipad = _x };
+		} forEach (nearestTerrainObjects [_freepos, ["Hide"], 150]);
+	};
+	if (isNil "GRLIB_taxi_helipad") then {
+		GRLIB_taxi_helipad = taxi_helipad_type createVehicle _freepos;
+		GRLIB_taxi_helipad_created = true;
+		_vehicle setVariable ["GRLIB_taxi_helipad", GRLIB_taxi_helipad, true];
+	};
+	GRLIB_taxi_cooldown = round (time + 15);
+	GRLIB_taxi_marker setMarkerPosLocal (getPosATL GRLIB_taxi_helipad);
+	GRLIB_taxi_marker setMarkerTextlocal "Taxi DZ";
+};
