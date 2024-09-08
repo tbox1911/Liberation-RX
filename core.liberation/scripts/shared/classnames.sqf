@@ -358,8 +358,6 @@ list_static_weapons = [resistance_squad_static] + blufor_statics + opfor_statics
 // Everything the AI troups should be able to resupply from
 ai_resupply_sources = [
 	Arsenal_typename,
-	ammo_truck_typename,
-	ammo_sling_typename,
 	Box_Ammo_typename,
 	Box_Support_typename,
 	basic_weapon_typename
@@ -392,7 +390,7 @@ vehicle_repair_sources = [
 	"Land_RepairDepot_01_civ_F"
 ];
 
-// Everything the AI vehicle should be able to repair from
+// Everything the AI vehicle should be able to refuel from
 vehicle_refuel_sources = [
 	fuel_sling_typename,
 	fuel_truck_typename,
