@@ -17,7 +17,7 @@ while { true } do {
 		_rank = _x getVariable ["GRLIB_Rank", ""];
 		if (isPlayer _x && _rank != "") then {
 			_cur = [_x] call F_getScore;
-			if (_cur >= (GRLIB_perm_hidden/2) ) then { _cur = (GRLIB_perm_max*3) };
+			if (_cur >= (GRLIB_perm_hidden/2)) then { _cur = (GRLIB_perm_max*3) };
 			_last = _x getVariable["GREUH_score_last", _cur];
 			if (_cur != _last) then {
 				// score has changed for player _x
