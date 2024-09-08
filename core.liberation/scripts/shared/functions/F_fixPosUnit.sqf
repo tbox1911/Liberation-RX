@@ -21,7 +21,7 @@ private _forest_type = ["forest", "wood"];
 private _typepos = tolower (surfaceType getPosWorld _unit);
 private _forest = count (_forest_type select { (_typepos find _x) > -1 });
 _forest = _forest + count (nearestTerrainObjects [_unit, ["Tree","Small Tree"], 6]);
-if (_forest > 0) exitWith {};
+if (_forest > 0) then { _minalt = 3 };
 
 private _obstacle = count (nearestTerrainObjects [_unit, ["House","Building"], 10]);
 if (_obstacle > 0) then { _minalt = 2.3 };
@@ -41,5 +41,5 @@ if (lineIntersects [ATLtoASL _spawnpos, _minpos, _unit]) then {
 	_unit playMoveNow "AmovPercMwlkSrasWrflDf";
 	sleep 3;
 	_unit setHitPointDamage ["hitLegs", 0];
-	_unit allowDamage true;	
+	_unit allowDamage true;
 };
