@@ -37,25 +37,27 @@ private _chimera_soldiers = units group chimeraofficer;
 		_src_dir = getDir _x;
 		deleteVehicle _x;
 		sleep 0.5;
-		_veh = _dst_class createVehicle _src_pos;
-		_veh allowDamage false;
-		_veh setDir _src_dir;
-		_veh setPosATL _src_pos;
-		_veh setVariable ["GRLIB_vehicle_owner", "public", true];
-		_veh addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
+		if (_dst_class != "") then {
+			_veh = _dst_class createVehicle _src_pos;
+			_veh allowDamage false;
+			_veh setDir _src_dir;
+			_veh setPosATL _src_pos;
+			_veh setVariable ["GRLIB_vehicle_owner", "public", true];
+			_veh addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 
-		if (GRLIB_ACE_enabled) then {
-			if (_src_class == "B_Heli_Light_01_F") then {
-				_veh setVariable ["ace_cargo_hasCargo", true, true];
-				_veh setVariable ["ace_cargo_space", 15, true];
+			if (GRLIB_ACE_enabled) then {
+				if (_src_class == "B_Heli_Light_01_F") then {
+					_veh setVariable ["ace_cargo_hasCargo", true, true];
+					_veh setVariable ["ace_cargo_space", 15, true];
+				};
+				if (_src_class == "B_Heli_Transport_01_F") then {
+					_veh setVariable ["ace_cargo_hasCargo", true, true];
+					_veh setVariable ["ace_cargo_space", 30, true];
+				};
 			};
-			if (_src_class == "B_Heli_Transport_01_F") then {
-				_veh setVariable ["ace_cargo_hasCargo", true, true];
-				_veh setVariable ["ace_cargo_space", 30, true];
-			};
+			sleep 1;
+			_veh allowDamage true;
 		};
-		sleep 1;
-		_veh allowDamage true;
 	} forEach _veh_lst;
 } forEach chimera_vehicle_overide;
 
