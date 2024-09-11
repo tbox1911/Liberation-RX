@@ -98,9 +98,9 @@ player createDiaryRecord ["LRX Info", ["Settings", format ["-= LRX Current Setti
 
 player createDiarySubject ["LRX Info", "Server"];
 player createDiaryRecord ["LRX Info", ["Server", format ["Join us on the Official Server !<br/><br/>
-- ARMA III - Liberation RX - %1<br/><font color='#0080ff'>arma.liberation-rx.fr</font><br/>
+- ARMA III - Liberation RX - %1<br/><font color='#0080ff'>liberation-rx.duckdns.org</font><br/>
 <img image='res\liberation.paa' height='128' width='256'/><br/><br/>
-Team Speak 3<br/><font color='#0080ff'>ts3.liberation-rx.fr</font><br/><br/>
+Team Speak 3<br/><font color='#0080ff'>liberation-rx.duckdns.org</font><br/><br/>
 Discord LRX<br/><font color='#0080ff'>https://discord.gg/uCRzJ7wauR</font>", GRLIB_build_version]]];
 
 player createDiarySubject ["Ranking","Ranking"];
