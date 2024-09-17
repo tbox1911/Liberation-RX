@@ -23,6 +23,13 @@ private _wait_max = 0;
 private _incd = 0;
 private _marker = "";
 private _helped = false;
+private _vehicle_damage = 0;
+private _countVehDamage = {
+	params ["_vehicle"];
+	private _damage = 0;
+	{ _damage = _damage + _x } forEach (getAllHitPointsDamage _vehicle select 2);
+	_damage;
+};
 
 sleep (60 + floor random 60);
 
@@ -71,8 +78,9 @@ while { alive _vehicle && alive _driver } do {
 				_hit_index = selectRandom ["HitLFWheel", "HitLBWheel", "HitRFWheel", "HitRBWheel", "HitHull" ];  // "HitBody"
 				_vehicle setHitPointDamage [_hit_index, 1];
 				_vehicle setHitPointDamage ["HitEngine", 1];
-				_vehicle setDamage 0.5;
+				_vehicle setDamage 0.75;
 				_vehicle allowDamage false;
+				_vehicle_damage = [_vehicle] call _countVehDamage;
 			};
 
 			// refuel
@@ -88,7 +96,7 @@ while { alive _vehicle && alive _driver } do {
 	// Rescued
 	if (_event_stared) then {
 		_helped = false;
-		if (_incd == _incd_repair && _vehicle getHitPointDamage "HitEngine" < 1) then { _helped = true };
+		if (_incd == _incd_repair && ([_vehicle] call _countVehDamage) < _vehicle_damage) then { _helped = true };
 		if (_incd == _incd_fuel && fuel _vehicle >= 0.4) then { _helped = true };
 		if (time > _wait_max) then { _helped = true };
 
