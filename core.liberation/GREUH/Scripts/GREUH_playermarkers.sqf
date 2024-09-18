@@ -88,7 +88,7 @@ while { true } do {
 			(alive _x) && !(isObjectHidden _x) &&
 			(count (crew _x) > 0) && (side _x == GRLIB_side_friendly) &&
 			(_x getVariable ["GRLIB_vehicle_owner", ""] != "server") &&
-			!(typeOf _x in (uavs + static_vehicles_AI))
+			!([_x, (uavs + static_vehicles_AI)] call F_itemIsInClass)
 		};
 		{
 			private _nextvehicle = _x;
