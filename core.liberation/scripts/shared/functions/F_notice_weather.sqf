@@ -15,7 +15,7 @@ _msg = _msg + format ["<t color='#FFFFFF' size='1.0'>The day Start at <t color='
 _msg = _msg + format ["<t color='#FFFFFF' size='1.0'>The day Ends at <t color='#008000'>%1</t> PM</t><br/>", GRLIB_nights_start];
 _msg = _msg + format ["<t color='#FFFFFF' size='1.0'>The risk of Rain is <t color='#A0A0A0'>%1</t>%2</t><br/>", round(linearConversion [0, 1, rain, 0, 100, true]), "%"]; 
 _msg = _msg + format ["<t color='#FFFFFF' size='1.0'>The Fog level is <t color='#808080'>%1</t>%2</t><br/>", round(linearConversion [0, 1, fog, 0, 100, true]), "%"]; 
-_msg = _msg + format ["<t color='#FFFFFF' size='1.0'>The Wind direction is <t color='#0000A0'>%1</t> degrees<br/>with a speed of <t color='#0000A0'>%2</t> m/s</t><br/>", round windDir, round windStr];
+_msg = _msg + format ["<t color='#FFFFFF' size='1.0'>The Wind direction is <t color='#0000A0'>%1</t> degrees<br/>with a speed of <t color='#0000A0'>%2</t> km/h</t><br/>", round windDir, round (windStr * 100)];
 _msg = _msg + "<t color='#777777'>------------------------------</t><br/>";
 _msg = _msg + "<br/>Have a nice day....";
 

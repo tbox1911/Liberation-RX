@@ -41,9 +41,7 @@ RPT_colorList = [
 private ["_name", "_texture"];
 if (GRLIB_LRX_Texture_enabled) then {
 	(
-		"
-		true
-		"
+		"true"
 		configClasses (configfile >> "LRX_TextureSources")
 	) apply {
 		_name = getText (_x >> "name");
@@ -55,8 +53,9 @@ if (GRLIB_LRX_Texture_enabled) then {
 
 [] call compileFinal preprocessFileLineNumbers "addons\VAM\RPT_vip_textures.sqf";
 
-// dedicated server need no more
+// dedicated server / HC need no more
 if (isDedicated) exitWith {};
+if (!isDedicated && !hasInterface && isMultiplayer) exitWith {};
 
 // Get Arsenal items
 waitUntil {sleep 1; !isNil "LRX_arsenal_init_done"};
