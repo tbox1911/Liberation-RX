@@ -57,8 +57,12 @@ if ( _classname isKindOf "Air" ) then {
 		if (count _obstacle == 0) then {
 			_vehicle = createVehicle [_classname, zeropos, [], 0, "NONE"];
 			_vehicle allowDamage false;
-			_spawnpos set [2, 0.5];
-			_vehicle setPosATL _spawnpos;
+			if (surfaceIsWater _spawnpos) then {
+				_vehicle setPosASL _spawnpos;
+			} else {
+				_spawnpos set [2, 0.5];
+				_vehicle setPosATL _spawnpos;
+			};
 			_vehicle setVariable ["R3F_LOG_disabled", true, true];
 		};
 	};
