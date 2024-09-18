@@ -49,11 +49,9 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 			_opfor_grp = [_sector_pos, (6 + floor random 6), "militia"] call createCustomGroup;
 		};
 
-		if (local _opfor_grp) then {
-			private _hc = [] call F_lessLoadedHC;
-			if (!isNull _hc) then {
-				_opfor_grp setGroupOwner (owner _hc);
-			};
+		private _hc = [] call F_lessLoadedHC;
+		if (!isNull _hc) then {
+			_opfor_grp setGroupOwner (owner _hc);
 		};
 
 		// Wait

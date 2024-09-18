@@ -29,20 +29,32 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 		// 40% in vehicles
 		if ( floor random 100 >= 60) then {
 			_civ_veh = [_sector_pos, (selectRandom civilian_vehicles), 3, false, GRLIB_side_civilian] call F_libSpawnVehicle;
-			if !(isNull _civ_veh) then {
-				_civ_grp = group (driver _civ_veh);
-				[_civ_grp, _sector_pos] spawn add_civ_waypoints;
-				[_civ_veh] spawn civilian_ai_veh;
-			};
+			if !(isNull _civ_veh) then { _civ_grp = group (driver _civ_veh) };
 		} else {
 			private _rndciv = [1,1,1,1,2,3];
 			_civ_grp = [_sector_pos, (selectRandom _rndciv)] call F_spawnCivilians;
 		};
 
-		if (local _civ_grp) then {
-			private _hc = [] call F_lessLoadedHC;
-			if (!isNull _hc) then {
-				_civ_grp setGroupOwner (owner _hc);
+		private _hc = [] call F_lessLoadedHC;
+		if (!isNull _hc) then {
+			_civ_grp setGroupOwner (owner _hc);
+			sleep 1;
+		};
+
+		private _owner = groupOwner _civ_grp;
+		if (_owner == 0) then {
+			[_civ_grp, _sector_pos] spawn add_civ_waypoints;
+			if (isNull _civ_veh) then {
+				[_civ_grp, _sector_pos] spawn civilian_ai;
+			} else {
+				[_civ_veh] spawn civilian_ai_veh;
+			};
+		} else {
+			[_civ_grp, _sector_pos] remoteExec ["add_civ_waypoints", _owner];
+			if (isNull _civ_veh) then {
+				[_civ_grp, _sector_pos] remoteExec ["civilian_ai", _owner];
+			} else {
+				[_civ_veh] remoteExec ["civilian_ai_veh",_owner];
 			};
 		};
 
