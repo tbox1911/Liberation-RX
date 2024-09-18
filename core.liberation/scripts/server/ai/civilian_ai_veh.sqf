@@ -102,8 +102,6 @@ while { alive _vehicle && alive _driver } do {
 		if (_incd == _incd_fuel && fuel _vehicle >= 0.4) then { _helped = true };
 		if (time > _wait_max) then { _helped = true };
 
-		diag_log [typeof _vehicle, [_vehicle] call _countVehDamage, _vehicle_damage, _helped];
-
 		if (_helped) then {
 			if (time <= _wait_max) then {
 				private _winner = ([_vehicle, 30] call F_getNearbyPlayers) select 0;
