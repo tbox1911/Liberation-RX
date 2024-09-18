@@ -1,5 +1,7 @@
 params ["_vehicle"];
 if (isNull _vehicle) exitWith {};
+if (!local _vehicle) exitWith {};
+
 private _blacklist_class = [
 	"Air",
 	"Boat_F",
@@ -100,6 +102,8 @@ while { alive _vehicle && alive _driver } do {
 		if (_incd == _incd_fuel && fuel _vehicle >= 0.4) then { _helped = true };
 		if (time > _wait_max) then { _helped = true };
 
+		diag_log [typeof _vehicle, [_vehicle] call _countVehDamage, _vehicle_damage, _helped];
+
 		if (_helped) then {
 			if (time <= _wait_max) then {
 				private _winner = ([_vehicle, 30] call F_getNearbyPlayers) select 0;
@@ -109,12 +113,12 @@ while { alive _vehicle && alive _driver } do {
 						[_driver, (_incd+1), _winner] spawn speak_manager_remote_call;
 						[_winner, _bonus] call F_addScore;
 						[_winner, 5] call F_addReput;
-						sleep 5;
 					} else {
 						[_driver, (_incd+1), _winner] remoteExec ["speak_manager_remote_call", 2];
 						[_winner, _bonus] remoteExec ["F_addScore", 2];
 						[_winner, 5] remoteExec ["F_addReput", 2];
 					};
+					sleep 5;					
 				};
 			};
 			_vehicle setVariable ["GRLIB_civ_incd", 0, true];

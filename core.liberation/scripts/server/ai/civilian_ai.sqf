@@ -1,5 +1,6 @@
 params ["_grp"];
 if (isNull _grp) exitWith {};
+if (!local _grp) exitWith {};
 if (count (units _grp) > 1) exitWith {};
 
 private _unit = (units _grp) select 0;

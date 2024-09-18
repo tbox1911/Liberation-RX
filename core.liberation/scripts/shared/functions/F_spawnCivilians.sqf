@@ -29,8 +29,5 @@ private _grp = createGroup [GRLIB_side_civilian, true];
 _grp setCombatMode "BLUE";
 _grp setBehaviourStrong "SAFE";
 
-[_grp, _sectorpos] spawn add_civ_waypoints;
-[_grp, _sectorpos] spawn civilian_ai;
-
 //diag_log format [ "Done Spawning civilian %1 at %2", typeOf _civ_unit, time ];
 _grp;

@@ -1,6 +1,7 @@
 params ["_grp", "_basepos"];
 if (isNil "_grp" || isNil "_basepos") exitWith {};
 if (isNull _grp) exitWith {};
+if (!local _grp) exitWith {};
 
 private _civ_veh = objectParent (leader _grp);
 if (_civ_veh isKindOf "Ship") exitWith { [_grp, getPosATL _civ_veh, 80] spawn patrol_ai };

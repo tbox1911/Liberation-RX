@@ -201,6 +201,8 @@ if ( (!(_sector in blufor_sectors)) && (([_sector_pos, GRLIB_sector_size, GRLIB_
 		while { _nbcivs > 0 } do {
 			_maxcivs = (selectRandom _rndciv) min _nbcivs;
 			_grp = [_sector_pos, _maxcivs] call F_spawnCivilians;
+			[_grp, _sector_pos] spawn add_civ_waypoints;
+			[_grp, _sector_pos] spawn civilian_ai;			
 			_managed_units = _managed_units + (units _grp);
 			_nbcivs = _nbcivs - _maxcivs;
 			sleep 0.5;
