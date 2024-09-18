@@ -12,11 +12,11 @@ _setupVars = {
 
 _setupObjects = {
 	_missionPos = markerpos _missionLocation;
-	_box1 = [ammobox_o_typename, _missionPos, true] call boxSetup;
-	_box2 = [ammobox_o_typename, _missionPos, true] call boxSetup;
 	_vehicle = [_missionPos, selectRandom opfor_boats, 0] call F_libSpawnVehicle;
 	_aiGroup = [_missionPos, _nbUnits, "divers", true] call createCustomGroup;
 	(crew _vehicle) joinSilent _aiGroup;
+	_box1 = [ammobox_o_typename, _missionPos, true] call boxSetup;
+	_box2 = [ammobox_o_typename, _missionPos, true] call boxSetup;
 	_missionPicture = getText (configFile >> "CfgVehicles" >> "O_Boat_Armed_01_hmg_F" >> "picture");
 	_missionHintText = "STR_SUNKEN_MESSAGE1";
 	true;
