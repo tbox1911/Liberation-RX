@@ -8,8 +8,16 @@ if (count (_vehicle_light + _vehicle_apc) == 0) exitWith {};
 private _pos = _targetpos getPos [floor(random GRLIB_capture_size), floor(random 360)];
 _pos set [2, 600];
 
-private _vehicle = [_pos, selectRandom (_vehicle_light + _vehicle_apc), 0] call F_libSpawnVehicle;
-private _grp = group (driver _vehicle);
+private _vehicle = createVehicle [selectRandom (_vehicle_light + _vehicle_apc), _pos, [], 0, "NONE"];
+_vehicle setPos _pos;
+_vehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
+_vehicle allowCrewInImmobile [true, false];
+_vehicle setUnloadInCombat [true, false];
+
+[_vehicle] call F_clearCargo;
+[_vehicle] call F_fixModVehicle;
+[_vehicle] call F_vehicleDefense;
+[_vehicle, GRLIB_side_enemy] call F_forceCrew;
 
 _vehicle setVariable ["GRLIB_counter_TTL", round(time + 3600)];  // 60 minutes TTL
 _vehicle setVariable ["GRLIB_battlegroup", true];
@@ -18,12 +26,8 @@ _vehicle setVariable ["GRLIB_battlegroup", true];
 	_x setVariable ["GRLIB_battlegroup", true];
 } forEach (crew _vehicle);
 
-if (surfaceIsWater _pos) then { _pos = ATLtoASL _pos };
-while { _vehicle distance _pos > 100 } do {
-	_vehicle setPos _pos;
-	sleep 1;
-};
-
 [_pos, "parasound"] spawn sound_range_remote_call;
 [_vehicle] spawn F_addParachute;
+
+private _grp = group (driver _vehicle);
 [_grp, _pos] spawn battlegroup_ai;
