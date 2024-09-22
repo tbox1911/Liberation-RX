@@ -274,9 +274,7 @@ if ( (!(_sector in blufor_sectors)) && (([_sector_pos, GRLIB_sector_size, GRLIB_
 					_max_prisonners = _max_prisonners - 1;
 					_managed_units = _managed_units - [_x];
 				} else {
-					if ( ((random 100) <= 50) ) then {
-						[_x] spawn bomber_ai;
-					};
+					if ((floor random 100) <= 50) then { [_x] spawn bomber_ai };
 				};
 				sleep 0.5;
 			} foreach _enemy_left;
