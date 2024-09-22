@@ -49,6 +49,11 @@ if (count _all_buildings_to_destroy > 300) then { _sleep = 0 };
 _all_buildings_to_destroy = (_fobpos nearObjects (GRLIB_fob_range * 1.5)) select { getObjectType _x >= 8 && (getPos _x select 2) >= 2 };
 { _x setPos (getPos _x)} forEach _all_buildings_to_destroy;
 
+private _index = GRLIB_all_fobs find _fobpos;
+if (_index >= 0) then {
+	private _sector = format ["fobmarker%1", _index];
+	[_sector, 0] call sector_defenses_remote_call;
+};
 diag_log format ["FOB %1 destroyed at %2", _fobpos, time];
 
 GRLIB_all_fobs = GRLIB_all_fobs - [_fobpos];

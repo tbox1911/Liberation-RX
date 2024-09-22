@@ -52,7 +52,7 @@ while { dialog && alive player } do {
         _sector_name = (_display displayCtrl (110)) lnbText [_selected_item, 0];
 
         if (build_type == 0) then {
-            [_sector, build_type] remoteExec ["sector_defenses_remote_call", 2];
+            [_sector, 0] remoteExec ["sector_defenses_remote_call", 2];
             gamelogic globalChat format ["You Remove Defenses from %1.", _sector_name];
         } else {
             if (count GRLIB_sector_defense < _max_defense) then {
