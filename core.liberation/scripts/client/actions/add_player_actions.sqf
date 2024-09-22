@@ -33,7 +33,7 @@ player addAction ["<t color='#8080FF'>" + localize "STR_SQUAD_STOP" + "</t> <img
 player addAction ["<t color='#F02000'>" + localize "STR_SQUAD_DISMISS" + "</t> <img size='1' image='" + _icon_grp + "'/>","scripts\client\actions\do_squad.sqf","del",-935,false,true,"","call GRLIB_checkSquad"];
 
 // Redeploy
-player addAction ["<t color='#80FF80'>" + localize "STR_DEPLOY_ACTION" + "</t> <img size='1' image='res\ui_redeploy.paa'/>","scripts\client\spawn\redeploy_manager.sqf","",-502,true,true,"","call GRLIB_checkRedeploy"];
+player addAction ["<t color='#80FF80'>" + localize "STR_DEPLOY_ACTION" + "</t> <img size='1' image='res\ui_redeploy.paa'/>","scripts\client\spawn\redeploy_manager.sqf","",-502,false,true,"","call GRLIB_checkRedeploy"];
 
 // Halo Jump
 player addAction ["<t color='#80FF80'>" + localize "STR_HALO_ACTION" + "</t> <img size='1' image='res\ui_redeploy.paa'/>","scripts\client\spawn\do_halo.sqf","",-503,false,true,"","call GRLIB_checkHalo"];

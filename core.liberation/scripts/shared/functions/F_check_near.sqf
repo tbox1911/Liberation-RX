@@ -59,11 +59,8 @@ if (typeName (_classlist select 0) == "STRING") then {
 	};
 	if (count _obj_list > 0) then {
 		_near = _obj_list select {
-			alive _x && getObjectType _x >= 8 &&
-			(
-				!(_x getVariable ['R3F_LOG_disabled', false]) ||
-				!(isNull (attachedTo  _x))
-			)
+			alive _x && getObjectType _x >= 8 && isNull (attachedTo  _x) &&
+			!(_x getVariable ['R3F_LOG_disabled', false])
 		};
 	};
 } else {
