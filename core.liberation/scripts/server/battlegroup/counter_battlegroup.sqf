@@ -31,7 +31,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 			[_msg, 0, 0, 10, 0, 0, 90] remoteExec ["BIS_fnc_dynamicText", 0];
 
 			waitUntil {sleep 2; isNull objectParent _target};
-			diag_log format [ "Spawn Attack on player %1 at %2", name _target, time ];
+			diag_log format ["Spawn Attack on player %1 at %2", name _target, time];
 			[getPosATL _target, GRLIB_side_enemy, 3] spawn spawn_air;
 			sleep 20;
 			[getPosATL _target] spawn send_paratroopers;

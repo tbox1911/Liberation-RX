@@ -6,10 +6,16 @@ if (_count >= 1) then {
 	[_targetpos, _side, _count - 1] spawn spawn_air;
 };
 
-if (isNil "_side") then {_side = GRLIB_side_enemy};
+private _exit = false;
+if (_side == GRLIB_side_enemy) then {
+	private _pilots = (units GRLIB_side_friendly) select { (objectParent _x) isKindOf "Air" && (driver vehicle _x) == _x };
+	if (count _pilots == 0) then { _exit = true };
+};
+if (_exit) exitWith {};
+
 private _planeType = opfor_air;
-if (_side == GRLIB_side_friendly) then {_planeType = blufor_air};
-if (count _planeType == 0) exitWith { objNull };
+if (_side == GRLIB_side_friendly) then { _planeType = blufor_air };
+if (count _planeType == 0) exitWith {};
 
 private _grp = createGroup [_side, true];
 private _vehicle = [zeropos, selectRandom _planeType, 0, false, _side] call F_libSpawnVehicle;
@@ -71,7 +77,7 @@ while { ({alive _x} count (units _grp) > 0) && (GRLIB_endgame == 0) } do {
 		_waypoint setWaypointType "SAD";
 		_wp0 = waypointPosition [_grp, 0];
 		_waypoint = _grp addWaypoint [_wp0, 0];
-		_waypoint setWaypointType "CYCLE";		
+		_waypoint setWaypointType "CYCLE";
 		{ _x doFollow leader _grp } foreach units _grp;
 		sleep 300;
 	};

@@ -30,5 +30,4 @@ while { GRLIB_csat_aggressivity > 0.9 && GRLIB_endgame == 0 && GRLIB_global_stop
 	if (count _pilots > 0 ) then {
 		[getPosATL (selectRandom _pilots), GRLIB_side_enemy, 3] spawn spawn_air;
 	};
-
 };
