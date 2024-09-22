@@ -5,7 +5,6 @@ private _max_respawn_reached = false;
 private _respawn_trucks_unsorted = vehicles select {
 	(alive _x) && !(isObjectHidden _x) &&
 	(typeOf _x in respawn_vehicles) &&
-	isNull (attachedTo  _x) &&
 	(_x getVariable ["GRLIB_vehicle_owner", ""] == _uid) &&
 	!(_x getVariable ['R3F_LOG_disabled', false]) &&
 	alive _x && !([_x, "LHD", GRLIB_fob_range] call F_check_near) &&
