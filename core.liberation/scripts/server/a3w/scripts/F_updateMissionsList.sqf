@@ -10,6 +10,7 @@ private _spawn_place_water = count ([SunkenMissionMarkers] call checkSpawn);
 private _opfor_sectors = (count sectors_allSectors) - (count blufor_sectors);
 private _opfor_factor = round ((_opfor_sectors / (count sectors_allSectors)) * 100);
 private _opfor_chopper = { !(_x isKindOf "Plane") } count (opfor_air);
+private _nb_player = count (AllPlayers - (entities "HeadlessClient_F"));
 
 // Air Wreck
 _mission_name = "mission_AirWreck";
@@ -41,10 +42,10 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 	};
 };
 
-// Town capture
+// Town Invasion
 _mission_name = "mission_TownInvasion";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
-	if (count blufor_sectors >= 10 && (_opfor_factor <= 40 || A3W_mission_failed >= 8)) then {
+	if (_nb_player > 1 && count blufor_sectors >= 10 && (_opfor_factor <= 40 || A3W_mission_failed >= 8)) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;
@@ -223,7 +224,7 @@ if (!([_missionsList, _mission_name] call getMissionState)) then {
 _mission_name = "mission_PrisonerConvoy";
 if (!([_missionsList, _mission_name] call getMissionState)) then {
 	private _military = count (sectors_military select { _x in opfor_sectors });
-	if (_military >= 3) then {
+	if (_nb_player > 1 && _military >= 3) then {
 		[_missionsList, _mission_name, false] call setMissionState;
 	} else {
 		[_missionsList, _mission_name, true] call setMissionState;
