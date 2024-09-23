@@ -41,21 +41,11 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 			sleep 1;
 		};
 
-		private _owner = groupOwner _civ_grp;
-		if (_owner == 0) then {
-			[_civ_grp, _sector_pos] spawn add_civ_waypoints;
-			if (isNull _civ_veh) then {
-				[_civ_grp, _sector_pos] spawn civilian_ai;
-			} else {
-				[_civ_veh] spawn civilian_ai_veh;
-			};
+		[_civ_grp, _sector_pos] spawn add_civ_waypoints;
+		if (isNull _civ_veh) then {
+			[_civ_grp, _sector_pos] spawn civilian_ai;
 		} else {
-			[_civ_grp, _sector_pos] remoteExec ["add_civ_waypoints", _owner];
-			if (isNull _civ_veh) then {
-				[_civ_grp, _sector_pos] remoteExec ["civilian_ai", _owner];
-			} else {
-				[_civ_veh] remoteExec ["civilian_ai_veh",_owner];
-			};
+			[_civ_veh] spawn civilian_ai_veh;
 		};
 
 		// Wait

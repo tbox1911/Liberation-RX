@@ -6,6 +6,7 @@ if (_unit getVariable ["GRLIB_mission_AI", false]) exitWith {};
 if (_unit getVariable ["GRLIB_is_prisoner", false]) exitWith {};
 if (surfaceIsWater (getPosATL _unit)) exitWith {};
 if (_unit skill "courage" == 1) exitWith {};
+if (!local _unit) exitWith { [_unit, _friendly, _canmove] remoteExec ["prisoner_ai", owner _unit] };
 
 sleep 10;
 if (!alive _unit) exitWith {};
@@ -57,6 +58,11 @@ while {alive _unit && !_captured} do {
 		_captured = true;
 	};
 
+	// Stopped
+	if !(_unit getVariable ["GRLIB_is_prisoner", true]) then {
+		_fleeing = false;
+	};
+
 	// Flee
 	if (!_friendly && !_fleeing) then {
 		_no_blufor_near = ({ (alive _x) && !(captive _x) && (_x distance2D _unit <= 100) } count (units GRLIB_side_friendly) == 0);
@@ -75,13 +81,7 @@ while {alive _unit && !_captured} do {
 			[_unit, "flee"] remoteExec ["remote_call_prisoner", 0];
 			sleep 3;
 			[_unit] spawn escape_ai;
-			sleep 30;
 		};
-	};
-
-	// Stopped
-	if !(_unit getVariable ["GRLIB_is_prisoner", true]) then {
-		_fleeing = false;
 	};
 
 	// Timeout

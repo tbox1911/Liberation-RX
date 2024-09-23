@@ -83,4 +83,10 @@ if (_vehicle isKindOf "Plane_Base_F") then { _unload_dist = _unload_dist * 1.5 }
 	{_x doFollow (leader _pilot_group)} foreach units _pilot_group;
 };
 
+private _hc = [] call F_lessLoadedHC;
+if (!isNull _hc) then {
+	_para_group setGroupOwner (owner _hc);
+	sleep 1;
+};
+
 _para_group;

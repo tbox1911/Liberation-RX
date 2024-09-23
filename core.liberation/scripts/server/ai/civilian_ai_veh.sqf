@@ -1,6 +1,6 @@
 params ["_vehicle"];
 if (isNull _vehicle) exitWith {};
-if (!local _vehicle) exitWith {};
+if (!local _vehicle) exitWith { [_vehicle] remoteExec ["civilian_ai_veh", owner _vehicle] };
 
 private _blacklist_class = [
 	"Air",
@@ -134,7 +134,7 @@ while { alive _vehicle && alive _driver } do {
 		};
 	};
 
-	sleep 5;
+	sleep 3;
 };
 
 deleteMarker _marker;

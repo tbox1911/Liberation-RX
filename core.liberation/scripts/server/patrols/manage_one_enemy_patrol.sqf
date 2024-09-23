@@ -52,6 +52,7 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 		private _hc = [] call F_lessLoadedHC;
 		if (!isNull _hc) then {
 			_opfor_grp setGroupOwner (owner _hc);
+			sleep 1;
 		};
 
 		// Wait

@@ -42,6 +42,7 @@ if (_spawn_marker != "") then {
 			private _hc = [] call F_lessLoadedHC;
 			if (!isNull _hc) then {
 				_x setGroupOwner (owner _hc);
+				sleep 1;
 			};
 		};
 		sleep 3;

@@ -1,7 +1,7 @@
 params ["_grp"];
-if (isNull _grp) exitWith {};
-if (!local _grp) exitWith {};
 if (count (units _grp) > 1) exitWith {};
+if (isNull _grp) exitWith {};
+if (!local _grp) exitWith { [_grp] remoteExec ["civilian_ai", groupOwner _grp] };
 
 private _unit = (units _grp) select 0;
 if ((typeOf _unit) select [0,10] == "RyanZombie") exitWith {};
