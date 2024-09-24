@@ -4,7 +4,10 @@ if (!isServer) exitWith {};
 if (!isNil "GRLIB_server_stopped") exitWith {};
 
 private _save_warmup = 300;
-if (time < _save_warmup && !_force) exitWith {diag_log format ["--- LRX MP Warmup (no save done), %1sec remaining...", round (_save_warmup - time)];};
+if (time < _save_warmup && !_force) exitWith {
+	diag_log format ["--- LRX MP Warmup (no save done), %1sec remaining...", round (_save_warmup - time)];
+};
+
 diag_log format ["--- LRX Save start at %1", time];
 
 if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
@@ -211,7 +214,7 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
 		_player_scores
 	];
 
-	profileNamespace setVariable [ GRLIB_save_key, _lrx_liberation_savegame ];
+	profileNamespace setVariable [GRLIB_save_key, _lrx_liberation_savegame];
 	saveProfileNamespace;
 	diag_log format [ "--- LRX Save %1 in Profile at %2", GRLIB_save_key, time ];
 };

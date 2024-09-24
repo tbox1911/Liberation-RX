@@ -9,7 +9,7 @@ blufor_sectors = [];
 GRLIB_all_fobs = [];
 GRLIB_all_outposts = [];
 GRLIB_mobile_respawn = [];
-buildings_to_load= [];
+buildings_to_load = [];
 combat_readiness = 0;
 stats_opfor_soldiers_killed = 0;
 stats_opfor_killed_by_players = 0;
@@ -76,7 +76,7 @@ if ( GRLIB_param_wipe_savegame_1 == 1 && GRLIB_param_wipe_savegame_2 == 1 ) then
 		GRLIB_player_scores = _keep_players;
 	};
 	diag_log format ["--- LRX Savegame %1 Erased!", GRLIB_save_key] ;
-	profileNamespace setVariable [ GRLIB_save_key, nil ];
+	profileNamespace setVariable [GRLIB_save_key, nil];
 	saveProfileNamespace;
 	sleep 1;
 };

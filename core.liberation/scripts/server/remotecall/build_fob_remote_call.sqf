@@ -11,7 +11,7 @@ if (_classname in [FOB_typename, FOB_outpost]) then {
 	_vehicle setPosWorld _veh_pos;
 	[_vehicle, getPlayerUID _owner] call fob_init;
 	_fob_pos = getPosATL _vehicle;
-	GRLIB_all_fobs pushback _fob_pos;
+	GRLIB_all_fobs = GRLIB_all_fobs + [_fob_pos];
 	if (_classname == FOB_outpost) then { GRLIB_all_outposts pushBack _fob_pos };
 };
 
@@ -20,12 +20,12 @@ if (_classname in ["Land_Destroyer_01_base_F", "Land_Carrier_01_base_F"]) then {
 	_vehicle = createVehicle [_classname, ([] call F_getFreePos), [], 0, "NONE"];
 	_vehicle allowDamage false;
 	_vehicle setVectorDirAndUp [_veh_dir, _veh_vup];
-	_vehicle setPosWorld _veh_pos;	
+	_vehicle setPosWorld _veh_pos;
 	[_vehicle] call BIS_fnc_carrier01Init;
 	[_vehicle] call BIS_fnc_Carrier01PosUpdate;
 	[_vehicle, getPlayerUID _owner] call fob_init;
 	_fob_pos = getPosATL (nearestObjects [_veh_pos, [FOB_sign], 200] select 0);
-	GRLIB_all_fobs pushback _fob_pos;
+	GRLIB_all_fobs = GRLIB_all_fobs + [_fob_pos];
 };
 
 // Offshore FOB
@@ -53,7 +53,7 @@ if (_classname in ["fob_water1"]) then {
 	if (FOB_typename == "Land_vn_bunker_big_02") then { _vehicle setVectorDir [-1,0,0] };
 	[_vehicle, getPlayerUID _owner] call fob_init;
 	_fob_pos = getPosATL _vehicle;
-	GRLIB_all_fobs pushback _fob_pos;
+	GRLIB_all_fobs = GRLIB_all_fobs + [_fob_pos];
 };
 
 if (isNull _vehicle) exitWith {};

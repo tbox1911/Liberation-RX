@@ -1,3 +1,4 @@
+diag_log "--- HC Server Init start ---";
 [] call compileFinal preprocessFileLineNumbers "scripts\loadouts\init_loadouts.sqf";
 
 add_civ_waypoints = compileFinal preprocessFileLineNumbers "scripts\server\ai\add_civ_waypoints.sqf";
@@ -28,3 +29,5 @@ showlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scrip
 clearlandmines = compileFinal preprocessFileLineNumbers "scripts\server\a3w\scripts\F_clearLandMines.sqf";
 
 [] spawn compileFinal preprocessFileLineNumbers "scripts\server\offloading\show_fps_hc.sqf";
+
+diag_log "--- HC Server Init stop ---";
