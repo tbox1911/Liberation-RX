@@ -102,5 +102,9 @@ if (alive _unit && _captured) then {
 	sleep 1;
 	[_unit, "stop"] remoteExec ["remote_call_prisoner", 0];
 	sleep 3;
-	[_unit, _leader, _friendly] spawn prisonner_captured;
+	if (isServer) then {
+		[_unit, _leader, _friendly] spawn prisonner_captured;
+	} else {
+		[_unit, _leader, _friendly] remoteExec ["prisonner_captured", 2];
+	};
 };
