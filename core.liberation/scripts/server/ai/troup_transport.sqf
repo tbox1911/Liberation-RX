@@ -59,7 +59,7 @@ if ({alive _x} count (units _transport_group) == 0) exitWith {};
 [_transport_group, getPosATL _troup_transport, 30] spawn defence_ai;
 
 // Cleanup
-waitUntil { sleep 30; (GRLIB_global_stop == 1 || [getPosATL _troup_transport, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_troup_transport, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
 [_troup_transport] call clean_vehicle;
 { deleteVehicle _x } forEach (units _transport_group);
 deleteGroup _transport_group;

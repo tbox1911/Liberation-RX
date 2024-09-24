@@ -81,7 +81,7 @@ while {({alive _x} count (units _grp) > 0) && !(_objective_pos isEqualTo zeropos
 };
 
 // Cleanup
-waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_last_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_vehicle, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
 [_vehicle] call clean_vehicle;
 { deleteVehicle _x } forEach (units _grp);
 deleteGroup _grp;

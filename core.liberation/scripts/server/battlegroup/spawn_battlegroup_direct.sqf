@@ -38,14 +38,11 @@ if (_spawn_marker != "") then {
 	sleep 5;
 
 	{
-		if ( local _x ) then {
-			private _hc = [] call F_lessLoadedHC;
-			if (!isNull _hc) then {
-				_x setGroupOwner (owner _hc);
-				sleep 1;
-			};
+		private _hc = [] call F_lessLoadedHC;
+		if (!isNull _hc) then {
+			_x setGroupOwner (owner _hc);
+			sleep 1;
 		};
-		sleep 3;
 	} foreach _bg_groups;
 
 	stats_hostile_battlegroups = stats_hostile_battlegroups + 1;
