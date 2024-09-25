@@ -89,10 +89,10 @@ heavy_vehicles = [
 	["B_LSV_01_armed_F",5,100,10,GRLIB_perm_log],
 	["B_MRAP_01_hmg_F",5,100,12,GRLIB_perm_inf],
 	["B_MRAP_01_gmg_F",5,125,12,GRLIB_perm_log],
+	["B_APC_Wheeled_01_cannon_F",10,500,20,GRLIB_perm_tank],
+	["B_APC_Wheeled_03_cannon_F",10,500,20,GRLIB_perm_tank],
 	["B_APC_Tracked_01_rcws_F",10,500,20,GRLIB_perm_tank]
-	// ["B_APC_Wheeled_01_cannon_F",10,500,20,GRLIB_perm_log],
 	// ["B_APC_Tracked_01_AA_F",10,500,20,GRLIB_perm_tank],
-	// ["I_APC_Wheeled_03_cannon_F",10,500,20,GRLIB_perm_tank],
 	// ["B_MBT_01_cannon_F",15,1000,35,GRLIB_perm_tank],
 	// ["B_MBT_01_TUSK_F",15,1500,35,GRLIB_perm_air],
 	// ["B_AFV_Wheeled_01_cannon_F",15,3000,35,GRLIB_perm_max],
