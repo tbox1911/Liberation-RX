@@ -121,6 +121,7 @@ if (_unit == player) then {
 	// Get in Vehicle
 	_unit addEventHandler ["GetInMan", {
 		params ["_unit", "_role", "_vehicle"];
+		if (_vehicle isKindOf "ParachuteBase") exitWith {};
 		1 fadeSound (round desired_vehvolume / 100.0);
 		3 fadeMusic (getAudioOptionVolumes select 1);
 		NRE_EarplugsActive = 1;
