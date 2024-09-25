@@ -6,15 +6,15 @@ if (_count >= 1) then {
 	[_targetpos, _side, _count - 1] spawn spawn_air;
 };
 
-private _exit = false;
-if (_side == GRLIB_side_enemy) then {
-	private _pilots = (units GRLIB_side_friendly) select { (objectParent _x) isKindOf "Air" && (driver vehicle _x) == _x };
-	if (count _pilots == 0) then { _exit = true };
-};
-if (_exit) exitWith {};
-
 private _planeType = opfor_air;
 if (_side == GRLIB_side_friendly) then { _planeType = blufor_air };
+
+if (_side == GRLIB_side_enemy) then {
+	private _pilots = (units GRLIB_side_friendly) select { (objectParent _x) isKindOf "Air" && (driver vehicle _x) == _x };
+	if (count _pilots == 0) then {
+		_planeType = opfor_air select { _x isKindOf "Helicopter_Base_F" };
+	};
+};
 if (count _planeType == 0) exitWith {};
 
 private _grp = createGroup [_side, true];
