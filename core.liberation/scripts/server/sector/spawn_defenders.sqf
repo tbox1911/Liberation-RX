@@ -12,7 +12,7 @@ private _cost = round ((GRLIB_defense_costs select _defense_type) / (count _play
     };
 } forEach _players;
 
-private _msg = format ["Spawn Defenders on %1, Each players pays %2 Ammo.", ([_sector_pos] call F_getLocationName), _cost];
+private _msg = format ["Spawn level %1 Defenders on %2, Each players pays %3 Ammo.", _defense_type, ([_sector_pos] call F_getLocationName), _cost];
 [gamelogic, _msg] remoteExec ["globalChat", 0];
 diag_log _msg;
 
@@ -37,14 +37,15 @@ _grp setCombatBehaviour "COMBAT";
 
 if (!_fob) then {
     if (_defense_type == 3) then {
-        private _vehicleClass = [];
+        private _vehicles_typename = ["MRAP_01_base_F", "MRAP_02_base_F", "Wheeled_APC_F"];
+        private _vehicles_pool = [];
         {
-            if ((_x select 0) isKindOf "Wheeled_APC_F") then { _vehicleClass pushBack (_x select 0) };
-        } forEach (light_vehicles + heavy_vehicles);
+            if ([(_x select 0), _vehicles_typename] call F_itemIsInClass) then { _vehicles_pool pushBack (_x select 0) };
+        } forEach heavy_vehicles;
 
-        if (count _vehicleClass > 0) then {
+        if (count _vehicles_pool > 0) then {
             private _vehiclePos = _sector_pos findEmptyPosition [5, 120, "B_Heli_Transport_03_unarmed_F"];
-            _vehicle = [_vehiclePos, selectRandom _vehicleClass, 3, false, GRLIB_side_friendly] call F_libSpawnVehicle;
+            _vehicle = [_vehiclePos, selectRandom _vehicles_pool, 3, false, GRLIB_side_friendly] call F_libSpawnVehicle;
             _vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
             [(group driver _vehicle), _sector_pos] spawn defence_ai;
         };

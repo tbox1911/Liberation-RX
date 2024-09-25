@@ -17,7 +17,7 @@ if (_defense_type > 0) then {
 	_grp = _data select 0;
 };
 
-if ( _ownership == GRLIB_side_enemy ) then {
+if (_ownership == GRLIB_side_enemy) then {
 	private _sector_timer = GRLIB_vulnerability_timer + (5 * 60);
 	private _near_outpost = (_fob_pos in GRLIB_all_outposts);
 	private _activeplayers = 0;

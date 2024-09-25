@@ -37,13 +37,13 @@ if (_defense_type > 0 && !_defenders_cooldown) then {
 	_arsenal = _data select 2;
 };
 
-if ( _ownership == GRLIB_side_enemy ) then {
+if (_ownership == GRLIB_side_enemy) then {
 	private _sector_timer = GRLIB_vulnerability_timer;
 	if (_sector in sectors_bigtown) then {
 		_sector_timer = _sector_timer + (10 * 60);
 	};
 
-	[ _sector, 1, _sector_timer ] remoteExec ["remote_call_sector", 0];
+	[_sector, 1, _sector_timer] remoteExec ["remote_call_sector", 0];
 	sleep 10;
 	_sector_timer = round (time + _sector_timer);
 
