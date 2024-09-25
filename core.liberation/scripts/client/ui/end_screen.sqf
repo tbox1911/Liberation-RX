@@ -98,7 +98,7 @@ uiSleep _line_delay;
 uiSleep _line_delay;
 [ 695, format [ "%1 %2", localize "STR_STATS_17", stats_secondary_objectives ] ] call write_credit_line;
 uiSleep _line_delay;
-[ 696, format [ "%1 %2", localize "STR_STATS_18", stats_prisonners_captured ] ] call write_credit_line;
+[ 696, format [ "%1 %2", localize "STR_STATS_18", stats_prisoners_captured ] ] call write_credit_line;
 uiSleep _page_delay;
 ctrlSetText [ 691, "" ];
 ctrlSetText [ 692, "" ];

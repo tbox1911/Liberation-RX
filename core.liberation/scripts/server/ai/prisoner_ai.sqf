@@ -73,7 +73,7 @@ while {alive _unit && !_captured} do {
 			_unit setVariable ["GRLIB_is_prisoner", true, true];
 			_fleeing = true;
 			if (side group _unit == GRLIB_side_friendly) then {
-				private _text = format ["Alert! %1 prisonner %2 is escaping!", name _player, name _unit];
+				private _text = format ["Alert! %1 prisoner %2 is escaping!", name _player, name _unit];
 				[gamelogic, _text] remoteExec ["globalChat", 0];
 			};
 			_grp = createGroup [GRLIB_side_enemy, true];
@@ -103,8 +103,8 @@ if (alive _unit && _captured) then {
 	[_unit, "stop"] remoteExec ["remote_call_prisoner", 0];
 	sleep 3;
 	if (isServer) then {
-		[_unit, _leader, _friendly] spawn prisonner_captured;
+		[_unit, _leader, _friendly] spawn prisoner_captured;
 	} else {
-		[_unit, _leader, _friendly] remoteExec ["prisonner_captured", 2];
+		[_unit, _leader, _friendly] remoteExec ["prisoner_captured", 2];
 	};
 };

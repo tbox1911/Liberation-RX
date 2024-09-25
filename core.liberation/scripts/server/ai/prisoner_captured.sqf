@@ -8,8 +8,8 @@ if ( rank _unit == "COLONEL") then { _yield = 50 };
 
 resources_intel = resources_intel + _yield;
 publicVariable "resources_intel";
-stats_prisonners_captured = stats_prisonners_captured + 1;
-publicVariable "stats_prisonners_captured";
+stats_prisoners_captured = stats_prisoners_captured + 1;
+publicVariable "stats_prisoners_captured";
 
 [0, _friendly] remoteExec ["remote_call_intel", 0];
 

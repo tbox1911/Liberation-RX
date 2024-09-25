@@ -181,7 +181,7 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
 	_stats pushback stats_saves_performed;
 	_stats pushback stats_saves_loaded;
 	_stats pushback stats_reinforcements_called;
-	_stats pushback stats_prisonners_captured;
+	_stats pushback stats_prisoners_captured;
 	_stats pushback stats_blufor_teamkills;
 	_stats pushback stats_vehicles_recycled;
 	_stats pushback stats_ammo_spent;

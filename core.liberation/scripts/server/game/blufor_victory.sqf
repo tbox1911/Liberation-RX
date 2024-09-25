@@ -29,7 +29,7 @@ publicstats pushback stats_ieds_detonated;
 publicstats pushback stats_saves_performed;
 publicstats pushback stats_saves_loaded;
 publicstats pushback stats_reinforcements_called;
-publicstats pushback stats_prisonners_captured;
+publicstats pushback stats_prisoners_captured;
 publicstats pushback stats_blufor_teamkills;
 publicstats pushback stats_vehicles_recycled;
 publicstats pushback stats_ammo_spent;
