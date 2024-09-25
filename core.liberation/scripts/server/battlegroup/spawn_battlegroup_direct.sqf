@@ -16,7 +16,7 @@ if (_spawn_marker != "") then {
 	private _selected_opfor_battlegroup = [];
 	private _target_size = GRLIB_battlegroup_size;
 
-	for "_i" from 1 to _target_size do {
+	for "_i" from 0 to _target_size do {
 		_selected_opfor_battlegroup pushback (selectRandom _vehicle_pool);
 	};
 
@@ -43,6 +43,7 @@ if (_spawn_marker != "") then {
 			_x setGroupOwner (owner _hc);
 			sleep 1;
 		};
+		sleep 3;
 	} foreach _bg_groups;
 
 	stats_hostile_battlegroups = stats_hostile_battlegroups + 1;

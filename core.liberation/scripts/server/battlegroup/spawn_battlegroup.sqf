@@ -22,6 +22,7 @@ if ( isNil "_liberated_sector" ) then {
 
 if (_objective_pos isEqualTo zeropos) exitWith { diag_log format ["BattlegGroup could not find accessible Objective from %1.", _spawn_marker] };
 
+private _bg_groups = [];
 private _vehicle_pool = opfor_battlegroup_vehicles;
 if ( combat_readiness < 50 ) then {	_vehicle_pool = opfor_battlegroup_vehicles_low_intensity };
 
@@ -33,11 +34,10 @@ if (_spawn_marker != "") then {
 	if ( _target_size > 8 && GRLIB_csat_aggressivity < 2 ) then { _target_size = 8 };
 	if ( _target_size < 2 ) then { _target_size = 2 };
 
-	diag_log format ["Spawn BattlegGroup objective %1 size %2 at %3", _objective_pos, _target_size, time];
 	[markerPos _spawn_marker] remoteExec ["remote_call_battlegroup", 0];
 
 	private ["_nextgrp", "_vehicle", "_vehicle_class"];
-	for "_i" from 1 to _target_size do {
+	for "_i" from 0 to _target_size do {
 		_vehicle_class = selectRandom _vehicle_pool;
 		_vehicle = [markerpos _spawn_marker, _vehicle_class] call F_libSpawnVehicle;
 		_vehicle setVariable ["GRLIB_counter_TTL", round(time + 3600)];  // 60 minutes TTL
@@ -52,12 +52,13 @@ if (_spawn_marker != "") then {
 		} else {
 			[_nextgrp, _objective_pos] spawn battlegroup_ai;
 		};
+		_bg_groups pushback _nextgrp;
 		sleep 10;
 	};
 
-	private _nb_squad = 1;
-	if (combat_readiness > 80) then { _nb_squad = 2 };
-	for "_i" from 1 to _nb_squad do {
+	private _nb_squad = round ((2 * GRLIB_csat_aggressivity) * (1+(combat_readiness / 100)));
+	if ( _nb_squad > 4 ) then { _nb_squad = 4 };
+	for "_i" from 0 to _nb_squad do {
 		if (floor random 2 == 0) then {
 			_nextgrp = [_spawn_marker, "csat", ([] call F_getAdaptiveSquadComp)] call F_spawnRegularSquad;
 			[_nextgrp, _objective_pos] spawn battlegroup_ai;
@@ -69,6 +70,7 @@ if (_spawn_marker != "") then {
 			[_objective_pos] spawn send_paratroopers;
 		};
 		_target_size = _target_size + 1;
+		_bg_groups pushback _nextgrp;
 		sleep 10;
 	};
 
@@ -81,8 +83,18 @@ if (_spawn_marker != "") then {
 			sleep 15;
 			[_objective_pos] spawn send_paratroopers;
 		};
-		_target_size = _target_size + 4;
+		_target_size = _target_size + 3;
 	};
+
+
+	{
+		private _hc = [] call F_lessLoadedHC;
+		if (!isNull _hc) then {
+			_x setGroupOwner (owner _hc);
+			sleep 1;
+		};
+		sleep 3;
+	} foreach _bg_groups;
 
 	combat_readiness = combat_readiness - (10 + (_target_size * 1.75));
 	stats_hostile_battlegroups = stats_hostile_battlegroups + 1;
