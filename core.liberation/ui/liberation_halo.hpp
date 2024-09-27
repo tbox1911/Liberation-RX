@@ -42,6 +42,7 @@ class liberation_halo {
 		style = ST_FRAME;
 	};
 	class Header : StdHeader{
+		idc = 201;
 		x = 0.2 * safezoneW + safezoneX - (BORDERSIZE);
 		y = 0.14 * safezoneH + safezoneY;
 		w = 0.6 * safezoneW + ( 2 * BORDERSIZE);
@@ -59,7 +60,6 @@ class liberation_halo {
 		action = "dojump = 1;";
 	};
 	class CancelButton : StdButton{
-		idc = 202;
 		x = (0.51 * safezoneW + safezoneX);
 		y = (0.8 * safezoneH + safezoneY);
 		w = (0.1 * safezoneW);

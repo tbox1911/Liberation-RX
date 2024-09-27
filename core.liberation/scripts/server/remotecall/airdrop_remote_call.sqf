@@ -18,6 +18,7 @@ if (isNil "_forced_pos") then {
 };
 
 [gamelogic, _text] remoteExec ["globalChat", 0];
+
 _pos set [2, 500];	// launch altitude
 if (surfaceIsWater _pos) then { _pos = ATLtoASL _pos };
 while { _vehicle distance _pos > 100 } do {

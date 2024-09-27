@@ -8253,14 +8253,7 @@
 			<Czech>Je nám líto, ale taxi nemůže na tomto místě přistát.</Czech>
 		</Key>
 		<Key ID="STR_TAXI_SELECT">
-			<Original>Select your destination.</Original>
-			<Russian>Выберите точку назначения.</Russian>
-			<French>Choisissez votre destination.</French>
-			<Chinesesimp>选择目的地.</Chinesesimp>
-			<Chinese>選擇目的地.</Chinese>
-			<Japanese>目的地を設定してください。</Japanese>
-			<Portuguese>Selecione seu destino.</Portuguese>
-			<Czech>Vyberte cíl.</Czech>
+			<Original>Taxi Destination</Original>
 		</Key>
 		<Key ID="STR_TAXI_LANDING">
 			<Original>The Taxi lands...</Original>

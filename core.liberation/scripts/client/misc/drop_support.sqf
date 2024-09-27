@@ -84,18 +84,24 @@ if (do_action == 1) then {
 		halo_position = getPosATL player;
 
 		"spawn_marker" setMarkerTextLocal (localize "STR_HALO_PARAM_ARTY");
+		ctrlSetText [201, toUpper (localize "STR_HALO_PARAM_ARTY")];
 		ctrlSetText [202, (localize "STR_HALO_PARAM_ARTY")];
-		[ "halo_map_event", "onMapSingleClick", { halo_position = _pos } ] call BIS_fnc_addStackedEventHandler;
+
+		onMapSingleClick {
+			halo_position = _pos;
+			true;
+		};
 
 		while { dialog && alive player && dojump == 0 } do {
 			"spawn_marker" setMarkerPosLocal halo_position;
 			sleep 0.2;
 		};
+
+		onMapSingleClick "";
 		closeDialog 0;
 
 		"spawn_marker" setMarkerPosLocal markers_reset;
 		"spawn_marker" setMarkerTextLocal "";
-		[ "halo_map_event", "onMapSingleClick" ] call BIS_fnc_removeStackedEventHandler;
 
 		if ( dojump > 0) then {
 			private _sector = [300, halo_position ] call F_getNearestSector;
