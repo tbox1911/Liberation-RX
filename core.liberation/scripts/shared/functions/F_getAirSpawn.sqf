@@ -14,4 +14,5 @@ private ["_spawn_pos", "_countblufor"];
     if (_countblufor == 0) exitWith {};
 } foreach _spawn_sectors;
 
+if (isNil "_spawn_pos") then { _spawn_pos = [] };
 _spawn_pos;

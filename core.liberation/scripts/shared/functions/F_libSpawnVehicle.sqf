@@ -10,35 +10,37 @@ params [
 if (isNil "_sectorpos" || isNil "_classname") exitWith {objNull};
 
 private _vehicle = objNull;
-private _spawnpos = [];
+private _spawn_pos = [];
 private _airveh_alt = 300;
 
 if ( _classname isKindOf "Air" ) then {
-	_spawnpos = [_sectorpos] call F_getAirSpawn;
-	if ( _classname isKindOf "Plane" ) then { _airveh_alt = 800 };
-	if ( GRLIB_SOG_enabled ) then { _airveh_alt = 150 };
-	if ( _side == GRLIB_side_civilian ) then { _airveh_alt = 150 };
-	_spawnpos = _spawnpos getPos [floor random 300, random 360];
-	_spawnpos set [2, (_airveh_alt + floor random 100)];
-	_vehicle = createVehicle [_classname, _spawnpos, [], 50, "FLY"];
-	_vehicle allowDamage false;
-	_vehicle setDir (_vehicle getDir _sectorpos);
-	_vehicle setPosATL _spawnpos;
-	_vehicle setVelocityModelSpace [0, 80, 0];
+	_spawn_pos = [_sectorpos] call F_getAirSpawn;
+	if (count _spawn_pos > 0) then {
+		if ( _classname isKindOf "Plane" ) then { _airveh_alt = 800 };
+		if ( GRLIB_SOG_enabled ) then { _airveh_alt = 150 };
+		if ( _side == GRLIB_side_civilian ) then { _airveh_alt = 150 };
+		_spawn_pos = _spawn_pos getPos [floor random 300, random 360];
+		_spawn_pos set [2, (_airveh_alt + floor random 100)];
+		_vehicle = createVehicle [_classname, _spawn_pos, [], 50, "FLY"];
+		_vehicle allowDamage false;
+		_vehicle setDir (_vehicle getDir _sectorpos);
+		_vehicle setPosATL _spawn_pos;
+		_vehicle setVelocityModelSpace [0, 80, 0];
+	};
 } else {
 	if ( _size == 0 ) then {
-		_spawnpos = _sectorpos;
+		_spawn_pos = _sectorpos;
 	} else {
-		_spawnpos = [_sectorpos, _size, true] call F_findSafePlace;
+		_spawn_pos = [_sectorpos, _size, true] call F_findSafePlace;
 	};
 
-	if ( count _spawnpos == 0 ) exitWith {
+	if ( count _spawn_pos == 0 ) exitWith {
 		diag_log format ["--- LRX Error: Cannot find place to build vehicle %1 at position %2", _classname, _sectorpos];
 		objNull;
 	};
 
 	if (_classname isKindOf "LandVehicle") then {
-		if (surfaceIsWater _spawnpos && !(_classname isKindOf "Ship")) then {
+		if (surfaceIsWater _spawn_pos && !(_classname isKindOf "Ship")) then {
 			_classname = "";
 			if (count opfor_boats >= 1 && _side == GRLIB_side_enemy) then {
 				_classname = selectRandom opfor_boats;
@@ -53,15 +55,15 @@ if ( _classname isKindOf "Air" ) then {
 	};
 
 	if (_classname != "") then {
-		private _obstacle = (nearestObjects [_spawnpos, ["All"], 4, true]);
+		private _obstacle = (nearestObjects [_spawn_pos, ["All"], 4, true]);
 		if (count _obstacle == 0) then {
 			_vehicle = createVehicle [_classname, zeropos, [], 0, "NONE"];
 			_vehicle allowDamage false;
-			_spawnpos set [2, 0.5];
-			if (surfaceIsWater _spawnpos) then {
-				_vehicle setPosASL _spawnpos;
+			_spawn_pos set [2, 0.5];
+			if (surfaceIsWater _spawn_pos) then {
+				_vehicle setPosASL _spawn_pos;
 			} else {
-				_vehicle setPosATL _spawnpos;
+				_vehicle setPosATL _spawn_pos;
 			};
 			_vehicle setVariable ["R3F_LOG_disabled", true, true];
 		};
@@ -156,7 +158,7 @@ if ( _side == GRLIB_side_enemy ) then {
 	sleep 4;
 	_vehicle setDamage 0;
 	_vehicle allowDamage true;
-	{ 
+	{
 		_x setDamage 0;
 		_x allowDamage true
 	} forEach (crew _vehicle);
