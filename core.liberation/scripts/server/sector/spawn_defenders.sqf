@@ -17,14 +17,19 @@ private _msg = format ["Spawn level %1 Defenders on %2, Each players pays %3 Amm
 diag_log _msg;
 
 private _squad_type = blufor_squad_inf_light;
+private _nb_unit = 5;
 if (_defense_type == 2) then {
 	_squad_type = blufor_squad_inf;
+    _nb_unit = 8;
 };
 if (_defense_type == 3) then {
 	_squad_type = blufor_squad_mix;
+    _nb_unit = 12;
 };
 
-_grp = [_sector_pos, _squad_type, GRLIB_side_friendly, "defender"] call F_libSpawnUnits;
+private _defenders_pool = [];
+for "_i" from 0 to _nb_unit do { _defenders_pool pushBack (selectRandom _squad_type) };
+_grp = [_sector_pos, _defenders_pool, GRLIB_side_friendly, "defender"] call F_libSpawnUnits;
 _grp setCombatMode "RED";
 _grp setCombatBehaviour "COMBAT";
 {
