@@ -23,7 +23,7 @@ HALV_attachTarupods = {
 	_heli = _this select 0;
 	_action = _this select 2;
 	_pod = _this select 3;
-	if !(isTouchingGround _heli)exitWith{titleText ["Need to be touching ground to attach a pod ...","PLAIN DOWN"];};
+	if (round (getPos _heli select 2) > 1) exitWith { titleText ["Need to be touching ground to attach a pod ...","PLAIN DOWN"] };
 	_heli removeAction _action;
 	playSound3D ["A3\Sounds_F\vehicles\air\Heli_Transport_01\gear_up_IN.wss", player];
 	playSound3D ["A3\Sounds_F\vehicles\air\Heli_Transport_01\gear_up_OUT.wss", player];

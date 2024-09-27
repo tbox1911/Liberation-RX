@@ -27,8 +27,7 @@ if (getPos _unit select 2 >= 50) then {
 	if (!isNil "_backpack_save") then {
 		[_unit, _backpack_save] spawn {
 			params ["_unit", "_backpack"];
-			waituntil {sleep 2; (!alive _unit) || (isTouchingGround _unit)};
-			if (!alive _unit) exitWith {};
+			waitUntil { sleep 1; (round (getPos _unit select 2) <= 0) };
 			removeBackpack _unit;
 			_unit addBackpack _backpack;
 			clearAllItemsFromBackpack _unit;
@@ -37,9 +36,9 @@ if (getPos _unit select 2 >= 50) then {
 				{_unit addItemToBackpack _x} foreach _backpack_content;
 			};
 			_unit setVariable ["GRLIB_para_backpack", nil];
-			_unit setVariable ["GRLIB_para_backpack_contents", nil];	
+			_unit setVariable ["GRLIB_para_backpack_contents", nil];
 		};
-	};	
+	};
 };
 
 if (_unit_side == GRLIB_side_enemy) then { sleep 3; _unit allowDamage true };

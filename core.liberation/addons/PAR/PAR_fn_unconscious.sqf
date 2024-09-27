@@ -39,7 +39,7 @@ _unit playMoveNow "AinjPpneMstpSnonWrflDnon_rolltoback";
 sleep 5;
 
 if (!alive _unit) exitWith {};
-waituntil {sleep 0.5; (isTouchingGround (vehicle _unit) || (round (getPos _unit select 2) <= 1))};
+waituntil { sleep 1; (round (getPos _unit select 2) <= 0) };
 
 private _bld = [_unit] call PAR_spawn_blood;
 private _cnt = 0;

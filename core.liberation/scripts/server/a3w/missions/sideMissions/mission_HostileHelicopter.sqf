@@ -67,7 +67,7 @@ _successExec = {
 	// Mission completed
 	[_vehicle] spawn {
 		params ["_veh"];
-		waitUntil {	sleep 1; (isTouchingGround _veh || (getPosATL _veh) select 2 < 5) };
+		waitUntil {	sleep 1; (round (getPos _veh select 2) <= 0) };
 		sleep 2;
 		private _sea_deep = round ((getPosATL _veh select 2) - (getPosASL _veh select 2));
 		if (_sea_deep <= 20) then {

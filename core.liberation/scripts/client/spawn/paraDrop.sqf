@@ -15,9 +15,7 @@ sleep 3;
 _unit allowDamage true;
 halojumping = false;
 
-while {!isTouchingGround _unit} do {
-	sleep 1;
-};
+waitUntil { sleep 1; (round (getPos _unit select 2) <= 0) };
 
 if ( _backpack != "" && _backpack != "B_Parachute" ) then {
 	_unit addBackpack _backpack;

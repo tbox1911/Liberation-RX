@@ -6,7 +6,6 @@ params ["_unit"];
 if (!alive _unit) exitWith {};
 if (!isNull objectParent _unit) exitWith {};
 if (speed vehicle _unit > 1) exitWith {};
-//if (!isTouchingGround (vehicle _unit)) exitWith {};
 if (_unit getVariable ["GRLIB_in_building", false]) exitWith {};
 
 private _spawnpos = getPosATL _unit;

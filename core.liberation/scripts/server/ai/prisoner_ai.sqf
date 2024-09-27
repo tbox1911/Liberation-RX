@@ -54,7 +54,7 @@ private _timeout = time + (30 * 60);
 
 while { alive _unit && !_captured } do {
 	// Captured
-	if ([_unit, "FOB", 30] call F_check_near && isTouchingGround (vehicle _unit) && round (speed vehicle _unit) == 0) then {
+	if ([_unit, "FOB", 30] call F_check_near && (round (getPos _unit select 2) <= 0) && (round (speed vehicle _unit) == 0)) then {
 		_unit setVariable ["GRLIB_can_speak", false, true];
 		_captured = true;
 	};
@@ -96,7 +96,7 @@ while { alive _unit && !_captured } do {
 		};
 	};
 
-	sleep 3;
+	sleep (3 + floor random 4);
 };
 
 if (alive _unit && _captured) then {
