@@ -1,4 +1,3 @@
-if (!isServer) exitWith {};
 params ["_pos"];
 
 {

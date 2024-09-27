@@ -1,4 +1,3 @@
-if (!isServer) exitWith {};
 params ["_pos", "_nbMines", ["_radius", 150]];
 
 [_pos] call clearlandmines;
