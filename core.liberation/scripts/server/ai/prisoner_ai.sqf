@@ -6,7 +6,7 @@ if (_unit getVariable ["GRLIB_mission_AI", false]) exitWith {};
 if (_unit getVariable ["GRLIB_is_prisoner", false]) exitWith {};
 if (surfaceIsWater (getPosATL _unit)) exitWith {};
 if (_unit skill "courage" == 1) exitWith {};
-if (!local _unit) exitWith { [_unit, _friendly, _canmove] remoteExec ["prisoner_ai", owner _unit] };
+if (!isDedicated && !hasInterface && isMultiplayer) exitWith { [_unit, _friendly, _canmove] remoteExec ["prisoner_ai", 2] };
 
 sleep 10;
 if (!alive _unit) exitWith {};
@@ -47,7 +47,6 @@ if (!_canmove) then {
 	_unit setVariable ["GRLIB_is_prisoner", true, true];
 };
 
-private ["_no_blufor_near", "_player", "_player_in_action", "_waypoint", "_nearest_sector"];
 private _fleeing = false;
 private _captured = false;
 private _timeout = time + (30 * 60);
@@ -67,9 +66,10 @@ while { alive _unit && !_captured } do {
 	if (!_captured) then {
 		// Flee
 		if (!_friendly && !_fleeing) then {
-			_no_blufor_near = ({ (alive _x) && !(captive _x) && (_unit distance2D _x <= 100) } count (units GRLIB_side_friendly) == 0);
-			_player = _unit getVariable ["GRLIB_prisoner_owner", objNull];
-			_player_in_action = _player getVariable ["GRLIB_action_inuse", false];
+			private _blufor = (units GRLIB_side_friendly) select { (alive _x) && !(captive _x) && (_x getVariable ["PAR_Grp_ID", ""] != "") };
+			private _no_blufor_near = ({ (_x distance2D _unit) <= 100 } count _blufor == 0);
+			private _player = _unit getVariable ["GRLIB_prisoner_owner", objNull];
+			private _player_in_action = _player getVariable ["GRLIB_action_inuse", false];
 
 			if (_no_blufor_near && !_player_in_action) then {
 				_unit setVariable ["GRLIB_is_prisoner", true, true];
@@ -82,11 +82,7 @@ while { alive _unit && !_captured } do {
 				[_unit] joinSilent _grp;
 				[_unit, "flee"] remoteExec ["remote_call_prisoner", 0];
 				sleep 3;
-				if (isServer) then {
-					[_unit] spawn escape_ai;
-				} else {
-					[_unit] remoteExec ["escape_ai", 2];
-				};
+				[_unit] spawn escape_ai;
 			};
 		};
 
@@ -108,9 +104,5 @@ if (alive _unit && _captured) then {
 	sleep 1;
 	[_unit, "stop"] remoteExec ["remote_call_prisoner", 0];
 	sleep 3;
-	if (isServer) then {
-		[_unit, _leader, _friendly] spawn prisoner_captured;
-	} else {
-		[_unit, _leader, _friendly] remoteExec ["prisoner_captured", 2];
-	};
+	[_unit, _leader, _friendly] spawn prisoner_captured;
 };
