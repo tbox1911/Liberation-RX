@@ -7,8 +7,8 @@ while {true} do {
     {
         _unit = _x;
         _vehicle = objectParent _unit;
-        _unmanaged = isNil { _vehicle getVariable "GREUH_vehicle_fuel_managed" };
-        if (local _vehicle && !(isNull _vehicle) &&_unmanaged && _unit == driver _vehicle) then {
+        _unmanaged = isNil {_vehicle getVariable "GREUH_vehicle_fuel_managed"};
+        if (local _vehicle && !(isNull _vehicle) && _unmanaged && _unit == driver _vehicle) then {
             [_unit, _vehicle] spawn vehicle_fuel;
         };
         sleep 0.5;
