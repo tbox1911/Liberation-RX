@@ -12,6 +12,9 @@ _lst_a3 pushBack [(headgear _unit), 1];
 // hmd
 _lst_a3 pushBack [(hmd _unit), 1];
 
+// goggles 
+_lst_a3 pushBack [(goggles _unit), 1];
+
 // items
 //{_lst_a3 pushBack [_x, 1]} forEach (assignedItems _unit - [binocular _unit]);
 
