@@ -3463,8 +3463,8 @@
 			<Czech>Vezmi</Czech>
 		</Key>
 		<Key ID="STR_INTEL_NOTHING">
-			<Original>You can't find anything...</Original>
-			<French>Vous ne trouvez rien...</French>
+			<Original>You found nothing...</Original>
+			<French>Vous n'avez rien trouvé...</French>
 		</Key>
 		<Key ID="STR_INTEL_FOUND">
 			<Original>%1 find Intels!\nBonus Score +%2 XP\n+%3 Intels</Original>
