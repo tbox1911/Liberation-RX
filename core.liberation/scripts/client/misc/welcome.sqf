@@ -23,7 +23,7 @@ private _my_uavs = allUnitsUAV select { [player, _x] call is_owner };
 
 // HCI Command IA
 hcRemoveAllGroups player;
-if (player == ([] call F_getCommander)) then {
+if ([player] call F_getCommander) then {
 	private _my_veh = vehicles select {
 		(_x getVariable ["GRLIB_vehicle_manned", false]) &&
 		count (crew _x) > 0 &&

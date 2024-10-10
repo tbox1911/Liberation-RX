@@ -28,7 +28,7 @@ private _iscommandant = false;
 if ( _rank in ["Colonel", "Super Colonel"] ) then {	_iscommandant = true };
 
 private _iscommander = false;
-if ( player == ([] call F_getCommander) ) then { _iscommander = true };
+if ([player] call F_getCommander) then { _iscommander = true };
 
 ctrlSetText [1011, format ["%1 - %2", _title, _rank]];
 ctrlShow [ 108, _iscommandant ];

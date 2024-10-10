@@ -97,13 +97,13 @@ GRLIB_nametag_units = [];
 			if (_nextunit getVariable ["PAR_isUnconscious", false]) then {
 				_drawicon = wounded_icon;
 			} else {
-				if ( _nextunit == [] call F_getCommander ) then {
+				if ([_nextunit] call F_getCommander) then {
 					_drawicon = commander_icon;
 				} else {
-					if ( _nextunit == (leader group _nextunit) && (count (units group _nextunit) > 1 ) ) then {
+					if (_nextunit == (leader group _nextunit) && (count (units group _nextunit) > 1)) then {
 						_drawicon = group_leader_icon;
 					} else {
-						if ( ( isFormationLeader _nextunit ) && ( count formationMembers _nextunit > 1 ) ) then {
+						if ((isFormationLeader _nextunit ) && ( count formationMembers _nextunit > 1)) then {
 							_drawicon = formation_leader_icon;
 						};
 					};

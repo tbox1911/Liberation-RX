@@ -4,7 +4,8 @@ sleep 37;
 private [ "_blufor_ai_groups", "_localgroup", "_is_ai_only", "_commander" ];
 
 while { GRLIB_endgame == 0 } do {
-	_commander = [] call F_getCommander;
+	_commander = objNull;
+	{ if (typeOf _x == commander_classname) exitWith { _commander = _x } } foreach allPlayers;
 
 	if ( !(isNull _commander) ) then {
 		_blufor_ai_groups = [];

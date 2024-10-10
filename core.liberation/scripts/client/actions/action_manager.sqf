@@ -13,7 +13,7 @@ while { true } do {
 		GRLIB_player_nearest_fob = ([] call F_getNearestFob);
 		GRLIB_player_fobdistance = (player distance2D GRLIB_player_nearest_fob);
 		GRLIB_player_near_outpost = [player, "OUTPOST", GRLIB_fob_range] call F_check_near;
-		GRLIB_player_admin = (player == ([] call F_getCommander) || [] call is_admin);
+		GRLIB_player_admin = ([player] call F_getCommander || [] call is_admin);
 		_near_spawn = [player, "SPAWNV", GRLIB_ActionDist_10] call F_check_near;
 		_near_spawnt = [player, "SPAWNT", GRLIB_ActionDist_5] call F_check_near;
 		GRLIB_player_near_fob = (GRLIB_player_fobdistance < GRLIB_fob_range);
