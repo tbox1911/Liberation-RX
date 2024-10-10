@@ -235,6 +235,8 @@
 		<Key ID="STR_MODE">
 			<Original>-- Follow terrain</Original>
 			<French>-- Suivre relief</French>
+			<Chinesesimp>-- 跟随地形</Chinesesimp>
+			<Chinese>-- 跟随地形</Chinese>
 		</Key>
 		<Key ID="STR_CANCEL">
 			<Original>-- Cancel</Original>
@@ -311,14 +313,20 @@
 		<Key ID="STR_ARSENAL_UNPACK">
 			<Original>-- ARSENAL UNPACK</Original>
 			<French>-- ARSENAL UNPACK</French>
+			<Chinesesimp>-- 武器库解包</Chinesesimp>
+			<Chinese>-- 武器库解包</Chinese>
 		</Key>
 		<Key ID="STR_INVENTORY_UNPACK">
 			<Original>-- INVENTORY UNPACK</Original>
 			<French>-- INVENTAIRE UNPACK</French>
+			<Chinesesimp>-- 库存解压</Chinesesimp>
+			<Chinese>-- 库存解压</Chinese>
 		</Key>
 		<Key ID="STR_ARSENAL_PICKUP">
 			<Original>-- PICK UP GROUND WEAPONS</Original>
 			<French>-- RAMASSER ARMES AU SOL</French>
+			<Chinesesimp>-- 拾取地面武器</Chinesesimp>
+			<Chinese>-- 拾取地面武器</Chinese>
 		</Key>
 		<Key ID="STR_ACTION_LOAD_BOX">
 			<Original>-- LOAD</Original>
@@ -347,6 +355,8 @@
 		<Key ID="STR_ACTION_UNLOAD_ONE_BOX">
 			<Original>-- UNLOAD LAST ONE</Original>
 			<French>-- DECHARGER LE DERNIER</French>
+			<Chinesesimp>-- 卸载最后一个</Chinesesimp>
+			<Chinese>-- 卸载最后一个</Chinese>
 		</Key>
 		<Key ID="STR_BOX_LOADED">
 			<Original>%1 successfully loaded on the transport vehicle.</Original>
@@ -387,6 +397,8 @@
 		<Key ID="STR_BOX_CANTUNLOAD">
 			<Original>Unable to unload, the location is not free.</Original>
 			<French>Impossible de décharger, l'emplacement n'est pas libre.</French>
+			<Chinesesimp>无法卸货，没有空间。</Chinesesimp>
+			<Chinese>无法卸货，没有空间。</Chinese>
 		</Key>
 		<Key ID="STR_FOB_ACTION">
 			<Original>-- DEPLOY FOB</Original>
@@ -451,6 +463,8 @@
 		<Key ID="STR_BUILD_ERROR_WATER_DEEP">
 			<Original>Not enough depth!\nActual: %1m\nNeeded: %2m</Original>
 			<French>Pas assez de profondeur!\nActuel: %1m\nMinimum: %2m</French>
+			<Chinesesimp>深度不够！\n实际：%1米\n需要：%2米</Chinesesimp>
+			<Chinese>深度不够！\n实际：%1米\n需要：%2米</Chinese>
 		</Key>
 		<Key ID="STR_BUILD_ERROR_DISTANCE">
 			<Original>Can't build further than %1 meters away from the FOB.</Original>
@@ -503,6 +517,8 @@
 		<Key ID="STR_FOBBOAT">
 			<Original>FOB Boat</Original>
 			<French>Bateau FOB</French>
+			<Chinesesimp>FOB船只</Chinesesimp>
+			<Chinese>FOB船只</Chinese>
 		</Key>
 		<Key ID="STR_RESPAWN_TRUCK">
 			<Original>Mobile Respawn</Original>
@@ -687,6 +703,8 @@
 		<Key ID="STR_WIPE_TITLE_3">
 			<Original>Reset Mission Parameters</Original>
 			<French>RAZ des paramètres de la mission</French>
+			<Chinesesimp>重置任务参数</Chinesesimp>
+			<Chinese>重置任务参数</Chinese>
 		</Key>
 		<Key ID="STR_WIPE_NO">
 			<Original>No</Original>
@@ -931,10 +949,14 @@
 		<Key ID="STR_NOTIFICATION_SECTORBUILD_TITLE">
 			<Original>CIVIL BUILDING LOSS</Original>
 			<French>PERTE BATIMENT CIVIL</French>
+			<Chinesesimp>民用建筑损失</Chinesesimp>
+			<Chinese>民用建筑损失</Chinese>
 		</Key>
 		<Key ID="STR_NOTIFICATION_SECTORBUILD_TEXT">
 			<Original>%1 Civilian building destroyed.&lt;br/&gt;Our reputation is declining...</Original>
 			<French>%1 Bâtiment civil détruit.&lt;br/&gt;Notre réputation est en baisse...</French>
+			<Chinesesimp>%1 的民用建筑被毁。&lt;br/&gt;我们的声誉正在下降……</Chinesesimp>
+			<Chinese>%1 的民用建筑被毁。&lt;br/&gt;我们的声誉正在下降……</Chinese>
 		</Key>
 		<Key ID="STR_NOTIFICATION_FOBBUILT_TITLE">
 			<Original>NEW %1 BUILT</Original>
@@ -1032,18 +1054,26 @@
 		<Key ID="STR_NOTIFICATION_FOBREPACK_TITLE">
 			<Original>%1 FOLDED</Original>
 			<French>%1 REPLIÉ</French>
+			<Chinesesimp>%1 已折叠</Chinesesimp>
+			<Chinese>%1 已折叠</Chinese>
 		</Key>
 		<Key ID="STR_NOTIFICATION_FOBREPACK_TEXT">
 			<Original>%1 %2&lt;br/&gt;has been folded!</Original>
 			<French>%1 %2&lt;br/&gt;a été repliée !</French>
+			<Chinesesimp>%1 %2&lt;br/&gt;已被折叠！</Chinesesimp>
+			<Chinese>%1 %2&lt;br/&gt;已被折叠！</Chinese>
 		</Key>
 		<Key ID="STR_NOTIFICATION_FOBUPGRADE_TITLE">
 			<Original>%1 UPGRADED</Original>
 			<French>%1 AMÉLIORÉ</French>
+			<Chinesesimp>%1 已升级</Chinesesimp>
+			<Chinese>%1 已升级</Chinese>
 		</Key>
 		<Key ID="STR_NOTIFICATION_FOBUPGRADE_TEXT">
 			<Original>%1 %2&lt;br/&gt;has been upgraded!</Original>
 			<French>%1 %2&lt;br/&gt;a été amélioré !</French>
+			<Chinesesimp>%1 %2&lt;br/&gt;已升级！</Chinesesimp>
+			<Chinese>%1 %2&lt;br/&gt;已升级！</Chinese>
 		</Key>
 		<Key ID="STR_NOTIFICATION_BATTLEGROUP_TITLE">
 			<Original>HOSTILE FORCES INCOMING</Original>
@@ -1108,6 +1138,8 @@
 		<Key ID="STR_NOTIFICATION_PRISONER_FRIENDLY_TEXT">
 			<Original>We freed an Allied prisoner.</Original>
 			<French>Nous avons liberé un prisonnier Allié.</French>
+			<Chinesesimp>我们释放了一名友军战俘</Chinesesimp>
+			<Chinese>我们释放了一名友军战俘</Chinese>
 		</Key>
 		<Key ID="STR_NOTIFICATION_DOCUMENT_TEXT">
 			<Original>We have found secret documents.</Original>
@@ -1646,38 +1678,56 @@
 		<Key ID="STR_PARAMS_BUILDING_RATIO">
 			<Original>AI in Buildings (multiplier)</Original>
 			<French>IA dans les batiments (multiplicateur)</French>
+			<Chinesesimp>建筑中的AI（倍数）</Chinesesimp>
+			<Chinese>建筑中的AI（倍数）</Chinese>
 		</Key>
 		<Key ID="STR_VICTORY_CONDITION">
 			<Original>Victory Condition</Original>
 			<French>Condition de Victoire</French>
+			<Chinesesimp>胜利条件</Chinesesimp>
+			<Chinese>胜利条件</Chinese>
 		</Key>
 		<Key ID="STR_VICTORY_COND0">
 			<Original>All Sectors captured</Original>
 			<French>Tous les Secteurs capturés</French>
+			<Chinesesimp>占领所有区域</Chinesesimp>
+			<Chinese>占领所有区域</Chinese>
 		</Key>
 		<Key ID="STR_VICTORY_COND1">
 			<Original>80% Sectors captured</Original>
 			<French>80% des Secteurs capturés</French>
+			<Chinesesimp>占领80%区域</Chinesesimp>
+			<Chinese>占领80%区域</Chinese>
 		</Key>
 		<Key ID="STR_VICTORY_COND2">
 			<Original>All Radio Towers captured</Original>
 			<French>Toutes les Tours Radio capturés</French>
+			<Chinesesimp>占领所有信号塔</Chinesesimp>
+			<Chinese>占领所有信号塔</Chinese>
 		</Key>
 		<Key ID="STR_VICTORY_COND3">
 			<Original>All Military Sectors captured</Original>
 			<French>Tout les Secteurs Militaire capturés</French>
+			<Chinesesimp>占领所有军事区</Chinesesimp>
+			<Chinese>占领所有军事区</Chinese>
 		</Key>
 		<Key ID="STR_VICTORY_COND4">
 			<Original>All Big Cities captured</Original>
 			<French>Toutes les Grandes Villes capturées</French>
+			<Chinesesimp>所有大城市被占领</Chinesesimp>
+			<Chinese>所有大城市被占领</Chinese>
 		</Key>
 		<Key ID="STR_VICTORY_COND5">
 			<Original>2500 Intel points</Original>
 			<French>2500 points d'Intel</French>
+			<Chinesesimp>获取2500 情报点数</Chinesesimp>
+			<Chinese>获取2500 情报点数</Chinese>
 		</Key>
 		<Key ID="STR_VICTORY_COND6">
 			<Original>All Military and Radio Sectors captured</Original>
 			<French>Tout les Secteurs Militaire et les tours Radio capturés</French>
+			<Chinesesimp>占领所有军事和信号塔区域</Chinesesimp>
+			<Chinese>占领所有军事和信号塔区域</Chinese>
 		</Key>
 		<Key ID="STR_PARAMS_DIFFICULTY">
 			<Original>Difficulty</Original>
@@ -1874,14 +1924,20 @@
 		<Key ID="STR_PARAMS_PAR_AI_REVIVE">
 			<Original>PAR: Limit AI Revive</Original>
 			<French>PAR: Limite AI Résurection</French>
+			<Chinesesimp>PAR： 限制AI复活</Chinesesimp>
+			<Chinese>PAR： 限制AI复活</Chinese>
 		</Key>
 		<Key ID="STR_PARAMS_PAR_BLEEDOUT">
 			<Original>PAR: Bleedout Timer (sec)</Original>
 			<French>PAR: Durée Attente Blessé (sec)</French>
+			<Chinesesimp>PAR:失血计时器（秒）</Chinesesimp>
+			<Chinese>PAR:失血计时器（秒）</Chinese>
 		</Key>
 		<Key ID="STR_PARAMS_PAR_GRAVE">
 			<Original>PAR: Grave + Stuff in a box</Original>
 			<French>PAR: Tombe + Stuff dans une boite</French>
+			<Chinesesimp>PAR:坟墓 + 盒中物</Chinesesimp>
+			<Chinese>PAR:坟墓 + 盒中物</Chinese>
 		</Key>
 		<Key ID="STR_PARAMS_REVIVE1">
 			<Original>Enabled - Everyone can revive</Original>
@@ -1940,6 +1996,8 @@
 		<Key ID="STR_PARAMS_ARSENAL_FOB">
 			<Original>Enabled at FOB Only.</Original>
 			<French>Activé à FOB uniquement.</French>
+			<Chinesesimp>启用仅FOB</Chinesesimp>
+			<Chinese>启用仅FOB</Chinese>
 		</Key>
 		<Key ID="STR_PARAMS_ENABLED">
 			<Original>Enabled</Original>
@@ -1968,6 +2026,8 @@
 		<Key ID="STR_PARAMS_USER_DEF">
 			<Original>User defined</Original>
 			<French>Défini par l'utilisateur</French>
+			<Chinesesimp>用户自定义</Chinesesimp>
+			<Chinese>用户自定义</Chinese>
 		</Key>
 		<Key ID="STR_PARAMS_FIRSTFOB">
 			<Original>Start the campaign with the first FOB already built</Original>
@@ -2092,6 +2152,8 @@
 		<Key ID="STR_PARAMS_PATROLS">
 			<Original>Enable the Patrols Manager</Original>
 			<French>Activer le Gestionnaire de Patrouilles</French>
+			<Chinesesimp>启用巡逻管理器</Chinesesimp>
+			<Chinese>启用巡逻管理器</Chinese>
 		</Key>
 		<Key ID="STR_PARAMS_CIVILIANS">
 			<Original>Enable the Civilian Manager</Original>
@@ -2198,6 +2260,8 @@
 		<Key ID="STR_PARAM_TFAR_RADIUS">
 			<Original>Task Force Radio Relay distance</Original>
 			<French>Task Force Radio distance du Relais</French>
+			<Chinesesimp>Task Force Radio Mod中继距离</Chinesesimp>
+			<Chinese>Task Force Radio Mod中继距离</Chinese>
 		</Key>
 		<Key ID="STR_PARAM_PASSIVE_INCOME">
 			<Original>Replace ammo boxes spawns with Passive Income</Original>
@@ -2213,9 +2277,13 @@
 		</Key>
 		<Key ID="STR_PARAM_PASSIVE_INCOME_DELAY">
 			<Original>Passive Income Delay</Original>
+			<Chinesesimp>被动收入延迟</Chinesesimp>
+			<Chinese>被动收入延迟</Chinese>
 		</Key>
 		<Key ID="STR_PARAM_PASSIVE_INCOME_AMMOUNT">
 			<Original>Passive Income Ammount</Original>
+			<Chinesesimp>被动收入金额</Chinesesimp>
+			<Chinese>被动收入金额</Chinese>
 		</Key>
 		<Key ID="STR_BUILD1">
 			<Original>Infantry units</Original>
@@ -2388,10 +2456,14 @@
 		<Key ID="STR_ARSENAL_ON_MEMBER">
 			<Original>Arsenal</Original>
 			<French>Arsenal</French>
+			<Chinesesimp>武器库</Chinesesimp>
+			<Chinese>武器库</Chinese>
 		</Key>
 		<Key ID="STR_ARSENAL_ON_MEMBER_TOOLTIP">
 			<Original>Open the Virtual Arsenal for the selected unit.</Original>
 			<French>Ouvrir l'Arsenal Virtuel pour l'unité sélectionnée.</French>
+			<Chinesesimp>打开选定单位的虚拟军械库。</Chinesesimp>
+			<Chinese>打开选定单位的虚拟军械库。</Chinese>
 		</Key>
 		<Key ID="STR_REMOVE_MEMBER">
 			<Original>Remove</Original>
@@ -2454,6 +2526,8 @@
 		<Key ID="STR_REVIVE">
 			<Original>Revive left:</Original>
 			<French>Ranimation Dispo:</French>
+			<Chinesesimp>剩余复活次数:</Chinesesimp>
+			<Chinese>剩余复活次数:</Chinese>
 		</Key>
 		<Key ID="STR_DISTANCE">
 			<Original>Distance:</Original>
@@ -2982,10 +3056,14 @@
 		<Key ID="STR_HALO_PARAM_VEH">
 			<Original>HALO Vehicle</Original>
 			<French>Vehicule HALO</French>
+			<Chinesesimp>空投载具</Chinesesimp>
+			<Chinese>空投载具</Chinese>
 		</Key>
 		<Key ID="STR_HALO_PARAM_ARTY">
 			<Original>Artillery Fire</Original>
 			<French>Tir d'Artillerie</French>
+			<Chinesesimp>炮火支援</Chinesesimp>
+			<Chinese>炮火支援</Chinese>
 		</Key>
 		<Key ID="STR_HALO_PARAM1">
 			<Original>Enabled - No cooldown</Original>
@@ -3122,6 +3200,8 @@
 		<Key ID="STR_EXCLUSIVE_PARAM">
 			<Original>Use the exclusive join whitelist</Original>
 			<French>Utiliser la Whitelist pour se connecter</French>
+			<Chinesesimp>使用专属加入白名单</Chinesesimp>
+			<Chinese>使用专属加入白名单</Chinese>
 		</Key>
 		<Key ID="STR_BUILD_ENEMIES_NEARBY">
 			<Original>Cannot build: hostile forces nearby.</Original>
@@ -3137,9 +3217,13 @@
 		</Key>
 		<Key ID="STR_CLEANUP_PARAM">
 			<Original>Garbage Collector Timer</Original>
+			<Chinesesimp>垃圾回收定时器</Chinesesimp>
+			<Chinese>垃圾回收定时器</Chinese>
 		</Key>
 		<Key ID="STR_AUTO_SAVE">
 			<Original>AutoSave Timer</Original>
+			<Chinesesimp>自动保存定时器</Chinesesimp>
+			<Chinese>自动保存定时器</Chinese>
 		</Key>
 		<Key ID="STR_CLEANUP_PARAM1">
 			<Original>15 minutes delay</Original>
@@ -3461,18 +3545,26 @@
 			<Spanish>COGER</Spanish>
 			<Portuguese>TOME</Portuguese>
 			<Czech>Vezmi</Czech>
+			<Chinesesimp>搜索</Chinesesimp>
+			<Chinese>搜索</Chinese>
 		</Key>
 		<Key ID="STR_INTEL_NOTHING">
-			<Original>You found nothing...</Original>
+		  <Original>You found nothing...</Original>
 			<French>Vous n'avez rien trouvé...</French>
+			<Chinesesimp>你找不到任何东西...</Chinesesimp>
+			<Chinese>你找不到任何东西...</Chinese>
 		</Key>
 		<Key ID="STR_INTEL_FOUND">
 			<Original>%1 find Intels!\nBonus Score +%2 XP\n+%3 Intels</Original>
 			<French>%1 à trouvé des Informations !\nBonus Score +%2 XP\n+%3 Intels</French>
+			<Chinesesimp>%1 找到情报！\n奖励分数 +%2 经验\n+%3 情报</Chinesesimp>
+			<Chinese>%1 找到情报！\n奖励分数 +%2 经验\n+%3 情报</Chinese>
 		</Key>
 		<Key ID="STR_INTEL_GOODS">
 			<Original>%1 find Goods!\nBonus Score +%2 XP\n+%3 Ammo\n+%4 Fuel</Original>
 			<French>%1 à trouvé des Resources !\nBonus Score +%2 XP\n+%3 Ammo\n+%4 Fuel</French>
+			<Chinesesimp>%1 找到货物！\n奖励分数 +%2 经验\n+%3 弹药\n+%4 燃料</Chinesesimp>
+			<Chinese>%1 找到货物！\n奖励分数 +%2 经验\n+%3 弹药\n+%4 燃料</Chinese>
 		</Key>
 		<Key ID="STR_SECONDARY_OBJECTIVES">
 			<Original>-- SECONDARY OBJECTIVES</Original>
@@ -3605,6 +3697,8 @@
 		<Key ID="STR_NOTIFICATION_CONVOY_FAILED_TEXT">
 			<Original>Cargo from Convoy OPFOR is lost.</Original>
 			<French>Cargaison du Convoi OPFOR est perdu.</French>
+			<Chinesesimp>OPFOR 运输队的货物丢失了。</Chinesesimp>
+			<Chinese>OPFOR 运输队的货物丢失了。</Chinese>
 		</Key>
 		<Key ID="STR_NOTIFICATION_CONVOY_SPOTTED_TEXT">
 			<Original>OPFOR Convoy near %1.</Original>
@@ -4716,6 +4810,8 @@
 		<Key ID="STR_SECONDARY_MISSION_IN_PROGRESS">
 			<Original>A Secondary Mission (%1) is already in progress...</Original>
 			<French>Une Mission Secondaire (%1) est déjà en cours...</French>
+			<Chinesesimp>次要任务（%1）已在进行中...</Chinesesimp>
+			<Chinese>次要任务（%1）已在进行中...</Chinese>
 		</Key>
 		<Key ID="STR_SECONDARY_MISSION0">
 			<Original>FOB Hunting</Original>
@@ -5189,6 +5285,8 @@
 		<Key ID="STR_SECONDARY_MISSION3">
 			<Original>Start the Armageddon</Original>
 			<French>Démarrer l'Armageddon</French>
+			<Chinesesimp>启动世界末日</Chinesesimp>
+			<Chinese>启动世界末日</Chinese>
 		</Key>
 		<Key ID="STR_SECONDARY_BRIEFING3">
 			<Original>
@@ -5225,10 +5323,46 @@
 					&lt;br/&gt;&lt;br/&gt;
 					&lt;t size='10'&gt;&lt;img image='res\secondary\final_situation.jpg'/&gt;&lt;/t&gt;
 			</French>
+			<Chinesesimp>
+					&lt;t size='1.3' color='#ffa000'&gt;启动世界末日&lt;/t&gt;
+					&lt;br/&gt;&lt;br/&gt;
+					&lt;t size='1'&gt;
+					OPFOR 部队已经研制出一种可怕的武器，如果他们能够使用该武器，我们在这一地区的存在就将终结。&lt;/t&gt;
+					&lt;br/&gt;&lt;br/&gt;
+					&lt;t size='1'&gt;
+					您的任务是在武器爆炸前将其摧毁。所有士兵必须齐心协力，在正义与邪恶势力之间展开终极决战。&lt;/t&gt;
+					&lt;br/&gt;&lt;br/&gt;
+					没有第二次机会...
+					&lt;br/&gt;&lt;br/&gt;
+					&lt;t size='1.15' color='#00a0ff'&gt;Cost: 800&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
+					&lt;br/&gt;
+					&lt;t size='1.15' color='#ffa000'&gt;奖励: 我方立即取得胜利。&lt;/t&gt;
+					&lt;br/&gt;&lt;br/&gt;
+					&lt;t size='10'&gt;&lt;img image='res\secondary\final_situation.jpg'/&gt;&lt;/t&gt;
+					</Chinesesimp>
+			<Chinese>
+					&lt;t size='1.3' color='#ffa000'&gt;启动世界末日&lt;/t&gt;
+					&lt;br/&gt;&lt;br/&gt;
+					&lt;t size='1'&gt;
+					OPFOR 部队已经研制出一种可怕的武器，如果他们能够使用该武器，我们在这一地区的存在就将终结。&lt;/t&gt;
+					&lt;br/&gt;&lt;br/&gt;
+					&lt;t size='1'&gt;
+					您的任务是在武器爆炸前将其摧毁。所有士兵必须齐心协力，在正义与邪恶势力之间展开终极决战。&lt;/t&gt;
+					&lt;br/&gt;&lt;br/&gt;
+					没有第二次机会...
+					&lt;br/&gt;&lt;br/&gt;
+					&lt;t size='1.15' color='#00a0ff'&gt;Cost: 800&lt;img image='\A3\Ui_f\data\GUI\Cfg\Ranks\general_gs.paa'/&gt;&lt;/t&gt;
+					&lt;br/&gt;
+					&lt;t size='1.15' color='#ffa000'&gt;奖励: 我方立即取得胜利。&lt;/t&gt;
+					&lt;br/&gt;&lt;br/&gt;
+					&lt;t size='10'&gt;&lt;img image='res\secondary\final_situation.jpg'/&gt;&lt;/t&gt;
+					</Chinese>
 		</Key>
 		<Key ID="STR_MISSION3_FAILED">
 			<Original>YOU LOST THE WAR...</Original>
 			<French>VOUS AVEZ PERDU LA GUERRE...</French>
+			<Chinesesimp>你输掉了战争...</Chinesesimp>
+			<Chinese>你输掉了战争...</Chinese>
 		</Key>
 		<Key ID="STR_PARAM_BLUFOR_DEFENDERS">
 			<Original>BLUFOR defenders in owned sectors</Original>
@@ -5284,14 +5418,20 @@
 		<Key ID="STR_PARAM_NAVAL_TYPE">
 			<Original>The type of Naval FOB</Original>
 			<French>Le type de FOB Maritime</French>
+			<Chinesesimp>海上FOB类型</Chinesesimp>
+			<Chinese>海上FOB类型</Chinese>
 		</Key>
 		<Key ID="STR_HINT_FOB_WRONG_OWNER">
 			<Original>You are NOT the Owner of the FOB!</Original>
 			<French>Vous n'êtes PAS le propriétaire de la FOB!</French>
+			<Chinesesimp>您不是 FOB 的所有者！</Chinesesimp>
+			<Chinese>您不是 FOB 的所有者！</Chinese>
 		</Key>
 		<Key ID="STR_HINT_OUTPOST_WRONG_OWNER">
 			<Original>You are NOT the Owner of the Outpost!</Original>
 			<French>Vous n'êtes PAS le propriétaire du Poste Avancé FOB!</French>
+			<Chinesesimp>您不是该前哨站的所有者！</Chinesesimp>
+			<Chinese>您不是该前哨站的所有者！</Chinese>
 		</Key>
 		<Key ID="STR_HINT_FOBS_EXCEEDED">
 			<Original>You are NOT allowed to deploy more than %1 FOBs at the same time.</Original>
@@ -5634,64 +5774,96 @@
 		</Key>
 		<Key ID="STR_GUI_PLATOON">
 			<Original>UI - Show Platoon Overlay</Original>
+			<Chinesesimp>UI - 显示全排覆盖</Chinesesimp>
+			<Chinese>UI - 显示全排覆盖</Chinese>
 		</Key>
 		<Key ID="STR_GUI_NAMETAG">
 			<Original>UI - Show player name tags</Original>
+			<Chinesesimp>UI - 显示玩家姓名标签</Chinesesimp>
+			<Chinese>UI - 显示玩家姓名标签</Chinese>
 		</Key>
 		<Key ID="STR_GUI_TEAM">
 			<Original>UI - Show team mates on map</Original>
+			<Chinesesimp>UI - 在地图上显示队友</Chinesesimp>
+			<Chinese>UI - 在地图上显示队友</Chinese>
 		</Key>
 		<Key ID="STR_PERSISTENT_MODE">
 			<Original>Server in Persistent Mode</Original>
 			<French>Serveur en Mode Persistant.</French>
+			<Chinesesimp>服务器处于持续模式</Chinesesimp>
+			<Chinese>服务器处于持续模式</Chinese>
 		</Key>
 		<Key ID="STR_KEEP_SCORE">
 			<Original>Keep players score on map restart</Original>
 			<French>Garder le score des joueurs au redemarage de la Map</French>
+			<Chinesesimp>地图重启时保留玩家成绩</Chinesesimp>
+			<Chinese>地图重启时保留玩家成绩</Chinese>
 		</Key>
 		<Key ID="STR_RESPAWN">
 			<Original>PAR: Respawn button Timer (sec)</Original>
 			<French>PAR: Attente Bouton Respawn (sec)</French>
+			<Chinesesimp>PAR：重生按钮计时器（秒）</Chinesesimp>
+			<Chinese>PAR：重生按钮计时器（秒）</Chinese>
 		</Key>
 		<Key ID="STR_RESPAWN_CD">
 			<Original>Cooldown if player respawn too fast (min)</Original>
 			<French>Attente si le joueur réapparaît trop rapidement (min)</French>
+			<Chinesesimp>玩家重生过快时的冷却时间（分钟）</Chinesesimp>
+			<Chinese>玩家重生过快时的冷却时间（分钟）</Chinese>
 		</Key>
 		<Key ID="STR_PARAM_SECTOR_DESPAWN">
 			<Original>Clear unattacked Sectors (min)</Original>
 			<French>Nettoyer secteurs non attaqués (min)</French>
+			<Chinesesimp>清理未被攻击的区域（分钟）</Chinesesimp>
+			<Chinese>清理未被攻击的区域（分钟）</Chinese>
 		</Key>
 		<Key ID="STR_REDEPLOY">
 			<Original>Allow Redeploy</Original>
 			<French>Autoriser Redéploiement</French>
+			<Chinesesimp>允许重新部署</Chinesesimp>
+			<Chinese>允许重新部署</Chinese>
 		</Key>
 		<Key ID="STR_PARAM_REDEPLOY_ALL">
 			<Original>Allow Everywhere</Original>
 			<French>Autoriser partout</French>
+			<Chinesesimp>允许在任何地方</Chinesesimp>
+			<Chinese>允许在任何地方</Chinese>
 		</Key>
 		<Key ID="STR_PARAM_REDEPLOY_FOB">
 			<Original>At FOB only</Original>
 			<French>Aux FOB seulement</French>
+			<Chinesesimp>仅在FOB</Chinesesimp>
+			<Chinese>仅在FOB</Chinese>
 		</Key>
 		<Key ID="STR_ENABLE_AIR_SUPPORT">
 			<Original>Allow Air Support</Original>
 			<French>Autoriser le Support Aerien</French>
+			<Chinesesimp>允许空中支援</Chinesesimp>
+			<Chinese>允许空中支援</Chinese>
 		</Key>
 		<Key ID="STR_KICK_IDLE">
 			<Original>Kick player if idle for too long</Original>
 			<French>Eject le joueur si inactif trop longtemps</French>
+			<Chinesesimp>如果挂机时间过长，则将玩家踢出服务器</Chinesesimp>
+			<Chinese>如果挂机时间过长，则将玩家踢出服务器</Chinese>
 		</Key>
 		<Key ID="STR_KICK_IDLE_MSG">
 			<Original>You are idle since %1min, you must move before %2min or you'll be kicked.</Original>
 			<French>Vous êtes inactif depuis %1min, vous devez vous déplacer avant %2min ou vous serez expulsé.</French>
+			<Chinesesimp>您已挂机 %1 分钟，必须在 %2 分钟前活动，否则将被踢出服务器。</Chinesesimp>
+			<Chinese>您已挂机 %1 分钟，必须在 %2 分钟前活动，否则将被踢出服务器。</Chinese>
 		</Key>
 		<Key ID="STR_OPFORMARK">
 			<Original>Show Opfor Markers</Original>
 			<French>Affiche les marqueurs OPFOR</French>
+			<Chinesesimp>显示Opfor标记</Chinesesimp>
+			<Chinese>显示Opfor标记</Chinese>
 		</Key>
 		<Key ID="STR_BLUFORMARK">
 			<Original>Show BLUFOR markers</Original>
 			<French>Affiche les marqueurs BLUFOR</French>
+			<Chinesesimp>显示BLUFOR标记</Chinesesimp>
+			<Chinese>显示BLUFOR标记</Chinese>
 		</Key>
 		<Key ID="STR_ARSENAL">
 			<Original>Enable Virtual Arsenal</Original>
@@ -5707,8 +5879,8 @@
 			<Original>Arsenal Filter Mode</Original>
 			<Russian>Ограничение Арсенала</Russian>
 			<French>Mode de Filtrage de l'Arsenal</French>
-			<Chinesesimp>武器库过滤模式</Chinesesimp>
-			<Chinese>武器庫過濾模式</Chinese>
+			<Chinesesimp>武器库限制模式</Chinesesimp>
+			<Chinese>武器庫限制模式</Chinese>
 			<Portuguese>Modo de Filtro do Arsenal</Portuguese>
 			<Czech>Režim Arsenal Filter</Czech>
 		</Key>
@@ -5732,9 +5904,13 @@
 			<Original>Strict + MOD: Strict mode + items from current Mod</Original>
 			<Russian>Строгое + МОД: Строгое + из текущего Мода</Russian>
 			<Portuguese>Strict + MOD: Rígido + itens do Mod atual</Portuguese>
+			<Chinesesimp>严谨 + MOD：严格模式 + 当前 Mod 中的物品</Chinesesimp>
+			<Chinese>严谨 + MOD：严格模式 + 当前 Mod 中的物品</Chinese>
 		</Key>
 		<Key ID="STR_LIMIT_ARSENAL_PARAM4">
 			<Original>Personal Arsenal</Original>
+			<Chinesesimp>个人武器库</Chinesesimp>
+			<Chinese>个人武器库</Chinese>
 		</Key>
 		<Key ID="STR_VEH_LOCK">
 			<Original>Enable Vehicles Ownership</Original>
@@ -5749,6 +5925,8 @@
 		<Key ID="STR_OPFOR_VEH_LOCK">
 			<Original>Enemy Vehicles can be captured</Original>
 			<French>Les Véhicules Enemies peuvent être capturés</French>
+			<Chinesesimp>可夺取敌军车辆</Chinesesimp>
+			<Chinese>可夺取敌军车辆</Chinese>
 		</Key>
 		<Key ID="STR_FORCE_LOADOUT">
 			<Original>Force default equipment</Original>
@@ -5763,6 +5941,8 @@
 		<Key ID="STR_FREE_LOADOUT">
 			<Original>Equipment is worthless</Original>
 			<French>L'équipement ne vaut rien</French>
+			<Chinesesimp>装备毫无价值</Chinesesimp>
+			<Chinese>装备毫无价值</Chinese>
 		</Key>
 		<Key ID="STR_THERMAL">
 			<Original>Enable Thermal equipments</Original>
@@ -5855,26 +6035,30 @@
 			<Russian>-- СОБАКА, ИСКАТЬ</Russian>
 			<French>-- CHIEN CHERCHE</French>
 			<Japanese>-- 犬に敵を探させる</Japanese>
-			<Chinesesimp>-- 军犬搜寻 --</Chinesesimp>
-			<Chinese>-- 軍犬搜尋 --</Chinese>
+			<Chinesesimp>-- 狗狗搜寻 --</Chinesesimp>
+			<Chinese>-- 狗狗搜尋 --</Chinese>
 			<Portuguese>-- ENCONTRAR O CÃO</Portuguese>
 			<Czech>-- DOG HLEDEJ</Czech>
 		</Key>
 		<Key ID="STR_DOG_FIND_GUN">
 			<Original>-- DOG BRINGS WEAPON</Original>
 			<French>-- CHIEN RAMÈNE ARME</French>
+			<Chinesesimp>-- 狗狗携带武器</Chinesesimp>
+			<Chinese>-- 狗狗携带武器</Chinese>
 		</Key>
 		<Key ID="STR_DOG_PATROL">
 			<Original>-- DOG PATROL</Original>
 			<French>-- CHIEN PATROUILLE</French>
+			<Chinesesimp>-- 狗狗巡逻队</Chinesesimp>
+			<Chinese>-- 狗狗巡逻队</Chinese>
 		</Key>
 		<Key ID="STR_DOG_RECALL">
 			<Original>-- DOG RECALL</Original>
 			<Russian>-- СОБАКА, ЗА МНОЙ</Russian>
 			<French>-- CHIEN REVIENS</French>
 			<Japanese>-- 犬を呼び戻す</Japanese>
-			<Chinesesimp>-- 召回军犬 --</Chinesesimp>
-			<Chinese>-- 召回軍犬 --</Chinese>
+			<Chinesesimp>-- 召回狗狗 --</Chinesesimp>
+			<Chinese>-- 召回狗狗 --</Chinese>
 			<Portuguese>-- CHAME O CÃO</Portuguese>
 			<Czech>-- DOG ZPĚT</Czech>
 		</Key>
@@ -5883,8 +6067,8 @@
 			<Russian>-- СОБАКА, СИДЕТЬ</Russian>
 			<French>-- CHIEN STOP</French>
 			<Japanese>-- 犬を止める</Japanese>
-			<Chinesesimp>-- 军犬停下 --</Chinesesimp>
-			<Chinese>-- 軍犬停下 --</Chinese>
+			<Chinesesimp>-- 狗狗停下 --</Chinesesimp>
+			<Chinese>-- 狗狗停下 --</Chinese>
 			<Portuguese>-- PARAR O CÃO</Portuguese>
 			<Czech>-- DOG STOP</Czech>
 		</Key>
@@ -5893,8 +6077,8 @@
 			<Russian>-- ВОЗВРАТ СОБАКИ</Russian>
 			<French>-- RENVOYER CHIEN</French>
 			<Japanese>-- 犬とバイバイする</Japanese>
-			<Chinesesimp>-- 解雇军犬 --</Chinesesimp>
-			<Chinese>-- 解僱軍犬 --</Chinese>
+			<Chinesesimp>-- 解雇狗狗 --</Chinesesimp>
+			<Chinese>-- 解僱狗狗 --</Chinese>
 			<Portuguese>-- DISPENSAR O CÃO</Portuguese>
 			<Czech>-- DOG PROPUŠTEN</Czech>
 		</Key>
@@ -5941,6 +6125,8 @@
 		<Key ID="STR_SEND_RSC">
 			<Original>-- SEND RESOURCES</Original>
 			<French>-- ENVOYER RESSOURCES</French>
+			<Chinesesimp>-- 发送资源</Chinesesimp>
+			<Chinese>-- 发送资源</Chinese>
 		</Key>
 		<Key ID="STR_BUY_FUEL">
 			<Original>-- BUY FUEL</Original>
@@ -6015,6 +6201,8 @@
 		<Key ID="STR_ADMIN_CONFIGURE">
 			<Original>-- CONFIGURE MISSION</Original>
 			<French>-- CONFIGURE MISSION</French>
+			<Chinesesimp>-- 配置任务</Chinesesimp>
+			<Chinese>-- 配置任务</Chinese>
 		</Key>
 		<Key ID="STR_ADMIN_MENU">
 			<Original>-- ADMIN MENU</Original>
@@ -6049,18 +6237,26 @@
 		<Key ID="STR_UPGRADE_OUTPOST">
 			<Original>-- UPGRADE OUTPOST</Original>
 			<French>-- AMÉLIORER AVANT-POSTE</French>
+			<Chinesesimp>-- 升级前哨</Chinesesimp>
+			<Chinese>-- 升级前哨</Chinese>
 		</Key>
 		<Key ID="STR_ONBOARD_SHIP">
 			<Original>-- CLIMB ON BOARD</Original>
 			<French>-- MONTER À BORD</French>
+			<Chinesesimp>--登船</Chinesesimp>
+			<Chinese>--登船</Chinese>
 		</Key>
 		<Key ID="STR_UPGRADE_OUTPOST_HINT">
 			<Original>upgraded.</Original>
 			<French>amélioré.</French>
+			<Chinesesimp>已升级</Chinesesimp>
+			<Chinese>已升级</Chinese>
 		</Key>
  		<Key ID="STR_UPGRADE_OUTPOST_PAY">
 			<Original>&lt;t align='center'&gt;Upgrade the Outpost for %1 Ammo&lt;br/&gt;Be sure there is enough space!&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
 			<French>&lt;t align='center'&gt;Améliorer l'Outpost pour %1 Ammo&lt;br/&gt;Soyez sûr qu'il y a assez de place!&lt;br/&gt;Êtes-vous sûr ?&lt;/t&gt;</French>
+			<Chinesesimp>&lt;t align='center'&gt;使用 %1 弹药升级前哨站&lt;br/&gt;确保有足够的空间！&lt;br/&gt;确定吗？&lt;/t&gt;</Chinesesimp>
+			<Chinese>&lt;t align='center'&gt;使用 %1 弹药升级前哨站&lt;br/&gt;确保有足够的空间！&lt;br/&gt;确定吗？&lt;/t&gt;</Chinese>
 		</Key>
 		<!-- action_manager_veh.sqf -->
 		<Key ID="STR_SELL_CARGO">
@@ -6079,6 +6275,8 @@
 			<French>-- PRENDRE CARBURANT</French>
 			<Portuguese>-- PEGAR COMBUSTÍVEL</Portuguese>
 			<Czech>-- ODČERPAT PALIVO</Czech>
+			<Chinesesimp>-- 获取燃料</Chinesesimp>
+			<Chinese>-- 获取燃料</Chinese>
 		</Key>
 		<Key ID="STR_RE_FUEL">
 			<Original>-- PUT FUEL</Original>
@@ -6092,20 +6290,30 @@
 		</Key>
 		<Key ID="STR_REPAIR_VEH">
 			<Original>-- REPAIR VEHICLE</Original>
+			<Chinesesimp>-- 修理车辆</Chinesesimp>
+			<Chinese>-- 修理车辆</Chinese>
 		</Key>
 		<Key ID="STR_REPAIR_VEH_MSG">
 			<Original>Complete %1 Repair in progress...</Original>
 			<French>Réparation complète de %1 en cours...</French>
+			<Chinesesimp>完成 %1 正在维修中...</Chinesesimp>
+			<Chinese>完成 %1 正在维修中...</Chinese>
 		</Key>
 		<Key ID="STR_REPAIR_VEH_NAME">
 			<Original>Vehicle Repair Box</Original>
 			<French>Réparation de véhicule</French>
+			<Chinesesimp>车辆维修箱</Chinesesimp>
+			<Chinese>车辆维修箱</Chinese>
 		</Key>
 		<Key ID="STR_HALO_VEH">
 			<Original>-- HALO DROP VEHICLE</Original>
+			<Chinesesimp>-- 空投载具</Chinesesimp>
+			<Chinese>-- 空投载具</Chinese>
 		</Key>
 		<Key ID="STR_HALO_VEH_ASK">
 			<Original>&lt;t align='center'&gt;HALO for vehicle cost: %1 Ammo&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
+			<Chinesesimp>&lt;t align='center'&gt;空投载具将花费: %1 弹药&lt;br/&gt;确定吗？&lt;/t&gt;</Chinesesimp>
+			<Chinese>&lt;t align='center'&gt;空投载具将花费: %1 弹药&lt;br/&gt;确定吗？&lt;/t&gt;</Chinese>
 		</Key>
 		<Key ID="STR_SALVAGE">
 			<Original>-- SALVAGE</Original>
@@ -6190,26 +6398,38 @@
 		<Key ID="STR_LOOT_BODY">
 			<Original>-- LOOT BODY</Original>
 			<French>-- LOOTER CORPS</French>
+			<Chinesesimp>-- 摸金校尉</Chinesesimp>
+			<Chinese>-- 摸金校尉</Chinese>
 		</Key>
 		<Key ID="STR_NEUTRALIZE">
 			<Original>- NEUTRALIZE -</Original>
 			<French>- NEUTRALIZER -</French>
+			<Chinesesimp>- 消灭 -</Chinesesimp>
+			<Chinese>- 消灭 -</Chinese>
 		</Key>
 		<Key ID="STR_TAKE_MONEY">
 			<Original>-- TAKE MONEY</Original>
 			<French>-- PRENDRE ARGENT</French>
+			<Chinesesimp>-- 拿钱</Chinesesimp>
+			<Chinese>-- 拿钱</Chinese>
 		</Key>
 		<Key ID="STR_SEND_ARSENAL">
 			<Original>-- CARGO TO ARSENAL</Original>
 			<French>-- CARGO VERS ARSENAL</French>
+			<Chinesesimp>-- 库存送到军火库</Chinesesimp>
+			<Chinese>-- 库存送到军火库</Chinese>
 		</Key>
 		<Key ID="STR_LOADOUT_CARGO_STORED">
 			<Original>%1's gear stored in %2.</Original>
 			<French>Équipement de %1 rangé dans %2.</French>
+			<Chinesesimp>%1 的装备存储在 %2。</Chinesesimp>
+			<Chinese>%1 的装备存储在 %2。</Chinese>
 		</Key>
 		<Key ID="STR_LOADOUT_NOCARGO">
 			<Original>No empty vehicle nearby.</Original>
 			<French>Pas de véhicule vide à proximité.</French>
+			<Chinesesimp>附近没有空载车辆。</Chinesesimp>
+			<Chinese>附近没有空载车辆。</Chinese>
 		</Key>
 		<!-- recycle_manager.sqf -->
 		<Key ID="STR_RECYCLE_MANAGER">
@@ -6315,10 +6535,14 @@
 		<Key ID="STR_DOG_FOUND_GUN">
 			<Original>The dog return with a gun !!</Original>
 			<French>Le chien reviens avec une arme !! </French>
+			<Chinesesimp>狗狗带着枪回来了！</Chinesesimp>
+			<Chinese>狗狗带着枪回来了！</Chinese>
 		</Key>
 		<Key ID="STR_DOG_FOUND_MINE">
 			<Original>The dog found a mine here !!</Original>
 			<French>Le chien à trouvé une mine ici !! </French>
+			<Chinesesimp>狗狗在这里发现了一枚地雷！！</Chinesesimp>
+			<Chinese>狗狗在这里发现了一枚地雷！！</Chinese>
 		</Key>
 		<!-- do_eject.sqf -->
 		<Key ID="STR_DO_EJECT">
@@ -6346,6 +6570,8 @@
 		<Key ID="STR_DO_LOCK_MSG">
 			<Original>The vehicle and all its contents belong to you.</Original>
 			<French>Le véhicule et tout son contenu vous appartiennent.</French>
+			<Chinesesimp>车辆及其所有物品归您所有。</Chinesesimp>
+			<Chinese>车辆及其所有物品归您所有。</Chinese>
 		</Key>
 		<!-- do_recycle.sqf -->
 		<Key ID="STR_DO_RECYCLE">
@@ -6401,6 +6627,8 @@
 		<Key ID="STR_ADD_AMMO">
 			<Original>%1\n+ %2 Ammo!</Original>
 			<French>%1\n+ %2 Ammo!</French>
+			<Chinesesimp>%1\n+ %2 弹药!</Chinesesimp>
+			<Chinese>%1\n+ %2 弹药!</Chinese>
 		</Key>
 		<!-- do_refuel.sqf -->
 		<Key ID="STR_DO_REFUEL">
@@ -6462,6 +6690,8 @@
 		<!-- do_sell.sqf -->
 		<Key ID="STR_SELL_WELCOME_FOB">
 			<Original>Hello solider, The army can recycle your vehicle's cargo!</Original>
+			<Chinesesimp>你好，士兵，军方可以回收你车上的货物！</Chinesesimp>
+			<Chinese>你好，士兵，军方可以回收你车上的货物！</Chinese>
 		</Key>
 		<Key ID="STR_SELL_WELCOME">
 			<Original>Hello stranger, I buy your vehicle's cargo for a good price!</Original>
@@ -6592,46 +6822,70 @@
 		</Key>
 		<Key ID="STR_NEWS">
 			<Original>-=   NEWS   =-</Original>
+			<Chinesesimp>-=   新闻   =-</Chinesesimp>
+			<Chinese>-=   新闻   =-</Chinese>
 		</Key>
 		<Key ID="STR_NEWS_METEO">
 			<Original>-=   METEO   =-</Original>
+			<Chinesesimp>-=   天气预报   =-</Chinesesimp>
+			<Chinese>-=   天气预报   =-</Chinese>
 		</Key>
 		<Key ID="STR_NEWS_AMMO">
 			<Original>-=   The Rich   =-</Original>
+			<Chinesesimp>-=   富哥   =-</Chinesesimp>
+			<Chinese>-=   富哥   =-</Chinese>
 		</Key>
 		<Key ID="STR_NEWS_GOOD">
 			<Original>-=   The Good   =-</Original>
+			<Chinesesimp>-=   好人   =-</Chinesesimp>
+			<Chinese>-=   好人   =-</Chinese>
 		</Key>
 		<Key ID="STR_NEWS_BAD">
 			<Original>-=   The Bad   =-</Original>
+			<Chinesesimp>-=   混蛋   =-</Chinesesimp>
+			<Chinese>-=   混蛋   =-</Chinese>
 		</Key>
 		<Key ID="STR_SAVE_PLAYER">
 			<Original>-- SAVE PLAYER PROFILE</Original>
 			<French>-- SAUVEGARDER LE JOUEUR</French>
+			<Chinesesimp>-- 保存玩家资料</Chinesesimp>
+			<Chinese>-- 保存玩家资料</Chinese>
 		</Key>
 		<Key ID="STR_BUILD_FORTIFICATION">
 			<Original>-- BUILD FORTIFICATION</Original>
 			<French>-- CONSTRUIRE FORTIFICATION</French>
+			<Chinesesimp>-- 修筑防御工事</Chinesesimp>
+			<Chinese>-- 修筑防御工事</Chinese>
 		</Key>
 		<Key ID="STR_CLEAR_FORTIFICATION">
 			<Original>-- REMOVE FORTIFICATION</Original>
 			<French>-- SUPPRIMER FORTIFICATION</French>
+			<Chinesesimp>-- 移除防御工事</Chinesesimp>
+			<Chinese>-- 移除防御工事</Chinese>
 		</Key>
 		<Key ID="STR_BUILD_DEFENSE_SEC">
 			<Original>-- MANAGE SECTOR DEFENSES</Original>
 			<French>-- GERER DEFENSE SECTEUR</French>
+			<Chinesesimp>-- 管理区域防御</Chinesesimp>
+			<Chinese>-- 管理区域防御</Chinese>
 		</Key>
 		<Key ID="STR_CLEAR_DEFENSE_MSG">
 			<Original>&lt;t align='center'&gt;Remove ALL Defenses&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
 			<French>&lt;t align='center'&gt;Supprimer TOUTES les Defenses&lt;br/&gt;Es tu sûr ?&lt;/t&gt;</French>
+			<Chinesesimp>&lt;t align='center'&gt;移除所有防御&lt;br/&gt;你确定吗？&lt;/t&gt;</Chinesesimp>
+			<Chinese>&lt;t align='center'&gt;移除所有防御&lt;br/&gt;你确定吗？&lt;/t&gt;</Chinese>
 		</Key>
 		<Key ID="STR_SAVE_PLAYER_MSG">
 			<Original>Player Profile and\n%1 Squad unit(s)\nSaved!</Original>
 			<French>Profil du Joueur et\n%1 unitée(s) d'escouade\nEnregistré !</French>
+			<Chinesesimp>玩家资料和\n%1小队单位\n已保存！</Chinesesimp>
+			<Chinese></Chinese>
 		</Key>
 		<Key ID="STR_NO_SAVE_PLAYER_MSG">
 			<Original>Your score (%1) is too LOW to be saved.\nMinimal score is: %2\nPlay more!</Original>
 			<French>Votre score (%1) est trop BAS pour être sauvegardé.\nScore minimum : %2\nJouez plus !</French>
+			<Chinesesimp>你的分数(%1)太低，无法保存。\n最低分数为：%2\n请继续！</Chinesesimp>
+			<Chinese>你的分数(%1)太低，无法保存。\n最低分数为：%2\n请继续！</Chinese>
 		</Key>
 		<!-- virtual_garage.hpp -->
 		<Key ID="STR_VIRT_GARAGE">
@@ -6669,6 +6923,8 @@
 		<Key ID="STR_PARAM_GARAGE_SIZE">
 			<Original>Virtual Garage vehicle limit.</Original>
 			<French>Limite de véhicules du garage virtuel.</French>
+			<Chinesesimp>虚拟车库车辆限制</Chinesesimp>
+			<Chinese>虚拟车库车辆限制</Chinese>
 		</Key>
 		<Key ID="STR_FULL_GARAGE">
 			<Original>Garage is Full !!\nMax %1 vehicles.</Original>
@@ -6714,6 +6970,8 @@
 		<!-- veh_repaint -->
 		<Key ID="STR_PAINT_SHOP">
 			<Original>-- VEHICLE PAINT and SHOP</Original>
+			<Chinesesimp>-- 车辆喷漆和维修</Chinesesimp>
+			<Chinese>-- 车辆喷漆和维修</Chinese>
 		</Key>
 		<Key ID="STR_SHOP_PAINT">
 			<Original>Paint</Original>
@@ -6854,6 +7112,8 @@
 		<Key ID="STR_AIRDROP_ARTY">
 			<Original>Artillery Fire</Original>
 			<French>Tir d'Artillerie</French>
+			<Chinesesimp>炮火支援</Chinesesimp>
+			<Chinese>炮火支援</Chinese>
 		</Key>
 		<Key ID="STR_AIRDROP_MENU">
 			<Original>-- Air Support Menu --</Original>
@@ -6948,11 +7208,15 @@
 		<Key ID="STR_ARTILLERY">
 			<Original>Call Artillery Fire.\nCost: %1 Ammo</Original>
 			<French>Demander un Tir d'Artillerie.\nPrix: %1 Ammo</French>
+			<Chinesesimp>呼叫炮火支援\n花费：%1 弹药</Chinesesimp>
+			<Chinese>呼叫炮火支援\n花费：%1 弹药</Chinese>
 		</Key>
 		<!-- liberation_send_resources.hpp -->
 		<Key ID="STR_SEND_MENU">
 			<Original>-- Send Resources --</Original>
 			<French>-- Envoyer Ressources --</French>
+			<Chinesesimp>-- 发送资源 --</Chinesesimp>
+			<Chinese>-- 发送资源 --</Chinese>
 		</Key>
 		<Key ID="STR_SEND_PLAYER">
 			<Original>Player:</Original>
@@ -6980,6 +7244,8 @@
 			<French>Fuel:</French>
 			<Portuguese>Fuel:</Portuguese>
 			<Czech>Fuel:</Czech>
+			<Chinesesimp>油料：</Chinesesimp>
+			<Chinese>油料：</Chinese>
 		</Key>
 		<Key ID="STR_SEND_ACTION">
 			<Original>Send</Original>
@@ -7013,6 +7279,8 @@
 		</Key>
 		<Key ID="STR_ADMIN_CAPTURE">
 			<Original>Capture Sector</Original>
+			<Chinesesimp>占领区域</Chinesesimp>
+			<Chinese>占领区域</Chinese>
 		</Key>
 		<Key ID="STR_ADMIN_BUILD">
 			<Original>Build</Original>
@@ -7043,9 +7311,13 @@
 		</Key>
 		<Key ID="STR_ADMIN_ZEUSMODE">
 			<Original>Zeus Mode</Original>
+			<Chinesesimp>宙斯模式</Chinesesimp>
+			<Chinese>宙斯模式</Chinese>
 		</Key>
 		<Key ID="STR_ADMIN_SAVE">
 			<Original>Save Game</Original>
+			<Chinesesimp>保存游戏</Chinesesimp>
+			<Chinese>保存游戏</Chinese>
 		</Key>
 		<Key ID="STR_ADMIN_UNLOCK">
 			<Original>Unlock Vehicle</Original>
@@ -7058,9 +7330,13 @@
 		</Key>
 		<Key ID="STR_ADMIN_DELETE">
 			<Original>DELETE</Original>
+			<Chinesesimp>删除</Chinesesimp>
+			<Chinese>删除</Chinese>
 		</Key>
 		<Key ID="STR_ADMIN_MOWER">
 			<Original>MOWER</Original>
+			<Chinesesimp>割草机</Chinesesimp>
+			<Chinese>割草机</Chinese>
 		</Key>
 		<Key ID="STR_ADMIN_EXPORT">
 			<Original>Export</Original>
@@ -7286,6 +7562,8 @@
 			<Original>Mission Completed Bonus +%1 XP!</Original>
 			<Russian>Бонус за завершение миссии +%1 XP!</Russian>
 			<Czech>Mission Splněn Bonus +%1 XP!</Czech>
+			<Chinesesimp>任务完成奖励 +%1 经验！</Chinesesimp>
+			<Chinese>任务完成奖励 +%1 经验！</Chinese>
 		</Key>
 
 		<!-- mission_FuelDelivery.sqf -->
@@ -7335,8 +7613,8 @@
 			<Original>Water Delivery at &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Talk&lt;/t&gt; to the &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; to get information.</Original>
 			<Russian>Доставка воды в &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Поговорите&lt;/t&gt; с &lt;t color='#0000F0'&gt;Маршалом&lt;/t&gt; чтобы получить информацию.</Russian>
 			<Japanese>水の配達：&lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;係の者&lt;/t&gt;と&lt;t color='#0000F0'&gt;話して&lt;/t&gt;情報を得てください。</Japanese>
-			<Chinesesimp>送水：在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;交谈&lt;/t&gt; 与 &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; 来获取任务信息。</Chinesesimp>
-			<Chinese>送水：在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;交談&lt;/t&gt; 與 &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; 來獲取任務信息。</Chinese>
+			<Chinesesimp>送水：在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;&lt;/t&gt; 与 &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; 交谈来获取任务信息。</Chinesesimp>
+			<Chinese>送水：在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;&lt;/t&gt; 與 &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; 交談來獲取任務信息。</Chinese>
 			<Czech>Dodávka vody &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Mluvit&lt;/t&gt; k &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; získat informace.</Czech>
 		</Key>
 		<Key ID="STR_WATERDELI_MESSAGE2">
@@ -7361,21 +7639,29 @@
 			<Original>Ammo Delivery</Original>
 			<Russian>Доставка патронов</Russian>
 			<Czech>Dodávka munice</Czech>
+			<Chinesesimp>弹药押运</Chinesesimp>
+			<Chinese>弹药押运</Chinese>
 		</Key>
 		<Key ID="STR_AMMODELI_MESSAGE1">
 			<Original>Ammo Delivery at &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Talk&lt;/t&gt; to the &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; to get information.</Original>
 			<Russian>Доставка патронов в &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Поговорите&lt;/t&gt; с &lt;t color='#0000F0'&gt;Маршалом&lt;/t&gt; чтобы получить информацию.</Russian>
 			<Czech>Dodávka munice v &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;Talk&lt;/t&gt; k &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; získat informace.</Czech>
+			<Chinesesimp>弹药押运在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;与&lt;/t&gt; to the &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; 交谈来获取任务信息</Chinesesimp>
+			<Chinese>弹药押运在 &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;&lt;t color='#00F000'&gt;与&lt;/t&gt; to the &lt;t color='#0000F0'&gt;Marshal&lt;/t&gt; 交谈来获取任务信息</Chinese>
 		</Key>
 		<Key ID="STR_AMMODELI_MESSAGE2">
 			<Original>Ammo Delivery has...&lt;br/&gt;&lt;t color='%1'&gt;FAILED&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;The local Population is unhappy...</Original>
 			<Russian>Доставка патронов ...&lt;br/&gt;&lt;t color='%1'&gt;ПРОВАЛЕНА&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;Местное население недовольно...</Russian>
 			<Czech>Dodávka munice je...&lt;br/&gt;&lt;t color='%1'&gt;FAILED&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;Místní obyvatelstvo je nešťastné...</Czech>
+			<Chinesesimp>弹药押运已...&lt;br/&gt;&lt;t color='%1'&gt;失败&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;下次好运！...</Chinesesimp>
+			<Chinese>弹药押运已...&lt;br/&gt;&lt;t color='%1'&gt;失败&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;下次好运！...</Chinese>
 		</Key>
 		<Key ID="STR_AMMODELI_MESSAGE3">
 			<Original>Ammo Delivery&lt;br/&gt;&lt;t color='%1'&gt;SUCCESS&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;The boxes of Ammo have been delivered, Well done.</Original>
 			<Russian>Доставка патронов&lt;br/&gt;&lt;t color='%1'&gt;SUCCESS&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;Ящики с патронами успешно доставлены.</Russian>
 			<Czech>Dodávka munice&lt;br/&gt;&lt;t color='%1'&gt;ÚSPĚCH&lt;/t&gt; !!&lt;br/&gt;&lt;br/&gt;Krabice munice byly doručeny, výborně.</Czech>
+			<Chinesesimp>弹药押运&lt;br/&gt;&lt;t color='%1'&gt;送达&lt;/t&gt;！&lt;br/&gt;&lt;br/&gt;弹药已交付，做得很好！</Chinesesimp>
+			<Chinese>弹药押运&lt;br/&gt;&lt;t color='%1'&gt;送达&lt;/t&gt;！&lt;br/&gt;&lt;br/&gt;弹药已交付，做得很好！</Chinese>
 		</Key>
 
 		<!-- mission_HostileHelicopter.sqf -->
@@ -7407,37 +7693,57 @@
 		<!-- mission_BaronRouge.sqf -->
 		<Key ID="STR_BARON_ROUGE">
 			<Original>Baron Rouge</Original>
+			<Chinesesimp>红男爵</Chinesesimp>
+			<Chinese>红男爵</Chinese>
 		</Key>
 		<Key ID="STR_BARON_ROUGE_MESSAGE1">
 			<Original>An ACE pilot named &lt;t color='%2'&gt;Baron Rouge&lt;/t&gt; is patrolling the island. Intercept it and clear the sky!</Original>
+			<Chinesesimp>一名呼号为&lt;t color='%2'&gt;红男爵&lt;/t&gt;的 ACE王牌飞行员正在岛上巡逻。干掉他！！</Chinesesimp>
+			<Chinese>一名呼号为&lt;t color='%2'&gt;红男爵&lt;/t&gt;的 ACE王牌飞行员正在岛上巡逻。干掉他！！</Chinese>
 		</Key>
 		<Key ID="STR_BARON_ROUGE_MESSAGE2">
 			<Original>Congratulation TopGun, The sky is clear again, the enemy aircraft was taken out!</Original>
+			<Chinesesimp>恭喜 TopGun，天空恢复晴朗，敌机被击落！</Chinesesimp>
+			<Chinese>恭喜 TopGun，天空恢复晴朗，敌机被击落！</Chinese>
 		</Key>
 
 		<!-- mission_HealCivilian.sqf -->
 		<Key ID="STR_HEAL_CIV">
 			<Original>Heal Civilian</Original>
+			<Chinesesimp>治愈平民</Chinesesimp>
+			<Chinese>治愈平民</Chinese>
 		</Key>
 		<Key ID="STR_HEAL_CIV_MESSAGE1">
 			<Original>An &lt;t color='#900000'&gt;INFECTED&lt;/t&gt; village detected at &lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt;Go help the medical staff treat the villagers!</Original>
+			<Chinesesimp>在&lt;t color='%1'&gt;%2&lt;/t&gt;发现&lt;t color='#900000'&gt;感染&lt;/t&gt;村庄，&lt;br/&gt;&lt;br/&gt;快去帮助医护人员救治村民吧！</Chinesesimp>
+			<Chinese>在&lt;t color='%1'&gt;%2&lt;/t&gt;发现&lt;t color='#900000'&gt;感染&lt;/t&gt;村庄，&lt;br/&gt;&lt;br/&gt;快去帮助医护人员救治村民吧！</Chinese>
 		</Key>
 		<Key ID="STR_HEAL_CIV_MESSAGE2">
 			<Original>Congratulation Doc, The villagers have been cure of the Disease !&lt;br/&gt;&lt;br/&gt;Your reputation with civilians &lt;t color='#009000'&gt;Increases&lt;/t&gt;!</Original>
+			<Chinesesimp>恭喜医生，村民的病已经治愈了！&lt;br/&gt;&lt;br/&gt;你在平民心目中的声誉 &lt;t color='#009000'&gt;高涨&lt;/t&gt;！</Chinesesimp>
+			<Chinese>恭喜医生，村民的病已经治愈了！&lt;br/&gt;&lt;br/&gt;你在平民心目中的声誉 &lt;t color='#009000'&gt;高涨&lt;/t&gt;！</Chinese>
 		</Key>
 		<Key ID="STR_HEAL_CIV_MESSAGE3">
 			<Original>Bad news, You have been Useless...&lt;br/&gt;Villagers died of the disease.;&lt;br/&gt;&lt;br/&gt;The local Population is unhappy...</Original>
+			<Chinesesimp>坏消息，你变得没用了……&lt;br/&gt;村民都死于该疾病。;&lt;br/&gt;&lt;br/&gt;当地居民不满意...</Chinesesimp>
+			<Chinese>坏消息，你变得没用了……&lt;br/&gt;村民都死于该疾病。;&lt;br/&gt;&lt;br/&gt;当地居民不满意...</Chinese>
 		</Key>
 
 		<!-- mission_KillOfficer.sqf -->
 		<Key ID="STR_HOSTILE_OFFICER">
 			<Original>Neutralize HVT</Original>
+			<Chinesesimp>消灭 HVT</Chinesesimp>
+			<Chinese>消灭 HVT</Chinese>
 		</Key>
 		<Key ID="STR_HOSTILE_OFFICER_MESSAGE1">
 			<Original>An enemy &lt;t color='%2'&gt;Officer&lt;/t&gt; makes ready to fly to their HQ in %1.&lt;br/&gt;He has vital information about us. We need to elimiate him and his guards!</Original>
+			<Chinesesimp>敌方一名&lt;t color='%2'&gt;军官&lt;/t&gt;准备飞往 %1 的HQ。&lt;br/&gt;他掌握了我们的重要情报。我们必须除掉他和他的守卫！</Chinesesimp>
+			<Chinese>敌方一名&lt;t color='%2'&gt;军官&lt;/t&gt;准备飞往 %1 的HQ。&lt;br/&gt;他掌握了我们的重要情报。我们必须除掉他和他的守卫！</Chinese>
 		</Key>
 		<Key ID="STR_HOSTILE_OFFICER_MESSAGE2">
 			<Original>Congratualtion! The Officer has been eliminated, our informations are safe.</Original>
+			<Chinesesimp>祝贺你们！军官已被消灭，我们的情报安全了。</Chinesesimp>
+			<Chinese>祝贺你们！军官已被消灭，我们的情报安全了。</Chinese>
 		</Key>
 
 		<!-- mission_MeetResistance.sqf -->
@@ -7501,6 +7807,8 @@
 		</Key>
 		<Key ID="STR_OUTPOST_MESSAGE_FAIL">
 			<Original>&lt;t color='%1'&gt;FAILURE!&lt;/t&gt;&lt;br/&gt;You killed all the Prisoners...</Original>
+			<Chinesesimp>&lt;t color='%1'&gt;失败案例！&lt;/t&gt;&lt;br/&gt;你杀了所有的囚犯...</Chinesesimp>
+			<Chinese>&lt;t color='%1'&gt;失败案例！&lt;/t&gt;&lt;br/&gt;你杀了所有的囚犯...</Chinese>
 		</Key>
 
 		<!-- mission_SpecialDelivery.sqf -->
@@ -7590,6 +7898,8 @@
 		</Key>
 		<Key ID="STR_INVASION_FAILED">
 			<Original>You have &lt;br/&gt;&lt;t color='%1'&gt;FAILED&lt;/t&gt;!!&lt;br/&gt;to defende %2 from the aggression.&lt;br/&gt;We have lost this sector...</Original>
+			<Chinesesimp>保卫 %2 免受攻击已&lt;br/&gt;&lt;t color='%1'&gt;失败&lt;/t&gt;！！&lt;br/&gt;我们丢失了这个区域...</Chinesesimp>
+			<Chinese>保卫 %2 免受攻击已&lt;br/&gt;&lt;t color='%1'&gt;失败&lt;/t&gt;！！&lt;br/&gt;我们丢失了这个区域...</Chinese>
 		</Key>
 
 		<!-- mission_TownInsurgency.sqf -->
@@ -7597,16 +7907,22 @@
 			<Original>Town Insurgency</Original>
 			<Russian>Городское восстание</Russian>
 			<Czech>Městské povstání</Czech>
+			<Chinesesimp>小镇叛乱</Chinesesimp>
+			<Chinese>小镇叛乱</Chinese>
 		</Key>
 		<Key ID="STR_INSURGENCY_MESSAGE1">
 			<Original>The local population of &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt; is Furious about your lake of Consideration!&lt;br/&gt;They take Weapons and refuse your &lt;t color='%1'&gt;Autorithy&lt;/t&gt;.&lt;br/&gt;Try to calm down the situation and bring the Peace back!</Original>
 			<Russian>Местное население &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt; в ярости из-за ваших действий!&lt;br/&gt;Они берут оружие и отказываются от вашего &lt;t color='%1'&gt;влияния&lt;/t&gt;.&lt;br/&gt;Постарайтесь успокоить ситуацию и вернуть Мир!</Russian>
 			<Czech>Místní obyvatelstvo &lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt; zuří a nemají ohleduplnost!&lt;br/&gt;Vezmou zbraně a odmítnou vaši &lt;t color='%1'&gt;Autoritu.&lt;/t&gt;.&lt;br/&gt;Pokuste se uklidnit situaci a vrátit mír!</Czech>
+			<Chinesesimp>&lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt; 的当地居民对你的暴力统治感到愤怒！&lt;br/&gt;他们拿起武器，消灭你的 &lt;t color='%1'&gt;权威&lt;/t&gt;.&lt;br/&gt;努力平息局势并恢复和平！</Chinesesimp>
+			<Chinese>&lt;br/&gt;&lt;t size='1.25' color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;&lt;br/&gt; 的当地居民对你的暴力统治感到愤怒！&lt;br/&gt;他们拿起武器，消灭你的 &lt;t color='%1'&gt;权威&lt;/t&gt;.&lt;br/&gt;努力平息局势并恢复和平！</Chinese>
 		</Key>
 		<Key ID="STR_INSURGENCY_MESSAGE2">
 			<Original>Nice work!&lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;is a safe place again!&lt;br/&gt;Their belongings are now yours to take!</Original>
 			<Russian>Отличная работа!&lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;безопасно снова!&lt;br/&gt;Их вещи теперь ваши!</Russian>
 			<Czech>Pěkná práce!&lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;je opět bezpečné místo!&lt;br/&gt;Jejich věci jsou nyní vaše!</Czech>
+			<Chinesesimp>干得漂亮！&lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;再一次回归和平！&lt;br/&gt;他们的财产现在归你们了！</Chinesesimp>
+			<Chinese>干得漂亮！&lt;br/&gt;&lt;br/&gt;&lt;t color='%1'&gt;%2&lt;/t&gt;&lt;br/&gt;再一次回归和平！&lt;br/&gt;他们的财产现在归你们了！</Chinese>
 		</Key>
 
 		<!-- mission_VehicleCapture.sqf -->
@@ -7664,87 +7980,135 @@
 		<!-- mission_Roadblock.sqf -->
 		<Key ID="STR_ROADBLOCK">
 			<Original>Random Checkpoints</Original>
+			<Chinesesimp>随机检查站</Chinesesimp>
+			<Chinese>随机检查站</Chinese>
 		</Key>
 		<Key ID="STR_ROADBLOCK_MESSAGE1">
 			<Original>A Checkpoints has been spotted near the marker.&lt;br/&gt;Act fast or they'll call for support!</Original>
+			<Chinesesimp>在标记附近发现了一个检查站。&lt;br/&gt;迅速行动，否则他们会呼叫支援！</Chinesesimp>
+			<Chinese>在标记附近发现了一个检查站。&lt;br/&gt;迅速行动，否则他们会呼叫支援！</Chinese>
 		</Key>
 		<Key ID="STR_ROADBLOCK_MESSAGE2">
 			<Original>The Checkpoints have been cleared, well done.</Original>
+			<Chinesesimp>检查站已清理完毕，做得好。</Chinesesimp>
+			<Chinese>检查站已清理完毕，做得好。</Chinese>
 		</Key>
 
 		<!-- mission_SearchIntel.sqf -->
 		<Key ID="STR_SEARCH_INTEL">
 			<Original>Search for Intels</Original>
+			<Chinesesimp>搜索情报</Chinesesimp>
+			<Chinese>搜索情报</Chinese>
 		</Key>
 		<Key ID="STR_SEARCH_INTEL_MESSAGE1">
 			<Original>Search for %1 Intels in the buildings near the marker.&lt;br/&gt;Extra stealth highly recommended!</Original>
+			<Chinesesimp>在标记附近的建筑物中搜索 %1 情报。&lt;br/&gt;强烈建议多加隐蔽！</Chinesesimp>
+			<Chinese>在标记附近的建筑物中搜索 %1 情报。&lt;br/&gt;强烈建议多加隐蔽！</Chinese>
 		</Key>
 		<Key ID="STR_SEARCH_INTEL_MESSAGE2">
 			<Original>All the Intels have been found, well done.</Original>
+			<Chinesesimp>所有情报已收集，干得漂亮！</Chinesesimp>
+			<Chinese>所有情报已收集，干得漂亮！</Chinese>
 		</Key>
 
 		<!-- mission_CaptureVIP.sqf -->
 		<Key ID="STR_VIP_CAP">
 			<Original>Capture VIP</Original>
+			<Chinesesimp>夺取VIP</Chinesesimp>
+			<Chinese>夺取VIP</Chinese>
 		</Key>
 		<Key ID="STR_VIP_CAP_MESSAGE1">
 			<Original>An important &lt;t color='%1'&gt;V.I.P&lt;/t&gt; is travelling the island.&lt;br/&gt;Intercept his convoy and capture him &lt;t color='%1'&gt;ALIVE&lt;/t&gt;!</Original>
+			<Chinesesimp>一名重要的 &lt;t color='%1'&gt;V.I.P&lt;/t&gt; 正在环岛旅行。&lt;br/&gt;拦截并抓获他，&lt;t color='%1'&gt;记住要活口&lt;/t&gt;!</Chinesesimp>
+			<Chinese>一名重要的 &lt;t color='%1'&gt;V.I.P&lt;/t&gt; 正在环岛旅行。&lt;br/&gt;拦截并抓获他，&lt;t color='%1'&gt;记住要活口&lt;/t&gt;!</Chinese>
 		</Key>
 		<Key ID="STR_VIP_CAP_MESSAGE2">
 			<Original>The V.I.P is &lt;t color='%1'&gt;ESCAPED&lt;/t&gt;!&lt;br/&gt;We have lost a valuable source of Information.&lt;br/&gt;&lt;br/&gt;Better luck next time!</Original>
+			<Chinesesimp>V.I.P &lt;t color='%1'&gt;逃脱&lt;/t&gt;了!&lt;br/&gt;我们失去了一个宝贵的情报来源。&lt;br/&gt;&lt;br/&gt;祝下次好运！</Chinesesimp>
+			<Chinese>V.I.P &lt;t color='%1'&gt;逃脱&lt;/t&gt;了!&lt;br/&gt;我们失去了一个宝贵的情报来源。&lt;br/&gt;&lt;br/&gt;祝下次好运！</Chinese>
 		</Key>
 		<Key ID="STR_VIP_CAP_MESSAGE3">
 			<Original>Congratulation, the V.I.P has been &lt;t color='%1'&gt;CAPTURED&lt;/t&gt;!&lt;br/&gt;Bring him back to any FOB for interrogation.</Original>
+			<Chinesesimp>恭喜，V.I.P 已经被&lt;t color='%1'&gt;抓获&lt;/t&gt;！&lt;br/&gt;把他带回任意一个 FOB 进行审讯。</Chinesesimp>
+			<Chinese>恭喜，V.I.P 已经被&lt;t color='%1'&gt;抓获&lt;/t&gt;！&lt;br/&gt;把他带回任意一个 FOB 进行审讯。</Chinese>
 		</Key>
 
 		<!-- mission_HeliCapture.sqf -->
 		<Key ID="STR_HELI_CAP">
 			<Original>Helicopter Capture</Original>
+			<Chinesesimp>夺取直升机</Chinesesimp>
+			<Chinese>夺取直升机</Chinese>
 		</Key>
 		<Key ID="STR_HELI_CAP_MSG">
 			<Original>A &lt;t color='%2'&gt;%1&lt;/t&gt; has been immobilized, go Repair it and take it for your team!</Original>
+			<Chinesesimp>一架 &lt;t color='%2'&gt;%1&lt;/t&gt; 被迫迫降，去夺取并维修好带回来！</Chinesesimp>
+			<Chinese>一架 &lt;t color='%2'&gt;%1&lt;/t&gt; 被迫迫降，去夺取并维修好带回来！</Chinese>
 		</Key>
 
 		<!-- mission_PrisonerConvoy.sqf -->
 		<Key ID="STR_PRI_CONV">
 			<Original>Prisoners Convoy</Original>
+			<Chinesesimp>解救囚犯</Chinesesimp>
+			<Chinese>解救囚犯</Chinese>
 		</Key>
 		<Key ID="STR_PRI_CONV_MESSAGE1">
 			<Original>An important &lt;t color='%1'&gt;Prisoner Convoy&lt;/t&gt; is travelling the island.&lt;br/&gt;Intercept the convoy and &lt;t color='%1'&gt;FREE&lt;/t&gt; the prisoners!</Original>
+			<Chinesesimp>一名重要的 &lt;t color='%1'&gt;护送囚犯&lt;/t&gt; 正在环岛游行。&lt;br/&gt;拦截并&lt;t color='%1'&gt;释放&lt;/t&gt; 他！</Chinesesimp>
+			<Chinese>一名重要的 &lt;t color='%1'&gt;护送囚犯&lt;/t&gt; 正在环岛游行。&lt;br/&gt;拦截并&lt;t color='%1'&gt;释放&lt;/t&gt; 他！</Chinese>
 		</Key>
 		<Key ID="STR_PRI_CONV_MESSAGE2">
 			<Original>All the Prisoners in the convoy are &lt;br/&gt;&lt;t color='%1'&gt;DEAD&lt;/t&gt;!&lt;br/&gt;We have lost our brothers in Arms, and &lt;t color='%1'&gt;%2&lt;/t&gt; Intel points...</Original>
+			<Chinesesimp>车队中的所有囚犯都 &lt;br/&gt;&lt;t color='%1'&gt;挂了&lt;/t&gt;!&lt;br/&gt;我们失去了我们的战友，和&lt;t color='%1'&gt;%2&lt;/t&gt; 情报积分...</Chinesesimp>
+			<Chinese>车队中的所有囚犯都 &lt;br/&gt;&lt;t color='%1'&gt;挂了&lt;/t&gt;!&lt;br/&gt;我们失去了我们的战友，和&lt;t color='%1'&gt;%2&lt;/t&gt; 情报积分...</Chinese>
 		</Key>
 		<Key ID="STR_PRI_CONV_MESSAGE3">
 			<Original>Congratulation, Our brothers has been &lt;br/&gt;&lt;t color='%1'&gt;RESCUED&lt;/t&gt;!&lt;br/&gt;Bring them back to any FOB.</Original>
+			<Chinesesimp>恭喜，我们的兄弟们重获&lt;br/&gt;&lt;t color='%1'&gt;自由&lt;/t&gt;！&lt;br/&gt;把他们带回任意一个FOB！</Chinesesimp>
+			<Chinese>恭喜，我们的兄弟们重获&lt;br/&gt;&lt;t color='%1'&gt;自由&lt;/t&gt;！&lt;br/&gt;把他们带回任意一个FOB！</Chinese>
 		</Key>
 
 		<!-- mission_RessourceConvoy.sqf -->
 		<Key ID="STR_RSC_CONV">
 			<Original>Supplies Convoy</Original>
+			<Chinesesimp>补给车队</Chinesesimp>
+			<Chinese>补给车队</Chinese>
 		</Key>
 		<Key ID="STR_RSC_CONV_MESSAGE1">
 			<Original>An important &lt;t color='%1'&gt;Supplies Convoy&lt;/t&gt; is travelling the island.&lt;br/&gt;Intercept the convoy and capture the &lt;t color='%1'&gt;Supplies&lt;/t&gt;!</Original>
+			<Chinesesimp>一个重要的&lt;t color='%1'&gt;补给车队&lt;/t&gt; 正在环岛旅行&lt;br/&gt;拦截并夺取 &lt;t color='%1'&gt;补给&lt;/t&gt;！</Chinesesimp>
+			<Chinese>一个重要的&lt;t color='%1'&gt;补给车队&lt;/t&gt; 正在环岛旅行&lt;br/&gt;拦截并夺取 &lt;t color='%1'&gt;补给&lt;/t&gt;！</Chinese>
 		</Key>
 		<Key ID="STR_RSC_CONV_MESSAGE2">
 			<Original>All Ressources in the convoy has been &lt;br/&gt;&lt;t color='%1'&gt;DESTROYED&lt;/t&gt;!&lt;br/&gt;We have lost a valuable source of income.&lt;br/&gt;&lt;br/&gt;Better luck next time!</Original>
+			<Chinesesimp>车队中的所有资源已被 &lt;br/&gt;&lt;t color='%1'&gt;摧毁&lt;/t&gt;!&lt;br/&gt;我们失去了宝贵的收入来源。&lt;br/&gt;&lt;br/&gt;祝下次好运！</Chinesesimp>
+			<Chinese>车队中的所有资源已被 &lt;br/&gt;&lt;t color='%1'&gt;摧毁&lt;/t&gt;!&lt;br/&gt;我们失去了宝贵的收入来源。&lt;br/&gt;&lt;br/&gt;祝下次好运！</Chinese>
 		</Key>
 		<Key ID="STR_RSC_CONV_MESSAGE3">
 			<Original>Congratulation, All Ressources has been &lt;t color='%1'&gt;CAPTURED&lt;/t&gt;!&lt;br/&gt;You make uncle pSiKO proud of you!!</Original>
+			<Chinesesimp>恭喜，所有资源已被&lt;t color='%1'&gt;夺取&lt;/t&gt;！&lt;br/&gt;你让 pSiKO 叔叔为你骄傲！！</Chinesesimp>
+			<Chinese>恭喜，所有资源已被&lt;t color='%1'&gt;夺取&lt;/t&gt;！&lt;br/&gt;你让 pSiKO 叔叔为你骄傲！！</Chinese>
 		</Key>
 
 		<!-- mission_KillBandits.sqf -->
 		<Key ID="STR_KILL_BANDIT">
 			<Original>Kill the Bandits</Original>
+			<Chinesesimp>剿匪</Chinesesimp>
+			<Chinese>剿匪</Chinese>
 		</Key>
 		<Key ID="STR_KILL_BANDIT_MESSAGE1">
 			<Original>A band of ferocious &lt;t color='%1'&gt;Bandits&lt;/t&gt; is robbing the island.&lt;br/&gt;Stop them by all means. You have license to &lt;t color='%1'&gt;KILL&lt;/t&gt;!</Original>
+			<Chinesesimp>一群凶猛的 &lt;t color='%1'&gt;匪徒&lt;/t&gt;在岛上肆意劫掠。&lt;br/&gt;一定要阻止他们。你有&lt;t color='%1'&gt;杀戮许可证&lt;/t&gt;！</Chinesesimp>
+			<Chinese>一群凶猛的 &lt;t color='%1'&gt;匪徒&lt;/t&gt;在岛上肆意劫掠。&lt;br/&gt;一定要阻止他们。你有&lt;t color='%1'&gt;杀戮许可证&lt;/t&gt;！</Chinese>
 		</Key>
 		<Key ID="STR_KILL_BANDIT_MESSAGE2">
 			<Original>The Bandits are &lt;t color='%1'&gt;ESCAPED&lt;/t&gt;!&lt;br/&gt;They will still continue their crimes.&lt;br/&gt;&lt;br/&gt;The local Population is unhappy...</Original>
+			<Chinesesimp>匪徒们&lt;t color='%1'&gt;逃脱&lt;/t&gt;了！&lt;br/&gt;他们还会继续劫掠。&lt;br/&gt;&lt;br/&gt;当地民众并不高兴……</Chinesesimp>
+			<Chinese>匪徒们&lt;t color='%1'&gt;逃脱&lt;/t&gt;了！&lt;br/&gt;他们还会继续劫掠。&lt;br/&gt;&lt;br/&gt;当地民众并不高兴……</Chinese>
 		</Key>
 		<Key ID="STR_KILL_BANDIT_MESSAGE3">
 			<Original>Congratulation, the Bandits are all &lt;t color='%1'&gt;DEAD&lt;/t&gt;!&lt;br/&gt;The roads are safer now.</Original>
+			<Chinesesimp>恭喜，匪徒们都被 &lt;t color='%1'&gt;杀完了&lt;/t&gt;!&lt;br/&gt;现在道路更安全了。</Chinesesimp>
+			<Chinese>恭喜，匪徒们都被 &lt;t color='%1'&gt;杀完了&lt;/t&gt;!&lt;br/&gt;现在道路更安全了。</Chinese>
 		</Key>
 
 		<!-- speak_manager.sqf -->
@@ -7854,6 +8218,8 @@
 		</Key>
 		<Key ID="STR_SPEAKMANAGER14">
 			<Original>You have to deliver this precious %1 to my father.</Original>
+			<Chinesesimp>你必须把这个珍贵的 %1 交给我父亲。</Chinesesimp>
+			<Chinese>你必须把这个珍贵的 %1 交给我父亲。</Chinese>
 		</Key>
 		<Key ID="STR_SPEAKMANAGER15">
 			<Original>Go to see my friend %1 for more infos.</Original>
@@ -8171,6 +8537,8 @@
 		<Key ID="STR_PAR_ST_02">
 			<Original>%1 XP reward for %2's healing.</Original>
 			<French>%1 XP bonus pour la guérison de %2.</French>
+			<Chinesesimp>治疗 %2 ，奖励 %1 经验。</Chinesesimp>
+			<Chinese>治疗 %2 ，奖励 %1 经验。</Chinese>
 		</Key>
 		<Key ID="STR_PAR_UC_01">
 			<Original>I need a Medic !!</Original>
@@ -8195,10 +8563,14 @@
 		<Key ID="STR_PAR_UC_03">
 			<Original>Hey %1, All your units are down, Help them!</Original>
 			<French>Hé %1, Toutes tes unités sont à terre, Aide-les !</French>
+			<Chinesesimp>嘿，%1，你的所有友军都瘫倒在地了，帮帮他们吧！</Chinesesimp>
+			<Chinese>嘿，%1，你的所有友军都瘫倒在地了，帮帮他们吧！</Chinese>
 		</Key>
 		<Key ID="STR_PAR_DE_01">
 			<Original>Bad news, we lost soldier %1...</Original>
 			<French>Mauvaise nouvelle, on as perdu le soldat %1...</French>
+			<Chinesesimp>坏消息，士兵 %1 牺牲了...</Chinesesimp>
+			<Chinese>坏消息，士兵 %1 牺牲了...</Chinese>
 		</Key>
 	</Package>
 
@@ -8227,10 +8599,14 @@
 		<Key ID="STR_TAXI_ACTION3">
 			<Original>-- TAXI Ejection</Original>
 			<French>-- TAXI Éjection</French>
+			<Chinesesimp>-- TAXI 弹射</Chinesesimp>
+			<Chinese>-- TAXI 弹射</Chinese>
 		</Key>
 		<Key ID="STR_TAXI_TOO_CLOSE">
 			<Original>Sorry, too close from HQ, no Taxi.</Original>
 			<French>Désolé, trop proche d'un HQ, pas de Taxi.</French>
+			<Chinesesimp>对不起，离HQ太近，没有Taxi。</Chinesesimp>
+			<Chinese>对不起，离HQ太近，没有Taxi。</Chinese>
 		</Key>
 		<Key ID="STR_TAXI_ONLY_ONE">
 			<Original>Sorry, only one Taxi at time.</Original>
@@ -8254,6 +8630,8 @@
 		</Key>
 		<Key ID="STR_TAXI_SELECT">
 			<Original>Taxi Destination</Original>
+			<Chinesesimp>Taxi目的地</Chinesesimp>
+			<Chinese>Taxi目的地</Chinese>
 		</Key>
 		<Key ID="STR_TAXI_LANDING">
 			<Original>The Taxi lands...</Original>
@@ -8541,34 +8919,50 @@
 		<Key ID="STR_WAREHOUSE_SHOP">
 			<Original>-- WareHouse --</Original>
 			<French>-- Entrepôt --</French>
+			<Chinesesimp>-- 仓库 --</Chinesesimp>
+			<Chinese>-- 仓库 --</Chinese>
 		</Key>
 		<Key ID="STR_WAREHOUSE_ENTER">
 			<Original>-- ENTER WAREHOUSE</Original>
+			<Chinesesimp>-- 进入仓库</Chinesesimp>
+			<Chinese>-- 进入仓库</Chinese>
 		</Key>
 		<Key ID="STR_WAREHOUSE_ACTION1">
 			<Original>LOAD</Original>
 			<French>CHARGER</French>
+			<Chinesesimp>加载</Chinesesimp>
+			<Chinese>加载</Chinese>
 
 		</Key>
 		<Key ID="STR_WAREHOUSE_ACTION2">
 			<Original>UNLOAD</Original>
 			<French>DECHARGER</French>
+			<Chinesesimp>卸出</Chinesesimp>
+			<Chinese>卸出</Chinese>
 		</Key>
 		<Key ID="STR_WAREHOUSE_LOAD">
 			<Original>STORE GOODS</Original>
 			<French>STOCKER MARCHANDISES</French>
+			<Chinesesimp>存储货物</Chinesesimp>
+			<Chinese>存储货物</Chinese>
 		</Key>
 		<Key ID="STR_WAREHOUSE_LOAD_MSG">
 			<Original>&lt;t align='center'&gt;Store %1 to Warehouse&lt;br/&gt;you receive %2 AMMO.&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
 			<French>&lt;t align='center'&gt;Deposer %1 à l'Entrepôt&lt;br/&gt;vous recevez %2 AMMO.&lt;br/&gt;Êtes-vous sûr ?&lt;/t&gt;</French>
+			<Chinesesimp>&lt;t align='center'&gt;将 %1 存储至仓库&lt;br/&gt;你将收到 %2 弹药。&lt;br/&gt;确定吗？&lt;/t&gt;</Chinesesimp>
+			<Chinese>&lt;t align='center'&gt;将 %1 存储至仓库&lt;br/&gt;你将收到 %2 弹药。&lt;br/&gt;确定吗？&lt;/t&gt;</Chinese>
 		</Key>
 		<Key ID="STR_WAREHOUSE_UNLOAD">
 			<Original>TAKE GOODS</Original>
 			<French>PRENDRE MARCHANDISES</French>
+			<Chinesesimp>取出货物</Chinesesimp>
+			<Chinese>取出货物</Chinese>
 		</Key>
 		<Key ID="STR_WAREHOUSE_UNLOAD_MSG">
 			<Original>&lt;t align='center'&gt;Take %1 from Warehouse&lt;br/&gt;for %2 AMMO.&lt;br/&gt;Are you sure ?&lt;/t&gt;</Original>
 			<French>&lt;t align='center'&gt;Prendre %1 de l'Entrepôt&lt;br/&gt;pour %2 AMMO.&lt;br/&gt;Êtes-vous sûr ?&lt;/t&gt;</French>
+			<Chinesesimp>&lt;t align='center'&gt;从仓库取出 %1 &lt;br/&gt;将花费 %2 弹药。&lt;br/&gt;确定吗？&lt;/t&gt;</Chinesesimp>
+			<Chinese>&lt;t align='center'&gt;从仓库取出 %1 &lt;br/&gt;将花费 %2 弹药。&lt;br/&gt;确定吗？&lt;/t&gt;</Chinese>
 		</Key>
 	</Package>
 
@@ -8675,81 +9069,113 @@
 			<Russian>-------- VAM Initialized --------</Russian>
 			<Korean>차량 형상 관리자 불러오기 및 초기화 완료</Korean>
 			<Czech>--------SVV inicializován--------</Czech>
+			<Chinesesimp>-------- 车辆配置管理器已初始化 --------</Chinesesimp>
+			<Chinese>-------- 车辆配置管理器已初始化 --------</Chinese>
 		</Key>
 		<Key ID="STR_VAM_MAIN_MENU_NAME">
 			<Original>--- PAINT and SHOP ---</Original>
+			<Chinesesimp>--- 喷漆和购物 --</Chinesesimp>
+			<Chinese>--- 喷漆和购物 --</Chinese>
 		</Key>
 		<Key ID="STR_VAM_RESET_VEHICLE">
 			<Original>Reset</Original>
 			<Russian>Сбросить</Russian>
 			<Korean>초기화</Korean>
 			<Czech>Reset</Czech>
+			<Chinesesimp>重置</Chinesesimp>
+			<Chinese>重置</Chinese>
 		</Key>
 		<Key ID="STR_VAM_CONFIRM_MENU">
 			<Original>Confirm</Original>
 			<Russian>Ок</Russian>
 			<Korean>확인</Korean>
 			<Czech>Potvrdit</Czech>
+			<Chinesesimp>确认</Chinesesimp>
+			<Chinese>确认</Chinese>
 		</Key>
 		<Key ID="STR_VAM_CURRENT_VEHICLE">
 			<Original>Current Vehicle :</Original>
 			<Russian>Текущая машина :</Russian>
 			<Korean>현  재    차  량 :</Korean>
 			<Czech>Stávájící Vozidlo</Czech>
+			<Chinesesimp>当前载具</Chinesesimp>
+			<Chinese>当前载具</Chinese>
 		</Key>
 		<Key ID="STR_VAM_FREE_VEHICLE">
 			<Original>Free Space :</Original>
+			<Chinesesimp>剩余空间：</Chinesesimp>
+			<Chinese>剩余空间：</Chinese>
 		</Key>
 		<Key ID="STR_VAM_FOB_CONDITION_CHECK_FAILED">
 			<Original>You should be in %1m from FOB.</Original>
 			<Russian>Вы должны быть в %1м от FOB.</Russian>
 			<Korean>FOB에서 %1m 안에 있어야 합니다.</Korean>
 			<Czech>Měli byste být %1m od FOB.</Czech>
+			<Chinesesimp>你应该距离 FOB %1m 了。</Chinesesimp>
+			<Chinese>你应该距离 FOB %1m 了。</Chinese>
 		</Key>
 		<Key ID="STR_VAM_COMPLETE_RESET">
 			<Original>Reset complete</Original>
 			<Russian>Сброс выполнен</Russian>
 			<Korean>초기화 완료</Korean>
 			<Czech>Reset complete</Czech>
+			<Chinesesimp>重置完成</Chinesesimp>
+			<Chinese>重置完成</Chinese>
 		</Key>
 		<Key ID="STR_VAM_CAMOUFLAGE">
 			<Original>Camouflage</Original>
 			<Russian>Камуфляж</Russian>
 			<Korean>위장</Korean>
 			<Czech>Maskovat</Czech>
+			<Chinesesimp>伪装</Chinesesimp>
+			<Chinese>伪装</Chinese>
 		</Key>
 		<Key ID="STR_VAM_COMPONENT">
 			<Original>Component</Original>
 			<Russian>Компонент</Russian>
 			<Korean>구성품</Korean>
 			<Czech>Komponent</Czech>
+			<Chinesesimp>部件</Chinesesimp>
+			<Chinese>部件</Chinese>
 		</Key>
 		<Key ID="STR_VAM_NO_CAMOUFLAGE">
 			<Original>There is no camouflage.</Original>
 			<Russian>Это не камуфляж.</Russian>
 			<Korean>위장이 없습니다.</Korean>
 			<Czech>Neexistuje žádná kamufláž.</Czech>
+			<Chinesesimp>没有任何伪装</Chinesesimp>
+			<Chinese>没有任何伪装</Chinese>
 		</Key>
 		<Key ID="STR_VAM_NO_COMPONENT">
 			<Original>There is no component.</Original>
 			<Russian>Это не компонент.</Russian>
 			<Korean>구성품이 없습니다.</Korean>
 			<Czech>Neexistuje žádná Komponent.</Czech>
+			<Chinesesimp>没有任何部件</Chinesesimp>
+			<Chinese>没有任何部件</Chinese>
 		</Key>
 		<Key ID="STR_VAM_NO_ARSENAL">
 			<Original>There is no items.</Original>
+			<Chinesesimp>没有任何物品</Chinesesimp>
+			<Chinese>没有任何物品</Chinese>
 		</Key>
 		<Key ID="STR_VAM_ARSENAL">
 			<Original>Arsenal Items</Original>
+			<Chinesesimp>武器库物品</Chinesesimp>
+			<Chinese>武器库物品</Chinese>
 		</Key>
 		<Key ID="STR_VAM_ARSENAL_VEHICLE">
 			<Original>Put to Cargo</Original>
+			<Chinesesimp>装入库存</Chinesesimp>
+			<Chinese>装入库存</Chinese>
 		</Key>
 		<Key ID="STR_VAM_MARID_V1_NOTICE">
 			<Original>Your Marid is outdated one.\nVehicle component setup may not be loaded next time.\nPlease contact with your server admin.</Original>
 			<Russian>Ваш Marid устарел.\nНастройка компонентов автомобиля может не загрузиться в следующий раз.\nПожалуйста, свяжитесь с администратором вашего сервера.</Russian>
 			<Korean>당신의 마리드는 오래된 것입니다.\n다음 번에 차량 구성품 설정을 불러올 수 없을 것입니다.\n해당 서버 관리자와 연락을 취해보십시오.</Korean>
 			<Czech>Váš Marid je zastaralý.\nNastavení Komponent vozidla se nemusí příště načíst.\nKontaktujte prosím svého správce serveru.</Czech>
+			<Chinesesimp>下次可能无法加载车辆组件设置，\n请联系服务器管理员。</Chinesesimp>
+			<Chinese>下次可能无法加载车辆组件设置，\n请联系服务器管理员。</Chinese>
 		</Key>
 
 		<!-- Camouflage/위장 -->
@@ -8758,30 +9184,40 @@
 			<Russian>Синий</Russian>
 			<Korean>청군</Korean>
 			<Czech>Modrý</Czech>
+			<Chinesesimp>北约</Chinesesimp>
+			<Chinese></Chinese>
 		</Key>
 		<Key ID="STR_VAM_GREEN_CAMO">
 			<Original>Green</Original>
 			<Russian>Зеленый</Russian>
 			<Korean>녹색</Korean>
 			<Czech>Zelený</Czech>
+			<Chinesesimp>绿色</Chinesesimp>
+			<Chinese>绿色</Chinese>
 		</Key>
 		<Key ID="STR_VAM_BLACK_CAMO">
 			<Original>Black</Original>
 			<Russian>Черный</Russian>
 			<Korean>검정색</Korean>
 			<Czech>Černý</Czech>
+			<Chinesesimp>纯黑</Chinesesimp>
+			<Chinese>纯黑</Chinese>
 		</Key>
 		<Key ID="STR_VAM_AAF_CAMO">
 			<Original>AAF</Original>
 			<Russian>AAF</Russian>
 			<Korean>AAF</Korean>
 			<Czech>AAF</Czech>
+			<Chinesesimp>AAF</Chinesesimp>
+			<Chinese>AAF</Chinese>
 		</Key>
 		<Key ID="STR_VAM_DARK_GREEN_CAMO">
 			<Original>Dark Green</Original>
 			<Russian>Темно зеленый</Russian>
 			<Korean>어두운 녹색</Korean>
 			<Czech>Tmavozelený</Czech>
+			<Chinesesimp>墨绿</Chinesesimp>
+			<Chinese>墨绿</Chinese>
 		</Key>
 	</Package>
 
