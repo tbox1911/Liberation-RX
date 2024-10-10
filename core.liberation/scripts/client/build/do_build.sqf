@@ -392,10 +392,13 @@ while { true } do {
 			};
 
 			// Crewed vehicle
-			if ( ([_classname, uavs] call F_itemIsInClass) || manned ) then {
+			if ( manned ) then {
 				[_vehicle] call F_forceCrew;
 				_vehicle setVariable ["GRLIB_vehicle_manned", true, true];
 				player hcSetGroup [group _vehicle];
+			};
+			if (([_classname, uavs] call F_itemIsInClass)) then {
+				[_vehicle] call F_forceCrew;
 				player linkItem "B_UavTerminal";
 			};
 

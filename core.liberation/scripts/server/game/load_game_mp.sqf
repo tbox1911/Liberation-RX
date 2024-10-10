@@ -360,8 +360,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 				};
 			};
 			if ( [_nextclass, uavs] call F_itemIsInClass ) then {
-				_nextbuilding setVehicleLock "LOCKEDPLAYER";
-				{ _nextbuilding lockTurret [_x, false] } forEach (allTurrets _nextbuilding);
+				_nextbuilding setVariable ["R3F_LOG_disabled", true, true];
 			};
 		} else {
 			if ( !(_owner in ["", "public"]) && count _x > 5 ) then {

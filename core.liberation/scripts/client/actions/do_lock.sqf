@@ -18,7 +18,8 @@ if (local _vehicle) then {
 } forEach (_vehicle getVariable ["R3F_LOG_objets_charges", []]) + (_vehicle getVariable ["GRLIB_ammo_truck_load", []]);
 
 if ([_vehicle, uavs] call F_itemIsInClass) then {
-	player disableUAVConnectability [_vehicle, true]
+	player disableUAVConnectability [_vehicle, true];
+    player connectTerminalToUAV objNull;
 };
 
 hintSilent format [localize "STR_DO_LOCK", [typeOf _vehicle] call F_getLRXName];
