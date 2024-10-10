@@ -115,7 +115,7 @@ if ( isServer ) then {
 					stats_civilians_killed_by_players = stats_civilians_killed_by_players + 1;
 				};
 
-				if ( _killer_side == GRLIB_side_friendly && (!isPlayer _killer)) then {
+				if ( _killer_side == GRLIB_side_friendly && !isPlayer _killer ) then {
 					private _owner_id = (vehicle _killer) getVariable ["GRLIB_vehicle_owner", ""];
 					if (_owner_id in ["", "server"]) then {
 						_owner_id = (_killer getVariable ["PAR_Grp_ID", "0_0"]) splitString "_" select 1;
@@ -124,7 +124,7 @@ if ( isServer ) then {
 						_owner_player = _owner_id call BIS_fnc_getUnitByUID;
 						[_owner_player, -GRLIB_civ_penalties] call F_addScore;
 						[_owner_player, -1] call F_addReput;
-						_msg = format ["%1, Your AI kill Civilian !!", name _owner_player] ;
+						_msg = format ["%1, Your AI kill a Civilian !!", name _owner_player] ;
 						[gamelogic, _msg] remoteExec ["globalChat", 0];
 						[name _unit, GRLIB_civ_penalties, _owner_player] remoteExec ["remote_call_civ_penalty", 0];
 					};

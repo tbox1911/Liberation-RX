@@ -6,7 +6,11 @@ _unit enableWeaponDisassembly false;
 
 // Check Veh perms
 _unit removeAllEventHandlers "GetInMan";
-_unit addEventHandler ["GetInMan", { _this spawn vehicle_permissions }];
+_unit addEventHandler ["GetInMan", {
+	params ["_unit", "_role", "_vehicle"];
+	[_unit, _role, _vehicle] spawn vehicle_permissions;
+	[_vehicle] spawn F_vehicleDefense;
+}];
 _unit removeAllEventHandlers "SeatSwitchedMan";
 _unit addEventHandler ["SeatSwitchedMan", { _this spawn vehicle_permissions }];
 

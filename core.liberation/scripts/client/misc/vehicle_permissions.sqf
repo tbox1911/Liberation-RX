@@ -78,7 +78,6 @@ if (_doeject) then {
 	};
 	hintSilent _msg;
 } else {
-	[_vehicle] call F_vehicleDefense;
 	_vehicle setVariable ["GRLIB_counter_TTL", nil, true];
 	_vehicle setVariable ["GRLIB_last_killer", nil, true];
 };
