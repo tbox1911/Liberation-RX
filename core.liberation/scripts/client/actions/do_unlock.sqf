@@ -9,8 +9,8 @@ if (local _vehicle) then {
 	sleep 1;
 };
 
-if (typeOf _vehicle in uavs_vehicles)then {
-	player enableUAVConnectability [_vehicle, true]
+if (typeOf _vehicle in uavs_vehicles) then {
+	player enableUAVConnectability [_vehicle, true];
 };
 
 hintSilent format [localize "STR_DO_UNLOCK", [typeOf _vehicle] call F_getLRXName];

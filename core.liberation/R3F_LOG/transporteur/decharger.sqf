@@ -69,10 +69,7 @@ else
 			if (!(_objet_a_decharger isKindOf "AllVehicles") || _est_deplacable) then
 			{
 				R3F_LOG_mutex_local_verrou = false;
-				if (typeOf _objet_a_decharger in uavs_vehicles) then {
-					player enableUAVConnectability [_objet_a_decharger, true];
-					player connectTerminalToUAV objNull;
-				};
+				if (typeOf _objet_a_decharger in uavs_vehicles) then { player enableUAVConnectability [_objet_a_decharger, true] };
 				[_objet_a_decharger, player, 0, true] spawn R3F_LOG_FNCT_objet_deplacer;
 			}
 			else

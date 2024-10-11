@@ -15,8 +15,7 @@ if (_score == 0) then {
 };
 
 // disable UAVs
-private _my_uavs = allUnitsUAV select { [player, _x] call is_owner };
-{ player disableUAVConnectability [_x, true] } forEach _my_uavs;
+[player] call F_correctUAVT;
 player connectTerminalToUAV objNull;
 
 // HCI Command IA

@@ -12,6 +12,7 @@ F_checkClass = compileFinal preprocessFileLineNumbers "scripts\shared\functions\
 F_checkVictory = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_checkVictory.sqf";
 F_clearCargo = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_clearCargo.sqf";
 F_correctHEGL = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_correctHEGL.sqf";
+F_correctUAVT = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_correctUAVT.sqf";
 F_correctLaserBatteries = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_correctLaserBatteries.sqf";
 F_deathSound = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_deathSound.sqf";
 F_deleteWaypoints = compileFinal preprocessFileLineNumbers "scripts\shared\functions\F_deleteWaypoints.sqf";

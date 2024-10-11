@@ -362,6 +362,7 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 					_nextbuilding addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1 }];
 					_nextbuilding allowCrewInImmobile [true, false];
 					_nextbuilding setUnloadInCombat [true, false];
+					_nextbuilding setAutonomous true;
 				};
 			};
 			if ( _nextclass in uavs_vehicles ) then {

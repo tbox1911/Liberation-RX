@@ -56,8 +56,8 @@ else
 				
 				_objet attachTo [R3F_LOG_PUBVAR_point_attache, [] call R3F_LOG_FNCT_3D_tirer_position_degagee_ciel];
 				if (typeOf _objet in uavs_vehicles) then {	
-					player connectTerminalToUAV objNull;
 					player disableUAVConnectability [_objet, true];
+					player connectTerminalToUAV objNull;					
 				};
 				
 				systemChat format [STR_R3F_LOG_action_charger_fait,

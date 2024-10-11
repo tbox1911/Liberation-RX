@@ -30,6 +30,7 @@ medic_sling_typename = "B_Slingload_01_Medevac_F";
 medic_heal_typename = "Land_MedicalTent_01_NATO_generic_open_F";
 mobile_respawn = "Land_TentDome_F";
 mobile_respawn_bag = "B_Kitbag_Base";
+uav_terminal_typename = "B_UavTerminal";
 medicalbox_typename = "Box_B_UAV_06_medical_F";
 helipad_typename = "Land_HelipadSquare_F";
 playerbox_typename = "Land_PlasticCase_01_medium_olive_CBRN_F";

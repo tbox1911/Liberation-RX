@@ -70,6 +70,10 @@ if ( dorecycle == 1 && !(isNull _vehicle) && (alive _vehicle || _veh_class in al
 	{ deleteVehicle _x } forEach (crew _vehicle);
 	deleteVehicle _vehicle;
 
+	if (_veh_class in uavs_vehicles) then {
+		[player] call F_correctUAVT;
+	};
+
 	stats_vehicles_recycled = stats_vehicles_recycled + 1;
 	publicVariable "stats_vehicles_recycled";
 };

@@ -402,7 +402,10 @@ while { true } do {
 			if (_classname in uavs_vehicles) then {
 				[_vehicle] call F_forceCrew;
 				_vehicle setVariable ["GRLIB_vehicle_manned", true, true];
-				player linkItem "B_UavTerminal";
+				if ((player getSlotItemName 612) != uav_terminal_typename) then {
+					player linkItem uav_terminal_typename;
+					[player] call F_correctUAVT;
+				};
 			};
 
 			// AI Static Weapon
@@ -414,6 +417,7 @@ while { true } do {
 				_vehicle addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1 }];
 				_vehicle allowCrewInImmobile [true, false];
 				_vehicle setUnloadInCombat [true, false];
+				_vehicle setAutonomous true;
 				player disableUAVConnectability [_vehicle, true];
 			};
 

@@ -18,3 +18,4 @@ if !([hmd _unit] call is_allowed_item) then {_unit unlinkItem (hmd _unit)};
 
 [_unit] call F_correctLaserBatteries;
 [_unit] call F_correctHEGL;
+[_unit] call F_correctUAVT;
