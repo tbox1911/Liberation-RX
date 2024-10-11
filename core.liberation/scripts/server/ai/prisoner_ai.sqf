@@ -46,5 +46,8 @@ if (!_canmove) then {
 	_unit setVariable ["GRLIB_is_prisoner", true, true];
 };
 
-if (!isDedicated && !hasInterface && isMultiplayer) exitWith { [_unit, _friendly] remoteExec ["prisoner_ai_loop", 2] };
-[_unit, _friendly] spawn prisoner_ai_loop;
+if (isServer) then {
+	[_unit, _friendly] spawn prisoner_ai_loop;
+} else {
+	[_unit, _friendly] remoteExec ["prisoner_ai_loop", 2];
+};
