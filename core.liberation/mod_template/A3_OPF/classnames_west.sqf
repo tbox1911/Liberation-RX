@@ -19,6 +19,7 @@ ammo_sling_typename = "Land_Pod_Heli_Transport_04_ammo_F";
 medic_sling_typename = "Land_Pod_Heli_Transport_04_medevac_F";
 pilot_classname = "O_Helipilot_F";
 crewman_classname = "O_crew_F";
+uavs_terminal_typename = "O_UavTerminal";
 chimera_vehicle_overide = [
   ["B_Heli_Transport_01_F", "O_Heli_Light_02_dynamicLoadout_F"]
 ];
