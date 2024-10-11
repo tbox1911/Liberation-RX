@@ -82,7 +82,7 @@ light_vehicles = [
 	["B_T_LSV_01_unarmed_F",2,25,10,GRLIB_perm_inf],
 	["B_T_LSV_01_armed_F",5,100,10,GRLIB_perm_log],
 	["B_T_LSV_01_AT_F",5,125,10,GRLIB_perm_log],
-	["B_T_UGV_01_olive_F",5,10,5,GRLIB_perm_inf],
+	["B_T_UGV_01_olive_F",5,50,5,GRLIB_perm_inf],
 	["B_T_UGV_01_rcws_olive_F",5,250,5,GRLIB_perm_tank]
 ];
 

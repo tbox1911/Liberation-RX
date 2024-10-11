@@ -82,15 +82,15 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 
 R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 [
-	["B_UGV_01_F",5],
-	["B_UGV_01_rcws_F",5]
+	["B_T_UGV_01_olive_F",5],
+	["B_T_UGV_01_rcws_olive_F",5]
 ];
 
 R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 [
 	["B_T_Quadbike_01_F", 5],
-	["B_T_UGV_01_olive_F", 15],
-	["B_T_UGV_01_rcws_olive_F", 15]	
+	["B_T_UGV_01_olive_F", 70],
+	["B_T_UGV_01_rcws_olive_F", 80]	
 ];
 
 R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
