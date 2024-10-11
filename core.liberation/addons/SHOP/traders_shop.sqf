@@ -44,11 +44,11 @@ lbClear 111;
 	lnbAddRow [111, [_entrytext, str (_x select 1)]];
 
 	_icon = getText ( _cfg >> (_x select 0) >> "icon");
-	if(isText  (configFile >> "CfgVehicleIcons" >> _icon)) then {
+	if(isText (configFile >> "CfgVehicleIcons" >> _icon)) then {
 		_icon = (getText (configFile >> "CfgVehicleIcons" >> _icon));
 	};
-	lnbSetPicture  [111, [((lnbSize 111) select 0) - 1, 0],_icon];
-    lnbSetData [111, [((lnbSize 111) select 0) - 1, 0], (_x select 0)];
+	lnbSetPicture [111, [((lnbSize 111) select 0) - 1, 0],_icon];
+	lnbSetData [111, [((lnbSize 111) select 0) - 1, 0], (_x select 0)];
 
 	if ( (_x select 1) <= _ammo_collected ) then {
 		_ctrl_buy lnbSetColor [[((lnbSize 111) select 0) - 1, 0], [1,1,1,1]];
@@ -82,7 +82,7 @@ while { dialog && alive player } do {
 
 		private _sell_classnames = ["LandVehicle","Air","Ship","ReammoBox_F","Items_base_F"];
 		_sell_list = [getPosATL player nearEntities [_sell_classnames, 50], {
-			alive _x && (count (crew _x) == 0 || ([_x, uavs] call F_itemIsInClass)) &&
+			alive _x && (count (crew _x) == 0 || (typeOf _x in uavs_vehicles)) &&
 			locked _x != 2 &&
 			!(_x getVariable ["R3F_LOG_disabled", false]) &&
 			isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) &&
@@ -105,10 +105,10 @@ while { dialog && alive player } do {
 			lnbAddRow [110, [_entrytext, str (_x select 1)]];
 
 			_icon = getText ( _cfg >> (_x select 0) >> "icon");
-			if(isText  (configFile >> "CfgVehicleIcons" >> _icon)) then {
+			if(isText (configFile >> "CfgVehicleIcons" >> _icon)) then {
 				_icon = (getText (configFile >> "CfgVehicleIcons" >> _icon));
 			};
-			lnbSetPicture  [110, [((lnbSize 110) select 0) - 1, 0],_icon];
+			lnbSetPicture [110, [((lnbSize 110) select 0) - 1, 0],_icon];
 		} foreach _sell_list_dlg;
 
 		lbSetCurSel [110, -1];

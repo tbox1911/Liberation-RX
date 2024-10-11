@@ -23,7 +23,7 @@ while { dialog && alive player } do {
 
 		// list outside
 		_vehicles_out = (player nearEntities [["LandVehicle","Air","Ship",playerbox_typename], 150]) select {
-			alive _x && (count (crew _x) == 0 || ([_x, uavs] call F_itemIsInClass)) &&
+			alive _x && (count (crew _x) == 0 || (typeOf _x in uavs_vehicles)) &&
 			(_x distance2D lhd > GRLIB_fob_range) &&
 			(_x getVariable ["GRLIB_vehicle_owner", ""] == PAR_Grp_ID) &&
 			(isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull])) &&
@@ -92,7 +92,7 @@ while { dialog && alive player } do {
 				if (_timer >= time) exitWith { hintSilent _msg; sleep 2 };
 				if (count GRLIB_virtual_garage >= GRLIB_garage_size) exitWith { hintSilent (format [localize "STR_FULL_GARAGE", GRLIB_garage_size]); sleep 2 };
 				if (damage _vehicle != 0) exitWith { hintSilent "Damaged Vehicles cannot be Parked !"; sleep 2 };
-				if (count (crew _vehicle) > 0 && !([_vehicle, uavs] call F_itemIsInClass)) exitWith { hintSilent localize "STR_CANT_PARKUAV"; sleep 2 };
+				if (count (crew _vehicle) > 0 && !(typeOf _x in uavs_vehicles)) exitWith { hintSilent localize "STR_CANT_PARKUAV"; sleep 2 };
 
 				ctrlEnable [ 120, false ];
 				private _color = _vehicle getVariable ["GRLIB_vehicle_color", ""];

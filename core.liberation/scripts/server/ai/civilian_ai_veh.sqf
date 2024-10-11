@@ -13,7 +13,8 @@ if ((tolower typeOf _vehicle) find "bicycle" > -1) exitWith {};
 
 if (count (crew _vehicle) == 0) exitWith {};
 
-#define _incd_repair 20     // must match speak_manger.sqf (_msg)
+// must match speak_manger.sqf (_msg)
+#define _incd_repair 20
 #define _incd_fuel 22
 
 private _driver = driver _vehicle;
@@ -29,7 +30,9 @@ private _vehicle_damage = 0;
 private _countVehDamage = {
 	params ["_vehicle"];
 	private _damage = 0;
-	{ _damage = _damage + _x } forEach (getAllHitPointsDamage _vehicle select 2);
+	private _hitpoints = (getAllHitPointsDamage _vehicle select 2);
+	if (isNil "_hitpoints") exitWith { _damage };
+	{ _damage = _damage + _x } forEach _hitpoints;
 	_damage;
 };
 
@@ -116,7 +119,7 @@ while { alive _vehicle && alive _driver } do {
 						[_winner, _bonus] remoteExec ["F_addScore", 2];
 						[_winner, 5] remoteExec ["F_addReput", 2];
 					};
-					sleep 5;					
+					sleep 5;
 				};
 			};
 			_vehicle setVariable ["GRLIB_civ_incd", 0, true];

@@ -1,6 +1,6 @@
 GRLIB_checkAction_Lock = {
 	params ["_target", "_unit"];
-	(GRLIB_player_is_menuok && alive _target && count (crew _target) == 0 && (GRLIB_permission_vehicles && [_unit, _target] call is_owner) && locked _target < 2 && GRLIB_vehicle_lock)
+	(GRLIB_player_is_menuok && alive _target && (count (crew _target) == 0 || (typeOf _target in uavs_vehicles)) && (GRLIB_permission_vehicles && [_unit, _target] call is_owner) && locked _target < 2 && GRLIB_vehicle_lock)
 };
 
 GRLIB_checkAction_Unlock = {
@@ -20,17 +20,17 @@ GRLIB_checkAction_Paint = {
 
 GRLIB_checkAction_Eject = {
 	params ["_target", "_unit"];
-	(GRLIB_player_is_menuok && alive _target && count (crew _target) > 0 && [_unit, _target] call is_owner && !([_target, uavs] call F_itemIsInClass))
+	(GRLIB_player_is_menuok && alive _target && count (crew _target) > 0 && [_unit, _target] call is_owner && !(typeOf _target in uavs_vehicles))
 };
 
 GRLIB_checkAction_Flip = {
 	params ["_target", "_unit"];
-	(GRLIB_player_is_menuok && alive _target && side group _target != GRLIB_side_enemy && ((vectorUp _target) select 2 < 0.60) && locked _target < 2 && !([_target, uavs] call F_itemIsInClass))
+	(GRLIB_player_is_menuok && alive _target && side group _target != GRLIB_side_enemy && ((vectorUp _target) select 2 < 0.60) && locked _target < 2 && !(typeOf _target in uavs_vehicles))
 };
 
 GRLIB_checkAction_DeFuel = {
 	params ["_target", "_unit"];
-	(GRLIB_player_is_menuok && alive _target && [_unit, _target] call is_owner && locked _target < 2 && fuel _target >= 0.25)
+	(GRLIB_player_is_menuok && alive _target && [_unit, _target] call is_owner && locked _target < 2 && fuel _target >= 0.25 && !(typeOf _target in uavs_vehicles))
 };
 
 GRLIB_checkAction_ReFuel = {
@@ -70,7 +70,7 @@ GRLIB_checkAction_Pickup_Weapons = {
 
 GRLIB_checkAction_UnpackInventory = {
 	params ["_target", "_unit"];
-	(GRLIB_player_is_menuok && alive _target && [_unit, _target] call is_owner  && load _target > 0.2)
+	(GRLIB_player_is_menuok && alive _target && [_unit, _target] call is_owner && load _target > 0.2)
 };
 
 GRLIB_checkAction_Speak = {

@@ -87,7 +87,7 @@ while { true } do {
 		private _vehicles_list = vehicles select {
 			(alive _x) && !(isObjectHidden _x) &&
 			(count (crew _x) > 0) && (side _x == GRLIB_side_friendly) &&
-			!([_x, (uavs + static_vehicles_AI)] call F_itemIsInClass)
+			!(typeOf _x in uavs_vehicles + static_vehicles_AI)
 		};
 		{
 			private _nextvehicle = _x;

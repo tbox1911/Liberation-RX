@@ -69,8 +69,9 @@ else
 			if (!(_objet_a_decharger isKindOf "AllVehicles") || _est_deplacable) then
 			{
 				R3F_LOG_mutex_local_verrou = false;
-				if ([_objet_a_decharger, uavs] call F_itemIsInClass) then {
+				if (typeOf _objet_a_decharger in uavs_vehicles) then {
 					player enableUAVConnectability [_objet_a_decharger, true];
+					player connectTerminalToUAV objNull;
 				};
 				[_objet_a_decharger, player, 0, true] spawn R3F_LOG_FNCT_objet_deplacer;
 			}
@@ -97,7 +98,7 @@ else
 
 				if (count _pos_degagee > 0) then {
 					detach _objet_a_decharger;
-					if ([_objet_a_decharger, uavs] call F_itemIsInClass) then { player enableUAVConnectability [_objet_a_decharger, true] };
+					if (typeOf _objet_a_decharger in uavs_vehicles) then { player enableUAVConnectability [_objet_a_decharger, true] };
 					_objet_a_decharger setPos _pos_degagee;
 					_objet_a_decharger setVectorDirAndUp [[-cos getDir _transporteur, sin getDir _transporteur, 0] vectorCrossProduct surfaceNormal _pos_degagee, surfaceNormal _pos_degagee];
 					_objet_a_decharger setVelocity [0, 0, 0];

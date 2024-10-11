@@ -46,7 +46,13 @@ if (isServer) then {
 } else { waitUntil {sleep 0.1; !isNil "infantry_units"} };
 
 // All the UAVs must be declared here
-uavs = uavs_def + uavs_west;
+uavs_vehicles = [];
+{
+	private _isUav = (getNumber (configfile >> "CfgVehicles" >> (_x select 0) >> "isUav") == 1);
+	if ([(_x select 0), (uavs_def + uavs_west)] call F_itemIsInClass && _isUav) then {
+		uavs_vehicles pushBackUnique (_x select 0);
+	};
+} foreach light_vehicles + heavy_vehicles + air_vehicles;
 
 // *** BADDIES ***
 _path = format ["mod_template\%1\classnames_east.sqf", GRLIB_mod_east];
@@ -213,7 +219,7 @@ all_friendly_classnames = [];
 air_vehicles_classnames = [] + opfor_troup_transports_heli;
 { air_vehicles_classnames pushback (_x select 0); } foreach air_vehicles;
 
-opfor_troup_transports_truck  = opfor_troup_transports_truck  + [opfor_transport_truck];
+opfor_troup_transports_truck = opfor_troup_transports_truck + [opfor_transport_truck];
 
 // *** BUILDINGS ***
 buildings = [
@@ -350,7 +356,7 @@ if ( isNil "a3w_truck_open" ) then {
 // Static Weapons
 blufor_statics = [];
 {
-	if (!([( _x select 0), uavs] call F_itemIsInClass)) then { blufor_statics pushback ( _x select 0) };
+	if !(( _x select 0) in uavs_vehicles) then { blufor_statics pushback ( _x select 0) };
 } foreach static_vehicles;
 
 list_static_weapons = [resistance_squad_static] + blufor_statics + opfor_statics;
@@ -459,7 +465,7 @@ GRLIB_vehicle_blacklist = [
 
 // Recycleable objects
 GRLIB_recycleable_blacklist = [
-    FOB_typename,
+	FOB_typename,
 	FOB_outpost,
 	FOB_sign,
 	Warehouse_typename,
@@ -595,7 +601,7 @@ GRLIB_ide_traps = [
 	"Land_GarbageBarrel_01_F",
 	"Land_Sacks_heap_F",
 	"Land_CanisterFuel_Blue_F",
-  	"Land_CanisterFuel_White_F",
+	"Land_CanisterFuel_White_F",
 	"Land_BarrelTrash_F",
 	"Land_GasTank_01_khaki_F",
 	"Land_FirstAidKit_01_closed_F",

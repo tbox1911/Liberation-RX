@@ -98,7 +98,7 @@ _can_transport_cargo_cout = 0;
 if (_can_transport_cargo_cout <= 0) then {_can_transport_cargo = false;};
 
 // UAV cannot be towed
-if ([_classe, uavs] call F_itemIsInClass) then {
+if (_classe in uavs_vehicles) then {
 	_can_be_towed = false;
 };
 

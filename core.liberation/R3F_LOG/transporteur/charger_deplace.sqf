@@ -55,7 +55,7 @@ else
 				waitUntil {sleep 1; _objet getVariable "R3F_LOG_est_deplace_par" != player};
 				
 				_objet attachTo [R3F_LOG_PUBVAR_point_attache, [] call R3F_LOG_FNCT_3D_tirer_position_degagee_ciel];
-				if ([_objet, uavs] call F_itemIsInClass) then {	
+				if (typeOf _objet in uavs_vehicles) then {	
 					player connectTerminalToUAV objNull;
 					player disableUAVConnectability [_objet, true];
 				};

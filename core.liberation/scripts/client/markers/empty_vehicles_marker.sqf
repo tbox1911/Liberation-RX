@@ -35,7 +35,7 @@ while { true } do {
 		(getObjectType _x >= 8) && (isDamageAllowed _x) &&
 		!([_x, _no_marker_classnames] call F_itemIsInClass) &&
 		(alive _x) && !(isObjectHidden _x) && isNull (attachedTo _x) &&
-		(count (crew _x) == 0 || ([_x, (uavs + static_vehicles_AI)] call F_itemIsInClass)) &&
+		(count (crew _x) == 0 || (typeOf _x in uavs_vehicles + static_vehicles_AI)) &&
 		(isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull])) &&
 		(
 			(side _x == GRLIB_side_friendly) ||

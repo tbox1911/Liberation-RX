@@ -9,7 +9,7 @@ if (local _vehicle) then {
 	sleep 1;
 };
 
-if ([_vehicle, uavs] call F_itemIsInClass) then {
+if (typeOf _vehicle in uavs_vehicles)then {
 	player enableUAVConnectability [_vehicle, true]
 };
 

@@ -191,7 +191,7 @@ while { true } do {
 		_dist = (_radius / 2) + 1.5;
 		if (_dist > 5) then { _dist = 5 };
 		if (_classname == FOB_carrier) then { _dist = 35; build_rotation = 90 };
-		if (_classname == "Land_BagBunker_Tower_F") then { build_rotation = 90; build_altitude = -0.2  };
+		if (_classname == "Land_BagBunker_Tower_F") then { build_rotation = 90; build_altitude = -0.2 };
 		if (_classname == "Land_vn_bunker_big_02") then { build_rotation = 270 };
 		if (_classname == "Land_vn_b_trench_bunker_01_02") then { build_rotation = 270; build_altitude = -0.2 };
 		if (_classname isKindOf "Slingload_base_F") then { _radius = 5 };
@@ -392,14 +392,29 @@ while { true } do {
 			};
 
 			// Crewed vehicle
-			if ( manned ) then {
+			if (manned) then {
 				[_vehicle] call F_forceCrew;
 				_vehicle setVariable ["GRLIB_vehicle_manned", true, true];
 				player hcSetGroup [group _vehicle];
 			};
-			if (([_classname, uavs] call F_itemIsInClass)) then {
+
+			// UAVs
+			if (_classname in uavs_vehicles) then {
 				[_vehicle] call F_forceCrew;
+				_vehicle setVariable ["GRLIB_vehicle_manned", true, true];
 				player linkItem "B_UavTerminal";
+			};
+
+			// AI Static Weapon
+			if (_classname in static_vehicles_AI) then {
+				_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_static }];
+				[_vehicle] call F_forceCrew;
+				_vehicle setVariable ["GRLIB_vehicle_manned", true, true];
+				_vehicle setVehicleLock "LOCKED";
+				_vehicle addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1 }];
+				_vehicle allowCrewInImmobile [true, false];
+				_vehicle setUnloadInCombat [true, false];
+				player disableUAVConnectability [_vehicle, true];
 			};
 
 			if (_classname isKindOf "LandVehicle" || _classname isKindOf "Air") then {
@@ -483,13 +498,6 @@ while { true } do {
 			// Static Weapon
 			if (_classname in list_static_weapons) then {
 				_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_static }];
-				// AI Static Weapon
-				if (_classname in static_vehicles_AI) then {
-					[_vehicle] call F_forceCrew;
-					_vehicle setVariable ["GRLIB_vehicle_manned", true, true];
-					_vehicle setVehicleLock "LOCKEDPLAYER";
-					_vehicle addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1 }];
-				};
 			};
 
 			// Magic ClutterCutter

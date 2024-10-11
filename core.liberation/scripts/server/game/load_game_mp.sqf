@@ -337,6 +337,11 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 			_nextbuilding setAmmoCargo 0;
 		};
 
+		if ( _hascrew ) then {
+			[_nextbuilding] call F_forceCrew;
+			_nextbuilding setVariable ["GRLIB_vehicle_manned", true, true];
+		};		
+
 		if ( _owner != "" ) then {
 			if (_owner == "public") then {
 				_nextbuilding setVariable ["GRLIB_vehicle_owner", "public", true];
@@ -353,13 +358,13 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 				{ _nextbuilding lockTurret [_x, false] } forEach (allTurrets _nextbuilding);
 				_nextbuilding addEventHandler ["HandleDamage", { _this call damage_manager_static }];
 				if (_nextclass in static_vehicles_AI) then {
-					_nextbuilding setVehicleLock "LOCKEDPLAYER";
+					_nextbuilding setVehicleLock "LOCKED";
 					_nextbuilding addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1 }];
 					_nextbuilding allowCrewInImmobile [true, false];
 					_nextbuilding setUnloadInCombat [true, false];
 				};
 			};
-			if ( [_nextclass, uavs] call F_itemIsInClass ) then {
+			if ( _nextclass in uavs_vehicles ) then {
 				_nextbuilding setVariable ["R3F_LOG_disabled", true, true];
 			};
 		} else {
@@ -394,11 +399,6 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 					{[_nextbuilding, _x] call attach_object_direct} forEach _lst_grl;
 				};
 			};
-		};
-
-		if ( _hascrew ) then {
-			[_nextbuilding] call F_forceCrew;
-			_nextbuilding setVariable ["GRLIB_vehicle_manned", true, true];
 		};
 	} foreach _s3;
 
