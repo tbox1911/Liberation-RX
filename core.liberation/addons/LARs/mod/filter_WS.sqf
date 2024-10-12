@@ -36,15 +36,3 @@ GRLIB_MOD_signature = GRLIB_MOD_signature + _A3_Items + ["B_","O_","I_","U_"];
 	"
 	configClasses (configfile >> "CfgGlasses" )
 ) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
-
-// Magazines
-(
-	"
-	getNumber (_x >> 'scope') > 1 &&
-	(getNumber (_x >> 'type') == 256 || (getText (_x >> 'type') find '256') >= 0) &&
-	tolower (configName _x) find '_tracer' < 0 &&
-    ((getText (_x >> 'author')) == 'Bohemia Interactive' || (getText (_x >> 'author')) == 'Rotators Collective') &&
-	([(configName _x)] call is_allowed_item)
-	"
-	configClasses (configfile >> "CfgMagazines")
-) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x)} ;
