@@ -54,7 +54,7 @@ if (["3CB_", GRLIB_mod_east, true] call F_startsWith) then {
 };
 // Add CWR Weapons
 if (["CWR3_", GRLIB_mod_east, true] call F_startsWith) then {
-    GRLIB_MOD_signature = GRLIB_MOD_signature + ["cwr3"] + ["CUP_"];
+	GRLIB_MOD_signature = GRLIB_MOD_signature + ["cwr3"] + ["CUP_"];
 };
 // Add FFAA Weapons
 if (["FFAA_", GRLIB_mod_east, true] call F_startsWith) then {
@@ -79,13 +79,13 @@ if (["UNS_", GRLIB_mod_east, true] call F_startsWith) then {
 };
 // Add IFA3 Weapons
 if (["IFA_", GRLIB_mod_east, true] call F_startsWith) then {
-    GRLIB_MOD_signature = GRLIB_MOD_signature + ["LIB_","B_LIB_","G_LIB_","H_LIB_","U_LIB_","V_LIB_"];
+	GRLIB_MOD_signature = GRLIB_MOD_signature + ["LIB_","B_LIB_","G_LIB_","H_LIB_","U_LIB_","V_LIB_"];
 };
 // Add DLC: Spearhead 1944 (WW2) Weapons
 if (["SPE_", GRLIB_mod_east, true] call F_startsWith) then {
-    GRLIB_MOD_signature = GRLIB_MOD_signature + ["SPE_","U_SPE_","V_SPE_","B_SPE_","H_SPE_","G_SPE_"];
+	GRLIB_MOD_signature = GRLIB_MOD_signature + ["SPE_","U_SPE_","V_SPE_","B_SPE_","H_SPE_","G_SPE_"];
 };
 // Add DLC: UFP (Ukrainian Faction Project) Weapons
 if (["RHS_UFP", GRLIB_mod_east, true] call F_startsWith) then {
-    GRLIB_MOD_signature = GRLIB_MOD_signature + ["afou_weap_","U_B_afou_","vest_afou_","bp_afougf_","H_B_afou_"];
+	GRLIB_MOD_signature = GRLIB_MOD_signature + ["afou_weap_","U_B_afou_","vest_afou_","bp_afougf_","H_B_afou_"];
 };

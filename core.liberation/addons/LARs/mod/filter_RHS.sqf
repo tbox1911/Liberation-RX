@@ -15,7 +15,7 @@ GRLIB_MOD_signature = GRLIB_MOD_signature + ["rhs"];
 (
 	"
 	getText (_x >> 'DLC') == GRLIB_mod_west &&
-	([(configName _x)] call is_allowed_item)  &&
+	([(configName _x)] call is_allowed_item) &&
 	((configName _x) iskindof 'Bag_Base')
 	"
 	configClasses (configfile >> "CfgVehicles" )
