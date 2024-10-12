@@ -18,8 +18,8 @@ repair_sling_typename = "B_Slingload_01_Repair_F";
 fuel_sling_typename = "B_Slingload_01_Fuel_F";
 ammo_sling_typename = "B_Slingload_01_Ammo_F";
 medic_sling_typename = "B_Slingload_01_Medevac_F";
-pilot_classname = "B_Helipilot_F";
-crewman_classname = "B_crew_F";
+pilot_classname = "B_T_Helipilot_F";
+crewman_classname = "B_T_Crew_F";
 uavs_terminal_typename = "B_UavTerminal";
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
@@ -44,7 +44,6 @@ infantry_units_west = [
 ];
 
 units_loadout_overide = [
-	"B_crew_F"
 ];
 
 // *** RESISTANCE - FIA Blu
