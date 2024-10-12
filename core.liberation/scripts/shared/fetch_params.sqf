@@ -36,6 +36,7 @@ GRLIB_TFR_enabled = isClass(configfile >> "CfgPatches" >> "task_force_radio"); /
 GRLIB_UNS_enabled = isClass(configFile >> "CfgPatches" >> "uns_main"); // Returns true if Unsung is enabled
 GRLIB_WS_enabled = isClass(configFile >> "CfgPatches" >> "data_f_lxWS"); // Returns true if WS is enabled
 GRLIB_ASZ_enabled = isClass(configFile >> "CfgPatches" >> "mas_itl_lite_weapons"); // Returns true if Italian ASZ is enabled
+GRLIB_SMA_enabled = isClass(configFile >> "CfgPatches" >> "SMA_CMORE"); // Returns true if Specialist Military Arms (SMA) is enabled
 
 // Classename MOD source
 [] call compileFinal preprocessFileLineNumbers "mod_template\mod_init.sqf";

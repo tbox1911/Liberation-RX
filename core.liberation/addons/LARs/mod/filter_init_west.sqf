@@ -6,6 +6,10 @@ if (GRLIB_TFR_enabled) then {
 if (GRLIB_ACE_enabled) then {
 	[] call compileFinal preprocessFileLineNumbers "addons\LARs\mod\filter_ACE.sqf";
 };
+// Add SMA Weapons
+if (GRLIB_SMA_enabled) then {
+	[] call compileFinal preprocessFileLineNumbers "addons\LARs\mod\filter_SMA.sqf";
+};
 // Add ArmA3 Weapons
 if (["A3_", GRLIB_mod_west, true] call F_startsWith) then {
 	[] call compileFinal preprocessFileLineNumbers "addons\LARs\mod\filter_A3.sqf";
@@ -84,3 +88,14 @@ if (["SPE_", GRLIB_mod_west, true] call F_startsWith) then {
 if (["UFP_BLU", GRLIB_mod_west, true] call F_startsWith) then {
 	[] call compileFinal preprocessFileLineNumbers "addons\LARs\mod\filter_UFP.sqf";
 };
+
+// Magazines (common to All)
+(
+	"
+	getNumber (_x >> 'scope') > 1 &&
+	(getNumber (_x >> 'type') == 256 || (getText (_x >> 'type') find '256') >= 0) &&
+	tolower (configName _x) find '_tracer' < 0 &&
+	([(configName _x)] call is_allowed_item)
+	"
+	configClasses (configfile >> "CfgMagazines")
+) apply { GRLIB_whitelisted_from_arsenal pushBackUnique (configName _x)} ;
