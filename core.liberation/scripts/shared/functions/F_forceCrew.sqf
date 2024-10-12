@@ -22,7 +22,7 @@ private _aircraft = (_vehicle isKindOf "Air");
 	if (_side == GRLIB_side_enemy) then {
 		_x addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
 		if (!_aircraft) then {
-			_path = format ["mod_template\%1\loadout\crewman.sqf", GRLIB_mod_east];
+			_path = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_east, tolower crewman_classname];
 			[_path, _x] call F_getTemplateFile;
 			[_x] spawn reammo_ai;
 		};
@@ -31,7 +31,7 @@ private _aircraft = (_vehicle isKindOf "Air");
 	if (_side == GRLIB_side_friendly) then {
 		_x addEventHandler ["HandleDamage", { _this call damage_manager_friendly }];
 		if (!_aircraft) then {
-			_path = format ["mod_template\%1\loadout\crewman.sqf", GRLIB_mod_west];
+			_path = format ["mod_template\%1\loadout\%2.sqf", GRLIB_mod_west, tolower crewman_classname];
 			[_path, _x] call F_getTemplateFile;
 			[_x] spawn reammo_ai;
 		};
