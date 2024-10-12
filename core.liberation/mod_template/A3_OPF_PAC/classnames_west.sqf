@@ -21,7 +21,7 @@ pilot_classname = "O_T_Helipilot_F";
 crewman_classname = "O_T_crew_F";
 uavs_terminal_typename = "O_UavTerminal";
 chimera_vehicle_overide = [
-  ["B_Heli_Transport_01_F", "O_Heli_Light_02_dynamicLoadout_F"]
+	["B_Heli_Transport_01_F", "O_Heli_Light_02_dynamicLoadout_F"]
 ];
 
 // [CLASSNAME, MANPOWER, AMMO, FUEL, RANK]
