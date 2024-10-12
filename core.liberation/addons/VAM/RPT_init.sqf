@@ -71,9 +71,9 @@ VAM_arsenal_cargo_class_names = [
 ];
 
 // Default source for Shop
-VAM_arsenal_enable_weapons = true;
+VAM_arsenal_enable_weapons = false;
 VAM_arsenal_enable_magazines = true;
-VAM_arsenal_enable_uniforms = true;
+VAM_arsenal_enable_uniforms = false;
 VAM_arsenal_enable_backpacks = false;
 VAM_arsenal_enable_glasses = false;
 

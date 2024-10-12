@@ -1,5 +1,8 @@
 diag_log "--- Server Init start ---";
 
+[] call compileFinal preprocessFileLineNumbers "scripts\server\sector\init_sectors.sqf";
+[] call compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionArrays.sqf";
+
 // EventHandler
 addMissionEventHandler ['HandleDisconnect', {
 	params ["_unit", "_id", "_uid", "_name"];

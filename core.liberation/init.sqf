@@ -22,16 +22,18 @@ GRLIB_ACE_enabled = false;
 [] call compileFinal preprocessFileLineNumbers "scripts\shared\fetch_params.sqf";
 [] call compileFinal preprocessFileLineNumbers "scripts\shared\classnames.sqf";
 
+if (!isDedicated && hasInterface) then {
+	[] spawn compileFinal preprocessFileLineNumbers "scripts\client\init_client.sqf";
+};
+
 if (!abort_loading) then {
 	[] call compileFinal preprocessFileLineNumbers "scripts\shared\init_shared.sqf";
-	[] call compileFinal preprocessFileLineNumbers "scripts\shared\init_sectors.sqf";
-	[] call compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionArrays.sqf";
 	[] spawn compileFinal preprocessFileLineNumbers "addons\VAM\RPT_init.sqf";
 
 	if (GRLIB_ACE_enabled) then {
-		[] call compileFinal preprocessFileLineNumbers "scripts\shared\init_ace.sqf";
+		[] spawn compileFinal preprocessFileLineNumbers "scripts\shared\init_ace.sqf";
 	} else {
-		[] call compileFinal preprocessFileLineNumbers "R3F_LOG\init.sqf";
+		[] spawn compileFinal preprocessFileLineNumbers "R3F_LOG\init.sqf";
 	};
 
 	if (isServer) then {
@@ -51,10 +53,6 @@ if (!abort_loading) then {
 		diag_log "--- LRX Startup Error ---";
 		diag_log abort_loading_msg;
 	};
-};
-
-if (!isDedicated && hasInterface) then {
-	[] spawn compileFinal preprocessFileLineNumbers "scripts\client\init_client.sqf";
 };
 
 diag_log "--- Init stop ---";

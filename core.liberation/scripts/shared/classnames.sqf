@@ -43,7 +43,7 @@ if (GRLIB_MFR_enabled) then {
 if (isServer) then {
 	[] call F_calcUnitsCost;
 	publicVariable "infantry_units";
-} else { waitUntil {sleep 0.1; !isNil "infantry_units"} };
+} else { waitUntil {sleep 1; !isNil "infantry_units"} };
 
 // All the UAVs must be declared here
 uavs_vehicles = [];

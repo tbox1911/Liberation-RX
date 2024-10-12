@@ -27,6 +27,11 @@ lbClear _timeout_list;
 } forEach ["Enabled", "Disabled"];
 
 // Build Mission list
+if (isNil "LRX_A3W_sectors_init") then {
+	[] call compileFinal preprocessFileLineNumbers "scripts\server\a3w\missions\setupMissionArrays.sqf";
+} else {
+	{ waitUntil {sleep 0.2; LRX_A3W_sectors_init} };
+};
 {
 	_mission_list lbAdd format["%1", (_x select 0) splitString "_" select 1];
 } forEach SideMissions;

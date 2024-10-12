@@ -192,7 +192,7 @@
 	R3F_LOG_FNCT_transporteur_charger_auto = compile preprocessFileLineNumbers "R3F_LOG\transporteur\charger_auto.sqf";
 
 	// Un serveur d�di� n'en a pas besoin
-	if !(isDedicated) then
+	if (!isDedicated && hasInterface) then
 	{
 		// Le client attend que le serveur ai cr�� et publi� la r�f�rence de l'objet servant de point d'attache
 		waitUntil {sleep 0.5;!isNil "R3F_LOG_PUBVAR_point_attache"};

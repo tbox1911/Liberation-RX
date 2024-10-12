@@ -77,5 +77,12 @@ sectors_airSpawn = [];
  };
 } forEach (sectors_capture + sectors_bigtown + sectors_factory + sectors_military);
 
+publicVariable "sectors_allSectors";
+publicVariable "sectors_bigtown";
+publicVariable "sectors_factory";
+publicVariable "sectors_military";
+publicVariable "sectors_tower";
+
+sleep 1;
 GRLIB_sectors_init = true;
 publicVariable "GRLIB_sectors_init";

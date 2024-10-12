@@ -33,90 +33,40 @@
 
 if (isDedicated) exitWith {};
 
-// Init
-LRX_arsenal_init_done = false;
-
-// Initalize Blacklist
-GRLIB_blacklisted_from_arsenal = [];			// Global blacklist (All objects will be removed from Arsenal)
-
-// Initalize Withelist
-GRLIB_whitelisted_from_arsenal = [];			// Global whitelist when Arsenal is enabled
-
-// Initalize Arsenal
-GRLIB_personal_arsenal = [];
 
 // Filters disabled
 waitUntil { sleep 1; !isNil "GRLIB_filter_arsenal" };
 if (GRLIB_filter_arsenal == 0) exitWith {
-    LRX_arsenal_init_done = true;
 	//Enable ACE Arsenal for no filter cases
 	if (GRLIB_ACE_enabled) then { [myLARsBox, true, false] call ace_arsenal_fnc_initBox };
+    LRX_arsenal_init_done = true;
+	publicVariable "LRX_arsenal_init_done";
     diag_log "--- LRX Arsenal filters disabled.";
 };
 
-// Init functions
-LARs_fnc_createList = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\fn_createList.sqf";
-LARs_fnc_removeBlack = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\fn_removeBlack.sqf";
-LARs_fnc_updateArsenal = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\fn_updateArsenal.sqf";
-LARs_fnc_blacklistArsenal = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\fn_blacklistArsenal.sqf";
-LARs_fnc_initOverride = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\override\fn_initOverride.sqf";
-LARs_fnc_overrideVAButtonDown = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\override\fn_overrideVAButtonDown.sqf";
-LARs_fnc_overrideVATemplateOK = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\override\fn_overrideVATemplateOK.sqf";
-
-// LARs Init
-[] call LARs_fnc_initOverride;
-
-// Import list from Mod template
-private _path = format ["mod_template\%1\arsenal.sqf", GRLIB_mod_west];
-[_path] call F_getTemplateFile;
-
-// Default LRX blacklist
-GRLIB_blacklisted_from_arsenal = [
-	"Zasleh2",
-	"CMFlare",
-	"SmokeLauncher",
-	"FlareLauncher",
-	"Laserdesignator",
-	"weapon_Fighter"
-] + blacklisted_bag + blacklisted_weapon;
-
-// UAVs Terminal
-private _blacklisted_uavs_terminal = [
-	"B_UavTerminal",
-	"O_UavTerminal",
-	"I_UavTerminal",
-	"I_E_UavTerminal",
-	"C_UavTerminal"
-] - [uavs_terminal_typename];
-GRLIB_blacklisted_from_arsenal = GRLIB_blacklisted_from_arsenal + _blacklisted_uavs_terminal;
-
-// Default LRX whitelist
-GRLIB_whitelisted_from_arsenal = [
-	mobile_respawn_bag,
-	uavs_terminal_typename,
-	"B_Parachute"
-] + whitelisted_from_arsenal;
-
-// Default Personal Arsenal
-private _default_personal_arsenal = [
-	["FirstAidKit", 15],
-	["Medikit", 2],
-	["ToolKit", 2],
-	// container: ["class", [[[items],[nb]],[[magazine],[nb]]],0]
-	["B_AssaultPack_blk", [[[],[]],[[],[]]],0],
-	["B_AssaultPack_blk",[[["FirstAidKit"],[1]],[["11Rnd_45ACP_Mag","30Rnd_65x39_caseless_mag"],[2,2]]],0],
-	["V_Chestrig_blk", [[[],[]],[[],[]]],0],
-	["arifle_MX_Hamr_pointer_F", 2],
-	["30Rnd_65x39_caseless_mag", 20],
-	["launch_RPG32_F", 1],
-	["RPG32_F",4],
-	["HandGrenade", 6],
-	["SatchelCharge_Remote_Mag", 2]
-];
-if (isNil "personal_arsenal") then { personal_arsenal = _default_personal_arsenal };
-
 // Personal Arsenal
 if (GRLIB_filter_arsenal == 4) exitWith {
+	// Initalize Personal Arsenal
+	GRLIB_personal_arsenal = [];
+		
+	// Default Personal Arsenal
+	private _default_personal_arsenal = [
+		["FirstAidKit", 15],
+		["Medikit", 2],
+		["ToolKit", 2],
+		// container: ["class", [[[items],[nb]],[[magazine],[nb]]],0]
+		["B_AssaultPack_blk", [[[],[]],[[],[]]],0],
+		["B_AssaultPack_blk",[[["FirstAidKit"],[1]],[["11Rnd_45ACP_Mag","30Rnd_65x39_caseless_mag"],[2,2]]],0],
+		["V_Chestrig_blk", [[[],[]],[[],[]]],0],
+		["arifle_MX_Hamr_pointer_F", 2],
+		["30Rnd_65x39_caseless_mag", 20],
+		["launch_RPG32_F", 1],
+		["RPG32_F",4],
+		["HandGrenade", 6],
+		["SatchelCharge_Remote_Mag", 2]
+	];
+	if (isNil "personal_arsenal") then { personal_arsenal = _default_personal_arsenal };
+
 	private _player_arsenal = profileNamespace getVariable [format ["GRLIB_personal_arsenal_%1", GRLIB_game_ID], nil];
 	if (isNil "_player_arsenal") then {
 		GRLIB_personal_arsenal = personal_arsenal;
@@ -133,35 +83,102 @@ if (GRLIB_filter_arsenal == 4) exitWith {
 
 	diag_log format ["--- LRX Personal Arsenal initialized. (%1)", count GRLIB_personal_arsenal];
 	LRX_arsenal_init_done = true;
+	publicVariable "LRX_arsenal_init_done";
 };
 
-// Mod signature
-GRLIB_MOD_signature = [];
+// Init functions
+LARs_fnc_createList = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\fn_createList.sqf";
+LARs_fnc_removeBlack = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\fn_removeBlack.sqf";
+LARs_fnc_updateArsenal = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\fn_updateArsenal.sqf";
+LARs_fnc_blacklistArsenal = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\fn_blacklistArsenal.sqf";
+LARs_fnc_initOverride = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\override\fn_initOverride.sqf";
+LARs_fnc_overrideVAButtonDown = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\override\fn_overrideVAButtonDown.sqf";
+LARs_fnc_overrideVATemplateOK = compileFinal preprocessFileLineNumbers "addons\LARs\blacklistArsenal\functions\override\fn_overrideVATemplateOK.sqf";
 
-// Add Mod Items (Weapons,Uniform,etc.)
-[] call compileFinal preprocessFileLineNumbers "addons\LARs\mod\filter_init_west.sqf";
-[] call compileFinal preprocessFileLineNumbers "addons\LARs\mod\filter_init_east.sqf";
+if (GRLIB_filter_arsenal in [1,2,3]) then {
+	// LARs Init
+	[] call LARs_fnc_initOverride;
 
-// Dedup list
-GRLIB_MOD_signature = GRLIB_MOD_signature arrayIntersect GRLIB_MOD_signature;
-GRLIB_whitelisted_from_arsenal = GRLIB_whitelisted_from_arsenal arrayIntersect GRLIB_whitelisted_from_arsenal;
-GRLIB_blacklisted_from_arsenal = GRLIB_blacklisted_from_arsenal arrayIntersect GRLIB_blacklisted_from_arsenal;
+	if (isNil "LRX_arsenal_init_done") then {
+		// Lock Init
+		LRX_arsenal_init_done = false;
+		publicVariable "LRX_arsenal_init_done";
 
-// Initialize Arsenal
-if (GRLIB_ACE_enabled) then {
-	// Ace compat.
-	[myLARsBox, false, false] call ace_arsenal_fnc_initBox;
-	[myLARsBox, GRLIB_whitelisted_from_arsenal, false] call ace_arsenal_fnc_addVirtualItems;
-	[myLARsBox, GRLIB_blacklisted_from_arsenal, false] call ace_arsenal_fnc_removeVirtualItems;	
-} else {
-	// Arma VA
-	[myLARsBox, ["GRLIB_whitelisted_from_arsenal", "GRLIB_blacklisted_from_arsenal"], false, "Liberation", { false }] call LARs_fnc_blacklistArsenal;
-	waitUntil {sleep 1; !isNil {myLARsBox getVariable "LARs_arsenal_Liberation_cargo"}};
-	private _cargo = myLARsBox getVariable ["LARs_arsenal_Liberation_cargo", []];
-	myLARsBox setVariable ["bis_addVirtualWeaponCargo_cargo", _cargo];
+		// Initalize Blacklist
+		GRLIB_blacklisted_from_arsenal = [];			// Global blacklist (All objects will be removed from Arsenal)
+
+		// Initalize Withelist
+		GRLIB_whitelisted_from_arsenal = [];			// Global whitelist when Arsenal is enabled
+
+		// Mod signature
+		GRLIB_MOD_signature = [];						// Used to filter several MOD items		
+
+		// Import list from Mod template
+		private _path = format ["mod_template\%1\arsenal.sqf", GRLIB_mod_west];
+		[_path] call F_getTemplateFile;
+
+		// Default LRX blacklist
+		GRLIB_blacklisted_from_arsenal = [
+			"Zasleh2",
+			"CMFlare",
+			"SmokeLauncher",
+			"FlareLauncher",
+			"Laserdesignator",
+			"weapon_Fighter"
+		] + blacklisted_bag + blacklisted_weapon;
+
+		// UAVs Terminal
+		private _blacklisted_uavs_terminal = [
+			"B_UavTerminal",
+			"O_UavTerminal",
+			"I_UavTerminal",
+			"I_E_UavTerminal",
+			"C_UavTerminal"
+		] - [uavs_terminal_typename];
+		GRLIB_blacklisted_from_arsenal = GRLIB_blacklisted_from_arsenal + _blacklisted_uavs_terminal;
+
+		// Default LRX whitelist
+		GRLIB_whitelisted_from_arsenal = [
+			mobile_respawn_bag,
+			uavs_terminal_typename,
+			"B_Parachute"
+		] + whitelisted_from_arsenal;
+
+		// Add Mod Items (Weapons,Uniform,etc.)
+		[] call compileFinal preprocessFileLineNumbers "addons\LARs\mod\filter_init_west.sqf";
+		[] call compileFinal preprocessFileLineNumbers "addons\LARs\mod\filter_init_east.sqf";
+
+		// Dedup list
+		GRLIB_MOD_signature = GRLIB_MOD_signature arrayIntersect GRLIB_MOD_signature;
+		GRLIB_whitelisted_from_arsenal = GRLIB_whitelisted_from_arsenal arrayIntersect GRLIB_whitelisted_from_arsenal;
+		GRLIB_blacklisted_from_arsenal = GRLIB_blacklisted_from_arsenal arrayIntersect GRLIB_blacklisted_from_arsenal;
+
+		// MP share :)
+		publicVariable "GRLIB_MOD_signature";
+		publicVariable "GRLIB_whitelisted_from_arsenal";
+		publicVariable "GRLIB_blacklisted_from_arsenal";
+		sleep 1;
+
+		// Init done
+		LRX_arsenal_init_done = true;
+		publicVariable "LRX_arsenal_init_done";
+	} else {
+		waitUntil { sleep 1; LRX_arsenal_init_done };
+	};
+
+	// Initialize Arsenal
+	if (GRLIB_ACE_enabled) then {
+		// Ace compat.
+		[myLARsBox, false, false] call ace_arsenal_fnc_initBox;
+		[myLARsBox, GRLIB_whitelisted_from_arsenal, false] call ace_arsenal_fnc_addVirtualItems;
+		[myLARsBox, GRLIB_blacklisted_from_arsenal, false] call ace_arsenal_fnc_removeVirtualItems;
+	} else {
+		// Arma VA
+		[myLARsBox, ["GRLIB_whitelisted_from_arsenal", "GRLIB_blacklisted_from_arsenal"], false, "Liberation", { false }] call LARs_fnc_blacklistArsenal;
+		waitUntil {sleep 1; !isNil {myLARsBox getVariable "LARs_arsenal_Liberation_cargo"}};
+		private _cargo = myLARsBox getVariable ["LARs_arsenal_Liberation_cargo", []];
+		myLARsBox setVariable ["bis_addVirtualWeaponCargo_cargo", _cargo];
+	};
 };
-
 diag_log format ["--- LRX Arsenal initialized. blacklist: %1 - whitelist: %2", count GRLIB_blacklisted_from_arsenal, count GRLIB_whitelisted_from_arsenal];
 diag_log format ["--- LRX MOD %1 use: %2 signatures", GRLIB_mod_west, count GRLIB_MOD_signature];
-
-LRX_arsenal_init_done = true;

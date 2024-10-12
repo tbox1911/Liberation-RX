@@ -212,7 +212,7 @@ while { true } do {
 	};
 
 	// Show Hint
-	private _neartower = ((sectors_allSectors select {_x select [0,6] == "tower_" && !(_x in blufor_sectors) && player distance2D (markerPos  _x) <= 20})) select 0;
+	private _neartower = ((sectors_tower select {(_x in opfor_sectors) && player distance2D (markerPos  _x) <= 20})) select 0;
 	if (!isNil "_neartower") then {
 		_msg = format ["Use <t color='#FF0000'>Explosives</t> to destroy<br/>the <t color='#0000FF'>Radio Tower</t>."];
 		[_msg, 0, 0, 5, 0, 0, 90] spawn BIS_fnc_dynamicText;

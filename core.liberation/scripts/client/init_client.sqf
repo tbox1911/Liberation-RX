@@ -86,6 +86,9 @@ if (GRLIB_respawn_cooldown > 0) then {
 	};
 };
 
+// Map Sector init
+{ waitUntil {sleep 1; !isNil "GRLIB_sectors_init"} };
+
 GRLIB_ActionDist_3 = 3;
 GRLIB_ActionDist_5 = 5;
 GRLIB_ActionDist_10 = 10;
@@ -190,7 +193,7 @@ addMissionEventHandler ["Map", {
 [] execVM "addons\FOB\officer_init.sqf";
 
 // LRX Arsenal
-[] call compileFinal preprocessFileLineNumbers "addons\LARs\liberationArsenal.sqf";
+[] execVM "addons\LARs\liberationArsenal.sqf";
 
 // ACE inCompatible addons
 if (!GRLIB_ACE_enabled) then {
