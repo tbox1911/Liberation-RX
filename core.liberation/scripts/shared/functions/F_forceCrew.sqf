@@ -72,7 +72,7 @@ private _grp = createGroup [_side, true];
 	sleep 0.1;
 } forEach _vehicle_roles;
 
-(units _grp) joinSilent _grp;
+(crew _vehicle) joinSilent _grp;
 (units _grp) allowGetIn true;
 (units _grp) orderGetIn true;
 (_grp) addVehicle _vehicle;

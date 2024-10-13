@@ -544,7 +544,7 @@ R3F_LOG_FNCT_3D_tirer_position_degagee_sol = {
 		"_rayon_degage",
 		"_pos_centre",
 		"_rayon_max",
-		["_nb_tirages_max", 30],
+		["_nb_tirages_max", 50],
 		["_eau_autorise", false]
 	];
 	private ["_nb_tirages", "_objets_genants", "_position_degagee", "_rayon_curr", "_angle_curr", "_intersect"];
@@ -575,9 +575,10 @@ R3F_LOG_FNCT_3D_tirer_position_degagee_sol = {
 				} forEach ([_position_degagee, _rayon_degage] call R3F_LOG_FNCT_3D_get_objets_genants_rayon);
 
 				// Verifier intersec avec building / rocks
-				private _maxpos = ATLtoASL (_position_degagee vectorAdd [0,0,30]);
-				if (lineIntersects [ATLtoASL _position_degagee, _maxpos]) then { _intersect = true };
-
+				private _minpos = ATLtoASL (_position_degagee vectorAdd [0,0,0.5]);
+				private _maxpos = (_minpos vectorAdd [0,0,30]);
+				if (lineIntersects [_minpos, _maxpos]) then { _intersect = true };
+				if (count (nearestTerrainObjects [_position_degagee, ["ROCK", "TREE"], 20]) > 0) then { _intersect = true };
 				(_intersect && _nb_tirages < _nb_tirages_max)
 			}
 		},
