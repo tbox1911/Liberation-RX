@@ -122,6 +122,7 @@ while { dialog && alive player && _membercount > 0 } do {
 			if ([_cost] call F_pay) then {
 				_selectedmember setUnitLoadout (getUnitLoadout player);
 				hintSilent format ["Loadout copied, Price: %1\nThank you !", _cost];
+				lbSetCurSel [101, _selection];
 			};
 		} else {
 			hintSilent "Unit too far from you.";
