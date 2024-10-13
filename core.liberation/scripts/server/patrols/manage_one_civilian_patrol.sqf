@@ -65,12 +65,9 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 		};
 
 		// Cleanup
-		waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_unit_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
-		if (isNull _civ_veh) then {
-			{ deleteVehicle _x } forEach (units _civ_grp);
-			deleteGroup _civ_grp;
-		} else {
-			[_civ_veh] call clean_vehicle;
-		};
+		waitUntil { sleep 30; (GRLIB_global_stop == 1 || (diag_fps < 25) || [_unit_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+		[_civ_veh] call clean_vehicle;
+		{ deleteVehicle _x } forEach (units _civ_grp);
+		deleteGroup _civ_grp;
 	};
 };

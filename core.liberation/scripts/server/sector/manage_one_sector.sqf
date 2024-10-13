@@ -310,11 +310,14 @@ diag_log format ["End Defend Sector %1 at %2", _sector, time];
 // Cleanup
 waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_sector_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
 diag_log format ["Cleanup Defend Sector %1 at %2", _sector, time];
+
+private _managed_veh = [];
 {
 	if (_x isKindOf "CAManBase") then {
 		deleteVehicle _x;
 	} else {
-		[_x] call clean_vehicle;
+		_managed_veh pushBack _x;
 	};
 } forEach _managed_units;
+_managed_veh spawn cleanMissionVehicles;
 [_sector_pos] call clearlandmines;

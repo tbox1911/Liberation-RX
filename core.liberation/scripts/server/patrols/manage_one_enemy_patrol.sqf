@@ -64,20 +64,16 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 			sleep 60;
 			(
 				GRLIB_global_stop == 1 ||
-				(diag_fps < 20) ||
-				({alive _x} count (units _opfor_grp) < 2) ||
+				({alive _x} count (units _opfor_grp) == 0) ||
 				([_unit_pos, _radius, GRLIB_side_friendly] call F_getUnitsCount == 0) ||
 				(time > _unit_ttl)
 			)
 		};
 
 		// Cleanup
-		waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_unit_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
-		if (isNull _opfor_veh) then {
-			{ deleteVehicle _x } forEach (units _opfor_grp);
-			deleteGroup _opfor_grp;
-		} else {
-			[_opfor_veh] call clean_vehicle;
-		};
+		waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_unit_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };	
+		[_opfor_veh] spawn cleanMissionVehicles;
+		{ deleteVehicle _x } forEach (units _opfor_grp);
+		deleteGroup _opfor_grp;
 	};
 };

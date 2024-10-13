@@ -216,7 +216,7 @@ while {deleteManagerPublic} do {
 				_list = _nbVehicles select {!isNull _x};
 				_count = count _list;
 				while {((_count - _vehiclesLimitMax) > 0)} do {
-					deleteVehicle (selectRandom _list);
+					[selectRandom _list] call clean_vehicle;
 					_stats = _stats + 1;
 					_count = _count - 1;
 				};

@@ -7,7 +7,7 @@ if (_vehicle isKindOf "Ship") exitWith {
 	[_grp, getPosATL _vehicle] spawn defence_ai;
 };
 
-diag_log format ["Group %1 - Attack: %2", _grp, _objective_pos];
+diag_log format ["Group %1 (%2) - Attack: %3", _grp, typeOf _vehicle, _objective_pos];
 sleep (2 + floor random 10);
 
 private _attack = true;
@@ -66,6 +66,7 @@ while {({alive _x} count (units _grp) > 0) && !(_objective_pos isEqualTo zeropos
 		} else {
 			_objective_pos = zeropos;
 		};
+		_timer = round (time + (5 * 60));
 	};
 
 	{
@@ -81,7 +82,7 @@ while {({alive _x} count (units _grp) > 0) && !(_objective_pos isEqualTo zeropos
 };
 
 // Cleanup
-waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_vehicle, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
-[_vehicle] call clean_vehicle;
+waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_last_pos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
+[_vehicle] spawn cleanMissionVehicles;
 { deleteVehicle _x } forEach (units _grp);
 deleteGroup _grp;
