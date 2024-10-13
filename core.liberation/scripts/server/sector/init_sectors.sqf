@@ -82,6 +82,7 @@ publicVariable "sectors_bigtown";
 publicVariable "sectors_factory";
 publicVariable "sectors_military";
 publicVariable "sectors_tower";
+publicVariable "sectors_airSpawn";
 
 sleep 1;
 GRLIB_sectors_init = true;
