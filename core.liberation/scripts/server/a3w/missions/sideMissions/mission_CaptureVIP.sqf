@@ -105,7 +105,6 @@ _setupObjects = {
 _waitUntilMarkerPos = { getPosATL _vip };
 _waitUntilExec = nil;
 _waitUntilCondition = { (!alive _vip) };
-
 _waitUntilSuccessCondition = { alive _vip && side group _vip == GRLIB_side_friendly };
 
 _failedExec = {

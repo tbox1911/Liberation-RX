@@ -7,7 +7,6 @@ _setupVars = {
 	_missionType = "STR_BARON_ROUGE";
 	_locationsArray = nil; // locations are generated on the fly from towns
 	_missionTimeout = (30 * 60);
-	_ignoreAiDeaths = true;
 };
 
 _setupObjects = {
