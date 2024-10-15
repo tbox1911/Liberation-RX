@@ -76,6 +76,7 @@ for [{_idx=0},{_idx < count GRLIB_all_fobs},{_idx=_idx+1}] do {
 };
 
 private _respawn_trucks = [] call F_getMobileRespawns;
+_respawn_trucks = ([_respawn_trucks, [player], {_input0 distance2D _x}, 'ASCEND'] call BIS_fnc_sortBy);
 for "_idx" from 0 to ((count _respawn_trucks) -1) do {
 	_vehicle = _respawn_trucks select _idx;
 	_choiceslist = _choiceslist + [[format ["%1 - %2", [_vehicle] call F_getLRXName, mapGridPosition (getpos _vehicle)], getpos _vehicle, _vehicle]];
