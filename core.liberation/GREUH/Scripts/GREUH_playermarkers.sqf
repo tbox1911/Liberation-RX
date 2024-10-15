@@ -11,7 +11,7 @@ while { true } do {
 	while { show_teammates } do {
 		waitUntil {sleep 1; GRLIB_MapOpen };
 
-		// Players and units
+		// Players and units	
 		private _players_markers_bak = [];
 		private _players_list = (units GRLIB_side_friendly + units GRLIB_side_civilian) select {
 			alive _x && isNull objectParent _x &&
@@ -37,6 +37,7 @@ while { true } do {
 				_nextmarker setMarkerPosLocal (getPosATL _nextunit);
 				_players_markers_bak pushback _nextmarker;
 			};
+
  			if (isPlayer _nextunit) then {
 				if (_nextunit getVariable ["PAR_isUnconscious", false]) then {
 					_nextmarker setMarkerAlphaLocal 0;
