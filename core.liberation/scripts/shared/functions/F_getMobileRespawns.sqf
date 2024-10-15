@@ -1,22 +1,30 @@
-// Public Hurron
+params [["_uid",""]];
 if (GRLIB_allow_redeploy == 0) exitWith {[]};
-private _respawn_huron_unsorted = [];
-if (
-	(alive GRLIB_vehicle_huron) &&
- 	!surfaceIsWater (getPos GRLIB_vehicle_huron) &&
-	((getPos GRLIB_vehicle_huron) select 2) < 5 &&
-	speed vehicle GRLIB_vehicle_huron < 5 &&
-	!([GRLIB_vehicle_huron, "LHD", GRLIB_sector_size] call F_check_near)
-   ) then { _respawn_huron_unsorted pushBack GRLIB_vehicle_huron };
+if (isNil "GRLIB_mobile_respawn") exitWith {[]};
 
-// Truck / Tent
-private _player_respawn_unsorted = [];
-private _allplayer_respawn_unsorted = [];
-if (GRLIB_allow_redeploy == 1) then {
-	{
-		_player_respawn_unsorted = ([getPlayerUID _x] call F_getMobileRespawnsPlayer) select 0;
-		_allplayer_respawn_unsorted append _player_respawn_unsorted;
-	} forEach (AllPlayers - (entities "HeadlessClient_F"));
+private _mobile_respawn_list = [];
+if (!isNil "GRLIB_mobile_respawn") then {
+	_mobile_respawn_list = GRLIB_mobile_respawn select {
+		(alive _x) && !(isObjectHidden _x) &&
+		!(_x getVariable ['R3F_LOG_disabled', false]) &&
+		isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull]) &&
+		!([_x, "LHD", GRLIB_fob_range] call F_check_near) &&
+		!surfaceIsWater (getpos _x) && ((getPosATL _x) select 2) < 5 && speed vehicle _x < 5
+	};
 };
 
-(_respawn_huron_unsorted + _allplayer_respawn_unsorted);
+private _personal_mobile_respawn = [];
+if (_uid != "") then {
+	_personal_mobile_respawn = _mobile_respawn_list select { _x getVariable ["GRLIB_vehicle_owner", ""] == _uid };
+
+	if (count _personal_mobile_respawn > GRLIB_max_spawn_point && PAR_Grp_ID == _uid) then {
+		hintSilent localize "STR_TOO_MANY_SPAWN";
+		_mobile_respawn_list = _personal_mobile_respawn select [0, GRLIB_max_spawn_point];
+		GRLIB_max_respawn_reached = true;
+	} else {
+		_mobile_respawn_list = _personal_mobile_respawn;
+		GRLIB_max_respawn_reached = false;
+	};
+};
+
+_mobile_respawn_list;

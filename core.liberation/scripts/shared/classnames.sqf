@@ -205,6 +205,7 @@ support_vehicles = support_vehicles + [
 // RESPAWN VEHICLES
 if (isNil "respawn_vehicles_west") then { respawn_vehicles_west = [] };
 respawn_vehicles = [
+	mobile_respawn,
 	Respawn_truck_typename,
 	huron_typename
 ] + respawn_vehicles_west;

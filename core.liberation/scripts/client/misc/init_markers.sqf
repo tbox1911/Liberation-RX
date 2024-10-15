@@ -19,6 +19,7 @@ if (_full) then {
 
 	// Base markers color
 	"huronmarker" setMarkerColorLocal GRLIB_color_friendly;
+	"huronmarker" setMarkerTextLocal "";
 	"base_chimera" setMarkerColorLocal GRLIB_color_friendly;
 
 	// Hide all markers

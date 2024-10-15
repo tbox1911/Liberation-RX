@@ -340,6 +340,10 @@ if ( !isNil "_lrx_liberation_savegame" ) then {
 		if ( _hascrew ) then {
 			[_nextbuilding] call F_forceCrew;
 			_nextbuilding setVariable ["GRLIB_vehicle_manned", true, true];
+		};
+
+		if ( _nextclass in respawn_vehicles ) then {
+			GRLIB_mobile_respawn pushback _nextbuilding;
 		};		
 
 		if ( _owner != "" ) then {

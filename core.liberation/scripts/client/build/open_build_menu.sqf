@@ -178,7 +178,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype == 1 || buildtype =
 
 			if ( buildtype == 7 ) then {
 				if (_build_class == mobile_respawn) then {
-					if (([PAR_Grp_ID] call F_getMobileRespawnsPlayer) select 1) then {
+					if (GRLIB_max_respawn_reached) then {
 						_affordable = false;
 					};
 					if (GRLIB_allow_redeploy == 0) then {

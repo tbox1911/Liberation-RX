@@ -46,9 +46,9 @@ while { true } do {
 	};
 
 	if (isNil "GRLIB_vehicle_huron") then {
-		"huronmarker" setmarkerposlocal markers_reset;
+		"huronmarker" setMarkerPosLocal markers_reset;
 	} else {
-		"huronmarker" setmarkerposlocal (getPosATL GRLIB_vehicle_huron);
+		"huronmarker" setMarkerPosLocal (getPosATL GRLIB_vehicle_huron);
 	};
 	sleep 3;
 };

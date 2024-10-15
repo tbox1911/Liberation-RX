@@ -9,7 +9,7 @@ if (!(_object_class in GRLIB_Ammobox_keep)) then {
 
 // Mobile respawn
 if (_object_class == mobile_respawn) then {
-	[_object, "add"] remoteExec ["addel_beacon_remote_call", 2];
+	[_object, "add"] call addel_beacon_remote_call;
 };
 
 // UAVs

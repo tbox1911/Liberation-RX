@@ -25,6 +25,7 @@ while { true } do {
 			_huron setVariable ["ace_cargo_hasCargo", true, true];
 			_huron setVariable ["ace_cargo_space", 200, true];
 		};
+		[_huron, "add"] call addel_beacon_remote_call;
 		GRLIB_vehicle_huron = _huron;
 		publicVariable "GRLIB_vehicle_huron";
 	};

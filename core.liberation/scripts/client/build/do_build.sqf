@@ -461,7 +461,7 @@ while { true } do {
 			};
 
 			// Mobile respawn
-			if ( _classname == mobile_respawn ) then {
+			if ( _classname in respawn_vehicles) then {
 				[_vehicle, "add"] remoteExec ["addel_beacon_remote_call", 2];
 			};
 

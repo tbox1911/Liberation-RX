@@ -30,6 +30,7 @@ private _vehmarkers = [];
 
 while { true } do {
 	waitUntil {sleep 1; GRLIB_MapOpen };
+
 	_veh_list = vehicles select {
 		(_x distance2D lhd > GRLIB_fob_range) &&
 		(getObjectType _x >= 8) && (isDamageAllowed _x) &&
@@ -43,6 +44,9 @@ while { true } do {
 		)
 	};
 
+	if (GRLIB_allow_redeploy > 0) then {
+		_veh_list = _veh_list + ([] call F_getMobileRespawns);
+	};
 	private _vehmarkers_bak = [];
 	{
 		_nextvehicle = _x;
@@ -119,6 +123,12 @@ while { true } do {
 					};
 				};
 			};
+		};
+
+		if (_nextvehicle in GRLIB_mobile_respawn) then {
+			_marker_color = "ColorYellow";
+			_marker_type = "mil_end";
+			_nextmarker setMarkerTextLocal format ["%1 %2", [_nextvehicle] call F_getLRXName, mapGridPosition _nextvehicle];
 		};
 
 		_nextmarker setMarkerColorLocal _marker_color;

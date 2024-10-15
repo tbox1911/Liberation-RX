@@ -15,7 +15,7 @@ private _get_mp = {
 
 while { true } do {
 		_new_manpower_used = count ((units player) select { !(isPlayer _x) && alive _x });
-		_player_respawn = ([PAR_Grp_ID] call F_getMobileRespawnsPlayer) select 0;
+		_player_respawn = [PAR_Grp_ID] call F_getMobileRespawns;
 		_player_vehicles = (vehicles - _player_respawn) select {
 			(alive _x) && ([player, _x, true] call is_owner) &&
 			!(_x getVariable ['R3F_LOG_disabled', false]) &&

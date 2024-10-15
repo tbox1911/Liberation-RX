@@ -7464,7 +7464,7 @@
 			<Czech>zrušit</Czech>
 		</Key>
 
-		<!-- F_getMobileRespawnsPlayer.sqf -->
+		<!-- F_getMobileRespawns.sqf -->
 		<Key ID="STR_TOO_MANY_SPAWN">
 			<Original>You have too many respawn point!</Original>
 			<Russian>Максимальное кол-во точек респауна!</Russian>
