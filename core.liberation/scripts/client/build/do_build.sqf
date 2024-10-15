@@ -462,7 +462,7 @@ while { true } do {
 
 			// Mobile respawn
 			if ( _classname in respawn_vehicles) then {
-				[_vehicle, "add"] remoteExec ["addel_beacon_remote_call", 2];
+				[_vehicle, "add"] remoteExec ["mobile_respawn_remote_call", 2];
 			};
 
 			// Personal Box

@@ -12,7 +12,7 @@ disableUserInput true;
 player switchMove "AinvPknlMstpSlayWnonDnon_medic";
 player playMoveNow "AinvPknlMstpSlayWnonDnon_medic";
 sleep 6;
-[_tent, "del"] remoteExec ["addel_beacon_remote_call", 2];
+[_tent, "del"] remoteExec ["mobile_respawn_remote_call", 2];
 sleep 2;
 if (backpack player == "") then {
 	player addBackpack mobile_respawn_bag;

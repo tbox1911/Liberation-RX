@@ -121,7 +121,7 @@ _vehicle_owner = _transporteur getVariable ["GRLIB_vehicle_owner", ""];
 
 				// Mobile respawn
 				if (_classe == mobile_respawn) then {
-					[_objet, "add"] remoteExec ["addel_beacon_remote_call", 2];
+					[_objet, "add"] remoteExec ["mobile_respawn_remote_call", 2];
 				};
 
 				// Clear Cargo

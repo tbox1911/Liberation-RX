@@ -64,7 +64,7 @@ if ( dorecycle == 1 && !(isNull _vehicle) && (alive _vehicle || _veh_class in al
 	player addRating 50;
 
 	if (_veh_class == mobile_respawn) exitWith {
-		[_vehicle, "del"] remoteExec ["addel_beacon_remote_call", 2];
+		[_vehicle, "del"] remoteExec ["mobile_respawn_remote_call", 2];
 	};
 
 	{ deleteVehicle _x } forEach (crew _vehicle);

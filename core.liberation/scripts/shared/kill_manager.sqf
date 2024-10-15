@@ -169,8 +169,8 @@ if ( isServer ) then {
 		};
 
 	} else {
-		if (_unit_class == mobile_respawn) exitWith { [_unit, "del"] call addel_beacon_remote_call };
-		if (_unit_class in respawn_vehicles) then {	[_unit, "del"] call addel_beacon_remote_call };
+		if (_unit_class == mobile_respawn) exitWith { [_unit, "del"] call mobile_respawn_remote_call };
+		if (_unit_class in respawn_vehicles) then {	[_unit, "del"] call mobile_respawn_remote_call };
 
 		if (_unit_class in GRLIB_explo_delete && (getPosATL _unit) select 2 < 10) exitWith {
 			detach _unit;
