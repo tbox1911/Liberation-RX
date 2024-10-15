@@ -1,14 +1,13 @@
-private [ "_marker", "_idx", "_respawn_trucks", "_markers_mobilespawns", "_vehicle" ];
-private _markers = [];
-private _markers_mobilespawns = [];
-private _markers_defense = [];
-
 waitUntil {sleep 1; !isNil "GRLIB_init_server"};
 waitUntil {sleep 1; !isNil "GRLIB_all_fobs"};
 
+private _markers = [];
+private _markers_defense = [];
 GRLIB_redraw_marker_fob = false;
+
 while { true } do {
 	waitUntil {sleep 1; GRLIB_MapOpen };
+
 	if ( count _markers != count GRLIB_all_fobs || GRLIB_redraw_marker_fob) then {
 		GRLIB_redraw_marker_fob = false;
 		{ deleteMarkerLocal _x } foreach _markers;
@@ -33,21 +32,6 @@ while { true } do {
 		} forEach GRLIB_all_fobs;
 	};
 
-	_respawn_trucks = [] call F_getMobileRespawns;
-	if ( count _markers_mobilespawns != count _respawn_trucks ) then {
-		{ deleteMarkerLocal _x } foreach _markers_mobilespawns;
-		_markers_mobilespawns = [];
-		{
-			_vehicle = _x;
-			_marker = createMarkerLocal [format ["mobilespawn_%1", _forEachIndex], markers_reset];
-			_marker setMarkerTypeLocal "mil_end";
-			_marker setMarkerColorLocal "ColorYellow";
- 			_marker setMarkerPosLocal (getpos _vehicle);
-			_marker setMarkerTextLocal format ["%1 %2", [_vehicle] call F_getLRXName, mapGridPosition _vehicle];			
-			_markers_mobilespawns pushback _marker;
-		} forEach _respawn_trucks;
-	};
-
 	if ( count _markers_defense != count GRLIB_sector_defense ) then {
 		{ deleteMarkerLocal _x } foreach _markers_defense;
 		{
@@ -61,5 +45,10 @@ while { true } do {
 		} forEach GRLIB_sector_defense;
 	};
 
+	if (isNil "GRLIB_vehicle_huron") then {
+		"huronmarker" setmarkerposlocal markers_reset;
+	} else {
+		"huronmarker" setmarkerposlocal (getPosATL GRLIB_vehicle_huron);
+	};
 	sleep 3;
 };

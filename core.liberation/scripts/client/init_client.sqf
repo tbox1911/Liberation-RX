@@ -125,7 +125,6 @@ if ( typeOf player == "VirtualSpectator_F" ) exitWith {
 	[] execVM "scripts\client\markers\empty_vehicles_marker.sqf";
 	[] execVM "scripts\client\markers\fob_markers.sqf";
 	[] execVM "scripts\client\markers\hostile_groups.sqf";
-	[] execVM "scripts\client\markers\huron_marker.sqf";
 	[] execVM "scripts\client\markers\sector_manager.sqf";
 	[] execVM "scripts\client\markers\spot_timer.sqf";
 	[] execVM "scripts\client\ui\ui_manager.sqf";
@@ -174,7 +173,6 @@ addMissionEventHandler ["Map", {
 [] execVM "scripts\client\markers\empty_vehicles_marker.sqf";
 [] execVM "scripts\client\markers\fob_markers.sqf";
 [] execVM "scripts\client\markers\hostile_groups.sqf";
-[] execVM "scripts\client\markers\huron_marker.sqf";
 [] execVM "scripts\client\markers\spot_timer.sqf";
 [] execVM "scripts\client\markers\sector_manager.sqf";
 //[] execVM "scripts\client\misc\logs_markers.sqf";
