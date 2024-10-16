@@ -1,4 +1,5 @@
 params ["_vehicles"];
+if (isNil "_vehicles") exitWith {};
 if (typeName _vehicles != "ARRAY") then {
 	_vehicles = [_vehicles];
 };
