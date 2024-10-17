@@ -61,27 +61,10 @@ PAR_graves = [
 	"Land_Grave_dirt_F"
 ];
 
-PAR_grave_box = "Land_PlasticCase_01_small_black_F";
-
-waituntil {sleep 1; alive player};
-
-// Init player
-[] call PAR_Player_Init;
-
-// Init player EH
-[player] call PAR_EventHandler;
-
-waituntil {sleep 1; !isNil "GRLIB_player_spawned"};
-waituntil {sleep 1; !isNil {player getVariable ["GRLIB_Rank", nil]}};
-
-// Grave Marker
-_marker = createMarkerLocal ["PAR_grave_box_marker", markers_reset];
-_marker setMarkerShapeLocal "ICON";
-_marker setMarkerTypeLocal "KIA";
-_marker setMarkerTextlocal format ["%1's Grave.", name player];
+PAR_grave_box_typename = "Land_PlasticCase_01_small_black_F";
 
 // Grave Box
-PAR_grave_box = createVehicle [PAR_grave_box, ([] call F_getFreePos), [], 0, "NONE"];
+PAR_grave_box = createVehicle [PAR_grave_box_typename, ([] call F_getFreePos), [], 0, "NONE"];
 [PAR_grave_box, playerbox_cargospace] remoteExec ["setMaxLoad", 2];
 PAR_grave_box allowDamage false;
 PAR_grave_box enableSimulationGlobal false;
@@ -89,6 +72,28 @@ PAR_grave_box setVariable ["R3F_LOG_disabled", true, true];
 PAR_grave_box setVariable ["GRLIB_vehicle_owner", PAR_Grp_ID, true];
 player setvariable ["PAR_grave_box", PAR_grave_box, true];
 PAR_backup_loadout = [];
+
+// Grave Marker
+_marker = createMarkerLocal ["PAR_grave_box_marker", markers_reset];
+_marker setMarkerShapeLocal "ICON";
+_marker setMarkerTypeLocal "KIA";
+_marker setMarkerTextlocal format ["%1's Grave.", name player];
+
+waituntil {sleep 1; GRLIB_player_spawned};
+
+// Init player
+[] call PAR_Player_Init;
+
+// Init player EH
+[player] call PAR_EventHandler;
+
+waituntil {sleep 1; !isNil {player getVariable ["GRLIB_Rank", nil]}};
+
+// AI Manager
+[] spawn PAR_AI_Manager;
+
+// Action Manager
+[] spawn PAR_ActionManager;
 
 // Grave Name
 addMissionEventHandler ["Draw3D",{
@@ -99,12 +104,6 @@ addMissionEventHandler ["Draw3D",{
 		drawIcon3D [getMissionPath "res\skull.paa", [1,1,1,1], _grave_pos vectorAdd [0, 0, 1], 2, 2, 0, (_grave getVariable ["PAR_grave_message", ""]), 2, 0.05, "RobotoCondensed", "center"];
 	};
 }];
-
-// AI Manager
-[] spawn PAR_AI_Manager;
-
-// Action Manager
-[] spawn PAR_ActionManager;
 
 waitUntil {!(isNull (findDisplay 46))};
 systemChat "-------- pSiKo AI Revive Initialized --------";

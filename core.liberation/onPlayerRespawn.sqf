@@ -5,15 +5,15 @@ params ["_unit", "_oldUnit", "_respawn", "_respawnDelay"];
 titleText ["" ,"BLACK FADED", 100];
 1 fadeSound 0;
 
+_unit allowDamage false;
+_unit setPosATL ((markerPos GRLIB_respawn_marker) vectorAdd [floor(random 5), floor(random 5), 1]);
+GRLIB_player_spawned = false;
+
 waitUntil {sleep 0.1; (alive _unit)};
 waitUntil {sleep 0.1; !isNil "GRLIB_init_server"};
 if (!GRLIB_init_server) exitWith {};
 waitUntil {sleep 0.1; !isNil "GRLIB_LRX_params_loaded"};
-waitUntil {sleep 0.1; !isNil "PAR_Grp_ID"};
-deletemarker format ["PAR_marker_%1", PAR_Grp_ID];
 if (PAR_grave == 1) then { deleteVehicle _oldUnit };
-_unit allowDamage false;
-_unit setPosATL ((markerPos GRLIB_respawn_marker) vectorAdd [floor(random 5), floor(random 5), 1]);
 
 if (GRLIB_ACE_medical_enabled) then {
 	[_unit] call ACE_medical_treatment_fnc_fullHealLocal;
@@ -21,7 +21,6 @@ if (GRLIB_ACE_medical_enabled) then {
 	_unit setvariable ["ace_medical_causeofdeath", nil];
 };
 
-GRLIB_player_spawned = false;
 removeAllWeapons _unit;
 removeAllAssignedItems _unit;
 removeUniform _unit;

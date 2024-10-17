@@ -3,7 +3,7 @@ waitUntil {sleep 1; !isNil "GRLIB_mobile_respawn"};
 
 private _no_marker_classnames = [
 	playerbox_typename,
-	PAR_grave_box,
+	PAR_grave_box_typename,
 	GRLIB_sar_wreck,
 	GRLIB_sar_fire,
 	Warehouse_desk_typename,
@@ -19,7 +19,7 @@ private _no_marker_classnames = [
 ] + GRLIB_force_cleanup_classnames + GRLIB_ide_traps + GRLIB_intel_items + all_buildings_classnames;
 
 if (GRLIB_allow_redeploy > 0) then {
-	_no_marker_classnames append respawn_vehicles;
+	_no_marker_classnames = _no_marker_classnames + respawn_vehicles;
 };
 _no_marker_classnames = _no_marker_classnames arrayIntersect _no_marker_classnames;
 _no_marker_classnames = _no_marker_classnames - ai_resupply_sources;
@@ -37,6 +37,7 @@ while { true } do {
 		!([_x, _no_marker_classnames] call F_itemIsInClass) &&
 		(alive _x) && !(isObjectHidden _x) && isNull (attachedTo _x) &&
 		(count (crew _x) == 0 || (typeOf _x in uavs_vehicles + static_vehicles_AI)) &&
+		(isNil {_x getVariable "GRLIB_vehicle_init"}) &&
 		(isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull])) &&
 		(
 			(side _x == GRLIB_side_friendly) ||

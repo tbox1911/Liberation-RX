@@ -248,6 +248,8 @@ PAR_Player_Init = {
 	PAR_isDragging = false;
 	[player] call AR_Add_Player_Actions;
 	[player] call add_player_actions;
+	PAR_backup_loadout = [];
+	deletemarker format ["PAR_marker_%1", PAR_Grp_ID];
 	1 fadeSound 1;
 	1 fadeRadio 1;
 	NRE_EarplugsActive = 0;
