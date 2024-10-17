@@ -11,7 +11,7 @@
 
 sleep 4;
 
-waituntil {sleep 1; !isNil "GRLIB_player_spawned"};
+waituntil {sleep 1; GRLIB_player_spawned};
 private [
 	"_liste_nouveaux_objets", "_liste_statiques", "_liste_nouveaux_statiques",
 	"_count_liste_objets", "_i", "_objet", "_fonctionnalites", "_liste_purge"
