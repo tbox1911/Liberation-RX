@@ -154,6 +154,7 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
 			{if (_x select 0 == _uid) exitWith {_player_context pushBack _x}} foreach GRLIB_player_context;
 		}
 	} forEach _keep_score_id;
+	GRLIB_player_context = _player_context;
 
 	// Time
 	time_of_day = date select 3;
@@ -209,7 +210,7 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
 		[ round infantry_weight max 33, round armor_weight max 33, round air_weight max 33 ],
 		GRLIB_vehicle_to_military_base_links,
 		_permissions,
-		_player_context,
+		GRLIB_player_context,
 		resources_intel,
 		_player_scores
 	];
