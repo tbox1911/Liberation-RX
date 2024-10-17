@@ -26,6 +26,7 @@ if ( _classname isKindOf "Air" ) then {
 		_vehicle setDir (_vehicle getDir _sectorpos);
 		_vehicle setPosATL _spawn_pos;
 		_vehicle setVelocityModelSpace [0, 80, 0];
+		_vehicle setVariable ["GRLIB_vehicle_init", true, true];
 	};
 } else {
 	if ( _size == 0 ) then {
@@ -80,6 +81,7 @@ if (_side != GRLIB_side_civilian) then {
 	diag_log format [ "Spawn Vehicle %1 Pos %2 at %3", _classname, getPosATL _vehicle, time ];
 };
 
+if (_crewed) then {	[_vehicle, _side] call F_forceCrew };
 _vehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
 _vehicle allowCrewInImmobile [true, false];
 _vehicle setUnloadInCombat [true, false];
@@ -87,9 +89,6 @@ _vehicle setUnloadInCombat [true, false];
 [_vehicle] call F_clearCargo;
 [_vehicle] call F_fixModVehicle;
 [_vehicle] call F_vehicleDefense;
-
-if (_crewed) then {	[_vehicle, _side] call F_forceCrew };
-
 if (GRLIB_ACE_enabled) then { [_vehicle] call F_aceInitVehicle };
 
 if ( _vehicle isKindOf "Air" ) then {
@@ -164,6 +163,7 @@ if ( _side == GRLIB_side_enemy ) then {
 		_x allowDamage true
 	} forEach (crew _vehicle);
 	_vehicle setVariable ["R3F_LOG_disabled", false, true];
+	_vehicle setVariable ["GRLIB_vehicle_init", nil, true];
 };
 
 if (_side != GRLIB_side_civilian) then {
