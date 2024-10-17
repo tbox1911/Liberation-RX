@@ -8,7 +8,7 @@ addMissionEventHandler ['HandleDisconnect', {
 	params ["_unit", "_id", "_uid", "_name"];
 	[_unit, _uid, true] call save_context;
 	[_unit, _uid] call cleanup_player;
-	if (count (AllPlayers - (entities "HeadlessClient_F")) == 0) then {
+	if (count (AllPlayers - (entities "HeadlessClient_F") select { alive _x }) == 0) then {
 		[] call save_game_mp;
 		diag_log "--- LRX Mission End!";
 		if (!GRLIB_server_persistent) then {
