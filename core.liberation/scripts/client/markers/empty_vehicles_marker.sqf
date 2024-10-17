@@ -38,6 +38,7 @@ while { true } do {
 		(alive _x) && !(isObjectHidden _x) && isNull (attachedTo _x) &&
 		(count (crew _x) == 0 || (typeOf _x in uavs_vehicles + static_vehicles_AI)) &&
 		(isNil {_x getVariable "GRLIB_vehicle_init"}) &&
+		(isNil {_x getVariable "GRLIB_mission_AI"}) &&
 		(isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull])) &&
 		(
 			(side _x == GRLIB_side_friendly) ||

@@ -96,6 +96,7 @@ _setupObjects = {
 	_convoy_attacked = false;
 	_disembark_troops = false;
 	_vehicles = [_vehicle1, _vehicle2, _vehicle3];
+	{_x setVariable ["GRLIB_mission_AI", true, true]} forEach _vehicles;
 
 	// Manage convoy
 	[_aiGroup, _vehicles] spawn convoy_ai;
