@@ -37,7 +37,7 @@ if ( _vehicle isKindOf "Air" ) then {
 
 if (typeOf _vehicle in _extra_bounty) then {
 	_bounty = _bounty + 25;
-	_bonus = _bonus + 1;
+	_bonus = _bonus + 2;
 };
 
 if (typeOf _vehicle in _heavy_blu) then {
@@ -45,6 +45,5 @@ if (typeOf _vehicle in _heavy_blu) then {
 };
 
 _bounty = _bounty + floor random 6;
-_bonus = _bonus + floor random 3;
 
 [_bounty, _bonus];
