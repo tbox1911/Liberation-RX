@@ -133,6 +133,7 @@ if ( _side == GRLIB_side_enemy ) then {
 		if (!_hasFuel) then { _vehicle setFuel 1 };
 	}];
 	_vehicle addEventHandler ["HandleDamage", { _this call damage_manager_enemy }];
+	_vehicle setVariable ["GRLIB_vehicle_reward", true, true];
 
 	// LRX textures
 	if (count opfor_texture_overide > 0) then {

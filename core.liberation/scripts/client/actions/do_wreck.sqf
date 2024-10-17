@@ -42,7 +42,7 @@ if (lifeState player == 'INCAPACITATED' || !isNull objectParent player) exitWith
 deleteVehicle _vehicle;
 sleep 0.5;
 
-if (_vehicle_class in _valuable_veh) then {
+if ((_bonus + _bounty) > 0) then {
 	[player, _bounty, 2] remoteExec ["ammo_add_remote_call", 2];
 	hintSilent format [localize "STR_DO_WRECK", name player, _bonus, _bounty];
 	[player, _bonus] remoteExec ["F_addScore", 2];

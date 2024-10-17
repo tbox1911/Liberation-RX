@@ -36,6 +36,7 @@ _unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 
 _vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
 _vehicle setVariable ["GRLIB_vehicle_gunner", units _grp];
+_vehicle setVariable ["GRLIB_vehicle_reward", true, true];
 
 [_vehicle] call F_aceLockVehicle;
 

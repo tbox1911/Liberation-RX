@@ -193,10 +193,12 @@ if ( isServer ) then {
 
 			if (_unit_class in all_hostile_classnames) then {
 				_bounty = [_unit] call F_getBounty;
-				[_unit_class, _bounty, _killer] remoteExec ["remote_call_ammo_bounty", 0];
-				[_killer, (_bounty select 0), 0] call ammo_add_remote_call;
-				[_killer, (_bounty select 1)] call F_addScore;
-				stats_opfor_vehicles_killed_by_players = stats_opfor_vehicles_killed_by_players + 1;
+				if (((_bounty select 0) + (_bounty select 1)) > 0) then {
+					[_unit_class, _bounty, _killer] remoteExec ["remote_call_ammo_bounty", 0];
+					[_killer, (_bounty select 0), 0] call ammo_add_remote_call;
+					[_killer, (_bounty select 1)] call F_addScore;
+					stats_opfor_vehicles_killed_by_players = stats_opfor_vehicles_killed_by_players + 1;
+				};
 			};
 		};
 

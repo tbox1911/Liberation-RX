@@ -1,5 +1,7 @@
 params ["_vehicle"];
 
+if !(_vehicle getVariable ["GRLIB_vehicle_reward", false]) exitWith {[0,0]};
+
 private _extra_bounty = opfor_air + [
 	"O_MBT_04_cannon_F",
 	"O_MBT_04_command_F",
