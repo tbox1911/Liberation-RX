@@ -59,6 +59,27 @@ _path = format ["mod_template\%1\classnames_east.sqf", GRLIB_mod_east];
 _ret = [_path] call F_getTemplateFile;
 if (!_ret) exitWith { abort_loading = true };
 
+// check missing define in opfor_recyclable
+private _opfor_recyclable = [];
+{ _opfor_recyclable pushBackUnique (_x select 0) } foreach opfor_recyclable;
+
+private _opfor_vehicles = [];
+{ _opfor_vehicles pushBackUnique _x } foreach (
+	opfor_boats +
+	militia_vehicles +
+	opfor_vehicles +
+	opfor_vehicles_low_intensity +
+	opfor_battlegroup_vehicles +
+	opfor_battlegroup_vehicles_low_intensity +
+	opfor_troup_transports_truck +
+	opfor_troup_transports_heli +
+	opfor_air + opfor_statics
+);
+
+{
+	if !(_x in _opfor_recyclable) then { diag_log "--- LRX Config Check : vehicle %1 is NOT defined in opfor_recyclable !"};
+} forEach _opfor_vehicles;
+
 // *** SIDES ***
 GRLIB_side_friendly = WEST;
 GRLIB_side_enemy = EAST;
@@ -90,9 +111,9 @@ if (GRLIB_mod_preset_civ in [0,2]) then {
 	_path = format ["mod_template\%1\classnames_civ.sqf", GRLIB_mod_east];
 	_ret = [_path] call F_getTemplateFile;
 	civilians append _civilians_bak;
-	civilian_vehicles append _civilian_vehicles_bak;	
+	civilian_vehicles append _civilian_vehicles_bak;
 	civilians = civilians arrayIntersect civilians;
-	civilian_vehicles = civilian_vehicles arrayIntersect civilian_vehicles;	
+	civilian_vehicles = civilian_vehicles arrayIntersect civilian_vehicles;
 };
 if (!_ret) exitWith { abort_loading = true };
 if (count civilians == 0) then { civilians = "C_man_1" };
@@ -181,7 +202,7 @@ support_vehicles = support_vehicles + [
 	["Land_RepairDepot_01_civ_F",0,300,0,GRLIB_perm_log],
 	["Land_fs_feed_F",0,200,50,GRLIB_perm_tank],
 	[storage_medium_typename,0,0,50,GRLIB_perm_inf],
-	[storage_large_typename,0,0,100,GRLIB_perm_log],	
+	[storage_large_typename,0,0,100,GRLIB_perm_log],
 	[repair_sling_typename,0,200,0,GRLIB_perm_log],
 	[fuel_sling_typename,0,150,60,GRLIB_perm_log],
 	[ammo_sling_typename,0,400,0,GRLIB_perm_log],
@@ -209,6 +230,9 @@ respawn_vehicles = [
 	Respawn_truck_typename,
 	huron_typename
 ] + respawn_vehicles_west;
+
+// AIR DROP
+[] call compileFinal preprocessFileLineNumbers format ["scripts\shared\default_airdrop_classnames.sqf"];
 
 // *** CLASSNAME LIST ***
 all_hostile_classnames = [];
@@ -427,7 +451,7 @@ box_transport_loadable = [];
 vehicle_big_units = [
 	"Land_Cargo_Tower_V1_F",
 	"VTOL_01_base_F",
-	"VTOL_02_base_F",	
+	"VTOL_02_base_F",
 	"Land_SM_01_shed_F",
 	"Land_Hangar_F"
 ] + vehicle_big_units_west;
@@ -694,91 +718,3 @@ GRLIB_disabled_arsenal = [
 	Box_Launcher_typename,
 	basic_weapon_typename
 ];
-
-// Air Drop Support
-if ( isNil "GRLIB_AirDrop_Taxi_cost" ) then {
-	GRLIB_AirDrop_Taxi_cost = 100;
-};
-
-if ( isNil "GRLIB_AirDrop_Vehicle_cost" ) then {
-	GRLIB_AirDrop_Vehicle_cost = 200;
-};
-
-if ( isNil "GRLIB_AirDrop_1" ) then {
-	GRLIB_AirDrop_1 = [
-		"I_Quadbike_01_F",
-		"I_G_Offroad_01_F",
-		"I_G_Quadbike_01_F",
-		"C_Offroad_01_F",
-		"B_G_Offroad_01_F"
-	];
-};
-if ( isNil "GRLIB_AirDrop_1_cost" ) then {
-	GRLIB_AirDrop_1_cost = 50;
-};
-
-if ( isNil "GRLIB_AirDrop_2" ) then {
-	GRLIB_AirDrop_2 = [
-		"I_G_Offroad_01_armed_F",
-		"B_G_Offroad_01_armed_F",
-		"O_G_Offroad_01_armed_F",
-		"I_C_Offroad_02_LMG_F"
-	];
-};
-if ( isNil "GRLIB_AirDrop_2_cost" ) then {
-	GRLIB_AirDrop_2_cost = 100;
-};
-
-if ( isNil "GRLIB_AirDrop_3" ) then {
-	GRLIB_AirDrop_3 = [
-		"I_MRAP_03_hmg_F",
-		"I_MRAP_03_gmg_F",
-		"B_T_MRAP_01_hmg_F",
-		"B_T_MRAP_01_gmg_F"
-	];
-};
-if ( isNil "GRLIB_AirDrop_3_cost" ) then {
-	GRLIB_AirDrop_3_cost = 200;
-};
-
-if ( isNil "GRLIB_AirDrop_4" ) then {
-	GRLIB_AirDrop_4 = [
-		"B_Truck_01_transport_F",
-		"B_Truck_01_covered_F",
-		"I_Truck_02_covered_F",
-		"I_Truck_02_transport_F"
-	];
-};
-if ( isNil "GRLIB_AirDrop_4_cost" ) then {
-	GRLIB_AirDrop_4_cost = 300;
-};
-
-if ( isNil "GRLIB_AirDrop_5" ) then {
-	GRLIB_AirDrop_5 = [
-		"I_APC_Wheeled_03_cannon_F",
-		"I_APC_tracked_03_cannon_F",
-		"B_APC_Wheeled_03_cannon_F",
-		"B_APC_Wheeled_01_cannon_F"
-	];
-};
-if ( isNil "GRLIB_AirDrop_5_cost" ) then {
-	GRLIB_AirDrop_5_cost = 750;
-};
-
-if ( isNil "GRLIB_AirDrop_6" ) then {
-	GRLIB_AirDrop_6 = [
-		"C_Boat_Civil_01_F",
-		"C_Boat_Transport_02_F",
-		"B_Boat_Transport_01_F",
-		"I_C_Boat_Transport_02_F"
-	];
-};
-if ( isNil "GRLIB_AirDrop_6_cost" ) then {
-	GRLIB_AirDrop_6_cost = 250;
-};
-if ( isNil "GRLIB_AirDrop_7_cost" ) then {
-	GRLIB_AirDrop_7_cost = 2000;
-};
-if ( isNil "GRLIB_AirDrop_8_cost" ) then {
-	GRLIB_AirDrop_8_cost = 1000;
-};
