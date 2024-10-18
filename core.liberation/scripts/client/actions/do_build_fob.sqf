@@ -27,7 +27,8 @@ if (_box_type == FOB_truck_typename && count (crew _box) > 0) exitWith {
 
 _box setVariable ["box_in_use", true, true];
 private _minfobdist = 1000;
-private _minsectordist = GRLIB_capture_size + GRLIB_fob_range;
+private _minsectordist = (GRLIB_capture_size + GRLIB_fob_range) * 1.5;
+if (_box_type == FOB_box_outpost) then { _minsectordist = (GRLIB_capture_size + GRLIB_fob_range) };
 private _distfob = 1;
 private _clearedtobuildfob = true;
 private _distsector = 1;
