@@ -71,7 +71,7 @@ VAM_arsenal_cargo_class_names = [
 ];
 
 // Default source for Shop
-VAM_arsenal_enable_weapons = false;
+VAM_arsenal_enable_weapons = true;
 VAM_arsenal_enable_magazines = true;
 VAM_arsenal_enable_uniforms = false;
 VAM_arsenal_enable_backpacks = false;
@@ -103,6 +103,7 @@ if (VAM_arsenal_enable_weapons) then {
 	(
 		"
 		getNumber (_x >> 'scope') > 1 &&
+		tolower (configName _x) find '_uniform' < 0 &&
 		([(configName _x)] call is_allowed_item)
 		"
 		configClasses (configfile >> "CfgWeapons" )
@@ -153,8 +154,7 @@ if (VAM_arsenal_enable_magazines) then {
 		"
 		getNumber (_x >> 'scope') > 1 &&
 		(getNumber (_x >> 'type') == 256 || (getText (_x >> 'type') find '256') >= 0) &&
-		tolower (configName _x) find '_tracer' < 0 &&
-		([(configName _x)] call is_allowed_item)
+		tolower (configName _x) find '_tracer' < 0
 		"
 		configClasses (configfile >> "CfgMagazines")
 	) apply { _arsenal_enable_magazines pushback (configName _x) };
@@ -162,6 +162,6 @@ if (VAM_arsenal_enable_magazines) then {
 };
 
 waitUntil {sleep 1; !isNil "whitelisted_from_arsenal"};
-VAM_arsenal_class_names = (VAM_arsenal_cargo_class_names +_arsenal_enable_weapons + _arsenal_enable_uniforms + _arsenal_enable_backpacks + _arsenal_enable_glasses + _arsenal_enable_magazines) - whitelisted_from_arsenal;
+VAM_arsenal_class_names = VAM_arsenal_cargo_class_names + whitelisted_from_arsenal + (_arsenal_enable_weapons + _arsenal_enable_uniforms + _arsenal_enable_backpacks + _arsenal_enable_glasses + _arsenal_enable_magazines);
 VAM_arsenal_class_names = VAM_arsenal_class_names arrayIntersect VAM_arsenal_class_names;
 VAM_arsenal_class_names = whitelisted_from_arsenal + VAM_arsenal_class_names;
