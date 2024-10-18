@@ -27,7 +27,6 @@ private _grp = createGroup [_side, true];
 			_path = format ["mod_template\%1\loadout\crewman.sqf", GRLIB_mod_east];
 			[_path, _unit] call F_getTemplateFile;
 			[_unit] spawn reammo_ai;
-			sleep 0.1;
 		};
 	};
 
@@ -38,13 +37,13 @@ private _grp = createGroup [_side, true];
 			_path = format ["mod_template\%1\loadout\crewman.sqf", GRLIB_mod_west];
 			[_path, _unit] call F_getTemplateFile;
 			[_unit] spawn reammo_ai;
-			sleep 0.1;
 		};
 	};
 
 	if (_side == GRLIB_side_civilian) then {
-		_unit setVariable ['GRLIB_can_speak', true, true];
+		_unit = _grp createUnit [(selectRandom civilians), _vehicle, [], 20, "NONE"];
 		_unit addEventHandler ["HandleDamage", { _this call damage_manager_civilian }];
+		_unit setVariable ['GRLIB_can_speak', true, true];
 	};
 
 	_unit allowDamage false;
