@@ -106,6 +106,7 @@ if (_enable_defenders) then {
 		_unit allowFleeing 0;
 		_unit addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
         _unit setVariable ["GRLIB_in_building", true, true];
+        _unit setVariable ["GRLIB_mission_AI", true, true];
         [_unit] spawn building_defence_ai;
         [_unit] spawn reammo_ai;
         sleep 0.2;
@@ -114,6 +115,7 @@ if (_enable_defenders) then {
     private _sentry = ceil ((5 + (floor (random 4))) * (sqrt (GRLIB_unitcap)) );
     private _base_sentry_pos = [(_base_position select 0) + ((_base_corners select 0) select 0), (_base_position select 1) + ((_base_corners select 0) select 1),0];
     _grpsentry = [_base_sentry_pos, ([] call F_getAdaptiveSquadComp), GRLIB_side_enemy, "infantry"] call F_libSpawnUnits;
+    { _x setVariable ["GRLIB_mission_AI", true, true] } forEach (units _grpsentry);
 
     [_grpsentry] call F_deleteWaypoints;
     {
