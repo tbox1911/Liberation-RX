@@ -52,7 +52,7 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
 	saveProfileNamespace;
 } else {
 	buildings_to_save = [];
-	private _all_buildings = [];
+	private _all_buildings = [GRLIB_vehicle_huron];
 	{
 		_fobpos = _x;
 		_nextbuildings = _fobpos nearObjects (GRLIB_fob_range * 2) select {
@@ -62,7 +62,7 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
 			( tolower (typeof _x) in GRLIB_classnames_to_save ) &&
 			( speed vehicle _x < 5 ) &&
 			( isNull attachedTo _x ) &&
-			(_x getVariable ["GRLIB_vehicle_owner", ""] != "server")
+			!(_x getVariable ["GRLIB_vehicle_owner", ""] in ["server", "public"])
 		};
 		_all_buildings = _all_buildings + _nextbuildings;
 	} foreach GRLIB_all_fobs;
