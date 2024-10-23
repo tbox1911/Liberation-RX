@@ -8,13 +8,12 @@ if (_vehicle isKindOf "Ship") exitWith {
 };
 
 diag_log format ["Group %1 (%2) - Attack: %3", _grp, typeOf _vehicle, _objective_pos];
-sleep (2 + floor random 10);
-
 private _attack = true;
 private _timer = 0;
 private _last_pos = getPosATL (leader _grp);
-private ["_waypoint", "_wp0", "_next_objective", "_sector", "_timer", "_target"];
 
+sleep (2 + floor random 5);
+private ["_waypoint", "_wp0", "_next_objective", "_sector", "_timer", "_target"];
 while {({alive _x} count (units _grp) > 0) && !(_objective_pos isEqualTo zeropos)} do {
 	if (_attack) then {
 		_attack = false;
@@ -78,6 +77,7 @@ while {({alive _x} count (units _grp) > 0) && !(_objective_pos isEqualTo zeropos
 		[_vehicle] call F_vehicleUnflip;
 		_vehicle setFuel 1;
 		_vehicle setVehicleAmmo 1;
+		_last_pos = getPosATL _vehicle;
 	};
 };
 
