@@ -189,10 +189,16 @@ if (deploy == 1) then {
 	cinematic_camera_started = false;
 };
 
+sleep 2;
+if (player distance2D (markerPos GRLIB_respawn_marker) < GRLIB_capture_size) then {
+	_spawn_str = _basenamestr;
+	player setPosATL ((getPosATL lhd) vectorAdd [floor(random 5), floor(random 5), 1]);
+};
+
 if (alive player && deploy == 1) then {
 	if (isNil "_spawn_str") then {_spawn_str = "Somewhere."};
 	[_spawn_str, _mobile] spawn spawn_camera;
 };
 
-sleep 10;
+sleep 8;
 player setVariable ["GRLIB_action_inuse", false, true];

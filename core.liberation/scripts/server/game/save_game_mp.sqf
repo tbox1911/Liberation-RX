@@ -91,16 +91,13 @@ if ( GRLIB_endgame >= 1 || GRLIB_global_stop == 1 ) then {
 			if (side group _x != GRLIB_side_enemy) then {
 				_owner = _x getVariable ["GRLIB_vehicle_owner", ""];
 				_hascrew = _x getVariable ["GRLIB_vehicle_manned", false];
-				if (_owner == "") then {
-					buildings_to_save pushback [ _nextclass, _savedpos, _nextdir ];
-				};
-				if (_nextclass == FOB_sign) then {
+				if (_nextclass == FOB_sign) exitWith {
 					_hascrew = _x getVariable ["GRLIB_fob_type", FOB_typename];
-				};
-				if (_owner == "public") then {
 					buildings_to_save pushback [ _nextclass, _savedpos, _nextdir, _hascrew, _owner ];
 				};
-
+				if (_owner == "") exitWith {
+					buildings_to_save pushback [ _nextclass, _savedpos, _nextdir ];
+				};
 				if (_owner in _keep_score_id) then {
 					if (_nextclass in GRLIB_vehicles_light) then {
 						private _default = true;
