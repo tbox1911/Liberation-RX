@@ -25,7 +25,7 @@ _unit removeItem _hmd;
 _unit setVariable ["GRLIB_can_speak", true, true];
 _unit removeAllEventHandlers "HandleDamage";
 _unit setCaptive true;
-[_unit] spawn F_fixPosUnit;
+[_unit] call F_fixPosUnit;
 
 // Wait
 if (!_canmove) then {
@@ -36,7 +36,7 @@ if (!_canmove) then {
 	if (_friendly) then {
 		waitUntil { sleep 1; (!alive _unit || side group _unit == GRLIB_side_friendly) };
 	} else {
-		private _timeout = time + (30 * 60);
+		private _timeout = (time + (30 * 60));
 		waitUntil { sleep 1; (!alive _unit || side group _unit == GRLIB_side_friendly || time > _timeout) };
 	};
 	// Follow

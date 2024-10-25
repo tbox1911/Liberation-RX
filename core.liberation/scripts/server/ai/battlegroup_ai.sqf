@@ -48,8 +48,6 @@ while {({alive _x} count (units _grp) > 0) && !(_objective_pos isEqualTo zeropos
 		_timer = round (time + (15 * 60));
 	};
 
-	sleep 300;
-
 	if (time > _timer) then {
 		_last_pos = getPosATL (leader _grp);
 		if (GRLIB_global_stop == 1) then {
@@ -79,6 +77,8 @@ while {({alive _x} count (units _grp) > 0) && !(_objective_pos isEqualTo zeropos
 		_vehicle setVehicleAmmo 1;
 		_last_pos = getPosATL _vehicle;
 	};
+
+	sleep 300;
 };
 
 // Cleanup
