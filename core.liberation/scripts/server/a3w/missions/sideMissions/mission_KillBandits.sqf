@@ -108,7 +108,7 @@ _setupObjects = {
 	true;
 };
 
-_waitUntilMarkerPos = { getPosATL (_vehicles select 0) };
+_waitUntilMarkerPos = { getPosATL (leader _aiGroup) };
 _waitUntilExec = nil;
 _waitUntilCondition = nil;
 _waitUntilSuccessCondition = nil;
