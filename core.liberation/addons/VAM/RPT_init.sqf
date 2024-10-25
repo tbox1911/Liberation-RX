@@ -162,6 +162,7 @@ if (VAM_arsenal_enable_magazines) then {
 };
 
 waitUntil {sleep 1; !isNil "whitelisted_from_arsenal"};
-VAM_arsenal_class_names = VAM_arsenal_cargo_class_names + whitelisted_from_arsenal + (_arsenal_enable_weapons + _arsenal_enable_uniforms + _arsenal_enable_backpacks + _arsenal_enable_glasses + _arsenal_enable_magazines);
-VAM_arsenal_class_names = VAM_arsenal_class_names arrayIntersect VAM_arsenal_class_names;
-VAM_arsenal_class_names = whitelisted_from_arsenal + VAM_arsenal_class_names;
+private _arsenal_class_names = [];
+_arsenal_class_names = whitelisted_from_arsenal + (_arsenal_enable_weapons + _arsenal_enable_uniforms + _arsenal_enable_backpacks + _arsenal_enable_glasses + _arsenal_enable_magazines);
+_arsenal_class_names = _arsenal_class_names arrayIntersect _arsenal_class_names;
+VAM_arsenal_class_names = VAM_arsenal_cargo_class_names + _arsenal_class_names;
