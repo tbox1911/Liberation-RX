@@ -11,7 +11,7 @@ if (_unit getVariable ["GRLIB_in_building", false]) exitWith {};
 private _spawnpos = getPosATL _unit;
 if (surfaceIsWater _spawnpos) exitWith {};
 
-private _maxalt = 30;
+private _maxalt = 100;
 private _forest_type = ["forest", "wood"];
 private _typepos = tolower (surfaceType getPosWorld _unit);
 private _forest = count (_forest_type select { (_typepos find _x) > -1 });
@@ -21,8 +21,8 @@ if (_forest > 0) then { _maxalt = 3 };
 private _obstacle = count (nearestTerrainObjects [_unit, ["House","Building"], 10]);
 if (_obstacle > 0) then { _maxalt = 2.3 };
 
-private _obstacle_rock = count (nearestTerrainObjects [_spawnpos, ["ROCK"], 20]);
-if (_obstacle_rock > 0) then {_maxalt = 60 };
+// private _obstacle_rock = count (nearestTerrainObjects [_spawnpos, ["ROCK"], 20]);
+// if (_obstacle_rock > 0) then {_maxalt = 60 };
 
 private _spawnpos = ATLtoASL (_spawnpos vectorAdd [0,0,0.5]);
 private _maxpos = (_spawnpos vectorAdd [0,0,_maxalt]);
