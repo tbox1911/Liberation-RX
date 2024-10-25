@@ -25,14 +25,11 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	_usable_sectors = [];
 	_all_players = (AllPlayers - (entities "HeadlessClient_F"));
 	{
-		_sector =_x;
-		_player_nearby = {
-			_dist = (_x distance2D (markerPos _sector));
-			if (_dist > GRLIB_spawn_min && _dist < GRLIB_spawn_max ) exitWith {1};
-		} count _all_players;
-
-		if (_player_nearby > 0) then { _usable_sectors pushback _sector };
+		if ( (count ([markerPos  _x, GRLIB_spawn_max] call F_getNearbyPlayers) > 0) && (count ([markerPos  _x, GRLIB_capture_size] call F_getNearbyPlayers) == 0) ) then {
+			_usable_sectors pushback _x;
+		};
 		sleep 0.1;
+
 	} foreach (sectors_allSectors - active_sectors);
 
 	if ( count _usable_sectors > 0 ) then {
