@@ -55,6 +55,7 @@ _setupObjects = {
 		_plane addEventHandler ["Fuel",  { (_this select 0) setFuel 1 }];
 		_plane addEventHandler ["Fired", { (_this select 0) setVehicleAmmo 1 }];
 		_plane flyInHeightASL [1500, 1500, 1500];
+		_plane setVariable ["GRLIB_mission_AI", true, true];
 		_vehicles pushBack _plane;
 		(crew _plane) joinSilent _aiGroup;
 		sleep 2;
@@ -67,14 +68,14 @@ _setupObjects = {
 	_aiGroup selectLeader _leader;
 	{_x doFollow leader _aiGroup} foreach units _aiGroup;
 
-	_missionPos = getPosATL leader _aiGroup;
+	_missionPos = getPosATL (leader _aiGroup);
 	_missionPicture = getText (configFile >> "CfgVehicles" >> (_vehicleClass param [0,""]) >> "picture");
 	_vehicleName = getText (configFile >> "CfgVehicles" >> (_vehicleClass param [0,""]) >> "displayName");
 	_missionHintText = ["STR_BARON_ROUGE_MESSAGE1", _vehicleName, sideMissionColor];
 	true;
 };
 
-_waitUntilMarkerPos = { getPosATL _leader };
+_waitUntilMarkerPos = { getPosATL (leader _aiGroup) };
 _waitUntilExec = nil;
 _waitUntilCondition = nil;
 _waitUntilSuccessCondition = { !alive (_vehicles select 0) };
