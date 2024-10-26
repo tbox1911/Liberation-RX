@@ -26,6 +26,7 @@ _unit setVariable ["GRLIB_can_speak", true, true];
 _unit removeAllEventHandlers "HandleDamage";
 _unit setCaptive true;
 [_unit] call F_fixPosUnit;
+sleep 3;
 
 // Wait
 if (!_canmove) then {
