@@ -6,6 +6,7 @@ if (!alive _unit) exitWith {};
 private _anim = "";
 
 if (_cmd == "init") exitWith {
+	_unit switchMove _anim;
 	_unit stop true;
 	_unit disableAI "ANIM";
 	_unit disableAI "MOVE";
@@ -32,6 +33,7 @@ if (_cmd == "stop") exitWith {
 };
 
 if (_cmd == "move") exitWith {
+	_unit switchMove _anim;   
 	_unit stop false;
 	_unit enableAI "ANIM";
 	_unit enableAI "MOVE";
@@ -41,6 +43,7 @@ if (_cmd == "move") exitWith {
 };
 
 if (_cmd == "flee") exitWith {
+    _unit switchMove _anim;
     _unit stop false;
     _unit setUnitPos "AUTO";
     _unit enableAI "ANIM";
